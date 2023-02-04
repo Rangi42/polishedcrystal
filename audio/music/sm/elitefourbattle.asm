@@ -17,9 +17,9 @@ Music_EliteFourBattleSM_Ch1:
 	pitch_offset 2
 	vibrato 18, 1, 5
 	note_type 6, 1, 2
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 2, 2
 	sound_call Music_EliteFourBattleSM_Ch1_branch_1
@@ -77,7 +77,7 @@ Music_EliteFourBattleSM_Ch1_loop_1:
 	note F_, 1
 	note F_, 1
 	sound_loop 2, Music_EliteFourBattleSM_Ch1_loop_1
-	note __, 16
+	rest 16
 	duty_cycle 2
 	volume_envelope 8, 7
 	note E_, 6
@@ -107,9 +107,9 @@ Music_EliteFourBattleSM_Ch1_loop_1:
 	note E_, 8
 	volume_envelope 8, 4
 	note E_, 8
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	duty_cycle 0
 Music_EliteFourBattleSM_Ch1_loop_2:
 	volume_envelope 9, 2
@@ -184,7 +184,7 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	duty_cycle 0
 	volume_envelope 13, 2
 	octave 3
-	note __, 8
+	rest 8
 	note E_, 2
 	note D#, 4
 	note A#, 2
@@ -253,7 +253,7 @@ Music_EliteFourBattleSM_Ch2:
 	note F_, 1
 	note F_, 1
 	sound_loop 3, Music_EliteFourBattleSM_Ch2
-	note __, 16
+	rest 16
 Music_EliteFourBattleSM_Ch2_loop_1:
 	volume_envelope 10, 2
 	note G_, 4
@@ -266,7 +266,7 @@ Music_EliteFourBattleSM_Ch2_loop_1:
 	note G_, 1
 	note G_, 1
 	sound_loop 3, Music_EliteFourBattleSM_Ch2_loop_1
-	note __, 16
+	rest 16
 Music_EliteFourBattleSM_Ch2_loop_2:
 	volume_envelope 10, 2
 	note A_, 4
@@ -279,7 +279,7 @@ Music_EliteFourBattleSM_Ch2_loop_2:
 	note A_, 1
 	note A_, 1
 	sound_loop 3, Music_EliteFourBattleSM_Ch2_loop_2
-	note __, 16
+	rest 16
 Music_EliteFourBattleSM_Ch2_loop_main:
 Music_EliteFourBattleSM_Ch2_loop_3:
 	octave 4
@@ -364,15 +364,15 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	note E_, 8
 	note F_, 8
 	note E_, 2
-	note __, 14
+	rest 14
 	note E_, 8
 	note F_, 8
 	note G_, 2
-	note __, 14
+	rest 14
 	note E_, 8
 	note F_, 8
 	note E_, 2
-	note __, 14
+	rest 14
 	note E_, 8
 	note F_, 8
 	note G_, 16
@@ -475,7 +475,7 @@ Music_EliteFourBattleSM_Ch3_loop_1:
 	note G_, 2
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	octave 2
 	note G_, 2
@@ -585,28 +585,28 @@ Music_EliteFourBattleSM_Ch3_loop_9:
 Music_EliteFourBattleSM_Ch3_branch_1:
 	note_type 3, 1, -1
 	note E_, 3
-	note __, 1
+	rest 1
 	volume_envelope 2, -1
 	note E_, 3
-	note __, 1
+	rest 1
 	note E_, 3
-	note __, 1
+	rest 1
 	sound_loop 8, Music_EliteFourBattleSM_Ch3_branch_1
 	volume_envelope 1, -1
 	note F_, 4
-	note __, 12
-	note __, 16
+	rest 12
+	rest 16
 	sound_ret
 
 Music_EliteFourBattleSM_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 8
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 8
 	note C#, 1
 	note C#, 2
 	note C#, 1
@@ -625,9 +625,9 @@ Music_EliteFourBattleSM_Ch4_loop_1:
 	note C_, 4
 	sound_loop 16, Music_EliteFourBattleSM_Ch4_loop_1
 	note B_, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 Music_EliteFourBattleSM_Ch4_loop_2:
 	note C#, 1
 	note C#, 1

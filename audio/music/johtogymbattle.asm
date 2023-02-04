@@ -617,32 +617,32 @@ Music_JohtoGymBattle_Ch3:
 	note_type 12, 1, -1
 	octave 4
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	octave 4
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 2
 	octave 4
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 2
 	octave 4
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 2
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 2
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note F_, 2
@@ -765,12 +765,12 @@ Music_JohtoGymBattle_branch_ea83f:
 	note F_, 2
 	note G_, 2
 	sound_call Music_JohtoGymBattle_branch_ea983
-	note __, 2
+	rest 2
 	sound_call Music_JohtoGymBattle_branch_ea990
 	octave 4
 	note C#, 2
 	sound_call Music_JohtoGymBattle_branch_ea99c
-	note __, 2
+	rest 2
 	note D#, 2
 	note A#, 2
 	octave 4

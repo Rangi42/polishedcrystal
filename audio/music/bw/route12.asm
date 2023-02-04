@@ -66,7 +66,7 @@ Music_Route12BW_Ch1_loop_1:
 	note B_, 6
 	octave 5
 	note D#, 12
-	note __, 12
+	rest 12
 	sound_jump Music_Route12BW_Ch1
 
 Music_Route12BW_Ch1_branch_1:
@@ -248,7 +248,7 @@ Music_Route12BW_Ch2_loop:
 	note F#, 9
 	volume_envelope 11, 7
 	note F#, 9
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	note E_, 2
@@ -256,7 +256,7 @@ Music_Route12BW_Ch2_loop:
 	note F#, 9
 	volume_envelope 11, 7
 	note F#, 9
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -265,7 +265,7 @@ Music_Route12BW_Ch2_loop:
 	note D#, 9
 	volume_envelope 11, 7
 	note D#, 9
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 2
 	note A#, 2
@@ -351,7 +351,7 @@ Music_Route12BW_Ch3:
 	note E_, 12
 	note F#, 12
 	note F#, 12
-	note __, 6
+	rest 6
 	note E_, 6
 	note G_, 6
 	note B_, 6

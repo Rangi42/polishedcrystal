@@ -13,10 +13,10 @@ Music_HallOfFame_Ch1:
 	pitch_offset 1
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 3
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 16
+	rest 12
 	octave 3
 	note D_, 1
 	note E_, 1
@@ -41,10 +41,10 @@ Music_HallOfFame_branch_f05e6:
 	volume_envelope 5, 7
 	note F_, 8
 	sound_loop 3, Music_HallOfFame_branch_f05e6
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	sound_jump Music_HallOfFame_branch_f05e6
 
 Music_HallOfFame_Ch2:
@@ -139,10 +139,10 @@ Music_HallOfFame_branch_f0631:
 Music_HallOfFame_Ch4:
 	toggle_noise 5
 	note_type 12
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note_type 6
 Music_HallOfFame_branch_f0677:
 	stereo_panning FALSE, TRUE

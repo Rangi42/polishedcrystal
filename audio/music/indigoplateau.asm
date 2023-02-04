@@ -134,18 +134,18 @@ Music_IndigoPlateau_branch_ee8fd:
 Music_IndigoPlateau_branch_ee915:
 	octave 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 1
-	note __, 3
+	rest 3
 	sound_ret
 
 Music_IndigoPlateau_Ch4:

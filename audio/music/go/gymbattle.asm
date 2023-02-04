@@ -113,7 +113,7 @@ Music_GymLeaderBattleGo_Ch1_loop_4:
 	octave 2
 	note C_, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note C_, 1
 	octave 1
@@ -350,9 +350,9 @@ Music_GymLeaderBattleGo_Ch2:
 	note_type 12, 10, 5
 Music_GymLeaderBattleGo_Ch2_loop_1:
 	note F#, 2
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 1
+	rest 1
 	note D#, 2
 	sound_loop 4, Music_GymLeaderBattleGo_Ch2_loop_1
 Music_GymLeaderBattleGo_Ch2_loop:
@@ -459,38 +459,38 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	octave 4
 	sound_call Music_GymLeaderBattleGo_Ch2_ditty2
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	note_type 12, 12, 8
 	note D_, 2
 	sound_call Music_GymLeaderBattleGo_Ch2_ditty2
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	note_type 9, 12, 8
 	note A#, 1
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	note_type 12, 12, 8
 	note F_, 2
 	note_type 9, 12, 8
 	note F_, 1
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	note_type 9, 12, 8
 	note A#, 1
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	octave 5
 	note_type 9, 12, 8
 	note D_, 1
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	octave 4
 	note_type 12, 12, 8
 	sound_call Music_GymLeaderBattleGo_Ch2_ditty3
 	octave 5
 	sound_call Music_GymLeaderBattleGo_Ch2_ditty2
 	note_type 3, 12, 8
-	note __, 1
+	rest 1
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 4
 	note B_, 4
@@ -501,14 +501,14 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	octave 5
 	note C_, 4
 	note G_, 4
-	note __, 16
+	rest 16
 	octave 4
 	note E_, 4
 	note G_, 4
 	octave 5
 	note C_, 4
 	note G_, 4
-	note __, 16
+	rest 16
 	note C_, 4
 	octave 4
 	note G_, 4
@@ -517,16 +517,16 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note G_, 4
 	octave 4
 	note A#, 4
-	note __, 12
+	rest 12
 	note G_, 4
 	note G_, 4
 	octave 5
 	note C_, 4
 	note G_, 4
-	note __, 8
+	rest 8
 	octave 4
 	note G_, 4
-	note __, 4
+	rest 4
 	duty_cycle_pattern 1, 1, 1, 1
 	octave 3
 	note E_, 4
@@ -539,15 +539,15 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note A#, 8
 	octave 4
 	note C_, 4
-	note __, 8
+	rest 8
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 Music_GymLeaderBattleGo_Ch2_loop_3:
 	note D_, 4
-	note __, 8
+	rest 8
 	sound_loop 3, Music_GymLeaderBattleGo_Ch2_loop_3
 	note D_, 4
-	note __, 12
+	rest 12
 	duty_cycle_pattern 1, 1, 1, 1
 	sound_call Music_GymLeaderBattleGo_Ch2_ditty4
 	note G_, 12
@@ -644,7 +644,7 @@ Music_GymLeaderBattleGo_Ch2_ditty1:
 	vibrato 0, 0, 0
 	octave 3
 	note G#, 12
-	note __, 11
+	rest 11
 	volume_envelope 12, 8
 	vibrato 15, 5, 3
 	octave 4
@@ -654,14 +654,14 @@ Music_GymLeaderBattleGo_Ch2_ditty1:
 	vibrato 0, 0, 0
 	octave 3
 	note A#, 12
-	note __, 11
+	rest 11
 	sound_ret
 
 Music_GymLeaderBattleGo_Ch2_ditty2:
 	note_type 9, 12, 8
 	note D_, 1
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	note_type 9, 12, 8
 	note F_, 1
 	sound_ret
@@ -671,7 +671,7 @@ Music_GymLeaderBattleGo_Ch2_ditty3:
 	note_type 9, 12, 8
 	note A#, 1
 	note_type 15, 12, 8
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_GymLeaderBattleGo_Ch2_ditty4:
@@ -703,17 +703,17 @@ Music_GymLeaderBattleGo_Ch3:
 	note_type 12, 1, 4
 Music_GymLeaderBattleGo_Ch3_loop_1:
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	sound_loop 2, Music_GymLeaderBattleGo_Ch3_loop_1
 Music_GymLeaderBattleGo_Ch3_loop:
 	duty_cycle 6
@@ -823,11 +823,11 @@ Music_GymLeaderBattleGo_Ch3_loop_6:
 	note F_, 7
 	note F_, 1
 	note E_, 1
-	note __, 15
+	rest 15
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 9
+	rest 9
 	octave 4
 	note G_, 3
 	note E_, 3
@@ -836,7 +836,7 @@ Music_GymLeaderBattleGo_Ch3_loop_6:
 	note G_, 2
 	note F_, 1
 	note F_, 1
-	note __, 16
+	rest 16
 	note G_, 3
 	note E_, 3
 	note C_, 3
@@ -887,22 +887,22 @@ Music_GymLeaderBattleGo_Ch3_loop_6:
 
 Music_GymLeaderBattleGo_Ch3_ditty1:
 	note G#, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note A#, 2
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_GymLeaderBattleGo_Ch3_ditty2:
 	note G_, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_GymLeaderBattleGo_Ch3_ditty3:

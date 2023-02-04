@@ -20,21 +20,21 @@ Music_HiddenGrottoB2W2_Ch1:
 	note E_, 2
 	note D_, 2
 	note C_, 16
-	note __, 2
+	rest 2
 	note C_, 2
 	note F#, 16
-	note __, 10
+	rest 10
 	note F#, 2
 	note E_, 2
 	note D_, 2
 	note C_, 16
-	note __, 3
+	rest 3
 	octave 3
 	note G_, 16
-	note __, 4
+	rest 4
 	octave 4
 	note C_, 16
-	note __, 4
+	rest 4
 	sound_jump Music_HiddenGrottoB2W2_Ch1
 
 Music_HiddenGrottoB2W2_Ch1_branch_1:
@@ -43,21 +43,21 @@ Music_HiddenGrottoB2W2_Ch1_branch_1:
 	note E_, 2
 	note D_, 2
 	note C_, 16
-	note __, 2
+	rest 2
 	note C_, 2
 	note F#, 16
-	note __, 10
+	rest 10
 	note F#, 2
 	note E_, 2
 	note D_, 2
 	note C_, 16
-	note __, 3
+	rest 3
 	octave 3
 	note G_, 16
-	note __, 4
+	rest 4
 	octave 4
 	note C_, 16
-	note __, 4
+	rest 4
 	sound_ret
 
 Music_HiddenGrottoB2W2_Ch2:
@@ -65,29 +65,29 @@ Music_HiddenGrottoB2W2_Ch2:
 	vibrato 18, 1, 5
 	note_type 6, 5, 2
 	octave 4
-	note __, 1
+	rest 1
 Music_HiddenGrottoB2W2_Ch2_loop:
 	note_type 12, 5, 2
 	note F#, 2
 	note E_, 2
 	note D_, 2
 	note C_, 2
-	note __, 16
+	rest 16
 	volume_envelope 5, 2
 	note C_, 2
 	note F#, 10
-	note __, 16
+	rest 16
 	note F#, 2
 	note E_, 2
 	note D_, 2
 	note C_, 6
-	note __, 13
+	rest 13
 	octave 3
 	note G_, 4
-	note __, 16
+	rest 16
 	octave 4
 	note C_, 4
-	note __, 16
+	rest 16
 	sound_jump Music_HiddenGrottoB2W2_Ch2_loop
 
 Music_HiddenGrottoB2W2_Ch3:
@@ -99,33 +99,33 @@ Music_HiddenGrottoB2W2_Ch3:
 	octave 2
 	note A_, 2
 	note G_, 2
-	note __, 16
+	rest 16
 	note G_, 2
 	octave 3
 	note D_, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note D_, 2
 	note C_, 2
 	octave 2
 	note A_, 2
 	note G_, 2
-	note __, 16
-	note __, 1
+	rest 16
+	rest 1
 	note E_, 2
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	note G_, 2
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	sound_jump Music_HiddenGrottoB2W2_Ch3
 
 Music_HiddenGrottoB2W2_Ch4:
 	note_type 6
 	toggle_noise 5
 Music_HiddenGrottoB2W2_Ch4_loop:
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	note D#, 5
 	note E_, 1
 	note E_, 1
@@ -135,17 +135,17 @@ Music_HiddenGrottoB2W2_Ch4_loop:
 	note E_, 1
 	note E_, 2
 	note C_, 13
-	note __, 8
-	note __, 16
+	rest 8
+	rest 16
 	note D#, 1
 	note D#, 1
 	note D#, 1
 	note D#, 1
 	note D#, 2
 	note E_, 10
-	note __, 16
-	note __, 16
-	note __, 8
+	rest 16
+	rest 16
+	rest 8
 	note D_, 1
 	note D_, 1
 	note D_, 1
@@ -154,7 +154,7 @@ Music_HiddenGrottoB2W2_Ch4_loop:
 	note D_, 3
 	note D_, 3
 	note D#, 8
-	note __, 14
+	rest 14
 	note E_, 1
 	note E_, 1
 	note E_, 1
@@ -162,11 +162,11 @@ Music_HiddenGrottoB2W2_Ch4_loop:
 	note E_, 1
 	note B_, 2
 	note C_, 13
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note D#, 1
 	note D#, 1
 	note D#, 1
 	note D#, 16
-	note __, 9
+	rest 9
 	sound_jump Music_HiddenGrottoB2W2_Ch4_loop

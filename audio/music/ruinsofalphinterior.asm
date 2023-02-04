@@ -10,7 +10,7 @@ Music_RuinsOfAlphInterior_Ch1:
 	duty_cycle 0
 	stereo_panning TRUE, FALSE
 	note_type 12, 4, 4
-	note __, 1
+	rest 1
 	sound_jump Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch2:
@@ -43,5 +43,5 @@ Music_RuinsOfAlphInterior_branch_ebdd7:
 	octave 3
 	note C#, 2
 	note E_, 2
-	note __, 10
+	rest 10
 	sound_jump Music_RuinsOfAlphInterior_branch_ebdd7

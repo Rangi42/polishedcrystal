@@ -9,7 +9,7 @@ Music_PostCredits_Ch1:
 	transpose 0, 3
 	duty_cycle 2
 	note_type 12, 9, 3
-	note __, 8
+	rest 8
 Music_PostCredits_branch_cfdb2:
 	octave 3
 	note C_, 2

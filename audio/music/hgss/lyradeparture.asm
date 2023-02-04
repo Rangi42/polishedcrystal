@@ -14,19 +14,19 @@ Music_LyraDepartureHGSS_Ch1:
 	tempo 184
 	duty_cycle 1
 	note_type 12, 8, 5
-	note __, 4
+	rest 4
 	sound_jump Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraDepartureHGSS_Ch2:
 	duty_cycle 2
 	note_type 12, 11, 4
-	note __, 4
+	rest 4
 	sound_jump Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraDepartureHGSS_Ch3:
 	note_type 12, 1, 5
 	volume_envelope 1, 0
-	note __, 4
+	rest 4
 	sound_jump Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraDepartureHGSS_Ch4:

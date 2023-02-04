@@ -214,7 +214,7 @@ Music_TrainerBattlePrism_L1:
 	note F_, 10
 	note G_, 6
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 4
 	volume_envelope 12, 4
@@ -575,7 +575,7 @@ Music_TrainerBattlePrism_L4:
 	note G#, 4
 	octave 4
 	note A#, 3
-	note __, 1
+	rest 1
 	sound_jump Music_TrainerBattlePrism_L2
 
 Music_TrainerBattlePrism_Ch3:
@@ -644,16 +644,16 @@ Music_TrainerBattlePrism_L9:
 	sound_call Music_TrainerBattlePrism_P10
 	octave 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 2
 	note C_, 2
 	octave 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 2
@@ -666,16 +666,16 @@ Music_TrainerBattlePrism_L9:
 	note C_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 2
 	note F_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 2
@@ -686,16 +686,16 @@ Music_TrainerBattlePrism_L9:
 	note G#, 2
 	note G#, 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 2
 	note C_, 2
 	octave 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 2
@@ -706,16 +706,16 @@ Music_TrainerBattlePrism_L9:
 	note C_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 2
 	note F_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 2

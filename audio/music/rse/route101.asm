@@ -17,7 +17,7 @@ Music_Route101RSE_Ch1:
 	vibrato 16, 1, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3
-	note __, 2
+	rest 2
 Music_Route101RSE_Ch1_loop:
 	volume_envelope 8, 4
 	duty_cycle 3
@@ -53,7 +53,7 @@ Music_Route101RSE_Ch1_loop:
 	note A_, 1
 	note E_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note C#, 2
 	octave 4
@@ -103,21 +103,21 @@ Music_Route101RSE_Ch1_branch_1:
 	note D_, 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note F#, 1
 	note D_, 1
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 4
 	note E_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note G_, 1
 	note E_, 1
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 4
 	note C#, 1
@@ -142,11 +142,11 @@ Music_Route101RSE_Ch1_branch_1:
 	octave 4
 	note C#, 1
 	octave 3
-	note __, 2
+	rest 2
 	note A_, 1
 	octave 4
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
 	octave 2
@@ -224,7 +224,7 @@ Music_Route101RSE_Ch2:
 	duty_cycle 2
 	vibrato 18, 3, 6
 	note_type 12, 7, 7
-	note __, 2
+	rest 2
 Music_Route101RSE_Ch2_loop:
 	volume_envelope 7, 7
 	sound_call Music_Route101RSE_Ch2_branch_1
@@ -233,11 +233,11 @@ Music_Route101RSE_Ch2_loop:
 	volume_envelope 9, 7
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	volume_envelope 9, 0
@@ -247,11 +247,11 @@ Music_Route101RSE_Ch2_loop:
 	note E_, 4
 	note D_, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	note E_, 6
@@ -260,9 +260,9 @@ Music_Route101RSE_Ch2_loop:
 	note A_, 2
 	sound_call Music_Route101RSE_Ch2_branch_2
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D_, 2
 	octave 1
@@ -283,13 +283,13 @@ Music_Route101RSE_Ch2_loop:
 Music_Route101RSE_Ch2_branch_1:
 	octave 1
 	note D_, 2
-	note __, 5
+	rest 5
 	note A_, 1
 	note D_, 2
-	note __, 4
+	rest 4
 	note A_, 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 1
 	octave 2
 	note D#, 2
@@ -297,47 +297,47 @@ Music_Route101RSE_Ch2_branch_1:
 	note B_, 1
 	note B_, 1
 	note E_, 2
-	note __, 4
+	rest 4
 	note E_, 2
 	note A_, 2
-	note __, 5
+	rest 5
 	note E_, 1
 	note A_, 2
-	note __, 4
+	rest 4
 	octave 2
 	note E_, 1
 	note E_, 1
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 2
 	sound_ret
 
 Music_Route101RSE_Ch2_branch_2:
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D_, 2
 	octave 1
 	note G_, 2
-	note __, 4
+	rest 4
 	volume_envelope 9, 2
 	note G_, 1
 	note G_, 1
 	volume_envelope 9, 7
 	note F#, 2
-	note __, 1
+	rest 1
 	note A_, 1
 	octave 2
 	note C#, 2
@@ -358,11 +358,11 @@ Music_Route101RSE_Ch3_loop:
 	note D_, 1
 	octave 5
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	octave 6
 	note C#, 1
@@ -371,24 +371,24 @@ Music_Route101RSE_Ch3_loop:
 	note D_, 4
 	sound_call Music_Route101RSE_Ch3_branch_2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	note G_, 4
 	note B_, 4
 	sound_call Music_Route101RSE_Ch3_branch_2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	octave 6
 	note C#, 1
@@ -397,15 +397,15 @@ Music_Route101RSE_Ch3_loop:
 	note G_, 4
 	octave 6
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note E_, 1
 	note D_, 6
-	note __, 2
+	rest 2
 	note D_, 6
 	note C_, 2
 	octave 5
@@ -424,29 +424,29 @@ Music_Route101RSE_Ch3_branch_1:
 	note A_, 1
 	note B_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 12
-	note __, 2
+	rest 2
 	note F#, 1
 	note G_, 1
 	note A_, 1
@@ -454,31 +454,31 @@ Music_Route101RSE_Ch3_branch_1:
 	note A_, 1
 	note G_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note F#, 1
 	note E_, 1
-	note __, 5
+	rest 5
 	sound_ret
 
 Music_Route101RSE_Ch3_branch_2:
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
 	note B_, 1
 	note A_, 6
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_Route101RSE_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 	note_type 12
-	note __, 2
+	rest 2
 Music_Route101RSE_Ch4_loop:
 	sound_call Music_Route101RSE_Ch4_branch_1
 	note D#, 1

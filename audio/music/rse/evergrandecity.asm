@@ -33,7 +33,7 @@ Music_EverGrandeCityRSE_Ch1:
 	note D_, 16
 	volume_envelope 12, 7
 	note D_, 16
-	note __, 2
+	rest 2
 	note C_, 6
 	octave 3
 	note A#, 2
@@ -62,24 +62,24 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note D_, 4
 	note D#, 2
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 6
 	note D#, 2
 	note D_, 1
-	note __, 3
+	rest 3
 	note C_, 16
-	note __, 10
+	rest 10
 	note D_, 4
 	note D#, 2
 	note F_, 1
-	note __, 3
+	rest 3
 	note A#, 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
 	note C_, 1
@@ -95,47 +95,47 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note D#, 6
 	note D_, 6
 	note F_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A#, 6
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 16
 	octave 3
 	note A#, 4
-	note __, 4
+	rest 4
 	note A#, 4
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 14
 	note D_, 4
 	note D#, 2
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 6
 	note D#, 2
 	note D_, 1
-	note __, 3
+	rest 3
 	note C_, 16
-	note __, 10
+	rest 10
 	note D_, 4
 	note D#, 2
 	note F_, 1
-	note __, 3
+	rest 3
 	note A#, 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
 	note C_, 1
@@ -151,24 +151,24 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note D#, 6
 	note D_, 6
 	note F_, 1
-	note __, 3
+	rest 3
 	note A#, 6
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 16
 	octave 4
 	note C_, 4
 	octave 3
-	note __, 4
+	rest 4
 	note A#, 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note F_, 8
 	volume_envelope 7, 4
 	note G_, 1
@@ -184,11 +184,11 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note D#, 1
 	volume_envelope 12, 7
 	note F_, 14
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 5
+	rest 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	note F_, 1
 	note D#, 1
@@ -198,51 +198,51 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note D#, 4
 	octave 3
 	note G#, 1
-	note __, 5
+	rest 5
 	octave 4
 	note G#, 14
 	volume_envelope 9, 4
 	note G#, 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 2
 	volume_envelope 10, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	volume_envelope 11, 4
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	volume_envelope 12, 7
 	note F_, 16
 	note F#, 1
-	note __, 5
+	rest 5
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 6
 	note F_, 6
 	note F#, 4
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note F_, 4
 	note D#, 1
-	note __, 5
+	rest 5
 	note C#, 1
 	note D#, 1
 	note F_, 12
@@ -255,20 +255,20 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note F_, 16
 	note D#, 6
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	note F_, 1
 	note D#, 1
 	note C#, 2
-	note __, 4
+	rest 4
 	note C_, 6
 	note C#, 6
 	note G#, 14
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 5
+	rest 5
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 4
 	note G#, 1
 	note F#, 1
@@ -276,20 +276,20 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note F#, 6
 	note G#, 6
 	note A#, 16
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F_, 4
 	note D#, 1
-	note __, 5
+	rest 5
 	note C#, 2
-	note __, 4
+	rest 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 3
 	note D#, 1
 	note F_, 1
@@ -299,7 +299,7 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	note G#, 12
 	volume_envelope 12, 7
 	note G#, 16
-	note __, 8
+	rest 8
 	sound_jump Music_EverGrandeCityRSE_Ch1_loop
 
 Music_EverGrandeCityRSE_Ch2:
@@ -399,21 +399,21 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note D_, 6
 	note D#, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 4
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 6
 	octave 2
@@ -424,7 +424,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note D_, 6
 	octave 2
 	note A#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
 	note F_, 6
@@ -435,25 +435,25 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note A#, 4
 	octave 3
 	note E_, 4
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 3
+	rest 3
 	note F_, 8
 	note D#, 6
 	octave 2
 	note A#, 16
-	note __, 4
+	rest 4
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 6
 	duty_cycle 0
@@ -495,21 +495,21 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note D#, 6
 	note C_, 6
 	note C_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 6
 	note C_, 1
-	note __, 3
+	rest 3
 	note D_, 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	octave 3
 	note A#, 1
-	note __, 7
+	rest 7
 	note G_, 6
 	octave 4
 	note C_, 4
@@ -527,11 +527,11 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	volume_envelope 10, 7
 	octave 3
 	note A#, 14
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 5
+	rest 5
 	note F#, 1
-	note __, 1
+	rest 1
 	note G#, 4
 	note A#, 1
 	note G#, 1
@@ -540,7 +540,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note F#, 6
 	note G#, 4
 	note C#, 1
-	note __, 5
+	rest 5
 	octave 4
 	note C_, 14
 	octave 5
@@ -555,22 +555,22 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	volume_envelope 10, 7
 	note A#, 16
 	note A#, 1
-	note __, 5
+	rest 5
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 6
 	note F#, 6
 	note A_, 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note A_, 4
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 4
 	note F#, 1
-	note __, 5
+	rest 5
 	note F_, 1
 	note F#, 1
 	note G#, 12
@@ -587,7 +587,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note C#, 12
 	note D#, 12
 	note C_, 10
-	note __, 2
+	rest 2
 	note G#, 12
 	note F_, 12
 	note F#, 12
@@ -596,17 +596,17 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	octave 3
 	note A#, 4
 	note G#, 1
-	note __, 5
+	rest 5
 	note F#, 8
 	duty_cycle 2
 	octave 4
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F_, 12
 	note C#, 12
 	octave 6
@@ -623,17 +623,17 @@ Music_EverGrandeCityRSE_Ch3:
 	vibrato 18, 1, 5
 	note_type 12, 1, 4
 	octave 2
-	note __, 6
+	rest 6
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note C_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note C_, 2
 	note G_, 2
@@ -641,15 +641,15 @@ Music_EverGrandeCityRSE_Ch3:
 	note C_, 2
 	octave 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note C_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note C_, 2
 	note D_, 2
@@ -661,11 +661,11 @@ Music_EverGrandeCityRSE_Ch3:
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -679,11 +679,11 @@ Music_EverGrandeCityRSE_Ch3:
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	note G_, 2
@@ -691,7 +691,7 @@ Music_EverGrandeCityRSE_Ch3:
 Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note A#, 2
 	octave 3
@@ -699,13 +699,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note A#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A_, 2
 	octave 3
@@ -713,13 +713,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note A_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A_, 2
 	note A#, 2
 	note A_, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G#, 2
 	octave 3
@@ -727,13 +727,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note G#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note G_, 2
 	octave 3
@@ -741,13 +741,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note G_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note G_, 2
 	note G#, 2
 	note G_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 3
@@ -755,13 +755,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -769,13 +769,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note E_, 2
 	octave 3
@@ -783,13 +783,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note E_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	octave 3
@@ -797,13 +797,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note D#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	note G_, 2
 	note A_, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note A#, 2
 	octave 3
@@ -811,7 +811,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note A#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note A#, 2
 	octave 3
@@ -819,7 +819,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note A#, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A_, 2
 	octave 3
@@ -827,13 +827,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note A_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A_, 2
 	note A#, 2
 	note A_, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G#, 2
 	octave 3
@@ -841,13 +841,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note G#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note G_, 2
 	octave 3
@@ -855,13 +855,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note G_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note G_, 2
 	note G#, 2
 	note G_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 3
@@ -869,7 +869,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 3
@@ -877,7 +877,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -885,13 +885,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note E_, 2
 	octave 3
@@ -899,13 +899,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note E_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	octave 3
@@ -913,7 +913,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note E_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -921,7 +921,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note F_, 2
 	octave 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 3
@@ -929,13 +929,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 3
@@ -943,13 +943,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	note G_, 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -957,13 +957,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -971,13 +971,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	octave 3
@@ -985,13 +985,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	octave 3
@@ -999,13 +999,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	note D#, 2
 	note D_, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C#, 2
 	octave 3
@@ -1013,7 +1013,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note C#, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C#, 2
 	note C_, 2
@@ -1026,7 +1026,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note G#, 2
 	octave 2
 	note G#, 3
-	note __, 1
+	rest 1
 	note G#, 2
 	octave 1
 	note B_, 2
@@ -1034,14 +1034,14 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note B_, 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
 	octave 2
 	note F#, 2
 	note B_, 2
 
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 3
@@ -1049,13 +1049,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	note G#, 2
 	note A#, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note B_, 2
 	octave 3
@@ -1063,13 +1063,13 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note B_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note B_, 2
 	note A#, 2
 	note G#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	octave 3
@@ -1077,25 +1077,25 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
 	note F#, 2
 	note G#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	octave 3
@@ -1103,14 +1103,14 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
 	note F_, 2
 	note F#, 2
 
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note B_, 2
 	octave 3
@@ -1118,14 +1118,14 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	octave 2
 	note B_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 2
 	note F#, 2
 	note G_, 2
 
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G#, 2
 	octave 3
@@ -1133,7 +1133,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note D#, 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G#, 2
 	octave 3
@@ -1148,7 +1148,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note G#, 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	octave 1
 	note G#, 2
@@ -1167,7 +1167,7 @@ Music_EverGrandeCityRSE_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
 	note_type 12
-	note __, 6
+	rest 6
 Music_EverGrandeCityRSE_Ch4_loop:
 	note G#, 4
 	note G#, 2

@@ -141,7 +141,7 @@ Music_ProfOak_branch_f4e92:
 	note G#, 2
 	note A_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	volume_envelope 9, 1
 	octave 4
@@ -152,7 +152,7 @@ Music_ProfOak_branch_f4e92:
 	note B_, 2
 	note B_, 4
 	sound_loop 2, Music_ProfOak_branch_f4e92
-	note __, 6
+	rest 6
 	volume_envelope 11, 4
 Music_ProfOak_branch_f4ebf:
 	note C#, 6
@@ -207,21 +207,21 @@ Music_ProfOak_branch_f4ebf:
 Music_ProfOak_Ch3:
 	stereo_panning FALSE, TRUE
 	note_type 12, 1, 4
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	sound_call Music_ProfOak_branch_f4f3d
 Music_ProfOak_branch_f4f0d:
@@ -245,68 +245,68 @@ Music_ProfOak_branch_f4f1d:
 
 Music_ProfOak_branch_f4f3d:
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	sound_ret
 
 Music_ProfOak_branch_f4f4c:
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note D#, 2
 	sound_ret
 
 Music_ProfOak_branch_f4f5a:
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note C#, 2
 	sound_ret
 
 Music_ProfOak_branch_f4f69:
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 2
 	sound_ret

@@ -12,11 +12,11 @@ Music_Route37_Ch1:
 	pitch_offset 2
 	vibrato 16, 2, 2
 	note_type 12, 11, 3
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 Music_Route37_branch_ee969:
 	volume_envelope 11, 3
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 2
 	note B_, 2
@@ -40,7 +40,7 @@ Music_Route37_branch_ee969:
 	octave 3
 	note B_, 12
 	volume_envelope 11, 3
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 2
 	note B_, 2
@@ -93,9 +93,9 @@ Music_Route37_branch_ee9a5:
 	note F_, 4
 	stereo_panning TRUE, TRUE
 	sound_call Music_Route37_branch_ee9e9
-	note __, 4
+	rest 4
 	sound_call Music_Route37_branch_ee9e9
-	note __, 4
+	rest 4
 	sound_jump Music_Route37_branch_ee969
 
 Music_Route37_branch_ee9da:
@@ -190,7 +190,7 @@ Music_Route37_branch_eea24:
 	volume_envelope 11, 7
 	note D#, 8
 	volume_envelope 12, 4
-	note __, 4
+	rest 4
 	octave 3
 	note A_, 3
 	octave 4
@@ -219,7 +219,7 @@ Music_Route37_branch_eea24:
 	octave 4
 	note D#, 6
 	volume_envelope 12, 4
-	note __, 4
+	rest 4
 	octave 3
 	note A_, 3
 	octave 4
@@ -292,7 +292,7 @@ Music_Route37_Ch3:
 Music_Route37_branch_eeacc:
 	octave 2
 	note F#, 2
-	note __, 6
+	rest 6
 	sound_loop 4, Music_Route37_branch_eeacc
 Music_Route37_branch_eead3:
 	sound_call Music_Route37_branch_eeb32
@@ -358,7 +358,7 @@ Music_Route37_branch_eeb18:
 	sound_call Music_Route37_branch_eeb32
 Music_Route37_branch_eeb28:
 	note F#, 2
-	note __, 6
+	rest 6
 	sound_loop 4, Music_Route37_branch_eeb28
 	sound_jump Music_Route37_branch_eead3
 

@@ -31,10 +31,10 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	note D_, 15
 	volume_envelope 6, 7
 	note D_, 3
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 6
+	rest 16
+	rest 16
+	rest 16
+	rest 6
 	sound_jump Music_RoadToReversalMountainB2W2_Ch1
 
 Music_RoadToReversalMountainB2W2_Ch1_branch_1:
@@ -50,7 +50,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	pitch_offset 1
 	vibrato 28, 1, 2
 	note_type 6, 10, 4
-	note __, 4
+	rest 4
 	octave 3
 	note D_, 2
 	note C#, 2
@@ -156,8 +156,8 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note_type 12, 10, 7
 	note G#, 10
 	note A_, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 4
 	octave 3
 	note_type 3, 10, 4
 	note A_, 8
@@ -192,24 +192,24 @@ Music_RoadToReversalMountainB2W2_Ch3:
 	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note D_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note C_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_RoadToReversalMountainB2W2_Ch3
 
 Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	note D_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_RoadToReversalMountainB2W2_Ch4:

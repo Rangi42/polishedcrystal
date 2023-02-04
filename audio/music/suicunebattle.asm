@@ -252,7 +252,7 @@ Music_SuicuneBattle_branch_178bfc:
 	note B_, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 4
 	note D_, 2
 	note C_, 2
@@ -272,7 +272,7 @@ Music_SuicuneBattle_branch_178bfc:
 	note C_, 2
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note_type 12, 11, 6
 	octave 3
 	note G_, 10
@@ -280,7 +280,7 @@ Music_SuicuneBattle_branch_178bfc:
 	note C_, 2
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note_type 12, 11, 7
 	octave 3
 	note G_, 10
@@ -289,7 +289,7 @@ Music_SuicuneBattle_branch_178bfc:
 	note B_, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 4
 	note D_, 2
 	note C_, 2
@@ -456,20 +456,20 @@ Music_SuicuneBattle_branch_178bfc:
 	note F_, 8
 	note_type 12, 10, 7
 	note F_, 8
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note_type 12, 11, 2
-	note __, 4
+	rest 4
 	octave 3
 	note D_, 8
 	note D_, 8
@@ -488,16 +488,16 @@ Music_SuicuneBattle_branch_178bfc:
 	note F_, 8
 	note F_, 4
 	note E_, 8
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	vibrato 8, 2, 4
 	duty_cycle 2
 	note_type 12, 9, 6
@@ -672,7 +672,7 @@ Music_SuicuneBattle_branch_178e4e:
 	octave 3
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note B_, 4
 	note A_, 2
 	note G_, 2
@@ -687,7 +687,7 @@ Music_SuicuneBattle_branch_178e4e:
 	note F#, 2
 	note G_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note_type 12, 12, 7
 	octave 4
 	note C_, 10
@@ -695,7 +695,7 @@ Music_SuicuneBattle_branch_178e4e:
 	octave 4
 	note G_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note_type 12, 12, 7
 	octave 5
 	note C_, 10
@@ -703,7 +703,7 @@ Music_SuicuneBattle_branch_178e4e:
 	octave 4
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note B_, 4
 	note A_, 2
 	note G_, 2
@@ -1189,8 +1189,8 @@ Music_SuicuneBattle_branch_178e4e:
 
 Music_SuicuneBattle_Ch3:
 	note_type 12, 1, 8
-	note __, 16
-	note __, 4
+	rest 16
+	rest 4
 	octave 2
 	note A_, 4
 	note D_, 2
@@ -1582,24 +1582,24 @@ Music_SuicuneBattle_branch_179182:
 	note G_, 2
 	note F#, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
 	note G_, 6
 	note F#, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
 	note G_, 6
 	note B_, 2
@@ -1663,27 +1663,27 @@ Music_SuicuneBattle_branch_179182:
 	note B_, 8
 	octave 2
 	note C_, 16
-	note __, 4
+	rest 4
 	octave 1
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 2
-	note __, 2
-	note __, 4
+	rest 2
+	rest 4
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 2
-	note __, 2
-	note __, 4
+	rest 2
+	rest 4
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 2
-	note __, 2
-	note __, 4
+	rest 2
+	rest 4
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	octave 2
 	note F_, 2
@@ -1890,7 +1890,7 @@ Music_SuicuneBattle_branch_179182:
 	note D_, 2
 	note G#, 2
 	note A_, 4
-	note __, 4
+	rest 4
 	octave 1
 	note A_, 2
 	octave 2

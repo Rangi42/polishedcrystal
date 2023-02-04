@@ -255,141 +255,141 @@ Music_PokemonCenter_branch_ed6f6:
 	stereo_panning TRUE, FALSE
 	octave 3
 	note D_, 1
-	note __, 5
+	rest 5
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	sound_call Music_PokemonCenter_branch_ed76f
 	sound_call Music_PokemonCenter_branch_ed778
 	note F#, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 5
+	rest 5
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	sound_call Music_PokemonCenter_branch_ed76f
 	sound_call Music_PokemonCenter_branch_ed778
 	note D_, 1
-	note __, 5
+	rest 5
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	stereo_panning TRUE, TRUE
 	sound_call Music_PokemonCenter_branch_ed783
 	note G_, 1
-	note __, 5
+	rest 5
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 5
+	rest 5
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	sound_call Music_PokemonCenter_branch_ed783
 	note G_, 1
-	note __, 5
+	rest 5
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 5
+	rest 5
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_PokemonCenter_branch_ed6f6
 
 Music_PokemonCenter_branch_ed76f:
 	note E_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_PokemonCenter_branch_ed778:
 	note E_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_PokemonCenter_branch_ed783:
 	note F#, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_PokemonCenter_Ch4:

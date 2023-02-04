@@ -17,7 +17,7 @@ Music_MountPyreRSE_Ch1:
 	pitch_offset 2
 	vibrato 16, 2, 2
 	note_type 6, 6, 3
-	note __, 5
+	rest 5
 Music_MountPyreRSE_Ch1_loop_main:
 Music_MountPyreRSE_Ch1_loop_1:
 	octave 3
@@ -37,20 +37,20 @@ Music_MountPyreRSE_Ch1_loop_2:
 	note F_, 7
 	sound_loop 16, Music_MountPyreRSE_Ch1_loop_2
 	volume_envelope 10, 3
-	note __, 7
+	rest 7
 Music_MountPyreRSE_Ch1_loop_3:
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	sound_loop 7, Music_MountPyreRSE_Ch1_loop_3
 	note F#, 1
 	note G#, 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D#, 2
 	volume_envelope 10, 0
@@ -62,28 +62,28 @@ Music_MountPyreRSE_Ch1_loop_3:
 	note C_, 2
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note_type 8, 10, 3
 	note A_, 1
 	octave 3
@@ -94,15 +94,15 @@ Music_MountPyreRSE_Ch1_loop_3:
 	note C_, 1
 	note F#, 4
 	note_type 6, 10, 3
-	note __, 16
-	note __, 15
+	rest 16
+	rest 15
 	sound_jump Music_MountPyreRSE_Ch1_loop_main
 
 Music_MountPyreRSE_Ch2:
 	duty_cycle 2
 	vibrato 28, 1, 2
 	note_type 12, 10, 3
-	note __, 1
+	rest 1
 Music_MountPyreRSE_Ch2_loop_main:
 	duty_cycle 2
 	sound_call Music_MountPyreRSE_Ch2_branch_1
@@ -110,21 +110,21 @@ Music_MountPyreRSE_Ch2_loop_main:
 	sound_call Music_MountPyreRSE_Ch2_branch_2
 	sound_call Music_MountPyreRSE_Ch2_branch_2
 	note_type 6, 10, 3
-	note __, 10
+	rest 10
 Music_MountPyreRSE_Ch2_loop_1:
 	duty_cycle 0
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	sound_loop 7, Music_MountPyreRSE_Ch2_loop_1
 	note A#, 1
 	note B_, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note F#, 2
 	volume_envelope 10, 0
@@ -135,29 +135,29 @@ Music_MountPyreRSE_Ch2_loop_1:
 	octave 4
 	note D#, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note_type 8, 10, 3
 	octave 3
 	note C_, 1
@@ -168,7 +168,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note D#, 1
 	note A#, 4
 	note_type 12, 10, 3
-	note __, 14
+	rest 14
 	sound_jump Music_MountPyreRSE_Ch2_loop_main
 
 Music_MountPyreRSE_Ch2_branch_1:
@@ -360,14 +360,14 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note A_, 1
 	note A#, 4
 	note_type 6, 2, 4
-	note __, 13
-	note __, 13
+	rest 13
+	rest 13
 	sound_jump Music_MountPyreRSE_Ch3_loop_main
 
 Music_MountPyreRSE_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 1
+	rest 1
 ;	note C_, 8
 ;	note C#, 8
 ;	note D_, 8
@@ -393,10 +393,10 @@ Music_MountPyreRSE_Ch4_loop_3:
 Music_MountPyreRSE_Ch4_loop_4:
 	sound_call Music_MountPyreRSE_Ch4_branch_2
 	sound_loop 8, Music_MountPyreRSE_Ch4_loop_4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 8
+	rest 16
+	rest 16
+	rest 16
+	rest 8
 	note B_, 8
 	sound_jump Music_MountPyreRSE_Ch4_loop_main
 

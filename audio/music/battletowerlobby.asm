@@ -208,43 +208,43 @@ Music_BattleTowerLobby_branch_1795b1:
 	note B_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	octave 2
 	note B_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	octave 2
 	note B_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	note B_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	octave 2
 	note A_, 2
@@ -259,7 +259,7 @@ Music_BattleTowerLobby_branch_1795b1:
 	octave 3
 	note C#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
@@ -273,7 +273,7 @@ Music_BattleTowerLobby_branch_1795b1:
 	note B_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 2
 	note F#, 2
@@ -301,7 +301,7 @@ Music_BattleTowerLobby_Ch4:
 	toggle_noise 0
 Music_BattleTowerLobby_branch_179612:
 	note_type 12
-	note __, 2
+	rest 2
 	note F_, 4
 	note F_, 4
 	note F_, 2

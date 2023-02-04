@@ -14,7 +14,7 @@ Music_SurfRSE_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0
-	note __, 12
+	rest 12
 Music_SurfRSE_Ch1_loop:
 	volume_envelope 9, 1
 	octave 4
@@ -114,7 +114,7 @@ Music_SurfRSE_Ch1_loop:
 	note A_, 4
 	note F#, 4
 	note C#, 4
-	note __, 2
+	rest 2
 	note C#, 2
 	note F#, 2
 	octave 4
@@ -180,83 +180,83 @@ Music_SurfRSE_Ch1_loop:
 	note C#, 12
 	volume_envelope 9, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G#, 2
 	note A#, 2
 	note G#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	duty_cycle 0
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 7
 	note A#, 12
 	note G#, 12
@@ -449,19 +449,19 @@ Music_SurfRSE_Ch2_loop:
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note F#, 2
 	note F_, 2
@@ -475,13 +475,13 @@ Music_SurfRSE_Ch2_loop:
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F#, 6
 	volume_envelope 12, 2
@@ -513,9 +513,9 @@ Music_SurfRSE_Ch2_loop:
 	volume_envelope 9, 2
 	octave 4
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C#, 2
 	note G#, 2
@@ -529,9 +529,9 @@ Music_SurfRSE_Ch2_loop:
 	volume_envelope 9, 2
 	octave 4
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
 	note B_, 2
@@ -546,9 +546,9 @@ Music_SurfRSE_Ch2_loop:
 	volume_envelope 9, 2
 	octave 4
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 2
 	note A#, 2
@@ -575,7 +575,7 @@ Music_SurfRSE_Ch2_loop:
 	volume_envelope 12, 2
 	note G#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note C#, 2
@@ -585,7 +585,7 @@ Music_SurfRSE_Ch2_loop:
 	volume_envelope 12, 2
 	note G#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note G#, 6
 	volume_envelope 12, 2
@@ -663,13 +663,13 @@ Music_SurfRSE_Ch2_loop:
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
@@ -711,13 +711,13 @@ Music_SurfRSE_Ch2_loop:
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
 	volume_envelope 12, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
@@ -794,51 +794,51 @@ Music_SurfRSE_Ch2_loop:
 
 Music_SurfRSE_Ch3:
 	note_type 12, 0, 0
-	note __, 12
+	rest 12
 Music_SurfRSE_Ch3_loop:
 	duty_cycle 4
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 12
 	note A#, 7
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A_, 12
 	octave 3
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 12
 	note A#, 7
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A_, 12
 	duty_cycle 0
 	vibrato 8, 2, 4
 	octave 5
 	note G#, 5
-	note __, 1
+	rest 1
 	note G#, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F_, 6
 	note C#, 2
 	note F_, 2
 	note F#, 2
 	note G#, 5
-	note __, 1
+	rest 1
 	note G#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note G#, 6
 	note F#, 2
 	note F_, 2
@@ -867,23 +867,23 @@ Music_SurfRSE_Ch3_loop:
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 12
 	note A#, 7
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A_, 7
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note F#, 7
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	octave 3
 	note C_, 4
@@ -912,9 +912,9 @@ Music_SurfRSE_Ch3_loop:
 	note C_, 2
 	note C#, 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	duty_cycle 2
 	octave 3
 	note C#, 12
@@ -929,44 +929,44 @@ Music_SurfRSE_Ch3_loop:
 	note C#, 2
 	note D#, 4
 	note A#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	duty_cycle 0
 	octave 4
 	note A#, 5
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 5
 	note C_, 2
 	octave 4
 	note A#, 2
 	note G#, 5
-	note __, 1
+	rest 1
 	note F_, 2
 	note D#, 2
 	note F_, 2
 	note F#, 5
-	note __, 1
+	rest 1
 	note F_, 2
 	note D#, 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	duty_cycle 2
 	octave 5
 	note A#, 5
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 6
 	note C_, 2
 	octave 5
 	note A#, 2
 	note G#, 5
-	note __, 1
+	rest 1
 	note F_, 2
 	note F#, 2
 	note G#, 2
@@ -985,49 +985,49 @@ Music_SurfRSE_Ch3_loop:
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 11
-	note __, 1
+	rest 1
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 12
 	octave 2
 	note A#, 7
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 12
 	note G#, 7
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 12
 	octave 3
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 11
-	note __, 1
+	rest 1
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 12
 	octave 2
 	note A#, 7
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 12
 	note G#, 7
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 12
 	duty_cycle 0
 	volume_envelope 1, 0

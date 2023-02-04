@@ -39,7 +39,7 @@ Music_MountChimneyRSE_Ch1_loop_main:
 	note C#, 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note_type 8, 5, 2
 	duty_cycle 1
 Music_MountChimneyRSE_Ch1_loop_1:
@@ -142,7 +142,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note F_, 2
 	note F_, 2
 	note F_, 2
-	note __, 10
+	rest 10
 	note F_, 4
 	note D_, 2
 	note F_, 2
@@ -214,7 +214,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note D#, 1
 	note D#, 1
 	sound_call Music_MountChimneyRSE_blank
-	note __, 2
+	rest 2
 	sound_jump Music_MountChimneyRSE_Ch1_loop_main
 
 Music_MountChimneyRSE_Ch1_branch_1:
@@ -280,7 +280,7 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note B_, 1
 	note A_, 1
 	note G_, 16
-	note __, 3
+	rest 3
 	volume_envelope 10, 3
 	note D_, 2
 	note D#, 8
@@ -302,9 +302,9 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note D#, 16
 	volume_envelope 10, 7
 	note D#, 16
-	note __, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 16
+	rest 4
 	volume_envelope 10, 2
 	note A#, 2
 	note A_, 2
@@ -367,7 +367,7 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note B_, 1
 	note A_, 1
 	note G_, 16
-	note __, 3
+	rest 3
 	note D_, 2
 	note D#, 8
 	octave 3
@@ -387,12 +387,12 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note D#, 16
 	volume_envelope 10, 7
 	note D#, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_ret
 
 Music_MountChimneyRSE_blank:
-	note __, 16
+	rest 16
 	sound_loop 8, Music_MountChimneyRSE_blank
 	sound_ret
 
@@ -475,7 +475,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	octave 2
 	volume_envelope 3, 0
 	note A#, 1
-	note __, 3
+	rest 3
 	volume_envelope 12, 2
 	octave 3
 	note A#, 4
@@ -573,7 +573,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	note G#, 1
 	sound_call Music_MountChimneyRSE_blank
 	duty_cycle 3
-	note __, 2
+	rest 2
 	sound_jump Music_MountChimneyRSE_Ch2_loop
 
 Music_MountChimneyRSE_Ch2_branch_1:
@@ -788,22 +788,22 @@ Music_MountChimneyRSE_Ch3:
 	vibrato 18, 1, 5
 	octave 2
 	note D#, 4
-	note __, 12
+	rest 12
 	octave 1
 	note A#, 4
-	note __, 8
+	rest 8
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D#, 4
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 4
-	note __, 4
+	rest 4
 	note D#, 4
-	note __, 4
+	rest 4
 	octave 4
 	note C#, 1
 	octave 3
@@ -823,29 +823,29 @@ Music_MountChimneyRSE_Ch3_loop:
 	note F#, 3
 	octave 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 2
 	note D#, 4
 	note F#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A#, 3
 	note F_, 3
 	octave 2
 	note F_, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
 	note C#, 4
 	note F#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A#, 4
 	octave 1
@@ -853,55 +853,55 @@ Music_MountChimneyRSE_Ch3_loop:
 	note E_, 3
 	octave 2
 	note E_, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
 	note C#, 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 3
 	note D#, 3
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
 	note C_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 4
 	note F#, 6
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note F_, 2
 	note G#, 2
 	octave 2
 	note C_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	octave 1
 	note E_, 6
 	note B_, 2
-	note __, 4
+	rest 4
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note D_, 2
 	note F_, 2
@@ -912,20 +912,20 @@ Music_MountChimneyRSE_Ch3_loop:
 	note F_, 2
 	note G#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 1
-	note __, 1
+	rest 1
 	sound_call Music_MountChimneyRSE_Ch3_branch_1
 	sound_call Music_MountChimneyRSE_Ch3_branch_1
 	sound_call Music_MountChimneyRSE_Ch3_branch_2
@@ -934,48 +934,48 @@ Music_MountChimneyRSE_Ch3_loop:
 	note G#, 4
 	octave 1
 	note G#, 4
-	note __, 4
+	rest 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 4
 	octave 1
 	note G#, 4
-	note __, 4
+	rest 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 4
 	octave 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 4
 	octave 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 4
 	octave 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 4
 	octave 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	sound_call Music_MountChimneyRSE_blank
 	sound_jump Music_MountChimneyRSE_Ch3_loop
 
@@ -984,138 +984,138 @@ Music_MountChimneyRSE_Ch3_branch_1:
 	note G#, 6
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 4
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 6
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 4
 	octave 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 4
 	octave 1
 	note G#, 6
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 4
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 6
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 4
 	octave 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note D#, 6
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note D#, 4
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note D#, 6
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note D#, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note G_, 4
 	note D#, 6
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note D#, 4
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note D#, 6
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note D#, 2
-	note __, 4
+	rest 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note D#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	note G_, 1
 	note A#, 1
@@ -1128,19 +1128,19 @@ Music_MountChimneyRSE_Ch3_branch_2:
 	note G#, 4
 	octave 1
 	note G#, 4
-	note __, 4
+	rest 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note B_, 1
 	octave 2
@@ -1366,7 +1366,7 @@ Music_MountChimneyRSE_Ch4_loop:
 	note C#, 1
 	note E_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note E_, 2
 	note D_, 2

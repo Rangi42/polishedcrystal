@@ -15,42 +15,42 @@ Music_Surf_branch_f519e:
 	volume_envelope 7, 3
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	volume_envelope 7, 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	volume_envelope 7, 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	volume_envelope 9, 3
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	volume_envelope 10, 7
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	volume_envelope 11, 7
-	note __, 1
+	rest 1
 	note A#, 2
 	note G#, 2
 	note F_, 2
@@ -123,81 +123,81 @@ Music_Surf_branch_f5233:
 	octave 3
 	note D#, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note_type 6, 10, 7
 	octave 3
 	note A#, 1
@@ -348,17 +348,17 @@ Music_Surf_branch_f5321:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 3
+	rest 3
 	sound_loop 3, Music_Surf_branch_f5321
 	octave 1
 	note A#, 4
 	octave 2
 	note F_, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 3
+	rest 3
 Music_Surf_branch_f5333:
 	note D#, 4
 	note G_, 2
@@ -557,7 +557,7 @@ Music_Surf_branch_f540c:
 	note G#, 4
 	volume_envelope 1, 2
 	note A#, 12
-	note __, 4
+	rest 4
 	note G#, 4
 	note G_, 4
 	note_type 6, 1, 2
@@ -582,7 +582,7 @@ Music_Surf_branch_f540c:
 	note F_, 8
 	note_type 12, 1, 4
 	note A#, 12
-	note __, 4
+	rest 4
 	note G#, 4
 	note G_, 4
 	note_type 6, 1, 4
@@ -690,32 +690,32 @@ Music_Surf_branch_f54c8:
 	octave 3
 	note D#, 4
 	note G_, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 3
+	rest 3
 	note D#, 4
 	note G_, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 3
+	rest 3
 	note C#, 4
 	note G_, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 3
+	rest 3
 	note C#, 4
 	note G_, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 3
+	rest 3
 	note C_, 4
 	note F_, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note C_, 4
 	note F_, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 3
+	rest 3
 	sound_ret

@@ -14,7 +14,7 @@ Music_SummoningDanceHGSS_Ch1:
 	duty_cycle 0
 	note_type 12, 8, 5
 	octave 3
-	note __, 4
+	rest 4
 	note E_, 2
 	note A_, 2
 	note B_, 4
@@ -62,7 +62,7 @@ Music_SummoningDanceHGSS_Ch2:
 	vibrato 16, 2, 4
 	note_type 12, 10, 5
 	octave 3
-	note __, 4
+	rest 4
 	note B_, 2
 	octave 4
 	note D_, 2

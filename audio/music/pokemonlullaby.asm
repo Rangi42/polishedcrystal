@@ -35,7 +35,7 @@ Music_PokemonLullaby_branch_f6d8c:
 	stereo_panning TRUE, FALSE
 	note G_, 8
 	stereo_panning TRUE, TRUE
-	note __, 2
+	rest 2
 	note G_, 2
 	note G_, 2
 	note B_, 2
@@ -59,8 +59,8 @@ Music_PokemonLullaby_Ch2:
 	duty_cycle 0
 	note_type 12, 11, 4
 Music_PokemonLullaby_branch_f6dcc:
-	note __, 16
-	note __, 10
+	rest 16
+	rest 10
 	octave 4
 	note G_, 2
 	note F#, 2
@@ -101,7 +101,7 @@ Music_PokemonLullaby_branch_f6dcc:
 	volume_envelope 11, 7
 	note D#, 2
 	note E_, 16
-	note __, 14
+	rest 14
 	sound_jump Music_PokemonLullaby_branch_f6dcc
 
 Music_PokemonLullaby_Ch3:

@@ -57,21 +57,21 @@ Music_Route1_Ch1:
 	note D_, 2
 	note D_, 2
 	volume_envelope 8, 3
-	note __, 2
+	rest 2
 Music_Route1_branch_ec04a:
 	volume_envelope 8, 3
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note A_, 2
-	note __, 4
+	rest 4
 	octave 4
 	note D_, 2
 	octave 3
 	note A_, 2
-	note __, 2
-	note __, 2
+	rest 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -84,19 +84,19 @@ Music_Route1_branch_ec04a:
 	note G_, 2
 	note G_, 2
 	volume_envelope 8, 3
-	note __, 2
-	note __, 2
+	rest 2
+	rest 2
 	octave 4
 	note C#, 2
 	octave 3
 	note A_, 2
-	note __, 4
+	rest 4
 	octave 4
 	note C#, 2
 	octave 3
 	note A_, 2
-	note __, 2
-	note __, 2
+	rest 2
+	rest 2
 	octave 4
 	note C#, 2
 	note C#, 1
@@ -108,13 +108,13 @@ Music_Route1_branch_ec04a:
 	note A_, 2
 	octave 4
 	note D_, 2
-	note __, 2
-	note __, 2
+	rest 2
+	rest 2
 	octave 3
 	note F#, 1
 	note G_, 1
 	note A_, 4
-	note __, 2
+	rest 2
 	note D_, 1
 	note E_, 1
 	note F#, 2
@@ -135,7 +135,7 @@ Music_Route1_branch_ec04a:
 	octave 3
 	note F#, 1
 	note E_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note F#, 1
 	note G_, 6
@@ -199,7 +199,7 @@ Music_Route1_branch_ec04a:
 	octave 5
 	note D_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	sound_jump Music_Route1_branch_ec04a
 
 Music_Route1_Ch2:
@@ -257,7 +257,7 @@ Music_Route1_branch_ec112:
 	note E_, 1
 	note F#, 1
 	note D_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note D_, 1
 	note E_, 1
@@ -298,7 +298,7 @@ Music_Route1_branch_ec112:
 	note F#, 1
 	note G_, 1
 	sound_call Music_Route1_branch_ec198
-	note __, 4
+	rest 4
 	note F#, 1
 	note G_, 1
 	sound_call Music_Route1_branch_ec1aa
@@ -379,41 +379,41 @@ Music_Route1_Ch3:
 	stereo_panning TRUE, TRUE
 	vibrato 16, 2, 3
 	note_type 12, 2, 5
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	octave 3
 	note A_, 1
@@ -452,75 +452,75 @@ Music_Route1_Ch3:
 	note G_, 1
 	note F#, 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 Music_Route1_branch_ec20c:
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 2
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 2
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	octave 4
@@ -533,22 +533,22 @@ Music_Route1_branch_ec20c:
 	note E_, 1
 	octave 2
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	octave 4
@@ -561,29 +561,29 @@ Music_Route1_branch_ec20c:
 	note E_, 2
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 2
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 2
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
 	note B_, 1
@@ -599,9 +599,9 @@ Music_Route1_branch_ec20c:
 	note D_, 2
 	octave 4
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 4
 	note F#, 4
@@ -639,7 +639,7 @@ Music_Route1_branch_ec20c:
 	note D_, 2
 	octave 5
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	sound_jump Music_Route1_branch_ec20c

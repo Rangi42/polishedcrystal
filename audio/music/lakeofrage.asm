@@ -140,7 +140,7 @@ Music_LakeOfRage_branch_ee75e:
 	note C_, 1
 	note E_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note G_, 1
 	volume_envelope 12, 5
@@ -188,13 +188,13 @@ Music_LakeOfRage_Ch3:
 	note_type 12, 1, 6
 	octave 3
 	note G_, 4
-	note __, 2
+	rest 2
 	note G_, 4
-	note __, 6
+	rest 6
 	note F#, 4
-	note __, 2
+	rest 2
 	note F#, 4
-	note __, 2
+	rest 2
 	note E_, 4
 Music_LakeOfRage_branch_ee7d0:
 	octave 3

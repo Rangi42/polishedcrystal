@@ -25,14 +25,14 @@ Music_RocketTheme_branch_f768b:
 	sound_call Music_RocketTheme_branch_f758a
 	octave 4
 	note F#, 1
-	note __, 1
+	rest 1
 	volume_envelope 5, 3
 	sound_call Music_RocketTheme_branch_f750c
 	volume_envelope 12, 3
 	sound_call Music_RocketTheme_branch_f750c
 	volume_envelope 14, 3
 	sound_call Music_RocketTheme_branch_f750c
-	note __, 16
+	rest 16
 	duty_cycle 0
 	note_type 6, 11, 3
 	vibrato 6, 6, 4
@@ -41,9 +41,9 @@ Music_RocketTheme_branch_f768b:
 	note F_, 1
 	note F#, 3
 	note F_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note D_, 2
 	note D#, 2
@@ -54,11 +54,11 @@ Music_RocketTheme_branch_f768b:
 	note A#, 2
 	octave 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note D_, 4
-	note __, 4
+	rest 4
 	note D#, 4
-	note __, 4
+	rest 4
 	note D#, 2
 	note F#, 2
 	sound_call Music_RocketTheme_branch_f7727
@@ -66,9 +66,9 @@ Music_RocketTheme_branch_f768b:
 	note F#, 1
 	note G_, 3
 	note F_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note D_, 2
 	note D#, 2
@@ -79,28 +79,28 @@ Music_RocketTheme_branch_f768b:
 	note A#, 2
 	octave 3
 	note C_, 2
-	note __, 4
+	rest 4
 	note D_, 4
-	note __, 4
+	rest 4
 	note D#, 4
 	note F_, 2
 	note E_, 2
 	note D#, 2
 	note D_, 2
 Music_RocketTheme_branch_f76ef:
-	note __, 4
+	rest 4
 	note F_, 2
-	note __, 14
+	rest 14
 	note F#, 2
-	note __, 10
+	rest 10
 	sound_loop 3, Music_RocketTheme_branch_f76ef
-	note __, 4
+	rest 4
 	note F_, 2
-	note __, 14
+	rest 14
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note C_, 2
 Music_RocketTheme_branch_f7701:
@@ -122,36 +122,36 @@ Music_RocketTheme_branch_f7713:
 	note C_, 2
 	sound_loop 4, Music_RocketTheme_branch_f7713
 	note_type 12, 11, 3
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 	note F_, 2
 	note C_, 1
 	note D_, 1
 	sound_jump Music_RocketTheme_branch_f768b
 
 Music_RocketTheme_branch_f7727:
-	note __, 7
+	rest 7
 	note B_, 1
 	octave 4
 	note C_, 2
-	note __, 6
+	rest 6
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 2
-	note __, 6
+	rest 6
 	octave 4
 	note D#, 12
 	note D_, 8
 	octave 3
 	note A#, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 10
+	rest 10
 	sound_ret
 
 Music_RocketTheme_Ch2:
@@ -169,7 +169,7 @@ Music_RocketTheme_branch_f774b:
 	sound_call Music_RocketTheme_branch_f758a
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	sound_call Music_RocketTheme_branch_f7554
 	volume_envelope 5, 3
 	sound_call Music_RocketTheme_branch_f7568
@@ -191,7 +191,7 @@ Music_RocketTheme_branch_f774b:
 	vibrato 6, 6, 4
 	note_type 12, 11, 7
 	note A#, 12
-	note __, 2
+	rest 2
 	octave 5
 	note C_, 1
 	note D_, 1
@@ -221,22 +221,22 @@ Music_RocketTheme_branch_f774b:
 	note C#, 1
 	note C_, 12
 	note F_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	sound_call Music_RocketTheme_branch_f781c
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 8
-	note __, 4
+	rest 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	octave 3
 	note G_, 2
@@ -292,30 +292,30 @@ Music_RocketTheme_branch_f774b:
 
 Music_RocketTheme_branch_f7800:
 	note_type 6, 11, 7
-	note __, 7
+	rest 7
 	octave 4
 	note D_, 1
 	note D#, 2
-	note __, 6
+	rest 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 6
+	rest 6
 	note F#, 12
 	note F_, 8
 	note D#, 2
-	note __, 6
+	rest 6
 	note C_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_RocketTheme_branch_f781c:
@@ -334,7 +334,7 @@ Music_RocketTheme_Ch3:
 	stereo_panning TRUE, FALSE
 	vibrato 4, 2, 2
 	note_type 12, 1, 4
-	note __, 2
+	rest 2
 Music_RocketTheme_branch_f782f:
 	note_type 12, 1, 4
 	sound_call Music_RocketTheme_branch_f75bf
@@ -356,97 +356,97 @@ Music_RocketTheme_branch_f782f:
 	sound_call Music_RocketTheme_branch_f75cc
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
 	note G_, 1
 	note E_, 1
 	note C#, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	octave 3
 	note A_, 1
 	note F#, 1
 	note D#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	sound_jump Music_RocketTheme_branch_f782f
 
 Music_RocketTheme_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 2
+	rest 2
 Music_RocketTheme_branch_f78c3:
 	sound_call Music_RocketTheme_branch_f765c
 	sound_call Music_RocketTheme_branch_f7664

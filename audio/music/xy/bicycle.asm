@@ -17,28 +17,28 @@ BicycleXY_Ch1::
 	note_type 12, 10, 7
 
 BicycleXY_Ch1_sub_0:
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 4
 	octave 2
 	note G#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	note E_, 2
 	note F#, 4
 	note A_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 4
 	note A_, 2
 	note A_, 2
 	note A_, 2
-	note __, 16
+	rest 16
 	note G#, 5
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 3
+	rest 3
 	note G#, 6
 	octave 3
 	note A_, 6
@@ -47,12 +47,12 @@ BicycleXY_Ch1_sub_0:
 	note G#, 6
 	note E_, 6
 	note G#, 4
-	note __, 16
+	rest 16
 	octave 2
 	note E_, 5
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 2
 	note D#, 2
@@ -60,7 +60,7 @@ BicycleXY_Ch1_sub_0:
 	octave 2
 	note G#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	octave 3
 	note E_, 2
@@ -78,9 +78,9 @@ BicycleXY_Ch1_sub_0:
 	note G#, 4
 	octave 2
 	note G#, 5
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 3
+	rest 3
 	note G#, 6
 	octave 3
 	note A_, 6
@@ -88,64 +88,64 @@ BicycleXY_Ch1_sub_0:
 	note A_, 4
 	note G#, 6
 	note E_, 8
-	note __, 2
+	rest 2
 	note E_, 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note D#, 10
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 6
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note B_, 6
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	note G#, 10
-	note __, 6
+	rest 6
 	note G#, 8
 	note B_, 4
 	sound_jump BicycleXY_Ch1_sub_0
@@ -164,7 +164,7 @@ BicycleXY_Ch2_sub_0:
 	note E_, 2
 	octave 3
 	note G#, 8
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -185,14 +185,14 @@ BicycleXY_Ch2_sub_0:
 	vibrato 0, 2, 3
 	note E_, 5
 	vibrato 16, 0, 0
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note D_, 6
 	note C#, 6
 	note D#, 6
 	note C#, 3
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 6
 	octave 4
@@ -206,13 +206,13 @@ BicycleXY_Ch2_sub_0:
 	note F#, 4
 	note E_, 4
 	note F#, 5
-	note __, 1
+	rest 1
 	note F#, 1
 	duty_cycle 3
 	note_type 6, 12, 7
 	vibrato 8, 2, 3
 	octave 5
-	note __, 5
+	rest 5
 	note D#, 1
 	note_type 12, 12, 7
 	note E_, 2
@@ -221,7 +221,7 @@ BicycleXY_Ch2_sub_0:
 	octave 4
 	note G#, 8
 	note_type 6, 12, 7
-	note __, 3
+	rest 3
 	octave 5
 	note D#, 1
 	note_type 12, 12, 7
@@ -239,24 +239,24 @@ BicycleXY_Ch2_sub_0:
 	note F#, 4
 	note G#, 4
 	note E_, 5
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note D_, 6
 	note C#, 6
 	note D#, 6
 	note C#, 3
-	note __, 1
+	rest 1
 	octave 4
 	note B_, 6
 	octave 5
 	note E_, 8
-	note __, 2
+	rest 2
 	note E_, 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note D#, 10
 	vibrato 16, 2, 3
@@ -272,7 +272,7 @@ BicycleXY_Ch2_sub_0:
 	note A_, 2
 	note G#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 6
 	note G#, 8
 	note E_, 4
@@ -282,7 +282,7 @@ BicycleXY_Ch2_sub_0:
 	note E_, 2
 	note F#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 6
 	note C#, 8
 	octave 4
@@ -294,7 +294,7 @@ BicycleXY_Ch2_sub_0:
 	octave 4
 	note B_, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	octave 5
 	note C_, 10
@@ -312,19 +312,19 @@ BicycleXY_Ch3::
 	note_type 12, 1, 6
 
 BicycleXY_Ch3_sub_0:
-	note __, 6
+	rest 6
 
 	octave 2
 	note E_, 2
 	note E_, 3
-	note __, 1
+	rest 1
 	note B_, 4
 	note E_, 2
 	note F#, 2
 	note G#, 2
 	note F#, 2
 	note F#, 3
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 4
 	octave 2
@@ -343,14 +343,14 @@ BicycleXY_Ch3_sub_0:
 	note C#, 2
 	octave 3
 	note C#, 5
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 6
 	note A_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 4
 	octave 2
@@ -377,19 +377,19 @@ BicycleXY_Ch3_sub_0:
 	note F#, 2
 	note F#, 2
 	note B_, 5
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 9
+	rest 9
 	note E_, 2
 	note E_, 3
-	note __, 1
+	rest 1
 	note B_, 4
 	note E_, 2
 	note F#, 2
 	note G#, 2
 	note F#, 2
 	note F#, 3
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 4
 	octave 2
@@ -408,14 +408,14 @@ BicycleXY_Ch3_sub_0:
 	note C#, 2
 	octave 3
 	note C#, 5
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 6
 	note A_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 4
 	octave 2
@@ -433,58 +433,58 @@ BicycleXY_Ch3_sub_0:
 	octave 2
 	note F#, 6
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 8
 	note F#, 10
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	note A_, 2
 	note G#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 6
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	note A_, 2
 	note G#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 6
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	note A_, 2
 	note G#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 4
 	octave 3
 	note D#, 2
@@ -504,7 +504,7 @@ BicycleXY_Ch3_sub_0:
 BicycleXY_Ch4::
 	toggle_noise 3
 	note_type 12
-	note __, 6
+	rest 6
 
 BicycleXY_Ch4_0:
 	sound_call BicycleXY_Ch4_sub_0
@@ -521,10 +521,10 @@ BicycleXY_Ch4_0:
 	sound_call BicycleXY_Ch4_sub_1
 	sound_call BicycleXY_Ch4_sub_1
 	sound_call BicycleXY_Ch4_sub_1
-	note __, 4
+	rest 4
 	note A#, 4
 	note B_, 8
-	note __, 4
+	rest 4
 	note A#, 4
 	note B_, 8
 	sound_jump BicycleXY_Ch4_0

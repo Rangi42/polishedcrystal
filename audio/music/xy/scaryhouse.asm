@@ -16,7 +16,7 @@ Music_ScaryHouseXY_Ch1:
 	duty_cycle 2
 	tempo 188
 	octave 4
-	note __, 1
+	rest 1
 	note B_, 4
 	note E_, 4
 	note B_, 4
@@ -271,6 +271,6 @@ Music_ScaryHouseXY_Ch3_loop_1:
 	octave 4
 	note E_, 2
 	note A#, 4
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	sound_jump Music_ScaryHouseXY_Ch3_loop_main

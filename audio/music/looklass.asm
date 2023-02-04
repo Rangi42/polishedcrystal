@@ -13,7 +13,7 @@ Music_LookLass_Ch1:
 	note_type 12, 12, 7
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note B_, 14
 	stereo_panning FALSE, TRUE
@@ -34,7 +34,7 @@ Music_LookLass_Ch2:
 	stereo_panning TRUE, FALSE
 	duty_cycle 0
 	note_type 12, 8, 3
-	note __, 16
+	rest 16
 Music_LookLass_branch_ed7d5:
 	volume_envelope 9, 2
 	octave 2
@@ -50,7 +50,7 @@ Music_LookLass_branch_ed7d5:
 
 Music_LookLass_Ch3:
 	note_type 12, 1, 0
-	note __, 8
+	rest 8
 	octave 6
 	note E_, 2
 	note D#, 2
@@ -59,14 +59,14 @@ Music_LookLass_Ch3:
 Music_LookLass_branch_ed7ef:
 	octave 5
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C_, 2
 	octave 5
@@ -79,15 +79,15 @@ Music_LookLass_branch_ed7ef:
 	note C#, 2
 	octave 5
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note F#, 2
 	note E_, 2

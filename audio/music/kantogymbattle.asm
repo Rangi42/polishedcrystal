@@ -330,7 +330,7 @@ Music_KantoGymBattle_branch_ec894:
 	volume_envelope 11, 7
 	note D#, 8
 	volume_envelope 10, 2
-	note __, 6
+	rest 6
 	octave 5
 	note E_, 4
 	note E_, 4
@@ -339,7 +339,7 @@ Music_KantoGymBattle_branch_ec894:
 	note D#, 8
 	volume_envelope 10, 7
 	note D#, 8
-	note __, 12
+	rest 12
 	volume_envelope 12, 5
 	octave 3
 	note A#, 4
@@ -439,50 +439,50 @@ Music_KantoGymBattle_Ch3:
 	note_type 12, 1, -1
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 Music_KantoGymBattle_branch_ec934:
 	note B_, 3
-	note __, 1
+	rest 1
 	sound_loop 6, Music_KantoGymBattle_branch_ec934
 	note B_, 2
 	note G#, 2
 	note B_, 2
 Music_KantoGymBattle_branch_ec93d:
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	sound_loop 2, Music_KantoGymBattle_branch_ec93d
 Music_KantoGymBattle_branch_ec965:
@@ -524,22 +524,22 @@ Music_KantoGymBattle_branch_ec987:
 	note B_, 2
 Music_KantoGymBattle_branch_ec992:
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	sound_loop 2, Music_KantoGymBattle_branch_ec992
 Music_KantoGymBattle_branch_ec9a8:

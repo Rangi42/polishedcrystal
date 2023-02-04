@@ -28,29 +28,29 @@ Music_Lighthouse_branch_ee584:
 	note A_, 4
 	note B_, 4
 	note G#, 1
-	note __, 7
+	rest 7
 	octave 3
 	note C_, 4
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 8
 	octave 2
@@ -69,19 +69,19 @@ Music_Lighthouse_branch_ee584:
 	note F#, 2
 	note A_, 2
 	note G#, 1
-	note __, 7
+	rest 7
 	octave 3
 	note C_, 12
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 3
@@ -143,18 +143,18 @@ Music_Lighthouse_branch_ee604:
 	octave 4
 	note C#, 8
 	note C_, 1
-	note __, 7
+	rest 7
 	octave 3
 	note G#, 16
 	volume_envelope 12, 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 12
 	note F#, 2
 	note G#, 2
@@ -162,17 +162,17 @@ Music_Lighthouse_branch_ee604:
 	octave 4
 	note C#, 8
 	note C_, 1
-	note __, 7
+	rest 7
 	note D#, 12
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note E_, 12
 	note D#, 2
@@ -217,75 +217,75 @@ Music_Lighthouse_Ch3:
 Music_Lighthouse_branch_ee65b:
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 Music_Lighthouse_branch_ee664:
 	note G#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	sound_loop 2, Music_Lighthouse_branch_ee664
 	note G#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 3
 	note C_, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 Music_Lighthouse_branch_ee683:
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	sound_loop 2, Music_Lighthouse_branch_ee683
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 2
 	note F#, 2
 Music_Lighthouse_branch_ee69b:
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	sound_loop 8, Music_Lighthouse_branch_ee69b
 	sound_jump Music_Lighthouse_branch_ee65b
 

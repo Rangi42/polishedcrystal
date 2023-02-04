@@ -22,32 +22,32 @@ Music_WildBattleGo_Ch1:
 	octave 4
 	note C#, 1
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 5
+	rest 5
 Music_WildBattleGo_Ch1_loop:
 	note_type 12, 10, 3
 	note D#, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note C#, 4
-	note __, 2
+	rest 2
 	duty_cycle_pattern 2, 2, 2, 2
 	sound_call Music_WildBattleGo_Ch1_ditty1
 	sound_call Music_WildBattleGo_Ch1_ditty2
@@ -56,7 +56,7 @@ Music_WildBattleGo_Ch1_loop:
 	octave 2
 	note A#, 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 6
 	note A#, 4
 	note F_, 4
@@ -70,7 +70,7 @@ Music_WildBattleGo_Ch1_loop:
 	sound_call Music_WildBattleGo_Ch1_ditty2
 	sound_call Music_WildBattleGo_Ch1_ditty1
 	sound_call Music_WildBattleGo_Ch1_ditty1
-	note __, 4
+	rest 4
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 15, 3
 	vibrato 5, 1, 3
@@ -116,7 +116,7 @@ Music_WildBattleGo_Ch1_loop_2:
 Music_WildBattleGo_Ch1_ditty1:
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 6
 	note D_, 4
 	note D_, 4
@@ -131,7 +131,7 @@ Music_WildBattleGo_Ch1_ditty1:
 Music_WildBattleGo_Ch1_ditty2:
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 6
 	note C_, 4
 	note C_, 4
@@ -145,26 +145,26 @@ Music_WildBattleGo_Ch1_ditty2:
 
 Music_WildBattleGo_Ch2:
 	note_type 12, 0, 0
-	note __, 4
+	rest 4
 	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 10, 3
 	octave 5
 	sound_call Music_WildBattleGo_Ch2_ditty2
 Music_WildBattleGo_Ch2_loop:
 	note D#, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 5
+	rest 5
 	note A_, 1
-	note __, 3
+	rest 3
 	note C#, 4
-	note __, 2
+	rest 2
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 8
 	vibrato 8, 1, 3
@@ -256,31 +256,31 @@ Music_WildBattleGo_Ch2_loop:
 	note G_, 8
 	note F#, 8
 Music_WildBattleGo_Ch2_loop_1:
-	note __, 16
+	rest 16
 	sound_loop 8, Music_WildBattleGo_Ch2_loop_1
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 5
 	note D_, 2
-	note __, 10
+	rest 10
 	note D_, 2
-	note __, 10
+	rest 10
 	note D_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 10
+	rest 10
 	note D_, 2
 	note_type 12, 10, 8
-	note __, 9
+	rest 9
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 9
+	rest 9
 	sound_call Music_WildBattleGo_Ch2_ditty2
 	sound_jump Music_WildBattleGo_Ch2_loop
 
@@ -298,15 +298,15 @@ Music_WildBattleGo_Ch2_ditty1:
 
 Music_WildBattleGo_Ch2_ditty2:
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 5
+	rest 5
 	sound_ret
 
 Music_WildBattleGo_Ch3:
@@ -314,7 +314,7 @@ Music_WildBattleGo_Ch3:
 	octave 3
 	note_type 12, 1, 6
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 Music_WildBattleGo_Ch3_loop_1:
 	note D_, 2
@@ -433,18 +433,18 @@ Music_WildBattleGo_Ch3_loop_8:
 
 Music_WildBattleGo_Ch4:
 	note_type 12
-	note __, 4
+	rest 4
 	toggle_noise 3
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 Music_WildBattleGo_Ch4_loop:
 	note F#, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	note G_, 1
 Music_WildBattleGo_Ch4_loop_1:
@@ -469,9 +469,9 @@ Music_WildBattleGo_Ch4_loop_1:
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note F#, 1
 	note C#, 1
@@ -482,40 +482,40 @@ Music_WildBattleGo_Ch4_loop_2:
 	sound_loop 9, Music_WildBattleGo_Ch4_loop_2
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	sound_jump Music_WildBattleGo_Ch4_loop
 
 Music_WildBattleGo_Ch4_ditty1:
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	note C#, 1
 	sound_ret
 
 Music_WildBattleGo_Ch4_ditty2:
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_WildBattleGo_Ch4_ditty3:
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	note G_, 1
 	sound_ret

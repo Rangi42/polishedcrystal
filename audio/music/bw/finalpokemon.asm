@@ -333,7 +333,7 @@ Music_FinalPokemonBW_Ch1_loop:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 2
 	octave 3
@@ -473,7 +473,7 @@ Music_FinalPokemonBW_Ch2_loop:
 	note D_, 1
 	note D_, 1
 	sound_call Music_FinalPokemonBW_Ch2_branch_2
-	note __, 2
+	rest 2
 	note F_, 4
 	note E_, 1
 	note D#, 1
@@ -660,112 +660,112 @@ Music_FinalPokemonBW_Ch3:
 	note_type 3, 1, 6
 	octave 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note_type 12, 1, 6
 	note D_, 16
 	note_type 3, 1, 6
 	sound_call Music_FinalPokemonBW_Ch3_branch_1
 	note G_, 3
-	note __, 5
+	rest 5
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 3
-	note __, 5
+	rest 5
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 7
-	note __, 1
+	rest 1
 	sound_call Music_FinalPokemonBW_Ch3_branch_1
 	note G_, 3
-	note __, 5
+	rest 5
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 16
 	note D_, 4
 Music_FinalPokemonBW_Ch3_loop:
 	sound_call Music_FinalPokemonBW_Ch3_branch_2
 	note A_, 4 ;
-	note __, 4
+	rest 4
 	note D_, 4
 	octave 3
 	note D_, 4
-	note __, 8
+	rest 8
 	octave 2
 	note D_, 8
 	note D#, 4
-	note __, 4
+	rest 4
 	note C_, 4
 	note G_, 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note_type 4, 1, 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note_type 3, 1, 6
 	sound_call Music_FinalPokemonBW_Ch3_branch_2
 	note D#, 4
-	note __, 4
+	rest 4
 	note C_, 4
 	note D#, 4
 	note G_, 8
 	note D#, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	note C_, 4
 	note E_, 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 4
+	rest 4
 	note A_, 8
 	sound_call Music_FinalPokemonBW_Ch3_branch_2
 	note A_, 16
 	note A_, 12
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 12
 	note D_, 2
 	note D#, 2
 	note F_, 11
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 8
+	rest 8
 	note G_, 4
-	note __, 8
+	rest 8
 	note G_, 4
-	note __, 4
+	rest 4
 	note F_, 4
 	note C_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 8
+	rest 8
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 4
 	note G_, 4
-	note __, 8
+	rest 8
 	note G_, 4
-	note __, 8
+	rest 8
 	note G_, 4
-	note __, 4
+	rest 4
 	note D#, 4
-	note __, 8
+	rest 8
 	note D#, 4
 	note F_, 16
 	sound_call Music_FinalPokemonBW_Ch3_branch_3
@@ -776,11 +776,11 @@ Music_FinalPokemonBW_Ch3_loop:
 	note C#, 8
 	sound_call Music_FinalPokemonBW_Ch3_branch_3
 	note E_, 4
-	note __, 4
+	rest 4
 	note B_, 4
 	octave 3
 	note E_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note B_, 4
 	octave 3
@@ -789,12 +789,12 @@ Music_FinalPokemonBW_Ch3_loop:
 	note B_, 4
 	octave 3
 	note C_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 4
 	octave 3
 	note C_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 4
 	octave 3
@@ -802,64 +802,64 @@ Music_FinalPokemonBW_Ch3_loop:
 	octave 2
 	note G_, 4
 	note A_, 4
-	note __, 4
+	rest 4
 	note E_, 4
 	octave 3
 	note E_, 4
-	note __, 4
+	rest 4
 	note C#, 4
 	note A_, 4
 	note E_, 4
 	note D_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 4
 	octave 3
 	note D_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 4
-	note __, 4
+	rest 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 16
 	note D_, 16
 	sound_jump Music_FinalPokemonBW_Ch3_loop
 
 Music_FinalPokemonBW_Ch3_branch_1:
 	note G_, 3
-	note __, 5
+	rest 5
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 5
+	rest 5
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 3
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_FinalPokemonBW_Ch3_branch_2:
 	note G_, 4
-	note __, 4
+	rest 4
 	note D_, 4
 	note G_, 4
-	note __, 8
+	rest 8
 	note D_, 4
-	note __, 4
+	rest 4
 	note F_, 4
 	note C_, 4
-	note __, 4
+	rest 4
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 4
+	rest 4
 	note C_, 4
 	note F_, 4
 	sound_ret
@@ -867,12 +867,12 @@ Music_FinalPokemonBW_Ch3_branch_2:
 Music_FinalPokemonBW_Ch3_branch_3:
 	octave 3
 	note C_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 4
 	octave 3
 	note C_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 4
 	octave 3
@@ -881,12 +881,12 @@ Music_FinalPokemonBW_Ch3_branch_3:
 	note G_, 4
 	octave 3
 	note D_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 4
 	octave 3
 	note D_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 4
 	octave 3
@@ -894,10 +894,10 @@ Music_FinalPokemonBW_Ch3_branch_3:
 	octave 2
 	note A_, 4
 	note B_, 4
-	note __, 4
+	rest 4
 	note F#, 4
 	note B_, 4
-	note __, 4
+	rest 4
 	note F#, 4
 	note B_, 4
 	note F#, 4
@@ -909,7 +909,7 @@ Music_FinalPokemonBW_Ch4:
 	note C_, 1
 	note C_, 1
 	note B_, 16
-	note __, 12
+	rest 12
 	note_type 3
 	note D_, 1
 	note D_, 1

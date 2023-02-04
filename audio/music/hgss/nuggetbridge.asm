@@ -288,19 +288,19 @@ Music_NuggetBridgeHGSS_Ch3:
 	note_type 12, 1, 5
 	octave 2
 	note E_, 4
-	note __, 8
+	rest 8
 	note D_, 4
 Music_NuggetBridgeHGSS_Loop3:
 	note E_, 1
-	note __, 11
+	rest 11
 	octave 1
 	note B_, 4
 	octave 2
 	note E_, 4
-	note __, 8
+	rest 8
 	note D_, 4
 	note E_, 1
-	note __, 11
+	rest 11
 	note G#, 4
 	note_type 4, 2, 4
 	octave 3
@@ -366,7 +366,7 @@ Music_NuggetBridgeHGSS_Loop3:
 	note G#, 2
 	octave 6
 	note C#, 3
-	note __, 9
+	rest 9
 	note_type 12, 1, 5
 	sound_call Music_NuggetBridgeHGSS_Bar7
 	sound_call Music_NuggetBridgeHGSS_Bar7
@@ -395,34 +395,34 @@ Music_NuggetBridgeHGSS_Loop3:
 	note_type 6, 1, 5
 	octave 1
 	note B_, 2
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 6
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 6
-	note __, 2
+	rest 2
 	note_type 12, 1, 5
 	octave 2
 	note E_, 4
-	note __, 8
+	rest 8
 	note D_, 4
 	sound_jump Music_NuggetBridgeHGSS_Loop3
 
 Music_NuggetBridgeHGSS_Bar7:
 	octave 2
 	note D_, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 4
 	octave 5
 	note A_, 1
@@ -433,7 +433,7 @@ Music_NuggetBridgeHGSS_Bar7:
 Music_NuggetBridgeHGSS_Bar8:
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 4
 	octave 5
 	note B_, 1
@@ -444,7 +444,7 @@ Music_NuggetBridgeHGSS_Bar8:
 Music_NuggetBridgeHGSS_Bar9:
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 4
 	octave 6
 	note D_, 1
@@ -455,7 +455,7 @@ Music_NuggetBridgeHGSS_Bar9:
 Music_NuggetBridgeHGSS_Bar10:
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 4
 	octave 6
 	note E_, 1
@@ -492,7 +492,7 @@ Music_NuggetBridgeHGSS_Ch4:
 	note_type 4
 	toggle_noise 0
 	note A_, 16
-	note __, 2
+	rest 2
 	note D_, 3
 	note D_, 3
 	note D_, 12
@@ -504,7 +504,7 @@ Music_NuggetBridgeHGSS_Ch4:
 	note D_, 2
 Music_NuggetBridgeHGSS_Loop4:
 	note D_, 16
-	note __, 2
+	rest 2
 	note D_, 3
 	note D_, 3
 	note D_, 12
@@ -513,7 +513,7 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 3
 	note D_, 3
 	note D_, 16
-	note __, 2
+	rest 2
 	note D_, 3
 	note D_, 3
 	note D_, 12
@@ -524,7 +524,7 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 2
 	note D_, 2
 	note D_, 16
-	note __, 2
+	rest 2
 	note D_, 3
 	note D_, 3
 	note D_, 12
@@ -533,11 +533,11 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 3
 	note D_, 3
 	note A_, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note D_, 12
 	note D_, 12
 	note D_, 12
@@ -581,7 +581,7 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 3
 	note D_, 3
 	note D_, 16
-	note __, 14
+	rest 14
 	note D_, 3
 	note D_, 3
 	note A_, 6
@@ -589,7 +589,7 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 2
 	note D_, 2
 	note D_, 16
-	note __, 14
+	rest 14
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -598,7 +598,7 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 3
 	note D_, 3
 	note A_, 16
-	note __, 2
+	rest 2
 	note D_, 3
 	note D_, 3
 	note D_, 12

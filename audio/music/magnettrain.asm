@@ -12,8 +12,8 @@ Music_MagnetTrain_Ch1:
 	vibrato 20, 2, 3
 	duty_cycle 2
 	note_type 12, 11, 2
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	volume_envelope 11, 7
 	octave 4
 	note D_, 1
@@ -62,9 +62,9 @@ Music_MagnetTrain_Ch1:
 	note C_, 1
 	note_type 6, 11, 7
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note_type 12, 11, 7
 	note D_, 16
 	sound_ret
@@ -77,32 +77,32 @@ Music_MagnetTrain_Ch2:
 	note_type 12, 13, 8
 	octave 1
 	note F_, 12
-	note __, 2
+	rest 2
 	note_type 6, 13, 7
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	duty_cycle 3
 	note_type 12, 13, 7
 	octave 4
 	note G_, 16
 	note A_, 13
-	note __, 1
+	rest 1
 	note_type 6, 13, 7
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note_type 12, 13, 7
 	note A_, 16
 	sound_ret

@@ -352,7 +352,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	note A#, 3
 	volume_envelope 4, 4
 	note A#, 3
-	note __, 16
+	rest 16
 	note_type 12, 8, 7
 	octave 3
 	duty_cycle 0
@@ -397,13 +397,13 @@ Music_MountCoronetDPPt_Ch2:
 	pitch_offset 1
 	duty_cycle 0
 	note_type 12, 4, 5
-	note __, 4
+	rest 4
 Music_MountCoronetDPPt_Ch2_loop:
 	note_type 12, 4, 5
 	octave 4
 	note C_, 2
-	note __, 2
-	note __, 4
+	rest 2
+	rest 4
 	octave 4
 	note C_, 6
 	volume_envelope 8, 5
@@ -550,13 +550,13 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note G_, 2
 	note F_, 2
 	note C_, 8
-	note __, 2
+	rest 2
 	octave 3
 	;;;; problem section
 	note C_, 6
-	note __, 4
+	rest 4
 	note C_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 6
 	note A#, 8
@@ -577,21 +577,21 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note F_, 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note D#, 1
 	note E_, 3
 	note D_, 2
 	octave 3
 	volume_envelope 8, 5
 	note D_, 4
-	note __, 4
+	rest 4
 	note C_, 4
-	note __, 2
+	rest 2
 	note C_, 4
-	note __, 3
+	rest 3
 	note G_, 1
 	note A#, 2
 	note G_, 2
@@ -599,7 +599,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note G_, 2
 	note D#, 2
 	note C_, 2
-	note __, 6
+	rest 6
 	note D_, 6
 	note D_, 6
 	octave 2
@@ -626,18 +626,18 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 2
 	note C_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note D_, 2
-	note __, 6
+	rest 6
 	;quartet
 	note_type 12, 11, 5
 	note C_, 1
@@ -655,7 +655,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 2
 	;quartet
 	note_type 12, 11, 5
-	note __, 2
+	rest 2
 	note C_, 1
 	note D#, 1
 	note C_, 1
@@ -761,7 +761,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note A#, 3
 	volume_envelope 4, 4
 	note A#, 3
-	note __, 4
+	rest 4
 	volume_envelope 1, -7
 	duty_cycle 0
 	octave 3
@@ -819,13 +819,13 @@ Music_MountCoronetDPPt_Ch3:
 Music_MountCoronetDPPt_Ch3_branch_0:
 	note_type 12, 1, 4
 	vibrato 22, 2, 3
-	note __, 6
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 6
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 Music_MountCoronetDPPt_Ch3_branch_1:
-	note __, 12
+	rest 12
 	octave 2
 	note F_, 2
 	octave 3
@@ -860,35 +860,35 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	volume_envelope 2, 4
 	note C_, 10
 	note C_, 6
-	note __, 2
+	rest 2
 	volume_envelope 2, 5
 	octave 4
 	note C_, 5
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 5
 	volume_envelope 1, 5
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 5
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	volume_envelope 3, 5
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 16
+	rest 16
 	volume_envelope 1, 4
 	octave 3
 	note D#, 2
 	note E_, 2
 	note F_, 8
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
 	note F_, 2
@@ -920,9 +920,9 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note D_, 4
 	volume_envelope 2, 4
 	note D_, 12
-	note __, 16
-	note __, 8
-	note __, 12
+	rest 16
+	rest 8
+	rest 12
 	volume_envelope 1, 4
 	octave 4
 	note C_, 2
@@ -932,7 +932,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	octave 4
 	note C_, 2
 	note G#, 4
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 2
 	octave 3
@@ -958,14 +958,14 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note G_, 4
 	note E_, 1
 	note F_, 3
-	note __, 8
+	rest 8
 	volume_envelope 2, 5
 	note A_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	note A#, 6
 	note G#, 8
-	note __, 2
+	rest 2
 	octave 4
 	volume_envelope 1, 5
 	note D_, 1
@@ -974,13 +974,13 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note D_, 1
 	note C#, 2
 	note D_, 2
-	note __, 6
+	rest 6
 	note C_, 6
 	octave 3
 	note A#, 2
 	octave 4
 	note C_, 2
-	note __, 8
+	rest 8
 	volume_envelope 1, 4
 	octave 4
 	note C_, 2
@@ -990,7 +990,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	octave 4
 	note C_, 2
 	note G#, 4
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	octave 4
@@ -1006,7 +1006,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note B_, 1
 	note A#, 1
 	note G#, 3
-	note __, 1
+	rest 1
 	note G_, 6
 	note F#, 1
 	note F_, 1
@@ -1014,7 +1014,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note F_, 2
 	note G_, 4
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note D#, 2
 	octave 4
@@ -1028,20 +1028,20 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note C_, 6
 	volume_envelope 2, 4
 	note C_, 2
-	note __, 6
+	rest 6
 	volume_envelope 1, 1
 	octave 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
 	note F_, 1
@@ -1054,7 +1054,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note D_, 16
 	note D#, 16
 	note E_, 16
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 1
 	octave 3
@@ -1070,7 +1070,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note A#, 4
 	octave 4
 	note C_, 4
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 1
 	octave 3
@@ -1087,6 +1087,6 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	octave 4
 	note C_, 4
 	note C#, 4
-	note __, 12
-	note __, 16
+	rest 12
+	rest 16
 	sound_jump Music_MountCoronetDPPt_Ch3_branch_0

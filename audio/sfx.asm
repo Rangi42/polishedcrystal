@@ -610,7 +610,7 @@ Sfx_Pokeflute:
 	note A_, 2
 	note F_, 2
 	note G_, 8
-	note __, 12
+	rest 12
 	sound_ret
 
 
@@ -2044,16 +2044,16 @@ Sfx_DexFanfare5079:
 	note_type 8, 2, 5
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 5
 	volume_envelope 3, 5
 	note E_, 3
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch8:
@@ -2109,20 +2109,20 @@ Sfx_KeyItem:
 	note_type 6, 2, 5
 	octave 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note E_, 8
 	volume_envelope 3, 5
 	note E_, 4
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch8:
@@ -2150,21 +2150,21 @@ Sfx_DexFanfare2049:
 	note_type 12, 8, 8
 	octave 3
 	note A_, 4
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 4
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch6:
@@ -2192,19 +2192,19 @@ Sfx_DexFanfare2049:
 	note_type 12, 2, 5
 	octave 4
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -2212,7 +2212,7 @@ Sfx_DexFanfare2049:
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
-	note __, 16
+	rest 16
 	sound_ret
 
 
@@ -2241,7 +2241,7 @@ Sfx_Item:
 	note G_, 4
 	note G_, 4
 	note F_, 12
-	note __, 12
+	rest 12
 	sound_ret
 
 .Ch6:
@@ -2258,7 +2258,7 @@ Sfx_Item:
 	note A#, 4
 	note A#, 4
 	note A_, 12
-	note __, 12
+	rest 12
 	sound_ret
 
 .Ch7:
@@ -2266,23 +2266,23 @@ Sfx_Item:
 	note_type 8, 2, 5
 	octave 4
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 6
 	volume_envelope 3, 5
 	note F_, 4
-	note __, 14
+	rest 14
 	sound_ret
 
 .Ch8:
@@ -2290,7 +2290,7 @@ Sfx_Item:
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
-	note __, 16
+	rest 16
 	sound_ret
 
 
@@ -2363,7 +2363,7 @@ Sfx_CaughtMon:
 	note A_, 6
 	volume_envelope 3, 5
 	note A_, 3
-	note __, 3
+	rest 3
 	sound_ret
 
 .Ch8:
@@ -2371,7 +2371,7 @@ Sfx_CaughtMon:
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
-	note __, 16
+	rest 16
 	sound_ret
 
 
@@ -2438,26 +2438,26 @@ Sfx_DexFanfare80109:
 	note_type 12, 2, 5
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	note D#, 4
 	volume_envelope 3, 5
 	note D#, 3
-	note __, 9
+	rest 9
 	sound_ret
 
 .Ch8:
@@ -2465,7 +2465,7 @@ Sfx_DexFanfare80109:
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
-	note __, 16
+	rest 16
 	sound_ret
 
 
@@ -2528,16 +2528,16 @@ Sfx_Fanfare2:
 	note C_, 1
 	octave 5
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note_type 4
 	note C_, 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note G#, 6
 	sound_ret
@@ -2612,7 +2612,7 @@ UnknownSfx:
 	note A_, 4
 	volume_envelope 3, 5
 	note A_, 3
-	note __, 9
+	rest 9
 	sound_ret
 
 .Ch8:
@@ -2620,7 +2620,7 @@ UnknownSfx:
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
-	note __, 16
+	rest 16
 	sound_ret
 
 
@@ -2704,14 +2704,14 @@ Sfx_Fanfare:
 	note C_, 1
 	octave 4
 	note A#, 4
-	note __, 4
+	rest 4
 	note B_, 4
-	note __, 4
+	rest 4
 	octave 5
 	note C#, 4
-	note __, 4
+	rest 4
 	note D#, 4
-	note __, 4
+	rest 4
 	note_type 4
 	note C_, 1
 	note F_, 4
@@ -2739,7 +2739,7 @@ Sfx_RegisterPhoneNumber:
 	volume 7, 7
 	duty_cycle 3
 	note_type 12, 10, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 4
 	note G#, 4
@@ -2754,21 +2754,21 @@ Sfx_RegisterPhoneNumber:
 	octave 4
 	note C#, 3
 	note C_, 2
-	note __, 8
+	rest 8
 	sound_ret
 
 .Ch6:
 	toggle_sfx
 	duty_cycle 3
 	note_type 12, 12, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	note C#, 2
 	note C_, 2
 	note D#, 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note G#, 3
 	octave 5
 	note C_, 2
@@ -2776,26 +2776,26 @@ Sfx_RegisterPhoneNumber:
 	octave 4
 	note G_, 3
 	note G#, 2
-	note __, 8
+	rest 8
 	sound_ret
 
 .Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 7
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 1
+	rest 1
 	note G#, 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note A#, 3
 	note G#, 2
-	note __, 8
+	rest 8
 	sound_ret
 
 .Ch8:
@@ -2803,8 +2803,8 @@ Sfx_RegisterPhoneNumber:
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 2
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_ret
 
 
@@ -2828,7 +2828,7 @@ Sfx_3RdPlace:
 	octave 5
 	note C_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note D_, 6
 	sound_ret
@@ -2843,7 +2843,7 @@ Sfx_3RdPlace:
 	note C_, 1
 	note F_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note G_, 6
 	sound_ret
@@ -2857,7 +2857,7 @@ Sfx_3RdPlace:
 	note A_, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 1
 	note B_, 6
@@ -2881,7 +2881,7 @@ Sfx_GetEggFromDayCareMan:
 	vibrato 18, 3, 4
 	duty_cycle 2
 	note_type 8, 10, 1
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
 	note F_, 2
@@ -2901,7 +2901,7 @@ Sfx_GetEggFromDayCareMan:
 	note C_, 2
 	volume_envelope 10, 4
 	note F_, 9
-	note __, 9
+	rest 9
 	sound_ret
 
 .Ch6:
@@ -2909,10 +2909,10 @@ Sfx_GetEggFromDayCareMan:
 	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 12, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	volume_envelope 12, 1
 	note A#, 2
@@ -2928,13 +2928,13 @@ Sfx_GetEggFromDayCareMan:
 	note G_, 2
 	volume_envelope 12, 4
 	note A_, 9
-	note __, 9
+	rest 9
 	sound_ret
 
 .Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 6
 	octave 2
@@ -2945,17 +2945,17 @@ Sfx_GetEggFromDayCareMan:
 	note G_, 2
 	note A#, 6
 	note A_, 9
-	note __, 9
+	rest 9
 	sound_ret
 
 .Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	note_type 8
-	note __, 2
+	rest 2
 	note_type 12
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 	sound_ret
 
 
@@ -2975,10 +2975,10 @@ Sfx_MoveDeleted:
 	duty_cycle 2
 	vibrato 12, 4, 4
 	note_type 12, 10, 4
-	note __, 8
+	rest 8
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note C#, 1
 	note E_, 1
 	note D#, 1
@@ -2993,7 +2993,7 @@ Sfx_MoveDeleted:
 	volume_envelope 10, 6
 	octave 3
 	note D_, 10
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch6:
@@ -3015,19 +3015,19 @@ Sfx_MoveDeleted:
 	volume_envelope 11, 4
 	octave 3
 	note C#, 1
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 1
 	octave 3
 	note C#, 4
-	note __, 2
+	rest 2
 	volume_envelope 11, 1
 	note C#, 2
 	note D#, 2
 	note E_, 2
 	volume_envelope 11, 6
 	note F_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch7:
@@ -3037,22 +3037,22 @@ Sfx_MoveDeleted:
 	note G#, 8
 	note A_, 8
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 8
-	note __, 4
+	rest 4
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note_type 12, 2, 0
 	note B_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -3060,9 +3060,9 @@ Sfx_MoveDeleted:
 	sfx_toggle_noise 3
 	note_type 12
 	note F_, 8
-	note __, 16
-	note __, 16
-	note __, 6
+	rest 16
+	rest 16
+	rest 6
 	sound_ret
 
 
@@ -3104,7 +3104,7 @@ Sfx_2ndPlace:
 	note A_, 2
 	volume_envelope 10, 7
 	note B_, 12
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch6:
@@ -3126,7 +3126,7 @@ Sfx_2ndPlace:
 	note C_, 2
 	volume_envelope 11, 7
 	note D_, 12
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch7:
@@ -3134,35 +3134,35 @@ Sfx_2ndPlace:
 	note_type 8, 2, 5
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 12
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -3175,7 +3175,7 @@ Sfx_2ndPlace:
 	note B_, 12
 	note B_, 12
 	note B_, 12
-	note __, 6
+	rest 6
 	sound_ret
 
 
@@ -3224,7 +3224,7 @@ Sfx_1stPlace:
 	note G_, 2
 	volume_envelope 10, 7
 	note A_, 10
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch6:
@@ -3246,7 +3246,7 @@ Sfx_1stPlace:
 	note C_, 2
 	volume_envelope 11, 7
 	note D_, 10
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch7:
@@ -3254,21 +3254,21 @@ Sfx_1stPlace:
 	note_type 12, 2, 5
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 6
 	note F_, 6
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 10
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -3287,7 +3287,7 @@ Sfx_1stPlace:
 	note D_, 4
 	note_type 12
 	note B_, 10
-	note __, 6
+	rest 6
 	sound_ret
 
 
@@ -3308,23 +3308,23 @@ Sfx_ChooseACard:
 	note_type 6, 10, 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 4
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 4
 	volume_envelope 7, 1
@@ -3341,7 +3341,7 @@ Sfx_ChooseACard:
 	note D#, 1
 	volume_envelope 10, 4
 	note E_, 4
-	note __, 12
+	rest 12
 	sound_ret
 
 .Ch6:
@@ -3350,28 +3350,28 @@ Sfx_ChooseACard:
 	note_type 6, 11, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 4
 	note G#, 8
 	note A_, 4
-	note __, 12
+	rest 12
 	sound_ret
 
 .Ch7:
@@ -3379,23 +3379,23 @@ Sfx_ChooseACard:
 	note_type 6, 2, 5
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
@@ -3405,7 +3405,7 @@ Sfx_ChooseACard:
 	note B_, 2
 	note G#, 2
 	note A_, 4
-	note __, 12
+	rest 12
 	sound_ret
 
 .Ch8:
@@ -3450,7 +3450,7 @@ Sfx_GetTm:
 	note_type 12, 10, 3
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
 	octave 4
@@ -3462,7 +3462,7 @@ Sfx_GetTm:
 	note G_, 2
 	volume_envelope 10, 5
 	note F#, 8
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch6:
@@ -3472,7 +3472,7 @@ Sfx_GetTm:
 	note_type 12, 11, 3
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note G_, 1
 	note B_, 6
@@ -3483,7 +3483,7 @@ Sfx_GetTm:
 	note C_, 2
 	volume_envelope 11, 5
 	note D_, 8
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch7:
@@ -3491,28 +3491,28 @@ Sfx_GetTm:
 	note_type 6, 2, 5
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note B_, 2
 	octave 3
 	note D_, 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 4
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 4
 	octave 2
 	note A_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -3530,7 +3530,7 @@ Sfx_GetTm:
 	note C#, 1
 	note D_, 2
 	note B_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 
@@ -3559,11 +3559,11 @@ Sfx_GetBadge:
 	transpose 0, 0
 	volume_envelope 10, 7
 	note A_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 .branch5:
-	note __, 5
+	rest 5
 	octave 3
 	note F_, 2
 	note G#, 2
@@ -3591,44 +3591,44 @@ Sfx_GetBadge:
 	note_type 6, 11, 5
 	octave 5
 	note C#, 3
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 8
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 1
+	rest 1
 	volume_envelope 9, 5
 	octave 5
 	note C_, 1
 	volume_envelope 11, 5
 	note C#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 3
-	note __, 3
+	rest 3
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 8
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	volume_envelope 9, 5
 	octave 5
 	note D_, 1
 	volume_envelope 11, 5
 	note D#, 8
 	note F_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch7:
@@ -3636,36 +3636,36 @@ Sfx_GetBadge:
 	note_type 6, 2, 5
 	octave 2
 	note G#, 3
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C_, 2
 	octave 2
 	note A#, 2
 	note G#, 2
 	note G_, 3
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note F_, 2
 	note G_, 2
 	note D#, 2
 	note F_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -3689,7 +3689,7 @@ Sfx_GetBadge:
 	note C#, 1
 	sound_loop 2, .branch8
 	note B_, 16
-	note __, 6
+	rest 6
 	sound_ret
 
 
@@ -3710,7 +3710,7 @@ Sfx_QuitSlots:
 	note_type 8, 8, 2
 	octave 3
 	note G#, 2
-	note __, 4
+	rest 4
 	note C#, 2
 	note F_, 2
 	note G#, 2
@@ -3729,14 +3729,14 @@ Sfx_QuitSlots:
 	note F#, 2
 	volume_envelope 9, 7
 	note G#, 14
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 8, 11, 3
-	note __, 3
+	rest 3
 	octave 4
 	note B_, 1
 	octave 5
@@ -3754,7 +3754,7 @@ Sfx_QuitSlots:
 	note D#, 4
 	volume_envelope 11, 7
 	note F_, 14
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch7:
@@ -3762,13 +3762,13 @@ Sfx_QuitSlots:
 	note_type 8, 2, 5
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note D#, 2
 	note C#, 2
 	note G#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 2
 	note G#, 2
@@ -3776,14 +3776,14 @@ Sfx_QuitSlots:
 	octave 3
 	note D_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 14
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -3801,7 +3801,7 @@ Sfx_QuitSlots:
 	note D#, 2
 	note D_, 4
 	note B_, 14
-	note __, 6
+	rest 6
 	sound_ret
 
 
@@ -4632,7 +4632,7 @@ Sfx_EggCrack:
 	octave 4
 	note D#, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	sound_ret
 
@@ -4714,7 +4714,7 @@ Sfx_EggHatch:
 	octave 5
 	note E_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note D_, 1
 	volume_envelope 14, 2
@@ -4862,23 +4862,23 @@ Sfx_DexFanfareLessThan20:
 	note D_, 6
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A#, 4
 	note G_, 2
 	octave 4
 	note D#, 6
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -4886,8 +4886,8 @@ Sfx_DexFanfareLessThan20:
 	sfx_toggle_noise 4
 	note_type 12
 	note C#, 6
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 	sound_ret
 
 
@@ -4907,7 +4907,7 @@ Sfx_DexFanfare140169:
 	duty_cycle 3
 	vibrato 18, 3, 4
 	note_type 6, 11, 1
-	note __, 8
+	rest 8
 	octave 3
 	note E_, 4
 	note E_, 4
@@ -4924,7 +4924,7 @@ Sfx_DexFanfare140169:
 	note G_, 16
 	octave 2
 	note B_, 8
-	note __, 8
+	rest 8
 	sound_ret
 
 .Ch6:
@@ -4948,13 +4948,13 @@ Sfx_DexFanfare140169:
 	octave 4
 	note B_, 16
 	note G_, 8
-	note __, 8
+	rest 8
 	sound_ret
 
 .Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 1
 	octave 3
@@ -4962,7 +4962,7 @@ Sfx_DexFanfare140169:
 	note E_, 1
 	note A_, 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note F#, 1
 	note A_, 1
@@ -4970,7 +4970,7 @@ Sfx_DexFanfare140169:
 	note D_, 3
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note B_, 1
 	octave 3
@@ -4978,9 +4978,9 @@ Sfx_DexFanfare140169:
 	note G_, 3
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch8:
@@ -5017,22 +5017,22 @@ Sfx_DexFanfare170199:
 	note_type 8, 11, 4
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 6
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	volume_envelope 12, 1
 	note F_, 4
 	note G_, 4
 	note A_, 4
 	note_type 12, 10, 8
 	note A#, 12
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch6:
@@ -5042,15 +5042,15 @@ Sfx_DexFanfare170199:
 	note_type 8, 12, 4
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 6
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	volume_envelope 13, 1
 	octave 4
 	note D#, 4
@@ -5058,7 +5058,7 @@ Sfx_DexFanfare170199:
 	note D#, 4
 	note_type 12, 11, 8
 	note D_, 12
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch7:
@@ -5066,25 +5066,25 @@ Sfx_DexFanfare170199:
 	note_type 8, 2, 5
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 6
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note_type 12, 2, 5
 	octave 2
 	note A#, 12
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch8:
@@ -5141,7 +5141,7 @@ Sfx_DexFanfare200229:
 	note G_, 4
 	note_type 12, 10, 8
 	note F#, 12
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch6:
@@ -5162,7 +5162,7 @@ Sfx_DexFanfare200229:
 	note A#, 4
 	note_type 12, 11, 8
 	note A_, 12
-	note __, 4
+	rest 4
 	sound_ret
 
 .Ch7:
@@ -5170,11 +5170,11 @@ Sfx_DexFanfare200229:
 	note_type 8, 2, 5
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note E_, 2
 	note G_, 2
@@ -5190,21 +5190,21 @@ Sfx_DexFanfare200229:
 	octave 3
 	note D#, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 6
-	note __, 6
+	rest 6
 	sound_ret
 
 .Ch8:
@@ -5257,12 +5257,12 @@ Sfx_DexFanfare230Plus:
 	note B_, 2
 	octave 4
 	note D_, 14
-	note __, 2
+	rest 2
 	duty_cycle 2
 	volume_envelope 8, 5
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 6
 	volume_envelope 10, 5
 	duty_cycle 3
@@ -5270,12 +5270,12 @@ Sfx_DexFanfare230Plus:
 	note A_, 2
 	note G_, 2
 	note F_, 10
-	note __, 2
+	rest 2
 	duty_cycle 2
 	volume_envelope 8, 5
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 6
 	volume_envelope 10, 5
 	duty_cycle 3
@@ -5287,7 +5287,7 @@ Sfx_DexFanfare230Plus:
 	note A#, 4
 	note_type 12, 10, 8
 	note A_, 14
-	note __, 2
+	rest 2
 	sound_ret
 
 .Ch6:
@@ -5300,7 +5300,7 @@ Sfx_DexFanfare230Plus:
 	note D_, 2
 	note G_, 2
 	note F_, 14
-	note __, 4
+	rest 4
 	note F_, 2
 	note E_, 2
 	note D_, 2
@@ -5308,7 +5308,7 @@ Sfx_DexFanfare230Plus:
 	octave 3
 	note B_, 2
 	note A_, 10
-	note __, 4
+	rest 4
 	note A_, 2
 	octave 4
 	note C_, 2
@@ -5320,7 +5320,7 @@ Sfx_DexFanfare230Plus:
 	note G_, 4
 	note_type 12, 11, 8
 	note F#, 14
-	note __, 2
+	rest 2
 	sound_ret
 
 .Ch7:
@@ -5331,43 +5331,43 @@ Sfx_DexFanfare230Plus:
 	note A#, 4
 	note F_, 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 6
 	note A_, 4
 	note F_, 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 6
 	note G_, 4
 	note D#, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note G_, 4
 	note D#, 4
 	note_type 12, 2, 5
 	note D_, 14
-	note __, 2
+	rest 2
 	sound_ret
 
 .Ch8:
@@ -5923,7 +5923,7 @@ Sfx_Tingle:
 	note G_, 2
 	octave 5
 	note C_, 3
-	note __, 2
+	rest 2
 	sound_loop 2, .branch5
 	note C_, 2
 	volume_envelope 10, 1
@@ -5982,15 +5982,15 @@ Sfx_4NoteDitty:
 .Ch6:
 	toggle_sfx
 	note_type 2, 11, 8
-	note __, 9
-	note __, 16
+	rest 9
+	rest 16
 	sound_ret
 
 .Ch7:
 	toggle_sfx
 	note_type 2, 11, 8
-	note __, 9
-	note __, 16
+	rest 9
+	rest 16
 	sound_ret
 
 

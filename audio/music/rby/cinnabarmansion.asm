@@ -23,7 +23,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	note B_, 1
 	note B_, 1
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
 	note E_, 2
@@ -34,12 +34,12 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	note C_, 1
 	octave 5
 	note B_, 1
-	note __, 2
+	rest 2
 	sound_loop 14, Music_CinnabarMansionRBY_branch_7ed19
 	note_type 12, 10, 5
-	note __, 16
-	note __, 16
-	note __, 15
+	rest 16
+	rest 16
+	rest 15
 	octave 4
 	note C_, 1
 	octave 5
@@ -54,8 +54,8 @@ Music_CinnabarMansionRBY_Ch2:
 	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed48:
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_loop 4, Music_CinnabarMansionRBY_branch_7ed48
 
 Music_CinnabarMansionRBY_branch_7ed4e:
@@ -71,7 +71,7 @@ Music_CinnabarMansionRBY_branch_7ed50:
 	note A#, 4
 	note G_, 4
 	note G#, 4
-	note __, 4
+	rest 4
 	note A#, 4
 	note E_, 4
 	note D#, 4
@@ -99,7 +99,7 @@ Music_CinnabarMansionRBY_branch_7ed6c:
 	note A#, 4
 	note G_, 4
 	note G#, 4
-	note __, 4
+	rest 4
 	note A#, 4
 	sound_ret
 
@@ -109,39 +109,39 @@ Music_CinnabarMansionRBY_Ch3:
 Music_CinnabarMansionRBY_branch_7ed80:
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_loop 8, Music_CinnabarMansionRBY_branch_7ed80
 	note E_, 16
 	note D#, 16
@@ -153,10 +153,10 @@ Music_CinnabarMansionRBY_branch_7ed80:
 Music_CinnabarMansionRBY_Ch4:
 	note_type 6
 	toggle_noise 1
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 
 Music_CinnabarMansionRBY_branch_7edb5:
 	note E_, 2
@@ -173,8 +173,8 @@ Music_CinnabarMansionRBY_branch_7edb5:
 	note F#, 4
 	note E_, 2
 	note E_, 2
-	note __, 2
-	note __, 10
-	note __, 8
+	rest 2
+	rest 10
+	rest 8
 	note F#, 8
 	sound_jump Music_CinnabarMansionRBY_branch_7edb5

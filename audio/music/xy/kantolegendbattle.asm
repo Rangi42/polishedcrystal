@@ -52,26 +52,26 @@ Music_KantoLegendBattleXY_Ch1:
 	note C#, 1
 Music_KantoLegendBattleXY_Ch1_L1:
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 5
+	rest 5
 	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L1
 Music_KantoLegendBattleXY_Ch1_L2:
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 5
+	rest 5
 	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L2
 Music_KantoLegendBattleXY_Ch1_L3:
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 5
+	rest 5
 	sound_loop 7, Music_KantoLegendBattleXY_Ch1_L3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	volume_envelope 7, 4
 	octave 4
 	note G_, 1
@@ -254,10 +254,10 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	octave 4
 	note G#, 12
 	note G_, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
-	note __, 4
+	rest 4
 	volume_envelope 11, 7
 	octave 5
 	note C#, 8
@@ -453,15 +453,15 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	octave 4
 	note E_, 12
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	volume_envelope 12, 2
 	note E_, 4
-	note __, 10
+	rest 10
 	volume_envelope 12, 5
 	note F_, 12
 	note F_, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	volume_envelope 12, 2
 	note G_, 6
@@ -469,15 +469,15 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	note F_, 8
 	note G_, 12
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	volume_envelope 12, 2
 	note G_, 4
-	note __, 10
+	rest 10
 	volume_envelope 12, 5
 	note G_, 12
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	volume_envelope 12, 2
 	note G_, 6
@@ -779,49 +779,49 @@ Music_KantoLegendBattleXY_Ch3:
 	note_type 12, 1, 4
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	octave 4
 	note C_, 1
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	octave 4
 	note C#, 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	octave 4
 	note D_, 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	octave 4
 	note D#, 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	octave 4
 	note E_, 1
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 4
 	note F_, 1
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	octave 4
 	note F#, 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	octave 4
 	note G_, 1
@@ -1058,336 +1058,336 @@ Music_KantoLegendBattleXY_Ch3_L:
 	octave 6
 	note D_, 1
 	note E_, 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 12
 	volume_envelope 1, 0
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_KantoLegendBattleXY_Ch3_L
 
 Music_KantoLegendBattleXY_Ch3_P1:
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_ret

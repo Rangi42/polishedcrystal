@@ -9,16 +9,16 @@ Music_DancingHall_Ch1:
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	note_type 6, 11, 7
-	note __, 3
+	rest 3
 	duty_cycle 0
 Music_DancingHall_branch_ef9d3:
 	note_type 12, 11, 7
 	sound_call Music_DancingHall_branch_efa17
-	note __, 16
+	rest 16
 	sound_call Music_DancingHall_branch_efa17
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	volume_envelope 11, 1
 	octave 2
 	note B_, 1
@@ -55,35 +55,35 @@ Music_DancingHall_branch_ef9d3:
 	note B_, 1
 	note_type 12, 11, 5
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	note B_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	sound_jump Music_DancingHall_branch_ef9d3
 
 Music_DancingHall_branch_efa17:
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_DancingHall_Ch2:
@@ -91,7 +91,7 @@ Music_DancingHall_Ch2:
 	note_type 6, 10, 1
 	duty_cycle 0
 	vibrato 16, 2, 4
-	note __, 3
+	rest 3
 Music_DancingHall_branch_efa37:
 	note_type 6, 10, 2
 	sound_call Music_DancingHall_branch_efa7a
@@ -133,11 +133,11 @@ Music_DancingHall_branch_efa37:
 	note F_, 1
 	note_type 12, 10, 7
 	note E_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note F_, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	sound_jump Music_DancingHall_branch_efa37
 

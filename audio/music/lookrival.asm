@@ -51,7 +51,7 @@ Music_LookRival_branch_f4fb1:
 	volume_envelope 10, 7
 	note F_, 16
 	volume_envelope 6, 6
-	note __, 2
+	rest 2
 	note F_, 2
 	note G_, 4
 	volume_envelope 11, 6
@@ -207,7 +207,7 @@ Music_LookRival_branch_f5070:
 
 Music_LookRival_Ch3:
 	note_type 12, 2, 8
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 2
 	octave 3
@@ -325,8 +325,8 @@ Music_LookRival_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 3
 	note_type 12
-	note __, 8
-	note __, 16
+	rest 8
+	rest 16
 	note D#, 2
 	note D_, 4
 	note D_, 6

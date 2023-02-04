@@ -160,7 +160,7 @@ Music_PokeComCenter_branch_179642:
 Music_PokeComCenter_Ch2:
 	note_type 12, 12, 2
 	duty_cycle 3
-	note __, 10
+	rest 10
 	octave 1
 	note G_, 2
 	note A_, 2
@@ -352,12 +352,12 @@ Music_PokeComCenter_branch_179788:
 	note_type 12, 1, 0
 	octave 6
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 7
 	note D_, 1
-	note __, 3
+	rest 3
 	note_type 12, 2, 5
 	octave 4
 	note B_, 2
@@ -391,12 +391,12 @@ Music_PokeComCenter_branch_179788:
 	note_type 12, 1, 0
 	octave 6
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 7
 	note D_, 1
-	note __, 3
+	rest 3
 	note_type 12, 2, 5
 	octave 4
 	note B_, 2

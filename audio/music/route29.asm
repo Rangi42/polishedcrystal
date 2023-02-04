@@ -13,9 +13,9 @@ Music_Route29_Ch1:
 	vibrato 16, 1, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 2
-	note __, 2
+	rest 2
 Music_Route29_branch_f03a5:
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 2
 	note E_, 2
@@ -336,80 +336,80 @@ Music_Route29_Ch3:
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
 	vibrato 9, 2, 7
-	note __, 2
+	rest 2
 Music_Route29_branch_f0504:
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
+	rest 3
 	note E_, 4
 	note G_, 4
 	octave 4
@@ -479,7 +479,7 @@ Music_Route29_branch_f0504:
 	note F_, 6
 	note F_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 3
 	note B_, 2
@@ -493,27 +493,27 @@ Music_Route29_branch_f0504:
 	note C_, 4
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	sound_jump Music_Route29_branch_f0504
 
 Music_Route29_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 	note_type 12
-	note __, 2
+	rest 2
 Music_Route29_branch_f05b0:
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 6
 	note F_, 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 4
 	note F_, 4
 	note F_, 2

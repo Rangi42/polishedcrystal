@@ -15,7 +15,7 @@ Music_BlackCityBW_Ch1:
 	pitch_offset 1
 	note_type 6, 9, 1
 	tempo 156
-	note __, 4
+	rest 4
 Music_BlackCityBW_Ch1_loop:
 	sound_call Music_BlackCityBW_Ch1_branch_1
 	octave 4
@@ -37,7 +37,7 @@ Music_BlackCityBW_Ch1_loop:
 	duty_cycle 0
 	volume_envelope 11, 1
 	sound_call Music_BlackCityBW_Ch1_branch_1
-	note __, 2
+	rest 2
 	duty_cycle 1
 	volume_envelope 9, 4
 	note E_, 2
@@ -258,7 +258,7 @@ Music_BlackCityBW_Ch2:
 	pitch_offset 1
 	note_type 6, 10, 7
 	octave 3
-	note __, 1
+	rest 1
 	note G#, 1
 	note A_, 1
 	note A#, 1
@@ -273,7 +273,7 @@ Music_BlackCityBW_Ch2:
 	note C_, 2
 	octave 3
 	note B_, 16
-	note __, 8
+	rest 8
 	note A_, 4
 	note B_, 2
 	octave 4
@@ -311,7 +311,7 @@ Music_BlackCityBW_Ch2:
 	note C_, 2
 	octave 3
 	note B_, 16
-	note __, 8
+	rest 8
 	note A_, 4
 	note B_, 2
 	octave 4
@@ -383,7 +383,7 @@ Music_BlackCityBW_Ch2:
 
 Music_BlackCityBW_Ch3:
 	note_type 12, 2, 4
-	note __, 2
+	rest 2
 Music_BlackCityBW_Ch3_loop:
 	octave 4
 	note E_, 16
@@ -418,7 +418,7 @@ Music_BlackCityBW_Ch3_loop:
 Music_BlackCityBW_Ch4:
 	toggle_noise 3
 	note_type 6
-	note __, 4
+	rest 4
 Music_BlackCityBW_Ch4_loop_main:
 Music_BlackCityBW_Ch4_loop_1:
 	note B_, 6

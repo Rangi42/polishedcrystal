@@ -252,7 +252,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note A#, 1
 	octave 3
 	note G_, 1
-	note __, 5
+	rest 5
 	note G_, 3
 	note F_, 1
 	note F_, 1
@@ -303,7 +303,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 3
 	note A#, 2
 	note A#, 1
-	note __, 3
+	rest 3
 	note_type 3, 4, 2
 	octave 7
 	note D#, 2
@@ -320,7 +320,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note F_, 2
 	note E_, 2
 	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
-	note __, 8
+	rest 8
 	octave 6
 	note G_, 2
 	note F#, 2
@@ -336,7 +336,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note A_, 2
 	note G#, 2
 	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
-	note __, 8
+	rest 8
 	octave 6
 	note A#, 2
 	note A_, 2
@@ -352,7 +352,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 5
 	note B_, 2
 	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
-	note __, 8
+	rest 8
 	octave 7
 	note D#, 2
 	note D_, 2
@@ -368,7 +368,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note F_, 2
 	note E_, 2
 	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
-	note __, 4
+	rest 4
 	note_type 12, 6, 2
 	duty_cycle 3
 	note A#, 1
@@ -426,22 +426,22 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note D#, 3
 	note D#, 1
 	note D#, 1
-	note __, 2
+	rest 2
 	note F_, 4
 	note F_, 2
 	note F#, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 3
 	note G_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	note G_, 6
 	note G#, 3
 	note G#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F_, 4
 	octave 4
 	note D#, 7
@@ -543,7 +543,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note G#, 1
 	note A#, 1
 	duty_cycle 0
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
 	note G#, 1
@@ -675,7 +675,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note C_, 8
 	duty_cycle 0
 	volume_envelope 10, 3
-	note __, 1
+	rest 1
 	octave 2
 	note A#, 1
 	octave 3
@@ -739,7 +739,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note_type 12, 1, 0
 	vibrato 18, 2, 5
 	octave 5
-	note __, 4
+	rest 4
 	note G#, 4
 	note G_, 2
 	note D#, 1
@@ -780,7 +780,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note G_, 2
 	note G#, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	note D#, 1
 	note F_, 1
@@ -808,48 +808,48 @@ Music_WhiteTreehollowWhite2_Ch3:
 	octave 2
 	note A#, 1
 	note G#, 1
-	note __, 5
+	rest 5
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note A#, 4
 	note A#, 2
 	octave 3
 	note D_, 1
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note G_, 1
 	note A#, 1
 	octave 4
 	note C_, 5
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note A#, 3
-	note __, 2
+	rest 2
 	note A#, 1
 	octave 3
 	note C_, 1
 	note D_, 1
 	note D#, 1
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note D#, 1
 	note A#, 1
 	volume_envelope 1, 0
-	note __, 1
+	rest 1
 	note G#, 1
 	note A#, 1
 	octave 4
@@ -876,7 +876,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note B_, 1
 	note A#, 1
 	note A_, 1
-	note __, 10
+	rest 10
 	note_type 12, 1, 0
 	note A#, 1
 	octave 4
@@ -903,7 +903,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note D#, 2
 	volume_envelope 1, 4
 	octave 3
-	note __, 1
+	rest 1
 	note G#, 1
 	note A#, 1
 	octave 4
@@ -924,7 +924,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	volume_envelope 2, 4
 	note D#, 4
 	volume_envelope 1, 2
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
 	octave 4
@@ -952,9 +952,9 @@ Music_WhiteTreehollowWhite2_Ch3:
 	volume_envelope 2, 5
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 2
+	rest 2
 	octave 1
 	note G_, 1
 	octave 2
@@ -963,20 +963,20 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note G#, 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note D#, 1
 	note G#, 1
 	note A#, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 5
+	rest 5
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 2
 	note A#, 1
@@ -1004,10 +1004,10 @@ Music_WhiteTreehollowWhite2_Ch4_loop_2:
 	note C#, 1
 	note C#, 1
 	sound_loop 8, Music_WhiteTreehollowWhite2_Ch4_loop_2
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 Music_WhiteTreehollowWhite2_Ch4_loop_3:
 	note D#, 4
 	note C_, 3

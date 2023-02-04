@@ -15,15 +15,15 @@ Music_RuinsOfAlphRadio_branch_eede3:
 	note_type 6, 7, 1
 	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_call Music_RuinsOfAlphRadio_branch_eee08
 	note_type 12, 10, 1
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
-	note __, 16
+	rest 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eede3
 
 Music_RuinsOfAlphRadio_branch_eee01:
@@ -55,12 +55,12 @@ Music_RuinsOfAlphRadio_branch_eee17:
 	note_type 6, 8, 1
 	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	note_type 6, 8, 1
 	sound_call Music_RuinsOfAlphRadio_branch_eee08
 	note_type 12, 10, 1
-	note __, 16
+	rest 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eee17
 
 Music_RuinsOfAlphRadio_Ch3:
@@ -70,5 +70,5 @@ Music_RuinsOfAlphRadio_branch_eee35:
 	note C_, 1
 	note C#, 1
 	note C_, 1
-	note __, 16
+	rest 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eee35

@@ -11,8 +11,8 @@ Music_ViridianForest_Ch1:
 	stereo_panning FALSE, TRUE
 	vibrato 6, 2, 3
 	note_type 12, 11, 1
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_call Music_ViridianForest_branch_ed931
 Music_ViridianForest_branch_ed8fb:
 	volume_envelope 11, 1
@@ -212,39 +212,39 @@ Music_ViridianForest_branch_ed9ba:
 Music_ViridianForest_branch_ed9dc:
 	octave 2
 	note C_, 4
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
 	note D_, 4
 	sound_ret
@@ -252,45 +252,45 @@ Music_ViridianForest_branch_ed9dc:
 Music_ViridianForest_branch_eda02:
 	octave 2
 	note E_, 4
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note A_, 4
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_ViridianForest_Ch3:
@@ -299,22 +299,22 @@ Music_ViridianForest_Ch3:
 	note_type 12, 1, 4
 	octave 4
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 5
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	sound_call Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 4
@@ -322,25 +322,25 @@ Music_ViridianForest_branch_eda4b:
 	note_type 12, 1, 5
 	octave 3
 	note C_, 4
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_call Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 2
@@ -349,16 +349,16 @@ Music_ViridianForest_branch_eda4b:
 	note C_, 1
 	note D_, 1
 	sound_call Music_ViridianForest_branch_edaaf
-	note __, 4
+	rest 4
 	note G_, 8
 	note F_, 2
 	note G_, 2
 	note_type 12, 1, 0
 	sound_call Music_ViridianForest_branch_edaaf
-	note __, 16
+	rest 16
 	volume_envelope 2, 5
 	sound_call Music_ViridianForest_branch_edacb
-	note __, 4
+	rest 4
 	note D#, 1
 	note E_, 7
 	note D_, 4
@@ -375,7 +375,7 @@ Music_ViridianForest_branch_eda4b:
 	note A_, 4
 	note G_, 4
 	sound_call Music_ViridianForest_branch_edacb
-	note __, 4
+	rest 4
 	note G#, 1
 	note A_, 7
 	note B_, 4
@@ -387,19 +387,19 @@ Music_ViridianForest_branch_eda4b:
 Music_ViridianForest_branch_eda9e:
 	octave 3
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
 	sound_ret
 
@@ -407,7 +407,7 @@ Music_ViridianForest_branch_edaaf:
 	octave 6
 	note E_, 10
 	note D_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note_type 6, 1, 0
 	octave 5
@@ -415,7 +415,7 @@ Music_ViridianForest_branch_edaaf:
 	note G_, 15
 	note A_, 4
 	note A#, 4
-	note __, 4
+	rest 4
 	octave 6
 	note C_, 2
 	note D_, 2
@@ -434,7 +434,7 @@ Music_ViridianForest_branch_edaaf:
 Music_ViridianForest_branch_edacb:
 	octave 5
 	note B_, 16
-	note __, 4
+	rest 4
 	octave 6
 	note C#, 1
 	note D_, 7
@@ -445,7 +445,7 @@ Music_ViridianForest_branch_edacb:
 	note C_, 16
 	note C_, 3
 	note D_, 4
-	note __, 4
+	rest 4
 	note E_, 4
 	note F_, 16
 	sound_ret

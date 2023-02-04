@@ -17,8 +17,8 @@ Music_EliteFourBattleBW_Ch1:
 	tempo 200
 	note_type 12, 11, 2
 	octave 4
-	note __, 16
-	note __, 14
+	rest 16
+	rest 14
 	note F#, 2
 	octave 5
 	note C#, 2
@@ -264,8 +264,8 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note C_, 2
 	note D_, 2
 	note E_, 2
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	octave 2
 	volume_envelope 10, 0
 	note F#, 3
@@ -457,15 +457,15 @@ Music_EliteFourBattleBW_Ch2:
 	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 11, 2
-	note __, 16
-	note __, 14
+	rest 16
+	rest 14
 	octave 2
 	note F#, 2
 	octave 3
 	note C#, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 Music_EliteFourBattleBW_Ch2_loop_main:
 	volume_envelope 8, 0
 	octave 3
@@ -834,30 +834,30 @@ Music_EliteFourBattleBW_Ch3_loop_2:
 	octave 2
 	note F#, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note A_, 2
 	note G#, 2
 	note G_, 2
 	note F#, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note B_, 2
 	note A_, 2
 	note G_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note A_, 2
 	note G#, 2
 	note G_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note B_, 2
 	note A_, 2
@@ -867,33 +867,33 @@ Music_EliteFourBattleBW_Ch3_loop_3:
 	sound_loop 8, Music_EliteFourBattleBW_Ch3_loop_3
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note A_, 2
 	note G#, 2
 	note G_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note B_, 2
 	note A_, 2
 	note G_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note A_, 2
 	note G#, 2
 	note G_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note B_, 2
 	note A_, 2
@@ -981,14 +981,14 @@ Music_EliteFourBattleBW_Ch3_loop_6:
 	note F#, 2
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note C#, 2
 	sound_call Music_EliteFourBattleBW_Ch3_branch_3
 	note F#, 2
 	octave 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A#, 6
 	note G_, 4
@@ -1158,10 +1158,10 @@ Music_EliteFourBattleBW_Ch3_branch_3:
 Music_EliteFourBattleBW_Ch4:
 	toggle_noise 3
 	note_type 6
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 Music_EliteFourBattleBW_Ch4_loop_1:
 	note D#, 2
 	note D_, 2

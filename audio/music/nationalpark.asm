@@ -12,14 +12,14 @@ Music_NationalPark_Ch1:
 	vibrato 24, 2, 4
 	duty_cycle 1
 	note_type 12, 7, 7
-	note __, 2
+	rest 2
 Music_NationalPark_branch_f5504:
 	sound_call Music_NationalPark_branch_f554a
 	sound_call Music_NationalPark_branch_f554a
 	note_type 6, 6, 7
 	sound_call Music_NationalPark_branch_f563a
 	note_type 12, 7, 7
-	note __, 16
+	rest 16
 	octave 2
 	note A#, 1
 	octave 3
@@ -34,24 +34,24 @@ Music_NationalPark_branch_f5504:
 	note D_, 1
 	note C#, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	sound_call Music_NationalPark_branch_f563a
 	volume_envelope 7, 7
 	octave 3
 	note E_, 1
 	note F_, 5
 	note D#, 4
-	note __, 2
+	rest 2
 	note C_, 12
 	note F_, 8
 	note C#, 1
@@ -60,7 +60,7 @@ Music_NationalPark_branch_f5504:
 	volume_envelope 7, 7
 	note D_, 7
 	note_type 12, 7, 7
-	note __, 4
+	rest 4
 	sound_jump Music_NationalPark_branch_f5504
 
 Music_NationalPark_branch_f554a:
@@ -271,36 +271,36 @@ Music_NationalPark_branch_f554a:
 	sound_ret
 
 Music_NationalPark_branch_f563a:
-	note __, 16
-	note __, 3
+	rest 16
+	rest 3
 	octave 4
 	note A#, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 4
-	note __, 16
-	note __, 3
+	rest 4
+	rest 16
+	rest 3
 	note A_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 4
+	rest 4
 	sound_ret
 
 Music_NationalPark_Ch2:
 	vibrato 20, 2, 4
 	duty_cycle 1
 	note_type 12, 10, 7
-	note __, 2
+	rest 2
 	stereo_panning TRUE, FALSE
 Music_NationalPark_branch_f565d:
 	note_type 12, 10, 7
@@ -308,7 +308,7 @@ Music_NationalPark_branch_f565d:
 	octave 3
 	note D_, 8
 	sound_call Music_NationalPark_branch_f56b8
-	note __, 2
+	rest 2
 	volume_envelope 10, 7
 	octave 4
 	note G#, 2
@@ -322,30 +322,30 @@ Music_NationalPark_branch_f565d:
 	note C_, 5
 	octave 3
 	note G#, 4
-	note __, 2
+	rest 2
 	octave 4
 	note A#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	note E_, 1
 	note F_, 14
 	volume_envelope 8, 7
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 1
+	rest 1
 	volume_envelope 10, 7
 	sound_call Music_NationalPark_branch_f56f5
 	octave 3
@@ -354,7 +354,7 @@ Music_NationalPark_branch_f565d:
 	note C_, 5
 	octave 3
 	note G#, 4
-	note __, 2
+	rest 2
 	note A#, 12
 	octave 4
 	note C_, 8
@@ -439,17 +439,17 @@ Music_NationalPark_branch_f56f5:
 	note E_, 1
 	note F_, 5
 	note F#, 4
-	note __, 2
+	rest 2
 	note C#, 7
 	volume_envelope 8, 7
 	octave 5
 	note E_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	volume_envelope 10, 7
 	octave 3
@@ -460,17 +460,17 @@ Music_NationalPark_branch_f56f5:
 	note E_, 1
 	note F_, 5
 	note F#, 4
-	note __, 2
+	rest 2
 	note D#, 7
 	volume_envelope 8, 7
 	octave 5
 	note D_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 2
 	volume_envelope 10, 7
 	octave 4
@@ -578,52 +578,52 @@ Music_NationalPark_branch_f578f:
 	note F#, 3
 	octave 3
 	note C#, 2
-	note __, 1
+	rest 1
 	note A#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note C#, 3
 	octave 2
 	note F#, 3
 	octave 3
 	note C#, 2
-	note __, 1
+	rest 1
 	note A_, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note A_, 1
 	note C#, 3
 	octave 2
 	note F_, 3
 	octave 3
 	note C_, 2
-	note __, 1
+	rest 1
 	note G#, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note C_, 3
 	octave 2
 	note A#, 3
 	octave 3
 	note F_, 2
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 4
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_NationalPark_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 2
+	rest 2
 Music_NationalPark_branch_f57bd:
-	note __, 16
+	rest 16
 	sound_loop 23, Music_NationalPark_branch_f57bd
-	note __, 8
+	rest 8
 	note A#, 2
 	note D_, 2
 	note A#, 1

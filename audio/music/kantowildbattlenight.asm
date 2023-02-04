@@ -15,7 +15,7 @@ Music_KantoWildBattleNight_Ch1:
 	vibrato 18, 2, 2
 	duty_cycle 2
 	note_type 12, 11, 7
-	note __, 16
+	rest 16
 	octave 4
 	note A#, 6
 	note A_, 1
@@ -164,23 +164,23 @@ Music_KantoWildBattleNight_Ch3loop:
 	note G#, 16
 	note_type 6, 1, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	volume_envelope 3, 2
 	sound_call Music_KantoWildBattle_Type5
 	volume_envelope 2, 2
 	sound_call Music_KantoWildBattle_Type5
 	volume_envelope 1, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 6
 rept 4
 	note C#, 1
-	note __, 1
+	rest 1
 endr
 	octave 5
 	note G_, 2
@@ -193,51 +193,51 @@ endr
 	note_type 6, 1, 2
 rept 4
 	note G_, 1
-	note __, 1
+	rest 1
 endr
 	volume_envelope 2, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	volume_envelope 1, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note_type 12, 1, 2
 	octave 2
 	note A#, 16
 	note A#, 1
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 2
+	rest 2
 	note_type 6, 1, 2
 	sound_call Music_KantoWildBattle_Type6
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 4
 	note C_, 2
-	note __, 4
+	rest 4
 	sound_call Music_KantoWildBattle_Type6
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note_type 12, 1, 2
 	sound_call Music_KantoWildBattle_Ch3_Part1
 	volume_envelope 1, 1

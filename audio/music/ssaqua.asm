@@ -15,32 +15,32 @@ Music_SSAqua_Ch1:
 	note_type 6, 9, 7
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 Music_SSAqua_branch_eadbc:
 	octave 2
 	note G_, 16
-	note __, 8
+	rest 8
 	note G_, 2
-	note __, 2
+	rest 2
 	note_type 12, 9, 7
 	note G_, 2
 	note G_, 10
-	note __, 4
+	rest 4
 	note_type 6, 9, 7
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 16
-	note __, 8
+	rest 8
 	note G_, 2
-	note __, 2
+	rest 2
 	note_type 12, 9, 7
 	note G_, 2
 	note G_, 8
-	note __, 8
+	rest 8
 	duty_cycle 1
 	volume_envelope 6, 1
 	sound_call Music_SSAqua_branch_eaff5
@@ -70,27 +70,27 @@ Music_SSAqua_branch_eadbc:
 	note G_, 1
 	sound_call Music_SSAqua_branch_eaff5
 	sound_call Music_SSAqua_branch_eb03e
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	volume_envelope 9, 7
-	note __, 14
+	rest 14
 	note_type 6, 9, 7
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note_type 12, 9, 7
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	volume_envelope 9, 5
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 1
 	note E_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note C_, 1
 	octave 3
@@ -126,9 +126,9 @@ Music_SSAqua_branch_eadbc:
 	octave 3
 	note B_, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F#, 2
 	volume_envelope 7, 5
@@ -140,17 +140,17 @@ Music_SSAqua_branch_eadbc:
 	note A#, 2
 	note_type 6, 9, 7
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	volume_envelope 9, 7
 	note G_, 16
 	note A_, 16
 	note B_, 4
-	note __, 4
+	rest 4
 	note B_, 4
-	note __, 4
+	rest 4
 	octave 4
 	note E_, 8
 	note G_, 8
@@ -167,7 +167,7 @@ Music_SSAqua_branch_eadbc:
 	note C_, 4
 	note D_, 12
 	note F#, 12
-	note __, 8
+	rest 8
 	octave 2
 	note B_, 2
 	octave 3
@@ -181,9 +181,9 @@ Music_SSAqua_branch_eadbc:
 	note D_, 2
 	note F#, 2
 	note_type 12, 9, 7
-	note __, 7
-	note __, 16
-	note __, 16
+	rest 7
+	rest 16
+	rest 16
 	note G_, 8
 	note F#, 1
 	note D_, 1
@@ -208,24 +208,24 @@ Music_SSAqua_branch_eadbc:
 	octave 4
 	note D_, 1
 	note F#, 1
-	note __, 7
-	note __, 16
-	note __, 2
+	rest 7
+	rest 16
+	rest 2
 	note E_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note_type 6, 9, 7
-	note __, 1
+	rest 1
 	note C_, 1
 	note C#, 4
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note D_, 2
 	octave 2
@@ -254,7 +254,7 @@ Music_SSAqua_Ch2:
 	duty_cycle 2
 	vibrato 8, 3, 3
 	note_type 12, 11, 7
-	note __, 2
+	rest 2
 Music_SSAqua_branch_eaed5:
 	note_type 12, 11, 7
 	duty_cycle 1
@@ -265,9 +265,9 @@ Music_SSAqua_branch_eaed5:
 	volume_envelope 13, 7
 	sound_call Music_SSAqua_branch_eafe0
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note G_, 6
 	note G_, 1
@@ -280,12 +280,12 @@ Music_SSAqua_branch_eaed5:
 	transpose 0, 0
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G_, 6
-	note __, 2
+	rest 2
 	duty_cycle 3
 	volume_envelope 11, 7
 	octave 3
@@ -294,7 +294,7 @@ Music_SSAqua_branch_eaed5:
 	note C_, 1
 	sound_call Music_SSAqua_branch_eaf88
 	note G_, 4
-	note __, 4
+	rest 4
 	note G_, 8
 	note A_, 8
 	note B_, 8
@@ -307,14 +307,14 @@ Music_SSAqua_branch_eaed5:
 	note G_, 2
 	note B_, 6
 	note A_, 6
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
 	octave 4
 	note C_, 1
 	sound_call Music_SSAqua_branch_eaf88
 	note G_, 4
-	note __, 4
+	rest 4
 	note G_, 8
 	note A_, 8
 	note B_, 8
@@ -333,7 +333,7 @@ Music_SSAqua_branch_eaed5:
 	note G_, 4
 	note B_, 12
 	note A_, 12
-	note __, 4
+	rest 4
 	duty_cycle 0
 	note B_, 2
 	note A_, 2
@@ -344,22 +344,22 @@ Music_SSAqua_branch_eaed5:
 	note G_, 2
 	note F#, 2
 	note G_, 12
-	note __, 4
-	note __, 4
+	rest 4
+	rest 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 16
 	note A#, 12
 	note B_, 2
@@ -370,26 +370,26 @@ Music_SSAqua_branch_eaed5:
 	note A_, 11
 	note B_, 4
 	note G_, 12
-	note __, 4
-	note __, 4
+	rest 4
+	rest 4
 	octave 5
 	note C_, 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 1
 	note B_, 4
 	note A_, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 8
 	note G_, 8
 	note A_, 8
-	note __, 8
+	rest 8
 	sound_jump Music_SSAqua_branch_eaed5
 
 Music_SSAqua_branch_eaf88:
@@ -409,50 +409,50 @@ Music_SSAqua_branch_eaf88:
 	octave 4
 	note C_, 1
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note B_, 6
 	note F#, 6
-	note __, 4
+	rest 4
 	duty_cycle 1
 	note_type 6, 11, 7
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	duty_cycle 3
 	note E_, 2
 	note F#, 2
@@ -471,34 +471,34 @@ Music_SSAqua_branch_eafd5:
 	note_type 12, 11, 7
 	note B_, 10
 	note F#, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_SSAqua_branch_eafe0:
 	octave 3
 	note D_, 10
 	note E_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 12
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 8
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_SSAqua_branch_eaff5:
@@ -608,27 +608,27 @@ Music_SSAqua_Ch3:
 	note_type 6, 1, 5
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 Music_SSAqua_branch_eb063:
 	note G_, 16
-	note __, 8
+	rest 8
 	note G_, 2
-	note __, 2
+	rest 2
 	note_type 12, 1, 5
 	note G_, 2
 	note G_, 10
-	note __, 4
+	rest 4
 	note_type 6, 1, 5
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 16
-	note __, 8
+	rest 8
 	note G_, 2
-	note __, 2
+	rest 2
 	note_type 12, 1, 5
 	note G_, 2
 	note G_, 8
@@ -646,444 +646,444 @@ Music_SSAqua_branch_eb063:
 	sound_call Music_SSAqua_branch_eb14d
 Music_SSAqua_branch_eb08d:
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_loop 4, Music_SSAqua_branch_eb08d
 	sound_call Music_SSAqua_branch_eb172
 	sound_call Music_SSAqua_branch_eb172
 	sound_call Music_SSAqua_branch_eb230
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	sound_call Music_SSAqua_branch_eb230
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_SSAqua_branch_eb063
 
 Music_SSAqua_branch_eb14d:
 	note_type 6, 1, 5
 	octave 2
 	note G_, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_SSAqua_branch_eb172:
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 4
 	note F#, 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note B_, 4
 	note G_, 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	sound_ret
 
 Music_SSAqua_branch_eb230:
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	sound_ret
 
 Music_SSAqua_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 2
+	rest 2
 Music_SSAqua_branch_eb24e:
 	note G#, 1
 	note G_, 1

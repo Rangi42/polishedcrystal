@@ -152,7 +152,7 @@ Music_PalletTown_branch_f4ba8:
 	note F#, 2
 	note G_, 2
 	note D_, 2
-	note __, 4
+	rest 4
 	note D_, 4
 	note F#, 4
 	octave 1
@@ -263,16 +263,16 @@ Music_PalletTown_branch_f4c2d:
 	octave 5
 	note B_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 6
 	note C_, 8
-	note __, 2
+	rest 2
 	octave 5
 	note F#, 2
 	note G_, 2
@@ -291,16 +291,16 @@ Music_PalletTown_branch_f4c2d:
 	octave 6
 	note D_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 6
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 8
 	note C_, 2
 	octave 5
@@ -314,7 +314,7 @@ Music_PalletTown_branch_f4c2d:
 	note B_, 2
 	note A_, 2
 	note G_, 8
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 2
 	note B_, 2
@@ -324,20 +324,20 @@ Music_PalletTown_branch_f4c2d:
 	note C_, 2
 	octave 5
 	note B_, 8
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 2
 	note B_, 2
 	octave 6
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 4
 	note D_, 6
 	note C_, 1
 	note D_, 1
 	octave 5
 	note B_, 8
-	note __, 2
+	rest 2
 	note B_, 2
 	note A_, 2
 	note G_, 2
@@ -348,11 +348,11 @@ Music_PalletTown_branch_f4c2d:
 	note G_, 4
 	note E_, 4
 	note F#, 7
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	note B_, 3
-	note __, 1
+	rest 1
 	note B_, 8
 	note A_, 8
 	sound_jump Music_PalletTown_branch_f4c2d

@@ -9,8 +9,8 @@ Music_LookSage_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	note_type 12, 11, 3
-	note __, 2
-	note __, 16
+	rest 2
+	rest 16
 	sound_call Music_LookSage_branch_ee3fa
 	volume_envelope 11, 3
 	octave 3
@@ -168,7 +168,7 @@ Music_LookSage_branch_ee430:
 	note B_, 1
 	note A#, 1
 	note A_, 1
-	note __, 4
+	rest 4
 	octave 6
 	note E_, 2
 	note F_, 2

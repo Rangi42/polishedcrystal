@@ -106,7 +106,7 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 	note A_, 6
 	volume_envelope 4, 7
 	note A_, 6
-	note __, 8
+	rest 8
 	volume_envelope 2, 0
 	note G_, 8
 	volume_envelope 2, -6
@@ -117,7 +117,7 @@ Music_OreburghGateDPPt_Ch2:
 	pitch_offset 1
 	duty_cycle 1
 	note_type 12, 5, 5
-	note __, 16
+	rest 16
 Music_OreburghGateDPPt_Ch2_branch_1:
 	octave 3
 	volume_envelope 5, 5
@@ -256,7 +256,7 @@ Music_OreburghGateDPPt_Ch2_branch_1:
 Music_OreburghGateDPPt_Ch2_branch_2:
 	octave 4
 	volume_envelope 3, 0
-	note __, 8
+	rest 8
 	note C#, 4
 	volume_envelope 3, -7
 	note C#, 8
@@ -320,7 +320,7 @@ Music_OreburghGateDPPt_Ch2_branch_2:
 Music_OreburghGateDPPt_Ch2_branch_3:
 	octave 5
 	volume_envelope 5, 3
-	note __, 1
+	rest 1
 	note F#, 1
 	note C#, 1
 	note D_, 1
@@ -408,239 +408,239 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 	note D#, 2
 	note D#, 4
 	note D#, 2
-	note __, 12
-	note __, 12
+	rest 12
+	rest 12
 	sound_jump Music_OreburghGateDPPt_Ch2_branch_1
 
 Music_OreburghGateDPPt_Ch3:
 	note_type 12, 1, 2
 	vibrato 8, 1, 2
-	note __, 16
+	rest 16
 Music_OreburghGateDPPt_Ch3_branch_1:
 	octave 3
 	volume_envelope 1, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	; measure 2
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	; measure 3
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	; measure 4
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 3
 	volume_envelope 1, 2
@@ -1176,84 +1176,84 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 3
 	volume_envelope 1, 5
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	volume_envelope 2, 5
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	volume_envelope 1, 5
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 3
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 3
-	note __, 1
+	rest 1
 	volume_envelope 2, 5
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 3
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	volume_envelope 1, 5
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 3
-	note __, 1
+	rest 1
 	volume_envelope 2, 5
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 3
-	note __, 1
+	rest 1
 	volume_envelope 3, 5
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	volume_envelope 1, 2
-	note __, 12
-	note __, 12
+	rest 12
+	rest 12
 	sound_jump Music_OreburghGateDPPt_Ch3_branch_1

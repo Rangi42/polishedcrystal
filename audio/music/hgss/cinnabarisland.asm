@@ -12,7 +12,7 @@ Music_CinnabarIslandHGSS_Ch1:
 	duty_cycle 2
 	note_type 12, 11, 6
 Music_CinnabarIslandHGSS_Loop1:
-	note __, 4
+	rest 4
 	octave 3
 	note D_, 4
 	note E_, 6

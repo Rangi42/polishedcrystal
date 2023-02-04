@@ -11,7 +11,7 @@ Music_JohtoTrainerBattle_Ch1:
 	pitch_offset 2
 	vibrato 18, 1, 5
 	note_type 12, 9, 2
-	note __, 8
+	rest 8
 	octave 3
 	note A_, 1
 	note G#, 1
@@ -242,7 +242,7 @@ Music_JohtoTrainerBattle_branch_f6102:
 	note D#, 4
 	volume_envelope 10, 7
 	note D#, 12
-	note __, 16
+	rest 16
 Music_JohtoTrainerBattle_branch_f61bd:
 	volume_envelope 11, 7
 	note F_, 8
@@ -400,8 +400,8 @@ Music_JohtoTrainerBattle_branch_f61bd:
 	note G_, 4
 	note G_, 2
 	note A#, 12
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	volume_envelope 10, 0
 	octave 4
 	note D_, 4
@@ -1241,7 +1241,7 @@ Music_JohtoTrainerBattle_branch_f6636:
 	note A#, 16
 	octave 4
 	note D_, 8
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 2
 	note A#, 2

@@ -138,35 +138,35 @@ Music_SafariZoneGateHGSS_Ch1:
 	volume_envelope 7, 5
 	octave 2
 	note A_, 1
-	note __, 5
+	rest 5
 	octave 1
 	note A_, 1
-	note __, 7
+	rest 7
 	octave 2
 	note C#, 2
 	note D_, 1
-	note __, 5
+	rest 5
 	note E_, 1
-	note __, 7
+	rest 7
 	note G#, 2
 	note A_, 2
 	octave 1
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 1
 	note A_, 1
-	note __, 2
+	rest 2
 	octave 2
 	note C#, 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 3
+	rest 3
 	note E_, 3
 	octave 1
 	note E_, 3
@@ -174,12 +174,12 @@ Music_SafariZoneGateHGSS_Ch1:
 	note A_, 2
 	octave 1
 	note A_, 2
-	note __, 12
+	rest 12
 	octave 2
 	note D_, 2
 	octave 1
 	note D_, 2
-	note __, 7
+	rest 7
 	note_type 3, 7, 5
 	note A#, 2
 	note B_, 2
@@ -196,9 +196,9 @@ Music_SafariZoneGateHGSS_Ch1:
 	volume_envelope 11, 2
 	octave 4
 	note A_, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	sound_jump Music_SafariZoneGateHGSS_Ch1
 	sound_ret
 
@@ -412,7 +412,7 @@ Music_SafariZoneGateHGSS_Ch2:
 	volume_envelope 8, 6
 	note C#, 2
 	sound_call Music_SafariZoneGateHGSS_Ch2_branch_1
-	note __, 1
+	rest 1
 	sound_jump Music_SafariZoneGateHGSS_Ch2
 	sound_ret
 
@@ -445,8 +445,8 @@ Music_SafariZoneGateHGSS_Ch2_branch_1:
 Music_SafariZoneGateHGSS_Ch3:
 	note_type 12, 2, 5
 	vibrato 18, 1, 5
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 Music_SafariZoneGateHGSS_Ch3_loop:
 	octave 2
 	note E_, 1
@@ -456,93 +456,93 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note E_, 1
 	note G#, 1
 	note A_, 3
-	note __, 5
+	rest 5
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 2
+	rest 2
 	note A_, 5
-	note __, 4
+	rest 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	note D_, 1
 	note E_, 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note B_, 1
 	octave 2
 	note C#, 1
 	note D_, 2
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 2
+	rest 2
 	note F#, 1
 	note G#, 1
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 2
+	rest 2
 	note C#, 1
 	note D_, 1
 	note E_, 2
 	octave 1
 	note A_, 1
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 2
+	rest 2
 	octave 2
 	note D_, 2
 	note C#, 1
 	note D_, 1
-	note __, 2
+	rest 2
 	note D_, 1
 	note D_, 1
 	note E_, 2
 	note F#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	note G#, 1
-	note __, 5
+	rest 5
 	note_type 3, 1, 4
 	octave 3
 	note A_, 1
@@ -554,7 +554,7 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	octave 5
 	note D_, 4
 	note C#, 1
-	note __, 10
+	rest 10
 	note_type 3, 1, 4
 	octave 4
 	note E_, 1
@@ -575,19 +575,19 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note_type 6, 1, 2
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note E_, 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note D_, 2
 	note E_, 2
@@ -597,9 +597,9 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note A_, 2
 	note B_, 4
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 16
+	rest 16
 	note A_, 1
 	note B_, 1
 	octave 6
@@ -610,12 +610,12 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note B_, 2
 	octave 6
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A_, 2
-	note __, 14
+	rest 14
 	octave 6
 	note C#, 2
 	note D_, 2
@@ -626,14 +626,14 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note B_, 2
 	octave 6
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note E_, 2
 	note D_, 2
 	note C#, 2
-	note __, 4
+	rest 4
 	note C#, 4
 	octave 5
 	note E_, 2
@@ -641,27 +641,27 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note G#, 2
 	note A_, 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 4
 	note D_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note B_, 2
-	note __, 2
+	rest 2
 
 	octave 5
 	note E_, 8
 	sound_call Music_SafariZoneGateHGSS_Ch3_branch_1
 	note A_, 2
-	note __, 4
+	rest 4
 	note E_, 2
-	note __, 2
+	rest 2
 	sound_call Music_SafariZoneGateHGSS_Ch3_branch_1
 	note A_, 10
 	note_type 12, 2, 2
@@ -669,46 +669,46 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	volume_envelope 3, 2
 	note A_, 4
 	volume_envelope 2, 5
-	note __, 16
+	rest 16
 	sound_jump Music_SafariZoneGateHGSS_Ch3_loop
 	sound_ret
 
 Music_SafariZoneGateHGSS_Ch3_branch_1:
 	note F#, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note C#, 2
-	note __, 4
+	rest 4
 	note E_, 2
 	note A_, 2
 	note B_, 2
 	octave 6
 	note C#, 2
-	note __, 4
+	rest 4
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 5
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_SafariZoneGateHGSS_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 16
+	rest 16
 Music_SafariZoneGateHGSS_Ch4_loop_main:
-	note __, 12
+	rest 12
 	note C_, 1
 	note C_, 2
 	note C_, 1

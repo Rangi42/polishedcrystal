@@ -179,24 +179,24 @@ Music_LookKimonoGirl_branch_f7aa8:
 	note E_, 1
 	octave 5
 	note E_, 16
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 3
+	rest 3
 	volume_envelope 11, 7
 	note E_, 2
-	note __, 2
+	rest 2
 	volume_envelope 11, 7
 	note E_, 2
-	note __, 1
+	rest 1
 	volume_envelope 10, 7
 	note E_, 2
-	note __, 1
+	rest 1
 	note_type 6, 6, 5
 	note E_, 2
-	note __, 1
+	rest 1
 	volume_envelope 5, 4
 	note E_, 2
-	note __, 1
+	rest 1
 	volume_envelope 6, 3
 	note E_, 2
 	note E_, 2
@@ -213,8 +213,8 @@ Music_LookKimonoGirl_Ch3:
 	stereo_panning TRUE, TRUE
 	vibrato 18, 2, 4
 	note_type 6, 1, 3
-	note __, 1
-	note __, 16
+	rest 1
+	rest 16
 	octave 5
 	note E_, 1
 	note F_, 1

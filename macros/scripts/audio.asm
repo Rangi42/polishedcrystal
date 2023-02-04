@@ -13,7 +13,11 @@ MACRO channel
 ENDM
 
 MACRO note
-	dn (\1), (\2) - 1
+	dn (\1), (\2) - 1 ; pitch, length
+ENDM
+
+MACRO rest
+	note 0, \1 ; length
 ENDM
 
 MACRO square_note

@@ -15,7 +15,7 @@ Music_Route12_Ch1:
 	note_type 12, 9, 8
 	octave 3
 	note G#, 1
-	note __, 2
+	rest 2
 	note A_, 1
 	note G#, 8
 	octave 2
@@ -25,7 +25,7 @@ Music_Route12_Ch1:
 	note F#, 1
 	note G#, 1
 	note F#, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	volume_envelope 9, 7
 	note D#, 12
@@ -36,7 +36,7 @@ Music_Route12_branch_ec535:
 	sound_call Music_Route12_branch_ec5bf
 	sound_call Music_Route12_branch_ec5b1
 	note E_, 1
-	note __, 2
+	rest 2
 	note F#, 1
 	note E_, 4
 	note B_, 4
@@ -75,7 +75,7 @@ Music_Route12_branch_ec535:
 	octave 3
 	note B_, 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 4
 	octave 4
 	note C#, 2
@@ -96,7 +96,7 @@ Music_Route12_branch_ec535:
 	note B_, 3
 	note A_, 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 4
 	note B_, 2
 	note A_, 2
@@ -125,7 +125,7 @@ Music_Route12_branch_ec59b:
 	octave 3
 	note D#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	note G#, 4
@@ -135,12 +135,12 @@ Music_Route12_branch_ec59b:
 Music_Route12_branch_ec5b1:
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	octave 3
 	note D#, 1
@@ -150,11 +150,11 @@ Music_Route12_branch_ec5b1:
 
 Music_Route12_branch_ec5bf:
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note G#, 1
 	note A_, 4
@@ -167,12 +167,12 @@ Music_Route12_Ch2:
 	note_type 12, 11, 8
 	octave 4
 	note E_, 1
-	note __, 2
+	rest 2
 	note F#, 1
 	note E_, 12
 	octave 3
 	note B_, 1
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 1
 	volume_envelope 11, 7
@@ -192,14 +192,14 @@ Music_Route12_branch_ec5e5:
 	note G#, 1
 	note F#, 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note E_, 1
 	octave 3
 	note B_, 12
 	duty_cycle 2
 	octave 2
 	note B_, 1
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 1
 	octave 2
@@ -216,7 +216,7 @@ Music_Route12_branch_ec5e5:
 	note B_, 1
 	note A_, 1
 	note B_, 2
-	note __, 1
+	rest 1
 	note A_, 1
 	volume_envelope 11, 8
 	note G#, 6
@@ -229,21 +229,21 @@ Music_Route12_branch_ec5e5:
 	note A_, 3
 	note G#, 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 8
 	volume_envelope 10, 7
 	note F#, 10
-	note __, 2
+	rest 2
 	note F#, 4
 	volume_envelope 10, 8
 	note G#, 3
 	note F#, 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 8
 	volume_envelope 10, 7
 	note E_, 10
-	note __, 2
+	rest 2
 	note E_, 4
 	note F#, 3
 	note D#, 3
@@ -283,25 +283,25 @@ Music_Route12_Ch3:
 	note_type 12, 1, 6
 	octave 3
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 1
 	note A_, 1
 	note B_, 2
-	note __, 2
+	rest 2
 	note E_, 4
 	note D#, 2
-	note __, 4
+	rest 4
 	note D#, 1
 	note E_, 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note D#, 4
 Music_Route12_branch_ec66c:
 	sound_call Music_Route12_branch_ec6b4
 	note F#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note D#, 1
 	note E_, 1
 	note F#, 4
@@ -309,9 +309,9 @@ Music_Route12_branch_ec66c:
 	note B_, 4
 	sound_call Music_Route12_branch_ec6b4
 	note E_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 1
 	octave 3
@@ -319,11 +319,11 @@ Music_Route12_branch_ec66c:
 	note D_, 4
 	note F_, 4
 	note F#, 13
-	note __, 1
+	rest 1
 	note F#, 1
 	note G#, 1
 	note A_, 5
-	note __, 1
+	rest 1
 	note A_, 1
 	note B_, 1
 	octave 4
@@ -340,7 +340,7 @@ Music_Route12_branch_ec66c:
 	note E_, 4
 	octave 2
 	note B_, 5
-	note __, 1
+	rest 1
 	note B_, 1
 	octave 3
 	note D#, 1
@@ -350,39 +350,39 @@ Music_Route12_branch_ec66c:
 	note D#, 4
 Music_Route12_branch_ec6a3:
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
 	note F#, 1
 	note G#, 4
 	note E_, 3
-	note __, 1
+	rest 1
 	sound_loop 2, Music_Route12_branch_ec6a3
 	sound_jump Music_Route12_branch_ec66c
 
 Music_Route12_branch_ec6b4:
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
 	note F#, 1
 	note G#, 4
 	note E_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
 	note E_, 1
 	note F#, 4
 	note D_, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
 	note F#, 1
 	note G#, 4

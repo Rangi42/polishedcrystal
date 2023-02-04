@@ -165,7 +165,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note E_, 2
 	volume_envelope 10, 6
 	note D_, 12
-	note __, 2
+	rest 2
 	duty_cycle 3
 	octave 4
 	note B_, 1
@@ -227,56 +227,56 @@ Music_GymLeaderVictory_Ch3:
 	stereo_panning TRUE, FALSE
 Music_GymLeaderVictory_branch_f4744:
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 2
 	octave 3
 	note C#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 2
 	note B_, 2
-	note __, 4
+	rest 4
 	note G_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C#, 4
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 2
 	octave 3
 	note C#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A_, 2
 	note B_, 2
-	note __, 4
+	rest 4
 	note G_, 2
 	octave 3
 	note D_, 2
-	note __, 6
+	rest 6
 	sound_loop 2, Music_GymLeaderVictory_branch_f4744
 	sound_call Music_GymLeaderVictory_branch_f479e
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
 	note F#, 2
 	note D_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
@@ -286,20 +286,20 @@ Music_GymLeaderVictory_branch_f4744:
 	sound_call Music_GymLeaderVictory_branch_f479e
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
 	note G_, 2
 	note E_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	note B_, 2
@@ -310,20 +310,20 @@ Music_GymLeaderVictory_branch_f4744:
 Music_GymLeaderVictory_branch_f479e:
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
 	note F#, 2
 	note D_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
@@ -332,20 +332,20 @@ Music_GymLeaderVictory_branch_f479e:
 	note A_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	octave 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
 	note G#, 2
 	note E_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
 	octave 3
@@ -353,11 +353,11 @@ Music_GymLeaderVictory_branch_f479e:
 	octave 2
 	note B_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
@@ -366,12 +366,12 @@ Music_GymLeaderVictory_branch_f479e:
 	note A_, 2
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3

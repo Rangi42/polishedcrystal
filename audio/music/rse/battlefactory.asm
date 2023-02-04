@@ -15,12 +15,12 @@ Music_BattleFactoryRSE_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	note_type 12, 4, 7
-	note __, 12
-	note __, 16
+	rest 12
+	rest 16
 Music_BattleFactoryRSE_Ch1_loop:
 	duty_cycle 2
 	vibrato 18, 2, 4
-	note __, 16
+	rest 16
 	note_type 6, 4, 7
 	octave 4
 	note G_, 12
@@ -29,7 +29,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	octave 4
 	note F_, 8
 	note D_, 16
-	note __, 12
+	rest 12
 	volume_envelope 4, 2
 	duty_cycle 0
 	note D_, 2
@@ -100,7 +100,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	volume_envelope 4, 2
 	duty_cycle 0
 	octave 4
-	note __, 8
+	rest 8
 	note F_, 2
 	note F_, 2
 	note F_, 2
@@ -114,38 +114,38 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note F_, 2
 	note F_, 2
 	note F_, 4
-	note __, 16
+	rest 16
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	duty_cycle 3
 	octave 4
 	note E_, 2
@@ -212,7 +212,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D_, 2
 	note D_, 2
 
-	note __, 16
+	rest 16
 	duty_cycle 3
 	octave 3
 	note A#, 2
@@ -275,7 +275,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note F#, 8
 	note D#, 16
 	vibrato 18, 2, 4
-	note __, 16
+	rest 16
 	duty_cycle 3
 	volume_envelope 4, 2
 	sound_call Music_BattleFactoryRSE_Ch2_branch_1
@@ -331,54 +331,54 @@ Music_BattleFactoryRSE_Ch1_loop:
 	vibrato 18, 7, 3
 	vibrato 18, 2, 4
 	note A_, 10
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 12
 	note_type 8, 10, 7
 	duty_cycle 2
 	octave 6
 	note D#, 1
 	note D_, 5
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note A#, 2
 	note A_, 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note G_, 6
 	note D#, 1
 	note D_, 5
 	note_type 6, 4, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 
 	duty_cycle 0
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 2
 	note B_, 2
@@ -388,62 +388,62 @@ Music_BattleFactoryRSE_Ch1_loop:
 	volume_envelope 4, 7
 	note F#, 16
 	vibrato 18, 2, 4
-	note __, 8
+	rest 8
 	duty_cycle 1
 	note_type 8, 10, 7
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note B_, 6
 	note A_, 6
 	note G#, 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note F#, 12
 	note_type 6, 9, 4
-	note __, 12
+	rest 12
 	octave 4
 	duty_cycle 2
 	note G#, 16
-	note __, 12
-	note __, 8
+	rest 12
+	rest 8
 	duty_cycle 0
 	volume_envelope 6, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	volume_envelope 2, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note G_, 2
@@ -454,10 +454,10 @@ Music_BattleFactoryRSE_Ch1_loop:
 Music_BattleFactoryRSE_Ch2:
 	stereo_panning TRUE, TRUE
 	note_type 12, 9, 0
-	note __, 12
+	rest 12
 Music_BattleFactoryRSE_Ch2_loop:
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	duty_cycle 2
 	note_type 6, 9, 7
 	octave 4
@@ -469,7 +469,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G#, 1
 	note F_, 8
 	note D_, 16
-	note __, 4
+	rest 4
 	volume_envelope 9, 2
 	duty_cycle 0
 	note D_, 2
@@ -565,7 +565,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F_, 2
 	note F_, 2
 	note F_, 4
-	note __, 2
+	rest 2
 	duty_cycle 2
 	octave 3
 	note E_, 2
@@ -573,7 +573,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
 	note G_, 2
@@ -582,35 +582,35 @@ Music_BattleFactoryRSE_Ch2_loop:
 	duty_cycle 0
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	duty_cycle 3
 	octave 4
 	note E_, 2
@@ -678,7 +678,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 2
 
 	duty_cycle 2
-	note __, 10
+	rest 10
 	octave 4
 	note E_, 2
 	note G_, 2
@@ -747,7 +747,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D#, 16
 	duty_cycle 2
 	volume_envelope 9, 2
-	note __, 10
+	rest 10
 	octave 4
 	note E_, 2
 	note G_, 2
@@ -904,26 +904,26 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 2
 	note B_, 2
@@ -933,7 +933,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	volume_envelope 9, 7
 	note F#, 16
 	vibrato 18, 2, 4
-	note __, 16
+	rest 16
 	duty_cycle 3
 	octave 3
 	volume_envelope 4, 2
@@ -957,39 +957,39 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note C#, 2
 	octave 3
 	note B_, 2
-	note __, 8
+	rest 8
 	volume_envelope 11, 7
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_BattleFactoryRSE_Ch2_loop
 
 Music_BattleFactoryRSE_Ch2_branch_1:
@@ -999,13 +999,13 @@ Music_BattleFactoryRSE_Ch2_branch_1:
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note B_, 2
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	note D_, 2
@@ -1020,49 +1020,49 @@ Music_BattleFactoryRSE_Ch3:
 	note_type 6, 2, 5
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
@@ -1072,31 +1072,31 @@ Music_BattleFactoryRSE_Ch3_loop:
 	octave 2
 	note G_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
 	octave 2
 	note E_, 2
 	note G_, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
 	sound_call Music_BattleFactoryRSE_Ch3_branch_1
@@ -1169,63 +1169,63 @@ Music_BattleFactoryRSE_Ch3_loop:
 Music_BattleFactoryRSE_Ch3_branch_1:
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_BattleFactoryRSE_Ch3_branch_2:
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
@@ -1235,15 +1235,15 @@ Music_BattleFactoryRSE_Ch3_branch_2:
 
 Music_BattleFactoryRSE_Ch3_branch_3:
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_loop 4, Music_BattleFactoryRSE_Ch3_branch_3
 	sound_ret
 

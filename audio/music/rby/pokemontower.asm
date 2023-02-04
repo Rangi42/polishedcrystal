@@ -13,7 +13,7 @@ Music_PokemonTowerRBY_Ch1:
 	duty_cycle 3
 	vibrato 12, 2, 3
 	note_type 12, 8, 0
-	note __, 4
+	rest 4
 	octave 4
 	note B_, 12
 
@@ -21,90 +21,90 @@ Music_PokemonTowerRBY_branch_7f05a:
 	note_type 12, 11, 4
 	octave 4
 	note G_, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	octave 3
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	octave 4
 	note F#, 1
-	note __, 7
+	rest 7
 	note C_, 1
 	octave 3
 	note B_, 1
 	note G_, 1
-	note __, 5
+	rest 5
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note D_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	octave 4
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note C#, 1
-	note __, 7
+	rest 7
 	note C#, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 3
+	rest 3
 	note_type 12, 8, 4
 	note C_, 1
-	note __, 3
+	rest 3
 	note_type 12, 11, 4
 	note D_, 1
-	note __, 7
+	rest 7
 	note D_, 1
-	note __, 7
+	rest 7
 	octave 3
 	note A_, 1
-	note __, 7
+	rest 7
 	note A_, 1
-	note __, 7
+	rest 7
 	note_type 12, 10, 7
 	note B_, 8
 	note B_, 8
@@ -115,10 +115,10 @@ Music_PokemonTowerRBY_branch_7f05a:
 	note C#, 8
 	note_type 12, 10, 6
 	note D_, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note_type 12, 9, 2
 	note B_, 4
 	octave 5
@@ -185,7 +185,7 @@ Music_PokemonTowerRBY_branch_7f0ee:
 	note G_, 1
 	note F#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note_type 12, 9, 6
 	octave 3
 	note G_, 4
@@ -280,7 +280,7 @@ Music_PokemonTowerRBY_branch_7f0ee:
 	note C_, 8
 	note_type 12, 6, 7
 	note C_, 8
-	note __, 16
+	rest 16
 	note_type 12, 10, 0
 	octave 5
 	note G_, 16
@@ -301,164 +301,164 @@ Music_PokemonTowerRBY_branch_7f0ee:
 Music_PokemonTowerRBY_Ch3:
 	vibrato 4, 1, 1
 	note_type 12, 1, 3
-	note __, 8
+	rest 8
 	octave 5
 	note G_, 8
 
 Music_PokemonTowerRBY_branch_7f1a2:
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
 	note D#, 1
 	note F#, 1
 	note D#, 1
 	note E_, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	note E_, 1
 	note D#, 1
 	octave 4
 	note B_, 1
-	note __, 5
+	rest 5
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	octave 5
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	octave 4
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	note B_, 1
-	note __, 7
+	rest 7
 	octave 5
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note D_, 1
-	note __, 7
+	rest 7
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 7
+	rest 7
 	note E_, 1
-	note __, 7
+	rest 7
 	note F_, 1
-	note __, 7
+	rest 7
 	note F_, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note F#, 1
-	note __, 7
+	rest 7
 	note G_, 1
-	note __, 15
+	rest 15
 	note_type 12, 1, -3 ; waveform 11
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 15
+	rest 15
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 7
+	rest 7
 	note_type 12, 1, 3
 	octave 6
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 15
+	rest 15
 	note E_, 1
-	note __, 15
+	rest 15
 	note E_, 1
-	note __, 15
+	rest 15
 	note E_, 1
-	note __, 15
+	rest 15
 	note E_, 1
-	note __, 15
+	rest 15
 	note E_, 1
-	note __, 7
+	rest 7
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	sound_jump Music_PokemonTowerRBY_branch_7f1a2

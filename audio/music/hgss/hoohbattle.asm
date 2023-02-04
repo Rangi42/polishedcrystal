@@ -394,8 +394,8 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note G_, 2
 	pitch_sweep 0, 0
 	note E_, 2
-	note __, 16
-	note __, 14
+	rest 16
+	rest 14
 	octave 2
 	note E_, 4
 	volume_envelope 12, 8
@@ -431,8 +431,8 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note G_, 2
 	pitch_sweep 0, 0
 	note E_, 2
-	note __, 16
-	note __, 14
+	rest 16
+	rest 14
 	duty_cycle 0
 	volume_envelope 12, 4
 	vibrato 1, 2, 5
@@ -474,7 +474,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 3
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 2
 	octave 2
@@ -488,7 +488,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 3
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 4
 	volume_envelope 12, 8
@@ -823,9 +823,9 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note B_, 2
 	note A_, 2
 	note G_, 2
-	note __, 16
-	note __, 16
-	note __, 1
+	rest 16
+	rest 16
+	rest 1
 	volume_envelope 12, 4
 	note D_, 1
 	note E_, 4
@@ -849,8 +849,8 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note D_, 1
 	note E_, 1
 	note G_, 2
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	octave 3
 	note A_, 1
 	note G_, 1
@@ -902,8 +902,8 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note B_, 1
 	note B_, 1
 	note B_, 2
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	duty_cycle 3
 	volume_envelope 12, 8
 	vibrato 0, 0, 0
@@ -936,43 +936,43 @@ Music_HoOhBattleHGSS_Ch3_L:
 	note E_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note B_, 6
 	note A_, 2
 	note F#, 2
 	note D_, 12
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note D_, 8
-	note __, 4
+	rest 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 6
-	note __, 4
+	rest 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 4
 	octave 2
 	note B_, 4
 	note A_, 4
-	note __, 2
+	rest 2
 	note E_, 6
-	note __, 4
+	rest 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	octave 3
 	note D_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	note B_, 2
 	note E_, 2
@@ -1122,7 +1122,7 @@ Music_HoOhBattleHGSS_Ch3_L1:
 	note E_, 4
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 2
 	octave 1
@@ -1131,7 +1131,7 @@ Music_HoOhBattleHGSS_Ch3_L1:
 	note E_, 4
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 4
 	note A#, 16

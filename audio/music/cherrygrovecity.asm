@@ -13,7 +13,7 @@ Music_CherrygroveCity_Ch1:
 	vibrato 8, 1, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 11, 5
-	note __, 10
+	rest 10
 	octave 3
 	note C_, 2
 	note D_, 2
@@ -175,7 +175,7 @@ Music_CherrygroveCity_branch_f5b87:
 
 Music_CherrygroveCity_Ch3:
 	note_type 12, 1, 6
-	note __, 4
+	rest 4
 	octave 4
 	note C_, 2
 	octave 3
@@ -286,17 +286,17 @@ Music_CherrygroveCity_branch_f5be4:
 Music_CherrygroveCity_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 16
+	rest 16
 Music_CherrygroveCity_branch_f5c4d:
 	note C#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note C#, 2
 	note C#, 2
 	note F#, 2
 	note C#, 4
 	note C#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note C#, 1
 	note C#, 1

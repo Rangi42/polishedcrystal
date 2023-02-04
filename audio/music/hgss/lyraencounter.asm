@@ -40,7 +40,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	octave 3
 	note F_, 2
 	octave 2
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 4
 	octave 2
@@ -74,27 +74,27 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note A#, 1
 	note A#, 4
 	volume_envelope 11, 4
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 3
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 5
 	note F_, 2
 	note G_, 2
@@ -102,16 +102,16 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note A#, 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 5
 	note G_, 4
 	note G#, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note_type 6, 11, 4
 	note G_, 8
 	note G#, 1
@@ -122,9 +122,9 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note C_, 1
 	note D_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 4
 	octave 4
@@ -134,10 +134,10 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note A#, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
-	note __, 2
+	rest 2
 	note G_, 2
 	note A#, 2
 	volume_envelope 8, 4
@@ -192,21 +192,21 @@ Music_LyraEncounterHGSS_Ch2:
 	octave 4
 	note C_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	volume_envelope 11, 7
 	note D#, 9
 Music_LyraEncounterHGSS_Ch2_loop:
-	note __, 4
+	rest 4
 	octave 4
 	volume_envelope 11, 4
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	volume_envelope 11, 6
 	note A#, 5
 	volume_envelope 11, 4
@@ -217,10 +217,10 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note D#, 4
 	note D#, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	volume_envelope 11, 7
 	note G_, 9
-	note __, 2
+	rest 2
 	volume_envelope 11, 4
 	note C_, 2
 	note C_, 1
@@ -295,7 +295,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note A_, 2
 	volume_envelope 11, 7
 	note A#, 9
-	note __, 8
+	rest 8
 	sound_jump Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraEncounterHGSS_Ch3:
@@ -304,183 +304,183 @@ Music_LyraEncounterHGSS_Ch3:
 	octave 2
 	note A#, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 1
 Music_LyraEncounterHGSS_Ch3_loop:
 	octave 3
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note D_, 2
-	note __, 1
+	rest 1
 	note D_, 1
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	octave 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	note G_, 2
 	note A#, 2
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 1
 	octave 3
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	octave 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	octave 3
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note D_, 2
 	note F_, 2
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note D_, 2
-	note __, 1
+	rest 1
 	note D_, 1
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note C#, 2
-	note __, 1
+	rest 1
 	note C#, 1
 	octave 2
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 1
 	octave 3
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	note E_, 2
 	note G_, 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 1
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	note C#, 2
-	note __, 1
+	rest 1
 	note C#, 1
 	octave 2
 	note A#, 2
 	octave 3
 	note F_, 2
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	octave 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	note A#, 2
 	octave 3
 	note D_, 2
 	octave 2
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 1
 	octave 3
 	note D#, 2
-	note __, 1
+	rest 1
 	note D#, 1
 	octave 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	note A#, 2
 	octave 3
 	note D#, 2
 	octave 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 3
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	octave 2
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 1
 	octave 3
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	octave 3
 	note C_, 2

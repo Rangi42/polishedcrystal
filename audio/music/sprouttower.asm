@@ -13,10 +13,10 @@ Music_SproutTower_Ch1:
 	vibrato 8, 4, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 3
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 Music_SproutTower_branch_f6994:
-	note __, 6
+	rest 6
 	octave 3
 	note F_, 2
 	note F#, 4
@@ -136,7 +136,7 @@ Music_SproutTower_branch_f69dc:
 	volume_envelope 11, 7
 	octave 4
 	note C_, 16
-	note __, 16
+	rest 16
 	sound_jump Music_SproutTower_branch_f69dc
 
 Music_SproutTower_Ch3:
@@ -144,55 +144,55 @@ Music_SproutTower_Ch3:
 	note_type 12, 1, 4
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	stereo_panning TRUE, FALSE
 Music_SproutTower_branch_f6a3e:
-	note __, 4
+	rest 4
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 8
 	note F#, 4
@@ -202,27 +202,27 @@ Music_SproutTower_branch_f6a3e:
 	note F#, 4
 	note F_, 16
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 2
 	note F#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	sound_jump Music_SproutTower_branch_f6a3e
 
 Music_SproutTower_Ch4:
 	toggle_noise 0
 	note_type 12
-	note __, 4
+	rest 4
 Music_SproutTower_branch_f6a7f:
 	note F#, 4
 	stereo_panning TRUE, FALSE

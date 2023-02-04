@@ -17,7 +17,7 @@ Music_Route47HGSS_Ch1:
 	pitch_offset 2
 	vibrato 8, 1, 5
 	note_type 6, 8, 2
-	note __, 16
+	rest 16
 Music_Route47HGSS_Ch1_loop_main:
 	note_type 6, 8, 2
 Music_Route47HGSS_Ch1_loop_1:
@@ -461,95 +461,95 @@ Music_Route47HGSS_Ch1_loop_1:
 	note A_, 1
 	octave 4
 	note A_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 5, 2
 	note A_, 1
 	octave 4
 	note A_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 2, 2
 	note A_, 1
 	octave 4
 	note A_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 8, 2
 	note C_, 1
 	octave 4
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 5, 2
 	note C_, 1
 	octave 4
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 2, 2
 	note C_, 1
 	octave 4
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 1, 2
 	note C_, 1
 	octave 4
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 1, 2
 	note C_, 1
 	octave 4
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 8, 2
 	note G_, 1
 	octave 4
 	note G_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 5, 2
 	note G_, 1
 	octave 4
 	note G_, 1
-	note __, 2
+	rest 2
 	octave 3
 	volume_envelope 2, 2
 	note G_, 1
 	octave 4
 	note G_, 1
-	note __, 2
+	rest 2
 	octave 2
 	volume_envelope 8, 2
 	note A#, 1
 	octave 3
 	note A#, 1
-	note __, 2
+	rest 2
 	octave 2
 	volume_envelope 5, 2
 	note A#, 1
 	octave 3
 	note A#, 1
-	note __, 2
+	rest 2
 	octave 2
 	volume_envelope 2, 2
 	note A#, 1
 	octave 3
 	note A#, 1
-	note __, 2
+	rest 2
 	volume_envelope 8, 2
 	note G_, 1
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	volume_envelope 5, 2
 	note G_, 1
 	octave 3
 	note G_, 1
-	note __, 2
+	rest 2
 	sound_jump Music_Route47HGSS_Ch1_loop_main
 
 Music_Route47HGSS_Ch1_branch_1:
@@ -694,20 +694,20 @@ Music_Route47HGSS_Ch2_loop:
 	octave 4
 	note A#, 1
 	note A_, 1
-	note __, 4
+	rest 4
 	octave 5
 	note C_, 1
 	octave 4
 	note G_, 1
 	note F_, 1
 	note C_, 1
-	note __, 4
+	rest 4
 	note A_, 1
 	note F_, 1
 	octave 3
 	note A#, 1
 	note A_, 1
-	note __, 4
+	rest 4
 	duty_cycle 2
 	octave 4
 	volume_envelope 10, 7
@@ -964,7 +964,7 @@ Music_Route47HGSS_Ch2_loop:
 Music_Route47HGSS_Ch3:
 	note_type 12, 2, 5
 	vibrato 18, 1, 5
-	note __, 8
+	rest 8
 Music_Route47HGSS_Ch3_loop:
 	octave 1
 	note F_, 12
@@ -1094,12 +1094,12 @@ Music_Route47HGSS_Ch4:
 	toggle_noise 3
 	note_type 12
 Music_Route47HGSS_Ch4_loop_main:
-	note __, 5
+	rest 5
 	sound_call Music_Route47HGSS_Ch4_branch_1
 	note B_, 16
-	note __, 16
+	rest 16
 	note B_, 16
-	note __, 13
+	rest 13
 	sound_call Music_Route47HGSS_Ch4_branch_1
 	note B_, 3
 	sound_call Music_Route47HGSS_Ch4_branch_2
@@ -1117,10 +1117,10 @@ Music_Route47HGSS_Ch4_loop_1:
 	note C#, 1
 	note C_, 1
 	note C#, 1
-	note __, 2
+	rest 2
 	note C#, 1
 	note C#, 1
-	note __, 4
+	rest 4
 	note B_, 3
 	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_2:
@@ -1138,11 +1138,11 @@ Music_Route47HGSS_Ch4_loop_2:
 	sound_call Music_Route47HGSS_Ch4_branch_3
 	sound_call Music_Route47HGSS_Ch4_branch_3
 	sound_call Music_Route47HGSS_Ch4_branch_4
-	note __, 8
+	rest 8
 	sound_call Music_Route47HGSS_Ch4_branch_4
-	note __, 8
+	rest 8
 	sound_call Music_Route47HGSS_Ch4_branch_4
-	note __, 8
+	rest 8
 	sound_call Music_Route47HGSS_Ch4_branch_4
 	sound_jump Music_Route47HGSS_Ch4_loop_main
 

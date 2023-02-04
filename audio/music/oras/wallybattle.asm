@@ -29,7 +29,7 @@ Music_WallyBattleORAS_Ch1:
 	note A_, 1
 	note B_, 1
 	note B_, 1
-	note __, 1
+	rest 1
 	sound_call Music_WallyBattleORAS_Ch1_branch_1
 	octave 2
 	note A_, 5
@@ -47,7 +47,7 @@ Music_WallyBattleORAS_Ch1:
 	note A_, 1
 	note B_, 1
 	note B_, 1
-	note __, 1
+	rest 1
 	volume_envelope 8, 7
 	note E_, 1
 	note A_, 1
@@ -95,7 +95,7 @@ Music_WallyBattleORAS_Ch1:
 	pitch_sweep 6, -4
 	note D#, 2
 	pitch_sweep 0, 0
-	note __, 2
+	rest 2
 	duty_cycle 3
 Music_WallyBattleORAS_Ch1_loop_1:
 	volume_envelope 8, 7
@@ -106,7 +106,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note B_, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 3
 	octave 3
 	note B_, 2
@@ -121,7 +121,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note E_, 2
 	pitch_sweep 0, 0
 	duty_cycle 3
-	note __, 10
+	rest 10
 	sound_loop 2, Music_WallyBattleORAS_Ch1_loop_1
 	volume_envelope 8, 7
 	note E_, 2
@@ -238,7 +238,7 @@ Music_WallyBattleORAS_Ch2:
 	note B_, 8
 	volume_envelope 8, 7
 	note B_, 8
-	note __, 2
+	rest 2
 	duty_cycle 0
 Music_WallyBattleORAS_Ch2_loop_1:
 	volume_envelope 12, 7
@@ -246,7 +246,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note G_, 1
 	note F#, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 3
 	note F#, 2
 	note E_, 2
@@ -256,7 +256,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note B_, 3
 	note G_, 5
 	duty_cycle 0
-	note __, 10
+	rest 10
 	sound_loop 2, Music_WallyBattleORAS_Ch2_loop_1
 	volume_envelope 13, 7
 	octave 2
@@ -308,25 +308,25 @@ Music_WallyBattleORAS_Ch2_branch_1:
 Music_WallyBattleORAS_Ch3:
 	note_type 6, 1, -1
 	vibrato 18, 1, 5
-	note __, 6
+	rest 6
 Music_WallyBattleORAS_Ch3_loop_main:
 	sound_call Music_WallyBattleORAS_Ch3_branch_1
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	octave 2
 	note G#, 1
@@ -335,17 +335,17 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	sound_call Music_WallyBattleORAS_Ch3_branch_1
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 4
+	rest 4
 	note A#, 1
 	note B_, 3
 	octave 2
@@ -354,7 +354,7 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	note E_, 4
 	octave 2
 	note C_, 7
-	note __, 1
+	rest 1
 	note C_, 6
 	note D_, 10
 	octave 1
@@ -363,9 +363,9 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	note D#, 4
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 6
-	note __, 4
+	rest 4
 	note B_, 2
 	octave 2
 	note E_, 8
@@ -378,9 +378,9 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	note E_, 4
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 6
 	octave 2
@@ -395,56 +395,56 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	note C_, 4
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	note D_, 1
 	note D#, 3
 	note B_, 4
 Music_WallyBattleORAS_Ch3_loop_1:
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note D_, 5
-	note __, 1
+	rest 1
 	note D_, 3
-	note __, 1
+	rest 1
 	note D_, 3
-	note __, 1
+	rest 1
 	note D_, 3
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	sound_call Music_WallyBattleORAS_Ch3_branch_2
 	octave 1
 	note E_, 2
@@ -460,41 +460,41 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	note G_, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_call Music_WallyBattleORAS_Ch3_branch_2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 4
+	rest 4
 	note E_, 4
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note B_, 3
-	note __, 1
+	rest 1
 	note B_, 3
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 4
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 2
 	note B_, 4
@@ -502,21 +502,21 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	note B_, 4
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
 	note F#, 2
 	note B_, 2
@@ -527,19 +527,19 @@ Music_WallyBattleORAS_Ch3_loop_1:
 Music_WallyBattleORAS_Ch3_branch_1:
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 5
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	octave 2
 	note A#, 1
@@ -551,20 +551,20 @@ Music_WallyBattleORAS_Ch3_branch_1:
 Music_WallyBattleORAS_Ch3_branch_2:
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_WallyBattleORAS_Ch4:
 	toggle_noise 4
 	note_type 12
-	note __, 3
+	rest 3
 Music_WallyBattleORAS_Ch4_loop_main:
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_2

@@ -188,10 +188,10 @@ Music_TinTower_branch_f6895:
 Music_TinTower_Ch3:
 	note_type 12, 1, 4
 Music_TinTower_branch_f68fb:
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 10
+	rest 16
+	rest 16
+	rest 16
+	rest 10
 	octave 2
 	note G_, 2
 	note G#, 2
@@ -213,33 +213,33 @@ Music_TinTower_branch_f68fb:
 	note C_, 8
 	octave 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 11
+	rest 11
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 7
+	rest 7
 	note C_, 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 7
+	rest 7
 	note C_, 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 7
+	rest 7
 	note D#, 4
 	stereo_panning FALSE, TRUE
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 11
+	rest 11
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	stereo_panning TRUE, TRUE
 	octave 2
 	note A#, 2
@@ -249,13 +249,13 @@ Music_TinTower_branch_f68fb:
 	note D#, 2
 	stereo_panning FALSE, TRUE
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 11
+	rest 11
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 11
+	rest 11
 	stereo_panning TRUE, TRUE
 	sound_jump Music_TinTower_branch_f68fb
 

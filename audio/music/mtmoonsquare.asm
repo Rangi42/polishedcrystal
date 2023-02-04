@@ -8,7 +8,7 @@ Music_MtMoonSquare_Ch1:
 	volume 7, 7
 	duty_cycle 2
 	pitch_offset 1
-	note __, 1
+	rest 1
 Music_MtMoonSquare_branch_f4826:
 	note_type 12, 4, 4
 Music_MtMoonSquare_branch_f4829:

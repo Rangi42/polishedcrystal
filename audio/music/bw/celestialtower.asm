@@ -456,7 +456,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note C#, 2
 	note D#, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note G_, 2
@@ -466,7 +466,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note C#, 2
 	note D#, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note D#, 2
@@ -476,7 +476,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note C#, 2
 	note D#, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note E_, 2
@@ -486,7 +486,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note D#, 2
 	note F_, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note G_, 2
@@ -496,7 +496,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note C#, 2
 	note D#, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note C_, 2
@@ -506,7 +506,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note C#, 2
 	note D#, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note D#, 2
@@ -516,7 +516,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note C#, 2
 	note D#, 4
-	note __, 6
+	rest 6
 	octave 1
 	volume_envelope 1, 0
 	note E_, 2
@@ -526,7 +526,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 3
 	note D#, 2
 	note F_, 4
-	note __, 6
+	rest 6
 	volume_envelope 1, 0
 	octave 2
 	note D_, 16
@@ -539,10 +539,10 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 Music_CelestialTowerBW_NoIntro_Ch4:
 	toggle_noise 4
 	note_type 12
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note_type 6
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
@@ -563,9 +563,9 @@ Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
 	note G#, 1
 	note G#, 2
 	note G#, 6
-	note __, 16
+	rest 16
 	sound_loop 4, Music_CelestialTowerBW_NoIntro_Ch4_loop_1
-	note __, 16
+	rest 16
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch4
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_1:
@@ -583,7 +583,7 @@ Music_CelestialTowerBW_NoIntro_Ch4_branch_1:
 	note F#, 1
 	note D#, 2
 	note D#, 2
-	note __, 16
+	rest 16
 	sound_ret
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
@@ -601,7 +601,7 @@ Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
 	note F#, 1
 	note D#, 2
 	note D#, 2
-	note __, 12
+	rest 12
 	note D#, 1
 	note D#, 1
 	note D#, 1

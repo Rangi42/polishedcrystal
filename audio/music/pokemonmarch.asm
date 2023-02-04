@@ -82,9 +82,9 @@ Music_PokemonMarch_branch_f6e4c:
 	note C_, 2
 	octave 2
 	note A#, 2
-	note __, 4
+	rest 4
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 3
 	note D#, 2
 	note D#, 2
@@ -99,26 +99,26 @@ Music_PokemonMarch_branch_f6e4c:
 	sound_jump Music_PokemonMarch_branch_f6e4c
 
 Music_PokemonMarch_branch_f6eae:
-	note __, 4
+	rest 4
 	octave 3
 	note D#, 1
 	note D_, 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_PokemonMarch_branch_f6eb8:
-	note __, 4
+	rest 4
 	note F_, 1
 	note E_, 1
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_PokemonMarch_Ch2:
@@ -140,8 +140,8 @@ Music_PokemonMarch_branch_f6ece:
 	note A#, 2
 	octave 4
 	note C_, 2
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	note_type 8, 11, 7
 	octave 3
 	note G#, 16
@@ -169,8 +169,8 @@ Music_PokemonMarch_branch_f6ece:
 	octave 4
 	note C_, 2
 	note D_, 2
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	note_type 8, 11, 7
 	octave 3
 	note A#, 16
@@ -210,12 +210,12 @@ Music_PokemonMarch_branch_f6ece:
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	note __, 5
+	rest 5
 	octave 3
 	note G_, 2
 	note G_, 2
@@ -224,22 +224,22 @@ Music_PokemonMarch_branch_f6ece:
 	note A_, 2
 	note G#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 1
 	note F#, 1
 	note G_, 1
-	note __, 5
+	rest 5
 	sound_jump Music_PokemonMarch_branch_f6ece
 
 Music_PokemonMarch_Ch3:
 	stereo_panning FALSE, TRUE
 	note_type 12, 1, 6
-	note __, 16
+	rest 16
 	note_type 8, 1, 6
 Music_PokemonMarch_branch_f6f56:
 	sound_call Music_PokemonMarch_branch_f6fe8
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	sound_call Music_PokemonMarch_branch_f6fe8
@@ -247,22 +247,22 @@ Music_PokemonMarch_branch_f6f56:
 	note G#, 2
 	note D#, 2
 	sound_call Music_PokemonMarch_branch_f6fe8
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
@@ -272,39 +272,39 @@ Music_PokemonMarch_branch_f6f56:
 Music_PokemonMarch_branch_f6f7b:
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note A_, 2
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 2
-	note __, 1
+	rest 1
 	sound_loop 3, Music_PokemonMarch_branch_f6f7b
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	note D_, 2
@@ -312,17 +312,17 @@ Music_PokemonMarch_branch_f6f7b:
 	octave 3
 	note B_, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
@@ -330,22 +330,22 @@ Music_PokemonMarch_branch_f6f7b:
 	note G_, 2
 	note A#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 2
 	note D#, 2
@@ -355,10 +355,10 @@ Music_PokemonMarch_branch_f6f7b:
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 3
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 4
 	note G_, 2
 	note G_, 2
@@ -367,27 +367,27 @@ Music_PokemonMarch_branch_f6f7b:
 	note A_, 2
 	note G#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	sound_jump Music_PokemonMarch_branch_f6f56
 
 Music_PokemonMarch_branch_f6fe8:
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 2
 	octave 3
@@ -428,7 +428,7 @@ Music_PokemonMarch_branch_f7003:
 	note C#, 6
 	note C_, 2
 	note_type 4
-	note __, 5
+	rest 5
 	note_type 6
 	note D_, 1
 	note D_, 1

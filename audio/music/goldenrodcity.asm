@@ -10,10 +10,10 @@ Music_GoldenrodCity_Ch1:
 	tempo 176
 	volume 7, 7
 	note_type 12, 9, 7
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 Music_GoldenrodCity_branch_eb46d:
 	duty_cycle 0
 	sound_call Music_GoldenrodCity_branch_eb4a9
@@ -62,34 +62,34 @@ Music_GoldenrodCity_branch_eb4a9:
 	note C#, 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 2
 	note C_, 2
 	note C#, 2
 	note D#, 2
 	note F#, 2
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note A#, 2
 	note C#, 2
@@ -272,7 +272,7 @@ Music_GoldenrodCity_branch_eb58c:
 	sound_call Music_GoldenrodCity_branch_eb5aa
 	sound_call Music_GoldenrodCity_branch_eb5aa
 	sound_call Music_GoldenrodCity_branch_eb5d2
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 1
 	note D#, 1
@@ -280,7 +280,7 @@ Music_GoldenrodCity_branch_eb58c:
 	note G#, 1
 	note D#, 2
 	sound_call Music_GoldenrodCity_branch_eb5d2
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 2
 	note F#, 2
@@ -292,69 +292,69 @@ Music_GoldenrodCity_branch_eb58c:
 Music_GoldenrodCity_branch_eb5aa:
 	octave 3
 	note C#, 4
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C_, 4
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A#, 4
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note G#, 4
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 4
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 4
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 4
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 3
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_GoldenrodCity_branch_eb5d2:
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
 	octave 3
 	note C#, 1
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 5
+	rest 5
 	octave 4
 	note C_, 1
 	note C#, 1
 	octave 3
 	note G#, 2
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
 	octave 3
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 5
+	rest 5
 	note B_, 1
 	octave 4
 	note C_, 1
@@ -362,36 +362,36 @@ Music_GoldenrodCity_branch_eb5d2:
 	note G#, 2
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 1
 	octave 2
 	note A#, 1
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 5
+	rest 5
 	octave 3
 	note A_, 1
 	note A#, 1
 	note F#, 2
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
 	octave 2
 	note G#, 1
-	note __, 2
+	rest 2
 	note G#, 1
 	sound_ret
 
 Music_GoldenrodCity_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 8
+	rest 16
+	rest 16
+	rest 16
+	rest 8
 	note D_, 2
 	note F#, 2
 	note D_, 1

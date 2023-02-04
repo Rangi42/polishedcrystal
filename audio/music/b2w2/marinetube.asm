@@ -461,9 +461,9 @@ Music_MarineTubeB2W2_Ch1:
 	note A#, 1
 	note G_, 1
 	note A#, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	sound_jump Music_MarineTubeB2W2_Ch1
 
 Music_MarineTubeB2W2_Ch2:
@@ -631,42 +631,42 @@ Music_MarineTubeB2W2_Ch2:
 	note G_, 16
 	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 2, 0
 	octave 1
 	note A#, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A#, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	volume_envelope 3, 0
 	octave 1
 	note A#, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A#, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	volume_envelope 4, 0
 	octave 1
 	note A#, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A#, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	sound_jump Music_MarineTubeB2W2_Ch2
 
 Music_MarineTubeB2W2_Ch3:
@@ -828,7 +828,7 @@ Music_MarineTubeB2W2_Ch3:
 	note G_, 8
 	note C_, 8
 	note D#, 8
-	note __, 2
+	rest 2
 	octave 5
 	note D#, 4
 	octave 4
@@ -838,17 +838,17 @@ Music_MarineTubeB2W2_Ch3:
 	note A#, 2
 	note B_, 8
 	note D#, 8
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 6
-	note __, 2
+	rest 2
 	note D_, 6
 	note F_, 8
 	note D#, 8
 	note G_, 8
 	note G#, 8
 	note A#, 16
-	note __, 2
+	rest 2
 	octave 5
 	note E_, 4
 	octave 4
@@ -860,7 +860,7 @@ Music_MarineTubeB2W2_Ch3:
 	note_type 8, 1, 2
 	note A#, 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
 	note_type 12, 1, 2
@@ -871,7 +871,7 @@ Music_MarineTubeB2W2_Ch3:
 	note_type 8, 1, 2
 	note A#, 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note G#, 2
 	note_type 12, 1, 2
@@ -884,40 +884,40 @@ Music_MarineTubeB2W2_Ch3:
 	volume_envelope 1, 2
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 8
+	rest 8
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 4
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 4
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 4
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 4
+	rest 4
 	sound_jump Music_MarineTubeB2W2_Ch3
 
 Music_MarineTubeB2W2_Ch4:

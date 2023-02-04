@@ -540,13 +540,13 @@ Music_RivalBattle_Ch3:
 	octave 3
 	note F#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 10
 	octave 3
 	note F#, 2
 	octave 4
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 6
 	octave 3
 	note C#, 2

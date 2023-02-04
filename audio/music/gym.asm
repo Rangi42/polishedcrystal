@@ -19,21 +19,21 @@ Music_Gym_branch_f48c9:
 	note A_, 1
 	note A_, 1
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 4
 	note E_, 2
 	octave 2
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 4
 	note D_, 2
 	octave 2
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
 	note D_, 1
@@ -53,7 +53,7 @@ Music_Gym_branch_f48c9:
 	note F#, 2
 	note A_, 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note E_, 2
 	note C_, 2
@@ -68,7 +68,7 @@ Music_Gym_branch_f48c9:
 	note F#, 2
 	note A_, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	note G_, 4
@@ -87,12 +87,12 @@ Music_Gym_branch_f48c9:
 	note G_, 2
 	note A_, 2
 	note B_, 1
-	note __, 2
+	rest 2
 	note G_, 1
 	note G_, 4
 	octave 4
 	note E_, 1
-	note __, 2
+	rest 2
 	note C_, 1
 	note C_, 2
 	octave 3
@@ -116,9 +116,9 @@ Music_Gym_branch_f48c9:
 	note D_, 6
 	octave 3
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
 	octave 4
 	note F#, 3
@@ -127,10 +127,10 @@ Music_Gym_branch_f48c9:
 	note E_, 4
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note E_, 1
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 4
 	note F#, 2
@@ -152,9 +152,9 @@ Music_Gym_branch_f48c9:
 	note F#, 6
 	octave 3
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
 	octave 4
 	note F#, 3
@@ -362,7 +362,7 @@ Music_Gym_branch_f4a15:
 	note C_, 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note F#, 1
 	note F#, 1
@@ -379,7 +379,7 @@ Music_Gym_branch_f4a3c:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A_, 1
 	octave 6
@@ -389,7 +389,7 @@ Music_Gym_branch_f4a3c:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A_, 1
 	octave 6
@@ -400,7 +400,7 @@ Music_Gym_branch_f4a3c:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note B_, 1
 	note B_, 1
@@ -414,7 +414,7 @@ Music_Gym_branch_f4a3c:
 	octave 5
 	note D_, 2
 	note E_, 1
-	note __, 2
+	rest 2
 	note C_, 1
 	note C_, 4
 	note G_, 4
@@ -425,21 +425,21 @@ Music_Gym_branch_f4a3c:
 	octave 5
 	note D_, 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note D_, 1
 	note E_, 8
-	note __, 4
+	rest 4
 	note F#, 12
 	note E_, 2
 	note F#, 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note E_, 4
 	octave 6
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 5
 	note G_, 1
 	note G_, 4
@@ -455,7 +455,7 @@ Music_Gym_branch_f4a3c:
 	note B_, 4
 	volume_envelope 1, 3
 	sound_call Music_Gym_branch_f4ab3
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 6
 	note D_, 2
@@ -469,13 +469,13 @@ Music_Gym_branch_f4a3c:
 	note G_, 4
 	sound_call Music_Gym_branch_f4ab3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
 	note B_, 1
 	octave 6
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note E_, 1
 	note F#, 8
@@ -496,7 +496,7 @@ Music_Gym_branch_f4ab3:
 	note A_, 4
 	note G_, 4
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note G_, 1
 	note A_, 4

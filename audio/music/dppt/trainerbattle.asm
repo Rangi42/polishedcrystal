@@ -297,7 +297,7 @@ Music_TrainerBattleDPPt_Ch1_loop:
 	volume_envelope 11, 4
 	octave 4
 	note C_, 16
-	note __, 8
+	rest 8
 	octave 3
 	note_type 8, 11, 4
 	note A#, 4
@@ -1027,7 +1027,7 @@ Music_TrainerBattleDPPt_Ch3:
 	volume_envelope 1, -1
 	volume_envelope 1, 6
 	note_type 12, 1, 6
-	note __, 16
+	rest 16
 	octave 3
 	note A#, 1
 	note A_, 1
@@ -1803,7 +1803,7 @@ Music_TrainerBattleDPPt_Ch3_loop:
 Music_TrainerBattleDPPt_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 16
+	rest 16
 	note D#, 4
 	note D#, 4
 	note D#, 2
@@ -2067,13 +2067,13 @@ Music_TrainerBattleDPPt_Ch4_loop:
 	note C_, 2
 	note G_, 2
 	note D#, 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 12
 	note D#, 4
 	note D#, 4
 	note D#, 2

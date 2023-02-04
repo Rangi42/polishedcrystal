@@ -14,7 +14,7 @@ Music_MeteorFallsRSE_Ch1:
 	volume 7, 7
 	vibrato 6, 2, 3
 	note_type 8, 9, 2
-	note __, 6
+	rest 6
 Music_MeteorFallsRSE_Ch1_loop_main:
 	volume_envelope 9, 2
 	duty_cycle 2
@@ -493,7 +493,7 @@ Music_MeteorFallsRSE_Ch2:
 	volume_envelope 11, 2
 	duty_cycle 3
 	octave 4
-	note __, 2
+	rest 2
 	note C_, 2
 	note C_, 2
 	volume_envelope 11, 0
@@ -506,7 +506,7 @@ Music_MeteorFallsRSE_Ch2:
 Music_MeteorFallsRSE_Ch3:
 	vibrato 22, 1, 5
 	note_type 12, 1, 4
-	note __, 4
+	rest 4
 Music_MeteorFallsRSE_Ch3_loop_main:
 	note_type 12, 1, 4
 	octave 2
@@ -523,27 +523,27 @@ Music_MeteorFallsRSE_Ch3_loop_main:
 	note C#, 2
 	octave 2
 	note A_, 7
-	note __, 1
+	rest 1
 	note_type 8, 1, 4
 	note A_, 4
 	note G_, 4
 	note A_, 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 6
+	rest 6
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	octave 3
 	note C_, 6
 	note C#, 16
@@ -560,83 +560,83 @@ Music_MeteorFallsRSE_Ch3_loop_main:
 	note G_, 8
 	volume_envelope 1, 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note C_, 2
-	note __, 6
+	rest 6
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 6
+	rest 6
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	octave 2
 	note F_, 2
-	note __, 6
+	rest 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 6
+	rest 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 6
+	rest 6
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 6
+	rest 6
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
+	rest 6
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
+	rest 6
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 11
-	note __, 1
+	rest 1
 	note A#, 4
 	note G#, 4
 	note F_, 4

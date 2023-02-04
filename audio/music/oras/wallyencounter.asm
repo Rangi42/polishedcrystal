@@ -14,7 +14,7 @@ Music_WallyEncounterORAS_Ch1:
 	duty_cycle 0
 	vibrato 8, 1, 5
 	note_type 12, 6, 7
-	note __, 4
+	rest 4
 Music_WallyEncounterORAS_Ch1_loop:
 	octave 2
 	note D#, 2
@@ -143,7 +143,7 @@ Music_WallyEncounterORAS_Ch2:
 	note G_, 1
 	note G#, 3
 	note G_, 16
-	note __, 4
+	rest 4
 	note F_, 4
 	note D#, 12
 	note D#, 4
@@ -151,7 +151,7 @@ Music_WallyEncounterORAS_Ch2:
 	note F#, 1
 	note G_, 3
 	note C_, 16
-	note __, 4
+	rest 4
 	note D_, 4
 	note D#, 12
 	octave 2
@@ -182,7 +182,7 @@ Music_WallyEncounterORAS_Ch2:
 	note F_, 4
 	note G#, 4
 	note G_, 16
-	note __, 4
+	rest 4
 	note F_, 4
 	note D#, 4
 	note F_, 4

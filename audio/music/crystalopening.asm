@@ -155,7 +155,7 @@ Music_CrystalOpening_Ch2:
 	note B_, 8
 	note_type 12, 12, 7
 	note B_, 16
-	note __, 16
+	rest 16
 	note G_, 8
 	note A_, 8
 	note D_, 8
@@ -238,15 +238,15 @@ Music_CrystalOpening_Ch3:
 	note D_, 16
 	octave 2
 	note D_, 1
-	note __, 15
+	rest 15
 	sound_ret
 
 Music_CrystalOpening_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 12
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 	octave 2
 	note C#, 1
 	note C#, 1
@@ -286,7 +286,7 @@ Music_CrystalOpening_Ch4:
 	note D_, 1
 	note D_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	note C#, 1
 	note A_, 1
@@ -351,10 +351,10 @@ Music_CrystalOpening_Ch4:
 	note C#, 1
 	note C#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note D_, 2
-	note __, 6
-	note __, 16
-	note __, 16
+	rest 6
+	rest 16
+	rest 16
 	sound_ret

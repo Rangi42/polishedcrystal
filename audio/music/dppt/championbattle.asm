@@ -19,18 +19,18 @@ Music_ChampionBattleDPPt_Ch1:
 	octave 4
 	note_type 12, 11, 7
 	note A#, 16
-	note __, 16
+	rest 16
 	tempo $68
 	octave 3
 	note A#, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 Music_ChampionBattleDPPt_Ch1_loop:
 	note A#, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	note F_, 8
 	octave 2
 	note A#, 4
@@ -108,18 +108,18 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	volume_envelope 11, 7
 	octave 5
 	note F_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 5
+	rest 5
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 2
 	octave 5
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 2
 	note F_, 2
@@ -130,18 +130,18 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note D_, 2
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 5
+	rest 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 2
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note D#, 2
@@ -286,150 +286,150 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	volume_envelope 11, 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	duty_cycle 3
 	volume_envelope 11, 7
 	note C#, 16
-	note __, 16
+	rest 16
 	octave 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note B_, 4
 	note A_, 4
 	note G#, 2
-	note __, 16
-	note __, 15
+	rest 16
+	rest 15
 	duty_cycle 0
 	volume_envelope 10, 1
 	octave 3
@@ -456,8 +456,8 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A#, 2
 	octave 4
 	note A_, 16
-	note __, 16
-	note __, 1
+	rest 16
+	rest 1
 	duty_cycle 3
 	volume_envelope 12, 7
 	octave 1
@@ -514,14 +514,14 @@ Music_ChampionBattleDPPt_Ch2:
 	note_type 12, 12, 7
 	octave 2
 	note A#, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 Music_ChampionBattleDPPt_Ch2_loop:
 	note A#, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 12
 	duty_cycle 0
 	note A#, 1
 	note B_, 1
@@ -642,7 +642,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note A#, 4
 	octave 4
 	note D#, 16
-	note __, 16
+	rest 16
 	note A#, 8
 	octave 5
 	note C_, 8
@@ -651,136 +651,136 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note G_, 6
 	note G#, 4
 	note A#, 16
-	note __, 16
+	rest 16
 	duty_cycle 2
 	volume_envelope 11, 1
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C#, 1
-	note __, 1
+	rest 1
 	duty_cycle 3
 	volume_envelope 12, 7
 	octave 4
@@ -860,18 +860,18 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	volume_envelope 12, 7
 	octave 5
 	note C#, 2
-	note __, 4
+	rest 4
 	note C#, 2
-	note __, 4
+	rest 4
 	note C#, 2
-	note __, 4
+	rest 4
 	note C#, 2
-	note __, 4
+	rest 4
 	note E_, 4
 	note D_, 4
 	note C#, 2
-	note __, 16
-	note __, 14
+	rest 16
+	rest 14
 	duty_cycle 0
 	volume_envelope 10, 1
 	octave 4
@@ -941,11 +941,11 @@ Music_ChampionBattleDPPt_Ch3:
 	octave 1
 	note_type 12, 1, 4
 	note F_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	octave 2
 	note F_, 2
 	note F#, 2
@@ -2353,9 +2353,9 @@ Music_ChampionBattleDPPt_Ch4_loop:
 	note C_, 1
 	note C_, 1
 	note B_, 16
-	note __, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 16
+	rest 4
 	note C_, 2
 	note C_, 2
 	note C_, 2

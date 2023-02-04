@@ -563,45 +563,45 @@ Music_Route205DPPt_Ch3_loop:
 	note_type 12, 1, 3
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 2
-	note G_, 1
-	note B_, 1
-	octave 3
-	note D_, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	note G_, 1
-	note __, 2
-	note A_, 1
-	octave 3
-	note C_, 1
-	note F_, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	note G_, 1
-	note __, 2
-	octave 3
-	note C_, 1
-	note F_, 1
-	note A_, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	note G_, 1
-	note __, 2
-	octave 3
-	note D_, 1
+	rest 2
 	note G_, 1
 	note B_, 1
+	octave 3
+	note D_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 2
+	note A_, 1
+	octave 3
+	note C_, 1
+	note F_, 1
+	octave 2
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 2
+	octave 3
+	note C_, 1
+	note F_, 1
+	note A_, 1
+	octave 2
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 2
+	octave 3
+	note D_, 1
+	note G_, 1
+	note B_, 1
+	octave 2
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 1
 	octave 3
 	note D_, 1
 	octave 2
@@ -611,9 +611,9 @@ Music_Route205DPPt_Ch3_loop:
 	note G_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
 	octave 2
@@ -623,113 +623,113 @@ Music_Route205DPPt_Ch3_loop:
 	note F_, 1
 	octave 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note __, 1
-	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 2
+	rest 3
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 2
 	note G_, 1
 	note A_, 1
 	octave 3
 	note C_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note __, 1
-	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 2
+	rest 3
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 2
 	note G_, 1
 	note A_, 1
 	octave 3
 	note C_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 3
+	rest 3
 	note F_, 1
 	note F_, 1
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 1
-	note __, 2
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 1
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note C_, 1
-	note __, 2
+	rest 2
 	note G_, 1
 	octave 1
 	note B_, 1
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 1
 	note E_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note D_, 1
-	note __, 2
+	rest 2
 	note G_, 1
 	octave 3
 	note C_, 1
@@ -750,9 +750,9 @@ Music_Route205DPPt_Ch3_loop:
 	note A_, 1
 	note G_, 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
@@ -760,7 +760,7 @@ Music_Route205DPPt_Ch3_loop:
 	note G_, 1
 	note A_, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note F_, 1
 	note A#, 1
@@ -768,7 +768,7 @@ Music_Route205DPPt_Ch3_loop:
 	note A_, 1
 	note G_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
@@ -778,7 +778,7 @@ Music_Route205DPPt_Ch3_loop:
 	octave 2
 	note A_, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note F_, 1
 	octave 3
@@ -788,82 +788,82 @@ Music_Route205DPPt_Ch3_loop:
 	note A_, 1
 	note G_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note D_, 1
 	note_type 9, 1, 3
 	note G_, 2
-	note __, 14
+	rest 14
 	note G_, 2
 	note_type 13, 0, 0
-	note __, 6
+	rest 6
 	note_type 9, 1, 3
 	note G_, 2
 	note_type 13, 0, 0
-	note __, 6
+	rest 6
 	note_type 9, 1, 3
 	note B_, 2
 	note_type 15, 0, 0
-	note __, 2
+	rest 2
 	note_type 12, 1, 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
 	note E_, 1
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
 	octave 2
 	note C_, 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note C_, 1
 	note C_, 1
-	note __, 2
+	rest 2
 	note D_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note_type 13, 1, 3
 	note D_, 1
 	sound_jump Music_Route205DPPt_Ch3_loop

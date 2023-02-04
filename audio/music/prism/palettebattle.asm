@@ -186,10 +186,10 @@ Music_PaletteBattlePrism_branch_1edc47:
 	note G_, 4
 	note E_, 4
 	note C_, 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	octave 3
 	note G#, 2
 	note G#, 2
@@ -355,7 +355,7 @@ Music_PaletteBattlePrism_branch_1edb37:
 	note B_, 2
 	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
+	rest 16
 	octave 3
 	volume_envelope 12, 2
 	note C_, 4
@@ -376,7 +376,7 @@ Music_PaletteBattlePrism_branch_1edb37:
 	note A_, 2
 	volume_envelope 12, 7
 	note G_, 16
-	note __, 12
+	rest 12
 	volume_envelope 12, 2
 	note D_, 2
 	note D_, 2
@@ -398,7 +398,7 @@ Music_PaletteBattlePrism_branch_1edb37:
 	note F_, 2
 	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
+	rest 16
 	octave 4
 	volume_envelope 12, 2
 	note C_, 4
@@ -422,7 +422,7 @@ Music_PaletteBattlePrism_branch_1edb37:
 	octave 3
 	volume_envelope 12, 7
 	note C_, 16
-	note __, 16
+	rest 16
 
 Music_PaletteBattlePrism_branch_1edb87:
 	octave 4
@@ -540,8 +540,8 @@ Music_PaletteBattlePrism_branch_1edbef:
 
 Music_PaletteBattlePrism_Ch3:
 	note_type 12, 1, -1
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 
 Music_PaletteBattlePrism_branch_1ede24:
 	octave 3

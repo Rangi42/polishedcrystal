@@ -315,9 +315,9 @@ Music_Route36_Ch3:
 	note_type 12, 2, 5
 	octave 3
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 4
 	octave 3
@@ -325,9 +325,9 @@ Music_Route36_Ch3:
 	note F_, 2
 	note C_, 2
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 4
 	octave 2

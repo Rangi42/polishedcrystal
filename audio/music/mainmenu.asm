@@ -75,51 +75,51 @@ Music_MainMenu_branch_f7949:
 Music_MainMenu_Ch3:
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
-	note __, 8
+	rest 8
 Music_MainMenu_branch_f796f:
 	octave 2
 	note F#, 1
-	note __, 5
+	rest 5
 	note F#, 1
 	note F#, 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 3
+	rest 3
 	sound_loop 2, Music_MainMenu_branch_f796f
 	note G#, 1
-	note __, 5
+	rest 5
 	note G#, 1
 	note G#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 5
+	rest 5
 	note E_, 1
 	note E_, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 3
+	rest 3
 	sound_jump Music_MainMenu_branch_f796f
 
 Music_MainMenu_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 12
-	note __, 8
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 8
+	rest 16
+	rest 16
+	rest 16
+	rest 12
 	note D_, 1
 	note D_, 1
 	note D_, 1

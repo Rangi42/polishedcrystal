@@ -10,33 +10,33 @@ Music_BuenasPassword_Ch1:
 	volume 7, 7
 	pitch_offset 1
 	note_type 12, 11, 3
-	note __, 8
+	rest 8
 Music_BuenasPassword_branch_17816b:
 	stereo_panning TRUE, TRUE
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	duty_cycle 3
 	note_type 6, 9, 7
 	stereo_panning FALSE, TRUE
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note G#, 2
-	note __, 10
-	note __, 10
+	rest 10
+	rest 10
 	stereo_panning TRUE, FALSE
 	note C#, 2
 	note F_, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note G#, 2
-	note __, 12
+	rest 12
 	duty_cycle 2
 	sound_call Music_BuenasPassword_branch_178204
 	stereo_panning TRUE, TRUE
@@ -49,24 +49,24 @@ Music_BuenasPassword_branch_17816b:
 	sound_call Music_BuenasPassword_branch_178204
 	duty_cycle 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note A#, 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note G#, 2
 	note B_, 2
@@ -89,54 +89,54 @@ Music_BuenasPassword_branch_17816b:
 	note D#, 1
 	note G_, 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 1
+	rest 1
 	note F#, 2
-	note __, 1
+	rest 1
 	note D#, 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	octave 4
 	note C#, 2
 	note F_, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note F#, 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
 	note G#, 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note D#, 2
 	note F#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_BuenasPassword_branch_17816b
 
 Music_BuenasPassword_branch_178204:
@@ -158,32 +158,32 @@ Music_BuenasPassword_branch_178204:
 	note D#, 1
 	note C#, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note_type 12, 8, 4
 	sound_ret
 
 Music_BuenasPassword_branch_178222:
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_BuenasPassword_Ch2:
 	vibrato 18, 3, 4
 	duty_cycle 2
 	note_type 12, 10, 5
-	note __, 7
+	rest 7
 	octave 3
 	note F#, 1
 Music_BuenasPassword_branch_17823c:
@@ -206,23 +206,23 @@ Music_BuenasPassword_branch_17823c:
 	note G#, 16
 	sound_call Music_BuenasPassword_branch_1782a4
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note F#, 2
 	note G#, 2
@@ -236,23 +236,23 @@ Music_BuenasPassword_branch_17823c:
 	note C#, 1
 	note D#, 8
 	note F#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 2
 	note F_, 2
@@ -264,25 +264,25 @@ Music_BuenasPassword_branch_17823c:
 	volume_envelope 8, 4
 	octave 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	volume_envelope 10, 5
 	sound_jump Music_BuenasPassword_branch_17823c
 
 Music_BuenasPassword_branch_1782a4:
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 2
+	rest 2
 	stereo_panning TRUE, FALSE
 	octave 4
 	note G#, 1
@@ -301,78 +301,78 @@ Music_BuenasPassword_branch_1782a4:
 	volume_envelope 2, 1
 	note G_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note_type 12, 10, 5
 	sound_ret
 
 Music_BuenasPassword_branch_1782cc:
 	octave 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 1
+	rest 1
 	note C#, 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_BuenasPassword_branch_1782df:
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 1
 	note G#, 3
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 1
 	note G#, 2
 	octave 3
 	note F#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 1
 	note G#, 3
@@ -380,146 +380,146 @@ Music_BuenasPassword_branch_1782df:
 
 Music_BuenasPassword_Ch3:
 	note_type 12, 1, 4
-	note __, 8
+	rest 8
 Music_BuenasPassword_branch_178315:
 	sound_call Music_BuenasPassword_branch_1783a7
 	sound_call Music_BuenasPassword_branch_1783a7
 	sound_call Music_BuenasPassword_branch_1783a7
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 1
 	octave 3
 	note D#, 2
 	octave 2
 	note G#, 1
-	note __, 2
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note G#, 4
 	sound_loop 3, Music_BuenasPassword_branch_178315
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 1
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 1
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 2
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 2
 	octave 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G#, 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 2
 	octave 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	sound_call Music_BuenasPassword_branch_1783bc
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 2
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 2
 	sound_call Music_BuenasPassword_branch_1783bc
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	note G#, 2
 	octave 3
 	note D#, 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_BuenasPassword_branch_178315
 
 Music_BuenasPassword_branch_1783a7:
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 1
 	octave 3
@@ -528,9 +528,9 @@ Music_BuenasPassword_branch_1783a7:
 	note G#, 1
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	note F_, 2
 	note C#, 1
@@ -539,21 +539,21 @@ Music_BuenasPassword_branch_1783a7:
 Music_BuenasPassword_branch_1783bc:
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note B_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
 	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note B_, 2
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G#, 2
 	sound_ret

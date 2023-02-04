@@ -1013,10 +1013,10 @@ Music_ChampionBattleRSE_Ch4_loop_1:
 	note D#, 2
 	note C_, 4
 	sound_call Music_ChampionBattleRSE_Ch4_branch_3
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note D#, 2
 	note D#, 2
 	note C_, 4

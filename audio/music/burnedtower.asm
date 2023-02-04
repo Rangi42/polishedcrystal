@@ -13,7 +13,7 @@ Music_BurnedTower_Ch1:
 	vibrato 8, 4, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 1
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 4
 	note A_, 4
@@ -110,7 +110,7 @@ Music_BurnedTower_branch_f6b39:
 	sound_call Music_BurnedTower_branch_f6b8e
 	volume_envelope 12, 1
 	duty_cycle 3
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 4
 	note A_, 4
@@ -195,10 +195,10 @@ Music_BurnedTower_branch_f6b8e:
 Music_BurnedTower_Ch3:
 	stereo_panning FALSE, TRUE
 	note_type 12, 1, 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 16
+	rest 12
 	octave 3
 	note D#, 4
 Music_BurnedTower_branch_f6bad:
@@ -206,18 +206,18 @@ Music_BurnedTower_branch_f6bad:
 	note A_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note F_, 4
 	octave 2
 	note A_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note D#, 4
 	sound_loop 4, Music_BurnedTower_branch_f6bad
@@ -226,18 +226,18 @@ Music_BurnedTower_branch_f6bc3:
 	note B_, 2
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G_, 4
 	octave 2
 	note B_, 2
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note F_, 4
 	sound_loop 2, Music_BurnedTower_branch_f6bc3
@@ -247,9 +247,9 @@ Music_BurnedTower_Ch4:
 	toggle_noise 0
 	note_type 12
 Music_BurnedTower_branch_f6be1:
-	note __, 16
+	rest 16
 	sound_loop 4, Music_BurnedTower_branch_f6be1
-	note __, 2
+	rest 2
 Music_BurnedTower_branch_f6be7:
 	stereo_panning TRUE, FALSE
 	note G_, 2

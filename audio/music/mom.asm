@@ -19,12 +19,12 @@ Music_Mom_Ch2:
 	note B_, 8
 Music_Mom_branch_f6c0e:
 	note_type 12, 11, 1
-	note __, 4
+	rest 4
 	octave 3
 	note C#, 6
 	note D_, 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 6
 	octave 2
 	note E_, 4
@@ -46,64 +46,64 @@ Music_Mom_Ch3:
 Music_Mom_branch_f6c2e:
 	octave 2
 	note A_, 2
-	note __, 6
+	rest 6
 	octave 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 8
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
-	note __, 6
+	rest 6
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
-	note __, 6
+	rest 6
 	note C#, 4
 	note D_, 2
-	note __, 2
+	rest 2
 	sound_jump Music_Mom_branch_f6c2e
 
 Music_Mom_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 6
+	rest 6
 Music_Mom_branch_f6c56:
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D#, 1
-	note __, 1
+	rest 1
 	sound_jump Music_Mom_branch_f6c56

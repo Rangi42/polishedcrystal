@@ -134,7 +134,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note E_, 1
 	note F#, 1
 	note G#, 1
-	note __, 3
+	rest 3
 	note B_, 4
 	note G#, 4
 	note B_, 2
@@ -142,7 +142,7 @@ Music_CeruleanCityHGSS_Loop1:
 	octave 4
 	note C#, 1
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 4
 	octave 3
 	note B_, 4
@@ -152,7 +152,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note B_, 1
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	octave 3
 	note B_, 1
@@ -160,7 +160,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note C#, 1
 	note D#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note F#, 1
 	note E_, 1
@@ -209,7 +209,7 @@ Music_CeruleanCityHGSS_Ch2:
 	duty_cycle 2
 	note_type 2, 12, 2
 	pitch_offset 2
-	note __, 2
+	rest 2
 	note_type 12, 12, 2
 	octave 5
 	note E_, 2
@@ -314,7 +314,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note C#, 1
 	note D#, 1
 	note E_, 1
-	note __, 3
+	rest 3
 	duty_cycle_pattern 0, 0, 2, 2
 	duty_cycle 0
 	octave 4
@@ -329,7 +329,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note D#, 1
 	note E_, 1
 	note F#, 1
-	note __, 3
+	rest 3
 	duty_cycle_pattern 0, 0, 2, 2
 	duty_cycle 0
 	octave 4
@@ -346,13 +346,13 @@ Music_CeruleanCityHGSS_Loop2:
 	note C#, 1
 	note D#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note D#, 1
 	note E_, 1
 	note F#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	note A_, 1
 	note G#, 1
@@ -393,7 +393,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note D#, 4
 	duty_cycle_pattern 2, 2, 2, 2
 	note_type 2, 12, 2
-	note __, 2
+	rest 2
 	note_type 12, 12, 2
 	note E_, 2
 	note D#, 2
@@ -407,86 +407,86 @@ Music_CeruleanCityHGSS_Ch3:
 	note_type 6, 1, 5
 	vibrato 12, 2, 4
 ;Channel3_Bar1:
-	note __, 16
+	rest 16
 	octave 4
 	note E_, 3
-	note __, 1
+	rest 1
 	note D#, 3
-	note __, 1
+	rest 1
 	note C#, 3
-	note __, 1
+	rest 1
 	note C_, 3
-	note __, 1
+	rest 1
 ;Channel3_Bar2:
 Music_CeruleanCityHGSS_Loop3:
 	octave 1
 	note E_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 4
+	rest 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note F#, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note C#, 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 4
+	rest 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note F#, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note C#, 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
@@ -497,24 +497,24 @@ Music_CeruleanCityHGSS_Loop3:
 	note B_, 2
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	octave 1
@@ -523,28 +523,28 @@ Music_CeruleanCityHGSS_Loop3:
 	note E_, 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 1
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 2
 	octave 1
@@ -553,7 +553,7 @@ Music_CeruleanCityHGSS_Loop3:
 	note B_, 2
 	octave 6
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 2
 	octave 2
@@ -566,18 +566,18 @@ Music_CeruleanCityHGSS_Loop3:
 	note E_, 2
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	octave 1
@@ -586,28 +586,28 @@ Music_CeruleanCityHGSS_Loop3:
 	note E_, 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 1
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note B_, 2
 	note G#, 2
@@ -615,144 +615,144 @@ Music_CeruleanCityHGSS_Loop3:
 	note D#, 2
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 2
 	octave 2
 	note C#, 2
-	note __, 6
+	rest 6
 	note C#, 2
-	note __, 4
+	rest 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 2
-	note __, 6
+	rest 6
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 4
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 4
 	octave 2
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note F#, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 8
-	note __, 16
-	note __, 4
+	rest 16
+	rest 4
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 6
+	rest 6
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	sound_jump Music_CeruleanCityHGSS_Loop3
 
 Music_CeruleanCityHGSS_Ch4:
 	note_type 12
 	toggle_noise 0
 ;Channel4_Bar1:
-	note __, 16
+	rest 16
 ;Channel4_Bar2:
 Music_CeruleanCityHGSS_Loop4:
 	note A#, 2

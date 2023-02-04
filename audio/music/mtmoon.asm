@@ -13,7 +13,7 @@ Music_MtMoon_Ch1:
 	vibrato 8, 1, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 4, 5
-	note __, 2
+	rest 2
 	sound_jump Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch2:

@@ -84,7 +84,7 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note C_, 6
 	volume_envelope 6, 5
 	note C_, 4
-	note __, 6
+	rest 6
 	volume_envelope 6, 0
 	note C_, 6
 	volume_envelope 6, 4
@@ -121,23 +121,23 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	volume_envelope 10, 0
 	octave 3
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 8
+	rest 8
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 8
+	rest 8
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 10
+	rest 10
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	volume_envelope 10, 2
 	note C_, 4
 	volume_envelope 10, 7
@@ -156,28 +156,28 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	octave 2
 	volume_envelope 10, 3
 	note A#, 6
-	note __, 4
+	rest 4
 	volume_envelope 10, 7
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 2
-	note __, 8
+	rest 8
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 2
-	note __, 8
+	rest 8
 	octave 3
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 16
+	rest 16
 	octave 2
 	note A#, 8
 	note B_, 1
 	octave 3
 	note C_, 5
 	note C_, 2
-	note __, 8
+	rest 8
 	vibrato 1, 2, 1
 	volume_envelope 9, 0
 	octave 2
@@ -429,7 +429,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note C_, 12
 	volume_envelope 10, 7
 	note C_, 16
-	note __, 4
+	rest 4
 	volume_envelope 10, 0
 	note E_, 4
 	volume_envelope 10, 7
@@ -521,14 +521,14 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	volume_envelope 12, 7
 	note C#, 16
 	octave 3
-	note __, 8
+	rest 8
 	note F_, 8
 	note C_, 8
 	volume_envelope 12, 0
 	note D#, 16
 	volume_envelope 12, 7
 	note D#, 16
-	note __, 16
+	rest 16
 	note F_, 6
 	note G#, 6
 	note G_, 4
@@ -637,9 +637,9 @@ Music_TrainerBattleSM_Ch3:
 	note_type 6, 1, -1
 	octave 2
 	note C_, 7
-	note __, 1
+	rest 1
 	note C_, 7
-	note __, 1
+	rest 1
 	note C_, 2
 	note G_, 2
 	note C_, 2
@@ -682,77 +682,77 @@ Music_TrainerBattleSM_Ch3_loop_5:
 	volume_envelope 1, -1
 Music_TrainerBattleSM_Ch3_loop_6:
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 4
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 4
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_loop 2, Music_TrainerBattleSM_Ch3_loop_6
 	octave 1
 	note F_, 2
@@ -805,8 +805,8 @@ Music_TrainerBattleSM_Ch3_loop_7:
 Music_TrainerBattleSM_Ch4:
 	toggle_noise 3
 	note_type 6
-	note __, 16
-	note __, 12
+	rest 16
+	rest 12
 	note C_, 4
 Music_TrainerBattleSM_Ch4_loop_main:
 Music_TrainerBattleSM_Ch4_loop_1:
@@ -956,9 +956,9 @@ Music_TrainerBattleSM_Ch4_loop_8:
 	note D_, 1
 	note D_, 1
 	note B_, 16
-	note __, 16
+	rest 16
 	note B_, 16
-	note __, 10
+	rest 10
 	note C_, 2
 	note C_, 2
 	note D_, 1

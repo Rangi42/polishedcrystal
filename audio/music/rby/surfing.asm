@@ -14,7 +14,7 @@ Music_SurfingRBY_Ch1:
 	vibrato 12, 3, 4
 
 	note_type 12, 11, 5
-	note __, 6
+	rest 6
 	octave 2
 	note A_, 2
 	note G#, 3
@@ -212,7 +212,7 @@ Music_Surfing_branch_7faae:
 
 Music_SurfingRBY_Ch3:
 	note_type 12, 1, 0
-	note __, 12
+	rest 12
 	octave 5
 	note E_, 6
 	octave 4
@@ -244,7 +244,7 @@ Music_Surfing_branch_7fb03:
 	note G#, 2
 	note E_, 2
 	note G#, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note C#, 2
 	note A_, 2
@@ -273,7 +273,7 @@ Music_Surfing_branch_7fb03:
 	note G#, 2
 	note E_, 2
 	note G#, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note C#, 2
 	note A_, 2

@@ -14,7 +14,7 @@ Music_CeruleanCaveRBY_Ch1:
 	duty_cycle 3
 	vibrato 10, 1, 4
 	note_type 12, 4, -5
-	note __, 8
+	rest 8
 	octave 4
 	note F#, 8
 
@@ -31,7 +31,7 @@ Music_CeruleanCaveRBY_branch_7dee8:
 	note A#, 1
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note E_, 1
 	note D#, 1
@@ -135,7 +135,7 @@ Music_CeruleanCaveRBY_branch_7deff:
 	note C#, 1
 
 Music_CeruleanCaveRBY_branch_7df6e:
-	note __, 16
+	rest 16
 	sound_loop 8, Music_CeruleanCaveRBY_branch_7df6e
 	note_type 12, 12, 3
 	sound_call Music_CeruleanCaveRBY_branch_7dfbb
@@ -179,7 +179,7 @@ Music_CeruleanCaveRBY_branch_7dfaa:
 	note A#, 1
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	note E_, 1
 	note D#, 1
@@ -187,7 +187,7 @@ Music_CeruleanCaveRBY_branch_7dfaa:
 	note A#, 1
 	note G_, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
 	sound_ret
 
@@ -224,12 +224,12 @@ Music_CeruleanCaveRBY_branch_7dfc5:
 Music_CeruleanCaveRBY_branch_7dfd5:
 	note E_, 1
 	note E_, 1
-	note __, 4
+	rest 4
 	octave 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_CeruleanCaveRBY_Ch2:
@@ -254,7 +254,7 @@ Music_CeruleanCaveRBY_branch_7dfed:
 	note B_, 1
 	octave 3
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
 	octave 2
 	note B_, 1
@@ -270,7 +270,7 @@ Music_CeruleanCaveRBY_branch_7dfed:
 Music_CeruleanCaveRBY_branch_7e006:
 	sound_call Music_CeruleanCaveRBY_branch_7e097
 	sound_loop 4, Music_CeruleanCaveRBY_branch_7e006
-	note __, 2
+	rest 2
 	sound_call Music_CeruleanCaveRBY_branch_7e0ab
 	octave 3
 	note C_, 4
@@ -317,24 +317,24 @@ Music_CeruleanCaveRBY_branch_7e006:
 	note G_, 8
 	note_type 12, 13, 2
 	sound_call Music_CeruleanCaveRBY_branch_7e0ba
-	note __, 10
+	rest 10
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_call Music_CeruleanCaveRBY_branch_7e0ba
-	note __, 12
+	rest 12
 	sound_call Music_CeruleanCaveRBY_branch_7e0ba
-	note __, 12
+	rest 12
 	sound_call Music_CeruleanCaveRBY_branch_7e0ba
-	note __, 14
+	rest 14
 	note_type 12, 13, 3
 	sound_call Music_CeruleanCaveRBY_branch_7e0cd
 	note D#, 4
 	sound_call Music_CeruleanCaveRBY_branch_7e0cd
 	note D#, 2
-	note __, 2
+	rest 2
 	note_type 12, 13, 2
 	sound_call Music_CeruleanCaveRBY_branch_7e0c0
-	note __, 2
+	rest 2
 	octave 3
 	note F#, 4
 	octave 2
@@ -342,15 +342,15 @@ Music_CeruleanCaveRBY_branch_7e006:
 	note E_, 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note C#, 1
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 4
 	sound_call Music_CeruleanCaveRBY_branch_7e0c0
@@ -372,7 +372,7 @@ Music_CeruleanCaveRBY_branch_7e097:
 	note B_, 1
 	octave 3
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
 	octave 2
 	note B_, 1
@@ -381,7 +381,7 @@ Music_CeruleanCaveRBY_branch_7e097:
 	note B_, 1
 	octave 3
 	note C_, 1
-	note __, 2
+	rest 2
 	note C_, 1
 	octave 2
 	note B_, 1
@@ -391,19 +391,19 @@ Music_CeruleanCaveRBY_branch_7e0ab:
 	octave 2
 	note E_, 1
 	note E_, 1
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0b5:
 	octave 2
 	note E_, 1
 	note E_, 1
-	note __, 10
+	rest 10
 	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0ba:
@@ -420,11 +420,11 @@ Music_CeruleanCaveRBY_branch_7e0c0:
 	note E_, 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
 	note C_, 1
 	sound_ret
@@ -449,7 +449,7 @@ Music_CeruleanCaveRBY_branch_7e0cd:
 Music_CeruleanCaveRBY_Ch3:
 	note_type 12, 1, 1
 	vibrato 8, 2, 6
-	note __, 14
+	rest 14
 	octave 4
 	note D_, 1
 	note D#, 1
@@ -459,12 +459,12 @@ Music_CeruleanCaveRBY_branch_7e0e5:
 	sound_call Music_CeruleanCaveRBY_branch_7e140
 	octave 5
 	note E_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F#, 4
 	sound_call Music_CeruleanCaveRBY_branch_7e154
@@ -477,7 +477,7 @@ Music_CeruleanCaveRBY_branch_7e0e5:
 	note A#, 4
 	note G_, 4
 	note F#, 4
-	note __, 6
+	rest 6
 	sound_call Music_CeruleanCaveRBY_branch_7e177
 	note B_, 4
 	note A#, 4
@@ -488,32 +488,32 @@ Music_CeruleanCaveRBY_branch_7e0e5:
 	note E_, 4
 	note D#, 4
 	sound_call Music_CeruleanCaveRBY_branch_7e15e
-	note __, 12
+	rest 12
 	sound_call Music_CeruleanCaveRBY_branch_7e15e
-	note __, 12
+	rest 12
 	sound_call Music_CeruleanCaveRBY_branch_7e15e
-	note __, 10
+	rest 10
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_call Music_CeruleanCaveRBY_branch_7e15e
-	note __, 12
+	rest 12
 	sound_call Music_CeruleanCaveRBY_branch_7e15e
-	note __, 12
+	rest 12
 	sound_call Music_CeruleanCaveRBY_branch_7e15e
-	note __, 10
+	rest 10
 	note D_, 1
 	note D#, 1
 	sound_call Music_CeruleanCaveRBY_branch_7e164
 	sound_call Music_CeruleanCaveRBY_branch_7e164
 	note E_, 2
-	note __, 4
+	rest 4
 	sound_call Music_CeruleanCaveRBY_branch_7e177
 	note B_, 8
 	note F#, 6
 	note D_, 1
 	note D#, 1
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	sound_jump Music_CeruleanCaveRBY_branch_7e0e5
 
 Music_CeruleanCaveRBY_branch_7e140:
@@ -542,12 +542,12 @@ Music_CeruleanCaveRBY_branch_7e154:
 	octave 6
 	note E_, 1
 	note E_, 1
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e15e:
@@ -582,19 +582,19 @@ Music_CeruleanCaveRBY_branch_7e164:
 Music_CeruleanCaveRBY_branch_7e177:
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 4
-	note __, 6
+	rest 6
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 6
+	rest 6
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
 	note E_, 1
 	note A#, 4
@@ -603,7 +603,7 @@ Music_CeruleanCaveRBY_branch_7e177:
 Music_CeruleanCaveRBY_Ch4:
 	note_type 12
 	toggle_noise 1
-	note __, 14
+	rest 14
 	note E_, 1
 	note E_, 1
 
@@ -636,14 +636,14 @@ Music_CeruleanCaveRBY_branch_7e1ba:
 	note C#, 4
 	note D_, 4
 	note D_, 4
-	note __, 2
+	rest 2
 	note C#, 2
 	note F_, 4
 
 Music_CeruleanCaveRBY_branch_7e1cf:
-	note __, 16
+	rest 16
 	sound_loop 13, Music_CeruleanCaveRBY_branch_7e1cf
-	note __, 12
+	rest 12
 
 Music_CeruleanCaveRBY_branch_7e1d5:
 	sound_call Music_CeruleanCaveRBY_branch_7e1fa
@@ -651,7 +651,7 @@ Music_CeruleanCaveRBY_branch_7e1d5:
 	note E_, 4
 	note E_, 4
 	note E_, 4
-	note __, 2
+	rest 2
 	note E_, 1
 	note E_, 1
 	sound_call Music_CeruleanCaveRBY_branch_7e1f1
@@ -668,7 +668,7 @@ Music_CeruleanCaveRBY_branch_7e1f1:
 Music_CeruleanCaveRBY_branch_7e1fa:
 	note E_, 1
 	note E_, 1
-	note __, 10
+	rest 10
 	note F#, 4
 	sound_ret
 

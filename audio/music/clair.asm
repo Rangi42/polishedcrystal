@@ -18,13 +18,13 @@ Music_Clair_branch_1faab:
 	note F_, 1
 	note F#, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	sound_loop 2, Music_Clair_branch_1faab
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note G#, 1
 	duty_cycle 2
 	volume_envelope 9, 2
@@ -69,7 +69,7 @@ Music_Clair_branch_1fac9:
 	duty_cycle 3
 	note G#, 3
 	note F_, 2
-	note __, 1
+	rest 1
 	note A#, 4
 	duty_cycle 2
 	note D#, 1
@@ -83,7 +83,7 @@ Music_Clair_branch_1fac9:
 	duty_cycle 3
 	note D#, 3
 	note C#, 2
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 4
 	duty_cycle 2
@@ -101,7 +101,7 @@ Music_Clair_branch_1fb12:
 	stereo_panning TRUE, TRUE
 	octave 3
 	note B_, 1
-	note __, 2
+	rest 2
 	note G#, 5
 	duty_cycle 2
 	stereo_panning FALSE, TRUE
@@ -111,25 +111,25 @@ Music_Clair_branch_1fb12:
 	note B_, 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	note F#, 1
 	note F_, 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note C#, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_Clair_branch_1fb2e:
 	octave 4
 	note F#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
 	note G#, 1
@@ -138,7 +138,7 @@ Music_Clair_branch_1fb2e:
 	note B_, 1
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	note F#, 1
 	sound_ret
@@ -152,14 +152,14 @@ Music_Clair_branch_1fb49:
 	note A#, 2
 	note B_, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	sound_loop 2, Music_Clair_branch_1fb49
 	note F_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	volume_envelope 8, 2
 	note D#, 2
 	note A#, 2
@@ -189,9 +189,9 @@ Music_Clair_branch_1fb49:
 Music_Clair_branch_1fb77:
 	sound_call Music_Clair_branch_1fba6
 	note F#, 2
-	note __, 4
+	rest 4
 	note D#, 12
-	note __, 2
+	rest 2
 	note D#, 4
 	note C#, 4
 	octave 3
@@ -200,18 +200,18 @@ Music_Clair_branch_1fb77:
 	note B_, 6
 	octave 4
 	note C#, 4
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 16
-	note __, 4
+	rest 4
 	transpose 0, 12
 	sound_call Music_Clair_branch_1fba6
 	transpose 0, 0
 	octave 5
 	note F#, 2
-	note __, 4
+	rest 4
 	note D#, 12
-	note __, 2
+	rest 2
 	octave 4
 	note G#, 4
 	note A#, 4
@@ -221,17 +221,17 @@ Music_Clair_branch_1fb77:
 	note C#, 6
 	octave 4
 	note A#, 4
-	note __, 2
+	rest 2
 	note G#, 16
-	note __, 4
+	rest 4
 	sound_jump Music_Clair_branch_1fb77
 
 Music_Clair_branch_1fba6:
 	octave 4
 	note F#, 2
-	note __, 4
+	rest 4
 	note D#, 12
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 4
 	note A#, 4
@@ -241,10 +241,10 @@ Music_Clair_branch_1fba6:
 	note C#, 6
 	octave 3
 	note B_, 4
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 16
-	note __, 4
+	rest 4
 	sound_ret
 
 Music_Clair_Ch3:
@@ -252,19 +252,19 @@ Music_Clair_Ch3:
 	transpose 0, 12
 	octave 3
 	note C#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note G#, 1
 	note B_, 1
 	octave 3
 	note C#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note G#, 1
 	note B_, 1
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 4
 	note G#, 4
@@ -273,22 +273,22 @@ Music_Clair_branch_1fbd1:
 	sound_call Music_Clair_branch_1fc3c
 	octave 2
 	note C#, 2
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note A#, 2
 	note D#, 2
 	sound_call Music_Clair_branch_1fc3c
 	octave 2
 	note G#, 2
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
 	note C#, 1
 	note D#, 1
@@ -297,15 +297,15 @@ Music_Clair_branch_1fbd1:
 	note A#, 1
 	octave 1
 	note G#, 2
-	note __, 1
+	rest 1
 	octave 2
 	note D#, 2
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 2
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 1
 	octave 3
@@ -316,13 +316,13 @@ Music_Clair_branch_1fbd1:
 	note G#, 2
 	octave 2
 	note C#, 2
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note C#, 2
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D#, 1
 	octave 3
@@ -335,15 +335,15 @@ Music_Clair_branch_1fbd1:
 	note D#, 1
 	octave 1
 	note G#, 2
-	note __, 1
+	rest 1
 	octave 2
 	note D#, 2
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 2
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 1
 	octave 3
@@ -354,13 +354,13 @@ Music_Clair_branch_1fbd1:
 	note G#, 2
 	octave 2
 	note D#, 2
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 1
+	rest 1
 	note G#, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 1
 	octave 2
@@ -374,13 +374,13 @@ Music_Clair_branch_1fbd1:
 Music_Clair_branch_1fc3c:
 	octave 1
 	note G#, 2
-	note __, 1
+	rest 1
 	octave 2
 	note D#, 2
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	octave 2
 	note D#, 2

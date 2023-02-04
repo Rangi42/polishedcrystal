@@ -29,10 +29,10 @@ Music_ShowMeAround_Ch1:
 	note E_, 1
 	note G#, 8
 Music_ShowMeAround_branch_edc01:
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	sound_call Music_ShowMeAround_branch_edc98
 	sound_call Music_ShowMeAround_branch_edc15
 	sound_call Music_ShowMeAround_branch_edc98
@@ -40,26 +40,26 @@ Music_ShowMeAround_branch_edc01:
 	sound_jump Music_ShowMeAround_branch_edc01
 
 Music_ShowMeAround_branch_edc15:
-	note __, 4
+	rest 4
 	octave 3
 	note C#, 1
-	note __, 5
+	rest 5
 	note D_, 4
 	note C_, 1
-	note __, 1
-	note __, 4
+	rest 1
+	rest 4
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	sound_ret
 
 Music_ShowMeAround_Ch2:
@@ -120,7 +120,7 @@ Music_ShowMeAround_branch_edc44:
 	note F#, 1
 	note F_, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	note E_, 1
 	sound_call Music_ShowMeAround_branch_edc8e
@@ -160,22 +160,22 @@ Music_ShowMeAround_branch_edc8e:
 	sound_ret
 
 Music_ShowMeAround_branch_edc98:
-	note __, 4
+	rest 4
 	octave 3
 	note C#, 1
-	note __, 5
+	rest 5
 	note D_, 4
 	note C_, 1
-	note __, 1
-	note __, 2
+	rest 1
+	rest 2
 	note C#, 1
-	note __, 5
+	rest 5
 	octave 2
 	note E_, 1
-	note __, 3
+	rest 3
 	note A#, 2
 	note B_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_ShowMeAround_Ch3:
@@ -184,32 +184,32 @@ Music_ShowMeAround_Ch3:
 	note_type 6, 2, 5
 	octave 2
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note D_, 2
-	note __, 6
+	rest 6
 	note D_, 2
 	octave 3
 	note B_, 2
 	note G#, 2
 	note B_, 2
 	note E_, 2
-	note __, 6
+	rest 6
 	volume_envelope 1, 4
 	octave 2
 	note B_, 1
@@ -232,77 +232,77 @@ Music_ShowMeAround_branch_edcd9:
 Music_ShowMeAround_branch_edcef:
 	octave 2
 	note A_, 2
-	note __, 6
+	rest 6
 	octave 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 8
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
-	note __, 6
+	rest 6
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
-	note __, 6
+	rest 6
 	note C#, 4
 	note D_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_ShowMeAround_branch_edd0f:
 	octave 2
 	note A_, 2
-	note __, 6
+	rest 6
 	octave 4
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 8
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 6
+	rest 6
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 6
+	rest 6
 	sound_ret
 
 Music_ShowMeAround_Ch4:
 	toggle_noise 3
 	note_type 12
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note D_, 2
 	note D#, 2
 	note F#, 4

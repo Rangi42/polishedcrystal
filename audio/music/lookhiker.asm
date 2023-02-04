@@ -23,19 +23,19 @@ Music_LookHiker_branch_f7433:
 	note E_, 2
 	note F_, 2
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
-	note __, 4
+	rest 4
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 6
+	rest 6
 	sound_jump Music_LookHiker_branch_f7433
 
 Music_LookHiker_Ch2:
 	duty_cycle 0
 	note_type 12, 10, 1
-	note __, 4
+	rest 4
 	octave 1
 	note B_, 1
 	note B_, 5
@@ -93,20 +93,20 @@ Music_LookHiker_branch_f7477:
 Music_LookHiker_branch_f748a:
 	octave 4
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 6
+	rest 6
 	sound_ret
 
 Music_LookHiker_Ch4:
 	toggle_noise 3
 	note_type 12
 	note F_, 4
-	note __, 16
+	rest 16
 Music_LookHiker_branch_f749a:
 	note D#, 2
 	note G_, 2

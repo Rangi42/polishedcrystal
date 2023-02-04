@@ -14,7 +14,7 @@ Music_FrontierBrainBattleRSE_Ch1:
 	duty_cycle 1
 	pitch_offset 2
 	vibrato 6, 3, 4
-	note __, 4
+	rest 4
 	note_type 8, 12, 2
 	octave 3
 	note B_, 2
@@ -72,8 +72,8 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 2
 	octave 3
 	note A_, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	note_type 8, 12, 1
 	octave 4
 	note A_, 2
@@ -107,8 +107,8 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 2
 	octave 3
 	note A_, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	note_type 8, 12, 1
 	octave 4
 	note G#, 2
@@ -142,8 +142,8 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note B_, 2
 	octave 3
 	note B_, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	note_type 8, 12, 2
 	duty_cycle 2
 	note B_, 1
@@ -676,17 +676,17 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note B_, 1
 	note G_, 1
 	note D_, 16
-	note __, 9
+	rest 9
 	note_type 8, 12, 7
 	duty_cycle 1
 	octave 3
 	note A_, 2
 	note_type 10, 0, 0
-	note __, 2
+	rest 2
 	note_type 8, 12, 7
 	note F_, 1
 	note_type 4, 0, 0
-	note __, 1
+	rest 1
 	note_type 12, 12, 7
 	octave 4
 	note C_, 12
@@ -705,20 +705,20 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note_type 8, 12, 7
 	note G_, 1
 	note_type 4, 0, 0
-	note __, 1
+	rest 1
 	volume_envelope 12, 7
 	note G_, 2
-	note __, 1
+	rest 1
 	note_type 12, 12, 7
 	note G_, 16
 	note_type 8, 12, 7
 	note B_, 2
 	note_type 10, 0, 0
-	note __, 2
+	rest 2
 	note_type 8, 12, 7
 	note G_, 1
 	note_type 4, 0, 0
-	note __, 1
+	rest 1
 	note_type 12, 12, 7
 	octave 4
 	note D_, 12
@@ -727,55 +727,55 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	duty_cycle 2
 	note C#, 1
 	note_type 4, 0, 0
-	note __, 1
+	rest 1
 	volume_envelope 12, 7
 	note C#, 3
-	note __, 1
+	rest 1
 	note C#, 3
-	note __, 1
+	rest 1
 	note C#, 16
 	octave 3
 	note B_, 3
-	note __, 1
+	rest 1
 	note B_, 3
-	note __, 1
+	rest 1
 	note_type 12, 12, 7
 	note B_, 8
 	note_type 8, 12, 7
 	duty_cycle 1
 	note F_, 2
 	note_type 10, 0, 0
-	note __, 2
+	rest 2
 	note_type 8, 12, 7
 	note C_, 1
 	note_type 4, 0, 0
-	note __, 1
+	rest 1
 	volume_envelope 12, 7
 	note A_, 12
 	octave 4
 	note C_, 4
-	note __, 5
+	rest 5
 	octave 3
 	note A_, 2
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 16
-	note __, 16
-	note __, 16
-	note __, 6
+	rest 16
+	rest 16
+	rest 6
 	note C_, 6
 	octave 3
 	note F#, 4
-	note __, 5
+	rest 5
 	note C_, 2
-	note __, 1
+	rest 1
 	note A_, 12
 	octave 4
 	note C_, 4
-	note __, 5
+	rest 5
 	octave 3
 	note A_, 2
-	note __, 1
+	rest 1
 	note_type 12, 12, 7
 	octave 4
 	note F#, 12
@@ -841,7 +841,7 @@ Music_FrontierBrainBattleRSE_Ch2:
 Music_FrontierBrainBattleRSE_Ch2_loop:
 	note_type 12, 13, 4
 	octave 2
-	note __, 8
+	rest 8
 	note A_, 2
 	note G#, 4
 	note B_, 2
@@ -904,53 +904,53 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	volume_envelope 13, 7
 	octave 3
 	note E_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	note __, 4
+	rest 4
 	note F#, 4
-	note __, 4
+	rest 4
 	note G_, 4
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note G#, 6
 	note A_, 2
-	note __, 2
+	rest 2
 	note B_, 4
 	volume_envelope 11, 0
 	note G#, 16
 	volume_envelope 12, 7
 	note E_, 16
-	note __, 2
+	rest 2
 	note E_, 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	note A_, 2
 	note G#, 4
 	note A_, 2
-	note __, 2
+	rest 2
 	note B_, 6
 	volume_envelope 13, 2
 	note E_, 6
@@ -982,10 +982,10 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	volume_envelope 13, 5
 	note D#, 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 4
 	note G#, 16
-	note __, 14
+	rest 14
 	volume_envelope 13, 2
 	octave 3
 	note C#, 1
@@ -1025,7 +1025,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note D#, 2
 	note C#, 2
 	note D#, 16
-	note __, 6
+	rest 6
 	note D#, 1
 	note E_, 1
 	note F#, 2
@@ -1048,7 +1048,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note G#, 2
 	note F#, 2
 	note G#, 16
-	note __, 6
+	rest 6
 	volume_envelope 12, 2
 	duty_cycle 1
 	note G#, 1
@@ -1094,31 +1094,31 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	octave 3
 	note B_, 1
 	note G_, 1
-	note __, 2
+	rest 2
 	volume_envelope 13, 7
 	duty_cycle 3
 	octave 4
 	note C_, 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note E_, 6
 	note F_, 2
-	note __, 2
+	rest 2
 	note G_, 4
 	note E_, 16
 	note C_, 16
-	note __, 2
+	rest 2
 	note C_, 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note E_, 4
 	note F_, 2
 	note E_, 4
 	note F_, 2
-	note __, 2
+	rest 2
 	note G_, 6
 	volume_envelope 13, 2
 	octave 5
@@ -1154,7 +1154,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	octave 5
 	note C_, 4
 	note D_, 16
-	note __, 1
+	rest 1
 	volume_envelope 13, 1
 	octave 4
 	note A_, 1
@@ -1179,7 +1179,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note B_, 1
 	note A_, 1
 	note B_, 16
-	note __, 9
+	rest 9
 	volume_envelope 13, 1
 	note G_, 1
 	note A_, 1
@@ -1204,16 +1204,16 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	duty_cycle 2
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 8
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 6
 	volume_envelope 13, 1
 	duty_cycle 3
@@ -1253,13 +1253,13 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note C_, 2
 	octave 5
 	note D_, 16
-	note __, 12
+	rest 12
 	sound_jump Music_FrontierBrainBattleRSE_Ch2_loop
 
 Music_FrontierBrainBattleRSE_Ch3:
 	note_type 12, 1, -1
 	vibrato 0, 2, 0
-	note __, 4
+	rest 4
 	note_type 8, 1, -1
 	octave 2
 	note F#, 2
@@ -1306,31 +1306,31 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note B_, 1
 	note A#, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 2
 	octave 3
 	note D#, 1
@@ -1338,60 +1338,60 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note C_, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D#, 1
 	note D_, 1
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 2
 	octave 3
 	note D#, 1
@@ -1399,30 +1399,30 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note C_, 2
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D#, 1
 	note D_, 1
@@ -1430,30 +1430,30 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note A#, 2
 	note_type 8, 1, -1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 6
 	octave 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 6
 	octave 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 6
 	octave 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 6
 	octave 2
@@ -1509,7 +1509,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	octave 3
 	note E_, 2
@@ -1541,7 +1541,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	octave 3
 	note E_, 2
@@ -1573,7 +1573,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	octave 3
 	note E_, 2
@@ -1844,20 +1844,20 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note D_, 2
 	note C#, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	octave 3
 	note C#, 2
@@ -1919,7 +1919,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note C_, 2
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	octave 3
 	note C_, 2
@@ -1953,7 +1953,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note C_, 2
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	octave 3
 	note C_, 2
@@ -1987,7 +1987,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note C_, 2
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	octave 3
 	note C_, 2
@@ -2096,15 +2096,15 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note A_, 1
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	octave 3
 	note C_, 2
@@ -2121,12 +2121,12 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 2
 	note F_, 2
@@ -2145,11 +2145,11 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note A_, 1
 	note G_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
 	octave 2
@@ -2170,12 +2170,12 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note A_, 2
 	octave 3
@@ -2195,12 +2195,12 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	octave 2
 	note A_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	octave 2
 	note F_, 2
@@ -2219,12 +2219,12 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 2
 	note F#, 2
@@ -2243,12 +2243,12 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note F#, 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note_type 8, 1, -1
 	octave 2

@@ -21,7 +21,7 @@ Music_Evolution_Ch1:
 	note C_, 1
 	pitch_slide 1, 4, A_
 	note G_, 1
-	note __, 4
+	rest 4
 	duty_cycle 3
 	stereo_panning FALSE, TRUE
 Music_Evolution_branch_f0713:
@@ -73,7 +73,7 @@ Music_Evolution_Ch2:
 	note D_, 1
 	note G_, 1
 	note D_, 1
-	note __, 4
+	rest 4
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 Music_Evolution_branch_f0761:
@@ -120,7 +120,7 @@ Music_Evolution_branch_f0793:
 
 Music_Evolution_Ch3:
 	note_type 12, 1, 6
-	note __, 8
+	rest 8
 Music_Evolution_branch_f07a3:
 	sound_call Music_Evolution_branch_f07bf
 	octave 3
@@ -140,55 +140,55 @@ Music_Evolution_branch_f07a3:
 Music_Evolution_branch_f07bf:
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_Evolution_branch_f07d5:
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_Evolution_Ch4:
 	toggle_noise 5
 	note_type 12
-	note __, 8
+	rest 8
 Music_Evolution_branch_f07f0:
 	stereo_panning TRUE, FALSE
 	note A#, 6

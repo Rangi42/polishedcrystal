@@ -15,30 +15,30 @@ Music_TitleScreen_Ch1:
 	note_type 12, 10, 7
 	volume_envelope 10, 0
 	octave 3
-	note __, 4
+	rest 4
 	volume_envelope 10, 7
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note A_, 1
 	note B_, 8
 	note G_, 4
 	octave 3
 	note C_, 1
-	note __, 2
+	rest 2
 	note D_, 1
 	note E_, 8
 	note C_, 4
 	octave 2
 	note B_, 1
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 1
 	octave 2
 	note B_, 8
 	note A_, 4
 	note A_, 1
-	note __, 2
+	rest 2
 	note B_, 1
 	octave 3
 	note C_, 6
@@ -103,7 +103,7 @@ Music_TitleScreen_Ch1:
 	note_type 8, 10, 7
 	note D_, 6
 	note_type 8, 10, 7
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 3
 	octave 3
@@ -247,17 +247,17 @@ Music_TitleScreen_Ch1:
 	volume_envelope 10, 3
 	octave 2
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 5
+	rest 5
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note_type 8, 11, 2
 	note A_, 2
 	note A_, 2
@@ -267,17 +267,17 @@ Music_TitleScreen_Ch1:
 	note F#, 2
 	note_type 12, 11, 7
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 1
 	note G_, 1
-	note __, 11
+	rest 11
 	sound_ret
 
 Music_TitleScreen_branch_eb96d:
 	note_type 12, 12, 3
 	note D_, 1
 Music_TitleScreen_branch_eb971:
-	note __, 1
+	rest 1
 	octave 2
 	note D_, 1
 	octave 1
@@ -285,7 +285,7 @@ Music_TitleScreen_branch_eb971:
 	octave 2
 	note D_, 1
 	sound_loop 5, Music_TitleScreen_branch_eb971
-	note __, 1
+	rest 1
 	note D_, 1
 	octave 1
 	note A_, 1
@@ -307,18 +307,18 @@ Music_TitleScreen_Ch2:
 	volume_envelope 12, 2
 	octave 3
 	note B_, 1
-	note __, 2
+	rest 2
 	note A_, 1
 	volume_envelope 11, 0
 	note G_, 6
 	volume_envelope 11, 7
 	note G_, 6
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	volume_envelope 12, 7
 	octave 4
 	note C_, 1
-	note __, 2
+	rest 2
 	note D_, 1
 	note E_, 8
 	note F#, 2
@@ -528,15 +528,15 @@ Music_TitleScreen_Ch2:
 	volume_envelope 12, 2
 	octave 4
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 5
+	rest 5
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	volume_envelope 9, 0
 	note G_, 4
 	note_type 8, 12, 2
@@ -549,10 +549,10 @@ Music_TitleScreen_Ch2:
 	note F#, 2
 	note_type 12, 12, 7
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 1
-	note __, 11
+	rest 11
 	sound_ret
 
 Music_TitleScreen_branch_ebae7:
@@ -584,16 +584,16 @@ Music_TitleScreen_Ch3:
 	note_type 12, 1, 6
 	octave 3
 	octave 3
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 2
 	note D_, 1
 	note C#, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note G_, 2
 	note D_, 2
@@ -603,10 +603,10 @@ Music_TitleScreen_Ch3:
 	note B_, 1
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note F_, 2
 	note C_, 2
@@ -614,10 +614,10 @@ Music_TitleScreen_Ch3:
 	note D_, 1
 	note C#, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note G_, 2
 	note D_, 2
@@ -625,7 +625,7 @@ Music_TitleScreen_Ch3:
 	note F_, 1
 	note E_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note F_, 2
 	note A_, 4
@@ -768,7 +768,7 @@ Music_TitleScreen_Ch3:
 	note G_, 6
 	note E_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 6
 	pitch_offset 0
@@ -780,7 +780,7 @@ Music_TitleScreen_Ch3:
 	note G_, 2
 	note F#, 2
 	note D_, 1
-	note __, 2
+	rest 2
 	note E_, 1
 	note F#, 4
 	note_type 8, 1, 6
@@ -790,7 +790,7 @@ Music_TitleScreen_Ch3:
 	note C#, 4
 	note_type 12, 1, 6
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 2
 	octave 5
@@ -799,7 +799,7 @@ Music_TitleScreen_Ch3:
 	note G_, 2
 	note F#, 2
 	note B_, 1
-	note __, 2
+	rest 2
 	note A_, 1
 	note A_, 4
 	note_type 8, 1, 6
@@ -809,7 +809,7 @@ Music_TitleScreen_Ch3:
 	note C#, 4
 	note_type 12, 1, 6
 	note D_, 1
-	note __, 1
+	rest 1
 	note_type 12, 1, 6
 	octave 4
 	note A_, 2
@@ -850,34 +850,34 @@ Music_TitleScreen_Ch3:
 	note E_, 1
 	note F_, 16
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 5
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note __, 3
-	note G_, 1
-	note __, 3
-	note G_, 1
-	note __, 5
+	rest 5
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 3
+	rest 3
+	note G_, 1
+	rest 3
+	note G_, 1
+	rest 5
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	rest 3
 	octave 2
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 5
+	rest 5
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note_type 8, 1, 6
 	note F_, 2
 	note F_, 2
@@ -887,17 +887,17 @@ Music_TitleScreen_Ch3:
 	note A_, 2
 	note_type 12, 1, 6
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 1
 	note G_, 1
-	note __, 11
+	rest 11
 	sound_ret
 
 Music_TitleScreen_Ch4:
 	toggle_noise 5
 	stereo_panning TRUE, FALSE
 	note_type 12
-	note __, 4
+	rest 4
 	note C_, 2
 	note C_, 1
 	note C_, 1
@@ -1077,9 +1077,9 @@ Music_TitleScreen_Ch4:
 	note_type 12
 	note G#, 16
 Music_TitleScreen_branch_ebd40:
-	note __, 16
+	rest 16
 	sound_loop 6, Music_TitleScreen_branch_ebd40
-	note __, 12
+	rest 12
 	note_type 6
 	note D_, 1
 	note C#, 1

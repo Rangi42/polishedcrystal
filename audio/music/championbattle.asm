@@ -157,7 +157,7 @@ Music_ChampionBattle_branch_eaa3d:
 	note E_, 2
 	note F#, 4
 	note F#, 4
-	note __, 16
+	rest 16
 	volume_envelope 9, 0
 	octave 3
 	note F#, 8
@@ -545,10 +545,10 @@ Music_ChampionBattle_Ch3:
 Music_ChampionBattle_branch_eac88:
 	octave 3
 	note D#, 1
-	note __, 7
+	rest 7
 	sound_loop 3, Music_ChampionBattle_branch_eac88
 	note D#, 1
-	note __, 3
+	rest 3
 	note E_, 4
 	sound_call Music_ChampionBattle_branch_ead61
 	sound_call Music_ChampionBattle_branch_ead61
@@ -560,24 +560,24 @@ Music_ChampionBattle_branch_eac88:
 	sound_call Music_ChampionBattle_branch_ead6f
 	note D_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 4
 	note D#, 8
@@ -673,9 +673,9 @@ Music_ChampionBattle_branch_ead24:
 	note D#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 Music_ChampionBattle_branch_ead32:
 	note E_, 2
 	note B_, 2
@@ -685,9 +685,9 @@ Music_ChampionBattle_branch_ead32:
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 Music_ChampionBattle_branch_ead40:
 	note D#, 2
 	note G#, 2
@@ -715,37 +715,37 @@ Music_ChampionBattle_branch_ead4e:
 
 Music_ChampionBattle_branch_ead61:
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 5
+	rest 5
 	sound_loop 3, Music_ChampionBattle_branch_ead61
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	sound_ret
 
 Music_ChampionBattle_branch_ead6f:
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_ChampionBattle_branch_ead83:

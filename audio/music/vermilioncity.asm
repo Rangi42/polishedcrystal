@@ -60,13 +60,13 @@ Music_VermilionCity_branch_eb6a0:
 	sound_call Music_VermilionCity_branch_eb701
 	volume_envelope 9, 3
 	duty_cycle 0
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	sound_call Music_VermilionCity_branch_eb70c
 	sound_call Music_VermilionCity_branch_eb70c
@@ -114,7 +114,7 @@ Music_VermilionCity_branch_eb701:
 	sound_ret
 
 Music_VermilionCity_branch_eb70c:
-	note __, 2
+	rest 2
 	note F#, 2
 	note A_, 2
 	note F#, 2
@@ -124,7 +124,7 @@ Music_VermilionCity_branch_eb70c:
 	note F#, 2
 	note A_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note B_, 2
 	note G#, 2
@@ -176,7 +176,7 @@ Music_VermilionCity_branch_eb735:
 	note G#, 8
 	note G#, 14
 	note_type 6, 5, 7
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 1
 	note G#, 1
@@ -259,7 +259,7 @@ Music_VermilionCity_branch_eb79e:
 	note A_, 4
 	octave 3
 	note D_, 2
-	note __, 4
+	rest 4
 	note D_, 1
 	note D_, 1
 	sound_call Music_VermilionCity_branch_eb7f5
@@ -267,7 +267,7 @@ Music_VermilionCity_branch_eb79e:
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	sound_call Music_VermilionCity_branch_eb7f5
 	volume_envelope 2, 5
@@ -316,19 +316,19 @@ Music_VermilionCity_branch_eb7de:
 
 Music_VermilionCity_branch_eb7f5:
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note E_, 2
-	note __, 4
+	rest 4
 	note E_, 1
 	note E_, 1
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
 	octave 4

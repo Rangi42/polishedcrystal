@@ -23,7 +23,7 @@ Music_LookOfficer_Ch1:
 	note B_, 16
 Music_LookOfficer_branch_ed852:
 	volume_envelope 8, 2
-	note __, 4
+	rest 4
 	note B_, 6
 	note G#, 4
 	note B_, 6
@@ -99,23 +99,23 @@ Music_LookOfficer_Ch3:
 	vibrato 20, 1, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
-	note __, 10
+	rest 10
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	volume_envelope 1, 2
 	octave 5
 	note D#, 2
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 1
+	rest 1
 	note A_, 2
 	note B_, 2
-	note __, 1
+	rest 1
 	octave 6
 	note C#, 2
-	note __, 1
+	rest 1
 	note D#, 2
 Music_LookOfficer_branch_ed8c8:
 	note E_, 6

@@ -43,9 +43,9 @@ Music_AfterTheRivalFight_Ch3:
 	note_type 12, 2, 8
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note F#, 2
 	note F_, 2

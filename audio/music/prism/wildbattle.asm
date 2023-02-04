@@ -56,60 +56,60 @@ Music_WildBattlePrism_Ch1:
 	octave 2
 	volume_envelope 11, 4
 	note A_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A#, 6
 	note A#, 2
 	note A#, 4
 	note A#, 4
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A_, 6
 	note A_, 2
 	note A_, 4
 	note A_, 4
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A#, 6
 	note A#, 2
 	note A#, 4
 	note A#, 4
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	volume_envelope 11, 7
 	note F_, 8
 	note A_, 8
@@ -173,12 +173,12 @@ Music_WildBattlePrism_branch_19f26b:
 	duty_cycle 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -187,12 +187,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -201,26 +201,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note D_, 2
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 2
 	octave 3
 	note G_, 2
-	note __, 2
-	octave 4
-	note G_, 2
-	octave 3
-	note G_, 2
-	octave 4
-	note G_, 2
-	octave 3
-	note G_, 2
-	note __, 2
-	octave 4
-	note G_, 2
-	octave 3
-	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note G_, 2
 	octave 3
@@ -228,13 +214,27 @@ Music_WildBattlePrism_branch_19f26b:
 	octave 4
 	note G_, 2
 	octave 3
+	note G_, 2
+	rest 2
+	octave 4
+	note G_, 2
+	octave 3
+	note G_, 2
+	rest 2
+	octave 4
+	note G_, 2
+	octave 3
+	note G_, 2
+	octave 4
+	note G_, 2
+	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -243,12 +243,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -257,12 +257,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note D_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
@@ -271,12 +271,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F_, 2
 	octave 3
@@ -285,12 +285,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note F_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -299,12 +299,12 @@ Music_WildBattlePrism_branch_19f26b:
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -333,68 +333,68 @@ Music_WildBattlePrism_branch_19f11b:
 	octave 3
 	volume_envelope 12, 4
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 6
 	note D#, 2
 	note D#, 4
 	note D#, 4
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note E_, 6
 	note E_, 2
 	note E_, 4
 	note E_, 4
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 6
 	note D#, 2
 	note D#, 4
 	note D#, 4
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	volume_envelope 12, 7
 	note F_, 8
 	note D#, 8
@@ -467,7 +467,7 @@ Music_WildBattlePrism_branch_19f167:
 	octave 3
 	volume_envelope 12, 7
 	note A_, 8
-	note __, 2
+	rest 2
 	volume_envelope 12, 2
 	note D#, 2
 	note D_, 2
@@ -492,7 +492,7 @@ Music_WildBattlePrism_branch_19f167:
 	octave 3
 	volume_envelope 12, 7
 	note A_, 8
-	note __, 2
+	rest 2
 	volume_envelope 12, 2
 	note D#, 2
 	note D_, 2

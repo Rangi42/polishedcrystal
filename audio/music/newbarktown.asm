@@ -10,16 +10,16 @@ Music_NewBarkTown_Ch1:
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 3
 	note_type 12, 8, 7
-	note __, 4
+	rest 4
 Music_NewBarkTown_branch_eb2eb:
 	duty_cycle 0
 	sound_call Music_NewBarkTown_branch_eb349
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 2
 	note F#, 2
@@ -39,16 +39,16 @@ Music_NewBarkTown_branch_eb2eb:
 	sound_call Music_NewBarkTown_branch_eb349
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	duty_cycle 2
 	volume_envelope 8, 2
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
 	octave 3
@@ -87,54 +87,54 @@ Music_NewBarkTown_branch_eb2eb:
 Music_NewBarkTown_branch_eb349:
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note B_, 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 2
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	sound_ret
 
 Music_NewBarkTown_branch_eb37c:
@@ -160,7 +160,7 @@ Music_NewBarkTown_Ch2:
 	stereo_panning TRUE, TRUE
 	vibrato 18, 2, 3
 	note_type 6, 10, 7
-	note __, 8
+	rest 8
 Music_NewBarkTown_branch_eb396:
 	duty_cycle 2
 	note_type 6, 10, 7
@@ -189,51 +189,51 @@ Music_NewBarkTown_branch_eb396:
 Music_NewBarkTown_branch_eb3bf:
 	octave 2
 	note D_, 4
-	note __, 8
+	rest 8
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note D_, 4
-	note __, 8
+	rest 8
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 8
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 4
-	note __, 8
+	rest 8
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 8
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A_, 4
-	note __, 8
+	rest 8
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 8
 	octave 2
 	note C#, 4
@@ -280,7 +280,7 @@ Music_NewBarkTown_branch_eb408:
 	note E_, 6
 	note F#, 2
 	note E_, 4
-	note __, 2
+	rest 2
 	note D_, 1
 	note E_, 1
 	note F#, 4
@@ -303,7 +303,7 @@ Music_NewBarkTown_branch_eb408:
 	note G_, 1
 	note F#, 1
 	note E_, 4
-	note __, 4
+	rest 4
 	volume_envelope 2, 5
 	vibrato 18, 5, 3
 	octave 2

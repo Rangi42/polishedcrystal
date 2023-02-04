@@ -34,18 +34,18 @@ Music_TrainerVictory_branch_ebecd:
 	volume_envelope 7, 2
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 2
 	note E_, 6
 	sound_loop 2, Music_TrainerVictory_branch_ebecd
 	sound_call Music_TrainerVictory_branch_ebf11
 	note A_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note A_, 6
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A#, 6
 Music_TrainerVictory_branch_ebef2:
@@ -75,11 +75,11 @@ Music_TrainerVictory_branch_ebf01:
 Music_TrainerVictory_branch_ebf11:
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note F#, 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note G_, 6
 	sound_ret
@@ -103,21 +103,21 @@ Music_TrainerVictory_branch_ebf30:
 	note_type 8, 8, 2
 	sound_call Music_TrainerVictory_branch_ebf56
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G_, 6
 	sound_loop 2, Music_TrainerVictory_branch_ebf30
 	sound_call Music_TrainerVictory_branch_ebf56
 	note F_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note F_, 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note G_, 6
 	note_type 12, 8, 8
@@ -128,13 +128,13 @@ Music_TrainerVictory_branch_ebf30:
 Music_TrainerVictory_branch_ebf56:
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 2
 	octave 4
 	note D_, 6
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -146,11 +146,11 @@ Music_TrainerVictory_Ch3:
 	octave 3
 	note G_, 6
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 6
 	note D_, 2
 	note C#, 2
@@ -160,29 +160,29 @@ Music_TrainerVictory_branch_ebf74:
 	sound_call Music_TrainerVictory_branch_ebfb1
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note A_, 2
 	note F#, 2
 	note C#, 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 6
 	sound_loop 2, Music_TrainerVictory_branch_ebf74
 	sound_call Music_TrainerVictory_branch_ebfb1
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	note A_, 2
 	note F_, 2
 	note C_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 4
 	note D_, 2
@@ -212,7 +212,7 @@ Music_TrainerVictory_branch_ebf74:
 Music_TrainerVictory_branch_ebfb1:
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 3
 	note F#, 2
@@ -220,7 +220,7 @@ Music_TrainerVictory_branch_ebfb1:
 	octave 2
 	note A_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	octave 3
 	note G_, 2

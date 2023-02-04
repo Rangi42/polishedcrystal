@@ -271,58 +271,58 @@ Music_CeladonCity_branch_f4495:
 	note_type 12, 2, 5
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note D_, 8
 	sound_call Music_CeladonCity_branch_f44fd
 Music_CeladonCity_branch_f44a1:
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 4
 	sound_loop 3, Music_CeladonCity_branch_f44a1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 3
 	octave 2
 	note F#, 1
 	sound_call Music_CeladonCity_branch_f44fd
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F#, 3
 	octave 2
 	note G#, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	note C#, 2
 	note D_, 2
-	note __, 6
+	rest 6
 	octave 2
 	note A_, 2
-	note __, 6
+	rest 6
 	volume_envelope 1, 0
 	sound_call Music_CeladonCity_branch_f4510
 	octave 5
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note D_, 4
-	note __, 4
+	rest 4
 	note C_, 8
 	octave 4
 	note A_, 2
@@ -331,19 +331,19 @@ Music_CeladonCity_branch_f44a1:
 	note C_, 2
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note E_, 2
 	note D_, 4
-	note __, 4
+	rest 4
 	sound_call Music_CeladonCity_branch_f4510
 	octave 5
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note E_, 2
 	note D_, 4
-	note __, 4
+	rest 4
 	note C_, 8
 	note A_, 2
 	note G_, 2
@@ -354,22 +354,22 @@ Music_CeladonCity_branch_f44a1:
 	note D_, 2
 	note E_, 2
 	note D_, 2
-	note __, 6
+	rest 6
 	sound_jump Music_CeladonCity_branch_f4495
 
 Music_CeladonCity_branch_f44fd:
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 4
 	sound_loop 3, Music_CeladonCity_branch_f44fd
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 3
 	octave 2
 	note G#, 1

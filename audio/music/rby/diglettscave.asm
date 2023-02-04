@@ -68,14 +68,14 @@ Music_DiglettsCaveRBY_branch_7e892:
 	note D_, 16
 	octave 2
 	note A#, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	sound_jump Music_DiglettsCaveRBY_branch_7e892
 
 Music_DiglettsCaveRBY_Ch2:
@@ -128,11 +128,11 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	note E_, 2
 	octave 5
 	note E_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C_, 2
 	octave 4
@@ -147,19 +147,19 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	note G_, 2
 	octave 5
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note D#, 2
 	note D_, 2
 	note C#, 2
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note_type 12, 12, 7
 	duty_cycle 1
 	octave 4
@@ -177,59 +177,59 @@ Music_DiglettsCaveRBY_branch_7e940:
 	sound_call Music_DiglettsCaveRBY_branch_7e9d1
 	sound_loop 16, Music_DiglettsCaveRBY_branch_7e940
 	note E_, 4
-	note __, 4
-	note __, 4
+	rest 4
+	rest 4
 	note E_, 4
 	note C_, 4
-	note __, 4
-	note __, 4
+	rest 4
+	rest 4
 	note C_, 4
 	note D_, 4
-	note __, 4
-	note __, 4
+	rest 4
+	rest 4
 	note D_, 4
 	octave 3
 	note A#, 4
-	note __, 4
-	note __, 4
+	rest 4
+	rest 4
 	note A#, 4
 
 Music_DiglettsCaveRBY_branch_7e958:
 	octave 5
 	note E_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note G#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	sound_loop 3, Music_DiglettsCaveRBY_branch_7e958
 	octave 4
 	note E_, 4
@@ -262,10 +262,10 @@ Music_DiglettsCaveRBY_branch_7e958:
 	note G_, 16
 	octave 3
 	note B_, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	sound_call Music_DiglettsCaveRBY_branch_7e9d1
 	sound_call Music_DiglettsCaveRBY_branch_7e9d1
 	sound_call Music_DiglettsCaveRBY_branch_7e9d1
@@ -292,18 +292,18 @@ Music_DiglettsCaveRBY_branch_7e958:
 	note G_, 2
 	note A#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_DiglettsCaveRBY_branch_7e9d1:
 	octave 4
 	note E_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F#, 4
 	sound_ret

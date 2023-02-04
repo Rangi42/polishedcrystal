@@ -20,7 +20,7 @@ Music_ZinniaEncounterORAS_Ch1:
 	octave 2
 	note B_, 8
 Music_ZinniaEncounterORAS_Ch1_loop:
-	note __, 4
+	rest 4
 	octave 3
 	note F#, 1
 	note G#, 2
@@ -30,7 +30,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note G#, 2
 	note F#, 1
 	note G#, 1
-	note __, 2
+	rest 2
 	volume_envelope 10, 7
 	note C#, 8
 	volume_envelope 10, 4
@@ -51,7 +51,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note E_, 4
 	note G#, 4
 	volume_envelope 10, 3
-	note __, 2
+	rest 2
 	note F#, 1
 	note G#, 2
 	note A_, 2
@@ -61,7 +61,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note A_, 2
 	note G#, 1
 	note A_, 1
-	note __, 2
+	rest 2
 	volume_envelope 10, 7
 	note E_, 8
 	volume_envelope 10, 4
@@ -151,11 +151,11 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note B_, 8
 	volume_envelope 10, 0
 	note A_, 1
-	note __, 2
+	rest 2
 	note A_, 3
 	note G#, 2
 	note A_, 1
-	note __, 3
+	rest 3
 	volume_envelope 10, 6
 	note A_, 4
 	volume_envelope 10, 3
@@ -262,13 +262,13 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 	volume_envelope 13, 7
 	note F#, 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note B_, 1
 	note A_, 1
 	note G#, 1
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 4
 	sound_jump Music_ZinniaEncounterORAS_Ch2_loop_main
 
@@ -295,12 +295,12 @@ Music_ZinniaEncounterORAS_Ch3:
 	vibrato 18, 1, 5
 	octave 2
 	note G#, 2
-	note __, 6
+	rest 6
 Music_ZinniaEncounterORAS_Ch3_loop:
 	sound_call Music_ZinniaEncounterORAS_Ch3_branch_1
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	sound_call Music_ZinniaEncounterORAS_Ch3_branch_1
 	octave 1
@@ -310,117 +310,117 @@ Music_ZinniaEncounterORAS_Ch3_loop:
 	sound_call Music_ZinniaEncounterORAS_Ch3_branch_2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note B_, 2
 	octave 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note C#, 2
 	sound_call Music_ZinniaEncounterORAS_Ch3_branch_2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 2
 	octave 1
 	note B_, 2
 	octave 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note C#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note E_, 2
 	note F#, 1
-	note __, 2
+	rest 2
 	note F#, 3
 	note E_, 2
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 2
-	note __, 2
+	rest 2
 	sound_jump Music_ZinniaEncounterORAS_Ch3_loop
 
 Music_ZinniaEncounterORAS_Ch3_branch_1:
 	note F#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note A_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	sound_ret
 
 Music_ZinniaEncounterORAS_Ch3_branch_2:
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note E_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note G_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 1
 	note G#, 2
 	octave 2

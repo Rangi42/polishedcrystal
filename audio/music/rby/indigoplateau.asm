@@ -159,13 +159,13 @@ Music_IndigoPlateauRBY_Ch3:
 	note_type 12, 1, 0
 	octave 4
 	note D_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 4
 
 Music_IndigoPlateauRBY_branch_a6c6:
@@ -173,40 +173,40 @@ Music_IndigoPlateauRBY_branch_a6c6:
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note F#, 4
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A_, 8
 	note D_, 8
 	note A#, 8
@@ -216,19 +216,19 @@ Music_IndigoPlateauRBY_branch_a6c6:
 Music_IndigoPlateauRBY_branch_a6fe:
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A_, 4
 	sound_ret
 

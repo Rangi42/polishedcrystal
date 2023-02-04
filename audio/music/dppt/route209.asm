@@ -15,7 +15,7 @@ Music_Route209DPPt_Ch1:
 	duty_cycle 1
 	pitch_offset 1
 	octave 4
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	note A_, 2
@@ -241,7 +241,7 @@ Music_Route209DPPt_Ch1_loop:
 	volume_envelope 7, 7
 	note A_, 6
 	volume_envelope 9, 1
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 3
 	volume_envelope 9, 3
@@ -330,7 +330,7 @@ Music_Route209DPPt_Ch1_loop:
 	note B_, 1
 	volume_envelope 10, 7
 	note A_, 16
-	note __, 15
+	rest 15
 	sound_jump Music_Route209DPPt_Ch1_loop
 
 Music_Route209DPPt_Ch2:
@@ -396,7 +396,7 @@ Music_Route209DPPt_Ch2_loop:
 	volume_envelope 10, 7
 	note A_, 8
 	volume_envelope 10, 1
-	note __, 2
+	rest 2
 	volume_envelope 10, 3
 	duty_cycle 2
 	octave 5
@@ -507,7 +507,7 @@ Music_Route209DPPt_Ch2_loop:
 	volume_envelope 10, 7
 	note E_, 6
 	volume_envelope 10, 1
-	note __, 2
+	rest 2
 	note A_, 2
 	note E_, 2
 	note A_, 2
@@ -524,7 +524,7 @@ Music_Route209DPPt_Ch2_loop:
 	note B_, 2
 	volume_envelope 10, 7
 	note A_, 16
-	note __, 12
+	rest 12
 	volume_envelope 10, 2
 	duty_cycle 1
 	note A_, 1
@@ -627,146 +627,146 @@ Music_Route209DPPt_Ch2_loop:
 Music_Route209DPPt_Ch3:
 	note_type 12, 1, 2
 	octave 2
-	note __, 16
+	rest 16
 Music_Route209DPPt_Ch3_loop:
 	note_type 14, 1, 2
 	note A_, 3
 	note_type 6, 1, 2
-	note __, 1
+	rest 1
 	note A_, 7
-	note __, 1
+	rest 1
 	note G#, 7
-	note __, 1
+	rest 1
 	note G#, 7
-	note __, 1
+	rest 1
 	note F#, 7
-	note __, 1
+	rest 1
 	note F#, 7
-	note __, 1
+	rest 1
 	note E_, 7
-	note __, 1
+	rest 1
 	note E_, 7
-	note __, 1
+	rest 1
 	note D_, 7
-	note __, 1
+	rest 1
 	note D_, 7
-	note __, 1
+	rest 1
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 7
-	note __, 1
+	rest 1
 	note F_, 7
-	note __, 1
+	rest 1
 	note F_, 7
-	note __, 1
+	rest 1
 	note G_, 7
-	note __, 1
+	rest 1
 	note G_, 7
-	note __, 1
+	rest 1
 	note_type 12, 1, 2
 	octave 1
 	note A_, 12
-	note __, 4
+	rest 4
 	note A_, 12
-	note __, 4
+	rest 4
 	note A_, 3
 	note A_, 3
-	note __, 10
+	rest 10
 	note A_, 3
 	note A_, 3
-	note __, 10
+	rest 10
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 5
+	rest 5
 	note F#, 1
 	note F#, 2
-	note __, 5
+	rest 5
 	note F_, 1
 	note F_, 2
-	note __, 1
+	rest 1
 	note E_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 8
+	rest 8
 	note D_, 2
 	note D_, 2
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
 	octave 2
 	note E_, 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
 	octave 2
 	note F_, 2
 	note F_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 2
 	note G_, 2
 	note G_, 2
-	note __, 1
+	rest 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	octave 2
 	note A_, 1
@@ -777,102 +777,102 @@ Music_Route209DPPt_Ch3_loop:
 	note A_, 2
 	octave 1
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 7
 	octave 2
 	note D_, 4
 	note E_, 2
 	octave 1
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 5
-	note __, 8
+	rest 8
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 5
-	note __, 5
+	rest 5
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
 	note_type 6, 1, 2
 	octave 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 13
+	rest 13
 	octave 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 13
+	rest 13
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 13
+	rest 13
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 15
+	rest 15
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 3
+	rest 3
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 16
-	note __, 16
-	note __, 13
+	rest 16
+	rest 16
+	rest 13
 	octave 3
 	note A_, 4
 	note D_, 4
@@ -950,8 +950,8 @@ Music_Route209DPPt_Ch4_loop:
 	note_type 12
 	note B_, 16
 	note B_, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	note C#, 2
 	note C#, 2
 	note G#, 2

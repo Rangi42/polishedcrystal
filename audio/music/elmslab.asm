@@ -35,7 +35,7 @@ Music_ElmsLab_Ch1:
 	note A_, 4
 	note A_, 2
 Music_ElmsLab_branch_ea075:
-	note __, 2
+	rest 2
 	note A_, 2
 	note G#, 2
 	note A_, 2
@@ -353,8 +353,8 @@ Music_ElmsLab_branch_ea14f:
 Music_ElmsLab_Ch3:
 	stereo_panning FALSE, TRUE
 	note_type 12, 2, 5
-	note __, 8
-	note __, 14
+	rest 8
+	rest 14
 	octave 3
 	note C_, 2
 	note F_, 2
@@ -448,7 +448,7 @@ Music_ElmsLab_branch_ea216:
 	note B_, 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 4
 	octave 3
 	note A#, 4
@@ -531,8 +531,8 @@ Music_ElmsLab_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 0
 	note_type 12
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 Music_ElmsLab_branch_ea2b9:
 	note G_, 4
 	sound_jump Music_ElmsLab_branch_ea2b9

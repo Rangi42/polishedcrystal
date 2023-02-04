@@ -20,44 +20,44 @@ Music_LookYoungster_Ch1:
 	volume_envelope 12, 3
 	octave 4
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 4
-	note __, 2
+	rest 2
 	note C_, 6
 	volume_envelope 11, 3
 Music_LookYoungster_branch_f66ea:
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 1
-	note __, 16
-	note __, 2
+	rest 1
+	rest 16
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 1
-	note __, 16
+	rest 1
+	rest 16
 	sound_jump Music_LookYoungster_branch_f66ea
 
 Music_LookYoungster_Ch2:
@@ -77,30 +77,30 @@ Music_LookYoungster_Ch2:
 	note_type 12, 11, 3
 	volume_envelope 12, 3
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 4
-	note __, 2
+	rest 2
 	note F#, 6
 Music_LookYoungster_branch_f672f:
 	duty_cycle 3
 	volume_envelope 11, 3
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
+	rest 1
 	volume_envelope 9, 7
 	duty_cycle 2
 	note D#, 1
@@ -108,34 +108,34 @@ Music_LookYoungster_branch_f672f:
 	note D#, 1
 	note D_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	duty_cycle 3
 	volume_envelope 11, 3
-	note __, 2
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
+	rest 1
 	duty_cycle 2
 	volume_envelope 9, 7
 	note G#, 1
@@ -143,148 +143,148 @@ Music_LookYoungster_branch_f672f:
 	note G#, 1
 	note G_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	sound_jump Music_LookYoungster_branch_f672f
 
 Music_LookYoungster_Ch3:
 	stereo_panning TRUE, TRUE
 	vibrato 2, 2, 4
 	note_type 12, 2, 5
-	note __, 4
+	rest 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	volume_envelope 1, 5
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 4
-	note __, 2
+	rest 2
 	note G#, 6
 	volume_envelope 2, 5
 Music_LookYoungster_branch_f67ae:
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
-	octave 2
-	note F_, 1
-	note __, 1
-	octave 3
-	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G#, 1
-	note __, 1
+	note F_, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
-	note G#, 1
-	note __, 1
-	octave 3
-	note D#, 1
-	note __, 1
-	octave 2
-	note G#, 1
-	note __, 1
-	octave 3
-	note D#, 1
-	note __, 1
 	note G_, 1
-	note __, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
+	note G_, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
+	note G_, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
+	note G_, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
 	note G#, 1
-	note __, 1
+	rest 1
+	octave 3
+	note D#, 1
+	rest 1
+	octave 2
+	note G#, 1
+	rest 1
+	octave 3
+	note D#, 1
+	rest 1
+	octave 2
+	note G#, 1
+	rest 1
+	octave 3
+	note D#, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note G#, 1
+	rest 1
 	sound_jump Music_LookYoungster_branch_f67ae
