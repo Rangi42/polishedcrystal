@@ -235,7 +235,7 @@ endr
 	ld hl, wPokegearFlags
 	bit POKEGEAR_OBTAINED_F, [hl]
 	jr z, .no_pokegear
-	ld a, STARTMENUITEM_POKEGEAR 
+	ld a, STARTMENUITEM_POKEGEAR
 	call .AppendMenuList
 .no_pokegear
 
