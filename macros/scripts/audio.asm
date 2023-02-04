@@ -137,10 +137,10 @@ MACRO toggle_noise
 	endc
 ENDM
 
-	const panning_cmd
-MACRO panning
-	db panning_cmd
-	db \1 ; tracks
+	const force_stereo_panning_cmd ; $e4
+MACRO force_stereo_panning
+	db force_stereo_panning_cmd
+	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
 ENDM
 
 	const volume_cmd
