@@ -672,6 +672,20 @@ Special_HyperTrain:
 	dec a
 	jr nz, .loop
 
+	; If modern EVs are enabled, require level 50 instead.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	jr nz, .not_modern_evs
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	cp HYPER_LEVEL_REQ
+	jr nc, .allow_hyper_training
+	ld hl, .TextNotEnoughLevels
+	jr .print_and_fail
+
+.not_modern_evs
 	; Check if we've reached maximum effort on the stat
 	ld a, MON_EVS - 1
 	add c
@@ -680,6 +694,7 @@ Special_HyperTrain:
 	ld hl, .TextNotMaxEffort
 	jr c, .print_and_fail
 
+.allow_hyper_training
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1HyperTraining
 	call SkipNames
@@ -738,6 +753,15 @@ Special_HyperTrain:
 	line "you're hyped to"
 	cont "have it, but I"
 	cont "can't train it yet!"
+	prompt
+
+.TextNotEnoughLevels:
+	text "Oh no… No, no, no!"
+	line ""
+	text_ram wStringBuffer1
+	text " hasn't"
+	cont "leveled up enough"
+	cont "to be ready!"
 	prompt
 
 .TextNotMaxEffort:
