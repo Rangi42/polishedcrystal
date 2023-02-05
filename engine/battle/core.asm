@@ -1671,7 +1671,7 @@ LeppaRestorePP:
 
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wCurPartyMon]
+	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1PP
 	jr z, .set_party_pp
 	ld a, [wCurOTMon]

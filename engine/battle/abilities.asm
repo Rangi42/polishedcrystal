@@ -1429,7 +1429,7 @@ RegainItemByAbility:
 	pop bc
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wCurPartyMon]
+	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Item
 	jr z, .got_item_addr
 	ld a, [wCurOTMon]

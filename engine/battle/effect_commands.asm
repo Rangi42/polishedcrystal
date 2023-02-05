@@ -1060,7 +1060,7 @@ BattleConsumePP:
 
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wCurPartyMon]
+	ld a, [wCurBattleMon]
 	ld bc, wCurMoveNum
 	ld de, wBattleMonPP
 	ld hl, wPartyMon1PP
@@ -4843,8 +4843,8 @@ Defrost:
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Status
 	jr z, .ok
-	ld hl, wPartyMon1Status
 	ld a, [wCurBattleMon]
+	ld hl, wPartyMon1Status
 .ok
 
 	call GetPartyLocation
@@ -6112,7 +6112,7 @@ CheckAnyOtherAliveMons:
 	; fallthrough
 CheckAnyOtherAlivePartyMons:
 	ld hl, wPartyMon1HP
-	ld de, wCurPartyMon
+	ld de, wCurBattleMon
 	ld a, [wPartyCount]
 	jr DoCheckAnyOtherAliveMons
 
