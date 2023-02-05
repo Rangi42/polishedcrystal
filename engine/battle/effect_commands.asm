@@ -407,6 +407,9 @@ BattleCommand_checkturn:
 
 .not_infatuated
 	; Are we using a disabled move?
+	call VerifyChosenMove
+	jr nz, .not_disabled
+
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerDisableCount]
@@ -477,6 +480,25 @@ CantMove:
 	ret nz
 .fly_dig
 	jmp AppearUserRaiseSub
+
+VerifyChosenMove:
+; Returns z if the used move is the move we selected in the move screen.
+; Used to avoid problems caused by Struggle or similar.
+	ld a, [hBattleTurn]
+	and a
+	ld de, wPlayerMoveStructAnimation
+	ld hl, wBattleMonMoves
+	jr z, .got_move
+	ld de, wEnemyMoveStructAnimation
+	ld hl, wEnemyMonMoves
+.got_move
+	ld a, [wCurMoveNum]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [de]
+	cp [hl]
+	ret
 
 IncreaseMetronomeCount:
 	; Don't arbitrarily boost usage counter twice on a turn
