@@ -797,28 +797,28 @@ Music_MewtwoBattleStadium_Ch2:
 	note A_, 1
 	note G#, 1
 	octave 4
-	intensity $40
+	volume_envelope 4, 0
 	note C_, 1
 	octave 3
 	note B_, 1
 	note A#, 1
 	note A_, 1
 	octave 4
-	intensity $50
+	volume_envelope 5, 0
 	note C#, 1
 	note C_, 1
 	octave 3
 	note B_, 1
 	note A_, 1
 	octave 4
-	intensity $60
+	volume_envelope 6, 0
 	note D_, 1
 	note C#, 1
 	note C_, 1
 	octave 3
 	note B_, 1
 	octave 4
-	intensity $70
+	volume_envelope 7, 0
 	note D#, 1
 	note D_, 1
 	note C#, 1
