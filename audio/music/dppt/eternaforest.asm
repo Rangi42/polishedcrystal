@@ -10,69 +10,69 @@ Music_EternaForestDPPt:
 
 Music_EternaForestDPPt_Ch1:
 	tempo $88
-	volume $77
+	volume 7, 7
 Music_EternaForestDPPt_Ch1_loop:
-	notetype $C, $82
-	dutycycle 0
+	note_type 12, 8, 2
+	duty_cycle 0
 	octave 5
-	note __, 1
+	rest 1
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 9
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 7
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 9
-	intensity $82
+	volume_envelope 8, 2
 	octave 5
 	note F#, 5
-	intensity $72
+	volume_envelope 7, 2
 	note F#, 6
-	intensity $62
+	volume_envelope 6, 2
 	note F#, 6
-	intensity $52
+	volume_envelope 5, 2
 	note F#, 6
-	intensity $42
+	volume_envelope 4, 2
 	note F#, 9
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note F#, 5
-	intensity $72
+	volume_envelope 7, 2
 	note F#, 6
-	intensity $62
+	volume_envelope 6, 2
 	note F#, 6
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note D_, 4
-	intensity $82
+	volume_envelope 8, 2
 	note C_, 16
-	dutycycle 1
-	note __, 16
-	note __, 12
+	duty_cycle 1
+	rest 16
+	rest 12
 	octave 6
 	note C_, 2
 	octave 5
@@ -106,22 +106,22 @@ Music_EternaForestDPPt_Ch1_loop:
 	note A_, 2
 	octave 4
 	note D_, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	octave 6
 	note D_, 2
 	octave 5
 	note G_, 2
-	notetype $F, $82
+	note_type 15, 8, 2
 	note B_, 16
-	notetype $C, $82
+	note_type 12, 8, 2
 	octave 6
 	note D_, 2
 	octave 5
 	note F#, 2
-	notetype $F, $82
+	note_type 15, 8, 2
 	note A_, 16
-	notetype $C, $82
+	note_type 12, 8, 2
 	octave 6
 	note D_, 2
 	octave 5
@@ -206,18 +206,18 @@ Music_EternaForestDPPt_Ch1_loop:
 	octave 5
 	note D_, 2
 	note E_, 16
-	note __, 6
+	rest 6
 	note F#, 4
 	note G_, 2
 	note F#, 4
 	note D_, 16
-	note __, 6
+	rest 6
 	note A_, 4
 	note B_, 2
 	note A_, 4
 	note E_, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	octave 6
 	note D_, 2
 	note C_, 2
@@ -240,215 +240,215 @@ Music_EternaForestDPPt_Ch1_loop:
 	octave 4
 	note A_, 2
 	note D#, 3
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 9
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 9
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 9
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 5
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 6
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 8
-	jumpchannel Music_EternaForestDPPt_Ch1_loop
+	sound_jump Music_EternaForestDPPt_Ch1_loop
 
 Music_EternaForestDPPt_Ch2:
 Music_EternaForestDPPt_Ch2_loop:
-	notetype $C, $92
-	dutycycle 0
+	note_type 12, 9, 2
+	duty_cycle 0
 	octave 5
 	note D_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note D_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note D_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note D_, 8
-	intensity $92
+	volume_envelope 9, 2
 	note E_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note E_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note E_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note E_, 6
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note E_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note E_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note E_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note E_, 8
-	intensity $92
+	volume_envelope 9, 2
 	note B_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note B_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note B_, 8
-	intensity $92
+	volume_envelope 9, 2
 	octave 3
 	note B_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note B_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note G_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note G_, 4
-	intensity $92
+	volume_envelope 9, 2
 	note F#, 6
-	intensity $B6
-	dutycycle 2
+	volume_envelope 11, 6
+	duty_cycle 2
 	octave 2
 	note C_, 2
-	note __, 4
+	rest 4
 	octave 1
 	note C_, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	octave 2
 	note C_, 2
-	note __, 4
+	rest 4
 	octave 1
 	note C_, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note G_, 2
-	note __, 4
+	rest 4
 	octave 1
 	note G_, 2
-	note __, 16
-	note __, 16
-	note __, 8
+	rest 16
+	rest 16
+	rest 8
 	octave 1
 	note E_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 6
+	rest 6
 	octave 2
 	note C_, 2
-	note __, 4
+	rest 4
 	octave 1
 	note C_, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	octave 2
 	note C_, 2
-	note __, 4
+	rest 4
 	octave 1
 	note C_, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note G_, 2
-	note __, 4
+	rest 4
 	octave 1
 	note G_, 2
-	note __, 16
-	note __, 16
-	note __, 8
+	rest 16
+	rest 16
+	rest 8
 	octave 1
 	note E_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 6
+	rest 6
 	octave 1
 	note A_, 2
-	note __, 4
+	rest 4
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 4
+	rest 4
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 2
-	note __, 4
+	rest 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 4
+	rest 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 1
+	rest 1
 	note D_, 2
-	note __, 1
+	rest 1
 	octave 1
 	note A_, 2
-	note __, 6
+	rest 6
 	note B_, 2
-	note __, 6
+	rest 6
 	note A_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note C_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note C_, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	octave 1
 	note B_, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 4
 	octave 1
 	note A_, 4
 	octave 2
@@ -470,187 +470,187 @@ Music_EternaForestDPPt_Ch2_loop:
 	note C_, 6
 	octave 3
 	note C_, 10
-	intensity $92
-	dutycycle 0
+	volume_envelope 9, 2
+	duty_cycle 0
 	octave 5
 	note C_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note C_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note C_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note C_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note C_, 8
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note G_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note G_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note G_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note G_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note G_, 8
-	intensity $92
+	volume_envelope 9, 2
 	octave 5
 	note C_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note C_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note C_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note C_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note C_, 8
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note G_, 6
-	intensity $82
+	volume_envelope 8, 2
 	note G_, 6
-	intensity $72
+	volume_envelope 7, 2
 	note G_, 6
-	intensity $62
+	volume_envelope 6, 2
 	note G_, 6
-	intensity $52
+	volume_envelope 5, 2
 	note G_, 8
-	jumpchannel Music_EternaForestDPPt_Ch2_loop
+	sound_jump Music_EternaForestDPPt_Ch2_loop
 
 Music_EternaForestDPPt_Ch3:
 Music_EternaForestDPPt_Ch3_loop:
-	notetype $C, $12
-	vibrato $10, $14
+	note_type 12, 1, 2
+	vibrato 16, 1, 4
 	octave 7
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	octave 5
 	note B_, 2
 	octave 6
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C_, 2
 	octave 5
 	note B_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note G_, 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note B_, 2
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 2
 	octave 5
 	note B_, 2
 	octave 6
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C_, 2
 	octave 5
 	note B_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note G_, 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note B_, 2
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 14
+	rest 16
+	rest 16
+	rest 16
+	rest 14
 	octave 5
 	note E_, 2
 	note F#, 2
 	note G_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	octave 6
 	note D_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C_, 2
 	octave 5
 	note B_, 2
 	octave 6
 	note C_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note F#, 2
 	note G_, 2
 	note A_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 16
+	rest 16
+	rest 4
 	octave 4
 	note G_, 8
 	octave 5
@@ -677,7 +677,7 @@ Music_EternaForestDPPt_Ch3_loop:
 	note C_, 2
 	note D_, 4
 	note E_, 2
-	notetype $8, $12
+	note_type 8, 1, 2
 	note F#, 4
 	note G_, 4
 	note F#, 4
@@ -686,17 +686,17 @@ Music_EternaForestDPPt_Ch3_loop:
 	note B_, 4
 	octave 6
 	note E_, 4
-	notetype $C, $12
+	note_type 12, 1, 2
 	octave 5
 	note G_, 16
-	notetype $8, $12
+	note_type 8, 1, 2
 	note A_, 4
 	note B_, 4
 	note A_, 4
 	note G_, 4
 	note E_, 4
 	note A_, 4
-	notetype $C, $12
+	note_type 12, 1, 2
 	note D_, 12
 	note A_, 4
 	note G_, 8
@@ -719,8 +719,8 @@ Music_EternaForestDPPt_Ch3_loop:
 	octave 6
 	note A_, 2
 	note B_, 4
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	octave 4
 	note G_, 2
 	octave 6
@@ -731,8 +731,8 @@ Music_EternaForestDPPt_Ch3_loop:
 	octave 6
 	note A_, 2
 	note B_, 4
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	octave 5
 	note C_, 2
 	octave 6
@@ -745,8 +745,8 @@ Music_EternaForestDPPt_Ch3_loop:
 	note B_, 2
 	octave 7
 	note D_, 2
-	note __, 16
-	note __, 2
+	rest 16
+	rest 2
 	octave 4
 	note G_, 2
 	octave 6
@@ -759,23 +759,23 @@ Music_EternaForestDPPt_Ch3_loop:
 	note B_, 2
 	octave 7
 	note D_, 2
-	note __, 10
-	jumpchannel Music_EternaForestDPPt_Ch3_loop
+	rest 10
+	sound_jump Music_EternaForestDPPt_Ch3_loop
 
 Music_EternaForestDPPt_Ch4:
-	togglenoise 4
+	toggle_noise 4
 Music_EternaForestDPPt_Ch4_loop:
-	notetype $C
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	note_type 12
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note F#, 2
 	note G#, 2
 	note G#, 2
@@ -965,19 +965,19 @@ Music_EternaForestDPPt_Ch4_loop:
 	note D#, 2
 	note C_, 1
 	note F#, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	jumpchannel Music_EternaForestDPPt_Ch4_loop
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	sound_jump Music_EternaForestDPPt_Ch4_loop

@@ -10,11 +10,11 @@ Music_WallyEncounterORAS:
 
 Music_WallyEncounterORAS_Ch1:
 	tempo 208
-	volume $77
-	dutycycle 0
-	vibrato $8, $15
-	notetype $c, $67
-	note __, 4
+	volume 7, 7
+	duty_cycle 0
+	vibrato 8, 1, 5
+	note_type 12, 6, 7
+	rest 4
 Music_WallyEncounterORAS_Ch1_loop:
 	octave 2
 	note D#, 2
@@ -125,12 +125,12 @@ Music_WallyEncounterORAS_Ch1_loop:
 	note G#, 2
 	note D#, 6
 	note D#, 6
-	jumpchannel Music_WallyEncounterORAS_Ch1_loop
+	sound_jump Music_WallyEncounterORAS_Ch1_loop
 
 Music_WallyEncounterORAS_Ch2:
-	dutycycle $2
-	vibrato $12, $44
-	notetype $6, $97
+	duty_cycle 2
+	vibrato 18, 4, 4
+	note_type 6, 9, 7
 	octave 2
 	note A#, 4
 	octave 3
@@ -143,7 +143,7 @@ Music_WallyEncounterORAS_Ch2:
 	note G_, 1
 	note G#, 3
 	note G_, 16
-	note __, 4
+	rest 4
 	note F_, 4
 	note D#, 12
 	note D#, 4
@@ -151,7 +151,7 @@ Music_WallyEncounterORAS_Ch2:
 	note F#, 1
 	note G_, 3
 	note C_, 16
-	note __, 4
+	rest 4
 	note D_, 4
 	note D#, 12
 	octave 2
@@ -182,7 +182,7 @@ Music_WallyEncounterORAS_Ch2:
 	note F_, 4
 	note G#, 4
 	note G_, 16
-	note __, 4
+	rest 4
 	note F_, 4
 	note D#, 4
 	note F_, 4
@@ -201,4 +201,4 @@ Music_WallyEncounterORAS_Ch2:
 	note G_, 3
 	note F_, 4
 	note D#, 16
-	jumpchannel Music_WallyEncounterORAS_Ch2
+	sound_jump Music_WallyEncounterORAS_Ch2

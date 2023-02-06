@@ -6,31 +6,31 @@ Music_LakeOfRageRocketRadio:
 
 Music_LakeOfRageRocketRadio_Ch1:
 	tempo 160
-	volume $77
-	dutycycle $1
-	tone $1118
-	vibrato $0, $f0
-	stereopanning $f0
+	volume 7, 7
+	duty_cycle 1
+	pitch_offset 4376
+	vibrato 0, 15, 0
+	stereo_panning TRUE, FALSE
 Music_LakeOfRageRocketRadio_branch_ef5c9:
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 7
 	note G_, 4
 	note F#, 4
 	note G_, 4
 	note F#, 4
-	note __, 16
-	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
+	rest 16
+	sound_jump Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch2:
-	dutycycle $1
-	vibrato $13, $e8
-	notetype $c, $a7
-	note __, 2
-	stereopanning $f
-	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
+	duty_cycle 1
+	vibrato 19, 14, 8
+	note_type 12, 10, 7
+	rest 2
+	stereo_panning FALSE, TRUE
+	sound_jump Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch3:
-	notetype $c, $26
-	vibrato $10, $44
-	note __, 4
-	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
+	note_type 12, 2, 6
+	vibrato 16, 4, 4
+	rest 4
+	sound_jump Music_LakeOfRageRocketRadio_branch_ef5c9

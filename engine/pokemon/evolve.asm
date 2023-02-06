@@ -101,10 +101,32 @@ EvolveAfterBattle_MasterLoop:
 	jmp z, .dont_evolve_1
 
 	push hl
+
+	; If EVs affecting stats is disabled, compare based on IVs, not actual
+	; stats. This way, if the player also has IVs and Natures disabled
+	; (perfect stats in the case of IVs), they still retain access to
+	; all stat evolutions.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK ; sets z if EVS_OPT_DISABLED
+	jr nz, .evs_enabled
+
+	ld hl, wTempMonHPAtkDV
+	ld a, [hli]
+	and $f
+	ld c, a ; c = atk
+	ld a, [hl]
+	and $f0
+	swap a ; a = def
+	cp c ; set carry if atk > def
+	jr .stat_cmp_done
+
+.evs_enabled
 	ld hl, wTempMonAttack
 	ld de, wTempMonDefense
 	ld c, 2
 	call StringCmp ; set carry if atk > def
+
+.stat_cmp_done
 	ld a, ATK_EQ_DEF
 	jr z, .got_tyrogue_evo
 	; a = carry ? ATK_GT_DEF : ATK_LT_DEF

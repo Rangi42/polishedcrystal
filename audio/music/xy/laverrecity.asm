@@ -12,15 +12,15 @@ Music_LaverreCityXY:
 
 Music_LaverreCityXY_Ch1:
 	tempo 120
-	volume $77
-	stereopanning $f
-	vibrato $12, $25
+	volume 7, 7
+	stereo_panning FALSE, TRUE
+	vibrato 18, 2, 5
 Music_LaverreCityXY_branch_ef2e5:
-	dutycycle $0
-	notetype $c, $A4
-	note __, 4
+	duty_cycle 0
+	note_type 12, 10, 4
+	rest 4
 	octave 3
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note B_, 8
 	octave 4
 	note E_, 8
@@ -35,26 +35,26 @@ Music_LaverreCityXY_branch_ef2e5:
 	note B_, 8
 	octave 4
 	note C#, 1
-	intensity $A0
+	volume_envelope 10, 0
 	note D_, 7
-	intensity $A7
+	volume_envelope 10, 7
 	note D_, 16
 	note C#, 8
 	octave 3
 	note B_, 8
 	note A_, 8
 	note A_, 1
-	intensity $A0
+	volume_envelope 10, 0
 	note B_, 7
-	intensity $A7
+	volume_envelope 10, 7
 	note B_, 16
-	notetype $c, $A7
-	note __, 12
-	dutycycle $3
-	notetype $c, $C4
-	note __, 4
+	note_type 12, 10, 7
+	rest 12
+	duty_cycle 3
+	note_type 12, 12, 4
+	rest 4
 	octave 3
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note B_, 8
 	octave 4
 	note E_, 8
@@ -66,63 +66,63 @@ Music_LaverreCityXY_branch_ef2e5:
 	octave 3
 	note B_, 8
 	octave 4
-	intensity $C0
+	volume_envelope 12, 0
 	note D_, 8
-	intensity $C7
+	volume_envelope 12, 7
 	note D_, 16
 	note C#, 8
 	octave 3
 	note B_, 8
 	note A_, 8
-	intensity $C0
+	volume_envelope 12, 0
 	note B_, 8
-	intensity $C7
+	volume_envelope 12, 7
 	note B_, 16
-	notetype $c, $67
+	note_type 12, 6, 7
 	note B_, 12
 Music_LaverreCityXY_Ch1_branch_1:
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 12
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 12
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note A#, 12
 	note G#, 12
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 12
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 12
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	notetype $8, $87
-	dutycycle 1
+	note_type 8, 8, 7
+	duty_cycle 1
 	note B_, 2
 	note A#, 2
 	note G#, 2
-	intensity $A7
+	volume_envelope 10, 7
 	note C#, 2
 	note D#, 2
 	note F_, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 2
 	note G#, 2
 	note A#, 2
-	notetype $c, $C7
+	note_type 12, 12, 7
 	note B_, 4
 	note A#, 4
 	note B_, 4
@@ -164,24 +164,24 @@ Music_LaverreCityXY_Ch1_branch_1:
 	octave 4
 	note D#, 4
 	note C#, 4
-	intensity $AF
+	volume_envelope 10, -7
 	note C#, 8
-	intensity $F0
+	volume_envelope 15, 0
 	note C#, 1
-	note __, 3
-	intensity $A7
+	rest 3
+	volume_envelope 10, 7
 	octave 3
 	note B_, 4
 	note A#, 2
 	note B_, 1
 	note A#, 1
-	intensity $A0
+	volume_envelope 10, 0
 	note G#, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note G#, 16
-	note __, 16
-	dutycycle 3
-	intensity $C7
+	rest 16
+	duty_cycle 3
+	volume_envelope 12, 7
 	note B_, 4
 	note A#, 4
 	note G#, 12
@@ -191,15 +191,15 @@ Music_LaverreCityXY_Ch1_branch_1:
 	note G#, 4
 	note F#, 4
 	note G#, 12
-	jumpchannel Music_LaverreCityXY_branch_ef2e5
+	sound_jump Music_LaverreCityXY_branch_ef2e5
 
 Music_LaverreCityXY_Ch2:
-	vibrato $12, $25
-	dutycycle $2
-	stereopanning $f0
-	tone $0002
+	vibrato 18, 2, 5
+	duty_cycle 2
+	stereo_panning TRUE, FALSE
+	pitch_offset 2
 Music_LaverreCityXY_branch_ef3f2:
-	notetype $c, $A7
+	note_type 12, 10, 7
 	octave 2
 	note E_, 12
 	octave 1
@@ -231,198 +231,198 @@ Music_LaverreCityXY_branch_ef3f2:
 	octave 1
 	note B_, 12
 Music_LaverreCityXY_Ch2_branch_1:
-	intensity $50
+	volume_envelope 5, 0
 	note D#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note D#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note E_, 12
-	intensity $57
+	volume_envelope 5, 7
 	note E_, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
 	note E_, 12
 	note D#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note D#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note E_, 12
-	intensity $57
+	volume_envelope 5, 7
 	note E_, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
 	note D#, 12
 Music_LaverreCityXY_Ch2_branch_2:
-	intensity $A7
+	volume_envelope 10, 7
 	note G#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 8
 	note F#, 2
-	note __, 2
+	rest 2
 	note D#, 8
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note C#, 8
 	note C#, 2
-	note __, 2
+	rest 2
 	note D#, 8
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 8
 	note F#, 2
-	note __, 2
+	rest 2
 	note D#, 8
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note C#, 8
 	note C#, 2
-	note __, 2
+	rest 2
 	note F#, 4
-	intensity $8F
+	volume_envelope 8, -7
 	note F#, 7
-	note __, 1
-	intensity $D0
+	rest 1
+	volume_envelope 13, 0
 	note F#, 1
-	note __, 11
-	intensity $A7
+	rest 11
+	volume_envelope 10, 7
 	note G#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 8
 	note F#, 2
-	note __, 2
+	rest 2
 	note B_, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note G#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 8
 	note F#, 2
-	note __, 2
+	rest 2
 	note G#, 8
 	note G#, 2
-	note __, 2
-	jumpchannel Music_LaverreCityXY_branch_ef3f2
+	rest 2
+	sound_jump Music_LaverreCityXY_branch_ef3f2
 
 Music_LaverreCityXY_Ch3:
-	stereopanning $ff
-	vibrato $12, $25
+	stereo_panning TRUE, TRUE
+	vibrato 18, 2, 5
 Music_LaverreCityXY_branch_ef4e3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 3
-	note __, 4
+	rest 4
 	note E_, 2
 	note F#, 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note E_, 2
 	note F#, 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
-	notetype $c, $13
+	rest 2
+	note_type 12, 1, 3
 	octave 5
 	note A_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 6
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note B_, 10
-	note __, 6
-	notetype $c, $25
+	rest 6
+	note_type 12, 2, 5
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note E_, 2
 	note F#, 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note E_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 Music_LaverreCityXY_Ch3_branch_1:
-	notetype $c, $13
+	note_type 12, 1, 3
 	octave 5
 	note F#, 12
 	note B_, 8
@@ -431,10 +431,10 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G_, 12
 	note F#, 12
 	note F#, 12
-	notetype $c, $23
+	note_type 12, 2, 3
 	note F#, 12
 	note F#, 12
-	notetype $c, $13
+	note_type 12, 1, 3
 	note F#, 12
 	note B_, 8
 	note F#, 4
@@ -444,31 +444,31 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G_, 4
 	note F#, 12
 	note F#, 12
-	note __, 12
-	note __, 12
-	notetype $c, $25
-	note __, 4
+	rest 12
+	rest 12
+	note_type 12, 2, 5
+	rest 4
 	octave 3
 	note G#, 2
 	note F#, 2
 	note G#, 2
-	note __, 6
+	rest 6
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
-	notetype $c, $13
+	rest 2
+	note_type 12, 1, 3
 	octave 5
 	note A#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 ;;;;;;;;;;;;mark
 	note G#, 12
 	note E_, 8
@@ -479,24 +479,24 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G#, 4
 	octave 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 12
-	notetype $c, $25
+	note_type 12, 2, 5
 ;;;;;;;;;;;;mark
 	octave 3
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
-	notetype $c, $13
+	rest 2
+	note_type 12, 1, 3
 	octave 5
 	note A#, 4
 	note G#, 4
@@ -523,15 +523,15 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note A#, 1
 	octave 6
 	note C#, 2
-	note __, 10
-	note __, 4
+	rest 10
+	rest 4
 	octave 5
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 6
 	note D#, 4
 	note C#, 4
@@ -543,13 +543,13 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note C#, 4
 	octave 5
 	note F#, 12
-	note __, 4
+	rest 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 6
 	note D#, 4
 	note C#, 4
@@ -559,73 +559,73 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G#, 4
 	note F#, 4
 	note G#, 12
-	jumpchannel Music_LaverreCityXY_branch_ef4e3
+	sound_jump Music_LaverreCityXY_branch_ef4e3
 
 Music_LaverreCityXY_Ch4:
-	togglenoise $3
-	stereopanning $f
-	notetype $c
+	toggle_noise 3
+	stereo_panning FALSE, TRUE
+	drum_speed 12
 Music_LaverreCityXY_Ch4_loop:
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	notetype $8
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note __, 3
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note __, 3
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note __, 3
-	notetype $c
-	note C#, 12
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	jumpchannel Music_LaverreCityXY_Ch4_loop
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	drum_speed 8
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	rest 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	rest 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	rest 3
+	drum_speed 12
+	drum_note 2, 12
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_jump Music_LaverreCityXY_Ch4_loop
 
 Music_LaverreCityXY_Ch4_branch_1:
-	notetype $8
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note __, 3
-	notetype $c
-	note C#, 4
-	note C#, 4
-	note __, 4
-	note C#, 4
-	note C#, 4
-	endchannel
+	drum_speed 8
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	rest 3
+	drum_speed 12
+	drum_note 2, 4
+	drum_note 2, 4
+	rest 4
+	drum_note 2, 4
+	drum_note 2, 4
+	sound_ret
 
 Music_LaverreCityXY_Ch4_branch_2:
-	notetype $c
-	note __, 12
-	note __, 12
-	endchannel
+	drum_speed 12
+	rest 12
+	rest 12
+	sound_ret

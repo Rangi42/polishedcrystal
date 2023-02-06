@@ -11,15 +11,15 @@ Music_DewfordTownRSE:
 
 Music_DewfordTownRSE_Ch1:
 	tempo 138
-	volume $77
-	stereopanning $f
+	volume 7, 7
+	stereo_panning FALSE, TRUE
 Music_DewfordTownRSE_Ch1_b0:
-	vibrato $10, $33
-	dutycycle $2
-	notetype $c, $3f
+	vibrato 16, 3, 3
+	duty_cycle 2
+	note_type 12, 3, -7
 	octave 3
 	note D_, 6
-	notetype $c, $70
+	note_type 12, 7, 0
 	octave 2
 	note A#, 6
 	note G#, 6
@@ -27,40 +27,40 @@ Music_DewfordTownRSE_Ch1_b0:
 	note D_, 6
 	note D#, 6
 	note F_, 6
-	note __, 6
-	notetype $c, $97
-	dutycycle $1
+	rest 6
+	note_type 12, 9, 7
+	duty_cycle 1
 	octave 2
 	note C_, 10
 	octave 1
 	note A#, 2
 	note A#, 6
-	notetype $c, $67
+	note_type 12, 6, 7
 	octave 2
 	note G#, 6
 	note G_, 12
 	note G#, 6
 	note A#, 4
 	note G_, 2
-	notetype $c, $97
+	note_type 12, 9, 7
 	octave 1
 	note G#, 10
 	note G_, 2
 	note G_, 10
-	note __, 2
-	notetype $c, $67
+	rest 2
+	note_type 12, 6, 7
 	note G_, 7
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D#, 6
 	note F_, 6
 	octave 2
-	notetype $c, $97
+	note_type 12, 9, 7
 	note D#, 10
-	notetype $c, $67
+	note_type 12, 6, 7
 	note F_, 1
 	note D#, 1
 	note C_, 6
@@ -68,46 +68,46 @@ Music_DewfordTownRSE_Ch1_b0:
 	note A#, 6
 	octave 2
 	note C_, 7
-	note __, 1
+	rest 1
 	octave 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 1
-	notetype $c, $97
+	note_type 12, 9, 7
 	note D#, 10
 	note G#, 2
-	notetype $c, $67
+	note_type 12, 6, 7
 	note A#, 16
-	note __, 8
+	rest 8
 	octave 2
 	note F_, 2
-	note __, 16
-	note __, 6
-	notetype $c, $61
+	rest 16
+	rest 6
+	note_type 12, 6, 1
 	octave 5
-	dutycycle $0
+	duty_cycle 0
 Music_DewfordTownRSE_Ch1_b1:
 	note D#, 2
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 2
+	rest 2
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	loopchannel 12, Music_DewfordTownRSE_Ch1_b1
+	sound_loop 12, Music_DewfordTownRSE_Ch1_b1
 	note F_, 2
 	note F_, 1
 	note E_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 2
+	rest 2
 	note F_, 1
 	note E_, 1
 	note F_, 1
@@ -115,15 +115,15 @@ Music_DewfordTownRSE_Ch1_b1:
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 2
+	rest 2
 	note D#, 1
 	note D_, 1
 	note D#, 1
 	note F_, 1
-	note __, 11
-	notetype $c, $98
+	rest 11
+	note_type 12, 9, 8
 	octave 3
 	note D_, 1
 	note C_, 1
@@ -167,23 +167,23 @@ Music_DewfordTownRSE_Ch1_b1:
 	note G#, 12
 	note G_, 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 4
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 6
-	note __, 6
-	jumpchannel Music_DewfordTownRSE_Ch1_b0
+	rest 6
+	sound_jump Music_DewfordTownRSE_Ch1_b0
 
 Music_DewfordTownRSE_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_DewfordTownRSE_Ch2_b0:
-	notetype $c, $5f
-	vibrato $10, $00
-	dutycycle $2
+	note_type 12, 5, -7
+	vibrato 16, 0, 0
+	duty_cycle 2
 	octave 4
 	note A#, 6
-	notetype $c, $90
+	note_type 12, 9, 0
 	note G#, 6
 	note F_, 6
 	note D_, 6
@@ -192,66 +192,66 @@ Music_DewfordTownRSE_Ch2_b0:
 	octave 4
 	note C_, 6
 	note D_, 6
-	vibrato $10, $33
-	notetype $c, $97
-	dutycycle $2
+	vibrato 16, 3, 3
+	note_type 12, 9, 7
+	duty_cycle 2
 	octave 2
 	note A#, 2
 	octave 3
 	note D_, 2
 	note F_, 2
-	notetype $c, $90
+	note_type 12, 9, 0
 	note G#, 10
-	notetype $c, $97
+	note_type 12, 9, 7
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 10
-	note __, 10
-	notetype $c, $93
+	rest 10
+	note_type 12, 9, 3
 	note F_, 2
 	note G_, 2
-	notetype $6, $97
+	note_type 6, 9, 7
 	note A#, 4
 	note G#, 1
 	note A#, 1
 	note G#, 2
-	notetype $c, $97
+	note_type 12, 9, 7
 	note G_, 2
 	note F_, 2
 	note G_, 2
 	note D_, 2
-	notetype $c, $90
+	note_type 12, 9, 0
 	note F_, 10
-	notetype $c, $97
+	note_type 12, 9, 7
 	note D#, 2
 	note D#, 10
-	note __, 10
-	notetype $c, $93
+	rest 10
+	note_type 12, 9, 3
 	note C_, 2
-	notetype $6, $97
+	note_type 6, 9, 7
 	note D_, 3
 	note G#, 1
-	notetype $c, $97
+	note_type 12, 9, 7
 	note G_, 2
 	note F_, 2
 	note D#, 2
 	note C_, 2
 	note D_, 2
 	note D#, 2
-	notetype $c, $90
+	note_type 12, 9, 0
 	note A#, 9
-	notetype $c, $97
+	note_type 12, 9, 7
 	octave 4
 	note C_, 1
 	octave 3
 	note A#, 2
 	note G#, 10
-	note __, 10
-	notetype $c, $93
+	rest 10
+	note_type 12, 9, 3
 	note C_, 2
 	note D#, 2
 	octave 4
-	notetype $6, $97
+	note_type 6, 9, 7
 	note C_, 4
 	octave 3
 	note A#, 1
@@ -259,41 +259,41 @@ Music_DewfordTownRSE_Ch2_b0:
 	note C_, 1
 	octave 3
 	note A#, 2
-	notetype $c, $97
+	note_type 12, 9, 7
 	note G#, 2
 	note G_, 2
 	note G#, 2
 	note D#, 2
-	vibrato $3f, $14
-	notetype $c, $1f
+	vibrato 63, 1, 4
+	note_type 12, 1, -7
 	note F_, 12
-	notetype $c, $b0
+	note_type 12, 11, 0
 	note F_, 12
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note A#, 2
-	note __, 16
-	notetype $c, $c7
-	dutycycle $0
+	rest 16
+	note_type 12, 12, 7
+	duty_cycle 0
 	octave 3
-	notetype $c, $c3
+	note_type 12, 12, 3
 	note G#, 2
 	note A#, 2
 	note F_, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note G#, 10
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 12
-	note __, 8
-	notetype $c, $c3
+	rest 8
+	note_type 12, 12, 3
 	note F_, 2
 	note G_, 2
 	note A#, 2
-	notetype $6, $c7
+	note_type 6, 12, 7
 	note G#, 1
 	note A#, 1
 	note G#, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note G_, 2
 	note F_, 2
 	note G_, 2
@@ -302,16 +302,16 @@ Music_DewfordTownRSE_Ch2_b0:
 	note D#, 1
 	note D_, 1
 	note D#, 10
-	note __, 10
-	notetype $c, $c3
+	rest 10
+	note_type 12, 12, 3
 	note C_, 2
 	note D_, 2
 	note G_, 2
-	notetype $6, $c7
+	note_type 6, 12, 7
 	note F_, 1
 	note G_, 1
 	note F_, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note D#, 2
 	note C_, 2
 	note D_, 2
@@ -321,30 +321,30 @@ Music_DewfordTownRSE_Ch2_b0:
 	note C_, 2
 	octave 3
 	note G#, 10
-	note __, 10
+	rest 10
 	note C_, 2
 	note D#, 2
 	octave 4
 	note C_, 2
-	notetype $6, $c7
+	note_type 6, 12, 7
 	octave 3
 	note A#, 1
 	octave 4
 	note C_, 1
 	octave 3
 	note A#, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note G#, 2
 	note G_, 2
 	note G#, 2
 	note D#, 2
 	note F_, 16
-	note __, 6
+	rest 6
 	note G_, 2
 	note G#, 2
-	note __, 10
-	notetype $c, $67
-	dutycycle $2
+	rest 10
+	note_type 12, 6, 7
+	duty_cycle 2
 	octave 4
 	note D_, 1
 	note C_, 1
@@ -360,112 +360,112 @@ Music_DewfordTownRSE_Ch2_b0:
 	note D#, 1
 	note G_, 1
 	note G#, 1
-	notetype $c, $c7
-	dutycycle $0
+	note_type 12, 12, 7
+	duty_cycle 0
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 4
+	rest 4
 	note D#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 4
+	rest 4
 	note D#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 4
+	rest 4
 	note F_, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 4
+	rest 4
 	note F_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 1
 	note A#, 2
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 4
+	rest 4
 	note D#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 4
+	rest 4
 	note F_, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 6
-	jumpchannel Music_DewfordTownRSE_Ch2_b0
+	rest 6
+	sound_jump Music_DewfordTownRSE_Ch2_b0
 
 Music_DewfordTownRSE_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_DewfordTownRSE_Ch3_b0:
-	notetype $c, $11
+	note_type 12, 1, 1
 	octave 5
 	note A#, 1
 	note G#, 1
@@ -531,237 +531,237 @@ Music_DewfordTownRSE_Ch3_b0:
 	octave 4
 	note A#, 1
 	note F_, 1
-	notetype $c, $12
+	note_type 12, 1, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
-	note C_, 2
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	note __, 2
-	note C_, 2
-	note __, 4
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	note __, 2
-	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	octave 2
 	note G_, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
+	note C_, 2
+	rest 4
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	rest 2
 	note C_, 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
-	note G#, 2
-	note D#, 2
-	note G#, 2
-	note __, 2
-	note G#, 2
-	note __, 4
-	note D#, 2
-	note G#, 2
-	note __, 2
-	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note D#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 4
+	rest 4
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 4
 	note D#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note F_, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 4
+	rest 4
 	note F_, 2
 	note A#, 2
 
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
 	octave 2
 	note A#, 2
 	octave 3
 	note D#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
-	note C_, 2
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	note __, 2
-	note C_, 2
-	note __, 4
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	note __, 2
-	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
 	octave 2
 	note G_, 2
 	octave 3
 	note C_, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 4
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	note C_, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
-	note G#, 2
-	note D#, 2
-	note G#, 2
-	note __, 2
-	note G#, 2
-	note __, 4
-	note D#, 2
-	note G#, 2
-	note __, 2
-	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note D#, 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 4
+	rest 4
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 4
 	note D#, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note F_, 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 4
+	rest 4
 	note F_, 2
 	note A#, 1
 
-	note __, 16
-	note __, 6
-	vibrato $14, $14
-	notetype $6, $10
-	note __, 1
+	rest 16
+	rest 6
+	vibrato 20, 1, 4
+	note_type 6, 1, 0
+	rest 1
 	octave 5
 	note A#, 1
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 6
 	note F_, 4
 	note D#, 2
-	note __, 5
-	notetype $6, $10
+	rest 5
+	note_type 6, 1, 0
 	octave 5
 	note A#, 1
 	octave 6
 	note D_, 1
-	notetype $c, $10
+	note_type 12, 1, 0
 	note F_, 4
 	note D#, 2
-	note __, 4
+	rest 4
 	octave 5
 	note A#, 1
 	octave 6
 	note D_, 1
 	note F_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A#, 1
-	notetype $6, $10
-	note __, 1
+	note_type 6, 1, 0
+	rest 1
 	note G#, 1
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 6
 	note G_, 6
 	note F_, 4
@@ -770,18 +770,18 @@ Music_DewfordTownRSE_Ch3_b0:
 	note G_, 2
 	note F_, 2
 	note D#, 10
-	notetype $6, $10
+	note_type 6, 1, 0
 	note C#, 1
 	note C_, 3
-	notetype $c, $10
+	note_type 12, 1, 0
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F_, 16
-	note __, 2
+	rest 2
 	note A#, 1
 	note G#, 1
 	note G_, 1
@@ -790,46 +790,46 @@ Music_DewfordTownRSE_Ch3_b0:
 	note E_, 1
 	note F_, 4
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A#, 1
 	octave 6
 	note D_, 1
 	note F_, 4
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A#, 1
 	octave 6
 	note D_, 1
 	note F_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 6
 	note G_, 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 7
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 6
 	note A#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D#, 6
 	note G#, 1
 	note G_, 1
@@ -840,74 +840,74 @@ Music_DewfordTownRSE_Ch3_b0:
 	note C_, 6
 	note D_, 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 16
-	note __, 8
-	jumpchannel Music_DewfordTownRSE_Ch3_b0
+	rest 8
+	sound_jump Music_DewfordTownRSE_Ch3_b0
 
 Music_DewfordTownRSE_Ch4:
-	togglenoise $2
+	toggle_noise 2
 Music_DewfordTownRSE_Ch4_b0:
 Music_DewfordTownRSE_Ch4_b1:
-	notetype $c
-	note 3, 4
-	note 8, 2
-	note 8, 4
-	note 8, 2
-	loopchannel 19, Music_DewfordTownRSE_Ch4_b1
-	note 1, 1
-	note 1, 1
-	note 8, 1
-	note 1, 1
-	note 8, 2
-	note 8, 2
-	note 1, 1
-	note __, 3
+	drum_speed 12
+	drum_note 3, 4
+	drum_note 8, 2
+	drum_note 8, 4
+	drum_note 8, 2
+	sound_loop 19, Music_DewfordTownRSE_Ch4_b1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 8, 1
+	drum_note 1, 1
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 1, 1
+	rest 3
 Music_DewfordTownRSE_Ch4_b2:
-	note __, 6
-	note 1, 6
-	loopchannel 7, Music_DewfordTownRSE_Ch4_b2
-	note __, 2
-	note 1, 2
-	note __, 2
-	note 1, 2
-	note __, 2
-	note 1, 2
+	rest 6
+	drum_note 1, 6
+	sound_loop 7, Music_DewfordTownRSE_Ch4_b2
+	rest 2
+	drum_note 1, 2
+	rest 2
+	drum_note 1, 2
+	rest 2
+	drum_note 1, 2
 Music_DewfordTownRSE_Ch4_b3:
-	note __, 6
-	note 1, 6
-	loopchannel 6, Music_DewfordTownRSE_Ch4_b3
-	note __, 2
-	note 1, 4
-	note 1, 2
-	note 8, 2
-	note 8, 2
+	rest 6
+	drum_note 1, 6
+	sound_loop 6, Music_DewfordTownRSE_Ch4_b3
+	rest 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 8, 2
+	drum_note 8, 2
 
-	note 8, 2
-	note __, 2
-	note 1, 2
-	note 1, 2
-	note 1, 1
-	note 1, 1
-	note 9, 2
+	drum_note 8, 2
+	rest 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 9, 2
 Music_DewfordTownRSE_Ch4_b4:
-	note __, 6
-	note 1, 6
-	loopchannel 7, Music_DewfordTownRSE_Ch4_b4
-	note 1, 1
-	note 1, 1
-	note __, 1
-	note 1, 3
-	note 1, 4
-	note 1, 2
+	rest 6
+	drum_note 1, 6
+	sound_loop 7, Music_DewfordTownRSE_Ch4_b4
+	drum_note 1, 1
+	drum_note 1, 1
+	rest 1
+	drum_note 1, 3
+	drum_note 1, 4
+	drum_note 1, 2
 Music_DewfordTownRSE_Ch4_b5:
-	note __, 6
-	note 1, 6
-	loopchannel 7, Music_DewfordTownRSE_Ch4_b5
-	note 1, 1
-	note 1, 1
-	note __, 1
-	note 1, 3
-	note 1, 4
-	note 1, 2
-	jumpchannel Music_DewfordTownRSE_Ch4_b0
+	rest 6
+	drum_note 1, 6
+	sound_loop 7, Music_DewfordTownRSE_Ch4_b5
+	drum_note 1, 1
+	drum_note 1, 1
+	rest 1
+	drum_note 1, 3
+	drum_note 1, 4
+	drum_note 1, 2
+	sound_jump Music_DewfordTownRSE_Ch4_b0

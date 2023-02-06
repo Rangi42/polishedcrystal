@@ -11,67 +11,67 @@ Music_GymLeaderBattleDPPt:
 
 Music_GymLeaderBattleDPPt_Ch1:
 	tempo $6A
-	volume $77
-	stereopanning $77
-	dutycycle 1
-	tone $0002
-	vibrato $08, $15
+	volume 7, 7
+	stereo_panning TRUE, TRUE
+	duty_cycle 1
+	pitch_offset 2
+	vibrato 8, 1, 5
 	octave 2
-	notetype $C, $B6
+	note_type 12, 11, 6
 	note A#, 8
 	note B_, 8
 	octave 3
 	note C_, 8
 	note C#, 8
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
-	intensity $B4
+	rest 4
+	volume_envelope 11, 4
 	note F_, 4
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
-	intensity $B4
+	rest 4
+	volume_envelope 11, 4
 	octave 2
 	note A#, 4
 	octave 3
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	octave 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
-	intensity $B4
+	rest 4
+	volume_envelope 11, 4
 	note F_, 4
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
-	intensity $B4
+	rest 4
+	volume_envelope 11, 4
 	octave 3
 	note A#, 4
 	octave 4
@@ -92,7 +92,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note F_, 2
 	note E_, 6
 	note C_, 10
-	note __, 16
+	rest 16
 	octave 2
 	note G_, 6
 	octave 3
@@ -108,27 +108,27 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note F_, 2
 	note E_, 6
 	note G_, 10
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note E_, 6
 	note G_, 10
-	note __, 12
-	dutycycle 1
+	rest 12
+	duty_cycle 1
 	note G_, 4
 	note G#, 3
 	note G_, 3
 	note F_, 3
 	note G#, 7
-	note __, 12
-	dutycycle 0
+	rest 12
+	duty_cycle 0
 	octave 4
 	note C#, 4
 	note C_, 3
 	note C#, 3
 	note C_, 2
 	note E_, 8
-	note __, 8
-	notetype $8, $B4
+	rest 8
+	note_type 8, 11, 4
 	note C#, 4
 	note C_, 4
 	octave 3
@@ -142,7 +142,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	octave 4
 	note C_, 4
 	note C#, 4
-	notetype $C, $B4
+	note_type 12, 11, 4
 	note E_, 12
 	note C#, 4
 	note C_, 16
@@ -191,7 +191,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	octave 4
 	note D#, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 1
@@ -226,15 +226,15 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note A_, 2
 	octave 1
 	note A_, 4
-	dutycycle 2
-	slidepitchto 1, 7, G_
+	duty_cycle 2
+	pitch_slide 1, 1, G_
 	octave 2
 	note A#, 8
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 12
-	intensity $B2
+	rest 16
+	rest 16
+	rest 16
+	rest 12
+	volume_envelope 11, 2
 	note G_, 1
 	octave 3
 	note C_, 1
@@ -242,45 +242,45 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note G_, 1
 	octave 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
-	intensity $B4
+	rest 4
+	volume_envelope 11, 4
 	octave 3
 	note G#, 4
 	octave 4
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C#, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note A#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	octave 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 4
-	intensity $B4
+	rest 4
+	volume_envelope 11, 4
 	octave 3
 	note G#, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note E_, 2
 	note D_, 2
@@ -302,7 +302,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note C_, 2
 	octave 2
 	note G_, 10
-	note __, 12
+	rest 12
 	octave 3
 	note D_, 1
 	octave 2
@@ -312,9 +312,9 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note E_, 1
 	note D_, 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 6
 	note F_, 2
 	note G_, 2
@@ -334,9 +334,9 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note A#, 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 10
 	octave 4
 	note C_, 1
@@ -344,29 +344,29 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note A#, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 6
 	octave 3
 	note G_, 4
-	note __, 12
+	rest 12
 	octave 2
 	note G_, 4
 	note G#, 3
 	note G_, 3
 	note F_, 3
 	note G#, 7
-	note __, 12
-	dutycycle 0
+	rest 12
+	duty_cycle 0
 	octave 4
 	note C#, 4
 	note C_, 3
 	note C#, 3
 	note C_, 2
 	note E_, 8
-	note __, 8
-	notetype $8, $B4
+	rest 8
+	note_type 8, 11, 4
 	note C#, 4
 	note C_, 4
 	octave 3
@@ -380,46 +380,46 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	octave 4
 	note C_, 4
 	note C#, 4
-	notetype $C, $B4
+	note_type 12, 11, 4
 	note E_, 12
 	note C#, 4
 	note C_, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note C_, 2
-	note __, 4
+	rest 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	notetype $F, $B4
-	note __, 16
+	note_type 15, 11, 4
+	rest 16
 	octave 2
-	notetype $C, $B4
+	note_type 12, 11, 4
 	note F_, 4
 	note A#, 4
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note C#, 2
 	octave 2
 	note A#, 2
 	note F#, 2
-	dutycycle 1
-	jumpchannel Music_GymLeaderBattleDPPt_Ch1_loop
+	duty_cycle 1
+	sound_jump Music_GymLeaderBattleDPPt_Ch1_loop
 
 Music_GymLeaderBattleDPPt_Ch2:
-	dutycycle 1
-	tone $0001
-	vibrato $08, $36
+	duty_cycle 1
+	pitch_offset 1
+	vibrato 8, 3, 6
 	octave 4
-	notetype $C, $C1
+	note_type 12, 12, 1
 	note E_, 1
 	octave 5
 	note C#, 1
@@ -467,38 +467,38 @@ Music_GymLeaderBattleDPPt_Ch2:
 	note C#, 1
 	note C_, 1
 	note C#, 1
-	intensity $C2
+	volume_envelope 12, 2
 	octave 3
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 4
 	note F_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	octave 4
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 4
 	note F_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
 Music_GymLeaderBattleDPPt_Ch2_loop:
@@ -517,16 +517,16 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note F_, 2
 	note E_, 6
 	note C_, 6
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note G_, 1
 	octave 4
 	note D_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note E_, 6
 	note C_, 10
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note G_, 6
 	octave 4
@@ -541,58 +541,58 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 2
 	note F_, 2
 	note E_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
-	note __, 6
-	intensity $C5
+	rest 6
+	volume_envelope 12, 5
 	note G_, 4
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 3
 	note G_, 3
 	note F_, 3
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
-	notetype $1, $C7
-	note __, 12
-	notetype $C, $C7
-	intensity $C4
+	note_type 1, 12, 7
+	rest 12
+	note_type 12, 12, 7
+	volume_envelope 12, 4
 	note F_, 6
 	note E_, 3
 	note F_, 3
 	note G_, 3
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
-	note __, 3
-	intensity $C4
+	rest 3
+	volume_envelope 12, 4
 	note G_, 4
-	notetype $8, $C4
+	note_type 8, 12, 4
 	note G#, 4
 	note G_, 4
 	note F_, 4
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note C#, 16
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 8
-	notetype $8, $C4
+	note_type 8, 12, 4
 	note E_, 4
 	note F_, 4
 	note G_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
-	note __, 4
-	dutycycle 0
-	intensity $C2
+	rest 16
+	rest 4
+	duty_cycle 0
+	volume_envelope 12, 2
 	octave 2
 	note C_, 3
 	octave 3
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -601,10 +601,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -613,10 +613,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -625,10 +625,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -637,10 +637,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	octave 2
@@ -649,10 +649,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	octave 2
@@ -661,10 +661,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	octave 2
@@ -673,13 +673,13 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note G_, 3
 	note F_, 3
@@ -688,15 +688,15 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note G_, 3
 	note F_, 3
 	note G#, 3
-	notetype $6, $C2
+	note_type 6, 12, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note G_, 4
 	note G#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note C#, 4
@@ -715,45 +715,45 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	octave 3
 	note C_, 4
 	note C_, 4
-	dutycycle 1
+	duty_cycle 1
 	note E_, 2
 	note G_, 2
 	octave 4
 	note C_, 2
 	note D#, 2
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
-	intensity $C4
+	rest 8
+	volume_envelope 12, 4
 	note C#, 8
 	note F_, 8
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
-	intensity $C4
+	rest 8
+	volume_envelope 12, 4
 	note G#, 8
 	note F_, 8
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
+	rest 8
 	note E_, 4
-	note __, 8
-	dutycycle 2
+	rest 8
+	duty_cycle 2
 	note G#, 2
 	note F_, 2
 	note C#, 2
@@ -765,8 +765,8 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 2
 	octave 3
 	note A#, 2
-	dutycycle 1
-	intensity $C4
+	duty_cycle 1
+	volume_envelope 12, 4
 	note G_, 4
 	note F_, 4
 	note G_, 4
@@ -785,10 +785,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 4
 	note F_, 4
 	note E_, 4
-	note __, 4
+	rest 4
 	note E_, 4
 	note C_, 12
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note G_, 2
 	octave 4
@@ -796,10 +796,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note F_, 2
 	note D_, 2
 	note E_, 4
-	note __, 4
+	rest 4
 	note E_, 4
 	note C_, 12
-	dutycycle 1
+	duty_cycle 1
 	note E_, 2
 	note C#, 2
 	octave 3
@@ -808,9 +808,9 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note G_, 2
 	note F_, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 12
 	octave 3
@@ -828,72 +828,72 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note E_, 2
 	note D_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
-	intensity $C7
+	rest 2
+	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
-	note __, 12
-	intensity $C4
+	rest 16
+	rest 12
+	volume_envelope 12, 4
 	note G_, 8
 	note G#, 6
 	note G_, 6
 	note F_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
-	note __, 16
-	note __, 2
-	intensity $C4
+	rest 16
+	rest 2
+	volume_envelope 12, 4
 	note F_, 12
 	note E_, 6
 	note F_, 6
 	note G_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
-	note __, 6
-	intensity $C4
+	rest 16
+	rest 6
+	volume_envelope 12, 4
 	note G_, 8
-	notetype $8, $C4
+	note_type 8, 12, 4
 	note G#, 4
 	note G_, 4
 	note F_, 4
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note C#, 16
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 8
-	notetype $8, $C4
+	note_type 8, 12, 4
 	note E_, 4
 	note F_, 4
 	note G_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
-	note __, 16
-	note __, 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	intensity $C2
+	rest 16
+	rest 4
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	volume_envelope 12, 2
 	note E_, 3
-	note __, 6
+	rest 6
 	note E_, 3
-	note __, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 16
+	rest 4
 	note E_, 3
-	note __, 6
+	rest 6
 	note E_, 3
-	note __, 3
+	rest 3
 	note E_, 3
-	note __, 16
-	note __, 16
-	note __, 10
-	dutycycle 2
-	notetype $C, $C2
+	rest 16
+	rest 16
+	rest 10
+	duty_cycle 2
+	note_type 12, 12, 2
 	note G#, 1
 	note F_, 1
 	note C#, 1
@@ -905,12 +905,12 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 1
 	octave 3
 	note A#, 1
-	intensity $C4
-	dutycycle 1
-	jumpchannel Music_GymLeaderBattleDPPt_Ch2_loop
+	volume_envelope 12, 4
+	duty_cycle 1
+	sound_jump Music_GymLeaderBattleDPPt_Ch2_loop
 
 Music_GymLeaderBattleDPPt_Ch3:
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 1
 	note A#, 8
 	note B_, 8
@@ -1204,15 +1204,15 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note G_, 2
 	note F_, 2
 	note G#, 2
-	notetype $6, $19
+	note_type 6, 1, -1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note G_, 4
 	note G#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note C#, 4
@@ -1426,13 +1426,13 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note F_, 4
 	note G#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note G_, 4
 	note G#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note C#, 4
@@ -1461,13 +1461,13 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note F_, 4
 	note G#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note G_, 4
 	note G#, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note F_, 4
 	note C#, 4
@@ -1497,616 +1497,616 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note A#, 4
 	note F#, 4
 	note D#, 4
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 2
-	jumpchannel Music_GymLeaderBattleDPPt_Ch3_loop
+	sound_jump Music_GymLeaderBattleDPPt_Ch3_loop
 
 Music_GymLeaderBattleDPPt_Ch4:
-	togglenoise 0
-	notetype $C
-	note __, 2
-	note D#, 4
-	note D#, 4
-	note D#, 4
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 4
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 3
-	note D#, 1
-	note D#, 5
-	note D#, 6
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 1
-	note D#, 5
-	note D#, 6
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 4
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
+	toggle_noise 0
+	drum_speed 12
+	rest 2
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
 Music_GymLeaderBattleDPPt_Ch4_loop:
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 3
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 3
-	note D#, 1
-	note D#, 5
-	note D#, 4
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 1
-	note D#, 5
-	note D#, 6
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 4
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 1
-	note D#, 5
-	note D#, 6
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 3
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 3
-	note D#, 1
-	note D#, 5
-	note D#, 4
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 6
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 3
-	note D#, 1
-	note D#, 5
-	note D#, 4
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 6
-	note D#, 4
-	note D#, 8
-	note D#, 6
-	note D#, 4
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	jumpchannel Music_GymLeaderBattleDPPt_Ch4_loop
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 4, 5
+	drum_note 4, 4
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 8
+	drum_note 4, 6
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	sound_jump Music_GymLeaderBattleDPPt_Ch4_loop

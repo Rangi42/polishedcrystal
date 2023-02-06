@@ -12,16 +12,16 @@ Music_BattleFactoryRSE:
 
 Music_BattleFactoryRSE_Ch1:
 	tempo 132
-	volume $77
-	stereopanning $ff
-	notetype $c, $47
-	note __, 12
-	note __, 16
+	volume 7, 7
+	stereo_panning TRUE, TRUE
+	note_type 12, 4, 7
+	rest 12
+	rest 16
 Music_BattleFactoryRSE_Ch1_loop:
-	dutycycle $2
-	vibrato $12, $24
-	note __, 16
-	notetype $6, $47
+	duty_cycle 2
+	vibrato 18, 2, 4
+	rest 16
+	note_type 6, 4, 7
 	octave 4
 	note G_, 12
 	octave 5
@@ -29,9 +29,9 @@ Music_BattleFactoryRSE_Ch1_loop:
 	octave 4
 	note F_, 8
 	note D_, 16
-	note __, 12
-	intensity $42
-	dutycycle $0
+	rest 12
+	volume_envelope 4, 2
+	duty_cycle 0
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -83,8 +83,8 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D_, 2
 	note F_, 2
 	note G_, 2
-	dutycycle $2
-	intensity $47
+	duty_cycle 2
+	volume_envelope 4, 7
 	octave 4
 	note B_, 12
 	note G_, 12
@@ -97,10 +97,10 @@ Music_BattleFactoryRSE_Ch1_loop:
 	octave 5
 	note F_, 16
 
-	intensity $42
-	dutycycle $0
+	volume_envelope 4, 2
+	duty_cycle 0
 	octave 4
-	note __, 8
+	rest 8
 	note F_, 2
 	note F_, 2
 	note F_, 2
@@ -114,39 +114,39 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note F_, 2
 	note F_, 2
 	note F_, 4
-	note __, 16
+	rest 16
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 1
 	note E_, 1
-	note __, 1
-	dutycycle 3
+	rest 1
+	duty_cycle 3
 	octave 4
 	note E_, 2
 	octave 2
@@ -172,9 +172,9 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	dutycycle $0
-	intensity $47
-	vibrato $12, $F2
+	duty_cycle 0
+	volume_envelope 4, 7
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	octave 3
@@ -187,8 +187,8 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G#, 8
 	octave 4
 	note F_, 16
-	vibrato $12, $24
-	intensity $44
+	vibrato 18, 2, 4
+	volume_envelope 4, 4
 	octave 4
 	note D_, 2
 	note D_, 2
@@ -212,8 +212,8 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D_, 2
 	note D_, 2
 
-	note __, 16
-	dutycycle $3
+	rest 16
+	duty_cycle 3
 	octave 3
 	note A#, 2
 	note B_, 2
@@ -261,9 +261,9 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G_, 2
 	note A_, 2
 	note B_, 2
-	dutycycle $0
-	intensity $47
-	vibrato $12, $F2
+	duty_cycle 0
+	volume_envelope 4, 7
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	note G_, 12
@@ -274,11 +274,11 @@ Music_BattleFactoryRSE_Ch1_loop:
 	octave 2
 	note F#, 8
 	note D#, 16
-	vibrato $12, $24
-	note __, 16
-	dutycycle $3
-	intensity $42
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
+	vibrato 18, 2, 4
+	rest 16
+	duty_cycle 3
+	volume_envelope 4, 2
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
 	note G_, 2
 	octave 2
 	note B_, 2
@@ -306,160 +306,160 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note B_, 2
 	note F#, 2
 	note D_, 2
-	dutycycle $0
-	notetype $c, $1F
+	duty_cycle 0
+	note_type 12, 1, -7
 	note F#, 6
-	intensity $47
-	vibrato $12, $73
+	volume_envelope 4, 7
+	vibrato 18, 7, 3
 	note F#, 10
-	intensity $1F
-	vibrato $12, $24
+	volume_envelope 1, -7
+	vibrato 18, 2, 4
 	note B_, 6
-	intensity $47
-	vibrato $12, $73
+	volume_envelope 4, 7
+	vibrato 18, 7, 3
 	note B_, 10
-	intensity $1F
-	vibrato $12, $24
+	volume_envelope 1, -7
+	vibrato 18, 2, 4
 	note D#, 6
-	intensity $47
-	vibrato $12, $73
+	volume_envelope 4, 7
+	vibrato 18, 7, 3
 	note D#, 10
-	intensity $1F
-	vibrato $12, $24
+	volume_envelope 1, -7
+	vibrato 18, 2, 4
 	note A_, 6
-	intensity $47
-	vibrato $12, $73
-	vibrato $12, $24
+	volume_envelope 4, 7
+	vibrato 18, 7, 3
+	vibrato 18, 2, 4
 	note A_, 10
-	note __, 16
-	note __, 16
-	note __, 12
-	notetype $8, $A7
-	dutycycle $2
+	rest 16
+	rest 16
+	rest 12
+	note_type 8, 10, 7
+	duty_cycle 2
 	octave 6
 	note D#, 1
 	note D_, 5
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note A#, 2
 	note A_, 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note G_, 6
 	note D#, 1
 	note D_, 5
-	notetype $6, $42
-	note __, 16
-	note __, 8
+	note_type 6, 4, 2
+	rest 16
+	rest 8
 
-	dutycycle $0
+	duty_cycle 0
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 2
 	note B_, 2
 	octave 3
 	note F_, 2
-	vibrato $12, $73
-	intensity $47
+	vibrato 18, 7, 3
+	volume_envelope 4, 7
 	note F#, 16
-	vibrato $12, $24
-	note __, 8
-	dutycycle $1
-	notetype $8, $A7
+	vibrato 18, 2, 4
+	rest 8
+	duty_cycle 1
+	note_type 8, 10, 7
 	note G#, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note B_, 6
 	note A_, 6
 	note G#, 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note F#, 12
-	notetype $6, $94
-	note __, 12
+	note_type 6, 9, 4
+	rest 12
 	octave 4
-	dutycycle $2
+	duty_cycle 2
 	note G#, 16
-	note __, 12
-	note __, 8
-	dutycycle $0
-	intensity $62
+	rest 12
+	rest 8
+	duty_cycle 0
+	volume_envelope 6, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 2
 	note E_, 1
-	note __, 1
-	intensity $22
+	rest 1
+	volume_envelope 2, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 2
 	note E_, 2
-	jumpchannel Music_BattleFactoryRSE_Ch1_loop
+	sound_jump Music_BattleFactoryRSE_Ch1_loop
 
 Music_BattleFactoryRSE_Ch2:
-	stereopanning $ff
-	notetype $c, $90
-	note __, 12
+	stereo_panning TRUE, TRUE
+	note_type 12, 9, 0
+	rest 12
 Music_BattleFactoryRSE_Ch2_loop:
-	note __, 16
-	note __, 16
-	dutycycle $2
-	notetype $6, $97
+	rest 16
+	rest 16
+	duty_cycle 2
+	note_type 6, 9, 7
 	octave 4
 	note G_, 11
 	note B_, 1
@@ -469,9 +469,9 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G#, 1
 	note F_, 8
 	note D_, 16
-	note __, 4
-	intensity $92
-	dutycycle $0
+	rest 4
+	volume_envelope 9, 2
+	duty_cycle 0
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -530,8 +530,8 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note E_, 2
 	octave 3
 	note B_, 2
-	dutycycle $2
-	intensity $97
+	duty_cycle 2
+	volume_envelope 9, 7
 	octave 4
 	note B_, 11
 	note A_, 1
@@ -549,8 +549,8 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 1
 	note F_, 16
 
-	intensity $92
-	dutycycle $0
+	volume_envelope 9, 2
+	duty_cycle 0
 	octave 4
 	note F_, 2
 	note F_, 2
@@ -565,53 +565,53 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F_, 2
 	note F_, 2
 	note F_, 4
-	note __, 2
-	dutycycle $2
+	rest 2
+	duty_cycle 2
 	octave 3
 	note E_, 2
 	octave 4
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
 	note G_, 2
 	octave 3
 	note E_, 2
-	dutycycle $0
+	duty_cycle 0
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 1
 	note E_, 1
-	note __, 1
-	dutycycle 3
+	rest 1
+	duty_cycle 3
 	octave 4
 	note E_, 2
 	octave 2
@@ -637,9 +637,9 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	dutycycle $0
-	intensity $97
-	vibrato $12, $F2
+	duty_cycle 0
+	volume_envelope 9, 7
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	octave 3
@@ -652,8 +652,8 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G#, 8
 	octave 4
 	note F_, 16
-	vibrato $12, $24
-	intensity $84
+	vibrato 18, 2, 4
+	volume_envelope 8, 4
 	octave 4
 	note D_, 2
 	note D_, 2
@@ -677,14 +677,14 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 2
 	note D_, 2
 
-	dutycycle $2
-	note __, 10
+	duty_cycle 2
+	rest 10
 	octave 4
 	note E_, 2
 	note G_, 2
 	octave 3
 	note E_, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A#, 2
 	note B_, 2
@@ -732,9 +732,9 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G_, 2
 	note A_, 2
 	note B_, 2
-	dutycycle $0
-	intensity $97
-	vibrato $12, $F2
+	duty_cycle 0
+	volume_envelope 9, 7
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	note G_, 12
@@ -745,17 +745,17 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 2
 	note F#, 8
 	note D#, 16
-	dutycycle $2
-	intensity $92
-	note __, 10
+	duty_cycle 2
+	volume_envelope 9, 2
+	rest 10
 	octave 4
 	note E_, 2
 	note G_, 2
 	octave 3
 	note E_, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 3
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
 	note G_, 2
 	octave 2
 	note B_, 2
@@ -783,32 +783,32 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note B_, 2
 	note F#, 2
 	note D_, 2
-	dutycycle $0
-	notetype $c, $6F
+	duty_cycle 0
+	note_type 12, 6, -7
 	note F#, 6
-	intensity $97
-	vibrato $12, $73
+	volume_envelope 9, 7
+	vibrato 18, 7, 3
 	note F#, 10
-	intensity $6F
-	vibrato $12, $24
+	volume_envelope 6, -7
+	vibrato 18, 2, 4
 	note B_, 6
-	intensity $97
-	vibrato $12, $73
+	volume_envelope 9, 7
+	vibrato 18, 7, 3
 	note B_, 10
-	intensity $6F
-	vibrato $12, $24
+	volume_envelope 6, -7
+	vibrato 18, 2, 4
 	note D#, 6
-	intensity $97
-	vibrato $12, $73
+	volume_envelope 9, 7
+	vibrato 18, 7, 3
 	note D#, 10
-	intensity $6F
-	vibrato $12, $24
+	volume_envelope 6, -7
+	vibrato 18, 2, 4
 	note A_, 6
-	intensity $97
-	vibrato $12, $73
+	volume_envelope 9, 7
+	vibrato 18, 7, 3
 	note A_, 10
-	notetype $6, $92
-	vibrato $12, $24
+	note_type 6, 9, 2
+	vibrato 18, 2, 4
 	octave 2
 	note C_, 2
 	note E_, 2
@@ -823,7 +823,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F_, 2
 	note G_, 2
 	note B_, 2
-	notetype $3, $92
+	note_type 3, 9, 2
 	note D#, 1
 	note D_, 1
 	note C#, 1
@@ -841,8 +841,8 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 1
 	note C#, 1
 	note C_, 1
-	notetype $8, $92
-	dutycycle $2
+	note_type 8, 9, 2
+	duty_cycle 2
 	octave 3
 	note D_, 4
 	note A_, 2
@@ -898,47 +898,47 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 4
 	note D_, 2
 
-	notetype $6, $92
-	dutycycle $0
+	note_type 6, 9, 2
+	duty_cycle 0
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note B_, 2
 	octave 2
 	note B_, 2
 	octave 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 2
 	note B_, 2
 	octave 3
 	note F_, 2
-	vibrato $12, $73
-	intensity $97
+	vibrato 18, 7, 3
+	volume_envelope 9, 7
 	note F#, 16
-	vibrato $12, $24
-	note __, 16
-	dutycycle $3
+	vibrato 18, 2, 4
+	rest 16
+	duty_cycle 3
 	octave 3
-	intensity $42
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
+	volume_envelope 4, 2
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
 	octave 4
 	note D_, 2
 	note D_, 2
@@ -957,40 +957,40 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note C#, 2
 	octave 3
 	note B_, 2
-	note __, 8
-	intensity $B7
+	rest 8
+	volume_envelope 11, 7
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 3
 	note E_, 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 2
 	note E_, 1
-	note __, 1
-	jumpchannel Music_BattleFactoryRSE_Ch2_loop
+	rest 1
+	sound_jump Music_BattleFactoryRSE_Ch2_loop
 
 Music_BattleFactoryRSE_Ch2_branch_1:
 	octave 3
@@ -999,70 +999,70 @@ Music_BattleFactoryRSE_Ch2_branch_1:
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note B_, 2
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	note D_, 2
 	note C#, 2
 	octave 3
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_BattleFactoryRSE_Ch3:
-	vibrato $14, $23
-	stereopanning $ff
-	notetype $6, $25
+	vibrato 20, 2, 3
+	stereo_panning TRUE, TRUE
+	note_type 6, 2, 5
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
-	octave 1
-	note E_, 1
-	note __, 1
-	note E_, 1
-	note __, 1
-	octave 2
-	note E_, 2
-	note __, 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	note __, 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	note __, 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
+	rest 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
+	octave 2
+	note E_, 2
+	rest 2
+	octave 1
+	note E_, 2
+	octave 2
+	note E_, 2
+	rest 2
+	octave 1
+	note E_, 2
+	octave 2
+	note E_, 2
+	rest 2
+	octave 1
+	note E_, 2
+	octave 2
+	note E_, 2
+	octave 1
+	note E_, 1
+	rest 1
+	note E_, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
@@ -1072,76 +1072,76 @@ Music_BattleFactoryRSE_Ch3_loop:
 	octave 2
 	note G_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
 	octave 2
 	note E_, 2
 	note G_, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note E_, 1
-	note __, 1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	rest 1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_2
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_2
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	intensity $18
+	volume_envelope 1, 8
 	octave 4
 	note G_, 2
 	octave 5
 	note G_, 2
 	octave 4
 	note G_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note F#, 2
 	note G_, 2
 	note C#, 2
@@ -1157,107 +1157,107 @@ Music_BattleFactoryRSE_Ch3_loop:
 	note D_, 2
 	note F#, 2
 	note G_, 2
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_3
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	jumpchannel Music_BattleFactoryRSE_Ch3_loop
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_3
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_jump Music_BattleFactoryRSE_Ch3_loop
 
 Music_BattleFactoryRSE_Ch3_branch_1:
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 1
 	note E_, 1
-	note __, 1
-	endchannel
+	rest 1
+	sound_ret
 
 Music_BattleFactoryRSE_Ch3_branch_2:
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 1
 	note E_, 2
 	octave 2
 	note E_, 2
 	octave 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 2
 	note G_, 2
 	octave 3
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_BattleFactoryRSE_Ch3_branch_3:
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 1
 	note E_, 1
-	note __, 1
-	loopchannel 4, Music_BattleFactoryRSE_Ch3_branch_3
-	endchannel
+	rest 1
+	sound_loop 4, Music_BattleFactoryRSE_Ch3_branch_3
+	sound_ret
 
 Music_BattleFactoryRSE_Ch4:
-	togglenoise $4
-	notetype $6
+	toggle_noise 4
+	drum_speed 6
 Music_BattleFactoryRSE_Ch4_loop:
-	note D#, 8
-	jumpchannel Music_BattleFactoryRSE_Ch4_loop
+	drum_note 4, 8
+	sound_jump Music_BattleFactoryRSE_Ch4_loop
 
 Music_BattleFactoryRSE_Ch4_branch_1:
-	note E_, 4
-	note F#, 4
-	note D#, 4
-	note F#, 4
-	loopchannel 6, Music_BattleFactoryRSE_Ch4_branch_1
-	endchannel
+	drum_note 5, 4
+	drum_note 7, 4
+	drum_note 4, 4
+	drum_note 7, 4
+	sound_loop 6, Music_BattleFactoryRSE_Ch4_branch_1
+	sound_ret

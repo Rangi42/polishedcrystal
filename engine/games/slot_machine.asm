@@ -50,6 +50,12 @@ _SlotMachine:
 	ld de, vTiles0 tile $00
 	call Decompress
 
+	; unused? just in case
+	ld hl, vTiles0 tile $00
+	ld de, vTiles0 tile $20
+	ld bc, 32 tiles
+	rst CopyBytes
+
 	ld hl, Slots3LZ
 	ld de, vTiles0 tile $40
 	call Decompress
@@ -61,6 +67,12 @@ _SlotMachine:
 	ld hl, Slots2LZ
 	ld de, vTiles2 tile $25
 	call Decompress
+
+	; unused? just in case
+	ld hl, vTiles2 tile $25
+	ld de, vTiles2 tile $45
+	ld bc, 32 tiles
+	rst CopyBytes
 
 	ld hl, SlotsTilemapLZ
 	decoord 0, 0

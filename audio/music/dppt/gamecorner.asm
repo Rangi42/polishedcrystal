@@ -10,16 +10,16 @@ Music_GameCornerDPPt:
 
 Music_GameCornerDPPt_Ch1:
 	tempo $7C
-	volume $77
-	notetype $C, $A2
-	dutycycle 2
-	tone $0001
-	stereopanning $f
+	volume 7, 7
+	note_type 12, 10, 2
+	duty_cycle 2
+	pitch_offset 1
+	stereo_panning FALSE, TRUE
 	octave 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 	note C_, 1
 	note C_, 1
 	note C_, 2
@@ -121,164 +121,164 @@ Music_GameCornerDPPt_Ch1_loop:
 	note B_, 1
 	note B_, 1
 	note B_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 1
-	intensity $A2
-	note A_, 1
-	note A_, 2
-	intensity $59
-	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note A_, 1
+	note A_, 2
+	volume_envelope 5, -1
+	note A_, 1
+	volume_envelope 10, 2
 	note A_, 1
 	note G#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
-	note F#, 1
-	note F#, 2
-	intensity $39
-	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
 	note F#, 1
 	note E_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 1
-	intensity $A2
-	note D_, 1
-	note D_, 2
-	intensity $39
-	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note D_, 1
 	note D_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note D_, 1
 	note D_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note D_, 1
+	note D_, 2
+	volume_envelope 3, -1
+	note D_, 1
+	volume_envelope 10, 2
 	note D_, 1
 	note E_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
-	note F#, 1
-	note F#, 2
-	intensity $39
-	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
 	note F#, 1
 	note G#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note A_, 1
-	intensity $A2
-	note A_, 1
-	note A_, 2
-	intensity $39
-	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note A_, 1
+	note A_, 2
+	volume_envelope 3, -1
+	note A_, 1
+	volume_envelope 10, 2
 	note A_, 1
 	note G#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
-	note F#, 1
-	note F#, 2
-	intensity $39
-	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
 	note F#, 1
 	note E_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 1
-	intensity $A2
-	note D_, 1
-	note D_, 2
-	intensity $39
-	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note D_, 1
 	note D_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note D_, 1
 	note D_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note D_, 1
+	note D_, 2
+	volume_envelope 3, -1
+	note D_, 1
+	volume_envelope 10, 2
 	note D_, 1
 	note E_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
-	note F#, 1
-	note F#, 2
-	intensity $39
-	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note F#, 2
-	intensity $39
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
 	note E_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note E_, 1
 	note E_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note F#, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note F#, 1
 	note G#, 2
 	note B_, 2
@@ -482,8 +482,8 @@ Music_GameCornerDPPt_Ch1_loop:
 	note A#, 2
 	note G#, 1
 
-	dutycycle 0
-	intensity $C4
+	duty_cycle 0
+	volume_envelope 12, 4
 	octave 1
 	note D#, 2
 	note A#, 2
@@ -510,91 +510,91 @@ Music_GameCornerDPPt_Ch1_loop:
 	note F_, 2
 	note D_, 2
 
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	dutycycle 2
-	intensity $39
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	duty_cycle 2
+	volume_envelope 3, -1
 	octave 4
 	note C_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note C_, 1
 	note C_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note C_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note C_, 1
 	note C_, 2
-	intensity $39
+	volume_envelope 3, -1
 	octave 3
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note B_, 1
-	intensity $A2
-	note B_, 1
-	note B_, 2
-	intensity $39
-	note B_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note B_, 1
 	note B_, 2
-	intensity $39
+	volume_envelope 3, -1
+	note B_, 1
+	volume_envelope 10, 2
+	note B_, 1
+	note B_, 2
+	volume_envelope 3, -1
 	note G_, 1
-	intensity $A2
-	note G_, 1
-	note G_, 2
-	intensity $39
-	note G_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note G_, 1
 	note G_, 2
-	intensity $39
+	volume_envelope 3, -1
+	note G_, 1
+	volume_envelope 10, 2
+	note G_, 1
+	note G_, 2
+	volume_envelope 3, -1
 	note A_, 1
-	intensity $A2
-	note A_, 1
-	note A_, 2
-	intensity $39
-	note A_, 1
-	intensity $A2
-	note A_, 1
-	note A_, 2
-	intensity $39
-	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note A_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
-	intensity $39
+	volume_envelope 3, -1
+	note A_, 1
+	volume_envelope 10, 2
+	note A_, 1
+	note A_, 2
+	volume_envelope 3, -1
+	note A_, 1
+	volume_envelope 10, 2
+	note A_, 1
+	note A_, 2
+	volume_envelope 3, -1
 	note B_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note B_, 1
 	note B_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note B_, 1
-	intensity $A2
-	note B_, 1
-	note B_, 2
-	intensity $39
-	note B_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note B_, 1
 	note B_, 2
-	intensity $39
+	volume_envelope 3, -1
 	note B_, 1
-	intensity $A2
+	volume_envelope 10, 2
+	note B_, 1
+	note B_, 2
+	volume_envelope 3, -1
+	note B_, 1
+	volume_envelope 10, 2
 	note B_, 1
 	note B_, 1
 	note B_, 1
@@ -612,13 +612,13 @@ Music_GameCornerDPPt_Ch1_loop:
 	note A_, 1
 	note A_, 1
 	note A_, 2
-	jumpchannel Music_GameCornerDPPt_Ch1_loop
+	sound_jump Music_GameCornerDPPt_Ch1_loop
 
 Music_GameCornerDPPt_Ch2:
-	notetype $C, $C7
-	dutycycle 0
-	tone $0002
-	stereopanning $ff
+	note_type 12, 12, 7
+	duty_cycle 0
+	pitch_offset 2
+	stereo_panning TRUE, TRUE
 	octave 1
 	note A_, 2
 	octave 2
@@ -696,12 +696,12 @@ Music_GameCornerDPPt_Ch2:
 	octave 2
 	note C_, 2
 	note F_, 2
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note C_, 2
-	notetype $9, $C7
+	note_type 9, 12, 7
 	octave 1
 	note D_, 2
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note A_, 2
 	octave 2
 	note D_, 2
@@ -718,12 +718,12 @@ Music_GameCornerDPPt_Ch2:
 	note E_, 2
 	note G#, 2
 	note E_, 2
-	intensity $00
+	volume_envelope 0, 0
 	octave 4
 	note A_, 8
 Music_GameCornerDPPt_Ch2_loop:
-	notetype $8, $C8
-	dutycycle 2
+	note_type 8, 12, 8
+	duty_cycle 2
 	octave 1
 	note E_, 1
 	note F_, 1
@@ -738,10 +738,10 @@ Music_GameCornerDPPt_Ch2_loop:
 	note C#, 1
 	note D_, 1
 	note D#, 1
-	notetype $C, $C8
+	note_type 12, 12, 8
 	octave 2
 	note E_, 8
-	notetype $8, $C8
+	note_type 8, 12, 8
 	octave 3
 	note E_, 1
 	note F_, 1
@@ -756,9 +756,9 @@ Music_GameCornerDPPt_Ch2_loop:
 	note C#, 1
 	note D_, 1
 	note D#, 1
-	notetype $C, $C8
+	note_type 12, 12, 8
 	note E_, 8
-	notetype $8, $C8
+	note_type 8, 12, 8
 	octave 5
 	note E_, 1
 	note F_, 1
@@ -773,169 +773,169 @@ Music_GameCornerDPPt_Ch2_loop:
 	note C#, 1
 	note D_, 1
 	note D#, 1
-	notetype $C, $C8
+	note_type 12, 12, 8
 	octave 6
 	note E_, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	note E_, 2
 	octave 1
 	note G#, 2
 
-	intensity $59
+	volume_envelope 5, -1
 	octave 2
 	note F#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 3
 	note C#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note F#, 2
-	intensity $59
+	volume_envelope 5, -1
 	note F#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note C#, 2
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 2
 
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 2
-	intensity $59
+	volume_envelope 5, -1
 	note C#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note B_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note A_, 2
 
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 1
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 1
 	note A#, 1
 	note B_, 1
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 1
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 1
 	note B_, 2
 
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note A_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note B_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 2
 
 	note C#, 4
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note F#, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 3
 	note C#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note F#, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 3
 	note C#, 1
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note F#, 2
 	note F#, 1
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 1
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note C_, 1
 	note D_, 2
 
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 3
-	intensity $C4
+	volume_envelope 12, 4
 	note D_, 1
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 2
 	note B_, 3
-	intensity $C4
+	volume_envelope 12, 4
 	note A_, 1
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note C#, 2
-	intensity $59
+	volume_envelope 5, -1
 	note C#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note F#, 2
 
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 2
-	intensity $59
+	volume_envelope 5, -1
 	note B_, 1
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 1
 	note A#, 1
 	note B_, 1
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 1
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 1
 	octave 3
 	note C#, 2
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 3
-	intensity $C4
+	volume_envelope 12, 4
 	octave 2
 	note A_, 1
 
-	intensity $59
+	volume_envelope 5, -1
 	note A_, 2
 	octave 3
 	note D_, 4
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note F#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 4
 	note D#, 2
 
@@ -949,11 +949,11 @@ Music_GameCornerDPPt_Ch2_loop:
 	octave 2
 	note A#, 2
 
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 1
 	note D#, 2
 	note D#, 2
-	notetype $6, $C4
+	note_type 6, 12, 4
 	octave 2
 	note D_, 1
 	note D#, 3
@@ -961,10 +961,10 @@ Music_GameCornerDPPt_Ch2_loop:
 	note B_, 1
 	note A#, 7
 	note D#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 5
 	note D#, 12
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 2
 	note E_, 4
 	note F#, 4
@@ -975,7 +975,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	octave 3
 	note D#, 4
 	note C#, 8
-	notetype $C, $C4
+	note_type 12, 12, 4
 	octave 2
 	note A#, 12
 	octave 3
@@ -989,9 +989,9 @@ Music_GameCornerDPPt_Ch2_loop:
 	note E_, 2
 	note F#, 2
 
-	notetype $6, $94
-	dutycycle 2
-	stereopanning $f0
+	note_type 6, 9, 4
+	duty_cycle 2
+	stereo_panning TRUE, FALSE
 	octave 5
 	note C#, 1
 	octave 6
@@ -1000,7 +1000,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note A#, 1
 	octave 5
 	note A#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 1
 	octave 6
 	note A#, 1
@@ -1008,7 +1008,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note F#, 1
 	octave 6
 	note F#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note A#, 1
 	octave 5
@@ -1016,7 +1016,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note A#, 1
 	octave 6
 	note A#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 5
 	note F#, 1
 	octave 6
@@ -1025,7 +1025,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note C#, 1
 	octave 6
 	note C#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note A#, 1
 	octave 5
@@ -1034,7 +1034,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note F#, 1
 	octave 5
 	note F#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note C#, 1
 	octave 5
@@ -1043,7 +1043,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note A#, 1
 	octave 4
 	note A#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 3
 	note G#, 1
 	note F#, 1
@@ -1054,10 +1054,10 @@ Music_GameCornerDPPt_Ch2_loop:
 	note B_, 1
 	note A#, 1
 	note G#, 1
-	dutycycle 0
-	notetype $6, $C4
-	stereopanning $ff
-	note __, 4
+	duty_cycle 0
+	note_type 6, 12, 4
+	stereo_panning TRUE, TRUE
+	rest 4
 	note G#, 4
 	note A#, 4
 	note B_, 8
@@ -1090,7 +1090,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note D#, 2
 	note D_, 2
 	note D_, 1
-	dutycycle 1
+	duty_cycle 1
 	note D#, 7
 	octave 2
 	note A#, 8
@@ -1100,10 +1100,10 @@ Music_GameCornerDPPt_Ch2_loop:
 	note D#, 8
 	octave 4
 	note C_, 4
-	notetype $E, $C4
+	note_type 14, 12, 4
 	octave 3
 	note A#, 12
-	notetype $C, $C4
+	note_type 12, 12, 4
 	octave 4
 	note D#, 6
 	note D_, 2
@@ -1123,27 +1123,27 @@ Music_GameCornerDPPt_Ch2_loop:
 	note F_, 4
 	octave 4
 	note C_, 2
-	notetype $6, $C4
+	note_type 6, 12, 4
 	note C#, 1
 	note D_, 7
-	notetype $F, $C4
+	note_type 15, 12, 4
 	octave 3
 	note A#, 8
-	notetype $C, $C4
+	note_type 12, 12, 4
 	note G#, 2
 	note A#, 2
 	note G_, 2
 	note D#, 2
 	note E_, 2
 	note F_, 2
-	notetype $6, $C4
+	note_type 6, 12, 4
 	note A_, 1
 	note A#, 7
 	note D#, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	dutycycle 0
+	rest 16
+	rest 16
+	rest 16
+	duty_cycle 0
 	octave 1
 	note A_, 4
 	octave 2
@@ -1194,1024 +1194,1024 @@ Music_GameCornerDPPt_Ch2_loop:
 	octave 4
 	note C_, 2
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 2
 	note D_, 2
 	octave 3
 	note A_, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 4
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note A_, 2
 	octave 4
 	note E_, 2
 	note G_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 2
 	note D_, 2
 	octave 3
 	note A_, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 4
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 2
 	note A_, 2
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note D#, 1
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 7
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 8
 	note D_, 8
 	note D_, 8
 	note C_, 2
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note B_, 2
 	octave 4
 	note G_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note B_, 2
 	note A_, 2
 	octave 4
 	note G_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note C_, 2
 	note D_, 2
 	octave 3
 	note A_, 2
-	intensity $59
+	volume_envelope 5, -1
 	octave 4
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note B_, 2
 	octave 4
 	note C_, 2
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note G_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note G_, 4
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 4
-	intensity $59
+	volume_envelope 5, -1
 	note D_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note E_, 2
 	note G_, 2
 	note D_, 2
-	intensity $59
+	volume_envelope 5, -1
 	note E_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note D_, 16
-	note __, 4
-	jumpchannel Music_GameCornerDPPt_Ch2_loop
+	rest 4
+	sound_jump Music_GameCornerDPPt_Ch2_loop
 
 Music_GameCornerDPPt_Ch3:
-	stereopanning $f0
-	notetype $C, $15
+	stereo_panning TRUE, FALSE
+	note_type 12, 1, 5
 	octave 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	notetype $6, $15
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	note_type 6, 1, 5
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D_, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 Music_GameCornerDPPt_Ch3_loop:
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note F#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 2
 	note C#, 2
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 3
+	rest 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 3
+	rest 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 4
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D#, 4
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 3
+	rest 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 3
+	rest 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 3
+	rest 3
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 3
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 3
 	octave 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 4
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D_, 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
-	jumpchannel Music_GameCornerDPPt_Ch3_loop
+	sound_jump Music_GameCornerDPPt_Ch3_loop
 
 Music_GameCornerDPPt_Ch4:
-	togglenoise 3
-	notetype $C
-	stereopanning $f0
-	note __, 16
-	note __, 16
+	toggle_noise 3
+	note_type 12
+	stereo_panning TRUE, FALSE
+	rest 16
+	rest 16
 	note C_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C_, 8
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C_, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C_, 1
 	note C_, 2
 	note C_, 1
 	note C_, 2
 	note C_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C#, 4
 	note C#, 4
 	note C#, 4
@@ -2228,21 +2228,21 @@ Music_GameCornerDPPt_Ch4:
 	note C#, 4
 	note C#, 4
 	note C#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note B_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 16
-	note __, 2
+	rest 2
 Music_GameCornerDPPt_Ch4_loop:
-	notetype $C
-	stereopanning $f
+	note_type 12
+	stereo_panning FALSE, TRUE
 	note B_, 14
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 2
 	note B_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note B_, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -2255,7 +2255,7 @@ Music_GameCornerDPPt_Ch4_loop:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -2329,16 +2329,16 @@ Music_GameCornerDPPt_Ch4_loop:
 	note A#, 4
 	note F#, 4
 	note B_, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	note A#, 2
 	note A#, 4
 	note A#, 2
 	note A#, 4
 	note F#, 4
 	note B_, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	note C#, 2
 	note C#, 2
 	note C#, 2
@@ -2350,17 +2350,17 @@ Music_GameCornerDPPt_Ch4_loop:
 	note C#, 1
 	note C#, 1
 	note B_, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 	note A#, 2
 	note A#, 4
 	note A#, 2
 	note A#, 4
 	note F#, 4
 	note B_, 16
-	note __, 16
-	note __, 16
-	note __, 12
+	rest 16
+	rest 16
+	rest 12
 	note A#, 2
 	note A#, 2
 	note B_, 12
@@ -2423,19 +2423,19 @@ Music_GameCornerDPPt_Ch4_loop:
 	note A#, 8
 	note A#, 4
 	note A#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
+	rest 16
 	note A#, 16
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 16
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A#, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note A#, 2
 	note A#, 4
 	note A#, 2
@@ -2459,6 +2459,6 @@ Music_GameCornerDPPt_Ch4_loop:
 	note A#, 8
 	note A#, 4
 	note A#, 16
-	note __, 16
-	note __, 4
-	jumpchannel Music_GameCornerDPPt_Ch4_loop
+	rest 16
+	rest 4
+	sound_jump Music_GameCornerDPPt_Ch4_loop
