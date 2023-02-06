@@ -15,6 +15,7 @@ Music_GymLeaderBattleRSE_Ch1:
 	pitch_offset 1
 	note_type 12, 12, 4
 	vibrato 18, 1, 5
+	volume_envelope 7, 0
 	octave 5
 	note C_, 1
 	octave 4
@@ -321,6 +322,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	duty_cycle 2
 	note_type 12, 9, 4
 	vibrato 18, 1, 5
+	volume_envelope 5, 5
 	octave 5
 	note G_, 1
 	note G#, 1

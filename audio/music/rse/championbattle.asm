@@ -18,6 +18,7 @@ Music_ChampionBattleRSE_Ch1:
 	vibrato 8, 1, 5
 	note_type 3, 9, 4
 Music_ChampionBattleRSE_Ch1_loop_1:
+	volume_envelope 5, 0
 	octave 5
 	note G_, 2
 	note G#, 2
@@ -347,6 +348,7 @@ Music_ChampionBattleRSE_Ch2:
 	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 3, 13, 4
+	volume_envelope 6, 0
 	octave 4
 	note D#, 2
 	note D_, 2
@@ -1166,4 +1168,3 @@ Music_ChampionBattleRSE_Ch4_branch_3:
 	drum_note 4, 2
 	drum_note 1, 4
 	sound_ret
-
