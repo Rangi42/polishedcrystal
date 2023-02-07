@@ -117,6 +117,7 @@ SetEnemyTurn::
 GetThirdMaxHP::
 ; Assumes HP<768
 	call GetMaxHP
+GetThirdBC:
 	xor a
 	inc b
 .loop
