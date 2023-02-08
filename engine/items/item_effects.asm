@@ -1708,7 +1708,14 @@ GetHealingItemAmount:
 
 .figy_berry
 	call .set_de_to_hp
-	jr .half_hp
+	push bc
+	ld b, d
+	ld c, e
+	call GetThirdBC
+	ld d, b
+	ld e, c
+	pop bc
+	ret
 
 .sitrus_berry
 	call .set_de_to_hp
