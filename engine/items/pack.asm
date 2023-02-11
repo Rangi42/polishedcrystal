@@ -598,11 +598,14 @@ Pack_RegularPocketMenu:
 
 Pack_TutorialPocketMenu:
 	ld bc, Tutorial_ItemsPocketMenuDataHeader
-	jr Pack_PocketMenu
+	jr Pack_TempPocketMenu
 
 Pack_DepositSellPocketMenu:
 	; Menu input is handled elsewhere.
 	ld bc, PC_Mart_ItemsPocketMenuDataHeader
+	; fallthrough
+Pack_TempPocketMenu:
+	ld hl, wTempPocketCursor
 	; fallthrough
 Pack_PocketMenu:
 	; Handle TM/HM pocket separately.
@@ -621,8 +624,8 @@ Pack_PocketMenu:
 	ld h, b
 	ld l, c
 	ld bc, MedicinePocketMenuDataHeader - ItemsPocketMenuDataHeader
-	rst AddNTimes
 	push af
+	rst AddNTimes
 	call CopyMenuHeader
 	pop af
 	pop hl
@@ -813,17 +816,20 @@ DepositSellInitPackBuffers:
 	ld [wCurPocket], a ; ITEM_POCKET
 	ld [wPackUsedItem], a
 	ld [wSwitchItem], a
+	ld bc, NUM_POCKETS
+	ld hl, wTempPocketCursor
+	rst ByteFill
 	call Pack_InitGFX
 	jmp Pack_InitColors
 
-DepositSellPack:
-.loop
+ContinueDepositSellPack:
 	call ClearPocketList
+DepositSellPack:
 	call WaitBGMap_DrawPackGFX
 	call Pack_DepositSellPocketMenu
 	call DepositSellTutorial_InterpretJoypad
-	jr c, .loop
-	ret
+	ret nc
+	jr ContinueDepositSellPack
 
 InitPocket:
 	ld [wCurPocket], a
