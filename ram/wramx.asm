@@ -310,6 +310,8 @@ wTempDexSeen:: dw
 wTempDexOwn:: dw
 wTempDexLast:: dw ; the last species marked as seen
 wTempDexEnd::
+NEXTU
+wTempPocketCursor:: ds NUM_POCKETS
 ENDU
 ENDU
 
