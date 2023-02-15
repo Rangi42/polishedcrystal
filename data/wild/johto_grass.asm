@@ -1350,14 +1350,14 @@
 	wildmon 2, PIDGEY
 	wildmon 2, SENTRET
 	wildmon 3, PIDGEY
-	wildmon 3, SENTRET
+	wildmon 3, EEVEE
 	wildmon 2, RATTATA
 	wildmon 3, HOPPIP
 	wildmon 3, HOPPIP
 	; day
 	wildmon 2, PIDGEY
 	wildmon 2, SENTRET
-	wildmon 3, PIDGEY
+	wildmon 3, EEVEE
 	wildmon 3, SENTRET
 	wildmon 2, RATTATA
 	wildmon 3, HOPPIP
@@ -1366,8 +1366,8 @@
 	wildmon 2, HOOTHOOT
 	wildmon 2, RATTATA
 	wildmon 3, HOOTHOOT
-	wildmon 3, RATTATA
-	wildmon 2, RATTATA
+	wildmon 3, EEVEE
+	wildmon 2, EEVEE
 	wildmon 3, HOOTHOOT
 	wildmon 3, HOOTHOOT
 	end_grass_wildmons

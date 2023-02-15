@@ -1,77 +1,29 @@
 NurseMornText:
-	text "Good morning!"
-	line "Welcome to our"
-	cont "#mon Center."
 	done
 
 NurseDayText:
-	text "Hello!"
-	line "Welcome to our"
-	cont "#mon Center."
 	done
 
 NurseEveText:
-	text "Good evening!"
-	line "Welcome to our"
-	cont "#mon Center."
 	done
 
 NurseNiteText:
-	text "Good evening!"
-	line "You're out late."
-
-	para "Welcome to our"
-	line "#mon Center."
 	done
 
 PokeComNurseMornText:
-	text "Good morning!"
-
-	para "This is the #-"
-	line "mon Communication"
-
-	para "Center--or the"
-	line "#Com Center."
 	done
 
 PokeComNurseDayText:
-	text "Hello!"
-
-	para "This is the #-"
-	line "mon Communication"
-
-	para "Center--or the"
-	line "#Com Center."
 	done
 
 PokeComNurseEveText:
-	text "Good evening!"
-
-	para "This is the #-"
-	line "mon Communication"
-
-	para "Center--or the"
-	line "#Com Center."
 	done
 
 PokeComNurseNiteText:
-	text "Good to see you"
-	line "working so late."
-
-	para "This is the #-"
-	line "mon Communication"
-
-	para "Center--or the"
-	line "#Com Center."
 	done
 
 NurseAskHealText:
-	text "We can heal your"
-	line "#mon to perfect"
-	cont "health."
-
-	para "Shall we heal your"
-	line "#mon?"
+	text "Heal?"
 	done
 
 NurseTrainerStarText:
@@ -105,21 +57,16 @@ NurseTheUsualText:
 	done
 
 NurseTakePokemonText:
-	text "OK, may I see your"
-	line "#mon?"
+	text "Can do!"
 	done
 
 NurseReturnPokemonText:
-	text "Thank you for"
-	line "waiting."
-
-	para "Your #mon are"
-	line "fully healed."
+	
 	done
 
 NurseGoodbyeText:
-	text "We hope to see you"
-	line "again."
+	text "Leave now."
+	
 	done
 
 NursePokerusText:
