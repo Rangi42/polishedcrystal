@@ -14,5 +14,5 @@
 	ev_yield 2 HP
 
 	; tm/hm learnset
-	tmhm SAFEGUARD, COUNTER
+	tmhm SAFEGUARD, COUNTER, CUT, FLY, SURF, WHIRLPOOL, FLASH
 	; end
