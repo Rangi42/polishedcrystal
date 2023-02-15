@@ -4,7 +4,7 @@
 	db NORMAL, FLYING ; type
 	db 255 ; catch rate
 	db 55 ; base exp
-	db NO_ITEM, NO_ITEM ; held items
+	db ABILITYPATCH, ABILITYPATCH ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for PIDGEY, KEEN_EYE, TANGLED_FEET, BIG_PECKS

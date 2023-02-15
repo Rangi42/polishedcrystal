@@ -201,8 +201,8 @@ EcruteakMart:
 	db ANTIDOTE
 	db PARALYZEHEAL
 	db AWAKENING
-	db BURN_HEAL
-	db ICE_HEAL
+	db EVIOLITE
+	db ABILITYPATCH
 	db REVIVE
 	db -1
 

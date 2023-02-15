@@ -1524,7 +1524,7 @@
 	wildmon 12, YANMA
 	; day
 	wildmon 12, SNUBBULL
-	wildmon 14, PIDGEY
+	wildmon 14, GEODUDE, ALOLAN_FORM
 	wildmon 13, NIDORAN_M
 	wildmon 13, NIDORAN_F
 	wildmon 12, JIGGLYPUFF
