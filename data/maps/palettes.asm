@@ -41,6 +41,8 @@ ENDM
 	special_bg_pal map,      WILLS_ROOM,                  PAL_SINGLE,    WillsRoomPalette
 	special_bg_pal map,      KOGAS_ROOM,                  PAL_SINGLE,    KogasRoomPalette
 	special_bg_pal map,      BRUNOS_ROOM,                 PAL_SINGLE,    BrunosRoomPalette
+	special_bg_pal map,      BLACKTHORN_GYM_1F,           PAL_SINGLE,    BrunosRoomPalette
+	special_bg_pal map,      BLACKTHORN_GYM_2F,           PAL_SINGLE,    BrunosRoomPalette
 	special_bg_pal map,      KARENS_ROOM,                 PAL_SINGLE,    KarensRoomPalette
 	special_bg_pal map,      LANCES_ROOM,                 PAL_SINGLE,    LancesRoomPalette
 	special_bg_pal map,      HALL_OF_FAME,                PAL_SINGLE,    LancesRoomPalette
@@ -113,6 +115,7 @@ ENDM
 	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
 	special_ob_pal map,      ROUTE_41,                        Route41Palette_Rock,                    PAL_OW_ROCK,   1, 1
+	special_ob_pal map,      BLACKTHORN_GYM_2F,               wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROCK_TUNNEL_2F,                  RockTunnelOBPalette_Tree,               PAL_OW_TREE,   1
