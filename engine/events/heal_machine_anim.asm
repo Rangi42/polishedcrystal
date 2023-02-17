@@ -100,7 +100,7 @@ HealMachineAnim:
 
 .LoadPalettes:
 	ld hl, .palettes
-	ld de, wOBPals2 palette PAL_OW_TEAL
+	ld de, wOBPals2 palette 7
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	ld a, $1
