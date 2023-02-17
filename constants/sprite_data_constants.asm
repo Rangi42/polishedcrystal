@@ -43,7 +43,7 @@ ENDM
 	ow_npc_pal_const EMOTE_BLUE        ; 10
 	ow_npc_pal_const MARLON            ; 11
 	ow_npc_pal_const SAILBOAT          ; 12
-DEF LAST_TIME_OF_DAY_OW_PAL EQU const_value
+DEF NUM_OW_TIME_OF_DAY_PALS EQU const_value
 	ow_npc_pal_const ELECTRIC_FENCE    ; 13
 	ow_npc_pal_const LIGHTNING_CRYSTAL ; 14
 	ow_npc_pal_const ROCK_CRYSTAL      ; 15
@@ -53,9 +53,9 @@ DEF LAST_TIME_OF_DAY_OW_PAL EQU const_value
 	ow_npc_pal_const DRILL             ; 19
 	ow_npc_pal_const PEARL             ; 1a
 	ow_npc_pal_const TINY_WINDOW       ; 1b
-DEF LAST_INDIVIDUAL_OW_PAL EQU const_value
+DEF NUM_OW_INDIVIDUAL_PALS EQU const_value - NUM_OW_TIME_OF_DAY_PALS
 	ow_npc_pal_const COPY_BG_GREEN     ; 1c
 	ow_npc_pal_const COPY_BG_BROWN     ; 1d
 	ow_npc_pal_const COPY_BG_GRAY      ; 1e
-DEF LAST_COPY_OW_PAL EQU const_value
+DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value

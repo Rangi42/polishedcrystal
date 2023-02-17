@@ -49,7 +49,7 @@ CopySpritePal::
 
 .not_overcast
 	ld a, [wNeededPalIndex]
-	cp LAST_TIME_OF_DAY_OW_PAL
+	cp NUM_OW_TIME_OF_DAY_PALS
 	jr c, .time_of_day_pal
 	ld hl, SingleObjectPals
 	ld bc, 1 palettes
@@ -68,7 +68,7 @@ CopySpritePal::
 	ld a, [wTimeOfDayPal]
 .daytime
 	maskbits NUM_DAYTIMES
-	ld bc, LAST_TIME_OF_DAY_OW_PAL palettes
+	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
 	rst AddNTimes
 .got_pal
 	ld bc, 1 palettes
@@ -101,17 +101,17 @@ INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
 else
 INCLUDE "gfx/overworld/npc_sprites.pal"
 endc
-	assert_table_length LAST_TIME_OF_DAY_OW_PAL * NUM_DAYTIMES ; morn, day, nite, eve
+	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES ; morn, day, nite, eve
 
 SingleObjectPals:
 	table_width 1 palettes, SingleObjectPals
 INCLUDE "gfx/overworld/npc_single_object.pal"
-	assert_table_length LAST_INDIVIDUAL_OW_PAL - LAST_TIME_OF_DAY_OW_PAL
+	assert_table_length NUM_OW_INDIVIDUAL_PALS
 
 DarknessOBPalette:
 	table_width 1 palettes, DarknessOBPalette
 INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
-	assert_table_length LAST_INDIVIDUAL_OW_PAL
+	assert_table_length NUM_OW_TIME_OF_DAY_PALS + NUM_OW_INDIVIDUAL_PALS
 
 OvercastOBPalette:
 	table_width 1 palettes, OvercastOBPalette
@@ -122,4 +122,4 @@ INCLUDE "gfx/tilesets/palettes/monochrome/ob_overcast.pal"
 else
 INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
 endc
-	assert_table_length LAST_TIME_OF_DAY_OW_PAL * NUM_DAYTIMES
+	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES
