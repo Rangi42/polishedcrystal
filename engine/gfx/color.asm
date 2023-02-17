@@ -995,34 +995,16 @@ INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
 	table_width 1 palettes, TilesetBGPalette
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
-else
 INCLUDE "gfx/tilesets/bg_tiles.pal"
-endc
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
-else
 INCLUDE "gfx/tilesets/roofs.pal"
-endc
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
-else
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
-endc
 
 INCLUDE "data/pokemon/palettes.asm"
 

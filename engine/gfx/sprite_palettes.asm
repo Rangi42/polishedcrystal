@@ -94,13 +94,7 @@ ApplyOBPals:
 
 MapObjectPals:
 	table_width 1 palettes, MapObjectPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
 INCLUDE "gfx/overworld/npc_sprites.pal"
-endc
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES ; morn, day, nite, eve
 
 SingleObjectPals:
@@ -115,11 +109,5 @@ INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
 
 OvercastOBPalette:
 	table_width 1 palettes, OvercastOBPalette
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob_overcast.pal"
-else
 INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
-endc
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES

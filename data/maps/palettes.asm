@@ -1357,13 +1357,7 @@ endr
 endc
 
 OvercastBGPalette:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
 INCLUDE "gfx/tilesets/bg_tiles_overcast.pal"
-endc
 
 MartBluePalette:
 if !DEF(MONOCHROME)
