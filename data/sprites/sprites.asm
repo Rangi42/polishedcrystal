@@ -73,7 +73,7 @@ SpriteHeaders:
 	overworld_sprite AnabelSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite FlannerySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite MayleneSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite MarlonSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite MarlonSpriteGFX, WALKING_SPRITE, PAL_OW_MARLON
 	overworld_sprite ValerieSpriteGFX, WALKING_SPRITE, PAL_OW_PINK
 	overworld_sprite KukuiSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CaitlinSpriteGFX, WALKING_SPRITE, PAL_OW_PINK
