@@ -671,10 +671,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	call .copy
 	ld de, wBGPals1 palette PAL_BG_ROOF
 	call .copy
-	ld de, wOBPals1 palette PAL_OW_ROCK
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_TREE
-	call .copy
+	; TODO: call .copy for any wOBPals1 entries that use a PAL_OW_COPY_BG_* palette
 	ld hl, .black_pals
 	call .timeofdaypal
 	ld de, wBGPals1 palette PAL_BG_TEXT ; black

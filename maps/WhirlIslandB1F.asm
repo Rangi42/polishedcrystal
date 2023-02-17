@@ -27,4 +27,4 @@ WhirlIslandB1F_MapScriptHeader:
 	itemball_event 33, 23, CALCIUM, 1, EVENT_WHIRL_ISLAND_B1F_CALCIUM
 	itemball_event 17,  8, BIG_NUGGET, 1, EVENT_WHIRL_ISLAND_B1F_BIG_NUGGET
 	itemball_event 19, 26, ESCAPE_ROPE, 1, EVENT_WHIRL_ISLAND_B1F_ESCAPE_ROPE
-	strengthboulder_event 23, 26, -1, PAL_NPC_COPY_BG_BROWN
+	strengthboulder_event 23, 26

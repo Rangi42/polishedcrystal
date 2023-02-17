@@ -23,19 +23,19 @@ CinnabarVolcano1F_MapScriptHeader:
 
 	def_object_events
 	object_event  4,  9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
-	strengthboulder_event  6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event 15, 22, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event 19,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event  5,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4, PAL_NPC_COPY_BG_BROWN
+	strengthboulder_event  6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
+	strengthboulder_event 15, 22, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
+	strengthboulder_event 19,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
+	strengthboulder_event  5,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	object_event  2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerScientistOskar, -1
 	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdLuis, -1
-	smashrock_event  5, 18, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 11, 21, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 35, 23, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 19, 11, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 25, 12, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 13, 2,  -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event  8, 4,  -1, PAL_NPC_COPY_BG_BROWN
+	smashrock_event  5, 18
+	smashrock_event 11, 21
+	smashrock_event 35, 23
+	smashrock_event 19, 11
+	smashrock_event 25, 12
+	smashrock_event 13, 2
+	smashrock_event  8, 4
 
 	object_const_def
 	const CINNABARVOLCANO1F_BUCK

@@ -16,12 +16,12 @@ BlackthornGym2F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	strengthboulder_event  8,  2, EVENT_BOULDER_IN_BLACKTHORN_GYM_1, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event  2,  3, EVENT_BOULDER_IN_BLACKTHORN_GYM_2, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event  6, 16, EVENT_BOULDER_IN_BLACKTHORN_GYM_3, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event  3, 3, -1, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event  6, 1, -1, PAL_NPC_COPY_BG_BROWN
-	strengthboulder_event  8, 14, -1, PAL_NPC_COPY_BG_BROWN
+	strengthboulder_event  8,  2, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
+	strengthboulder_event  2,  3, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
+	strengthboulder_event  6, 16, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
+	strengthboulder_event  3, 3
+	strengthboulder_event  6, 1
+	strengthboulder_event  8, 14
 	object_event  4,  1, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermCody, -1
 	object_event  4, 11, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfFran, -1
 

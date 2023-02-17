@@ -38,28 +38,27 @@ ENDM
 	ow_npc_pal_const BLACK             ; 0b
 	ow_npc_pal_const MARLON            ; 0c
 	ow_npc_pal_const TREE              ; 0d
-	ow_npc_pal_const ROCK              ; 0e
-	ow_npc_pal_const SAILBOAT          ; 0f
+	ow_npc_pal_const SAILBOAT          ; 0e
 DEF NUM_OW_TIME_OF_DAY_PALS EQU const_value
-	ow_npc_pal_const EMOTE_GRAY        ; 10
-	ow_npc_pal_const EMOTE_BLACK       ; 11
-	ow_npc_pal_const EMOTE_GREEN       ; 12
-	ow_npc_pal_const EMOTE_PURPLE      ; 13
-	ow_npc_pal_const EMOTE_RED         ; 14
-	ow_npc_pal_const EMOTE_ORANGE      ; 15
-	ow_npc_pal_const EMOTE_BLUE        ; 16
-	ow_npc_pal_const ELECTRIC_FENCE    ; 17
-	ow_npc_pal_const LIGHTNING_CRYSTAL ; 18
-	ow_npc_pal_const ROCK_CRYSTAL      ; 19
-	ow_npc_pal_const N64               ; 1a
-	ow_npc_pal_const POKECOM_SIGN      ; 1b
-	ow_npc_pal_const RANGI             ; 1c
-	ow_npc_pal_const DRILL             ; 1d
-	ow_npc_pal_const PEARL             ; 1e
-	ow_npc_pal_const TINY_WINDOW       ; 1f
+	ow_npc_pal_const EMOTE_GRAY        ; 0f
+	ow_npc_pal_const EMOTE_BLACK       ; 10
+	ow_npc_pal_const EMOTE_GREEN       ; 11
+	ow_npc_pal_const EMOTE_PURPLE      ; 12
+	ow_npc_pal_const EMOTE_RED         ; 13
+	ow_npc_pal_const EMOTE_ORANGE      ; 14
+	ow_npc_pal_const EMOTE_BLUE        ; 15
+	ow_npc_pal_const ELECTRIC_FENCE    ; 16
+	ow_npc_pal_const LIGHTNING_CRYSTAL ; 17
+	ow_npc_pal_const ROCK_CRYSTAL      ; 18
+	ow_npc_pal_const N64               ; 19
+	ow_npc_pal_const POKECOM_SIGN      ; 1a
+	ow_npc_pal_const RANGI             ; 1b
+	ow_npc_pal_const DRILL             ; 1c
+	ow_npc_pal_const PEARL             ; 1d
+	ow_npc_pal_const TINY_WINDOW       ; 1e
 DEF NUM_OW_INDIVIDUAL_PALS EQU const_value - NUM_OW_TIME_OF_DAY_PALS
-	ow_npc_pal_const COPY_BG_GREEN     ; 20
-	ow_npc_pal_const COPY_BG_BROWN     ; 21
-	ow_npc_pal_const COPY_BG_GRAY      ; 22
+	ow_npc_pal_const COPY_BG_GREEN     ; 1f
+	ow_npc_pal_const COPY_BG_BROWN     ; 20
+	ow_npc_pal_const COPY_BG_GRAY      ; 21
 DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value

@@ -26,10 +26,10 @@ CinnabarVolcanoB1F_MapScriptHeader:
 	bg_event 28, 18, BGEVENT_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
 
 	def_object_events
-	strengthboulder_event  6,  5, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F, PAL_NPC_COPY_BG_BROWN
-	smashrock_event  8, 28, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 28, 17, -1, PAL_NPC_COPY_BG_BROWN
-	smashrock_event 27, 5,  -1, PAL_NPC_COPY_BG_BROWN
+	strengthboulder_event  6,  5, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
+	smashrock_event  8, 28
+	smashrock_event 28, 17
+	smashrock_event 27, 5
 	itemball_event  2, 18, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
 	itemball_event  4, 29, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
