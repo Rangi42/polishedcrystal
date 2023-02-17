@@ -1,7 +1,10 @@
-_CopyTreePal:
-	ld de, wOBPals1 + 6 palettes
+CopyBGGreenToOBPal7:
+; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)
+; have hard-coded OB palette 7 in their OAM data.
+	ld de, wOBPals1 palette 7
 	ld a, PAL_OW_COPY_BG_GREEN
 	ld [wNeededPalIndex], a
+	; fallthrough
 CopySpritePal::
 	push af
 	push bc

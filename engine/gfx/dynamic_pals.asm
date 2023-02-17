@@ -15,7 +15,8 @@ DisableDynPalUpdates::
 EnableDynPalUpdates::
 	ld hl, wPalFlags
 	res DISABLE_DYN_PAL_F, [hl]
-; fallthrough to manually run CheckForUsedObjPals
+	; fallthrough to manually run CheckForUsedObjPals
+
 CheckForUsedObjPals::
 	push hl
 	push de
@@ -35,31 +36,31 @@ CheckForUsedObjPals::
 	; Scan for active objects first and mark those pals still in use.
 	ld hl, wPalFlags
 	set SCAN_OBJECTS_FIRST_F, [hl]
-	call .ScanObjectStructs
+	call ScanObjectStructPals
 
 	; Scan for active objects that still need pals loaded
 	ld hl, wPalFlags
 	res SCAN_OBJECTS_FIRST_F, [hl]
-	call .ScanObjectStructs
+	call ScanObjectStructPals
 
-.done
 	; If this flag was set, it's time to reset it
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_F, [hl]
 	jmp PopAFBCDEHL
 
-.ScanObjectStructs
+ScanObjectStructPals:
 	ld de, wObjectStructs
 	ld b, NUM_OBJECT_STRUCTS
+
 .loop
 	; Check if the object has a sprite
 	ld hl, OBJECT_SPRITE
 	add hl, de
 	ld a, [hl]
 	and a
-	jr z, .no_sprite_skip
+	jr z, .skip
 
-	; Look up the objects requested color palette
+	; Look up the object's requested color palette
 	ld hl, OBJECT_PAL_INDEX
 	add hl, de
 	ld a, [hl]
@@ -76,9 +77,11 @@ CheckForUsedObjPals::
 	and ~PALETTE_MASK
 	or c
 	ld [hl], a
-.no_sprite_skip
+
+.skip
 	dec b
 	ret z
+
 	ld hl, OBJECT_LENGTH
 	add hl, de
 	ld d, h
@@ -93,13 +96,13 @@ MarkUsedPal:
 	; Check if pal is already loaded
 	lb bc, 8, 0
 	ld hl, wLoadedObjPal0
-.loop
+.loaded_loop
 	cp [hl]
 	jr z, .mark_in_use
 	inc hl
 	inc c
 	dec b
-	jr nz, .loop
+	jr nz, .loaded_loop
 
 	; If this is the first pass, we do not want to 
 	; load any pals yet, just mark the still active pals
@@ -155,16 +158,17 @@ MarkUsedPal:
 	ld hl, wUsedObjectPals
 	inc c
 	ld a, 1
-.loop3
+.used_loop
 	dec c
-	jr z, .load_hl
+	jr z, .found_used
 	rla
-	jr .loop3
-.load_hl
+	jr .used_loop
+.found_used
 	or [hl]
 	ld [hl], a
 	pop bc
 	ld a, c
+
 .done
 	jmp PopBCDEHL
 

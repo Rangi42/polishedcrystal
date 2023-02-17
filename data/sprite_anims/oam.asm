@@ -212,14 +212,14 @@ SpriteAnimOAMData:
 
 .OAMData_Leaf:
 	db 1
-	dsprite -1,  4, -1,  4, $00, $6
+	dsprite -1,  4, -1,  4, $00, $7
 
 .OAMData_Tree:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $6
-	dsprite -1,  0,  0,  0, $01, $6
-	dsprite  0,  0, -1,  0, $02, $6
-	dsprite  0,  0,  0,  0, $03, $6
+	dsprite -1,  0, -1,  0, $00, $7
+	dsprite -1,  0,  0,  0, $01, $7
+	dsprite  0,  0, -1,  0, $02, $7
+	dsprite  0,  0,  0,  0, $03, $7
 
 .OAMData_TextEntryCursor:
 	db 4
@@ -323,24 +323,24 @@ SpriteAnimOAMData:
 
 .OAMData_CutTree2:
 	db 4
-	dsprite -1,  0, -2,  6, $00, $6
-	dsprite -1,  0,  0,  2, $01, $6
-	dsprite  0,  0, -2,  6, $02, $6
-	dsprite  0,  0,  0,  2, $03, $6
+	dsprite -1,  0, -2,  6, $00, $7
+	dsprite -1,  0,  0,  2, $01, $7
+	dsprite  0,  0, -2,  6, $02, $7
+	dsprite  0,  0,  0,  2, $03, $7
 
 .OAMData_CutTree3:
 	db 4
-	dsprite -1,  0, -2,  4, $00, $6
-	dsprite -1,  0,  0,  4, $01, $6
-	dsprite  0,  0, -2,  4, $02, $6
-	dsprite  0,  0,  0,  4, $03, $6
+	dsprite -1,  0, -2,  4, $00, $7
+	dsprite -1,  0,  0,  4, $01, $7
+	dsprite  0,  0, -2,  4, $02, $7
+	dsprite  0,  0,  0,  4, $03, $7
 
 .OAMData_CutTree4:
 	db 4
-	dsprite -1,  0, -2,  0, $00, $6
-	dsprite -1,  0,  1,  0, $01, $6
-	dsprite  0,  0, -2,  0, $02, $6
-	dsprite  0,  0,  1,  0, $03, $6
+	dsprite -1,  0, -2,  0, $00, $7
+	dsprite -1,  0,  1,  0, $01, $7
+	dsprite  0,  0, -2,  0, $02, $7
+	dsprite  0,  0,  1,  0, $03, $7
 
 .OAMData_BlueWalk:
 	db 4
