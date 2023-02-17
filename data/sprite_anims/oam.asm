@@ -23,7 +23,7 @@ SpriteAnimOAMData:
 	spriteanimoam $3a, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_SLOTS_EGG
 	spriteanimoam $00, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_STILL_CURSOR
 	spriteanimoam $00, .OAMData_TradePokeBall1         ; SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_1
-	spriteanimoam $02, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2
+	spriteanimoam $02, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2
 	spriteanimoam $06, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_1
 	spriteanimoam $0a, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_2
 	spriteanimoam $0e, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_3
@@ -32,15 +32,15 @@ SpriteAnimOAMData:
 	spriteanimoam $00, .OAMData_TradeMonIcon           ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_1
 	spriteanimoam $04, .OAMData_TradeMonIcon           ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_2
 	spriteanimoam $10, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADEMON_BUBBLE
-	spriteanimoam $00, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_1
+	spriteanimoam $00, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_1
 	spriteanimoam $04, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_2
 	spriteanimoam $00, .OAMData_RadioTuningKnob        ; SPRITE_ANIM_OAMSET_RADIO_TUNING_KNOB
 	spriteanimoam $00, .OAMData_PartyMonWithMail1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1
 	spriteanimoam $00, .OAMData_PartyMonWithMail2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2
 	spriteanimoam $00, .OAMData_PartyMonWithItem1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1
 	spriteanimoam $00, .OAMData_PartyMonWithItem2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2
-	spriteanimoam $00, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_1
-	spriteanimoam $04, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_2
+	spriteanimoam $00, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_1
+	spriteanimoam $04, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_2
 	spriteanimoam $00, .OAMData_Leaf                   ; SPRITE_ANIM_OAMSET_LEAF
 	spriteanimoam $00, .OAMData_Tree                   ; SPRITE_ANIM_OAMSET_TREE_1
 	spriteanimoam $00, .OAMData_CutTree2               ; SPRITE_ANIM_OAMSET_CUT_TREE_2
@@ -175,7 +175,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0, -1,  0, $02, -1
 	dsprite  0,  0,  0,  0, $03, -1
 
-.OAMData_MagnetTrainRed:
+.OAMData_MagnetTrain:
 	db 4
 	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
 	dsprite -1,  0,  0,  0, $01, $0 | PRIORITY
@@ -348,13 +348,6 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $1
 	dsprite  0,  0, -1,  0, $02, $1
 	dsprite  0,  0,  0,  0, $03, $1
-
-.OAMData_MagnetTrainBlue:
-	db 4
-	dsprite -1,  0, -1,  0, $00, $1 | PRIORITY
-	dsprite -1,  0,  0,  0, $01, $1 | PRIORITY
-	dsprite  0,  0, -1,  0, $02, $1 | PRIORITY
-	dsprite  0,  0,  0,  0, $03, $1 | PRIORITY
 
 .OAMData_IntroSuicune1:
 	db 36
@@ -803,10 +796,3 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $2
 	dsprite  0,  0, -1,  0, $02, $2
 	dsprite  0,  0,  0,  0, $03, $2
-
-.OAMData_MagnetTrainGreen:
-	db 4
-	dsprite -1,  0, -1,  0, $00, $2 | PRIORITY
-	dsprite -1,  0,  0,  0, $01, $2 | PRIORITY
-	dsprite  0,  0, -1,  0, $02, $2 | PRIORITY
-	dsprite  0,  0,  0,  0, $03, $2 | PRIORITY

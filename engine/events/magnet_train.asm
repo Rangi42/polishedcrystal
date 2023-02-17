@@ -299,7 +299,7 @@ MagnetTrain_Jumptable:
 	ld d, (8 + 2) * TILE_WIDTH + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
-	ld a, SPRITE_ANIM_INDEX_MAGNET_TRAIN_RED
+	ld a, SPRITE_ANIM_INDEX_MAGNET_TRAIN
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
