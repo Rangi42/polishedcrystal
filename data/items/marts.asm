@@ -121,7 +121,7 @@ Goldenrod2FMart2:
 	db -1
 
 Goldenrod2FMart2Eevee:
-	db 11 ; # items
+	db 13 ; # items
 	db POKE_BALL
 	db GREAT_BALL
 	db LUXURY_BALL
@@ -133,6 +133,8 @@ Goldenrod2FMart2Eevee:
 	db BLUESKY_MAIL
 	db MORPH_MAIL
 	db EON_MAIL
+	db DUSK_STONE
+	db MOON_STONE
 	db -1
 
 Goldenrod3FMart:
