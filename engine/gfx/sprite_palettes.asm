@@ -8,17 +8,15 @@ CopySpritePal::
 	push hl
 	push de
 	ld a, [wNeededPalIndex]
-	ld hl, wBGPals1 + PAL_BG_BROWN palettes
-	cp PAL_OW_COPY_BG_BROWN
-	jr z, .got_pal
-	cp PAL_OW_COPY_BG_GREEN
-	ld hl, wBGPals1 + PAL_BG_GREEN palettes
-	jr z, .got_pal
-	cp PAL_OW_COPY_BG_GRAY
-	ld hl, wBGPals1 + PAL_BG_GRAY palettes
-	jr z, .got_pal
+	sub FIRST_COPY_BG_PAL
+	jr c, .not_copy_bg
+	ld hl, wBGPals1
+	ld bc, 1 palettes
+	rst AddNTimes
+	jr .got_pal
 
-	; CHECK DARKNESS
+.not_copy_bg
+	; check darkness
 	push hl
 	push de
 	call GetMapTimeOfDay
@@ -37,7 +35,7 @@ CopySpritePal::
 	jr .got_pal
 
 .not_darkness
-	; CHECK OVERCAST
+	; check overcast
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
@@ -71,8 +69,8 @@ CopySpritePal::
 	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
 	rst AddNTimes
 .got_pal
-	ld bc, 1 palettes
 	pop de
+	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	ld hl, wPalFlags
 	bit NO_DYN_PAL_APPLY_F, [hl]
