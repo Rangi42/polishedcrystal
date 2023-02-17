@@ -58,87 +58,37 @@ StdScripts::
 	dw CaveGrottoScript
 
 PokeCenterNurseScript:
-	opentext
-	checkevent EVENT_NURSE_SAW_TRAINER_STAR
-	iftruefwd .star_center
-	checktime 1 << MORN
-	iftruefwd .morn
-	checktime 1 << DAY
-	iftruefwd .day
-	checktime 1 << EVE
-	iftruefwd .eve
-	checktime 1 << NITE
-	iftruefwd .nite
 	sjumpfwd .ok
 
 .morn
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftruefwd .morn_center
-	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iffalsefwd .morn_center
-	farwritetext PokeComNurseMornText
-	promptbutton
-	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	sjumpfwd .ok
 .morn_center
-	farwritetext NurseMornText
 	promptbutton
 	sjumpfwd .ok
 
 .day
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftruefwd .day_center
-	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iffalsefwd .day_center
-	farwritetext PokeComNurseDayText
-	promptbutton
-	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	sjumpfwd .ok
 .day_center
-	farwritetext NurseDayText
 	promptbutton
 	sjumpfwd .ok
 
 .eve
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftruefwd .eve_center
-	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iffalsefwd .eve_center
-	farwritetext PokeComNurseEveText
-	promptbutton
-	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	sjumpfwd .ok
 .eve_center
-	farwritetext NurseEveText
 	promptbutton
 	sjumpfwd .ok
 
 .nite
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftruefwd .nite_center
-	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iffalsefwd .nite_center
-	farwritetext PokeComNurseNiteText
-	promptbutton
-	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	sjumpfwd .ok
 .nite_center
-	farwritetext NurseNiteText
 	promptbutton
 	; fallthrough
 
 .ok
-	readvar VAR_TRAINER_STARS
-	ifequalfwd 0, .ask_heal
-	farwritetext NurseTrainerStarText
-	setevent EVENT_NURSE_SAW_TRAINER_STAR
 	sjumpfwd .answer_heal
 
 .ask_heal
-	farwritetext NurseAskHealText
 .answer_heal
-	yesorno
-	iffalsefwd .goodbye
 	sjumpfwd .heal_pokemon
 
 .star_center
@@ -146,10 +96,9 @@ PokeCenterNurseScript:
 	yesorno
 	iffalsefwd .goodbye
 .heal_pokemon
-	farwritetext NurseTakePokemonText
-	pause 20
+
 	turnobject LAST_TALKED, LEFT
-	pause 10
+
 	special HealParty
 	special SaveMusic
 	playmusic MUSIC_NONE
@@ -160,6 +109,7 @@ PokeCenterNurseScript:
 	turnobject LAST_TALKED, DOWN
 	pause 10
 
+
 	checkphonecall ; elm already called about pokerus
 	iftruefwd .no
 	checkflag ENGINE_CAUGHT_POKERUS ; nurse already talked about pokerus
@@ -168,19 +118,12 @@ PokeCenterNurseScript:
 	iftruefwd .pokerus
 .no
 
-	farwritetext NurseReturnPokemonText
-	pause 20
 
 .goodbye
-	farwritetext NurseGoodbyeText
-
 	turnobject LAST_TALKED, UP
 	pause 10
 	turnobject LAST_TALKED, DOWN
 	pause 10
-
-	waitbutton
-	closetext
 	sjumpfwd .done
 
 .pokerus
