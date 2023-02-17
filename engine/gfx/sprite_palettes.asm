@@ -51,7 +51,7 @@ CopySpritePal::
 	ld a, [wNeededPalIndex]
 	cp NUM_OW_TIME_OF_DAY_PALS
 	jr c, .time_of_day_pal
-	ld hl, SingleObjectPals
+	ld hl, SingleObjectPals - NUM_OW_TIME_OF_DAY_PALS palettes
 	ld bc, 1 palettes
 	rst AddNTimes
 	jr .got_pal
