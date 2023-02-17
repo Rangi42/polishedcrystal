@@ -2481,22 +2481,6 @@ ContinueSpawnFacing:
 	ld bc, wPlayerStruct
 	jmp SetSpriteDirection
 
-SetCopycatPalette:
-	ld bc, wObject1Struct
-	and %10000000
-	ret z
-	ld a, d
-	swap a
-	and PALETTE_MASK
-	ld d, a
-	ld hl, OBJECT_PALETTE
-	add hl, bc
-	ld a, [hl]
-	and ~PALETTE_MASK
-	or d
-	ld [hl], a
-	ret
-
 StartFollow::
 	push bc
 	ld a, b

@@ -14,11 +14,6 @@ Special::
 
 INCLUDE "data/events/special_pointers.asm"
 
-Special_SetCopycatPalette:
-	ldh a, [hScriptVar]
-	ld d, a
-	farjp SetCopycatPalette
-
 Special_GameCornerPrizeMonCheckDex:
 	ldh a, [hScriptVar]
 	ld c, a

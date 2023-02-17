@@ -163,7 +163,6 @@ SpecialsPointers::
 	add_special Special_MintTeaPickMon
 	add_special Special_MintTeaChangeNature
 	add_special Special_GetOvercastIndex
-	add_special Special_SetCopycatPalette
 	add_special Special_CurBoxFullCheck
 	add_special GetCurBoxName
 	add_special CountCaught

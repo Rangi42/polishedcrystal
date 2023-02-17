@@ -912,7 +912,7 @@ wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
 wObjectStructs::
-wPlayerStruct::   object_struct wPlayer
+wPlayerStruct::      object_struct wPlayer
 for n, 1, NUM_OBJECT_STRUCTS ; discount player
 wObject{d:n}Struct:: object_struct wObject{d:n}
 endr
@@ -927,7 +927,7 @@ wBattleFactoryTopStreak:: dw
 wBattleFactorySwapCount:: db ; Amount of swaps performed.
 
 wMapObjects::
-wPlayerObject:: map_object wPlayer
+wPlayerObject::   map_object wPlayer
 for n, 1, NUM_OBJECTS ; discount player
 wMap{d:n}Object:: map_object wMap{d:n}
 endr
