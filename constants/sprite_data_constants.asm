@@ -41,7 +41,7 @@ ENDM
 	ow_npc_pal_const ROCK              ; 0e
 	ow_npc_pal_const SAILBOAT          ; 0f
 DEF NUM_OW_TIME_OF_DAY_PALS EQU const_value
-	ow_npc_pal_const SILVER            ; 10
+	ow_npc_pal_const EMOTE_GRAY        ; 10
 	ow_npc_pal_const EMOTE_BLACK       ; 11
 	ow_npc_pal_const EMOTE_GREEN       ; 12
 	ow_npc_pal_const EMOTE_PURPLE      ; 13

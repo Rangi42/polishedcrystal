@@ -15,7 +15,7 @@ if !DEF(MONOCHROME)
 	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; tree
 	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; rock
 	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; sailboat
-	RGB 31,31,31, 31,31,31, 13,13,13, 00,00,00 ; silver
+	RGB 31,31,31, 31,31,31, 13,13,13, 00,00,00 ; emote gray
 	RGB 31,31,31, 31,31,31, 00,00,00, 00,00,00 ; emote black
 	RGB 31,31,31, 31,31,31, 02,23,02, 00,00,00 ; emote green
 	RGB 31,31,31, 31,31,31, 23,02,23, 00,00,00 ; emote purple
@@ -48,7 +48,7 @@ else
 	MONOCHROME_RGB_FOUR_DARKNESS    ; tree
 	MONOCHROME_RGB_FOUR_DARKNESS    ; rock
 	MONOCHROME_RGB_FOUR_DARKNESS    ; sailboat
-	MONOCHROME_RGB_FOUR_EMOTE       ; silver
+	MONOCHROME_RGB_FOUR_EMOTE       ; emote gray
 	MONOCHROME_RGB_FOUR_EMOTE       ; emote black
 	MONOCHROME_RGB_FOUR_EMOTE       ; emote green
 	MONOCHROME_RGB_FOUR_EMOTE       ; emote purple
