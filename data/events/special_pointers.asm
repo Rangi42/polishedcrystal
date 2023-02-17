@@ -118,7 +118,6 @@ SpecialsPointers::
 	add_special SpecialBeastsCheck
 	add_special SpecialBirdsCheck
 	add_special SpecialDuoCheck
-	add_special Special_SetPlayerPalette
 	add_special AskRememberPassword
 	add_special LoadMapPalettes
 	add_special Special_InitialSetDSTFlag

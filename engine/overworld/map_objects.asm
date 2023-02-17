@@ -2483,11 +2483,6 @@ ContinueSpawnFacing:
 
 SetCopycatPalette:
 	ld bc, wObject1Struct
-	jr SetSpritePalette
-
-SetPlayerPalette:
-	ld bc, wPlayerStruct
-SetSpritePalette:
 	and %10000000
 	ret z
 	ld a, d

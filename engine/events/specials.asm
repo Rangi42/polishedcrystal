@@ -14,11 +14,6 @@ Special::
 
 INCLUDE "data/events/special_pointers.asm"
 
-Special_SetPlayerPalette:
-	ldh a, [hScriptVar]
-	ld d, a
-	farjp SetPlayerPalette
-
 Special_SetCopycatPalette:
 	ldh a, [hScriptVar]
 	ld d, a
