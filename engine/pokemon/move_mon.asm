@@ -641,7 +641,7 @@ RetrieveBreedmon:
 
 Special_HyperTrain:
 	farcall SelectMonFromParty
-	jmp c, .nope
+	jr c, .nope
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a

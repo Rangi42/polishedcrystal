@@ -31,15 +31,20 @@ SpawnPlayer:
 	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [wPlayerGender]
-	ln e, (1 << 3) | PAL_OW_RED, OBJECTTYPE_SCRIPT
+	lb de, PAL_NPC_RED, OBJECTTYPE_SCRIPT
 	and a ; PLAYER_MALE
 	jr z, .ok
-	ln e, (1 << 3) | PAL_OW_BLUE, OBJECTTYPE_SCRIPT
+	assert PAL_NPC_RED + 1 == PAL_NPC_BLUE
+	inc d
 	dec a ; PLAYER_FEMALE
 	jr z, .ok
 	; PLAYER_ENBY
-	ln e, (1 << 3) | PAL_OW_GREEN, OBJECTTYPE_SCRIPT
+	assert PAL_NPC_BLUE + 1 == PAL_NPC_GREEN
+	inc d
 .ok
+	ld [hl], d
+	ld hl, MAPOBJECT_TYPE
+	add hl, bc
 	ld [hl], e
 	xor a
 	ldh [hMapObjectIndexBuffer], a
@@ -158,7 +163,7 @@ CopyObjectStruct::
 	ld hl, OBJECT_FLAGS2
 	add hl, de
 	set 5, [hl]
-	ret
+	farjp CheckForUsedObjPals
 
 CopyMapObjectToObjectStruct:
 	ld a, TRUE
@@ -186,13 +191,13 @@ CopyMapObjectToObjectStruct:
 	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
-	and MAPOBJECT_PALETTE_MASK
+	and a
 	jr z, .skip_color_override
-	swap a
-	and $7 ; PALETTE_MASK
+	dec a
 	ld [wTempObjectCopyPalette], a
 
 .skip_color_override
+
 	ld hl, MAPOBJECT_MOVEMENT
 	add hl, bc
 	ld a, [hl]
@@ -414,9 +419,8 @@ CopyTempObjectToObjectStruct:
 	pop bc
 
 	ld a, [wTempObjectCopyPalette]
-	ld hl, OBJECT_PALETTE
+	ld hl, OBJECT_PAL_INDEX
 	add hl, de
-	or [hl]
 	ld [hl], a
 
 	ld a, [wTempObjectCopyY]
@@ -471,6 +475,8 @@ CopyTempObjectToObjectStruct:
 	ld hl, OBJECT_RANGE
 	add hl, de
 	ld [hl], a
+
+	farcall CheckForUsedObjPals
 
 	and a
 	ret

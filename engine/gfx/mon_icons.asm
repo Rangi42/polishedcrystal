@@ -56,7 +56,7 @@ endr
 	ld c, 8
 	ret
 
-SetMenuMonIconColor:
+SetTradeMiniIconColor:
 	push hl
 	push de
 	push bc
@@ -64,7 +64,28 @@ SetMenuMonIconColor:
 
 	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
-	call GetMonIconPalette
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	farcall GetMonPalInBCDE
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rSVBK], a
+	ld hl, wOBPals1 palette 1 + 5
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hld], a
+	ld a, b
+	ld [hld], a
+	ld [hl], c
+	farcall ApplyOBPals
+	pop af
+	ldh [rSVBK], a
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ld a, 1 ; OBJ 1
 	; fallthrough
 _SetMonColor:
 	ld hl, wShadowOAM + 3
@@ -77,18 +98,41 @@ _SetMonColor:
 	jr nz, .loop
 	jmp PopAFBCDEHL
 
-SetFlyMonColor:
-	push hl
-	push de
-	push bc
-	push af
-
+_GetFlyMonColor:
 	ld a, MON_SPECIES
 	call GetPartyParamLocationAndValue
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
-	call GetMonIconPalette
+	jmp GetMonIconPalette
+
+SetFlyMonColor:
+	push hl
+	push de
+	push bc
+	push af
+	call _GetFlyMonColor
+	ld de, wOBPals1 + 3 palettes
+	ld [wNeededPalIndex], a
+	ld hl, wPalFlags
+	push hl
+	set USE_DAYTIME_PAL_F, [hl]
+	farcall CopySpritePal
+	pop hl
+	res USE_DAYTIME_PAL_F, [hl]
+	ld a, 3 ; OBJ 3
+	jr _SetMonColor
+
+SetOWFlyMonColor:
+	push hl
+	push de
+	push bc
+	push af
+	call _GetFlyMonColor
+	ld de, wOBPals1
+	ld [wNeededPalIndex], a
+	farcall CopySpritePal
+	xor a ; OBJ 0
 	jr _SetMonColor
 
 SetPartyMenuMonMiniColors:
@@ -402,7 +446,7 @@ endr
 	ret
 
 LoadTradeAnimationMonMini:
-	call SetMenuMonIconColor
+	call SetTradeMiniIconColor
 	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a
 	ld a, $62

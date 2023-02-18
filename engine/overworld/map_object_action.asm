@@ -217,9 +217,9 @@ SetFacingBounce:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	and %00001111
+	and %00011111
 	ld [hl], a
-	and %00001000
+	and %00010000
 	ld a, FACING_STEP_UP_0
 	jmp nz, SetFixedFacing
 SetFacingFreezeBounce:
@@ -255,9 +255,9 @@ SetFacingBigGyarados:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	and %00001111
+	and %00011111
 	ld [hl], a
-	and %00001000
+	and %00010000
 	ld a, FACING_BIG_GYARADOS_2
 	jmp nz, SetFixedFacing
 SetFacingFreezeBigGyarados:

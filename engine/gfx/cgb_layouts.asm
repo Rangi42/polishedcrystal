@@ -336,7 +336,7 @@ INCLUDE "gfx/battle/exp_bar.pal"
 _CGB_FlyMap:
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
-	ld c, 8 palettes
+	ld c, 3 palettes
 	call LoadPalettes
 	; fallthrough
 
@@ -1202,6 +1202,10 @@ BillsPC_PreviewTheme:
 	farjp BillsPC_SetPals
 
 .ob_pals
+	ld de, wOBPals1
+	ld hl, PokegearOBPals
+	ld c, 8 palettes
+	call LoadPalettes
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl

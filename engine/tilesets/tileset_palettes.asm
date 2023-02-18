@@ -120,61 +120,6 @@ MartSpecialCase:
 	scf
 	ret
 
-LoadSpecialMapOBPalette:
-; Load a special map, landmark, or tileset palette if one applies.
-	call InitializeSpecialPaletteRegisters
-	ld hl, SpecialOBPalettes
-.loop
-	ld a, [hli]
-	and a
-	ret z
-	call CheckIfSpecialPaletteApplies
-	jr nz, .next
-
-	; bc = source
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld b, a
-
-	; a = skip bytes
-	ld a, [hli]
-	and a
-	jr z, .no_skip
-	push hl
-	ld h, b
-	ld l, c
-	ld c, a
-	ld b, 0
-	ld a, [wTimeOfDayPal]
-	and 3
-	rst AddNTimes
-	ld b, h
-	ld c, l
-	pop hl
-.no_skip
-
-	; de = destination
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-
-	; a = length
-	ld a, [hl]
-
-	ld h, b
-	ld l, c
-	ld c, a
-	ld b, 0
-	jmp FarCopyColorWRAM
-
-.next
-rept 6
-	inc hl
-endr
-	jr .loop
-
 InitializeSpecialPaletteRegisters:
 	; b, c, d, e = [wMapGroup], [wMapNumber], landmark, [wMapTileset]
 	ld a, [wMapGroup]
