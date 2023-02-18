@@ -5,6 +5,12 @@ Special_CelebiShrineEvent:
 	xor a
 	ld [wVramState], a
 
+	ld de, wOBPals1 palette 7
+	ld a, PAL_OW_GREEN
+	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal7], a
+	farcall CopySpritePal 
+
 	call ClearSpriteAnims
 	ld hl, SpecialCelebiGFX
 	ld de, vTiles0 tile $84

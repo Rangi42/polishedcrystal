@@ -627,10 +627,10 @@ SpriteAnimOAMData:
 
 .OAMData_Celebi:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $2
-	dsprite -1,  0,  0,  0, $01, $2
-	dsprite  0,  0, -1,  0, $02, $2
-	dsprite  0,  0,  0,  0, $03, $2
+	dsprite -1,  0, -1,  0, $00, $7
+	dsprite -1,  0,  0,  0, $01, $7
+	dsprite  0,  0, -1,  0, $02, $7
+	dsprite  0,  0,  0,  0, $03, $7
 
 .OAMData_GameFreakLogo1_3:
 	db 9
