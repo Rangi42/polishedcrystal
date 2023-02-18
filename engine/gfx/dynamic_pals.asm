@@ -28,8 +28,11 @@ CheckForUsedObjPals::
 	jmp nz, PopAFBCDEHL
 
 	; reset all wUsedObjectPals bits
+	bit SKIP_USED_PAL_RES_F, [hl]
+	jr nz, .skip_pal_reset
 	xor a
 	ld [wUsedObjectPals], a
+.skip_pal_reset
 
 	call CheckAlolanExeggutorPals
 
