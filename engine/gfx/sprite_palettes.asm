@@ -35,6 +35,8 @@ CopySpritePal::
 	bit 2, a ; Flash
 	jr nz, .not_darkness
 	ld a, [wNeededPalIndex]
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr nc, .not_darkness
 	ld hl, DarknessOBPalette
 	ld bc, 1 palettes
 	rst AddNTimes
@@ -46,6 +48,8 @@ CopySpritePal::
 	and a
 	jr z, .not_overcast
 	ld a, [wNeededPalIndex]
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr nc, .not_overcast
 	ld hl, OvercastOBPalette
 	ld bc, 1 palettes
 	rst AddNTimes
