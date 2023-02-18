@@ -1,9 +1,12 @@
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)
 ; have hard-coded OB palette 7 in their OAM data.
-	ld de, wOBPals1 palette 7
 	ld a, PAL_OW_COPY_BG_GREEN
+	; fallthrough
+CopySpritePalToOBPal7:
 	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal7], a
+	ld de, wOBPals1 palette 7
 	; fallthrough
 CopySpritePal::
 	push af

@@ -10,6 +10,7 @@ BlindingFlash::
 	jmp FadeInPalettes
 
 ShakeHeadbuttTree:
+	farcall CopyBGGreenToOBPal7
 	call ClearSpriteAnims
 	call GetCurrentLandmark
 	cp NOISY_FOREST

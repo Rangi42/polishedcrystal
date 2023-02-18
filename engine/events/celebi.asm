@@ -5,11 +5,8 @@ Special_CelebiShrineEvent:
 	xor a
 	ld [wVramState], a
 
-	ld de, wOBPals1 palette 7
 	ld a, PAL_OW_GREEN
-	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal7], a
-	farcall CopySpritePal 
+	farcall CopySpritePalToOBPal7
 
 	call ClearSpriteAnims
 	ld hl, SpecialCelebiGFX
