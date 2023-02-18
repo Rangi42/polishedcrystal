@@ -70,6 +70,7 @@ ScanObjectStructPals:
 	call MarkUsedPal
 	; Then load the return into OBJECT_PALETTE, which corresponds
 	; to OBJ 0 - OBJ 7
+	and PALETTE_MASK
 	ld c, a
 	ld hl, OBJECT_PALETTE
 	add hl, de
