@@ -5,22 +5,6 @@ Special_CelebiShrineEvent:
 	xor a
 	ld [wVramState], a
 
-	; relocate obj2 pal and then load green.
-	ld hl, wPalFlags
-	set SKIP_USED_PAL_RES_F, [hl]
-	ld de, wOBPals1 palette 2
-	ld a, PAL_OW_GREEN
-	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal2], a
-	farcall CopySpritePal
-	ld b, (1 << 2)
-	ld a, [wUsedObjectPals]
-	or b
-	ld [wUsedObjectPals], a
-	farcall CheckForUsedObjPals
-	ld hl, wPalFlags
-	res SKIP_USED_PAL_RES_F, [hl]
-
 	call ClearSpriteAnims
 	ld hl, SpecialCelebiGFX
 	ld de, vTiles0 tile $84
