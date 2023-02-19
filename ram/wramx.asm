@@ -912,7 +912,7 @@ wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
 wObjectStructs::
-wPlayerStruct::   object_struct wPlayer
+wPlayerStruct::      object_struct wPlayer
 for n, 1, NUM_OBJECT_STRUCTS ; discount player
 wObject{d:n}Struct:: object_struct wObject{d:n}
 endr
@@ -926,10 +926,8 @@ wBattleFactoryCurStreak:: dw
 wBattleFactoryTopStreak:: dw
 wBattleFactorySwapCount:: db ; Amount of swaps performed.
 
-	ds 13 ; unused
-
 wMapObjects::
-wPlayerObject:: map_object wPlayer
+wPlayerObject::   map_object wPlayer
 for n, 1, NUM_OBJECTS ; discount player
 wMap{d:n}Object:: map_object wMap{d:n}
 endr
@@ -1177,7 +1175,15 @@ wCurBox:: db
 wPlayerCaught:: db
 wPlayerCaught2:: db
 
-	ds 81 ; unused
+wUsedObjectPals:: db
+for n, 8
+wLoadedObjPal{d:n}:: db 
+endr
+wNeededPalIndex:: db
+
+wEmotePal:: db
+
+	ds 70 ; unused
 
 wWingAmounts::
 wHealthWingAmount:: dw

@@ -271,41 +271,7 @@ _GetSpritePalette::
 	ret
 
 .is_pokemon
-	ld a, [wMapGroup]
-	cp GROUP_PLAYERS_HOUSE_2F
-	jr nz, .not_doll
-	ld a, [wMapNumber]
-	cp MAP_PLAYERS_HOUSE_2F
-	jr nz, .not_doll
 	farjp GetOverworldMonIconPalette
-
-.not_doll
-	cp GROUP_ROUTE_34
-	jr nz, .not_daycare
-	ld a, [wMapNumber]
-	cp MAP_ROUTE_34
-	jr nz, .not_daycare
-	farcall GetOverworldMonIconPalette
-
-	; gray, pink, and teal exist in the player's room for dolls,
-	; but not on Route 34 for the Day-Care overworld mons
-	cp PAL_OW_GRAY
-	jr z, .use_rock
-	cp PAL_OW_TEAL
-	jr z, .use_green
-	cp PAL_OW_PINK
-	ret nz
-.not_daycare
-	xor a ; PAL_OW_RED
-	ret
-
-.use_rock
-	ld a, PAL_OW_ROCK
-	ret
-
-.use_green
-	ld a, PAL_OW_GREEN
-	ret
 
 GetUsedSprite::
 	ldh a, [hUsedSpriteIndex]
@@ -385,16 +351,11 @@ endr
 LoadEmote::
 	push bc
 ; Get the address of the palette for emote c.
-	ld a, c
-	ld bc, 8
+	ld b, 0
 	ld hl, EmotePalettes
-	rst AddNTimes
-; load the emote palette
-	ld de, wOBPals2 palette PAL_OW_SILVER
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
+	add hl, bc
+	ld a, [hl]
+	ld [wEmotePal], a
 	pop bc
 ; Get the address of the pointer to emote c.
 	ld b, 0
@@ -411,9 +372,6 @@ LoadEmote::
 	ld de, vTiles0 tile $60
 ; load into vram0
 	jmp DecompressRequest2bpp
-
-EmotePalettes:
-INCLUDE "gfx/emotes/emotes.pal"
 
 INCLUDE "data/sprites/emotes.asm"
 

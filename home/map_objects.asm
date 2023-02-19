@@ -106,11 +106,6 @@ CheckObjectVisibility::
 	ret
 
 CheckObjectTime::
-	ld hl, MAPOBJECT_HOUR_1
-	add hl, bc
-	ld a, [hl]
-	cp -1
-	jr nz, .check_hour
 	ld hl, MAPOBJECT_TIMEOFDAY
 	add hl, bc
 	ld a, [hl]
@@ -138,42 +133,6 @@ CheckObjectTime::
 	db 1 << DAY  ; 2
 	db 1 << NITE ; 4
 	db 1 << EVE  ; 8
-
-.check_hour
-	ld hl, MAPOBJECT_HOUR_1
-	add hl, bc
-	ld d, [hl]
-	ld hl, MAPOBJECT_HOUR_2
-	add hl, bc
-	ld e, [hl]
-	ld hl, hHours
-	ld a, d
-	cp e
-	jr z, .yes
-	jr c, .check_timeofday
-	ld a, [hl]
-	cp d
-	jr nc, .yes
-	cp e
-	jr c, .yes
-	jr z, .yes
-	jr .no
-
-.check_timeofday
-	ld a, e
-	cp [hl]
-	jr c, .no
-	ld a, [hl]
-	cp d
-	jr c, .no
-
-.yes
-	and a
-	ret
-
-.no
-	scf
-	ret
 
 _CopyObjectStruct::
 	ldh [hMapObjectIndexBuffer], a

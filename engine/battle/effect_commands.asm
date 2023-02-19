@@ -484,7 +484,7 @@ CantMove:
 VerifyChosenMove:
 ; Returns z if the used move is the move we selected in the move screen.
 ; Used to avoid problems caused by Struggle or similar.
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld de, wPlayerMoveStructAnimation
 	ld hl, wBattleMonMoves

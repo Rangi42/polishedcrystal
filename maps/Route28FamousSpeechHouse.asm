@@ -13,7 +13,7 @@ Route28FamousSpeechHouse_MapScriptHeader:
 
 	def_object_events
 	object_event  2,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Celebrity, -1
-	pokemon_event  6,  5, SKARMORY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, CelebritysSkarmoryText, -1
+	pokemon_event  6,  5, SKARMORY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_GRAY, CelebritysSkarmoryText, -1
 
 Celebrity:
 	checkevent EVENT_GOT_TM47_STEEL_WING

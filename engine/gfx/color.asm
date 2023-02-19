@@ -940,17 +940,10 @@ LoadMapPals:
 	ldh [rSVBK], a
 
 .got_pals
-	; copy OB palettes
-	ld a, [wTimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, MapObjectPals
-	rst AddNTimes
-	ld de, wOBPals1
-	ld bc, 8 palettes
-	call FarCopyColorWRAM
-
-	farcall LoadSpecialMapOBPalette
+	farcall ClearSavedObjPals
+	ld hl, wPalFlags
+	set NO_DYN_PAL_APPLY_F, [hl]
+	farcall CheckForUsedObjPals
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
@@ -1002,53 +995,22 @@ INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
 	table_width 1 palettes, TilesetBGPalette
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
-else
 INCLUDE "gfx/tilesets/bg_tiles.pal"
-endc
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
-
-MapObjectPals:
-	table_width 1 palettes, MapObjectPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
-INCLUDE "gfx/overworld/npc_sprites.pal"
-endc
-	assert_table_length 8 * 4 ; morn, day, nite, eve
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
-else
 INCLUDE "gfx/tilesets/roofs.pal"
-endc
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
-else
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
-endc
 
 INCLUDE "data/pokemon/palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "data/events/paintings/palettes.asm"
-
-INCLUDE "engine/gfx/palettes.asm"
 
 INCLUDE "engine/gfx/sgb_border.asm"
 
