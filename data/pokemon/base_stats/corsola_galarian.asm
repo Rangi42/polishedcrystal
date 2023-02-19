@@ -4,7 +4,7 @@
 	db GHOST, GHOST ; type
 	db 60 ; catch rate
 	db 113 ; base exp
-	db NO_ITEM, LUMINOUSMOSS ; held items
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F75, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for CORSOLA_GALARIAN, WEAK_ARMOR, WEAK_ARMOR, CURSED_BODY

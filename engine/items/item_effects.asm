@@ -179,15 +179,15 @@ ItemEffects:
 	dw IsntTheTimeMessage ; ROCKY_HELMET
 	dw IsntTheTimeMessage ; AIR_BALLOON
 	dw IsntTheTimeMessage ; RED_CARD
-	dw IsntTheTimeMessage ; RING_TARGET
+	dw EvoStoneEffect     ; LINK_CABLE
 	dw IsntTheTimeMessage ; BINDING_BAND
-	dw IsntTheTimeMessage ; ABSORB_BULB
-	dw IsntTheTimeMessage ; CELL_BATTERY
+	dw IsntTheTimeMessage ; CLEAR_AMULET
+	dw IsntTheTimeMessage ; MIRROR_HERB
 	dw IsntTheTimeMessage ; EJECT_BUTTON
 	dw IsntTheTimeMessage ; WEAK_POLICY
 	dw IsntTheTimeMessage ; ASSAULT_VEST
-	dw IsntTheTimeMessage ; LUMINOUSMOSS
-	dw IsntTheTimeMessage ; SNOWBALL
+	dw IsntTheTimeMessage ; PUNCHINGLOVE
+	dw IsntTheTimeMessage ; COVERT_CLOAK
 	dw IsntTheTimeMessage ; SAFE_GOGGLES
 	dw IsntTheTimeMessage ; PROTECT_PADS
 	dw IsntTheTimeMessage ; THROAT_SPRAY
@@ -195,7 +195,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; HEAVY_BOOTS
 	dw IsntTheTimeMessage ; BLUNDRPOLICY
 	dw IsntTheTimeMessage ; ROOM_SERVICE
-	dw IsntTheTimeMessage ; UTILUMBRELLA
+	dw IsntTheTimeMessage ; LOADED_DICE
 	dw IsntTheTimeMessage ; LIGHT_BALL
 	dw IsntTheTimeMessage ; LEEK
 	dw IsntTheTimeMessage ; THICK_CLUB

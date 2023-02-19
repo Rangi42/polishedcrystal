@@ -325,15 +325,15 @@ AzaleaTownGrampsScript:
 AzaleaTownTeacherScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iffalse_jumptextfaceplayer .Text1
-	checkevent EVENT_GOT_UTILUMBRELLA_IN_AZALEA
+	checkevent EVENT_GOT_LOADED_DICE_IN_AZALEA
 	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
 	writetext .Text3
 	promptbutton
-	verbosegiveitem UTILUMBRELLA
+	verbosegiveitem LOADED_DICE
 	iffalse_endtext
-	setevent EVENT_GOT_UTILUMBRELLA_IN_AZALEA
+	setevent EVENT_GOT_LOADED_DICE_IN_AZALEA
 	jumpthisopenedtext
 
 .Text2:
