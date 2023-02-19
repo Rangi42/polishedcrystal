@@ -124,7 +124,7 @@ FarChangeStat:
 	farjp EnableAnimations
 
 .check_item
-	call GetOpponentItemAfterUnnerve
+	farcall GetOpponentItemAfterUnnerve
 	call GetCurItemName
 	ld a, b
 	cp HELD_CLEAR_AMULET
