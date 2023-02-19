@@ -79,7 +79,7 @@ FarChangeStat:
 
 .check_lowering
 	bit STAT_LOWER_F, b
-	jr z, .perform_change
+	jp z, .perform_change
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wEnemyGuards]
@@ -124,9 +124,11 @@ FarChangeStat:
 	farjp EnableAnimations
 
 .check_item
+	push bc
 	farcall GetOpponentItemAfterUnnerve
 	call GetCurItemName
 	ld a, b
+	pop bc
 	cp HELD_CLEAR_AMULET
 	ld hl, ProtectedByItemText
 	jr nz, .perform_change
