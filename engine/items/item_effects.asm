@@ -179,7 +179,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; ROCKY_HELMET
 	dw IsntTheTimeMessage ; AIR_BALLOON
 	dw IsntTheTimeMessage ; RED_CARD
-	dw EvoStoneEffect     ; LINK_CABLE
+	dw EvoStoneEffect     ; LINKING_CORD
 	dw IsntTheTimeMessage ; BINDING_BAND
 	dw IsntTheTimeMessage ; CLEAR_AMULET
 	dw IsntTheTimeMessage ; MIRROR_HERB

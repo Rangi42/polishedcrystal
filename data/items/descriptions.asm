@@ -167,7 +167,7 @@ ItemDescriptions:
 	dw RockyHelmetDesc
 	dw AirBalloonDesc
 	dw RedCardDesc
-	dw LinkCableDesc
+	dw LinkingCordDesc
 	dw BindingBandDesc
 	dw ClearAmuletDesc
 	dw MirrorHerbDesc
@@ -676,7 +676,7 @@ SunStoneDesc:
 DuskStoneDesc:
 ShinyStoneDesc:
 IceStoneDesc:
-LinkCableDesc:
+LinkingCordDesc:
 	text "Evolves certain"
 	next "kinds of #mon."
 	done

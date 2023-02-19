@@ -1407,7 +1407,7 @@ AbraEvosAttacks:
 	db -1 ; no more level-up moves
 
 KadabraEvosAttacks:
-	evo_data EVOLVE_ITEM, LINK_CABLE, ALAKAZAM
+	evo_data EVOLVE_ITEM, LINKING_CORD, ALAKAZAM
 	db -1 ; no more evolutions
 	db 1, TELEPORT
 	db 1, FORESIGHT ; evolution move
@@ -1469,7 +1469,7 @@ MachopEvosAttacks:
 	db -1 ; no more level-up moves
 
 MachokeEvosAttacks:
-	evo_data EVOLVE_ITEM, LINK_CABLE, MACHAMP
+	evo_data EVOLVE_ITEM, LINKING_CORD, MACHAMP
 	db -1 ; no more evolutions
 	db 1, LOW_KICK
 	db 1, LEER
@@ -1625,7 +1625,7 @@ GeodudePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 GravelerPlainEvosAttacks:
-	evo_data EVOLVE_ITEM, LINK_CABLE, GOLEM, PLAIN_FORM
+	evo_data EVOLVE_ITEM, LINKING_CORD, GOLEM, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1688,7 +1688,7 @@ GeodudeAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 GravelerAlolanEvosAttacks:
-	evo_data EVOLVE_ITEM, LINK_CABLE, GOLEM, ALOLAN_FORM
+	evo_data EVOLVE_ITEM, LINKING_CORD, GOLEM, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -2216,7 +2216,7 @@ GastlyEvosAttacks:
 	db -1 ; no more level-up moves
 
 HaunterEvosAttacks:
-	evo_data EVOLVE_ITEM, LINK_CABLE, GENGAR
+	evo_data EVOLVE_ITEM, LINKING_CORD, GENGAR
 	db -1 ; no more evolutions
 	db 1, SHADOW_CLAW ; Shadow Punch → TM move ; evolution move
 	db 1, HYPNOSIS

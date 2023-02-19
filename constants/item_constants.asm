@@ -217,7 +217,7 @@ DEF NUM_STONES EQU const_value - FIRST_STONE
 	const ROCKY_HELMET ; a5
 	const AIR_BALLOON  ; a6
 	const RED_CARD     ; a7
-	const LINK_CABLE   ; a8
+	const LINKING_CORD ; a8
 	const BINDING_BAND ; a9
 	const CLEAR_AMULET ; aa
 	const MIRROR_HERB  ; ab
@@ -449,7 +449,7 @@ endc
 	const NAM_LIFE_ORB
 	const NAM_LIGHT_BALL
 	const NAM_LIGHT_CLAY
-	const NAM_LINK_CABLE
+	const NAM_LINKING_CORD
 	const NAM_LITEBLUEMAIL
 	const NAM_LOADED_DICE
 	const NAM_LOVE_BALL

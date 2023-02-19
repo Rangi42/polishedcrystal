@@ -218,7 +218,7 @@ endc
 	li "Rocky Helmet"
 	li "Air Balloon"
 	li "Red Card"
-	li "Link Cable"
+	li "Linking Cord"
 	li "Binding Band"
 	li "Clear Amulet"
 	li "Mirror Herb"
