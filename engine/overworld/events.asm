@@ -1210,18 +1210,14 @@ CanUseSweetHoney::
 	ld hl, wStatusFlags
 	bit STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
 	jr nz, .no
-	ld a, [wEnvironment]
-	cp CAVE
-	jr z, .ice_check
-	cp DUNGEON
-	jr z, .ice_check
-	farcall CheckGrassCollision
-	jr nc, .no
-
-.ice_check
 	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .no
+	and $f0
+	cp HI_NYBBLE_CURRENT
+	jr z, .no
+	farcall CheckGrassCollision
+	jr nc, .no
 	scf
 	ret
 

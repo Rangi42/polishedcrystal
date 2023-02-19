@@ -25,7 +25,7 @@ SpriteHeaders:
 	overworld_sprite JasmineSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite PryceSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite ClairSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
-	overworld_sprite WillSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
+	overworld_sprite WillSpriteGFX, STANDING_SPRITE, PAL_OW_RED
 	overworld_sprite KogaSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite BrunoSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite KarenSpriteGFX, STANDING_SPRITE, PAL_OW_AZURE
