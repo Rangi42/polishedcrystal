@@ -217,14 +217,14 @@ DoPrintStatChange:
 	call StdBattleTextbox
 	pop bc
 	pop af
-	bit STAT_TARGET_F, b
-	ret z
 	and a
 	ret nz ; the stat change failed
 	ld a, [wAlreadyExecuted]
 	push af
 	bit STAT_LOWER_F, b
 	jr z, .check_mirror_herb
+	bit STAT_TARGET_F, b
+	jr z, .done
 	farcall RunStatIncreaseAbilities
 	jr .done
 .check_mirror_herb
