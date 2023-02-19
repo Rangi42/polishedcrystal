@@ -45,11 +45,11 @@ LoadFishingGFX:
 	ret
 
 .FishingGFXTable:
-	dw ChrisFishingGFX
-	dw KrisFishingGFX
-	dw CrysFishingGFX
+	dw ChrisFishingGFX ; far-ok
+	dw KrisFishingGFX ; far-ok
+	dw CrysFishingGFX ; far-ok
 
 .SurfFishingGFXTable:
-	dw ChrisSurfFishingGFX
-	dw KrisSurfFishingGFX
-	dw CrysSurfFishingGFX
+	dw ChrisSurfFishingGFX ; far-ok
+	dw KrisSurfFishingGFX ; far-ok
+	dw CrysSurfFishingGFX ; far-ok
