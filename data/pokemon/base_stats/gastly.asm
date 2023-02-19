@@ -4,7 +4,7 @@
 	db GHOST, POISON ; type
 	db 190 ; catch rate
 	db 95 ; base exp
-	db NO_ITEM, NO_ITEM ; held items
+	db NO_ITEM, LINKING_CORD ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for GASTLY, LEVITATE, LEVITATE, LEVITATE
