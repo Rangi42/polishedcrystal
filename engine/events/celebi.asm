@@ -5,6 +5,9 @@ Special_CelebiShrineEvent:
 	xor a
 	ld [wVramState], a
 
+	ld a, PAL_OW_GREEN
+	farcall CopySpritePalToOBPal7
+
 	call ClearSpriteAnims
 	ld hl, SpecialCelebiGFX
 	ld de, vTiles0 tile $84

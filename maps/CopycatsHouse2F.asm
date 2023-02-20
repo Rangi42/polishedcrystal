@@ -16,7 +16,7 @@ CopycatsHouse2F_MapScriptHeader:
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Copycat3Script, EVENT_COPYCAT_3
 	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsDodrioScript, -1
-	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, EVENT_COPYCATS_HOUSE_2F_DOLL
+	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, EVENT_COPYCATS_HOUSE_2F_DOLL
 	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
 	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
 	pokemon_event  0,  4, DITTO, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
@@ -54,8 +54,7 @@ Copycat1Script:
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
-	setval (PAL_NPC_RED) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 0
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -72,8 +71,7 @@ Copycat1Script:
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
-	setval (PAL_NPC_RED) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 0
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special RefreshSprites
 	showtext CopycatThanks1Text
@@ -132,8 +130,7 @@ Copycat2Script:
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
-	setval (PAL_NPC_BLUE) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 0
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -150,8 +147,7 @@ Copycat2Script:
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
-	setval (PAL_NPC_BLUE) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 0
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special RefreshSprites
 	showtext CopycatThanks2Text
@@ -211,8 +207,7 @@ Copycat3Script:
 	iftruefwd CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
 	faceplayer
-	setval (PAL_NPC_GREEN) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 0
 	variablesprite SPRITE_COPYCAT, SPRITE_CRYS
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -229,8 +224,7 @@ Copycat3Script:
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
 	faceplayer
-	setval (PAL_NPC_GREEN) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 0
 	variablesprite SPRITE_COPYCAT, SPRITE_CRYS
 	special RefreshSprites
 	showtext CopycatThanks2Text
@@ -239,8 +233,7 @@ Copycat3Script:
 
 CopycatRetortScript:
 	faceplayer
-	setval (PAL_NPC_PURPLE) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 1
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special RefreshSprites
 	jumpthistext
@@ -254,8 +247,7 @@ CopycatRetortScript:
 
 CopycatWorriedScript:
 	faceplayer
-	setval (PAL_NPC_PURPLE) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 1
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special RefreshSprites
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
@@ -323,8 +315,7 @@ CopycatGivePassScript:
 
 CopycatFinalScript:
 	faceplayer
-	setval (PAL_NPC_PURPLE) << 4
-	special Special_SetCopycatPalette
+	loadmem wObject1Palette, 1
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special RefreshSprites
 	jumpthistext

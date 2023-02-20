@@ -1082,6 +1082,14 @@ MistText:
 	line "shrouded in mist!"
 	prompt
 
+ProtectedByItemText:
+	text "<TARGET> is"
+	line "protected by"
+	cont ""
+	text_ram wStringBuffer1
+	text "."
+	prompt
+
 ProtectedByMistText:
 	text "<TARGET> is"
 	line "protected by mist."

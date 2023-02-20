@@ -3510,11 +3510,12 @@ ItemRecoveryAnim::
 	push de
 	push bc
 	call EmptyBattleTextbox
-	ld a, ANIM_HELD_ITEM_TRIGGER
+	ld a, LOW(ANIM_HELD_ITEM_TRIGGER)
 	ld [wFXAnimIDLo], a
+	ld a, HIGH(ANIM_HELD_ITEM_TRIGGER)
+	ld [wFXAnimIDHi], a
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	predef PlayBattleAnim
 	jmp PopBCDEHL
 

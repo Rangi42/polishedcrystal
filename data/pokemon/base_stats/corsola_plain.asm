@@ -13,7 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 128 ; base exp
 endc
-	db HARD_STONE, LUMINOUSMOSS ; held items
+	db NO_ITEM, HARD_STONE ; held items
 	dn GENDER_F75, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for CORSOLA, HUSTLE, NATURAL_CURE, REGENERATOR

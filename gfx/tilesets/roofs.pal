@@ -1,3 +1,4 @@
+if !DEF(MONOCHROME)
 ;            morn/day,            nite,                eve
 	RGB  21,21,21, 11,11,11,  21,21,21, 11,11,11,  18,16,16, 09,08,08  ; N/A
 	RGB  14,17,31, 07,11,15,  09,09,17, 05,07,13,  12,13,23, 06,08,11  ; Olivine City
@@ -37,3 +38,10 @@
 	RGB  31,26,00, 31,15,00,  13,13,01, 08,08,01,  25,20,00, 25,11,00  ; Saffron City
 	RGB  21,21,21, 13,13,13,  11,11,19, 07,07,12,  18,16,16, 11,10,10  ; Rugged Road
 	RGB  31,19,00, 27,10,05,  15,07,02, 11,04,02,  25,14,00, 22,08,03  ; Ecruteak Shrine Outside
+else
+rept NUM_MAP_GROUPS + 1
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO_NIGHT
+	MONOCHROME_RGB_TWO_EVE
+endr
+endc

@@ -484,7 +484,7 @@ CantMove:
 VerifyChosenMove:
 ; Returns z if the used move is the move we selected in the move screen.
 ; Used to avoid problems caused by Struggle or similar.
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld de, wPlayerMoveStructAnimation
 	ld hl, wBattleMonMoves
@@ -2174,6 +2174,10 @@ BattleCommand_effectchance:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SHIELD_DUST
 	jr z, EffectChanceFailed
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_COVERT_CLOAK
+	jr z, EffectChanceFailed
 	jr _CheckEffectChance
 
 BattleCommand_selfeffectchance:
@@ -2716,7 +2720,16 @@ BattleCommand_startloop:
 	cp SKILL_LINK
 	ld a, 5
 	jr z, .got_count
+	call GetUserItem
+	ld a, b
+	cp HELD_LOADED_DICE
+	jr nz, .not_loaded_dice
+	call BattleRandom
+	and 1
+	add 4
+	jr .got_count
 
+.not_loaded_dice
 	; Hit 2-5 times with 2 and 3 being twice as common.
 	; So randomize a number 0-5, take (result mod 4) + 2.
 	ld a, 6
@@ -3406,6 +3419,8 @@ EndMoveDamageChecks:
 	call RaiseStatWithItem
 	jmp SwitchTurn
 
+RaiseOpponentStatWithItem:
+	call CallOpponentTurn
 RaiseStatWithItem:
 	ld a, STAT_SKIPTEXT
 	call _RaiseStat
@@ -3959,6 +3974,8 @@ BattleCommand_damagecalc:
 	jr z, .choice
 	cp HELD_METRONOME
 	jr z, .metronome_item
+	cp HELD_PUNCHING_GLOVE
+	jr z, .punching_glove
 
 	cp HELD_LIFE_ORB
 	ln a, 13, 10 ; x1.3
@@ -3991,6 +4008,11 @@ BattleCommand_damagecalc:
 .choice_sat
 	ln a, 3, 2 ; x1.5
 	call ApplySpecialAttackDamageMod
+	jr .done_attacker_item
+.punching_glove
+	farcall IsPunchingMove
+	ln a, 11, 10 ; x1.1
+	call z, MultiplyAndDivide
 	jr .done_attacker_item
 .metronome_item
 	; Skip Metronome for Future Sight

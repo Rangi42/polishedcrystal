@@ -50,11 +50,11 @@ FarChangeStat:
 	jr nz, .is_target
 	call GetTrueUserAbility
 	cp CONTRARY
-	jmp nz, .ability_done
+	jmp nz, .perform_change
 	ld a, b
 	xor STAT_LOWER
 	ld b, a
-	jmp .ability_done
+	jmp .perform_change
 
 .is_target
 	call GetOpponentAbilityAfterMoldBreaker
@@ -79,7 +79,7 @@ FarChangeStat:
 
 .check_lowering
 	bit STAT_LOWER_F, b
-	jr z, .ability_done
+	jp z, .perform_change
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wEnemyGuards]
@@ -87,15 +87,8 @@ FarChangeStat:
 	ld a, [wPlayerGuards]
 .got_guard
 	and GUARD_MIST
-	jr z, .check_ability
-	bit STAT_SILENT_F, b
-	ret nz
-	farcall CheckAlreadyExecuted
-	ret nz
-	farcall ShowPotentialAbilityActivation
-	farcall AnimateFailedMove
 	ld hl, ProtectedByMistText
-	jmp StdBattleTextbox
+	jr nz, .mist_or_item_fail
 
 .check_ability
 	call GetOpponentAbilityAfterMoldBreaker
@@ -111,12 +104,12 @@ FarChangeStat:
 	jr z, .ability_check
 	cp KEEN_EYE
 	ld c, ACCURACY
-	jr nz, .ability_done
+	jr nz, .check_item
 .ability_check
 	ld a, [wChangedStat]
 	and $f
 	cp c
-	jr nz, .ability_done
+	jr nz, .check_item
 .ability_immune
 	bit STAT_SILENT_F, b
 	ret nz
@@ -130,7 +123,30 @@ FarChangeStat:
 	call StdBattleTextbox
 	farjp EnableAnimations
 
-.ability_done
+.check_item
+	push bc
+	farcall GetOpponentItemAfterUnnerve
+	call GetCurItemName
+	ld a, b
+	pop bc
+	cp HELD_CLEAR_AMULET
+	ld hl, ProtectedByItemText
+	jr nz, .perform_change
+
+.mist_or_item_fail
+	bit STAT_SILENT_F, b
+	ret nz
+	push hl
+	farcall CheckAlreadyExecuted
+	pop hl
+	ret nz
+	push hl
+	farcall ShowPotentialAbilityActivation
+	farcall AnimateFailedMove
+	pop hl
+	jmp StdBattleTextbox
+
+.perform_change
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
 	push bc
@@ -192,29 +208,41 @@ DoPrintStatChange:
 
 .do_print
 	bit STAT_LOWER_F, b
-	jr z, .printmsg
+	jr z, .got_stat_msg
 	ld h, d
 	ld l, e
+.got_stat_msg
 	push af
 	push bc
 	call StdBattleTextbox
 	pop bc
 	pop af
-	bit STAT_TARGET_F, b
-	ret z
 	and a
-	ret nz
+	ret nz ; the stat change failed
 	ld a, [wAlreadyExecuted]
 	push af
+	bit STAT_LOWER_F, b
+	jr z, .check_mirror_herb
+	bit STAT_TARGET_F, b
+	jr z, .done
 	farcall RunStatIncreaseAbilities
+	jr .done
+.check_mirror_herb
+	farcall GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_MIRROR_HERB
+	jr nz, .done
+	xor a
+	ld [wAlreadyExecuted], a
+	ld a, [wChangedStat]
+	ld b, a
+	farcall RaiseOpponentStatWithItem
+.done
 	pop af
 	ld [wAlreadyExecuted], a
 	xor a
 	ld [wFailedMessage], a
 	ret
-
-.printmsg
-	jmp StdBattleTextbox
 
 GetStatRaiseMessage:
 	ld a, [wChangedStat]

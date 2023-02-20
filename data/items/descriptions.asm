@@ -167,15 +167,15 @@ ItemDescriptions:
 	dw RockyHelmetDesc
 	dw AirBalloonDesc
 	dw RedCardDesc
-	dw RingTargetDesc
+	dw LinkingCordDesc
 	dw BindingBandDesc
-	dw AbsorbBulbDesc
-	dw CellBatteryDesc
+	dw ClearAmuletDesc
+	dw MirrorHerbDesc
 	dw EjectButtonDesc
 	dw WeakPolicyDesc
 	dw AssaultVestDesc
-	dw LuminousMossDesc
-	dw SnowballDesc
+	dw PunchinGloveDesc
+	dw CovertCloakDesc
 	dw SafeGogglesDesc
 	dw ProtectPadsDesc
 	dw ThroatSprayDesc
@@ -183,7 +183,7 @@ ItemDescriptions:
 	dw HeavyBootsDesc
 	dw BlundrPolicyDesc
 	dw RoomServiceDesc
-	dw UtilUmbrellaDesc
+	dw LoadedDiceDesc
 	dw LightBallDesc
 	dw LeekDesc
 	dw ThickClubDesc
@@ -676,6 +676,7 @@ SunStoneDesc:
 DuskStoneDesc:
 ShinyStoneDesc:
 IceStoneDesc:
+LinkingCordDesc:
 	text "Evolves certain"
 	next "kinds of #mon."
 	done
@@ -1458,24 +1459,24 @@ RedCardDesc:
 	next "when hit. (Hold)"
 	done
 
-AbsorbBulbDesc:
-	text "Raises Sp.Atk on"
-	next "a Water hit."
+ClearAmuletDesc:
+	text "Prevents stat-"
+	next "lowering by foes."
 	done
 
-CellBatteryDesc:
-	text "Raises Attack on"
-	next "an Electric hit."
+MirrorHerbDesc:
+	text "Copies foe's stat-"
+	next "boost once."
 	done
 
-LuminousMossDesc:
-	text "Raises Sp.Def on"
-	next "a Water hit."
+PunchinGloveDesc:
+	text "Powers punch moves"
+	next "with no contact."
 	done
 
-SnowballDesc:
-	text "Raises Attack on"
-	next "an Ice hit."
+CovertCloakDesc:
+	text "Blocks additional"
+	next "attack effects."
 	done
 
 EjectPackDesc:
@@ -1503,9 +1504,9 @@ HeavyBootsDesc:
 	next "traps. (Hold)"
 	done
 
-UtilUmbrellaDesc:
-	text "Protects from"
-	next "weather effects."
+LoadedDiceDesc:
+	text "Multi-hit moves"
+	next "hit more often."
 	done
 
 MintLeafDesc:

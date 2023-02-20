@@ -7,8 +7,8 @@ ENDM
 SpriteAnimOAMData:
 ; entries correspond to SPRITE_ANIM_OAMSET_* constants (see constants/sprite_anim_constants.asm)
 	table_width 3, SpriteAnimOAMData
-	spriteanimoam $00, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_RED_WALK_1
-	spriteanimoam $04, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_RED_WALK_2
+	spriteanimoam $00, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_RED_WALK_1
+	spriteanimoam $04, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_RED_WALK_2
 	spriteanimoam $00, .OAMData_TextEntryCursor        ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR
 	spriteanimoam $00, .OAMData_TextEntryCursorBig     ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BIG
 	spriteanimoam $00, .OAMData_TextEntryCursorBlue    ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BLUE
@@ -23,24 +23,24 @@ SpriteAnimOAMData:
 	spriteanimoam $3a, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_SLOTS_EGG
 	spriteanimoam $00, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_STILL_CURSOR
 	spriteanimoam $00, .OAMData_TradePokeBall1         ; SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_1
-	spriteanimoam $02, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2
+	spriteanimoam $02, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2
 	spriteanimoam $06, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_1
 	spriteanimoam $0a, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_2
 	spriteanimoam $0e, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_3
 	spriteanimoam $12, .OAMData_TradeTubeBulge         ; SPRITE_ANIM_OAMSET_TRADE_TUBE_BULGE_1
 	spriteanimoam $13, .OAMData_TradeTubeBulge         ; SPRITE_ANIM_OAMSET_TRADE_TUBE_BULGE_2
-	spriteanimoam $00, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_1
-	spriteanimoam $04, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_2
+	spriteanimoam $00, .OAMData_TradeMonIcon           ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_1
+	spriteanimoam $04, .OAMData_TradeMonIcon           ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_2
 	spriteanimoam $10, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADEMON_BUBBLE
-	spriteanimoam $00, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_1
+	spriteanimoam $00, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_1
 	spriteanimoam $04, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_2
 	spriteanimoam $00, .OAMData_RadioTuningKnob        ; SPRITE_ANIM_OAMSET_RADIO_TUNING_KNOB
 	spriteanimoam $00, .OAMData_PartyMonWithMail1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1
 	spriteanimoam $00, .OAMData_PartyMonWithMail2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2
 	spriteanimoam $00, .OAMData_PartyMonWithItem1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1
 	spriteanimoam $00, .OAMData_PartyMonWithItem2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2
-	spriteanimoam $00, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_1
-	spriteanimoam $04, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_2
+	spriteanimoam $00, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_1
+	spriteanimoam $04, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_2
 	spriteanimoam $00, .OAMData_Leaf                   ; SPRITE_ANIM_OAMSET_LEAF
 	spriteanimoam $00, .OAMData_Tree                   ; SPRITE_ANIM_OAMSET_TREE_1
 	spriteanimoam $00, .OAMData_CutTree2               ; SPRITE_ANIM_OAMSET_CUT_TREE_2
@@ -52,8 +52,6 @@ SpriteAnimOAMData:
 	spriteanimoam $08, .OAMData_Tree                   ; SPRITE_ANIM_OAMSET_HEADBUTT_TREE_3
 	spriteanimoam $00, .OAMData_BlueWalk               ; SPRITE_ANIM_OAMSET_BLUE_WALK_1
 	spriteanimoam $04, .OAMData_BlueWalk               ; SPRITE_ANIM_OAMSET_BLUE_WALK_2
-	spriteanimoam $00, .OAMData_MagnetTrainBlue        ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1
-	spriteanimoam $04, .OAMData_MagnetTrainBlue        ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2
 	spriteanimoam $00, .OAMData_IntroSuicune1          ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_1
 	spriteanimoam $08, .OAMData_IntroSuicune2          ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_2
 	spriteanimoam $60, .OAMData_IntroSuicune3          ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_3
@@ -102,8 +100,8 @@ SpriteAnimOAMData:
 	spriteanimoam $09, .OAMData_TownMapFly             ; SPRITE_ANIM_OAMSET_TOWN_MAP_FLY
 	spriteanimoam $00, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_1
 	spriteanimoam $04, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_2
-	spriteanimoam $00, .OAMData_MagnetTrainGreen       ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1
-	spriteanimoam $04, .OAMData_MagnetTrainGreen       ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2
+	spriteanimoam $00, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_1
+	spriteanimoam $04, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_2
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -163,6 +161,13 @@ SpriteAnimOAMData:
 	dsprite  0,  0, -1,  0, $02, $0
 	dsprite  0,  0,  0,  0, $03, $0
 
+.OAMData_TradeMonIcon:
+	db 4
+	dsprite -1,  0, -1,  0, $00, $1
+	dsprite -1,  0,  0,  0, $01, $1
+	dsprite  0,  0, -1,  0, $02, $1
+	dsprite  0,  0,  0,  0, $03, $1
+
 .OAMData_PartyMon:
 	db 4
 	dsprite -1,  0, -1,  0, $00, -1
@@ -170,7 +175,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0, -1,  0, $02, -1
 	dsprite  0,  0,  0,  0, $03, -1
 
-.OAMData_MagnetTrainRed:
+.OAMData_MagnetTrain:
 	db 4
 	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
 	dsprite -1,  0,  0,  0, $01, $0 | PRIORITY
@@ -207,14 +212,14 @@ SpriteAnimOAMData:
 
 .OAMData_Leaf:
 	db 1
-	dsprite -1,  4, -1,  4, $00, $6
+	dsprite -1,  4, -1,  4, $00, $7
 
 .OAMData_Tree:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $6
-	dsprite -1,  0,  0,  0, $01, $6
-	dsprite  0,  0, -1,  0, $02, $6
-	dsprite  0,  0,  0,  0, $03, $6
+	dsprite -1,  0, -1,  0, $00, $7
+	dsprite -1,  0,  0,  0, $01, $7
+	dsprite  0,  0, -1,  0, $02, $7
+	dsprite  0,  0,  0,  0, $03, $7
 
 .OAMData_TextEntryCursor:
 	db 4
@@ -318,24 +323,24 @@ SpriteAnimOAMData:
 
 .OAMData_CutTree2:
 	db 4
-	dsprite -1,  0, -2,  6, $00, $6
-	dsprite -1,  0,  0,  2, $01, $6
-	dsprite  0,  0, -2,  6, $02, $6
-	dsprite  0,  0,  0,  2, $03, $6
+	dsprite -1,  0, -2,  6, $00, $7
+	dsprite -1,  0,  0,  2, $01, $7
+	dsprite  0,  0, -2,  6, $02, $7
+	dsprite  0,  0,  0,  2, $03, $7
 
 .OAMData_CutTree3:
 	db 4
-	dsprite -1,  0, -2,  4, $00, $6
-	dsprite -1,  0,  0,  4, $01, $6
-	dsprite  0,  0, -2,  4, $02, $6
-	dsprite  0,  0,  0,  4, $03, $6
+	dsprite -1,  0, -2,  4, $00, $7
+	dsprite -1,  0,  0,  4, $01, $7
+	dsprite  0,  0, -2,  4, $02, $7
+	dsprite  0,  0,  0,  4, $03, $7
 
 .OAMData_CutTree4:
 	db 4
-	dsprite -1,  0, -2,  0, $00, $6
-	dsprite -1,  0,  1,  0, $01, $6
-	dsprite  0,  0, -2,  0, $02, $6
-	dsprite  0,  0,  1,  0, $03, $6
+	dsprite -1,  0, -2,  0, $00, $7
+	dsprite -1,  0,  1,  0, $01, $7
+	dsprite  0,  0, -2,  0, $02, $7
+	dsprite  0,  0,  1,  0, $03, $7
 
 .OAMData_BlueWalk:
 	db 4
@@ -343,13 +348,6 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $1
 	dsprite  0,  0, -1,  0, $02, $1
 	dsprite  0,  0,  0,  0, $03, $1
-
-.OAMData_MagnetTrainBlue:
-	db 4
-	dsprite -1,  0, -1,  0, $00, $1 | PRIORITY
-	dsprite -1,  0,  0,  0, $01, $1 | PRIORITY
-	dsprite  0,  0, -1,  0, $02, $1 | PRIORITY
-	dsprite  0,  0,  0,  0, $03, $1 | PRIORITY
 
 .OAMData_IntroSuicune1:
 	db 36
@@ -629,10 +627,10 @@ SpriteAnimOAMData:
 
 .OAMData_Celebi:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $2
-	dsprite -1,  0,  0,  0, $01, $2
-	dsprite  0,  0, -1,  0, $02, $2
-	dsprite  0,  0,  0,  0, $03, $2
+	dsprite -1,  0, -1,  0, $00, $7
+	dsprite -1,  0,  0,  0, $01, $7
+	dsprite  0,  0, -1,  0, $02, $7
+	dsprite  0,  0,  0,  0, $03, $7
 
 .OAMData_GameFreakLogo1_3:
 	db 9
@@ -798,10 +796,3 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $2
 	dsprite  0,  0, -1,  0, $02, $2
 	dsprite  0,  0,  0,  0, $03, $2
-
-.OAMData_MagnetTrainGreen:
-	db 4
-	dsprite -1,  0, -1,  0, $00, $2 | PRIORITY
-	dsprite -1,  0,  0,  0, $01, $2 | PRIORITY
-	dsprite  0,  0, -1,  0, $02, $2 | PRIORITY
-	dsprite  0,  0,  0,  0, $03, $2 | PRIORITY

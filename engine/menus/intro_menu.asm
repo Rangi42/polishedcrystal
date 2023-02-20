@@ -56,6 +56,7 @@ NewGame:
 	call ResetWRAM_NotPlus
 _NewGame_FinishSetup:
 	call ResetWRAM
+	farcall ClearSavedObjPals
 	call NewGame_ClearTileMapEtc
 	call WarnVBA
 	call SetInitialOptions
@@ -319,6 +320,7 @@ Continue:
 	call ClearBGPalettes
 	call CloseWindow
 	call ClearTileMap
+	farcall ClearSavedObjPals
 	ld c, 20
 	call DelayFrames
 	farcall JumpRoamMons

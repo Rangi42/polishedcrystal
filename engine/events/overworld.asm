@@ -294,6 +294,7 @@ GetBuffer6:
 	ret
 
 CutDownGrass:
+	farcall CopyBGGreenToOBPal7
 	ld hl, wBuffer3 ; OverworldMapTile
 	ld a, [hli]
 	ld h, [hl]
@@ -365,6 +366,7 @@ AutoCutTreeScript:
 	endtext
 
 CutDownTree:
+	farcall CopyBGGreenToOBPal7
 	xor a
 	ldh [hBGMapMode], a
 	call LoadMapPart
@@ -764,6 +766,7 @@ FlyFunction:
 .FlyScript:
 	reloadmappart
 	callasm HideSprites
+	callasm CopyBGGreenToOBPal7
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
@@ -773,6 +776,7 @@ FlyFunction:
 	callasm SkipUpdateMapSprites
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
+	callasm CopyBGGreenToOBPal7
 	callasm FlyToAnim
 	special WaitSFX
 	callasm .ReturnFromFly
@@ -780,6 +784,8 @@ FlyFunction:
 
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
+	farcall ClearSavedObjPals
+	farcall CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
 

@@ -22,7 +22,7 @@ DeleteMapObject::
 	ld [hl], -1
 .ok
 	pop bc
-	ret
+	farjp CheckForUsedObjPals
 
 HandleObjectStep:
 	call _CheckObjectStillVisible
@@ -2021,7 +2021,7 @@ SpawnShadow:
 
 .ShadowObject:
 	; vtile, palette, movement
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_SHADOW
+	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_SHADOW
 
 SpawnStrengthBoulderDust:
 	push bc
@@ -2032,18 +2032,20 @@ SpawnStrengthBoulderDust:
 	ret
 
 .BoulderDustObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_BOULDERDUST
+	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_BOULDERDUST
 
 SpawnEmote:
 	push bc
 	ld de, .EmoteObject
 	call CopyTempObjectData
+	ld a, [wEmotePal]
+	ld [wTempObjectCopyPalette], a
 	call InitTempObject
 	pop bc
 	ret
 
 .EmoteObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
+	db $80, PAL_OW_EMOTE_BLACK, SPRITEMOVEDATA_EMOTE
 
 ShakeGrass:
 	push bc
@@ -2054,7 +2056,7 @@ ShakeGrass:
 	ret
 
 .GrassObject
-	db $80, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
+	db $80, PAL_OW_COPY_BG_GREEN, SPRITEMOVEDATA_GRASS
 
 SplashPuddle:
 	push bc
@@ -2080,7 +2082,7 @@ ShakeScreen:
 	ret
 
 .ScreenShakeObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_SCREENSHAKE
+	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_SCREENSHAKE
 
 DespawnEmote:
 	push bc
@@ -2478,27 +2480,6 @@ SpawnInFacingDown:
 ContinueSpawnFacing:
 	ld bc, wPlayerStruct
 	jmp SetSpriteDirection
-
-SetCopycatPalette:
-	ld bc, wObject1Struct
-	jr SetSpritePalette
-
-SetPlayerPalette:
-	ld bc, wPlayerStruct
-SetSpritePalette:
-	and %10000000
-	ret z
-	ld a, d
-	swap a
-	and PALETTE_MASK
-	ld d, a
-	ld hl, OBJECT_PALETTE
-	add hl, bc
-	ld a, [hl]
-	and ~PALETTE_MASK
-	or d
-	ld [hl], a
-	ret
 
 StartFollow::
 	push bc

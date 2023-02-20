@@ -195,7 +195,9 @@ wLinkOtherPlayerVersion:: dw
 wLinkOtherPlayerMinTradeVersion:: dw
 wLinkOtherPlayerGender:: db
 
-	ds 5
+wPalFlags:: db
+
+	ds 4
 
 
 SECTION "Sprite Animations", WRAM0
