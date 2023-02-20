@@ -4,6 +4,12 @@ _CheckContactMove::
 	ld a, b
 	cp HELD_PROTECTIVE_PADS
 	jr z, .protective_pads
+	cp HELD_PUNCHING_GLOVE
+	jr nz, .not_punching_glove
+	farcall IsPunchingMove
+	ret c
+
+.not_punching_glove
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, ContactMoves

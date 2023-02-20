@@ -1503,17 +1503,17 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS
 	; party
 	dbp 14, GASTLY
-		ev_spread 72 Spe
 		db NO_ITEM
+		ev_spread 72 Spe
 	dbp 16, ZUBAT
+		db NO_ITEM
 		ev_spread 72 Spe
-		db NO_ITEM
 	dbp 15, GEODUDE
-		ev_spread 72 HP
 		db NO_ITEM
+		ev_spread 72 HP
 	dbp 18, QUILAVA
-		ev_spread 72 SAt
 		db ORAN_BERRY
+		ev_spread 72 SAt
 	db -1 ; end
 
 	; RIVAL1
@@ -1521,17 +1521,17 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS
 	; party
 	dbp 14, GASTLY
-		ev_spread 72 Spe
 		db NO_ITEM
+		ev_spread 72 Spe
 	dbp 16, ZUBAT
-		ev_spread 72 Spe
 		db NO_ITEM
+		ev_spread 72 Spe
 	dbp 15, GEODUDE
-		ev_spread 72 HP
 		db NO_ITEM
+		ev_spread 72 HP
 	dbp 18, CROCONAW
-		ev_spread 72 Spe
 		db ORAN_BERRY
+		ev_spread 72 Spe
 	db -1 ; end
 
 	; RIVAL1

@@ -13,7 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 192 ; base exp
 endc
-	db ALWAYS_ITEM_2, ABSORB_BULB ; held items
+	db ALWAYS_ITEM_2, MIRACLE_SEED ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for VILEPLUME, CHLOROPHYLL, CHLOROPHYLL, EFFECT_SPORE

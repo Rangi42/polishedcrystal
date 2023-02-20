@@ -4,7 +4,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 90 ; catch rate
 	db 146 ; base exp
-	db NO_ITEM, FOCUS_BAND ; held items
+	db FOCUS_BAND, LINKING_CORD ; held items
 	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for MACHOKE, GUTS, NO_GUARD, STEADFAST

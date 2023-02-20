@@ -4,7 +4,7 @@
 	db ROCK, ELECTRIC ; type
 	db 120 ; catch rate
 	db 134 ; base exp
-	db NO_ITEM, EVERSTONE ; held items
+	db EVERSTONE, LINKING_CORD ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for GRAVELER_ALOLAN, MAGNET_PULL, STURDY, GALVANIZE

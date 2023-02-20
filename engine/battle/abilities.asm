@@ -1725,6 +1725,14 @@ IronFistAbility:
 	ln b, 6, 5 ; x1.2
 	jr MoveBoostAbility
 
+IsPunchingMove:
+; Returns z|c if the move is a punching move, otherwise nz|nc.
+	ld hl, PunchingMoves
+	call IsInByteArray
+	sbc a
+	inc a
+	ret
+
 INCLUDE "data/moves/punching_moves.asm"
 
 SharpnessAbility:

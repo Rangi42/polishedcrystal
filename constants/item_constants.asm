@@ -217,16 +217,16 @@ DEF NUM_STONES EQU const_value - FIRST_STONE
 	const ROCKY_HELMET ; a5
 	const AIR_BALLOON  ; a6
 	const RED_CARD     ; a7
-	const RING_TARGET  ; a8
+	const LINKING_CORD ; a8
 	const BINDING_BAND ; a9
-	const ABSORB_BULB  ; aa
-	const CELL_BATTERY ; ab
+	const CLEAR_AMULET ; aa
+	const MIRROR_HERB  ; ab
 	const EJECT_BUTTON ; ac
 
 	const WEAK_POLICY  ; ad
 	const ASSAULT_VEST ; ae
-	const LUMINOUSMOSS ; af
-	const SNOWBALL     ; b0
+	const PUNCHINGLOVE ; af
+	const COVERT_CLOAK ; b0
 	const SAFE_GOGGLES ; b1
 
 	const PROTECT_PADS ; b2
@@ -236,7 +236,7 @@ DEF NUM_STONES EQU const_value - FIRST_STONE
 	const HEAVY_BOOTS  ; b5
 	const BLUNDRPOLICY ; b6
 	const ROOM_SERVICE ; b7
-	const UTILUMBRELLA ; b8
+	const LOADED_DICE  ; b8
 
 	const LIGHT_BALL   ; b9
 	const LEEK         ; ba
@@ -332,7 +332,6 @@ DEF ALWAYS_ITEM_2  EQU $ff
 	const NAM_NO_ITEM
 	const NAM_ABILITY_CAP
 	const NAM_ABILITYPATCH
-	const NAM_ABSORB_BULB
 	const NAM_AIR_BALLOON
 	const NAM_AMULET_COIN
 	const NAM_ANTIDOTE
@@ -363,7 +362,6 @@ if !DEF(FAITHFUL)
 endc
 	const NAM_CALCIUM
 	const NAM_CARBOS
-	const NAM_CELL_BATTERY
 	const NAM_CHARCOAL
 	const NAM_CHERI_BERRY
 	const NAM_CHERISH_BALL
@@ -372,6 +370,8 @@ endc
 	const NAM_CHOICE_SCARF
 	const NAM_CHOICE_SPECS
 	const NAM_CLEANSE_TAG
+	const NAM_CLEAR_AMULET
+	const NAM_COVERT_CLOAK
 	const NAM_CUSTAP_BERRY
 	const NAM_DAMP_ROCK
 	const NAM_DESTINY_KNOT
@@ -449,13 +449,14 @@ endc
 	const NAM_LIFE_ORB
 	const NAM_LIGHT_BALL
 	const NAM_LIGHT_CLAY
+	const NAM_LINKING_CORD
 	const NAM_LITEBLUEMAIL
+	const NAM_LOADED_DICE
 	const NAM_LOVE_BALL
 	const NAM_LOVELY_MAIL
 	const NAM_LUCKY_EGG
 	const NAM_LUCKY_PUNCH
 	const NAM_LUM_BERRY
-	const NAM_LUMINOUSMOSS
 	const NAM_LURE_BALL
 	const NAM_LUXURY_BALL
 	const NAM_MACHO_BRACE
@@ -475,6 +476,7 @@ endc
 	const NAM_MINT_LEAF
 	const NAM_MIRACLE_SEED
 	const NAM_MIRAGE_MAIL
+	const NAM_MIRROR_HERB
 	const NAM_MOOMOO_MILK
 	const NAM_MOON_BALL
 	const NAM_MOON_STONE
@@ -518,6 +520,7 @@ endc
 	const NAM_PROTECT_PADS
 	const NAM_PROTECTOR
 	const NAM_PROTEIN
+	const NAM_PUNCHINGLOVE
 	const NAM_QUALOT_BERRY
 	const NAM_QUICK_BALL
 	const NAM_QUICK_CLAW
@@ -535,7 +538,6 @@ endc
 	const NAM_REPEL
 	const NAM_REVIVAL_HERB
 	const NAM_REVIVE
-	const NAM_RING_TARGET
 	const NAM_ROCKY_HELMET
 	const NAM_ROOM_SERVICE
 	const NAM_ROWAP_BERRY
@@ -555,7 +557,6 @@ endc
 	const NAM_SLOWPOKETAIL
 	const NAM_SMOKE_BALL
 	const NAM_SMOOTH_ROCK
-	const NAM_SNOWBALL
 	const NAM_SODA_POP
 	const NAM_SOFT_SAND
 	const NAM_SOOTHE_BELL
@@ -580,7 +581,6 @@ endc
 	const NAM_TWISTEDSPOON
 	const NAM_ULTRA_BALL
 	const NAM_UP_GRADE
-	const NAM_UTILUMBRELLA
 	const NAM_WATER_STONE
 	const NAM_WEAK_POLICY
 	const NAM_WHITE_HERB

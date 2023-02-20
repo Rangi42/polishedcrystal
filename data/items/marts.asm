@@ -174,9 +174,10 @@ Goldenrod5FTMMart:
 	db -1
 
 GoldenrodHarborMart:
-	db 8 ; # items
+	db 9 ; # items
 	db ETHER
 	db ELIXIR
+	db MIRROR_HERB
 	db DESTINY_KNOT
 	db SCOPE_LENS
 	db WIDE_LENS
@@ -534,7 +535,7 @@ BattleFactoryMart2:
 	db 7 ; # items
 	db IRON_BALL,    32
 	db LAGGING_TAIL, 24
-	db RING_TARGET,  24
+	db CLEAR_AMULET, 24
 	db EJECT_BUTTON, 32
 	db EJECT_PACK,   32
 	db RED_CARD,     24
@@ -543,10 +544,10 @@ BattleFactoryMart2:
 
 BattleFactoryMart3:
 	db 6 ; # items
-	db ABSORB_BULB,  16
-	db CELL_BATTERY, 16
-	db LUMINOUSMOSS, 16
-	db SNOWBALL,     16
+	db CLEAR_AMULET, 16
+	db PUNCHINGLOVE, 16
+	db COVERT_CLOAK, 16
+	db LOADED_DICE,  16
 	db THROAT_SPRAY, 24
 	db MINT_LEAF,    32
 	db -1
