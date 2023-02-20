@@ -1607,7 +1607,7 @@ GeodudePlainEvosAttacks:
 	evo_data EVOLVE_LEVEL, 25, GRAVELER, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
-	db 1, SHELL_SMASH
+	db 1, DEFENSE_CURL
 	db 4, MUD_SLAP ; Mud Sport → TM move
 	db 6, RAPID_SPIN ; Rock Polish → event move
 	db 10, ROLLOUT
