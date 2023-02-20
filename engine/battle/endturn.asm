@@ -938,6 +938,7 @@ HandleHealingItems:
 	farcall HandleHPHealingItem
 	farcall UseHeldStatusHealingItem
 	farcall HandleStatBoostBerry
+	farcall CheckMirrorHerb ; for stat boost berry
 	farjp UseConfusionHealingItem
 
 HandleStatusOrbs:
