@@ -3381,7 +3381,9 @@ CheckMirrorHerb:
 	jr nz, .loop
 
 	call CheckAlreadyExecuted
-	jmp nz, ConsumeUserItem
+	call nz, ConsumeUserItem
+	xor a
+	ld [wAlreadyExecuted], a
 	ret
 
 EndMoveDamageChecks:
