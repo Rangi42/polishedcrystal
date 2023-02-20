@@ -3326,9 +3326,7 @@ CheckMirrorHerb:
 	and b
 	jr z, .next
 
-	; Found stat pending change. Store and decrement by 1 since stat changes
-	; use the high nibble for (amount of stat boost - 1).
-	dec a
+	; Found stat pending change. Store in d.
 	ld d, a
 
 	; d should always hold the change in the high nibble, even for foes.
@@ -3360,6 +3358,7 @@ CheckMirrorHerb:
 	ld a, l
 	sub LOW(wMirrorHerbPendingBoosts)
 	add d
+	sub $10 ; amount of stat increments is given as high nibble - $10.
 	ld b, a
 	ld a, STAT_SKIPTEXT
 	push hl
