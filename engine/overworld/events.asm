@@ -1216,8 +1216,14 @@ CanUseSweetHoney::
 	and $f0
 	cp HI_NYBBLE_CURRENT
 	jr z, .no
+	ld a, [wEnvironment]
+	cp CAVE
+	jr z, .skip_grass_check
+	cp DUNGEON
+	jr z, .skip_grass_check
 	farcall CheckGrassCollision
 	jr nc, .no
+.skip_grass_check
 	scf
 	ret
 
