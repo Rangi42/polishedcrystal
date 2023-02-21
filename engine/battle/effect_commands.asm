@@ -2720,7 +2720,9 @@ BattleCommand_startloop:
 	cp SKILL_LINK
 	ld a, 5
 	jr z, .got_count
-	call GetUserItem
+	push hl
+	call GetUserItemAfterUnnerve
+	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
 	jr nz, .not_loaded_dice
