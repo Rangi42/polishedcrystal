@@ -151,6 +151,7 @@ BattleTurn:
 	ld [wCurDamage + 1], a
 
 	call HandleBerserkGene
+	farcall CheckMirrorHerb
 	call UpdateBattleMonInParty
 	call SetEnemyTurn
 	call IncrementTurnsTaken
@@ -1123,7 +1124,7 @@ GetUserSwitchTarget:
 SendInUserPkmn:
 ; sends in the new pokémon
 	; volatile statuses that baton pass doesn't preserve
-	call BreakAttraction
+	call BreakAttractionAndResetMirrorHerb
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_ENDURE, [hl]
@@ -1986,7 +1987,7 @@ FaintUserPokemon:
 	call HasUserFainted
 	ret nz
 
-	call BreakAttraction
+	call BreakAttractionAndResetMirrorHerb
 
 	xor a
 	ld [wPlayerWrapCount], a
@@ -3079,11 +3080,17 @@ endr
 	res SUBSTATUS_CANT_RUN, [hl]
 	jmp ResetPlayerAbility
 
-BreakAttraction:
+BreakAttractionAndResetMirrorHerb:
 	ld hl, wPlayerSubStatus1
 	res SUBSTATUS_IN_LOVE, [hl]
 	ld hl, wEnemySubStatus1
 	res SUBSTATUS_IN_LOVE, [hl]
+	; fallthrough
+ResetMirrorHerb:
+	ld hl, wMirrorHerbPendingBoosts
+	ld bc, NUM_LEVEL_STATS - 1
+	xor a
+	rst ByteFill
 	ret
 
 SpikesDamageBoth:
@@ -3429,6 +3436,8 @@ _HeldStatBoostBerry:
 	and a
 	ret nz
 	farcall UseStatItemText
+
+	; Don't call CheckMirrorHerb; Bug Bite/Pluck needs to proc the copy later.
 	xor a
 	ret
 .failed
@@ -8644,6 +8653,9 @@ BoostGiovannisArmoredMewtwo:
 	ld b, SP_ATTACK
 	call .forceraisestat
 	ld b, SP_DEFENSE
+	call .forceraisestat
+	farjp CheckMirrorHerb
+
 .forceraisestat
 	farjp ForceRaiseStat
 

@@ -260,8 +260,9 @@ IntimidateAbility:
 
 .continue
 	call EnableAnimations
-	farcall CheckWhiteHerb
-	jmp SwitchTurn
+	farcall CheckStatHerbs
+	call SwitchTurn
+	farjp CheckMirrorHerb
 
 INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
@@ -301,7 +302,8 @@ DownloadAbility:
 	ld b, ATTACK
 .got_stat
 	farcall ForceRaiseStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 ImposterAbility:
 	; Disallowed on Neutralizing Gas (even in switch-out mode)
@@ -780,7 +782,8 @@ TanglingHairAbility:
 	ld b, SPEED
 	ld a, STAT_SILENT
 	farcall _ForceLowerOppStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
@@ -1076,7 +1079,8 @@ StatUpAbility:
 	call EnableAnimations
 	call SwitchTurn
 .done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 WeakArmorAbility:
 	; only physical moves activate this
@@ -1089,7 +1093,8 @@ WeakArmorAbility:
 	farcall LowerStat
 	ld b, $10 | SPEED
 	farcall RaiseStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 FlashFireAbility:
 	call DisableAnimations
@@ -1549,7 +1554,8 @@ MoodyAbility:
 	ld b, e
 	farcall ForceLowerStat
 .lower_done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	call GetTrueUserAbility
@@ -1905,7 +1911,8 @@ AngerPointAbility:
 	xor a
 	farcall DoPrintStatChange
 .done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 RunSwitchAbilities:
 ; abilities that activate when you switch out

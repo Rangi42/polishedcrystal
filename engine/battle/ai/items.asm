@@ -671,6 +671,11 @@ EnemyUsedXItem:
 
 	farcall PrintStatChange
 	call AIUpdateHUD
+	push hl
+	push bc
+	farcall ResetMirrorHerb
+	pop bc
+	pop hl
 	xor a
 	ret
 

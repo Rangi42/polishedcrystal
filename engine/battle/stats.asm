@@ -79,7 +79,7 @@ FarChangeStat:
 
 .check_lowering
 	bit STAT_LOWER_F, b
-	jp z, .perform_change
+	jmp z, .perform_change
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wEnemyGuards]
@@ -208,41 +208,29 @@ DoPrintStatChange:
 
 .do_print
 	bit STAT_LOWER_F, b
-	jr z, .got_stat_msg
+	jr z, .printmsg
 	ld h, d
 	ld l, e
-.got_stat_msg
 	push af
 	push bc
 	call StdBattleTextbox
 	pop bc
 	pop af
+	bit STAT_TARGET_F, b
+	ret z
 	and a
 	ret nz ; the stat change failed
 	ld a, [wAlreadyExecuted]
 	push af
-	bit STAT_LOWER_F, b
-	jr z, .check_mirror_herb
-	bit STAT_TARGET_F, b
-	jr z, .done
 	farcall RunStatIncreaseAbilities
-	jr .done
-.check_mirror_herb
-	farcall GetOpponentItemAfterUnnerve
-	ld a, b
-	cp HELD_MIRROR_HERB
-	jr nz, .done
-	xor a
-	ld [wAlreadyExecuted], a
-	ld a, [wChangedStat]
-	ld b, a
-	farcall RaiseOpponentStatWithItem
-.done
 	pop af
 	ld [wAlreadyExecuted], a
 	xor a
 	ld [wFailedMessage], a
 	ret
+
+.printmsg
+	jmp StdBattleTextbox
 
 GetStatRaiseMessage:
 	ld a, [wChangedStat]
@@ -348,11 +336,35 @@ DoChangeStat:
 .raise_loop
 	ld a, [hl]
 	cp MAX_STAT_LEVEL
-	jr z, .stat_change_done
+	jr z, .queue_mirror_herb
 	inc [hl]
 	inc b
 	dec c
 	jr nz, .raise_loop
+
+.queue_mirror_herb
+	; Get the relevant stat.
+	ld hl, wMirrorHerbPendingBoosts
+	ld a, [wChangedStat]
+	and $f
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	; Add the stat increment to pending boosts to copy.
+	; Since we can't read half-carry, swap b (amount of increments) so
+	; that we can do the add on the higher nibble and use carry.
+	call .SwapHLIfEnemy
+	ld a, b
+	swap a
+	add [hl]
+	jr nc, .no_overflow
+	or $f0
+.no_overflow
+	ld [hl], a
+	call .SwapHLIfEnemy
 	jr .stat_change_done
 
 .lower_loop
@@ -380,6 +392,13 @@ DoChangeStat:
 .stat_change_failed
 	ld a, 1
 	ld [wFailedMessage], a
+	ret
+
+.SwapHLIfEnemy:
+	ldh a, [hBattleTurn]
+	and a
+	ret z
+	swap [hl]
 	ret
 
 PlayStatChangeAnim:

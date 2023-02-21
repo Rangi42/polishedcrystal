@@ -1886,6 +1886,11 @@ XItemEffect:
 	farcall GetStatRaiseMessage
 	or 1
 	farcall DoPrintStatChange
+	push hl
+	push bc
+	farcall ResetMirrorHerb
+	pop bc
+	pop hl
 	; fallthrough
 XItemHappiness:
 	ld a, [wCurBattleMon]

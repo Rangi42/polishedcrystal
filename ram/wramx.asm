@@ -741,7 +741,9 @@ wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
 
-	ds 7 ; unused
+wMirrorHerbPendingBoosts::
+	; 7 sets of nibbles $xy, one for each stat. x = player, y = enemy.
+	ds NUM_LEVEL_STATS - 1 ; ignore MULTIPLE_STATS
 
 UNION
 wOTPartyMons::

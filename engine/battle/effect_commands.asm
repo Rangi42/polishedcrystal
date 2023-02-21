@@ -3205,22 +3205,26 @@ CheckEndMoveEffects:
 	or b
 	call nz, EndMoveDamageChecks
 	; fallthrough
-CheckWhiteHerb:
+CheckStatHerbs:
 	ldh a, [hBattleTurn]
 	ld b, a
+	push bc
+	call CheckWhiteHerbEjectPack
+	call CheckMirrorHerb
+	pop bc
+	ld a, b
+	ldh [hBattleTurn], a
+	ret
+
+CheckWhiteHerbEjectPack:
+; Preserve b, which holds true player's turn (to handle Eject Pack switches).
 	push bc
 	call SetFastestTurn
 	pop bc
 	push bc
 	call .do_it
+	pop bc
 	call SwitchTurn
-	pop bc
-	push bc
-	call .do_it
-	pop bc
-	ld a, b
-	ldh [hBattleTurn], a
-	ret
 
 .do_it
 	push bc
@@ -3284,6 +3288,102 @@ CheckWhiteHerb:
 	ld hl, RegainedStatsWithItem
 	call StdBattleTextbox
 	jmp ConsumeUserItem
+
+CheckMirrorHerb:
+; Preserves whose turn it is (so we can call this without worrying about that).
+	call HasUserFainted
+	call nz, HasOpponentFainted
+	ret z
+
+	ldh a, [hBattleTurn]
+	push af
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+	call .do_it
+	pop af
+	ldh [hBattleTurn], a
+	ret
+
+.do_it
+	; Go through the entire pending stat change table no matter what,
+	; because even if we're not holding Mirror Herb, we need to reset them.
+	ld hl, wMirrorHerbPendingBoosts
+
+	xor a
+	ld [wAlreadyExecuted], a
+
+	; Set up fields to bitmask against.
+	ldh a, [hBattleTurn]
+	and a
+	lb bc, $0f, $f0
+	jr z, .loop
+	lb bc, $f0, $0f
+.loop
+	ld a, [hl]
+
+	; Does the user have a pending mirror herb change?
+	and b
+	jr z, .next
+
+	; Found stat pending change. Store in d.
+	ld d, a
+
+	; d should always hold the change in the high nibble, even for foes.
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .stat_amount_ok
+	swap d
+
+.stat_amount_ok
+	; Store adjustment to the relevant pending boost field. Do this now
+	; because the Mirror Herb stat change can induce changes to this field,
+	; which we want to undo (Mirror Herb cannot trigger foe's Mirror Herb).
+	ld a, [hl]
+	and c
+	ld e, a
+
+	; Now, assuming the user is actually holding a Mirror Herb, proc the effect.
+	push bc
+	push hl
+	push de
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_MIRROR_HERB
+	jr nz, .stat_raise_failed
+	pop de
+	pop hl
+
+	; This will give us a value between 0-6 pointing to the relevant stat.
+	ld a, l
+	sub LOW(wMirrorHerbPendingBoosts)
+	add d
+	sub $10 ; amount of stat increments is given as high nibble - $10.
+	ld b, a
+	ld a, STAT_SKIPTEXT
+	push hl
+	push de
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .stat_raise_failed
+	farcall UseStatItemText
+.stat_raise_failed
+	pop de
+	pop hl
+	pop bc
+	ld [hl], e
+.next
+	inc hl
+	ld a, l
+	cp LOW(wMirrorHerbPendingBoosts + NUM_LEVEL_STATS - 1)
+	jr nz, .loop
+
+	call CheckAlreadyExecuted
+	call nz, ConsumeUserItem
+	xor a
+	ld [wAlreadyExecuted], a
+	ret
 
 EndMoveDamageChecks:
 	call .EndMoveUserItems
