@@ -5059,7 +5059,7 @@ BattleCommand_raisestat:
 RaiseStat:
 	xor a
 _RaiseStat:
-	or STAT_MISS | STAT_SILENT
+	or STAT_CANMISS | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_lowerstat:
@@ -5067,7 +5067,7 @@ BattleCommand_lowerstat:
 LowerStat:
 	xor a
 _LowerStat:
-	or STAT_LOWER | STAT_MISS | STAT_SILENT
+	or STAT_LOWER | STAT_CANMISS | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_forceraisestat:
@@ -5090,7 +5090,7 @@ BattleCommand_raisestathit:
 RaiseStatHit:
 	xor a
 _RaiseStatHit:
-	or STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_lowerstathit:
@@ -5098,7 +5098,7 @@ BattleCommand_lowerstathit:
 LowerStatHit:
 	xor a
 _LowerStatHit:
-	or STAT_LOWER | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_forceraiseoppstat:
@@ -5122,7 +5122,7 @@ BattleCommand_raiseoppstat:
 RaiseOppStat:
 	xor a
 _RaiseOppStat:
-	or STAT_TARGET | STAT_MISS
+	or STAT_TARGET | STAT_CANMISS
 	jr ChangeStat
 
 BattleCommand_loweroppstat:
@@ -5130,7 +5130,7 @@ BattleCommand_loweroppstat:
 LowerOppStat:
 	xor a
 _LowerOppStat:
-	or STAT_TARGET | STAT_LOWER | STAT_MISS
+	or STAT_TARGET | STAT_LOWER | STAT_CANMISS
 	jr ChangeStat
 
 BattleCommand_raiseoppstathit:
@@ -5138,7 +5138,7 @@ BattleCommand_raiseoppstathit:
 RaiseOppStatHit:
 	xor a
 _RaiseOppStatHit:
-	or STAT_TARGET | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_TARGET | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_loweroppstathit:
@@ -5146,7 +5146,7 @@ BattleCommand_loweroppstathit:
 LowerOppStatHit:
 	xor a
 _LowerOppStatHit:
-	or STAT_TARGET | STAT_LOWER | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_TARGET | STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 ChangeStat:
 ; b contains stat to alter, or zero if it should be read from the move script
 	farjp FarChangeStat

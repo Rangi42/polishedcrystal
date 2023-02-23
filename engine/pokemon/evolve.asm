@@ -83,8 +83,6 @@ EvolveAfterBattle_MasterLoop:
 	jmp z, .location
 	cp EVOLVE_MOVE
 	jmp z, .move
-	cp EVOLVE_EVS
-	jmp z, .evs
 	cp EVOLVE_LEVEL
 	jmp z, .level
 	cp EVOLVE_PARTY
@@ -278,33 +276,17 @@ EvolveAfterBattle_MasterLoop:
 	push bc
 	ld b, a
 	ld hl, wTempMonMoves
-rept NUM_MOVES
+rept NUM_MOVES - 1
 	ld a, [hli]
 	cp b
 	jr z, .move_proceed
 endr
-	pop bc
-	pop hl
-	jmp .dont_evolve_3
-
+	ld a, [hl]
+	cp b
 .move_proceed
 	pop bc
 	pop hl
-	jr .proceed
-
-.evs
-	ld a, [hli]
-	push hl
-	push bc
-	ld hl, wTempMonSpecies
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	pop bc
-	pop hl
-	cp EVS_TO_EVOLVE
-	jmp c, .dont_evolve_3
+	jmp nz, .dont_evolve_3
 	jr .proceed
 
 .crit
@@ -901,8 +883,6 @@ GetEvolutionData:
 	jr z, .get_landmark_name
 	cp EVOLVE_MOVE
 	jr z, .get_move_name
-	cp EVOLVE_EVS
-	jr z, .get_stat_name
 	cp EVOLVE_PARTY
 	jr z, .get_mon_name
 .done
@@ -944,19 +924,6 @@ GetEvolutionData:
 	ld [hld], a
 	ld [hl], e
 	call GetPokemonName
-	jr .copy_string
-
-.get_stat_name:
-	ld a, [hl] ; parameter 1 (ev field)
-	sub MON_EVS
-	add a
-	add LOW(StatStrings)
-	ld l, a
-	adc HIGH(StatStrings)
-	sub l
-	ld h, a
-	ld de, wStringBuffer1
-	farcall GetStatStringForLyra
 	jr .copy_string
 
 INCLUDE "data/pokemon/multi_evos.asm"

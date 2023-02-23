@@ -179,15 +179,10 @@ ItemEffects:
 	dw IsntTheTimeMessage ; ROCKY_HELMET
 	dw IsntTheTimeMessage ; AIR_BALLOON
 	dw IsntTheTimeMessage ; RED_CARD
-	dw EvoStoneEffect     ; LINKING_CORD
 	dw IsntTheTimeMessage ; BINDING_BAND
-	dw IsntTheTimeMessage ; CLEAR_AMULET
-	dw IsntTheTimeMessage ; MIRROR_HERB
 	dw IsntTheTimeMessage ; EJECT_BUTTON
 	dw IsntTheTimeMessage ; WEAK_POLICY
 	dw IsntTheTimeMessage ; ASSAULT_VEST
-	dw IsntTheTimeMessage ; PUNCHINGLOVE
-	dw IsntTheTimeMessage ; COVERT_CLOAK
 	dw IsntTheTimeMessage ; SAFE_GOGGLES
 	dw IsntTheTimeMessage ; PROTECT_PADS
 	dw IsntTheTimeMessage ; THROAT_SPRAY
@@ -195,6 +190,10 @@ ItemEffects:
 	dw IsntTheTimeMessage ; HEAVY_BOOTS
 	dw IsntTheTimeMessage ; BLUNDRPOLICY
 	dw IsntTheTimeMessage ; ROOM_SERVICE
+	dw IsntTheTimeMessage ; CLEAR_AMULET
+	dw IsntTheTimeMessage ; MIRROR_HERB
+	dw IsntTheTimeMessage ; PUNCHINGLOVE
+	dw IsntTheTimeMessage ; COVERT_CLOAK
 	dw IsntTheTimeMessage ; LOADED_DICE
 	dw IsntTheTimeMessage ; LIGHT_BALL
 	dw IsntTheTimeMessage ; LEEK
@@ -236,6 +235,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; RAZOR_CLAW
 	dw IsntTheTimeMessage ; OVAL_STONE
 	dw EvoStoneEffect     ; ODD_SOUVENIR
+	dw EvoStoneEffect     ; LINKING_CORD
 	dw IsntTheTimeMessage ; SILVER_LEAF
 	dw IsntTheTimeMessage ; GOLD_LEAF
 	dw IsntTheTimeMessage ; MINT_LEAF
@@ -311,8 +311,8 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; ORANGETICKET
 	dw IsntTheTimeMessage ; MYSTICTICKET
 	dw IsntTheTimeMessage ; OLD_SEA_MAP
-	dw IsntTheTimeMessage ; EERIE_LURE
-	dw IsntTheTimeMessage ; TOUGH_LURE
+	dw IsntTheTimeMessage ; HARSH_LURE
+	dw IsntTheTimeMessage ; POTENT_LURE
 	dw IsntTheTimeMessage ; MALIGN_LURE
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
@@ -1032,7 +1032,6 @@ _GetStatString:
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
-GetStatStringForLyra:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
