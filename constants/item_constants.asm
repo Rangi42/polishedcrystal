@@ -656,8 +656,8 @@ DEF NUM_WINGS EQU const_value
 	const ORANGETICKET ; 1b
 	const MYSTICTICKET ; 1c
 	const OLD_SEA_MAP  ; 1d
-	const EERIE_LURE   ; 1e
-	const TOUGH_LURE   ; 1f
+	const HARSH_LURE   ; 1e
+	const POTENT_LURE  ; 1f
 	const MALIGN_LURE  ; 20
 	const SHINY_CHARM  ; 21
 	const OVAL_CHARM   ; 22
@@ -674,10 +674,10 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_CATCH_CHARM
 	const NAM_CLEAR_BELL
 	const NAM_COIN_CASE
-	const NAM_EERIE_LURE
 	const NAM_GO_GOGGLES
 	const NAM_GOOD_ROD
 	const NAM_GS_BALL
+	const NAM_HARSH_LURE
 	const NAM_ITEMFINDER
 	const NAM_LOST_ITEM
 	const NAM_MACHINE_PART
@@ -689,6 +689,7 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_ORANGETICKET
 	const NAM_OVAL_CHARM
 	const NAM_PASS
+	const NAM_POTENT_LURE
 	const NAM_RAINBOW_WING
 	const NAM_RED_SCALE
 	const NAM_S_S_TICKET
@@ -698,7 +699,6 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_SILVER_WING
 	const NAM_SQUIRTBOTTLE
 	const NAM_SUPER_ROD
-	const NAM_TOUGH_LURE
 	const NAM_TYPE_CHART
 	const NAM_WING_CASE
 	assert const_value - 1 == NUM_KEY_ITEMS
