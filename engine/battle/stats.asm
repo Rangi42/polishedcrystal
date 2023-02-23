@@ -22,7 +22,7 @@ FarChangeStat:
 .not_fainted
 
 	; check attack missing
-	bit STAT_MISS_F, b
+	bit STAT_CANMISS_F, b
 	jr z, .no_miss
 	ld a, [wAttackMissed]
 	and a
