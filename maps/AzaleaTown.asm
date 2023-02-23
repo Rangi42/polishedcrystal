@@ -325,15 +325,15 @@ AzaleaTownGrampsScript:
 AzaleaTownTeacherScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iffalse_jumptextfaceplayer .Text1
-	checkevent EVENT_GOT_LOADED_DICE_IN_AZALEA
+	checkevent EVENT_GOT_CLEAR_AMULET_IN_AZALEA
 	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
 	writetext .Text3
 	promptbutton
-	verbosegiveitem LOADED_DICE
+	verbosegiveitem CLEAR_AMULET
 	iffalse_endtext
-	setevent EVENT_GOT_LOADED_DICE_IN_AZALEA
+	setevent EVENT_GOT_CLEAR_AMULET_IN_AZALEA
 	jumpthisopenedtext
 
 .Text2:
@@ -362,11 +362,14 @@ AzaleaTownTeacherScript:
 	para "Oh? You brought"
 	line "the Slowpoke back?"
 
+	para "They brought the"
+	line "rain with them!"
+
 	para "Thank you so"
 	line "much!"
 
-	para "Here's something"
-	line "for the weather!"
+	para "Please take this,"
+	line "you deserve it!"
 	done
 
 AzaleaTownWoosterText:

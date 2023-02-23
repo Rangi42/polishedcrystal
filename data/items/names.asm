@@ -218,16 +218,11 @@ endc
 	li "Rocky Helmet"
 	li "Air Balloon"
 	li "Red Card"
-	li "Linking Cord"
 	li "Binding Band"
-	li "Clear Amulet"
-	li "Mirror Herb"
 	li "Eject Button"
 
 	li "Weak Policy"
 	li "Assault Vest"
-	li "PunchinGlove"
-	li "Covert Cloak"
 	li "Safe Goggles"
 
 	li "Protect Pads"
@@ -237,6 +232,11 @@ endc
 	li "Heavy Boots"
 	li "BlundrPolicy"
 	li "Room Service"
+
+	li "Clear Amulet"
+	li "Mirror Herb"
+	li "PunchinGlove"
+	li "Covert Cloak"
 	li "Loaded Dice"
 
 	li "Light Ball"
@@ -286,6 +286,7 @@ endc
 	li "Razor Claw"
 	li "Oval Stone"
 	li "Odd Souvenir"
+	li "Linking Cord"
 
 	li "Silver Leaf"
 	li "Gold Leaf"

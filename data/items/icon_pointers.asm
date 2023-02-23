@@ -168,15 +168,10 @@ ItemIconPointers:
 	dba RockyHelmetIcon
 	dba AirBalloonIcon
 	dba RedCardIcon
-	dba RingTargetIcon
 	dba BindingBandIcon
-	dba AbsorbBulbIcon
-	dba CellBatteryIcon
 	dba EjectButtonIcon
 	dba WeakPolicyIcon
 	dba AssaultVestIcon
-	dba LuminousMossIcon
-	dba SnowballIcon
 	dba SafeGogglesIcon
 	dba ProtectPadsIcon
 	dba ThroatSprayIcon
@@ -184,7 +179,11 @@ ItemIconPointers:
 	dba HeavyBootsIcon
 	dba BlundrPolicyIcon
 	dba RoomServiceIcon
-	dba UtilUmbrellaIcon
+	dba ClearAmuletIcon
+	dba MirrorHerbIcon
+	dba PunchinGloveIcon
+	dba CovertCloakIcon
+	dba LoadedDiceIcon
 	dba LightBallIcon
 	dba LeekIcon
 	dba ThickClubIcon
@@ -225,6 +224,7 @@ ItemIconPointers:
 	dba RazorClawIcon
 	dba OvalStoneIcon
 	dba OddSouvenirIcon
+	dba LinkingCordIcon
 	dba SilverLeafIcon
 	dba GoldLeafIcon
 	dba MintLeafIcon

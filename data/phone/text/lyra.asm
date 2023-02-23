@@ -181,20 +181,6 @@ LyraPhoneEvoText_Move:
 	text "."
 	prompt
 
-LyraPhoneEvoText_EVs:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "put enough effort"
-	line "into improving"
-	cont "its "
-	text_ram wStringBuffer4
-	text "."
-
-	para "Vitamins can help"
-	line "with that."
-	prompt
-
 LyraPhoneEvoText_Crit:
 	text_ram wStringBuffer3
 	line "evolves after it"

@@ -210,7 +210,6 @@ LyraPhoneScript_EvolutionMethodsTable:
 	dw .EvolveStat
 	dw .EvolveLocation
 	dw .EvolveMove
-	dw .EvolveEVs
 	dw .EvolveCrit
 	dw .EvolveParty
 	dw .EvolveEgg
@@ -271,9 +270,6 @@ LyraPhoneScript_EvolutionMethodsTable:
 	end
 .EvolveMove:
 	farwritetext LyraPhoneEvoText_Move
-	end
-.EvolveEVs:
-	farwritetext LyraPhoneEvoText_EVs
 	end
 .EvolveCrit:
 	farwritetext LyraPhoneEvoText_Crit

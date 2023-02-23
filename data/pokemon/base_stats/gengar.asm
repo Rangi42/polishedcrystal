@@ -4,7 +4,7 @@
 	db GHOST, POISON ; type
 	db 45 ; catch rate
 	db 190 ; base exp
-	db SPELL_TAG, LINKING_CORD ; held items
+	db NO_ITEM, SPELL_TAG ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)
