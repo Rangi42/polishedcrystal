@@ -1204,8 +1204,11 @@ ElmAfterTheftText6:
 	para "And give me a call"
 	line "sometimes too."
 
-	para "I might have use-"
-	line "ful information!"
+	para "I can tell you all"
+	line "about my research"
+
+	para "on how #mon"
+	line "evolve!"
 	done
 
 ElmStudyingEggText:

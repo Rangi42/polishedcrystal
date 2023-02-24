@@ -217,21 +217,18 @@ EvolveAfterBattle_MasterLoop:
 	cp e
 	jr z, .party_ok
 .party_next
-	dec b
-	jr z, .party_no
 	push de
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
 	pop de
-	jr .party_loop
-
-.party_no
+	dec b
+	jr nz, .party_loop
 	pop hl
 	jmp .dont_evolve_3
 
 .party_ok
 	pop hl
-	jmp .proceed
+	jr .proceed
 
 .holding
 	ld a, [hli]
