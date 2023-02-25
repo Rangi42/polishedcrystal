@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/ceruleanGSC.asm
 
 Music_CeruleanCityHGSS:
-	dbw $c0, Music_CeruleanCityHGSS_Ch1
-	dbw $01, Music_CeruleanCityHGSS_Ch2
-	dbw $02, Music_CeruleanCityHGSS_Ch3
-	dbw $03, Music_CeruleanCityHGSS_Ch4
+	channel_count 4
+	channel 1, Music_CeruleanCityHGSS_Ch1
+	channel 2, Music_CeruleanCityHGSS_Ch2
+	channel 3, Music_CeruleanCityHGSS_Ch3
+	channel 4, Music_CeruleanCityHGSS_Ch4
 
 Music_CeruleanCityHGSS_Ch1:
 	tempo $94

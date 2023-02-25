@@ -4,10 +4,11 @@
 ; https://hax.iimarckus.org/topic/6777/2/
 
 Music_ChampionBattleB2W2:
-	dbw $c0, Music_ChampionBattleB2W2_Ch1
-	dbw $01, Music_ChampionBattleB2W2_Ch2
-	dbw $02, Music_ChampionBattleB2W2_Ch3
-	dbw $03, Music_ChampionBattleB2W2_Ch4
+	channel_count 4
+	channel 1, Music_ChampionBattleB2W2_Ch1
+	channel 2, Music_ChampionBattleB2W2_Ch2
+	channel 3, Music_ChampionBattleB2W2_Ch3
+	channel 4, Music_ChampionBattleB2W2_Ch4
 
 Music_ChampionBattleB2W2_Ch1:
 	tempo 100
