@@ -179,7 +179,7 @@ SpriteHeaders:
 	overworld_sprite ArmoredMewtwoSpriteGFX, WALKING_SPRITE, PAL_OW_GRAY
 	overworld_sprite BigSnorlaxSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite BigLaprasSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
-	overworld_sprite BigOnixSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
+	overworld_sprite BigOnixSpriteGFX, STANDING_SPRITE, PAL_OW_GRAY
 	overworld_sprite BigGyaradosSpriteGFX, BIG_GYARADOS_SPRITE, PAL_OW_RED
 	overworld_sprite PidgeottoSideSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
 	overworld_sprite RattataBackSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
