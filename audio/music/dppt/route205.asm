@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route205.asm
 
 Music_Route205DPPt:
-	dbw $C0, Music_Route205DPPt_Ch1
-	dbw $01, Music_Route205DPPt_Ch2
-	dbw $02, Music_Route205DPPt_Ch3
-	dbw $03, Music_Route205DPPt_Ch4
+	channel_count 4
+	channel 1, Music_Route205DPPt_Ch1
+	channel 2, Music_Route205DPPt_Ch2
+	channel 3, Music_Route205DPPt_Ch3
+	channel 4, Music_Route205DPPt_Ch4
 
 Music_Route205DPPt_Ch1:
 Music_Route205DPPt_Ch1_loop:

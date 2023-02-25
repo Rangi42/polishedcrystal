@@ -3,11 +3,12 @@
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/vsWCS.asm
 
 Music_WCSBattleBW:
-	dbw $80, Music_WCSBattleBW_Ch2
-	dbw $01, Music_WCSBattleBW_Ch1
-	dbw $02, Music_WCSBattleBW_Ch3
+	channel_count 3
+	channel 1, Music_WCSBattleBW_Ch1
+	channel 2, Music_WCSBattleBW_Ch2
+	channel 3, Music_WCSBattleBW_Ch3
 
-Music_WCSBattleBW_Ch1:
+Music_WCSBattleBW_Ch2:
 	duty_cycle 2
 	note_type 12, 8, -4
 	octave 2
@@ -79,7 +80,7 @@ Music_WCSBattleBW_Ch1:
 	note G_, 16
 	octave 4
 	note C_, 16
-Music_WCSBattleBW_Ch1_L:
+Music_WCSBattleBW_Ch2_L:
 	volume_envelope 14, 7
 	vibrato 0, 0, 0
 	note C_, 8
@@ -304,9 +305,9 @@ Music_WCSBattleBW_Ch1_L:
 	note C_, 16
 	note F#, 4
 	note G_, 12
-	sound_jump Music_WCSBattleBW_Ch1_L
+	sound_jump Music_WCSBattleBW_Ch2_L
 
-Music_WCSBattleBW_Ch2:
+Music_WCSBattleBW_Ch1:
 	tempo $69
 	volume 7, 7
 	duty_cycle 2
@@ -376,7 +377,7 @@ Music_WCSBattleBW_Ch2:
 	note D#, 8
 	note D_, 16
 	note E_, 16
-Music_WCSBattleBW_Ch2_L:
+Music_WCSBattleBW_Ch1_L:
 	volume_envelope 14, 7
 	vibrato 0, 0, 0
 	octave 3
@@ -662,7 +663,7 @@ Music_WCSBattleBW_Ch2_L:
 	note G_, 16
 	octave 4
 	note C_, 16
-	sound_jump Music_WCSBattleBW_Ch2_L
+	sound_jump Music_WCSBattleBW_Ch1_L
 
 Music_WCSBattleBW_Ch3:
 	note_type 12, 1, 6

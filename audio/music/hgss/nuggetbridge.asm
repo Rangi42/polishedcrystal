@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/nuggetbridge.asm
 
 Music_NuggetBridgeHGSS:
-	dbw $c0, Music_NuggetBridgeHGSS_Ch1
-	dbw $01, Music_NuggetBridgeHGSS_Ch2
-	dbw $02, Music_NuggetBridgeHGSS_Ch3
-	dbw $03, Music_NuggetBridgeHGSS_Ch4
+	channel_count 4
+	channel 1, Music_NuggetBridgeHGSS_Ch1
+	channel 2, Music_NuggetBridgeHGSS_Ch2
+	channel 3, Music_NuggetBridgeHGSS_Ch3
+	channel 4, Music_NuggetBridgeHGSS_Ch4
 
 Music_NuggetBridgeHGSS_Ch1:
 	tempo $A8

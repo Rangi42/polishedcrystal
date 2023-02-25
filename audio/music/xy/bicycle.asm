@@ -3,10 +3,11 @@
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/kalos_bicycle.asm
 
 Music_BicycleXY:
-	dbw $C0, BicycleXY_Ch1
-	dbw $01, BicycleXY_Ch2
-	dbw $02, BicycleXY_Ch3
-	dbw $03, BicycleXY_Ch4
+	channel_count 4
+	channel 1, BicycleXY_Ch1
+	channel 2, BicycleXY_Ch2
+	channel 3, BicycleXY_Ch3
+	channel 4, BicycleXY_Ch4
 
 BicycleXY_Ch1::
 	tempo 120

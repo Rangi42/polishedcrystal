@@ -3,8 +3,9 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/cinnabarGSC.asm
 
 Music_CinnabarIslandHGSS:
-	dbw $40, Music_CinnabarIslandHGSS_Ch1
-	dbw $01, Music_CinnabarIslandHGSS_Ch2
+	channel_count 2
+	channel 1, Music_CinnabarIslandHGSS_Ch1
+	channel 2, Music_CinnabarIslandHGSS_Ch2
 
 Music_CinnabarIslandHGSS_Ch1:
 	tempo $118
