@@ -121,13 +121,9 @@ ResetWRAM:
 	rst ByteFill
 
 	call Random
-	ldh a, [rLY]
-	ldh [hSecondsBackup], a
 	call DelayFrame
 	ldh a, [hRandomSub]
 	ld [wPlayerID], a
-	ldh a, [rLY]
-	ldh [hSecondsBackup], a
 	call DelayFrame
 	ldh a, [hRandomAdd]
 	ld [wPlayerID + 1], a

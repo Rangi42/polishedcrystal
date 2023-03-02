@@ -163,7 +163,7 @@ hRandom::
 hRandomAdd:: db
 hRandomSub:: db
 
-hSecondsBackup:: db
+	ds 1 ; unused
 
 UNION
 ; 0 - player
