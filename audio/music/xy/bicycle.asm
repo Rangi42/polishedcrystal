@@ -504,7 +504,7 @@ BicycleXY_Ch3_sub_0:
 
 BicycleXY_Ch4::
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 6
 
 BicycleXY_Ch4_0:
@@ -523,32 +523,32 @@ BicycleXY_Ch4_0:
 	sound_call BicycleXY_Ch4_sub_1
 	sound_call BicycleXY_Ch4_sub_1
 	rest 4
-	note A#, 4
-	note B_, 8
+	drum_note 11, 4
+	drum_note 12, 8
 	rest 4
-	note A#, 4
-	note B_, 8
+	drum_note 11, 4
+	drum_note 12, 8
 	sound_jump BicycleXY_Ch4_0
 
 BicycleXY_Ch4_sub_0:
-	note C#, 4
-	note D_, 4
-	note C#, 4
-	note D_, 4
-	note C#, 4
-	note D_, 4
-	note C#, 2
-	note D_, 2
-	note D_, 4
+	drum_note 2, 4
+	drum_note 3, 4
+	drum_note 2, 4
+	drum_note 3, 4
+	drum_note 2, 4
+	drum_note 3, 4
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 3, 4
 	sound_ret
 
 BicycleXY_Ch4_sub_1:
-	note C#, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 3, 2
 	sound_ret

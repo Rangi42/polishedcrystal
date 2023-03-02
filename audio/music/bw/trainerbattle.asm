@@ -987,7 +987,7 @@ Music_TrainerBattleBW_Ch2_loop:
 
 Music_TrainerBattleBW_Ch3:
 	octave 1
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	note B_, 2
 	octave 2
 	note E_, 2
@@ -1901,7 +1901,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note D#, 2
 	octave 2
 	note D#, 1
-	note_type 4, 1, -1
+	note_type 4, 1, 9
 	rest 1
 	note F#, 3
 	rest 1
@@ -2124,7 +2124,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note C_, 6
 	note F_, 6
 	note F#, 6
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	sound_jump Music_TrainerBattleBW_Ch3_loop
 
 Music_TrainerBattleBW_Ch4:

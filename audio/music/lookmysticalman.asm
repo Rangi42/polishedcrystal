@@ -582,28 +582,28 @@ Music_LookMysticalMan_branch_1786ba:
 	sound_jump Music_LookMysticalMan_branch_178697
 
 Music_LookMysticalMan_branch_1786d3:
-	note D#, 4
-	note D_, 3
-	note D#, 3
-	note D#, 2
-	note D_, 4
+	drum_note 4, 4
+	drum_note 3, 3
+	drum_note 4, 3
+	drum_note 4, 2
+	drum_note 3, 4
 	sound_ret
 
 Music_LookMysticalMan_branch_1786d9:
-	note D#, 4
-	note D_, 3
-	note D_, 3
-	note D#, 2
-	note D_, 4
+	drum_note 4, 4
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 4, 2
+	drum_note 3, 4
 	sound_ret
 
 Music_LookMysticalMan_branch_1786df:
-	note D#, 4
-	note D_, 2
-	note D#, 1
-	note D_, 3
-	note D_, 2
-	note D#, 2
-	note D_, 1
-	note D_, 1
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 3
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret

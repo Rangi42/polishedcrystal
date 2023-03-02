@@ -307,20 +307,20 @@ Music_LookBeauty_branch_eef91:
 	sound_jump Music_LookBeauty_branch_eef91
 
 Music_LookBeauty_branch_eefa1:
-	note F#, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note G_, 2
-	note F#, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
+	drum_note 7, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
 	sound_ret

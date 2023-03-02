@@ -504,7 +504,7 @@ Music_GymLeaderBattlePrism_Loop2:
 	sound_jump Music_GymLeaderBattlePrism_Loop2
 
 Music_GymLeaderBattlePrism_Ch3:
-	note_type 4, 1, -1
+	note_type 4, 1, 9
 	octave 3
 	note D_, 11
 	rest 1
@@ -522,7 +522,7 @@ Music_GymLeaderBattlePrism_Ch3:
 	rest 1
 	note D_, 3
 	rest 1
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	note D_, 8
 	note D#, 8
 	note D_, 2

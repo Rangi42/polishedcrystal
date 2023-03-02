@@ -910,7 +910,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	sound_jump Music_GymLeaderBattleDPPt_Ch2_loop
 
 Music_GymLeaderBattleDPPt_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 1
 	note A#, 8
 	note B_, 8
@@ -1204,7 +1204,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note G_, 2
 	note F_, 2
 	note G#, 2
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note G_, 1
 	rest 1
 	note G_, 2
@@ -1497,7 +1497,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note A#, 4
 	note F#, 4
 	note D#, 4
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 2
 	sound_jump Music_GymLeaderBattleDPPt_Ch3_loop
 

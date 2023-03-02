@@ -1024,7 +1024,7 @@ Music_TrainerBattleDPPt_Ch2_loop:
 	sound_jump Music_TrainerBattleDPPt_Ch2_loop
 
 Music_TrainerBattleDPPt_Ch3:
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	volume_envelope 1, 6
 	note_type 12, 1, 6
 	rest 16
@@ -1045,7 +1045,7 @@ Music_TrainerBattleDPPt_Ch3:
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	note C_, 2
 	octave 2
 	note G_, 2

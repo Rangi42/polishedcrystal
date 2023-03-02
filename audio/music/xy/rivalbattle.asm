@@ -367,7 +367,7 @@ Music_RivalBattleXY_Ch2_branch_2:
 	sound_ret
 
 Music_RivalBattleXY_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 2
 	note A_, 1
 	rest 1

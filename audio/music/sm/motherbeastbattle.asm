@@ -745,33 +745,33 @@ Music_MotherBeastBattleSM_Ch2_branch_3:
 	sound_ret
 
 Music_MotherBeastBattleSM_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 2
 	rest 4
 	note D_, 16
 	note D_, 8
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note D_, 4
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note D_, 2
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	note G#, 11
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G#, 2
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note G#, 2
 	rest 5
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note A#, 12
 	note A#, 9
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note A#, 3
 Music_MotherBeastBattleSM_Ch3_loop_main:
 	rest 12
 	rest 12
 	rest 12
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note A_, 1
 	rest 1
@@ -784,13 +784,13 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	rest 1
 	note E_, 1
 	rest 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	octave 2
 	note D_, 12
 	note D#, 12
 	note D_, 12
 	note D_, 12
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note A_, 1
 	rest 1
 	note A_, 2
@@ -825,7 +825,7 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	rest 2
 	note E_, 2
 	rest 2
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 2
 	note A_, 12
 	note G#, 12
@@ -833,7 +833,7 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	octave 1
 	note B_, 12
 	octave 2
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note D_, 12
 	note C#, 12
 	note C_, 12
@@ -849,14 +849,14 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	note G_, 7
 	rest 1
 	note G_, 4
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 Music_MotherBeastBattleSM_Ch3_loop_1:
 	note C_, 4
 	rest 2
 	sound_loop 16, Music_MotherBeastBattleSM_Ch3_loop_1
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 Music_MotherBeastBattleSM_Ch3_loop_2:
 	note C_, 4
 	rest 2

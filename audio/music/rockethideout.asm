@@ -222,7 +222,7 @@ Music_RocketHideout_branch_eec14:
 	sound_jump Music_RocketHideout_branch_eec14
 
 Music_RocketHideout_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 Music_RocketHideout_branch_eec7c:
 	octave 2
 	note D#, 2
@@ -297,12 +297,12 @@ Music_RocketHideout_branch_eecc7:
 
 Music_RocketHideout_branch_eecdb:
 	stereo_panning TRUE, FALSE
-	note D#, 1
-	note D#, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	stereo_panning FALSE, TRUE
-	note A_, 4
-	note D#, 1
-	note D#, 1
+	drum_note 10, 4
+	drum_note 4, 1
+	drum_note 4, 1
 	stereo_panning TRUE, FALSE
-	note A_, 4
+	drum_note 10, 4
 	sound_ret

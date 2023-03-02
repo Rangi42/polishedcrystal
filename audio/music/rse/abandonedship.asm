@@ -679,13 +679,13 @@ Music_AbandonedShipRSE_branch_2:
 	sound_jump Music_AbandonedShipRSE_branch_1
 
 Music_AbandonedShipRSE_branch_eeb6b:
-	note D_, 2
-	note C#, 1
-	note C#, 1
-	note D_, 2
-	note C#, 1
-	note C#, 1
-	note D_, 2
-	note C#, 1
-	note C#, 1
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_ret

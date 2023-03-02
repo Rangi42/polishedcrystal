@@ -646,14 +646,14 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	sound_jump Music_LegendaryBattleXY_Ch2_loop_main
 
 Music_LegendaryBattleXY_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	vibrato 18, 3, 4
 	octave 2
 	note F_, 16
 	note F_, 16
 	note F_, 16
 	note F_, 8
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F_, 8
 Music_LegendaryBattleXY_Ch3_loop_main:
 Music_LegendaryBattleXY_Ch3_loop_1:
@@ -706,7 +706,7 @@ Music_LegendaryBattleXY_Ch3_loop_1:
 	note C_, 4
 	sound_loop 2, Music_LegendaryBattleXY_Ch3_loop_1
 Music_LegendaryBattleXY_Ch3_loop_2:
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 1
 	note F_, 2
 	octave 2
@@ -753,7 +753,7 @@ Music_LegendaryBattleXY_Ch3_loop_2:
 	octave 2
 	note A#, 2
 Music_LegendaryBattleXY_Ch3_loop_3:
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 1
 	note F_, 2
 	octave 2

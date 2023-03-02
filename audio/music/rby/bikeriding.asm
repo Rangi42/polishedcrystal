@@ -645,7 +645,7 @@ Music_BikeRiding_branch_7dd17:
 	sound_jump Music_BikeRiding_branch_7dd17
 Music_BikeRiding_Ch4:
 	toggle_noise 1
-	note_type 12
+	drum_speed 12
 	rest 2
 Music_BikeRiding_branch_7de6a:
 	sound_call Music_BikeRiding_branch_7dea7
@@ -670,32 +670,32 @@ Music_BikeRiding_branch_7de6a:
 	sound_jump Music_BikeRiding_branch_7de6a
 Music_BikeRiding_branch_7dea7:
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	sound_ret
 Music_BikeRiding_branch_7deb4:
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 2
 	sound_ret
 Music_BikeRiding_branch_7dec2:
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 2
+	drum_note 9, 2
 	rest 2
-	note G#, 1
-	note G#, 1
+	drum_note 9, 1
+	drum_note 9, 1
 	sound_ret

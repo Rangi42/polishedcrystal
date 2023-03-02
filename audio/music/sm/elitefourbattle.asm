@@ -443,7 +443,7 @@ Music_EliteFourBattleSM_Ch3:
 	sound_call Music_EliteFourBattleSM_Ch3_branch_1
 Music_EliteFourBattleSM_Ch3_loop_main:
 Music_EliteFourBattleSM_Ch3_loop_1:
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note E_, 2
 	note B_, 2
 	note E_, 2
@@ -583,16 +583,16 @@ Music_EliteFourBattleSM_Ch3_loop_9:
 	sound_jump Music_EliteFourBattleSM_Ch3_loop_main
 
 Music_EliteFourBattleSM_Ch3_branch_1:
-	note_type 3, 1, -1
+	note_type 3, 1, 9
 	note E_, 3
 	rest 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note E_, 3
 	rest 1
 	note E_, 3
 	rest 1
 	sound_loop 8, Music_EliteFourBattleSM_Ch3_branch_1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	note F_, 4
 	rest 12
 	rest 16

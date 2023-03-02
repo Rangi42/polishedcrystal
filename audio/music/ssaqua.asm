@@ -1129,44 +1129,44 @@ Music_SSAqua_branch_eb24e:
 	sound_jump Music_SSAqua_branch_eb24e
 
 Music_SSAqua_branch_eb2ae:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
 	sound_ret
 
 Music_SSAqua_branch_eb2bb:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_ret
 
 Music_SSAqua_branch_eb2c7:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note C_, 2
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 1, 2
 	sound_ret

@@ -1144,7 +1144,7 @@ Music_Megalovania_Ch3:
 Music_Megalovania_Ch3_loop:
 	duty_cycle 9
 	octave 3
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	note D_, 1
 	note D_, 1
 	sound_call Music_Megalovania_Ch1Ch3_ditty_1

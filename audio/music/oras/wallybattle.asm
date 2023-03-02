@@ -306,7 +306,7 @@ Music_WallyBattleORAS_Ch2_branch_1:
 	sound_ret
 
 Music_WallyBattleORAS_Ch3:
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	vibrato 18, 1, 5
 	rest 6
 Music_WallyBattleORAS_Ch3_loop_main:

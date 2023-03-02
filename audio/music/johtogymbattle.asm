@@ -614,7 +614,7 @@ Music_JohtoGymBattle_branch_ea6ee:
 	sound_jump Music_JohtoGymBattle_branch_ea6ee
 
 Music_JohtoGymBattle_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 4
 	note F_, 1
 	rest 1
