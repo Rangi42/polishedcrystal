@@ -6369,12 +6369,14 @@ GetUserItemAfterUnnerve::
 	cp UNNERVE
 	ret nz
 	ld a, [hl]
+	push bc
 	push de
 	push hl
 	ld hl, EdibleBerries
 	call IsInByteArray
 	pop hl
 	pop de
+	pop bc
 	ret c
 	ld hl, NoItem
 	ld b, HELD_NONE

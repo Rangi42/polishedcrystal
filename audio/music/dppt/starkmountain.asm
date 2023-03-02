@@ -756,13 +756,13 @@ Music_StarkMountainDPPt_Ch2_loop:
 
 Music_StarkMountainDPPt_Ch3:
 	pitch_offset 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	vibrato 8, 4, 5
 Music_StarkMountainDPPt_Ch3_loop:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 4
 	rest 9
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note C_, 1
 	rest 1
 	note C#, 1
@@ -876,7 +876,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note G_, 12
 	rest 15
 	octave 4
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note C_, 1
 	rest 1
 	note C#, 1
@@ -915,7 +915,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	rest 16
 	rest 16
 	rest 10
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 4
 	note C_, 1
 	rest 1
@@ -1024,14 +1024,14 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A#, 1
 	rest 1
 	note A#, 2
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	rest 9
 	octave 4
 	note A#, 1
 	rest 2
 	note A#, 1
 	rest 1
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note A#, 1
 	rest 1
 	note A#, 2
@@ -1063,11 +1063,11 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A_, 1
 	octave 6
 	note C_, 1
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	note D_, 16
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note D_, 16
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note D_, 16
 	rest 16
 	volume_envelope 1, 5

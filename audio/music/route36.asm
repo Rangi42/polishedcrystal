@@ -490,32 +490,32 @@ Music_Route36_branch_e9723:
 	sound_jump Music_Route36_branch_e9713
 
 Music_Route36_branch_e9734:
-	note A_, 4
-	note A_, 6
-	note A#, 1
-	note A#, 1
-	note A_, 2
-	note A#, 2
+	drum_note 10, 4
+	drum_note 10, 6
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 10, 2
+	drum_note 11, 2
 	sound_ret
 
 Music_Route36_branch_e973b:
-	note A_, 4
-	note A_, 6
-	note B_, 1
-	note A#, 1
-	note A_, 4
+	drum_note 10, 4
+	drum_note 10, 6
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 10, 4
 	sound_ret
 
 Music_Route36_branch_e9741:
-	note A_, 4
-	note A_, 6
-	note A#, 1
-	note A#, 1
-	note A_, 2
-	note_type 6
-	note A#, 1
-	note A#, 1
-	note A_, 1
-	note A_, 1
-	note_type 12
+	drum_note 10, 4
+	drum_note 10, 6
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 10, 2
+	drum_speed 6
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_speed 12
 	sound_ret

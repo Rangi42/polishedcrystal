@@ -411,10 +411,10 @@ Music_GymLeaderVictory_branch_f47fb:
 	sound_jump Music_GymLeaderVictory_branch_f47eb
 
 Music_GymLeaderVictory_branch_f480b:
-	note D#, 6
-	note D#, 2
-	note D#, 4
-	note D_, 2
-	note D#, 2
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 2
 	sound_loop 3, Music_GymLeaderVictory_branch_f480b
 	sound_ret

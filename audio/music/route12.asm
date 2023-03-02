@@ -440,12 +440,12 @@ Music_Route12_branch_ec707:
 	sound_jump Music_Route12_branch_ec6e1
 
 Music_Route12_branch_ec717:
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_ret

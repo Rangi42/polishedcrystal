@@ -414,21 +414,21 @@ Music_Clair_branch_1fc5e:
 	sound_jump Music_Clair_branch_1fc5e
 
 Music_Clair_branch_1fc6e:
-	note D#, 2
+	drum_note 4, 2
 	stereo_panning TRUE, FALSE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning TRUE, TRUE
-	note D_, 2
+	drum_note 3, 2
 	stereo_panning TRUE, FALSE
-	note G_, 1
-	note G_, 1
-	note G_, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 2
 	stereo_panning TRUE, TRUE
-	note D#, 1
+	drum_note 4, 1
 	stereo_panning TRUE, FALSE
-	note G_, 1
+	drum_note 8, 1
 	stereo_panning TRUE, TRUE
-	note D_, 2
+	drum_note 3, 2
 	stereo_panning TRUE, FALSE
-	note G_, 1
+	drum_note 8, 1
 	sound_ret

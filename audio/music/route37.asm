@@ -416,13 +416,13 @@ Music_Route37_branch_eeb51:
 	sound_jump Music_Route37_branch_eeb51
 
 Music_Route37_branch_eeb6b:
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D#, 1
-	note D#, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_ret

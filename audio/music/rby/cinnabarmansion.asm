@@ -152,7 +152,7 @@ Music_CinnabarMansionRBY_branch_7ed80:
 	sound_jump Music_CinnabarMansionRBY_branch_7ed80
 
 Music_CinnabarMansionRBY_Ch4:
-	note_type 6
+	drum_speed 6
 	toggle_noise 1
 	rest 16
 	rest 16
@@ -160,22 +160,22 @@ Music_CinnabarMansionRBY_Ch4:
 	rest 16
 
 Music_CinnabarMansionRBY_branch_7edb5:
-	note E_, 2
-	note E_, 2
-	note F_, 4
-	note E_, 2
-	note E_, 2
-	note F_, 4
-	note E_, 2
-	note E_, 2
-	note F_, 4
-	note E_, 2
-	note E_, 2
-	note F#, 4
-	note E_, 2
-	note E_, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 6, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 6, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 6, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 7, 4
+	drum_note 5, 2
+	drum_note 5, 2
 	rest 2
 	rest 10
 	rest 8
-	note F#, 8
+	drum_note 7, 8
 	sound_jump Music_CinnabarMansionRBY_branch_7edb5

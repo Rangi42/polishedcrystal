@@ -669,7 +669,7 @@ Music_RocketBattle_branch_e9ea0:
 	sound_ret
 
 Music_RocketBattle_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 3
 	note A_, 2
 	octave 4

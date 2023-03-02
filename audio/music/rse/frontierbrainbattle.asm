@@ -1258,10 +1258,10 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	sound_jump Music_FrontierBrainBattleRSE_Ch2_loop
 
 Music_FrontierBrainBattleRSE_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	vibrato 0, 2, 0
 	rest 4
-	note_type 8, 1, -1
+	note_type 8, 1, 9
 	octave 2
 	note F#, 2
 	octave 3
@@ -1298,7 +1298,7 @@ Music_FrontierBrainBattleRSE_Ch3:
 	octave 3
 	note C_, 2
 Music_FrontierBrainBattleRSE_Ch3_loop:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 2
 	note B_, 1
 	octave 3
@@ -1429,7 +1429,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note D_, 1
 	octave 2
 	note A#, 2
-	note_type 8, 1, -1
+	note_type 8, 1, 9
 	note E_, 2
 	rest 1
 	note E_, 2
@@ -1503,7 +1503,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 3
 	octave 2
 	note E_, 3
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 3
 	note E_, 1
 	note D#, 1
@@ -2251,7 +2251,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 2
 	rest 2
 	note A_, 2
-	note_type 8, 1, -1
+	note_type 8, 1, 9
 	octave 2
 	note F#, 2
 	octave 3

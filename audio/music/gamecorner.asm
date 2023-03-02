@@ -784,24 +784,24 @@ Music_GameCorner_branch_ee0e8:
 	sound_jump Music_GameCorner_branch_ee07f
 
 Music_GameCorner_branch_ee106:
-	note C_, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 1, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_ret
 
 Music_GameCorner_branch_ee10f:
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
 	sound_ret

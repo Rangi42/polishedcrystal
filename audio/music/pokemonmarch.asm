@@ -437,24 +437,24 @@ Music_PokemonMarch_branch_f7003:
 	sound_jump Music_PokemonMarch_branch_f7003
 
 Music_PokemonMarch_branch_f7042:
-	note C_, 4
-	note C_, 2
-	note C_, 4
-	note C_, 2
-	note C_, 4
-	note D_, 2
-	note D_, 2
-	note C#, 2
-	note C#, 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 2, 2
 	sound_ret
 
 Music_PokemonMarch_branch_f704c:
-	note C_, 4
-	note C_, 2
-	note C_, 4
-	note C_, 4
-	note C_, 4
-	note C#, 2
-	note D_, 2
-	note C#, 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 2, 2
 	sound_ret

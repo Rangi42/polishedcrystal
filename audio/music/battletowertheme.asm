@@ -637,50 +637,50 @@ Music_BattleTowerTheme_branch_178b35:
 	sound_jump Music_BattleTowerTheme_branch_178b11
 
 Music_BattleTowerTheme_branch_178b58:
-	note D_, 2
-	note D_, 4
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 4
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret
 
 Music_BattleTowerTheme_branch_178b61:
-	note D_, 2
-	note D_, 4
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note C#, 1
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 2, 1
 	sound_ret
 
 Music_BattleTowerTheme_branch_178b6c:
-	note D_, 2
-	note D_, 4
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret
 
 Music_BattleTowerTheme_branch_178b76:
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note D_, 1
-	note C#, 1
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note D_, 1
-	note C#, 1
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 2, 1
 	sound_ret

@@ -713,71 +713,71 @@ Music_ViridianCity_branch_f42e9:
 	sound_jump Music_ViridianCity_branch_f42e9
 
 Music_ViridianCity_branch_f431d:
-	note E_, 2
-	note E_, 2
-	note D_, 2
-	note E_, 4
-	note D_, 2
-	note E_, 2
-	note F#, 2
-	note E_, 2
-	note E_, 2
-	note D_, 4
-	note E_, 2
-	note D_, 2
-	note E_, 2
-	note F#, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 3, 2
+	drum_note 5, 4
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 7, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 3, 4
+	drum_note 5, 2
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 7, 2
 	sound_ret
 
 Music_ViridianCity_branch_f432c:
-	note E_, 2
-	note E_, 2
-	note D_, 2
-	note E_, 4
-	note D_, 2
-	note E_, 2
-	note F#, 2
-	note E_, 2
-	note E_, 2
-	note F#, 4
-	note D_, 2
-	note D_, 2
-	note A#, 2
-	note A#, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 3, 2
+	drum_note 5, 4
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 7, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 7, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 11, 2
+	drum_note 11, 2
 	sound_ret
 
 Music_ViridianCity_branch_f433b:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 4
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 2
 	sound_ret
 
 Music_ViridianCity_branch_f434b:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 4
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note F#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_ret

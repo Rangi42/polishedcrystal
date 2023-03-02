@@ -539,7 +539,7 @@ Music_PaletteBattlePrism_branch_1edbef:
 	sound_jump Music_PaletteBattlePrism_branch_1edb37
 
 Music_PaletteBattlePrism_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	rest 16
 	rest 16
 

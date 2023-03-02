@@ -643,7 +643,7 @@ Music_ChampionBattleRSE_Ch2_branch_1:
 	sound_ret
 
 Music_ChampionBattleRSE_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	vibrato 18, 1, 5
 	octave 3
 	note C_, 1

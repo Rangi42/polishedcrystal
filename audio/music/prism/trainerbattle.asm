@@ -579,7 +579,7 @@ Music_TrainerBattlePrism_L4:
 	sound_jump Music_TrainerBattlePrism_L2
 
 Music_TrainerBattlePrism_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 3
 	note C_, 16
 	note C#, 16
