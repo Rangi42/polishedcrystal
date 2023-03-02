@@ -12,32 +12,71 @@ FarCopyBytes::
 _CopyBytes::
 ; copy bc bytes from hl to de
 	inc b  ; we bail the moment b hits 0, so include the last run
-	inc c  ; same thing; include last byte
-	jr .HandleLoop
-.CopyByte:
+
+	srl c
+	jr nc, :+
 	ld a, [hli]
 	ld [de], a
 	inc de
-.HandleLoop:
+
+:	srl c
+	jr nc, :+
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+
+:	jr z, :++
+:	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+
 	dec c
-	jr nz, .CopyByte
-	dec b
-	jr nz, .CopyByte
-	ret
+	jr nz, :-
+
+:	dec b
+	ret z
+
+	ld c, $40
+	jr :--
+
 
 _ByteFill::
 ; fill bc bytes with the value of a, starting at hl
 	inc b  ; we bail the moment b hits 0, so include the last run
-	inc c  ; same thing; include last byte
-	jr .HandleLoop
-.PutByte:
+	srl c
+	jr nc, :+
 	ld [hli], a
-.HandleLoop:
+
+:	srl c
+	jr nc, :+
+	ld [hli], a
+	ld [hli], a
+
+:	jr z, :++
+:	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
 	dec c
-	jr nz, .PutByte
-	dec b
-	jr nz, .PutByte
-	ret
+	jr nz, :-
+
+:	dec b
+	ret z
+
+	ld c, $40
+	jr :--
 
 GetFarWord::
 ; retrieve a word from a:hl, and return it in hl.
