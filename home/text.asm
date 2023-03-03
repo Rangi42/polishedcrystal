@@ -181,6 +181,15 @@ _PlaceString::
 ; input: de = string, hl = coords
 ; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
 	push hl
+	jr PlaceNextChar
+
+SpaceChar::
+	ld a, " "
+_PlaceLiteralChar:
+	ld [hli], a
+	call PrintLetterDelay
+NextChar::
+	inc de
 PlaceNextChar::
 	; charmap order: commands, then ngrams, then specials, then literals
 	ld a, [de]
@@ -193,14 +202,6 @@ PlaceNextChar::
 	dec de
 	jmp FinishString
 
-SpaceChar::
-	ld a, " "
-_PlaceLiteralChar:
-	ld [hli], a
-	call PrintLetterDelay
-NextChar::
-	inc de
-	jr PlaceNextChar
 
 _PlaceNgramChar:
 	sub NGRAMS_START
@@ -265,7 +266,7 @@ LineChar::
 	pop hl
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	push hl
-	jr NextChar
+	jmp NextChar
 
 ContText::
 	ld a, [wLinkMode]
@@ -281,7 +282,7 @@ ContText::
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
-	jr NextChar
+	jmp NextChar
 
 Paragraph::
 	push de
