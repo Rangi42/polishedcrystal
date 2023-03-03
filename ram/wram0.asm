@@ -921,7 +921,7 @@ SECTION UNION "Misc 1326", WRAM0
 ; Bill's PC
 
 	; LCD hblank code block. Labels are defined as part of the code.
-	ds $ca
+	ds $cf
 	assert BillsPC_LCDCodeEnd - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
