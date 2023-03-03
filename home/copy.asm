@@ -14,69 +14,67 @@ _CopyBytes::
 	inc b  ; we bail the moment b hits 0, so include the last run
 
 	srl c
-	jr nc, :+
+	jr nc, .skip1
 	ld a, [hli]
 	ld [de], a
 	inc de
 
-:	srl c
-	jr nc, :+
+.skip1
+	srl c
+	jr nc, .skip2
+rept 2
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+endr
 
-:	jr z, :++
-:	ld a, [hli]
-	ld [de], a
-	inc de
+.skip2
+	jr z, .next
+.loop
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+endr
 
 	dec c
-	jr nz, :-
+	jr nz, .loop
 
-:	dec b
+.next
+	dec b
 	ret z
 
 	ld c, $40
-	jr :--
-
+	jr .loop
 
 _ByteFill::
 ; fill bc bytes with the value of a, starting at hl
 	inc b  ; we bail the moment b hits 0, so include the last run
 	srl c
-	jr nc, :+
+	jr nc, .skip1
 	ld [hli], a
 
-:	srl c
-	jr nc, :+
+.skip1
+	srl c
+	jr nc, .skip2
 	ld [hli], a
 	ld [hli], a
 
-:	jr z, :++
-:	ld [hli], a
+.skip2
+	jr z, .next
+.loop
+rept 4
 	ld [hli], a
-	ld [hli], a
-	ld [hli], a
+endr
 	dec c
-	jr nz, :-
+	jr nz, .loop
 
-:	dec b
+.next
+	dec b
 	ret z
 
 	ld c, $40
-	jr :--
+	jr .loop
 
 GetFarWord::
 ; retrieve a word from a:hl, and return it in hl.
