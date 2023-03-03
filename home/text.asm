@@ -632,10 +632,8 @@ PrintDayOfWeek::
 	ld b, 0
 	ld hl, .Days
 	add hl, bc
+	ld c, [hl]
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ld d, h
 	ld e, l
 	pop hl
@@ -648,13 +646,13 @@ PrintDayOfWeek::
 	ret
 
 .Days:
-	dw .Sun
-	dw .Mon
-	dw .Tues
-	dw .Wednes
-	dw .Thurs
-	dw .Fri
-	dw .Satur
+	db .Sun    - @
+	db .Mon    - @
+	db .Tues   - @
+	db .Wednes - @
+	db .Thurs  - @
+	db .Fri    - @
+	db .Satur  - @
 
 .Sun:    db "Sun@"
 .Mon:    db "Mon@"
