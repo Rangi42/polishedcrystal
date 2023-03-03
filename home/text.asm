@@ -207,14 +207,21 @@ _PlaceNgramChar:
 	sub NGRAMS_START
 	push de
 	push hl
-	add a
 	ld e, a
 	ld d, 0
 	ld hl, NgramStrings
 	add hl, de
+	ld e, [hl]
+	add hl, de
+	cp NGRAMS_VAR_START - NGRAMS_START
+	jr c, .done
+	; These are pointers to strings
 	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld h, [hl]
+	ld l, a
+.done
+	ld d, h
+	ld e, l
 	pop hl
 	jmp PlaceCommandCharacter
 
@@ -266,7 +273,7 @@ LineChar::
 	pop hl
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	push hl
-	jmp NextChar
+	jr NextChar
 
 ContText::
 	ld a, [wLinkMode]

@@ -230,6 +230,7 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 
 DEF NGRAMS_START EQU $09
+DEF NGRAMS_VAR_START EQU $4f
 
 	newcharmap compressing, no_ngrams
 
