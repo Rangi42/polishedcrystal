@@ -230,12 +230,12 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 
 DEF NGRAMS_START EQU $09
-DEF NGRAMS_VAR_START EQU $4f
 
 	newcharmap compressing, no_ngrams
 
 	ctxtmap "#",        $4d, 10110001100
 	ctxtmap "#mon",     $4e, 01011010
+DEF NGRAMS_VAR_START EQU $4f
 	; these below are implemented as n-grams whose string is stored in WRAM
 	ctxtmap "<PLAYER>", $4f, 1101010010
 	ctxtmap "<RIVAL>",  $50, 001000111101101

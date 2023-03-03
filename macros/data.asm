@@ -59,6 +59,10 @@ MACRO dab ; dwb address, bank
 	endr
 ENDM
 
+MACRO dr ; relative offset
+	db \1 - @
+ENDM
+
 MACRO dbpixel
 	if _NARG >= 4
 		db \1 * 8 + \3, \2 * 8 + \4
