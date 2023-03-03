@@ -177,9 +177,6 @@ VBlank0::
 	ld [wTextDelayFrames], a
 .noDelay2
 	call Joypad
-
-	ldh a, [hSeconds]
-	ldh [hSecondsBackup], a
 	; fallthrough
 
 VBlank2::
@@ -258,9 +255,6 @@ VBlank4::
 	ld [wTextDelayFrames], a
 .noDelay2
 	call Joypad
-
-	ldh a, [hSeconds]
-	ldh [hSecondsBackup], a
 
 	; A variant of code in vblank1 for running the sound engine with LCD int
 	ldh a, [hROMBankBackup]

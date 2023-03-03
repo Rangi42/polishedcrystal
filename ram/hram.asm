@@ -55,13 +55,9 @@ NEXTU
 hMoveMon:: db
 ENDU
 
-UNION
 hFarCallSavedHL::
 hFarCallSavedL:: db
 hFarCallSavedH:: db
-NEXTU
-hLZAddress:: dw
-ENDU
 
 UNION
 ; math-related values
@@ -167,7 +163,7 @@ hRandom::
 hRandomAdd:: db
 hRandomSub:: db
 
-hSecondsBackup:: db
+	ds 1 ; unused
 
 UNION
 ; 0 - player
