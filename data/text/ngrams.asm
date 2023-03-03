@@ -1,80 +1,85 @@
 NgramStrings:
-	table_width 2, NgramStrings
-	dw .e_
-	dw ._t
-	dw .ou
-	dw .in
-	dw .th
-	dw .he
-	dw .t_
-	dw .er
-	dw .on
-	dw .re
-	dw .s_
-	dw .at
-	dw .an
-	dw .to
-	dw .ha
-	dw .ng
-	dw .it
-	dw .is
-	dw .ea
-	dw .ve
-	dw .ar
-	dw .st
-	dw .le
-	dw .or
-	dw .te
-	dw .as
-	dw .yo
-	dw .y_
-	dw .r_
-	dw ._b
-	dw .en
-	dw .me
-	dw .e_t
-	dw .comma_
-	dw .es
-	dw .e_you
-	dw .se
-	dw .ne
-	dw ._h
-	dw .I_
-	dw .our
-	dw .You
-	dw .nd
-	dw .ow
-	dw ._c
-	dw ._wa
-	dw .ome
-	dw .are
-	dw .The
-	dw .t__s
-	dw .ut
-	dw .nt
-	dw .the
-	dw .you
-	dw .ing
-	dw .hat
-	dw .and
-	dw .for
-	dw .all
-	dw .here
-	dw .that
-	dw .have
-	dw .rain
-	dw .this
-	dw .ight
-	dw .with
-	dw .ould
-	dw .attle
-	dw .Poke
-	dw .Pokemon
-	dw wPlayerName
-	dw wRivalName
-	dw wTrendyPhrase
+	table_width 1, NgramStrings
+	; Using offsets instead of full pointers to save space
+	db .e_      - @
+	db ._t      - @
+	db .ou      - @
+	db .in      - @
+	db .th      - @
+	db .he      - @
+	db .t_      - @
+	db .er      - @
+	db .on      - @
+	db .re      - @
+	db .s_      - @
+	db .at      - @
+	db .an      - @
+	db .to      - @
+	db .ha      - @
+	db .ng      - @
+	db .it      - @
+	db .is      - @
+	db .ea      - @
+	db .ve      - @
+	db .ar      - @
+	db .st      - @
+	db .le      - @
+	db .or      - @
+	db .te      - @
+	db .as      - @
+	db .yo      - @
+	db .y_      - @
+	db .r_      - @
+	db ._b      - @
+	db .en      - @
+	db .me      - @
+	db .e_t     - @
+	db .comma_  - @
+	db .es      - @
+	db .e_you   - @
+	db .se      - @
+	db .ne      - @
+	db ._h      - @
+	db .I_      - @
+	db .our     - @
+	db .You     - @
+	db .nd      - @
+	db .ow      - @
+	db ._c      - @
+	db ._wa     - @
+	db .ome     - @
+	db .are     - @
+	db .The     - @
+	db .t__s    - @
+	db .ut      - @
+	db .nt      - @
+	db .the     - @
+	db .you     - @
+	db .ing     - @
+	db .hat     - @
+	db .and     - @
+	db .for     - @
+	db .all     - @
+	db .here    - @
+	db .that    - @
+	db .have    - @
+	db .rain    - @
+	db .this    - @
+	db .ight    - @
+	db .with    - @
+	db .ould    - @
+	db .attle   - @
+	db .Poke    - @
+	db .Pokemon - @
+	assert_table_length NGRAMS_VAR_START - NGRAMS_START
+	db .Player  - @
+	db .Rival   - @
+	db .Trendy  - @
 	assert_table_length NGRAMS_END - NGRAMS_START + 1
 
+.Player:  dw wPlayerName
+.Rival:   dw wRivalName
+.Trendy:  dw wTrendyPhrase
 .e_:      rawchar "e @"
 ._t:      rawchar " t@"
 .ou:      rawchar "ou@"

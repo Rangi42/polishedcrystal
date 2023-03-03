@@ -181,6 +181,15 @@ _PlaceString::
 ; input: de = string, hl = coords
 ; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
 	push hl
+	jr PlaceNextChar
+
+SpaceChar::
+	ld a, " "
+_PlaceLiteralChar:
+	ld [hli], a
+	call PrintLetterDelay
+NextChar::
+	inc de
 PlaceNextChar::
 	; charmap order: commands, then ngrams, then specials, then literals
 	ld a, [de]
@@ -193,27 +202,26 @@ PlaceNextChar::
 	dec de
 	jmp FinishString
 
-SpaceChar::
-	ld a, " "
-_PlaceLiteralChar:
-	ld [hli], a
-	call PrintLetterDelay
-NextChar::
-	inc de
-	jr PlaceNextChar
 
 _PlaceNgramChar:
 	sub NGRAMS_START
 	push de
 	push hl
-	add a
 	ld e, a
 	ld d, 0
 	ld hl, NgramStrings
 	add hl, de
+	ld e, [hl]
+	add hl, de
+	cp NGRAMS_VAR_START - NGRAMS_START
+	jr c, .done
+	; These are pointers to strings
 	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld h, [hl]
+	ld l, a
+.done
+	ld d, h
+	ld e, l
 	pop hl
 	jmp PlaceCommandCharacter
 
@@ -281,7 +289,7 @@ ContText::
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
-	jr NextChar
+	jmp NextChar
 
 Paragraph::
 	push de
@@ -624,10 +632,8 @@ PrintDayOfWeek::
 	ld b, 0
 	ld hl, .Days
 	add hl, bc
+	ld c, [hl]
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ld d, h
 	ld e, l
 	pop hl
@@ -640,13 +646,13 @@ PrintDayOfWeek::
 	ret
 
 .Days:
-	dw .Sun
-	dw .Mon
-	dw .Tues
-	dw .Wednes
-	dw .Thurs
-	dw .Fri
-	dw .Satur
+	db .Sun    - @
+	db .Mon    - @
+	db .Tues   - @
+	db .Wednes - @
+	db .Thurs  - @
+	db .Fri    - @
+	db .Satur  - @
 
 .Sun:    db "Sun@"
 .Mon:    db "Mon@"
