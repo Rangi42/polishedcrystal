@@ -73,19 +73,21 @@ Init::
 	xor a
 	ldh [rLCDC], a
 
+; Place stack at its default location in in hram
+	ld sp, $FFFE
+
+; Enable double speed now to speed up the rest of initialization
+	ldh a, [hCGB]
+	and a
+	call nz, DoubleSpeed
+
 ; Clear WRAM bank 0
-; Can't use rst ByteFill since we haven't initialized sp yet,
-; and wStack is part of WRAM0.
 	ld hl, wRAM0Start
 	ld bc, wRAM0End - wRAM0Start
-.ByteFill:
 	xor a
-	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .ByteFill
+	rst ByteFill
 
+; Move stack to wram
 	ld sp, wStack
 
 ; Clear HRAM
@@ -192,10 +194,6 @@ Init::
 	xor a
 	ld [MBC3LatchClock], a
 	ld [MBC3SRamEnable], a
-
-	ldh a, [hCGB]
-	and a
-	call nz, DoubleSpeed
 
 	xor a
 	ldh [rIF], a
