@@ -89,9 +89,9 @@ CopySpritePal::
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
-	pop af
-	pop bc
 	pop hl
+	pop bc
+	pop af
 	ret
 
 ApplyOBPals:
