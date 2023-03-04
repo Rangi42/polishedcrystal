@@ -2179,7 +2179,7 @@ UpdateMapObjectDataAndSprites::
 	inc a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
-	ret
+	jmp _UpdateSprites
 
 BattleStart_HideAllSpritesExceptBattleParticipants:
 ; called at battle start

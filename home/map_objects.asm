@@ -287,8 +287,7 @@ UpdateSprites::
 	bit 0, a
 	ret z
 
-	farcall UpdateMapObjectDataAndSprites
-	farjp _UpdateSprites
+	farjp UpdateMapObjectDataAndSprites
 
 GetObjectStruct::
 	ld bc, OBJECT_LENGTH
