@@ -318,7 +318,7 @@ IntroScene7:
 	call ClearSpriteAnims
 	depixel 13, 27, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld a, $f0
 	ld [wGlobalAnimXOffset], a
 	call Intro_SetCGBPalUpdate
@@ -411,7 +411,7 @@ IntroScene10:
 	depixel 22, 6
 	ld a, SPRITE_ANIM_INDEX_INTRO_WOOPER
 .got_anim
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld de, SFX_INTRO_PICHU
 	jmp PlaySFX
 
@@ -552,7 +552,7 @@ IntroScene13:
 	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld de, MUSIC_CRYSTAL_OPENING
 	call PlayMusic
 	xor a
@@ -657,10 +657,10 @@ IntroScene15:
 	call Intro_SetCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -801,7 +801,7 @@ IntroScene19:
 	call Intro_SetCGBPalUpdate
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -1021,41 +1021,41 @@ INCLUDE "gfx/intro/fade.pal"
 CrystalIntro_InitUnownAnim:
 	push de
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $8
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_4
-	call ReinitSpriteAnimFrame
+	farcall ReinitSpriteAnimFrame
 	pop de
 
 	push de
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $18
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_3
-	call ReinitSpriteAnimFrame
+	farcall ReinitSpriteAnimFrame
 	pop de
 
 	push de
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $28
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_1
-	call ReinitSpriteAnimFrame
+	farcall ReinitSpriteAnimFrame
 	pop de
 
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $38
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_2
-	jmp ReinitSpriteAnimFrame
+	farjp ReinitSpriteAnimFrame
 
 CrystalIntro_UnownFade:
 	add a

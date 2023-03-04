@@ -296,7 +296,7 @@ HandleWeather:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -337,7 +337,7 @@ HandleWeather:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -463,7 +463,7 @@ HandleLeftovers:
 
 PreventEndturnDamage:
 ; returns z if residual damage at endturn is prevented
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp MAGIC_GUARD
 	call nz, HasUserFainted
 	ret
@@ -530,7 +530,7 @@ HandlePoison:
 	ld hl, HurtByPoisonText
 	ld de, ANIM_PSN
 	ret z
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp POISON_HEAL
 	jr nz, DoPoisonBurnDamage
 	; check if we are at full HP
@@ -984,7 +984,7 @@ HandleStatusOrbs:
 	xor a
 	ld [wNumHits], a
 	farcall PlayOpponentBattleAnim
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 	pop hl
 	jmp StdBattleTextbox
 

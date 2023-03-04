@@ -303,7 +303,7 @@ CutDownGrass:
 	ld [hl], a
 	xor a
 	ldh [hBGMapMode], a
-	call LoadMapPart
+	farcall LoadMapPart
 	call UpdateSprites
 	call DelayFrame
 	ld a, 1 ; Animation type
@@ -369,7 +369,7 @@ CutDownTree:
 	farcall CopyBGGreenToOBPal7
 	xor a
 	ldh [hBGMapMode], a
-	call LoadMapPart
+	farcall LoadMapPart
 	call UpdateSprites
 	call DelayFrame
 	xor a ; Animation type

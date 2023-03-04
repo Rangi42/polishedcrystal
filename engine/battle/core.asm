@@ -261,7 +261,7 @@ HandleBerserkGene:
 	farcall ConsumeUserItem
 
 	; Own Tempo prevents confusion. Safeguard, however, doesn't.
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp OWN_TEMPO
 	ret z
 
@@ -358,7 +358,7 @@ GetSpeed::
 	call GetBattleVar
 	bit PAR, a
 	jr z, .paralyze_done
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp QUICK_FEET
 	ln a, 1, 2 ; x0.5
 	call nz, MultiplyAndDivide
@@ -640,7 +640,7 @@ GetMovePriority:
 .got_priority
 	xor $80 ; treat it as a signed byte
 	ld b, a
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp PRANKSTER
 	jr nz, .no_priority
 	ld a, BATTLE_VARS_MOVE_CATEGORY
@@ -3133,7 +3133,7 @@ RunBothActivationAbilities:
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
 	; Only show Neutralizing Gas message once.
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp NEUTRALIZING_GAS
 	jr nz, .no_double_gas
 	call GetOpponentAbility
@@ -3166,7 +3166,7 @@ RunActivationAbilities:
 	call nz, HasOpponentFainted
 	ret z
 
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp TRACE
 	ret z ; trace failed, so don't check opponent trace
 	call GetOpponentAbility
@@ -3182,13 +3182,13 @@ SpikesDamage_CheckMoldBreaker:
 ; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
 ; but can't be checked unconditionally since other kind of switches ignore MB as usual.
 	call SwitchTurn
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 	call SwitchTurn
 	ld c, 0
 	jr SpikesDamage_GotAbility
 SpikesDamage:
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	ld b, a
 	ld c, 1
 SpikesDamage_GotAbility:
@@ -3376,7 +3376,7 @@ DoStealStatBoostBerry:
 QuarterPinchOrGluttony::
 ; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
 	call GetQuarterMaxHP
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp GLUTTONY
 	call z, GetHalfMaxHP
 	call CompareHP
@@ -3628,7 +3628,12 @@ GetOTPartymonItem:
 	ld bc, wEnemyMonItem
 	ret
 
-UpdateBattleHUDs:
+RefreshBattleHuds::
+	call UpdateBattleHuds
+	call Delay2
+	jmp ApplyTilemapInVBlank
+
+UpdateBattleHuds:
 	push hl
 	push de
 	push bc
@@ -4214,7 +4219,7 @@ BattleMenu_SafariBall:
 	call ExitMenu
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
-	call nz, UpdateBattleHUDs
+	call nz, UpdateBattleHuds
 	call ApplyTilemapInVBlank
 	call LoadTileMapToTempTileMap
 	call ClearWindowData
@@ -4316,10 +4321,10 @@ BattleMenuPKMN_Loop:
 	ld a, [wMenuDataFlags]
 	bit 7, a
 	jr z, .set_carry
-	call InitVerticalMenuCursor
+	farcall InitVerticalMenuCursor
 	ld hl, w2DMenuFlags1
 	set 6, [hl]
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
@@ -4871,7 +4876,7 @@ MoveSelectionScreen:
 .interpret_joypad
 	ld a, $1
 	ldh [hBGMapMode], a
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 	bit D_UP_F, a
 	jmp nz, .pressed_up
 	bit D_DOWN_F, a
@@ -5467,7 +5472,7 @@ CheckUsableMove:
 
 .CheckChoiceAbility:
 	ld b, 6
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp GORILLA_TACTICS
 	ret nz
 	jr .CheckEncoreVar
@@ -6123,7 +6128,8 @@ _LoadBattleFontsHPBar:
 _LoadStatusIcons:
 	farjp LoadStatusIcons
 
-_BattleRandom::
+; Handles all RNG calls in the battle engine
+BattleRandom::
 ; If the normal RNG is used in a link battle it'll desync.
 ; To circumvent this a shared PRNG is used instead.
 
@@ -6189,6 +6195,32 @@ _BattleRandom::
 	pop af
 	pop bc
 	pop hl
+	ret
+
+BattleRandomRange::
+; battle friendly RandomRange
+	push bc
+	ld b, a
+
+	; ensure even distribution by cutting off the top
+.loop
+	add b
+	jr nc, .loop
+	sub b
+	ld c, a
+.loop2
+	call BattleRandom
+	cp c
+	jr nc, .loop2
+
+	; now we have a random number without the uneven top, get mod of it
+.loop3
+	sub b
+	jr nc, .loop3
+	add b
+
+	; return the result
+	pop bc
 	ret
 
 Call_PlayBattleAnim_OnlyIfVisible:

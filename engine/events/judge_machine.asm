@@ -426,7 +426,7 @@ SparkleMaxStatOrShowBottleCap:
 	ret nc
 InitSpriteAnimStruct_PreserveHL:
 	push hl
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	pop hl
 	scf
 	ret

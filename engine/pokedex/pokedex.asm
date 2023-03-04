@@ -1557,7 +1557,7 @@ Pokedex_Main:
 	call ClearSpriteAnims
 	lb de, $50, $09
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 
 	ld a, [wPokedex_InSearchMode]
 	and a
@@ -2397,7 +2397,7 @@ _Pokedex_Search:
 	call ClearSpriteAnims
 	lb de, 120, 120
 	ld a, SPRITE_ANIM_INDEX_DEX_SLOWPOKE
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 
 	; Set a search timer.
 	ldh a, [hVBlankCounter]

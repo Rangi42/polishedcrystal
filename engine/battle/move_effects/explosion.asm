@@ -1,5 +1,5 @@
 BattleCommand_selfdestruct:
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp DAMP
 	ret z ; nullification ability checks handle messages
 	ld hl, wWhichMonFaintedFirst
@@ -36,4 +36,4 @@ BattleCommand_selfdestruct:
 	farcall DrawPlayerHUD
 	farcall DrawEnemyHUD
 	call ApplyTilemapInVBlank
-	jmp RefreshBattleHuds
+	farjp RefreshBattleHuds

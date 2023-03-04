@@ -240,15 +240,6 @@ UpdateEnemyMonInParty::
 	rst CopyBytes
 	ret
 
-RefreshBattleHuds::
-	call UpdateBattleHuds
-	call Delay2
-	jmp ApplyTilemapInVBlank
-
-UpdateBattleHuds::
-	farcall UpdatePlayerHUD
-	farjp UpdateEnemyHUD
-
 GetBackupItemAddr::
 ; Returns address of backup item for current mon in hl
 	push bc
@@ -502,16 +493,6 @@ GetOpponentAbility::
 	xor a
 	ret
 
-GetTrueUserAbility::
-; Get true user ability after Neutralizing Gas.
-; A "true" user might be external, if Future Sight is active.
-	farjp _GetTrueUserAbility
-
-GetOpponentAbilityAfterMoldBreaker::
-; Returns an opponent's ability unless Mold Breaker
-; will suppress it. Preserves bc/de/hl.
-	farjp _GetOpponentAbilityAfterMoldBreaker
-
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
@@ -599,11 +580,6 @@ CompareHP::
 	pop hl
 	ret
 
-CheckOpponentContactMove::
-	call CallOpponentTurn
-CheckContactMove::
-; Check if user's move made contact. Returns nc if it is
-	farjp _CheckContactMove
 
 HasUserFainted::
 	ldh a, [hBattleTurn]
@@ -694,7 +670,7 @@ CheckMoveSpeed::
 	push de
 
 	; Quick Draw works like Quick Claw except 30% of the time
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp QUICK_DRAW
 	jr nz, .quick_draw_done
 	ld b, a
@@ -742,7 +718,7 @@ CheckMoveSpeed::
 
 .quick_claw
 	ld a, 100
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp c
 	pop de
 	ret nc
@@ -807,7 +783,7 @@ _CheckSpeed::
 	jr z, .secondary_player
 	inc b
 .secondary_player
-	call BattleRandom
+	farcall BattleRandom
 	and $1
 	xor b
 	scf

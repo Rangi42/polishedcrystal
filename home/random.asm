@@ -137,11 +137,6 @@ AdvanceRNGState::
 	ld [hl], e ; wRNGState[3]
 	ret
 
-BattleRandom::
-; Handles all RNG calls in the battle engine, allowing
-; link battles to remain in sync using a shared PRNG.
-	farjp _BattleRandom
-
 RandomRange::
 ; Return a random number between 0 and a (non-inclusive).
 
@@ -224,28 +219,3 @@ RandomRange16::
 	ld c, a
 	ret
 
-BattleRandomRange::
-; battle friendly RandomRange
-	push bc
-	ld b, a
-
-	; ensure even distribution by cutting off the top
-.loop
-	add b
-	jr nc, .loop
-	sub b
-	ld c, a
-.loop2
-	call BattleRandom
-	cp c
-	jr nc, .loop2
-
-	; now we have a random number without the uneven top, get mod of it
-.loop3
-	sub b
-	jr nc, .loop3
-	add b
-
-	; return the result
-	pop bc
-	ret

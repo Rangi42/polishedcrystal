@@ -123,7 +123,23 @@ ClockContinue:
 	xor a
 	ret
 
-_InitTime::
+SetTimeOfDay::
+	xor a
+	ld [wStringBuffer2], a
+	ld [wStringBuffer2 + 3], a
+	jr InitTime
+
+SetDayOfWeek::
+	call UpdateTime
+	ldh a, [hHours]
+	ld [wStringBuffer2 + 1], a
+	ldh a, [hMinutes]
+	ld [wStringBuffer2 + 2], a
+	ldh a, [hSeconds]
+	ld [wStringBuffer2 + 3], a
+	; fallthrough
+
+InitTime::
 	call GetClock
 	call FixDays
 	ld hl, hRTCSeconds

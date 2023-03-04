@@ -1,6 +1,6 @@
 BattleCommand_bounceback:
 ; Possibly bounce back an attack with Magic Bounce
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp MAGIC_BOUNCE
 	ret nz
 

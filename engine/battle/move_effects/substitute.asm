@@ -53,7 +53,7 @@ BattleCommand_substitute:
 .finish
 	ld hl, MadeSubstituteText
 	call StdBattleTextbox
-	jmp RefreshBattleHuds
+	farjp RefreshBattleHuds
 
 .already_has_sub
 	call CheckUserIsCharging

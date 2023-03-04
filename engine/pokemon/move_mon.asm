@@ -309,7 +309,7 @@ endr
 	cp CUTE_CHARM
 	jr nz, .not_cute_charm
 	ld a, 3
-	call BattleRandomRange
+	farcall BattleRandomRange
 	and a
 	jr z, .not_cute_charm
 	ld a, [wPartyMon1Gender]

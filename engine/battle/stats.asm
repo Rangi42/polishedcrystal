@@ -48,7 +48,7 @@ FarChangeStat:
 	; Do target-only checks
 	bit STAT_TARGET_F, b
 	jr nz, .is_target
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp CONTRARY
 	jmp nz, .perform_change
 	ld a, b
@@ -57,7 +57,7 @@ FarChangeStat:
 	jmp .perform_change
 
 .is_target
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp CONTRARY
 	jr nz, .no_target_contrary
 	ld a, b
@@ -91,7 +91,7 @@ FarChangeStat:
 	jr nz, .mist_or_item_fail
 
 .check_ability
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp CLEAR_BODY
 	jr z, .ability_immune
 	cp WHITE_SMOKE

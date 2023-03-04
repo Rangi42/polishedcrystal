@@ -269,7 +269,7 @@ LoadMapTimeOfDay:
 	ld [wSpriteUpdatesEnabled], a
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
-	call LoadMapPart
+	farcall LoadMapPart
 	call .ClearBGMap
 	decoord 0, 0
 	call .copy

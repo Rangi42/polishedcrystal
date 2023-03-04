@@ -177,7 +177,7 @@ INCBIN "gfx/town_map/arrow.2bpp.lz"
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
 	ld a, SPRITE_ANIM_INDEX_POKEGEAR_MODE_ARROW
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $0
@@ -508,7 +508,7 @@ PokegearMap_Init:
 	ld e, 13 * 8 ; depixel 18, 13, 0, 0
 .got_coords
 	ld a, SPRITE_ANIM_INDEX_TOWN_MAP_FLY
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 .no_fly
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -682,7 +682,7 @@ PokegearMap_InitCursor:
 	push af
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_POKEGEAR_MODE_ARROW
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $4
@@ -767,7 +767,7 @@ PokegearRadio_Init:
 	call InitPokegearTilemap
 	depixel 4, 10, 4, 4
 	ld a, SPRITE_ANIM_INDEX_RADIO_TUNING_KNOB
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $8
@@ -1970,7 +1970,7 @@ TownMapMon:
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $8
@@ -2026,7 +2026,7 @@ InitializePokegearPlayerIcon:
 	ld b, SPRITE_ANIM_INDEX_GREEN_WALK
 .got_gender
 	ld a, b
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10

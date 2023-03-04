@@ -168,24 +168,6 @@ FixTime::
 	ld [wCurDay], a
 	ret
 
-SetTimeOfDay::
-	xor a
-	ld [wStringBuffer2], a
-	ld [wStringBuffer2 + 3], a
-	jr InitTime
-
-SetDayOfWeek::
-	call UpdateTime
-	ldh a, [hHours]
-	ld [wStringBuffer2 + 1], a
-	ldh a, [hMinutes]
-	ld [wStringBuffer2 + 2], a
-	ldh a, [hSeconds]
-	ld [wStringBuffer2 + 3], a
-
-InitTime::
-	farjp _InitTime
-
 PanicResetClock::
 	xor a
 	ldh [hRTCSeconds], a

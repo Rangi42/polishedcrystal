@@ -1,4 +1,6 @@
-_CheckContactMove::
+CheckOpponentContactMove::
+	call CallOpponentTurn
+CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
 	predef GetUserItemAfterUnnerve
 	ld a, b

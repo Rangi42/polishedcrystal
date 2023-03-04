@@ -91,19 +91,19 @@ UpdateOverworldMap:
 	ret nz
 ; step right
 	call .ScrollOverworldMapRight
-	call _LoadMapPart
+	call LoadMapPart
 	jmp ScrollMapLeft
 .stepDown
 	call .ScrollOverworldMapDown
-	call _LoadMapPart
+	call LoadMapPart
 	jmp ScrollMapUp
 .stepUp
 	call .ScrollOverworldMapUp
-	call _LoadMapPart
+	call LoadMapPart
 	jmp ScrollMapDown
 .stepLeft
 	call .ScrollOverworldMapLeft
-	call _LoadMapPart
+	call LoadMapPart
 	jmp ScrollMapRight
 
 .ScrollOverworldMapDown:

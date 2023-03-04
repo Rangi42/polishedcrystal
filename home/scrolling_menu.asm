@@ -19,8 +19,8 @@ ScrollingMenu::
 .UpdatePalettes:
 	ld hl, wVramState
 	bit 0, [hl]
-	jmp nz, UpdateTimePals
-	; fallthrough
+	jr z, SetPalettes
+	farjp UpdateTimePals
 
 SetPalettes::
 	push de

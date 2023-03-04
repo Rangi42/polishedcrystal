@@ -205,4 +205,4 @@ endc
 	ldh [hCGBPalUpdate], a
 	ld c, 4
 	call DelayFrames
-	farjp _UpdateTimePals
+	farjp UpdateTimePals

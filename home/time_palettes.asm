@@ -12,10 +12,4 @@ RTC::
 	ld a, [wVramState]
 	bit 0, a ; obj update
 	ret z
-	; fallthrough
-
-TimeOfDayPals::
-	farjp _TimeOfDayPals
-
-UpdateTimePals::
-	farjp _UpdateTimePals
+	farjp TimeOfDayPals

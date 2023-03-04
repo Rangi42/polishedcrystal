@@ -49,7 +49,7 @@ ShakeHeadbuttTree:
 	jr .loop
 
 .done
-	call LoadMapPart
+	farcall LoadMapPart
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a

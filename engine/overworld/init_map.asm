@@ -12,7 +12,7 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh [hLCDCPointer], a
 	ld a, $90
 	ldh [hWY], a
-	call LoadMapPart
+	farcall LoadMapPart
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
@@ -73,7 +73,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh [hLCDCPointer], a
 	ld a, $90
 	ldh [hWY], a
-	call LoadMapPart
+	farcall LoadMapPart
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a

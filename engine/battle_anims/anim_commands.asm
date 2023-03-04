@@ -169,7 +169,7 @@ BattleAnimRestoreHUDs:
 	ld a, $1
 	ldh [rSVBK], a
 
-	call UpdateBattleHuds
+	farcall UpdateBattleHuds
 
 	pop af
 	ldh [rSVBK], a

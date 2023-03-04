@@ -27,7 +27,7 @@ MACRO subtractfromhl
 .noCarry\@
 ENDM
 
-_LoadMapPart::
+LoadMapPart::
 	ldh a, [rSVBK]
 	push af
 	ld a, [wOverworldMapAnchor]
@@ -50,14 +50,14 @@ _LoadMapPart::
 	ldh [rSVBK], a
 	push de
 	push bc
-	call _LoadMapPart_TileMap
+	call LoadMapPart_TileMap
 	pop bc
 	pop de
 	ld a, c
 	ldh [hMapWidthPlus6], a
 	ld a, BANK(wDecompressedAttributes)
 	ldh [rSVBK], a
-	call _LoadMapPart_AttrMap
+	call LoadMapPart_AttrMap
 	pop af
 	ldh [rSVBK], a
 	ret
@@ -903,8 +903,8 @@ MACRO loadmappart_function_macro
 	ret
 ENDM
 
-_LoadMapPart_TileMap:
+LoadMapPart_TileMap:
 	loadmappart_function_macro wTilemap
 
-_LoadMapPart_AttrMap:
+LoadMapPart_AttrMap:
 	loadmappart_function_macro wAttrmap

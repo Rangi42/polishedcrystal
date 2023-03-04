@@ -85,7 +85,7 @@ endc
 	jr .loop
 
 .done:
-	call SetTimeOfDay
+	farcall SetTimeOfDay
 	ld hl, OakText_ResponseToSetTime
 	call PrintText
 	call WaitPressAorB_BlinkCursor
@@ -347,7 +347,7 @@ Special_SetDayOfWeek:
 	jr c, .loop
 	ld a, [wTempDayOfWeek]
 	ld [wStringBuffer2], a
-	call SetDayOfWeek
+	farcall SetDayOfWeek
 	call LoadStandardFont
 	pop af
 	ldh [hInMenu], a

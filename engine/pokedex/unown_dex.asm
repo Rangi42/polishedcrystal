@@ -16,7 +16,7 @@ Pokedex_Unown:
 	call ClearSpriteAnims
 	lb de, $5c, $24
 	ld a, SPRITE_ANIM_INDEX_DEX_UNOWN_CURSOR
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 
 	; fallthrough
 _Pokedex_Unown:

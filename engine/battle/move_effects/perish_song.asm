@@ -23,7 +23,7 @@ BattleCommand_perishsong:
 	jr nz, .opponent_done
 
 	; Check if opponent Soundproof immunity applies
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp SOUNDPROOF
 	jr z, .soundproof
 	ld a, 4

@@ -222,7 +222,7 @@ FadeOutMapMusic:
 	jmp SkipMusic
 
 ApplyMapPalettes:
-	farjp _UpdateTimePals
+	farjp UpdateTimePals
 
 FadeMapMusicAndPalettes:
 	xor a

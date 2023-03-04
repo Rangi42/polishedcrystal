@@ -15,7 +15,7 @@ Pokepic::
 	call GetPartyParamLocationAndValue
 	ld [wCurForm], a
 .got_palette
-	call UpdateTimePals
+	farcall UpdateTimePals
 	xor a
 	ldh [hBGMapMode], a
 	ld a, [wCurPartySpecies]
@@ -45,7 +45,7 @@ Trainerpic::
 	call UpdateSprites
 	call SafeCopyTilemapAtOnce
 	farcall LoadTrainerPalette
-	call UpdateTimePals
+	farcall UpdateTimePals
 	xor a
 	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
@@ -55,7 +55,7 @@ Trainerpic::
 
 Paintingpic::
 	farcall LoadPaintingPalette
-	call UpdateTimePals
+	farcall UpdateTimePals
 	ld de, PaintingFrameGFX
 	ld hl, vTiles0 tile ("┌" - 3)
 	lb bc, BANK(PaintingFrameGFX), 11
@@ -85,7 +85,7 @@ ClosePokepic::
 	call GetMemCGBLayout
 	xor a
 	ldh [hBGMapMode], a
-	call LoadMapPart
+	farcall LoadMapPart
 	call UpdateSprites
 	ld b, 1
 	call SafeCopyTilemapAtOnce

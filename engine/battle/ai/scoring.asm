@@ -65,7 +65,7 @@ INCLUDE "data/battle/ai/status_only_effects.asm"
 AI_Conversion:
 ; not a layer, called by Conversion to allow the AI to select a good move type
 ; TODO: implement
-	call BattleRandom
+	farcall BattleRandom
 	and %11
 	ret
 
@@ -1186,7 +1186,7 @@ AI_Smart_SleepTalk:
 ; Greatly discourage this move otherwise.
 ; TODO: sleep talk is typically used with rest, but we shouldn't
 ; know how long we sleep for if it's randomly 1-3 turns...
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp EARLY_BIRD
 	ld b, 3
 	jr z, .got_wakeup_time
@@ -1537,7 +1537,7 @@ AI_Smart_PerishSong:
 	and a
 	jr nz, .no
 
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp SOUNDPROOF
 	jr z, .no
 
@@ -1932,10 +1932,10 @@ AI_Smart_JumpKick:
 ; Greatly discourage this move if the player is semi-invulnerable and the enemy
 ; is faster and neither Pokémon has No Guard.
 	; Do nothing if anyone has No Guard.
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp NO_GUARD
 	ret z
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp NO_GUARD
 	ret z
 
@@ -2416,7 +2416,7 @@ AIDamageCalc:
 
 .multihit
 	; Multiply base power by 5 if Skill Link, 3 otherwise
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp SKILL_LINK
 	ld b, 5
 	jr z, .multihit_boost
@@ -2575,7 +2575,7 @@ AI_Status:
 	jr .checkstatus
 .sleep
 	; has 2 abilities, check one of them here
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp VITAL_SPIRIT
 	jr z, .pop_and_discourage
 
@@ -2629,7 +2629,7 @@ AI_Status:
 .checkstatus_after_items
 	; Check opponent ability
 	push bc
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	pop bc
 	cp b
 	jr z, .pop_and_discourage

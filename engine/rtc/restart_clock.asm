@@ -90,7 +90,7 @@ RestartClock:
 	ld [wStringBuffer2 + 2], a
 	xor a
 	ld [wStringBuffer2 + 3], a
-	call InitTime
+	farcall InitTime
 	call .PrintTime
 	ld hl, .Text_ClockReset
 	call PrintText

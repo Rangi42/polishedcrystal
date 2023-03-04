@@ -1104,7 +1104,7 @@ StartTitleScreen:
 	ldh [hWY], a
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	call UpdateTimePals
+	farcall UpdateTimePals
 	ld a, [wIntroSceneFrameCounter]
 	cp $6
 	jr c, .ok

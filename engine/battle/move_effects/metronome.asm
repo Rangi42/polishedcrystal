@@ -13,7 +13,7 @@ BattleCommand_metronome:
 	call LoadMoveAnim
 
 .GetMove:
-	call BattleRandom
+	farcall BattleRandom
 
 ; None of the moves in MetronomeExcepts.
 	push af

@@ -385,10 +385,10 @@ BT_DisplayMenu:
 	bit 7, a
 	scf
 	ret z
-	call InitVerticalMenuCursor
+	farcall InitVerticalMenuCursor
 	ld hl, w2DMenuFlags1
 	set 6, [hl]
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
@@ -1197,7 +1197,7 @@ PartyMenuAttributes:
 
 PartyMenuSelect:
 ; sets carry if exitted menu.
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 	call PlaceHollowCursor
 	ld a, [wPartyCount]
 	inc a

@@ -321,7 +321,7 @@ BattleCommand_checkturn:
 	jr z, .thaw
 
 	; Check for defrosting
-	call BattleRandom
+	farcall BattleRandom
 	cp 1 + (20 percent)
 	jr c, .thaw
 	ld hl, FrozenSolidText
@@ -367,7 +367,7 @@ BattleCommand_checkturn:
 	call FarPlayBattleAnimation
 
 	; 33% chance of hitting itself (updated from 50% in Gen VII)
-	call BattleRandom
+	farcall BattleRandom
 	cp 1 + (33 percent)
 	jr nc, .not_confused
 
@@ -396,7 +396,7 @@ BattleCommand_checkturn:
 	call FarPlayBattleAnimation
 
 	; 50% chance of infatuation
-	call BattleRandom
+	farcall BattleRandom
 	cp 1 + (50 percent)
 	jr c, .not_infatuated
 
@@ -437,7 +437,7 @@ BattleCommand_checkturn:
 	ret z
 
 	; 25% chance to be fully paralyzed
-	call BattleRandom
+	farcall BattleRandom
 	cp 1 + (25 percent)
 	ret nc
 
@@ -761,7 +761,7 @@ BattleCommand_checkobedience:
 
 ; Random number from 0 to obedience level + monster level
 .rand1
-	call BattleRandom
+	farcall BattleRandom
 	swap a
 	cp b
 	jr nc, .rand1
@@ -778,7 +778,7 @@ BattleCommand_checkobedience:
 
 ; Another random number from 0 to obedience level + monster level
 .rand2
-	call BattleRandom
+	farcall BattleRandom
 	cp b
 	jr nc, .rand2
 
@@ -794,7 +794,7 @@ BattleCommand_checkobedience:
 	ld b, a
 
 ; The chance of napping is the difference out of 256.
-	call BattleRandom
+	farcall BattleRandom
 	swap a
 	sub b
 	jr c, .Nap
@@ -809,7 +809,7 @@ BattleCommand_checkobedience:
 	jmp .EndDisobedience
 
 .Nap:
-	call BattleRandom
+	farcall BattleRandom
 	add a
 	swap a
 	and SLP_MASK
@@ -821,7 +821,7 @@ BattleCommand_checkobedience:
 	jr .Print
 
 .DoNothing:
-	call BattleRandom
+	farcall BattleRandom
 	and %11
 
 	ld hl, LoafingAroundText
@@ -899,7 +899,7 @@ BattleCommand_checkobedience:
 	push af
 
 .RandomMove:
-	call BattleRandom
+	farcall BattleRandom
 	and %11 ; NUM_MOVES - 1
 
 	cp b
@@ -1102,7 +1102,7 @@ BattleCommand_critical:
 	and a
 	ret z
 
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp BATTLE_ARMOR
 	ret z
 	cp SHELL_ARMOR
@@ -1173,7 +1173,7 @@ BattleCommand_critical:
 	ld hl, CriticalHitChances
 	ld b, 0
 	add hl, bc
-	call BattleRandom
+	farcall BattleRandom
 	cp [hl]
 	ret nc
 .guranteed_crit
@@ -1434,7 +1434,7 @@ BattleCommand_stab:
 CheckAirborneAfterMoldBreaker:
 	push de
 	call SwitchTurn
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 	call SwitchTurn
 	jr CheckAirborne_GotAbility
@@ -1561,7 +1561,7 @@ _CheckTypeMatchup:
 	ld a, [hl]
 	cp GRASS
 	jmp z, .Immune
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp OVERCOAT
 	jr nz, .skip_powder
 	ld a, ATKFAIL_ABILITY
@@ -1746,7 +1746,7 @@ endc
 
 	; Multiply by 85-100%...
 	ld a, 16
-	call BattleRandomRange
+	farcall BattleRandomRange
 	add 85
 	ldh [hMultiplier], a
 	farcall Multiply
@@ -1866,7 +1866,7 @@ BattleCommand_checkhit:
 .reset_evasion
 	ld c, 7
 .check_opponent_unaware
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp UNAWARE
 	jr nz, .no_opponent_unaware
 	ld b, 7
@@ -1937,7 +1937,7 @@ BattleCommand_checkhit:
 	ldh a, [hMultiplicand + 2]
 	ld b, a
 	ld a, 100
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp b
 	ret c
 	ld a, ATKFAIL_ACCMISS
@@ -2136,7 +2136,7 @@ BattleCommand_checkpriority:
 	cp $81
 	jr c, .check_prankster
 	; Armor Tail blocks moves with priority > 0 (so does not block moves like Prankster Roar)
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp ARMOR_TAIL
 	ld b, ATKFAIL_ABILITY
 	jr z, .attack_fails
@@ -2171,7 +2171,7 @@ BattleCommand_effectchance:
 	call CheckSubstituteOpp
 	jr nz, EffectChanceFailed
 
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp SHIELD_DUST
 	jr z, EffectChanceFailed
 	call GetOpponentItemAfterUnnerve
@@ -2207,7 +2207,7 @@ _CheckEffectChance:
 
 .skip_serene_grace
 	ld a, 100
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp b
 	jr c, EffectChanceEnd
 	; fallthrough
@@ -2456,7 +2456,7 @@ BattleCommand_applydamage:
 	ld b, $4
 	cp HELD_FOCUS_SASH
 	jr z, .sturdy
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	ld b, $2
 	cp STURDY
 	jr nz, .no_endure
@@ -2467,7 +2467,7 @@ BattleCommand_applydamage:
 	jr nz, .no_endure
 	jr .enduring
 .focus_band
-	call BattleRandom
+	farcall BattleRandom
 	cp c
 	jr nc, .no_endure
 .enduring
@@ -2681,7 +2681,7 @@ BattleCommand_criticaltext:
 	jr z, .wait
 
 	; Activate Anger Point here to get proper message order
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp ANGER_POINT
 	jr nz, .wait
 	call SwitchTurn
@@ -2726,7 +2726,7 @@ BattleCommand_startloop:
 	ld a, b
 	cp HELD_LOADED_DICE
 	jr nz, .not_loaded_dice
-	call BattleRandom
+	farcall BattleRandom
 	and 1
 	add 4
 	jr .got_count
@@ -2735,7 +2735,7 @@ BattleCommand_startloop:
 	; Hit 2-5 times with 2 and 3 being twice as common.
 	; So randomize a number 0-5, take (result mod 4) + 2.
 	ld a, 6
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp 4
 	jr c, .random_ok
 	sub 4
@@ -3095,7 +3095,7 @@ BattleCommand_posthiteffects:
 	call GetEighthMaxHP
 	jr .got_hurt_item_damage
 .rocky_helmet
-	call CheckContactMove
+	farcall CheckContactMove
 	jr c, .rocky_helmet_done
 	call GetSixthMaxHP
 .got_hurt_item_damage
@@ -3166,7 +3166,7 @@ BattleCommand_posthiteffects:
 	; Ensure that the move doesn't already have a flinch rate.
 	call HasOpponentFainted
 	ret z
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp SHIELD_DUST
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -3187,7 +3187,7 @@ BattleCommand_posthiteffects:
 .no_serene_grace
 	; Flinch items procs even after Rocky Helmet fainting
 	ld a, 100
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp c
 	call c, FlinchTarget
 	ret
@@ -3399,10 +3399,10 @@ EndMoveDamageChecks:
 	; At this point, we can safely reset wEffectFailed (This runs after everything else)
 	xor a
 	ld [wEffectFailed], a
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp PICKPOCKET
 	ret nz
-	call CheckContactMove
+	farcall CheckContactMove
 	ret c
 .is_contact
 	call SwitchTurn
@@ -3900,7 +3900,7 @@ GetStatBoost:
 ApplyStatBoostDamageAfterUnaware:
 	call GetFutureSightUser
 	ret nz
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp UNAWARE
 	ret z
 ApplyStatBoostDamage:
@@ -4424,7 +4424,7 @@ TakeOpponentDamage:
 	ld b, [hl]
 	farcall SubtractHPFromUser
 .did_no_damage
-	jmp RefreshBattleHuds
+	farjp RefreshBattleHuds
 
 TakeDamage:
 ; opponent takes damage
@@ -4449,7 +4449,7 @@ TakeDamage:
 	ld b, [hl]
 	farcall DealDamageToOpponent
 .did_no_damage
-	jmp RefreshBattleHuds
+	farjp RefreshBattleHuds
 
 SelfInflictDamageToSubstitute:
 	ld hl, SubTookDamageText
@@ -4507,7 +4507,7 @@ SelfInflictDamageToSubstitute:
 	xor a
 	ld [hl], a
 .ok
-	jmp RefreshBattleHuds
+	farjp RefreshBattleHuds
 
 UpdateMoveData:
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -4570,7 +4570,7 @@ IsOpponentLeafGuardActive:
 	jr DoLeafGuardCheck
 IsLeafGuardActive:
 ; returns z if leaf guard applies for enemy
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 DoLeafGuardCheck:
 	cp LEAF_GUARD
 	ret nz
@@ -4613,12 +4613,12 @@ BattleCommand_sleep:
 	; 1-3 turns of sleep, rnd(0-2) + 2 since Pokémon wake up once it ticks to 0.
 	push hl
 	ld a, 3
-	call BattleRandomRange
+	farcall BattleRandomRange
 	add 2
 	pop hl
 	ld [hl], a
 	call UpdateOpponentInParty
-	call UpdateBattleHuds
+	farcall UpdateBattleHuds
 	ld hl, FellAsleepText
 	call StdBattleTextbox
 	jr PostStatus
@@ -4745,7 +4745,7 @@ CanStatusTarget:
 	call CheckSubstituteOpp
 	ld hl, ButItFailedText
 	jr nz, .end
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	jr .got_ability
 .no_mold_breaker
 	call GetOpponentAbility
@@ -4818,7 +4818,7 @@ BattleCommand_poisontarget:
 	call PoisonOpponent
 	ld de, ANIM_PSN
 	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 
 	ld hl, WasPoisonedText
 	call StdBattleTextbox
@@ -4836,7 +4836,7 @@ BattleCommand_draintarget:
 	; fallthrough
 SapHealth:
 	; Don't do anything if HP is full unless opponent has Liquid Ooze
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp LIQUID_OOZE
 	jr z, .continue
 	push hl
@@ -4870,7 +4870,7 @@ SapHealth:
 
 	; check for Liquid Ooze
 	push bc
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	pop bc
 	cp LIQUID_OOZE
 	jr z, .damage
@@ -4946,7 +4946,7 @@ BattleCommand_burntarget:
 	call UpdateOpponentInParty
 	ld de, ANIM_BRN
 	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 
 	ld hl, WasBurnedText
 	call StdBattleTextbox
@@ -4998,7 +4998,7 @@ BattleCommand_freezetarget:
 	ld a, b
 	cp HELD_PREVENT_FREEZE
 	ret z
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp MAGMA_ARMOR
 	ret z
 	call IsLeafGuardActive
@@ -5014,7 +5014,7 @@ BattleCommand_freezetarget:
 	call UpdateOpponentInParty
 	ld de, ANIM_FRZ
 	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 
 	ld hl, WasFrozenText
 	call StdBattleTextbox
@@ -5039,7 +5039,7 @@ BattleCommand_paralyzetarget:
 	call UpdateOpponentInParty
 	ld de, ANIM_PAR
 	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 	call PrintParalyze
 	jmp PostStatusWithSynchronize
 
@@ -5239,7 +5239,7 @@ StatusTargetVerbose:
 	ld [hl], a
 	call DisplayStatusProblem
 	call UpdateOpponentInParty
-	call UpdateBattleHuds
+	farcall UpdateBattleHuds
 	call PostStatusWithSynchronize
 	xor a
 	ret
@@ -5300,7 +5300,7 @@ BattleCommand_rampage:
 	jr nz, .already_rampaging
 	set SUBSTATUS_RAMPAGE, [hl]
 ; Rampage for 1 or 2 more turns
-	call BattleRandom
+	farcall BattleRandom
 	and %00000001
 	inc a
 	ld [de], a
@@ -5333,7 +5333,7 @@ HandleRampage_ConfuseUser:
 
 	set SUBSTATUS_CONFUSED, [hl]
 	inc de ; ConfuseCount
-	call BattleRandom
+	farcall BattleRandom
 	and %11
 	inc a
 	inc a
@@ -5677,7 +5677,7 @@ BattleCommand_traptarget:
 	pop de
 	pop bc
 	jr z, .seven_turns
-	call BattleRandom
+	farcall BattleRandom
 	and 1
 	add 4
 	jr .got_count
@@ -5774,7 +5774,7 @@ BattleCommand_confusetarget:
 	ld a, b
 	cp HELD_PREVENT_CONFUSE
 	ret z
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
 	ret z
 	ld a, [wEffectFailed]
@@ -5804,7 +5804,7 @@ BattleCommand_confuse:
 	jmp StdBattleTextbox
 
 .no_item_protection
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
 	jr nz, .no_ability_protection
 	farcall DisableAnimations
@@ -5837,7 +5837,7 @@ FinishConfusingTarget:
 
 .got_confuse_count
 	set SUBSTATUS_CONFUSED, [hl]
-	call BattleRandom
+	farcall BattleRandom
 	and %11
 	inc a
 	inc a
@@ -5943,7 +5943,7 @@ BattleCommand_heal:
 	call AnimateCurrentMove
 	farcall RestoreHP
 	call UpdateUserInParty
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 	ld hl, RegainedHealthText
 	jmp StdBattleTextbox
 
@@ -6122,7 +6122,7 @@ BattleCommand_defrost:
 	res FRZ, [hl]
 
 .done
-	call RefreshBattleHuds
+	farcall RefreshBattleHuds
 	ld hl, WasDefrostedText
 	jmp StdBattleTextbox
 
@@ -6292,7 +6292,7 @@ BattleCommand_doubleminimizedamage:
 	ld [hl], a
 	ret
 
-_GetTrueUserAbility::
+GetTrueUserAbility::
 ; Returns current user's ability, or 0 (no ability) for external future sight user
 ; Also returns 0 (no ability) if opponent has Neutralizing Gas and user doesn't
 	call GetFutureSightUser

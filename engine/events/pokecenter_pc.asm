@@ -168,7 +168,7 @@ _PlayersHousePC:
 	call _PlayersPC
 	and a
 	jr nz, .asm_156f9
-	call LoadMapPart
+	farcall LoadMapPart
 	call ApplyTilemap
 	call UpdateSprites
 	call PC_PlayShutdownSound
@@ -200,7 +200,7 @@ _PlayersPC:
 	ld hl, PlayersPCMenuData
 	call LoadMenuHeader
 .asm_15722
-	call UpdateTimePals
+	farcall UpdateTimePals
 	call DoNthMenu
 	jr c, .asm_15731
 	call MenuJumptable

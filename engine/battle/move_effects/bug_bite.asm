@@ -1,6 +1,6 @@
 BattleCommand_bugbite:
 	; these abilities prevent us from eating it
-	call GetOpponentAbilityAfterMoldBreaker
+	farcall GetOpponentAbilityAfterMoldBreaker
 	cp UNNERVE
 	ret z
 	call CheckStickyHold

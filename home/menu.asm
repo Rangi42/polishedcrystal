@@ -1,6 +1,3 @@
-InitVerticalMenuCursor::
-	farjp _InitVerticalMenuCursor
-
 MenuTextboxBackup::
 	call MenuTextbox
 CloseWindow::
@@ -251,8 +248,8 @@ VerticalMenu::
 	ld a, [wMenuDataFlags]
 	bit 7, a
 	jr z, .cancel
-	call InitVerticalMenuCursor
-	call DoMenuJoypadLoop
+	farcall InitVerticalMenuCursor
+	farcall DoMenuJoypadLoop
 	call MenuClickSound
 	ld b, a
 	ld a, [wMenuFlags]
@@ -477,7 +474,7 @@ RunMenuItemPrintingFunction::
 	jr .loop
 
 InitMenuCursorAndButtonPermissions::
-	call InitVerticalMenuCursor
+	farcall InitVerticalMenuCursor
 	ld hl, wMenuJoypadFilter
 	ld a, [wMenuDataFlags]
 	bit 3, a
@@ -492,7 +489,7 @@ InitMenuCursorAndButtonPermissions::
 	ret
 
 ReadMenuJoypad::
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 GetVariableDataMenuResult:
 	ld hl, wMenuJoypadFilter
 	and [hl]
@@ -501,7 +498,7 @@ GetVariableDataMenuResult:
 GetStaticMenuJoypad::
 	xor a
 	ld [wMenuJoypad], a
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 
 ContinueGettingMenuJoypad:
 	bit A_BUTTON_F, a
@@ -684,9 +681,6 @@ SetMenuAttributes::
 	pop bc
 	pop hl
 	ret
-
-DoMenuJoypadLoop::
-	farcall _DoMenuJoypadLoop
 
 GetMenuJoypad::
 	push bc

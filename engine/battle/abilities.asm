@@ -15,7 +15,7 @@ RunEnemyStatusHealAbilities:
 RunStatusHealAbilities:
 	ld hl, StatusHealAbilities
 UserAbilityJumptable:
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 AbilityJumptable:
 	; If we at some point make the AI learn abilities, keep this.
 	; For now it just jumps to the general jumptable function
@@ -253,7 +253,7 @@ IntimidateAbility:
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .continue
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp RATTLED
 	ld b, SPEED
 	call z, StatUpAbility
@@ -461,7 +461,7 @@ ForewarnAbility:
 	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wBuffer2], a
 	inc a
-	call BattleRandomRange
+	farcall BattleRandomRange
 	and a
 	jr z, .loop
 .replace
@@ -547,14 +547,14 @@ ScreenCleanerAbility:
 
 RunEnemyOwnTempoAbility:
 	call SwitchTurn
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp OWN_TEMPO
 	call z, OwnTempoAbility
 	jmp SwitchTurn
 
 RunEnemySynchronizeAbility:
 	call SwitchTurn
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
 	jmp SwitchTurn
@@ -597,7 +597,7 @@ ResolveOpponentBerserk_CheckMultihit:
 	ret nz
 
 	; Check if user has Parental Bond
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp PARENTAL_BOND
 	ret z
 
@@ -625,7 +625,7 @@ RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
 	farcall GetFutureSightUser
 	ret nz
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	call _RunFaintUserAbilities
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
@@ -644,7 +644,7 @@ AftermathAbility:
 	cp DAMP
 	ret z
 	; Only contact moves proc Aftermath
-	call CheckOpponentContactMove
+	farcall CheckOpponentContactMove
 	ret c
 .is_contact
 	call DisableAnimations
@@ -659,7 +659,7 @@ AftermathAbility:
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
-	call CheckContactMove
+	farcall CheckContactMove
 	call nc, RunContactAbilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
@@ -701,7 +701,7 @@ CursedBodyAbility:
 	call SwitchTurn
 	ret nc
 	ld a, 10
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp 3
 	ret nc
 	call DisableAnimations
@@ -711,7 +711,7 @@ CursedBodyAbility:
 
 RunContactAbilities:
 ; turn perspective is from the attacker
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	ld hl, UserContactAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -740,7 +740,7 @@ CuteCharmAbility:
 
 	; Only works 30% of the time.
 	ld a, 10
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp 3
 	ret nc
 
@@ -795,7 +795,7 @@ EffectSporeAbility:
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
 	ret z
-	call BattleRandom
+	farcall BattleRandom
 	cp 1 + 33 percent
 	jr c, PoisonPointAbility
 	cp 1 + 66 percent
@@ -830,7 +830,7 @@ AfflictStatusAbility:
 _AfflictStatusAbility:
 	; Only works 30% of the time.
 	ld a, 10
-	call BattleRandomRange
+	farcall BattleRandomRange
 	cp 3
 	ret nc
 
@@ -861,7 +861,7 @@ _AfflictStatusAbility:
 	call DisableAnimations
 	farcall DisplayStatusProblem
 	call UpdateOpponentInParty
-	call UpdateBattleHuds
+	farcall UpdateBattleHuds
 	farcall PostStatusWithSynchronize
 	jmp EnableAnimations
 
@@ -1063,7 +1063,7 @@ StatUpAbility:
 	jr z, .done
 
 ; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp LIGHTNING_ROD
 	jr z, .print_immunity
 	cp MOTOR_DRIVE
@@ -1134,7 +1134,7 @@ WaterAbsorbAbility:
 
 ApplySpeedAbilities:
 ; Passive speed boost abilities
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp UNBURDEN
 	jr z, .unburden
 	cp SWIFT_SWIM
@@ -1181,7 +1181,7 @@ ApplySpeedAbilities:
 	jmp MultiplyAndDivide
 
 ApplyAccuracyAbilities:
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	ld hl, UserAccuracyAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1281,7 +1281,7 @@ WeatherRecoveryAbility:
 	ret z
 	call DisableAnimations
 	call ShowAbilityActivation
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
 	call GetSixteenthMaxHP
@@ -1328,7 +1328,7 @@ HarvestAbility:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr z, .ok
-	call BattleRandom
+	farcall BattleRandom
 	and 1
 	ret z
 
@@ -1519,7 +1519,7 @@ SelectRandomStat:
 ; Randomizes values until we get one matching a nonmaxed stat
 .loop1
 	ld a, 5 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
-	call BattleRandomRange
+	farcall BattleRandomRange
 	lb de, 1, 0 ; e = counter
 .loop2
 	cp e
@@ -1558,7 +1558,7 @@ MoodyAbility:
 	farjp CheckMirrorHerb
 
 ApplyDamageAbilities_AfterTypeMatchup:
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1575,7 +1575,7 @@ DefensiveDamageAbilities_AfterTypeMatchup:
 	dbw -1, -1
 
 ApplyDamageAbilities:
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1712,7 +1712,7 @@ SolarPowerAbility:
 	jmp ApplySpecialAttackDamageMod
 
 ToughClawsAbility:
-	call CheckContactMove
+	farcall CheckContactMove
 	ret c
 	ln a, 13, 10 ; x1.3
 	jmp MultiplyAndDivide
@@ -1889,7 +1889,7 @@ HydrationAbility:
 	jr HealAllStatusAbility
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
-	call BattleRandom
+	farcall BattleRandom
 	cp 1 + (30 percent)
 	ret nc
 	; fallthrough
@@ -1916,7 +1916,7 @@ AngerPointAbility:
 
 RunSwitchAbilities:
 ; abilities that activate when you switch out
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp NATURAL_CURE
 	jr z, NaturalCureAbility
 	cp REGENERATOR
@@ -1935,14 +1935,14 @@ RegeneratorAbility:
 	jmp z, UpdateBattleMonInParty
 	jmp UpdateEnemyMonInParty
 
-_GetOpponentAbilityAfterMoldBreaker::
+GetOpponentAbilityAfterMoldBreaker::
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it. Preserves bc/de/hl.
 	push de
 	push bc
 	call GetOpponentAbility
 	ld b, a
-	call GetTrueUserAbility
+	farcall GetTrueUserAbility
 	cp MOLD_BREAKER
 	ld a, b
 	jr nz, .done
@@ -2058,7 +2058,7 @@ RunPostBattleAbilities::
 
 	; Get a random value between 1-20.
 	ld a, 20
-	call BattleRandomRange
+	farcall BattleRandomRange
 	inc a ; BattleRandomRange returns 0-19.
 	ld c, a
 
@@ -2079,7 +2079,7 @@ RunPostBattleAbilities::
 
 .Pickup:
 	ld a, 10
-	call BattleRandomRange
+	farcall BattleRandomRange
 	and a
 	ret nz
 

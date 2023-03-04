@@ -880,7 +880,7 @@ DayCare_GenerateEgg:
 	cp 3
 	jr z, .no_ha_boost
 	sla a
-	call BattleRandomRange
+	farcall BattleRandomRange
 	and a
 	jr nz, .no_ha_boost
 	ld a, HIDDEN_ABILITY

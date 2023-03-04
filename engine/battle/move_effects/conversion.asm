@@ -95,7 +95,7 @@ BattleCommand_conversion:
 	ld a, [wMenuCursorY]
 	ld [wCurMoveNum], a
 
-	call UpdateBattleHuds
+	farcall UpdateBattleHuds
 	call Call_LoadTempTileMapToTileMap
 
 	ld a, [wLinkMode]
@@ -159,7 +159,7 @@ BattleCommand_conversion:
 	jr .validate_choice
 .not_smart
 .enemy_wild
-	call BattleRandom
+	farcall BattleRandom
 	and %11 ; NUM_MOVES - 1
 .validate_choice
 	pop de

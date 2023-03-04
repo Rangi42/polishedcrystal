@@ -1,8 +1,3 @@
-InitSpriteAnimStruct::
-	farjp _InitSpriteAnimStruct
-
-ReinitSpriteAnimFrame::
-	farjp _ReinitSpriteAnimFrame
 
 ClearSpriteAnims::
 	ld hl, wSpriteAnimDict

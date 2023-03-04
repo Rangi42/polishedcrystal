@@ -45,7 +45,7 @@ TMHM_PocketLoop:
 	jr TMHM_ShowTMMoveDescription
 
 TMHM_JoypadLoop:
-	call DoMenuJoypadLoop
+	farcall DoMenuJoypadLoop
 	ld b, a
 	push hl
 	ld hl, wTMHMPocketCursor

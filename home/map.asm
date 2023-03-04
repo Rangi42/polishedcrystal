@@ -70,9 +70,6 @@ GetMapSceneID::
 	pop hl
 	ret
 
-LoadMapPart::
-	farjp _LoadMapPart
-
 ReturnToMapFromSubmenu::
 	ld a, MAPSETUP_SUBMENU
 	ldh [hMapEntryMethod], a
@@ -1686,7 +1683,7 @@ ReturnToMapWithSpeechTextbox::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	call UpdateTimePals
+	farcall UpdateTimePals
 	farcall EnableDynPalUpdates
 	call DelayFrame
 	ld a, $1
@@ -1704,7 +1701,7 @@ ReloadTilesetAndPalettes::
 	push af
 	call SwitchToMapAttributesBank
 	farcall UpdateTimeOfDayPal
-	call LoadMapPart
+	farcall LoadMapPart
 	call LoadTilesetGFX
 	ld a, 9
 	call SkipMusic

@@ -37,7 +37,7 @@ CloseText::
 	call ClearWindowData
 	xor a
 	ldh [hBGMapMode], a
-	call LoadMapPart
+	farcall LoadMapPart
 	call BGMapAnchorTopLeft
 	xor a
 	ldh [hBGMapMode], a

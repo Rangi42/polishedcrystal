@@ -18,7 +18,7 @@ Special_CelebiShrineEvent:
 
 	depixel 0, 10, 7, 0
 	ld a, SPRITE_ANIM_INDEX_CELEBI
-	call InitSpriteAnimStruct
+	farcall InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $84
@@ -169,20 +169,20 @@ UpdateCelebiPosition:
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_RIGHT
-	jmp ReinitSpriteAnimFrame
+	farjp ReinitSpriteAnimFrame
 
 .left
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
-	jmp ReinitSpriteAnimFrame
+	farjp ReinitSpriteAnimFrame
 
 .FreezeCelebiPosition:
 	pop af
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
-	jmp ReinitSpriteAnimFrame
+	farjp ReinitSpriteAnimFrame
 
 GetCelebiSpriteTile:
 	push hl

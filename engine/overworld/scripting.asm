@@ -1029,7 +1029,7 @@ ApplyPersonFacing::
 	ld hl, wVramState
 	bit 6, [hl]
 	jr nz, .text_state
-	call LoadMapPart
+	farcall LoadMapPart
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
@@ -2229,7 +2229,7 @@ Script_changeblock:
 Script_reloadmappart::
 	xor a
 	ldh [hBGMapMode], a
-	call LoadMapPart
+	farcall LoadMapPart
 	call GetMovementPermissions
 	farcall ReloadMapPart
 	jmp UpdateSprites

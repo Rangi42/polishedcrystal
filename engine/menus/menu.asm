@@ -204,6 +204,10 @@ Init2DMenuCursorPosition:
 	ld [wMenuJoypadFilter], a
 	ret
 
+DoMenuJoypadLoop::
+	call _DoMenuJoypadLoop
+	jmp GetMenuJoypad
+
 _DoMenuJoypadLoop::
 	ld hl, w2DMenuFlags2
 	res 7, [hl]
@@ -694,7 +698,7 @@ Error_Cant_ExitMenu:
 	text_far _WindowPoppingErrorText
 	text_end
 
-_InitVerticalMenuCursor::
+InitVerticalMenuCursor::
 	ld a, [wMenuDataFlags]
 	ld b, a
 	ld hl, w2DMenuCursorInitY

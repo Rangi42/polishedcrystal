@@ -139,7 +139,7 @@ AnimSeq_SlotsChansey:
 	ret nz
 	ld [hl], 3
 	ld a, SPRITE_ANIM_FRAMESET_SLOTS_CHANSEY_2
-	jmp _ReinitSpriteAnimFrame
+	jmp ReinitSpriteAnimFrame
 
 AnimSeq_SlotsChanseyEgg:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -194,7 +194,7 @@ AnimSeq_TradePokeBall:
 
 .zero
 	ld a, SPRITE_ANIM_FRAMESET_TRADE_POKE_BALL_0
-	call _ReinitSpriteAnimFrame
+	call ReinitSpriteAnimFrame
 
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
@@ -520,7 +520,7 @@ AnimSeq_IntroSuicune:
 	add hl, bc
 	ld [hl], a
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_SUICUNE_2
-	jmp _ReinitSpriteAnimFrame
+	jmp ReinitSpriteAnimFrame
 
 AnimSeq_IntroPichuWooper:
 	ld hl, SPRITEANIMSTRUCT_VAR1
@@ -572,7 +572,7 @@ AnimSeq_IntroUnownF:
 	cp $40
 	ret nz
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F_2
-	jmp _ReinitSpriteAnimFrame
+	jmp ReinitSpriteAnimFrame
 
 AnimSeq_IntroSuicuneAway:
 	ld hl, SPRITEANIMSTRUCT_YCOORD

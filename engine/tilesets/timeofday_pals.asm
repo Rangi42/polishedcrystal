@@ -6,7 +6,7 @@ UpdateTimeOfDayPal::
 	ld [wTimeOfDayPal], a
 	ret
 
-_TimeOfDayPals::
+TimeOfDayPals::
 ; return carry if pals are changed
 
 ; forced pals?
@@ -90,7 +90,7 @@ _TimeOfDayPals::
 	ldh [rSVBK], a
 
 ; update palettes
-	call _UpdateTimePals
+	call UpdateTimePals
 	call DelayFrame
 
 ; successful change
@@ -102,7 +102,7 @@ _TimeOfDayPals::
 	and a
 	ret
 
-_UpdateTimePals::
+UpdateTimePals::
 	ld c, $9 ; normal
 	call GetTimePalFade
 	jmp DmgToCgbTimePals

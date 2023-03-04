@@ -3,7 +3,7 @@ BattleCommand_tristatuschance:
 
 ; 1/3 chance of each status
 .loop
-	call BattleRandom
+	farcall BattleRandom
 	swap a
 	and %11
 	jr z, .loop

@@ -36,12 +36,12 @@ StartMenu::
 	call BGMapAnchorTopLeft
 	farcall LoadFonts_NoOAMUpdate
 	call .DrawBugContestStatus
-	call UpdateTimePals
+	farcall UpdateTimePals
 	jr .Select
 
 .Reopen:
 	call UpdateSprites
-	call UpdateTimePals
+	farcall UpdateTimePals
 	call .SetUpMenuItems
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
@@ -80,7 +80,7 @@ StartMenu::
 	call ExitMenu
 .ReturnEnd2:
 	call CloseText
-	jmp UpdateTimePals
+	farjp UpdateTimePals
 
 .GetInput:
 ; Return carry on exit, and no-carry on selection.
