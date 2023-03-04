@@ -141,7 +141,6 @@ SECTION "High Home", ROM0[$005b]
 ; JOYPAD is never enabled
 
 INCLUDE "home/jumptable.asm"
-INCLUDE "home/sine.asm"
 INCLUDE "home/delay.asm"
 INCLUDE "home/gfx2.asm"
 

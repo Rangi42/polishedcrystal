@@ -1728,7 +1728,7 @@ SlotMachine_AnimateGolem:
 	jr c, .play_sound
 	dec [hl]
 	ld d, 14 * 8
-	call Sine
+	farcall Sine
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a

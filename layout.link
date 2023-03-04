@@ -115,6 +115,7 @@ ROMX $22
 
 ROMX $23
 	"bank23"
+	"Sine"
 
 ROMX $24
 	"bank24"
