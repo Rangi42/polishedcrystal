@@ -490,6 +490,11 @@ ENDM
 	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 60
 	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 61
 	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 62
+	map_const ROCKET_HIDEOUT_B1F,                         11, 14 ; 63
+	map_const ROCKET_HIDEOUT_B2F,                         15, 11 ; 64
+	map_const ROCKET_HIDEOUT_B3F,                         11, 12 ; 65
+	map_const ROCKET_HIDEOUT_B4F,                         11, 12 ; 66
+	map_const ROCKET_HIDEOUT_ELEVATOR,                     2,  2 ; 67
 
 	newgroup                                                     ; 22
 	map_const ROUTE_40,                                   10, 20 ;  1

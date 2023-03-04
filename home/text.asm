@@ -646,13 +646,13 @@ PrintDayOfWeek::
 	ret
 
 .Days:
-	db .Sun    - @
-	db .Mon    - @
-	db .Tues   - @
-	db .Wednes - @
-	db .Thurs  - @
-	db .Fri    - @
-	db .Satur  - @
+	dr .Sun
+	dr .Mon
+	dr .Tues
+	dr .Wednes
+	dr .Thurs
+	dr .Fri
+	dr .Satur
 
 .Sun:    db "Sun@"
 .Mon:    db "Mon@"

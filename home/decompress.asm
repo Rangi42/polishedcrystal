@@ -81,11 +81,10 @@ DEF LZ_LONG_HI       EQU %00000011
 	; Swap de and hl for speed
 	call SwapHLDE
 
-	; Save the output address
-	; for rewrite commands.
+	; Save the output address for rewrite commands
 	push hl
 	call .Main
-	; Clean the stack
+	; Clean the stack (no need to restore the output address)
 	add sp, 2
 
 	jmp SwapHLDE
@@ -93,9 +92,12 @@ DEF LZ_LONG_HI       EQU %00000011
 .lz_copy_flip
 	inc b
 	ld a, b
-:	push af
 
-:	ld a, [de]
+.lz_copy_flip_outer_loop
+	push af
+
+.lz_copy_flip_inner_loop
+	ld a, [de]
 	inc de
 
 ; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
@@ -114,11 +116,11 @@ DEF LZ_LONG_HI       EQU %00000011
 
 	ld [hli], a
 	dec c
-	jr nz, :-
+	jr nz, .lz_copy_flip_inner_loop
 
 	pop af
 	dec a
-	jr nz, :--
+	jr nz, .lz_copy_flip_outer_loop
 
 	pop de
 	inc de
@@ -127,13 +129,15 @@ DEF LZ_LONG_HI       EQU %00000011
 .lz_copy_reverse
 	inc b
 	srl c
-	jr nc, :+
+	jr nc, .lz_copy_reverse_skip
 	ld a, [de]
 	ld [hli], a
 	dec de
 
-:	jr z, :++
-:	ld a, [de]
+.lz_copy_reverse_skip
+	jr z, .lz_copy_reverse_loop2
+.lz_copy_reverse_loop1
+	ld a, [de]
 	ld [hli], a
 	dec de
 	ld a, [de]
@@ -141,11 +145,12 @@ DEF LZ_LONG_HI       EQU %00000011
 	dec de
 
 	dec c
-	jr nz, :-
+	jr nz, .lz_copy_reverse_loop1
 
-:	dec b
+.lz_copy_reverse_loop2
+	dec b
 	ld c, $80
-	jr nz, :--
+	jr nz, .lz_copy_reverse_loop1
 
 	pop de
 	inc de
@@ -186,7 +191,7 @@ DEF LZ_LONG_HI       EQU %00000011
 	ld e, [hl]
 
 	; lzaddr from the stack
-	ld hl, sp+6
+	ld hl, sp+$6
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -224,13 +229,15 @@ DEF LZ_LONG_HI       EQU %00000011
 	inc c
 .lz_data_short_no_inc
 	srl c
-	jr nc, :+
+	jr nc, .lz_data_short_skip
 	ld a, [de]
 	ld [hli], a
 	inc de
 
-:	jr z, .Main
-:	ld a, [de]
+.lz_data_short_skip
+	jr z, .Main
+.lz_data_short_loop
+	ld a, [de]
 	ld [hli], a
 	inc de
 	ld a, [de]
@@ -238,7 +245,7 @@ DEF LZ_LONG_HI       EQU %00000011
 	inc de
 
 	dec c
-	jr nz, :-
+	jr nz, .lz_data_short_loop
 ; fallthrough
 
 ; Where the magic starts
@@ -278,19 +285,22 @@ DEF LZ_LONG_HI       EQU %00000011
 .fill
 	inc b
 	srl c
-	jr nc, :+
+	jr nc, .fill_skip
 	ld [hli], a
 
-:	jr z, :++
-:	ld [hli], a
+.fill_skip
+	jr z, .fill_next
+.fill_loop
+	ld [hli], a
 	ld [hli], a
 	dec c
-	jr nz, :-
+	jr nz, .fill_loop
 
-:	dec b
+.fill_next
+	dec b
 	jr z, .Main
 	ld c, $80
-	jr :--
+	jr .fill_loop
 
 .long
 	inc a
@@ -324,26 +334,28 @@ DEF LZ_LONG_HI       EQU %00000011
 ; For performance reasons, we need de to hl
 CopyBytes_hl_de:
 	inc b
+
 	srl c
-
-	jr nc, :+
+	jr nc, .skip
 	ld a, [de]
 	ld [hli], a
 	inc de
 
-:	jr z, :++
-:	ld a, [de]
-	ld [hli], a
-	inc de
+.skip
+	jr z, .next
+.loop
+rept 2
 	ld a, [de]
 	ld [hli], a
 	inc de
+endr
 
 	dec c
-	jr nz, :-
+	jr nz, .loop
 
-:	dec b
+.next
+	dec b
 	ret z
 
 	ld c, $80
-	jr :--
+	jr .loop

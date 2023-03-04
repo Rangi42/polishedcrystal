@@ -45,30 +45,30 @@ GetBattleVarAddr::
 BattleVarPairs:
 ; entries correspond to BATTLE_VARS_* constants
 	table_width 1, BattleVarPairs
-	db .Substatus1     - @
-	db .Substatus2     - @
-	db .Substatus3     - @
-	db .Substatus4     - @
-	db .Substatus1Opp  - @
-	db .Substatus2Opp  - @
-	db .Substatus3Opp  - @
-	db .Substatus4Opp  - @
-	db .Ability        - @
-	db .AbilityOpp     - @
-	db .Status         - @
-	db .StatusOpp      - @
-	db .Animation      - @
-	db .Effect         - @
-	db .Power          - @
-	db .Accuracy       - @
-	db .Type           - @
-	db .Category       - @
-	db .CurMove        - @
-	db .CurMoveOpp     - @
-	db .LastCounter    - @
-	db .LastCounterOpp - @
-	db .LastMove       - @
-	db .LastMoveOpp    - @
+	dr .Substatus1
+	dr .Substatus2
+	dr .Substatus3
+	dr .Substatus4
+	dr .Substatus1Opp
+	dr .Substatus2Opp
+	dr .Substatus3Opp
+	dr .Substatus4Opp
+	dr .Ability
+	dr .AbilityOpp
+	dr .Status
+	dr .StatusOpp
+	dr .Animation
+	dr .Effect
+	dr .Power
+	dr .Accuracy
+	dr .Type
+	dr .Category
+	dr .CurMove
+	dr .CurMoveOpp
+	dr .LastCounter
+	dr .LastCounterOpp
+	dr .LastMove
+	dr .LastMoveOpp
 	assert_table_length NUM_BATTLE_VARS
 
 ;                   player                 enemy

@@ -55,6 +55,7 @@ NEXTU
 hMoveMon:: db
 ENDU
 
+hFarCallSavedA:: db
 hFarCallSavedHL::
 hFarCallSavedL:: db
 hFarCallSavedH:: db
@@ -135,7 +136,10 @@ hBGMapMode::
 hBGMapHalf::     db
 hBGMapAddress::  dw
 
-	ds 4 ; unused
+hBGMapUpdate::    db
+hBGMapTileCount:: db
+
+hOAMUpdate:: db
 
 hSerialReceivedNewData::     db
 hSerialConnectionStatus::    db
@@ -145,14 +149,7 @@ hSerialIgnoringInitialData:: db
 hSerialSend::                db
 hSerialReceive::             db
 
-	ds 2 ; unused
-
-hOAMUpdate:: db
-
 hSPBuffer:: dw
-
-hBGMapUpdate::    db
-hBGMapTileCount:: db
 
 hMapAnims::      db
 hTileAnimFrame:: db
@@ -162,8 +159,6 @@ hLastTalked:: db
 hRandom::
 hRandomAdd:: db
 hRandomSub:: db
-
-	ds 1 ; unused
 
 UNION
 ; 0 - player
@@ -185,8 +180,6 @@ hCGBPalUpdate:: db
 hCGB::          db
 
 hDMATransfer:: db
-
-hFarCallSavedA:: db
 
 hDelayFrameLY:: db
 
@@ -223,6 +216,8 @@ NEXTU
 hPlaceStringCoords:: dw
 hCompressedTextBuffer:: ds 2 ; one character and "@"
 ENDU
+
+	ds 7 ; unused
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp

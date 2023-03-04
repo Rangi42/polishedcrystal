@@ -73,8 +73,8 @@ Init::
 	xor a
 	ldh [rLCDC], a
 
-; Place stack at its default location in in hram
-	ld sp, $FFFE
+; Place stack at its default location in in HRAM for 'call nz, DoubleSpeed'
+	ld sp, $fffe
 
 ; Enable double speed now to speed up the rest of initialization
 	ldh a, [hCGB]
@@ -87,7 +87,7 @@ Init::
 	xor a
 	rst ByteFill
 
-; Move stack to wram
+; Move stack to WRAM
 	ld sp, wStack
 
 ; Clear HRAM

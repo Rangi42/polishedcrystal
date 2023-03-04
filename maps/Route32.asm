@@ -52,7 +52,7 @@ Route32_MapScriptHeader:
 	itemball_event  6, 32, REPEL, 1, EVENT_ROUTE_32_REPEL
 	cuttree_event 10, 19, EVENT_ROUTE_32_CUT_TREE
 	cuttree_event -1, 29, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
-	cuttree_event 23, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
+	cuttree_event 19, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 	object_const_def
 	const ROUTE32_COOLTRAINER_M
