@@ -651,7 +651,7 @@ Special_BattleTower_BeginChallenge:
 	ld a, BATTLETOWER_STREAK_LENGTH * 3
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hRemainder]
 	cp BATTLETOWER_STREAK_LENGTH * 2
 	pop de
