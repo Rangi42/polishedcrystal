@@ -129,10 +129,7 @@ SECTION "timer", ROM0[$0050]
 
 SwitchToMapScriptsBank::
 	ld a, [wMapScriptsBank]
-	rst Bankswitch
-	ret
-
-	ds 1 ; unused
+	jr Bankswitch
 
 
 SECTION "serial", ROM0[$0058]
