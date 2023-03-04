@@ -713,6 +713,15 @@ INCLUDE "maps/CeladonUniversityLibrary1F.asm"
 INCLUDE "maps/CeladonUniversityLibrary2F.asm" ; shares text with CeladonUniversityLibrary1F.asm
 
 
+SECTION "Rocket Hideout Scripts", ROMX
+
+INCLUDE "maps/RocketHideoutB1F.asm"
+INCLUDE "maps/RocketHideoutB2F.asm"
+INCLUDE "maps/RocketHideoutB3F.asm"
+INCLUDE "maps/RocketHideoutB4F.asm"
+INCLUDE "maps/RocketHideoutElevator.asm"
+
+
 SECTION "Saffron Scripts", ROMX
 
 INCLUDE "maps/SaffronCity.asm"
