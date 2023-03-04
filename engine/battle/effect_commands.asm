@@ -5592,7 +5592,7 @@ BattleCommand_charge:
 	jr nz, .not_flying
 
 .flying
-	call DisappearUser
+	farcall DisappearUser
 .not_flying
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr

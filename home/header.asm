@@ -8,10 +8,6 @@ EntryPoint::
 	di
 	jmp Rst0Crash
 
-DisappearUser::
-	farjp _DisappearUser
-
-
 SECTION "rst08 FarCall", ROM0[$0008]
 FarCall::
 	jmp RstFarCall
