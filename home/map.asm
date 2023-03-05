@@ -944,6 +944,39 @@ GetScriptByte::
 	pop hl
 	ret
 
+GetScriptWord::
+; Return word at hScriptBank:hScriptPos in hl.
+
+	push bc
+	ldh a, [hROMBank]
+	push af
+	ldh a, [hScriptBank]
+	rst Bankswitch
+
+	ld hl, hScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+
+	ld a, l
+	ldh [hScriptPos], a
+	ld a, h
+	ldh [hScriptPos + 1], a
+
+	ld l, c
+	ld h, b
+
+	pop af
+	rst Bankswitch
+	pop bc
+	ret
+
+
 ObjectEvent::
 	faceplayer
 	farjumptext _ObjectEventText

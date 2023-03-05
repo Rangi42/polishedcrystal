@@ -290,10 +290,7 @@ StopScript:
 Script_callasm:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld a, b
 	jmp FarCall_hl
 
@@ -304,10 +301,7 @@ Script_special:
 	farjp Special
 
 Script_memcallasm:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld b, [hl]
 	inc hl
 	ld a, [hli]
@@ -434,10 +428,7 @@ Script_jumpstashedtext:
 	jmp ScriptJump
 
 Script_writetext:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptBank]
 	ld b, a
 	jmp MapTextbox
@@ -445,10 +436,7 @@ Script_writetext:
 Script_farwritetext:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	jmp MapTextbox
 
 Script_writethistext:
@@ -495,10 +483,7 @@ Script_yesorno:
 	ret
 
 Script_loadmenu:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptBank]
 	ld de, LoadMenuHeader
 	call FarCall_de
@@ -944,10 +929,7 @@ ApplyMovement:
 	farcall _UnfreezeFollowerObject
 	pop bc
 
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptBank]
 	ld b, a
 	call GetMovementData
@@ -1320,10 +1302,7 @@ Script_farscall:
 	jr ScriptCall
 
 Script_memcall:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld b, [hl]
 	inc hl
 	ld e, [hl]
@@ -1369,10 +1348,7 @@ CallCallback::
 	jr ScriptCall
 
 Script_scalltable:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptVar]
 	ld e, a
 	ld d, 0
@@ -1389,26 +1365,17 @@ Script_scalltable:
 	jr ScriptCall
 
 Script_sjump:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	jmp ScriptJumpInCurrentBank
 
 Script_farsjump:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	jmp ScriptJump
 
 Script_memjump:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld b, [hl]
 	inc hl
 	ld a, [hli]
@@ -1581,38 +1548,26 @@ DoTrigger:
 	ret
 
 Script_readmem:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld a, [hl]
 	ldh [hScriptVar], a
 	ret
 
 Script_readmem16:
 	call Script_readmem
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld a, [hl]
 	ldh [hScriptVar+1], a
 	ret
 
 Script_writemem:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptVar]
 	ld [hl], a
 	ret
 
 Script_loadmem:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	call GetScriptByte
 	ld [hl], a
 	ret
@@ -1833,10 +1788,7 @@ Script_getstring:
 	jmp ConvertMemToText
 
 Script_givepokemail:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptBank]
 	call GetFarByte
 	ld b, a
@@ -2343,10 +2295,7 @@ Script_closetext:
 Script_autoinput:
 	call GetScriptByte
 	push af
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	pop af
 	jmp StartAutoInput
 
