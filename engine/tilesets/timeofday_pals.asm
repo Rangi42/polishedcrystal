@@ -109,11 +109,11 @@ UpdateTimePals::
 
 FadeInPalettes::
 	ld c, 10
-	jmp FadePalettes
+	farjp FadePalettes
 
 FadeOutPalettes::
 	ld c, 10
-	jmp FadeToWhite
+	farjp FadeToWhite
 
 Special_FadeInQuickly:
 	ld c, $0

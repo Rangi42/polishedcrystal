@@ -13,7 +13,7 @@ InitClock:
 	ld [wMusicFadeIDLo], a
 	ld [wMusicFadeIDHi], a
 	ld c, 31
-	call FadeToBlack
+	farcall FadeToBlack
 	call ClearTileMap
 	call ClearSprites
 	ld a, CGB_PLAIN

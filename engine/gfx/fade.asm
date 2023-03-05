@@ -1,4 +1,34 @@
-_DoFadePalettes::
+; Functions to fade the screen in and out.
+
+;FadeBGPalettes::
+;	ld a, PALFADE_BG
+;	ld [wPalFadeMode], a
+;	jr DoFadePalettes
+
+;FadeOBPalettes::
+;	ld a, PALFADE_OBJ
+;	ld [wPalFadeMode], a
+;	jr DoFadePalettes
+
+FadeToWhite::
+	push bc
+	call SetWhitePals
+	pop bc
+	jr FadePalettes
+
+FadeToBlack::
+	push bc
+	call SetBlackPals
+	pop bc
+	; fallthrough
+
+FadePalettes::
+; Fades active palettes in wBGPals2/wOBPals2 to new ones in wBGPals1/wOBPals1 in c frames
+	xor a
+	ld [wPalFadeMode], a
+	; fallthrough
+
+DoFadePalettes::
 ; w(BG|OB)Pals: Current palettes
 ; wUnkn(BG|OB)Pals: Palettes we're fading towards
 ; b: Controls partial fading gradient

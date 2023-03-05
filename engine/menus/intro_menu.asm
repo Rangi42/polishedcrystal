@@ -556,14 +556,14 @@ Continue_DisplayGameTime:
 ProfElmSpeech:
 	farcall InitClock
 	ld c, 31
-	call FadeToBlack
+	farcall FadeToBlack
 	call ClearTileMap
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
 	ld c, 31
-	call FadeToWhite
+	farcall FadeToWhite
 
 	xor a
 	ld [wCurPartySpecies], a
@@ -580,7 +580,7 @@ ProfElmSpeech:
 	call PrintText
 if !DEF(DEBUG)
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	call ClearTileMap
 
 	ld a, LOW(GLACEON)
@@ -609,7 +609,7 @@ if !DEF(DEBUG)
 	ld hl, ElmText4
 	call PrintText
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	call ClearTileMap
 
 	xor a
@@ -688,7 +688,7 @@ ElmText7:
 
 InitGender:
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	call ClearTileMap
 
 	call InitGenderGraphics
@@ -705,7 +705,7 @@ InitGender:
 	call GenderMenu
 
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	call ClearTileMap
 	call ClearTileMap
 
@@ -972,7 +972,7 @@ ShrinkPlayer:
 	call DelayFrames
 
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	jmp ClearTileMap
 
 Intro_RotatePalettesLeftFrontpic:

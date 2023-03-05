@@ -307,7 +307,7 @@ LinkTimeout:
 	bccoord 1, 14
 	call PlaceWholeStringInBoxAtOnce
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	call ClearScreen
 	ld a, CGB_PLAIN
 	call GetCGBLayout
@@ -1302,7 +1302,7 @@ LinkTradePartymonMenuCheckCancel:
 	jr nz, .loop1
 ExitLinkCommunications:
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 	call ClearScreen
 	ld a, CGB_PLAIN
 	call GetCGBLayout

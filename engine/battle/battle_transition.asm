@@ -203,7 +203,7 @@ StartTrainerBattle_Flash:
 	ldh a, [hBattlePalFadeMode]
 	ld [wPalFadeMode], a
 	ld c, 10
-	call DoFadePalettes
+	farcall DoFadePalettes
 	; fallthrough
 
 StartTrainerBattle_NextScene:

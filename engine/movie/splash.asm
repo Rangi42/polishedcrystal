@@ -24,12 +24,12 @@ SplashScreen:
 	farcall BSOD
 	call ApplyTilemapInVBlank
 	ld c, 15
-	call FadePalettes
+	farcall FadePalettes
 	ld c, 80
 	call DelayFrames
 	call SetBlackPals
 	ld c, 15
-	call FadePalettes
+	farcall FadePalettes
 	call ClearTileMap
 	ld a, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout

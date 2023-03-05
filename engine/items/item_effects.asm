@@ -613,7 +613,7 @@ endc
 	farcall NamingScreen
 
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 
 	farcall LoadStandardFont
 
@@ -700,7 +700,7 @@ endc
 	call PrintTextNoBox
 
 	ld c, 15
-	call FadeToWhite
+	farcall FadeToWhite
 
 	farcall LoadStandardFont
 	jr .return_from_capture
