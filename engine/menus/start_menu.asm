@@ -123,6 +123,8 @@ StartMenu::
 	jr .ReturnEnd2
 
 .ReturnRedraw:
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes

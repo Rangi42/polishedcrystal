@@ -1640,6 +1640,8 @@ ReturnToMapWithSpeechTextbox::
 	ld [wSpriteUpdatesEnabled], a
 	call ClearBGPalettes
 	call ClearSprites
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ReloadTilesetAndPalettes
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -1652,6 +1654,7 @@ ReturnToMapWithSpeechTextbox::
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call UpdateTimePals
+	farcall EnableDynPalUpdates
 	call DelayFrame
 	ld a, $1
 	ldh [hMapAnims], a

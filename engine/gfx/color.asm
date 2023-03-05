@@ -941,9 +941,6 @@ LoadMapPals:
 
 .got_pals
 	farcall ClearSavedObjPals
-	ld hl, wPalFlags
-	set NO_DYN_PAL_APPLY_F, [hl]
-	farcall CheckForUsedObjPals
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
