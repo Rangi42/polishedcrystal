@@ -1202,7 +1202,7 @@ GivePoke::
 	or b
 	ld [de], a
 	push hl
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetFarWord
 	ld a, b

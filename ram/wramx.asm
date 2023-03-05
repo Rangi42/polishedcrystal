@@ -806,8 +806,6 @@ wScriptFlags3::
 
 wScriptMode:: db
 wScriptRunning:: db
-wScriptBank:: db
-wScriptPos:: dw
 
 wScriptStackSize:: db
 wScriptStack:: ds 3 * 12
@@ -846,11 +844,7 @@ wReceiveCallDelay_StartTime:: ds 3
 wBugContestMinsRemaining:: db
 wBugContestSecsRemaining:: db
 
-	ds 2 ; unused
-
 wMapStatusEnd::
-
-	ds 2 ; unused
 
 
 SECTION "Game Data", WRAMX
