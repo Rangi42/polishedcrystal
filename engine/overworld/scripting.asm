@@ -272,6 +272,24 @@ ScriptCommandTable:
 	dw Script_scalltable                 ; d5
 	assert_table_length NUM_EVENT_COMMANDS
 
+GetScriptWordDE::
+; Return byte at hScriptBank:hScriptPos in de.
+	push hl
+	call GetScriptWord
+	ld e, l
+	ld d, h
+	pop hl
+	ret
+
+GetScriptWordBC::
+; Return byte at hScriptBank:hScriptPos in bc.
+	push hl
+	call GetScriptWord
+	ld c, l
+	ld b, h
+	pop hl
+	ret
+
 StartScript:
 	ld hl, wScriptFlags
 	set SCRIPT_RUNNING, [hl]
@@ -688,10 +706,7 @@ Script_pokemart:
 Script_elevator:
 	xor a
 	ldh [hScriptVar], a
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ldh a, [hScriptBank]
 	ld b, a
 	farcall Elevator
@@ -1082,10 +1097,7 @@ Script_disappear:
 	farjp _UpdateSprites
 
 Script_follow:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 	farjp StartFollow
 
 Script_stopfollow:
@@ -1112,10 +1124,7 @@ Script_writeobjectxy:
 	farjp WritePersonXY
 
 Script_follownotexact:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 	farjp FollowNotExact
 
 Script_loademote:
@@ -1286,19 +1295,13 @@ Script_reloadmap:
 Script_scall:
 	ldh a, [hScriptBank]
 	ld b, a
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	jr ScriptCall
 
 Script_farscall:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	jr ScriptCall
 
 Script_memcall:
@@ -1426,8 +1429,10 @@ Script_ifless:
 	; fallthrough
 
 SkipTwoScriptBytes:
-	call GetScriptByte
-	jmp GetScriptByte
+	push hl
+	call GetScriptWord
+	pop hl
+	ret
 
 Script_iffalsefwd:
 	ldh a, [hScriptVar]
@@ -1509,10 +1514,7 @@ Script_checkscene:
 	ret
 
 Script_checkmapscene:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 	call GetMapSceneID
 	ld a, d
 	or e
@@ -1534,10 +1536,7 @@ Script_setscene:
 	jr DoTrigger
 
 Script_setmapscene:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 DoTrigger:
 	call GetMapSceneID
 	ld a, d
@@ -1658,10 +1657,7 @@ GetVarAction:
 	farjp _GetVarAction
 
 Script_getmonname:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld a, e
 	and a
 	jr nz, .gotit
@@ -1777,10 +1773,7 @@ ResetStringBuffer1:
 	ret
 
 Script_getstring:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ldh a, [hScriptBank]
 	ld hl, CopyName1
 	call FarCall_hl
@@ -1802,10 +1795,7 @@ Script_givepokemail:
 	farjp GivePokeItem
 
 Script_checkpokemail:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ldh a, [hScriptBank]
 	ld b, a
 	farjp CheckPokeItem
@@ -2092,26 +2082,17 @@ Script_giveegg:
 	ret
 
 Script_setevent:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, SET_FLAG
 	jmp EventFlagAction
 
 Script_clearevent:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, RESET_FLAG
 	jmp EventFlagAction
 
 Script_checkevent:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	jr z, .false
@@ -2121,27 +2102,18 @@ Script_checkevent:
 	ret
 
 Script_setflag:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, SET_FLAG
 	jr _EngineFlagAction
 
 Script_clearflag:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, RESET_FLAG
 _EngineFlagAction:
 	farjp EngineFlagAction
 
 Script_checkflag:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, 2 ; check
 	call _EngineFlagAction
 	ld a, c
