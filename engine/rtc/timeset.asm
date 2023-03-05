@@ -20,7 +20,7 @@ InitClock:
 	call GetCGBLayout
 	xor a
 	ldh [hBGMapMode], a
-	call LoadStandardFont
+	farcall LoadStandardFont
 	call BlackOutScreen
 	call ApplyTilemapInVBlank
 	call SetPalettes
@@ -348,7 +348,7 @@ Special_SetDayOfWeek:
 	ld a, [wTempDayOfWeek]
 	ld [wStringBuffer2], a
 	farcall SetDayOfWeek
-	call LoadStandardFont
+	farcall LoadStandardFont
 	pop af
 	ldh [hInMenu], a
 	ret

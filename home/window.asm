@@ -45,7 +45,7 @@ CloseText::
 	farcall RefreshSprites
 	ld a, $90
 	ldh [hWY], a
-	call UpdatePlayerSprite
+	farcall UpdatePlayerSprite
 	xor a
 	ldh [hBGMapMode], a
 

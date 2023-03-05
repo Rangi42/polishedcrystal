@@ -1,18 +1,3 @@
-UpdatePlayerSprite::
-	farjp _UpdatePlayerSprite
-
-LoadStandardOpaqueFont::
-	farjp _LoadStandardOpaqueFont
-
-LoadStandardFont::
-	farjp _LoadStandardFont
-
-LoadFontsBattleExtra::
-	farjp _LoadFontsBattleExtra
-
-LoadFrame::
-	farjp _LoadFrame
-
 ApplyTilemap::
 ; Tell VBlank to update BG Map
 	ld a, 1

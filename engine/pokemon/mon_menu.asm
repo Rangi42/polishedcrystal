@@ -201,7 +201,7 @@ GiveTakePartyMonItem:
 	call ClearPalettes
 	call .GiveItem
 	call ClearPalettes
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	call ExitMenu
 	xor a
 	ret
@@ -832,7 +832,7 @@ ChooseMoveToDelete:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	ld a, MOVESCREEN_DELETER
 	ld [wMoveScreenMode], a
 	call MoveScreen
@@ -850,7 +850,7 @@ ChooseMoveToForget:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call LoadTileMapToTempTileMap
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	ld a, MOVESCREEN_NEWMOVE
 	ld [wMoveScreenMode], a
 	call MoveScreen
@@ -894,7 +894,7 @@ ChooseMoveToRelearn:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	ld a, MOVESCREEN_REMINDER
 	ld [wMoveScreenMode], a
 	call MoveScreen
@@ -1390,7 +1390,7 @@ SetUpMoveScreenBG:
 	ldh [hBGMapMode], a
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	call ClearSpriteAnims2
 	ld a, [wTempMonSpecies]
 	ld [wTempIconSpecies], a

@@ -1695,8 +1695,8 @@ ReloadTilesetAndPalettes::
 	call DisableLCD
 	call ClearSprites
 	farcall RefreshSprites
-	call LoadStandardFont
-	call LoadFrame
+	farcall LoadStandardFont
+	farcall LoadFrame
 	ldh a, [hROMBank]
 	push af
 	call SwitchToMapAttributesBank

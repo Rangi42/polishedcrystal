@@ -49,11 +49,11 @@ LoadFonts_NoOAMUpdate::
 	ld a, $1
 	ldh [hOAMUpdate], a
 
-	call LoadFrame
+	farcall LoadFrame
 	ld a, $90
 	ldh [hWY], a
 	call SafeUpdateSprites
-	call LoadStandardFont
+	farcall LoadStandardFont
 
 	pop af
 	ldh [hOAMUpdate], a

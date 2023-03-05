@@ -532,7 +532,7 @@ InitPartyMenuLayout:
 	jmp PrintPartyMenuText
 
 LoadPartyMenuGFX:
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	farcall InitPartyMenuPalettes ; engine/color.asm
 	jmp ClearSpriteAnims2
 

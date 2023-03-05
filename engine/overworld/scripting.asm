@@ -2501,14 +2501,14 @@ Script_unowntypeface:
 	and ~FONT_MASK
 	or UNOWN_FONT
 	ld [wOptions2], a
-	jmp LoadStandardFont
+	farjp LoadStandardFont
 
 Script_restoretypeface:
 	ld a, [wOptionsBuffer]
 	ld [wOptions2], a
 	xor a
 	ld [wOptionsBuffer], a
-	jmp LoadStandardFont
+	farjp LoadStandardFont
 
 Script_iftrue_endtext:
 	ldh a, [hScriptVar]

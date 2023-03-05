@@ -1,15 +1,15 @@
 INCLUDE "gfx/font.asm"
 
-_LoadStandardOpaqueFont::
+LoadStandardOpaqueFont::
 	ld a, TRUE
-	call _LoadStandardMaybeOpaqueFont
+	call LoadStandardMaybeOpaqueFont
 	ld hl, vTiles2 tile " "
 	ld de, TextboxSpaceGFX
 	jmp GetOpaque1bppFontTile
 
-_LoadStandardFont::
+LoadStandardFont::
 	xor a
-_LoadStandardMaybeOpaqueFont:
+LoadStandardMaybeOpaqueFont:
 	push af
 	call LoadStandardFontPointer
 	ld d, h
@@ -54,13 +54,14 @@ LoadStandardFontPointer::
 	dw FontUnown
 	assert_table_length NUM_FONTS
 
-_LoadFontsBattleExtra::
+LoadFontsBattleExtra::
 	ld hl, BattleExtrasGFX
 	ld de, vTiles2 tile BATTLEEXTRA_GFX_START
 	lb bc, BANK(BattleExtrasGFX), 32
 	call DecompressRequest2bpp
+	; fallthrough
 
-_LoadFrame::
+LoadFrame::
 	ld a, [wTextboxFrame]
 	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
 	ld hl, Frames
@@ -76,7 +77,8 @@ _LoadFrame::
 	jmp Get1bpp
 
 LoadBattleFontsHPBar:
-	call _LoadFontsBattleExtra
+	call LoadFontsBattleExtra
+	; fallthrough
 
 LoadPlayerStatusIcon:
 	push de

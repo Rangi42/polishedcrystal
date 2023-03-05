@@ -73,7 +73,7 @@ StartMenu::
 	push af
 	ld a, 1
 	ldh [hOAMUpdate], a
-	call LoadFrame
+	farcall LoadFrame
 	pop af
 	ldh [hOAMUpdate], a
 .ReturnEnd:

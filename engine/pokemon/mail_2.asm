@@ -11,8 +11,8 @@ ReadAnyMail:
 	call ClearSprites
 	call ClearTileMap
 	call DisableLCD
-	call LoadStandardFont
-	call LoadFrame
+	farcall LoadStandardFont
+	farcall LoadFrame
 	pop de
 	call .LoadGFX
 	call EnableLCD
@@ -25,7 +25,7 @@ ReadAnyMail:
 	call .loop
 	call ClearBGPalettes
 	call DisableLCD
-	call LoadStandardFont
+	farcall LoadStandardFont
 	jmp EnableLCD
 
 .loop

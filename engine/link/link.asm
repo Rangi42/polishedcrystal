@@ -12,8 +12,8 @@ LinkCommunications:
 	call DelayFrames
 	call ClearScreen
 	call UpdateSprites
-	call LoadStandardFont
-	call LoadFontsBattleExtra
+	farcall LoadStandardFont
+	farcall LoadFontsBattleExtra
 	call LoadTradeScreenGFX
 	call ApplyAttrAndTilemapInVBlank
 	hlcoord 3, 8
@@ -1600,7 +1600,7 @@ LinkTrade:
 	ld c, 100
 	call DelayFrames
 	call ClearTileMap
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	ld a, CGB_PLAIN
 	call GetCGBLayout
 	ldh a, [hSerialConnectionStatus]

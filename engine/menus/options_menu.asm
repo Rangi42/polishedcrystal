@@ -328,7 +328,7 @@ UpdateFrame:
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
-	call LoadFrame
+	farcall LoadFrame
 	and a
 	ret
 
@@ -547,7 +547,7 @@ Options_Typeface:
 	ld [hl], a
 	call .NonePressed
 	call ApplyTilemapInVBlank
-	jmp LoadStandardFont
+	farjp LoadStandardFont
 
 .NonePressed:
 	ld b, 0

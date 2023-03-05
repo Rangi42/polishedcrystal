@@ -615,7 +615,7 @@ endc
 	ld c, 15
 	call FadeToWhite
 
-	call LoadStandardFont
+	farcall LoadStandardFont
 
 	pop hl
 	ld de, wStringBuffer1
@@ -702,7 +702,7 @@ endc
 	ld c, 15
 	call FadeToWhite
 
-	call LoadStandardFont
+	farcall LoadStandardFont
 	jr .return_from_capture
 
 .catch_bug_contest_mon

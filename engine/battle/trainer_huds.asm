@@ -215,7 +215,7 @@ INCBIN "gfx/battle/balls.2bpp"
 
 _ShowLinkBattleParticipants:
 	call ClearBGPalettes
-	call LoadFrame
+	farcall LoadFrame
 	hlcoord 2, 3
 	lb bc, 9, 14
 	call Textbox

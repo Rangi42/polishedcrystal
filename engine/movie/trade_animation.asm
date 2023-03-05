@@ -150,7 +150,7 @@ RunTradeAnimSequence:
 	call ClearSprites
 	call ClearTileMap
 	call DisableLCD
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	call ClearSpriteAnims
 	ld a, $1
 	ldh [rVBK], a
@@ -210,7 +210,7 @@ DoTradeAnimation:
 	ret
 
 .finished
-	call LoadStandardFont
+	farcall LoadStandardFont
 	scf
 	ret
 

@@ -39,8 +39,8 @@ NewGame_ClearTileMapEtc:
 	ldh [hMapAnims], a
 	ld a, "<BLACK>"
 	call FillTileMap
-	call LoadFrame
-	call LoadStandardFont
+	farcall LoadFrame
+	farcall LoadStandardFont
 	jmp ClearWindowData
 
 NewGamePlus:
@@ -434,14 +434,14 @@ DisplayNormalContinueData:
 	call Continue_LoadMenuHeader
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_PrintGameTime
-	call LoadFrame
+	farcall LoadFrame
 	jmp UpdateSprites
 
 DisplayContinueDataWithRTCError:
 	call Continue_LoadMenuHeader
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_UnknownGameTime
-	call LoadFrame
+	farcall LoadFrame
 	jmp UpdateSprites
 
 Continue_LoadMenuHeader:
@@ -638,7 +638,7 @@ endc
 	call NamePlayer
 
 	call ClearTileMap
-	call LoadFrame
+	farcall LoadFrame
 	call ApplyTilemapInVBlank
 	call DrawIntroPlayerPic
 
@@ -966,7 +966,7 @@ ShrinkPlayer:
 	call DelayFrames
 
 	call Intro_PlacePlayerSprite
-	call LoadFrame
+	farcall LoadFrame
 
 	ld c, 50
 	call DelayFrames
@@ -1352,7 +1352,7 @@ ResetInitialOptions:
 
 Copyright:
 	call ClearTileMap
-	call LoadFrame
+	farcall LoadFrame
 	ld hl, CopyrightGFX
 	ld de, vTiles2 tile $60
 	lb bc, BANK(CopyrightGFX), $1d

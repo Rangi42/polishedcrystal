@@ -2,8 +2,8 @@ _ResetClock:
 	farcall BlankScreen
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	call LoadStandardFont
-	call LoadFrame
+	farcall LoadStandardFont
+	farcall LoadFrame
 	call BlackOutScreen
 	ld de, MUSIC_MAIN_MENU
 	call PlayMusic

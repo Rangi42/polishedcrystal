@@ -14,7 +14,7 @@ StatsScreenInit:
 	call ClearBGPalettes
 	call ClearTileMap
 	call UpdateSprites
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	ld hl, GFX_Stats
 	ld de, vTiles2 tile $31
 	lb bc, BANK(GFX_Stats), 41

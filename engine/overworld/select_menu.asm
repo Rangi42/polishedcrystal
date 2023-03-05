@@ -123,7 +123,7 @@ GetRegisteredItem:
 	farcall ReanchorBGMap_NoOAMUpdate
 	call SafeUpdateSprites
 	call BGMapAnchorTopLeft
-	call LoadStandardOpaqueFont
+	farcall LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld bc, 1 palettes

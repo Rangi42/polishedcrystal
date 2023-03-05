@@ -1,4 +1,4 @@
-_UpdatePlayerSprite::
+UpdatePlayerSprite::
 	call GetPlayerSprite
 	ld a, [wPlayerSprite]
 	ldh [hUsedSpriteIndex], a

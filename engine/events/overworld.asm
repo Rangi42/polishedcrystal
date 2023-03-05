@@ -378,7 +378,7 @@ CutDownTree:
 	call GetMovementPermissions
 	call UpdateSprites
 	call DelayFrame
-	jmp LoadStandardFont
+	farjp LoadStandardFont
 
 TryFlashOW::
 	ld a, [wTimeOfDayPalset]
@@ -788,7 +788,7 @@ FlyFunction:
 	farcall ClearSavedObjPals
 	farcall CheckForUsedObjPals
 	call DelayFrame
-	jmp UpdatePlayerSprite
+	farjp UpdatePlayerSprite
 
 WaterfallFunction:
 	call .TryWaterfall
@@ -1777,7 +1777,7 @@ PutTheRodAway:
 	ld a, $1
 	ld [wPlayerAction], a
 	call UpdateSprites
-	jmp UpdatePlayerSprite
+	farjp UpdatePlayerSprite
 
 CurItemToScriptVar:
 	ld a, [wCurItem]

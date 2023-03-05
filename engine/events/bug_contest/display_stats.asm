@@ -2,7 +2,7 @@ DisplayCaughtContestMonStats:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 
 	ld hl, wOptions1
 	ld a, [hl]

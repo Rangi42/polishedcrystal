@@ -283,7 +283,7 @@ HOF_SlideBackpic:
 	jr .backpicloop
 
 _HallOfFamePC:
-	call LoadFontsBattleExtra
+	farcall LoadFontsBattleExtra
 	xor a
 	ld [wJumptableIndex], a
 .MasterLoop:

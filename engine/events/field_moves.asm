@@ -59,7 +59,7 @@ ShakeHeadbuttTree:
 	xor a
 	rst ByteFill
 	call DelayFrame
-	jmp UpdatePlayerSprite
+	farjp UpdatePlayerSprite
 
 HideHeadbuttTree:
 	xor a

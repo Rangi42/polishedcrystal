@@ -746,8 +746,8 @@ NamingScreen_GetLastCharacter:
 LoadNamingScreenGFX:
 	call ClearSprites
 	call ClearSpriteAnims
-	call LoadStandardFont
-	call LoadFrame
+	farcall LoadStandardFont
+	farcall LoadFrame
 
 	ld hl, NamingScreenGFX_Border
 	ld de, vTiles2 tile NAMINGSCREEN_BORDER

@@ -8389,7 +8389,7 @@ InitBattleDisplay:
 	hlcoord 1, 5
 	lb bc, 3, 7
 	call ClearBox
-	call LoadStandardFont
+	farcall LoadStandardFont
 	call _LoadBattleFontsHPBar
 	call .BlankBGMap
 	xor a

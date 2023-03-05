@@ -12,8 +12,8 @@ _CardFlip:
 ;	call PlayMusic
 	call DelayFrame
 	call DisableLCD
-	call LoadStandardFont
-	call LoadFrame
+	farcall LoadStandardFont
+	farcall LoadFrame
 
 	ld hl, CardFlipLZ01
 	ld de, vTiles2 tile $00
