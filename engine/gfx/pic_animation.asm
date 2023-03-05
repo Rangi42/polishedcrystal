@@ -361,17 +361,6 @@ PokeAnim_GetDuration:
 	add c
 	ret
 
-PokeAnim_GetFrame:
-	call PokeAnim_PlaceGraphic
-	ld a, [wPokeAnimCommand]
-	and a
-	ret z
-	call PokeAnim_GetBitmaskIndex
-	push hl
-	call PokeAnim_CopyBitmaskToBuffer
-	pop hl
-	jmp PokeAnim_ConvertAndApplyBitmask
-
 PokeAnim_StartWaitAnim:
 	ld hl, wPokeAnimJumptableIndex
 	inc [hl]
@@ -450,7 +439,17 @@ PokeAnim_CopyBitmaskToBuffer:
 
 .Sizes: db 4, 5, 7
 
-PokeAnim_ConvertAndApplyBitmask:
+PokeAnim_GetFrame:
+	call PokeAnim_PlaceGraphic
+	ld a, [wPokeAnimCommand]
+	and a
+	ret z
+
+	call PokeAnim_GetBitmaskIndex
+	push hl
+	call PokeAnim_CopyBitmaskToBuffer
+	pop hl
+
 	xor a
 	ld [wPokeAnimBitmaskCurBit], a
 	ld [wPokeAnimBitmaskCurRow], a

@@ -334,7 +334,7 @@ NamingScreenJoypadLoop:
 	ret
 
 .a
-	call .GetCursorPosition
+	call NamingScreen_PressedA_GetCursorCommand
 	cp $1
 	jr z, .select
 	cp $2
@@ -403,12 +403,12 @@ NamingScreenJoypadLoop:
 .ready
 	jmp NamingScreen_ApplyTextInputMode
 
-.GetCursorPosition:
+NamingScreen_PressedA_GetCursorCommand:
 	ld hl, wNamingScreenCursorObjectPointer
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-
+	; fallthrough
 NamingScreen_GetCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
@@ -496,24 +496,24 @@ NamingScreen_AnimateCursor:
 ; right
 	call NamingScreen_GetCursorPosition
 	and a
-	jr nz, .asm_11ab7
+	jr nz, .case_del_done_right
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
 	cp $8
-	jr nc, .asm_11ab4
+	jr nc, .wrap_around_letter_right
 	inc [hl]
 	ret
 
-.asm_11ab4
+.wrap_around_letter_right
 	ld [hl], $0
 	ret
 
-.asm_11ab7
+.case_del_done_right
 	cp $3
-	jr nz, .asm_11abc
+	jr nz, .wrap_around_command_right
 	xor a
-.asm_11abc
+.wrap_around_command_right
 	ld e, a
 	add a
 	add e
@@ -525,24 +525,24 @@ NamingScreen_AnimateCursor:
 .left
 	call NamingScreen_GetCursorPosition
 	and a
-	jr nz, .asm_11ad8
+	jr nz, .caps_del_done_left
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_11ad5
+	jr z, .wrap_around_letter_left
 	dec [hl]
 	ret
 
-.asm_11ad5
+.wrap_around_letter_left
 	ld [hl], $8
 	ret
 
-.asm_11ad8
+.caps_del_done_left
 	cp $1
-	jr nz, .asm_11ade
+	jr nz, .wrap_around_command_left
 	ld a, $4
-.asm_11ade
+.wrap_around_command_left
 	dec a
 	dec a
 	ld e, a
@@ -558,11 +558,11 @@ NamingScreen_AnimateCursor:
 	add hl, bc
 	ld a, [hl]
 	cp $5
-	jr nc, .asm_11aff
+	jr nc, .wrap_around_down
 	inc [hl]
 	ret
 
-.asm_11aff
+.wrap_around_down
 	ld [hl], $0
 	ret
 
@@ -571,11 +571,11 @@ NamingScreen_AnimateCursor:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_11b0c
+	jr z, .wrap_around_up
 	dec [hl]
 	ret
 
-.asm_11b0c
+.wrap_around_up
 	ld [hl], $5
 	ret
 
@@ -1096,7 +1096,7 @@ ComposeMail_AnimateCursor:
 	ret z
 
 ; right
-	call ComposeMail_GetCursorPosition
+	call NamingScreen_GetCursorPosition
 	and a
 	jr nz, .case_del_done_right
 	ld hl, SPRITEANIMSTRUCT_VAR1
@@ -1125,7 +1125,7 @@ ComposeMail_AnimateCursor:
 	ret
 
 .left
-	call ComposeMail_GetCursorPosition
+	call NamingScreen_GetCursorPosition
 	and a
 	jr nz, .caps_del_done_left
 	ld hl, SPRITEANIMSTRUCT_VAR1
@@ -1179,40 +1179,6 @@ ComposeMail_AnimateCursor:
 
 .wrap_around_up
 	ld [hl], $5
-	ret
-
-NamingScreen_PressedA_GetCursorCommand:
-	ld hl, wNamingScreenCursorObjectPointer
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-
-ComposeMail_GetCursorPosition:
-	ld hl, SPRITEANIMSTRUCT_VAR2
-	add hl, bc
-	ld a, [hl]
-	cp $5
-	jr nz, .letter
-	ld hl, SPRITEANIMSTRUCT_VAR1
-	add hl, bc
-	ld a, [hl]
-	cp $3
-	jr c, .case
-	cp $6
-	jr c, .del
-	ld a, $3
-	ret
-
-.case
-	ld a, $1
-	ret
-
-.del
-	ld a, $2
-	ret
-
-.letter
-	xor a
 	ret
 
 MailComposition_TryAddLastCharacter:
