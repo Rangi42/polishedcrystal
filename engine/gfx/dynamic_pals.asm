@@ -42,7 +42,7 @@ CheckForUsedObjPals::
 
 	ld hl, wPalFlags
 	bit DISABLE_DYN_PAL_F, [hl]
-	jmp nz, .done
+	jr nz, .done
 
 	; reset all wUsedObjectPals bits
 	xor a
@@ -66,7 +66,7 @@ CheckForUsedObjPals::
 
 .done
 	pop af
-	ldh a, [rSVBK]
+	ldh [rSVBK], a
 	jmp PopAFBCDEHL
 
 ScanObjectStructPals:
