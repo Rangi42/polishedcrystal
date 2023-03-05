@@ -94,6 +94,7 @@ MapSetupScript_Connection:
 	mapsetup LoadMapObjects
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
+	mapsetup EnableDynPalUpdates
 	mapsetup InitMapNameSign
 	mapsetup ApplyMapPalettes
 	mapsetup LoadWildMonData
@@ -122,6 +123,7 @@ MapSetupScript_Train:
 	mapsetup EnableLCD
 	mapsetup LoadMapObjects
 	mapsetup LoadMapPalettes
+	mapsetup RefreshMapSprites
 	mapsetup EnableDynPalUpdates
 	mapsetup RefreshMapSprites
 	mapsetup FadeToMapMusic
