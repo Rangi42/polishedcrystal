@@ -821,7 +821,7 @@
 	wildmon 32, SWINUB
 	wildmon 34, GOLBAT
 	wildmon 32, GOLBAT
-	wildmon 32, NINETALES, ALOLAN_FORM
+	wildmon 34, VULPIX, ALOLAN_FORM
 	; day
 	wildmon 30, SWINUB
 	wildmon 32, ZUBAT
@@ -829,7 +829,7 @@
 	wildmon 32, SWINUB
 	wildmon 34, GOLBAT
 	wildmon 32, GOLBAT
-	wildmon 32, NINETALES, ALOLAN_FORM
+	wildmon 34, VULPIX, ALOLAN_FORM
 	; nite
 	wildmon 30, DELIBIRD
 	wildmon 31, ZUBAT
@@ -848,7 +848,7 @@
 	wildmon 33, VULPIX, ALOLAN_FORM
 	wildmon 34, SWINUB
 	wildmon 35, GOLBAT
-	wildmon 33, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	; day
 	wildmon 32, SWINUB
@@ -856,7 +856,7 @@
 	wildmon 33, VULPIX, ALOLAN_FORM
 	wildmon 34, SWINUB
 	wildmon 35, GOLBAT
-	wildmon 33, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	; nite
 	wildmon 32, DELIBIRD
@@ -875,7 +875,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; day
@@ -883,7 +883,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; nite
@@ -903,7 +903,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; day
@@ -911,7 +911,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; nite
