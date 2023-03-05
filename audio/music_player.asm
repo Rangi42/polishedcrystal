@@ -855,7 +855,7 @@ _DrawCh1_2_3:
 	push af
 	push hl
 	call CheckChannelOn
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .blank_note_name
 	call GetPitchAddr
 	ld a, [hl]
@@ -913,14 +913,13 @@ _DrawCh1_2_3:
 	push hl
 	call CheckChannelOn
 	pop hl
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .blank_volume
 	push hl
 	call GetPitchAddr
 	ld a, [hl]
 	and a
 	pop hl
-	ld a, 0
 	jr z, .blank_volume
 	push hl
 	call GetIntensityAddr

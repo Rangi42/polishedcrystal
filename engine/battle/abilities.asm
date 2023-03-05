@@ -458,7 +458,7 @@ ForewarnAbility:
 	; 3 moves share power: 3rd move replaces 2/3 of the time
 	; 4 moves share power: 4th move replaces 3/4 of the time
 	ld a, [wBuffer2]
-	inc a
+	inc a ; no-optimize Inefficient WRAM increment/decrement
 	ld [wBuffer2], a
 	inc a
 	call BattleRandomRange

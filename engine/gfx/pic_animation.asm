@@ -317,9 +317,8 @@ PokeAnim_DoAnimScript:
 	ld [wPokeAnimWaitCounter], a
 	call PokeAnim_StartWaitAnim
 .WaitAnim:
-	ld a, [wPokeAnimWaitCounter]
-	dec a
-	ld [wPokeAnimWaitCounter], a
+	ld hl, wPokeAnimWaitCounter
+	dec [hl]
 	ret nz
 	jr PokeAnim_StopWaitAnim
 
@@ -374,19 +373,16 @@ PokeAnim_GetFrame:
 	jmp PokeAnim_ConvertAndApplyBitmask
 
 PokeAnim_StartWaitAnim:
-	ld a, [wPokeAnimJumptableIndex]
-	inc a
-	ld [wPokeAnimJumptableIndex], a
+	ld hl, wPokeAnimJumptableIndex
+	inc [hl]
 	ret
 
 PokeAnim_StopWaitAnim:
-	ld a, [wPokeAnimJumptableIndex]
-	dec a
-	ld [wPokeAnimJumptableIndex], a
+	ld hl, wPokeAnimJumptableIndex
+	dec [hl]
 	ret
 
 PokeAnim_GetPointer:
-	push hl
 	ld a, [wPokeAnimFrame]
 	ld e, a
 	ld d, $0
@@ -404,7 +400,6 @@ PokeAnim_GetPointer:
 	ld [wPokeAnimParameter], a
 	ld hl, wPokeAnimFrame
 	inc [hl]
-	pop hl
 	ret
 
 PokeAnim_GetBitmaskIndex:

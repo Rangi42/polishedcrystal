@@ -488,7 +488,7 @@ DayCare_GiveEgg:
 	; Recalculates stats and sets other partymon stuff.
 	farcall SetTempPartyMonData
 	farcall AddTempMonToParty
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr nc, .done
 	farcall NewStorageBoxPointer
 	jr c, .PartyAndBoxFull
@@ -688,22 +688,20 @@ DayCare_GenerateEgg:
 	jr nz, .first_dittocheck_done
 	ld a, [wBreedMon1Species]
 	cp DITTO
-	ld a, 1
+	ld a, TRUE
 	jr z, .LoadWhichBreedmonIsTheMother
 .first_dittocheck_done
 	ld a, [wBreedMon2Form]
 	and EXTSPECIES_MASK
 	jr nz, .second_dittocheck_done
 	ld a, [wBreedMon2Species]
-	cp DITTO
-	ld a, 0
+	sub DITTO
 	jr z, .LoadWhichBreedmonIsTheMother
 .second_dittocheck_done
 	farcall GetGender
-	ld a, 0
+	ld a, FALSE
 	jr z, .LoadWhichBreedmonIsTheMother
-	inc a
-
+	inc a ; TRUE
 .LoadWhichBreedmonIsTheMother:
 	; load wCurForm for base data check later
 	ld [wBreedMotherOrNonDitto], a

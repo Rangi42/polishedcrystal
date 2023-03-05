@@ -449,11 +449,12 @@ NamingScreen_AnimateCursor:
 	ld [hl], e
 	cp $5
 	ld de, .LetterEntries
-	ld a, 0
-	jr nz, .got_pointer
+	jr c, .got_pointer
 	ld de, .CaseDelEnd
-	inc a
 .got_pointer
+	; a = carry ? 0 ? 1
+	sbc a
+	inc a
 	ld hl, SPRITEANIMSTRUCT_VAR3
 	add hl, bc
 	add [hl]
@@ -1050,11 +1051,12 @@ ComposeMail_AnimateCursor:
 	ld [hl], e
 	cp $5
 	ld de, .LetterEntries
-	ld a, 0
-	jr nz, .got_pointer
+	jr c, .got_pointer
 	ld de, .CaseDelEnd
-	inc a
 .got_pointer
+	; a = carry ? 0 ? 1
+	sbc a
+	inc a
 	ld hl, SPRITEANIMSTRUCT_VAR3
 	add hl, bc
 	add [hl]

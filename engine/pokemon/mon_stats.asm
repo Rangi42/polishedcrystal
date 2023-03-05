@@ -938,7 +938,7 @@ GetStatusConditionIndex:
 	ld a, [de]
 	ld b, a
 	and SLP_MASK
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr nz, .slp
 	bit TOX, b
 	jr nz, .tox

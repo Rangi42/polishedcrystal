@@ -1438,6 +1438,7 @@ CheckAirborneAfterMoldBreaker:
 	ld b, a
 	call SwitchTurn
 	jr CheckAirborne_GotAbility
+
 CheckAirborne:
 	push de
 	call GetTrueUserAbility
@@ -1447,16 +1448,15 @@ CheckAirborne_GotAbility:
 ; Returns a=0 and z if grounded. Returns nz if not.
 ; a contains ATKFAIL_MISSED for air balloon, ATKFAIL_IMMUNE for flying type,
 ; ATKFAIL_ABILITY for Levitate.
-	push bc
 
 	; Check Iron Ball
+	push bc
 	predef GetUserItemAfterUnnerve
 	ld a, b
-	cp HELD_IRON_BALL
 	pop bc
-	ld c, a
-	ld a, 0
 	pop de
+	ld c, a
+	sub HELD_IRON_BALL
 	ret z
 
 	; d=1 (inverse matchup checks/ring target) skips hardcoded immunity check
@@ -4239,9 +4239,8 @@ BattleCommand_constantdamage:
 .got_turn
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_LEVEL_DAMAGE
+	sub EFFECT_LEVEL_DAMAGE
 	ld b, [hl]
-	ld a, 0
 	jr z, .got_power
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -4275,10 +4274,9 @@ BattleCommand_constantdamage:
 	pop bc
 	and a
 	jr nz, .got_power
-	or b
-	ld a, 0
+	cp b
 	jr nz, .got_power
-	ld b, $1
+	inc b
 	; fallthrough
 
 .got_power
@@ -4467,7 +4465,7 @@ SelfInflictDamageToSubstitute:
 	ld hl, wCurDamage
 	ld a, [hl]
 	and a
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0 (1 cycle faster than `ld [hl], 0 / inc hl`)
 	ld [hli], a
 	jr nz, .broke
 

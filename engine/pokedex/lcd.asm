@@ -601,7 +601,7 @@ Pokedex_GetMainOAM:
 	ld a, [wPokedex_Rows]
 	sub 3
 	ldh [hDivisor], a
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .got_scrollbar_offset
 	jr z, .got_scrollbar_offset
 	call Divide

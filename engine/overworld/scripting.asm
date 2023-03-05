@@ -2504,9 +2504,8 @@ Script_verbosegivetmhm:
 	ld a, 1
 	call CopyConvertedText
 	; off by one error?
-	ld a, [wTempTMHM]
-	inc a
-	ld [wTempTMHM], a
+	ld hl, wTempTMHM
+	inc [hl]
 	predef GetTMHMMove
 	ld b, BANK(GiveTMHMScript)
 	ld de, GiveTMHMScript

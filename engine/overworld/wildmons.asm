@@ -18,7 +18,7 @@ LoadWildMonData:
 	ld [de], a ; eve rate = nite rate
 .done_copy
 	call _WaterWildmonLookup
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr nc, .no_copy
 	inc hl
 	inc hl
