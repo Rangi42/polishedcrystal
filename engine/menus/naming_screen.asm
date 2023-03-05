@@ -580,7 +580,6 @@ NamingScreen_AnimateCursor:
 	ret
 
 NamingScreen_TryAddCharacter:
-MailComposition_TryAddCharacter:
 	ld a, [wNamingScreenMaxNameLength]
 	ld c, a
 	ld a, [wNamingScreenCurNameLength]
@@ -970,7 +969,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	cp $3
 	jr z, .finished
 	call NamingScreen_GetLastCharacter
-	call MailComposition_TryAddLastCharacter
+	call NamingScreen_TryAddCharacter
 	jr c, .start
 	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
@@ -1036,8 +1035,6 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	ld de, MailEntryQwerty_Lowercase
 .ready
 	jmp .PlaceMailCharset
-
-; called from engine/sprite_anims.asm
 
 ComposeMail_AnimateCursor:
 	call .GetDPad
@@ -1180,10 +1177,6 @@ ComposeMail_AnimateCursor:
 .wrap_around_up
 	ld [hl], $5
 	ret
-
-MailComposition_TryAddLastCharacter:
-	ld a, [wNamingScreenLastCharacter]
-	jmp MailComposition_TryAddCharacter
 
 NamingScreen_DrawBorders:
 	; message area
