@@ -22,7 +22,6 @@ INCLUDE "data/trainers/party_pointers.asm"
 
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
-; TODO: use LEVEL_FROM_BADGES for trainers in optional side areas
 
 
 ; TODO: do `dp mon[, form] / db level` and eliminate this macro
