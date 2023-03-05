@@ -438,7 +438,34 @@ NamingScreen_GetCursorPosition:
 	ret
 
 NamingScreen_AnimateCursor:
-	call .GetDPad
+	ld a, $8
+	call NamingScreen_GetDPad
+	ld hl, .LetterEntries
+	ld de, .CaseDelEnd
+	jr NamingScreen_MoveCursor
+
+.LetterEntries:
+	db $00, $10, $20, $30, $40, $50, $60, $70, $80
+
+.CaseDelEnd:
+	db $00, $00, $00, $30, $30, $30, $60, $60, $60
+
+ComposeMail_AnimateCursor:
+	ld a, $9
+	call NamingScreen_GetDPad
+	ld hl, .LetterEntries
+	ld de, .CaseDelEnd
+	jr NamingScreen_MoveCursor
+
+.LetterEntries:
+	db $00, $10, $20, $30, $40, $50, $60, $70, $80, $90
+
+.CaseDelEnd:
+	db $08, $08, $08, $38, $38, $38, $68, $68, $68, $68
+
+NamingScreen_MoveCursor:
+	push hl
+	push de
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld a, [hl]
@@ -447,10 +474,12 @@ NamingScreen_AnimateCursor:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], e
+	pop de
+	pop hl
 	cp $5
-	ld de, .LetterEntries
-	jr c, .got_pointer
-	ld de, .CaseDelEnd
+	jr nc, .got_pointer
+	ld d, h
+	ld e, l
 .got_pointer
 	; a = carry ? 0 ? 1
 	sbc a
@@ -472,13 +501,8 @@ NamingScreen_AnimateCursor:
 	ld [hl], a
 	ret
 
-.LetterEntries:
-	db $00, $10, $20, $30, $40, $50, $60, $70, $80
-
-.CaseDelEnd:
-	db $00, $00, $00, $30, $30, $30, $60, $60, $60
-
-.GetDPad:
+NamingScreen_GetDPad:
+	ld [wNamingScreenKeyboardWidth], a
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_UP
@@ -499,8 +523,10 @@ NamingScreen_AnimateCursor:
 	jr nz, .case_del_done_right
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
+	ld a, [wNamingScreenKeyboardWidth]
+	ld e, a
 	ld a, [hl]
-	cp $8
+	cp e
 	jr nc, .wrap_around_letter_right
 	inc [hl]
 	ret
@@ -535,7 +561,8 @@ NamingScreen_AnimateCursor:
 	ret
 
 .wrap_around_letter_left
-	ld [hl], $8
+	ld a, [wNamingScreenKeyboardWidth]
+	ld [hl], a
 	ret
 
 .caps_del_done_left
@@ -1035,148 +1062,6 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	ld de, MailEntryQwerty_Lowercase
 .ready
 	jmp .PlaceMailCharset
-
-ComposeMail_AnimateCursor:
-	call .GetDPad
-	ld hl, SPRITEANIMSTRUCT_VAR2
-	add hl, bc
-	ld a, [hl]
-	ld e, a
-	swap e
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], e
-	cp $5
-	ld de, .LetterEntries
-	jr c, .got_pointer
-	ld de, .CaseDelEnd
-.got_pointer
-	; a = carry ? 0 ? 1
-	sbc a
-	inc a
-	ld hl, SPRITEANIMSTRUCT_VAR3
-	add hl, bc
-	add [hl]
-	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
-	add hl, bc
-	ld [hl], a
-	ld hl, SPRITEANIMSTRUCT_VAR1
-	add hl, bc
-	ld l, [hl]
-	ld h, $0
-	add hl, de
-	ld a, [hl]
-	ld hl, SPRITEANIMSTRUCT_XOFFSET
-	add hl, bc
-	ld [hl], a
-	ret
-
-.LetterEntries:
-	db $00, $10, $20, $30, $40, $50, $60, $70, $80, $90
-
-.CaseDelEnd:
-	db $08, $08, $08, $38, $38, $38, $68, $68, $68, $68
-
-.GetDPad:
-	ld hl, hJoyLast
-	ld a, [hl]
-	and D_UP
-	jr nz, .up
-	ld a, [hl]
-	and D_DOWN
-	jr nz, .down
-	ld a, [hl]
-	and D_LEFT
-	jr nz, .left
-	ld a, [hl]
-	and D_RIGHT
-	ret z
-
-; right
-	call NamingScreen_GetCursorPosition
-	and a
-	jr nz, .case_del_done_right
-	ld hl, SPRITEANIMSTRUCT_VAR1
-	add hl, bc
-	ld a, [hl]
-	cp $9
-	jr nc, .wrap_around_letter_right
-	inc [hl]
-	ret
-
-.wrap_around_letter_right
-	ld [hl], $0
-	ret
-
-.case_del_done_right
-	cp $3
-	jr nz, .wrap_around_command_right
-	xor a
-.wrap_around_command_right
-	ld e, a
-	add a
-	add e
-	ld hl, SPRITEANIMSTRUCT_VAR1
-	add hl, bc
-	ld [hl], a
-	ret
-
-.left
-	call NamingScreen_GetCursorPosition
-	and a
-	jr nz, .caps_del_done_left
-	ld hl, SPRITEANIMSTRUCT_VAR1
-	add hl, bc
-	ld a, [hl]
-	and a
-	jr z, .wrap_around_letter_left
-	dec [hl]
-	ret
-
-.wrap_around_letter_left
-	ld [hl], $9
-	ret
-
-.caps_del_done_left
-	cp $1
-	jr nz, .wrap_around_command_left
-	ld a, $4
-.wrap_around_command_left
-	dec a
-	dec a
-	ld e, a
-	add a
-	add e
-	ld hl, SPRITEANIMSTRUCT_VAR1
-	add hl, bc
-	ld [hl], a
-	ret
-
-.down
-	ld hl, SPRITEANIMSTRUCT_VAR2
-	add hl, bc
-	ld a, [hl]
-	cp $5
-	jr nc, .wrap_around_down
-	inc [hl]
-	ret
-
-.wrap_around_down
-	ld [hl], $0
-	ret
-
-.up
-	ld hl, SPRITEANIMSTRUCT_VAR2
-	add hl, bc
-	ld a, [hl]
-	and a
-	jr z, .wrap_around_up
-	dec [hl]
-	ret
-
-.wrap_around_up
-	ld [hl], $5
-	ret
 
 NamingScreen_DrawBorders:
 	; message area
