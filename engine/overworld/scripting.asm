@@ -394,7 +394,7 @@ JumpOpenedTextScript:
 	waitendtext
 
 _GetTextPointer:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wScriptTextBank], a
 	call GetScriptByte
 	ld [wScriptTextAddr], a
@@ -403,11 +403,11 @@ _GetTextPointer:
 	ret
 
 _GetThisTextPointer:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wScriptTextBank], a
-	ld a, [wScriptPos]
+	ldh a, [hScriptPos]
 	ld [wScriptTextAddr], a
-	ld a, [wScriptPos + 1]
+	ldh a, [hScriptPos + 1]
 	ld [wScriptTextAddr + 1], a
 	ret
 
@@ -423,7 +423,7 @@ Script_farjumptext:
 	jmp ScriptJump
 
 Script_jumpstashedtext:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wScriptTextBank], a
 	ld a, [wStashedTextPointer]
 	ld [wScriptTextAddr], a
@@ -438,7 +438,7 @@ Script_writetext:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	jmp MapTextbox
 
@@ -452,17 +452,17 @@ Script_farwritetext:
 	jmp MapTextbox
 
 Script_writethistext:
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call MapTextbox
 	ld a, l
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, h
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 Script_repeattext:
@@ -499,7 +499,7 @@ Script_loadmenu:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld de, LoadMenuHeader
 	call FarCall_de
 	jmp UpdateSprites
@@ -543,7 +543,7 @@ Script_closepokepic:
 	farjp ClosePokepic
 
 Script_verticalmenu:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld hl, VerticalMenu
 	call FarCall_hl
 	ld a, [wMenuCursorY]
@@ -554,7 +554,7 @@ Script_verticalmenu:
 	ret
 
 Script__2dmenu:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld hl, _2DMenu
 	call FarCall_hl
 	ld a, [wMenuCursorBuffer]
@@ -695,7 +695,7 @@ Script_pokemart:
 	call GetScriptByte
 	ld e, a
 	ld d, 0
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	farcall OpenMartDialog
 	jmp Script_endtext
@@ -707,7 +707,7 @@ Script_elevator:
 	ld e, a
 	call GetScriptByte
 	ld d, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	farcall Elevator
 	ret c
@@ -910,12 +910,12 @@ Script_applyonemovement:
 	farcall _UnfreezeFollowerObject
 	pop bc
 
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	call SkipTwoScriptBytes
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetMovementData
 	ret c
@@ -948,7 +948,7 @@ ApplyMovement:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetMovementData
 	ret c
@@ -1302,7 +1302,7 @@ Script_reloadmap:
 	jmp StopScript
 
 Script_scall:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetScriptByte
 	ld e, a
@@ -1348,24 +1348,24 @@ ScriptCall:
 	add hl, de
 	add hl, de
 	pop de
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [hli], a
-	ld a, [wScriptPos]
+	ldh a, [hScriptPos]
 	ld [hli], a
-	ld a, [wScriptPos + 1]
+	ldh a, [hScriptPos + 1]
 	ld [hl], a
 	ld a, b
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, e
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, d
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 CallCallback::
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	or $80
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	jr ScriptCall
 
 Script_scalltable:
@@ -1378,12 +1378,12 @@ Script_scalltable:
 	ld d, 0
 	add hl, de
 	add hl, de
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetFarByte
 	ld e, a
 	inc hl
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	call GetFarByte
 	ld d, a
 	jr ScriptCall
@@ -1504,16 +1504,16 @@ StdScript:
 
 ScriptJump:
 	ld a, b
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 ScriptJumpInCurrentBank:
 	ld a, l
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, h
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 Script_sjumpfwd:
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1525,7 +1525,7 @@ Script_sjumpfwd:
 	jr ScriptJumpInCurrentBank
 
 Script_sdefer:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wDeferredScriptBank], a
 	call GetScriptByte
 	ld [wDeferredScriptAddr], a
@@ -1826,7 +1826,7 @@ Script_getstring:
 	ld e, a
 	call GetScriptByte
 	ld d, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld hl, CopyName1
 	call FarCall_hl
 	ld de, wStringBuffer2
@@ -1837,14 +1837,14 @@ Script_givepokemail:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	call GetFarByte
 	ld b, a
 	push bc
 	inc hl
 	ld bc, MAIL_MSG_LENGTH
 	ld de, wMonMailMessageBuffer
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	call FarCopyBytes
 	pop bc
 	farjp GivePokeItem
@@ -1854,7 +1854,7 @@ Script_checkpokemail:
 	ld e, a
 	call GetScriptByte
 	ld d, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	farjp CheckPokeItem
 
@@ -2104,7 +2104,7 @@ Script_givepoke:
 	and a
 	ld b, a
 	jr z, .ok
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -2411,13 +2411,13 @@ ExitScriptSubroutine:
 	ld a, [hli]
 	ld b, a
 	and " "
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, [hli]
 	ld e, a
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, [hl]
 	ld d, a
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	and a
 	ret
 .done

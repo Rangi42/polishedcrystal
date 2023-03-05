@@ -965,11 +965,11 @@ DoPlayerEvent:
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, [hli]
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, [hl]
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 PlayerEventScriptPointers:
