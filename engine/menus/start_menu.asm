@@ -123,6 +123,8 @@ StartMenu::
 	jr .ReturnEnd2
 
 .ReturnRedraw:
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
@@ -151,17 +153,16 @@ StartMenu::
 	dw .MenuString
 	dw .Items
 
-; TODO: remove vestigial menu account EmptyString descriptions
 .Items:
-	dw StartMenu_Pokedex,  .PokedexString,  EmptyString
-	dw StartMenu_Pokemon,  .PartyString,    EmptyString
-	dw StartMenu_Pack,     .PackString,     EmptyString
-	dw StartMenu_Status,   .StatusString,   EmptyString
-	dw StartMenu_Save,     .SaveString,     EmptyString
-	dw StartMenu_Option,   .OptionString,   EmptyString
-	dw StartMenu_Exit,     .ExitString,     EmptyString
-	dw StartMenu_Pokegear, .PokegearString, EmptyString
-	dw StartMenu_Quit,     .QuitString,     EmptyString
+	dw StartMenu_Pokedex,  .PokedexString
+	dw StartMenu_Pokemon,  .PartyString
+	dw StartMenu_Pack,     .PackString
+	dw StartMenu_Status,   .StatusString
+	dw StartMenu_Save,     .SaveString
+	dw StartMenu_Option,   .OptionString
+	dw StartMenu_Exit,     .ExitString
+	dw StartMenu_Pokegear, .PokegearString
+	dw StartMenu_Quit,     .QuitString
 
 .PokedexString:  db "#dex@"
 .PartyString:    db "#mon@"
@@ -175,13 +176,13 @@ StartMenu::
 
 .OpenMenu:
 	ld a, [wMenuSelection]
-	call .GetMenuAccountTextPointer
+	call .GetMenuItemPointer
 	jmp IndirectHL
 
 .MenuString:
 	push de
 	ld a, [wMenuSelection]
-	call .GetMenuAccountTextPointer
+	call .GetMenuItemPointer
 	inc hl
 	inc hl
 	ld a, [hli]
@@ -191,14 +192,14 @@ StartMenu::
 	rst PlaceString
 	ret
 
-.GetMenuAccountTextPointer:
+.GetMenuItemPointer:
 	ld e, a
 	ld d, 0
 	ld hl, wMenuDataPointerTableAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 6
+rept 4
 	add hl, de
 endr
 	ret

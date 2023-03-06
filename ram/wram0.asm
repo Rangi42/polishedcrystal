@@ -793,6 +793,7 @@ wNamingScreenType:: db
 wNamingScreenCursorObjectPointer:: dw
 wNamingScreenLastCharacter:: db
 wNamingScreenStringEntryCoord:: dw
+wNamingScreenKeyboardWidth:: db
 
 
 SECTION UNION "Misc 480", WRAM0

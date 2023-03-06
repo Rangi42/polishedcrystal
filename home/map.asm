@@ -798,11 +798,11 @@ CallMapScript::
 CallScript::
 ; Call a script at a:hl.
 
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, l
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, h
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 
 	ld a, PLAYEREVENT_MAPSCRIPT
 	ld [wScriptRunning], a
@@ -915,34 +915,67 @@ GetMovementData::
 	ret
 
 GetScriptByte::
-; Return byte at wScriptBank:wScriptPos in a.
+; Return byte at hScriptBank:hScriptPos in a.
 
 	push hl
 	push bc
 	ldh a, [hROMBank]
-	push af
-	ld a, [wScriptBank]
+	ld c, a
+	ldh a, [hScriptBank]
 	rst Bankswitch
 
-	ld hl, wScriptPos
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
+	ld hl, hScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 
-	ld a, [bc]
-
-	inc bc
-	ld [hl], b
-	dec hl
-	ld [hl], c
-
+	ld a, [hli]
 	ld b, a
-	pop af
+
+	ld a, l
+	ldh [hScriptPos], a
+	ld a, h
+	ldh [hScriptPos + 1], a
+
+	ld a, c
 	rst Bankswitch
 	ld a, b
 	pop bc
 	pop hl
 	ret
+
+GetScriptWord::
+; Return word at hScriptBank:hScriptPos in hl.
+
+	push bc
+	ldh a, [hROMBank]
+	push af
+	ldh a, [hScriptBank]
+	rst Bankswitch
+
+	ld hl, hScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+
+	ld a, l
+	ldh [hScriptPos], a
+	ld a, h
+	ldh [hScriptPos + 1], a
+
+	ld l, c
+	ld h, b
+
+	pop af
+	rst Bankswitch
+	pop bc
+	ret
+
 
 ObjectEvent::
 	faceplayer
@@ -1640,6 +1673,8 @@ ReturnToMapWithSpeechTextbox::
 	ld [wSpriteUpdatesEnabled], a
 	call ClearBGPalettes
 	call ClearSprites
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ReloadTilesetAndPalettes
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -1652,6 +1687,7 @@ ReturnToMapWithSpeechTextbox::
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call UpdateTimePals
+	farcall EnableDynPalUpdates
 	call DelayFrame
 	ld a, $1
 	ldh [hMapAnims], a

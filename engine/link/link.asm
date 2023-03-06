@@ -2164,8 +2164,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	; bc is the number of bytes we should transfer.
 	; It needs to account for the maximum number of
@@ -2203,8 +2202,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 5
 	call Serial_ExchangeBytes
@@ -2243,8 +2241,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 2
 	call Serial_ExchangeBytes

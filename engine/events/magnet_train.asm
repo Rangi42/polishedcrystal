@@ -94,10 +94,10 @@ MagnetTrain_UpdateLYOverrides:
 	add a
 	ldh [hSCX], a
 	call .loadloop
-	ld c, 6 * TILE_WIDTH
+	ld c, 4 * TILE_WIDTH
 	ld a, [wMagnetTrainPosition]
 	call .loadloop
-	ld c, 6 * TILE_WIDTH + 1
+	ld c, 8 * TILE_WIDTH + 1
 	ld a, [wMagnetTrainOffset]
 	add a
 	call .loadloop

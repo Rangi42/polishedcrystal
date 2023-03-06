@@ -102,7 +102,7 @@ SwitchTurn::
 	ret
 
 SetPlayerTurn::
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	ldh [hBattleTurn], a
 	ret
 

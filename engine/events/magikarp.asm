@@ -299,7 +299,7 @@ CalcMagikarpLength:
 .next
 	inc hl ; align to next triplet
 	ld a, [wTempByteValue]
-	inc a
+	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wTempByteValue], a
 	cp 16
 	jr c, .read

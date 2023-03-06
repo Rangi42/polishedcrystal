@@ -806,8 +806,8 @@ wScriptFlags3::
 
 wScriptMode:: db
 wScriptRunning:: db
-wScriptBank:: db
-wScriptPos:: dw
+
+	ds 3 ; unused
 
 wScriptStackSize:: db
 wScriptStack:: ds 3 * 12

@@ -2173,17 +2173,15 @@ WinTrainerBattle:
 	call nz, .DoubleReward
 	call .CheckMaxedOutMomMoney
 	push af
-	ld a, 0
-	jr nc, .okay
+	lb bc, 0, $4
+	jr nc, .loop
 	ld a, [wMomSavingMoney]
 	and $7
 	cp $3
-	jr nz, .okay
-	inc a
-
-.okay
 	ld b, a
-	ld c, $4
+	jr nz, .loop
+	inc b
+
 .loop
 	ld a, b
 	and a
@@ -6293,18 +6291,18 @@ GiveExperiencePoints:
 	inc hl
 	ld a, [wPlayerID + 1]
 	cp [hl]
-	ld a, 0
 	jr z, .no_boost
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
-	ld a, 0
-	jr nz, .no_boost
+	jr z, .boosted
+.no_boost
+	xor a
+	jr .do_boost
 
 .boosted
 	call BoostExp
 	ld a, 1
-
-.no_boost
+.do_boost
 ; Boost experience for a trainer battle
 	ld [wStringBuffer2 + 3], a
 	ld a, [wBattleMode]

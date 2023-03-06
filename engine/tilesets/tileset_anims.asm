@@ -298,6 +298,20 @@ TilesetSnowtopMountainAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
+TilesetWarehouseAnim::
+	dw NULL,  SpinnerAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
+
 TilesetHouse1Anim::
 TilesetHouse2Anim::
 TilesetPokeCenterAnim::
@@ -315,7 +329,6 @@ TilesetPokeComAnim::
 TilesetBattleTowerAnim::
 TilesetRuinsAnim::
 TilesetRadioTowerAnim::
-TilesetWarehouseAnim::
 TilesetAlphAnim::
 TilesetPokemonMansionAnim::
 TilesetDecorAnim::
@@ -605,6 +618,37 @@ AnimateFarawayWaterTile:
 
 	ld sp, hl
 	jmp WriteTileToDE
+
+SpinnerAnimation:
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+
+	ld a, [wSpinning]
+	and a
+	jr z, .ok
+
+	; period 2, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 2, 1
+	add a
+	add a
+	add a
+
+.ok
+	add LOW(.SpinnerTileFrames)
+	ld l, a
+	adc HIGH(.SpinnerTileFrames)
+	sub l
+	ld h, a
+
+	ld sp, hl
+	ld hl, vTiles2 tile $50
+	jmp WriteTile
+
+.SpinnerTileFrames:
+INCBIN "gfx/tilesets/spinner/1.2bpp"
+INCBIN "gfx/tilesets/spinner/2.2bpp"
 
 ForestTreeLeftAnimation:
 	ld a, [wCelebiEvent]

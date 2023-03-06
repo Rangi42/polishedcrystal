@@ -198,8 +198,8 @@ BattleAnimFunction_MoveInCircle:
 	call BattleAnim_IncAnonJumptableIndex
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
+	xor a
 	bit 7, [hl]
-	ld a, 0
 	jr z, .asm_cd0f9
 	ld a, $20
 .asm_cd0f9

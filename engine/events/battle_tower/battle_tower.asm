@@ -185,9 +185,8 @@ Special_BattleTower_CommitChallengeResult:
 	dec a
 	call BT_GetTrainerIndex
 	cp BATTLETOWER_NUM_TRAINERS
-	ld a, 0
-	ldh [hScriptVar], a
-	ret c
+	; a = carry ? FALSE : TRUE
+	sbc a
 	inc a
 	ldh [hScriptVar], a
 	ret

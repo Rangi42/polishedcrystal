@@ -652,6 +652,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [rSVBK], a
 	farcall ClearSavedObjPals
 	farcall CheckForUsedObjPals
+	farcall _UpdateSprites
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	call DelayFrame

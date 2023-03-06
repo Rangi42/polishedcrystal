@@ -2441,7 +2441,7 @@ HandleNPCStep::
 	ld [wPlayerStepVectorY], a
 	ld a, [wPlayerStepFlags]
 	bit PLAYERSTEP_STOP_F, a
-	ld a, $0 ; preserve flags
+	ld a, 0 ; no-optimize a = 0
 	ld [wPlayerStepFlags], a
 	ret nz
 	dec a ; STANDING

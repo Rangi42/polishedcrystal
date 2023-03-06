@@ -217,7 +217,10 @@ hPlaceStringCoords:: dw
 hCompressedTextBuffer:: ds 2 ; one character and "@"
 ENDU
 
-	ds 7 ; unused
+hScriptBank:: db
+hScriptPos:: dw
+
+	ds 4 ; unused
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp
