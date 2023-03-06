@@ -34,7 +34,7 @@ _Predef::
 	ld a, d
 	pop de
 	and a
-	jr nz, _DoFarCall_BankInA
+	jmp nz, _DoFarCall_BankInA
 	pop af
 	push af
-	jr _DoFarCall_BankInA
+	jmp _DoFarCall_BankInA

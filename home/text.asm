@@ -40,7 +40,7 @@ FillTileMap::
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	ret z
-	jmp ApplyTilemapInVBlank
+	jr ApplyTilemapInVBlank
 
 BlackOutScreen::
 	xor a

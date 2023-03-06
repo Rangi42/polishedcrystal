@@ -274,7 +274,7 @@ CalcMagikarpLength:
 	ld a, [hl]
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	ld c, a
 
@@ -286,7 +286,7 @@ CalcMagikarpLength:
 	ldh [hMultiplicand + 2], a
 	ld a, [wTempByteValue]
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld b, 0
 	ldh a, [hProduct + 3]
 	add c

@@ -20,7 +20,7 @@ _CheckContactMove::
 
 INCLUDE "data/moves/contact_moves.asm"
 
-_DisappearUser::
+DisappearUser::
 	xor a
 	ldh [hBGMapMode], a
 	ldh a, [hBattleTurn]

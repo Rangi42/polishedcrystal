@@ -811,7 +811,7 @@ MonMenu_FreshSnack:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ld a, MON_HP + 1
 	call GetPartyParamLocationAndValue
 	ldh a, [hQuotient + 2]
