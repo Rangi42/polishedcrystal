@@ -1682,7 +1682,7 @@ GetOneFifthMaxHP:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld d, a
 	ldh a, [hQuotient + 2]
@@ -2797,7 +2797,7 @@ ComputeMaxPP:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 	; Get the number of PP, which are bits 6 and 7 of the PP value stored in RAM.
 	ld a, [hl]
 	ld b, a

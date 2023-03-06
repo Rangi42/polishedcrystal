@@ -1,9 +1,11 @@
-_Sine::
+Cosine::
+; Return d * cos(a) in hl
+	add $10 ; 90 degrees
+Sine::
 ; A simple sine function.
-; Return d * sin(e) in hl.
+; Return d * sin(a) in hl.
 
-; e is a signed 6-bit value.
-	ld a, e
+; a is a signed 6-bit value.
 	and %111111
 	cp  %100000
 	jr nc, .negative

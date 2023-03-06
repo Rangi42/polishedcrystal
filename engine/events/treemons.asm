@@ -499,7 +499,7 @@ GetTreeScore:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 
 	ldh a, [hQuotient + 1]
 	ldh [hDividend], a
@@ -508,7 +508,7 @@ GetTreeScore:
 	ld a, 10
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 
 	ldh a, [hQuotient + 3]
 	ret
@@ -521,6 +521,6 @@ GetTreeScore:
 	ld a, 10
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 3]
 	ret

@@ -1225,7 +1225,7 @@ StepFunction_TeleportFrom:
 	inc [hl]
 	ld a, [hl]
 	ld d, $60
-	call Sine
+	farcall Sine
 	ld a, h
 	sub $60
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -1290,7 +1290,7 @@ StepFunction_TeleportTo:
 	inc [hl]
 	ld a, [hl]
 	ld d, $60
-	call Sine
+	farcall Sine
 	ld a, h
 	sub $60
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -1367,7 +1367,7 @@ StepFunction_Skyfall:
 	inc [hl]
 	ld a, [hl]
 	ld d, $60
-	call Sine
+	farcall Sine
 	ld a, h
 	sub $60
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -2179,7 +2179,7 @@ UpdateMapObjectDataAndSprites::
 	inc a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
-	ret
+	jmp _UpdateSprites
 
 BattleStart_HideAllSpritesExceptBattleParticipants:
 ; called at battle start

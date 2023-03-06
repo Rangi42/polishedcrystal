@@ -1374,7 +1374,7 @@ BattleCommand_stab:
 	ldh [hMultiplicand + 1], a
 	ld a, [hld]
 	ldh [hMultiplicand + 2], a
-	call Multiply
+	farcall Multiply
 
 	; Parental Bond
 	ld a, BATTLE_VARS_SUBSTATUS2
@@ -1404,7 +1404,7 @@ BattleCommand_stab:
 	ld a, $10
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 
 	; Store in curDamage
 	ldh a, [hMultiplicand]
@@ -1749,13 +1749,13 @@ endc
 	call BattleRandomRange
 	add 85
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 
 	; ...divide by 100%...
 	ld a, 100
 	ldh [hDivisor], a
 	ld b, $4
-	call Divide
+	farcall Divide
 
 	; ...to get .85-1.00x damage.
 	ldh a, [hQuotient + 1]
@@ -3485,7 +3485,7 @@ EndMoveDamageChecks:
 	ld a, 10
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld b, a
 	ldh a, [hQuotient + 2]
@@ -4173,7 +4173,7 @@ DamagePass1:
 	ld [hld], a
 	push bc
 	ld b, $4
-	call Divide
+	farcall Divide
 	pop bc
 
 	; + 2
@@ -4185,23 +4185,23 @@ DamagePass2:
 	; * bp
 	ld hl, hMultiplier
 	ld [hl], d
-	call Multiply
+	farcall Multiply
 
 	; * Attack
 	ld [hl], b
-	jmp Multiply
+	farjp Multiply
 
 DamagePass3:
 	; / Defense
 	ld hl, hMultiplier
 	ld [hl], c
 	ld b, $4
-	call Divide
+	farcall Divide
 
 	; / 50
 	ld [hl], 50
 	ld b, $4
-	jmp Divide
+	farjp Divide
 
 DamagePass4:
 	; Add 2 unless damage is at least $ff00 -- set wCurDamage to $ff** in that case.
@@ -4301,7 +4301,7 @@ BattleCommand_constantdamage:
 	ldh [hMultiplicand + 2], a
 	ld a, $30
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld a, [hli]
 	ld b, a
 	ld a, [hl]
@@ -4329,7 +4329,7 @@ BattleCommand_constantdamage:
 
 .skip_to_divide
 	ld b, $4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	ld b, a
 	ld hl, ReversalPower
@@ -4909,10 +4909,10 @@ HandleBigRoot:
 	ld [hl], c
 	ld hl, hMultiplier
 	ld [hl], 13
-	call Multiply
+	farcall Multiply
 	ld [hl], 10
 	ld b, 4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld b, a
 	ldh a, [hQuotient + 2]
@@ -5592,7 +5592,7 @@ BattleCommand_charge:
 	jr nz, .not_flying
 
 .flying
-	call DisappearUser
+	farcall DisappearUser
 .not_flying
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
@@ -5762,7 +5762,7 @@ BattleCommand_recoil:
 	ld a, 3
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	ld c, a
 	ldh a, [hQuotient + 1]
