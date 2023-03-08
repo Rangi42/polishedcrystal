@@ -285,8 +285,8 @@ GetScriptWordBC::
 ; Return byte at hScriptBank:hScriptPos in bc.
 	push hl
 	call GetScriptWord
-	ld c, l
-	ld b, h
+	ld b, l
+	ld c, h
 	pop hl
 	ret
 
