@@ -256,10 +256,8 @@ gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1p gfx/type_chart/bg.2bpp.vr
 gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
 
 
-gfx/pokemon/%/front.animated.2bpp: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
-	$Qtools/pokemon_animation_graphics -o $@ $^
-gfx/pokemon/%/front.animated.tilemap: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
-	$Qtools/pokemon_animation_graphics -t $@ $^
+gfx/pokemon/%/front.animated.2bpp gfx/pokemon/%/front.animated.tilemap: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
+	$Qtools/pokemon_animation_graphics -o gfx/pokemon/$*/front.animated.2bpp -t gfx/pokemon/$*/front.animated.tilemap $^
 gfx/pokemon/%/bitmask.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
 	$Qtools/pokemon_animation -b $^ > $@
 gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
