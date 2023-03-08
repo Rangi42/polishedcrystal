@@ -6,7 +6,8 @@
 SECTION "rst00 EntryPoint", ROM0[$0000]
 EntryPoint::
 	di
-	jmp Rst0Crash
+	xor a ; ld a, ERR_RST_0
+	jmp Crash
 
 SECTION "rst08 FarCall", ROM0[$0008]
 FarCall:: ; no-optimize Stub jump

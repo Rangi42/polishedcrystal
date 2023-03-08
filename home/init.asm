@@ -19,8 +19,6 @@ SoftReset::
 	jr Init
 
 
-Rst0Crash:
-	xor a ; ld a, ERR_RST_0
 Crash::
 	ld b, b ; no-optimize no-ops (BGB breakpoint)
 
