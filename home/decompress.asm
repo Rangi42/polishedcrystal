@@ -90,17 +90,15 @@ DEF LZ_LONG_HI       EQU %00000011
 	jmp SwapHLDE
 
 .lz_copy_flip
-	inc b
-	ld a, b
-
-.lz_copy_flip_outer_loop
-	push af
-
-.lz_copy_flip_inner_loop
-	ld a, [de]
-	inc de
+	srl b
+	rr c
+	inc c
+	jr nc, .lz_copy_flip_skip
 
 ; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
+.lz_copy_flip_loop
+	ld a, [de]
+	inc de
 	ld b, a
 	rlca
 	rlca
@@ -113,45 +111,49 @@ DEF LZ_LONG_HI       EQU %00000011
 	and $33
 	xor b
 	rrca
-
 	ld [hli], a
-	dec c
-	jr nz, .lz_copy_flip_inner_loop
 
-	pop af
-	dec a
-	jr nz, .lz_copy_flip_outer_loop
+.lz_copy_flip_skip
+	ld a, [de]
+	inc de
+	ld b, a
+	rlca
+	rlca
+	xor b
+	and $aa
+	xor b
+	ld b, a
+	swap b
+	xor b
+	and $33
+	xor b
+	rrca
+	ld [hli], a
+
+	dec c
+	jr nz, .lz_copy_flip_loop
 
 	pop de
 	inc de
 	jr .Main
 
 .lz_copy_reverse
-	inc b
-	srl c
+	srl b
+	rr c
+	inc c
 	jr nc, .lz_copy_reverse_skip
-	ld a, [de]
-	ld [hli], a
-	dec de
 
-.lz_copy_reverse_skip
-	jr z, .lz_copy_reverse_loop2
-.lz_copy_reverse_loop1
+.lz_copy_reverse_loop
 	ld a, [de]
 	ld [hli], a
 	dec de
+.lz_copy_reverse_skip
 	ld a, [de]
 	ld [hli], a
 	dec de
 
 	dec c
-	jr nz, .lz_copy_reverse_loop1
-
-.lz_copy_reverse_loop2
-	dec b
-	ld c, $80
-	jr nz, .lz_copy_reverse_loop1
-
+	jr nz, .lz_copy_reverse_loop
 	pop de
 	inc de
 	jr .Main
@@ -168,15 +170,9 @@ DEF LZ_LONG_HI       EQU %00000011
 	ld [hli], a
 	pop de
 
-	; assume count >= 3, because < 3 is nonsense
-	dec bc
-	dec bc
 	jr .lz_copy_repeat
 
 .lz_copy
-	; stash command
-	ld [hl], a
-
 	ld a, [de]
 	bit 7, a
 	jr nz, .relative
@@ -212,62 +208,74 @@ DEF LZ_LONG_HI       EQU %00000011
 	ld e, l
 	pop hl
 
-	; unstash command
-	ld a, [hl]
-	cp (LZ_COPY_FLIPPED << 1) & $ff
+	; grab command from b
+	ld a, b
+	and LZ_CMD
+	cp LZ_COPY_FLIPPED
 	jr z, .lz_copy_flip
 	jr nc, .lz_copy_reverse
 
 .lz_copy_repeat
-	call CopyBytes_hl_de
-	pop de
-	inc de
-	jr .Main
-
-.lz_data_short
-	ld c, a
+	srl b
+	rr c
 	inc c
-.lz_data_short_no_inc
-	srl c
-	jr nc, .lz_data_short_skip
-	ld a, [de]
-	ld [hli], a
-	inc de
+	jr nc, .lz_copy_repeat_skip
 
-.lz_data_short_skip
-	jr z, .Main
-.lz_data_short_loop
+.lz_copy_repeat_loop
 	ld a, [de]
 	ld [hli], a
 	inc de
+.lz_copy_repeat_skip
 	ld a, [de]
 	ld [hli], a
 	inc de
 
 	dec c
-	jr nz, .lz_data_short_loop
+	jr nz, .lz_copy_repeat_loop
+	pop de
+	inc de
+	jr .Main
+
+.lz_data
+	srl b
+.lz_data_short
+	rr c ; and LZ_CMD leaves the carry clear
+	inc c
+	jr nc, .lz_data_skip
+
+.lz_data_loop
+	ld a, [de]
+	ld [hli], a
+	inc de
+.lz_data_skip
+	ld a, [de]
+	ld [hli], a
+	inc de
+
+	dec c
+	jr nz, .lz_data_loop
 ; fallthrough
 
 ; Where the magic starts
 .Main
 	ld a, [de]
 	inc de
-	cp LZ_LEN + 1
+	ld c, a
+	and LZ_CMD
 	; For lzdata no more work is needed
-	jr c, .lz_data_short
-	ld b, a
+	jr z, .lz_data_short
+	ld b, c
 	cp LZ_LONG
 	jr nc, .long
 
-	and LZ_LEN
-	ld c, a
-	inc c
 	xor b
-	ld b, 0
+	ld c, a
+	xor b
+	ld b, a
 
 .cont
 	; command in a
-	; length in bc
+	; length in bc, upper 7 bits of b ignored
 	rla
 	jr c, .lz_copy
 
@@ -277,85 +285,44 @@ DEF LZ_LONG_HI       EQU %00000011
 
 .lz_iterate
 	ld a, [de]
+	ld [hli], a
 	inc de
 	jr .fill
 
 .lz_zero
 	xor a
 .fill
-	inc b
-	srl c
+	srl b
+	rr c
+	inc c
 	jr nc, .fill_skip
-	ld [hli], a
 
-.fill_skip
-	jr z, .fill_next
 .fill_loop
 	ld [hli], a
+.fill_skip
 	ld [hli], a
 	dec c
 	jr nz, .fill_loop
-
-.fill_next
-	dec b
-	jr z, .Main
-	ld c, $80
-	jr .fill_loop
+	jr .Main
 
 .long
-	inc a
+	inc b
 	ret z ; LZ_END
-	ld a, b
+	ld b, c
 
-	and LZ_LONG_HI
-	ld [hl], a
 	ld a, [de]
 	inc de
 	ld c, a
-	ld a, b
-	and LZ_LONG_CMD
-	ld b, [hl]
-	inc bc
-	add a
-	add a
-	add a
+	; b =  111ccc0l
+	ld a, %00111100
+	and b
+	rlca
+	rlca
+	rlca
+	; a = ccc00001
+	and b
+	; a = ccc0000l
+	ld b, a
+	and LZ_CMD
 	jr nz, .cont
-
-.lz_data
-	; for short runs (<256) we can avoid a call
-	; given that most graphics are <1k this will be practically
-	; all of them
-	or b
-	jr z, .lz_data_short_no_inc
-	call CopyBytes_hl_de
-	jr .Main
-
-; CopyBytes copies from hl to de
-; For performance reasons, we need de to hl
-CopyBytes_hl_de:
-	inc b
-
-	srl c
-	jr nc, .skip
-	ld a, [de]
-	ld [hli], a
-	inc de
-
-.skip
-	jr z, .next
-.loop
-rept 2
-	ld a, [de]
-	ld [hli], a
-	inc de
-endr
-
-	dec c
-	jr nz, .loop
-
-.next
-	dec b
-	ret z
-
-	ld c, $80
-	jr .loop
+	jr .lz_data

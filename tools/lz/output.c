@@ -49,29 +49,29 @@ void write_command_to_textfile (FILE * fp, struct command command, const unsigne
   int rv, pos;
   const char * kind;
   switch (command.command) {
-    case 0:
+    case LZ_DATA:
       if ((rv = fprintf(fp, "\tlzdata")) < 0) break;
       for (pos = 0; pos < command.count; pos ++) if ((rv = fprintf(fp, "%s$%02hhx", pos ? ", " : " ", input_stream[command.value + pos])) < 0) break;
       rv = putc('\n', fp);
       break;
-    case 1:
+    case LZ_REPEAT:
       if ((command.value < 0) || (command.value > 255)) error_exit(2, "invalid command in output stream");
       rv = fprintf(fp, "\tlzrepeat %u, $%02hhx\n", command.count, (unsigned char) command.value);
       break;
-    case 2:
+    case LZ_ALTERNATE:
       if (command.value < 0) error_exit(2, "invalid command in output stream");
       rv = fprintf(fp, "\tlzrepeat %u, $%02hhx, $%02hhx\n", command.count, (unsigned char) command.value, (unsigned char) (command.value >> 8));
       break;
-    case 3:
+    case LZ_ZERO:
       rv = fprintf(fp, "\tlzzero %u\n", command.count);
       break;
-    case 4:
+    case LZ_COPY_NORMAL:
       kind = "normal";
       goto copy;
-    case 5:
+    case LZ_COPY_FLIPPED:
       kind = "flipped";
       goto copy;
-    case 6:
+    case LZ_COPY_REVERSED:
       kind = "reversed";
     copy:
       if ((command.value < -LOOKBACK_LIMIT) || (command.value >= MAX_FILE_SIZE)) error_exit(2, "invalid command in output stream");
@@ -101,11 +101,15 @@ void write_commands_to_file (const char * file, const struct command * commands,
 }
 
 void write_command_to_file (FILE * fp, struct command command, const unsigned char * input_stream) {
-  if ((!command.count) || (command.count > MAX_COMMAND_COUNT)) error_exit(2, "invalid command in output stream");
   unsigned char buf[4];
   unsigned char * pos = buf;
   int n;
-  command.count --;
+
+  command.count -= minimum_count(command.command);
+
+  /* Check for over and under sized commands */
+  if (command.count > MAX_COMMAND_COUNT - 1) error_exit(2, "invalid command in output stream");
+
   if (command.count < SHORT_COMMAND_COUNT)
     *(pos ++) = (command.command << 5) + command.count;
   else {
@@ -113,10 +117,12 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
     *(pos ++) = command.count;
   }
   switch (command.command) {
-    case 1: case 2:
+    case LZ_REPEAT:
+    case LZ_ALTERNATE:
       if ((command.value < 0) || (command.value >= (1 << (command.command << 3)))) error_exit(2, "invalid command in output stream");
       for (n = 0; n < command.command; n ++) *(pos ++) = command.value >> (n << 3);
-    case 0: case 3:
+    case LZ_DATA:
+    case LZ_ZERO:
       break;
     default:
       if ((command.value < -LOOKBACK_LIMIT) || (command.value >= MAX_FILE_SIZE)) error_exit(2, "invalid command in output stream");

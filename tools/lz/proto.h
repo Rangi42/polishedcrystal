@@ -5,8 +5,17 @@
 
 #define MAX_FILE_SIZE            32768
 #define SHORT_COMMAND_COUNT         32
-#define MAX_COMMAND_COUNT         1024
+#define MAX_COMMAND_COUNT          512
 #define LOOKBACK_LIMIT             128 /* highest negative valid count for a copy command */
+
+#define LZ_DATA          0 /* Read literal data for n bytes.   */
+#define LZ_REPEAT        1 /* Write the same byte for n bytes. */
+#define LZ_ALTERNATE     2 /* Alternate two bytes for n bytes. */
+#define LZ_ZERO          3 /* Write 0 for n bytes.             */
+#define LZ_COPY_NORMAL   4 /* Repeat n bytes from the offset.  */
+#define LZ_COPY_FLIPPED  5 /* Repeat n bitflipped bytes.       */
+#define LZ_COPY_REVERSED 6 /* Repeat n bytes in reverse.       */
+#define LZ_LONG          7 /* Expand n to 9 bits               */
 
 #if __STDC_VERSION__ >= 201112L
 	// <noreturn.h> forces "noreturn void", which is silly and redundant; this is simpler
@@ -57,6 +66,7 @@ unsigned char * get_uncompressed_data(const struct command *, const unsigned cha
 // util.c
 noreturn error_exit(int, const char *, ...);
 unsigned char * read_file_into_buffer(const char *, unsigned short *);
+unsigned minimum_count(unsigned command);
 short command_size(struct command);
 unsigned short compressed_length(const struct command *, unsigned short);
 
