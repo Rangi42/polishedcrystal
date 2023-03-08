@@ -46,6 +46,14 @@ Init::
 
 	di
 
+	ld a, BANK(_Init)
+	ld [MBC3RomBank], a
+	jmp _Init ; far-ok
+
+pushs
+SECTION "Init", ROMX
+
+_Init::
 	xor a
 	ldh [rIF], a
 	ldh [rIE], a
@@ -101,6 +109,8 @@ Init::
 	ldh [hCGB], a
 	pop af
 	ldh [hCrashCode], a
+	ld a, BANK(@)
+	ldh [hROMBank], a
 
 	call ClearWRAM
 	ld a, 1
@@ -130,10 +140,7 @@ Init::
 	ld [hli], a
 	ld [hl], "!"
 
-	ld a, BANK(GameInit) ; aka BANK(WriteOAMDMACodeToHRAM)
-	rst Bankswitch
-
-	call WriteOAMDMACodeToHRAM ; far-ok
+	call WriteOAMDMACodeToHRAM
 
 	xor a
 	ldh [hMapAnims], a
@@ -204,9 +211,9 @@ Init::
 	call InitSound
 	xor a
 	ld [wMapMusic], a
-	jmp GameInit ; far-ok
+	jmp GameInit
 
-ClearVRAM::
+ClearVRAM:
 ; Wipe VRAM banks 0 and 1
 
 	ld a, 1
@@ -222,9 +229,8 @@ ClearVRAM::
 	rst ByteFill
 	ret
 
-ClearWRAM::
+ClearWRAM:
 ; Wipe swappable WRAM banks (1-7)
-
 	ld a, 1
 .bank_loop
 	push af
@@ -238,3 +244,5 @@ ClearWRAM::
 	cp 8
 	jr c, .bank_loop
 	ret
+
+pops
