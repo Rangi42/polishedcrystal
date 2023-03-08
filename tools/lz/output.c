@@ -101,11 +101,15 @@ void write_commands_to_file (const char * file, const struct command * commands,
 }
 
 void write_command_to_file (FILE * fp, struct command command, const unsigned char * input_stream) {
-  if ((!command.count) || (command.count > MAX_COMMAND_COUNT)) error_exit(2, "invalid command in output stream");
   unsigned char buf[4];
   unsigned char * pos = buf;
   int n;
-  command.count --;
+
+  command.count -= minimum_count(command.command);
+
+  /* Check for over and under sized commands */
+  if (command.count > MAX_COMMAND_COUNT - 1) error_exit(2, "invalid command in output stream");
+
   if (command.count < SHORT_COMMAND_COUNT)
     *(pos ++) = (command.command << 5) + command.count;
   else {

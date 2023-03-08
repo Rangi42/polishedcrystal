@@ -66,6 +66,7 @@ unsigned char * get_uncompressed_data(const struct command *, const unsigned cha
 // util.c
 noreturn error_exit(int, const char *, ...);
 unsigned char * read_file_into_buffer(const char *, unsigned short *);
+unsigned minimum_count(unsigned command);
 short command_size(struct command);
 unsigned short compressed_length(const struct command *, unsigned short);
 
