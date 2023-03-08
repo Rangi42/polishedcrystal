@@ -81,15 +81,31 @@ ResetDamage::
 	ret
 
 CallOpponentTurn::
-	ldh [hFarCallSavedA], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
-	pop hl
+	add sp, -2
+	push af
+	push de
+	push hl
 	call SwitchTurn
-	call RetrieveAHLAndCallFunction
-	; fallthrough
+
+; Swap the return address for SwitchTurn
+	ld hl, sp+8
+	ld e, [hl]
+	ld a, LOW(SwitchTurn)
+	ld [hli], a
+	ld d, [hl]
+	ld a, HIGH(SwitchTurn)
+	ld [hli], a
+
+; Write the return back below SwitchTurn
+	ld hl, sp+6
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+
+	pop hl
+	pop de
+	pop af
+	ret
 
 BattleCommand_switchturn::
 SwitchTurn::

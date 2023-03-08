@@ -55,10 +55,7 @@ NEXTU
 hMoveMon:: db
 ENDU
 
-hFarCallSavedA:: db
-hFarCallSavedHL::
-hFarCallSavedL:: db
-hFarCallSavedH:: db
+	ds 3 ; unused
 
 UNION
 ; math-related values

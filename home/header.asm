@@ -10,7 +10,7 @@ EntryPoint::
 
 SECTION "rst08 FarCall", ROM0[$0008]
 FarCall:: ; no-optimize Stub jump
-	jr RstFarCall
+	jmp RstFarCall
 
 PopAFBCDEHL::
 	pop af
@@ -140,7 +140,6 @@ SECTION "High Home", ROM0[$005b]
 ;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
 
-INCLUDE "home/farcall.asm"
 INCLUDE "home/jumptable.asm"
 
 
