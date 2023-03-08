@@ -9,10 +9,10 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
     if (!(remaining --)) goto error;
     current -> command = *rp >> 5;
     current -> count = *(rp ++) & 31;
-    if (current -> command == 7) {
+    if (current -> command == LZ_LONG) {
       current -> command = current -> count >> 2;
       current -> count = (current -> count & 3) << 8;
-      if (current -> command == 7) {
+      if (current -> command == LZ_LONG) {
         // long commands inside long commands are not allowed, but if the count is 0x300 here, it means that the original byte was 0xff
         if (current -> count == 0x300) break;
         goto error;
@@ -22,14 +22,15 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
     }
     current -> count ++;
     switch (current -> command) {
-      case 0:
+      case LZ_DATA:
         if (remaining <= current -> count) goto error;
         current -> value = rp - data;
         rp += current -> count;
         remaining -= current -> count;
-      case 3:
+      case LZ_ZERO:
         break;
-      case 1: case 2: {
+      case LZ_REPEAT:
+      case LZ_ALTERNATE: {
         unsigned char p;
         if (remaining <= current -> command) goto error;
         current -> value = 0;
@@ -62,22 +63,23 @@ unsigned char * get_uncompressed_data (const struct command * commands, const un
   unsigned short p;
   for (; commands < limit; commands ++) {
     switch (commands -> command) {
-      case 0:
+      case LZ_DATA:
         memcpy(current, compressed + commands -> value, commands -> count);
         current += commands -> count;
         break;
-      case 1: case 2:
+      case LZ_REPEAT:
+      case LZ_ALTERNATE:
         for (p = 0; p < commands -> count; p ++) *(current ++) = commands -> value >> ((p % commands -> command) << 3);
         break;
-      case 3:
+      case LZ_ZERO:
         memset(current, 0, commands -> count);
         current += commands -> count;
         break;
       default: {
         const unsigned char * ref = ((commands -> value < 0) ? current : result) + commands -> value;
         for (p = 0; p < commands -> count; p ++) {
-          current[p] = ref[(commands -> command == 6) ? -(int) p : p];
-          if (commands -> command == 5) current[p] = bit_flipping_table[current[p]];
+          current[p] = ref[(commands -> command == LZ_COPY_REVERSED) ? -(int) p : p];
+          if (commands -> command == LZ_COPY_FLIPPED) current[p] = bit_flipping_table[current[p]];
         }
         current += commands -> count;
       }
