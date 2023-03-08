@@ -170,9 +170,6 @@ DEF LZ_LONG_HI       EQU %00000011
 	ld [hli], a
 	pop de
 
-	; assume count >= 3, because < 3 is nonsense
-	dec bc
-	dec bc
 	jr .lz_copy_repeat
 
 .lz_copy
@@ -288,6 +285,7 @@ DEF LZ_LONG_HI       EQU %00000011
 
 .lz_iterate
 	ld a, [de]
+	ld [hli], a
 	inc de
 	jr .fill
 

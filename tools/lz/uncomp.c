@@ -20,7 +20,7 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
       if (!(remaining --)) goto error;
       current -> count |= *(rp ++);
     }
-    current -> count ++;
+    current -> count += minimum_count(current -> command);
     switch (current -> command) {
       case LZ_DATA:
         if (remaining <= current -> count) goto error;

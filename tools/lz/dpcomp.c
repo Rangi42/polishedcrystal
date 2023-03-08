@@ -67,7 +67,8 @@ void process_input(void) {
         unsigned count = 0;
         do {
             count++;
-            consider(plen, (struct command) {
+            if (!current_byte || count >= 2)
+                consider(plen, (struct command) {
                 .command = current_byte ? LZ_REPEAT : LZ_ZERO,
                 .count = count,
                 .value = current_byte,
@@ -78,7 +79,8 @@ void process_input(void) {
             count = 1;
             do {
                 count++;
-                consider(plen, (struct command) {
+                if (count >= 3)
+                    consider(plen, (struct command) {
                     .command = LZ_ALTERNATE,
                     .count = count,
                     .value = (data[plen - count + 1] << 8) | (data[plen - count]),

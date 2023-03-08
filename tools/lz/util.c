@@ -22,8 +22,19 @@ unsigned char * read_file_into_buffer (const char * file, unsigned short * size)
   return buf;
 }
 
+unsigned minimum_count (unsigned command) {
+  switch (command) {
+    case LZ_ALTERNATE:
+        return 3;
+    case LZ_REPEAT:
+        return 2;
+    default:
+        return 1;
+  }
+}
+
 short command_size (struct command command) {
-  short header_size = 1 + (command.count > SHORT_COMMAND_COUNT);
+  short header_size = 1 + (command.count - minimum_count(command.command) > SHORT_COMMAND_COUNT - 1);
   if (command.command & 4) return header_size + 1 + (command.value >= 0);
   return header_size + command.command[(short []) {command.count, 1, 2, 0}];
 }
