@@ -54,3 +54,4 @@ MapSetupCommands:
 	add_mapsetup LoadMapTilesetGFX ; 2f
 	add_mapsetup DisableDynPalUpdates ; 30
 	add_mapsetup EnableDynPalUpdates ; 31
+	add_mapsetup EnableDynPalUpdatesNoApply ; 32

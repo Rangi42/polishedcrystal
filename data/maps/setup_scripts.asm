@@ -43,8 +43,8 @@ MapSetupScript_Warp:
 	mapsetup LoadMapObjects
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
-	mapsetup EnableDynPalUpdates
 	mapsetup SpawnInFacingDown
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInToMusic
@@ -71,8 +71,8 @@ MapSetupScript_BadWarp:
 	mapsetup EnableLCD
 	mapsetup LoadMapObjects
 	mapsetup LoadMapPalettes
-	mapsetup EnableDynPalUpdates
 	mapsetup SpawnInFacingDown
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup FadeToMapMusic
 	mapsetup FadeInPalettes
@@ -123,8 +123,7 @@ MapSetupScript_Train:
 	mapsetup EnableLCD
 	mapsetup LoadMapObjects
 	mapsetup LoadMapPalettes
-	mapsetup RefreshMapSprites
-	mapsetup EnableDynPalUpdates
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup FadeToMapMusic
 	mapsetup FadeInPalettes
@@ -146,7 +145,7 @@ MapSetupScript_ReloadMap:
 	mapsetup LoadMapTimeOfDay
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
-	mapsetup EnableDynPalUpdates
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup ForceMapMusic
 	mapsetup FadeInPalettes
@@ -167,7 +166,7 @@ MapSetupScript_LinkReturn:
 	mapsetup LoadMapTimeOfDay
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
-	mapsetup EnableDynPalUpdates
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInPalettes
@@ -190,7 +189,7 @@ MapSetupScript_Continue:
 	mapsetup LoadMapTimeOfDay
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
-	mapsetup EnableDynPalUpdates
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInPalettes
