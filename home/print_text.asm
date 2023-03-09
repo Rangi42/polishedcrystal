@@ -78,6 +78,6 @@ FastPrintNum::
 	ret
 
 FarPrintText::
-	ldh [hBuffer], a
-	homecall PrintText, [hBuffer]
+	ldh [hTempBank], a
+	homecall PrintText, [hTempBank]
 	ret
