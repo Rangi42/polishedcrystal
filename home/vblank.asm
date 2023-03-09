@@ -12,9 +12,6 @@ VBlank::
 	push bc
 	push af
 
-	ldh a, [hTempBank]
-	push af
-
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
 
@@ -38,7 +35,7 @@ VBlank::
 	ld a, ERR_STACK_UNDERFLOW
 	jr nz, .crash
 
-	ld hl, sp+$b
+	ld hl, sp+$9
 	ld a, [hl]
 	inc a
 	cp HIGH(VRAM_Begin) + 1
@@ -84,8 +81,6 @@ VBlank::
 	ldh [hDelayFrameLY], a
 .noVBlankLeak
 	ld [hl], TRUE
-	pop af
-	ldh [hTempBank], a
 
 	ldh a, [hROMBankBackup]
 	rst Bankswitch

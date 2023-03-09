@@ -146,6 +146,7 @@ MenuTextbox::
 PrintText::
 ; input: hl = string, bc = coords
 ; output: hl = advanced string, bc = advanced coords
+; Clobbers de
 	call SetUpTextbox
 PrintTextNoBox::
 	push hl
