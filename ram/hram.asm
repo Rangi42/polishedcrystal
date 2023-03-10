@@ -4,7 +4,7 @@ hScriptVar:: dw
 
 hROMBank:: db
 hROMBankBackup:: db
-hTempBank:: db
+	ds 1 ; unused
 
 hRTCDayHi::   db
 hRTCDayLo::   db
@@ -49,10 +49,7 @@ NEXTU
 hMoveMon:: db
 ENDU
 
-hFarCallSavedA:: db
-hFarCallSavedHL::
-hFarCallSavedL:: db
-hFarCallSavedH:: db
+	ds 3 ; unused
 
 UNION
 ; math-related values

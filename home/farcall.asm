@@ -2,21 +2,6 @@
 ; Functions that rely on "following" data access it via their return address on
 ; the stack, and update the return address to point past the data.
 
-MACRO update_pushed_af_flags
-; Must have been preceded by 'push af'.
-; Updates the flags on the stack to their current value
-; without clobbering any other registers.
-	push af ; pushes current flags
-	push hl
-	ld hl, sp + 2
-	ld a, [hli] ; reads current flags
-	assert HIGH(wStackBottom) == HIGH(wStackTop)
-	inc l
-	ld [hl], a ; overwrites pushed flags
-	pop hl
-	pop af
-ENDM
-
 _RstFarCall::
 	dec sp
 	call .do_farcall
@@ -144,19 +129,77 @@ FarCall_de::
 ; de already pushed to the stack
 	ret
 
-_DoFarCall:
-	ldh a, [hROMBank]
+; Stack layout:
+; +10 saved bank
+; +8  return path
+; +6  return address
+; return address starts at 10, so it needs to be moved
+; note that writing the return path and reading the address
+; are interleaved
+AnonBankPush::
+	add sp, -3
 	push af
-	ldh a, [hTempBank]
-_DoFarCall_BankInA:
+	push de
+	push hl
+
+	ld hl, sp + 10
+; Store current bank
+	ldh a, [hROMBank]
+	ld d, [hl]
+	ld [hld], a
+
+	ld e, [hl]
+	ld a, HIGH(FarCall_hl.return)
+	ld [hld], a
+	ld a, LOW(FarCall_hl.return)
+	ld [hld], a
+
+	ld a, [de]
+	inc de
 	rst Bankswitch
-	call RetrieveAHLAndCallFunction
-_ReturnFarCall:
-	ldh [hFarCallSavedA], a
-	update_pushed_af_flags
+
+; Write the return back
+	ld a, d
+	ld [hld], a
+	ld [hl], e
+
+	pop hl
+	pop de
 	pop af
+	ret
+
+StackCallInBankB:
+; Call the following function in bank b. Clobbers a.
+	ld a, b
+StackCallInBankA:
+; Call the following function in bank a. Clobbers a.
+	add sp, -3
+	push de
+	push hl
+
+	ld hl, sp + 8
+	ld d, [hl]
+; Store current bank
+	ld e, a
+	ldh a, [hROMBank]
+	ld [hld], a
+
+	ld a, e
 	rst Bankswitch
-	ldh a, [hFarCallSavedA]
+
+	ld e, [hl]
+	ld a, HIGH(FarCall_hl.return)
+	ld [hld], a
+	ld a, LOW(FarCall_hl.return)
+	ld [hld], a
+
+; Write the return back
+	ld a, d
+	ld [hld], a
+	ld [hl], e
+
+	pop hl
+	pop de
 	ret
 
 RunFunctionInWRA6::
@@ -164,55 +207,40 @@ RunFunctionInWRA6::
 	ld a, BANK(wDecompressScratch)
 StackCallInWRAMBankA::
 ; Call the following function in WRAM bank a. Clobbers a.
-	ldh [hTempBank], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
-	pop hl
-	ldh a, [rSVBK]
-	push af
-	ldh a, [hTempBank]
-	ldh [rSVBK], a
-	call RetrieveAHLAndCallFunction
-	ldh [hTempBank], a
-	update_pushed_af_flags
-	pop af
-	ldh [rSVBK], a
-	ldh a, [hTempBank]
-	ret
-
-RetrieveAHLAndCallFunction:
-; Call the function at hl with restored values of a and hl.
+	add sp, -3
+	push de
 	push hl
-	ld hl, hFarCallSavedHL
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ldh a, [hFarCallSavedA]
+
+	ld hl, rSVBK
+	ld e, [hl]
+	ld [hl], a
+
+	ld hl, sp + 8
+	ld d, [hl]
+	ld [hl], e
+	dec hl
+
+	ld e, [hl]
+	ld a, HIGH(.return)
+	ld [hld], a
+	ld a, LOW(.return)
+	ld [hld], a
+
+	ld a, d
+	ld [hld], a
+	ld [hl], e
+
+	pop hl
+	pop de
 	ret
 
-AnonBankPush::
-; Call the following function in the following bank db.
-	ldh [hFarCallSavedA], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
+.return
+	push af
+	push hl
+	ld hl, sp + 4
+	ld a, [hl]
+	ldh [rSVBK], a
 	pop hl
-	ld a, [hli]
-	ldh [hTempBank], a
-	jr _DoFarCall
-
-StackCallInBankB:
-; Call the following function in bank b. Clobbers a.
-	ld a, b
-StackCallInBankA:
-; Call the following function in bank a. Clobbers a.
-	ldh [hTempBank], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
-	pop hl
-	jr _DoFarCall
+	pop af
+	inc sp
+	ret
