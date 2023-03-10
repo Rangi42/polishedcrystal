@@ -27,7 +27,7 @@ VBlank::
 	and a
 	jr nz, .skip_crash
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld a, h
 	cp HIGH(wStackBottom)
 	ld a, ERR_STACK_OVERFLOW
@@ -35,7 +35,7 @@ VBlank::
 	ld a, ERR_STACK_UNDERFLOW
 	jr nz, .crash
 
-	ld hl, sp+$9
+	ld hl, sp + 9
 	ld a, [hl]
 	inc a
 	cp HIGH(VRAM_Begin) + 1
