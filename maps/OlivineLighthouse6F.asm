@@ -57,7 +57,7 @@ OlivineLighthouseJasmine:
 	special FadeOutPalettes
 	special LoadMapPalettes
 	pause 10
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	showtext AmphyPaluPaluluText
 	showemote EMOTE_BOLT, OLIVINELIGHTHOUSE6F_AMPHAROS, 15
 	showtextfaceplayer JasmineThankYouText
@@ -103,10 +103,10 @@ OlivineLighthouseAmphy:
 	showcrytext AmphyPaluPaluluText, AMPHAROS
 	special FadeOutPalettes
 	special LoadMapPalettes
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	special FadeOutPalettes
 	special LoadMapPalettes
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	end
 
 OlivineLighthouseJasmineLeavesUpMovement:

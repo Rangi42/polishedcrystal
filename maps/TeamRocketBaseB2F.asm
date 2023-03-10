@@ -176,7 +176,7 @@ LanceHealsScript:
 	special LoadMapPalettes
 	playsound SFX_FULL_HEAL
 	special HealParty
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	showtext LanceHealsText2
 	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE

@@ -499,7 +499,7 @@ MapIlexForestSignpost4Script:
 	special LoadMapPalettes
 	turnobject ILEXFOREST_CELEBI, DOWN
 	pause 30
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	waitsfx
 	showemote EMOTE_SHOCK, PLAYER, 15
 	turnobject PLAYER, UP
