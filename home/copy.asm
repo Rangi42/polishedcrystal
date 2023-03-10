@@ -96,3 +96,10 @@ GetFarWord::
 	rst Bankswitch
 	pop bc
 	ret
+
+GetFarWRAMByte::
+	call StackCallInWRAMBankA
+
+.Function:
+	ld a, [hl]
+	ret

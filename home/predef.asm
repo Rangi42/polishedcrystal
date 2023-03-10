@@ -3,15 +3,7 @@ _Predef::
 ; Preserves a, bc, de, hl.
 	dec sp
 	call .do_farcall
-	push af
-	push hl
-	ld hl, sp + 4
-	ld a, [hl]
-	rst Bankswitch
-	pop hl
-	pop af
-	inc sp
-	ret
+	jr FarCall_hl.return
 
 ; Stack layout
 ; +11 return address

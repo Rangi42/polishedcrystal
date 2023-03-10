@@ -13,15 +13,14 @@ EntryPoint::
 
 SECTION "rst08 FarCall", ROM0[$0008]
 FarCall:: ; no-optimize stub jump
-	jr RstFarCall
+	jmp _RstFarCall
 
-	ds 3 ; unused
+	ds 2 ; unused
 
 SwitchToMapScriptsBank::
 	ld a, [wMapScriptsBank]
 	assert @ == Bankswitch, "cannot fall through to Bankswitch"
 	; fallthrough
-
 
 SECTION "rst10 Bankswitch", ROM0[$0010]
 Bankswitch::
@@ -48,7 +47,6 @@ FarCopyWRAM::
 	assert @ == CopyBytes, "cannot fall through to CopyBytes"
 	; fallthrough
 
-
 SECTION "rst20 CopyBytes", ROM0[$0020]
 CopyBytes::
 	jmp _CopyBytes
@@ -65,13 +63,6 @@ GetFarByte::
 SECTION "rst28 ByteFill", ROM0[$0028]
 ByteFill::
 	jmp _ByteFill
-
-GetFarWRAMByte::
-	call StackCallInWRAMBankA
-
-.Function:
-	ld a, [hl]
-	ret
 
 
 SECTION "rst30 PlaceString", ROM0[$0030]
@@ -151,10 +142,7 @@ SECTION "High Home", ROM0[$005b]
 ;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
 
-INCLUDE "home/farcall.asm"
 INCLUDE "home/jumptable.asm"
-
-	ds 2 ; unused
 
 
 SECTION "Header", ROM0[$0100]
