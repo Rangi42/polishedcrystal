@@ -38,7 +38,7 @@ CianwoodPhotoStudioFishingGuruScript:
 	playsound SFX_DOUBLE_SLAP
 	waitsfx
 	pause 10
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	readmem wCurPartySpecies
 	pokepic 0
 	cry 0

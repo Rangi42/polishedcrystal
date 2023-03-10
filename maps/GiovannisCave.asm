@@ -73,7 +73,7 @@ GiovannisCaveCelebiEventScript:
 	special FadeOutPalettes
 	special LoadMapPalettes
 	pause 30
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	waitsfx
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, GiovannisCave_PlayerStepsAsideMovementData

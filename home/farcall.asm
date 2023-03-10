@@ -8,7 +8,7 @@ MACRO update_pushed_af_flags
 ; without clobbering any other registers.
 	push af ; pushes current flags
 	push hl
-	ld hl, sp+$2
+	ld hl, sp + 2
 	ld a, [hli] ; reads current flags
 	assert HIGH(wStackBottom) == HIGH(wStackTop)
 	inc l

@@ -187,7 +187,7 @@ DEF LZ_LONG_HI       EQU %00000011
 	ld e, [hl]
 
 	; lzaddr from the stack
-	ld hl, sp+$6
+	ld hl, sp + 6
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

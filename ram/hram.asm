@@ -2,13 +2,9 @@ SECTION "HRAM", HRAM
 
 hScriptVar:: dw
 
+hROMBank:: db
 hROMBankBackup:: db
-
-; TODO: come up with other names for hBuffer
-; related to home/audio.asm and home/decompress.asm
-hTempBank::
-hBuffer:: db
-hLYOverrideStackCopyAmount:: db
+hTempBank:: db
 
 hRTCDayHi::   db
 hRTCDayLo::   db
@@ -20,12 +16,10 @@ hHours:: db
 hMinutes:: db
 hSeconds:: db
 
+hVBlank:: db
 hVBlankCounter:: db
-
 hVBlankOccurred:: db
 
-hROMBank:: db
-hVBlank:: db
 hMapEntryMethod:: db
 hMenuReturn:: db
 
@@ -115,6 +109,7 @@ hMoneyTemp:: ds 3
 hLCDCPointer::     db
 hLYOverrideStart:: db
 hLYOverrideEnd::   db
+hLYOverrideStackCopyAmount:: db
 
 hSCX:: db
 hSCY:: db

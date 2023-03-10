@@ -79,10 +79,11 @@ endr
 GetFarWord::
 ; retrieve a word from a:hl, and return it in hl.
 	; bankswitch to new bank
-	ldh [hTempBank], a
+	push bc
+	ld b, a
 	ldh a, [hROMBank]
-	push af
-	ldh a, [hTempBank]
+	ld c, a
+	ld a, b
 	rst Bankswitch
 
 	; get word from new bank, put it in hl
@@ -91,6 +92,7 @@ GetFarWord::
 	ld l, a
 
 	; bankswitch to previous bank and return
-	pop af
+	ld a, c
 	rst Bankswitch
+	pop bc
 	ret

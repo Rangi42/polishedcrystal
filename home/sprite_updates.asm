@@ -35,8 +35,7 @@ FinishExitMenu::
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
-	farcall FadeInPalettes
-	farcall EnableDynPalUpdates
+	farcall FadeInPalettes_EnableDynNoApply
 	; fallthrough
 EnableSpriteUpdates::
 	ld a, $1

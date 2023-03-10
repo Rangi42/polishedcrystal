@@ -462,7 +462,7 @@ ScrollTileDown:
 	ret
 
 AnimateFountain:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -500,7 +500,7 @@ AnimateFountain:
 .FountainTile5: INCBIN "gfx/tilesets/fountain/5.2bpp"
 
 AnimateWaterTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -524,7 +524,7 @@ AnimateWaterTile:
 INCBIN "gfx/tilesets/water/johto_water.2bpp"
 
 AnimateRainPuddleTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -546,7 +546,7 @@ AnimateRainPuddleTile:
 INCBIN "gfx/tilesets/rain/rain_puddle.2bpp"
 
 AnimateRainWaterTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -568,7 +568,7 @@ AnimateRainWaterTile:
 INCBIN "gfx/tilesets/rain/rain_water.2bpp"
 
 AnimateKantoWaterTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -592,7 +592,7 @@ AnimateKantoWaterTile:
 INCBIN "gfx/tilesets/water/kanto_water.2bpp"
 
 AnimateFarawayWaterTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -620,7 +620,7 @@ AnimateFarawayWaterTile:
 	jmp WriteTileToDE
 
 SpinnerAnimation:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -655,7 +655,7 @@ ForestTreeLeftAnimation:
 	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -679,7 +679,7 @@ ForestTreeRightAnimation:
 	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -703,7 +703,7 @@ ForestTreeLeftAnimation2:
 	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -728,7 +728,7 @@ ForestTreeRightAnimation2:
 	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -761,7 +761,7 @@ ForestTree2LeftAnimation:
 	bit 2, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -785,7 +785,7 @@ ForestTree2RightAnimation:
 	bit 2, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -809,7 +809,7 @@ ForestTree2LeftAnimation2:
 	bit 2, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -834,7 +834,7 @@ ForestTree2RightAnimation2:
 	bit 2, a
 	ret z
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -863,7 +863,7 @@ INCBIN "gfx/tilesets/forest-tree-2/3.2bpp"
 INCBIN "gfx/tilesets/forest-tree-2/4.2bpp"
 
 AnimateFlowerTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -889,7 +889,7 @@ INCBIN "gfx/tilesets/flower/1.2bpp"
 INCBIN "gfx/tilesets/flower/2.2bpp"
 
 AnimateKantoFlowerTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -917,7 +917,7 @@ INCBIN "gfx/tilesets/kanto-flower/3.2bpp"
 INCBIN "gfx/tilesets/kanto-flower/1.2bpp"
 
 LavaBubbleAnim1:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -941,7 +941,7 @@ LavaBubbleAnim1:
 	jmp WriteTile
 
 LavaBubbleAnim2:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -963,7 +963,7 @@ LavaBubbleAnim2:
 	jmp WriteTile
 
 LavaBubbleAnim3:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -987,7 +987,7 @@ LavaBubbleAnim3:
 	jmp WriteTile
 
 LavaBubbleAnim4:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -1015,7 +1015,7 @@ INCBIN "gfx/tilesets/lava/3.2bpp"
 INCBIN "gfx/tilesets/lava/4.2bpp"
 
 AnimateTowerPillarTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -1052,7 +1052,7 @@ AnimateTowerPillarTile:
 	db $00, $10, $20, $30, $40, $30, $20, $10
 
 AnimateWhirlpoolTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -1080,7 +1080,7 @@ AnimateWhirlpoolTile:
 	jmp WriteTileToDE
 
 AnimateTinyWaterTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -1110,7 +1110,7 @@ AnimateTinyWaterTile:
 	jmp WriteTileToDE
 
 AnimateLCDTile:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -1140,7 +1140,7 @@ INCBIN "gfx/tilesets/lcd/7.2bpp"
 INCBIN "gfx/tilesets/lcd/8.2bpp"
 
 WriteTileToBuffer:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
@@ -1152,7 +1152,7 @@ WriteTileToBuffer:
 	jr WriteTile
 
 ReadTileFromBuffer:
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
