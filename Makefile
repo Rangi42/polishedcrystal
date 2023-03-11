@@ -264,7 +264,7 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 	$Qtools/pokemon_animation -f $^ > $@
 
 
-%.lz: % $Qtools/lzcomp
+%.lz: % tools/lzcomp
 	$Qtools/lzcomp -- $< $@
 
 #%.4bpp: %.png
