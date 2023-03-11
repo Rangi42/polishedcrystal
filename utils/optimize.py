@@ -5,8 +5,11 @@
 Search all .asm files for N code lines in a row that match some conditions.
 """
 
+from argparse import ArgumentParser
 from collections import namedtuple
 from glob import iglob
+from pathlib import Path
+from sys import stderr
 
 # Regular expressions are useful for text processing
 import re
@@ -564,8 +567,8 @@ patterns = {
 ],
 }
 
-def check_file(filename):
-	# Count the total instances of the pattern
+def optimize(filename):
+	# Count the total instances of patterns in this file
 	count = 0
 	printed = False
 	# Read file line by line
@@ -640,23 +643,22 @@ def check_file(filename):
 		print()
 	return count
 
-import argparse
-import pathlib
-
-parser = argparse.ArgumentParser()
-parser.add_argument('path', type=pathlib.Path, nargs='*', default=[pathlib.Path('.')])
+# Gather all the file paths passed to this script as argument
+parser = ArgumentParser()
+parser.add_argument('path', type=Path, nargs='*', default=[Path('.')])
 args = parser.parse_args()
 
+# Count the total instances of patterns in these files
 total_count = 0
 for path in args.path:
 	if not path.exists():
-		print("File not found:", path, file=sys.stderr)
+		print("File not found:", path, file=stderr)
 		continue
 	if path.is_file():
-		total_count += check_file(path)
+		total_count += optimize(path)
 	else:
-		for f in path.rglob("*.asm"):
-			total_count += check_file(f)
+		for filename in path.rglob("*.asm"):
+			total_count += optimize(filename)
 
 # Print the total count
 print('Found', total_count, 'instances.')
