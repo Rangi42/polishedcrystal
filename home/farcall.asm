@@ -5,10 +5,9 @@
 _RstFarCall::
 	dec sp
 	call .do_farcall
-	jmp FarCall_hl.return
+	jr _ReturnFarCall
 ; Call the following dab pointer
 ; preserves af, bc, de, hl
-; Partially implemented in the rst handler
 
 ; Stack layout
 ; +11 return address
@@ -84,8 +83,9 @@ FarPointerCall::
 FarCall_hl::
 ; Call a:hl.
 	dec sp
-	call .do_farcall
-.return
+	call _DoFarCall_hl
+; fallthrough
+_ReturnFarCall:
 ; restore the rom bank and clean up
 	push af
 	push hl
@@ -97,7 +97,7 @@ FarCall_hl::
 	inc sp
 	ret
 
-.do_farcall
+_DoFarCall_hl:
 	push hl
 	push af
 	ldh a, [hROMBank]
@@ -114,7 +114,7 @@ FarCall_de::
 ; Call a:de.
 	dec sp
 	call .do_farcall
-	jr FarCall_hl.return
+	jr _ReturnFarCall
 
 .do_farcall
 	push de
@@ -149,9 +149,9 @@ AnonBankPush::
 	ld [hld], a
 
 	ld e, [hl]
-	ld a, HIGH(FarCall_hl.return)
+	ld a, HIGH(_ReturnFarCall)
 	ld [hld], a
-	ld a, LOW(FarCall_hl.return)
+	ld a, LOW(_ReturnFarCall)
 	ld [hld], a
 
 	ld a, [de]
@@ -188,9 +188,9 @@ StackCallInBankA:
 	rst Bankswitch
 
 	ld e, [hl]
-	ld a, HIGH(FarCall_hl.return)
+	ld a, HIGH(_ReturnFarCall)
 	ld [hld], a
-	ld a, LOW(FarCall_hl.return)
+	ld a, LOW(_ReturnFarCall)
 	ld [hld], a
 
 ; Write the return back

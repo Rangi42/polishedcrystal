@@ -3,7 +3,7 @@ _Predef::
 ; Preserves a, bc, de, hl.
 	dec sp
 	call .do_farcall
-	jr FarCall_hl.return
+	jr _ReturnFarCall
 
 ; Stack layout
 ; +11 return address
