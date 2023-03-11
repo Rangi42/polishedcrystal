@@ -85,6 +85,9 @@ FarPointerCall::
 
 FarCall_hl::
 ; Call a:hl.
+; clear carry
+	and a
+_DoFarCall:
 	dec sp
 	push hl
 	push af
@@ -94,6 +97,10 @@ FarCall_hl::
 	pop af
 	rst Bankswitch
 	pop hl
+	jr nc, .hl
+	call _de_
+	jr _ReturnFarCall
+.hl
 	call _hl_
 ; fallthrough
 _ReturnFarCall:
@@ -110,17 +117,8 @@ _ReturnFarCall:
 
 FarCall_de::
 ; Call a:de.
-	dec sp
-	push hl
-	push af
-	ldh a, [hROMBank]
-	ld hl, sp + 4
-	ld [hl], a
-	pop af
-	rst Bankswitch
-	pop hl
-	call _de_
-	jr _ReturnFarCall
+	scf
+	jr _DoFarCall
 
 ; Stack layout:
 ; +10 saved bank
