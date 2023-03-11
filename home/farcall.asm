@@ -40,24 +40,27 @@ _RstFarCall::
 	ld a, [hli]
 	ld d, a
 
+; check farjp
+	add a
+
 ; bank number
 	ld a, [hli]
 	rst Bankswitch
 
-	push hl
-; write the function pointer
-	ld hl, sp + 9 ; +3 due to the push above and writing d first
-	ld a, d
-	and $7f
-	ld [hld], a
-	ld [hl], e
-
-	xor d
-	pop de
-	jr z, .call
+	jr nc, .call
+	res 7, d
 ; for farjp we need to replace the return address
-	ld de, DoNothing
+	ld hl, DoNothing
 .call
+	push hl
+
+; write the function pointer
+	ld hl, sp + 8
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+
+	pop de
 ; write return address
 	ld hl, sp + 11
 	ld a, e

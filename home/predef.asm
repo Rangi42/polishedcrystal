@@ -32,8 +32,8 @@ _Predef::
 ; predef id
 	ld a, [de]
 
-	bit 7, a
-	jr z, .call
+	add a
+	jr nc, .call
 ; for predef_jump we need to replace the return address
 	ld de, DoNothing - 1
 .call
@@ -42,7 +42,7 @@ _Predef::
 	dec hl
 	ld [hl], e
 
-	and $7f
+	rrca
 	ld e, a
 	ld d, 0
 	ld a, BANK(PredefPointers)
@@ -54,8 +54,7 @@ _Predef::
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
-	ld d, a
-	ld a, [hl]
+	ld d, [hl]
 	rst Bankswitch
 
 ; Write out the function pointer
