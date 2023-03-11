@@ -7,7 +7,6 @@ Search all .asm files for N code lines in a row that match some conditions.
 
 from collections import namedtuple
 from glob import iglob
-from sys import argv
 
 # Regular expressions are useful for text processing
 import re
@@ -565,21 +564,18 @@ patterns = {
 ],
 }
 
-# Count the total instances of the pattern
-count = 0
-
-# Check all the .asm files
-filenames = argv[1:] if len(argv) > 1 else iglob('**/*.asm', recursive=True)
-for filename in filenames:
+def check_file(filename):
+	# Count the total instances of the pattern
+	count = 0
 	printed = False
-	# Read each file line by line
-	with open(filename, 'r') as f:
+	# Read file line by line
+	with filename.open() as f:
 		try:
 			lines = [text.rstrip() for text in f]
 			n = len(lines)
 		except UnicodeDecodeError as ex:
 			print('ERROR!!! %s: %s\n' % (filename, str(ex)))
-			continue
+			return 0
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
 		printed_this = False
@@ -642,8 +638,27 @@ for filename in filenames:
 	# Print a blank line between different files
 	if printed:
 		print()
+	return count
+
+import argparse
+import pathlib
+
+parser = argparse.ArgumentParser()
+parser.add_argument('path', type=pathlib.Path, nargs='*', default=[pathlib.Path('.')])
+args = parser.parse_args()
+
+total_count = 0
+for path in args.path:
+	if not path.exists():
+		print("File not found:", path)
+		next
+	if path.is_file():
+		total_count += check_file(path)
+		next
+	for f in path.rglob("*.asm"):
+		total_count += check_file(f)
 
 # Print the total count
-print('Found', count, 'instances.')
+print('Found', total_count, 'instances.')
 
-exit(count)
+exit(total_count)
