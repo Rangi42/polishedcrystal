@@ -650,13 +650,13 @@ args = parser.parse_args()
 total_count = 0
 for path in args.path:
 	if not path.exists():
-		print("File not found:", path)
-		next
+		print("File not found:", path, file=sys.stderr)
+		continue
 	if path.is_file():
 		total_count += check_file(path)
-		next
-	for f in path.rglob("*.asm"):
-		total_count += check_file(f)
+	else:
+		for f in path.rglob("*.asm"):
+			total_count += check_file(f)
 
 # Print the total count
 print('Found', total_count, 'instances.')
