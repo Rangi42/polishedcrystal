@@ -208,8 +208,8 @@ StackCallInWRAMBankA::
 
 	ld hl, sp + 8
 	ld d, [hl]
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 
 	ld e, [hl]
 	ld a, HIGH(.return)
