@@ -86,7 +86,15 @@ FarPointerCall::
 FarCall_hl::
 ; Call a:hl.
 	dec sp
-	call _DoFarCall_hl
+	push hl
+	push af
+	ldh a, [hROMBank]
+	ld hl, sp + 4
+	ld [hl], a
+	pop af
+	rst Bankswitch
+	pop hl
+	call _hl_
 ; fallthrough
 _ReturnFarCall:
 ; restore the rom bank and clean up
@@ -100,37 +108,19 @@ _ReturnFarCall:
 	inc sp
 	ret
 
-_DoFarCall_hl:
-	push hl
-	push af
-	ldh a, [hROMBank]
-	ld hl, sp + 6
-	ld [hl], a
-	pop af
-	rst Bankswitch
-; same speed as ret but doesn't leave a stack address in hl
-; less likely to trash the stack if bugs happen
-	pop hl
-	jp hl
-
 FarCall_de::
 ; Call a:de.
 	dec sp
-	call .do_farcall
-	jr _ReturnFarCall
-
-.do_farcall
-	push de
 	push hl
 	push af
 	ldh a, [hROMBank]
-	ld hl, sp + 8
+	ld hl, sp + 4
 	ld [hl], a
 	pop af
 	rst Bankswitch
 	pop hl
-; de already pushed to the stack
-	ret
+	call _de_
+	jr _ReturnFarCall
 
 ; Stack layout:
 ; +10 saved bank
