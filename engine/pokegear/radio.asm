@@ -1505,10 +1505,8 @@ GetBuenasPassword:
 	ld d, 0
 	ld e, a
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 ; Get the password type and store it in b.
 	ld a, [hli]
 	ld b, a
