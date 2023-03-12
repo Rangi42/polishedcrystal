@@ -1,5 +1,6 @@
 SECTION "bank1", ROMX
 
+INCLUDE "engine/init.asm"
 INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"

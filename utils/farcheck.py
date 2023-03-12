@@ -28,15 +28,16 @@ if len(sys.argv) != 2:
 
 sym_banks = {}
 rst_addrs = (0x00, 0x08, 0x10, 0x18, 0x20, 0x28, 0x30, 0x38)
-rst_funcs = set()
+rst_funcs = {}
 
 with open(sys.argv[1], 'r') as f:
 	for line in f:
 		if (m := re.match(sym_rx, line)):
 			bank, addr, label = m.groups()
-			sym_banks[label] = int(bank, 16)
-			if int(addr, 16) in rst_addrs:
-				rst_funcs.add(label)
+			bank, addr = int(bank, 16), int(addr, 16)
+			sym_banks[label] = bank
+			if addr in rst_addrs:
+				rst_funcs[label] = addr
 
 def get_label_bank(m, n=1):
 	label = m.group(n)
@@ -67,12 +68,12 @@ for filename in iglob('**/*.asm', recursive=True):
 					comment = comment[0].strip() if comment else ''
 					if suppress not in comment:
 						print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' in bank {bank:02X}")
-				if label in rst_funcs and m.group(1) == "call" and not m.group(2):
+				if label in rst_funcs and m.group(1) == 'call' and not m.group(2):
 					code, *comment = line.split(';', 1)
 					code = code.strip()
 					comment = comment[0].strip() if comment else ''
 					if suppress not in comment:
-						print(f"{filename}:{i}: '{code}' unconditional call to rst address")
+						print(f"{filename}:{i}: '{code}' can use 'rst ${rst_funcs[label]:02x}'")
 			elif (m := re.match(far_rx, line)):
 				label, bank = get_label_bank(m)
 				if bank is not None and bank == cur_bank:

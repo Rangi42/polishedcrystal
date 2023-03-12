@@ -9,7 +9,7 @@ EntryPoint::
 	jmp Rst0Crash
 
 SECTION "rst08 FarCall", ROM0[$0008]
-FarCall:: ; no-optimize Stub jump
+FarCall:: ; no-optimize stub jump
 	jr RstFarCall
 
 PopAFBCDEHL::
