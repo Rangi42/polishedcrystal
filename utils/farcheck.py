@@ -8,7 +8,7 @@ import re
 
 sym_rx = re.compile(r'^([0-9A-F]{2}):([0-9A-F]{4}) ([A-Z0-9_\.#@]+)', re.IGNORECASE)
 def_rx = re.compile(r'^\s*([A-Z_][A-Z0-9_\.#@]*):(?!\s*macro)', re.IGNORECASE)
-ref_rx = re.compile(r'^\s+(?:call|jmp|jp|jr|dw|dwb)\s+(?:(?:z|nz|c|nc)\s*,\s*)?([A-Z0-9_\.]+)', re.IGNORECASE)
+ref_rx = re.compile(r'^\s+(call|jmp|jp|jr|dw|dwb)\s+(?:(z|nz|c|nc)\s*,\s*)?([A-Z0-9_\.]+)', re.IGNORECASE)
 far_rx = re.compile(r'^\s+(?:farcall|farjp|callfar|callba|callab)\s+([A-Z0-9_\.]+)', re.IGNORECASE)
 ram_rx = re.compile(r'^[vswh][A-Z]')
 
@@ -27,12 +27,16 @@ if len(sys.argv) != 2:
 	exit(1)
 
 sym_banks = {}
+rst_addrs = (0x00, 0x08, 0x10, 0x18, 0x20, 0x28, 0x30, 0x38)
+rst_funcs = set()
 
 with open(sys.argv[1], 'r') as f:
 	for line in f:
 		if (m := re.match(sym_rx, line)):
 			bank, addr, label = m.groups()
 			sym_banks[label] = int(bank, 16)
+			if int(addr, 16) in rst_addrs:
+				rst_funcs.add(label)
 
 def get_label_bank(m, n=1):
 	label = m.group(n)
@@ -56,13 +60,19 @@ for filename in iglob('**/*.asm', recursive=True):
 				else:
 					print(f"{filename}:{i}: cannot get bank of '{label}'", file=sys.stderr)
 			elif (m := re.match(ref_rx, line)):
-				label, bank = get_label_bank(m)
+				label, bank = get_label_bank(m, 3)
 				if bank is not None and bank != cur_bank and bank != 0 and not re.match(ram_rx, label):
 					code, *comment = line.split(';', 1)
 					code = code.strip()
 					comment = comment[0].strip() if comment else ''
 					if suppress not in comment:
 						print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' in bank {bank:02X}")
+				if label in rst_funcs and m.group(1) == "call" and not m.group(2):
+					code, *comment = line.split(';', 1)
+					code = code.strip()
+					comment = comment[0].strip() if comment else ''
+					if suppress not in comment:
+						print(f"{filename}:{i}: '{code}' unconditional call to rst address")
 			elif (m := re.match(far_rx, line)):
 				label, bank = get_label_bank(m)
 				if bank is not None and bank == cur_bank:
