@@ -174,24 +174,22 @@ StackCallInBankA:
 	ld e, a
 	ldh a, [hROMBank]
 	ld [hld], a
-
 	ld a, e
-	rst Bankswitch
 
 	ld e, [hl]
-	ld a, HIGH(_ReturnFarCall)
-	ld [hld], a
-	ld a, LOW(_ReturnFarCall)
-	ld [hld], a
+	ld [hl], HIGH(_ReturnFarCall)
+	dec hl ; no-optimize *hl++|*hl-- = N preserving a
+	ld [hl], LOW(_ReturnFarCall)
+	dec hl ; no-optimize *hl++|*hl-- = N
 
 ; Write the return back
-	ld a, d
-	ld [hld], a
+	ld [hl], d
+	dec hl
 	ld [hl], e
 
 	pop hl
 	pop de
-	ret
+	jmp Bankswitch
 
 RunFunctionInWRA6::
 ; Call the following function in wDecompressScratch's WRAM bank. Clobbers a.
