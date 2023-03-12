@@ -5921,17 +5921,20 @@ CheckSleepingTreeMon:
 	jr z, .NotSleeping
 
 ; Get list for the time of day
-	ld hl, AsleepTreeMonsMorn
+	ld hl, AsleepTreeMons
 	ld a, [wTimeOfDay]
-	cp DAY
-	jr c, .Check
-	ld hl, AsleepTreeMonsDay
-	jr z, .Check
-	ld hl, AsleepTreeMonsNite
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld c, [hl]
+	add hl, bc
 
 .Check:
 	ld a, [wTempEnemyMonSpecies]
-	call IsInByteArray
+	ld c, a
+	ld a, [wTempEnemyMonForm]
+	ld b, a
+	call GetSpeciesAndFormIndexFromHL
 ; If it's a match, the opponent is asleep
 	ret c
 
