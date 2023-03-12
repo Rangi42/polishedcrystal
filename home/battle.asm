@@ -81,7 +81,6 @@ ResetDamage::
 	ret
 
 CallOpponentTurn::
-	call SwitchTurn
 	add sp, -2
 	push de
 	push hl
@@ -101,7 +100,7 @@ CallOpponentTurn::
 
 	pop hl
 	pop de
-	ret
+; fallthrough
 
 BattleCommand_switchturn::
 SwitchTurn::
