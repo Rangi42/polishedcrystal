@@ -885,10 +885,8 @@ LoadMapPals:
 	ld d, 0
 	ld hl, EnvironmentColorsPointers
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 
 	; Further refine by time of day
 	ld a, [wTimeOfDayPal]
