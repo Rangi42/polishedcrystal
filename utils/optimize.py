@@ -35,6 +35,14 @@ def isNotReallyHram(code):
 		'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB', 'rRTCLATCH'
 	})
 
+RstFuncs = [
+	'PlaceString', '_PlaceString',
+	'ByteFill', '_ByteFill',
+	'CopyBytes', '_CopyBytes',
+	'AddNTimes', '_AddNTimes',
+	'Bankswitch',
+]
+
 # Each line has five properties:
 # - num (1, 2, 3, etc)
 # - code (no indent or comment)
@@ -564,6 +572,11 @@ patterns = {
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
 	(lambda line3, prev: re.match(r'ld \[w.*?\], a', line3.code)
 		and line3.code.split(", ")[0].lstrip("ld ") == prev[0].code.split(", ")[-1]),
+],
+'Unconditional call to rst': [
+	# Bad: call Bankswitch
+	# Good: rst Bankswitch, call nz, Bankswitch
+	(lambda line1, prev: re.match(r'call (%s)' % "|".join(RstFuncs), line1.code))
 ],
 }
 

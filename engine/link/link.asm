@@ -2138,7 +2138,7 @@ PerformLinkChecks:
 	xor a
 	ld bc, 10
 	ld hl, wLinkReceivedPolishedMiscBuffer
-	call ByteFill
+	rst ByteFill
 
 	; This acts as the old Special_CheckBothSelectedSameRoom.
 	; We send a dummy byte here that will cause old versions
