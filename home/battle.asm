@@ -80,7 +80,7 @@ ResetDamage::
 	ld [wCurDamage + 1], a
 	ret
 
-CallOpponentTurn::
+StackCallOpponentTurn::
 	add sp, -2
 	push de
 	push hl
@@ -194,7 +194,7 @@ GetMaxHP::
 	ret
 
 GetOpponentMonAttr::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserMonAttr::
 	ldh a, [hBattleTurn]
 	and a
@@ -206,7 +206,7 @@ GetUserMonAttr::
 	ret
 
 GetOpponentMonAttr_de::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserMonAttr_de::
 	push hl
 	ld h, d
@@ -218,7 +218,7 @@ GetUserMonAttr_de::
 	ret
 
 UpdateOpponentInParty::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UpdateUserInParty::
 	ldh a, [hBattleTurn]
 	and a
@@ -322,7 +322,7 @@ ToggleBattleItems:
 	jr .loop
 
 OpponentCanLoseItem::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UserCanLoseItem::
 ; Returns z if user can't lose its held item. This happens if:
 ; - user doesn't have a held item
@@ -351,7 +351,7 @@ UserCanLoseItem::
 	jmp PopBCDEHL
 
 GetOpponentUsedItemAddr::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
 	ldh a, [hBattleTurn]
@@ -611,7 +611,7 @@ CompareHP::
 	ret
 
 CheckOpponentContactMove::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
 	farjp _CheckContactMove
@@ -636,7 +636,7 @@ CheckIfHPIsZero::
 	ret
 
 GetWeatherAfterOpponentUmbrella::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetWeatherAfterUserUmbrella::
 	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL

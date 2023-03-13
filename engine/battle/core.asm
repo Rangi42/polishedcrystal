@@ -61,7 +61,7 @@ DoBattle:
 	ld [wBattleResult], a
 	jmp LostBattle
 .found_mon
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jmp z, BattleMenu ; No real turns in a tutorial
@@ -102,7 +102,7 @@ DoBattle:
 	jr BattleTurn
 
 WildFled_EnemyFled_LinkBattleCanceled:
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	ld a, [wBattleResult]
 	and BATTLERESULT_BITMASK
 	add DRAW
@@ -282,7 +282,7 @@ HandleBerserkGene:
 	ld [hl], a
 	ld [wNumHits], a
 	ld de, ANIM_CONFUSED
-	call Call_PlayBattleAnim_OnlyIfVisible
+	call PlayBattleAnimDE_OnlyIfVisible
 	call SwitchTurn
 	ld hl, BecameConfusedText
 	call StdBattleTextbox
@@ -487,7 +487,7 @@ ParsePlayerAction:
 	ld [wFXAnimIDLo], a
 	call MoveSelectionScreen
 	push af
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 
 	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
@@ -929,7 +929,7 @@ ForceDeferredSwitch:
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_RETURN_MON
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 	jr .anim_done
 
 .forced_anim
@@ -1024,7 +1024,7 @@ GetPlayerSwitchTarget:
 	ld a, 1
 	ld [wBattlePlayerAction], a
 	call nz, LinkBattleSendReceiveAction
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	xor a
 	ld [wBattlePlayerAction], a
 	ld a, [wPlayerSwitchTarget]
@@ -1077,7 +1077,7 @@ GetUserSwitchTarget:
 	ld a, [wLinkMode]
 	and a
 	call nz, LinkBattleSendReceiveAction
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	jr GetEnemySwitchTarget
 
 .random_select
@@ -1484,7 +1484,7 @@ GetParticipantVar::
 	ret
 
 CheckOpponentFullHP:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 CheckFullHP:
 ; check if the user has full HP
 ; z: yes, nz: no
@@ -1737,7 +1737,7 @@ DealDamageToOpponent:
 	jmp SwitchTurn
 
 SubtractHPFromOpponent:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 SubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
@@ -1847,7 +1847,7 @@ _SubtractHP:
 	ret
 
 RestoreOpponentHP:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RestoreHP:
 	ld hl, wBattleMonMaxHP
 	ldh a, [hBattleTurn]
@@ -2804,7 +2804,7 @@ OfferSwitch:
 	call DelayFrame
 	call GetMemCGBLayout
 	call SetPalettes
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	pop af
 	jr c, OfferSwitch
 
@@ -2838,14 +2838,14 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	ld [wBattleAnimParam], a
 	call SetEnemyTurn
 	ld de, ANIM_SEND_OUT_MON
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 
 	call BattleCheckEnemyShininess
 	jr nc, .not_shiny
 	ld a, 1 ; shiny anim
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 .not_shiny
 
 	call ResetVariableBattleMusicCondition
@@ -3018,14 +3018,14 @@ SendOutPlayerMon:
 	ld [wNumHits], a
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 
 	call BattleCheckPlayerShininess
 	jr nc, .not_shiny
 	ld a, 1
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 .not_shiny
 
 	call ResetVariableBattleMusicCondition
@@ -3304,7 +3304,7 @@ SpikesDamage_GotAbility:
 	pop af
 	ld [hl], a
 	ld de, ANIM_PSN
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 	call RefreshBattleHuds
 	pop hl
 
@@ -3334,7 +3334,7 @@ HandleAirBalloon:
 	ret
 
 PursuitSwitch:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .Function:
 	farcall CheckOpponentWentFirst
 	ret z
@@ -3533,7 +3533,7 @@ StealHeldStatusHealingItem:
 	jmp StealBattleItem
 
 UseOpponentHeldStatusHealingItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UseHeldStatusHealingItem:
 	predef GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
@@ -3581,7 +3581,7 @@ StealConfusionHealingItem:
 	jmp StealBattleItem
 
 UseOpponentConfusionHealingItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UseConfusionHealingItem:
 	predef GetUserItemAfterUnnerve
 	call _HeldConfusionHealingItem
@@ -4026,7 +4026,7 @@ BattleMenu_Fight:
 
 	xor a
 	ld [wNumFleeAttempts], a
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	and a
 	ret
 
@@ -4385,7 +4385,7 @@ Battle_StatsScreen:
 	jmp EnableLCD
 
 AI_OpponentCanSwitch:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 AI_UserCanSwitch:
 ; Wrapper around UserCanSwitch that also checks if we have any non-fainted in
 ; the party. Doesn't have a proper message for that case.
@@ -4465,7 +4465,7 @@ TryPlayerSwitch:
 BattleMenu_Run:
 	call ClearSprites
 
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	ld a, $3
 	ld [wMenuCursorY], a
 	call CheckRunSpeed
@@ -4585,7 +4585,7 @@ CheckRunSpeed:
 
 	push hl
 	push de
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	ld hl, wNumFleeAttempts
 	inc [hl]
 	pop de
@@ -4666,7 +4666,7 @@ endr
 	call CopyMenuHeader
 	call VerticalMenu
 	push af
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	pop af
 	jr c, .dont_forfeit
 	ld a, [wMenuCursorY]
@@ -4702,7 +4702,7 @@ endr
 	xor a
 	ld [wCurPlayerMove], a
 	call LinkBattleSendReceiveAction
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 
 	; Got away safely
 	ld a, [wBattleAction]
@@ -4981,7 +4981,7 @@ MoveSelectionScreen:
 	pop hl
 	call StdBattleTextbox
 .start_over
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	jmp MoveSelectionScreen
 
 .pressed_up
@@ -5500,7 +5500,7 @@ ParseEnemyAction:
 	ld a, [wLinkMode]
 	and a
 	call nz, LinkBattleSendReceiveAction
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	call SetEnemyTurn
 	call CheckLockedIn
 	ret nz
@@ -5544,7 +5544,7 @@ ParseEnemyAction:
 	jr z, .not_linked
 	call EmptyBattleTextbox
 	call LoadTileMapToTempTileMap
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	ld a, [wBattleAction]
 	cp BATTLEACTION_STRUGGLE
 	jr z, .struggle
@@ -5921,17 +5921,20 @@ CheckSleepingTreeMon:
 	jr z, .NotSleeping
 
 ; Get list for the time of day
-	ld hl, AsleepTreeMonsMorn
+	ld hl, AsleepTreeMons
 	ld a, [wTimeOfDay]
-	cp DAY
-	jr c, .Check
-	ld hl, AsleepTreeMonsDay
-	jr z, .Check
-	ld hl, AsleepTreeMonsNite
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld c, [hl]
+	add hl, bc
 
 .Check:
 	ld a, [wTempEnemyMonSpecies]
-	call IsInByteArray
+	ld c, a
+	ld a, [wTempEnemyMonForm]
+	ld b, a
+	call GetSpeciesAndFormIndexFromHL
 ; If it's a match, the opponent is asleep
 	ret c
 
@@ -6191,13 +6194,13 @@ _BattleRandom::
 	pop hl
 	ret
 
-Call_PlayBattleAnim_OnlyIfVisible:
+PlayBattleAnimDE_OnlyIfVisible:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret nz
 
-Call_PlayBattleAnim:
+PlayBattleAnimDE:
 	ld a, e
 	ld [wFXAnimIDLo], a
 	ld a, d
@@ -6495,7 +6498,7 @@ GiveExperiencePoints:
 	ld [wMonType], a
 	predef CopyPkmnToTempMon
 	farcall PrintStatDifferences
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	call GetMemCGBLayout
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -7389,7 +7392,7 @@ HandleSafariAngerEatingStatus:
 
 .finish
 	push hl
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	pop hl
 	jmp StdBattleTextbox
 
@@ -8521,7 +8524,7 @@ BattleStartMessage:
 	ld a, 1
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 
 .not_shiny
 	call CheckSleepingTreeMon
@@ -8627,7 +8630,7 @@ AutomaticBattleWeather:
 	ld [wWeatherCount], a
 	ld d, 0
 	push hl
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 	pop hl
 	call StdBattleTextbox
 	jmp EmptyBattleTextbox
@@ -8641,7 +8644,7 @@ BoostGiovannisArmoredMewtwo:
 	ret nz
 	call SetEnemyTurn
 	ld de, ANIM_SHARPEN
-	call Call_PlayBattleAnim
+	call PlayBattleAnimDE
 	ld b, ATTACK
 	call .forceraisestat
 	ld b, DEFENSE

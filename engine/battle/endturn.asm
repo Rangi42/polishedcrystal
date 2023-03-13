@@ -324,7 +324,7 @@ HandleWeather:
 	inc a
 	ld [wKickCounter], a
 	ld [wAlreadySawWeather], a
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 .saw_sandstorm
 
 	ld hl, SandstormHitsText
@@ -363,7 +363,7 @@ endc
 	inc a
 	ld [wKickCounter], a
 	ld [wAlreadySawWeather], a
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 .saw_hail
 
 	ld hl, HailHitsText
@@ -489,7 +489,7 @@ HandleLeechSeed:
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .no_anim
-	farcall Call_PlayBattleAnim_OnlyIfVisible
+	farcall PlayBattleAnimDE_OnlyIfVisible
 .no_anim
 	call SwitchTurn
 
@@ -598,7 +598,7 @@ DoPoisonBurnDamageAnim:
 	pop de
 	xor a
 	ld [wNumHits], a
-	farcall Call_PlayBattleAnim_OnlyIfVisible
+	farcall PlayBattleAnimDE_OnlyIfVisible
 	jmp GetEighthMaxHP
 
 HandleCurse:
@@ -616,7 +616,7 @@ HandleCurse:
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_UNDER_CURSE
-	farcall Call_PlayBattleAnim_OnlyIfVisible
+	farcall PlayBattleAnimDE_OnlyIfVisible
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
 	ld hl, HurtByCurseText

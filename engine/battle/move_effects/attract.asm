@@ -96,7 +96,7 @@ BattleCommand_attract:
 	farjp RunStatusHealAbilities
 
 CheckOpponentMentalHerb:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 CheckMentalHerb:
 	; Check if we hold it
 	predef GetUserItemAfterUnnerve
