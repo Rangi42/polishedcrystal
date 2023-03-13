@@ -2,20 +2,14 @@
 ; Functions that rely on "following" data access it via their return address on
 ; the stack, and update the return address to point past the data.
 
+; In home/header.asm:
+;	dec sp ; push space for the return bank
+;	call _RstFarCall
+;	jmp _ReturnFarCall
+
 _RstFarCall::
 ; Call the following dab pointer.
 ; Preserves af, bc, de, hl.
-	dec sp ; push space for the return bank
-; Stack layout:
-; +1 pointer to function address and bank followed by return location
-; +0 nothing
-	call .do_farcall
-; Stack layout:
-; +1 return address
-; +0 return bank
-	jr _ReturnFarCall
-
-.do_farcall
 	dec sp ; push space for the target function pointer
 	dec sp ; 'dec sp' preserves flags, unlike 'add sp, -2'
 	push af
