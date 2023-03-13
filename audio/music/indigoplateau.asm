@@ -115,7 +115,7 @@ Music_IndigoPlateau_branch_ee8e9:
 	sound_ret
 
 Music_IndigoPlateau_Ch3:
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 Music_IndigoPlateau_branch_ee8fd:
 	sound_call Music_IndigoPlateau_branch_ee915
 	octave 3

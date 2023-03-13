@@ -47,7 +47,7 @@ _PrintNum::
 .loop
 	ld a, b
 	cp c
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .loopnext
 	ld a, [de]
 	inc de

@@ -634,7 +634,7 @@ Music_TrainerBattleSM_Ch2_branch_2:
 	sound_ret
 
 Music_TrainerBattleSM_Ch3:
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	octave 2
 	note C_, 7
 	rest 1
@@ -679,7 +679,7 @@ Music_TrainerBattleSM_Ch3_loop_5:
 	note C_, 2
 	note G_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_5
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 Music_TrainerBattleSM_Ch3_loop_6:
 	note F_, 2
 	rest 2

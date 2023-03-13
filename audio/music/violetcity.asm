@@ -745,31 +745,31 @@ Music_VioletCity_branch_f0338:
 	sound_jump Music_VioletCity_branch_f0338
 
 Music_VioletCity_branch_f036c:
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note G_, 2
-	note G_, 1
-	note G_, 1
-	note F#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 7, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	sound_ret
 
 Music_VioletCity_branch_f037a:
-	note D#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
+	drum_note 4, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	rest 1
-	note D#, 1
-	note D#, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 4, 2
 	sound_ret

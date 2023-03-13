@@ -121,13 +121,9 @@ ResetWRAM:
 	rst ByteFill
 
 	call Random
-	ldh a, [rLY]
-	ldh [hSecondsBackup], a
 	call DelayFrame
 	ldh a, [hRandomSub]
 	ld [wPlayerID], a
-	ldh a, [rLY]
-	ldh [hSecondsBackup], a
 	call DelayFrame
 	ldh a, [hRandomAdd]
 	ld [wPlayerID + 1], a
@@ -1378,20 +1374,3 @@ CopyrightString:
 	; ©1995-2001 GAME FREAK inc.
 	next $60, $61, $62, $63, $64, $65, $66
 	db   $73, $74, $75, $76, $77, $78, $79, $7a, $7b, $7c, "@"
-
-GameInit::
-	farcall TryLoadSaveData
-	call ClearWindowData
-	call ClearBGPalettes
-	call ClearTileMap
-	ld a, HIGH(vBGMap0)
-	ldh [hBGMapAddress + 1], a
-	xor a
-	ldh [hBGMapAddress], a
-	ldh [hJoyDown], a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $90
-	ldh [hWY], a
-	call ApplyTilemapInVBlank
-	jmp CrystalIntroSequence

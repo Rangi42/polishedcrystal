@@ -317,7 +317,6 @@ DEF NUM_HOF_TEAMS EQU 10
 	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")
 	const EVOLVE_LOCATION
 	const EVOLVE_MOVE
-	const EVOLVE_EVS
 	const EVOLVE_CRIT ; only for Galarian Farfetch'd
 	const EVOLVE_PARTY ; only for Mantyke
 ; multi_evo types for Lyra's info (used in data/pokemon/multi_evos.asm)
@@ -350,9 +349,6 @@ DEF NUM_EVOLVE_METHODS EQU const_value
 	const ATK_GT_DEF
 	const ATK_LT_DEF
 	const ATK_EQ_DEF
-
-; EVOLVE_EVS trigger value
-DEF EVS_TO_EVOLVE EQU 50
 
 ; wild data
 

@@ -375,23 +375,23 @@ Music_LookRocket_branch_f7640:
 
 Music_LookRocket_branch_f765c:
 Music_RocketTheme_branch_f765c:
-	note C_, 8
-	note D_, 2
-	note D#, 2
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
+	drum_note 1, 8
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret
 
 Music_LookRocket_branch_f7664:
 Music_RocketTheme_branch_f7664:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_ret

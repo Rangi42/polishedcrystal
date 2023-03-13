@@ -8,21 +8,19 @@ EntryPoint::
 	di
 	jmp Rst0Crash
 
-DisappearUser::
-	farjp _DisappearUser
+	ds 4 ; unused
 
 
 SECTION "rst08 FarCall", ROM0[$0008]
-FarCall::
-	jmp RstFarCall
+FarCall:: ; no-optimize stub jump
+	jr RstFarCall
 
-PopAFBCDEHL::
-	pop af
-PopBCDEHL::
-	pop bc
-	pop de
-	pop hl
-	ret
+	ds 3 ; unused
+
+SwitchToMapScriptsBank::
+	ld a, [wMapScriptsBank]
+	assert @ == Bankswitch, "cannot fall through to Bankswitch"
+	; fallthrough
 
 
 SECTION "rst10 Bankswitch", ROM0[$0010]
@@ -47,6 +45,7 @@ FarCopyColorWRAM::
 
 FarCopyWRAM::
 	call StackCallInWRAMBankA
+	assert @ == CopyBytes, "cannot fall through to CopyBytes"
 	; fallthrough
 
 
@@ -131,12 +130,17 @@ SECTION "timer", ROM0[$0050]
 
 	reti ; just in case
 
-SwitchToMapScriptsBank::
-	ld a, [wMapScriptsBank]
-	rst Bankswitch
+PopAFBCDEHL::
+	pop af
+PopBCDEHL::
+	pop bc
+	pop de
+	pop hl
 	ret
 
-	ds 1 ; unused
+ClearText::
+	text_start
+	done
 
 
 SECTION "serial", ROM0[$0058]
@@ -147,10 +151,10 @@ SECTION "High Home", ROM0[$005b]
 ;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
 
+INCLUDE "home/farcall.asm"
 INCLUDE "home/jumptable.asm"
-INCLUDE "home/sine.asm"
-INCLUDE "home/delay.asm"
-INCLUDE "home/gfx2.asm"
+
+	ds 2 ; unused
 
 
 SECTION "Header", ROM0[$0100]

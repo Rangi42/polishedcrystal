@@ -4,7 +4,7 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 200 ; catch rate
 	db 73 ; base exp
-	db TWISTEDSPOON, LINKING_CORD ; held items
+	db NO_ITEM, TWISTEDSPOON ; held items
 	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for ABRA, SYNCHRONIZE, MAGIC_GUARD, TRACE

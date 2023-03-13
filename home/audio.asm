@@ -310,18 +310,19 @@ FadeInToMusic::
 
 SkipMusic::
 ; Skip a frames of music.
-	ldh [hBuffer], a
+	push bc
+	ld b, a
 	ld a, [wMusicPlaying]
-	push af
+	ld c, a
 	xor a
 	ld [wMusicPlaying], a
-	ldh a, [hBuffer]
 .loop
 	call UpdateSound
-	dec a
+	dec b
 	jr nz, .loop
-	pop af
+	ld a, c
 	ld [wMusicPlaying], a
+	pop bc
 	ret
 
 FadeToMapMusic::

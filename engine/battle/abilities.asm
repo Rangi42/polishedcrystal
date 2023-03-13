@@ -11,7 +11,7 @@ RunActivationAbilitiesInner:
 	jr UserAbilityJumptable
 
 RunEnemyStatusHealAbilities:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RunStatusHealAbilities:
 	ld hl, StatusHealAbilities
 UserAbilityJumptable:
@@ -197,7 +197,7 @@ WeatherAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	; Disable running animations as part of Start(wWeather) commands. This will not block
-	; Call_PlayBattleAnim that plays the animation manually.
+	; PlayBattleAnimDE that plays the animation manually.
 	ld a, b
 	cp WEATHER_RAIN
 	jr z, .handlerain
@@ -207,22 +207,22 @@ WeatherAbility:
 	jr z, .handlehail
 	; is sandstorm
 	ld de, SANDSTORM
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startsandstorm
 	jmp EnableAnimations
 .handlerain
 	ld de, RAIN_DANCE
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startrain
 	jmp EnableAnimations
 .handlesun
 	ld de, SUNNY_DAY
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startsun
 	jmp EnableAnimations
 .handlehail
 	ld de, HAIL
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_starthail
 	jmp EnableAnimations
 
@@ -260,8 +260,9 @@ IntimidateAbility:
 
 .continue
 	call EnableAnimations
-	farcall CheckWhiteHerb
-	jmp SwitchTurn
+	farcall CheckStatHerbs
+	call SwitchTurn
+	farjp CheckMirrorHerb
 
 INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
@@ -301,7 +302,8 @@ DownloadAbility:
 	ld b, ATTACK
 .got_stat
 	farcall ForceRaiseStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 ImposterAbility:
 	; Disallowed on Neutralizing Gas (even in switch-out mode)
@@ -456,7 +458,7 @@ ForewarnAbility:
 	; 3 moves share power: 3rd move replaces 2/3 of the time
 	; 4 moves share power: 4th move replaces 3/4 of the time
 	ld a, [wBuffer2]
-	inc a
+	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wBuffer2], a
 	inc a
 	call BattleRandomRange
@@ -780,7 +782,8 @@ TanglingHairAbility:
 	ld b, SPEED
 	ld a, STAT_SILENT
 	farcall _ForceLowerOppStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
@@ -945,7 +948,7 @@ INCLUDE "data/abilities/type_nullification_abilities.asm"
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
 	call UserAbilityJumptable
@@ -986,7 +989,7 @@ CannotUseTextAbility:
 	jmp EnableAnimations
 
 RunStatIncreaseAbilities:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
 	ld hl, StatIncreaseAbilities
@@ -1076,7 +1079,8 @@ StatUpAbility:
 	call EnableAnimations
 	call SwitchTurn
 .done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 WeakArmorAbility:
 	; only physical moves activate this
@@ -1089,7 +1093,8 @@ WeakArmorAbility:
 	farcall LowerStat
 	ld b, $10 | SPEED
 	farcall RaiseStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 FlashFireAbility:
 	call DisableAnimations
@@ -1549,7 +1554,8 @@ MoodyAbility:
 	ld b, e
 	farcall ForceLowerStat
 .lower_done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	call GetTrueUserAbility
@@ -1905,7 +1911,8 @@ AngerPointAbility:
 	xor a
 	farcall DoPrintStatChange
 .done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 RunSwitchAbilities:
 ; abilities that activate when you switch out
@@ -1981,7 +1988,7 @@ EnableAnimations:
 	ret
 
 ShowEnemyAbilityActivation::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 ShowAbilityActivation::
 	push hl
 	push de

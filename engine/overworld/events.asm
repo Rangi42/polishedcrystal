@@ -965,11 +965,11 @@ DoPlayerEvent:
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, [hli]
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, [hl]
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 PlayerEventScriptPointers:
@@ -1216,8 +1216,14 @@ CanUseSweetHoney::
 	and $f0
 	cp HI_NYBBLE_CURRENT
 	jr z, .no
+	ld a, [wEnvironment]
+	cp CAVE
+	jr z, .skip_grass_check
+	cp DUNGEON
+	jr z, .skip_grass_check
 	farcall CheckGrassCollision
 	jr nc, .no
+.skip_grass_check
 	scf
 	ret
 

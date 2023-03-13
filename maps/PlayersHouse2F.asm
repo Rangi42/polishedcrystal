@@ -248,19 +248,17 @@ endr
 	givepoke TYPHLOSION, HISUIAN_FORM, 50
 	loadmem wPartyMon3Shiny, SHINY_MASK
 	; ext species test
-	givepoke ANNIHILAPE, 50
+	givepoke WYRDEER, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	givepoke FARIGIRAF, 50
 	; fill pokedex
 	callasm FillPokedex
-	; intro events
+;	; new bark events
 	addcellnum PHONE_MOM
 	setmapscene PLAYERS_HOUSE_1F, $1
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
-	setmapscene VERMILION_CITY, $1
-;	; prof.elm events
-;	addcellnum PHONE_ELM
+	addcellnum PHONE_ELM
 ;	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
 ;	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 ;	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
@@ -269,7 +267,37 @@ endr
 ;	setevent EVENT_LYRA_IN_ELMS_LAB
 ;	setmapscene ELMS_LAB, $5
 ;	setmapscene NEW_BARK_TOWN, $2
+	; cherrygrove events
+	setevent EVENT_GUIDE_GENT_IN_HIS_HOUSE
+	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
+	setmapscene CHERRYGROVE_CITY, $2
+	; route 31 events
+	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	setevent EVENT_INTRODUCED_ROUTE_LEADERS
+	; azalea events
+	setevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
+	setevent EVENT_KURTS_HOUSE_KURT_1
+	; goldenrod events
+	setevent EVENT_BEAT_CAMPER_TODD
+	addcellnum PHONE_LYRA
+	setmapscene DAYCARE, $1
+	setevent EVENT_LYRA_DAYCARE
+	setevent EVENT_NURSE_SAW_TRAINER_STAR
+	setevent EVENT_INTRODUCED_TEALA
+	addcellnum PHONE_BILL
+	setevent EVENT_BEAT_PICNICKER_KIM
+	setevent EVENT_BEAT_BREEDER_THERESA
+	; ecruteak events
+	setevent EVENT_RIVAL_BURNED_TOWER
+	setevent EVENT_HOLE_IN_BURNED_TOWER
+	setmapscene BURNED_TOWER_1F, $2
+	; olivine events
+	setevent EVENT_RIVAL_OLIVINE_CITY
+	setmapscene OLIVINE_CITY, $1
+	; vermilion events
+	setmapscene VERMILION_CITY, $1
 	closetext
+	warpfacing DOWN, GOLDENROD_CITY, 13, 14
 	end
 
 FillPokedex:

@@ -478,7 +478,7 @@ Music_WildBattleSM_Ch2_loop_main:
 	sound_jump Music_WildBattleSM_Ch2_loop_main
 
 Music_WildBattleSM_Ch3:
-	note_type 3, 1, -1
+	note_type 3, 1, 9
 	octave 3
 	note C_, 8
 	octave 2

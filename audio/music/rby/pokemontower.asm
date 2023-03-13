@@ -3,9 +3,10 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/pokemontower.asm
 
 Music_PokemonTowerRBY:
-	dbw $80, Music_PokemonTowerRBY_Ch1
-	dbw $01, Music_PokemonTowerRBY_Ch2
-	dbw $02, Music_PokemonTowerRBY_Ch3
+	channel_count 3
+	channel 1, Music_PokemonTowerRBY_Ch1
+	channel 2, Music_PokemonTowerRBY_Ch2
+	channel 3, Music_PokemonTowerRBY_Ch3
 
 Music_PokemonTowerRBY_Ch1:
 	tempo 152
@@ -408,7 +409,7 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	rest 7
 	note G_, 1
 	rest 15
-	note_type 12, 1, -3 ; waveform 11
+	note_type 12, 1, 11 ; waveform 11
 	octave 4
 	note F#, 1
 	rest 3

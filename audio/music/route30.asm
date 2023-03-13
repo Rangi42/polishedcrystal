@@ -601,70 +601,70 @@ Music_Route30_branch_efe84:
 	sound_jump Music_Route30_branch_efe84
 
 Music_Route30_branch_efeb8:
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D_, 4
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
 	sound_ret
 
 Music_Route30_branch_efec1:
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret
 
 Music_Route30_branch_efecd:
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_ret
 
 Music_Route30_branch_efed7:
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note F#, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_ret
 
 Music_Route30_branch_efee1:
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note_type 6
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note_type 12
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_speed 6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_speed 12
 	sound_ret

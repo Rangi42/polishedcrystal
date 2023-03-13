@@ -452,24 +452,24 @@ Music_GoldenrodCity_branch_eb650:
 	sound_jump Music_GoldenrodCity_branch_eb613
 
 Music_GoldenrodCity_branch_eb663:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note F#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
 	sound_ret
 
 Music_GoldenrodCity_branch_eb66d:
-	note D#, 2
-	note D_, 1
-	note D#, 3
-	note D#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
+	drum_note 4, 2
+	drum_note 3, 1
+	drum_note 4, 3
+	drum_note 4, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	sound_ret

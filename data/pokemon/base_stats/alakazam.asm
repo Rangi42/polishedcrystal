@@ -4,7 +4,7 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 50 ; catch rate
 	db 186 ; base exp
-	db TWISTEDSPOON, LINKING_CORD ; held items
+	db NO_ITEM, TWISTEDSPOON ; held items
 	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for ALAKAZAM, SYNCHRONIZE, MAGIC_GUARD, TRACE

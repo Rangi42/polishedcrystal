@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/nuggetbridge.asm
 
 Music_NuggetBridgeHGSS:
-	dbw $c0, Music_NuggetBridgeHGSS_Ch1
-	dbw $01, Music_NuggetBridgeHGSS_Ch2
-	dbw $02, Music_NuggetBridgeHGSS_Ch3
-	dbw $03, Music_NuggetBridgeHGSS_Ch4
+	channel_count 4
+	channel 1, Music_NuggetBridgeHGSS_Ch1
+	channel 2, Music_NuggetBridgeHGSS_Ch2
+	channel 3, Music_NuggetBridgeHGSS_Ch3
+	channel 4, Music_NuggetBridgeHGSS_Ch4
 
 Music_NuggetBridgeHGSS_Ch1:
 	tempo $A8
@@ -489,123 +490,123 @@ Music_NuggetBridgeHGSS_Bar12:
 	sound_ret
 
 Music_NuggetBridgeHGSS_Ch4:
-	note_type 4
+	drum_speed 4
 	toggle_noise 0
-	note A_, 16
+	drum_note 10, 16
 	rest 2
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 Music_NuggetBridgeHGSS_Loop4:
-	note D_, 16
+	drum_note 3, 16
 	rest 2
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note D_, 16
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 16
 	rest 2
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 16
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 16
 	rest 2
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note A_, 16
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 10, 16
 	rest 16
 	rest 16
 	rest 16
 	rest 16
 	rest 16
-	note D_, 12
-	note D_, 12
-	note D_, 12
-	note D_, 6
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 12
-	note D_, 12
-	note D_, 6
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 12
-	note D_, 12
-	note D_, 12
-	note D_, 6
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 12
-	note D_, 12
-	note D_, 6
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 12
-	note D_, 12
-	note D_, 12
-	note D_, 6
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 12
-	note D_, 6
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note D_, 16
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 16
 	rest 14
-	note D_, 3
-	note D_, 3
-	note A_, 6
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 16
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 10, 6
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 16
 	rest 14
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note D_, 3
-	note A_, 16
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 10, 16
 	rest 2
-	note D_, 3
-	note D_, 3
-	note D_, 12
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_jump Music_NuggetBridgeHGSS_Loop4

@@ -1,12 +1,12 @@
 SECTION "bank1", ROMX
 
+INCLUDE "engine/init.asm"
 INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"
 INCLUDE "engine/overworld/init_map.asm"
 INCLUDE "engine/menus/init_options.asm"
 INCLUDE "engine/pokemon/learn.asm"
-INCLUDE "engine/math/math.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
@@ -21,7 +21,6 @@ INCLUDE "engine/events/haircut_etc.asm"
 SECTION "bank2", ROMX
 
 INCLUDE "engine/overworld/player_object.asm"
-INCLUDE "engine/math/sine.asm"
 INCLUDE "data/predef_pointers.asm"
 INCLUDE "engine/gfx/color.asm"
 
@@ -194,6 +193,11 @@ INCLUDE "engine/battle/core.asm"
 SECTION "Battle Endturn", ROMX
 
 INCLUDE "engine/battle/endturn.asm"
+
+
+SECTION "Math", ROMX
+
+INCLUDE "engine/math/math.asm"
 
 
 SECTION "Pokedex", ROMX
@@ -465,6 +469,11 @@ INCLUDE "engine/battle_anims/bg_effects.asm"
 SECTION "Battle Animation Data", ROMX
 
 INCLUDE "data/moves/animations.asm"
+
+
+SECTION "Sine", ROMX
+
+INCLUDE "engine/math/sine.asm"
 
 
 SECTION "Move Animations", ROMX

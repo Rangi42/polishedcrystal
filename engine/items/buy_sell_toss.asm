@@ -211,7 +211,7 @@ BuySellToss_InterpretJoypad:
 	; Subtracting by 11, then incrementing, simplifies checks.
 	sub 11
 	jr nc, .no_underflow
-	ld a, 0
+	xor a
 .no_underflow
 	inc a
 	ld [wItemQuantityChangeBuffer], a
@@ -292,7 +292,7 @@ BuySell_MultiplyPrice:
 	ld a, [wItemQuantityChangeBuffer]
 	ldh [hMultiplier], a
 	push hl
-	call Multiply
+	farcall Multiply
 	pop hl
 	ret
 

@@ -1343,7 +1343,7 @@ ENDM
 MACRO sjumpfwd
 	assert \1 > @, "sjumpfwd cannot jump backward"
 	db sjumpfwd_command
-	db \1 - @ - 1 ; distance
+	dr \1 - 1 ; distance
 ENDM
 
 	const ifequalfwd_command
@@ -1351,21 +1351,21 @@ MACRO ifequalfwd
 	assert \2 > @, "ifequalfwd cannot jump backward"
 	db ifequalfwd_command
 	db \1 ; byte
-	db \2 - @ - 1 ; distance
+	dr \2 - 1 ; distance
 ENDM
 
 	const iffalsefwd_command
 MACRO iffalsefwd
 	assert \1 > @, "iffalsefwd cannot jump backward"
 	db iffalsefwd_command
-	db \1 - @ - 1 ; distance
+	dr \1 - 1 ; distance
 ENDM
 
 	const iftruefwd_command
 MACRO iftruefwd
 	assert \1 > @, "iftruefwd cannot jump backward"
 	db iftruefwd_command
-	db \1 - @ - 1 ; distance
+	dr \1 - 1 ; distance
 ENDM
 
 	const scalltable_command

@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/gamecorner.asm
 
 Music_GameCornerDPPt:
-	dbw $C0, Music_GameCornerDPPt_Ch1
-	dbw $01, Music_GameCornerDPPt_Ch2
-	dbw $02, Music_GameCornerDPPt_Ch3
-	dbw $03, Music_GameCornerDPPt_Ch4
+	channel_count 4
+	channel 1, Music_GameCornerDPPt_Ch1
+	channel 2, Music_GameCornerDPPt_Ch2
+	channel 3, Music_GameCornerDPPt_Ch3
+	channel 4, Music_GameCornerDPPt_Ch4
 
 Music_GameCornerDPPt_Ch1:
 	tempo $7C
@@ -2194,271 +2195,271 @@ Music_GameCornerDPPt_Ch3_loop:
 
 Music_GameCornerDPPt_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	stereo_panning TRUE, FALSE
 	rest 16
 	rest 16
-	note C_, 8
+	drum_note 1, 8
 	stereo_panning FALSE, TRUE
-	note C_, 8
+	drum_note 1, 8
 	stereo_panning TRUE, FALSE
-	note C_, 4
+	drum_note 1, 4
 	stereo_panning FALSE, TRUE
-	note C_, 4
+	drum_note 1, 4
 	stereo_panning TRUE, TRUE
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 2
-	note C_, 2
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 2
 	stereo_panning TRUE, TRUE
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
 	stereo_panning FALSE, TRUE
-	note B_, 2
+	drum_note 12, 2
 	stereo_panning TRUE, FALSE
-	note B_, 16
+	drum_note 12, 16
 	rest 2
 Music_GameCornerDPPt_Ch4_loop:
-	note_type 12
+	drum_speed 12
 	stereo_panning FALSE, TRUE
-	note B_, 14
+	drum_note 12, 14
 	stereo_panning TRUE, FALSE
-	note B_, 2
-	note B_, 8
+	drum_note 12, 2
+	drum_note 12, 8
 	stereo_panning FALSE, TRUE
-	note B_, 8
+	drum_note 12, 8
 	stereo_panning TRUE, TRUE
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note B_, 16
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_speed 6
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 12, 16
 	rest 16
 	rest 16
-	note A#, 2
-	note A#, 4
-	note A#, 2
-	note A#, 4
-	note F#, 4
-	note B_, 16
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 12, 16
 	rest 16
 	rest 16
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note B_, 16
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 12, 16
 	rest 16
 	rest 16
-	note A#, 2
-	note A#, 4
-	note A#, 2
-	note A#, 4
-	note F#, 4
-	note B_, 16
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 12, 16
 	rest 16
 	rest 16
 	rest 12
-	note A#, 2
-	note A#, 2
-	note B_, 12
-	note A#, 2
-	note A#, 2
-	note B_, 16
-	note A#, 8
-	note A#, 8
-	note C#, 2
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 2
-	note A#, 4
-	note A#, 2
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 2
-	note A#, 4
-	note A#, 2
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 4
-	note A#, 4
+	drum_note 11, 2
+	drum_note 11, 2
+	drum_note 12, 12
+	drum_note 11, 2
+	drum_note 11, 2
+	drum_note 12, 16
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
 	stereo_panning TRUE, FALSE
-	note B_, 16
+	drum_note 12, 16
 	rest 16
 	rest 16
 	rest 16
-	note A#, 16
+	drum_note 11, 16
 	stereo_panning FALSE, TRUE
-	note A#, 16
+	drum_note 11, 16
 	stereo_panning TRUE, FALSE
-	note A#, 8
+	drum_note 11, 8
 	stereo_panning FALSE, TRUE
-	note A#, 8
+	drum_note 11, 8
 	stereo_panning TRUE, TRUE
-	note A#, 2
-	note A#, 4
-	note A#, 2
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 8
-	note A#, 4
-	note A#, 16
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 16
 	rest 16
 	rest 4
 	sound_jump Music_GameCornerDPPt_Ch4_loop

@@ -1061,7 +1061,7 @@ BattleBGEffect_DoubleTeam:
 	add hl, bc
 	ld a, [hl]
 	ld d, $2
-	call Sine
+	farcall Sine
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
 	add [hl]
@@ -1465,7 +1465,7 @@ BattleBGEffect_WobbleMon:
 	add hl, bc
 	ld a, [hl]
 	ld d, $8
-	call Sine
+	farcall Sine
 	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -1501,13 +1501,13 @@ BattleBGEffect_Flail:
 	add hl, bc
 	ld a, [hl]
 	ld d, $6
-	call Sine
+	farcall Sine
 	push af
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
 	ld d, $2
-	call Sine
+	farcall Sine
 	ld e, a
 	pop af
 	add e
@@ -1593,7 +1593,7 @@ BattleBGEffect_BounceDown:
 	add hl, bc
 	ld a, [hl]
 	ld d, $10
-	call Cosine
+	farcall Cosine
 	add $10
 	ld d, a
 	pop af
@@ -1864,7 +1864,7 @@ BattleBGEffect_WobblePlayer:
 	cp $40
 	jmp nc, BattleAnim_ResetLCDStatCustom
 	ld d, $6
-	call Sine
+	farcall Sine
 	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -1951,7 +1951,7 @@ BattleBGEffect_WobbleScreen:
 	cp $40
 	jr nc, .finish
 	ld d, $6
-	call Sine
+	farcall Sine
 	ldh [hSCX], a
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -2332,7 +2332,7 @@ BattleBGEffect_SineWave:
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]
-	call Sine
+	farcall Sine
 	ld [bc], a
 .next
 	inc bc
@@ -2361,7 +2361,7 @@ InitSurfWaves:
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]
-	call Sine
+	farcall Sine
 	ld [bc], a
 	inc bc
 	ld a, [wBattleAnimTemp1]
@@ -2397,7 +2397,7 @@ Functionc8f9a:
 	ld d, a
 	ld a, [wBattleAnimTemp1]
 	push hl
-	call Sine
+	farcall Sine
 	ld e, a
 	pop hl
 	ldh a, [hLYOverrideEnd]

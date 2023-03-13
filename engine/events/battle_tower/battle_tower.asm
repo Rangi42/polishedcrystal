@@ -185,9 +185,8 @@ Special_BattleTower_CommitChallengeResult:
 	dec a
 	call BT_GetTrainerIndex
 	cp BATTLETOWER_NUM_TRAINERS
-	ld a, 0
-	ldh [hScriptVar], a
-	ret c
+	; a = carry ? FALSE : TRUE
+	sbc a
 	inc a
 	ldh [hScriptVar], a
 	ret
@@ -652,7 +651,7 @@ Special_BattleTower_BeginChallenge:
 	ld a, BATTLETOWER_STREAK_LENGTH * 3
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hRemainder]
 	cp BATTLETOWER_STREAK_LENGTH * 2
 	pop de

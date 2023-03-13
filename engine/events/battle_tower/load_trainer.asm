@@ -864,8 +864,8 @@ BT_SetLevel:
 	pop hl
 	pop de
 	push de
+	xor a
 	bit 7, d
-	ld a, 0
 	jr nz, .hyper_training_done
 	push hl
 	ld a, e

@@ -4,10 +4,11 @@
 ; https://hax.iimarckus.org/topic/6777/3/
 
 Music_SpikyEaredPichuHGSS:
-	dbw $c0, Music_SpikyEaredPichuHGSS_Ch1
-	dbw $01, Music_SpikyEaredPichuHGSS_Ch2
-	dbw $02, Music_SpikyEaredPichuHGSS_Ch3
-	dbw $03, Music_SpikyEaredPichuHGSS_Ch4
+	channel_count 4
+	channel 1, Music_SpikyEaredPichuHGSS_Ch1
+	channel 2, Music_SpikyEaredPichuHGSS_Ch2
+	channel 3, Music_SpikyEaredPichuHGSS_Ch3
+	channel 4, Music_SpikyEaredPichuHGSS_Ch4
 
 Music_SpikyEaredPichuHGSS_Ch1:
 	tempo 160
@@ -524,36 +525,36 @@ Music_SpikyEaredPichuHGSS_Ch3:
 
 Music_SpikyEaredPichuHGSS_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_SpikyEaredPichuHGSS_Ch4_loop_main:
 Music_SpikyEaredPichuHGSS_Ch4_loop_1:
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note G#, 7
-	note_type 3
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note_type 12
-	note B_, 6
-	note D#, 2
-	note C_, 4
-	note C_, 4
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 7
+	drum_speed 3
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_speed 12
+	drum_note 12, 6
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 1, 4
 	sound_loop 2, Music_SpikyEaredPichuHGSS_Ch4_loop_1
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note G#, 8
-	note B_, 2
-	note C_, 2
-	note B_, 2
-	note C_, 2
-	note B_, 4
-	note D#, 4
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 9, 8
+	drum_note 12, 2
+	drum_note 1, 2
+	drum_note 12, 2
+	drum_note 1, 2
+	drum_note 12, 4
+	drum_note 4, 4
 	sound_jump Music_SpikyEaredPichuHGSS_Ch4_loop_main

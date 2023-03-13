@@ -7,7 +7,7 @@ BlindingFlash::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	jmp FadeInPalettes
+	jmp FadeInPalettes_EnableDynNoApply
 
 ShakeHeadbuttTree:
 	farcall CopyBGGreenToOBPal7

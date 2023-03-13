@@ -1126,44 +1126,44 @@ Music_TitleScreen_branch_ebd40:
 	sound_ret
 
 Music_TitleScreen_branch_ebd77:
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note F_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 6, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_ret
 
 Music_TitleScreen_branch_ebd81:
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note F_, 2
-	note D#, 2
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 6, 2
+	drum_note 4, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_ret
 
 Music_TitleScreen_branch_ebd8b:
-	note C_, 2
-	note C_, 1
-	note C_, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
 	sound_loop 4, Music_TitleScreen_branch_ebd8b
 	sound_ret
 
 Music_TitleScreen_branch_ebd93:
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note_type 8
-	note C_, 4
-	note C_, 4
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_speed 8
+	drum_note 1, 4
+	drum_note 1, 4
 	sound_ret

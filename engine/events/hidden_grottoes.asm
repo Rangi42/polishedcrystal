@@ -106,8 +106,7 @@ GetHiddenGrottoTableEntry:
 	jr .loop
 .ok
 	ld a, [hli]
-	cp -1
-	ld a, 0
+	inc a
 	ret z
 	ld a, [hl]
 	ret

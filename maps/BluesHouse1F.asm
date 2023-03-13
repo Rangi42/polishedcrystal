@@ -56,7 +56,7 @@ DaisyScript:
 	special SaveMusic
 	playmusic MUSIC_HEAL
 	pause 60
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	special RestoreMusic
 	opentext
 	writetext .LooksContentText

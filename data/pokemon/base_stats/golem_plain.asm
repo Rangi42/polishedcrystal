@@ -4,7 +4,7 @@
 	db ROCK, GROUND ; type
 	db 45 ; catch rate
 	db 177 ; base exp
-	db EVERSTONE, LINKING_CORD ; held items
+	db NO_ITEM, EVERSTONE ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for GOLEM, ROCK_HEAD, STURDY, SAND_VEIL

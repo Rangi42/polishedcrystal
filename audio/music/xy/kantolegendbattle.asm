@@ -4,9 +4,10 @@
 ; https://pigu-a.bandcamp.com/album/pok-mon-anniversary-crystal-pigus-arranges
 
 Music_KantoLegendBattleXY:
-	dbw $80, Music_KantoLegendBattleXY_Ch1
-	dbw $01, Music_KantoLegendBattleXY_Ch2
-	dbw $02, Music_KantoLegendBattleXY_Ch3
+	channel_count 3
+	channel 1, Music_KantoLegendBattleXY_Ch1
+	channel 2, Music_KantoLegendBattleXY_Ch2
+	channel 3, Music_KantoLegendBattleXY_Ch3
 
 Music_KantoLegendBattleXY_Ch1:
 	tempo $6a

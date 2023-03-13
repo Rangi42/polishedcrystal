@@ -773,6 +773,11 @@ ENDM
 	map_attributes CeladonUniversityClassroom2, CELADON_UNIVERSITY_CLASSROOM_2, $0, 0
 	map_attributes CeladonUniversityClassroom3, CELADON_UNIVERSITY_CLASSROOM_3, $0, 0
 	map_attributes CeladonUniversityClassroom4, CELADON_UNIVERSITY_CLASSROOM_4, $0, 0
+	map_attributes RocketHideoutB1F, ROCKET_HIDEOUT_B1F, $0, 0
+	map_attributes RocketHideoutB2F, ROCKET_HIDEOUT_B2F, $0, 0
+	map_attributes RocketHideoutB3F, ROCKET_HIDEOUT_B3F, $0, 0
+	map_attributes RocketHideoutB4F, ROCKET_HIDEOUT_B4F, $0, 0
+	map_attributes RocketHideoutElevator, ROCKET_HIDEOUT_ELEVATOR, $0, 0
 	map_attributes ManiasHouse, MANIAS_HOUSE, $0, 0
 	map_attributes CianwoodGym, CIANWOOD_GYM, $0, 0
 	map_attributes CianwoodPokeCenter1F, CIANWOOD_POKECENTER_1F, $0, 0

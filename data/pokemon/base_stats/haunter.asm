@@ -4,7 +4,7 @@
 	db GHOST, POISON ; type
 	db 90 ; catch rate
 	db 126 ; base exp
-	db SPELL_TAG, LINKING_CORD ; held items
+	db NO_ITEM, SPELL_TAG ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for HAUNTER, LEVITATE, LEVITATE, LEVITATE

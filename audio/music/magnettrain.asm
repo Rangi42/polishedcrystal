@@ -247,20 +247,20 @@ Music_MagnetTrain_Ch4:
 	sound_ret
 
 Music_MagnetTrain_branch_ef71e:
-	note G#, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note G#, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note G#, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note G#, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
+	drum_note 9, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 9, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 9, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 9, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	sound_ret

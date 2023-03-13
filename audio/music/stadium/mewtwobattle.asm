@@ -1282,7 +1282,6 @@ Music_MewtwoBattleStadium_Ch2_ditty4:
 Music_MewtwoBattleStadium_Ch3:
 	note_type 12, 0, 0
 	rest 16
-	duty_cycle 7
 	volume_envelope 1, 7
 	octave 2
 	note F_, 15

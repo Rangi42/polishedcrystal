@@ -23,6 +23,8 @@ ENDM
 
 ; sprite palettes
 ; MapObjectPals indexes (see gfx/overworld/npc_sprites.pal)
+; DarknessOBPalette indexes (see gfx/overworld/npc_sprites_darkness.pal)
+; OvercastOBPalette indexes (see gfx/overworld/npc_sprites_overcast.pal)
 	const_def
 	ow_npc_pal_const RED               ; 00
 	ow_npc_pal_const BLUE              ; 01
@@ -43,6 +45,7 @@ ENDM
 	ow_npc_pal_const MARLON            ; 10
 	ow_npc_pal_const SAILBOAT          ; 11
 DEF NUM_OW_TIME_OF_DAY_PALS EQU const_value
+; SingleObjectPals indexes (see gfx/overworld/npc_single_object.pal)
 	ow_npc_pal_const EMOTE_GRAY        ; 12
 	ow_npc_pal_const EMOTE_BLACK       ; 13
 	ow_npc_pal_const EMOTE_GREEN       ; 14

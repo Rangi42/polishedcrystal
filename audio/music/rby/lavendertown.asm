@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/lavender.asm
 
 Music_LavenderTownRBY:
-	dbw $C0, Music_LavenderTownRBY_Ch1
-	dbw $01, Music_LavenderTownRBY_Ch2
-	dbw $02, Music_LavenderTownRBY_Ch3
-	dbw $03, Music_LavenderTownRBY_Ch4
+	channel_count 4
+	channel 1, Music_LavenderTownRBY_Ch1
+	channel 2, Music_LavenderTownRBY_Ch2
+	channel 3, Music_LavenderTownRBY_Ch3
+	channel 4, Music_LavenderTownRBY_Ch4
 
 Music_LavenderTownRBY_Ch1:
 	tempo 152
@@ -85,12 +86,12 @@ Music_LavenderTownRBY_branch_bba5:
 
 Music_LavenderTownRBY_Ch3:
 	vibrato 4, 1, 1
-	note_type 12, 3, -2 ; waveform 10
+	note_type 12, 3, 10 ; waveform 10
 	rest 16
 	rest 16
 	rest 16
 	rest 16
-	note_type 12, 2, -2 ; waveform 10
+	note_type 12, 2, 10 ; waveform 10
 Music_LavenderTownRBY_branch_bbb9:
 	octave 4
 	note E_, 16
@@ -120,13 +121,13 @@ Music_LavenderTownRBY_branch_bbb9:
 	note B_, 4
 	octave 4
 	note E_, 4
-	note_type 12, 3, -2 ; waveform 10
+	note_type 12, 3, 10 ; waveform 10
 	octave 6
 	note B_, 4
 	note G_, 4
 	note F#, 4
 	note B_, 4
-	note_type 12, 2, -2 ; waveform 10
+	note_type 12, 2, 10 ; waveform 10
 	note B_, 4
 	note G_, 4
 	note F#, 4
@@ -168,7 +169,7 @@ Music_LavenderTownRBY_branch_bbb9:
 	note B_, 4
 	octave 4
 	note E_, 4
-	note_type 12, 2, -2 ; waveform 10
+	note_type 12, 2, 10 ; waveform 10
 	octave 6
 	note B_, 4
 	note G_, 4
@@ -192,7 +193,7 @@ Music_LavenderTownRBY_branch_bbb9:
 	sound_jump Music_LavenderTownRBY_branch_bbb9
 
 Music_LavenderTownRBY_Ch4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 0
 	rest 16
 	rest 16
@@ -200,6 +201,6 @@ Music_LavenderTownRBY_Ch4:
 	rest 16
 
 Music_LavenderTownRBY_branch_bc26:
-	note F#, 8
-	note F#, 8
+	drum_note 7, 8
+	drum_note 7, 8
 	sound_jump Music_LavenderTownRBY_branch_bc26

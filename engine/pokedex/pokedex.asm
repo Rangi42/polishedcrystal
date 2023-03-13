@@ -1184,11 +1184,11 @@ endr
 	ldh [hMultiplicand + 1], a
 	ld a, LOW(1000)
 	ldh [hMultiplicand + 2], a
-	call Multiply
+	farcall Multiply
 	ld b, 4
 	ld a, 127
 	ldh [hDivisor], a
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld h, a
 	ldh a, [hQuotient + 2]
@@ -1250,13 +1250,13 @@ endr
 
 	ld a, 43
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld a, 35
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld a, 192
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld hl, hProduct
 	ld a, [hli]
 	ld d, a
@@ -2563,7 +2563,7 @@ Pokedex_ConvertFinalEntryToRowCols:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hRemainder]
 	inc a
 	ld [wPokedex_LastCol], a

@@ -152,13 +152,11 @@ endr
 if !DEF(MONOCHROME)
 	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
-	ld [hl], a
+	ld [hl], HIGH(palred 31 + palgreen 31 + palblue 31)
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_WHITE)
-	ld [hl], a
+	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
 endc
 	ld b, 2
 	call SafeCopyTilemapAtOnce

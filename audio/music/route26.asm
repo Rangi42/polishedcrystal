@@ -608,59 +608,59 @@ Music_Route26_branch_ef27c:
 	sound_jump Music_Route26_branch_ef246
 
 Music_Route26_branch_ef29a:
-	note E_, 12
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 4
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 5, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_ret
 
 Music_Route26_branch_ef2a8:
-	note E_, 12
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 4
-	note E_, 4
-	note D_, 4
+	drum_note 5, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 5, 4
+	drum_note 3, 4
 	sound_ret
 
 Music_Route26_branch_ef2b0:
-	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note_type 8
-	note D_, 2
-	note D_, 2
-	note E_, 2
+	drum_speed 6
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_speed 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 5, 2
 	sound_ret

@@ -213,7 +213,7 @@ RandomRange16::
 	pop de
 	ld b, h
 	ld c, l
-	call Divide16
+	homecall Divide16
 	pop de
 	pop hl
 	ret

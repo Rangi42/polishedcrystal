@@ -1027,9 +1027,9 @@ _GetCursorMon:
 	and VRAM_BANK_1
 	pop hl
 	push af
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr nz, .dont_switch_vbk
-	ld a, 1
+	inc a
 	ldh [rVBK], a
 .dont_switch_vbk
 	ldh a, [rSVBK]
@@ -2187,7 +2187,6 @@ GetMonItemUnlessCursor:
 	call .do_it
 	pop bc
 	pop de
-	ld a, 0
 	ret z
 	ld a, [wTempMonItem]
 	and a
@@ -2203,7 +2202,7 @@ GetMonItemUnlessCursor:
 	xor $80
 	ret nz
 	ld a, e
-	cp c
+	sub c
 	ret
 
 BillsPC_BlankCursorItem:
@@ -3739,6 +3738,10 @@ endr
 	ld de, wBillsPC_CurPals
 	ld c, 24
 	rst CopyBytes
+	ld c, 17
+.busyloop
+	dec c
+	jr nz, .busyloop
 	ld a, LOW(wLCDBillsPC3)
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC3)

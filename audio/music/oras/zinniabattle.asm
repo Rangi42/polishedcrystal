@@ -804,7 +804,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	sound_jump Music_ZinniaBattleORAS_Ch2_loop
 
 Music_ZinniaBattleORAS_Ch3:
-	note_type 3, 1, -1
+	note_type 3, 1, 9
 	vibrato 18, 1, 5
 	octave 2
 	note G#, 8
@@ -816,7 +816,7 @@ Music_ZinniaBattleORAS_Ch3:
 	note A#, 1
 	note D_, 16
 	note E_, 16
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	octave 2
 	note C#, 16
 	note E_, 14
@@ -827,13 +827,13 @@ Music_ZinniaBattleORAS_Ch3:
 	note F#, 1
 	note G#, 16
 	note A_, 12
-	note_type 3, 1, -1
+	note_type 3, 1, 9
 	octave 3
 	note C#, 6
 	note C_, 1
 	octave 2
 	note B_, 1
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 	note A_, 12
 	octave 3
 	note E_, 4
@@ -844,127 +844,127 @@ Music_ZinniaBattleORAS_Ch3:
 	note F#, 8
 Music_ZinniaBattleORAS_Ch3_loop_main:
 Music_ZinniaBattleORAS_Ch3_loop_1:
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note F#, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 1
 	rest 1
 	note F#, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note F#, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 1
 	rest 1
 	note F#, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note F#, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 1
 	rest 1
 	note F#, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note A_, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 1
 	rest 1
 	note F#, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note G#, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note G_, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 1
 	rest 1
 	sound_loop 4, Music_ZinniaBattleORAS_Ch3_loop_1
 Music_ZinniaBattleORAS_Ch3_loop_2:
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note G_, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 1
 	rest 1
 	note G_, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note G_, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 1
 	rest 1
 	note G_, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note G_, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 1
 	rest 1
 	note G_, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note A#, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 1
 	rest 1
 	note G_, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note A_, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 1
 	rest 1
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	octave 2
 	note G#, 2
 	octave 1
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 1
 	rest 1
 	sound_loop 12, Music_ZinniaBattleORAS_Ch3_loop_2
 	octave 2
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note D_, 12
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note D_, 4
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note E_, 12
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note E_, 4
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note F#, 12
-	volume_envelope 3, -1
+	volume_envelope 3, 9
 	note F#, 4
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note G_, 11
 	rest 1
 	note G_, 4
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	note D_, 2
 	rest 3
 	note F_, 1
@@ -1032,16 +1032,16 @@ Music_ZinniaBattleORAS_Ch3_loop_2:
 	sound_call Music_ZinniaBattleORAS_Ch3_branch_2
 	sound_call Music_ZinniaBattleORAS_Ch3_branch_2
 	note E_, 16
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note E_, 12
 	rest 4
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	note B_, 16
-	volume_envelope 2, -1
+	volume_envelope 2, 9
 	note B_, 12
 	rest 4
 	octave 3
-	volume_envelope 1, -1
+	volume_envelope 1, 9
 	note E_, 16
 	note G#, 8
 	note A_, 4

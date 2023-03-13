@@ -13,11 +13,8 @@ GetBattleVarAddr::
 	ld c, a
 	ld b, 0
 	add hl, bc
+	ld c, [hl]
 	add hl, bc
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 
 ; Enemy turn uses the second byte instead.
 ; This lets battle variable calls be side-neutral.
@@ -47,31 +44,31 @@ GetBattleVarAddr::
 
 BattleVarPairs:
 ; entries correspond to BATTLE_VARS_* constants
-	table_width 2, BattleVarPairs
-	dw .Substatus1
-	dw .Substatus2
-	dw .Substatus3
-	dw .Substatus4
-	dw .Substatus1Opp
-	dw .Substatus2Opp
-	dw .Substatus3Opp
-	dw .Substatus4Opp
-	dw .Ability
-	dw .AbilityOpp
-	dw .Status
-	dw .StatusOpp
-	dw .Animation
-	dw .Effect
-	dw .Power
-	dw .Accuracy
-	dw .Type
-	dw .Category
-	dw .CurMove
-	dw .CurMoveOpp
-	dw .LastCounter
-	dw .LastCounterOpp
-	dw .LastMove
-	dw .LastMoveOpp
+	table_width 1, BattleVarPairs
+	dr .Substatus1
+	dr .Substatus2
+	dr .Substatus3
+	dr .Substatus4
+	dr .Substatus1Opp
+	dr .Substatus2Opp
+	dr .Substatus3Opp
+	dr .Substatus4Opp
+	dr .Ability
+	dr .AbilityOpp
+	dr .Status
+	dr .StatusOpp
+	dr .Animation
+	dr .Effect
+	dr .Power
+	dr .Accuracy
+	dr .Type
+	dr .Category
+	dr .CurMove
+	dr .CurMoveOpp
+	dr .LastCounter
+	dr .LastCounterOpp
+	dr .LastMove
+	dr .LastMoveOpp
 	assert_table_length NUM_BATTLE_VARS
 
 ;                   player                 enemy

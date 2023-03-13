@@ -649,20 +649,20 @@ Music_BugCatchingContest_branch_f7eaf:
 	sound_jump Music_BugCatchingContest_branch_f7eaf
 
 Music_BugCatchingContest_branch_f7ee2:
-	note D_, 4
-	note B_, 8
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note B_, 8
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note B_, 8
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note B_, 8
-	note D_, 2
-	note D_, 2
+	drum_note 3, 4
+	drum_note 12, 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 12, 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 12, 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 12, 8
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_ret

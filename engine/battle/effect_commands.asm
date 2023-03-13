@@ -1188,7 +1188,7 @@ TrueUserValidBattleItem:
 	jr UserValidBattleItem
 
 OpponentValidBattleItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UserValidBattleItem:
 ; Checks if the user's held item applies to the species+form.
 ; Used for items like Leek, Lucky Punch, Thick Club, etc.
@@ -1374,7 +1374,7 @@ BattleCommand_stab:
 	ldh [hMultiplicand + 1], a
 	ld a, [hld]
 	ldh [hMultiplicand + 2], a
-	call Multiply
+	farcall Multiply
 
 	; Parental Bond
 	ld a, BATTLE_VARS_SUBSTATUS2
@@ -1404,7 +1404,7 @@ BattleCommand_stab:
 	ld a, $10
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 
 	; Store in curDamage
 	ldh a, [hMultiplicand]
@@ -1438,6 +1438,7 @@ CheckAirborneAfterMoldBreaker:
 	ld b, a
 	call SwitchTurn
 	jr CheckAirborne_GotAbility
+
 CheckAirborne:
 	push de
 	call GetTrueUserAbility
@@ -1447,16 +1448,15 @@ CheckAirborne_GotAbility:
 ; Returns a=0 and z if grounded. Returns nz if not.
 ; a contains ATKFAIL_MISSED for air balloon, ATKFAIL_IMMUNE for flying type,
 ; ATKFAIL_ABILITY for Levitate.
-	push bc
 
 	; Check Iron Ball
+	push bc
 	predef GetUserItemAfterUnnerve
 	ld a, b
-	cp HELD_IRON_BALL
 	pop bc
-	ld c, a
-	ld a, 0
 	pop de
+	ld c, a
+	sub HELD_IRON_BALL
 	ret z
 
 	; d=1 (inverse matchup checks/ring target) skips hardcoded immunity check
@@ -1749,13 +1749,13 @@ endc
 	call BattleRandomRange
 	add 85
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 
 	; ...divide by 100%...
 	ld a, 100
 	ldh [hDivisor], a
 	ld b, $4
-	call Divide
+	farcall Divide
 
 	; ...to get .85-1.00x damage.
 	ldh a, [hQuotient + 1]
@@ -2720,7 +2720,9 @@ BattleCommand_startloop:
 	cp SKILL_LINK
 	ld a, 5
 	jr z, .got_count
-	call GetUserItem
+	push hl
+	call GetUserItemAfterUnnerve
+	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
 	jr nz, .not_loaded_dice
@@ -2863,7 +2865,7 @@ CheckSheerForceNegation:
 	ret
 
 ConsumeOpponentItem::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 ConsumeUserItem::
 	ldh a, [hBattleTurn]
 	and a
@@ -3205,22 +3207,26 @@ CheckEndMoveEffects:
 	or b
 	call nz, EndMoveDamageChecks
 	; fallthrough
-CheckWhiteHerb:
+CheckStatHerbs:
 	ldh a, [hBattleTurn]
 	ld b, a
+	push bc
+	call CheckWhiteHerbEjectPack
+	call CheckMirrorHerb
+	pop bc
+	ld a, b
+	ldh [hBattleTurn], a
+	ret
+
+CheckWhiteHerbEjectPack:
+; Preserve b, which holds true player's turn (to handle Eject Pack switches).
 	push bc
 	call SetFastestTurn
 	pop bc
 	push bc
 	call .do_it
+	pop bc
 	call SwitchTurn
-	pop bc
-	push bc
-	call .do_it
-	pop bc
-	ld a, b
-	ldh [hBattleTurn], a
-	ret
 
 .do_it
 	push bc
@@ -3284,6 +3290,102 @@ CheckWhiteHerb:
 	ld hl, RegainedStatsWithItem
 	call StdBattleTextbox
 	jmp ConsumeUserItem
+
+CheckMirrorHerb:
+; Preserves whose turn it is (so we can call this without worrying about that).
+	call HasUserFainted
+	call nz, HasOpponentFainted
+	ret z
+
+	ldh a, [hBattleTurn]
+	push af
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+	call .do_it
+	pop af
+	ldh [hBattleTurn], a
+	ret
+
+.do_it
+	; Go through the entire pending stat change table no matter what,
+	; because even if we're not holding Mirror Herb, we need to reset them.
+	ld hl, wMirrorHerbPendingBoosts
+
+	xor a
+	ld [wAlreadyExecuted], a
+
+	; Set up fields to bitmask against.
+	ldh a, [hBattleTurn]
+	and a
+	lb bc, $0f, $f0
+	jr z, .loop
+	lb bc, $f0, $0f
+.loop
+	ld a, [hl]
+
+	; Does the user have a pending mirror herb change?
+	and b
+	jr z, .next
+
+	; Found stat pending change. Store in d.
+	ld d, a
+
+	; d should always hold the change in the high nibble, even for foes.
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .stat_amount_ok
+	swap d
+
+.stat_amount_ok
+	; Store adjustment to the relevant pending boost field. Do this now
+	; because the Mirror Herb stat change can induce changes to this field,
+	; which we want to undo (Mirror Herb cannot trigger foe's Mirror Herb).
+	ld a, [hl]
+	and c
+	ld e, a
+
+	; Now, assuming the user is actually holding a Mirror Herb, proc the effect.
+	push bc
+	push hl
+	push de
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_MIRROR_HERB
+	jr nz, .stat_raise_failed
+	pop de
+	pop hl
+
+	; This will give us a value between 0-6 pointing to the relevant stat.
+	ld a, l
+	sub LOW(wMirrorHerbPendingBoosts)
+	add d
+	sub $10 ; amount of stat increments is given as high nibble - $10.
+	ld b, a
+	ld a, STAT_SKIPTEXT
+	push hl
+	push de
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .stat_raise_failed
+	farcall UseStatItemText
+.stat_raise_failed
+	pop de
+	pop hl
+	pop bc
+	ld [hl], e
+.next
+	inc hl
+	ld a, l
+	cp LOW(wMirrorHerbPendingBoosts + NUM_LEVEL_STATS - 1)
+	jr nz, .loop
+
+	call CheckAlreadyExecuted
+	call nz, ConsumeUserItem
+	xor a
+	ld [wAlreadyExecuted], a
+	ret
 
 EndMoveDamageChecks:
 	call .EndMoveUserItems
@@ -3383,7 +3485,7 @@ EndMoveDamageChecks:
 	ld a, 10
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld b, a
 	ldh a, [hQuotient + 2]
@@ -3420,7 +3522,7 @@ EndMoveDamageChecks:
 	jmp SwitchTurn
 
 RaiseOpponentStatWithItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RaiseStatWithItem:
 	ld a, STAT_SKIPTEXT
 	call _RaiseStat
@@ -4071,7 +4173,7 @@ DamagePass1:
 	ld [hld], a
 	push bc
 	ld b, $4
-	call Divide
+	farcall Divide
 	pop bc
 
 	; + 2
@@ -4083,23 +4185,23 @@ DamagePass2:
 	; * bp
 	ld hl, hMultiplier
 	ld [hl], d
-	call Multiply
+	farcall Multiply
 
 	; * Attack
 	ld [hl], b
-	jmp Multiply
+	farjp Multiply
 
 DamagePass3:
 	; / Defense
 	ld hl, hMultiplier
 	ld [hl], c
 	ld b, $4
-	call Divide
+	farcall Divide
 
 	; / 50
 	ld [hl], 50
 	ld b, $4
-	jmp Divide
+	farjp Divide
 
 DamagePass4:
 	; Add 2 unless damage is at least $ff00 -- set wCurDamage to $ff** in that case.
@@ -4137,9 +4239,8 @@ BattleCommand_constantdamage:
 .got_turn
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_LEVEL_DAMAGE
+	sub EFFECT_LEVEL_DAMAGE
 	ld b, [hl]
-	ld a, 0
 	jr z, .got_power
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -4173,10 +4274,9 @@ BattleCommand_constantdamage:
 	pop bc
 	and a
 	jr nz, .got_power
-	or b
-	ld a, 0
+	cp b
 	jr nz, .got_power
-	ld b, $1
+	inc b
 	; fallthrough
 
 .got_power
@@ -4201,7 +4301,7 @@ BattleCommand_constantdamage:
 	ldh [hMultiplicand + 2], a
 	ld a, $30
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld a, [hli]
 	ld b, a
 	ld a, [hl]
@@ -4229,7 +4329,7 @@ BattleCommand_constantdamage:
 
 .skip_to_divide
 	ld b, $4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	ld b, a
 	ld hl, ReversalPower
@@ -4365,7 +4465,7 @@ SelfInflictDamageToSubstitute:
 	ld hl, wCurDamage
 	ld a, [hl]
 	and a
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0 (1 cycle faster than `ld [hl], 0 / inc hl`)
 	ld [hli], a
 	jr nz, .broke
 
@@ -4809,10 +4909,10 @@ HandleBigRoot:
 	ld [hl], c
 	ld hl, hMultiplier
 	ld [hl], 13
-	call Multiply
+	farcall Multiply
 	ld [hl], 10
 	ld b, 4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld b, a
 	ldh a, [hQuotient + 2]
@@ -4957,7 +5057,7 @@ BattleCommand_raisestat:
 RaiseStat:
 	xor a
 _RaiseStat:
-	or STAT_MISS | STAT_SILENT
+	or STAT_CANMISS | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_lowerstat:
@@ -4965,7 +5065,7 @@ BattleCommand_lowerstat:
 LowerStat:
 	xor a
 _LowerStat:
-	or STAT_LOWER | STAT_MISS | STAT_SILENT
+	or STAT_LOWER | STAT_CANMISS | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_forceraisestat:
@@ -4988,7 +5088,7 @@ BattleCommand_raisestathit:
 RaiseStatHit:
 	xor a
 _RaiseStatHit:
-	or STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_lowerstathit:
@@ -4996,7 +5096,7 @@ BattleCommand_lowerstathit:
 LowerStatHit:
 	xor a
 _LowerStatHit:
-	or STAT_LOWER | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_forceraiseoppstat:
@@ -5020,7 +5120,7 @@ BattleCommand_raiseoppstat:
 RaiseOppStat:
 	xor a
 _RaiseOppStat:
-	or STAT_TARGET | STAT_MISS
+	or STAT_TARGET | STAT_CANMISS
 	jr ChangeStat
 
 BattleCommand_loweroppstat:
@@ -5028,7 +5128,7 @@ BattleCommand_loweroppstat:
 LowerOppStat:
 	xor a
 _LowerOppStat:
-	or STAT_TARGET | STAT_LOWER | STAT_MISS
+	or STAT_TARGET | STAT_LOWER | STAT_CANMISS
 	jr ChangeStat
 
 BattleCommand_raiseoppstathit:
@@ -5036,7 +5136,7 @@ BattleCommand_raiseoppstathit:
 RaiseOppStatHit:
 	xor a
 _RaiseOppStatHit:
-	or STAT_TARGET | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_TARGET | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 	jr ChangeStat
 
 BattleCommand_loweroppstathit:
@@ -5044,7 +5144,7 @@ BattleCommand_loweroppstathit:
 LowerOppStatHit:
 	xor a
 _LowerOppStatHit:
-	or STAT_TARGET | STAT_LOWER | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	or STAT_TARGET | STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 ChangeStat:
 ; b contains stat to alter, or zero if it should be read from the move script
 	farjp FarChangeStat
@@ -5238,7 +5338,7 @@ HandleRampage_ConfuseUser:
 	inc a
 	inc a
 	ld [de], a
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 	ld hl, BecameConfusedDueToFatigueText
 	jmp FinishConfusingTargetAnim
 
@@ -5278,7 +5378,7 @@ CheckIfTrappedByAbility:
 	ret
 
 .CheckOpponentTrap:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .CheckTrap:
 	; Ghost types are immune to all trapping abilities
 	call CheckIfUserIsGhostType
@@ -5492,7 +5592,7 @@ BattleCommand_charge:
 	jr nz, .not_flying
 
 .flying
-	call DisappearUser
+	farcall DisappearUser
 .not_flying
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
@@ -5662,7 +5762,7 @@ BattleCommand_recoil:
 	ld a, 3
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	ld c, a
 	ldh a, [hQuotient + 1]
@@ -6233,7 +6333,7 @@ GetEnemyItem::
 	jr GetItemHeldEffect
 
 GetOpponentItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserItem::
 ; Return the effect of the user's item in bc, and its id at hl.
 ; Also updates the object name buffer, allowing you to just
@@ -6258,7 +6358,7 @@ GetUserItem::
 	jr GetItemHeldEffect
 
 GetOpponentItemAfterUnnerve:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserItemAfterUnnerve::
 ; Returns the effect of the user's item in bc, and its id at hl,
 ; unless it's a Berry and Unnerve is in effect.
@@ -6267,12 +6367,14 @@ GetUserItemAfterUnnerve::
 	cp UNNERVE
 	ret nz
 	ld a, [hl]
+	push bc
 	push de
 	push hl
 	ld hl, EdibleBerries
 	call IsInByteArray
 	pop hl
 	pop de
+	pop bc
 	ret c
 	ld hl, NoItem
 	ld b, HELD_NONE
@@ -6366,7 +6468,7 @@ PlayOpponentBattleAnim:
 	ld [wFXAnimIDHi], a
 	xor a
 	ld [wNumHits], a
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 PlayUserBattleAnim:
 	push hl
 	push de

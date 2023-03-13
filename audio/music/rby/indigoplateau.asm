@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/indigoplateau.asm
 
 Music_IndigoPlateauRBY:
-	dbw $C0, Music_IndigoPlateauRBY_Ch1
-	dbw $01, Music_IndigoPlateauRBY_Ch2
-	dbw $02, Music_IndigoPlateauRBY_Ch3
-	dbw $03, Music_IndigoPlateauRBY_Ch4
+	channel_count 4
+	channel 1, Music_IndigoPlateauRBY_Ch1
+	channel 2, Music_IndigoPlateauRBY_Ch2
+	channel 3, Music_IndigoPlateauRBY_Ch3
+	channel 4, Music_IndigoPlateauRBY_Ch4
 
 Music_IndigoPlateauRBY_Ch1:
 	tempo 132
@@ -233,20 +234,20 @@ Music_IndigoPlateauRBY_branch_a6fe:
 	sound_ret
 
 Music_IndigoPlateauRBY_Ch4:
-	note_type 6
+	drum_speed 6
 	toggle_noise 1
-	note A_, 16
-	note A_, 16
-	note A_, 16
-	note A_, 8
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
+	drum_note 10, 16
+	drum_note 10, 16
+	drum_note 10, 16
+	drum_note 10, 8
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
 
 Music_IndigoPlateauRBY_branch_a728:
 	sound_call Music_IndigoPlateauRBY_branch_a791
@@ -263,67 +264,67 @@ Music_IndigoPlateauRBY_branch_a728:
 	sound_call Music_IndigoPlateauRBY_branch_a7a8
 	sound_call Music_IndigoPlateauRBY_branch_a77e
 	sound_call Music_IndigoPlateauRBY_branch_a7a8
-	note A_, 16
-	note A_, 8
-	note A#, 8
-	note A_, 16
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note A#, 1
-	note B_, 1
-	note A#, 1
-	note B_, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A_, 1
-	note A_, 1
-	note A_, 1
-	note A_, 1
+	drum_note 10, 16
+	drum_note 10, 8
+	drum_note 11, 8
+	drum_note 10, 16
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 10, 1
 	sound_jump Music_IndigoPlateauRBY_branch_a728
 
 Music_IndigoPlateauRBY_branch_a77e:
-	note A_, 4
-	note A#, 4
-	note B_, 4
-	note A#, 4
-	note A_, 4
-	note A#, 4
-	note B_, 4
-	note B_, 2
-	note A#, 2
+	drum_note 10, 4
+	drum_note 11, 4
+	drum_note 12, 4
+	drum_note 11, 4
+	drum_note 10, 4
+	drum_note 11, 4
+	drum_note 12, 4
+	drum_note 12, 2
+	drum_note 11, 2
 	sound_ret
 
 Music_IndigoPlateauRBY_branch_a791:
-	note A_, 4
-	note A#, 4
-	note B_, 4
-	note A#, 4
-	note A_, 4
-	note A#, 4
-	note B_, 4
-	note B_, 1
-	note B_, 1
-	note A#, 1
-	note A#, 1
+	drum_note 10, 4
+	drum_note 11, 4
+	drum_note 12, 4
+	drum_note 11, 4
+	drum_note 10, 4
+	drum_note 11, 4
+	drum_note 12, 4
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 11, 1
 	sound_ret
 
 Music_IndigoPlateauRBY_branch_a7a8:
-	note A_, 4
-	note A#, 4
-	note A_, 4
-	note A#, 4
-	note A_, 4
-	note A_, 4
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
+	drum_note 10, 4
+	drum_note 11, 4
+	drum_note 10, 4
+	drum_note 11, 4
+	drum_note 10, 4
+	drum_note 10, 4
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
 	sound_ret

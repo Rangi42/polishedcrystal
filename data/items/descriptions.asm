@@ -167,15 +167,10 @@ ItemDescriptions:
 	dw RockyHelmetDesc
 	dw AirBalloonDesc
 	dw RedCardDesc
-	dw LinkingCordDesc
 	dw BindingBandDesc
-	dw ClearAmuletDesc
-	dw MirrorHerbDesc
 	dw EjectButtonDesc
 	dw WeakPolicyDesc
 	dw AssaultVestDesc
-	dw PunchinGloveDesc
-	dw CovertCloakDesc
 	dw SafeGogglesDesc
 	dw ProtectPadsDesc
 	dw ThroatSprayDesc
@@ -183,6 +178,10 @@ ItemDescriptions:
 	dw HeavyBootsDesc
 	dw BlundrPolicyDesc
 	dw RoomServiceDesc
+	dw ClearAmuletDesc
+	dw MirrorHerbDesc
+	dw PunchinGloveDesc
+	dw CovertCloakDesc
 	dw LoadedDiceDesc
 	dw LightBallDesc
 	dw LeekDesc
@@ -224,6 +223,7 @@ ItemDescriptions:
 	dw RazorClawDesc
 	dw OvalStoneDesc
 	dw OddSouvenirDesc
+	dw LinkingCordDesc
 	dw SilverLeafDesc
 	dw GoldLeafDesc
 	dw MintLeafDesc
@@ -287,8 +287,8 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
-	dw EerieLureDesc
-	dw ToughLureDesc
+	dw HarshLureDesc
+	dw PotentLureDesc
 	dw MalignLureDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
@@ -1634,12 +1634,12 @@ OldSeaMapDesc:
 	next "of a small island."
 	done
 
-EerieLureDesc:
+HarshLureDesc:
 	text "A bottle with a"
 	next "cruel scent."
 	done
 
-ToughLureDesc:
+PotentLureDesc:
 	text "A bottle with a"
 	next "strong smell."
 	done

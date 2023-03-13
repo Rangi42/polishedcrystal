@@ -823,7 +823,7 @@ Music_EliteFourBattleBW_Ch2_branch_1:
 	sound_ret
 
 Music_EliteFourBattleBW_Ch3:
-	note_type 6, 1, -1
+	note_type 6, 1, 9
 Music_EliteFourBattleBW_Ch3_loop_1:
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 12, Music_EliteFourBattleBW_Ch3_loop_1

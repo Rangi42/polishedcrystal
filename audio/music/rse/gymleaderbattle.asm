@@ -4,10 +4,11 @@
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_GymLeaderBattleRSE:
-	dbw $c0, Music_GymLeaderBattleRSE_Ch1
-	dbw $01, Music_GymLeaderBattleRSE_Ch2
-	dbw $02, Music_GymLeaderBattleRSE_Ch3
-	dbw $03, Music_GymLeaderBattleRSE_Ch4
+	channel_count 4
+	channel 1, Music_GymLeaderBattleRSE_Ch1
+	channel 2, Music_GymLeaderBattleRSE_Ch2
+	channel 3, Music_GymLeaderBattleRSE_Ch3
+	channel 4, Music_GymLeaderBattleRSE_Ch4
 
 Music_GymLeaderBattleRSE_Ch1:
 	tempo 100
@@ -700,7 +701,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_3:
 
 Music_GymLeaderBattleRSE_Ch3:
 	stereo_panning TRUE, TRUE
-	note_type 12, 1, -1
+	note_type 12, 1, 9
 	octave 3
 	note C_, 4
 	octave 2
@@ -886,13 +887,13 @@ Music_GymLeaderBattleRSE_Ch3_branch_5:
 
 Music_GymLeaderBattleRSE_Ch4:
 	toggle_noise 3
-	note_type 12
-	note C_, 6
-	note C_, 8
-	note D#, 4
-	note C_, 6
-	note C_, 4
-	note D#, 4
+	drum_speed 12
+	drum_note 1, 6
+	drum_note 1, 8
+	drum_note 4, 4
+	drum_note 1, 6
+	drum_note 1, 4
+	drum_note 4, 4
 Music_GymLeaderBattleRSE_Ch4_loop_1:
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_1
 	sound_loop 8, Music_GymLeaderBattleRSE_Ch4_loop_1
@@ -916,29 +917,29 @@ Music_GymLeaderBattleRSE_Ch4_loop_4:
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_3
 	sound_loop 6, Music_GymLeaderBattleRSE_Ch4_loop_4
 	rest 4
-	note C_, 4
-	note C_, 2
-	note C_, 4
-	note C_, 2
-	note C_, 8
-	note C_, 2
-	note C_, 6
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 8
+	drum_note 1, 2
+	drum_note 1, 6
 	sound_jump Music_GymLeaderBattleRSE_Ch4_loop_main
 
 Music_GymLeaderBattleRSE_Ch4_branch_1:
-	note C_, 6
-	note C_, 10
+	drum_note 1, 6
+	drum_note 1, 10
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4_branch_2:
-	note C_, 6
-	note C_, 8
-	note D#, 2
+	drum_note 1, 6
+	drum_note 1, 8
+	drum_note 4, 2
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4_branch_3:
-	note C_, 8
-	note C_, 2
-	note C_, 4
-	note C_, 2
+	drum_note 1, 8
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 2
 	sound_ret

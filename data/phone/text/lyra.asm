@@ -44,354 +44,40 @@ LyraPhoneJohtoText_Generic:
 	line "it later, OK?"
 	prompt
 
-LyraPhoneEvolutionQuestionText:
-	text "I've been studying"
-	line "#mon evolution"
-	cont "with Prof.Elm."
+LyraPhoneNextMoveQuestionText:
+	text "So, <PLAYER>…"
 
 	para "Want me to tell"
-	line "you how your #-"
-	cont "mon evolves?"
+	line "you when your"
+
+	para "#mon will learn"
+	line "its next move?"
 	done
 
-LyraPhoneEvoText_None:
-	text "Well, "
-	text_ram wStringBuffer3
-	line "doesn't evolve!"
-
-	para "At least not as"
-	line "far as I know."
-	prompt
-
-LyraPhoneEvoText_Level:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "reaches level "
-	text_decimal wStringBuffer4, 1, 3
-	text "."
-	prompt
-
-LyraPhoneEvoText_Item:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to a"
-	line ""
-	text_ram wStringBuffer4
-	text "."
-	prompt
-
-LyraPhoneEvoText_Holding:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "gains a level"
-
-	para "while holding a"
-	line ""
-	text_ram wStringBuffer4
-	text "."
-	prompt
-
-LyraPhoneEvoText_Holding_MornDay:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "gains a level"
-
-	para "while holding a"
-	line ""
-	text_ram wStringBuffer4
-	text ", but"
-
-	para "only during the"
-	line "morning or day."
-	prompt
-
-LyraPhoneEvoText_Holding_EveNite:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "gains a level"
-
-	para "while holding a"
-	line ""
-	text_ram wStringBuffer4
-	text ", but"
-
-	para "only during the"
-	line "evening or night."
-	prompt
-
-LyraPhoneEvoText_Happiness:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-	cont "really happy!"
-	prompt
-
-LyraPhoneEvoText_Happiness_MornDay:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-	cont "really happy, but"
-
-	para "only during the"
-	line "morning or day."
-	prompt
-
-LyraPhoneEvoText_Happiness_EveNite:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-	cont "really happy, but"
-
-	para "only during the"
-	line "evening or night."
-	prompt
-
-LyraPhoneEvoText_Stat:
-	text_ram wStringBuffer3
-	line "evolves at level"
-	cont ""
-	text_decimal wStringBuffer4, 1, 3
-	text ", but what it"
-
-	para "evolves into de-"
-	line "pends on its"
-
-	para "Attack and"
-	line "Defense stats."
-	prompt
-
-LyraPhoneEvoText_Location:
-	text_ram wStringBuffer3
-	line "evolves when it"
-
-	para "gains a level at"
-	line ""
-	text_ram wStringBuffer4
-	text "."
-	prompt
-
-LyraPhoneEvoText_Move:
-	text_ram wStringBuffer3
-	line "evolves when it"
-
-	para "gains a level"
-	line "while it knows"
-
-	para "how to use"
-	line ""
-	text_ram wStringBuffer4
-	text "."
-	prompt
-
-LyraPhoneEvoText_EVs:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "put enough effort"
-	line "into improving"
-	cont "its "
-	text_ram wStringBuffer4
-	text "."
-
-	para "Vitamins can help"
-	line "with that."
-	prompt
-
-LyraPhoneEvoText_Crit:
-	text_ram wStringBuffer3
-	line "evolves after it"
-
-	para "lands three crit-"
-	line "ical hits in one"
-	cont "battle."
-	prompt
-
-LyraPhoneEvoText_Party:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "gains a level"
-
-	para "while you have a"
-	line ""
-	text_ram wStringBuffer4
-	cont "in your party too."
-	prompt
-
-LyraPhoneEvoText_Egg:
-	text "Eggs don't evolve,"
-	line "they hatch! Haha!"
-	prompt
-
-LyraPhoneEvoText_Pikachu:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to a"
-	line "ThunderStone or"
-	cont "an Odd Souvenir."
-	prompt
-
-LyraPhoneEvoText_Gloom:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to a"
-	line "Leaf Stone or"
-	cont "a Sun Stone."
-	prompt
-
-LyraPhoneEvoText_Poliwhirl:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to a"
-	line "Water Stone, or"
-
-	para "when it gains a"
-	line "level while hold-"
-	cont "ing a King's Rock."
-	prompt
-
-LyraPhoneEvoText_SlowpokePlain:
-LyraPhoneEvoText_SlowpokeGalarian:
-	text_ram wStringBuffer3
-	line "evolves at level"
-	cont "37, or when it"
-
-	para "gains a level"
-	line "while holding a"
-	cont "a King's Rock."
-	prompt
-
-LyraPhoneEvoText_Magneton:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to a"
-	line "ThunderStone, or"
-
-	para "when it gains a"
-	line "level in a mag-"
-	cont "netic field."
-
-	para "I think Magnet"
-	line "Tunnel and Dim"
-	cont "Cave have that."
-	prompt
-
-LyraPhoneEvoText_Exeggcute:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to a"
-	line "Leaf Stone or"
-	cont "an Odd Souvenir."
-	prompt
-
-LyraPhoneEvoText_Koffing:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "reaches level 35,"
-
-	para "or when it gains a"
-	line "level while hold-"
-	cont "ing Charcoal."
-	prompt
-
-LyraPhoneEvoText_Cubone:
-	text_ram wStringBuffer3
-	line "evolves at level"
-	cont "28, or when it's"
-
-	para "exposed to an"
-	line "Odd Souvenir."
-	prompt
-
-LyraPhoneEvoText_Scyther:
-	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "gains a level"
-
-	para "while holding a"
-	line "Metal Coat or a"
-	cont "Hard Stone."
-	prompt
-
-LyraPhoneEvoText_Eevee:
-	text_ram wStringBuffer3
-	line "evolves in so"
-	cont "many ways!"
-
-	para "It can be exposed"
-	line "to any of eight"
-	cont "different Stones,"
-
-	para "or gain a level"
-	line "near a Moss Rock"
-	cont "or an Ice Rock."
-
-	para "I think Ilex For-"
-	line "est and Ice Path"
-	cont "have those."
-
-	para "But also, Eevee"
-	line "will evolve just"
-
-	para "from the sun or"
-	line "moon if it's very"
-	cont "happy!"
-	prompt
-
-LyraPhoneEvoText_MimeJr:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to an"
-	line "Ice Stone, or"
-
-	para "when it gains a"
-	line "level near an"
-	cont "Ice Rock."
-
-	para "I think there's"
-	line "one in Ice Path."
-	prompt
-
-LyraPhoneEvoText_Stantler:
-	text_ram wStringBuffer3
-	line "evolves when it's"
-
-	para "exposed to harsh"
-	line "hail or sand."
-
-	para "I think Rugged"
-	line "Road and Snowtop"
-
-	para "Mountain have"
-	line "weather like that."
-	prompt
-
-LyraPhoneEvoText_AncientSinnoh:
-	text "But based on its"
-	line "ancestry, it"
-
-	para "may also evolve"
-	line "when reminded"
-
-	para "of ancient Sinnoh…"
-	line "somehow…"
-	prompt
-
-LyraPhoneEvoText_DunsparceSegments:
-	text "Some of them end"
-	line "up being longer"
-	cont "than others."
-
-	para "It's just in their"
-	line "genes."
-	prompt
-
-LyraPhoneEvolutionRefusedText:
+LyraPhoneNextMoveRefusedText:
 	text "Haha, I won't"
 	line "spoil it, then!"
+	prompt
+
+LyraPhoneNextMoveLevelText:
+	text_ram wStringBuffer3
+	line "learns its next"
+	cont "move at level "
+	text_decimal hScriptVar, 1, 3
+	text "."
+	prompt
+
+LyraPhoneNoNextMoveText:
+	text_ram wStringBuffer3
+	line "won't learn any"
+
+	para "more moves just"
+	line "by leveling up."
+	prompt
+
+LyraPhoneNoEggMovesText:
+	text "Eggs don't learn"
+	line "moves! …Do they?"
 	prompt
 
 LyraPhoneEndText:

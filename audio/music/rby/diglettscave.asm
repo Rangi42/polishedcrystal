@@ -3,10 +3,11 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/dungeon2.asm
 
 Music_DiglettsCaveRBY:
-	dbw $C0, Music_DiglettsCaveRBY_Ch1
-	dbw $01, Music_DiglettsCaveRBY_Ch2
-	dbw $02, Music_DiglettsCaveRBY_Ch3
-	dbw $03, Music_DiglettsCaveRBY_Ch4
+	channel_count 4
+	channel 1, Music_DiglettsCaveRBY_Ch1
+	channel 2, Music_DiglettsCaveRBY_Ch2
+	channel 3, Music_DiglettsCaveRBY_Ch3
+	channel 4, Music_DiglettsCaveRBY_Ch4
 
 Music_DiglettsCaveRBY_Ch1:
 	tempo 144
@@ -309,16 +310,16 @@ Music_DiglettsCaveRBY_branch_7e9d1:
 	sound_ret
 
 Music_DiglettsCaveRBY_Ch4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 1
 
 Music_DiglettsCaveRBY_branch_7e9dd:
-	note E_, 4
-	note F_, 4
-	note E_, 4
-	note D_, 4
-	note E_, 4
-	note F_, 4
-	note D#, 4
-	note C#, 4
+	drum_note 5, 4
+	drum_note 6, 4
+	drum_note 5, 4
+	drum_note 3, 4
+	drum_note 5, 4
+	drum_note 6, 4
+	drum_note 4, 4
+	drum_note 2, 4
 	sound_jump Music_DiglettsCaveRBY_branch_7e9dd
