@@ -96,7 +96,7 @@ BattleCommand_conversion:
 	ld [wCurMoveNum], a
 
 	call UpdateBattleHuds
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 
 	ld a, [wLinkMode]
 	and a

@@ -727,7 +727,7 @@ endc
 	ld a, 1 ; shiny anim
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	call SetPlayerTurn
 .not_shiny
 

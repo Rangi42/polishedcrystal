@@ -106,7 +106,7 @@ AI_Redundant:
 
 .BatonPass:
 .Teleport:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .Roar:
 	push hl
 	push de
