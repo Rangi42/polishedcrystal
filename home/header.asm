@@ -64,6 +64,13 @@ SECTION "rst28 ByteFill", ROM0[$0028]
 ByteFill::
 	jmp _ByteFill
 
+GetFarWRAMByte::
+	call StackCallInWRAMBankA
+
+.Function:
+	ld a, [hl]
+	ret
+
 
 SECTION "rst30 PlaceString", ROM0[$0030]
 PlaceString::
