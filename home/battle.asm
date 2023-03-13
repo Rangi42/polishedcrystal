@@ -81,11 +81,20 @@ ResetDamage::
 	ret
 
 StackCallOpponentTurn::
-	add sp, -2
+; Falls through to SwitchTurn after inserting SwitchTurn in the call stack,
+; so the subsequent function pointer is "wrapped" by SwitchTurns.
+
+	add sp, -2 ; push space for a tail call to SwitchTurn
 	push de
 	push hl
 
-; Swap the return address for SwitchTurn
+; Stack layout:
+; +8 return address
+; +6 function pointer
+; +4 nothing
+; +2 saved de
+; +0 saved hl
+
 	ld hl, sp + 7
 	ld d, [hl]
 	ld [hl], HIGH(SwitchTurn)
@@ -93,10 +102,16 @@ StackCallOpponentTurn::
 	ld e, [hl]
 	ld [hl], LOW(SwitchTurn)
 	dec hl ; no-optimize *hl++|*hl-- = N
-; Write the return back below SwitchTurn
 	ld [hl], d
 	dec hl
 	ld [hl], e
+
+; Stack layout:
+; +8 return address
+; +6 SwitchTurn
+; +4 function pointer
+; +2 saved de
+; +0 saved hl
 
 	pop hl
 	pop de

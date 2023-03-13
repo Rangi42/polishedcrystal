@@ -3,81 +3,90 @@
 ; the stack, and update the return address to point past the data.
 
 _RstFarCall::
-	dec sp
+; Call the following dab pointer.
+; Preserves af, bc, de, hl.
+	dec sp ; push space for the return bank
+; Stack layout:
+; +1 pointer to function address and bank followed by return location
+; +0 nothing
 	call .do_farcall
+; Stack layout:
+; +1 return address
+; +0 return bank
 	jr _ReturnFarCall
-; Call the following dab pointer
-; preserves af, bc, de, hl
 
 .do_farcall
-; same speed and size as add sp, -2 but preserves flags
-	dec sp
-	dec sp
+	dec sp ; push space for the target function pointer
+	dec sp ; 'dec sp' preserves flags, unlike 'add sp, -2'
 	push af
 	push de
 	push hl
-; Stack layout
-; +11 return address
-; +10 saved bank
-; +8  return path
-; +6  function pointer
+
+; Stack layout:
+; +11 pointer to dab pointer followed by return location
+; +10 nothing
+; +8  after 'call .do_farcall'
+; +6  nothing
 ; +4  saved af
 ; +2  saved de
 ; +0  saved hl
 
+; Write return bank to sp+10
 	ld hl, sp + 10
 	ldh a, [hROMBank]
 	ld [hli], a
 
-; Read return address
+; Get function bank and address in a:de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-
-; function pointer
-	ld a, [hli]
+	ld a, [hli] ; LOW(function address)
 	ld e, a
-	ld a, [hli]
+	ld a, [hli] ; HIGH(function address)
 	ld d, a
-
-; check farjp
-	add a
-
-; bank number
-	ld a, [hli]
+	add a ; set carry if farjp
+	ld a, [hli] ; function bank
 	rst Bankswitch
+	jr nc, .not_farjp
+	res 7, d ; d has HIGH(function address), with the 'jump' flag bit cleared
+	ld hl, DoNothing ; farjp is really a call and then jump to DoNothing
+.not_farjp
 
-	jr nc, .call
-	res 7, d
-; for farjp we need to replace the return address
-	ld hl, DoNothing
-.call
+; Write function pointer to sp+6
 	push hl
-
-; write the function pointer
 	ld hl, sp + 8
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-
 	pop de
-; write return address
+
+; Update sp+11 pointer to be actual return location
 	ld hl, sp + 11
 	ld a, e
 	ld [hli], a
 	ld [hl], d
 
-; restore registers and jump to the target function
+; Stack layout:
+; +11 return address
+; +10 return bank
+; +8  after 'call .do_farcall'
+; +6  target function
+; +4  saved af
+; +2  saved de
+; +0  saved hl
+
+; Restore registers and "return" to the target function
 	pop hl
 	pop de
 	pop af
 	ret
 
 FarPointerCall::
-; Call the dba pointer at hl. Clobbers a and hl.
-	ld a, [hli]
+; Call the dba pointer at hl.
+; Clobbers a and hl.
+	ld a, [hli] ; a = bank
 	push af
-	ld a, [hli]
+	ld a, [hli] ; hl = address
 	ld h, [hl]
 	ld l, a
 	pop af
@@ -85,28 +94,43 @@ FarPointerCall::
 
 FarCall_hl::
 ; Call a:hl.
-; clear carry
-	and a
+	and a ; clear carry (signal to call hl not de)
+	; fallthrough
+
 _DoFarCall:
-	dec sp
+	dec sp ; push space for the return bank
 	push hl
 	push af
+; Stack layout:
+; +5 return address
+; +4 nothing
+; +2 saved hl
+; +0 saved af
+; Write return bank to sp+0
 	ldh a, [hROMBank]
 	ld hl, sp + 4
 	ld [hl], a
 	pop af
 	rst Bankswitch
 	pop hl
-	jr nc, .hl
+; Stack layout:
+; +1 return address
+; +0 return bank
+	jr nc, .call_hl
 	call _de_
 	jr _ReturnFarCall
-.hl
+.call_hl
 	call _hl_
 ; fallthrough
+
 _ReturnFarCall:
-; restore the rom bank and clean up
 	push af
 	push hl
+; Stack layout:
+; +5 return address
+; +4 return bank
+; +2 saved af
+; +0 saved hl
 	ld hl, sp + 4
 	ld a, [hl]
 	rst Bankswitch
@@ -117,29 +141,24 @@ _ReturnFarCall:
 
 FarCall_de::
 ; Call a:de.
-	scf
+	scf ; set carry (signal to call de not hl)
 	jr _DoFarCall
 
 AnonBankPush::
-	add sp, -3
+	add sp, -3 ; push space for the target function bank and address
 	push af
 	push de
 	push hl
-; Stack layout:
-; +10 saved bank
-; +8  return path
-; +6  return address
-; return address starts at 10, so it needs to be moved
-; note that writing the return path and reading the address
-; are interleaved
 
+; Stack layout:
+
+; Write return bank to sp+10
 	ld hl, sp + 10
-; Store current bank
 	ldh a, [hROMBank]
-	ld d, [hl]
+	ld d, [hl] ; HIGH(return address)
 	ld [hld], a
 
-	ld e, [hl]
+	ld e, [hl] ; LOW(return address)
 	ld a, HIGH(_ReturnFarCall)
 	ld [hld], a
 	ld a, LOW(_ReturnFarCall)
@@ -149,10 +168,11 @@ AnonBankPush::
 	inc de
 	rst Bankswitch
 
-; Write the return back
 	ld a, d
 	ld [hld], a
 	ld [hl], e
+
+; Stack layout:
 
 	pop hl
 	pop de
@@ -168,9 +188,10 @@ StackCallInBankA:
 	push de
 	push hl
 
+; Stack layout:
+
 	ld hl, sp + 8
 	ld d, [hl]
-; Store current bank
 	ld e, a
 	ldh a, [hROMBank]
 	ld [hld], a
@@ -182,10 +203,11 @@ StackCallInBankA:
 	ld [hl], LOW(_ReturnFarCall)
 	dec hl ; no-optimize *hl++|*hl-- = N
 
-; Write the return back
 	ld [hl], d
 	dec hl
 	ld [hl], e
+
+; Stack layout:
 
 	pop hl
 	pop de
@@ -199,6 +221,8 @@ StackCallInWRAMBankA::
 	add sp, -3
 	push de
 	push hl
+
+; Stack layout:
 
 	ld hl, rSVBK
 	ld e, [hl]
@@ -219,17 +243,21 @@ StackCallInWRAMBankA::
 	ld [hld], a
 	ld [hl], e
 
+; Stack layout:
+
 	pop hl
 	pop de
 	ret
 
 .return
-	push af
 	push hl
+	push af
+; Stack layout:
 	ld hl, sp + 4
 	ld a, [hl]
 	ldh [rSVBK], a
-	pop hl
 	pop af
+	pop hl
+; Stack layout:
 	inc sp
 	ret
