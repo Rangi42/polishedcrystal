@@ -1188,7 +1188,7 @@ TrueUserValidBattleItem:
 	jr UserValidBattleItem
 
 OpponentValidBattleItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UserValidBattleItem:
 ; Checks if the user's held item applies to the species+form.
 ; Used for items like Leek, Lucky Punch, Thick Club, etc.
@@ -2865,7 +2865,7 @@ CheckSheerForceNegation:
 	ret
 
 ConsumeOpponentItem::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 ConsumeUserItem::
 	ldh a, [hBattleTurn]
 	and a
@@ -3522,7 +3522,7 @@ EndMoveDamageChecks:
 	jmp SwitchTurn
 
 RaiseOpponentStatWithItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RaiseStatWithItem:
 	ld a, STAT_SKIPTEXT
 	call _RaiseStat
@@ -5338,7 +5338,7 @@ HandleRampage_ConfuseUser:
 	inc a
 	inc a
 	ld [de], a
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 	ld hl, BecameConfusedDueToFatigueText
 	jmp FinishConfusingTargetAnim
 
@@ -5378,7 +5378,7 @@ CheckIfTrappedByAbility:
 	ret
 
 .CheckOpponentTrap:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .CheckTrap:
 	; Ghost types are immune to all trapping abilities
 	call CheckIfUserIsGhostType
@@ -6333,7 +6333,7 @@ GetEnemyItem::
 	jr GetItemHeldEffect
 
 GetOpponentItem:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserItem::
 ; Return the effect of the user's item in bc, and its id at hl.
 ; Also updates the object name buffer, allowing you to just
@@ -6358,7 +6358,7 @@ GetUserItem::
 	jr GetItemHeldEffect
 
 GetOpponentItemAfterUnnerve:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserItemAfterUnnerve::
 ; Returns the effect of the user's item in bc, and its id at hl,
 ; unless it's a Berry and Unnerve is in effect.
@@ -6468,7 +6468,7 @@ PlayOpponentBattleAnim:
 	ld [wFXAnimIDHi], a
 	xor a
 	ld [wNumHits], a
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 PlayUserBattleAnim:
 	push hl
 	push de

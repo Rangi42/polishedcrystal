@@ -7,7 +7,7 @@ BattleCommand_pursuit:
 
 	ld a, 1
 	ld [wBattleAnimParam], a
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .Function:
 	ld de, ANIM_RETURN_MON
-	farjp Call_PlayBattleAnim
+	farjp PlayBattleAnimDE

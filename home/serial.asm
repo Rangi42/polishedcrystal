@@ -261,7 +261,7 @@ Serial_PlaceWaitingTextAndSyncAndExchangeNybble::
 	call LoadTileMapToTempTileMap
 	call PlaceWaitingText
 	call Serial_SyncAndExchangeNybble
-Call_LoadTempTileMapToTileMap::
+SafeLoadTempTileMapToTileMap::
 	xor a
 	ldh [hBGMapMode], a
 	call LoadTempTileMapToTileMap

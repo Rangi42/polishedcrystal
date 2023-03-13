@@ -1074,7 +1074,7 @@ LinkTrade_TradeStatsMenu:
 .b_button
 	pop af
 	ld [wMenuCursorY], a
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	jmp LinkTrade_PlayerPartyMenu
 
 .d_right
@@ -1109,7 +1109,7 @@ LinkTrade_TradeStatsMenu:
 	pop af
 	ld [wMenuCursorY], a
 	call LinkMonStatsScreen
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
 	call ClearBox
@@ -2138,7 +2138,7 @@ PerformLinkChecks:
 	xor a
 	ld bc, 10
 	ld hl, wLinkReceivedPolishedMiscBuffer
-	call ByteFill
+	rst ByteFill
 
 	; This acts as the old Special_CheckBothSelectedSameRoom.
 	; We send a dummy byte here that will cause old versions

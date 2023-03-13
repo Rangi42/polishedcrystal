@@ -11,7 +11,7 @@ RunActivationAbilitiesInner:
 	jr UserAbilityJumptable
 
 RunEnemyStatusHealAbilities:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RunStatusHealAbilities:
 	ld hl, StatusHealAbilities
 UserAbilityJumptable:
@@ -197,7 +197,7 @@ WeatherAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	; Disable running animations as part of Start(wWeather) commands. This will not block
-	; Call_PlayBattleAnim that plays the animation manually.
+	; PlayBattleAnimDE that plays the animation manually.
 	ld a, b
 	cp WEATHER_RAIN
 	jr z, .handlerain
@@ -207,22 +207,22 @@ WeatherAbility:
 	jr z, .handlehail
 	; is sandstorm
 	ld de, SANDSTORM
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startsandstorm
 	jmp EnableAnimations
 .handlerain
 	ld de, RAIN_DANCE
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startrain
 	jmp EnableAnimations
 .handlesun
 	ld de, SUNNY_DAY
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startsun
 	jmp EnableAnimations
 .handlehail
 	ld de, HAIL
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_starthail
 	jmp EnableAnimations
 
@@ -948,7 +948,7 @@ INCLUDE "data/abilities/type_nullification_abilities.asm"
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
 	call UserAbilityJumptable
@@ -989,7 +989,7 @@ CannotUseTextAbility:
 	jmp EnableAnimations
 
 RunStatIncreaseAbilities:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
 	ld hl, StatIncreaseAbilities
@@ -1988,7 +1988,7 @@ EnableAnimations:
 	ret
 
 ShowEnemyAbilityActivation::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 ShowAbilityActivation::
 	push hl
 	push de
