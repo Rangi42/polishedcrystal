@@ -49,7 +49,7 @@ InitScrollingMenu::
 	pop bc
 	jmp Textbox
 
-JoyTextDelay_ForcehJoyDown:: ; 354b joypad
+JoyTextDelay_ForcehJoyDown::
 	call DelayFrame
 
 	ldh a, [hInMenu]
@@ -68,10 +68,3 @@ JoyTextDelay_ForcehJoyDown:: ; 354b joypad
 	or c
 	ld c, a
 	ret
-
-ConsumeGenericDelay::
-	ld a, [wGenericDelay]
-	and a
-	ret z
-	ld c, a
-	jmp DelayFrames
