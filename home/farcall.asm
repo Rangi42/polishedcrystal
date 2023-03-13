@@ -9,6 +9,13 @@ _RstFarCall::
 ; Call the following dab pointer
 ; preserves af, bc, de, hl
 
+.do_farcall
+; same speed and size as add sp, -2 but preserves flags
+	dec sp
+	dec sp
+	push af
+	push de
+	push hl
 ; Stack layout
 ; +11 return address
 ; +10 saved bank
@@ -17,13 +24,6 @@ _RstFarCall::
 ; +4  saved af
 ; +2  saved de
 ; +0  saved hl
-.do_farcall
-; same speed and size as add sp, -2 but preserves flags
-	dec sp
-	dec sp
-	push af
-	push de
-	push hl
 
 	ld hl, sp + 10
 	ldh a, [hROMBank]
@@ -120,6 +120,11 @@ FarCall_de::
 	scf
 	jr _DoFarCall
 
+AnonBankPush::
+	add sp, -3
+	push af
+	push de
+	push hl
 ; Stack layout:
 ; +10 saved bank
 ; +8  return path
@@ -127,11 +132,6 @@ FarCall_de::
 ; return address starts at 10, so it needs to be moved
 ; note that writing the return path and reading the address
 ; are interleaved
-AnonBankPush::
-	add sp, -3
-	push af
-	push de
-	push hl
 
 	ld hl, sp + 10
 ; Store current bank

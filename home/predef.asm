@@ -5,6 +5,12 @@ _Predef::
 	call .do_farcall
 	jmp _ReturnFarCall
 
+.do_farcall
+	dec sp
+	dec sp
+	push af
+	push hl
+	push de
 ; Stack layout
 ; +11 return address
 ; +10 saved bank
@@ -13,12 +19,6 @@ _Predef::
 ; +4  saved af
 ; +2  saved hl
 ; +0  saved de
-.do_farcall
-	dec sp
-	dec sp
-	push af
-	push hl
-	push de
 
 	ld hl, sp + 10
 	ldh a, [hROMBank]
