@@ -151,6 +151,12 @@ AnonBankPush::
 	push hl
 
 ; Stack layout:
+; +9  pointer to bank number followed by return location
+; +8  nothing
+; +6  nothing
+; +4  saved af
+; +2  saved de
+; +0  saved hl
 
 ; Write return bank to sp+10
 	ld hl, sp + 10
@@ -173,6 +179,12 @@ AnonBankPush::
 	ld [hl], e
 
 ; Stack layout:
+; +10 return bank
+; +8  _ReturnFarCall
+; +6  target function
+; +4  saved af
+; +2  saved de
+; +0  saved hl
 
 	pop hl
 	pop de
@@ -189,6 +201,11 @@ StackCallInBankA:
 	push hl
 
 ; Stack layout:
+; +7  return location
+; +6  nothing
+; +4  nothing
+; +2  saved de
+; +0  saved hl
 
 	ld hl, sp + 8
 	ld d, [hl]
@@ -208,6 +225,11 @@ StackCallInBankA:
 	ld [hl], e
 
 ; Stack layout:
+; +8  return bank
+; +6  _ReturnFarCall
+; +4  target function
+; +2  saved de
+; +0  saved hl
 
 	pop hl
 	pop de
@@ -223,6 +245,11 @@ StackCallInWRAMBankA::
 	push hl
 
 ; Stack layout:
+; +7  return location
+; +6  nothing
+; +4  nothing
+; +2  saved de
+; +0  saved hl
 
 	ld hl, rSVBK
 	ld e, [hl]
@@ -244,6 +271,11 @@ StackCallInWRAMBankA::
 	ld [hl], e
 
 ; Stack layout:
+; +8  saved wram bank
+; +6  .return
+; +4  target function
+; +2  saved de
+; +0  saved hl
 
 	pop hl
 	pop de
@@ -253,11 +285,14 @@ StackCallInWRAMBankA::
 	push hl
 	push af
 ; Stack layout:
+; +5 return address
+; +4 saved wram bank
+; +2 saved af
+; +0 saved hl
 	ld hl, sp + 4
 	ld a, [hl]
 	ldh [rSVBK], a
 	pop af
 	pop hl
-; Stack layout:
 	inc sp
 	ret
