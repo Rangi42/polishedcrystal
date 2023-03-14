@@ -19,10 +19,10 @@ _InitSound::
 	ld [hli], a ; rNR50 ; volume/vin
 	ld [hli], a ; rNR51 ; sfx channels
 	ld a, $80 ; all channels on
-	ld [hli], a ; ff26 ; music channels
+	ld [hli], a ; rNR52 ; music channels
 
 	ld hl, rNR10 ; sound channel registers
-	ld e, $4 ; number of channels
+	ld e, NUM_MUSIC_CHANS
 .clearsound
 ;   sound channel   1      2      3      4
 	xor a
@@ -47,7 +47,8 @@ _InitSound::
 	ld a, e
 	or d
 	jr nz, .clearchannels
-	ld a, $77 ; max
+
+	ld a, MAX_VOLUME
 	ld [wVolume], a
 	call MusicOn
 	jmp PopAFBCDEHL
@@ -236,26 +237,26 @@ UpdateChannels:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_PITCH_SWEEP, [hl]
-	jr z, .asm_e8159
+	jr z, .noPitchSweep
 	ld a, [wSoundInput]
 	ldh [rNR10], a
-.asm_e8159
+.noPitchSweep
 	bit NOTE_REST, [hl] ; rest
-	jr nz, .ch1rest
+	jr nz, .ch1_rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .asm_e81a2
+	jr nz, .ch1_noise_sampling
 	bit NOTE_FREQ_OVERRIDE, [hl]
-	jr nz, .frequency_override
+	jr nz, .ch1_frequency_override
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .asm_e8184
-	jr .check_duty_override
+	jr nz, .ch1_vibrato_override
+	jr .ch1_check_duty_override
 
-.frequency_override
+.ch1_frequency_override
 	ld a, [wCurTrackFrequency]
 	ldh [rNR13], a
 	ld a, [wCurTrackFrequency + 1]
 	ldh [rNR14], a
-.check_duty_override
+.ch1_check_duty_override
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
@@ -266,7 +267,7 @@ UpdateChannels:
 	ldh [rNR11], a
 	ret
 
-.asm_e8184
+.ch1_vibrato_override
 	ld a, [wCurTrackDuty]
 	ld d, a
 	ldh a, [rNR11]
@@ -277,14 +278,14 @@ UpdateChannels:
 	ldh [rNR13], a
 	ret
 
-.ch1rest
+.ch1_rest
 	ldh a, [rNR52]
 	and %10001110 ; ch1 off
 	ldh [rNR52], a
 	ld hl, rNR10
 	jmp ClearChannel
 
-.asm_e81a2
+.ch1_noise_sampling
 	ld hl, wCurTrackDuty
 	ld a, $3f ; sound length
 	or [hl]
@@ -303,11 +304,11 @@ UpdateChannels:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
-	jr nz, .ch2rest
+	jr nz, .ch2_rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .asm_e8204
+	jr nz, .ch2_noise_sampling
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .asm_e81e6
+	jr nz, .ch2_vibrato_override
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
@@ -318,7 +319,7 @@ UpdateChannels:
 	ldh [rNR21], a
 	ret
 
-.asm_e81e6
+.ch2_vibrato_override
 	ld a, [wCurTrackDuty]
 	ld d, a
 	ldh a, [rNR21]
@@ -329,14 +330,14 @@ UpdateChannels:
 	ldh [rNR23], a
 	ret
 
-.ch2rest
+.ch2_rest
 	ldh a, [rNR52]
 	and %10001101 ; ch2 off
 	ldh [rNR52], a
 	ld hl, rNR20
 	jmp ClearChannel
 
-.asm_e8204
+.ch2_noise_sampling
 	ld hl, wCurTrackDuty
 	ld a, $3f ; sound length
 	or [hl]
@@ -355,9 +356,9 @@ UpdateChannels:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
-	jr nz, .ch3rest
+	jr nz, .ch3_rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .asm_e824d
+	jr nz, .ch3_noise_sampling
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
 	ret z
 
@@ -365,19 +366,19 @@ UpdateChannels:
 	ldh [rNR33], a
 	ret
 
-.ch3rest
+.ch3_rest
 	ldh a, [rNR52]
 	and %10001011 ; ch3 off
 	ldh [rNR52], a
 	ld hl, rNR30
 	jmp ClearChannel
 
-.asm_e824d
+.ch3_noise_sampling
 	ld a, $3f
 	ldh [rNR31], a
 	xor a
 	ldh [rNR30], a
-	call .asm_e8268
+	call .load_wave_pattern
 	ld a, $80
 	ldh [rNR30], a
 	ld a, [wCurTrackFrequency]
@@ -387,7 +388,7 @@ UpdateChannels:
 	ldh [rNR34], a
 	ret
 
-.asm_e8268
+.load_wave_pattern
 	push hl
 	call ReloadWaveform
 	pop hl
@@ -402,19 +403,19 @@ UpdateChannels:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
-	jr nz, .ch4rest
+	jr nz, .ch4_rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .asm_e82d4
+	jr nz, .ch4_noise_sampling
 	ret
 
-.ch4rest
+.ch4_rest
 	ldh a, [rNR52]
 	and %10000111 ; ch4 off
 	ldh [rNR52], a
 	ld hl, rNR40
 	jmp ClearChannel
 
-.asm_e82d4
+.ch4_noise_sampling
 	ld a, $3f ; sound length
 	ldh [rNR41], a
 	ld a, [wCurTrackIntensity]
@@ -454,17 +455,17 @@ PlayDanger:
 	ret z
 	ld d, a
 	call _CheckSFX
-	jr c, .asm_e8335
+	jr c, .increment
 	ld a, d
 	and $1f
-	jr z, .asm_e8323
+	jr z, .begin
 	cp 16 ; halfway
-	jr nz, .asm_e8335
-	ld hl, Tablee8354
+	jr nz, .increment
+	ld hl, DangerSoundLow
 	jr .updatehw
 
-.asm_e8323
-	ld hl, Tablee8350
+.begin
+	ld hl, DangerSoundHigh
 .updatehw
 	xor a
 	ldh [rNR10], a ; sweep off
@@ -476,7 +477,7 @@ PlayDanger:
 	ldh [rNR13], a ; ch1 frequency lo
 	ld a, [hli]
 	ldh [rNR14], a ; ch1 frequency hi
-.asm_e8335
+.increment
 	ld a, d
 	and $e0
 	ld e, a
@@ -484,9 +485,9 @@ PlayDanger:
 	and $1f
 	inc a
 	cp 30
-	jr c, .asm_e833c
+	jr c, .noreset
 	add 2
-.asm_e833c
+.noreset
 	add e
 	jr nz, .load
 	dec a
@@ -502,13 +503,13 @@ PlayDanger:
 	ld [wSoundOutput], a
 	ret
 
-Tablee8350:
+DangerSoundHigh:
 	db $80 ; duty 50%
 	db $e2 ; volume 14, envelope decrease sweep 2
 	db $50 ; frequency: $750
 	db $87 ; restart sound
 
-Tablee8354:
+DangerSoundLow:
 	db $80 ; duty 50%
 	db $e2 ; volume 14, envelope decrease sweep 2
 	db $ee ; frequency: $6ee
