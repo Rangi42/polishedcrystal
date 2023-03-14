@@ -1,12 +1,12 @@
 MACRO overworld_sprite
 ; pointer, bank, type, palette
 	dab \1
-	db \2, \3
+	db ((\2 - 1) << 6) | \3
 ENDM
 
 SpriteHeaders:
 ; entries correspond to SPRITE_* constants
-	table_width NUM_SPRITEDATA_FIELDS, SpriteHeaders
+	table_width SPRITEDATA_LENGTH, SpriteHeaders
 	overworld_sprite ChrisSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ChrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ChrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_RED
