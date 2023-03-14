@@ -218,18 +218,18 @@ NamingScreen_ApplyTextInputMode:
 	call ClearBox
 	pop de
 	hlcoord 2, 6
-	ld b, $5
-
+	ld b, 5
 .row
-	ld c, $11
+	ld c, 9
 .col
 	ld a, [de]
 	ld [hli], a
+	inc hl
 	inc de
 	dec c
 	jr nz, .col
 	push de
-	ld de, 2 * SCREEN_WIDTH - $11
+	ld de, (SCREEN_WIDTH - 9) * 2
 	add hl, de
 	pop de
 	dec b
@@ -885,20 +885,21 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 .PlaceMailCharset:
 	hlcoord 1, 6
 	ld b, 5
-.next
-	ld c, SCREEN_WIDTH - 1
-.loop_
+.row
+	ld c, 10
+.col
 	ld a, [de]
 	ld [hli], a
+	inc hl
 	inc de
 	dec c
-	jr nz, .loop_
+	jr nz, .col
 	push de
-	ld de, SCREEN_WIDTH + 1
+	ld de, (SCREEN_WIDTH - 10) * 2
 	add hl, de
 	pop de
 	dec b
-	jr nz, .next
+	jr nz, .row
 	ret
 
 .DoMailEntry:
