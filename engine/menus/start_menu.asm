@@ -317,11 +317,11 @@ StartMenu_Quit:
 StartMenu_Save:
 	call BufferScreen
 	farcall SaveMenu
-	jr nc, .asm_12919
+	jr nc, .saved
 	xor a
 	ret
 
-.asm_12919
+.saved
 	ld a, 1
 	ret
 
@@ -341,11 +341,11 @@ StartMenu_Status:
 StartMenu_Pokedex:
 	ld a, [wPartyCount]
 	and a
-	jr z, .asm_12949
+	jr z, .empty
 	call FadeToMenu
 	farcall Pokedex
 	call CloseSubmenu
-.asm_12949
+.empty
 	xor a
 	ret
 

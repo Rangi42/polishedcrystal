@@ -31,10 +31,10 @@ _PlayBattleAnim:
 	ld c, 1
 	ldh a, [rKEY1]
 	bit 7, a
-	jr nz, .asm_cc0ff
+	jr nz, .got_speed
 	ld c, 3
 
-.asm_cc0ff
+.got_speed
 	ld hl, hVBlank
 	ld a, [hl]
 	push af

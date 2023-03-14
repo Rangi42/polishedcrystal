@@ -65,17 +65,17 @@ _LoadMapPart::
 MACRO loadmappart_function_macro
 	ld a, b
 	and a
-	jmp z, .BlockY0BlockX0\@
+	jmp z, .BlockY0BlockX0
 	dec a
-	jmp z, .BlockY0BlockX1\@
+	jmp z, .BlockY0BlockX1
 	hlcoord 0, 0, \1
 	dec a
-	jmp z, .BlockY1BlockX0\@
+	jmp z, .BlockY1BlockX0
 ; block y1, block x1
 
-.BlockY1BlockX1\@:
+.BlockY1BlockX1:
 ; LoadOneQuarterBottomRightMetatile
-.LoadOneQuarterBottomRightMetatile\@:
+.LoadOneQuarterBottomRightMetatile:
 	loadmapblock
 	ld b, d
 	ld c, e
@@ -83,13 +83,13 @@ MACRO loadmappart_function_macro
 	ld d, a
 	and $f0
 	add 10
-	call .LoadOneQuarterMetatile\@
+	call .LoadOneQuarterMetatile
 	ld d, b
 	ld e, c
 
 	hlcoord 2, 0, \1
 	ld bc, SCREEN_WIDTH - 4
-	call .LoadOneRowOf4BottomHalfBlocks\@
+	call .LoadOneRowOf4BottomHalfBlocks
 	hlcoord 18, 0, \1
 ; LoadOneQuarterBottomLeftMetatile
 	loadmapblock
@@ -99,7 +99,7 @@ MACRO loadmappart_function_macro
 	ld d, a
 	and $f0
 	add 8
-	call .LoadOneQuarterMetatile\@
+	call .LoadOneQuarterMetatile
 	ld d, b
 	ld e, c
 
@@ -115,14 +115,14 @@ MACRO loadmappart_function_macro
 
 	hlcoord 0, 2, \1
 	ld bc, SCREEN_WIDTH - 1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 	hlcoord 0, 6, \1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 	hlcoord 0, 10, \1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 	hlcoord 0, 14, \1
 
-.LoadOneRowOf5BlocksFromHalfRightMetatile\@:
+.LoadOneRowOf5BlocksFromHalfRightMetatile:
 	loadmapblock
 	push de
 	swap a
@@ -322,16 +322,16 @@ MACRO loadmappart_function_macro
 	inc d
 	ret
 
-.BlockY0BlockX0\@:
+.BlockY0BlockX0:
 	hlcoord 0, 0, \1
 	ld bc, SCREEN_WIDTH - 4
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 4, \1
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 8, \1
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 12, \1
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 16, \1
 
 ; LoadOneRowOf5UpperHalfBlocks
@@ -365,7 +365,7 @@ MACRO loadmappart_function_macro
 	pop de
 	; Next metatile
 	subtractfromhl (SCREEN_WIDTH * 1) - 1
-.LoadOneRowOf4UpperHalfBlocks\@:
+.LoadOneRowOf4UpperHalfBlocks:
 	loadmapblock
 	push de
 	swap a
@@ -486,8 +486,8 @@ MACRO loadmappart_function_macro
 	pop de
 	ret
 
-.BlockY1BlockX0\@:
-	call .LoadOneHalfRowOf5LowerHalfBlocks\@
+.BlockY1BlockX0:
+	call .LoadOneHalfRowOf5LowerHalfBlocks
 	ldh a, [hMapWidthPlus6]
 	; de += a
 	add e
@@ -496,15 +496,15 @@ MACRO loadmappart_function_macro
 	sub e
 	ld d, a
 	hlcoord 0, 2, \1
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 6, \1
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 10, \1
-	call .LoadOneRowOf5Blocks\@
+	call .LoadOneRowOf5Blocks
 	hlcoord 0, 14, \1
 
 ; fallthrough
-.LoadOneRowOf5Blocks\@:
+.LoadOneRowOf5Blocks:
 	loadmapblock
 	push de
 	swap a
@@ -671,7 +671,7 @@ MACRO loadmappart_function_macro
 	inc d
 	ret
 
-.LoadOneHalfRowOf5LowerHalfBlocks\@:
+.LoadOneHalfRowOf5LowerHalfBlocks:
 	ld bc, SCREEN_WIDTH - 4
 	loadmapblock
 	push de
@@ -704,7 +704,7 @@ MACRO loadmappart_function_macro
 	pop de
 	; Next metatile
 	subtractfromhl (SCREEN_WIDTH * 1) - 1
-.LoadOneRowOf4BottomHalfBlocks\@:
+.LoadOneRowOf4BottomHalfBlocks:
 	loadmapblock
 	push de
 	swap a
@@ -830,18 +830,18 @@ MACRO loadmappart_function_macro
 	; Next metatile
 	ret
 
-.BlockY0BlockX1\@:
+.BlockY0BlockX1:
 	ld hl, hMapWidthPlus6
 	dec [hl]
 	hlcoord 0, 0, \1
 	ld bc, SCREEN_WIDTH - 1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 	hlcoord 0, 4, \1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 	hlcoord 0, 8, \1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 	hlcoord 0, 12, \1
-	call .LoadOneRowOf5BlocksFromHalfRightMetatile\@
+	call .LoadOneRowOf5BlocksFromHalfRightMetatile
 
 ; LoadOneQuarterUpperRightMetatile
 	hlcoord 0, 16, \1
@@ -853,27 +853,27 @@ MACRO loadmappart_function_macro
 	and $f0
 	inc a
 	inc a
-	call .LoadOneQuarterMetatile\@
+	call .LoadOneQuarterMetatile
 	ld d, b
 	ld e, c
 
 	hlcoord 2, 16, \1
 	ld bc, SCREEN_WIDTH - 4
-	call .LoadOneRowOf4UpperHalfBlocks\@
+	call .LoadOneRowOf4UpperHalfBlocks
 	hlcoord 18, 16, \1
 
 ; LoadOneQuarterUpperLeftMetatile
 	ld a, [de]
 	and a
-	jr nz, .notMapBorderBlock3\@
+	jr nz, .notMapBorderBlock3
 	ldh a, [hMapBorderBlock]
-.notMapBorderBlock3\@
+.notMapBorderBlock3
 	swap a
 	ld d, a
 	and $f0
 
 ; fallthrough
-.LoadOneQuarterMetatile\@:
+.LoadOneQuarterMetatile:
 	ld e, a
 	ld a, d
 	and $f

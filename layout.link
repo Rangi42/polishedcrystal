@@ -4,9 +4,9 @@ ROM0
 	org $0000
 	"rst00 EntryPoint"
 	org $0008
-	"rst08 FarCall"
+	"rst08 Bankswitch"
 	org $0010
-	"rst10 Bankswitch"
+	"rst10 FarCall"
 	org $0018
 	"rst18 AddNTimes"
 	org $0020

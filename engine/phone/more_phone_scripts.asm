@@ -2,347 +2,347 @@
 
 JackTriviaScript:
 	random 11
-	ifequalfwd  0, UnknownScript_0xa0682
-	ifequalfwd  1, UnknownScript_0xa068a
-	ifequalfwd  2, UnknownScript_0xa0692
-	ifequalfwd  3, UnknownScript_0xa069a
-	ifequalfwd  4, UnknownScript_0xa06a2
-	ifequalfwd  5, UnknownScript_0xa06aa
-	ifequalfwd  6, UnknownScript_0xa06b2
-	ifequalfwd  7, UnknownScript_0xa06ba
-	ifequalfwd  8, UnknownScript_0xa06c2
-	ifequalfwd  9, UnknownScript_0xa06ca
-	ifequalfwd 10, UnknownScript_0xa06d2
+	ifequalfwd  0, .Thunder
+	ifequalfwd  1, .Rollout
+	ifequalfwd  2, .Solarbeam
+	ifequalfwd  3, .Stomp
+	ifequalfwd  4, .Gust
+	ifequalfwd  5, .Twister
+	ifequalfwd  6, .Earthquake
+	ifequalfwd  7, .Magnitude
+	ifequalfwd  8, .Sandstorm
+	ifequalfwd  9, .SunnyDay
+	ifequalfwd 10, .RainDance
 
-UnknownScript_0xa0682:
+.Thunder:
 	farwritetext JackThunderTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa068a:
+.Rollout:
 	farwritetext JackRolloutTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0692:
+.Solarbeam:
 	farwritetext JackSolarbeamTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa069a:
+.Stomp:
 	farwritetext JackStompTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06a2:
+.Gust:
 	farwritetext JackGustTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06aa:
+.Twister:
 	farwritetext JackKnockOffTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06b2:
+.Earthquake:
 	farwritetext JackEarthquakeTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06ba:
+.Magnitude:
 	farwritetext JackMagnitudeTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06c2:
+.Sandstorm:
 	farwritetext JackSandstormTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06ca:
+.SunnyDay:
 	farwritetext JackSunnyDayTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa06d2:
+.RainDance:
 	farwritetext JackRainDanceTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
 LizGossipRandomScript:
 	random 10
-	ifequalfwd 0, UnknownScript_0xa0704
-	ifequalfwd 1, UnknownScript_0xa070c
-	ifequalfwd 2, UnknownScript_0xa0714
-	ifequalfwd 3, UnknownScript_0xa071c
-	ifequalfwd 4, UnknownScript_0xa0724
-	ifequalfwd 5, UnknownScript_0xa072c
-	ifequalfwd 6, UnknownScript_0xa0734
-	ifequalfwd 7, UnknownScript_0xa073c
-	ifequalfwd 8, UnknownScript_0xa0744
-	ifequalfwd 9, UnknownScript_0xa074c
+	ifequalfwd 0, .RuinsOfAlph
+	ifequalfwd 1, .Falkner
+	ifequalfwd 2, .Earl
+	ifequalfwd 3, .SurfPikachu
+	ifequalfwd 4, .MooMooMilk
+	ifequalfwd 5, .Salon
+	ifequalfwd 6, .Whitney
+	ifequalfwd 7, .BugCatchingContest
+	ifequalfwd 8, .BeautifulTrainer
+	ifequalfwd 9, .Forgot
 
-UnknownScript_0xa0704:
+.RuinsOfAlph:
 	farwritetext LizRuinsOfAlphGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa070c:
+.Falkner:
 	farwritetext LizFalknerGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa0714:
+.Earl:
 	farwritetext LizEarlGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa071c:
+.SurfPikachu:
 	farwritetext LizSurfPikachuGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa0724:
+.MooMooMilk:
 	farwritetext LizMooMooMilkGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa072c:
+.Salon:
 	farwritetext LizSalonGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa0734:
+.Whitney:
 	farwritetext LizWhitneyGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa073c:
+.BugCatchingContest:
 	farwritetext LizBugCatchingContestGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa0744:
+.BeautifulTrainer:
 	farwritetext LizBeautifulMonGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
-UnknownScript_0xa074c:
+.Forgot:
 	farwritetext LizForgotGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Female
 
 ChadOakGossipScript:
 	random 10
-	ifequalfwd 0, UnknownScript_0xa077e
-	ifequalfwd 1, UnknownScript_0xa0786
-	ifequalfwd 2, UnknownScript_0xa078e
-	ifequalfwd 3, UnknownScript_0xa0796
-	ifequalfwd 4, UnknownScript_0xa079e
-	ifequalfwd 5, UnknownScript_0xa07a6
-	ifequalfwd 6, UnknownScript_0xa07ae
-	ifequalfwd 7, UnknownScript_0xa07b6
-	ifequalfwd 8, UnknownScript_0xa07be
-	ifequalfwd 9, UnknownScript_0xa07c6
+	ifequalfwd 0, .Blue
+	ifequalfwd 1, .Daisy
+	ifequalfwd 2, .ProfElm
+	ifequalfwd 3, .Dream
+	ifequalfwd 4, .Kurt
+	ifequalfwd 5, .League
+	ifequalfwd 6, .RadioShow
+	ifequalfwd 7, .Battling
+	ifequalfwd 8, .DaisyTea
+	ifequalfwd 9, .Traveled
 
-UnknownScript_0xa077e:
+.Blue:
 	farwritetext ChadBlueGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0786:
+.Daisy:
 	farwritetext ChadDaisyGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa078e:
+.ProfElm:
 	farwritetext ChadProfElmGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0796:
+.Dream:
 	farwritetext ChadProfOaksDreamGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa079e:
+.Kurt:
 	farwritetext ChadKurtGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa07a6:
+.League:
 	farwritetext ChadLeagueGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa07ae:
+.RadioShow:
 	farwritetext ChadPokemonTalkGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa07b6:
+.Battling:
 	farwritetext ChadProfOakTrainerGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa07be:
+.DaisyTea:
 	farwritetext ChadDaisyTeaGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa07c6:
+.Traveled:
 	farwritetext ChadProfOakTravelingGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
 BrentBillTriviaScript:
 	random 10
-	ifequalfwd 0, UnknownScript_0xa07f8
-	ifequalfwd 1, UnknownScript_0xa0800
-	ifequalfwd 2, UnknownScript_0xa0808
-	ifequalfwd 3, UnknownScript_0xa0810
-	ifequalfwd 4, UnknownScript_0xa0818
-	ifequalfwd 5, UnknownScript_0xa0820
-	ifequalfwd 6, UnknownScript_0xa0828
-	ifequalfwd 7, UnknownScript_0xa0830
-	ifequalfwd 8, UnknownScript_0xa0838
-	ifequalfwd 9, UnknownScript_0xa0840
+	ifequalfwd 0, .Father
+	ifequalfwd 1, .Grandpa
+	ifequalfwd 2, .Goldenrod
+	ifequalfwd 3, .Route25
+	ifequalfwd 4, .Abra
+	ifequalfwd 5, .Sister
+	ifequalfwd 6, .Milk
+	ifequalfwd 7, .Battling
+	ifequalfwd 8, .FlowerShop
+	ifequalfwd 9, .KimonoGirl
 
-UnknownScript_0xa07f8:
+.Father:
 	farwritetext BrentFatherGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0800:
+.Grandpa:
 	farwritetext BrentGrandpaGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0808:
+.Goldenrod:
 	farwritetext BrentGoldenrodGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0810:
+.Route25:
 	farwritetext BrentRoute25GossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0818:
+.Abra:
 	farwritetext BrentAbraGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0820:
+.Sister:
 	farwritetext BrentSisterGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0828:
+.Milk:
 	farwritetext BrentMilkGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0830:
+.Battling:
 	farwritetext BrentBattlingGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0838:
+.FlowerShop:
 	farwritetext BrentFlowerShopGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0840:
+.KimonoGirl:
 	farwritetext BrentKimonoGirlGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
 IrwinRumorScript:
 	checkevent EVENT_OPENED_MT_SILVER
-	iftruefwd UnknownScript_0xa08e0
+	iftruefwd .MtSilver
 	checkevent EVENT_FOUGHT_SNORLAX
-	iftruefwd UnknownScript_0xa08d8
+	iftruefwd .Snorlax
 	checkevent EVENT_GOT_PASS_FROM_COPYCAT
-	iftruefwd UnknownScript_0xa08d0
+	iftruefwd .TrainPass
 	checkflag ENGINE_SOULBADGE
-	iftruefwd UnknownScript_0xa08f0
+	iftruefwd .MarshBadge
 	checkflag ENGINE_FLYPOINT_VERMILION
-	iftruefwd UnknownScript_0xa08c8
+	iftruefwd .VermilionCity
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftruefwd UnknownScript_0xa08c0
+	iftruefwd .EliteFour
 	checkflag ENGINE_RISINGBADGE
-	iftruefwd UnknownScript_0xa08b8
+	iftruefwd .RisingBadge
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftruefwd UnknownScript_0xa08b0
+	iftruefwd .RadioTower
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftruefwd UnknownScript_0xa08a8
+	iftruefwd .RocketHideout
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftruefwd UnknownScript_0xa08a0
+	iftruefwd .JasmineReturned
 	checkflag ENGINE_FOGBADGE
-	iftruefwd UnknownScript_0xa08e8
+	iftruefwd .FogBadge
 	checkflag ENGINE_PLAINBADGE
-	iftruefwd UnknownScript_0xa0898
+	iftruefwd .PlainBadge
 	farwritetext IrwinCalledRightAwayText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0898:
+.PlainBadge:
 	farwritetext IrwinPlainBadgeGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08a0:
+.JasmineReturned:
 	farwritetext IrwinJasmineReturnedGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08a8:
+.RocketHideout:
 	farwritetext IrwinRocketHideoutGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08b0:
+.RadioTower:
 	farwritetext IrwinRadioTowerGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08b8:
+.RisingBadge:
 	farwritetext IrwinRisingBadgeGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08c0:
+.EliteFour:
 	farwritetext IrwinEliteFourGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08c8:
+.VermilionCity:
 	farwritetext IrwinVermilionCityGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08d0:
+.TrainPass:
 	farwritetext IrwinTrainPassGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08d8:
+.Snorlax:
 	farwritetext IrwinSnorlaxGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08e0:
+.MtSilver:
 	farwritetext IrwinMtSilverGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08e8:
+.FogBadge:
 	farwritetext IrwinFogBadgeGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa08f0:
+.MarshBadge:
 	farwritetext IrwinMarshBadgeGossipText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
@@ -500,33 +500,33 @@ IrwinSoMuchToChatAboutScript:
 
 KenjiAnswerPhoneScript:
 	readvar VAR_KENJI_BREAK
-	ifequalfwd 2, UnknownScript_0xa0a00
-	ifequalfwd 1, UnknownScript_0xa0a08
+	ifequalfwd 2, .Training
+	ifequalfwd 1, .OnBreak
 	farwritetext KenjiCallMeBackAnotherTimeText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0a00:
+.Training:
 	farwritetext KenjiIllHaveTimeToChatTomorrowText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0a08:
+.OnBreak:
 	checktime 1 << MORN
-	iftruefwd UnknownScript_0xa0a1d
+	iftruefwd .Morning
 	checktime 1 << DAY
-	iffalsefwd UnknownScript_0xa0a25
+	iffalsefwd .Night
 	setevent EVENT_KENJI_ON_BREAK
 	farwritetext KenjiTakingABreakText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0a1d:
+.Morning:
 	farwritetext KenjiHangUpMorningText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-UnknownScript_0xa0a25:
+.Night:
 	farwritetext KenjiHangUpNightText
 	promptbutton
 	sjump PhoneScript_HangupText_Male

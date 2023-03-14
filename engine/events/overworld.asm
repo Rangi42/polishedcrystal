@@ -473,7 +473,7 @@ SurfFunction:
 .TrySurf:
 	ld de, ENGINE_FOGBADGE
 	call CheckBadge
-	jr c, .asm_c956
+	jr c, .nofogbadge
 	ld hl, wOWState
 	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .cannotsurf
@@ -492,7 +492,7 @@ SurfFunction:
 	jr c, .cannotsurf
 	ld a, $1
 	ret
-.asm_c956
+.nofogbadge
 	ld a, $80
 	ret
 .alreadyfail

@@ -1,25 +1,25 @@
 JosePhoneScript1:
 	gettrainername BIRD_KEEPER, JOSE2, $0
 	checkflag ENGINE_JOSE_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd2bd
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JOSE_SATURDAY_NIGHT
-	iftruefwd UnknownScript_0xbd2b9
+	iftruefwd .NotSaturday
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
-	iftruefwd UnknownScript_0xbd2c4
+	iftruefwd .HasItem
 	readvar VAR_WEEKDAY
-	ifnotequal SATURDAY, UnknownScript_0xbd2b9
+	ifnotequal SATURDAY, .NotSaturday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd JoseSaturdayNight
 
-UnknownScript_0xbd2b9:
+.NotSaturday:
 	farsjump JoseHangUpScript
 
-UnknownScript_0xbd2bd:
+.WantsBattle:
 	getlandmarkname ROUTE_27, $2
 	farsjump JoseReminderScript
 
-UnknownScript_0xbd2c4:
+.HasItem:
 	getlandmarkname ROUTE_27, $2
 	farsjump JoseReminderScript
 
@@ -27,17 +27,17 @@ JosePhoneScript2:
 	gettrainername BIRD_KEEPER, JOSE2, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_JOSE_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd2f5
+	iftruefwd .Generic
 	checkflag ENGINE_JOSE_SATURDAY_NIGHT
-	iftruefwd UnknownScript_0xbd2f5
+	iftruefwd .Generic
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
-	iftruefwd UnknownScript_0xbd2f5
+	iftruefwd .Generic
 	farscall PhoneScript_Random3
 	ifequalfwd $0, JoseWantsBattle
 	farscall PhoneScript_Random3
 	ifequalfwd $0, JoseHasStarPiece
 
-UnknownScript_0xbd2f5:
+.Generic:
 	farscall PhoneScript_Random3
 	ifequalfwd $0, JoseFoundRare
 	farsjump Phone_GenericCall_Male

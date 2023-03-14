@@ -6,24 +6,15 @@
 SECTION "rst00 EntryPoint", ROM0[$0000]
 EntryPoint::
 	di
-	jmp Rst0Crash
-
-	ds 4 ; unused
-
-
-SECTION "rst08 FarCall", ROM0[$0008]
-FarCall:: ; no-optimize stub jump
-	jr RstFarCall
-
-	ds 3 ; unused
+	xor a ; ld a, ERR_RST_0
+	jmp Crash
 
 SwitchToMapScriptsBank::
 	ld a, [wMapScriptsBank]
 	assert @ == Bankswitch, "cannot fall through to Bankswitch"
 	; fallthrough
 
-
-SECTION "rst10 Bankswitch", ROM0[$0010]
+SECTION "rst08 Bankswitch", ROM0[$0008]
 Bankswitch::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
@@ -33,6 +24,13 @@ _de_::
 	push de
 DoNothing:: ; no-optimize stub function
 	ret
+
+
+SECTION "rst10 FarCall", ROM0[$0010]
+FarCall:: ; no-optimize stub jump
+	jr RstFarCall
+
+	ds 6 ; unused
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]

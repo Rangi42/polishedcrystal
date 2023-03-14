@@ -25,14 +25,14 @@ PrintMonTypes:
 	ld b, a
 
 	push hl
-	add a
 	ld hl, TypeNames
 	ld e, a
 	ld d, 0
 	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	pop hl
 
 	rst PlaceString
@@ -46,10 +46,8 @@ GetTypeName:
 	ld e, a
 	ld d, 0
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ld de, wStringBuffer1
 	ld bc, MOVE_NAME_LENGTH
 	rst CopyBytes

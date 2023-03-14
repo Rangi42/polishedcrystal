@@ -1745,10 +1745,10 @@ Pokedex_Bio:
 	ld d, 0
 	ld hl, HatchSpeedNames
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld e, l
+	ld d, h
 .goteggsteps
 	hlcoord 8, 14
 	rst PlaceString
@@ -1759,10 +1759,10 @@ Pokedex_Bio:
 	ld d, 0
 	ld hl, GrowthRateNames
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld e, l
+	ld d, h
 	hlcoord 8, 16
 	rst PlaceString
 
@@ -1826,14 +1826,15 @@ Pokedex_Bio:
 .GetEggGroupName:
 	and $f
 	dec a
-	ld c, a
-	ld b, 0
+	ld e, a
+	ld d, 0
 	ld hl, EggGroupNames
-	add hl, bc
-	add hl, bc
+	add hl, de
 	ld a, BANK(EggGroupNames)
 	ld b, a
-	call GetFarWord
+	call GetFarByte
+	ld e, a
+	add hl, de
 	ld d, h
 	ld e, l
 	ret
@@ -2337,7 +2338,6 @@ _Pokedex_Search:
 	pop af
 	jr z, .next_print
 	dec a
-	add a
 	add l
 	ld l, a
 	adc h
@@ -2345,8 +2345,11 @@ _Pokedex_Search:
 	ld h, a
 	ld a, [bc]
 	push af
-	call GetFarWord
+	call GetFarByte
+	ld d, 0
+	ld e, a
 	pop af
+	add hl, de
 	ld d, h
 	ld e, l
 .print
@@ -2521,7 +2524,7 @@ _Pokedex_Search:
 
 .DexOrdering:
 	; "byNumber" is default and thus part of the tilemap
-	dw .byNameString
+	dr .byNameString
 
 .byNameString:
 	db "by Name  @"

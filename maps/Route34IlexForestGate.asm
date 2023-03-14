@@ -39,7 +39,7 @@ Route34IlexForestGate_MapScriptHeader:
 
 Route34IlexForestGateCelebiEvent:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iffalsefwd UnknownScript_0x62d62
+	iffalsefwd .skip
 	showemote EMOTE_SHOCK, ROUTE34ILEXFORESTGATE_TEACHER2, 20
 	turnobject ROUTE34ILEXFORESTGATE_TEACHER2, LEFT
 	turnobject PLAYER, RIGHT
@@ -49,7 +49,7 @@ Route34IlexForestGateCelebiEvent:
 	turnobject PLAYER, DOWN
 	showtext Route34IlexForestGateTeacher_ForestIsRestless
 	applymovement ROUTE34ILEXFORESTGATE_TEACHER2, Route34IlexForestGateTeacherReturnsMovement
-UnknownScript_0x62d62:
+.skip:
 	end
 
 Route34IlexForestGateTeacherScript:

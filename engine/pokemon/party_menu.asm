@@ -1083,10 +1083,8 @@ GetPartyMenuTilemapPointers:
 	ld d, 0
 	ld hl, PartyMenuQualityPointers
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ret
 
 .skip

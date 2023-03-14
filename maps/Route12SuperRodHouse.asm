@@ -16,20 +16,20 @@ Route12SuperRodHouse_MapScriptHeader:
 
 Route12SuperRodHouseFishingGuruScript:
 	checkevent EVENT_GOT_SUPER_ROD
-	iftrue_jumptextfaceplayer GaveSuperRodText
+	iftrue_jumptextfaceplayer .GaveSuperRodText
 	faceplayer
 	opentext
 	writetext OfferSuperRodText
 	yesorno
-	iffalsefwd UnknownScript_0x7f4a6
+	iffalsefwd .Refused
 	writetext GiveSuperRodText
 	promptbutton
 	verbosegivekeyitem SUPER_ROD
-	iffalsefwd UnknownScript_0x7f4aa
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_SUPER_ROD
 	jumpthisopenedtext
 
-GaveSuperRodText:
+.GaveSuperRodText:
 	text "Try your hand at"
 	line "fishing wherever"
 	cont "there is water."
@@ -41,10 +41,10 @@ GaveSuperRodText:
 	line "different Rods."
 	done
 
-UnknownScript_0x7f4a6:
+.Refused:
 	writetext DontWantSuperRodText
 	waitbutton
-UnknownScript_0x7f4aa:
+.NoRoom:
 	endtext
 
 OfferSuperRodText:

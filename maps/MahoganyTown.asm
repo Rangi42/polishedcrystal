@@ -55,7 +55,7 @@ RageCandyBarMerchantScript:
 	yesorno
 	iffalse_jumpopenedtext RageCandyBarMerchantRefusedText
 	checkmoney $0, 300
-	ifequalfwd $2, UnknownScript_0x19006c
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem RAGECANDYBAR
 	iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
 	waitsfx
@@ -67,7 +67,7 @@ RageCandyBarMerchantScript:
 	text "Good! Savor it!"
 	done
 
-UnknownScript_0x19006c:
+.NotEnoughMoney:
 	jumpthisopenedtext
 
 	text "You don't have"
