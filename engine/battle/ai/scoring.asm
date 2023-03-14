@@ -196,11 +196,11 @@ AI_Types:
 	lb bc, (NUM_MOVES + 1), 0
 .checkmove2
 	dec b
-	jr z, .asm_38693
+	jr z, .movesdone
 
 	ld a, [hli]
 	and a
-	jr z, .asm_38693
+	jr z, .movesdone
 
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
@@ -211,7 +211,7 @@ AI_Types:
 	jr z, .checkmove2
 	ld c, a
 
-.asm_38693
+.movesdone
 	ld a, c
 	pop bc
 	pop de

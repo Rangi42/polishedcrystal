@@ -941,7 +941,7 @@ BattleBGEffect_Water:
 	jr nc, .done
 	inc [hl]
 	inc [hl]
-	jmp Functionc8f9a
+	jmp DeformWater
 
 .done
 	call BattleBGEffects_ClearLYOverrides
@@ -2374,7 +2374,7 @@ InitSurfWaves:
 	pop bc
 	ret
 
-Functionc8f9a:
+DeformWater:
 	push bc
 	ld [wBattleAnimTemp3], a
 	ld a, e
