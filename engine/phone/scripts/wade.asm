@@ -1,38 +1,38 @@
 WadePhoneScript1:
 	gettrainername BUG_CATCHER, WADE1, $0
 	checkflag ENGINE_WADE_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd41a
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_WADE_TUESDAY_NIGHT
-	iftruefwd UnknownScript_0xbd3f6
+	iftruefwd .NotTuesday
 	checkflag ENGINE_WADE_HAS_ITEM
-	iftruefwd UnknownScript_0xbd421
+	iftruefwd .HasItem
 	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, UnknownScript_0xbd3f6
+	ifnotequal TUESDAY, .NotTuesday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd WadeTuesdayNight
 
-UnknownScript_0xbd3f6:
+.NotTuesday:
 	farscall PhoneScript_Random2
-	ifequalfwd $0, UnknownScript_0xbd412
+	ifequalfwd $0, .NoContest
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftruefwd UnknownScript_0xbd412
+	iftruefwd .NoContest
 	readvar VAR_WEEKDAY
-	ifequalfwd TUESDAY, UnknownScript_0xbd416
-	ifequalfwd THURSDAY, UnknownScript_0xbd416
-	ifequalfwd SATURDAY, UnknownScript_0xbd416
+	ifequalfwd TUESDAY, .ContestToday
+	ifequalfwd THURSDAY, .ContestToday
+	ifequalfwd SATURDAY, .ContestToday
 
-UnknownScript_0xbd412:
+.NoContest:
 	farsjump WadeNoBerriesScript
 
-UnknownScript_0xbd416:
+.ContestToday:
 	farsjump PhoneScript_BugCatchingContest
 
-UnknownScript_0xbd41a:
+.WantsBattle:
 	getlandmarkname ROUTE_31, $2
 	farsjump WadeQuickBattleScript
 
-UnknownScript_0xbd421:
+.HasItem:
 	getlandmarkname ROUTE_31, $2
 	farsjump WadeComeQuickScript
 
@@ -40,34 +40,34 @@ WadePhoneScript2:
 	gettrainername BUG_CATCHER, WADE1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
-	ifequalfwd $0, UnknownScript_0xbd44c
+	ifequalfwd $0, .NoContest
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftruefwd UnknownScript_0xbd44c
+	iftruefwd .NoContest
 	readvar VAR_WEEKDAY
-	ifequalfwd TUESDAY, UnknownScript_0xbd480
-	ifequalfwd THURSDAY, UnknownScript_0xbd480
-	ifequalfwd SATURDAY, UnknownScript_0xbd480
+	ifequalfwd TUESDAY, .ContestToday
+	ifequalfwd THURSDAY, .ContestToday
+	ifequalfwd SATURDAY, .ContestToday
 
-UnknownScript_0xbd44c:
+.NoContest:
 	checkflag ENGINE_WADE_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd474
+	iftruefwd .next
 	checkflag ENGINE_WADE_TUESDAY_NIGHT
-	iftruefwd UnknownScript_0xbd474
+	iftruefwd .next
 	checkflag ENGINE_WADE_HAS_ITEM
-	iftruefwd UnknownScript_0xbd474
+	iftruefwd .next
 	farscall PhoneScript_Random2
 	ifequalfwd $0, WadeHasItem2
 	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalsefwd UnknownScript_0xbd474
+	iffalsefwd .next
 	farscall PhoneScript_Random2
 	ifequalfwd $0, WadeWantsBattle2
 
-UnknownScript_0xbd474:
+.next:
 	farscall PhoneScript_Random3
 	ifequalfwd $0, WadeFoundRare
 	farsjump Phone_GenericCall_Male
 
-UnknownScript_0xbd480:
+.ContestToday:
 	farsjump PhoneScript_BugCatchingContest
 
 WadeTuesdayNight:
@@ -89,25 +89,25 @@ WadeHasItem2:
 	clearevent EVENT_WADE_HAS_CHERI_BERRY
 	clearevent EVENT_WADE_HAS_PERSIM_BERRY
 	random $4
-	ifequalfwd $0, UnknownScript_0xbd4b9
-	ifequalfwd $1, UnknownScript_0xbd4bf
-	ifequalfwd $2, UnknownScript_0xbd4c5
-	ifequalfwd $3, UnknownScript_0xbd4cb
+	ifequalfwd $0, .Berry
+	ifequalfwd $1, .PsnCureBerry
+	ifequalfwd $2, .PrzCureBerry
+	ifequalfwd $3, .Bitterberry
 
-UnknownScript_0xbd4b9:
+.Berry:
 	setevent EVENT_WADE_HAS_ORAN_BERRY
-	sjumpfwd UnknownScript_0xbd4ce
+	sjumpfwd .FoundBerry
 
-UnknownScript_0xbd4bf:
+.PsnCureBerry:
 	setevent EVENT_WADE_HAS_PECHA_BERRY
-	sjumpfwd UnknownScript_0xbd4ce
+	sjumpfwd .FoundBerry
 
-UnknownScript_0xbd4c5:
+.PrzCureBerry:
 	setevent EVENT_WADE_HAS_CHERI_BERRY
-	sjumpfwd UnknownScript_0xbd4ce
+	sjumpfwd .FoundBerry
 
-UnknownScript_0xbd4cb:
+.Bitterberry:
 	setevent EVENT_WADE_HAS_PERSIM_BERRY
 
-UnknownScript_0xbd4ce:
+.FoundBerry:
 	farsjump PhoneScript_FoundItem_Male

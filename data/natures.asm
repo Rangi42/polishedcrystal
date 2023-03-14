@@ -1,31 +1,31 @@
 NatureNames:
-	table_width 2, NatureNames
-	dw .Hardy
-	dw .Lonely
-	dw .Brave
-	dw .Adamant
-	dw .Naughty
-	dw .Bold
-	dw .Docile
-	dw .Relaxed
-	dw .Impish
-	dw .Lax
-	dw .Timid
-	dw .Hasty
-	dw .Serious
-	dw .Jolly
-	dw .Naive
-	dw .Modest
-	dw .Mild
-	dw .Quiet
-	dw .Bashful
-	dw .Rash
-	dw .Calm
-	dw .Gentle
-	dw .Sassy
-	dw .Careful
-	dw .Quirky
-	dw .NoNature
+	table_width 1, NatureNames
+	dr .Hardy
+	dr .Lonely
+	dr .Brave
+	dr .Adamant
+	dr .Naughty
+	dr .Bold
+	dr .Docile
+	dr .Relaxed
+	dr .Impish
+	dr .Lax
+	dr .Timid
+	dr .Hasty
+	dr .Serious
+	dr .Jolly
+	dr .Naive
+	dr .Modest
+	dr .Mild
+	dr .Quiet
+	dr .Bashful
+	dr .Rash
+	dr .Calm
+	dr .Gentle
+	dr .Sassy
+	dr .Careful
+	dr .Quirky
+	dr .NoNature
 	assert_table_length NUM_NATURES + 1
 
 .Hardy:    db "Hardy@"
@@ -56,32 +56,34 @@ NatureNames:
 .NoNature: db "---@"
 
 NatureIndicators:
-	dw .HardyInd
-	dw .LonelyInd
-	dw .BraveInd
-	dw .AdamantInd
-	dw .NaughtyInd
-	dw .BoldInd
-	dw .DocileInd
-	dw .RelaxedInd
-	dw .ImpishInd
-	dw .LaxInd
-	dw .TimidInd
-	dw .HastyInd
-	dw .SeriousInd
-	dw .JollyInd
-	dw .NaiveInd
-	dw .ModestInd
-	dw .MildInd
-	dw .QuietInd
-	dw .BashfulInd
-	dw .RashInd
-	dw .CalmInd
-	dw .GentleInd
-	dw .SassyInd
-	dw .CarefulInd
-	dw .QuirkyInd
-	dw .NoNatureInd
+	table_width 1, NatureIndicators
+	dr .HardyInd
+	dr .LonelyInd
+	dr .BraveInd
+	dr .AdamantInd
+	dr .NaughtyInd
+	dr .BoldInd
+	dr .DocileInd
+	dr .RelaxedInd
+	dr .ImpishInd
+	dr .LaxInd
+	dr .TimidInd
+	dr .HastyInd
+	dr .SeriousInd
+	dr .JollyInd
+	dr .NaiveInd
+	dr .ModestInd
+	dr .MildInd
+	dr .QuietInd
+	dr .BashfulInd
+	dr .RashInd
+	dr .CalmInd
+	dr .GentleInd
+	dr .SassyInd
+	dr .CarefulInd
+	dr .QuirkyInd
+	dr .NoNatureInd
+	assert_table_length NUM_NATURES + 1
 
 .SassyInd:   db "<NEXT>" ; fallthrough
 .RashInd:    db "<NEXT>" ; fallthrough

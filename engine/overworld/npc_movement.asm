@@ -159,48 +159,48 @@ WillObjectRemainOnWater:
 	add hl, bc
 	ld a, [hl]
 	and 3
-	jr z, .asm_6fb2
+	jr z, .down
 	dec a
-	jr z, .asm_6fb7
+	jr z, .up
 	dec a
-	jr z, .asm_6fbb
-	jr .asm_6fbf
+	jr z, .left
+	jr .right
 
-.asm_6fb2
+.down
 	inc e
 	push de
 	inc d
-	jr .asm_6fc2
+	jr .continue
 
-.asm_6fb7
+.up
 	push de
 	inc d
-	jr .asm_6fc2
+	jr .continue
 
-.asm_6fbb
+.left
 	push de
 	inc e
-	jr .asm_6fc2
+	jr .continue
 
-.asm_6fbf
+.right
 	inc d
 	push de
 	inc e
 
-.asm_6fc2
+.continue
 	call GetCoordTile
 	call GetTileCollision
 	pop de
 	and a ; cp LAND_TILE
-	jr nz, .asm_6fd7
+	jr nz, .not_land
 	call GetCoordTile
 	call GetTileCollision
 	and a ; cp LAND_TILE
-	jr nz, .asm_6fd7
+	jr nz, .not_land
 	xor a
 	ret
 
-.asm_6fd7
+.not_land
 	scf
 	ret
 
@@ -210,7 +210,7 @@ CheckFacingObject::
 
 ; Double the distance for counter tiles.
 	cp COLL_COUNTER
-	jr nz, .asm_6ff1
+	jr nz, .not_counter
 
 	ld a, [wPlayerMapX]
 	sub d
@@ -226,7 +226,7 @@ CheckFacingObject::
 	add e
 	ld e, a
 
-.asm_6ff1
+.not_counter
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 	call IsNPCAtCoord

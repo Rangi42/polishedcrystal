@@ -650,13 +650,13 @@ GetPocketName:
 	dec a
 	ld hl, ItemPocketNames
 	and $7
-	add a
 	ld e, a
 	ld d, 0
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	ld hl, wStringBuffer3
 	jmp CopyName2
 

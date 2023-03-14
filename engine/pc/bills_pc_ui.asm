@@ -2993,10 +2993,10 @@ endr
 	ld d, 0
 	ld hl, BillsPC_ThemeNames
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld d, h
+	ld e, l
 	pop hl
 	rst PlaceString
 	ret

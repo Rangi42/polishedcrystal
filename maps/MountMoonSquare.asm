@@ -2,8 +2,8 @@ MountMoonSquare_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, UnknownScript_0x77093
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x77097
+	callback MAPCALLBACK_NEWMAP, MountMoonSquareDisappearMoonStoneCallback
+	callback MAPCALLBACK_OBJECTS, MountMoonSquareDisappearRockCallback
 
 	def_warp_events
 	warp_event 21, 11, ROUTE_4, 2
@@ -26,11 +26,11 @@ MountMoonSquare_MapScriptHeader:
 	const MOUNTMOONSQUARE_CLEFAIRY2
 	const MOUNTMOONSQUARE_ROCK
 
-UnknownScript_0x77093:
+MountMoonSquareDisappearMoonStoneCallback:
 	setevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
 	endcallback
 
-UnknownScript_0x77097:
+MountMoonSquareDisappearRockCallback:
 	disappear MOUNTMOONSQUARE_ROCK
 	endcallback
 

@@ -42,6 +42,7 @@ FarCall::
 
 	ds 1 ; unused
 
+
 SECTION "rst18 AddNTimes", ROM0[$0018]
 AddNTimes::
 	jmp _AddNTimes

@@ -1,19 +1,19 @@
 ErinPhoneScript1:
 	gettrainername PICNICKER, ERIN1, $0
 	checkflag ENGINE_ERIN_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbde07
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
-	iftruefwd UnknownScript_0xbde03
+	iftruefwd .NotSaturday
 	readvar VAR_WEEKDAY
-	ifnotequal SATURDAY, UnknownScript_0xbde03
+	ifnotequal SATURDAY, .NotSaturday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd ErinSaturdayNight
 
-UnknownScript_0xbde03:
+.NotSaturday:
 	farsjump ErinWorkingHardScript
 
-UnknownScript_0xbde07:
+.WantsBattle:
 	getlandmarkname ROUTE_46, $2
 	farsjump ErinComeBattleScript
 
@@ -21,14 +21,14 @@ ErinPhoneScript2:
 	gettrainername PICNICKER, ERIN1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ERIN_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbde2e
+	iftruefwd .GenericCall
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
-	iftruefwd UnknownScript_0xbde2e
+	iftruefwd .GenericCall
 	farscall PhoneScript_Random3
 	ifequalfwd $0, ErinWantsBattle
 	ifequalfwd $1, ErinWantsBattle
 
-UnknownScript_0xbde2e:
+.GenericCall:
 	farsjump Phone_GenericCall_Female
 
 ErinSaturdayNight:
