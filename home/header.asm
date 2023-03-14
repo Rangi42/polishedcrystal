@@ -5,7 +5,6 @@
 
 SECTION "rst00 EntryPoint", ROM0[$0000]
 EntryPoint::
-Rst0Crash:
 	di
 	xor a ; ld a, ERR_RST_0
 	jmp Crash
@@ -26,10 +25,19 @@ _de_::
 DoNothing:: ; no-optimize stub function
 	ret
 
+
 SECTION "rst10 FarCall", ROM0[$0010]
 FarCall::
-	dec sp
+; Call the following dab pointer.
+; Preserves af, bc, de, hl.
+	dec sp ; push space for the return bank
+; Stack layout:
+; +1 pointer to function address and bank followed by return location
+; +0 nothing
 	call _RstFarCall
+; Stack layout:
+; +1 return address
+; +0 return bank
 	jmp _ReturnFarCall
 
 	ds 1 ; unused

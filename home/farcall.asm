@@ -3,9 +3,16 @@
 ; the stack, and update the return address to point past the data.
 
 ; In home/header.asm:
-;	dec sp ; push space for the return bank
-;	call _RstFarCall
-;	jmp _ReturnFarCall
+; FarCall::
+; 	dec sp ; push space for the return bank
+; ; Stack layout:
+; ; +1 pointer to function address and bank followed by return location
+; ; +0 nothing
+; 	call _RstFarCall
+; ; Stack layout:
+; ; +1 return address
+; ; +0 return bank
+; 	jmp _ReturnFarCall
 
 _RstFarCall::
 ; Call the following dab pointer.
@@ -145,12 +152,12 @@ AnonBankPush::
 	push hl
 
 ; Stack layout:
-; +9  pointer to bank number followed by return location
-; +8  nothing
-; +6  nothing
-; +4  saved af
-; +2  saved de
-; +0  saved hl
+; +9 pointer to bank number followed by return location
+; +8 nothing
+; +6 nothing
+; +4 saved af
+; +2 saved de
+; +0 saved hl
 
 ; Write return bank to sp+10
 	ld hl, sp + 10
@@ -195,11 +202,11 @@ StackCallInBankA:
 	push hl
 
 ; Stack layout:
-; +7  return location
-; +6  nothing
-; +4  nothing
-; +2  saved de
-; +0  saved hl
+; +7 return location
+; +6 nothing
+; +4 nothing
+; +2 saved de
+; +0 saved hl
 
 	ld hl, sp + 8
 	ld d, [hl]
@@ -219,11 +226,11 @@ StackCallInBankA:
 	ld [hl], e
 
 ; Stack layout:
-; +8  return bank
-; +6  _ReturnFarCall
-; +4  target function
-; +2  saved de
-; +0  saved hl
+; +8 return bank
+; +6 _ReturnFarCall
+; +4 target function
+; +2 saved de
+; +0 saved hl
 
 	pop hl
 	pop de
@@ -239,11 +246,11 @@ StackCallInWRAMBankA::
 	push hl
 
 ; Stack layout:
-; +7  return location
-; +6  nothing
-; +4  nothing
-; +2  saved de
-; +0  saved hl
+; +7 return location
+; +6 nothing
+; +4 nothing
+; +2 saved de
+; +0 saved hl
 
 	ld hl, rSVBK
 	ld e, [hl]
@@ -265,11 +272,11 @@ StackCallInWRAMBankA::
 	ld [hl], e
 
 ; Stack layout:
-; +8  saved wram bank
-; +6  .return
-; +4  target function
-; +2  saved de
-; +0  saved hl
+; +8 saved wram bank
+; +6 .return
+; +4 target function
+; +2 saved de
+; +0 saved hl
 
 	pop hl
 	pop de
