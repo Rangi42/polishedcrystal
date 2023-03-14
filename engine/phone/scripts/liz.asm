@@ -1,20 +1,20 @@
 LizPhoneScript1:
 	gettrainername PICNICKER, LIZ1, $0
 	checkflag ENGINE_LIZ_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd586
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_LIZ_THURSDAY_AFTERNOON
-	iftruefwd UnknownScript_0xbd57f
+	iftruefwd .NotThursday
 	readvar VAR_WEEKDAY
-	ifnotequal THURSDAY, UnknownScript_0xbd57f
+	ifnotequal THURSDAY, .NotThursday
 	checktime 1 << DAY
 	iftruefwd LizThursdayAfternoon
 
-UnknownScript_0xbd57f:
+.NotThursday:
 	special RandomPhoneMon
 	farsjump LizHangUpScript
 
-UnknownScript_0xbd586:
+.WantsBattle:
 	getlandmarkname ROUTE_32, $2
 	farsjump LizReminderScript
 
@@ -24,19 +24,19 @@ LizPhoneScript2:
 	ifequalfwd $0, LizWrongNumber
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_LIZ_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd5a9
+	iftruefwd .next
 	checkflag ENGINE_LIZ_THURSDAY_AFTERNOON
-	iftruefwd UnknownScript_0xbd5a9
+	iftruefwd .next
 
-UnknownScript_0xbd5a9:
+.next:
 	farscall PhoneScript_Random2
 	ifequalfwd $0, LizGossip
 	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalsefwd UnknownScript_0xbd5bf
+	iffalsefwd .Generic
 	farscall PhoneScript_Random2
 	ifequalfwd $0, LizWantsBattle
 
-UnknownScript_0xbd5bf:
+.Generic:
 	farsjump Phone_GenericCall_Female
 
 LizThursdayAfternoon:
@@ -52,49 +52,49 @@ LizWrongNumber:
 
 LizGossip:
 	random $9
-	ifequalfwd $0, UnknownScript_0xbd5fa
-	ifequalfwd $1, UnknownScript_0xbd600
-	ifequalfwd $2, UnknownScript_0xbd606
-	ifequalfwd $3, UnknownScript_0xbd60c
-	ifequalfwd $4, UnknownScript_0xbd612
-	ifequalfwd $5, UnknownScript_0xbd618
-	ifequalfwd $6, UnknownScript_0xbd61e
-	ifequalfwd $7, UnknownScript_0xbd624
-	ifequalfwd $8, UnknownScript_0xbd62a
+	ifequalfwd $0, .CoolTrainerM
+	ifequalfwd $1, .Beauty
+	ifequalfwd $2, .Grunt
+	ifequalfwd $3, .Teacher
+	ifequalfwd $4, .SwimmerF
+	ifequalfwd $5, .KimonoGirl
+	ifequalfwd $6, .Skier
+	ifequalfwd $7, .Medium
+	ifequalfwd $8, .PokefanM
 
-UnknownScript_0xbd5fa:
+.CoolTrainerM:
 	gettrainerclassname COOLTRAINERM, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd600:
+.Beauty:
 	gettrainerclassname BEAUTY, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd606:
+.Grunt:
 	gettrainerclassname GRUNTM, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd60c:
+.Teacher:
 	gettrainerclassname TEACHER, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd612:
+.SwimmerF:
 	gettrainerclassname SWIMMERF, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd618:
+.KimonoGirl:
 	gettrainerclassname KIMONO_GIRL_1, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd61e:
+.Skier:
 	gettrainerclassname SKIER, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd624:
+.Medium:
 	gettrainerclassname MEDIUM, $1
 	sjumpfwd LizGossipScript
 
-UnknownScript_0xbd62a:
+.PokefanM:
 	gettrainerclassname POKEFANM, $1
 	; fallthrough
 

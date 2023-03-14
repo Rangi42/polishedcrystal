@@ -39,16 +39,16 @@ NationalParkTeacher1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_QUICK_CLAW
-	iftruefwd UnknownScript_0x5c01d
+	iftruefwd .GotQuickClaw
 	writetext NationalParkTeacher1Text
 	promptbutton
 	verbosegiveitem QUICK_CLAW
-	iffalsefwd UnknownScript_0x5c021
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_QUICK_CLAW
-UnknownScript_0x5c01d:
+.GotQuickClaw:
 	writetext NationalParkTeacher1Text_GotQuickClaw
 	waitbutton
-UnknownScript_0x5c021:
+.NoRoom:
 	endtext
 
 OfficermKeithScript:
@@ -108,29 +108,29 @@ SchoolboyJack1Script:
 	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_JACK
 	opentext
 	checkflag ENGINE_JACK_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0x5c088
+	iftruefwd .Rematch
 	checkcellnum PHONE_SCHOOLBOY_JACK
-	iftruefwd UnknownScript_0x5c108
+	iftruefwd .NumberAccepted
 	checkevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x5c071
+	iftruefwd .AskAgain
 	writetext SchoolboyJackTradeMonText
 	promptbutton
 	setevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x5c0fc
-	sjumpfwd UnknownScript_0x5c074
+	scall .AskNumber1
+	sjumpfwd .RequestNumber
 
-UnknownScript_0x5c071:
-	scall UnknownScript_0x5c100
-UnknownScript_0x5c074:
+.AskAgain:
+	scall .AskNumber2
+.RequestNumber:
 	askforphonenumber PHONE_SCHOOLBOY_JACK
-	ifequalfwd $1, UnknownScript_0x5c110
-	ifequalfwd $2, UnknownScript_0x5c10c
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername SCHOOLBOY, JACK1, $0
-	scall UnknownScript_0x5c104
-	sjumpfwd UnknownScript_0x5c108
+	scall .RegisteredNumber
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x5c088:
-	scall UnknownScript_0x5c114
+.Rematch:
+	scall .RematchStd
 	winlosstext SchoolboyJack1BeatenText, 0
 	readmem wJackFightCount
 	ifequalfwd 4, .Fight4
@@ -189,25 +189,25 @@ UnknownScript_0x5c088:
 	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x5c0fc:
+.AskNumber1:
 	jumpstd asknumber1m
 
-UnknownScript_0x5c100:
+.AskNumber2:
 	jumpstd asknumber2m
 
-UnknownScript_0x5c104:
+.RegisteredNumber:
 	jumpstd registerednumberm
 
-UnknownScript_0x5c108:
+.NumberAccepted:
 	jumpstd numberacceptedm
 
-UnknownScript_0x5c10c:
+.NumberDeclined:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x5c110:
+.PhoneFull:
 	jumpstd phonefullm
 
-UnknownScript_0x5c114:
+.RematchStd:
 	jumpstd rematchm
 
 GenericTrainerPokefanmWilliam:
@@ -227,64 +227,64 @@ PokefanfBeverly1Script:
 	loadvar VAR_CALLERID, PHONE_POKEFAN_BEVERLY
 	opentext
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
-	iftruefwd UnknownScript_0x5c177
+	iftruefwd .GiveNugget
 	checkcellnum PHONE_POKEFAN_BEVERLY
-	iftruefwd UnknownScript_0x5c19b
+	iftruefwd .NumberAccepted
 	checkpoke MARILL
-	iffalsefwd UnknownScript_0x5c189
+	iffalsefwd .NoMarill
 	checkevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x5c160
+	iftruefwd .AskAgain
 	writetext PokefanBeverlyCuteMonText
 	promptbutton
 	setevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x5c18f
-	sjumpfwd UnknownScript_0x5c163
+	scall .AskNumber1
+	sjumpfwd .RequestNumber
 
-UnknownScript_0x5c160:
-	scall UnknownScript_0x5c193
-UnknownScript_0x5c163:
+.AskAgain:
+	scall .AskNumber2
+.RequestNumber:
 	askforphonenumber PHONE_POKEFAN_BEVERLY
-	ifequalfwd $1, UnknownScript_0x5c1a3
-	ifequalfwd $2, UnknownScript_0x5c19f
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername POKEFANF, BEVERLY1, $0
-	scall UnknownScript_0x5c197
-	sjumpfwd UnknownScript_0x5c19b
+	scall .RegisteredNumber
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x5c177:
-	scall UnknownScript_0x5c1a7
+.GiveNugget:
+	scall .Gift
 	verbosegiveitem NUGGET
-	iffalsefwd UnknownScript_0x5c186
+	iffalsefwd .NoRoom
 	clearflag ENGINE_BEVERLY_HAS_NUGGET
-	sjumpfwd UnknownScript_0x5c19b
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x5c186:
-	sjumpfwd UnknownScript_0x5c1ab
+.NoRoom:
+	sjumpfwd .PackFull
 
-UnknownScript_0x5c189:
+.NoMarill:
 	jumpopenedtext PokefanFBeverlyMarillFriendText
 
-UnknownScript_0x5c18f:
+.AskNumber1:
 	jumpstd asknumber1f
 
-UnknownScript_0x5c193:
+.AskNumber2:
 	jumpstd asknumber2f
 
-UnknownScript_0x5c197:
+.RegisteredNumber:
 	jumpstd registerednumberf
 
-UnknownScript_0x5c19b:
+.NumberAccepted:
 	jumpstd numberacceptedf
 
-UnknownScript_0x5c19f:
+.NumberDeclined:
 	jumpstd numberdeclinedf
 
-UnknownScript_0x5c1a3:
+.PhoneFull:
 	jumpstd phonefullf
 
-UnknownScript_0x5c1a7:
+.Gift:
 	jumpstd giftf
 
-UnknownScript_0x5c1ab:
+.PackFull:
 	jumpstd packfullf
 
 GenericTrainerLassKrise:

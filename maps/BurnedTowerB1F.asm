@@ -112,11 +112,11 @@ BurnedTowerB1FEusine:
 	readvar VAR_FACING
 	ifequalfwd $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
-	sjumpfwd UnknownScript_0x18622a
+	sjumpfwd .Finish
 
 .Movement:
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement2
-UnknownScript_0x18622a:
+.Finish:
 	disappear BURNEDTOWERB1F_EUSINE
 	playsound SFX_EXIT_BUILDING
 	waitsfx

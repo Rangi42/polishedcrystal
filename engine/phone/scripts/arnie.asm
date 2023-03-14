@@ -1,25 +1,25 @@
 ArniePhoneScript1:
 	gettrainername BUG_CATCHER, ARNIE1, $0
 	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd83c
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
-	iftruefwd UnknownScript_0xbd832
+	iftruefwd .NotTuesday
 	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, UnknownScript_0xbd832
+	ifnotequal TUESDAY, .NotTuesday
 	checktime 1 << MORN
 	iftruefwd ArnieTuesdayMorning
 
-UnknownScript_0xbd832:
+.NotTuesday:
 	checkflag ENGINE_YANMA_SWARM
-	iftruefwd UnknownScript_0xbd843
+	iftruefwd .AlreadySwarming
 	farsjump ArnieHangUpScript
 
-UnknownScript_0xbd83c:
+.WantsBattle:
 	getlandmarkname ROUTE_35, $2
 	farsjump ArnieReminderScript
 
-UnknownScript_0xbd843:
+.AlreadySwarming:
 	getlandmarkname ROUTE_35, $2
 	farsjump ArnieHurryScript
 
@@ -27,13 +27,13 @@ ArniePhoneScript2:
 	gettrainername BUG_CATCHER, ARNIE1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd866
+	iftruefwd .Swarm
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
-	iftruefwd UnknownScript_0xbd866
+	iftruefwd .Swarm
 	farscall PhoneScript_Random2
 	ifequalfwd $0, ArnieWantsBattle
 
-UnknownScript_0xbd866:
+.Swarm:
 	farscall PhoneScript_Random5
 	ifequalfwd $0, ArnieYanmaSwarm
 	farscall PhoneScript_Random3

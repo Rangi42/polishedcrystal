@@ -4,7 +4,7 @@ MahoganyMart1F_MapScriptHeader:
 	scene_script MahoganyMart1FTrigger1
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, UnknownScript_0x6c35b
+	callback MAPCALLBACK_TILES, MahoganyMart1FStaircaseCallback
 
 	def_warp_events
 	warp_event  3,  7, MAHOGANY_TOWN, 1
@@ -34,12 +34,12 @@ MahoganyMart1FTrigger1:
 MahoganyMart1FTrigger0:
 	end
 
-UnknownScript_0x6c35b:
+MahoganyMart1FStaircaseCallback:
 	checkevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART
-	iftruefwd UnknownScript_0x6c362
+	iftruefwd .ShowStairs
 	endcallback
 
-UnknownScript_0x6c362:
+.ShowStairs:
 	changeblock 6, 2, $1e
 	endcallback
 

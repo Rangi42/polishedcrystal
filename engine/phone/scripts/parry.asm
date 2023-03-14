@@ -1,19 +1,19 @@
 ParryPhoneScript1:
 	gettrainername HIKER, PARRY1, $0
 	checkflag ENGINE_PARRY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbddac
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
-	iftruefwd UnknownScript_0xbdda8
+	iftruefwd .WantsRematch
 	readvar VAR_WEEKDAY
-	ifnotequal FRIDAY, UnknownScript_0xbdda8
+	ifnotequal FRIDAY, .WantsRematch
 	checktime 1 << DAY
 	iftruefwd ParryFridayDay
 
-UnknownScript_0xbdda8:
+.WantsRematch:
 	farsjump ParryBattleWithMeScript
 
-UnknownScript_0xbddac:
+.WantsBattle:
 	getlandmarkname ROUTE_45, $2
 	farsjump ParryHaventYouGottenToScript
 
@@ -21,14 +21,14 @@ ParryPhoneScript2:
 	gettrainername HIKER, PARRY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_PARRY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbddd3
+	iftruefwd .GenericCall
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
-	iftruefwd UnknownScript_0xbddd3
+	iftruefwd .GenericCall
 	farscall PhoneScript_Random2
 	ifequalfwd $0, ParryWantsBattle
 	ifequalfwd $1, ParryWantsBattle
 
-UnknownScript_0xbddd3:
+.GenericCall:
 	farsjump Phone_GenericCall_Male
 
 ParryFridayDay:

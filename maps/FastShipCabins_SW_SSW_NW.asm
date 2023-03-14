@@ -84,24 +84,24 @@ FastShipBed:
 	special Special_FadeInQuickly
 	showtext FastShipBedText2
 	checkevent EVENT_FAST_SHIP_HAS_ARRIVED
-	iftruefwd UnknownScript_0x75ae1
+	iftruefwd .AlreadyArrived
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
-	iftruefwd UnknownScript_0x75ae2
+	iftruefwd .CanArrive
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftruefwd UnknownScript_0x75ae2
-UnknownScript_0x75ae1:
+	iftruefwd .CanArrive
+.AlreadyArrived:
 	end
 
-UnknownScript_0x75ae2:
+.CanArrive:
 	playsound SFX_ELEVATOR_END
 	pause 30
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
-	iftruefwd UnknownScript_0x75af7
+	iftruefwd .ArrivedOlivine
 	showtext FastShipArrivedVermilionText
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	end
 
-UnknownScript_0x75af7:
+.ArrivedOlivine:
 	showtext FastShipArrivedOlivineText
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	end
