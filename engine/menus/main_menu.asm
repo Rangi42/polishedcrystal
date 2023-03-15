@@ -164,8 +164,8 @@ MainMenu_PrintCurrentTimeAndDay:
 if DEF(NO_RTC)
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
-	ld hl, sPlayerData + wNoRTC - wPlayerData
-	ld de, wNoRTC
+	ld hl, sPlayerData + wRTCDayHi - wPlayerData
+	ld de, wRTCDayHi
 	ld bc, 5
 	rst CopyBytes
 	call CloseSRAM

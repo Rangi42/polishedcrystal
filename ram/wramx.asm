@@ -892,18 +892,13 @@ wGameTimeFrames:: db
 
 wCurDay:: db
 
-; do not talk to the RTC hardware in the no-RTC patch
-if DEF(NO_RTC)
-wNoRTC::
-wNoRTCDayHi::   ds 1 ; copied to hRTCDayHi
-wNoRTCDayLo::   ds 1 ; copied to hRTCDayLo
-wNoRTCHours::   ds 1 ; copied to hRTCHours
-wNoRTCMinutes:: db ; copied to hRTCMinutes
-wNoRTCSeconds:: db ; copied to hRTCSeconds
-else
-; reserve equal space in RTC versions so that saved games remain compatible
-	ds 5
-endc
+; no-RTC patch needs to save/restore rtc state
+; builds with rtc will simply overwrite the saved value
+wRTCDayHi::   db
+wRTCDayLo::   db
+wRTCHours::   db
+wRTCMinutes:: db
+wRTCSeconds:: db
 
 wPlayerGoingUpStairs:: db
 

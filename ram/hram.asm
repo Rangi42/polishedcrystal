@@ -6,11 +6,7 @@ hROMBank:: db
 hROMBankBackup:: db
 hTempBank:: db
 
-hRTCDayHi::   db
-hRTCDayLo::   db
-hRTCHours::   db
-hRTCMinutes:: db
-hRTCSeconds:: db
+	ds 5 ; unused
 
 hHours:: db
 hMinutes:: db
