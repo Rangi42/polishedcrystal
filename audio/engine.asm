@@ -1264,10 +1264,8 @@ GetNoiseSample:
 	; load ptr to noise sample set in hl
 	ld hl, Drumkits
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	; get pitch
 	ld a, [wCurMusicByte]
 	swap a
@@ -1278,11 +1276,12 @@ GetNoiseSample:
 	ld e, a
 	ld d, 0
 	add hl, de
+	ld e, [hl]
 	add hl, de
 	; load sample pointer into wNoiseSampleAddress
-	ld a, [hli]
+	ld a, l
 	ld [wNoiseSampleAddressLo], a
-	ld a, [hl]
+	ld a, h
 	ld [wNoiseSampleAddressHi], a
 	; clear ????
 	xor a
