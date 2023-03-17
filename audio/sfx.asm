@@ -1,5 +1,6 @@
-SECTION "Sfx_PokeballsPlacedOnTable", ROMX
+SECTION "Sound Effects", ROMX
 
+SFXBank:
 Sfx_PokeballsPlacedOnTable:
 	channel_count 1
 	channel 5, .Ch5
@@ -13,8 +14,6 @@ Sfx_PokeballsPlacedOnTable:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_BallWiggle", ROMX
 
 Sfx_BallWiggle:
 	channel_count 1
@@ -30,8 +29,6 @@ Sfx_BallWiggle:
 	sound_ret
 
 
-SECTION "Sfx_Potion", ROMX
-
 Sfx_Potion:
 	channel_count 1
 	channel 5, .Ch5
@@ -44,8 +41,6 @@ Sfx_Potion:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_FullHeal", ROMX
 
 Sfx_FullHeal:
 	channel_count 1
@@ -62,8 +57,6 @@ Sfx_FullHeal:
 	sound_ret
 
 
-SECTION "Sfx_Menu", ROMX
-
 Sfx_Menu:
 	channel_count 1
 	channel 8, .Ch8
@@ -73,8 +66,6 @@ Sfx_Menu:
 	noise_note 8, 14, 1, 34
 	sound_ret
 
-
-SECTION "Sfx_ReadText", ROMX
 
 Sfx_ReadText:
 Sfx_ReadText2:
@@ -89,8 +80,6 @@ Sfx_ReadText2:
 	square_note 12, 10, 1, 2000
 	sound_ret
 
-
-SECTION "Sfx_Poison", ROMX
 
 Sfx_Poison:
 	channel_count 1
@@ -107,8 +96,6 @@ Sfx_Poison:
 	sound_ret
 
 
-SECTION "Sfx_GotSafariBalls", ROMX
-
 Sfx_GotSafariBalls:
 	channel_count 1
 	channel 5, .Ch5
@@ -121,8 +108,6 @@ Sfx_GotSafariBalls:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_BootPc", ROMX
 
 Sfx_BootPc:
 	channel_count 1
@@ -143,8 +128,6 @@ Sfx_BootPc:
 	sound_ret
 
 
-SECTION "Sfx_ShutDownPc", ROMX
-
 Sfx_ShutDownPc:
 	channel_count 1
 	channel 5, .Ch5
@@ -158,8 +141,6 @@ Sfx_ShutDownPc:
 	sound_ret
 
 
-SECTION "Sfx_ChoosePcOption", ROMX
-
 Sfx_ChoosePcOption:
 	channel_count 1
 	channel 5, .Ch5
@@ -172,8 +153,6 @@ Sfx_ChoosePcOption:
 	square_note 1, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_EscapeRope", ROMX
 
 Sfx_EscapeRope:
 	channel_count 1
@@ -191,8 +170,6 @@ Sfx_EscapeRope:
 	sound_ret
 
 
-SECTION "Sfx_PushButton", ROMX
-
 Sfx_PushButton:
 	channel_count 1
 	channel 5, .Ch5
@@ -206,8 +183,6 @@ Sfx_PushButton:
 	square_note 4, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_SecondPartOfItemfinder", ROMX
 
 Sfx_SecondPartOfItemfinder:
 	channel_count 1
@@ -223,8 +198,6 @@ Sfx_SecondPartOfItemfinder:
 	square_note 1, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_WarpTo", ROMX
 
 Sfx_WarpTo:
 	channel_count 1
@@ -242,8 +215,6 @@ Sfx_WarpTo:
 	sound_ret
 
 
-SECTION "Sfx_WarpFrom", ROMX
-
 Sfx_WarpFrom:
 	channel_count 1
 	channel 5, .Ch5
@@ -260,8 +231,6 @@ Sfx_WarpFrom:
 	sound_ret
 
 
-SECTION "Sfx_ChangeDexMode", ROMX
-
 Sfx_ChangeDexMode:
 	channel_count 1
 	channel 5, .Ch5
@@ -273,8 +242,6 @@ Sfx_ChangeDexMode:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_JumpOverLedge", ROMX
 
 Sfx_JumpOverLedge:
 	channel_count 1
@@ -288,8 +255,6 @@ Sfx_JumpOverLedge:
 	sound_ret
 
 
-SECTION "Sfx_GrassRustle", ROMX
-
 Sfx_GrassRustle:
 	channel_count 1
 	channel 8, .Ch8
@@ -301,8 +266,6 @@ Sfx_GrassRustle:
 	noise_note 1, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_Fly", ROMX
 
 Sfx_Fly:
 	channel_count 1
@@ -328,8 +291,6 @@ Sfx_Fly:
 	sound_ret
 
 
-SECTION "Sfx_Wrong", ROMX
-
 Sfx_Wrong:
 	channel_count 2
 	channel 5, .Ch5
@@ -354,8 +315,6 @@ Sfx_Wrong:
 	sound_ret
 
 
-SECTION "Sfx_Squeak", ROMX
-
 Sfx_Squeak:
 	channel_count 1
 	channel 5, .Ch5
@@ -367,8 +326,6 @@ Sfx_Squeak:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_Strength", ROMX
 
 Sfx_Strength:
 	channel_count 1
@@ -385,8 +342,6 @@ Sfx_Strength:
 	noise_note 8, 15, 1, 68
 	sound_ret
 
-
-SECTION "Sfx_Boat", ROMX
 
 Sfx_Boat:
 	channel_count 2
@@ -416,8 +371,6 @@ Sfx_Boat:
 	sound_ret
 
 
-SECTION "Sfx_WallOpen", ROMX
-
 Sfx_WallOpen:
 	channel_count 1
 	channel 5, .Ch5
@@ -436,8 +389,6 @@ Sfx_WallOpen:
 	sound_ret
 
 
-SECTION "Sfx_PlacePuzzlePieceDown", ROMX
-
 Sfx_PlacePuzzlePieceDown:
 	channel_count 1
 	channel 8, .Ch8
@@ -451,8 +402,6 @@ Sfx_PlacePuzzlePieceDown:
 	sound_ret
 
 
-SECTION "Sfx_EnterDoor", ROMX
-
 Sfx_EnterDoor:
 	channel_count 1
 	channel 8, .Ch8
@@ -462,8 +411,6 @@ Sfx_EnterDoor:
 	noise_note 8, 13, 1, 67
 	sound_ret
 
-
-SECTION "Sfx_SwitchPokemon", ROMX
 
 Sfx_SwitchPokemon:
 	channel_count 2
@@ -482,8 +429,6 @@ Sfx_SwitchPokemon:
 	sound_ret
 
 
-SECTION "Sfx_Tally", ROMX
-
 Sfx_Tally:
 	channel_count 2
 	channel 5, .Ch5
@@ -500,8 +445,6 @@ Sfx_Tally:
 	square_note 4, 10, 1, 1889
 	sound_ret
 
-
-SECTION "Sfx_Transaction", ROMX
 
 Sfx_Transaction:
 	channel_count 2
@@ -522,8 +465,6 @@ Sfx_Transaction:
 	sound_ret
 
 
-SECTION "Sfx_Bump", ROMX
-
 Sfx_Bump:
 	channel_count 1
 	channel 5, .Ch5
@@ -535,8 +476,6 @@ Sfx_Bump:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_ExitBuilding", ROMX
 
 Sfx_ExitBuilding:
 	channel_count 1
@@ -550,8 +489,6 @@ Sfx_ExitBuilding:
 	noise_note 6, 4, 1, 84
 	sound_ret
 
-
-SECTION "Sfx_Save", ROMX
 
 Sfx_Save:
 	channel_count 2
@@ -581,8 +518,6 @@ Sfx_Save:
 	square_note 15, 13, 2, 2017
 	sound_ret
 
-
-SECTION "Sfx_Pokeflute", ROMX
 
 Sfx_Pokeflute:
 	channel_count 1
@@ -614,8 +549,6 @@ Sfx_Pokeflute:
 	sound_ret
 
 
-SECTION "Sfx_ElevatorEnd", ROMX
-
 Sfx_ElevatorEnd:
 	channel_count 1
 	channel 5, .Ch5
@@ -630,8 +563,6 @@ Sfx_ElevatorEnd:
 	square_note 15, 2, 4, 1792
 	sound_ret
 
-
-SECTION "Sfx_ThrowBall", ROMX
 
 Sfx_ThrowBall:
 	channel_count 2
@@ -650,8 +581,6 @@ Sfx_ThrowBall:
 	sound_ret
 
 
-SECTION "Sfx_BallPoof", ROMX
-
 Sfx_BallPoof:
 	channel_count 2
 	channel 5, .Ch5
@@ -669,8 +598,6 @@ Sfx_BallPoof:
 	sound_ret
 
 
-SECTION "Sfx_Faint", ROMX
-
 Sfx_Faint:
 	channel_count 2
 	channel 5, .Ch5
@@ -687,8 +614,6 @@ Sfx_Faint:
 	noise_note 15, 15, 2, 33
 	sound_ret
 
-
-SECTION "Sfx_Run", ROMX
 
 Sfx_Run:
 	channel_count 1
@@ -708,8 +633,6 @@ Sfx_Run:
 	noise_note 8, 4, 1, 51
 	sound_ret
 
-
-SECTION "Sfx_SlotMachineStart", ROMX
 
 Sfx_SlotMachineStart:
 	channel_count 2
@@ -732,8 +655,6 @@ Sfx_SlotMachineStart:
 	sound_ret
 
 
-SECTION "Sfx_Call", ROMX
-
 Sfx_Call:
 	channel_count 1
 	channel 5, .Ch5
@@ -749,8 +670,6 @@ Sfx_Call:
 	square_note 4, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_Unknown60", ROMX
 
 Sfx_Unknown60:
 	channel_count 1
@@ -768,8 +687,6 @@ Sfx_Unknown60:
 	sound_ret
 
 
-SECTION "Sfx_Unknown61", ROMX
-
 Sfx_Unknown61:
 	channel_count 1
 	channel 8, .Ch8
@@ -779,8 +696,6 @@ Sfx_Unknown61:
 	sound_ret
 
 
-SECTION "Sfx_SwitchPockets", ROMX
-
 Sfx_SwitchPockets:
 	channel_count 1
 	channel 8, .Ch8
@@ -789,8 +704,6 @@ Sfx_SwitchPockets:
 	noise_note 4, 12, 1, 66
 	sound_ret
 
-
-SECTION "Sfx_Unknown63", ROMX
 
 Sfx_Unknown63:
 	channel_count 1
@@ -803,8 +716,6 @@ Sfx_Unknown63:
 	sound_ret
 
 
-SECTION "Sfx_Burn", ROMX
-
 Sfx_Burn:
 	channel_count 1
 	channel 8, .Ch8
@@ -814,8 +725,6 @@ Sfx_Burn:
 	noise_note 15, 15, 2, 67
 	sound_ret
 
-
-SECTION "Sfx_TitleScreenEntrance", ROMX
 
 Sfx_TitleScreenEntrance:
 	channel_count 1
@@ -831,8 +740,6 @@ Sfx_TitleScreenEntrance:
 	sound_ret
 
 
-SECTION "Sfx_Unknown66", ROMX
-
 Sfx_Unknown66:
 	channel_count 1
 	channel 5, .Ch5
@@ -845,8 +752,6 @@ Sfx_Unknown66:
 	sound_ret
 
 
-SECTION "Sfx_GetCoinFromSlots", ROMX
-
 Sfx_GetCoinFromSlots:
 	channel_count 1
 	channel 5, .Ch5
@@ -857,8 +762,6 @@ Sfx_GetCoinFromSlots:
 	square_note 8, 8, 1, 2016
 	sound_ret
 
-
-SECTION "Sfx_PayDay", ROMX
 
 Sfx_PayDay:
 	channel_count 2
@@ -880,8 +783,6 @@ Sfx_PayDay:
 	sound_ret
 
 
-SECTION "Sfx_Metronome", ROMX
-
 Sfx_Metronome:
 	channel_count 1
 	channel 5, .Ch5
@@ -902,8 +803,6 @@ Sfx_Metronome:
 	sound_ret
 
 
-SECTION "Sfx_Peck", ROMX
-
 Sfx_Peck:
 	channel_count 1
 	channel 8, .Ch8
@@ -912,8 +811,6 @@ Sfx_Peck:
 	noise_note 2, 10, 1, 18
 	sound_ret
 
-
-SECTION "Sfx_Kinesis", ROMX
 
 Sfx_Kinesis:
 	channel_count 1
@@ -927,8 +824,6 @@ Sfx_Kinesis:
 	sound_ret
 
 
-SECTION "Sfx_Lick", ROMX
-
 Sfx_Lick:
 	channel_count 1
 	channel 5, .Ch5
@@ -941,8 +836,6 @@ Sfx_Lick:
 	sound_ret
 
 
-SECTION "Sfx_Pound", ROMX
-
 Sfx_Pound:
 	channel_count 1
 	channel 8, .Ch8
@@ -952,8 +845,6 @@ Sfx_Pound:
 	sound_ret
 
 
-SECTION "Sfx_MovePuzzlePiece", ROMX
-
 Sfx_MovePuzzlePiece:
 	channel_count 1
 	channel 8, .Ch8
@@ -962,8 +853,6 @@ Sfx_MovePuzzlePiece:
 	noise_note 8, 15, 1, 84
 	sound_ret
 
-
-SECTION "Sfx_CometPunch", ROMX
 
 Sfx_CometPunch:
 	channel_count 1
@@ -976,8 +865,6 @@ Sfx_CometPunch:
 	sound_ret
 
 
-SECTION "Sfx_MegaPunch", ROMX
-
 Sfx_MegaPunch:
 	channel_count 1
 	channel 8, .Ch8
@@ -989,8 +876,6 @@ Sfx_MegaPunch:
 	sound_ret
 
 
-SECTION "Sfx_Scratch", ROMX
-
 Sfx_Scratch:
 	channel_count 1
 	channel 8, .Ch8
@@ -1000,8 +885,6 @@ Sfx_Scratch:
 	noise_note 8, 15, 1, 33
 	sound_ret
 
-
-SECTION "Sfx_Vicegrip", ROMX
 
 Sfx_Vicegrip:
 	channel_count 1
@@ -1015,8 +898,6 @@ Sfx_Vicegrip:
 	sound_ret
 
 
-SECTION "Sfx_RazorWind", ROMX
-
 Sfx_RazorWind:
 	channel_count 1
 	channel 8, .Ch8
@@ -1027,8 +908,6 @@ Sfx_RazorWind:
 	noise_note 15, 15, 1, 50
 	sound_ret
 
-
-SECTION "Sfx_Cut", ROMX
 
 Sfx_Cut:
 	channel_count 1
@@ -1041,8 +920,6 @@ Sfx_Cut:
 	noise_note 15, 15, 2, 33
 	sound_ret
 
-
-SECTION "Sfx_WingAttack", ROMX
 
 Sfx_WingAttack:
 	channel_count 1
@@ -1057,8 +934,6 @@ Sfx_WingAttack:
 	sound_ret
 
 
-SECTION "Sfx_Whirlwind", ROMX
-
 Sfx_Whirlwind:
 	channel_count 1
 	channel 8, .Ch8
@@ -1071,8 +946,6 @@ Sfx_Whirlwind:
 	sound_ret
 
 
-SECTION "Sfx_Bind", ROMX
-
 Sfx_Bind:
 	channel_count 1
 	channel 8, .Ch8
@@ -1084,8 +957,6 @@ Sfx_Bind:
 	noise_note 8, 15, 1, 101
 	sound_ret
 
-
-SECTION "Sfx_VineWhip", ROMX
 
 Sfx_VineWhip:
 	channel_count 1
@@ -1103,8 +974,6 @@ Sfx_VineWhip:
 	sound_ret
 
 
-SECTION "Sfx_DoubleKick", ROMX
-
 Sfx_DoubleKick:
 	channel_count 1
 	channel 8, .Ch8
@@ -1115,8 +984,6 @@ Sfx_DoubleKick:
 	noise_note 8, 15, 1, 68
 	sound_ret
 
-
-SECTION "Sfx_MegaKick", ROMX
 
 Sfx_MegaKick:
 	channel_count 1
@@ -1130,8 +997,6 @@ Sfx_MegaKick:
 	sound_ret
 
 
-SECTION "Sfx_Headbutt", ROMX
-
 Sfx_Headbutt:
 	channel_count 1
 	channel 8, .Ch8
@@ -1141,8 +1006,6 @@ Sfx_Headbutt:
 	noise_note 8, 15, 1, 101
 	sound_ret
 
-
-SECTION "Sfx_HornAttack", ROMX
 
 Sfx_HornAttack:
 	channel_count 1
@@ -1155,8 +1018,6 @@ Sfx_HornAttack:
 	sound_ret
 
 
-SECTION "Sfx_Tackle", ROMX
-
 Sfx_Tackle:
 	channel_count 1
 	channel 8, .Ch8
@@ -1167,8 +1028,6 @@ Sfx_Tackle:
 	sound_ret
 
 
-SECTION "Sfx_PoisonSting", ROMX
-
 Sfx_PoisonSting:
 	channel_count 1
 	channel 8, .Ch8
@@ -1178,8 +1037,6 @@ Sfx_PoisonSting:
 	noise_note 15, 15, 2, 18
 	sound_ret
 
-
-SECTION "Sfx_Powder", ROMX
 
 Sfx_Powder:
 	channel_count 1
@@ -1192,8 +1049,6 @@ Sfx_Powder:
 	sound_ret
 
 
-SECTION "Sfx_DoubleSlap", ROMX
-
 Sfx_DoubleSlap:
 	channel_count 1
 	channel 8, .Ch8
@@ -1203,8 +1058,6 @@ Sfx_DoubleSlap:
 	noise_note 8, 15, 1, 51
 	sound_ret
 
-
-SECTION "Sfx_Bite", ROMX
 
 Sfx_Bite:
 	channel_count 2
@@ -1228,8 +1081,6 @@ Sfx_Bite:
 	sound_ret
 
 
-SECTION "Sfx_JumpKick", ROMX
-
 Sfx_JumpKick:
 	channel_count 1
 	channel 8, .Ch8
@@ -1242,8 +1093,6 @@ Sfx_JumpKick:
 	sound_ret
 
 
-SECTION "Sfx_Stomp", ROMX
-
 Sfx_Stomp:
 	channel_count 1
 	channel 8, .Ch8
@@ -1253,8 +1102,6 @@ Sfx_Stomp:
 	noise_note 8, 15, 1, 100
 	sound_ret
 
-
-SECTION "Sfx_TailWhip", ROMX
 
 Sfx_TailWhip:
 	channel_count 1
@@ -1269,8 +1116,6 @@ Sfx_TailWhip:
 	sound_ret
 
 
-SECTION "Sfx_KarateChop", ROMX
-
 Sfx_KarateChop:
 	channel_count 1
 	channel 8, .Ch8
@@ -1280,8 +1125,6 @@ Sfx_KarateChop:
 	noise_note 15, 15, 2, 67
 	sound_ret
 
-
-SECTION "Sfx_Submission", ROMX
 
 Sfx_Submission:
 	channel_count 1
@@ -1295,8 +1138,6 @@ Sfx_Submission:
 	noise_note 15, 15, 2, 85
 	sound_ret
 
-
-SECTION "Sfx_WaterGun", ROMX
 
 Sfx_WaterGun:
 	channel_count 2
@@ -1316,8 +1157,6 @@ Sfx_WaterGun:
 	sound_ret
 
 
-SECTION "Sfx_SwordsDance", ROMX
-
 Sfx_SwordsDance:
 	channel_count 1
 	channel 8, .Ch8
@@ -1330,8 +1169,6 @@ Sfx_SwordsDance:
 	noise_note 15, 15, 2, 65
 	sound_ret
 
-
-SECTION "Sfx_Thunder", ROMX
 
 Sfx_Thunder:
 	channel_count 1
@@ -1347,8 +1184,6 @@ Sfx_Thunder:
 	noise_note 15, 15, 2, 84
 	sound_ret
 
-
-SECTION "Sfx_Supersonic", ROMX
 
 Sfx_Supersonic:
 	channel_count 3
@@ -1382,8 +1217,6 @@ Sfx_Supersonic:
 	sound_ret
 
 
-SECTION "Sfx_Leer", ROMX
-
 Sfx_Leer:
 	channel_count 3
 	channel 5, .Ch5
@@ -1414,8 +1247,6 @@ Sfx_Leer:
 	sound_ret
 
 
-SECTION "Sfx_Ember", ROMX
-
 Sfx_Ember:
 	channel_count 2
 	channel 5, .Ch5
@@ -1441,8 +1272,6 @@ Sfx_Ember:
 	noise_note 15, 15, 4, 172
 	sound_ret
 
-
-SECTION "Sfx_BubbleBeam", ROMX
 
 Sfx_BubbleBeam:
 	channel_count 3
@@ -1481,8 +1310,6 @@ Sfx_BubbleBeam:
 	sound_ret
 
 
-SECTION "Sfx_HydroPump", ROMX
-
 Sfx_HydroPump:
 	channel_count 2
 	channel 5, .Ch5
@@ -1511,8 +1338,6 @@ Sfx_HydroPump:
 	noise_note 8, 8, 1, 18
 	sound_ret
 
-
-SECTION "Sfx_Surf", ROMX
 
 Sfx_Surf:
 	channel_count 3
@@ -1548,8 +1373,6 @@ Sfx_Surf:
 	sound_ret
 
 
-SECTION "Sfx_Psybeam", ROMX
-
 Sfx_Psybeam:
 	channel_count 3
 	channel 5, .Ch5
@@ -1583,8 +1406,6 @@ Sfx_Psybeam:
 	sound_loop 21, .branch8
 	sound_ret
 
-
-SECTION "Sfx_Charge", ROMX
 
 Sfx_Charge:
 	channel_count 3
@@ -1622,8 +1443,6 @@ Sfx_Charge:
 	sound_ret
 
 
-SECTION "Sfx_Thundershock", ROMX
-
 Sfx_Thundershock:
 	channel_count 3
 	channel 5, .Ch5
@@ -1653,8 +1472,6 @@ Sfx_Thundershock:
 	sound_loop 9, .branch8
 	sound_ret
 
-
-SECTION "Sfx_Psychic", ROMX
 
 Sfx_Psychic:
 	channel_count 3
@@ -1694,8 +1511,6 @@ Sfx_Psychic:
 	sound_ret
 
 
-SECTION "Sfx_Screech", ROMX
-
 Sfx_Screech:
 	channel_count 2
 	channel 5, .Ch5
@@ -1720,8 +1535,6 @@ Sfx_Screech:
 	sound_ret
 
 
-SECTION "Sfx_BoneClub", ROMX
-
 Sfx_BoneClub:
 	channel_count 2
 	channel 5, .Ch5
@@ -1739,8 +1552,6 @@ Sfx_BoneClub:
 	square_note 8, 15, 1, 1793
 	sound_ret
 
-
-SECTION "Sfx_Sharpen", ROMX
 
 Sfx_Sharpen:
 	channel_count 2
@@ -1765,8 +1576,6 @@ Sfx_Sharpen:
 	square_note 8, 14, 1, 1808
 	sound_ret
 
-
-SECTION "Sfx_EggBomb", ROMX
 
 Sfx_EggBomb:
 	channel_count 3
@@ -1795,8 +1604,6 @@ Sfx_EggBomb:
 	noise_note 15, 15, 3, 86
 	sound_ret
 
-
-SECTION "Sfx_Sing", ROMX
 
 Sfx_Sing:
 	channel_count 2
@@ -1832,8 +1639,6 @@ Sfx_Sing:
 	note G_, 8
 	sound_ret
 
-
-SECTION "Sfx_HyperBeam", ROMX
 
 Sfx_HyperBeam:
 	channel_count 3
@@ -1889,8 +1694,6 @@ Sfx_HyperBeam:
 	sound_ret
 
 
-SECTION "Sfx_Shine", ROMX
-
 Sfx_Shine:
 	channel_count 1
 	channel 5, .Ch5
@@ -1905,8 +1708,6 @@ Sfx_Shine:
 	square_note 1, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_Unknown5F", ROMX
 
 Sfx_Unknown5F:
 	channel_count 3
@@ -1941,8 +1742,6 @@ Sfx_Sandstorm_Ch8:
 	sound_ret
 
 
-SECTION "Sfx_HangUp", ROMX
-
 Sfx_HangUp:
 	channel_count 1
 	channel 5, Sfx_HangUp_Ch5
@@ -1964,8 +1763,6 @@ Sfx_NoSignal_Ch5:
 	sound_loop 3, .branch5
 	sound_ret
 
-
-SECTION "Sfx_Elevator", ROMX
 
 Sfx_Elevator:
 	channel_count 4
@@ -2001,8 +1798,6 @@ Sfx_Elevator:
 	noise_note 83, 0, 0, 0
 	sound_ret
 
-
-SECTION "Sfx_LevelUp", ROMX
 
 Sfx_LevelUp:
 Sfx_DexFanfare5079:
@@ -2063,8 +1858,6 @@ Sfx_DexFanfare5079:
 	note C_, 12
 	sound_ret
 
-
-SECTION "Sfx_KeyItem", ROMX
 
 Sfx_KeyItem:
 	channel_count 4
@@ -2132,8 +1925,6 @@ Sfx_KeyItem:
 	note C_, 16
 	sound_ret
 
-
-SECTION "Sfx_DexFanfare2049", ROMX
 
 Sfx_DexFanfare2049:
 	channel_count 4
@@ -2216,8 +2007,6 @@ Sfx_DexFanfare2049:
 	sound_ret
 
 
-SECTION "Sfx_Item", ROMX
-
 Sfx_Item:
 	channel_count 4
 	channel 5, .Ch5
@@ -2293,8 +2082,6 @@ Sfx_Item:
 	rest 16
 	sound_ret
 
-
-SECTION "Sfx_CaughtMon", ROMX
 
 Sfx_CaughtMon:
 	channel_count 4
@@ -2374,8 +2161,6 @@ Sfx_CaughtMon:
 	rest 16
 	sound_ret
 
-
-SECTION "Sfx_DexFanfare80109", ROMX
 
 Sfx_DexFanfare80109:
 	channel_count 4
@@ -2469,8 +2254,6 @@ Sfx_DexFanfare80109:
 	sound_ret
 
 
-SECTION "Sfx_Fanfare2", ROMX
-
 Sfx_Fanfare2:
 	channel_count 3
 	channel 5, .Ch5
@@ -2542,8 +2325,6 @@ Sfx_Fanfare2:
 	note G#, 6
 	sound_ret
 
-
-SECTION "UnknownSfx", ROMX
 
 UnknownSfx:
 	channel_count 4
@@ -2623,8 +2404,6 @@ UnknownSfx:
 	rest 16
 	sound_ret
 
-
-SECTION "Sfx_Fanfare", ROMX
 
 Sfx_Fanfare:
 	channel_count 3
@@ -2724,8 +2503,6 @@ Sfx_Fanfare:
 	sound_ret
 
 
-SECTION "Sfx_RegisterPhoneNumber", ROMX
-
 Sfx_RegisterPhoneNumber:
 	channel_count 4
 	channel 5, .Ch5
@@ -2808,8 +2585,6 @@ Sfx_RegisterPhoneNumber:
 	sound_ret
 
 
-SECTION "Sfx_3RdPlace", ROMX
-
 Sfx_3RdPlace:
 	channel_count 3
 	channel 5, .Ch5
@@ -2863,8 +2638,6 @@ Sfx_3RdPlace:
 	note B_, 6
 	sound_ret
 
-
-SECTION "Sfx_GetEggFromDayCareLady", ROMX
 
 Sfx_GetEggFromDayCareLady:
 Sfx_GetEggFromDayCareMan:
@@ -2958,8 +2731,6 @@ Sfx_GetEggFromDayCareMan:
 	rest 12
 	sound_ret
 
-
-SECTION "Sfx_MoveDeleted", ROMX
 
 Sfx_MoveDeleted:
 	channel_count 4
@@ -3065,8 +2836,6 @@ Sfx_MoveDeleted:
 	rest 6
 	sound_ret
 
-
-SECTION "Sfx_2ndPlace", ROMX
 
 Sfx_2ndPlace:
 	channel_count 4
@@ -3179,8 +2948,6 @@ Sfx_2ndPlace:
 	sound_ret
 
 
-SECTION "Sfx_1stPlace", ROMX
-
 Sfx_1stPlace:
 	channel_count 4
 	channel 5, .Ch5
@@ -3290,8 +3057,6 @@ Sfx_1stPlace:
 	rest 6
 	sound_ret
 
-
-SECTION "Sfx_ChooseACard", ROMX
 
 Sfx_ChooseACard:
 	channel_count 4
@@ -3432,8 +3197,6 @@ Sfx_ChooseACard:
 	sound_ret
 
 
-SECTION "Sfx_GetTm", ROMX
-
 Sfx_GetTm:
 	channel_count 4
 	channel 5, .Ch5
@@ -3533,8 +3296,6 @@ Sfx_GetTm:
 	rest 6
 	sound_ret
 
-
-SECTION "Sfx_GetBadge", ROMX
 
 Sfx_GetBadge:
 	channel_count 4
@@ -3693,8 +3454,6 @@ Sfx_GetBadge:
 	sound_ret
 
 
-SECTION "Sfx_QuitSlots", ROMX
-
 Sfx_QuitSlots:
 	channel_count 4
 	channel 5, .Ch5
@@ -3805,8 +3564,6 @@ Sfx_QuitSlots:
 	sound_ret
 
 
-SECTION "Sfx_Protect", ROMX
-
 Sfx_Protect:
 	channel_count 2
 	channel 5, .Ch5
@@ -3858,8 +3615,6 @@ Sfx_Protect:
 	sound_ret
 
 
-SECTION "Sfx_Sketch", ROMX
-
 Sfx_Sketch:
 	channel_count 1
 	channel 5, .Ch5
@@ -3876,8 +3631,6 @@ Sfx_Sketch:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_RainDance", ROMX
 
 Sfx_RainDance:
 	channel_count 1
@@ -3896,8 +3649,6 @@ Sfx_RainDance:
 	noise_note 10, 3, 2, 70
 	sound_ret
 
-
-SECTION "Sfx_Aeroblast", ROMX
 
 Sfx_Aeroblast:
 	channel_count 2
@@ -3919,8 +3670,6 @@ Sfx_Aeroblast:
 	sound_ret
 
 
-SECTION "Sfx_Spark", ROMX
-
 Sfx_Spark:
 	channel_count 1
 	channel 8, .Ch8
@@ -3932,8 +3681,6 @@ Sfx_Spark:
 	sound_loop 2, .branch8
 	sound_ret
 
-
-SECTION "Sfx_Curse", ROMX
 
 Sfx_Curse:
 	channel_count 2
@@ -3952,8 +3699,6 @@ Sfx_Curse:
 	noise_note 20, 9, -2, 9
 	sound_ret
 
-
-SECTION "Sfx_Rage", ROMX
 
 Sfx_Rage:
 	channel_count 2
@@ -3974,8 +3719,6 @@ Sfx_Rage:
 	sound_ret
 
 
-SECTION "Sfx_Thief", ROMX
-
 Sfx_Thief:
 	channel_count 1
 	channel 8, .Ch8
@@ -3989,8 +3732,6 @@ Sfx_Thief:
 	sound_loop 2, .branch8
 	sound_ret
 
-
-SECTION "Sfx_Thief2", ROMX
 
 Sfx_Thief2:
 	channel_count 1
@@ -4016,8 +3757,6 @@ Sfx_Thief2:
 	sound_ret
 
 
-SECTION "Sfx_SpiderWeb", ROMX
-
 Sfx_SpiderWeb:
 	channel_count 2
 	channel 5, .Ch5
@@ -4040,8 +3779,6 @@ Sfx_SpiderWeb:
 	noise_note 32, 14, -7, 0
 	sound_ret
 
-
-SECTION "Sfx_MindReader", ROMX
 
 Sfx_MindReader:
 	channel_count 2
@@ -4073,8 +3810,6 @@ Sfx_MindReader:
 	sound_ret
 
 
-SECTION "Sfx_Nightmare", ROMX
-
 Sfx_Nightmare:
 	channel_count 1
 	channel 5, .Ch5
@@ -4098,8 +3833,6 @@ Sfx_Nightmare:
 	sound_ret
 
 
-SECTION "Sfx_Snore", ROMX
-
 Sfx_Snore:
 	channel_count 1
 	channel 8, .Ch8
@@ -4114,8 +3847,6 @@ Sfx_Snore:
 	sound_ret
 
 
-SECTION "Sfx_SweetKiss", ROMX
-
 Sfx_SweetKiss:
 	channel_count 1
 	channel 5, .Ch5
@@ -4129,8 +3860,6 @@ Sfx_SweetKiss:
 	square_note 26, 15, 1, 2018
 	sound_ret
 
-
-SECTION "Sfx_SweetKiss2", ROMX
 
 Sfx_SweetKiss2:
 	channel_count 1
@@ -4150,8 +3879,6 @@ Sfx_SweetKiss2:
 	sound_ret
 
 
-SECTION "Sfx_BellyDrum", ROMX
-
 Sfx_BellyDrum:
 	channel_count 2
 	channel 5, .Ch5
@@ -4169,8 +3896,6 @@ Sfx_BellyDrum:
 	sound_ret
 
 
-SECTION "Sfx_Toxic", ROMX
-
 Sfx_Toxic:
 	channel_count 1
 	channel 5, .Ch5
@@ -4184,8 +3909,6 @@ Sfx_Toxic:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_SludgeBomb", ROMX
 
 Sfx_SludgeBomb:
 	channel_count 2
@@ -4209,8 +3932,6 @@ Sfx_SludgeBomb:
 	sound_ret
 
 
-SECTION "Sfx_Foresight", ROMX
-
 Sfx_Foresight:
 	channel_count 1
 	channel 5, .Ch5
@@ -4225,8 +3946,6 @@ Sfx_Foresight:
 	square_note 8, 9, 1, 2010
 	sound_ret
 
-
-SECTION "Sfx_Spite", ROMX
 
 Sfx_Spite:
 	channel_count 1
@@ -4259,8 +3978,6 @@ Sfx_Spite:
 	sound_ret
 
 
-SECTION "Sfx_Outrage", ROMX
-
 Sfx_Outrage:
 	channel_count 1
 	channel 8, .Ch8
@@ -4273,8 +3990,6 @@ Sfx_Outrage:
 	noise_note 11, 14, 1, 89
 	sound_ret
 
-
-SECTION "Sfx_PerishSong", ROMX
 
 Sfx_PerishSong:
 	channel_count 2
@@ -4304,8 +4019,6 @@ Sfx_PerishSong:
 	toggle_sfx
 	sound_ret
 
-
-SECTION "Sfx_GigaDrain", ROMX
 
 Sfx_GigaDrain:
 	channel_count 2
@@ -4337,8 +4050,6 @@ Sfx_GigaDrain:
 	sound_ret
 
 
-SECTION "Sfx_Attract", ROMX
-
 Sfx_Attract:
 	channel_count 1
 	channel 5, .Ch5
@@ -4354,8 +4065,6 @@ Sfx_Attract:
 	sound_ret
 
 
-SECTION "Sfx_Kinesis2", ROMX
-
 Sfx_Kinesis2:
 	channel_count 1
 	channel 5, .Ch5
@@ -4367,8 +4076,6 @@ Sfx_Kinesis2:
 	square_note 20, 15, 1, 1988
 	sound_ret
 
-
-SECTION "Sfx_ZapCannon", ROMX
 
 Sfx_ZapCannon:
 	channel_count 1
@@ -4382,8 +4089,6 @@ Sfx_ZapCannon:
 	noise_note 8, 14, 1, 73
 	sound_ret
 
-
-SECTION "Sfx_MeanLook", ROMX
 
 Sfx_MeanLook:
 	channel_count 1
@@ -4407,8 +4112,6 @@ Sfx_MeanLook:
 	sound_ret
 
 
-SECTION "Sfx_HealBell", ROMX
-
 Sfx_HealBell:
 	channel_count 1
 	channel 5, .Ch5
@@ -4421,8 +4124,6 @@ Sfx_HealBell:
 	square_note 8, 13, 1, 2011
 	sound_ret
 
-
-SECTION "Sfx_Return", ROMX
 
 Sfx_Return:
 	channel_count 1
@@ -4440,8 +4141,6 @@ Sfx_Return:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_ExpBar", ROMX
 
 Sfx_ExpBar:
 	channel_count 1
@@ -4463,8 +4162,6 @@ Sfx_ExpBar:
 	sound_ret
 
 
-SECTION "Sfx_MilkDrink", ROMX
-
 Sfx_MilkDrink:
 	channel_count 1
 	channel 5, .Ch5
@@ -4483,8 +4180,6 @@ Sfx_MilkDrink:
 	sound_ret
 
 
-SECTION "Sfx_Present", ROMX
-
 Sfx_Present:
 	channel_count 1
 	channel 5, .Ch5
@@ -4500,8 +4195,6 @@ Sfx_Present:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_MorningSun", ROMX
 
 Sfx_MorningSun:
 	channel_count 1
@@ -4521,8 +4214,6 @@ Sfx_MorningSun:
 	sound_ret
 
 
-SECTION "Sfx_Moonlight", ROMX
-
 Sfx_Moonlight:
 	channel_count 1
 	channel 5, .Ch5
@@ -4538,8 +4229,6 @@ Sfx_Moonlight:
 	square_note 16, 8, 1, 2016
 	sound_ret
 
-
-SECTION "Sfx_Encore", ROMX
 
 Sfx_Encore:
 	channel_count 2
@@ -4563,8 +4252,6 @@ Sfx_Encore:
 	sound_ret
 
 
-SECTION "Sfx_BeatUp", ROMX
-
 Sfx_BeatUp:
 	channel_count 1
 	channel 8, .Ch8
@@ -4577,8 +4264,6 @@ Sfx_BeatUp:
 	noise_note 6, 13, 1, 36
 	sound_ret
 
-
-SECTION "Sfx_SweetScent", ROMX
 
 Sfx_SweetScent:
 	channel_count 1
@@ -4594,8 +4279,6 @@ Sfx_SweetScent:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_BatonPass", ROMX
 
 Sfx_BatonPass:
 	channel_count 2
@@ -4619,8 +4302,6 @@ Sfx_BatonPass:
 	sound_ret
 
 
-SECTION "Sfx_EggCrack", ROMX
-
 Sfx_EggCrack:
 	channel_count 1
 	channel 5, .Ch5
@@ -4636,8 +4317,6 @@ Sfx_EggCrack:
 	note F#, 1
 	sound_ret
 
-
-SECTION "Sfx_Evolved", ROMX
 
 Sfx_Evolved:
 	channel_count 1
@@ -4663,8 +4342,6 @@ Sfx_Evolved:
 	note C_, 16
 	sound_ret
 
-
-SECTION "Sfx_MasterBall", ROMX
 
 Sfx_MasterBall:
 	channel_count 1
@@ -4701,8 +4378,6 @@ Sfx_MasterBall:
 	sound_ret
 
 
-SECTION "Sfx_EggHatch", ROMX
-
 Sfx_EggHatch:
 	channel_count 1
 	channel 5, .Ch5
@@ -4726,8 +4401,6 @@ Sfx_EggHatch:
 	sound_ret
 
 
-SECTION "Sfx_GsIntroCharizardFireball", ROMX
-
 Sfx_GsIntroCharizardFireball:
 	channel_count 1
 	channel 8, .Ch8
@@ -4748,8 +4421,6 @@ Sfx_GsIntroCharizardFireball:
 	sound_ret
 
 
-SECTION "Sfx_GsIntroPokemonAppears", ROMX
-
 Sfx_GsIntroPokemonAppears:
 	channel_count 1
 	channel 8, .Ch8
@@ -4764,8 +4435,6 @@ Sfx_GsIntroPokemonAppears:
 	noise_note 8, 15, 1, 0
 	sound_ret
 
-
-SECTION "Sfx_Flash", ROMX
 
 Sfx_Flash:
 	channel_count 1
@@ -4787,8 +4456,6 @@ Sfx_Flash:
 	sound_ret
 
 
-SECTION "Sfx_GameFreakLogoGs", ROMX
-
 Sfx_GameFreakLogoGs:
 	channel_count 1
 	channel 5, .Ch5
@@ -4809,8 +4476,6 @@ Sfx_GameFreakLogoGs:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_DexFanfareLessThan20", ROMX
 
 Sfx_DexFanfareLessThan20:
 	channel_count 4
@@ -4890,8 +4555,6 @@ Sfx_DexFanfareLessThan20:
 	rest 12
 	sound_ret
 
-
-SECTION "Sfx_DexFanfare140169", ROMX
 
 Sfx_DexFanfare140169:
 	channel_count 4
@@ -4998,8 +4661,6 @@ Sfx_DexFanfare140169:
 	note D_, 8
 	sound_ret
 
-
-SECTION "Sfx_DexFanfare170199", ROMX
 
 Sfx_DexFanfare170199:
 	channel_count 4
@@ -5109,8 +4770,6 @@ Sfx_DexFanfare170199:
 
 	db $fd
 
-
-SECTION "Sfx_DexFanfare200229", ROMX
 
 Sfx_DexFanfare200229:
 	channel_count 4
@@ -5234,8 +4893,6 @@ Sfx_DexFanfare200229:
 	note B_, 12
 	sound_ret
 
-
-SECTION "Sfx_DexFanfare230Plus", ROMX
 
 Sfx_DexFanfare230Plus:
 	channel_count 4
@@ -5405,8 +5062,6 @@ Sfx_DexFanfare230Plus:
 	sound_ret
 
 
-SECTION "Sfx_NotVeryEffective", ROMX
-
 Sfx_NotVeryEffective:
 	channel_count 1
 	channel 8, .Ch8
@@ -5417,8 +5072,6 @@ Sfx_NotVeryEffective:
 	noise_note 16, 15, 1, 83
 	sound_ret
 
-
-SECTION "Sfx_Damage", ROMX
 
 Sfx_Damage:
 	channel_count 1
@@ -5432,8 +5085,6 @@ Sfx_Damage:
 	sound_ret
 
 
-SECTION "Sfx_SuperEffective", ROMX
-
 Sfx_SuperEffective:
 	channel_count 1
 	channel 8, .Ch8
@@ -5446,8 +5097,6 @@ Sfx_SuperEffective:
 	noise_note 32, 15, 2, 53
 	sound_ret
 
-
-SECTION "Sfx_BallBounce", ROMX
 
 Sfx_BallBounce:
 	channel_count 2
@@ -5480,8 +5129,6 @@ Sfx_BallBounce:
 	sound_ret
 
 
-SECTION "Sfx_SweetScent2", ROMX
-
 Sfx_SweetScent2:
 	channel_count 2
 	channel 5, .Ch5
@@ -5511,8 +5158,6 @@ Sfx_SweetScent2:
 	sound_ret
 
 
-SECTION "Sfx_HitEndOfExpBar", ROMX
-
 Sfx_HitEndOfExpBar:
 	channel_count 2
 	channel 5, .Ch5
@@ -5532,8 +5177,6 @@ Sfx_HitEndOfExpBar:
 	square_note 16, 14, 1, 1988
 	sound_ret
 
-
-SECTION "Sfx_GiveTrademon", ROMX
 
 Sfx_GiveTrademon:
 	channel_count 1
@@ -5555,8 +5198,6 @@ Sfx_GiveTrademon:
 	sound_ret
 
 
-SECTION "Sfx_GetTrademon", ROMX
-
 Sfx_GetTrademon:
 	channel_count 1
 	channel 5, .Ch5
@@ -5576,8 +5217,6 @@ Sfx_GetTrademon:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_TrainArrived", ROMX
 
 Sfx_TrainArrived:
 	channel_count 3
@@ -5611,8 +5250,6 @@ Sfx_TrainArrived:
 	sound_ret
 
 
-SECTION "Sfx_2Boops", ROMX
-
 Sfx_2Boops:
 	channel_count 1
 	channel 5, .Ch5
@@ -5629,8 +5266,6 @@ Sfx_2Boops:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_TitleScreenIntro", ROMX
 
 Sfx_TitleScreenIntro:
 	channel_count 1
@@ -5649,8 +5284,6 @@ Sfx_TitleScreenIntro:
 	sound_ret
 
 
-SECTION "Sfx_StopSlot", ROMX
-
 Sfx_StopSlot:
 	channel_count 1
 	channel 5, .Ch5
@@ -5662,8 +5295,6 @@ Sfx_StopSlot:
 	sound_ret
 
 
-SECTION "Sfx_GlassTing", ROMX
-
 Sfx_GlassTing:
 	channel_count 1
 	channel 5, .Ch5
@@ -5673,8 +5304,6 @@ Sfx_GlassTing:
 	square_note 32, 13, 1, 2012
 	sound_ret
 
-
-SECTION "Sfx_GlassTing2", ROMX
 
 Sfx_GlassTing2:
 	channel_count 2
@@ -5692,8 +5321,6 @@ Sfx_GlassTing2:
 	sound_ret
 
 
-SECTION "Sfx_IntroUnown1", ROMX
-
 Sfx_IntroUnown1:
 	channel_count 1
 	channel 5, .Ch5
@@ -5706,8 +5333,6 @@ Sfx_IntroUnown1:
 	sound_ret
 
 
-SECTION "Sfx_IntroUnown2", ROMX
-
 Sfx_IntroUnown2:
 	channel_count 1
 	channel 6, .Ch6
@@ -5719,8 +5344,6 @@ Sfx_IntroUnown2:
 	square_note 32, 14, 2, 1880
 	sound_ret
 
-
-SECTION "Sfx_IntroUnown3", ROMX
 
 Sfx_IntroUnown3:
 	channel_count 1
@@ -5737,8 +5360,6 @@ Sfx_IntroUnown3:
 	sound_ret
 
 
-SECTION "Sfx_DittoPopUp", ROMX
-
 Sfx_DittoPopUp:
 	channel_count 1
 	channel 5, .Ch5
@@ -5754,8 +5375,6 @@ Sfx_DittoPopUp:
 	sound_ret
 
 
-SECTION "Sfx_DittoTransform", ROMX
-
 Sfx_DittoTransform:
 	channel_count 1
 	channel 5, .Ch5
@@ -5770,8 +5389,6 @@ Sfx_DittoTransform:
 	sound_ret
 
 
-SECTION "Sfx_IntroSuicune1", ROMX
-
 Sfx_IntroSuicune1:
 	channel_count 1
 	channel 8, .Ch8
@@ -5781,8 +5398,6 @@ Sfx_IntroSuicune1:
 	noise_note 2, 9, 1, 35
 	sound_ret
 
-
-SECTION "Sfx_IntroPichu", ROMX
 
 Sfx_IntroPichu:
 	channel_count 1
@@ -5797,8 +5412,6 @@ Sfx_IntroPichu:
 	square_note 2, 8, 8, 1910
 	sound_ret
 
-
-SECTION "Sfx_IntroSuicune2", ROMX
 
 Sfx_IntroSuicune2:
 	channel_count 1
@@ -5824,8 +5437,6 @@ Sfx_IntroSuicune2:
 	sound_ret
 
 
-SECTION "Sfx_IntroSuicune3", ROMX
-
 Sfx_IntroSuicune3:
 	channel_count 1
 	channel 8, .Ch8
@@ -5838,8 +5449,6 @@ Sfx_IntroSuicune3:
 	noise_note 4, 2, 4, 16
 	sound_ret
 
-
-SECTION "Sfx_DittoBounce", ROMX
 
 Sfx_DittoBounce:
 	channel_count 1
@@ -5854,8 +5463,6 @@ Sfx_DittoBounce:
 	square_note 16, 11, 1, 1056
 	sound_ret
 
-
-SECTION "Sfx_IntroSuicune4", ROMX
 
 Sfx_IntroSuicune4:
 	channel_count 1
@@ -5875,8 +5482,6 @@ Sfx_IntroSuicune4:
 	noise_note 32, 7, 2, 0
 	sound_ret
 
-
-SECTION "Sfx_GameFreakPresents", ROMX
 
 Sfx_GameFreakPresents:
 	channel_count 1
@@ -5905,8 +5510,6 @@ Sfx_GameFreakPresents:
 	sound_ret
 
 
-SECTION "Sfx_Tingle", ROMX
-
 Sfx_Tingle:
 	channel_count 1
 	channel 5, .Ch5
@@ -5931,8 +5534,6 @@ Sfx_Tingle:
 	sound_ret
 
 
-SECTION "Sfx_TwoPcBeeps", ROMX
-
 Sfx_TwoPcBeeps:
 	channel_count 1
 	channel 5, .Ch5
@@ -5945,8 +5546,6 @@ Sfx_TwoPcBeeps:
 	square_note 2, 2, 8, 1986
 	sound_ret
 
-
-SECTION "Sfx_4NoteDitty", ROMX
 
 Sfx_4NoteDitty:
 	channel_count 3
@@ -5994,8 +5593,6 @@ Sfx_4NoteDitty:
 	sound_ret
 
 
-SECTION "Sfx_Twinkle", ROMX
-
 Sfx_Twinkle:
 	channel_count 1
 	channel 5, .Ch5
@@ -6026,8 +5623,6 @@ Sfx_Twinkle:
 	sound_ret
 
 
-SECTION "Sfx_Puddle", ROMX
-
 Sfx_Puddle:
 	channel_count 1
 	channel 5, .Ch5
@@ -6039,8 +5634,6 @@ Sfx_Puddle:
 	pitch_sweep 0, 8
 	sound_ret
 
-
-SECTION "Sfx_AbilitySlideout", ROMX
 
 Sfx_AbilitySlideout:
 	channel_count 1
