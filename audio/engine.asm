@@ -1264,10 +1264,8 @@ GetNoiseSample:
 	; load ptr to noise sample set in hl
 	ld hl, Drumkits
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	; get pitch
 	ld a, [wCurMusicByte]
 	swap a
@@ -1278,11 +1276,12 @@ GetNoiseSample:
 	ld e, a
 	ld d, 0
 	add hl, de
+	ld e, [hl]
 	add hl, de
 	; load sample pointer into wNoiseSampleAddress
-	ld a, [hli]
+	ld a, l
 	ld [wNoiseSampleAddressLo], a
-	ld a, [hl]
+	ld a, h
 	ld [wNoiseSampleAddressHi], a
 	; clear ????
 	xor a
@@ -2414,16 +2413,15 @@ _PlaySFX::
 	inc hl
 	ld [hl], d
 	ld hl, SFX
-	add hl, de ; three
-	add hl, de ; byte
-	add hl, de ; pointers
-	; get bank
-	ld a, [hli]
-	ld [wMusicBank], a
+	add hl, de
+	add hl, de
 	; get address
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
+	; get bank
+	ld a, BANK(SFXBank)
+	ld [wMusicBank], a
 	; get # channels
 	call LoadMusicByte
 	rlca ; top 2
@@ -2465,15 +2463,14 @@ PlayStereoSFX::
 	ld hl, SFX
 	add hl, de
 	add hl, de
-	add hl, de
 
-; bank
-	ld a, [hli]
-	ld [wMusicBank], a
 ; address
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
+; bank
+	ld a, BANK(SFXBank)
+	ld [wMusicBank], a
 
 ; bit 2-3
 	call LoadMusicByte

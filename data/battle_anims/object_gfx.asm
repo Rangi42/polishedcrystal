@@ -54,32 +54,32 @@ AnimObjGFX:
 	dbw 10, AnimObjPokeBallBGGFX
 	assert_table_length NUM_ANIM_GFX + 1
 
-AnimBallObjGFX:
+AnimBallObjGFX: ; far-ok
 ; entries correspond to poke ball item constants
 	table_width 2, AnimBallObjGFX
-	dw AnimObjParkBallGFX ; far-ok
-	dw AnimObjPokeBallGFX ; far-ok
-	dw AnimObjGreatBallGFX ; far-ok
-	dw AnimObjUltraBallGFX ; far-ok
-	dw AnimObjMasterBallGFX ; far-ok
-	dw AnimObjSafariBallGFX ; far-ok
-	dw AnimObjLevelBallGFX ; far-ok
-	dw AnimObjLureBallGFX ; far-ok
-	dw AnimObjMoonBallGFX ; far-ok
-	dw AnimObjFriendBallGFX ; far-ok
-	dw AnimObjFastBallGFX ; far-ok
-	dw AnimObjHeavyBallGFX ; far-ok
-	dw AnimObjLoveBallGFX ; far-ok
-	dw AnimObjRepeatBallGFX ; far-ok
-	dw AnimObjTimerBallGFX ; far-ok
-	dw AnimObjNestBallGFX ; far-ok
-	dw AnimObjNetBallGFX ; far-ok
-	dw AnimObjDiveBallGFX ; far-ok
-	dw AnimObjLuxuryBallGFX ; far-ok
-	dw AnimObjHealBallGFX ; far-ok
-	dw AnimObjQuickBallGFX ; far-ok
-	dw AnimObjDuskBallGFX ; far-ok
-	dw AnimObjDreamBallGFX ; far-ok
-	dw AnimObjPremierBallGFX ; far-ok
-	dw AnimObjCherishBallGFX ; far-ok
+	dw AnimObjParkBallGFX
+	dw AnimObjPokeBallGFX
+	dw AnimObjGreatBallGFX
+	dw AnimObjUltraBallGFX
+	dw AnimObjMasterBallGFX
+	dw AnimObjSafariBallGFX
+	dw AnimObjLevelBallGFX
+	dw AnimObjLureBallGFX
+	dw AnimObjMoonBallGFX
+	dw AnimObjFriendBallGFX
+	dw AnimObjFastBallGFX
+	dw AnimObjHeavyBallGFX
+	dw AnimObjLoveBallGFX
+	dw AnimObjRepeatBallGFX
+	dw AnimObjTimerBallGFX
+	dw AnimObjNestBallGFX
+	dw AnimObjNetBallGFX
+	dw AnimObjDiveBallGFX
+	dw AnimObjLuxuryBallGFX
+	dw AnimObjHealBallGFX
+	dw AnimObjQuickBallGFX
+	dw AnimObjDuskBallGFX
+	dw AnimObjDreamBallGFX
+	dw AnimObjPremierBallGFX
+	dw AnimObjCherishBallGFX
 	assert_table_length NUM_POKE_BALLS
