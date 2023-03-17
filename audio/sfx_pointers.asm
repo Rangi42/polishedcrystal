@@ -1,213 +1,213 @@
 SFX:
 ; entries correspond to SFX_* constants
-	table_width 3, SFX
-	dba Sfx_DexFanfare5079
-	dba Sfx_Item
-	dba Sfx_CaughtMon
-	dba Sfx_PokeballsPlacedOnTable
-	dba Sfx_Potion
-	dba Sfx_FullHeal
-	dba Sfx_Menu
-	dba Sfx_ReadText
-	dba Sfx_ReadText2
-	dba Sfx_DexFanfare2049
-	dba Sfx_DexFanfare80109
-	dba Sfx_Poison
-	dba Sfx_GotSafariBalls
-	dba Sfx_BootPc
-	dba Sfx_ShutDownPc
-	dba Sfx_ChoosePcOption
-	dba Sfx_EscapeRope
-	dba Sfx_PushButton
-	dba Sfx_SecondPartOfItemfinder
-	dba Sfx_WarpTo
-	dba Sfx_WarpFrom
-	dba Sfx_ChangeDexMode
-	dba Sfx_JumpOverLedge
-	dba Sfx_GrassRustle
-	dba Sfx_Fly
-	dba Sfx_Wrong
-	dba Sfx_Squeak
-	dba Sfx_Strength
-	dba Sfx_Boat
-	dba Sfx_WallOpen
-	dba Sfx_PlacePuzzlePieceDown
-	dba Sfx_EnterDoor
-	dba Sfx_SwitchPokemon
-	dba Sfx_Tally
-	dba Sfx_Transaction
-	dba Sfx_ExitBuilding
-	dba Sfx_Bump
-	dba Sfx_Save
-	dba Sfx_Pokeflute
-	dba Sfx_ElevatorEnd
-	dba Sfx_ThrowBall
-	dba Sfx_BallPoof
-	dba Sfx_Faint
-	dba Sfx_Run
-	dba Sfx_SlotMachineStart
-	dba Sfx_Fanfare
-	dba Sfx_Peck
-	dba Sfx_Kinesis
-	dba Sfx_Lick
-	dba Sfx_Pound
-	dba Sfx_MovePuzzlePiece
-	dba Sfx_CometPunch
-	dba Sfx_MegaPunch
-	dba Sfx_Scratch
-	dba Sfx_Vicegrip
-	dba Sfx_RazorWind
-	dba Sfx_Cut
-	dba Sfx_WingAttack
-	dba Sfx_Whirlwind
-	dba Sfx_Bind
-	dba Sfx_VineWhip
-	dba Sfx_DoubleKick
-	dba Sfx_MegaKick
-	dba Sfx_Headbutt
-	dba Sfx_HornAttack
-	dba Sfx_Tackle
-	dba Sfx_PoisonSting
-	dba Sfx_Powder
-	dba Sfx_DoubleSlap
-	dba Sfx_Bite
-	dba Sfx_JumpKick
-	dba Sfx_Stomp
-	dba Sfx_TailWhip
-	dba Sfx_KarateChop
-	dba Sfx_Submission
-	dba Sfx_WaterGun
-	dba Sfx_SwordsDance
-	dba Sfx_Thunder
-	dba Sfx_Supersonic
-	dba Sfx_Leer
-	dba Sfx_Ember
-	dba Sfx_BubbleBeam
-	dba Sfx_HydroPump
-	dba Sfx_Surf
-	dba Sfx_Psybeam
-	dba Sfx_Charge
-	dba Sfx_Thundershock
-	dba Sfx_Psychic
-	dba Sfx_Screech
-	dba Sfx_BoneClub
-	dba Sfx_Sharpen
-	dba Sfx_EggBomb
-	dba Sfx_Sing
-	dba Sfx_HyperBeam
-	dba Sfx_Shine
-	dba Sfx_Unknown5F
-	dba Sfx_Unknown60
-	dba Sfx_Unknown61
-	dba Sfx_SwitchPockets
-	dba Sfx_Unknown63
-	dba Sfx_Burn
-	dba Sfx_TitleScreenEntrance
-	dba Sfx_Unknown66
-	dba Sfx_GetCoinFromSlots
-	dba Sfx_PayDay
-	dba Sfx_Metronome
-	dba Sfx_Call
-	dba Sfx_HangUp
-	dba Sfx_NoSignal
-	dba Sfx_Sandstorm
-	dba Sfx_Elevator
-	dba Sfx_Protect
-	dba Sfx_Sketch
-	dba Sfx_RainDance
-	dba Sfx_Aeroblast
-	dba Sfx_Spark
-	dba Sfx_Curse
-	dba Sfx_Rage
-	dba Sfx_Thief
-	dba Sfx_Thief2
-	dba Sfx_SpiderWeb
-	dba Sfx_MindReader
-	dba Sfx_Nightmare
-	dba Sfx_Snore
-	dba Sfx_SweetKiss
-	dba Sfx_SweetKiss2
-	dba Sfx_BellyDrum
-	dba Sfx_Toxic
-	dba Sfx_SludgeBomb
-	dba Sfx_Foresight
-	dba Sfx_Spite
-	dba Sfx_Outrage
-	dba Sfx_PerishSong
-	dba Sfx_GigaDrain
-	dba Sfx_Attract
-	dba Sfx_Kinesis2
-	dba Sfx_ZapCannon
-	dba Sfx_MeanLook
-	dba Sfx_HealBell
-	dba Sfx_Return
-	dba Sfx_ExpBar
-	dba Sfx_MilkDrink
-	dba Sfx_Present
-	dba Sfx_MorningSun
-	dba Sfx_LevelUp
-	dba Sfx_KeyItem
-	dba Sfx_Fanfare2
-	dba Sfx_RegisterPhoneNumber
-	dba Sfx_3RdPlace
-	dba Sfx_GetEggFromDayCareMan
-	dba Sfx_GetEggFromDayCareLady
-	dba Sfx_MoveDeleted
-	dba Sfx_2ndPlace
-	dba Sfx_1stPlace
-	dba Sfx_ChooseACard
-	dba Sfx_GetTm
-	dba Sfx_GetBadge
-	dba Sfx_QuitSlots
-	dba Sfx_EggCrack
-	dba Sfx_DexFanfareLessThan20
-	dba Sfx_DexFanfare140169
-	dba Sfx_DexFanfare170199
-	dba Sfx_DexFanfare200229
-	dba Sfx_DexFanfare230Plus
-	dba Sfx_Evolved
-	dba Sfx_MasterBall
-	dba Sfx_EggHatch
-	dba Sfx_GsIntroCharizardFireball
-	dba Sfx_GsIntroPokemonAppears
-	dba Sfx_Flash
-	dba Sfx_GameFreakLogoGs
-	dba Sfx_NotVeryEffective
-	dba Sfx_Damage
-	dba Sfx_SuperEffective
-	dba Sfx_BallBounce
-	dba Sfx_Moonlight
-	dba Sfx_Encore
-	dba Sfx_BeatUp
-	dba Sfx_BatonPass
-	dba Sfx_BallWiggle
-	dba Sfx_SweetScent
-	dba Sfx_SweetScent2
-	dba Sfx_HitEndOfExpBar
-	dba Sfx_GiveTrademon
-	dba Sfx_GetTrademon
-	dba Sfx_TrainArrived
-	dba Sfx_StopSlot
-	dba Sfx_2Boops
-	dba Sfx_GlassTing
-	dba Sfx_GlassTing2
-	dba Sfx_IntroUnown1
-	dba Sfx_IntroUnown2
-	dba Sfx_IntroUnown3
-	dba Sfx_DittoPopUp
-	dba Sfx_DittoTransform
-	dba Sfx_IntroSuicune1
-	dba Sfx_IntroPichu
-	dba Sfx_IntroSuicune2
-	dba Sfx_IntroSuicune3
-	dba Sfx_DittoBounce
-	dba Sfx_IntroSuicune4
-	dba Sfx_GameFreakPresents
-	dba Sfx_Tingle
-	dba Sfx_TitleScreenIntro
-	dba Sfx_TwoPcBeeps
-	dba Sfx_4NoteDitty
-	dba Sfx_Twinkle
-	dba Sfx_Puddle
-	dba Sfx_AbilitySlideout
+	table_width 2, SFX
+	dw Sfx_DexFanfare5079 ; far-ok
+	dw Sfx_Item ; far-ok
+	dw Sfx_CaughtMon ; far-ok
+	dw Sfx_PokeballsPlacedOnTable ; far-ok
+	dw Sfx_Potion ; far-ok
+	dw Sfx_FullHeal ; far-ok
+	dw Sfx_Menu ; far-ok
+	dw Sfx_ReadText ; far-ok
+	dw Sfx_ReadText2 ; far-ok
+	dw Sfx_DexFanfare2049 ; far-ok
+	dw Sfx_DexFanfare80109 ; far-ok
+	dw Sfx_Poison ; far-ok
+	dw Sfx_GotSafariBalls ; far-ok
+	dw Sfx_BootPc ; far-ok
+	dw Sfx_ShutDownPc ; far-ok
+	dw Sfx_ChoosePcOption ; far-ok
+	dw Sfx_EscapeRope ; far-ok
+	dw Sfx_PushButton ; far-ok
+	dw Sfx_SecondPartOfItemfinder ; far-ok
+	dw Sfx_WarpTo ; far-ok
+	dw Sfx_WarpFrom ; far-ok
+	dw Sfx_ChangeDexMode ; far-ok
+	dw Sfx_JumpOverLedge ; far-ok
+	dw Sfx_GrassRustle ; far-ok
+	dw Sfx_Fly ; far-ok
+	dw Sfx_Wrong ; far-ok
+	dw Sfx_Squeak ; far-ok
+	dw Sfx_Strength ; far-ok
+	dw Sfx_Boat ; far-ok
+	dw Sfx_WallOpen ; far-ok
+	dw Sfx_PlacePuzzlePieceDown ; far-ok
+	dw Sfx_EnterDoor ; far-ok
+	dw Sfx_SwitchPokemon ; far-ok
+	dw Sfx_Tally ; far-ok
+	dw Sfx_Transaction ; far-ok
+	dw Sfx_ExitBuilding ; far-ok
+	dw Sfx_Bump ; far-ok
+	dw Sfx_Save ; far-ok
+	dw Sfx_Pokeflute ; far-ok
+	dw Sfx_ElevatorEnd ; far-ok
+	dw Sfx_ThrowBall ; far-ok
+	dw Sfx_BallPoof ; far-ok
+	dw Sfx_Faint ; far-ok
+	dw Sfx_Run ; far-ok
+	dw Sfx_SlotMachineStart ; far-ok
+	dw Sfx_Fanfare ; far-ok
+	dw Sfx_Peck ; far-ok
+	dw Sfx_Kinesis ; far-ok
+	dw Sfx_Lick ; far-ok
+	dw Sfx_Pound ; far-ok
+	dw Sfx_MovePuzzlePiece ; far-ok
+	dw Sfx_CometPunch ; far-ok
+	dw Sfx_MegaPunch ; far-ok
+	dw Sfx_Scratch ; far-ok
+	dw Sfx_Vicegrip ; far-ok
+	dw Sfx_RazorWind ; far-ok
+	dw Sfx_Cut ; far-ok
+	dw Sfx_WingAttack ; far-ok
+	dw Sfx_Whirlwind ; far-ok
+	dw Sfx_Bind ; far-ok
+	dw Sfx_VineWhip ; far-ok
+	dw Sfx_DoubleKick ; far-ok
+	dw Sfx_MegaKick ; far-ok
+	dw Sfx_Headbutt ; far-ok
+	dw Sfx_HornAttack ; far-ok
+	dw Sfx_Tackle ; far-ok
+	dw Sfx_PoisonSting ; far-ok
+	dw Sfx_Powder ; far-ok
+	dw Sfx_DoubleSlap ; far-ok
+	dw Sfx_Bite ; far-ok
+	dw Sfx_JumpKick ; far-ok
+	dw Sfx_Stomp ; far-ok
+	dw Sfx_TailWhip ; far-ok
+	dw Sfx_KarateChop ; far-ok
+	dw Sfx_Submission ; far-ok
+	dw Sfx_WaterGun ; far-ok
+	dw Sfx_SwordsDance ; far-ok
+	dw Sfx_Thunder ; far-ok
+	dw Sfx_Supersonic ; far-ok
+	dw Sfx_Leer ; far-ok
+	dw Sfx_Ember ; far-ok
+	dw Sfx_BubbleBeam ; far-ok
+	dw Sfx_HydroPump ; far-ok
+	dw Sfx_Surf ; far-ok
+	dw Sfx_Psybeam ; far-ok
+	dw Sfx_Charge ; far-ok
+	dw Sfx_Thundershock ; far-ok
+	dw Sfx_Psychic ; far-ok
+	dw Sfx_Screech ; far-ok
+	dw Sfx_BoneClub ; far-ok
+	dw Sfx_Sharpen ; far-ok
+	dw Sfx_EggBomb ; far-ok
+	dw Sfx_Sing ; far-ok
+	dw Sfx_HyperBeam ; far-ok
+	dw Sfx_Shine ; far-ok
+	dw Sfx_Unknown5F ; far-ok
+	dw Sfx_Unknown60 ; far-ok
+	dw Sfx_Unknown61 ; far-ok
+	dw Sfx_SwitchPockets ; far-ok
+	dw Sfx_Unknown63 ; far-ok
+	dw Sfx_Burn ; far-ok
+	dw Sfx_TitleScreenEntrance ; far-ok
+	dw Sfx_Unknown66 ; far-ok
+	dw Sfx_GetCoinFromSlots ; far-ok
+	dw Sfx_PayDay ; far-ok
+	dw Sfx_Metronome ; far-ok
+	dw Sfx_Call ; far-ok
+	dw Sfx_HangUp ; far-ok
+	dw Sfx_NoSignal ; far-ok
+	dw Sfx_Sandstorm ; far-ok
+	dw Sfx_Elevator ; far-ok
+	dw Sfx_Protect ; far-ok
+	dw Sfx_Sketch ; far-ok
+	dw Sfx_RainDance ; far-ok
+	dw Sfx_Aeroblast ; far-ok
+	dw Sfx_Spark ; far-ok
+	dw Sfx_Curse ; far-ok
+	dw Sfx_Rage ; far-ok
+	dw Sfx_Thief ; far-ok
+	dw Sfx_Thief2 ; far-ok
+	dw Sfx_SpiderWeb ; far-ok
+	dw Sfx_MindReader ; far-ok
+	dw Sfx_Nightmare ; far-ok
+	dw Sfx_Snore ; far-ok
+	dw Sfx_SweetKiss ; far-ok
+	dw Sfx_SweetKiss2 ; far-ok
+	dw Sfx_BellyDrum ; far-ok
+	dw Sfx_Toxic ; far-ok
+	dw Sfx_SludgeBomb ; far-ok
+	dw Sfx_Foresight ; far-ok
+	dw Sfx_Spite ; far-ok
+	dw Sfx_Outrage ; far-ok
+	dw Sfx_PerishSong ; far-ok
+	dw Sfx_GigaDrain ; far-ok
+	dw Sfx_Attract ; far-ok
+	dw Sfx_Kinesis2 ; far-ok
+	dw Sfx_ZapCannon ; far-ok
+	dw Sfx_MeanLook ; far-ok
+	dw Sfx_HealBell ; far-ok
+	dw Sfx_Return ; far-ok
+	dw Sfx_ExpBar ; far-ok
+	dw Sfx_MilkDrink ; far-ok
+	dw Sfx_Present ; far-ok
+	dw Sfx_MorningSun ; far-ok
+	dw Sfx_LevelUp ; far-ok
+	dw Sfx_KeyItem ; far-ok
+	dw Sfx_Fanfare2 ; far-ok
+	dw Sfx_RegisterPhoneNumber ; far-ok
+	dw Sfx_3RdPlace ; far-ok
+	dw Sfx_GetEggFromDayCareMan ; far-ok
+	dw Sfx_GetEggFromDayCareLady ; far-ok
+	dw Sfx_MoveDeleted ; far-ok
+	dw Sfx_2ndPlace ; far-ok
+	dw Sfx_1stPlace ; far-ok
+	dw Sfx_ChooseACard ; far-ok
+	dw Sfx_GetTm ; far-ok
+	dw Sfx_GetBadge ; far-ok
+	dw Sfx_QuitSlots ; far-ok
+	dw Sfx_EggCrack ; far-ok
+	dw Sfx_DexFanfareLessThan20 ; far-ok
+	dw Sfx_DexFanfare140169 ; far-ok
+	dw Sfx_DexFanfare170199 ; far-ok
+	dw Sfx_DexFanfare200229 ; far-ok
+	dw Sfx_DexFanfare230Plus ; far-ok
+	dw Sfx_Evolved ; far-ok
+	dw Sfx_MasterBall ; far-ok
+	dw Sfx_EggHatch ; far-ok
+	dw Sfx_GsIntroCharizardFireball ; far-ok
+	dw Sfx_GsIntroPokemonAppears ; far-ok
+	dw Sfx_Flash ; far-ok
+	dw Sfx_GameFreakLogoGs ; far-ok
+	dw Sfx_NotVeryEffective ; far-ok
+	dw Sfx_Damage ; far-ok
+	dw Sfx_SuperEffective ; far-ok
+	dw Sfx_BallBounce ; far-ok
+	dw Sfx_Moonlight ; far-ok
+	dw Sfx_Encore ; far-ok
+	dw Sfx_BeatUp ; far-ok
+	dw Sfx_BatonPass ; far-ok
+	dw Sfx_BallWiggle ; far-ok
+	dw Sfx_SweetScent ; far-ok
+	dw Sfx_SweetScent2 ; far-ok
+	dw Sfx_HitEndOfExpBar ; far-ok
+	dw Sfx_GiveTrademon ; far-ok
+	dw Sfx_GetTrademon ; far-ok
+	dw Sfx_TrainArrived ; far-ok
+	dw Sfx_StopSlot ; far-ok
+	dw Sfx_2Boops ; far-ok
+	dw Sfx_GlassTing ; far-ok
+	dw Sfx_GlassTing2 ; far-ok
+	dw Sfx_IntroUnown1 ; far-ok
+	dw Sfx_IntroUnown2 ; far-ok
+	dw Sfx_IntroUnown3 ; far-ok
+	dw Sfx_DittoPopUp ; far-ok
+	dw Sfx_DittoTransform ; far-ok
+	dw Sfx_IntroSuicune1 ; far-ok
+	dw Sfx_IntroPichu ; far-ok
+	dw Sfx_IntroSuicune2 ; far-ok
+	dw Sfx_IntroSuicune3 ; far-ok
+	dw Sfx_DittoBounce ; far-ok
+	dw Sfx_IntroSuicune4 ; far-ok
+	dw Sfx_GameFreakPresents ; far-ok
+	dw Sfx_Tingle ; far-ok
+	dw Sfx_TitleScreenIntro ; far-ok
+	dw Sfx_TwoPcBeeps ; far-ok
+	dw Sfx_4NoteDitty ; far-ok
+	dw Sfx_Twinkle ; far-ok
+	dw Sfx_Puddle ; far-ok
+	dw Sfx_AbilitySlideout ; far-ok
 	assert_table_length NUM_SFX
