@@ -51,28 +51,34 @@ for filename in iglob('**/*.asm', recursive=True):
 		continue
 	cur_label = None
 	cur_bank = None
+	suppressing = False
 	with open(filename, 'r') as f:
 		for i, line in enumerate(f, 1):
 			if (m := re.match(def_rx, line)):
 				label, bank = get_label_bank(m)
 				cur_label = label
+				suppressing = False
 				if bank is not None:
 					cur_bank = bank
 				else:
 					print(f"{filename}:{i}: cannot get bank of '{label}'", file=sys.stderr)
+				if ';' in line:
+					comment = line.split(';', 1)[1].strip()
+					if suppress in comment:
+						suppressing = True
 			elif (m := re.match(ref_rx, line)):
 				label, bank = get_label_bank(m, 3)
 				if bank is not None and bank != cur_bank and bank != 0 and not re.match(ram_rx, label):
 					code, *comment = line.split(';', 1)
 					code = code.strip()
 					comment = comment[0].strip() if comment else ''
-					if suppress not in comment:
+					if suppress not in comment and not suppressing:
 						print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' in bank {bank:02X}")
 				if label in rst_funcs and m.group(1) == 'call' and not m.group(2):
 					code, *comment = line.split(';', 1)
 					code = code.strip()
 					comment = comment[0].strip() if comment else ''
-					if suppress not in comment:
+					if suppress not in comment and not suppressing:
 						print(f"{filename}:{i}: '{code}' can use 'rst ${rst_funcs[label]:02x}'")
 			elif (m := re.match(far_rx, line)):
 				label, bank = get_label_bank(m)

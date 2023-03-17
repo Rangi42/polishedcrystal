@@ -2207,7 +2207,7 @@ WinTrainerBattle:
 	ld a, [wMomSavingMoney]
 	and MOM_SAVING_MONEY_MASK
 	jr z, .KeepItAll
-	ld hl, .SentToMomTexts
+	ld hl, SentToMomTexts
 	dec a
 	ld c, a
 	ld b, 0
@@ -2252,11 +2252,6 @@ WinTrainerBattle:
 	ld [hl], a
 	ret
 
-.SentToMomTexts: ; these are all used with StdBattleTextbox
-	dw SentSomeToMomText ; far-ok
-	dw SentHalfToMomText ; far-ok
-	dw SentAllToMomText ; far-ok
-
 .CheckMaxedOutMomMoney:
 	ld hl, wMomsMoney + 2
 	ld a, [hld]
@@ -2266,6 +2261,11 @@ WinTrainerBattle:
 	ld a, [hl]
 	sbc LOW(9999999 / $10000)
 	ret
+
+SentToMomTexts: ; far-ok (these are all used with StdBattleTextbox)
+	dw SentSomeToMomText
+	dw SentHalfToMomText
+	dw SentAllToMomText
 
 AddBattleMoneyToAccount:
 	ld c, $3
