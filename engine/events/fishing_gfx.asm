@@ -44,12 +44,14 @@ LoadFishingGFX:
 	ld e, l
 	ret
 
-FishingGFXTable: ; far-ok
-	dw ChrisFishingGFX
-	dw KrisFishingGFX
-	dw CrysFishingGFX
+FishingGFXTable:
+	farbank "Fishing Graphics"
+	fardw ChrisFishingGFX
+	fardw KrisFishingGFX
+	fardw CrysFishingGFX
 
-SurfFishingGFXTable: ; far-ok
-	dw ChrisSurfFishingGFX
-	dw KrisSurfFishingGFX
-	dw CrysSurfFishingGFX
+SurfFishingGFXTable:
+	farbank "Fishing Graphics"
+	fardw ChrisSurfFishingGFX
+	fardw KrisSurfFishingGFX
+	fardw CrysSurfFishingGFX

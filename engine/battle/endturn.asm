@@ -365,11 +365,12 @@ endc
 	call GetSixteenthMaxHP
 	predef_jump SubtractHPFromUser
 
-WeatherEndedMessages: ; far-ok (these are all used with StdBattleTextbox)
-	dw BattleText_TheRainStopped
-	dw BattleText_TheSunlightFaded
-	dw BattleText_TheSandstormSubsided
-	dw BattleText_TheHailStopped
+WeatherEndedMessages:
+	farbank BattleText
+	fardw BattleText_TheRainStopped
+	fardw BattleText_TheSunlightFaded
+	fardw BattleText_TheSandstormSubsided
+	fardw BattleText_TheHailStopped
 
 HandleFutureSight:
 	call SetFastestTurn

@@ -1001,29 +1001,32 @@ DrawPackGFX:
 	lb bc, BANK("Pack Graphics"), 25
 	jmp DecompressRequest2bpp
 
-MalePackGFX: ; far-ok
-	dw PackM0GFX
-	dw PackM1GFX
-	dw PackM2GFX
-	dw PackM3GFX
-	dw PackM4GFX
-	dw PackM5GFX
+MalePackGFX:
+	farbank "Pack Graphics"
+	fardw PackM0GFX
+	fardw PackM1GFX
+	fardw PackM2GFX
+	fardw PackM3GFX
+	fardw PackM4GFX
+	fardw PackM5GFX
 
-FemalePackGFX: ; far-ok
-	dw PackF0GFX
-	dw PackF1GFX
-	dw PackF2GFX
-	dw PackF3GFX
-	dw PackF4GFX
-	dw PackF5GFX
+FemalePackGFX:
+	farbank "Pack Graphics"
+	fardw PackF0GFX
+	fardw PackF1GFX
+	fardw PackF2GFX
+	fardw PackF3GFX
+	fardw PackF4GFX
+	fardw PackF5GFX
 
-EnbyPackGFX: ; far-ok
-	dw PackX0GFX
-	dw PackX1GFX
-	dw PackX2GFX
-	dw PackX3GFX
-	dw PackX4GFX
-	dw PackX5GFX
+EnbyPackGFX:
+	farbank "Pack Graphics"
+	fardw PackX0GFX
+	fardw PackX1GFX
+	fardw PackX2GFX
+	fardw PackX3GFX
+	fardw PackX4GFX
+	fardw PackX5GFX
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad

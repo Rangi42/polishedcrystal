@@ -1,14 +1,15 @@
-Emotes: ; far-ok
+Emotes:
 ; entries correspond to EMOTE_* constants
 	table_width 2, Emotes
-	dw ShockEmote
-	dw QuestionEmote
-	dw HappyEmote
-	dw SadEmote
-	dw HeartEmote
-	dw BoltEmote
-	dw SleepEmote
-	dw FishEmote
+	farbank "Emote Graphics"
+	fardw ShockEmote
+	fardw QuestionEmote
+	fardw HappyEmote
+	fardw SadEmote
+	fardw HeartEmote
+	fardw BoltEmote
+	fardw SleepEmote
+	fardw FishEmote
 	assert_table_length NUM_EMOTES
 
 EmotePalettes:

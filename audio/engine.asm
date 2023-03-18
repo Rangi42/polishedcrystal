@@ -2418,7 +2418,7 @@ _PlaySFX::
 	ld d, [hl]
 	ld e, a
 	; get bank
-	ld a, BANK(SFXBank)
+	ld a, BANK("Sound Effects")
 	ld [wMusicBank], a
 	; get # channels
 	call LoadMusicByte
@@ -2467,7 +2467,7 @@ PlayStereoSFX::
 	ld d, [hl]
 	ld e, a
 ; bank
-	ld a, BANK(SFXBank)
+	ld a, BANK("Sound Effects")
 	ld [wMusicBank], a
 
 ; bit 2-3
