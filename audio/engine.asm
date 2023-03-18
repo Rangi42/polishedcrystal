@@ -2248,13 +2248,11 @@ _PlayCryHeader::
 	inc hl
 	ld [hl], d
 
-; 3-byte pointers (bank, address)
 	ld hl, Cries
 	add hl, de
 	add hl, de
-	add hl, de
 
-	ld a, [hli]
+	ld a, BANK("Cries")
 	ld [wMusicBank], a
 
 	ld e, [hl]
