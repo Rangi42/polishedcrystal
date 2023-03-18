@@ -716,9 +716,9 @@ BattleBGEffect_RunPicResizeScript:
 	and $f
 	ld b, a
 ; store pointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 ; get byte
 	pop hl
 	inc hl

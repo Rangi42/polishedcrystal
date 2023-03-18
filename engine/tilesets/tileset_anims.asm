@@ -21,10 +21,10 @@ _AnimateTileset::
 
 ; 2-byte parameter
 ; All functions take input de.
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 ; Function address
 	jmp IndirectHL
@@ -410,9 +410,9 @@ endr
 ScrollTileUp:
 	ld h, d
 	ld l, e
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
+	ld d, a
 	ld bc, 14
 	add hl, bc
 	ld a, 4
@@ -439,9 +439,9 @@ ScrollTileDown:
 	ld de, 14
 	push hl
 	add hl, de
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
+	ld d, a
 	pop hl
 	ld a, 4
 .loop
@@ -598,10 +598,10 @@ AnimateFarawayWaterTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	; period 8, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]
@@ -1058,10 +1058,10 @@ AnimateWhirlpoolTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	; period 4, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]
@@ -1086,10 +1086,10 @@ AnimateTinyWaterTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	; period 2, every 2 frames, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]

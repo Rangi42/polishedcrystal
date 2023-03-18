@@ -264,9 +264,9 @@ NamingScreenJoypadLoop:
 	lb bc, 1, 18
 	call ClearBox
 	ld hl, wNamingScreenDestinationPointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, wNamingScreenStringEntryCoord
 	ld a, [hli]
 	ld h, [hl]
@@ -354,9 +354,9 @@ NamingScreenJoypadLoop:
 
 .start
 	ld hl, wNamingScreenCursorObjectPointer
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $8
@@ -405,9 +405,9 @@ NamingScreenJoypadLoop:
 
 NamingScreen_PressedA_GetCursorCommand:
 	ld hl, wNamingScreenCursorObjectPointer
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	; fallthrough
 NamingScreen_GetCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_VAR2
@@ -700,9 +700,9 @@ NamingScreen_StoreEntry:
 
 NamingScreen_GetLastCharacter:
 	ld hl, wNamingScreenCursorObjectPointer
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -857,9 +857,9 @@ _ComposeMailMessage:
 	call SetPalettes
 	call NamingScreen_InitNameEntry
 	ld hl, wNamingScreenDestinationPointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, $10
 	add hl, de
 	ld [hl], "<NEXT>"
@@ -930,9 +930,9 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	lb bc, 4, 18
 	call ClearBox
 	ld hl, wNamingScreenDestinationPointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 2, 2
 	rst PlaceString
 	ld a, $1
@@ -1012,9 +1012,9 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 
 .start
 	ld hl, wNamingScreenCursorObjectPointer
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $9

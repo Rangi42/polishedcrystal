@@ -73,9 +73,9 @@ Draw2DMenu:
 
 Place2DMenuItemStrings:
 	ld hl, wMenuData_2DMenuItemStringsAddr
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	call GetMenuTextStartCoord
 	call Coord2Tile
 	call GetMenuNumberOfRows
@@ -506,9 +506,9 @@ _PushWindow::
 	ldh [rSVBK], a
 
 	ld hl, wWindowStackPointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	push de
 
 	ld b, $10

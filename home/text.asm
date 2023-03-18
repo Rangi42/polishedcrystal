@@ -474,9 +474,9 @@ DoTextUntilTerminator::
 	ld hl, TextCommands
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	pop hl
 	push de
 	ret

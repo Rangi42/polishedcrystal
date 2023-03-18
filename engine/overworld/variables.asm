@@ -45,12 +45,12 @@ _GetVarAction::
 	add hl, bc
 	add hl, bc
 	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	ld b, [hl]
-	ld a, b
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hl]
+	ld b, a
 	and RETVAR_EXECUTE
 	jmp nz, _de_
 	ld a, b

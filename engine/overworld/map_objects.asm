@@ -362,10 +362,10 @@ GetStepVector:
 	ld h, 0
 	ld de, StepVectors
 	add hl, de
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
 	ld a, [hli]
 	ld h, [hl]
 	push af
@@ -932,12 +932,11 @@ endr
 	ld hl, .dust_coords
 	add hl, de
 	add hl, de
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
 	ld hl, OBJECT_SPRITE_X_OFFSET
 	add hl, bc
-	ld [hl], d
+	ld [hl], a
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
 	ld [hl], e
@@ -1635,9 +1634,9 @@ StepFunction_StrengthBoulder:
 StepFunction_TrackingObject:
 	ld hl, OBJECT_1D
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, OBJECT_SPRITE
 	add hl, de
 	ld a, [hl]
@@ -2803,7 +2802,15 @@ InitSprites:
 	push hl
 	ld a, d
 	and $f
-	call .GetObjectStructPointer
+	add a
+	add LOW(.ObjectStructPointers)
+	ld l, a
+	adc HIGH(.ObjectStructPointers)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
 	call .InitSprite
 	pop hl
 	pop bc
@@ -2945,28 +2952,8 @@ InitSprites:
 	scf
 	ret
 
-.GetObjectStructPointer:
-	ld c, a
-	ld b, 0
-	ld hl, .Addresses
-	add hl, bc
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	ret
-
-.Addresses:
+.ObjectStructPointers:
 	dw wPlayerStruct
-	dw wObject1Struct
-	dw wObject2Struct
-	dw wObject3Struct
-	dw wObject4Struct
-	dw wObject5Struct
-	dw wObject6Struct
-	dw wObject7Struct
-	dw wObject8Struct
-	dw wObject9Struct
-	dw wObject10Struct
-	dw wObject11Struct
-	dw wObject12Struct
+for n, 1, NUM_OBJECT_STRUCTS
+	dw wObject{d:n}Struct
+endr

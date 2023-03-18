@@ -652,9 +652,9 @@ LoadNote:
 	; get frequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	; get direction of pitch wheel
 	ld hl, wChannel1PitchWheelTarget - wChannel1
 	add hl, bc
@@ -674,9 +674,9 @@ LoadNote:
 	; get frequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	; ????
 	ld hl, wChannel1PitchWheelTarget - wChannel1
 	add hl, bc
@@ -700,13 +700,11 @@ LoadNote:
 	; get frequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
 	; get distance from pitch wheel target
 	ld hl, wChannel1PitchWheelTarget - wChannel1
 	add hl, bc
-	ld a, e
 	sub [hl]
 	ld e, a
 	sbc a
@@ -777,9 +775,9 @@ HandleTrackVibrato:
 	jr z, .vibrato
 	ld hl, wChannel1CryPitch - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, wCurTrackFrequency
 	ld a, [hli]
 	ld h, [hl]
@@ -788,8 +786,8 @@ HandleTrackVibrato:
 	ld e, l
 	ld d, h
 	ld hl, wCurTrackFrequency
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 .vibrato
 	; is vibrato on?
@@ -878,9 +876,9 @@ ApplyPitchWheel:
 	; de = Frequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	; check whether pitch wheel is going up or down
 	ld hl, wChannel1Flags3 - wChannel1
 	add hl, bc
@@ -969,8 +967,8 @@ ApplyPitchWheel:
 .continue_pitch_wheel
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -1013,12 +1011,11 @@ ReadNoiseSample:
 
 	; de = [wNoiseSampleAddress]
 	ld hl, wNoiseSampleAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 
 	; is it empty?
-	ld a, e
 	or d
 	ret z
 
@@ -1041,8 +1038,8 @@ ReadNoiseSample:
 	ld [wCurTrackFrequency + 1], a
 
 	ld hl, wNoiseSampleAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 
 	ld hl, wChannel1NoteFlags - wChannel1
@@ -1121,8 +1118,8 @@ ParseMusic:
 	call GetFrequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	; ????
 	ld hl, wChannel1NoteFlags - wChannel1
@@ -1375,13 +1372,11 @@ Music_EndChannel:
 	; copy LastMusicAddress to MusicAddress
 	ld hl, wChannel1LastMusicAddress - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1397,20 +1392,20 @@ Music_CallChannel:
 	; copy MusicAddress to LastMusicAddress
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, wChannel1LastMusicAddress - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	; load pointer into MusicAddress
 	pop de
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	; set subroutine flag
 	ld hl, wChannel1Flags - wChannel1
@@ -1428,8 +1423,8 @@ Music_JumpChannel:
 	ld d, a
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1471,8 +1466,8 @@ Music_LoopChannel:
 	; load new pointer into MusicAddress
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1484,13 +1479,13 @@ Music_LoopChannel:
 	; skip to next command
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	inc de ; skip
 	inc de ; pointer
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 
@@ -1526,15 +1521,15 @@ Music_JumpIf:
 	; get address
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	; skip pointer
 	inc de
 	inc de
 	; update address
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 
@@ -1548,8 +1543,8 @@ Music_JumpIf:
 	; update pointer in MusicAddress
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1928,9 +1923,9 @@ Music_RestartChannel:
 	ld l, a
 	call GetMusicByte
 	ld h, a
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	push bc ; save current channel
 	call LoadChannel
 	call StartChannel
@@ -2036,9 +2031,9 @@ GetFrequency:
 	add hl, hl ; skip 2 bytes for each
 	ld de, FrequencyTable
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	; get our octave
 	pop af
 	; shift right by [7 - octave] bits
@@ -2153,8 +2148,8 @@ Tempo:
 	; update Tempo
 	ld hl, wChannel1Tempo - wChannel1
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	; clear ????
 	xor a
@@ -2194,8 +2189,8 @@ _PlayMusic::
 ; load music
 	call MusicOff
 	ld hl, wMusicID
-	ld [hl], e ; song number
-	inc hl
+	ld a, e
+	ld [hli], a ; song number
 	ld [hl], d ; wMusicIDHi (always 0)
 	ld hl, Music
 	add hl, de ; three
@@ -2203,8 +2198,8 @@ _PlayMusic::
 	add hl, de ; pointer
 	ld a, [hli]
 	ld [wMusicBank], a
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
 	ld d, [hl] ; music header address
 	call LoadMusicByte ; store first byte of music header in a
 	rlca
@@ -2244,8 +2239,8 @@ _PlayCryHeader::
 
 ; Overload the music id with the cry id
 	ld hl, wMusicID
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 
 	ld hl, Cries
@@ -2255,9 +2250,9 @@ _PlayCryHeader::
 	ld a, BANK("Cries")
 	ld [wMusicBank], a
 
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 
 ; Read the cry's sound header
 	call LoadMusicByte
@@ -2407,8 +2402,8 @@ _PlaySFX::
 .chscleared
 ; start reading sfx header for # chs
 	ld hl, wMusicID
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, SFX
 	add hl, de
@@ -2453,8 +2448,8 @@ PlayStereoSFX::
 
 ; else, let's go ahead with this
 	ld hl, wMusicID
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 
 ; get sfx ptr
@@ -2554,8 +2549,8 @@ LoadChannel:
 	ld hl, ChannelPointers
 	add hl, bc
 	add hl, bc
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
+	ld c, a
 	ld b, [hl] ; bc = channel pointer
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc

@@ -348,13 +348,17 @@ Slots_PayoutAnim:
 	dec hl
 	ld [hl], d
 	ld hl, wCoins
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
-	call Slot_CheckCoinCaseFull
-	jr c, .okay
+	ld d, a
+	cp HIGH(50000)
+	jr c, .not_full
+	ld a, e
+	cp LOW(50000)
+	jr nc, .full
+.not_full
 	inc de
-.okay
+.full
 	ld [hl], e
 	dec hl
 	ld [hl], d
@@ -395,20 +399,6 @@ Slots_LoadReelState:
 	inc de
 	ld a, [hli]
 	ld [de], a
-	ret
-
-Slot_CheckCoinCaseFull:
-	ld a, d
-	cp HIGH(50000)
-	jr c, .not_full
-	ld a, e
-	cp LOW(50000)
-	jr c, .not_full
-	scf
-	ret
-
-.not_full
-	and a
 	ret
 
 Slots_GetCurrentReelState:

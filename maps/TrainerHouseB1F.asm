@@ -106,9 +106,9 @@ TrainerHouseReceptionistScript:
 .GetOpponentName:
 	; based on `gettrainername`
 	call GetDailyTrainerHouseOpponent
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	farcall GetTrainerName
 	ld hl, wStringBuffer3
 	jmp CopyName2

@@ -3099,9 +3099,9 @@ Pokedex_IterateSpecies:
 .got_dex_order
 	add hl, bc
 	add hl, bc
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	pop hl
 	ret
 

@@ -124,7 +124,7 @@ OWCutJumptable:
 
 Cut_SpawnAnimateTree:
 	call Cut_Headbutt_GetPixelFacing
-	ld a, SPRITE_ANIM_INDEX_CUT_TREE ; cut tree
+	ld a, SPRITE_ANIM_INDEX_CUT_TREE
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -211,9 +211,9 @@ Cut_GetLeafSpawnCoords:
 	ld hl, .Coords
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ret
 
 .Coords:
@@ -245,9 +245,9 @@ Cut_Headbutt_GetPixelFacing:
 	ld d, 0
 	ld hl, .Coords
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ret
 
 .Coords:

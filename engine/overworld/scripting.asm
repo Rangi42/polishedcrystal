@@ -798,9 +798,9 @@ Script_trainerflagaction:
 	xor a
 	ldh [hScriptVar], a
 	ld hl, wTempTrainerEventFlagLo
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	call GetScriptByte
 	ld b, a
 	call EventFlagAction
@@ -1071,9 +1071,9 @@ ApplyEventActionAppearDisappear:
 	ld hl, MAPOBJECT_EVENT_FLAG
 	add hl, bc
 	pop bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld a, -1
 	cp e
 	jr nz, .okay
@@ -1306,10 +1306,10 @@ Script_farscall:
 
 Script_memcall:
 	call GetScriptWord
-	ld b, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld e, a
 	ld d, [hl]
 	; fallthrough
 
@@ -2047,9 +2047,9 @@ Script_givepoke:
 	ld b, a
 	jr z, .ok
 	ld hl, hScriptPos
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 rept 6
 	call GetScriptByte
 endr
