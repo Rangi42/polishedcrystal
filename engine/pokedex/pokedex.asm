@@ -352,7 +352,7 @@ Pokedex_ScrollPageMon:
 ; until we reach the end.
 	; Back up current position and offset, in case we are at the beginning/end.
 	ld hl, wPokedex_Offset
-	ld c, [hl]
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	dec hl
 	ld b, [hl]
 	ld e, b
@@ -1010,9 +1010,9 @@ Pokedex_GetPosData:
 .AddWordNTimesToDE:
 	; Add [hl16]*a to de.
 	push bc
-	ld c, [hl]
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
-	ld b, [hl]
+	ld b, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 	call SwapHLDE
 	rst AddNTimes

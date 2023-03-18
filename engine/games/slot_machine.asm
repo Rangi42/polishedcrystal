@@ -344,8 +344,8 @@ Slots_PayoutAnim:
 	jmp z, Slots_Next
 	ld e, [hl]
 	dec de
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 	ld [hl], d
 	ld hl, wCoins
 	ld a, [hli]
@@ -359,8 +359,8 @@ Slots_PayoutAnim:
 .not_full
 	inc de
 .full
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 	ld [hl], d
 	ld a, [wSlotsDelay]
 	and $7
@@ -501,14 +501,14 @@ InitReelTiles:
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
 	ld de, wShadowOAM + 16 * 4
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1TilemapAddr - wReel1
 	add hl, bc
 	ld de, Reel1Tilemap
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc
@@ -519,14 +519,14 @@ InitReelTiles:
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
 	ld de, wShadowOAM + 24 * 4
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1TilemapAddr - wReel1
 	add hl, bc
 	ld de, Reel2Tilemap
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc
@@ -537,14 +537,14 @@ InitReelTiles:
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
 	ld de, wShadowOAM + 32 * 4
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1TilemapAddr - wReel1
 	add hl, bc
 	ld de, Reel3Tilemap
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc

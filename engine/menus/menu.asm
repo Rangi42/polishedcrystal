@@ -564,8 +564,8 @@ _PushWindow::
 
 .no_overflow
 	ld hl, wWindowStackPointer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 
 	pop af
@@ -751,8 +751,8 @@ _InitVerticalMenuCursor::
 .load_at_the_top
 	ld c, 1
 .load_position
-	ld [hl], c
-	inc hl
+	ld a, c
+	ld [hli], a
 ; wMenuCursorX
 	ld a, 1
 	ld [hli], a

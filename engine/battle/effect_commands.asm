@@ -4904,8 +4904,8 @@ HandleBigRoot:
 	xor a
 	ld hl, hMultiplicand
 	ld [hli], a
-	ld [hl], b
-	inc hl
+	ld a, b
+	ld [hli], a
 	ld [hl], c
 	ld hl, hMultiplier
 	ld [hl], 13

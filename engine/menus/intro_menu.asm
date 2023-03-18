@@ -883,7 +883,7 @@ endr
 	push hl
 	ld hl, LEN_2BPP_TILE
 	add hl, de
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], b
 	pop hl
@@ -1232,8 +1232,8 @@ TitleScreenTimer:
 	ld de, 56 * 60
 .ok
 	ld hl, wTitleScreenTimer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 

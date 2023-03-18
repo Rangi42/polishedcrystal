@@ -418,16 +418,16 @@ ScrollTileUp:
 	ld a, 4
 .loop
 	ld c, [hl]
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	ld b, [hl]
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	ld e, [hl]
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	ld d, [hl]
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	dec a
 	jr nz, .loop
@@ -446,16 +446,16 @@ ScrollTileDown:
 	ld a, 4
 .loop
 	ld b, [hl]
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	ld c, [hl]
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	ld d, [hl]
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	ld e, [hl]
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	dec a
 	jr nz, .loop
@@ -1032,9 +1032,9 @@ AnimateTowerPillarTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
+	ld e, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
-	ld d, [hl]
+	ld d, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 
 	add [hl]
@@ -1167,13 +1167,13 @@ WriteTileToDE:
 
 WriteTile:
 	pop de
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], d
 rept 7
 	pop de
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], d
 endr

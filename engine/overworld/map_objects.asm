@@ -990,8 +990,8 @@ endr
 	pop bc
 	ld hl, OBJECT_1D
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -2153,10 +2153,10 @@ CopyTempObjectData:
 	add hl, bc
 	ld e, [hl]
 	pop hl
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
 	ld [hl], -1
 	ret
 
@@ -2903,8 +2903,8 @@ InitSprites:
 	inc hl
 	ld [bc], a
 	inc c
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
 	ldh a, [hCurSpriteTile]
 	bit ABSOLUTE_TILE_ID_F, e
 	jr z, .nope1

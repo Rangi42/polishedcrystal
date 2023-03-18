@@ -218,8 +218,8 @@ CopyTilemapInHBlank:
 	pop de
 	ld a, e
 	ld [hli], a
-	ld [hl], d
-	inc hl
+	ld a, d
+	ld [hli], a
 
 	pop bc
 	pop de

@@ -1086,9 +1086,9 @@ BattleBGEffect_DoubleTeam:
 	srl a
 	push af
 .loop
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	dec a
 	jr nz, .loop
@@ -1672,7 +1672,7 @@ BattleBGEffect_BetaSendOutMon1:
 	srl a
 	ld h, HIGH(wLYOverridesBackup)
 .loop2
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	inc hl
 	dec a
@@ -2410,8 +2410,8 @@ DeformWater:
 	ldh a, [hLYOverrideStart]
 	cp l
 	jr nc, .skip2
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 .skip2
 	ld a, [wBattleAnimTemp1]
 	add $4

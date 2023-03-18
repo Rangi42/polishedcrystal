@@ -314,7 +314,7 @@ ReadTrainerParty:
 	ld a, [hld]
 	ld c, a
 	ld a, [hld]
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
 	dec hl
 	ld [hl], a
 	pop hl

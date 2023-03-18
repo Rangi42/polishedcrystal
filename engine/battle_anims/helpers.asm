@@ -108,8 +108,8 @@ LoadBattleAnimGFX:
 	add hl, de
 	add hl, de
 	add hl, de
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
+	ld c, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

@@ -7305,8 +7305,8 @@ WithdrawPkmnText:
 	push bc
 	ld hl, wEnemyMonHP + 1
 	ld de, wEnemyHPAtTimeOfPlayerSwitch + 1
-	ld b, [hl]
-	dec hl
+	ld a, [hld]
+	ld b, a
 	ld a, [de]
 	sub b
 	ldh [hMultiplicand + 2], a
@@ -8469,10 +8469,10 @@ CopyBackpic:
 	ld c, $3
 	ld d, 8 * 8
 .inner_loop
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
 	ldh a, [hMapObjectIndexBuffer]
 	ld [hli], a
 	inc a

@@ -356,8 +356,8 @@ BattleAnimCmd_Jump:
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 

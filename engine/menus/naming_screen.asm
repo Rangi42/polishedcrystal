@@ -13,8 +13,8 @@ _NamingScreen:
 
 NamingScreen:
 	ld hl, wNamingScreenDestinationPointer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wNamingScreenType
 	ld [hl], b
@@ -801,8 +801,8 @@ INCLUDE "data/text/input_chars.asm"
 
 _ComposeMailMessage:
 	ld hl, wNamingScreenDestinationPointer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ldh a, [hMapAnims]
 	push af

@@ -1658,8 +1658,8 @@ GetMapCursorCoordinates:
 	ld l, a
 	ld bc, 4
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 

@@ -111,8 +111,8 @@ TradeAnimationPlayer2:
 
 RunTradeAnimSequence:
 	ld hl, wTradeAnimPointer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ldh a, [hMapAnims]
 	push af
@@ -280,8 +280,8 @@ TradeAnim_AdvanceScriptPointer:
 	ld a, [de]
 	ld [wJumptableIndex], a
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 

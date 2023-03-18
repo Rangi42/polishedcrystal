@@ -687,7 +687,7 @@ DecompressString::
 	; "c = [hli]" when b reaches 0, then carry = next bit from c
 	dec b
 	jr nz, .no_reload
-	ld c, [hl]
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 	ld b, 8
 .no_reload

@@ -320,8 +320,8 @@ Script_special:
 
 Script_memcallasm:
 	call GetScriptWord
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1379,8 +1379,8 @@ Script_farsjump:
 
 Script_memjump:
 	call GetScriptWord
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
