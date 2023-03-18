@@ -1,85 +1,95 @@
+MACRO battleanimgfx
+	db \1 ; # tiles
+	if _NARG == 2
+		fardw \2 ; label
+	else
+		dw NULL
+	endc
+ENDM
+
 AnimObjGFX:
 ; entries correspond to ANIM_GFX_* constants
 	table_width 3, AnimObjGFX
-	; # tiles, label
-	dbw  0, AnimObj00GFX
-	dbw 35, AnimObjHitGFX
-	dbw  6, AnimObjCutGFX
-	dbw  6, AnimObjFireGFX
-	dbw 20, AnimObjWaterGFX
-	dbw 26, AnimObjLightningGFX
-	dbw 18, AnimObjPlantGFX
-	dbw 12, AnimObjSmokeGFX
-	dbw  9, AnimObjExplosionGFX
-	dbw 19, AnimObjRocksGFX
-	dbw  6, AnimObjIceGFX
-	dbw 10, NULL ; use AnimBallObjGFX
-	dbw  9, AnimObjPoisonGFX
-	dbw 13, AnimObjBubbleGFX
-	dbw 16, AnimObjNoiseGFX
-	dbw  2, AnimObjPowderGFX
-	dbw 11, AnimObjBeamGFX
-	dbw  9, AnimObjSpeedGFX
-	dbw  9, AnimObjChargeGFX
-	dbw 19, AnimObjWindGFX
-	dbw 10, AnimObjWhipGFX
-	dbw 12, AnimObjEggGFX
-	dbw 18, AnimObjRopeGFX
-	dbw 13, AnimObjPsychicGFX
-	dbw 10, AnimObjReflectGFX
-	dbw 27, AnimObjStatusGFX
-	dbw 12, AnimObjSandGFX
-	dbw 14, AnimObjWebGFX
-	dbw 16, AnimObjHazeGFX
-	dbw  7, AnimObjHornGFX
-	dbw  8, AnimObjFlowerGFX
-	dbw 40, AnimObjMiscGFX
-	dbw 36, AnimObjSkyAttackGFX
-	dbw 16, AnimObjGlobeGFX
-	dbw 48, AnimObjShapesGFX
-	dbw 18, AnimObjObjectsGFX
-	dbw 38, AnimObjShineGFX
-	dbw 35, AnimObjAngelsGFX
-	dbw 18, AnimObjWaveGFX
-	dbw 24, AnimObjAeroblastGFX
-	dbw 16, AnimObjMoonGFX
-	dbw  9, AnimObjBugBuzzGFX
-	dbw 56, AnimObjLeafStormGFX
-	dbw  5, AnimObjHeartsGFX
-	dbw  5, AnimObjStarsGFX
-	dbw  8, AnimObjMiniGFX
-	dbw 48, AnimObjUTurnGFX
-	dbw  1, NULL ; ANIM_GFX_PLAYERHEAD
-	dbw  1, NULL ; ANIM_GFX_ENEMYFEET
-	dbw 10, AnimObjPokeBallBGGFX
+	farbank "Battle Anim Graphics"
+	battleanimgfx  0, AnimObj00GFX
+	battleanimgfx 35, AnimObjHitGFX
+	battleanimgfx  6, AnimObjCutGFX
+	battleanimgfx  6, AnimObjFireGFX
+	battleanimgfx 20, AnimObjWaterGFX
+	battleanimgfx 26, AnimObjLightningGFX
+	battleanimgfx 18, AnimObjPlantGFX
+	battleanimgfx 12, AnimObjSmokeGFX
+	battleanimgfx  9, AnimObjExplosionGFX
+	battleanimgfx 19, AnimObjRocksGFX
+	battleanimgfx  6, AnimObjIceGFX
+	battleanimgfx 10 ; use AnimBallObjGFX
+	battleanimgfx  9, AnimObjPoisonGFX
+	battleanimgfx 13, AnimObjBubbleGFX
+	battleanimgfx 16, AnimObjNoiseGFX
+	battleanimgfx  2, AnimObjPowderGFX
+	battleanimgfx 11, AnimObjBeamGFX
+	battleanimgfx  9, AnimObjSpeedGFX
+	battleanimgfx  9, AnimObjChargeGFX
+	battleanimgfx 19, AnimObjWindGFX
+	battleanimgfx 10, AnimObjWhipGFX
+	battleanimgfx 12, AnimObjEggGFX
+	battleanimgfx 18, AnimObjRopeGFX
+	battleanimgfx 13, AnimObjPsychicGFX
+	battleanimgfx 10, AnimObjReflectGFX
+	battleanimgfx 27, AnimObjStatusGFX
+	battleanimgfx 12, AnimObjSandGFX
+	battleanimgfx 14, AnimObjWebGFX
+	battleanimgfx 16, AnimObjHazeGFX
+	battleanimgfx  7, AnimObjHornGFX
+	battleanimgfx  8, AnimObjFlowerGFX
+	battleanimgfx 40, AnimObjMiscGFX
+	battleanimgfx 36, AnimObjSkyAttackGFX
+	battleanimgfx 16, AnimObjGlobeGFX
+	battleanimgfx 48, AnimObjShapesGFX
+	battleanimgfx 18, AnimObjObjectsGFX
+	battleanimgfx 38, AnimObjShineGFX
+	battleanimgfx 35, AnimObjAngelsGFX
+	battleanimgfx 18, AnimObjWaveGFX
+	battleanimgfx 24, AnimObjAeroblastGFX
+	battleanimgfx 16, AnimObjMoonGFX
+	battleanimgfx  9, AnimObjBugBuzzGFX
+	battleanimgfx 56, AnimObjLeafStormGFX
+	battleanimgfx  5, AnimObjHeartsGFX
+	battleanimgfx  5, AnimObjStarsGFX
+	battleanimgfx  8, AnimObjMiniGFX
+	battleanimgfx 48, AnimObjUTurnGFX
+	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
+	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
+	battleanimgfx 10, AnimObjPokeBallBGGFX
 	assert_table_length NUM_ANIM_GFX + 1
 
-AnimBallObjGFX: ; far-ok
+AnimBallObjGFX:
 ; entries correspond to poke ball item constants
 	table_width 2, AnimBallObjGFX
-	dw AnimObjParkBallGFX
-	dw AnimObjPokeBallGFX
-	dw AnimObjGreatBallGFX
-	dw AnimObjUltraBallGFX
-	dw AnimObjMasterBallGFX
-	dw AnimObjSafariBallGFX
-	dw AnimObjLevelBallGFX
-	dw AnimObjLureBallGFX
-	dw AnimObjMoonBallGFX
-	dw AnimObjFriendBallGFX
-	dw AnimObjFastBallGFX
-	dw AnimObjHeavyBallGFX
-	dw AnimObjLoveBallGFX
-	dw AnimObjRepeatBallGFX
-	dw AnimObjTimerBallGFX
-	dw AnimObjNestBallGFX
-	dw AnimObjNetBallGFX
-	dw AnimObjDiveBallGFX
-	dw AnimObjLuxuryBallGFX
-	dw AnimObjHealBallGFX
-	dw AnimObjQuickBallGFX
-	dw AnimObjDuskBallGFX
-	dw AnimObjDreamBallGFX
-	dw AnimObjPremierBallGFX
-	dw AnimObjCherishBallGFX
+	farbank "Battle Ball Icons"
+	fardw AnimObjParkBallGFX
+	fardw AnimObjPokeBallGFX
+	fardw AnimObjGreatBallGFX
+	fardw AnimObjUltraBallGFX
+	fardw AnimObjMasterBallGFX
+	fardw AnimObjSafariBallGFX
+	fardw AnimObjLevelBallGFX
+	fardw AnimObjLureBallGFX
+	fardw AnimObjMoonBallGFX
+	fardw AnimObjFriendBallGFX
+	fardw AnimObjFastBallGFX
+	fardw AnimObjHeavyBallGFX
+	fardw AnimObjLoveBallGFX
+	fardw AnimObjRepeatBallGFX
+	fardw AnimObjTimerBallGFX
+	fardw AnimObjNestBallGFX
+	fardw AnimObjNetBallGFX
+	fardw AnimObjDiveBallGFX
+	fardw AnimObjLuxuryBallGFX
+	fardw AnimObjHealBallGFX
+	fardw AnimObjQuickBallGFX
+	fardw AnimObjDuskBallGFX
+	fardw AnimObjDreamBallGFX
+	fardw AnimObjPremierBallGFX
+	fardw AnimObjCherishBallGFX
 	assert_table_length NUM_POKE_BALLS

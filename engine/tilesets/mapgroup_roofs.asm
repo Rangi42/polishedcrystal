@@ -19,13 +19,14 @@ LoadMapGroupRoof::
 	lb bc, BANK("Roof Graphics"), 9
 	jmp DecompressRequest2bpp
 
-MapGroupRoofGFX: ; far-ok
+MapGroupRoofGFX:
 	table_width 2, MapGroupRoofGFX
-	dw NewBarkRoofGFX
-	dw VioletRoofGFX
-	dw AzaleaRoofGFX
-	dw OlivineRoofGFX
-	dw StatueRoofGFX
+	farbank "Roof Graphics"
+	fardw NewBarkRoofGFX
+	fardw VioletRoofGFX
+	fardw AzaleaRoofGFX
+	fardw OlivineRoofGFX
+	fardw StatueRoofGFX
 	assert_table_length NUM_ROOFS
 
 INCLUDE "data/maps/roofs.asm"

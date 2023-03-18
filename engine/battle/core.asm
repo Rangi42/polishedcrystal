@@ -2262,10 +2262,11 @@ WinTrainerBattle:
 	sbc LOW(9999999 / $10000)
 	ret
 
-SentToMomTexts: ; far-ok (these are all used with StdBattleTextbox)
-	dw SentSomeToMomText
-	dw SentHalfToMomText
-	dw SentAllToMomText
+SentToMomTexts:
+	farbank BattleText
+	fardw SentSomeToMomText
+	fardw SentHalfToMomText
+	fardw SentAllToMomText
 
 AddBattleMoneyToAccount:
 	ld c, $3

@@ -1,6 +1,5 @@
 SECTION "Sound Effects", ROMX
 
-SFXBank:
 Sfx_PokeballsPlacedOnTable:
 	channel_count 1
 	channel 5, .Ch5

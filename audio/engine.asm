@@ -2248,13 +2248,11 @@ _PlayCryHeader::
 	inc hl
 	ld [hl], d
 
-; 3-byte pointers (bank, address)
 	ld hl, Cries
 	add hl, de
 	add hl, de
-	add hl, de
 
-	ld a, [hli]
+	ld a, BANK("Cries")
 	ld [wMusicBank], a
 
 	ld e, [hl]
@@ -2420,7 +2418,7 @@ _PlaySFX::
 	ld d, [hl]
 	ld e, a
 	; get bank
-	ld a, BANK(SFXBank)
+	ld a, BANK("Sound Effects")
 	ld [wMusicBank], a
 	; get # channels
 	call LoadMusicByte
@@ -2469,7 +2467,7 @@ PlayStereoSFX::
 	ld d, [hl]
 	ld e, a
 ; bank
-	ld a, BANK(SFXBank)
+	ld a, BANK("Sound Effects")
 	ld [wMusicBank], a
 
 ; bit 2-3
