@@ -1314,29 +1314,29 @@ MusicCommands:
 	dw Music_ToggleSFX ; sound on/off
 	dw Music_SlidePitchTo ; pitch wheel
 	dw Music_Vibrato ; vibrato
-	dw MusicE2 ; unused
+	dw DoNothing ; $E2
 	dw Music_ToggleNoise ; music noise sampling
 	dw Music_Panning ; force panning
 	dw Music_Volume ; volume
 	dw Music_Tone ; tone
-	dw MusicE7 ; unused
-	dw MusicE8 ; unused
+	dw DoNothing ; $E7
+	dw DoNothing ; $E8
 	dw Music_TempoRelative ; global tempo
 	dw Music_RestartChannel ; restart current channel from header
 	dw Music_NewSong ; new song
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
-	dw MusicEE ; unused
+	dw DoNothing ; $EE
 	dw Music_StereoPanning ; stereo panning
 	dw Music_SFXToggleNoise ; sfx noise sampling
-	dw MusicF1 ; nothing
-	dw MusicF2 ; nothing
-	dw MusicF3 ; nothing
-	dw MusicF4 ; nothing
-	dw MusicF5 ; nothing
-	dw MusicF6 ; nothing
-	dw MusicF7 ; nothing
-	dw MusicF8 ; nothing
+	dw DoNothing ; $F1
+	dw DoNothing ; $F2
+	dw DoNothing ; $F3
+	dw DoNothing ; $F4
+	dw DoNothing ; $F5
+	dw DoNothing ; $F6
+	dw DoNothing ; $F7
+	dw DoNothing ; $F8
 	dw Music_ChangeNoiseSampleSet ; noisesampleset
 	dw Music_SetCondition ; setcondition
 	dw Music_JumpIf ; jumpif
@@ -1346,20 +1346,6 @@ MusicCommands:
 	dw Music_EndChannel ; return
 	assert_table_length $100 - FIRST_MUSIC_CMD
 
-MusicE2:
-MusicE7:
-MusicE8:
-MusicEE:
-MusicF1:
-MusicF2:
-MusicF3:
-MusicF4:
-MusicF5:
-MusicF6:
-MusicF7:
-MusicF8:
-MusicF9:
-	ret ; no-optimize stub function
 
 Music_EndChannel:
 ; called when $ff is encountered w/ subroutine flag set
