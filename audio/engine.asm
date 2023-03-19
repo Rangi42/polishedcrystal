@@ -1304,23 +1304,23 @@ MusicCommands:
 	dw Music_Octave3 ; octave 3
 	dw Music_Octave2 ; octave 2
 	dw Music_Octave1 ; octave 1
+	dw Music_DutyCycle0 ; duty cycle 0
+	dw Music_DutyCycle1 ; duty cycle 1
+	dw Music_DutyCycle2 ; duty cycle 2
+	dw Music_DutyCycle3 ; duty cycle 3
 	dw Music_NoteType ; note length + intensity
 	dw Music_ForceOctave ; set starting octave
 	dw Music_Tempo ; tempo
-	dw Music_DutyCycle ; duty cycle
 	dw Music_Intensity ; intensity
 	dw Music_SoundStatus ; update sound status
 	dw Music_SoundDuty ; sfx duty
 	dw Music_ToggleSFX ; sound on/off
 	dw Music_SlidePitchTo ; pitch wheel
 	dw Music_Vibrato ; vibrato
-	dw DoNothing ; $E2
 	dw Music_ToggleNoise ; music noise sampling
 	dw Music_Panning ; force panning
 	dw Music_Volume ; volume
 	dw Music_Tone ; tone
-	dw DoNothing ; $E7
-	dw DoNothing ; $E8
 	dw Music_TempoRelative ; global tempo
 	dw Music_RestartChannel ; restart current channel from header
 	dw Music_NewSong ; new song
@@ -1723,10 +1723,12 @@ Music_SoundStatus:
 	set NOTE_PITCH_SWEEP, [hl]
 	ret
 
-Music_DutyCycle:
+Music_DutyCycle0:
+Music_DutyCycle1:
+Music_DutyCycle2:
+Music_DutyCycle3:
 ; duty cycle
-; params: 1
-	call GetMusicByte
+	ld a, [wCurMusicByte]
 	rrca
 	rrca
 	and $c0

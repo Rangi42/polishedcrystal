@@ -56,6 +56,14 @@ ENDM
 
 	const_skip 7 ; all octave values
 
+	const duty_cycle_cmd
+MACRO duty_cycle
+	assert 0 <= (\1) && (\1) <= 6, "duty cycle must be 0-6"
+	db duty_cycle_cmd | (\1 & 3) ; values 4-6 fold into 0-2
+ENDM
+
+	const_skip 3 ; all duty cycle values
+
 	const note_type_cmd
 MACRO note_type
 	db note_type_cmd
@@ -84,12 +92,6 @@ ENDM
 MACRO tempo
 	db tempo_cmd
 	bigdw \1 ; tempo
-ENDM
-
-	const duty_cycle_cmd
-MACRO duty_cycle
-	db duty_cycle_cmd
-	db \1 ; duty cycle
 ENDM
 
 	const volume_envelope_cmd
@@ -141,8 +143,6 @@ MACRO vibrato
 	endc
 ENDM
 
-	const_skip
-
 	const toggle_noise_cmd
 MACRO toggle_noise
 	db toggle_noise_cmd
@@ -172,8 +172,6 @@ MACRO pitch_offset
 	db pitch_offset_cmd
 	bigdw \1 ; pitch offset
 ENDM
-
-	const_skip 2
 
 	const tempo_relative_cmd
 MACRO tempo_relative
