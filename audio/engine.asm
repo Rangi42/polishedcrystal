@@ -1429,7 +1429,7 @@ Music_LoopChannel:
 	bit SOUND_LOOPING, [hl] ; has the loop been initiated?
 	jr nz, .checkloop
 	and a ; loop counter 0 = infinite
-	jr z, .loop
+	jr z, Music_JumpChannel
 	; initiate loop
 	dec a
 	set SOUND_LOOPING, [hl] ; set loop flag
@@ -1443,7 +1443,6 @@ Music_LoopChannel:
 	and a ; are we done?
 	jr z, .endloop
 	dec [hl]
-.loop
 	jr Music_JumpChannel
 
 .endloop
