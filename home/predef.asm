@@ -9,7 +9,7 @@ _Predef::
 ; Stack layout:
 ; +1 return address
 ; +0 return bank
-	jmp _ReturnFarCall
+	jr _ReturnFarCall
 
 .do_predef
 	dec sp ; push space for the predef function pointer
