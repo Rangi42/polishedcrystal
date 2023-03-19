@@ -7,7 +7,7 @@ CopyRLE::
 	inc a
 	ret z
 	dec a
-	ld c, [hl]
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 .load
 	ld [de], a

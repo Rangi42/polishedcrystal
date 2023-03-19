@@ -450,9 +450,9 @@ Special_SelectRandomBugContestContestants:
 .loop1
 	push bc
 	push hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld b, RESET_FLAG
 	call EventFlagAction
 	pop hl
@@ -478,9 +478,9 @@ Special_SelectRandomBugContestContestants:
 	ld hl, BugCatchingContestantEventFlagTable
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	push de
 ; If we've already set it, it doesn't count.
 	ld b, CHECK_FLAG
@@ -498,15 +498,14 @@ Special_SelectRandomBugContestContestants:
 
 Special_CheckBugContestContestantFlag:
 ; Checks the flag of the Bug Catching Contestant whose index is loaded in a.
-; Bug: If a >= 10 when this is called, it will read beyond the table.
 	ld hl, BugCatchingContestantEventFlagTable
 	ld e, a
 	ld d, 0
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld b, CHECK_FLAG
 	jmp EventFlagAction
 

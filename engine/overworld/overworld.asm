@@ -117,22 +117,29 @@ GetSprite::
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEDATA_FIELDS
+	ld a, SPRITEDATA_LENGTH
 	rst AddNTimes
 	; load the address into de
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	; load the sprite bank into both b and h
+	; load the sprite bank into b
 	ld a, [hli]
 	ld b, a
 	; load the sprite type into l
 	ld l, [hl]
-	ld h, a
+	assert SPRITEDATA_TYPE_MASK == %11000000
+	ld a, l
+	rlca
+	rlca
+	and %11
+	inc a
+	ld l, a
+	; load the sprite bank into h too
+	ld h, b
 	; load the length into c
 	ld c, 15
-	ld a, l
 	cp BIG_GYARADOS_SPRITE
 	ret z
 	ld c, 12
@@ -261,13 +268,13 @@ _GetSpritePalette::
 	call GetMonSprite
 	jr c, .is_pokemon
 
-	ld hl, SpriteHeaders + SPRITEDATA_PALETTE
-	dec a
+	ld hl, SpriteHeaders + SPRITEDATA_TYPE_PAL - SPRITEDATA_LENGTH
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEDATA_FIELDS
+	ld a, SPRITEDATA_LENGTH
 	rst AddNTimes
 	ld a, [hl]
+	and SPRITEDATA_PALETTE_MASK
 	ret
 
 .is_pokemon

@@ -21,10 +21,10 @@ _AnimateTileset::
 
 ; 2-byte parameter
 ; All functions take input de.
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 ; Function address
 	jmp IndirectHL
@@ -410,24 +410,24 @@ endr
 ScrollTileUp:
 	ld h, d
 	ld l, e
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
+	ld d, a
 	ld bc, 14
 	add hl, bc
 	ld a, 4
 .loop
 	ld c, [hl]
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	ld b, [hl]
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	ld e, [hl]
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	ld d, [hl]
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	dec hl
 	dec a
 	jr nz, .loop
@@ -439,23 +439,23 @@ ScrollTileDown:
 	ld de, 14
 	push hl
 	add hl, de
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
+	ld d, a
 	pop hl
 	ld a, 4
 .loop
 	ld b, [hl]
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	ld c, [hl]
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	ld d, [hl]
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	ld e, [hl]
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	dec a
 	jr nz, .loop
@@ -598,10 +598,10 @@ AnimateFarawayWaterTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	; period 8, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]
@@ -1032,9 +1032,9 @@ AnimateTowerPillarTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
+	ld e, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
-	ld d, [hl]
+	ld d, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 
 	add [hl]
@@ -1058,10 +1058,10 @@ AnimateWhirlpoolTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	; period 4, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]
@@ -1086,10 +1086,10 @@ AnimateTinyWaterTile:
 
 	ld l, e
 	ld h, d
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	; period 2, every 2 frames, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]
@@ -1167,13 +1167,13 @@ WriteTileToDE:
 
 WriteTile:
 	pop de
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], d
 rept 7
 	pop de
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], d
 endr

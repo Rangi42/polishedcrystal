@@ -164,9 +164,9 @@ PlayMusic2::
 
 	ldh a, [hROMBank]
 	push af
+
 	ld a, BANK(_PlayMusic)
 	rst Bankswitch
-
 	push de
 	ld de, MUSIC_NONE
 	call _PlayMusic ; far-ok
@@ -190,32 +190,12 @@ PlayCryHeader::
 	ldh a, [hROMBank]
 	push af
 
-	; Cry headers are stuck in one bank.
 	ld a, BANK(PokemonCries)
 	rst Bankswitch
-
-	ld hl, PokemonCries
-rept 6
-	add hl, de
-endr
-
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-
-	ld a, [hli]
-	ld [wCryPitch], a
-	ld a, [hli]
-	ld [wCryPitch + 1], a
-	ld a, [hli]
-	ld [wCryLength], a
-	ld a, [hl]
-	ld [wCryLength + 1], a
+	call _LoadCryHeader
 
 	ld a, BANK(_PlayCryHeader)
 	rst Bankswitch
-
 	call _PlayCryHeader ; far-ok
 
 	pop af

@@ -311,7 +311,7 @@ CalcSecsMinsHoursDaysSince:
 	add 60
 .skip
 	ld [hl], c ; current seconds
-	dec hl
+	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wSecondsSince], a ; seconds since
 	; fallthrough
 
@@ -323,7 +323,7 @@ _CalcMinsHoursDaysSince:
 	add 60
 .skip
 	ld [hl], c ; current minutes
-	dec hl
+	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wMinutesSince], a ; minutes since
 	; fallthrough
 
@@ -335,7 +335,7 @@ _CalcHoursDaysSince:
 	add 24
 .skip
 	ld [hl], c ; current hours
-	dec hl
+	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wHoursSince], a ; hours since
 	; fallthrough
 

@@ -48,10 +48,10 @@ _TimeOfDayPals::
 ; push palette
 	ld c, 4 ; NUM_PAL_COLORS
 .push
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
 	push de
 	dec c
 	jr nz, .push
@@ -78,10 +78,10 @@ _TimeOfDayPals::
 	ld e, 4 ; NUM_PAL_COLORS
 .pop
 	pop bc
-	ld [hl], c
-	dec hl
-	ld [hl], b
-	dec hl
+	ld a, c
+	ld [hld], a
+	ld a, b
+	ld [hld], a
 	dec e
 	jr nz, .pop
 

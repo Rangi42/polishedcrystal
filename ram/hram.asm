@@ -6,12 +6,6 @@ hROMBank:: db
 hROMBankBackup:: db
 	ds 1 ; unused
 
-hRTCDayHi::   db
-hRTCDayLo::   db
-hRTCHours::   db
-hRTCMinutes:: db
-hRTCSeconds:: db
-
 hHours:: db
 hMinutes:: db
 hSeconds:: db
@@ -133,6 +127,15 @@ hBGMapTileCount:: db
 
 hOAMUpdate:: db
 
+hMapAnims::      db
+hTileAnimFrame:: db
+
+hLastTalked:: db
+
+hRandom::
+hRandomAdd:: db
+hRandomSub:: db
+
 hSerialReceivedNewData::     db
 hSerialConnectionStatus::    db
 	vc_assert hSerialConnectionStatus == $ffcb, \
@@ -142,15 +145,6 @@ hSerialSend::                db
 hSerialReceive::             db
 
 hSPBuffer:: dw
-
-hMapAnims::      db
-hTileAnimFrame:: db
-
-hLastTalked:: db
-
-hRandom::
-hRandomAdd:: db
-hRandomSub:: db
 
 UNION
 ; 0 - player
@@ -212,7 +206,7 @@ ENDU
 hScriptBank:: db
 hScriptPos:: dw
 
-	ds 4 ; unused
+	ds 9 ; unused
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp

@@ -239,7 +239,7 @@ HandleWeather:
 	dec [hl]
 	jr nz, .ongoing
 
-	ld hl, .WeatherEndedMessages
+	ld hl, WeatherEndedMessages
 	ld a, [wBattleWeather]
 	dec a
 	add a
@@ -253,12 +253,6 @@ HandleWeather:
 	xor a
 	ld [wBattleWeather], a
 	ret
-
-.WeatherEndedMessages: ; these are all used with StdBattleTextbox
-	dw BattleText_TheRainStopped ; far-ok
-	dw BattleText_TheSunlightFaded ; far-ok
-	dw BattleText_TheSandstormSubsided ; far-ok
-	dw BattleText_TheHailStopped ; far-ok
 
 .ongoing
 	; the above needs actual [wBattleWeather] to be
@@ -370,6 +364,13 @@ endc
 	call StdBattleTextbox
 	call GetSixteenthMaxHP
 	predef_jump SubtractHPFromUser
+
+WeatherEndedMessages:
+	farbank BattleText
+	fardw BattleText_TheRainStopped
+	fardw BattleText_TheSunlightFaded
+	fardw BattleText_TheSandstormSubsided
+	fardw BattleText_TheHailStopped
 
 HandleFutureSight:
 	call SetFastestTurn

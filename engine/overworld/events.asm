@@ -1064,10 +1064,10 @@ LoadScriptBDE::
 	inc a ; 1
 	ld [hli], a
 ; Load the script pointer b:de into (wMapReentryScriptBank):(wMapReentryScriptAddress)
-	ld [hl], b
-	inc hl
-	ld [hl], e
-	inc hl
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	scf
 	ret
@@ -1364,8 +1364,8 @@ DoBikeStep::
 
 .increment
 	inc de
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 	ld [hl], d
 
 .dont_increment

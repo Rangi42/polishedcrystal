@@ -344,19 +344,23 @@ Slots_PayoutAnim:
 	jmp z, Slots_Next
 	ld e, [hl]
 	dec de
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 	ld [hl], d
 	ld hl, wCoins
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
-	call Slot_CheckCoinCaseFull
-	jr c, .okay
+	ld d, a
+	cp HIGH(50000)
+	jr c, .not_full
+	ld a, e
+	cp LOW(50000)
+	jr nc, .full
+.not_full
 	inc de
-.okay
-	ld [hl], e
-	dec hl
+.full
+	ld a, e
+	ld [hld], a
 	ld [hl], d
 	ld a, [wSlotsDelay]
 	and $7
@@ -395,20 +399,6 @@ Slots_LoadReelState:
 	inc de
 	ld a, [hli]
 	ld [de], a
-	ret
-
-Slot_CheckCoinCaseFull:
-	ld a, d
-	cp HIGH(50000)
-	jr c, .not_full
-	ld a, e
-	cp LOW(50000)
-	jr c, .not_full
-	scf
-	ret
-
-.not_full
-	and a
 	ret
 
 Slots_GetCurrentReelState:
@@ -511,14 +501,14 @@ InitReelTiles:
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
 	ld de, wShadowOAM + 16 * 4
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1TilemapAddr - wReel1
 	add hl, bc
 	ld de, Reel1Tilemap
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc
@@ -529,14 +519,14 @@ InitReelTiles:
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
 	ld de, wShadowOAM + 24 * 4
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1TilemapAddr - wReel1
 	add hl, bc
 	ld de, Reel2Tilemap
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc
@@ -547,14 +537,14 @@ InitReelTiles:
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
 	ld de, wShadowOAM + 32 * 4
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1TilemapAddr - wReel1
 	add hl, bc
 	ld de, Reel3Tilemap
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc

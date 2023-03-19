@@ -12,52 +12,54 @@ LatchClock::
 endc
 
 UpdateTime::
+; Assumes rSVBK == 1
 	call GetClock ; read the clock hardware
 	call FixDays  ; keep the number of days passed in-bounds
 	call FixTime  ; calculate the time based on the start time and RTC duration
 	farjp GetTimeOfDay
 
 GetClock::
-; store clock data in hRTCDayHi-hRTCSeconds
+; store clock data in wRTCDayHi-wRTCSeconds
 
 if DEF(NO_RTC)
-	ld hl, wNoRTC
-	ld de, hRTCDayHi
-	ld bc, 5
-	rst CopyBytes
 	ret
 else
 ; enable clock r/w
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
 
-; clock data is 'backwards' in hram
+; clock data is 'backwards' in wram
 	call LatchClock
 	ld hl, MBC3SRamBank
 	ld de, MBC3RTC
+	ld bc, wRTCSeconds
 
 	ld [hl], RTC_S
 	ld a, [de]
 	and $3f
-	ldh [hRTCSeconds], a
+	ld [bc], a ; wRTCSeconds
+	dec bc
 
 	ld [hl], RTC_M
 	ld a, [de]
 	and $3f
-	ldh [hRTCMinutes], a
+	ld [bc], a ; wRTCMinutes
+	dec bc
 
 	ld [hl], RTC_H
 	ld a, [de]
 	and $1f
-	ldh [hRTCHours], a
+	ld [bc], a ; wRTCHours
+	dec bc
 
 	ld [hl], RTC_DL
 	ld a, [de]
-	ldh [hRTCDayLo], a
+	ld [bc], a ; wRTCDayLo
+	dec bc
 
 	ld [hl], RTC_DH
 	ld a, [de]
-	ldh [hRTCDayHi], a
+	ld [bc], a ; wRTCDayHi
 
 ; unlatch clock / disable clock r/w
 	jmp CloseSRAM
@@ -68,16 +70,16 @@ FixDays::
 ; mod by 140
 
 ; check if day count > 255 (bit 8 set)
-	ldh a, [hRTCDayHi] ; DH
-	bit 0, a
+	ld hl, wRTCDayHi
+	bit 0, [hl]
 	jr z, .daylo
 ; reset dh (bit 8)
-	res 0, a
-	ldh [hRTCDayHi], a ; DH
+	res 0, [hl]
 
 ; mod 140
 ; mod twice since bit 8 (DH) was set
-	ldh a, [hRTCDayLo] ; DL
+	inc hl
+	ld a, [hl] ; wRTCDayLo
 .modh
 	sub 140
 	jr nc, .modh
@@ -87,15 +89,16 @@ FixDays::
 	add 140
 
 ; update dl
-	ldh [hRTCDayLo], a ; DL
+	ld [hl], a ; wRTCDayLo
 
 ; flag for sRTCStatusFlags
 	ld a, %01000000
 	jr .set
 
 .daylo
+	inc hl
 ; quit if fewer than 140 days have passed
-	ldh a, [hRTCDayLo] ; DL
+	ld a, [hl] ; wRTCDayLo
 	cp 140
 	jr c, .quit
 
@@ -106,7 +109,7 @@ FixDays::
 	add 140
 
 ; update dl
-	ldh [hRTCDayLo], a ; DL
+	ld [hl], a ; wRTCDayLo
 
 ; flag for sRTCStatusFlags
 	ld a, %00100000
@@ -128,7 +131,8 @@ FixTime::
 ;				  day     hr    min    sec
 ; store time in wCurDay, hHours, hMinutes, hSeconds
 
-	ldh a, [hRTCSeconds]
+	ld hl, wRTCSeconds
+	ld a, [hld] ; wRTCSeconds
 	ld c, a
 	ld a, [wStartSecond]
 	add c
@@ -139,7 +143,7 @@ FixTime::
 	ldh [hSeconds], a
 
 	ccf ; carry is set, so turn it off
-	ldh a, [hRTCMinutes]
+	ld a, [hld] ; wRTCMinutes
 	ld c, a
 	ld a, [wStartMinute]
 	adc c
@@ -150,7 +154,7 @@ FixTime::
 	ldh [hMinutes], a
 
 	ccf ; carry is set, so turn it off
-	ldh a, [hRTCHours]
+	ld a, [hld] ; wRTCHours
 	ld c, a
 	ld a, [wStartHour]
 	adc c
@@ -161,7 +165,7 @@ FixTime::
 	ldh [hHours], a
 
 	ccf ; carry is set, so turn it off
-	ldh a, [hRTCDayLo]
+	ld a, [hl] ; wRTCDayLo
 	ld c, a
 	ld a, [wStartDay]
 	adc c
@@ -188,11 +192,10 @@ InitTime::
 
 PanicResetClock::
 	xor a
-	ldh [hRTCSeconds], a
-	ldh [hRTCMinutes], a
-	ldh [hRTCHours], a
-	ldh [hRTCDayLo], a
-	ldh [hRTCDayHi], a
+	ld hl, wRTCSeconds
+	ld bc, 5
+	rst ByteFill
+
 ; fallthrough
 
 SetClock::
@@ -200,10 +203,6 @@ SetClock::
 
 ; do not talk to the RTC hardware in the no-RTC patch
 if DEF(NO_RTC)
-	ld hl, hRTCDayHi
-	ld de, wNoRTC
-	ld bc, 5
-	rst CopyBytes
 	ret
 else
 ; enable clock r/w
@@ -215,25 +214,30 @@ else
 	call LatchClock
 	ld hl, MBC3SRamBank
 	ld de, MBC3RTC
+	ld bc, wRTCSeconds
 
 	ld [hl], RTC_S
-	ldh a, [hRTCSeconds]
+	ld a, [bc] ; wRTCSeconds
 	ld [de], a
+	dec bc
 
 	ld [hl], RTC_M
-	ldh a, [hRTCMinutes]
+	ld a, [bc] ; wRTCMinutes
 	ld [de], a
+	dec bc
 
 	ld [hl], RTC_H
-	ldh a, [hRTCHours]
+	ld a, [bc] ; wRTCHours
 	ld [de], a
+	dec bc
 
 	ld [hl], RTC_DL
-	ldh a, [hRTCDayLo]
+	ld a, [bc] ; wRTCDayLo
 	ld [de], a
+	dec bc
 
 	ld [hl], RTC_DH
-	ldh a, [hRTCDayHi]
+	ld a, [bc] ; wRTCDayHi
 	res 6, a ; make sure timer is active
 	ld [de], a
 
