@@ -201,8 +201,6 @@ MACRO sfx_priority_off
 	db sfx_priority_off_cmd
 ENDM
 
-	const_skip
-
 	const stereo_panning_cmd
 MACRO stereo_panning
 	db stereo_panning_cmd
@@ -217,7 +215,7 @@ MACRO sfx_toggle_noise
 	endc
 ENDM
 
-	const_skip 8
+	const_skip 9
 
 	const noisesampleset_cmd
 MACRO noisesampleset

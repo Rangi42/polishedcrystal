@@ -1326,9 +1326,9 @@ MusicCommands:
 	dw Music_NewSong ; new song
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
-	dw DoNothing ; $EE
 	dw Music_StereoPanning ; stereo panning
 	dw Music_SFXToggleNoise ; sfx noise sampling
+	dw DoNothing ; $F0
 	dw DoNothing ; $F1
 	dw DoNothing ; $F2
 	dw DoNothing ; $F3
