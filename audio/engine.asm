@@ -1326,7 +1326,7 @@ MusicCommands:
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
 	dw Music_StereoPanning ; stereo panning
-	dw Music_SFXToggleNoise ; sfx noise sampling
+	dw DoNothing ; $EE
 	dw DoNothing ; $EF
 	dw DoNothing ; $F0
 	dw DoNothing ; $F1
@@ -1660,30 +1660,17 @@ Music_ToggleNoise:
 .on
 	; turn noise sampling on
 	set SOUND_NOISE, [hl]
+	ld a, [wCurChannel]
+	bit 3, a
+	jr z, Music_ChangeNoiseSampleSet
+; Channel 8 uses sfx sample set
+	call GetMusicByte
+	ld [wSFXNoiseSampleSet], a
+	ret
+
 Music_ChangeNoiseSampleSet:
 	call GetMusicByte
 	ld [wMusicNoiseSampleSet], a
-	ret
-
-Music_SFXToggleNoise:
-; toggle sfx noise sampling
-; params:
-;	on: 1
-; 	off: 0
-	; check if noise sampling is on
-	ld hl, wChannel1Flags - wChannel1
-	add hl, bc
-	bit SOUND_NOISE, [hl]
-	jr z, .on
-	; turn noise sampling off
-	res SOUND_NOISE, [hl]
-	ret
-
-.on
-	; turn noise sampling on
-	set SOUND_NOISE, [hl]
-	call GetMusicByte
-	ld [wSFXNoiseSampleSet], a
 	ret
 
 Music_NoteType:

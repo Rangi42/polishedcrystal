@@ -151,6 +151,10 @@ MACRO toggle_noise
 	endc
 ENDM
 
+MACRO sfx_toggle_noise
+	toggle_noise \#
+ENDM
+
 	const volume_cmd
 MACRO volume
 	db volume_cmd
@@ -201,15 +205,7 @@ MACRO stereo_panning
 	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
 ENDM
 
-	const sfx_toggle_noise_cmd
-MACRO sfx_toggle_noise
-	db sfx_toggle_noise_cmd
-	if _NARG > 0
-		db \1 ; drum kit
-	endc
-ENDM
-
-	const_skip 10
+	const_skip 11
 
 	const noisesampleset_cmd
 MACRO noisesampleset
