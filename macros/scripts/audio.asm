@@ -151,12 +151,6 @@ MACRO toggle_noise
 	endc
 ENDM
 
-	const force_stereo_panning_cmd
-MACRO force_stereo_panning
-	db force_stereo_panning_cmd
-	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
-ENDM
-
 	const volume_cmd
 MACRO volume
 	db volume_cmd
@@ -215,7 +209,7 @@ MACRO sfx_toggle_noise
 	endc
 ENDM
 
-	const_skip 9
+	const_skip 10
 
 	const noisesampleset_cmd
 MACRO noisesampleset

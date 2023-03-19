@@ -1318,7 +1318,6 @@ MusicCommands:
 	dw Music_SlidePitchTo ; pitch wheel
 	dw Music_Vibrato ; vibrato
 	dw Music_ToggleNoise ; music noise sampling
-	dw Music_Panning ; force panning
 	dw Music_Volume ; volume
 	dw Music_Tone ; tone
 	dw Music_TempoRelative ; global tempo
@@ -1328,6 +1327,7 @@ MusicCommands:
 	dw Music_SFXPriorityOff ; sfx priority off
 	dw Music_StereoPanning ; stereo panning
 	dw Music_SFXToggleNoise ; sfx noise sampling
+	dw DoNothing ; $EF
 	dw DoNothing ; $F0
 	dw DoNothing ; $F1
 	dw DoNothing ; $F2
@@ -1796,11 +1796,6 @@ Music_StereoPanning:
 	bit STEREO, a
 	; skip param
 	jr z, GetMusicByte
-	; fallthrough
-
-Music_Panning:
-; force panning
-; params: 1
 	call SetLRTracks
 	call GetMusicByte
 	ld hl, wChannel1Tracks - wChannel1
