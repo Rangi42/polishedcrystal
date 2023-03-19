@@ -44,7 +44,7 @@ _Predef::
 
 ; Update sp+11 pointer to be actual return location
 	inc de
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	dec hl
 	ld [hl], e
 	rrca ; a has the predef id, with the 'jump' flag bit cleared

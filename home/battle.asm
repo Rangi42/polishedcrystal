@@ -102,7 +102,7 @@ StackCallOpponentTurn::
 	ld e, [hl]
 	ld [hl], LOW(SwitchTurn)
 	dec hl ; no-optimize *hl++|*hl-- = N
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	dec hl
 	ld [hl], e
 
