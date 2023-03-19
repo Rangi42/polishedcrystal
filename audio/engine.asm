@@ -1458,18 +1458,7 @@ Music_LoopChannel:
 	jr z, .endloop
 	dec [hl]
 .loop
-	; get pointer
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
-	; load new pointer into MusicAddress
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
+	jr Music_JumpChannel
 
 .endloop
 	; reset loop flag
@@ -1516,7 +1505,7 @@ Music_JumpIf:
 	ld hl, wChannel1Condition - wChannel1
 	add hl, bc
 	cp [hl]
-	jr z, .jump
+	jr z, Music_JumpChannel
 ; skip to next command
 	; get address
 	ld hl, wChannel1MusicAddress - wChannel1
@@ -1531,21 +1520,6 @@ Music_JumpIf:
 	ld a, d
 	ld [hld], a
 	ld [hl], e
-	ret
-
-.jump
-; jump to the new address
-	; get pointer
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
-	; update pointer in MusicAddress
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
-	ld a, e
-	ld [hli], a
-	ld [hl], d
 	ret
 
 Music_Vibrato:
