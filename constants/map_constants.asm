@@ -569,7 +569,7 @@ ENDM
 	map_const ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
 	map_const ROUTE_5_SAFFRON_CITY_GATE,                   5,  4 ; 14
 	map_const ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
-	map_const POKEMON_TRAINER_FAN_CLUB,                    4,  5 ; 16
+	map_const POKEMON_TRAINER_FAN_CLUB,                    6,  9 ; 16
 	map_const SAFFRON_HITMONTOP_KID_HOUSE,                 4,  4 ; 17
 	map_const SAFFRON_BOOK_SPEECH_HOUSE,                   4,  4 ; 18
 	map_const SAFFRON_ORRE_SPEECH_HOUSE,                   4,  4 ; 19
