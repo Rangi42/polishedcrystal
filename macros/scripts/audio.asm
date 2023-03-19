@@ -199,13 +199,23 @@ MACRO sfx_priority_off
 	db sfx_priority_off_cmd
 ENDM
 
-	const stereo_panning_cmd
+	const stereo_left_cmd
+	const stereo_right_cmd
+	const stereo_centre_cmd
+
 MACRO stereo_panning
-	db stereo_panning_cmd
-	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
+	if (\1) && !(\2)
+		db stereo_left_cmd
+	elif !(\1) && (\2)
+		db stereo_right_cmd
+	elif (\1) && (\2)
+		db stereo_centre_cmd
+	else
+		fail "Cannot mute with stereo_panning"
+	endc
 ENDM
 
-	const_skip 11
+	const_skip 9
 
 	const noisesampleset_cmd
 MACRO noisesampleset

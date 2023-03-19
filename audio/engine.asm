@@ -1325,9 +1325,9 @@ MusicCommands:
 	dw Music_NewSong ; new song
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
-	dw Music_StereoPanning ; stereo panning
-	dw DoNothing ; $EE
-	dw DoNothing ; $EF
+	dw Music_PanLeft ; stereo panning
+	dw Music_PanRight
+	dw Music_PanCentre
 	dw DoNothing ; $F0
 	dw DoNothing ; $F1
 	dw DoNothing ; $F2
@@ -1775,16 +1775,27 @@ Music_ForceOctave:
 	ld [hl], a
 	ret
 
-Music_StereoPanning:
 ; stereo panning
-; params: 1
+Music_PanLeft:
+	ld a, $F0
+	jr _stereo_pan
+
+Music_PanRight:
+	ld a, $0F
+	jr _stereo_pan
+
+Music_PanCentre:
+	ld a, $FF
+	; fallthrough
+_stereo_pan:
 	; stereo on?
-	ld a, [wOptions1]
-	bit STEREO, a
-	; skip param
-	jr z, GetMusicByte
+	ld hl, wOptions1
+	bit STEREO, [hl]
+	ret z
+
+	ld d, a
 	call SetLRTracks
-	call GetMusicByte
+	ld a, d
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
 	and [hl]
