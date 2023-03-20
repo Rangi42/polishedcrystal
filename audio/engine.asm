@@ -1052,7 +1052,7 @@ ParseMusic:
 	call GetMusicByte ; store next byte in a
 	cp $ff ; is the song over?
 	jr z, .endchannel
-	cp $d0 ; is it a note?
+	cp FIRST_MUSIC_CMD ; is it a note?
 	jr c, .readnote
 	; then it's a command
 .readcommand
@@ -1289,7 +1289,7 @@ ParseMusicCommand:
 	; reload command
 	ld a, [wCurMusicByte]
 	; get command #
-	sub $d0 ; first command
+	sub FIRST_MUSIC_CMD
 	; jump to the new command pointer
 	call StackJumpTable
 
@@ -1304,39 +1304,39 @@ MusicCommands:
 	dw Music_Octave3 ; octave 3
 	dw Music_Octave2 ; octave 2
 	dw Music_Octave1 ; octave 1
+	dw Music_DutyCycle0 ; duty cycle 0
+	dw Music_DutyCycle1 ; duty cycle 1
+	dw Music_DutyCycle2 ; duty cycle 2
+	dw Music_DutyCycle3 ; duty cycle 3
 	dw Music_NoteType ; note length + intensity
 	dw Music_ForceOctave ; set starting octave
 	dw Music_Tempo ; tempo
-	dw Music_DutyCycle ; duty cycle
 	dw Music_Intensity ; intensity
 	dw Music_SoundStatus ; update sound status
 	dw Music_SoundDuty ; sfx duty
 	dw Music_ToggleSFX ; sound on/off
 	dw Music_SlidePitchTo ; pitch wheel
 	dw Music_Vibrato ; vibrato
-	dw MusicE2 ; unused
 	dw Music_ToggleNoise ; music noise sampling
-	dw Music_Panning ; force panning
 	dw Music_Volume ; volume
 	dw Music_Tone ; tone
-	dw MusicE7 ; unused
-	dw MusicE8 ; unused
 	dw Music_TempoRelative ; global tempo
 	dw Music_RestartChannel ; restart current channel from header
 	dw Music_NewSong ; new song
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
-	dw MusicEE ; unused
-	dw Music_StereoPanning ; stereo panning
-	dw Music_SFXToggleNoise ; sfx noise sampling
-	dw MusicF1 ; nothing
-	dw MusicF2 ; nothing
-	dw MusicF3 ; nothing
-	dw MusicF4 ; nothing
-	dw MusicF5 ; nothing
-	dw MusicF6 ; nothing
-	dw MusicF7 ; nothing
-	dw MusicF8 ; nothing
+	dw Music_PanLeft ; stereo panning
+	dw Music_PanRight
+	dw Music_PanCenter
+	dw DoNothing ; $F0
+	dw DoNothing ; $F1
+	dw DoNothing ; $F2
+	dw DoNothing ; $F3
+	dw DoNothing ; $F4
+	dw DoNothing ; $F5
+	dw DoNothing ; $F6
+	dw DoNothing ; $F7
+	dw DoNothing ; $F8
 	dw Music_ChangeNoiseSampleSet ; noisesampleset
 	dw Music_SetCondition ; setcondition
 	dw Music_JumpIf ; jumpif
@@ -1346,20 +1346,6 @@ MusicCommands:
 	dw Music_EndChannel ; return
 	assert_table_length $100 - FIRST_MUSIC_CMD
 
-MusicE2:
-MusicE7:
-MusicE8:
-MusicEE:
-MusicF1:
-MusicF2:
-MusicF3:
-MusicF4:
-MusicF5:
-MusicF6:
-MusicF7:
-MusicF8:
-MusicF9:
-	ret ; no-optimize stub function
 
 Music_EndChannel:
 ; called when $ff is encountered w/ subroutine flag set
@@ -1443,7 +1429,7 @@ Music_LoopChannel:
 	bit SOUND_LOOPING, [hl] ; has the loop been initiated?
 	jr nz, .checkloop
 	and a ; loop counter 0 = infinite
-	jr z, .loop
+	jr z, Music_JumpChannel
 	; initiate loop
 	dec a
 	set SOUND_LOOPING, [hl] ; set loop flag
@@ -1457,19 +1443,7 @@ Music_LoopChannel:
 	and a ; are we done?
 	jr z, .endloop
 	dec [hl]
-.loop
-	; get pointer
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
-	; load new pointer into MusicAddress
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
+	jr Music_JumpChannel
 
 .endloop
 	; reset loop flag
@@ -1516,7 +1490,7 @@ Music_JumpIf:
 	ld hl, wChannel1Condition - wChannel1
 	add hl, bc
 	cp [hl]
-	jr z, .jump
+	jr z, Music_JumpChannel
 ; skip to next command
 	; get address
 	ld hl, wChannel1MusicAddress - wChannel1
@@ -1531,21 +1505,6 @@ Music_JumpIf:
 	ld a, d
 	ld [hld], a
 	ld [hl], e
-	ret
-
-.jump
-; jump to the new address
-	; get pointer
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
-	; update pointer in MusicAddress
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
-	ld a, e
-	ld [hli], a
-	ld [hl], d
 	ret
 
 Music_Vibrato:
@@ -1700,30 +1659,17 @@ Music_ToggleNoise:
 .on
 	; turn noise sampling on
 	set SOUND_NOISE, [hl]
+	ld a, [wCurChannel]
+	bit 3, a
+	jr z, Music_ChangeNoiseSampleSet
+; Channel 8 uses sfx sample set
+	call GetMusicByte
+	ld [wSFXNoiseSampleSet], a
+	ret
+
 Music_ChangeNoiseSampleSet:
 	call GetMusicByte
 	ld [wMusicNoiseSampleSet], a
-	ret
-
-Music_SFXToggleNoise:
-; toggle sfx noise sampling
-; params:
-;	on: 1
-; 	off: 0
-	; check if noise sampling is on
-	ld hl, wChannel1Flags - wChannel1
-	add hl, bc
-	bit SOUND_NOISE, [hl]
-	jr z, .on
-	; turn noise sampling off
-	res SOUND_NOISE, [hl]
-	ret
-
-.on
-	; turn noise sampling on
-	set SOUND_NOISE, [hl]
-	call GetMusicByte
-	ld [wSFXNoiseSampleSet], a
 	ret
 
 Music_NoteType:
@@ -1763,10 +1709,12 @@ Music_SoundStatus:
 	set NOTE_PITCH_SWEEP, [hl]
 	ret
 
-Music_DutyCycle:
+Music_DutyCycle0:
+Music_DutyCycle1:
+Music_DutyCycle2:
+Music_DutyCycle3:
 ; duty cycle
-; params: 1
-	call GetMusicByte
+	ld a, [wCurMusicByte]
 	rrca
 	rrca
 	and $c0
@@ -1826,21 +1774,27 @@ Music_ForceOctave:
 	ld [hl], a
 	ret
 
-Music_StereoPanning:
 ; stereo panning
-; params: 1
-	; stereo on?
-	ld a, [wOptions1]
-	bit STEREO, a
-	; skip param
-	jr z, GetMusicByte
-	; fallthrough
+Music_PanLeft:
+	ld a, $F0
+	jr _ForcePanning
 
-Music_Panning:
-; force panning
-; params: 1
+Music_PanRight:
+	ld a, $0F
+	jr _ForcePanning
+
+Music_PanCenter:
+	ld a, $FF
+	; fallthrough
+_ForcePanning:
+	; stereo on?
+	ld hl, wOptions1
+	bit STEREO, [hl]
+	ret z
+
+	ld d, a
 	call SetLRTracks
-	call GetMusicByte
+	ld a, d
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
 	and [hl]
