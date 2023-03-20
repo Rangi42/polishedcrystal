@@ -1052,7 +1052,7 @@ ParseMusic:
 	call GetMusicByte ; store next byte in a
 	cp $ff ; is the song over?
 	jr z, .endchannel
-	cp $d0 ; is it a note?
+	cp FIRST_MUSIC_CMD ; is it a note?
 	jr c, .readnote
 	; then it's a command
 .readcommand
@@ -1289,7 +1289,7 @@ ParseMusicCommand:
 	; reload command
 	ld a, [wCurMusicByte]
 	; get command #
-	sub $d0 ; first command
+	sub FIRST_MUSIC_CMD
 	; jump to the new command pointer
 	call StackJumpTable
 
