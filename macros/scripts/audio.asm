@@ -48,7 +48,7 @@ ENDM
 	const_def $d0
 DEF FIRST_MUSIC_CMD EQU const_value
 
-	const octave_cmd
+	const octave_cmd ; $d0
 	assert octave_cmd & %111 == 0, "octave_cmd must be 3-bit aligned"
 MACRO octave
 	assert 1 <= (\1) && (\1) <= 8, "octave must be 1-8"
@@ -57,7 +57,7 @@ ENDM
 
 	const_skip 7 ; all octave values
 
-	const duty_cycle_cmd
+	const duty_cycle_cmd ; $d8
 	assert duty_cycle_cmd & %11 == 0, "duty_cycle_cmd must be 2-bit aligned"
 MACRO duty_cycle
 	assert 0 <= (\1) && (\1) <= 6, "duty cycle must be 0-6"
@@ -66,7 +66,7 @@ ENDM
 
 	const_skip 3 ; all duty cycle values
 
-	const note_type_cmd
+	const note_type_cmd ; $dc
 MACRO note_type
 	db note_type_cmd
 	db \1 ; note length
@@ -84,19 +84,19 @@ MACRO drum_speed
 	note_type \1 ; note length
 ENDM
 
-	const transpose_cmd
+	const transpose_cmd ; $dd
 MACRO transpose
 	db transpose_cmd
 	dn \1, \2 ; num octaves, num pitches
 ENDM
 
-	const tempo_cmd
+	const tempo_cmd ; $de
 MACRO tempo
 	db tempo_cmd
 	bigdw \1 ; tempo
 ENDM
 
-	const volume_envelope_cmd
+	const volume_envelope_cmd ; $df
 MACRO volume_envelope
 	db volume_envelope_cmd
 	if \2 < 0
@@ -106,7 +106,7 @@ MACRO volume_envelope
 	endc
 ENDM
 
-	const pitch_sweep_cmd
+	const pitch_sweep_cmd ; $e0
 MACRO pitch_sweep
 	db pitch_sweep_cmd
 	if \2 < 0
@@ -116,25 +116,25 @@ MACRO pitch_sweep
 	endc
 ENDM
 
-	const duty_cycle_pattern_cmd
+	const duty_cycle_pattern_cmd ; $e1
 MACRO duty_cycle_pattern
 	db duty_cycle_pattern_cmd
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | (\4 << 0) ; duty cycle pattern
 ENDM
 
-	const toggle_sfx_cmd
+	const toggle_sfx_cmd ; $e2
 MACRO toggle_sfx
 	db toggle_sfx_cmd
 ENDM
 
-	const pitch_slide_cmd
+	const pitch_slide_cmd ; $e3
 MACRO pitch_slide
 	db pitch_slide_cmd
 	db \1 - 1 ; duration
 	dn 8 - \2, \3 % 12 ; octave, pitch
 ENDM
 
-	const vibrato_cmd
+	const vibrato_cmd ; $e4
 MACRO vibrato
 	db vibrato_cmd
 	db \1 ; delay
@@ -145,7 +145,7 @@ MACRO vibrato
 	endc
 ENDM
 
-	const toggle_noise_cmd
+	const toggle_noise_cmd ; $e5
 MACRO toggle_noise
 	db toggle_noise_cmd
 	if _NARG > 0
@@ -157,7 +157,7 @@ MACRO sfx_toggle_noise
 	toggle_noise \#
 ENDM
 
-	const volume_cmd
+	const volume_cmd ; $e6
 MACRO volume
 	db volume_cmd
 	if _NARG > 1
@@ -167,44 +167,43 @@ MACRO volume
 	endc
 ENDM
 
-	const pitch_offset_cmd
+	const pitch_offset_cmd ; $e7
 MACRO pitch_offset
 	db pitch_offset_cmd
 	bigdw \1 ; pitch offset
 ENDM
 
-	const tempo_relative_cmd
+	const tempo_relative_cmd ; $e8
 MACRO tempo_relative
 	db tempo_relative_cmd
 	bigdw \1 ; tempo adjustment
 ENDM
 
-	const restart_channel_cmd
+	const restart_channel_cmd ; $e9
 MACRO restart_channel
 	db restart_channel_cmd
 	dw \1 ; address
 ENDM
 
-	const new_song_cmd
+	const new_song_cmd ; $ea
 MACRO new_song
 	db new_song_cmd
 	bigdw \1 ; id
 ENDM
 
-	const sfx_priority_on_cmd
+	const sfx_priority_on_cmd ; $eb
 MACRO sfx_priority_on
 	db sfx_priority_on_cmd
 ENDM
 
-	const sfx_priority_off_cmd
+	const sfx_priority_off_cmd ; $ec
 MACRO sfx_priority_off
 	db sfx_priority_off_cmd
 ENDM
 
-	const stereo_left_cmd
-	const stereo_right_cmd
-	const stereo_center_cmd
-
+	const stereo_left_cmd ; $ed
+	const stereo_right_cmd ; $ee
+	const stereo_center_cmd ; $ef
 MACRO stereo_panning
 	if (\1) && !(\2)
 		db stereo_left_cmd
@@ -219,32 +218,32 @@ ENDM
 
 	const_skip 9
 
-	const noisesampleset_cmd
+	const noisesampleset_cmd ; $f9
 MACRO noisesampleset
 	db noisesampleset_cmd
 	db \1 ; noise
 ENDM
 
-	const set_condition_cmd
+	const set_condition_cmd ; $fa
 MACRO set_condition
 	db set_condition_cmd
 	db \1 ; condition
 ENDM
 
-	const sound_jump_if_cmd
+	const sound_jump_if_cmd ; $fb
 MACRO sound_jump_if
 	db sound_jump_if_cmd
 	db \1 ; condition
 	dw \2 ; address
 ENDM
 
-	const sound_jump_cmd
+	const sound_jump_cmd ; $fc
 MACRO sound_jump
 	db sound_jump_cmd
 	dw \1 ; address
 ENDM
 
-	const sound_loop_cmd
+	const sound_loop_cmd ; $fd
 MACRO sound_loop
 	db sound_loop_cmd
 	assert (\1) != 0, "'sound_loop 0' can be 'sound_jump'"
@@ -253,13 +252,13 @@ MACRO sound_loop
 	dw \2 ; address
 ENDM
 
-	const sound_call_cmd
+	const sound_call_cmd ; $fe
 MACRO sound_call
 	db sound_call_cmd
 	dw \1 ; address
 ENDM
 
-	const sound_ret_cmd
+	const sound_ret_cmd ; $ff
 	assert sound_ret_cmd == $ff, "sound_ret_cmd must be $ff"
 MACRO sound_ret
 	db sound_ret_cmd
