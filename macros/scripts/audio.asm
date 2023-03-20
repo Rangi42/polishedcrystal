@@ -53,6 +53,7 @@ MACRO octave
 	assert 1 <= (\1) && (\1) <= 8, "octave must be 1-8"
 	db octave_cmd + 8 - (\1) ; octave
 ENDM
+assert octave_cmd & $7 == 0, "octave_cmd must be 3 bit aligned"
 
 	const_skip 7 ; all octave values
 
@@ -61,6 +62,7 @@ MACRO duty_cycle
 	assert 0 <= (\1) && (\1) <= 6, "duty cycle must be 0-6"
 	db duty_cycle_cmd | (\1 & 3) ; values 4-6 fold into 0-2
 ENDM
+assert duty_cycle_cmd & $3 == 0, "duty_cycle_cmd must be 2 bit aligned"
 
 	const_skip 3 ; all duty cycle values
 
@@ -261,3 +263,4 @@ ENDM
 MACRO sound_ret
 	db sound_ret_cmd
 ENDM
+assert sound_ret_cmd == $ff, "sound_ret must be $ff"
