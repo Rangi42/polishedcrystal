@@ -1327,7 +1327,7 @@ MusicCommands:
 	dw Music_SFXPriorityOff ; sfx priority off
 	dw Music_PanLeft ; stereo panning
 	dw Music_PanRight
-	dw Music_Pancenter
+	dw Music_PanCenter
 	dw DoNothing ; $F0
 	dw DoNothing ; $F1
 	dw DoNothing ; $F2
@@ -1783,7 +1783,7 @@ Music_PanRight:
 	ld a, $0F
 	jr _ForcePanning
 
-Music_Pancenter:
+Music_PanCenter:
 	ld a, $FF
 	; fallthrough
 _ForcePanning:
