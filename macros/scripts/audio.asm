@@ -201,7 +201,7 @@ ENDM
 
 	const stereo_left_cmd
 	const stereo_right_cmd
-	const stereo_centre_cmd
+	const stereo_center_cmd
 
 MACRO stereo_panning
 	if (\1) && !(\2)
@@ -209,7 +209,7 @@ MACRO stereo_panning
 	elif !(\1) && (\2)
 		db stereo_right_cmd
 	elif (\1) && (\2)
-		db stereo_centre_cmd
+		db stereo_center_cmd
 	else
 		fail "Cannot mute with stereo_panning"
 	endc
