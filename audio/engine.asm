@@ -2585,38 +2585,10 @@ ReloadWaveform::
 	sub l
 	ld h, a
 	; load wavepattern into rWave_0-rWave_f
+for x, 16
 	ld a, [hli]
-	ldh [rWave_0], a
-	ld a, [hli]
-	ldh [rWave_1], a
-	ld a, [hli]
-	ldh [rWave_2], a
-	ld a, [hli]
-	ldh [rWave_3], a
-	ld a, [hli]
-	ldh [rWave_4], a
-	ld a, [hli]
-	ldh [rWave_5], a
-	ld a, [hli]
-	ldh [rWave_6], a
-	ld a, [hli]
-	ldh [rWave_7], a
-	ld a, [hli]
-	ldh [rWave_8], a
-	ld a, [hli]
-	ldh [rWave_9], a
-	ld a, [hli]
-	ldh [rWave_a], a
-	ld a, [hli]
-	ldh [rWave_b], a
-	ld a, [hli]
-	ldh [rWave_c], a
-	ld a, [hli]
-	ldh [rWave_d], a
-	ld a, [hli]
-	ldh [rWave_e], a
-	ld a, [hli]
-	ldh [rWave_f], a
+	ldh [rWave_{x:x}], a
+endr
 	ret
 
 INCLUDE "audio/notes.asm"
