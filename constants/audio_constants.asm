@@ -94,16 +94,10 @@ DEF NOISE_CHAN_F EQU 2 ; bit set in CHAN5-CHAN7
 	const SOUND_VIBRATO      ; 0
 	const SOUND_PITCH_SLIDE  ; 1
 	const SOUND_DUTY_LOOP    ; 2
-	const SOUND_UNKN_0B      ; 3
+	const_skip               ; 3
 	const SOUND_PITCH_OFFSET ; 4
-	const SOUND_UNKN_0D      ; 5
-	const SOUND_UNKN_0E      ; 6
-	const SOUND_UNKN_0F      ; 7
-
-; Flags3
-	const_def
-	const SOUND_VIBRATO_DIR     ; 0
-	const SOUND_PITCH_SLIDE_DIR ; 1
+	const SOUND_VIBRATO_DIR     ; 5
+	const SOUND_PITCH_SLIDE_DIR ; 6
 
 ; NoteFlags
 	const_def

@@ -668,7 +668,7 @@ LoadNote:
 	add hl, bc
 	sub [hl]
 	jr nc, .greater_than
-	ld hl, wChannel1Flags3 - wChannel1
+	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_PITCH_SLIDE_DIR, [hl]
 	; get frequency
@@ -694,7 +694,7 @@ LoadNote:
 	jr .resume
 
 .greater_than
-	ld hl, wChannel1Flags3 - wChannel1
+	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	res SOUND_PITCH_SLIDE_DIR, [hl]
 	; get frequency
@@ -830,7 +830,7 @@ HandleTrackVibrato:
 	ld a, [wCurTrackFrequency]
 	ld e, a
 	; toggle vibrato up/down
-	ld hl, wChannel1Flags3 - wChannel1
+	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	bit SOUND_VIBRATO_DIR, [hl] ; vibrato up/down
 	jr z, .down
@@ -880,7 +880,7 @@ ApplyPitchWheel:
 	ld d, [hl]
 	ld e, a
 	; check whether pitch wheel is going up or down
-	ld hl, wChannel1Flags3 - wChannel1
+	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	bit SOUND_PITCH_SLIDE_DIR, [hl]
 	jr z, .decreasing
@@ -959,8 +959,6 @@ ApplyPitchWheel:
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	res SOUND_PITCH_SLIDE, [hl]
-	ld hl, wChannel1Flags3 - wChannel1
-	add hl, bc
 	res SOUND_PITCH_SLIDE_DIR, [hl]
 	ret
 
@@ -1516,8 +1514,6 @@ Music_Vibrato:
 	add hl, bc
 	set SOUND_VIBRATO, [hl]
 	; start at lower frequency (extent is positive)
-	ld hl, wChannel1Flags3 - wChannel1
-	add hl, bc
 	res SOUND_VIBRATO_DIR, [hl]
 	; get delay
 	call GetMusicByte
@@ -2440,17 +2436,6 @@ PlayStereoSFX::
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
 	ld [hl], a
-
-	ld a, [wCryTracks]
-	cp 2 ; ch 1-2
-	jr c, .skip
-
-; ch3-4
-	ld hl, wChannel1Flags2 - wChannel1
-	add hl, bc
-	set SOUND_UNKN_0F, [hl]
-
-.skip
 	pop de
 
 ; turn channel on
