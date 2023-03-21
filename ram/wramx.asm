@@ -1036,8 +1036,6 @@ wPlayerState:: db
 wHallOfFameCount:: dw
 wTradeFlags:: flag_array PARTY_LENGTH
 
-	ds 1 ; unused
-
 wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 wFarfetchdPosition:: db
@@ -1179,7 +1177,14 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 70 ; unused
+	ds 65 ; unused
+
+wCandyAmounts::
+wExpCandyXSAmount:: db
+wExpCandySAmount:: db
+wExpCandyMAmount:: db
+wExpCandyLAmount:: db
+wExpCandyXLAmount:: db
 
 wWingAmounts::
 wHealthWingAmount:: dw

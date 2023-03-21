@@ -290,6 +290,7 @@ KeyItemEffects:
 	dw CoinCase           ; COIN_CASE
 	dw ApricornBox        ; APRICORN_BOX
 	dw WingCase           ; WING_CASE
+	dw CandyJar           ; CANDY_JAR
 	dw TypeChart          ; TYPE_CHART
 	dw GBCSounds          ; GBC_SOUNDS
 	dw BlueCard           ; BLUE_CARD
@@ -1347,17 +1348,19 @@ UseItem_SelectMon2:
 
 WingCase:
 	call FixPlayerEVsAndStats
-	ld b, PARTYMENUACTION_HEALING_ITEM ; also used for vitamins
 	ld hl, WingCase_MonSelected
 	jr UseItem_SelectMon_Loop
 
+CandyJar:
+	call FixPlayerEVsAndStats
+	ld hl, CandyJar_MonSelected
+	jr UseItem_SelectMon_Loop
+
 RestoreHPEffect:
-	ld b, PARTYMENUACTION_HEALING_ITEM
 	ld hl, ItemRestoreHP
 	; fallthrough
-
 UseItem_SelectMon_Loop:
-	ld a, b
+	ld a, PARTYMENUACTION_HEALING_ITEM ; also used for vitamins
 	ld [wPartyMenuActionText], a
 	push de
 	ld b, 0
@@ -1903,7 +1906,6 @@ WingCase_MonSelected:
 	add hl, bc
 	ld a, [hld]
 	or [hl]
-	ld a, MODERN_MAX_EV
 	jr nz, .have_wings
 	hlcoord 1, 16
 	ld de, .YouDontHaveAny
@@ -2066,7 +2068,6 @@ WingCase_MonSelected:
 	call _GetStatString
 
 	ld hl, .RaisesStat
-.got_str
 	bccoord 1, 16
 	jmp PlaceWholeStringInBoxAtOnce
 
@@ -2095,6 +2096,178 @@ WingCase_MonSelected:
 	done
 
 INCLUDE "data/items/wing_names.asm"
+
+CandyJar_MonSelected:
+; Runs when a mon has been selected.
+	; What candy does the player want to choose?
+	ldh a, [hBGMapMode]
+	push af
+	ld a, [wMenuScrollPosition]
+	push af
+	xor a
+	ld [wMenuScrollPosition], a
+	call LoadStandardMenuHeader
+	ld hl, .CandyMenu
+	call CopyMenuHeader
+	call InitScrollingMenu
+	call ScrollingMenu
+	push af
+	call ExitMenu
+	pop af
+	pop af
+	ld [wMenuScrollPosition], a
+	pop af
+	ldh [hBGMapMode], a
+	ld a, [wMenuJoypad]
+	sub B_BUTTON
+	ret z
+
+	; Which candy was chosen? -1 is cancel
+	ld a, [wMenuSelection]
+	ld c, a
+	ld b, 0
+	inc a
+	ret z
+
+	; Check if we have any in the first place.
+	ld hl, wCandyAmounts
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr nz, .have_candy
+	hlcoord 1, 16
+	ld de, .YouDontHaveAny
+	rst PlaceString
+	xor a
+	ret
+
+.have_candy
+	; Check how many we can use. Cap at 99, since that's the highest
+	; useful amount. TODO: Cap based on the total exp gain.
+	cp 99 + 1
+	jr c, .got_amount
+.overflow
+	ld a, 99
+.got_amount
+	ld [wItemQuantityBuffer], a
+
+	push bc
+	; This doubles as a "blank previous text".
+	hlcoord 1, 16
+	ld de, .UseHowManyText
+	rst PlaceString
+	farcall SelectCandyQuantity
+	pop bc
+	jr c, .done
+
+	; TODO: Check the chosen amount and apply it.
+	ld a, 1
+	ret
+
+.done
+	xor a
+	ret
+
+.CandyMenu:
+	db MENU_BACKUP_TILES
+	menu_coords 12, 1, 18, 12
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db $20
+	db 6, 6
+	db SCROLLINGMENU_ITEMS_NORMAL
+	dba .MenuItems
+	dba .DisplayCandyName
+	dba .DisplayCandyAmount
+	dba .DisplayCandyDesc
+
+.MenuItems:
+	db NUM_CANDIES
+	table_width 1
+	db EXP_CANDY_XS
+	db EXP_CANDY_S
+	db EXP_CANDY_M
+	db EXP_CANDY_L
+	db EXP_CANDY_XL
+	assert_table_length NUM_CANDIES
+	db -1
+
+.DisplayCandyName:
+	ld hl, .CandyNames
+	jmp WingCase_MonSelected.DisplayNthString
+
+.CandyNames:
+	list_start .CandyNames
+	li "XS"
+	li "S"
+	li "M"
+	li "L"
+	li "XL"
+	assert_list_length NUM_CANDIES
+
+.DisplayCandyAmount:
+	ld hl, wCandyAmounts
+	ld bc, 1
+	ld a, [wMenuSelection]
+	rst AddNTimes
+	call SwapHLDE
+	ld bc, SCREEN_WIDTH - 3
+	add hl, bc
+	ld a, "×"
+	ld [hli], a
+	lb bc, 1, 2
+	jmp PrintNum
+
+.DisplayCandyDesc:
+	; This doubles as a "blank previous text".
+	hlcoord 1, 16
+	ld de, .CancelStr
+	rst PlaceString
+
+	; Check if we're hovering over cancel
+	ld a, [wMenuSelection]
+	ld c, a
+	ld b, 0
+	inc a
+	ret z
+	ld hl, .CandyExpAmounts
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld [wStringBuffer2], a
+	ld a, [hl]
+	ld [wStringBuffer2+1], a
+
+	ld hl, .GivesExp
+	bccoord 1, 16
+	jmp PlaceWholeStringInBoxAtOnce
+
+.CandyExpAmounts:
+	table_width 2, .CandyExpAmounts
+	bigdw 100
+	bigdw 800
+	bigdw 3000
+	bigdw 10000
+	bigdw 30000
+	assert_table_length NUM_CANDIES
+
+.GivesExp:
+	text "Gives "
+	text_decimal wStringBuffer2, 2, 5
+	text " Exp."
+	done
+
+.CancelStr:
+	db "Don't use.         @"
+
+.YouDontHaveAny:
+	db "You don't have any."
+	prompt
+
+.UseHowManyText:
+	db "Use how many?     @"
 
 CoinCase:
 	ld hl, .coincasetext

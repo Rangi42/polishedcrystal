@@ -266,6 +266,7 @@ KeyItemDescriptions:
 	dw CoinCaseDesc
 	dw ApricornBoxDesc
 	dw WingCaseDesc
+	dw CandyJarDesc
 	dw TypeChartDesc
 	dw GBCSoundsDesc
 	dw BlueCardDesc
@@ -1688,4 +1689,9 @@ TypeChartDesc:
 WingCaseDesc:
 	text "Holds up to 999 of"
 	next "each Wing."
+	done
+
+CandyJarDesc:
+	text "Holds up to 99 of"
+	next "each Exp.Candy."
 	done
