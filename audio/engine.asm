@@ -1050,13 +1050,16 @@ ReadNoiseSample:
 ParseMusic:
 ; parses until a note is read or the song is ended
 	call GetMusicByte ; store next byte in a
-	cp $ff ; is the song over?
-	jr z, .endchannel
 	cp FIRST_MUSIC_CMD ; is it a note?
 	jr c, .readnote
 	; then it's a command
+	inc a ; is the song over?
+	jr z, .endchannel
 .readcommand
-	call ParseMusicCommand
+	; get command #
+	sub FIRST_MUSIC_CMD + 1
+	ld hl, MusicCommands
+	call JumpTable
 	jr ParseMusic ; start over
 
 .readnote
@@ -1140,7 +1143,7 @@ ParseMusic:
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	bit SOUND_SUBROUTINE, [hl] ; in a subroutine?
-	jr nz, .readcommand ; execute
+	jmp nz, .readcommand ; execute
 	ld a, [wCurChannel]
 	cp $4 ; channels 0-3?
 	jr nc, .chan_5to8
@@ -1284,14 +1287,6 @@ GetNoiseSample:
 	xor a
 	ld [wNoiseSampleDelay], a
 	ret
-
-ParseMusicCommand:
-	; reload command
-	ld a, [wCurMusicByte]
-	; get command #
-	sub FIRST_MUSIC_CMD
-	; jump to the new command pointer
-	call StackJumpTable
 
 MusicCommands:
 ; entries correspond to audio constants (see macros/scripts/audio.asm)
