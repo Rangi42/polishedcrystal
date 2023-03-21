@@ -1660,8 +1660,8 @@ Music_ToggleNoise:
 	; turn noise sampling on
 	set SOUND_NOISE, [hl]
 	ld a, [wCurChannel]
-	bit 3, a
-	jr z, Music_ChangeNoiseSampleSet
+	cp CHAN5
+	jr c, Music_ChangeNoiseSampleSet
 ; Channel 8 uses sfx sample set
 	call GetMusicByte
 	ld [wSFXNoiseSampleSet], a
