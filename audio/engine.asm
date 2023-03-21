@@ -2169,10 +2169,6 @@ _PlayMusic::
 	dec a
 	jr nz, .loop
 	xor a
-	ld [wChannel1JumpCondition], a
-	ld [wChannel2JumpCondition], a
-	ld [wChannel3JumpCondition], a
-	ld [wChannel4JumpCondition], a
 	ld [wNoiseSampleAddressLo], a
 	ld [wNoiseSampleAddressHi], a
 	ld [wNoiseSampleDelay], a
@@ -2450,25 +2446,11 @@ PlayStereoSFX::
 	add hl, bc
 	ld [hl], a
 
-	ld hl, wChannel1Field0x30 - wChannel1 ; $c131 - Channel1
-	add hl, bc
-	ld [hl], a
-
 	ld a, [wCryTracks]
 	cp 2 ; ch 1-2
 	jr c, .skip
 
 ; ch3-4
-	ld a, [wSFXDuration]
-
-	ld hl, wChannel1Field0x2e - wChannel1 ; $c12f - Channel1
-	add hl, bc
-	ld [hl], a
-
-	ld hl, wChannel1Field0x2f - wChannel1 ; $c130 - Channel1
-	add hl, bc
-	ld [hl], a
-
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_UNKN_0F, [hl]

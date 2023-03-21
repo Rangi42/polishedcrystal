@@ -179,7 +179,6 @@ MACRO channel_struct
 \1PitchOffset::       db ; raises existing octaves (to repeat phrases)
 \1NoteDuration::      db ; frames remaining for the current note
 \1Field0x16::         db
-                      ds 1
 \1LoopCount::         db
 \1Tempo::             dw
 \1Tracks::            db ; hi:left lo:right
@@ -192,14 +191,8 @@ MACRO channel_struct
 \1PitchWheelAmount::  db
 \1PitchWheelAmountFraction:: db
 \1Field0x25::         db
-                      ds 1
 \1CryPitch::          dw
-                      ds 4
 \1NoteLength::        db ; frames per 16th note
-\1Field0x2e::         db
-\1Field0x2f::         db
-\1Field0x30::         db
-                      ds 1
 ENDM
 
 MACRO mailmsg
