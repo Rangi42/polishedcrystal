@@ -1328,14 +1328,13 @@ Music_EndChannel:
 	add hl, bc
 	res SOUND_SUBROUTINE, [hl]
 	; copy LastMusicAddress to MusicAddress
-	ld hl, wChannel1LastMusicAddress - wChannel1
+	ld hl, wChannel1LastMusicAddress + 1 - wChannel1
 	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
-	ld [hli], a
-	ld [hl], d
+	ld a, [hld]
+	ld e, [hl]
+	dec hl ; no-optimize b|c|d|e = *hl++|*hl--
+	ld [hld], a
+	ld [hl], e
 	ret
 
 Music_CallChannel:
@@ -1349,10 +1348,7 @@ Music_CallChannel:
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
-	ld e, a
-	ld hl, wChannel1LastMusicAddress - wChannel1
-	add hl, bc
-	ld a, e
+	inc hl ; no-optimize b|c|d|e = *hl++|*hl--
 	ld [hli], a
 	ld [hl], d
 	; load pointer into MusicAddress
@@ -1824,11 +1820,9 @@ Music_RestartChannel:
 	add hl, bc
 	ld a, [hli]
 	ld [wMusicIDLo], a
-	ld a, [hl]
+	ld a, [hli]
 	ld [wMusicIDHi], a
 	; update music bank
-	ld hl, wChannel1MusicBank - wChannel1
-	add hl, bc
 	ld a, [hl]
 	ld [wMusicBank], a
 	; get pointer to new channel header
@@ -1861,23 +1855,20 @@ GetMusicByte:
 	push hl
 	push de
 	; load address into de
-	ld hl, wChannel1MusicAddress - wChannel1
+	ld hl, wChannel1MusicAddress + 1 - wChannel1
 	add hl, bc
-	ld a, [hli]
+	ld a, [hld]
+	ld d, a
+	ld a, [hld]
 	ld e, a
-	ld d, [hl]
 	; load bank into a
-	ld hl, wChannel1MusicBank - wChannel1
-	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	; get byte
 	call _LoadMusicByte ; load data into wCurMusicByte
 	inc de ; advance to next byte for next time this is called
 	; update channeldata address
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
 	ld [hl], e
-	inc hl
+	inc hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [hl], d
 	; cleanup
 	pop de
@@ -1890,14 +1881,13 @@ GetMusicWord:
 ; input: bc = start of current channel
 	push hl
 	; load address into de
-	ld hl, wChannel1MusicAddress - wChannel1
+	ld hl, wChannel1MusicAddress + 1 - wChannel1
 	add hl, bc
-	ld a, [hli]
+	ld a, [hld]
+	ld d, a
+	ld a, [hld]
 	ld e, a
-	ld d, [hl]
 	; load bank into a
-	ld hl, wChannel1MusicBank - wChannel1
-	add hl, bc
 	ld a, [hl]
 	; get byte
 	call _LoadMusicWord ; load data into hl
@@ -2478,10 +2468,8 @@ LoadChannel:
 	ld a, [wMusicIDLo]
 	ld [hli], a
 	ld a, [wMusicIDHi]
-	ld [hl], a
+	ld [hli], a
 	; load music bank
-	ld hl, wChannel1MusicBank - wChannel1
-	add hl, bc
 	ld a, [wMusicBank]
 	ld [hl], a
 	ret

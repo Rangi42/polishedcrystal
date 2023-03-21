@@ -161,10 +161,10 @@ ENDM
 MACRO channel_struct
 \1MusicID::           dw
 \1MusicBank::         db
-\1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
-\1Flags2::            db ; 0:vibrato on/off 2:duty 4:cry pitch 5:vibrato up/down
 \1MusicAddress::      dw
 \1LastMusicAddress::  dw
+\1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
+\1Flags2::            db ; 0:vibrato on/off 2:duty 4:cry pitch 5:vibrato up/down
 \1NoteFlags::         db ; 5:rest
 \1Condition::         db ; conditional jumps
 \1DutyCycle::         db ; bits 6-7 (0:12.5% 1:25% 2:50% 3:75%)
