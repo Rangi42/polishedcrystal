@@ -426,27 +426,6 @@ UpdateChannels:
 	ldh [rNR44], a
 	ret
 
-_CheckSFX:
-; return carry if any sfx channels are active
-	ld hl, wChannel5Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
-	ld hl, wChannel6Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
-	ld hl, wChannel7Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
-	ld hl, wChannel8Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
-	and a
-	ret
-
-.sfxon
-	scf
-	ret
-
 PlayDanger:
 	ld a, [wLowHealthAlarm]
 	bit 7, a
@@ -454,7 +433,7 @@ PlayDanger:
 	cp 255
 	ret z
 	ld d, a
-	call _CheckSFX
+	call CheckSFX
 	jr c, .increment
 	ld a, d
 	and $1f

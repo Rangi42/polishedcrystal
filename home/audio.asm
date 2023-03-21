@@ -252,18 +252,8 @@ WaitSFX::
 .wait
 	call DelayFrame
 .handleLoop
-	ld hl, wChannel5Flags
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel6Flags
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel7Flags
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel8Flags
-	bit 0, [hl]
-	jr nz, .wait
+	call CheckSFX
+	jr c, .wait
 
 	pop hl
 	ret
@@ -421,21 +411,22 @@ GetPlayerStateMusic:
 
 CheckSFX::
 ; Return carry if any SFX channels are active.
-	ld a, [wChannel5Flags]
-	bit 0, a
-	jr nz, .playing
-	ld a, [wChannel6Flags]
-	bit 0, a
-	jr nz, .playing
-	ld a, [wChannel7Flags]
-	bit 0, a
-	jr nz, .playing
-	ld a, [wChannel8Flags]
-	bit 0, a
-	jr nz, .playing
+	ld hl, wChannel5Flags
+	bit SOUND_CHANNEL_ON, [hl]
+	jr nz, .sfxon
+	ld hl, wChannel6Flags
+	bit SOUND_CHANNEL_ON, [hl]
+	jr nz, .sfxon
+	ld hl, wChannel7Flags
+	bit SOUND_CHANNEL_ON, [hl]
+	jr nz, .sfxon
+	ld hl, wChannel8Flags
+	bit SOUND_CHANNEL_ON, [hl]
+	jr nz, .sfxon
 	and a
 	ret
-.playing
+
+.sfxon
 	scf
 	ret
 
