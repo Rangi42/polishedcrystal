@@ -1594,10 +1594,10 @@ Music_Tone:
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_PITCH_OFFSET, [hl]
-	ld hl, wChannel1CryPitch + 1 - wChannel1
+	ld hl, wChannel1CryPitch - wChannel1
 	add hl, bc
 	call GetMusicByte
-	ld [hld], a
+	ld [hli], a
 	call GetMusicByte
 	ld [hl], a
 	ret
@@ -1723,9 +1723,9 @@ Music_Tempo:
 ; params: 2
 ;	de: tempo
 	call GetMusicByte
-	ld d, a
-	call GetMusicByte
 	ld e, a
+	call GetMusicByte
+	ld d, a
 	ld a, [wCurChannel]
 	cp CHAN5
 	jmp nc, SetGlobalTempo
