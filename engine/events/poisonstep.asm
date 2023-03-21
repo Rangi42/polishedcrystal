@@ -114,8 +114,8 @@ DoPoisonStep::
 .DoPoisonDamage
 ; do 1 HP damage
 	dec bc
-	ld [hl], c
-	dec hl
+	ld a, c
+	ld [hld], a
 	ld [hl], b
 ; set carry and return %01
 	ld c, %01

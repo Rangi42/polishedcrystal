@@ -311,13 +311,12 @@ ReadTrainerParty:
 	predef CalcPkmnStats
 	pop hl
 	inc hl
-	ld c, [hl]
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
 	dec hl
-	ld b, [hl]
-	dec hl
-	ld [hl], c
-	dec hl
-	ld [hl], b
+	ld [hl], a
 	pop hl
 .no_stat_recalc
 	jmp .loop2

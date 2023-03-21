@@ -196,9 +196,9 @@ OaksPkmnTalk4:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
 	ld c, [hl]
+	ld b, a
 	; bc now contains the chosen map's group and number indices.
 	push bc
 
@@ -1820,9 +1820,9 @@ StartRadioStation:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	farjp RadioMusicRestartDE
 
 INCLUDE "data/radio/channel_music.asm"

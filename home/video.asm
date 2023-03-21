@@ -17,12 +17,12 @@ GDMACopy:
 ; Copy a+1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
 	push hl
 	ld hl, rHDMA1
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 _GDMACopy:
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], c
 	ldh [rHDMA5], a

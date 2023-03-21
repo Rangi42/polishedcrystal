@@ -158,9 +158,9 @@ Options_TextSpeed:
 	ld hl, .Strings
 	add hl, bc
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 3
 	rst PlaceString
 	and a
@@ -449,9 +449,9 @@ Options_TextAutoscroll:
 	ld c, a
 	ld hl, .Strings
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 7
 	rst PlaceString
 	and a
@@ -489,9 +489,9 @@ Options_TurningSpeed:
 	ld c, a
 	ld hl, .Strings
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 9
 	rst PlaceString
 	and a
@@ -554,9 +554,9 @@ Options_Typeface:
 	ld hl, .Strings
 	add hl, bc
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 11
 	rst PlaceString
 	and a

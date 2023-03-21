@@ -390,8 +390,7 @@ GetSpriteAnimFrame:
 	and a
 	jr z, .next_frame ; finished the current sequence
 	dec [hl]
-	call .GetPointer ; load pointer from SpriteAnimFrameData
-	ld a, [hli]
+	call .GetPointerAndAdvance ; load pointer from SpriteAnimFrameData
 	push af
 	jr .okay
 
@@ -399,8 +398,7 @@ GetSpriteAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_FRAME
 	add hl, bc
 	inc [hl]
-	call .GetPointer ; load pointer from SpriteAnimFrameData
-	ld a, [hli]
+	call .GetPointerAndAdvance ; load pointer from SpriteAnimFrameData
 	cp oamrestart_command
 	jr z, .restart
 	cp oamend_command
@@ -449,7 +447,7 @@ GetSpriteAnimFrame:
 	ld [hl], a
 	jr .loop
 
-.GetPointer:
+.GetPointerAndAdvance:
 	; Get the data for the current frame for the current animation sequence
 
 	; SpriteAnimFrameData[SpriteAnim[SPRITEANIMSTRUCT_FRAMESET_ID]][SpriteAnim[SPRITEANIMSTRUCT_FRAME]]
@@ -460,15 +458,16 @@ GetSpriteAnimFrame:
 	ld hl, SpriteAnimFrameData
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, SPRITEANIMSTRUCT_FRAME
 	add hl, bc
 	ld l, [hl]
 	ld h, 0
 	add hl, hl
 	add hl, de
+	ld a, [hli]
 	ret
 
 GetFrameOAMPointer:

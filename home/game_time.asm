@@ -136,7 +136,7 @@ UpdateNoRTC::
 	ld a, 60
 	ld b, a
 
-	ld hl, wNoRTCSeconds
+	ld hl, wRTCSeconds
 
 ; +1 second
 	inc [hl]

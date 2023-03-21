@@ -4,8 +4,8 @@ Special::
 	add hl, de
 	add hl, de
 	add hl, de
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

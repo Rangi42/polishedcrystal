@@ -14,9 +14,9 @@ PrintDescription:
 	add hl, bc
 	add hl, bc
 	push de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	pop hl
 	rst PlaceString
 	ret

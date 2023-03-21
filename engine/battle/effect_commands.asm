@@ -1574,9 +1574,9 @@ _CheckTypeMatchup:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
 	ld c, [hl]
+	ld b, a
 	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, InverseTypeMatchups
@@ -4904,8 +4904,8 @@ HandleBigRoot:
 	xor a
 	ld hl, hMultiplicand
 	ld [hli], a
-	ld [hl], b
-	inc hl
+	ld a, b
+	ld [hli], a
 	ld [hl], c
 	ld hl, hMultiplier
 	ld [hl], 13

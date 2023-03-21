@@ -491,7 +491,7 @@ BattleTowerMart1:
 
 BattleTowerMart2:
 	db 9 ; # items
-	db RARE_CANDY,   64
+	db RARE_CANDY,   16
 	db PP_MAX,       64
 	db ABILITY_CAP,  32
 	db WEAK_POLICY,  48

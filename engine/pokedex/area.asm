@@ -779,7 +779,7 @@ Pokedex_DoAreaInsertSort:
 	sub b
 	ld d, h
 	ld e, l
-	ld b, [hl]
+	ld b, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 	ld c, [hl]
 	push bc

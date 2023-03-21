@@ -861,9 +861,9 @@ GetBattleAnimByte::
 	push de
 
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 
 	ld a, [de]
 	ld [wBattleAnimByte], a

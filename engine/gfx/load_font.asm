@@ -35,11 +35,9 @@ LoadStandardFontPointer::
 	ld e, a
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld h, d
-	ld l, e
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	ret
 
 .FontPointers:
