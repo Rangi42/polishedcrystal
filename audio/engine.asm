@@ -1891,14 +1891,12 @@ GetMusicByte:
 	; update channeldata address
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
-	ld a, e
-	ld [hli], a
+	ld [hl], e
+	inc hl
 	ld [hl], d
 	; cleanup
 	pop de
 	pop hl
-	; store channeldata in a
-	ld a, [wCurMusicByte]
 	ret
 
 GetFrequency:
@@ -2502,16 +2500,6 @@ ChannelInit:
 	add hl, bc
 	ld [hl], a
 	pop de
-	ret
-
-LoadMusicByte::
-; input:
-;   de = current music address
-; output:
-;   a = wCurMusicByte
-	ld a, [wMusicBank]
-	call _LoadMusicByte
-	ld a, [wCurMusicByte]
 	ret
 
 ReloadWaveform::

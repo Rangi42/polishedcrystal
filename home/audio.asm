@@ -38,13 +38,21 @@ UpdateSound::
 
 	jmp PopAFBCDEHL
 
+LoadMusicByte::
+; input:
+;   de = current music address
+; output:
+;   a = wCurMusicByte
+	ld a, [wMusicBank]
+; fallthrough
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
 	rst Bankswitch
 	ld a, [de]
 	ld [wCurMusicByte], a
-	ld a, BANK(LoadMusicByte)
+	ld a, BANK(GetMusicByte)
 	rst Bankswitch
+	ld a, [wCurMusicByte]
 	ret
 
 CheckSpecialMapMusic:
