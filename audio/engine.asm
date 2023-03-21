@@ -1342,10 +1342,7 @@ Music_CallChannel:
 ; call music stream (subroutine)
 ; parameters: ll hh ; pointer to subroutine
 	; get pointer from next 2 bytes
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
+	call GetMusicWord
 	push de
 	; copy MusicAddress to LastMusicAddress
 	ld hl, wChannel1MusicAddress - wChannel1
@@ -1375,10 +1372,7 @@ Music_JumpChannel:
 ; jump
 ; parameters: ll hh ; pointer
 	; get pointer from next 2 bytes
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
+	call GetMusicWord
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
 	ld a, e
@@ -1494,25 +1488,23 @@ Music_Vibrato:
 	set SOUND_VIBRATO, [hl]
 	; start at lower frequency (extent is positive)
 	res SOUND_VIBRATO_DIR, [hl]
-	; get delay
-	call GetMusicByte
+	; get args
+	call GetMusicWord
 ; update delay
 	ld hl, wChannel1VibratoDelay - wChannel1
 	add hl, bc
-	ld [hl], a
+	ld [hl], e
 ; update delay count
 	ld hl, wChannel1VibratoDelayCount - wChannel1
 	add hl, bc
-	ld [hl], a
+	ld [hl], e
 ; update extent
 ; this is split into halves only to get added back together at the last second
-	; get extent/rate
-	call GetMusicByte
 	ld hl, wChannel1VibratoExtent - wChannel1
 	add hl, bc
-	ld d, a
 	; get top nybble
-	and $f0
+	ld a, $f0
+	and d
 	swap a
 	srl a ; halve
 	ld e, a
@@ -1537,13 +1529,13 @@ Music_SlidePitchTo:
 ; params: 2
 ; note duration
 ; target note
-	call GetMusicByte
+	call GetMusicWord
+	ld a, e
 	ld [wCurNoteDuration], a
 
-	call GetMusicByte
 	; pitch in e
-	ld d, a
-	and $f
+	ld a, $f
+	and d
 	ld e, a
 
 	; octave in d
@@ -1571,10 +1563,10 @@ Music_Tone:
 	set SOUND_PITCH_OFFSET, [hl]
 	ld hl, wChannel1CryPitch - wChannel1
 	add hl, bc
-	call GetMusicByte
+	call GetMusicWord
+	ld a, e
 	ld [hli], a
-	call GetMusicByte
-	ld [hl], a
+	ld [hl], d
 	ret
 
 Music_SoundDuty:
@@ -1697,10 +1689,7 @@ Music_Tempo:
 ; global tempo
 ; params: 2
 ;	de: tempo
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
+	call GetMusicWord
 	ld a, [wCurChannel]
 	cp CHAN5
 	jmp nc, SetGlobalTempo
@@ -1843,10 +1832,9 @@ Music_RestartChannel:
 	ld a, [hl]
 	ld [wMusicBank], a
 	; get pointer to new channel header
-	call GetMusicByte
-	ld l, a
-	call GetMusicByte
-	ld h, a
+	call GetMusicWord
+	ld l, e
+	ld h, d
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -1860,10 +1848,7 @@ Music_NewSong:
 ; new song
 ; params: 2
 ;	de: song id
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
+	call GetMusicWord
 	push bc
 	call _PlayMusic
 	pop bc
@@ -1893,6 +1878,35 @@ GetMusicByte:
 	add hl, bc
 	ld [hl], e
 	inc hl
+	ld [hl], d
+	; cleanup
+	pop de
+	pop hl
+	ret
+
+GetMusicWord:
+; returns word from current address in de
+; advances to next byte in music data
+; input: bc = start of current channel
+	push hl
+	; load address into de
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
+	; load bank into a
+	ld hl, wChannel1MusicBank - wChannel1
+	add hl, bc
+	ld a, [hl]
+	; get byte
+	call _LoadMusicWord ; load data into hl
+	push hl
+	; update channeldata address
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	; cleanup
 	pop de

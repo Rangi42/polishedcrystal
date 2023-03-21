@@ -55,6 +55,19 @@ _LoadMusicByte::
 	ld a, [wCurMusicByte]
 	ret
 
+_LoadMusicWord::
+	rst Bankswitch
+	ld a, [de]
+	ld l, a
+	inc de
+	ld a, [de]
+	ld h, a
+	inc de
+	ld [wCurMusicByte], a
+	ld a, BANK(GetMusicByte)
+	rst Bankswitch
+	ret
+
 CheckSpecialMapMusic:
 ; Returns z if the current map has a special music handler.
 
