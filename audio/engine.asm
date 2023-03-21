@@ -18,8 +18,8 @@ _InitSound::
 	xor a
 	ld [hli], a ; rNR50 ; volume/vin
 	ld [hli], a ; rNR51 ; sfx channels
-	ld a, $80 ; all channels on
-	ld [hli], a ; rNR52 ; music channels
+	; all channels on
+	ld [hl], $80 ; rNR52 ; music channels
 
 	ld hl, rNR10 ; sound channel registers
 	ld e, NUM_MUSIC_CHANS
@@ -106,10 +106,8 @@ _UpdateSound::
 	; reset vibrato delay
 	ld hl, wChannel1VibratoDelay - wChannel1
 	add hl, bc
-	ld a, [hl]
-	ld hl, wChannel1VibratoDelayCount - wChannel1
-	add hl, bc
-	ld [hl], a
+	ld a, [hli]
+	ld [hl], a ; VibratoDelayCount
 	; turn vibrato off for now
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
@@ -389,9 +387,7 @@ UpdateChannels:
 	ret
 
 .load_wave_pattern
-	push hl
 	call ReloadWaveform
-	pop hl
 	ld a, [wCurTrackIntensity]
 	and $f0
 	sla a
@@ -656,17 +652,14 @@ LoadNote:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	; ????
 	ld hl, wChannel1PitchWheelTarget - wChannel1
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	sub e
 	ld e, a
 	sbc a
 	add d
 	ld d, a
-	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
-	add hl, bc
 	ld a, [hl]
 	sub d
 	ld d, a
@@ -689,9 +682,7 @@ LoadNote:
 	sbc a
 	add d
 	ld d, a
-	; ????
-	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
-	add hl, bc
+	inc hl
 	sub [hl]
 	ld d, a
 .resume
@@ -718,16 +709,13 @@ LoadNote:
 	add [hl]
 	ld d, b ; quotient
 	pop bc
-	ld hl, wChannel1PitchWheelAmount - wChannel1
-	add hl, bc
-	ld [hl], d ; quotient
 	ld hl, wChannel1PitchWheelAmountFraction - wChannel1
 	add hl, bc
-	ld [hl], a ; remainder
+	ld [hld], a ; remainder
+	ld [hl], d ; quotient, PitchWheelAmount
 	ld hl, wChannel1Field0x25 - wChannel1
 	add hl, bc
-	xor a
-	ld [hl], a
+	ld [hl], 0
 	ret
 
 HandleTrackVibrato:
@@ -782,17 +770,14 @@ HandleTrackVibrato:
 	and a
 	jr nz, .subexit
 	; is the extent nonzero?
-	ld hl, wChannel1VibratoExtent - wChannel1
-	add hl, bc
-	ld a, [hl]
+	inc hl
+	ld a, [hli] ; VibratoExtent
 	and a
 	ret z
 	; save it for later
 	ld d, a
 	; is it time to toggle vibrato up/down?
-	ld hl, wChannel1VibratoRate - wChannel1
-	add hl, bc
-	ld a, [hl]
+	ld a, [hl] ; VibratoRate
 	and $f ; count
 	jr z, .toggle
 .subexit
@@ -802,7 +787,7 @@ HandleTrackVibrato:
 .toggle
 	; refresh count
 	ld a, [hl]
-	swap [hl]
+	swap a
 	or [hl]
 	ld [hl], a
 	; ????
@@ -888,12 +873,10 @@ ApplyPitchWheel:
 	; Otherwise, load the frequency and set two flags.
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
-	ld a, [hl]
+	ld a, [hld]
 	cp d
 	jr c, .finished_pitch_wheel
 	jr nz, .continue_pitch_wheel
-	ld hl, wChannel1PitchWheelTarget - wChannel1
-	add hl, bc
 	ld a, [hl]
 	cp e
 	jr c, .finished_pitch_wheel
@@ -904,19 +887,15 @@ ApplyPitchWheel:
 	ld a, e
 	ld hl, wChannel1PitchWheelAmount - wChannel1
 	add hl, bc
-	ld e, [hl]
-	sub e
+	sub [hl]
 	ld e, a
 	sbc a
 	add d
 	ld d, a
 	; [Channel*Field0x25] *= 2
 	; if rollover: Frequency -= 1
-	ld hl, wChannel1PitchWheelAmountFraction - wChannel1
-	add hl, bc
-	ld a, [hl]
-	add a
-	ld [hl], a
+	inc hl
+	sla [hl] ; PitchWheelAmountFraction
 	jr nc, .no_decrement
 	dec de
 .no_decrement
@@ -929,8 +908,7 @@ ApplyPitchWheel:
 	cp [hl]
 	jr c, .finished_pitch_wheel
 	jr nz, .continue_pitch_wheel
-	ld hl, wChannel1PitchWheelTarget - wChannel1
-	add hl, bc
+	dec hl
 	ld a, e
 	cp [hl]
 	jr nc, .continue_pitch_wheel
@@ -1107,20 +1085,13 @@ ParseMusic:
 	set NOTE_NOISE_SAMPLING, [hl]
 	jmp LoadNote
 
-.rest
-; note = rest
-	ld hl, wChannel1NoteFlags - wChannel1
-	add hl, bc
-	set NOTE_REST, [hl] ; Rest
-	ret
-
 ;
 .endchannel
 ; $ff is reached in music data
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	bit SOUND_SUBROUTINE, [hl] ; in a subroutine?
-	jmp nz, .readcommand ; execute
+	jr nz, .readcommand ; execute
 	ld a, [wCurChannel]
 	cp $4 ; channels 0-3?
 	jr nc, .chan_5to8
@@ -1158,6 +1129,13 @@ ParseMusic:
 	ld [hli], a ; id hi
 	ld [hli], a ; id lo
 	ld [hli], a ; bank
+	ret
+
+.rest
+; note = rest
+	ld hl, wChannel1NoteFlags - wChannel1
+	add hl, bc
+	set NOTE_REST, [hl] ; Rest
 	ret
 
 RestoreVolume:
@@ -1945,9 +1923,7 @@ GetFrequency:
 	; add current octave
 	add d
 	push af ; we'll use this later
-	; get starting octave
-	ld hl, wChannel1PitchOffset - wChannel1
-	add hl, bc
+	; reload starting octave
 	ld a, [hl]
 	and $f ; lo nybble
 	ld l, a ; ok
@@ -2011,10 +1987,9 @@ SetNoteDuration:
 	; store result in ????
 	ld hl, wChannel1Field0x16 - wChannel1
 	add hl, bc
-	ld [hl], e
+	ld a, e
+	ld [hld], a
 	; store result in NoteDuration
-	ld hl, wChannel1NoteDuration - wChannel1
-	add hl, bc
 	ld [hl], d
 	ret
 
@@ -2193,8 +2168,7 @@ _PlayCryHeader::
 	add hl, bc
 	set SOUND_REST, [hl]
 
-	ld hl, wChannel1Flags2 - wChannel1
-	add hl, bc
+	inc hl ; Flags2
 	set SOUND_PITCH_OFFSET, [hl]
 
 	ld hl, wChannel1CryPitch - wChannel1
@@ -2233,11 +2207,8 @@ _PlayCryHeader::
 ; [Tracks] &= [wCryTracks]
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
-	ld a, [hl]
-	ld hl, wCryTracks
+	ld a, [wCryTracks]
 	and [hl]
-	ld hl, wChannel1Tracks - wChannel1
-	add hl, bc
 	ld [hl], a
 
 .next
@@ -2398,10 +2369,6 @@ PlayStereoSFX::
 	push af
 	call LoadChannel
 
-	ld hl, wChannel1Flags - wChannel1
-	add hl, bc
-	set SOUND_SFX, [hl]
-
 	push de
 	; get tracks for this channel
 	ld a, [wCurChannel]
@@ -2410,8 +2377,7 @@ PlayStereoSFX::
 	ld d, 0
 	ld hl, MonoOrStereoTracks
 	add hl, de
-	ld a, [hl]
-	ld hl, wStereoPanningMask
+	ld a, [wStereoPanningMask]
 	and [hl]
 
 	ld hl, wChannel1Tracks - wChannel1
@@ -2422,6 +2388,7 @@ PlayStereoSFX::
 ; turn channel on
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
+	set SOUND_SFX, [hl]
 	set SOUND_CHANNEL_ON, [hl] ; on
 
 ; done?
@@ -2480,16 +2447,13 @@ ChannelInit:
 ; input:
 ;   bc = channel struct pointer
 	push de
+	push bc
+	ld l, c
+	ld h, b
+	ld bc, wChannel2 - wChannel1 ; channel struct length
 	xor a
-	; get channel struct location and length
-	ld hl, wChannel1MusicID - wChannel1 ; start
-	add hl, bc
-	ld e, wChannel2 - wChannel1 ; channel struct length
-	; clear channel
-.loop
-	ld [hli], a
-	dec e
-	jr nz, .loop
+	rst ByteFill
+	pop bc
 	; set tempo to default ($100)
 	ld hl, wChannel1Tempo - wChannel1
 	add hl, bc

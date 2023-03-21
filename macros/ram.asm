@@ -181,8 +181,8 @@ MACRO channel_struct
 \1Tempo::             dw
 \1Tracks::            db ; hi:left lo:right
 \1SFXDutyLoop::       db
-\1VibratoDelayCount:: db ; initialized by \1VibratoDelay
 \1VibratoDelay::      db ; number of frames a note plays until vibrato starts
+\1VibratoDelayCount:: db ; initialized by \1VibratoDelay
 \1VibratoExtent::     db
 \1VibratoRate::       db ; hi:frames for each alt lo:frames to the next alt
 \1PitchWheelTarget::  dw ; frequency endpoint for pitch wheel
