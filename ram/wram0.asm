@@ -96,6 +96,13 @@ wMapMusic:: db
 wDontPlayMapMusicOnReload:: db
 wMusicEnd::
 
+; Music player
+; audio engine input
+wChannelSelectorSwitches:: ds 4
+wPitchTransposition:: db
+wTempoAdjustment:: db
+; audio engine output
+wNoiseHit:: db
 
 SECTION "WRAM 0", WRAM0
 
@@ -230,7 +237,7 @@ wGlobalAnimXOffset:: db
 wSpriteAnimsEnd::
 
 
-SECTION "Music Player RAM", WRAM0
+SECTION UNION "Misc 480", WRAM0
 
 wMusicPlayerWRAM::
 wSongSelection:: dw
@@ -258,12 +265,6 @@ wSelectorCur:: db
 ; song editor
 wChannelSelector:: db
 wAdjustingTempo:: db
-; audio engine input
-wChannelSelectorSwitches:: ds 4
-wPitchTransposition:: db
-wTempoAdjustment:: db
-; audio engine output
-wNoiseHit:: db
 wMusicPlayerWRAMEnd::
 
 

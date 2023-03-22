@@ -172,7 +172,6 @@ RenderMusicPlayer:
 	ldh [hOAMUpdate], a ; we will manually do it in LCD interrupt
 
 	ld hl, wChannelSelectorSwitches
-	ld a, NUM_MUSIC_CHANS - 1
 .ch_label_loop:
 	ld [wChannelSelector], a
 	ld a, [hli]
@@ -180,8 +179,8 @@ RenderMusicPlayer:
 	call DrawChannelLabel
 	pop hl
 	ld a, [wChannelSelector]
-	dec a
-	cp -1
+	inc a
+	cp NUM_MUSIC_CHANS
 	jr nz, .ch_label_loop
 
 	call DelayFrame
