@@ -138,7 +138,7 @@ _UpdateSound::
 	jr z, .next
 	; are we in a sfx channel right now?
 	ld a, [wCurChannel]
-	cp $4
+	cp CHAN5
 	jr nc, .next
 	; are any sfx channels active?
 	; if so, mute
@@ -161,7 +161,7 @@ _UpdateSound::
 .next
 	; are we in a sfx channel right now?
 	ld a, [wCurChannel]
-	cp $4 ; sfx
+	cp CHAN5 ; sfx
 	jr nc, .sfx_channel
 	ld hl, wChannel5Flags - wChannel1
 	add hl, bc
@@ -939,7 +939,7 @@ HandleNoise:
 	ret z
 	; are we in a sfx channel?
 	ld a, [wCurChannel]
-	bit 2, a ; sfx
+	bit NOISE_CHAN_F, a ; sfx
 	jr nz, .next
 	; is ch8 on? (noise)
 	ld hl, wChannel8Flags
@@ -1093,7 +1093,7 @@ ParseMusic:
 	bit SOUND_SUBROUTINE, [hl] ; in a subroutine?
 	jr nz, .readcommand ; execute
 	ld a, [wCurChannel]
-	cp $4 ; channels 0-3?
+	cp CHAN5 ; channels 0-3?
 	jr nc, .chan_5to8
 	; ????
 	ld hl, wChannel5Flags - wChannel1
@@ -1107,7 +1107,7 @@ ParseMusic:
 	call nz, RestoreVolume
 	; end music
 	ld a, [wCurChannel]
-	cp $4 ; channel 5?
+	cp CHAN5 ; channel 5?
 	jr nz, .ok
 	; ????
 	xor a
@@ -1141,7 +1141,7 @@ ParseMusic:
 RestoreVolume:
 	; ch5 only
 	ld a, [wCurChannel]
-	cp $4
+	cp CHAN5
 	ret nz
 	xor a
 	ld hl, wChannel6CryPitch
@@ -1201,7 +1201,7 @@ GetNoiseSample:
 	call SetNoteDuration
 	; check current channel
 	ld a, [wCurChannel]
-	bit 2, a ; are we in a sfx channel?
+	bit NOISE_CHAN_F, a ; are we in a sfx channel?
 	ld a, [wSFXNoiseSampleSet]
 	jr nz, .next
 	; check wChannelSelectorSwitches
