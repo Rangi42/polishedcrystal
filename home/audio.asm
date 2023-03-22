@@ -38,12 +38,33 @@ UpdateSound::
 
 	jmp PopAFBCDEHL
 
+LoadMusicByte::
+; input:
+;   de = current music address
+; output:
+;   a = wCurMusicByte
+	ld a, [wMusicBank]
+; fallthrough
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
 	rst Bankswitch
 	ld a, [de]
 	ld [wCurMusicByte], a
-	ld a, BANK(LoadMusicByte)
+	ld a, BANK(GetMusicByte)
+	rst Bankswitch
+	ld a, [wCurMusicByte]
+	ret
+
+_LoadMusicWord::
+	rst Bankswitch
+	ld a, [de]
+	ld l, a
+	inc de
+	ld a, [de]
+	ld h, a
+	inc de
+	ld [wCurMusicByte], a
+	ld a, BANK(GetMusicByte)
 	rst Bankswitch
 	ret
 
@@ -217,7 +238,7 @@ PlaySFX::
 
 	; Is something already playing?
 	call CheckSFX
-	jr nc, .play
+	jr z, .play
 
 	; Does it have priority?
 	ld a, [wCurSFX]
@@ -252,17 +273,7 @@ WaitSFX::
 .wait
 	call DelayFrame
 .handleLoop
-	ld hl, wChannel5Flags
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel6Flags
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel7Flags
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel8Flags
-	bit 0, [hl]
+	call CheckSFX
 	jr nz, .wait
 
 	pop hl
@@ -420,23 +431,17 @@ GetPlayerStateMusic:
 	ret
 
 CheckSFX::
-; Return carry if any SFX channels are active.
-	ld a, [wChannel5Flags]
-	bit 0, a
-	jr nz, .playing
-	ld a, [wChannel6Flags]
-	bit 0, a
-	jr nz, .playing
-	ld a, [wChannel7Flags]
-	bit 0, a
-	jr nz, .playing
-	ld a, [wChannel8Flags]
-	bit 0, a
-	jr nz, .playing
-	and a
-	ret
-.playing
-	scf
+; Return nz if any SFX channels are active.
+	xor a
+	ld hl, wChannel5Flags
+	or [hl]
+	ld hl, wChannel6Flags
+	or [hl]
+	ld hl, wChannel7Flags
+	or [hl]
+	ld hl, wChannel8Flags
+	or [hl]
+	bit SOUND_CHANNEL_ON, a
 	ret
 
 TerminateExpBarSound::
