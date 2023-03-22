@@ -964,18 +964,17 @@ ReadNoiseSample:
 ;	zz: intensity
 ;       yy: frequency
 
-	; de = [wNoiseSampleAddress]
+	; hl = [wNoiseSampleAddress]
 	ld hl, wNoiseSampleAddress
 	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld h, [hl]
+	ld l, a
 
 	; is it empty?
-	or d
+	or h
 	ret z
 
-	ld a, [de]
-	inc de
+	ld a, [hli]
 
 	cp $ff
 	ret z
@@ -983,17 +982,16 @@ ReadNoiseSample:
 	and $f
 	inc a
 	ld [wNoiseSampleDelay], a
-	ld a, [de]
-	inc de
+	ld a, [hli]
 	ld [wCurTrackIntensity], a
-	ld a, [de]
-	inc de
+	ld a, [hli]
 	ld [wCurTrackFrequency], a
 	xor a
 	ld [wCurTrackFrequency + 1], a
 
+	ld d, h
+	ld a, l
 	ld hl, wNoiseSampleAddress
-	ld a, e
 	ld [hli], a
 	ld [hl], d
 
