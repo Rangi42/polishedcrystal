@@ -368,18 +368,6 @@ Music_MountPyreRSE_Ch4:
 	toggle_noise 3
 	drum_speed 12
 	rest 1
-;	note C_, 8
-;	note C#, 8
-;	note D_, 8
-;	note D#, 8
-;	note E_, 8
-;	note F_, 8
-;	note F#, 8
-;	note G_, 8
-;	note G#, 8
-;	note A_, 8
-;	note A#, 8
-;	note B_, 8
 Music_MountPyreRSE_Ch4_loop_main:
 Music_MountPyreRSE_Ch4_loop_1:
 	sound_call Music_MountPyreRSE_Ch4_branch_1

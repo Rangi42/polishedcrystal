@@ -10,7 +10,7 @@ Music_MartHGSS:
 	channel 4, Music_MartHGSS_Ch4
 
 Music_MartHGSS_Ch1:
-	tempo $90
+	tempo 144
 	volume 7, 7
 	duty_cycle 1
 	note_type 12, 11, 2

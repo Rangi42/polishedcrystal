@@ -10,7 +10,7 @@ Music_CanalaveCityDPPt:
 	channel 4, Music_CanalaveCityDPPt_Ch4
 
 Music_CanalaveCityDPPt_Ch1:
-	tempo $CE
+	tempo 206
 	volume 7, 7
 	note_type 12, 10, 7
 	duty_cycle 1

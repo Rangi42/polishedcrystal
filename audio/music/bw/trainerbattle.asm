@@ -12,7 +12,7 @@ Music_TrainerBattleBW:
 Music_TrainerBattleBW_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
-	tempo $6C
+	tempo 108
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 18, 1, 5

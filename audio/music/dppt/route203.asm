@@ -10,8 +10,7 @@ Music_Route203DPPt:
 	channel 4, Music_Route203DPPt_Ch4
 
 Music_Route203DPPt_Ch1:
-	tempo $97
-	;transpose $19
+	tempo 151
 	volume 7, 7
 	note_type 4, 9, 1
 	duty_cycle 1
@@ -576,7 +575,6 @@ Music_Route203DPPt_Ch1_loop:
 
 Music_Route203DPPt_Ch2:
 	note_type 4, 10, 1
-	;transpose $19
 	duty_cycle 1
 	pitch_offset 1
 	vibrato 0, 1, 2
@@ -1074,7 +1072,6 @@ Music_Route203DPPt_Ch2_loop:
 	sound_jump Music_Route203DPPt_Ch2_loop
 
 Music_Route203DPPt_Ch3:
-	;transpose $19
 	note_type 8, 1, 2
 	octave 1
 	rest 12

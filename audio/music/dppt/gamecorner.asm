@@ -10,7 +10,7 @@ Music_GameCornerDPPt:
 	channel 4, Music_GameCornerDPPt_Ch4
 
 Music_GameCornerDPPt_Ch1:
-	tempo $7C
+	tempo 124
 	volume 7, 7
 	note_type 12, 10, 2
 	duty_cycle 2

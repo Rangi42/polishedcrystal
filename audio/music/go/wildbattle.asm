@@ -10,7 +10,7 @@ Music_WildBattleGo:
 	channel 4, Music_WildBattleGo_Ch4
 
 Music_WildBattleGo_Ch1:
-	tempo $70
+	tempo 112
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	duty_cycle_pattern 1, 1, 2, 2
