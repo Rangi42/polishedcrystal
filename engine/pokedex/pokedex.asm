@@ -707,7 +707,7 @@ Pokedex_UpdateRow:
 	add hl, bc
 	ld [hli], a
 	inc a
-	ld [hli], a
+	ld [hl], a
 
 	; If we haven't yet written the previous row tiles, wait for it.
 	ld hl, wPokedex_GFXFlags

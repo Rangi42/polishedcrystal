@@ -18,8 +18,7 @@ _InitSound::
 	xor a
 	ld [hli], a ; rNR50 ; volume/vin
 	ld [hli], a ; rNR51 ; sfx channels
-	ld a, $80 ; all channels on
-	ld [hli], a ; rNR52 ; music channels
+	ld [hl], $80 ; rNR52 ; music channels
 
 	ld hl, rNR10 ; sound channel registers
 	ld e, NUM_MUSIC_CHANS
