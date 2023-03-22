@@ -92,7 +92,7 @@ _UpdateSound::
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	bit SOUND_CHANNEL_ON, [hl]
-	jmp z, .nextchannel
+	jr z, .nextchannel
 	; check time left in the current note
 	ld hl, wChannel1NoteDuration - wChannel1
 	add hl, bc
