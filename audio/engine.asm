@@ -1570,25 +1570,23 @@ Music_ToggleNoise:
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	bit SOUND_NOISE, [hl]
-	jr z, .on
 	; turn noise sampling off
 	res SOUND_NOISE, [hl]
-	ret
-
-.on
-	; turn noise sampling on
+	ret nz
+	; was off, turn noise sampling on instead
 	set SOUND_NOISE, [hl]
-	ld a, [wCurChannel]
-	cp CHAN5
-	jr c, Music_ChangeNoiseSampleSet
-; Channel 8 uses sfx sample set
-	call GetMusicByte
-	ld [wSFXNoiseSampleSet], a
-	ret
+; fallthrough
 
 Music_ChangeNoiseSampleSet:
+	ld a, [wCurChannel]
+	cp CHAN5
+	ld hl, wMusicNoiseSampleSet
+	jr c, .music
+; Channel 8 uses sfx sample set
+	inc hl ; wSFXNoiseSampleSet
+.music
 	call GetMusicByte
-	ld [wMusicNoiseSampleSet], a
+	ld [hl], a
 	ret
 
 Music_NoteType:
