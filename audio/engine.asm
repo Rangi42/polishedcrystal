@@ -1518,9 +1518,8 @@ Music_SlidePitchTo:
 	call GetFrequency
 	ld hl, wChannel1PitchWheelTarget - wChannel1
 	add hl, bc
-	ld [hl], e
-	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
-	add hl, bc
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
@@ -1566,13 +1565,9 @@ Music_ToggleSFX:
 ; params: none
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	bit SOUND_SFX, [hl]
-	jr z, .on
-	res SOUND_SFX, [hl]
-	ret
-
-.on
-	set SOUND_SFX, [hl]
+	ld a, 1 << SOUND_SFX
+	xor [hl]
+	ld [hl], a
 	ret
 
 Music_ToggleNoise:
