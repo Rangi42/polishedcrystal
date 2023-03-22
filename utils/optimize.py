@@ -421,6 +421,14 @@ patterns = {
 	(lambda line3, prev: line3.code == 'jp hl'),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
+'Pointless hli|hld': [
+	# Bad: { ld a, [hli|hld] | ld [hli|hld], a } / { ld hl, Foo | pop hl }
+	# Good: { ld a, [hl] | ld [hl], a }
+	(lambda line1, prev: re.match(r'ld a, \[hl[-+id]\]', line1.code)
+		or re.match(r'ld \[hl[-+id]\], a', line1.code)),
+	(lambda line2, prev: line2.code.startswith('ld hl,')
+		or line2.code == 'pop hl'),
+],
 'Pointless jumps': [
 	# Bad: jr|jp Foo / Foo: ...
 	# Good: fall through to Foo: ...

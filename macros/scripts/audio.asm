@@ -93,7 +93,7 @@ ENDM
 	const tempo_cmd ; $de
 MACRO tempo
 	db tempo_cmd
-	bigdw \1 ; tempo
+	dw \1 ; tempo
 ENDM
 
 	const volume_envelope_cmd ; $df
@@ -170,13 +170,13 @@ ENDM
 	const pitch_offset_cmd ; $e7
 MACRO pitch_offset
 	db pitch_offset_cmd
-	bigdw \1 ; pitch offset
+	dw \1 ; pitch offset
 ENDM
 
 	const tempo_relative_cmd ; $e8
 MACRO tempo_relative
 	db tempo_relative_cmd
-	bigdw \1 ; tempo adjustment
+	db \1 ; tempo adjustment
 ENDM
 
 	const restart_channel_cmd ; $e9
@@ -188,7 +188,7 @@ ENDM
 	const new_song_cmd ; $ea
 MACRO new_song
 	db new_song_cmd
-	bigdw \1 ; id
+	dw \1 ; id
 ENDM
 
 	const sfx_priority_on_cmd ; $eb

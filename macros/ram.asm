@@ -161,12 +161,10 @@ ENDM
 MACRO channel_struct
 \1MusicID::           dw
 \1MusicBank::         db
-\1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
-\1Flags2::            db ; 0:vibrato on/off 2:duty 4:cry pitch
-\1Flags3::            db ; 0:vibrato up/down
 \1MusicAddress::      dw
 \1LastMusicAddress::  dw
-                      dw
+\1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
+\1Flags2::            db ; 0:vibrato on/off 2:duty 4:cry pitch 5:vibrato up/down
 \1NoteFlags::         db ; 5:rest
 \1Condition::         db ; conditional jumps
 \1DutyCycle::         db ; bits 6-7 (0:12.5% 1:25% 2:50% 3:75%)
@@ -178,27 +176,21 @@ MACRO channel_struct
 \1Octave::            db ; 7-0 (0 is highest)
 \1PitchOffset::       db ; raises existing octaves (to repeat phrases)
 \1NoteDuration::      db ; frames remaining for the current note
-\1Field0x16::         dw
+\1Field0x16::         db
 \1LoopCount::         db
 \1Tempo::             dw
 \1Tracks::            db ; hi:left lo:right
 \1SFXDutyLoop::       db
-\1VibratoDelayCount:: db ; initialized by \1VibratoDelay
 \1VibratoDelay::      db ; number of frames a note plays until vibrato starts
+\1VibratoDelayCount:: db ; initialized by \1VibratoDelay
 \1VibratoExtent::     db
 \1VibratoRate::       db ; hi:frames for each alt lo:frames to the next alt
 \1PitchWheelTarget::  dw ; frequency endpoint for pitch wheel
 \1PitchWheelAmount::  db
 \1PitchWheelAmountFraction:: db
-\1Field0x25::         dw
+\1Field0x25::         db
 \1CryPitch::          dw
-\1Field0x29::         db
-\1Field0x2a::         dw
-\1Field0x2c::         db
 \1NoteLength::        db ; frames per 16th note
-\1Field0x2e::         db
-\1Field0x2f::         db
-\1Field0x30::         dw
 ENDM
 
 MACRO mailmsg

@@ -10,7 +10,7 @@ Music_Route210DPPt:
 	channel 4, Music_Route210DPPt_Ch4
 
 Music_Route210DPPt_Ch1:
-	tempo $98
+	tempo 152
 	volume 7, 7
 	note_type 12, 11, 3
 	duty_cycle 3
@@ -1049,7 +1049,6 @@ Music_Route210DPPt_Ch3_loop:
 	octave 2
 	note G#, 2
 	note C#, 6
-	;this awesome demix was done by froggestspirit
 	rest 6
 	note C_, 2
 	note C#, 1

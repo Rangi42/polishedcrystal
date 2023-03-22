@@ -12,7 +12,7 @@ Music_SunyshoreCityDPPt:
 Music_SunyshoreCityDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
-	tempo $90
+	tempo 144
 	pitch_offset 2
 	volume_envelope 10, 1
 	note_type 12, 10, 1

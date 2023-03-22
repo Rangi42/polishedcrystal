@@ -9,7 +9,7 @@ Music_GymLeaderBattleGo:
 	channel 3, Music_GymLeaderBattleGo_Ch3
 
 Music_GymLeaderBattleGo_Ch1:
-	tempo $B4
+	tempo 180
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	duty_cycle 3

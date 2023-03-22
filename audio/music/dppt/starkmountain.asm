@@ -12,7 +12,7 @@ Music_StarkMountainDPPt:
 Music_StarkMountainDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
-	tempo $A0
+	tempo 160
 	pitch_offset 2
 	vibrato 16, 3, 6
 Music_StarkMountainDPPt_Ch1_loop:

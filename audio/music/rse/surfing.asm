@@ -10,7 +10,7 @@ Music_SurfRSE:
 	channel 3, Music_SurfRSE_Ch3
 
 Music_SurfRSE_Ch1:
-	tempo $75
+	tempo 117
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0

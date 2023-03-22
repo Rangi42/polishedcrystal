@@ -469,7 +469,6 @@ Music_LaverreCityXY_Ch3_branch_1:
 	rest 2
 	note F#, 2
 	rest 2
-;;;;;;;;;;;;mark
 	note G#, 12
 	note E_, 8
 	note G#, 4
@@ -485,7 +484,6 @@ Music_LaverreCityXY_Ch3_branch_1:
 	octave 5
 	note B_, 12
 	note_type 12, 2, 5
-;;;;;;;;;;;;mark
 	octave 3
 	rest 4
 	note G#, 2
@@ -501,7 +499,6 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note A#, 4
 	note G#, 4
 	note F#, 4
-;;;;;;;;;;;;mark
 	note B_, 4
 	note A#, 4
 	note G#, 4

@@ -154,7 +154,6 @@ Music_OreburghGateDPPt_Ch2_branch_1:
 	note C#, 2
 	octave 3
 	note A#, 2
-	; measure 2
 	note F#, 2
 	note A#, 2
 	octave 4
@@ -187,7 +186,6 @@ Music_OreburghGateDPPt_Ch2_branch_1:
 	note C_, 2
 	octave 3
 	note A_, 2
-	; measure 3
 	note E_, 2
 	note G_, 2
 	note B_, 2
@@ -220,7 +218,6 @@ Music_OreburghGateDPPt_Ch2_branch_1:
 	octave 3
 	note B_, 2
 	note G_, 2
-	; measure 4
 	note D#, 2
 	note G_, 2
 	note A#, 2
@@ -474,7 +471,6 @@ Music_OreburghGateDPPt_Ch3_branch_1:
 	rest 1
 	note F#, 1
 	rest 1
-	; measure 2
 	octave 3
 	note F#, 1
 	rest 1
@@ -530,7 +526,6 @@ Music_OreburghGateDPPt_Ch3_branch_1:
 	rest 1
 	note F#, 1
 	rest 1
-	; measure 3
 	octave 3
 	note E_, 1
 	rest 1
@@ -585,7 +580,6 @@ Music_OreburghGateDPPt_Ch3_branch_1:
 	rest 1
 	note E_, 1
 	rest 1
-	; measure 4
 	octave 3
 	note D#, 1
 	rest 1
@@ -767,7 +761,6 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note F#, 1
 	volume_envelope 2, 2
 	note A#, 1
-	; measure 2
 	octave 3
 	volume_envelope 1, 2
 	note F#, 1
@@ -894,7 +887,6 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note F#, 1
 	volume_envelope 2, 2
 	note A_, 1
-	; measure 3
 	octave 3
 	volume_envelope 1, 2
 	note E_, 1
@@ -1015,7 +1007,6 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note E_, 1
 	volume_envelope 2, 2
 	note G_, 1
-	; measure 4
 	octave 3
 	volume_envelope 1, 2
 	note D#, 1

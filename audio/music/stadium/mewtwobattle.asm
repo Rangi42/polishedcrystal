@@ -10,7 +10,7 @@ Music_MewtwoBattleStadium:
 	channel 4, Music_MewtwoBattleStadium_Ch4
 
 Music_MewtwoBattleStadium_Ch1:
-	tempo $78
+	tempo 120
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0

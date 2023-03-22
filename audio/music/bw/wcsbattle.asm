@@ -308,7 +308,7 @@ Music_WCSBattleBW_Ch2_L:
 	sound_jump Music_WCSBattleBW_Ch2_L
 
 Music_WCSBattleBW_Ch1:
-	tempo $69
+	tempo 105
 	volume 7, 7
 	duty_cycle 2
 	note_type 12, 8, -4

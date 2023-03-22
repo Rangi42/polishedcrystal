@@ -10,7 +10,7 @@ Music_NuggetBridgeHGSS:
 	channel 4, Music_NuggetBridgeHGSS_Ch4
 
 Music_NuggetBridgeHGSS_Ch1:
-	tempo $A8
+	tempo 168
 	volume 7, 7
 	pitch_offset 1
 	duty_cycle 1
