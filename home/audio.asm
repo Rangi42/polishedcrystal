@@ -432,17 +432,16 @@ GetPlayerStateMusic:
 
 CheckSFX::
 ; Return carry if any SFX channels are active.
+	xor a
 	ld hl, wChannel5Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
+	or [hl]
 	ld hl, wChannel6Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
+	or [hl]
 	ld hl, wChannel7Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .sfxon
+	or [hl]
 	ld hl, wChannel8Flags
-	bit SOUND_CHANNEL_ON, [hl]
+	or [hl]
+	bit SOUND_CHANNEL_ON, a
 	jr nz, .sfxon
 	and a
 	ret

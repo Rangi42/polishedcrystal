@@ -142,18 +142,8 @@ _UpdateSound::
 	jr nc, .next
 	; are any sfx channels active?
 	; if so, mute
-	ld hl, wChannel5Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .restnote
-	ld hl, wChannel6Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .restnote
-	ld hl, wChannel7Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr nz, .restnote
-	ld hl, wChannel8Flags
-	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .next
+	call CheckSFX
+	jr nc, .next
 .restnote
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
