@@ -143,7 +143,7 @@ _UpdateSound::
 	; are any sfx channels active?
 	; if so, mute
 	call CheckSFX
-	jr nc, .next
+	jr z, .next
 .restnote
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -420,7 +420,7 @@ PlayDanger:
 	ret z
 	ld d, a
 	call CheckSFX
-	jr c, .increment
+	jr nz, .increment
 	ld a, d
 	and $1f
 	jr z, .begin

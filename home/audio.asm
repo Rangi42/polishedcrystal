@@ -238,7 +238,7 @@ PlaySFX::
 
 	; Is something already playing?
 	call CheckSFX
-	jr nc, .play
+	jr z, .play
 
 	; Does it have priority?
 	ld a, [wCurSFX]
@@ -274,7 +274,7 @@ WaitSFX::
 	call DelayFrame
 .handleLoop
 	call CheckSFX
-	jr c, .wait
+	jr nz, .wait
 
 	pop hl
 	ret
@@ -431,7 +431,7 @@ GetPlayerStateMusic:
 	ret
 
 CheckSFX::
-; Return carry if any SFX channels are active.
+; Return nz if any SFX channels are active.
 	xor a
 	ld hl, wChannel5Flags
 	or [hl]
@@ -442,12 +442,6 @@ CheckSFX::
 	ld hl, wChannel8Flags
 	or [hl]
 	bit SOUND_CHANNEL_ON, a
-	jr nz, .sfxon
-	and a
-	ret
-
-.sfxon
-	scf
 	ret
 
 TerminateExpBarSound::
