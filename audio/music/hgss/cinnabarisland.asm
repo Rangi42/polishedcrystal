@@ -8,7 +8,7 @@ Music_CinnabarIslandHGSS:
 	channel 2, Music_CinnabarIslandHGSS_Ch2
 
 Music_CinnabarIslandHGSS_Ch1:
-	tempo $118
+	tempo 280
 	volume 7, 7
 	duty_cycle 2
 	note_type 12, 11, 6

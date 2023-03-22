@@ -10,7 +10,7 @@ Music_LugiaBattleHGSS:
 	channel 3, Music_LugiaBattleHGSS_Ch3
 
 Music_LugiaBattleHGSS_Ch1:
-	tempo $66
+	tempo 102
 	duty_cycle 3
 	note_type 12, 12, 7
 	rest 4

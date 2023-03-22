@@ -10,7 +10,7 @@ Music_HoOhBattleHGSS:
 	channel 3, Music_HoOhBattleHGSS_Ch3
 
 Music_HoOhBattleHGSS_Ch1:
-	tempo $6a
+	tempo 106
 	duty_cycle 3
 	note_type 12, 12, 2
 	octave 3

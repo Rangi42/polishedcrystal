@@ -12,7 +12,7 @@ Music_ChampionBattleDPPt:
 Music_ChampionBattleDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
-	tempo $80
+	tempo 128
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 16, 2, 4
@@ -20,7 +20,7 @@ Music_ChampionBattleDPPt_Ch1:
 	note_type 12, 11, 7
 	note A#, 16
 	rest 16
-	tempo $68
+	tempo 104
 	octave 3
 	note A#, 16
 	rest 16

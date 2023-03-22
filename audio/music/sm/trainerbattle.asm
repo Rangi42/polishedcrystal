@@ -795,7 +795,6 @@ Music_TrainerBattleSM_Ch3_loop_6:
 	note F_, 16
 	note G_, 16
 	note G_, 16
-;	intensity $29
 Music_TrainerBattleSM_Ch3_loop_7:
 	note C_, 2
 	note G_, 2

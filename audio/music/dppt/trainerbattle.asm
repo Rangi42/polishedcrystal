@@ -12,7 +12,7 @@ Music_TrainerBattleDPPt:
 Music_TrainerBattleDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
-	tempo $69
+	tempo 105
 	duty_cycle 3
 	pitch_offset 2
 	volume_envelope 11, 2

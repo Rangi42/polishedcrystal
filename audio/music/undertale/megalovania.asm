@@ -9,7 +9,7 @@ Music_Megalovania:
 	channel 4, Music_Megalovania_Ch4
 
 Music_Megalovania_Ch1:
-	tempo $A0
+	tempo 160
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 Music_Megalovania_Ch1_loop:

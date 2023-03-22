@@ -12,7 +12,7 @@ Music_Route225DPPt:
 Music_Route225DPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
-	tempo $88
+	tempo 136
 Music_Route225DPPt_Ch1_loop:
 	pitch_offset 2
 	note_type 14, 10, 7
