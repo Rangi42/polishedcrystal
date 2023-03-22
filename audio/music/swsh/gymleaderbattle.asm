@@ -500,11 +500,11 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	vibrato 0, 0, 0
 	octave 3
 	stereo_panning TRUE, FALSE
-	;slidepitchto 1, 5, G_
+	;pitch_slide 1, 5, G_
 	rest 16
-	;slidepitchto 1, 4, C_
+	;pitch_slide 1, 4, C_
 	rest 16
-	;slidepitchto 1, 4, F#
+	;pitch_slide 1, 4, F#
 	octave 4
 	rest 16
 	rest 8
@@ -565,11 +565,11 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	vibrato 0, 0, 0
 	octave 2
 	stereo_panning FALSE, TRUE
-	;slidepitchto 1, 5, G_
+	;pitch_slide 1, 5, G_
 	rest 16
-	;slidepitchto 1, 4, C_
+	;pitch_slide 1, 4, C_
 	rest 16
-	;slidepitchto 1, 4, F#
+	;pitch_slide 1, 4, F#
 	octave 3
 	rest 16
 	rest 8
