@@ -196,8 +196,6 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
-	ds 4
-
 
 SECTION "Sprite Animations", WRAM0
 
@@ -1052,8 +1050,6 @@ wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
 SECTION "More WRAM 0", WRAM0
 
-	ds 82 ; unused
-
 wMemCGBLayout:: db
 
 UNION
@@ -1276,8 +1272,6 @@ w2DMenuDataEnd::
 
 wMonPicSize:: db
 wMonAnimationSize:: db
-
-	ds 1 ; unused
 
 wPendingOverworldGraphics:: db
 wTextDelayFrames:: db
