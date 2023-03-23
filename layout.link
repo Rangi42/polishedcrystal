@@ -239,6 +239,8 @@ WRAM0
 	"More WRAM 0"
 	org $cff0
 	"Options"
+	org $cffe
+	"Rom Checksum"
 
 WRAMX $1
 	org $d000
