@@ -1660,15 +1660,6 @@ wDecompressedCreditsGFX:: ; ds (4 * 4 tiles) * 13 ; ds $d00
 ENDU
 
 
-SECTION "Game Version", WRAMX
-
-; Contains a copy of the game version. Used as protection against people trying
-; to load a save state for a save in a different game version.
-; Called "game version" to make it clear that there is no direct relation to
-; sSaveVersion -- this isn't the data used for writing to the save.
-wGameVersion:: dw
-
-
 SECTION "Battle Animations RAM", WRAMX
 
 wBattleAnims::

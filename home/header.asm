@@ -170,4 +170,6 @@ if DEF(ANALOGUE_POCKET)
 endc
 
 	; The rest of the header is handled by rgbfix.
-	ds $0150 - @, $00
+	ds $014e - @, $00
+
+RomChecksum:: ds 2
