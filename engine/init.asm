@@ -64,9 +64,9 @@ _Init::
 	call ClearSprites
 
 	; Write checksum to WRAM for save state check
-	ld a, [RomChecksum]
+	ld a, [RomHeaderChecksum]
 	ld [wRomChecksum], a
-	ld a, [RomChecksum + 1]
+	ld a, [RomHeaderChecksum + 1]
 	ld [wRomChecksum + 1], a
 
 ; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.

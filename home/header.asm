@@ -172,5 +172,5 @@ endc
 	; The rest of the header is handled by rgbfix.
 	ds $014e - @, $00
 
-RomChecksum::
+RomHeaderChecksum::
 	ds 2, $00

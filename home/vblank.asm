@@ -42,11 +42,11 @@ VBlank::
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
 
-	ld a, [RomChecksum]
+	ld a, [RomHeaderChecksum]
 	ld hl, wRomChecksum
 	cp [hl]
 	jr nz, .version_crash
-	ld a, [RomChecksum + 1]
+	ld a, [RomHeaderChecksum + 1]
 	inc hl ; wRomChecksum + 1
 	cp [hl]
 	jr nz, .version_crash
