@@ -171,18 +171,7 @@ RenderMusicPlayer:
 	xor a
 	ldh [hOAMUpdate], a ; we will manually do it in LCD interrupt
 
-	ld hl, wChannelSelectorSwitches
-.ch_label_loop:
-	ld [wChannelSelector], a
-	ld a, [hli]
-	push hl
-	call DrawChannelLabel
-	pop hl
-	ld a, [wChannelSelector]
-	inc a
-	cp NUM_MUSIC_CHANS
-	jr nz, .ch_label_loop
-
+	call RedrawChannelLabels
 	call DelayFrame
 
 	ldh a, [rSVBK]
@@ -319,14 +308,15 @@ MusicPlayerLoop:
 SongEditor:
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
-	jrheldbutton D_UP, .up, 10
+	jpheldbutton D_UP, .up, 10
 	jpheldbutton D_DOWN, .down, 10
 	ld hl, hJoyPressed
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
 	jrbutton A_BUTTON, .a
+	jpbutton B_BUTTON, .b
 	jpbutton START, .start
-	jpbutton SELECT | B_BUTTON, .select_b
+	jpbutton SELECT, .select
 
 	; prioritize refreshing the note display
 	ld a, 2
@@ -365,7 +355,7 @@ SongEditor:
 ; otherwise: toggle editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
-	jr z, SongEditor
+	jmp z, SongEditor
 	cp MP_EDIT_TEMPO
 	jmp z, AdjustTempo
 	ld c, a
@@ -423,9 +413,27 @@ SongEditor:
 	call DrawPianoRollOverlay
 	jmp SongEditor
 
-.select_b:
+.b:
+; clear settings
+	xor a
+	ld hl, wChannelSelectorSwitches
+rept 4
+	ld [hli], a
+endr
+	ld [hli], a ; wPitchTransposition
+	cp [hl]
+	ld [hl], a ; wTempoAdjustment
+
+	ld d, a
+	ld a, [wSongSelection]
+	ld e, a
+; If wTempoAdjustment was not zero, restart the song at default tempo
+	call nz, PlayMusic2
+
+.select:
 ; exit song editor
 	call ClearChannelSelector
+	call RedrawChannelLabels
 	xor a ; ld a, MP_EDIT_CH1
 	ld [wChannelSelector], a
 	call DrawPitchTransposition
@@ -785,6 +793,21 @@ _LocateChannelSelector:
 
 .x_coords
 	db 0, 5, 10, 16
+
+RedrawChannelLabels:
+	xor a
+	ld hl, wChannelSelectorSwitches
+.ch_label_loop:
+	ld [wChannelSelector], a
+	ld a, [hli]
+	push hl
+	call DrawChannelLabel
+	pop hl
+	ld a, [wChannelSelector]
+	inc a
+	cp NUM_MUSIC_CHANS
+	jr nz, .ch_label_loop
+	ret
 
 DrawChannelLabel:
 	and a
