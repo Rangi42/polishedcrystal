@@ -426,8 +426,10 @@ patterns = {
 	# Good: { ld a, [hl] | ld [hl], a }
 	(lambda line1, prev: re.match(r'ld a, \[hl[-+id]\]', line1.code)
 		or re.match(r'ld \[hl[-+id]\], a', line1.code)),
-	(lambda line2, prev: line2.code.startswith('ld hl,')
-		or line2.code == 'pop hl'),
+	(1, lambda line2, prev: not re.match(r'^(jr|jp|jmp|call|rst|ret|predef)', line2.code)
+		and not re.match(r'.*\bhl\b', line2.code)),
+	(lambda line3, prev: line3.code.startswith('ld hl,')
+		or line3.code == 'pop hl'),
 ],
 'Pointless jumps': [
 	# Bad: jr|jp Foo / Foo: ...

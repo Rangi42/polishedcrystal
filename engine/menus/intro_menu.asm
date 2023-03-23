@@ -158,23 +158,24 @@ ResetWRAM:
 	ld hl, wNumPCItems
 	call _ResetWRAM_InitList
 
-	ld hl, wTMsHMs
 	xor a
-rept ((NUM_TMS + NUM_HMS) + 7) / 8
+
+	ld hl, wTMsHMs
+rept ((NUM_TMS + NUM_HMS) + 7) / 8 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 
 	ld hl, wKeyItems
-	xor a
-rept ((NUM_KEY_ITEMS) + 7) / 8
+rept ((NUM_KEY_ITEMS) + 7) / 8 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 
-	xor a
 	ld [wRoamMon1Species], a
 	ld [wRoamMon2Species], a
 	ld [wRoamMon3Species], a
-	ld a, -1
+	dec a ; -1
 	ld [wRoamMon1MapGroup], a
 	ld [wRoamMon2MapGroup], a
 	ld [wRoamMon3MapGroup], a
