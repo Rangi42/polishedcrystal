@@ -472,6 +472,7 @@ wEnemyEncoreCount:: db
 wEnemyPerishCount:: db
 wEnemyProtectCount:: db
 
+wCudChewCount:: db ; bit 0 = player timer, bit 1 = opponent timer
 wCriticalCount:: ds PARTY_LENGTH ; for g-Farfetch'd evolution
 wBattleSubStatusWRAMEnd::
 
@@ -552,7 +553,7 @@ wLinkBattleRNCount:: db ; how far through the prng stream
 
 wEnemyItemState:: db
 
-	ds 2
+	ds 1
 
 wCurEnemyMoveNum:: db
 

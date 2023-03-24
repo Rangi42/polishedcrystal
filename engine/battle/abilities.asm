@@ -1317,11 +1317,45 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
+	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
 	dbw -1, -1
+
+CudChewAbility:
+	call GetUsedItemAddr
+	ld a, [hl]
+	and a
+	ret z
+	ld [wCurItem], a
+	ld b, a
+	push bc
+	farcall CheckItemPocket
+	pop bc
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	ret nz
+
+	ldh a, [hBattleTurn]
+	and a
+	ld c, a
+	ld a, [wCudChewCount]
+	jr z, .got_count
+	rra
+.got_count
+	rra
+	call c, .EatBerry
+	ccf
+	rla
+	dec c
+	ret z
+	rla
+	ret
+
+.EatBerry:
+	
 
 HarvestAbility:
 ; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
