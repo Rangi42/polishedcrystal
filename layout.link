@@ -224,7 +224,6 @@ WRAM0
 	"WRAM 0"
 	org $c308
 	"Sprite Animations"
-	"Music Player RAM"
 	org $c400
 	align 8
 	"Sprites"
