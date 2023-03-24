@@ -45,11 +45,11 @@ VBlank::
 	ld a, [RomHeaderChecksum]
 	ld hl, wRomChecksum
 	cp [hl]
-	jr nz, .version_crash
+	jr nz, .checksum_crash
 	ld a, [RomHeaderChecksum + 1]
 	inc hl ; wRomChecksum + 1
 	cp [hl]
-	jr nz, .version_crash
+	jr nz, .checksum_crash
 
 .skip_crash
 	ldh a, [hVBlank]
@@ -85,8 +85,8 @@ VBlank::
 	pop hl
 	reti
 
-.version_crash
-	ld a, ERR_VERSION_MISMATCH
+.checksum_crash
+	ld a, ERR_CHECKSUM_MISMATCH
 .crash
 	di
 	jmp Crash
