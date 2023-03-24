@@ -2,22 +2,42 @@ CountSetBits::
 ; Count the number of set bits in b bytes starting from hl.
 ; Return in a, c and [wNumSetBits].
 
+	push de
 	ld c, 0
-.outer_loop
+.loop
 	ld a, [hli]
-.zerocheck
 	and a
-	jr nz, .inner_loop
+	call nz, PopCountA
+	add c
+	ld c, a
 	dec b
-	jr nz, .outer_loop
-	ld a, c
+	jr nz, .loop
 	ld [wNumSetBits], a
+	pop de
 	ret
-.inner_loop
-	add a
-	jr nc, .inner_loop
-	inc c
-	jr .zerocheck
+
+PopCountA::
+; Returns number of bits set in a
+; clobbers de
+; https://wikiti.brandonw.net/index.php?title=Z80_Routines:Optimized:PopCountA
+; adapted for the gameboy
+	ld e, a
+	and %10101010
+	cpl
+	rrca
+	adc e
+	ld d, a
+	and %00110011
+	ld e, a
+	xor d
+	rrca
+	rrca
+	add e
+	ld e, a
+	swap a
+	add e
+	and %00001111
+	ret
 
 Pokedex_SetWildLandmark_MaintainNoCarry:
 ; Calls SetWildLandmark. If carry is currently set, calls it directly.
