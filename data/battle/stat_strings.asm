@@ -1,12 +1,12 @@
 StatStrings:
 ; entries correspond to stat constants
-	table_width 2, StatStrings
-	dw .health
-	dw .attack
-	dw .defense
-	dw .speed
-	dw .sp_atk
-	dw .sp_def
+	table_width 1, StatStrings
+	dr .health
+	dr .attack
+	dr .defense
+	dr .speed
+	dr .sp_atk
+	dr .sp_def
 	assert_table_length NUM_STATS
 
 .health:  db "Health@"

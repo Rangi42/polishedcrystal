@@ -73,7 +73,6 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note F_, 2
 	volume_envelope 9, 4
 	note F_, 4
-	;;;;;;;;;;;;;;;
 	note F_, 4
 	rest 10
 	volume_envelope 9, 0
@@ -84,7 +83,6 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note A_, 2
 	volume_envelope 9, 4
 	note A_, 4
-	;;;;;;;;;;;
 	note G_, 4
 	rest 2
 	note G_, 4
@@ -114,7 +112,6 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note C#, 2
 	volume_envelope 9, 4
 	note C#, 4
-;;;;;;;;;;;;;;;;mark
 	volume_envelope 9, 0
 	note C_, 16
 	volume_envelope 9, 7
@@ -145,7 +142,6 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note D_, 2
 	note E_, 4
 	note E_, 2
-;;;;;;;;;;;;;;;mark
 	note F_, 4
 	rest 2
 	note F_, 4
@@ -346,7 +342,6 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note D_, 2
 	volume_envelope 9, 4
 	note D_, 4
-	;;;;;;;;;;;;;;;
 	note D_, 4
 	rest 10
 	volume_envelope 9, 0
@@ -357,7 +352,6 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note F_, 2
 	volume_envelope 9, 4
 	note F_, 4
-	;;;;;;;;;;;;
 	note E_, 4
 	rest 2
 	note E_, 4
@@ -388,7 +382,6 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note G#, 2
 	volume_envelope 9, 4
 	note G#, 4
-;;;;;;;;;;;;;;;;mark
 	volume_envelope 9, 0
 	note G_, 16
 	volume_envelope 9, 7
@@ -419,7 +412,6 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note A_, 2
 	note B_, 4
 	note B_, 2
-;;;;;;;;;;;;;;;mark
 	octave 3
 	note D_, 4
 	rest 2

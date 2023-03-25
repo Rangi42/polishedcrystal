@@ -5415,9 +5415,15 @@ CheckUsableMove:
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerDisableCount]
-	jr z, .CheckCommonVar
+	jr z, .GotDisableCount
 	ld a, [wEnemyDisableCount]
-	jr .CheckCommonVar
+.GotDisableCount:
+	swap a
+	and $f
+	dec a
+	cp c
+	ld a, b
+	ret
 
 .CheckChoiceItem:
 	ld b, 3
@@ -5447,22 +5453,17 @@ CheckUsableMove:
 	call .GetEncoreCount
 	and $f
 	jr z, .RetNZ
-	; fallthrough
 	ld b, 5
+	; fallthrough
 .CheckEncoreVar:
 	call .GetEncoreCount
-	call .CheckCommonVar
-	jr z, .RetNZ
-	xor a
-	ld a, b
-	ret
-
-.CheckCommonVar:
 	swap a
 	and $f
 	jr z, .RetNZ
 	dec a
 	cp c
+	jr z, .RetNZ
+	xor a
 	ld a, b
 	ret
 

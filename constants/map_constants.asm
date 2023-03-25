@@ -238,7 +238,7 @@ ENDM
 	newgroup                                                     ; 10
 	map_const ROUTE_32,                                   10, 45 ;  1
 	map_const ROUTE_32_COAST,                             15, 35 ;  2
-	map_const VIOLET_CITY,                                20, 20 ;  3
+	map_const VIOLET_CITY,                                20, 18 ;  3
 	map_const VIOLET_MART,                                 6,  4 ;  4
 	map_const VIOLET_GYM,                                  5,  8 ;  5
 	map_const EARLS_POKEMON_ACADEMY,                       4,  8 ;  6
@@ -249,7 +249,7 @@ ENDM
 	map_const ROUTE_32_POKECENTER_1F,                      6,  4 ; 11
 	map_const ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
 	map_const MAGNET_TUNNEL_EAST,                         10, 11 ; 13
-	map_const VIOLET_OUTSKIRTS,                           20,  8 ; 14
+	map_const VIOLET_OUTSKIRTS,                           20, 10 ; 14
 
 	newgroup                                                     ; 11
 	map_const ROUTE_34,                                   10, 27 ;  1

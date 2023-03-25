@@ -10,13 +10,12 @@ Music_GymLeaderBattleSwSh:
 	channel 4, Music_GymLeaderBattleSwSh_Ch4
 
 Music_GymLeaderBattleSwSh_Ch1:
-	tempo $89
+	tempo 137
 	volume 7, 7
 	duty_cycle 2
 	note_type 12, 11, 2
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase
-; Neutral Intro
 	octave 3
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty1
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty1
@@ -28,7 +27,6 @@ Music_GymLeaderBattleSwSh_Ch1:
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty2
 	rest 1
 
-;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_1
@@ -68,7 +66,6 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty3
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop
 
-;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_1
@@ -102,7 +99,6 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty7
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop
 
-;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_1
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_1
@@ -155,7 +151,6 @@ Music_GymLeaderBattleSwSh_Ch2:
 	note_type 12, 11, 2
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase
-; Neutral Intro
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty1
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty1
 	rest 16
@@ -165,7 +160,6 @@ Music_GymLeaderBattleSwSh_Ch2:
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty2
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty2
 
-;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1
@@ -207,7 +201,6 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4:
 	rest 9
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop
 
-;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1
@@ -241,7 +234,6 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty8
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop
 
-;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_1
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_1
@@ -293,7 +285,6 @@ Music_GymLeaderBattleSwSh_Ch3:
 	note_type 12, 1, 1
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch3_EnterLastPokemonPhase
-; Neutral Intro
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty1
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty1
 	octave 1
@@ -306,7 +297,6 @@ Music_GymLeaderBattleSwSh_Ch3:
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty2
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty2
 
-;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_1
@@ -330,7 +320,6 @@ Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop
 
-;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_1
@@ -350,7 +339,6 @@ Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop
 
-;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_1
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_1
@@ -407,7 +395,6 @@ Music_GymLeaderBattleSwSh_Ch4:
 	toggle_noise 4
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase
-; Neutral Intro
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty1
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty1
 	drum_note 2, 1
@@ -419,7 +406,6 @@ Music_GymLeaderBattleSwSh_Ch4:
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 
-;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_1
@@ -439,7 +425,6 @@ Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty4
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop
 
-;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_1
@@ -459,7 +444,6 @@ Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty6
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop
 
-;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_1
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_1
@@ -491,20 +475,14 @@ Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4:
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop
 
-; Advantage/Last Pokemon Intros - This could be its own song.
-
-; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	duty_cycle 1
 	volume_envelope 10, 8
 	vibrato 0, 0, 0
 	octave 3
 	stereo_panning TRUE, FALSE
-	;slidepitchto 1, 5, G_
 	rest 16
-	;slidepitchto 1, 4, C_
 	rest 16
-	;slidepitchto 1, 4, F#
 	octave 4
 	rest 16
 	rest 8
@@ -520,7 +498,6 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	octave 4
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
 	drum_note 12, 2
-;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	duty_cycle 1
 	volume_envelope 12, 4
@@ -558,18 +535,14 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop
 
-; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	duty_cycle 1
 	volume_envelope 10, 8
 	vibrato 0, 0, 0
 	octave 2
 	stereo_panning FALSE, TRUE
-	;slidepitchto 1, 5, G_
 	rest 16
-	;slidepitchto 1, 4, C_
 	rest 16
-	;slidepitchto 1, 4, F#
 	octave 3
 	rest 16
 	rest 8
@@ -582,7 +555,6 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	vibrato 0, 0, 0
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty4
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty5
-;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop:
 	rest 2
 	duty_cycle 1
@@ -609,7 +581,6 @@ Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop:
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop
 
 
-; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch3_EnterLastPokemonPhase:
 	rest 16
 	rest 16
@@ -618,7 +589,6 @@ Music_GymLeaderBattleSwSh_Ch3_EnterLastPokemonPhase:
 	octave 2
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty4
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty4
-;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop:
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
 	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
@@ -633,12 +603,10 @@ Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop:
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop
 
 
-; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase:
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty5
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
-;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop:
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3

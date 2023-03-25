@@ -49,6 +49,7 @@ ENDM
 DEF FIRST_MUSIC_CMD EQU const_value
 
 	const octave_cmd ; $d0
+	assert octave_cmd & %111 == 0, "octave_cmd must be 3-bit aligned"
 MACRO octave
 	assert 1 <= (\1) && (\1) <= 8, "octave must be 1-8"
 	db octave_cmd + 8 - (\1) ; octave
@@ -56,7 +57,16 @@ ENDM
 
 	const_skip 7 ; all octave values
 
-	const note_type_cmd ; $d8
+	const duty_cycle_cmd ; $d8
+	assert duty_cycle_cmd & %11 == 0, "duty_cycle_cmd must be 2-bit aligned"
+MACRO duty_cycle
+	assert 0 <= (\1) && (\1) <= 6, "duty cycle must be 0-6"
+	db duty_cycle_cmd | (\1 & 3) ; values 4-6 fold into 0-2
+ENDM
+
+	const_skip 3 ; all duty cycle values
+
+	const note_type_cmd ; $dc
 MACRO note_type
 	db note_type_cmd
 	db \1 ; note length
@@ -74,25 +84,19 @@ MACRO drum_speed
 	note_type \1 ; note length
 ENDM
 
-	const transpose_cmd ; $d9
+	const transpose_cmd ; $dd
 MACRO transpose
 	db transpose_cmd
 	dn \1, \2 ; num octaves, num pitches
 ENDM
 
-	const tempo_cmd ; $da
+	const tempo_cmd ; $de
 MACRO tempo
 	db tempo_cmd
-	bigdw \1 ; tempo
+	dw \1 ; tempo
 ENDM
 
-	const duty_cycle_cmd ; $db
-MACRO duty_cycle
-	db duty_cycle_cmd
-	db \1 ; duty cycle
-ENDM
-
-	const volume_envelope_cmd ; $dc
+	const volume_envelope_cmd ; $df
 MACRO volume_envelope
 	db volume_envelope_cmd
 	if \2 < 0
@@ -102,7 +106,7 @@ MACRO volume_envelope
 	endc
 ENDM
 
-	const pitch_sweep_cmd ; $dd
+	const pitch_sweep_cmd ; $e0
 MACRO pitch_sweep
 	db pitch_sweep_cmd
 	if \2 < 0
@@ -112,25 +116,25 @@ MACRO pitch_sweep
 	endc
 ENDM
 
-	const duty_cycle_pattern_cmd ; $de
+	const duty_cycle_pattern_cmd ; $e1
 MACRO duty_cycle_pattern
 	db duty_cycle_pattern_cmd
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | (\4 << 0) ; duty cycle pattern
 ENDM
 
-	const toggle_sfx_cmd ; $df
+	const toggle_sfx_cmd ; $e2
 MACRO toggle_sfx
 	db toggle_sfx_cmd
 ENDM
 
-	const pitch_slide_cmd ; $e0
+	const pitch_slide_cmd ; $e3
 MACRO pitch_slide
 	db pitch_slide_cmd
 	db \1 - 1 ; duration
 	dn 8 - \2, \3 % 12 ; octave, pitch
 ENDM
 
-	const vibrato_cmd ; $e1
+	const vibrato_cmd ; $e4
 MACRO vibrato
 	db vibrato_cmd
 	db \1 ; delay
@@ -141,13 +145,7 @@ MACRO vibrato
 	endc
 ENDM
 
-	const unknownmusic0xe2_cmd ; $e2
-MACRO unknownmusic0xe2
-	db unknownmusic0xe2_cmd
-	db \1 ; unknown
-ENDM
-
-	const toggle_noise_cmd ; $e3
+	const toggle_noise_cmd ; $e5
 MACRO toggle_noise
 	db toggle_noise_cmd
 	if _NARG > 0
@@ -155,13 +153,11 @@ MACRO toggle_noise
 	endc
 ENDM
 
-	const force_stereo_panning_cmd ; $e4
-MACRO force_stereo_panning
-	db force_stereo_panning_cmd
-	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
+MACRO sfx_toggle_noise
+	toggle_noise \#
 ENDM
 
-	const volume_cmd ; $e5
+	const volume_cmd ; $e6
 MACRO volume
 	db volume_cmd
 	if _NARG > 1
@@ -171,113 +167,58 @@ MACRO volume
 	endc
 ENDM
 
-	const pitch_offset_cmd ; $e6
+	const pitch_offset_cmd ; $e7
 MACRO pitch_offset
 	db pitch_offset_cmd
-	bigdw \1 ; pitch offset
+	dw \1 ; pitch offset
 ENDM
 
-	const unknownmusic0xe7_cmd ; $e7
-MACRO unknownmusic0xe7
-	db unknownmusic0xe7_cmd
-	db \1 ; unknown
-ENDM
-
-	const unknownmusic0xe8_cmd ; $e8
-MACRO unknownmusic0xe8
-	db unknownmusic0xe8_cmd
-	db \1 ; unknown
-ENDM
-
-	const tempo_relative_cmd ; $e9
+	const tempo_relative_cmd ; $e8
 MACRO tempo_relative
 	db tempo_relative_cmd
-	bigdw \1 ; tempo adjustment
+	db \1 ; tempo adjustment
 ENDM
 
-	const restart_channel_cmd ; $ea
+	const restart_channel_cmd ; $e9
 MACRO restart_channel
 	db restart_channel_cmd
 	dw \1 ; address
 ENDM
 
-	const new_song_cmd ; $eb
+	const new_song_cmd ; $ea
 MACRO new_song
 	db new_song_cmd
-	bigdw \1 ; id
+	dw \1 ; id
 ENDM
 
-	const sfx_priority_on_cmd ; $ec
+	const sfx_priority_on_cmd ; $eb
 MACRO sfx_priority_on
 	db sfx_priority_on_cmd
 ENDM
 
-	const sfx_priority_off_cmd ; $ed
+	const sfx_priority_off_cmd ; $ec
 MACRO sfx_priority_off
 	db sfx_priority_off_cmd
 ENDM
 
-	const unknownmusic0xee_cmd ; $ee
-MACRO unknownmusic0xee
-	db unknownmusic0xee_cmd
-	dw \1 ; address
-ENDM
-
-	const stereo_panning_cmd ; $ef
+	const stereo_left_cmd ; $ed
+	const stereo_right_cmd ; $ee
+	const stereo_center_cmd ; $ef
 MACRO stereo_panning
-	db stereo_panning_cmd
-	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
-ENDM
-
-	const sfx_toggle_noise_cmd ; $f0
-MACRO sfx_toggle_noise
-	db sfx_toggle_noise_cmd
-	if _NARG > 0
-		db \1 ; drum kit
+	if (\1) && !(\2)
+		db stereo_left_cmd
+	elif !(\1) && (\2)
+		db stereo_right_cmd
+	elif (\1) && (\2)
+		db stereo_center_cmd
+	else
+		fail "Cannot mute with stereo_panning"
 	endc
 ENDM
 
-	const music0xf1_cmd ; $f1
-MACRO music0xf1
-	db music0xf1_cmd
-ENDM
+	const_skip 9
 
-	const music0xf2_cmd ; $f2
-MACRO music0xf2
-	db music0xf2_cmd
-ENDM
-
-	const music0xf3_cmd ; $f3
-MACRO music0xf3
-	db music0xf3_cmd
-ENDM
-
-	const music0xf4_cmd ; $f4
-MACRO music0xf4
-	db music0xf4_cmd
-ENDM
-
-	const music0xf5_cmd ; $f5
-MACRO music0xf5
-	db music0xf5_cmd
-ENDM
-
-	const music0xf6_cmd ; $f6
-MACRO music0xf6
-	db music0xf6_cmd
-ENDM
-
-	const music0xf7_cmd ; $f7
-MACRO music0xf7
-	db music0xf7_cmd
-ENDM
-
-	const music0xf8_cmd ; $f8
-MACRO music0xf8
-	db music0xf8_cmd
-ENDM
-
-	const noisesampleset_cmd
+	const noisesampleset_cmd ; $f9
 MACRO noisesampleset
 	db noisesampleset_cmd
 	db \1 ; noise
@@ -318,6 +259,7 @@ MACRO sound_call
 ENDM
 
 	const sound_ret_cmd ; $ff
+	assert sound_ret_cmd == $ff, "sound_ret_cmd must be $ff"
 MACRO sound_ret
 	db sound_ret_cmd
 ENDM

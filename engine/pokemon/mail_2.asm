@@ -143,16 +143,15 @@ FinishLoadingSurfLiteBlueMailGFX:
 	ld [hli], a
 	hlcoord 13, 12
 	ld [hl], a
-	ld a, $42
+	inc a ; $42
 	hlcoord 9, 2
 	ld [hli], a
 	hlcoord 14, 5
 	ld [hli], a
 	hlcoord 3, 10
 	ld [hl], a
-	ld a, $43
-	hlcoord 6, 11
-	ld [hli], a
+	inc a ; $43
+	ldcoord_a 6, 11
 	pop hl
 	jmp MailGFX_PlaceMessage
 

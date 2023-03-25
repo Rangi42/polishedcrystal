@@ -10,7 +10,7 @@ Music_GymLeaderBattleDPPt:
 	channel 4, Music_GymLeaderBattleDPPt_Ch4
 
 Music_GymLeaderBattleDPPt_Ch1:
-	tempo $6A
+	tempo 106
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	duty_cycle 1

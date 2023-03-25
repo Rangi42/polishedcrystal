@@ -241,7 +241,6 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note G_, 1
 	note_type 12, 11, 7
 	note F_, 4
-;;;;;;;;;;;mark
 	volume_envelope 7, 0
 	duty_cycle 0
 	octave 2
@@ -268,7 +267,6 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	octave 3
 	note D#, 4
 	note F_, 4
-;;;;;;;;;;;;;;mark
 	volume_envelope 11, 4
 	octave 4
 	duty_cycle 2

@@ -9,7 +9,7 @@ Music_FrontierBrainBattleRSE:
 	channel 3, Music_FrontierBrainBattleRSE_Ch3
 
 Music_FrontierBrainBattleRSE_Ch1:
-	tempo $60
+	tempo 96
 	volume 7, 7
 	note_type 12, 12, 2
 	duty_cycle 1

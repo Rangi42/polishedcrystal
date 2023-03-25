@@ -37,13 +37,6 @@ LCDMusicPlayer::
 
 	ldh a, [hMPState]
 	inc a
-	add l
-	jr nc, .ok
-	sub SCREEN_HEIGHT_PX
-.ok
-
-	ldh a, [hMPState]
-	inc a
 	assert PIANO_ROLL_HEIGHT_PX + 1 < $80
 	add l
 	add a
@@ -58,7 +51,7 @@ LCDMusicPlayer::
 	ld [oamSprite00XCoord], a
 	ld a, [hli]
 	ld [oamSprite01XCoord], a
-	ld a, [hli]
+	ld a, [hl]
 	ld [oamSprite02XCoord], a
 	pop hl
 

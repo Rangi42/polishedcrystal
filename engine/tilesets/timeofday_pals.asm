@@ -136,11 +136,10 @@ FillWhiteBGColor:
 	ld a, $5
 	ldh [rSVBK], a
 
-	ld hl, wBGPals1
+	ld hl, wBGPals1 palette 0
 	ld a, [hli]
 	ld e, a
-	ld a, [hli]
-	ld d, a
+	ld d, [hl]
 	ld hl, wBGPals1 palette 1
 	ld c, 6
 .loop

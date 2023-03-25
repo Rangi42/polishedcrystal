@@ -10,7 +10,7 @@ Music_KantoLegendBattleXY:
 	channel 3, Music_KantoLegendBattleXY_Ch3
 
 Music_KantoLegendBattleXY_Ch1:
-	tempo $6a
+	tempo 106
 	duty_cycle 2
 	note_type 12, 12, 7
 	octave 4
