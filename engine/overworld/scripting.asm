@@ -843,7 +843,7 @@ Script_encountermusic:
 	farjp PlayTrainerEncounterMusic
 
 Script_playmusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	xor a
 	ld [wMusicFade], a

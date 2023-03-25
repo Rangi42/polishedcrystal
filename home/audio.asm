@@ -129,25 +129,26 @@ PlayBikeMusic:
 .get_bike_music
 	call RegionCheck
 	ld a, e
-	ld de, MUSIC_BICYCLE_RB
+	ld e, MUSIC_BICYCLE_RB
 	cp KANTO_REGION
 	ret z
-	ld de, MUSIC_BICYCLE_RSE
+	ld e, MUSIC_BICYCLE_RSE
 	cp ORANGE_REGION
 	ret z
-	ld de, MUSIC_BICYCLE
+	ld e, MUSIC_BICYCLE
 	ret
 
 PlayMusicAfterDelay::
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	pop de
 	ld a, e
 	ld [wMapMusic], a
 PlayMusic::
-; Play music de.
+; Play music e.
+	ld d, 0
 
 	push hl
 	push de
@@ -176,7 +177,8 @@ PlayMusic::
 	jmp PopAFBCDEHL
 
 PlayMusic2::
-; Stop playing music, then play music de.
+; Stop playing music, then play music e.
+	ld d, 0
 
 	push hl
 	push de
@@ -189,7 +191,7 @@ PlayMusic2::
 	ld a, BANK(_PlayMusic)
 	rst Bankswitch
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call _PlayMusic ; far-ok
 	call DelayFrame
 	pop de
@@ -372,7 +374,7 @@ TryRestartMapMusic::
 	jmp z, RestoreMusic
 	xor a
 	ld [wMapMusic], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	xor a
@@ -384,7 +386,7 @@ RestartMapMusic::
 	push de
 	push bc
 	push af
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	ld a, [wMapMusic]
@@ -399,14 +401,14 @@ GetMapMusic_MaybeSpecial::
 	jr GetPlayerStateMusic
 
 GetCyclingRoadMusic:
-	ld de, MUSIC_BICYCLE_XY
+	ld e, MUSIC_BICYCLE_XY
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	ret z
 	jr GetPlayerStateMusic
 
 GetBugCatchingContestMusic:
-	ld de, MUSIC_BUG_CATCHING_CONTEST_RANKING
+	ld e, MUSIC_BUG_CATCHING_CONTEST_RANKING
 	ld a, [wStatusFlags2]
 	bit 2, a ; ENGINE_BUG_CONTEST_TIMER
 	ret nz
@@ -415,19 +417,19 @@ GetBugCatchingContestMusic:
 GetPlayerStateMusic:
 	ld a, [wPlayerState]
 	cp PLAYER_SURF_PIKA
-	ld de, MUSIC_SURFING_PIKACHU
+	ld e, MUSIC_SURFING_PIKACHU
 	ret z
 	cp PLAYER_SURF
 	jmp nz, GetMapMusic
 	call RegionCheck
 	ld a, e
-	ld de, MUSIC_SURF_KANTO
+	ld e, MUSIC_SURF_KANTO
 	cp KANTO_REGION
 	ret z
-	ld de, MUSIC_SURF_HOENN
+	ld e, MUSIC_SURF_HOENN
 	cp ORANGE_REGION
 	ret z
-	ld de, MUSIC_SURF
+	ld e, MUSIC_SURF
 	ret
 
 CheckSFX::

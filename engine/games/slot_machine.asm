@@ -30,8 +30,6 @@ _SlotMachine:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
-;	ld de, MUSIC_NONE
-;	call PlayMusic
 	call DelayFrame
 	call DisableLCD
 	hlbgcoord 0, 0
@@ -95,17 +93,6 @@ _SlotMachine:
 	ld [wJumptableIndex], a
 	ld a, SLOTS_NOMATCH
 	ld [wSlotBias], a
-
-;	ld de, MUSIC_GAME_CORNER
-;	ld a, [wMapGroup]
-;	cp GROUP_GOLDENROD_GAME_CORNER
-;	jr nz, .celadon_game_corner
-;	ld a, [wMapNumber]
-;	cp MAP_GOLDENROD_GAME_CORNER
-;	jr nz, .celadon_game_corner
-;	ld de, MUSIC_GAME_CORNER_DPPT
-;.celadon_game_corner
-;	call PlayMusic
 
 	xor a
 	ld [wKeepSevenBiasChance], a

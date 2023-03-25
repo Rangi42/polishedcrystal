@@ -631,8 +631,8 @@ OaksPkmnTalk14:
 	ld hl, wRadioTextDelay
 	dec [hl]
 	ret nz
-	ld de, MUSIC_POKEMON_TALK
-	farcall RadioMusicRestartDE
+	ld e, MUSIC_POKEMON_TALK
+	farcall RadioMusicRestart
 	ld hl, EmptyString
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_4
@@ -840,13 +840,13 @@ BenFernMusic6:
 StartPokemonMusicChannel:
 	ld hl, EmptyString
 	call PrintText
-	ld de, MUSIC_POKEMON_MARCH
 	call GetWeekday
 	and 1
+	ld e, MUSIC_POKEMON_MARCH
 	jr z, .SunTueThurSun
-	ld de, MUSIC_POKEMON_LULLABY
+	ld e, MUSIC_POKEMON_LULLABY
 .SunTueThurSun:
-	farjp RadioMusicRestartDE
+	farjp RadioMusicRestart
 
 BenIntroText1:
 	; BEN: #MON MUSIC
@@ -1814,12 +1814,13 @@ StartRadioStation:
 	ret nz
 	ld hl, EmptyString
 	call PrintText
-	ld hl, RadioChannelSongs
 	ld a, [wCurRadioLine]
-	ld e, a
-	ld d, 0
-	add hl, de
+	add LOW(RadioChannelSongs)
+	ld l, a
+	adc HIGH(RadioChannelSongs)
+	sub l
+	ld h, a
 	ld e, [hl]
-	farjp RadioMusicRestartDE
+	farjp RadioMusicRestart
 
 INCLUDE "data/radio/channel_music.asm"

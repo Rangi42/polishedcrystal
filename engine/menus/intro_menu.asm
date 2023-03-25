@@ -24,10 +24,10 @@ InitIntroGradient::
 INCBIN "gfx/new_game/intro_gradient.2bpp"
 
 _MainMenu:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_MAIN_MENU
+	ld e, MUSIC_MAIN_MENU
 	ld a, e
 	ld [wMapMusic], a
 	call PlayMusic
@@ -560,7 +560,7 @@ ProfElmSpeech:
 	call FadeToBlack
 	call ClearTileMap
 
-	ld de, MUSIC_ROUTE_30
+	ld e, MUSIC_ROUTE_30
 	call PlayMusic
 
 	ld c, 31
@@ -1193,14 +1193,14 @@ TitleScreenEntrance:
 	call CloseSRAM
 
 ; Play the title screen music.
-	ld de, MUSIC_TITLE
+	ld e, MUSIC_TITLE
 	ld a, [wSaveFileExists]
 	and a
 	jr z, .ok
 	ld hl, wStatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .ok
-	ld de, MUSIC_TITLE_XY
+	ld e, MUSIC_TITLE_XY
 .ok
 	call PlayMusic
 

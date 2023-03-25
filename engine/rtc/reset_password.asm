@@ -5,7 +5,7 @@ _ResetClock:
 	call LoadStandardFont
 	call LoadFrame
 	call BlackOutScreen
-	ld de, MUSIC_MAIN_MENU
+	ld e, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .text_askreset
 	call PrintText

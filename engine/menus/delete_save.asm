@@ -5,7 +5,7 @@ _DeleteSaveData:
 	call LoadStandardFont
 	call LoadFrame
 	call BlackOutScreen
-	ld de, MUSIC_MAIN_MENU
+	ld e, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .Text_ClearAllSaveData
 	call PrintText
@@ -44,7 +44,7 @@ _ResetInitialOptions:
 	call LoadStandardFont
 	call LoadFrame
 	call BlackOutScreen
-	ld de, MUSIC_MAIN_MENU
+	ld e, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .Text_ResetInitialOptions
 	call PrintText
