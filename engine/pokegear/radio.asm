@@ -1816,13 +1816,10 @@ StartRadioStation:
 	call PrintText
 	ld hl, RadioChannelSongs
 	ld a, [wCurRadioLine]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
 	ld e, a
+	ld d, 0
+	add hl, de
+	ld e, [hl]
 	farjp RadioMusicRestartDE
 
 INCLUDE "data/radio/channel_music.asm"
