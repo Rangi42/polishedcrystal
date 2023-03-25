@@ -53,7 +53,7 @@ PlayBattleMusic:
 	call SaveMusic
 	xor a
 	ld [wMusicFade], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	call MaxVolume
@@ -71,7 +71,7 @@ PlayBattleMusic:
 	; Are we in the Safari Game?
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
-	ld de, MUSIC_WILD_BATTLE_GO
+	ld e, MUSIC_WILD_BATTLE_GO
 	jr z, .done
 
 	ld hl, BattleMusic_RegionalWilds
@@ -85,7 +85,7 @@ PlayBattleMusic:
 	ld a, [wOtherTrainerID]
 	cp 4 ; Rival in Indigo Plateau
 	jr c, .not_rival2_4
-	ld de, MUSIC_CHAMPION_BATTLE
+	ld e, MUSIC_CHAMPION_BATTLE
 	jr .done
 
 .not_rival2_4
@@ -95,7 +95,7 @@ PlayBattleMusic:
 	ld a, [wOtherTrainerID]
 	cp 1 ; Armored Mewtwo
 	jr nz, .othertrainer
-	ld de, MUSIC_MOTHER_BEAST_BATTLE_SM
+	ld e, MUSIC_MOTHER_BEAST_BATTLE_SM
 	jr .done
 
 .othertrainer
@@ -104,22 +104,22 @@ PlayBattleMusic:
 	call .loadfromarray
 	jr c, .done
 
-	ld de, MUSIC_TRAINER_BATTLE_BW
+	ld e, MUSIC_TRAINER_BATTLE_BW
 	ld a, [wInBattleTowerBattle]
 	and a
 	jr nz, .done
 
-	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
+	ld e, MUSIC_KANTO_GYM_LEADER_BATTLE
 	farcall IsKantoGymLeader
 	jr c, .done
 
-	ld de, MUSIC_JOHTO_GYM_LEADER_BATTLE
+	ld e, MUSIC_JOHTO_GYM_LEADER_BATTLE
 	farcall IsJohtoGymLeader
 	jr c, .done
 
 	ld a, [wLinkMode]
 	and a
-	ld de, MUSIC_JOHTO_TRAINER_BATTLE
+	ld e, MUSIC_JOHTO_TRAINER_BATTLE
 	jr nz, .done
 
 	ld hl, BattleMusic_RegionalTrainers
@@ -131,7 +131,7 @@ PlayBattleMusic:
 	jmp PopBCDEHL
 
 .loadfromarray
-	ld e, 3 ; d is already 0 from 'ld de, MUSIC_NONE'
+	ld de, 3
 	call IsInArray
 	ret nc
 	inc hl

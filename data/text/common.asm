@@ -4253,8 +4253,11 @@ SECTION "_ItemHappinessRoseButStatFellText", ROMX
 _ItemHappinessRoseButStatFellText::
 	text_ram wStringBuffer1
 	text " became"
-	line "friendly. Base"
-	cont ""
+	line "more friendly."
+	para ""
+	text_ram wStringBuffer1
+	text "'s base"
+	line ""
 	text_ram wStringBuffer2
 	text " fell!"
 	prompt

@@ -3,7 +3,7 @@ SplashScreen:
 ; Return carry if user cancels animation by pressing a button.
 
 ; Reinitialize everything
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call ClearBGPalettes
 	call ClearTileMap

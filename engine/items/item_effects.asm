@@ -824,10 +824,10 @@ Text_GotchaMonWasCaught:
 	text_asm
 	call WaitSFX
 	push bc
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_CAPTURE
+	ld e, MUSIC_CAPTURE
 	call PlayMusic
 	pop bc
 	ld hl, TextJump_Waitbutton
@@ -1031,11 +1031,10 @@ _GetStatString:
 	ld de, wStringBuffer2
 	ld hl, StatStrings
 	add hl, bc
+	ld c, [hl]
+	ld b, 0
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld bc, ITEM_NAME_LENGTH
+	ld c, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret
 

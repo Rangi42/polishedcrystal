@@ -2297,10 +2297,10 @@ AddBattleMoneyToAccount:
 
 PlayVictoryMusic:
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_WILD_VICTORY
+	ld e, MUSIC_WILD_VICTORY
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer_victory
@@ -2321,10 +2321,10 @@ PlayVictoryMusic:
 	jr .play_music
 
 .trainer_victory
-	ld de, MUSIC_GYM_VICTORY
+	ld e, MUSIC_GYM_VICTORY
 	call IsBossTrainer
 	jr c, .play_music
-	ld de, MUSIC_TRAINER_VICTORY
+	ld e, MUSIC_TRAINER_VICTORY
 
 .play_music
 	call PlayMusic
@@ -2705,10 +2705,10 @@ FinalPkmnMusicAndAnimation:
 	call IsJohtoGymLeader
 	jr nc, .no_music
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_FINAL_POKEMON_BW
+	ld e, MUSIC_FINAL_POKEMON_BW
 	call PlayMusic
 	pop de
 .no_music
@@ -2745,10 +2745,10 @@ SetVariableBattleMusicCondition:
 	cp 3
 	jr nz, .skip_restart_music
 	; restart the music for the final track
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_GYM_LEADER_BATTLE_SWSH
+	ld e, MUSIC_GYM_LEADER_BATTLE_SWSH
 	call PlayMusic
 	ld a, 3
 .skip_restart_music

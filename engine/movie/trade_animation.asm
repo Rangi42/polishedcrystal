@@ -130,7 +130,7 @@ RunTradeAnimSequence:
 	ld a, [wUnusedTradeAnimPlayEvolutionMusic] ; TODO: figure out what can be removed if this is unused (presumably this and next 2 lines)
 	and a
 	jr nz, .anim_loop
-	ld de, MUSIC_EVOLUTION
+	ld e, MUSIC_EVOLUTION
 	call PlayMusic2
 .anim_loop
 	call DoTradeAnimation

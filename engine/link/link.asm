@@ -72,7 +72,7 @@ Gen2ToGen2LinkComms:
 	ldh [rIF], a
 	ld a, 1 << SERIAL | 1 << VBLANK
 	ldh [rIE], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 
 	call Link_CopyRandomNumbers
@@ -221,7 +221,7 @@ Gen2ToGen2LinkComms:
 	ld bc, wOTPartyDataEnd - wOTPartyMons
 	rst CopyBytes
 
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -281,7 +281,7 @@ Gen2ToGen2LinkComms:
 	jmp ExitLinkCommunications
 
 .ready_to_trade
-	ld de, MUSIC_ROUTE_30
+	ld e, MUSIC_ROUTE_30
 	call PlayMusic
 	jmp InitTradeMenuDisplay
 
@@ -2118,7 +2118,7 @@ PrepareForLinkTransfers:
 	ldh [rSC], a
 
 .player_1:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	vc_patch Wireless_net_delay_6
 if DEF(VIRTUAL_CONSOLE)
@@ -2318,7 +2318,7 @@ PerformLinkChecks:
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
-	ld de, MUSIC_POKEMON_CENTER
+	ld e, MUSIC_POKEMON_CENTER
 	jmp PlayMusic
 
 .SkipPreambleBytes
