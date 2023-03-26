@@ -1131,11 +1131,11 @@ LoadStation_EvolutionRadio:
 	ld de, UnknownStationName
 	jr LoadRadioStation
 
-RadioMusicRestartDE:
+RadioMusicRestart:
 	push de
 	ld a, e
 	ld [wPokegearRadioMusicPlaying], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
 	ld a, e
@@ -1146,14 +1146,14 @@ RadioMusicRestartPokemonChannel:
 	push de
 	ld a, $fe
 	ld [wPokegearRadioMusicPlaying], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
-	ld de, MUSIC_POKEMON_CHANNEL
+	ld e, MUSIC_POKEMON_CHANNEL
 	jmp PlayMusic
 
 NoRadioMusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld a, $ff
 	ld [wPokegearRadioMusicPlaying], a

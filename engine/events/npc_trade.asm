@@ -429,7 +429,7 @@ TradedForText:
 	; traded givemon for getmon
 	text_far Text_NPCTraded
 	text_asm
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	ld hl, .done

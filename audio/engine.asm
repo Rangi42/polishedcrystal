@@ -558,10 +558,10 @@ FadeMusic:
 	xor a
 	ld [wVolume], a
 	; get new song id
-	ld a, [wMusicFadeIDLo]
+	ld hl, wMusicFadeID
+	ld a, [hli]
+	ld d, [hl]
 	ld e, a
-	ld a, [wMusicFadeIDHi]
-	ld d, a
 	; load new song
 	call _PlayMusic
 	pop bc
@@ -2523,7 +2523,7 @@ PlayTrainerEncounterMusic::
 	ld [wMusicFade], a
 	; play nothing for one frame
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	; play new song

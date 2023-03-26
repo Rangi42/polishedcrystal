@@ -323,12 +323,10 @@ ParseCredits:
 
 .music
 ; Play the credits music.
-	ld de, MUSIC_CREDITS
-	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	pop de
+	ld e, MUSIC_CREDITS
 	call PlayMusic
 	jmp .loop
 

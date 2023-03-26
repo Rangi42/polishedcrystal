@@ -61,21 +61,16 @@ HallOfFame_FadeOutMusic:
 	ldh [hMapAnims], a
 	ret
 
-HallOfFame_PlayMusicDE:
-	push de
-	ld de, MUSIC_NONE
-	call PlayMusic
-	call DelayFrame
-	pop de
-	jmp PlayMusic
-
 AnimateHallOfFame:
 	xor a
 	ld [wJumptableIndex], a
 	call LoadHOFTeam
 	jr c, .done
-	ld de, MUSIC_HALL_OF_FAME
-	call HallOfFame_PlayMusicDE
+	ld e, MUSIC_NONE
+	call PlayMusic
+	call DelayFrame
+	ld e, MUSIC_HALL_OF_FAME
+	call PlayMusic
 	xor a
 	ld [wHallOfFameMonCounter], a
 .loop
