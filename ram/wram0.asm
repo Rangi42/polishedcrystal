@@ -1045,6 +1045,9 @@ wBGMapBuffer:: ds 48
 wBGMapPalBuffer:: ds 48
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
+wTileAnimBuffer:: ds 1 tiles
+wTileAnimationTimer:: db
+
 
 SECTION "More WRAM 0", WRAM0
 
@@ -1061,8 +1064,6 @@ wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: db
 wHPPalIndex:: db
 ENDU
-
-wTileAnimBuffer:: ds 1 tiles
 
 ; link data
 UNION
@@ -1306,8 +1307,6 @@ wFXAnimIDHi:: db
 
 wPlaceBallsX:: db
 wPlaceBallsY:: db
-
-wTileAnimationTimer:: db
 
 ; palette backups?
 wBGP:: db
