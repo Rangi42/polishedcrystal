@@ -10,8 +10,6 @@ wStackTop::
 
 SECTION "Audio RAM", WRAM0
 
-wEchoRAMTest:: db
-
 wMusic::
 wMusicPlaying:: db ; nonzero if playing
 
@@ -1164,6 +1162,7 @@ wNamingScreenLetterCase::
 wHallOfFameMonCounter::
 wTradeDialog::
 wRandomValue::
+wEchoRAMTest::
 	db
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db
