@@ -13,8 +13,8 @@ UnownPuzzle:
 	xor a
 	ldh [hBGMapMode], a
 	call DisableLCD
-	ld hl, wMisc
-	ld bc, wMiscEnd - wMisc
+	ld hl, wUnownPuzzle
+	ld bc, wUnownPuzzleEnd - wUnownPuzzle
 	xor a
 	rst ByteFill
 	ld hl, UnownPuzzleCursorGFX
