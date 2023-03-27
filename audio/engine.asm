@@ -267,9 +267,6 @@ UpdateChannels:
 	ret
 
 .ch1_rest
-	ldh a, [rNR52]
-	and %10001110 ; ch1 off
-	ldh [rNR52], a
 	ld hl, rNR10
 	jmp ClearChannel
 
@@ -319,9 +316,6 @@ UpdateChannels:
 	ret
 
 .ch2_rest
-	ldh a, [rNR52]
-	and %10001101 ; ch2 off
-	ldh [rNR52], a
 	ld hl, rNR20
 	jmp ClearChannel
 
@@ -355,9 +349,6 @@ UpdateChannels:
 	ret
 
 .ch3_rest
-	ldh a, [rNR52]
-	and %10001011 ; ch3 off
-	ldh [rNR52], a
 	ld hl, rNR30
 	jmp ClearChannel
 
@@ -395,9 +386,6 @@ UpdateChannels:
 	ret
 
 .ch4_rest
-	ldh a, [rNR52]
-	and %10000111 ; ch4 off
-	ldh [rNR52], a
 	ld hl, rNR40
 	jmp ClearChannel
 
