@@ -39,14 +39,9 @@ _InitSound::
 	jr nz, .clearsound
 
 	ld hl, wChannels ; start of channel data
-	ld de, wChannelsEnd - wChannels ; length of area to clear (entire sound wram area)
-.clearchannels ; clear wChannel1-$c2bf
+	ld bc, wChannelsEnd - wChannels ; length of area to clear (entire sound wram area)
 	xor a
-	ld [hli], a
-	dec de
-	ld a, e
-	or d
-	jr nz, .clearchannels
+	rst ByteFill
 
 	ld a, MAX_VOLUME
 	ld [wVolume], a
@@ -1018,7 +1013,6 @@ ParseMusic:
 	ld a, [wCurMusicByte]
 	and $f
 	call SetNoteDuration
-	; get note pitch (top nybble)
 
 	ld a, [wCurChannel]
 	cp CHAN5
@@ -1034,6 +1028,7 @@ ParseMusic:
 	jr .rest
 
 .notMuted
+	; get note pitch (top nybble)
 	ld a, [wCurMusicByte]
 	swap a
 	and $f
@@ -2385,9 +2380,6 @@ LoadChannel:
 	ld a, [hli]
 	ld c, a
 	ld b, [hl] ; bc = channel pointer
-	ld hl, wChannel1Flags - wChannel1
-	add hl, bc
-	res SOUND_CHANNEL_ON, [hl] ; channel off
 	call ChannelInit
 	; load music pointer
 	ld hl, wChannel1MusicAddress - wChannel1
