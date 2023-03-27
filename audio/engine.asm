@@ -185,7 +185,15 @@ _UpdateSound::
 	ld a, [wVolume]
 	ldh [rNR50], a
 	; write SO on/off to hardware register
-	ld a, [wSoundOutput]
+	ld hl, wSoundOutput
+	ld a, [wOptions1]
+	bit STEREO, a ; stereo
+	ld a, [hl]
+	jr nz, .stereo
+	; No stereo, or left and right masks
+	swap a
+	or [hl]
+.stereo
 	ldh [rNR51], a
 	ret
 
@@ -1687,11 +1695,6 @@ Music_PanCenter:
 	ld a, $FF
 	; fallthrough
 _ForcePanning:
-	; stereo on?
-	ld hl, wOptions1
-	bit STEREO, [hl]
-	ret z
-
 	ld d, a
 	call SetLRTracks
 	ld a, d
@@ -2164,13 +2167,8 @@ _PlayCryHeader::
 	and a
 	jr z, .next
 
-; Stereo only: Play cry from the monster's side.
+; Play cry from the monster's side.
 ; This only applies in-battle.
-
-	ld a, [wOptions1]
-	bit STEREO, a ; stereo
-	jr z, .next
-
 ; [Tracks] &= [wCryTracks]
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
@@ -2301,12 +2299,6 @@ PlayStereoSFX::
 
 	call MusicOff
 
-; standard procedure if stereo's off
-	ld a, [wOptions1]
-	bit STEREO, a
-	jmp z, _PlaySFX
-
-; else, let's go ahead with this
 	ld hl, wMusicID
 	ld a, e
 	ld [hli], a
