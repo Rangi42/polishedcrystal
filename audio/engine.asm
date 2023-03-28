@@ -1198,7 +1198,7 @@ GetNoiseSample:
 	swap a
 	; non-rest note?
 	and $f
-	ret z
+	jr z, .rest
 	; use 'pitch' to seek noise sample set
 	ld e, a
 	ld d, 0
@@ -1213,6 +1213,12 @@ GetNoiseSample:
 	; clear ????
 	xor a
 	ld [wNoiseSampleDelay], a
+	ret
+
+.rest
+	ld hl, wChannel1NoteFlags - wChannel1
+	add hl, bc
+	set NOTE_REST, [hl]
 	ret
 
 MusicCommands:
