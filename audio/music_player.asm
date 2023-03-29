@@ -4,6 +4,7 @@
 DEF MP_METER0 EQU $20
 DEF MP_METER8 EQU $28
 DEF MP_DUTY0 EQU $29
+DEF MP_WAVEFORM0 EQU $2d
 
 
 SECTION "Music Player Graphics", ROMX
@@ -911,9 +912,8 @@ _DrawCh1_2_3:
 	ld a, [hl]
 	pop hl
 	and %11000000
-	swap a
-	srl a
-	srl a
+	rlca
+	rlca
 	add MP_DUTY0
 	ld [hl], a
 	pop hl
@@ -946,8 +946,8 @@ _DrawCh1_2_3:
 	pop hl
 .blank_volume
 	and $f
-	srl a
-	add MP_METER0
+	rra
+	adc MP_METER0
 	ld [hli], a
 	ld [hld], a
 	ld a, [wTmpCh]
@@ -968,8 +968,8 @@ _DrawCh1_2_3:
 	; pick the waveform
 	ld a, [wChannel3Intensity]
 	and $f
-	sla a
-	add $2d
+	add a
+	add MP_WAVEFORM0
 	ld [hli], a
 	inc a
 	ld [hl], a
