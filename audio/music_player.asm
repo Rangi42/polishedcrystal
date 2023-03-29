@@ -62,9 +62,6 @@ ENDM
 MusicPlayerPals:
 INCLUDE "gfx/music_player/music_player.pal"
 
-MusicPlayerNotePals:
-INCLUDE "gfx/music_player/notes.pal"
-
 MusicPlayer::
 	call ClearTileMap
 
@@ -86,9 +83,9 @@ MusicPlayer::
 	ld bc, 4 palettes
 	rst CopyBytes
 
-	ld hl, MusicPlayerNotePals
+	ld hl, MusicPlayerPals
 	ld de, wOBPals2
-	ld bc, 1 palettes
+	ld bc, 4 palettes
 	rst CopyBytes
 
 	pop af
@@ -125,7 +122,7 @@ MusicPlayer::
 
 	ld hl, NotesGFX
 	ld de, vTiles0
-	lb bc, BANK(NotesGFX), $80
+	lb bc, BANK(NotesGFX), $1
 	call DecompressRequest2bpp
 
 	call DelayFrame
@@ -1762,9 +1759,9 @@ ChannelsOffTilemaps:
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
-	db 0, 0, $20, PRIORITY
-	db 0, 0, $40, PRIORITY
-	db 0, 0, $60, PRIORITY
+	db 0, 0, $00, PRIORITY | 3 ; red
+	db 0, 0, $00, PRIORITY | 2 ; blue
+	db 0, 0, $00, PRIORITY | 1 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"
