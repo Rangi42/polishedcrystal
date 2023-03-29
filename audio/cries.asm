@@ -1480,7 +1480,7 @@ Cry_Seel_Ch8:
 	sound_ret
 
 Cry_Slowpoke_Ch5:
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	square_note 8, 15, 5, 1152
 	square_note 2, 14, 1, 1504
 	square_note 8, 13, 1, 1500

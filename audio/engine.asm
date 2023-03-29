@@ -115,6 +115,7 @@ _UpdateSound::
 	ld hl, wChannel1DutyCycle - wChannel1
 	add hl, bc
 	ld a, [hli]
+	and $c0
 	ld [wCurTrackDuty], a
 	; intensity
 	ld a, [hli]
@@ -694,7 +695,7 @@ HandleTrackVibrato:
 	add hl, bc
 	bit SOUND_DUTY_LOOP, [hl] ; duty
 	jr z, .next
-	ld hl, wChannel1SFXDutyLoop - wChannel1
+	ld hl, wChannel1DutyCycle - wChannel1
 	add hl, bc
 	ld a, [hl]
 	rlca
@@ -1527,11 +1528,6 @@ Music_SoundDuty:
 	call GetMusicByte
 	rrca
 	rrca
-	ld hl, wChannel1SFXDutyLoop - wChannel1
-	add hl, bc
-	ld [hl], a
-	; update duty cycle
-	and $c0 ; only uses top 2 bits
 	ld hl, wChannel1DutyCycle - wChannel1
 	add hl, bc
 	ld [hl], a
@@ -1618,6 +1614,9 @@ Music_DutyCycle1:
 Music_DutyCycle2:
 Music_DutyCycle3:
 ; duty cycle
+	ld hl, wChannel1Flags2 - wChannel1
+	add hl, bc
+	res SOUND_DUTY_LOOP, [hl]
 	ld a, [wCurMusicByte]
 	rrca
 	rrca

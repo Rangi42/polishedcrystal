@@ -54,7 +54,6 @@ DEF CHANNEL_FIELD16                     rb
 DEF CHANNEL_LOOP_COUNT                  rb
 DEF CHANNEL_TEMPO                       rw
 DEF CHANNEL_TRACKS                      rb
-DEF CHANNEL_DUTY_CYCLE_PATTERN          rb
 DEF CHANNEL_VIBRATO_DELAY               rb
 DEF CHANNEL_VIBRATO_DELAY_COUNT         rb
 DEF CHANNEL_VIBRATO_EXTENT              rb

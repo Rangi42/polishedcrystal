@@ -18,7 +18,7 @@ Music_Megalovania_Ch1_loop:
 	rest 16
 	rest 16
 	rest 16
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 15, 3
 Music_Megalovania_Ch1_loop_1:
 	octave 4
@@ -37,7 +37,7 @@ Music_Megalovania_Ch1_loop_1:
 	note A#, 1
 	sound_call Music_Megalovania_Ch1_ditty_2
 	sound_loop 2, Music_Megalovania_Ch1_loop_1
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	volume_envelope 9, 1
 	sound_call Music_Megalovania_Ch1Ch3_ditty_2
 	octave 3
@@ -117,7 +117,7 @@ Music_Megalovania_Ch1_loop_1:
 	note F_, 1
 	note D_, 1
 	sound_call Music_Megalovania_Ch1Ch2_ditty_1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 10, 3
 	octave 2
 	note A_, 4
@@ -225,7 +225,7 @@ Music_Megalovania_Ch1_loop_1:
 	note C#, 1
 	note_type 12, 10, 6
 	note D_, 8
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	vibrato 0, 1, 3
 	sound_call Music_Megalovania_Ch1_ditty_5
 	volume_envelope 3, -7
@@ -236,7 +236,7 @@ Music_Megalovania_Ch1_loop_1:
 	note F_, 12
 	rest 4
 	sound_call Music_Megalovania_Ch1_ditty_5
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 10, 1
 	vibrato 15, 1, 3
 	octave 3
@@ -576,7 +576,7 @@ Music_Megalovania_Ch1_ditty_7:
 	sound_ret
 
 Music_Megalovania_Ch1Ch2_ditty_1:
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	volume_envelope 15, 1
 	octave 4
 	note F_, 1
@@ -782,7 +782,7 @@ Music_Megalovania_Ch2_loop:
 	note F_, 2
 	note D_, 1
 	note F_, 1
-	duty_cycle_pattern 2, 2, 2, 2
+	duty_cycle 2
 	vibrato 5, 1, 3
 	octave 4
 	note_type 6, 13, 3
@@ -937,7 +937,7 @@ Music_Megalovania_Ch2_loop:
 	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 15, 1, 15
 	octave 4
 	note_type 9, 10, 7
@@ -952,7 +952,7 @@ Music_Megalovania_Ch2_loop:
 	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 15, 1, 15
 	octave 4
 	note_type 9, 10, 7
@@ -972,7 +972,7 @@ Music_Megalovania_Ch2_loop:
 	rest 16
 	rest 1
 	note_type 12, 6, -1
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	vibrato 0, 2, 2
 	octave 2
 	note D_, 1
@@ -1066,7 +1066,7 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	note_type 9, 10, 7
 	vibrato 15, 1, 15
 	note A#, 16
@@ -1078,7 +1078,7 @@ Music_Megalovania_Ch2_ditty3:
 	note C_, 2
 	note E_, 1
 	note G_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 15, 1, 15
 	octave 4
 	note_type 15, 10, 7
@@ -1091,7 +1091,7 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 1
 	note F_, 1
 	note A_, 2
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	note_type 9, 10, 7
 	vibrato 15, 1, 15
 	octave 4
@@ -1105,7 +1105,7 @@ Music_Megalovania_Ch2_ditty3:
 	note D_, 4
 	note F_, 1
 	note A_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 15, 1, 15
 	octave 4
 	note_type 13, 10, 7
@@ -1121,7 +1121,7 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	note_type 9, 10, 7
 	vibrato 15, 1, 15
 	note A#, 16
@@ -1133,7 +1133,7 @@ Music_Megalovania_Ch2_ditty3:
 	note C_, 2
 	note E_, 1
 	note G_, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 15, 1, 15
 	octave 4
 	note_type 15, 10, 7

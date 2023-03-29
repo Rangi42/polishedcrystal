@@ -474,6 +474,8 @@ endr
 .change_ch1_2:
 	ld [hl], a
 	ld [wCurTrackDuty], a
+	call GetFlags2Addr
+	res SOUND_DUTY_LOOP, [hl]
 	ret
 
 .up_wave:
@@ -1370,6 +1372,10 @@ GetPitchAddr:
 
 GetOctaveAddr:
 	ld hl, wChannel1Octave
+	jr _GetChannelMemberAddr
+
+GetFlags2Addr:
+	ld hl, wChannel1Flags2
 	jr _GetChannelMemberAddr
 
 GetDutyCycleAddr:
