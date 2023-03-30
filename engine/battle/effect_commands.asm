@@ -486,13 +486,14 @@ VerifyChosenMove:
 ; Used to avoid problems caused by Struggle or similar.
 	ldh a, [hBattleTurn]
 	and a
+	ld a, [wCurMoveNum]
 	ld de, wPlayerMoveStructAnimation
 	ld hl, wBattleMonMoves
 	jr z, .got_move
+	ld a, [wCurEnemyMoveNum]
 	ld de, wEnemyMoveStructAnimation
 	ld hl, wEnemyMonMoves
 .got_move
-	ld a, [wCurMoveNum]
 	ld c, a
 	ld b, 0
 	add hl, bc
