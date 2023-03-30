@@ -995,7 +995,8 @@ ParseMusic:
 	ld a, [wChannelSelectorSwitches+3]
 	and a
 	jr nz, .notnoise
-	ld a, 1
+	ld a, [wCurMusicByte]
+	and $f0
 	ld [wNoiseHit], a
 .notnoise
 ; wCurMusicByte contains current note
