@@ -152,12 +152,11 @@ Route34LyraTrigger2:
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_LYRA
 	applyonemovement PLAYER, step_right
-	playsound SFX_EXIT_BUILDING
-	disappear PLAYER
 	setscene $0
-	special FadeOutPalettes
 	pause 15
-	warpfacing RIGHT, DAYCARE, 0, 4
+	warpcheck
+	warpsound
+	newloadmap MAPSETUP_DOOR
 	end
 
 DayCareManScript_Outside:

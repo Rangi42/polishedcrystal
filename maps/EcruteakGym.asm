@@ -102,10 +102,9 @@ EcruteakGymClosed:
 	follow PLAYER, ECRUTEAKGYM_GRAMPS
 	applymovement PLAYER, EcruteakGymPlayerSlowStepDownMovement
 	stopfollow
-	special FadeOutPalettes
-	playsound SFX_ENTER_DOOR
-	waitsfx
-	warp ECRUTEAK_CITY, 6, 27
+	warpcheck
+	warpsound
+	newloadmap MAPSETUP_DOOR
 	end
 
 GenericTrainerSageJeffrey:
