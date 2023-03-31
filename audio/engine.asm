@@ -348,26 +348,23 @@ UpdateChannels:
 	jmp ClearChannel
 
 .ch3_noise_sampling
-	ld a, $3f
-	ldh [rNR31], a
-	xor a
-	ldh [rNR30], a
-	call .load_wave_pattern
-	ld a, $80
-	ldh [rNR30], a
+	ld hl, wCh3LoadedWaveform
+	ld a, [wCurTrackIntensity]
+	ld d, a
+	maskbits NUM_WAVEFORMS
+	cp [hl] ; Loaded waveform == this notes waveform?
+	ld [hl], a
+	call nz, ReloadWaveform
+
+	ld a, d
+	rlca
+	ldh [rNR32], a
 	ld a, [wCurTrackFrequency]
 	ldh [rNR33], a
 	ld a, [wCurTrackFrequency + 1]
 	or $80
+	ldh [rNR30], a ; dac on, in case ReloadWaveform turned it off
 	ldh [rNR34], a
-	ret
-
-.load_wave_pattern
-	call ReloadWaveform
-	ld a, [wCurTrackIntensity]
-	and $f0
-	sla a
-	ldh [rNR32], a
 	ret
 
 .Channel4:
@@ -2437,8 +2434,6 @@ ChannelInit:
 	ret
 
 ReloadWaveform:
-	ld a, [wCurTrackIntensity]
-	and $f ; only NUM_WAVEFORMS are valid
 	; each wavepattern is $f bytes long, so seeking is done in $10s
 	swap a ; a << 4
 	add LOW(WaveSamples)
@@ -2446,6 +2441,8 @@ ReloadWaveform:
 	adc HIGH(WaveSamples)
 	sub l
 	ld h, a
+	xor a
+	ldh [rNR30], a ; dac off
 	; load wavepattern into rWave_0-rWave_f
 for x, 16
 	ld a, [hli]
