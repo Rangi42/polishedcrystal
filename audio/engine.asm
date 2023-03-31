@@ -2436,8 +2436,7 @@ ChannelInit:
 	pop de
 	ret
 
-ReloadWaveform::
-	; called from the music player
+ReloadWaveform:
 	ld a, [wCurTrackIntensity]
 	and $f ; only NUM_WAVEFORMS are valid
 	; each wavepattern is $f bytes long, so seeking is done in $10s

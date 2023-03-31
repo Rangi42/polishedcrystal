@@ -500,8 +500,7 @@ endr
 	and $f0
 	or b
 	ld [wChannel3Intensity], a
-	ld [wCurTrackIntensity], a
-	farjp ReloadWaveform
+	ret
 
 .up_noise:
 ; next noise set
