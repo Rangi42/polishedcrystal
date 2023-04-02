@@ -1,5 +1,5 @@
 CriticalHitChances:
-	db 4 percent      ; 0  = 4.17%
-	db 12 percent + 2 ; 1  = 12.5%
-	db 50 percent + 1 ; 2  = 50%
-	db 100 percent    ; 3+ = 100%
+	db 1  ; 0 = 1/24
+	db 3  ; 1 = 3/24 (1/8)
+	db 12 ; 2 = 12/24 (1/2)
+	db 24 ; 3+ = 24/24 (always)

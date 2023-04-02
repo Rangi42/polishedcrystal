@@ -22,4 +22,3 @@ DEF NUM_MAPSETUP_SCRIPTS EQU const_value - $f1
 	const MAPCALLBACK_STONETABLE
 	const_skip ; unused
 	const MAPCALLBACK_NEWMAP
-	const MAPCALLBACK_BLOCKS

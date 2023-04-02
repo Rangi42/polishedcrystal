@@ -4,7 +4,7 @@ VermilionCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, VermilionCitySetupLawrenceCallback
-	callback MAPCALLBACK_BLOCKS, VermilionCitySetupBattleFactoryCallback
+	callback MAPCALLBACK_TILES, VermilionCitySetupBattleFactoryCallback
 
 	def_warp_events
 	warp_event  5,  5, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, 1
@@ -68,42 +68,10 @@ VermilionCitySetupLawrenceCallback:
 VermilionCitySetupBattleFactoryCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .done
-	callasm .DarkenPowerPlantDoors
+	changeblock 28,  8, $ce
+	changeblock 30,  8, $ff
 .done
 	endcallback
-
-.DarkenPowerPlantDoors:
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDecompressedAttributes)
-	ldh [rSVBK], a
-	xor a ; PAL_BG_GRAY
-	ld hl, wDecompressedAttributes + 16 * $34 + 8
-	call .FillQuadrant
-	ld hl, wDecompressedAttributes + 16 * $92 + 10
-	call .FillQuadrant
-	ld a, PAL_BG_BROWN
-	ld [wDecompressedAttributes + 16 * $68 + 1], a
-	ld [wDecompressedAttributes + 16 * $68 + 10], a
-	ld [wDecompressedAttributes + 16 * $69 + 1], a
-	ld [wDecompressedAttributes + 16 * $69 + 8], a
-	ld [wDecompressedAttributes + 16 * $69 + 10], a
-	ld [wDecompressedAttributes + 16 * $7f + 1], a
-	ld [wDecompressedAttributes + 16 * $7f + 3], a
-	ld [wDecompressedAttributes + 16 * $7f + 8], a
-	ld [wDecompressedAttributes + 16 * $7f + 11], a
-	pop af
-	ldh [rSVBK], a
-	ret
-
-.FillQuadrant:
-	ld [hli], a
-	ld [hli], a
-	inc hl
-	inc hl
-	ld [hli], a
-	ld [hl], a
-	ret
 
 LawrenceIntroScript:
 	turnobject PLAYER, UP

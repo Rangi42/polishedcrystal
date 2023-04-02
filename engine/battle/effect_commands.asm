@@ -1174,7 +1174,8 @@ BattleCommand_critical:
 	ld hl, CriticalHitChances
 	ld b, 0
 	add hl, bc
-	call BattleRandom
+	ld a, 24
+	call BattleRandomRange
 	cp [hl]
 	ret nc
 .guranteed_crit
