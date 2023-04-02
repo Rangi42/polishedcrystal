@@ -243,10 +243,8 @@ ForceMapMusic:
 
 DecompressMetatiles:
 	call TilesetUnchanged
-	call nz, _DecompressMetatiles
-	ld a, MAPCALLBACK_BLOCKS
-	jmp RunMapCallback
-
+	ret z
+	; fallthrough
 _DecompressMetatiles:
 	assert wDecompressedMetatiles == WRAM1_Begin
 	ld hl, wTilesetBlocksAddress
