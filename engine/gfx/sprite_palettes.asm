@@ -22,6 +22,11 @@ CopySpritePal::
 	jr .got_pal
 
 .not_copy_bg
+	; skip darkness/overcast if USE_DAYTIME_PAL_F
+	ld a, [wNeededPalIndex]
+	bit USE_DAYTIME_PAL_F, a
+	jr nz, .not_overcast
+
 	; check darkness
 	push hl
 	push de
