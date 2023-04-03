@@ -90,6 +90,7 @@ _TimeOfDayPals::
 	ldh [rSVBK], a
 
 ; update palettes
+	farcall CheckForUsedObjPals
 	call _UpdateTimePals
 	call DelayFrame
 
