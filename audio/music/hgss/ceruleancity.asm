@@ -304,11 +304,9 @@ Music_CeruleanCityHGSS_Loop2:
 	note E_, 1
 	rest 3
 	duty_cycle_pattern 0, 0, 2, 2
-	duty_cycle 0
 	octave 4
 	note G#, 4
 	note E_, 4
-	duty_cycle 1
 	duty_cycle 1
 	octave 3
 	note D#, 1
@@ -318,11 +316,9 @@ Music_CeruleanCityHGSS_Loop2:
 	note F#, 1
 	rest 3
 	duty_cycle_pattern 0, 0, 2, 2
-	duty_cycle 0
 	octave 4
 	note B_, 4
 	note F#, 4
-	duty_cycle 1
 	duty_cycle 1
 	octave 3
 	note C#, 1
@@ -356,7 +352,6 @@ Music_CeruleanCityHGSS_Loop2:
 	note B_, 8
 	duty_cycle_pattern 0, 0, 2, 2
 	volume_envelope 12, 6
-	duty_cycle 2
 	octave 4
 	note E_, 8
 	octave 3
