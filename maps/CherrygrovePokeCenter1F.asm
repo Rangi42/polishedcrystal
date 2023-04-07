@@ -44,18 +44,18 @@ CherrygrovePokeCenter1FTeacherScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	text "The Communication"
-	line "Center upstairs"
-	cont "was just built."
+	text "The Cable Club"
+	line "upstairs was"
+	cont "just built."
 
 	para "But they're still"
 	line "finishing it up."
 	done
 
 .Text2:
-	text "The Communication"
-	line "Center upstairs"
-	cont "was just built."
+	text "The Cable Club"
+	line "upstairs was"
+	cont "just built."
 
 	para "I traded #mon"
 	line "there already!"
