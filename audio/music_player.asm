@@ -184,7 +184,7 @@ RenderMusicPlayer:
 	and a
 	jr nz, _RedrawMusicPlayer
 .bad_selection
-	ld a, MUSIC_MAIN_MENU
+	ld a, [wMapMusic]
 ; fallthrough
 
 _RedrawMusicPlayer:

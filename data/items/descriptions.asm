@@ -267,6 +267,7 @@ KeyItemDescriptions:
 	dw ApricornBoxDesc
 	dw WingCaseDesc
 	dw TypeChartDesc
+	dw GBCSoundsDesc
 	dw BlueCardDesc
 	dw SquirtBottleDesc
 	dw SilphScope2Desc
@@ -1616,6 +1617,11 @@ ClearBellDesc:
 GSBallDesc:
 	text "The mysterious"
 	next "Ball."
+	done
+
+GBCSoundsDesc:
+	text "A music player"
+	next "filled with songs."
 	done
 
 BlueCardDesc:

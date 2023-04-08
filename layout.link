@@ -248,9 +248,10 @@ WRAMX $1
 
 WRAMX $2
 	org $d000
-	"Pic Animations RAM"
+	"Music Player RAM"
 	align 8
 	"Sound Stack"
+	"Pic Animations RAM"
 
 WRAMX $3
 	org $d000
@@ -262,7 +263,7 @@ WRAMX $4
 
 WRAMX $5
 	org $d000
-	"Collisions or Music Player"
+	"Collisions"
 	org $d400
 	"Battle Animations RAM"
 	org $dd00

@@ -18,7 +18,7 @@ IcePath1F_MapScriptHeader:
 	object_event 28,  3, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBoarderStefan, -1
 	tmhmball_event 31,  7, HM_WATERFALL, EVENT_GOT_HM06_WATERFALL
 	itemball_event 32, 23, PP_UP, 1, EVENT_ICE_PATH_1F_PP_UP
-	itemball_event 35,  9, PROTEIN, 1, EVENT_ICE_PATH_1F_PROTEIN
+	itemball_event 35,  9, HEAT_ROCK, 1, EVENT_ICE_PATH_1F_HEAT_ROCK
 
 GenericTrainerSkierMaria:
 	generictrainer SKIER, MARIA, EVENT_BEAT_SKIER_MARIA, SkierMariaSeenText, SkierMariaBeatenText
