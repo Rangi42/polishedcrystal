@@ -48,57 +48,58 @@ MainMenu:
 	dw MainMenu_Options
 	dw MainMenu_MusicPlayer
 
-DEF CONTINUE       EQU 0
-DEF NEW_GAME       EQU 1
-DEF NEW_GAME_PLUS  EQU 2
-DEF OPTION         EQU 3
-DEF MUSIC_PLAYER   EQU 4
+	const_def
+	const MAINMENU_ITEM_CONTINUE      ; 0
+	const MAINMENU_ITEM_NEW_GAME      ; 1
+	const MAINMENU_ITEM_NEW_GAME_PLUS ; 2
+	const MAINMENU_ITEM_OPTION        ; 3
+	const MAINMENU_ITEM_MUSIC_PLAYER  ; 4
 
 MainMenuItems:
-; .NewGameMenu:
+; MAINMENU_MENU_NEW_GAME
 	db 3
-	db NEW_GAME
-	db OPTION
-	db MUSIC_PLAYER
+	db MAINMENU_ITEM_NEW_GAME
+	db MAINMENU_ITEM_OPTION
+	db MAINMENU_ITEM_MUSIC_PLAYER
 	db -1
-; .ContinueMenu:
+; MAINMENU_MENU_CONTINUE
 	db 4
-	db CONTINUE
-	db NEW_GAME
-	db OPTION
-	db MUSIC_PLAYER
+	db MAINMENU_ITEM_CONTINUE
+	db MAINMENU_ITEM_NEW_GAME
+	db MAINMENU_ITEM_OPTION
+	db MAINMENU_ITEM_MUSIC_PLAYER
 	db -1
-; .NewGamePlusMenu:
+; MAINMENU_MENU_NEW_GAME_PLUS
 	db 5
-	db CONTINUE
-	db NEW_GAME
-	db NEW_GAME_PLUS
-	db OPTION
-	db MUSIC_PLAYER
+	db MAINMENU_ITEM_CONTINUE
+	db MAINMENU_ITEM_NEW_GAME
+	db MAINMENU_ITEM_NEW_GAME_PLUS
+	db MAINMENU_ITEM_OPTION
+	db MAINMENU_ITEM_MUSIC_PLAYER
 	db -1
+
+	const_def
+	const MAINMENU_MENU_NEW_GAME      ; 0
+	const MAINMENU_MENU_CONTINUE      ; 1
+	const MAINMENU_MENU_NEW_GAME_PLUS ; 2
 
 MainMenu_GetWhichMenu:
 	ld a, [wSaveFileExists]
 	and a
-	jr nz, .next
-	xor a ; New Game
-	ret
+	ld a, MAINMENU_MENU_NEW_GAME
+	ret z
 
-.next
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
-	ld hl, sPlayerData + (wEventFlags + (EVENT_BEAT_LEAF >> 3)) - wPlayerData
-	ld de, wEventFlags + (EVENT_BEAT_LEAF >> 3)
-	ld a, [hl]
-	ld [de], a
-	call CloseSRAM
-	eventflagcheck EVENT_BEAT_LEAF
-	jr nz, .next2
-	ld a, $1 ; Continue
-	ret
 
-.next2
-	ld a, $2 ; New Game+
+	flagcheck sPlayerData - wPlayerData + wEventFlags, EVENT_BEAT_LEAF
+	ld a, MAINMENU_MENU_NEW_GAME_PLUS
+	jr nz, .done
+
+	assert MAINMENU_MENU_NEW_GAME_PLUS - 1 == MAINMENU_MENU_CONTINUE
+	dec a ; MAINMENU_MENU_CONTINUE
+.done
+	call CloseSRAM
 	ret
 
 MainMenuJoypadLoop:

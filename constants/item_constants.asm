@@ -636,32 +636,33 @@ DEF NUM_WINGS EQU const_value
 	const APRICORN_BOX ; 07
 	const WING_CASE    ; 08
 	const TYPE_CHART   ; 09
-	const BLUE_CARD    ; 0a
-	const SQUIRTBOTTLE ; 0b
-	const SILPHSCOPE2  ; 0c
-	const MYSTERY_EGG  ; 0d
-	const SECRETPOTION ; 0e
-	const GO_GOGGLES   ; 0f
-	const RED_SCALE    ; 10
-	const CARD_KEY     ; 11
-	const BASEMENT_KEY ; 12
-	const LOST_ITEM    ; 13
-	const MACHINE_PART ; 14
-	const RAINBOW_WING ; 15
-	const SILVER_WING  ; 16
-	const CLEAR_BELL   ; 17
-	const GS_BALL      ; 18
-	const S_S_TICKET   ; 19
-	const PASS         ; 1a
-	const ORANGETICKET ; 1b
-	const MYSTICTICKET ; 1c
-	const OLD_SEA_MAP  ; 1d
-	const HARSH_LURE   ; 1e
-	const POTENT_LURE  ; 1f
-	const MALIGN_LURE  ; 20
-	const SHINY_CHARM  ; 21
-	const OVAL_CHARM   ; 22
-	const CATCH_CHARM  ; 23
+	const GBC_SOUNDS   ; 0a
+	const BLUE_CARD    ; 0b
+	const SQUIRTBOTTLE ; 0c
+	const SILPHSCOPE2  ; 0d
+	const MYSTERY_EGG  ; 0e
+	const SECRETPOTION ; 0f
+	const GO_GOGGLES   ; 10
+	const RED_SCALE    ; 11
+	const CARD_KEY     ; 12
+	const BASEMENT_KEY ; 13
+	const LOST_ITEM    ; 14
+	const MACHINE_PART ; 15
+	const RAINBOW_WING ; 16
+	const SILVER_WING  ; 17
+	const CLEAR_BELL   ; 18
+	const GS_BALL      ; 19
+	const S_S_TICKET   ; 1a
+	const PASS         ; 1b
+	const ORANGETICKET ; 1c
+	const MYSTICTICKET ; 1d
+	const OLD_SEA_MAP  ; 1e
+	const HARSH_LURE   ; 1f
+	const POTENT_LURE  ; 20
+	const MALIGN_LURE  ; 21
+	const SHINY_CHARM  ; 22
+	const OVAL_CHARM   ; 23
+	const CATCH_CHARM  ; 24
 DEF NUM_KEY_ITEMS EQU const_value - 1
 
 ; Alphabetical order (see data/items/name_order.asm)
@@ -674,6 +675,7 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_CATCH_CHARM
 	const NAM_CLEAR_BELL
 	const NAM_COIN_CASE
+	const NAM_GBC_SOUNDS
 	const NAM_GO_GOGGLES
 	const NAM_GOOD_ROD
 	const NAM_GS_BALL

@@ -10,6 +10,7 @@ KeyItemNames::
 	li "Apricorn Box"
 	li "Wing Case"
 	li "Type Chart"
+	li "GBC Sounds"
 	li "Blue Card"
 	li "SquirtBottle"
 	li "SilphScope2"

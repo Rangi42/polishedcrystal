@@ -269,6 +269,7 @@ KeyItemIconPointers:
 	dba ApricornBoxIcon
 	dba WingCaseIcon
 	dba TypeChartIcon
+	dba GBCSoundsIcon
 	dba BlueCardIcon
 	dba SquirtBottleIcon
 	dba SilphScope2Icon

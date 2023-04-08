@@ -294,6 +294,8 @@ endr
 	; olivine events
 	setevent EVENT_RIVAL_OLIVINE_CITY
 	setmapscene OLIVINE_CITY, $1
+	; blackthorn events
+	setevent EVENT_BEAT_DRAGON_TAMER_DARIN
 	; vermilion events
 	setmapscene VERMILION_CITY, $1
 	closetext

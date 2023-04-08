@@ -993,8 +993,6 @@ wTMsHMsEnd::
 wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
 
-	ds 1 ; unused
-
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
 wItemsEnd::
@@ -1449,6 +1447,17 @@ wPokemonDataEnd::
 wGameDataEnd::
 
 
+SECTION "Sound Stack", WRAMX
+
+wSoundEngineBackup:: ds wChannelsEnd - wMusic
+wBackupMapMusic:: db
+
+
+SECTION "Music Player RAM", WRAMX
+
+wMPNotes:: ds 4 * 256
+
+
 SECTION "Pic Animations RAM", WRAMX
 
 wTempTileMap::
@@ -1496,11 +1505,6 @@ wPokeDB1UsedEntriesEnd::
 
 wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
 wPokeDB2UsedEntriesEnd::
-
-
-SECTION "Sound Stack", WRAMX
-
-wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
 SECTION UNION "Metatiles", WRAMX
@@ -1649,15 +1653,14 @@ wDexMonsEnd::
 wDexConversionTable:: ds NUM_SPECIES * 2
 
 
-SECTION "Collisions or Music Player", WRAMX
+SECTION UNION "Attributes", WRAMX
 
-UNION
+wDecompressedCreditsGFX:: ds (4 * 4 tiles) * 13
+
+
+SECTION "Collisions", WRAMX
+
 wDecompressedCollisions:: ds 256 * 4
-NEXTU
-wMPNotes:: ds 4 * 256
-NEXTU
-wDecompressedCreditsGFX:: ; ds (4 * 4 tiles) * 13 ; ds $d00
-ENDU
 
 
 SECTION "Game Version", WRAMX

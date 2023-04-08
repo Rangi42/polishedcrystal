@@ -10,8 +10,11 @@ SaveMusic::
 
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wSoundEngineBackup)
+	ld a, BANK("Sound Stack")
 	ldh [rSVBK], a
+
+	ld a, [wMapMusic]
+	ld [wBackupMapMusic], a
 
 	ld de, wSoundEngineBackup
 	ld a, [de]
@@ -39,8 +42,11 @@ RestoreMusic::
 
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wSoundEngineBackup)
+	ld a, BANK("Sound Stack")
 	ldh [rSVBK], a
+
+	ld a, [wBackupMapMusic]
+	ld [wMapMusic], a
 
 	ld hl, wSoundEngineBackup
 	ld a, [hl]
