@@ -291,6 +291,7 @@ KeyItemEffects:
 	dw ApricornBox        ; APRICORN_BOX
 	dw WingCase           ; WING_CASE
 	dw TypeChart          ; TYPE_CHART
+	dw GBCSounds          ; GBC_SOUNDS
 	dw BlueCard           ; BLUE_CARD
 	dw SquirtBottle       ; SQUIRTBOTTLE
 	dw IsntTheTimeMessage ; SILPHSCOPE2
@@ -2198,9 +2199,15 @@ PrintAprValues:
 	inc de
 	jmp PrintNum
 
+GBCSounds:
+	call FadeToMenu
+	farcall MusicPlayer
+	jr _FinishFullscreenItem
+
 TypeChart:
 	call FadeToMenu
 	farcall _TypeChart
+_FinishFullscreenItem:
 	call ExitMenu
 	xor a
 	ldh [hBGMapMode], a

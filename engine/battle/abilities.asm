@@ -229,6 +229,9 @@ WeatherAbility:
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
 	call GetOpponentAbility
+	inc a
+	jr z, .intimidate_ok
+	dec a
 	ld b, a
 	push af
 	farcall BufferAbility

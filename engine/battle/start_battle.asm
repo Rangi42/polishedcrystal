@@ -126,6 +126,8 @@ PlayBattleMusic:
 	call .getregionmusicfromarray
 
 .done
+	ld a, e
+	ld [wMapMusic], a
 	call PlayMusic
 
 	jmp PopBCDEHL
