@@ -316,7 +316,7 @@ ImposterAbility:
 
 	call DisableAnimations
 	; flags for the transform wave anim to not affect slideouts
-	farcall ShowPotentialAbilityActivation
+	call ShowPotentialAbilityActivation
 	farcall BattleCommand_transform
 	jmp EnableAnimations
 
@@ -569,7 +569,7 @@ SynchronizeAbility:
 	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	; 'potential' to not run the slideout twice
-	farcall ShowPotentialAbilityActivation
+	call ShowPotentialAbilityActivation
 	farcall ResetMiss
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -1993,6 +1993,9 @@ EnableAnimations:
 ShowEnemyAbilityActivation::
 	call StackCallOpponentTurn
 ShowAbilityActivation::
+; Unconditionally does slideout. Consider ShowPotentialAbilityActivation
+; if you need to avoid risking repeated slideouts, or for conditional cases
+; (it checks wAnimationsDisabled).
 	push hl
 	push de
 	push bc
@@ -2000,8 +2003,35 @@ ShowAbilityActivation::
 	call GetBattleVar
 	ld b, a
 	call PerformAbilityGFX
-
 	jmp PopBCDEHL
+
+ShowPotentialAbilityActivation:
+; This avoids duplicating checks to avoid text spam. This will run
+; ShowAbilityActivation if animations are disabled (something only abilities do)
+	ld a, [wAnimationsDisabled]
+	and a
+	ret z
+	push hl
+	ld h, a
+	ldh a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	and h
+	pop hl
+	ret nz
+	call ShowAbilityActivation
+	ldh a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	push hl
+	ld h, a
+	ld a, [wAnimationsDisabled]
+	or h
+	ld [wAnimationsDisabled], a
+	pop hl
+	ret
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)
