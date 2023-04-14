@@ -44,6 +44,6 @@ BattleCommand_bugbite:
 	call GetCurItemName
 	ld hl, BattleText_UserAteItem
 	call StdBattleTextbox
-	call ConsumeOpponentItem
+	call ConsumeStolenOpponentItem
 	ld hl, NothingHappenedText
 	jmp StdBattleTextbox

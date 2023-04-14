@@ -2866,38 +2866,38 @@ CheckSheerForceNegation:
 	or 1
 	ret
 
+ConsumeStolenOpponentItem::
+; Separate function, since used items/cud chew berry shouldn't (necessarily)
+; be updated when force-eating a berry via Bug Bite
+	call StackCallOpponentTurn
+.Function:
+	call GetConsumedItemVars
+	jr _ConsumeUserItem
+
 ConsumeOpponentItem::
 	call StackCallOpponentTurn
 ConsumeUserItem::
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wCurBattleMon]
-	ld de, wBattleMonItem
-	ld hl, wPartyMon1Item
-	jr z, .got_item_pointers
-	ld a, [wCurOTMon]
-	ld de, wEnemyMonItem
-	ld hl, wOTPartyMon1Item
-.got_item_pointers
-	call GetPartyLocation
-
+	call GetConsumedItemVars
 	; Air Balloons are consumed permanently, so don't write it to UsedItems
 	ld a, [de]
+	ld [wCurItem], a
 	cp AIR_BALLOON
-	jr z, .consume_item
+	jr z, _ConsumeUserItem
 	push hl
 	push af
 	call GetUsedItemAddr
 	pop af
 	ld [hl], a
 	pop hl
+	call SetCudChewBerry
 
-.consume_item
+_ConsumeUserItem::
 	xor a
 	ld [de], a
 
 	ld a, [hl]
 	ld d, a
+	ld [wCurItem], a
 	xor a
 	ld [hl], a
 	ldh a, [hBattleTurn]
@@ -2905,8 +2905,6 @@ ConsumeUserItem::
 	jr nz, .apply_unburden
 
 	; For players, maybe remove the backup item too if we're dealing with a berry
-	ld a, d
-	ld [wCurItem], a
 	push de
 	push bc
 	farcall CheckItemPocket
@@ -2934,6 +2932,37 @@ ConsumeUserItem::
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	set SUBSTATUS_UNBURDEN, [hl]
+	ret
+
+GetConsumedItemVars::
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wCurBattleMon]
+	ld de, wBattleMonItem
+	ld hl, wPartyMon1Item
+	jr z, .got_item_pointers
+	ld a, [wCurOTMon]
+	ld de, wEnemyMonItem
+	ld hl, wOTPartyMon1Item
+.got_item_pointers
+	jmp GetPartyLocation
+
+SetCudChewBerry::
+; Uses item in wCurItem to set user's cud chew Berry, if applicable
+	assert wPlayerCudChewBerry + 1 == wEnemyCudChewBerry
+	call GetTrueUserAbility
+	cp CUD_CHEW
+	ret nz
+	farcall CheckItemPocket
+	cp BERRIES
+	ret nz
+	push hl
+	ld a, BATTLE_VARS_CUD_CHEW_BERRY
+	call GetBattleVarAddr
+	ld a, [wCurItem]
+	sub FIRST_BERRY - 1
+	ld [hl], a
+	pop hl
 	ret
 
 BattleCommand_postfainteffects:
@@ -4045,6 +4074,9 @@ BattleCommand_damagecalc:
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
 	jr z, .no_flash_fire
+	call GetOpponentAbility
+	cp NEUTRALIZING_GAS
+	jr z, .no_flash_fire
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
@@ -4424,7 +4456,7 @@ TakeOpponentDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 .did_no_damage
 	jmp RefreshBattleHuds
 

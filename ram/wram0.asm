@@ -472,7 +472,6 @@ wEnemyEncoreCount:: db
 wEnemyPerishCount:: db
 wEnemyProtectCount:: db
 
-wCudChewCount:: db ; bit 0 = player timer, bit 1 = opponent timer
 wCriticalCount:: ds PARTY_LENGTH ; for g-Farfetch'd evolution
 wBattleSubStatusWRAMEnd::
 
@@ -505,6 +504,9 @@ wEnemySelectedMove:: db
 ; How much the Metronome item is boosted. (Counts even if you don't have the item.)
 wPlayerMetronomeCount:: db
 wEnemyMetronomeCount:: db
+
+wPlayerCudChewBerry:: db
+wEnemyCudChewBerry:: db
 
 wPartyParticipants:: ds PARTY_LENGTH
 
@@ -552,8 +554,6 @@ wCurEnemyMove:: db
 wLinkBattleRNCount:: db ; how far through the prng stream
 
 wEnemyItemState:: db
-
-	ds 1
 
 wCurEnemyMoveNum:: db
 
