@@ -2949,7 +2949,6 @@ GetConsumedItemVars::
 
 SetCudChewBerry::
 ; Uses item in wCurItem to set user's cud chew Berry, if applicable
-	assert wPlayerCudChewBerry + 1 == wEnemyCudChewBerry
 	call GetTrueUserAbility
 	cp CUD_CHEW
 	ret nz
