@@ -368,6 +368,13 @@ CheckItemParam:
 	ld [wItemAttributeParamBuffer], a
 	ret
 
+CheckItemHeldEffect:
+; Return the pocket for wCurItem in wItemAttributeParamBuffer.
+	ld a, ITEMATTR_EFFECT
+	call GetItemAttr
+	ld [wItemAttributeParamBuffer], a
+	ret
+
 GetItemAttr:
 ; Get attribute a of wCurItem.
 
@@ -376,11 +383,10 @@ GetItemAttr:
 
 	ld hl, ItemAttributes
 	ld c, a
-	ld b, 0
-	add hl, bc
-
 	xor a
+	ld b, a
 	ld [wItemAttributeParamBuffer], a
+	add hl, bc
 
 	ld a, [wCurItem]
 	dec a

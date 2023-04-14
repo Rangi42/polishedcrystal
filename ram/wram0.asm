@@ -505,6 +505,9 @@ wEnemySelectedMove:: db
 wPlayerMetronomeCount:: db
 wEnemyMetronomeCount:: db
 
+wPlayerCudChewBerry:: db
+wEnemyCudChewBerry:: db
+
 wPartyParticipants:: ds PARTY_LENGTH
 
 wDeferredSwitch:: db
@@ -551,8 +554,6 @@ wCurEnemyMove:: db
 wLinkBattleRNCount:: db ; how far through the prng stream
 
 wEnemyItemState:: db
-
-	ds 2
 
 wCurEnemyMoveNum:: db
 

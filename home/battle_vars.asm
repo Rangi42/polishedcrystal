@@ -68,6 +68,7 @@ BattleVarPairs:
 .LastCounterOpp: db ENEMY_COUNTER_MOVE,    PLAYER_COUNTER_MOVE
 .LastMove:       db PLAYER_LAST_MOVE,      ENEMY_LAST_MOVE
 .LastMoveOpp:    db ENEMY_LAST_MOVE,       PLAYER_LAST_MOVE
+.CudChewBerry:   db PLAYER_CUD_CHEW_BERRY, ENEMY_CUD_CHEW_BERRY
 	assert_table_length NUM_BATTLE_VARS
 
 BattleVarLocations:
@@ -88,4 +89,5 @@ BattleVarLocations:
 	dw wCurPlayerMove,                wCurEnemyMove
 	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
+	dw wPlayerCudChewBerry,           wEnemyCudChewBerry
 	assert_table_length NUM_BATTLE_VAR_LOCATION_PAIRS
