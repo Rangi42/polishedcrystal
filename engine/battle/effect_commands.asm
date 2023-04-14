@@ -5196,7 +5196,7 @@ DisplayStatusProblem:
 	ret z ; Nothing happened?
 
 	ld e, a
-	call ShowPotentialAbilityActivation
+	farcall ShowPotentialAbilityActivation
 	ld bc, 4
 	ld hl, StatusProblemTable - 4
 .loop
@@ -6513,34 +6513,6 @@ PlayUserBattleAnim:
 CallBattleCore:
 	ld a, BANK(BattleCore)
 	jmp FarCall_hl
-
-ShowPotentialAbilityActivation:
-; This avoids duplicating checks to avoid text spam. This will run
-; ShowAbilityActivation if animations are disabled (something only abilities do)
-	ld a, [wAnimationsDisabled]
-	and a
-	ret z
-	push hl
-	ld h, a
-	ldh a, [hBattleTurn]
-	inc a
-	rrca
-	rrca
-	and h
-	pop hl
-	ret nz
-	farcall ShowAbilityActivation
-	ldh a, [hBattleTurn]
-	inc a
-	rrca
-	rrca
-	push hl
-	ld h, a
-	ld a, [wAnimationsDisabled]
-	or h
-	ld [wAnimationsDisabled], a
-	pop hl
-	ret
 
 AnimateFailedMove:
 	ld a, [wAnimationsDisabled]
