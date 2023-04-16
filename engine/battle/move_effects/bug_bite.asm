@@ -40,7 +40,7 @@ BattleCommand_bugbite:
 	ld a, [hl]
 	and a
 	ret z
-	farcall ItemRecoveryAnim
+	farcall BerryRecoveryAnim
 	call GetCurItemName
 	ld hl, BattleText_UserAteItem
 	call StdBattleTextbox

@@ -290,7 +290,6 @@ endc
 	dw BattleAnim_PlayerDamage
 	dw BattleAnim_HitConfusion
 	dw BattleAnim_HeldItemTrigger
-	dw BattleAnim_EatBerry
 	assert_table_length NUM_BATTLE_ANIMS + 1
 
 BattleAnim_0:
@@ -1815,6 +1814,7 @@ BattleAnim_Recover_branch:
 	anim_ret
 
 BattleAnim_HeldItemTrigger:
+	anim_jumpif 1, .alternate
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_call BattleAnim_TargetObj_1Row
 	anim_sound 0, 0, SFX_FULL_HEAL
@@ -1824,7 +1824,7 @@ BattleAnim_HeldItemTrigger:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_EatBerry:
+.alternate
 	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_BERRY
 	anim_2gfx ANIM_GFX_BERRY, ANIM_GFX_BUBBLE
 	anim_sound 0, 0, SFX_SWITCH_POKEMON
