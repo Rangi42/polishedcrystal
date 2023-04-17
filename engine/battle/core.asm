@@ -1649,7 +1649,7 @@ LeppaRestorePP:
 
 .got_pp_to_restore
 	; d: PP to restore, bc: memory offset of move
-	call ItemRecoveryAnim
+	call CurItemRecoveryAnim
 	push bc
 	push de
 	ld hl, wTempMonMoves
@@ -3448,7 +3448,7 @@ _HeldStatBoostBerry:
 	pop hl
 	ret nz
 	farcall ShowPotentialAbilityActivation
-	call ItemRecoveryAnim
+	call CurItemRecoveryAnim
 	call GetCurItemName
 	ld hl, BattleText_ItemRaisedCrit
 	call StdBattleTextbox
@@ -3572,12 +3572,58 @@ _HeldHPHealingItem:
 	call GetQuarterMaxHP
 .got_hp_to_restore
 	farcall ShowPotentialAbilityActivation
-	call ItemRecoveryAnim
+	call CurItemRecoveryAnim
 	call RestoreHP
 	xor a
 	ret
 
+CurItemRecoveryAnim::
+	xor a
+	ld [wNumHits], a
+	ld a, [wCurItem]
+	push af
+	jr ItemRecoveryAnim_GotItem
 ItemRecoveryAnim::
+; Runs an appropriate item recovery anim based on item type.
+	xor a
+	ld [wNumHits], a
+	ld a, [wCurItem]
+	push af
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wBattleMonItem]
+	jr z, ItemRecoveryAnim_GotItem
+	ld a, [wEnemyMonItem]
+	; fallthrough
+ItemRecoveryAnim_GotItem::
+	and a
+	jr z, .got_item_type
+	ld [wCurItem], a
+	push hl
+	push bc
+	farcall CheckItemPocket
+	pop bc
+	pop hl
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	jr nz, .got_item_type
+	ld a, 1
+	ld [wNumHits], a
+.got_item_type
+	call _ItemRecoveryAnim
+	pop af
+	ld [wCurItem], a
+	ret
+
+BerryRecoveryAnim::
+	ld a, 1
+	ld [wNumHits], a
+	jr _ItemRecoveryAnim
+RegularRecoveryAnim::
+	xor a
+	ld [wNumHits], a
+	; fallthrough
+_ItemRecoveryAnim::
 	push hl
 	push de
 	push bc
@@ -3586,9 +3632,9 @@ ItemRecoveryAnim::
 	ld [wFXAnimIDLo], a
 	ld a, HIGH(ANIM_HELD_ITEM_TRIGGER)
 	ld [wFXAnimIDHi], a
+	predef PlayBattleAnim
 	xor a
 	ld [wNumHits], a
-	predef PlayBattleAnim
 	jmp PopBCDEHL
 
 ReconsumeHeldStatusHealingItem:
@@ -3612,7 +3658,7 @@ UseHeldStatusHealingItem:
 	predef GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
 	ret z
-	jr UseBattleItem
+	jmp UseBattleItem
 
 _HeldStatusHealingItem:
 	ld a, b
@@ -3652,7 +3698,7 @@ _HeldStatusHealingItem:
 	and a
 	ret z
 	farcall ShowPotentialAbilityActivation
-	call ItemRecoveryAnim
+	call CurItemRecoveryAnim
 	or 1
 	ret
 
@@ -3686,7 +3732,7 @@ _HeldConfusionHealingItem:
 	call DoHeldConfusionHealingItem
 	ret z
 	farcall ShowPotentialAbilityActivation
-	call ItemRecoveryAnim
+	call CurItemRecoveryAnim
 	or 1
 	ret
 

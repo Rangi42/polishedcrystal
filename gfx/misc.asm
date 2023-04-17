@@ -162,6 +162,7 @@ AnimObjWaveGFX::       INCBIN "gfx/battle_anims/wave.2bpp.lz"
 AnimObjAeroblastGFX::  INCBIN "gfx/battle_anims/aeroblast.2bpp.lz"
 AnimObjMiniGFX::       INCBIN "gfx/battle_anims/mini.2bpp.lz"
 AnimObjUTurnGFX::      INCBIN "gfx/battle_anims/uturn.2bpp.lz"
+AnimObjBerryGFX::      INCBIN "gfx/battle_anims/berry.2bpp.lz"
 AnimObjPokeBallBGGFX:: INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 

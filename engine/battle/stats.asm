@@ -261,7 +261,7 @@ UseStatItemText:
 	call GetStatName
 	farcall CheckAlreadyExecuted
 	jr nz, .item_anim_done
-	farcall ItemRecoveryAnim
+	farcall CurItemRecoveryAnim
 .item_anim_done
 	call GetCurItemName
 	ld a, [wChangedStat]
