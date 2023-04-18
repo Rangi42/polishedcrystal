@@ -381,9 +381,12 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
+	res 7, b
+	; fallthrough
+_ApplyWhiteTransparency:
+; Assumes the unused 16th color bit is unset.
 if !DEF(MONOCHROME)
 	res 2, b
-	res 7, b
 	ld a, c
 	and LOW(palred 30 + palgreen 30 + palblue 30)
 	srl b
