@@ -1329,24 +1329,25 @@ EndturnAbilityTableB:
 
 CudChewAbility:
 ; Berries are re-indexed from $01-$7f, with $01 being FIRST_BERRY
-; if bit 7 is set, run reconsumption routines, otherwise set bit 7
+; if bit 7 is clear, run reconsumption routines, otherwise clear bit 7
 	assert NUM_BERRIES < $7f
 	ld a, BATTLE_VARS_CUD_CHEW_BERRY
 	call GetBattleVarAddr
 	and a
 	ret z
 	rla
-	jr c, .eat_berry
+	jr nc, .eat_berry
 	ccf
 	rra
 	ld [hl], a
 	ret
 
 .eat_berry:
-	srl a
+	rra
 	add FIRST_BERRY - 1
 	ld [wCurItem], a
-	push hl
+	xor a
+	ld [hl], a
 	call DisableAnimations
 	farcall ReconsumeConfusionHealingItem
 	farcall ReconsumeHeldStatusHealingItem
@@ -1354,14 +1355,7 @@ CudChewAbility:
 	farcall ReconsumeStatBoostBerry ; also Lansat Berry
 	farcall ReconsumeDefendHitBerry
 	farcall ReconsumeLeppaBerry
-	call EnableAnimations
-	pop hl
-	ld a, [hl]
-	rla
-	ret nc
-	xor a
-	ld [hl], a
-	ret
+	jmp EnableAnimations
 
 HarvestAbility:
 ; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
