@@ -2959,7 +2959,7 @@ SetCudChewBerry::
 	ld a, BATTLE_VARS_CUD_CHEW_BERRY
 	call GetBattleVarAddr
 	ld a, [wCurItem]
-	sub FIRST_BERRY - 1
+	add $80 - FIRST_BERRY + 1 ; 1-index berries from $01-$7f, with bit 7 set as the timer
 	ld [hl], a
 	pop hl
 	ret

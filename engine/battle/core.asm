@@ -1603,7 +1603,6 @@ ReconsumeLeppaBerry:
 	call GetNonfullPPMove
 	ret z
 	push bc
-	farcall SetCudChewBerry
 	farcall ShowAbilityActivation
 	pop bc
 	jr LeppaRestorePP
@@ -3372,17 +3371,7 @@ ReconsumeDefendHitBerry:
 	cp HELD_DEFEND_HIT
 	ret nz
 	call ConvertDefendHitBerryToStatBoost
-	jr DoReconsumeStatBoostBerry
-
-ReconsumeStatBoostBerry:
-	farcall CheckItemParam
-	ld c, a
-	farcall CheckItemHeldEffect
-	ld b, a
-DoReconsumeStatBoostBerry:
-	call _HeldStatBoostBerry
-	ret nz
-	farjp SetCudChewBerry
+	jr _HeldStatBoostBerry
 
 StealDefendHitBerry:
 ; treat it as a stat boost berry
@@ -3432,6 +3421,11 @@ HandleStatBoostBerry:
 	ret nz
 	farjp ConsumeUserItem
 
+ReconsumeStatBoostBerry:
+	farcall CheckItemParam
+	ld c, a
+	farcall CheckItemHeldEffect
+	ld b, a
 _HeldStatBoostBerry:
 	ld a, b
 	ld b, c
@@ -3503,8 +3497,7 @@ ReconsumeBattleItem:
 	call RefreshBattleHuds
 	call GetCurItemName
 	ld hl, RecoveredUsingText
-	call StdBattleTextbox
-	farjp SetCudChewBerry
+	jmp StdBattleTextbox
 
 StealHPHealingItem:
 ; treat Enigma Berry as a HP-recovery berry
