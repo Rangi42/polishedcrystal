@@ -278,7 +278,8 @@ MagnetTunnelInsideMachineText3:
 	done
 
 MagnetTunnelInsideMachineText4:
-	text "Huh?!"
+	text "Huh?! Something's"
+	line "wrong!"
 	done
 
 MagnetTunnelInsideMachineText5:
