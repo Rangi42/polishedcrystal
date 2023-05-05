@@ -186,6 +186,7 @@ DoWonderTrade:
 	predef RemoveMonFromParty
 
 	call GetWonderTradeOTForm
+	ld a, d
 	ld [wCurForm], a
 	ld [wOTTrademonForm], a
 	predef TryAddMonToParty
@@ -514,12 +515,13 @@ INCLUDE "data/events/wonder_trade/ot_names.asm"
 
 GetWonderTradeOTForm:
 ; pick randomly from [1, N] for [wOTTrademonSpecies], or default to 1
+; returns result in d
 	ld a, [wOTTrademonSpecies]
 	ld c, a
 	ld a, [wOTTrademonForm]
 	and EXTSPECIES_MASK
 	ld b, a
-	lb de, PLAIN_FORM, 1
+	lb de, PLAIN_FORM, 1 ; d = form to return, e = running count of eligible variants found
 	or d
 	ld d, a
 	ld hl, CosmeticSpeciesAndFormTable - 1
@@ -527,11 +529,10 @@ GetWonderTradeOTForm:
 	inc hl
 	ld a, [hli] ; species
 	and a
-	ld a, d
 	ret z
 	cp c
-	ld a, [hl] ; extspecies + form
 	jr nz, .loop
+	ld a, [hl] ; extspecies + form
 	and EXTSPECIES_MASK
 	cp b
 	jr nz, .loop
