@@ -361,9 +361,9 @@ ConvertMonIndexesTo9Bit:
 	getfilebyte #1
 	writebyte #zero
 	jumpz #1, .unown_loop_skip
-	add #1, 0x11d ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
+	add #1, 0x121 ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
 	pushpos
-	ifgt #1, 0x11e, .unown_loop_cont
+	ifgt #1, 0x122, .unown_loop_cont
 	set #1, 0xc5 ; special case for form A, since it is not a variant
 	seek #3 ; unown form A gets set in seen array as well, just easier this way
 	push #1
@@ -395,14 +395,14 @@ ConvertMonIndexesTo9Bit:
 ; modify pokedex flags
 ; caught
 	seek #4
-	set #1, 384
+	set #1, 393
 	set #2, #r0
 	call ShiftFlags
 	call .ClearNewIndexes
 
 ;seen
 	seekfwd 50
-	set #1, 384
+	set #1, 393
 	set #2, #r0
 	call ShiftFlags
 	call .ClearNewIndexes
@@ -542,7 +542,7 @@ ConvertMonIndexesTo9Bit:
 	subtract #5, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
 	shiftright #5, 1
 	ifeq #temp, #2, .set_pokedex
-	iflt #5, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (i.e. cosmetic), loop for matching form
+	iflt #5, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (e.g. cosmetic), loop for matching form
 
 	increment #temp
 	writebyte #temp
@@ -550,7 +550,7 @@ ConvertMonIndexesTo9Bit:
 	set #1, POKEDEX_CAUGHT_OFFSET
 	call GetGameDataPointer
 	seek #result
-	add #1, #5, 0x139 ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
+	add #1, #5, 0x13d ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
 	set #2, 1
 	push #1
 	call FlagAction
