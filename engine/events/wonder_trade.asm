@@ -21,6 +21,19 @@ WonderTrade::
 	ld a, EGG
 	ld [wCurPartySpecies], a
 .not_egg
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	cp LOW(PICHU)
+	jr nz, .not_spiky_eared_pichu
+	assert MON_FORM == MON_EXTSPECIES
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	cp HIGH(PICHU) << MON_EXTSPECIES_F | PICHU_SPIKY_EARED_FORM
+	ld hl, .Text_WonderTradeCantTradeSpikyEaredPichu
+	jmp z, PrintText
+.not_spiky_eared_pichu
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -50,6 +63,10 @@ WonderTrade::
 
 .Text_WonderTradePrompt:
 	text_far WonderTradePromptText
+	text_end
+
+.Text_WonderTradeCantTradeSpikyEaredPichu
+	text_far WonderTradeCantTradeSpikyEaredPichuText
 	text_end
 
 ;.Text_WonderTradeCantTradeEgg:

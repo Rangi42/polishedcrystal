@@ -468,7 +468,7 @@ _UpdateMewtwoForm:
 	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
-	lb bc, MEWTWO_ARMORED_FORM, MEWTWO
+	lp bc, MEWTWO, MEWTWO_ARMORED_FORM
 	jr z, .got_form
 	assert MEWTWO_ARMORED_FORM - 1 == PLAIN_FORM
 	dec a

@@ -750,12 +750,17 @@ DayCare_GenerateEgg:
 	ld [wTempMonSpecies], a
 	ld c, a
 
-	; Form inheritance: from the mother or non-Ditto. If both
-	; parents share species, pick at random.
+	; Form inheritance: from the mother or non-Ditto.
+	; Should only happen if stored pre-evo form is NO_FORM.
+	; If both parents share species, pick at random.
 	; Must assign [wCurForm] before GetBaseData.
 	ld hl, wBreedMon1Form
 	call .inherit_mother_unless_samespecies ; this should preserve c!
 	ld a, [wCurForm]
+	ld b, a
+	and FORM_MASK
+	jr nz, .form_ok
+	ld a, b
 	and EXTSPECIES_MASK ; get extspecies of child
 	ld b, a
 	ld a, [hl]
@@ -1064,6 +1069,14 @@ DayCare_GenerateEgg:
 	ld a, [wBreedMon1Species]
 	ld b, a
 	ld a, [wBreedMon2Species]
+	cp b
+	ld a, [wBreedMotherOrNonDitto]
+	jr nz, .use_mother
+	ld a, [wBreedMon1ExtSpecies]
+	and EXTSPECIES_MASK
+	ld b, a
+	ld a, [wBreedMon2ExtSpecies]
+	and EXTSPECIES_MASK
 	cp b
 	ld a, [wBreedMotherOrNonDitto]
 	jr nz, .use_mother

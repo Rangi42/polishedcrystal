@@ -361,9 +361,9 @@ ConvertMonIndexesTo9Bit:
 	getfilebyte #1
 	writebyte #zero
 	jumpz #1, .unown_loop_skip
-	add #1, 0x11d ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
+	add #1, 0x121 ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
 	pushpos
-	ifgt #1, 0x11e, .unown_loop_cont
+	ifgt #1, 0x122, .unown_loop_cont
 	set #1, 0xc5 ; special case for form A, since it is not a variant
 	seek #3 ; unown form A gets set in seen array as well, just easier this way
 	push #1
@@ -395,14 +395,14 @@ ConvertMonIndexesTo9Bit:
 ; modify pokedex flags
 ; caught
 	seek #4
-	set #1, 384
+	set #1, 393
 	set #2, #r0
 	call ShiftFlags
 	call .ClearNewIndexes
 
 ;seen
 	seekfwd 50
-	set #1, 384
+	set #1, 393
 	set #2, #r0
 	call ShiftFlags
 	call .ClearNewIndexes
@@ -542,7 +542,7 @@ ConvertMonIndexesTo9Bit:
 	subtract #5, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
 	shiftright #5, 1
 	ifeq #temp, #2, .set_pokedex
-	iflt #5, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (i.e. cosmetic), loop for matching form
+	iflt #5, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (e.g. cosmetic), loop for matching form
 
 	increment #temp
 	writebyte #temp
@@ -550,7 +550,7 @@ ConvertMonIndexesTo9Bit:
 	set #1, POKEDEX_CAUGHT_OFFSET
 	call GetGameDataPointer
 	seek #result
-	add #1, #5, 0x139 ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
+	add #1, #5, 0x13d ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
 	set #2, 1
 	push #1
 	call FlagAction
@@ -876,28 +876,28 @@ RevertKeyItemsToIndexList:
 	; new index (list index == key item index - 5)
 	db 6
 	db 5
-	db 13
-	db 11
 	db 14
-	db 16
+	db 12
+	db 15
 	db 17
 	db 18
-	db 25
-	db 26
-	db 20
 	db 19
+	db 26
+	db 27
 	db 21
+	db 20
 	db 22
 	db 23
 	db 24
-	db 10
-	db 27
+	db 25
+	db 11
 	db 28
 	db 29
-	db 33
+	db 30
 	db 34
 	db 35
-	db 12
+	db 36
+	db 13
 	db 7
 	db 9
 
@@ -917,25 +917,25 @@ AdjustItemIndexesToBuild8:
 	db 0x4c, 32   ; ABILITY_CAP
 	db 0x50, 33   ; THUNDERSTONE
 	db 0x53, 34   ; DUSK_STONE
-	db 0x54, 139  ; OVAL_STONE (originally Dawn Stone)
+	db 0x54, 138  ; OVAL_STONE (originally Dawn Stone)
 	db 0x55, 33   ; SHINY_STONE
 	db 0x56, 28   ; ICE_STONE
 	db 0x58, 32   ; EXP_SHARE
 	db 0x77, -27  ; BERRY_JUICE
 	db 0x89, 1    ; PINK_BOW
 	db 0x8a, 2    ; BRIGHTPOWDER
-	db 0x8b, 53   ; SCOPE_LENS
+	db 0x8b, 52   ; SCOPE_LENS
 	db 0x8d, 1    ; KINGS_ROCK
 	db 0x8e, 4    ; FOCUS_BAND
 	db 0x8f, 5    ; LEFTOVERS
 	db 0x90, 3    ; LUCKY_EGG
 	db 0x93, -2   ; SMOKE_BALL
 	db 0x94, -9   ; BERSERK_GENE
-	db 0x9b, 36   ; ARMOR_SUIT
+	db 0x9b, 35   ; ARMOR_SUIT
 	db 0x9c, 10   ; AIR_BALLOON
-	db 0x9d, 17   ; ASSAULT_VEST
+	db 0x9d, 14   ; ASSAULT_VEST
 	db 0x9e, 5    ; BIG_ROOT
-	db 0x9f, 10   ; BINDING_BAND
+	db 0x9f, 9    ; BINDING_BAND
 	db 0xa0, 0    ; DESTINY_KNOT
 	db 0xa1, 3    ; EVIOLITE
 	db 0xa2, -9   ; EXPERT_BELT
@@ -945,31 +945,31 @@ AdjustItemIndexesToBuild8:
 	db 0xa6, -12  ; LIGHT_CLAY
 	db 0xa7, -10  ; METRONOME
 	db 0xa8, -17  ; MUSCLE_BAND
-	db 0xa9, 9    ; PROTECT_PADS
+	db 0xa9, 4    ; PROTECT_PADS
 	db 0xaa, -5   ; ROCKY_HELMET
-	db 0xab, 6    ; SAFE_GOGGLES
+	db 0xab, 1    ; SAFE_GOGGLES
 	db 0xac, -10  ; SHED_SHELL
 	db 0xad, -23  ; SHELL_BELL
 	db 0xae, -25  ; SOOTHE_BELL
-	db 0xaf, -2   ; WEAK_POLICY
-	db 0xb0, 17   ; WIDE_LENS
+	db 0xaf, -5   ; WEAK_POLICY
+	db 0xb0, 16   ; WIDE_LENS
 	db 0xb1, -25  ; WISE_GLASSES
-	db 0xb2, 16   ; ZOOM_LENS
-	db 0xb3, -7   ; EJECT_BUTTON
+	db 0xb2, 15   ; ZOOM_LENS
+	db 0xb3, -10  ; EJECT_BUTTON
 	db 0xb4, -21  ; LAGGING_TAIL
 	db 0xb5, -23  ; IRON_BALL
-	db 0xb6, -14  ; RING_TARGET
+	db 0xb6, 42   ; RING_TARGET -> LINKING_CORD
 	db 0xb7, -16  ; RED_CARD
-	db 0xb9, -14  ; CELL_BATTERY
-	db 0xbb, -11  ; SNOWBALL
-	db 0xbc, -8   ; EJECT_PACK
-	db 0xbd, -6   ; ROOM_SERVICE
-	db 0xbe, -8   ; BLUNDRPOLICY
-	db 0xbf, -12  ; THROAT_SPRAY
-	db 0xc0, -11  ; HEAVY_BOOTS
-	db 0xc1, -9   ; UTILUMBRELLA
-	db 0xdd, 1    ; RAZOR_CLAW
-	db 0xde, 2    ; ODD_SOUVENIR
+	db 0xb9, -14  ; CELL_BATTERY -> MIRROR_HERB
+	db 0xbb, -5   ; SNOWBALL -> COVERT_CLOAK
+	db 0xbc, -13  ; EJECT_PACK
+	db 0xbd, -11  ; ROOM_SERVICE
+	db 0xbe, -13  ; BLUNDRPOLICY
+	db 0xbf, -17  ; THROAT_SPRAY
+	db 0xc0, -16  ; HEAVY_BOOTS
+	db 0xc1, -10  ; UTILUMBRELLA -> LOADED_DICE
+	db 0xdd, 0    ; RAZOR_CLAW
+	db 0xde, 1    ; ODD_SOUVENIR
 	db 0xea, 6    ; RARE_BONE
 	db 0xec, -10  ; GOLD_LEAF
 	db 0xed, 4    ; SLOWPOKETAIL
