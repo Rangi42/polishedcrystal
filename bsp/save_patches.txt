@@ -315,6 +315,28 @@ ConvertSaveFileTo9Bit:
 	getfilebyte #1
 	increment #1 ; set flag 1
 	writebyte #1
+
+	; expand object structs to accommodate dynamic palettes
+	set #1, OBJECT_STRUCTS_END_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 10
+	set #2, 13
+.shift_loop
+	pushpos
+	call ShiftSaveDataForward
+	poppos
+	set #1, 27 ; OBJECT_PAL_INDEX - OBJECT_PALETTE
+	seekback #1
+	getfilebyte #temp
+	and #temp, 0x0f ; we just want the lower nybble
+	seekfwd #1
+	writebyte #temp
+	set #1, 33 ; OBJECT_LENGTH
+	seekback #1
+	pos #3
+	decrement #2
+	jumpnz #2, .shift_loop
 	return
 
 
