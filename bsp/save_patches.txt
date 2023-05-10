@@ -302,7 +302,7 @@ ConvertSaveFileTo9Bit:
 	increment #1
 .next2
 	writebyte #1
-	add #1, 0x20
+	seekfwd 0x20
 	decrement #length
 	jumpnz #length, .loop
 
@@ -320,6 +320,7 @@ ConvertSaveFileTo9Bit:
 	set #1, OBJECT_STRUCTS_END_v7
 	call GetGameDataPointer
 	set #3, #result
+	seek #3
 	set #1, 10
 	set #2, 13
 .shift_loop
@@ -332,13 +333,12 @@ ConvertSaveFileTo9Bit:
 	and #temp, 0x0f ; we just want the lower nybble
 	seekfwd #1
 	writebyte #temp
-	set #1, 33 ; OBJECT_LENGTH
+	set #1, 34 ; OBJECT_LENGTH + 1
 	seekback #1
 	pos #3
 	decrement #2
 	jumpnz #2, .shift_loop
 	return
-
 
 ConvertMonIndexesTo9Bit:
 	set #r0, .mon_indexes
@@ -671,6 +671,7 @@ ConvertMonIndexesTo9Bit:
 	db 0x81, 20 ; MAGIKARP, RAINDROP
 	db 0x82, 21 ; GYARADOS, RED
 	db 0x96, 2 ; MEWTWO, ARMORED
+	db 0x96, 2 ; this is actually Dudunsparce, here just to preserve flag order
 	db 0x13, 2 ; RATTATA, ALOLAN
 	db 0x14, 2 ; RATICATE, ALOLAN
 	db 0x1a, 2 ; RAICHU, ALOLAN
@@ -825,6 +826,14 @@ ShiftHiddenGrottoContents:
 	set #2, 25
 	call ShiftSaveDataForward
 
+; Shift some memory past phone list back
+	set #1, SAFARI_BALLS_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #1, 15 ; wSafariBallsLeft - > wVisitedSpawns+0003
+	set #2, 1
+	call ShiftSaveDataBack
+
 ; Shift data up to and including grotto list
 	set #1, CELEBI_EVENT_OFFSET_v7
 	call GetGameDataPointer
@@ -835,6 +844,17 @@ ShiftHiddenGrottoContents:
 
 	seek #result
 	writehalfword #zero
+
+; Shift data forward to accommodate a 5th berry tree flags byte
+	set #1, NUZLOCKE_LANDMARK_FLAGS_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 12
+	set #2, 1
+	call ShiftSaveDataForward
+
+	seek #result
+	writebyte #zero
 
 ; Reset all grotto entries (just easier to manage than worrying about species data)
 	set #1, HIDDEN_GROTTO_OFFSET
@@ -1164,12 +1184,12 @@ ShiftEventFlagsForPiers:
 	dh 0
 
 RearrangeDataForChecksumPadding:
-	set #1, DECO_BED_OFFSET_v7
+	set #1, DECO_BED_OFFSET
 	call GetGameDataPointer
 	seek #result
 
 	set #1, 45
-	set #2, -1
+	set #2, 1
 	call ShiftSaveDataBack
 	writebyte #zero
 	return
@@ -1180,7 +1200,7 @@ AddSnowtopMountainLandmark:
 	call GetGameDataPointer
 	seek #result
 
-	set #1, 0x90
+	set #1, 0x91
 	set #2, .flag_adjust_table
 	call ShiftFlags
 
@@ -1224,10 +1244,10 @@ SetPlayerCaughtData:
 .loop
 	getbyteinc #1, #r0
 	retz #1
-	shiftleft #2, 1 ; #2 > 2 = check flag without modifying it
+	shiftleft #2, 2 ; #2 > 2 = check flag without modifying it
 	seek #3
 	call FlagAction
-	shiftright #2, 1
+	shiftright #2, 2
 	jumpz #1, .loop
 	seek #4
 	set #1, #5
@@ -1236,7 +1256,7 @@ SetPlayerCaughtData:
 	jump .loop
 
 .legendary_mon
-; these all have two bit indices so db can be used
+; these all have one byte indices so db can be used
 ; (actually mon index - 1 since dex flags are 0-indexed)
 	db 249 ; HO-OH
 	db 248 ; LUGIA
