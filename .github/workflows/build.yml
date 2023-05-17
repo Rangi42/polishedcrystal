@@ -1,0 +1,207 @@
+# Continuous Integration Workflow
+name: "CI Build"
+
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_call:
+
+env:
+  RGBDS_VERSION: "v0.5.2"
+
+jobs:
+  build-ubuntu:
+    name: "Build"
+    runs-on: ubuntu-latest
+    steps:
+      # SET ENVIRONMENT VARIABLES
+      - id: set-env-var
+        name: "Set environment variables"
+        run: |
+          echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+
+      # INSTALL DEPENDENCIES
+      - id: apt-get-depends
+        name: "Install build dependencies"
+        run: |
+          sudo apt-get update
+          sudo apt-get install bison gcc git make python2 -y;
+          
+      # CHECKOUT RGBDS
+      - id: checkout-rgbds
+        name: "Checkout gbdev/rgbds"
+        uses: actions/checkout@v3
+        with:
+          path: rgbds
+          ref: ${{ env.RGBDS_VERSION }}
+          repository: gbdev/rgbds
+      
+      # INSTALL RGBDS
+      - id: install-rgbds
+        name: "Install gbdev/rgbds"
+        working-directory: rgbds
+        run: |
+          sudo make install
+      
+      # CHECKOUT REPOSITORY
+      - id: checkout-polishedcrystal
+        name: "Checkout Rangi42/polishedcrystal"
+        uses: actions/checkout@v3
+      
+      # BUILD ROMS
+      - id: build-polishedcrystal
+        name: "Build polishedcrystal"
+        run: |
+          make -j$(nproc)
+          mkdir build
+          mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      - id: build-polishedcrystal-faithful
+        name: "Build polishedcrystal-faithful"
+        run: |
+          make -j$(nproc) faithful
+          mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      - id: build-polishedcrystal-nortc
+        name: "Build polishedcrystal-nortc"
+        run: |
+          make -j$(nproc) nortc
+          mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      - id: build-polishedcrystal-faithful-nortc
+        name: "Build polishedcrystal-faithful-nortc"
+        run: |
+          make -j$(nproc) faithful nortc
+          mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      # BUILD DEBUG ROMS
+      - id: build-polisheddebug
+        name: "Build polisheddebug"
+        run: |
+          make -j$(nproc) debug
+          mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      - id: build-polisheddebug-faithful
+        name: "Build polisheddebug-faithful"
+        run: |
+          make -j$(nproc) faithful debug
+          mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      - id: build-polisheddebug-nortc
+        name: "Build polisheddebug-nortc"
+        run: |
+          make -j$(nproc) nortc debug
+          mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      - id: build-polisheddebug-faithful-nortc
+        name: "Build polisheddebug-faithful-nortc"
+        run: |
+          make -j$(nproc) faithful nortc debug
+          mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      # BUILD SAVE PATCH
+      - id: build-polishedcrystal-bsp
+        name: "Build polishedcrystal-savepatch"
+        run: |
+          make -j$(nproc) bsp
+          mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+          make tidy
+          
+      # UPLOAD ARTIFACTS
+      - id: upload-polishedcrystal
+        name: "Upload polishedcrystal artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polishedcrystal"
+          retention-days: 1
+          path: |
+            build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polishedcrystal-faithful
+        name: "Upload polishedcrystal-faithful artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polishedcrystal-faithful"
+          retention-days: 1
+          path: |
+            build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.*
+      
+      - id: upload-polishedcrystal-nortc
+        name: "Upload polishedcrystal-nortc artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polishedcrystal-nortc"
+          retention-days: 1
+          path: |
+            build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polishedcrystal-faithful-nortc
+        name: "Upload polishedcrystal-faithful-nortc artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polishedcrystal-faithful-nortc"
+          retention-days: 1
+          path: |
+            build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polisheddebug
+        name: "Upload polisheddebug artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polisheddebug"
+          retention-days: 1
+          path: |
+            build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polisheddebug-faithful
+        name: "Upload polisheddebug-faithful artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polisheddebug-faithful"
+          retention-days: 1
+          path: |
+            build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polisheddebug-nortc
+        name: "Upload polisheddebug-nortc artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polisheddebug-nortc"
+          retention-days: 1
+          path: |
+            build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polisheddebug-faithful-nortc
+        name: "Upload polisheddebug-faithful-nortc artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polisheddebug-faithful-nortc"
+          retention-days: 1
+          path: |
+            build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.*
+
+      - id: upload-polishedcrystal-savepatch
+        name: "Upload polishedcrystal savepatch"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "polishedcrystal-savepatch"
+          retention-days: 1
+          path: |
+            build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.*
