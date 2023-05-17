@@ -1,0 +1,218 @@
+# Nightly Build & Pre-release
+name: "Nightly"
+
+on:
+  push:
+    branches:
+      - master
+#  schedule:
+#    - cron: '0 5 * * *'
+
+env:
+  NIGHTLY_TAG: "v3.0.0-beta"
+  NIGHTLY_NAME: "3.0.0-beta"
+  NIGHTLY_BODY: |
+    This is the current Polished Crystal 3.0.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
+
+    The **.gbc** assets are ROMs. If you just want to play the game, download one (regular or `-faithful`) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator. (***Do not use VBA*** or VBA-M.) If your emulator or flashcart has issues with supporting a real time clock (or you desire it disabled for any other reason), download your preferred version with the `-nortc` flag.
+
+    The **.sym** assets are "symbol files". They're useful for debugging, or for [discovering cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes), although cheats are *not* officially supported and may cause bugs or crashes. (Do ***not*** ask the developers for cheat codes.)
+
+    The **.bsp** asset is a [BSP](https://github.com/aaaaaa123456789/bsp) save file patch in case you need to upgrade a save file from an older 3.0.0 beta build, using a patcher like the one for [Pokémon Prism](http://pokemonprism.com/patcher.html).
+
+    The **polisheddebug** assets are ROMs and symbol files with extra features to help debug the game. Do ***not*** download these to just play with; use them to help the developers diagnose and fix bugs, or create new features.
+
+jobs:
+  build:
+    name: "Nightly"
+    uses: Rangi42/polishedcrystal/.github/workflows/build.yml@master
+  release:
+    name: "Nightly / Release"
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # SET ENVIRONMENT VARIABLES
+      - id: set-env-var
+        name: "Set environment variables"
+        run: |
+          echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+
+      # INSTALL DEPENDENCIES
+      - id: apt-get-depends
+        name: "Install dependencies"
+        run: |
+          sudo apt-get update
+          sudo apt-get install bison gcc git make python2 -y;
+      
+      # CHECKOUT REPOSITORY
+      - id: checkout-polishedcrystal
+        name: "Checkout Rangi42/polishedcrystal"
+        uses: actions/checkout@v3
+          
+      # DOWNLOAD ALL BUILD ARTIFACTS
+      - id: download-polishedcrystal
+        name: "Download polishedcrystal"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polishedcrystal"
+          path: "./build"
+      - id: download-polishedcrystal-faithful
+        name: "Download polishedcrystal-faithful"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polishedcrystal-faithful"
+          path: "./build"
+      - id: download-polishedcrystal-nortc
+        name: "Download polishedcrystal-nortc"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polishedcrystal-nortc"
+          path: "./build"
+      - id: download-polishedcrystal-faithful-nortc
+        name: "Download polishedcrystal-faithful-nortc"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polishedcrystal-faithful-nortc"
+          path: "./build"
+      - id: download-polisheddebug
+        name: "Download polisheddebug"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polisheddebug"
+          path: "./build"
+      - id: download-polisheddebug-faithful
+        name: "Download polisheddebug-faithful"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polisheddebug-faithful"
+          path: "./build"
+      - id: download-polisheddebug-nortc
+        name: "Download polisheddebug-nortc"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polisheddebug-nortc"
+          path: "./build"
+      - id: download-polisheddebug-faithful-nortc
+        name: "Download polisheddebug-faithful-nortc"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polisheddebug-faithful-nortc"
+          path: "./build"
+      - id: download-polishedcrystal-savepatch
+        name: "Download polishedcrystal-savepatch"
+        uses: actions/download-artifact@v3
+        with:
+          name: "polishedcrystal-savepatch"
+          path: "./build"
+      
+      # DELETE OLD RELEASE
+      - name: Delete old release
+        id: delete_release
+        uses: cb80/delrel@latest
+        with:
+          tag: ${{ env.NIGHTLY_TAG }}
+          
+      # ADVANCE NIGHTLY TAG TO MASTER
+      - name: Advance nightly tag to master
+        run: |
+          git tag ${{ env.NIGHTLY_TAG }} -f
+          git push --tags -f "https://Rangi42:$GITHUB_TOKEN@github.com/Rangi42/polishedcrystal.git"
+
+      # CREATE NEW RELEASE
+      - name: Create new release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          name: ${{ env.NIGHTLY_NAME }}
+          body: ${{ env.NIGHTLY_BODY }}
+          draft: false
+          prerelease: true
+          
+      # UPLOAD POLISHED CRYSTAL ASSETS
+      - name: Upload ROM and SYM
+        id: upload
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          
+      # UPLOAD FAITHFUL ASSETS
+      - name: Upload faithful ROM and SYM
+        id: upload-faithful
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+
+      # UPLOAD NORTC ASSETS
+      - name: Upload nortc ROM and SYM
+        id: upload-nortc
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          
+      # UPLOAD FAITHFUL NORTC ASSETS
+      - name: Upload faithful nortc ROM and SYM
+        id: upload-faithful-nortc
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          
+      # UPLOAD DEBUG ASSETS
+      - name: Upload debug ROM and SYM
+        id: upload-debug
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          
+      # UPLOAD FAITHFUL DEBUG ASSETS
+      - name: Upload faithful debug ROM and SYM
+        id: upload-faithful-debug
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+
+      # UPLOAD NORTC DEBUG ASSETS
+      - name: Upload nortc debug ROM and SYM
+        id: upload-debug-nortc
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          
+      # UPLOAD FAITHFUL NORTC DEBUG ASSETS
+      - name: Upload faithful nortc debug ROM and SYM
+        id: upload-faithful-nortc-debug
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: |
+            ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          
+      # UPLOAD SAVE PATCH
+      - name: Upload BSP
+        id: upload-bsp
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          files: ./build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
