@@ -41,6 +41,7 @@ jobs:
       - id: apt-get-depends
         name: "Install dependencies"
         run: |
+          sudo apt-get update
           sudo apt-get install bison gcc git make python2 -y;
       
       # CHECKOUT REPOSITORY
@@ -185,8 +186,8 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD NORTC DEBUG ASSETS
       - name: Upload nortc debug ROM and SYM
@@ -195,8 +196,8 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+            ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD FAITHFUL NORTC DEBUG ASSETS
       - name: Upload faithful nortc debug ROM and SYM
@@ -205,8 +206,8 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+            ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD SAVE PATCH
       - name: Upload BSP
@@ -214,4 +215,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
-          files: polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+          files: ./build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp

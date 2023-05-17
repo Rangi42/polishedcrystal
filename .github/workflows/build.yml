@@ -46,7 +46,7 @@ jobs:
       
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
-        name: "Checkout itsdarsh/polishedcrystal"
+        name: "Checkout Rangi42/polishedcrystal"
         uses: actions/checkout@v3
       
       # BUILD ROMS
