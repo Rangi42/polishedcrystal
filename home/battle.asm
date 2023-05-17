@@ -81,15 +81,41 @@ ResetDamage::
 	ret
 
 StackCallOpponentTurn::
-	ldh [hFarCallSavedA], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
+; Falls through to SwitchTurn after inserting SwitchTurn in the call stack,
+; so the subsequent function pointer is "wrapped" by SwitchTurns.
+
+	add sp, -2 ; push space for a tail call to SwitchTurn
+	push de
+	push hl
+
+; Stack layout:
+; +8 return address
+; +6 function pointer
+; +4 nothing
+; +2 saved de
+; +0 saved hl
+
+	ld hl, sp + 7
+	ld d, [hl]
+	ld [hl], HIGH(SwitchTurn)
+	dec hl ; no-optimize *hl++|*hl-- = N preserving a
+	ld e, [hl]
+	ld [hl], LOW(SwitchTurn)
+	dec hl ; no-optimize *hl++|*hl-- = N
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
+	dec hl
+	ld [hl], e
+
+; Stack layout:
+; +8 return address
+; +6 SwitchTurn
+; +4 function pointer
+; +2 saved de
+; +0 saved hl
+
 	pop hl
-	call SwitchTurn
-	call RetrieveAHLAndCallFunction
-	; fallthrough
+	pop de
+; fallthrough
 
 BattleCommand_switchturn::
 SwitchTurn::

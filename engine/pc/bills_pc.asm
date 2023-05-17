@@ -1397,8 +1397,6 @@ StorageFlagAction:
 	ld b, a
 
 	call .do_it
-	; Stack call doesn't preserve flags.
-	and a
 	jmp PopBCDEHL
 
 .do_it
