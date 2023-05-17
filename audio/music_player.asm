@@ -472,6 +472,8 @@ endr
 .change_ch1_2:
 	ld [hl], a
 	ld [wCurTrackDuty], a
+	call GetFlags2Addr
+	res SOUND_DUTY_LOOP, [hl]
 	ret
 
 .up_wave:
@@ -498,8 +500,7 @@ endr
 	and $f0
 	or b
 	ld [wChannel3Intensity], a
-	ld [wCurTrackIntensity], a
-	farjp ReloadWaveform
+	ret
 
 .up_noise:
 ; next noise set
@@ -1368,6 +1369,10 @@ GetPitchAddr:
 
 GetOctaveAddr:
 	ld hl, wChannel1Octave
+	jr _GetChannelMemberAddr
+
+GetFlags2Addr:
+	ld hl, wChannel1Flags2
 	jr _GetChannelMemberAddr
 
 GetDutyCycleAddr:

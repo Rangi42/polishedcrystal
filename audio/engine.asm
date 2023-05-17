@@ -39,14 +39,9 @@ _InitSound::
 	jr nz, .clearsound
 
 	ld hl, wChannels ; start of channel data
-	ld de, wChannelsEnd - wChannels ; length of area to clear (entire sound wram area)
-.clearchannels ; clear wChannel1-$c2bf
+	ld bc, wChannelsEnd - wChannels ; length of area to clear (entire sound wram area)
 	xor a
-	ld [hli], a
-	dec de
-	ld a, e
-	or d
-	jr nz, .clearchannels
+	rst ByteFill
 
 	ld a, MAX_VOLUME
 	ld [wVolume], a
@@ -120,6 +115,7 @@ _UpdateSound::
 	ld hl, wChannel1DutyCycle - wChannel1
 	add hl, bc
 	ld a, [hli]
+	and $c0
 	ld [wCurTrackDuty], a
 	; intensity
 	ld a, [hli]
@@ -189,7 +185,15 @@ _UpdateSound::
 	ld a, [wVolume]
 	ldh [rNR50], a
 	; write SO on/off to hardware register
-	ld a, [wSoundOutput]
+	ld hl, wSoundOutput
+	ld a, [wOptions1]
+	bit STEREO, a ; stereo
+	ld a, [hl]
+	jr nz, .stereo
+	; No stereo, or left and right masks
+	swap a
+	or [hl]
+.stereo
 	ldh [rNR51], a
 	ret
 
@@ -267,9 +271,6 @@ UpdateChannels:
 	ret
 
 .ch1_rest
-	ldh a, [rNR52]
-	and %10001110 ; ch1 off
-	ldh [rNR52], a
 	ld hl, rNR10
 	jmp ClearChannel
 
@@ -319,9 +320,6 @@ UpdateChannels:
 	ret
 
 .ch2_rest
-	ldh a, [rNR52]
-	and %10001101 ; ch2 off
-	ldh [rNR52], a
 	ld hl, rNR20
 	jmp ClearChannel
 
@@ -355,33 +353,27 @@ UpdateChannels:
 	ret
 
 .ch3_rest
-	ldh a, [rNR52]
-	and %10001011 ; ch3 off
-	ldh [rNR52], a
 	ld hl, rNR30
 	jmp ClearChannel
 
 .ch3_noise_sampling
-	ld a, $3f
-	ldh [rNR31], a
-	xor a
-	ldh [rNR30], a
-	call .load_wave_pattern
-	ld a, $80
-	ldh [rNR30], a
+	ld hl, wCh3LoadedWaveform
+	ld a, [wCurTrackIntensity]
+	ld d, a
+	maskbits NUM_WAVEFORMS
+	cp [hl] ; Loaded waveform == this notes waveform?
+	ld [hl], a
+	call nz, ReloadWaveform
+
+	ld a, d
+	rlca
+	ldh [rNR32], a
 	ld a, [wCurTrackFrequency]
 	ldh [rNR33], a
 	ld a, [wCurTrackFrequency + 1]
 	or $80
+	ldh [rNR30], a ; dac on, in case ReloadWaveform turned it off
 	ldh [rNR34], a
-	ret
-
-.load_wave_pattern
-	call ReloadWaveform
-	ld a, [wCurTrackIntensity]
-	and $f0
-	sla a
-	ldh [rNR32], a
 	ret
 
 .Channel4:
@@ -395,9 +387,6 @@ UpdateChannels:
 	ret
 
 .ch4_rest
-	ldh a, [rNR52]
-	and %10000111 ; ch4 off
-	ldh [rNR52], a
 	ld hl, rNR40
 	jmp ClearChannel
 
@@ -714,7 +703,7 @@ HandleTrackVibrato:
 	add hl, bc
 	bit SOUND_DUTY_LOOP, [hl] ; duty
 	jr z, .next
-	ld hl, wChannel1SFXDutyLoop - wChannel1
+	ld hl, wChannel1DutyCycle - wChannel1
 	add hl, bc
 	ld a, [hl]
 	rlca
@@ -1012,7 +1001,8 @@ ParseMusic:
 	ld a, [wChannelSelectorSwitches+3]
 	and a
 	jr nz, .notnoise
-	ld a, 1
+	ld a, [wCurMusicByte]
+	and $f0
 	ld [wNoiseHit], a
 .notnoise
 ; wCurMusicByte contains current note
@@ -1030,7 +1020,6 @@ ParseMusic:
 	ld a, [wCurMusicByte]
 	and $f
 	call SetNoteDuration
-	; get note pitch (top nybble)
 
 	ld a, [wCurChannel]
 	cp CHAN5
@@ -1046,6 +1035,7 @@ ParseMusic:
 	jr .rest
 
 .notMuted
+	; get note pitch (top nybble)
 	ld a, [wCurMusicByte]
 	swap a
 	and $f
@@ -1214,7 +1204,7 @@ GetNoiseSample:
 	swap a
 	; non-rest note?
 	and $f
-	ret z
+	jr z, .rest
 	; use 'pitch' to seek noise sample set
 	ld e, a
 	ld d, 0
@@ -1229,6 +1219,12 @@ GetNoiseSample:
 	; clear ????
 	xor a
 	ld [wNoiseSampleDelay], a
+	ret
+
+.rest
+	ld hl, wChannel1NoteFlags - wChannel1
+	add hl, bc
+	set NOTE_REST, [hl]
 	ret
 
 MusicCommands:
@@ -1540,11 +1536,6 @@ Music_SoundDuty:
 	call GetMusicByte
 	rrca
 	rrca
-	ld hl, wChannel1SFXDutyLoop - wChannel1
-	add hl, bc
-	ld [hl], a
-	; update duty cycle
-	and $c0 ; only uses top 2 bits
 	ld hl, wChannel1DutyCycle - wChannel1
 	add hl, bc
 	ld [hl], a
@@ -1631,6 +1622,9 @@ Music_DutyCycle1:
 Music_DutyCycle2:
 Music_DutyCycle3:
 ; duty cycle
+	ld hl, wChannel1Flags2 - wChannel1
+	add hl, bc
+	res SOUND_DUTY_LOOP, [hl]
 	ld a, [wCurMusicByte]
 	rrca
 	rrca
@@ -1701,11 +1695,6 @@ Music_PanCenter:
 	ld a, $FF
 	; fallthrough
 _ForcePanning:
-	; stereo on?
-	ld hl, wOptions1
-	bit STEREO, [hl]
-	ret z
-
 	ld d, a
 	call SetLRTracks
 	ld a, d
@@ -2178,13 +2167,8 @@ _PlayCryHeader::
 	and a
 	jr z, .next
 
-; Stereo only: Play cry from the monster's side.
+; Play cry from the monster's side.
 ; This only applies in-battle.
-
-	ld a, [wOptions1]
-	bit STEREO, a ; stereo
-	jr z, .next
-
 ; [Tracks] &= [wCryTracks]
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
@@ -2315,12 +2299,6 @@ PlayStereoSFX::
 
 	call MusicOff
 
-; standard procedure if stereo's off
-	ld a, [wOptions1]
-	bit STEREO, a
-	jmp z, _PlaySFX
-
-; else, let's go ahead with this
 	ld hl, wMusicID
 	ld a, e
 	ld [hli], a
@@ -2397,9 +2375,6 @@ LoadChannel:
 	ld a, [hli]
 	ld c, a
 	ld b, [hl] ; bc = channel pointer
-	ld hl, wChannel1Flags - wChannel1
-	add hl, bc
-	res SOUND_CHANNEL_ON, [hl] ; channel off
 	call ChannelInit
 	; load music pointer
 	ld hl, wChannel1MusicAddress - wChannel1
@@ -2449,10 +2424,7 @@ ChannelInit:
 	pop de
 	ret
 
-ReloadWaveform::
-	; called from the music player
-	ld a, [wCurTrackIntensity]
-	and $f ; only NUM_WAVEFORMS are valid
+ReloadWaveform:
 	; each wavepattern is $f bytes long, so seeking is done in $10s
 	swap a ; a << 4
 	add LOW(WaveSamples)
@@ -2460,6 +2432,8 @@ ReloadWaveform::
 	adc HIGH(WaveSamples)
 	sub l
 	ld h, a
+	xor a
+	ldh [rNR30], a ; dac off
 	; load wavepattern into rWave_0-rWave_f
 for x, 16
 	ld a, [hli]

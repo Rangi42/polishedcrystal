@@ -96,6 +96,9 @@ wMapMusic:: db
 wDontPlayMapMusicOnReload:: db
 wMusicEnd::
 
+; Has to be outside the area used to save/load audio state
+wCh3LoadedWaveform:: db
+
 ; Music player
 ; audio engine input
 wChannelSelectorSwitches:: ds 4
