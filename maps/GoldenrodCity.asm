@@ -300,14 +300,6 @@ GoldenrodCityCooltrainerF2Text_GotRadioCard:
 	done
 
 GoldenrodCityYoungsterDayText:
-;	text "I can't wait to"
-;	line "visit the Museum"
-;	cont "once it's open!"
-;
-;	para "I heard they have"
-;	line "some beautiful"
-;	cont "paintings."
-
 	text "Have you been to"
 	line "the Museum?"
 
@@ -476,14 +468,12 @@ GoldenrodCityFlowerShopSignText:
 	line "Flower Shop"
 	done
 
-GoldenrodMuseumSignText:	
-	text "Grand Opening!"
+GoldenrodMuseumSignText:
+	text "Goldenrod Museum"
+	line "Grand Opening!"
 
-	para "Explore the his-"
-	line "tory of Johto"
-	cont "today!"
-
-	para "Goldenrod Museum"
+	para "Explore the"
+	line "history of Johto!"
 	done
 
 GoldenrodCityMoveTutorAskTeachAMoveText:
