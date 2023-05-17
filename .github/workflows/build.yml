@@ -8,7 +8,7 @@ on:
   workflow_call:
 
 env:
-  RGBDS_VERSION: "v0.5.2"
+  RGBDS_VERSION: "v0.6.1"
 
 jobs:
   build-ubuntu:
@@ -53,33 +53,37 @@ jobs:
       - id: build-polishedcrystal
         name: "Build polishedcrystal"
         run: |
-          make -j$(nproc)
+          make -j$(nproc) vc
           mkdir build
           mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polishedcrystal-faithful
         name: "Build polishedcrystal-faithful"
         run: |
-          make -j$(nproc) faithful
+          make -j$(nproc) faithful vc
           mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polishedcrystal-nortc
         name: "Build polishedcrystal-nortc"
         run: |
-          make -j$(nproc) nortc
+          make -j$(nproc) nortc vc
           mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polishedcrystal-faithful-nortc
         name: "Build polishedcrystal-faithful-nortc"
         run: |
-          make -j$(nproc) faithful nortc
+          make -j$(nproc) faithful nortc vc
           mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
@@ -87,32 +91,36 @@ jobs:
       - id: build-polisheddebug
         name: "Build polisheddebug"
         run: |
-          make -j$(nproc) debug
+          make -j$(nproc) debug vc
           mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polisheddebug-faithful
         name: "Build polisheddebug-faithful"
         run: |
-          make -j$(nproc) faithful debug
+          make -j$(nproc) faithful debug vc
           mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polisheddebug-nortc
         name: "Build polisheddebug-nortc"
         run: |
-          make -j$(nproc) nortc debug
+          make -j$(nproc) nortc debug vc
           mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polisheddebug-faithful-nortc
         name: "Build polisheddebug-faithful-nortc"
         run: |
-          make -j$(nproc) faithful nortc debug
+          make -j$(nproc) faithful nortc debug vc
           mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.0.0-beta.patch build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
