@@ -9,8 +9,8 @@ on:
 #    - cron: '0 5 * * *'
 
 env:
-  NIGHTLY_TAG: "v3.0.0-beta-nightly"
-  NIGHTLY_NAME: "3.0.0 beta nightly"
+  NIGHTLY_TAG: "v3.0.0-beta"
+  NIGHTLY_NAME: "3.0.0-beta"
   NIGHTLY_BODY: |
     This is the current Polished Crystal 3.0.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
 
