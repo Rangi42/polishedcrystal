@@ -25,6 +25,7 @@ jobs:
       - id: apt-get-depends
         name: "Install build dependencies"
         run: |
+          sudo apt-get update
           sudo apt-get install bison gcc git make python2 -y;
           
       # CHECKOUT RGBDS
