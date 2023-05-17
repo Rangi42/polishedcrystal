@@ -86,7 +86,7 @@ TMHMMoves:
 	assert_table_length NUM_TMS + NUM_HMS
 	db AGILITY      ; MT01 (TODO)
 	db AQUA_TAIL    ; MT02 (Route 4)
-	db BATON_PASS   ; MT03 (TODO)
+	db BATON_PASS   ; MT03 (Goldenrod Museum)
 	db BODY_SLAM    ; MT04 (Warm Beach)
 	db CHARM        ; MT05 (TODO)
 	db COUNTER      ; MT06 (Celadon Dept. Store)
@@ -116,5 +116,5 @@ TMHMMoves:
 	db ZAP_CANNON   ; MT30 (Power Plant)
 	db ZEN_HEADBUTT ; MT31 (Saffron City)
 	assert_table_length NUM_TM_HM_TUTOR
-; TODO: Agility, Baton Pass, Charm, Endure, Trick Room
+; TODO: Agility, Baton Pass, Charm, Trick Room
 	db 0 ; end
