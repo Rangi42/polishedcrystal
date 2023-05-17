@@ -1,10 +1,10 @@
 TinTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script TinTower1FTrigger0
+	scene_script TinTower1FSuicuneBattleScene
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, TinTower1FNPCsCallback
-	callback MAPCALLBACK_TILES, TinTowerStairsCallback
+	callback MAPCALLBACK_TILES, TinTower1FStairsCallback
 
 	def_warp_events
 	warp_event  7, 15, BELLCHIME_TRAIL, 3
@@ -19,7 +19,7 @@ TinTower1F_MapScriptHeader:
 	pokemon_event  7,  9, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ClearText, EVENT_TIN_TOWER_1F_SUICUNE
 	pokemon_event  5,  9, RAIKOU, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, ClearText, EVENT_TIN_TOWER_1F_RAIKOU
 	pokemon_event 10,  9, ENTEI, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, ClearText, EVENT_TIN_TOWER_1F_ENTEI
-	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTowerEusineHoOhText, EVENT_TIN_TOWER_1F_EUSINE
+	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FEusineAfterHoOhScript, EVENT_TIN_TOWER_1F_EUSINE
 	object_event  3,  9, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage1Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event  9, 11, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage2Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event 12,  6, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage3Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
@@ -36,8 +36,8 @@ TinTower1F_MapScriptHeader:
 	const TINTOWER1F_SAGE2
 	const TINTOWER1F_SAGE3
 
-TinTower1FTrigger0:
-	sdefer SuicuneBattle
+TinTower1FSuicuneBattleScene:
+	sdefer TinTower1FSuicuneBattleScript
 	end
 
 TinTower1FNPCsCallback:
@@ -86,44 +86,44 @@ TinTower1FNPCsCallback:
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	endcallback
 
-TinTowerStairsCallback:
+TinTower1FStairsCallback:
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftruefwd .NoChange
+	iftruefwd .DontHideStairs
 	changeblock 8, 2, $9
-.NoChange:
+.DontHideStairs:
 	endcallback
 
-SuicuneBattle:
+TinTower1FSuicuneBattleScript:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
 	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
 	iftruefwd .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
-	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
+	applymovement TINTOWER1F_RAIKOU, TinTower1FRaikouApproachesMovement
 	turnobject PLAYER, LEFT
 	cry RAIKOU
 	pause 10
 	playsound SFX_WARP_FROM
-	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement2
+	applymovement TINTOWER1F_RAIKOU, TinTower1FRaikouLeavesMovement
 	disappear TINTOWER1F_RAIKOU
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
 	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
 	iftruefwd .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
-	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1
+	applymovement TINTOWER1F_ENTEI, TinTower1FEnteiApproachesMovement
 	turnobject PLAYER, RIGHT
 	cry ENTEI
 	pause 10
 	playsound SFX_WARP_FROM
-	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement2
+	applymovement TINTOWER1F_ENTEI, TinTower1FEnteiLeavesMovement
 	disappear TINTOWER1F_ENTEI
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next2:
 	turnobject PLAYER, UP
 	pause 10
-	applymovement PLAYER, TinTowerPlayerMovement2
-	applymovement TINTOWER1F_SUICUNE, TinTowerSuicuneMovement
+	applymovement PLAYER, TinTower1FPlayerBacksUpMovement
+	applymovement TINTOWER1F_SUICUNE, TinTower1FSuicuneApproachesMovement
 	cry SUICUNE
 	pause 20
 	loadwildmon SUICUNE, 40
@@ -220,6 +220,35 @@ TinTower1FSage6Script:
 .FoughtHoOh:
 	jumptextfaceplayer TinTower1FSage6Text2
 
+TinTower1FEusineAfterHoOhScript:
+	faceplayer
+	opentext
+	writetext TinTowerEusineHoOhText
+	waitbutton
+	closetext
+	readvar VAR_FACING
+	ifnotequal RIGHT, .PathClear
+	applymovement PLAYER, .PlayerStepsAsideMovement
+.PathClear:
+	applymovement TINTOWER1F_EUSINE, .EusineLeavesAfterHoOhMovement
+	disappear TINTOWER1F_EUSINE
+	end
+
+.PlayerStepsAsideMovement:
+	step_up
+	turn_head_left
+	step_end
+
+.EusineLeavesAfterHoOhMovement:
+	step_left
+	step_left
+	step_left
+	step_down
+	step_down
+	step_down
+	step_down
+	step_end
+
 TinTowerPlayerMovement1:
 	slow_step_up
 	slow_step_up
@@ -227,36 +256,36 @@ TinTowerPlayerMovement1:
 	slow_step_up
 	step_end
 
-TinTowerRaikouMovement1:
+TinTower1FRaikouApproachesMovement:
 	fix_facing
 	fast_jump_step_down
 	step_end
 
-TinTowerRaikouMovement2:
+TinTower1FRaikouLeavesMovement:
 	fix_facing
 	fast_jump_step_down
 	fast_jump_step_right
 	fast_jump_step_down
 	step_end
 
-TinTowerEnteiMovement1:
+TinTower1FEnteiApproachesMovement:
 	fix_facing
 	fast_jump_step_down
 	step_end
 
-TinTowerEnteiMovement2:
+TinTower1FEnteiLeavesMovement:
 	fix_facing
 	fast_jump_step_down
 	fast_jump_step_left
 	fast_jump_step_down
 	step_end
 
-TinTowerSuicuneMovement:
+TinTower1FSuicuneApproachesMovement:
 	fix_facing
 	fast_jump_step_down
 	step_end
 
-TinTowerPlayerMovement2:
+TinTower1FPlayerBacksUpMovement:
 	fix_facing
 	run_step_down
 	remove_fixed_facing
@@ -452,6 +481,18 @@ TinTowerEusineHoOhText:
 
 	para "to become a famous"
 	line "#Maniac!"
+
+	para "If you're ever in"
+	line "Celadon City,"
+
+	para "will you say hi to"
+	line "my grandpa?"
+
+	para "I'm sure he would"
+	line "like the company"
+	cont "while I'm away."
+
+	para "Later, <PLAYER>!"
 	done
 
 TinTower1FSage4Text2:
