@@ -19,18 +19,18 @@ ENDM
 
 PartyMenuQualityPointers:
 ; entries correspond to PARTYMENUACTION_* constants
-	table_width 2, PartyMenuQualityPointers
-	dw .Default
-	dw .Default
-	dw .Default
-	dw .TMHM
-	dw .Default
-	dw .EvoStone
-	dw .Gender
-	dw .Gender
-	dw .Default
-	dw .Reminder
-	dw .BTLTower
+	table_width 1, PartyMenuQualityPointers
+	dr .Default
+	dr .Default
+	dr .Default
+	dr .TMHM
+	dr .Default
+	dr .EvoStone
+	dr .Gender
+	dr .Gender
+	dr .Default
+	dr .Reminder
+	dr .BTLTower
 	assert_table_length NUM_PARTYMENUACTIONS
 
 .Default:

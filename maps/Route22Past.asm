@@ -81,7 +81,7 @@ Route22PastCelebiEventScript:
 	special FadeOutPalettes
 	special LoadMapPalettes
 	pause 30
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	waitsfx
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraLooksAroundAgainMovementData
@@ -154,7 +154,7 @@ Route22Past_LyraApproachesRivalMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_left
-	step_end 
+	step_end
 
 Route22Past_GiovanniLeavesMovementData:
 	slow_step_left

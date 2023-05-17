@@ -17,19 +17,19 @@ HandleStoneTable::
 	and a
 	jr z, .next
 
-	ld hl, OBJECT_MOVEMENTTYPE
+	ld hl, OBJECT_MOVEMENT_TYPE
 	add hl, de
 	ld a, [hl]
 	cp SPRITEMOVEDATA_STRENGTH_BOULDER
 	jr nz, .next
 
-	ld hl, OBJECT_NEXT_TILE
+	ld hl, OBJECT_TILE
 	add hl, de
 	ld a, [hl]
 	cp COLL_HOLE
 	jr nz, .next
 
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, de
 	ld a, [hl]
 	cp STANDING

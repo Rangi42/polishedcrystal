@@ -111,8 +111,8 @@ TradeAnimationPlayer2:
 
 RunTradeAnimSequence:
 	ld hl, wTradeAnimPointer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ldh a, [hMapAnims]
 	push af
@@ -130,7 +130,7 @@ RunTradeAnimSequence:
 	ld a, [wUnusedTradeAnimPlayEvolutionMusic] ; TODO: figure out what can be removed if this is unused (presumably this and next 2 lines)
 	and a
 	jr nz, .anim_loop
-	ld de, MUSIC_EVOLUTION
+	ld e, MUSIC_EVOLUTION
 	call PlayMusic2
 .anim_loop
 	call DoTradeAnimation
@@ -274,14 +274,14 @@ TradeAnim_IncrementJumptableIndex:
 
 TradeAnim_AdvanceScriptPointer:
 	ld hl, wTradeAnimPointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld a, [de]
 	ld [wJumptableIndex], a
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 

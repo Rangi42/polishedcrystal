@@ -1,5 +1,5 @@
 HDMATransferTileMapToWRAMBank3::
-	call CallInSafeGFXMode
+	call StackCallInSafeGFXMode
 
 .Function:
 	decoord 0, 0
@@ -11,7 +11,7 @@ HDMATransferTileMapToWRAMBank3::
 	jr HDMATransferToWRAMBank3
 
 HDMATransferAttrMapToWRAMBank3:
-	call CallInSafeGFXMode
+	call StackCallInSafeGFXMode
 
 .Function:
 	decoord 0, 0, wAttrmap
@@ -23,7 +23,7 @@ HDMATransferAttrMapToWRAMBank3:
 	jr HDMATransferToWRAMBank3
 
 ReloadMapPart::
-	call CallInSafeGFXMode
+	call StackCallInSafeGFXMode
 
 .Function:
 	decoord 0, 0, wAttrmap
@@ -73,7 +73,7 @@ WaitDMATransfer:
 	jr nz, .loop
 	ret
 
-CallInSafeGFXMode:
+StackCallInSafeGFXMode:
 	pop hl
 
 	ldh a, [hBGMapMode]
@@ -223,7 +223,7 @@ CutAndPasteMap:
 	ret
 
 HDMATransfer_OnlyTopFourRows:
-	call CallInSafeGFXMode
+	call StackCallInSafeGFXMode
 
 .Function:
 	ld hl, wScratchTileMap

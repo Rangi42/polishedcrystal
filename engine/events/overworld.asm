@@ -294,6 +294,7 @@ GetBuffer6:
 	ret
 
 CutDownGrass:
+	farcall CopyBGGreenToOBPal7
 	ld hl, wBuffer3 ; OverworldMapTile
 	ld a, [hli]
 	ld h, [hl]
@@ -365,6 +366,7 @@ AutoCutTreeScript:
 	endtext
 
 CutDownTree:
+	farcall CopyBGGreenToOBPal7
 	xor a
 	ldh [hBGMapMode], a
 	call LoadMapPart
@@ -471,7 +473,7 @@ SurfFunction:
 .TrySurf:
 	ld de, ENGINE_FOGBADGE
 	call CheckBadge
-	jr c, .asm_c956
+	jr c, .nofogbadge
 	ld hl, wOWState
 	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .cannotsurf
@@ -490,7 +492,7 @@ SurfFunction:
 	jr c, .cannotsurf
 	ld a, $1
 	ret
-.asm_c956
+.nofogbadge
 	ld a, $80
 	ret
 .alreadyfail
@@ -764,6 +766,8 @@ FlyFunction:
 .FlyScript:
 	reloadmappart
 	callasm HideSprites
+	callasm ClearSavedObjPals
+	callasm CopyBGGreenToOBPal7
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
@@ -773,6 +777,7 @@ FlyFunction:
 	callasm SkipUpdateMapSprites
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
+	callasm CopyBGGreenToOBPal7
 	callasm FlyToAnim
 	special WaitSFX
 	callasm .ReturnFromFly
@@ -780,6 +785,8 @@ FlyFunction:
 
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
+	farcall ClearSavedObjPals
+	farcall CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
 
@@ -847,7 +854,7 @@ Script_AutoWaterfall:
 .CheckContinueWaterfall:
 	xor a
 	ldh [hScriptVar], a
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_WATERFALL
 	ret z
 	ld a, $1
@@ -1625,7 +1632,7 @@ FishFunction:
 	ld a, c
 	ld [wTempWildMonSpecies], a
 	ld a, b
-	ld [wCurForm], a
+	ld [wWildMonForm], a
 	ld a, BATTLETYPE_FISH
 	ld [wBattleType], a
 	ld a, $2

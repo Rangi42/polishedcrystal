@@ -34,8 +34,8 @@ UpdateGameTimer::
 	ret nz
 
 ; Is the timer paused?
-	ld hl, wGameTimerPaused
-	bit 0, [hl]
+	ld a, [wGameTimerPaused]
+	and a
 	ret z
 
 ; Is the timer already capped?
@@ -136,7 +136,7 @@ UpdateNoRTC::
 	ld a, 60
 	ld b, a
 
-	ld hl, wNoRTCSeconds
+	ld hl, wRTCSeconds
 
 ; +1 second
 	inc [hl]

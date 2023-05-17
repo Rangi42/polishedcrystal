@@ -381,25 +381,22 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
+	res 7, b
+	; fallthrough
+_ApplyWhiteTransparency:
+; Assumes the unused 16th color bit is unset.
 if !DEF(MONOCHROME)
-	push hl
-	; Remove least significant bit from each pal color.
-	ld hl, palred 30 + palgreen 30 + palblue 30
+	res 2, b
 	ld a, c
-	and l
-	ld c, a
-	ld a, b
-	and h
-	ld b, a
-	; Halve all palette colors
+	and LOW(palred 30 + palgreen 30 + palblue 30)
 	srl b
-	rr c
-	; Add 16 to each palette color.
-	ld hl, palred 16 + palgreen 16 + palblue 16
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop hl
+	rra
+	add LOW(palred 16 + palgreen 16 + palblue 16)
+	ld c, a
+	adc HIGH(palred 16 + palgreen 16 + palblue 16)
+	add b
+	sub c
+	ld b, a
 	ret
 else
 	assert HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_LIGHT) && \
@@ -753,7 +750,9 @@ LoadPartyMonPalette:
 	ld hl, wPartyMon1DVs
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
-	; c = species
+	; fallthrough
+_FinishLoadNicknamedMonPalette:
+	; c = species, b = extspecies+form
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -762,6 +761,21 @@ LoadPartyMonPalette:
 	call CopyDVsToColorVaryDVs
 	pop hl
 	jmp VaryColorsByDVs
+
+LoadTempMonPalette:
+	push de
+	; bc = personality
+	ld bc, wTempMonPersonality
+	; a = species
+	ld a, [wCurPartySpecies]
+	; hl = palette
+	call GetMonNormalOrShinyPalettePointer
+	; load palette in de (set by caller)
+	ld bc, 4
+	call FarCopyColorWRAM
+	; hl = DVs
+	ld hl, wTempMonDVs
+	jr _FinishLoadNicknamedMonPalette
 
 LoadTrainerPalette:
 	; a = class
@@ -868,10 +882,8 @@ LoadMapPals:
 	ld d, 0
 	ld hl, EnvironmentColorsPointers
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 
 	; Further refine by time of day
 	ld a, [wTimeOfDayPal]
@@ -923,17 +935,7 @@ LoadMapPals:
 	ldh [rSVBK], a
 
 .got_pals
-	; copy OB palettes
-	ld a, [wTimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, MapObjectPals
-	rst AddNTimes
-	ld de, wOBPals1
-	ld bc, 8 palettes
-	call FarCopyColorWRAM
-
-	farcall LoadSpecialMapOBPalette
+	farcall ClearSavedObjPals
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
@@ -985,53 +987,22 @@ INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
 	table_width 1 palettes, TilesetBGPalette
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
-else
 INCLUDE "gfx/tilesets/bg_tiles.pal"
-endc
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
-
-MapObjectPals:
-	table_width 1 palettes, MapObjectPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
-INCLUDE "gfx/overworld/npc_sprites.pal"
-endc
-	assert_table_length 8 * 4 ; morn, day, nite, eve
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
-else
 INCLUDE "gfx/tilesets/roofs.pal"
-endc
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
-else
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
-endc
 
 INCLUDE "data/pokemon/palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "data/events/paintings/palettes.asm"
-
-INCLUDE "engine/gfx/palettes.asm"
 
 INCLUDE "engine/gfx/sgb_border.asm"
 

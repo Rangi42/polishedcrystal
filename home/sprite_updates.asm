@@ -15,6 +15,8 @@ DisableSpriteUpdates::
 	ret
 
 CloseSubmenu::
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ClearBGPalettes
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
@@ -22,6 +24,8 @@ CloseSubmenu::
 	jr FinishExitMenu
 
 ExitAllMenus::
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
@@ -31,7 +35,7 @@ FinishExitMenu::
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
-	farcall FadeInPalettes
+	farcall FadeInPalettes_EnableDynNoApply
 	; fallthrough
 EnableSpriteUpdates::
 	ld a, $1

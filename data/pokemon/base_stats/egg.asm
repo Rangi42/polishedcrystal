@@ -11,7 +11,7 @@
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield 
+	ev_yield
 
 	; tm/hm learnset
 	tmhm

@@ -157,12 +157,12 @@ CheckPokeItem::
 	cp "@"
 	jr z, .done
 	cp c
-	ld a, 0
+	ld a, FALSE
 	jr nz, .close_sram_return
 	inc hl
 	inc de
 	ld a, [wTempByteValue]
-	dec a
+	dec a ; no-optimize inefficient WRAM increment/decrement
 	ld [wTempByteValue], a
 	jr nz, .loop
 
@@ -173,7 +173,7 @@ CheckPokeItem::
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	predef RemoveMonFromParty
-	ld a, $1
+	ld a, TRUE
 
 .close_sram_return
 	call CloseSRAM

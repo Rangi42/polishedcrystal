@@ -17,12 +17,12 @@ GDMACopy:
 ; Copy a+1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
 	push hl
 	ld hl, rHDMA1
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 _GDMACopy:
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], c
 	ldh [rHDMA5], a
@@ -67,7 +67,7 @@ UpdateBGMapBuffer::
 
 ; We can now pop the addresses of affected spots on the BG Map
 
-	ld hl, wBGMapPalBuffer
+	ld bc, wBGMapPalBuffer
 	ld de, wBGMapBuffer
 
 .next
@@ -75,30 +75,29 @@ UpdateBGMapBuffer::
 
 rept 2
 ; Get our BG Map address
-	pop bc
+	pop hl
 
 ; Palettes
 	ld a, 1
 	ldh [rVBK], a
 
-	ld a, [hli]
-	ld [bc], a
+	ld a, [bc]
+	ld [hli], a
 	inc c
-	ld a, [hli]
-	ld [bc], a
-	dec c
+	ld a, [bc]
+	ld [hld], a
+	inc c
 
 ; Tiles
 	xor a
 	ldh [rVBK], a
 
 	ld a, [de]
-	inc de
-	ld [bc], a
-	inc c
+	ld [hli], a
+	inc e
 	ld a, [de]
-	inc de
-	ld [bc], a
+	ld [hl], a
+	inc e
 endr
 
 ; We've done 2 16x8 blocks

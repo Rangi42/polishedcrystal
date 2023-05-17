@@ -18,8 +18,7 @@ GetBattleAnimFrame:
 	and a
 	jr z, .next_frame
 	dec [hl]
-	call .GetPointer
-	ld a, [hli]
+	call .GetPointerAndAdvance
 	push af
 	jr .okay
 
@@ -27,16 +26,15 @@ GetBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	inc [hl]
-	call .GetPointer
-	ld a, [hli]
-	cp -2
+	call .GetPointerAndAdvance
+	cp oamrestart_command
 	jr z, .restart
-	cp -1
+	cp oamend_command
 	jr z, .repeat_last
 	push af
 	ld a, [hl]
 	push hl
-	and $3f
+	and ~(Y_FLIP << 1 | X_FLIP << 1)
 	ld hl, BATTLEANIMSTRUCT_DURATION
 	add hl, bc
 	ld [hl], a
@@ -44,7 +42,7 @@ GetBattleAnimFrame:
 
 .okay
 	ld a, [hl]
-	and $c0
+	and Y_FLIP << 1 | X_FLIP << 1 ; The << 1 is compensated in the "oamframe" macro
 	srl a
 	ld [wBattleAnimTemp7], a
 	pop af
@@ -72,7 +70,7 @@ GetBattleAnimFrame:
 	ld [hl], a
 	jr .loop
 
-.GetPointer:
+.GetPointerAndAdvance:
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld e, [hl]
@@ -80,15 +78,16 @@ GetBattleAnimFrame:
 	ld hl, BattleAnimFrameData
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	ld l, [hl]
-	ld h, $0
+	ld h, 0
 	add hl, hl
 	add hl, de
+	ld a, [hli]
 	ret
 
 GetBattleAnimOAMPointer:
@@ -109,8 +108,8 @@ LoadBattleAnimGFX:
 	add hl, de
 	add hl, de
 	add hl, de
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
+	ld c, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -152,13 +151,11 @@ endr
 if !DEF(MONOCHROME)
 	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
-	ld [hl], a
+	ld [hl], HIGH(palred 31 + palgreen 31 + palblue 31)
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_WHITE)
-	ld [hl], a
+	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
 endc
 	ld b, 2
 	call SafeCopyTilemapAtOnce

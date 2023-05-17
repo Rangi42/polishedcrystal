@@ -574,6 +574,10 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr nz, .loop1
 
 	ld a, [wOtherTrainerClass]
+	farcall IsJohtoGymLeader
+	ld de, GymLeaderTransition
+	jr c, .got_transition
+	ld a, [wOtherTrainerClass]
 	ld hl, RocketTrainerClasses
 	call IsInByteArray
 	ld de, RocketTransition
@@ -646,6 +650,9 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	call .copypals
 	pop af
 	ldh [rSVBK], a
+	farcall ClearSavedObjPals
+	farcall CheckForUsedObjPals
+	farcall _UpdateSprites
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	call DelayFrame
@@ -666,10 +673,6 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld de, wBGPals1 palette PAL_BG_BROWN
 	call .copy
 	ld de, wBGPals1 palette PAL_BG_ROOF
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_ROCK
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_TREE
 	call .copy
 	ld hl, .black_pals
 	call .timeofdaypal
@@ -748,6 +751,24 @@ RocketTransition:
 	bigdw %XXXXX.....XXXXX.
 	bigdw %XXXXX......XXXXX
 	bigdw %XXXXX......XXXXX
+
+GymLeaderTransition:
+	bigdw %.....XX......XX.
+	bigdw %...XXXXXX.XXXXX.
+	bigdw %..XXX..XXXXXXX..
+	bigdw %.XX......X..XX..
+	bigdw %.XX..XX.X..XX...
+	bigdw %XX..X..X...XX...
+	bigdw %XX..X..X..XX....
+	bigdw %.XXX.XX...XX....
+	bigdw %.XX......XX.....
+	bigdw %..XXX....XX.....
+	bigdw %...XXXX.XX......
+	bigdw %.....XX.XX......
+	bigdw %......XXX.......
+	bigdw %......XXX.......
+	bigdw %......XX........
+	bigdw %......XX........
 
 popo
 

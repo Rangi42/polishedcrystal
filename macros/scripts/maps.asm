@@ -86,6 +86,7 @@ MACRO def_object_events
 ENDM
 
 MACRO object_event
+; TODO: Remove unused argument \7 (Old HOUR_1)
 	db \3 ; sprite
 	db \2 + 4 ; y
 	db \1 + 4 ; x
@@ -95,9 +96,9 @@ MACRO object_event
 	else
 		dn \5, \6 ; radius: y, x
 	endc
-	db \7 ; clock_hour
-	db \8 ; clock_daytime
-	dn \9, \<10> ; color, persontype
+	db \9 ; palette
+	db \8 ; time of day
+	db \<10> ; type
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
 	elif \3 == SPRITE_MON_ICON
@@ -117,17 +118,17 @@ MACRO object_event
 ENDM
 
 MACRO itemball_event
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_ITEMBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_ITEMBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
 ENDM
 
 MACRO keyitemball_event
 	assert _NARG == 4, "No quantity needed for keyitemball_event"
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
 ENDM
 
 MACRO tmhmball_event
 	assert _NARG == 4, "No quantity needed for tmhmball_event"
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_YELLOW, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
 ENDM
 
 MACRO cuttree_event

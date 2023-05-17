@@ -74,14 +74,14 @@ DEF STAT_MIN_HP EQU 10
 	const_def
 	const STAT_TARGET_F
 	const STAT_LOWER_F
-	const STAT_MISS_F
+	const STAT_CANMISS_F
 	const STAT_SECONDARY_F
 	const STAT_SILENT_F
 	const STAT_SKIPTEXT_F
 
 DEF STAT_TARGET    EQU 1 << STAT_TARGET_F
 DEF STAT_LOWER     EQU 1 << STAT_LOWER_F
-DEF STAT_MISS      EQU 1 << STAT_MISS_F
+DEF STAT_CANMISS   EQU 1 << STAT_CANMISS_F
 DEF STAT_SECONDARY EQU 1 << STAT_SECONDARY_F
 DEF STAT_SILENT    EQU 1 << STAT_SILENT_F
 DEF STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
@@ -135,6 +135,7 @@ DEF STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
 	const BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	const BATTLE_VARS_LAST_MOVE
 	const BATTLE_VARS_LAST_MOVE_OPP
+	const BATTLE_VARS_CUD_CHEW_BERRY
 DEF NUM_BATTLE_VARS EQU const_value
 
 ; BattleVarLocations indexes (see home/battle_vars.asm)
@@ -169,11 +170,13 @@ DEF NUM_BATTLE_VARS EQU const_value
 	const ENEMY_COUNTER_MOVE
 	const PLAYER_LAST_MOVE
 	const ENEMY_LAST_MOVE
+	const PLAYER_CUD_CHEW_BERRY
+	const ENEMY_CUD_CHEW_BERRY
 assert const_value % 2 == 0
 DEF NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
 
 ; status condition bit flags
-DEF SLP EQU %111 ; 0-7 turns
+DEF SLP_MASK EQU %111 ; 0-7 turns
 	const_def 3
 	const PSN
 	const BRN
@@ -181,7 +184,7 @@ DEF SLP EQU %111 ; 0-7 turns
 	const PAR
 	const TOX
 
-DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | SLP
+DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | SLP_MASK
 
 ; wPlayerSubStatus1 or wEnemySubStatus1 bit flags
 	const_def

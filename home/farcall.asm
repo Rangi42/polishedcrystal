@@ -8,7 +8,7 @@ MACRO update_pushed_af_flags
 ; without clobbering any other registers.
 	push af ; pushes current flags
 	push hl
-	ld hl, sp+$2
+	ld hl, sp + 2
 	ld a, [hli] ; reads current flags
 	assert HIGH(wStackBottom) == HIGH(wStackTop)
 	inc l
@@ -16,52 +16,6 @@ MACRO update_pushed_af_flags
 	pop hl
 	pop af
 ENDM
-
-FarCall_de::
-; Call a:de. Clobbers a.
-	ldh [hTempBank], a
-	ldh a, [hROMBank]
-	push af
-	ldh a, [hTempBank]
-	rst Bankswitch
-	call _de_
-	jr _ReturnFarCall
-
-AnonBankPush::
-; Call the following function in the following bank db.
-	ldh [hFarCallSavedA], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
-	pop hl
-	ld a, [hli]
-FarCall_hl::
-; Call a:hl. Clobbers a and hl.
-	ldh [hTempBank], a
-	jr _DoFarCall
-
-FarPointerCall::
-; Call the dba pointer at hl. Clobbers a and hl.
-	ld a, [hli]
-	ldh [hTempBank], a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jr _DoFarCall
-
-StackCallInBankB:
-; Call the following function in bank b. Clobbers a.
-	ld a, b
-StackCallInBankA:
-; Call the following function in bank a. Clobbers a.
-	ldh [hTempBank], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
-	pop hl
-	jr _DoFarCall
 
 RstFarCall::
 ; Call the following dba pointer.
@@ -130,3 +84,49 @@ RetrieveAHLAndCallFunction:
 	ld l, a
 	ldh a, [hFarCallSavedA]
 	ret
+
+FarCall_de::
+; Call a:de. Clobbers a.
+	ldh [hTempBank], a
+	ldh a, [hROMBank]
+	push af
+	ldh a, [hTempBank]
+	rst Bankswitch
+	call _de_
+	jr _ReturnFarCall
+
+AnonBankPush::
+; Call the following function in the following bank db.
+	ldh [hFarCallSavedA], a
+	ld a, h
+	ldh [hFarCallSavedH], a
+	ld a, l
+	ldh [hFarCallSavedL], a
+	pop hl
+	ld a, [hli]
+FarCall_hl::
+; Call a:hl. Clobbers a and hl.
+	ldh [hTempBank], a
+	jr _DoFarCall
+
+FarPointerCall::
+; Call the dba pointer at hl. Clobbers a and hl.
+	ld a, [hli]
+	ldh [hTempBank], a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jr _DoFarCall
+
+StackCallInBankB:
+; Call the following function in bank b. Clobbers a.
+	ld a, b
+StackCallInBankA:
+; Call the following function in bank a. Clobbers a.
+	ldh [hTempBank], a
+	ld a, h
+	ldh [hFarCallSavedH], a
+	ld a, l
+	ldh [hFarCallSavedL], a
+	pop hl
+	jr _DoFarCall

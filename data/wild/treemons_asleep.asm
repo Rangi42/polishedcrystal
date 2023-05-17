@@ -1,6 +1,14 @@
 ; Used by CheckSleepingTreeMon
 
-AsleepTreeMonsNite:
+AsleepTreeMons:
+	table_width 1, AsleepTreeMons
+	dr .Morn
+	dr .Day
+	dr .Nite
+	dr .Eve
+	assert_table_length NUM_DAYTIMES
+.Nite
+.Eve
 	dp CATERPIE
 	dp METAPOD
 	dp BUTTERFREE
@@ -11,20 +19,13 @@ AsleepTreeMonsNite:
 	dp EKANS
 	dp EXEGGCUTE
 	dp LEDYBA
-	db -1 ; end
+	db 0 ; end
 
-AsleepTreeMonsDay:
+.Morn
+.Day
 	dp VENONAT
 	dp HOOTHOOT
 	dp NOCTOWL
 	dp SPINARAK
 	dp HERACROSS
-	db -1 ; end
-
-AsleepTreeMonsMorn:
-	dp VENONAT
-	dp HOOTHOOT
-	dp NOCTOWL
-	dp SPINARAK
-	dp HERACROSS
-	db -1 ; end
+	db 0 ; end

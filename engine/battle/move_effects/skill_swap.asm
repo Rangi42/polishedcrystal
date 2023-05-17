@@ -29,6 +29,17 @@ BattleCommand_skillswap:
 	ld hl, SwappedAbilitiesText
 	call StdBattleTextbox
 
+	; Reset variables related to abilities
+	ld hl, wPlayerSubStatus1
+	res SUBSTATUS_UNBURDEN, [hl]
+	res SUBSTATUS_FLASH_FIRE, [hl]
+	ld hl, wEnemySubStatus1
+	res SUBSTATUS_UNBURDEN, [hl]
+	res SUBSTATUS_FLASH_FIRE, [hl]
+	xor a
+	ld [wPlayerCudChewBerry], a
+	ld [wEnemyCudChewBerry], a
+
 	; Don't use RunBothActivationAbilities, because
 	; Skill Swap always runs the user first
 	farcall RunActivationAbilitiesInner

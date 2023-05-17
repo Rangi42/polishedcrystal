@@ -31,11 +31,11 @@ OlivinePort_MapScriptHeader:
 	const OLIVINEPORT_SAILOR3
 
 OlivinePortTrigger1:
-	sdefer UnknownScript_0x748b1
+	sdefer OlivinePortLeaveShipScript
 OlivinePortTrigger0:
 	end
 
-UnknownScript_0x748b1:
+OlivinePortLeaveShipScript:
 	applyonemovement PLAYER, step_up
 	appear OLIVINEPORT_SAILOR1
 	setscene $0
@@ -61,7 +61,7 @@ OlivinePortSailorAtGangwayScript:
 	special FadeOutPalettes
 	waitsfx
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalsefwd UnknownScript_0x7490a
+	iffalsefwd .FirstTime
 	clearevent EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	setevent EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	clearevent EVENT_BEAT_COOLTRAINERM_SEAN
@@ -74,7 +74,7 @@ OlivinePortSailorAtGangwayScript:
 	clearevent EVENT_BEAT_FISHER_JONAH
 	clearevent EVENT_BEAT_BLACKBELT_WAI
 	clearevent EVENT_BEAT_RICH_BOY_WINSTON
-UnknownScript_0x7490a:
+.FirstTime:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
 	setmapscene FAST_SHIP_1F, $1
@@ -87,27 +87,27 @@ OlivinePortAlreadyRodeScript:
 OlivinePortWalkUpToShipScript:
 	turnobject OLIVINEPORT_SAILOR3, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftruefwd UnknownScript_0x7498b
+	iftruefwd .skip
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftruefwd UnknownScript_0x7498b
+	iftruefwd .skip
 	turnobject PLAYER, LEFT
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalsefwd UnknownScript_0x7494e
+	iffalsefwd .FirstTime
 	readvar VAR_WEEKDAY
-	ifequalfwd SUNDAY, UnknownScript_0x74977
-	ifequalfwd SATURDAY, UnknownScript_0x74977
-	ifequalfwd TUESDAY, UnknownScript_0x74981
-	ifequalfwd WEDNESDAY, UnknownScript_0x74981
-	ifequalfwd THURSDAY, UnknownScript_0x74981
-UnknownScript_0x7494e:
+	ifequalfwd SUNDAY, .NextShipMonday
+	ifequalfwd SATURDAY, .NextShipMonday
+	ifequalfwd TUESDAY, .NextShipFriday
+	ifequalfwd WEDNESDAY, .NextShipFriday
+	ifequalfwd THURSDAY, .NextShipFriday
+.FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
 	iffalsefwd OlivinePortNotRidingMoveAwayScript
 	writetext OlivinePortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalsefwd UnknownScript_0x7496d
+	iffalsefwd .NoTicket
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
@@ -115,28 +115,28 @@ UnknownScript_0x7494e:
 	applymovement PLAYER, OlivinePortApproachFastShipFirstTimeMovement
 	sjump OlivinePortSailorAtGangwayScript
 
-UnknownScript_0x7496d:
+.NoTicket:
 	writetext OlivinePortNoTicketText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
 	end
 
-UnknownScript_0x74977:
+.NextShipMonday:
 	writetext OlivinePortMondayShipText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
 	end
 
-UnknownScript_0x74981:
+.NextShipFriday:
 	writetext OlivinePortFridayShipText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
 	end
 
-UnknownScript_0x7498b:
+.skip:
 	end
 
 OlivinePortNotRidingScript:
@@ -155,41 +155,41 @@ OlivinePortSailorAfterHOFScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue OlivinePortAlreadyRodeScript
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalsefwd UnknownScript_0x749c0
+	iffalsefwd .FirstTime
 	readvar VAR_WEEKDAY
-	ifequalfwd SUNDAY, UnknownScript_0x749f2
-	ifequalfwd SATURDAY, UnknownScript_0x749f2
-	ifequalfwd TUESDAY, UnknownScript_0x749f8
-	ifequalfwd WEDNESDAY, UnknownScript_0x749f8
-	ifequalfwd THURSDAY, UnknownScript_0x749f8
-UnknownScript_0x749c0:
+	ifequalfwd SUNDAY, .NextShipMonday
+	ifequalfwd SATURDAY, .NextShipMonday
+	ifequalfwd TUESDAY, .NextShipFriday
+	ifequalfwd WEDNESDAY, .NextShipFriday
+	ifequalfwd THURSDAY, .NextShipFriday
+.FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
 	iffalse OlivinePortNotRidingScript
 	writetext OlivinePortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalsefwd UnknownScript_0x749ec
+	iffalsefwd .NoTicket
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	readvar VAR_FACING
-	ifequalfwd RIGHT, UnknownScript_0x749e5
+	ifequalfwd RIGHT, .Right
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFMovement
 	sjump OlivinePortSailorAtGangwayScript
 
-UnknownScript_0x749e5:
+.Right:
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFRightMovement
 	sjump OlivinePortSailorAtGangwayScript
 
-UnknownScript_0x749ec:
+.NoTicket:
 	jumpopenedtext OlivinePortNoTicketText
 
-UnknownScript_0x749f2:
+.NextShipMonday:
 	jumpopenedtext OlivinePortMondayShipText
 
-UnknownScript_0x749f8:
+.NextShipFriday:
 	jumpopenedtext OlivinePortFridayShipText
 
 OlivinePortFishingGuru1Script:

@@ -31,6 +31,7 @@ ObjectActionPairPointers:
 	dw SetFacingAlolanExeggutor,       SetFacingAlolanExeggutor   ; OBJECT_ACTION_ALOLAN_EXEGGUTOR
 	dw SetFacingShakeExeggutor,        SetFacingAlolanExeggutor   ; OBJECT_ACTION_SHAKE_EXEGGUTOR
 	dw SetFacingTinyWindows,           SetFacingTinyWindows       ; OBJECT_ACTION_TINY_WINDOWS
+	dw SetFacingMicrophone,            SetFacingMicrophone        ; OBJECT_ACTION_MICROPHONE
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
@@ -69,6 +70,10 @@ SetFacingAlolanExeggutor:
 	ld a, FACING_ALOLAN_EXEGGUTOR_0
 	jr SetFixedFacing
 
+SetFacingMicrophone:
+	ld a, FACING_MICROPHONE
+	jr SetFixedFacing
+
 SetFacingBigDoll:
 	ld a, [wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
 	cp SPRITE_BIG_ONIX
@@ -105,13 +110,13 @@ SetFacingStandFlip:
 	rrca
 	add FACING_STEP_DOWN_FLIP
 SetFixedFacing:
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
 	ret
 
 SetFacingStandAction:
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld a, [hl]
 	and 1
@@ -132,7 +137,7 @@ SetFacingBumpAction:
 	ld d, a
 	call GetSpriteDirection
 	or d
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
 	ret
@@ -141,7 +146,7 @@ SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING_F, [hl]
-	jr nz, SetFacingCurrent
+	jmp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
@@ -160,7 +165,7 @@ SetFacingSkyfall:
 
 SetFacingCounterclockwiseSpin:
 	call CounterclockwiseSpinAction
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld a, [hl]
 	jr SetFixedFacing
@@ -199,7 +204,7 @@ CounterclockwiseSpinAction:
 	ld hl, .Directions
 	add hl, de
 	ld a, [hl]
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld [hl], a
 	ret
@@ -212,9 +217,9 @@ SetFacingBounce:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	and %00001111
+	and %00011111
 	ld [hl], a
-	and %00001000
+	and %00010000
 	ld a, FACING_STEP_UP_0
 	jmp nz, SetFixedFacing
 SetFacingFreezeBounce:
@@ -250,9 +255,9 @@ SetFacingBigGyarados:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	and %00001111
+	and %00011111
 	ld [hl], a
-	and %00001000
+	and %00010000
 	ld a, FACING_BIG_GYARADOS_2
 	jmp nz, SetFixedFacing
 SetFacingFreezeBigGyarados:
@@ -314,7 +319,7 @@ SetFacingRun:
 	ld d, a
 	call GetSpriteDirection
 	or d
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
 	ret

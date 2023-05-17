@@ -41,7 +41,7 @@ RadioTower3FGymGuideScript:
 	jumptextfaceplayer RadioTower3FGymGuideText_Rockets
 
 RadioTower3FCooltrainerFScript:
-	checkevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
+	checkevent EVENT_GOT_GBC_SOUNDS_FROM_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower3FCooltrainerFYouWereMarvelousText
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftruefwd .NoRockets
@@ -67,12 +67,12 @@ RadioTower3FCooltrainerFScript:
 	opentext
 	writetext RadioTower3FCooltrainerFYoureMyHeroText
 	promptbutton
-	verbosegiveitem HEAT_ROCK
+	verbosegivekeyitem GBC_SOUNDS
 	iffalse_endtext
-	writetext RadioTower3FCooltrainerFItsAHeatRockText
+	writetext RadioTower3FCooltrainerFItsAGBCSoundsText
 	waitbutton
 	closetext
-	setevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
+	setevent EVENT_GOT_GBC_SOUNDS_FROM_RADIO_TOWER
 	end
 
 GenericTrainerGruntM7:
@@ -186,11 +186,25 @@ RadioTower3FCooltrainerFYoureMyHeroText:
 	line "my appreciation."
 	done
 
-RadioTower3FCooltrainerFItsAHeatRockText:
-	text "It's a Heat Rock."
-	line "It makes the move"
-	cont "Sunny Day last"
-	cont "longer."
+RadioTower3FCooltrainerFItsAGBCSoundsText:
+	text "That's GBC Sounds."
+
+	para "It's chock full of"
+	line "songs you can"
+
+	para "listen to any-"
+	line "where, even"
+	cont "during battles."
+
+	para "It has special"
+	line "features to adjust"
+	cont "pitch or tempo,"
+
+	para "but the controls"
+	line "are a bit fiddly."
+
+	para "Just play around"
+	line "with it!"
 	done
 
 RadioTower3FCooltrainerFYouWereMarvelousText:

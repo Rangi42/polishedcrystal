@@ -4,19 +4,20 @@
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_MeteorFallsRSE:
-	musicheader 3, 1, Music_MeteorFallsRSE_Ch1
-	musicheader 1, 2, Music_MeteorFallsRSE_Ch2
-	musicheader 1, 3, Music_MeteorFallsRSE_Ch3
+	channel_count 3
+	channel 1, Music_MeteorFallsRSE_Ch1
+	channel 2, Music_MeteorFallsRSE_Ch2
+	channel 3, Music_MeteorFallsRSE_Ch3
 
 Music_MeteorFallsRSE_Ch1:
 	tempo 190
-	volume $77
-	vibrato $6, $23
-	notetype $8, $92
-	note __, 6
+	volume 7, 7
+	vibrato 6, 2, 3
+	note_type 8, 9, 2
+	rest 6
 Music_MeteorFallsRSE_Ch1_loop_main:
-	intensity $92
-	dutycycle 2
+	volume_envelope 9, 2
+	duty_cycle 2
 	octave 4
 	note D#, 2
 	note G_, 2
@@ -33,7 +34,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note G_, 2
 	octave 5
 	note D#, 2
-	intensity $62
+	volume_envelope 6, 2
 	octave 7
 	note D#, 1
 	note D_, 1
@@ -65,7 +66,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note A#, 1
 	octave 7
 	note D_, 1
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note C#, 2
 	note D#, 2
@@ -82,7 +83,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note C#, 2
 	octave 5
 	note C#, 2
-	intensity $62
+	volume_envelope 6, 2
 	octave 7
 	note D#, 1
 	note C#, 1
@@ -114,8 +115,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note A_, 1
 	octave 7
 	note C#, 1
-	intensity $92
-	dutycycle 0
+	volume_envelope 9, 2
+	duty_cycle 0
 	octave 3
 	note G#, 2
 	note D#, 2
@@ -136,8 +137,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note D#, 2
 	octave 2
 	note G#, 2
-	intensity $62
-	dutycycle 2
+	volume_envelope 6, 2
+	duty_cycle 2
 	octave 7
 	note D#, 1
 	note C_, 1
@@ -169,7 +170,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note G#, 1
 	octave 7
 	note C_, 1
-	intensity $92
+	volume_envelope 9, 2
 	octave 3
 	note A#, 2
 	octave 4
@@ -243,8 +244,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	octave 4
 	note A#, 2
 	note G_, 2
-	dutycycle 3
-	intensity $d2
+	duty_cycle 3
+	volume_envelope 13, 2
 	octave 4
 	note D#, 8
 	note D#, 2
@@ -253,8 +254,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note D#, 2
 	note D#, 2
 	note D#, 9
-	dutycycle 2
-	intensity $62
+	duty_cycle 2
+	volume_envelope 6, 2
 	octave 5
 	note D#, 2
 	note D_, 2
@@ -265,8 +266,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note D_, 2
 	note D#, 2
 	note D_, 1
-	dutycycle 3
-	intensity $d2
+	duty_cycle 3
+	volume_envelope 13, 2
 	note D#, 8
 	note D#, 2
 	note D#, 2
@@ -274,8 +275,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note D#, 2
 	note D#, 2
 	note D#, 9
-	dutycycle 2
-	intensity $62
+	duty_cycle 2
+	volume_envelope 6, 2
 	octave 5
 	note D#, 2
 	note D_, 2
@@ -286,8 +287,8 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note G_, 2
 	note G#, 2
 	note G_, 1
-	dutycycle 3
-	intensity $d2
+	duty_cycle 3
+	volume_envelope 13, 2
 	note D_, 8
 	note D_, 2
 	note D_, 2
@@ -305,7 +306,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note C_, 2
 	note C_, 6
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 1
 	note A_, 1
 	octave 4
@@ -314,14 +315,14 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note F#, 1
 	note A_, 1
 	note A#, 16
-	intensity $87
+	volume_envelope 8, 7
 	note A#, 8
-	jumpchannel Music_MeteorFallsRSE_Ch1_loop_main
+	sound_jump Music_MeteorFallsRSE_Ch1_loop_main
 
 Music_MeteorFallsRSE_Ch2:
-	vibrato $6, $23
-	notetype $8, $b2
-	dutycycle 3
+	vibrato 6, 2, 3
+	note_type 8, 11, 2
+	duty_cycle 3
 	octave 3
 	note A#, 1
 	octave 4
@@ -331,19 +332,19 @@ Music_MeteorFallsRSE_Ch2:
 	note A#, 1
 	octave 5
 	note C_, 1
-	intensity $b0
+	volume_envelope 11, 0
 	note D_, 16
 	note D_, 16
 	note D_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 16
 	note C#, 16
 	note C#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 12
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note G#, 6
 	note G#, 6
@@ -353,14 +354,14 @@ Music_MeteorFallsRSE_Ch2:
 	note G#, 6
 	note G#, 6
 	note G#, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 16
 	note A#, 16
 	note A#, 16
 	note A#, 16
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 8
-	intensity $92
+	volume_envelope 9, 2
 	octave 3
 	note E_, 2
 	note C#, 2
@@ -381,8 +382,8 @@ Music_MeteorFallsRSE_Ch2:
 	note C#, 2
 	octave 2
 	note A#, 2
-	dutycycle 2
-	intensity $92
+	duty_cycle 2
+	volume_envelope 9, 2
 	octave 5
 	note C_, 2
 	octave 4
@@ -483,160 +484,160 @@ Music_MeteorFallsRSE_Ch2:
 	note D#, 2
 	note F#, 2
 	note A_, 2
-	intensity $82
+	volume_envelope 8, 2
 	note F#, 2
-	intensity $72
+	volume_envelope 7, 2
 	note D#, 2
-	intensity $62
+	volume_envelope 6, 2
 	note A_, 2
-	intensity $b2
-	dutycycle 3
+	volume_envelope 11, 2
+	duty_cycle 3
 	octave 4
-	note __, 2
+	rest 2
 	note C_, 2
 	note C_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 6
 	note D_, 6
-	jumpchannel Music_MeteorFallsRSE_Ch2
+	sound_jump Music_MeteorFallsRSE_Ch2
 
 Music_MeteorFallsRSE_Ch3:
-	vibrato $16, $15
-	notetype $c, $14
-	note __, 4
+	vibrato 22, 1, 5
+	note_type 12, 1, 4
+	rest 4
 Music_MeteorFallsRSE_Ch3_loop_main:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note D#, 14
 	note A#, 2
 	note D#, 8
-	notetype $8, $14
+	note_type 8, 1, 4
 	note G_, 4
 	note F_, 4
 	note G_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	note A_, 14
 	octave 3
 	note C#, 2
 	octave 2
 	note A_, 7
-	note __, 1
-	notetype $8, $14
+	rest 1
+	note_type 8, 1, 4
 	note A_, 4
 	note G_, 4
 	note A_, 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 6
+	rest 6
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 4
+	rest 4
 	octave 3
 	note C_, 6
 	note C#, 16
 	note C#, 12
-	intensity $24
+	volume_envelope 2, 4
 	note C#, 8
-	intensity $14
+	volume_envelope 1, 4
 	note C#, 4
 	octave 2
 	note B_, 4
 	note G#, 4
 	note G_, 16
-	intensity $24
+	volume_envelope 2, 4
 	note G_, 8
-	intensity $14
+	volume_envelope 1, 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note C_, 2
-	note __, 6
+	rest 6
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 6
+	rest 6
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	octave 2
 	note F_, 2
-	note __, 6
+	rest 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 6
+	rest 6
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 16
-	note __, 6
+	rest 16
+	rest 6
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 6
+	rest 6
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 6
+	rest 6
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 6
+	rest 6
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
+	rest 6
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
+	rest 6
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 11
-	note __, 1
+	rest 1
 	note A#, 4
 	note G#, 4
 	note F_, 4
-	jumpchannel Music_MeteorFallsRSE_Ch3_loop_main
+	sound_jump Music_MeteorFallsRSE_Ch3_loop_main

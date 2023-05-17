@@ -11,7 +11,7 @@ RunActivationAbilitiesInner:
 	jr UserAbilityJumptable
 
 RunEnemyStatusHealAbilities:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RunStatusHealAbilities:
 	ld hl, StatusHealAbilities
 UserAbilityJumptable:
@@ -91,7 +91,7 @@ LimberAbility:
 	jr HealStatusAbility
 InsomniaAbility:
 VitalSpiritAbility:
-	ld a, SLP
+	ld a, SLP_MASK
 	; fallthrough
 HealStatusAbility:
 	ld b, a
@@ -197,7 +197,7 @@ WeatherAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	; Disable running animations as part of Start(wWeather) commands. This will not block
-	; Call_PlayBattleAnim that plays the animation manually.
+	; PlayBattleAnimDE that plays the animation manually.
 	ld a, b
 	cp WEATHER_RAIN
 	jr z, .handlerain
@@ -207,28 +207,31 @@ WeatherAbility:
 	jr z, .handlehail
 	; is sandstorm
 	ld de, SANDSTORM
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startsandstorm
 	jmp EnableAnimations
 .handlerain
 	ld de, RAIN_DANCE
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startrain
 	jmp EnableAnimations
 .handlesun
 	ld de, SUNNY_DAY
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_startsun
 	jmp EnableAnimations
 .handlehail
 	ld de, HAIL
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	farcall BattleCommand_starthail
 	jmp EnableAnimations
 
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
 	call GetOpponentAbility
+	inc a
+	jr z, .intimidate_ok
+	dec a
 	ld b, a
 	push af
 	farcall BufferAbility
@@ -260,8 +263,9 @@ IntimidateAbility:
 
 .continue
 	call EnableAnimations
-	farcall CheckWhiteHerb
-	jmp SwitchTurn
+	farcall CheckStatHerbs
+	call SwitchTurn
+	farjp CheckMirrorHerb
 
 INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
@@ -301,7 +305,8 @@ DownloadAbility:
 	ld b, ATTACK
 .got_stat
 	farcall ForceRaiseStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 ImposterAbility:
 	; Disallowed on Neutralizing Gas (even in switch-out mode)
@@ -311,7 +316,7 @@ ImposterAbility:
 
 	call DisableAnimations
 	; flags for the transform wave anim to not affect slideouts
-	farcall ShowPotentialAbilityActivation
+	call ShowPotentialAbilityActivation
 	farcall BattleCommand_transform
 	jmp EnableAnimations
 
@@ -456,7 +461,7 @@ ForewarnAbility:
 	; 3 moves share power: 3rd move replaces 2/3 of the time
 	; 4 moves share power: 4th move replaces 3/4 of the time
 	ld a, [wBuffer2]
-	inc a
+	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wBuffer2], a
 	inc a
 	call BattleRandomRange
@@ -564,7 +569,7 @@ SynchronizeAbility:
 	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	; 'potential' to not run the slideout twice
-	farcall ShowPotentialAbilityActivation
+	call ShowPotentialAbilityActivation
 	farcall ResetMiss
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -780,7 +785,8 @@ TanglingHairAbility:
 	ld b, SPEED
 	ld a, STAT_SILENT
 	farcall _ForceLowerOppStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
@@ -799,7 +805,7 @@ EffectSporeAbility:
 	jr c, StaticAbility
 
 	ld hl, CanSleepTarget
-	ld c, SLP
+	ld c, SLP_MASK
 	jr AfflictStatusAbility
 FlameBodyAbility:
 	ld hl, CanBurnTarget
@@ -845,7 +851,7 @@ _AfflictStatusAbility:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	ld a, c
-	cp SLP
+	cp SLP_MASK
 	jr nz, .got_status
 
 	; sleep for 1-3 turns (+1 including wakeup turn)
@@ -945,7 +951,7 @@ INCLUDE "data/abilities/type_nullification_abilities.asm"
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
 	call UserAbilityJumptable
@@ -986,7 +992,7 @@ CannotUseTextAbility:
 	jmp EnableAnimations
 
 RunStatIncreaseAbilities:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
 	ld hl, StatIncreaseAbilities
@@ -1076,7 +1082,8 @@ StatUpAbility:
 	call EnableAnimations
 	call SwitchTurn
 .done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 WeakArmorAbility:
 	; only physical moves activate this
@@ -1089,7 +1096,8 @@ WeakArmorAbility:
 	farcall LowerStat
 	ld b, $10 | SPEED
 	farcall RaiseStat
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 FlashFireAbility:
 	call DisableAnimations
@@ -1312,11 +1320,42 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
+	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
 	dbw -1, -1
+
+CudChewAbility:
+; Berries are re-indexed from $01-$7f, with $01 being FIRST_BERRY
+; if bit 7 is clear, run reconsumption routines, otherwise clear bit 7
+	assert NUM_BERRIES < $7f
+	ld a, BATTLE_VARS_CUD_CHEW_BERRY
+	call GetBattleVarAddr
+	and a
+	ret z
+	rla
+	jr nc, .eat_berry
+	ccf
+	rra
+	ld [hl], a
+	ret
+
+.eat_berry:
+	rra
+	add FIRST_BERRY - 1
+	ld [wCurItem], a
+	xor a
+	ld [hl], a
+	call DisableAnimations
+	farcall ReconsumeConfusionHealingItem
+	farcall ReconsumeHeldStatusHealingItem
+	farcall ReconsumeHPHealingItem ; also Enigma Berry
+	farcall ReconsumeStatBoostBerry ; also Lansat Berry
+	farcall ReconsumeDefendHitBerry
+	farcall ReconsumeLeppaBerry
+	jmp EnableAnimations
 
 HarvestAbility:
 ; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
@@ -1429,7 +1468,7 @@ RegainItemByAbility:
 	pop bc
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wCurPartyMon]
+	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Item
 	jr z, .got_item_addr
 	ld a, [wCurOTMon]
@@ -1549,7 +1588,8 @@ MoodyAbility:
 	ld b, e
 	farcall ForceLowerStat
 .lower_done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	call GetTrueUserAbility
@@ -1725,6 +1765,14 @@ IronFistAbility:
 	ln b, 6, 5 ; x1.2
 	jr MoveBoostAbility
 
+IsPunchingMove:
+; Returns z|c if the move is a punching move, otherwise nz|nc.
+	ld hl, PunchingMoves
+	call IsInByteArray
+	sbc a
+	inc a
+	ret
+
 INCLUDE "data/moves/punching_moves.asm"
 
 SharpnessAbility:
@@ -1897,7 +1945,8 @@ AngerPointAbility:
 	xor a
 	farcall DoPrintStatChange
 .done
-	jmp EnableAnimations
+	call EnableAnimations
+	farjp CheckMirrorHerb
 
 RunSwitchAbilities:
 ; abilities that activate when you switch out
@@ -1973,8 +2022,11 @@ EnableAnimations:
 	ret
 
 ShowEnemyAbilityActivation::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 ShowAbilityActivation::
+; Unconditionally does slideout. Consider ShowPotentialAbilityActivation
+; if you need to avoid risking repeated slideouts, or for conditional cases
+; (it checks wAnimationsDisabled).
 	push hl
 	push de
 	push bc
@@ -1982,8 +2034,35 @@ ShowAbilityActivation::
 	call GetBattleVar
 	ld b, a
 	call PerformAbilityGFX
-
 	jmp PopBCDEHL
+
+ShowPotentialAbilityActivation:
+; This avoids duplicating checks to avoid text spam. This will run
+; ShowAbilityActivation if animations are disabled (something only abilities do)
+	ld a, [wAnimationsDisabled]
+	and a
+	ret z
+	push hl
+	ld h, a
+	ldh a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	and h
+	pop hl
+	ret nz
+	call ShowAbilityActivation
+	ldh a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	push hl
+	ld h, a
+	ld a, [wAnimationsDisabled]
+	or h
+	ld [wAnimationsDisabled], a
+	pop hl
+	ret
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)

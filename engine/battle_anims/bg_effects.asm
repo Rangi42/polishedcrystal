@@ -716,9 +716,9 @@ BattleBGEffect_RunPicResizeScript:
 	and $f
 	ld b, a
 ; store pointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 ; get byte
 	pop hl
 	inc hl
@@ -941,7 +941,7 @@ BattleBGEffect_Water:
 	jr nc, .done
 	inc [hl]
 	inc [hl]
-	jmp Functionc8f9a
+	jmp DeformWater
 
 .done
 	call BattleBGEffects_ClearLYOverrides
@@ -1061,7 +1061,7 @@ BattleBGEffect_DoubleTeam:
 	add hl, bc
 	ld a, [hl]
 	ld d, $2
-	call Sine
+	farcall Sine
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
 	add [hl]
@@ -1086,9 +1086,9 @@ BattleBGEffect_DoubleTeam:
 	srl a
 	push af
 .loop
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	dec a
 	jr nz, .loop
@@ -1465,7 +1465,7 @@ BattleBGEffect_WobbleMon:
 	add hl, bc
 	ld a, [hl]
 	ld d, $8
-	call Sine
+	farcall Sine
 	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -1501,13 +1501,13 @@ BattleBGEffect_Flail:
 	add hl, bc
 	ld a, [hl]
 	ld d, $6
-	call Sine
+	farcall Sine
 	push af
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
 	ld d, $2
-	call Sine
+	farcall Sine
 	ld e, a
 	pop af
 	add e
@@ -1593,7 +1593,7 @@ BattleBGEffect_BounceDown:
 	add hl, bc
 	ld a, [hl]
 	ld d, $10
-	call Cosine
+	farcall Cosine
 	add $10
 	ld d, a
 	pop af
@@ -1672,7 +1672,7 @@ BattleBGEffect_BetaSendOutMon1:
 	srl a
 	ld h, HIGH(wLYOverridesBackup)
 .loop2
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	inc hl
 	dec a
@@ -1864,7 +1864,7 @@ BattleBGEffect_WobblePlayer:
 	cp $40
 	jmp nc, BattleAnim_ResetLCDStatCustom
 	ld d, $6
-	call Sine
+	farcall Sine
 	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -1951,7 +1951,7 @@ BattleBGEffect_WobbleScreen:
 	cp $40
 	jr nc, .finish
 	ld d, $6
-	call Sine
+	farcall Sine
 	ldh [hSCX], a
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -2332,7 +2332,7 @@ BattleBGEffect_SineWave:
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]
-	call Sine
+	farcall Sine
 	ld [bc], a
 .next
 	inc bc
@@ -2361,7 +2361,7 @@ InitSurfWaves:
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]
-	call Sine
+	farcall Sine
 	ld [bc], a
 	inc bc
 	ld a, [wBattleAnimTemp1]
@@ -2374,7 +2374,7 @@ InitSurfWaves:
 	pop bc
 	ret
 
-Functionc8f9a:
+DeformWater:
 	push bc
 	ld [wBattleAnimTemp3], a
 	ld a, e
@@ -2397,7 +2397,7 @@ Functionc8f9a:
 	ld d, a
 	ld a, [wBattleAnimTemp1]
 	push hl
-	call Sine
+	farcall Sine
 	ld e, a
 	pop hl
 	ldh a, [hLYOverrideEnd]
@@ -2410,8 +2410,8 @@ Functionc8f9a:
 	ldh a, [hLYOverrideStart]
 	cp l
 	jr nc, .skip2
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 .skip2
 	ld a, [wBattleAnimTemp1]
 	add $4

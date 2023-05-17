@@ -2,7 +2,7 @@ BattleCommand_sleeptalk:
 	call ClearLastMove
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	jr z, .fail
 
 	ld a, [wAttackMissed]

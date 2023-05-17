@@ -86,7 +86,7 @@ else
 endc
 
 _FixDays:
-	ld hl, hRTCDayHi
+	ld hl, wRTCDayHi
 	bit 7, [hl]
 	jr nz, .set_bit_7
 	bit 6, [hl]
@@ -126,7 +126,7 @@ ClockContinue:
 _InitTime::
 	call GetClock
 	call FixDays
-	ld hl, hRTCSeconds
+	ld hl, wRTCSeconds
 	ld de, wStartSecond
 	ld bc, wStringBuffer2 + 3
 ; seconds

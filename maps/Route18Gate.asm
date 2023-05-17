@@ -29,24 +29,24 @@ Route18GateStepUpOneTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applyonemovement PLAYER, step_up
-	sjumpfwd UnknownScript_0x73617
+	sjumpfwd Route18GateNoBicycle
 
 Route18GateStepUpTwoTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applymovement PLAYER, Route18GateStepUpTwoMovementData
-	sjumpfwd UnknownScript_0x73617
+	sjumpfwd Route18GateNoBicycle
 
 Route18GateStepUpThreeTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applymovement PLAYER, Route18GateStepUpThreeMovementData
-	sjumpfwd UnknownScript_0x73617
+	sjumpfwd Route18GateNoBicycle
 
 Route17Route18GateBicycleCheck:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
-UnknownScript_0x73617:
+Route18GateNoBicycle:
 	showemote EMOTE_SHOCK, ROUTE18GATE_OFFICER, 15
 	turnobject PLAYER, UP
 	showtext Route17Route18GateCannotPassText

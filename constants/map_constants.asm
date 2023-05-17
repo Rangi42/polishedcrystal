@@ -238,7 +238,7 @@ ENDM
 	newgroup                                                     ; 10
 	map_const ROUTE_32,                                   10, 45 ;  1
 	map_const ROUTE_32_COAST,                             15, 35 ;  2
-	map_const VIOLET_CITY,                                20, 20 ;  3
+	map_const VIOLET_CITY,                                20, 18 ;  3
 	map_const VIOLET_MART,                                 6,  4 ;  4
 	map_const VIOLET_GYM,                                  5,  8 ;  5
 	map_const EARLS_POKEMON_ACADEMY,                       4,  8 ;  6
@@ -249,7 +249,7 @@ ENDM
 	map_const ROUTE_32_POKECENTER_1F,                      6,  4 ; 11
 	map_const ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
 	map_const MAGNET_TUNNEL_EAST,                         10, 11 ; 13
-	map_const VIOLET_OUTSKIRTS,                           20,  8 ; 14
+	map_const VIOLET_OUTSKIRTS,                           20, 10 ; 14
 
 	newgroup                                                     ; 11
 	map_const ROUTE_34,                                   10, 27 ;  1
@@ -361,7 +361,7 @@ ENDM
 	map_const ROUTE_13_WEST,                              12, 10 ;  3
 	map_const ROUTE_14,                                   12, 19 ;  4
 	map_const ROUTE_15,                                   20,  9 ;  5
-	map_const ROUTE_18_EAST,                              14, 11 ;  6
+	map_const ROUTE_18_EAST,                              12, 11 ;  6
 	map_const FUCHSIA_CITY,                               20, 18 ;  7
 	map_const FUCHSIA_MART,                                6,  4 ;  8
 	map_const FUCHSIA_GYM,                                 5,  9 ;  9
@@ -432,7 +432,7 @@ ENDM
 	map_const ROUTE_16_NORTHEAST,                         11, 11 ;  2
 	map_const ROUTE_16_SOUTH,                             11, 11 ;  3
 	map_const ROUTE_17,                                   10, 63 ;  4
-	map_const ROUTE_18_WEST,                              10,  9 ;  5
+	map_const ROUTE_18_WEST,                              12,  9 ;  5
 	map_const URAGA_CHANNEL_EAST,                         23,  9 ;  6
 	map_const CELADON_CITY,                               22, 18 ;  7
 	map_const CELADON_DEPT_STORE_1F,                       8,  4 ;  8
@@ -490,6 +490,11 @@ ENDM
 	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 60
 	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 61
 	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 62
+	map_const ROCKET_HIDEOUT_B1F,                         11, 14 ; 63
+	map_const ROCKET_HIDEOUT_B2F,                         15, 11 ; 64
+	map_const ROCKET_HIDEOUT_B3F,                         11, 12 ; 65
+	map_const ROCKET_HIDEOUT_B4F,                         11, 12 ; 66
+	map_const ROCKET_HIDEOUT_ELEVATOR,                     2,  2 ; 67
 
 	newgroup                                                     ; 22
 	map_const ROUTE_40,                                   10, 20 ;  1
@@ -564,7 +569,7 @@ ENDM
 	map_const ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
 	map_const ROUTE_5_SAFFRON_CITY_GATE,                   5,  4 ; 14
 	map_const ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
-	map_const POKEMON_TRAINER_FAN_CLUB,                    4,  5 ; 16
+	map_const POKEMON_TRAINER_FAN_CLUB,                    6,  9 ; 16
 	map_const SAFFRON_HITMONTOP_KID_HOUSE,                 4,  4 ; 17
 	map_const SAFFRON_BOOK_SPEECH_HOUSE,                   4,  4 ; 18
 	map_const SAFFRON_ORRE_SPEECH_HOUSE,                   4,  4 ; 19

@@ -613,7 +613,7 @@ PrintHoursMins:
 .h24:
 ; Crazy stuff happening with the stack
 	push bc
-	ld hl, sp+$1
+	ld hl, sp + 1
 	push de
 	push hl
 	pop de
@@ -625,7 +625,7 @@ PrintHoursMins:
 	ld [hli], a
 	ld d, h
 	ld e, l
-	ld hl, sp+$0
+	ld hl, sp + 0
 	push de
 	push hl
 	pop de

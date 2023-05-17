@@ -4,7 +4,7 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 60 ; catch rate
 	db 150 ; base exp
-	db NO_ITEM, CELL_BATTERY ; held items
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for ELECTRODE, SOUNDPROOF, STATIC, AFTERMATH

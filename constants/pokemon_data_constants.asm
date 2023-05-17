@@ -257,6 +257,9 @@ DEF MON_EXTSPECIES_F EQU 5
 DEF MODERN_MAX_EV EQU 252
 DEF MODERN_EV_LIMIT EQU 510
 
+; hyper training level requirement
+DEF HYPER_LEVEL_REQ EQU 50
+
 ; shiny probability values
 DEF SHINY_NUMERATOR         EQU 16 ; 16/65536 = 1/4096
 DEF CHARMED_SHINY_NUMERATOR EQU 48 ; 48/65536 = 3/4096
@@ -314,7 +317,6 @@ DEF NUM_HOF_TEAMS EQU 10
 	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")
 	const EVOLVE_LOCATION
 	const EVOLVE_MOVE
-	const EVOLVE_EVS
 	const EVOLVE_CRIT ; only for Galarian Farfetch'd
 	const EVOLVE_PARTY ; only for Mantyke
 ; multi_evo types for Lyra's info (used in data/pokemon/multi_evos.asm)
@@ -347,9 +349,6 @@ DEF NUM_EVOLVE_METHODS EQU const_value
 	const ATK_GT_DEF
 	const ATK_LT_DEF
 	const ATK_EQ_DEF
-
-; EVOLVE_EVS trigger value
-DEF EVS_TO_EVOLVE EQU 50
 
 ; wild data
 

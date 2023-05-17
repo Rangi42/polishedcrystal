@@ -75,11 +75,6 @@ DEF STRING_BUFFER_LENGTH EQU 19
 	const VAR_PLAYERGENDER     ; 1b
 DEF NUM_VARS EQU const_value       ; 1c
 
-; variable action types
-DEF RETVAR_STRBUF2 EQU 0 << 6
-DEF RETVAR_ADDR_DE EQU 1 << 6
-DEF RETVAR_EXECUTE EQU 2 << 6
-
 ; PlayerEventScriptPointers indexes (see engine/overworld/events.asm)
 	const_def -1
 	const PLAYEREVENT_MAPSCRIPT

@@ -1,12 +1,12 @@
 SECTION "bank1", ROMX
 
+INCLUDE "engine/init.asm"
 INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"
 INCLUDE "engine/overworld/init_map.asm"
 INCLUDE "engine/menus/init_options.asm"
 INCLUDE "engine/pokemon/learn.asm"
-INCLUDE "engine/math/math.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
@@ -14,13 +14,13 @@ INCLUDE "engine/events/shiny_ditto.asm"
 INCLUDE "engine/events/shuckle.asm"
 INCLUDE "engine/events/bills_grandfather.asm"
 INCLUDE "engine/events/hidden_power_guru.asm"
+INCLUDE "engine/events/mint_tea.asm"
 INCLUDE "engine/events/haircut_etc.asm"
 
 
 SECTION "bank2", ROMX
 
 INCLUDE "engine/overworld/player_object.asm"
-INCLUDE "engine/math/sine.asm"
 INCLUDE "data/predef_pointers.asm"
 INCLUDE "engine/gfx/color.asm"
 
@@ -193,6 +193,11 @@ INCLUDE "engine/battle/core.asm"
 SECTION "Battle Endturn", ROMX
 
 INCLUDE "engine/battle/endturn.asm"
+
+
+SECTION "Math", ROMX
+
+INCLUDE "engine/math/math.asm"
 
 
 SECTION "Pokedex", ROMX
@@ -466,6 +471,11 @@ SECTION "Battle Animation Data", ROMX
 INCLUDE "data/moves/animations.asm"
 
 
+SECTION "Sine", ROMX
+
+INCLUDE "engine/math/sine.asm"
+
+
 SECTION "Move Animations", ROMX
 
 INCLUDE "engine/battle_anims/anim_commands.asm"
@@ -695,3 +705,9 @@ INCLUDE "engine/items/type_chart.asm"
 SECTION "VWF", ROMX
 
 INCLUDE "engine/gfx/vwf.asm"
+
+
+SECTION "Dynamic Pals System", ROMX
+
+INCLUDE "engine/gfx/sprite_palettes.asm"
+INCLUDE "engine/gfx/dynamic_pals.asm"

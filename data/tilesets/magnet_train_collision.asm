@@ -112,3 +112,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 6f
 	tilecoll STOP_SPIN, STOP_SPIN, FLOOR, FLOOR ; 70
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 71
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 72

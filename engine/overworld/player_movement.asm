@@ -116,7 +116,7 @@ DoPlayerMovement::
 ; Tiles such as waterfalls and warps move the player
 ; in a given direction, overriding input.
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld c, a
 	cp COLL_WHIRLPOOL
 	jr nz, .not_whirlpool
@@ -237,7 +237,7 @@ DoPlayerMovement::
 	and a
 	jr nz, .spin
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .ice
 
@@ -282,14 +282,12 @@ DoPlayerMovement::
 .run
 	ld a, STEP_RUN
 	call .DoStep
-;   Trainer faces player -- not a current feature
-;	push af
-;	ld a, [wWalkingDirection]
-;	cp STANDING
-;	jr z, .skip_trainer
-;	call CheckTrainerRun
-;.skip_trainer
-;	pop af
+; Trainer faces player if they're running
+	push af
+	ld a, [wWalkingDirection]
+	cp STANDING
+	call nz, CheckTrainerRun
+	pop af
 	scf
 	ret
 
@@ -342,7 +340,7 @@ DoPlayerMovement::
 	ret
 
 .TryJump:
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld e, a
 	and $f0
 	cp HI_NYBBLE_LEDGES
@@ -359,13 +357,13 @@ DoPlayerMovement::
 	and [hl]
 	jr z, .DontJump
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
 	ld a, [wWalkingX]
 	add a
 	add d
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wWalkingY]
 	add a
@@ -398,7 +396,7 @@ DoPlayerMovement::
 	db FACE_UP | FACE_LEFT
 
 .TryStairs:
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld e, a
 	and $f0
 	cp HI_NYBBLE_SIDEWAYS_STAIRS
@@ -414,7 +412,7 @@ DoPlayerMovement::
 	and [hl]
 	jr z, .DontStairs
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_STAIRS_RIGHT_UP
 	; a = carry ? FALSE : TRUE
 	sbc a
@@ -446,7 +444,7 @@ DoPlayerMovement::
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp [hl]
 	jr nz, .not_warp
 
@@ -688,7 +686,7 @@ endc
 ;	tile collision pointer
 .table1
 	db STANDING, FACE_CURRENT, 0, 0
-	dw wPlayerStandingTile
+	dw wPlayerTile
 .table2
 	db RIGHT, FACE_RIGHT,  1,  0
 	dw wTileRight
@@ -707,13 +705,13 @@ endc
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
 	ld a, [wWalkingX]
 	add d
 	ld d, a
 ; Load the next Y coordinate into e
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wWalkingY]
 	add e
@@ -741,7 +739,7 @@ endc
 	bit OWSTATE_STRENGTH, [hl]
 	jr z, .not_boulder
 
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
 	cp STANDING
@@ -883,7 +881,7 @@ endc
 	ret nz
 
 	call CheckSFX
-	ret c
+	ret nz
 	ld de, SFX_BUMP
 	jmp PlaySFX
 
@@ -901,7 +899,7 @@ CheckStandingOnIce::
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .ice
 	ld a, [wPlayerState]
@@ -916,8 +914,164 @@ CheckStandingOnIce::
 	and a
 	ret
 
+CheckTrainerRun:
+; Check if any trainer on the map sees the player.
+
+; Skip the player object.
+	ld a, 1
+	ld de, wMap1Object
+
+.loop
+
+; Have them face the player if the object:
+
+	push af
+	push de
+
+; Is a trainer
+	ld hl, MAPOBJECT_TYPE
+	add hl, de
+	ld a, [hl]
+	cp OBJECTTYPE_TRAINER
+	jr z, .trainer
+	cp OBJECTTYPE_GENERICTRAINER
+	jr nz, .next
+.trainer
+
+; Spins around
+	ld hl, MAPOBJECT_MOVEMENT
+	add hl, de
+	ld a, [hl]
+	cp SPRITEMOVEDATA_SPINRANDOM_SLOW
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINRANDOM_FAST
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINCLOCKWISE
+	jr nz, .next
+.spinner
+
+; Has a sprite
+	ld hl, MAPOBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .next
+
+; Is visible on the map
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	inc a ; cp -1
+	jr z, .next
+
+; You're within their sight range
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	call GetObjectStruct
+	push de
+	call AnyFacingPlayerDistance
+	pop de
+	ld hl, MAPOBJECT_SIGHT_RANGE
+	add hl, de
+	ld a, [hl]
+	cp c
+	jr c, .next
+
+; Get them to face you
+	ld a, b
+	push af
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	call GetObjectStruct
+	pop af
+	call SetSpriteDirection
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld a, [hl]
+	cp $40
+	jr nc, .next
+	ld [hl], $40
+
+.next
+	pop de
+	ld hl, MAPOBJECT_LENGTH
+	add hl, de
+	ld d, h
+	ld e, l
+
+	pop af
+	inc a
+	cp NUM_OBJECTS
+	jr nz, .loop
+	xor a
+	ret
+
+AnyFacingPlayerDistance:
+; Returns distance in c and direction in b.
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld d, [hl]
+
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld e, [hl]
+
+	ldh a, [hJoypadDown]
+	ld bc, 0
+	bit D_DOWN_F, a
+	jr nz, .down
+	bit D_UP_F, a
+	jr nz, .up
+	bit D_LEFT_F, a
+	jr nz, .left
+	bit D_RIGHT_F, a
+	jr nz, .right
+.down
+	inc b
+	jr .got_vector
+.up
+	dec b
+	jr .got_vector
+.left
+	dec c
+	jr .got_vector
+.right
+	inc c
+.got_vector
+
+	ld a, [wPlayerMapX]
+	add c
+	sub d
+	ld l, OW_RIGHT
+	jr nc, .check_y
+	cpl
+	inc a
+	ld l, OW_LEFT
+.check_y
+	ld d, a
+	ld a, [wPlayerMapY]
+	add b
+	sub e
+	ld h, OW_DOWN
+	jr nc, .compare
+	cpl
+	inc a
+	ld h, OW_UP
+.compare
+	cp d
+	ld c, a
+	ld b, h
+	ret nc
+	ld c, d
+	ld b, l
+	ret
+
 CheckSpinning::
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_STOP_SPIN
 	jr z, .stop_spin
 	call CheckSpinTile

@@ -32,7 +32,7 @@ Route43_MapScriptHeader:
 	object_event 11, 24, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrIvyandamy1, -1
 	object_event 11, 25, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrIvyandamy2, -1
 	cuttree_event  2, 28, EVENT_ROUTE_43_CUT_TREE
-	fruittree_event  1, 26, FRUITTREE_ROUTE_43, PERSIM_BERRY, PAL_NPC_RED
+	fruittree_event  1, 26, FRUITTREE_ROUTE_43, PERSIM_BERRY, PAL_NPC_PINK
 	itemball_event 12, 32, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
 	object_const_def
@@ -238,29 +238,29 @@ PokemaniacBrent1Script:
 	loadvar VAR_CALLERID, PHONE_POKEMANIAC_BRENT
 	opentext
 	checkflag ENGINE_BRENT_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0x19d0cf
+	iftruefwd .WantsBattle
 	checkcellnum PHONE_POKEMANIAC_BRENT
-	iftruefwd UnknownScript_0x19d138
+	iftruefwd .NumberAccepted
 	checkevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x19d0b8
+	iftruefwd .AskedAlready
 	writetext PokemaniacBrentAfterBattleText
 	promptbutton
 	setevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19d12c
-	sjumpfwd UnknownScript_0x19d0bb
+	scall .AskNumber1
+	sjumpfwd .AskForNumber
 
-UnknownScript_0x19d0b8:
-	scall UnknownScript_0x19d130
-UnknownScript_0x19d0bb:
+.AskedAlready:
+	scall .AskNumber2
+.AskForNumber:
 	askforphonenumber PHONE_POKEMANIAC_BRENT
-	ifequalfwd $1, UnknownScript_0x19d140
-	ifequalfwd $2, UnknownScript_0x19d13c
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername POKEMANIAC, BRENT1, $0
-	scall UnknownScript_0x19d134
-	sjumpfwd UnknownScript_0x19d138
+	scall .RegisteredNumber
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x19d0cf:
-	scall UnknownScript_0x19d144
+.WantsBattle:
+	scall .Rematch
 	winlosstext PokemaniacBrent1BeatenText, 0
 	readmem wBrentFightCount
 	ifequalfwd 3, .Fight3
@@ -307,25 +307,25 @@ UnknownScript_0x19d0cf:
 	clearflag ENGINE_BRENT_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x19d12c:
+.AskNumber1:
 	jumpstd asknumber1m
 
-UnknownScript_0x19d130:
+.AskNumber2:
 	jumpstd asknumber2m
 
-UnknownScript_0x19d134:
+.RegisteredNumber:
 	jumpstd registerednumberm
 
-UnknownScript_0x19d138:
+.NumberAccepted:
 	jumpstd numberacceptedm
 
-UnknownScript_0x19d13c:
+.NumberDeclined:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x19d140:
+.PhoneFull:
 	jumpstd phonefullm
 
-UnknownScript_0x19d144:
+.Rematch:
 	jumpstd rematchm
 
 GenericTrainerPokemaniacRon:
@@ -361,33 +361,33 @@ PicnickerTiffany1Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_TIFFANY
 	opentext
 	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0x19d1c1
+	iftruefwd .WantsBattle
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
-	iftruefwd UnknownScript_0x19d21e
+	iftruefwd .HasPinkBow
 	checkcellnum PHONE_PICNICKER_TIFFANY
-	iftruefwd UnknownScript_0x19d245
+	iftruefwd .NumberAccepted
 	checkpoke CLEFAIRY
-	iffalsefwd UnknownScript_0x19d233
+	iffalsefwd .NoClefairy
 	checkevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x19d1aa
+	iftruefwd .AskedAlready
 	writetext PicnickerTiffanyWantsPicnicText
 	promptbutton
 	setevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19d239
-	sjumpfwd UnknownScript_0x19d1ad
+	scall .AskNumber1
+	sjumpfwd .AskForNumber
 
-UnknownScript_0x19d1aa:
-	scall UnknownScript_0x19d23d
-UnknownScript_0x19d1ad:
+.AskedAlready:
+	scall .AskNumber2
+.AskForNumber:
 	askforphonenumber PHONE_PICNICKER_TIFFANY
-	ifequalfwd $1, UnknownScript_0x19d24d
-	ifequalfwd $2, UnknownScript_0x19d249
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername PICNICKER, TIFFANY1, $0
-	scall UnknownScript_0x19d241
-	sjumpfwd UnknownScript_0x19d245
+	scall .RegisteredNumber
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x19d1c1:
-	scall UnknownScript_0x19d251
+.WantsBattle:
+	scall .Rematch
 	winlosstext PicnickerTiffany1BeatenText, 0
 	readmem wTiffanyFightCount
 	ifequalfwd 3, .Fight3
@@ -434,45 +434,45 @@ UnknownScript_0x19d1c1:
 	clearflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x19d21e:
-	scall UnknownScript_0x19d255
+.HasPinkBow:
+	scall .Gift
 	verbosegiveitem PINK_BOW
-	iffalsefwd UnknownScript_0x19d230
+	iffalsefwd .NoRoom
 	clearflag ENGINE_TIFFANY_HAS_PINK_BOW
 	setevent EVENT_TIFFANY_GAVE_PINK_BOW
-	sjumpfwd UnknownScript_0x19d245
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x19d230:
-	sjumpfwd UnknownScript_0x19d259
+.NoRoom:
+	sjumpfwd .PackFull
 
-UnknownScript_0x19d233:
+.NoClefairy:
 	jumpopenedtext PicnickerTiffanyClefairyText
 
-UnknownScript_0x19d239:
+.AskNumber1:
 	jumpstd asknumber1f
 
-UnknownScript_0x19d23d:
+.AskNumber2:
 	jumpstd asknumber2f
 
-UnknownScript_0x19d241:
+.RegisteredNumber:
 	jumpstd registerednumberf
 
-UnknownScript_0x19d245:
+.NumberAccepted:
 	jumpstd numberacceptedf
 
-UnknownScript_0x19d249:
+.NumberDeclined:
 	jumpstd numberdeclinedf
 
-UnknownScript_0x19d24d:
+.PhoneFull:
 	jumpstd phonefullf
 
-UnknownScript_0x19d251:
+.Rematch:
 	jumpstd rematchf
 
-UnknownScript_0x19d255:
+.Gift:
 	jumpstd giftf
 
-UnknownScript_0x19d259:
+.PackFull:
 	jumpstd packfullf
 
 PokemaniacBenSeenText:

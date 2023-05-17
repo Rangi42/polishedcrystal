@@ -1,43 +1,44 @@
 ; object_struct members (see macros/ram.asm)
 rsreset
-DEF OBJECT_SPRITE              rb ; 00
-DEF OBJECT_MAP_OBJECT_INDEX    rb ; 01
-DEF OBJECT_SPRITE_TILE         rb ; 02
-DEF OBJECT_MOVEMENTTYPE        rb ; 03
-DEF OBJECT_FLAGS1              rb ; 04
-DEF OBJECT_FLAGS2              rb ; 05
-DEF OBJECT_PALETTE             rb ; 06
-DEF OBJECT_DIRECTION_WALKING   rb ; 07
-DEF OBJECT_FACING              rb ; 08
-DEF OBJECT_STEP_TYPE           rb ; 09
-DEF OBJECT_STEP_DURATION       rb ; 0a
-DEF OBJECT_ACTION              rb ; 0b
-DEF OBJECT_STEP_FRAME          rb ; 0c
-DEF OBJECT_FACING_STEP         rb ; 0d
-DEF OBJECT_NEXT_TILE           rb ; 0e
-DEF OBJECT_STANDING_TILE       rb ; 0f
-DEF OBJECT_NEXT_MAP_X          rb ; 10
-DEF OBJECT_NEXT_MAP_Y          rb ; 11
-DEF OBJECT_MAP_X               rb ; 12
-DEF OBJECT_MAP_Y               rb ; 13
-DEF OBJECT_INIT_X              rb ; 14
-DEF OBJECT_INIT_Y              rb ; 15
-DEF OBJECT_RADIUS              rb ; 16
-DEF OBJECT_SPRITE_X            rb ; 17
-DEF OBJECT_SPRITE_Y            rb ; 18
-DEF OBJECT_SPRITE_X_OFFSET     rb ; 19
-DEF OBJECT_SPRITE_Y_OFFSET     rb ; 1a
-DEF OBJECT_MOVEMENT_BYTE_INDEX rb ; 1b
-DEF OBJECT_1C                  rb ; 1c
-DEF OBJECT_1D                  rb ; 1d
-DEF OBJECT_1E                  rb ; 1e
-DEF OBJECT_1F                  rb ; 1f
-DEF OBJECT_RANGE               rb ; 20
+DEF OBJECT_SPRITE           rb ; 00
+DEF OBJECT_MAP_OBJECT_INDEX rb ; 01
+DEF OBJECT_SPRITE_TILE      rb ; 02
+DEF OBJECT_MOVEMENT_TYPE    rb ; 03
+DEF OBJECT_FLAGS1           rb ; 04
+DEF OBJECT_FLAGS2           rb ; 05
+DEF OBJECT_PALETTE          rb ; 06
+DEF OBJECT_WALKING          rb ; 07
+DEF OBJECT_DIRECTION        rb ; 08
+DEF OBJECT_STEP_TYPE        rb ; 09
+DEF OBJECT_STEP_DURATION    rb ; 0a
+DEF OBJECT_ACTION           rb ; 0b
+DEF OBJECT_STEP_FRAME       rb ; 0c
+DEF OBJECT_FACING           rb ; 0d
+DEF OBJECT_TILE             rb ; 0e
+DEF OBJECT_LAST_TILE        rb ; 0f
+DEF OBJECT_MAP_X            rb ; 10
+DEF OBJECT_MAP_Y            rb ; 11
+DEF OBJECT_LAST_MAP_X       rb ; 12
+DEF OBJECT_LAST_MAP_Y       rb ; 13
+DEF OBJECT_INIT_X           rb ; 14
+DEF OBJECT_INIT_Y           rb ; 15
+DEF OBJECT_RADIUS           rb ; 16
+DEF OBJECT_SPRITE_X         rb ; 17
+DEF OBJECT_SPRITE_Y         rb ; 18
+DEF OBJECT_SPRITE_X_OFFSET  rb ; 19
+DEF OBJECT_SPRITE_Y_OFFSET  rb ; 1a
+DEF OBJECT_MOVEMENT_INDEX   rb ; 1b
+DEF OBJECT_STEP_INDEX       rb ; 1c
+DEF OBJECT_1D               rb ; 1d
+DEF OBJECT_1E               rb ; 1e
+DEF OBJECT_JUMP_HEIGHT      rb ; 1f
+DEF OBJECT_RANGE            rb ; 20
+DEF OBJECT_PAL_INDEX        rb ; 21
 DEF OBJECT_LENGTH EQU _RS
 DEF NUM_OBJECT_STRUCTS EQU 13 ; see wObjectStructs
 DEF FIRST_VRAM1_OBJECT_STRUCT EQU 8
 
-; object_struct OBJECT_FACING values
+; object_struct OBJECT_DIRECTION values
 DEF OW_DOWN  EQU DOWN  << 2
 DEF OW_UP    EQU UP    << 2
 DEF OW_LEFT  EQU LEFT  << 2
@@ -105,10 +106,10 @@ DEF MAPOBJECT_Y_COORD          rb ; 2
 DEF MAPOBJECT_X_COORD          rb ; 3
 DEF MAPOBJECT_MOVEMENT         rb ; 4
 DEF MAPOBJECT_RADIUS           rb ; 5
-DEF MAPOBJECT_HOUR             rb ; 6
+DEF MAPOBJECT_PALETTE          rb ; 6
 DEF MAPOBJECT_TIMEOFDAY        rb ; 7
-DEF MAPOBJECT_COLOR            rb ; 8
-DEF MAPOBJECT_RANGE            rb ; 9
+DEF MAPOBJECT_TYPE             rb ; 8
+DEF MAPOBJECT_SIGHT_RANGE      rb ; 9
 DEF MAPOBJECT_SCRIPT_POINTER   rw ; a
 DEF MAPOBJECT_EVENT_FLAG       rw ; c
 DEF MAPOBJECT_LENGTH EQU _RS
@@ -177,6 +178,7 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_ALOLAN_EXEGGUTOR     ; 2c
 	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
 	const SPRITEMOVEDATA_PLACEHOLDER_UP       ; 2e
+	const SPRITEMOVEDATA_MICROPHONE           ; 2f
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -213,6 +215,7 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
 	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
 	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
+	const SPRITEMOVEFN_MICROPHONE            ; 20
 DEF NUM_SPRITEMOVEFN EQU const_value
 
 ; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
@@ -274,6 +277,7 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_ALOLAN_EXEGGUTOR ; 1a
 	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 1b
 	const OBJECT_ACTION_TINY_WINDOWS     ; 1c
+	const OBJECT_ACTION_MICROPHONE       ; 1d
 DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
@@ -338,6 +342,7 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_TINY_WINDOWS_4     ; 39
 	const FACING_TINY_WINDOWS_5     ; 3a
 	const FACING_TINY_WINDOWS_6     ; 3b
+	const FACING_MICROPHONE         ; 3c
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

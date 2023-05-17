@@ -412,12 +412,12 @@ endr
 	pop hl
 	push bc
 	inc hl
-	ld c, [hl]
-	dec hl
-	ld b, [hl]
-	dec hl
-	ld [hl], c
-	dec hl
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
+	ld b, a
+	ld a, c
+	ld [hld], a
 	ld [hl], b
 	pop bc
 	pop hl
@@ -576,13 +576,14 @@ RetrieveBreedmon:
 	rst CopyBytes
 	push hl
 	call GetLastPartyMon
+	pop hl
+	ld bc, BREEDMON_STRUCT_LENGTH
+	rst CopyBytes
+	call GetLastPartyMon
 	ld hl, MON_FORM
 	add hl, de
 	ld a, [hl]
 	ld [wCurForm], a
-	pop hl
-	ld bc, BREEDMON_STRUCT_LENGTH
-	rst CopyBytes
 	call GetBaseData
 	call GetLastPartyMon
 	ld b, d
@@ -640,7 +641,7 @@ RetrieveBreedmon:
 
 Special_HyperTrain:
 	farcall SelectMonFromParty
-	jmp c, .nope
+	jr c, .nope
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
@@ -671,6 +672,20 @@ Special_HyperTrain:
 	dec a
 	jr nz, .loop
 
+	; If modern EVs are enabled, require level 50 instead.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	jr nz, .not_modern_evs
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	cp HYPER_LEVEL_REQ
+	jr nc, .allow_hyper_training
+	ld hl, .TextNotEnoughLevels
+	jr .print_and_fail
+
+.not_modern_evs
 	; Check if we've reached maximum effort on the stat
 	ld a, MON_EVS - 1
 	add c
@@ -679,6 +694,7 @@ Special_HyperTrain:
 	ld hl, .TextNotMaxEffort
 	jr c, .print_and_fail
 
+.allow_hyper_training
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1HyperTraining
 	call SkipNames
@@ -688,31 +704,8 @@ Special_HyperTrain:
 	or d
 	or [hl]
 	ld [hl], a
-	ld b, a
 
-	; Recalculate stats.
-	push bc
-	ld a, MON_SPECIES
-	call GetPartyParamLocationAndValue
-	ld [wCurSpecies], a
-	ld a, MON_FORM
-	call GetPartyParamLocationAndValue
-	ld [wCurForm], a
-	call GetBaseData
-	pop bc
-
-	ld a, MON_LEVEL
-	call GetPartyParamLocationAndValue
-	ld [wCurPartyLevel], a
-
-	ld a, MON_MAXHP
-	call GetPartyParamLocationAndValue
-	push hl
-	ld a, MON_EVS - 1
-	call GetPartyParamLocationAndValue
-	pop de
-	predef CalcPkmnStats
-
+	call RecalculatePartyMonStats
 	ld a, 1
 	jr .return
 
@@ -762,6 +755,15 @@ Special_HyperTrain:
 	cont "can't train it yet!"
 	prompt
 
+.TextNotEnoughLevels:
+	text "Oh no… No, no, no!"
+	line ""
+	text_ram wStringBuffer1
+	text " hasn't"
+	cont "leveled up enough"
+	cont "to be ready!"
+	prompt
+
 .TextNotMaxEffort:
 	text "Oh no… No, no, no!"
 	line ""
@@ -778,6 +780,35 @@ Special_HyperTrain:
 	line "already hyped up"
 	cont "in that stat!"
 	prompt
+
+RecalculatePartyMonStats:
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
+	call GetBaseData
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	ld [wCurPartyLevel], a
+
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1HyperTraining
+	call SkipNames
+	ld b, [hl] ; b = hyper training
+	inc b ; use EVs on calculation
+
+	ld a, MON_MAXHP ; de = pointer to stats
+	call GetPartyParamLocationAndValue
+	push hl
+	ld a, MON_EVS - 1 ; hl = pointer to EVs - 1
+	call GetPartyParamLocationAndValue
+	pop de
+
+	; uses b, de, hl
+	predef_jump CalcPkmnStats
 
 GetLastPartyMon:
 	ld a, [wPartyCount]
@@ -1086,6 +1117,8 @@ GivePoke::
 	ld d, PARTYMON
 	jr nc, .added
 	call .SetUpBoxMon ; d = BOXMON if nc
+	ld a, TEMPMON
+	ld [wMonType], a
 	jmp c, .FailedToGiveMon
 
 .added
@@ -1169,7 +1202,7 @@ GivePoke::
 	or b
 	ld [de], a
 	push hl
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetFarWord
 	ld a, b

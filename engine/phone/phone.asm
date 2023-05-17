@@ -41,7 +41,7 @@ INCLUDE "data/phone/permanent_numbers.asm"
 CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_DOOR
 	jr z, .no_call
 	cp COLL_STAIRCASE
@@ -537,9 +537,9 @@ GetCallerLocation:
 	ld hl, PhoneContacts + PHONE_CONTACT_MAP_GROUP
 	ld bc, PHONE_CONTACT_SIZE
 	rst AddNTimes
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
 	ld c, [hl]
+	ld b, a
 	push bc
 	call GetWorldMapLocation
 	ld e, a

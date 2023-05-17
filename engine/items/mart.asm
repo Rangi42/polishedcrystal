@@ -9,7 +9,13 @@
 OpenMartDialog::
 	ld a, c
 	ld [wMartType], a
-	call GetMart
+	ld hl, Marts
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld b, BANK(Marts)
 	call LoadMartPointer
 	ld a, [wMartType]
 	call StackJumpTable
@@ -78,7 +84,7 @@ RooftopSale:
 	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
 	ld de, RooftopSaleData1
 	ld hl, wStatusFlags
-	bit 6, [hl] ; hall of fame
+	bit STATUSFLAGS_HALL_OF_FAME_F, [hl]
 	jr z, .ok
 	ld de, RooftopSaleData2
 .ok
@@ -176,16 +182,6 @@ LoadMartPointer:
 	ld [wMartJumptableIndex], a
 	ld [wBargainShopFlags], a
 	ld [wFacingDirection], a
-	ret
-
-GetMart:
-	ld hl, Marts
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld b, BANK(Marts)
 	ret
 
 StandardMart:
@@ -942,9 +938,9 @@ RooftopSaleAskPurchaseQuantity:
 	add hl, de
 	add hl, de
 	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 
 	farcall RooftopSale_SelectQuantityToBuy
 	jmp ExitMenu

@@ -51,17 +51,16 @@ LoadCryHeader::
 
 	anonbankpush PokemonCries
 
-.Function:
+_LoadCryHeader:
 	ld hl, PokemonCries
 rept 6
 	add hl, bc
 endr
 
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 	ld a, [hli]
 	ld [wCryPitch], a
 	ld a, [hli]

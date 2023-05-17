@@ -47,3 +47,10 @@ MaybeDelayFrame:
 	and a
 	jr z, DelayFrameHalt
 	ret
+
+ConsumeGenericDelay::
+	ld a, [wGenericDelay]
+	and a
+	ret z
+	ld c, a
+	jr DelayFrames

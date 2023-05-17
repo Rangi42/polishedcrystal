@@ -25,7 +25,7 @@ GoldenrodMuseum2F_MapScriptHeader:
 	bg_event  3,  7, BGEVENT_READ, HoOhPuzzleScript
 
 	def_object_events
-	object_event  6,  3, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, GoldenrodMuseum2FBigPearlText, -1
+	object_event  6,  3, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PEARL, OBJECTTYPE_COMMAND, jumptext, GoldenrodMuseum2FBigPearlText, -1
 
 LugiaPaintingScript:
 	refreshscreen

@@ -52,7 +52,7 @@ DEF NUM_TILESETS EQU const_value - 1
 DEF TILESET_LENGTH EQU 15
 
 ; MapGroupRoofs values (see data/maps/roofs.asm)
-; LoadMapGroupRoof.Roofs indexes (see engine/tilesets/mapgroup_roofs.asm)
+; MapGroupRoofGFX indexes (see engine/tilesets/mapgroup_roofs.asm)
 	const_def
 	const ROOF_NEW_BARK  ; 0
 	const ROOF_VIOLET    ; 1

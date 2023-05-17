@@ -11,6 +11,7 @@ RuggedRoadSouth_MapScriptHeader:
 	def_coord_events
 	coord_event 27,  3, 1, RuggedRoadSouthBridgeOverheadTrigger
 	coord_event 27,  1, 0, RuggedRoadSouthBridgeUnderfootTrigger
+	coord_event 25, 23, 1, RuggedRoadSouthBridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 25, BGEVENT_JUMPTEXT, RuggedRoadSouthAdvancedTipsSignText
@@ -44,9 +45,9 @@ RuggedRoadSouth_OverheadBridgeAsm:
 
 RuggedRoadSouth_UnderfootBridgeAsm:
 	changebridgeblock 14, 0, $aa, RUGGED_ROAD_SOUTH
-	changebridgeblock 16, 0, $e6, RUGGED_ROAD_SOUTH
-	changebridgeblock 18, 0, $e6, RUGGED_ROAD_SOUTH
-	changebridgeblock 20, 0, $e6, RUGGED_ROAD_SOUTH
+	changebridgeblock 16, 0, $fa, RUGGED_ROAD_SOUTH
+	changebridgeblock 18, 0, $fa, RUGGED_ROAD_SOUTH
+	changebridgeblock 20, 0, $fa, RUGGED_ROAD_SOUTH
 	changebridgeblock 22, 0, $ab, RUGGED_ROAD_SOUTH
 	jmp BufferScreen
 

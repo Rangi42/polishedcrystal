@@ -1,34 +1,34 @@
 UnownWords:
 ; entries correspond to UNOWN_* form constants
-	table_width 2, UnownWords
-	dw UnownWord1
-	dw UnownWord2
-	dw UnownWord3
-	dw UnownWord4
-	dw UnownWord5
-	dw UnownWord6
-	dw UnownWord7
-	dw UnownWord8
-	dw UnownWord9
-	dw UnownWord10
-	dw UnownWord11
-	dw UnownWord12
-	dw UnownWord13
-	dw UnownWord14
-	dw UnownWord15
-	dw UnownWord16
-	dw UnownWord17
-	dw UnownWord18
-	dw UnownWord19
-	dw UnownWord20
-	dw UnownWord21
-	dw UnownWord22
-	dw UnownWord23
-	dw UnownWord24
-	dw UnownWord25
-	dw UnownWord26
-	dw UnownWord27
-	dw UnownWord28
+	table_width 1, UnownWords
+	dr UnownWord1
+	dr UnownWord2
+	dr UnownWord3
+	dr UnownWord4
+	dr UnownWord5
+	dr UnownWord6
+	dr UnownWord7
+	dr UnownWord8
+	dr UnownWord9
+	dr UnownWord10
+	dr UnownWord11
+	dr UnownWord12
+	dr UnownWord13
+	dr UnownWord14
+	dr UnownWord15
+	dr UnownWord16
+	dr UnownWord17
+	dr UnownWord18
+	dr UnownWord19
+	dr UnownWord20
+	dr UnownWord21
+	dr UnownWord22
+	dr UnownWord23
+	dr UnownWord24
+	dr UnownWord25
+	dr UnownWord26
+	dr UnownWord27
+	dr UnownWord28
 	assert_table_length NUM_UNOWN
 
 UnownWord1:  db "ANGER@"

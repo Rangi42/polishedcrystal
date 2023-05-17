@@ -94,10 +94,10 @@ MagnetTrain_UpdateLYOverrides:
 	add a
 	ldh [hSCX], a
 	call .loadloop
-	ld c, 6 * TILE_WIDTH
+	ld c, 4 * TILE_WIDTH
 	ld a, [wMagnetTrainPosition]
 	call .loadloop
-	ld c, 6 * TILE_WIDTH + 1
+	ld c, 8 * TILE_WIDTH + 1
 	ld a, [wMagnetTrainOffset]
 	add a
 	call .loadloop
@@ -166,14 +166,14 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ld [hli], a ; wMagnetTrainPosition
 	ld [hli], a ; wMagnetTrainWaitCounter
 
-	ld de, MUSIC_MAGNET_TRAIN
+	ld e, MUSIC_MAGNET_TRAIN
 	jmp PlayMusic2
 
 DrawMagnetTrain:
 	hlbgcoord 0, 0
 	xor a
 .loop
-	call GetMagnetTrainBGTiles
+	call .GetBGTiles
 	ld b, BG_MAP_WIDTH / 2
 	call .FillAlt
 	inc a
@@ -206,22 +206,22 @@ DrawMagnetTrain:
 	ret
 
 .FillAlt:
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	dec b
 	jr nz, .FillAlt
 	ret
 
-GetMagnetTrainBGTiles:
+.GetBGTiles:
 	push hl
 	ld e, a
 	ld d, 0
 	ld hl, MagnetTrainBGTiles
 	add hl, de
 	add hl, de
-	ld e, [hl]
+	ld e, [hl] ; no-optimize b|c|d|e = *hl++|*hl-- (a is the .loop counter)
 	inc hl
 	ld d, [hl]
 	pop hl
@@ -294,26 +294,12 @@ MagnetTrain_Jumptable:
 	ret
 
 .InitPlayerSpriteAnim:
+	ld hl, wPalFlags
+	set USE_DAYTIME_PAL_F, [hl]
 	ld d, (8 + 2) * TILE_WIDTH + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wPlayerGender)
-	ldh [rSVBK], a
-	ld a, [wPlayerGender]
-	and a ; PLAYER_MALE
-	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_RED
-	jr z, .got_gender
-	dec a ; PLAYER_FEMALE
-	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_BLUE
-	jr z, .got_gender
-	; PLAYER_ENBY
-	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_GREEN
-.got_gender
-	pop af
-	ldh [rSVBK], a
-	ld a, b
+	ld a, SPRITE_ANIM_INDEX_MAGNET_TRAIN
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -378,6 +364,8 @@ MagnetTrain_Jumptable:
 	ret
 
 .TrainArrived:
+	ld hl, wPalFlags
+	res USE_DAYTIME_PAL_F, [hl]
 	ld a, $80
 	ld [wJumptableIndex], a
 	ld de, SFX_TRAIN_ARRIVED

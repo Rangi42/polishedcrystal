@@ -4,7 +4,7 @@
 	db ICE, GROUND ; type
 	db 225 ; catch rate
 	db 78 ; base exp
-	db RAWST_BERRY, SNOWBALL ; held items
+	db NO_ITEM, RAWST_BERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for SWINUB, OBLIVIOUS, SNOW_CLOAK, THICK_FAT

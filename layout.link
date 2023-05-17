@@ -4,9 +4,9 @@ ROM0
 	org $0000
 	"rst00 EntryPoint"
 	org $0008
-	"rst08 FarCall"
+	"rst08 Bankswitch"
 	org $0010
-	"rst10 Bankswitch"
+	"rst10 FarCall"
 	org $0018
 	"rst18 AddNTimes"
 	org $0020
@@ -82,6 +82,7 @@ ROMX $0E
 
 ROMX $0F
 	"Battle Core"
+	"Math"
 
 ROMX $10
 	"Pokedex"
@@ -114,6 +115,7 @@ ROMX $22
 
 ROMX $23
 	"bank23"
+	"Sine"
 
 ROMX $24
 	"bank24"
@@ -222,7 +224,6 @@ WRAM0
 	"WRAM 0"
 	org $c308
 	"Sprite Animations"
-	"Music Player RAM"
 	org $c400
 	align 8
 	"Sprites"
@@ -247,9 +248,10 @@ WRAMX $1
 
 WRAMX $2
 	org $d000
-	"Pic Animations RAM"
+	"Music Player RAM"
 	align 8
 	"Sound Stack"
+	"Pic Animations RAM"
 
 WRAMX $3
 	org $d000
@@ -261,7 +263,7 @@ WRAMX $4
 
 WRAMX $5
 	org $d000
-	"Collisions or Music Player"
+	"Collisions"
 	org $d400
 	"Battle Animations RAM"
 	org $dd00

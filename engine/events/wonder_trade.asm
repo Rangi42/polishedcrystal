@@ -21,6 +21,19 @@ WonderTrade::
 	ld a, EGG
 	ld [wCurPartySpecies], a
 .not_egg
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	cp LOW(PICHU)
+	jr nz, .not_spiky_eared_pichu
+	assert MON_FORM == MON_EXTSPECIES
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	cp HIGH(PICHU) << MON_EXTSPECIES_F | PICHU_SPIKY_EARED_FORM
+	ld hl, .Text_WonderTradeCantTradeSpikyEaredPichu
+	jmp z, PrintText
+.not_spiky_eared_pichu
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -50,6 +63,10 @@ WonderTrade::
 
 .Text_WonderTradePrompt:
 	text_far WonderTradePromptText
+	text_end
+
+.Text_WonderTradeCantTradeSpikyEaredPichu
+	text_far WonderTradeCantTradeSpikyEaredPichuText
 	text_end
 
 ;.Text_WonderTradeCantTradeEgg:
@@ -186,6 +203,7 @@ DoWonderTrade:
 	predef RemoveMonFromParty
 
 	call GetWonderTradeOTForm
+	ld a, d
 	ld [wCurForm], a
 	ld [wOTTrademonForm], a
 	predef TryAddMonToParty
@@ -514,12 +532,13 @@ INCLUDE "data/events/wonder_trade/ot_names.asm"
 
 GetWonderTradeOTForm:
 ; pick randomly from [1, N] for [wOTTrademonSpecies], or default to 1
+; returns result in d
 	ld a, [wOTTrademonSpecies]
 	ld c, a
 	ld a, [wOTTrademonForm]
 	and EXTSPECIES_MASK
 	ld b, a
-	lb de, PLAIN_FORM, 1
+	lb de, PLAIN_FORM, 1 ; d = form to return, e = running count of eligible variants found
 	or d
 	ld d, a
 	ld hl, CosmeticSpeciesAndFormTable - 1
@@ -527,11 +546,10 @@ GetWonderTradeOTForm:
 	inc hl
 	ld a, [hli] ; species
 	and a
-	ld a, d
 	ret z
 	cp c
-	ld a, [hl] ; extspecies + form
 	jr nz, .loop
+	ld a, [hl] ; extspecies + form
 	and EXTSPECIES_MASK
 	cp b
 	jr nz, .loop

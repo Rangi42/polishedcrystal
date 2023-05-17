@@ -239,7 +239,7 @@ HandleWeather:
 	dec [hl]
 	jr nz, .ongoing
 
-	ld hl, .WeatherEndedMessages
+	ld hl, WeatherEndedMessages
 	ld a, [wBattleWeather]
 	dec a
 	add a
@@ -253,12 +253,6 @@ HandleWeather:
 	xor a
 	ld [wBattleWeather], a
 	ret
-
-.WeatherEndedMessages: ; these are all used with StdBattleTextbox
-	dw BattleText_TheRainStopped ; far-ok
-	dw BattleText_TheSunlightFaded ; far-ok
-	dw BattleText_TheSandstormSubsided ; far-ok
-	dw BattleText_TheHailStopped ; far-ok
 
 .ongoing
 	; the above needs actual [wBattleWeather] to be
@@ -324,7 +318,7 @@ HandleWeather:
 	inc a
 	ld [wKickCounter], a
 	ld [wAlreadySawWeather], a
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 .saw_sandstorm
 
 	ld hl, SandstormHitsText
@@ -363,13 +357,20 @@ endc
 	inc a
 	ld [wKickCounter], a
 	ld [wAlreadySawWeather], a
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 .saw_hail
 
 	ld hl, HailHitsText
 	call StdBattleTextbox
 	call GetSixteenthMaxHP
 	predef_jump SubtractHPFromUser
+
+WeatherEndedMessages:
+	farbank BattleText
+	fardw BattleText_TheRainStopped
+	fardw BattleText_TheSunlightFaded
+	fardw BattleText_TheSandstormSubsided
+	fardw BattleText_TheHailStopped
 
 HandleFutureSight:
 	call SetFastestTurn
@@ -489,7 +490,7 @@ HandleLeechSeed:
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .no_anim
-	farcall Call_PlayBattleAnim_OnlyIfVisible
+	farcall PlayBattleAnimDE_OnlyIfVisible
 .no_anim
 	call SwitchTurn
 
@@ -598,7 +599,7 @@ DoPoisonBurnDamageAnim:
 	pop de
 	xor a
 	ld [wNumHits], a
-	farcall Call_PlayBattleAnim_OnlyIfVisible
+	farcall PlayBattleAnimDE_OnlyIfVisible
 	jmp GetEighthMaxHP
 
 HandleCurse:
@@ -616,7 +617,7 @@ HandleCurse:
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_UNDER_CURSE
-	farcall Call_PlayBattleAnim_OnlyIfVisible
+	farcall PlayBattleAnimDE_OnlyIfVisible
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
 	ld hl, HurtByCurseText
@@ -938,6 +939,7 @@ HandleHealingItems:
 	farcall HandleHPHealingItem
 	farcall UseHeldStatusHealingItem
 	farcall HandleStatBoostBerry
+	farcall CheckMirrorHerb ; for stat boost berry
 	farjp UseConfusionHealingItem
 
 HandleStatusOrbs:

@@ -225,13 +225,7 @@ _CGB_BattleColors:
 	ld a, CGB_BATTLE_COLORS
 	ld [wMemCGBLayout], a
 	call ApplyPals
-
-HPBarInteriorPals:
-INCLUDE "gfx/battle/hp_bar.pal"
-
-GenderAndExpBarPals:
-INCLUDE "gfx/battle/exp_bar.pal"
-
+	; fallthrough
 _CGB_FinishBattleScreenLayout:
 	; don't screw with ability overlay areas
 	pop bc
@@ -333,10 +327,16 @@ _CGB_FinishBattleScreenLayout:
 .apply_attr_map
 	jmp ApplyAttrMap
 
+HPBarInteriorPals:
+INCLUDE "gfx/battle/hp_bar.pal"
+
+GenderAndExpBarPals:
+INCLUDE "gfx/battle/exp_bar.pal"
+
 _CGB_FlyMap:
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
-	ld c, 8 palettes
+	ld c, 3 palettes
 	call LoadPalettes
 	; fallthrough
 
@@ -595,6 +595,12 @@ _CGB_NamingScreen:
 	rst AddNTimes
 	ld d, h
 	ld e, l
+	ld a, [wMonType]
+	cp TEMPMON
+	jr nz, .party_mon
+	call LoadTempMonPalette
+	jr .not_pokemon
+.party_mon
 	call LoadPartyMonPalette
 .not_pokemon
 
@@ -1180,7 +1186,7 @@ BillsPC_PreviewTheme:
 	pop hl
 	ld c, 4 * 2
 	call LoadColorBytes
-	ld hl, WhitePalette 
+	ld hl, WhitePalette
 	ld de, wBGPals1 palette 1 + 3 * 2
 	call LoadOneColor
 	ld hl, wBGPals1 palette 1
@@ -1196,6 +1202,10 @@ BillsPC_PreviewTheme:
 	farjp BillsPC_SetPals
 
 .ob_pals
+	ld de, wOBPals1
+	ld hl, PokegearOBPals
+	ld c, 8 palettes
+	call LoadPalettes
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl

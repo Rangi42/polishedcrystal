@@ -468,7 +468,7 @@ _UpdateMewtwoForm:
 	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
-	lb bc, MEWTWO_ARMORED_FORM, MEWTWO
+	lp bc, MEWTWO, MEWTWO_ARMORED_FORM
 	jr z, .got_form
 	assert MEWTWO_ARMORED_FORM - 1 == PLAIN_FORM
 	dec a
@@ -811,7 +811,7 @@ MonMenu_FreshSnack:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ld a, MON_HP + 1
 	call GetPartyParamLocationAndValue
 	ldh a, [hQuotient + 2]
@@ -1409,8 +1409,7 @@ SetUpMoveScreenBG:
 	ld de, wTempMonNickname
 	hlcoord 5, 1
 	rst PlaceString
-	ld h, b
-	ld l, c
+	hlcoord 15, 1
 	call PrintLevel
 	call SetPalettes
 	hlcoord 16, 0
@@ -1547,8 +1546,6 @@ MoveScreen_ListMovesFast:
 	hlcoord 18, 10
 	ld [hl], "▼"
 .skip_down
-
-PlaceMoveData:
 	ld a, [wMoveSwapBuffer]
 	and a
 	jr z, .not_swapping

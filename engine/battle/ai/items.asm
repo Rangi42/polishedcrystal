@@ -298,7 +298,7 @@ AI_Items:
 	jmp c, .Use
 .FailToxicCheck:
 	ld a, [wEnemyMonStatus]
-	and 1 << FRZ | SLP
+	and 1 << FRZ | SLP_MASK
 	jmp z, .DontUse
 	jmp .Use
 
@@ -671,6 +671,11 @@ EnemyUsedXItem:
 
 	farcall PrintStatChange
 	call AIUpdateHUD
+	push hl
+	push bc
+	farcall ResetMirrorHerb
+	pop bc
+	pop hl
 	xor a
 	ret
 

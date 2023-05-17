@@ -3,7 +3,7 @@ DEF MAX_ROLLOUT_COUNT EQU 5
 BattleCommand_rolloutpower:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	ret nz
 
 	; returns user rollout count in de and substatus3 in hl

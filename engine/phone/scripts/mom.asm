@@ -68,36 +68,36 @@ MomPhoneOther:
 
 MomSavingMoney:
 	checkflag ENGINE_MOM_SAVING_MONEY
-	iffalsefwd UnknownScript_0xbcf49
+	iffalsefwd .NotSaving
 	checkmoney $1, 0
-	ifequalfwd $0, UnknownScript_0xbcf55
-	sjumpfwd UnknownScript_0xbcf63
+	ifequalfwd $0, .SavingHasMoney
+	sjumpfwd .SavingNoMoney
 
-UnknownScript_0xbcf49:
+.NotSaving:
 	checkmoney $1, 0
-	ifequalfwd $0, UnknownScript_0xbcf79
-	sjumpfwd UnknownScript_0xbcf6e
+	ifequalfwd $0, .HasMoney
+	sjumpfwd .NoMoney
 
-UnknownScript_0xbcf55:
+.SavingHasMoney:
 	getmoney $1, $0
 	farwritetext MomCheckBalanceText
 	yesorno
 	iftruefwd MomPhoneSaveMoneyScript
 	sjumpfwd MomPhoneWontSaveMoneyScript
 
-UnknownScript_0xbcf63:
+.SavingNoMoney:
 	farwritetext MomImportantToSaveText
 	yesorno
 	iftruefwd MomPhoneSaveMoneyScript
 	sjumpfwd MomPhoneWontSaveMoneyScript
 
-UnknownScript_0xbcf6e:
+.NoMoney:
 	farwritetext MomYoureNotSavingText
 	yesorno
 	iftruefwd MomPhoneSaveMoneyScript
 	sjumpfwd MomPhoneWontSaveMoneyScript
 
-UnknownScript_0xbcf79:
+.HasMoney:
 	getmoney $1, $0
 	farwritetext MomYouveSavedText
 	yesorno

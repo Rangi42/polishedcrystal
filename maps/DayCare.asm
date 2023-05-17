@@ -312,8 +312,14 @@ DayCareLyraHasInfoText:
 	text "Call me any time"
 	line "you want!"
 
-	para "I may have useful"
-	line "advice for you."
+	para "Grandma and Grand-"
+	line "pa taught me a lot"
+
+	para "about raising"
+	line "#mon, and I'd"
+
+	para "like to share it"
+	line "with you."
 	done
 
 DayCareLyraEmbarassedText:

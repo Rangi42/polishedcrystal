@@ -11,6 +11,19 @@ MACRO dbas
 	endr
 ENDM
 
+MACRO farbank
+	REDEF CURRENT_FAR_BANK EQUS "\1"
+ENDM
+
+MACRO fardw
+	rept _NARG
+		dw \1
+		assert BANK(\1) == BANK({CURRENT_FAR_BANK}) || !BANK(\1), \
+			"\1 must be in the bank of {CURRENT_FAR_BANK}"
+		shift
+	endr
+ENDM
+
 MACRO table_width
 	def CURRENT_TABLE_WIDTH = \1
 	if _NARG == 2

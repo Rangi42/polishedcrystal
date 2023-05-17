@@ -680,7 +680,7 @@ SetMenuAttributes::
 	xor a
 	ld [hli], a
 	ld [hli], a
-	ld [hli], a
+	ld [hl], a
 	pop bc
 	pop hl
 	ret

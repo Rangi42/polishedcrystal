@@ -8,17 +8,17 @@ _Predef::
 	ldh [hFarCallSavedL], a
 	pop hl
 	ld a, [hli]
-	ldh [hBuffer], a
-	add a
-	jr c, .jump
+	bit 7, a
+	jr nz, .jump
 	push hl
 .jump
+	ld l, a
 	ldh a, [hROMBank]
 	push af
 	ld a, BANK(PredefPointers)
 	rst Bankswitch
 	push de
-	ldh a, [hBuffer]
+	ld a, l
 	and $7f
 	ld e, a
 	ld d, 0
@@ -34,7 +34,7 @@ _Predef::
 	ld a, d
 	pop de
 	and a
-	jr nz, _DoFarCall_BankInA
+	jmp nz, _DoFarCall_BankInA
 	pop af
 	push af
-	jr _DoFarCall_BankInA
+	jmp _DoFarCall_BankInA

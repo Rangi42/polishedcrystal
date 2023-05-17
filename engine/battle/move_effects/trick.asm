@@ -78,7 +78,7 @@ BattleCommand_trick:
 	jmp PrintButItFailed
 
 .OpponentCanBeTricked:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 .UserCanBeTricked:
 ; Wrapper to UserCanLoseItem that also allows lack of held item.
 	call GetUserItem

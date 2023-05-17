@@ -24,7 +24,7 @@ CrystalIntro:
 	jr .loop
 
 .ShutOffMusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 
 .done
@@ -553,7 +553,7 @@ IntroScene13:
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
 	call InitSpriteAnimStruct
-	ld de, MUSIC_CRYSTAL_OPENING
+	ld e, MUSIC_CRYSTAL_OPENING
 	call PlayMusic
 	xor a
 	ld [wGlobalAnimXOffset], a
@@ -575,29 +575,29 @@ IntroScene14:
 	jmp z, NextIntroScene
 	cp $60
 	jr z, .jump
-	jr nc, .asm_e4e1a
+	jr nc, .run_after_jump
 	cp $40
-	jr nc, .asm_e4e33
+	jr nc, .run
 	ret
 
 .jump
 	ld de, SFX_INTRO_SUICUNE_4
 	call PlaySFX
 
-.asm_e4e1a
+.run_after_jump
 	ld a, $1
 	ld [wIntroSceneTimer], a
 	ld a, [wGlobalAnimXOffset]
 	cp $88
-	jr c, .asm_e4e2c
+	jr c, .disappear
 	sub $8
 	ld [wGlobalAnimXOffset], a
 	ret
 
-.asm_e4e2c
+.disappear
 	farjp DeinitializeAllSprites
 
-.asm_e4e33
+.run
 	ld a, [wGlobalAnimXOffset]
 	sub $2
 	ld [wGlobalAnimXOffset], a

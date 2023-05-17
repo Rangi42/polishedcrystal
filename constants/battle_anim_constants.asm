@@ -268,6 +268,10 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_RED_STAR
 	const ANIM_OBJ_SEISMIC_TOSS_UP
 	const ANIM_OBJ_SEISMIC_TOSS_DOWN
+	const ANIM_OBJ_SHELL_SMASH
+	const ANIM_OBJ_SHELL_SMASH_SHELL
+	const ANIM_OBJ_SHELL_SMASH_HIT
+	const ANIM_OBJ_BERRY
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -565,7 +569,7 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_RED_STAR
 	const BATTLEANIMFRAMESET_HAIL
 	const BATTLEANIMFRAMESET_U_TURN_FALL
-
+	const BATTLEANIMFRAMESET_BERRY
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -904,6 +908,7 @@ DEF NUM_ANIM_BGS EQU const_value - 1
 	const ANIM_GFX_STARS
 	const ANIM_GFX_MINI
 	const ANIM_GFX_U_TURN
+	const ANIM_GFX_BERRY
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET
 	const ANIM_GFX_POKE_BALL_BG
@@ -952,16 +957,20 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 ; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
 ; the first 6 matches PAL_BATTLE_OB_GRAY/YELLOW/...
 	const_def
-	const PAL_BTLCUSTOM_GRAY     ; 0
-	const PAL_BTLCUSTOM_YELLOW   ; 1
-	const PAL_BTLCUSTOM_RED      ; 2
-	const PAL_BTLCUSTOM_GREEN    ; 3
-	const PAL_BTLCUSTOM_BLUE     ; 4
-	const PAL_BTLCUSTOM_BROWN    ; 5
-	const PAL_BTLCUSTOM_METALLIC ; 6
-	const PAL_BTLCUSTOM_PURPLE   ; 7
-	const PAL_BTLCUSTOM_ICE      ; 8
-	const PAL_BTLCUSTOM_FIRE     ; 9
+	const PAL_BTLCUSTOM_GRAY        ; 0
+	const PAL_BTLCUSTOM_YELLOW      ; 1
+	const PAL_BTLCUSTOM_RED         ; 2
+	const PAL_BTLCUSTOM_GREEN       ; 3
+	const PAL_BTLCUSTOM_BLUE        ; 4
+	const PAL_BTLCUSTOM_BROWN       ; 5
+	const PAL_BTLCUSTOM_METALLIC    ; 6
+	const PAL_BTLCUSTOM_PURPLE      ; 7
+	const PAL_BTLCUSTOM_ICE         ; 8
+	const PAL_BTLCUSTOM_FIRE        ; 9
+	const PAL_BTLCUSTOM_GLOBE       ; a
+	const PAL_BTLCUSTOM_WATER       ; b
+	const PAL_BTLCUSTOM_DRAGON_FIRE ; c
+	const PAL_BTLCUSTOM_BERRY       ; d
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1

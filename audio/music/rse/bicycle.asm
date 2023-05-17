@@ -4,17 +4,18 @@
 ; https://soundcloud.com/mmmmmmmmmmmmmmmmm-1/hoenn-bicycle-gbc-8-bit
 
 Music_BicycleRSE:
-	musicheader 4, 1, Music_BicycleRSE_Ch1
-	musicheader 1, 2, Music_BicycleRSE_Ch2
-	musicheader 1, 3, Music_BicycleRSE_Ch3
-	musicheader 1, 4, Music_BicycleRSE_Ch4
+	channel_count 4
+	channel 1, Music_BicycleRSE_Ch1
+	channel 2, Music_BicycleRSE_Ch2
+	channel 3, Music_BicycleRSE_Ch3
+	channel 4, Music_BicycleRSE_Ch4
 
 Music_BicycleRSE_Ch1:
 	tempo 70
-	dutycycle $3
-	vibrato $12, $15
-	tone $0001
-	notetype $c, $82
+	duty_cycle 3
+	vibrato 18, 1, 5
+	pitch_offset 1
+	note_type 12, 8, 2
 	octave 2
 	note C#, 2
 	octave 1
@@ -36,9 +37,9 @@ Music_BicycleRSE_Ch1:
 	note F#, 2
 	note A_, 2
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 8
-	intensity $82
+	volume_envelope 8, 2
 	octave 5
 	note F#, 2
 	note G_, 2
@@ -46,7 +47,7 @@ Music_BicycleRSE_Ch1:
 	note F#, 2
 	note G_, 2
 	note A_, 4
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note A_, 8
 	note G_, 8
@@ -70,19 +71,19 @@ Music_BicycleRSE_Ch1:
 	octave 3
 	note B_, 2
 	note G_, 2
-	intensity $81
+	volume_envelope 8, 1
 	note A_, 4
 	note G_, 4
 	note F#, 4
 	note A_, 4
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 4
-	intensity $87
+	volume_envelope 8, 7
 	octave 4
 	note C#, 8
 	octave 3
 	note A_, 4
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 4
 	octave 4
 	note B_, 2
@@ -95,7 +96,7 @@ Music_BicycleRSE_Ch1:
 	note F#, 1
 	note G_, 1
 	note A_, 4
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note A_, 8
 	note G_, 8
@@ -123,10 +124,10 @@ Music_BicycleRSE_Ch1:
 	note F_, 2
 	note E_, 2
 
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 8
 	note E_, 8
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
 	note E_, 2
 	note D_, 2
@@ -135,9 +136,9 @@ Music_BicycleRSE_Ch1:
 	note G#, 1
 	note A_, 12
 	note F#, 4
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 8
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 16
 	note F#, 4
 	note E_, 4
@@ -145,10 +146,10 @@ Music_BicycleRSE_Ch1:
 	octave 2
 	note B_, 15
 	note A#, 1
-	intensity $82
+	volume_envelope 8, 2
 	note A_, 8
 	note B_, 8
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note D_, 12
 	note C#, 2
@@ -161,80 +162,80 @@ Music_BicycleRSE_Ch1:
 	note A_, 12
 	octave 3
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 16
 	note F#, 16
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 16
-	note __, 16
-	intensity $85
+	rest 16
+	volume_envelope 8, 5
 	octave 4
 	note D_, 4
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 4
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note B_, 4
 	octave 4
 	note D_, 1
-	note __, 3
+	rest 3
 	note E_, 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note C#, 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note F#, 4
 	note F#, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	note C#, 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note F#, 4
 	note E_, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 4
 	note F#, 1
-	note __, 3
+	rest 3
 	note F#, 1
-	note __, 3
+	rest 3
 	note D_, 4
 	note F#, 1
-	note __, 3
-	intensity $82
+	rest 3
+	volume_envelope 8, 2
 	octave 3
 	note G_, 4
 	note D_, 2
 	note G_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note B_, 8
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 4
 	note G_, 2
 	note B_, 2
-	intensity $87
+	volume_envelope 8, 7
 	octave 4
 	note F#, 8
 	note E_, 4
@@ -243,30 +244,30 @@ Music_BicycleRSE_Ch1:
 	octave 3
 	note B_, 1
 	note A_, 1
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note E_, 4
 	note C#, 2
 	note E_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note A_, 12
 	note G_, 4
-	intensity $82
+	volume_envelope 8, 2
 	note F#, 4
 	note C#, 2
 	note E_, 2
 	note F#, 4
 	note C#, 2
 	note E_, 2
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 3
 	note G#, 1
 	note A_, 4
-	intensity $82
+	volume_envelope 8, 2
 	note G_, 4
 	note F#, 4
 	note D#, 4
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note B_, 2
 	octave 4
@@ -284,7 +285,7 @@ Music_BicycleRSE_Ch1:
 	note F#, 1
 	note A_, 1
 	note B_, 1
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note G_, 2
 	note G_, 2
@@ -307,18 +308,18 @@ Music_BicycleRSE_Ch1:
 	note E_, 2
 	octave 3
 	note B_, 2
-	intensity $80
+	volume_envelope 8, 0
 	octave 4
 	note D_, 16
-	intensity $87
+	volume_envelope 8, 7
 	note D_, 16
-	jumpchannel Music_BicycleRSE_Ch1
+	sound_jump Music_BicycleRSE_Ch1
 
 Music_BicycleRSE_Ch2:
-	dutycycle $2
-	vibrato $12, $15
-	tone $0001
-	notetype $c, $a4
+	duty_cycle 2
+	vibrato 18, 1, 5
+	pitch_offset 1
+	note_type 12, 10, 4
 	octave 2
 	note A_, 2
 	note G_, 2
@@ -338,76 +339,76 @@ Music_BicycleRSE_Ch2:
 	note C#, 2
 	note D_, 2
 	note E_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note F#, 8
 	note G_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 16
-	intensity $a2
+	volume_envelope 10, 2
 	note F#, 4
 	note G_, 4
 	note A_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	octave 5
 	note D_, 2
 	octave 4
 	note B_, 1
 	note A#, 1
-	intensity $a2
+	volume_envelope 10, 2
 	note A_, 4
 	note G_, 4
 	note F#, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 4
 
-	intensity $a0
+	volume_envelope 10, 0
 	note F#, 2
 	note G_, 1
 	note G#, 1
 	note A_, 4
 	note G_, 2
 	note F#, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note E_, 8
 	note F#, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 16
-	intensity $a2
+	volume_envelope 10, 2
 	note E_, 4
 	note F#, 4
 	note G_, 4
-	intensity $a0
+	volume_envelope 10, 0
 	octave 5
 	note C#, 3
 	note C_, 1
 	octave 4
 	note B_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	octave 5
 	note C#, 4
 	note E_, 4
 	octave 4
 
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 16
-	note __, 16
-	note __, 16
-	dutycycle $1
-	intensity $54
-	callchannel Music_BicycleRSE_Ch2_branch_1
-	callchannel Music_BicycleRSE_Ch2_branch_2
-	callchannel Music_BicycleRSE_Ch2_branch_1
-	callchannel Music_BicycleRSE_Ch2_branch_2
+	rest 16
+	rest 16
+	duty_cycle 1
+	volume_envelope 5, 4
+	sound_call Music_BicycleRSE_Ch2_branch_1
+	sound_call Music_BicycleRSE_Ch2_branch_2
+	sound_call Music_BicycleRSE_Ch2_branch_1
+	sound_call Music_BicycleRSE_Ch2_branch_2
 	octave 4
 	note E_, 2
 	octave 3
@@ -500,7 +501,7 @@ Music_BicycleRSE_Ch2:
 	note A_, 2
 	note G_, 2
 	note A_, 2
-	callchannel Music_BicycleRSE_Ch2_branch_1
+	sound_call Music_BicycleRSE_Ch2_branch_1
 	octave 4
 	note C#, 2
 	octave 3
@@ -529,19 +530,19 @@ Music_BicycleRSE_Ch2:
 	note F#, 2
 	note A_, 2
 
-	intensity $a4
+	volume_envelope 10, 4
 	note G_, 4
 	note A_, 4
-	intensity $a5
+	volume_envelope 10, 5
 	note B_, 8
 	octave 5
 	note C#, 8
 	note D_, 8
-	intensity $af
+	volume_envelope 10, -7
 	note A_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 16
 	note G_, 2
 	note A_, 1
@@ -555,7 +556,7 @@ Music_BicycleRSE_Ch2:
 	note D_, 2
 	note E_, 1
 	note D_, 1
-	intensity $a2
+	volume_envelope 10, 2
 	note C#, 4
 	octave 4
 	note A_, 2
@@ -569,13 +570,13 @@ Music_BicycleRSE_Ch2:
 	note C#, 4
 	note C#, 2
 	note D_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 8
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note E_, 4
 	note F#, 4
 	note E_, 4
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note D_, 16
 	octave 3
 	note G_, 2
@@ -586,16 +587,16 @@ Music_BicycleRSE_Ch2:
 	octave 4
 	note C#, 8
 	note D_, 8
-	intensity $af
+	volume_envelope 10, -7
 	note B_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note B_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 16
-	intensity $a2
+	volume_envelope 10, 2
 	octave 5
 	note C#, 4
-	intensity $a0
+	volume_envelope 10, 0
 	octave 4
 	note B_, 2
 	octave 5
@@ -603,7 +604,7 @@ Music_BicycleRSE_Ch2:
 	octave 4
 	note B_, 1
 	note A_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note A_, 4
 	note F#, 2
@@ -611,31 +612,31 @@ Music_BicycleRSE_Ch2:
 	note A_, 4
 	note F#, 2
 	note G_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 3
 	note B_, 1
 	octave 5
 	note C_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	octave 4
 	note B_, 4
 	note A_, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 4
 	note G_, 2
 	note A_, 1
 	note G_, 1
-	intensity $a2
+	volume_envelope 10, 2
 	note F#, 4
 	note E_, 4
 	note D#, 4
 	note E_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note F#, 2
 	note D#, 2
 	octave 3
 	note B_, 4
-	intensity $a3
+	volume_envelope 10, 3
 	octave 4
 	note D_, 2
 	note C#, 2
@@ -667,17 +668,17 @@ Music_BicycleRSE_Ch2:
 	note B_, 2
 	note A_, 2
 	note G#, 2
-	intensity $af
+	volume_envelope 10, -7
 	note A_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 16
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note A_, 4
-	jumpchannel Music_BicycleRSE_Ch2
+	sound_jump Music_BicycleRSE_Ch2
 
 Music_BicycleRSE_Ch2_branch_1:
 	octave 4
@@ -692,7 +693,7 @@ Music_BicycleRSE_Ch2_branch_1:
 	note A_, 2
 	note F#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_BicycleRSE_Ch2_branch_2:
 	octave 4
@@ -705,11 +706,11 @@ Music_BicycleRSE_Ch2_branch_2:
 	note A_, 2
 	note F#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_BicycleRSE_Ch3:
-	notetype $c, $13
-	note __, 16
+	note_type 12, 1, 3
+	rest 16
 	octave 5
 	note G_, 2
 	note F#, 2
@@ -725,32 +726,32 @@ Music_BicycleRSE_Ch3_loop_main:
 	note D_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 4
 	octave 4
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 4
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 4
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	note F#, 2
 	note E_, 1
 	note D#, 1
@@ -762,109 +763,109 @@ Music_BicycleRSE_Ch3_loop_main:
 	note E_, 4
 	octave 5
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 4
 	octave 5
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 4
 	octave 5
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 4
 	octave 5
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 4
 	octave 5
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note B_, 4
 	octave 5
 	note D_, 1
-	note __, 3
+	rest 3
 	note C#, 2
 	note C#, 2
 	octave 4
 	note B_, 1
-	note __, 3
+	rest 3
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A_, 4
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 4
 	octave 5
 	note C#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A_, 4
 	octave 5
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 4
 	octave 5
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note A_, 4
 	octave 5
 	note D#, 1
-	note __, 3
+	rest 3
 	octave 3
 	note E_, 4
 	octave 5
 	note D#, 1
-	note __, 3
+	rest 3
 	note E_, 3
 	note D#, 1
 	note D_, 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note D_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 4
 	octave 4
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 5
 	note C#, 2
 	octave 4
@@ -877,44 +878,44 @@ Music_BicycleRSE_Ch3_loop_main:
 	note G#, 2
 	note A_, 2
 	note F#, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 5
+	rest 5
 	note A#, 1
 	note A_, 16
-	note __, 4
+	rest 4
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 3
 	octave 6
 	note D#, 1
 	note D_, 4
 	octave 5
 	note A_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 3
 	note F_, 1
 	note E_, 16
 	note E_, 16
-	intensity $23
+	volume_envelope 2, 3
 	note E_, 16
-	intensity $33
+	volume_envelope 3, 3
 	note E_, 16
-	intensity $13
+	volume_envelope 1, 3
 	note E_, 2
-	note __, 6
+	rest 6
 	note F#, 2
-	note __, 6
+	rest 6
 	note G_, 16
-	note __, 4
+	rest 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	octave 6
 	note D#, 1
@@ -925,15 +926,15 @@ Music_BicycleRSE_Ch3_loop_main:
 	note B_, 4
 	octave 6
 	note C#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 16
 	note F#, 16
-	intensity $23
+	volume_envelope 2, 3
 	note F#, 16
-	note __, 8
-	intensity $13
+	rest 8
+	volume_envelope 1, 3
 	octave 4
 	note A_, 1
 	octave 5
@@ -948,156 +949,156 @@ Music_BicycleRSE_Ch3_loop_main:
 	note C_, 1
 	octave 2
 	note G_, 5
-	note __, 7
+	rest 7
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 6
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 3
-	note __, 9
+	rest 9
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 3
-	note __, 9
+	rest 9
 	note F#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note F#, 6
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note B_, 3
-	note __, 9
+	rest 9
 	note B_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note B_, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 3
-	note __, 9
+	rest 9
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 6
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 3
-	note __, 9
+	rest 9
 	note G_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note G_, 8
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 3
-	note __, 9
+	rest 9
 	note F#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note F#, 6
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note B_, 3
-	note __, 9
+	rest 9
 	note B_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note B_, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 Music_BicycleRSE_Ch3_loop_1:
 	octave 2
 	note A_, 4
 	octave 4
 	note A_, 1
-	note __, 3
-	loopchannel 8, Music_BicycleRSE_Ch3_loop_1
-	jumpchannel Music_BicycleRSE_Ch3_loop_main
+	rest 3
+	sound_loop 8, Music_BicycleRSE_Ch3_loop_1
+	sound_jump Music_BicycleRSE_Ch3_loop_main
 
 Music_BicycleRSE_Ch4:
-	togglenoise $3
-	notetype $c
-	note __, 16
-	note __, 16
+	toggle_noise 3
+	drum_speed 12
+	rest 16
+	rest 16
 Music_BicycleRSE_Ch4_loop_main:
 Music_BicycleRSE_Ch4_loop_1:
-	note __, 4
-	note G#, 4
-	loopchannel 14, Music_BicycleRSE_Ch4_loop_1
-	note G#, 2
-	note G#, 2
-	note G#, 4
-	note G#, 4
-	note G#, 4
+	rest 4
+	drum_note 9, 4
+	sound_loop 14, Music_BicycleRSE_Ch4_loop_1
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 4
+	drum_note 9, 4
 Music_BicycleRSE_Ch4_loop_2:
-	note __, 4
-	note G#, 4
-	loopchannel 14, Music_BicycleRSE_Ch4_loop_2
-	note G#, 2
-	note G#, 2
-	note G#, 4
-	note G#, 4
-	note G#, 4
-	note B_, 16
+	rest 4
+	drum_note 9, 4
+	sound_loop 14, Music_BicycleRSE_Ch4_loop_2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 4
+	drum_note 9, 4
+	drum_note 12, 16
 Music_BicycleRSE_Ch4_loop_3:
-	note __, 16
-	loopchannel 31, Music_BicycleRSE_Ch4_loop_3
+	rest 16
+	sound_loop 31, Music_BicycleRSE_Ch4_loop_3
 Music_BicycleRSE_Ch4_loop_4:
-	note __, 4
-	note G#, 4
-	loopchannel 8, Music_BicycleRSE_Ch4_loop_4
-	note B_, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	jumpchannel Music_BicycleRSE_Ch4_loop_main
+	rest 4
+	drum_note 9, 4
+	sound_loop 8, Music_BicycleRSE_Ch4_loop_4
+	drum_note 12, 16
+	rest 16
+	rest 16
+	rest 16
+	sound_jump Music_BicycleRSE_Ch4_loop_main

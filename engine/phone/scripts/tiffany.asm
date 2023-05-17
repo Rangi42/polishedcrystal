@@ -1,25 +1,25 @@
 TiffanyPhoneScript1:
 	gettrainername PICNICKER, TIFFANY1, $0
 	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbdbc2
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_TIFFANY_TUESDAY_AFTERNOON
-	iftruefwd UnknownScript_0xbdbbe
+	iftruefwd .NotTuesday
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
-	iftruefwd UnknownScript_0xbdbc9
+	iftruefwd .HasItem
 	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, UnknownScript_0xbdbbe
+	ifnotequal TUESDAY, .NotTuesday
 	checktime 1 << DAY
 	iftruefwd TiffanyTuesdayAfternoon
 
-UnknownScript_0xbdbbe:
+.NotTuesday:
 	farsjump TiffanyNoItemScript
 
-UnknownScript_0xbdbc2:
+.WantsBattle:
 	getlandmarkname ROUTE_43, $2
 	farsjump TiffanyAsleepScript
 
-UnknownScript_0xbdbc9:
+.HasItem:
 	getlandmarkname ROUTE_43, $2
 	farsjump TiffanyHurryScript
 
@@ -29,23 +29,23 @@ TiffanyPhoneScript2:
 	ifequalfwd $0, TiffanysFamilyMembers
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbdc10
+	iftruefwd .Generic
 	checkflag ENGINE_TIFFANY_TUESDAY_AFTERNOON
-	iftruefwd UnknownScript_0xbdc10
+	iftruefwd .Generic
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
-	iftruefwd UnknownScript_0xbdc10
+	iftruefwd .Generic
 	farscall PhoneScript_Random3
 	ifequalfwd $0, TiffanyWantsBattle
 	checkevent EVENT_TIFFANY_GAVE_PINK_BOW
-	iftruefwd UnknownScript_0xbdc08
+	iftruefwd .PinkBow
 	farscall PhoneScript_Random2
 	ifequalfwd $0, TiffanyHasPinkBow
 
-UnknownScript_0xbdc08:
+.PinkBow:
 	farscall PhoneScript_Random11
 	ifequalfwd $0, TiffanyHasPinkBow
 
-UnknownScript_0xbdc10:
+.Generic:
 	farsjump Phone_GenericCall_Female
 
 TiffanyTuesdayAfternoon:
@@ -58,38 +58,38 @@ TiffanyWantsBattle:
 
 TiffanysFamilyMembers:
 	random $6
-	ifequalfwd $0, UnknownScript_0xbdc3b
-	ifequalfwd $1, UnknownScript_0xbdc42
-	ifequalfwd $2, UnknownScript_0xbdc49
-	ifequalfwd $3, UnknownScript_0xbdc50
-	ifequalfwd $4, UnknownScript_0xbdc57
-	ifequalfwd $5, UnknownScript_0xbdc5e
+	ifequalfwd $0, .Grandma
+	ifequalfwd $1, .Grandpa
+	ifequalfwd $2, .Mom
+	ifequalfwd $3, .Dad
+	ifequalfwd $4, .Sister
+	ifequalfwd $5, .Brother
 
-UnknownScript_0xbdc3b:
+.Grandma:
 	getstring Phone_GrandmaString, $1
-	sjumpfwd UnknownScript_0xbdc65
+	sjumpfwd .PoorClefairy
 
-UnknownScript_0xbdc42:
+.Grandpa:
 	getstring Phone_GrandpaString, $1
-	sjumpfwd UnknownScript_0xbdc65
+	sjumpfwd .PoorClefairy
 
-UnknownScript_0xbdc49:
+.Mom:
 	getstring Phone_MomString, $1
-	sjumpfwd UnknownScript_0xbdc65
+	sjumpfwd .PoorClefairy
 
-UnknownScript_0xbdc50:
+.Dad:
 	getstring Phone_DadString, $1
-	sjumpfwd UnknownScript_0xbdc65
+	sjumpfwd .PoorClefairy
 
-UnknownScript_0xbdc57:
+.Sister:
 	getstring Phone_SisterString, $1
-	sjumpfwd UnknownScript_0xbdc65
+	sjumpfwd .PoorClefairy
 
-UnknownScript_0xbdc5e:
+.Brother:
 	getstring Phone_BrotherString, $1
 	; fallthrough
 
-UnknownScript_0xbdc65:
+.PoorClefairy:
 	farsjump TiffanyItsAwful
 
 TiffanyHasPinkBow:

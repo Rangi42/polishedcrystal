@@ -112,23 +112,23 @@ Route47TileScript:
 .underfoot_asm:
 	; bridge 1
 	changebridgeblock 42, 24, $aa, ROUTE_47
-	changebridgeblock 44, 24, $e6, ROUTE_47
-	changebridgeblock 46, 24, $e6, ROUTE_47
-	changebridgeblock 48, 24, $e6, ROUTE_47
+	changebridgeblock 44, 24, $fa, ROUTE_47
+	changebridgeblock 46, 24, $fa, ROUTE_47
+	changebridgeblock 48, 24, $fa, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
 	; bridge 2
-	changebridgeblock 44, 18, $e6, ROUTE_47
-	changebridgeblock 46, 18, $e6, ROUTE_47
-	changebridgeblock 48, 18, $e6, ROUTE_47
+	changebridgeblock 44, 18, $fa, ROUTE_47
+	changebridgeblock 46, 18, $fa, ROUTE_47
+	changebridgeblock 48, 18, $fa, ROUTE_47
 	; bridge 3
-	changebridgeblock 20, 24, $e6, ROUTE_47
-	changebridgeblock 22, 24, $e6, ROUTE_47
-	changebridgeblock 24, 24, $e6, ROUTE_47
+	changebridgeblock 20, 24, $fa, ROUTE_47
+	changebridgeblock 22, 24, $fa, ROUTE_47
+	changebridgeblock 24, 24, $fa, ROUTE_47
 	; bridge 4
 	changebridgeblock 18, 16, $aa, ROUTE_47
-	changebridgeblock 20, 16, $e6, ROUTE_47
-	changebridgeblock 22, 16, $e6, ROUTE_47
-	changebridgeblock 24, 16, $e6, ROUTE_47
+	changebridgeblock 20, 16, $fa, ROUTE_47
+	changebridgeblock 22, 16, $fa, ROUTE_47
+	changebridgeblock 24, 16, $fa, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jmp BufferScreen
 
@@ -144,9 +144,9 @@ Route47Bridge1OverheadTrigger:
 Route47Bridge1UnderfootTrigger:
 	callthisasm
 	changebridgeblock 42, 24, $aa, ROUTE_47
-	changebridgeblock 44, 24, $e6, ROUTE_47
-	changebridgeblock 46, 24, $e6, ROUTE_47
-	changebridgeblock 48, 24, $e6, ROUTE_47
+	changebridgeblock 44, 24, $fa, ROUTE_47
+	changebridgeblock 46, 24, $fa, ROUTE_47
+	changebridgeblock 48, 24, $fa, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
@@ -163,9 +163,9 @@ Route47_FinishOverheadBridge:
 
 Route47Bridge2UnderfootTrigger:
 	callthisasm
-	changebridgeblock 44, 18, $e6, ROUTE_47
-	changebridgeblock 46, 18, $e6, ROUTE_47
-	changebridgeblock 48, 18, $e6, ROUTE_47
+	changebridgeblock 44, 18, $fa, ROUTE_47
+	changebridgeblock 46, 18, $fa, ROUTE_47
+	changebridgeblock 48, 18, $fa, ROUTE_47
 	; fallthrough
 
 Route47_FinishUnderfootBridge:
@@ -184,9 +184,9 @@ Route47Bridge3OverheadTrigger:
 
 Route47Bridge3UnderfootTrigger:
 	callthisasm
-	changebridgeblock 20, 24, $e6, ROUTE_47
-	changebridgeblock 22, 24, $e6, ROUTE_47
-	changebridgeblock 24, 24, $e6, ROUTE_47
+	changebridgeblock 20, 24, $fa, ROUTE_47
+	changebridgeblock 22, 24, $fa, ROUTE_47
+	changebridgeblock 24, 24, $fa, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
@@ -201,9 +201,9 @@ Route47Bridge4OverheadTrigger:
 Route47Bridge4UnderfootTrigger:
 	callthisasm
 	changebridgeblock 18, 16, $aa, ROUTE_47
-	changebridgeblock 20, 16, $e6, ROUTE_47
-	changebridgeblock 22, 16, $e6, ROUTE_47
-	changebridgeblock 24, 16, $e6, ROUTE_47
+	changebridgeblock 20, 16, $fa, ROUTE_47
+	changebridgeblock 22, 16, $fa, ROUTE_47
+	changebridgeblock 24, 16, $fa, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 

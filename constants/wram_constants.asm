@@ -9,9 +9,6 @@ DEF AUTO_INPUT EQU $ff
 	const TEMPMON    ; 3
 	const WILDMON    ; 4
 
-; wGameTimerPaused::
-DEF GAME_TIMER_PAUSED_F EQU 0
-
 ; wJoypadDisable::
 DEF JOYPAD_DISABLE_MON_FAINT_F    EQU 6
 DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
@@ -243,6 +240,10 @@ DEF SPAWN_LEAF  EQU 2
 	const STATUSFLAGS2_EXORCISED_LAV_RADIO_F     ; 6
 	const STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F     ; 7
 
+; wStatusFlags3::
+	const_def
+	const STATUSFLAGS3_JUDGE_MACHINE_F ; 0
+
 ; wMomSavingMoney::
 DEF MOM_SAVING_SOME_MONEY_F EQU 0
 DEF MOM_SAVING_HALF_MONEY_F EQU 1
@@ -365,7 +366,7 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const SABRINA_JOURNAL ; Saffron Pokémon Center
 	const BLAINE_JOURNAL ; Cinnabar Pokémon Center
 	const BLUE_JOURNAL ; Viridian Pokémon Center
-	const WILL_JOURNAL ; Earl's Pokémon Academy
+	const WILL_JOURNAL ; Mahogany Souvenir Shop
 	const KOGA_JOURNAL ; Safari Zone rest houses
 	const BRUNO_JOURNAL ; Pokémon Trainer Fan Club
 	const KAREN_JOURNAL ; Mt. Moon Pokémon Center
@@ -382,4 +383,114 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const BILL_JOURNAL ; Bill's house
 	const KURT_JOURNAL ; Union Cave Pokémon Center
 	const MR_FUJI_JOURNAL ; Lavender Town Pokémon Center
+	const PROF_WILLOW_JOURNAL ; Snowtop Mountain Pokémon Center
+	const STEVEN_JOURNAL ; Pewter Museum
+	const CYNTHIA_JOURNAL ; Pewter Museum (TODO: move to Goldenrod Museum)
+	const WALKER_JOURNAL ; Earl's Pokémon Academy
+	const KIYO_JOURNAL ; Viridian schoolhouse
+	const PALMER_JOURNAL ; Battle Tower
+	const THORTON_JOURNAL ; Battle Factory
 DEF NUM_POKEMON_JOURNALS EQU const_value
+
+; wUnlockedUnowns ::
+	const_def
+	const UNLOCKED_UNOWNS_A_TO_J_F
+	const UNLOCKED_UNOWNS_K_TO_Q_F
+	const UNLOCKED_UNOWNS_R_TO_W_F
+	const UNLOCKED_UNOWNS_X_TO_QUESTION_F
+DEF NUM_UNLOCKED_UNOWN_SETS EQU const_value
+
+; wLuckyNumberShowFlag::
+DEF LUCKYNUMBERSHOW_GAME_OVER_F EQU 0
+
+; wDailyFlags::
+	const_def
+	const DAILYFLAGS_KURT_MAKING_BALLS_F                     ; 0
+	const DAILYFLAGS_DAILY_BUG_CONTEST_F                     ; 1
+	const DAILYFLAGS_FISH_SWARM_F                            ; 2
+	const DAILYFLAGS_VALERIE_MORNING_WALK_F                  ; 3
+	const_skip ; unused
+	const DAILYFLAGS_GOT_SHUCKIE_TODAY_F                     ; 5
+	const DAILYFLAGS_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED_F ; 6
+	const DAILYFLAGS_FOUGHT_IN_TRAINER_HALL_TODAY_F          ; 7
+
+; wDailyFlags2::
+	const_def
+	const DAILYFLAGS2_GYM_LEADER_REMATCH_1_F ; 0
+	const DAILYFLAGS2_GYM_LEADER_REMATCH_2_F ; 1
+	const DAILYFLAGS2_GYM_LEADER_REMATCH_3_F ; 2
+	const DAILYFLAGS2_DAILY_PHOTOGRAPH_F     ; 3
+	const DAILYFLAGS2_DAILY_SHRINE_VISIT_F   ; 4
+	const DAILYFLAGS2_DAILY_MYSTERY_GIFT_F   ; 5
+	const DAILYFLAGS2_RED_IN_MOUNT_SILVER_F  ; 6
+	const DAILYFLAGS2_LEAF_IN_NAVEL_ROCK_F   ; 7
+
+; wDailyFlags3::
+	const_def
+	const DAILYFLAGS3_BOUGHT_LEFTOVERS_F  ; 0
+	const DAILYFLAGS3_TOOK_HYPER_TEST_F   ; 1
+	const DAILYFLAGS3_CHERYL_DONE_TODAY_F ; 2
+	const DAILYFLAGS3_RILEY_DONE_TODAY_F  ; 3
+	const DAILYFLAGS3_BUCK_DONE_TODAY_F   ; 4
+	const DAILYFLAGS3_MARLEY_DONE_TODAY_F ; 5
+	const DAILYFLAGS3_MIRA_DONE_TODAY_F   ; 6
+	const DAILYFLAGS3_ANABEL_DONE_TODAY_F ; 7
+
+; wDailyFlags4::
+	const_def
+	const DAILYFLAGS4_SEASHORE_SHELL_BELL_F           ; 0
+	const DAILYFLAGS4_SHAMOUTI_RESTAURANT_CHALLENGE_F ; 1
+	const DAILYFLAGS4_FOUGHT_PSYCHIC_INVER_F          ; 2
+	const DAILYFLAGS4_BOUGHT_MOOMOO_MILK_F            ; 3
+	const DAILYFLAGS4_CHANGED_TRENDY_PHRASE_F         ; 4
+	const DAILYFLAGS4_ALL_HIDDEN_GROTTOES_F           ; 5
+
+; wWeeklyFlags::
+	const_def
+	const WEEKLYFLAGS_MT_MOON_SQUARE_CLEFAIRY_F           ; 0
+	const WEEKLYFLAGS_UNION_CAVE_LAPRAS_F                 ; 1
+	const WEEKLYFLAGS_GOLDENROD_UNDERGROUND_GOT_HAIRCUT_F ; 2
+	const WEEKLYFLAGS_GOLDENROD_MALL_5F_HAPPINESS_EVENT_F ; 3
+	const WEEKLYFLAGS_TEA_IN_BLUES_HOUSE_F                ; 4
+	const WEEKLYFLAGS_INDIGO_PLATEAU_RIVAL_FIGHT_F        ; 5
+	const WEEKLYFLAGS_INDIGO_PLATEAU_LYRA_FIGHT_F         ; 6
+	const WEEKLYFLAGS_BUENAS_PASSWORD_F                   ; 7
+
+; wSwarmFlags::
+	const_def
+	const SWARMFLAGS_BUENAS_PASSWORD_2_F         ; 0
+	const SWARMFLAGS_GOLDENROD_DEPT_STORE_SALE_F ; 1
+	const SWARMFLAGS_DUNSPARCE_SWARM_F           ; 2
+	const SWARMFLAGS_YANMA_SWARM_F               ; 3
+
+; wCelebiEvent::
+DEF CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
+
+; wPlayerCaught::
+	const_def
+	const PLAYER_CAUGHT_HO_OH_F    ; 0
+	const PLAYER_CAUGHT_LUGIA_F    ; 1
+	const PLAYER_CAUGHT_RAIKOU_F   ; 2
+	const PLAYER_CAUGHT_ENTEI_F    ; 3
+	const PLAYER_CAUGHT_SUICUNE_F  ; 4
+	const PLAYER_CAUGHT_ARTICUNO_F ; 5
+	const PLAYER_CAUGHT_ZAPDOS_F   ; 6
+	const PLAYER_CAUGHT_MOLTRES_F  ; 7
+
+; wPlayerCaught2::
+	const_def
+	const PLAYER_CAUGHT_MEW_F       ; 0
+	const PLAYER_CAUGHT_MEWTWO_F    ; 1
+	const PLAYER_CAUGHT_CELEBI_F    ; 2
+	const PLAYER_CAUGHT_SUDOWOODO_F ; 3
+
+DEF CAUGHT_DUO_MASK    EQU (1 << PLAYER_CAUGHT_HO_OH_F) | (1 << PLAYER_CAUGHT_LUGIA_F)
+DEF CAUGHT_BEASTS_MASK EQU (1 << PLAYER_CAUGHT_RAIKOU_F) | (1 << PLAYER_CAUGHT_ENTEI_F) | (1 << PLAYER_CAUGHT_SUICUNE_F)
+DEF CAUGHT_BIRDS_MASK  EQU (1 << PLAYER_CAUGHT_ARTICUNO_F) | (1 << PLAYER_CAUGHT_ZAPDOS_F) | (1 << PLAYER_CAUGHT_MOLTRES_F)
+
+; wPalFlags
+	const_def
+	const NO_DYN_PAL_APPLY_F   ; 0
+	const SCAN_OBJECTS_FIRST_F ; 1
+	const USE_DAYTIME_PAL_F    ; 2
+	const DISABLE_DYN_PAL_F    ; 3

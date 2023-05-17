@@ -10,8 +10,8 @@ EarlsPokemonAcademy_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  1, BGEVENT_READ, PokemonJournalWillScript
-	bg_event  1,  1, BGEVENT_READ, PokemonJournalWillScript
+	bg_event  0,  1, BGEVENT_READ, PokemonJournalWalkerScript
+	bg_event  1,  1, BGEVENT_READ, PokemonJournalWalkerScript
 	bg_event  3,  0, BGEVENT_READ, AcademyBlackboard
 	bg_event  4,  0, BGEVENT_READ, AcademyBlackboard
 
@@ -129,27 +129,21 @@ AcademyNotebook:
 .Done:
 	endtext
 
-PokemonJournalWillScript:
-	setflag ENGINE_READ_WILL_JOURNAL
+PokemonJournalWalkerScript:
+	setflag ENGINE_READ_WALKER_JOURNAL
 	jumpthistext
 
 	text "#mon Journal"
 
 	para "Special Feature:"
-	line "Elite Four Will!"
+	line "Ex-Leader Walker!"
 
-	para "Will does not talk"
-	line "about his past"
+	para "Falkner's father"
+	line "Walker is rumored"
 
-	para "before joining the"
-	line "Elite Four."
-
-	para "Some say he worked"
-	line "for Team Rocket."
-
-	para "#mon Journal"
-	line "refuses to specu-"
-	cont "late."
+	para "to be wandering"
+	line "around Johto as"
+	cont "a vagabond."
 	done
 
 AcademyEarlSpinMovement:

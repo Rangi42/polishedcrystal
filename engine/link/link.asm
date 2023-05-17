@@ -72,7 +72,7 @@ Gen2ToGen2LinkComms:
 	ldh [rIF], a
 	ld a, 1 << SERIAL | 1 << VBLANK
 	ldh [rIE], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 
 	call Link_CopyRandomNumbers
@@ -221,7 +221,7 @@ Gen2ToGen2LinkComms:
 	ld bc, wOTPartyDataEnd - wOTPartyMons
 	rst CopyBytes
 
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -281,7 +281,7 @@ Gen2ToGen2LinkComms:
 	jmp ExitLinkCommunications
 
 .ready_to_trade
-	ld de, MUSIC_ROUTE_30
+	ld e, MUSIC_ROUTE_30
 	call PlayMusic
 	jmp InitTradeMenuDisplay
 
@@ -1074,7 +1074,7 @@ LinkTrade_TradeStatsMenu:
 .b_button
 	pop af
 	ld [wMenuCursorY], a
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	jmp LinkTrade_PlayerPartyMenu
 
 .d_right
@@ -1109,7 +1109,7 @@ LinkTrade_TradeStatsMenu:
 	pop af
 	ld [wMenuCursorY], a
 	call LinkMonStatsScreen
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
 	call ClearBox
@@ -2118,7 +2118,7 @@ PrepareForLinkTransfers:
 	ldh [rSC], a
 
 .player_1:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	vc_patch Wireless_net_delay_6
 if DEF(VIRTUAL_CONSOLE)
@@ -2138,7 +2138,7 @@ PerformLinkChecks:
 	xor a
 	ld bc, 10
 	ld hl, wLinkReceivedPolishedMiscBuffer
-	call ByteFill
+	rst ByteFill
 
 	; This acts as the old Special_CheckBothSelectedSameRoom.
 	; We send a dummy byte here that will cause old versions
@@ -2164,8 +2164,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	; bc is the number of bytes we should transfer.
 	; It needs to account for the maximum number of
@@ -2203,8 +2202,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 5
 	call Serial_ExchangeBytes
@@ -2243,8 +2241,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 2
 	call Serial_ExchangeBytes
@@ -2321,7 +2318,7 @@ PerformLinkChecks:
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
-	ld de, MUSIC_POKEMON_CENTER
+	ld e, MUSIC_POKEMON_CENTER
 	jmp PlayMusic
 
 .SkipPreambleBytes
@@ -2579,7 +2576,7 @@ DetermineLinkBattleResult:
 	rra
 	ldh [hDivisor], a
 	ld b, $4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	add e
 	ld e, a

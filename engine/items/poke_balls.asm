@@ -51,7 +51,7 @@ GetModifiedCaptureRate:
 	; * base capture rate (might have been modified by Heavy Ball)
 	ld a, [wEnemyMonCatchRate]
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	call CheckBallOverflow
 	jr z, .pop_hl_and_gurantee
 
@@ -65,7 +65,7 @@ GetModifiedCaptureRate:
 	jr nz, .psn_brn_par
 	bit PSN, a
 	jr nz, .psn_brn_par
-	and SLP
+	and SLP_MASK
 	jr z, .status_done
 .frozen
 	ln a, 5, 2 ; x2.5
@@ -98,7 +98,7 @@ GetModifiedCaptureRate:
 	ld a, l
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 
 	ld hl, hQuotient
 	ld a, [hli]
@@ -428,7 +428,7 @@ TimerBallMultiplier:
 	ld a, 40
 .nocap
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ln a, 1, 10 ; x0.1 after the above multiplier gives 1.3x, 1.6x, 1.9x, ..., 4x.
 	jmp MultiplyAndDivide
 
@@ -440,7 +440,7 @@ NestBallMultiplier:
 	cpl
 	add 41 + 1 ; a = 41 - a
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ln a, 1, 5 ; x0.2
 	jmp MultiplyAndDivide
 
@@ -505,7 +505,7 @@ DuskBallMultiplier:
 DreamBallMultiplier:
 ; multiply catch rate by 4 if mon is asleep (on top of regular sleep bonus)
 	ld a, [wEnemyMonStatus]
-	and SLP
+	and SLP_MASK
 	ret z
 
 	ln a, 4, 1 ; x4
