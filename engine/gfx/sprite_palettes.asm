@@ -23,7 +23,7 @@ CopySpritePal::
 
 .not_copy_bg
 	; skip darkness/overcast if USE_DAYTIME_PAL_F
-	ld a, [wNeededPalIndex]
+	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
 	jr nz, .not_overcast
 

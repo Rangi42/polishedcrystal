@@ -15,7 +15,7 @@ Music_MewtwoBattleStadium_Ch1:
 	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0
 	rest 16
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 5, 2, 1
 	octave 4
 	note_type 10, 15, 2
@@ -158,7 +158,7 @@ Music_MewtwoBattleStadium_Ch1_loop_1:
 	sound_call Music_MewtwoBattleStadium_Ch1_ditty1
 	sound_loop 31, Music_MewtwoBattleStadium_Ch1_loop_1
 Music_MewtwoBattleStadium_Ch1_loop:
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	vibrato 0, 1, 3
 	octave 3
 	note_type 15, 12, 7
@@ -237,7 +237,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note G_, 1
 	note A_, 15
 	rest 1
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	vibrato 0, 0, 0
 	note A_, 7
 	rest 1
@@ -259,7 +259,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	rest 16
 	rest 16
 	rest 16
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 13, 2
 	octave 4
 	note G_, 2
@@ -306,7 +306,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	rest 6
 	note C_, 2
 	rest 15
-	duty_cycle_pattern 2, 2, 2, 2
+	duty_cycle 2
 	volume_envelope 15, 1
 	octave 3
 	note C_, 1
@@ -631,7 +631,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note C_, 1
 	octave 3
 	note A#, 1
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	note_type 8, 15, 1
 	note A#, 1
 	octave 4
@@ -721,7 +721,7 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	note A_, 2
 	sound_loop 2, Music_MewtwoBattleStadium_Ch1_loop_2
 	rest 16
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 12, 7
 	note A_, 14
 	note_type 12, 12, 7
@@ -742,7 +742,7 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	octave 4
 	note D_, 1
 	rest 8
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 12, 7
 	note C_, 7
 	rest 9
@@ -760,7 +760,7 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	note B_, 1
 	note A_, 1
 	rest 8
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 12, 7
 	note A_, 7
 	rest 1
@@ -788,7 +788,7 @@ Music_MewtwoBattleStadium_Ch1_ditty1:
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch2:
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	octave 3
 	note_type 6, 12, 1
 	volume_envelope 3, 0
@@ -881,7 +881,7 @@ Music_MewtwoBattleStadium_Ch2_loop_1:
 	note E_, 15
 	rest 1
 Music_MewtwoBattleStadium_Ch2_loop:
-	duty_cycle_pattern 2, 2, 2, 2
+	duty_cycle 2
 	vibrato 2, 2, 4
 	octave 3
 	note_type 15, 12, 5
@@ -957,7 +957,7 @@ Music_MewtwoBattleStadium_Ch2_loop:
 	note G_, 1
 	note E_, 8
 	rest 8
-	duty_cycle_pattern 0, 0, 0, 0
+	duty_cycle 0
 	vibrato 0, 0, 0
 	note B_, 15
 	rest 1
@@ -985,7 +985,7 @@ Music_MewtwoBattleStadium_Ch2_loop:
 	note_type 1, 12, 5
 	rest 3
 	note_type 9, 12, 5
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	octave 3
 	note_type 12, 13, 2
 	note G_, 1

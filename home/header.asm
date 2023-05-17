@@ -27,10 +27,20 @@ DoNothing:: ; no-optimize stub function
 
 
 SECTION "rst10 FarCall", ROM0[$0010]
-FarCall:: ; no-optimize stub jump
-	jr RstFarCall
+FarCall::
+; Call the following dab pointer.
+; Preserves af, bc, de, hl.
+	dec sp ; push space for the return bank
+; Stack layout:
+; +1 pointer to function address and bank followed by return location
+; +0 nothing
+	call _RstFarCall
+; Stack layout:
+; +1 return address
+; +0 return bank
+	jmp _ReturnFarCall
 
-	ds 6 ; unused
+	ds 1 ; unused
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
@@ -45,7 +55,6 @@ FarCopyWRAM::
 	call StackCallInWRAMBankA
 	assert @ == CopyBytes, "cannot fall through to CopyBytes"
 	; fallthrough
-
 
 SECTION "rst20 CopyBytes", ROM0[$0020]
 CopyBytes::
@@ -149,10 +158,7 @@ SECTION "High Home", ROM0[$005b]
 ;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
 
-INCLUDE "home/farcall.asm"
 INCLUDE "home/jumptable.asm"
-
-	ds 2 ; unused
 
 
 SECTION "Header", ROM0[$0100]

@@ -351,9 +351,6 @@ Options_Sound:
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
-	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
-	call nz, RestartMapMusic
 	hlcoord 11, 13
 	rst PlaceString
 	and a

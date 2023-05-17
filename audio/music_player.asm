@@ -4,6 +4,7 @@
 DEF MP_METER0 EQU $20
 DEF MP_METER8 EQU $28
 DEF MP_DUTY0 EQU $29
+DEF MP_WAVEFORM0 EQU $2d
 
 
 SECTION "Music Player Graphics", ROMX
@@ -62,9 +63,6 @@ ENDM
 MusicPlayerPals:
 INCLUDE "gfx/music_player/music_player.pal"
 
-MusicPlayerNotePals:
-INCLUDE "gfx/music_player/notes.pal"
-
 MusicPlayer::
 	call ClearTileMap
 
@@ -86,9 +84,9 @@ MusicPlayer::
 	ld bc, 4 palettes
 	rst CopyBytes
 
-	ld hl, MusicPlayerNotePals
+	ld hl, MusicPlayerPals
 	ld de, wOBPals2
-	ld bc, 1 palettes
+	ld bc, 4 palettes
 	rst CopyBytes
 
 	pop af
@@ -125,7 +123,7 @@ MusicPlayer::
 
 	ld hl, NotesGFX
 	ld de, vTiles0
-	lb bc, BANK(NotesGFX), $80
+	lb bc, BANK(NotesGFX), $1
 	call DecompressRequest2bpp
 
 	call DelayFrame
@@ -474,6 +472,8 @@ endr
 .change_ch1_2:
 	ld [hl], a
 	ld [wCurTrackDuty], a
+	call GetFlags2Addr
+	res SOUND_DUTY_LOOP, [hl]
 	ret
 
 .up_wave:
@@ -500,8 +500,7 @@ endr
 	and $f0
 	or b
 	ld [wChannel3Intensity], a
-	ld [wCurTrackIntensity], a
-	farjp ReloadWaveform
+	ret
 
 .up_noise:
 ; next noise set
@@ -914,9 +913,8 @@ _DrawCh1_2_3:
 	ld a, [hl]
 	pop hl
 	and %11000000
-	swap a
-	srl a
-	srl a
+	rlca
+	rlca
 	add MP_DUTY0
 	ld [hl], a
 	pop hl
@@ -949,8 +947,8 @@ _DrawCh1_2_3:
 	pop hl
 .blank_volume
 	and $f
-	srl a
-	add MP_METER0
+	rra
+	adc MP_METER0
 	ld [hli], a
 	ld [hld], a
 	ld a, [wTmpCh]
@@ -971,8 +969,8 @@ _DrawCh1_2_3:
 	; pick the waveform
 	ld a, [wChannel3Intensity]
 	and $f
-	sla a
-	add $2d
+	add a
+	add MP_WAVEFORM0
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -1373,6 +1371,10 @@ GetOctaveAddr:
 	ld hl, wChannel1Octave
 	jr _GetChannelMemberAddr
 
+GetFlags2Addr:
+	ld hl, wChannel1Flags2
+	jr _GetChannelMemberAddr
+
 GetDutyCycleAddr:
 	ld hl, wChannel1DutyCycle
 _GetChannelMemberAddr:
@@ -1762,9 +1764,9 @@ ChannelsOffTilemaps:
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
-	db 0, 0, $20, PRIORITY
-	db 0, 0, $40, PRIORITY
-	db 0, 0, $60, PRIORITY
+	db 0, 0, $00, PRIORITY | 3 ; red
+	db 0, 0, $00, PRIORITY | 2 ; blue
+	db 0, 0, $00, PRIORITY | 1 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"
