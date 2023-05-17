@@ -220,22 +220,10 @@ WRAM0
 	org $c000
 	"Stack"
 	align 8
-	"Audio RAM"
-	"WRAM 0"
-	org $c308
-	"Sprite Animations"
-	org $c400
-	align 8
 	"Sprites"
-	org $c4a0
 	"Tilemap and Attrmap"
-	org $c770
 	"Misc 480"
-	org $c950
 	"Misc 1326"
-	org $ce7e
-	"Video"
-	"More WRAM 0"
 	org $cff0
 	"Options"
 

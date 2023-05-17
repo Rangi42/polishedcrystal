@@ -10,8 +10,6 @@ wStackTop::
 
 SECTION "Audio RAM", WRAM0
 
-wEchoRAMTest:: db
-
 wMusic::
 wMusicPlaying:: db ; nonzero if playing
 
@@ -198,8 +196,6 @@ wLinkOtherPlayerMinTradeVersion:: dw
 wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
-
-	ds 4
 
 
 SECTION "Sprite Animations", WRAM0
@@ -1050,13 +1046,16 @@ wLinkReceivedMailEnd:: db
 SECTION "Video", WRAM0
 
 wBGMapBuffer:: ds 48
+wBGMapBufferEnd::
 wBGMapPalBuffer:: ds 48
+wBGMapPalBufferEnd::
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
+
+wTileAnimBuffer:: ds 1 tiles
+wTileAnimationTimer:: db
 
 
 SECTION "More WRAM 0", WRAM0
-
-	ds 82 ; unused
 
 wMemCGBLayout:: db
 
@@ -1071,8 +1070,6 @@ wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: db
 wHPPalIndex:: db
 ENDU
-
-wTileAnimBuffer:: ds 1 tiles
 
 ; link data
 UNION
@@ -1172,6 +1169,7 @@ wNamingScreenLetterCase::
 wHallOfFameMonCounter::
 wTradeDialog::
 wRandomValue::
+wEchoRAMTest::
 	db
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db
@@ -1281,8 +1279,6 @@ w2DMenuDataEnd::
 wMonPicSize:: db
 wMonAnimationSize:: db
 
-	ds 1 ; unused
-
 wPendingOverworldGraphics:: db
 wTextDelayFrames:: db
 
@@ -1317,8 +1313,6 @@ wFXAnimIDHi:: db
 
 wPlaceBallsX:: db
 wPlaceBallsY:: db
-
-wTileAnimationTimer:: db
 
 ; palette backups?
 wBGP:: db

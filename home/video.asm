@@ -70,6 +70,11 @@ UpdateBGMapBuffer::
 	ld bc, wBGMapPalBuffer
 	ld de, wBGMapBuffer
 
+; We increment the low byte of a pointer, so ensure these buffers
+; dont cross a 256 byte boundary
+assert HIGH(wBGMapBuffer) == HIGH(wBGMapBufferEnd)
+assert HIGH(wBGMapPalBuffer) == HIGH(wBGMapPalBufferEnd)
+
 .next
 ; Copy a pair of 16x8 blocks (one 16x16 block)
 
