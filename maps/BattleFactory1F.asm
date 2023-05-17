@@ -14,9 +14,10 @@ BattleFactory1F_MapScriptHeader:
 	def_bg_events
 	bg_event 14,  5, BGEVENT_READ, BattleFactory1FRulesScript
 	bg_event 10,  5, BGEVENT_JUMPTEXT, BattleFactory1FStreakText
+	bg_event 25,  6, BGEVENT_READ, PokemonJournalThortonScript
 
 	def_object_events
-	object_event 12,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BattleFactory1FReceptionistScript, -1
+	object_event 12,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleFactory1FReceptionistScript, -1
 	pc_nurse_event  6,  6
 	object_event 18,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BATTLEFACTORY_1, -1
 	object_event 20,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BATTLEFACTORY_2, -1
@@ -96,7 +97,7 @@ BattleFactory1FContinueChallenge:
 Script_CommitBattleFactoryResult:
 	special Special_BattleTower_CommitChallengeResult
 	iffalsefwd .WeHopeToServeYouAgain
-	setevent EVENT_BEAT_PALMER
+	setevent EVENT_BEAT_THORTON
 .WeHopeToServeYouAgain:
 	writethistext
 		text "We hope to serve"
@@ -275,3 +276,21 @@ Script_ReturnToRentalChallenge:
 	step_up
 	step_up
 	step_end
+
+PokemonJournalThortonScript:
+	setflag ENGINE_READ_PALMER_JOURNAL
+	jumpthistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Factory Head"
+	cont "Thorton!"
+
+	para "Thorton is said to"
+	line "only believe in"
+
+	para "what he can prove"
+	line "numerically with"
+	line "his inventions."
+	done

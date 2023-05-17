@@ -18,7 +18,7 @@ SproutTower3F_MapScriptHeader:
 	bg_event 12, 15, BGEVENT_JUMPTEXT, SproutTower3FStatueText
 
 	def_object_events
-	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
+	object_event  8,  4, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
 	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSageJin, -1
 	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSageTroy, -1
 	object_event  9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSageNeal, -1
@@ -27,7 +27,7 @@ SproutTower3F_MapScriptHeader:
 	itemball_event 12,  1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 
 	object_const_def
-	const SPROUTTOWER3F_SILVER
+	const SPROUTTOWER3F_RIVAL
 
 SproutTower3FRivalScene:
 	turnobject PLAYER, UP
@@ -39,15 +39,15 @@ SproutTower3FRivalScene:
 	playsound SFX_TACKLE
 	earthquake 79
 	applymovement PLAYER, SproutTower3FPlayerApproachesRivalMovement
-	applyonemovement SPROUTTOWER3F_SILVER, step_up
+	applyonemovement SPROUTTOWER3F_RIVAL, step_up
 	showtext SproutTowerElderLecturesRivalText
-	showemote EMOTE_SHOCK, SPROUTTOWER3F_SILVER, 15
-	turnobject SPROUTTOWER3F_SILVER, DOWN
+	showemote EMOTE_SHOCK, SPROUTTOWER3F_RIVAL, 15
+	turnobject SPROUTTOWER3F_RIVAL, DOWN
 	pause 15
-	applymovement SPROUTTOWER3F_SILVER, SproutTower3FRivalLeavesElderMovement
+	applymovement SPROUTTOWER3F_RIVAL, SproutTower3FRivalLeavesElderMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext SproutTowerRivalOnlyCareAboutStrongText
-	turnobject SPROUTTOWER3F_SILVER, UP
+	turnobject SPROUTTOWER3F_RIVAL, UP
 	opentext
 	writetext SproutTowerRivalUsedEscapeRopeText
 	pause 15
@@ -55,7 +55,7 @@ SproutTower3FRivalScene:
 	playsound SFX_WARP_TO
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
-	disappear SPROUTTOWER3F_SILVER
+	disappear SPROUTTOWER3F_RIVAL
 	waitsfx
 	special Special_FadeInQuickly
 	setscene $1
@@ -90,10 +90,10 @@ ElderLiScript:
 	line "to use Flash in"
 	cont "battle."
 
-	para "Simply call out"
-	line "in the darkness,"
+	para "Simply press A in"
+	line "the darkness, and"
 
-	para "and if any of your"
+	para "if any of your"
 	line "#mon can use"
 	cont "Flash, they will."
 	done

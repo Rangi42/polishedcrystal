@@ -7,11 +7,13 @@ Route46_MapScriptHeader:
 	warp_event  7, 33, ROUTE_29_46_GATE, 1
 	warp_event  8, 33, ROUTE_29_46_GATE, 2
 	warp_event 14,  5, DARK_CAVE_VIOLET_ENTRANCE, 3
+	warp_event  8,  4, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  9, 27, BGEVENT_JUMPTEXT, Route46SignText
+	bg_event  8,  3, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_46
 
 	def_object_events
 	object_event 15, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46HikerScript, -1
@@ -70,20 +72,20 @@ PicnickerErin1Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_ERIN
 	opentext
 	checkflag ENGINE_ERIN_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0x1a96da
+	iftruefwd .WantsBattle
 	checkcellnum PHONE_PICNICKER_ERIN
 	iftruefwd Route46NumberAcceptedF
 	checkevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x1a96c3
+	iftruefwd .AskedAlready
 	writetext PicnickerErinAfterBattleText
 	promptbutton
 	setevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	scall Route46AskNumber1F
-	sjumpfwd UnknownScript_0x1a96c6
+	sjumpfwd .AskForNumber
 
-UnknownScript_0x1a96c3:
+.AskedAlready:
 	scall Route46AskNumber2F
-UnknownScript_0x1a96c6:
+.AskForNumber:
 	askforphonenumber PHONE_PICNICKER_ERIN
 	ifequalfwd $1, Route46PhoneFullF
 	ifequalfwd $2, Route46NumberDeclinedF
@@ -91,7 +93,7 @@ UnknownScript_0x1a96c6:
 	scall Route46RegisteredNumberF
 	sjumpfwd Route46NumberAcceptedF
 
-UnknownScript_0x1a96da:
+.WantsBattle:
 	scall Route46RematchF
 	winlosstext PicnickerErin1BeatenText, 0
 	readmem wErinFightCount
@@ -126,19 +128,19 @@ UnknownScript_0x1a96da:
 	reloadmapafterbattle
 	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	checkevent EVENT_ERIN_CALCIUM
-	iftruefwd UnknownScript_0x1a973b
+	iftruefwd .HasCalcium
 	checkevent EVENT_GOT_CALCIUM_FROM_ERIN
-	iftruefwd UnknownScript_0x1a973a
+	iftruefwd .GotCalciumAlready
 	scall Route46RematchGiftF
 	verbosegiveitem CALCIUM
 	iffalsefwd ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
 	sjumpfwd Route46NumberAcceptedF
 
-UnknownScript_0x1a973a:
+.GotCalciumAlready:
 	end
 
-UnknownScript_0x1a973b:
+.HasCalcium:
 	opentext
 	writetext PicnickerErin2BeatenText
 	waitbutton

@@ -15,6 +15,7 @@ LakeOfRage_MapScriptHeader:
 
 	def_bg_events
 	bg_event 21, 27, BGEVENT_JUMPTEXT, LakeOfRageSignText
+	bg_event  3, 26, BGEVENT_JUMPTEXT, LakeOfRageAdvancedTipsSignText
 	bg_event 25, 31, BGEVENT_READ, LakeOfRageFishingGuruSign
 	bg_event  4,  4, BGEVENT_ITEM + RARE_CANDY, EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY
 	bg_event 35,  5, BGEVENT_ITEM + MAX_POTION, EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION
@@ -80,6 +81,21 @@ LakeOfRageSignText:
 	text "Lake of Rage,"
 	line "also known as"
 	cont "Gyarados Lake."
+	done
+
+LakeOfRageAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "The Hidden Power"
+	line "move can take on"
+if DEF(FAITHFUL)
+	cont "any type, except"
+else
+	cont "any type, even"
+endc
+
+	para "the newly disco-"
+	line "vered Fairy type!"
 	done
 
 LakeOfRageFishingGuruSign:
@@ -231,8 +247,9 @@ LakeOfRageRedGyaradosScript:
 	givekeyitem RED_SCALE
 	waitsfx
 	writetext .RedScaleText
-	playsound SFX_ITEM
-	waitsfx
+	special ShowKeyItemIcon
+	playsound SFX_KEY_ITEM
+	waitbutton
 	keyitemnotify
 	closetext
 	appear LAKEOFRAGE_LANCE
@@ -243,7 +260,7 @@ LakeOfRageRedGyaradosScript:
 	done
 
 .RedScaleText:
-	text "<PLAYER> obtained a"
+	text "<PLAYER> found"
 	line "Red Scale."
 	done
 

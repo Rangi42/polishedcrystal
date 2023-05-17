@@ -3,14 +3,15 @@
 ; Revised by NotFroggestSpirit
 
 Music_TrainerBattlePrism:
-	musicheader 3, 1, Music_TrainerBattlePrism_Ch2
-	musicheader 1, 2, Music_TrainerBattlePrism_Ch1
-	musicheader 1, 3, Music_TrainerBattlePrism_Ch3
+	channel_count 3
+	channel 1, Music_TrainerBattlePrism_Ch2
+	channel 2, Music_TrainerBattlePrism_Ch1
+	channel 3, Music_TrainerBattlePrism_Ch3
 
 Music_TrainerBattlePrism_Ch1:
 	tempo 102
-	dutycycle $1
-	notetype $c, $c7
+	duty_cycle 1
+	note_type 12, 12, 7
 	octave 5
 	note C_, 1
 	octave 4
@@ -48,15 +49,15 @@ Music_TrainerBattlePrism_Ch1:
 	note A_, 1
 	note A#, 1
 	note B_, 1
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	note C#, 4
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	note C#, 4
 	octave 4
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	note C#, 4
 	octave 5
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	octave 4
 	note G_, 4
 Music_TrainerBattlePrism_L1:
@@ -67,9 +68,9 @@ Music_TrainerBattlePrism_L1:
 	note F#, 1
 	note G_, 6
 	note C_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 2
 	note F_, 2
 	note G_, 2
@@ -96,9 +97,9 @@ Music_TrainerBattlePrism_L1:
 	note D_, 6
 	octave 3
 	note G_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 2
 	octave 4
 	note F_, 2
@@ -116,24 +117,24 @@ Music_TrainerBattlePrism_L1:
 	note A#, 8
 	note G#, 8
 	note G_, 10
-	intensity $c3
+	volume_envelope 12, 3
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note A#, 4
-	intensity $77
+	volume_envelope 7, 7
 	octave 5
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note F_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note A#, 8
 	note D_, 8
@@ -213,13 +214,13 @@ Music_TrainerBattlePrism_L1:
 	note F_, 10
 	note G_, 6
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 4
-	intensity $c4
-	vibrato $11, $12
-	callchannel Music_TrainerBattlePrism_P2
-	callchannel Music_TrainerBattlePrism_P3
+	volume_envelope 12, 4
+	vibrato 17, 1, 2
+	sound_call Music_TrainerBattlePrism_P2
+	sound_call Music_TrainerBattlePrism_P3
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -227,10 +228,10 @@ Music_TrainerBattlePrism_L1:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	callchannel Music_TrainerBattlePrism_P3
+	sound_call Music_TrainerBattlePrism_P3
 	octave 5
-	callchannel Music_TrainerBattlePrism_P2
-	callchannel Music_TrainerBattlePrism_P3
+	sound_call Music_TrainerBattlePrism_P2
+	sound_call Music_TrainerBattlePrism_P3
 	note G_, 2
 	note G_, 2
 	note G_, 2
@@ -238,9 +239,9 @@ Music_TrainerBattlePrism_L1:
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	callchannel Music_TrainerBattlePrism_P2
-	intensity $c7
-	vibrato $0, $0
+	sound_call Music_TrainerBattlePrism_P2
+	volume_envelope 12, 7
+	vibrato 0, 0, 0
 	octave 4
 	note G_, 4
 	note C_, 2
@@ -320,13 +321,13 @@ Music_TrainerBattlePrism_L1:
 	note G_, 1
 	note G#, 1
 	note A#, 1
-	jumpchannel Music_TrainerBattlePrism_L1
+	sound_jump Music_TrainerBattlePrism_L1
 
 Music_TrainerBattlePrism_Ch2:
 	tempo 102
-	dutycycle $3
-	notetype $c, $b4
-	vibrato $11, $12
+	duty_cycle 3
+	note_type 12, 11, 4
+	vibrato 17, 1, 2
 	octave 3
 	note G_, 2
 	note C_, 1
@@ -366,28 +367,28 @@ Music_TrainerBattlePrism_Ch2:
 	note F_, 2
 	octave 2
 	note A#, 2
-	callchannel Music_TrainerBattlePrism_P4
+	sound_call Music_TrainerBattlePrism_P4
 	octave 3
-	callchannel Music_TrainerBattlePrism_P4
-	callchannel Music_TrainerBattlePrism_P5
+	sound_call Music_TrainerBattlePrism_P4
+	sound_call Music_TrainerBattlePrism_P5
 	note C_, 2
 	note G_, 2
 	note C#, 2
 	note F_, 2
-	callchannel Music_TrainerBattlePrism_P5
+	sound_call Music_TrainerBattlePrism_P5
 	note F_, 2
 	octave 4
 	note C_, 2
 	note C#, 4
 Music_TrainerBattlePrism_L2:
 	octave 3
-	callchannel Music_TrainerBattlePrism_P6
+	sound_call Music_TrainerBattlePrism_P6
 	note G#, 12
 	note G#, 2
 	note G_, 2
 	note F_, 8
 	note A#, 8
-	callchannel Music_TrainerBattlePrism_P6
+	sound_call Music_TrainerBattlePrism_P6
 	octave 4
 	note C#, 12
 	note C#, 2
@@ -439,18 +440,18 @@ Music_TrainerBattlePrism_L2:
 	note E_, 12
 	note D_, 4
 	note C_, 16
-	dutycycle $2
-	intensity $84
-	vibrato $0, $0
+	duty_cycle 2
+	volume_envelope 8, 4
+	vibrato 0, 0, 0
 Music_TrainerBattlePrism_L3:
-	callchannel Music_TrainerBattlePrism_P7
-	callchannel Music_TrainerBattlePrism_P7
-	callchannel Music_TrainerBattlePrism_P8
-	callchannel Music_TrainerBattlePrism_P8
-	loopchannel 2, Music_TrainerBattlePrism_L3
-	dutycycle $3
-	intensity $b4
-	vibrato $11, $12
+	sound_call Music_TrainerBattlePrism_P7
+	sound_call Music_TrainerBattlePrism_P7
+	sound_call Music_TrainerBattlePrism_P8
+	sound_call Music_TrainerBattlePrism_P8
+	sound_loop 2, Music_TrainerBattlePrism_L3
+	duty_cycle 3
+	volume_envelope 11, 4
+	vibrato 17, 1, 2
 	octave 2
 	note F_, 2
 	note F_, 2
@@ -545,7 +546,7 @@ Music_TrainerBattlePrism_L4:
 	note G_, 6
 	note G#, 6
 	note C#, 4
-	loopchannel 2, Music_TrainerBattlePrism_L4
+	sound_loop 2, Music_TrainerBattlePrism_L4
 	octave 4
 	note C_, 6
 	note C#, 6
@@ -574,11 +575,11 @@ Music_TrainerBattlePrism_L4:
 	note G#, 4
 	octave 4
 	note A#, 3
-	note __, 1
-	jumpchannel Music_TrainerBattlePrism_L2
+	rest 1
+	sound_jump Music_TrainerBattlePrism_L2
 
 Music_TrainerBattlePrism_Ch3:
-	notetype $c, $19
+	note_type 12, 1, 9
 	octave 3
 	note C_, 16
 	note C#, 16
@@ -591,12 +592,12 @@ Music_TrainerBattlePrism_L5:
 	note D#, 2
 	note C#, 2
 	note D#, 2
-	loopchannel 8, Music_TrainerBattlePrism_L5
+	sound_loop 8, Music_TrainerBattlePrism_L5
 Music_TrainerBattlePrism_L6:
 	note C_, 4
 	note D#, 2
 	note G_, 2
-	callchannel Music_TrainerBattlePrism_P9
+	sound_call Music_TrainerBattlePrism_P9
 	note C_, 2
 	note G_, 2
 	note F_, 2
@@ -606,13 +607,13 @@ Music_TrainerBattlePrism_L7:
 	note G#, 2
 	note F_, 2
 	note G#, 2
-	loopchannel 3, Music_TrainerBattlePrism_L7
+	sound_loop 3, Music_TrainerBattlePrism_L7
 	note C#, 2
 	note G#, 2
 	note G_, 2
 	note G#, 2
-	callchannel Music_TrainerBattlePrism_P9
-	callchannel Music_TrainerBattlePrism_P9
+	sound_call Music_TrainerBattlePrism_P9
+	sound_call Music_TrainerBattlePrism_P9
 Music_TrainerBattlePrism_L8:
 	octave 2
 	note A#, 2
@@ -620,7 +621,7 @@ Music_TrainerBattlePrism_L8:
 	note F_, 2
 	note C#, 2
 	note F_, 2
-	loopchannel 3, Music_TrainerBattlePrism_L8
+	sound_loop 3, Music_TrainerBattlePrism_L8
 	octave 2
 	note A#, 2
 	octave 3
@@ -638,21 +639,21 @@ Music_TrainerBattlePrism_L9:
 	note A#, 2
 	octave 3
 	note D_, 2
-	loopchannel 4, Music_TrainerBattlePrism_L9
-	callchannel Music_TrainerBattlePrism_P10
-	callchannel Music_TrainerBattlePrism_P10
+	sound_loop 4, Music_TrainerBattlePrism_L9
+	sound_call Music_TrainerBattlePrism_P10
+	sound_call Music_TrainerBattlePrism_P10
 	octave 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 2
 	note C_, 2
 	octave 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 2
@@ -665,16 +666,16 @@ Music_TrainerBattlePrism_L9:
 	note C_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 2
 	note F_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 2
@@ -685,16 +686,16 @@ Music_TrainerBattlePrism_L9:
 	note G#, 2
 	note G#, 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 2
 	note C_, 2
 	octave 2
 	note A_, 3
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note C_, 2
@@ -705,16 +706,16 @@ Music_TrainerBattlePrism_L9:
 	note C_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 3
-	note __, 1
+	rest 1
 	note F_, 2
 	note F_, 2
 	octave 2
 	note A#, 3
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 3
 	note F_, 2
@@ -723,30 +724,30 @@ Music_TrainerBattlePrism_L9:
 	note E_, 2
 	note F_, 2
 	note D_, 2
-	callchannel Music_TrainerBattlePrism_P11
-	callchannel Music_TrainerBattlePrism_P12
-	callchannel Music_TrainerBattlePrism_P11
+	sound_call Music_TrainerBattlePrism_P11
+	sound_call Music_TrainerBattlePrism_P12
+	sound_call Music_TrainerBattlePrism_P11
 Music_TrainerBattlePrism_L11:
 	octave 2
 	note A_, 2
 	octave 3
 	note F_, 2
-	loopchannel 4, Music_TrainerBattlePrism_L11
+	sound_loop 4, Music_TrainerBattlePrism_L11
 Music_TrainerBattlePrism_L12:
 	note C_, 2
 	note F_, 2
-	loopchannel 4, Music_TrainerBattlePrism_L12
-	callchannel Music_TrainerBattlePrism_P12
+	sound_loop 4, Music_TrainerBattlePrism_L12
+	sound_call Music_TrainerBattlePrism_P12
 Music_TrainerBattlePrism_L13:
 	note D_, 2
 	note G_, 2
-	loopchannel 4, Music_TrainerBattlePrism_L13
+	sound_loop 4, Music_TrainerBattlePrism_L13
 Music_TrainerBattlePrism_L14:
 	octave 2
 	note A#, 2
 	octave 3
 	note F_, 2
-	loopchannel 4, Music_TrainerBattlePrism_L14
+	sound_loop 4, Music_TrainerBattlePrism_L14
 	note C_, 2
 	octave 4
 	note C_, 2
@@ -806,7 +807,7 @@ Music_TrainerBattlePrism_L14:
 	octave 3
 	note C#, 2
 	note A#, 2
-	jumpchannel Music_TrainerBattlePrism_L6
+	sound_jump Music_TrainerBattlePrism_L6
 
 Music_TrainerBattlePrism_P1:
 	note C_, 6
@@ -815,7 +816,7 @@ Music_TrainerBattlePrism_P1:
 	note C_, 2
 	note C#, 4
 	note D#, 6
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P2:
 	note F_, 2
@@ -825,7 +826,7 @@ Music_TrainerBattlePrism_P2:
 	note F_, 2
 	note F_, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P3:
 	note E_, 2
@@ -835,7 +836,7 @@ Music_TrainerBattlePrism_P3:
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P4:
 	note G_, 6
@@ -845,7 +846,7 @@ Music_TrainerBattlePrism_P4:
 	note A#, 4
 	note G#, 6
 	note F_, 4
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P5:
 	note G_, 2
@@ -860,7 +861,7 @@ Music_TrainerBattlePrism_P5:
 	note C#, 2
 	note F_, 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P6:
 	note C_, 6
@@ -874,7 +875,7 @@ Music_TrainerBattlePrism_P6:
 	note E_, 2
 	note F_, 2
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P7:
 	note F_, 2
@@ -887,7 +888,7 @@ Music_TrainerBattlePrism_P7:
 	note A_, 2
 	note F_, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P8:
 	note E_, 2
@@ -900,50 +901,50 @@ Music_TrainerBattlePrism_P8:
 	note G_, 2
 	note E_, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_TrainerBattlePrism_P9:
 	note C_, 2
 	note G_, 2
 	note D#, 2
 	note G_, 2
-	loopchannel 2, Music_TrainerBattlePrism_P9
-	endchannel
+	sound_loop 2, Music_TrainerBattlePrism_P9
+	sound_ret
 
 Music_TrainerBattlePrism_P10:
 	octave 2
 	note A#, 2
 	octave 3
 	note F_, 2
-	loopchannel 8, Music_TrainerBattlePrism_P10
+	sound_loop 8, Music_TrainerBattlePrism_P10
 .loop2
 	note C_, 2
 	note G_, 2
-	loopchannel 8, .loop2
-	endchannel
+	sound_loop 8, .loop2
+	sound_ret
 
 Music_TrainerBattlePrism_P11:
 	note C_, 2
 	note F_, 2
-	loopchannel 4, Music_TrainerBattlePrism_P11
+	sound_loop 4, Music_TrainerBattlePrism_P11
 .loop2
 	octave 2
 	note A_, 2
 	octave 3
 	note E_, 2
-	loopchannel 4, .loop2
+	sound_loop 4, .loop2
 .loop3
 	octave 2
 	note G_, 2
 	octave 3
 	note D_, 2
-	loopchannel 4, .loop3
-	endchannel
+	sound_loop 4, .loop3
+	sound_ret
 
 Music_TrainerBattlePrism_P12:
 	octave 2
 	note A_, 2
 	octave 3
 	note E_, 2
-	loopchannel 4, Music_TrainerBattlePrism_P12
-	endchannel
+	sound_loop 4, Music_TrainerBattlePrism_P12
+	sound_ret

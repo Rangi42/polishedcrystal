@@ -29,8 +29,8 @@ GoldenrodDeptStore3FSuperNerdText:
 
 GoldenrodDeptStore3FRockerText:
 	text "Hey! When you bat-"
-	line "tle, do you use X"
-	cont "Spcl.Atk?"
+	line "tle, do you use"
+	cont "X Sp.Atk?"
 
 	para "It's awesome. It"
 	line "really jacks up"

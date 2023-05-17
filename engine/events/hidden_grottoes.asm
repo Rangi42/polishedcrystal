@@ -44,7 +44,7 @@ InitializeHiddenGrotto::
 	ld hl, HiddenGrottoHiddenItems
 	call GetHiddenGrottoTableEntry
 	ld d, GROTTO_HIDDEN_ITEM
-	ld e, a
+	ld c, a
 	jr .StoreContent
 
 .RandomPokemon:
@@ -77,7 +77,7 @@ InitializeHiddenGrotto::
 	ld a, [hl]
 .got_item
 	ld d, GROTTO_ITEM
-	ld e, a
+	ld c, a
 .StoreContent:
 	push bc
 	call GetHiddenGrottoContentPointer
@@ -106,8 +106,7 @@ GetHiddenGrottoTableEntry:
 	jr .loop
 .ok
 	ld a, [hli]
-	cp -1
-	ld a, 0
+	inc a
 	ret z
 	ld a, [hl]
 	ret

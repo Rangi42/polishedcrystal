@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "NULL", ROM0
 NULL::
 
@@ -21,6 +18,8 @@ INCLUDE "home/joypad.asm"
 INCLUDE "home/decompress.asm"
 INCLUDE "home/palettes.asm"
 INCLUDE "home/gfx.asm"
+INCLUDE "home/gfx2.asm"
+INCLUDE "home/delay.asm"
 INCLUDE "home/text.asm"
 INCLUDE "home/video.asm"
 INCLUDE "home/map_objects.asm"
@@ -28,8 +27,8 @@ INCLUDE "home/movement.asm"
 INCLUDE "home/menu.asm"
 INCLUDE "home/game_time.asm"
 INCLUDE "home/map.asm"
-INCLUDE "home/farcall.asm"
 INCLUDE "home/predef.asm"
+INCLUDE "home/farcall.asm"
 INCLUDE "home/window.asm"
 INCLUDE "home/flag.asm"
 INCLUDE "home/sprite_updates.asm"
@@ -69,7 +68,6 @@ INCLUDE "audio/alternate_music.asm"
 INCLUDE "data/text/ngrams.asm"
 INCLUDE "data/text/compressed_text.asm"
 INCLUDE "data/pokemon/variant_forms.asm"
-INCLUDE "data/moves/hm_moves.asm"
 INCLUDE "data/maps/special_music.asm"
 
 ; data used in multiple banks, or one full bank, outside home

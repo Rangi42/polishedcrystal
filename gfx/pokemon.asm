@@ -1,9 +1,11 @@
-INCLUDE "constants.asm"
-
-
 SECTION "Pokemon Pic Pointers", ROMX
 
 INCLUDE "data/pokemon/pic_pointers.asm"
+
+
+SECTION "Pokemon Pic Sizes", ROMX
+
+INCLUDE "data/pokemon/pic_sizes.asm"
 
 
 SECTION "Bulbasaur Pics", ROMX
@@ -394,10 +396,6 @@ SECTION "Pinsir Pics", ROMX
 PinsirFrontpic: INCBIN "gfx/pokemon/pinsir/front.animated.2bpp.lz"
 PinsirBackpic:  INCBIN "gfx/pokemon/pinsir/back.2bpp.lz"
 
-SECTION "Tauros Pics", ROMX
-TaurosFrontpic: INCBIN "gfx/pokemon/tauros/front.animated.2bpp.lz"
-TaurosBackpic:  INCBIN "gfx/pokemon/tauros/back.2bpp.lz"
-
 SECTION "Lapras Pics", ROMX
 LaprasFrontpic: INCBIN "gfx/pokemon/lapras/front.animated.2bpp.lz"
 LaprasBackpic:  INCBIN "gfx/pokemon/lapras/back.2bpp.lz"
@@ -617,10 +615,6 @@ YanmaBackpic:  INCBIN "gfx/pokemon/yanma/back.2bpp.lz"
 SECTION "Yanmega Pics", ROMX
 YanmegaFrontpic: INCBIN "gfx/pokemon/yanmega/front.animated.2bpp.lz"
 YanmegaBackpic:  INCBIN "gfx/pokemon/yanmega/back.2bpp.lz"
-
-SECTION "Wooper Pics", ROMX
-WooperFrontpic: INCBIN "gfx/pokemon/wooper/front.animated.2bpp.lz"
-WooperBackpic:  INCBIN "gfx/pokemon/wooper/back.2bpp.lz"
 
 SECTION "Quagsire Pics", ROMX
 QuagsireFrontpic: INCBIN "gfx/pokemon/quagsire/front.animated.2bpp.lz"
@@ -1501,6 +1495,24 @@ SECTION "Overqwil Pics", ROMX
 OverqwilFrontpic: INCBIN "gfx/pokemon/overqwil/front.animated.2bpp.lz"
 OverqwilBackpic:  INCBIN "gfx/pokemon/overqwil/back.2bpp.lz"
 
+SECTION "Dudunsparce Pics", ROMX
+DudunsparceTwoSegmentFrontpic:   INCBIN "gfx/pokemon/dudunsparce_two_segment/front.animated.2bpp.lz"
+DudunsparceThreeSegmentFrontpic: INCBIN "gfx/pokemon/dudunsparce_three_segment/front.animated.2bpp.lz"
+DudunsparceTwoSegmentBackpic:
+DudunsparceThreeSegmentBackpic: INCBIN "gfx/pokemon/dudunsparce/back.2bpp.lz"
+
+SECTION "Farigiraf Pics", ROMX
+FarigirafFrontpic: INCBIN "gfx/pokemon/farigiraf/front.animated.2bpp.lz"
+FarigirafBackpic:  INCBIN "gfx/pokemon/farigiraf/back.2bpp.lz"
+
+SECTION "Clodsire Pics", ROMX
+ClodsireFrontpic: INCBIN "gfx/pokemon/clodsire/front.animated.2bpp.lz"
+ClodsireBackpic:  INCBIN "gfx/pokemon/clodsire/back.2bpp.lz"
+
+SECTION "Annihilape Pics", ROMX
+AnnihilapeFrontpic: INCBIN "gfx/pokemon/annihilape/front.animated.2bpp.lz"
+AnnihilapeBackpic:  INCBIN "gfx/pokemon/annihilape/back.2bpp.lz"
+
 SECTION "SneaselPlain Pics", ROMX
 SneaselPlainFrontpic: INCBIN "gfx/pokemon/sneasel_plain/front.animated.2bpp.lz"
 SneaselPlainBackpic:  INCBIN "gfx/pokemon/sneasel_plain/back.2bpp.lz"
@@ -1516,3 +1528,27 @@ SneaselHisuianBackpic:  INCBIN "gfx/pokemon/sneasel_hisuian/back.2bpp.lz"
 SECTION "Sneasler Pics", ROMX
 SneaslerFrontpic: INCBIN "gfx/pokemon/sneasler/front.animated.2bpp.lz"
 SneaslerBackpic:  INCBIN "gfx/pokemon/sneasler/back.2bpp.lz"
+
+SECTION "WooperPlain Pics", ROMX
+WooperPlainFrontpic: INCBIN "gfx/pokemon/wooper_plain/front.animated.2bpp.lz"
+WooperPlainBackpic:  INCBIN "gfx/pokemon/wooper_plain/back.2bpp.lz"
+
+SECTION "WooperPaldean Pics", ROMX
+WooperPaldeanFrontpic: INCBIN "gfx/pokemon/wooper_paldean/front.animated.2bpp.lz"
+WooperPaldeanBackpic:  INCBIN "gfx/pokemon/wooper_paldean/back.2bpp.lz"
+
+SECTION "TaurosPlain Pics", ROMX
+TaurosPlainFrontpic: INCBIN "gfx/pokemon/tauros_plain/front.animated.2bpp.lz"
+TaurosPlainBackpic:  INCBIN "gfx/pokemon/tauros_plain/back.2bpp.lz"
+
+SECTION "TaurosPaldean Pics", ROMX
+TaurosPaldeanFrontpic: INCBIN "gfx/pokemon/tauros_paldean/front.animated.2bpp.lz"
+TaurosPaldeanBackpic:  INCBIN "gfx/pokemon/tauros_paldean/back.2bpp.lz"
+
+SECTION "TaurosPaldeanFire Pics", ROMX
+TaurosPaldeanFireFrontpic: INCBIN "gfx/pokemon/tauros_paldean_fire/front.animated.2bpp.lz"
+TaurosPaldeanFireBackpic:  INCBIN "gfx/pokemon/tauros_paldean_fire/back.2bpp.lz"
+
+SECTION "TaurosPaldeanWater Pics", ROMX
+TaurosPaldeanWaterFrontpic: INCBIN "gfx/pokemon/tauros_paldean_water/front.animated.2bpp.lz"
+TaurosPaldeanWaterBackpic:  INCBIN "gfx/pokemon/tauros_paldean_water/back.2bpp.lz"

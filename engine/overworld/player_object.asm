@@ -28,18 +28,23 @@ SpawnPlayer:
 	call PlayerSpawn_ConvertCoords
 	xor a
 	call GetMapObject
-	ld hl, MAPOBJECT_COLOR
+	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
-	ln e, (1 << 3) | PAL_OW_RED, OBJECTTYPE_SCRIPT
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a
-	jr nz, .ok
 	ld a, [wPlayerGender]
-	bit 0, a
+	lb de, PAL_NPC_RED, OBJECTTYPE_SCRIPT
+	and a ; PLAYER_MALE
 	jr z, .ok
-	ln e, (1 << 3) | PAL_OW_BLUE, OBJECTTYPE_SCRIPT
-
+	assert PAL_NPC_RED + 1 == PAL_NPC_BLUE
+	inc d
+	dec a ; PLAYER_FEMALE
+	jr z, .ok
+	; PLAYER_ENBY
+	assert PAL_NPC_BLUE + 1 == PAL_NPC_GREEN
+	inc d
 .ok
+	ld [hl], d
+	ld hl, MAPOBJECT_TYPE
+	add hl, bc
 	ld [hl], e
 	xor a
 	ldh [hMapObjectIndexBuffer], a
@@ -88,10 +93,10 @@ WritePersonXY::
 	call CheckObjectVisibility
 	ret c
 
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
 	ldh a, [hMapObjectIndexBuffer]
@@ -104,7 +109,7 @@ RefreshPlayerCoords:
 	ld a, [wXCoord]
 	add 4
 	ld d, a
-	ld hl, wPlayerStandingMapX
+	ld hl, wPlayerMapX
 	sub [hl]
 	ld [hl], d
 	ld hl, wMapObjects + MAPOBJECT_X_COORD
@@ -115,7 +120,7 @@ RefreshPlayerCoords:
 	ld a, [wYCoord]
 	add 4
 	ld e, a
-	ld hl, wPlayerStandingMapY
+	ld hl, wPlayerMapY
 	sub [hl]
 	ld [hl], e
 	ld hl, wMapObjects + MAPOBJECT_Y_COORD
@@ -158,7 +163,7 @@ CopyObjectStruct::
 	ld hl, OBJECT_FLAGS2
 	add hl, de
 	set 5, [hl]
-	ret
+	farjp CheckForUsedObjPals
 
 CopyMapObjectToObjectStruct:
 	ld a, TRUE
@@ -183,22 +188,22 @@ CopyMapObjectToObjectStruct:
 	call GetSpritePalette
 	ld [wTempObjectCopyPalette], a
 
-	ld hl, MAPOBJECT_COLOR
+	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
-	and $f0
+	and a
 	jr z, .skip_color_override
-	swap a
-	and $7 ; PALETTE_MASK
+	dec a
 	ld [wTempObjectCopyPalette], a
 
 .skip_color_override
+
 	ld hl, MAPOBJECT_MOVEMENT
 	add hl, bc
 	ld a, [hl]
 	ld [wTempObjectCopyMovement], a
 
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_SIGHT_RANGE
 	add hl, bc
 	ld a, [hl]
 	ld [wTempObjectCopyRange], a
@@ -414,9 +419,8 @@ CopyTempObjectToObjectStruct:
 	pop bc
 
 	ld a, [wTempObjectCopyPalette]
-	ld hl, OBJECT_PALETTE
+	ld hl, OBJECT_PAL_INDEX
 	add hl, de
-	or [hl]
 	ld [hl], a
 
 	ld a, [wTempObjectCopyY]
@@ -439,7 +443,7 @@ CopyTempObjectToObjectStruct:
 	add hl, de
 	ld [hl], STEP_TYPE_RESET
 
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, de
 	ld [hl], STANDING
 
@@ -472,6 +476,8 @@ CopyTempObjectToObjectStruct:
 	add hl, de
 	ld [hl], a
 
+	farcall CheckForUsedObjPals
+
 	and a
 	ret
 
@@ -480,7 +486,7 @@ CopyTempObjectToObjectStruct:
 	add hl, de
 	ld [hl], a
 
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, de
 	ld [hl], a
 
@@ -499,7 +505,7 @@ CopyTempObjectToObjectStruct:
 	ld hl, OBJECT_INIT_X
 	add hl, de
 	ld [hl], a
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, de
 	ld [hl], a
 	ld hl, wXCoord
@@ -514,7 +520,7 @@ CopyTempObjectToObjectStruct:
 	ret
 
 .CopySpriteMovementData:
-	ld hl, OBJECT_MOVEMENTTYPE
+	ld hl, OBJECT_MOVEMENT_TYPE
 	add hl, de
 	ld [hl], a
 
@@ -534,7 +540,7 @@ endr
 	rlca
 	rlca
 	and %00001100
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, de
 	ld [hl], a
 
@@ -600,19 +606,19 @@ TrainerWalkToPlayer:
 	call GetObjectStruct
 
 ; get last talked coords, load to bc
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld c, [hl]
 	ld b, a
 
 ; get player coords, load to de
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, de
 	ld a, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, de
 	ld e, [hl]
 	ld d, a
@@ -659,15 +665,15 @@ FollowNotExact::
 	ret c
 
 ; Person 2 is now in bc, person 1 is now in de
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld c, [hl]
 	ld b, a
 
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, de
 	ld a, [hl]
 	cp b
@@ -681,7 +687,7 @@ FollowNotExact::
 	jr .continue
 
 .same_x
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, de
 	ld a, [hl]
 	cp c
@@ -694,7 +700,7 @@ FollowNotExact::
 	dec c
 
 .continue
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, de
 	ld [hl], b
 	ld a, b
@@ -707,7 +713,7 @@ FollowNotExact::
 	ld hl, OBJECT_SPRITE_X
 	add hl, de
 	ld [hl], a
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, de
 	ld [hl], c
 	ld a, c
@@ -724,7 +730,7 @@ FollowNotExact::
 	ld hl, OBJECT_RANGE
 	add hl, de
 	ld [hl], a
-	ld hl, OBJECT_MOVEMENTTYPE
+	ld hl, OBJECT_MOVEMENT_TYPE
 	add hl, de
 	ld [hl], SPRITEMOVEDATA_FOLLOWNOTEXACT
 	ld hl, OBJECT_STEP_TYPE
@@ -759,10 +765,10 @@ GetRelativeFacing::
 ; load the coordinates of object d into bc
 	ld a, d
 	call GetObjectStruct
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld c, [hl]
 	ld b, a
@@ -770,10 +776,10 @@ GetRelativeFacing::
 ; load the coordinates of object e into de
 	ld a, e
 	call GetObjectStruct
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
 	pop bc
@@ -851,15 +857,15 @@ QueueFollowerFirstStep:
 .QueueFirstStep:
 	ld a, [wObjectFollow_Leader]
 	call GetObjectStruct
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
 	ld a, [wObjectFollow_Follower]
 	call GetObjectStruct
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, d
 	cp [hl]
@@ -875,7 +881,7 @@ QueueFollowerFirstStep:
 	ret
 
 .check_y
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld a, e
 	cp [hl]

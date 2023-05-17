@@ -3,6 +3,7 @@ TrainerClassNames::
 	li "?"                ; TRAINER_NONE
 	li "<PK><MN> Trainer" ; CARRIE
 	li "<PK><MN> Trainer" ; CAL
+	li "<PK><MN> Trainer" ; JACKY
 	li "Leader"           ; FALKNER
 	li "Leader"           ; BUGSY
 	li "Leader"           ; WHITNEY
@@ -66,6 +67,9 @@ TrainerClassNames::
 	li "Kimono Girl"      ; KIMONO_GIRL_3
 	li "Kimono Girl"      ; KIMONO_GIRL_4
 	li "Kimono Girl"      ; KIMONO_GIRL_5
+	li "Kimono Girl"      ; KIMONO_GIRL_6
+	li "Kimono Girl"      ; KIMONO_GIRL_7
+	li "Kimono Girl"      ; KIMONO_GIRL_8
 	li "Elder"            ; ELDER
 	li "Sr.& Jr."         ; SR_AND_JR
 	li "Couple"           ; COUPLE
@@ -96,6 +100,7 @@ TrainerClassNames::
 	li "Tamer"            ; TAMER
 	li "Artist"           ; ARTIST
 	li "Aroma Lady"       ; AROMA_LADY
+	li "Soldier"          ; SOLDIER
 	li "Waiter"           ; WAITER
 	li "Waitress"         ; WAITRESS
 	li "Sightseer"        ; SIGHTSEERM
@@ -137,10 +142,11 @@ TrainerClassNames::
 	li "<PK><MN> Trainer" ; SPARK_T
 	li "Trainer"          ; FLANNERY
 	li "Fighter"          ; MAYLENE
-	li "Pilot"            ; SKYLA
+	li "Swimmer"          ; MARLON
 	li "Designer"         ; VALERIE
 	li "<PK><MN> Trainer" ; KUKUI
-	li "Tourist"          ; MELONY
+	li "Vocalist"         ; PIERS
+	li "Patissier"        ; KATY
 	li "Surfer"           ; VICTOR
 	li "#Maniac"          ; BILL_T
 	li "<PK><MN> Trainer" ; YELLOW

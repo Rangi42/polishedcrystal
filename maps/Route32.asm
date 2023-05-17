@@ -22,8 +22,10 @@ Route32_MapScriptHeader:
 
 	def_bg_events
 	bg_event 13,  5, BGEVENT_JUMPTEXT, Route32SignText
-	bg_event  9,  1, BGEVENT_JUMPTEXT, Route32RuinsSignText
+	bg_event  7,  1, BGEVENT_JUMPTEXT, Route32RuinsSignText
 	bg_event 10, 84, BGEVENT_JUMPTEXT, Route32UnionCaveSignText
+	bg_event 14,  1, BGEVENT_JUMPTEXT, Route32AdvancedTips1Text
+	bg_event  1, 59, BGEVENT_JUMPTEXT, Route32AdvancedTips2Text
 	bg_event 12, 67, BGEVENT_ITEM + GREAT_BALL, EVENT_ROUTE_32_HIDDEN_GREAT_BALL_1
 	bg_event 11, 40, BGEVENT_ITEM + SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION_1
 	bg_event  8, 10, BGEVENT_ITEM + SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION_2
@@ -50,7 +52,7 @@ Route32_MapScriptHeader:
 	itemball_event  6, 32, REPEL, 1, EVENT_ROUTE_32_REPEL
 	cuttree_event 10, 19, EVENT_ROUTE_32_CUT_TREE
 	cuttree_event -1, 29, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
-	cuttree_event 23, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
+	cuttree_event 19, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 	object_const_def
 	const ROUTE32_COOLTRAINER_M
@@ -984,4 +986,24 @@ Route32RuinsSignText:
 Route32UnionCaveSignText:
 	text "Union Cave"
 	line "Ahead"
+	done
+
+Route32AdvancedTips1Text:
+	text "Advanced Tips!"
+
+	para "Items may be found"
+	line "by fishing or by"
+	cont "smashing rocks!"
+	done
+
+Route32AdvancedTips2Text:
+	text "Advanced Tips!"
+
+	para "If you lose a bat-"
+	line "tle with another"
+	cont "trainer, you pay"
+
+	para "them money based"
+	line "on how many badges"
+	cont "you own!"
 	done

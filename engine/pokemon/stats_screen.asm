@@ -551,15 +551,6 @@ StatsScreen_LoadGFX:
 	call CopyNickname
 	hlcoord 1, 15
 	rst PlaceString
-	ld a, [wTempMonCaughtGender]
-	and FEMALE
-	ld a, "♀"
-	jr nz, .got_gender
-	assert "♀" - 1 == "♂"
-	dec a
-.got_gender
-	hlcoord 8, 15
-	ld [hl], a
 	ret
 
 .Status_Type:
@@ -655,7 +646,7 @@ StatsScreen_LoadGFX:
 	ld hl, wTempMonHyperTraining
 	ld a, [hl]
 
-	; Handle display one by one since Spcl.Atk/Spcl.Def/Speed is displayed in a
+	; Handle display one by one since Sp.Atk/Sp.Def/Speed is displayed in a
 	; different order.
 	hlcoord 0, 10
 	ld de, -4
@@ -664,8 +655,8 @@ StatsScreen_LoadGFX:
 	call .CheckHyper ; Attack
 	call .CheckHyper ; Defense
 	rlca ; skips the speed one for now
-	call .CheckHyper ; Spcl.Atk
-	call .CheckHyper ; Spcl.Def
+	call .CheckHyper ; Sp.Atk
+	call .CheckHyper ; Sp.Def
 	rlca
 	swap a
 	; fallthrough
@@ -823,15 +814,15 @@ TN_PrintCharacteristics:
 	ld c, 0
 	ld b, a
 .atk_beats_hp
-	; Spd
+	; Spe
 	ld a, [hl]
 	and $f
 	cp b
-	jr z, .last_beats_spd ; tie
-	jr c, .last_beats_spd
+	jr z, .last_beats_spe ; tie
+	jr c, .last_beats_spe
 	ld c, 5
 	ld b, a
-.last_beats_spd
+.last_beats_spe
 	; Def
 	ld a, [hli]
 	swap a
@@ -956,7 +947,7 @@ CheckFaintedFrzSlp:
 	ld hl, MON_STATUS
 	add hl, bc
 	ld a, [hl]
-	and (1 << FRZ) | SLP
+	and (1 << FRZ) | SLP_MASK
 	ret z
 .fainted_frz_slp
 	scf

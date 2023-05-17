@@ -1,40 +1,95 @@
-LyraPhoneMornGreetingText:
+LyraPhoneGreetingText_Morn:
 	text "Oh, <PLAYER>!"
 	line "Good morning!"
-	done
+	prompt
 
-LyraPhoneDayGreetingText:
+LyraPhoneGreetingText_Day:
 	text "Oh, <PLAYER>!"
 	line "How are you?"
-	done
+	prompt
 
-LyraPhoneEveGreetingText:
-LyraPhoneNiteGreetingText:
+LyraPhoneGreetingText_Eve:
 	text "Oh, <PLAYER>!"
 	line "Good evening!"
+	prompt
+
+LyraPhoneGreetingText_Nite:
+	text "…<PLAYER>!"
+	line "Good evening!"
+	cont "You're up late."
+	prompt
+
+LyraPhoneLandmarkText:
+	text "Where are you now?"
+	line ""
+	text_ram wStringBuffer4
+	text "?"
+	prompt
+
+LyraPhoneKantoText:
+	text "So you're all the"
+	line "way over in Kanto!"
+	prompt
+
+LyraPhoneIslandsText:
+	text "You're exploring a"
+	line "tropical island…"
+
+	para "I'm jealous,"
+	line "<PLAYER>!"
+	prompt
+
+LyraPhoneJohtoText_Generic:
+	text "Tell me all about"
+	line "it later, OK?"
+	prompt
+
+LyraPhoneNextMoveQuestionText:
+	text "So, <PLAYER>…"
+
+	para "Want me to tell"
+	line "you when your"
+
+	para "#mon will learn"
+	line "its next move?"
 	done
 
-LyraPhoneMainText:
-	text "You know, my dad"
-	line "thinks you'll be-"
+LyraPhoneNextMoveRefusedText:
+	text "Haha, I won't"
+	line "spoil it, then!"
+	prompt
 
-	para "come an incredible"
-	line "trainer someday."
+LyraPhoneNextMoveLevelText:
+	text_ram wStringBuffer3
+	line "learns its next"
+	cont "move at level "
+	text_decimal hScriptVar, 1, 3
+	text "."
+	prompt
 
-	para "What am I saying?"
-	line "I'm starting to"
+LyraPhoneNoNextMoveText:
+	text_ram wStringBuffer3
+	line "won't learn any"
 
-	para "sound like the"
-	line "professor!"
+	para "more moves just"
+	line "by leveling up."
+	prompt
 
-	para "Well, do your"
-	line "best!"
+LyraPhoneNoEggMovesText:
+	text "Eggs don't learn"
+	line "moves! …Do they?"
+	prompt
+
+LyraPhoneEndText:
+	text "Anyway… So nice"
+	line "to catch up with"
+	cont "you, <PLAYER>."
 
 	para "Call me again"
 	line "sometime!"
 	done
 
-LyraPhoneYellowForestText:
+LyraPhoneSpecialText_YellowForest:
 	text "Hi, <PLAYER>!"
 	line "How are you?"
 
@@ -65,7 +120,7 @@ LyraPhoneYellowForestText:
 	line "on your journey!"
 	done
 
-LyraPhoneFirstBadgeText:
+LyraPhoneSpecialText_FirstBadge:
 	text "<PLAYER>! Hi!"
 
 	para "I just got my"
@@ -90,35 +145,22 @@ LyraPhoneFirstBadgeText:
 	line "the League!"
 	done
 
-LyraPhoneLyrasEggIntroText:
-	text "Hi, <PLAYER>!"
+LyraPhoneSpecialText_LyrasEgg:
+	text "<PLAYER>! Hi!"
 
 	para "Are you doing well"
-	line "against Kanto's Gym"
-	cont "Leaders?"
+	line "against Kanto's"
+	cont "Gym Leaders?"
 
 	para "I'm sure you are!"
 
 	para "Listen, listen!"
-	done
 
-LyraPhoneLyrasEggChikoritaText:
-	text "I left my Chicory"
+	para "I left my "
+	text_ram wStringBuffer4
 	line "at the Day-Care"
-	done
 
-LyraPhoneLyrasEggCyndaquilText:
-	text "I left my Cinder"
-	line "at the Day-Care"
-	done
-
-LyraPhoneLyrasEggTotodileText:
-	text "I left my Toto"
-	line "at the Day-Care"
-	done
-
-LyraPhoneLyrasEggEndText:
-	text "with Grandma and"
+	para "with Grandma and"
 	line "Grandpa, and they"
 	cont "found an Egg!"
 
@@ -141,38 +183,4 @@ LyraPhoneLyrasEggEndText:
 	cont "<PLAYER>."
 
 	para "Bye-bye!"
-	done
-
-LyraPhoneMagnetonText:
-	text "What? You have a"
-	line "Magneton now?"
-	cont "That's so cool!"
-
-	para "I learned some-"
-	line "thing from Prof."
-	cont "Elm about their"
-	cont "evolution."
-
-	para "He said it evolves"
-	line "when it levels up"
-	cont "in a special"
-	cont "magnetic field."
-
-	para "Over in Kanto,"
-	line "such a field is"
-	cont "apparently found"
-	cont "in Rock Tunnel."
-
-	para "You didn't already"
-	line "know that,"
-	cont "did you?"
-
-	done
-
-LyraPhoneEndText:
-	text "Anyway… So nice"
-	line "to catch up with"
-	cont "you, <PLAYER>."
-
-	para "See you later!"
 	done

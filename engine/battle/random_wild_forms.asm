@@ -45,10 +45,12 @@ MACRO random_wild_form
 ENDM
 
 RandomWildSpeciesForms:
-	random_wild_form UNOWN,    .Unown
-	random_wild_form MAGIKARP, .Magikarp
-	random_wild_form EKANS,    .EkansArbok
-	random_wild_form ARBOK,    .EkansArbok
+	random_wild_form UNOWN,       .Unown
+	random_wild_form MAGIKARP,    .Magikarp
+	random_wild_form EKANS,       .EkansArbok
+	random_wild_form ARBOK,       .EkansArbok
+	random_wild_form DUNSPARCE,   .Dudunsparce
+	random_wild_form DUDUNSPARCE, .Dudunsparce
 	dbw 0,        .Default
 
 .Unown:
@@ -67,11 +69,23 @@ RandomWildSpeciesForms:
 
 .EkansArbok:
 	; Random Arbok form (if not already specified)
-	ld a, 2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
+	assert ARBOK_JOHTO_FORM == 1 && ARBOK_KANTO_FORM == 2
+	ld a, 2
 	; fallthrough
 .RandomForm:
 	call BattleRandomRange
 	inc a
+	ret
+
+.Dudunsparce:
+	; Random Dudunsparce form (if not already specified)
+	ld a, 25
+	call BattleRandomRange
+	and a
+	ld a, DUDUNSPARCE_THREE_SEGMENT_FORM
+	ret z
+	assert DUDUNSPARCE_THREE_SEGMENT_FORM - 1 == DUDUNSPARCE_TWO_SEGMENT_FORM
+	dec a
 	ret
 
 .Default:
@@ -113,7 +127,7 @@ CheckUnownLetter:
 	inc e
 	inc e
 	ld a, e
-	cp UnlockedUnownLetterSets.End - UnlockedUnownLetterSets
+	cp NUM_UNLOCKED_UNOWN_SETS * 2
 	jr c, .loop
 
 	ret ; not unlocked or invalid letter, returns not carry

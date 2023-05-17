@@ -6,10 +6,12 @@ Route32PokeCenter1F_BlockData:
 AzaleaPokeCenter1F_BlockData:
 EcruteakPokeCenter1F_BlockData:
 OlivinePokeCenter1F_BlockData:
+SnowtopPokeCenter1F_BlockData:
 CianwoodPokeCenter1F_BlockData:
 MahoganyPokeCenter1F_BlockData:
 BlackthornPokeCenter1F_BlockData:
 SilverCavePokeCenter1F_BlockData:
+ShamoutiPokeCenter1F_BlockData:
 	INCBIN "maps/JohtoPokeCenter1F.ablk.lz"
 
 PokeCenter2F_BlockData:
@@ -26,7 +28,6 @@ CeladonPokeCenter1F_BlockData:
 SaffronPokeCenter1F_BlockData:
 FuchsiaPokeCenter1F_BlockData:
 CinnabarPokeCenter1F_BlockData:
-ShamoutiPokeCenter1F_BlockData:
 	INCBIN "maps/KantoPokeCenter1F.ablk.lz"
 
 KantoPokeCenter2F_BlockData:
@@ -634,13 +635,21 @@ SECTION "BurnedTowerB1F_BlockData", ROMX
 BurnedTowerB1F_BlockData:
 	INCBIN "maps/BurnedTowerB1F.ablk.lz"
 
-SECTION "RuggedRoad_BlockData", ROMX
-RuggedRoad_BlockData:
-	INCBIN "maps/RuggedRoad.ablk.lz"
+SECTION "RuggedRoadNorth_BlockData", ROMX
+RuggedRoadNorth_BlockData:
+	INCBIN "maps/RuggedRoadNorth.ablk.lz"
 
-SECTION "SnowtopMountain_BlockData", ROMX
-SnowtopMountain_BlockData:
-	INCBIN "maps/SnowtopMountain.ablk.lz"
+SECTION "RuggedRoadSouth_BlockData", ROMX
+RuggedRoadSouth_BlockData:
+	INCBIN "maps/RuggedRoadSouth.ablk.lz"
+
+SECTION "SnowtopMountainInside_BlockData", ROMX
+SnowtopMountainInside_BlockData:
+	INCBIN "maps/SnowtopMountainInside.ablk.lz"
+
+SECTION "SnowtopMountainOutside_BlockData", ROMX
+SnowtopMountainOutside_BlockData:
+	INCBIN "maps/SnowtopMountainOutside.ablk.lz"
 
 SECTION "OlivineGym_BlockData", ROMX
 OlivineGym_BlockData:
@@ -661,10 +670,6 @@ OlivineCafe_BlockData:
 SECTION "OlivinePort_BlockData", ROMX
 OlivinePort_BlockData:
 	INCBIN "maps/OlivinePort.ablk.lz"
-
-SECTION "OlivinePortPassage_BlockData", ROMX
-OlivinePortPassage_BlockData:
-	INCBIN "maps/OlivinePortPassage.ablk.lz"
 
 SECTION "OlivineLighthouse1F_BlockData", ROMX
 OlivineLighthouse1F_BlockData:
@@ -689,10 +694,6 @@ OlivineLighthouse5F_BlockData:
 SECTION "OlivineLighthouse6F_BlockData", ROMX
 OlivineLighthouse6F_BlockData:
 	INCBIN "maps/OlivineLighthouse6F.ablk.lz"
-
-SECTION "OlivineLighthouseRoof_BlockData", ROMX
-OlivineLighthouseRoof_BlockData:
-	INCBIN "maps/OlivineLighthouseRoof.ablk.lz"
 
 SECTION "BattleTower1F_BlockData", ROMX
 BattleTower1F_BlockData:
@@ -1184,10 +1185,6 @@ SECTION "CeladonCity_BlockData", ROMX
 CeladonCity_BlockData:
 	INCBIN "maps/CeladonCity.ablk.lz"
 
-SECTION "CeladonOutskirts_BlockData", ROMX
-CeladonOutskirts_BlockData:
-	INCBIN "maps/CeladonOutskirts.ablk.lz"
-
 SECTION "CeladonGameCorner_BlockData", ROMX
 CeladonGameCorner_BlockData:
 	INCBIN "maps/CeladonGameCorner.ablk.lz"
@@ -1318,6 +1315,10 @@ SECTION "CeladonUniversityWillowsOffice_BlockData", ROMX
 CeladonUniversityWillowsOffice_BlockData:
 	INCBIN "maps/CeladonUniversityWillowsOffice.ablk.lz"
 
+SECTION "CeladonUniversityNursesOffice_BlockData", ROMX
+CeladonUniversityNursesOffice_BlockData:
+	INCBIN "maps/CeladonUniversityNursesOffice.ablk.lz"
+
 SECTION "CeladonUniversityClassroom1_BlockData", ROMX
 CeladonUniversityClassroom1_BlockData:
 CeladonUniversityClassroom2_BlockData:
@@ -1336,6 +1337,26 @@ CeladonUniversityLibrary1F_BlockData:
 SECTION "CeladonUniversityLibrary2F_BlockData", ROMX
 CeladonUniversityLibrary2F_BlockData:
 	INCBIN "maps/CeladonUniversityLibrary2F.ablk.lz"
+
+SECTION "RocketHideoutB1F_BlockData", ROMX
+RocketHideoutB1F_BlockData:
+	INCBIN "maps/RocketHideoutB1F.ablk.lz"
+
+SECTION "RocketHideoutB2F_BlockData", ROMX
+RocketHideoutB2F_BlockData:
+	INCBIN "maps/RocketHideoutB2F.ablk.lz"
+
+SECTION "RocketHideoutB3F_BlockData", ROMX
+RocketHideoutB3F_BlockData:
+	INCBIN "maps/RocketHideoutB3F.ablk.lz"
+
+SECTION "RocketHideoutB4F_BlockData", ROMX
+RocketHideoutB4F_BlockData:
+	INCBIN "maps/RocketHideoutB4F.ablk.lz"
+
+SECTION "RocketHideoutElevator_BlockData", ROMX
+RocketHideoutElevator_BlockData:
+	INCBIN "maps/RocketHideoutElevator.ablk.lz"
 
 SECTION "SaffronGym_BlockData", ROMX
 SaffronGym_BlockData:

@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
 	db  75,  80,  95,  50,  90, 100 ; 490 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 else
 	db  75,  80,  95,  50, 100, 110 ; 510 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 endc
 
 if DEF(FAITHFUL)
@@ -17,9 +17,9 @@ if DEF(FAITHFUL)
 else
 	db 192 ; base exp
 endc
-	db NO_ITEM, ABSORB_BULB ; held items
+	db NO_ITEM, MIRACLE_SEED ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/bellossom/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for BELLOSSOM, CHLOROPHYLL, CHLOROPHYLL, CHLOROPHYLL
 else
@@ -28,8 +28,7 @@ endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_PLANT, EGG_PLANT ; egg groups
 
-	ev_yield   0,   0,   0,   0,   0,   3
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 3 SDf
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DOUBLE_TEAM, SLUDGE_BOMB, SUBSTITUTE, FACADE, REST, ATTRACT, DAZZLINGLEAM, ENERGY_BALL, DRAIN_PUNCH, GIGA_IMPACT, FLASH, SWORDS_DANCE, CUT, DOUBLE_EDGE, EARTH_POWER, ENDURE, HYPER_VOICE, SEED_BOMB, SLEEP_TALK, SWAGGER

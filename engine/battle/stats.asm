@@ -1,5 +1,7 @@
 FarChangeStat:
 ; b contains stat to alter, or -1 if it should be read from the move script
+; If using SILENT|SKIPTEXT and handling DoPrintStatChange later, b must be
+; preserved between the 2 calls.
 	push af
 	ld a, 2
 	ld [wFailedMessage], a
@@ -22,7 +24,7 @@ FarChangeStat:
 .not_fainted
 
 	; check attack missing
-	bit STAT_MISS_F, b
+	bit STAT_CANMISS_F, b
 	jr z, .no_miss
 	ld a, [wAttackMissed]
 	and a
@@ -50,11 +52,11 @@ FarChangeStat:
 	jr nz, .is_target
 	call GetTrueUserAbility
 	cp CONTRARY
-	jmp nz, .ability_done
+	jmp nz, .perform_change
 	ld a, b
 	xor STAT_LOWER
 	ld b, a
-	jmp .ability_done
+	jmp .perform_change
 
 .is_target
 	call GetOpponentAbilityAfterMoldBreaker
@@ -79,7 +81,7 @@ FarChangeStat:
 
 .check_lowering
 	bit STAT_LOWER_F, b
-	jr z, .ability_done
+	jmp z, .perform_change
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wEnemyGuards]
@@ -87,15 +89,8 @@ FarChangeStat:
 	ld a, [wPlayerGuards]
 .got_guard
 	and GUARD_MIST
-	jr z, .check_ability
-	bit STAT_SILENT_F, b
-	ret nz
-	farcall CheckAlreadyExecuted
-	ret nz
-	farcall ShowPotentialAbilityActivation
-	farcall AnimateFailedMove
 	ld hl, ProtectedByMistText
-	jmp StdBattleTextbox
+	jr nz, .mist_or_item_fail
 
 .check_ability
 	call GetOpponentAbilityAfterMoldBreaker
@@ -111,12 +106,12 @@ FarChangeStat:
 	jr z, .ability_check
 	cp KEEN_EYE
 	ld c, ACCURACY
-	jr nz, .ability_done
+	jr nz, .check_item
 .ability_check
 	ld a, [wChangedStat]
 	and $f
 	cp c
-	jr nz, .ability_done
+	jr nz, .check_item
 .ability_immune
 	bit STAT_SILENT_F, b
 	ret nz
@@ -130,7 +125,30 @@ FarChangeStat:
 	call StdBattleTextbox
 	farjp EnableAnimations
 
-.ability_done
+.check_item
+	push bc
+	farcall GetOpponentItemAfterUnnerve
+	call GetCurItemName
+	ld a, b
+	pop bc
+	cp HELD_CLEAR_AMULET
+	ld hl, ProtectedByItemText
+	jr nz, .perform_change
+
+.mist_or_item_fail
+	bit STAT_SILENT_F, b
+	ret nz
+	push hl
+	farcall CheckAlreadyExecuted
+	pop hl
+	ret nz
+	push hl
+	farcall ShowPotentialAbilityActivation
+	farcall AnimateFailedMove
+	pop hl
+	jmp StdBattleTextbox
+
+.perform_change
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
 	push bc
@@ -203,7 +221,7 @@ DoPrintStatChange:
 	bit STAT_TARGET_F, b
 	ret z
 	and a
-	ret nz
+	ret nz ; the stat change failed
 	ld a, [wAlreadyExecuted]
 	push af
 	farcall RunStatIncreaseAbilities
@@ -243,7 +261,7 @@ UseStatItemText:
 	call GetStatName
 	farcall CheckAlreadyExecuted
 	jr nz, .item_anim_done
-	farcall ItemRecoveryAnim
+	farcall CurItemRecoveryAnim
 .item_anim_done
 	call GetCurItemName
 	ld a, [wChangedStat]
@@ -261,6 +279,8 @@ UseStatItemText:
 	ld de, BattleText_ItemSeverelyLowered
 .gotmsg
 	xor a
+	pop bc
+	push bc
 	call DoPrintStatChange
 	pop bc
 	ret
@@ -318,11 +338,35 @@ DoChangeStat:
 .raise_loop
 	ld a, [hl]
 	cp MAX_STAT_LEVEL
-	jr z, .stat_change_done
+	jr z, .queue_mirror_herb
 	inc [hl]
 	inc b
 	dec c
 	jr nz, .raise_loop
+
+.queue_mirror_herb
+	; Get the relevant stat.
+	ld hl, wMirrorHerbPendingBoosts
+	ld a, [wChangedStat]
+	and $f
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	; Add the stat increment to pending boosts to copy.
+	; Since we can't read half-carry, swap b (amount of increments) so
+	; that we can do the add on the higher nibble and use carry.
+	call .SwapHLIfEnemy
+	ld a, b
+	swap a
+	add [hl]
+	jr nc, .no_overflow
+	or $f0
+.no_overflow
+	ld [hl], a
+	call .SwapHLIfEnemy
 	jr .stat_change_done
 
 .lower_loop
@@ -350,6 +394,13 @@ DoChangeStat:
 .stat_change_failed
 	ld a, 1
 	ld [wFailedMessage], a
+	ret
+
+.SwapHLIfEnemy:
+	ldh a, [hBattleTurn]
+	and a
+	ret z
+	swap [hl]
 	ret
 
 PlayStatChangeAnim:
@@ -401,24 +452,4 @@ endc
 	jmp PopBCDEHL
 
 StatPals: ; similar to X items
-; attack - red
-	RGB 31, 19, 24
-	RGB 30, 10, 06
-; defense - blue
-	RGB 12, 14, 31
-	RGB 01, 04, 31
-; speed - cyan
-	RGB 13, 27, 31
-	RGB 05, 20, 30
-; spcl.atk - yellow
-	RGB 31, 31, 07
-	RGB 29, 23, 01
-; spcl.def - green
-	RGB 12, 25, 01
-	RGB 05, 14, 00
-; accuracy - purple
-	RGB 27, 13, 31
-	RGB 23, 00, 31
-; evasion - gray
-	RGB 25, 25, 25
-	RGB 13, 13, 13
+INCLUDE "gfx/battle/stats.pal"

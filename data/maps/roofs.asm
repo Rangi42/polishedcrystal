@@ -22,7 +22,7 @@ MapGroupRoofs:
 	db -1            ; 17
 	db -1            ; 18
 	db ROOF_NEW_BARK ; 19 (Route 28)
-	db -1            ; 20 (Ecruteak Shrine)
+	db -1            ; 20
 	db -1            ; 21
 	db ROOF_OLIVINE  ; 22 (Cianwood City)
 	db -1            ; 23
@@ -39,4 +39,5 @@ MapGroupRoofs:
 	db ROOF_AZALEA   ; 34 (Sinjoh Ruins)
 	db -1            ; 35
 	db ROOF_VIOLET   ; 36 (Rugged Road)
+	db ROOF_STATUE   ; 37 (Ecruteak Shrine)
 	assert_table_length NUM_MAP_GROUPS + 1

@@ -11,6 +11,7 @@ Route6_MapScriptHeader:
 
 	def_bg_events
 	bg_event 23, 11, BGEVENT_JUMPTEXT, Route6UndergroundPathSignText
+	bg_event  7,  9, BGEVENT_JUMPTEXT, Route6AdvancedTipsSignText
 
 	def_object_events
 	object_event 21, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route6PokefanMText, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
@@ -21,6 +22,7 @@ Route6_MapScriptHeader:
 	object_event 20, 27, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterChaz, -1
 	object_event 12, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfWanda, -1
 	object_event 21, 19, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 1, OfficerfJennyScript, -1
+	fruittree_event 17,  5, FRUITTREE_ROUTE_6, STARF_BERRY, PAL_NPC_GREEN
 
 GenericTrainerPokefanmRex:
 	generictrainer POKEFANM, REX, EVENT_BEAT_POKEFANM_REX, PokefanmRexSeenText, PokefanmRexBeatenText
@@ -134,7 +136,7 @@ OfficerfJennyScript:
 	checktime 1 << NITE
 	iffalse_jumptextfaceplayer .DaytimeText
 	checkevent EVENT_BEAT_OFFICERF_JENNY
-	iftruefwd .AfterScript
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	special SaveMusic
@@ -148,11 +150,6 @@ OfficerfJennyScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JENNY
 	endtext
-
-.AfterScript:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue_jumptextfaceplayer .AfterTextFemale
-	jumptextfaceplayer .AfterTextMale
 
 .DaytimeText:
 	text "Us Officers are"
@@ -173,17 +170,9 @@ OfficerfJennyScript:
 	line "retreat…"
 	done
 
-.AfterTextMale:
+.AfterText:
 	text "Sorry to bother"
-	line "you, sir."
-
-	para "I get jumpy at"
-	line "night."
-	done
-
-.AfterTextFemale:
-	text "Sorry to bother"
-	line "you, miss."
+	line "you, kid."
 
 	para "I get jumpy at"
 	line "night."
@@ -202,4 +191,22 @@ Route6UndergroundPathSignText:
 
 	para "Cerulean City -"
 	line "Vermilion City"
+	done
+
+Route6AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Some items may"
+	line "seem harmful to"
+	cont "the holder, like"
+
+	para "an Iron Ball or"
+	line "a Ring Target."
+
+	para "But with the move"
+	line "Trick, the holder"
+
+	para "can swap their"
+	line "item with the"
+	cont "opponent!"
 	done

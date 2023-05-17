@@ -4,8 +4,8 @@ Route39RuggedRoadGate_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  0, RUGGED_ROAD, 1
-	warp_event  5,  0, RUGGED_ROAD, 2
+	warp_event  4,  0, RUGGED_ROAD_SOUTH, 1
+	warp_event  5,  0, RUGGED_ROAD_SOUTH, 2
 	warp_event  4,  7, ROUTE_39, 3
 	warp_event  5,  7, ROUTE_39, 3
 

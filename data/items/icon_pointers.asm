@@ -103,8 +103,8 @@ ItemIconPointers:
 	dba XAttackIcon
 	dba XDefendIcon
 	dba XSpeedIcon
-	dba XSpclAtkIcon
-	dba XSpclDefIcon
+	dba XSpAtkIcon
+	dba XSpDefIcon
 	dba XAccuracyIcon
 	dba DireHitIcon
 	dba GuardSpecIcon
@@ -168,15 +168,10 @@ ItemIconPointers:
 	dba RockyHelmetIcon
 	dba AirBalloonIcon
 	dba RedCardIcon
-	dba RingTargetIcon
 	dba BindingBandIcon
-	dba AbsorbBulbIcon
-	dba CellBatteryIcon
 	dba EjectButtonIcon
 	dba WeakPolicyIcon
 	dba AssaultVestIcon
-	dba LuminousMossIcon
-	dba SnowballIcon
 	dba SafeGogglesIcon
 	dba ProtectPadsIcon
 	dba ThroatSprayIcon
@@ -184,7 +179,11 @@ ItemIconPointers:
 	dba HeavyBootsIcon
 	dba BlundrPolicyIcon
 	dba RoomServiceIcon
-	dba UtilUmbrellaIcon
+	dba ClearAmuletIcon
+	dba MirrorHerbIcon
+	dba PunchinGloveIcon
+	dba CovertCloakIcon
+	dba LoadedDiceIcon
 	dba LightBallIcon
 	dba LeekIcon
 	dba ThickClubIcon
@@ -225,6 +224,7 @@ ItemIconPointers:
 	dba RazorClawIcon
 	dba OvalStoneIcon
 	dba OddSouvenirIcon
+	dba LinkingCordIcon
 	dba SilverLeafIcon
 	dba GoldLeafIcon
 	dba MintLeafIcon
@@ -267,7 +267,9 @@ KeyItemIconPointers:
 	dba ItemfinderIcon
 	dba CoinCaseIcon
 	dba ApricornBoxIcon
+	dba WingCaseIcon
 	dba TypeChartIcon
+	dba GBCSoundsIcon
 	dba BlueCardIcon
 	dba SquirtBottleIcon
 	dba SilphScope2Icon
@@ -288,6 +290,9 @@ KeyItemIconPointers:
 	dba OrangeTicketIcon
 	dba MysticTicketIcon
 	dba OldSeaMapIcon
+	dba HarshLureIcon
+	dba PotentLureIcon
+	dba MalignLureIcon
 	dba ShinyCharmIcon
 	dba OvalCharmIcon
 	dba CatchCharmIcon

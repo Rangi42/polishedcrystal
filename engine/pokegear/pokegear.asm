@@ -1,8 +1,30 @@
+; Pokégear cards
 	const_def
-	const CLOCK_CARD
-	const MAP_CARD
-	const PHONE_CARD
-	const RADIO_CARD
+	const POKEGEARCARD_CLOCK ; 0
+	const POKEGEARCARD_MAP   ; 1
+	const POKEGEARCARD_PHONE ; 2
+	const POKEGEARCARD_RADIO ; 3
+DEF NUM_POKEGEAR_CARDS EQU const_value
+
+DEF PHONE_DISPLAY_HEIGHT EQU 4
+
+; PokegearJumptable.Jumptable indexes
+	const_def
+	const POKEGEARSTATE_CLOCKINIT       ; 0
+	const POKEGEARSTATE_CLOCKJOYPAD     ; 1
+	const POKEGEARSTATE_MAPCHECKREGION  ; 2
+	const POKEGEARSTATE_JOHTOMAPINIT    ; 3
+	const POKEGEARSTATE_JOHTOMAPJOYPAD  ; 4
+	const POKEGEARSTATE_KANTOMAPINIT    ; 5
+	const POKEGEARSTATE_KANTOMAPJOYPAD  ; 6
+	const POKEGEARSTATE_ORANGEMAPINIT   ; 7
+	const POKEGEARSTATE_ORANGEMAPJOYPAD ; 8
+	const POKEGEARSTATE_PHONEINIT       ; 9
+	const POKEGEARSTATE_PHONEJOYPAD     ; a
+	const POKEGEARSTATE_MAKEPHONECALL   ; b
+	const POKEGEARSTATE_FINISHPHONECALL ; c
+	const POKEGEARSTATE_RADIOINIT       ; d
+	const POKEGEARSTATE_RADIOJOYPAD     ; e
 
 PokeGear:
 	ld hl, wOptions1
@@ -71,9 +93,9 @@ PokeGear:
 	ldh [rLCDC], a
 	call TownMap_InitCursorAndPlayerIconPositions
 	xor a
-	ld [wJumptableIndex], a
-	ld [wPokegearCard], a
-	ld [wPokegearMapRegion], a
+	ld [wJumptableIndex], a ; POKEGEARSTATE_CLOCKINIT
+	ld [wPokegearCard], a ; POKEGEARCARD_CLOCK
+	ld [wPokegearMapRegion], a ; JOHTO_REGION
 	ld [wPokegearPhoneScrollPosition], a
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
@@ -81,7 +103,6 @@ PokeGear:
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
 	ld [wDefaultSpawnpoint], a
-	call Pokegear_InitJumptableIndices
 	call InitPokegearTilemap
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
@@ -163,30 +184,17 @@ InitPokegearModeIndicatorArrow:
 	ret
 
 AnimatePokegearModeIndicatorArrow:
-	ld hl, wPokegearCard
-	ld e, [hl]
-	ld d, 0
-	ld hl, .XCoords
-	add hl, de
-	ld a, [hl]
+	ld a, [wPokegearCard]
+	swap a ; x coord = card id * $10
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
 	ret
 
-.XCoords:
-	db $00, $10, $20, $30
-
 TownMap_InitCursorAndPlayerIconPositions:
 	call GetCurrentLandmark
 	ld [wPokegearMapPlayerIconLandmark], a
 	ld [wPokegearMapCursorLandmark], a
-	ret
-
-Pokegear_InitJumptableIndices:
-	xor a ; CLOCK_CARD
-	ld [wJumptableIndex], a
-	ld [wPokegearCard], a
 	ret
 
 InitPokegearTilemap:
@@ -210,7 +218,7 @@ InitPokegearTilemap:
 	call Pokegear_FinishTilemap
 	call TownMapPals
 	ld a, [wPokegearCard]
-	cp MAP_CARD
+	cp POKEGEARCARD_MAP
 	jr nz, .not_town_map
 	ld a, [wJumptableIndex]
 	cp 3 ; Johto
@@ -331,13 +339,13 @@ Pokegear_FinishTilemap:
 	rst ByteFill
 	ld de, wPokegearFlags
 	ld a, [de]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	call nz, .PlaceMapIcon
 	ld a, [de]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	call nz, .PlacePhoneIcon
 	ld a, [de]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	call nz, .PlaceRadioIcon
 	hlcoord 0, 0
 	ld a, $56
@@ -409,23 +417,23 @@ PokegearClock_Joypad:
 	and D_RIGHT
 	ret z
 	ld a, [wPokegearFlags]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	jr z, .no_map_card
-	lb bc, MAP_CARD, $2
+	lb bc, POKEGEARCARD_MAP, POKEGEARSTATE_MAPCHECKREGION
 	jr .done
 
 .no_map_card
 	ld a, [wPokegearFlags]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	jr z, .no_phone_card
-	lb bc, PHONE_CARD, $9
+	lb bc, POKEGEARCARD_PHONE, POKEGEARSTATE_PHONEINIT
 	jr .done
 
 .no_phone_card
 	ld a, [wPokegearFlags]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	ret z
-	lb bc, RADIO_CARD, $d
+	lb bc, POKEGEARCARD_RADIO, POKEGEARSTATE_RADIOINIT
 .done
 	jmp Pokegear_SwitchPage
 
@@ -475,7 +483,7 @@ PokegearMap_CheckRegion:
 	sbc -5
 	jr .done
 .orange
-	ld a, 7
+	ld a, POKEGEARSTATE_ORANGEMAPINIT
 .done
 	ld [wJumptableIndex], a
 	jmp ExitPokegearRadio_HandleMusic
@@ -493,7 +501,12 @@ PokegearMap_Init:
 	ld a, [wTownMapCanShowFly]
 	and a
 	jr z, .no_fly
-	depixel 18, 13, 0, 0
+	ld a, [wPokegearMapPlayerIconLandmark]
+	cp SHAMOUTI_LANDMARK
+	depixel 18, 12, 0, 0
+	jr nc, .got_coords
+	ld e, 13 * 8 ; depixel 18, 13, 0, 0
+.got_coords
 	ld a, SPRITE_ANIM_INDEX_TOWN_MAP_FLY
 	call InitSpriteAnimStruct
 .no_fly
@@ -529,20 +542,20 @@ PokegearMap_ContinueMap:
 
 .right
 	ld a, [wPokegearFlags]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	jr z, .no_phone
-	lb bc, PHONE_CARD, $9
+	lb bc, POKEGEARCARD_PHONE, POKEGEARSTATE_PHONEINIT
 	jr .done
 
 .no_phone
 	ld a, [wPokegearFlags]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	ret z
-	lb bc, RADIO_CARD, $d
+	lb bc, POKEGEARCARD_RADIO, POKEGEARSTATE_RADIOINIT
 	jr .done
 
 .left
-	lb bc, CLOCK_CARD, $0
+	lb bc, POKEGEARCARD_CLOCK, POKEGEARSTATE_CLOCKINIT
 .done
 	jmp Pokegear_SwitchPage
 
@@ -651,18 +664,7 @@ CheckSkipFarawayIsland:
 
 PokegearMap_InitPlayerIcon:
 	push af
-	depixel 0, 0
-	ld b, SPRITE_ANIM_INDEX_RED_WALK
-	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-.got_gender
-	ld a, b
-	call InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_TILE_ID
-	add hl, bc
-	ld [hl], $10
+	call InitializePokegearPlayerIcon
 	pop af
 	ld e, a
 	push bc
@@ -752,7 +754,7 @@ TownMap_GetJohtoLandmarkLimits:
 TownMap_GetKantoLandmarkLimits:
 	lb de, ROUTE_28, ROUTE_27
 	ld a, [wStatusFlags]
-	bit 6, a
+	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	ret z
 	ld e, PALLET_TOWN
 	ret
@@ -793,20 +795,20 @@ PokegearRadio_Joypad:
 
 .left
 	ld a, [wPokegearFlags]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	jr z, .no_phone
-	lb bc, PHONE_CARD, $9
+	lb bc, POKEGEARCARD_PHONE, POKEGEARSTATE_PHONEINIT
 	jr Pokegear_SwitchPage
 
 .no_phone
 	ld a, [wPokegearFlags]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	jr z, .no_map
-	lb bc, MAP_CARD, $2
+	lb bc, POKEGEARCARD_MAP, POKEGEARSTATE_MAPCHECKREGION
 	jr Pokegear_SwitchPage
 
 .no_map
-	lb bc, CLOCK_CARD, $0
+	lb bc, POKEGEARCARD_CLOCK, POKEGEARSTATE_CLOCKINIT
 	jr Pokegear_SwitchPage
 
 .cancel
@@ -997,7 +999,7 @@ RadioChannels:
 	call .InJohto
 	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
-	bit 3, a
+	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, NoRadioStation
 	jmp LoadStation_PlacesAndPeople
 
@@ -1005,7 +1007,7 @@ RadioChannels:
 	call .InJohto
 	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
-	bit 3, a
+	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, NoRadioStation
 	jmp LoadStation_LetsAllSing
 
@@ -1013,14 +1015,14 @@ RadioChannels:
 	call .InJohto
 	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
-	bit 3, a
+	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, NoRadioStation
 	jmp LoadStation_PokeFluteRadio
 
 .EvolutionRadio:
 ; This station airs in the Lake of Rage area when Rocket are still in Mahogany.
 	ld a, [wStatusFlags]
-	bit 4, a
+	bit STATUSFLAGS_ROCKET_SIGNAL_F, a
 	jr z, NoRadioStation
 	ld a, [wPokegearMapPlayerIconLandmark]
 	cp MAHOGANY_TOWN
@@ -1090,7 +1092,7 @@ LoadStation_LuckyChannel:
 LoadStation_BuenasPassword:
 	ld de, EmptyString
 	ld a, [wStatusFlags2]
-	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
+	bit STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F, a
 	jr z, .ok
 	ld de, BuenasPasswordName
 .ok
@@ -1129,11 +1131,11 @@ LoadStation_EvolutionRadio:
 	ld de, UnknownStationName
 	jr LoadRadioStation
 
-RadioMusicRestartDE:
+RadioMusicRestart:
 	push de
 	ld a, e
 	ld [wPokegearRadioMusicPlaying], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
 	ld a, e
@@ -1144,14 +1146,14 @@ RadioMusicRestartPokemonChannel:
 	push de
 	ld a, $fe
 	ld [wPokegearRadioMusicPlaying], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
-	ld de, MUSIC_POKEMON_CHANNEL
+	ld e, MUSIC_POKEMON_CHANNEL
 	jmp PlayMusic
 
 NoRadioMusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld a, $ff
 	ld [wPokegearRadioMusicPlaying], a
@@ -1417,7 +1419,7 @@ PlayRadio:
 
 .PlayStation:
 	ld a, -1
-	ld [wEnemyTurnsTaken], a
+	ld [wPokegearRadioMusicPlaying], a
 	ld hl, PlayRadioStationPointers
 	ld d, $0
 	add hl, de
@@ -1644,21 +1646,20 @@ TownMapBubble:
 GetMapCursorCoordinates:
 	ld a, [wTownMapPlayerIconLandmark]
 	ld l, a
-	ld h, $0
+	ld h, 0
 	add hl, hl
 	ld de, Flypoints
 	add hl, de
 	ld e, [hl]
 	farcall GetLandmarkCoords
-	ld a, [wTownMapCursorCoordinates]
-	ld c, a
-	ld a, [wTownMapCursorCoordinates + 1]
-	ld b, a
-	ld hl, $4
+	ld hl, wTownMapCursorCoordinates
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, 4
 	add hl, bc
-	ld [hl], e
-	ld hl, $5
-	add hl, bc
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1693,10 +1694,10 @@ INCLUDE "data/maps/flypoints.asm"
 
 FlyMap:
 	call GetCurrentLandmark
-; The first 46 locations are part of Johto. The rest are in Kanto
+	cp SHAMOUTI_LANDMARK
+	jr nc, .OrangeFlyMap
 	cp KANTO_LANDMARK
 	jr nc, .KantoFlyMap
-;.JohtoFlyMap:
 ; Note that .NoKanto should be modified in tandem with this branch
 	push af
 ; Start from New Bark Town
@@ -1716,18 +1717,33 @@ FlyMap:
 	pop af
 	jmp TownMapPlayerIcon
 
+.OrangeFlyMap:
+	push af
+; Start from Shamouti Island
+	ld a, FLY_SHAMOUTI
+	ld [wTownMapPlayerIconLandmark], a
+; Flypoints begin at Shamouti Island...
+	ld [wStartFlypoint], a
+; ..and end at Navel Rock
+	ld a, FLY_NAVEL
+	ld [wEndFlypoint], a
+; Fill out the map
+	call FillOrangeMap
+	call TownMapBubble
+	call TownMapPals
+	call TownMapOrangeFlips
+	call .MapHud
+	pop af
+	jmp TownMapPlayerIcon
+
 .KantoFlyMap:
 ; The event that there are no flypoints enabled in a map is not
-
 ; accounted for. As a result, if you attempt to select a flypoint
 ; when there are none enabled, the game will crash. Additionally,
-
 ; the flypoint selection has a default starting point that
 ; can be flown to even if none are enabled
-
 ; To prevent both of these things from happening when the player
 ; enters Kanto, fly access is restricted until Indigo Plateau is
-
 ; visited and its flypoint enabled
 	push af
 	ld c, SPAWN_INDIGO
@@ -1983,18 +1999,7 @@ TownMapPlayerIcon:
 	ld hl, vTiles0 tile $14
 	call Request2bppInWRA6
 ; Animation/palette
-	depixel 0, 0
-	ld b, SPRITE_ANIM_INDEX_RED_WALK ; Male
-	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK ; Female
-.got_gender
-	ld a, b
-	call InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_TILE_ID
-	add hl, bc
-	ld [hl], $10
+	call InitializePokegearPlayerIcon
 	pop af
 	ld e, a
 	push bc
@@ -2006,6 +2011,25 @@ TownMapPlayerIcon:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld [hl], d
+	ret
+
+InitializePokegearPlayerIcon:
+	depixel 0, 0
+	ld a, [wPlayerGender]
+	ld b, SPRITE_ANIM_INDEX_RED_WALK
+	and a ; PLAYER_MALE
+	jr z, .got_gender
+	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
+	dec a ; PLAYER_FEMALE
+	jr z, .got_gender
+	; PLAYER_ENBY
+	ld b, SPRITE_ANIM_INDEX_GREEN_WALK
+.got_gender
+	ld a, b
+	call InitSpriteAnimStruct
+	ld hl, SPRITEANIMSTRUCT_TILE_ID
+	add hl, bc
+	ld [hl], $10
 	ret
 
 LoadTownMapGFX:

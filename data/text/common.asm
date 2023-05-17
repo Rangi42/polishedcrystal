@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "_FruitBearingTreeText", ROMX
 _FruitBearingTreeText::
 	text "It's a fruit-"
@@ -3495,9 +3492,9 @@ _ObjectEventText::
 	text "Object event"
 	done
 
-SECTION "_ReceivedItemText", ROMX
-_ReceivedItemText::
-	text "<PLAYER> received"
+SECTION "_GainedItemText", ROMX
+_GainedItemText::
+	text "<PLAYER> gained"
 	line ""
 	text_ram wStringBuffer4
 	text "."
@@ -3521,6 +3518,15 @@ _PocketIsFullText::
 	text ""
 	line "is full…"
 	prompt
+
+SECTION "_FoundWingsText", ROMX
+_FoundWingsText::
+	text "<PLAYER> got "
+	text_decimal wCurWingQuantity, 1, 2
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	done
 
 SECTION "_CongratulationsYourPokemonText", ROMX
 _CongratulationsYourPokemonText::
@@ -4002,12 +4008,6 @@ _MoveForgotText::
 	para "And…"
 	prompt
 
-SECTION "_MoveCantForgetHMText", ROMX
-_MoveCantForgetHMText::
-	text "HM moves can't be"
-	line "forgotten now."
-	prompt
-
 SECTION "_CardFlipPlayWithThreeCoinsText", ROMX
 _CardFlipPlayWithThreeCoinsText::
 	text "Play with three"
@@ -4253,8 +4253,11 @@ SECTION "_ItemHappinessRoseButStatFellText", ROMX
 _ItemHappinessRoseButStatFellText::
 	text_ram wStringBuffer1
 	text " became"
-	line "friendly. Base"
-	cont ""
+	line "more friendly."
+	para ""
+	text_ram wStringBuffer1
+	text "'s base"
+	line ""
 	text_ram wStringBuffer2
 	text " fell!"
 	prompt
@@ -4550,6 +4553,20 @@ WonderTradePromptText::
 	line "you want to trade?"
 	prompt
 
+SECTION "WonderTradeCantTradeSpikyEaredPichuText", ROMX
+WonderTradeCantTradeSpikyEaredPichuText::
+    text "This Pichu appears"
+    line "to have traveled"
+    cont "through time."
+
+    para "It would be risky"
+    line "to transfer it,"
+
+    para "so it's best for"
+    line "Pichu to stay"
+    cont "where it is."
+    prompt
+
 ;SECTION "WonderTradeCantTradeEggText", ROMX
 ;WonderTradeCantTradeEggText::
 ;	text "Sorry. We can't"
@@ -4634,6 +4651,7 @@ SECTION "MartPremierBallText", ROMX
 MartPremierBallText::
 	text "You also get a"
 	line "Premier Ball as"
+	text_sound SFX_TRANSACTION
 	cont "an added bonus."
 	done
 
@@ -4647,4 +4665,11 @@ SECTION "AlreadyInThatBallTextData", ROMX
 AlreadyInThatBallTextData::
 	text "Your #mon is in"
 	line "that Ball already."
+	prompt
+
+SECTION "CantChangeTradedMonBallTextData", ROMX
+CantChangeTradedMonBallTextData::
+	text "You can't change"
+	line "the Ball a traded"
+	cont "#mon is in."
 	prompt

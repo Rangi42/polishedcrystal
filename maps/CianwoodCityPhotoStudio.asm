@@ -33,11 +33,12 @@ CianwoodPhotoStudioFishingGuruScript:
 	closetext
 	special FadeOutPalettes
 	special LoadMapPalettes
+	callasm LoadBlindingFlashPalette
 	pause 10
 	playsound SFX_DOUBLE_SLAP
 	waitsfx
 	pause 10
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	readmem wCurPartySpecies
 	pokepic 0
 	cry 0

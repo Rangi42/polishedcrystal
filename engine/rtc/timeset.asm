@@ -16,16 +16,12 @@ InitClock:
 	call FadeToBlack
 	call ClearTileMap
 	call ClearSprites
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	xor a
 	ldh [hBGMapMode], a
 	call LoadStandardFont
-	ld de, TimesetBackgroundGFX
-	ld hl, vTiles2 tile $00
-	lb bc, BANK(TimesetBackgroundGFX), 1
-	call Request1bpp
-	call .ClearScreen
+	call BlackOutScreen
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	ld c, 10
@@ -59,7 +55,7 @@ endc
 	call SetHour
 	jr nc, .SetHourLoop
 
-	call .ClearScreen
+	call BlackOutScreen
 
 	ld hl, Text_HowManyMinutes
 	call PrintText
@@ -79,13 +75,13 @@ endc
 	call SetMinutes
 	jr nc, .SetMinutesLoop
 
-	call .ClearScreen
+	call BlackOutScreen
 
 	ld hl, Text_WhoaHoursMins
 	call PrintText
 	call YesNoBox
 	jr nc, .done
-	call .ClearScreen
+	call BlackOutScreen
 	jr .loop
 
 .done:
@@ -95,17 +91,6 @@ endc
 	call WaitPressAorB_BlinkCursor
 	pop af
 	ldh [hInMenu], a
-	ret
-
-.ClearScreen:
-	xor a
-	ldh [hBGMapMode], a
-	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	xor a
-	rst ByteFill
-	ld a, $1
-	ldh [hBGMapMode], a
 	ret
 
 SetHour:
@@ -323,9 +308,6 @@ OakText_ResponseToSetTime:
 	; ! No wonder it's so dark!
 	text_far _OakTimeSoDarkText
 	text_end
-
-TimesetBackgroundGFX:
-INCBIN "gfx/new_game/timeset_bg.1bpp"
 
 Special_SetDayOfWeek:
 	ldh a, [hInMenu]
@@ -631,7 +613,7 @@ PrintHoursMins:
 .h24:
 ; Crazy stuff happening with the stack
 	push bc
-	ld hl, sp+$1
+	ld hl, sp + 1
 	push de
 	push hl
 	pop de
@@ -643,7 +625,7 @@ PrintHoursMins:
 	ld [hli], a
 	ld d, h
 	ld e, l
-	ld hl, sp+$0
+	ld hl, sp + 0
 	push de
 	push hl
 	pop de

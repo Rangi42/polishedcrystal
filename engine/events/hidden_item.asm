@@ -6,7 +6,7 @@ HiddenItemScript:
 	giveitem ITEM_FROM_MEM
 	iffalsefwd .bag_full
 	callasm SetMemEvent
-	callasm .ShowItemIcon
+	special ShowItemIcon
 	specialsound
 	itemnotify
 	endtext
@@ -15,10 +15,6 @@ HiddenItemScript:
 	promptbutton
 	pocketisfull
 	endtext
-
-.ShowItemIcon:
-	ld a, [wHiddenItemID]
-	farjp ItemGet_ShowItemIconFromA
 
 SetMemEvent:
 	ld hl, wHiddenItemEvent

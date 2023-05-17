@@ -106,7 +106,6 @@ Landmarks:
 	landmark 142,  62, SoulHouseName
 	landmark  84,  60, CeladonCityName
 	landmark  82,  62, CeladonUniversityName
-	landmark  96,  56, CeladonOutskirtsName
 	landmark 108,  60, SaffronCityName
 	landmark 124,  76, Route11Name
 	landmark 140,  76, Route12Name
@@ -200,7 +199,6 @@ RockTunnelName:        rawchar "Rock Tunnel@"
 LavRadioTowerName:     rawchar "Lav.Radio¯Tower@"
 SoulHouseName:         rawchar "House of¯Souls@"
 CeladonUniversityName: rawchar "Celadon¯University@"
-CeladonOutskirtsName:  rawchar "Celadon¯Outskirts@"
 SafariZoneName:        rawchar "Safari Zone@"
 SeafoamIslandsName:    rawchar "Seafoam¯Islands@"
 PokemonMansionName:    rawchar "Pokémon¯Mansion@"

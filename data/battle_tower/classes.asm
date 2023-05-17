@@ -33,7 +33,7 @@ BattleTowerTrainers:
 	rawchar "Rajan@@@@@", PICNICKER
 	rawchar "Diaz@@@@@@", PICNICKER
 	rawchar "Mozi@@@@@@", SAGE
-	rawchar "Adrián@@@@", WAITER
+	rawchar "Adrian@@@@", WAITER
 	rawchar "Tomoyo@@@@", COSPLAYER
 	rawchar "Ebony@@@@@", COOLTRAINERF
 	rawchar "Pirsig@@@@", SAGE
@@ -46,6 +46,7 @@ BattleTowerTrainers:
 	rawchar "Sophia@@@@", AROMA_LADY
 	rawchar "Joanna@@@@", WAITRESS
 	rawchar "Newton@@@@", SCIENTIST
+	rawchar "York@@@@@@", SOLDIER
 	rawchar "Chelsea@@@", MEDIUM
 	rawchar "Kuroki@@@@", HEX_MANIAC
 	rawchar "Hitesh@@@@", POKEMANIAC
@@ -57,13 +58,14 @@ BattleTowerTrainers:
 	rawchar "Swartz@@@@", VETERANM
 	rawchar "Cobb@@@@@@", SCHOOLBOY
 	rawchar "Yufune@@@@", BLACKBELT_T
-	rawchar "Mónica@@@@", WAITRESS
+	rawchar "Monica@@@@", WAITRESS
 	rawchar "Daniel@@@@", TAMER
 	rawchar "Toshi@@@@@", BLACKBELT_T
 	rawchar "Charlie@@@", JUGGLER
 	rawchar "Fagin@@@@@", BURGLAR
 	rawchar "Buckley@@@", RICH_BOY
 	rawchar "Mateo@@@@@", VETERANM
+	rawchar "Johnson@@@", SOLDIER
 	rawchar "Newandyke@", OFFICERM
 	rawchar "Rebecca@@@", SKIER
 	rawchar "Santiago@@", PSYCHIC_T
@@ -129,6 +131,5 @@ BattleTowerTrainers:
 	rawchar "Mako@@@@@@", BREEDER
 	rawchar "Argo@@@@@@", BIRD_KEEPER
 	assert_table_length BATTLETOWER_NUM_TRAINERS
-;BattleTowerTycoon:
 	rawchar "Palmer@@@@", TOWERTYCOON
 	rawchar "Thorton@@@", FACTORYHEAD

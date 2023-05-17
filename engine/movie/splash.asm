@@ -3,7 +3,7 @@ SplashScreen:
 ; Return carry if user cancels animation by pressing a button.
 
 ; Reinitialize everything
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call ClearBGPalettes
 	call ClearTileMap
@@ -230,7 +230,7 @@ GameFreakLogo_Bounce:
 	jr nc, .no_negative
 	add 32
 .no_negative
-	call Sine
+	farcall Sine
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
@@ -318,37 +318,7 @@ GameFreakLogo_Transform:
 	jmp GameFreakPresents_NextScene
 
 GameFreakLogoPalettes:
-; Ditto's color as it turns into the Game Freak logo.
-; Fade from pink to orange.
-; One color per step.
-if !DEF(MONOCHROME)
-	RGB 23, 12, 28
-	RGB 23, 12, 27
-	RGB 23, 13, 26
-	RGB 23, 13, 24
-
-	RGB 24, 14, 22
-	RGB 24, 14, 20
-	RGB 24, 15, 18
-	RGB 24, 15, 16
-
-	RGB 25, 16, 14
-	RGB 25, 16, 12
-	RGB 25, 17, 10
-	RGB 25, 17, 08
-
-	RGB 26, 18, 06
-	RGB 26, 18, 04
-	RGB 26, 19, 02
-	RGB 26, 19, 00
-else
-rept 4
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-endr
-endc
+INCLUDE "gfx/splash/ditto_fade.pal"
 
 GameFreakLogoGFX:
 INCBIN "gfx/splash/logo1.1bpp"

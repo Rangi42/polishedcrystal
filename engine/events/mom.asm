@@ -33,9 +33,9 @@ Special_BankOfMom:
 
 .CheckIfBankInitialized:
 	ld a, [wMomSavingMoney]
-	bit 7, a
+	bit MOM_ACTIVE_F, a
 	jr nz, .savingmoneyalready
-	set 7, a
+	set MOM_ACTIVE_F, a
 	ld [wMomSavingMoney], a
 	ld a, $1
 	jr .done_0
@@ -54,11 +54,11 @@ Special_BankOfMom:
 	jr c, .DontSaveMoney
 	ld hl, MomLeavingText2
 	call PrintText
-	ld a, %10000001
+	ld a, (1 << MOM_ACTIVE_F) | (1 << MOM_SAVING_SOME_MONEY_F)
 	jr .done_1
 
 .DontSaveMoney:
-	ld a, %10000000
+	ld a, 1 << MOM_ACTIVE_F
 
 .done_1
 	ld [wMomSavingMoney], a
@@ -253,7 +253,7 @@ Special_BankOfMom:
 	call PrintText
 	call YesNoBox
 	jr c, .StopSavingMoney
-	ld a, $81
+	ld a, (1 << MOM_ACTIVE_F) | (1 << MOM_SAVING_SOME_MONEY_F)
 	ld [wMomSavingMoney], a
 	ld hl, MomStartSavingMoneyText
 	call PrintText
@@ -262,7 +262,7 @@ Special_BankOfMom:
 	ret
 
 .StopSavingMoney:
-	ld a, $80
+	ld a, 1 << MOM_ACTIVE_F
 	ld [wMomSavingMoney], a
 	ld a, $7
 	ld [wJumptableIndex], a

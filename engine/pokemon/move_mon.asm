@@ -395,7 +395,7 @@ endr
 	ld bc, MON_EVS - 1
 	add hl, bc
 	lb bc, FALSE, STAT_HP
-	call CalcPkmnStatC
+	predef CalcPkmnStatC
 	ldh a, [hProduct + 2]
 	ld [de], a
 	inc de
@@ -412,12 +412,12 @@ endr
 	pop hl
 	push bc
 	inc hl
-	ld c, [hl]
-	dec hl
-	ld b, [hl]
-	dec hl
-	ld [hl], c
-	dec hl
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
+	ld b, a
+	ld a, c
+	ld [hld], a
 	ld [hl], b
 	pop bc
 	pop hl
@@ -576,13 +576,14 @@ RetrieveBreedmon:
 	rst CopyBytes
 	push hl
 	call GetLastPartyMon
+	pop hl
+	ld bc, BREEDMON_STRUCT_LENGTH
+	rst CopyBytes
+	call GetLastPartyMon
 	ld hl, MON_FORM
 	add hl, de
 	ld a, [hl]
 	ld [wCurForm], a
-	pop hl
-	ld bc, BREEDMON_STRUCT_LENGTH
-	rst CopyBytes
 	call GetBaseData
 	call GetLastPartyMon
 	ld b, d
@@ -640,7 +641,7 @@ RetrieveBreedmon:
 
 Special_HyperTrain:
 	farcall SelectMonFromParty
-	jmp c, .nope
+	jr c, .nope
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
@@ -671,14 +672,29 @@ Special_HyperTrain:
 	dec a
 	jr nz, .loop
 
+	; If modern EVs are enabled, require level 50 instead.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	jr nz, .not_modern_evs
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	cp HYPER_LEVEL_REQ
+	jr nc, .allow_hyper_training
+	ld hl, .TextNotEnoughLevels
+	jr .print_and_fail
+
+.not_modern_evs
 	; Check if we've reached maximum effort on the stat
 	ld a, MON_EVS - 1
 	add c
 	call GetPartyParamLocationAndValue
-	cp 252
+	cp MODERN_MAX_EV
 	ld hl, .TextNotMaxEffort
 	jr c, .print_and_fail
 
+.allow_hyper_training
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1HyperTraining
 	call SkipNames
@@ -688,31 +704,8 @@ Special_HyperTrain:
 	or d
 	or [hl]
 	ld [hl], a
-	ld b, a
 
-	; Recalculate stats.
-	push bc
-	ld a, MON_SPECIES
-	call GetPartyParamLocationAndValue
-	ld [wCurSpecies], a
-	ld a, MON_FORM
-	call GetPartyParamLocationAndValue
-	ld [wCurForm], a
-	call GetBaseData
-	pop bc
-
-	ld a, MON_LEVEL
-	call GetPartyParamLocationAndValue
-	ld [wCurPartyLevel], a
-
-	ld a, MON_MAXHP
-	call GetPartyParamLocationAndValue
-	push hl
-	ld a, MON_EVS - 1
-	call GetPartyParamLocationAndValue
-	pop de
-	predef CalcPkmnStats
-
+	call RecalculatePartyMonStats
 	ld a, 1
 	jr .return
 
@@ -744,9 +737,9 @@ Special_HyperTrain:
 	db "HP@"
 	db "Speed@"
 	db "Attack@"
-	db "Spcl.Atk@"
+	db "Sp.Atk@"
 	db "Defense@"
-	db "Spcl.Def@"
+	db "Sp.Def@"
 
 .TrainWhichStat:
 	text "Train which of"
@@ -760,6 +753,15 @@ Special_HyperTrain:
 	line "you're hyped to"
 	cont "have it, but I"
 	cont "can't train it yet!"
+	prompt
+
+.TextNotEnoughLevels:
+	text "Oh no… No, no, no!"
+	line ""
+	text_ram wStringBuffer1
+	text " hasn't"
+	cont "leveled up enough"
+	cont "to be ready!"
 	prompt
 
 .TextNotMaxEffort:
@@ -778,6 +780,35 @@ Special_HyperTrain:
 	line "already hyped up"
 	cont "in that stat!"
 	prompt
+
+RecalculatePartyMonStats:
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
+	call GetBaseData
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	ld [wCurPartyLevel], a
+
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1HyperTraining
+	call SkipNames
+	ld b, [hl] ; b = hyper training
+	inc b ; use EVs on calculation
+
+	ld a, MON_MAXHP ; de = pointer to stats
+	call GetPartyParamLocationAndValue
+	push hl
+	ld a, MON_EVS - 1 ; hl = pointer to EVs - 1
+	call GetPartyParamLocationAndValue
+	pop de
+
+	; uses b, de, hl
+	predef_jump CalcPkmnStats
 
 GetLastPartyMon:
 	ld a, [wPartyCount]
@@ -906,6 +937,19 @@ ComputeNPCTrademonStats:
 	ld [hl], a
 	ret
 
+FixPlayerEVsAndStats:
+	farcall FixPlayerEVs
+	ld a, [wPartyCount]
+	ld [wCurPartyMon], a
+.loop
+	ld a, [wCurPartyMon]
+	and a
+	ret z
+	dec a
+	ld [wCurPartyMon], a
+	call UpdatePkmnStats
+	jr .loop
+
 UpdatePkmnStats:
 ; Recalculates the stats of wCurPartyMon and also updates current HP accordingly
 	ld a, MON_SPECIES
@@ -956,17 +1000,17 @@ UpdatePkmnStats:
 	ld [hld], a
 	ld a, [hl]
 	adc b
-	ld [hl], a
+	ld [hli], a
 
 	; Prevent the infamous Pomeg glitch (HP underflow)
 	cp $80
 	jr nc, .set_hp_to_one
 
 	; Don't faint Pokémon who used to not be fainted
-	inc hl
 	or [hl]
 	ret nz
 .set_hp_to_one
+	dec hl
 	xor a
 	ld [hli], a
 	inc a
@@ -989,283 +1033,6 @@ GetHyperTrainingAddr:
 	ld bc, PLAYER_NAME_LENGTH
 	add hl, bc
 	pop bc
-	ret
-
-CalcPkmnStats:
-; Calculates all 6 Stats of a Pkmn
-; b: Hyper Training (bit 7-2), apply EVs (bit 0)
-; 'c' counts from 1-6 and points with 'wBaseStats' to the base value
-; hl is the path to the EVs - 1
-; de is a pointer where the 6 stats are placed
-
-	ld c, 0
-.loop
-	inc c
-	call CalcPkmnStatC
-	ldh a, [hMultiplicand + 1]
-	ld [de], a
-	inc de
-	ldh a, [hMultiplicand + 2]
-	ld [de], a
-	inc de
-	ld a, c
-	cp STAT_SDEF
-	jr nz, .loop
-	ret
-
-CalcPkmnStatC:
-; 'c' is 1-6 and points to the BaseStat
-; 1: HP
-; 2: Attack
-; 3: Defense
-; 4: Speed
-; 5: SpAtk
-; 6: SpDef
-	push hl
-	push de
-	push bc
-	ld a, b
-	ld d, a
-	push hl
-	ld hl, wBaseStats - 1 ; has to be decreased, because 'c' begins with 1
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	ld e, a
-	pop hl
-	push hl
-	ld a, d
-	and a
-	jr z, .no_evs
-	ld a, [wInitialOptions2]
-	and EV_OPTMASK
-	jr z, .no_evs
-	add hl, bc
-	ld a, [hl]
-	ld b, a
-.no_evs
-	pop hl
-	push bc
-	ld bc, MON_DVS - (MON_EVS - 1)
-	add hl, bc ; hl points to DVs
-	pop bc
-	ld a, [wInitialOptions]
-	bit PERFECT_IVS_OPT, a
-	ld a, $f
-	jr nz, .GotDV
-	ld a, d
-	push bc
-.hyper_training_loop
-	rlca
-	dec c
-	jr nz, .hyper_training_loop
-	pop bc
-	ld a, $f
-	jr c, .GotDV
-
-.not_hyper_trained
-	ld a, c
-	dec a ; STAT_HP?
-	jr z, .HP
-	dec a ; STAT_ATK?
-	jr z, .Attack
-	dec a ; STAT_DEF?
-	jr z, .Defense
-	dec a ; STAT_SPD?
-	jr z, .Speed
-	dec a ; STAT_SATK?
-	jr z, .SpclAtk
-	; STAT_SDEF
-	inc hl
-	inc hl
-	ld a, [hld]
-	dec hl
-	jr .GotDV
-
-.HP:
-	ld a, [hl]
-	jr .GotHighDV
-
-.Attack:
-	ld a, [hl]
-	jr .GotDV
-
-.Defense:
-	inc hl
-	ld a, [hld]
-	jr .GotHighDV
-
-.Speed:
-	inc hl
-	ld a, [hld]
-	jr .GotDV
-
-.SpclAtk:
-	inc hl
-	inc hl
-	ld a, [hld]
-	dec hl
-.GotHighDV:
-	swap a
-.GotDV:
-	; de = e + a
-	and $f
-	add e
-	ld e, a
-	adc 0
-	sub e
-	ld d, a
-	; de = (de * 2) + 1
-	sla e
-	inc e
-	rl d
-	srl b
-	srl b
-	ld a, b
-	add e
-	jr nc, .no_overflow_1
-	inc d
-
-.no_overflow_1
-	ldh [hMultiplicand + 2], a
-	ld a, d
-	ldh [hMultiplicand + 1], a
-	xor a
-	ldh [hMultiplicand + 0], a
-	ld a, [wCurPartyLevel]
-	ldh [hMultiplier], a
-	call Multiply
-	ldh a, [hProduct + 1]
-	ldh [hDividend + 0], a
-	ldh a, [hProduct + 2]
-	ldh [hDividend + 1], a
-	ldh a, [hProduct + 3]
-	ldh [hDividend + 2], a
-	ld a, 100
-	ldh [hDivisor], a
-	ld a, 3
-	ld b, a
-	call Divide
-	ld a, c
-	cp STAT_HP
-	ld a, STAT_MIN_NORMAL
-	jr nz, .not_hp
-	ld a, [wCurPartyLevel]
-	ld b, a
-	ldh a, [hQuotient + 2]
-	add b
-	ldh [hMultiplicand + 2], a
-	jr nc, .no_overflow_2
-	ldh a, [hQuotient + 1]
-	inc a
-	ldh [hMultiplicand + 1], a
-
-.no_overflow_2
-	ld a, STAT_MIN_HP
-
-.not_hp
-	ld b, a
-	ldh a, [hQuotient + 2]
-	add b
-	ldh [hMultiplicand + 2], a
-	jr nc, .no_overflow_3
-	ldh a, [hQuotient + 1]
-	inc a
-	ldh [hMultiplicand + 1], a
-
-.no_overflow_3
-	ldh a, [hQuotient + 1]
-	cp HIGH(1000) + 1
-	jr nc, .max_stat
-	cp HIGH(1000)
-	jr c, .stat_value_okay
-	ldh a, [hQuotient + 2]
-	cp LOW(1000)
-	jr c, .stat_value_okay
-
-.max_stat
-	ld a, HIGH(999)
-	ldh [hMultiplicand + 1], a
-	ld a, LOW(999)
-	ldh [hMultiplicand + 2], a
-
-.stat_value_okay
-	; do natures here
-	xor a
-	ldh [hMultiplicand + 0], a
-	push hl
-	push bc
-	ld bc, MON_NATURE - MON_DVS
-	add hl, bc ; hl points to Nature
-	ld a, [hl]
-	and NATURE_MASK
-	pop bc
-	push bc
-	call GetNatureStatMultiplier
-	pop bc
-	pop hl
-	ldh [hMultiplier], a
-	call Multiply
-	ldh a, [hProduct + 1]
-	ldh [hDividend + 0], a
-	ldh a, [hProduct + 2]
-	ldh [hDividend + 1], a
-	ldh a, [hProduct + 3]
-	ldh [hDividend + 2], a
-	ld a, 10
-	ldh [hDivisor], a
-	ld a, 3
-	ld b, a
-	call Divide
-	ldh a, [hQuotient + 1]
-	ldh [hMultiplicand + 1], a
-	ldh a, [hQuotient + 2]
-	ldh [hMultiplicand + 2], a
-	jmp PopBCDEHL
-
-GetNatureStatMultiplier::
-; a points to Nature
-; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
-; returns (sets a to) 9 if c is lowered, 11 if raised, 10 if neutral
-; (to be used in calculations in CalcPkmnStatC)
-	push de
-	ld d, a
-	ld a, c
-	cp STAT_HP
-	jr z, .neutral
-	ld a, d
-	ld b, a
-	call GetNature
-	ld a, b
-	cp NO_NATURE
-	jr z, .neutral
-	ld d, STAT_HP
-.loop
-	inc d
-	sub 5
-	jr nc, .loop
-	add 7 ; Atk-SpD is 2-6, not 0-4
-	cp c
-	jr z, .penalty
-	ld a, d
-	cp c
-	jr z, .bonus
-.neutral
-	ld a, 10
-	pop de
-	ret
-.bonus
-	ld a, 11
-	pop de
-	ret
-.penalty
-	; Neutral natures (divisible by 6) raise and lower the same stat,
-	; but +10% -10% isn't neutral (the result is 99%), so we need to
-	; avoid messing with it altogether.
-	cp d
-	jr z, .neutral
-	ld a, 9
-	pop de
 	ret
 
 GivePoke::
@@ -1323,9 +1090,6 @@ GivePoke::
 	ld a, [wCurForm]
 	bit MON_IS_EGG_F, a
 	jr z, .not_egg
-	ld de, String_Egg
-	ld hl, wTempMonNickname
-	call CopyName2
 	ld hl, wTempMonHP
 	xor a
 	ld [hli], a
@@ -1338,7 +1102,9 @@ GivePoke::
 	add a
 	add b
 	ld [wTempMonHappiness], a
-	jr .try_add
+	ld de, String_Egg
+	ld hl, wTempMonNickname
+	call CopyName2
 .not_egg
 	ld de, wTempMonNickname
 	ld hl, wMonOrItemNameBuffer
@@ -1347,11 +1113,12 @@ GivePoke::
 	ld [wCurItem], a
 	ld hl, wTempMonCaughtData
 	farcall SetBoxmonOrEggmonCaughtData
-.try_add
 	call AddTempMonToParty
 	ld d, PARTYMON
 	jr nc, .added
 	call .SetUpBoxMon ; d = BOXMON if nc
+	ld a, TEMPMON
+	ld [wMonType], a
 	jmp c, .FailedToGiveMon
 
 .added
@@ -1435,7 +1202,7 @@ GivePoke::
 	or b
 	ld [de], a
 	push hl
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetFarWord
 	ld a, b
@@ -1461,19 +1228,10 @@ GivePoke::
 	inc hl
 	ld a, b
 	call GetFarWord
-	push hl
-	ld a, b
-	call GetFarWord
 	ld a, l
 	ld [wTempMonID], a
 	ld a, h
 	ld [wTempMonID+1], a
-	pop hl
-	inc hl
-	inc hl
-	ld a, b
-	call GetFarByte
-	ld b, a
 	ld a, [wGiftMonBall]
 	ld c, a
 	ld hl, wTempMonCaughtData

@@ -13,7 +13,7 @@ NPCTrades:
 	dp POLIWAG, NO_FORM ; wants
 	dp VOLTORB, MALE    ; gives
 	rawchar "Mimic@@@@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPD_UP_DEF_DOWN,   PREMIER_BALL, PERSIM_BERRY
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPE_UP_DEF_DOWN,   PREMIER_BALL, PERSIM_BERRY
 	dw 48926
 	rawchar "Kyle@@@@", $00
 ; NPC_TRADE_TIM in Olivine City
@@ -21,7 +21,7 @@ NPCTrades:
 	dp STEELIX, NO_FORM ; wants
 	dp KANGASKHAN, MALE ; gives
 	rawchar "Joey@@@@@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_ATK_UP_SPD_DOWN,   HEAVY_BALL,   SILK_SCARF
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_ATK_UP_SPE_DOWN,   HEAVY_BALL,   SILK_SCARF
 	dw 29189
 	rawchar "Tim@@@@@", $00
 ; NPC_TRADE_EMY in Blackthorn City
@@ -29,7 +29,7 @@ NPCTrades:
 	dp JYNX, NO_FORM    ; wants
 	dp MR__MIME, FEMALE ; gives
 	rawchar "Doris@@@@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPD_UP_ATK_DOWN,   LOVE_BALL,    PINK_BOW
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPE_UP_ATK_DOWN,   LOVE_BALL,    PINK_BOW
 	dw 00283
 	rawchar "Emy@@@@@", $00
 ; NPC_TRADE_CHRIS in Pewter City
@@ -37,7 +37,7 @@ NPCTrades:
 	dp PINSIR, NO_FORM ; wants
 	dp HERACROSS, MALE ; gives
 	rawchar "Paul@@@@@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPD_UP_SATK_DOWN,  PARK_BALL,    SILVERPOWDER
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPE_UP_SATK_DOWN,  PARK_BALL,    SILVERPOWDER
 	dw 15616
 	rawchar "Chris@@@", $00
 ; NPC_TRADE_KIM in Route 14
@@ -58,10 +58,18 @@ NPCTrades:
 	rawchar "Jacques@", $00
 ; NPC_TRADE_HARI in Ecruteak City
 	db TRADE_DIALOGSET_COLLECTOR
-	dp FARFETCH_D, NO_FORM  ; wants
-	dp DODUO, MALE          ; gives
+	dp FARFETCH_D, NO_FORM ; wants
+	dp DODUO, MALE         ; gives
 	rawchar "Clarence@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPD_UP_DEF_DOWN,   FAST_BALL,    GOLD_LEAF
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPE_UP_DEF_DOWN,   FAST_BALL,    GOLD_LEAF
 	dw 43972
 	rawchar "Hari@@@@", $00
+; NPC_TRADE_JEEVES
+	db TRADE_DIALOGSET_COLLECTOR
+	dp PONYTA, NO_FORM               ; wants
+	dp WEEZING, GALARIAN_FORM | MALE ; gives
+	rawchar "Batty@@@@@@"
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_DEF_UP_ATK_DOWN,   DREAM_BALL,   CHARCOAL
+	dw 08922
+	rawchar "Jeeves@@", $00
 	assert_table_length NUM_NPC_TRADES

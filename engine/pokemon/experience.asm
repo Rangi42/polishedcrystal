@@ -58,20 +58,20 @@ CalcExpAtLevel:
 	call .LevelSquared
 	ld a, d
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 
 ; Multiply by a
 	ld a, [hl]
 	and $f0
 	swap a
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 ; Divide by b
 	ld a, [hli]
 	and $f
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 ; Push the cubic term to the stack
 	ldh a, [hQuotient + 0]
 	push af
@@ -84,7 +84,7 @@ CalcExpAtLevel:
 	ld a, [hl]
 	and $7f
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 ; Push the absolute value of the quadratic term to the stack
 	ldh a, [hProduct + 1]
 	push af
@@ -102,7 +102,7 @@ CalcExpAtLevel:
 	ldh [hMultiplicand + 2], a
 	ld a, [hli]
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 ; Subtract e
 	ld b, [hl]
 	ldh a, [hProduct + 3]
@@ -172,6 +172,6 @@ CalcExpAtLevel:
 	ld a, d
 	ldh [hMultiplicand + 2], a
 	ldh [hMultiplier], a
-	jmp Multiply
+	farjp Multiply
 
 INCLUDE "data/growth_rates.asm"

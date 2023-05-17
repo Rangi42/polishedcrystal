@@ -295,9 +295,13 @@ AbsorbDescription:
 MegaDrainDescription:
 LeechLifeDescription:
 GigaDrainDescription:
-DrainKissDescription:
 DrainPunchDescription:
 	text "Steals 1/2 of the"
+	next "damage inflicted."
+	done
+
+DrainKissDescription:
+	text "Steals 3/4 of the"
 	next "damage inflicted."
 	done
 
@@ -468,7 +472,7 @@ IcyWindDescription:
 
 MoonblastDescription:
 	text "An attack that may"
-	next "lower Spcl.Atk."
+	next "lower Sp.Atk."
 	done
 
 AcidDescription:
@@ -480,7 +484,7 @@ EnergyBallDescription:
 FlashCannonDescription:
 FocusBlastDescription:
 	text "An attack that may"
-	next "lower Spcl.Def."
+	next "lower Sp.Def."
 	done
 
 MudSlapDescription:
@@ -582,12 +586,12 @@ AgilityDescription:
 
 NastyPlotDescription:
 	text "Sharply raises the"
-	next "user's Spcl.Atk."
+	next "user's Sp.Atk."
 	done
 
 AmnesiaDescription:
 	text "Sharply raises the"
-	next "user's Spcl.Def."
+	next "user's Sp.Def."
 	done
 
 MinimizeDescription:
@@ -597,7 +601,7 @@ MinimizeDescription:
 
 GrowthDescription:
 	text "Raises the user's"
-	next "Atk and Spcl.Atk."
+	next "Atk and Sp.Atk."
 	done
 
 BulkUpDescription:
@@ -672,7 +676,7 @@ ReflectDescription:
 	done
 
 LightScreenDescription:
-	text "Ups Spcl.Def with"
+	text "Raises Sp.Def with"
 	next "a wall of light."
 	done
 

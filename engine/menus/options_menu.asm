@@ -18,7 +18,7 @@ OptionsMenu:
 
 	xor a
 	ld [wJumptableIndex], a
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call SetPalettes
 
@@ -158,9 +158,9 @@ Options_TextSpeed:
 	ld hl, .Strings
 	add hl, bc
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 3
 	rst PlaceString
 	and a
@@ -328,7 +328,7 @@ UpdateFrame:
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
-	call LoadFontsExtra
+	call LoadFrame
 	and a
 	ret
 
@@ -351,9 +351,6 @@ Options_Sound:
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
-	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
-	call nz, RestartMapMusic
 	hlcoord 11, 13
 	rst PlaceString
 	and a
@@ -449,9 +446,9 @@ Options_TextAutoscroll:
 	ld c, a
 	ld hl, .Strings
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 7
 	rst PlaceString
 	and a
@@ -489,9 +486,9 @@ Options_TurningSpeed:
 	ld c, a
 	ld hl, .Strings
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 9
 	rst PlaceString
 	and a
@@ -554,9 +551,9 @@ Options_Typeface:
 	ld hl, .Strings
 	add hl, bc
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	hlcoord 11, 11
 	rst PlaceString
 	and a

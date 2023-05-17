@@ -4,24 +4,24 @@ LoadFishingGFX:
 	xor a
 	ldh [rVBK], a
 
-	ld hl, wPlayerGender
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
-	jr z, .surfing
+	ld hl, FishingGFXTable
+	jr nz, .got_table
+	ld hl, SurfFishingGFXTable
+.got_table
+	; de = [hl + [wPlayerGender] * 2]
+	ld a, [wPlayerGender]
+	add a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 
-	ld de, ChrisFishingGFX
-	bit 0, [hl]
-	jr z, .got_gender
-	ld de, KrisFishingGFX
-	jr .got_gender
-
-.surfing
-	ld de, ChrisSurfFishingGFX
-	bit 0, [hl]
-	jr z, .got_gender
-	ld de, KrisSurfFishingGFX
-
-.got_gender
 	ld hl, vTiles0 tile $02
 	call .LoadGFX
 	ld hl, vTiles0 tile $06
@@ -43,3 +43,15 @@ LoadFishingGFX:
 	ld d, h
 	ld e, l
 	ret
+
+FishingGFXTable:
+	farbank "Fishing Graphics"
+	fardw ChrisFishingGFX
+	fardw KrisFishingGFX
+	fardw CrysFishingGFX
+
+SurfFishingGFXTable:
+	farbank "Fishing Graphics"
+	fardw ChrisSurfFishingGFX
+	fardw KrisSurfFishingGFX
+	fardw CrysSurfFishingGFX

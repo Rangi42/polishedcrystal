@@ -437,5 +437,5 @@ MrPokemonsHouse_CabinetText:
 
 MrPokemonsHouse_RedScaleCabinetText:
 	text "One of them is the"
-	line "shiny red scale!"
+	line "shiny Red Scale!"
 	done

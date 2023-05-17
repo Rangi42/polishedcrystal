@@ -71,12 +71,9 @@ DEF STRING_BUFFER_LENGTH EQU 19
 	const VAR_KENJI_BREAK      ; 17
 	const VAR_PKMN_JOURNALS    ; 18
 	const VAR_TRAINER_STARS    ; 19
-DEF NUM_VARS EQU const_value           ; 1a
-
-; variable action types
-DEF RETVAR_STRBUF2 EQU 0 << 6
-DEF RETVAR_ADDR_DE EQU 1 << 6
-DEF RETVAR_EXECUTE EQU 2 << 6
+	const VAR_LANDMARK         ; 1a
+	const VAR_PLAYERGENDER     ; 1b
+DEF NUM_VARS EQU const_value       ; 1c
 
 ; PlayerEventScriptPointers indexes (see engine/overworld/events.asm)
 	const_def -1
@@ -186,70 +183,80 @@ DEF EMOTE_FROM_MEM EQU -1
 ; FruitTreeItems indexes (see data/items/fruit_trees.asm)
 	const_def 1
 ; Apricorn trees come first, then Berry trees
-	const FRUITTREE_AZALEA_TOWN     ; 01
-	const FRUITTREE_ROUTE_37_1      ; 02
-	const FRUITTREE_ROUTE_37_2      ; 03
-	const FRUITTREE_ROUTE_37_3      ; 04
-	const FRUITTREE_ROUTE_42_1      ; 05
-	const FRUITTREE_ROUTE_42_2      ; 06
-	const FRUITTREE_ROUTE_42_3      ; 07
+	const FRUITTREE_AZALEA_TOWN       ; 01
+	const FRUITTREE_ROUTE_37_1        ; 02
+	const FRUITTREE_ROUTE_37_2        ; 03
+	const FRUITTREE_ROUTE_37_3        ; 04
+	const FRUITTREE_ROUTE_42_1        ; 05
+	const FRUITTREE_ROUTE_42_2        ; 06
+	const FRUITTREE_ROUTE_42_3        ; 07
 DEF FIRST_BERRY_TREE EQU const_value
-	const FRUITTREE_ROUTE_29        ; 08
-	const FRUITTREE_ROUTE_30_1      ; 09
-	const FRUITTREE_ROUTE_30_2      ; 0a
-	const FRUITTREE_ROUTE_31        ; 0b
-	const FRUITTREE_VIOLET_CITY     ; 0c
-	const FRUITTREE_ROUTE_32_COAST  ; 0d
-	const FRUITTREE_ROUTE_33        ; 0e
-	const FRUITTREE_ROUTE_35        ; 0f
-	const FRUITTREE_ROUTE_36        ; 10
-	const FRUITTREE_ROUTE_38        ; 11
-	const FRUITTREE_ROUTE_39        ; 12
-	const FRUITTREE_ROUTE_43        ; 13
-	const FRUITTREE_ROUTE_44        ; 14
-	const FRUITTREE_ROUTE_45        ; 15
-	const FRUITTREE_ROUTE_46_1      ; 16
-	const FRUITTREE_ROUTE_46_2      ; 17
-	const FRUITTREE_ROUTE_27        ; 18
-	const FRUITTREE_ROUTE_26        ; 19
-	const FRUITTREE_ROUTE_8         ; 1a
-	const FRUITTREE_ROUTE_11        ; 1b
-	const FRUITTREE_FUCHSIA_CITY    ; 1c
-	const FRUITTREE_PEWTER_CITY_1   ; 1d
-	const FRUITTREE_PEWTER_CITY_2   ; 1e
-	const FRUITTREE_ROUTE_2         ; 1f
-	const FRUITTREE_ROUTE_1         ; 20
-	const FRUITTREE_LUCKY_ISLAND    ; 21
-	const FRUITTREE_SHAMOUTI_ISLAND ; 22
-	const FRUITTREE_ROUTE_49        ; 23
+	const FRUITTREE_ROUTE_29          ; 08
+	const FRUITTREE_ROUTE_30_1        ; 09
+	const FRUITTREE_ROUTE_30_2        ; 0a
+	const FRUITTREE_ROUTE_31          ; 0b
+	const FRUITTREE_VIOLET_CITY       ; 0c
+	const FRUITTREE_ROUTE_32_COAST    ; 0d
+	const FRUITTREE_ROUTE_33          ; 0e
+	const FRUITTREE_ROUTE_35          ; 0f
+	const FRUITTREE_ROUTE_36          ; 10
+	const FRUITTREE_ROUTE_38          ; 11
+	const FRUITTREE_ROUTE_39          ; 12
+	const FRUITTREE_ROUTE_43          ; 13
+	const FRUITTREE_ROUTE_44          ; 14
+	const FRUITTREE_ROUTE_45          ; 15
+	const FRUITTREE_ROUTE_46_1        ; 16
+	const FRUITTREE_ROUTE_46_2        ; 17
+	const FRUITTREE_ROUTE_27          ; 18
+	const FRUITTREE_ROUTE_26          ; 19
+	const FRUITTREE_ROUTE_8           ; 1a
+	const FRUITTREE_ROUTE_11          ; 1b
+	const FRUITTREE_FUCHSIA_CITY      ; 1c
+	const FRUITTREE_PEWTER_CITY_1     ; 1d
+	const FRUITTREE_PEWTER_CITY_2     ; 1e
+	const FRUITTREE_ROUTE_2           ; 1f
+	const FRUITTREE_ROUTE_1           ; 20
+	const FRUITTREE_LUCKY_ISLAND      ; 21
+	const FRUITTREE_SHAMOUTI_ISLAND   ; 22
+	const FRUITTREE_ROUTE_49          ; 23
+	const FRUITTREE_ROUTE_6           ; 24
+	const FRUITTREE_ROUTE_14          ; 25
+	const FRUITTREE_ROUTE_21          ; 26
+	const FRUITTREE_ROUTE_24          ; 27
+	const FRUITTREE_VIOLET_OUTSKIRTS  ; 28
+	const FRUITTREE_CHERRYGROVE_BAY_1 ; 29
+	const FRUITTREE_CHERRYGROVE_BAY_2 ; 2a
+	const FRUITTREE_CHERRYGROVE_BAY_3 ; 2b
+	const FRUITTREE_CHERRYGROVE_BAY_4 ; 2c
+	const FRUITTREE_CHERRYGROVE_BAY_5 ; 2d
+	const FRUITTREE_CHERRYGROVE_BAY_6 ; 2e
 DEF NUM_FRUIT_TREES EQU const_value - 1
 
 ; hidden grottoes
 ; HiddenGrottoData indexes (see data/events/hidden_grottoes/grottoes.asm)
 	const_def 1
-	const HIDDENGROTTO_ROUTE_32           ; 01
-	const HIDDENGROTTO_ILEX_FOREST        ; 02
-	const HIDDENGROTTO_ROUTE_35           ; 03
-	const HIDDENGROTTO_RUINS_OF_ALPH      ; 04
-	const HIDDENGROTTO_LAKE_OF_RAGE       ; 05
-	const HIDDENGROTTO_06                 ; 06
-	const HIDDENGROTTO_07                 ; 07
-	const HIDDENGROTTO_08                 ; 08
-	const HIDDENGROTTO_09                 ; 09
-	const HIDDENGROTTO_0A                 ; 0a
-	const HIDDENGROTTO_0B                 ; 0b
-	const HIDDENGROTTO_0C                 ; 0c
-	const HIDDENGROTTO_0D                 ; 0d
-	const HIDDENGROTTO_0E                 ; 0e
-	const HIDDENGROTTO_0F                 ; 0f
-	const HIDDENGROTTO_10                 ; 10
-	const HIDDENGROTTO_11                 ; 11
-	const HIDDENGROTTO_12                 ; 12
-	const HIDDENGROTTO_13                 ; 13
-	const HIDDENGROTTO_14                 ; 14
-	const HIDDENGROTTO_15                 ; 15
-	const HIDDENGROTTO_16                 ; 16
-	const HIDDENGROTTO_17                 ; 17
+	const HIDDENGROTTO_ROUTE_32                ; 01
+	const HIDDENGROTTO_ILEX_FOREST             ; 02
+	const HIDDENGROTTO_ROUTE_35                ; 03
+	const HIDDENGROTTO_ROUTE_36                ; 04
+	const HIDDENGROTTO_CHERRYGROVE_BAY         ; 05
+	const HIDDENGROTTO_VIOLET_OUTSKIRTS        ; 06
+	const HIDDENGROTTO_ROUTE_32_COAST          ; 07
+	const HIDDENGROTTO_STORMY_BEACH            ; 08
+	const HIDDENGROTTO_ROUTE_35_COAST          ; 09
+	const HIDDENGROTTO_RUINS_OF_ALPH           ; 0a
+	const HIDDENGROTTO_ROUTE_47                ; 0b
+	const HIDDENGROTTO_YELLOW_FOREST           ; 0c
+	const HIDDENGROTTO_RUGGED_ROAD_NORTH       ; 0d
+	const HIDDENGROTTO_SNOWTOP_MOUNTAIN_INSIDE ; 0e
+	const HIDDENGROTTO_ROUTE_42                ; 0f
+	const HIDDENGROTTO_LAKE_OF_RAGE            ; 10
+	const HIDDENGROTTO_BELLCHIME_TRAIL         ; 11
+	const HIDDENGROTTO_ROUTE_44                ; 12
+	const HIDDENGROTTO_ROUTE_45                ; 13
+	const HIDDENGROTTO_ROUTE_46                ; 14
+	const HIDDENGROTTO_SINJOH_RUINS            ; 15
+	const HIDDENGROTTO_SILVER_CAVE             ; 16
 DEF NUM_HIDDEN_GROTTOES EQU const_value - 1
 
 ; describedecoration arguments
@@ -343,3 +350,13 @@ DEF NUM_UNOWN_PUZZLES EQU const_value
 	const AERODACTYL_PUZZLE
 	const HO_OH_PUZZLE
 DEF NUM_PAINTINGS EQU const_value
+
+; DailyTrainerHouseOpponents indexes (see data/events/trainer_house_opponents.asm)
+	const_def 1
+	const OPP_CAL
+	const OPP_CARRIE
+	const OPP_JACKY
+	const OPP_EN
+	const OPP_MADOKA
+DEF NUM_TRAINER_HOUSE_OPPONENTS EQU const_value - 1
+DEF TRAINER_HOUSE_OPPONENT_SIZE EQU 2 ; class, id

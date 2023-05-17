@@ -74,7 +74,7 @@ TMHMMoves:
 	db STONE_EDGE   ; TM71 (Blue)
 	db VOLT_SWITCH  ; TM72 (Route 10)
 	db THUNDER_WAVE ; TM73 (Rock Tunnel)
-	db GYRO_BALL    ; TM74 (TODO: Magnet Tunnel)
+	db GYRO_BALL    ; TM74 (Magnet Tunnel)
 	db SWORDS_DANCE ; TM75 (Celadon Dept. Store)
 	assert_table_length NUM_TMS
 	db CUT          ; HM01 (Ilex Forest)
@@ -86,7 +86,7 @@ TMHMMoves:
 	assert_table_length NUM_TMS + NUM_HMS
 	db AGILITY      ; MT01 (TODO)
 	db AQUA_TAIL    ; MT02 (Route 4)
-	db BATON_PASS   ; MT03 (TODO)
+	db BATON_PASS   ; MT03 (Goldenrod Museum)
 	db BODY_SLAM    ; MT04 (Warm Beach)
 	db CHARM        ; MT05 (TODO)
 	db COUNTER      ; MT06 (Celadon Dept. Store)
@@ -94,7 +94,7 @@ TMHMMoves:
 	db DOUBLE_EDGE  ; MT08 (Safari Zone)
 	db DREAM_EATER  ; MT09 (Viridian City)
 	db EARTH_POWER  ; MT10 (Cherrygrove Bay)
-	db ENDURE       ; MT11 (Goldenrod City Museum)
+	db ENDURE       ; MT11 (Warm Beach)
 	db FIRE_PUNCH   ; MT12 (Goldenrod City)
 	db HEADBUTT     ; MT13 (Ilex Forest)
 	db HYPER_VOICE  ; MT14 (Goldenrod Harbor)

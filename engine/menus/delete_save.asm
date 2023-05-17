@@ -1,10 +1,11 @@
 _DeleteSaveData:
 	farcall BlankScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call LoadStandardFont
-	call LoadFontsExtra
-	ld de, MUSIC_MAIN_MENU
+	call LoadFrame
+	call BlackOutScreen
+	ld e, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .Text_ClearAllSaveData
 	call PrintText
@@ -38,11 +39,12 @@ _DeleteSaveData:
 
 _ResetInitialOptions:
 	farcall BlankScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call LoadStandardFont
-	call LoadFontsExtra
-	ld de, MUSIC_MAIN_MENU
+	call LoadFrame
+	call BlackOutScreen
+	ld e, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .Text_ResetInitialOptions
 	call PrintText

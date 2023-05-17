@@ -146,15 +146,8 @@ DoNPCTrade:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld b, h
-	ld c, l
-	call GetCaughtGender
-	ld [wPlayerTrademonCaughtData], a
-
 	xor a
+	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, wPartyMon1Level
@@ -225,8 +218,8 @@ DoNPCTrade:
 	; The second (form+extspecies) is part of the species word.
 	ld e, NPCTRADE_PERSONALITY
 	call GetTradeAttribute
-	ld de, wOTTrademonPersonality
-	ld [de], a
+	ld a, [hl]
+	ld [wOTTrademonPersonality], a
 
 	ld hl, wPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -378,14 +371,6 @@ GetTradeMonNames:
 	ld [hl], a ; "@"
 	ret
 
-GetCaughtGender:
-	ld hl, MON_CAUGHTGENDER
-	add hl, bc
-	ld a, [hl]
-	and CAUGHT_GENDER_MASK
-	rla
-	ret
-
 INCLUDE "data/events/npc_trades.asm"
 
 PrintTradeText:
@@ -444,7 +429,7 @@ TradedForText:
 	; traded givemon for getmon
 	text_far Text_NPCTraded
 	text_asm
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	ld hl, .done

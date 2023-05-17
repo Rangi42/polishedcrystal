@@ -59,20 +59,20 @@ FastShipB1FSailorScript:
 	faceplayer
 	opentext
 	checkevent EVENT_FAST_SHIP_LAZY_SAILOR
-	iftruefwd UnknownScript_0x7678d
+	iftruefwd .LazySailor
 	checkevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	iftrue_jumpopenedtext FastShipB1FOnDutySailorRefusedText
 	setevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	clearevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
 	jumpopenedtext FastShipB1FOnDutySailorText
 
-UnknownScript_0x7678d:
+.LazySailor:
 	writetext FastShipB1FOnDutySailorThanksText
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
-	iffalsefwd UnknownScript_0x76799
+	iffalsefwd .NotFoundGirl
 	waitendtext
 
-UnknownScript_0x76799:
+.NotFoundGirl:
 	promptbutton
 	jumpopenedtext FastShipB1FOnDutySailorSawLittleGirlText
 

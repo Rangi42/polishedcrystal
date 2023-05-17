@@ -1,7 +1,3 @@
-ClearText::
-	text_start
-	done
-
 ClearSpeechBox::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
@@ -31,15 +27,27 @@ ClearScreen::
 	rst ByteFill
 ClearTileMap::
 ; Fill wTilemap with blank tiles.
-	hlcoord 0, 0
 	ld a, " "
+FillTileMap::
+	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
 	rst ByteFill
 	; Update the BG Map.
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	ret z
-	jmp ApplyTilemapInVBlank
+	jr ApplyTilemapInVBlank
+
+BlackOutScreen::
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 0, 0
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld a, "<BLACK>"
+	rst ByteFill
+	ld a, $1
+	ldh [hBGMapMode], a
+	ret
 
 SpeechTextbox::
 ; Standard textbox.
@@ -134,6 +142,7 @@ MenuTextbox::
 PrintText::
 ; input: hl = string, bc = coords
 ; output: hl = advanced string, bc = advanced coords
+; Clobbers de
 	call SetUpTextbox
 PrintTextNoBox::
 	push hl
@@ -169,6 +178,15 @@ _PlaceString::
 ; input: de = string, hl = coords
 ; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
 	push hl
+	jr PlaceNextChar
+
+SpaceChar::
+	ld a, " "
+_PlaceLiteralChar:
+	ld [hli], a
+	call PrintLetterDelay
+NextChar::
+	inc de
 PlaceNextChar::
 	; charmap order: commands, then ngrams, then specials, then literals
 	ld a, [de]
@@ -181,27 +199,26 @@ PlaceNextChar::
 	dec de
 	jmp FinishString
 
-SpaceChar::
-	ld a, " "
-_PlaceLiteralChar:
-	ld [hli], a
-	call PrintLetterDelay
-NextChar::
-	inc de
-	jr PlaceNextChar
 
 _PlaceNgramChar:
 	sub NGRAMS_START
 	push de
 	push hl
-	add a
 	ld e, a
 	ld d, 0
 	ld hl, NgramStrings
 	add hl, de
+	ld e, [hl]
+	add hl, de
+	cp NGRAMS_VAR_START - NGRAMS_START
+	jr c, .done
+	; These are pointers to strings
 	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld h, [hl]
+	ld l, a
+.done
+	ld d, h
+	ld e, l
 	pop hl
 	jmp PlaceCommandCharacter
 
@@ -269,7 +286,7 @@ ContText::
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
-	jr NextChar
+	jmp NextChar
 
 Paragraph::
 	push de
@@ -457,9 +474,9 @@ DoTextUntilTerminator::
 	ld hl, TextCommands
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	pop hl
 	push de
 	ret
@@ -612,10 +629,8 @@ PrintDayOfWeek::
 	ld b, 0
 	ld hl, .Days
 	add hl, bc
+	ld c, [hl]
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ld d, h
 	ld e, l
 	pop hl
@@ -628,13 +643,13 @@ PrintDayOfWeek::
 	ret
 
 .Days:
-	dw .Sun
-	dw .Mon
-	dw .Tues
-	dw .Wednes
-	dw .Thurs
-	dw .Fri
-	dw .Satur
+	dr .Sun
+	dr .Mon
+	dr .Tues
+	dr .Wednes
+	dr .Thurs
+	dr .Fri
+	dr .Satur
 
 .Sun:    db "Sun@"
 .Mon:    db "Mon@"
@@ -672,7 +687,7 @@ DecompressString::
 	; "c = [hli]" when b reaches 0, then carry = next bit from c
 	dec b
 	jr nz, .no_reload
-	ld c, [hl]
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 	ld b, 8
 .no_reload

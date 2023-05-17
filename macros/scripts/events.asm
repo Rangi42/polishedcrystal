@@ -344,7 +344,7 @@ MACRO givepoke
 		db TRUE ; trainer
 		dw \7 ; nickname_pointer
 		dw \8 ; ot_name_pointer
-		dw \9 ; ot_id_pointer
+		bigdw \9 ; ot_id
 	else
 		db FALSE ; no trainer
 	endc
@@ -533,8 +533,6 @@ ENDM
 	const repeattext_command
 MACRO repeattext
 	db repeattext_command
-	db \1 ; byte
-	db \2 ; byte
 ENDM
 
 	const yesorno_command
@@ -1286,12 +1284,9 @@ MACRO checkegg
 ENDM
 
 MACRO callthisasm
-	; "callasm .asm\@" causes a "File stack dump too long, got truncated"
-	; error due to the long filename:linenumber trace of nested macros.
-	db callasm_command
-	dba .asm\@
+	callasm .thisasm\@
 	end
-.asm\@
+.thisasm\@
 ENDM
 
 	const givekeyitem_command
@@ -1345,7 +1340,7 @@ ENDM
 MACRO sjumpfwd
 	assert \1 > @, "sjumpfwd cannot jump backward"
 	db sjumpfwd_command
-	db \1 - @ - 1 ; distance
+	dr \1 - 1 ; distance
 ENDM
 
 	const ifequalfwd_command
@@ -1353,21 +1348,27 @@ MACRO ifequalfwd
 	assert \2 > @, "ifequalfwd cannot jump backward"
 	db ifequalfwd_command
 	db \1 ; byte
-	db \2 - @ - 1 ; distance
+	dr \2 - 1 ; distance
 ENDM
 
 	const iffalsefwd_command
 MACRO iffalsefwd
 	assert \1 > @, "iffalsefwd cannot jump backward"
 	db iffalsefwd_command
-	db \1 - @ - 1 ; distance
+	dr \1 - 1 ; distance
 ENDM
 
 	const iftruefwd_command
 MACRO iftruefwd
 	assert \1 > @, "iftruefwd cannot jump backward"
 	db iftruefwd_command
-	db \1 - @ - 1 ; distance
+	dr \1 - 1 ; distance
+ENDM
+
+	const scalltable_command
+MACRO scalltable
+	db scalltable_command
+	dw \1 ; pointer table
 ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

@@ -35,8 +35,7 @@ _AnimateHPBar:
 	ld d, a
 	ld a, [hli]
 	ld c, a
-	ld a, [hli]
-	ld b, a
+	ld b, [hl]
 	pop hl
 	sla c
 	rl b
@@ -76,10 +75,8 @@ _AnimateHPBar:
 	ld b, a
 	ld a, [hli]
 	ld e, a
-	ld a, [hli]
-	ld d, a
+	ld d, [hl]
 	pop hl
-	ld a, e
 	sub c
 	ld e, a
 	ld a, d
@@ -141,11 +138,11 @@ HPBarAnim_UpdateVariables:
 	ldh [hMultiplicand + 1], a
 	ld a, [wCurHPAnimMaxHP]
 	ldh [hMultiplicand + 2], a
-	call Multiply
+	farcall Multiply
 	ld a, HP_BAR_LENGTH_PX * 2
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld [wCurHPAnimOldHP + 1], a
 	ldh a, [hQuotient + 2]

@@ -68,7 +68,7 @@ DoEncoreDisable:
 	jr z, .failed
 
 	; Potential Cursed Body message
-	call ShowPotentialAbilityActivation
+	farcall ShowPotentialAbilityActivation
 
 	; Get move effect text and duration
 	ld a, b
@@ -99,5 +99,10 @@ DoEncoreDisable:
 	jmp CheckOpponentMentalHerb
 
 .failed
+	; Cursed Body prints nothing in this case.
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+
 	call AnimateFailedMove
 	jmp PrintButItFailed

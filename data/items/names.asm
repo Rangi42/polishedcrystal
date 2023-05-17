@@ -141,8 +141,8 @@ endc
 	li "X Attack"
 	li "X Defend"
 	li "X Speed"
-	li "X Spcl.Atk"
-	li "X Spcl.Def"
+	li "X Sp.Atk"
+	li "X Sp.Def"
 	li "X Accuracy"
 	li "Dire Hit"
 if DEF(FAITHFUL)
@@ -218,16 +218,11 @@ endc
 	li "Rocky Helmet"
 	li "Air Balloon"
 	li "Red Card"
-	li "Ring Target"
 	li "Binding Band"
-	li "Absorb Bulb"
-	li "Cell Battery"
 	li "Eject Button"
 
 	li "Weak Policy"
 	li "Assault Vest"
-	li "LuminousMoss"
-	li "Snowball"
 	li "Safe Goggles"
 
 	li "Protect Pads"
@@ -237,7 +232,12 @@ endc
 	li "Heavy Boots"
 	li "BlundrPolicy"
 	li "Room Service"
-	li "UtilUmbrella"
+
+	li "Clear Amulet"
+	li "Mirror Herb"
+	li "PunchinGlove"
+	li "Covert Cloak"
+	li "Loaded Dice"
 
 	li "Light Ball"
 	li "Leek"
@@ -286,6 +286,7 @@ endc
 	li "Razor Claw"
 	li "Oval Stone"
 	li "Odd Souvenir"
+	li "Linking Cord"
 
 	li "Silver Leaf"
 	li "Gold Leaf"

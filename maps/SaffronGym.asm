@@ -106,12 +106,11 @@ SaffronGymSabrinaScript:
 	text "TM29 is Psychic."
 
 	para "It may lower the"
-	line "target's Spcl.Def."
+	line "target's Sp.Def."
 
 	para "You will become a"
 	line "celebrated and"
-
-	para "beloved Champion!"
+	cont "beloved Champion!"
 	done
 
 GenericTrainerMediumDoris:

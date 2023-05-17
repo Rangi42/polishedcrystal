@@ -1,4 +1,4 @@
-; battle_anim_struct members (see macros/wram.asm)
+; battle_anim_struct members (see macros/ram.asm)
 rsreset
 DEF BATTLEANIMSTRUCT_INDEX           rb
 DEF BATTLEANIMSTRUCT_OAMFLAGS        rb
@@ -240,17 +240,13 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_U_TURN_LAUNCH
 	const ANIM_OBJ_U_TURN_RISE
 	const ANIM_OBJ_U_TURN_FALL
-	const ANIM_OBJ_WATER_PULSE
 	const ANIM_OBJ_CHARGE
 	const ANIM_OBJ_DAZZLE
 	const ANIM_OBJ_TRICK_ROOM
 	const ANIM_OBJ_SWEAT
 	const ANIM_OBJ_GUNKSHOT
 	const ANIM_OBJ_SPLASH
-	const ANIM_OBJ_HEX
 	const ANIM_OBJ_POWER_GEM
-	const ANIM_OBJ_BLUE_FLAME
-	const ANIM_OBJ_SHELL_SMASH
 	const ANIM_OBJ_MINIMIZE
 	const ANIM_OBJ_STAT_UP
 	const ANIM_OBJ_STAT_DOWN
@@ -265,13 +261,17 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_HYPER_VOICE
 	const ANIM_OBJ_BULLET_PUNCH
 	const ANIM_OBJ_LONG_PUNCH
-	const ANIM_OBJ_ABSORB_RED
 	const ANIM_OBJ_FLASH_CANNON
 	const ANIM_OBJ_VORTEX_YELLOW
-	const ANIM_OBJ_IRON_HEAD
 	const ANIM_OBJ_HEART_BURST
 	const ANIM_OBJ_STAR_BURST
 	const ANIM_OBJ_RED_STAR
+	const ANIM_OBJ_SEISMIC_TOSS_UP
+	const ANIM_OBJ_SEISMIC_TOSS_DOWN
+	const ANIM_OBJ_SHELL_SMASH
+	const ANIM_OBJ_SHELL_SMASH_SHELL
+	const ANIM_OBJ_SHELL_SMASH_HIT
+	const ANIM_OBJ_BERRY
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -567,6 +567,9 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_FOCUS_BLAST
 	const BATTLEANIMFRAMESET_VORTEX
 	const BATTLEANIMFRAMESET_RED_STAR
+	const BATTLEANIMFRAMESET_HAIL
+	const BATTLEANIMFRAMESET_U_TURN_FALL
+	const BATTLEANIMFRAMESET_BERRY
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -796,6 +799,7 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_VORTEX1 ; e9 in chatty
 	const BATTLEANIMOAMSET_VORTEX2 ; ea in chatty
 	const BATTLEANIMOAMSET_VORTEX3 ; eb in chatty
+	const BATTLEANIMOAMSET_U_TURN_FALL ; ef
 DEF NUM_BATTLEANIMOAMSETS EQU const_value
 
 ; BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)
@@ -903,12 +907,14 @@ DEF NUM_ANIM_BGS EQU const_value - 1
 	const ANIM_GFX_HEARTS
 	const ANIM_GFX_STARS
 	const ANIM_GFX_MINI
+	const ANIM_GFX_U_TURN
+	const ANIM_GFX_BERRY
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET
 	const ANIM_GFX_POKE_BALL_BG
 DEF NUM_ANIM_GFX EQU const_value - 1
 
-; battle_bg_effect struct members (see macros/wram.asm)
+; battle_bg_effect struct members (see macros/ram.asm)
 rsreset
 DEF BG_EFFECT_STRUCT_FUNCTION    rb
 DEF BG_EFFECT_STRUCT_JT_INDEX    rb
@@ -932,6 +938,10 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BATTLE_BG_STATUS     ; 5
 	const PAL_BATTLE_BG_TYPE_CAT   ; 6
 	const PAL_BATTLE_BG_TEXT       ; 7
+; sentinel palette indices that denote "user" or "target" for battle pics
+; (anim_setbgpal applies them to the relevant obj palettes too)
+	const PAL_BATTLE_BG_USER       ; 8
+	const PAL_BATTLE_BG_TARGET     ; 9
 
 ; animation object palettes
 	const_def
@@ -944,16 +954,23 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BATTLE_OB_BLUE   ; 6
 	const PAL_BATTLE_OB_BROWN  ; 7
 
-
-; sentinel palette indices that denote "user" or "target" for battle pics
-; (anim_setbgpal applies them to the relevant obj palettes too)
-	const_def 8
-	const PAL_BATTLE_USER          ; 8
-	const PAL_BATTLE_TARGET        ; 9
-
 ; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
+; the first 6 matches PAL_BATTLE_OB_GRAY/YELLOW/...
 	const_def
-	const PAL_BATTLE_GRAY ; 0
+	const PAL_BTLCUSTOM_GRAY        ; 0
+	const PAL_BTLCUSTOM_YELLOW      ; 1
+	const PAL_BTLCUSTOM_RED         ; 2
+	const PAL_BTLCUSTOM_GREEN       ; 3
+	const PAL_BTLCUSTOM_BLUE        ; 4
+	const PAL_BTLCUSTOM_BROWN       ; 5
+	const PAL_BTLCUSTOM_METALLIC    ; 6
+	const PAL_BTLCUSTOM_PURPLE      ; 7
+	const PAL_BTLCUSTOM_ICE         ; 8
+	const PAL_BTLCUSTOM_FIRE        ; 9
+	const PAL_BTLCUSTOM_GLOBE       ; a
+	const PAL_BTLCUSTOM_WATER       ; b
+	const PAL_BTLCUSTOM_DRAGON_FIRE ; c
+	const PAL_BTLCUSTOM_BERRY       ; d
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
-DEF PAL_BATTLE_DEFAULT EQU -1
+DEF PAL_BTLCUSTOM_DEFAULT EQU -1

@@ -30,50 +30,30 @@ SimpleDivide::
 	ld a, ERR_DIV_ZERO
 	jmp Crash
 
-Multiply::
-; Multiply hMultiplicand (3 bytes) by hMultiplier. Result in hProduct.
-; All values are big endian.
-	push hl
-	push de
-	push bc
-
-	farcall _Multiply
-
-	jmp PopBCDEHL
-
-Divide::
-; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
-; All values are big endian.
-	push hl
-	push de
-	push bc
-
-	homecall _Divide
-
-	jmp PopBCDEHL
-
-Divide16::
-; calculates bc / de, stores quotient in de and remainder in bc
-; also stores quotient in hQuotient and remainder in hRemainder
-	push hl
-	homecall _Divide16
-	pop hl
-	ret
-
 MultiplyAndDivide::
 ; a = $xy: multiply multiplicands by x, then divide by y
 ; Used for damage modifiers, catch rate modifiers, etc.
 	push bc
 	ld b, a
+
+	ldh a, [hROMBank]
+	push af
+	ld a, BANK(Multiply)
+	rst Bankswitch
+
+	ld a, b
 	swap a
 	and $f
 	ld c, LOW(hMultiplier)
 	ldh [c], a
-	call Multiply
+	call Multiply ; far-ok
 	ld a, b
 	and $f
 	ldh [c], a
 	ld b, 4
-	call Divide
+	call Divide ; far-ok
+
+	pop af
+	rst Bankswitch
 	pop bc
 	ret

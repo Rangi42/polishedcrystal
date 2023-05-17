@@ -21,6 +21,19 @@ WonderTrade::
 	ld a, EGG
 	ld [wCurPartySpecies], a
 .not_egg
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	cp LOW(PICHU)
+	jr nz, .not_spiky_eared_pichu
+	assert MON_FORM == MON_EXTSPECIES
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	cp HIGH(PICHU) << MON_EXTSPECIES_F | PICHU_SPIKY_EARED_FORM
+	ld hl, .Text_WonderTradeCantTradeSpikyEaredPichu
+	jmp z, PrintText
+.not_spiky_eared_pichu
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -50,6 +63,10 @@ WonderTrade::
 
 .Text_WonderTradePrompt:
 	text_far WonderTradePromptText
+	text_end
+
+.Text_WonderTradeCantTradeSpikyEaredPichu
+	text_far WonderTradeCantTradeSpikyEaredPichuText
 	text_end
 
 ;.Text_WonderTradeCantTradeEgg:
@@ -169,15 +186,8 @@ DoWonderTrade:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld b, h
-	ld c, l
-	call GetCaughtGender
-	ld [wPlayerTrademonCaughtData], a
-
 	xor a
+	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, wPartyMon1Level
@@ -193,6 +203,7 @@ DoWonderTrade:
 	predef RemoveMonFromParty
 
 	call GetWonderTradeOTForm
+	ld a, d
 	ld [wCurForm], a
 	ld [wOTTrademonForm], a
 	predef TryAddMonToParty
@@ -239,9 +250,6 @@ DoWonderTrade:
 	ld hl, wOTTrademonOTName
 	call CopyTradeOT
 
-	call GetWonderTradeOTGender
-	ld b, a
-
 	; Random Ball
 	; 2/3 chance of Poké Ball, 1/3 chance of other
 .random_ball
@@ -260,7 +268,6 @@ DoWonderTrade:
 	ld a, POKE_BALL
 .got_ball
 	ld c, a
-
 	farcall SetGiftPartyMonCaughtData
 
 	; Random DVs
@@ -421,12 +428,7 @@ GetGSBallPichu:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld b, h
-	ld c, l
-	call GetCaughtGender
+	xor a
 	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
@@ -443,12 +445,6 @@ GetGSBallPichu:
 	predef RemoveMonFromParty
 	predef TryAddMonToParty
 
-	ld b, MALE
-	ld a, [wPlayerGender]
-	and a
-	jr z, .male_ot_pikachu
-	ld b, FEMALE
-.male_ot_pikachu
 	ld c, ULTRA_BALL
 	farcall SetGiftPartyMonCaughtData
 
@@ -534,37 +530,15 @@ GetWonderTradeOTName:
 
 INCLUDE "data/events/wonder_trade/ot_names.asm"
 
-GetWonderTradeOTGender:
-; pick from .WonderTradeOTGenders1 if [wOTTrademonID] is even,
-; WonderTradeOTGenders2 if odd, using [wOTTrademonID+1] as the index.
-	ld hl, wOTTrademonID
-	ld a, [hli]
-	and 1
-	ld a, [hl]
-	ld hl, WonderTradeOTGenders1
-	jr z, .ok
-	ld hl, WonderTradeOTGenders2
-.ok
-	ld c, a
-	ld d, BANK(WonderTradeOTGenders1) ; aka BANK(WonderTradeOTGenders2)
-	ld b, CHECK_FLAG
-	predef FlagPredef
-	ld a, c
-	and a
-	ret z ; MALE
-	ld a, FEMALE
-	ret
-
-INCLUDE "data/events/wonder_trade/ot_genders.asm"
-
 GetWonderTradeOTForm:
 ; pick randomly from [1, N] for [wOTTrademonSpecies], or default to 1
+; returns result in d
 	ld a, [wOTTrademonSpecies]
 	ld c, a
 	ld a, [wOTTrademonForm]
 	and EXTSPECIES_MASK
 	ld b, a
-	lb de, PLAIN_FORM, 1
+	lb de, PLAIN_FORM, 1 ; d = form to return, e = running count of eligible variants found
 	or d
 	ld d, a
 	ld hl, CosmeticSpeciesAndFormTable - 1
@@ -572,11 +546,10 @@ GetWonderTradeOTForm:
 	inc hl
 	ld a, [hli] ; species
 	and a
-	ld a, d
 	ret z
 	cp c
-	ld a, [hl] ; extspecies + form
 	jr nz, .loop
+	ld a, [hl] ; extspecies + form
 	and EXTSPECIES_MASK
 	cp b
 	jr nz, .loop

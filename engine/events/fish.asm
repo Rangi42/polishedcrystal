@@ -35,7 +35,16 @@ endr
 	; Get item by rod
 	; 0: Old
 	; 1: Good
-	; 2: Super
+	; 2: Super (10% of the time)
+	ld a, b
+	cp 2
+	jr c, .not_super
+	ld a, 10
+	call RandomRange
+	and a
+	jr nz, .no_bite
+
+.not_super
 	ld hl, FishItems
 	add hl, de
 	ld c, [hl]
@@ -100,7 +109,7 @@ GetFishLocations:
 	; Clear area locator data.
 	ld hl, wDexAreaValidFishGroups
 	push bc
-	ld bc, NUM_TREEMON_SETS
+	ld bc, NUM_FISHGROUPS
 	xor a
 	rst ByteFill
 	pop bc
@@ -133,7 +142,7 @@ GetFishLocations:
 	pop de
 	ret c
 
-	assert (wDexAreaValidTreeGroups == wDexAreaValidFishGroups)
+	assert wDexAreaValidTreeGroups == wDexAreaValidFishGroups
 
 	; TODO: fix labels, we don't want "call/jp a.b"...
 	ld hl, FishMonMaps
@@ -248,7 +257,6 @@ GetFishGroupIndex:
 	jr z, .remoraid
 
 .done
-	dec d
 	ld e, d
 	ld d, 0
 	ret

@@ -5,7 +5,11 @@ SetBlackPals::
 	call StackCallInWRAMBankA
 
 .Function:
+if !DEF(MONOCHROME)
 	xor a
+else
+	ld bc, PAL_MONOCHROME_BLACK
+endc
 	jr DoSetPals
 
 SetWhitePals::
@@ -13,11 +17,26 @@ SetWhitePals::
 	call StackCallInWRAMBankA
 
 .Function:
+if !DEF(MONOCHROME)
 	ld a, $ff
+else
+	ld bc, PAL_MONOCHROME_WHITE
+endc
 DoSetPals:
 	ld hl, wBGPals1
+if !DEF(MONOCHROME)
 	ld bc, 16 palettes
 	rst ByteFill
+else
+	ld a, 16 * NUM_PAL_COLORS
+.loop
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	dec a
+	jr nz, .loop
+endc
 	ret
 
 ;FadeBGPalettes::

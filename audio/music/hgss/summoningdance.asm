@@ -4,16 +4,17 @@
 ; https://hax.iimarckus.org/topic/6777/3/
 
 Music_SummoningDanceHGSS:
-	musicheader 3, 1, Music_SummoningDanceHGSS_Ch1
-	musicheader 1, 2, Music_SummoningDanceHGSS_Ch2
-	musicheader 1, 3, Music_SummoningDanceHGSS_Ch3
+	channel_count 3
+	channel 1, Music_SummoningDanceHGSS_Ch1
+	channel 2, Music_SummoningDanceHGSS_Ch2
+	channel 3, Music_SummoningDanceHGSS_Ch3
 
 Music_SummoningDanceHGSS_Ch1:
 	tempo 220
-	dutycycle 0
-	notetype $c, $85
+	duty_cycle 0
+	note_type 12, 8, 5
 	octave 3
-	note __, 4
+	rest 4
 	note E_, 2
 	note A_, 2
 	note B_, 4
@@ -54,14 +55,14 @@ Music_SummoningDanceHGSS_Ch1:
 	note G_, 2
 	note G_, 2
 	note A_, 8
-	jumpchannel Music_SummoningDanceHGSS_Ch1
+	sound_jump Music_SummoningDanceHGSS_Ch1
 
 Music_SummoningDanceHGSS_Ch2:
-	dutycycle 0
-	vibrato $10, $24
-	notetype $c, $a5
+	duty_cycle 0
+	vibrato 16, 2, 4
+	note_type 12, 10, 5
 	octave 3
-	note __, 4
+	rest 4
 	note B_, 2
 	octave 4
 	note D_, 2
@@ -84,20 +85,20 @@ Music_SummoningDanceHGSS_Ch2:
 	note G_, 2
 	note A_, 4
 	note G_, 2
-	notetype $8, $a5
+	note_type 8, 10, 5
 	note A#, 1
 	octave 4
 	note D_, 1
 	octave 3
 	note A#, 1
-	notetype $c, $a5
+	note_type 12, 10, 5
 	note A_, 2
 	octave 4
-	notetype $8, $a5
+	note_type 8, 10, 5
 	note G_, 1
 	note A_, 1
 	note G_, 1
-	notetype $c, $a5
+	note_type 12, 10, 5
 	note E_, 2
 	note C_, 4
 	note D_, 2
@@ -122,16 +123,16 @@ Music_SummoningDanceHGSS_Ch2:
 	note F_, 2
 	note E_, 2
 	note F_, 2
-	notetype $8, $a5
+	note_type 8, 10, 5
 	note F_, 1
 	note A_, 1
 	note F_, 1
-	notetype $c, $a5
+	note_type 12, 10, 5
 	note E_, 8
-	jumpchannel Music_SummoningDanceHGSS_Ch2
+	sound_jump Music_SummoningDanceHGSS_Ch2
 
 Music_SummoningDanceHGSS_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note E_, 4
 	note G_, 2
@@ -179,4 +180,4 @@ Music_SummoningDanceHGSS_Ch3:
 	octave 2
 	note G_, 4
 	note A_, 8
-	jumpchannel Music_SummoningDanceHGSS_Ch3
+	sound_jump Music_SummoningDanceHGSS_Ch3

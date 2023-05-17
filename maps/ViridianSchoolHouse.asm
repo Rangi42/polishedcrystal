@@ -11,8 +11,8 @@ ViridianSchoolHouse_MapScriptHeader:
 
 	def_bg_events
 	bg_event  3,  0, BGEVENT_JUMPTEXT, ViridianSchoolHouseBlackboardText
-	bg_event  6,  1, BGEVENT_JUMPTEXT, ViridianSchoolHouseBookshelfText
-	bg_event  7,  1, BGEVENT_JUMPTEXT, ViridianSchoolHouseBookshelfText
+	bg_event  6,  1, BGEVENT_READ, PokemonJournalKiyoScript
+	bg_event  7,  1, BGEVENT_READ, PokemonJournalKiyoScript
 
 	def_object_events
 	object_event  4,  1, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianSchoolHouseTeacherText, -1
@@ -101,16 +101,30 @@ ViridianSchoolHouseBlackboardText:
 	cont "Defense stats."
 
 	para "Special moves use"
-	line "the Spcl.Atk and"
-	cont "Spcl.Def stats."
+	line "the Sp.Atk and"
+	cont "Sp.Def stats."
 
 	para "Status moves do"
 	line "not cause damage"
 	cont "directly."
 	done
 
-ViridianSchoolHouseBookshelfText:
-	text "It's full of text-"
-	line "books and study"
-	cont "guides."
+PokemonJournalKiyoScript:
+	setflag ENGINE_READ_KIYO_JOURNAL
+	jumpthistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Karate King Kiyo!"
+
+	para "Kiyo is said to"
+	line "have studied under"
+
+	para "Chuck of Cianwood"
+	line "City. He is"
+
+	para "rumored to still"
+	line "be training some-"
+	cont "where in Johto."
 	done

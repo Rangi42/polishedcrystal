@@ -1,565 +1,533 @@
-SECTION "Sfx_PokeballsPlacedOnTable", ROMX
+SECTION "Sound Effects", ROMX
 
 Sfx_PokeballsPlacedOnTable:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $3a
-	sound __,  5, $f2, $0200
-	soundinput $22
-	sound __,  9, $e2, $0200
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 512
+	pitch_sweep 2, 2
+	square_note 8, 14, 2, 512
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_BallWiggle", ROMX
 
 Sfx_BallWiggle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $3a
-	sound __,  5, $f2, $0400
-	soundinput $22
-	sound __,  9, $e2, $0400
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 1024
+	pitch_sweep 2, 2
+	square_note 8, 14, 2, 1024
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Potion", ROMX
 
 Sfx_Potion:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $17
-	sound __, 16, $f0, $04f0
-	sound __, 16, $f2, $0650
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 1, 7
+	square_note 15, 15, 0, 1264
+	square_note 15, 15, 2, 1616
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_FullHeal", ROMX
 
 Sfx_FullHeal:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $14
-	sound __,  5, $f2, $0600
-	sound __,  5, $f2, $0600
-	soundinput $17
-	sound __, 16, $f2, $0600
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 1, 4
+	square_note 4, 15, 2, 1536
+	square_note 4, 15, 2, 1536
+	pitch_sweep 1, 7
+	square_note 15, 15, 2, 1536
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Menu", ROMX
 
 Sfx_Menu:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $e2, $33
-	noise __,  9, $e1, $22
-	endchannel
+	noise_note 1, 14, 2, 51
+	noise_note 8, 14, 1, 34
+	sound_ret
 
-
-SECTION "Sfx_ReadText", ROMX
 
 Sfx_ReadText:
 Sfx_ReadText2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  1, $91, $07c0
-	sound __,  1, $81, $07d0
-	sound __,  1, $91, $07c0
-	sound __, 13, $a1, $07d0
-	endchannel
+	duty_cycle 2
+	square_note 0, 9, 1, 1984
+	square_note 0, 8, 1, 2000
+	square_note 0, 9, 1, 1984
+	square_note 12, 10, 1, 2000
+	sound_ret
 
-
-SECTION "Sfx_Poison", ROMX
 
 Sfx_Poison:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 .loop:
-	dutycycle $0
-	soundinput $14
-	sound __,  5, $f2, $0600
-	loopchannel 4, .loop
-	sound __, 16, $f3, $0600
-	soundinput $8
-	endchannel
+	duty_cycle 0
+	pitch_sweep 1, 4
+	square_note 4, 15, 2, 1536
+	sound_loop 4, .loop
+	square_note 15, 15, 3, 1536
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_GotSafariBalls", ROMX
 
 Sfx_GotSafariBalls:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $15
-	sound __, 16, $f0, $04f0
-	sound __, 16, $f2, $0650
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 1, 5
+	square_note 15, 15, 0, 1264
+	square_note 15, 15, 2, 1616
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_BootPc", ROMX
 
 Sfx_BootPc:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __, 16, $f2, $07c0
-	sound __, 16, $0, 0
-	sound __,  4, $a1, $0780
-	sound __,  4, $a1, $0700
-	sound __,  4, $a1, $0740
-	sound __,  4, $a1, $0700
-	sound __,  4, $a1, $0780
-	sound __,  4, $a1, $0700
-	sound __,  4, $a1, $07c0
-	sound __,  9, $a1, $0700
-	endchannel
+	duty_cycle 2
+	square_note 15, 15, 2, 1984
+	square_note 15, 0, 0, 0
+	square_note 3, 10, 1, 1920
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1856
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1920
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1984
+	square_note 8, 10, 1, 1792
+	sound_ret
 
-
-SECTION "Sfx_ShutDownPc", ROMX
 
 Sfx_ShutDownPc:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  5, $f0, $0600
-	sound __,  5, $f0, $0400
-	sound __,  5, $f0, $0200
-	sound __,  2, $0, 0
-	endchannel
+	duty_cycle 2
+	square_note 4, 15, 0, 1536
+	square_note 4, 15, 0, 1024
+	square_note 4, 15, 0, 512
+	square_note 1, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_ChoosePcOption", ROMX
 
 Sfx_ChoosePcOption:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  7, $f0, $0700
-	sound __,  5, $0, 0
-	sound __,  7, $f0, $0700
-	sound __,  2, $0, 0
-	endchannel
+	duty_cycle 2
+	square_note 6, 15, 0, 1792
+	square_note 4, 0, 0, 0
+	square_note 6, 15, 0, 1792
+	square_note 1, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_EscapeRope", ROMX
 
 Sfx_EscapeRope:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $17
-	sound __, 16, $d7, $0600
-	sound __, 16, $b7, $0580
-	sound __, 16, $87, $0500
-	sound __, 16, $47, $0480
-	sound __, 16, $17, $0400
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 1, 7
+	square_note 15, 13, 7, 1536
+	square_note 15, 11, 7, 1408
+	square_note 15, 8, 7, 1280
+	square_note 15, 4, 7, 1152
+	square_note 15, 1, 7, 1024
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_PushButton", ROMX
 
 Sfx_PushButton:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  5, $0, 0
-	sound __,  3, $f1, $0680
-	sound __,  2, $0, 0
-	sound __,  5, $f1, $0780
-	sound __,  5, $0, 0
-	endchannel
+	duty_cycle 2
+	square_note 4, 0, 0, 0
+	square_note 2, 15, 1, 1664
+	square_note 1, 0, 0, 0
+	square_note 4, 15, 1, 1920
+	square_note 4, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_SecondPartOfItemfinder", ROMX
 
 Sfx_SecondPartOfItemfinder:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $2c
-	sound __,  5, $f2, $0500
-	soundinput $22
-	sound __,  3, $f1, $0500
-	soundinput $8
-	sound __,  2, $0, 0
-	endchannel
+	duty_cycle 2
+	pitch_sweep 2, -4
+	square_note 4, 15, 2, 1280
+	pitch_sweep 2, 2
+	square_note 2, 15, 1, 1280
+	pitch_sweep 0, 8
+	square_note 1, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_WarpTo", ROMX
 
 Sfx_WarpTo:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $17
-	sound __, 16, $d7, $0500
-	sound __, 16, $b7, $0580
-	sound __, 16, $87, $0600
-	sound __, 16, $47, $0680
-	sound __, 16, $17, $0700
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 1, 7
+	square_note 15, 13, 7, 1280
+	square_note 15, 11, 7, 1408
+	square_note 15, 8, 7, 1536
+	square_note 15, 4, 7, 1664
+	square_note 15, 1, 7, 1792
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_WarpFrom", ROMX
 
 Sfx_WarpFrom:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $17
-	sound __, 16, $d7, $0700
-	sound __, 16, $b7, $0680
-	sound __, 16, $87, $0600
-	sound __, 16, $47, $0580
-	sound __, 16, $17, $0500
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 1, 7
+	square_note 15, 13, 7, 1792
+	square_note 15, 11, 7, 1664
+	square_note 15, 8, 7, 1536
+	square_note 15, 4, 7, 1408
+	square_note 15, 1, 7, 1280
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_ChangeDexMode", ROMX
 
 Sfx_ChangeDexMode:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $16
-	sound __, 16, $d2, $0500
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 1, 6
+	square_note 15, 13, 2, 1280
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_JumpOverLedge", ROMX
 
 Sfx_JumpOverLedge:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $95
-	sound __, 16, $f2, $0400
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 9, 5
+	square_note 15, 15, 2, 1024
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_GrassRustle", ROMX
 
 Sfx_GrassRustle:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $32
-	noise __,  3, $0, $0
-	noise __,  3, $f1, $22
-	noise __,  2, $0, $0
-	endchannel
+	noise_note 2, 15, 1, 50
+	noise_note 2, 0, 0, 0
+	noise_note 2, 15, 1, 34
+	noise_note 1, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_Fly", ROMX
 
 Sfx_Fly:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $a1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $d1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $81, $12
-	noise __,  3, $0, $0
-	noise __,  3, $b1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $61, $12
-	noise __,  3, $0, $0
-	noise __,  3, $91, $12
-	noise __,  3, $0, $0
-	noise __,  3, $41, $12
-	noise __,  3, $0, $0
-	endchannel
+	noise_note 2, 15, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 10, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 13, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 8, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 11, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 6, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 9, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 4, 1, 18
+	noise_note 2, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_Wrong", ROMX
 
 Sfx_Wrong:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $3
-	soundinput $5a
-	sound __,  5, $f0, $0500
-	soundinput $8
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0500
-	sound __,  2, $0, 0
-	endchannel
+	duty_cycle 3
+	pitch_sweep 5, -2
+	square_note 4, 15, 0, 1280
+	pitch_sweep 0, 8
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1280
+	square_note 1, 0, 0, 0
+	sound_ret
 
 .Ch6:
-	dutycycle $3
-	sound __,  5, $f0, $0401
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0401
-	sound __,  2, $0, 0
-	endchannel
+	duty_cycle 3
+	square_note 4, 15, 0, 1025
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1025
+	square_note 1, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_Squeak", ROMX
 
 Sfx_Squeak:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
-	soundinput $17
-	sound __, 16, $d2, $0700
-	soundinput $8
-	endchannel
+	duty_cycle 0
+	pitch_sweep 1, 7
+	square_note 15, 13, 2, 1792
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Strength", ROMX
 
 Sfx_Strength:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $a2, $23
-	noise __,  9, $f1, $34
-	noise __, 16, $0, $0
-	noise __,  3, $f7, $24
-	noise __,  3, $f7, $34
-	noise __,  5, $f7, $44
-	noise __,  9, $f4, $55
-	noise __,  9, $f1, $44
-	endchannel
+	noise_note 4, 10, 2, 35
+	noise_note 8, 15, 1, 52
+	noise_note 15, 0, 0, 0
+	noise_note 2, 15, 7, 36
+	noise_note 2, 15, 7, 52
+	noise_note 4, 15, 7, 68
+	noise_note 8, 15, 4, 85
+	noise_note 8, 15, 1, 68
+	sound_ret
 
-
-SECTION "Sfx_Boat", ROMX
 
 Sfx_Boat:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __, 16, $f0, $0500
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0500
-	sound __, 16, $f0, $0500
-	sound __, 16, $f0, $0500
-	sound __, 16, $f0, $0500
-	sound __, 16, $f2, $0500
-	endchannel
+	duty_cycle 2
+	square_note 15, 15, 0, 1280
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 2, 1280
+	sound_ret
 
 .Ch6:
-	dutycycle $3
-	sound __, 16, $f0, $0482
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0482
-	sound __, 16, $f0, $0482
-	sound __, 16, $f0, $0482
-	sound __, 16, $f0, $0482
-	sound __, 16, $f2, $0482
-	endchannel
+	duty_cycle 3
+	square_note 15, 15, 0, 1154
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 2, 1154
+	sound_ret
 
-
-SECTION "Sfx_WallOpen", ROMX
 
 Sfx_WallOpen:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $3a
-	sound __,  5, $f2, $0500
-	soundinput $22
-	sound __,  5, $e2, $0500
-	soundinput $3a
-	sound __,  5, $f2, $0700
-	soundinput $22
-	sound __, 16, $e2, $0700
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 1280
+	pitch_sweep 2, 2
+	square_note 4, 14, 2, 1280
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 1792
+	pitch_sweep 2, 2
+	square_note 15, 14, 2, 1792
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_PlacePuzzlePieceDown", ROMX
 
 Sfx_PlacePuzzlePieceDown:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f7, $24
-	noise __,  3, $f7, $34
-	noise __,  5, $f7, $44
-	noise __,  9, $f4, $55
-	noise __,  9, $f1, $44
-	endchannel
+	noise_note 2, 15, 7, 36
+	noise_note 2, 15, 7, 52
+	noise_note 4, 15, 7, 68
+	noise_note 8, 15, 4, 85
+	noise_note 8, 15, 1, 68
+	sound_ret
 
-
-SECTION "Sfx_EnterDoor", ROMX
 
 Sfx_EnterDoor:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 10, $f1, $44
-	noise __,  9, $d1, $43
-	endchannel
+	noise_note 9, 15, 1, 68
+	noise_note 8, 13, 1, 67
+	sound_ret
 
-
-SECTION "Sfx_SwitchPokemon", ROMX
 
 Sfx_SwitchPokemon:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  9, $e1, $0740
-	endchannel
+	duty_cycle 2
+	square_note 8, 14, 1, 1856
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  3, $8, 0
-	sound __,  9, $b1, $0741
-	endchannel
+	duty_cycle 2
+	square_note 2, 0, 8, 0
+	square_note 8, 11, 1, 1857
+	sound_ret
 
-
-SECTION "Sfx_Tally", ROMX
 
 Sfx_Tally:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  5, $f1, $0780
-	endchannel
+	duty_cycle 2
+	square_note 4, 15, 1, 1920
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  2, $8, 0
-	sound __,  5, $a1, $0761
-	endchannel
+	duty_cycle 2
+	square_note 1, 0, 8, 0
+	square_note 4, 10, 1, 1889
+	sound_ret
 
-
-SECTION "Sfx_Transaction", ROMX
 
 Sfx_Transaction:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  5, $e1, $0700
-	sound C_,  9, $f2, $07e0
-	endchannel
+	duty_cycle 2
+	square_note 4, 14, 1, 1792
+	square_note 24, 15, 2, 2016
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  2, $8, 0
-	sound __,  5, $91, $06c1
-	sound C_,  9, $a2, $07a1
-	endchannel
+	duty_cycle 2
+	square_note 1, 0, 8, 0
+	square_note 4, 9, 1, 1729
+	square_note 24, 10, 2, 1953
+	sound_ret
 
-
-SECTION "Sfx_Bump", ROMX
 
 Sfx_Bump:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $5a
-	sound __, 16, $f1, $0300
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 5, -2
+	square_note 15, 15, 1, 768
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_ExitBuilding", ROMX
 
 Sfx_ExitBuilding:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $54
-	noise __, 13, $71, $23
-	noise __,  3, $b1, $54
-	noise __, 13, $61, $23
-	noise __,  7, $41, $54
-	endchannel
+	noise_note 2, 15, 1, 84
+	noise_note 12, 7, 1, 35
+	noise_note 2, 11, 1, 84
+	noise_note 12, 6, 1, 35
+	noise_note 6, 4, 1, 84
+	sound_ret
 
-
-SECTION "Sfx_Save", ROMX
 
 Sfx_Save:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  3, $f1, $0700
-	sound __,  2, $e1, $0600
-	sound __,  2, $e1, $0680
-	sound __,  2, $e1, $06c0
-	sound __,  3, $e1, $0700
-	sound __,  3, $e1, $07c0
-	sound __, 16, $f2, $07e0
-	endchannel
+	duty_cycle 2
+	square_note 2, 15, 1, 1792
+	square_note 1, 14, 1, 1536
+	square_note 1, 14, 1, 1664
+	square_note 1, 14, 1, 1728
+	square_note 2, 14, 1, 1792
+	square_note 2, 14, 1, 1984
+	square_note 15, 15, 2, 2016
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  3, $8, 0
-	sound __,  3, $a1, $0701
-	sound __,  2, $91, $0601
-	sound __,  2, $91, $0681
-	sound __,  2, $91, $06c1
-	sound __,  3, $91, $0701
-	sound __,  3, $91, $07c1
-	sound __, 16, $d2, $07e1
-	endchannel
+	duty_cycle 2
+	square_note 2, 0, 8, 0
+	square_note 2, 10, 1, 1793
+	square_note 1, 9, 1, 1537
+	square_note 1, 9, 1, 1665
+	square_note 1, 9, 1, 1729
+	square_note 2, 9, 1, 1793
+	square_note 2, 9, 1, 1985
+	square_note 15, 13, 2, 2017
+	sound_ret
 
-
-SECTION "Sfx_Pokeflute", ROMX
 
 Sfx_Pokeflute:
-	musicheader 1, 7, .Ch7
+	channel_count 1
+	channel 7, .Ch7
 
 .Ch7:
 	tempo 256
-	volume $77
-	togglesfx
-	vibrato $10, $14
-	notetype $c, $10
+	volume 7, 7
+	toggle_sfx
+	vibrato 16, 1, 4
+	note_type 12, 1, 0
 	octave 5
 	note E_, 2
 	note F_, 2
@@ -576,1140 +544,1076 @@ Sfx_Pokeflute:
 	note A_, 2
 	note F_, 2
 	note G_, 8
-	note __, 12
-	endchannel
+	rest 12
+	sound_ret
 
-
-SECTION "Sfx_ElevatorEnd", ROMX
 
 Sfx_ElevatorEnd:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __, 16, $f3, $0730
-	sound __,  9, $65, $0730
-	sound __, 16, $f4, $0700
-	sound __, 16, $74, $0700
-	sound __, 16, $44, $0700
-	sound __, 16, $24, $0700
-	endchannel
+	duty_cycle 2
+	square_note 15, 15, 3, 1840
+	square_note 8, 6, 5, 1840
+	square_note 15, 15, 4, 1792
+	square_note 15, 7, 4, 1792
+	square_note 15, 4, 4, 1792
+	square_note 15, 2, 4, 1792
+	sound_ret
 
-
-SECTION "Sfx_ThrowBall", ROMX
 
 Sfx_ThrowBall:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	soundinput $2f
-	sound __, 16, $f2, $0780
-	endchannel
+	duty_cycle 2
+	pitch_sweep 2, -7
+	square_note 15, 15, 2, 1920
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __, 16, $c2, $0782
-	endchannel
+	duty_cycle 2
+	square_note 15, 12, 2, 1922
+	sound_ret
 
-
-SECTION "Sfx_BallPoof", ROMX
 
 Sfx_BallPoof:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $16
-	sound __, 16, $f2, $0400
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 1, 6
+	square_note 15, 15, 2, 1024
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __, 16, $a2, $22
-	endchannel
+	noise_note 15, 10, 2, 34
+	sound_ret
 
-
-SECTION "Sfx_Faint", ROMX
 
 Sfx_Faint:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	sound __, 16, $d1, $0200
-	soundinput $8
-	endchannel
+	square_note 15, 13, 1, 512
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __,  5, $f5, $33
-	noise __,  9, $f4, $22
-	noise __, 16, $f2, $21
-	endchannel
+	noise_note 4, 15, 5, 51
+	noise_note 8, 15, 4, 34
+	noise_note 15, 15, 2, 33
+	sound_ret
 
-
-SECTION "Sfx_Run", ROMX
 
 Sfx_Run:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $61, $23
-	noise __,  3, $a1, $33
-	noise __,  3, $c1, $33
-	noise __,  3, $51, $11
-	noise __,  3, $f1, $33
-	noise __,  3, $41, $11
-	noise __,  3, $c1, $33
-	noise __,  3, $31, $11
-	noise __,  3, $81, $33
-	noise __,  3, $31, $11
-	noise __,  9, $41, $33
-	endchannel
+	noise_note 2, 6, 1, 35
+	noise_note 2, 10, 1, 51
+	noise_note 2, 12, 1, 51
+	noise_note 2, 5, 1, 17
+	noise_note 2, 15, 1, 51
+	noise_note 2, 4, 1, 17
+	noise_note 2, 12, 1, 51
+	noise_note 2, 3, 1, 17
+	noise_note 2, 8, 1, 51
+	noise_note 2, 3, 1, 17
+	noise_note 8, 4, 1, 51
+	sound_ret
 
-
-SECTION "Sfx_SlotMachineStart", ROMX
 
 Sfx_SlotMachineStart:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	soundinput $44
-	sound __, 16, $f0, $04f0
-	soundinput $17
-	sound __, 16, $f2, $0650
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 4, 4
+	square_note 15, 15, 0, 1264
+	pitch_sweep 1, 7
+	square_note 15, 15, 2, 1616
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __, 16, $92, $0600
-	sound __, 16, $92, $0782
-	endchannel
+	duty_cycle 2
+	square_note 15, 9, 2, 1536
+	square_note 15, 9, 2, 1922
+	sound_ret
 
-
-SECTION "Sfx_Call", ROMX
 
 Sfx_Call:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	soundinput $67
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	soundinput $8
-	sound __,  5, $0, 0
-	endchannel
+	pitch_sweep 6, 7
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	pitch_sweep 0, 8
+	square_note 4, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_Unknown60", ROMX
 
 Sfx_Unknown60:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  7, $20, $10
-	noise __,  7, $2f, $40
-	noise __,  7, $4f, $41
-	noise __,  7, $8f, $41
-	noise __,  7, $cf, $42
-	noise __,  9, $d7, $42
-	noise __, 16, $e7, $43
-	noise __, 16, $f2, $43
-	endchannel
+	noise_note 6, 2, 0, 16
+	noise_note 6, 2, -7, 64
+	noise_note 6, 4, -7, 65
+	noise_note 6, 8, -7, 65
+	noise_note 6, 12, -7, 66
+	noise_note 8, 13, 7, 66
+	noise_note 15, 14, 7, 67
+	noise_note 15, 15, 2, 67
+	sound_ret
 
-
-SECTION "Sfx_Unknown61", ROMX
 
 Sfx_Unknown61:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $d1, $41
-	endchannel
+	noise_note 4, 13, 1, 65
+	sound_ret
 
-
-SECTION "Sfx_SwitchPockets", ROMX
 
 Sfx_SwitchPockets:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $c1, $42
-	endchannel
+	noise_note 4, 12, 1, 66
+	sound_ret
 
-
-SECTION "Sfx_Unknown63", ROMX
 
 Sfx_Unknown63:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $6f, $21
-	noise __,  3, $af, $31
-	noise __, 16, $f2, $41
-	endchannel
+	noise_note 2, 6, -7, 33
+	noise_note 2, 10, -7, 49
+	noise_note 15, 15, 2, 65
+	sound_ret
 
-
-SECTION "Sfx_Burn", ROMX
 
 Sfx_Burn:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $d2, $32
-	noise __, 16, $f2, $43
-	endchannel
+	noise_note 2, 13, 2, 50
+	noise_note 15, 15, 2, 67
+	sound_ret
 
-
-SECTION "Sfx_TitleScreenEntrance", ROMX
 
 Sfx_TitleScreenEntrance:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $70, $22
-	noise __,  3, $80, $23
-	noise __,  3, $90, $24
-	noise __,  3, $a0, $25
-	noise __,  3, $b0, $26
-	noise __, 16, $c2, $26
-	endchannel
+	noise_note 2, 7, 0, 34
+	noise_note 2, 8, 0, 35
+	noise_note 2, 9, 0, 36
+	noise_note 2, 10, 0, 37
+	noise_note 2, 11, 0, 38
+	noise_note 15, 12, 2, 38
+	sound_ret
 
-
-SECTION "Sfx_Unknown66", ROMX
 
 Sfx_Unknown66:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  2, $f2, $06a0
-	sound __,  2, $f2, $06e0
-	sound __,  9, $f1, $0700
-	endchannel
+	duty_cycle 2
+	square_note 1, 15, 2, 1696
+	square_note 1, 15, 2, 1760
+	square_note 8, 15, 1, 1792
+	sound_ret
 
-
-SECTION "Sfx_GetCoinFromSlots", ROMX
 
 Sfx_GetCoinFromSlots:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  3, $f1, $0700
-	sound __,  9, $81, $07e0
-	endchannel
+	duty_cycle 2
+	square_note 2, 15, 1, 1792
+	square_note 8, 8, 1, 2016
+	sound_ret
 
-
-SECTION "Sfx_PayDay", ROMX
 
 Sfx_PayDay:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $3
-	sound __,  6, $e1, $0700
-	sound __,  3, $e1, $0780
-	sound __, 16, $f1, $07c0
-	endchannel
+	duty_cycle 3
+	square_note 5, 14, 1, 1792
+	square_note 2, 14, 1, 1920
+	square_note 15, 15, 1, 1984
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  5, $c1, $06c1
-	sound __,  3, $c1, $0741
-	sound __, 16, $d1, $0781
-	endchannel
+	duty_cycle 2
+	square_note 4, 12, 1, 1729
+	square_note 2, 12, 1, 1857
+	square_note 15, 13, 1, 1921
+	sound_ret
 
-
-SECTION "Sfx_Metronome", ROMX
 
 Sfx_Metronome:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $5f
-	sound __,  5, $40, $07e0
-	sound __,  5, $60, $07e0
-	sound __,  5, $80, $07e0
-	sound __,  9, $a0, $07e0
-	sound __,  9, $a0, $07e0
-	sound __,  9, $80, $07e0
-	sound __,  9, $60, $07e0
-	sound __,  9, $30, $07e0
-	sound __, 16, $12, $07e0
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 5, -7
+	square_note 4, 4, 0, 2016
+	square_note 4, 6, 0, 2016
+	square_note 4, 8, 0, 2016
+	square_note 8, 10, 0, 2016
+	square_note 8, 10, 0, 2016
+	square_note 8, 8, 0, 2016
+	square_note 8, 6, 0, 2016
+	square_note 8, 3, 0, 2016
+	square_note 15, 1, 2, 2016
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Peck", ROMX
 
 Sfx_Peck:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $a1, $12
-	endchannel
+	noise_note 2, 10, 1, 18
+	sound_ret
 
-
-SECTION "Sfx_Kinesis", ROMX
 
 Sfx_Kinesis:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $af
-	sound __, 16, $f2, $0780
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 10, -7
+	square_note 15, 15, 2, 1920
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Lick", ROMX
 
 Sfx_Lick:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $97
-	sound __, 16, $f2, $0500
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 9, 7
+	square_note 15, 15, 2, 1280
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Pound", ROMX
 
 Sfx_Pound:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $a1, $22
-	endchannel
+	noise_note 2, 10, 1, 34
+	sound_ret
 
-
-SECTION "Sfx_MovePuzzlePiece", ROMX
 
 Sfx_MovePuzzlePiece:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $f1, $54
-	endchannel
+	noise_note 8, 15, 1, 84
+	sound_ret
 
-
-SECTION "Sfx_CometPunch", ROMX
 
 Sfx_CometPunch:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $8f, $11
-	noise __,  5, $ff, $12
-	noise __, 11, $f1, $55
-	endchannel
+	noise_note 15, 8, -7, 17
+	noise_note 4, 15, -7, 18
+	noise_note 10, 15, 1, 85
+	sound_ret
 
-
-SECTION "Sfx_MegaPunch", ROMX
 
 Sfx_MegaPunch:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $8f, $34
-	noise __,  9, $f2, $35
-	noise __, 11, $f1, $55
-	endchannel
+	noise_note 15, 8, -7, 52
+	noise_note 8, 15, 2, 53
+	noise_note 10, 15, 1, 85
+	sound_ret
 
-
-SECTION "Sfx_Scratch", ROMX
 
 Sfx_Scratch:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $9f, $23
-	noise __,  9, $f1, $21
-	endchannel
+	noise_note 15, 9, -7, 35
+	noise_note 8, 15, 1, 33
+	sound_ret
 
-
-SECTION "Sfx_Vicegrip", ROMX
 
 Sfx_Vicegrip:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $e1, $4b
-	noise __, 11, $f1, $44
-	noise __,  3, $e1, $3a
-	noise __,  7, $f1, $34
-	endchannel
+	noise_note 2, 14, 1, 75
+	noise_note 10, 15, 1, 68
+	noise_note 2, 14, 1, 58
+	noise_note 6, 15, 1, 52
+	sound_ret
 
-
-SECTION "Sfx_RazorWind", ROMX
 
 Sfx_RazorWind:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f4, $44
-	noise __,  3, $f4, $14
-	noise __, 16, $f1, $32
-	endchannel
+	noise_note 2, 15, 4, 68
+	noise_note 2, 15, 4, 20
+	noise_note 15, 15, 1, 50
+	sound_ret
 
-
-SECTION "Sfx_Cut", ROMX
 
 Sfx_Cut:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $8f, $55
-	noise __,  3, $f4, $44
-	noise __,  9, $f4, $22
-	noise __, 16, $f2, $21
-	endchannel
+	noise_note 4, 8, -7, 85
+	noise_note 2, 15, 4, 68
+	noise_note 8, 15, 4, 34
+	noise_note 15, 15, 2, 33
+	sound_ret
 
-
-SECTION "Sfx_WingAttack", ROMX
 
 Sfx_WingAttack:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
-	noise __,  9, $4f, $23
-	noise __,  5, $c4, $22
-	noise __,  7, $f2, $23
-	loopchannel 4, .branch8
-	endchannel
+	noise_note 8, 4, -7, 35
+	noise_note 4, 12, 4, 34
+	noise_note 6, 15, 2, 35
+	sound_loop 4, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Whirlwind", ROMX
 
 Sfx_Whirlwind:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $4f, $33
-	noise __,  5, $c4, $22
-	noise __,  7, $f2, $23
-	noise __, 16, $f2, $22
-	endchannel
+	noise_note 8, 4, -7, 51
+	noise_note 4, 12, 4, 34
+	noise_note 6, 15, 2, 35
+	noise_note 15, 15, 2, 34
+	sound_ret
 
-
-SECTION "Sfx_Bind", ROMX
 
 Sfx_Bind:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $ff, $32
-	noise __,  9, $f4, $43
-	noise __,  9, $f2, $54
-	noise __,  9, $f1, $65
-	endchannel
+	noise_note 8, 15, -7, 50
+	noise_note 8, 15, 4, 67
+	noise_note 8, 15, 2, 84
+	noise_note 8, 15, 1, 101
+	sound_ret
 
-
-SECTION "Sfx_VineWhip", ROMX
 
 Sfx_VineWhip:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $c2, $33
-	noise __,  3, $f2, $21
-	noise __,  2, $e2, $33
-	noise __,  2, $c2, $32
-	noise __,  2, $92, $12
-	noise __,  2, $b2, $31
-	noise __, 13, $91, $10
-	noise __,  9, $f2, $41
-	endchannel
+	noise_note 1, 12, 2, 51
+	noise_note 2, 15, 2, 33
+	noise_note 1, 14, 2, 51
+	noise_note 1, 12, 2, 50
+	noise_note 1, 9, 2, 18
+	noise_note 1, 11, 2, 49
+	noise_note 12, 9, 1, 16
+	noise_note 8, 15, 2, 65
+	sound_ret
 
-
-SECTION "Sfx_DoubleKick", ROMX
 
 Sfx_DoubleKick:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $94, $23
-	noise __,  2, $b4, $22
-	noise __,  9, $f1, $44
-	endchannel
+	noise_note 1, 9, 4, 35
+	noise_note 1, 11, 4, 34
+	noise_note 8, 15, 1, 68
+	sound_ret
 
-
-SECTION "Sfx_MegaKick", ROMX
 
 Sfx_MegaKick:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $94, $33
-	noise __,  5, $b4, $22
-	noise __,  5, $f1, $44
-	noise __,  9, $f1, $55
-	endchannel
+	noise_note 2, 9, 4, 51
+	noise_note 4, 11, 4, 34
+	noise_note 4, 15, 1, 68
+	noise_note 8, 15, 1, 85
+	sound_ret
 
-
-SECTION "Sfx_Headbutt", ROMX
 
 Sfx_Headbutt:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $ff, $55
-	noise __,  9, $f1, $65
-	endchannel
+	noise_note 4, 15, -7, 85
+	noise_note 8, 15, 1, 101
+	sound_ret
 
-
-SECTION "Sfx_HornAttack", ROMX
 
 Sfx_HornAttack:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $84, $43
-	noise __,  3, $c4, $22
-	noise __,  9, $f2, $34
-	endchannel
+	noise_note 2, 8, 4, 67
+	noise_note 2, 12, 4, 34
+	noise_note 8, 15, 2, 52
+	sound_ret
 
-
-SECTION "Sfx_Tackle", ROMX
 
 Sfx_Tackle:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $f1, $34
-	noise __, 16, $f2, $64
-	endchannel
+	noise_note 4, 15, 1, 52
+	noise_note 15, 15, 2, 100
+	sound_ret
 
-
-SECTION "Sfx_PoisonSting", ROMX
 
 Sfx_PoisonSting:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $22
-	noise __, 16, $f2, $12
-	endchannel
+	noise_note 2, 15, 1, 34
+	noise_note 15, 15, 2, 18
+	sound_ret
 
-
-SECTION "Sfx_Powder", ROMX
 
 Sfx_Powder:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $c2, $1
-	noise __, 16, $f4, $1
-	noise __, 16, $f2, $1
-	endchannel
+	noise_note 2, 12, 2, 1
+	noise_note 15, 15, 4, 1
+	noise_note 15, 15, 2, 1
+	sound_ret
 
-
-SECTION "Sfx_DoubleSlap", ROMX
 
 Sfx_DoubleSlap:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $f1, $32
-	noise __,  9, $f1, $33
-	endchannel
+	noise_note 8, 15, 1, 50
+	noise_note 8, 15, 1, 51
+	sound_ret
 
-
-SECTION "Sfx_Bite", ROMX
 
 Sfx_Bite:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
-	soundinput $3a
-	sound __,  5, $f2, $0200
-	soundinput $22
-	sound __,  9, $e2, $0200
-	soundinput $8
-	endchannel
+	duty_cycle 0
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 512
+	pitch_sweep 2, 2
+	square_note 8, 14, 2, 512
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __,  1, $d1, $42
-	noise __,  5, $a1, $32
-	noise __,  1, $d1, $22
-	noise __,  7, $a1, $32
-	endchannel
+	noise_note 0, 13, 1, 66
+	noise_note 4, 10, 1, 50
+	noise_note 0, 13, 1, 34
+	noise_note 6, 10, 1, 50
+	sound_ret
 
-
-SECTION "Sfx_JumpKick", ROMX
 
 Sfx_JumpKick:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  4, $92, $31
-	noise __,  4, $b2, $32
-	noise __,  4, $c2, $33
-	noise __,  9, $f1, $54
-	endchannel
+	noise_note 3, 9, 2, 49
+	noise_note 3, 11, 2, 50
+	noise_note 3, 12, 2, 51
+	noise_note 8, 15, 1, 84
+	sound_ret
 
-
-SECTION "Sfx_Stomp", ROMX
 
 Sfx_Stomp:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 13, $f1, $54
-	noise __,  9, $f1, $64
-	endchannel
+	noise_note 12, 15, 1, 84
+	noise_note 8, 15, 1, 100
+	sound_ret
 
-
-SECTION "Sfx_TailWhip", ROMX
 
 Sfx_TailWhip:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $33
-	noise __,  3, $c1, $32
-	noise __,  3, $a1, $31
-	noise __, 16, $82, $32
-	noise __,  9, $f1, $34
-	endchannel
+	noise_note 2, 15, 1, 51
+	noise_note 2, 12, 1, 50
+	noise_note 2, 10, 1, 49
+	noise_note 15, 8, 2, 50
+	noise_note 8, 15, 1, 52
+	sound_ret
 
-
-SECTION "Sfx_KarateChop", ROMX
 
 Sfx_KarateChop:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $d2, $32
-	noise __, 16, $f2, $43
-	endchannel
+	noise_note 2, 13, 2, 50
+	noise_note 15, 15, 2, 67
+	sound_ret
 
-
-SECTION "Sfx_Submission", ROMX
 
 Sfx_Submission:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f2, $43
-	noise __,  5, $b5, $32
-	noise __, 10, $86, $31
-	noise __,  8, $64, $0
-	noise __, 16, $f2, $55
-	endchannel
+	noise_note 2, 15, 2, 67
+	noise_note 4, 11, 5, 50
+	noise_note 9, 8, 6, 49
+	noise_note 7, 6, 4, 0
+	noise_note 15, 15, 2, 85
+	sound_ret
 
-
-SECTION "Sfx_WaterGun", ROMX
 
 Sfx_WaterGun:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $1
-	soundinput $97
-	sound __, 16, $f2, $0700
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 9, 7
+	square_note 15, 15, 2, 1792
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __, 16, $3f, $22
-	noise __, 16, $f2, $21
-	endchannel
+	noise_note 15, 3, -7, 34
+	noise_note 15, 15, 2, 33
+	sound_ret
 
-
-SECTION "Sfx_SwordsDance", ROMX
 
 Sfx_SwordsDance:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $4f, $41
-	noise __,  9, $8f, $41
-	noise __,  9, $cf, $41
-	noise __,  9, $f2, $42
-	noise __, 16, $f2, $41
-	endchannel
+	noise_note 15, 4, -7, 65
+	noise_note 8, 8, -7, 65
+	noise_note 8, 12, -7, 65
+	noise_note 8, 15, 2, 66
+	noise_note 15, 15, 2, 65
+	sound_ret
 
-
-SECTION "Sfx_Thunder", ROMX
 
 Sfx_Thunder:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 11, $ff, $50
-	noise __, 16, $ff, $51
-	noise __,  9, $f2, $51
-	noise __,  7, $ff, $52
-	noise __,  7, $ff, $53
-	noise __,  9, $ff, $54
-	noise __, 16, $f2, $54
-	endchannel
+	noise_note 10, 15, -7, 80
+	noise_note 15, 15, -7, 81
+	noise_note 8, 15, 2, 81
+	noise_note 6, 15, -7, 82
+	noise_note 6, 15, -7, 83
+	noise_note 8, 15, -7, 84
+	noise_note 15, 15, 2, 84
+	sound_ret
 
-
-SECTION "Sfx_Supersonic", ROMX
 
 Sfx_Supersonic:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	sound __, 16, $3f, $07c0
+	duty_cycle 2
+	square_note 15, 3, -7, 1984
 .branch5:
-	sound __, 16, $df, $07c0
-	loopchannel 4, .branch5
-	sound __, 16, $d1, $07c0
-	endchannel
+	square_note 15, 13, -7, 1984
+	sound_loop 4, .branch5
+	square_note 15, 13, 1, 1984
+	sound_ret
 
 .Ch6:
-	sound_duty 3, 0, 3, 2
-	sound __, 16, $2f, $07c8
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 15, 2, -7, 1992
 .branch6:
-	sound __, 16, $cf, $07c7
-	loopchannel 4, .branch6
-	sound __, 16, $c1, $07c8
-	endchannel
+	square_note 15, 12, -7, 1991
+	sound_loop 4, .branch6
+	square_note 15, 12, 1, 1992
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  4, $97, $12
-	noise __,  4, $a1, $11
-	loopchannel 10, .branch8
-	endchannel
+	noise_note 3, 9, 7, 18
+	noise_note 3, 10, 1, 17
+	sound_loop 10, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Leer", ROMX
 
 Sfx_Leer:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	dutycycle $0
-	sound __,  1, $f1, $07c0
-	sound __,  1, $f1, $0700
-	loopchannel 12, .branch5
-	endchannel
+	duty_cycle 0
+	square_note 0, 15, 1, 1984
+	square_note 0, 15, 1, 1792
+	sound_loop 12, .branch5
+	sound_ret
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
-	sound __,  1, $e1, $07c1
-	sound __,  1, $e1, $0701
-	loopchannel 12, .branch6
-	endchannel
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 0, 14, 1, 1985
+	square_note 0, 14, 1, 1793
+	sound_loop 12, .branch6
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  2, $d1, $49
-	noise __,  2, $d1, $29
-	loopchannel 6, .branch8
-	endchannel
+	noise_note 1, 13, 1, 73
+	noise_note 1, 13, 1, 41
+	sound_loop 6, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Ember", ROMX
 
 Sfx_Ember:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	sound_duty 1, 2, 0, 3
-	sound __, 12, $f3, $0120
-	sound __, 10, $d3, $0150
-	loopchannel 5, .branch5
-	sound __,  9, $e3, $0130
-	sound __, 16, $c2, $0110
-	endchannel
+	duty_cycle_pattern 3, 0, 2, 1
+	square_note 11, 15, 3, 288
+	square_note 9, 13, 3, 336
+	sound_loop 5, .branch5
+	square_note 8, 14, 3, 304
+	square_note 15, 12, 2, 272
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __, 11, $f3, $35
-	noise __, 15, $f6, $45
-	loopchannel 4, .branch8
-	noise __, 13, $f4, $bc
-	noise __, 13, $f5, $9c
-	noise __, 16, $f4, $ac
-	endchannel
+	noise_note 10, 15, 3, 53
+	noise_note 14, 15, 6, 69
+	sound_loop 4, .branch8
+	noise_note 12, 15, 4, 188
+	noise_note 12, 15, 5, 156
+	noise_note 15, 15, 4, 172
+	sound_ret
 
-
-SECTION "Sfx_BubbleBeam", ROMX
 
 Sfx_BubbleBeam:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	sound_duty 1, 2, 3, 0
-	sound __,  5, $f4, $0600
-	sound __,  4, $c4, $0500
-	sound __,  6, $b5, $0600
-	sound __, 14, $e2, $06c0
-	loopchannel 3, .branch5
-	sound __,  9, $d1, $0600
-	endchannel
+	duty_cycle_pattern 0, 3, 2, 1
+	square_note 4, 15, 4, 1536
+	square_note 3, 12, 4, 1280
+	square_note 5, 11, 5, 1536
+	square_note 13, 14, 2, 1728
+	sound_loop 3, .branch5
+	square_note 8, 13, 1, 1536
+	sound_ret
 
 .Ch6:
 .branch6:
-	sound_duty 1, 3, 0, 2
-	sound __,  6, $e4, $05e0
-	sound __,  5, $b4, $04e0
-	sound __,  7, $a5, $05e8
-	sound __, 15, $d1, $06a0
-	loopchannel 3, .branch6
-	endchannel
+	duty_cycle_pattern 2, 0, 3, 1
+	square_note 5, 14, 4, 1504
+	square_note 4, 11, 4, 1248
+	square_note 6, 10, 5, 1512
+	square_note 14, 13, 1, 1696
+	sound_loop 3, .branch6
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  6, $c3, $33
-	noise __,  4, $92, $43
-	noise __, 11, $b5, $33
-	noise __, 16, $c3, $32
-	loopchannel 2, .branch8
-	endchannel
+	noise_note 5, 12, 3, 51
+	noise_note 3, 9, 2, 67
+	noise_note 10, 11, 5, 51
+	noise_note 15, 12, 3, 50
+	sound_loop 2, .branch8
+	sound_ret
 
-
-SECTION "Sfx_HydroPump", ROMX
 
 Sfx_HydroPump:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	sound_duty 2, 0, 1, 3
-	sound __,  4, $81, $0300
-	sound __,  4, $c1, $0400
-	sound __,  4, $f1, $0500
-	sound __,  4, $b1, $0400
-	sound __,  4, $71, $0300
-	loopchannel 5, .branch5
-	sound __,  9, $81, $0400
-	endchannel
+	duty_cycle_pattern 3, 1, 0, 2
+	square_note 3, 8, 1, 768
+	square_note 3, 12, 1, 1024
+	square_note 3, 15, 1, 1280
+	square_note 3, 11, 1, 1024
+	square_note 3, 7, 1, 768
+	sound_loop 5, .branch5
+	square_note 8, 8, 1, 1024
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  4, $62, $22
-	noise __,  4, $a2, $32
-	noise __,  4, $d2, $33
-	noise __,  4, $92, $23
-	noise __,  4, $52, $12
-	loopchannel 5, .branch8
-	noise __,  9, $81, $12
-	endchannel
+	noise_note 3, 6, 2, 34
+	noise_note 3, 10, 2, 50
+	noise_note 3, 13, 2, 51
+	noise_note 3, 9, 2, 35
+	noise_note 3, 5, 2, 18
+	sound_loop 5, .branch8
+	noise_note 8, 8, 1, 18
+	sound_ret
 
-
-SECTION "Sfx_Surf", ROMX
 
 Sfx_Surf:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	sound_duty 1, 2, 3, 0
-	sound __, 16, $f4, $0500
-	sound __, 16, $c4, $0400
-	sound __, 16, $e2, $05c0
-	loopchannel 3, .branch5
-	endchannel
+	duty_cycle_pattern 0, 3, 2, 1
+	square_note 15, 15, 4, 1280
+	square_note 15, 12, 4, 1024
+	square_note 15, 14, 2, 1472
+	sound_loop 3, .branch5
+	sound_ret
 
 .Ch6:
 .branch6:
-	sound_duty 1, 3, 0, 2
-	sound __,  8, $e4, $0430
-	sound __, 16, $b4, $0330
-	sound __, 16, $a2, $0438
-	loopchannel 4, .branch6
-	endchannel
+	duty_cycle_pattern 2, 0, 3, 1
+	square_note 7, 14, 4, 1072
+	square_note 15, 11, 4, 816
+	square_note 15, 10, 2, 1080
+	sound_loop 4, .branch6
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __, 10, $f4, $44
-	noise __, 10, $f2, $43
-	noise __, 16, $f4, $42
-	noise __, 16, $f4, $41
-	loopchannel 3, .branch8
-	endchannel
+	noise_note 9, 15, 4, 68
+	noise_note 9, 15, 2, 67
+	noise_note 15, 15, 4, 66
+	noise_note 15, 15, 4, 65
+	sound_loop 3, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Psybeam", ROMX
 
 Sfx_Psybeam:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	sound_duty 1, 0, 2, 2
-	sound __, 11, $f1, $0640
-	sound __, 11, $f3, $0680
-	sound __, 11, $f2, $0620
-	loopchannel 4, .branch5
-	sound __, 11, $f1, $0640
-	endchannel
+	duty_cycle_pattern 2, 2, 0, 1
+	square_note 10, 15, 1, 1600
+	square_note 10, 15, 3, 1664
+	square_note 10, 15, 2, 1568
+	sound_loop 4, .branch5
+	square_note 10, 15, 1, 1600
+	sound_ret
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
-	sound __, 11, $f3, $0571
-	sound __,  8, $e3, $0531
-	sound __, 11, $f1, $0551
-	loopchannel 4, .branch6
-	sound __, 11, $f1, $0571
-	endchannel
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 10, 15, 3, 1393
+	square_note 7, 14, 3, 1329
+	square_note 10, 15, 1, 1361
+	sound_loop 4, .branch6
+	square_note 10, 15, 1, 1393
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  3, $d1, $4a
-	noise __,  3, $d2, $2a
-	loopchannel 21, .branch8
-	endchannel
+	noise_note 2, 13, 1, 74
+	noise_note 2, 13, 2, 42
+	sound_loop 21, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Charge", ROMX
 
 Sfx_Charge:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	dutycycle $0
-	sound __,  3, $f1, $0200
-	sound __,  4, $f1, $0700
-	sound __,  5, $f1, $0500
-	sound __,  6, $f1, $07f0
-	loopchannel 8, .branch5
-	endchannel
+	duty_cycle 0
+	square_note 2, 15, 1, 512
+	square_note 3, 15, 1, 1792
+	square_note 4, 15, 1, 1280
+	square_note 5, 15, 1, 2032
+	sound_loop 8, .branch5
+	sound_ret
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
-	sound __,  3, $e1, $0302
-	sound __,  4, $e1, $07f2
-	sound __,  5, $e1, $0602
-	sound __,  6, $e1, $0702
-	loopchannel 8, .branch6
-	endchannel
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 2, 14, 1, 770
+	square_note 3, 14, 1, 2034
+	square_note 4, 14, 1, 1538
+	square_note 5, 14, 1, 1794
+	sound_loop 8, .branch6
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  3, $d3, $10
-	noise __,  4, $d3, $11
-	noise __,  3, $d2, $10
-	noise __,  6, $d2, $12
-	loopchannel 9, .branch8
-	endchannel
+	noise_note 2, 13, 3, 16
+	noise_note 3, 13, 3, 17
+	noise_note 2, 13, 2, 16
+	noise_note 5, 13, 2, 18
+	sound_loop 9, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Thundershock", ROMX
 
 Sfx_Thundershock:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
-	sound_duty 3, 2, 2, 0
-	sound __,  4, $f1, $07f0
-	sound __,  5, $f2, $0200
-	loopchannel 8, .branch5
-	endchannel
+	duty_cycle_pattern 0, 2, 2, 3
+	square_note 3, 15, 1, 2032
+	square_note 4, 15, 2, 512
+	sound_loop 8, .branch5
+	sound_ret
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
-	sound __,  5, $e2, $0202
-	sound __,  5, $e1, $07e2
-	loopchannel 9, .branch6
-	endchannel
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 4, 14, 2, 514
+	square_note 4, 14, 1, 2018
+	sound_loop 9, .branch6
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  5, $ff, $43
-	noise __,  5, $f2, $44
-	loopchannel 9, .branch8
-	endchannel
+	noise_note 4, 15, -7, 67
+	noise_note 4, 15, 2, 68
+	sound_loop 9, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Psychic", ROMX
 
 Sfx_Psychic:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $f7
-	sound __,  9, $c4, $07bd
-	sound __,  9, $c4, $07be
-	sound __,  9, $c4, $07bf
-	sound __,  9, $c4, $07c0
-	sound __, 16, $c4, $07c1
-	sound __, 16, $f2, $07c0
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 15, 7
+	square_note 8, 12, 4, 1981
+	square_note 8, 12, 4, 1982
+	square_note 8, 12, 4, 1983
+	square_note 8, 12, 4, 1984
+	square_note 15, 12, 4, 1985
+	square_note 15, 15, 2, 1984
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  9, $c4, $0770
-	sound __,  9, $c4, $0761
-	sound __,  9, $c4, $0762
-	sound __,  9, $c4, $0763
-	sound __, 16, $c4, $0764
-	sound __, 16, $f2, $0764
-	endchannel
+	duty_cycle 2
+	square_note 8, 12, 4, 1904
+	square_note 8, 12, 4, 1889
+	square_note 8, 12, 4, 1890
+	square_note 8, 12, 4, 1891
+	square_note 15, 12, 4, 1892
+	square_note 15, 15, 2, 1892
+	sound_ret
 
 .Ch8:
-	noise __, 16, $3f, $14
-	noise __, 16, $cf, $13
-	noise __, 16, $cf, $12
-	noise __, 16, $cf, $11
-	noise __, 16, $cf, $10
-	noise __, 16, $c2, $10
-	endchannel
+	noise_note 15, 3, -7, 20
+	noise_note 15, 12, -7, 19
+	noise_note 15, 12, -7, 18
+	noise_note 15, 12, -7, 17
+	noise_note 15, 12, -7, 16
+	noise_note 15, 12, 2, 16
+	sound_ret
 
-
-SECTION "Sfx_Screech", ROMX
 
 Sfx_Screech:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __, 16, $ff, $07e0
-	sound __, 16, $ff, $07e0
-	sound __, 16, $ff, $07e0
-	sound __, 16, $ff, $07e0
-	sound __, 16, $f2, $07e0
-	endchannel
+	duty_cycle 2
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, 2, 2016
+	sound_ret
 
 .Ch6:
-	dutycycle $3
-	sound __, 16, $ff, $07e2
-	sound __, 16, $ff, $07e1
-	sound __, 16, $ff, $07e2
-	sound __, 16, $ff, $07e1
-	sound __, 16, $f2, $07e2
-	endchannel
+	duty_cycle 3
+	square_note 15, 15, -7, 2018
+	square_note 15, 15, -7, 2017
+	square_note 15, 15, -7, 2018
+	square_note 15, 15, -7, 2017
+	square_note 15, 15, 2, 2018
+	sound_ret
 
-
-SECTION "Sfx_BoneClub", ROMX
 
 Sfx_BoneClub:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	soundinput $af
-	sound __,  9, $f1, $0700
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 10, -7
+	square_note 8, 15, 1, 1792
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch6:
-	dutycycle $3
-	sound __,  9, $f1, $0701
-	endchannel
+	duty_cycle 3
+	square_note 8, 15, 1, 1793
+	sound_ret
 
-
-SECTION "Sfx_Sharpen", ROMX
 
 Sfx_Sharpen:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  7, $f1, $0500
-	sound __,  7, $f1, $0580
-	sound __,  7, $f1, $0600
-	sound __,  7, $f1, $0680
-	sound __,  9, $f1, $0700
-	endchannel
+	duty_cycle 2
+	square_note 6, 15, 1, 1280
+	square_note 6, 15, 1, 1408
+	square_note 6, 15, 1, 1536
+	square_note 6, 15, 1, 1664
+	square_note 8, 15, 1, 1792
+	sound_ret
 
 .Ch6:
-	dutycycle $3
-	sound __,  7, $e1, $0510
-	sound __,  7, $e1, $0590
-	sound __,  7, $e1, $0610
-	sound __,  7, $e1, $0690
-	sound __,  9, $e1, $0710
-	endchannel
+	duty_cycle 3
+	square_note 6, 14, 1, 1296
+	square_note 6, 14, 1, 1424
+	square_note 6, 14, 1, 1552
+	square_note 6, 14, 1, 1680
+	square_note 8, 14, 1, 1808
+	sound_ret
 
-
-SECTION "Sfx_EggBomb", ROMX
 
 Sfx_EggBomb:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
-	sound_duty 1, 3, 2, 3
-	sound __,  9, $ff, $03f8
-	sound __, 16, $ff, $0400
-	sound __, 16, $f3, $0400
-	endchannel
+	duty_cycle_pattern 3, 2, 3, 1
+	square_note 8, 15, -7, 1016
+	square_note 15, 15, -7, 1024
+	square_note 15, 15, 3, 1024
+	sound_ret
 
 .Ch6:
-	sound_duty 0, 1, 3, 2
-	sound __,  9, $ef, $03c0
-	sound __, 16, $ef, $03c0
-	sound __, 16, $e3, $03c0
-	endchannel
+	duty_cycle_pattern 2, 3, 1, 0
+	square_note 8, 14, -7, 960
+	square_note 15, 14, -7, 960
+	square_note 15, 14, 3, 960
+	sound_ret
 
 .Ch8:
-	noise __,  5, $ff, $51
-	noise __,  9, $ff, $54
-	noise __, 16, $ff, $55
-	noise __, 16, $f3, $56
-	endchannel
+	noise_note 4, 15, -7, 81
+	noise_note 8, 15, -7, 84
+	noise_note 15, 15, -7, 85
+	noise_note 15, 15, 3, 86
+	sound_ret
 
-
-SECTION "Sfx_Sing", ROMX
 
 Sfx_Sing:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	togglesfx
-	vibrato $a, $24
-	dutycycle $2
-	notetype $a, $87
+	toggle_sfx
+	vibrato 10, 2, 4
+	duty_cycle 2
+	note_type 10, 8, 7
 	octave 5
 	note G_, 8
 	octave 6
@@ -1717,261 +1621,256 @@ Sfx_Sing:
 	note D#, 4
 	octave 5
 	note G_, 8
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $a, $23
-	dutycycle $2
-	notetype $b, $67
+	toggle_sfx
+	vibrato 10, 2, 3
+	duty_cycle 2
+	note_type 11, 6, 7
 	octave 5
 	note G_, 8
-	notetype $a, $67
+	note_type 10, 6, 7
 	octave 6
 	note F_, 4
 	note D#, 4
 	octave 5
 	note G_, 8
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_HyperBeam", ROMX
 
 Sfx_HyperBeam:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
-	sound __,  3, $f1, $0780
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $0790
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07a0
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07b0
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07c0
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07d0
+	duty_cycle 0
+	square_note 2, 15, 1, 1920
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1936
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1952
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1968
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1984
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 2000
 .branch5:
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07e0
-	loopchannel 12, .branch5
-	sound __, 16, $f1, $0700
-	endchannel
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 2016
+	sound_loop 12, .branch5
+	square_note 15, 15, 1, 1792
+	sound_ret
 
 .Ch6:
-	sound_duty 3, 0, 3, 2
-	sound __,  3, $f1, $0781
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $0791
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07a1
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07b1
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07c1
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07d1
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 2, 15, 1, 1921
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1937
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1953
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1969
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1985
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 2001
 .branch6:
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07e1
-	loopchannel 12, .branch6
-	sound __, 16, $f1, $0701
-	endchannel
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 2017
+	sound_loop 12, .branch6
+	square_note 15, 15, 1, 1793
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __,  2, $d1, $49
-	noise __,  2, $d1, $29
-	loopchannel 26, .branch8
-	endchannel
+	noise_note 1, 13, 1, 73
+	noise_note 1, 13, 1, 41
+	sound_loop 26, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Shine", ROMX
 
 Sfx_Shine:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
-	sound __,  1, $d2, $0700
-	sound __,  1, $d2, $0740
-	sound __,  1, $d2, $0780
-	sound __,  1, $d2, $07c0
-	sound __, 11, $e1, $07e0
-	sound __,  2, $0, 0
-	endchannel
+	duty_cycle 0
+	square_note 0, 13, 2, 1792
+	square_note 0, 13, 2, 1856
+	square_note 0, 13, 2, 1920
+	square_note 0, 13, 2, 1984
+	square_note 10, 14, 1, 2016
+	square_note 1, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_Unknown5F", ROMX
 
 Sfx_Unknown5F:
-	musicheader 3, 5, Sfx_Unknown5F_Ch5
-	musicheader 1, 6, Sfx_Unknown5F_Ch6
+	channel_count 3
+	channel 5, Sfx_Unknown5F_Ch5
+	channel 6, Sfx_Unknown5F_Ch6
 Sfx_Sandstorm:
-	musicheader 1, 8, Sfx_Sandstorm_Ch8
+	channel_count 1
+	channel 8, Sfx_Sandstorm_Ch8
 
 Sfx_Unknown5F_Ch5:
 .branch5:
-	sound __,  3, $f7, $0601
-	sound __,  3, $f7, $0701
-	loopchannel 8, .branch5
-	endchannel
+	square_note 2, 15, 7, 1537
+	square_note 2, 15, 7, 1793
+	sound_loop 8, .branch5
+	sound_ret
 
 Sfx_Unknown5F_Ch6:
-	sound __,  2, $f7, $ffff
-	sound __,  3, $f7, $0602
-	sound __,  3, $f7, $0702
-	loopchannel 8, Sfx_Unknown5F_Ch5.branch5
-	endchannel
+	square_note 1, 15, 7, 65535
+	square_note 2, 15, 7, 1538
+	square_note 2, 15, 7, 1794
+	sound_loop 8, Sfx_Unknown5F_Ch5.branch5
+	sound_ret
 
 Sfx_Sandstorm_Ch8:
 .branch8:
-	noise __,  2, $f8, $41
-	noise __,  3, $9c, $24
-	noise __,  1, $0, $0
-	noise __,  4, $59, $16
-	noise __,  3, $0, $0
-	loopchannel 3, .branch8
-	endchannel
+	noise_note 1, 15, 8, 65
+	noise_note 2, 9, -4, 36
+	noise_note 0, 0, 0, 0
+	noise_note 3, 5, -1, 22
+	noise_note 2, 0, 0, 0
+	sound_loop 3, .branch8
+	sound_ret
 
-
-SECTION "Sfx_HangUp", ROMX
 
 Sfx_HangUp:
-	musicheader 1, 5, Sfx_HangUp_Ch5
+	channel_count 1
+	channel 5, Sfx_HangUp_Ch5
 
 Sfx_NoSignal:
-	musicheader 1, 5, Sfx_NoSignal_Ch5
+	channel_count 1
+	channel 5, Sfx_NoSignal_Ch5
 
 Sfx_HangUp_Ch5:
-	dutycycle $2
-	sound __,  5, $b8, $077b
-	sound __,  3, $21, $077b
-	sound C_,  1, $0, 0
+	duty_cycle 2
+	square_note 4, 11, 8, 1915
+	square_note 2, 2, 1, 1915
+	square_note 16, 0, 0, 0
 Sfx_NoSignal_Ch5:
 .branch5:
-	dutycycle $2
-	sound C_,  5, $e8, $070b
-	sound C_, 13, $0, 0
-	loopchannel 3, .branch5
-	endchannel
+	duty_cycle 2
+	square_note 20, 14, 8, 1803
+	square_note 28, 0, 0, 0
+	sound_loop 3, .branch5
+	sound_ret
 
-
-SECTION "Sfx_Elevator", ROMX
 
 Sfx_Elevator:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $5a
+	duty_cycle 2
+	pitch_sweep 5, -2
 .branch5:
-	sound __,  3, $f1, $0300
-	loopchannel 48, .branch5
-	soundinput $8
-	dutycycle $2
-	sound __, 16, $f3, $0730
-	sound __,  9, $65, $0730
-	sound __, 16, $f4, $0700
-	sound __, 16, $74, $0700
-	sound __, 16, $44, $0700
-	sound __, 16, $24, $0700
-	endchannel
+	square_note 2, 15, 1, 768
+	sound_loop 48, .branch5
+	pitch_sweep 0, 8
+	duty_cycle 2
+	square_note 15, 15, 3, 1840
+	square_note 8, 6, 5, 1840
+	square_note 15, 15, 4, 1792
+	square_note 15, 7, 4, 1792
+	square_note 15, 4, 4, 1792
+	square_note 15, 2, 4, 1792
+	sound_ret
 
 .Ch6:
 .Ch7:
-	sound F_,  1, $0, 0
-	sound E_,  4, $0, 0
-	endchannel
+	square_note 96, 0, 0, 0
+	square_note 83, 0, 0, 0
+	sound_ret
 
 .Ch8:
-	noise F_,  1, $0, $0
-	noise E_,  4, $0, $0
-	endchannel
+	noise_note 96, 0, 0, 0
+	noise_note 83, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_LevelUp", ROMX
 
 Sfx_LevelUp:
 Sfx_DexFanfare5079:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	notetype $8, $b1
+	volume 7, 7
+	duty_cycle 2
+	note_type 8, 11, 1
 	octave 3
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 4
 	note G#, 12
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $8, $c1
+	toggle_sfx
+	duty_cycle 2
+	note_type 8, 12, 1
 	octave 4
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 12
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 5
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 3
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 12
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_KeyItem", ROMX
 
 Sfx_KeyItem:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	notetype $6, $b1
+	volume 7, 7
+	duty_cycle 2
+	note_type 6, 11, 1
 	octave 3
 	note B_, 4
 	note B_, 2
@@ -1979,90 +1878,89 @@ Sfx_KeyItem:
 	note B_, 4
 	octave 4
 	note E_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note G#, 16
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $6, $c1
+	toggle_sfx
+	duty_cycle 2
+	note_type 6, 12, 1
 	octave 4
 	note E_, 4
 	note E_, 2
 	note E_, 2
 	note E_, 4
 	note G#, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 16
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $6, $25
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note E_, 8
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 4
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 16
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_DexFanfare2049", ROMX
 
 Sfx_DexFanfare2049:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 104
-	volume $77
-	dutycycle $2
-	notetype $c, $88
+	volume 7, 7
+	duty_cycle 2
+	note_type 12, 8, 8
 	octave 3
 	note A_, 4
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 4
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $c, $c1
+	toggle_sfx
+	duty_cycle 2
+	note_type 12, 12, 1
 	octave 5
 	note F_, 2
 	note E_, 2
@@ -2077,52 +1975,51 @@ Sfx_DexFanfare2049:
 	note F_, 4
 	note G_, 4
 	note F_, 8
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 4
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 16
-	note __, 16
-	endchannel
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_Item", ROMX
 
 Sfx_Item:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 108
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $8, $b2
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 8, 11, 2
 	octave 4
 	note C_, 6
 	note C_, 2
@@ -2132,14 +2029,14 @@ Sfx_Item:
 	note G_, 4
 	note G_, 4
 	note F_, 12
-	note __, 12
-	endchannel
+	rest 12
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $8, $27
-	dutycycle $2
-	notetype $8, $c3
+	toggle_sfx
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 8, 12, 3
 	octave 4
 	note A_, 6
 	note A_, 2
@@ -2149,63 +2046,62 @@ Sfx_Item:
 	note A#, 4
 	note A#, 4
 	note A_, 12
-	note __, 12
-	endchannel
+	rest 12
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 4
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 6
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 4
-	note __, 14
-	endchannel
+	rest 14
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 16
-	note __, 16
-	endchannel
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_CaughtMon", ROMX
 
 Sfx_CaughtMon:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $8, $b3
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 8, 11, 3
 	octave 4
 	note C_, 6
 	octave 3
 	note A_, 6
 	note F_, 12
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note D#, 2
 	note D#, 2
@@ -2213,33 +2109,33 @@ Sfx_CaughtMon:
 	note D#, 2
 	note D#, 2
 	note G_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 12
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	vibrato $8, $27
-	notetype $8, $c3
+	toggle_sfx
+	duty_cycle 2
+	vibrato 8, 2, 7
+	note_type 8, 12, 3
 	octave 4
 	note A_, 6
 	note F_, 6
 	note C_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 2
 	note A#, 2
 	note A#, 2
 	note G_, 2
 	note G_, 2
 	note A#, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note A_, 12
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C_, 12
 	note C_, 6
@@ -2251,35 +2147,34 @@ Sfx_CaughtMon:
 	note G_, 6
 	note A#, 6
 	note A_, 6
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 3
-	note __, 3
-	endchannel
+	rest 3
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 16
-	note __, 16
-	endchannel
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_DexFanfare80109", ROMX
 
 Sfx_DexFanfare80109:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $b1
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 11, 1
 	octave 4
 	note D#, 2
 	note D#, 1
@@ -2295,15 +2190,15 @@ Sfx_DexFanfare80109:
 	note F_, 2
 	note F_, 1
 	note F_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note A#, 16
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $c1
+	toggle_sfx
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 12, 1
 	octave 4
 	note G_, 2
 	note G_, 1
@@ -2317,65 +2212,64 @@ Sfx_DexFanfare80109:
 	note A#, 2
 	note A#, 1
 	note A#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	octave 5
 	note D#, 16
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	note D#, 4
-	intensity $35
+	volume_envelope 3, 5
 	note D#, 3
-	note __, 9
-	endchannel
+	rest 9
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 16
-	note __, 16
-	endchannel
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_Fanfare2", ROMX
 
 Sfx_Fanfare2:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
-	sfxpriorityon
+	toggle_sfx
+	sfx_priority_on
 	tempo 256
-	volume $77
-	tone $0001
-	dutycycle $3
-	notetype $6, $b5
+	volume 7, 7
+	pitch_offset 1
+	duty_cycle 3
+	note_type 6, 11, 5
 	octave 3
 	note G#, 4
-	notetype $4, $b2
+	note_type 4, 11, 2
 	note F_, 2
 	note G#, 2
 	note A_, 2
@@ -2385,67 +2279,66 @@ Sfx_Fanfare2:
 	octave 4
 	note C_, 4
 	note C_, 2
-	notetype $4, $b6
+	note_type 4, 11, 6
 	note C#, 12
-	sfxpriorityoff
-	endchannel
+	sfx_priority_off
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $6, $c5
+	toggle_sfx
+	duty_cycle 2
+	note_type 6, 12, 5
 	octave 4
 	note C#, 6
-	notetype $4, $c1
+	note_type 4, 12, 1
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $4, $c2
+	note_type 4, 12, 2
 	note D#, 2
 	note C#, 2
 	note D#, 2
 	note E_, 4
 	note E_, 2
-	notetype $4, $c6
+	note_type 4, 12, 6
 	note F_, 12
-	endchannel
+	sound_ret
 
 .Ch8:
-	togglesfx
-	notetype $6
+	toggle_sfx
+	note_type 6
 	note C_, 1
 	octave 5
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
-	notetype $4
+	rest 2
+	note_type 4
 	note C_, 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note G#, 6
-	endchannel
+	sound_ret
 
-
-SECTION "UnknownSfx", ROMX
 
 UnknownSfx:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $b1
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 11, 1
 	octave 4
 	note F_, 2
 	note F_, 1
@@ -2459,15 +2352,15 @@ UnknownSfx:
 	note C_, 2
 	note E_, 1
 	note E_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note F_, 16
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $c1
+	toggle_sfx
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 12, 1
 	octave 4
 	note A_, 2
 	note A_, 1
@@ -2483,13 +2376,13 @@ UnknownSfx:
 	note A#, 2
 	note A#, 1
 	note A#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note A_, 16
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 4
 	note F_, 8
 	note C_, 2
@@ -2497,35 +2390,34 @@ UnknownSfx:
 	note G_, 2
 	note A#, 2
 	note A_, 4
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 3
-	note __, 9
-	endchannel
+	rest 9
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 16
-	note __, 16
-	endchannel
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_Fanfare", ROMX
 
 Sfx_Fanfare:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
-	sfxpriorityon
+	toggle_sfx
+	sfx_priority_on
 	tempo 256
-	volume $77
-	dutycycle $3
-	tone $0001
-	notetype $6, $b3
+	volume 7, 7
+	duty_cycle 3
+	pitch_offset 1
+	note_type 6, 11, 3
 	octave 3
 	note F_, 4
 	note C#, 4
@@ -2535,7 +2427,7 @@ Sfx_Fanfare:
 	note F_, 4
 	note A#, 4
 	note F#, 4
-	notetype $4, $b3
+	note_type 4, 11, 3
 	note A#, 4
 	note B_, 4
 	octave 4
@@ -2543,18 +2435,18 @@ Sfx_Fanfare:
 	note C#, 4
 	note D#, 4
 	note C_, 4
-	notetype $4, $b6
+	note_type 4, 11, 6
 	note C#, 12
-	sfxpriorityoff
-	endchannel
+	sfx_priority_off
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $6, $c4
+	toggle_sfx
+	duty_cycle 2
+	note_type 6, 12, 4
 	octave 4
 	note C#, 4
-	notetype $4, $c4
+	note_type 4, 12, 4
 	note C#, 2
 	octave 3
 	note A#, 2
@@ -2580,25 +2472,25 @@ Sfx_Fanfare:
 	note F_, 4
 	note F#, 4
 	note G#, 4
-	notetype $4, $c6
+	note_type 4, 12, 6
 	note F#, 12
-	endchannel
+	sound_ret
 
 .Ch8:
-	togglesfx
-	notetype $6
+	toggle_sfx
+	note_type 6
 	note C_, 1
 	octave 4
 	note A#, 4
-	note __, 4
+	rest 4
 	note B_, 4
-	note __, 4
+	rest 4
 	octave 5
 	note C#, 4
-	note __, 4
+	rest 4
 	note D#, 4
-	note __, 4
-	notetype $4
+	rest 4
+	note_type 4
 	note C_, 1
 	note F_, 4
 	note D#, 4
@@ -2607,24 +2499,23 @@ Sfx_Fanfare:
 	note G#, 4
 	note F_, 4
 	note F#, 6
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_RegisterPhoneNumber", ROMX
 
 Sfx_RegisterPhoneNumber:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
-	volume $77
-	dutycycle $3
-	notetype $c, $a2
-	note __, 2
+	volume 7, 7
+	duty_cycle 3
+	note_type 12, 10, 2
+	rest 2
 	octave 3
 	note C_, 4
 	note G#, 4
@@ -2639,21 +2530,21 @@ Sfx_RegisterPhoneNumber:
 	octave 4
 	note C#, 3
 	note C_, 2
-	note __, 8
-	endchannel
+	rest 8
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $3
-	notetype $c, $c2
-	note __, 2
+	toggle_sfx
+	duty_cycle 3
+	note_type 12, 12, 2
+	rest 2
 	octave 4
 	note D#, 2
 	note C#, 2
 	note C_, 2
 	note D#, 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note G#, 3
 	octave 5
 	note C_, 2
@@ -2661,110 +2552,108 @@ Sfx_RegisterPhoneNumber:
 	octave 4
 	note G_, 3
 	note G#, 2
-	note __, 8
-	endchannel
+	rest 8
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
-	note __, 2
+	toggle_sfx
+	note_type 12, 2, 5
+	rest 2
 	octave 3
 	note D#, 7
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 1
+	rest 1
 	note G#, 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note A#, 3
 	note G#, 2
-	note __, 8
-	endchannel
+	rest 8
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 2
-	note __, 16
-	note __, 16
-	endchannel
+	rest 16
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_3RdPlace", ROMX
 
 Sfx_3RdPlace:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	notetype $c, $a4
+	volume 7, 7
+	duty_cycle 2
+	note_type 12, 10, 4
 	octave 4
 	note F_, 1
 	note A_, 1
 	octave 5
 	note C_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note D_, 6
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $c, $b4
+	toggle_sfx
+	duty_cycle 2
+	note_type 12, 11, 4
 	octave 4
 	note A_, 1
 	octave 5
 	note C_, 1
 	note F_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note G_, 6
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 3
 	note A_, 1
 	note F_, 1
 	note A_, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 1
 	note B_, 6
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_GetEggFromDayCareLady", ROMX
 
 Sfx_GetEggFromDayCareLady:
 Sfx_GetEggFromDayCareMan:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
-	volume $77
-	vibrato $12, $34
-	dutycycle $2
-	notetype $8, $a1
-	note __, 2
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 2
+	note_type 8, 10, 1
+	rest 2
 	octave 3
 	note C_, 2
 	note F_, 2
@@ -2773,51 +2662,51 @@ Sfx_GetEggFromDayCareMan:
 	note A#, 2
 	octave 4
 	note D_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 6
-	intensity $a1
-	dutycycle $3
+	volume_envelope 10, 1
+	duty_cycle 3
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 4
 	note C_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 9
-	note __, 9
-	endchannel
+	rest 9
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $c2
-	note __, 2
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 12, 2
+	rest 2
 	octave 4
 	note F_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 2
 	note A_, 2
 	note A#, 2
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note C_, 6
-	intensity $c1
+	volume_envelope 12, 1
 	octave 4
 	note C_, 2
 	note E_, 2
 	note G_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note A_, 9
-	note __, 9
-	endchannel
+	rest 9
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
-	note __, 2
+	toggle_sfx
+	note_type 8, 2, 5
+	rest 2
 	octave 3
 	note C_, 6
 	octave 2
@@ -2828,141 +2717,139 @@ Sfx_GetEggFromDayCareMan:
 	note G_, 2
 	note A#, 6
 	note A_, 9
-	note __, 9
-	endchannel
+	rest 9
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
-	note __, 2
-	notetype $c
-	note __, 16
-	note __, 12
-	endchannel
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 8
+	rest 2
+	note_type 12
+	rest 16
+	rest 12
+	sound_ret
 
-
-SECTION "Sfx_MoveDeleted", ROMX
 
 Sfx_MoveDeleted:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 116
-	volume $77
-	dutycycle $2
-	vibrato $c, $44
-	notetype $c, $a4
-	note __, 8
+	volume 7, 7
+	duty_cycle 2
+	vibrato 12, 4, 4
+	note_type 12, 10, 4
+	rest 8
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note C#, 1
 	note E_, 1
 	note D#, 1
 	note E_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
 	note G#, 2
 	note B_, 2
-	intensity $a6
+	volume_envelope 10, 6
 	octave 3
 	note D_, 10
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $3
-	vibrato $c, $44
-	notetype $c, $74
+	toggle_sfx
+	duty_cycle 3
+	vibrato 12, 4, 4
+	note_type 12, 7, 4
 	octave 1
 	note B_, 1
 	octave 2
 	note D_, 1
 	note F_, 1
 	note G#, 1
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 1
 	note F_, 1
 	note G#, 1
 	note B_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note C#, 1
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 1
 	octave 3
 	note C#, 4
-	note __, 2
-	intensity $b1
+	rest 2
+	volume_envelope 11, 1
 	note C#, 2
 	note D#, 2
 	note E_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	note F_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $6, $25
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 2
 	note G#, 8
 	note A_, 8
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 8
-	note __, 4
+	rest 4
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
-	notetype $c, $20
+	rest 2
+	note_type 12, 2, 0
 	note B_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $3
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 3
+	note_type 12
 	note F_, 8
-	note __, 16
-	note __, 16
-	note __, 6
-	endchannel
+	rest 16
+	rest 16
+	rest 6
+	sound_ret
 
-
-SECTION "Sfx_2ndPlace", ROMX
 
 Sfx_2ndPlace:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 116
-	volume $77
-	dutycycle $2
-	vibrato $c, $34
-	notetype $8, $a1
+	volume 7, 7
+	duty_cycle 2
+	vibrato 12, 3, 4
+	note_type 8, 10, 1
 	octave 4
 	note E_, 2
 	note E_, 2
@@ -2983,98 +2870,97 @@ Sfx_2ndPlace:
 	note A_, 2
 	note A_, 2
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 12
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $8, $b1
+	toggle_sfx
+	duty_cycle 2
+	note_type 8, 11, 1
 	octave 4
 	note G_, 2
 	note G_, 2
 	note G_, 2
 	note A_, 4
 	note B_, 2
-	intensity $b4
+	volume_envelope 11, 4
 	octave 5
 	note C_, 12
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 2
 	note C_, 2
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 12
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 2
-	note __, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
+	octave 3
+	note F_, 2
+	octave 2
+	note F_, 2
+	rest 2
 	octave 3
 	note F_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 12
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $3
-	notetype $8
+	toggle_sfx
+	sfx_toggle_noise 3
+	note_type 8
 .branch8:
 	note C#, 1
-	loopchannel 6, .branch8
+	sound_loop 6, .branch8
 	note B_, 12
 	note B_, 12
 	note B_, 12
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
-
-SECTION "Sfx_1stPlace", ROMX
 
 Sfx_1stPlace:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
-	volume $77
-	dutycycle $3
-	vibrato $c, $34
-	notetype $c, $a1
+	volume 7, 7
+	duty_cycle 3
+	vibrato 12, 3, 4
+	note_type 12, 10, 1
 	octave 5
 	note D_, 2
 	octave 4
@@ -3085,76 +2971,76 @@ Sfx_1stPlace:
 	note F_, 1
 	note D_, 1
 	note F_, 1
-	intensity $91
+	volume_envelope 9, 1
 	note D_, 1
 	octave 4
 	note A#, 1
 	note F_, 1
 	note A#, 1
-	intensity $81
+	volume_envelope 8, 1
 	octave 5
 	note D_, 1
 	octave 4
 	note A#, 1
 	note F_, 1
 	note D_, 1
-	intensity $a1
+	volume_envelope 10, 1
 	note C_, 2
 	note E_, 2
 	note G_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 10
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $3
-	vibrato $c, $34
-	notetype $c, $c1
+	toggle_sfx
+	duty_cycle 3
+	vibrato 12, 3, 4
+	note_type 12, 12, 1
 	octave 3
 	note B_, 2
 	note G_, 2
 	note B_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	octave 4
 	note D_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note E_, 2
 	note G_, 2
 	octave 5
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 10
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 6
 	note F_, 6
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 10
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 6
 	note D_, 4
 	note D_, 4
 	note D_, 4
@@ -3165,116 +3051,115 @@ Sfx_1stPlace:
 	note D_, 4
 	note D_, 4
 	note D_, 4
-	notetype $c
+	note_type 12
 	note B_, 10
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
-
-SECTION "Sfx_ChooseACard", ROMX
 
 Sfx_ChooseACard:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 152
-	volume $77
-	dutycycle $3
-	notetype $6, $a4
+	volume 7, 7
+	duty_cycle 3
+	note_type 6, 10, 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 4
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 4
-	intensity $71
+	volume_envelope 7, 1
 	octave 3
 	note E_, 1
 	note F#, 1
 	note G#, 1
 	note A_, 1
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 1
 	octave 4
 	note C#, 1
 	note D_, 1
 	note D#, 1
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 4
-	note __, 12
-	endchannel
+	rest 12
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $3
-	notetype $6, $b4
+	toggle_sfx
+	duty_cycle 3
+	note_type 6, 11, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 4
 	note G#, 8
 	note A_, 4
-	note __, 12
-	endchannel
+	rest 12
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $6, $25
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
@@ -3284,13 +3169,13 @@ Sfx_ChooseACard:
 	note B_, 2
 	note G#, 2
 	note A_, 4
-	note __, 12
-	endchannel
+	rest 12
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 6
 	note D_, 2
 	note C#, 2
 	note B_, 4
@@ -3308,95 +3193,94 @@ Sfx_ChooseACard:
 	note C#, 2
 	note D_, 2
 	note B_, 16
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_GetTm", ROMX
 
 Sfx_GetTm:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 144
-	volume $77
-	dutycycle $3
-	vibrato $8, $24
-	notetype $c, $a3
+	volume 7, 7
+	duty_cycle 3
+	vibrato 8, 2, 4
+	note_type 12, 10, 3
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
 	octave 4
 	note D_, 1
 	note G_, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note F#, 8
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $3
-	vibrato $8, $24
-	notetype $c, $b3
+	toggle_sfx
+	duty_cycle 3
+	vibrato 8, 2, 4
+	note_type 12, 11, 3
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note G_, 1
 	note B_, 6
-	intensity $c1
+	volume_envelope 12, 1
 	note A_, 2
 	note B_, 2
 	octave 5
 	note C_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D_, 8
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $6, $25
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note B_, 2
 	octave 3
 	note D_, 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 4
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 4
 	octave 2
 	note A_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 6
 	note D_, 4
 	note C#, 2
 	note D_, 2
@@ -3408,39 +3292,38 @@ Sfx_GetTm:
 	note C#, 1
 	note D_, 2
 	note B_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
-
-SECTION "Sfx_GetBadge", ROMX
 
 Sfx_GetBadge:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	vibrato $8, $24
-	notetype $6, $92
+	volume 7, 7
+	duty_cycle 2
+	vibrato 8, 2, 4
+	note_type 6, 9, 2
 	octave 4
 	note F_, 3
-	callchannel .branch5
+	sound_call .branch5
 	note A#, 3
-	pitchoffset 0, D_
-	callchannel .branch5
-	pitchoffset 0, C_
-	intensity $a7
+	transpose 0, 2
+	sound_call .branch5
+	transpose 0, 0
+	volume_envelope 10, 7
 	note A_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .branch5:
-	note __, 5
+	rest 5
 	octave 3
 	note F_, 2
 	note G#, 2
@@ -3459,96 +3342,96 @@ Sfx_GetBadge:
 	octave 4
 	note C#, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $3
-	vibrato $8, $24
-	notetype $6, $b5
+	toggle_sfx
+	duty_cycle 3
+	vibrato 8, 2, 4
+	note_type 6, 11, 5
 	octave 5
 	note C#, 3
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 8
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 1
-	intensity $95
+	rest 1
+	volume_envelope 9, 5
 	octave 5
 	note C_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note C#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 3
-	note __, 3
+	rest 3
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 8
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 1
-	intensity $95
+	rest 1
+	volume_envelope 9, 5
 	octave 5
 	note D_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note D#, 8
 	note F_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $6, $25
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 2
 	note G#, 3
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C_, 2
 	octave 2
 	note A#, 2
 	note G#, 2
 	note G_, 3
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note F_, 2
 	note G_, 2
 	note D#, 2
 	note F_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 6
 .branch8:
 	note B_, 12
 	note D_, 1
@@ -3564,29 +3447,28 @@ Sfx_GetBadge:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 2, .branch8
+	sound_loop 2, .branch8
 	note B_, 16
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
-
-SECTION "Sfx_QuitSlots", ROMX
 
 Sfx_QuitSlots:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 144
-	volume $77
-	dutycycle $2
-	notetype $8, $82
+	volume 7, 7
+	duty_cycle 2
+	note_type 8, 8, 2
 	octave 3
 	note G#, 2
-	note __, 4
+	rest 4
 	note C#, 2
 	note F_, 2
 	note G#, 2
@@ -3603,16 +3485,16 @@ Sfx_QuitSlots:
 	note A#, 2
 	note G#, 2
 	note F#, 2
-	intensity $97
+	volume_envelope 9, 7
 	note G#, 14
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	notetype $8, $b3
-	note __, 3
+	toggle_sfx
+	duty_cycle 2
+	note_type 8, 11, 3
+	rest 3
 	octave 4
 	note B_, 1
 	octave 5
@@ -3620,7 +3502,7 @@ Sfx_QuitSlots:
 	octave 4
 	note G#, 4
 	note A#, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 4
 	note A#, 2
 	note G#, 4
@@ -3628,23 +3510,23 @@ Sfx_QuitSlots:
 	note F#, 4
 	note F_, 2
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 14
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note D#, 2
 	note C#, 2
 	note G#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 2
 	note G#, 2
@@ -3652,20 +3534,20 @@ Sfx_QuitSlots:
 	octave 3
 	note D_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 14
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $3
-	notetype $8
+	toggle_sfx
+	sfx_toggle_noise 3
+	note_type 8
 	note D#, 6
 	note D_, 4
 	note D#, 2
@@ -3677,20 +3559,19 @@ Sfx_QuitSlots:
 	note D#, 2
 	note D_, 4
 	note B_, 14
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
-
-SECTION "Sfx_Protect", ROMX
 
 Sfx_Protect:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
-	notetype $1, $f1
-	dutycycle $0
+	toggle_sfx
+	note_type 1, 15, 1
+	duty_cycle 0
 .branch5:
 	octave 5
 	note F_, 5
@@ -3704,396 +3585,377 @@ Sfx_Protect:
 	octave 6
 	note C#, 5
 	note E_, 5
-	loopchannel 3, .branch5
-	intensity $c1
+	sound_loop 3, .branch5
+	volume_envelope 12, 1
 	octave 5
 	note F_, 5
 	note A_, 5
-	intensity $91
+	volume_envelope 9, 1
 	octave 6
 	note C_, 5
 	note E_, 5
-	intensity $71
+	volume_envelope 7, 1
 	octave 5
 	note F#, 5
 	note A#, 5
-	intensity $51
+	volume_envelope 5, 1
 	octave 6
 	note C#, 5
 	note E_, 5
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
-	noise __, 10, $9e, $0
-	noise __, 10, $be, $11
-	loopchannel 6, .branch8
-	noise __, 10, $a7, $0
-	noise C_,  1, $75, $11
-	endchannel
+	noise_note 9, 9, -6, 0
+	noise_note 9, 11, -6, 17
+	sound_loop 6, .branch8
+	noise_note 9, 10, 7, 0
+	noise_note 16, 7, 5, 17
+	sound_ret
 
-
-SECTION "Sfx_Sketch", ROMX
 
 Sfx_Sketch:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $a5
+	duty_cycle 1
+	pitch_sweep 10, 5
 .branch5:
-	sound __,  3, $f1, $06e0
-	sound __, 14, $af, $05b0
-	sound __,  5, $0, 0
-	sound __, 10, $f4, $0718
-	loopchannel 3, .branch5
-	soundinput $8
-	endchannel
+	square_note 2, 15, 1, 1760
+	square_note 13, 10, -7, 1456
+	square_note 4, 0, 0, 0
+	square_note 9, 15, 4, 1816
+	sound_loop 3, .branch5
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_RainDance", ROMX
 
 Sfx_RainDance:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
-	noise __, 12, $7d, $50
-	noise __,  7, $7d, $4f
-	noise __, 12, $7f, $47
-	noise __, 16, $6e, $22
-	loopchannel 3, .branch8
-	noise __,  7, $6d, $50
-	noise __,  6, $5d, $4f
-	noise __,  6, $4f, $47
-	noise __, 11, $32, $46
-	endchannel
+	noise_note 11, 7, -5, 80
+	noise_note 6, 7, -5, 79
+	noise_note 11, 7, -7, 71
+	noise_note 15, 6, -6, 34
+	sound_loop 3, .branch8
+	noise_note 6, 6, -5, 80
+	noise_note 5, 5, -5, 79
+	noise_note 5, 4, -7, 71
+	noise_note 10, 3, 2, 70
+	sound_ret
 
-
-SECTION "Sfx_Aeroblast", ROMX
 
 Sfx_Aeroblast:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	sound_duty 2, 0, 3, 3
-	soundinput $f5
-	sound C_, 13, $f8, $0580
-	soundinput $8
-	endchannel
+	duty_cycle_pattern 3, 3, 0, 2
+	pitch_sweep 15, 5
+	square_note 28, 15, 8, 1408
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __,  5, $f8, $6c
-	noise __,  5, $c8, $5c
-	noise __,  5, $78, $5b
-	noise C_,  1, $31, $5a
-	endchannel
+	noise_note 4, 15, 8, 108
+	noise_note 4, 12, 8, 92
+	noise_note 4, 7, 8, 91
+	noise_note 16, 3, 1, 90
+	sound_ret
 
-
-SECTION "Sfx_Spark", ROMX
 
 Sfx_Spark:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
-	noise __,  5, $f8, $5d
-	noise __,  5, $d8, $6f
-	loopchannel 2, .branch8
-	endchannel
+	noise_note 4, 15, 8, 93
+	noise_note 4, 13, 8, 111
+	sound_loop 2, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Curse", ROMX
 
 Sfx_Curse:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $3
-	sound __,  5, $f2, $0483
-	sound __,  5, $f2, $0511
-	sound __,  5, $f2, $0589
-	sound __,  5, $f2, $05ed
-	endchannel
+	duty_cycle 3
+	square_note 4, 15, 2, 1155
+	square_note 4, 15, 2, 1297
+	square_note 4, 15, 2, 1417
+	square_note 4, 15, 2, 1517
+	sound_ret
 
 .Ch8:
-	noise C_,  5, $9a, $9
-	endchannel
+	noise_note 20, 9, -2, 9
+	sound_ret
 
-
-SECTION "Sfx_Rage", ROMX
 
 Sfx_Rage:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
-	sound __,  4, $d1, $07b0
-	sound __,  4, $d1, $07c2
-	sound C_,  9, $d2, $07d5
-	endchannel
+	duty_cycle 0
+	square_note 3, 13, 1, 1968
+	square_note 3, 13, 1, 1986
+	square_note 24, 13, 2, 2005
+	sound_ret
 
 .Ch8:
-	noise __,  4, $f4, $1a
-	noise __,  4, $f4, $19
-	noise C_,  9, $f2, $18
-	endchannel
+	noise_note 3, 15, 4, 26
+	noise_note 3, 15, 4, 25
+	noise_note 24, 15, 2, 24
+	sound_ret
 
-
-SECTION "Sfx_Thief", ROMX
 
 Sfx_Thief:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
-	noise __,  1, $0, $0
-	noise __,  5, $e1, $12
-	noise __,  1, $0, $0
-	noise __,  3, $b1, $22
-	loopchannel 2, .branch8
-	endchannel
+	noise_note 0, 0, 0, 0
+	noise_note 4, 14, 1, 18
+	noise_note 0, 0, 0, 0
+	noise_note 2, 11, 1, 34
+	sound_loop 2, .branch8
+	sound_ret
 
-
-SECTION "Sfx_Thief2", ROMX
 
 Sfx_Thief2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	notetype $2, $f4
-	dutycycle $0
+	toggle_sfx
+	note_type 2, 15, 4
+	duty_cycle 0
 	octave 4
 	note C#, 3
 	note A#, 3
-	intensity $d2
+	volume_envelope 13, 2
 	note C#, 3
 	note A#, 3
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 3
 	note A_, 3
-	intensity $81
+	volume_envelope 8, 1
 	note C_, 3
 	note A_, 3
-	togglesfx
-	endchannel
+	toggle_sfx
+	sound_ret
 
-
-SECTION "Sfx_SpiderWeb", ROMX
 
 Sfx_SpiderWeb:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
-	sound C#,  1, $7f, $0720
-	soundinput $95
-	sound __,  5, $f8, $0620
-	sound __,  5, $e8, $0630
-	sound __,  5, $d8, $0640
-	sound __,  5, $95, $0620
-	sound __,  5, $73, $0630
-	sound __,  5, $51, $0640
-	soundinput $8
-	endchannel
+	duty_cycle 0
+	square_note 32, 7, -7, 1824
+	pitch_sweep 9, 5
+	square_note 4, 15, 8, 1568
+	square_note 4, 14, 8, 1584
+	square_note 4, 13, 8, 1600
+	square_note 4, 9, 5, 1568
+	square_note 4, 7, 3, 1584
+	square_note 4, 5, 1, 1600
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise C#,  1, $ef, $0
-	endchannel
+	noise_note 32, 14, -7, 0
+	sound_ret
 
-
-SECTION "Sfx_MindReader", ROMX
 
 Sfx_MindReader:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
-	dutycycle $2
-	notetype $2, $f1
+	toggle_sfx
+	duty_cycle 2
+	note_type 2, 15, 1
 	octave 5
 	note C_, 3
-	intensity $41
+	volume_envelope 4, 1
 	note C_, 3
-	intensity $f1
+	volume_envelope 15, 1
 	note C#, 3
-	intensity $41
+	volume_envelope 4, 1
 	note C#, 3
-	intensity $f1
+	volume_envelope 15, 1
 	note D_, 3
-	intensity $41
+	volume_envelope 4, 1
 	note D_, 3
-	togglesfx
-	endchannel
+	toggle_sfx
+	sound_ret
 
 .Ch8:
-	noise C_,  2, $af, $19
-	noise C_,  3, $af, $18
-	endchannel
+	noise_note 17, 10, -7, 25
+	noise_note 18, 10, -7, 24
+	sound_ret
 
-
-SECTION "Sfx_Nightmare", ROMX
 
 Sfx_Nightmare:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
-	soundinput $34
+	duty_cycle 0
+	pitch_sweep 3, 4
 .branch5:
-	sound __,  4, $ba, $0631
-	sound __,  3, $0, 0
-	sound __,  4, $f8, $0621
-	sound __,  3, $0, 0
-	sound __,  4, $f8, $0611
-	sound __,  3, $0, 0
-	sound __,  4, $e8, $0601
-	sound __,  3, $0, 0
-	sound __,  4, $e8, $05f1
-	sound __,  3, $0, 0
-	loopchannel 2, .branch5
-	soundinput $8
-	endchannel
+	square_note 3, 11, -2, 1585
+	square_note 2, 0, 0, 0
+	square_note 3, 15, 8, 1569
+	square_note 2, 0, 0, 0
+	square_note 3, 15, 8, 1553
+	square_note 2, 0, 0, 0
+	square_note 3, 14, 8, 1537
+	square_note 2, 0, 0, 0
+	square_note 3, 14, 8, 1521
+	square_note 2, 0, 0, 0
+	sound_loop 2, .branch5
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Snore", ROMX
 
 Sfx_Snore:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $ea, $4b
-	noise __,  3, $ea, $5b
-	noise __,  3, $0, $0
-	noise __,  5, $ee, $47
-	noise __,  5, $ee, $46
-	noise __,  5, $ee, $45
-	endchannel
+	noise_note 2, 14, -2, 75
+	noise_note 2, 14, -2, 91
+	noise_note 2, 0, 0, 0
+	noise_note 4, 14, -6, 71
+	noise_note 4, 14, -6, 70
+	noise_note 4, 14, -6, 69
+	sound_ret
 
-
-SECTION "Sfx_SweetKiss", ROMX
 
 Sfx_SweetKiss:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
-	sound __,  3, $c1, $07c8
-	sound __,  3, $d1, $07da
-	loopchannel 2, .branch5
-	sound C_, 11, $f1, $07e2
-	endchannel
+	square_note 2, 12, 1, 1992
+	square_note 2, 13, 1, 2010
+	sound_loop 2, .branch5
+	square_note 26, 15, 1, 2018
+	sound_ret
 
-
-SECTION "Sfx_SweetKiss2", ROMX
 
 Sfx_SweetKiss2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
-	soundinput $97
-	sound __,  3, $f4, $0772
-	sound __,  5, $0, 0
-	sound __,  3, $c4, $0772
-	sound __,  5, $0, 0
-	sound __,  3, $b4, $0772
-	sound __,  5, $0, 0
-	sound __,  3, $a1, $0772
-	soundinput $8
-	endchannel
+	duty_cycle 0
+	pitch_sweep 9, 7
+	square_note 2, 15, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 12, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 11, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 10, 1, 1906
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_BellyDrum", ROMX
 
 Sfx_BellyDrum:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $ac
-	sound __, 13, $f1, $05a3
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 10, -4
+	square_note 12, 15, 1, 1443
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __, 13, $b1, $6c
-	endchannel
+	noise_note 12, 11, 1, 108
+	sound_ret
 
-
-SECTION "Sfx_Toxic", ROMX
 
 Sfx_Toxic:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $95
-	sound __,  3, $c9, $03b3
-	sound __,  6, $f8, $0463
-	sound __,  5, $d1, $0543
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 9, 5
+	square_note 2, 12, -1, 947
+	square_note 5, 15, 8, 1123
+	square_note 4, 13, 1, 1347
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_SludgeBomb", ROMX
 
 Sfx_SludgeBomb:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $c5
-	sound __,  4, $f8, $0581
-	sound __,  2, $0, 0
-	soundinput $cb
-	sound C_,  1, $f2, $05d1
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 12, 5
+	square_note 3, 15, 8, 1409
+	square_note 1, 0, 0, 0
+	pitch_sweep 12, -3
+	square_note 16, 15, 2, 1489
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __,  4, $e2, $6e
-	noise __,  2, $0, $0
-	noise C_,  1, $e2, $6d
-	endchannel
+	noise_note 3, 14, 2, 110
+	noise_note 1, 0, 0, 0
+	noise_note 16, 14, 2, 109
+	sound_ret
 
-
-SECTION "Sfx_Foresight", ROMX
 
 Sfx_Foresight:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	sound __,  4, $f4, $07b5
-	sound __,  4, $f5, $07c8
-	sound __,  9, $f4, $07da
-	sound __,  3, $0, 0
-	sound __,  9, $c1, $07da
-	sound __,  3, $0, 0
-	sound __,  9, $91, $07da
-	endchannel
+	square_note 3, 15, 4, 1973
+	square_note 3, 15, 5, 1992
+	square_note 8, 15, 4, 2010
+	square_note 2, 0, 0, 0
+	square_note 8, 12, 1, 2010
+	square_note 2, 0, 0, 0
+	square_note 8, 9, 1, 2010
+	sound_ret
 
-
-SECTION "Sfx_Spite", ROMX
 
 Sfx_Spite:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	vibrato $0, $12
-	dutycycle $3
-	soundinput $fd
-	notetype $3, $f8
+	toggle_sfx
+	vibrato 0, 1, 2
+	duty_cycle 3
+	pitch_sweep 15, -5
+	note_type 3, 15, 8
 	octave 3
 	note F_, 3
 	note G#, 3
@@ -4101,387 +3963,367 @@ Sfx_Spite:
 	note E_, 3
 	note G_, 3
 	note A#, 3
-	intensity $bf
+	volume_envelope 11, -7
 	note D#, 3
 	note F#, 3
 	note A_, 3
-	intensity $5f
+	volume_envelope 5, -7
 	note D_, 3
-	intensity $2f
+	volume_envelope 2, -7
 	note F_, 3
 	note G#, 3
-	soundinput $8
-	togglesfx
-	endchannel
+	pitch_sweep 0, 8
+	toggle_sfx
+	sound_ret
 
-
-SECTION "Sfx_Outrage", ROMX
 
 Sfx_Outrage:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __, 12, $ea, $6c
-	noise __, 12, $ea, $6b
-	noise __, 12, $ea, $6a
-	noise __, 12, $ea, $69
-	noise __, 12, $e1, $59
-	endchannel
+	noise_note 11, 14, -2, 108
+	noise_note 11, 14, -2, 107
+	noise_note 11, 14, -2, 106
+	noise_note 11, 14, -2, 105
+	noise_note 11, 14, 1, 89
+	sound_ret
 
-
-SECTION "Sfx_PerishSong", ROMX
 
 Sfx_PerishSong:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	togglesfx
-	dutycycle $0
-	vibrato $12, $53
-	notetype $8, $af
+	toggle_sfx
+	duty_cycle 0
+	vibrato 18, 5, 3
+	note_type 8, 10, -7
 	octave 4
 	note A_, 9
 	note G#, 9
-	togglesfx
-	endchannel
+	toggle_sfx
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $0
-	vibrato $12, $53
-	notetype $8, $af
+	toggle_sfx
+	duty_cycle 0
+	vibrato 18, 5, 3
+	note_type 8, 10, -7
 	octave 4
 	note C_, 9
 	octave 3
 	note B_, 9
-	togglesfx
-	endchannel
+	toggle_sfx
+	sound_ret
 
-
-SECTION "Sfx_GigaDrain", ROMX
 
 Sfx_GigaDrain:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $97
-	sound __,  5, $f8, $0680
-	sound C_,  5, $f8, $0680
-	sound C_,  5, $c8, $0660
-	sound C_,  5, $a8, $0670
-	sound C_,  5, $88, $0680
-	sound C_,  5, $f8, $0561
-	sound C_,  5, $c8, $0541
-	sound C_,  5, $a8, $0521
-	sound C_,  5, $88, $0511
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 9, 7
+	square_note 4, 15, 8, 1664
+	square_note 20, 15, 8, 1664
+	square_note 20, 12, 8, 1632
+	square_note 20, 10, 8, 1648
+	square_note 20, 8, 8, 1664
+	square_note 20, 15, 8, 1377
+	square_note 20, 12, 8, 1345
+	square_note 20, 10, 8, 1313
+	square_note 20, 8, 8, 1297
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __,  5, $c8, $44
-	noise C_,  5, $c8, $50
-	noise C_,  5, $c8, $52
-	noise C_,  5, $c8, $54
-	noise C_,  5, $c8, $56
-	noise D#,  1, $c7, $57
-	endchannel
+	noise_note 4, 12, 8, 68
+	noise_note 20, 12, 8, 80
+	noise_note 20, 12, 8, 82
+	noise_note 20, 12, 8, 84
+	noise_note 20, 12, 8, 86
+	noise_note 64, 12, 7, 87
+	sound_ret
 
-
-SECTION "Sfx_Attract", ROMX
 
 Sfx_Attract:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
-	soundinput $77
-	sound __,  5, $a9, $06f0
-	sound __, 13, $f8, $0720
-	soundinput $7f
-	sound __,  9, $f1, $0740
-	soundinput $8
-	endchannel
+	duty_cycle 0
+	pitch_sweep 7, 7
+	square_note 4, 10, -1, 1776
+	square_note 12, 15, 8, 1824
+	pitch_sweep 7, -7
+	square_note 8, 15, 1, 1856
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Kinesis2", ROMX
 
 Sfx_Kinesis2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
-	sound __,  3, $f3, $0796
-	sound __,  3, $23, $0796
-	sound C_,  5, $f1, $07c4
-	endchannel
+	duty_cycle 0
+	square_note 2, 15, 3, 1942
+	square_note 2, 2, 3, 1942
+	square_note 20, 15, 1, 1988
+	sound_ret
 
-
-SECTION "Sfx_ZapCannon", ROMX
 
 Sfx_ZapCannon:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
-	noise __,  3, $e1, $49
-	noise __,  1, $0, $0
-	loopchannel 8, .branch8
-	noise __,  9, $e1, $49
-	endchannel
+	noise_note 2, 14, 1, 73
+	noise_note 0, 0, 0, 0
+	sound_loop 8, .branch8
+	noise_note 8, 14, 1, 73
+	sound_ret
 
-
-SECTION "Sfx_MeanLook", ROMX
 
 Sfx_MeanLook:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	soundinput $77
-	dutycycle $3
-	sound __,  3, $f8, $0720
+	pitch_sweep 7, 7
+	duty_cycle 3
+	square_note 2, 15, 8, 1824
 .branch5:
-	sound __,  2, $88, $0660
-	sound __,  3, $f8, $0790
-	loopchannel 5, .branch5
-	sound __, 13, $f8, $0700
-	sound __, 13, $c8, $0720
-	sound __, 13, $a8, $0700
-	sound __, 13, $78, $0720
-	sound __, 13, $48, $0700
-	sound __, 13, $28, $0720
-	soundinput $8
-	endchannel
+	square_note 1, 8, 8, 1632
+	square_note 2, 15, 8, 1936
+	sound_loop 5, .branch5
+	square_note 12, 15, 8, 1792
+	square_note 12, 12, 8, 1824
+	square_note 12, 10, 8, 1792
+	square_note 12, 7, 8, 1824
+	square_note 12, 4, 8, 1792
+	square_note 12, 2, 8, 1824
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_HealBell", ROMX
 
 Sfx_HealBell:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	sound __,  2, $f1, $07da
-	sound __,  2, $d1, $07d9
-	sound __,  2, $f1, $07da
-	sound __,  9, $d1, $07db
-	endchannel
+	duty_cycle 1
+	square_note 1, 15, 1, 2010
+	square_note 1, 13, 1, 2009
+	square_note 1, 15, 1, 2010
+	square_note 8, 13, 1, 2011
+	sound_ret
 
-
-SECTION "Sfx_Return", ROMX
 
 Sfx_Return:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 .branch5:
-	soundinput $bf
-	sound __,  9, $f1, $0759
-	soundinput $57
-	sound __,  9, $f1, $0759
-	sound C_,  1, $0, 0
-	loopchannel 2, .branch5
-	soundinput $8
-	endchannel
+	pitch_sweep 11, -7
+	square_note 8, 15, 1, 1881
+	pitch_sweep 5, 7
+	square_note 8, 15, 1, 1881
+	square_note 16, 0, 0, 0
+	sound_loop 2, .branch5
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_ExpBar", ROMX
 
 Sfx_ExpBar:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $d7
-	sound __,  9, $e1, $0750
-	soundinput $e7
-	sound __,  9, $48, $06e0
-	sound __,  9, $58, $06f8
-	sound __,  9, $68, $0710
-	sound __,  9, $78, $0728
-	sound __,  9, $88, $0740
-	sound __,  9, $98, $0758
-	sound C_,  1, $a8, $0770
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 13, 7
+	square_note 8, 14, 1, 1872
+	pitch_sweep 14, 7
+	square_note 8, 4, 8, 1760
+	square_note 8, 5, 8, 1784
+	square_note 8, 6, 8, 1808
+	square_note 8, 7, 8, 1832
+	square_note 8, 8, 8, 1856
+	square_note 8, 9, 8, 1880
+	square_note 16, 10, 8, 1904
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_MilkDrink", ROMX
 
 Sfx_MilkDrink:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
-	soundinput $a4
-	sound __,  3, $ea, $04e0
-	sound __, 14, $f7, $0290
-	soundinput $9e
-	sound __,  5, $c9, $05e1
-	sound __,  3, $0, 0
-	loopchannel 6, .branch5
-	soundinput $8
-	endchannel
+	pitch_sweep 10, 4
+	square_note 2, 14, -2, 1248
+	square_note 13, 15, 7, 656
+	pitch_sweep 9, -6
+	square_note 4, 12, -1, 1505
+	square_note 2, 0, 0, 0
+	sound_loop 6, .branch5
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_Present", ROMX
 
 Sfx_Present:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $d6
+	duty_cycle 2
+	pitch_sweep 13, 6
 .branch5:
-	sound __,  3, $f1, $0740
-	sound __,  2, $0, 0
-	loopchannel 3, .branch5
-	sound C_,  1, $f1, $0780
-	soundinput $8
-	endchannel
+	square_note 2, 15, 1, 1856
+	square_note 1, 0, 0, 0
+	sound_loop 3, .branch5
+	square_note 16, 15, 1, 1920
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_MorningSun", ROMX
 
 Sfx_MorningSun:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 .branch5:
-	sound __,  3, $f1, $07e4
-	sound __,  3, $f1, $07e0
-	sound __,  6, $f2, $07e7
-	loopchannel 3, .branch5
-	sound __,  2, $0, 0
-	sound __,  9, $c2, $07e7
-	sound __,  2, $0, 0
-	sound __,  9, $82, $07e7
-	endchannel
+	square_note 2, 15, 1, 2020
+	square_note 2, 15, 1, 2016
+	square_note 5, 15, 2, 2023
+	sound_loop 3, .branch5
+	square_note 1, 0, 0, 0
+	square_note 8, 12, 2, 2023
+	square_note 1, 0, 0, 0
+	square_note 8, 8, 2, 2023
+	sound_ret
 
-
-SECTION "Sfx_Moonlight", ROMX
 
 Sfx_Moonlight:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
-	sound __,  2, $f8, $07d0
-	sound __,  5, $f1, $07e0
-	loopchannel 2, .branch5
-	sound C_,  1, $f1, $07e0
-	sound C_,  1, $d1, $07e0
-	sound C_,  1, $81, $07e0
-	endchannel
+	square_note 1, 15, 8, 2000
+	square_note 4, 15, 1, 2016
+	sound_loop 2, .branch5
+	square_note 16, 15, 1, 2016
+	square_note 16, 13, 1, 2016
+	square_note 16, 8, 1, 2016
+	sound_ret
 
-
-SECTION "Sfx_Encore", ROMX
 
 Sfx_Encore:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $ce
-	sound C_,  1, $0, 0
+	duty_cycle 2
+	pitch_sweep 12, -6
+	square_note 16, 0, 0, 0
 .branch5:
-	sound __,  3, $f8, $0774
-	sound C#,  5, $0, 0
-	loopchannel 2, .branch5
-	soundinput $8
-	endchannel
+	square_note 2, 15, 8, 1908
+	square_note 36, 0, 0, 0
+	sound_loop 2, .branch5
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise D_,  1, $1f, $36
-	noise D_,  1, $76, $36
-	endchannel
+	noise_note 48, 1, -7, 54
+	noise_note 48, 7, 6, 54
+	sound_ret
 
-
-SECTION "Sfx_BeatUp", ROMX
 
 Sfx_BeatUp:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $e8, $69
-	noise __,  7, $d8, $24
-	noise __,  3, $e8, $6c
-	noise __,  5, $c8, $46
-	noise __,  7, $d1, $24
-	endchannel
+	noise_note 2, 14, 8, 105
+	noise_note 6, 13, 8, 36
+	noise_note 2, 14, 8, 108
+	noise_note 4, 12, 8, 70
+	noise_note 6, 13, 1, 36
+	sound_ret
 
-
-SECTION "Sfx_SweetScent", ROMX
 
 Sfx_SweetScent:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $96
-	sound __,  7, $f8, $0760
-	sound __,  7, $e8, $0720
-	soundinput $df
-	sound C_,  7, $f1, $0730
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 9, 6
+	square_note 6, 15, 8, 1888
+	square_note 6, 14, 8, 1824
+	pitch_sweep 13, -7
+	square_note 22, 15, 1, 1840
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_BatonPass", ROMX
 
 Sfx_BatonPass:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
-	soundinput $f7
-	sound C#,  1, $f2, $0680
-	sound __,  2, $f1, $0760
-	sound C#,  1, $0, 0
-	sound __,  2, $f1, $0760
-	sound C_, 11, $0, 0
-	sound __,  2, $f1, $0760
-	soundinput $8
-	endchannel
+	duty_cycle 2
+	pitch_sweep 15, 7
+	square_note 32, 15, 2, 1664
+	square_note 1, 15, 1, 1888
+	square_note 32, 0, 0, 0
+	square_note 1, 15, 1, 1888
+	square_note 26, 0, 0, 0
+	square_note 1, 15, 1, 1888
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise C#,  1, $f2, $20
-	endchannel
+	noise_note 32, 15, 2, 32
+	sound_ret
 
-
-SECTION "Sfx_EggCrack", ROMX
 
 Sfx_EggCrack:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	notetype $1, $f1
-	dutycycle $0
+	toggle_sfx
+	note_type 1, 15, 1
+	duty_cycle 0
 	octave 4
 	note D#, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_Evolved", ROMX
 
 Sfx_Evolved:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	notetype $1, $c1
+	toggle_sfx
+	note_type 1, 12, 1
 	octave 4
 	note C_, 2
 	note E_, 2
@@ -4497,18 +4339,17 @@ Sfx_Evolved:
 	note B_, 3
 	octave 7
 	note C_, 16
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_MasterBall", ROMX
 
 Sfx_MasterBall:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	dutycycle $1
-	notetype $2, $e1
+	toggle_sfx
+	duty_cycle 1
+	note_type 2, 14, 1
 	octave 6
 	note B_, 2
 	octave 7
@@ -4521,138 +4362,132 @@ Sfx_MasterBall:
 	note A_, 2
 	note A#, 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note G#, 2
 	note G_, 2
 	note F#, 2
-	intensity $91
+	volume_envelope 9, 1
 	note F_, 2
 	note E_, 2
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D_, 2
 	note C#, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_EggHatch", ROMX
 
 Sfx_EggHatch:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	notetype $2, $f1
-	dutycycle $2
+	toggle_sfx
+	note_type 2, 15, 1
+	duty_cycle 2
 	octave 5
 	note E_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note D_, 1
-	intensity $e2
+	volume_envelope 14, 2
 	note B_, 7
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 7
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 7
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_GsIntroCharizardFireball", ROMX
 
 Sfx_GsIntroCharizardFireball:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $cf, $4d
-	noise __,  9, $f1, $37
+	noise_note 8, 12, -7, 77
+	noise_note 8, 15, 1, 55
 .branch8:
-	noise __,  2, $f8, $4f
-	noise __,  1, $c8, $26
-	noise __,  2, $d8, $5f
-	noise __,  1, $a8, $37
-	loopchannel 12, .branch8
-	noise __,  4, $f8, $6f
-	noise __,  5, $d8, $5f
-	noise __, 13, $d8, $5c
-	noise C#,  9, $d3, $4f
-	endchannel
+	noise_note 1, 15, 8, 79
+	noise_note 0, 12, 8, 38
+	noise_note 1, 13, 8, 95
+	noise_note 0, 10, 8, 55
+	sound_loop 12, .branch8
+	noise_note 3, 15, 8, 111
+	noise_note 4, 13, 8, 95
+	noise_note 12, 13, 8, 92
+	noise_note 40, 13, 3, 79
+	sound_ret
 
-
-SECTION "Sfx_GsIntroPokemonAppears", ROMX
 
 Sfx_GsIntroPokemonAppears:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $88, $4f
-	noise __,  3, $8f, $2
-	noise __,  3, $5f, $12
-	noise __,  3, $3f, $22
-	noise __,  1, $f8, $27
-	noise __,  2, $f8, $4f
-	noise __,  9, $f1, $0
-	endchannel
+	noise_note 1, 8, 8, 79
+	noise_note 2, 8, -7, 2
+	noise_note 2, 5, -7, 18
+	noise_note 2, 3, -7, 34
+	noise_note 0, 15, 8, 39
+	noise_note 1, 15, 8, 79
+	noise_note 8, 15, 1, 0
+	sound_ret
 
-
-SECTION "Sfx_Flash", ROMX
 
 Sfx_Flash:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $ef
-	sound __,  2, $40, $07e8
-	sound __,  2, $60, $07e8
-	sound __,  3, $80, $07e8
-	sound __,  6, $a0, $07e8
-	sound __,  7, $a0, $07e8
-	sound __,  8, $80, $07e8
-	sound __,  9, $60, $07e8
-	sound __, 10, $30, $07e8
-	sound __, 16, $12, $07e8
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 14, -7
+	square_note 1, 4, 0, 2024
+	square_note 1, 6, 0, 2024
+	square_note 2, 8, 0, 2024
+	square_note 5, 10, 0, 2024
+	square_note 6, 10, 0, 2024
+	square_note 7, 8, 0, 2024
+	square_note 8, 6, 0, 2024
+	square_note 9, 3, 0, 2024
+	square_note 15, 1, 2, 2024
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_GameFreakLogoGs", ROMX
 
 Sfx_GameFreakLogoGs:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $3
-	soundinput $7f
-	sound __,  5, $55, $07e2
-	sound __,  6, $75, $07e2
-	sound __,  7, $94, $07e2
-	sound __,  8, $b4, $07e2
-	sound __,  9, $b3, $07e2
-	sound __, 10, $93, $07e2
-	sound __, 11, $72, $07e2
-	sound __, 11, $53, $07e2
-	sound __, 11, $34, $07e2
-	sound __, 11, $15, $07e2
-	soundinput $8
-	endchannel
+	duty_cycle 3
+	pitch_sweep 7, -7
+	square_note 4, 5, 5, 2018
+	square_note 5, 7, 5, 2018
+	square_note 6, 9, 4, 2018
+	square_note 7, 11, 4, 2018
+	square_note 8, 11, 3, 2018
+	square_note 9, 9, 3, 2018
+	square_note 10, 7, 2, 2018
+	square_note 10, 5, 3, 2018
+	square_note 10, 3, 4, 2018
+	square_note 10, 1, 5, 2018
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_DexFanfareLessThan20", ROMX
 
 Sfx_DexFanfareLessThan20:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
-	volume $77
-	notetype $8, $b1
+	volume 7, 7
+	note_type 8, 11, 1
 	octave 3
 	note A_, 4
 	note F#, 2
@@ -4665,11 +4500,11 @@ Sfx_DexFanfareLessThan20:
 	note E_, 2
 	note E_, 2
 	note D_, 6
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	notetype $8, $c1
+	toggle_sfx
+	note_type 8, 12, 1
 	octave 3
 	note B_, 4
 	note A_, 2
@@ -4682,67 +4517,66 @@ Sfx_DexFanfareLessThan20:
 	note A_, 2
 	note G_, 2
 	note F#, 6
-	endchannel
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 4
 	note D_, 6
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A#, 4
 	note G_, 2
 	octave 4
 	note D#, 6
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C#, 6
-	note __, 16
-	note __, 12
-	endchannel
+	rest 16
+	rest 12
+	sound_ret
 
-
-SECTION "Sfx_DexFanfare140169", ROMX
 
 Sfx_DexFanfare140169:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $3
-	vibrato $12, $34
-	notetype $6, $b1
-	note __, 8
+	volume 7, 7
+	duty_cycle 3
+	vibrato 18, 3, 4
+	note_type 6, 11, 1
+	rest 8
 	octave 3
 	note E_, 4
 	note E_, 4
 	note A_, 4
 	octave 4
 	note C#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 4
 	note C_, 4
 	octave 3
@@ -4752,14 +4586,14 @@ Sfx_DexFanfare140169:
 	note G_, 16
 	octave 2
 	note B_, 8
-	note __, 8
-	endchannel
+	rest 8
+	sound_ret
 
 .Ch6:
-	togglesfx
-	dutycycle $2
-	vibrato $12, $34
-	notetype $6, $c1
+	toggle_sfx
+	duty_cycle 2
+	vibrato 18, 3, 4
+	note_type 6, 12, 1
 	octave 4
 	note E_, 4
 	note F#, 4
@@ -4767,7 +4601,7 @@ Sfx_DexFanfare140169:
 	note G_, 4
 	note G_, 4
 	note G_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note F#, 4
 	note G_, 4
 	note A_, 4
@@ -4776,13 +4610,13 @@ Sfx_DexFanfare140169:
 	octave 4
 	note B_, 16
 	note G_, 8
-	note __, 8
-	endchannel
+	rest 8
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $c, $25
-	note __, 4
+	toggle_sfx
+	note_type 12, 2, 5
+	rest 4
 	octave 2
 	note A_, 1
 	octave 3
@@ -4790,7 +4624,7 @@ Sfx_DexFanfare140169:
 	note E_, 1
 	note A_, 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note F#, 1
 	note A_, 1
@@ -4798,7 +4632,7 @@ Sfx_DexFanfare140169:
 	note D_, 3
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note B_, 1
 	octave 3
@@ -4806,15 +4640,15 @@ Sfx_DexFanfare140169:
 	note G_, 3
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 12
 	note C_, 4
 .branch8:
 	note D_, 4
@@ -4822,102 +4656,101 @@ Sfx_DexFanfare140169:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 3, .branch8
+	sound_loop 3, .branch8
 	note D_, 8
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_DexFanfare170199", ROMX
 
 Sfx_DexFanfare170199:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b4
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 4
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 6
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
-	intensity $c1
+	rest 1
+	volume_envelope 12, 1
 	note F_, 4
 	note G_, 4
 	note A_, 4
-	notetype $c, $a8
+	note_type 12, 10, 8
 	note A#, 12
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $c4
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 12, 4
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 6
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
-	intensity $d1
+	rest 1
+	volume_envelope 13, 1
 	octave 4
 	note D#, 4
 	note D#, 4
 	note D#, 4
-	notetype $c, $b8
+	note_type 12, 11, 8
 	note D_, 12
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 6
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
-	notetype $c, $25
+	rest 2
+	note_type 12, 2, 5
 	octave 2
 	note A#, 12
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 8
 	note D_, 2
 	note D_, 2
 	note D_, 4
@@ -4930,28 +4763,27 @@ Sfx_DexFanfare170199:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $c
+	note_type 12
 	note B_, 16
-	endchannel
+	sound_ret
 
 	db $fd
 
 
-SECTION "Sfx_DexFanfare200229", ROMX
-
 Sfx_DexFanfare200229:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
-	volume $77
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b2
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 2
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -4965,16 +4797,16 @@ Sfx_DexFanfare200229:
 	octave 4
 	note D#, 4
 	note G_, 4
-	notetype $c, $a8
+	note_type 12, 10, 8
 	note F#, 12
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b2
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 2
 	octave 3
 	note E_, 2
 	note G_, 2
@@ -4986,21 +4818,21 @@ Sfx_DexFanfare200229:
 	note D#, 4
 	note G_, 4
 	note A#, 4
-	notetype $c, $b8
+	note_type 12, 11, 8
 	note A_, 12
-	note __, 4
-	endchannel
+	rest 4
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note E_, 2
 	note G_, 2
@@ -5016,27 +4848,27 @@ Sfx_DexFanfare200229:
 	octave 3
 	note D#, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 6
-	note __, 6
-	endchannel
+	rest 6
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 8
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -5058,74 +4890,73 @@ Sfx_DexFanfare200229:
 	note D_, 2
 	note D_, 2
 	note B_, 12
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_DexFanfare230Plus", ROMX
 
 Sfx_DexFanfare230Plus:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $a5
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 10, 5
 	octave 3
 	note B_, 2
 	note G_, 2
 	note B_, 2
 	octave 4
 	note D_, 14
-	note __, 2
-	dutycycle $2
-	intensity $85
+	rest 2
+	duty_cycle 2
+	volume_envelope 8, 5
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 6
-	intensity $a5
-	dutycycle $3
+	volume_envelope 10, 5
+	duty_cycle 3
 	octave 3
 	note A_, 2
 	note G_, 2
 	note F_, 10
-	note __, 2
-	dutycycle $2
-	intensity $85
+	rest 2
+	duty_cycle 2
+	volume_envelope 8, 5
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 6
-	intensity $a5
-	dutycycle $3
+	volume_envelope 10, 5
+	duty_cycle 3
 	octave 3
 	note A#, 12
-	intensity $b2
+	volume_envelope 11, 2
 	note G_, 4
 	note A_, 4
 	note A#, 4
-	notetype $c, $a8
+	note_type 12, 10, 8
 	note A_, 14
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 .Ch6:
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b5
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 5
 	octave 4
 	note G_, 2
 	note D_, 2
 	note G_, 2
 	note F_, 14
-	note __, 4
+	rest 4
 	note F_, 2
 	note E_, 2
 	note D_, 2
@@ -5133,72 +4964,72 @@ Sfx_DexFanfare230Plus:
 	octave 3
 	note B_, 2
 	note A_, 10
-	note __, 4
+	rest 4
 	note A_, 2
 	octave 4
 	note C_, 2
 	note D_, 2
 	note D#, 12
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 4
 	note G_, 4
 	note G_, 4
-	notetype $c, $b8
+	note_type 12, 11, 8
 	note F#, 14
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $8, $25
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note G_, 6
 	note A#, 4
 	note F_, 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 6
 	note A_, 4
 	note F_, 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 6
 	note G_, 4
 	note D#, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note G_, 4
 	note D#, 4
-	notetype $c, $25
+	note_type 12, 2, 5
 	note D_, 14
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 .Ch8:
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
+	toggle_sfx
+	sfx_toggle_noise 4
+	note_type 8
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -5214,7 +5045,7 @@ Sfx_DexFanfare230Plus:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 2, .branch8_1
+	sound_loop 2, .branch8_1
 	note D_, 6
 	note D_, 2
 	note D_, 2
@@ -5225,468 +5056,442 @@ Sfx_DexFanfare230Plus:
 	note D_, 4
 .branch8_2:
 	note C#, 1
-	loopchannel 18, .branch8_2
+	sound_loop 18, .branch8_2
 	note D_, 6
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_NotVeryEffective", ROMX
 
 Sfx_NotVeryEffective:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $f1, $5f
-	noise __,  2, $a0, $42
-	noise C_,  1, $f1, $53
-	endchannel
+	noise_note 4, 15, 1, 95
+	noise_note 1, 10, 0, 66
+	noise_note 16, 15, 1, 83
+	sound_ret
 
-
-SECTION "Sfx_Damage", ROMX
 
 Sfx_Damage:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $f1, $5e
-	noise __,  2, $a0, $12
-	noise __,  5, $f0, $32
-	noise C_,  1, $f1, $44
-	endchannel
+	noise_note 4, 15, 1, 94
+	noise_note 1, 10, 0, 18
+	noise_note 4, 15, 0, 50
+	noise_note 16, 15, 1, 68
+	sound_ret
 
-
-SECTION "Sfx_SuperEffective", ROMX
 
 Sfx_SuperEffective:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  4, $f1, $4f
-	noise __,  2, $c8, $22
-	noise __,  3, $f8, $3f
-	noise __,  4, $d0, $15
-	noise C#,  1, $f2, $35
-	endchannel
+	noise_note 3, 15, 1, 79
+	noise_note 1, 12, 8, 34
+	noise_note 2, 15, 8, 63
+	noise_note 3, 13, 0, 21
+	noise_note 32, 15, 2, 53
+	sound_ret
 
-
-SECTION "Sfx_BallBounce", ROMX
 
 Sfx_BallBounce:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  9, $e1, $0740
-	sound C_,  8, $0, 0
-	sound __,  9, $b1, $0740
-	sound C_,  8, $0, 0
-	sound __,  9, $81, $0740
-	sound C_,  8, $0, 0
-	sound __,  9, $51, $0740
-	sound C_,  8, $0, 0
-	endchannel
+	duty_cycle 2
+	square_note 8, 14, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 11, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 8, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 5, 1, 1856
+	square_note 23, 0, 0, 0
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  3, $8, 0
-	sound __,  9, $b1, $0741
-	sound C_,  8, $0, 0
-	sound __,  9, $81, $0741
-	sound C_,  8, $0, 0
-	sound __,  9, $51, $0741
-	sound C_,  8, $0, 0
-	sound __,  9, $21, $0741
-	sound C_,  8, $0, 0
-	endchannel
+	duty_cycle 2
+	square_note 2, 0, 8, 0
+	square_note 8, 11, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 8, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 5, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 2, 1, 1857
+	square_note 23, 0, 0, 0
+	sound_ret
 
-
-SECTION "Sfx_SweetScent2", ROMX
 
 Sfx_SweetScent2:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
-	soundinput $af
-	dutycycle $1
-	sound __,  7, $f8, $05f0
-	sound __,  3, $f1, $0620
-	sound C_,  1, $f1, $0650
-	soundinput $8
-	endchannel
+	pitch_sweep 10, -7
+	duty_cycle 1
+	square_note 6, 15, 8, 1520
+	square_note 2, 15, 1, 1568
+	square_note 16, 15, 1, 1616
+	pitch_sweep 0, 8
+	sound_ret
 
 .Ch8:
-	noise __,  3, $e8, $22
-	noise C_,  2, $aa, $0
+	noise_note 2, 14, 8, 34
+	noise_note 17, 10, -2, 0
 .branch8:
-	noise __,  5, $d9, $10
-	noise __,  9, $91, $0
-	noise __,  3, $61, $7
-	loopchannel 5, .branch8
-	noise __,  5, $99, $0
-	noise __, 11, $61, $0
-	noise __,  7, $59, $0
-	noise __,  3, $21, $7
-	endchannel
+	noise_note 4, 13, -1, 16
+	noise_note 8, 9, 1, 0
+	noise_note 2, 6, 1, 7
+	sound_loop 5, .branch8
+	noise_note 4, 9, -1, 0
+	noise_note 10, 6, 1, 0
+	noise_note 6, 5, -1, 0
+	noise_note 2, 2, 1, 7
+	sound_ret
 
-
-SECTION "Sfx_HitEndOfExpBar", ROMX
 
 Sfx_HitEndOfExpBar:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound __,  2, $e1, $0789
-	sound __,  2, $e1, $07a2
-	sound C_,  1, $e1, $07b1
-	endchannel
+	duty_cycle 2
+	square_note 1, 14, 1, 1929
+	square_note 1, 14, 1, 1954
+	square_note 16, 14, 1, 1969
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound __,  2, $e1, $07a2
-	sound __,  2, $e1, $07b1
-	sound C_,  1, $e1, $07c4
-	endchannel
+	duty_cycle 2
+	square_note 1, 14, 1, 1954
+	square_note 1, 14, 1, 1969
+	square_note 16, 14, 1, 1988
+	sound_ret
 
-
-SECTION "Sfx_GiveTrademon", ROMX
 
 Sfx_GiveTrademon:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	sound C#,  1, $0, 0
-	dutycycle $1
-	soundinput $a7
-	sound C_, 12, $f4, $0750
-	sound C_, 12, $d4, $0750
-	sound C_, 12, $b4, $0750
-	sound C_, 12, $94, $0750
-	sound C_, 12, $74, $0750
-	sound C_, 12, $54, $0750
-	sound C_, 12, $34, $0750
-	sound C_, 12, $14, $0750
-	soundinput $8
-	endchannel
+	square_note 32, 0, 0, 0
+	duty_cycle 1
+	pitch_sweep 10, 7
+	square_note 27, 15, 4, 1872
+	square_note 27, 13, 4, 1872
+	square_note 27, 11, 4, 1872
+	square_note 27, 9, 4, 1872
+	square_note 27, 7, 4, 1872
+	square_note 27, 5, 4, 1872
+	square_note 27, 3, 4, 1872
+	square_note 27, 1, 4, 1872
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_GetTrademon", ROMX
 
 Sfx_GetTrademon:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	sound C#,  1, $0, 0
-	dutycycle $2
-	soundinput $bf
-	sound C_, 12, $14, $07bc
-	sound C_, 12, $34, $07bc
-	sound C_, 12, $54, $07bc
-	sound C_, 12, $74, $07bc
-	sound C_, 12, $94, $07bc
-	sound C_, 12, $b4, $07bc
-	sound C_, 12, $d4, $07bc
-	sound C_, 12, $f4, $07bc
-	soundinput $8
-	endchannel
+	square_note 32, 0, 0, 0
+	duty_cycle 2
+	pitch_sweep 11, -7
+	square_note 27, 1, 4, 1980
+	square_note 27, 3, 4, 1980
+	square_note 27, 5, 4, 1980
+	square_note 27, 7, 4, 1980
+	square_note 27, 9, 4, 1980
+	square_note 27, 11, 4, 1980
+	square_note 27, 13, 4, 1980
+	square_note 27, 15, 4, 1980
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_TrainArrived", ROMX
 
 Sfx_TrainArrived:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch6:
-	tone $0008
-	sound __,  9, $0, 0
+	pitch_offset 8
+	square_note 8, 0, 0, 0
 .Ch5:
-	dutycycle $2
-	sound __,  5, $5f, $0691
-	sound __,  5, $6f, $0694
-	sound __,  5, $78, $0697
-	sound __,  5, $7f, $069a
-	sound __,  5, $68, $06ae
-	sound C_,  1, $6f, $06ab
-	sound F_,  9, $65, $06a8
-	endchannel
+	duty_cycle 2
+	square_note 4, 5, -7, 1681
+	square_note 4, 6, -7, 1684
+	square_note 4, 7, 8, 1687
+	square_note 4, 7, -7, 1690
+	square_note 4, 6, 8, 1710
+	square_note 16, 6, -7, 1707
+	square_note 104, 6, 5, 1704
+	sound_ret
 
 .Ch8:
-	noise __,  6, $af, $10
-	noise __,  5, $9f, $20
-	noise __,  5, $8f, $21
-	noise __,  5, $7f, $22
-	noise __,  5, $8f, $21
-	noise __,  5, $9f, $20
-	noise __,  5, $9f, $10
-	noise F_,  9, $a3, $0
-	endchannel
+	noise_note 5, 10, -7, 16
+	noise_note 4, 9, -7, 32
+	noise_note 4, 8, -7, 33
+	noise_note 4, 7, -7, 34
+	noise_note 4, 8, -7, 33
+	noise_note 4, 9, -7, 32
+	noise_note 4, 9, -7, 16
+	noise_note 104, 10, 3, 0
+	sound_ret
 
-
-SECTION "Sfx_2Boops", ROMX
 
 Sfx_2Boops:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
-	soundinput $79
-	sound __,  2, $99, $0563
-	sound __,  5, $f2, $04b5
-	soundinput $43
-	sound C_,  1, $f8, $05cd
-	loopchannel 2, .branch5
-	soundinput $8
-	endchannel
+	pitch_sweep 7, -1
+	square_note 1, 9, -1, 1379
+	square_note 4, 15, 2, 1205
+	pitch_sweep 4, 3
+	square_note 16, 15, 8, 1485
+	sound_loop 2, .branch5
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_TitleScreenIntro", ROMX
 
 Sfx_TitleScreenIntro:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $10, $10
-	noise __,  3, $20, $10
-	noise __,  3, $30, $20
-	noise __,  3, $40, $20
-	noise __,  3, $50, $21
-	noise __,  3, $60, $22
-	noise __,  5, $70, $22
-	noise __,  9, $80, $22
-	noise __, 16, $94, $22
-	endchannel
+	noise_note 1, 1, 0, 16
+	noise_note 2, 2, 0, 16
+	noise_note 2, 3, 0, 32
+	noise_note 2, 4, 0, 32
+	noise_note 2, 5, 0, 33
+	noise_note 2, 6, 0, 34
+	noise_note 4, 7, 0, 34
+	noise_note 8, 8, 0, 34
+	noise_note 15, 9, 4, 34
+	sound_ret
 
-
-SECTION "Sfx_StopSlot", ROMX
 
 Sfx_StopSlot:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  2, $f8, $0760
-	sound __,  5, $82, $0760
-	endchannel
+	duty_cycle 2
+	square_note 1, 15, 8, 1888
+	square_note 4, 8, 2, 1888
+	sound_ret
 
-
-SECTION "Sfx_GlassTing", ROMX
 
 Sfx_GlassTing:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound C#,  1, $d1, $07dc
-	endchannel
+	duty_cycle 2
+	square_note 32, 13, 1, 2012
+	sound_ret
 
-
-SECTION "Sfx_GlassTing2", ROMX
 
 Sfx_GlassTing2:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
-	sound C_,  1, $f1, $07dc
-	endchannel
+	duty_cycle 2
+	square_note 16, 15, 1, 2012
+	sound_ret
 
 .Ch6:
-	dutycycle $2
-	sound C_,  1, $d1, $07dd
-	endchannel
+	duty_cycle 2
+	square_note 16, 13, 1, 2013
+	sound_ret
 
-
-SECTION "Sfx_IntroUnown1", ROMX
 
 Sfx_IntroUnown1:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	vibrato $1, $a3
-	dutycycle $2
-	sound __,  9, $39, $0705
-	sound C#,  1, $e2, $0705
-	endchannel
+	vibrato 1, 10, 3
+	duty_cycle 2
+	square_note 8, 3, -1, 1797
+	square_note 32, 14, 2, 1797
+	sound_ret
 
-
-SECTION "Sfx_IntroUnown2", ROMX
 
 Sfx_IntroUnown2:
-	musicheader 1, 6, .Ch6
+	channel_count 1
+	channel 6, .Ch6
 
 .Ch6:
-	vibrato $1, $73
-	dutycycle $2
-	sound __,  9, $39, $0758
-	sound C#,  1, $e2, $0758
-	endchannel
+	vibrato 1, 7, 3
+	duty_cycle 2
+	square_note 8, 3, -1, 1880
+	square_note 32, 14, 2, 1880
+	sound_ret
 
-
-SECTION "Sfx_IntroUnown3", ROMX
 
 Sfx_IntroUnown3:
-	musicheader 1, 7, .Ch7
+	channel_count 1
+	channel 7, .Ch7
 
 .Ch7:
-	vibrato $1, $53
-	sound __,  4, $32, $07c2
-	sound __,  4, $22, $07c2
-	sound __,  4, $12, $07c2
-	sound C_,  1, $12, $07c2
-	sound __,  7, $22, $07c2
-	sound __,  7, $32, $07c2
-	endchannel
+	vibrato 1, 5, 3
+	square_note 3, 3, 2, 1986
+	square_note 3, 2, 2, 1986
+	square_note 3, 1, 2, 1986
+	square_note 16, 1, 2, 1986
+	square_note 6, 2, 2, 1986
+	square_note 6, 3, 2, 1986
+	sound_ret
 
-
-SECTION "Sfx_DittoPopUp", ROMX
 
 Sfx_DittoPopUp:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $1e
-	sound __,  4, $82, $0700
-	sound __,  2, $31, $0701
-	soundinput $16
-	sound __,  5, $b1, $0640
-	sound C_,  1, $31, $0641
-	endchannel
+	duty_cycle 2
+	pitch_sweep 1, -6
+	square_note 3, 8, 2, 1792
+	square_note 1, 3, 1, 1793
+	pitch_sweep 1, 6
+	square_note 4, 11, 1, 1600
+	square_note 16, 3, 1, 1601
+	sound_ret
 
-
-SECTION "Sfx_DittoTransform", ROMX
 
 Sfx_DittoTransform:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $26
-	sound C_,  5, $3b, $0440
-	sound __,  5, $97, $04c0
-	sound __,  5, $67, $04c1
-	sound __,  5, $42, $04c2
-	endchannel
+	duty_cycle 1
+	pitch_sweep 2, 6
+	square_note 20, 3, -3, 1088
+	square_note 4, 9, 7, 1216
+	square_note 4, 6, 7, 1217
+	square_note 4, 4, 2, 1218
+	sound_ret
 
-
-SECTION "Sfx_IntroSuicune1", ROMX
 
 Sfx_IntroSuicune1:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $58, $59
-	noise __,  3, $91, $23
-	endchannel
+	noise_note 1, 5, 8, 89
+	noise_note 2, 9, 1, 35
+	sound_ret
 
-
-SECTION "Sfx_IntroPichu", ROMX
 
 Sfx_IntroPichu:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $3
-	soundinput $4d
-	sound __,  2, $88, $0770
-	sound __,  4, $0, 0
-	soundinput $17
-	sound __,  3, $88, $0776
-	endchannel
+	duty_cycle 3
+	pitch_sweep 4, -5
+	square_note 1, 8, 8, 1904
+	square_note 3, 0, 0, 0
+	pitch_sweep 1, 7
+	square_note 2, 8, 8, 1910
+	sound_ret
 
-
-SECTION "Sfx_IntroSuicune2", ROMX
 
 Sfx_IntroSuicune2:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $a7, $31
-	noise __,  2, $91, $0
-	noise __,  2, $92, $21
-	noise __,  2, $91, $0
-	noise __,  2, $92, $22
-	noise __,  2, $82, $11
-	noise __,  2, $82, $22
-	noise __,  2, $72, $11
-	noise __,  2, $72, $12
-	noise __,  2, $62, $10
-	noise __,  2, $63, $0
-	noise __,  2, $53, $10
-	noise __,  2, $43, $0
-	noise __,  2, $33, $10
-	noise __,  2, $23, $0
-	noise __,  2, $13, $10
-	endchannel
+	noise_note 1, 10, 7, 49
+	noise_note 1, 9, 1, 0
+	noise_note 1, 9, 2, 33
+	noise_note 1, 9, 1, 0
+	noise_note 1, 9, 2, 34
+	noise_note 1, 8, 2, 17
+	noise_note 1, 8, 2, 34
+	noise_note 1, 7, 2, 17
+	noise_note 1, 7, 2, 18
+	noise_note 1, 6, 2, 16
+	noise_note 1, 6, 3, 0
+	noise_note 1, 5, 3, 16
+	noise_note 1, 4, 3, 0
+	noise_note 1, 3, 3, 16
+	noise_note 1, 2, 3, 0
+	noise_note 1, 1, 3, 16
+	sound_ret
 
-
-SECTION "Sfx_IntroSuicune3", ROMX
 
 Sfx_IntroSuicune3:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $88, $31
-	noise __,  9, $39, $11
-	noise __,  5, $a4, $10
-	noise __,  5, $44, $10
-	noise __,  5, $24, $10
-	endchannel
+	noise_note 1, 8, 8, 49
+	noise_note 8, 3, -1, 17
+	noise_note 4, 10, 4, 16
+	noise_note 4, 4, 4, 16
+	noise_note 4, 2, 4, 16
+	sound_ret
 
-
-SECTION "Sfx_DittoBounce", ROMX
 
 Sfx_DittoBounce:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	soundinput $2c
-	sound __,  3, $82, $04b0
-	sound __,  1, $31, $04b0
-	soundinput $34
-	sound C_,  1, $b1, $0420
-	endchannel
+	duty_cycle 2
+	pitch_sweep 2, -4
+	square_note 2, 8, 2, 1200
+	square_note 0, 3, 1, 1200
+	pitch_sweep 3, 4
+	square_note 16, 11, 1, 1056
+	sound_ret
 
-
-SECTION "Sfx_IntroSuicune4", ROMX
 
 Sfx_IntroSuicune4:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $a1, $5c
-	noise __,  1, $0, $0
-	noise __,  2, $c1, $4d
-	noise __,  1, $0, $0
-	noise __,  5, $b2, $31
-	noise __,  1, $0, $0
-	noise __,  5, $a2, $2
-	noise __,  1, $0, $0
-	noise __,  5, $92, $1
-	noise __,  1, $0, $0
-	noise C#,  1, $72, $0
-	endchannel
+	noise_note 1, 10, 1, 92
+	noise_note 0, 0, 0, 0
+	noise_note 1, 12, 1, 77
+	noise_note 0, 0, 0, 0
+	noise_note 4, 11, 2, 49
+	noise_note 0, 0, 0, 0
+	noise_note 4, 10, 2, 2
+	noise_note 0, 0, 0, 0
+	noise_note 4, 9, 2, 1
+	noise_note 0, 0, 0, 0
+	noise_note 32, 7, 2, 0
+	sound_ret
 
-
-SECTION "Sfx_GameFreakPresents", ROMX
 
 Sfx_GameFreakPresents:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	dutycycle $2
-	notetype $2, $b1
-	soundinput $ff
-	pitchoffset 1, A#
+	toggle_sfx
+	duty_cycle 2
+	note_type 2, 11, 1
+	pitch_sweep 15, -7
+	transpose 1, 10
 	octave 5
 	note C_, 2
 	note E_, 2
@@ -5695,25 +5500,24 @@ Sfx_GameFreakPresents:
 	note C_, 2
 	note E_, 2
 	note G_, 3
-	intensity $81
+	volume_envelope 8, 1
 	note G_, 3
-	intensity $51
+	volume_envelope 5, 1
 	note G_, 3
-	intensity $31
+	volume_envelope 3, 1
 	note G_, 3
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_Tingle", ROMX
 
 Sfx_Tingle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	dutycycle $1
-	pitchoffset 0, B_
-	notetype $1, $b1
+	toggle_sfx
+	duty_cycle 1
+	transpose 0, 11
+	note_type 1, 11, 1
 .branch5:
 	octave 5
 	note C_, 3
@@ -5721,128 +5525,123 @@ Sfx_Tingle:
 	note G_, 2
 	octave 5
 	note C_, 3
-	note __, 2
-	loopchannel 2, .branch5
+	rest 2
+	sound_loop 2, .branch5
 	note C_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 13
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_TwoPcBeeps", ROMX
 
 Sfx_TwoPcBeeps:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
-	sound __,  3, $e8, $07c2
-	sound __,  3, $28, $07c2
-	sound __,  3, $e8, $07c2
-	sound __,  3, $28, $07c2
-	endchannel
+	duty_cycle 2
+	square_note 2, 14, 8, 1986
+	square_note 2, 2, 8, 1986
+	square_note 2, 14, 8, 1986
+	square_note 2, 2, 8, 1986
+	sound_ret
 
-
-SECTION "Sfx_4NoteDitty", ROMX
 
 Sfx_4NoteDitty:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
 
 .Ch5:
-	togglesfx
-	dutycycle $2
-	notetype $2, $e8
-	pitchoffset 0, D_
+	toggle_sfx
+	duty_cycle 2
+	note_type 2, 14, 8
+	transpose 0, 2
 	octave 4
 	note C_, 2
-	intensity $48
+	volume_envelope 4, 8
 	note C_, 2
-	intensity $e8
+	volume_envelope 14, 8
 	note G_, 2
-	intensity $48
+	volume_envelope 4, 8
 	note G_, 2
 	octave 5
-	intensity $e8
+	volume_envelope 14, 8
 	note E_, 2
-	intensity $48
+	volume_envelope 4, 8
 	note E_, 2
 	octave 6
-	intensity $e8
+	volume_envelope 14, 8
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 16
-	endchannel
+	sound_ret
 
 .Ch6:
-	togglesfx
-	notetype $2, $b8
-	note __, 9
-	note __, 16
-	endchannel
+	toggle_sfx
+	note_type 2, 11, 8
+	rest 9
+	rest 16
+	sound_ret
 
 .Ch7:
-	togglesfx
-	notetype $2, $b8
-	note __, 9
-	note __, 16
-	endchannel
+	toggle_sfx
+	note_type 2, 11, 8
+	rest 9
+	rest 16
+	sound_ret
 
-
-SECTION "Sfx_Twinkle", ROMX
 
 Sfx_Twinkle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
-	dutycycle $0
-	pitchoffset 0, D_
-	notetype $2, $e1
+	toggle_sfx
+	duty_cycle 0
+	transpose 0, 2
+	note_type 2, 14, 1
 	octave 3
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note D_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	note B_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	octave 5
 	note D_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note B_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	octave 5
 	note G_, 6
-	endchannel
+	sound_ret
 
-
-SECTION "Sfx_Puddle", ROMX
 
 Sfx_Puddle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $97
-	sound __, 16, $98, $0700
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 9, 7
+	square_note 15, 9, 8, 1792
+	pitch_sweep 0, 8
+	sound_ret
 
-
-SECTION "Sfx_AbilitySlideout", ROMX
 
 Sfx_AbilitySlideout:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
-	soundinput $9f
-	sound __, 4, $e8, $07ff
-	sound __, 24, $e8, $07e0
-	soundinput $8
-	endchannel
+	duty_cycle 1
+	pitch_sweep 9, -7
+	square_note 3, 14, 8, 2047
+	square_note 23, 14, 8, 2016
+	pitch_sweep 0, 8
+	sound_ret

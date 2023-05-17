@@ -17,7 +17,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Sanqui for the music player with piano roll visualization.
 * ax6 for porting the xorshift+ PRNG from Prism as well as developing bsp and related patching functions originally for Prism.
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
-* darsh for the BSP save patch script and some bug fixes.
+* darsh for the BSP save patch script and some bug fixes and abilities.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the InitBattleDisplay and FinalPkmnSlideInEnemyMonFrontpic routines.
@@ -25,8 +25,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
-* SadisticMystic and Kate Dering for vanilla battle engine testing and documentation.
+* SadisticMystic, sinusoidal, TKOWL and Kate Dering for vanilla battle engine testing and documentation.
 * ax6 and NieDzejkob for developing and optimizing lzcomp.
+* Kurausukun and earthoul for translating battle mechanics information from the Japanese Pokémon wiki.
 
 
 ## Music
@@ -45,35 +46,41 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Graphics
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
+* ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
 * metalflygon08 for the many Pokémon and trainer sprites.
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
-* bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
-* Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
+* bloodless for sprites of Buck, Maylene, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
+* Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo sprite.
+* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo and Soldier sprites.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
-* ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, and many new Pokémon animations.
+* ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
+* Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
+* Sea for Hisuian Growlithe's animation.
+* ShadowOne333 and Sea for Annihilape's front and back sprites.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* Nuuk for the sprite and animation of Farigiraf.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
+* trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* PomPomKing and Jace for Melony's sprite.
+* Emi Monserrate for Piers' sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
-* coraldev for rowboat and sakura petal tiles.
+* coraldev for the sailboat spritr, and rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).

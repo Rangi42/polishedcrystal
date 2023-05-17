@@ -14,7 +14,7 @@ BattleFactoryBattleRoom_MapScriptHeader:
 
 	def_object_events
 	object_event  5,  3, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
-	object_event  1,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  1,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	object_const_def
 	const BATTLEFACTORYBATTLEROOM_OPPONENT
@@ -43,6 +43,7 @@ Script_BattleFloor:
 	applymovement BATTLEFACTORYBATTLEROOM_OPPONENT, MovementData_BattleFactoryBattleRoomOpponentWalksOut
 	warpsound
 	disappear BATTLEFACTORYBATTLEROOM_OPPONENT
+	pause 10
 	special FadeOutPalettes
 	warpfacing RIGHT, BATTLE_FACTORY_HALLWAY, 4, 8
 	end

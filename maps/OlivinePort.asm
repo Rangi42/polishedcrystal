@@ -6,34 +6,36 @@ OlivinePort_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 11,  7, OLIVINE_PORT_PASSAGE, 5
-	warp_event  7, 23, FAST_SHIP_1F, 1
+	warp_event 14,  4, OLIVINE_CITY, 9
+	warp_event 15,  4, OLIVINE_CITY, 10
+	warp_event  7, 15, FAST_SHIP_1F, 1
 
 	def_coord_events
-	coord_event  7, 15, 0, OlivinePortWalkUpToShipScript
+	coord_event  7,  7, 0, OlivinePortWalkUpToShipScript
 
 	def_bg_events
-	bg_event  1, 22, BGEVENT_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
+	bg_event  1, 14, BGEVENT_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
 	def_object_events
-	object_event  7, 23, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAtGangwayScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivinePortSailorBeforeHOFText, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
-	object_event  4, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru1Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
-	object_event 13, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru2Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
-	object_event  6, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAfterHOFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
-	object_event  4, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortYoungsterScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
-	object_event 11, 15, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortCooltrainerFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAtGangwayScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	object_event  7,  7, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivinePortSailorBeforeHOFText, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
+	object_event  4,  6, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru1Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
+	object_event 13,  6, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru2Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
+	object_event  6,  7, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAfterHOFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	object_event  4,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortYoungsterScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	object_event 11,  7, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortCooltrainerFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	keyitemball_event 16, 14, GO_GOGGLES, EVENT_OLIVINE_PORT_GO_GOGGLES
 
 	object_const_def
 	const OLIVINEPORT_SAILOR1
 	const OLIVINEPORT_SAILOR3
 
 OlivinePortTrigger1:
-	sdefer UnknownScript_0x748b1
+	sdefer OlivinePortLeaveShipScript
 OlivinePortTrigger0:
 	end
 
-UnknownScript_0x748b1:
+OlivinePortLeaveShipScript:
 	applyonemovement PLAYER, step_up
 	appear OLIVINEPORT_SAILOR1
 	setscene $0
@@ -59,7 +61,7 @@ OlivinePortSailorAtGangwayScript:
 	special FadeOutPalettes
 	waitsfx
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalsefwd UnknownScript_0x7490a
+	iffalsefwd .FirstTime
 	clearevent EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	setevent EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	clearevent EVENT_BEAT_COOLTRAINERM_SEAN
@@ -72,7 +74,7 @@ OlivinePortSailorAtGangwayScript:
 	clearevent EVENT_BEAT_FISHER_JONAH
 	clearevent EVENT_BEAT_BLACKBELT_WAI
 	clearevent EVENT_BEAT_RICH_BOY_WINSTON
-UnknownScript_0x7490a:
+.FirstTime:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
 	setmapscene FAST_SHIP_1F, $1
@@ -85,27 +87,27 @@ OlivinePortAlreadyRodeScript:
 OlivinePortWalkUpToShipScript:
 	turnobject OLIVINEPORT_SAILOR3, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftruefwd UnknownScript_0x7498b
+	iftruefwd .skip
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftruefwd UnknownScript_0x7498b
+	iftruefwd .skip
 	turnobject PLAYER, LEFT
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalsefwd UnknownScript_0x7494e
+	iffalsefwd .FirstTime
 	readvar VAR_WEEKDAY
-	ifequalfwd SUNDAY, UnknownScript_0x74977
-	ifequalfwd SATURDAY, UnknownScript_0x74977
-	ifequalfwd TUESDAY, UnknownScript_0x74981
-	ifequalfwd WEDNESDAY, UnknownScript_0x74981
-	ifequalfwd THURSDAY, UnknownScript_0x74981
-UnknownScript_0x7494e:
+	ifequalfwd SUNDAY, .NextShipMonday
+	ifequalfwd SATURDAY, .NextShipMonday
+	ifequalfwd TUESDAY, .NextShipFriday
+	ifequalfwd WEDNESDAY, .NextShipFriday
+	ifequalfwd THURSDAY, .NextShipFriday
+.FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
 	iffalsefwd OlivinePortNotRidingMoveAwayScript
 	writetext OlivinePortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalsefwd UnknownScript_0x7496d
+	iffalsefwd .NoTicket
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
@@ -113,28 +115,28 @@ UnknownScript_0x7494e:
 	applymovement PLAYER, OlivinePortApproachFastShipFirstTimeMovement
 	sjump OlivinePortSailorAtGangwayScript
 
-UnknownScript_0x7496d:
+.NoTicket:
 	writetext OlivinePortNoTicketText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
 	end
 
-UnknownScript_0x74977:
+.NextShipMonday:
 	writetext OlivinePortMondayShipText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
 	end
 
-UnknownScript_0x74981:
+.NextShipFriday:
 	writetext OlivinePortFridayShipText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
 	end
 
-UnknownScript_0x7498b:
+.skip:
 	end
 
 OlivinePortNotRidingScript:
@@ -153,41 +155,41 @@ OlivinePortSailorAfterHOFScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue OlivinePortAlreadyRodeScript
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalsefwd UnknownScript_0x749c0
+	iffalsefwd .FirstTime
 	readvar VAR_WEEKDAY
-	ifequalfwd SUNDAY, UnknownScript_0x749f2
-	ifequalfwd SATURDAY, UnknownScript_0x749f2
-	ifequalfwd TUESDAY, UnknownScript_0x749f8
-	ifequalfwd WEDNESDAY, UnknownScript_0x749f8
-	ifequalfwd THURSDAY, UnknownScript_0x749f8
-UnknownScript_0x749c0:
+	ifequalfwd SUNDAY, .NextShipMonday
+	ifequalfwd SATURDAY, .NextShipMonday
+	ifequalfwd TUESDAY, .NextShipFriday
+	ifequalfwd WEDNESDAY, .NextShipFriday
+	ifequalfwd THURSDAY, .NextShipFriday
+.FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
 	iffalse OlivinePortNotRidingScript
 	writetext OlivinePortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalsefwd UnknownScript_0x749ec
+	iffalsefwd .NoTicket
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	readvar VAR_FACING
-	ifequalfwd RIGHT, UnknownScript_0x749e5
+	ifequalfwd RIGHT, .Right
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFMovement
 	sjump OlivinePortSailorAtGangwayScript
 
-UnknownScript_0x749e5:
+.Right:
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFRightMovement
 	sjump OlivinePortSailorAtGangwayScript
 
-UnknownScript_0x749ec:
+.NoTicket:
 	jumpopenedtext OlivinePortNoTicketText
 
-UnknownScript_0x749f2:
+.NextShipMonday:
 	jumpopenedtext OlivinePortMondayShipText
 
-UnknownScript_0x749f8:
+.NextShipFriday:
 	jumpopenedtext OlivinePortFridayShipText
 
 OlivinePortFishingGuru1Script:

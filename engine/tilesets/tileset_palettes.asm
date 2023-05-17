@@ -73,22 +73,30 @@ LoadSevenBGPalettes:
 	ret
 
 PokeCenterSpecialCase:
-	ld hl, wMapGroup
-	call .check_shamouti_pokecenter
-	jr z, LoadSevenBGPalettes
-	ld hl, wBackupMapGroup
-	call .check_shamouti_pokecenter
-	jr z, LoadSevenBGPalettes
 	ld hl, PokeCenterPalette
-	jr LoadSevenBGPalettes
-
-.check_shamouti_pokecenter
-	ld a, [hli]
-	cp GROUP_SHAMOUTI_POKECENTER_1F
-	ret nz
-	ld a, [hl]
-	cp MAP_SHAMOUTI_POKECENTER_1F
-	ld hl, ShamoutiPokeCenterPalette
+	call LoadSevenBGPalettes
+	; Shamouti has the default orange floors
+	call RegionCheck
+	ld a, e
+	cp ORANGE_REGION
+	jr z, .done
+	; Kanto has blue floors
+	ld hl, wBGPals1 palette PAL_BG_WATER
+	dec e ; KANTO_REGION?
+	jr z, .got_roof_pal
+	; Snowtop Mountain has brown floors
+	call GetWorldMapLocation
+	cp SNOWTOP_MOUNTAIN
+	ld hl, wBGPals1 palette PAL_BG_BROWN
+	jr z, .got_roof_pal
+	; Johto has red floors
+	ld hl, wBGPals1 palette PAL_BG_RED
+.got_roof_pal
+	ld de, wBGPals1 palette PAL_BG_ROOF
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+.done
+	scf
 	ret
 
 MartSpecialCase:
@@ -111,61 +119,6 @@ MartSpecialCase:
 .not_generic_mart
 	scf
 	ret
-
-LoadSpecialMapOBPalette:
-; Load a special map, landmark, or tileset palette if one applies.
-	call InitializeSpecialPaletteRegisters
-	ld hl, SpecialOBPalettes
-.loop
-	ld a, [hli]
-	and a
-	ret z
-	call CheckIfSpecialPaletteApplies
-	jr nz, .next
-
-	; bc = source
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld b, a
-
-	; a = skip bytes
-	ld a, [hli]
-	and a
-	jr z, .no_skip
-	push hl
-	ld h, b
-	ld l, c
-	ld c, a
-	ld b, 0
-	ld a, [wTimeOfDayPal]
-	and 3
-	rst AddNTimes
-	ld b, h
-	ld c, l
-	pop hl
-.no_skip
-
-	; de = destination
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-
-	; a = length
-	ld a, [hl]
-
-	ld h, b
-	ld l, c
-	ld c, a
-	ld b, 0
-	jmp FarCopyColorWRAM
-
-.next
-rept 6
-	inc hl
-endr
-	jr .loop
 
 InitializeSpecialPaletteRegisters:
 	; b, c, d, e = [wMapGroup], [wMapNumber], landmark, [wMapTileset]

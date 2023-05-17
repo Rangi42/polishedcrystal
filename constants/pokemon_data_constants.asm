@@ -5,7 +5,7 @@ rsset BASE_STATS
 DEF BASE_HP          rb
 DEF BASE_ATK         rb
 DEF BASE_DEF         rb
-DEF BASE_SPD         rb
+DEF BASE_SPE         rb
 DEF BASE_SAT         rb
 DEF BASE_SDF         rb
 DEF BASE_TYPES       rw
@@ -20,7 +20,6 @@ DEF BASE_ITEM_1      rb
 DEF BASE_ITEM_2      rb
 DEF BASE_GENDER      rb
 DEF BASE_EGG_STEPS EQU BASE_GENDER
-DEF BASE_PIC_SIZE    rb
 DEF BASE_ABILITIES   rb 3
 rsset BASE_ABILITIES
 DEF BASE_ABILITY_1   rb
@@ -133,7 +132,7 @@ DEF NUM_SHAPES EQU const_value
 assert const_value <= $10
 DEF NUM_BODY_COLORS EQU const_value
 
-; breed_struct and party_struct members (see macros/wram.asm)
+; breed_struct and party_struct members (see macros/ram.asm)
 rsreset
 DEF MON_SPECIES            rb
 DEF MON_ITEM               rb
@@ -145,13 +144,13 @@ rsset MON_EVS
 DEF MON_HP_EV              rb
 DEF MON_ATK_EV             rb
 DEF MON_DEF_EV             rb
-DEF MON_SPD_EV             rb
+DEF MON_SPE_EV             rb
 DEF MON_SAT_EV             rb
 DEF MON_SDF_EV             rb
 DEF MON_DVS                rb NUM_STATS / 2
 rsset MON_DVS
 DEF MON_HP_ATK_DV          rb
-DEF MON_DEF_SPD_DV         rb
+DEF MON_DEF_SPE_DV         rb
 DEF MON_SAT_SDF_DV         rb
 DEF MON_PERSONALITY        rw
 DEF MON_SHINY      EQU MON_PERSONALITY
@@ -166,9 +165,8 @@ DEF MON_HAPPINESS          rb
 DEF MON_PKRUS              rb
 DEF MON_CAUGHTDATA         rb 3
 rsset MON_CAUGHTDATA
-DEF MON_CAUGHTGENDER       rb
-DEF MON_CAUGHTTIME EQU MON_CAUGHTGENDER
-DEF MON_CAUGHTBALL EQU MON_CAUGHTGENDER
+DEF MON_CAUGHTTIME         rb
+DEF MON_CAUGHTBALL EQU MON_CAUGHTTIME
 DEF MON_CAUGHTLEVEL        rb
 DEF MON_CAUGHTLOCATION     rb
 DEF MON_LEVEL              rb
@@ -181,12 +179,12 @@ DEF MON_STATS              rw NUM_BATTLE_STATS
 rsset MON_STATS
 DEF MON_ATK                rw
 DEF MON_DEF                rw
-DEF MON_SPD                rw
+DEF MON_SPE                rw
 DEF MON_SAT                rw
 DEF MON_SDF                rw
 DEF PARTYMON_STRUCT_LENGTH EQU _RS
 
-; savemon_struct members (see macros/wram.asm)
+; savemon_struct members (see macros/ram.asm)
 rsreset
 DEF SAVEMON_SPECIES            rb
 DEF SAVEMON_ITEM               rb
@@ -198,13 +196,13 @@ rsset SAVEMON_EVS
 DEF SAVEMON_HP_EV              rb
 DEF SAVEMON_ATK_EV             rb
 DEF SAVEMON_DEF_EV             rb
-DEF SAVEMON_SPD_EV             rb
+DEF SAVEMON_SPE_EV             rb
 DEF SAVEMON_SAT_EV             rb
 DEF SAVEMON_SDF_EV             rb
 DEF SAVEMON_DVS                rb NUM_STATS / 2
 rsset SAVEMON_DVS
 DEF SAVEMON_HP_ATK_DV          rb
-DEF SAVEMON_DEF_SPD_DV         rb
+DEF SAVEMON_DEF_SPE_DV         rb
 DEF SAVEMON_SAT_SDF_DV         rb
 DEF SAVEMON_PERSONALITY        rw
 DEF SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
@@ -221,9 +219,8 @@ DEF SAVEMON_HAPPINESS          rb
 DEF SAVEMON_PKRUS              rb
 DEF SAVEMON_CAUGHTDATA         rb 3
 rsset SAVEMON_CAUGHTDATA
-DEF SAVEMON_CAUGHTGENDER       rb
-DEF SAVEMON_CAUGHTTIME EQU SAVEMON_CAUGHTGENDER
-DEF SAVEMON_CAUGHTBALL EQU SAVEMON_CAUGHTGENDER
+DEF SAVEMON_CAUGHTTIME         rb
+DEF SAVEMON_CAUGHTBALL EQU SAVEMON_CAUGHTTIME
 DEF SAVEMON_CAUGHTLEVEL        rb
 DEF SAVEMON_CAUGHTLOCATION     rb
 DEF SAVEMON_LEVEL              rb
@@ -255,6 +252,14 @@ DEF MON_GENDER_F     EQU 7
 DEF MON_IS_EGG_F     EQU 6
 DEF MON_EXTSPECIES_F EQU 5
 
+; modern EVs are max 252 per stat, 510 total
+; stat exp style allows 255 in all six stats
+DEF MODERN_MAX_EV EQU 252
+DEF MODERN_EV_LIMIT EQU 510
+
+; hyper training level requirement
+DEF HYPER_LEVEL_REQ EQU 50
+
 ; shiny probability values
 DEF SHINY_NUMERATOR         EQU 16 ; 16/65536 = 1/4096
 DEF CHARMED_SHINY_NUMERATOR EQU 48 ; 48/65536 = 3/4096
@@ -269,7 +274,6 @@ DEF MALE   EQU %00000000
 DEF FEMALE EQU %10000000
 
 ; caught data
-DEF CAUGHT_GENDER_MASK EQU %10000000
 DEF CAUGHT_TIME_MASK   EQU %01100000
 DEF CAUGHT_BALL_MASK   EQU %00011111
 
@@ -304,17 +308,35 @@ DEF HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; win count, party, ter
 DEF NUM_HOF_TEAMS EQU 10
 
 ; evolution types (used in data/pokemon/evos_attacks.asm)
-	const_def 1
+	const_def
+	const EVOLVE_NONE ; only for Lyra's info
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
 	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
-	const EVOLVE_STAT
+	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")
 	const EVOLVE_LOCATION
 	const EVOLVE_MOVE
-	const EVOLVE_EVS
-	const EVOLVE_CRIT
-	const EVOLVE_PARTY
+	const EVOLVE_CRIT ; only for Galarian Farfetch'd
+	const EVOLVE_PARTY ; only for Mantyke
+; multi_evo types for Lyra's info (used in data/pokemon/multi_evos.asm)
+	const EVOLVE_EGG
+	const EVOLVE_PIKACHU
+	const EVOLVE_GLOOM
+	const EVOLVE_POLIWHIRL
+	const EVOLVE_SLOWPOKE
+	const EVOLVE_SLOWPOKE_GALARIAN
+	const EVOLVE_MAGNETON
+	const EVOLVE_EXEGGCUTE
+	const EVOLVE_KOFFING
+	const EVOLVE_CUBONE
+	const EVOLVE_SCYTHER
+	const EVOLVE_EEVEE
+	const EVOLVE_MIME_JR_
+	const EVOLVE_URSARING
+	const EVOLVE_STANTLER
+	const EVOLVE_DUNSPARCE
+DEF NUM_EVOLVE_METHODS EQU const_value
 
 ; EVOLVE_HAPPINESS triggers
 	const_def 1
@@ -327,9 +349,6 @@ DEF NUM_HOF_TEAMS EQU 10
 	const ATK_GT_DEF
 	const ATK_LT_DEF
 	const ATK_EQ_DEF
-
-; EVOLVE_EVS trigger value
-DEF EVS_TO_EVOLVE EQU 50
 
 ; wild data
 
@@ -354,7 +373,9 @@ DEF LEVEL_FROM_BADGES EQU 178 ; allows ±77 in either direction
 	const TREEMON_SET_KANTO
 	const TREEMON_SET_LAKE
 	const TREEMON_SET_FOREST
-	const TREEMON_SET_ROCK
+	const TREEMON_SET_APRICORNS
+	const TREEMON_SET_NOISY_FOREST
+	const TREEMON_SET_ROCK ; must be last
 DEF NUM_TREEMON_SETS EQU const_value
 
 ; treemon scores

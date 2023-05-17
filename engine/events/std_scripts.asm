@@ -1694,6 +1694,7 @@ VendingMachineScript:
 	pause 10
 	playsound SFX_ENTER_DOOR
 	farwritetext VendingMachineClangText
+	special ShowItemIcon
 	promptbutton
 	itemnotify
 	end
@@ -1702,6 +1703,7 @@ VendingMachineScript:
 	pause 10
 	playsound SFX_ENTER_DOOR
 	farwritetext VendingMachineScoreText
+	special ShowItemIcon
 	promptbutton
 	itemnotify
 	sjump .Start

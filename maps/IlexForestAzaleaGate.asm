@@ -21,7 +21,7 @@ IlexForestAzaleaGate_MapScriptHeader:
 ProfOaksAide1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_NEST_BALLS_FROM_PROF_OAKS_AIDE
+	checkevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 	iftruefwd .Explain
 	writetext ProfOaksAide1HiText
 	waitbutton
@@ -34,14 +34,9 @@ ProfOaksAide1Script:
 .HereYouGo
 	writetext ProfOaksAide1HereYouGoText
 	waitbutton
-	giveitem NEST_BALL, 5
-	waitsfx
+	verbosegiveitem EXP_SHARE
 	iffalsefwd .NoRoom
-	writetext ProfOaksAide1NestBallText
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	setevent EVENT_GOT_NEST_BALLS_FROM_PROF_OAKS_AIDE
+	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpopenedtext ProfOaksAide1ExplainText
 
@@ -113,23 +108,14 @@ ProfOaksAide1NoRoomText:
 	cont "room for this."
 	done
 
-ProfOaksAide1NestBallText:
-	text "<PLAYER> received"
-	line "5 Nest Balls."
-	done
-
 ProfOaksAide1ExplainText:
-	text "Those Nest Balls"
-	line "are like Apricorn"
+	text "That Exp.Share"
+	line "helps a #mon"
 
-	para "Balls, but they're"
-	line "made by Silph Co."
-	cont "in Kanto."
+	para "gain experience"
+	line "without even"
+	cont "battling."
 
-	para "They work best"
-	line "on low-leveled"
-	cont "#mon."
-
-	para "Use them to com-"
+	para "Use it to com-"
 	line "plete the #dex!"
 	done

@@ -34,20 +34,20 @@ PokegearPhone_Joypad:
 
 .left
 	ld a, [wPokegearFlags]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	jr z, .no_map
-	lb bc, MAP_CARD, $2
+	lb bc, POKEGEARCARD_MAP, POKEGEARSTATE_MAPCHECKREGION
 	jr .switch_page
 
 .no_map
-	lb bc, CLOCK_CARD, $0
+	lb bc, POKEGEARCARD_CLOCK, POKEGEARSTATE_CLOCKINIT
 	jr .switch_page
 
 .right
 	ld a, [wPokegearFlags]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	ret z
-	lb bc, RADIO_CARD, $d
+	lb bc, POKEGEARCARD_RADIO, POKEGEARSTATE_RADIOINIT
 .switch_page
 	jmp Pokegear_SwitchPage
 
@@ -74,7 +74,7 @@ PokegearPhone_Joypad:
 	ret
 
 .quit_submenu
-	ld a, $a
+	ld a, POKEGEARSTATE_PHONEJOYPAD
 	ld [wJumptableIndex], a
 	ret
 
@@ -114,7 +114,7 @@ PokegearPhone_MakePhoneCall:
 	call Phone_NoSignal
 	ld hl, .OutOfServiceArea
 	call PrintText
-	ld a, $a
+	ld a, POKEGEARSTATE_PHONEJOYPAD
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
 	jmp PrintText
@@ -134,7 +134,7 @@ PokegearPhone_FinishPhoneCall:
 	and A_BUTTON | B_BUTTON
 	ret z
 	call HangUp
-	ld a, $a
+	ld a, POKEGEARSTATE_PHONEJOYPAD
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
 	jmp PrintText

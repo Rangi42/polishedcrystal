@@ -123,9 +123,9 @@ CeladonUniversity1FReceptionistText:
 	line "your left."
 
 	para "The cafeteria,"
-	line "pool, and faculty"
+	line "pool, and nurse's"
 
-	para "offices are up-"
+	para "office are up-"
 	line "stairs."
 	done
 

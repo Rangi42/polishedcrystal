@@ -1,0 +1,35 @@
+if !DEF(MONOCHROME)
+	RGB 14, 05, 06 ; maroon (fighting)
+	RGB 27, 09, 26 ; lavender (flying)
+	RGB 29, 05, 06 ; red (poison)
+	RGB 26, 26, 26 ; white (ground)
+	RGB 18, 11, 05 ; brown (rock)
+	RGB 16, 28, 01 ; lime (bug)
+	RGB 14, 06, 27 ; purple (ghost)
+	RGB 14, 14, 18 ; gray (steel)
+	RGB 29, 13, 02 ; orange (fire)
+	RGB 01, 09, 28 ; blue (water)
+	RGB 04, 19, 01 ; green (grass)
+	RGB 30, 25, 01 ; yellow (electric)
+	RGB 30, 10, 13 ; pink (psychic)
+	RGB 02, 22, 26 ; teal (ice)
+	RGB 07, 11, 30 ; indigo (dragon)
+	RGB 08, 06, 06 ; black (dark)
+else
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+endc

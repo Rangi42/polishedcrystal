@@ -2,6 +2,7 @@ ValenciaIsland_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, ValenciaIslandFlyPoint
 
 	def_warp_events
 	warp_event 18, 19, IVYS_LAB, 1
@@ -21,6 +22,10 @@ ValenciaIsland_MapScriptHeader:
 	object_event  7,  8, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ValenciaIslandCooltrainermText, -1
 	object_event 10, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 
+ValenciaIslandFlyPoint:
+	setflag ENGINE_FLYPOINT_VALENCIA
+	endcallback
+
 ValenciaIslandCooltrainermText:
 	text "A couple of strong"
 	line "trainers live in"
@@ -35,7 +40,7 @@ ValenciaIslandCooltrainermText:
 	done
 
 ValenciaIslandYoungsterScript:
-	checkflag ENGINE_PLAYER_IS_FEMALE
+	readvar VAR_PLAYERGENDER
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 

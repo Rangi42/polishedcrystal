@@ -43,7 +43,7 @@ OverworldWhiteoutFade:
 	farcall FadeOutPalettes
 	call ClearTileMap
 	call ClearSprites
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	jmp SetPalettes
 
@@ -95,7 +95,7 @@ LoseMoney:
 	ldh [hMultiplicand + 1], a
 	ld a, b
 	ldh [hMultiplicand + 2], a
-	call Multiply
+	farcall Multiply
 	ld de, hMoneyTemp
 	ld hl, hProduct + 1
 	call .copy

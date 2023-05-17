@@ -185,9 +185,8 @@ Special_BattleTower_CommitChallengeResult:
 	dec a
 	call BT_GetTrainerIndex
 	cp BATTLETOWER_NUM_TRAINERS
-	ld a, 0
-	ldh [hScriptVar], a
-	ret c
+	; a = carry ? FALSE : TRUE
+	sbc a
 	inc a
 	ldh [hScriptVar], a
 	ret
@@ -652,7 +651,7 @@ Special_BattleTower_BeginChallenge:
 	ld a, BATTLETOWER_STREAK_LENGTH * 3
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hRemainder]
 	cp BATTLETOWER_STREAK_LENGTH * 2
 	pop de
@@ -762,22 +761,20 @@ BT_GetTrainerIndex:
 	jmp CloseSRAM
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
+	; Load sprite of the opponent trainer
+	; because s/he is chosen randomly and appears out of nowhere
 	call BT_GetCurTrainerIndex
 	ld c, a
 	ld b, 0
-
-	push bc
 	farcall WriteBattleTowerTrainerName
-	pop bc
+LoadTrainerSpriteAsMapObject1::
 	ld c, a
+	ld b, 0
 	dec c
 	ld hl, BTTrainerClassSprites
 	add hl, bc
 	ld a, [hl]
-	ld [wBTTempOTSprite], a
-
-	; Load sprite of the opponent trainer
-	; because s/he is chosen randomly and appears out of nowhere
+LoadSpriteAsMapObject1::
 	ld [wMap1ObjectSprite], a
 	ldh [hUsedSpriteIndex], a
 	ld a, 24

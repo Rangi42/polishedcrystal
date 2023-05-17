@@ -24,4 +24,4 @@ SeafoamIslandsB3F_MapScriptHeader:
 	def_object_events
 	itemball_event 15, 15, REVIVE, 1, EVENT_SEAFOAM_ISLANDS_B3F_REVIVE
 	itemball_event 17,  6, BIG_PEARL, 1, EVENT_SEAFOAM_ISLANDS_B3F_BIG_PEARL
-	strengthboulder_event 28, 7
+	strengthboulder_event 28,  7

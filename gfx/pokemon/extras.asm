@@ -94,7 +94,6 @@ JynxAnimationExtra:       INCLUDE "gfx/pokemon/jynx/anim_idle.asm"
 ElectabuzzAnimationExtra: INCLUDE "gfx/pokemon/electabuzz/anim_idle.asm"
 MagmarAnimationExtra:     INCLUDE "gfx/pokemon/magmar/anim_idle.asm"
 PinsirAnimationExtra:     INCLUDE "gfx/pokemon/pinsir/anim_idle.asm"
-TaurosAnimationExtra:     INCLUDE "gfx/pokemon/tauros/anim_idle.asm"
 LaprasAnimationExtra:     INCLUDE "gfx/pokemon/lapras/anim_idle.asm"
 DittoAnimationExtra:      INCLUDE "gfx/pokemon/ditto/anim_idle.asm"
 EeveeAnimationExtra:      INCLUDE "gfx/pokemon/eevee/anim_idle.asm"
@@ -152,7 +151,6 @@ AipomAnimationExtra:      INCLUDE "gfx/pokemon/aipom/anim_idle.asm"
 SunkernAnimationExtra:    INCLUDE "gfx/pokemon/sunkern/anim_idle.asm"
 SunfloraAnimationExtra:   INCLUDE "gfx/pokemon/sunflora/anim_idle.asm"
 YanmaAnimationExtra:      INCLUDE "gfx/pokemon/yanma/anim_idle.asm"
-WooperAnimationExtra:     INCLUDE "gfx/pokemon/wooper/anim_idle.asm"
 QuagsireAnimationExtra:   INCLUDE "gfx/pokemon/quagsire/anim_idle.asm"
 EspeonAnimationExtra:     INCLUDE "gfx/pokemon/espeon/anim_idle.asm"
 UmbreonAnimationExtra:    INCLUDE "gfx/pokemon/umbreon/anim_idle.asm"
@@ -239,6 +237,9 @@ KleavorAnimationExtra:    INCLUDE "gfx/pokemon/kleavor/anim_idle.asm"
 UrsalunaAnimationExtra:   INCLUDE "gfx/pokemon/ursaluna/anim_idle.asm"
 SneaslerAnimationExtra:   INCLUDE "gfx/pokemon/sneasler/anim_idle.asm"
 OverqwilAnimationExtra:   INCLUDE "gfx/pokemon/overqwil/anim_idle.asm"
+FarigirafAnimationExtra:  INCLUDE "gfx/pokemon/farigiraf/anim_idle.asm"
+ClodsireAnimationExtra:   INCLUDE "gfx/pokemon/clodsire/anim_idle.asm"
+AnnihilapeAnimationExtra: INCLUDE "gfx/pokemon/annihilape/anim_idle.asm"
 
 EggAnimationExtra:        INCLUDE "gfx/pokemon/egg/anim_idle.asm"
 
@@ -307,6 +308,9 @@ MagikarpForehead2AnimationExtra:
 MagikarpMask2AnimationExtra:
 MagikarpSaucyAnimationExtra:
 MagikarpRaindropAnimationExtra: INCLUDE "gfx/pokemon/magikarp/anim_idle.asm"
+
+DudunsparceTwoSegmentAnimationExtra:   INCLUDE "gfx/pokemon/dudunsparce_two_segment/anim_idle.asm"
+DudunsparceThreeSegmentAnimationExtra: INCLUDE "gfx/pokemon/dudunsparce_three_segment/anim_idle.asm"
 
 GyaradosPlainAnimationExtra: INCLUDE "gfx/pokemon/gyarados_plain/anim_idle.asm"
 GyaradosRedAnimationExtra:   INCLUDE "gfx/pokemon/gyarados_red/anim_idle.asm"
@@ -425,3 +429,11 @@ QwilfishHisuianAnimationExtra: INCLUDE "gfx/pokemon/qwilfish_hisuian/anim_idle.a
 
 SneaselPlainAnimationExtra:   INCLUDE "gfx/pokemon/sneasel_plain/anim_idle.asm"
 SneaselHisuianAnimationExtra: INCLUDE "gfx/pokemon/sneasel_hisuian/anim_idle.asm"
+
+WooperPlainAnimationExtra:   INCLUDE "gfx/pokemon/wooper_plain/anim_idle.asm"
+WooperPaldeanAnimationExtra: INCLUDE "gfx/pokemon/wooper_paldean/anim_idle.asm"
+
+TaurosPlainAnimationExtra:        INCLUDE "gfx/pokemon/tauros_plain/anim_idle.asm"
+TaurosPaldeanAnimationExtra:      INCLUDE "gfx/pokemon/tauros_paldean/anim_idle.asm"
+TaurosPaldeanFireAnimationExtra:  INCLUDE "gfx/pokemon/tauros_paldean_fire/anim_idle.asm"
+TaurosPaldeanWaterAnimationExtra: INCLUDE "gfx/pokemon/tauros_paldean_water/anim_idle.asm"

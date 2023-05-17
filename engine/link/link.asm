@@ -72,7 +72,7 @@ Gen2ToGen2LinkComms:
 	ldh [rIF], a
 	ld a, 1 << SERIAL | 1 << VBLANK
 	ldh [rIE], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 
 	call Link_CopyRandomNumbers
@@ -221,18 +221,23 @@ Gen2ToGen2LinkComms:
 	ld bc, wOTPartyDataEnd - wOTPartyMons
 	rst CopyBytes
 
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr nz, .ready_to_trade
 	ld a, [wLinkOtherPlayerGender]
-	and a
-	ld a, CARRIE
-	jr nz, .got_other_gender
-	assert CARRIE + 1 == CAL
-	inc a
+	ld b, CAL
+	and a ; PLAYER_MALE
+	jr z, .got_other_gender
+	assert CAL - 1 == CARRIE
+	dec b
+	dec a ; PLAYER_FEMALE
+	jr z, .got_other_gender
+	; PLAYER_ENBY
+	ld b, JACKY
 .got_other_gender
+	ld a, b
 	ld [wOtherTrainerClass], a
 	call ClearScreen
 	call Link_WaitBGMap
@@ -276,7 +281,7 @@ Gen2ToGen2LinkComms:
 	jmp ExitLinkCommunications
 
 .ready_to_trade
-	ld de, MUSIC_ROUTE_30
+	ld e, MUSIC_ROUTE_30
 	call PlayMusic
 	jmp InitTradeMenuDisplay
 
@@ -304,7 +309,7 @@ LinkTimeout:
 	ld c, 15
 	call FadeToWhite
 	call ClearScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	jmp ApplyAttrAndTilemapInVBlank
 
@@ -1069,7 +1074,7 @@ LinkTrade_TradeStatsMenu:
 .b_button
 	pop af
 	ld [wMenuCursorY], a
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	jmp LinkTrade_PlayerPartyMenu
 
 .d_right
@@ -1104,7 +1109,7 @@ LinkTrade_TradeStatsMenu:
 	pop af
 	ld [wMenuCursorY], a
 	call LinkMonStatsScreen
-	call Call_LoadTempTileMapToTileMap
+	call SafeLoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
 	call ClearBox
@@ -1299,7 +1304,7 @@ ExitLinkCommunications:
 	ld c, 15
 	call FadeToWhite
 	call ClearScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call ApplyAttrAndTilemapInVBlank
 	xor a
@@ -1493,9 +1498,7 @@ LinkTrade:
 	ld [wPlayerTrademonSpecies], a
 	push af
 ; caught data
-	ld b, h
-	ld c, l
-	farcall GetCaughtGender
+	xor a
 	ld [wPlayerTrademonCaughtData], a
 ; OT name
 	ld a, [wCurTradePartyMon]
@@ -1570,12 +1573,7 @@ LinkTrade:
 	ld a, [hl]
 	ld [wOTTrademonDVs + 2], a
 ; caught data
-	ld hl, wOTPartyMon1Species
-	ld a, [wCurOTTradePartyMon]
-	call GetPartyLocation
-	ld b, h
-	ld c, l
-	farcall GetCaughtGender
+	xor a
 	ld [wOTTrademonCaughtData], a
 
 	ld a, [wCurTradePartyMon]
@@ -1603,7 +1601,7 @@ LinkTrade:
 	call DelayFrames
 	call ClearTileMap
 	call LoadFontsBattleExtra
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
@@ -2120,7 +2118,7 @@ PrepareForLinkTransfers:
 	ldh [rSC], a
 
 .player_1:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	vc_patch Wireless_net_delay_6
 if DEF(VIRTUAL_CONSOLE)
@@ -2140,7 +2138,7 @@ PerformLinkChecks:
 	xor a
 	ld bc, 10
 	ld hl, wLinkReceivedPolishedMiscBuffer
-	call ByteFill
+	rst ByteFill
 
 	; This acts as the old Special_CheckBothSelectedSameRoom.
 	; We send a dummy byte here that will cause old versions
@@ -2166,8 +2164,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	; bc is the number of bytes we should transfer.
 	; It needs to account for the maximum number of
@@ -2205,8 +2202,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 5
 	call Serial_ExchangeBytes
@@ -2245,8 +2241,7 @@ PerformLinkChecks:
 	ld [hld], a
 	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
 	ld [hld], a
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_PREAMBLE_BYTE
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 2
 	call Serial_ExchangeBytes
@@ -2323,7 +2318,7 @@ PerformLinkChecks:
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
-	ld de, MUSIC_POKEMON_CENTER
+	ld e, MUSIC_POKEMON_CENTER
 	jmp PlayMusic
 
 .SkipPreambleBytes
@@ -2581,7 +2576,7 @@ DetermineLinkBattleResult:
 	rra
 	ldh [hDivisor], a
 	ld b, $4
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	add e
 	ld e, a

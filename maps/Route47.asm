@@ -11,6 +11,7 @@ Route47_MapScriptHeader:
 	warp_event 53, 29, CLIFF_CAVE, 3
 	warp_event 11, 23, QUIET_CAVE_1F, 1
 	warp_event  8, 23, EMBEDDED_TOWER, 1
+	warp_event  8,  4, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger
@@ -49,8 +50,10 @@ Route47_MapScriptHeader:
 	def_bg_events
 	bg_event  8, 23, BGEVENT_IFNOTSET, Route47SealedCaveSign
 	bg_event 36, 32, BGEVENT_JUMPTEXT, Route47QuietCaveSignText
+	bg_event 23,  4, BGEVENT_JUMPTEXT, Route47AdvancedTipsSignText
 	bg_event 34, 33, BGEVENT_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	bg_event  5, 32, BGEVENT_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
+	bg_event  8,  3, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_47
 
 	def_object_events
 	object_event 59, 26, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
@@ -109,23 +112,23 @@ Route47TileScript:
 .underfoot_asm:
 	; bridge 1
 	changebridgeblock 42, 24, $aa, ROUTE_47
-	changebridgeblock 44, 24, $e6, ROUTE_47
-	changebridgeblock 46, 24, $e6, ROUTE_47
-	changebridgeblock 48, 24, $e6, ROUTE_47
+	changebridgeblock 44, 24, $fa, ROUTE_47
+	changebridgeblock 46, 24, $fa, ROUTE_47
+	changebridgeblock 48, 24, $fa, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
 	; bridge 2
-	changebridgeblock 44, 18, $e6, ROUTE_47
-	changebridgeblock 46, 18, $e6, ROUTE_47
-	changebridgeblock 48, 18, $e6, ROUTE_47
+	changebridgeblock 44, 18, $fa, ROUTE_47
+	changebridgeblock 46, 18, $fa, ROUTE_47
+	changebridgeblock 48, 18, $fa, ROUTE_47
 	; bridge 3
-	changebridgeblock 20, 24, $e6, ROUTE_47
-	changebridgeblock 22, 24, $e6, ROUTE_47
-	changebridgeblock 24, 24, $e6, ROUTE_47
+	changebridgeblock 20, 24, $fa, ROUTE_47
+	changebridgeblock 22, 24, $fa, ROUTE_47
+	changebridgeblock 24, 24, $fa, ROUTE_47
 	; bridge 4
 	changebridgeblock 18, 16, $aa, ROUTE_47
-	changebridgeblock 20, 16, $e6, ROUTE_47
-	changebridgeblock 22, 16, $e6, ROUTE_47
-	changebridgeblock 24, 16, $e6, ROUTE_47
+	changebridgeblock 20, 16, $fa, ROUTE_47
+	changebridgeblock 22, 16, $fa, ROUTE_47
+	changebridgeblock 24, 16, $fa, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jmp BufferScreen
 
@@ -141,9 +144,9 @@ Route47Bridge1OverheadTrigger:
 Route47Bridge1UnderfootTrigger:
 	callthisasm
 	changebridgeblock 42, 24, $aa, ROUTE_47
-	changebridgeblock 44, 24, $e6, ROUTE_47
-	changebridgeblock 46, 24, $e6, ROUTE_47
-	changebridgeblock 48, 24, $e6, ROUTE_47
+	changebridgeblock 44, 24, $fa, ROUTE_47
+	changebridgeblock 46, 24, $fa, ROUTE_47
+	changebridgeblock 48, 24, $fa, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
@@ -160,9 +163,9 @@ Route47_FinishOverheadBridge:
 
 Route47Bridge2UnderfootTrigger:
 	callthisasm
-	changebridgeblock 44, 18, $e6, ROUTE_47
-	changebridgeblock 46, 18, $e6, ROUTE_47
-	changebridgeblock 48, 18, $e6, ROUTE_47
+	changebridgeblock 44, 18, $fa, ROUTE_47
+	changebridgeblock 46, 18, $fa, ROUTE_47
+	changebridgeblock 48, 18, $fa, ROUTE_47
 	; fallthrough
 
 Route47_FinishUnderfootBridge:
@@ -181,9 +184,9 @@ Route47Bridge3OverheadTrigger:
 
 Route47Bridge3UnderfootTrigger:
 	callthisasm
-	changebridgeblock 20, 24, $e6, ROUTE_47
-	changebridgeblock 22, 24, $e6, ROUTE_47
-	changebridgeblock 24, 24, $e6, ROUTE_47
+	changebridgeblock 20, 24, $fa, ROUTE_47
+	changebridgeblock 22, 24, $fa, ROUTE_47
+	changebridgeblock 24, 24, $fa, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
@@ -198,9 +201,9 @@ Route47Bridge4OverheadTrigger:
 Route47Bridge4UnderfootTrigger:
 	callthisasm
 	changebridgeblock 18, 16, $aa, ROUTE_47
-	changebridgeblock 20, 16, $e6, ROUTE_47
-	changebridgeblock 22, 16, $e6, ROUTE_47
-	changebridgeblock 24, 16, $e6, ROUTE_47
+	changebridgeblock 20, 16, $fa, ROUTE_47
+	changebridgeblock 22, 16, $fa, ROUTE_47
+	changebridgeblock 24, 16, $fa, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
@@ -422,4 +425,21 @@ Route47QuietCaveSignText:
 
 	para "West to"
 	line "Quiet Cave"
+	done
+
+Route47AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Some #mon found"
+	line "in certain areas"
+
+	para "may know a move"
+	line "unique to that"
+	cont "area!"
+
+	para "But these moves"
+	line "can't be remembered"
+
+	para "or inherited via"
+	line "breeding!"
 	done

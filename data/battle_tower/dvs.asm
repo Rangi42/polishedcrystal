@@ -1,7 +1,7 @@
 BattleTower_DVSpreads:
 ; entries correspond to BTDVS_* constants
 	table_width 3, BattleTower_DVSpreads
-	; hp:atk, def:spd, sat:sdf
+	; hp:atk, def:spe, sat:sdf
 	db $ff, $ff, $ff ; BTDVS_PERFECT
 	db $ff, $f0, $ff ; BTDVS_TRICK_ROOM
 if DEF(FAITHFUL)

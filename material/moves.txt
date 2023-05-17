@@ -15,6 +15,8 @@ Rhyperior: Submission, Wild Charge
 Houndoom: Bonemerang
 Qwilfish: Selfdestruct
 
+Scyther/Kleavor: Razor Leaf
+
 Slowbro: Metronome
 Lanturn: Earthquake
 Blissey: Reflect
@@ -69,6 +71,9 @@ Qwilfish: Hex, Scary Face
 Mantine: Hurricane, Rock Blast
 Tyranitar: Rock Throw, Rock Blast
 Weavile: Icicle Spear
+
+S/V:
+Mewtwo: Power Gem
 
 Egg:
 Geodude/Graveler/Golem: Rock Slide

@@ -24,6 +24,7 @@ CianwoodCity_MapScriptHeader:
 	bg_event  8, 32, BGEVENT_JUMPTEXT, CianwoodPhotoStudioSignText
 	bg_event  6, 26, BGEVENT_JUMPTEXT, CianwoodCliffEdgeGateSignText
 	bg_event  8, 22, BGEVENT_JUMPTEXT, CianwoodMoveManiacSignText
+	bg_event 16, 31, BGEVENT_JUMPTEXT, CianwoodAdvancedTipsSignText
 	bg_event  4, 19, BGEVENT_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
 	bg_event  5, 29, BGEVENT_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
@@ -344,4 +345,19 @@ CianwoodCliffEdgeGateSignText:
 CianwoodMoveManiacSignText:
 	text "The Move Maniac"
 	line "Ahead"
+	done
+
+CianwoodAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "You can use a"
+	line "# Ball on a"
+
+	para "#mon you've"
+	line "caught to change"
+	cont "its Ball!"
+
+	para "But you won't get"
+	line "back the original"
+	cont "# Ball!"
 	done

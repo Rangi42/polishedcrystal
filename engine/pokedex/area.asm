@@ -20,12 +20,28 @@ endc
 	assert_list_length NUM_DEXAREAS
 
 Pokedex_Area:
-	; TODO: maybe preset depending on time of day?
 	ldh a, [rSVBK]
 	push af
+	ld a, $1
+	ldh [rSVBK], a
+	; default to current region and time of day
+	call RegionCheck
+	assert DEXAREA_REGION_MASK == %01110000
+	swap e
+	ld a, [wTimeOfDay]
+	cp EVE
+	jr nz, .not_evening
+	ld a, DAY ; evening may have day or nite mons
+.not_evening
+	assert DEXAREA_MORNING == MORN
+	assert DEXAREA_DAY == DAY
+	assert DEXAREA_NIGHT == NITE
+	; combine current region and time into area mode
+	or e
+	ld e, a
 	ld a, BANK(wDexAreaLastMode)
 	ldh [rSVBK], a
-	xor a
+	ld a, e
 	ldh [hPokedexAreaMode], a
 	ld [wDexAreaLastMode], a
 	pop af
@@ -160,7 +176,7 @@ _Pokedex_Area:
 	; Check if we've visited Kanto.
 	push hl
 	ld hl, wStatusFlags
-	bit 6, [hl] ; ENGINE_CREDITS_SKIP
+	bit STATUSFLAGS_HALL_OF_FAME_F, [hl]
 	pop hl
 	jr z, .loopback_area_mode
 
@@ -169,7 +185,7 @@ _Pokedex_Area:
 	jr nz, .cycle_area
 	push hl
 	ld hl, wStatusFlags2
-	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	bit STATUSFLAGS2_SEEN_SHAMOUTI_F, [hl]
 	pop hl
 	jr nz, .cycle_area
 	jr .loopback_area_mode
@@ -264,7 +280,7 @@ Pokedex_ReloadValidLocations:
 	ld a, BANK(wStatusFlags2)
 	call GetFarWRAMByte
 	pop hl
-	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	bit STATUSFLAGS2_SEEN_SHAMOUTI_F, a
 	jr z, .finish
 	; Redundant to run the check below again, but means less space used.
 .check_kanto
@@ -273,7 +289,7 @@ Pokedex_ReloadValidLocations:
 	ld a, BANK(wStatusFlags)
 	call GetFarWRAMByte
 	pop hl
-	bit 6, a ; ENGINE_CREDITS_SKIP
+	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	jr nz, .outer_loop
 
 .finish
@@ -398,7 +414,7 @@ Pokedex_GetAreaOAM:
 ; Caution: runs in the wDex* WRAMX bank.
 	; Write Area Unknown
 	lb de, 9, 10
-	lb hl, VRAM_BANK_1, $34
+	lb hl, VRAM_BANK_1 | 0, $34
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
 	bit DEXAREA_UNKNOWN_F, a
@@ -421,7 +437,7 @@ Pokedex_GetAreaOAM:
 	ld c, 0
 	lb de, 15, 10 ; the other 15 slots is dealt with as part of hblank
 	; e (OAM slot) is kept from previous writing
-	lb hl, VRAM_BANK_1, $3f
+	lb hl, VRAM_BANK_1 | 3, $3f
 	call Pokedex_WriteOAMSingleTile
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
@@ -478,7 +494,7 @@ Pokedex_GetAreaOAM:
 	and DEXAREA_REGION_MASK
 	cp ORANGE_REGION << 4
 	lb de, 1, 7
-	lb hl, 0, $0b
+	lb hl, 3, $0b
 	lb bc, 115, 143
 	jr nz, .not_orange
 	ld b, 107
@@ -613,20 +629,7 @@ Pokedex_SetWildLandmark:
 	jr nz, .got_mon_table
 	inc h
 .got_mon_table
-	ld a, e
-
-	; Wrap back to 0 across regions.
-	lb bc, JOHTO_REGION, KANTO_LANDMARK
-	sub c
-	jr c, .got_landmark
-	inc b ; KANTO_REGION
-	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
-	sub c
-	jr c, .got_landmark
-	ld c, 0
-	inc b ; ORANGE_REGION
-.got_landmark
-	add c
+	call .GetAreaMonID
 	add a
 	ld l, a
 
@@ -655,7 +658,7 @@ Pokedex_SetWildLandmark:
 	call GetFarWRAMByte
 	cp c
 	jr nz, .highlight_done
-	ld a, e
+	call .GetAreaMonID
 	ld [wDexAreaHighlight], a
 .highlight_done
 	farcall GetLandmarkCoords
@@ -669,6 +672,25 @@ Pokedex_SetWildLandmark:
 	pop af
 .end
 	jmp PopBCDEHL
+
+.GetAreaMonID:
+	; To avoid wasteful use of WRAM, we essentially unionize area coordinates
+	; on a per-region basis. Handle that here.
+	ld a, e
+
+	; Wrap back to 0 across regions.
+	lb bc, JOHTO_REGION, KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	inc b ; KANTO_REGION
+	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, 0
+	inc b ; ORANGE_REGION
+.got_landmark
+	add c
+	ret
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing
@@ -757,7 +779,7 @@ Pokedex_DoAreaInsertSort:
 	sub b
 	ld d, h
 	ld e, l
-	ld b, [hl]
+	ld b, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 	ld c, [hl]
 	push bc
@@ -830,7 +852,7 @@ PHB_AreaSwitchTileMode:
 	ld hl, oamSprite39Attributes
 	ld c, 3
 	ld de, -3
-	ld a, VRAM_BANK_1
+	ld a, VRAM_BANK_1 | 3
 	ld b, $3f
 .loop
 rept 5
@@ -1055,9 +1077,9 @@ endr
 
 .GetAreaMonsIndex:
 ; de = wDexAreaMons + a*2. Leaves a as a*2.
-	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons isn't $xx00"
-	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons2 isn't $xx00"
-	assert (wDexAreaMons2 == wDexAreaMons + $100)
+	assert LOW(wDexAreaMons) == 0, "wDexAreaMons isn't $xx00"
+	assert LOW(wDexAreaMons) == 0, "wDexAreaMons2 isn't $xx00"
+	assert wDexAreaMons2 == wDexAreaMons + $100
 
 	; Needs to be cycle-equal whether the conditional is nc or c.
 	ld d, HIGH(wDexAreaMons)

@@ -9,16 +9,15 @@ _UpdatePlayerSprite::
 	jmp GetUsedSprite
 
 GetPlayerSprite:
-; Get Chris or Kris's sprite.
-	ld hl, .Chris
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a
-	jr nz, .go
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld hl, ChrisStateSprites
+	and a ; PLAYER_MALE
 	jr z, .go
-	ld hl, .Kris
-
+	ld hl, KrisStateSprites
+	dec a ; PLAYER_FEMALE
+	jr z, .go
+	; PLAYER_ENBY
+	ld hl, CrysStateSprites
 .go
 	ld a, [wPlayerState]
 	ld c, a
@@ -44,19 +43,7 @@ GetPlayerSprite:
 	ld [wPlayerObjectSprite], a
 	ret
 
-.Chris:
-	db PLAYER_NORMAL,    SPRITE_CHRIS
-	db PLAYER_BIKE,      SPRITE_CHRIS_BIKE
-	db PLAYER_SURF,      SPRITE_CHRIS_SURF
-	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
-	db $ff
-
-.Kris:
-	db PLAYER_NORMAL,    SPRITE_KRIS
-	db PLAYER_BIKE,      SPRITE_KRIS_BIKE
-	db PLAYER_SURF,      SPRITE_KRIS_SURF
-	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
-	db $ff
+INCLUDE "data/sprites/player_sprites.asm"
 
 RefreshSprites::
 	push hl
@@ -130,22 +117,29 @@ GetSprite::
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEDATA_FIELDS
+	ld a, SPRITEDATA_LENGTH
 	rst AddNTimes
 	; load the address into de
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	; load the sprite bank into both b and h
+	; load the sprite bank into b
 	ld a, [hli]
 	ld b, a
 	; load the sprite type into l
 	ld l, [hl]
-	ld h, a
+	assert SPRITEDATA_TYPE_MASK == %11000000
+	ld a, l
+	rlca
+	rlca
+	and %11
+	inc a
+	ld l, a
+	; load the sprite bank into h too
+	ld h, b
 	; load the length into c
 	ld c, 15
-	ld a, l
 	cp BIG_GYARADOS_SPRITE
 	ret z
 	ld c, 12
@@ -197,7 +191,7 @@ GetMonSprite:
 	ld de, OBJECT_RANGE - OBJECT_RADIUS
 	jr z, .object
 	ld hl, MAPOBJECT_RADIUS - MAPOBJECT_OBJECT_STRUCT_ID
-	ld de, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
+	ld de, MAPOBJECT_SIGHT_RANGE - MAPOBJECT_RADIUS
 .object
 	add hl, bc
 	ld a, [hl]
@@ -274,51 +268,17 @@ _GetSpritePalette::
 	call GetMonSprite
 	jr c, .is_pokemon
 
-	ld hl, SpriteHeaders + SPRITEDATA_PALETTE
-	dec a
+	ld hl, SpriteHeaders + SPRITEDATA_TYPE_PAL - SPRITEDATA_LENGTH
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEDATA_FIELDS
+	ld a, SPRITEDATA_LENGTH
 	rst AddNTimes
 	ld a, [hl]
+	and SPRITEDATA_PALETTE_MASK
 	ret
 
 .is_pokemon
-	ld a, [wMapGroup]
-	cp GROUP_PLAYERS_HOUSE_2F
-	jr nz, .not_doll
-	ld a, [wMapNumber]
-	cp MAP_PLAYERS_HOUSE_2F
-	jr nz, .not_doll
 	farjp GetOverworldMonIconPalette
-
-.not_doll
-	cp GROUP_ROUTE_34
-	jr nz, .not_daycare
-	ld a, [wMapNumber]
-	cp MAP_ROUTE_34
-	jr nz, .not_daycare
-	farcall GetOverworldMonIconPalette
-
-	; gray, pink, and teal exist in the player's room for dolls,
-	; but not on Route 34 for the Day-Care overworld mons
-	cp PAL_OW_GRAY
-	jr z, .use_rock
-	cp PAL_OW_TEAL
-	jr z, .use_green
-	cp PAL_OW_PINK
-	ret nz
-.not_daycare
-	xor a ; PAL_OW_RED
-	ret
-
-.use_rock
-	ld a, PAL_OW_ROCK
-	ret
-
-.use_green
-	ld a, PAL_OW_GREEN
-	ret
 
 GetUsedSprite::
 	ldh a, [hUsedSpriteIndex]
@@ -398,16 +358,11 @@ endr
 LoadEmote::
 	push bc
 ; Get the address of the palette for emote c.
-	ld a, c
-	ld bc, 8
+	ld b, 0
 	ld hl, EmotePalettes
-	rst AddNTimes
-; load the emote palette
-	ld de, wOBPals2 palette PAL_OW_SILVER
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
+	add hl, bc
+	ld a, [hl]
+	ld [wEmotePal], a
 	pop bc
 ; Get the address of the pointer to emote c.
 	ld b, 0
@@ -424,9 +379,6 @@ LoadEmote::
 	ld de, vTiles0 tile $60
 ; load into vram0
 	jmp DecompressRequest2bpp
-
-EmotePalettes:
-INCLUDE "gfx/emotes/emotes.pal"
 
 INCLUDE "data/sprites/emotes.asm"
 

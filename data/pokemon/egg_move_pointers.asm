@@ -193,7 +193,7 @@ EggMovePointers::
 	dw SunkernEggMoves
 	dw NoEggMoves
 	dw YanmaEggMoves
-	dw WooperEggMoves
+	dw WooperPlainEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
@@ -287,7 +287,13 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
 	assert_table_length NUM_SPECIES
+
+	dw NoEggMoves
 
 	dw NoEggMoves
 
@@ -333,5 +339,10 @@ EggMovePointers::
 	dw NoEggMoves
 	dw QwilfishHisuianEggMoves
 	dw SneaselHisuianEggMoves
+
+	dw WooperPaldeanEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
 
 	assert_table_length NUM_EXT_POKEMON

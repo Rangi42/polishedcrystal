@@ -35,11 +35,9 @@ LoadStandardFontPointer::
 	ld e, a
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld h, d
-	ld l, e
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	ret
 
 .FontPointers:
@@ -60,7 +58,7 @@ _LoadFontsBattleExtra::
 	lb bc, BANK(BattleExtrasGFX), 32
 	call DecompressRequest2bpp
 
-LoadFrame::
+_LoadFrame::
 	ld a, [wTextboxFrame]
 	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
 	ld hl, Frames

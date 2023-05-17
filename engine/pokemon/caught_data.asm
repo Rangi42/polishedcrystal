@@ -146,14 +146,6 @@ SetCaughtData:
 	ld hl, wPartyMon1CaughtData
 	call GetPartyLocation
 SetBoxmonOrEggmonCaughtData:
-	; CaughtGender
-	ld a, [wPlayerGender]
-	and a
-	assert !MALE
-	jr z, .ok
-	ld a, FEMALE
-.ok
-	ld b, a
 	; CaughtTime
 	ld a, [wTimeOfDay]
 	inc a
@@ -161,7 +153,6 @@ SetBoxmonOrEggmonCaughtData:
 	rrca
 	rrca
 	and CAUGHT_TIME_MASK
-	or b
 	ld b, a
 	; CaughtBall
 	ld a, [wCurItem]
@@ -192,16 +183,13 @@ SetGiftPartyMonCaughtData:
 	ld hl, wPartyMon1CaughtData
 	call GetPartyLocation
 SetGiftMonCaughtData:
-	; CaughtGender
-	; b contains it
 	; CaughtTime
 	ld a, [wTimeOfDay]
 	inc a
 	rrca
 	rrca
 	rrca
-	and CAUGHT_TIME_MASK
-	or b
+	and CAUGHT_TIME_MASK ; no-optimize a = (a & MASK) | (b|c|d|e|h|l & ~MASK) (false detection)
 	ld b, a
 	; CaughtBall
 	; c contains it

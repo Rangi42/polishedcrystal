@@ -11,7 +11,7 @@
 	const SPRITE_MOM ; 07
 	const SPRITE_DAD ; 08
 	const SPRITE_LYRA ; 09
-	const SPRITE_SILVER ; 0a
+	const SPRITE_RIVAL ; 0a
 	const SPRITE_FALKNER ; 0b
 	const SPRITE_BUGSY ; 0c
 	const SPRITE_WHITNEY ; 0d
@@ -68,7 +68,7 @@
 	const SPRITE_ANABEL ; 40
 	const SPRITE_FLANNERY ; 41
 	const SPRITE_MAYLENE ; 42
-	const SPRITE_SKYLA ; 43
+	const SPRITE_MARLON ; 43
 	const SPRITE_VALERIE ; 44
 	const SPRITE_KUKUI ; 45
 	const SPRITE_CAITLIN ; 46
@@ -176,7 +176,7 @@
 	const SPRITE_BIG_LAPRAS ; ac
 	const SPRITE_BIG_ONIX ; ad
 	const SPRITE_BIG_GYARADOS ; ae
-	const SPRITE_PIDGEOTTO_SIDE ; af (blank side frame)
+	const SPRITE_PIDGEOTTO_SIDE ; af
 	const SPRITE_RATTATA_BACK ; b0 (blank side frame)
 	const SPRITE_SLOWPOKETAIL ; b1
 	const SPRITE_WEIRD_TREE ; b2
@@ -195,9 +195,15 @@
 	const SPRITE_ICE_BOULDER ; bf
 	const SPRITE_BEACH_GUY ; c0
 	const SPRITE_BEACH_GIRL ; c1
+	const SPRITE_PIERS ; c2
+	const SPRITE_KATY ; c3
+	const SPRITE_ALOLAN_EXEGGUTOR ; c4
+	const SPRITE_SOLDIER ; c5
+	const SPRITE_CRYS ; c6
+	const SPRITE_CRYS_BIKE ; c7
+	const SPRITE_CRYS_SURF ; c8
+	const SPRITE_THORTON ; c9
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
-
-	; c2-ee = 45 unused
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)
 	const_next $ef

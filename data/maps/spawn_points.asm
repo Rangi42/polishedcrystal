@@ -27,20 +27,24 @@ SpawnPoints:
 
 	spawn NEW_BARK_TOWN,              15,  6
 	spawn CHERRYGROVE_CITY,           29,  4
-	spawn VIOLET_CITY,                31, 30
+	spawn VIOLET_CITY,                31, 26
 	spawn ROUTE_32,                   11, 74
 	spawn AZALEA_TOWN,                15, 10
 	spawn CIANWOOD_CITY,              23, 44
 	spawn GOLDENROD_CITY,             18, 28
 	spawn OLIVINE_CITY,               13, 18
 	spawn ECRUTEAK_CITY,              23, 28
-	spawn SNOWTOP_MOUNTAIN,            1,  1
+	spawn SNOWTOP_MOUNTAIN_OUTSIDE,   17, 34
 	spawn MAHOGANY_TOWN,              15, 14
 	spawn ROUTE_48,                   11,  6
 	spawn LAKE_OF_RAGE,               21, 29
 	spawn BLACKTHORN_CITY,            21, 30
 	spawn SILVER_CAVE_OUTSIDE,        23, 14
 	spawn FAST_SHIP_CABINS_SW_SSW_NW,  6,  2
+
+	spawn SHAMOUTI_ISLAND,            21, 14
+	spawn VALENCIA_ISLAND,             8, 14
+	spawn NAVEL_ROCK_OUTSIDE,         12, 23
 
 	spawn N_A,                        -1, -1
 

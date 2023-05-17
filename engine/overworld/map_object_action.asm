@@ -24,25 +24,29 @@ ObjectActionPairPointers:
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; OBJECT_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; OBJECT_ACTION_STAND_FLIP
 	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; OBJECT_ACTION_POKECOM_NEWS
-	dw SetFacingArchTree,              SetFacingArchTree          ; OBJECT_ACTION_ARCH_TREE
+	dw SetFacingMuseumDrill,           SetFacingMuseumDrill       ; OBJECT_ACTION_MUSEUM_DRILL
 	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
 	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
 	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
+	dw SetFacingAlolanExeggutor,       SetFacingAlolanExeggutor   ; OBJECT_ACTION_ALOLAN_EXEGGUTOR
+	dw SetFacingShakeExeggutor,        SetFacingAlolanExeggutor   ; OBJECT_ACTION_SHAKE_EXEGGUTOR
+	dw SetFacingTinyWindows,           SetFacingTinyWindows       ; OBJECT_ACTION_TINY_WINDOWS
+	dw SetFacingMicrophone,            SetFacingMicrophone        ; OBJECT_ACTION_MICROPHONE
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
 	ld a, STANDING
 	jr SetFixedFacing
 
-SetFacingCurrent:
-	call GetSpriteDirection
-	jr SetFixedFacing
-
 SetFacingShadow:
 	ld a, FACING_SHADOW
 	jr SetFixedFacing
 
-SetFacingEmote: ; 4582 emote
+SetFacingCurrent:
+	call GetSpriteDirection
+	jr SetFixedFacing
+
+SetFacingEmote:
 	ld a, FACING_EMOTE
 	jr SetFixedFacing
 
@@ -62,6 +66,14 @@ SetFacingSailboatBottom:
 	ld a, FACING_SAILBOAT_BOTTOM
 	jr SetFixedFacing
 
+SetFacingAlolanExeggutor:
+	ld a, FACING_ALOLAN_EXEGGUTOR_0
+	jr SetFixedFacing
+
+SetFacingMicrophone:
+	ld a, FACING_MICROPHONE
+	jr SetFixedFacing
+
 SetFacingBigDoll:
 	ld a, [wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
 	cp SPRITE_BIG_ONIX
@@ -78,11 +90,18 @@ SetFacingFish:
 	add FACING_FISH_DOWN
 	jr SetFixedFacing
 
-SetFacingArchTree:
+SetFacingMuseumDrill:
 	call GetSpriteDirection
 	rrca
 	rrca
-	add FACING_ARCH_TREE_DOWN
+	add FACING_MUSEUM_DRILL_DOWN
+	jr SetFixedFacing
+
+SetFacingTinyWindows:
+	ld hl, OBJECT_RADIUS
+	add hl, bc
+	ld a, [hl]
+	add FACING_TINY_WINDOWS_0 - $11
 	jr SetFixedFacing
 
 SetFacingStandFlip:
@@ -91,19 +110,18 @@ SetFacingStandFlip:
 	rrca
 	add FACING_STEP_DOWN_FLIP
 SetFixedFacing:
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
 	ret
 
 SetFacingStandAction:
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld a, [hl]
 	and 1
 	jr z, SetFacingCurrent
 	; fallthrough
-
 SetFacingStepAction:
 SetFacingBumpAction:
 	ld hl, OBJECT_FLAGS1
@@ -111,10 +129,7 @@ SetFacingBumpAction:
 	bit SLIDING_F, [hl]
 	jr nz, SetFacingCurrent
 
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
+	call _GetNextStepFrame
 	rrca
 	rrca
 	rrca
@@ -122,7 +137,7 @@ SetFacingBumpAction:
 	ld d, a
 	call GetSpriteDirection
 	or d
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
 	ret
@@ -131,7 +146,7 @@ SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING_F, [hl]
-	jr nz, SetFacingCurrent
+	jmp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
@@ -150,7 +165,7 @@ SetFacingSkyfall:
 
 SetFacingCounterclockwiseSpin:
 	call CounterclockwiseSpinAction
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld a, [hl]
 	jr SetFixedFacing
@@ -189,7 +204,7 @@ CounterclockwiseSpinAction:
 	ld hl, .Directions
 	add hl, de
 	ld a, [hl]
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld [hl], a
 	ret
@@ -202,9 +217,9 @@ SetFacingBounce:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	and %00001111
+	and %00011111
 	ld [hl], a
-	and %00001000
+	and %00010000
 	ld a, FACING_STEP_UP_0
 	jmp nz, SetFixedFacing
 SetFacingFreezeBounce:
@@ -240,32 +255,33 @@ SetFacingBigGyarados:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	and %00001111
+	and %00011111
 	ld [hl], a
-	and %00001000
+	and %00010000
 	ld a, FACING_BIG_GYARADOS_2
 	jmp nz, SetFixedFacing
 SetFacingFreezeBigGyarados:
 	ld a, FACING_BIG_GYARADOS_1
 	jmp SetFixedFacing
 
+SetFacingShakeExeggutor:
+	call _GetNextStepFrame
+	and %110000
+	swap a
+	add FACING_ALOLAN_EXEGGUTOR_0
+	jmp SetFixedFacing
+
 SetFacingWeirdTree:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and %00001100
+	call _GetNextStepFrame
+	and %1100
 	rrca
 	rrca
 	add FACING_WEIRD_TREE_0
 	jmp SetFixedFacing
 
 SetFacingBoulderDust:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and 2
+	call _GetNextStepFrame
+	and %10
 	ld a, FACING_BOULDER_DUST_1
 	jr z, .ok
 	inc a ; FACING_BOULDER_DUST_2
@@ -273,11 +289,8 @@ SetFacingBoulderDust:
 	jmp SetFixedFacing
 
 SetFacingGrassShake:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and 4
+	call _GetNextStepFrame
+	and %100
 	ld a, FACING_GRASS_1
 	jr z, .ok
 	inc a ; FACING_GRASS_2
@@ -285,11 +298,8 @@ SetFacingGrassShake:
 	jmp SetFixedFacing
 
 SetFacingPuddleSplash:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and 4
+	call _GetNextStepFrame
+	and %100
 	ld a, FACING_SPLASH_1
 	jr z, .ok
 	inc a ; FACING_SPLASH_2
@@ -302,17 +312,21 @@ SetFacingRun:
 	bit SLIDING_F, [hl]
 	jmp nz, SetFacingCurrent
 
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
+	call _GetNextStepFrame
 	rrca
 	rrca
 	and %11
 	ld d, a
 	call GetSpriteDirection
 	or d
-	ld hl, OBJECT_FACING_STEP
+	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
+	ret
+
+_GetNextStepFrame:
+	ld hl, OBJECT_STEP_FRAME
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
 	ret

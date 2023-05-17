@@ -515,12 +515,12 @@ BT_AppendOTMon:
 	rst ByteFill
 
 	; If Speed DV is zero, also set Speed EV to zero
-	ld hl, wPartyMon1DefSpdDV - wPartyMon1
+	ld hl, wPartyMon1DefSpeDV - wPartyMon1
 	add hl, de
 	ld a, [hl]
 	and $f
 	jr nz, .speed_dv_ok
-	ld hl, MON_SPD_EV
+	ld hl, MON_SPE_EV
 	add hl, de
 	ld [hl], a
 
@@ -728,6 +728,7 @@ BT_GetPointsForTrainer:
 BT_GetEVsForTrainer:
 ; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 16,
 ; capped at 252 in Battle Tower, and always 252 in Battle Factory.
+; If modern EVs are enabled, the EVs are divided by 3 before return.
 	ld b, a
 	farcall BT_InRentalMode
 	jr z, .max
@@ -745,10 +746,24 @@ BT_GetEVsForTrainer:
 
 	; EVs = (current streak + current trainer) * 16
 	swap a
-	ret
+	jr DivideModernEVs
 
 .max
-	ld a, 252
+	ld a, MODERN_MAX_EV
+	; fallthrough
+DivideModernEVs:
+; Divides a by 3 if modern EVs are enabled. Intended to be run on a classical
+; EV input. 252 -> 84, a single stat point below the 510 limit (close enough).
+	push bc
+	ld b, a
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ld a, b
+	ld c, 3
+	call z, SimpleDivide
+	ld a, b ; Quotient if zero, otherwise a no-op.
+	pop bc
 	ret
 
 BT_GetTargetTier:
@@ -849,8 +864,8 @@ BT_SetLevel:
 	pop hl
 	pop de
 	push de
+	xor a
 	bit 7, d
-	ld a, 0
 	jr nz, .hyper_training_done
 	push hl
 	ld a, e

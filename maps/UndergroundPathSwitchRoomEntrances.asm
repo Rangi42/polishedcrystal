@@ -14,10 +14,13 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	warp_event 21, 23, WAREHOUSE_ENTRANCE, 1
 	warp_event 20, 27, GOLDENROD_CITY, 13
 	warp_event 21, 27, GOLDENROD_CITY, 13
+	warp_event  5, 37, WAREHOUSE_ENTRANCE, 7
+	warp_event  4, 41, GOLDENROD_CITY, 22
+	warp_event  5, 41, GOLDENROD_CITY, 22
 
 	def_coord_events
-	coord_event 19,  4, 0, UndergroundSilverTrigger1
-	coord_event 19,  5, 0, UndergroundSilverTrigger2
+	coord_event 19,  4, 0, UndergroundRivalTrigger1
+	coord_event 19,  5, 0, UndergroundRivalTrigger2
 
 	def_bg_events
 	bg_event 16,  1, BGEVENT_READ, Switch1Script
@@ -28,7 +31,7 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	bg_event  1,  8, BGEVENT_ITEM + REVIVE, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE
 
 	def_object_events
-	object_event 23,  3, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
+	object_event 23,  3, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
 	object_event  9, 12, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  4,  8, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 17,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -38,11 +41,13 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	object_event  3, 25, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_TeacherText, -1
 	object_event  8, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd1Text, -1
 	object_event 19, 25, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd2Text, -1
+	object_event  1, 39, SPRITE_VETERAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, UndergroundPathSwitchRoomEntrancesVeteranMScript, -1
+	object_event  8, 38, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_BeautyText, -1
 	itemball_event  1, 12, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
 	itemball_event 14,  9, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
 
 	object_const_def
-	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	const UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 
 DEF UNDERGROUND_DOOR_CLOSED1 EQU $2a
 DEF UNDERGROUND_DOOR_CLOSED2 EQU $3e
@@ -128,59 +133,59 @@ UndergroundPathSwitchRoomEntrancesUpdateDoorPositions:
 .false14
 	endcallback
 
-UndergroundSilverTrigger1:
+UndergroundRivalTrigger1:
 	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	playsound SFX_EXIT_BUILDING
-	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	waitsfx
-	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverApproachMovement1
+	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL, UndergroundRivalApproachMovement1
 	turnobject PLAYER, RIGHT
-	scall UndergroundSilverBattleScript
-	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverRetreatMovement1
+	scall UndergroundRivalBattleScript
+	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL, UndergroundRivalRetreatMovement1
 	playsound SFX_EXIT_BUILDING
-	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	setscene 1
 	waitsfx
 	playmapmusic
 	end
 
-UndergroundSilverTrigger2:
+UndergroundRivalTrigger2:
 	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	playsound SFX_EXIT_BUILDING
-	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	waitsfx
-	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverApproachMovement2
+	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL, UndergroundRivalApproachMovement2
 	turnobject PLAYER, RIGHT
-	scall UndergroundSilverBattleScript
-	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverRetreatMovement2
+	scall UndergroundRivalBattleScript
+	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL, UndergroundRivalRetreatMovement2
 	playsound SFX_EXIT_BUILDING
-	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	setscene 1
 	waitsfx
 	playmapmusic
 	end
 
-UndergroundSilverBattleScript:
+UndergroundRivalBattleScript:
 	checkevent EVENT_RIVAL_BURNED_TOWER
 	iftruefwd .Continue
 	setevent EVENT_RIVAL_BURNED_TOWER
 	setmapscene BURNED_TOWER_1F, 1
 .Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	showtext UndergroundSilverBeforeText
+	showtext UndergroundRivalBeforeText
 	setevent EVENT_RIVAL_UNDERGROUND_PATH
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftruefwd .Chikorita
-	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
-	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
+	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	loadtrainer RIVAL1, RIVAL1_12
 	startbattle
 	dontrestartmapmusic
@@ -188,8 +193,8 @@ UndergroundSilverBattleScript:
 	sjumpfwd .FinishRivalBattle
 
 .Totodile:
-	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
-	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
+	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	loadtrainer RIVAL1, RIVAL1_10
 	startbattle
 	dontrestartmapmusic
@@ -197,8 +202,8 @@ UndergroundSilverBattleScript:
 	sjumpfwd .FinishRivalBattle
 
 .Chikorita:
-	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
-	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
+	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
+	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
 	loadtrainer RIVAL1, RIVAL1_11
 	startbattle
 	dontrestartmapmusic
@@ -208,7 +213,7 @@ UndergroundSilverBattleScript:
 .FinishRivalBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	jumptext UndergroundSilverAfterText
+	jumptext UndergroundRivalAfterText
 
 GenericTrainerGruntM11:
 	generictrainer GRUNTM, 11, EVENT_BEAT_ROCKET_GRUNTM_11, GruntM11SeenText, GruntM11BeatenText
@@ -614,14 +619,14 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	clearevent EVENT_SWITCH_14
 	end
 
-UndergroundSilverApproachMovement1:
+UndergroundRivalApproachMovement1:
 	step_down
 	step_left
 	step_left
 	step_left
 	step_end
 
-UndergroundSilverApproachMovement2:
+UndergroundRivalApproachMovement2:
 	step_down
 	step_down
 	step_left
@@ -629,14 +634,14 @@ UndergroundSilverApproachMovement2:
 	step_left
 	step_end
 
-UndergroundSilverRetreatMovement1:
+UndergroundRivalRetreatMovement1:
 	step_right
 	step_right
 	step_right
 	step_up
 	step_end
 
-UndergroundSilverRetreatMovement2:
+UndergroundRivalRetreatMovement2:
 	step_right
 	step_right
 	step_right
@@ -644,7 +649,36 @@ UndergroundSilverRetreatMovement2:
 	step_up
 	step_end
 
-UndergroundSilverBeforeText:
+UndergroundPathSwitchRoomEntrancesVeteranMScript:
+	checkevent EVENT_GOT_LOADED_DICE_FROM_GOLDENROD
+	iftrue_jumptextfaceplayer .Text2
+	faceplayer
+	opentext
+	writetext .Text1
+	promptbutton
+	verbosegiveitem LOADED_DICE
+	iffalse_endtext
+	setevent EVENT_GOT_LOADED_DICE_FROM_GOLDENROD
+	jumpthisopenedtext
+
+.Text2:
+	text "In the long run,"
+	line "the house always"
+	cont "wins…"
+	done
+
+.Text1:
+	text "I tried to use"
+	line "this item in the"
+
+	para "Game Corner, but"
+	line "they caught me."
+
+	para "You may as well"
+	line "take it."
+	done
+
+UndergroundRivalBeforeText:
 	text "Hold it!"
 
 	para "I saw you, so I"
@@ -667,7 +701,7 @@ UndergroundSilverBeforeText:
 	line "debts!"
 	done
 
-UndergroundSilverWinText:
+UndergroundRivalWinText:
 	text "…Why…"
 	line "Why do I lose?"
 
@@ -680,7 +714,7 @@ UndergroundSilverWinText:
 	para "So why do I lose?"
 	done
 
-UndergroundSilverAfterText:
+UndergroundRivalAfterText:
 	text "…I don't under-"
 	line "stand…"
 
@@ -716,7 +750,7 @@ UndergroundSilverAfterText:
 	line "#mon trainer!"
 	done
 
-UndergroundSilverLossText:
+UndergroundRivalLossText:
 	text "Humph. This is my"
 	line "real power, wimp."
 
@@ -760,6 +794,17 @@ UndergroundPathSwitchRoomEntrances_SuperNerd2Text:
 	para "It's rough down"
 	line "there. You'd"
 	cont "better be careful."
+	done
+
+UndergroundPathSwitchRoomEntrances_BeautyText:
+	text "I went on a tour"
+	line "of the Radio"
+
+	para "Tower. I saw all"
+	line "three studios and"
+
+	para "even ate in the"
+	line "café."
 	done
 
 GruntM11SeenText:

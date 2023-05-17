@@ -14,6 +14,7 @@ Route30_MapScriptHeader:
 	bg_event 13, 29, BGEVENT_JUMPTEXT, MrPokemonsHouseDirectionsSignText
 	bg_event 15,  5, BGEVENT_JUMPTEXT, MrPokemonsHouseSignText
 	bg_event  3, 21, BGEVENT_JUMPTEXT, Route30TrainerTipsText
+	bg_event 11,  8, BGEVENT_JUMPTEXT, Route30AdvancedTipsText
 	bg_event 14,  9, BGEVENT_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
 	bg_event  5, 39, BGEVENT_JUMPTEXT, BerryMastersHouseSignText
 
@@ -28,7 +29,7 @@ Route30_MapScriptHeader:
 	object_event  2, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
 	cuttree_event  8,  6, EVENT_ROUTE_30_CUT_TREE
 	fruittree_event 10, 39, FRUITTREE_ROUTE_30_1, ORAN_BERRY, PAL_NPC_BLUE
-	fruittree_event 11,  5, FRUITTREE_ROUTE_30_2, PECHA_BERRY, PAL_NPC_RED
+	fruittree_event 11,  5, FRUITTREE_ROUTE_30_2, PECHA_BERRY, PAL_NPC_PINK
 	itemball_event  8, 35, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
 	object_const_def
@@ -330,6 +331,31 @@ Route30TrainerTipsText:
 	para "# Balls are to"
 	line "be thrown only at"
 	cont "wild #mon!"
+	done
+
+Route30AdvancedTipsText:
+	text "Advanced Tips!"
+
+	para "During a battle,"
+	line "press Select to"
+	cont "switch #mon!"
+
+	para "Press Start to"
+	line "reuse an item!"
+
+	para "Or press B to"
+	line "run away or"
+	cont "forfeit!"
+
+	para "When you're choos-"
+	line "ing a move to use,"
+
+	para "press Select to"
+	line "swap it with an-"
+	cont "other one, or"
+
+	para "press Start to see"
+	line "its description!"
 	done
 
 YoungsterJoeyText_GiveHPUpAfterBattle:

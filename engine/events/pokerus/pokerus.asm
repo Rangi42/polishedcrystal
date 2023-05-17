@@ -121,8 +121,7 @@ GivePokerusAndConvertBerries:
 	call Random
 	and $f ; 16/256 = 1/16 chance
 	jr nz, .no_berry_juice
-	ld a, BERRY_JUICE
-	ld [hl], a
+	ld [hl], BERRY_JUICE
 .no_berry_juice
 	ld de, PARTYMON_STRUCT_LENGTH - 1
 	add hl, de

@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "ChrisSpriteGFX", ROMX
 ChrisSpriteGFX:: INCBIN "gfx/sprites/chris.2bpp.lz"
 
@@ -28,8 +25,8 @@ DadSpriteGFX:: INCBIN "gfx/sprites/dad.2bpp.lz"
 SECTION "LyraSpriteGFX", ROMX
 LyraSpriteGFX:: INCBIN "gfx/sprites/lyra.2bpp.lz"
 
-SECTION "SilverSpriteGFX", ROMX
-SilverSpriteGFX:: INCBIN "gfx/sprites/silver.2bpp.lz"
+SECTION "RivalSpriteGFX", ROMX
+RivalSpriteGFX:: INCBIN "gfx/sprites/rival.2bpp.lz"
 
 SECTION "FalknerSpriteGFX", ROMX
 FalknerSpriteGFX:: INCBIN "gfx/sprites/falkner.2bpp.lz"
@@ -199,8 +196,8 @@ FlannerySpriteGFX:: INCBIN "gfx/sprites/flannery.2bpp.lz"
 SECTION "MayleneSpriteGFX", ROMX
 MayleneSpriteGFX:: INCBIN "gfx/sprites/maylene.2bpp.lz"
 
-SECTION "SkylaSpriteGFX", ROMX
-SkylaSpriteGFX:: INCBIN "gfx/sprites/skyla.2bpp.lz"
+SECTION "MarlonSpriteGFX", ROMX
+MarlonSpriteGFX:: INCBIN "gfx/sprites/marlon.2bpp.lz"
 
 SECTION "ValerieSpriteGFX", ROMX
 ValerieSpriteGFX:: INCBIN "gfx/sprites/valerie.2bpp.lz"
@@ -308,6 +305,7 @@ SECTION "ElderSpriteGFX", ROMX
 ElderSpriteGFX:: INCBIN "gfx/sprites/elder.2bpp.lz"
 
 SECTION "EngineerSpriteGFX", ROMX
+SoldierSpriteGFX::
 EngineerSpriteGFX:: INCBIN "gfx/sprites/engineer.2bpp.lz"
 
 SECTION "FatGuySpriteGFX", ROMX
@@ -579,3 +577,24 @@ BeachGuySpriteGFX:: INCBIN "gfx/sprites/beach_guy.2bpp.lz"
 
 SECTION "BeachGirlSpriteGFX", ROMX
 BeachGirlSpriteGFX:: INCBIN "gfx/sprites/beach_girl.2bpp.lz"
+
+SECTION "PiersSpriteGFX", ROMX
+PiersSpriteGFX:: INCBIN "gfx/sprites/piers.2bpp.lz"
+
+SECTION "KatySpriteGFX", ROMX
+KatySpriteGFX:: INCBIN "gfx/sprites/katy.2bpp.lz"
+
+SECTION "AlolanExeggutorSpriteGFX", ROMX
+AlolanExeggutorSpriteGFX:: INCBIN "gfx/sprites/alolan_exeggutor.2bpp.lz"
+
+SECTION "CrysSpriteGFX", ROMX
+CrysSpriteGFX:: INCBIN "gfx/sprites/crys.2bpp.lz"
+
+SECTION "CrysBikeSpriteGFX", ROMX
+CrysBikeSpriteGFX:: INCBIN "gfx/sprites/crys_bike.2bpp.lz"
+
+SECTION "CrysSurfSpriteGFX", ROMX
+CrysSurfSpriteGFX:: INCBIN "gfx/sprites/crys_surf.2bpp.lz"
+
+SECTION "ThortonSpriteGFX", ROMX
+ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lz"

@@ -10,18 +10,18 @@ MACRO password_group
 ENDM
 
 BuenasPasswordTable:
-	table_width 2, BuenasPasswordTable
-	dw .JohtoStarters
-	dw .Beverages
-	dw .HealingItems
-	dw .Balls
-	dw .Pokemon1
-	dw .Pokemon2
-	dw .JohtoTowns
-	dw .Types
-	dw .Moves
-	dw .XItems
-	dw .RadioStations
+	table_width 1, BuenasPasswordTable
+	dr .JohtoStarters
+	dr .Beverages
+	dr .HealingItems
+	dr .Balls
+	dr .Pokemon1
+	dr .Pokemon2
+	dr .JohtoTowns
+	dr .Types
+	dr .Moves
+	dr .XItems
+	dr .RadioStations
 	assert_table_length NUM_PASSWORD_CATEGORIES
 
                 ; string type, points, option 1, option 2, option 3

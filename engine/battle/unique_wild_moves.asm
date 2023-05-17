@@ -78,6 +78,13 @@ CheckUniqueWildMove:
 .ok
 	ld a, b
 	ld [hl], a
+
+	; assume only Pikachu can learn Surf or Fly
+	cp SURF
+	jr z, .UseSurfingPikachu
+	cp FLY
+	ld a, PIKACHU_FLY_FORM
+	jr z, .UseFlyingPikachu
 	ret
 
 .inc3andloop
@@ -87,5 +94,17 @@ CheckUniqueWildMove:
 .inc1andloop
 	inc hl
 	jr .loop
+
+.UseSurfingPikachu
+	ld a, PIKACHU_SURF_FORM
+.UseFlyingPikachu
+	ld b, a
+	ld a, [wCurForm]
+	and ~FORM_MASK
+	or b
+	ld [wCurForm], a
+	ld [wOTPartyMon1Form], a
+	ld [wEnemyMonForm], a
+	ret
 
 INCLUDE "data/pokemon/unique_wild_moves.asm"

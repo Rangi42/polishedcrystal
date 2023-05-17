@@ -2,7 +2,7 @@ CopyDVsToColorVaryDVs:
 ; e = HPAtkDV
 	ld a, [hli]
 	ld e, a
-; d = DefSpdDV
+; d = DefSpeDV
 	ld a, [hli]
 	ld d, a
 ; c = SatSdfDV
@@ -22,7 +22,7 @@ CopyDVsToColorVaryDVs:
 ; wColorVaryDVs = HPAtkDV
 	ld a, e
 	ld [hli], a
-; wColorVaryDVs+1 = DefSpdDV
+; wColorVaryDVs+1 = DefSpeDV
 	ld a, d
 	ld [hli], a
 ; wColorVaryDVs+2 = SatSdfDV
@@ -193,17 +193,18 @@ VaryColorsByDVs::
 ; [wColorVaryForm] = form
 ; [wColorVaryShiny] = shiny
 
-if DEF(MONOCHROME) || DEF(NOIR)
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-endc
-
+if !DEF(MONOCHROME) && !DEF(NOIR)
 	ld a, [wInitialOptions]
 	bit COLOR_VARY_OPT, a
-	ret z
+	jr nz, .continue
+endc
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ret
 
+.continue
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
@@ -238,7 +239,7 @@ endc
 ; vary LiteGrn by e
 	call VaryGreenByDV
 
-;;; advance from HP/Atk DV to Def/Spd DV
+;;; advance from HP/Atk DV to Def/Spe DV
 	inc bc
 
 ;;; LiteBlu ~ DefDV, aka, bbbbb ~ dddd
@@ -255,15 +256,15 @@ endc
 	inc hl
 
 .Finish:
-;;; DarkRed ~ SpdDV, aka, RRRRR ~ ssss
-; store SpdDV in e
+;;; DarkRed ~ SpeDV, aka, RRRRR ~ ssss
+; store SpeDV in e
 	ld a, [bc]
 	and %1111
 	ld e, a
 ; vary DarkRed by e
 	call VaryRedByDV
 
-;;; move from Def/Spd DV to SAt/SDf DV
+;;; move from Def/Spe DV to SAt/SDf DV
 	inc bc
 
 ;;; DarkGrn ~ SAtDV, aka, GGGGG ~ pppp
@@ -333,7 +334,7 @@ endc
 	ld a, d
 	ld [hld], a
 	dec hl
-;;; LiteRGB ~ Spd,SAt,SDfDVs
+;;; LiteRGB ~ Spe,SAt,SDfDVs
 	jr .Finish
 
 ; red and blue channels: no 0 or 31
@@ -341,75 +342,7 @@ endc
 ; need to be able to add or subtract 1 without overflow/underflow
 
 .SmearglePals:
-if !DEF(MONOCHROME)
-	RGB 14, 05, 06 ; maroon (fighting)
-	RGB 27, 09, 26 ; lavender (flying)
-	RGB 29, 05, 06 ; red (poison)
-	RGB 26, 26, 26 ; white (ground)
-	RGB 18, 11, 05 ; brown (rock)
-	RGB 16, 28, 01 ; lime (bug)
-	RGB 14, 06, 27 ; purple (ghost)
-	RGB 14, 14, 18 ; gray (steel)
-	RGB 29, 13, 02 ; orange (fire)
-	RGB 01, 09, 28 ; blue (water)
-	RGB 04, 19, 01 ; green (grass)
-	RGB 30, 25, 01 ; yellow (electric)
-	RGB 30, 10, 13 ; pink (psychic)
-	RGB 02, 22, 26 ; teal (ice)
-	RGB 07, 11, 30 ; indigo (dragon)
-	RGB 08, 06, 06 ; black (dark)
-else
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-endc
+INCLUDE "gfx/pokemon/smeargle.pal"
 
 .SmeargleShinyPals: ; TODO
-if !DEF(MONOCHROME)
-	RGB 14, 05, 06 ; maroon (fighting)
-	RGB 27, 09, 26 ; lavender (flying)
-	RGB 29, 05, 06 ; red (poison)
-	RGB 26, 26, 26 ; white (ground)
-	RGB 18, 11, 05 ; brown (rock)
-	RGB 16, 28, 01 ; lime (bug)
-	RGB 14, 06, 27 ; purple (ghost)
-	RGB 14, 14, 18 ; gray (steel)
-	RGB 29, 13, 02 ; orange (fire)
-	RGB 01, 09, 28 ; blue (water)
-	RGB 04, 19, 01 ; green (grass)
-	RGB 30, 25, 01 ; yellow (electric)
-	RGB 30, 10, 13 ; pink (psychic)
-	RGB 02, 22, 26 ; teal (ice)
-	RGB 07, 11, 30 ; indigo (dragon)
-	RGB 08, 06, 06 ; black (dark)
-else
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-endc
+INCLUDE "gfx/pokemon/smeargle_shiny.pal"

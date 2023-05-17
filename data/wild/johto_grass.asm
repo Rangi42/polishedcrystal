@@ -821,7 +821,7 @@
 	wildmon 32, SWINUB
 	wildmon 34, GOLBAT
 	wildmon 32, GOLBAT
-	wildmon 32, NINETALES, ALOLAN_FORM
+	wildmon 34, VULPIX, ALOLAN_FORM
 	; day
 	wildmon 30, SWINUB
 	wildmon 32, ZUBAT
@@ -829,7 +829,7 @@
 	wildmon 32, SWINUB
 	wildmon 34, GOLBAT
 	wildmon 32, GOLBAT
-	wildmon 32, NINETALES, ALOLAN_FORM
+	wildmon 34, VULPIX, ALOLAN_FORM
 	; nite
 	wildmon 30, DELIBIRD
 	wildmon 31, ZUBAT
@@ -848,7 +848,7 @@
 	wildmon 33, VULPIX, ALOLAN_FORM
 	wildmon 34, SWINUB
 	wildmon 35, GOLBAT
-	wildmon 33, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	; day
 	wildmon 32, SWINUB
@@ -856,7 +856,7 @@
 	wildmon 33, VULPIX, ALOLAN_FORM
 	wildmon 34, SWINUB
 	wildmon 35, GOLBAT
-	wildmon 33, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	; nite
 	wildmon 32, DELIBIRD
@@ -875,7 +875,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; day
@@ -883,7 +883,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; nite
@@ -903,7 +903,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; day
@@ -911,7 +911,7 @@
 	wildmon 34, ZUBAT
 	wildmon 34, VULPIX, ALOLAN_FORM
 	wildmon 35, SWINUB
-	wildmon 35, NINETALES, ALOLAN_FORM
+	wildmon 35, VULPIX, ALOLAN_FORM
 	wildmon 32, JYNX
 	wildmon 34, JYNX
 	; nite
@@ -1504,7 +1504,7 @@
 	wildmon 10, DITTO
 	; nite
 	wildmon 12, DROWZEE
-	wildmon 11, RATTATA, ALOLAN_FORM
+	wildmon 11, RATTATA
 	wildmon 12, HOOTHOOT
 	wildmon 10, ABRA
 	wildmon 12, JIGGLYPUFF
@@ -1534,7 +1534,7 @@
 	wildmon 12, DROWZEE
 	wildmon 14, HOOTHOOT
 	wildmon 13, PSYDUCK
-	wildmon 10, ABRA
+	wildmon 13, HOOTHOOT
 	wildmon 12, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 12, YANMA
@@ -1644,7 +1644,7 @@
 	wildmon 15, TAUROS
 	; nite
 	wildmon 16, MEOWTH
-	wildmon 16, RATICATE, ALOLAN_FORM
+	wildmon 16, RATICATE
 	wildmon 16, MAGNEMITE
 	wildmon 16, NOCTOWL
 	wildmon 18, MEOWTH
@@ -1796,46 +1796,46 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon LEVEL_FROM_BADGES + 1, DITTO
-	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, MILTANK
 	wildmon LEVEL_FROM_BADGES - 3, GLOOM
 	wildmon LEVEL_FROM_BADGES - 3, RATICATE
-	wildmon LEVEL_FROM_BADGES - 4, FARFETCH_D
-	wildmon LEVEL_FROM_BADGES - 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES - 4, FARFETCH_D, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, FARFETCH_D, GALARIAN_FORM
 	; day
 	wildmon LEVEL_FROM_BADGES + 1, DITTO
-	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, MILTANK
 	wildmon LEVEL_FROM_BADGES - 3, GLOOM
 	wildmon LEVEL_FROM_BADGES - 3, RATICATE
-	wildmon LEVEL_FROM_BADGES - 4, FARFETCH_D
-	wildmon LEVEL_FROM_BADGES - 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES - 4, FARFETCH_D, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, FARFETCH_D, GALARIAN_FORM
 	; nite
 	wildmon LEVEL_FROM_BADGES + 1, DITTO
-	wildmon LEVEL_FROM_BADGES + 0, NOCTOWL
+	wildmon LEVEL_FROM_BADGES + 1, NOCTOWL
 	wildmon LEVEL_FROM_BADGES + 0, MILTANK
 	wildmon LEVEL_FROM_BADGES - 3, GLOOM
 	wildmon LEVEL_FROM_BADGES - 3, RATICATE
-	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D
-	wildmon LEVEL_FROM_BADGES - 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES - 4, NOCTOWL
+	wildmon LEVEL_FROM_BADGES - 1, NOCTOWL
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_48
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, TAUROS
 	wildmon LEVEL_FROM_BADGES - 2, SUNFLORA
 	wildmon LEVEL_FROM_BADGES - 2, GROWLITHE
-	wildmon LEVEL_FROM_BADGES - 3, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES - 3, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES - 4, GIRAFARIG
 	wildmon LEVEL_FROM_BADGES - 4, GIRAFARIG
 	; day
-	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, TAUROS
 	wildmon LEVEL_FROM_BADGES - 2, GLOOM
 	wildmon LEVEL_FROM_BADGES - 2, HOUNDOUR
-	wildmon LEVEL_FROM_BADGES - 3, FARFETCH_D
+	wildmon LEVEL_FROM_BADGES - 3, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES - 4, GIRAFARIG
 	wildmon LEVEL_FROM_BADGES - 4, GIRAFARIG
 	; nite
@@ -1902,6 +1902,62 @@
 	wildmon 73, HOUNDOOM
 	wildmon 75, SNEASEL
 	wildmon 75, SNEASEL
+	end_grass_wildmons
+
+	def_grass_wildmons VIOLET_OUTSKIRTS
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, RATTATA, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
+	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 3, GROWLITHE
+	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
+	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, RATTATA, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
+	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 3, GROWLITHE
+	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
+	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, RATTATA, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES - 0, GASTLY
+	wildmon LEVEL_FROM_BADGES - 3, VULPIX
+	wildmon LEVEL_FROM_BADGES - 1, NOCTOWL
+	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	end_grass_wildmons
+
+	def_grass_wildmons ROUTE_32_COAST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES + 1, RATICATE
+	wildmon LEVEL_FROM_BADGES - 1, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 1, MAREEP
+	wildmon LEVEL_FROM_BADGES + 0, FLAAFFY
+	wildmon LEVEL_FROM_BADGES + 1, SKIPLOOM
+	wildmon LEVEL_FROM_BADGES + 3, SKIPLOOM
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES + 1, RATICATE
+	wildmon LEVEL_FROM_BADGES - 1, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 1, MAREEP
+	wildmon LEVEL_FROM_BADGES + 0, FLAAFFY
+	wildmon LEVEL_FROM_BADGES + 1, SKIPLOOM
+	wildmon LEVEL_FROM_BADGES + 3, SKIPLOOM
+	; nite
+	wildmon LEVEL_FROM_BADGES + 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 4, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 2, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES + 1, GASTLY
+	wildmon LEVEL_FROM_BADGES + 1, HAUNTER
+	wildmon LEVEL_FROM_BADGES + 5, HAUNTER
 	end_grass_wildmons
 
 	def_grass_wildmons YELLOW_FOREST
@@ -2044,26 +2100,54 @@
 	wildmon LEVEL_FROM_BADGES + 3, STEELIX
 	end_grass_wildmons
 
+	def_grass_wildmons STORMY_BEACH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES + 0, GLOOM
+	wildmon LEVEL_FROM_BADGES + 1, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES - 1, GRIMER, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMA
+	; day
+	wildmon LEVEL_FROM_BADGES - 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES + 0, GLOOM
+	wildmon LEVEL_FROM_BADGES + 1, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES - 1, GRIMER, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMA
+	; nite
+	wildmon LEVEL_FROM_BADGES - 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 2, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES + 0, GLOOM
+	wildmon LEVEL_FROM_BADGES - 4, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, GASTLY
+	wildmon LEVEL_FROM_BADGES + 1, HAUNTER
+	wildmon LEVEL_FROM_BADGES + 5, HAUNTER
+	end_grass_wildmons
+
 	def_grass_wildmons MURKY_SWAMP
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon LEVEL_FROM_BADGES - 2, WOOPER
-	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES - 2, WOOPER, PALDEAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, CLODSIRE
 	wildmon LEVEL_FROM_BADGES - 1, YANMA
-	wildmon LEVEL_FROM_BADGES - 1, YANMA
+	wildmon LEVEL_FROM_BADGES - 1, GRIMER, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, GRIMER, ALOLAN_FORM
-	wildmon LEVEL_FROM_BADGES + 1, GRIMER, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, MUK, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES + 3, YANMEGA
 	; day
-	wildmon LEVEL_FROM_BADGES - 2, WOOPER
-	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES - 2, WOOPER, PALDEAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, CLODSIRE
 	wildmon LEVEL_FROM_BADGES - 1, YANMA
-	wildmon LEVEL_FROM_BADGES - 1, YANMA
+	wildmon LEVEL_FROM_BADGES - 1, GRIMER, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, GRIMER, ALOLAN_FORM
-	wildmon LEVEL_FROM_BADGES + 1, GRIMER, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, MUK, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES + 3, YANMEGA
 	; nite
-	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES + 1, CLODSIRE
 	wildmon LEVEL_FROM_BADGES - 4, ZUBAT
 	wildmon LEVEL_FROM_BADGES + 1, VENONAT
 	wildmon LEVEL_FROM_BADGES - 2, GASTLY
@@ -2073,7 +2157,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MAGNET_TUNNEL_INSIDE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
@@ -2098,6 +2182,62 @@
 	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
 	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
 	wildmon LEVEL_FROM_BADGES - 1, ELEKID
+	end_grass_wildmons
+
+	def_grass_wildmons RUGGED_ROAD_SOUTH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, GEODUDE
+	wildmon LEVEL_FROM_BADGES - 2, GROWLITHE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
+	wildmon LEVEL_FROM_BADGES - 1, SKARMORY
+	wildmon LEVEL_FROM_BADGES + 0, SKARMORY
+	wildmon LEVEL_FROM_BADGES + 1, GROWLITHE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, GROWLITHE, HISUIAN_FORM
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, GEODUDE
+	wildmon LEVEL_FROM_BADGES - 2, GROWLITHE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
+	wildmon LEVEL_FROM_BADGES - 1, SKARMORY
+	wildmon LEVEL_FROM_BADGES + 0, SKARMORY
+	wildmon LEVEL_FROM_BADGES + 1, GROWLITHE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, GROWLITHE, HISUIAN_FORM
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, GEODUDE
+	wildmon LEVEL_FROM_BADGES - 2, GRAVELER
+	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
+	wildmon LEVEL_FROM_BADGES - 1, GLIGAR
+	wildmon LEVEL_FROM_BADGES + 0, GLIGAR
+	wildmon LEVEL_FROM_BADGES + 1, HOUNDOUR
+	wildmon LEVEL_FROM_BADGES - 1, HOUNDOUR
+	end_grass_wildmons
+
+	def_grass_wildmons SNOWTOP_MOUNTAIN_INSIDE
+	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, SWINUB
+	wildmon LEVEL_FROM_BADGES + 1, SWINUB
+	wildmon LEVEL_FROM_BADGES - 1, MR__MIME, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, DELIBIRD
+	wildmon LEVEL_FROM_BADGES + 0, STANTLER
+	wildmon LEVEL_FROM_BADGES + 1, SNEASEL, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, SNEASEL, HISUIAN_FORM
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, SWINUB
+	wildmon LEVEL_FROM_BADGES + 1, SWINUB
+	wildmon LEVEL_FROM_BADGES - 1, MR__MIME, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, DELIBIRD
+	wildmon LEVEL_FROM_BADGES + 0, STANTLER
+	wildmon LEVEL_FROM_BADGES + 1, SNEASEL, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, SNEASEL, HISUIAN_FORM
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, SWINUB
+	wildmon LEVEL_FROM_BADGES + 1, SWINUB
+	wildmon LEVEL_FROM_BADGES - 1, MR__MIME, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, DELIBIRD
+	wildmon LEVEL_FROM_BADGES + 0, STANTLER
+	wildmon LEVEL_FROM_BADGES + 1, SNEASEL, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, SNEASEL, HISUIAN_FORM
 	end_grass_wildmons
 
 	db -1 ; end

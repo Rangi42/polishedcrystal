@@ -20,12 +20,62 @@ QuietCaveB1F_MapScriptHeader:
 	bg_event 26, 33, BGEVENT_ITEM + HYPER_POTION, EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION
 
 	def_object_events
+	object_event  6, 20, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, QuietCaveB1FNurseKeikoScript, -1
 	object_event 25,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBattleGirlKagami, -1
 	object_event 21, 17, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokemaniacAidan, -1
 	object_event 33, 30, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerHikerSteve, -1
 	object_event  4,  7, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPsychicVirgil, -1
 	itemball_event  8,  3, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
 	itemball_event 14, 13, ELIXIR, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
+
+	object_const_def
+	const QUIETCAVEB1F_NURSE
+
+QuietCaveB1FNurseKeikoScript:
+	faceplayer
+	checkevent EVENT_BEAT_NURSE_KEIKO
+	iftruefwd .Beaten
+	showtext .SeenText
+	winlosstext .BeatenText, 0
+	setlasttalked QUIETCAVEB1F_NURSE
+	loadtrainer NURSE, KEIKO
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_NURSE_KEIKO
+.Beaten
+	showtext .AfterText
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playmusic MUSIC_HEAL
+	special HealParty
+	pause 60
+	special Special_FadeInQuickly
+	special RestartMapMusic
+	jumpthistext
+
+	text "See how energetic"
+	line "your #mon are!"
+	done
+
+.SeenText:
+	text "You need a Nurse's"
+	line "help?"
+
+	para "Sure, if you can"
+	line "win against me,"
+	cont "I'll heal you!"
+	done
+
+.BeatenText:
+	text "Do you really"
+	line "need healing?"
+	done
+
+.AfterText:
+	text "OK then… Time to"
+	line "give your #mon"
+	cont "some energy!"
+	done
 
 GenericTrainerBattleGirlKagami:
 	generictrainer BATTLE_GIRL, KAGAMI, EVENT_BEAT_BATTLE_GIRL_KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText
@@ -84,10 +134,8 @@ PokemaniacAidanBeatenText: ; text > text
 
 HikerSteveSeenText:
 	text "They call me a"
-	line "Hiker, but right"
-
-	para "now I'm a spelunk-"
-	line "er!"
+	line "Hiker, but now"
+	cont "I'm a spelunker!"
 	done
 
 HikerSteveBeatenText:

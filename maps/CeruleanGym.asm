@@ -30,11 +30,11 @@ CeruleanGym_MapScriptHeader:
 	const CERULEANGYM_ROCKET
 
 CeruleanGymTrigger1:
-	sdefer UnknownScript_0x1883de
+	sdefer CeruleanGymGruntRunsOutScript
 CeruleanGymTrigger0:
 	end
 
-UnknownScript_0x1883de:
+CeruleanGymGruntRunsOutScript:
 	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsDownMovement
 	playsound SFX_TACKLE
 	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsIntoYouMovement
@@ -170,6 +170,7 @@ CeruleanGymHiddenMachinePart:
 	givekeyitem MACHINE_PART
 	opentext
 	writetext CeruleanGymFoundMachinePartText
+	special ShowKeyItemIcon
 	playsound SFX_ITEM
 	waitsfx
 	keyitemnotify

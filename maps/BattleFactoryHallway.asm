@@ -15,8 +15,8 @@ BattleFactoryHallway_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  4, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  5,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  4, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	object_const_def
 	const BATTLEFACTORYHALLWAY_RECEPTIONIST
@@ -46,7 +46,7 @@ BattleFactoryHallwayFollowReceptionist:
 .WonBattle:
 	opentext
 	writethistext
-		text "<PLAYER> received"
+		text "<PLAYER> earned"
 		line ""
 		text_ram wStringBuffer1
 		text " BP!"
@@ -74,8 +74,8 @@ BattleFactoryHallwayFollowReceptionist:
 		para "The Factory Head"
 		line "has sent word that"
 
-		para "he is impressed"
-		line "with your skill."
+		para "he is demanding"
+		line "a match with you."
 
 		para "Are you ready to"
 		line "battle the"

@@ -110,10 +110,10 @@ GetDestinationWarpNumber::
 	ret
 
 .GetDestinationWarpNumber:
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	sub 4
 	ld e, a
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	sub 4
 	ld d, a
 	ld a, [wCurMapWarpCount]
@@ -798,11 +798,11 @@ CallMapScript::
 CallScript::
 ; Call a script at a:hl.
 
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, l
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, h
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 
 	ld a, PLAYEREVENT_MAPSCRIPT
 	ld [wScriptRunning], a
@@ -915,34 +915,67 @@ GetMovementData::
 	ret
 
 GetScriptByte::
-; Return byte at wScriptBank:wScriptPos in a.
+; Return byte at hScriptBank:hScriptPos in a.
 
 	push hl
 	push bc
 	ldh a, [hROMBank]
-	push af
-	ld a, [wScriptBank]
+	ld c, a
+	ldh a, [hScriptBank]
 	rst Bankswitch
 
-	ld hl, wScriptPos
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
+	ld hl, hScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 
-	ld a, [bc]
-
-	inc bc
-	ld [hl], b
-	dec hl
-	ld [hl], c
-
+	ld a, [hli]
 	ld b, a
-	pop af
+
+	ld a, l
+	ldh [hScriptPos], a
+	ld a, h
+	ldh [hScriptPos + 1], a
+
+	ld a, c
 	rst Bankswitch
 	ld a, b
 	pop bc
 	pop hl
 	ret
+
+GetScriptWord::
+; Return word at hScriptBank:hScriptPos in hl.
+
+	push bc
+	ldh a, [hROMBank]
+	push af
+	ldh a, [hScriptBank]
+	rst Bankswitch
+
+	ld hl, hScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+
+	ld a, l
+	ldh [hScriptPos], a
+	ld a, h
+	ldh [hScriptPos + 1], a
+
+	ld l, c
+	ld h, b
+
+	pop af
+	rst Bankswitch
+	pop bc
+	ret
+
 
 ObjectEvent::
 	faceplayer
@@ -1046,7 +1079,7 @@ _LoadTilesetGFX2:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX2Address
-	ld a, [wTilesetDataBank]
+	ld a, BANK("Tileset GFX2 Data")
 	ld de, vTiles4
 	jr _DoLoadTilesetGFX
 
@@ -1250,16 +1283,16 @@ GetMovementPermissions::
 	call .LeftRight
 	call .UpDown
 ; get coords of current tile
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 	call GetCoordTile
-	ld [wPlayerStandingTile], a
+	ld [wPlayerTile], a
 	call .CheckHiNybble
 	ret nz
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	and 7
 	; a = [.MovementPermissionsData + a]
 	add LOW(.MovementPermissionsData)
@@ -1284,9 +1317,9 @@ GetMovementPermissions::
 	db UP_MASK | LEFT_MASK
 
 .UpDown:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 
 	push de
@@ -1302,9 +1335,9 @@ GetMovementPermissions::
 	jr .Up
 
 .LeftRight:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 
 	push de
@@ -1406,19 +1439,19 @@ GetFacingTileCoord::
 	ld de, .Directions
 	add hl, de
 
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
 
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	add d
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	add e
 	ld e, a
 	ld a, [hl]
@@ -1589,10 +1622,10 @@ CheckCurrentMapCoordEvents::
 	call CheckScenes
 	ld b, a
 ; Load your current coordinates into de.  This will be used to check if your position is in the coord event table for the current map.
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	sub 4
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	sub 4
 	ld e, a
 
@@ -1640,6 +1673,8 @@ ReturnToMapWithSpeechTextbox::
 	ld [wSpriteUpdatesEnabled], a
 	call ClearBGPalettes
 	call ClearSprites
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ReloadTilesetAndPalettes
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -1652,6 +1687,7 @@ ReturnToMapWithSpeechTextbox::
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call UpdateTimePals
+	farcall EnableDynPalUpdates
 	call DelayFrame
 	ld a, $1
 	ldh [hMapAnims], a
@@ -1663,7 +1699,7 @@ ReloadTilesetAndPalettes::
 	call ClearSprites
 	farcall RefreshSprites
 	call LoadStandardFont
-	call LoadFontsExtra
+	call LoadFrame
 	ldh a, [hROMBank]
 	push af
 	call SwitchToMapAttributesBank
@@ -1743,9 +1779,9 @@ GetAnyMapField::
 .Function:
 	call GetAnyMapPointer
 	add hl, de
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	ret
 
 SwitchToMapAttributesBank::

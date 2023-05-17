@@ -355,8 +355,11 @@ WaitPressAorB_BlinkCursor::
 	pop hl
 
 	call CheckIfAOrBPressed
-	jr z, .loop
+	jr nz, .done
+	call DelayFrame
+	jr .loop
 
+.done
 	pop af
 	ldh [hObjectStructIndexBuffer], a
 	pop af

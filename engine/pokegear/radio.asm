@@ -5,7 +5,7 @@ PlayRadioShow:
 	jr nc, .ok
 ; If Team Rocket is not occupying the radio tower, we don't need to be here.
 	ld a, [wStatusFlags2]
-	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
+	bit STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F, a
 	jr z, .ok
 ; If we're in Kanto, we don't need to be here.
 	call GetCurrentLandmark
@@ -196,9 +196,9 @@ OaksPkmnTalk4:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
 	ld c, [hl]
+	ld b, a
 	; bc now contains the chosen map's group and number indices.
 	push bc
 
@@ -631,8 +631,8 @@ OaksPkmnTalk14:
 	ld hl, wRadioTextDelay
 	dec [hl]
 	ret nz
-	ld de, MUSIC_POKEMON_TALK
-	farcall RadioMusicRestartDE
+	ld e, MUSIC_POKEMON_TALK
+	farcall RadioMusicRestart
 	ld hl, EmptyString
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_4
@@ -701,20 +701,7 @@ PokedexShow2:
 	ld b, a
 	call GetSpeciesAndFormIndex
 	call GetDexEntryPointer
-	push af
-	push hl
-	call CopyDexEntryPart1
-	dec hl
-	ld [hl], "<DONE>"
-	ld hl, wPokedexShowPointerAddr
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-	call CopyDexEntryPart2
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
+	call CopyDexEntryParts
 	ld a, POKEDEX_SHOW_3
 	jmp PrintRadioLine
 
@@ -754,35 +741,9 @@ CopyDexEntry:
 	ld h, [hl]
 	ld l, a
 	ld a, [wPokedexShowPointerBank]
+CopyDexEntryParts:
 	push af
 	push hl
-	call CopyDexEntryPart1
-	dec hl
-	ld [hl], "<DONE>"
-	ld hl, wPokedexShowPointerAddr
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-CopyDexEntryPart2:
-	ld d, a
-.loop
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr z, .okay
-	cp "<NEXT>"
-	jr nz, .loop
-.okay
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
-	ld a, d
-	ld [wPokedexShowPointerBank], a
-	ret
-
-CopyDexEntryPart1:
 	ld de, wPokedexShowPointerBank
 	ld bc, SCREEN_WIDTH - 1
 	call FarCopyBytes
@@ -791,13 +752,33 @@ CopyDexEntryPart1:
 	ld [hli], a
 	ld a, "<LINE>"
 	ld [hli], a
-.loop
-	ld a, [hli]
+	ld d, BANK(@)
+	call .CopyLine
+	dec hl
+	ld [hl], "<DONE>"
+	ld hl, wPokedexShowPointerAddr
+	call CopyRadioTextToRAM
+	pop hl
+	pop af
+	ld d, a
+	call .CopyLine
+	ld a, l
+	ld [wPokedexShowPointerAddr], a
+	ld a, h
+	ld [wPokedexShowPointerAddr + 1], a
+	ld a, d
+	ld [wPokedexShowPointerBank], a
+	ret
+
+.CopyLine:
+	ld a, d
+	call GetFarByte
+	inc hl
 	cp "@"
 	ret z
 	cp "<NEXT>"
 	ret z
-	jr .loop
+	jr .CopyLine
 
 PokedexShowText:
 	; @ @
@@ -859,13 +840,13 @@ BenFernMusic6:
 StartPokemonMusicChannel:
 	ld hl, EmptyString
 	call PrintText
-	ld de, MUSIC_POKEMON_MARCH
 	call GetWeekday
 	and 1
+	ld e, MUSIC_POKEMON_MARCH
 	jr z, .SunTueThurSun
-	ld de, MUSIC_POKEMON_LULLABY
+	ld e, MUSIC_POKEMON_LULLABY
 .SunTueThurSun:
-	farjp RadioMusicRestartDE
+	farjp RadioMusicRestart
 
 BenIntroText1:
 	; BEN: #MON MUSIC
@@ -920,7 +901,7 @@ BenFernText3B:
 LuckyNumberShow1:
 	call StartRadioStation
 	farcall Special_CheckLuckyNumberShowFlag
-	jr nc, .dontreset
+	jr nz, .dontreset
 	farcall Special_ResetLuckyNumberShowFlag
 .dontreset
 	ld hl, LC_Text1
@@ -1112,7 +1093,7 @@ PeoplePlaces4: ; People
 	push af
 	ld hl, PnP_HiddenPeople
 	ld a, [wStatusFlags]
-	bit 6, a ; ENGINE_CREDITS_SKIP
+	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	jr z, .ok
 	ld hl, PnP_HiddenPeople_BeatE4
 	ld a, [wKantoBadges]
@@ -1524,10 +1505,8 @@ GetBuenasPassword:
 	ld d, 0
 	ld e, a
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 ; Get the password type and store it in b.
 	ld a, [hli]
 	ld b, a
@@ -1835,15 +1814,13 @@ StartRadioStation:
 	ret nz
 	ld hl, EmptyString
 	call PrintText
-	ld hl, RadioChannelSongs
 	ld a, [wCurRadioLine]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	add LOW(RadioChannelSongs)
+	ld l, a
+	adc HIGH(RadioChannelSongs)
+	sub l
+	ld h, a
 	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	farjp RadioMusicRestartDE
+	farjp RadioMusicRestart
 
 INCLUDE "data/radio/channel_music.asm"

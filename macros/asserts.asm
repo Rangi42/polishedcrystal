@@ -11,6 +11,19 @@ MACRO dbas
 	endr
 ENDM
 
+MACRO farbank
+	REDEF CURRENT_FAR_BANK EQUS "\1"
+ENDM
+
+MACRO fardw
+	rept _NARG
+		dw \1
+		assert BANK(\1) == BANK({CURRENT_FAR_BANK}) || !BANK(\1), \
+			"\1 must be in the bank of {CURRENT_FAR_BANK}"
+		shift
+	endr
+ENDM
+
 MACRO table_width
 	def CURRENT_TABLE_WIDTH = \1
 	if _NARG == 2
@@ -82,13 +95,8 @@ MACRO wildmon
 ENDM
 
 MACRO jmp
-	if _NARG == 1
-		jp \1
-	else
-		jp \1, \2
-		shift
-	endc
+	jp \#
 	if DEF(DEBUG)
-		assert warn, (\1) - @ > 127 || (\1) - @ < -129, "jp can be jr"
+		assert warn, (\<_NARG>) - @ > 127 || (\<_NARG>) - @ < -129, "jp can be jr"
 	endc
 ENDM

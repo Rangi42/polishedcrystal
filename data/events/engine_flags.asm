@@ -9,11 +9,11 @@ EngineFlags:
 	table_width 3, EngineFlags
 
 	; pokegear
-	engine_flag wPokegearFlags, 1 ; radio card ; $0
-	engine_flag wPokegearFlags, 0 ; map card
-	engine_flag wPokegearFlags, 2 ; phone card
-	engine_flag wPokegearFlags, 3 ; expn card
-	engine_flag wPokegearFlags, 7 ; on/off
+	engine_flag wPokegearFlags, POKEGEAR_RADIO_CARD_F
+	engine_flag wPokegearFlags, POKEGEAR_MAP_CARD_F
+	engine_flag wPokegearFlags, POKEGEAR_PHONE_CARD_F
+	engine_flag wPokegearFlags, POKEGEAR_EXPN_CARD_F
+	engine_flag wPokegearFlags, POKEGEAR_OBTAINED_F
 
 	;   wDayCareMan, DAYCAREMAN_ACTIVE_F ; daycare 1 on
 	engine_flag wDayCareMan, DAYCAREMAN_HAS_EGG_F ; egg is ready
@@ -22,26 +22,24 @@ EngineFlags:
 	;   wDayCareLady, DAYCARELADY_ACTIVE_F = daycare 2 on
 	engine_flag wDayCareLady, DAYCARELADY_HAS_MON_F ; monster 2 in daycare
 
-	engine_flag wMomSavingMoney, 0 ; mom saving money ; $8
-	engine_flag wMomSavingMoney, 7 ; dst
+	engine_flag wMomSavingMoney, MOM_SAVING_SOME_MONEY_F
+	engine_flag wMomSavingMoney, MOM_ACTIVE_F
 
-	engine_flag wStatusFlags, 0 ; pokedex
-	engine_flag wStatusFlags, 1 ; unown dex
-	                            ; flash
-	engine_flag wStatusFlags, 3 ; pokerus
-	engine_flag wStatusFlags, 4 ; rocket signal on ch20
-	                            ; wild encounters on/off
-	engine_flag wStatusFlags, 6 ; credits skip
-	engine_flag wStatusFlags, 7 ; bug contest on
+	engine_flag wStatusFlags, STATUSFLAGS_POKEDEX_F
+	engine_flag wStatusFlags, STATUSFLAGS_UNOWN_DEX_F
+	engine_flag wStatusFlags, STATUSFLAGS_CAUGHT_POKERUS_F
+	engine_flag wStatusFlags, STATUSFLAGS_ROCKET_SIGNAL_F
+	engine_flag wStatusFlags, STATUSFLAGS_HALL_OF_FAME_F
+	engine_flag wStatusFlags, 7 ; unused
 
-	engine_flag wStatusFlags2, 0 ; rockets in radio tower
-	engine_flag wStatusFlags2, 1 ; safari game
-	engine_flag wStatusFlags2, 2 ; bug contest timer
-	engine_flag wStatusFlags2, 3 ; seen shamouti island
-	engine_flag wStatusFlags2, 4 ; bike shop call enabled (1024 bike steps reqd)
-	engine_flag wStatusFlags2, 5 ; give pokerus
-	engine_flag wStatusFlags2, 6 ; exorcised lav radio tower
-	engine_flag wStatusFlags2, 7 ; rockets in mahogany
+	engine_flag wStatusFlags2, STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F
+	engine_flag wStatusFlags2, STATUSFLAGS2_SAFARI_GAME_F
+	engine_flag wStatusFlags2, STATUSFLAGS2_BUG_CONTEST_TIMER_F
+	engine_flag wStatusFlags2, STATUSFLAGS2_SEEN_SHAMOUTI_F
+	engine_flag wStatusFlags2, STATUSFLAGS2_BIKE_SHOP_CALL_F
+	engine_flag wStatusFlags2, 5 ; unused
+	engine_flag wStatusFlags2, STATUSFLAGS2_EXORCISED_LAV_RADIO_F
+	engine_flag wStatusFlags2, STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F
 
 	engine_flag wOWState, OWSTATE_STRENGTH
 	engine_flag wOWState, OWSTATE_BIKING_FORCED
@@ -71,103 +69,102 @@ EngineFlags:
 	engine_flag wKantoBadges, VOLCANOBADGE
 	engine_flag wKantoBadges, EARTHBADGE
 
-	; unown sets
-	engine_flag wUnlockedUnowns, 0 ; 1
-	engine_flag wUnlockedUnowns, 1 ; 2
-	engine_flag wUnlockedUnowns, 2 ; 3
-	engine_flag wUnlockedUnowns, 3 ; 4
-	engine_flag wUnlockedUnowns, 4 ; 5
-	engine_flag wUnlockedUnowns, 5 ; 6
-	engine_flag wUnlockedUnowns, 6 ; 7
-	engine_flag wUnlockedUnowns, 7 ; 8
+	; unown sets (see data/wild/unlocked_unowns.asm)
+	engine_flag wUnlockedUnowns, UNLOCKED_UNOWNS_A_TO_J_F
+	engine_flag wUnlockedUnowns, UNLOCKED_UNOWNS_K_TO_Q_F
+	engine_flag wUnlockedUnowns, UNLOCKED_UNOWNS_R_TO_W_F
+	engine_flag wUnlockedUnowns, UNLOCKED_UNOWNS_X_TO_QUESTION_F
+	engine_flag wUnlockedUnowns, 4 ; unused
+	engine_flag wUnlockedUnowns, 5 ; unused
+	engine_flag wUnlockedUnowns, 6 ; unused
+	engine_flag wUnlockedUnowns, 7 ; unused
 
 	; fly
-	engine_flag wVisitedSpawns, 0  ; your house
-	engine_flag wVisitedSpawns, 1  ; pallet
-	engine_flag wVisitedSpawns, 2  ; viridian
-	engine_flag wVisitedSpawns, 3  ; pewter
-	engine_flag wVisitedSpawns, 4  ; mt moon
-	engine_flag wVisitedSpawns, 5  ; cerulean
-	engine_flag wVisitedSpawns, 6  ; cerulean cape
-	engine_flag wVisitedSpawns, 7  ; rock tunnel
-	engine_flag wVisitedSpawns, 8  ; vermilion
-	engine_flag wVisitedSpawns, 9  ; lavender
-	engine_flag wVisitedSpawns, 10 ; saffron
-	engine_flag wVisitedSpawns, 11 ; celadon
-	engine_flag wVisitedSpawns, 12 ; fuchsia
-	engine_flag wVisitedSpawns, 13 ; cinnabar
-	engine_flag wVisitedSpawns, 14 ; indigo plateau
-	engine_flag wVisitedSpawns, 15 ; new bark
-	engine_flag wVisitedSpawns, 16 ; cherrygrove
-	engine_flag wVisitedSpawns, 17 ; violet
-	engine_flag wVisitedSpawns, 18 ; union cave
-	engine_flag wVisitedSpawns, 19 ; azalea
-	engine_flag wVisitedSpawns, 20 ; cianwood
-	engine_flag wVisitedSpawns, 21 ; goldenrod
-	engine_flag wVisitedSpawns, 22 ; olivine
-	engine_flag wVisitedSpawns, 23 ; ecruteak
-	engine_flag wVisitedSpawns, 24 ; snowtop
-	engine_flag wVisitedSpawns, 25 ; mahogany
-	engine_flag wVisitedSpawns, 26 ; yellow forest
-	engine_flag wVisitedSpawns, 27 ; lake of rage
-	engine_flag wVisitedSpawns, 28 ; blackthorn
-	engine_flag wVisitedSpawns, 29 ; silver cave
+	engine_flag wVisitedSpawns, SPAWN_HOME
+	engine_flag wVisitedSpawns, SPAWN_PALLET
+	engine_flag wVisitedSpawns, SPAWN_VIRIDIAN
+	engine_flag wVisitedSpawns, SPAWN_PEWTER
+	engine_flag wVisitedSpawns, SPAWN_MT_MOON
+	engine_flag wVisitedSpawns, SPAWN_CERULEAN
+	engine_flag wVisitedSpawns, SPAWN_CERULEAN_CAPE
+	engine_flag wVisitedSpawns, SPAWN_ROCK_TUNNEL
+	engine_flag wVisitedSpawns, SPAWN_VERMILION
+	engine_flag wVisitedSpawns, SPAWN_LAVENDER
+	engine_flag wVisitedSpawns, SPAWN_SAFFRON
+	engine_flag wVisitedSpawns, SPAWN_CELADON
+	engine_flag wVisitedSpawns, SPAWN_FUCHSIA
+	engine_flag wVisitedSpawns, SPAWN_CINNABAR
+	engine_flag wVisitedSpawns, SPAWN_INDIGO
+	engine_flag wVisitedSpawns, SPAWN_NEW_BARK
+	engine_flag wVisitedSpawns, SPAWN_CHERRYGROVE
+	engine_flag wVisitedSpawns, SPAWN_VIOLET
+	engine_flag wVisitedSpawns, SPAWN_UNION_CAVE
+	engine_flag wVisitedSpawns, SPAWN_AZALEA
+	engine_flag wVisitedSpawns, SPAWN_CIANWOOD
+	engine_flag wVisitedSpawns, SPAWN_GOLDENROD
+	engine_flag wVisitedSpawns, SPAWN_OLIVINE
+	engine_flag wVisitedSpawns, SPAWN_ECRUTEAK
+	engine_flag wVisitedSpawns, SPAWN_SNOWTOP
+	engine_flag wVisitedSpawns, SPAWN_MAHOGANY
+	engine_flag wVisitedSpawns, SPAWN_YELLOW_FOREST
+	engine_flag wVisitedSpawns, SPAWN_LAKE_OF_RAGE
+	engine_flag wVisitedSpawns, SPAWN_BLACKTHORN
+	engine_flag wVisitedSpawns, SPAWN_MT_SILVER
+	engine_flag wVisitedSpawns, SPAWN_SHAMOUTI
+	engine_flag wVisitedSpawns, SPAWN_VALENCIA
+	engine_flag wVisitedSpawns, SPAWN_NAVEL
 
-	engine_flag wLuckyNumberShowFlag, 0 ; lucky number show
+	engine_flag wLuckyNumberShowFlag, LUCKYNUMBERSHOW_GAME_OVER_F
 
-	engine_flag wDailyFlags, 0 ; kurt making balls
-	engine_flag wDailyFlags, 1 ; daily bug contest?
-	engine_flag wDailyFlags, 2 ; special wilddata?
-	engine_flag wDailyFlags, 3 ; valeries morning walk
-	engine_flag wDailyFlags, 4 ; daily unused
-	engine_flag wDailyFlags, 5 ; shuckle given
-	engine_flag wDailyFlags, 6 ; goldenrod underground merchant closed
-	engine_flag wDailyFlags, 7 ; fought in trainer hall today
+	engine_flag wDailyFlags, DAILYFLAGS_KURT_MAKING_BALLS_F
+	engine_flag wDailyFlags, DAILYFLAGS_DAILY_BUG_CONTEST_F
+	engine_flag wDailyFlags, DAILYFLAGS_FISH_SWARM_F
+	engine_flag wDailyFlags, DAILYFLAGS_VALERIE_MORNING_WALK_F
+	engine_flag wDailyFlags, 4 ; unused
+	engine_flag wDailyFlags, DAILYFLAGS_GOT_SHUCKIE_TODAY_F
+	engine_flag wDailyFlags, DAILYFLAGS_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED_F
+	engine_flag wDailyFlags, DAILYFLAGS_FOUGHT_IN_TRAINER_HALL_TODAY_F
 
-	engine_flag wDailyFlags2, 0 ; gym leader rematch 1
-	engine_flag wDailyFlags2, 1 ; gym leader rematch 2
-	engine_flag wDailyFlags2, 2 ; gym leader rematch 3
-	engine_flag wDailyFlags2, 3 ; daily photograph
-	engine_flag wDailyFlags2, 4 ; daily shrine visit
-	engine_flag wDailyFlags2, 5 ; daily mystery gift
-	engine_flag wDailyFlags2, 6 ; red in mt. silver
-	engine_flag wDailyFlags2, 7 ; leaf in navel rock
+	engine_flag wDailyFlags2, DAILYFLAGS2_GYM_LEADER_REMATCH_1_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_GYM_LEADER_REMATCH_2_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_GYM_LEADER_REMATCH_3_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_DAILY_PHOTOGRAPH_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_DAILY_SHRINE_VISIT_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_DAILY_MYSTERY_GIFT_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_RED_IN_MOUNT_SILVER_F
+	engine_flag wDailyFlags2, DAILYFLAGS2_LEAF_IN_NAVEL_ROCK_F
 
-	engine_flag wDailyFlags3, 0 ; bought leftovers
-	engine_flag wDailyFlags3, 1 ; took hyper test
-	engine_flag wDailyFlags3, 2 ; cheryl done today
-	engine_flag wDailyFlags3, 3 ; riley done today
-	engine_flag wDailyFlags3, 4 ; buck done today
-	engine_flag wDailyFlags3, 5 ; marley done today
-	engine_flag wDailyFlags3, 6 ; mira done today
-	engine_flag wDailyFlags3, 7 ; anabel done today
+	engine_flag wDailyFlags3, DAILYFLAGS3_BOUGHT_LEFTOVERS_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_TOOK_HYPER_TEST_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_CHERYL_DONE_TODAY_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_RILEY_DONE_TODAY_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_BUCK_DONE_TODAY_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_MARLEY_DONE_TODAY_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_MIRA_DONE_TODAY_F
+	engine_flag wDailyFlags3, DAILYFLAGS3_ANABEL_DONE_TODAY_F
 
-	engine_flag wDailyFlags4, 0 ; seashore shell bell
-	engine_flag wDailyFlags4, 1 ; shamouti restaurant challenge
-	engine_flag wDailyFlags4, 2 ; fought psychic inver
-	engine_flag wDailyFlags4, 3 ; bought moomoo milk
-	engine_flag wDailyFlags4, 4 ; changed trendy phrase
-	engine_flag wDailyFlags4, 5 ; all hidden grottoes
-	engine_flag wDailyFlags4, 6 ; daily unused
-	engine_flag wDailyFlags4, 7 ; daily unused
+	engine_flag wDailyFlags4, DAILYFLAGS4_SEASHORE_SHELL_BELL_F
+	engine_flag wDailyFlags4, DAILYFLAGS4_SHAMOUTI_RESTAURANT_CHALLENGE_F
+	engine_flag wDailyFlags4, DAILYFLAGS4_FOUGHT_PSYCHIC_INVER_F
+	engine_flag wDailyFlags4, DAILYFLAGS4_BOUGHT_MOOMOO_MILK_F
+	engine_flag wDailyFlags4, DAILYFLAGS4_CHANGED_TRENDY_PHRASE_F
+	engine_flag wDailyFlags4, DAILYFLAGS4_ALL_HIDDEN_GROTTOES_F
+	engine_flag wDailyFlags4, 6 ; unused
+	engine_flag wDailyFlags4, 7 ; unused
 
-	engine_flag wWeeklyFlags, 0 ; mt moon square clefairy
-	engine_flag wWeeklyFlags, 1 ; union cave lapras
-	engine_flag wWeeklyFlags, 2 ; goldenrod underground haircut used
-	engine_flag wWeeklyFlags, 3 ; goldenrod mall happiness event floor05 person07
-	engine_flag wWeeklyFlags, 4 ; tea in blues house
-	engine_flag wWeeklyFlags, 5 ; indigo plateau rival fight
-	engine_flag wWeeklyFlags, 6 ; indigo plateau lyra fight
-	engine_flag wWeeklyFlags, 7 ; buenas password
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_MT_MOON_SQUARE_CLEFAIRY_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_UNION_CAVE_LAPRAS_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_GOLDENROD_UNDERGROUND_GOT_HAIRCUT_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_GOLDENROD_MALL_5F_HAPPINESS_EVENT_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_TEA_IN_BLUES_HOUSE_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_INDIGO_PLATEAU_RIVAL_FIGHT_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_INDIGO_PLATEAU_LYRA_FIGHT_F
+	engine_flag wWeeklyFlags, WEEKLYFLAGS_BUENAS_PASSWORD_F
 
-	engine_flag wSwarmFlags, 0 ; buenas password 2
-	engine_flag wSwarmFlags, 1 ; goldenrod dept store sale is on
+	engine_flag wSwarmFlags, SWARMFLAGS_BUENAS_PASSWORD_2_F
+	engine_flag wSwarmFlags, SWARMFLAGS_GOLDENROD_DEPT_STORE_SALE_F
 
-	engine_flag wGameTimerPaused, 7 ; game timer pause
-
-	engine_flag wPlayerGender, 0 ; player is female
-
-	engine_flag wCelebiEvent, 2 ; have gs ball after kurt examined it
+	engine_flag wCelebiEvent, CELEBIEVENT_FOREST_IS_RESTLESS_F
 
 	; rematches
 	engine_flag wDailyRematchFlags, 0  ; jack
@@ -231,59 +228,64 @@ EngineFlags:
 	engine_flag wDailyPhoneTimeOfDayFlags, 22 ; parry friday afternoon
 	engine_flag wDailyPhoneTimeOfDayFlags, 23 ; erin saturday night
 
-	engine_flag wPlayerSpriteSetupFlags, 2 ; female player has been transformed into male
+	engine_flag wSwarmFlags, SWARMFLAGS_DUNSPARCE_SWARM_F
+	engine_flag wSwarmFlags, SWARMFLAGS_YANMA_SWARM_F
 
-	engine_flag wSwarmFlags, 2 ; dunsparce swarm
-	engine_flag wSwarmFlags, 3 ; yanma swarm
+	engine_flag wPokemonJournals, FALKNER_JOURNAL
+	engine_flag wPokemonJournals, BUGSY_JOURNAL
+	engine_flag wPokemonJournals, WHITNEY_JOURNAL
+	engine_flag wPokemonJournals, MORTY_JOURNAL
+	engine_flag wPokemonJournals, CHUCK_JOURNAL
+	engine_flag wPokemonJournals, JASMINE_JOURNAL
+	engine_flag wPokemonJournals, PRYCE_JOURNAL
+	engine_flag wPokemonJournals, CLAIR_JOURNAL
+	engine_flag wPokemonJournals, BROCK_JOURNAL
+	engine_flag wPokemonJournals, MISTY_JOURNAL
+	engine_flag wPokemonJournals, LT_SURGE_JOURNAL
+	engine_flag wPokemonJournals, ERIKA_JOURNAL
+	engine_flag wPokemonJournals, JANINE_JOURNAL
+	engine_flag wPokemonJournals, SABRINA_JOURNAL
+	engine_flag wPokemonJournals, BLAINE_JOURNAL
+	engine_flag wPokemonJournals, BLUE_JOURNAL
+	engine_flag wPokemonJournals, WILL_JOURNAL
+	engine_flag wPokemonJournals, KOGA_JOURNAL
+	engine_flag wPokemonJournals, BRUNO_JOURNAL
+	engine_flag wPokemonJournals, KAREN_JOURNAL
+	engine_flag wPokemonJournals, LANCE_JOURNAL
+	engine_flag wPokemonJournals, RED_JOURNAL
+	engine_flag wPokemonJournals, GREEN_JOURNAL
+	engine_flag wPokemonJournals, PROF_OAK_JOURNAL
+	engine_flag wPokemonJournals, PROF_ELM_JOURNAL
+	engine_flag wPokemonJournals, PROF_IVY_JOURNAL
+	engine_flag wPokemonJournals, PROF_WESTWOOD_JOURNAL
+	engine_flag wPokemonJournals, GIOVANNI_JOURNAL
+	engine_flag wPokemonJournals, LORELEI_JOURNAL
+	engine_flag wPokemonJournals, AGATHA_JOURNAL
+	engine_flag wPokemonJournals, BILL_JOURNAL
+	engine_flag wPokemonJournals, KURT_JOURNAL
+	engine_flag wPokemonJournals, MR_FUJI_JOURNAL
+	engine_flag wPokemonJournals, PROF_WILLOW_JOURNAL
+	engine_flag wPokemonJournals, STEVEN_JOURNAL
+	engine_flag wPokemonJournals, CYNTHIA_JOURNAL
+	engine_flag wPokemonJournals, WALKER_JOURNAL
+	engine_flag wPokemonJournals, KIYO_JOURNAL
+	engine_flag wPokemonJournals, PALMER_JOURNAL
+	engine_flag wPokemonJournals, THORTON_JOURNAL
 
-	engine_flag wPokemonJournals, 0  ; falkner
-	engine_flag wPokemonJournals, 1  ; bugsy
-	engine_flag wPokemonJournals, 2  ; whitney
-	engine_flag wPokemonJournals, 3  ; morty
-	engine_flag wPokemonJournals, 4  ; chuck
-	engine_flag wPokemonJournals, 5  ; jasmine
-	engine_flag wPokemonJournals, 6  ; pryce
-	engine_flag wPokemonJournals, 7  ; clair
-	engine_flag wPokemonJournals, 8  ; brock
-	engine_flag wPokemonJournals, 9  ; misty
-	engine_flag wPokemonJournals, 10 ; lt.surge
-	engine_flag wPokemonJournals, 11 ; erika
-	engine_flag wPokemonJournals, 12 ; janine
-	engine_flag wPokemonJournals, 13 ; sabrina
-	engine_flag wPokemonJournals, 14 ; blaine
-	engine_flag wPokemonJournals, 15 ; blue
-	engine_flag wPokemonJournals, 16 ; will
-	engine_flag wPokemonJournals, 17 ; koga
-	engine_flag wPokemonJournals, 18 ; bruno
-	engine_flag wPokemonJournals, 19 ; karen
-	engine_flag wPokemonJournals, 20 ; lance
-	engine_flag wPokemonJournals, 21 ; red
-	engine_flag wPokemonJournals, 22 ; green
-	engine_flag wPokemonJournals, 23 ; prof.oak
-	engine_flag wPokemonJournals, 24 ; prof.elm
-	engine_flag wPokemonJournals, 25 ; prof.ivy
-	engine_flag wPokemonJournals, 26 ; prof.westwood
-	engine_flag wPokemonJournals, 27 ; giovanni
-	engine_flag wPokemonJournals, 28 ; lorelei
-	engine_flag wPokemonJournals, 29 ; agatha
-	engine_flag wPokemonJournals, 30 ; bill
-	engine_flag wPokemonJournals, 31 ; kurt
-	engine_flag wPokemonJournals, 32 ; mr.fuji
+	engine_flag wStatusFlags3, STATUSFLAGS3_JUDGE_MACHINE_F
 
-	engine_flag wStatusFlags3, 0 ; judge machine
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_HO_OH_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_LUGIA_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_RAIKOU_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_ENTEI_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_SUICUNE_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_ARTICUNO_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_ZAPDOS_F
+	engine_flag wPlayerCaught, PLAYER_CAUGHT_MOLTRES_F
 
-	engine_flag wPlayerCaught, 0 ; Ho-Oh
-	engine_flag wPlayerCaught, 1 ; Lugia
-	engine_flag wPlayerCaught, 2 ; Raikou
-	engine_flag wPlayerCaught, 3 ; Entei
-	engine_flag wPlayerCaught, 4 ; Suicune
-	engine_flag wPlayerCaught, 5 ; Articuno
-	engine_flag wPlayerCaught, 6 ; Zapdos
-	engine_flag wPlayerCaught, 7 ; Moltres
-
-	engine_flag wPlayerCaught2, 0 ; Mew
-	engine_flag wPlayerCaught2, 1 ; Mewtwo
-	engine_flag wPlayerCaught2, 2 ; Celebi
-	engine_flag wPlayerCaught2, 3 ; Sudowoodo
+	engine_flag wPlayerCaught2, PLAYER_CAUGHT_MEW_F
+	engine_flag wPlayerCaught2, PLAYER_CAUGHT_MEWTWO_F
+	engine_flag wPlayerCaught2, PLAYER_CAUGHT_CELEBI_F
+	engine_flag wPlayerCaught2, PLAYER_CAUGHT_SUDOWOODO_F
 
 	assert_table_length NUM_ENGINE_FLAGS

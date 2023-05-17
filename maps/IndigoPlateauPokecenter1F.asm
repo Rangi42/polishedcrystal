@@ -18,7 +18,7 @@ IndigoPlateauPokecenter1F_MapScriptHeader:
 	bg_event 13,  7, BGEVENT_READ, PokemonJournalGiovanniScript
 
 	def_object_events
-	object_event 14,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
+	object_event 14,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	object_event 14,  9, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
 	object_event 10,  9, SPRITE_YELLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
 	pc_nurse_event  9, 7
@@ -28,7 +28,7 @@ IndigoPlateauPokecenter1F_MapScriptHeader:
 	object_event  5, 12, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
 	object_const_def
-	const INDIGOPLATEAUPOKECENTER1F_SILVER
+	const INDIGOPLATEAUPOKECENTER1F_RIVAL
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW
 
@@ -58,7 +58,7 @@ PrepareEliteFourCallback:
 	endcallback
 
 PlateauRivalBattleTrigger1:
-	moveobject INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
+	moveobject INDIGOPLATEAUPOKECENTER1F_RIVAL, 15, 9
 	moveobject INDIGOPLATEAUPOKECENTER1F_LYRA, 15, 9
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
@@ -77,15 +77,15 @@ PlateauRivalBattleTrigger2:
 	iffalse DoNothingScript
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue DoNothingScript
-	appear INDIGOPLATEAUPOKECENTER1F_SILVER
+	appear INDIGOPLATEAUPOKECENTER1F_RIVAL
 	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalApproachesMovement
+	applymovement INDIGOPLATEAUPOKECENTER1F_RIVAL, PlateauRivalApproachesMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	faceobject INDIGOPLATEAUPOKECENTER1F_SILVER, PLAYER
-	faceobject PLAYER, INDIGOPLATEAUPOKECENTER1F_SILVER
+	faceobject INDIGOPLATEAUPOKECENTER1F_RIVAL, PLAYER
+	faceobject PLAYER, INDIGOPLATEAUPOKECENTER1F_RIVAL
 	showtext PlateauRivalText1
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -94,7 +94,7 @@ PlateauRivalBattleTrigger2:
 	iftruefwd .RivalChikorita
 	; Cyndaquil
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
-	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_RIVAL
 	loadtrainer RIVAL2, 6
 	startbattle
 	dontrestartmapmusic
@@ -103,7 +103,7 @@ PlateauRivalBattleTrigger2:
 
 .RivalTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
-	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_RIVAL
 	loadtrainer RIVAL2, 4
 	startbattle
 	dontrestartmapmusic
@@ -112,7 +112,7 @@ PlateauRivalBattleTrigger2:
 
 .RivalChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
-	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_RIVAL
 	loadtrainer RIVAL2, 5
 	startbattle
 	dontrestartmapmusic
@@ -122,8 +122,8 @@ PlateauRivalBattleTrigger2:
 	playmusic MUSIC_RIVAL_AFTER
 	showtext PlateauRivalText2
 	turnobject PLAYER, DOWN
-	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalLeavesMovement
-	disappear INDIGOPLATEAUPOKECENTER1F_SILVER
+	applymovement INDIGOPLATEAUPOKECENTER1F_RIVAL, PlateauRivalLeavesMovement
+	disappear INDIGOPLATEAUPOKECENTER1F_RIVAL
 	setscene $0
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
@@ -363,16 +363,21 @@ IndigoPlateauYellowScript:
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftruefwd .Bulbasaur
 	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .PartyAndBoxFullText
+	getmonname CHARMANDER, STRING_BUFFER_3
 	sjumpfwd .Finish
 
 .Bulbasaur:
 	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .PartyAndBoxFullText
+	getmonname BULBASAUR, STRING_BUFFER_3
 	sjumpfwd .Finish
 
 .Squirtle:
 	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
-.Finish:
 	iffalse_jumpopenedtext .PartyAndBoxFullText
+	getmonname SQUIRTLE, STRING_BUFFER_3
+.Finish:
 	writetext .GoodbyeText
 	waitbutton
 	closetext

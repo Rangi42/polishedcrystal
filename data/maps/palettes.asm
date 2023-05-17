@@ -22,13 +22,14 @@ MACRO special_bg_pal
 	dw \4 ; source
 ENDM
 	special_bg_pal darkness, (unused),                    PAL_SINGLE,    DarknessBGPalette
-	special_bg_pal map,      OLIVINE_LIGHTHOUSE_ROOF,     PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_1,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_2,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_3,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ITEM_ROOMS,      PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      DRAGON_SHRINE,               PAL_SINGLE,    DragonShrinePalette
 	special_bg_pal map,      ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette
+	special_bg_pal map,      BLACKTHORN_GYM_1F,           PAL_SINGLE,    BlackthornGym1FPalette
+	special_bg_pal map,      BLACKTHORN_GYM_2F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      CINNABAR_LAB,                PAL_SINGLE,    CinnabarLabPalette
 	special_bg_pal map,      CERULEAN_GYM,                PAL_SINGLE,    CeruleanGymPalette
 	special_bg_pal map,      VIOLET_CITY,                 PAL_TIMEOFDAY, VioletEcruteakPalette
@@ -63,6 +64,8 @@ ENDM
 	special_bg_pal map,      SAFFRON_GYM,                 PAL_SINGLE,    SaffronGymPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            PAL_SINGLE,    LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    PAL_SINGLE,    IvysLabPalette
+	special_bg_pal map,      RUGGED_ROAD_NORTH,           PAL_TIMEOFDAY, RuggedRoadNorthPalette
+	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     PAL_TIMEOFDAY, RuggedRoadNorthPalette
 	special_bg_pal map,      SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                PAL_SINGLE,    MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              PAL_SINGLE,    EmbeddedTowerPalette
@@ -90,46 +93,8 @@ ENDM
 	special_bg_pal tileset,  TILESET_SAFARI_ZONE,         PAL_TIMEOFDAY, SafariZonePalette
 	special_bg_pal tileset,  TILESET_RUINS_OF_ALPH,       PAL_SINGLE,    RuinsPalette
 	special_bg_pal tileset,  TILESET_ALPH_WORD_ROOM,      PAL_SINGLE,    RuinsPalette
+	special_bg_pal tileset,  TILESET_SNOWTOP_MOUNTAIN,    PAL_TIMEOFDAY, SnowtopMountainPalette
 	special_bg_pal overcast, (unused),                    PAL_TIMEOFDAY, OvercastBGPalette
-	db 0 ; end
-
-SpecialOBPalettes:
-MACRO special_ob_pal
-	special_pal_for \1, \2
-	dw \3 ; source
-	if _NARG == 6
-		db \6 palettes ; skip this [wTimeOfDay] times
-	else
-		db 0
-	endc
-	dw wOBPals1 palette \4 ; destination
-	db \5 palettes ; length
-ENDM
-	special_ob_pal darkness, (unused),                        DarknessOBPalette,                      PAL_OW_RED,    8
-	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
-	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
-	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
-	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
-	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
-	special_ob_pal map,      ROCK_TUNNEL_2F,                  RockTunnelOBPalette_Tree,               PAL_OW_TREE,   1
-	special_ob_pal map,      LYRAS_HOUSE_2F,                  LyrasHouse2FOBPalette_Rock,             PAL_OW_ROCK,   1
-	special_ob_pal map,      PLAYERS_HOUSE_2F,                OverworldPartyMonPalettes + 3 palettes, PAL_OW_SILVER, 3
-	special_ob_pal map,      GOLDENROD_HARBOR,                GoldenrodHarborOBPalette_Purple,        PAL_OW_PURPLE, 1, 1
-	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_1F,     PokecomCenter1FOBPalette_Rock,          PAL_OW_ROCK,   1
-	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_OFFICE, PokecomCenterOfficeOBPalette_Purple,    PAL_OW_PURPLE, 1
-	special_ob_pal map,      GOLDENROD_MUSEUM_1F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
-	special_ob_pal map,      GOLDENROD_MUSEUM_2F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
-	special_ob_pal map,      CELADON_DEPT_STORE_3F,           OverworldPartyMonPalettes + 3 palettes, PAL_OW_ROCK,   1
-	special_ob_pal map,      MOUNT_MOON_SQUARE,               wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
-	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
-	special_ob_pal landmark, CINNABAR_VOLCANO,                wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
-	special_ob_pal landmark, DIM_CAVE,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
-	special_ob_pal landmark, ICE_PATH,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
-	special_ob_pal landmark, SEAFOAM_ISLANDS,                 wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
-	special_ob_pal landmark, WHIRL_ISLANDS,                   wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
-	special_ob_pal tileset,  TILESET_SHAMOUTI_ISLAND,         wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
-	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
-	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wBGPals1 palette PAL_BG_RED,            PAL_OW_TREE,   1
 	db 0 ; end
 
 BlindingFlashPalette:
@@ -313,34 +278,46 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
-PokeCenterPalette:
+SnowtopMountainPalette:
 if !DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/pokecenter.pal"
+INCLUDE "gfx/tilesets/snowtop_mountain.pal"
 else
-rept 6
+rept 7
 	MONOCHROME_RGB_FOUR
 endr
 	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
 endc
 
-ShamoutiPokeCenterPalette:
+PokeCenterPalette:
 if !DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/shamouti_pokecenter.pal"
+INCLUDE "gfx/tilesets/pokecenter.pal"
 else
-rept 6
+rept 7
 	MONOCHROME_RGB_FOUR
 endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
@@ -969,6 +946,39 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+RuggedRoadNorthPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/RuggedRoadNorth.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 SinjohRuinsPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/SinjohRuins.pal"
@@ -1029,6 +1039,19 @@ endr
 	RGB_MONOCHROME_BLACK
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+BlackthornGym1FPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/BlackthornGym1F.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
@@ -1346,42 +1369,8 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
-DarknessOBPalette:
-if !DEF(MONOCHROME)
-INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
-else
-rept 5
-	MONOCHROME_RGB_FOUR_OW_DARKNESS
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 2
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-endc
-
 OvercastBGPalette:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
 INCLUDE "gfx/tilesets/bg_tiles_overcast.pal"
-endc
-
-OvercastOBPalette:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob_overcast.pal"
-else
-INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
-endc
 
 MartBluePalette:
 if !DEF(MONOCHROME)
@@ -1391,143 +1380,4 @@ if !DEF(MONOCHROME)
 	RGB 07, 07, 07
 else
 	MONOCHROME_RGB_FOUR
-endc
-
-VermilionGymOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 27, 31, 27
-	RGB 31, 31, 30
-	RGB 19, 24, 31
-	RGB 05, 10, 27
-else
-	MONOCHROME_RGB_FOUR_OW
-endc
-
-LightningIslandOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 19, 15, 10
-	RGB 31, 31, 31
-	RGB 31, 27, 01
-	RGB 31, 16, 01
-else
-	MONOCHROME_RGB_FOUR_OW
-endc
-
-RockTunnelOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 15, 14, 24
-	RGB 31, 30, 31
-	RGB 24, 18, 31
-	RGB 12, 08, 18
-else
-	MONOCHROME_RGB_FOUR_OW
-endc
-
-LyrasHouse2FOBPalette_Rock:
-if !DEF(MONOCHROME)
-	RGB 30, 28, 26
-	RGB 30, 28, 02
-	RGB 08, 14, 24
-	RGB 07, 07, 07
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-GoldenrodHarborOBPalette_Purple:
-if !DEF(MONOCHROME)
-; morn
-	RGB 28, 31, 16
-	RGB 28, 31, 16
-	RGB 18, 19, 31
-	RGB 07, 07, 07
-; day
-	RGB 27, 31, 27
-	RGB 27, 31, 27
-	RGB 18, 19, 31
-	RGB 07, 07, 07
-; nite
-	RGB 15, 14, 24
-	RGB 15, 14, 24
-	RGB 10, 09, 20
-	RGB 00, 00, 00
-; eve
-	RGB 31, 21, 14
-	RGB 31, 21, 14
-	RGB 16, 14, 23
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR_OW
-	MONOCHROME_RGB_FOUR_OW
-	MONOCHROME_RGB_FOUR_OW
-	MONOCHROME_RGB_FOUR_OW_NIGHT
-endc
-
-PokecomCenter1FOBPalette_Rock:
-if !DEF(MONOCHROME)
-	RGB 30, 28, 26
-	RGB 30, 28, 26
-	RGB 11, 13, 31
-	RGB 07, 07, 07
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-PokecomCenterOfficeOBPalette_Purple:
-if !DEF(MONOCHROME)
-	RGB 28, 31, 16
-	RGB 31, 22, 10
-	RGB 07, 17, 21
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR_OW
-endc
-
-GoldenrodMuseumOBPalettes_TreeRock:
-if !DEF(MONOCHROME)
-	RGB 30, 28, 26
-	RGB 30, 28, 26
-	RGB 13, 13, 13
-	RGB 07, 07, 07
-
-	RGB 30, 28, 26
-	RGB 31, 28, 28
-	RGB 22, 27, 26
-	RGB 09, 10, 10
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-endc
-
-OverworldPartyMonPalettes:
-if !DEF(MONOCHROME)
-; morn
-	RGB 28,31,16, 31,22,10, 13,13,13, 00,00,00 ; gray
-	RGB 28,31,16, 31,22,10, 31,10,11, 00,00,00 ; pink
-	RGB 28,31,16, 31,22,10, 03,23,21, 00,00,00 ; teal
-; day
-	RGB 27,31,27, 31,19,10, 13,13,13, 00,00,00 ; gray
-	RGB 27,31,27, 31,19,10, 31,10,11, 00,00,00 ; pink
-	RGB 27,31,27, 31,19,10, 03,23,21, 00,00,00 ; teal
-; nite
-	RGB 15,14,24, 16,09,09, 07,07,10, 00,00,00 ; gray
-	RGB 15,14,24, 16,09,09, 17,07,08, 00,00,00 ; pink
-	RGB 15,14,24, 16,09,09, 02,12,16, 00,00,00 ; teal
-; eve
-	RGB 31,21,14, 31,19,10, 13,13,13, 00,00,00 ; gray
-	RGB 31,21,14, 31,19,10, 31,10,11, 00,00,00 ; pink
-	RGB 31,21,14, 31,19,10, 03,23,21, 00,00,00 ; teal
-else
-rept 9
-	MONOCHROME_RGB_FOUR_OW
-endr
-rept 3
-	MONOCHROME_RGB_FOUR_OW_NIGHT
-endr
 endc

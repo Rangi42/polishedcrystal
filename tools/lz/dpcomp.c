@@ -58,7 +58,7 @@ void process_input(void) {
         unsigned char current_byte = data[plen - 1];
         for (unsigned prev = plen > MAX_COMMAND_COUNT ? plen - MAX_COMMAND_COUNT : 0; prev < plen; prev++) {
             consider(plen, (struct command) {
-                .command = 0,
+                .command = LZ_DATA,
                 .count = plen - prev,
                 .value = prev,
             });
@@ -67,8 +67,9 @@ void process_input(void) {
         unsigned count = 0;
         do {
             count++;
-            consider(plen, (struct command) {
-                .command = current_byte ? 1 : 3,
+            if (!current_byte || count >= 2)
+                consider(plen, (struct command) {
+                .command = current_byte ? LZ_REPEAT : LZ_ZERO,
                 .count = count,
                 .value = current_byte,
             });
@@ -78,8 +79,9 @@ void process_input(void) {
             count = 1;
             do {
                 count++;
-                consider(plen, (struct command) {
-                    .command = 2,
+                if (count >= 3)
+                    consider(plen, (struct command) {
+                    .command = LZ_ALTERNATE,
                     .count = count,
                     .value = (data[plen - count + 1] << 8) | (data[plen - count]),
                 });
@@ -90,7 +92,7 @@ void process_input(void) {
             unsigned k = min(MAX_COMMAND_COUNT, match_right(plen - 1, at));
             for (unsigned i = 2; i <= k; i++) {
                 consider(plen + i - 1, (struct command) {
-                    .command = 4,
+                    .command = LZ_COPY_NORMAL,
                     .count = i,
                     .value = encode_delta(plen - 1, at),
                 });
@@ -99,7 +101,7 @@ void process_input(void) {
             k = min(MAX_COMMAND_COUNT, match_left(plen - 1, at));
             for (unsigned i = 2; i <= k; i++) {
                 consider(plen + i - 1, (struct command) {
-                    .command = 6,
+                    .command = LZ_COPY_REVERSED,
                     .count = i,
                     .value = encode_delta(plen - 1, at),
                 });
@@ -108,7 +110,7 @@ void process_input(void) {
             k = min(MAX_COMMAND_COUNT, match_flipped(plen - 1, at));
             for (unsigned i = 2; i <= k; i++) {
                 consider(plen + i - 1, (struct command) {
-                    .command = 5,
+                    .command = LZ_COPY_FLIPPED,
                     .count = i,
                     .value = encode_delta(plen - 1, at),
                 });

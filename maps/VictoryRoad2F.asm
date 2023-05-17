@@ -17,7 +17,7 @@ VictoryRoad2F_MapScriptHeader:
 	bg_event  5,  5, BGEVENT_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
 	def_object_events
-	object_event 20,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	object_event 20,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerVeteranfJoanne, -1
 	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfSylvie, -1
 	tmhmball_event  8,  4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
@@ -25,54 +25,54 @@ VictoryRoad2F_MapScriptHeader:
 	itemball_event  9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
 	object_const_def
-	const VICTORYROAD2F_SILVER
+	const VICTORYROAD2F_RIVAL
 
 VictoryRoadRivalLeft:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	turnobject PLAYER, LEFT
 	special Special_FadeOutMusic
 	pause 15
-	appear VICTORYROAD2F_SILVER
-	applymovement VICTORYROAD2F_SILVER, VictoryRoadRivalBattleApproachMovement1
+	appear VICTORYROAD2F_RIVAL
+	applymovement VICTORYROAD2F_RIVAL, VictoryRoadRivalBattleApproachMovement1
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext VictoryRoadRivalBeforeText
 	setevent EVENT_RIVAL_VICTORY_ROAD
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftruefwd UnknownScript_0x744ff
+	iftruefwd .GotTotodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftruefwd UnknownScript_0x7450f
+	iftruefwd .GotChikorita
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
-	setlasttalked VICTORYROAD2F_SILVER
+	setlasttalked VICTORYROAD2F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_15
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjumpfwd UnknownScript_0x7451f
+	sjumpfwd .AfterBattle
 
-UnknownScript_0x744ff:
+.GotTotodile:
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
-	setlasttalked VICTORYROAD2F_SILVER
+	setlasttalked VICTORYROAD2F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_13
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjumpfwd UnknownScript_0x7451f
+	sjumpfwd .AfterBattle
 
-UnknownScript_0x7450f:
+.GotChikorita:
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
-	setlasttalked VICTORYROAD2F_SILVER
+	setlasttalked VICTORYROAD2F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_14
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	; fallthrough
 
-UnknownScript_0x7451f:
+.AfterBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext VictoryRoadRivalAfterText
-	applymovement VICTORYROAD2F_SILVER, VictoryRoadRivalBattleExitMovement1
-	disappear VICTORYROAD2F_SILVER
+	applymovement VICTORYROAD2F_RIVAL, VictoryRoadRivalBattleExitMovement1
+	disappear VICTORYROAD2F_RIVAL
 	setscene $1
 	playmapmusic
 	end

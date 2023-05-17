@@ -2,7 +2,6 @@ Route39_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, Route39TileScript
 
 	def_warp_events
 	warp_event  1, 17, ROUTE_39_BARN, 1
@@ -16,6 +15,8 @@ Route39_MapScriptHeader:
 	bg_event  9, 19, BGEVENT_JUMPTEXT, MoomooFarmSignText
 	bg_event 11,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
 	bg_event 15, 21, BGEVENT_JUMPTEXT, Route39SignText
+	bg_event  8,  9, BGEVENT_JUMPTEXT, Route39AdvancedTips1Text
+	bg_event 10, 45, BGEVENT_JUMPTEXT, Route39AdvancedTips2Text
 	bg_event  5, 27, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 	def_object_events
@@ -23,30 +24,21 @@ Route39_MapScriptHeader:
 	object_event 13, 43, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
 	object_event 10, 36, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
 	object_event 11, 33, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
-	pokemon_event  3, 26, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	pokemon_event  6, 25, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	pokemon_event  4, 29, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	pokemon_event  8, 27, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
+	pokemon_event  3, 26, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	pokemon_event  6, 25, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	pokemon_event  4, 29, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	pokemon_event  8, 27, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
 	object_event 13, 21, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
 	fruittree_event  9, 17, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
 	object_event  4, 36, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
 	object_event  4, 44, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	object_event 15, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
 	tmhmball_event  1, 21, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
-	smashrock_event  8,  9
+	smashrock_event 12, 10
 	smashrock_event 15,  8
 
 	object_const_def
 	const ROUTE39_COWGIRL
-
-Route39TileScript:
-	checkflag ENGINE_FLYPOINT_SNOWTOP
-	iffalsefwd .End
-	changeblock 10, 8, $f4
-	changeblock 12, 8, $01
-	changeblock 14, 8, $01
-.End
-	endcallback
 
 TrainerPokefanmDerek1:
 	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, .Script
@@ -197,6 +189,12 @@ Route39CowgirlAnnieScript:
 	para "from Ecruteak to"
 	line "Olivine and I'll"
 	cont "fight ya."
+
+	para "Some o' them"
+	line "might only want"
+
+	para "to battle ya when"
+	line "it's dark out."
 	done
 
 .QuestionText:
@@ -437,6 +435,35 @@ Route39SignText:
 
 	para "Olivine City -"
 	line "Ecruteak City"
+	done
+
+Route39AdvancedTips1Text:
+	text "Advanced Tips!"
+
+	para "Sandstorms boost"
+	line "Special Defense of"
+	cont "Rock-type #mon!"
+
+if !DEF(FAITHFUL)
+	para "And, Hail boosts"
+	line "the Defense of"
+	cont "Ice-type #mon!"
+endc
+	done
+
+Route39AdvancedTips2Text:
+	text "Advanced Tips!"
+
+	para "A #mon with"
+	line "the Compound Eyes"
+	cont "ability, or one"
+
+	para "holding an Amulet"
+	line "Coin, is more li-"
+	cont "kely to encounter"
+
+	para "a wild #mon"
+	line "holding an item!"
 	done
 
 RuggedRoadAheadSignText:

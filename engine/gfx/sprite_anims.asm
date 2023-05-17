@@ -363,9 +363,9 @@ AnimSeq_RadioTuningKnob:
 AnimSeq_CutLeaves:
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, $80
 	add hl, de
 	ld e, l
@@ -373,8 +373,8 @@ AnimSeq_CutLeaves:
 
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 
 	ld hl, SPRITEANIMSTRUCT_VAR1
@@ -739,7 +739,7 @@ AnimSeq_PcMode:
 	ret
 
 AnimSeq_PcPack:
-	; Display male or female pack
+	; Display pack: $00=male, $04=female, $08=enby
 	ld a, [wPlayerGender]
 	add a
 	add a

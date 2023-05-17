@@ -8,12 +8,10 @@ _CardFlip:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
-;	ld de, MUSIC_NONE
-;	call PlayMusic
 	call DelayFrame
 	call DisableLCD
 	call LoadStandardFont
-	call LoadFontsExtra
+	call LoadFrame
 
 	ld hl, CardFlipLZ01
 	ld de, vTiles2 tile $00
@@ -47,17 +45,6 @@ _CardFlip:
 	ld a, $2
 	ld [wCardFlipCursorY], a
 	ld [wCardFlipCursorX], a
-
-;	ld de, MUSIC_GAME_CORNER
-;	ld a, [wMapGroup]
-;	cp GROUP_GOLDENROD_GAME_CORNER
-;	jr nz, .celadon_game_corner
-;	ld a, [wMapNumber]
-;	cp MAP_GOLDENROD_GAME_CORNER
-;	jr nz, .celadon_game_corner
-;	ld de, MUSIC_GAME_CORNER_DPPT
-;.celadon_game_corner
-;	call PlayMusic
 
 .MasterLoop:
 	ld a, [wJumptableIndex]
@@ -1491,62 +1478,7 @@ CardFlip_InitAttrPals:
 	ret
 
 .palettes
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 17, 07, 31
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 29, 25, 00
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 31, 13, 30
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 08, 17, 30
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 08, 31, 08
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 17, 07, 31
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 17, 07, 31
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 17, 07, 31
-	RGB 06, 19, 08
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 00, 00
-	RGB 31, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/card_flip/card_flip.pal"
 
 CardFlipLZ03:
 INCBIN "gfx/card_flip/card_flip_3.2bpp.lz"

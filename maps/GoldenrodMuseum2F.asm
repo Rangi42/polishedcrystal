@@ -214,21 +214,21 @@ GoldenrodMuseum2FScientistNoArtifactsText:
 GoldenrodMuseum2FTeacherScript:
 	faceplayer
 	opentext
-	checkevent EVENT_LISTENED_TO_ENDURE_INTRO
-	iftruefwd GoldenrodMuseum2FTutorEndureScript
+	checkevent EVENT_LISTENED_TO_BATON_PASS_INTRO
+	iftruefwd GoldenrodMuseum2FTutorBatonPassScript
 	writetext GoldenrodMuseum2FTutorIntroText
 	waitbutton
-	setevent EVENT_LISTENED_TO_ENDURE_INTRO
+	setevent EVENT_LISTENED_TO_BATON_PASS_INTRO
 ; fallthrough
-GoldenrodMuseum2FTutorEndureScript:
-	writetext GoldenrodMuseum2FTutorEndureText
+GoldenrodMuseum2FTutorBatonPassScript:
+	writetext GoldenrodMuseum2FTutorBatonPassText
 	waitbutton
 	checkitem SILVER_LEAF
 	iffalsefwd .NoSilverLeaf
 	writetext GoldenrodMuseum2FTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval ENDURE
+	setval BATON_PASS
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
@@ -253,25 +253,28 @@ GoldenrodMuseum2FTutorIntroText:
 	line "tower."
 
 	para "This mural was"
-	line "carefully re-"
+	line "originally in"
+	cont "that tower."
 
-	para "moved during con-"
-	line "struction so it"
+	para "Moving it here"
+	line "was necessary"
 
-	para "could endure the"
-	line "test of time."
+	para "to preserve a"
+  line "piece of Johto's"
+  cont "history."
 
-	para "You know what else"
-	line "can endure?"
+	para "Even #mon"
+  line "can understand"
 
-	para "#mon!"
+	para "the value of"
+  line "preservation!"
 	done
 
-GoldenrodMuseum2FTutorEndureText:
+GoldenrodMuseum2FTutorBatonPassText:
 	text "I can teach your"
 	line "#mon to use"
 
-	para "Endure for one"
+	para "Baton Pass for one"
 	line "Silver Leaf."
 	done
 
@@ -283,7 +286,7 @@ GoldenrodMuseum2FTutorNoSilverLeaf:
 GoldenrodMuseum2FTutorQuestion:
 	text "Should I teach"
 	line "your #mon"
-	cont "Endure?"
+	cont "Baton Pass?"
 	done
 
 GoldenrodMuseum2FTutorRefused:
@@ -293,5 +296,5 @@ GoldenrodMuseum2FTutorRefused:
 GoldenrodMuseum2FTutorTaught:
 	text "Now your #mon"
 	line "knows how to use"
-	cont "Endure!"
+	cont "Baton Pass!"
 	done

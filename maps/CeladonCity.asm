@@ -139,9 +139,17 @@ CeladonCityFisherText:
 	text "This Poliwrath is"
 	line "my partner."
 
-	para "I wonder if it'll"
-	line "ever evolve into a"
-	cont "frog #mon."
+	para "It used to be"
+	line "Quiet, but the"
+
+	para "manager lady in"
+	line "the condo here"
+
+	para "brewed us some"
+	line "tea with a Mint"
+
+	para "Leaf that made it"
+	line "act more Jolly!"
 	done
 
 CeladonCityPoliwrathText:
@@ -268,6 +276,9 @@ CeladonGymSignText:
 
 CeladonUniversitySignText:
 	text "Celadon University"
+
+	para "“Growth Through"
+	line "Studying”"
 	done
 
 CeladonCityDeptStoreSignText:

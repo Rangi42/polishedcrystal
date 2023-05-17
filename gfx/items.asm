@@ -167,8 +167,8 @@ SECTION "BattleItemIcon", ROMX
 XAttackIcon::
 XDefendIcon::
 XSpeedIcon::
-XSpclAtkIcon::
-XSpclDefIcon::
+XSpAtkIcon::
+XSpDefIcon::
 XAccuracyIcon::
 DireHitIcon::
 GuardSpecIcon:: INCBIN "gfx/items/battle_item.2bpp.lz"
@@ -490,23 +490,8 @@ LaggingTailIcon:: INCBIN "gfx/items/lagging_tail.2bpp.lz"
 SECTION "IronBallIcon", ROMX
 IronBallIcon:: INCBIN "gfx/items/iron_ball.2bpp.lz"
 
-SECTION "RingTargetIcon", ROMX
-RingTargetIcon:: INCBIN "gfx/items/ring_target.2bpp.lz"
-
 SECTION "RedCardIcon", ROMX
 RedCardIcon:: INCBIN "gfx/items/red_card.2bpp.lz"
-
-SECTION "AbsorbBulbIcon", ROMX
-AbsorbBulbIcon:: INCBIN "gfx/items/absorb_bulb.2bpp.lz"
-
-SECTION "CellBatteryIcon", ROMX
-CellBatteryIcon:: INCBIN "gfx/items/cell_battery.2bpp.lz"
-
-SECTION "LuminousMossIcon", ROMX
-LuminousMossIcon:: INCBIN "gfx/items/luminousmoss.2bpp.lz"
-
-SECTION "SnowballIcon", ROMX
-SnowballIcon:: INCBIN "gfx/items/snowball.2bpp.lz"
 
 SECTION "EjectPackIcon", ROMX
 EjectPackIcon:: INCBIN "gfx/items/eject_pack.2bpp.lz"
@@ -514,14 +499,26 @@ EjectPackIcon:: INCBIN "gfx/items/eject_pack.2bpp.lz"
 SECTION "RoomServiceIcon", ROMX
 RoomServiceIcon:: INCBIN "gfx/items/room_service.2bpp.lz"
 
+SECTION "ClearAmuletIcon", ROMX
+ClearAmuletIcon:: INCBIN "gfx/items/clear_amulet.2bpp.lz"
+
+SECTION "MirrorHerbIcon", ROMX
+MirrorHerbIcon:: INCBIN "gfx/items/mirror_herb.2bpp.lz"
+
+SECTION "PunchinGloveIcon", ROMX
+PunchinGloveIcon:: INCBIN "gfx/items/punchinglove.2bpp.lz"
+
+SECTION "CovertCloakIcon", ROMX
+CovertCloakIcon:: INCBIN "gfx/items/covert_cloak.2bpp.lz"
+
+SECTION "LoadedDiceIcon", ROMX
+LoadedDiceIcon:: INCBIN "gfx/items/loaded_dice.2bpp.lz"
+
 SECTION "ThroatSprayIcon", ROMX
 ThroatSprayIcon:: INCBIN "gfx/items/throat_spray.2bpp.lz"
 
 SECTION "HeavyBootsIcon", ROMX
 HeavyBootsIcon:: INCBIN "gfx/items/heavy_boots.2bpp.lz"
-
-SECTION "UtilUmbrellaIcon", ROMX
-UtilUmbrellaIcon:: INCBIN "gfx/items/util_umbrella.2bpp.lz"
 
 SECTION "HerbIcon", ROMX
 MentalHerbIcon::
@@ -602,6 +599,9 @@ RazorClawIcon:: INCBIN "gfx/items/razor_claw.2bpp.lz"
 
 SECTION "OddSouvenirIcon", ROMX
 OddSouvenirIcon:: INCBIN "gfx/items/odd_souvenir.2bpp.lz"
+
+SECTION "LinkingCordIcon", ROMX
+LinkingCordIcon:: INCBIN "gfx/items/linking_cord.2bpp.lz"
 
 SECTION "NuggetIcon", ROMX
 NuggetIcon:: INCBIN "gfx/items/nugget.2bpp.lz"
@@ -695,6 +695,9 @@ TMHMIcon:: INCBIN "gfx/items/tm_hm.2bpp.lz"
 SECTION "ApricornIcon", ROMX
 ApricornIcon:: INCBIN "gfx/items/apricorn.2bpp.lz"
 
+SECTION "WingIcon", ROMX
+WingIcon:: INCBIN "gfx/items/wing.2bpp.lz"
+
 SECTION "ParkBallIcon", ROMX
 ParkBallIcon:: INCBIN "gfx/items/park_ball.2bpp.lz"
 
@@ -782,6 +785,9 @@ OvalCharmIcon:: INCBIN "gfx/items/oval_charm.2bpp.lz"
 SECTION "CatchCharmIcon", ROMX
 CatchCharmIcon:: INCBIN "gfx/items/catch_charm.2bpp.lz"
 
+SECTION "WingCaseIcon", ROMX
+WingCaseIcon:: INCBIN "gfx/items/wing_case.2bpp.lz"
+
 SECTION "SilphScope2Icon", ROMX
 SilphScope2Icon:: INCBIN "gfx/items/silphscope2.2bpp.lz"
 
@@ -790,3 +796,11 @@ ApricornBoxIcon:: INCBIN "gfx/items/apricorn_box.2bpp.lz"
 
 SECTION "TypeChartIcon", ROMX
 TypeChartIcon:: INCBIN "gfx/items/type_chart.2bpp.lz"
+
+SECTION "GBCSoundsIcon", ROMX
+GBCSoundsIcon:: INCBIN "gfx/items/gbc_sounds.2bpp.lz"
+
+SECTION "LureIcon", ROMX
+HarshLureIcon::
+PotentLureIcon::
+MalignLureIcon:: INCBIN "gfx/items/lure.2bpp.lz"

@@ -19,6 +19,7 @@ Route34_MapScriptHeader:
 	def_bg_events
 	bg_event 12,  6, BGEVENT_JUMPTEXT, Route34SignText
 	bg_event 13, 33, BGEVENT_JUMPTEXT, Route34TrainerTipsText
+	bg_event 18, 23, BGEVENT_JUMPTEXT, Route34AdvancedTipsSignText
 	bg_event 10, 13, BGEVENT_JUMPTEXT, DayCareSignText
 	bg_event  8, 32, BGEVENT_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
 	bg_event 17, 19, BGEVENT_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
@@ -102,16 +103,8 @@ Route34LyraTrigger2:
 	applyonemovement PLAYER, step_up
 	pause 10
 	turnobject ROUTE34_LYRA, RIGHT
-	opentext
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .IntroduceFemale
-	writetext Route34LyraIntroductionText1
-	sjumpfwd .Continue
-.IntroduceFemale:
-	writetext Route34LyraIntroductionText2
-.Continue:
-	waitbutton
-	closetext
+	readvar VAR_PLAYERGENDER
+	scalltable Route34LyraIntroductionTable
 	turnobject ROUTE34_LYRA, DOWN
 	pause 10
 	showtext Route34LyraChallengeText
@@ -159,12 +152,11 @@ Route34LyraTrigger2:
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_LYRA
 	applyonemovement PLAYER, step_right
-	playsound SFX_EXIT_BUILDING
-	disappear PLAYER
 	setscene $0
-	special FadeOutPalettes
 	pause 15
-	warpfacing RIGHT, DAYCARE, 0, 4
+	warpcheck
+	warpsound
+	newloadmap MAPSETUP_DOOR
 	end
 
 DayCareManScript_Outside:
@@ -503,6 +495,12 @@ Route34RichBoyIrvingScript:
 
 	para "beat everyone else"
 	line "here first!"
+
+	para "Even the Officer,"
+	line "although she may"
+
+	para "not battle you"
+	line "until night."
 	done
 
 .QuestionText:
@@ -646,7 +644,14 @@ Route34LyraGreetingText:
 	text "Lyra: Hi, <PLAYER>!"
 	done
 
-Route34LyraIntroductionText1:
+Route34LyraIntroductionTable:
+	dw .Male
+	dw .Female
+	dw .Enby
+
+.Male:
+	jumpthistext
+
 	text "This is <PLAYER>."
 	line "He's a trainer."
 
@@ -657,12 +662,28 @@ Route34LyraIntroductionText1:
 	line "as you, of course!"
 	done
 
-Route34LyraIntroductionText2:
+.Female:
+	jumpthistext
+
 	text "This is <PLAYER>."
 	line "She's a trainer."
 
 	para "She's quite good at"
 	line "raising #mon."
+
+	para "Well, not as good"
+	line "as you, of course!"
+	done
+
+.Enby:
+	jumpthistext
+
+	text "This is <PLAYER>."
+	line "They're a trainer."
+
+	para "They're quite good"
+	line "at raising #-"
+	cont "mon."
 
 	para "Well, not as good"
 	line "as you, of course!"
@@ -862,6 +883,23 @@ Route34TrainerTipsText:
 	para "Make a note of"
 	line "which trees bear"
 	cont "which Berries."
+	done
+
+Route34AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Some #mon have"
+	line "inherent potential"
+
+	para "to be stronger"
+	line "than others!"
+
+	para "But all #mon"
+	line "can put in effort"
+	cont "during battle, or"
+
+	para "take vitamins,"
+	line "to gain strength!"
 	done
 
 DayCareSignText:

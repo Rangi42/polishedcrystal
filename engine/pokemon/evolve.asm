@@ -18,7 +18,6 @@ EvolveAfterBattle:
 	and a
 	jmp z, EvolveAfterBattle_ReturnToMap
 	push af
-
 EvolveAfterBattle_MasterLoop:
 	ld hl, wCurPartyMon
 	inc [hl]
@@ -84,8 +83,6 @@ EvolveAfterBattle_MasterLoop:
 	jmp z, .location
 	cp EVOLVE_MOVE
 	jmp z, .move
-	cp EVOLVE_EVS
-	jmp z, .evs
 	cp EVOLVE_LEVEL
 	jmp z, .level
 	cp EVOLVE_PARTY
@@ -102,10 +99,32 @@ EvolveAfterBattle_MasterLoop:
 	jmp z, .dont_evolve_1
 
 	push hl
+
+	; If EVs affecting stats is disabled, compare based on IVs, not actual
+	; stats. This way, if the player also has IVs and Natures disabled
+	; (perfect stats in the case of IVs), they still retain access to
+	; all stat evolutions.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK ; sets z if EVS_OPT_DISABLED
+	jr nz, .evs_enabled
+
+	ld hl, wTempMonHPAtkDV
+	ld a, [hli]
+	and $f
+	ld c, a ; c = atk
+	ld a, [hl]
+	and $f0
+	swap a ; a = def
+	cp c ; set carry if atk > def
+	jr .stat_cmp_done
+
+.evs_enabled
 	ld hl, wTempMonAttack
 	ld de, wTempMonDefense
 	ld c, 2
 	call StringCmp ; set carry if atk > def
+
+.stat_cmp_done
 	ld a, ATK_EQ_DEF
 	jr z, .got_tyrogue_evo
 	; a = carry ? ATK_GT_DEF : ATK_LT_DEF
@@ -176,37 +195,40 @@ EvolveAfterBattle_MasterLoop:
 
 .party
 	ld a, [hli]
-	ld c, a
+	ld d, a ; species
+	ld a, [hli]
+	ld e, a ; ext species + form
 	push hl
-	push de
 	ld hl, wPartyMon1Species
 	ld a, [wPartyCount]
 	ld b, a
 .party_loop
 	ld a, [hl]
-	cp c
+	cp d
 	jr nz, .party_next
+	push hl
+	push de
 	ld de, MON_FORM - MON_SPECIES
 	add hl, de
 	ld a, [hl]
-	and a
+	pop de
+	pop hl
+	and SPECIESFORM_MASK
+	cp e
 	jr z, .party_ok
 .party_next
-	dec b
-	jr z, .party_no
-	ld de, PARTYMON_STRUCT_LENGTH - MON_FORM
+	push de
+	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
-	jr .party_loop
-
-.party_no
 	pop de
+	dec b
+	jr nz, .party_loop
 	pop hl
 	jmp .dont_evolve_3
 
 .party_ok
-	pop de
 	pop hl
-	jmp .proceed
+	jr .proceed
 
 .holding
 	ld a, [hli]
@@ -251,33 +273,17 @@ EvolveAfterBattle_MasterLoop:
 	push bc
 	ld b, a
 	ld hl, wTempMonMoves
-rept NUM_MOVES
+rept NUM_MOVES - 1
 	ld a, [hli]
 	cp b
 	jr z, .move_proceed
 endr
-	pop bc
-	pop hl
-	jmp .dont_evolve_3
-
+	ld a, [hl]
+	cp b
 .move_proceed
 	pop bc
 	pop hl
-	jr .proceed
-
-.evs
-	ld a, [hli]
-	push hl
-	push bc
-	ld hl, wTempMonSpecies
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	pop bc
-	pop hl
-	cp EVS_TO_EVOLVE
-	jmp c, .dont_evolve_3
+	jmp nz, .dont_evolve_3
 	jr .proceed
 
 .crit
@@ -368,7 +374,7 @@ endr
 	ld hl, Text_EvolvedIntoPKMN
 	call PrintTextboxText
 
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld de, SFX_CAUGHT_MON
 	call PlayWaitSFX
@@ -762,24 +768,32 @@ GetPreEvolution:
 	dec a
 	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
 	jr z, .inc
-	cp EVOLVE_HOLDING  ; This evolution type has the extra parameter of stat comparison.
-	jr nz, .not_inc
+	cp EVOLVE_HOLDING ; This evolution type has the extra parameter of time of day comparison.
+	jr z, .inc
+	cp EVOLVE_PARTY ; This evolution type has the extra parameter of form comparison.
+	jr nz, .check_speciesform
 .inc
 	inc hl
 
-.not_inc
+.check_speciesform
 	inc hl
 	ld a, [wCurPartySpecies]
 	cp [hl]
 	inc hl
 	jr nz, .not_preevo
+	ld a, [hl]
+	and FORM_MASK
+	push bc
+	ld b, EXTSPECIES_MASK
+	jr z, .skip_form
+	ld b, SPECIESFORM_MASK
+.skip_form
 	ld a, [wCurForm]
-	and SPECIESFORM_MASK
-	jr nz, .cont
-	inc a
-.cont
-	cp [hl]
+	xor [hl]
+	and b
+	pop bc
 	jr z, .found_preevo
+	
 .not_preevo
 	inc hl
 	ld a, [hl]
@@ -789,15 +803,33 @@ GetPreEvolution:
 .no_evolve
 	inc bc
 	ld a, b
-	cp HIGH(NUM_SPECIES)
+	cp HIGH(NUM_EXT_POKEMON)
 	jr c, .loop
 	ld a, c
-	cp LOW(NUM_SPECIES)
+	cp LOW(NUM_EXT_POKEMON)
 	jr c, .loop
 	and a
 	ret
 
 .found_preevo
+; if bc > NUM_SPECIES, lookup species+form on VariantSpeciesAndFormTable
+; else convert index directly to species+extspecies and give form of PLAIN_FORM (or parent's form if NO_FORM is used)
+	ld a, b
+	cp HIGH(NUM_SPECIES)
+	jr c, .not_variant
+	ld a, c
+	cp LOW(NUM_SPECIES)
+	jr c, .not_variant
+	sla c ; bc * 2, since VariantSpeciesAndFormTable is two bytes wide
+	rl b
+	ld hl, VariantSpeciesAndFormTable - (NUM_SPECIES * 2)
+	add hl, bc
+	ld a, [hli]
+	ld [wCurPartySpecies], a
+	ld a, [hl]
+	jr .got_form
+
+.not_variant
 	inc bc
 	ld a, c
 	ld [wCurPartySpecies], a
@@ -805,15 +837,16 @@ GetPreEvolution:
 	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
 	swap a
 	rlca
-	or [hl] ; we're pointing to mon form
 	ld b, a
-	push bc
-	call GetSpeciesAndFormIndex ; checks if current form is a valid form for this species
-	pop bc
+	inc b ; extspecies | PLAIN_FORM
+	ld a, [hl] ; we're pointing to mon form
+	and FORM_MASK
 	ld a, b
-	jr c, .got_form
-	and EXTSPECIES_MASK
-	inc a
+	jr nz, .got_form
+	dec b
+	ld a, [wCurForm]
+	and FORM_MASK ; inherit form from parent in case of NO_FORM
+	or b
 .got_form
 	ld [wCurForm], a
 	scf
@@ -830,3 +863,112 @@ GetEvosAttacksPointer:
 	ld h, [hl]
 	ld l, a
 	ret
+
+GetEvolutionData:
+; input: b = form, c = species
+; output: a = EVOLVE_* constant, wStringBuffer4 = parameter 1, wStringBuffer5 = parameter 2
+	assert MON_IS_EGG == MON_EXTSPECIES && MON_EXTSPECIES == MON_FORM
+	bit MON_IS_EGG_F, b
+	jr z, .not_egg
+	ld a, EVOLVE_EGG
+	ret
+.not_egg
+	ld a, b
+	and SPECIESFORM_MASK
+	ld b, a
+	ld hl, MultipleEvolutions
+	ld de, 3
+	call IsInWordArray
+	jr nc, .not_multiple
+	inc hl
+	inc hl
+	ld a, [hl]
+	ret
+.not_multiple
+	call GetEvosAttacksPointer
+	ld a, [hli]
+	inc a ; no evolutions?
+	ret z ; EVOLVE_NONE == 0
+	dec a
+	push af
+	ld a, [hld] ; parameter 1
+	ld [wStringBuffer4], a
+	ld a, [hli] ; evolution method
+	cp EVOLVE_ITEM
+	jr z, .get_item_name
+	cp EVOLVE_HOLDING
+	jr z, .get_item_name_and_time
+	cp EVOLVE_LOCATION
+	jr z, .get_landmark_name
+	cp EVOLVE_MOVE
+	jr z, .get_move_name
+	cp EVOLVE_PARTY
+	jr z, .get_mon_name
+.done
+	pop af
+	ret
+
+.copy_string:
+	ld de, wStringBuffer1
+	ld hl, wStringBuffer4
+	call CopyName2
+	jr .done
+
+.get_item_name_and_time:
+	inc hl
+	ld a, [hld] ; parameter 2 (time)
+	ld [wStringBuffer5], a
+.get_item_name:
+	ld a, [hl] ; parameter 1 (item)
+	ld [wNamedObjectIndex], a
+	call GetItemName
+	jr .copy_string
+
+.get_landmark_name:
+	ld e, [hl] ; parameter 1 (landmark)
+	farcall GetLandmarkName
+	jr .copy_string
+
+.get_move_name:
+	ld a, [hl] ; parameter 1 (move)
+	ld [wNamedObjectIndex], a
+	call GetMoveName
+	jr .copy_string
+
+.get_mon_name:
+	ld a, [hli] ; parameter 1 low (species)
+	ld e, a
+	ld a, [hl] ; parameter 1 high (ext species/form)
+	ld hl, wNamedObjectIndex
+	ld [hld], a
+	ld [hl], e
+	call GetPokemonName
+	jr .copy_string
+
+INCLUDE "data/pokemon/multi_evos.asm"
+
+GetNextMoveLevel:
+; input: b = form, c = species, d = level
+; output: a = level of next move (0 if none, -1 if egg)
+	assert MON_IS_EGG == MON_EXTSPECIES && MON_EXTSPECIES == MON_FORM
+	bit MON_IS_EGG_F, b
+	jr z, .not_egg
+	ld a, -1
+	ret
+.not_egg
+	call GetEvosAttacksPointer
+.skip_evos
+	ld a, [hli]
+	inc a
+	jr nz, .skip_evos
+.find_move
+	ld a, [hli]
+	inc a
+	ret z ; no move
+	dec a
+	cp d
+	jr c, .next_move
+	ret nz ; got move
+.next_move
+	inc hl
+	jr .find_move

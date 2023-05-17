@@ -167,6 +167,31 @@ _GetBaseData::
 	call FarCopyBytes
 	jmp PopBCDEHL
 
+GetPicSize::
+	push hl
+	push de
+	push bc
+	ld a, [wCurSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+	srl b
+	rr c
+	push af
+	ld hl, PokemonPicSizes
+	add hl, bc
+	ld a, BANK(PokemonPicSizes)
+	call GetFarByte
+	ld b, a
+	pop af
+	jr c, .skip_swap
+	swap b ; use high nybble if index is even
+.skip_swap
+	ld a, b
+	and $f
+	jmp PopBCDEHL
+
 GetNature::
 ; 'b' contains the target Nature to check
 ; returns nature in b
@@ -270,7 +295,7 @@ DexCompareWildForm:
 	; Thus, doubling it will leave mismatching extspecies/form data
 	; on noncarry, returning nz.
 
-	assert (MON_COSMETIC_F == 7)
+	assert MON_COSMETIC_F == 7
 
 	add a
 	ret nc
@@ -390,6 +415,26 @@ ConvertFormToExtendedSpecies::
 	rra
 	ret
 
+CompareSpeciesWithDE:
+; Compares given species+form in bc with target in de. Returns z if matching.
+; Uses similar logic as GetSpeciesAndFormIndexFromHL for what constitutes
+; a match. Namely, if d doesn't explicitly specify a form, any form will do.
+; Egg and gender flag is ignored, cosmetic forms are treated as separate.
+	inc d
+	dec d
+	jr nz, .form_ok
+	ld a, b
+	and ~FORM_MASK
+	ld b, a
+.form_ok
+	ld a, c
+	cp e
+	ret nz
+	ld a, b
+	and SPECIESFORM_MASK
+	xor d
+	ret
+
 GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
 ; output: bc = extended index, carry if anything found
@@ -451,7 +496,7 @@ GetSpeciesAndFormIndexFromHL::
 	; Is the mismatch due to wrong species (extspecies mismatch)?
 	; We can check this by comparing on form mask+1, since form is
 	; right below extspecies.
-	assert (EXTSPECIES_MASK > FORM_MASK)
+	assert EXTSPECIES_MASK > FORM_MASK
 	cp (FORM_MASK + 1)
 	jr nc, .loop
 

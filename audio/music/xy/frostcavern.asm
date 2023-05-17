@@ -4,18 +4,19 @@
 ; https://hax.iimarckus.org/topic/6777/8/
 
 Music_FrostCavernXY:
-	musicheader 3, 1, Music_FrostCavernXY_Ch1
-	musicheader 1, 2, Music_FrostCavernXY_Ch2
-	musicheader 1, 3, Music_FrostCavernXY_Ch3
+	channel_count 3
+	channel 1, Music_FrostCavernXY_Ch1
+	channel 2, Music_FrostCavernXY_Ch2
+	channel 3, Music_FrostCavernXY_Ch3
 
 Music_FrostCavernXY_Ch1:
 	tempo 152
-	volume $77
-	vibrato $6, $23
-	notetype $c, $92
-	dutycycle 0
+	volume 7, 7
+	vibrato 6, 2, 3
+	note_type 12, 9, 2
+	duty_cycle 0
 	octave 3
-	note __, 2
+	rest 2
 	note F_, 2
 	note G_, 4
 	note A#, 4
@@ -34,8 +35,8 @@ Music_FrostCavernXY_Ch1:
 	octave 4
 	note C_, 2
 	note C_, 12
-	dutycycle 3
-	intensity $77
+	duty_cycle 3
+	volume_envelope 7, 7
 	octave 5
 	note C_, 6
 	octave 4
@@ -51,8 +52,8 @@ Music_FrostCavernXY_Ch1:
 	note A#, 6
 	note F_, 14
 Music_FrostCavernXY_Ch1_loop_1:
-	dutycycle 0
-	intensity $b2
+	duty_cycle 0
+	volume_envelope 11, 2
 	octave 5
 	note C_, 4
 	octave 4
@@ -76,13 +77,13 @@ Music_FrostCavernXY_Ch1_loop_1:
 	note G_, 4
 	note G#, 2
 	note G#, 12
-	loopchannel 2, Music_FrostCavernXY_Ch1_loop_1
-	jumpchannel Music_FrostCavernXY_Ch1
+	sound_loop 2, Music_FrostCavernXY_Ch1_loop_1
+	sound_jump Music_FrostCavernXY_Ch1
 
 Music_FrostCavernXY_Ch2:
-	vibrato $8, $24
-	notetype $c, $b2
-	dutycycle 2
+	vibrato 8, 2, 4
+	note_type 12, 11, 2
+	duty_cycle 2
 	octave 3
 	note C_, 2
 	note A#, 2
@@ -134,17 +135,17 @@ Music_FrostCavernXY_Ch2:
 	note C_, 4
 	note C_, 4
 	note C_, 2
-	jumpchannel Music_FrostCavernXY_Ch2
+	sound_jump Music_FrostCavernXY_Ch2
 
 Music_FrostCavernXY_Ch3:
-	vibrato $16, $15
-	notetype $c, $20
-	note __, 16
+	vibrato 22, 1, 5
+	note_type 12, 2, 0
+	rest 16
 Music_FrostCavernXY_Ch3_loop_main:
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 2
+	rest 16
+	rest 16
+	rest 16
+	rest 2
 Music_FrostCavernXY_Ch3_loop_1:
 	octave 4
 	note C_, 2
@@ -161,10 +162,10 @@ Music_FrostCavernXY_Ch3_loop_1:
 	octave 4
 	note C_, 2
 	note D#, 4
-	loopchannel 6, Music_FrostCavernXY_Ch3_loop_1
+	sound_loop 6, Music_FrostCavernXY_Ch3_loop_1
 	note D#, 6
-	intensity $30
+	volume_envelope 3, 0
 	note D#, 4
-	intensity $20
-	note __, 4
-	jumpchannel Music_FrostCavernXY_Ch3_loop_main
+	volume_envelope 2, 0
+	rest 4
+	sound_jump Music_FrostCavernXY_Ch3_loop_main

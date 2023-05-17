@@ -1,7 +1,7 @@
 MACRO ev_yield
-; hp, atk, def, spd, sat, sdf
-	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
-	db (\5 << 6) | (\6 << 4)
+	def_evs \#
+	db (EV_HP << 6) | (EV_ATK << 4) | (EV_DEF << 2) | EV_SPE
+	db (EV_SAT << 6) | (EV_SDF << 4)
 ENDM
 
 MACRO abilities_for
@@ -162,7 +162,7 @@ INCLUDE "data/pokemon/base_stats/jynx.asm"
 INCLUDE "data/pokemon/base_stats/electabuzz.asm"
 INCLUDE "data/pokemon/base_stats/magmar.asm"
 INCLUDE "data/pokemon/base_stats/pinsir.asm"
-INCLUDE "data/pokemon/base_stats/tauros.asm"
+INCLUDE "data/pokemon/base_stats/tauros_plain.asm"
 INCLUDE "data/pokemon/base_stats/magikarp.asm"
 INCLUDE "data/pokemon/base_stats/gyarados.asm"
 INCLUDE "data/pokemon/base_stats/lapras.asm"
@@ -228,7 +228,7 @@ INCLUDE "data/pokemon/base_stats/aipom.asm"
 INCLUDE "data/pokemon/base_stats/sunkern.asm"
 INCLUDE "data/pokemon/base_stats/sunflora.asm"
 INCLUDE "data/pokemon/base_stats/yanma.asm"
-INCLUDE "data/pokemon/base_stats/wooper.asm"
+INCLUDE "data/pokemon/base_stats/wooper_plain.asm"
 INCLUDE "data/pokemon/base_stats/quagsire.asm"
 INCLUDE "data/pokemon/base_stats/espeon.asm"
 INCLUDE "data/pokemon/base_stats/umbreon.asm"
@@ -322,10 +322,17 @@ INCLUDE "data/pokemon/base_stats/kleavor.asm"
 INCLUDE "data/pokemon/base_stats/ursaluna.asm"
 INCLUDE "data/pokemon/base_stats/sneasler.asm"
 INCLUDE "data/pokemon/base_stats/overqwil.asm"
+INCLUDE "data/pokemon/base_stats/dudunsparce.asm"
+INCLUDE "data/pokemon/base_stats/farigiraf.asm"
+INCLUDE "data/pokemon/base_stats/clodsire.asm"
+INCLUDE "data/pokemon/base_stats/annihilape.asm"
+	assert_table_length NUM_SPECIES
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red
 
 INCLUDE "data/pokemon/base_stats/mewtwo_armored.asm"
+
+INCLUDE "data/pokemon/base_stats/dudunsparce.asm" ; three segment
 
 INCLUDE "data/pokemon/base_stats/rattata_alolan.asm"
 INCLUDE "data/pokemon/base_stats/raticate_alolan.asm"
@@ -367,5 +374,10 @@ INCLUDE "data/pokemon/base_stats/electrode_hisuian.asm"
 INCLUDE "data/pokemon/base_stats/typhlosion_hisuian.asm"
 INCLUDE "data/pokemon/base_stats/qwilfish_hisuian.asm"
 INCLUDE "data/pokemon/base_stats/sneasel_hisuian.asm"
+
+INCLUDE "data/pokemon/base_stats/wooper_paldean.asm"
+INCLUDE "data/pokemon/base_stats/tauros_paldean.asm"
+INCLUDE "data/pokemon/base_stats/tauros_paldean_fire.asm"
+INCLUDE "data/pokemon/base_stats/tauros_paldean_water.asm"
 
 	assert_table_length NUM_EXT_POKEMON

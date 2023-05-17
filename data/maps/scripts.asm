@@ -39,6 +39,11 @@ INCLUDE "maps/GoldenrodPokecomCenter1F.asm"
 INCLUDE "maps/GoldenrodPokecomCenterOffice.asm"
 
 
+SECTION "Pokemon Center Scripts 5", ROMX
+
+INCLUDE "maps/SnowtopPokeCenter1F.asm"
+
+
 SECTION "Special Map Scripts", ROMX
 
 INCLUDE "maps/PokeCenter2F.asm"
@@ -309,8 +314,10 @@ INCLUDE "maps/BurnedTowerB1F.asm"
 
 SECTION "Rugged Road + Snowtop Mountain Scripts", ROMX
 
-INCLUDE "maps/RuggedRoad.asm"
-INCLUDE "maps/SnowtopMountain.asm"
+INCLUDE "maps/RuggedRoadNorth.asm"
+INCLUDE "maps/RuggedRoadSouth.asm"
+INCLUDE "maps/SnowtopMountainInside.asm"
+INCLUDE "maps/SnowtopMountainOutside.asm"
 INCLUDE "maps/Route39RuggedRoadGate.asm"
 
 
@@ -322,7 +329,6 @@ INCLUDE "maps/OlivineGym.asm"
 INCLUDE "maps/OlivineCafe.asm"
 INCLUDE "maps/OlivineGoodRodHouse.asm"
 INCLUDE "maps/OlivinePort.asm"
-INCLUDE "maps/OlivinePortPassage.asm"
 INCLUDE "maps/OlivinePunishmentSpeechHouse.asm"
 INCLUDE "maps/OlivineTimsHouse.asm"
 INCLUDE "maps/OlivineCityRoute35CoastDual.asm"
@@ -336,7 +342,6 @@ INCLUDE "maps/OlivineLighthouse3F.asm"
 INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
-INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
 SECTION "Whirl Island Scripts", ROMX
@@ -690,6 +695,7 @@ INCLUDE "maps/CeladonUniversityLounge.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"
 INCLUDE "maps/CeladonUniversityWillowsOffice.asm"
+INCLUDE "maps/CeladonUniversityNursesOffice.asm"
 
 
 SECTION "Celadon University Classroom Scripts", ROMX
@@ -707,9 +713,13 @@ INCLUDE "maps/CeladonUniversityLibrary1F.asm"
 INCLUDE "maps/CeladonUniversityLibrary2F.asm" ; shares text with CeladonUniversityLibrary1F.asm
 
 
-SECTION "Celadon Outskirts Scripts", ROMX
+SECTION "Rocket Hideout Scripts", ROMX
 
-INCLUDE "maps/CeladonOutskirts.asm"
+INCLUDE "maps/RocketHideoutB1F.asm"
+INCLUDE "maps/RocketHideoutB2F.asm"
+INCLUDE "maps/RocketHideoutB3F.asm"
+INCLUDE "maps/RocketHideoutB4F.asm"
+INCLUDE "maps/RocketHideoutElevator.asm"
 
 
 SECTION "Saffron Scripts", ROMX

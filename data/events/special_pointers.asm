@@ -118,7 +118,6 @@ SpecialsPointers::
 	add_special SpecialBeastsCheck
 	add_special SpecialBirdsCheck
 	add_special SpecialDuoCheck
-	add_special Special_SetPlayerPalette
 	add_special AskRememberPassword
 	add_special LoadMapPalettes
 	add_special Special_InitialSetDSTFlag
@@ -161,10 +160,16 @@ SpecialsPointers::
 	add_special GetHiddenGrottoContents
 	add_special EmptiedHiddenGrotto
 	add_special Special_HiddenPowerGuru
+	add_special Special_MintTeaPickMon
+	add_special Special_MintTeaChangeNature
 	add_special Special_GetOvercastIndex
-	add_special Special_SetCopycatPalette
 	add_special Special_CurBoxFullCheck
 	add_special GetCurBoxName
 	add_special CountCaught
 	add_special CountSeen
 	add_special PickPsychicInverParty
+	add_special ShowItemIcon
+	add_special ShowKeyItemIcon
+	add_special ShowTMHMIcon
+	add_special FixPlayerEVsAndStats
+	add_special FadeInPalettes_EnableDynNoApply

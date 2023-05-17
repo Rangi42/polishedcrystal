@@ -11,7 +11,7 @@ SetInitialOptions:
 	call DelayFrames
 
 	call ClearBGPalettes
-	call LoadFontsExtra
+	call LoadFrame
 
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
@@ -93,7 +93,7 @@ SetInitialOptions:
 	dec d
 	jr nz, .select_start_loop
 
-;	ld a, CGB_DIPLOMA
+;	ld a, CGB_PLAIN
 ;	call GetCGBLayout
 ;	call SetPalettes
 
@@ -167,21 +167,7 @@ SetInitialOptions:
 	text_end
 
 .BGPalettes:
-if !DEF(MONOCHROME)
-; blue
-	RGB 31, 31, 31
-	RGB 09, 30, 31
-	RGB 01, 11, 31
-	RGB 00, 00, 00
-; select/start
-	RGB 31, 31, 31
-	RGB 26, 10, 06
-	RGB 11, 14, 31
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/new_game/init_bg.pal"
 
 .BGTiles:
 INCBIN "gfx/new_game/init_bg.2bpp.lz"
@@ -295,24 +281,39 @@ InitialOptions_PSS:
 
 InitialOptions_EVs:
 	ld hl, wInitialOptions2
+	push bc
+	ld b, EV_OPTMASK
 	ldh a, [hJoyPressed]
+	ld c, a
 	and D_LEFT | D_RIGHT | A_BUTTON
-	jr nz, .Toggle
-	; TODO: cycle between disabled (Off), classic (Max), and modern (510)
-	assert EVS_OPT_DISABLED == 0 && EVS_OPT_CLASSIC == 1
-	bit 0, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit 0, [hl]
-	jr z, .SetYes
-.SetNo:
-	res 0, [hl]
+	jr z, .input_done
+	ld a, [hl]
+.redo
+	inc a
+	bit D_LEFT_F, c
+	jr z, .finish_change
+	dec a
+	dec a
+.finish_change
+	and b
+	cp b
+	jr z, .redo
+	ld c, a
+	ld a, [hl]
+	and b
+	xor [hl]
+	or c
+	ld [hl], a
+.input_done
+	pop bc
+	ld a, [hl]
+	ld de, AllString
+	rrca
+	jr c, .Display
+	rrca
+	ld de, ModernString
+	jr c, .Display
 	ld de, NoString
-	jr .Display
-.SetYes:
-	set 0, [hl]
-	ld de, YesString
 .Display:
 	hlcoord 15, 7
 	rst PlaceString
@@ -443,6 +444,10 @@ NoString:
 	db "No @"
 YesString:
 	db "Yes@"
+AllString:
+	db "All@"
+ModernString:
+	db "{-3d:MODERN_EV_LIMIT}@"
 
 InitialOptionsControl:
 	ld hl, wJumptableIndex

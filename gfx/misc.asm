@@ -4,19 +4,24 @@ NewBarkRoofGFX::   INCBIN "gfx/tilesets/roofs/new_bark.2bpp.lz"
 VioletRoofGFX::    INCBIN "gfx/tilesets/roofs/violet.2bpp.lz"
 AzaleaRoofGFX::    INCBIN "gfx/tilesets/roofs/azalea.2bpp.lz"
 OlivineRoofGFX::   INCBIN "gfx/tilesets/roofs/olivine.2bpp.lz"
+StatueRoofGFX::    INCBIN "gfx/tilesets/roofs/statue.2bpp.lz"
 
 
 SECTION "Overworld Effect Graphics", ROMX
 
 OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"
+HeadbuttTreeGFX::    INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
+HeadbuttTree2GFX::   INCBIN "gfx/overworld/headbutt_tree_2.2bpp.lz"
 
 
 SECTION "Fishing Graphics", ROMX
 
 ChrisFishingGFX::     INCBIN "gfx/overworld/chris_fish.2bpp"
 KrisFishingGFX::      INCBIN "gfx/overworld/kris_fish.2bpp"
+CrysFishingGFX::      INCBIN "gfx/overworld/crys_fish.2bpp"
 ChrisSurfFishingGFX:: INCBIN "gfx/overworld/chris_surf_fish.2bpp"
 KrisSurfFishingGFX::  INCBIN "gfx/overworld/kris_surf_fish.2bpp"
+CrysSurfFishingGFX::  INCBIN "gfx/overworld/crys_surf_fish.2bpp"
 
 
 SECTION "Copyright Graphics", ROMX
@@ -67,18 +72,26 @@ PackF2GFX:: INCBIN "gfx/pack/pack_f2.2bpp.lz"
 PackF3GFX:: INCBIN "gfx/pack/pack_f3.2bpp.lz"
 PackF4GFX:: INCBIN "gfx/pack/pack_f4.2bpp.lz"
 PackF5GFX:: INCBIN "gfx/pack/pack_f5.2bpp.lz"
+PackX0GFX:: INCBIN "gfx/pack/pack_x0.2bpp.lz"
+PackX1GFX:: INCBIN "gfx/pack/pack_x1.2bpp.lz"
+PackX2GFX:: INCBIN "gfx/pack/pack_x2.2bpp.lz"
+PackX3GFX:: INCBIN "gfx/pack/pack_x3.2bpp.lz"
+PackX4GFX:: INCBIN "gfx/pack/pack_x4.2bpp.lz"
+PackX5GFX:: INCBIN "gfx/pack/pack_x5.2bpp.lz"
 
 
 SECTION "Trainer Card Pics", ROMX
 
 ChrisCardPic:: INCBIN "gfx/trainer_card/chris_card.2bpp.lz"
 KrisCardPic::  INCBIN "gfx/trainer_card/kris_card.2bpp.lz"
+CrysCardPic::  INCBIN "gfx/trainer_card/crys_card.2bpp.lz"
 
 
 SECTION "Trainer Backpics", ROMX
 
 ChrisBackpic:: INCBIN "gfx/player/chris_back.2bpp.lz"
 KrisBackpic::  INCBIN "gfx/player/kris_back.2bpp.lz"
+CrysBackpic::  INCBIN "gfx/player/crys_back.2bpp.lz"
 LyraBackpic::  INCBIN "gfx/battle/lyra_back.2bpp.lz"
 
 
@@ -148,6 +161,8 @@ AnimObjAngelsGFX::     INCBIN "gfx/battle_anims/angels.2bpp.lz"
 AnimObjWaveGFX::       INCBIN "gfx/battle_anims/wave.2bpp.lz"
 AnimObjAeroblastGFX::  INCBIN "gfx/battle_anims/aeroblast.2bpp.lz"
 AnimObjMiniGFX::       INCBIN "gfx/battle_anims/mini.2bpp.lz"
+AnimObjUTurnGFX::      INCBIN "gfx/battle_anims/uturn.2bpp.lz"
+AnimObjBerryGFX::      INCBIN "gfx/battle_anims/berry.2bpp.lz"
 AnimObjPokeBallBGGFX:: INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 

@@ -32,10 +32,9 @@ _CheckTrainerBattle::
 	jr z, .next
 
 ; Is a trainer
-	ld hl, MAPOBJECT_COLOR
+	ld hl, MAPOBJECT_TYPE
 	add hl, de
 	ld a, [hl]
-	and $f
 	cp OBJECTTYPE_TRAINER
 	jr z, .is_trainer
 	cp OBJECTTYPE_GENERICTRAINER
@@ -55,7 +54,7 @@ _CheckTrainerBattle::
 	jr nc, .next
 
 ; ...within their sight range
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_SIGHT_RANGE
 	add hl, de
 	ld a, [hl]
 	cp b
@@ -69,9 +68,9 @@ _CheckTrainerBattle::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	pop de
@@ -115,10 +114,9 @@ LoadTrainer_continue::
 	ldh a, [hLastTalked]
 	call GetMapObject
 
-	ld hl, MAPOBJECT_COLOR
+	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
-	and $f
 	cp OBJECTTYPE_GENERICTRAINER
 	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -173,19 +171,19 @@ FacingPlayerDistance::
 ; Return carry if the sprite at bc is facing the player,
 ; and its distance in d.
 
-	ld hl, OBJECT_NEXT_MAP_X ; x
+	ld hl, OBJECT_MAP_X ; x
 	add hl, bc
 	ld d, [hl]
 
-	ld hl, OBJECT_NEXT_MAP_Y ; y
+	ld hl, OBJECT_MAP_Y ; y
 	add hl, bc
 	ld e, [hl]
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	cp d
 	jr z, .CheckY
 
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	cp e
 	jr z, .CheckX
 
@@ -193,7 +191,7 @@ FacingPlayerDistance::
 	ret
 
 .CheckY:
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	sub e
 	jr z, .NotFacing
 	jr nc, .Above
@@ -211,7 +209,7 @@ FacingPlayerDistance::
 	jr .CheckFacing
 
 .CheckX:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	sub d
 	jr z, .NotFacing
 	jr nc, .Left

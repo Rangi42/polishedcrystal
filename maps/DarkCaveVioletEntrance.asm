@@ -9,7 +9,7 @@ DarkCaveVioletEntrance_MapScriptHeader:
 	warp_event 35, 33, ROUTE_46, 3
 
 	def_coord_events
-	coord_event  5,  2, 0, DarkCaveVioletEntranceFalknerTrigger
+	coord_event  6,  2, 0, DarkCaveVioletEntranceFalknerTrigger
 
 	def_bg_events
 	bg_event 26,  3, BGEVENT_ITEM + ELIXIR, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXIR
@@ -95,7 +95,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	closetext
 	disappear DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	pause 20
-	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerHeadBack
+	applyonemovement DARKCAVEVIOLETENTRANCE_FALKNER, step_left
 	end
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
@@ -103,8 +103,8 @@ DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 	run_step_left
 	step_end
 
-DarkCaveVioletEntranceMovementData_FalknerHeadBack:
 DarkCaveVioletEntranceMovementData_PlayerStepAside:
+	step_left
 	step_left
 	step_left
 	step_end

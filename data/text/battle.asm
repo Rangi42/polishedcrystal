@@ -1082,6 +1082,14 @@ MistText:
 	line "shrouded in mist!"
 	prompt
 
+ProtectedByItemText:
+	text "<TARGET> is"
+	line "protected by"
+	cont ""
+	text_ram wStringBuffer1
+	text "."
+	prompt
+
 ProtectedByMistText:
 	text "<TARGET> is"
 	line "protected by mist."
@@ -1184,7 +1192,7 @@ TrickRoomEndedText:
 
 LightScreenEffectText:
 	text "<USER>'s"
-	line "Spcl.Def rose!"
+	line "Sp.Def rose!"
 	prompt
 
 ReflectEffectText:
@@ -1614,6 +1622,7 @@ GetOutText:
 
 CarrieFinalPkmnText:
 CalFinalPkmnText:
+JackyFinalPkmnText:
 	text "I still have one"
 	line "#mon!"
 	prompt
@@ -2021,12 +2030,12 @@ MayleneFinalPkmnText:
 	line "end, my friend!"
 	prompt
 
-SkylaFinalPkmnText:
-	text "This is my last"
-	line "#mon…"
+MarlonFinalPkmnText:
+	text "Awww, dude…"
 
-	para "But I'll never"
-	line "give up hope!"
+	para "I know I'm about"
+	line "done, but I'm still"
+	cont "just so pumped up!"
 	prompt
 
 ValerieFinalPkmnText:
@@ -2036,6 +2045,21 @@ ValerieFinalPkmnText:
 KukuiFinalPkmnText:
 	text "My soul burns hot,"
 	line "yeah!"
+	prompt
+
+PiersFinalPkmnText:
+	text "I don't do encores,"
+	line "get it?"
+
+	para "Not songs…"
+	line "Not moves…"
+	cont "Not #mon!"
+	prompt
+
+KatyFinalPkmnText:
+	text "Oh? How should I"
+	line "roll things out"
+	cont "from here?"
 	prompt
 
 BillFinalPkmnText:

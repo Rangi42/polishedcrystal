@@ -43,34 +43,7 @@ SavePatches:
 	dh 7
 	dw ChangeCheckValue
 
-	; dh 8
-	; ConvertSaveFileTo9Bit ; TODO: make this the wrapper function for all the below functions
-
 	dh 8
-	dw ConvertMonIndexesTo9Bit
-
-	dh 8
-	dw ConvertPokerusToNybble
-
-	dh 8
-	dw RemovePartySpecies
-
-	dh 8
-	dw ConvertPhoneListToFlagArray
-
-	dh 8
-	dw ShiftHiddenGrottoContents
-
-	dh 8
-	dw RevertKeyItemsToIndexList
-
-	dh 8
-	dw AdjustItemIndexesToBuild8
-
-	dh 8
-	dw RearrangeEventFlags
-
-	dh 8
-	dw ClearNewPokedbSpace
+	dw ConvertSaveFileTo9Bit ; wrapper function
 
 	dh 0

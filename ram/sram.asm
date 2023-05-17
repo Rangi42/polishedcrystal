@@ -30,6 +30,11 @@ sChecksum:: dw
 
 sCheckValue2:: db ; loaded with 127, used to check save corruption
 
+	; These need to remain constant. Otherwise, the game will fail to
+	; recognize that a save exist.
+	assert sCheckValue1 == $a007, "Save check value 1 has shifted."
+	assert sCheckValue2 == $ad0f, "Save check value 2 has shifted."
+
 
 SECTION "Backup Save", SRAM
 
@@ -126,7 +131,7 @@ sBT_OTMonParty2:: ds BATTLETOWER_PARTYDATA_SIZE ; trainer before prev
 sBT_OTMonParty3:: ds BATTLETOWER_PARTYDATA_SIZE ; previous trainer
 
 
-SECTION "Active Box", SRAM
+SECTION "Box metadata", SRAM
 
 for n, 1, NUM_BOXES + 1
 sNewBox{d:n}:: newbox sNewBox{d:n}

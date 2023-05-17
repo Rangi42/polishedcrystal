@@ -317,7 +317,7 @@ MystriStageCynthiaFinalText:
 	done
 
 MystriStageEggText:
-	text "<PLAYER> received"
+	text "<PLAYER> found"
 	line "a mysterious Egg!"
 	done
 

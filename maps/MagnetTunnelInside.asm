@@ -26,10 +26,10 @@ MagnetTunnelInside_MapScriptHeader:
 	bg_event 38, 30, BGEVENT_ITEM + METAL_POWDER, EVENT_MAGNET_TUNNEL_HIDDEN_METAL_POWDER
 
 	def_object_events
-	object_event  3, 10, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_1
-	object_event 20, 23, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_2
-	object_event 20,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
-	object_event 35,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
+	object_event  3, 10, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_1
+	object_event 20, 23, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_2
+	object_event 20,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
+	object_event 35,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
 	object_event 11, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText1, -1
 	object_event  8, 13, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
 	object_event 32, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideScientistText, -1
@@ -278,7 +278,8 @@ MagnetTunnelInsideMachineText3:
 	done
 
 MagnetTunnelInsideMachineText4:
-	text "Huh?!"
+	text "Huh?! Something's"
+	line "wrong!"
 	done
 
 MagnetTunnelInsideMachineText5:
@@ -287,7 +288,7 @@ MagnetTunnelInsideMachineText5:
 
 	para "Multiple WARNING"
 	line "messages rapidly"
-	
+
 	para "flash across the"
 	line "small screen and"
 
@@ -306,7 +307,7 @@ MagnetTunnelInsideMachineText6:
 MagnetTunnelInsideMachineText7:
 	text "The machine is"
 	line "surrounded by the"
-	
+
 	para "faint stench of"
 	line "melted plastic…"
 
@@ -350,31 +351,31 @@ MagnetTunnelInsideEngineerText2:
 	line "#mon here has"
 	cont "more than doubled."
 	done
-	
+
 MagnetTunnelInsideScientistText:
 	text "Every day, more"
 	line "Magnemite arrive"
 	cont "and cause issues."
-	
+
 	para "The foreman thinks"
 	line "they must be drawn"
 
 	para "to the lodestone's"
 	line "unique magnetic"
 	cont "properties."
-	
+
 	para "I wonder why?"
 	done
 
 GenericTrainerEngineerGraden:
 	generictrainer ENGINEER, GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
-	
+
 	text "I'm the foreman"
 	line "on this jobsite."
 
 	para "We dug out this"
 	line "tunnel to make a"
-	
+
 	para "path for the new"
 	line "Magnet Train"
 	cont "railway, but…"

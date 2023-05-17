@@ -18,7 +18,7 @@ LoadWildMonData:
 	ld [de], a ; eve rate = nite rate
 .done_copy
 	call _WaterWildmonLookup
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr nc, .no_copy
 	inc hl
 	inc hl
@@ -143,23 +143,6 @@ GetWildLocations:
 	dw JohtoWaterWildMons
 	dw KantoWaterWildMons
 	dw OrangeWaterWildMons
-
-.RoamMon:
-	ld a, [hli]
-	inc hl ; skip wRoamMon#Level
-	ld b, a
-	ld a, [wNamedObjectIndex]
-	cp b
-	ret nz
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
-;	call .AppendNest
-	ret nc
-	ld [de], a
-	inc de
-	ret
 
 TryWildEncounter::
 ; Try to trigger a wild encounter.
@@ -1129,11 +1112,6 @@ RandomPhoneMon:
 	jr z, .no_item
 	inc c
 .no_item
-	; TRAINERTYPE_EVs uses 1 more byte
-	bit TRNTYPE_EVS, b
-	jr z, .no_evs
-	inc c
-.no_evs
 	; TRAINERTYPE_DVS uses 3 more bytes
 	bit TRNTYPE_DVS, b
 	jr z, .no_dvs
@@ -1146,6 +1124,11 @@ RandomPhoneMon:
 	jr z, .no_personality
 	inc c
 .no_personality
+	; TRAINERTYPE_EVs uses 1 more byte
+	bit TRNTYPE_EVS, b
+	jr z, .no_evs
+	inc c
+.no_evs
 	; TRAINERTYPE_MOVES uses 4 more bytes
 	bit TRNTYPE_MOVES, b
 	jr z, .no_moves

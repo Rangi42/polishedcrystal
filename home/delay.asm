@@ -38,7 +38,8 @@ DelayFrame::
 
 ; Wait for the next VBlank, halting to conserve battery
 DelayFrameHalt:
-	halt ; rgbasm adds a nop after this instruction by default
+	halt
+	nop
 	; fallthrough
 MaybeDelayFrame:
 ; Used in place of DelayFrame for special cases.
@@ -46,3 +47,10 @@ MaybeDelayFrame:
 	and a
 	jr z, DelayFrameHalt
 	ret
+
+ConsumeGenericDelay::
+	ld a, [wGenericDelay]
+	and a
+	ret z
+	ld c, a
+	jr DelayFrames

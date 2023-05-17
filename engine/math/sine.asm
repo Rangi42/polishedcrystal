@@ -1,9 +1,11 @@
-_Sine::
+Cosine::
+; Return d * cos(a) in hl
+	add $10 ; 90 degrees
+Sine::
 ; A simple sine function.
-; Return d * sin(e) in hl.
+; Return d * sin(a) in hl.
 
-; e is a signed 6-bit value.
-	ld a, e
+; a is a signed 6-bit value.
 	and %111111
 	cp  %100000
 	jr nc, .negative
@@ -27,7 +29,7 @@ _Sine::
 	ld hl, .sinewave
 	add hl, de
 	add hl, de
-	ld e, [hl]
+	ld e, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
 	inc hl
 	ld d, [hl]
 	ld hl, 0
@@ -45,9 +47,7 @@ _Sine::
 	ret
 
 .sinewave
-; $20 samples of sin(x) from x=0 to x<32768 (pi radians)
-DEF x = 0
-rept $20
-	dw (sin(x) + (sin(x) & $ff)) >> 8 ; round up
-DEF x += DIV(32768, $20) ; a circle has 65536 "degrees"
+; sample sin(x) from x=0 to x<0.5 turns (pi radians)
+for x, 32
+	dw sin(x * 0.5 / 32)
 endr

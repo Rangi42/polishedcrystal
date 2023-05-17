@@ -2,6 +2,7 @@ ShamoutiIsland_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, ShamoutiIslandFlyPoint
 
 	def_warp_events
 	warp_event 21, 13, SHAMOUTI_POKECENTER_1F, 1
@@ -19,55 +20,71 @@ ShamoutiIsland_MapScriptHeader:
 	bg_event 32,  6, BGEVENT_JUMPTEXT, ShamoutiHotelSignText
 
 	def_object_events
-	object_event 16,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, VILEPLUME, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
+	object_event 16,  8, SPRITE_ALOLAN_EXEGGUTOR, SPRITEMOVEDATA_ALOLAN_EXEGGUTOR, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandAlolanExeggutorScript, EVENT_SHAMOUTI_ISLAND_ALOLAN_EXEGGUTOR
+	object_event 16,  7, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_ISLAND_ALOLAN_EXEGGUTOR
 	fruittree_event 34, 13, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY, PAL_NPC_BROWN
 	object_event 24, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	pokemon_event 25, 14, MARILL, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ShamoutiIslandPikabluText, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	object_event 20,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 	object_event 23,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
-	object_event 12, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_1, -1
+	object_event 12, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandGrampsScript, -1
 	object_event  9, 16, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_2, -1
 
 	object_const_def
-	const SHAMOUTIISLAND_VILEPLUME
+	const SHAMOUTIISLAND_ALOLAN_EXEGGUTOR
+	const SHAMOUTIISLAND_ALOLAN_EXEGGUTOR_HEAD
 
-ShamoutiIslandVileplumeScript:
+ShamoutiIslandFlyPoint:
+	setflag ENGINE_FLYPOINT_SHAMOUTI
+	endcallback
+
+ShamoutiIslandAlolanExeggutorScript:
 	special SpecialSnorlaxAwake
 	iftruefwd .Awake
-	showemote EMOTE_SLEEP, SHAMOUTIISLAND_VILEPLUME, 15
+	applyonemovement SHAMOUTIISLAND_ALOLAN_EXEGGUTOR, exeggutor_shake
+	showemote EMOTE_SLEEP, SHAMOUTIISLAND_ALOLAN_EXEGGUTOR_HEAD, 15
 	jumpthistext
 
-.VileplumeText:
-	text "Vileplume is fast"
-	line "asleep…"
+	text "The weird tree is…"
+	line "fast asleep?"
+
+	para "Is it a #mon?"
 	done
 
 .Awake:
 	showtext .PokeFluteText
-	applyonemovement SHAMOUTIISLAND_VILEPLUME, tree_shake
+	applyonemovement SHAMOUTIISLAND_ALOLAN_EXEGGUTOR, exeggutor_shake
 	opentext
 	writetext .WokeUpText
-	cry VILEPLUME
+	cry EXEGGUTOR, ALOLAN_FORM
 	pause 15
 	closetext
 	loadvar VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
-	loadwildmon VILEPLUME, 60
+	loadwildmon EXEGGUTOR, ALOLAN_FORM, 60
 	startbattle
-	disappear SHAMOUTIISLAND_VILEPLUME
+	disappear SHAMOUTIISLAND_ALOLAN_EXEGGUTOR
+	disappear SHAMOUTIISLAND_ALOLAN_EXEGGUTOR_HEAD
 	reloadmapafterbattle
 	end
 
 .PokeFluteText:
 	text "The #gear was"
 	line "placed near the"
-
-	para "sleeping Vile-"
-	line "plume…"
+	cont "weird tree…"
 	done
 
 .WokeUpText:
-	text "Vileplume woke up!"
+	text "The #mon"
+	line "woke up!"
 	done
+
+ShamoutiIslandGrampsScript:
+	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	iftruefwd .souvenir
+	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1
+
+.souvenir
+	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1_SOUVENIR
 
 ShamoutiIslandYoungsterScript:
 	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY

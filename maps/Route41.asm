@@ -15,6 +15,7 @@ Route41_MapScriptHeader:
 	bg_event  9, 35, BGEVENT_ITEM + MAX_ETHER, EVENT_ROUTE_41_HIDDEN_MAX_ETHER
 
 	def_object_events
+	object_event 57, 14, SPRITE_MARLON, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route41MarlonScript, -1
 	object_event 32,  6, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermCharlie, -1
 	object_event 46,  8, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermGeorge, -1
 	object_event 20, 26, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermBerke, -1
@@ -26,6 +27,118 @@ Route41_MapScriptHeader:
 	object_event 27, 34, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfDenise, -1
 	object_event 44, 28, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfKara, -1
 	object_event  9, 50, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSwimmerfWendy, -1
+	itemball_event 56, 12, SILVER_LEAF, 1, EVENT_ROUTE_41_SILVER_LEAF
+
+	object_const_def
+	const ROUTE41_MARLON
+
+Route41MarlonScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_MARLON_AGAIN
+	iftruefwd .Beaten
+	checkevent EVENT_BEAT_MARLON
+	iffalsefwd .NotYetBattled
+	writetext .RematchText
+	sjumpfwd .Battle
+.NotYetBattled
+	checkevent EVENT_INTRODUCED_MARLON
+	iftruefwd .Introduced1
+	writetext .IntroText
+	waitbutton
+	setevent EVENT_INTRODUCED_MARLON
+.Introduced1
+	writetext .ChallengeText
+.Battle
+	yesorno
+	iffalse_jumpopenedtext .RefusedText
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE41_MARLON
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftruefwd .Rematch2
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftruefwd .Rematch1
+	loadtrainer MARLON, 1
+	sjumpfwd .StartBattle
+.Rematch1
+	loadtrainer MARLON, 2
+	sjumpfwd .StartBattle
+.Rematch2
+	loadtrainer MARLON, 3
+.StartBattle
+	startbattle
+	reloadmapafterbattle
+	opentext
+.Beaten:
+	writetext .AfterText
+	waitbutton
+	closetext
+	setevent EVENT_BEAT_MARLON
+	setevent EVENT_BEAT_MARLON_AGAIN
+	end
+
+.IntroText:
+	text "Marlon: Uihaa!"
+
+	para "Sup, so you're"
+	line "<PLAYER>!"
+
+	para "The name's Marlon,"
+	line "man of the sea!"
+
+	para "Me 'n' my #mon"
+	line "swam here from"
+	cont "the Unova region!"
+	done
+
+.ChallengeText:
+	text "You look strong!"
+	line "Shoots!"
+
+	para "We should totally"
+	line "have a battle!"
+	done
+
+.RematchText:
+	text "Ohoho! 'Sup,"
+	line "<PLAYER>!"
+
+	para "So I'm facing"
+	line "you again!"
+
+	para "You're gonna get"
+	line "swept away,"
+	cont "fo' sho'!"
+	done
+
+.RefusedText:
+	text "Aw, man!"
+	done
+
+.SeenText:
+	text "Right on,"
+	line "let's roll!"
+	done
+
+.BeatenText:
+	text "You totally rocked"
+	line "that!"
+
+	para "You got this Trai-"
+	line "ner thing down!"
+	done
+
+.AfterText:
+	text "You don't just"
+	line "look strong, you're"
+	cont "strong fo' reals!"
+
+	para "Eh, I was swept"
+	line "away, too!"
+	done
 
 GenericTrainerSwimmerfKaylee:
 	generictrainer SWIMMERF, KAYLEE, EVENT_BEAT_SWIMMERF_KAYLEE, SwimmerfKayleeSeenText, SwimmerfKayleeBeatenText
@@ -273,4 +386,3 @@ SwimmerfWendySeenText:
 SwimmerfWendyBeatenText:
 	text "Oh, dear…"
 	done
-

@@ -145,7 +145,7 @@ endc
 	move DRAGON_PULSE, EFFECT_NORMAL_HIT,         85, DRAGON,    100, 10,   0, SPECIAL
 	move SCREECH,      EFFECT_DEFENSE_DOWN_2,      0, NORMAL,     85, 40,   0, STATUS
 	move DOUBLE_TEAM,  EFFECT_EVASION_UP,          0, NORMAL,    100, 15,   0, STATUS
-	move RECOVER,      EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
+	move RECOVER,      EFFECT_HEAL,                0, NORMAL,    100, 5,    0, STATUS
 	move ROCK_BLAST,   EFFECT_MULTI_HIT,          25, ROCK,       90, 25,   0, PHYSICAL
 	move MINIMIZE,     EFFECT_MINIMIZE,            0, NORMAL,    100, 10,   0, STATUS
 	move SMOKESCREEN,  EFFECT_ACCURACY_DOWN,       0, NORMAL,    100, 20,   0, STATUS
@@ -163,7 +163,11 @@ if DEF(FAITHFUL)
 else
 	move METRONOME,    EFFECT_METRONOME,           0, UNKNOWN_T, 100, 20,   0, STATUS
 endc
+if DEF(FAITHFUL)
 	move SCALD,        EFFECT_BURN_HIT,           80, WATER,     100, 15,  30, SPECIAL
+else
+	move SCALD,        EFFECT_BURN_HIT,           70, WATER,     100, 15,  30, SPECIAL
+endc
 	move TRICK_ROOM,   EFFECT_TRICK_ROOM,          0, PSYCHIC,   100,  5,   0, STATUS
 	move SKILL_SWAP,   EFFECT_SKILL_SWAP,          0, PSYCHIC,   100, 10,   0, STATUS
 	move LICK,         EFFECT_PARALYZE_HIT,       30, GHOST,     100, 30,  30, PHYSICAL
@@ -178,7 +182,7 @@ endc
 	move ICICLE_SPEAR, EFFECT_MULTI_HIT,          25, ICE,       100, 30,   0, PHYSICAL
 	move BULLDOZE,     EFFECT_SPEED_DOWN_HIT,     60, GROUND,    100, 20, 100, PHYSICAL
 	move AMNESIA,      EFFECT_SP_DEF_UP_2,         0, PSYCHIC,   100, 20,   0, STATUS
-	move ROOST,        EFFECT_ROOST,               0, FLYING,    100, 10,   0, STATUS
+	move ROOST,        EFFECT_ROOST,               0, FLYING,    100, 5,    0, STATUS
 	move FRESH_SNACK,  EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
 	move HI_JUMP_KICK, EFFECT_JUMP_KICK,         130, FIGHTING,   90, 10,   0, PHYSICAL
 	move GLARE,        EFFECT_PARALYZE,            0, NORMAL,    100, 30,   0, STATUS
@@ -208,7 +212,7 @@ else
 	move FURY_STRIKES, EFFECT_MULTI_HIT,          20, NORMAL,     85, 15,   0, PHYSICAL
 endc
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,     90, 10,   0, PHYSICAL
-	move REST,         EFFECT_HEAL,                0, PSYCHIC,   100, 10,   0, STATUS
+	move REST,         EFFECT_HEAL,                0, PSYCHIC,   100, 5,    0, STATUS
 	move ROCK_SLIDE,   EFFECT_FLINCH_HIT,         75, ROCK,       90, 10,  30, PHYSICAL
 	move HYPER_FANG,   EFFECT_FLINCH_HIT,         80, NORMAL,     90, 15,  10, PHYSICAL
 	move BULK_UP,      EFFECT_BULK_UP,             0, FIGHTING,  100, 20,   0, STATUS

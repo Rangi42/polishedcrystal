@@ -136,6 +136,9 @@ SwitchPartyMons:
 	call SetPalettes
 	call DelayFrame
 
+	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld [wMenuJoypadFilter], a
+
 	farcall PartyMenuSelect
 	bit 1, b
 	jr c, .DontSwitch
@@ -458,18 +461,25 @@ _UpdateMewtwoForm:
 	ld a, [wCurPartySpecies]
 	cp MEWTWO
 	ret nz
+	assert !HIGH(MEWTWO)
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	ret nz
 	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
+	lp bc, MEWTWO, MEWTWO_ARMORED_FORM
 	jr z, .got_form
-	dec a ; PLAIN_FORM
+	assert MEWTWO_ARMORED_FORM - 1 == PLAIN_FORM
+	dec a
+	dec b
 .got_form
 	ld d, a
 	ld a, [hl]
 	and ~SPECIESFORM_MASK
 	or d
 	ld [hl], a
-	ret
+	jmp SetSeenAndCaughtMon
 
 GiveTakeItemMenuData:
 	db MENU_BACKUP_TILES | MENU_SPRITE_ANIMS
@@ -801,7 +811,7 @@ MonMenu_FreshSnack:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ld a, MON_HP + 1
 	call GetPartyParamLocationAndValue
 	ldh a, [hQuotient + 2]
@@ -1071,23 +1081,7 @@ MoveScreenLoop:
 	add hl, bc
 	ld a, [hl]
 	ld [wMoveScreenSelectedMove], a
-	ld a, [wMoveScreenMode]
-	cp MOVESCREEN_NEWMOVE
 	ld a, c
-	jr nz, .ok
-	ld a, [hl]
-	push bc
-	ld hl, HMMoves
-	call IsInByteArray
-	pop bc
-	ld a, c
-	jr nc, .ok
-	cp 4 ; selected new move
-	jr z, .ok
-	ld hl, Text_CantForgetHM
-	call PrintTextNoBox
-	jr .outer_loop
-.ok
 	inc a
 	and a
 	ret
@@ -1099,7 +1093,7 @@ MoveScreenLoop:
 	ret z
 	xor a
 	ld [wMoveSwapBuffer], a
-	jmp .outer_loop
+	jr .outer_loop
 .pressed_select
 	ld a, [wMoveScreenMode]
 	and a
@@ -1112,7 +1106,7 @@ MoveScreenLoop:
 	ld a, [wMoveScreenCursor]
 	inc a
 	ld [wMoveSwapBuffer], a
-	jmp .outer_loop
+	jr .outer_loop
 .pressed_right
 	ld a, [wMoveScreenMode]
 	and a
@@ -1415,8 +1409,7 @@ SetUpMoveScreenBG:
 	ld de, wTempMonNickname
 	hlcoord 5, 1
 	rst PlaceString
-	ld h, b
-	ld l, c
+	hlcoord 15, 1
 	call PrintLevel
 	call SetPalettes
 	hlcoord 16, 0
@@ -1553,8 +1546,6 @@ MoveScreen_ListMovesFast:
 	hlcoord 18, 10
 	ld [hl], "▼"
 .skip_down
-
-PlaceMoveData:
 	ld a, [wMoveSwapBuffer]
 	and a
 	jr z, .not_swapping
@@ -1657,8 +1648,3 @@ String_na:
 
 String_PowAcc:
 	db "   <BOLDP>/   %@"
-
-Text_CantForgetHM:
-; HM moves can't be forgotten now.
-	text_far _MoveCantForgetHMText
-	text_end

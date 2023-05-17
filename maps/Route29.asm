@@ -33,16 +33,15 @@ Route29_MapScriptHeader:
 	const ROUTE29_TUSCANY
 
 Route29Tuscany:
-	checkflag ENGINE_ZEPHYRBADGE
-	iftruefwd .DoesTuscanyAppear
-
+	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	iffalsefwd .TuscanyDisappears
+	readvar VAR_WEEKDAY
+	ifequalfwd TUESDAY, .TuscanyAppears
 .TuscanyDisappears:
 	disappear ROUTE29_TUSCANY
 	endcallback
 
-.DoesTuscanyAppear:
-	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, .TuscanyDisappears
+.TuscanyAppears
 	appear ROUTE29_TUSCANY
 	endcallback
 
@@ -89,9 +88,12 @@ Route29TutorialScript:
 	writetext CatchingTutorialDebriefText
 Route29FinishTutorial:
 	promptbutton
-	getitemname POKE_BALL, $1
-	callstd receiveitem
 	giveitem POKE_BALL, 5
+	waitsfx
+	writetext CatchingTutorialPokeBallText
+	special ShowItemIcon
+	playsound SFX_ITEM
+	waitsfx
 	itemnotify
 	writetext CatchingTutorialGoodbyeText
 	waitbutton
@@ -202,6 +204,11 @@ CatchingTutorialRefusedText:
 	para "Anyway, I'll give"
 	line "you these."
 	cont "Good luck!"
+	done
+
+CatchingTutorialPokeBallText:
+	text "<PLAYER> gained"
+	line "5 # Balls."
 	done
 
 CatchingTutorialGoodbyeText:
@@ -325,7 +332,13 @@ Route29Sign2Text:
 Route29AdvancedTipsSignText:
 	text "Advanced Tips!"
 
-	para "Press Start in"
-	line "the Bag to sort"
-	cont "an item pocket!"
+	para "Press Down+B at"
+	line "the title screen"
+
+	para "to reset the"
+	line "clock!"
+
+	para "Press Left+B to"
+	line "reset the initial"
+	cont "game options!"
 	done

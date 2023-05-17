@@ -696,6 +696,7 @@ VerifyGameVersion:
 
 .infinite_loop
 	halt
+	nop
 	jr .infinite_loop
 
 .SaveUpgradeScreen:

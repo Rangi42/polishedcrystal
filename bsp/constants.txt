@@ -26,6 +26,7 @@
 	define sHallOfFame,                0x2d10
 	define sNewBox1,                   0x30e4
 	define sBackupNewBox1,             0x3378
+	define sBackupNewBox1Theme,        0x3398
 	define sBoxMons1,                  0x4000
 	define sBoxMons1UsedEntries,       0x5fc6
 	define sBoxMons2,                  0x6000
@@ -41,7 +42,12 @@
 	define PC_ITEMS_OFFSET,                    0x506
 	define EVENT_FLAGS_OFFSET,                 0x5e1
 	define BOX_NAMES_OFFSET,                   0x6e1
+	define PLAYER_CAUGHT_OFFSET,               0x702
+	define DECO_BED_OFFSET,                    0x77c
+	define NUZLOCKE_LANDMARK_FLAGS_OFFSET,     0x799
 	define HIDDEN_GROTTO_OFFSET,               0x7ab
+	define SAFARI_BALLS_OFFSET,                0x81a
+	define VISITED_SPAWNS_3_OFFSET,            0x829
 	define MAP_GROUP_OFFSET,                   0x834
 	define PARTY_COUNT_OFFSET,                 0x856
 	define PARTY_MON_OT_OFFSET,                0x97e

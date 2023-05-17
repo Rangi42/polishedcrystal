@@ -149,11 +149,11 @@ Serial_ExchangeByte::
 	cp 1 << SERIAL
 	jr nz, .loop
 	ld a, [wLinkByteTimeout]
-	dec a
+	dec a ; no-optimize inefficient WRAM increment/decrement
 	ld [wLinkByteTimeout], a
 	jr nz, .loop
 	ld a, [wLinkByteTimeout + 1]
-	dec a
+	dec a ; no-optimize inefficient WRAM increment/decrement
 	ld [wLinkByteTimeout + 1], a
 	jr nz, .loop
 	ldh a, [hSerialConnectionStatus]
@@ -247,7 +247,7 @@ Serial_ExchangeSyncBytes::
 	inc hl
 	ldh a, [hSerialIgnoringInitialData]
 	and a
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	ldh [hSerialIgnoringInitialData], a
 	jr nz, .loop
 	ld a, b
@@ -261,7 +261,7 @@ Serial_PlaceWaitingTextAndSyncAndExchangeNybble::
 	call LoadTileMapToTempTileMap
 	call PlaceWaitingText
 	call Serial_SyncAndExchangeNybble
-Call_LoadTempTileMapToTileMap::
+SafeLoadTempTileMapToTileMap::
 	xor a
 	ldh [hBGMapMode], a
 	call LoadTempTileMapToTileMap

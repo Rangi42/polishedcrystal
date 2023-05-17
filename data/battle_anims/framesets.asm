@@ -197,6 +197,9 @@ BattleAnimFrameData:
 	dw .Frameset_FocusBlast ; c1
 	dw .Frameset_Vortex ; c2
 	dw .Frameset_RedStar ; c3
+	dw .Frameset_Hail ; c4
+	dw .Frameset_UTurn_Fall ; c5
+	dw .Frameset_Berry ; c6
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1282,71 +1285,85 @@ BattleAnimFrameData:
 	db -1
 
 .Frameset_b9:
-	frame BATTLEANIMOAMSET_54, 40
-	endanim
+	oamframe BATTLEANIMOAMSET_54, 40
+	oamend
 
 .Frameset_StoneEdge:
-	frame BATTLEANIMOAMSET_STONE_EDGE,  50
-	delanim
+	oamframe BATTLEANIMOAMSET_STONE_EDGE,  50
+	oamdelete
 
 .Frameset_BrickBreak:
-	frame BATTLEANIMOAMSET_BRICK_BREAK, 8
-	endanim
+	oamframe BATTLEANIMOAMSET_BRICK_BREAK, 8
+	oamend
 
 .Frameset_HyperVoice:
-	frame BATTLEANIMOAMSET_18,  0
-	frame BATTLEANIMOAMSET_70,  0
-	frame BATTLEANIMOAMSET_71,  0
-	frame BATTLEANIMOAMSET_72,  0
-	frame BATTLEANIMOAMSET_73,  0
-	frame BATTLEANIMOAMSET_HYPER_VOICE,  0
-	delanim
+	oamframe BATTLEANIMOAMSET_18,  0
+	oamframe BATTLEANIMOAMSET_70,  0
+	oamframe BATTLEANIMOAMSET_71,  0
+	oamframe BATTLEANIMOAMSET_72,  0
+	oamframe BATTLEANIMOAMSET_73,  0
+	oamframe BATTLEANIMOAMSET_HYPER_VOICE,  0
+	oamdelete
 
 .Frameset_BugBuzzL:
-	frame BATTLEANIMOAMSET_BD,  4
-	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4
-	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4
-	delanim
+	oamframe BATTLEANIMOAMSET_BD,  4
+	oamframe BATTLEANIMOAMSET_BUG_BUZZ1,  4
+	oamframe BATTLEANIMOAMSET_BUG_BUZZ2,  4
+	oamdelete
 
 .Frameset_BugBuzzR:
-	frame BATTLEANIMOAMSET_BD,  4, OAM_X_FLIP
-	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_X_FLIP
-	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_X_FLIP
-	delanim
+	oamframe BATTLEANIMOAMSET_BD,  4, OAM_X_FLIP
+	oamframe BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_X_FLIP
+	oamframe BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_X_FLIP
+	oamdelete
 
 .Frameset_BulletPunch:
-	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
-	frame BATTLEANIMOAMSET_02,  1
-	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
-	frame BATTLEANIMOAMSET_02,  1
-	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
-	frame BATTLEANIMOAMSET_02,  1
-	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
-	frame BATTLEANIMOAMSET_02,  1
-	delanim
+	oamframe BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	oamframe BATTLEANIMOAMSET_02,  1
+	oamframe BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	oamframe BATTLEANIMOAMSET_02,  1
+	oamframe BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	oamframe BATTLEANIMOAMSET_02,  1
+	oamframe BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	oamframe BATTLEANIMOAMSET_02,  1
+	oamdelete
 
 .Frameset_LongPunch:
-	frame BATTLEANIMOAMSET_03,  4
-	frame BATTLEANIMOAMSET_01,  1
-	dorestart
+	oamframe BATTLEANIMOAMSET_03,  4
+	oamframe BATTLEANIMOAMSET_01,  1
+	oamrestart
 
 .Frameset_FlashCannon:
-	frame BATTLEANIMOAMSET_1E,  4
-	frame BATTLEANIMOAMSET_55,  8
-	frame BATTLEANIMOAMSET_54,  20
-	delanim
+	oamframe BATTLEANIMOAMSET_1E,  4
+	oamframe BATTLEANIMOAMSET_55,  8
+	oamframe BATTLEANIMOAMSET_54,  20
+	oamdelete
 
 .Frameset_FocusBlast:
-	frame BATTLEANIMOAMSET_54,  1
-	frame BATTLEANIMOAMSET_53,  1
-	dorestart
+	oamframe BATTLEANIMOAMSET_54,  1
+	oamframe BATTLEANIMOAMSET_53,  1
+	oamrestart
 
 .Frameset_Vortex:
-	frame BATTLEANIMOAMSET_VORTEX1,  2
-	frame BATTLEANIMOAMSET_VORTEX2,  2
-	frame BATTLEANIMOAMSET_VORTEX3,  2
-	dorestart
+	oamframe BATTLEANIMOAMSET_VORTEX1,  2
+	oamframe BATTLEANIMOAMSET_VORTEX2,  2
+	oamframe BATTLEANIMOAMSET_VORTEX3,  2
+	oamrestart
 
 .Frameset_RedStar:
-	frame BATTLEANIMOAMSET_14, 30
-	delanim
+	oamframe BATTLEANIMOAMSET_14, 30
+	oamdelete
+
+.Frameset_Hail:
+	oamframe BATTLEANIMOAMSET_0F,  2
+	oamrestart
+
+.Frameset_UTurn_Fall:
+	oamframe BATTLEANIMOAMSET_U_TURN_FALL, 32
+	oamend
+
+.Frameset_Berry:
+	oamframe BATTLEANIMOAMSET_1B, 48
+	oamframe BATTLEANIMOAMSET_94, 24
+	oamframe BATTLEANIMOAMSET_7F, 24
+	oamdelete

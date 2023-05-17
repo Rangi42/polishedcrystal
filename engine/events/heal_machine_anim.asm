@@ -86,7 +86,7 @@ HealMachineAnim:
 	ret
 
 .PlayHealMusic:
-	ld de, MUSIC_HEAL
+	ld e, MUSIC_HEAL
 	call PlayMusic
 	jr .FlashPalettes8Times
 
@@ -100,7 +100,7 @@ HealMachineAnim:
 
 .LoadPalettes:
 	ld hl, .palettes
-	ld de, wOBPals2 palette PAL_OW_TREE
+	ld de, wOBPals2 palette 7
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	ld a, $1
@@ -125,7 +125,7 @@ HealMachineAnim:
 	ld a, $5
 	ldh [rSVBK], a
 
-	ld hl, wOBPals2 palette PAL_OW_TREE
+	ld hl, wOBPals2 palette 7
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -187,29 +187,22 @@ HealMachineAnim:
 	ret
 
 .PC_ElmsLab_OAM:
-	dsprite   4, 0,   4, 2, $78, PAL_OW_TREE
-	dsprite   4, 0,   4, 6, $78, PAL_OW_TREE
-	dsprite   4, 6,   4, 0, $79, PAL_OW_TREE
-	dsprite   4, 6,   5, 0, $79, PAL_OW_TREE | X_FLIP
-	dsprite   5, 3,   4, 0, $79, PAL_OW_TREE
-	dsprite   5, 3,   5, 0, $79, PAL_OW_TREE | X_FLIP
-	dsprite   6, 0,   4, 0, $79, PAL_OW_TREE
-	dsprite   6, 0,   5, 0, $79, PAL_OW_TREE | X_FLIP
+	dsprite   4, 0,   4, 2, $78, 7
+	dsprite   4, 0,   4, 6, $78, 7
+	dsprite   4, 6,   4, 0, $79, 7
+	dsprite   4, 6,   5, 0, $79, 7 | X_FLIP
+	dsprite   5, 3,   4, 0, $79, 7
+	dsprite   5, 3,   5, 0, $79, 7 | X_FLIP
+	dsprite   6, 0,   4, 0, $79, 7
+	dsprite   6, 0,   5, 0, $79, 7 | X_FLIP
 
 .HOF_OAM:
-	dsprite   7, 4,  10, 1, $79, PAL_OW_TREE
-	dsprite   7, 4,  10, 6, $79, PAL_OW_TREE
-	dsprite   7, 3,   9, 5, $79, PAL_OW_TREE
-	dsprite   7, 3,  11, 2, $79, PAL_OW_TREE
-	dsprite   7, 1,   9, 1, $79, PAL_OW_TREE
-	dsprite   7, 1,  11, 5, $79, PAL_OW_TREE
+	dsprite   7, 4,  10, 1, $79, 7
+	dsprite   7, 4,  10, 6, $79, 7
+	dsprite   7, 3,   9, 5, $79, 7
+	dsprite   7, 3,  11, 2, $79, 7
+	dsprite   7, 1,   9, 1, $79, 7
+	dsprite   7, 1,  11, 5, $79, 7
 
 .palettes
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 19, 10
-	RGB 31, 07, 01
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/overworld/heal_machine.pal"

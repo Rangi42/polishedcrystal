@@ -52,7 +52,7 @@ SilverCavePokeCenterGrampsScript:
 	line "of them?"
 
 	para "Not bad, but I've"
-	line "read all 33!"
+	line "read all {d:NUM_POKEMON_JOURNALS}!"
 	done
 
 .ReadNone:

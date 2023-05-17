@@ -4,9 +4,9 @@ ROM0
 	org $0000
 	"rst00 EntryPoint"
 	org $0008
-	"rst08 FarCall"
+	"rst08 Bankswitch"
 	org $0010
-	"rst10 Bankswitch"
+	"rst10 FarCall"
 	org $0018
 	"rst18 AddNTimes"
 	org $0020
@@ -23,8 +23,6 @@ ROM0
 	"lcd"
 	org $0050
 	"timer"
-	org $0057
-	"Unused Tileset Data"
 	org $0058
 	"serial"
 ;	org $0060
@@ -84,6 +82,7 @@ ROMX $0E
 
 ROMX $0F
 	"Battle Core"
+	"Math"
 
 ROMX $10
 	"Pokedex"
@@ -116,6 +115,7 @@ ROMX $22
 
 ROMX $23
 	"bank23"
+	"Sine"
 
 ROMX $24
 	"bank24"
@@ -186,6 +186,9 @@ ROMX $38
 ROMX $39
 	"bank39"
 
+ROMX $3A
+	"Pokemon Center Scripts 5"
+
 ROMX $3E
 	"bank3E"
 
@@ -217,23 +220,10 @@ WRAM0
 	org $c000
 	"Stack"
 	align 8
-	"Audio RAM"
-	"WRAM 0"
-	org $c308
-	"Sprite Animations"
-	"Music Player RAM"
-	org $c400
-	align 8
 	"Sprites"
-	org $c4a0
 	"Tilemap and Attrmap"
-	org $c770
 	"Misc 480"
-	org $c950
 	"Misc 1326"
-	org $ce7e
-	"Video"
-	"More WRAM 0"
 	org $cff0
 	"Options"
 
@@ -246,9 +236,10 @@ WRAMX $1
 
 WRAMX $2
 	org $d000
-	"Pic Animations RAM"
+	"Music Player RAM"
 	align 8
 	"Sound Stack"
+	"Pic Animations RAM"
 
 WRAMX $3
 	org $d000
@@ -260,7 +251,7 @@ WRAMX $4
 
 WRAMX $5
 	org $d000
-	"Collisions or Music Player"
+	"Collisions"
 	org $d400
 	"Battle Animations RAM"
 	org $dd00
@@ -288,7 +279,7 @@ SRAM $0
 SRAM $1
 	"Save"
 	"SRAM Hall of Fame"
-	"Active Box"
+	"Box metadata"
 	"PokeDB bank 1C"
 	"PokeDB bank 2C"
 

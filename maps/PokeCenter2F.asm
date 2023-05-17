@@ -36,36 +36,20 @@ PokeCenter2FLeftColosseumTrigger:
 	end
 
 PokeCenter2FTileCallback:
-	callasm .CheckPokeCenter2FRegion
-	ifequalfwd $0, .done
-	ifequalfwd $2, .shamouti2f
+	callasm .CheckKanto
+	iffalsefwd .done
 	changemapblocks KantoPokeCenter2F_BlockData
 .done
 	endcallback
 
-.shamouti2f
-	changemapblocks KantoPokeCenter2F_BlockData
-	changeblock 0, 6, $3c
-	changeblock 2, 0, $4a
-	endcallback
-
-.CheckPokeCenter2FRegion:
-	call GetBackupLandmark
-	ld hl, hScriptVar
-	cp SHAMOUTI_LANDMARK
-	jr nc, .shamouti
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld [hl], JOHTO_REGION
-	ret
-
-.kanto
-	ld [hl], KANTO_REGION
-	ret
-
-.shamouti
-	ld [hl], ORANGE_REGION
+.CheckKanto:
+	call RegionCheck
+	dec e ; KANTO_REGION?
+	ld a, TRUE
+	jr z, .ok
+	dec a ; FALSE
+.ok
+	ldh [hScriptVar], a
 	ret
 
 Script_LeftCableTradeCenter:
@@ -96,6 +80,7 @@ if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalsefwd Script_TradeCenterClosed
 endc
+	special FixPlayerEVsAndStats ; no (trivial) cheating
 	opentext
 	writetext Text_TradeReceptionistIntro
 	yesorno
@@ -194,6 +179,7 @@ if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftruefwd .BattleRoomClosed
 endc
+	special FixPlayerEVsAndStats ; no (trivial) cheating
 	opentext
 	writetext Text_BattleReceptionistIntro
 	yesorno
@@ -213,11 +199,21 @@ PokeCenter2F_EnterRoom:
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
 	readmem wLinkOtherPlayerGender
-	iftruefwd .Female
+	scalltable .LinkTrainerTable
+	end
+
+.LinkTrainerTable
+	dw .Male
+	dw .Female
+	dw .Enby
+.Male:
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_CHRIS
 	end
-.Female
+.Female:
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_KRIS
+	end
+.Enby:
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_CRYS
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:

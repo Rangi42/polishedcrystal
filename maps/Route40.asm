@@ -232,11 +232,11 @@ SwimmerfPaulaBeatenText:
 	done
 
 Route40BeachGirlText:
-	text "Although you can't"
-	line "see it from here,"
+	text "I just ate at the"
+	line "Olivine Café, so"
 
-	para "Cianwood is across"
-	line "the sea."
+	para "I'm taking a break"
+	line "before swimming."
 	done
 
 Route40PokefanMText:

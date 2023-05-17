@@ -5,12 +5,14 @@ Route45_MapScriptHeader:
 
 	def_warp_events
 	warp_event  4,  5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
+	warp_event 16, 22, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 17,  5, BGEVENT_JUMPTEXT, Route45SignText
 	bg_event 17, 78, BGEVENT_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
+	bg_event 16, 21, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_45
 
 	def_object_events
 	object_event 19, 75, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
@@ -159,19 +161,19 @@ BlackbeltKenji1Script:
 	loadvar VAR_CALLERID, PHONE_BLACKBELT_KENJI
 	opentext
 	checkcellnum PHONE_BLACKBELT_KENJI
-	iftruefwd UnknownScript_0x19e0e4
+	iftruefwd .Registered
 	checkevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x19e0cd
+	iftruefwd .AskedAlready
 	special Special_SampleKenjiBreakCountdown
 	writetext BlackbeltKenjiAfterBattleText
 	waitbutton
 	setevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	sjumpfwd UnknownScript_0x19e0d0
+	sjumpfwd .AskForNumber
 
-UnknownScript_0x19e0cd:
+.AskedAlready:
 	scall Route45AskNumber2M
-UnknownScript_0x19e0d0:
+.AskForNumber:
 	askforphonenumber PHONE_BLACKBELT_KENJI
 	ifequalfwd $1, Route45PhoneFullM
 	ifequalfwd $2, Route45NumberDeclinedM
@@ -179,29 +181,29 @@ UnknownScript_0x19e0d0:
 	scall Route45RegisteredNumberM
 	sjumpfwd Route45NumberAcceptedM
 
-UnknownScript_0x19e0e4:
+.Registered:
 	readvar VAR_KENJI_BREAK
 	ifnotequal $1, Route45NumberAcceptedM
 	checktime 1 << MORN
-	iftruefwd UnknownScript_0x19e10c
+	iftruefwd .Morning
 	checktime (1 << EVE) | (1 << NITE)
-	iftruefwd UnknownScript_0x19e112
+	iftruefwd .Night
 	checkevent EVENT_KENJI_ON_BREAK
 	iffalsefwd Route45NumberAcceptedM
 	scall Route45GiftM
 	verbosegiveitem PP_UP
-	iffalsefwd UnknownScript_0x19e118
+	iffalsefwd .NoRoom
 	clearevent EVENT_KENJI_ON_BREAK
 	special Special_SampleKenjiBreakCountdown
 	sjumpfwd Route45NumberAcceptedM
 
-UnknownScript_0x19e10c:
+.Morning:
 	jumpopenedtext BlackbeltKenjiMorningText
 
-UnknownScript_0x19e112:
+.Night:
 	jumpopenedtext BlackbeltKenjiNightText
 
-UnknownScript_0x19e118:
+.NoRoom:
 	sjumpfwd Route45PackFullM
 
 Route45AskNumber1M:
@@ -268,20 +270,20 @@ HikerParry1Script:
 	loadvar VAR_CALLERID, PHONE_HIKER_PARRY
 	opentext
 	checkflag ENGINE_PARRY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0x19e1b8
+	iftruefwd .WantsBattle
 	checkcellnum PHONE_HIKER_PARRY
 	iftrue Route45NumberAcceptedM
 	checkevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x19e1a1
+	iftruefwd .AskedAlready
 	writetext HikerParryAfterBattleText
 	promptbutton
 	setevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	sjumpfwd UnknownScript_0x19e1a4
+	sjumpfwd .AskForNumber
 
-UnknownScript_0x19e1a1:
+.AskedAlready:
 	scall Route45AskNumber2M
-UnknownScript_0x19e1a4:
+.AskForNumber:
 	askforphonenumber PHONE_HIKER_PARRY
 	ifequal $1, Route45PhoneFullM
 	ifequal $2, Route45NumberDeclinedM
@@ -289,7 +291,7 @@ UnknownScript_0x19e1a4:
 	scall Route45RegisteredNumberM
 	sjump Route45NumberAcceptedM
 
-UnknownScript_0x19e1b8:
+.WantsBattle:
 	scall Route45RematchM
 	winlosstext HikerParry1BeatenText, 0
 	readmem wParryFightCount
@@ -324,19 +326,19 @@ UnknownScript_0x19e1b8:
 	reloadmapafterbattle
 	clearflag ENGINE_PARRY_READY_FOR_REMATCH
 	checkevent EVENT_PARRY_IRON
-	iftruefwd UnknownScript_0x19e219
+	iftruefwd .HasIron
 	checkevent EVENT_GOT_IRON_FROM_PARRY
-	iftruefwd UnknownScript_0x19e218
+	iftruefwd .GotIron
 	scall Route45RematchGiftM
 	verbosegiveitem IRON
 	iffalse HikerParryHasIron
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM
 
-UnknownScript_0x19e218:
+.GotIron:
 	end
 
-UnknownScript_0x19e219:
+.HasIron:
 	opentext
 	writetext HikerParryGivesIronText
 	waitbutton

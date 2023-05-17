@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
+Usage: python consts.py constants/some_constants.asm
+
 View numeric values of `const`ants.
 """
 
@@ -20,8 +22,7 @@ def print_const(s, v):
 
 def parse_for_constants(line):
 	global const_value, const_inc
-	m = re.match(r'^\s+([A-Za-z_][A-Za-z0-9_@#]*)(?:\s+([^;\\n]+))?', line)
-	if not m:
+	if not (m := re.match(r'^\s+([A-Za-z_][A-Za-z0-9_@#]*)(?:\s+([^;\\n]+))?', line)):
 		return
 	macro, rest = m.groups()
 	args = [arg.strip() for arg in rest.split(',')] if rest else []
@@ -43,12 +44,12 @@ def parse_for_constants(line):
 		const_value = asm_int(args[0])
 
 def main():
-	if len(sys.argv) < 1:
-		print('Usage:', sys.argv[0], 'constants/some_constants.asm', file=sys.stderr)
+	if len(sys.argv) < 2:
+		print(f'Usage: {sys.argv[0]} constants/some_constants.asm', file=sys.stderr)
 		sys.exit(1)
 	for filename in sys.argv[1:]:
-		with open(filename, 'r', encoding='utf8') as f:
-			for line in f:
+		with open(filename, 'r', encoding='utf-8') as file:
+			for line in file:
 				parse_for_constants(line)
 
 if __name__ == '__main__':

@@ -134,18 +134,20 @@
 
 	define MAP_FROM_CONT_OFFSET_v5,  0x35d
 
-	define NUM_ITEMS_OFFSET_v7,      0x38c
-	define ITEMS_OFFSET_v7,          0x38d
-	define MEDICINE_OFFSET_v7,       0x425
-	define BALLS_OFFSET_v7,          0x471
-	define BERRIES_OFFSET_v7,        0x4a5
-	define PC_ITEMS_OFFSET_v7,       0x4e5
-	define CELEBI_EVENT_OFFSET_v7,   0x75f
-	define CUR_GROTTO_OFFSET_v7,     0x7d7
-	define PHONE_LIST_OFFSET_v7,     0x7fb
-	define PARTY_SPECIES_OFFSET_v7,  0x857
-	define POKEDEX_CAUGHT_OFFSET_v7, 0xa0b
-	define UNOWN_DEX_OFFSET_v7,      0xa4b
+	define OBJECT_STRUCTS_END_v7,             0x201
+	define NUM_ITEMS_OFFSET_v7,               0x38c
+	define ITEMS_OFFSET_v7,                   0x38d
+	define MEDICINE_OFFSET_v7,                0x425
+	define BALLS_OFFSET_v7,                   0x471
+	define BERRIES_OFFSET_v7,                 0x4a5
+	define PC_ITEMS_OFFSET_v7,                0x4e5
+	define CELEBI_EVENT_OFFSET_v7,            0x75f
+	define NUZLOCKE_LANDMARK_FLAGS_OFFSET_v7, 0x798
+	define CUR_GROTTO_OFFSET_v7,              0x7d7
+	define PHONE_LIST_OFFSET_v7,              0x7fb
+	define PARTY_SPECIES_OFFSET_v7,           0x857
+	define POKEDEX_CAUGHT_OFFSET_v7,          0xa0b
+	define UNOWN_DEX_OFFSET_v7,               0xa4b
 
 ; removed event flags
 	define EVENT_NOISY_FOREST_PIKABLU_GUY, 2027

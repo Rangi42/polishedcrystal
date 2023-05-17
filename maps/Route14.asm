@@ -22,6 +22,7 @@ Route14_MapScriptHeader:
 	cuttree_event  5, 10, EVENT_ROUTE_14_CUT_TREE_1
 	cuttree_event 11, 16, EVENT_ROUTE_14_CUT_TREE_2
 	cuttree_event  3, 26, EVENT_ROUTE_14_CUT_TREE_3
+	fruittree_event  5, 20, FRUITTREE_ROUTE_14, CUSTAP_BERRY, PAL_NPC_RED
 
 GenericTrainerPokefanmTrevor:
 	generictrainer POKEFANM, TREVOR, EVENT_BEAT_POKEFANM_TREVOR, PokefanmTrevorSeenText, PokefanmTrevorBeatenText

@@ -19,7 +19,13 @@ InitPartyMenuPalettes:
 	ld c, 4 palettes
 	call LoadPalettes
 	call InitPartyMenuOBPals
-	jmp WipeAttrMap
+	; fallthrough
+WipeAttrMap:
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	xor a
+	rst ByteFill
+	ret
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
@@ -97,6 +103,9 @@ LoadEnemyStatusIconPalette:
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
+StatusIconPals:
+INCLUDE "gfx/battle/status.pal"
+
 LoadBattleCategoryAndTypePals:
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld b, a
@@ -131,25 +140,24 @@ LoadCategoryAndTypePals:
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
+CategoryIconPals:
+	table_width PAL_COLOR_SIZE * 2, CategoryIconPals
+INCLUDE "gfx/battle/categories.pal"
+	assert_table_length NUM_CATEGORIES
+
+TypeIconPals:
+	table_width PAL_COLOR_SIZE, TypeIconPals
+INCLUDE "gfx/battle/types.pal"
+	assert_table_length NUM_TYPES + 1
+
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
-	dec a
-	ld bc, KeyItemIconPalettes
-	jr LoadIconPalette
-
-LoadKeyItemIconPaletteForOverworld:
-	ld a, [wCurKeyItem]
-	ld bc, KeyItemIconPalettes
-	jr LoadIconPalette
-
-LoadApricornIconPalette:
-	ld a, [wCurFruit]
-	dec a
-	ld bc, ApricornIconPalettes
+	ld bc, KeyItemIconPalettes - PAL_COLOR_SIZE * 2
 	jr LoadIconPalette
 
 LoadItemIconPalette:
-	ld a, [wCurSpecies]
+	ld a, [wCurItem]
+LoadItemIconPaletteFromA:
 	ld bc, ItemIconPalettes
 LoadIconPalette:
 	ld l, a
@@ -157,10 +165,11 @@ LoadIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
+LoadIconPaletteFromHL:
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
-	ld hl, BlackPalette
+	ld hl, BlackColor
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
@@ -177,9 +186,36 @@ endr
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
-	ld hl, BlackPalette
+	ld hl, BlackColor
 	ld bc, 2
 	jmp FarCopyColorWRAM
+
+ItemIconPalettes:
+CaughtBallPals:
+ParkBallIconPalette:
+	table_width PAL_COLOR_SIZE * 2, ItemIconPalettes
+INCLUDE "gfx/items/items.pal"
+	assert_table_length NUM_ITEMS + 1
+
+KeyItemIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, KeyItemIconPalettes
+INCLUDE "gfx/items/key_items.pal"
+	assert_table_length NUM_KEY_ITEMS
+
+TMHMTypeIconPals:
+	table_width PAL_COLOR_SIZE * 2, TMHMTypeIconPals
+INCLUDE "gfx/items/tm_hm_types.pal"
+	assert_table_length NUM_TYPES
+
+ApricornIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, ApricornIconPalettes
+INCLUDE "gfx/items/apricorns.pal"
+	assert_table_length NUM_APRICORNS
+
+WingIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, WingIconPalettes
+INCLUDE "gfx/items/wings.pal"
+	assert_table_length NUM_WINGS
 
 LoadStatsScreenPals:
 	ldh a, [rSVBK]
@@ -215,6 +251,19 @@ LoadStatsScreenPals:
 	ldh [rSVBK], a
 	call ApplyPals
 	ld a, $1
+	ret
+
+StatsScreenPagePals:
+INCLUDE "gfx/stats/stats.pal"
+
+LoadOneColor:
+	ld c, 2
+LoadColorBytes:
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, LoadColorBytes
 	ret
 
 LoadOnePalette:
@@ -332,39 +381,44 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
-	push hl
-
-	; Remove least significant bit from each pal color.
-	ld hl, palred 30 + palgreen 30 + palblue 30
+	res 7, b
+	; fallthrough
+_ApplyWhiteTransparency:
+; Assumes the unused 16th color bit is unset.
+if !DEF(MONOCHROME)
+	res 2, b
 	ld a, c
-	and l
-	ld c, a
-	ld a, b
-	and h
-	ld b, a
-
-	; Halve all palette colors
+	and LOW(palred 30 + palgreen 30 + palblue 30)
 	srl b
-	rr c
-
-	; Add 16 to each palette color.
-if DEF(MONOCHROME)
-	ld hl, (PAL_MONOCHROME_WHITE >> 1) & %01111_01111_01111
+	rra
+	add LOW(palred 16 + palgreen 16 + palblue 16)
+	ld c, a
+	adc HIGH(palred 16 + palgreen 16 + palblue 16)
+	add b
+	sub c
+	ld b, a
+	ret
 else
-	ld hl, palred 16 + palgreen 16 + palblue 16
+	assert HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_LIGHT) && \
+		HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_DARK) && \
+		HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_BLACK) && \
+		HIGH(PAL_MONOCHROME_LIGHT) != HIGH(PAL_MONOCHROME_DARK) && \
+		HIGH(PAL_MONOCHROME_LIGHT) != HIGH(PAL_MONOCHROME_BLACK) && \
+		HIGH(PAL_MONOCHROME_DARK) != HIGH(PAL_MONOCHROME_BLACK)
+	ld a, b
+	cp HIGH(PAL_MONOCHROME_BLACK)
+	jr z, .dark
+	cp HIGH(PAL_MONOCHROME_DARK)
+	jr z, .light
+	ld bc, PAL_MONOCHROME_WHITE
+	ret
+.light
+	ld bc, PAL_MONOCHROME_LIGHT
+	ret
+.dark
+	ld bc, PAL_MONOCHROME_DARK
+	ret
 endc
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-
-WipeAttrMap:
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	xor a
-	rst ByteFill
-	ret
 
 ApplyPals:
 	ld hl, wBGPals1
@@ -373,7 +427,7 @@ ApplyPals:
 	jmp FarCopyColorWRAM
 
 LoadMailPalettes:
-	ld l, e
+	ld l, a
 	ld h, 0
 	add hl, hl
 	add hl, hl
@@ -382,11 +436,16 @@ LoadMailPalettes:
 	add hl, de
 	ld de, wBGPals1
 	ld bc, 1 palettes
-	call FarCopyColorWRAM
+	jmp FarCopyColorWRAM
+
+MailPals:
+INCLUDE "gfx/mail/mail.pal"
+
+LoadAndApplyMailPalettes:
+	call LoadMailPalettes
 	call ApplyPals
 	call WipeAttrMap
 	; fallthrough
-
 ApplyAttrMap:
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
@@ -494,7 +553,7 @@ InitPartyMenuOBPals:
 	ld de, MON_DVS - MON_FORM
 	add hl, de
 	; vary colors by DVs
-	call CopyDVsToColorVaryDVs ; trashes hl but not bc
+	call CopyDVsToColorVaryDVs ; clobbers hl but not bc
 	pop de
 	ld h, d
 	ld l, e
@@ -513,17 +572,26 @@ endr
 	jr nz, .loop
 	ret
 
+PartyMenuOBPals:
+INCLUDE "gfx/stats/party_menu_ob.pal"
+
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
-	ld bc, 2 palettes
+	ld bc, 3 palettes
 	call FarCopyColorWRAM
 
 	ld hl, PokegearFlyPalette
-	ld de, wOBPals1 palette 2
+	ld de, wOBPals1 palette 3
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
+
+PokegearOBPals:
+INCLUDE "gfx/icons/icons.pal"
+
+PokegearFlyPalette:
+INCLUDE "gfx/pokegear/fly.pal"
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -554,15 +622,15 @@ GetPlayerOrMonPalettePointer:
 	cp BATTLETYPE_TUTORIAL
 	ret z
 
-	ld hl, ChrisPalette
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a ; transformed to male
-	ret nz
 	ld a, [wPlayerGender]
-	and a
+	ld hl, ChrisPalette
+	and a ; PLAYER_MALE
 	ret z
-
 	ld hl, KrisPalette
+	dec a ; PLAYER_FEMALE
+	ret z
+	; PLAYER_ENBY
+	ld hl, CrysPalette
 	ret
 
 GetFrontpicPalettePointer:
@@ -575,7 +643,7 @@ GetTrainerPalettePointer:
 	ld h, 0
 	add hl, hl
 	add hl, hl
-	ld bc, TrainerPalettes
+	ld bc, TrainerPalettes - PAL_COLOR_SIZE * 2
 	add hl, bc
 	ret
 
@@ -682,7 +750,9 @@ LoadPartyMonPalette:
 	ld hl, wPartyMon1DVs
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
-	; c = species
+	; fallthrough
+_FinishLoadNicknamedMonPalette:
+	; c = species, b = extspecies+form
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -691,6 +761,21 @@ LoadPartyMonPalette:
 	call CopyDVsToColorVaryDVs
 	pop hl
 	jmp VaryColorsByDVs
+
+LoadTempMonPalette:
+	push de
+	; bc = personality
+	ld bc, wTempMonPersonality
+	; a = species
+	ld a, [wCurPartySpecies]
+	; hl = palette
+	call GetMonNormalOrShinyPalettePointer
+	; load palette in de (set by caller)
+	ld bc, 4
+	call FarCopyColorWRAM
+	; hl = DVs
+	ld hl, wTempMonDVs
+	jr _FinishLoadNicknamedMonPalette
 
 LoadTrainerPalette:
 	; a = class
@@ -797,10 +882,8 @@ LoadMapPals:
 	ld d, 0
 	ld hl, EnvironmentColorsPointers
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 
 	; Further refine by time of day
 	ld a, [wTimeOfDayPal]
@@ -852,28 +935,10 @@ LoadMapPals:
 	ldh [rSVBK], a
 
 .got_pals
-	; copy sign palette for PAL_BG_TEXT
-	ld hl, SignPals
-	ld bc, 1 palettes
-	ld a, [wSign]
-	rst AddNTimes ; preserves bc
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	call FarCopyColorWRAM
-
-	; copy OB palettes
-	ld a, [wTimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, MapObjectPals
-	rst AddNTimes
-	ld de, wOBPals1
-	ld bc, 8 palettes
-	call FarCopyColorWRAM
-
-	farcall LoadSpecialMapOBPalette
+	farcall ClearSavedObjPals
 
 	ld a, [wMapTileset]
-	cp TILESET_FOREST ; for Yellow Forest
+	cp TILESET_SNOWTOP_MOUNTAIN
 	ret z
 
 	; overcast maps have their own roof color table
@@ -922,58 +987,22 @@ INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
 	table_width 1 palettes, TilesetBGPalette
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
-else
 INCLUDE "gfx/tilesets/bg_tiles.pal"
-endc
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
-
-SignPals:
-	table_width 1 palettes, SignPals
-INCLUDE "gfx/signs/signs.pal"
-	assert_table_length NUM_SIGNS
-
-MapObjectPals:
-	table_width 1 palettes, MapObjectPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
-INCLUDE "gfx/overworld/npc_sprites.pal"
-endc
-	assert_table_length 8 * 4 ; morn, day, nite, eve
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
-else
 INCLUDE "gfx/tilesets/roofs.pal"
-endc
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
-else
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
-endc
 
 INCLUDE "data/pokemon/palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "data/events/paintings/palettes.asm"
-
-INCLUDE "engine/gfx/palettes.asm"
 
 INCLUDE "engine/gfx/sgb_border.asm"
 

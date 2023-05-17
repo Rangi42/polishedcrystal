@@ -138,6 +138,7 @@ CheckDailyResetTimer::
 	ld [hli], a ; wWeeklyFlags
 	ld [hli], a ; wWeeklyFlags2
 	ld [hl], a ; wSwarmFlags
+	ld [wLuckyNumberShowFlag], a
 	ld hl, wFruitTreeFlags
 rept (NUM_FRUIT_TREES + 7) / 8 - 1
 	ld [hli], a
@@ -158,6 +159,7 @@ rept 4 - 1
 	ld [hli], a
 endr
 	ld [hl], a
+	ld [wDailyTrainerHouseOpponent], a
 	ld hl, wKenjiBreakTimer
 	ld a, [hl]
 	and a
@@ -309,7 +311,7 @@ CalcSecsMinsHoursDaysSince:
 	add 60
 .skip
 	ld [hl], c ; current seconds
-	dec hl
+	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wSecondsSince], a ; seconds since
 	; fallthrough
 
@@ -321,7 +323,7 @@ _CalcMinsHoursDaysSince:
 	add 60
 .skip
 	ld [hl], c ; current minutes
-	dec hl
+	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wMinutesSince], a ; minutes since
 	; fallthrough
 
@@ -333,7 +335,7 @@ _CalcHoursDaysSince:
 	add 24
 .skip
 	ld [hl], c ; current hours
-	dec hl
+	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wHoursSince], a ; hours since
 	; fallthrough
 

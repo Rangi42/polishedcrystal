@@ -242,14 +242,4 @@ endr
 	next1 "▼ -@"
 
 InvertedTextPalette:
-if !DEF(MONOCHROME)
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-else
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-endc
+INCLUDE "gfx/overworld/register_item.pal"

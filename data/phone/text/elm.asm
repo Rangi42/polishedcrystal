@@ -26,7 +26,7 @@ ElmPhonePokemonStolenText:
 
 	para "How could anyone"
 	line "do that?"
-	done
+	prompt
 
 ElmPhoneCheckingEggText:
 	text "Hello, <PLAYER>?"
@@ -36,7 +36,7 @@ ElmPhoneCheckingEggText:
 
 	para "appear to be a"
 	line "#mon Egg."
-	done
+	prompt
 
 ElmPhoneAssistantText:
 	text "Hello, <PLAYER>?"
@@ -56,7 +56,7 @@ ElmPhoneEggUnhatchedText:
 
 	para "If anything hap-"
 	line "pens, please call."
-	done
+	prompt
 
 ElmPhoneEggHatchedText:
 	text "Hello, <PLAYER>?"
@@ -68,7 +68,7 @@ ElmPhoneEggHatchedText:
 
 	para "Please come show"
 	line "me now!"
-	done
+	prompt
 
 ElmPhoneDiscovery1Text:
 	text "Hello, <PLAYER>?"
@@ -81,7 +81,7 @@ ElmPhoneDiscovery1Text:
 
 	para "hatch depends on"
 	line "the #mon."
-	done
+	prompt
 
 ElmPhoneDiscovery2Text:
 	text "Hello, <PLAYER>?"
@@ -94,7 +94,7 @@ ElmPhoneDiscovery2Text:
 
 	para "We're investigat-"
 	line "ing that now."
-	done
+	prompt
 
 ElmPhonePokerusText:
 	text "Hello, <PLAYER>?"
@@ -195,4 +195,339 @@ ElmPhoneGiftText:
 	line "my Lab?"
 
 	para "See you later!"
+	done
+
+ElmPhoneEvolutionQuestionText:
+	text "By the way,"
+	line "<PLAYER>, want to"
+
+	para "know how your"
+	line "#mon evolves?"
+	done
+
+ElmPhoneEvoText_None:
+	text "Well, "
+	text_ram wStringBuffer3
+	line "doesn't evolve!"
+	prompt
+
+ElmPhoneEvoText_Level:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "reaches level "
+	text_decimal wStringBuffer4, 1, 3
+	text "."
+	prompt
+
+ElmPhoneEvoText_Item:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+ElmPhoneEvoText_Holding:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+ElmPhoneEvoText_Holding_MornDay:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line ""
+	text_ram wStringBuffer4
+	text ", but"
+
+	para "only during the"
+	line "morning or day."
+	prompt
+
+ElmPhoneEvoText_Holding_EveNite:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line ""
+	text_ram wStringBuffer4
+	text ", but"
+
+	para "only during the"
+	line "evening or night."
+	prompt
+
+ElmPhoneEvoText_Happiness:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+	cont "really happy!"
+	prompt
+
+ElmPhoneEvoText_Happiness_MornDay:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+	cont "really happy, but"
+
+	para "only during the"
+	line "morning or day."
+	prompt
+
+ElmPhoneEvoText_Happiness_EveNite:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+	cont "really happy, but"
+
+	para "only during the"
+	line "evening or night."
+	prompt
+
+ElmPhoneEvoText_Stat:
+	text_ram wStringBuffer3
+	line "evolves at level"
+	cont ""
+	text_decimal wStringBuffer4, 1, 3
+	text ", but what it"
+
+	para "evolves into de-"
+	line "pends on its"
+
+	para "Attack and"
+	line "Defense stats."
+	prompt
+
+ElmPhoneEvoText_Location:
+	text_ram wStringBuffer3
+	line "evolves when it"
+
+	para "gains a level at"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+ElmPhoneEvoText_Move:
+	text_ram wStringBuffer3
+	line "evolves when it"
+
+	para "gains a level"
+	line "while it knows"
+
+	para "how to use"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+ElmPhoneEvoText_Crit:
+	text_ram wStringBuffer3
+	line "evolves after it"
+
+	para "lands three crit-"
+	line "ical hits in one"
+	cont "battle."
+	prompt
+
+ElmPhoneEvoText_Party:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while you have a"
+	line ""
+	text_ram wStringBuffer4
+	cont "in your party too."
+	prompt
+
+ElmPhoneEvoText_Egg:
+	text "Eggs don't evolve,"
+	line "they hatch!"
+	prompt
+
+ElmPhoneEvoText_Pikachu:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "ThunderStone or"
+	cont "an Odd Souvenir."
+	prompt
+
+ElmPhoneEvoText_Gloom:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "Leaf Stone or"
+	cont "a Sun Stone."
+	prompt
+
+ElmPhoneEvoText_Poliwhirl:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "Water Stone, or"
+
+	para "when it gains a"
+	line "level while hold-"
+	cont "ing a King's Rock."
+	prompt
+
+ElmPhoneEvoText_SlowpokePlain:
+ElmPhoneEvoText_SlowpokeGalarian:
+	text_ram wStringBuffer3
+	line "evolves at level"
+	cont "37, or when it"
+
+	para "gains a level"
+	line "while holding a"
+	cont "a King's Rock."
+	prompt
+
+ElmPhoneEvoText_Magneton:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "ThunderStone, or"
+
+	para "when it gains a"
+	line "level in a mag-"
+	cont "netic field."
+
+	para "I've heard Magnet"
+	line "Tunnel and Dim"
+	cont "Cave have that."
+	prompt
+
+ElmPhoneEvoText_Exeggcute:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "Leaf Stone or"
+	cont "an Odd Souvenir."
+	prompt
+
+ElmPhoneEvoText_Koffing:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "reaches level 35,"
+
+	para "or when it gains a"
+	line "level while hold-"
+	cont "ing Charcoal."
+	prompt
+
+ElmPhoneEvoText_Cubone:
+	text_ram wStringBuffer3
+	line "evolves at level"
+	cont "28, or when it's"
+
+	para "exposed to an"
+	line "Odd Souvenir."
+	prompt
+
+ElmPhoneEvoText_Scyther:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line "Metal Coat or a"
+	cont "Hard Stone."
+	prompt
+
+ElmPhoneEvoText_Eevee:
+	text_ram wStringBuffer3
+	line "evolves in so"
+	cont "many ways!"
+
+	para "It can be exposed"
+	line "to any of eight"
+	cont "different Stones,"
+
+	para "or gain a level"
+	line "near a Moss Rock"
+	cont "or an Ice Rock."
+
+	para "I've heard Ilex"
+	line "Forest and Ice"
+	cont "Path have those."
+
+	para "But also, Eevee"
+	line "will evolve just"
+
+	para "from the sun or"
+	line "moon if it's very"
+	cont "happy!"
+	prompt
+
+ElmPhoneEvoText_MimeJr:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to an"
+	line "Ice Stone, or"
+
+	para "when it gains a"
+	line "level near an"
+	cont "Ice Rock."
+
+	para "I've heard there's"
+	line "one in Ice Path."
+	prompt
+
+ElmPhoneEvoText_Stantler:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to harsh"
+	line "hail or sand."
+
+	para "I've heard Rugged"
+	line "Road and Snowtop"
+
+	para "Mountain have"
+	line "weather like that."
+	prompt
+
+ElmPhoneEvoText_AncientSinnoh:
+	text "But based on its"
+	line "ancestry, it"
+
+	para "may also evolve"
+	line "when reminded"
+
+	para "of ancient Sinnoh…"
+	line "somehow…"
+	prompt
+
+ElmPhoneEvoText_DunsparceSegments:
+	text "Some of them end"
+	line "up being longer"
+	cont "than others."
+
+	para "It's just in their"
+	line "genes."
+	prompt
+
+ElmPhoneEvolutionRefusedText:
+	text "Sorry to bug you"
+	line "then."
+	prompt
+
+ElmPhoneEndText:
+	text "Take care!"
 	done

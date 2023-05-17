@@ -3,7 +3,7 @@ BSOD:
 	and a
 	ret nz
 
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 
 	call ClearTileMap
@@ -46,15 +46,14 @@ BSOD:
 	jr c, .valid
 	ld a, NUM_ERR_CODES
 .valid
-	add a
-	add LOW(BSODErrorStrings)
-	ld l, a
-	adc HIGH(BSODErrorStrings)
-	sub l
-	ld h, a
-	ld a, [hli]
-	ld d, [hl]
 	ld e, a
+	ld d, 0
+	ld hl, BSODErrorStrings
+	add hl, de
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	hlcoord 1, 14
 	rst PlaceString
 
@@ -88,17 +87,7 @@ PrintNum_NoHRAM:
 	ret
 
 BSODPalette:
-if !DEF(MONOCHROME)
-	RGB 00, 00, 31
-	RGB 00, 00, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-else
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-endc
+INCLUDE "gfx/splash/bsod.pal"
 
 BSODMessage:
 	text  "      #mon"
@@ -125,19 +114,19 @@ VBABSODMessage:
 	done
 
 BSODErrorStrings:
-	table_width 2, BSODErrorStrings
-	dw .Rst0             ; ERR_RST_0
-	dw .DivZero          ; ERR_DIV_ZERO
-	dw .EggSpecies       ; ERR_EGG_SPECIES
-	dw .ExecutingRAM     ; ERR_EXECUTING_RAM
-	dw .StackOverflow    ; ERR_STACK_OVERFLOW
-	dw .StackUnderflow   ; ERR_STACK_UNDERFLOW
-	dw .OldBTState       ; ERR_BT_STATE
-	dw .VersionMismatch  ; ERR_VERSION_MISMATCH
-	dw .OldBox           ; ERR_OLDBOX
-	dw .NewBox           ; ERR_NEWBOX
-	dw .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
-	dw .UnknownError     ; unknown
+	table_width 1, BSODErrorStrings
+	dr .Rst0             ; ERR_RST_0
+	dr .DivZero          ; ERR_DIV_ZERO
+	dr .EggSpecies       ; ERR_EGG_SPECIES
+	dr .ExecutingRAM     ; ERR_EXECUTING_RAM
+	dr .StackOverflow    ; ERR_STACK_OVERFLOW
+	dr .StackUnderflow   ; ERR_STACK_UNDERFLOW
+	dr .OldBTState       ; ERR_BT_STATE
+	dr .VersionMismatch  ; ERR_VERSION_MISMATCH
+	dr .OldBox           ; ERR_OLDBOX
+	dr .NewBox           ; ERR_NEWBOX
+	dr .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
+	dr .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
 .Rst0:             text "rst 0@"
