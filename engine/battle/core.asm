@@ -5609,7 +5609,7 @@ CheckUsableMove:
 
 .GetItemHeldEffect:
 	push bc
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	ret
