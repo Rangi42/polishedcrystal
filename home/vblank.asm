@@ -49,7 +49,9 @@ VBlank::
 	ld a, [RomHeaderChecksum + 1]
 	inc hl ; wRomChecksum + 1
 	cp [hl]
+if !DEF(DEBUG)
 	jr nz, .checksum_crash
+endc
 
 .skip_crash
 	ldh a, [hVBlank]
