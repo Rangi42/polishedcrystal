@@ -1112,7 +1112,7 @@ BattleCommand_critical:
 	ld c, 0
 	jr nz, .Ability
 
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld c, 0
 	ld a, [hl]
 	cp LUCKY_PUNCH
@@ -2723,7 +2723,7 @@ BattleCommand_startloop:
 	ld a, 5
 	jr z, .got_count
 	push hl
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
@@ -6408,7 +6408,7 @@ GetUserItemAfterUnnerve::
 	pop hl
 	pop de
 	pop bc
-	ret c
+	ret nc
 	ld hl, NoItem
 	ld b, HELD_NONE
 	ret
