@@ -122,7 +122,7 @@ BSODErrorStrings:
 	dr .StackOverflow    ; ERR_STACK_OVERFLOW
 	dr .StackUnderflow   ; ERR_STACK_UNDERFLOW
 	dr .OldBTState       ; ERR_BT_STATE
-	dr .VersionMismatch  ; ERR_VERSION_MISMATCH
+	dr .ChecksumMismatch ; ERR_CHECKSUM_MISMATCH
 	dr .OldBox           ; ERR_OLDBOX
 	dr .NewBox           ; ERR_NEWBOX
 	dr .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
@@ -136,7 +136,7 @@ BSODErrorStrings:
 .StackOverflow:    text "Stack overflow@"
 .StackUnderflow:   text "Stack underflow@"
 .OldBTState:       text "Old Battle Tower@"
-.VersionMismatch:  text "Version mismatch@"
+.ChecksumMismatch: text "Checksum mismatch@"
 .OldBox:           text "Old PC Box storage@"
 .NewBox:           text "Fatal PC Box error@"
 .WinStackOverflow: text "Win.stack overflow@"

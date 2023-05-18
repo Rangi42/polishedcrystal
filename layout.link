@@ -226,6 +226,8 @@ WRAM0
 	"Misc 1326"
 	org $cff0
 	"Options"
+	org $cffe
+	"Rom Checksum"
 
 WRAMX $1
 	org $d000
