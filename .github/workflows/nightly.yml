@@ -14,9 +14,11 @@ env:
   NIGHTLY_BODY: |
     This is the current Polished Crystal 3.0.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
 
-    The **.gbc** assets are ROMs. If you just want to play the game, download one (regular or `-faithful`) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator. (***Do not use VBA*** or VBA-M.) If your emulator or flashcart has issues with supporting a real time clock (or you desire it disabled for any other reason), download your preferred version with the `-nortc` flag.
+    The **.gbc** assets are ROMs. If you just want to play the game, download one (regular, `-faithful` which omits some non-canon changes, or `noir` which is in grayscale) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator. (***Do not use VBA*** or VBA-M.) If your emulator or flashcart has issues with supporting a real time clock (or you desire it disabled for any other reason), download your preferred version with the `-nortc` flag.
 
     The **.sym** assets are "symbol files". They're useful for debugging, or for [discovering cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes), although cheats are *not* officially supported and may cause bugs or crashes. (Do ***not*** ask the developers for cheat codes.)
+
+    The **.patch** assets are 3DS Virtual Console patches to enable trading and battling over Wi-Fi. You can bundle the .gbc and corresponding .patch into a playable .cia file using [poke-cia](https://github.com/vulcandth/poke-cia).
 
     The **.bsp** asset is a [BSP](https://github.com/aaaaaa123456789/bsp) save file patch in case you need to upgrade a save file from an older 3.0.0 beta build, using a patcher like the one for [Pokémon Prism](http://pokemonprism.com/patcher.html).
 
@@ -130,83 +132,91 @@ jobs:
           prerelease: true
           
       # UPLOAD POLISHED CRYSTAL ASSETS
-      - name: Upload ROM and SYM
+      - name: Upload regular assets
         id: upload
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD FAITHFUL ASSETS
-      - name: Upload faithful ROM and SYM
+      - name: Upload faithful assets
         id: upload-faithful
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD NORTC ASSETS
-      - name: Upload nortc ROM and SYM
+      - name: Upload nortc assets
         id: upload-nortc
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD FAITHFUL NORTC ASSETS
-      - name: Upload faithful nortc ROM and SYM
+      - name: Upload faithful nortc assets
         id: upload-faithful-nortc
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD DEBUG ASSETS
-      - name: Upload debug ROM and SYM
+      - name: Upload debug assets
         id: upload-debug
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD FAITHFUL DEBUG ASSETS
-      - name: Upload faithful debug ROM and SYM
+      - name: Upload faithful debug assets
         id: upload-faithful-debug
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD NORTC DEBUG ASSETS
-      - name: Upload nortc debug ROM and SYM
+      - name: Upload nortc debug assets
         id: upload-debug-nortc
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD FAITHFUL NORTC DEBUG ASSETS
-      - name: Upload faithful nortc debug ROM and SYM
+      - name: Upload faithful nortc debug assets
         id: upload-faithful-nortc-debug
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
             ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           
       # UPLOAD SAVE PATCH
