@@ -42,20 +42,16 @@ VBlank::
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
 
-	ldh a, [rSVBK]
-	ld e, a
-	ld a, BANK(wGameVersion)
-	ldh [rSVBK], a
-	ld hl, wGameVersion
-	ld a, [hli]
-	cp HIGH(SAVE_VERSION)
-	jr nz, .version_crash
-	ld a, [hl]
-	cp LOW(SAVE_VERSION)
-	ld a, ERR_VERSION_MISMATCH
-	jr nz, .version_crash
-	ld a, e
-	ldh [rSVBK], a
+	ld a, [RomHeaderChecksum]
+	ld hl, wRomChecksum
+	cp [hl]
+	jr nz, .checksum_crash
+	ld a, [RomHeaderChecksum + 1]
+	inc hl ; wRomChecksum + 1
+	cp [hl]
+if !DEF(DEBUG)
+	jr nz, .checksum_crash
+endc
 
 .skip_crash
 	ldh a, [hVBlank]
@@ -91,10 +87,8 @@ VBlank::
 	pop hl
 	reti
 
-.version_crash
-	ld a, e
-	ldh [rSVBK], a
-	ld a, ERR_VERSION_MISMATCH
+.checksum_crash
+	ld a, ERR_CHECKSUM_MISMATCH
 .crash
 	di
 	jmp Crash

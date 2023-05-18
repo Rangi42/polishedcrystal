@@ -91,6 +91,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
+* Sea for Crys's fishing sprites.
 
 
 ## Content

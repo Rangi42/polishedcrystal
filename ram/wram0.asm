@@ -1391,3 +1391,10 @@ wDaysSince:: db
 
 ; Temporary backup for options
 wOptionsBuffer:: db
+
+SECTION "Rom Checksum", WRAM0
+
+; Contains a copy of the rom checksum, read from the header. Used as
+; protection against people trying to load a save state for a save in
+; a different rom version.
+wRomChecksum:: dw
