@@ -4,15 +4,15 @@
 
 ; In home/header.asm:
 ; FarCall::
-; 	dec sp ; push space for the return bank
+;   dec sp ; push space for the return bank
 ; ; Stack layout:
 ; ; +1 pointer to function address and bank followed by return location
 ; ; +0 nothing
-; 	call _RstFarCall
+;   call _RstFarCall
 ; ; Stack layout:
 ; ; +1 return address
 ; ; +0 return bank
-; 	jmp _ReturnFarCall
+;   jmp _ReturnFarCall
 
 _RstFarCall::
 ; Call the following dab pointer.
