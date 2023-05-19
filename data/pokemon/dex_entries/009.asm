@@ -1,4 +1,4 @@
-	db "Shellfish@" ; species name
+	db "Shell@" ; species name
 	dw 503, 1890 ; height, width
 
 	db   "It firmly plants"
