@@ -86,7 +86,6 @@ PokeGear:
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
 	call InitPokegearModeIndicatorArrow
-	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -490,6 +489,7 @@ PokegearMap_CheckRegion:
 
 PokegearMap_Init:
 	call InitPokegearTilemap
+	call TownMap_InitFlyPossible
 	ld a, [wPokegearMapPlayerIconLandmark]
 	call PokegearMap_InitPlayerIcon
 	ld a, [wPokegearMapCursorLandmark]
@@ -1202,7 +1202,6 @@ _TownMap:
 	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
-	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
