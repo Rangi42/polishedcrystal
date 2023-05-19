@@ -296,13 +296,12 @@ _LoadMonMini:
 .got_species
 	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
-
-	; mon minis use palette [wCurPartyMon]+2
-	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
-	ld a, [wCurPartyMon]
-	inc a
-	inc a
+
+	; for move menu, mon minis use palette 1
+	ld de, wOBPals1 palette 1 + 2
+	farcall LoadTempMonPalette
+	ld a, 1
 	ld hl, wShadowOAM + 3
 	ld de, 4
 rept 3
