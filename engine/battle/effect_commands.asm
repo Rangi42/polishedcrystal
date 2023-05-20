@@ -3250,6 +3250,9 @@ CheckStatHerbs:
 	ret
 
 CheckThroatSpray:
+	ld a, [wBattleEnded]
+	and a
+	ret nz
 	ld a, [wAttackMissed]
 	and a
 	jr z, .do_it
