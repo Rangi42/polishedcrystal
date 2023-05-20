@@ -3229,6 +3229,7 @@ CheckEndMoveEffects:
 	ret z
 	call GetFutureSightUser
 	ret nz
+	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
 	ld a, [wDamageTaken]
@@ -3246,6 +3247,42 @@ CheckStatHerbs:
 	pop bc
 	ld a, b
 	ldh [hBattleTurn], a
+	ret
+
+CheckThroatSpray:
+	ld a, [wAttackMissed]
+	and a
+	jr z, .do_it
+	ret
+	
+.do_it
+	call HasUserFainted
+	ret z
+	predef GetUserItemAfterUnnerve
+	push bc
+	call GetCurItemName
+	pop bc
+	ld a, b
+	cp HELD_THROAT_SPRAY
+	jr z, .item_valid
+	ret
+	
+.item_valid
+	push bc
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInByteArray
+	pop bc
+	ret nc
+	ld b, c
+	ld a, STAT_SKIPTEXT
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+	farcall UseStatItemText
+	call ConsumeUserItem
 	ret
 
 CheckWhiteHerbEjectPack:
@@ -3458,8 +3495,6 @@ EndMoveDamageChecks:
 	jr z, .life_orb
 	cp HELD_SHELL_BELL
 	jr z, .shell_bell
-	cp HELD_THROAT_SPRAY
-	jr z, .throat_spray
 	cp HELD_SWITCH
 .deferred_switch
 	ret nz
@@ -3523,18 +3558,6 @@ EndMoveDamageChecks:
 	predef SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
 	jmp StdBattleTextbox
-
-.throat_spray
-	push bc
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld hl, SoundMoves
-	call IsInByteArray
-	pop bc
-	ret nc
-
-	ld b, c
-	jr RaiseStatWithItem
 
 .defend_hit
 	ld a, c
