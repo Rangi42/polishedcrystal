@@ -3262,14 +3262,12 @@ CheckThroatSpray:
 	ret z
 
 	predef GetUserItemAfterUnnerve
-	push bc
-	call GetCurItemName
-	pop bc
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
 	
 	push bc
+	call GetCurItemName
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
