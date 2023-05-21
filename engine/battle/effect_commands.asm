@@ -3253,24 +3253,22 @@ CheckThroatSpray:
 	ld a, [wBattleEnded]
 	and a
 	ret nz
+
 	ld a, [wAttackMissed]
 	and a
-	jr z, .do_it
-	ret
+	ret nz
 	
-.do_it
 	call HasUserFainted
 	ret z
+
 	predef GetUserItemAfterUnnerve
 	push bc
 	call GetCurItemName
 	pop bc
 	ld a, b
 	cp HELD_THROAT_SPRAY
-	jr z, .item_valid
-	ret
+	ret nz
 	
-.item_valid
 	push bc
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -3278,15 +3276,9 @@ CheckThroatSpray:
 	call IsInByteArray
 	pop bc
 	ret nc
+
 	ld b, c
-	ld a, STAT_SKIPTEXT
-	call _RaiseStat
-	ld a, [wFailedMessage]
-	and a
-	ret nz
-	farcall UseStatItemText
-	call ConsumeUserItem
-	ret
+	jmp RaiseStatWithItem
 
 CheckWhiteHerbEjectPack:
 ; Preserve b, which holds true player's turn (to handle Eject Pack switches).
