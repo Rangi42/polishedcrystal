@@ -578,7 +578,9 @@ HOF_AnimatePlayerPic:
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	call ApplyTilemapInVBlank
-	farjp ProfOaksPCRating
+	farcall ProfOaksPCRating
+	ld c, 8
+	jmp DelayFrames
 
 .PlayTime:
 	db "Play Time@"

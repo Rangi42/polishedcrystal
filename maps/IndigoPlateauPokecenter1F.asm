@@ -77,11 +77,11 @@ PlateauRivalBattleTrigger2:
 	iffalse DoNothingScript
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue DoNothingScript
-	appear INDIGOPLATEAUPOKECENTER1F_RIVAL
 	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
+	appear INDIGOPLATEAUPOKECENTER1F_RIVAL
 	applymovement INDIGOPLATEAUPOKECENTER1F_RIVAL, PlateauRivalApproachesMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	faceobject INDIGOPLATEAUPOKECENTER1F_RIVAL, PLAYER
@@ -135,11 +135,11 @@ PlateauRivalBattleTrigger2:
 	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
 	iftrue DoNothingScript
 .LyraFight:
-	appear INDIGOPLATEAUPOKECENTER1F_LYRA
 	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
+	appear INDIGOPLATEAUPOKECENTER1F_LYRA
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalApproachesMovement
 	faceobject INDIGOPLATEAUPOKECENTER1F_LYRA, PLAYER
 	faceobject PLAYER, INDIGOPLATEAUPOKECENTER1F_LYRA
