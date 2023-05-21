@@ -86,7 +86,6 @@ PokeGear:
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
 	call InitPokegearModeIndicatorArrow
-	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -490,6 +489,7 @@ PokegearMap_CheckRegion:
 
 PokegearMap_Init:
 	call InitPokegearTilemap
+	call TownMap_InitFlyPossible
 	ld a, [wPokegearMapPlayerIconLandmark]
 	call PokegearMap_InitPlayerIcon
 	ld a, [wPokegearMapCursorLandmark]
@@ -1131,11 +1131,11 @@ LoadStation_EvolutionRadio:
 	ld de, UnknownStationName
 	jr LoadRadioStation
 
-RadioMusicRestartDE:
+RadioMusicRestart:
 	push de
 	ld a, e
 	ld [wPokegearRadioMusicPlaying], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
 	ld a, e
@@ -1146,14 +1146,14 @@ RadioMusicRestartPokemonChannel:
 	push de
 	ld a, $fe
 	ld [wPokegearRadioMusicPlaying], a
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
-	ld de, MUSIC_POKEMON_CHANNEL
+	ld e, MUSIC_POKEMON_CHANNEL
 	jmp PlayMusic
 
 NoRadioMusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld a, $ff
 	ld [wPokegearRadioMusicPlaying], a
@@ -1202,7 +1202,6 @@ _TownMap:
 	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
-	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -1658,8 +1657,8 @@ GetMapCursorCoordinates:
 	ld l, a
 	ld bc, 4
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 

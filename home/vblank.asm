@@ -12,9 +12,6 @@ VBlank::
 	push bc
 	push af
 
-	ldh a, [hTempBank]
-	push af
-
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
 
@@ -30,7 +27,7 @@ VBlank::
 	and a
 	jr nz, .skip_crash
 
-	ld hl, sp+$0
+	ld hl, sp + 0
 	ld a, h
 	cp HIGH(wStackBottom)
 	ld a, ERR_STACK_OVERFLOW
@@ -38,27 +35,23 @@ VBlank::
 	ld a, ERR_STACK_UNDERFLOW
 	jr nz, .crash
 
-	ld hl, sp+$b
+	ld hl, sp + 9
 	ld a, [hl]
 	inc a
 	cp HIGH(VRAM_Begin) + 1
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
 
-	ldh a, [rSVBK]
-	ld e, a
-	ld a, BANK(wGameVersion)
-	ldh [rSVBK], a
-	ld hl, wGameVersion
-	ld a, [hli]
-	cp HIGH(SAVE_VERSION)
-	jr nz, .version_crash
-	ld a, [hl]
-	cp LOW(SAVE_VERSION)
-	ld a, ERR_VERSION_MISMATCH
-	jr nz, .version_crash
-	ld a, e
-	ldh [rSVBK], a
+	ld a, [RomHeaderChecksum]
+	ld hl, wRomChecksum
+	cp [hl]
+	jr nz, .checksum_crash
+	ld a, [RomHeaderChecksum + 1]
+	inc hl ; wRomChecksum + 1
+	cp [hl]
+if !DEF(DEBUG)
+	jr nz, .checksum_crash
+endc
 
 .skip_crash
 	ldh a, [hVBlank]
@@ -84,8 +77,6 @@ VBlank::
 	ldh [hDelayFrameLY], a
 .noVBlankLeak
 	ld [hl], TRUE
-	pop af
-	ldh [hTempBank], a
 
 	ldh a, [hROMBankBackup]
 	rst Bankswitch
@@ -96,10 +87,8 @@ VBlank::
 	pop hl
 	reti
 
-.version_crash
-	ld a, e
-	ldh [rSVBK], a
-	ld a, ERR_VERSION_MISMATCH
+.checksum_crash
+	ld a, ERR_CHECKSUM_MISMATCH
 .crash
 	di
 	jmp Crash
@@ -177,9 +166,6 @@ VBlank0::
 	ld [wTextDelayFrames], a
 .noDelay2
 	call Joypad
-
-	ldh a, [hSeconds]
-	ldh [hSecondsBackup], a
 	; fallthrough
 
 VBlank2::
@@ -258,9 +244,6 @@ VBlank4::
 	ld [wTextDelayFrames], a
 .noDelay2
 	call Joypad
-
-	ldh a, [hSeconds]
-	ldh [hSecondsBackup], a
 
 	; A variant of code in vblank1 for running the sound engine with LCD int
 	ldh a, [hROMBankBackup]

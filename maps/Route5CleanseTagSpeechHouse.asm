@@ -20,16 +20,16 @@ Route5CleanseTagHouseGrannyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_CLEANSE_TAG
-	iftruefwd UnknownScript_0x18b649
+	iftruefwd .GotCleanseTag
 	writetext Route5CleanseTagHouseGrannyText1
 	promptbutton
 	verbosegiveitem CLEANSE_TAG
-	iffalsefwd UnknownScript_0x18b64d
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_CLEANSE_TAG
-UnknownScript_0x18b649:
+.GotCleanseTag:
 	writetext Route5CleanseTagHouseGrannyText2
 	waitbutton
-UnknownScript_0x18b64d:
+.NoRoom:
 	endtext
 
 Route5CleanseTagHouseGrannyText1:

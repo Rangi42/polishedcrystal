@@ -4,26 +4,27 @@
 ; https://hax.iimarckus.org/topic/6777/9/
 
 Music_BlackCityBW:
-	musicheader 4, 1, Music_BlackCityBW_Ch1
-	musicheader 1, 2, Music_BlackCityBW_Ch2
-	musicheader 1, 3, Music_BlackCityBW_Ch3
-	musicheader 1, 4, Music_BlackCityBW_Ch4
+	channel_count 4
+	channel 1, Music_BlackCityBW_Ch1
+	channel 2, Music_BlackCityBW_Ch2
+	channel 3, Music_BlackCityBW_Ch3
+	channel 4, Music_BlackCityBW_Ch4
 
 Music_BlackCityBW_Ch1:
-	vibrato $12, $15
-	tone $0001
-	notetype $6, $91
+	vibrato 18, 1, 5
+	pitch_offset 1
+	note_type 6, 9, 1
 	tempo 156
-	note __, 4
+	rest 4
 Music_BlackCityBW_Ch1_loop:
-	callchannel Music_BlackCityBW_Ch1_branch_1
+	sound_call Music_BlackCityBW_Ch1_branch_1
 	octave 4
-	dutycycle 1
-	intensity $54
+	duty_cycle 1
+	volume_envelope 5, 4
 	note F#, 1
-	intensity $74
+	volume_envelope 7, 4
 	note G_, 1
-	intensity $94
+	volume_envelope 9, 4
 	note A#, 2
 	note F#, 2
 	note G_, 2
@@ -33,12 +34,12 @@ Music_BlackCityBW_Ch1_loop:
 	note C#, 2
 	octave 3
 	note A#, 2
-	dutycycle 0
-	intensity $b1
-	callchannel Music_BlackCityBW_Ch1_branch_1
-	note __, 2
-	dutycycle 1
-	intensity $94
+	duty_cycle 0
+	volume_envelope 11, 1
+	sound_call Music_BlackCityBW_Ch1_branch_1
+	rest 2
+	duty_cycle 1
+	volume_envelope 9, 4
 	note E_, 2
 	note F#, 2
 	note G_, 2
@@ -48,8 +49,8 @@ Music_BlackCityBW_Ch1_loop:
 	note F#, 2
 	note G_, 2
 	note B_, 2 ;;;;; halfway point
-	dutycycle 0
-	intensity $91
+	duty_cycle 0
+	volume_envelope 9, 1
 	note D_, 4
 	octave 3
 	note F_, 4
@@ -148,116 +149,116 @@ Music_BlackCityBW_Ch1_loop:
 	note G_, 4
 	octave 2
 	note B_, 4
-	jumpchannel Music_BlackCityBW_Ch1_loop
+	sound_jump Music_BlackCityBW_Ch1_loop
 
 Music_BlackCityBW_Ch1_branch_1:
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note C#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note C#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_BlackCityBW_Ch2:
-	dutycycle 2
-	vibrato $12, $24
-	tone $0001
-	notetype $6, $a7
+	duty_cycle 2
+	vibrato 18, 2, 4
+	pitch_offset 1
+	note_type 6, 10, 7
 	octave 3
-	note __, 1
+	rest 1
 	note G#, 1
 	note A_, 1
 	note A#, 1
@@ -272,7 +273,7 @@ Music_BlackCityBW_Ch2:
 	note C_, 2
 	octave 3
 	note B_, 16
-	note __, 8
+	rest 8
 	note A_, 4
 	note B_, 2
 	octave 4
@@ -280,12 +281,12 @@ Music_BlackCityBW_Ch2:
 	octave 3
 	note B_, 14
 	octave 4
-	dutycycle 0
-	intensity $54
+	duty_cycle 0
+	volume_envelope 5, 4
 	note C_, 1
-	intensity $74
+	volume_envelope 7, 4
 	note C#, 1
-	intensity $94
+	volume_envelope 9, 4
 	note D#, 2
 	note C_, 2
 	note C#, 2
@@ -293,8 +294,8 @@ Music_BlackCityBW_Ch2:
 	note A_, 2
 	note A#, 2
 	note F#, 3
-	intensity $a7
-	dutycycle 2
+	volume_envelope 10, 7
+	duty_cycle 2
 	octave 3
 	note G#, 1
 	note A_, 1
@@ -310,15 +311,15 @@ Music_BlackCityBW_Ch2:
 	note C_, 2
 	octave 3
 	note B_, 16
-	note __, 8
+	rest 8
 	note A_, 4
 	note B_, 2
 	octave 4
 	note C_, 2
 	octave 3
 	note B_, 16
-	dutycycle 0
-	intensity $94
+	duty_cycle 0
+	volume_envelope 9, 4
 	octave 2
 	note B_, 2
 	octave 3
@@ -330,18 +331,18 @@ Music_BlackCityBW_Ch2:
 	note D_, 2
 	note E_, 2
 	note F#, 2
-	dutycycle 1
-	intensity $b7
-	vibrato $10, $44
+	duty_cycle 1
+	volume_envelope 11, 7
+	vibrato 16, 4, 4
 	note A_, 12
 	note G_, 12
 	octave 5
 	note C_, 8
 	octave 4
 	note G_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 16
 	note F_, 12
 	note D#, 12
@@ -349,40 +350,40 @@ Music_BlackCityBW_Ch2:
 	note C_, 8
 	octave 4
 	note F_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 16
 	note D#, 12
 	note D_, 12
 	note A#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note D_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 16
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 16
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 10
 	note D#, 2
 	note F_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 10
-	jumpchannel Music_BlackCityBW_Ch2
+	sound_jump Music_BlackCityBW_Ch2
 
 Music_BlackCityBW_Ch3:
-	notetype $c, $24
-	note __, 2
+	note_type 12, 2, 4
+	rest 2
 Music_BlackCityBW_Ch3_loop:
 	octave 4
 	note E_, 16
@@ -412,100 +413,100 @@ Music_BlackCityBW_Ch3_loop:
 	note C_, 8
 	octave 3
 	note B_, 8
-	jumpchannel Music_BlackCityBW_Ch3_loop
+	sound_jump Music_BlackCityBW_Ch3_loop
 
 Music_BlackCityBW_Ch4:
-	togglenoise $3
-	notetype $6
-	note __, 4
+	toggle_noise 3
+	drum_speed 6
+	rest 4
 Music_BlackCityBW_Ch4_loop_main:
 Music_BlackCityBW_Ch4_loop_1:
-	note B_, 6
-	note C_, 6
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note C_, 4
-	note D_, 4
-	note D#, 2
-	note D#, 2
-	note D_, 4
-	note C_, 4
-	note D_, 4
-	note C#, 2
-	note C_, 6
-	note C_, 4
-	note D_, 4
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note C_, 6
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note C_, 4
-	note D#, 4
-	note D_, 2
-	note D_, 2
-	note D#, 2
-	note C_, 6
-	note D#, 4
-	note D#, 2
-	note C_, 4
-	note D#, 2
-	note C_, 2
-	note C_, 2
-	note D#, 4
-	loopchannel 2, Music_BlackCityBW_Ch4_loop_1
-	callchannel Music_BlackCityBW_Ch4_branch_1
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note D_, 4
-	note D#, 2
-	note C_, 6
-	note C_, 4
-	note C_, 2
-	note C_, 2
-	callchannel Music_BlackCityBW_Ch4_branch_1
-	note D#, 2
-	note D#, 2
-	note D_, 4
-	note C_, 4
-	note D_, 4
-	note D#, 2
-	note C_, 6
-	note C_, 2
-	note C_, 2
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	jumpchannel Music_BlackCityBW_Ch4_loop_main
+	drum_note 12, 6
+	drum_note 1, 6
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 4
+	drum_note 1, 4
+	drum_note 3, 4
+	drum_note 2, 2
+	drum_note 1, 6
+	drum_note 1, 4
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 1, 6
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 1, 6
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 4
+	sound_loop 2, Music_BlackCityBW_Ch4_loop_1
+	sound_call Music_BlackCityBW_Ch4_branch_1
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 1, 6
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 2
+	sound_call Music_BlackCityBW_Ch4_branch_1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 4
+	drum_note 1, 4
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 1, 6
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	sound_jump Music_BlackCityBW_Ch4_loop_main
 
 Music_BlackCityBW_Ch4_branch_1:
-	note B_, 8
-	note D#, 4
-	note D_, 4
-	note D#, 2
-	note C_, 6
-	note C_, 4
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note D#, 2
-	note C_, 6
-	note C_, 4
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note D_, 4
-	note D#, 4
-	note D#, 2
-	note C_, 6
-	note C_, 4
-	note D#, 2
-	note D#, 2
-	endchannel
+	drum_note 12, 8
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 1, 6
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 1, 6
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 1, 6
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	sound_ret

@@ -1,4 +1,8 @@
 BattleCommand_thief:
+	; Substitute prevents this move from working.
+	call CheckSubstituteOpp
+	ret nz
+
 	; Pickpocket uses this too
 	call CanStealItem
 	jr z, .ok

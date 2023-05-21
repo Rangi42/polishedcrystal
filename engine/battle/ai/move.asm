@@ -323,23 +323,26 @@ endc
 	ld [wCurEnemyMoveNum], a
 	ret
 
-AIScoringPointers: ; these are all farcalled in BANK(AIScoring)
-	dw AI_Basic ; far-ok
-	dw AI_Setup ; far-ok
-	dw AI_Types ; far-ok
-	dw AI_Offensive ; far-ok
-	dw AI_Smart ; far-ok
-	dw AI_Opportunist ; far-ok
-	dw AI_Aggressive ; far-ok
-	dw AI_Cautious ; far-ok
-	dw AI_Status ; far-ok
-	dw AI_Risky ; far-ok
-	dw DoNothing ; far-ok
-	dw DoNothing ; far-ok
-	dw DoNothing ; far-ok
-	dw DoNothing ; far-ok
-	dw DoNothing ; far-ok
-	dw DoNothing ; far-ok
+AIScoringPointers:
+	table_width 2, AIScoringPointers
+	farbank AIScoring
+	fardw AI_Basic
+	fardw AI_Setup
+	fardw AI_Types
+	fardw AI_Offensive
+	fardw AI_Smart
+	fardw AI_Opportunist
+	fardw AI_Aggressive
+	fardw AI_Cautious
+	fardw AI_Status
+	fardw AI_Risky
+	fardw DoNothing
+	fardw DoNothing
+	fardw DoNothing
+	fardw DoNothing
+	fardw DoNothing
+	fardw DoNothing
+	assert_table_length 16
 
 if DEF(DEBUG)
 AIDebug:

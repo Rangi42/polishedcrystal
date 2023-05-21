@@ -7,9 +7,10 @@ BlindingFlash::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	jmp FadeInPalettes
+	jmp FadeInPalettes_EnableDynNoApply
 
 ShakeHeadbuttTree:
+	farcall CopyBGGreenToOBPal7
 	call ClearSpriteAnims
 	call GetCurrentLandmark
 	cp NOISY_FOREST
@@ -123,7 +124,7 @@ OWCutJumptable:
 
 Cut_SpawnAnimateTree:
 	call Cut_Headbutt_GetPixelFacing
-	ld a, SPRITE_ANIM_INDEX_CUT_TREE ; cut tree
+	ld a, SPRITE_ANIM_INDEX_CUT_TREE
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -210,9 +211,9 @@ Cut_GetLeafSpawnCoords:
 	ld hl, .Coords
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ret
 
 .Coords:
@@ -244,9 +245,9 @@ Cut_Headbutt_GetPixelFacing:
 	ld d, 0
 	ld hl, .Coords
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ret
 
 .Coords:
@@ -343,6 +344,7 @@ FlyToAnim:
 
 FlyFunction_InitGFX:
 	call ClearSpriteAnims
+	call SetOWFlyMonColor
 	ld e, $64
 	call FlyFunction_GetMonIcon
 	xor a

@@ -1,25 +1,25 @@
 TullyPhoneScript1:
 	gettrainername FISHER, TULLY1, $0
 	checkflag ENGINE_TULLY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbdad5
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_TULLY_SUNDAY_NIGHT
-	iftruefwd UnknownScript_0xbdad1
+	iftruefwd .NotSunday
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
-	iftruefwd UnknownScript_0xbdadc
+	iftruefwd .WaterStone
 	readvar VAR_WEEKDAY
-	ifnotequal SUNDAY, UnknownScript_0xbdad1
+	ifnotequal SUNDAY, .NotSunday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd TullySundayNight
 
-UnknownScript_0xbdad1:
+.NotSunday:
 	farsjump TullyNoItemScript
 
-UnknownScript_0xbdad5:
+.WantsBattle:
 	getlandmarkname ROUTE_42, $2
 	farsjump TullyForwardScript
 
-UnknownScript_0xbdadc:
+.WaterStone:
 	getlandmarkname ROUTE_42, $2
 	farsjump TullyHurryScript
 
@@ -27,23 +27,23 @@ TullyPhoneScript2:
 	gettrainername FISHER, TULLY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_TULLY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbdb1b
+	iftruefwd .Generic
 	checkflag ENGINE_TULLY_SUNDAY_NIGHT
-	iftruefwd UnknownScript_0xbdb1b
+	iftruefwd .Generic
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
-	iftruefwd UnknownScript_0xbdb1b
+	iftruefwd .Generic
 	farscall PhoneScript_Random3
 	ifequalfwd $0, TullyWantsBattle
 	checkevent EVENT_TULLY_GAVE_WATER_STONE
-	iftruefwd UnknownScript_0xbdb13
+	iftruefwd .WaterStone
 	farscall PhoneScript_Random2
 	ifequalfwd $0, TullyFoundWaterStone
 
-UnknownScript_0xbdb13:
+.WaterStone:
 	farscall PhoneScript_Random11
 	ifequalfwd $0, TullyFoundWaterStone
 
-UnknownScript_0xbdb1b:
+.Generic:
 	farsjump Phone_GenericCall_Male
 
 TullySundayNight:

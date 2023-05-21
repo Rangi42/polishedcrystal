@@ -25,8 +25,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
-* SadisticMystic and Kate Dering for vanilla battle engine testing and documentation.
+* SadisticMystic, sinusoidal, TKOWL and Kate Dering for vanilla battle engine testing and documentation.
 * ax6 and NieDzejkob for developing and optimizing lzcomp.
+* Kurausukun and earthoul for translating battle mechanics information from the Japanese Pokémon wiki.
 
 
 ## Music
@@ -90,6 +91,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
+* Sea for Crys's fishing sprites.
 
 
 ## Content

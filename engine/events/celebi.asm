@@ -5,6 +5,9 @@ Special_CelebiShrineEvent:
 	xor a
 	ld [wVramState], a
 
+	ld a, PAL_OW_GREEN
+	farcall CopySpritePalToOBPal7
+
 	call ClearSpriteAnims
 	ld hl, SpecialCelebiGFX
 	ld de, vTiles0 tile $84
@@ -113,7 +116,7 @@ UpdateCelebiPosition:
 	add hl, bc
 	ld a, [hl]
 	inc [hl]
-	call Cosine
+	farcall Cosine
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a

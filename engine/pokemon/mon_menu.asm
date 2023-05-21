@@ -468,7 +468,7 @@ _UpdateMewtwoForm:
 	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
-	lb bc, MEWTWO_ARMORED_FORM, MEWTWO
+	lp bc, MEWTWO, MEWTWO_ARMORED_FORM
 	jr z, .got_form
 	assert MEWTWO_ARMORED_FORM - 1 == PLAIN_FORM
 	dec a
@@ -811,7 +811,7 @@ MonMenu_FreshSnack:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ld a, MON_HP + 1
 	call GetPartyParamLocationAndValue
 	ldh a, [hQuotient + 2]

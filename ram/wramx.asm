@@ -310,6 +310,8 @@ wTempDexSeen:: dw
 wTempDexOwn:: dw
 wTempDexLast:: dw ; the last species marked as seen
 wTempDexEnd::
+NEXTU
+wTempPocketCursor:: ds NUM_POCKETS
 ENDU
 ENDU
 
@@ -739,7 +741,9 @@ wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
 
-	ds 7 ; unused
+wMirrorHerbPendingBoosts::
+	; 7 sets of nibbles $xy, one for each stat. x = player, y = enemy.
+	ds NUM_LEVEL_STATS - 1 ; ignore MULTIPLE_STATS
 
 UNION
 wOTPartyMons::
@@ -802,8 +806,8 @@ wScriptFlags3::
 
 wScriptMode:: db
 wScriptRunning:: db
-wScriptBank:: db
-wScriptPos:: dw
+
+	ds 3 ; unused
 
 wScriptStackSize:: db
 wScriptStack:: ds 3 * 12
@@ -888,18 +892,13 @@ wGameTimeFrames:: db
 
 wCurDay:: db
 
-; do not talk to the RTC hardware in the no-RTC patch
-if DEF(NO_RTC)
-wNoRTC::
-wNoRTCDayHi::   ds 1 ; copied to hRTCDayHi
-wNoRTCDayLo::   ds 1 ; copied to hRTCDayLo
-wNoRTCHours::   ds 1 ; copied to hRTCHours
-wNoRTCMinutes:: db ; copied to hRTCMinutes
-wNoRTCSeconds:: db ; copied to hRTCSeconds
-else
-; reserve equal space in RTC versions so that saved games remain compatible
-	ds 5
-endc
+; no-RTC patch needs to save/restore rtc state
+; builds with rtc will simply overwrite the saved value
+wRTCDayHi::   db
+wRTCDayLo::   db
+wRTCHours::   db
+wRTCMinutes:: db
+wRTCSeconds:: db
 
 wPlayerGoingUpStairs:: db
 
@@ -910,7 +909,7 @@ wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
 wObjectStructs::
-wPlayerStruct::   object_struct wPlayer
+wPlayerStruct::      object_struct wPlayer
 for n, 1, NUM_OBJECT_STRUCTS ; discount player
 wObject{d:n}Struct:: object_struct wObject{d:n}
 endr
@@ -924,10 +923,8 @@ wBattleFactoryCurStreak:: dw
 wBattleFactoryTopStreak:: dw
 wBattleFactorySwapCount:: db ; Amount of swaps performed.
 
-	ds 13 ; unused
-
 wMapObjects::
-wPlayerObject:: map_object wPlayer
+wPlayerObject::   map_object wPlayer
 for n, 1, NUM_OBJECTS ; discount player
 wMap{d:n}Object:: map_object wMap{d:n}
 endr
@@ -995,8 +992,6 @@ wTMsHMsEnd::
 
 wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
-
-	ds 1 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1175,7 +1170,15 @@ wCurBox:: db
 wPlayerCaught:: db
 wPlayerCaught2:: db
 
-	ds 81 ; unused
+wUsedObjectPals:: db
+for n, 8
+wLoadedObjPal{d:n}:: db 
+endr
+wNeededPalIndex:: db
+
+wEmotePal:: db
+
+	ds 70 ; unused
 
 wWingAmounts::
 wHealthWingAmount:: dw
@@ -1444,6 +1447,17 @@ wPokemonDataEnd::
 wGameDataEnd::
 
 
+SECTION "Sound Stack", WRAMX
+
+wSoundEngineBackup:: ds wChannelsEnd - wMusic
+wBackupMapMusic:: db
+
+
+SECTION "Music Player RAM", WRAMX
+
+wMPNotes:: ds 4 * 256
+
+
 SECTION "Pic Animations RAM", WRAMX
 
 wTempTileMap::
@@ -1491,11 +1505,6 @@ wPokeDB1UsedEntriesEnd::
 
 wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
 wPokeDB2UsedEntriesEnd::
-
-
-SECTION "Sound Stack", WRAMX
-
-wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
 SECTION UNION "Metatiles", WRAMX
@@ -1644,24 +1653,14 @@ wDexMonsEnd::
 wDexConversionTable:: ds NUM_SPECIES * 2
 
 
-SECTION "Collisions or Music Player", WRAMX
+SECTION UNION "Attributes", WRAMX
 
-UNION
+wDecompressedCreditsGFX:: ds (4 * 4 tiles) * 13
+
+
+SECTION "Collisions", WRAMX
+
 wDecompressedCollisions:: ds 256 * 4
-NEXTU
-wMPNotes:: ds 4 * 256
-NEXTU
-wDecompressedCreditsGFX:: ; ds (4 * 4 tiles) * 13 ; ds $d00
-ENDU
-
-
-SECTION "Game Version", WRAMX
-
-; Contains a copy of the game version. Used as protection against people trying
-; to load a save state for a save in a different game version.
-; Called "game version" to make it clear that there is no direct relation to
-; sSaveVersion -- this isn't the data used for writing to the save.
-wGameVersion:: dw
 
 
 SECTION "Battle Animations RAM", WRAMX

@@ -23,7 +23,7 @@ Route31_MapScriptHeader:
 	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
 	cuttree_event 13,  5, EVENT_ROUTE_31_CUT_TREE_1
 	cuttree_event 25, 10, EVENT_ROUTE_31_CUT_TREE_2
-	fruittree_event 16,  7, FRUITTREE_ROUTE_31, PERSIM_BERRY, PAL_NPC_RED
+	fruittree_event 16,  7, FRUITTREE_ROUTE_31, PERSIM_BERRY, PAL_NPC_PINK
 	itemball_event 29,  5, POTION, 1, EVENT_ROUTE_31_POTION
 	itemball_event 19, 15, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
 

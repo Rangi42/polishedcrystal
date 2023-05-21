@@ -2,30 +2,18 @@ SECTION "HRAM", HRAM
 
 hScriptVar:: dw
 
+hROMBank:: db
 hROMBankBackup:: db
-
-; TODO: come up with other names for hBuffer
-; related to home/audio.asm and home/decompress.asm
-hTempBank::
-hBuffer:: db
-hLYOverrideStackCopyAmount:: db
-
-hRTCDayHi::   db
-hRTCDayLo::   db
-hRTCHours::   db
-hRTCMinutes:: db
-hRTCSeconds:: db
+	ds 1 ; unused
 
 hHours:: db
 hMinutes:: db
 hSeconds:: db
 
+hVBlank:: db
 hVBlankCounter:: db
-
 hVBlankOccurred:: db
 
-hROMBank:: db
-hVBlank:: db
 hMapEntryMethod:: db
 hMenuReturn:: db
 
@@ -55,13 +43,7 @@ NEXTU
 hMoveMon:: db
 ENDU
 
-UNION
-hFarCallSavedHL::
-hFarCallSavedL:: db
-hFarCallSavedH:: db
-NEXTU
-hLZAddress:: dw
-ENDU
+	ds 3 ; unused
 
 UNION
 ; math-related values
@@ -118,6 +100,7 @@ hMoneyTemp:: ds 3
 hLCDCPointer::     db
 hLYOverrideStart:: db
 hLYOverrideEnd::   db
+hLYOverrideStackCopyAmount:: db
 
 hSCX:: db
 hSCY:: db
@@ -139,24 +122,10 @@ hBGMapMode::
 hBGMapHalf::     db
 hBGMapAddress::  dw
 
-	ds 4 ; unused
-
-hSerialReceivedNewData::     db
-hSerialConnectionStatus::    db
-	vc_assert hSerialConnectionStatus == $ffcb, \
-		"hSerialConnectionStatus is no longer located at 00:ffcb."
-hSerialIgnoringInitialData:: db
-hSerialSend::                db
-hSerialReceive::             db
-
-	ds 2 ; unused
-
-hOAMUpdate:: db
-
-hSPBuffer:: dw
-
 hBGMapUpdate::    db
 hBGMapTileCount:: db
+
+hOAMUpdate:: db
 
 hMapAnims::      db
 hTileAnimFrame:: db
@@ -167,7 +136,15 @@ hRandom::
 hRandomAdd:: db
 hRandomSub:: db
 
-hSecondsBackup:: db
+hSerialReceivedNewData::     db
+hSerialConnectionStatus::    db
+	vc_assert hSerialConnectionStatus == $ffcb, \
+		"hSerialConnectionStatus is no longer located at 00:ffcb."
+hSerialIgnoringInitialData:: db
+hSerialSend::                db
+hSerialReceive::             db
+
+hSPBuffer:: dw
 
 UNION
 ; 0 - player
@@ -189,8 +166,6 @@ hCGBPalUpdate:: db
 hCGB::          db
 
 hDMATransfer:: db
-
-hFarCallSavedA:: db
 
 hDelayFrameLY:: db
 
@@ -227,6 +202,11 @@ NEXTU
 hPlaceStringCoords:: dw
 hCompressedTextBuffer:: ds 2 ; one character and "@"
 ENDU
+
+hScriptBank:: db
+hScriptPos:: dw
+
+	ds 9 ; unused
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp

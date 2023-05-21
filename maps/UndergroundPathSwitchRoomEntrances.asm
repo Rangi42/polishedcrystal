@@ -41,7 +41,8 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	object_event  3, 25, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_TeacherText, -1
 	object_event  8, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd1Text, -1
 	object_event 19, 25, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd2Text, -1
-	object_event  7, 39, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_BeautyText, -1
+	object_event  1, 39, SPRITE_VETERAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, UndergroundPathSwitchRoomEntrancesVeteranMScript, -1
+	object_event  8, 38, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_BeautyText, -1
 	itemball_event  1, 12, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
 	itemball_event 14,  9, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
 
@@ -647,6 +648,35 @@ UndergroundRivalRetreatMovement2:
 	step_up
 	step_up
 	step_end
+
+UndergroundPathSwitchRoomEntrancesVeteranMScript:
+	checkevent EVENT_GOT_LOADED_DICE_FROM_GOLDENROD
+	iftrue_jumptextfaceplayer .Text2
+	faceplayer
+	opentext
+	writetext .Text1
+	promptbutton
+	verbosegiveitem LOADED_DICE
+	iffalse_endtext
+	setevent EVENT_GOT_LOADED_DICE_FROM_GOLDENROD
+	jumpthisopenedtext
+
+.Text2:
+	text "In the long run,"
+	line "the house always"
+	cont "wins…"
+	done
+
+.Text1:
+	text "I tried to use"
+	line "this item in the"
+
+	para "Game Corner, but"
+	line "they caught me."
+
+	para "You may as well"
+	line "take it."
+	done
 
 UndergroundRivalBeforeText:
 	text "Hold it!"

@@ -47,7 +47,7 @@ Ralph_FightMe:
 
 Ralph_SetUpSwarm:
 	checkflag ENGINE_FISH_SWARM
-	iftruefwd UnknownScript_0xbd55c
+	iftruefwd .Generic
 	setflag ENGINE_FISH_SWARM
 	getmonname QWILFISH, $1
 	getlandmarkname ROUTE_32, $2
@@ -55,5 +55,5 @@ Ralph_SetUpSwarm:
 	special Special_ActivateFishingSwarm
 	farsjump RalphItemScript
 
-UnknownScript_0xbd55c:
+.Generic:
 	farsjump Phone_GenericCall_Male

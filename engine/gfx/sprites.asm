@@ -204,9 +204,9 @@ DeinitializeAllSprites:
 UpdateAnimFrame:
 	call InitSpriteAnimBuffer ; init WRAM
 	call GetSpriteAnimFrame ; read from a memory array
-	cp -3
+	cp oamwait_command
 	jr z, .done
-	cp -4
+	cp oamdelete_command
 	jr z, .delete
 	call GetFrameOAMPointer
 	; add byte to [wCurAnimVTile]
@@ -282,6 +282,7 @@ UpdateAnimFrame:
 	jr .done
 
 .delete
+; Removes the object from the screen, as opposed to `oamend` which just stops all motion
 	call DeinitializeSprite
 .done
 	and a
@@ -389,8 +390,7 @@ GetSpriteAnimFrame:
 	and a
 	jr z, .next_frame ; finished the current sequence
 	dec [hl]
-	call .GetPointer ; load pointer from SpriteAnimFrameData
-	ld a, [hli]
+	call .GetPointerAndAdvance ; load pointer from SpriteAnimFrameData
 	push af
 	jr .okay
 
@@ -398,17 +398,16 @@ GetSpriteAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_FRAME
 	add hl, bc
 	inc [hl]
-	call .GetPointer ; load pointer from SpriteAnimFrameData
-	ld a, [hli]
-	cp -2
+	call .GetPointerAndAdvance ; load pointer from SpriteAnimFrameData
+	cp oamrestart_command
 	jr z, .restart
-	cp -1
+	cp oamend_command
 	jr z, .repeat_last
 
 	push af
 	ld a, [hl]
 	push hl
-	and $3f
+	and ~(Y_FLIP << 1 | X_FLIP << 1)
 	ld hl, SPRITEANIMSTRUCT_DURATIONOFFSET
 	add hl, bc
 	add [hl]
@@ -418,7 +417,7 @@ GetSpriteAnimFrame:
 	pop hl
 .okay
 	ld a, [hl]
-	and $c0
+	and Y_FLIP << 1 | X_FLIP << 1 ; The << 1 is compensated in the "oamframe" macro
 	srl a
 	ld [wCurSpriteAddSubFlags], a
 	pop af
@@ -448,7 +447,7 @@ GetSpriteAnimFrame:
 	ld [hl], a
 	jr .loop
 
-.GetPointer:
+.GetPointerAndAdvance:
 	; Get the data for the current frame for the current animation sequence
 
 	; SpriteAnimFrameData[SpriteAnim[SPRITEANIMSTRUCT_FRAMESET_ID]][SpriteAnim[SPRITEANIMSTRUCT_FRAME]]
@@ -459,15 +458,16 @@ GetSpriteAnimFrame:
 	ld hl, SpriteAnimFrameData
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, SPRITEANIMSTRUCT_FRAME
 	add hl, bc
 	ld l, [hl]
 	ld h, 0
 	add hl, hl
 	add hl, de
+	ld a, [hli]
 	ret
 
 GetFrameOAMPointer:

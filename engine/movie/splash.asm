@@ -3,7 +3,7 @@ SplashScreen:
 ; Return carry if user cancels animation by pressing a button.
 
 ; Reinitialize everything
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call ClearBGPalettes
 	call ClearTileMap
@@ -230,7 +230,7 @@ GameFreakLogo_Bounce:
 	jr nc, .no_negative
 	add 32
 .no_negative
-	call Sine
+	farcall Sine
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a

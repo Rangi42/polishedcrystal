@@ -4,17 +4,17 @@ Route18East_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  6, ROUTE_18_GATE, 3
-	warp_event  4,  7, ROUTE_18_GATE, 4
+	warp_event  0,  6, ROUTE_18_GATE, 3
+	warp_event  0,  7, ROUTE_18_GATE, 4
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  5, BGEVENT_JUMPTEXT, Route18SignText
+	bg_event  7,  5, BGEVENT_JUMPTEXT, Route18SignText
 
 	def_object_events
-	object_event 11, 12, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBoris, -1
-	object_event 15,  6, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBob, -1
+	object_event  7, 12, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBoris, -1
+	object_event 11,  6, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBob, -1
 
 GenericTrainerBird_keeperBoris:
 	generictrainer BIRD_KEEPER, BORIS, EVENT_BEAT_BIRD_KEEPER_BORIS, Bird_keeperBorisSeenText, Bird_keeperBorisBeatenText

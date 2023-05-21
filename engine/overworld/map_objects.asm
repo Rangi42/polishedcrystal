@@ -22,7 +22,7 @@ DeleteMapObject::
 	ld [hl], -1
 .ok
 	pop bc
-	ret
+	farjp CheckForUsedObjPals
 
 HandleObjectStep:
 	call _CheckObjectStillVisible
@@ -362,10 +362,10 @@ GetStepVector:
 	ld h, 0
 	ld de, StepVectors
 	add hl, de
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
 	ld a, [hli]
 	ld h, [hl]
 	push af
@@ -932,12 +932,11 @@ endr
 	ld hl, .dust_coords
 	add hl, de
 	add hl, de
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
 	ld e, [hl]
 	ld hl, OBJECT_SPRITE_X_OFFSET
 	add hl, bc
-	ld [hl], d
+	ld [hl], a
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
 	ld [hl], e
@@ -991,8 +990,8 @@ endr
 	pop bc
 	ld hl, OBJECT_1D
 	add hl, bc
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1225,7 +1224,7 @@ StepFunction_TeleportFrom:
 	inc [hl]
 	ld a, [hl]
 	ld d, $60
-	call Sine
+	farcall Sine
 	ld a, h
 	sub $60
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -1290,7 +1289,7 @@ StepFunction_TeleportTo:
 	inc [hl]
 	ld a, [hl]
 	ld d, $60
-	call Sine
+	farcall Sine
 	ld a, h
 	sub $60
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -1367,7 +1366,7 @@ StepFunction_Skyfall:
 	inc [hl]
 	ld a, [hl]
 	ld d, $60
-	call Sine
+	farcall Sine
 	ld a, h
 	sub $60
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -1635,9 +1634,9 @@ StepFunction_StrengthBoulder:
 StepFunction_TrackingObject:
 	ld hl, OBJECT_1D
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, OBJECT_SPRITE
 	add hl, de
 	ld a, [hl]
@@ -2021,7 +2020,7 @@ SpawnShadow:
 
 .ShadowObject:
 	; vtile, palette, movement
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_SHADOW
+	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_SHADOW
 
 SpawnStrengthBoulderDust:
 	push bc
@@ -2032,18 +2031,20 @@ SpawnStrengthBoulderDust:
 	ret
 
 .BoulderDustObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_BOULDERDUST
+	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_BOULDERDUST
 
 SpawnEmote:
 	push bc
 	ld de, .EmoteObject
 	call CopyTempObjectData
+	ld a, [wEmotePal]
+	ld [wTempObjectCopyPalette], a
 	call InitTempObject
 	pop bc
 	ret
 
 .EmoteObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
+	db $80, PAL_OW_EMOTE_BLACK, SPRITEMOVEDATA_EMOTE
 
 ShakeGrass:
 	push bc
@@ -2054,7 +2055,7 @@ ShakeGrass:
 	ret
 
 .GrassObject
-	db $80, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
+	db $80, PAL_OW_COPY_BG_GREEN, SPRITEMOVEDATA_GRASS
 
 SplashPuddle:
 	push bc
@@ -2080,7 +2081,7 @@ ShakeScreen:
 	ret
 
 .ScreenShakeObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_SCREENSHAKE
+	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_SCREENSHAKE
 
 DespawnEmote:
 	push bc
@@ -2152,10 +2153,10 @@ CopyTempObjectData:
 	add hl, bc
 	ld e, [hl]
 	pop hl
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
 	ld [hl], -1
 	ret
 
@@ -2177,7 +2178,7 @@ UpdateMapObjectDataAndSprites::
 	inc a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
-	ret
+	jmp _UpdateSprites
 
 BattleStart_HideAllSpritesExceptBattleParticipants:
 ; called at battle start
@@ -2439,7 +2440,7 @@ HandleNPCStep::
 	ld [wPlayerStepVectorY], a
 	ld a, [wPlayerStepFlags]
 	bit PLAYERSTEP_STOP_F, a
-	ld a, $0 ; preserve flags
+	ld a, 0 ; no-optimize a = 0
 	ld [wPlayerStepFlags], a
 	ret nz
 	dec a ; STANDING
@@ -2478,27 +2479,6 @@ SpawnInFacingDown:
 ContinueSpawnFacing:
 	ld bc, wPlayerStruct
 	jmp SetSpriteDirection
-
-SetCopycatPalette:
-	ld bc, wObject1Struct
-	jr SetSpritePalette
-
-SetPlayerPalette:
-	ld bc, wPlayerStruct
-SetSpritePalette:
-	and %10000000
-	ret z
-	ld a, d
-	swap a
-	and PALETTE_MASK
-	ld d, a
-	ld hl, OBJECT_PALETTE
-	add hl, bc
-	ld a, [hl]
-	and ~PALETTE_MASK
-	or d
-	ld [hl], a
-	ret
 
 StartFollow::
 	push bc
@@ -2822,7 +2802,15 @@ InitSprites:
 	push hl
 	ld a, d
 	and $f
-	call .GetObjectStructPointer
+	add a
+	add LOW(.ObjectStructPointers)
+	ld l, a
+	adc HIGH(.ObjectStructPointers)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
 	call .InitSprite
 	pop hl
 	pop bc
@@ -2915,8 +2903,8 @@ InitSprites:
 	inc hl
 	ld [bc], a
 	inc c
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
 	ldh a, [hCurSpriteTile]
 	bit ABSOLUTE_TILE_ID_F, e
 	jr z, .nope1
@@ -2964,28 +2952,8 @@ InitSprites:
 	scf
 	ret
 
-.GetObjectStructPointer:
-	ld c, a
-	ld b, 0
-	ld hl, .Addresses
-	add hl, bc
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	ret
-
-.Addresses:
+.ObjectStructPointers:
 	dw wPlayerStruct
-	dw wObject1Struct
-	dw wObject2Struct
-	dw wObject3Struct
-	dw wObject4Struct
-	dw wObject5Struct
-	dw wObject6Struct
-	dw wObject7Struct
-	dw wObject8Struct
-	dw wObject9Struct
-	dw wObject10Struct
-	dw wObject11Struct
-	dw wObject12Struct
+for n, 1, NUM_OBJECT_STRUCTS
+	dw wObject{d:n}Struct
+endr

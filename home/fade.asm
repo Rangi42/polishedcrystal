@@ -30,9 +30,9 @@ if !DEF(MONOCHROME)
 else
 	ld a, 16 * NUM_PAL_COLORS
 .loop
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	dec a
 	jr nz, .loop

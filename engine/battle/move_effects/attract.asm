@@ -36,7 +36,7 @@ BattleCommand_attract:
 
 .no_ability_protection
 	; maybe this was called by cute charm
-	call ShowPotentialAbilityActivation
+	farcall ShowPotentialAbilityActivation
 	set SUBSTATUS_IN_LOVE, [hl]
 	call AnimateCurrentMove
 
@@ -96,7 +96,7 @@ BattleCommand_attract:
 	farjp RunStatusHealAbilities
 
 CheckOpponentMentalHerb:
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 CheckMentalHerb:
 	; Check if we hold it
 	predef GetUserItemAfterUnnerve

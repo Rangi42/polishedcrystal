@@ -4,37 +4,38 @@
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_RoadToReversalMountainB2W2:
-	musicheader 4, 1, Music_RoadToReversalMountainB2W2_Ch1
-	musicheader 1, 2, Music_RoadToReversalMountainB2W2_Ch2
-	musicheader 1, 3, Music_RoadToReversalMountainB2W2_Ch3
-	musicheader 1, 4, Music_RoadToReversalMountainB2W2_Ch4
+	channel_count 4
+	channel 1, Music_RoadToReversalMountainB2W2_Ch1
+	channel 2, Music_RoadToReversalMountainB2W2_Ch2
+	channel 3, Music_RoadToReversalMountainB2W2_Ch3
+	channel 4, Music_RoadToReversalMountainB2W2_Ch4
 
 Music_RoadToReversalMountainB2W2_Ch1:
 	tempo 140
-	volume $77
-	dutycycle 3
-	tone $0002
-	vibrato $10, $22
-	notetype $c, $60
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	volume 7, 7
+	duty_cycle 3
+	pitch_offset 2
+	vibrato 16, 2, 2
+	note_type 12, 6, 0
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	octave 3
 	note A_, 15
-	intensity $67
+	volume_envelope 6, 7
 	note A_, 3
-	intensity $60
+	volume_envelope 6, 0
 	note A_, 12
 	note A#, 6
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	note D_, 15
-	intensity $67
+	volume_envelope 6, 7
 	note D_, 3
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 6
-	jumpchannel Music_RoadToReversalMountainB2W2_Ch1
+	rest 16
+	rest 16
+	rest 16
+	rest 6
+	sound_jump Music_RoadToReversalMountainB2W2_Ch1
 
 Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 	octave 2
@@ -42,14 +43,14 @@ Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 	note A#, 6
 	note A_, 12
 	note G_, 6
-	endchannel
+	sound_ret
 
 Music_RoadToReversalMountainB2W2_Ch2:
-	dutycycle $0
-	tone $0001
-	vibrato $1c, $12
-	notetype $6, $a4
-	note __, 4
+	duty_cycle 0
+	pitch_offset 1
+	vibrato 28, 1, 2
+	note_type 6, 10, 4
+	rest 4
 	octave 3
 	note D_, 2
 	note C#, 2
@@ -95,18 +96,18 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note D#, 4
 	note D_, 1
 	note D#, 1
-	notetype $C, $a0
+	note_type 12, 10, 0
 	note D_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 11
-	dutycycle 3
-	intensity $70
+	duty_cycle 3
+	volume_envelope 7, 0
 	note C_, 12
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 6
-	dutycycle 0
+	duty_cycle 0
 	octave 2
-	notetype $6, $a4
+	note_type 6, 10, 4
 	note G#, 4
 	note A#, 4
 	octave 3
@@ -133,32 +134,32 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note D_, 4
 	note D#, 4
 	note D_, 4
-	notetype $8, $a4
+	note_type 8, 10, 4
 	note C#, 1
 	note D_, 1
 	note C#, 1
-	notetype $c, $a6
+	note_type 12, 10, 6
 	octave 2
 	note A_, 10
-	intensity $a4
+	volume_envelope 10, 4
 	octave 3
 	note C_, 2
 	note C#, 2
 	note C_, 2
-	notetype $8, $a4
+	note_type 8, 10, 4
 	octave 2
 	note B_, 1
 	octave 3
 	note C_, 1
 	octave 2
 	note B_, 1
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note G#, 10
 	note A_, 16
-	note __, 16
-	note __, 4
+	rest 16
+	rest 4
 	octave 3
-	notetype $3, $a4
+	note_type 3, 10, 4
 	note A_, 8
 	note A_, 4
 	note G_, 4
@@ -170,7 +171,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note C#, 1
 	note D_, 1
 	note C#, 12
-	notetype $6, $a4
+	note_type 6, 10, 4
 	note D#, 12
 	note D_, 4
 	octave 3
@@ -183,46 +184,46 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note C_, 1
 	note C#, 1
 	note C_, 10
-	jumpchannel Music_RoadToReversalMountainB2W2_Ch2
+	sound_jump Music_RoadToReversalMountainB2W2_Ch2
 
 Music_RoadToReversalMountainB2W2_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 2
-	callchannel Music_RoadToReversalMountainB2W2_Ch3_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note D_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
-	callchannel Music_RoadToReversalMountainB2W2_Ch3_branch_1
+	rest 1
+	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note C_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
-	jumpchannel Music_RoadToReversalMountainB2W2_Ch3
+	rest 1
+	sound_jump Music_RoadToReversalMountainB2W2_Ch3
 
 Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	note D_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 Music_RoadToReversalMountainB2W2_Ch4:
-	stereopanning $f
-	togglenoise $3
-	notetype $c
+	stereo_panning FALSE, TRUE
+	toggle_noise 3
+	drum_speed 12
 Music_RoadToReversalMountainB2W2_Ch4_loop:
-	note C_, 4
-	note D#, 2
-	note D#, 2
-	note C_, 2
-	note D#, 1
-	note D#, 1
-	note C_, 2
-	note C_, 2
-	note D#, 2
-	jumpchannel Music_RoadToReversalMountainB2W2_Ch4_loop
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	sound_jump Music_RoadToReversalMountainB2W2_Ch4_loop

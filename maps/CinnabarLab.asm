@@ -175,7 +175,7 @@ CinnabarLabCelebiEventScript:
 	disappear CINNABARLAB_ARMORED_MEWTWO
 	appear CINNABARLAB_MEWTWO
 	waitsfx
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	opentext
 	writetext CinnabarLabMewtwoText
 	cry MEWTWO
@@ -186,7 +186,7 @@ CinnabarLabCelebiEventScript:
 	special LoadMapPalettes
 	pause 30
 	appear CINNABARLAB_CELEBI
-	special FadeInPalettes
+	special FadeInPalettes_EnableDynNoApply
 	waitsfx
 	opentext
 	writetext CinnabarLabCelebiText

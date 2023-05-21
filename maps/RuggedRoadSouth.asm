@@ -11,6 +11,7 @@ RuggedRoadSouth_MapScriptHeader:
 	def_coord_events
 	coord_event 27,  3, 1, RuggedRoadSouthBridgeOverheadTrigger
 	coord_event 27,  1, 0, RuggedRoadSouthBridgeUnderfootTrigger
+	coord_event 25, 23, 1, RuggedRoadSouthBridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 25, BGEVENT_JUMPTEXT, RuggedRoadSouthAdvancedTipsSignText

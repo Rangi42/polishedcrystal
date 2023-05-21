@@ -167,15 +167,10 @@ ItemDescriptions:
 	dw RockyHelmetDesc
 	dw AirBalloonDesc
 	dw RedCardDesc
-	dw RingTargetDesc
 	dw BindingBandDesc
-	dw AbsorbBulbDesc
-	dw CellBatteryDesc
 	dw EjectButtonDesc
 	dw WeakPolicyDesc
 	dw AssaultVestDesc
-	dw LuminousMossDesc
-	dw SnowballDesc
 	dw SafeGogglesDesc
 	dw ProtectPadsDesc
 	dw ThroatSprayDesc
@@ -183,7 +178,11 @@ ItemDescriptions:
 	dw HeavyBootsDesc
 	dw BlundrPolicyDesc
 	dw RoomServiceDesc
-	dw UtilUmbrellaDesc
+	dw ClearAmuletDesc
+	dw MirrorHerbDesc
+	dw PunchinGloveDesc
+	dw CovertCloakDesc
+	dw LoadedDiceDesc
 	dw LightBallDesc
 	dw LeekDesc
 	dw ThickClubDesc
@@ -224,6 +223,7 @@ ItemDescriptions:
 	dw RazorClawDesc
 	dw OvalStoneDesc
 	dw OddSouvenirDesc
+	dw LinkingCordDesc
 	dw SilverLeafDesc
 	dw GoldLeafDesc
 	dw MintLeafDesc
@@ -267,6 +267,7 @@ KeyItemDescriptions:
 	dw ApricornBoxDesc
 	dw WingCaseDesc
 	dw TypeChartDesc
+	dw GBCSoundsDesc
 	dw BlueCardDesc
 	dw SquirtBottleDesc
 	dw SilphScope2Desc
@@ -287,8 +288,8 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
-	dw EerieLureDesc
-	dw ToughLureDesc
+	dw HarshLureDesc
+	dw PotentLureDesc
 	dw MalignLureDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
@@ -676,6 +677,7 @@ SunStoneDesc:
 DuskStoneDesc:
 ShinyStoneDesc:
 IceStoneDesc:
+LinkingCordDesc:
 	text "Evolves certain"
 	next "kinds of #mon."
 	done
@@ -1458,24 +1460,24 @@ RedCardDesc:
 	next "when hit. (Hold)"
 	done
 
-AbsorbBulbDesc:
-	text "Raises Sp.Atk on"
-	next "a Water hit."
+ClearAmuletDesc:
+	text "Prevents stat-"
+	next "lowering by foes."
 	done
 
-CellBatteryDesc:
-	text "Raises Attack on"
-	next "an Electric hit."
+MirrorHerbDesc:
+	text "Copies foe's stat-"
+	next "boost once."
 	done
 
-LuminousMossDesc:
-	text "Raises Sp.Def on"
-	next "a Water hit."
+PunchinGloveDesc:
+	text "Powers punch moves"
+	next "with no contact."
 	done
 
-SnowballDesc:
-	text "Raises Attack on"
-	next "an Ice hit."
+CovertCloakDesc:
+	text "Blocks additional"
+	next "attack effects."
 	done
 
 EjectPackDesc:
@@ -1503,9 +1505,9 @@ HeavyBootsDesc:
 	next "traps. (Hold)"
 	done
 
-UtilUmbrellaDesc:
-	text "Protects from"
-	next "weather effects."
+LoadedDiceDesc:
+	text "Multi-hit moves"
+	next "hit more often."
 	done
 
 MintLeafDesc:
@@ -1617,6 +1619,11 @@ GSBallDesc:
 	next "Ball."
 	done
 
+GBCSoundsDesc:
+	text "A music player"
+	next "filled with songs."
+	done
+
 BlueCardDesc:
 	text "Card to save"
 	next "points."
@@ -1633,12 +1640,12 @@ OldSeaMapDesc:
 	next "of a small island."
 	done
 
-EerieLureDesc:
+HarshLureDesc:
 	text "A bottle with a"
 	next "cruel scent."
 	done
 
-ToughLureDesc:
+PotentLureDesc:
 	text "A bottle with a"
 	next "strong smell."
 	done

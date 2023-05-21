@@ -434,7 +434,7 @@ FearowEvosAttacks:
 	db -1 ; no more level-up moves
 
 EkansEvosAttacks:
-	evo_data EVOLVE_LEVEL, 22, ARBOK
+	evo_data EVOLVE_LEVEL, 22, ARBOK, NO_FORM ; preserve pre-evo form
 	db -1 ; no more evolutions
 	db 1, WRAP
 	db 1, LEER
@@ -1407,7 +1407,7 @@ AbraEvosAttacks:
 	db -1 ; no more level-up moves
 
 KadabraEvosAttacks:
-	evo_data EVOLVE_EVS, MON_SAT_EV, ALAKAZAM
+	evo_data EVOLVE_ITEM, LINKING_CORD, ALAKAZAM
 	db -1 ; no more evolutions
 	db 1, TELEPORT
 	db 1, FORESIGHT ; evolution move
@@ -1469,7 +1469,7 @@ MachopEvosAttacks:
 	db -1 ; no more level-up moves
 
 MachokeEvosAttacks:
-	evo_data EVOLVE_EVS, MON_ATK_EV, MACHAMP
+	evo_data EVOLVE_ITEM, LINKING_CORD, MACHAMP
 	db -1 ; no more evolutions
 	db 1, LOW_KICK
 	db 1, LEER
@@ -1625,7 +1625,7 @@ GeodudePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 GravelerPlainEvosAttacks:
-	evo_data EVOLVE_EVS, MON_DEF_EV, GOLEM, PLAIN_FORM
+	evo_data EVOLVE_ITEM, LINKING_CORD, GOLEM, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1688,7 +1688,7 @@ GeodudeAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 GravelerAlolanEvosAttacks:
-	evo_data EVOLVE_EVS, MON_DEF_EV, GOLEM, ALOLAN_FORM
+	evo_data EVOLVE_ITEM, LINKING_CORD, GOLEM, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -2216,7 +2216,7 @@ GastlyEvosAttacks:
 	db -1 ; no more level-up moves
 
 HaunterEvosAttacks:
-	evo_data EVOLVE_EVS, MON_SPE_EV, GENGAR
+	evo_data EVOLVE_ITEM, LINKING_CORD, GENGAR
 	db -1 ; no more evolutions
 	db 1, SHADOW_CLAW ; Shadow Punch → TM move ; evolution move
 	db 1, HYPNOSIS
@@ -2696,9 +2696,9 @@ RhyhornEvosAttacks:
 	db 21, BULLDOZE
 	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
 	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
+	db 33, TAKE_DOWN ; Drill Run → Take Down
+	db 37, STONE_EDGE ; Take Down → Stone Edge
+	db 41, DOUBLE_EDGE ; Double Edge → event move
 	db 45, EARTHQUAKE
 	db 49, CLOSE_COMBAT ; Megahorn → new move
 	db 53, MEGAHORN ; Horn Drill → Megahorn
@@ -2719,9 +2719,9 @@ RhydonEvosAttacks:
 	db 21, BULLDOZE
 	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
 	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
+	db 33, TAKE_DOWN ; Drill Run → Take Down
+	db 37, STONE_EDGE ; Take Down → Stone Edge
+	db 41, DOUBLE_EDGE ; Double Edge → event move
 	db 48, EARTHQUAKE
 	db 55, CLOSE_COMBAT ; Megahorn → new move
 	db 62, MEGAHORN ; Horn Drill → Megahorn
@@ -6033,9 +6033,9 @@ RhyperiorEvosAttacks:
 	db 21, BULLDOZE
 	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
 	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
+	db 33, TAKE_DOWN ; Drill Run → Take Down
+	db 37, STONE_EDGE ; Take Down → Stone Edge
+	db 41, DOUBLE_EDGE ; Double Edge → event move
 	db 48, EARTHQUAKE
 	db 55, CLOSE_COMBAT ; Megahorn → new move
 	db 62, MEGAHORN ; Horn Drill → Megahorn

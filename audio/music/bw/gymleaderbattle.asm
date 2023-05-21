@@ -1,80 +1,81 @@
-; Pokémon D/P/Pt - Battle! Gym Leader
+; Pokémon B/W - Battle! Gym Leader
 ; Demixed by Pum
 ; https://hax.iimarckus.org/topic/6443/
 
 Music_GymLeaderBattleBW:
-	musicheader 4, 1, GymLeaderBattleBW_Channel1
-	musicheader 1, 2, GymLeaderBattleBW_Channel2
-	musicheader 1, 3, GymLeaderBattleBW_Channel3
-	musicheader 1, 4, GymLeaderBattleBW_Channel4
+	channel_count 4
+	channel 1, GymLeaderBattleBW_Channel1
+	channel 2, GymLeaderBattleBW_Channel2
+	channel 3, GymLeaderBattleBW_Channel3
+	channel 4, GymLeaderBattleBW_Channel4
 
 GymLeaderBattleBW_Channel1:
-	tempo $35
-	volume $55
-	dutycycle 1
-	notetype 12, $87
+	tempo 53
+	volume 5, 5
+	duty_cycle 1
+	note_type 12, 8, 7
 	octave 4
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C#, 8
 	note D#, 4
 	note C#, 2
-	note __, 6
+	rest 6
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C#, 8
 	note D#, 4
 	note F_, 2
-	note __, 6
+	rest 6
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C#, 8
 	note D#, 4
 	note F_, 8
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note C#, 8
 	octave 3
 	note A#, 8
 	octave 4
 	note C#, 4
-	notetype 12, $88
+	note_type 12, 8, 8
 	note C_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note C_, 16
 	octave 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 4
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 4
-	note __, 16
-	note __, 8
+	rest 16
+	rest 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 4
-	note __, 16
-	note __, 8
-	dutycycle 2
+	rest 16
+	rest 8
+	duty_cycle 2
 	octave 1
 	note A#, 4
 	octave 3
@@ -125,27 +126,27 @@ GymLeaderBattleBW_Channel1:
 	octave 3
 	note D#, 4
 	octave 4
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note D_, 2
 	note D#, 2
 	note D_, 2
 	note C_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note D_, 2
-	note __, 2
+	rest 2
 GymLeaderBattleBWChannel1_Loop:
-	stereopanning $F0
-	dutycycle 1
+	stereo_panning TRUE, FALSE
+	duty_cycle 1
 	note C_, 12
 	octave 4
 	note G_, 12
@@ -177,12 +178,12 @@ GymLeaderBattleBWChannel1_Loop:
 	note A_, 12
 	octave 5
 	note C#, 8
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note E_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note E_, 16
-	stereopanning $FF
-	notetype 12, $87
+	stereo_panning TRUE, TRUE
+	note_type 12, 8, 7
 	octave 4
 	note D_, 12
 	octave 3
@@ -193,7 +194,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note A#, 4
 	octave 6
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note A#, 1
 	octave 6
@@ -206,13 +207,13 @@ GymLeaderBattleBWChannel1_Loop:
 	note D_, 1
 	octave 4
 	note A#, 4
-	note __, 4
+	rest 4
 	octave 5
 	note D#, 1
 	note D_, 3
 	octave 4
-	stereopanning $0F
-	notetype 12, $A7
+	stereo_panning FALSE, TRUE
+	note_type 12, 10, 7
 	note C_, 4
 	octave 3
 	note B_, 4
@@ -248,23 +249,23 @@ GymLeaderBattleBWChannel1_Loop:
 	note A_, 12
 	octave 4
 	note C#, 8
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note E_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note E_, 16
-	stereopanning $FF
-	notetype 12, $87
+	stereo_panning TRUE, TRUE
+	note_type 12, 8, 7
 	note A_, 12
 	note E_, 12
 	note A_, 8
 	octave 5
 	note C#, 16
-	note __, 4
+	rest 4
 	octave 4
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
+	rest 6
 	note A#, 4
 	octave 5
 	note C_, 16
@@ -284,12 +285,12 @@ GymLeaderBattleBWChannel1_Loop:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $88
+	note_type 12, 8, 8
 	note E_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note E_, 8
-	stereopanning $F0
-	notetype 12, $A7
+	stereo_panning TRUE, FALSE
+	note_type 12, 10, 7
 	note C#, 2
 	note D_, 2
 	note C#, 2
@@ -298,11 +299,11 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 4
 	note C#, 12
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A#, 4
 	octave 5
 	note C_, 16
@@ -329,9 +330,9 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 4
 	note A#, 2
 	octave 5
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note C_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note C_, 8
 	octave 4
 	note C_, 2
@@ -340,97 +341,97 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 3
 	note A#, 2
 	octave 4
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note C_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note C_, 8
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note E_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note E_, 8
-	stereopanning $FF
-	notetype 12, $87
-	note __, 16
-	note __, 16
+	stereo_panning TRUE, TRUE
+	note_type 12, 8, 7
+	rest 16
+	rest 16
 	octave 2
 	note C_, 3
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 3
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 6
-	note __, 2
+	rest 2
 	octave 3
 	note G_, 6
-	note __, 2
+	rest 2
 	octave 2
 	note C_, 3
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 3
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 6
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 6
-	note __, 2
+	rest 2
 	octave 2
 	note C_, 3
-	note __, 1
+	rest 1
 	note G_, 3
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 3
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 6
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 6
-	note __, 2
+	rest 2
 	note A_, 6
-	note __, 2
+	rest 2
 	note G_, 6
-	note __, 2
+	rest 2
 	note F_, 4
 	note E_, 12
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	note A#, 12
 	octave 4
 	note F_, 12
 	note A#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note G_, 12
 	note F_, 2
-	note __, 2
+	rest 2
 	note D#, 12
 	note D_, 2
 	note D#, 2
 	note D_, 2
 	note C_, 2
-	notetype 12, $88
+	note_type 12, 8, 8
 	note D_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note D_, 8
 	octave 3
 	note D_, 2
@@ -438,282 +439,282 @@ GymLeaderBattleBWChannel1_Loop:
 	note D_, 2
 	note C_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
-	note __, 2
-	stereopanning $FF
+	rest 2
+	stereo_panning TRUE, TRUE
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note B_, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 8
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 8
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D_, 8
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 8
 	note F#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 2
-	note __, 2
-	notetype 12, $88
+	rest 2
+	note_type 12, 8, 8
 	note F_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note F_, 7
-	note __, 1
+	rest 1
 	note F_, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 16
-	note __, 4
+	rest 4
 	octave 4
-	notetype 12, $88
+	note_type 12, 8, 8
 	note E_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note E_, 7
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 16
-	note __, 4
+	rest 4
 	note G_, 8
-	note __, 4
+	rest 4
 	note G_, 8
-	note __, 4
+	rest 4
 	note G_, 8
-	note __, 4
+	rest 4
 	note G_, 8
-	note __, 4
+	rest 4
 	note C_, 7
-	note __, 1
+	rest 1
 	note C_, 8
 	note G_, 8
-	note __, 4
+	rest 4
 	note G_, 8
-	note __, 4
+	rest 4
 	note F_, 8
-	note __, 4
+	rest 4
 	note G_, 8
-	note __, 4
+	rest 4
 	note C_, 8
 	octave 1
 	note G_, 8
 	octave 5
-	jumpchannel GymLeaderBattleBWChannel1_Loop
-	endchannel
+	sound_jump GymLeaderBattleBWChannel1_Loop
+	sound_ret
 
 GymLeaderBattleBW_Channel2:
-	dutycycle 1
-	notetype 12, $97
+	duty_cycle 1
+	note_type 12, 9, 7
 	octave 2
 	note C_, 8
-	note __, 4
+	rest 4
 	octave 1
 	note G_, 8
-	note __, 8
+	rest 8
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note C_, 8
-	note __, 4
+	rest 4
 	octave 1
 	note G_, 8
-	note __, 12
+	rest 12
 	octave 2
 	note C_, 8
-	note __, 4
+	rest 4
 	octave 1
 	note C#, 8
-	note __, 12
+	rest 12
 	octave 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note G_, 16
-	note __, 4
+	rest 4
 	note F#, 1
 	note F_, 1
 	note E_, 1
@@ -735,21 +736,21 @@ GymLeaderBattleBW_Channel2:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	octave 5
-	dutycycle 0
+	duty_cycle 0
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note A#, 12
 	octave 4
@@ -763,14 +764,14 @@ GymLeaderBattleBW_Channel2:
 	note D#, 2
 	note D_, 2
 	note C_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note D_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note D_, 8
-	note __, 16
-	note __, 16
+	rest 16
+	rest 16
 GymLeaderBattleBWChannel2_Loop:
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	octave 3
 	note C_, 12
 	octave 2
@@ -803,12 +804,12 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 12
 	octave 3
 	note C#, 8
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 16
-	stereopanning $0F
-	notetype 12, $A7
+	stereo_panning FALSE, TRUE
+	note_type 12, 10, 7
 	octave 4
 	note D_, 12
 	octave 3
@@ -817,7 +818,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note D_, 8
 	note F_, 4
 	note G_, 2
-	note __, 2
+	rest 2
 	note F_, 1
 	note G_, 2
 	note F_, 1
@@ -829,11 +830,11 @@ GymLeaderBattleBWChannel2_Loop:
 	octave 3
 	note A#, 1
 	note F_, 4
-	note __, 4
+	rest 4
 	note B_, 1
 	note A#, 3
-	stereopanning $FF
-	notetype 12, $97
+	stereo_panning TRUE, TRUE
+	note_type 12, 9, 7
 	note C_, 4
 	octave 2
 	note B_, 4
@@ -869,23 +870,23 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 12
 	octave 3
 	note C#, 8
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 16
-	stereopanning $F0
-	notetype 12, $A7
+	stereo_panning TRUE, FALSE
+	note_type 12, 10, 7
 	note A_, 12
 	note E_, 12
 	note A_, 8
 	octave 4
 	note C#, 16
-	note __, 4
+	rest 4
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
+	rest 6
 	note A#, 4
 	octave 4
 	note C_, 16
@@ -911,34 +912,34 @@ GymLeaderBattleBWChannel2_Loop:
 	note A#, 2
 	note A_, 2
 	note G_, 2
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note A_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note A_, 6
-	stereopanning $FF
-	notetype 12, $97
-	note __, 2
+	stereo_panning TRUE, TRUE
+	note_type 12, 9, 7
+	rest 2
 	note A_, 2
 	note A#, 2
 	note A_, 2
 	note G_, 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A_, 4
 	octave 4
 	note F_, 16
-	note __, 4
+	rest 4
 	octave 3
 	note A#, 4
 	octave 4
@@ -958,9 +959,9 @@ GymLeaderBattleBWChannel2_Loop:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	octave 3
 	note C_, 2
@@ -969,24 +970,24 @@ GymLeaderBattleBWChannel2_Loop:
 	octave 2
 	note A#, 2
 	octave 3
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 8
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
-	stereopanning $FF
-	notetype 12, $98
+	stereo_panning TRUE, TRUE
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 12
-	note __, 4
+	rest 4
 	octave 4
 	note C_, 12
 	note G_, 12
@@ -1001,218 +1002,218 @@ GymLeaderBattleBWChannel2_Loop:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
-	dutycycle 2
+	duty_cycle 2
 	note C_, 2
 	note C#, 2
 	note C_, 2
 	octave 3
 	note A#, 2
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 3
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note A#, 12
 	octave 4
 	note F_, 12
 	note A#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note G_, 12
 	note F_, 2
-	note __, 2
+	rest 2
 	note D#, 12
 	note D_, 2
 	note D#, 2
 	note D_, 2
 	note C_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note D_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note D_, 7
-	note __, 1
+	rest 1
 	note D_, 2
 	note D#, 2
 	note D_, 2
 	note C_, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	note F_, 4
 	note A#, 4
 	octave 5
 	note D_, 4
-	notetype 12, $98
-	stereopanning $FF
+	note_type 12, 9, 8
+	stereo_panning TRUE, TRUE
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 16
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note A#, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note A#, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note A_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note A_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note F_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note F_, 16
 	note D_, 16
 	note A_, 8
 	note F_, 8
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note F_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note F_, 16
 	note D_, 16
 	note A_, 4
 	note F_, 12
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 16
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 5
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 12
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C#, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C#, 7
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 6
+	rest 6
 	note D#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 6
+	rest 6
 	octave 3
 	note F_, 16
-	note __, 4
+	rest 4
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 7
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 6
+	rest 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 6
+	rest 6
 	octave 3
 	note E_, 16
-	note __, 4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	jumpchannel GymLeaderBattleBWChannel2_Loop
-	endchannel
+	rest 4
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	sound_jump GymLeaderBattleBWChannel2_Loop
+	sound_ret
 
 GymLeaderBattleBW_Channel3:
-	notetype 12, $15
+	note_type 12, 1, 5
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 6
-	note __, 6
+	rest 6
 	octave 2
 	note C_, 7
-	note __, 1
+	rest 1
 	note A_, 4
 	note A#, 2
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 6
-	note __, 6
+	rest 6
 	octave 2
 	note C_, 7
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 4
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 6
-	note __, 6
+	rest 6
 	octave 2
 	note C_, 8
 	octave 4
 	note C#, 4
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note C_, 12
 	octave 2
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note C_, 4
 	octave 3
 	note C_, 4
@@ -1569,7 +1570,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1579,7 +1580,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1589,7 +1590,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1599,7 +1600,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1609,7 +1610,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A_, 4
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note E_, 4
 	octave 3
@@ -1618,7 +1619,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A_, 4
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 2
 	note A_, 4
 	note E_, 4
@@ -1626,12 +1627,12 @@ GymLeaderBattleBWChannel3_Loop:
 	note A_, 4
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note E_, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note C#, 4
 	octave 2
@@ -1642,7 +1643,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1652,7 +1653,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1662,7 +1663,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1672,7 +1673,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
 	octave 1
 	note A#, 4
@@ -1681,7 +1682,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note C_, 4
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	octave 2
 	note G_, 4
@@ -1690,7 +1691,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note C_, 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	octave 3
 	note E_, 4
@@ -1699,7 +1700,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note C_, 4
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	octave 2
 	note G_, 4
@@ -1713,12 +1714,12 @@ GymLeaderBattleBWChannel3_Loop:
 	note D_, 4
 	note E_, 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	octave 2
 	note B_, 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	note E_, 4
 	note D#, 4
@@ -1821,16 +1822,16 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 8
 	octave 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 8
 	octave 1
@@ -1975,9 +1976,9 @@ GymLeaderBattleBWChannel3_Loop:
 	note C_, 4
 	octave 3
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 3
-	note __, 1
+	rest 1
 	note C_, 4
 	octave 2
 	note B_, 4
@@ -2165,390 +2166,390 @@ GymLeaderBattleBWChannel3_Loop:
 	note C_, 4
 	octave 3
 	note C_, 4
-	jumpchannel GymLeaderBattleBWChannel3_Loop
-	endchannel
+	sound_jump GymLeaderBattleBWChannel3_Loop
+	sound_ret
 
 GymLeaderBattleBW_Channel4:
-	notetype $C
-	togglenoise 5
-	note C_, 4
-	note C_, 4
-	note C_, 4
-	note C_, 8
-	note C#, 1
-	note C#, 3
-	note D_, 4
-	note C_, 2
-	note C_, 2
-	note C_, 4
-	note C_, 4
-	note C_, 4
-	note C_, 8
-	note C#, 1
-	note C#, 3
-	note C#, 4
-	note C_, 2
-	note C_, 2
-	note C_, 4
-	note E_, 2
-	note E_, 2
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note C#, 2
-	note C_, 2
-	note C_, 1
-	note C_, 3
-	note D#, 2
-	note D_, 2
-	note C#, 2
-	note C_, 2
-	note C_, 4
-	note C#, 1
-	note C#, 3
-	note C_, 4
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 2
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 4
-	note C_, 4
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 4
-	note C_, 4
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 4
-	note C_, 4
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note D_, 2
-	note D_, 2
-	note C#, 1
-	note C#, 3
-	note C_, 4
-	note D_, 4
-	note D#, 4
-	note D_, 4
-	note C_, 4
-	note C#, 4
-	note C#, 1
-	note C#, 3
-	note D#, 4
-	note D_, 4
-	note C#, 4
-	note C_, 4
-	note C_, 2
-	note C_, 2
-	note C_, 8
-	note C_, 4
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 4
-	note C_, 4
-	note C_, 2
-	note C_, 6
-	note C_, 2
-	note C_, 2
-	note C_, 4
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C#, 4
-	note C_, 2
-	note C_, 2
+	drum_speed 12
+	toggle_noise 5
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 8
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 3, 4
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 8
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 2, 4
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 3
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 1, 4
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 2, 4
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 6
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 2, 4
+	drum_note 1, 2
+	drum_note 1, 2
 GymLeaderBattleBWChannel4_Loop:
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 4
-	note C#, 1
-	note C#, 11
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 12
-	note G#, 4
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note D_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 4
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C#, 1
-	note C#, 1
-	note C#, 2
-	note C#, 8
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note D_, 4
-	note C#, 4
-	note C_, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C#, 4
-	note C_, 4
-	note C#, 4
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 4
-	note C#, 4
-	note C#, 4
-	note C_, 4
-	note C#, 4
-	note C_, 4
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 4
-	note C#, 4
-	note C_, 4
-	note C_, 4
-	note D#, 4
-	note D_, 4
-	note C#, 4
-	note C_, 8
-	note C#, 4
-	note D_, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 4
-	note C#, 4
-	note E_, 2
-	note D#, 2
-	note D_, 2
-	note C#, 2
-	note C_, 2
-	note C_, 2
-	note C#, 4
-	note C_, 4
-	note C#, 4
-	note C_, 1
-	note C_, 3
-	note C#, 4
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	note C_, 8
-	note C#, 8
-	note C_, 4
-	note C_, 4
-	note C#, 8
-	jumpchannel GymLeaderBattleBWChannel4_Loop
-	endchannel
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 2, 1
+	drum_note 2, 11
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 12
+	drum_note 9, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 3, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 8
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 3, 4
+	drum_note 2, 4
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 3, 4
+	drum_note 2, 4
+	drum_note 1, 8
+	drum_note 2, 4
+	drum_note 3, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 5, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 2, 4
+	drum_note 1, 4
+	drum_note 2, 4
+	drum_note 1, 1
+	drum_note 1, 3
+	drum_note 2, 4
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	sound_jump GymLeaderBattleBWChannel4_Loop
+	sound_ret

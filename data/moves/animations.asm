@@ -289,6 +289,7 @@ endc
 	dw BattleAnim_EnemyDamage
 	dw BattleAnim_PlayerDamage
 	dw BattleAnim_HitConfusion
+	dw BattleAnim_HeldItemTrigger
 	assert_table_length NUM_BATTLE_ANIMS + 1
 
 BattleAnim_0:
@@ -1811,6 +1812,35 @@ BattleAnim_Recover_branch:
 	anim_obj ANIM_OBJ_RECOVER, 44, 88, $36
 	anim_obj ANIM_OBJ_RECOVER, 44, 88, $37
 	anim_wait 64
+	anim_ret
+
+BattleAnim_HeldItemTrigger:
+	anim_jumpif 1, .alternate
+	anim_1gfx ANIM_GFX_BUBBLE
+	anim_call BattleAnim_TargetObj_1Row
+	anim_sound 0, 0, SFX_FULL_HEAL
+	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
+	anim_call BattleAnim_Recover_branch
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+.alternate
+	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_BERRY
+	anim_2gfx ANIM_GFX_BERRY, ANIM_GFX_BUBBLE
+	anim_sound 0, 0, SFX_SWITCH_POKEMON
+	anim_obj ANIM_OBJ_BERRY, 60, 104, $10
+	anim_wait 48
+	anim_sound 0, 0, SFX_BITE
+	anim_wait 24
+	anim_sound 0, 0, SFX_BITE
+	anim_wait 24
+	anim_sound 0, 0, SFX_BITE
+	anim_wait 16
+	anim_sound 0, 0, SFX_FULL_HEAL
+	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
+	anim_call BattleAnim_Recover_branch
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
 	anim_ret
 
 BattleAnim_Roost:

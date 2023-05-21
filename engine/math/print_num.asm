@@ -47,7 +47,7 @@ _PrintNum::
 .loop
 	ld a, b
 	cp c
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .loopnext
 	ld a, [de]
 	inc de
@@ -84,12 +84,16 @@ _PrintNum::
 	rl c
 	rl b
 	; add last bit of b into [hl], then cascade into higher bytes
-rept 4
+rept 3
 	ld a, [hl]
 	adc a
 	daa ; dubious compatibility in bad emulators, should be OK for valid input
 	ld [hld], a
 endr
+	ld a, [hl]
+	adc a
+	daa ; dubious compatibility in bad emulators, should be OK for valid input
+	ld [hl], a
 	pop hl
 	dec h
 	jr nz, .loop2

@@ -1,19 +1,19 @@
 GavenPhoneScript1:
 	gettrainername COOLTRAINERM, GAVEN1, $0
 	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd1fd
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
-	iftruefwd UnknownScript_0xbd1f9
+	iftruefwd .NotThursday
 	readvar VAR_WEEKDAY
-	ifnotequal THURSDAY, UnknownScript_0xbd1f9
+	ifnotequal THURSDAY, .NotThursday
 	checktime 1 << MORN
 	iftruefwd GavenThursdayMorningScript
 
-UnknownScript_0xbd1f9:
+.NotThursday:
 	farsjump GavenHangUpNotThursdayScript
 
-UnknownScript_0xbd1fd:
+.WantsBattle:
 	getlandmarkname ROUTE_26, $2
 	farsjump GavenReminderScript
 
@@ -21,13 +21,13 @@ GavenPhoneScript2:
 	gettrainername COOLTRAINERM, GAVEN1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd220
+	iftruefwd .WaitingForBattle
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
-	iftruefwd UnknownScript_0xbd220
+	iftruefwd .WaitingForBattle
 	farscall PhoneScript_Random2
 	ifequalfwd $0, GavenWantsRematch
 
-UnknownScript_0xbd220:
+.WaitingForBattle:
 	farscall PhoneScript_Random3
 	ifequalfwd $0, GavenFoundRare
 	farsjump Phone_GenericCall_Male

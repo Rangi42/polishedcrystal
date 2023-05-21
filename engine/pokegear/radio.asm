@@ -196,9 +196,9 @@ OaksPkmnTalk4:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
 	ld c, [hl]
+	ld b, a
 	; bc now contains the chosen map's group and number indices.
 	push bc
 
@@ -631,8 +631,8 @@ OaksPkmnTalk14:
 	ld hl, wRadioTextDelay
 	dec [hl]
 	ret nz
-	ld de, MUSIC_POKEMON_TALK
-	farcall RadioMusicRestartDE
+	ld e, MUSIC_POKEMON_TALK
+	farcall RadioMusicRestart
 	ld hl, EmptyString
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_4
@@ -840,13 +840,13 @@ BenFernMusic6:
 StartPokemonMusicChannel:
 	ld hl, EmptyString
 	call PrintText
-	ld de, MUSIC_POKEMON_MARCH
 	call GetWeekday
 	and 1
+	ld e, MUSIC_POKEMON_MARCH
 	jr z, .SunTueThurSun
-	ld de, MUSIC_POKEMON_LULLABY
+	ld e, MUSIC_POKEMON_LULLABY
 .SunTueThurSun:
-	farjp RadioMusicRestartDE
+	farjp RadioMusicRestart
 
 BenIntroText1:
 	; BEN: #MON MUSIC
@@ -901,7 +901,7 @@ BenFernText3B:
 LuckyNumberShow1:
 	call StartRadioStation
 	farcall Special_CheckLuckyNumberShowFlag
-	jr nc, .dontreset
+	jr nz, .dontreset
 	farcall Special_ResetLuckyNumberShowFlag
 .dontreset
 	ld hl, LC_Text1
@@ -1505,10 +1505,8 @@ GetBuenasPassword:
 	ld d, 0
 	ld e, a
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 ; Get the password type and store it in b.
 	ld a, [hli]
 	ld b, a
@@ -1816,15 +1814,13 @@ StartRadioStation:
 	ret nz
 	ld hl, EmptyString
 	call PrintText
-	ld hl, RadioChannelSongs
 	ld a, [wCurRadioLine]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	add LOW(RadioChannelSongs)
+	ld l, a
+	adc HIGH(RadioChannelSongs)
+	sub l
+	ld h, a
 	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	farjp RadioMusicRestartDE
+	farjp RadioMusicRestart
 
 INCLUDE "data/radio/channel_music.asm"

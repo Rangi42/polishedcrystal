@@ -3,19 +3,20 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/cinnabarmansion.asm
 
 Music_CinnabarMansionRBY:
-	dbw $C0, Music_CinnabarMansionRBY_Ch1
-	dbw $01, Music_CinnabarMansionRBY_Ch2
-	dbw $02, Music_CinnabarMansionRBY_Ch3
-	dbw $03, Music_CinnabarMansionRBY_Ch4
+	channel_count 4
+	channel 1, Music_CinnabarMansionRBY_Ch1
+	channel 2, Music_CinnabarMansionRBY_Ch2
+	channel 3, Music_CinnabarMansionRBY_Ch3
+	channel 4, Music_CinnabarMansionRBY_Ch4
 
 Music_CinnabarMansionRBY_Ch1:
 	tempo 144
-	volume 119
-	vibrato 11, 37
-	dutycycle 2
+	volume 7, 7
+	vibrato 11, 2, 5
+	duty_cycle 2
 
 Music_CinnabarMansionRBY_branch_7ed19:
-	notetype 12, 98
+	note_type 12, 6, 2
 	octave 5
 	note E_, 1
 	note E_, 1
@@ -23,7 +24,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	note B_, 1
 	note B_, 1
 	note C_, 1
-	note __, 2
+	rest 2
 	octave 5
 	note B_, 2
 	note E_, 2
@@ -34,36 +35,36 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	note C_, 1
 	octave 5
 	note B_, 1
-	note __, 2
-	loopchannel 14, Music_CinnabarMansionRBY_branch_7ed19
-	notetype 12, 165
-	note __, 16
-	note __, 16
-	note __, 15
+	rest 2
+	sound_loop 14, Music_CinnabarMansionRBY_branch_7ed19
+	note_type 12, 10, 5
+	rest 16
+	rest 16
+	rest 15
 	octave 4
 	note C_, 1
 	octave 5
 	note B_, 1
 	note B_, 2
-	jumpchannel Music_CinnabarMansionRBY_branch_7ed19
+	sound_jump Music_CinnabarMansionRBY_branch_7ed19
 
 Music_CinnabarMansionRBY_Ch2:
-	dutycycle 2
+	duty_cycle 2
 
-	vibrato 10, 36
-	notetype 12, 194
+	vibrato 10, 2, 4
+	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed48:
-	note __, 16
-	note __, 16
-	loopchannel 4, Music_CinnabarMansionRBY_branch_7ed48
+	rest 16
+	rest 16
+	sound_loop 4, Music_CinnabarMansionRBY_branch_7ed48
 
 Music_CinnabarMansionRBY_branch_7ed4e:
-	notetype 12, 194
+	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed50:
-	callchannel Music_CinnabarMansionRBY_branch_7ed6c
-	loopchannel 3, Music_CinnabarMansionRBY_branch_7ed50
+	sound_call Music_CinnabarMansionRBY_branch_7ed6c
+	sound_loop 3, Music_CinnabarMansionRBY_branch_7ed50
 	octave 3
 	note E_, 4
 	note D#, 4
@@ -71,7 +72,7 @@ Music_CinnabarMansionRBY_branch_7ed50:
 	note A#, 4
 	note G_, 4
 	note G#, 4
-	note __, 4
+	rest 4
 	note A#, 4
 	note E_, 4
 	note D#, 4
@@ -81,7 +82,7 @@ Music_CinnabarMansionRBY_branch_7ed50:
 	note G#, 4
 	note G_, 4
 	note D#, 4
-	jumpchannel Music_CinnabarMansionRBY_branch_7ed4e
+	sound_jump Music_CinnabarMansionRBY_branch_7ed4e
 
 Music_CinnabarMansionRBY_branch_7ed6c:
 	octave 3
@@ -99,82 +100,82 @@ Music_CinnabarMansionRBY_branch_7ed6c:
 	note A#, 4
 	note G_, 4
 	note G#, 4
-	note __, 4
+	rest 4
 	note A#, 4
-	endchannel
+	sound_ret
 
 Music_CinnabarMansionRBY_Ch3:
-	notetype 12, 17
+	note_type 12, 1, 1
 
 Music_CinnabarMansionRBY_branch_7ed80:
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
-	loopchannel 8, Music_CinnabarMansionRBY_branch_7ed80
+	rest 2
+	sound_loop 8, Music_CinnabarMansionRBY_branch_7ed80
 	note E_, 16
 	note D#, 16
 	note G_, 16
 	note G#, 8
 	note D#, 8
-	jumpchannel Music_CinnabarMansionRBY_branch_7ed80
+	sound_jump Music_CinnabarMansionRBY_branch_7ed80
 
 Music_CinnabarMansionRBY_Ch4:
-	notetype 6
-	togglenoise 1
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
+	drum_speed 6
+	toggle_noise 1
+	rest 16
+	rest 16
+	rest 16
+	rest 16
 
 Music_CinnabarMansionRBY_branch_7edb5:
-	note E_, 2
-	note E_, 2
-	note F_, 4
-	note E_, 2
-	note E_, 2
-	note F_, 4
-	note E_, 2
-	note E_, 2
-	note F_, 4
-	note E_, 2
-	note E_, 2
-	note F#, 4
-	note E_, 2
-	note E_, 2
-	note __, 2
-	note __, 10
-	note __, 8
-	note F#, 8
-	jumpchannel Music_CinnabarMansionRBY_branch_7edb5
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 6, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 6, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 6, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 7, 4
+	drum_note 5, 2
+	drum_note 5, 2
+	rest 2
+	rest 10
+	rest 8
+	drum_note 7, 8
+	sound_jump Music_CinnabarMansionRBY_branch_7edb5

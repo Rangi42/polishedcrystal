@@ -72,8 +72,7 @@ endr
 	ld [wTempMonSlot], a
 	ld a, b
 	ld [wTempMonBox], a
-	ld a, [wCurPartySpecies]
-	dec a
+	lp bc, DITTO
 	call SetSeenAndCaughtMon
 	farcall UpdateStorageBoxMonFromTemp
 	ld a, 2

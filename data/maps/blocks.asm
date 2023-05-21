@@ -1338,6 +1338,26 @@ SECTION "CeladonUniversityLibrary2F_BlockData", ROMX
 CeladonUniversityLibrary2F_BlockData:
 	INCBIN "maps/CeladonUniversityLibrary2F.ablk.lz"
 
+SECTION "RocketHideoutB1F_BlockData", ROMX
+RocketHideoutB1F_BlockData:
+	INCBIN "maps/RocketHideoutB1F.ablk.lz"
+
+SECTION "RocketHideoutB2F_BlockData", ROMX
+RocketHideoutB2F_BlockData:
+	INCBIN "maps/RocketHideoutB2F.ablk.lz"
+
+SECTION "RocketHideoutB3F_BlockData", ROMX
+RocketHideoutB3F_BlockData:
+	INCBIN "maps/RocketHideoutB3F.ablk.lz"
+
+SECTION "RocketHideoutB4F_BlockData", ROMX
+RocketHideoutB4F_BlockData:
+	INCBIN "maps/RocketHideoutB4F.ablk.lz"
+
+SECTION "RocketHideoutElevator_BlockData", ROMX
+RocketHideoutElevator_BlockData:
+	INCBIN "maps/RocketHideoutElevator.ablk.lz"
+
 SECTION "SaffronGym_BlockData", ROMX
 SaffronGym_BlockData:
 	INCBIN "maps/SaffronGym.ablk.lz"

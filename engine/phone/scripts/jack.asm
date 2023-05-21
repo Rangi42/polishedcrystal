@@ -1,19 +1,19 @@
 JackPhoneScript1:
 	gettrainername SCHOOLBOY, JACK1, $0
 	checkflag ENGINE_JACK_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd0f3
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JACK_MONDAY_MORNING
-	iftruefwd UnknownScript_0xbd0ef
+	iftruefwd .NotMonday
 	readvar VAR_WEEKDAY
-	ifnotequal MONDAY, UnknownScript_0xbd0ef
+	ifnotequal MONDAY, .NotMonday
 	checktime 1 << MORN
 	iftruefwd JackMondayMorning
 
-UnknownScript_0xbd0ef:
+.NotMonday:
 	farsjump JackPhoneTipsScript
 
-UnknownScript_0xbd0f3:
+.WantsBattle:
 	getlandmarkname NATIONAL_PARK, $2
 	farsjump JackWantsBattleScript
 
@@ -23,13 +23,13 @@ JackPhoneScript2:
 	farscall PhoneScript_Random2
 	ifequalfwd $0, JackBattleTrivia
 	checkflag ENGINE_JACK_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd11e
+	iftruefwd .WaitingForBattle
 	checkflag ENGINE_JACK_MONDAY_MORNING
-	iftruefwd UnknownScript_0xbd11e
+	iftruefwd .WaitingForBattle
 	farscall PhoneScript_Random2
 	ifequalfwd $0, JackWantsToBattle
 
-UnknownScript_0xbd11e:
+.WaitingForBattle:
 	farscall PhoneScript_Random3
 	ifequalfwd $0, JackFindsRare
 	farsjump Phone_GenericCall_Male

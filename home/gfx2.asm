@@ -18,7 +18,7 @@ HBlankCopy2bpp::
 	jr c, .innerLoop
 	cp HIGH(SRAM_Begin) ; is source past VRAM
 	jr nc, .innerLoop
-	jmp VRAMToVRAMCopy
+	jr VRAMToVRAMCopy
 .outerLoop
 	ldh a, [rLY]
 	cp $88

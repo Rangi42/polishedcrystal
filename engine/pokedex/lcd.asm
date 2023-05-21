@@ -596,15 +596,15 @@ Pokedex_GetMainOAM:
 	ld [hli], a
 	ld a, 55
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ld b, 4
 	ld a, [wPokedex_Rows]
 	sub 3
 	ldh [hDivisor], a
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .got_scrollbar_offset
 	jr z, .got_scrollbar_offset
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 2]
 	add 85
 

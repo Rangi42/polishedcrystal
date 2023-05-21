@@ -3,88 +3,89 @@
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/kalos_powerplant.asm
 
 Music_PowerPlantXY:
-	musicheader 4, 1, Music_PowerPlantXY_Ch1
-	musicheader 1, 2, Music_PowerPlantXY_Ch2
-	musicheader 1, 3, Music_PowerPlantXY_Ch3
-	musicheader 1, 4, Music_PowerPlantXY_Ch4
+	channel_count 4
+	channel 1, Music_PowerPlantXY_Ch1
+	channel 2, Music_PowerPlantXY_Ch2
+	channel 3, Music_PowerPlantXY_Ch3
+	channel 4, Music_PowerPlantXY_Ch4
 
 Music_PowerPlantXY_Ch1:
 	tempo 175
-	volume $77
-	stereopanning $f
-	vibrato $12, $23
-	notetype $c, $87
-	dutycycle $0
+	volume 7, 7
+	stereo_panning FALSE, TRUE
+	vibrato 18, 2, 3
+	note_type 12, 8, 7
+	duty_cycle 0
 
 Music_PowerPlantXY_Ch1_branch_0:
-	callchannel Music_PowerPlantXY_Ch1_branch_4
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_2
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_3
-	jumpchannel Music_PowerPlantXY_Ch1_branch_0
+	sound_call Music_PowerPlantXY_Ch1_branch_4
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_2
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_3
+	sound_jump Music_PowerPlantXY_Ch1_branch_0
 
 Music_PowerPlantXY_Ch1_branch_1:
-	vibrato $12, $23
-	notetype $c, $c3
+	vibrato 18, 2, 3
+	note_type 12, 12, 3
 	octave 2
 	note G#, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G#, 1
-	note __, 6
+	rest 6
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
-	notetype $c, $c3
+	rest 1
+	note_type 12, 12, 3
 	note G#, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G#, 1
-	note __, 6
+	rest 6
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
-	notetype $c, $c3
+	rest 1
+	note_type 12, 12, 3
 	note G_, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G_, 1
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 1
-	notetype $c, $c3
+	rest 1
+	note_type 12, 12, 3
 	note G_, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G_, 1
-	note __, 6
+	rest 6
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 1
-	endchannel
+	rest 1
+	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_2:
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note C#, 1
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 2
-	notetype $c, $b9
+	rest 2
+	note_type 12, 11, -1
 	note C#, 6
-	note __, 4
+	rest 4
 	octave 2
 	note A#, 1
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 2
-	notetype $c, $b9
+	rest 2
+	note_type 12, 11, -1
 	note D_, 10
-	notetype $c, $aa
+	note_type 12, 10, -2
 	note F#, 2
 	note F#, 2
 	note F#, 2
@@ -94,19 +95,19 @@ Music_PowerPlantXY_Ch1_branch_2:
 	note C_, 2
 	note C#, 2
 	note D#, 2
-	notetype $c, $6e
+	note_type 12, 6, -6
 	note C_, 8
-	note __, 2
+	rest 2
 	octave 2
-	notetype $c, $d3
+	note_type 12, 13, 3
 	note G#, 1
-	note __, 2
-	notetype $c, $c8
+	rest 2
+	note_type 12, 12, 8
 	note F#, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_3:
-	notetype $c, $6a
+	note_type 12, 6, -2
 	octave 4
 	note E_, 16
 	note C_, 8
@@ -125,53 +126,53 @@ Music_PowerPlantXY_Ch1_branch_3:
 	note B_, 8
 	octave 4
 	note D#, 8
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_4:
-	vibrato $12, $35
-	dutycycle $2
-	notetype $c, $51
-	note __, 3
+	vibrato 18, 3, 5
+	duty_cycle 2
+	note_type 12, 5, 1
+	rest 3
 	octave 4
 	note E_, 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
 	note F#, 2
 	note D#, 2
 	octave 3
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
 	note D#, 2
-	note __, 1
-	endchannel
+	rest 1
+	sound_ret
 
 Music_PowerPlantXY_Ch2:
-	stereopanning $ff
-	vibrato $12, $23
-	notetype $c, $c4
+	stereo_panning TRUE, TRUE
+	vibrato 18, 2, 3
+	note_type 12, 12, 4
 
 Music_PowerPlantXY_Ch2_branch_0:
-	callchannel Music_PowerPlantXY_Ch2_branch_4
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_2
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_3
-	jumpchannel Music_PowerPlantXY_Ch2_branch_0
+	sound_call Music_PowerPlantXY_Ch2_branch_4
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_2
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_3
+	sound_jump Music_PowerPlantXY_Ch2_branch_0
 
 Music_PowerPlantXY_Ch2_branch_1:
-	notetype $c, $c2
-	dutycycle $1
+	note_type 12, 12, 2
+	duty_cycle 1
 	octave 3
 	note G#, 2
 	octave 4
@@ -181,36 +182,36 @@ Music_PowerPlantXY_Ch2_branch_1:
 	note B_, 2
 	octave 4
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G#, 2
-	note __, 3
+	rest 3
 	octave 4
 	note E_, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 5
 	note E_, 1
-	dutycycle $1
+	duty_cycle 1
 	octave 4
 	note E_, 1
-	dutycycle $2
-	octave 5
-	note E_, 2
-	dutycycle $1
-	octave 4
-	note E_, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 5
 	note E_, 2
-	dutycycle $1
+	duty_cycle 1
+	octave 4
+	note E_, 1
+	duty_cycle 2
+	octave 5
+	note E_, 2
+	duty_cycle 1
 	octave 4
 	note E_, 1
 	octave 5
@@ -227,34 +228,34 @@ Music_PowerPlantXY_Ch2_branch_1:
 	note A_, 2
 	note E_, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_2:
-	vibrato $12, $23
-	dutycycle $1
-	notetype $c, $c2
+	vibrato 18, 2, 3
+	duty_cycle 1
+	note_type 12, 12, 2
 	octave 4
 	note C#, 1
-	note __, 2
+	rest 2
 	octave 3
 	note G#, 1
-	note __, 2
-	notetype $c, $b9
+	rest 2
+	note_type 12, 11, -1
 	note A_, 6
 	octave 4
 	note C#, 1
 	note D#, 1
 	note E_, 1
 	note F_, 1
-	notetype $c, $d2
+	note_type 12, 13, 2
 	note F#, 1
-	note __, 2
+	rest 2
 	octave 3
 	note F#, 1
-	note __, 2
-	notetype $c, $b9
+	rest 2
+	note_type 12, 11, -1
 	note B_, 10
-	notetype $c, $aa
+	note_type 12, 10, -2
 	note A_, 2
 	note B_, 2
 	note A_, 2
@@ -264,18 +265,18 @@ Music_PowerPlantXY_Ch2_branch_2:
 	note D#, 2
 	note E_, 2
 	note F#, 2
-	notetype $c, $4f
+	note_type 12, 4, -7
 	note D#, 8
-	note __, 2
-	notetype $c, $d3
+	rest 2
+	note_type 12, 13, 3
 	note E_, 1
-	note __, 2
-	notetype $c, $c8
+	rest 2
+	note_type 12, 12, 8
 	note D#, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_3:
-	notetype $c, $6a
+	note_type 12, 6, -2
 	octave 4
 	note G#, 16
 	note F#, 8
@@ -290,21 +291,21 @@ Music_PowerPlantXY_Ch2_branch_3:
 	note G#, 16
 	note F#, 8
 	note B_, 8
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_4:
-	vibrato $12, $35
-	dutycycle $2
-	notetype $c, $c2
+	vibrato 18, 3, 5
+	duty_cycle 2
+	note_type 12, 12, 2
 	octave 3
 	note C#, 1
 	note G#, 1
 	octave 4
 	note E_, 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
 	note F#, 2
 	note D#, 2
@@ -314,147 +315,147 @@ Music_PowerPlantXY_Ch2_branch_4:
 	octave 4
 	note E_, 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
 	note D#, 2
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 Music_PowerPlantXY_Ch3:
-	stereopanning $ff
-	notetype $c, $11
+	stereo_panning TRUE, TRUE
+	note_type 12, 1, 1
 
 Music_PowerPlantXY_Ch3_branch_0:
-	callchannel Music_PowerPlantXY_Ch3_branch_4
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_2
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_3
-	jumpchannel Music_PowerPlantXY_Ch3_branch_0
+	sound_call Music_PowerPlantXY_Ch3_branch_4
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_2
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_3
+	sound_jump Music_PowerPlantXY_Ch3_branch_0
 
 Music_PowerPlantXY_Ch3_branch_1:
-	vibrato $0, $66
-	notetype $c, $14
+	vibrato 0, 6, 6
+	note_type 12, 1, 4
 	octave 3
 	note C#, 3
 	note C#, 1
-	note __, 2
+	rest 2
 	octave 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note C#, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note C#, 2
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 1
+	rest 1
 	note C#, 3
 	note C#, 1
-	note __, 2
-	notetype $c, $12
+	rest 2
+	note_type 12, 1, 2
 	octave 2
 	note C#, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note C#, 2
-	note __, 1
+	rest 1
 	note C#, 2
-	note __, 1
+	rest 1
 	note E_, 3
 	note E_, 1
-	note __, 2
-	notetype $c, $12
+	rest 2
+	note_type 12, 1, 2
 	octave 2
 	note E_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 3
 	note E_, 1
-	note __, 2
-	notetype $c, $12
+	rest 2
+	note_type 12, 1, 2
 	octave 2
 	note E_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 1
-	endchannel
+	rest 1
+	sound_ret
 
 Music_PowerPlantXY_Ch3_branch_2:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note A_, 1
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 2
+	rest 2
 	note A_, 7
 	note G#, 1
 	note A_, 1
 	note G#, 1
 	note F#, 1
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 2
+	rest 2
 	note G_, 8
 	note A_, 1
 	note G_, 1
 	note F#, 8
 	note D#, 8
 	note G#, 8
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 2
+	rest 2
 	note G#, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch3_branch_3:
 	octave 2
 	note B_, 2
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 6
+	rest 6
 	octave 3
 	note E_, 3
 	octave 2
 	note A_, 3
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 4
+	rest 4
 	note G#, 2
-	note __, 1
+	rest 1
 	note G#, 3
 	octave 3
 	note C#, 2
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 2
+	rest 2
 	note C#, 1
-	note __, 3
+	rest 3
 	note C#, 1
-	note __, 2
+	rest 2
 	note C#, 3
 	octave 2
 	note E_, 2
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 2
+	rest 2
 	note E_, 3
 	note F#, 4
 	note B_, 1
@@ -490,88 +491,88 @@ Music_PowerPlantXY_Ch3_branch_3:
 	note B_, 2
 	octave 3
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch3_branch_4:
-	notetype $c, $11
+	note_type 12, 1, 1
 	octave 3
 	note C#, 16
 	note C#, 13
-	note __, 3
-	endchannel
+	rest 3
+	sound_ret
 
 Music_PowerPlantXY_Ch4:
-	notetype $c
-	togglenoise $3
+	drum_speed 12
+	toggle_noise 3
 Music_PowerPlantXY_Ch4_branch_0:
-	note A#, 3
-	note C#, 1
-	note D_, 2
-	note A#, 4
-	note A#, 2
-	note D_, 4
-	note A#, 3
-	note C#, 1
-	note D_, 2
-	note A#, 4
-	note A#, 2
-	note C_, 4
+	drum_note 11, 3
+	drum_note 2, 1
+	drum_note 3, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 3, 4
+	drum_note 11, 3
+	drum_note 2, 1
+	drum_note 3, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 1, 4
 Music_PowerPlantXY_Ch4_branch_1:
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note B_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note B_, 2
-	loopchannel 5, Music_PowerPlantXY_Ch4_branch_1
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note B_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note B_, 2
-	note __, 1
-	note B_, 2
-	note __, 1
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 12, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 12, 2
+	sound_loop 5, Music_PowerPlantXY_Ch4_branch_1
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 12, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 12, 2
+	rest 1
+	drum_note 12, 2
+	rest 1
 Music_PowerPlantXY_Ch4_branch_3:
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note B_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note G#, 1
-	note B_, 2
-	loopchannel 8, Music_PowerPlantXY_Ch4_branch_3
-	jumpchannel Music_PowerPlantXY_Ch4_branch_0
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 12, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 12, 2
+	sound_loop 8, Music_PowerPlantXY_Ch4_branch_3
+	sound_jump Music_PowerPlantXY_Ch4_branch_0

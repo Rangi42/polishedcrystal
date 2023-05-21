@@ -6,9 +6,9 @@ LoadFishingGFX:
 
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
-	ld hl, .FishingGFXTable
+	ld hl, FishingGFXTable
 	jr nz, .got_table
-	ld hl, .SurfFishingGFXTable
+	ld hl, SurfFishingGFXTable
 .got_table
 	; de = [hl + [wPlayerGender] * 2]
 	ld a, [wPlayerGender]
@@ -44,12 +44,14 @@ LoadFishingGFX:
 	ld e, l
 	ret
 
-.FishingGFXTable:
-	dw ChrisFishingGFX
-	dw KrisFishingGFX
-	dw CrysFishingGFX
+FishingGFXTable:
+	farbank "Fishing Graphics"
+	fardw ChrisFishingGFX
+	fardw KrisFishingGFX
+	fardw CrysFishingGFX
 
-.SurfFishingGFXTable:
-	dw ChrisSurfFishingGFX
-	dw KrisSurfFishingGFX
-	dw CrysSurfFishingGFX
+SurfFishingGFXTable:
+	farbank "Fishing Graphics"
+	fardw ChrisSurfFishingGFX
+	fardw KrisSurfFishingGFX
+	fardw CrysSurfFishingGFX

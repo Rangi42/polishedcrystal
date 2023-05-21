@@ -78,7 +78,7 @@ PowerPlantManager:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd PowerPlantTutorZapCannonScript
 	checkkeyitem MACHINE_PART
-	iftruefwd UnknownScript_0x188e93
+	iftruefwd .FoundMachinePart
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	iftrue_jumpopenedtext PowerPlantManagerIWontForgiveCulpritText
 	writetext PowerPlantManagerWhoWouldRuinMyGeneratorText
@@ -90,7 +90,7 @@ PowerPlantManager:
 	setscene $1
 	end
 
-UnknownScript_0x188e93:
+.FoundMachinePart:
 	writetext PowerPlantManagerThatsThePartText
 	promptbutton
 	takekeyitem MACHINE_PART

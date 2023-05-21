@@ -18,7 +18,7 @@ BillsPC_DefaultBoxThemes:
 	db THEME_DARK
 	db THEME_STEEL
 	db THEME_FAIRY
-	db THEME_TRUTH
-	db THEME_IDEALS
+	db THEME_HEART
+	db THEME_SOUL
 	assert_table_length NUM_BOXES
 	db -1 ; end

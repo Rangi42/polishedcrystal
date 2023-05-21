@@ -5,15 +5,10 @@ ReinitSpriteAnimFrame::
 	farjp _ReinitSpriteAnimFrame
 
 ClearSpriteAnims::
+	xor a
 	ld hl, wSpriteAnimDict
 	ld bc, wSpriteAnimsEnd - wSpriteAnimDict
-.loop
-	xor a
-	ld [hli], a
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
+	rst ByteFill
 	ret
 
 ClearSpriteAnims2::

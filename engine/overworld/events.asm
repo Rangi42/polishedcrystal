@@ -490,7 +490,6 @@ TryObjectEvent:
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
-	and MAPOBJECT_TYPE_MASK
 
 	cp NUM_OBJECT_TYPES
 	ret nc
@@ -966,11 +965,11 @@ DoPlayerEvent:
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, [hli]
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, [hl]
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 PlayerEventScriptPointers:
@@ -1065,10 +1064,10 @@ LoadScriptBDE::
 	inc a ; 1
 	ld [hli], a
 ; Load the script pointer b:de into (wMapReentryScriptBank):(wMapReentryScriptAddress)
-	ld [hl], b
-	inc hl
-	ld [hl], e
-	inc hl
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	scf
 	ret
@@ -1211,18 +1210,20 @@ CanUseSweetHoney::
 	ld hl, wStatusFlags
 	bit STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
 	jr nz, .no
-	ld a, [wEnvironment]
-	cp CAVE
-	jr z, .ice_check
-	cp DUNGEON
-	jr z, .ice_check
-	farcall CheckGrassCollision
-	jr nc, .no
-
-.ice_check
 	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .no
+	and $f0
+	cp HI_NYBBLE_CURRENT
+	jr z, .no
+	ld a, [wEnvironment]
+	cp CAVE
+	jr z, .skip_grass_check
+	cp DUNGEON
+	jr z, .skip_grass_check
+	farcall CheckGrassCollision
+	jr nc, .no
+.skip_grass_check
 	scf
 	ret
 
@@ -1363,8 +1364,8 @@ DoBikeStep::
 
 .increment
 	inc de
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 	ld [hl], d
 
 .dont_increment

@@ -52,3 +52,6 @@ MapSetupCommands:
 	add_mapsetup DecompressMetatiles ; 2d
 	add_mapsetup DeferredLoadMapGraphics ; 2e
 	add_mapsetup LoadMapTilesetGFX ; 2f
+	add_mapsetup DisableDynPalUpdates ; 30
+	add_mapsetup EnableDynPalUpdates ; 31
+	add_mapsetup EnableDynPalUpdatesNoApply ; 32

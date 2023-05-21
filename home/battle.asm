@@ -80,16 +80,42 @@ ResetDamage::
 	ld [wCurDamage + 1], a
 	ret
 
-CallOpponentTurn::
-	ldh [hFarCallSavedA], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
+StackCallOpponentTurn::
+; Falls through to SwitchTurn after inserting SwitchTurn in the call stack,
+; so the subsequent function pointer is "wrapped" by SwitchTurns.
+
+	add sp, -2 ; push space for a tail call to SwitchTurn
+	push de
+	push hl
+
+; Stack layout:
+; +8 return address
+; +6 function pointer
+; +4 nothing
+; +2 saved de
+; +0 saved hl
+
+	ld hl, sp + 7
+	ld d, [hl]
+	ld [hl], HIGH(SwitchTurn)
+	dec hl ; no-optimize *hl++|*hl-- = N preserving a
+	ld e, [hl]
+	ld [hl], LOW(SwitchTurn)
+	dec hl ; no-optimize *hl++|*hl-- = N
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
+	dec hl
+	ld [hl], e
+
+; Stack layout:
+; +8 return address
+; +6 SwitchTurn
+; +4 function pointer
+; +2 saved de
+; +0 saved hl
+
 	pop hl
-	call SwitchTurn
-	call RetrieveAHLAndCallFunction
-	; fallthrough
+	pop de
+; fallthrough
 
 BattleCommand_switchturn::
 SwitchTurn::
@@ -102,7 +128,7 @@ SwitchTurn::
 	ret
 
 SetPlayerTurn::
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	ldh [hBattleTurn], a
 	ret
 
@@ -117,6 +143,7 @@ SetEnemyTurn::
 GetThirdMaxHP::
 ; Assumes HP<768
 	call GetMaxHP
+GetThirdBC:
 	xor a
 	inc b
 .loop
@@ -182,7 +209,7 @@ GetMaxHP::
 	ret
 
 GetOpponentMonAttr::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserMonAttr::
 	ldh a, [hBattleTurn]
 	and a
@@ -194,7 +221,7 @@ GetUserMonAttr::
 	ret
 
 GetOpponentMonAttr_de::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUserMonAttr_de::
 	push hl
 	ld h, d
@@ -206,7 +233,7 @@ GetUserMonAttr_de::
 	ret
 
 UpdateOpponentInParty::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UpdateUserInParty::
 	ldh a, [hBattleTurn]
 	and a
@@ -310,7 +337,7 @@ ToggleBattleItems:
 	jr .loop
 
 OpponentCanLoseItem::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 UserCanLoseItem::
 ; Returns z if user can't lose its held item. This happens if:
 ; - user doesn't have a held item
@@ -339,7 +366,7 @@ UserCanLoseItem::
 	jmp PopBCDEHL
 
 GetOpponentUsedItemAddr::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
 	ldh a, [hBattleTurn]
@@ -599,7 +626,7 @@ CompareHP::
 	ret
 
 CheckOpponentContactMove::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
 	farjp _CheckContactMove
@@ -624,7 +651,7 @@ CheckIfHPIsZero::
 	ret
 
 GetWeatherAfterOpponentUmbrella::
-	call CallOpponentTurn
+	call StackCallOpponentTurn
 GetWeatherAfterUserUmbrella::
 	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL
@@ -860,9 +887,9 @@ GetBattleAnimByte::
 	push de
 
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 
 	ld a, [de]
 	ld [wBattleAnimByte], a

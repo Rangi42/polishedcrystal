@@ -4,8 +4,8 @@ Special::
 	add hl, de
 	add hl, de
 	add hl, de
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -13,16 +13,6 @@ Special::
 	jmp FarCall_hl
 
 INCLUDE "data/events/special_pointers.asm"
-
-Special_SetPlayerPalette:
-	ldh a, [hScriptVar]
-	ld d, a
-	farjp SetPlayerPalette
-
-Special_SetCopycatPalette:
-	ldh a, [hScriptVar]
-	ld d, a
-	farjp SetCopycatPalette
 
 Special_GameCornerPrizeMonCheckDex:
 	ldh a, [hScriptVar]
@@ -240,13 +230,14 @@ Special_CheckCoins:
 	text_far _NoCoinCaseText
 	text_end
 
+Special_CheckLuckyNumberShowFlag:
+	ld hl, wLuckyNumberShowFlag
+	bit LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
+	ret
+
 SpecialCheckPokerus:
 ; Check if a monster in your party has Pokerus
 	farcall CheckPokerus
-	jr ScriptReturnCarry
-
-Special_CheckLuckyNumberShowFlag:
-	farcall CheckLuckyNumberShowFlag
 	; fallthrough
 
 ScriptReturnCarry:
@@ -283,9 +274,6 @@ StoreSwarmMapIndices::
 	ret
 
 Special_ResetLuckyNumberShowFlag:
-	farcall RestartDailyResetTimer
-	ld hl, wLuckyNumberShowFlag
-	res LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
 	farjp LoadOrRegenerateLuckyIDNumber
 
 SpecialSnorlaxAwake:

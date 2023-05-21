@@ -650,6 +650,9 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	call .copypals
 	pop af
 	ldh [rSVBK], a
+	farcall ClearSavedObjPals
+	farcall CheckForUsedObjPals
+	farcall _UpdateSprites
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	call DelayFrame
@@ -670,10 +673,6 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld de, wBGPals1 palette PAL_BG_BROWN
 	call .copy
 	ld de, wBGPals1 palette PAL_BG_ROOF
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_ROCK
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_TREE
 	call .copy
 	ld hl, .black_pals
 	call .timeofdaypal

@@ -179,15 +179,10 @@ ItemEffects:
 	dw IsntTheTimeMessage ; ROCKY_HELMET
 	dw IsntTheTimeMessage ; AIR_BALLOON
 	dw IsntTheTimeMessage ; RED_CARD
-	dw IsntTheTimeMessage ; RING_TARGET
 	dw IsntTheTimeMessage ; BINDING_BAND
-	dw IsntTheTimeMessage ; ABSORB_BULB
-	dw IsntTheTimeMessage ; CELL_BATTERY
 	dw IsntTheTimeMessage ; EJECT_BUTTON
 	dw IsntTheTimeMessage ; WEAK_POLICY
 	dw IsntTheTimeMessage ; ASSAULT_VEST
-	dw IsntTheTimeMessage ; LUMINOUSMOSS
-	dw IsntTheTimeMessage ; SNOWBALL
 	dw IsntTheTimeMessage ; SAFE_GOGGLES
 	dw IsntTheTimeMessage ; PROTECT_PADS
 	dw IsntTheTimeMessage ; THROAT_SPRAY
@@ -195,7 +190,11 @@ ItemEffects:
 	dw IsntTheTimeMessage ; HEAVY_BOOTS
 	dw IsntTheTimeMessage ; BLUNDRPOLICY
 	dw IsntTheTimeMessage ; ROOM_SERVICE
-	dw IsntTheTimeMessage ; UTILUMBRELLA
+	dw IsntTheTimeMessage ; CLEAR_AMULET
+	dw IsntTheTimeMessage ; MIRROR_HERB
+	dw IsntTheTimeMessage ; PUNCHINGLOVE
+	dw IsntTheTimeMessage ; COVERT_CLOAK
+	dw IsntTheTimeMessage ; LOADED_DICE
 	dw IsntTheTimeMessage ; LIGHT_BALL
 	dw IsntTheTimeMessage ; LEEK
 	dw IsntTheTimeMessage ; THICK_CLUB
@@ -236,6 +235,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; RAZOR_CLAW
 	dw IsntTheTimeMessage ; OVAL_STONE
 	dw EvoStoneEffect     ; ODD_SOUVENIR
+	dw EvoStoneEffect     ; LINKING_CORD
 	dw IsntTheTimeMessage ; SILVER_LEAF
 	dw IsntTheTimeMessage ; GOLD_LEAF
 	dw IsntTheTimeMessage ; MINT_LEAF
@@ -291,6 +291,7 @@ KeyItemEffects:
 	dw ApricornBox        ; APRICORN_BOX
 	dw WingCase           ; WING_CASE
 	dw TypeChart          ; TYPE_CHART
+	dw GBCSounds          ; GBC_SOUNDS
 	dw BlueCard           ; BLUE_CARD
 	dw SquirtBottle       ; SQUIRTBOTTLE
 	dw IsntTheTimeMessage ; SILPHSCOPE2
@@ -311,8 +312,8 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; ORANGETICKET
 	dw IsntTheTimeMessage ; MYSTICTICKET
 	dw IsntTheTimeMessage ; OLD_SEA_MAP
-	dw IsntTheTimeMessage ; EERIE_LURE
-	dw IsntTheTimeMessage ; TOUGH_LURE
+	dw IsntTheTimeMessage ; HARSH_LURE
+	dw IsntTheTimeMessage ; POTENT_LURE
 	dw IsntTheTimeMessage ; MALIGN_LURE
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
@@ -727,7 +728,7 @@ endc
 	ld a, 1 ; shiny anim
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
-	farcall Call_PlayBattleAnim
+	farcall PlayBattleAnimDE
 	call SetPlayerTurn
 .not_shiny
 
@@ -824,10 +825,10 @@ Text_GotchaMonWasCaught:
 	text_asm
 	call WaitSFX
 	push bc
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_CAPTURE
+	ld e, MUSIC_CAPTURE
 	call PlayMusic
 	pop bc
 	ld hl, TextJump_Waitbutton
@@ -1031,12 +1032,10 @@ _GetStatString:
 	ld de, wStringBuffer2
 	ld hl, StatStrings
 	add hl, bc
+	ld c, [hl]
+	ld b, 0
 	add hl, bc
-GetStatStringForLyra:
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld bc, ITEM_NAME_LENGTH
+	ld c, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret
 
@@ -1592,8 +1591,8 @@ ReviveFullHP:
 	call LoadHPFromBuffer1
 ContinueRevive:
 	call UseItem_GetHPParameter
-	ld [hl], d
-	inc hl
+	ld a, d
+	ld [hli], a
 	ld [hl], e
 	jr LoadCurHPIntoBuffer5
 
@@ -1683,7 +1682,7 @@ GetOneFifthMaxHP:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ld d, a
 	ldh a, [hQuotient + 2]
@@ -1708,7 +1707,14 @@ GetHealingItemAmount:
 
 .figy_berry
 	call .set_de_to_hp
-	jr .half_hp
+	push bc
+	ld b, d
+	ld c, e
+	call GetThirdBC
+	ld d, b
+	ld e, c
+	pop bc
+	ret
 
 .sitrus_berry
 	call .set_de_to_hp
@@ -1879,6 +1885,11 @@ XItemEffect:
 	farcall GetStatRaiseMessage
 	or 1
 	farcall DoPrintStatChange
+	push hl
+	push bc
+	farcall ResetMirrorHerb
+	pop bc
+	pop hl
 	; fallthrough
 XItemHappiness:
 	ld a, [wCurBattleMon]
@@ -2188,9 +2199,15 @@ PrintAprValues:
 	inc de
 	jmp PrintNum
 
+GBCSounds:
+	call FadeToMenu
+	farcall MusicPlayer
+	jr _FinishFullscreenItem
+
 TypeChart:
 	call FadeToMenu
 	farcall _TypeChart
+_FinishFullscreenItem:
 	call ExitMenu
 	xor a
 	ldh [hBGMapMode], a
@@ -2786,7 +2803,7 @@ ComputeMaxPP:
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 4
-	call Divide
+	farcall Divide
 	; Get the number of PP, which are bits 6 and 7 of the PP value stored in RAM.
 	ld a, [hl]
 	ld b, a

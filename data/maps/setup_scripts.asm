@@ -27,6 +27,7 @@ MapSetupScript_Fly:
 	mapsetup JumpRoamMons
 MapSetupScript_Warp:
 	mapsetup DisableLCD
+	mapsetup DisableDynPalUpdates
 	mapsetup InitSound
 	mapsetup EnterMapSpawnPoint
 	mapsetup LoadMapAttributes
@@ -43,6 +44,7 @@ MapSetupScript_Warp:
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
 	mapsetup SpawnInFacingDown
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInToMusic
@@ -61,6 +63,7 @@ MapSetupScript_BadWarp:
 	mapsetup LoadBlockData
 	mapsetup BufferScreen
 	mapsetup DisableLCD
+	mapsetup DisableDynPalUpdates
 	mapsetup LoadMapGraphics
 	mapsetup DecompressMetatiles
 	mapsetup LoadMapTimeOfDay
@@ -69,6 +72,7 @@ MapSetupScript_BadWarp:
 	mapsetup LoadMapObjects
 	mapsetup LoadMapPalettes
 	mapsetup SpawnInFacingDown
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup FadeToMapMusic
 	mapsetup FadeInPalettes
@@ -90,6 +94,7 @@ MapSetupScript_Connection:
 	mapsetup LoadMapObjects
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
+	mapsetup EnableDynPalUpdates
 	mapsetup InitMapNameSign
 	mapsetup ApplyMapPalettes
 	mapsetup LoadWildMonData
@@ -110,6 +115,7 @@ MapSetupScript_Train:
 	mapsetup LoadBlockData
 	mapsetup BufferScreen
 	mapsetup DisableLCD
+	mapsetup DisableDynPalUpdates
 	mapsetup LoadMapGraphics
 	mapsetup DecompressMetatiles
 	mapsetup LoadMapTimeOfDay
@@ -117,6 +123,7 @@ MapSetupScript_Train:
 	mapsetup EnableLCD
 	mapsetup LoadMapObjects
 	mapsetup LoadMapPalettes
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup FadeToMapMusic
 	mapsetup FadeInPalettes
@@ -129,6 +136,7 @@ MapSetupScript_ReloadMap:
 	mapsetup FadeMapMusicAndPalettes
 	mapsetup ClearBGPalettes
 	mapsetup DisableLCD
+	mapsetup DisableDynPalUpdates
 	mapsetup InitSound
 	mapsetup LoadBlockData
 	mapsetup LoadConnectionBlockData
@@ -137,6 +145,7 @@ MapSetupScript_ReloadMap:
 	mapsetup LoadMapTimeOfDay
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup ForceMapMusic
 	mapsetup FadeInPalettes
@@ -147,6 +156,7 @@ MapSetupScript_ReloadMap:
 MapSetupScript_LinkReturn:
 	mapsetup FadeMapMusicAndPalettes
 	mapsetup DisableLCD
+	mapsetup DisableDynPalUpdates
 	mapsetup InitSound
 	mapsetup HandleNewMap
 	mapsetup LoadBlockData
@@ -156,6 +166,7 @@ MapSetupScript_LinkReturn:
 	mapsetup LoadMapTimeOfDay
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInPalettes
@@ -165,6 +176,7 @@ MapSetupScript_LinkReturn:
 
 MapSetupScript_Continue:
 	mapsetup DisableLCD
+	mapsetup DisableDynPalUpdates
 	mapsetup InitSound
 	mapsetup LoadMapAttributes_SkipObjects
 	mapsetup GetMapScreenCoords
@@ -177,6 +189,7 @@ MapSetupScript_Continue:
 	mapsetup LoadMapTimeOfDay
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
+	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInPalettes

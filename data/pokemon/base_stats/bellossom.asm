@@ -17,7 +17,7 @@ if DEF(FAITHFUL)
 else
 	db 192 ; base exp
 endc
-	db NO_ITEM, ABSORB_BULB ; held items
+	db NO_ITEM, MIRACLE_SEED ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)

@@ -35,7 +35,6 @@ _CheckTrainerBattle::
 	ld hl, MAPOBJECT_TYPE
 	add hl, de
 	ld a, [hl]
-	and MAPOBJECT_TYPE_MASK
 	cp OBJECTTYPE_TRAINER
 	jr z, .is_trainer
 	cp OBJECTTYPE_GENERICTRAINER
@@ -69,9 +68,9 @@ _CheckTrainerBattle::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	pop de
@@ -118,7 +117,6 @@ LoadTrainer_continue::
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
-	and MAPOBJECT_TYPE_MASK
 	cp OBJECTTYPE_GENERICTRAINER
 	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER

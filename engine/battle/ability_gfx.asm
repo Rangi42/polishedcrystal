@@ -237,7 +237,7 @@ SetAbilityTilemap:
 .do_tilemap_loop
 	ld c, SLIDEOUT_WIDTH
 .tilemap_loop
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	inc b
 	dec c

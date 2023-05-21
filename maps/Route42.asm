@@ -36,9 +36,9 @@ Route42_MapScriptHeader:
 	object_event  2,  8, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	object_event  2,  9, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
-	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN, PAL_NPC_RED
+	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN, PAL_NPC_PINK
 	fruittree_event 28, 16, FRUITTREE_ROUTE_42_2, GRN_APRICORN, PAL_NPC_GREEN
-	fruittree_event 29, 16, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_BROWN
+	fruittree_event 29, 16, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_YELLOW
 	itemball_event  6,  4, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	itemball_event 33,  8, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
 
@@ -161,31 +161,31 @@ FisherTully1Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_TULLY
 	opentext
 	checkflag ENGINE_TULLY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0x1a927f
+	iftruefwd .WantsBattle
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
-	iftruefwd UnknownScript_0x1a92dc
+	iftruefwd .HasWaterStone
 	checkcellnum PHONE_FISHER_TULLY
-	iftruefwd UnknownScript_0x1a92fd
+	iftruefwd .NumberAccepted
 	checkevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
-	iftruefwd UnknownScript_0x1a9268
+	iftruefwd .AskedAlready
 	writetext FisherTullyAfterBattleText
 	promptbutton
 	setevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x1a92f1
-	sjumpfwd UnknownScript_0x1a926b
+	scall .AskNumber1
+	sjumpfwd .AskForNumber
 
-UnknownScript_0x1a9268:
-	scall UnknownScript_0x1a92f5
-UnknownScript_0x1a926b:
+.AskedAlready:
+	scall .AskNumber2
+.AskForNumber:
 	askforphonenumber PHONE_FISHER_TULLY
-	ifequalfwd $1, UnknownScript_0x1a9305
-	ifequalfwd $2, UnknownScript_0x1a9301
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername FISHER, TULLY1, $0
-	scall UnknownScript_0x1a92f9
-	sjumpfwd UnknownScript_0x1a92fd
+	scall .RegisteredNumber
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x1a927f:
-	scall UnknownScript_0x1a9309
+.WantsBattle:
+	scall .Rematch
 	winlosstext FisherTully1BeatenText, 0
 	readmem wTullyFightCount
 	ifequalfwd 3, .Fight3
@@ -232,42 +232,42 @@ UnknownScript_0x1a927f:
 	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x1a92dc:
-	scall UnknownScript_0x1a930d
+.HasWaterStone:
+	scall .Gift
 	verbosegiveitem WATER_STONE
-	iffalsefwd UnknownScript_0x1a92ee
+	iffalsefwd .NoRoom
 	clearflag ENGINE_TULLY_HAS_WATER_STONE
 	setevent EVENT_TULLY_GAVE_WATER_STONE
-	sjumpfwd UnknownScript_0x1a92fd
+	sjumpfwd .NumberAccepted
 
-UnknownScript_0x1a92ee:
-	sjumpfwd UnknownScript_0x1a9311
+.NoRoom:
+	sjumpfwd .PackFull
 
-UnknownScript_0x1a92f1:
+.AskNumber1:
 	jumpstd asknumber1m
 
-UnknownScript_0x1a92f5:
+.AskNumber2:
 	jumpstd asknumber2m
 
-UnknownScript_0x1a92f9:
+.RegisteredNumber:
 	jumpstd registerednumberm
 
-UnknownScript_0x1a92fd:
+.NumberAccepted:
 	jumpstd numberacceptedm
 
-UnknownScript_0x1a9301:
+.NumberDeclined:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x1a9305:
+.PhoneFull:
 	jumpstd phonefullm
 
-UnknownScript_0x1a9309:
+.Rematch:
 	jumpstd rematchm
 
-UnknownScript_0x1a930d:
+.Gift:
 	jumpstd giftm
 
-UnknownScript_0x1a9311:
+.PackFull:
 	jumpstd packfullm
 
 GenericTrainerHikerBenjamin:

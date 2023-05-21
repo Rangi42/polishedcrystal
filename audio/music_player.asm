@@ -4,6 +4,7 @@
 DEF MP_METER0 EQU $20
 DEF MP_METER8 EQU $28
 DEF MP_DUTY0 EQU $29
+DEF MP_WAVEFORM0 EQU $2d
 
 
 SECTION "Music Player Graphics", ROMX
@@ -62,9 +63,6 @@ ENDM
 MusicPlayerPals:
 INCLUDE "gfx/music_player/music_player.pal"
 
-MusicPlayerNotePals:
-INCLUDE "gfx/music_player/notes.pal"
-
 MusicPlayer::
 	call ClearTileMap
 
@@ -86,9 +84,9 @@ MusicPlayer::
 	ld bc, 4 palettes
 	rst CopyBytes
 
-	ld hl, MusicPlayerNotePals
+	ld hl, MusicPlayerPals
 	ld de, wOBPals2
-	ld bc, 1 palettes
+	ld bc, 4 palettes
 	rst CopyBytes
 
 	pop af
@@ -125,7 +123,7 @@ MusicPlayer::
 
 	ld hl, NotesGFX
 	ld de, vTiles0
-	lb bc, BANK(NotesGFX), $80
+	lb bc, BANK(NotesGFX), $1
 	call DecompressRequest2bpp
 
 	call DelayFrame
@@ -171,19 +169,7 @@ RenderMusicPlayer:
 	xor a
 	ldh [hOAMUpdate], a ; we will manually do it in LCD interrupt
 
-	ld hl, wChannelSelectorSwitches
-	ld a, NUM_MUSIC_CHANS - 1
-.ch_label_loop:
-	ld [wChannelSelector], a
-	ld a, [hli]
-	push hl
-	call DrawChannelLabel
-	pop hl
-	ld a, [wChannelSelector]
-	dec a
-	cp -1
-	jr nz, .ch_label_loop
-
+	call RedrawChannelLabels
 	call DelayFrame
 
 	ldh a, [rSVBK]
@@ -196,7 +182,7 @@ RenderMusicPlayer:
 	and a
 	jr nz, _RedrawMusicPlayer
 .bad_selection
-	ld a, MUSIC_MAIN_MENU
+	ld a, [wMapMusic]
 ; fallthrough
 
 _RedrawMusicPlayer:
@@ -320,14 +306,15 @@ MusicPlayerLoop:
 SongEditor:
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
-	jrheldbutton D_UP, .up, 10
+	jpheldbutton D_UP, .up, 10
 	jpheldbutton D_DOWN, .down, 10
 	ld hl, hJoyPressed
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
 	jrbutton A_BUTTON, .a
+	jpbutton B_BUTTON, .b
 	jpbutton START, .start
-	jpbutton SELECT | B_BUTTON, .select_b
+	jpbutton SELECT, .select
 
 	; prioritize refreshing the note display
 	ld a, 2
@@ -366,7 +353,7 @@ SongEditor:
 ; otherwise: toggle editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
-	jr z, SongEditor
+	jmp z, SongEditor
 	cp MP_EDIT_TEMPO
 	jmp z, AdjustTempo
 	ld c, a
@@ -424,9 +411,27 @@ SongEditor:
 	call DrawPianoRollOverlay
 	jmp SongEditor
 
-.select_b:
+.b:
+; clear settings
+	xor a
+	ld hl, wChannelSelectorSwitches
+rept 4
+	ld [hli], a
+endr
+	ld [hli], a ; wPitchTransposition
+	cp [hl]
+	ld [hl], a ; wTempoAdjustment
+
+	ld d, a
+	ld a, [wSongSelection]
+	ld e, a
+; If wTempoAdjustment was not zero, restart the song at default tempo
+	call nz, PlayMusic2
+
+.select:
 ; exit song editor
 	call ClearChannelSelector
+	call RedrawChannelLabels
 	xor a ; ld a, MP_EDIT_CH1
 	ld [wChannelSelector], a
 	call DrawPitchTransposition
@@ -467,6 +472,8 @@ SongEditor:
 .change_ch1_2:
 	ld [hl], a
 	ld [wCurTrackDuty], a
+	call GetFlags2Addr
+	res SOUND_DUTY_LOOP, [hl]
 	ret
 
 .up_wave:
@@ -493,8 +500,7 @@ SongEditor:
 	and $f0
 	or b
 	ld [wChannel3Intensity], a
-	ld [wCurTrackIntensity], a
-	farjp ReloadWaveform
+	ret
 
 .up_noise:
 ; next noise set
@@ -787,6 +793,21 @@ _LocateChannelSelector:
 .x_coords
 	db 0, 5, 10, 16
 
+RedrawChannelLabels:
+	xor a
+	ld hl, wChannelSelectorSwitches
+.ch_label_loop:
+	ld [wChannelSelector], a
+	ld a, [hli]
+	push hl
+	call DrawChannelLabel
+	pop hl
+	ld a, [wChannelSelector]
+	inc a
+	cp NUM_MUSIC_CHANS
+	jr nz, .ch_label_loop
+	ret
+
 DrawChannelLabel:
 	and a
 	jr nz, .off
@@ -855,7 +876,7 @@ _DrawCh1_2_3:
 	push af
 	push hl
 	call CheckChannelOn
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .blank_note_name
 	call GetPitchAddr
 	ld a, [hl]
@@ -892,9 +913,8 @@ _DrawCh1_2_3:
 	ld a, [hl]
 	pop hl
 	and %11000000
-	swap a
-	srl a
-	srl a
+	rlca
+	rlca
 	add MP_DUTY0
 	ld [hl], a
 	pop hl
@@ -913,14 +933,13 @@ _DrawCh1_2_3:
 	push hl
 	call CheckChannelOn
 	pop hl
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr c, .blank_volume
 	push hl
 	call GetPitchAddr
 	ld a, [hl]
 	and a
 	pop hl
-	ld a, 0
 	jr z, .blank_volume
 	push hl
 	call GetIntensityAddr
@@ -928,8 +947,8 @@ _DrawCh1_2_3:
 	pop hl
 .blank_volume
 	and $f
-	srl a
-	add MP_METER0
+	rra
+	adc MP_METER0
 	ld [hli], a
 	ld [hld], a
 	ld a, [wTmpCh]
@@ -950,8 +969,8 @@ _DrawCh1_2_3:
 	; pick the waveform
 	ld a, [wChannel3Intensity]
 	and $f
-	sla a
-	add $2d
+	add a
+	add MP_WAVEFORM0
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -1352,6 +1371,10 @@ GetOctaveAddr:
 	ld hl, wChannel1Octave
 	jr _GetChannelMemberAddr
 
+GetFlags2Addr:
+	ld hl, wChannel1Flags2
+	jr _GetChannelMemberAddr
+
 GetDutyCycleAddr:
 	ld hl, wChannel1DutyCycle
 _GetChannelMemberAddr:
@@ -1741,9 +1764,9 @@ ChannelsOffTilemaps:
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
-	db 0, 0, $20, PRIORITY
-	db 0, 0, $40, PRIORITY
-	db 0, 0, $60, PRIORITY
+	db 0, 0, $00, PRIORITY | 3 ; red
+	db 0, 0, $00, PRIORITY | 2 ; blue
+	db 0, 0, $00, PRIORITY | 1 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"

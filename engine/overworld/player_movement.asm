@@ -282,14 +282,12 @@ DoPlayerMovement::
 .run
 	ld a, STEP_RUN
 	call .DoStep
-;   Trainer faces player -- not a current feature
-;	push af
-;	ld a, [wWalkingDirection]
-;	cp STANDING
-;	jr z, .skip_trainer
-;	call CheckTrainerRun
-;.skip_trainer
-;	pop af
+; Trainer faces player if they're running
+	push af
+	ld a, [wWalkingDirection]
+	cp STANDING
+	call nz, CheckTrainerRun
+	pop af
 	scf
 	ret
 
@@ -883,7 +881,7 @@ endc
 	ret nz
 
 	call CheckSFX
-	ret c
+	ret nz
 	ld de, SFX_BUMP
 	jmp PlaySFX
 
@@ -914,6 +912,162 @@ CheckStandingOnIce::
 
 .not_ice
 	and a
+	ret
+
+CheckTrainerRun:
+; Check if any trainer on the map sees the player.
+
+; Skip the player object.
+	ld a, 1
+	ld de, wMap1Object
+
+.loop
+
+; Have them face the player if the object:
+
+	push af
+	push de
+
+; Is a trainer
+	ld hl, MAPOBJECT_TYPE
+	add hl, de
+	ld a, [hl]
+	cp OBJECTTYPE_TRAINER
+	jr z, .trainer
+	cp OBJECTTYPE_GENERICTRAINER
+	jr nz, .next
+.trainer
+
+; Spins around
+	ld hl, MAPOBJECT_MOVEMENT
+	add hl, de
+	ld a, [hl]
+	cp SPRITEMOVEDATA_SPINRANDOM_SLOW
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINRANDOM_FAST
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINCLOCKWISE
+	jr nz, .next
+.spinner
+
+; Has a sprite
+	ld hl, MAPOBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .next
+
+; Is visible on the map
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	inc a ; cp -1
+	jr z, .next
+
+; You're within their sight range
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	call GetObjectStruct
+	push de
+	call AnyFacingPlayerDistance
+	pop de
+	ld hl, MAPOBJECT_SIGHT_RANGE
+	add hl, de
+	ld a, [hl]
+	cp c
+	jr c, .next
+
+; Get them to face you
+	ld a, b
+	push af
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	call GetObjectStruct
+	pop af
+	call SetSpriteDirection
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld a, [hl]
+	cp $40
+	jr nc, .next
+	ld [hl], $40
+
+.next
+	pop de
+	ld hl, MAPOBJECT_LENGTH
+	add hl, de
+	ld d, h
+	ld e, l
+
+	pop af
+	inc a
+	cp NUM_OBJECTS
+	jr nz, .loop
+	xor a
+	ret
+
+AnyFacingPlayerDistance:
+; Returns distance in c and direction in b.
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld d, [hl]
+
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld e, [hl]
+
+	ldh a, [hJoypadDown]
+	ld bc, 0
+	bit D_DOWN_F, a
+	jr nz, .down
+	bit D_UP_F, a
+	jr nz, .up
+	bit D_LEFT_F, a
+	jr nz, .left
+	bit D_RIGHT_F, a
+	jr nz, .right
+.down
+	inc b
+	jr .got_vector
+.up
+	dec b
+	jr .got_vector
+.left
+	dec c
+	jr .got_vector
+.right
+	inc c
+.got_vector
+
+	ld a, [wPlayerMapX]
+	add c
+	sub d
+	ld l, OW_RIGHT
+	jr nc, .check_y
+	cpl
+	inc a
+	ld l, OW_LEFT
+.check_y
+	ld d, a
+	ld a, [wPlayerMapY]
+	add b
+	sub e
+	ld h, OW_DOWN
+	jr nc, .compare
+	cpl
+	inc a
+	ld h, OW_UP
+.compare
+	cp d
+	ld c, a
+	ld b, h
+	ret nc
+	ld c, d
+	ld b, l
 	ret
 
 CheckSpinning::

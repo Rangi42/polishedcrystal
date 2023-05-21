@@ -1,25 +1,25 @@
 AnthonyPhoneScript1:
 	gettrainername HIKER, ANTHONY1, $0
 	checkflag ENGINE_ANTHONY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd65d
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
-	iftruefwd UnknownScript_0xbd653
+	iftruefwd .NotFriday
 	readvar VAR_WEEKDAY
-	ifnotequal FRIDAY, UnknownScript_0xbd653
+	ifnotequal FRIDAY, .NotFriday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd AnthonyFridayNight
 
-UnknownScript_0xbd653:
+.NotFriday:
 	checkflag ENGINE_DUNSPARCE_SWARM
-	iftruefwd UnknownScript_0xbd664
+	iftruefwd .AlreadySwarming
 	farsjump AnthonyHangUpScript
 
-UnknownScript_0xbd65d:
+.WantsBattle:
 	getlandmarkname ROUTE_33, $2
 	farsjump AnthonyReminderScript
 
-UnknownScript_0xbd664:
+.AlreadySwarming:
 	getlandmarkname ROUTE_33, $2
 	farsjump AnthonyHurryScript
 
@@ -27,15 +27,15 @@ AnthonyPhoneScript2:
 	gettrainername HIKER, ANTHONY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalsefwd UnknownScript_0xbd68d
+	iffalsefwd .TriesSwarm
 	checkflag ENGINE_ANTHONY_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd68d
+	iftruefwd .TriesSwarm
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
-	iftruefwd UnknownScript_0xbd68d
+	iftruefwd .TriesSwarm
 	farscall PhoneScript_Random2
 	ifequalfwd $0, AnthonyWantsBattle
 
-UnknownScript_0xbd68d:
+.TriesSwarm:
 	farscall PhoneScript_Random5
 	ifequalfwd $0, AnthonyTriesDunsparceSwarm
 	farsjump Phone_GenericCall_Male
@@ -50,12 +50,12 @@ AnthonyWantsBattle:
 
 AnthonyTriesDunsparceSwarm:
 	checkflag ENGINE_DUNSPARCE_SWARM
-	iftruefwd UnknownScript_0xbd6bd
+	iftruefwd .Generic
 	setflag ENGINE_DUNSPARCE_SWARM
 	getmonname DUNSPARCE, $1
 	swarm SWARM_DUNSPARCE, DARK_CAVE_VIOLET_ENTRANCE
 	getlandmarkname DARK_CAVE, $2
 	farsjump AnthonySwarmScript
 
-UnknownScript_0xbd6bd:
+.Generic:
 	farsjump Phone_GenericCall_Male

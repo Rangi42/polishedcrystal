@@ -10,13 +10,13 @@ PrintNatureIndicators:
 	ld hl, NatureIndicators
 _PrintNatureProperty:
 	ld a, b
-	add a
 	ld e, a
 	ld d, 0
 	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	pop hl
 	rst PlaceString
 	ret

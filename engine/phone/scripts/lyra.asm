@@ -22,20 +22,39 @@ LyraPhoneScript:
 .not_kanto
 	scalltable LyraPhoneScript_JohtoLandmarksTable
 .landmark_done
-	farwritetext LyraPhoneEvolutionQuestionText
+	farwritetext LyraPhoneNextMoveQuestionText
 	yesorno
-	iftruefwd .describe_evolution
-	farwritetext LyraPhoneEvolutionRefusedText
+	iftruefwd .describe_next_move
+	farwritetext LyraPhoneNextMoveRefusedText
 	sjumpfwd .done
-.describe_evolution
-	callasm LyraPhone_GetFirstMonEvolutionData
-	scalltable LyraPhoneScript_EvolutionMethodsTable
+
+.describe_next_move
+	callasm LyraPhone_GetFirstMonNextMoveLevel
+	iffalsefwd .no_move
+	ifequalfwd -1, .egg
+	farwritetext LyraPhoneNextMoveLevelText
+	sjumpfwd .done
+
+.no_move
+	farwritetext LyraPhoneNoNextMoveText
+	sjumpfwd .done
+
+.egg
+	farwritetext LyraPhoneNoEggMovesText
 .done
 	farwritetext LyraPhoneEndText
 	end
 
 .CeladonUniversity: db "Celadon U@"
 .PokemonLeague:     db "#mon League@"
+
+LyraPhone_GetFirstMonNextMoveLevel:
+	; wStringBuffer3 = species name
+	call EvolutionPhone_GetFirstNonEggPartyMon
+	; hScriptVar = move level
+	farcall GetNextMoveLevel
+	ldh [hScriptVar], a
+	ret
 
 LyraPhoneScript_GreetingsTable:
 	table_width 2, LyraPhoneScript_GreetingsTable
@@ -199,183 +218,6 @@ LyraPhoneScript_JohtoLandmarksTable:
 	; TODO: define individual texts for Johto landmarks
 	farwritetext LyraPhoneJohtoText_Generic
 	end
-
-LyraPhoneScript_EvolutionMethodsTable:
-	table_width 2, LyraPhoneScript_EvolutionMethodsTable
-	dw .EvolveNone
-	dw .EvolveLevel
-	dw .EvolveItem
-	dw .EvolveHolding
-	dw .EvolveHappiness
-	dw .EvolveStat
-	dw .EvolveLocation
-	dw .EvolveMove
-	dw .EvolveEVs
-	dw .EvolveCrit
-	dw .EvolveParty
-	dw .EvolveEgg
-	dw .EvolvePikachu
-	dw .EvolveGloom
-	dw .EvolvePoliwhirl
-	dw .EvolveSlowpokePlain
-	dw .EvolveSlowpokeGalarian
-	dw .EvolveMagneton
-	dw .EvolveExeggcute
-	dw .EvolveKoffing
-	dw .EvolveCubone
-	dw .EvolveScyther
-	dw .EvolveEevee
-	dw .EvolveMimeJr
-	dw .EvolveUrsaring
-	dw .EvolveStantler
-	dw .EvolveDunsparce
-	assert_table_length NUM_EVOLVE_METHODS
-.EvolveNone:
-	farwritetext LyraPhoneEvoText_None
-	end
-.EvolveLevel:
-	farwritetext LyraPhoneEvoText_Level
-	end
-.EvolveItem:
-	farwritetext LyraPhoneEvoText_Item
-	end
-.EvolveHolding:
-	readmem wStringBuffer5
-	ifequalfwd TR_MORNDAY, .EvolveHolding_MornDay
-	ifequalfwd TR_EVENITE, .EvolveHolding_EveNite
-	farwritetext LyraPhoneEvoText_Holding
-	end
-.EvolveHolding_MornDay:
-	farwritetext LyraPhoneEvoText_Holding_MornDay
-	end
-.EvolveHolding_EveNite:
-	farwritetext LyraPhoneEvoText_Holding_EveNite
-	end
-.EvolveHappiness:
-	readmem wStringBuffer5
-	ifequalfwd TR_MORNDAY, .EvolveHappiness_MornDay
-	ifequalfwd TR_EVENITE, .EvolveHappiness_EveNite
-	farwritetext LyraPhoneEvoText_Happiness
-	end
-.EvolveHappiness_MornDay:
-	farwritetext LyraPhoneEvoText_Happiness_MornDay
-	end
-.EvolveHappiness_EveNite:
-	farwritetext LyraPhoneEvoText_Happiness_EveNite
-	end
-.EvolveStat:
-	farwritetext LyraPhoneEvoText_Stat
-	end
-.EvolveLocation:
-	farwritetext LyraPhoneEvoText_Location
-	end
-.EvolveMove:
-	farwritetext LyraPhoneEvoText_Move
-	end
-.EvolveEVs:
-	farwritetext LyraPhoneEvoText_EVs
-	end
-.EvolveCrit:
-	farwritetext LyraPhoneEvoText_Crit
-	end
-.EvolveParty:
-	farwritetext LyraPhoneEvoText_Party
-	end
-.EvolveEgg:
-	farwritetext LyraPhoneEvoText_Egg
-	end
-.EvolvePikachu:
-	farwritetext LyraPhoneEvoText_Pikachu
-	end
-.EvolveGloom:
-	farwritetext LyraPhoneEvoText_Gloom
-	end
-.EvolvePoliwhirl:
-	farwritetext LyraPhoneEvoText_Poliwhirl
-	end
-.EvolveSlowpokePlain:
-	farwritetext LyraPhoneEvoText_SlowpokePlain
-	end
-.EvolveSlowpokeGalarian:
-	farwritetext LyraPhoneEvoText_SlowpokeGalarian
-	end
-.EvolveMagneton:
-	farwritetext LyraPhoneEvoText_Magneton
-	end
-.EvolveExeggcute:
-	farwritetext LyraPhoneEvoText_Exeggcute
-	end
-.EvolveKoffing:
-	farwritetext LyraPhoneEvoText_Koffing
-	end
-.EvolveCubone:
-	farwritetext LyraPhoneEvoText_Cubone
-	end
-.EvolveScyther:
-	farwritetext LyraPhoneEvoText_Scyther
-	end
-.EvolveEevee:
-	farwritetext LyraPhoneEvoText_Eevee
-	end
-.EvolveMimeJr:
-	farwritetext LyraPhoneEvoText_MimeJr
-	end
-.EvolveUrsaring:
-	getitemname MOON_STONE, STRING_BUFFER_4
-	farwritetext LyraPhoneEvoText_Item
-	farwritetext LyraPhoneEvoText_AncientSinnoh
-	end
-.EvolveStantler:
-	farwritetext LyraPhoneEvoText_Stantler
-	farwritetext LyraPhoneEvoText_AncientSinnoh
-	end
-.EvolveDunsparce:
-	loadmem wStringBuffer4, 32
-	farwritetext LyraPhoneEvoText_Level
-	farwritetext LyraPhoneEvoText_DunsparceSegments
-	end
-
-LyraPhone_GetFirstMonEvolutionData:
-	; wStringBuffer3 = species name
-	call EvolutionPhone_GetFirstNonEggPartyMon
-	; hScriptVar, wStringBuffer4, wStringBuffer5 = evo data
-	farcall GetEvolutionData
-	ldh [hScriptVar], a
-	ret
-
-EvolutionPhone_GetFirstNonEggPartyMon:
-	ld hl, wPartyMon1Species
-.first_loop
-	ld a, [hl]
-	ld bc, MON_IS_EGG - MON_SPECIES
-	add hl, bc
-	bit MON_IS_EGG_F, [hl]
-	jr z, .got_mon
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_IS_EGG
-	add hl, bc
-	jr .first_loop
-.got_mon
-	ld c, a ; species
-	ld [wNamedObjectIndex], a
-	assert MON_IS_EGG == MON_FORM
-	ld a, [hl]
-	ld b, a ; ext species/form
-	ld [wNamedObjectIndex+1], a
-	push bc
-	ld bc, MON_LEVEL - MON_FORM
-	add hl, bc
-	ld a, [hl]
-	ld d, a ; level
-	push de
-	; wStringBuffer3 = species name
-	call GetPokemonName
-	ld hl, wStringBuffer1
-	ld de, wStringBuffer3
-	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
-	pop de
-	pop bc
-	ret
 
 LyraPhoneScript2:
 	readvar VAR_SPECIALPHONECALL

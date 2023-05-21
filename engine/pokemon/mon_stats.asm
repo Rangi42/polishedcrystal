@@ -681,25 +681,22 @@ CalcPkmnStatC:
 	push hl
 	push de
 	push bc
-	ld a, b
-	ld d, a
+	ld d, b
 	push hl
 	ld hl, wBaseStats - 1 ; has to be decreased, because 'c' begins with 1
 	ld b, 0
 	add hl, bc
-	ld a, [hl]
-	ld e, a
+	ld e, [hl]
 	pop hl
 	push hl
 	ld a, d
-	and a
+	and TRUE
 	jr z, .no_evs
 	ld a, [wInitialOptions2]
 	and EV_OPTMASK
 	jr z, .no_evs
 	add hl, bc
-	ld a, [hl]
-	ld b, a
+	ld b, [hl]
 .no_evs
 	pop hl
 	push bc
@@ -791,7 +788,7 @@ CalcPkmnStatC:
 	ldh [hMultiplicand + 0], a
 	ld a, [wCurPartyLevel]
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ldh a, [hProduct + 1]
 	ldh [hDividend + 0], a
 	ldh a, [hProduct + 2]
@@ -802,7 +799,7 @@ CalcPkmnStatC:
 	ldh [hDivisor], a
 	ld a, 3
 	ld b, a
-	call Divide
+	farcall Divide
 	ld a, c
 	cp STAT_HP
 	ld a, STAT_MIN_NORMAL
@@ -862,7 +859,7 @@ CalcPkmnStatC:
 	pop bc
 	pop hl
 	ldh [hMultiplier], a
-	call Multiply
+	farcall Multiply
 	ldh a, [hProduct + 1]
 	ldh [hDividend + 0], a
 	ldh a, [hProduct + 2]
@@ -873,7 +870,7 @@ CalcPkmnStatC:
 	ldh [hDivisor], a
 	ld a, 3
 	ld b, a
-	call Divide
+	farcall Divide
 	ldh a, [hQuotient + 1]
 	ldh [hMultiplicand + 1], a
 	ldh a, [hQuotient + 2]
@@ -941,7 +938,7 @@ GetStatusConditionIndex:
 	ld a, [de]
 	ld b, a
 	and SLP_MASK
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0
 	jr nz, .slp
 	bit TOX, b
 	jr nz, .tox

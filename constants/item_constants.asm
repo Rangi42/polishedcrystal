@@ -217,74 +217,75 @@ DEF NUM_STONES EQU const_value - FIRST_STONE
 	const ROCKY_HELMET ; a5
 	const AIR_BALLOON  ; a6
 	const RED_CARD     ; a7
-	const RING_TARGET  ; a8
-	const BINDING_BAND ; a9
-	const ABSORB_BULB  ; aa
-	const CELL_BATTERY ; ab
-	const EJECT_BUTTON ; ac
+	const BINDING_BAND ; a8
+	const EJECT_BUTTON ; a9
 
-	const WEAK_POLICY  ; ad
-	const ASSAULT_VEST ; ae
-	const LUMINOUSMOSS ; af
-	const SNOWBALL     ; b0
-	const SAFE_GOGGLES ; b1
+	const WEAK_POLICY  ; aa
+	const ASSAULT_VEST ; ab
+	const SAFE_GOGGLES ; ac
 
-	const PROTECT_PADS ; b2
+	const PROTECT_PADS ; ad
 
-	const THROAT_SPRAY ; b3
-	const EJECT_PACK   ; b4
-	const HEAVY_BOOTS  ; b5
-	const BLUNDRPOLICY ; b6
-	const ROOM_SERVICE ; b7
-	const UTILUMBRELLA ; b8
+	const THROAT_SPRAY ; ae
+	const EJECT_PACK   ; af
+	const HEAVY_BOOTS  ; b0
+	const BLUNDRPOLICY ; b1
+	const ROOM_SERVICE ; b2
 
-	const LIGHT_BALL   ; b9
-	const LEEK         ; ba
-	const THICK_CLUB   ; bb
-	const LUCKY_PUNCH  ; bc
-	const METAL_POWDER ; bd
-	const QUICK_POWDER ; be
-	const ARMOR_SUIT   ; bf
+	const CLEAR_AMULET ; b3
+	const MIRROR_HERB  ; b4
+	const PUNCHINGLOVE ; b5
+	const COVERT_CLOAK ; b6
+	const LOADED_DICE  ; b7
 
-	const SCOPE_LENS   ; c0
-	const WIDE_LENS    ; c1
-	const ZOOM_LENS    ; c2
+	const LIGHT_BALL   ; b8
+	const LEEK         ; b9
+	const THICK_CLUB   ; ba
+	const LUCKY_PUNCH  ; bb
+	const METAL_POWDER ; bc
+	const QUICK_POWDER ; bd
+	const ARMOR_SUIT   ; be
 
-	const MENTAL_HERB  ; c3
-	const POWER_HERB   ; c4
-	const WHITE_HERB   ; c5
+	const SCOPE_LENS   ; bf
+	const WIDE_LENS    ; c0
+	const ZOOM_LENS    ; c1
 
-	const DAMP_ROCK    ; c6
-	const HEAT_ROCK    ; c7
-	const SMOOTH_ROCK  ; c8
-	const ICY_ROCK     ; c9
+	const MENTAL_HERB  ; c2
+	const POWER_HERB   ; c3
+	const WHITE_HERB   ; c4
 
-	const CHOICE_BAND  ; ca
-	const CHOICE_SCARF ; cb
-	const CHOICE_SPECS ; cc
+	const DAMP_ROCK    ; c5
+	const HEAT_ROCK    ; c6
+	const SMOOTH_ROCK  ; c7
+	const ICY_ROCK     ; c8
 
-	const FLAME_ORB    ; cd
-	const TOXIC_ORB    ; ce
-	const BLACK_SLUDGE ; cf
+	const CHOICE_BAND  ; c9
+	const CHOICE_SCARF ; ca
+	const CHOICE_SPECS ; cb
 
-	const MACHO_BRACE  ; d0
-	const POWER_WEIGHT ; d1
-	const POWER_BRACER ; d2
-	const POWER_BELT   ; d3
-	const POWER_LENS   ; d4
-	const POWER_BAND   ; d5
-	const POWER_ANKLET ; d6
+	const FLAME_ORB    ; cc
+	const TOXIC_ORB    ; cd
+	const BLACK_SLUDGE ; ce
 
-	const DRAGON_SCALE ; d7
-	const UP_GRADE     ; d8
-	const DUBIOUS_DISC ; d9
-	const PROTECTOR    ; da
-	const ELECTIRIZER  ; db
-	const MAGMARIZER   ; dc
-	const RAZOR_FANG   ; dd
-	const RAZOR_CLAW   ; de
-	const OVAL_STONE   ; df
-	const ODD_SOUVENIR ; e0
+	const MACHO_BRACE  ; cf
+	const POWER_WEIGHT ; d0
+	const POWER_BRACER ; d1
+	const POWER_BELT   ; d2
+	const POWER_LENS   ; d3
+	const POWER_BAND   ; d4
+	const POWER_ANKLET ; d5
+
+	const DRAGON_SCALE ; d6
+	const UP_GRADE     ; d7
+	const DUBIOUS_DISC ; d8
+	const PROTECTOR    ; d9
+	const ELECTIRIZER  ; da
+	const MAGMARIZER   ; db
+	const RAZOR_FANG   ; dc
+	const RAZOR_CLAW   ; dd
+	const OVAL_STONE   ; de
+	const ODD_SOUVENIR ; df
+	const LINKING_CORD ; e0
 
 	const SILVER_LEAF  ; e1
 	const GOLD_LEAF    ; e2
@@ -332,7 +333,6 @@ DEF ALWAYS_ITEM_2  EQU $ff
 	const NAM_NO_ITEM
 	const NAM_ABILITY_CAP
 	const NAM_ABILITYPATCH
-	const NAM_ABSORB_BULB
 	const NAM_AIR_BALLOON
 	const NAM_AMULET_COIN
 	const NAM_ANTIDOTE
@@ -363,7 +363,6 @@ if !DEF(FAITHFUL)
 endc
 	const NAM_CALCIUM
 	const NAM_CARBOS
-	const NAM_CELL_BATTERY
 	const NAM_CHARCOAL
 	const NAM_CHERI_BERRY
 	const NAM_CHERISH_BALL
@@ -372,6 +371,8 @@ endc
 	const NAM_CHOICE_SCARF
 	const NAM_CHOICE_SPECS
 	const NAM_CLEANSE_TAG
+	const NAM_CLEAR_AMULET
+	const NAM_COVERT_CLOAK
 	const NAM_CUSTAP_BERRY
 	const NAM_DAMP_ROCK
 	const NAM_DESTINY_KNOT
@@ -449,13 +450,14 @@ endc
 	const NAM_LIFE_ORB
 	const NAM_LIGHT_BALL
 	const NAM_LIGHT_CLAY
+	const NAM_LINKING_CORD
 	const NAM_LITEBLUEMAIL
+	const NAM_LOADED_DICE
 	const NAM_LOVE_BALL
 	const NAM_LOVELY_MAIL
 	const NAM_LUCKY_EGG
 	const NAM_LUCKY_PUNCH
 	const NAM_LUM_BERRY
-	const NAM_LUMINOUSMOSS
 	const NAM_LURE_BALL
 	const NAM_LUXURY_BALL
 	const NAM_MACHO_BRACE
@@ -475,6 +477,7 @@ endc
 	const NAM_MINT_LEAF
 	const NAM_MIRACLE_SEED
 	const NAM_MIRAGE_MAIL
+	const NAM_MIRROR_HERB
 	const NAM_MOOMOO_MILK
 	const NAM_MOON_BALL
 	const NAM_MOON_STONE
@@ -518,6 +521,7 @@ endc
 	const NAM_PROTECT_PADS
 	const NAM_PROTECTOR
 	const NAM_PROTEIN
+	const NAM_PUNCHINGLOVE
 	const NAM_QUALOT_BERRY
 	const NAM_QUICK_BALL
 	const NAM_QUICK_CLAW
@@ -535,7 +539,6 @@ endc
 	const NAM_REPEL
 	const NAM_REVIVAL_HERB
 	const NAM_REVIVE
-	const NAM_RING_TARGET
 	const NAM_ROCKY_HELMET
 	const NAM_ROOM_SERVICE
 	const NAM_ROWAP_BERRY
@@ -555,7 +558,6 @@ endc
 	const NAM_SLOWPOKETAIL
 	const NAM_SMOKE_BALL
 	const NAM_SMOOTH_ROCK
-	const NAM_SNOWBALL
 	const NAM_SODA_POP
 	const NAM_SOFT_SAND
 	const NAM_SOOTHE_BELL
@@ -580,7 +582,6 @@ endc
 	const NAM_TWISTEDSPOON
 	const NAM_ULTRA_BALL
 	const NAM_UP_GRADE
-	const NAM_UTILUMBRELLA
 	const NAM_WATER_STONE
 	const NAM_WEAK_POLICY
 	const NAM_WHITE_HERB
@@ -635,32 +636,33 @@ DEF NUM_WINGS EQU const_value
 	const APRICORN_BOX ; 07
 	const WING_CASE    ; 08
 	const TYPE_CHART   ; 09
-	const BLUE_CARD    ; 0a
-	const SQUIRTBOTTLE ; 0b
-	const SILPHSCOPE2  ; 0c
-	const MYSTERY_EGG  ; 0d
-	const SECRETPOTION ; 0e
-	const GO_GOGGLES   ; 0f
-	const RED_SCALE    ; 10
-	const CARD_KEY     ; 11
-	const BASEMENT_KEY ; 12
-	const LOST_ITEM    ; 13
-	const MACHINE_PART ; 14
-	const RAINBOW_WING ; 15
-	const SILVER_WING  ; 16
-	const CLEAR_BELL   ; 17
-	const GS_BALL      ; 18
-	const S_S_TICKET   ; 19
-	const PASS         ; 1a
-	const ORANGETICKET ; 1b
-	const MYSTICTICKET ; 1c
-	const OLD_SEA_MAP  ; 1d
-	const EERIE_LURE   ; 1e
-	const TOUGH_LURE   ; 1f
-	const MALIGN_LURE  ; 20
-	const SHINY_CHARM  ; 21
-	const OVAL_CHARM   ; 22
-	const CATCH_CHARM  ; 23
+	const GBC_SOUNDS   ; 0a
+	const BLUE_CARD    ; 0b
+	const SQUIRTBOTTLE ; 0c
+	const SILPHSCOPE2  ; 0d
+	const MYSTERY_EGG  ; 0e
+	const SECRETPOTION ; 0f
+	const GO_GOGGLES   ; 10
+	const RED_SCALE    ; 11
+	const CARD_KEY     ; 12
+	const BASEMENT_KEY ; 13
+	const LOST_ITEM    ; 14
+	const MACHINE_PART ; 15
+	const RAINBOW_WING ; 16
+	const SILVER_WING  ; 17
+	const CLEAR_BELL   ; 18
+	const GS_BALL      ; 19
+	const S_S_TICKET   ; 1a
+	const PASS         ; 1b
+	const ORANGETICKET ; 1c
+	const MYSTICTICKET ; 1d
+	const OLD_SEA_MAP  ; 1e
+	const HARSH_LURE   ; 1f
+	const POTENT_LURE  ; 20
+	const MALIGN_LURE  ; 21
+	const SHINY_CHARM  ; 22
+	const OVAL_CHARM   ; 23
+	const CATCH_CHARM  ; 24
 DEF NUM_KEY_ITEMS EQU const_value - 1
 
 ; Alphabetical order (see data/items/name_order.asm)
@@ -673,10 +675,11 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_CATCH_CHARM
 	const NAM_CLEAR_BELL
 	const NAM_COIN_CASE
-	const NAM_EERIE_LURE
+	const NAM_GBC_SOUNDS
 	const NAM_GO_GOGGLES
 	const NAM_GOOD_ROD
 	const NAM_GS_BALL
+	const NAM_HARSH_LURE
 	const NAM_ITEMFINDER
 	const NAM_LOST_ITEM
 	const NAM_MACHINE_PART
@@ -688,6 +691,7 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_ORANGETICKET
 	const NAM_OVAL_CHARM
 	const NAM_PASS
+	const NAM_POTENT_LURE
 	const NAM_RAINBOW_WING
 	const NAM_RED_SCALE
 	const NAM_S_S_TICKET
@@ -697,7 +701,6 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_SILVER_WING
 	const NAM_SQUIRTBOTTLE
 	const NAM_SUPER_ROD
-	const NAM_TOUGH_LURE
 	const NAM_TYPE_CHART
 	const NAM_WING_CASE
 	assert const_value - 1 == NUM_KEY_ITEMS

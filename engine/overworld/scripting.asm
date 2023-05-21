@@ -272,6 +272,24 @@ ScriptCommandTable:
 	dw Script_scalltable                 ; d5
 	assert_table_length NUM_EVENT_COMMANDS
 
+GetScriptWordDE::
+; Return byte at hScriptBank:hScriptPos in de.
+	push hl
+	call GetScriptWord
+	ld e, l
+	ld d, h
+	pop hl
+	ret
+
+GetScriptWordBC::
+; Return byte at hScriptBank:hScriptPos in bc.
+	push hl
+	call GetScriptWord
+	ld b, l
+	ld c, h
+	pop hl
+	ret
+
 StartScript:
 	ld hl, wScriptFlags
 	set SCRIPT_RUNNING, [hl]
@@ -290,10 +308,7 @@ StopScript:
 Script_callasm:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld a, b
 	jmp FarCall_hl
 
@@ -304,12 +319,9 @@ Script_special:
 	farjp Special
 
 Script_memcallasm:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld b, [hl]
-	inc hl
+	call GetScriptWord
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -394,7 +406,7 @@ JumpOpenedTextScript:
 	waitendtext
 
 _GetTextPointer:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wScriptTextBank], a
 	call GetScriptByte
 	ld [wScriptTextAddr], a
@@ -403,11 +415,11 @@ _GetTextPointer:
 	ret
 
 _GetThisTextPointer:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wScriptTextBank], a
-	ld a, [wScriptPos]
+	ldh a, [hScriptPos]
 	ld [wScriptTextAddr], a
-	ld a, [wScriptPos + 1]
+	ldh a, [hScriptPos + 1]
 	ld [wScriptTextAddr + 1], a
 	ret
 
@@ -423,7 +435,7 @@ Script_farjumptext:
 	jmp ScriptJump
 
 Script_jumpstashedtext:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wScriptTextBank], a
 	ld a, [wStashedTextPointer]
 	ld [wScriptTextAddr], a
@@ -434,35 +446,29 @@ Script_jumpstashedtext:
 	jmp ScriptJump
 
 Script_writetext:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld a, [wScriptBank]
+	call GetScriptWord
+	ldh a, [hScriptBank]
 	ld b, a
 	jmp MapTextbox
 
 Script_farwritetext:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	jmp MapTextbox
 
 Script_writethistext:
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call MapTextbox
 	ld a, l
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, h
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 Script_repeattext:
@@ -495,11 +501,8 @@ Script_yesorno:
 	ret
 
 Script_loadmenu:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld a, [wScriptBank]
+	call GetScriptWord
+	ldh a, [hScriptBank]
 	ld de, LoadMenuHeader
 	call FarCall_de
 	jmp UpdateSprites
@@ -543,7 +546,7 @@ Script_closepokepic:
 	farjp ClosePokepic
 
 Script_verticalmenu:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld hl, VerticalMenu
 	call FarCall_hl
 	ld a, [wMenuCursorY]
@@ -554,7 +557,7 @@ Script_verticalmenu:
 	ret
 
 Script__2dmenu:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld hl, _2DMenu
 	call FarCall_hl
 	ld a, [wMenuCursorBuffer]
@@ -647,13 +650,13 @@ GetPocketName:
 	dec a
 	ld hl, ItemPocketNames
 	and $7
-	add a
 	ld e, a
 	ld d, 0
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	ld hl, wStringBuffer3
 	jmp CopyName2
 
@@ -695,7 +698,7 @@ Script_pokemart:
 	call GetScriptByte
 	ld e, a
 	ld d, 0
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	farcall OpenMartDialog
 	jmp Script_endtext
@@ -703,11 +706,8 @@ Script_pokemart:
 Script_elevator:
 	xor a
 	ldh [hScriptVar], a
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
-	ld a, [wScriptBank]
+	call GetScriptWordDE
+	ldh a, [hScriptBank]
 	ld b, a
 	farcall Elevator
 	ret c
@@ -798,9 +798,9 @@ Script_trainerflagaction:
 	xor a
 	ldh [hScriptVar], a
 	ld hl, wTempTrainerEventFlagLo
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	call GetScriptByte
 	ld b, a
 	call EventFlagAction
@@ -843,7 +843,7 @@ Script_encountermusic:
 	farjp PlayTrainerEncounterMusic
 
 Script_playmusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	xor a
 	ld [wMusicFade], a
@@ -910,12 +910,12 @@ Script_applyonemovement:
 	farcall _UnfreezeFollowerObject
 	pop bc
 
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	call SkipTwoScriptBytes
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetMovementData
 	ret c
@@ -944,11 +944,8 @@ ApplyMovement:
 	farcall _UnfreezeFollowerObject
 	pop bc
 
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld a, [wScriptBank]
+	call GetScriptWord
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetMovementData
 	ret c
@@ -1074,9 +1071,9 @@ ApplyEventActionAppearDisappear:
 	ld hl, MAPOBJECT_EVENT_FLAG
 	add hl, bc
 	pop bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld a, -1
 	cp e
 	jr nz, .okay
@@ -1100,10 +1097,7 @@ Script_disappear:
 	farjp _UpdateSprites
 
 Script_follow:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 	farjp StartFollow
 
 Script_stopfollow:
@@ -1130,10 +1124,7 @@ Script_writeobjectxy:
 	farjp WritePersonXY
 
 Script_follownotexact:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 	farjp FollowNotExact
 
 Script_loademote:
@@ -1302,32 +1293,23 @@ Script_reloadmap:
 	jmp StopScript
 
 Script_scall:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	jr ScriptCall
 
 Script_farscall:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	jr ScriptCall
 
 Script_memcall:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld b, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	call GetScriptWord
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld e, a
 	ld d, [hl]
 	; fallthrough
 
@@ -1348,69 +1330,57 @@ ScriptCall:
 	add hl, de
 	add hl, de
 	pop de
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [hli], a
-	ld a, [wScriptPos]
+	ldh a, [hScriptPos]
 	ld [hli], a
-	ld a, [wScriptPos + 1]
+	ldh a, [hScriptPos + 1]
 	ld [hl], a
 	ld a, b
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, e
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, d
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 CallCallback::
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	or $80
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	jr ScriptCall
 
 Script_scalltable:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptVar]
 	ld e, a
 	ld d, 0
 	add hl, de
 	add hl, de
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld b, a
 	call GetFarByte
 	ld e, a
 	inc hl
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	call GetFarByte
 	ld d, a
 	jr ScriptCall
 
 Script_sjump:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	jmp ScriptJumpInCurrentBank
 
 Script_farsjump:
 	call GetScriptByte
 	ld b, a
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	jmp ScriptJump
 
 Script_memjump:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld b, [hl]
-	inc hl
+	call GetScriptWord
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1459,8 +1429,10 @@ Script_ifless:
 	; fallthrough
 
 SkipTwoScriptBytes:
-	call GetScriptByte
-	jmp GetScriptByte
+	push hl
+	call GetScriptWord
+	pop hl
+	ret
 
 Script_iffalsefwd:
 	ldh a, [hScriptVar]
@@ -1504,16 +1476,16 @@ StdScript:
 
 ScriptJump:
 	ld a, b
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 ScriptJumpInCurrentBank:
 	ld a, l
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, h
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	ret
 
 Script_sjumpfwd:
-	ld hl, wScriptPos
+	ld hl, hScriptPos
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1525,7 +1497,7 @@ Script_sjumpfwd:
 	jr ScriptJumpInCurrentBank
 
 Script_sdefer:
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	ld [wDeferredScriptBank], a
 	call GetScriptByte
 	ld [wDeferredScriptAddr], a
@@ -1542,10 +1514,7 @@ Script_checkscene:
 	ret
 
 Script_checkmapscene:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 	call GetMapSceneID
 	ld a, d
 	or e
@@ -1567,10 +1536,7 @@ Script_setscene:
 	jr DoTrigger
 
 Script_setmapscene:
-	call GetScriptByte
-	ld b, a
-	call GetScriptByte
-	ld c, a
+	call GetScriptWordBC
 DoTrigger:
 	call GetMapSceneID
 	ld a, d
@@ -1581,38 +1547,26 @@ DoTrigger:
 	ret
 
 Script_readmem:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld a, [hl]
 	ldh [hScriptVar], a
 	ret
 
 Script_readmem16:
 	call Script_readmem
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ld a, [hl]
 	ldh [hScriptVar+1], a
 	ret
 
 Script_writemem:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	ldh a, [hScriptVar]
 	ld [hl], a
 	ret
 
 Script_loadmem:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	call GetScriptByte
 	ld [hl], a
 	ret
@@ -1703,10 +1657,7 @@ GetVarAction:
 	farjp _GetVarAction
 
 Script_getmonname:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld a, e
 	and a
 	jr nz, .gotit
@@ -1822,39 +1773,30 @@ ResetStringBuffer1:
 	ret
 
 Script_getstring:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
-	ld a, [wScriptBank]
+	call GetScriptWordDE
+	ldh a, [hScriptBank]
 	ld hl, CopyName1
 	call FarCall_hl
 	ld de, wStringBuffer2
 	jmp ConvertMemToText
 
 Script_givepokemail:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	ld a, [wScriptBank]
+	call GetScriptWord
+	ldh a, [hScriptBank]
 	call GetFarByte
 	ld b, a
 	push bc
 	inc hl
 	ld bc, MAIL_MSG_LENGTH
 	ld de, wMonMailMessageBuffer
-	ld a, [wScriptBank]
+	ldh a, [hScriptBank]
 	call FarCopyBytes
 	pop bc
 	farjp GivePokeItem
 
 Script_checkpokemail:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
-	ld a, [wScriptBank]
+	call GetScriptWordDE
+	ldh a, [hScriptBank]
 	ld b, a
 	farjp CheckPokeItem
 
@@ -2104,10 +2046,10 @@ Script_givepoke:
 	and a
 	ld b, a
 	jr z, .ok
-	ld hl, wScriptPos
-	ld e, [hl]
-	inc hl
+	ld hl, hScriptPos
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 rept 6
 	call GetScriptByte
 endr
@@ -2140,26 +2082,17 @@ Script_giveegg:
 	ret
 
 Script_setevent:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, SET_FLAG
 	jmp EventFlagAction
 
 Script_clearevent:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, RESET_FLAG
 	jmp EventFlagAction
 
 Script_checkevent:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	jr z, .false
@@ -2169,27 +2102,18 @@ Script_checkevent:
 	ret
 
 Script_setflag:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, SET_FLAG
 	jr _EngineFlagAction
 
 Script_clearflag:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, RESET_FLAG
 _EngineFlagAction:
 	farjp EngineFlagAction
 
 Script_checkflag:
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
+	call GetScriptWordDE
 	ld b, 2 ; check
 	call _EngineFlagAction
 	ld a, c
@@ -2343,10 +2267,7 @@ Script_closetext:
 Script_autoinput:
 	call GetScriptByte
 	push af
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
+	call GetScriptWord
 	pop af
 	jmp StartAutoInput
 
@@ -2411,13 +2332,13 @@ ExitScriptSubroutine:
 	ld a, [hli]
 	ld b, a
 	and " "
-	ld [wScriptBank], a
+	ldh [hScriptBank], a
 	ld a, [hli]
 	ld e, a
-	ld [wScriptPos], a
+	ldh [hScriptPos], a
 	ld a, [hl]
 	ld d, a
-	ld [wScriptPos + 1], a
+	ldh [hScriptPos + 1], a
 	and a
 	ret
 .done
@@ -2504,9 +2425,8 @@ Script_verbosegivetmhm:
 	ld a, 1
 	call CopyConvertedText
 	; off by one error?
-	ld a, [wTempTMHM]
-	inc a
-	ld [wTempTMHM], a
+	ld hl, wTempTMHM
+	inc [hl]
 	predef GetTMHMMove
 	ld b, BANK(GiveTMHMScript)
 	ld de, GiveTMHMScript
