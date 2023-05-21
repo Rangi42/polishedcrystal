@@ -8,4 +8,5 @@ SoundMoves::
 	db SCREECH
 	db SING
 	db SUPERSONIC
+	db HEAL_BELL
 	db -1
