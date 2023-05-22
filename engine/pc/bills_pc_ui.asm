@@ -1549,7 +1549,66 @@ BillsPC_MenuJumptable:
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
 	farcall _OpenPartyStats
+	call BillsPC_MoveCursorAfterStatsScreen
 	jmp BillsPC_ReturnFromTransistion
+
+BillsPC_MoveCursorAfterStatsScreen:
+; Uses wTempMonBox+wTempMonSlot to determine where the cursor should be after scrolling through the stats screen
+; eor = end of row
+	ld a, [wTempMonBox]
+	and a
+	jr nz, .box
+
+.party
+	ld c, 2
+	ld a, [wTempMonSlot]
+	call SimpleDivide
+	and a
+	jr nz, .party_not_eor
+
+.party_eor
+	add 1
+	ld c, a
+	swap a
+	add b
+	add 2
+	swap a
+	jr .finish
+
+.party_not_eor
+	ld a, 0
+	add b
+	add 3
+	swap a
+	jr .finish
+
+.box
+	ld c, 4
+	ld a, [wTempMonSlot]
+	call SimpleDivide
+	and a
+	jr nz, .box_not_eor
+
+.box_eor
+	add 5
+	ld c, a
+	swap a
+	add b
+	swap a
+	jr .finish
+
+.box_not_eor
+	add 1
+	ld c, a
+	swap a
+	add b
+	add 1
+	swap a
+	jr .finish
+
+.finish
+	ld [wBillsPC_CursorPos], a
+	ret
 
 BillsPC_CursorPick1:
 ; Plays the first part of the cursor pickup animation
