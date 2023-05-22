@@ -405,6 +405,7 @@ StartMenu_Pokemon:
 	and SELECT
 	jr z, .not_switch
 	call SwitchPartyMons
+	call SetPalettes
 	jr .after_action
 .not_switch
 	call PokemonActionSubmenu
