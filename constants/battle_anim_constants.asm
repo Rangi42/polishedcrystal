@@ -958,7 +958,6 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 ; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
 ; the first 6 matches PAL_BATTLE_OB_GRAY/YELLOW/...
 	const_def
-<<<<<<< HEAD
 	const PAL_BTLCUSTOM_GRAY            ; 0
 	const PAL_BTLCUSTOM_YELLOW          ; 1
 	const PAL_BTLCUSTOM_RED             ; 2
