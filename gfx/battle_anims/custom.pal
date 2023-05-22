@@ -42,6 +42,11 @@ if !DEF(MONOCHROME)
 	RGB 14, 27, 31	; 14, 31, 27	RGB 31, 29, 09
 	RGB 00, 14, 28	; 00, 28, 31	RGB 10, 02, 31
 	RGB 03, 10, 30
+; aurora
+	RGB 31, 20, 24
+	RGB 31, 31, 07
+	RGB 13, 27, 31
+	RGB 28, 22, 31
 ; berry
 	RGB 31, 31, 31
 	RGB 27, 21, 10

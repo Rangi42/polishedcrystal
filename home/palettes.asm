@@ -109,7 +109,7 @@ DmgToCgbObjPals::
 	ldh a, [rSVBK]
 	push af
 
-	ld a, 5
+	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
 
 ; copy & reorder obj pal buffer

@@ -58,6 +58,7 @@ AnimObjGFX:
 	battleanimgfx  5, AnimObjStarsGFX
 	battleanimgfx  8, AnimObjMiniGFX
 	battleanimgfx 48, AnimObjUTurnGFX
+  battleanimgfx 10, AnimObjBeamLightGFX
 	battleanimgfx 12, AnimObjBerryGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET

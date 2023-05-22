@@ -3229,6 +3229,7 @@ CheckEndMoveEffects:
 	ret z
 	call GetFutureSightUser
 	ret nz
+	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
 	ld a, [wDamageTaken]
@@ -3247,6 +3248,35 @@ CheckStatHerbs:
 	ld a, b
 	ldh [hBattleTurn], a
 	ret
+
+CheckThroatSpray:
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	ld a, [wAttackMissed]
+	and a
+	ret nz
+	
+	call HasUserFainted
+	ret z
+
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_THROAT_SPRAY
+	ret nz
+	
+	push bc
+	call GetCurItemName
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInByteArray
+	pop bc
+	ret nc
+
+	ld b, c
+	jmp RaiseStatWithItem
 
 CheckWhiteHerbEjectPack:
 ; Preserve b, which holds true player's turn (to handle Eject Pack switches).
@@ -3458,8 +3488,6 @@ EndMoveDamageChecks:
 	jr z, .life_orb
 	cp HELD_SHELL_BELL
 	jr z, .shell_bell
-	cp HELD_THROAT_SPRAY
-	jr z, .throat_spray
 	cp HELD_SWITCH
 .deferred_switch
 	ret nz
@@ -3523,18 +3551,6 @@ EndMoveDamageChecks:
 	predef SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
 	jmp StdBattleTextbox
-
-.throat_spray
-	push bc
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld hl, SoundMoves
-	call IsInByteArray
-	pop bc
-	ret nc
-
-	ld b, c
-	jr RaiseStatWithItem
 
 .defend_hit
 	ld a, c

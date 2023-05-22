@@ -133,7 +133,6 @@ SwitchPartyMons:
 
 	farcall InitPartySwap
 	call ApplyTilemapInVBlank
-	call SetPalettes
 	call DelayFrame
 
 	ld a, A_BUTTON | B_BUTTON | SELECT
@@ -149,6 +148,7 @@ SwitchPartyMons:
 	ld [wPartyMenuActionText], a
 
 	farcall LoadPartyMenuGFX
+	call SetPalettes
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
 

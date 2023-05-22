@@ -908,6 +908,7 @@ DEF NUM_ANIM_BGS EQU const_value - 1
 	const ANIM_GFX_STARS
 	const ANIM_GFX_MINI
 	const ANIM_GFX_U_TURN
+	const ANIM_GFX_BEAM_LIGHT
 	const ANIM_GFX_BERRY
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET
@@ -957,6 +958,7 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 ; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
 ; the first 6 matches PAL_BATTLE_OB_GRAY/YELLOW/...
 	const_def
+<<<<<<< HEAD
 	const PAL_BTLCUSTOM_GRAY            ; 0
 	const PAL_BTLCUSTOM_YELLOW          ; 1
 	const PAL_BTLCUSTOM_RED             ; 2
@@ -971,7 +973,8 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BTLCUSTOM_WATER           ; b
 	const PAL_BTLCUSTOM_DRAGON_FIRE     ; c
 	const PAL_BTLCUSTOM_DRAGON_RAGE     ; d
-	const PAL_BTLCUSTOM_BERRY           ; e
+	const PAL_BTLCUSTOM_AURORA	    ; e
+	const PAL_BTLCUSTOM_BERRY           ; f
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1
