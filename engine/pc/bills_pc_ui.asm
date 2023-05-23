@@ -1549,64 +1549,59 @@ BillsPC_MenuJumptable:
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
 	farcall _OpenPartyStats
-	call BillsPC_MoveCursorAfterStatsScreen
+	call BillsPC_MoveCursorAfterStatScreen
 	jmp BillsPC_ReturnFromTransistion
 
-BillsPC_MoveCursorAfterStatsScreen:
+BillsPC_MoveCursorAfterStatScreen:
 ; Uses wTempMonBox+wTempMonSlot to determine where the cursor should be after scrolling through the stats screen
-; eor = end of row
-	ld a, [wTempMonBox]
-	and a
-	jr nz, .box
+; Check if we're dealing with party or box
+    ld a, [wTempMonBox]
+    and a
+    ld a, [wTempMonSlot]
+    jr z, .party
+    
+    ; boxmon
+    dec a
+
+    ; Store wTempMonSlot in b. It can be 0-19, or $00-$13.
+    ld b, a
+
+    ; Move the Y offset to the high nibble Also zeroes the lower 2 bits. Convenient.
+    add a
+    add a
+
+    ; Combine it with b, which holds cursor X in the lower 2 bits.
+    or b
+
+    ; Zero out the upper 2 bits of the lower nibble (useless, and holds nothing of worth).
+    and $f3
+
+    ; Now we have Y at the high nibble and X in the low one. Add a baseline XY offset to repoint it
+    ; to the PC cursor position for boxmon data.
+    add $12
+    jr .got_cursor_pos
 
 .party
-	ld c, 2
-	ld a, [wTempMonSlot]
-	call SimpleDivide
-	and a
-	jr nz, .party_not_eor
+    dec a
+    
+    ; This sets carry depending on whether we are on the left or right party column.
+    ; Carry was previously unset with "and a" above, so we don't need to worry about it.
+    rra
 
-.party_eor
-	add 1
-	ld c, a
-	swap a
+	; This is done to save the carry that swap will reset
+	ld b, 0
+	rl b
+
+    ; Moves the Y coordinate to the correct position.
+    swap a
+
+    ; Adds the X coordinate.
 	add b
-	add 2
-	swap a
-	jr .finish
 
-.party_not_eor
-	ld a, 0
-	add b
-	add 3
-	swap a
-	jr .finish
+	; Add the PC cursor offset for party.
+    add $30
 
-.box
-	ld c, 4
-	ld a, [wTempMonSlot]
-	call SimpleDivide
-	and a
-	jr nz, .box_not_eor
-
-.box_eor
-	add 5
-	ld c, a
-	swap a
-	add b
-	swap a
-	jr .finish
-
-.box_not_eor
-	add 1
-	ld c, a
-	swap a
-	add b
-	add 1
-	swap a
-	jr .finish
-
-.finish
+.got_cursor_pos
 	ld [wBillsPC_CursorPos], a
 	ret
 
@@ -2181,6 +2176,7 @@ BillsPC_Moves:
 	jmp nz, BillsPC_PrintText
 	call BillsPC_PrepareTransistion
 	farcall _ManagePokemonMoves
+	call BillsPC_MoveCursorAfterStatScreen
 	jr BillsPC_ReturnFromTransistion
 
 .CantCheckEggMoves:
