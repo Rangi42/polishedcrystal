@@ -1555,38 +1555,38 @@ BillsPC_Stats:
 BillsPC_MoveCursorAfterStatScreen:
 ; Uses wTempMonBox+wTempMonSlot to determine where the cursor should be after scrolling through the stats screen
 ; Check if we're dealing with party or box
-    ld a, [wTempMonBox]
-    and a
-    ld a, [wTempMonSlot]
-    jr z, .party
-    
-    ; boxmon
-    dec a
+	ld a, [wTempMonBox]
+	and a
+	ld a, [wTempMonSlot]
+	jr z, .party
 
-    ; Store wTempMonSlot in b. It can be 0-19, or $00-$13.
-    ld b, a
+	; boxmon
+	dec a
 
-    ; Move the Y offset to the high nibble Also zeroes the lower 2 bits. Convenient.
-    add a
-    add a
+	; Store wTempMonSlot in b. It can be 0-19, or $00-$13.
+	ld b, a
 
-    ; Combine it with b, which holds cursor X in the lower 2 bits.
-    or b
+	; Move the Y offset to the high nibble Also zeroes the lower 2 bits. Convenient.
+	add a
+	add a
 
-    ; Zero out the upper 2 bits of the lower nibble (useless, and holds nothing of worth).
-    and $f3
+	; Combine it with b, which holds cursor X in the lower 2 bits.
+	or b
 
-    ; Now we have Y at the high nibble and X in the low one. Add a baseline XY offset to repoint it
-    ; to the PC cursor position for boxmon data.
-    add $12
-    jr .got_cursor_pos
+	; Zero out the upper 2 bits of the lower nibble (useless, and holds nothing of worth).
+	and $f3
+
+	; Now we have Y at the high nibble and X in the low one. Add a baseline XY offset to repoint it
+	; to the PC cursor position for boxmon data.
+	add $12
+	jr .got_cursor_pos
 
 .party
-    dec a
-    
-    ; This sets carry depending on whether we are on the left or right party column.
-    ; Carry was previously unset with "and a" above, so we don't need to worry about it.
-    rra
+	dec a
+
+	; This sets carry depending on whether we are on the left or right party column.
+	; Carry was previously unset with "and a" above, so we don't need to worry about it.
+	rra
 
 	; This is done to save the carry that swap will reset
 	ld b, 0
@@ -1599,12 +1599,12 @@ BillsPC_MoveCursorAfterStatScreen:
 	add b
 
 	; Add the PC cursor offset for party.
-    add $30
-
+	add $30
+	
 .got_cursor_pos
 	ld [wBillsPC_CursorPos], a
 	ret
-
+	
 BillsPC_CursorPick1:
 ; Plays the first part of the cursor pickup animation
 	ld hl, wBillsPC_CursorAnimFlag
