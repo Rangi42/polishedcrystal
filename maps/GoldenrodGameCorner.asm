@@ -1,3 +1,10 @@
+DEF GOLDENRODGAMECORNER_TM35_COINS EQU 4000
+DEF GOLDENRODGAMECORNER_TM24_COINS EQU 4000
+DEF GOLDENRODGAMECORNER_TM13_COINS EQU 4000
+DEF GOLDENRODGAMECORNER_ABRA_COINS     EQU 200
+DEF GOLDENRODGAMECORNER_CUBONE_COINS   EQU 800
+DEF GOLDENRODGAMECORNER_CLEFAIRY_COINS EQU 1500
+
 GoldenrodGameCorner_MapScriptHeader:
 	def_scene_scripts
 
@@ -111,37 +118,37 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 .flamethrower:
 	checktmhm TM_FLAMETHROWER
 	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 4000
+	checkcoins GOLDENRODGAMECORNER_TM35_COINS
 	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_FLAMETHROWER, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_FLAMETHROWER
-	takecoins 4000
+	takecoins GOLDENRODGAMECORNER_TM35_COINS
 	sjumpfwd GoldenrodGameCornerTMVendor_FinishScript
 
 .thunderbolt:
 	checktmhm TM_THUNDERBOLT
 	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 4000
+	checkcoins GOLDENRODGAMECORNER_TM24_COINS
 	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_THUNDERBOLT, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_THUNDERBOLT
-	takecoins 4000
+	takecoins GOLDENRODGAMECORNER_TM24_COINS
 	sjumpfwd GoldenrodGameCornerTMVendor_FinishScript
 
 .ice_beam:
 	checktmhm TM_ICE_BEAM
 	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 4000
+	checkcoins GOLDENRODGAMECORNER_TM13_COINS
 	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_ICE_BEAM, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_ICE_BEAM
-	takecoins 4000
+	takecoins GOLDENRODGAMECORNER_TM13_COINS
 	sjumpfwd GoldenrodGameCornerTMVendor_FinishScript
 
 GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript:
@@ -173,9 +180,9 @@ GoldenrodGameCornerTMVendorMenuData:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "TM35    4000@"
-	db "TM24    4000@"
-	db "TM13    4000@"
+	db "TM35    {d:GOLDENRODGAMECORNER_TM35_COINS}@"
+	db "TM24    {d:GOLDENRODGAMECORNER_TM24_COINS}@"
+	db "TM13    {d:GOLDENRODGAMECORNER_TM13_COINS}@"
 	db "Cancel@"
 
 GoldenrodGameCornerPrizeMonVendorScript:
@@ -197,7 +204,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
 .abra
-	checkcoins 200
+	checkcoins GOLDENRODGAMECORNER_ABRA_COINS
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getmonname ABRA, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
@@ -210,11 +217,11 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 	setmonval ABRA
 	special Special_GameCornerPrizeMonCheckDex
-	takecoins 200
+	takecoins GOLDENRODGAMECORNER_ABRA_COINS
 	sjump .loop
 
 .cubone
-	checkcoins 800
+	checkcoins GOLDENRODGAMECORNER_CUBONE_COINS
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getmonname CUBONE, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
@@ -227,11 +234,11 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 	setmonval CUBONE
 	special Special_GameCornerPrizeMonCheckDex
-	takecoins 800
+	takecoins GOLDENRODGAMECORNER_CUBONE_COINS
 	sjump .loop
 
 .clefairy
-	checkcoins 1500
+	checkcoins GOLDENRODGAMECORNER_CLEFAIRY_COINS
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getmonname CLEFAIRY, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
@@ -244,7 +251,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 	setmonval CLEFAIRY
 	special Special_GameCornerPrizeMonCheckDex
-	takecoins 1500
+	takecoins GOLDENRODGAMECORNER_CLEFAIRY_COINS
 	sjump .loop
 
 .MenuDataHeader:
@@ -256,9 +263,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Abra        200@"
-	db "Cubone      800@"
-	db "Clefairy   1500@"
+	db "Abra        {d:GOLDENRODGAMECORNER_ABRA_COINS}@"
+	db "Cubone      {d:GOLDENRODGAMECORNER_CUBONE_COINS}@"
+	db "Clefairy   {d:GOLDENRODGAMECORNER_CLEFAIRY_COINS}@"
 	db "Cancel@"
 
 GoldenrodGameCornerPharmacistScript:
