@@ -1557,54 +1557,27 @@ BillsPC_MoveCursorAfterStatScreen:
 ; Check if we're dealing with party or box
 	ld a, [wTempMonBox]
 	and a
+	push af
+	ld c, 4 ; number of box columns
+	jr nz, .got_divisor
+	ld c, 2 ; number of party columns
+.got_divisor
 	ld a, [wTempMonSlot]
-	jr z, .party
-
-	; boxmon
-	dec a
-
-	; Store wTempMonSlot in b. It can be 0-19, or $00-$13.
+	dec a ; wTempMonSlot is 1-offset otherwise
+	call SimpleDivide
+	swap b ; quotient is row offset
+	add b ; add to remainder (column offset)
 	ld b, a
-
-	; Move the Y offset to the high nibble Also zeroes the lower 2 bits. Convenient.
-	add a
-	add a
-
-	; Combine it with b, which holds cursor X in the lower 2 bits.
-	or b
-
-	; Zero out the upper 2 bits of the lower nibble (useless, and holds nothing of worth).
-	and $f3
-
-	; Now we have Y at the high nibble and X in the low one. Add a baseline XY offset to repoint it
-	; to the PC cursor position for boxmon data.
-	add $12
-	jr .got_cursor_pos
-
-.party
-	dec a
-
-	; This sets carry depending on whether we are on the left or right party column.
-	; Carry was previously unset with "and a" above, so we don't need to worry about it.
-	rra
-
-	; This is done to save the carry that swap will reset
-	ld b, 0
-	rl b
-
-	; Moves the Y coordinate to the correct position.
-	swap a
-
-	; Adds the X coordinate.
+	pop af
+	ld a, $12 ; box baseline $YX
+	jr nz, .got_baseline
+	ld a, $30 ; party baseline $YX
+.got_baseline
 	add b
-
-	; Add the PC cursor offset for party.
-	add $30
-	
-.got_cursor_pos
+	; cursor is now in a
 	ld [wBillsPC_CursorPos], a
 	ret
-	
+
 BillsPC_CursorPick1:
 ; Plays the first part of the cursor pickup animation
 	ld hl, wBillsPC_CursorAnimFlag
