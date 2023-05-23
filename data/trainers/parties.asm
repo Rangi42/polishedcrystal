@@ -2271,15 +2271,15 @@ YoungsterGroup:
 	db "Albert@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 6, RATTATA
-	dbp 8, ZUBAT
+	dbp 8, RATTATA
+	dbp 10, ZUBAT
 	db -1 ; end
 
 	; YOUNGSTER
 	db "Gordon@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 10, WOOPER
+	dbp 11, WOOPER
 	db -1 ; end
 
 	; YOUNGSTER
@@ -2478,7 +2478,7 @@ BugCatcherGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 7, WEEDLE
-	dbp 9, KAKUNA
+	dbp 10, KAKUNA
 	dbp 12, BEEDRILL
 	db -1 ; end
 
@@ -2486,8 +2486,8 @@ BugCatcherGroup:
 	db "Al@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 12, CATERPIE
-	dbp 12, WEEDLE
+	dbp 13, CATERPIE
+	dbp 13, WEEDLE
 	db -1 ; end
 
 	; BUG_CATCHER
@@ -2579,7 +2579,7 @@ CamperGroup:
 	db "Roland@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 9, NIDORAN_M
+	dbp 10, NIDORAN_M
 	db -1 ; end
 
 	; CAMPER
@@ -2728,7 +2728,7 @@ PicnickerGroup:
 	db "Liz@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 9, NIDORAN_F
+	dbp 10, NIDORAN_F
 	db -1 ; end
 
 	; PICNICKER
@@ -2985,8 +2985,8 @@ TwinsGroup:
 	db "Amy & Mimi@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 10, SPINARAK
-	dbp 10, LEDYBA
+	dbp 13, SPINARAK
+	dbp 13, LEDYBA
 	db -1 ; end
 
 	; TWINS
@@ -3109,7 +3109,7 @@ FisherGroup:
 	db "Ralph@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 10, GOLDEEN
+	dbp 11, GOLDEEN
 	db -1 ; end
 
 	; FISHER
@@ -3247,8 +3247,8 @@ FisherGroup:
 	db "Henry@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 8, POLIWAG
-	dbp 8, POLIWAG
+	dbp 9, POLIWAG
+	dbp 9, POLIWAG
 	db -1 ; end
 
 	; FISHER
@@ -3579,9 +3579,9 @@ BirdKeeperGroup:
 	db "Peter@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 6, PIDGEY
-	dbp 6, PIDGEY
-	dbp 8, SPEAROW
+	dbp 7, PIDGEY
+	dbp 8, PIDGEY
+	dbp 10, SPEAROW
 	db -1 ; end
 
 	; BIRD_KEEPER
@@ -3718,8 +3718,8 @@ HikerGroup:
 	db "Anthony@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, GEODUDE
-	dbp 11, MACHOP
+	dbp 12, GEODUDE
+	dbp 12, MACHOP
 	db -1 ; end
 
 	; HIKER
@@ -3791,9 +3791,9 @@ HikerGroup:
 	db "Russell@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 4, GEODUDE
 	dbp 6, GEODUDE
 	dbp 8, GEODUDE
+	dbp 10, GEODUDE
 	db -1 ; end
 
 	; HIKER
@@ -3904,7 +3904,7 @@ HikerGroup:
 	db "Daniel@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, ONIX
+	dbp 12, ONIX
 	db -1 ; end
 
 	; HIKER
@@ -4042,9 +4042,9 @@ GruntMGroup:
 	db "Grunt@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 7, RATTATA
-	dbp 9, ZUBAT
-	dbp 9, GASTLY
+	dbp 8, RATTATA
+	dbp 10, ZUBAT
+	dbp 10, GASTLY
 	db -1 ; end
 
 	; GRUNTM
@@ -4286,8 +4286,8 @@ GruntMGroup:
 	db "Grunt@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 9, RATTATA
-	dbp 9, MEOWTH
+	dbp 10, RATTATA
+	dbp 10, MEOWTH
 	db -1 ; end
 
 	; GRUNTM
@@ -4316,8 +4316,8 @@ GruntFGroup:
 	db "Grunt@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 9, ZUBAT
-	dbp 11, EKANS
+	dbp 10, ZUBAT
+	dbp 12, EKANS
 	db -1 ; end
 
 	; GRUNTF
@@ -4707,7 +4707,7 @@ PokemaniacGroup:
 	db "Larry@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, SLOWPOKE
+	dbp 12, SLOWPOKE
 	db -1 ; end
 
 	; POKEMANIAC
@@ -5495,8 +5495,8 @@ RuinManiacGroup:
 	db "Jones@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 6, OMANYTE
-	dbp 6, KABUTO
+	dbp 8, OMANYTE
+	dbp 8, KABUTO
 	db -1 ; end
 
 	; RUIN_MANIAC
@@ -5576,8 +5576,8 @@ FirebreatherGroup:
 	db "Bill@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 6, KOFFING
-	dbp 6, KOFFING
+	dbp 8, KOFFING
+	dbp 8, KOFFING
 	db -1 ; end
 
 	; FIREBREATHER
@@ -5592,7 +5592,7 @@ FirebreatherGroup:
 	db "Ray@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 9, VULPIX
+	dbp 11, VULPIX
 	db -1 ; end
 
 	; FIREBREATHER
@@ -6015,9 +6015,9 @@ SchoolgirlGroup:
 	db "Imogen@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	dbp 9, BULBASAUR
+	dbp 13, BULBASAUR
 		db "Garlic@"
-	dbp 8, POLIWAG
+	dbp 11, POLIWAG
 		db "@"
 	db -1 ; end
 
@@ -9803,7 +9803,7 @@ ProtonGroup:
 	db "Proton@"
 	db TRAINERTYPE_EVS
 	; party
-	dbp 10, ZUBAT
+	dbp 11, ZUBAT
 		ev_spread 32 Spe
 	dbp 12, QWILFISH
 		ev_spread 32 Spe

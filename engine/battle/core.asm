@@ -57,7 +57,7 @@ DoBattle:
 	ld a, d
 	and a
 	jr nz, .found_mon
-	ld a, 1
+	ld a, LOSE
 	ld [wBattleResult], a
 	jmp LostBattle
 .found_mon
@@ -765,7 +765,7 @@ ResolveFaints:
 .lost
 	ld hl, wBattleResult
 	ld a, [hl]
-	and $f0
+	and BATTLERESULT_BITMASK
 	inc a
 	ld [hl], a
 	call LostBattle
@@ -788,7 +788,7 @@ ResolveFaints:
 	ld a, 1
 	ld [wBattleEnded], a
 	ld a, [wBattleResult]
-	and $f0
+	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	scf
 	ret
@@ -810,7 +810,7 @@ ResolveFaints:
 .wontrainer
 	call WinTrainerBattle
 	ld a, [wBattleResult]
-	and $f0
+	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	scf
 	ret
@@ -4811,7 +4811,7 @@ endr
 	call WaitSFX
 	ld a, BATTLEACTION_FORFEIT
 	ld [wBattlePlayerAction], a
-	ld a, $1
+	ld a, LOSE
 	ld [wBattleResult], a
 	jmp LostBattle
 
@@ -8019,7 +8019,7 @@ ShowLinkBattleParticipantsAfterEnd:
 ShowLinkBattleResult:
 	ld a, [wBattleResult]
 	and $f
-	cp $1
+	cp LOSE
 	jr c, .victory
 	jr z, .loss
 	ld de, .Draw
