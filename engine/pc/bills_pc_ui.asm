@@ -1592,10 +1592,10 @@ BillsPC_MoveCursorAfterStatScreen:
 	ld b, 0
 	rl b
 
-    ; Moves the Y coordinate to the correct position.
-    swap a
+	; Moves the Y coordinate to the correct position.
+	swap a
 
-    ; Adds the X coordinate.
+	; Adds the X coordinate.
 	add b
 
 	; Add the PC cursor offset for party.
