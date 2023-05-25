@@ -1,4 +1,8 @@
-	db "Shell@" ; species name
+if DEF(FAITHFUL)
+		db "Shellfish@" ; species name
+else
+		db "Shell@" ; species name
+endc
 	dw 503, 1890 ; height, width
 
 	db   "It firmly plants"
