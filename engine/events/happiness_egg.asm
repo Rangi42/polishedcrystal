@@ -278,7 +278,20 @@ DayCareStep::
 	ret
 
 .found_free_slot
+	; Get the correct egg move pointer.
+	pop hl
+	push hl
+	ld bc, MON_SPECIES - MON_MOVES
+	add hl, bc
+	ld a, [hl]
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld b, [hl]
+	ld c, a
+	call GetSpeciesAndFormIndex
 	ld hl, EggMovePointers
+	add hl, bc
+	add hl, bc
 	ld a, BANK(EggMovePointers)
 	call GetFarWord
 	ld b, h
