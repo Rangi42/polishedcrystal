@@ -164,9 +164,9 @@ StepHappiness::
 	jr .loop
 
 DayCareStep::
-
 	ld a, [wDayCareMan]
 	bit 0, a
+	push af
 	jr z, .daycare_lady
 
 	ld de, wBreedMon1Level
@@ -176,7 +176,14 @@ DayCareStep::
 .daycare_lady
 	ld a, [wDayCareLady]
 	bit 0, a
+	pop bc
 	jr z, .check_egg
+
+	; If both a (lady) and b (man) has bit 0 set, both of them are managing
+	; Pokémon. See if we should proc Mirror Herb.
+	and b
+	rrca
+	call c, .HandleMirrorHerb
 
 	ld de, wBreedMon2Level
 	ld hl, wBreedMon2Exp + 2
@@ -237,4 +244,94 @@ DayCareStep::
 	cp (MAX_DAY_CARE_EXP / $10000) - 1
 	ret nc
 	inc [hl]
+	ret
+
+.HandleMirrorHerb:
+; Do nothing 255/256 of the time.
+	call Random
+	ret nz
+
+	; de is meant to address the other's move list, it's not a mistake.
+	ld hl, wBreedMon1Item
+	ld de, wBreedMon2Moves
+	call .HandleEachMirrorHerb
+	ld hl, wBreedMon2Item
+	ld de, wBreedMon1Moves
+.HandleEachMirrorHerb
+	; Are we actually holding a Mirror Herb?
+	ld a, [hl]
+	cp MIRROR_HERB
+	ret nz
+
+	; Do we have a free move slot?
+	ld bc, MON_MOVES - MON_ITEM
+	add hl, bc
+	ld b, NUM_MOVES
+	push hl
+.freemoveslot_loop
+	ld a, [hli]
+	and a
+	jr z, .found_free_slot
+	dec b
+	jr nz, .freemoveslot_loop
+	pop hl
+	ret
+
+.found_free_slot
+	ld hl, EggMovePointers
+	ld a, BANK(EggMovePointers)
+	call GetFarWord
+	ld b, h
+	ld c, l
+	pop hl
+
+	; Check each move slot for the other mon for whether we already know the
+	; move. If we don't, check if it's an egg move. If it is, learn it.
+	ld a, e
+	add NUM_MOVES - 1
+	dec hl
+
+.checkmove_loop
+	push hl
+	push af
+	ld a, [de]
+
+.ownmove_loop
+	; Check if we have a matching move. This also catches de==hl==0.
+	inc hl
+	cp [hl]
+	jr z, .next
+
+	; Have we reached the (first) empty move slot for the inheriting mon?
+	inc [hl]
+	dec [hl]
+	jr nz, .ownmove_loop
+
+	; We can learn this move, assuming it's part of our egg move table.
+	push hl
+	push de
+	push bc
+	ld h, b
+	ld l, c
+	ld c, a
+	ld a, BANK(EggMoves)
+	call FarIsInByteArray
+	ld a, c
+	pop bc
+	pop de
+	pop hl
+	jr nc, .next
+
+	; This is a valid egg move. Inherit it.
+	ld [hl], a
+	pop af
+	pop hl
+	ret
+
+.next
+	pop af
+	pop hl
+	cp e
+	inc de
+	jr nz, .checkmove_loop
 	ret
