@@ -872,13 +872,19 @@ DayCare_GenerateEgg:
 	; hold it)
 	ld b, 3
 	ld a, [wBreedMon1Item]
+	cp ABILITYPATCH
+	jr z, .parent1_abilitypatch
 	cp ABILITY_CAP
 	jr nz, .no_parent1_abilitycap
+.parent1_abilitypatch
 	dec b
 .no_parent1_abilitycap
 	ld a, [wBreedMon2Item]
+	cp ABILITYPATCH
+	jr z, .parent2_abilitypatch
 	cp ABILITY_CAP
 	jr nz, .no_parent2_abilitycap
+.parent2_abilitypatch
 	dec b
 .no_parent2_abilitycap
 	ld a, b
