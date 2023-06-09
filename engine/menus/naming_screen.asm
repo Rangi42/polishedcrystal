@@ -169,7 +169,7 @@ NamingScreen:
 	call DecompressRequest2bpp
 	ld de, wDecompressScratch + 12 tiles
 	ld hl, vTiles0 tile $04
-	lb bc, BANK(wDecompressScratch), 4
+	ld c, 4
 	call Request2bppInWRA6
 	pop bc
 	xor a

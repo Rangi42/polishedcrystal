@@ -291,7 +291,7 @@ JudgeSystem::
 	ldh [rVBK], a
 	ld hl, vTiles5
 	ld de, wDecompressScratch
-	lb bc, BANK(wDecompressScratch), 10 * 12
+	ld c, 10 * 12
 	call Request2bppInWRA6
 	xor a
 	ldh [rVBK], a

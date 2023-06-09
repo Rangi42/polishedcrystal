@@ -199,7 +199,8 @@ gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/litebluemail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
 
-gfx/music_player/music_player.2bpp: tools/gfx += --trim-whitespace
+gfx/music_player/bg.2bpp: tools/gfx += --trim-whitespace
+gfx/music_player/music_player.2bpp: gfx/music_player/bg.2bpp gfx/music_player/ob.2bpp ; $Qcat $^ > $@
 
 gfx/new_game/shrink1.2bpp: rgbgfx += -Z
 gfx/new_game/shrink2.2bpp: rgbgfx += -Z

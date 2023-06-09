@@ -12,9 +12,6 @@ SECTION "Music Player Graphics", ROMX
 MusicPlayerGFX:
 INCBIN "gfx/music_player/music_player.2bpp.lz"
 
-NotesGFX:
-INCBIN "gfx/music_player/note_lines.2bpp.lz"
-
 
 SECTION "Music Player", ROMX
 
@@ -121,10 +118,10 @@ MusicPlayer::
 	lb bc, BANK(MusicPlayerGFX), $47
 	call DecompressRequest2bpp
 
-	ld hl, NotesGFX
-	ld de, vTiles0
-	lb bc, BANK(NotesGFX), $1
-	call DecompressRequest2bpp
+	ld hl, vTiles0
+	ld de, wDecompressScratch tile $47
+	ld c, 1
+	call Request2bppInWRA6
 
 	call DelayFrame
 
