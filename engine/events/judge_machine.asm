@@ -123,21 +123,23 @@ JudgeSystem::
 	ld de, vTiles2
 	predef GetFrontpic
 
-; Load the blank chart graphics
 	ld a, $1
 	ldh [rVBK], a
+
+; Load the blank chart graphics
 	ld hl, JudgeSystemGFX
 	ld de, vTiles5
 	lb bc, BANK(JudgeSystemGFX), 10 * 12
 	call DecompressRequest2bpp
-	xor a
-	ldh [rVBK], a
 
 ; Load the max stat sparkle and hyper trained bottle cap graphics
-	ld hl, MaxStatSparkleGFX
-	ld de, vTiles0
+	ld hl, vTiles5 tile $6d
+	ld de, vTiles3
 	ld bc, 2 tiles
 	rst CopyBytes
+
+	xor a
+	ldh [rVBK], a
 
 ; Place the up/down arrows and nickname
 	ld hl, wPartyMonNicknames
@@ -1082,9 +1084,6 @@ RightSlashAxesXCoords:
 
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lz"
-
-MaxStatSparkleGFX:
-INCBIN "gfx/stats/sparkle.2bpp"
 
 EVChartPals:
 INCLUDE "gfx/stats/ev_chart.pal"
