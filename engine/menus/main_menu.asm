@@ -99,8 +99,7 @@ MainMenu_GetWhichMenu:
 	assert MAINMENU_MENU_NEW_GAME_PLUS - 1 == MAINMENU_MENU_CONTINUE
 	dec a ; MAINMENU_MENU_CONTINUE
 .done
-	call CloseSRAM
-	ret
+	jmp CloseSRAM
 
 MainMenuJoypadLoop:
 	call SetUpMenu

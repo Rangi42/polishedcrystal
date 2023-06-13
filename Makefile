@@ -199,7 +199,8 @@ gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/litebluemail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
 
-gfx/music_player/music_player.2bpp: tools/gfx += --trim-whitespace
+gfx/music_player/bg.2bpp: tools/gfx += --trim-whitespace
+gfx/music_player/music_player.2bpp: gfx/music_player/bg.2bpp gfx/music_player/ob.2bpp ; $Qcat $^ > $@
 
 gfx/new_game/shrink1.2bpp: rgbgfx += -Z
 gfx/new_game/shrink2.2bpp: rgbgfx += -Z
@@ -230,6 +231,7 @@ gfx/slots/slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
 gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates --keep-whitespace --remove-xflip
 
+gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 gfx/stats/stats_balls.2bpp: gfx/stats/stats.2bpp gfx/stats/balls.2bpp ; $Qcat $^ > $@
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<

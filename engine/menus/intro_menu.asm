@@ -896,7 +896,7 @@ endr
 	jr nz, .loop
 	ld hl, vTiles2 tile $69
 	ld de, wOverworldMapBlocks
-	lb bc, BANK(wOverworldMapBlocks), 2
+	ld c, 2
 	call Request2bppInWRA6
 
 	xor a
