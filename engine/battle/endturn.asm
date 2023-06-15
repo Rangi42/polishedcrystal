@@ -316,7 +316,7 @@ HandleWeather:
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld [wAlreadySawWeather], a
 	farcall PlayBattleAnimDE
 .saw_sandstorm
@@ -355,7 +355,7 @@ endc
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld [wAlreadySawWeather], a
 	farcall PlayBattleAnimDE
 .saw_hail

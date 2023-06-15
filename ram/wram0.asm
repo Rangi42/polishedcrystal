@@ -479,8 +479,7 @@ wDamageTaken::
 	dw
 
 wBattleReward:: ds 3
-wBattleAnimParam::
-wKickCounter:: db
+wBattleAnimParam:: db
 
 wPartyBackupItems::
 ; Back up of party items before a battle. Modified in-battle for consumed/harvested.

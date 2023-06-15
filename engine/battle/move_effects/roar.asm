@@ -60,7 +60,7 @@ BattleCommand_roar:
 	ld [wBattleEnded], a
 	call SetBattleDraw
 	ld a, $1
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 	ld c, 20
 	call DelayFrames
