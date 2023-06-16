@@ -199,7 +199,7 @@ BattleCommand_checkturn:
 	xor a
 	ld [wAttackMissed], a
 	ld [wEffectFailed], a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld [wAlreadyDisobeyed], a
 	ld [wAlreadyExecuted], a
 
@@ -2238,7 +2238,7 @@ BattleCommand_lowersub:
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, SUBSTITUTE
 	jmp LoadAnim
 
@@ -2317,7 +2317,7 @@ BattleCommand_moveanimnosub:
 
 .normal_move
 	xor a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 .pursuit
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2339,10 +2339,10 @@ BattleCommand_moveanimnosub:
 .multihit
 .conversion
 .doublehit
-	ld a, [wKickCounter]
+	ld a, [wBattleAnimParam]
 	and 1
 	xor 1
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, [de]
 	cp $1
 	push af
@@ -2369,7 +2369,7 @@ StatUpDownAnim:
 
 	xor a
 	ld [wNumHits], a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2390,7 +2390,7 @@ BattleCommand_raisesub:
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	ld a, $2
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, SUBSTITUTE
 	jmp LoadAnim
 
@@ -2575,7 +2575,7 @@ GetFailureResultText:
 	ld hl, CrashedText
 	call StdBattleTextbox
 	ld a, $1
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call LoadMoveAnim
 	ld c, $1
 	jmp TakeOpponentDamage
@@ -2998,7 +2998,7 @@ BattleCommand_postfainteffects:
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, DESTINY_BOND
 	call LoadAnim
 	call SwitchTurn
@@ -5633,7 +5633,7 @@ BattleCommand_charge:
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call LoadMoveAnim
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -6463,11 +6463,11 @@ AnimateCurrentMove:
 	push hl
 	push de
 	push bc
-	ld a, [wKickCounter]
+	ld a, [wBattleAnimParam]
 	push af
 	call BattleCommand_lowersub
 	pop af
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call LoadMoveAnim
 	call BattleCommand_raisesub
 	jmp PopBCDEHL
