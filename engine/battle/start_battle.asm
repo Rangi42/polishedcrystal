@@ -133,11 +133,13 @@ PlayBattleMusic:
 	jmp PopBCDEHL
 
 .loadfromarray
-	ld de, 3
+	ld de, 2
 	call IsInArray
 	ret nc
 	inc hl
-	jr .found
+	ld e, [hl]
+	ld d, 0
+	ret
 
 .getregionmusicfromarray
 	push hl
