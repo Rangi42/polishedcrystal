@@ -922,7 +922,6 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 
 Music_SunyshoreCityDPPt_Ch3:
 	volume_envelope 2, 5
-	duty_cycle 1
 	octave 2
 	note_type 6, 2, 5
 	note B_, 1
@@ -954,7 +953,6 @@ Music_SunyshoreCityDPPt_Ch3:
 	octave 2
 	note B_, 2
 	volume_envelope 1, 0
-	duty_cycle 0
 	note F#, 1
 	note G#, 1
 	octave 1
@@ -1381,7 +1379,6 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note A_, 1
 	note E_, 1
 	volume_envelope 1, 2
-	duty_cycle 2
 	note A_, 2
 	rest 16
 	note A_, 2
@@ -1464,7 +1461,6 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note E_, 2
 	rest 2
 	volume_envelope 1, 0
-	duty_cycle 0
 	octave 1
 	note A_, 2
 	rest 1

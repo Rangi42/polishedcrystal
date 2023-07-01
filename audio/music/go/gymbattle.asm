@@ -698,7 +698,6 @@ Music_GymLeaderBattleGo_Ch2_ditty6:
 	sound_ret
 
 Music_GymLeaderBattleGo_Ch3:
-	duty_cycle 4
 	octave 4
 	note_type 12, 1, 4
 Music_GymLeaderBattleGo_Ch3_loop_1:
@@ -716,7 +715,6 @@ Music_GymLeaderBattleGo_Ch3_loop_1:
 	rest 1
 	sound_loop 2, Music_GymLeaderBattleGo_Ch3_loop_1
 Music_GymLeaderBattleGo_Ch3_loop:
-	duty_cycle 6
 	volume_envelope 1, 6
 	vibrato 5, 3, 3
 	octave 3
@@ -765,7 +763,6 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note C_, 3
 	note F_, 2
 	note G_, 2
-	duty_cycle 4
 	volume_envelope 1, 4
 	octave 4
 	note F_, 8
@@ -800,7 +797,6 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note C_, 1
 	octave 4
 	note D#, 1
-	duty_cycle 6
 	volume_envelope 1, 6
 	vibrato 3, 3, 3
 Music_GymLeaderBattleGo_Ch3_loop_3:
