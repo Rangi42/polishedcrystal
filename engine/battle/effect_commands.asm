@@ -1208,8 +1208,10 @@ UserValidBattleItem:
 	ld c, [hl]
 	ld de, wBattleMonForm - wBattleMonSpecies
 	add hl, de
-	ld b, [hl]
 	ld d, a
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	ld b, a
 	ld hl, .ValidBattleItemTable
 
 .loop
@@ -1230,17 +1232,7 @@ UserValidBattleItem:
 
 	; Check exact species+form.
 	ld a, [hl]
-	xor b
-	jr z, .matched
-
-	; If this isn't just a form mismatch, species is wrong.
-	cp EXTSPECIES_MASK
-	jr nc, .next
-
-	; Otherwise, see if the table explicitly defines a form. If it doesn't,
-	; i.e. form=0, any form is OK.
-	xor b ; Reverses previous xor
-	and FORM_MASK
+	call CompareSpeciesForm
 	jr z, .matched
 .next
 	inc hl

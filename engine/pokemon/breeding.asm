@@ -322,7 +322,6 @@ HatchEggs:
 
 	; If we hatched a Togepi, set the relevant Prof Elm event flag.
 	ld de, TOGEPI
-	assert HIGH(TOGEPI) == 0
 	call CompareSpeciesWithDE
 	jr nz, .nottogepi
 	eventflagset EVENT_TOGEPI_HATCHED
