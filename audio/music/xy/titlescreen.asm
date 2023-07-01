@@ -954,6 +954,8 @@ Music_TitleScreenXY_Ch4_b1:
 	rest 12
 	rest 16
 	rest 16
+	rest 16
+	rest 16
 	sound_jump Music_TitleScreenXY_Ch4_b0
 
 Music_TitleScreenXY_Ch4_b2:

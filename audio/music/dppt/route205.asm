@@ -865,7 +865,7 @@ Music_Route205DPPt_Ch3_loop:
 	note D_, 1
 	note D_, 1
 	rest 1
-	note_type 13, 1, 3
+	note_type 12, 1, 3
 	note D_, 1
 	sound_jump Music_Route205DPPt_Ch3_loop
 
