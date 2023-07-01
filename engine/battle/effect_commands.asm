@@ -1208,10 +1208,8 @@ UserValidBattleItem:
 	ld c, [hl]
 	ld de, wBattleMonForm - wBattleMonSpecies
 	add hl, de
+	ld b, [hl]
 	ld d, a
-	ld a, [hl]
-	and SPECIESFORM_MASK
-	ld b, a
 	ld hl, .ValidBattleItemTable
 
 .loop
