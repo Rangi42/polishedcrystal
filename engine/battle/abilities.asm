@@ -1778,7 +1778,7 @@ INCLUDE "data/moves/punching_moves.asm"
 SharpnessAbility:
 ; 120% damage for slicing moves
 	ld hl, SlicingMoves
-	ln b, 6, 5 ; x1.2
+	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
 
 INCLUDE "data/moves/slicing_moves.asm"
