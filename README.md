@@ -13,7 +13,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The current beta version is **3.0.0**. It has some incomplete original content and known bugs, but it's playable from start to finish. Download the [nightly release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) to get the very latest ROM, up-to-date with the `master` code branch.
+The current beta version is **3.0.0**. It has some incomplete original content and known bugs, but it's playable from start to finish. Download the [nightly release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta) to get the very latest ROM, up-to-date with the `master` code branch.
 
 The most recent official version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then. I recommend playing the 3.0.0 beta instead.
 

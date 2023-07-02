@@ -419,20 +419,42 @@ CompareSpeciesWithDE:
 ; Compares given species+form in bc with target in de. Returns z if matching.
 ; Uses similar logic as GetSpeciesAndFormIndexFromHL for what constitutes
 ; a match. Namely, if d doesn't explicitly specify a form, any form will do.
-; Egg and gender flag is ignored, cosmetic forms are treated as separate.
-	inc d
-	dec d
-	jr nz, .form_ok
-	ld a, b
-	and ~FORM_MASK
-	ld b, a
-.form_ok
-	ld a, c
-	cp e
+; Cosmetic forms are treated as separate (assuming d specifies a form).
+	ld a, e
+	cp c
 	ret nz
-	ld a, b
-	and SPECIESFORM_MASK
-	xor d
+	ld a, d
+	; fallthrough
+CompareSpeciesForm:
+; Compare form bytes a with b. Zero form bits in a is considered a wildcard.
+; Unless a has gender bit set, gender is ignored. Extspecies mismatch always
+; results in a comparision failure. Returns z if the form byte matches.
+	push bc
+	ld c, a
+	assert (MON_GENDER_F == 7)
+	add a
+	ld a, c
+	jr nc, .skip_gender_reset
+	res MON_GENDER_F, b
+.skip_gender_reset
+	; Effectively does a comparision between a and b.
+	xor b
+	jr z, .done ; This is a match.
+
+	; If FORM_MASK+1 is noncarry, either gender is wrong (if included),
+	; or species bits are wrong.
+	assert (EXTSPECIES_MASK > FORM_MASK) && (GENDER_MASK > FORM_MASK)
+	cp (FORM_MASK + 1)
+	jr nc, .done ; Not a match.
+
+	; At this point, we know that form bits are a mismatch.
+	; Check for form bits in a being zero.
+	xor b ; Undo previous xor.
+	and FORM_MASK
+.done
+	and a ; This results in z on a match, nz otherwise.
+	ld a, c
+	pop bc
 	ret
 
 GetCosmeticSpeciesAndFormIndex::
@@ -489,20 +511,7 @@ GetSpeciesAndFormIndexFromHL::
 	ld a, [hli]
 	jr nz, .loop
 
-	; Verify correct extspecies+form.
-	xor b
-	ret z ; perfect match
-
-	; Is the mismatch due to wrong species (extspecies mismatch)?
-	; We can check this by comparing on form mask+1, since form is
-	; right below extspecies.
-	assert EXTSPECIES_MASK > FORM_MASK
-	cp (FORM_MASK + 1)
-	jr nc, .loop
-
-	; Otherwise, check if we care about exact form.
-	xor b ; revert previous "xor b" to regain the value in [hl-1]
-	and FORM_MASK ; does the table contain an exact form?
+	call CompareSpeciesForm
 	jr nz, .loop
 	ret
 
