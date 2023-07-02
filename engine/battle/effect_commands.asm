@@ -3814,6 +3814,7 @@ CheckAttackItemBoost:
 	push de
 	push hl
 	ld b, a
+	ld a, MON_ITEM
 	call TrueUserPartyAttr
 	cp b
 	pop hl
