@@ -3818,14 +3818,9 @@ CheckAttackItemBoost:
 	call TrueUserPartyAttr
 	cp b
 	pop hl
-	call z, SpeciesItemBoost
+	call z, TrueUserValidBattleItem
 	pop de
 	pop bc
-	ret
-
-SpeciesItemBoost:
-; Helper function for items boosting (Sp.) Atk, i.e. Thick Club/Light Ball.
-	call TrueUserValidBattleItem
 	ret nz
 
 	; Double the stat
