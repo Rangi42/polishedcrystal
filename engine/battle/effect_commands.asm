@@ -3663,9 +3663,7 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
-if !DEF(FAITHFUL)
 	call HailDefenseBoost
-endc
 	call DittoMetalPowder
 	call UnevolvedEviolite
 
