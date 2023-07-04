@@ -29,7 +29,7 @@ GameFreakGameDesignerScript:
 	faceplayer
 	opentext
 	writetext GameFreakGameDesignerText
-	setval16 NUM_SPECIES - 3 - 2 ; ignore mew + celebi
+	setval16 NUM_POKEMON
 	special CountCaught
 	iftruefwd .CompletedPokedex
 	waitendtext
