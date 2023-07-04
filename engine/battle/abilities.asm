@@ -458,15 +458,15 @@ ForewarnAbility:
 .randomize
 	; Move power was equal: randomize. This is done as follows as to give even results:
 	; 2 moves share power: 2nd move replaces 1/2 of the time
-	; 3 moves share power: 3rd move replaces 2/3 of the time
-	; 4 moves share power: 4th move replaces 3/4 of the time
+	; 3 moves share power: 3rd move replaces 1/3 of the time
+	; 4 moves share power: 4th move replaces 1/4 of the time
 	ld a, [wBuffer2]
 	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wBuffer2], a
 	inc a
 	call BattleRandomRange
 	and a
-	jr z, .loop
+	jr nz, .loop
 .replace
 	ld a, b
 	ld [wBuffer3], a
@@ -1778,7 +1778,7 @@ INCLUDE "data/moves/punching_moves.asm"
 SharpnessAbility:
 ; 120% damage for slicing moves
 	ld hl, SlicingMoves
-	ln b, 6, 5 ; x1.2
+	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
 
 INCLUDE "data/moves/slicing_moves.asm"

@@ -3663,9 +3663,7 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
-if !DEF(FAITHFUL)
 	call HailDefenseBoost
-endc
 	call DittoMetalPowder
 	call UnevolvedEviolite
 
@@ -3814,17 +3812,13 @@ CheckAttackItemBoost:
 	push de
 	push hl
 	ld b, a
+	ld a, MON_ITEM
 	call TrueUserPartyAttr
 	cp b
 	pop hl
-	call z, SpeciesItemBoost
+	call z, TrueUserValidBattleItem
 	pop de
 	pop bc
-	ret
-
-SpeciesItemBoost:
-; Helper function for items boosting (Sp.) Atk, i.e. Thick Club/Light Ball.
-	call TrueUserValidBattleItem
 	ret nz
 
 	; Double the stat
