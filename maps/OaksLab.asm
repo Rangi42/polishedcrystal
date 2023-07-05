@@ -106,7 +106,7 @@ Oak:
 	special ProfOaksPCBoot
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftruefwd .NoOvalCharm
-	setval16 NUM_SPECIES - 2
+	setval16 NUM_POKEMON
 	special CountSeen
 	iffalsefwd .NoOvalCharm
 	writetext OakLabSeenAllText
@@ -118,7 +118,7 @@ Oak:
 .NoOvalCharm
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftruefwd .NoShinyCharm
-	setval16 NUM_SPECIES - 2
+	setval16 NUM_POKEMON
 	special CountCaught
 	iffalsefwd .NoShinyCharm
 	writetext OakLabCaughtAllText
