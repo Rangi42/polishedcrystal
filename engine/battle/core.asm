@@ -3573,6 +3573,7 @@ _HeldHPHealingItem:
 CurItemRecoveryAnim::
 	xor a
 	ld [wNumHits], a
+	ld [wBattleAnimParam], a
 	ld a, [wCurItem]
 	push af
 	jr ItemRecoveryAnim_GotItem
@@ -3580,6 +3581,7 @@ ItemRecoveryAnim::
 ; Runs an appropriate item recovery anim based on item type.
 	xor a
 	ld [wNumHits], a
+	ld [wBattleAnimParam], a
 	ld a, [wCurItem]
 	push af
 	ldh a, [hBattleTurn]
@@ -3601,7 +3603,7 @@ ItemRecoveryAnim_GotItem::
 	cp BERRIES
 	jr nz, .got_item_type
 	ld a, 1
-	ld [wNumHits], a
+	ld [wBattleAnimParam], a
 .got_item_type
 	call _ItemRecoveryAnim
 	pop af
@@ -3610,11 +3612,11 @@ ItemRecoveryAnim_GotItem::
 
 BerryRecoveryAnim::
 	ld a, 1
-	ld [wNumHits], a
+	ld [wBattleAnimParam], a
 	jr _ItemRecoveryAnim
 RegularRecoveryAnim::
 	xor a
-	ld [wNumHits], a
+	ld [wBattleAnimParam], a
 	; fallthrough
 _ItemRecoveryAnim::
 	push hl
@@ -3627,7 +3629,7 @@ _ItemRecoveryAnim::
 	ld [wFXAnimIDHi], a
 	predef PlayBattleAnim
 	xor a
-	ld [wNumHits], a
+	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
 
 ReconsumeHeldStatusHealingItem:
