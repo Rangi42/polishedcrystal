@@ -17,6 +17,14 @@ else
 RGBDS_DIR =
 endif
 
+ifeq ($(OS),Windows_NT)
+EXEEXT := .exe
+else
+EXEEXT :=
+endif
+
+LZCOMP := tools/lzcomp$(EXEEXT)
+
 Q :=
 
 .SECONDEXPANSION:
@@ -265,8 +273,8 @@ gfx/%/frames.asm: gfx/%/front.animated.tilemap gfx/%/front.dimensions
 	$Qtools/pokemon_animation -f $^ > $@
 
 
-%.lz: %
-	$Qtools/lzcomp -- $< $@
+%.lz: % $(LZCOMP)
+	$Q$(LZCOMP) -- $< $@
 
 #%.4bpp: %.png
 #	$Qsuperfamiconv tiles -R -i $@ -d $<
