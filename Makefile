@@ -137,6 +137,10 @@ huffman: crystal
 rgbdscheck.o: rgbdscheck.asm
 	$Q$(RGBDS_DIR)rgbasm -o $@ $<
 
+
+ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
+$(info $(shell $(MAKE) -C tools))
+
 preinclude_deps := includes.asm $(shell tools/scan_includes includes.asm)
 
 define DEP
@@ -149,11 +153,10 @@ $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_VC_FLAGS) -L -o $$@ $$<
 endef
 
-ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
-$(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 $(foreach obj, $(crystal_vc_obj), $(eval $(call VCDEP,$(obj),$(obj:_vc.o=.asm))))
 endif
+
 
 $(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc.patch.template
 	tools/make_patch $(ROM_NAME)_vc.sym $^ $@
