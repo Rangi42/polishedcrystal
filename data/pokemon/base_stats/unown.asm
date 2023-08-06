@@ -14,5 +14,5 @@
 	ev_yield 1 Atk, 1 SAt
 
 	; tm/hm learnset
-	tmhm HIDDEN_POWER
+	tmhm HIDDEN_POWER, CUT, FLY, SURF, WHIRLPOOL, FLASH
 	; end

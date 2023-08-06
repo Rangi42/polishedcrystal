@@ -1350,14 +1350,14 @@
 	wildmon 2, PIDGEY
 	wildmon 2, SENTRET
 	wildmon 3, PIDGEY
-	wildmon 3, SENTRET
+	wildmon 3, EEVEE
 	wildmon 2, RATTATA
 	wildmon 3, HOPPIP
 	wildmon 3, HOPPIP
 	; day
 	wildmon 2, PIDGEY
 	wildmon 2, SENTRET
-	wildmon 3, PIDGEY
+	wildmon 3, EEVEE
 	wildmon 3, SENTRET
 	wildmon 2, RATTATA
 	wildmon 3, HOPPIP
@@ -1366,8 +1366,8 @@
 	wildmon 2, HOOTHOOT
 	wildmon 2, RATTATA
 	wildmon 3, HOOTHOOT
-	wildmon 3, RATTATA
-	wildmon 2, RATTATA
+	wildmon 3, EEVEE
+	wildmon 2, EEVEE
 	wildmon 3, HOOTHOOT
 	wildmon 3, HOOTHOOT
 	end_grass_wildmons
@@ -1523,11 +1523,11 @@
 	wildmon 10, DITTO
 	wildmon 13, YANMA
 	; day
-	wildmon 13, SNUBBULL
-	wildmon 15, PIDGEY
-	wildmon 14, NIDORAN_M
-	wildmon 14, NIDORAN_F
-	wildmon 13, JIGGLYPUFF
+	wildmon 12, SNUBBULL
+	wildmon 14, GEODUDE, ALOLAN_FORM
+	wildmon 13, NIDORAN_M
+	wildmon 13, NIDORAN_F
+	wildmon 12, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 13, YANMA
 	; nite
