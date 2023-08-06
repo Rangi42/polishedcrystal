@@ -1,5 +1,7 @@
 FarChangeStat:
 ; b contains stat to alter, or -1 if it should be read from the move script
+; If using SILENT|SKIPTEXT and handling DoPrintStatChange later, b must be
+; preserved between the 2 calls.
 	push af
 	ld a, 2
 	ld [wFailedMessage], a
@@ -259,7 +261,7 @@ UseStatItemText:
 	call GetStatName
 	farcall CheckAlreadyExecuted
 	jr nz, .item_anim_done
-	farcall ItemRecoveryAnim
+	farcall CurItemRecoveryAnim
 .item_anim_done
 	call GetCurItemName
 	ld a, [wChangedStat]

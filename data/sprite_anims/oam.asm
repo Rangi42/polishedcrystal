@@ -673,11 +673,11 @@ SpriteAnimOAMData:
 
 .OAMData_MaxStatSparkle:
 	db 1
-	dsprite  2,  0,  2,  0, $00, $0
+	dsprite  2,  0,  2,  0, $00, $0 | VRAM_BANK_1
 
 .OAMData_HyperTrainedStat:
 	db 1
-	dsprite  2,  0,  2,  0, $01, $1
+	dsprite  2,  0,  2,  0, $01, $1 | VRAM_BANK_1
 
 .OAMData_PcCursor:
 	db 12

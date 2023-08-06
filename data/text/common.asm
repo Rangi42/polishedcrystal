@@ -4253,8 +4253,11 @@ SECTION "_ItemHappinessRoseButStatFellText", ROMX
 _ItemHappinessRoseButStatFellText::
 	text_ram wStringBuffer1
 	text " became"
-	line "friendly. Base"
-	cont ""
+	line "more friendly."
+	para ""
+	text_ram wStringBuffer1
+	text "'s base"
+	line ""
 	text_ram wStringBuffer2
 	text " fell!"
 	prompt
@@ -4549,6 +4552,20 @@ WonderTradePromptText::
 	text "Which #mon do"
 	line "you want to trade?"
 	prompt
+
+SECTION "WonderTradeCantTradeSpikyEaredPichuText", ROMX
+WonderTradeCantTradeSpikyEaredPichuText::
+    text "This Pichu appears"
+    line "to have traveled"
+    cont "through time."
+
+    para "It would be risky"
+    line "to transfer it,"
+
+    para "so it's best for"
+    line "Pichu to stay"
+    cont "where it is."
+    prompt
 
 ;SECTION "WonderTradeCantTradeEggText", ROMX
 ;WonderTradeCantTradeEggText::

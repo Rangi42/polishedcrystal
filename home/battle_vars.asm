@@ -13,7 +13,6 @@ GetBattleVarAddr::
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld c, [hl]
 	add hl, bc
 
 ; Enemy turn uses the second byte instead.
@@ -25,8 +24,7 @@ GetBattleVarAddr::
 
 .getvar
 ; var id
-	ld a, [hl]
-	ld c, a
+	ld c, [hl]
 	ld b, 0
 
 	ld hl, BattleVarLocations
@@ -44,41 +42,15 @@ GetBattleVarAddr::
 
 BattleVarPairs:
 ; entries correspond to BATTLE_VARS_* constants
-	table_width 1, BattleVarPairs
-	dr .Substatus1
-	dr .Substatus2
-	dr .Substatus3
-	dr .Substatus4
-	dr .Substatus1Opp
-	dr .Substatus2Opp
-	dr .Substatus3Opp
-	dr .Substatus4Opp
-	dr .Ability
-	dr .AbilityOpp
-	dr .Status
-	dr .StatusOpp
-	dr .Animation
-	dr .Effect
-	dr .Power
-	dr .Accuracy
-	dr .Type
-	dr .Category
-	dr .CurMove
-	dr .CurMoveOpp
-	dr .LastCounter
-	dr .LastCounterOpp
-	dr .LastMove
-	dr .LastMoveOpp
-	assert_table_length NUM_BATTLE_VARS
-
+	table_width 2, BattleVarPairs
 ;                   player                 enemy
 .Substatus1:     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
-.Substatus1Opp:  db ENEMY_SUBSTATUS_1,     PLAYER_SUBSTATUS_1
 .Substatus2:     db PLAYER_SUBSTATUS_2,    ENEMY_SUBSTATUS_2
-.Substatus2Opp:  db ENEMY_SUBSTATUS_2,     PLAYER_SUBSTATUS_2
 .Substatus3:     db PLAYER_SUBSTATUS_3,    ENEMY_SUBSTATUS_3
-.Substatus3Opp:  db ENEMY_SUBSTATUS_3,     PLAYER_SUBSTATUS_3
 .Substatus4:     db PLAYER_SUBSTATUS_4,    ENEMY_SUBSTATUS_4
+.Substatus1Opp:  db ENEMY_SUBSTATUS_1,     PLAYER_SUBSTATUS_1
+.Substatus2Opp:  db ENEMY_SUBSTATUS_2,     PLAYER_SUBSTATUS_2
+.Substatus3Opp:  db ENEMY_SUBSTATUS_3,     PLAYER_SUBSTATUS_3
 .Substatus4Opp:  db ENEMY_SUBSTATUS_4,     PLAYER_SUBSTATUS_4
 .Ability:        db PLAYER_ABILITY,        ENEMY_ABILITY
 .AbilityOpp:     db ENEMY_ABILITY,         PLAYER_ABILITY
@@ -96,6 +68,8 @@ BattleVarPairs:
 .LastCounterOpp: db ENEMY_COUNTER_MOVE,    PLAYER_COUNTER_MOVE
 .LastMove:       db PLAYER_LAST_MOVE,      ENEMY_LAST_MOVE
 .LastMoveOpp:    db ENEMY_LAST_MOVE,       PLAYER_LAST_MOVE
+.CudChewBerry:   db PLAYER_CUD_CHEW_BERRY, ENEMY_CUD_CHEW_BERRY
+	assert_table_length NUM_BATTLE_VARS
 
 BattleVarLocations:
 ; entries correspond to PLAYER_* and ENEMY_* constants
@@ -115,4 +89,5 @@ BattleVarLocations:
 	dw wCurPlayerMove,                wCurEnemyMove
 	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
+	dw wPlayerCudChewBerry,           wEnemyCudChewBerry
 	assert_table_length NUM_BATTLE_VAR_LOCATION_PAIRS

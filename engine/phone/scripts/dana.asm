@@ -1,25 +1,25 @@
 DanaPhoneScript1:
 	gettrainername LASS, DANA1, $0
 	checkflag ENGINE_DANA_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd959
+	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_DANA_THURSDAY_NIGHT
-	iftruefwd UnknownScript_0xbd955
+	iftruefwd .NotThursday
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
-	iftruefwd UnknownScript_0xbd960
+	iftruefwd .HasThunderstone
 	readvar VAR_WEEKDAY
-	ifnotequal THURSDAY, UnknownScript_0xbd955
+	ifnotequal THURSDAY, .NotThursday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd DanaThursdayNight
 
-UnknownScript_0xbd955:
+.NotThursday:
 	farsjump DanaHangUpScript
 
-UnknownScript_0xbd959:
+.WantsBattle:
 	getlandmarkname ROUTE_38, $2
 	farsjump DanaReminderScript
 
-UnknownScript_0xbd960:
+.HasThunderstone:
 	getlandmarkname ROUTE_38, $2
 	farsjump DanaComePickUpScript
 
@@ -27,23 +27,23 @@ DanaPhoneScript2:
 	gettrainername LASS, DANA1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_DANA_READY_FOR_REMATCH
-	iftruefwd UnknownScript_0xbd99f
+	iftruefwd .Generic
 	checkflag ENGINE_DANA_THURSDAY_NIGHT
-	iftruefwd UnknownScript_0xbd99f
+	iftruefwd .Generic
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
-	iftruefwd UnknownScript_0xbd99f
+	iftruefwd .Generic
 	farscall PhoneScript_Random3
 	ifequalfwd $0, DanaWantsBattle
 	checkevent EVENT_DANA_GAVE_THUNDERSTONE
-	iftruefwd UnknownScript_0xbd997
+	iftruefwd .Thunderstone
 	farscall PhoneScript_Random2
 	ifequalfwd $0, DanaHasThunderstone
 
-UnknownScript_0xbd997:
+.Thunderstone:
 	farscall PhoneScript_Random11
 	ifequalfwd $0, DanaHasThunderstone
 
-UnknownScript_0xbd99f:
+.Generic:
 	farscall PhoneScript_Random3
 	ifequalfwd $0, DanaFoundRare
 	farsjump Phone_GenericCall_Female

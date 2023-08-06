@@ -10,8 +10,6 @@ wStackTop::
 
 SECTION "Audio RAM", WRAM0
 
-wEchoRAMTest:: db
-
 wMusic::
 wMusicPlaying:: db ; nonzero if playing
 
@@ -62,7 +60,6 @@ wNoiseSampleAddress::
 wNoiseSampleAddressLo:: db
 wNoiseSampleAddressHi:: db
 wNoiseSampleDelay:: db ; noise delay?
-	ds 1
 wMusicNoiseSampleSet:: db
 wSFXNoiseSampleSet:: db
 wLowHealthAlarm::
@@ -80,17 +77,10 @@ wMusicFadeCount:: db
 wMusicFadeID::
 wMusicFadeIDLo:: db
 wMusicFadeIDHi:: db
-	ds 5
 wCryPitch:: dw
 wCryLength:: dw
 wLastVolume:: db
-	ds 1
 wSFXPriority:: db ; if nonzero, turn off music when playing sfx
-	ds 1
-wChannel1JumpCondition:: db
-wChannel2JumpCondition:: db
-wChannel3JumpCondition:: db
-wChannel4JumpCondition:: db
 wStereoPanningMask:: db
 wCryTracks::
 ; plays only in left or right track depending on what side the monster is on
@@ -104,6 +94,16 @@ wMapMusic:: db
 wDontPlayMapMusicOnReload:: db
 wMusicEnd::
 
+; Has to be outside the area used to save/load audio state
+wCh3LoadedWaveform:: db
+
+; Music player
+; audio engine input
+wChannelSelectorSwitches:: ds 4
+wPitchTransposition:: db
+wTempoAdjustment:: db
+; audio engine output
+wNoiseHit:: db
 
 SECTION "WRAM 0", WRAM0
 
@@ -197,8 +197,6 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
-	ds 4
-
 
 SECTION "Sprite Animations", WRAM0
 
@@ -238,7 +236,7 @@ wGlobalAnimXOffset:: db
 wSpriteAnimsEnd::
 
 
-SECTION "Music Player RAM", WRAM0
+SECTION UNION "Misc 480", WRAM0
 
 wMusicPlayerWRAM::
 wSongSelection:: dw
@@ -266,12 +264,6 @@ wSelectorCur:: db
 ; song editor
 wChannelSelector:: db
 wAdjustingTempo:: db
-; audio engine input
-wChannelSelectorSwitches:: ds 4
-wPitchTransposition:: db
-wTempoAdjustment:: db
-; audio engine output
-wNoiseHit:: db
 wMusicPlayerWRAMEnd::
 
 
@@ -487,8 +479,7 @@ wDamageTaken::
 	dw
 
 wBattleReward:: ds 3
-wBattleAnimParam::
-wKickCounter:: db
+wBattleAnimParam:: db
 
 wPartyBackupItems::
 ; Back up of party items before a battle. Modified in-battle for consumed/harvested.
@@ -511,6 +502,9 @@ wEnemySelectedMove:: db
 ; How much the Metronome item is boosted. (Counts even if you don't have the item.)
 wPlayerMetronomeCount:: db
 wEnemyMetronomeCount:: db
+
+wPlayerCudChewBerry:: db
+wEnemyCudChewBerry:: db
 
 wPartyParticipants:: ds PARTY_LENGTH
 
@@ -558,8 +552,6 @@ wCurEnemyMove:: db
 wLinkBattleRNCount:: db ; how far through the prng stream
 
 wEnemyItemState:: db
-
-	ds 2
 
 wCurEnemyMoveNum:: db
 
@@ -1053,13 +1045,16 @@ wLinkReceivedMailEnd:: db
 SECTION "Video", WRAM0
 
 wBGMapBuffer:: ds 48
+wBGMapBufferEnd::
 wBGMapPalBuffer:: ds 48
+wBGMapPalBufferEnd::
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
+
+wTileAnimBuffer:: ds 1 tiles
+wTileAnimationTimer:: db
 
 
 SECTION "More WRAM 0", WRAM0
-
-	ds 82 ; unused
 
 wMemCGBLayout:: db
 
@@ -1074,8 +1069,6 @@ wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: db
 wHPPalIndex:: db
 ENDU
-
-wTileAnimBuffer:: ds 1 tiles
 
 ; link data
 UNION
@@ -1175,6 +1168,7 @@ wNamingScreenLetterCase::
 wHallOfFameMonCounter::
 wTradeDialog::
 wRandomValue::
+wEchoRAMTest::
 	db
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db
@@ -1284,8 +1278,6 @@ w2DMenuDataEnd::
 wMonPicSize:: db
 wMonAnimationSize:: db
 
-	ds 1 ; unused
-
 wPendingOverworldGraphics:: db
 wTextDelayFrames:: db
 
@@ -1320,8 +1312,6 @@ wFXAnimIDHi:: db
 
 wPlaceBallsX:: db
 wPlaceBallsY:: db
-
-wTileAnimationTimer:: db
 
 ; palette backups?
 wBGP:: db
@@ -1400,3 +1390,10 @@ wDaysSince:: db
 
 ; Temporary backup for options
 wOptionsBuffer:: db
+
+SECTION "Rom Checksum", WRAM0
+
+; Contains a copy of the rom checksum, read from the header. Used as
+; protection against people trying to load a save state for a save in
+; a different rom version.
+wRomChecksum:: dw

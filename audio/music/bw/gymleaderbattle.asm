@@ -10,7 +10,7 @@ Music_GymLeaderBattleBW:
 	channel 4, GymLeaderBattleBW_Channel4
 
 GymLeaderBattleBW_Channel1:
-	tempo $35
+	tempo 53
 	volume 5, 5
 	duty_cycle 1
 	note_type 12, 8, 7

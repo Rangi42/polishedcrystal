@@ -5,9 +5,9 @@ DEF JUDGE_MALE_TILE       EQU $07
 DEF JUDGE_FEMALE_TILE     EQU $08
 DEF JUDGE_STAR_TILE       EQU $09
 DEF JUDGE_LEFT_RIGHT_TILE EQU $0a
-DEF JUDGE_BORDER_TILE     EQU $13
-DEF JUDGE_BLANK_TILE      EQU $64
-DEF JUDGE_WHITE_TILE      EQU $6d
+DEF JUDGE_BORDER_TILE     EQU $0b
+DEF JUDGE_WHITE_TILE      EQU $64
+DEF JUDGE_BLANK_TILE      EQU $65
 
 JudgeMachine:
 ; Check that the machine is activated
@@ -123,21 +123,23 @@ JudgeSystem::
 	ld de, vTiles2
 	predef GetFrontpic
 
-; Load the blank chart graphics
 	ld a, $1
 	ldh [rVBK], a
+
+; Load the blank chart graphics
 	ld hl, JudgeSystemGFX
 	ld de, vTiles5
-	lb bc, BANK(JudgeSystemGFX), 10 * 12
+	lb bc, BANK(JudgeSystemGFX), 10 * 12 - 3
 	call DecompressRequest2bpp
-	xor a
-	ldh [rVBK], a
 
 ; Load the max stat sparkle and hyper trained bottle cap graphics
-	ld hl, MaxStatSparkleGFX
-	ld de, vTiles0
+	ld hl, vTiles5 tile $12
+	ld de, vTiles3
 	ld bc, 2 tiles
 	rst CopyBytes
+
+	xor a
+	ldh [rVBK], a
 
 ; Place the up/down arrows and nickname
 	ld hl, wPartyMonNicknames
@@ -236,6 +238,10 @@ JudgeSystem::
 	hlcoord 15, 15
 	ld [hli], a
 	ld [hl], a
+	ldcoord_a 9, 5
+	ldcoord_a 16, 5
+	assert JUDGE_BLANK_TILE == $65 ; no need to clear (9, 14)
+	ldcoord_a 16, 14
 
 ; Place the stat names and values
 	hlcoord 12, 2
@@ -291,7 +297,7 @@ JudgeSystem::
 	ldh [rVBK], a
 	ld hl, vTiles5
 	ld de, wDecompressScratch
-	lb bc, BANK(wDecompressScratch), 10 * 12
+	ld c, 10 * 12
 	call Request2bppInWRA6
 	xor a
 	ldh [rVBK], a
@@ -563,13 +569,12 @@ OutlineRadarChart:
 	ldh a, [hChartHP]
 	ld b, a
 	; x = 39
-	ld a, 39
-	ld d, a
-	; y = 46 - v * 47 / 256
-	ld c, 47
+	ld d, 39
+	; y = 47 - v * 46 / 256
+	ld c, 46
 	call CalcBTimesCOver256
 	cpl
-	add 46 + 1 ; a = 46 - a
+	add 47 + 1 ; a = 47 - a
 	ld e, a
 
 ; Store the HP point to close the polygon
@@ -579,12 +584,12 @@ OutlineRadarChart:
 ; de = Atk point
 	ldh a, [hChartAtk]
 	ld b, a
-	; x = 41 + v * 39 / 256
+	; x = 40 + v * 39 / 256
 	ld c, 39
 	call CalcBTimesCOver256
-	add 41
+	add 40
 	ld d, a
-	; y = ForwardSlashAxisYCoords[x] (~= 46 - v * 23 / 256)
+	; y = ForwardSlashAxisYCoords[x] (~= 47 - v * 23 / 256)
 	add LOW(ForwardSlashAxisYCoords)
 	ld c, a
 	adc HIGH(ForwardSlashAxisYCoords)
@@ -605,12 +610,12 @@ OutlineRadarChart:
 ; de = Def point
 	ldh a, [hChartDef]
 	ld b, a
-	; x = 41 + v * 39 / 256
+	; x = 40 + v * 39 / 256
 	ld c, 39
 	call CalcBTimesCOver256
-	add 41
+	add 40
 	ld d, a
-	; y = BackslashAxisYCoords[x] (~= 49 + v * 23 / 256)
+	; y = BackslashAxisYCoords[x] (~= 48 + v * 23 / 256)
 	add LOW(BackslashAxisYCoords)
 	ld c, a
 	adc HIGH(BackslashAxisYCoords)
@@ -631,13 +636,12 @@ OutlineRadarChart:
 ; de = Spe point
 	ldh a, [hChartSpe]
 	ld b, a
-	; x = 40
-	ld a, 40
-	ld d, a
-	; y = 49 + v * 47 / 256
-	ld c, 47
+	; x = 39
+	ld d, 39
+	; y = 48 + v * 46 / 256
+	ld c, 46
 	call CalcBTimesCOver256
-	add 49
+	add 48
 	ld e, a
 
 ; Draw a line from Def to Spe
@@ -658,7 +662,7 @@ OutlineRadarChart:
 	cpl
 	add 38 + 1 ; a = 38 - a
 	ld d, a
-	; y = ForwardSlashAxisYCoords[x] (~= 49 + v * 23 / 256)
+	; y = ForwardSlashAxisYCoords[x] (~= 48 + v * 23 / 256)
 	add LOW(ForwardSlashAxisYCoords)
 	ld c, a
 	adc HIGH(ForwardSlashAxisYCoords)
@@ -682,7 +686,7 @@ OutlineRadarChart:
 	cpl
 	add 38 + 1 ; a = 38 - a
 	ld d, a
-	; y = BackslashAxisYCoords[x] (~= 46 - v * 23 / 256)
+	; y = BackslashAxisYCoords[x] (~= 47 - v * 23 / 256)
 	add LOW(BackslashAxisYCoords)
 	ld c, a
 	adc HIGH(BackslashAxisYCoords)
@@ -967,7 +971,7 @@ _FillRadarHorizontal:
 
 ; de = point on the diagonal axes
 	ld a, c
-	sub 24
+	sub 25 ; BackslashAxisYCoords[0] == ForwardSlashAxisYCoords[-1]
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -1036,55 +1040,44 @@ DrawRadarPointBC:
 	ldh [hBitwiseOpcode], a
 	jmp hBitwiseOperation
 
-MACRO atk_y_coords
-	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36
-	db 35, 34, 34, 33, 33, 32, 31, 31, 30, 30, 29, 29, 28, 27, 27, 26, 26, 25, 25, 24
-ENDM
-
-MACRO def_y_coords
-	db 48, 48, 49, 49, 50, 51, 51, 52, 52, 53, 53, 54, 55, 55, 56, 56, 57, 58, 58, 59
-	db 59, 60, 61, 61, 62, 62, 63, 64, 64, 65, 65, 66, 67, 67, 68, 68, 69, 70, 70, 71
-ENDM
-
-MACRO sp_atk_y_coords
-	db 24, 25, 25, 26, 26, 27, 27, 28, 29, 29, 30, 30, 31, 31, 32, 33, 33, 34, 34, 35
-	db 36, 36, 37, 37, 38, 39, 39, 40, 40, 41, 42, 42, 43, 43, 44, 45, 45, 46, 46, 47
-ENDM
-
-MACRO sp_def_y_coords
-	db 71, 70, 70, 69, 68, 68, 67, 67, 66, 65, 65, 64, 64, 63, 62, 62, 61, 61, 60, 59
-	db 59, 58, 58, 57, 56, 56, 55, 55, 54, 53, 53, 52, 52, 51, 51, 50, 49, 49, 48, 48
-ENDM
-
 ForwardSlashAxisYCoords:
-	sp_def_y_coords
-	atk_y_coords
+	db 70, 69, 68, 68, 67, 67, 66, 66, 65, 64, 64, 63, 63, 62, 62, 61, 60, 60, 59, 59
+	db 58, 58, 57, 57, 56, 55, 55, 54, 54, 53, 53, 52, 51, 51, 50, 50, 49, 49, 48
+	db 47
+	db 47, 46, 46, 45, 45, 44, 44, 43, 42, 42, 41, 41, 40, 40, 39, 38, 38, 37, 37
+	db 36, 36, 35, 35, 34, 33, 33, 32, 32, 31, 31, 30, 29, 29, 28, 28, 27, 27, 26, 25
 
 BackslashAxisYCoords:
-	sp_atk_y_coords
-	def_y_coords
+	db 25, 26, 27, 27, 28, 28, 29, 29, 30, 31, 31, 32, 32, 33, 33, 34, 35, 35, 36, 36
+	db 37, 37, 38, 38, 39, 40, 40, 41, 41, 42, 42, 43, 44, 44, 45, 45, 46, 46, 47
+	db 48
+	db 48, 49, 49, 50, 50, 51, 51, 52, 53, 53, 54, 54, 55, 55, 56, 57, 57, 58, 58
+	db 59, 59, 60, 60, 61, 62, 62, 63, 63, 64, 64, 65, 66, 66, 67, 67, 68, 68, 69, 70
 
 UpperSlashAxesYCoords:
-	sp_atk_y_coords
-	atk_y_coords
+	db 25, 26, 27, 27, 28, 28, 29, 29, 30, 31, 31, 32, 32, 33, 33, 34, 35, 35, 36, 36
+	db 37, 37, 38, 38, 39, 40, 40, 41, 41, 42, 42, 43, 44, 44, 45, 45, 46, 46, 47
+	db 48
+	db 47, 46, 46, 45, 45, 44, 44, 43, 42, 42, 41, 41, 40, 40, 39, 38, 38, 37, 37
+	db 36, 36, 35, 35, 34, 33, 33, 32, 32, 31, 31, 30, 29, 29, 28, 28, 27, 27, 26, 25
 
 LowerSlashAxesYCoords:
-	sp_def_y_coords
-	def_y_coords
+	db 70, 69, 68, 68, 67, 67, 66, 66, 65, 64, 64, 63, 63, 62, 62, 61, 60, 60, 59, 59
+	db 58, 58, 57, 57, 56, 55, 55, 54, 54, 53, 53, 52, 51, 51, 50, 50, 49, 49, 48
+	db 47
+	db 48, 49, 49, 50, 50, 51, 51, 52, 53, 53, 54, 54, 55, 55, 56, 57, 57, 58, 58
+	db 59, 59, 60, 60, 61, 62, 62, 63, 63, 64, 64, 65, 66, 66, 67, 67, 68, 68, 69, 70
 
 LeftSlashAxesXCoords:
-	db  0,  2,  4,  6,  7,  9, 11, 13, 14, 16, 18, 19, 21, 23, 24, 26, 28, 29, 31, 33, 34, 36, 38, 39
-	db 38, 37, 35, 34, 32, 30, 28, 27, 25, 23, 22, 20, 18, 17, 15, 13, 12, 10,  8,  7,  5,  3,  2,  0
+	db  0,  1,  3,  5,  7,  8, 10, 12, 14, 15, 17, 19, 21, 23, 24, 26, 28, 30, 31, 33, 35, 37, 39
+	db 39, 37, 35, 33, 31, 30, 28, 26, 24, 23, 21, 19, 17, 15, 14, 12, 10,  8,  7,  5,  3,  1,  0
 
 RightSlashAxesXCoords:
-	db 79, 77, 75, 73, 72, 70, 68, 66, 65, 63, 61, 60, 58, 56, 55, 53, 51, 50, 48, 46, 45, 43, 41, 40
-	db 41, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 62, 64, 66, 67, 69, 71, 72, 74, 76, 77, 79
+	db 78, 77, 75, 73, 71, 70, 68, 66, 64, 63, 61, 59, 57, 55, 54, 52, 50, 48, 47, 45, 43, 41, 39
+	db 39, 41, 43, 45, 47, 48, 50, 52, 54, 55, 57, 59, 61, 63, 64, 66, 68, 70, 71, 73, 75, 77, 78
 
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lz"
-
-MaxStatSparkleGFX:
-INCBIN "gfx/stats/sparkle.2bpp"
 
 EVChartPals:
 INCLUDE "gfx/stats/ev_chart.pal"

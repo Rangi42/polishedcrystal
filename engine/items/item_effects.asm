@@ -291,6 +291,7 @@ KeyItemEffects:
 	dw ApricornBox        ; APRICORN_BOX
 	dw WingCase           ; WING_CASE
 	dw TypeChart          ; TYPE_CHART
+	dw GBCSounds          ; GBC_SOUNDS
 	dw BlueCard           ; BLUE_CARD
 	dw SquirtBottle       ; SQUIRTBOTTLE
 	dw IsntTheTimeMessage ; SILPHSCOPE2
@@ -824,10 +825,10 @@ Text_GotchaMonWasCaught:
 	text_asm
 	call WaitSFX
 	push bc
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_CAPTURE
+	ld e, MUSIC_CAPTURE
 	call PlayMusic
 	pop bc
 	ld hl, TextJump_Waitbutton
@@ -1031,11 +1032,10 @@ _GetStatString:
 	ld de, wStringBuffer2
 	ld hl, StatStrings
 	add hl, bc
+	ld c, [hl]
+	ld b, 0
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld bc, ITEM_NAME_LENGTH
+	ld c, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret
 
@@ -1591,8 +1591,8 @@ ReviveFullHP:
 	call LoadHPFromBuffer1
 ContinueRevive:
 	call UseItem_GetHPParameter
-	ld [hl], d
-	inc hl
+	ld a, d
+	ld [hli], a
 	ld [hl], e
 	jr LoadCurHPIntoBuffer5
 
@@ -2199,9 +2199,15 @@ PrintAprValues:
 	inc de
 	jmp PrintNum
 
+GBCSounds:
+	call FadeToMenu
+	farcall MusicPlayer
+	jr _FinishFullscreenItem
+
 TypeChart:
 	call FadeToMenu
 	farcall _TypeChart
+_FinishFullscreenItem:
 	call ExitMenu
 	xor a
 	ldh [hBGMapMode], a

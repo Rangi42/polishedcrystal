@@ -10,7 +10,7 @@ Music_WildBattleGo:
 	channel 4, Music_WildBattleGo_Ch4
 
 Music_WildBattleGo_Ch1:
-	tempo $70
+	tempo 112
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	duty_cycle_pattern 1, 1, 2, 2
@@ -48,7 +48,7 @@ Music_WildBattleGo_Ch1_loop:
 	rest 3
 	note C#, 4
 	rest 2
-	duty_cycle_pattern 2, 2, 2, 2
+	duty_cycle 2
 	sound_call Music_WildBattleGo_Ch1_ditty1
 	sound_call Music_WildBattleGo_Ch1_ditty2
 	sound_call Music_WildBattleGo_Ch1_ditty1
@@ -71,7 +71,7 @@ Music_WildBattleGo_Ch1_loop:
 	sound_call Music_WildBattleGo_Ch1_ditty1
 	sound_call Music_WildBattleGo_Ch1_ditty1
 	rest 4
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 15, 3
 	vibrato 5, 1, 3
 	octave 2
@@ -165,7 +165,7 @@ Music_WildBattleGo_Ch2_loop:
 	rest 3
 	note C#, 4
 	rest 2
-	duty_cycle_pattern 1, 1, 1, 1
+	duty_cycle 1
 	volume_envelope 10, 8
 	vibrato 8, 1, 3
 	octave 4

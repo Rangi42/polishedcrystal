@@ -32,11 +32,21 @@ if !DEF(MONOCHROME)
 	RGB 00, 19, 28
 	RGB 08, 09, 28
 	RGB 00, 00, 00
-; dragonfire
+; dragon fire
 	RGB 31, 31, 31
 	RGB 31, 26, 09
 	RGB 27, 08, 22
 	RGB 03, 10, 30
+; aurora
+	RGB 31, 20, 24
+	RGB 31, 31, 07
+	RGB 13, 27, 31
+	RGB 28, 22, 31
+; berry
+	RGB 31, 31, 31
+	RGB 27, 21, 10
+	RGB 15, 11, 03
+	RGB 00, 00, 00
 else
 rept NUM_CUSTOM_BATTLE_PALETTES - 6
 	MONOCHROME_RGB_FOUR

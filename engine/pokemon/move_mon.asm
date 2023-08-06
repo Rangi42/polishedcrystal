@@ -412,12 +412,12 @@ endr
 	pop hl
 	push bc
 	inc hl
-	ld c, [hl]
-	dec hl
-	ld b, [hl]
-	dec hl
-	ld [hl], c
-	dec hl
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
+	ld b, a
+	ld a, c
+	ld [hld], a
 	ld [hl], b
 	pop bc
 	pop hl

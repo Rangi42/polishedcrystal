@@ -716,9 +716,9 @@ BattleBGEffect_RunPicResizeScript:
 	and $f
 	ld b, a
 ; store pointer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 ; get byte
 	pop hl
 	inc hl
@@ -941,7 +941,7 @@ BattleBGEffect_Water:
 	jr nc, .done
 	inc [hl]
 	inc [hl]
-	jmp Functionc8f9a
+	jmp DeformWater
 
 .done
 	call BattleBGEffects_ClearLYOverrides
@@ -1086,9 +1086,9 @@ BattleBGEffect_DoubleTeam:
 	srl a
 	push af
 .loop
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	dec a
 	jr nz, .loop
@@ -1672,7 +1672,7 @@ BattleBGEffect_BetaSendOutMon1:
 	srl a
 	ld h, HIGH(wLYOverridesBackup)
 .loop2
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	inc hl
 	dec a
@@ -2374,7 +2374,7 @@ InitSurfWaves:
 	pop bc
 	ret
 
-Functionc8f9a:
+DeformWater:
 	push bc
 	ld [wBattleAnimTemp3], a
 	ld a, e
@@ -2410,8 +2410,8 @@ Functionc8f9a:
 	ldh a, [hLYOverrideStart]
 	cp l
 	jr nc, .skip2
-	ld [hl], e
-	dec hl
+	ld a, e
+	ld [hld], a
 .skip2
 	ld a, [wBattleAnimTemp1]
 	add $4

@@ -10,7 +10,7 @@ Music_EternaForestDPPt:
 	channel 4, Music_EternaForestDPPt_Ch4
 
 Music_EternaForestDPPt_Ch1:
-	tempo $88
+	tempo 136
 	volume 7, 7
 Music_EternaForestDPPt_Ch1_loop:
 	note_type 12, 8, 2

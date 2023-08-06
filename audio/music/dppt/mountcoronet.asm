@@ -361,38 +361,6 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	octave 4
 	note D_, 2
 	sound_jump Music_MountCoronetDPPt_Ch1_loop
-;	notetype $6, $84
-;	octave 5
-;	note G_, 1
-;	note F_, 1
-;	note E_, 1
-;	note C#, 1
-;	tempo 168
-;	notetype $C, $87
-;	note C#, 10
-;	notetype $6, $87
-;	tempo 172
-;	note E_, 1
-;	note C#, 1
-;	octave 4
-;	note A#, 1
-;	intensity $80
-;	note G_, 1
-;	notetype $C, $80
-;	note G_, 9
-;	tempo 188
-;	intensity $87
-;	note G_, 6
-;	note A#, 1
-;	note G_, 1
-;	note E_, 1
-;	note C#, 1
-;	octave 3
-;	tempo 198
-;	intensity $80
-;	note A#, 8
-;	intensity $87
-;	note A#, 6
 
 Music_MountCoronetDPPt_Ch2:
 	pitch_offset 1
@@ -553,7 +521,6 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 8
 	rest 2
 	octave 3
-	;;;; problem section
 	note C_, 6
 	rest 4
 	note C_, 4
@@ -563,7 +530,6 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note A#, 8
 	note A#, 8
 	note A#, 6
-	;;;;
 	octave 3
 	note F_, 1
 	octave 4
@@ -614,13 +580,11 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	octave 4
 	duty_cycle 3
 	volume_envelope 11, 5
-	;quarter
 	note C_, 4
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	;triplet
 	note_type 8, 11, 5
 	note C_, 4
 	note C_, 2
@@ -639,13 +603,11 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 2
 	note D_, 2
 	rest 6
-	;quartet
 	note_type 12, 11, 5
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	;triplet
 	note_type 8, 11, 5
 	note C_, 4
 	note C_, 2
@@ -654,7 +616,6 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 2
 	note C_, 4
 	note C_, 2
-	;quartet
 	note_type 12, 11, 5
 	rest 2
 	note C_, 1
@@ -664,7 +625,6 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note A#, 1
 	note G_, 1
 	note E_, 1
-	;triplet
 	note_type 8, 11, 5
 	note A#, 2
 	note A#, 2
@@ -772,48 +732,6 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	volume_envelope 7, 7
 	note G#, 6
 	sound_jump Music_MountCoronetDPPt_Ch2_loop
-;	octave 4
-;	intensity $80
-;	note G_, 6
-;	intensity $87
-;	note G_, 6
-;	note E_, 1
-;	note G_, 1
-;	note E_, 1
-;	intensity $60
-;	note C#, 9
-;	intensity $67
-;	note C#, 6
-;	octave 3
-;	intensity $80
-;	note G_, 6
-;	intensity $87
-;	note G_, 6
-;	note E_, 1
-;	note G_, 1
-;	note E_, 1
-;	intensity $60
-;	note C#, 9
-;	intensity $67
-;	note C#, 6
-
-	;note __, 4
-	;octave 4
-	;note C_, 6
-	;intensity $85
-	;note D_, 8
-	;intensity $45
-	;note C_, 10
-	;note C_, 8
-	;octave 3
-	;note A#, 6
-	;octave 4
-	;intensity $85
-	;note C_, 8
-	;octave 3
-	;intensity $45
-	;note A#, 10
-	;note A#, 4
 
 Music_MountCoronetDPPt_Ch3:
 	stereo_panning TRUE, TRUE

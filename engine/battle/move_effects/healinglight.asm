@@ -31,7 +31,7 @@ BattleCommand_healweather:
 .synthesis_anim
 	ld a, $2
 .got_anim
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 
 	call GetWeatherAfterUserUmbrella

@@ -12,6 +12,14 @@ MACRO ln ; r, hi, lo[, hi, lo]
 	endc
 ENDM
 
+MACRO lp ; r, species[, form]
+	if _NARG == 2
+		lb \1, HIGH(\2) << MON_EXTSPECIES_F, LOW(\2)
+	else
+		lb \1, HIGH(\2) << MON_EXTSPECIES_F | \3, LOW(\2)
+	endc
+ENDM
+
 MACRO maskbits
 ; masks just enough bits to cover the first argument
 ; the second argument is an optional shift amount

@@ -7,14 +7,14 @@ ENDM
 MACRO farcall ; bank, address
 	assert !(\1 & $8000), "cannot `farcall \1` in RAM"
 	rst FarCall
-	dbw BANK(\1), \1
+	dwb \1, BANK(\1)
 	assert warn, BANK(\1) != 0 && BANK(\1) != BANK(@), "unnecessary `farcall \1`"
 ENDM
 
 MACRO farjp ; bank, address
 	assert !(\1 & $8000), "cannot `farjp \1` in RAM"
 	rst FarCall
-	dbw BANK(\1), \1 | $8000
+	dwb \1 | $8000, BANK(\1)
 	assert warn, BANK(\1) != 0 && BANK(\1) != BANK(@), "unnecessary `farjp \1`"
 ENDM
 

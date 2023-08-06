@@ -434,7 +434,7 @@ FearowEvosAttacks:
 	db -1 ; no more level-up moves
 
 EkansEvosAttacks:
-	evo_data EVOLVE_LEVEL, 22, ARBOK
+	evo_data EVOLVE_LEVEL, 22, ARBOK, NO_FORM ; preserve pre-evo form
 	db -1 ; no more evolutions
 	db 1, WRAP
 	db 1, LEER

@@ -977,17 +977,17 @@ DrawPackGFX:
 	; place pack gfx
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	ld bc, .FemaleGFX
+	ld bc, FemalePackGFX
 	jr z, .got_pointers
 	ld a, [wPlayerGender]
-	ld bc, .MaleGFX
+	ld bc, MalePackGFX
 	and a ; PLAYER_MALE
 	jr z, .got_pointers
-	ld bc, .FemaleGFX
+	ld bc, FemalePackGFX
 	dec a ; PLAYER_FEMALE
 	jr z, .got_pointers
 	; PLAYER_ENBY
-	ld bc, .EnbyGFX
+	ld bc, EnbyPackGFX
 .got_pointers
 	pop af
 	ld l, a
@@ -1001,29 +1001,32 @@ DrawPackGFX:
 	lb bc, BANK("Pack Graphics"), 25
 	jmp DecompressRequest2bpp
 
-.MaleGFX:
-	dw PackM0GFX ; far-ok
-	dw PackM1GFX ; far-ok
-	dw PackM2GFX ; far-ok
-	dw PackM3GFX ; far-ok
-	dw PackM4GFX ; far-ok
-	dw PackM5GFX ; far-ok
+MalePackGFX:
+	farbank "Pack Graphics"
+	fardw PackM0GFX
+	fardw PackM1GFX
+	fardw PackM2GFX
+	fardw PackM3GFX
+	fardw PackM4GFX
+	fardw PackM5GFX
 
-.FemaleGFX:
-	dw PackF0GFX ; far-ok
-	dw PackF1GFX ; far-ok
-	dw PackF2GFX ; far-ok
-	dw PackF3GFX ; far-ok
-	dw PackF4GFX ; far-ok
-	dw PackF5GFX ; far-ok
+FemalePackGFX:
+	farbank "Pack Graphics"
+	fardw PackF0GFX
+	fardw PackF1GFX
+	fardw PackF2GFX
+	fardw PackF3GFX
+	fardw PackF4GFX
+	fardw PackF5GFX
 
-.EnbyGFX:
-	dw PackX0GFX ; far-ok
-	dw PackX1GFX ; far-ok
-	dw PackX2GFX ; far-ok
-	dw PackX3GFX ; far-ok
-	dw PackX4GFX ; far-ok
-	dw PackX5GFX ; far-ok
+EnbyPackGFX:
+	farbank "Pack Graphics"
+	fardw PackX0GFX
+	fardw PackX1GFX
+	fardw PackX2GFX
+	fardw PackX3GFX
+	fardw PackX4GFX
+	fardw PackX5GFX
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad

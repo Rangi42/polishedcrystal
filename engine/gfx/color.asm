@@ -381,25 +381,22 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
+	res 7, b
+	; fallthrough
+_ApplyWhiteTransparency:
+; Assumes the unused 16th color bit is unset.
 if !DEF(MONOCHROME)
-	push hl
-	; Remove least significant bit from each pal color.
-	ld hl, palred 30 + palgreen 30 + palblue 30
+	res 2, b
 	ld a, c
-	and l
-	ld c, a
-	ld a, b
-	and h
-	ld b, a
-	; Halve all palette colors
+	and LOW(palred 30 + palgreen 30 + palblue 30)
 	srl b
-	rr c
-	; Add 16 to each palette color.
-	ld hl, palred 16 + palgreen 16 + palblue 16
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop hl
+	rra
+	add LOW(palred 16 + palgreen 16 + palblue 16)
+	ld c, a
+	adc HIGH(palred 16 + palgreen 16 + palblue 16)
+	add b
+	sub c
+	ld b, a
 	ret
 else
 	assert HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_LIGHT) && \
@@ -885,10 +882,8 @@ LoadMapPals:
 	ld d, 0
 	ld hl, EnvironmentColorsPointers
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 
 	; Further refine by time of day
 	ld a, [wTimeOfDayPal]

@@ -294,7 +294,7 @@ HatchEggs:
 	ld a, [hld]
 	ld c, a
 	ld a, [hld]
-	ld [hl], c
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
 	dec hl
 	ld [hld], a
 
@@ -322,7 +322,6 @@ HatchEggs:
 
 	; If we hatched a Togepi, set the relevant Prof Elm event flag.
 	ld de, TOGEPI
-	assert HIGH(TOGEPI) == 0
 	call CompareSpeciesWithDE
 	jr nz, .nottogepi
 	eventflagset EVENT_TOGEPI_HATCHED
@@ -675,7 +674,7 @@ EggHatch_AnimationSequence:
 	ld [wJumptableIndex], a
 	ld a, [wCurSpecies]
 	push af
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	farcall BlankScreen
 	call DisableLCD
@@ -694,7 +693,7 @@ EggHatch_AnimationSequence:
 	call GetHatchlingFrontpic
 	ld de, vTiles2 tile $31
 	call GetEggFrontpic
-	ld de, MUSIC_EVOLUTION
+	ld e, MUSIC_EVOLUTION
 	call PlayMusic
 	call EnableLCD
 	hlcoord 7, 4

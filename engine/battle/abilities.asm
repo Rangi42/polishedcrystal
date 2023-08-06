@@ -229,6 +229,9 @@ WeatherAbility:
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
 	call GetOpponentAbility
+	inc a
+	jr z, .intimidate_ok
+	dec a
 	ld b, a
 	push af
 	farcall BufferAbility
@@ -313,7 +316,7 @@ ImposterAbility:
 
 	call DisableAnimations
 	; flags for the transform wave anim to not affect slideouts
-	farcall ShowPotentialAbilityActivation
+	call ShowPotentialAbilityActivation
 	farcall BattleCommand_transform
 	jmp EnableAnimations
 
@@ -455,15 +458,15 @@ ForewarnAbility:
 .randomize
 	; Move power was equal: randomize. This is done as follows as to give even results:
 	; 2 moves share power: 2nd move replaces 1/2 of the time
-	; 3 moves share power: 3rd move replaces 2/3 of the time
-	; 4 moves share power: 4th move replaces 3/4 of the time
+	; 3 moves share power: 3rd move replaces 1/3 of the time
+	; 4 moves share power: 4th move replaces 1/4 of the time
 	ld a, [wBuffer2]
 	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wBuffer2], a
 	inc a
 	call BattleRandomRange
 	and a
-	jr z, .loop
+	jr nz, .loop
 .replace
 	ld a, b
 	ld [wBuffer3], a
@@ -566,7 +569,7 @@ SynchronizeAbility:
 	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	; 'potential' to not run the slideout twice
-	farcall ShowPotentialAbilityActivation
+	call ShowPotentialAbilityActivation
 	farcall ResetMiss
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -1317,11 +1320,42 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
+	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
 	dbw -1, -1
+
+CudChewAbility:
+; Berries are re-indexed from $01-$7f, with $01 being FIRST_BERRY
+; if bit 7 is clear, run reconsumption routines, otherwise clear bit 7
+	assert NUM_BERRIES < $7f
+	ld a, BATTLE_VARS_CUD_CHEW_BERRY
+	call GetBattleVarAddr
+	and a
+	ret z
+	rla
+	jr nc, .eat_berry
+	ccf
+	rra
+	ld [hl], a
+	ret
+
+.eat_berry:
+	rra
+	add FIRST_BERRY - 1
+	ld [wCurItem], a
+	xor a
+	ld [hl], a
+	call DisableAnimations
+	farcall ReconsumeConfusionHealingItem
+	farcall ReconsumeHeldStatusHealingItem
+	farcall ReconsumeHPHealingItem ; also Enigma Berry
+	farcall ReconsumeStatBoostBerry ; also Lansat Berry
+	farcall ReconsumeDefendHitBerry
+	farcall ReconsumeLeppaBerry
+	jmp EnableAnimations
 
 HarvestAbility:
 ; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
@@ -1744,7 +1778,7 @@ INCLUDE "data/moves/punching_moves.asm"
 SharpnessAbility:
 ; 120% damage for slicing moves
 	ld hl, SlicingMoves
-	ln b, 6, 5 ; x1.2
+	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
 
 INCLUDE "data/moves/slicing_moves.asm"
@@ -1990,6 +2024,9 @@ EnableAnimations:
 ShowEnemyAbilityActivation::
 	call StackCallOpponentTurn
 ShowAbilityActivation::
+; Unconditionally does slideout. Consider ShowPotentialAbilityActivation
+; if you need to avoid risking repeated slideouts, or for conditional cases
+; (it checks wAnimationsDisabled).
 	push hl
 	push de
 	push bc
@@ -1997,8 +2034,35 @@ ShowAbilityActivation::
 	call GetBattleVar
 	ld b, a
 	call PerformAbilityGFX
-
 	jmp PopBCDEHL
+
+ShowPotentialAbilityActivation:
+; This avoids duplicating checks to avoid text spam. This will run
+; ShowAbilityActivation if animations are disabled (something only abilities do)
+	ld a, [wAnimationsDisabled]
+	and a
+	ret z
+	push hl
+	ld h, a
+	ldh a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	and h
+	pop hl
+	ret nz
+	call ShowAbilityActivation
+	ldh a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	push hl
+	ld h, a
+	ld a, [wAnimationsDisabled]
+	or h
+	ld [wAnimationsDisabled], a
+	pop hl
+	ret
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)

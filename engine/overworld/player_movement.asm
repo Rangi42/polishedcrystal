@@ -881,7 +881,7 @@ endc
 	ret nz
 
 	call CheckSFX
-	ret c
+	ret nz
 	ld de, SFX_BUMP
 	jmp PlaySFX
 

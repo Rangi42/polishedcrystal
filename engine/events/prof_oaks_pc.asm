@@ -61,7 +61,7 @@ ProfOaksPCBoot:
 ProfOaksPCRating:
 	call Rate
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	pop de
 	call PlaySFX

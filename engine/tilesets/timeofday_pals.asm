@@ -48,10 +48,10 @@ _TimeOfDayPals::
 ; push palette
 	ld c, 4 ; NUM_PAL_COLORS
 .push
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
 	push de
 	dec c
 	jr nz, .push
@@ -78,10 +78,10 @@ _TimeOfDayPals::
 	ld e, 4 ; NUM_PAL_COLORS
 .pop
 	pop bc
-	ld [hl], c
-	dec hl
-	ld [hl], b
-	dec hl
+	ld a, c
+	ld [hld], a
+	ld a, b
+	ld [hld], a
 	dec e
 	jr nz, .pop
 
@@ -90,6 +90,7 @@ _TimeOfDayPals::
 	ldh [rSVBK], a
 
 ; update palettes
+	farcall CheckForUsedObjPals
 	call _UpdateTimePals
 	call DelayFrame
 
@@ -136,11 +137,10 @@ FillWhiteBGColor:
 	ld a, $5
 	ldh [rSVBK], a
 
-	ld hl, wBGPals1
+	ld hl, wBGPals1 palette 0
 	ld a, [hli]
 	ld e, a
-	ld a, [hli]
-	ld d, a
+	ld d, [hl]
 	ld hl, wBGPals1 palette 1
 	ld c, 6
 .loop

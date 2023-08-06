@@ -49,7 +49,6 @@ TinTowerHoOh:
 	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_HO_OH
 .nocatch
-	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	end
 
 HoOhText:

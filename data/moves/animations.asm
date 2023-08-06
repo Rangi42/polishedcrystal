@@ -1605,7 +1605,8 @@ BattleAnim_HyperBeam:
 	anim_ret
 
 BattleAnim_AuroraBeam:
-	anim_1gfx ANIM_GFX_BEAM
+	anim_1gfx ANIM_GFX_BEAM_LIGHT
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_AURORA
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
 	anim_wait 64
@@ -1814,21 +1815,32 @@ BattleAnim_Recover_branch:
 	anim_ret
 
 BattleAnim_HeldItemTrigger:
+	anim_jumpif 1, .alternate
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_call BattleAnim_TargetObj_1Row
 	anim_sound 0, 0, SFX_FULL_HEAL
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $30
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $31
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $32
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $33
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $34
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $35
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $36
-	anim_obj ANIM_OBJ_RECOVER,   5, 4,  11, 0, $37
-	anim_wait 64
+	anim_call BattleAnim_Recover_branch
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
 	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+.alternate
+	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_BERRY
+	anim_2gfx ANIM_GFX_BERRY, ANIM_GFX_BUBBLE
+	anim_sound 0, 0, SFX_SWITCH_POKEMON
+	anim_obj ANIM_OBJ_BERRY, 60, 104, $10
+	anim_wait 48
+	anim_sound 0, 0, SFX_BITE
+	anim_wait 24
+	anim_sound 0, 0, SFX_BITE
+	anim_wait 24
+	anim_sound 0, 0, SFX_BITE
+	anim_wait 16
+	anim_sound 0, 0, SFX_FULL_HEAL
+	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
+	anim_call BattleAnim_Recover_branch
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
 	anim_ret
 
 BattleAnim_Roost:
@@ -4987,25 +4999,37 @@ BattleAnim_MetalClaw:
 	anim_wait 32
 	anim_ret
 
-; Dragon Claw animation from Pokémon Prism
 BattleAnim_DragonClaw:
 	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGON_FIRE
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_FIRE
-	anim_obp0 0, 1, 2, 3
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
+	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+.loop
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 44, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 36, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 52, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 28, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 60, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 20, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 68, 108, $8
+	anim_wait 2
+	anim_loop 2, .loop
+	anim_wait 16
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
+	anim_wait 1
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
 	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 19, 0,  5, 0, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 4,  4, 4, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 0,  4, 0, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 17, 4,  3, 4, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_BURNED,  15, 0, 8, 4, 6
-	anim_obj ANIM_OBJ_BURNED,  14, 0, 7, 4, 7
-	anim_obj ANIM_OBJ_BURNED,  13, 0, 6, 4, 8
-	anim_wait 16
-	anim_sound 0, 0, SFX_BURN
-	anim_wait 16
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 144, 48, $0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 140, 44, $0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 136, 40, $0
+	anim_wait 32
 	anim_ret
 
 BattleAnim_ShadowClaw:

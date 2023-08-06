@@ -10,7 +10,7 @@ Music_Route209DPPt:
 	channel 4, Music_Route209DPPt_Ch4
 
 Music_Route209DPPt_Ch1:
-	tempo $E0
+	tempo 224
 	volume 7, 7
 	note_type 12, 9, 2
 	duty_cycle 1

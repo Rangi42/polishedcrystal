@@ -1,6 +1,7 @@
 Random::
-	; just like the stock RNG, this exits with the value in [hRandomSub]
-	; it also stores a random value in [hRandomAdd]
+; just like the stock RNG, this exits with the value in [hRandomSub]
+; it also stores a random value in [hRandomAdd]
+; Returns z if the result was 0.
 	push hl
 	push de
 	push bc

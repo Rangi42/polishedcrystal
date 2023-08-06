@@ -374,7 +374,7 @@ endr
 	ld hl, Text_EvolvedIntoPKMN
 	call PrintTextboxText
 
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	ld de, SFX_CAUGHT_MON
 	call PlayWaitSFX
@@ -771,23 +771,29 @@ GetPreEvolution:
 	cp EVOLVE_HOLDING ; This evolution type has the extra parameter of time of day comparison.
 	jr z, .inc
 	cp EVOLVE_PARTY ; This evolution type has the extra parameter of form comparison.
-	jr nz, .not_inc
+	jr nz, .check_speciesform
 .inc
 	inc hl
 
-.not_inc
+.check_speciesform
 	inc hl
 	ld a, [wCurPartySpecies]
 	cp [hl]
 	inc hl
 	jr nz, .not_preevo
+	ld a, [hl]
+	and FORM_MASK
+	push bc
+	ld b, EXTSPECIES_MASK
+	jr z, .skip_form
+	ld b, SPECIESFORM_MASK
+.skip_form
 	ld a, [wCurForm]
-	and SPECIESFORM_MASK
-	jr nz, .cont
-	inc a
-.cont
-	cp [hl]
+	xor [hl]
+	and b
+	pop bc
 	jr z, .found_preevo
+	
 .not_preevo
 	inc hl
 	ld a, [hl]
@@ -797,15 +803,33 @@ GetPreEvolution:
 .no_evolve
 	inc bc
 	ld a, b
-	cp HIGH(NUM_SPECIES)
+	cp HIGH(NUM_EXT_POKEMON)
 	jr c, .loop
 	ld a, c
-	cp LOW(NUM_SPECIES)
+	cp LOW(NUM_EXT_POKEMON)
 	jr c, .loop
 	and a
 	ret
 
 .found_preevo
+; if bc > NUM_SPECIES, lookup species+form on VariantSpeciesAndFormTable
+; else convert index directly to species+extspecies and give form of PLAIN_FORM (or parent's form if NO_FORM is used)
+	ld a, b
+	cp HIGH(NUM_SPECIES)
+	jr c, .not_variant
+	ld a, c
+	cp LOW(NUM_SPECIES)
+	jr c, .not_variant
+	sla c ; bc * 2, since VariantSpeciesAndFormTable is two bytes wide
+	rl b
+	ld hl, VariantSpeciesAndFormTable - (NUM_SPECIES * 2)
+	add hl, bc
+	ld a, [hli]
+	ld [wCurPartySpecies], a
+	ld a, [hl]
+	jr .got_form
+
+.not_variant
 	inc bc
 	ld a, c
 	ld [wCurPartySpecies], a
@@ -814,17 +838,15 @@ GetPreEvolution:
 	swap a
 	rlca
 	ld b, a
+	inc b ; extspecies | PLAIN_FORM
 	ld a, [hl] ; we're pointing to mon form
 	and FORM_MASK
-	or b
-	ld b, a
-	push bc
-	call GetSpeciesAndFormIndex ; checks if current form is a valid form for this species
-	pop bc
 	ld a, b
-	jr c, .got_form
-	and EXTSPECIES_MASK
-	inc a
+	jr nz, .got_form
+	dec b
+	ld a, [wCurForm]
+	and FORM_MASK ; inherit form from parent in case of NO_FORM
+	or b
 .got_form
 	ld [wCurForm], a
 	scf

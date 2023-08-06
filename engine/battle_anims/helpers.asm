@@ -18,8 +18,7 @@ GetBattleAnimFrame:
 	and a
 	jr z, .next_frame
 	dec [hl]
-	call .GetPointer
-	ld a, [hli]
+	call .GetPointerAndAdvance
 	push af
 	jr .okay
 
@@ -27,8 +26,7 @@ GetBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	inc [hl]
-	call .GetPointer
-	ld a, [hli]
+	call .GetPointerAndAdvance
 	cp oamrestart_command
 	jr z, .restart
 	cp oamend_command
@@ -72,7 +70,7 @@ GetBattleAnimFrame:
 	ld [hl], a
 	jr .loop
 
-.GetPointer:
+.GetPointerAndAdvance:
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld e, [hl]
@@ -80,15 +78,16 @@ GetBattleAnimFrame:
 	ld hl, BattleAnimFrameData
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	ld l, [hl]
-	ld h, $0
+	ld h, 0
 	add hl, hl
 	add hl, de
+	ld a, [hli]
 	ret
 
 GetBattleAnimOAMPointer:
@@ -109,8 +108,8 @@ LoadBattleAnimGFX:
 	add hl, de
 	add hl, de
 	add hl, de
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
+	ld c, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

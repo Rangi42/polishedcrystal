@@ -167,7 +167,7 @@ _PlayersHousePC:
 	ld b, $1
 	call _PlayersPC
 	and a
-	jr nz, .asm_156f9
+	jr nz, .changed_deco_tiles
 	call LoadMapPart
 	call ApplyTilemap
 	call UpdateSprites
@@ -175,7 +175,7 @@ _PlayersHousePC:
 	ld c, $0
 	ret
 
-.asm_156f9
+.changed_deco_tiles
 	call ClearBGPalettes
 	ld c, $1
 	ret
@@ -199,18 +199,18 @@ _PlayersPC:
 	ld [wPCItemsScrollPosition], a
 	ld hl, PlayersPCMenuData
 	call LoadMenuHeader
-.asm_15722
+.loop
 	call UpdateTimePals
 	call DoNthMenu
-	jr c, .asm_15731
+	jr c, .turn_off
 	call MenuJumptable
-	jr nc, .asm_15722
-	jr .asm_15732
+	jr nc, .loop
+	jr .done
 
-.asm_15731
+.turn_off
 	xor a
 
-.asm_15732
+.done
 	jmp ExitMenu
 
 PlayersPCMenuData:

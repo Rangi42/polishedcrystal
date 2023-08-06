@@ -199,7 +199,7 @@ BattleCommand_checkturn:
 	xor a
 	ld [wAttackMissed], a
 	ld [wEffectFailed], a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld [wAlreadyDisobeyed], a
 	ld [wAlreadyExecuted], a
 
@@ -486,13 +486,14 @@ VerifyChosenMove:
 ; Used to avoid problems caused by Struggle or similar.
 	ldh a, [hBattleTurn]
 	and a
+	ld a, [wCurMoveNum]
 	ld de, wPlayerMoveStructAnimation
 	ld hl, wBattleMonMoves
 	jr z, .got_move
+	ld a, [wCurEnemyMoveNum]
 	ld de, wEnemyMoveStructAnimation
 	ld hl, wEnemyMonMoves
 .got_move
-	ld a, [wCurMoveNum]
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -1111,7 +1112,7 @@ BattleCommand_critical:
 	ld c, 0
 	jr nz, .Ability
 
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld c, 0
 	ld a, [hl]
 	cp LUCKY_PUNCH
@@ -1173,7 +1174,8 @@ BattleCommand_critical:
 	ld hl, CriticalHitChances
 	ld b, 0
 	add hl, bc
-	call BattleRandom
+	ld a, 24
+	call BattleRandomRange
 	cp [hl]
 	ret nc
 .guranteed_crit
@@ -1228,17 +1230,7 @@ UserValidBattleItem:
 
 	; Check exact species+form.
 	ld a, [hl]
-	xor b
-	jr z, .matched
-
-	; If this isn't just a form mismatch, species is wrong.
-	cp EXTSPECIES_MASK
-	jr nc, .next
-
-	; Otherwise, see if the table explicitly defines a form. If it doesn't,
-	; i.e. form=0, any form is OK.
-	xor b ; Reverses previous xor
-	and FORM_MASK
+	call CompareSpeciesForm
 	jr z, .matched
 .next
 	inc hl
@@ -1574,9 +1566,9 @@ _CheckTypeMatchup:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
 	ld c, [hl]
+	ld b, a
 	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, InverseTypeMatchups
@@ -2236,7 +2228,7 @@ BattleCommand_lowersub:
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, SUBSTITUTE
 	jmp LoadAnim
 
@@ -2315,7 +2307,7 @@ BattleCommand_moveanimnosub:
 
 .normal_move
 	xor a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 .pursuit
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2337,10 +2329,10 @@ BattleCommand_moveanimnosub:
 .multihit
 .conversion
 .doublehit
-	ld a, [wKickCounter]
+	ld a, [wBattleAnimParam]
 	and 1
 	xor 1
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, [de]
 	cp $1
 	push af
@@ -2367,7 +2359,7 @@ StatUpDownAnim:
 
 	xor a
 	ld [wNumHits], a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2388,7 +2380,7 @@ BattleCommand_raisesub:
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	ld a, $2
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, SUBSTITUTE
 	jmp LoadAnim
 
@@ -2573,7 +2565,7 @@ GetFailureResultText:
 	ld hl, CrashedText
 	call StdBattleTextbox
 	ld a, $1
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call LoadMoveAnim
 	ld c, $1
 	jmp TakeOpponentDamage
@@ -2721,7 +2713,7 @@ BattleCommand_startloop:
 	ld a, 5
 	jr z, .got_count
 	push hl
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
@@ -2864,38 +2856,38 @@ CheckSheerForceNegation:
 	or 1
 	ret
 
+ConsumeStolenOpponentItem::
+; Separate function, since used items/cud chew berry shouldn't (necessarily)
+; be updated when force-eating a berry via Bug Bite
+	call StackCallOpponentTurn
+.Function:
+	call GetConsumedItemVars
+	jr _ConsumeUserItem
+
 ConsumeOpponentItem::
 	call StackCallOpponentTurn
 ConsumeUserItem::
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wCurBattleMon]
-	ld de, wBattleMonItem
-	ld hl, wPartyMon1Item
-	jr z, .got_item_pointers
-	ld a, [wCurOTMon]
-	ld de, wEnemyMonItem
-	ld hl, wOTPartyMon1Item
-.got_item_pointers
-	call GetPartyLocation
-
+	call GetConsumedItemVars
 	; Air Balloons are consumed permanently, so don't write it to UsedItems
 	ld a, [de]
+	ld [wCurItem], a
 	cp AIR_BALLOON
-	jr z, .consume_item
+	jr z, _ConsumeUserItem
 	push hl
 	push af
 	call GetUsedItemAddr
 	pop af
 	ld [hl], a
 	pop hl
+	call SetCudChewBerry
 
-.consume_item
+_ConsumeUserItem::
 	xor a
 	ld [de], a
 
 	ld a, [hl]
 	ld d, a
+	ld [wCurItem], a
 	xor a
 	ld [hl], a
 	ldh a, [hBattleTurn]
@@ -2903,8 +2895,6 @@ ConsumeUserItem::
 	jr nz, .apply_unburden
 
 	; For players, maybe remove the backup item too if we're dealing with a berry
-	ld a, d
-	ld [wCurItem], a
 	push de
 	push bc
 	farcall CheckItemPocket
@@ -2932,6 +2922,36 @@ ConsumeUserItem::
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	set SUBSTATUS_UNBURDEN, [hl]
+	ret
+
+GetConsumedItemVars::
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wCurBattleMon]
+	ld de, wBattleMonItem
+	ld hl, wPartyMon1Item
+	jr z, .got_item_pointers
+	ld a, [wCurOTMon]
+	ld de, wEnemyMonItem
+	ld hl, wOTPartyMon1Item
+.got_item_pointers
+	jmp GetPartyLocation
+
+SetCudChewBerry::
+; Uses item in wCurItem to set user's cud chew Berry, if applicable
+	call GetTrueUserAbility
+	cp CUD_CHEW
+	ret nz
+	farcall CheckItemPocket
+	cp BERRIES
+	ret nz
+	push hl
+	ld a, BATTLE_VARS_CUD_CHEW_BERRY
+	call GetBattleVarAddr
+	ld a, [wCurItem]
+	add $80 - FIRST_BERRY + 1 ; 1-index berries from $01-$7f, with bit 7 set as the timer
+	ld [hl], a
+	pop hl
 	ret
 
 BattleCommand_postfainteffects:
@@ -2968,7 +2988,7 @@ BattleCommand_postfainteffects:
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	ld a, DESTINY_BOND
 	call LoadAnim
 	call SwitchTurn
@@ -3199,6 +3219,7 @@ CheckEndMoveEffects:
 	ret z
 	call GetFutureSightUser
 	ret nz
+	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
 	ld a, [wDamageTaken]
@@ -3217,6 +3238,35 @@ CheckStatHerbs:
 	ld a, b
 	ldh [hBattleTurn], a
 	ret
+
+CheckThroatSpray:
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	ld a, [wAttackMissed]
+	and a
+	ret nz
+	
+	call HasUserFainted
+	ret z
+
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_THROAT_SPRAY
+	ret nz
+	
+	push bc
+	call GetCurItemName
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInByteArray
+	pop bc
+	ret nc
+
+	ld b, c
+	jmp RaiseStatWithItem
 
 CheckWhiteHerbEjectPack:
 ; Preserve b, which holds true player's turn (to handle Eject Pack switches).
@@ -3428,8 +3478,6 @@ EndMoveDamageChecks:
 	jr z, .life_orb
 	cp HELD_SHELL_BELL
 	jr z, .shell_bell
-	cp HELD_THROAT_SPRAY
-	jr z, .throat_spray
 	cp HELD_SWITCH
 .deferred_switch
 	ret nz
@@ -3493,18 +3541,6 @@ EndMoveDamageChecks:
 	predef SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
 	jmp StdBattleTextbox
-
-.throat_spray
-	push bc
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld hl, SoundMoves
-	call IsInByteArray
-	pop bc
-	ret nc
-
-	ld b, c
-	jr RaiseStatWithItem
 
 .defend_hit
 	ld a, c
@@ -3627,9 +3663,7 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
-if !DEF(FAITHFUL)
 	call HailDefenseBoost
-endc
 	call DittoMetalPowder
 	call UnevolvedEviolite
 
@@ -3778,17 +3812,13 @@ CheckAttackItemBoost:
 	push de
 	push hl
 	ld b, a
+	ld a, MON_ITEM
 	call TrueUserPartyAttr
 	cp b
 	pop hl
-	call z, SpeciesItemBoost
+	call z, TrueUserValidBattleItem
 	pop de
 	pop bc
-	ret
-
-SpeciesItemBoost:
-; Helper function for items boosting (Sp.) Atk, i.e. Thick Club/Light Ball.
-	call TrueUserValidBattleItem
 	ret nz
 
 	; Double the stat
@@ -4042,6 +4072,9 @@ BattleCommand_damagecalc:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
+	jr z, .no_flash_fire
+	call GetOpponentAbility
+	cp NEUTRALIZING_GAS
 	jr z, .no_flash_fire
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
@@ -4422,7 +4455,7 @@ TakeOpponentDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 .did_no_damage
 	jmp RefreshBattleHuds
 
@@ -4904,8 +4937,8 @@ HandleBigRoot:
 	xor a
 	ld hl, hMultiplicand
 	ld [hli], a
-	ld [hl], b
-	inc hl
+	ld a, b
+	ld [hli], a
 	ld [hl], c
 	ld hl, hMultiplier
 	ld [hl], 13
@@ -5162,7 +5195,7 @@ DisplayStatusProblem:
 	ret z ; Nothing happened?
 
 	ld e, a
-	call ShowPotentialAbilityActivation
+	farcall ShowPotentialAbilityActivation
 	ld bc, 4
 	ld hl, StatusProblemTable - 4
 .loop
@@ -5584,7 +5617,7 @@ BattleCommand_charge:
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call LoadMoveAnim
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -6375,7 +6408,7 @@ GetUserItemAfterUnnerve::
 	pop hl
 	pop de
 	pop bc
-	ret c
+	ret nc
 	ld hl, NoItem
 	ld b, HELD_NONE
 	ret
@@ -6414,11 +6447,11 @@ AnimateCurrentMove:
 	push hl
 	push de
 	push bc
-	ld a, [wKickCounter]
+	ld a, [wBattleAnimParam]
 	push af
 	call BattleCommand_lowersub
 	pop af
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call LoadMoveAnim
 	call BattleCommand_raisesub
 	jmp PopBCDEHL
@@ -6479,34 +6512,6 @@ PlayUserBattleAnim:
 CallBattleCore:
 	ld a, BANK(BattleCore)
 	jmp FarCall_hl
-
-ShowPotentialAbilityActivation:
-; This avoids duplicating checks to avoid text spam. This will run
-; ShowAbilityActivation if animations are disabled (something only abilities do)
-	ld a, [wAnimationsDisabled]
-	and a
-	ret z
-	push hl
-	ld h, a
-	ldh a, [hBattleTurn]
-	inc a
-	rrca
-	rrca
-	and h
-	pop hl
-	ret nz
-	farcall ShowAbilityActivation
-	ldh a, [hBattleTurn]
-	inc a
-	rrca
-	rrca
-	push hl
-	ld h, a
-	ld a, [wAnimationsDisabled]
-	or h
-	ld [wAnimationsDisabled], a
-	pop hl
-	ret
 
 AnimateFailedMove:
 	ld a, [wAnimationsDisabled]

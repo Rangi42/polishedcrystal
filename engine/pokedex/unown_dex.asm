@@ -32,19 +32,18 @@ _Pokedex_Unown:
 	pop af
 	jr z, .not_caught
 
-	; Since Unown forms are 1-indexed, load pointer table from UnownWords-2.
+	; Since Unown forms are 1-indexed, load table from UnownWords-1.
 	call Pokedex_GetUnownCursorForm
 	ld a, b
 	push af
-	add a
-	add LOW(UnownWords - 2)
-	ld l, a
-	adc HIGH(UnownWords - 2)
-	sub l
-	ld h, a
-	ld a, [hli]
-	ld d, [hl]
 	ld e, a
+	ld d, 0
+	ld hl, UnownWords - 1
+	add hl, de
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	hlcoord 10, 5
 	rst PlaceString
 	pop af

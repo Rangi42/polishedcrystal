@@ -272,7 +272,7 @@ SwapPartyMons:
 
 	; Swap partymon struct
 	ld hl, wPartyMon1
-	ld c, PARTYMON_STRUCT_LENGTH
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call DoPartySwap
 
 	; Swap nickname
@@ -440,7 +440,8 @@ FlushStorageSystem:
 	ld c, 1
 .inner_loop
 	call GetStorageBoxPointer
-	call _AllocateStorageFlag
+	; If e==0 (null entry), this will not set any flag.
+	call SetStorageAllocationFlag
 	ld a, c
 	inc c
 	cp MONS_PER_BOX
@@ -916,8 +917,8 @@ DecodeTempMon:
 .replace_a
 	ld c, a
 .replace
-	ld [hl], c
-	inc hl
+	ld a, c
+	ld [hli], a
 	dec b
 	jr nz, .charmap_loop
 
@@ -1367,7 +1368,7 @@ AllocateStorageFlag:
 ; Allocates the given storage flag. Returns nz if storage is already in use.
 	call IsStorageUsed
 	ret nz
-	call _AllocateStorageFlag
+	call SetStorageAllocationFlag
 	xor a
 	ret
 
@@ -1375,7 +1376,7 @@ IsStorageUsed:
 ; Returns z if the given storage slot is unused. Preserves wTempMon.
 	ld a, CHECK_FLAG
 	jr StorageFlagAction
-_AllocateStorageFlag:
+SetStorageAllocationFlag:
 	ld a, SET_FLAG
 	; fallthrough
 StorageFlagAction:
@@ -1396,8 +1397,6 @@ StorageFlagAction:
 	ld b, a
 
 	call .do_it
-	; Stack call doesn't preserve flags.
-	and a
 	jmp PopBCDEHL
 
 .do_it

@@ -17,12 +17,12 @@ GDMACopy:
 ; Copy a+1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
 	push hl
 	ld hl, rHDMA1
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 _GDMACopy:
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], c
 	ldh [rHDMA5], a
@@ -69,6 +69,11 @@ UpdateBGMapBuffer::
 
 	ld bc, wBGMapPalBuffer
 	ld de, wBGMapBuffer
+
+; We increment the low byte of a pointer, so ensure these buffers
+; dont cross a 256 byte boundary
+assert HIGH(wBGMapBuffer) == HIGH(wBGMapBufferEnd)
+assert HIGH(wBGMapPalBuffer) == HIGH(wBGMapPalBufferEnd)
 
 .next
 ; Copy a pair of 16x8 blocks (one 16x16 block)

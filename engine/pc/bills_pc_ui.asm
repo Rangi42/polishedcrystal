@@ -398,14 +398,14 @@ UseBillsPC:
 	inc a
 	ld bc, -SCREEN_WIDTH + (wAttrmap - wTilemap)
 	add hl, bc
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a == d)
 	inc hl
 	ld [hl], e
 	ld bc, SCREEN_WIDTH - 1
 	add hl, bc
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a == d)
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a == d)
 	inc e
 	ld bc, -SCREEN_WIDTH + 2 + (wTilemap - wAttrmap)
 	add hl, bc
@@ -1549,7 +1549,34 @@ BillsPC_MenuJumptable:
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
 	farcall _OpenPartyStats
+	call BillsPC_MoveCursorAfterStatScreen
 	jmp BillsPC_ReturnFromTransistion
+
+BillsPC_MoveCursorAfterStatScreen:
+; Uses wTempMonBox+wTempMonSlot to determine where the cursor should be after scrolling through the stats screen
+; Check if we're dealing with party or box
+	ld a, [wTempMonBox]
+	and a
+	push af
+	ld c, 4 ; number of box columns
+	jr nz, .got_divisor
+	ld c, 2 ; number of party columns
+.got_divisor
+	ld a, [wTempMonSlot]
+	dec a ; wTempMonSlot is 1-offset otherwise
+	call SimpleDivide
+	swap b ; quotient is row offset
+	add b ; add to remainder (column offset)
+	ld b, a
+	pop af
+	ld a, $12 ; box baseline $YX
+	jr nz, .got_baseline
+	ld a, $30 ; party baseline $YX
+.got_baseline
+	add b
+	; cursor is now in a
+	ld [wBillsPC_CursorPos], a
+	ret
 
 BillsPC_CursorPick1:
 ; Plays the first part of the cursor pickup animation
@@ -2122,6 +2149,7 @@ BillsPC_Moves:
 	jmp nz, BillsPC_PrintText
 	call BillsPC_PrepareTransistion
 	farcall _ManagePokemonMoves
+	call BillsPC_MoveCursorAfterStatScreen
 	jr BillsPC_ReturnFromTransistion
 
 .CantCheckEggMoves:
@@ -2993,10 +3021,10 @@ endr
 	ld d, 0
 	ld hl, BillsPC_ThemeNames
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld d, h
+	ld e, l
 	pop hl
 	rst PlaceString
 	ret

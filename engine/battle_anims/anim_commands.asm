@@ -31,10 +31,10 @@ _PlayBattleAnim:
 	ld c, 1
 	ldh a, [rKEY1]
 	bit 7, a
-	jr nz, .asm_cc0ff
+	jr nz, .got_speed
 	ld c, 3
 
-.asm_cc0ff
+.got_speed
 	ld hl, hVBlank
 	ld a, [hl]
 	push af
@@ -322,12 +322,10 @@ BattleAnimCmd_Ret:
 	ld hl, wBattleAnimFlags
 	res 1, [hl]
 	ld hl, wBattleAnimParent
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -338,17 +336,15 @@ BattleAnimCmd_Call:
 	ld d, a
 	push de
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
 	ld hl, wBattleAnimParent
-	ld [hl], e
-	inc hl
+	ld [hli], a
 	ld [hl], d
 	pop de
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ld hl, wBattleAnimFlags
 	set 1, [hl]
@@ -360,8 +356,8 @@ BattleAnimCmd_Jump:
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -394,8 +390,8 @@ DoBattleAnimLoop:
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -403,13 +399,13 @@ DoBattleAnimLoop:
 	ld hl, wBattleAnimFlags
 	res 2, [hl]
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	inc de
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 
@@ -425,20 +421,20 @@ BattleAnimCmd_JumpUntil:
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
 .dont_jump
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	inc de
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 
@@ -459,13 +455,13 @@ BattleAnimCmd_IfVarEqual:
 	jr z, .jump
 
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	inc de
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 
@@ -475,8 +471,8 @@ BattleAnimCmd_IfVarEqual:
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -487,13 +483,13 @@ BattleAnimCmd_IfParamEqual:
 	jr z, .jump
 
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	inc de
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
 
@@ -503,8 +499,8 @@ BattleAnimCmd_IfParamEqual:
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -516,23 +512,24 @@ BattleAnimCmd_IfParamAnd:
 	jr nz, .jump
 
 	ld hl, wBattleAnimAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	inc de
 	inc de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 	ret
+
 .jump
 	call GetBattleAnimByte
 	ld e, a
 	call GetBattleAnimByte
 	ld d, a
 	ld hl, wBattleAnimAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
@@ -1241,9 +1238,9 @@ ClearBattleAnims:
 	rst ByteFill
 
 	ld hl, wFXAnimIDLo
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld hl, BattleAnimations
 	add hl, de
 	add hl, de

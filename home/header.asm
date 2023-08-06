@@ -6,24 +6,15 @@
 SECTION "rst00 EntryPoint", ROM0[$0000]
 EntryPoint::
 	di
-	jmp Rst0Crash
-
-	ds 4 ; unused
-
-
-SECTION "rst08 FarCall", ROM0[$0008]
-FarCall:: ; no-optimize stub jump
-	jr RstFarCall
-
-	ds 3 ; unused
+	xor a ; ld a, ERR_RST_0
+	jmp Crash
 
 SwitchToMapScriptsBank::
 	ld a, [wMapScriptsBank]
 	assert @ == Bankswitch, "cannot fall through to Bankswitch"
 	; fallthrough
 
-
-SECTION "rst10 Bankswitch", ROM0[$0010]
+SECTION "rst08 Bankswitch", ROM0[$0008]
 Bankswitch::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
@@ -33,6 +24,23 @@ _de_::
 	push de
 DoNothing:: ; no-optimize stub function
 	ret
+
+
+SECTION "rst10 FarCall", ROM0[$0010]
+FarCall::
+; Call the following dab pointer.
+; Preserves af, bc, de, hl.
+	dec sp ; push space for the return bank
+; Stack layout:
+; +1 pointer to function address and bank followed by return location
+; +0 nothing
+	call _RstFarCall
+; Stack layout:
+; +1 return address
+; +0 return bank
+	jmp _ReturnFarCall
+
+	ds 1 ; unused
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
@@ -47,7 +55,6 @@ FarCopyWRAM::
 	call StackCallInWRAMBankA
 	assert @ == CopyBytes, "cannot fall through to CopyBytes"
 	; fallthrough
-
 
 SECTION "rst20 CopyBytes", ROM0[$0020]
 CopyBytes::
@@ -151,10 +158,7 @@ SECTION "High Home", ROM0[$005b]
 ;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
 
-INCLUDE "home/farcall.asm"
 INCLUDE "home/jumptable.asm"
-
-	ds 2 ; unused
 
 
 SECTION "Header", ROM0[$0100]
@@ -172,4 +176,7 @@ if DEF(ANALOGUE_POCKET)
 endc
 
 	; The rest of the header is handled by rgbfix.
-	ds $0150 - @, $00
+	ds $014e - @, $00
+
+RomHeaderChecksum::
+	ds 2, $00

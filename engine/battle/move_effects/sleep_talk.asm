@@ -75,11 +75,11 @@ BattleCommand_sleeptalk:
 	ld [hl], e
 	call CheckUserIsCharging
 	jr nz, .charging
-	ld a, [wKickCounter]
+	ld a, [wBattleAnimParam]
 	push af
 	call BattleCommand_lowersub
 	pop af
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 .charging
 	call LoadMoveAnim
 	ld a, [wCurMoveNum] ; preserve cursor position

@@ -1439,10 +1439,10 @@ GetFacingTileCoord::
 	ld de, .Directions
 	add hl, de
 
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
 
 	ld a, [hli]
 	ld h, [hl]
@@ -1779,9 +1779,9 @@ GetAnyMapField::
 .Function:
 	call GetAnyMapPointer
 	add hl, de
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	ret
 
 SwitchToMapAttributesBank::

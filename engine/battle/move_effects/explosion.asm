@@ -22,7 +22,7 @@ BattleCommand_selfdestruct:
 	ld [hli], a
 	ld [hl], a
 	ld a, $1
-	ld [wKickCounter], a
+	ld [wBattleAnimParam], a
 	call BattleCommand_lowersub
 	call LoadMoveAnim
 	ld a, BATTLE_VARS_SUBSTATUS4

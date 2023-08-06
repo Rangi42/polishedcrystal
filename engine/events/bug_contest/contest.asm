@@ -445,19 +445,14 @@ Special_SelectRandomBugContestContestants:
 ; Select five random people to participate in the current contest.
 
 ; First we have to make sure that any old data is cleared away.
-	ld c, 10 ; Number of people to choose from.
-	ld hl, BugCatchingContestantEventFlagTable
+	lb bc, RESET_FLAG, 10 ; Action, Number of people to choose from.
+	ld de, EVENT_BUG_CATCHING_CONTESTANT_1A ; First event in the sequence.
 .loop1
 	push bc
-	push hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld b, RESET_FLAG
+	push de
 	call EventFlagAction
-	pop hl
-	inc hl
-	inc hl
+	pop de
+	inc de
 	pop bc
 	dec c
 	jr nz, .loop1
@@ -468,24 +463,10 @@ Special_SelectRandomBugContestContestants:
 	push bc
 .next
 ; Choose a flag at uniform random to be set.
-	call Random
-	cp 250
-	jr nc, .next
-	ld c, 25
-	call SimpleDivide
-	ld e, b
-	ld d, 0
-	ld hl, BugCatchingContestantEventFlagTable
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
+	ld a, 10
+	call RandomRange
 ; If we've already set it, it doesn't count.
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	pop de
+	call Special_CheckBugContestContestantFlag
 	jr nz, .next
 ; Set the flag.  This will cause that sprite to not be visible in the contest.
 	ld b, SET_FLAG
@@ -498,16 +479,14 @@ Special_SelectRandomBugContestContestants:
 
 Special_CheckBugContestContestantFlag:
 ; Checks the flag of the Bug Catching Contestant whose index is loaded in a.
-; Bug: If a >= 10 when this is called, it will read beyond the table.
-	ld hl, BugCatchingContestantEventFlagTable
+; Returns de = EVENT_BUG_CATCHING_CONTESTANT_{d:a}A.
+	add LOW(EVENT_BUG_CATCHING_CONTESTANT_1A)
 	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
+	adc HIGH(EVENT_BUG_CATCHING_CONTESTANT_1A)
+	sub e
+	ld d, a
 	ld b, CHECK_FLAG
-	jmp EventFlagAction
-
-INCLUDE "data/events/bug_contest_flags.asm"
+	push de
+	call EventFlagAction
+	pop de
+	ret

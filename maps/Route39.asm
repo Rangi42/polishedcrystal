@@ -444,11 +444,9 @@ Route39AdvancedTips1Text:
 	line "Special Defense of"
 	cont "Rock-type #mon!"
 
-if !DEF(FAITHFUL)
 	para "And, Hail boosts"
 	line "the Defense of"
 	cont "Ice-type #mon!"
-endc
 	done
 
 Route39AdvancedTips2Text:

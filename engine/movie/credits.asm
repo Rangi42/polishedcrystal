@@ -15,7 +15,7 @@ Credits::
 
 	ldh a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK(wDecompressedCreditsGFX)
 	ldh [rSVBK], a
 
 	call ClearBGPalettes
@@ -76,6 +76,7 @@ Credits::
 
 .execution_loop
 	call Credits_HandleBButton
+	jr nz, .exit_credits
 	call Credits_HandleAButton
 	jr nz, .exit_credits
 
@@ -323,12 +324,10 @@ ParseCredits:
 
 .music
 ; Play the credits music.
-	ld de, MUSIC_CREDITS
-	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	pop de
+	ld e, MUSIC_CREDITS
 	call PlayMusic
 	jmp .loop
 
@@ -479,8 +478,14 @@ GetCreditsPalette:
 	call .GetPalAddress
 
 	push hl
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
 	xor a
 	call .UpdatePals
+	pop af
+	ldh [rSVBK], a
 	pop hl
 	ret
 
@@ -605,11 +610,7 @@ DecompressCreditsGFX:
 	ld hl, CreditsSequence1GFX
 .ok
 	ld b, BANK("Credits Graphics")
-	ld a, BANK(wDecompressedCreditsGFX)
 	assert wDecompressedCreditsGFX == WRAM1_Begin
-	call StackCallInWRAMBankA
-
-.Function
 	jmp FarDecompressInB
 
 INCLUDE "data/credits_script.asm"

@@ -4,8 +4,8 @@ Special::
 	add hl, de
 	add hl, de
 	add hl, de
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -340,12 +340,13 @@ CheckIfTrendyPhraseIsLucky:
 	db "Lucky@"
 
 RespawnOneOffs:
-	eventflagreset EVENT_BEAT_LAWRENCE
 	eventflagreset EVENT_BEAT_FLANNERY
-	eventflagreset EVENT_BEAT_MAYLENE
-	eventflagreset EVENT_BEAT_MARLON_AGAIN
-	eventflagreset EVENT_BEAT_KUKUI
 	eventflagreset EVENT_BEAT_KATY
+	eventflagreset EVENT_BEAT_KUKUI
+	eventflagreset EVENT_BEAT_LAWRENCE
+	eventflagreset EVENT_BEAT_MARLON_AGAIN
+	eventflagreset EVENT_BEAT_MAYLENE
+	eventflagreset EVENT_BEAT_PIERS_AGAIN
 
 	eventflagcheck EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 	jr z, .SkipSteven

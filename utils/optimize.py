@@ -336,6 +336,18 @@ patterns = {
 	(lambda line1, prev: line1.code == 'ld a, [hl]'),
 	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
 ],
+'*hl++|*hl-- = b|c|d|e': [
+	# Bad: ld [hl], b|c|d|e / inc|dec hl (unless you can't use a)
+	# Good: ld [hli|hld], a / ld b|c|d|e, a
+	(lambda line1, prev: re.match(r'ld \[hl\], [bcde]', line1.code)),
+	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
+],
+'b|c|d|e = *hl++|*hl--': [
+	# Bad: ld b|c|d|e, [hl] / inc|dec hl (unless you can't use a)
+	# Good: ld a, [hli|hld] / ld b|c|d|e, a
+	(lambda line1, prev: re.match(r'ld [bcde], \[hl\]', line1.code)),
+	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
+],
 'a == 0': [
 	# Bad: cp|or 0
 	# Bad: and $ff
@@ -408,6 +420,16 @@ patterns = {
 		and line2.code[5:7] == prev[0].code[3:5]),
 	(lambda line3, prev: line3.code == 'jp hl'),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
+],
+'Pointless hli|hld': [
+	# Bad: { ld a, [hli|hld] | ld [hli|hld], a } / { ld hl, Foo | pop hl }
+	# Good: { ld a, [hl] | ld [hl], a }
+	(lambda line1, prev: re.match(r'ld a, \[hl[-+id]\]', line1.code)
+		or re.match(r'ld \[hl[-+id]\], a', line1.code)),
+	(1, lambda line2, prev: not re.match(r'^(jr|jp|jmp|call|rst|ret|predef)', line2.code)
+		and not re.match(r'.*\bhl\b', line2.code)),
+	(lambda line3, prev: line3.code.startswith('ld hl,')
+		or line3.code == 'pop hl'),
 ],
 'Pointless jumps': [
 	# Bad: jr|jp Foo / Foo: ...

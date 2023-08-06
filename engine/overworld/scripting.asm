@@ -320,8 +320,8 @@ Script_special:
 
 Script_memcallasm:
 	call GetScriptWord
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -650,13 +650,13 @@ GetPocketName:
 	dec a
 	ld hl, ItemPocketNames
 	and $7
-	add a
 	ld e, a
 	ld d, 0
 	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld e, [hl]
+	add hl, de
+	ld e, l
+	ld d, h
 	ld hl, wStringBuffer3
 	jmp CopyName2
 
@@ -798,9 +798,9 @@ Script_trainerflagaction:
 	xor a
 	ldh [hScriptVar], a
 	ld hl, wTempTrainerEventFlagLo
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	call GetScriptByte
 	ld b, a
 	call EventFlagAction
@@ -843,7 +843,7 @@ Script_encountermusic:
 	farjp PlayTrainerEncounterMusic
 
 Script_playmusic:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	xor a
 	ld [wMusicFade], a
@@ -1071,9 +1071,9 @@ ApplyEventActionAppearDisappear:
 	ld hl, MAPOBJECT_EVENT_FLAG
 	add hl, bc
 	pop bc
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld a, -1
 	cp e
 	jr nz, .okay
@@ -1306,10 +1306,10 @@ Script_farscall:
 
 Script_memcall:
 	call GetScriptWord
-	ld b, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld e, a
 	ld d, [hl]
 	; fallthrough
 
@@ -1379,8 +1379,8 @@ Script_farsjump:
 
 Script_memjump:
 	call GetScriptWord
-	ld b, [hl]
-	inc hl
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2047,9 +2047,9 @@ Script_givepoke:
 	ld b, a
 	jr z, .ok
 	ld hl, hScriptPos
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 rept 6
 	call GetScriptByte
 endr

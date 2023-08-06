@@ -10,7 +10,7 @@ Music_GymLeaderBattleXY:
 	channel 4, Music_GymLeaderBattleXY_Ch4
 
 Music_GymLeaderBattleXY_Ch1:
-	tempo $82
+	tempo 130
 	volume 7, 7
 	duty_cycle 1
 	note_type 3, 11, 7

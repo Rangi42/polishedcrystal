@@ -166,14 +166,14 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ld [hli], a ; wMagnetTrainPosition
 	ld [hli], a ; wMagnetTrainWaitCounter
 
-	ld de, MUSIC_MAGNET_TRAIN
+	ld e, MUSIC_MAGNET_TRAIN
 	jmp PlayMusic2
 
 DrawMagnetTrain:
 	hlbgcoord 0, 0
 	xor a
 .loop
-	call GetMagnetTrainBGTiles
+	call .GetBGTiles
 	ld b, BG_MAP_WIDTH / 2
 	call .FillAlt
 	inc a
@@ -206,22 +206,22 @@ DrawMagnetTrain:
 	ret
 
 .FillAlt:
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a is the .loop counter)
 	inc hl
 	dec b
 	jr nz, .FillAlt
 	ret
 
-GetMagnetTrainBGTiles:
+.GetBGTiles:
 	push hl
 	ld e, a
 	ld d, 0
 	ld hl, MagnetTrainBGTiles
 	add hl, de
 	add hl, de
-	ld e, [hl]
+	ld e, [hl] ; no-optimize b|c|d|e = *hl++|*hl-- (a is the .loop counter)
 	inc hl
 	ld d, [hl]
 	pop hl

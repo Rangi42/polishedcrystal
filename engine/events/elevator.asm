@@ -201,10 +201,8 @@ FloorToString:
 	ld d, 0
 	ld hl, ElevatorFloorNames
 	add hl, de
+	ld e, [hl]
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	pop de
 	ret
 

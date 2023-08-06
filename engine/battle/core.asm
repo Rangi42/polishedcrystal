@@ -57,7 +57,7 @@ DoBattle:
 	ld a, d
 	and a
 	jr nz, .found_mon
-	ld a, 1
+	ld a, LOSE
 	ld [wBattleResult], a
 	jmp LostBattle
 .found_mon
@@ -765,7 +765,7 @@ ResolveFaints:
 .lost
 	ld hl, wBattleResult
 	ld a, [hl]
-	and $f0
+	and BATTLERESULT_BITMASK
 	inc a
 	ld [hl], a
 	call LostBattle
@@ -788,7 +788,7 @@ ResolveFaints:
 	ld a, 1
 	ld [wBattleEnded], a
 	ld a, [wBattleResult]
-	and $f0
+	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	scf
 	ret
@@ -810,7 +810,7 @@ ResolveFaints:
 .wontrainer
 	call WinTrainerBattle
 	ld a, [wBattleResult]
-	and $f0
+	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	scf
 	ret
@@ -1146,18 +1146,21 @@ SendInUserPkmn:
 	call GetTurnsTaken
 	ld [hl], 0
 
-	; Reset Disable and Encore statuses
+	; Reset Disable, Encore, and Cud Chew statuses
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerDisableCount
 	ld de, wPlayerEncoreCount
+	ld bc, wPlayerCudChewBerry
 	jr z, .got_encore_and_disable
 	ld hl, wEnemyDisableCount
 	ld de, wEnemyEncoreCount
+	ld bc, wEnemyCudChewBerry
 .got_encore_and_disable
 	xor a
 	ld [hl], a
 	ld [de], a
+	ld [bc], a
 
 	ldh a, [hBattleTurn]
 	and a
@@ -1505,19 +1508,6 @@ CheckFullHP:
 	cp c
 	ret
 
-StealLeppaBerry:
-	farcall GetOpponentItem
-	ld a, b
-	cp HELD_RESTORE_PP
-	ret nz
-	call PreparePPRestore
-	call GetNonfullPPMove
-	ret z
-	push bc
-	farcall ConsumeOpponentItem
-	pop bc
-	jr LeppaRestorePP
-
 PreparePPRestore:
 	ldh a, [hBattleTurn]
 	and a
@@ -1583,7 +1573,6 @@ GetNonfullPPMove:
 	push bc
 	push de
 	ld a, c
-	inc a
 	ld [wMenuCursorY], a
 	farcall GetMaxPPOfMove
 	pop de
@@ -1606,6 +1595,30 @@ GetNonfullPPMove:
 	or 1
 	ret
 
+ReconsumeLeppaBerry:
+	farcall CheckItemHeldEffect
+	cp HELD_RESTORE_PP
+	ret nz
+	call PreparePPRestore
+	call GetNonfullPPMove
+	ret z
+	push bc
+	farcall ShowAbilityActivation
+	pop bc
+	jr LeppaRestorePP
+
+StealLeppaBerry:
+	farcall GetOpponentItem
+	ld a, b
+	cp HELD_RESTORE_PP
+	ret nz
+	call PreparePPRestore
+	call GetNonfullPPMove
+	ret z
+	push bc
+	farcall SetCudChewBerry
+	farcall ConsumeStolenOpponentItem
+	pop bc
 LeppaRestorePP:
 	; Restore up to 10PP of move bc (0-3)
 	ld hl, wTempMonPP
@@ -1618,7 +1631,6 @@ LeppaRestorePP:
 	ld a, [wMenuCursorY]
 	push af
 	ld a, c
-	inc a
 	ld [wMenuCursorY], a
 	push bc
 	push de
@@ -1636,7 +1648,7 @@ LeppaRestorePP:
 
 .got_pp_to_restore
 	; d: PP to restore, bc: memory offset of move
-	call ItemRecoveryAnim
+	call CurItemRecoveryAnim
 	push bc
 	push de
 	ld hl, wTempMonMoves
@@ -2207,7 +2219,7 @@ WinTrainerBattle:
 	ld a, [wMomSavingMoney]
 	and MOM_SAVING_MONEY_MASK
 	jr z, .KeepItAll
-	ld hl, .SentToMomTexts
+	ld hl, SentToMomTexts
 	dec a
 	ld c, a
 	ld b, 0
@@ -2252,11 +2264,6 @@ WinTrainerBattle:
 	ld [hl], a
 	ret
 
-.SentToMomTexts: ; these are all used with StdBattleTextbox
-	dw SentSomeToMomText ; far-ok
-	dw SentHalfToMomText ; far-ok
-	dw SentAllToMomText ; far-ok
-
 .CheckMaxedOutMomMoney:
 	ld hl, wMomsMoney + 2
 	ld a, [hld]
@@ -2266,6 +2273,12 @@ WinTrainerBattle:
 	ld a, [hl]
 	sbc LOW(9999999 / $10000)
 	ret
+
+SentToMomTexts:
+	farbank BattleText
+	fardw SentSomeToMomText
+	fardw SentHalfToMomText
+	fardw SentAllToMomText
 
 AddBattleMoneyToAccount:
 	ld c, $3
@@ -2296,10 +2309,10 @@ AddBattleMoneyToAccount:
 
 PlayVictoryMusic:
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_WILD_VICTORY
+	ld e, MUSIC_WILD_VICTORY
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer_victory
@@ -2320,10 +2333,10 @@ PlayVictoryMusic:
 	jr .play_music
 
 .trainer_victory
-	ld de, MUSIC_GYM_VICTORY
+	ld e, MUSIC_GYM_VICTORY
 	call IsBossTrainer
 	jr c, .play_music
-	ld de, MUSIC_TRAINER_VICTORY
+	ld e, MUSIC_TRAINER_VICTORY
 
 .play_music
 	call PlayMusic
@@ -2704,10 +2717,10 @@ FinalPkmnMusicAndAnimation:
 	call IsJohtoGymLeader
 	jr nc, .no_music
 	push de
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_FINAL_POKEMON_BW
+	ld e, MUSIC_FINAL_POKEMON_BW
 	call PlayMusic
 	pop de
 .no_music
@@ -2744,10 +2757,10 @@ SetVariableBattleMusicCondition:
 	cp 3
 	jr nz, .skip_restart_music
 	; restart the music for the final track
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_GYM_LEADER_BATTLE_SWSH
+	ld e, MUSIC_GYM_LEADER_BATTLE_SWSH
 	call PlayMusic
 	ld a, 3
 .skip_restart_music
@@ -3349,12 +3362,27 @@ PursuitSwitch:
 	ld [hl], 0
 	ret
 
+ReconsumeDefendHitBerry:
+; treat it as a stat boost berry
+	farcall CheckItemParam
+	ld c, a
+	farcall CheckItemHeldEffect
+	ld b, a
+	cp HELD_DEFEND_HIT
+	ret nz
+	call ConvertDefendHitBerryToStatBoost
+	jr _HeldStatBoostBerry
+
 StealDefendHitBerry:
 ; treat it as a stat boost berry
 	farcall GetOpponentItem
 	ld a, b
 	cp HELD_DEFEND_HIT
 	ret nz
+	call ConvertDefendHitBerryToStatBoost
+	jr DoStealStatBoostBerry
+
+ConvertDefendHitBerryToStatBoost:
 	ld a, HELD_RAISE_STAT
 	ld b, a
 	ld a, c
@@ -3364,14 +3392,15 @@ StealDefendHitBerry:
 	ld a, SP_DEFENSE
 .got_stat
 	ld c, a
-	jr DoStealStatBoostBerry
+	ret
 
 StealStatBoostBerry:
 	farcall GetOpponentItem
 DoStealStatBoostBerry:
 	call _HeldStatBoostBerry
 	ret nz
-	farjp ConsumeOpponentItem
+	farcall SetCudChewBerry
+	farjp ConsumeStolenOpponentItem
 
 QuarterPinchOrGluttony::
 ; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
@@ -3392,6 +3421,11 @@ HandleStatBoostBerry:
 	ret nz
 	farjp ConsumeUserItem
 
+ReconsumeStatBoostBerry:
+	farcall CheckItemParam
+	ld c, a
+	farcall CheckItemHeldEffect
+	ld b, a
 _HeldStatBoostBerry:
 	ld a, b
 	ld b, c
@@ -3407,7 +3441,8 @@ _HeldStatBoostBerry:
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
 	pop hl
 	ret nz
-	call ItemRecoveryAnim
+	farcall ShowPotentialAbilityActivation
+	call CurItemRecoveryAnim
 	call GetCurItemName
 	ld hl, BattleText_ItemRaisedCrit
 	call StdBattleTextbox
@@ -3433,6 +3468,7 @@ _HeldStatBoostBerry:
 	ld a, [wFailedMessage]
 	and a
 	ret nz
+	farcall ShowPotentialAbilityActivation
 	farcall UseStatItemText
 
 	; Don't call CheckMirrorHerb; Bug Bite/Pluck needs to proc the copy later.
@@ -3442,6 +3478,26 @@ _HeldStatBoostBerry:
 	ld [wAttackMissed], a
 	or 1
 	ret
+
+ReconsumeHPHealingItem:
+; uses wCurItem to determine what berry to use
+; treat Enigma Berry as a HP-recovery berry
+	call CheckFullHP
+	ret z
+	ld hl, wCurItem
+	farcall CheckItemHeldEffect
+	ld b, a
+	cp HELD_ENIGMA_BERRY
+	jr nz, .continue
+	ld b, HELD_BERRY
+.continue
+	call _HeldHPHealingItem
+	ret nz
+ReconsumeBattleItem:
+	call RefreshBattleHuds
+	call GetCurItemName
+	ld hl, RecoveredUsingText
+	jmp StdBattleTextbox
 
 StealHPHealingItem:
 ; treat Enigma Berry as a HP-recovery berry
@@ -3461,7 +3517,8 @@ StealBattleItem:
 	call GetCurItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextbox
-	farjp ConsumeOpponentItem
+	farcall SetCudChewBerry
+	farjp ConsumeStolenOpponentItem
 
 HandleHPHealingItem:
 	; only restore HP if HP<=1/2
@@ -3507,12 +3564,61 @@ _HeldHPHealingItem:
 .quarter_maxhp
 	call GetQuarterMaxHP
 .got_hp_to_restore
-	call ItemRecoveryAnim
+	farcall ShowPotentialAbilityActivation
+	call CurItemRecoveryAnim
 	call RestoreHP
 	xor a
 	ret
 
+CurItemRecoveryAnim::
+	xor a
+	ld [wNumHits], a
+	ld [wBattleAnimParam], a
+	ld a, [wCurItem]
+	push af
+	jr ItemRecoveryAnim_GotItem
 ItemRecoveryAnim::
+; Runs an appropriate item recovery anim based on item type.
+	xor a
+	ld [wNumHits], a
+	ld [wBattleAnimParam], a
+	ld a, [wCurItem]
+	push af
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wBattleMonItem]
+	jr z, ItemRecoveryAnim_GotItem
+	ld a, [wEnemyMonItem]
+	; fallthrough
+ItemRecoveryAnim_GotItem::
+	and a
+	jr z, .got_item_type
+	ld [wCurItem], a
+	push hl
+	push bc
+	farcall CheckItemPocket
+	pop bc
+	pop hl
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	jr nz, .got_item_type
+	ld a, 1
+	ld [wBattleAnimParam], a
+.got_item_type
+	call _ItemRecoveryAnim
+	pop af
+	ld [wCurItem], a
+	ret
+
+BerryRecoveryAnim::
+	ld a, 1
+	ld [wBattleAnimParam], a
+	jr _ItemRecoveryAnim
+RegularRecoveryAnim::
+	xor a
+	ld [wBattleAnimParam], a
+	; fallthrough
+_ItemRecoveryAnim::
 	push hl
 	push de
 	push bc
@@ -3521,10 +3627,19 @@ ItemRecoveryAnim::
 	ld [wFXAnimIDLo], a
 	ld a, HIGH(ANIM_HELD_ITEM_TRIGGER)
 	ld [wFXAnimIDHi], a
-	xor a
-	ld [wNumHits], a
 	predef PlayBattleAnim
+	xor a
+	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
+
+ReconsumeHeldStatusHealingItem:
+	farcall CheckItemParam
+	ld c, a
+	farcall CheckItemHeldEffect
+	ld b, a
+	call _HeldStatusHealingItem
+	ret z
+	jmp ReconsumeBattleItem
 
 StealHeldStatusHealingItem:
 	farcall GetOpponentItem
@@ -3538,41 +3653,58 @@ UseHeldStatusHealingItem:
 	predef GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
 	ret z
-	jr UseBattleItem
+	jmp UseBattleItem
 
 _HeldStatusHealingItem:
 	ld a, b
 	cp HELD_HEAL_STATUS
-	jr z, .item_ok
 
 	; return z to mark that this held item has no effect
+	jr z, .item_ok
 	xor a
 	ret
 
 .item_ok
+	ld b, FALSE ; used to track if we healed anything
+	ld a, c
+	cp ALL_STATUS
+	jr nz, .skip_confuse
+	call DoHeldConfusionHealingItem
+	jr z, .skip_confuse
+	inc b
+
+.skip_confuse
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 
 	; We can't use xor since SLP_MASK or PSN+TOX wont be nullified then.
 	ld a, c
 	and [hl]
-	ret z
+	jr z, .skip_status
 	xor a
 	ld [hl], a
 	push bc
 	call UpdateUserInParty
 	pop bc
-	ld a, c
-	cp ALL_STATUS
-	jr nz, .skip_confuse
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	res SUBSTATUS_CONFUSED, [hl]
+	inc b
 
-.skip_confuse
-	call ItemRecoveryAnim
+.skip_status
+	ld a, b
+	and a
+	ret z
+	farcall ShowPotentialAbilityActivation
+	call CurItemRecoveryAnim
 	or 1
 	ret
+
+ReconsumeConfusionHealingItem:
+	farcall CheckItemParam
+	ld c, a
+	farcall CheckItemHeldEffect
+	ld b, a
+	call _HeldConfusionHealingItem
+	ret z
+	jmp ReconsumeBattleItem
 
 StealConfusionHealingItem:
 	farcall GetOpponentItem
@@ -3589,29 +3721,25 @@ UseConfusionHealingItem:
 	jmp UseBattleItem
 
 _HeldConfusionHealingItem:
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_CONFUSED, a
-	ret z
 	ld a, b
 	cp HELD_HEAL_CONFUSE
-	jr z, .confusion_healing
-	cp HELD_HEAL_STATUS
 	jr nz, .ret_z
-	ld a, c
-	cp ALL_STATUS
-	jr z, _HeldStatusHealingItem
+	call DoHeldConfusionHealingItem
+	ret z
+	farcall ShowPotentialAbilityActivation
+	call CurItemRecoveryAnim
+	or 1
+	ret
 
 .ret_z
 	xor a
 	ret
 
-.confusion_healing
+DoHeldConfusionHealingItem:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
+	bit SUBSTATUS_CONFUSED, [hl]
 	res SUBSTATUS_CONFUSED, [hl]
-	call ItemRecoveryAnim
-	or 1
 	ret
 
 GetPartymonItem:
@@ -4685,7 +4813,7 @@ endr
 	call WaitSFX
 	ld a, BATTLEACTION_FORFEIT
 	ld [wBattlePlayerAction], a
-	ld a, $1
+	ld a, LOSE
 	ld [wBattleResult], a
 	jmp LostBattle
 
@@ -5414,9 +5542,15 @@ CheckUsableMove:
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerDisableCount]
-	jr z, .CheckCommonVar
+	jr z, .GotDisableCount
 	ld a, [wEnemyDisableCount]
-	jr .CheckCommonVar
+.GotDisableCount:
+	swap a
+	and $f
+	dec a
+	cp c
+	ld a, b
+	ret
 
 .CheckChoiceItem:
 	ld b, 3
@@ -5446,22 +5580,17 @@ CheckUsableMove:
 	call .GetEncoreCount
 	and $f
 	jr z, .RetNZ
-	; fallthrough
 	ld b, 5
+	; fallthrough
 .CheckEncoreVar:
 	call .GetEncoreCount
-	call .CheckCommonVar
-	jr z, .RetNZ
-	xor a
-	ld a, b
-	ret
-
-.CheckCommonVar:
 	swap a
 	and $f
 	jr z, .RetNZ
 	dec a
 	cp c
+	jr z, .RetNZ
+	xor a
 	ld a, b
 	ret
 
@@ -5482,7 +5611,7 @@ CheckUsableMove:
 
 .GetItemHeldEffect:
 	push bc
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	ret
@@ -7304,8 +7433,8 @@ WithdrawPkmnText:
 	push bc
 	ld hl, wEnemyMonHP + 1
 	ld de, wEnemyHPAtTimeOfPlayerSwitch + 1
-	ld b, [hl]
-	dec hl
+	ld a, [hld]
+	ld b, a
 	ld a, [de]
 	sub b
 	ldh [hMultiplicand + 2], a
@@ -7892,7 +8021,7 @@ ShowLinkBattleParticipantsAfterEnd:
 ShowLinkBattleResult:
 	ld a, [wBattleResult]
 	and $f
-	cp $1
+	cp LOSE
 	jr c, .victory
 	jr z, .loss
 	ld de, .Draw
@@ -8468,10 +8597,10 @@ CopyBackpic:
 	ld c, $3
 	ld d, 8 * 8
 .inner_loop
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
 	ldh a, [hMapObjectIndexBuffer]
 	ld [hli], a
 	inc a

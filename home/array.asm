@@ -1,3 +1,9 @@
+FarIsInByteArray:
+; Find value c in array a:hl.
+	call StackCallInBankA
+.Function:
+	ld a, c
+	; fallthrough
 IsInByteArray::
 	ld de, 1
 IsInArray::

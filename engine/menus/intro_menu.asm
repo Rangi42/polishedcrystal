@@ -24,10 +24,10 @@ InitIntroGradient::
 INCBIN "gfx/new_game/intro_gradient.2bpp"
 
 _MainMenu:
-	ld de, MUSIC_NONE
+	ld e, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld de, MUSIC_MAIN_MENU
+	ld e, MUSIC_MAIN_MENU
 	ld a, e
 	ld [wMapMusic], a
 	call PlayMusic
@@ -158,23 +158,24 @@ ResetWRAM:
 	ld hl, wNumPCItems
 	call _ResetWRAM_InitList
 
-	ld hl, wTMsHMs
 	xor a
-rept ((NUM_TMS + NUM_HMS) + 7) / 8
+
+	ld hl, wTMsHMs
+rept ((NUM_TMS + NUM_HMS) + 7) / 8 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 
 	ld hl, wKeyItems
-	xor a
-rept ((NUM_KEY_ITEMS) + 7) / 8
+rept ((NUM_KEY_ITEMS) + 7) / 8 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 
-	xor a
 	ld [wRoamMon1Species], a
 	ld [wRoamMon2Species], a
 	ld [wRoamMon3Species], a
-	ld a, -1
+	dec a ; -1
 	ld [wRoamMon1MapGroup], a
 	ld [wRoamMon2MapGroup], a
 	ld [wRoamMon3MapGroup], a
@@ -559,7 +560,7 @@ ProfElmSpeech:
 	call FadeToBlack
 	call ClearTileMap
 
-	ld de, MUSIC_ROUTE_30
+	ld e, MUSIC_ROUTE_30
 	call PlayMusic
 
 	ld c, 31
@@ -883,7 +884,7 @@ endr
 	push hl
 	ld hl, LEN_2BPP_TILE
 	add hl, de
-	ld [hl], b
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], b
 	pop hl
@@ -895,7 +896,7 @@ endr
 	jr nz, .loop
 	ld hl, vTiles2 tile $69
 	ld de, wOverworldMapBlocks
-	lb bc, BANK(wOverworldMapBlocks), 2
+	ld c, 2
 	call Request2bppInWRA6
 
 	xor a
@@ -1192,14 +1193,14 @@ TitleScreenEntrance:
 	call CloseSRAM
 
 ; Play the title screen music.
-	ld de, MUSIC_TITLE
+	ld e, MUSIC_TITLE
 	ld a, [wSaveFileExists]
 	and a
 	jr z, .ok
 	ld hl, wStatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .ok
-	ld de, MUSIC_TITLE_XY
+	ld e, MUSIC_TITLE_XY
 .ok
 	call PlayMusic
 
@@ -1232,24 +1233,23 @@ TitleScreenTimer:
 	ld de, 56 * 60
 .ok
 	ld hl, wTitleScreenTimer
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	ret
 
 TitleScreenMain:
 ; Run the timer down.
 	ld hl, wTitleScreenTimer
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
-	ld a, e
+	ld e, a
 	or d
 	jr z, .end
 
 	dec de
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 
 ; Save data can be deleted by pressing Up + B + Select.
