@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 207 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 4; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 
 	abilities_for MR__RIME, TANGLED_FEET, SCREEN_CLEANER, ICE_BODY
 	db GROWTH_MEDIUM_FAST ; growth rate
