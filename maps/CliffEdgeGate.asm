@@ -118,16 +118,6 @@ ProfOaksAide3ExplainText:
 	para "grow more from"
 	line "battling, but"
 	cont "slows it down."
-
-	para "According to"
-	line "Prof.Elm, some"
-	cont "#mon evolve"
-
-	para "when one stat has"
-	line "grown enough."
-
-	para "Use it to com-"
-	line "plete the #dex!"
 	done
 
 GruntM12SeenText:

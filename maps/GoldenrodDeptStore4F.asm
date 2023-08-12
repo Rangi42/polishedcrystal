@@ -37,17 +37,12 @@ GoldenrodDeptStore4FBugCatcherText:
 	text "There are four"
 	line "#mon that"
 
-	para "evolve if they"
-	line "eat enough of a"
-	cont "certain vitamin:"
+	para "evolve if given"
+	line "a Linking Cord:"
 
 	para "Machoke, Graveler,"
 	line "Kadabra, and"
 	cont "Haunter!"
-
-	para "But I don't know"
-	line "which needs which"
-	cont "vitamin."
 	done
 
 GoldenrodDeptStore4FGameboyKidText:
