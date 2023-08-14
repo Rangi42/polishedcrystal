@@ -5274,6 +5274,7 @@ DelibirdEvosAttacks:
 	db 49, BELLY_DRUM
 	db 53, HURRICANE
 	db 57, BLIZZARD
+	db -1 ; no more level-up moves
 
 MantineEvosAttacks:
 	db -1 ; no more evolutions
