@@ -534,6 +534,10 @@ HandlePoison:
 	call GetTrueUserAbility
 	cp POISON_HEAL
 	jr nz, DoPoisonBurnDamage
+
+	; Toxic counter should still increase.
+	call IncrementToxic
+
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
@@ -571,17 +575,8 @@ DoPoisonBurnDamage:
 	; Burn and Toxic does (or starts at) 1/16 damage as of Gen VII
 	call nz, GetSixteenthMaxHP
 
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wPlayerToxicCount
-	jr z, .got_toxic_count
-	ld hl, wEnemyToxicCount
-.got_toxic_count
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	bit TOX, a
+	call IncrementToxic
 	jr z, .did_toxic
-	inc [hl]
 	ld a, [hl]
 	ld hl, 0
 .add
@@ -592,6 +587,25 @@ DoPoisonBurnDamage:
 	ld c, l
 .did_toxic
 	predef_jump SubtractHPFromUser
+
+IncrementToxic:
+; Returns nz if we are badly poisoned, and sets hl to the current toxic counter.
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerToxicCount
+	jr z, .got_toxic_count
+	ld hl, wEnemyToxicCount
+.got_toxic_count
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	bit TOX, a
+	ret z
+	inc [hl]
+	ret nz
+
+	; avoid overflow
+	dec [hl]
+	ret
 
 DoPoisonBurnDamageAnim:
 	push de
