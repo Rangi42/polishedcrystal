@@ -254,12 +254,25 @@ SpecialCharacters:
 	dw SpaceChar        ; "¯"
 
 NextLineChar::
+	ld b, 0
+	jr HandleLineBreak
+
+LineBreak:
+	ld b, 1 << NO_LINE_SPACING_F
+	; fallthrough
+HandleLineBreak:
 	ld a, [wTextboxFlags]
-	bit NO_LINE_SPACING_F, a
-	ld bc, SCREEN_WIDTH * 2
-	jr z, LineBreak.ok
-LineBreak::
+	or b
+	bit USE_BG_MAP_WIDTH_F, a
 	ld bc, SCREEN_WIDTH
+	jr z, .got_screen_width
+	ld c, BG_MAP_WIDTH
+
+.got_screen_width
+	bit NO_LINE_SPACING_F, a
+	jr nz, .ok
+	sla c
+
 .ok
 	pop hl
 	add hl, bc
