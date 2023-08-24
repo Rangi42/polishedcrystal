@@ -1348,7 +1348,9 @@ wTextboxFrame::
 	db
 wTextboxFlags::
 ; bit 0: 1-frame text delay
-; bit 4: no text delay
+; bit 1: no text delay
+; bit 2: no line spacing
+; bit 3: use bg map width
 	db
 
 wOptions2::

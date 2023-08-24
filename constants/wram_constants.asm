@@ -64,9 +64,10 @@ DEF NUM_FRAMES EQU const_value
 
 ; wTextboxFlags::
 	const_def
-	const FAST_TEXT_DELAY_F ; 0
-	const NO_TEXT_DELAY_F   ; 1
-	const NO_LINE_SPACING_F ; 2
+	const FAST_TEXT_DELAY_F  ; 0
+	const NO_TEXT_DELAY_F    ; 1
+	const NO_LINE_SPACING_F  ; 2
+	const USE_BG_MAP_WIDTH_F ; 3
 
 ; wOptions2::
 	const_def 3
