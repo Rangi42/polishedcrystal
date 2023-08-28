@@ -738,7 +738,7 @@ BrunoGroup:
 	dbp 55, MACHAMP
 		db LEFTOVERS
 		ev_spread 100 HP, 252 Atk
-		db ROCK_SLIDE, FORESIGHT, CROSS_CHOP, SWORDS_DANCE
+		db ROCK_SLIDE, FORESIGHT, CROSS_CHOP, BULK_UP
 	db -1 ; end
 
 	; BRUNO
@@ -6090,8 +6090,8 @@ PsychicGroup:
 	db "Phil@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 35, XATU
 	dbp 36, KADABRA
+	dbp 35, XATU
 	db -1 ; end
 
 	; PSYCHIC_T
