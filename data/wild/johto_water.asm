@@ -30,9 +30,9 @@
 
 	def_water_wildmons UNION_CAVE_B2F
 	db 4 percent ; encounter rate
-	wildmon 15, TENTACOOL
+	wildmon 19, REMORAID
 	wildmon 20, QUAGSIRE
-	wildmon 20, TENTACRUEL
+	wildmon 20, LAPRAS
 	end_water_wildmons
 
 	def_water_wildmons SLOWPOKE_WELL_B1F
@@ -179,21 +179,21 @@
 	db 3 percent ; encounter rate
 	wildmon 20, TENTACOOL
 	wildmon 20, STARYU
-	wildmon 20, TENTACRUEL
+	wildmon 20, SHELLDER
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_41
 	db 3 percent ; encounter rate
-	wildmon 20, TENTACOOL
 	wildmon 20, MANTINE
 	wildmon 20, REMORAID
+	wildmon 20, HORSEA
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_42
 	db 4 percent ; encounter rate
 	wildmon 20, GOLDEEN
-	wildmon 20, GOLDEEN
 	wildmon 20, SEAKING
+	wildmon 20, REMORAID
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_43

@@ -406,11 +406,15 @@ Celadon3FTMMart:
 Celadon4FMart:
 	db 10 ; # items
 	db POKE_DOLL
+	db LEAF_STONE
 	db FIRE_STONE
 	db WATER_STONE
 	db THUNDERSTONE
-	db LEAF_STONE
 	db ICE_STONE
+	db SUN_STONE
+	db MOON_STONE
+	db DUSK_STONE
+	db SHINY_STONE
 	db LINKING_CORD
 	db EXP_SHARE
 	db LOVELY_MAIL
@@ -431,12 +435,16 @@ SaffronMart:
 	db -1
 
 SilphCoMart:
-	db 5 ; # items
-	db MAX_POTION
+	db 8 ; # items
+	db FULL_RESTORE
 	db MAX_REPEL
 	db DREAM_BALL
 	db UP_GRADE
 	db DUBIOUS_DISC
+	db METAL_COAT
+	db KINGS_ROCK
+	db LINKING_CORD
+	db ODD_SOUVENIR
 	db -1
 
 FuchsiaMart:

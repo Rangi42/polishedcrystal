@@ -1,9 +1,12 @@
-DEF GOLDENRODGAMECORNER_TM35_COINS EQU 4000
-DEF GOLDENRODGAMECORNER_TM24_COINS EQU 4000
-DEF GOLDENRODGAMECORNER_TM13_COINS EQU 4000
-DEF GOLDENRODGAMECORNER_ABRA_COINS     EQU 200
-DEF GOLDENRODGAMECORNER_CUBONE_COINS   EQU 800
-DEF GOLDENRODGAMECORNER_CLEFAIRY_COINS EQU 1500
+DEF GOLDENRODGAMECORNER_TM35_COINS EQU 1000
+DEF GOLDENRODGAMECORNER_TM24_COINS EQU 1000
+DEF GOLDENRODGAMECORNER_TM13_COINS EQU 1000
+DEF GOLDENRODGAMECORNER_REMORAID_COINS EQU   200
+DEF GOLDENRODGAMECORNER_PORYGON_COINS  EQU   500
+DEF GOLDENRODGAMECORNER_BULBASAUR_COINS EQU  1000
+DEF GOLDENRODGAMECORNER_CHARMANDER_COINS EQU 1000
+DEF GOLDENRODGAMECORNER_SQUIRTLE_COINS EQU   1000
+DEF GOLDENRODGAMECORNER_DRATINI_COINS EQU    1500
 
 GoldenrodGameCorner_MapScriptHeader:
 	def_scene_scripts
@@ -198,60 +201,114 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequalfwd $1, .abra
-	ifequalfwd $2, .cubone
-	ifequalfwd $3, .clefairy
+	ifequalfwd $1, .remoraid
+	ifequalfwd $2, .porygon
+	ifequalfwd $3, .bulbasaur
+	ifequalfwd $4, .charmander
+	ifequalfwd $5, .squirtle
+	ifequalfwd $6, .dratini
 	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
-.abra
-	checkcoins GOLDENRODGAMECORNER_ABRA_COINS
+.remoraid
+	checkcoins GOLDENRODGAMECORNER_REMORAID_COINS
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	getmonname ABRA, $0
+	getmonname REMORAID, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	givepoke ABRA, 5
+	givepoke REMORAID, 5
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
-	setmonval ABRA
+	setmonval REMORAID
 	special Special_GameCornerPrizeMonCheckDex
-	takecoins GOLDENRODGAMECORNER_ABRA_COINS
+	takecoins GOLDENRODGAMECORNER_REMORAID_COINS
 	sjump .loop
 
-.cubone
-	checkcoins GOLDENRODGAMECORNER_CUBONE_COINS
+.porygon
+	checkcoins GOLDENRODGAMECORNER_PORYGON_COINS
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	getmonname CUBONE, $0
+	getmonname PORYGON, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	givepoke CUBONE, 10
+	givepoke PORYGON, 10
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
-	setmonval CUBONE
+	setmonval PORYGON
 	special Special_GameCornerPrizeMonCheckDex
-	takecoins GOLDENRODGAMECORNER_CUBONE_COINS
+	takecoins GOLDENRODGAMECORNER_PORYGON_COINS
 	sjump .loop
 
-.clefairy
-	checkcoins GOLDENRODGAMECORNER_CLEFAIRY_COINS
+.bulbasaur
+	checkcoins GOLDENRODGAMECORNER_BULBASAUR_COINS
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	getmonname CLEFAIRY, $0
+	getmonname BULBASAUR, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	givepoke CLEFAIRY, 15
+	givepoke BULBASAUR, 10
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
-	setmonval CLEFAIRY
+	setmonval BULBASAUR
 	special Special_GameCornerPrizeMonCheckDex
-	takecoins GOLDENRODGAMECORNER_CLEFAIRY_COINS
+	takecoins GOLDENRODGAMECORNER_BULBASAUR_COINS
+	sjump .loop
+
+.charmander
+	checkcoins GOLDENRODGAMECORNER_CHARMANDER_COINS
+	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	getmonname CHARMANDER, $0
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	givepoke CHARMANDER, 10
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
+	setmonval CHARMANDER
+	special Special_GameCornerPrizeMonCheckDex
+	takecoins GOLDENRODGAMECORNER_CHARMANDER_COINS
+	sjump .loop
+	
+.squirtle
+	checkcoins GOLDENRODGAMECORNER_SQUIRTLE_COINS
+	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	getmonname SQUIRTLE, $0
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	givepoke SQUIRTLE, 10
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
+	setmonval SQUIRTLE
+	special Special_GameCornerPrizeMonCheckDex
+	takecoins GOLDENRODGAMECORNER_SQUIRTLE_COINS
+	sjump .loop
+	
+.dratini
+	checkcoins GOLDENRODGAMECORNER_DRATINI_COINS
+	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	getmonname DRATINI, $0
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	givepoke DRATINI, 15
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
+	setmonval DRATINI
+	special Special_GameCornerPrizeMonCheckDex
+	takecoins GOLDENRODGAMECORNER_DRATINI_COINS
 	sjump .loop
 
 .MenuDataHeader:
@@ -262,10 +319,13 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .MenuData2:
 	db $80 ; flags
-	db 4 ; items
-	db "Abra        {d:GOLDENRODGAMECORNER_ABRA_COINS}@"
-	db "Cubone      {d:GOLDENRODGAMECORNER_CUBONE_COINS}@"
-	db "Clefairy   {d:GOLDENRODGAMECORNER_CLEFAIRY_COINS}@"
+	db 7 ; items
+	db "Remoraid    {d:GOLDENRODGAMECORNER_REMORAID_COINS}@"
+	db "Porygon     {d:GOLDENRODGAMECORNER_PORYGON_COINS}@"
+	db "Bulbasaur   {d:GOLDENRODGAMECORNER_BULBASAUR_COINS}@"
+	db "Charmander  {d:GOLDENRODGAMECORNER_CHARMANDER_COINS}@"
+	db "Squirtle    {d:GOLDENRODGAMECORNER_SQUIRTLE_COINS}@"
+	db "Dratini     {d:GOLDENRODGAMECORNER_DRATINI_COINS}@"
 	db "Cancel@"
 
 GoldenrodGameCornerPharmacistScript:

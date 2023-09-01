@@ -210,7 +210,7 @@
 	wildmon 42, GRAVELER
 	wildmon 41, RHYHORN
 	wildmon 40, ONIX
-	wildmon 41, GOLBAT
+	wildmon 41, DONPHAN
 	wildmon 43, SANDSLASH
 	wildmon 44, RHYDON
 	wildmon 44, STEELIX
@@ -238,7 +238,7 @@
 	wildmon 44, GRAVELER
 	wildmon 43, RHYHORN
 	wildmon 42, ONIX
-	wildmon 43, GOLBAT
+	wildmon 43, DONPHAN
 	wildmon 45, SANDSLASH
 	wildmon 47, RHYDON
 	wildmon 46, STEELIX
@@ -266,7 +266,7 @@
 	wildmon 46, GRAVELER
 	wildmon 45, RHYHORN
 	wildmon 44, ONIX
-	wildmon 45, GOLBAT
+	wildmon 45, DONPHAN
 	wildmon 47, SANDSLASH
 	wildmon 49, RHYDON
 	wildmon 48, STEELIX
@@ -1093,31 +1093,31 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_26
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 5 percent, 5 percent, 5 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon 37, DODUO
 	wildmon 37, SANDSLASH
 	wildmon 40, PONYTA
 	wildmon 38, RATICATE
 	wildmon 38, DODUO
 	wildmon 39, ARBOK, ARBOK_KANTO_FORM
 	wildmon 39, ARBOK, ARBOK_KANTO_FORM
+	wildmon 5, BULBASAUR
 	; day
-	wildmon 37, DODUO
 	wildmon 37, SANDSLASH
 	wildmon 40, PONYTA
 	wildmon 38, RATICATE
 	wildmon 38, DODUO
 	wildmon 39, ARBOK, ARBOK_KANTO_FORM
 	wildmon 39, ARBOK, ARBOK_KANTO_FORM
+	wildmon 5, CHARMANDER
 	; nite
 	wildmon 37, NOCTOWL
 	wildmon 37, RATICATE
 	wildmon 40, NOCTOWL
 	wildmon 38, RATICATE
-	wildmon 38, QUAGSIRE
 	wildmon 39, QUAGSIRE
 	wildmon 39, QUAGSIRE
+	wildmon 5, SQUIRTLE
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_27
@@ -1128,24 +1128,24 @@
 	wildmon 38, RATICATE
 	wildmon 38, DODUO
 	wildmon 40, PONYTA
-	wildmon 38, DODRIO
 	wildmon 39, DODRIO
+	wildmon 5, CHIKORITA
 	; day
 	wildmon 36, DODUO
 	wildmon 36, ARBOK, ARBOK_KANTO_FORM
 	wildmon 38, RATICATE
 	wildmon 38, DODUO
 	wildmon 40, PONYTA
-	wildmon 38, DODRIO
 	wildmon 39, DODRIO
+	wildmon 5, CYNDAQUIL
 	; nite
 	wildmon 36, QUAGSIRE
 	wildmon 36, NOCTOWL
 	wildmon 38, RATICATE
 	wildmon 38, QUAGSIRE
 	wildmon 40, NOCTOWL
-	wildmon 38, NOCTOWL
 	wildmon 39, NOCTOWL
+	wildmon 5, TOTODILE
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_28
