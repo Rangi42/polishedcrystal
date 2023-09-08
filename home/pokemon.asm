@@ -434,7 +434,7 @@ CompareSpeciesForm:
 	assert (MON_GENDER_F == 7)
 	add a
 	ld a, c
-	jr nc, .skip_gender_reset
+	jr c, .skip_gender_reset
 	res MON_GENDER_F, b
 .skip_gender_reset
 	; Effectively does a comparision between a and b.
