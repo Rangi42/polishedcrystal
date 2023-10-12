@@ -775,7 +775,8 @@ PerishBodyAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	ld hl, StartPerishBodyText
-	jmp StdBattleTextbox
+	call StdBattleTextbox
+	jmp EnableAnimations
 
 TanglingHairAbility:
 	call HasOpponentFainted
