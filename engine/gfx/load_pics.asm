@@ -276,7 +276,7 @@ GetPaintingPic:
 	ldh [hBGMapMode], a
 	ld hl, PaintingPicPointers
 	ld a, [wTrainerClass]
-	ld bc, 2
+	ld bc, 3
 	rst AddNTimes
 	ldh a, [rSVBK]
 	push af
