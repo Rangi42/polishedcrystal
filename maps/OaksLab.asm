@@ -23,8 +23,7 @@ OaksLab_MapScriptHeader:
 	bg_event  8,  7, BGEVENT_JUMPSTD, difficultbookshelf
 	bg_event  9,  7, BGEVENT_JUMPSTD, difficultbookshelf
 	bg_event  4,  0, BGEVENT_JUMPTEXT, OaksLabPoster1Text
-	bg_event  5,  0, BGEVENT_JUMPTEXT, OaksLabPoster2Text
-	bg_event  9,  3, BGEVENT_JUMPTEXT, OaksLabTrashcanText
+	bg_event  5,  0, BGEVENT_JUMPTEXT, OaksLabPoster2Text	
 	bg_event  0,  1, BGEVENT_JUMPTEXT, OaksLabPCText
 
 	def_object_events
@@ -504,11 +503,6 @@ OaksLabPoster2Text:
 
 	para "Use it in a timely"
 	line "manner."
-	done
-
-OaksLabTrashcanText:
-	text "There's nothing in"
-	line "here…"
 	done
 
 OaksLabPCText:
