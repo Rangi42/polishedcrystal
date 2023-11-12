@@ -879,9 +879,11 @@ NotVeryEffectiveText:
 	prompt
 
 TookDownWithItText:
-	text "<TARGET>"
-	line "took <USER>"
-	cont "down with it!"
+	text "<TARGET>'s"
+	line "bond took"
+
+	para "<USER>"
+	line "down with it!"
 	prompt
 
 RageBuildingText:
