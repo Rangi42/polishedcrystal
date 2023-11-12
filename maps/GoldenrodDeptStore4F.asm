@@ -37,8 +37,8 @@ GoldenrodDeptStore4FBugCatcherText:
 	text "There are four"
 	line "#mon that"
 
-	para "evolve if given"
-	line "a Linking Cord:"
+	para "evolve if exposed"
+	line "to a Linking Cord:"
 
 	para "Machoke, Graveler,"
 	line "Kadabra, and"
