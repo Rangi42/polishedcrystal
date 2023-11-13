@@ -1758,9 +1758,8 @@ BattleBGEffect_FadeMonsToBlackRepeating:
 	ret nz
 	ld a, e
 	and $18
-	sla a
-	swap a
-	sla a
+	rrca
+	rrca
 	ld e, a
 	ld d, 0
 	call BGEffect_CheckBattleTurn

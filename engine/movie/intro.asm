@@ -477,7 +477,7 @@ IntroScene12:
 ; first half
 	ld c, a
 	and $1f
-	sla a
+	add a
 	ld [wIntroSceneTimer], a
 	ld a, c
 	and $e0
@@ -489,8 +489,8 @@ IntroScene12:
 ; double speed
 	ld c, a
 	and $f
-	sla a
-	sla a
+	add a
+	add a
 	ld [wIntroSceneTimer], a
 	ld a, c
 	and $70
@@ -877,7 +877,7 @@ IntroScene24:
 
 	ld a, c
 	and $1c
-	sla a
+	add a
 	jmp Intro_Scene24_ApplyPaletteFade
 
 .done

@@ -97,6 +97,11 @@ patterns = {
 	# Good: inc|dec a (unless you need to set the carry flag)
 	(lambda line1, prev: re.match(r'(?:add|sub) (?:a, )?[%\$&]?0*1$', line1.code)),
 ],
+'a *= 2': [
+	# Bad: sla a
+	# Good: add a
+	(lambda line1, prev: line1.code == 'sla a'),
+],
 'a = ~a': [
 	# Bad: xor $ff
 	# Good: cpl

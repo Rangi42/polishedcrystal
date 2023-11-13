@@ -1340,7 +1340,7 @@ BattleCommand_stab:
 	cp ADAPTABILITY
 	ld a, [wTypeMatchup]
 	jr nz, .no_adaptability
-	sla a
+	add a
 	ld [wTypeMatchup], a
 	jr .stab_done
 .no_adaptability
@@ -1625,7 +1625,7 @@ _CheckTypeMatchup:
 	jr .TypesLoop
 .se
 	ld a, [wTypeMatchup]
-	sla a
+	add a
 	ld [wTypeMatchup], a
 	jr .TypesLoop
 .nve

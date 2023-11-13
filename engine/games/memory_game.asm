@@ -413,8 +413,8 @@ MemoryGame_GetDistributionOfTiles:
 
 MemoryGame_PlaceCard:
 	ld a, [wMemoryGameLastCardPicked]
-	sla a
-	sla a
+	add a
+	add a
 	add 4
 	ld [hli], a
 	inc a
