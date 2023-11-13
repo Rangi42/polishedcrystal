@@ -1,7 +1,11 @@
 	db  60,  95,  50,  30, 145, 130 ; 510 BST
 	;   hp  atk  def  spe  sat  sdf
 
+if DEF(FAITHFUL)
 	db GHOST, GHOST ; type
+else
+	db GHOST, ROCK ; type
+endc
 	db 30 ; catch rate
 	db 196 ; base exp
 	db NO_ITEM, NO_ITEM ; held items

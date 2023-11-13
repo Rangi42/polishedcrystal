@@ -157,7 +157,7 @@ BattleAnimOAMUpdate:
 	xor b
 	and $e0
 	ld b, a
-	ld a, [hl]
+	ld a, [hli]
 	and $10
 	or b
 	ld b, a
@@ -165,7 +165,6 @@ BattleAnimOAMUpdate:
 	and $f
 	or b
 	ld [de], a
-	inc hl
 	inc de
 	ld a, e
 	ld [wBattleAnimOAMPointerLo], a

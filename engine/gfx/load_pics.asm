@@ -283,7 +283,6 @@ GetPaintingPic:
 	ld a, $6
 	ldh [rSVBK], a
 	push de
-	inc hl
 	ld a, BANK(PaintingPicPointers)
 	call GetFarWord
 	ld a, BANK("Painting Pics")

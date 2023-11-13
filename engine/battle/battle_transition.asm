@@ -526,9 +526,9 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr z, .got_offset
 	ld a, [wTimeOfDayPal]
 	and %00000011
-	sla a
-	sla a
-	sla a
+	add a
+	add a
+	add a
 .got_offset
 	ldh [hTimeOfDayPalOffset], a
 
@@ -597,7 +597,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 ; Loading is done bit by bit
 	and a
 	jr z, .done
-	sla a
+	add a
 	jr nc, .no_load
 
 	; poke ball tile; use PAL_BG_GRAY, bank 0, no flips or priority

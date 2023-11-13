@@ -121,7 +121,7 @@ VaryGreenByDV:
 ; vary d according to e
 	call GetColorChannelVariedByDV
 ; store a back in green
-	sla a
+	add a
 	swap a
 	ld d, a
 	and %11100000

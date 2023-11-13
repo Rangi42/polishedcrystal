@@ -890,7 +890,7 @@ DayCare_GenerateEgg:
 	ld a, b
 	cp 3
 	jr z, .no_ha_boost
-	sla a
+	add a
 	call BattleRandomRange
 	and a
 	jr nz, .no_ha_boost

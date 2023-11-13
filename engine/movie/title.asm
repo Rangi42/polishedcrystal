@@ -215,10 +215,10 @@ SuicuneFrameIterator:
 
 	ld a, c
 	and 3 << 3
-	sla a
+	add a
 	swap a
 	ld e, a
-	ld d, $0
+	ld d, 0
 	ld hl, .Frames
 	add hl, de
 	ld d, [hl]

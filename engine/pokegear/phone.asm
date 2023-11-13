@@ -326,7 +326,7 @@ PokegearPhoneContactSubmenu:
 	add hl, bc
 	ld a, [de]
 	inc de
-	sla a
+	add a
 	ld b, a
 	ld c, 8
 	push de

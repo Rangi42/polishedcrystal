@@ -378,10 +378,10 @@ FlyFunction_FrameTimer:
 	ret nz
 	ld a, [hl]
 	and (6 * 8) >> 1
-	sla a
+	add a
 	add 8 * 8 ; gives a number in [$40, $50, $60, $70]
 	ld d, a
-	ld e, $0
+	ld e, 0
 	ld a, SPRITE_ANIM_INDEX_FLY_LEAF ; fly land
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
