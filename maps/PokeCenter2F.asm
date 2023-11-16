@@ -177,7 +177,7 @@ Script_TradeCenterClosed:
 LinkReceptionistScript_Battle:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftruefwd .BattleRoomClosed
+	iffalsefwd .BattleRoomClosed
 endc
 	special FixPlayerEVsAndStats ; no (trivial) cheating
 	opentext

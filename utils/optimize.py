@@ -342,9 +342,9 @@ patterns = {
 	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
 ],
 '*hl++|*hl-- = b|c|d|e': [
-	# Bad: ld [hl], b|c|d|e / inc|dec hl (unless you can't use a)
-	# Good: ld [hli|hld], a / ld b|c|d|e, a
-	(lambda line1, prev: re.match(r'ld \[hl\], [bcde]', line1.code)),
+	# Bad: ld [hl], b|c|d|e|h|l / inc|dec hl (unless you can't use a)
+	# Good: ld a, b|c|d|e|h|l / ld [hli|hld], a
+	(lambda line1, prev: re.match(r'ld \[hl\], [bcdehl]', line1.code)),
 	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
 ],
 'b|c|d|e = *hl++|*hl--': [
