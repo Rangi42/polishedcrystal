@@ -2755,7 +2755,7 @@ _LuckyNumberMatchPartyText::
 	line "with the ID number"
 
 	para "of "
-	text_decimal wTempMonID, 2, 5
+	text_ram wStringBuffer2
 	text " in"
 	line "your party."
 	prompt
@@ -2768,10 +2768,10 @@ _LuckyNumberMatchPCText::
 	line "with the ID number"
 
 	para "of "
-	text_decimal wTempMonID, 2, 5
+	text_ram wStringBuffer2
 	text " in Box"
 	line "“"
-	text_ram wStringBuffer2
+	text_ram wStringBuffer1
 	text "”."
 	prompt
 

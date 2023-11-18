@@ -712,7 +712,6 @@ wBreedingCompatibility::
 wMoveGrammar::
 wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
-wFoundMatchingID::
 	db
 
 wTempForm:: db

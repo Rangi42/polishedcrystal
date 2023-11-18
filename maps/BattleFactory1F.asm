@@ -292,5 +292,5 @@ PokemonJournalThortonScript:
 
 	para "what he can prove"
 	line "numerically with"
-	line "his inventions."
+	cont "his inventions."
 	done

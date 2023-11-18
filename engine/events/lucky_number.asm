@@ -2,7 +2,6 @@ Special_CheckForLuckyNumberWinners:
 ; Returns number of digits matching
 	xor a
 	ldh [hScriptVar], a
-	ld [wFoundMatchingID], a
 
 	; Prepare lucky number buffer
 	ld hl, wStringBuffer1
@@ -11,6 +10,7 @@ Special_CheckForLuckyNumberWinners:
 	call PrintNum
 
 	ld b, NUM_BOXES
+	push bc ; will be where box+position number is stored
 .outer_loop
 	inc b
 	dec b
@@ -35,30 +35,27 @@ Special_CheckForLuckyNumberWinners:
 .compare_loop
 	ld a, [de]
 	cp [hl]
-	jr nz, .compare_failed
+	jr nz, .compare_end
 	inc b
 	dec de
 	dec hl
 	ld a, b
 	cp 5
 	jr nz, .compare_loop
-	; if we're here, all 5 digits match
-.compare_failed
+.compare_end
 	ldh a, [hScriptVar]
-	and $f
 	cp b
 	ld a, b
 	pop bc
 	jr nc, .next
-	swap a
-	or b
-	swap a
+; if matching digits were found...
 	ldh [hScriptVar], a
-	ld hl, wFoundMatchingID
+	ld hl, sp+0 ; store box + position on the stack for mon with matching digits
 	ld [hl], c
+	inc hl
+	ld [hl], b
 	cp 5
 	jr z, .done
-	jr nz, .next
 .next
 	dec c
 	jr nz, .loop
@@ -66,32 +63,27 @@ Special_CheckForLuckyNumberWinners:
 	bit 7, b ; check for reaching -1
 	jr z, .outer_loop
 .done
+	pop bc ; restores box + position, if applicable
+	call WaitSFX
 	ldh a, [hScriptVar]
 	and a
 	ret z ; found nothing
 
-	; Get storage mon nickname
-	push af
-	swap a
-	and $f
-	ld b, a
-	ld a, [wFoundMatchingID]
-	ld c, a
+	; Prepare found storage mon ID
+	push bc
 	farcall GetStorageBoxMon
-	pop af
-	and $f
-	ldh [hScriptVar], a
+	ld de, wTempMonID
+	ld hl, wStringBuffer2
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
+	pop bc
 
+	; Get box name (if applicable)
 	inc b
 	dec b
 	ld hl, .MatchInParty
 	jr z, .got_text
-	inc b
-	farcall GetBoxName
-	ld hl, wStringBuffer1
-	ld de, wStringBuffer2
-	ld bc, BOX_NAME_LENGTH
-	rst CopyBytes
+	farcall GetBoxName ; loads box name into wStringBuffer1
 	ld hl, .MatchInStorage
 .got_text
 	jmp PrintText

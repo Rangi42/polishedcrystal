@@ -14,5 +14,5 @@
 	ev_yield 2 HP
 
 	; tm/hm learnset
-	tmhm SAFEGUARD, COUNTER
+	tmhm SAFEGUARD, CHARM, COUNTER
 	; end
