@@ -44,7 +44,6 @@ Special_CheckForLuckyNumberWinners:
 	jr nz, .compare_loop
 .compare_end
 	ldh a, [hScriptVar]
-	and $f
 	cp b
 	ld a, b
 	pop bc
