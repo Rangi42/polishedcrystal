@@ -2,9 +2,6 @@
 
 PlayBattleAnim:
 	farcall CheckBattleAnimSubstitution
-	ld hl, rIE
-	set LCD_STAT, [hl]
-
 	ldh a, [rSVBK]
 	push af
 
@@ -15,9 +12,6 @@ PlayBattleAnim:
 
 	pop af
 	ldh [rSVBK], a
-
-	ld hl, rIE
-	res LCD_STAT, [hl]
 	ret
 
 _PlayBattleAnim:

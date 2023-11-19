@@ -328,9 +328,6 @@ VBlank1::
 
 	xor a
 	ldh [rIF], a
-	ld a, 1 << LCD_STAT
-	ldh [rIE], a
-	ldh [rIF], a
 
 	ei
 	call VBlankUpdateSound
@@ -379,9 +376,6 @@ VBlank5::
 	ldh [rIF], a
 	ldh a, [rIE]
 	push af
-	ld a, 1 << LCD_STAT
-	ldh [rIE], a
-	ldh [rIF], a
 
 	ei
 	call VBlankUpdateSound

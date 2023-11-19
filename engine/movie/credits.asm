@@ -55,11 +55,11 @@ Credits::
 	xor a
 	rst ByteFill
 
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 
-	ld hl, rIE
-	set LCD_STAT, [hl]
 	call GetCreditsPalette
 	call SetPalettes
 	ldh a, [hVBlank]
@@ -86,11 +86,11 @@ Credits::
 
 .exit_credits
 	call ClearBGPalettes
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ldh [hBGMapAddress], a
-	ld hl, rIE
-	res LCD_STAT, [hl]
 	pop af
 	ldh [hVBlank], a
 	pop af

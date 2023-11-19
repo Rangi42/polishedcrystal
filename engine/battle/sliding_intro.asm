@@ -1,20 +1,20 @@
 BattleIntroSlidingPics:
-	ld hl, rIE
-	set LCD_STAT, [hl]
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
 	call .subfunction1
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	call .subfunction2
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	pop af
 	ldh [rSVBK], a
-	ld hl, rIE
-	res LCD_STAT, [hl]
 	ret
 
 .subfunction1
