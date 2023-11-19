@@ -51,8 +51,8 @@ Special_CheckForLuckyNumberWinners:
 ; if matching digits were found...
 	ldh [hScriptVar], a
 	ld hl, sp+0 ; store box + position on the stack for mon with matching digits
-	ld [hl], c
-	inc hl
+	ld a, c
+	ld [hli], a
 	ld [hl], b
 	cp 5
 	jr z, .done
