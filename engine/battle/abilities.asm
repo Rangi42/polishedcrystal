@@ -857,7 +857,7 @@ _AfflictStatusAbility:
 
 	; sleep for 1-3 turns (+1 including wakeup turn)
 	ld a, 3
-	call RandomRange
+	call BattleRandomRange
 	inc a
 .got_status
 	ld [hl], a
