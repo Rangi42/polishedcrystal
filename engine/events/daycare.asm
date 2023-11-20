@@ -678,17 +678,17 @@ DayCare_InitBreeding:
 DayCare_GenerateEgg:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
+	ld a, $3
+	ld [wMonType], a
 
 	assert !HIGH(DITTO)
 	ld a, [wBreedMon1Form]
 	ld [wTempMonForm], a
 	and EXTSPECIES_MASK
-	ld a, $3
-	ld [wMonType], a
 	jr nz, .first_dittocheck_done
 	ld a, [wBreedMon1Species]
 	cp DITTO
-	ld a, TRUE
+	ld a, 1
 	jr z, .LoadWhichBreedmonIsTheMother
 .first_dittocheck_done
 	ld a, [wBreedMon2Form]
@@ -698,24 +698,22 @@ DayCare_GenerateEgg:
 	sub DITTO
 	jr z, .LoadWhichBreedmonIsTheMother
 .second_dittocheck_done
-	farcall GetGender
-	ld a, FALSE
-	jr z, .LoadWhichBreedmonIsTheMother
-	inc a ; TRUE
+	farcall GetGender ; checks wBreedMon1Form, returns 0 for female, 1 for male
 .LoadWhichBreedmonIsTheMother:
 	; load wCurForm for base data check later
 	ld [wBreedMotherOrNonDitto], a
 	and a
-	ld a, [wBreedMon1Form]
-	ld [wCurForm], a
 	ld a, [wBreedMon1Species]
+	ld [wCurPartySpecies], a
+	ld a, [wBreedMon1Form]
 	jr z, .GotMother
-	ld a, [wBreedMon2Form]
-	ld [wCurForm], a
 	ld a, [wBreedMon2Species]
+	ld [wCurPartySpecies], a
+	ld a, [wBreedMon2Form]
 
 .GotMother:
-	ld [wCurPartySpecies], a
+	and SPECIESFORM_MASK
+	ld [wCurForm], a
 	farcall GetBaseEvolution
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
