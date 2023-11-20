@@ -489,15 +489,15 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	volume_envelope 1, -4
 	vibrato 1, 2, 1
 	octave 4
-	drum_note 8, 8
+	note G_, 8
 	duty_cycle 3
 	volume_envelope 12, 1
 	vibrato 0, 0, 0
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
-	drum_note 12, 2
+	note B_, 2
 	octave 4
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
-	drum_note 12, 2
+	note B_, 2
 Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	duty_cycle 1
 	volume_envelope 12, 4
@@ -506,23 +506,23 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
 	octave 5
-	drum_note 3, 8
+	note D_, 8
 	octave 4
-	drum_note 12, 4
-	drum_note 8, 2
+	note B_, 4
+	note G_, 2
 	octave 5
-	drum_note 3, 6
+	note D_, 6
 	rest 6
-	drum_note 3, 4
+	note D_, 4
 	octave 4
-	drum_note 8, 2
+	note G_, 2
 	octave 5
-	drum_note 5, 2
-	drum_note 3, 8
+	note E_, 2
+	note D_, 8
 	octave 4
-	drum_note 12, 2
-	drum_note 10, 2
-	drum_note 8, 6
+	note B_, 2
+	note A_, 2
+	note G_, 6
 	rest 12
 	duty_cycle 2
 	volume_envelope 11, 2
@@ -549,7 +549,7 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	volume_envelope 1, -4
 	vibrato 1, 2, 1
 	octave 3
-	drum_note 8, 8
+	note G_, 8
 	duty_cycle 3
 	volume_envelope 12, 1
 	vibrato 0, 0, 0
@@ -622,1365 +622,1365 @@ Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop:
 
 Music_GymLeaderBattleSwSh_Ch2_ditty1:
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 2
-	drum_note 9, 1
-	drum_note 8, 1
+	note G_, 2
+	note G#, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 2
-	drum_note 9, 1
-	drum_note 8, 1
+	note G_, 2
+	note G#, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 2
-	drum_note 9, 1
-	drum_note 8, 1
+	note G_, 2
+	note G#, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 2
-	drum_note 9, 1
+	note G_, 2
+	note G#, 1
 	octave 4
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
-	drum_note 4, 1
-	drum_note 3, 1
+	note D_, 2
+	note D#, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
-	drum_note 4, 1
-	drum_note 3, 1
+	note D_, 2
+	note D#, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
-	drum_note 4, 1
-	drum_note 3, 1
+	note D_, 2
+	note D#, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
-	drum_note 4, 1
+	note D_, 2
+	note D#, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty2:
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 11, 2
+	note A#, 2
 	rest 1
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 3
 	duty_cycle 2
 	volume_envelope 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
 	duty_cycle 1
 	volume_envelope 12, 7
-	drum_note 11, 2
+	note A#, 2
 	rest 1
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	octave 4
-	drum_note 3, 3
+	note D_, 3
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 4, 2
+	note D#, 2
 	rest 1
-	drum_note 1, 2
+	note C_, 2
 	rest 1
-	drum_note 3, 4
+	note D_, 4
 	duty_cycle 2
 	volume_envelope 11, 2
 	octave 3
-	drum_note 11, 1
-	drum_note 11, 1
-	drum_note 11, 1
-	drum_note 11, 1
-	drum_note 11, 1
-	drum_note 11, 1
+	note A#, 1
+	note A#, 1
+	note A#, 1
+	note A#, 1
+	note A#, 1
+	note A#, 1
 	duty_cycle 1
 	volume_envelope 12, 7
 	octave 4
-	drum_note 1, 2
+	note C_, 2
 	rest 1
 	octave 3
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty3:
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 9, 1
+	note G#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 9, 1
+	note G#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty4:
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 9, 1
+	note G#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 9, 1
+	note G#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty5:
-	drum_note 11, 1
+	note A#, 1
 	rest 1
-	drum_note 11, 1
-	drum_note 8, 1
+	note A#, 1
+	note G_, 1
 	rest 1
 	stereo_panning FALSE, TRUE
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
 	rest 9
-	drum_note 11, 1
+	note A#, 1
 	rest 1
-	drum_note 11, 1
-	drum_note 8, 1
+	note A#, 1
+	note G_, 1
 	rest 1
 	stereo_panning TRUE, FALSE
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
 	rest 9
-	drum_note 11, 1
+	note A#, 1
 	rest 1
-	drum_note 11, 1
-	drum_note 8, 1
+	note A#, 1
+	note G_, 1
 	rest 1
 	stereo_panning FALSE, TRUE
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
 	rest 1
 	octave 5
-	drum_note 1, 1
+	note C_, 1
 	rest 1
-	drum_note 1, 1
+	note C_, 1
 	octave 4
-	drum_note 11, 1
+	note A#, 1
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	stereo_panning TRUE, FALSE
-	drum_note 10, 1
+	note A_, 1
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 1
-	drum_note 11, 1
-	drum_note 8, 1
+	note A#, 1
+	note G_, 1
 	rest 1
 	stereo_panning FALSE, TRUE
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty6:
-	drum_note 3, 3
+	note D_, 3
 	rest 1
-	drum_note 3, 3
+	note D_, 3
 	rest 1
 	octave 3
-	drum_note 12, 2
+	note B_, 2
 	rest 1
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 3
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
 	rest 2
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 1
 	octave 4
-	drum_note 3, 2
+	note D_, 2
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 2
-	drum_note 5, 2
+	note D_, 2
+	note E_, 2
 	rest 1
-	drum_note 1, 2
+	note C_, 2
 	rest 1
-	drum_note 3, 4
+	note D_, 4
 	octave 3
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 12, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
 	octave 4
-	drum_note 1, 2
+	note C_, 2
 	rest 1
 	octave 3
-	drum_note 10, 2
+	note A_, 2
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty7:
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 10, 1
+	note A_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 12, 1
+	note B_, 1
 	rest 3
-	drum_note 12, 1
+	note B_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 10, 1
+	note A_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 12, 1
+	note B_, 1
 	rest 3
-	drum_note 12, 1
+	note B_, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty8:
 	octave 4
-	drum_note 12, 1
+	note B_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 3
 	octave 3
-	drum_note 10, 1
+	note A_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 1
 	octave 4
-	drum_note 12, 1
+	note B_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 3
 	octave 3
-	drum_note 12, 1
+	note B_, 1
 	rest 3
-	drum_note 12, 1
+	note B_, 1
 	rest 1
 	octave 4
-	drum_note 12, 1
+	note B_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 10, 1
+	note A_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 2
-	drum_note 10, 1
+	note A_, 1
 	rest 2
-	drum_note 10, 1
+	note A_, 1
 	rest 3
 	octave 3
-	drum_note 12, 1
+	note B_, 1
 	rest 3
-	drum_note 12, 1
+	note B_, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty9:
 	octave 5
-	drum_note 3, 8
+	note D_, 8
 	octave 4
-	drum_note 12, 4
-	drum_note 8, 2
+	note B_, 4
+	note G_, 2
 	octave 5
-	drum_note 3, 6
+	note D_, 6
 	rest 6
-	drum_note 3, 4
+	note D_, 4
 	octave 4
-	drum_note 8, 2
+	note G_, 2
 	octave 5
-	drum_note 5, 2
-	drum_note 3, 8
+	note E_, 2
+	note D_, 8
 	octave 4
-	drum_note 12, 2
-	drum_note 8, 2
-	drum_note 10, 6
+	note B_, 2
+	note G_, 2
+	note A_, 6
 	rest 6
-	drum_note 8, 2
-	drum_note 10, 2
-	drum_note 8, 2
+	note G_, 2
+	note A_, 2
+	note G_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty10:
-	drum_note 8, 2
+	note G_, 2
 	rest 6
-	drum_note 8, 2
+	note G_, 2
 	rest 6
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 6
-	drum_note 8, 2
+	note G_, 2
 	rest 6
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 2
+	note G_, 2
 	rest 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty11:
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 4, 1
+	note D#, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty12:
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 4, 1
+	note D#, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
 	volume_envelope 0, -7
-	drum_note 6, 6
+	note F_, 6
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty1:
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 3, 1
+	note D_, 1
+	note D#, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 3, 1
+	note D_, 1
+	note D#, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 3, 1
+	note D_, 1
+	note D#, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 8, 1
+	note D_, 1
+	note D#, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
+	note G#, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
+	note G#, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
+	note G#, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
+	note D_, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 1
-	drum_note 8, 1
-	drum_note 9, 1
+	note D_, 1
+	note G_, 1
+	note G#, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty2:
 	stereo_panning FALSE, TRUE
 	octave 4
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 11, 2
+	note A#, 2
 	rest 1
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 11, 2
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note A#, 2
 	rest 1
-	drum_note 10, 2
+	note A_, 2
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	duty_cycle 1
 	volume_envelope 12, 7
 	octave 3
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 8, 4
+	note G_, 4
 	duty_cycle 2
 	volume_envelope 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
 	duty_cycle 1
 	volume_envelope 12, 7
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 1
+	note F_, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty3:
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 4, 1
+	note D#, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 4, 1
+	note D#, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty4:
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
-	drum_note 8, 2
+	note G_, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty5:
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 2
-	drum_note 8, 2
+	note G_, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty6:
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty7:
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 3
 	octave 3
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 3
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 2
-	drum_note 3, 1
+	note D_, 1
 	rest 3
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty8:
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 1
-	drum_note 10, 1
+	note G_, 1
+	note A_, 1
 	rest 1
-	drum_note 10, 1
-	drum_note 6, 4
+	note A_, 1
+	note F_, 4
 	rest 6
-	drum_note 8, 2
-	drum_note 8, 1
+	note G_, 2
+	note G_, 1
 	rest 5
-	drum_note 8, 2
-	drum_note 8, 1
+	note G_, 2
+	note G_, 1
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 1
-	drum_note 10, 1
+	note G_, 1
+	note A_, 1
 	rest 1
-	drum_note 10, 1
-	drum_note 6, 4
+	note A_, 1
+	note F_, 4
 	rest 2
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 1
-	drum_note 3, 4
+	note G_, 1
+	note D_, 4
 	rest 4
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty9:
-	drum_note 8, 2
+	note G_, 2
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 10, 2
-	drum_note 8, 2
-	drum_note 6, 2
-	drum_note 10, 2
+	note A_, 2
+	note G_, 2
+	note F_, 2
+	note A_, 2
 	octave 3
-	drum_note 8, 2
+	note G_, 2
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 3
+	note D_, 3
 	rest 6
 	octave 3
-	drum_note 12, 2
+	note B_, 2
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 1
-	drum_note 8, 1
-	drum_note 12, 1
+	note G_, 1
+	note B_, 1
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 1
-	drum_note 12, 2
+	note B_, 2
 	octave 4
-	drum_note 1, 2
-	drum_note 5, 1
+	note C_, 2
+	note E_, 1
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 1
-	drum_note 8, 1
+	note G_, 1
+	note G_, 1
 	rest 1
-	drum_note 8, 1
-	drum_note 3, 4
+	note G_, 1
+	note D_, 4
 	rest 4
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty10:
-	drum_note 8, 2
+	note G_, 2
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 10, 2
-	drum_note 8, 2
-	drum_note 6, 2
-	drum_note 10, 2
+	note A_, 2
+	note G_, 2
+	note F_, 2
+	note A_, 2
 	octave 3
-	drum_note 8, 2
+	note G_, 2
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 3, 3
+	note D_, 3
 	rest 6
 	octave 3
-	drum_note 12, 2
+	note B_, 2
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 1
-	drum_note 8, 1
-	drum_note 12, 1
+	note G_, 1
+	note B_, 1
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 1
-	drum_note 12, 2
+	note B_, 2
 	octave 4
-	drum_note 1, 2
-	drum_note 5, 1
+	note C_, 2
+	note E_, 1
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 3, 1
-	rest 1
-	octave 3
-	drum_note 8, 1
-	octave 4
-	drum_note 3, 1
+	note D_, 1
 	rest 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
+	octave 4
+	note D_, 1
 	rest 1
-	drum_note 8, 1
+	octave 3
+	note G_, 1
 	rest 1
-	drum_note 10, 2
-	drum_note 12, 2
+	note G_, 1
+	rest 1
+	note A_, 2
+	note B_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty11:
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 9, 1
+	note G#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	rest 3
-	drum_note 11, 1
+	note A#, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty12:
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 9, 1
+	note G#, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
-	drum_note 8, 1
+	note G_, 1
 	rest 3
 	octave 2
 	volume_envelope 0, -7
-	drum_note 6, 6
+	note F_, 6
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty1:
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty2:
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 1
+	note F_, 1
 	rest 3
-	drum_note 8, 6
-	drum_note 6, 2
+	note G_, 6
+	note F_, 2
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 1
+	note F_, 1
 	rest 1
-	drum_note 8, 5
+	note G_, 5
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 1
+	note F_, 1
 	rest 1
-	drum_note 8, 8
-	drum_note 6, 2
+	note G_, 8
+	note F_, 2
 	rest 1
-	drum_note 6, 2
+	note F_, 2
 	rest 1
-	drum_note 6, 1
+	note F_, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty3:
 	volume_envelope 1, 0
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	volume_envelope 1, 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	volume_envelope 1, 0
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	volume_envelope 1, 1
-	drum_note 4, 1
+	note D#, 1
 	rest 1
-	drum_note 4, 1
+	note D#, 1
 	rest 1
 	volume_envelope 1, 0
-	drum_note 4, 1
-	drum_note 3, 1
+	note D#, 1
+	note D_, 1
 	volume_envelope 1, 1
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	octave 4
-	drum_note 8, 1
+	note G_, 1
 	rest 1
 	volume_envelope 1, 0
 	octave 2
-	drum_note 8, 1
+	note G_, 1
 	volume_envelope 1, 1
 	octave 3
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	volume_envelope 1, 0
-	drum_note 2, 1
+	note C#, 1
 	rest 1
 	volume_envelope 1, 1
-	drum_note 2, 2
+	note C#, 2
 	rest 1
-	drum_note 2, 1
+	note C#, 1
 	volume_envelope 1, 0
-	drum_note 11, 1
+	note A#, 1
 	rest 1
 	volume_envelope 1, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty4:
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	rest 3
-	drum_note 8, 5
+	note G_, 5
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	rest 1
-	drum_note 8, 8
-	drum_note 1, 2
+	note G_, 8
+	note C_, 2
 	rest 1
-	drum_note 1, 2
+	note C_, 2
 	rest 1
-	drum_note 1, 2
-	drum_note 8, 7
+	note C_, 2
+	note G_, 7
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty5:
 	volume_envelope 1, 1
 	octave 2
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	octave 3
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 1
-	drum_note 3, 3
+	note G_, 1
+	note D_, 3
 	rest 1
 	volume_envelope 1, 0
-	drum_note 1, 3
+	note C_, 3
 	rest 1
 	volume_envelope 1, 1
 	octave 2
-	drum_note 12, 2
+	note B_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	volume_envelope 1, 0
-	drum_note 12, 1
+	note B_, 1
 	volume_envelope 1, 1
 	rest 1
-	drum_note 12, 2
+	note B_, 2
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	volume_envelope 1, 0
 	octave 3
-	drum_note 1, 1
+	note C_, 1
 	rest 1
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	octave 2
 	volume_envelope 1, 1
-	drum_note 12, 2
+	note B_, 2
 	rest 1
 	volume_envelope 1, 0
-	drum_note 12, 1
+	note B_, 1
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	volume_envelope 1, 1
 	octave 3
-	drum_note 1, 2
+	note C_, 2
 	octave 2
-	drum_note 12, 1
+	note B_, 1
 	rest 1
 	volume_envelope 1, 0
-	drum_note 10, 1
+	note A_, 1
 	rest 1
 	volume_envelope 1, 1
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 6, 1
+	note F_, 1
 	volume_envelope 1, 0
-	drum_note 8, 2
+	note G_, 2
 	rest 1
-	drum_note 8, 1
+	note G_, 1
 	rest 2
 	volume_envelope 1, 1
 	octave 1
-	drum_note 8, 1
+	note G_, 1
 	rest 1
-	drum_note 12, 1
+	note B_, 1
 	rest 1
 	volume_envelope 1, 0
-	drum_note 12, 1
+	note B_, 1
 	rest 1
 	octave 2
-	drum_note 3, 2
+	note D_, 2
 	rest 1
-	drum_note 3, 1
+	note D_, 1
 	volume_envelope 1, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty6:
-	drum_note 8, 7
+	note G_, 7
 	rest 1
-	drum_note 8, 7
+	note G_, 7
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 5
+	note G_, 5
 	rest 3
-	drum_note 8, 7
+	note G_, 7
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 2
+	note G_, 2
 	rest 2
-	drum_note 8, 8
+	note G_, 8
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty7:
-	drum_note 8, 7
+	note G_, 7
 	rest 1
-	drum_note 8, 7
+	note G_, 7
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 5
+	note G_, 5
 	rest 3
-	drum_note 8, 7
+	note G_, 7
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 3
+	note G_, 3
 	rest 1
-	drum_note 8, 8
+	note G_, 8
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty8:
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 2
+	note G_, 2
 	octave 1
-	drum_note 8, 2
+	note G_, 2
 	octave 2
-	drum_note 8, 2
+	note G_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty9:
 	octave 2
-	drum_note 4, 2
+	note D#, 2
 	octave 3
-	drum_note 4, 2
+	note D#, 2
 	octave 2
-	drum_note 3, 2
+	note D_, 2
 	octave 3
-	drum_note 3, 2
+	note D_, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty10:
 	octave 1
-	drum_note 11, 2
+	note A#, 2
 	octave 2
-	drum_note 11, 2
+	note A#, 2
 	octave 1
-	drum_note 11, 2
+	note A#, 2
 	octave 2
-	drum_note 11, 2
+	note A#, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty1:

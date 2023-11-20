@@ -566,6 +566,7 @@ Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
 	rest 16
 	sound_loop 4, Music_CelestialTowerBW_NoIntro_Ch4_loop_1
 	rest 16
+	rest 16
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch4
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_1:

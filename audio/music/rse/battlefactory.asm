@@ -17,11 +17,12 @@ Music_BattleFactoryRSE_Ch1:
 	note_type 12, 4, 7
 	rest 12
 	rest 16
+	rest 8
 Music_BattleFactoryRSE_Ch1_loop:
 	duty_cycle 2
 	vibrato 18, 2, 4
-	rest 16
 	note_type 6, 4, 7
+	rest 16
 	octave 4
 	note G_, 12
 	octave 5
@@ -455,11 +456,12 @@ Music_BattleFactoryRSE_Ch2:
 	stereo_panning TRUE, TRUE
 	note_type 12, 9, 0
 	rest 12
+	rest 16
 Music_BattleFactoryRSE_Ch2_loop:
-	rest 16
-	rest 16
 	duty_cycle 2
 	note_type 6, 9, 7
+	rest 16
+	rest 16
 	octave 4
 	note G_, 11
 	note B_, 1

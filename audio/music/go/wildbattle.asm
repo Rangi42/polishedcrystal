@@ -310,7 +310,6 @@ Music_WildBattleGo_Ch2_ditty2:
 	sound_ret
 
 Music_WildBattleGo_Ch3:
-	duty_cycle 6
 	octave 3
 	note_type 12, 1, 6
 	note D_, 2

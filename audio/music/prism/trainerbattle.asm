@@ -9,7 +9,6 @@ Music_TrainerBattlePrism:
 	channel 3, Music_TrainerBattlePrism_Ch3
 
 Music_TrainerBattlePrism_Ch1:
-	tempo 102
 	duty_cycle 1
 	note_type 12, 12, 7
 	octave 5
