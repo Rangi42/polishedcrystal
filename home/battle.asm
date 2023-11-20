@@ -726,7 +726,7 @@ CheckMoveSpeed::
 	ld b, a
 	farcall BufferAbility
 	ld a, 100
-	call RandomRange
+	call BattleRandomRange
 	cp 30
 	jr nc, .quick_draw_done
 
@@ -735,7 +735,7 @@ CheckMoveSpeed::
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox
 	farcall EnableAnimations
-	jr .set_priority
+	jr .go_first
 
 .quick_draw_done
 	predef GetUserItemAfterUnnerve
@@ -745,15 +745,8 @@ CheckMoveSpeed::
 	cp HELD_CUSTAP_BERRY
 	jr z, .custap_berry
 	cp HELD_LAGGING_TAIL
+	jr z, .go_last
 	pop de
-	ret nz
-
-	; Lagging tail gives the foe priority
-	ldh a, [hBattleTurn]
-	and a
-	ret nz
-	dec d
-	dec d
 	ret
 
 .custap_berry
@@ -779,10 +772,16 @@ CheckMoveSpeed::
 	call GetCurItemName
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox
+.go_first
+	ldh a, [hBattleTurn]
+	jr .set_priority
+.go_last
+	ldh a, [hBattleTurn]
+	; Give the foe priority
+	xor 1
 .set_priority
 	pop de
 	inc d
-	ldh a, [hBattleTurn]
 	and a
 	ret z
 	dec d

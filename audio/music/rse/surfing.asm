@@ -796,7 +796,6 @@ Music_SurfRSE_Ch3:
 	note_type 12, 0, 0
 	rest 12
 Music_SurfRSE_Ch3_loop:
-	duty_cycle 4
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7
@@ -822,7 +821,6 @@ Music_SurfRSE_Ch3_loop:
 	note A#, 2
 	rest 2
 	note A_, 12
-	duty_cycle 0
 	vibrato 8, 2, 4
 	octave 5
 	note G#, 5
@@ -863,7 +861,6 @@ Music_SurfRSE_Ch3_loop:
 	volume_envelope 1, 0
 	note D#, 4
 	note C#, 4
-	duty_cycle 4
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7
@@ -892,7 +889,6 @@ Music_SurfRSE_Ch3_loop:
 	note G#, 4
 	note F#, 4
 	note C#, 6
-	duty_cycle 2
 	octave 4
 	note C#, 2
 	note C_, 2
@@ -902,7 +898,6 @@ Music_SurfRSE_Ch3_loop:
 	note G#, 12
 	octave 3
 	note D#, 12
-	duty_cycle 0
 	octave 5
 	note C#, 6
 	octave 4
@@ -915,7 +910,6 @@ Music_SurfRSE_Ch3_loop:
 	rest 2
 	note F_, 2
 	rest 2
-	duty_cycle 2
 	octave 3
 	note C#, 12
 	octave 2
@@ -932,7 +926,6 @@ Music_SurfRSE_Ch3_loop:
 	rest 2
 	note F#, 2
 	rest 2
-	duty_cycle 0
 	octave 4
 	note A#, 5
 	rest 1
@@ -956,7 +949,6 @@ Music_SurfRSE_Ch3_loop:
 	note F#, 2
 	rest 2
 	note G#, 4
-	duty_cycle 2
 	octave 5
 	note A#, 5
 	rest 1
@@ -971,17 +963,14 @@ Music_SurfRSE_Ch3_loop:
 	note F#, 2
 	note G#, 2
 	note A#, 4
-	duty_cycle 1
 	octave 6
 	note C_, 4
 	note C#, 4
-	duty_cycle 0
 	note C_, 6
 	volume_envelope 2, 0
 	note C_, 4
 	volume_envelope 3, 0
 	note C_, 2
-	duty_cycle 4
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7
@@ -1029,7 +1018,6 @@ Music_SurfRSE_Ch3_loop:
 	note G#, 2
 	rest 2
 	note G#, 12
-	duty_cycle 0
 	volume_envelope 1, 0
 	octave 6
 	note C#, 12

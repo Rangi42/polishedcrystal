@@ -35,12 +35,26 @@ Music_KantoWildBattleNight_Ch2:
 	vibrato 18, 2, 2
 	note_type 12, 11, 1
 	octave 4
-rept 5
 	note G_, 1
 	note F#, 1
 	note F_, 1
 	note E_, 1
-endr
+	note G_, 1
+	note F#, 1
+	note F_, 1
+	note E_, 1
+	note G_, 1
+	note F#, 1
+	note F_, 1
+	note E_, 1
+	note G_, 1
+	note F#, 1
+	note F_, 1
+	note E_, 1
+	note G_, 1
+	note F#, 1
+	note F_, 1
+	note E_, 1
 	note F#, 1
 	note F_, 1
 	note E_, 1
@@ -178,10 +192,14 @@ Music_KantoWildBattleNight_Ch3loop:
 	note G#, 1
 	rest 1
 	octave 6
-rept 4
 	note C#, 1
 	rest 1
-endr
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 1
 	octave 5
 	note G_, 2
 	note F_, 2
@@ -191,10 +209,14 @@ endr
 	note G_, 12
 	note G_, 8
 	note_type 6, 1, 2
-rept 4
 	note G_, 1
 	rest 1
-endr
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 1
 	volume_envelope 2, 2
 	note G_, 1
 	rest 1

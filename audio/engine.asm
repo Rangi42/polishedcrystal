@@ -2197,108 +2197,48 @@ _PlayCryHeader::
 	jmp MusicOn
 
 _PlaySFX::
+	ld hl, wStereoPanningMask
+	ld [hl], $ff
+
+PlayStereoSFX::
+; play sfx de
+
 ; clear channels if they aren't already
 	call MusicOff
 	ld hl, wChannel5Flags
 	bit SOUND_CHANNEL_ON, [hl] ; ch5 on?
 	jr z, .ch6
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR11], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR12], a ; envelope = 0
-	xor a
-	ldh [rNR13], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR14], a ; restart sound (freq hi = 0)
+	ld hl, rNR10
+	call ClearChannel
 	xor a
 	ld [wSoundInput], a ; global sound off
-	ldh [rNR10], a ; sweep = 0
 .ch6
 	ld hl, wChannel6Flags
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, .ch7
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR21], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR22], a ; envelope = 0
-	xor a
-	ldh [rNR23], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR24], a ; restart sound (freq hi = 0)
+	ld hl, rNR20
+	call ClearChannel
 .ch7
 	ld hl, wChannel7Flags
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, .ch8
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR30], a ; sound mode #3 off
-	ldh [rNR31], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR32], a ; envelope = 0
-	xor a
-	ldh [rNR33], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR34], a ; restart sound (freq hi = 0)
+	ld hl, rNR30
+	call ClearChannel
 .ch8
 	ld hl, wChannel8Flags
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, .chscleared
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR41], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR42], a ; envelope = 0
-	xor a
-	ldh [rNR43], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR44], a ; restart sound (freq hi = 0)
+	ld hl, rNR40
+	call ClearChannel
 	xor a
 	ld [wNoiseSampleAddressLo], a
 	ld [wNoiseSampleAddressHi], a
+
 .chscleared
-; start reading sfx header for # chs
-	ld hl, wMusicID
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ld hl, SFX
-	add hl, de
-	add hl, de
-	; get address
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	; get bank
-	ld a, BANK("Sound Effects")
-	ld [wMusicBank], a
-	; get # channels
-	call LoadMusicByte
-	rlca ; top 2
-	rlca ; bits
-	and $3
-	inc a ; # channels -> # loops
-.startchannels
-	push af
-	call LoadChannel ; bc = current channel
-	ld hl, wChannel1Flags - wChannel1
-	add hl, bc
-	set SOUND_SFX, [hl]
-	call StartChannel
-	pop af
-	dec a
-	jr nz, .startchannels
-	call MusicOn
-	xor a
-	ld [wSFXPriority], a
-	ret
-
-PlayStereoSFX::
-; play sfx de
-
-	call MusicOff
-
 	ld hl, wMusicID
 	ld a, e
 	ld [hli], a
@@ -2327,33 +2267,27 @@ PlayStereoSFX::
 .loop
 	push af
 	call LoadChannel
+	call StartChannel
 
-	push de
-	; get tracks for this channel
-	ld a, [wCurChannel]
-	and 3 ; ch1-4
-	ld e, a
-	ld d, 0
-	ld hl, MonoOrStereoTracks
-	add hl, de
-	ld a, [wStereoPanningMask]
-	and [hl]
-
+; Apply stereo mask
 	ld hl, wChannel1Tracks - wChannel1
 	add hl, bc
+	ld a, [wStereoPanningMask]
+	and [hl]
 	ld [hl], a
-	pop de
 
-; turn channel on
+; set sfx flag
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	set SOUND_SFX, [hl]
-	set SOUND_CHANNEL_ON, [hl] ; on
 
 ; done?
 	pop af
 	dec a
 	jr nz, .loop
+
+; Clear sfx priority
+	ld [wSFXPriority], a
 
 ; we're done
 	jmp MusicOn
