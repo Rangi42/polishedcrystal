@@ -762,7 +762,7 @@ CheckMoveSpeed::
 .quick_claw
 	ld a, 100
 	call BattleRandomRange
-	cp 20
+	cp c
 	pop de
 	ret nc
 .activate_item
