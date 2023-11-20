@@ -726,7 +726,7 @@ CheckMoveSpeed::
 	ld b, a
 	farcall BufferAbility
 	ld a, 100
-	call RandomRange
+	call BattleRandomRange
 	cp 30
 	jr nc, .quick_draw_done
 
@@ -762,7 +762,7 @@ CheckMoveSpeed::
 .quick_claw
 	ld a, 100
 	call BattleRandomRange
-	cp c
+	cp 20
 	pop de
 	ret nc
 .activate_item
