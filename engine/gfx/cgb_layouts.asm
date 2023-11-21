@@ -153,6 +153,11 @@ SetBattlePal_Pokepic:
 	pop bc
 	pop hl
 
+	; no color variation for trainer pics (assumes temp species == 0 for trainers!)
+	ld a, [hl]
+	and a
+	ret z
+
 	push de
 	ld a, 6
 .loop
