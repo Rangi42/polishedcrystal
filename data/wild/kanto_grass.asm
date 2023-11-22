@@ -199,60 +199,32 @@
 	def_grass_wildmons VICTORY_ROAD_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon 42, GRAVELER
-	wildmon 41, RHYHORN
-	wildmon 40, ONIX
-	wildmon 41, GOLBAT
-	wildmon 43, SANDSLASH
-	wildmon 44, RHYDON
-	wildmon 44, STEELIX
-	; day
-	wildmon 42, GRAVELER
-	wildmon 41, RHYHORN
-	wildmon 40, ONIX
-	wildmon 41, GOLBAT
-	wildmon 43, SANDSLASH
-	wildmon 44, RHYDON
-	wildmon 44, STEELIX
-	; nite
+	wildmon 43, GRAVELER
+	wildmon 42, RHYHORN
+	wildmon 41, ONIX
 	wildmon 42, GOLBAT
-	wildmon 41, GRAVELER
-	wildmon 40, ONIX
-	wildmon 41, GRAVELER
-	wildmon 43, HAUNTER
-	wildmon 44, STEELIX
-	wildmon 44, RHYDON
+	wildmon 44, SANDSLASH
+	wildmon 46, RHYDON
+	wildmon 45, STEELIX
+	; day
+	wildmon 43, GRAVELER
+	wildmon 42, RHYHORN
+	wildmon 41, ONIX
+	wildmon 42, GOLBAT
+	wildmon 44, SANDSLASH
+	wildmon 46, RHYDON
+	wildmon 45, STEELIX
+	; nite
+	wildmon 43, GOLBAT
+	wildmon 42, GRAVELER
+	wildmon 41, ONIX
+	wildmon 42, GRAVELER
+	wildmon 44, HAUNTER
+	wildmon 46, STEELIX
+	wildmon 45, RHYDON
 	end_grass_wildmons
 
 	def_grass_wildmons VICTORY_ROAD_2F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
-	; morn
-	wildmon 44, GRAVELER
-	wildmon 43, RHYHORN
-	wildmon 42, ONIX
-	wildmon 43, GOLBAT
-	wildmon 45, SANDSLASH
-	wildmon 47, RHYDON
-	wildmon 46, STEELIX
-	; day
-	wildmon 44, GRAVELER
-	wildmon 43, RHYHORN
-	wildmon 42, ONIX
-	wildmon 43, GOLBAT
-	wildmon 45, SANDSLASH
-	wildmon 47, RHYDON
-	wildmon 46, STEELIX
-	; nite
-	wildmon 44, GOLBAT
-	wildmon 43, GRAVELER
-	wildmon 42, ONIX
-	wildmon 43, GRAVELER
-	wildmon 45, HAUNTER
-	wildmon 47, STEELIX
-	wildmon 46, RHYDON
-	end_grass_wildmons
-
-	def_grass_wildmons VICTORY_ROAD_3F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon 46, GRAVELER
@@ -278,6 +250,34 @@
 	wildmon 47, HAUNTER
 	wildmon 49, STEELIX
 	wildmon 48, RHYDON
+	end_grass_wildmons
+
+	def_grass_wildmons VICTORY_ROAD_3F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 48, GRAVELER
+	wildmon 47, RHYHORN
+	wildmon 46, ONIX
+	wildmon 47, GOLBAT
+	wildmon 48, SANDSLASH
+	wildmon 51, RHYDON
+	wildmon 50, STEELIX
+	; day
+	wildmon 48, GRAVELER
+	wildmon 47, RHYHORN
+	wildmon 46, ONIX
+	wildmon 47, GOLBAT
+	wildmon 48, SANDSLASH
+	wildmon 51, RHYDON
+	wildmon 50, STEELIX
+	; nite
+	wildmon 48, GOLBAT
+	wildmon 47, GRAVELER
+	wildmon 46, ONIX
+	wildmon 47, GRAVELER
+	wildmon 48, HAUNTER
+	wildmon 51, STEELIX
+	wildmon 50, RHYDON
 	end_grass_wildmons
 
 	def_grass_wildmons TOHJO_FALLS
@@ -1095,57 +1095,57 @@
 	def_grass_wildmons ROUTE_26
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon 37, DODUO
-	wildmon 37, SANDSLASH
-	wildmon 40, PONYTA
-	wildmon 38, RATICATE
 	wildmon 38, DODUO
-	wildmon 39, ARBOK, ARBOK_KANTO_FORM
-	wildmon 39, ARBOK, ARBOK_KANTO_FORM
+	wildmon 38, SANDSLASH
+	wildmon 41, PONYTA
+	wildmon 40, RATICATE
+	wildmon 39, DODUO
+	wildmon 40, ARBOK, ARBOK_KANTO_FORM
+	wildmon 41, ARBOK, ARBOK_KANTO_FORM
 	; day
-	wildmon 37, DODUO
-	wildmon 37, SANDSLASH
-	wildmon 40, PONYTA
-	wildmon 38, RATICATE
 	wildmon 38, DODUO
-	wildmon 39, ARBOK, ARBOK_KANTO_FORM
-	wildmon 39, ARBOK, ARBOK_KANTO_FORM
+	wildmon 38, SANDSLASH
+	wildmon 41, PONYTA
+	wildmon 40, RATICATE
+	wildmon 39, DODUO
+	wildmon 40, ARBOK, ARBOK_KANTO_FORM
+	wildmon 41, ARBOK, ARBOK_KANTO_FORM
 	; nite
-	wildmon 37, NOCTOWL
-	wildmon 37, RATICATE
-	wildmon 40, NOCTOWL
+	wildmon 38, NOCTOWL
 	wildmon 38, RATICATE
-	wildmon 38, QUAGSIRE
+	wildmon 41, NOCTOWL
+	wildmon 40, RATICATE
 	wildmon 39, QUAGSIRE
-	wildmon 39, QUAGSIRE
+	wildmon 40, QUAGSIRE
+	wildmon 41, QUAGSIRE
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_27
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon 36, DODUO
-	wildmon 36, ARBOK, ARBOK_KANTO_FORM
-	wildmon 38, RATICATE
-	wildmon 38, DODUO
-	wildmon 40, PONYTA
-	wildmon 38, DODRIO
+	wildmon 37, DODUO
+	wildmon 37, ARBOK, ARBOK_KANTO_FORM
+	wildmon 39, RATICATE
+	wildmon 39, DODUO
+	wildmon 41, PONYTA
 	wildmon 39, DODRIO
+	wildmon 40, DODRIO
 	; day
-	wildmon 36, DODUO
-	wildmon 36, ARBOK, ARBOK_KANTO_FORM
-	wildmon 38, RATICATE
-	wildmon 38, DODUO
-	wildmon 40, PONYTA
-	wildmon 38, DODRIO
+	wildmon 37, DODUO
+	wildmon 37, ARBOK, ARBOK_KANTO_FORM
+	wildmon 39, RATICATE
+	wildmon 39, DODUO
+	wildmon 41, PONYTA
 	wildmon 39, DODRIO
+	wildmon 40, DODRIO
 	; nite
-	wildmon 36, QUAGSIRE
-	wildmon 36, NOCTOWL
-	wildmon 38, RATICATE
-	wildmon 38, QUAGSIRE
-	wildmon 40, NOCTOWL
-	wildmon 38, NOCTOWL
+	wildmon 37, QUAGSIRE
+	wildmon 37, NOCTOWL
+	wildmon 39, RATICATE
+	wildmon 39, QUAGSIRE
+	wildmon 41, NOCTOWL
 	wildmon 39, NOCTOWL
+	wildmon 40, NOCTOWL
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_28

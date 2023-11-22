@@ -76,6 +76,7 @@ Special_CheckForLuckyNumberWinners:
 	ld hl, wStringBuffer2
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
+	ld [hl], "@" ; PrintNum returns address of next char in the buffer hl
 	pop bc
 
 	; Get box name (if applicable)
@@ -103,6 +104,5 @@ Special_PrintTodaysLuckyNumber:
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	ld a, "@"
-	ld [wStringBuffer3 + 5], a
+	ld [hl], "@"
 	ret

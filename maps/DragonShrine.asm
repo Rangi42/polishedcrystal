@@ -147,13 +147,13 @@ DragonShrineTestScript:
 	waitbutton
 	setflag ENGINE_RISINGBADGE
 	playsound SFX_GET_BADGE
+	writetext DragonShrinePlayerReceivedRisingBadgeText
 	waitsfx
 	special RestartMapMusic
+	promptbutton
 	specialphonecall SPECIALCALL_MASTERBALL
 	setscene $1
 	setmapscene DRAGONS_DEN_B1F, $1
-	writetext DragonShrinePlayerReceivedRisingBadgeText
-	promptbutton
 	writetext DragonShrineRisingBadgeExplanationText
 	waitbutton
 	closetext
