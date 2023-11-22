@@ -492,12 +492,10 @@ endc
 	ld b, [hl]
 	push bc
 	call CheckCosmeticCaughtMon
-	ld a, c
 	pop bc
-	push af
+	push af ; assumes flags are returned from CheckCosmeticCaughtMon
 	call SetSeenAndCaughtMon
 	pop af
-	and a
 	jr nz, .skip_pokedex
 
 	call CheckReceivedDex
