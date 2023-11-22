@@ -732,9 +732,9 @@ endc
 	call SetPlayerTurn
 .not_shiny
 
-	ld bc, wTempMonSpecies
-	farcall CheckFaintedFrzSlp
-	jr c, .skip_cry
+	ld a, [wEnemyMonStatus]
+	and (1 << FRZ) | SLP_MASK
+	jr nz, .skip_cry
 	farcall CheckBattleEffects
 	jr c, .cry_no_anim
 	hlcoord 12, 0
