@@ -318,6 +318,7 @@ PlaceFootprints::
 
 QueueVolatileTiles::
 ; input:
+; a ; footprint tile id
 ; de = offset into wFootprintQueue
 ; hl = offset into wBGMapAnchor
 	ld [de], a
@@ -331,7 +332,7 @@ QueueVolatileTiles::
 	ret
 
 FinishVolatileTiles::
-	xor a
+	xor a ; end
 	ld [de], a
 	; fallthrough
 UpdateSprites::
