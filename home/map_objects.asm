@@ -282,6 +282,58 @@ _GetMovementByte::
 	ld a, h
 	ret
 
+GetBGMapPlayerOffset::
+; returns hl = {wBGMapAnchor} + BG_MAP_WIDTH * 8 + 8 (player's top-left tile)
+	ld hl, wBGMapAnchor + 1
+	ld a, [hld]
+	inc a ; move down 8 rows
+	and HIGH(vBGMap0 + BG_MAP_WIDTH * BG_MAP_HEIGHT - 1) ; wrap vertically
+	ld l, [hl]
+	ld h, a
+	ld a, l
+	add a, 8 ; move right 8 rows
+	; restore "row" bits (upper 3)
+	xor l
+	and BG_MAP_WIDTH - 1
+	xor l
+	ld l, a
+	ret
+
+PlaceFootprints::
+	ld hl, wFootprintQueue
+.continue
+	ld a, [hl]
+	and a
+	ret z
+	ld c, a
+	xor a
+	ld [hli], a
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, c
+	ld [de], a
+	jr .continue
+
+QueueVolatileTiles::
+; input:
+; de = offset into wFootprintQueue
+; hl = offset into wBGMapAnchor
+	ld [de], a
+	inc de
+	ld a, l
+	ld [de], a
+	inc de
+	ld a, h
+	ld [de], a
+	inc de
+	ret
+
+FinishVolatileTiles::
+	xor a
+	ld [de], a
+	; fallthrough
 UpdateSprites::
 	ld a, [wVramState]
 	bit 0, a

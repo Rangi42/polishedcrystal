@@ -95,6 +95,7 @@ endc
 
 .skipToGameTime
 	call AnimateTileset
+	call PlaceFootprints
 	jr .doGameTime
 
 .VBlanks:
@@ -146,6 +147,7 @@ VBlank0::
 	call Serve2bppRequest
 	call Serve1bppRequest
 	call AnimateTileset
+	call PlaceFootprints
 
 .done
 	call PushOAM
