@@ -291,7 +291,7 @@ GetBGMapPlayerOffset::
 	ld l, [hl]
 	ld h, a
 	ld a, l
-	add a, 8 ; move right 8 rows
+	add 8 ; move right 8 rows
 	; restore "row" bits (upper 3)
 	xor l
 	and BG_MAP_WIDTH - 1

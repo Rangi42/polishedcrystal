@@ -288,9 +288,7 @@ CheckTileEvent:
 
 	ld a, [wPlayerTile]
 	cp COLL_COAST_SAND
-	jr nz, .no_tile_effects
-
-	call RenderShamoutiCoastSand
+	call z, RenderShamoutiCoastSand
 
 .no_tile_effects
 	call CheckStepCountScriptFlag
