@@ -81,7 +81,7 @@ CheckCosmeticCaughtMon:
 	ld a, l
 	cp LOW(VariantSpeciesAndFormTable)
 	jr nz, .loop
-	ret
+	ret ; should return z if no variants have been caught
 
 ; Pokedex Flag Actions:
 ; Input: bc = form, species
