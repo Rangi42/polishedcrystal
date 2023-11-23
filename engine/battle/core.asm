@@ -8198,7 +8198,7 @@ ReadAndPrintLinkBattleRecord:
 	done
 
 .Format:
-	text "  ---  "
+	text "  ---  " ; no-optimize trailing string space
 	next1 "         -    -    -"
 	done
 .Record:
