@@ -100,6 +100,8 @@ InitMapNameSign::
 	ld a, SCREEN_HEIGHT_PX
 	ldh [rWY], a
 	ldh [hWY], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ret
@@ -198,6 +200,8 @@ PlaceMapNameSign::
 	ldh [hWY], a
 	sub SCREEN_HEIGHT_PX
 	ret nz
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ldh [hLCDCPointer], a
 	ret
 
