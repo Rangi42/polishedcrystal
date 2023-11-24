@@ -224,7 +224,7 @@ ObliviousDescription:
 
 CloudNineDescription:
 	text  "Eliminates effects"
-	next1 "of weather. "
+	next1 "of weather."
 	done
 
 CompoundEyesDescription:

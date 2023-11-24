@@ -592,6 +592,17 @@ patterns = {
 	(lambda line3, prev: re.match(r'ld \[w.*?\], a', line3.code)
 		and line3.code.split(", ")[0].lstrip("ld ") == prev[0].code.split(", ")[-1]),
 ],
+'Trailing string space': [
+	# Bad: text "Hello! " (unless it's followed by a text command)
+	# Good: text "Hello!"
+	(lambda line1, prev: re.match(r'(?:' + '|'.join([
+		'text', 'next1?', 'line', 'page', 'para', 'cont', 'prompt'
+		]) + r')\s*"[^"]* "', line1.code)),
+	(lambda line2, prev: not re.match(r'(?:' + '|'.join([
+		'text_', 'sound_', 'start_asm', 'deciram', 'interpret_data', 'limited_interpret_data',
+		'link_wait_button', 'current_day', 'stop_compressing_text',
+		]) + r')', line2.code))
+],
 }
 
 def optimize(filename):

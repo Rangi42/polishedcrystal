@@ -82,7 +82,7 @@ StringOptions1:
 	next1 "Sound"
 	next1 "        :"
 	next1 "Next"
-	next1 "        "
+	next1 "        " ; no-optimize trailing string space
 	next1 "Done"
 	done
 
@@ -100,7 +100,7 @@ StringOptions2:
 	next1 "Keyboard"
 	next1 "        :"
 	next1 "Previous"
-	next1 "        "
+	next1 "        " ; no-optimize trailing string space
 	next1 "Done"
 	done
 

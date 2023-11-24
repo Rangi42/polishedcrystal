@@ -337,6 +337,7 @@ CheckTileEvent:
 RenderShamoutiCoastSand:
 	call GetBGMapPlayerOffset
 	ld de, wFootprintQueue
+	ld bc, BG_MAP_WIDTH
 
 	; assume coast sand is tile $1:4f in TILESET_SHAMOUTI_ISLAND;
 	; footprint tiles must be in the same VRAM bank
@@ -349,7 +350,6 @@ RenderShamoutiCoastSand:
 	cp 8
 	jr c, .vertical
 ; horizontal
-	ld bc, BG_MAP_WIDTH
 	add hl, bc
 	ld a, $5a ; upper horizontal footprint
 	call QueueVolatileTiles
@@ -362,8 +362,8 @@ RenderShamoutiCoastSand:
 	inc hl
 	ld a, $58 ; upper-right vertical footprint
 	call QueueVolatileTiles
-	ld bc, BG_MAP_WIDTH - 1
 	add hl, bc
+	dec hl
 	ld a, $59 ; lower-left vertical footprint
 	call QueueVolatileTiles
 	jp FinishVolatileTiles
@@ -374,7 +374,6 @@ RenderShamoutiCoastSand:
 	cp 8
 	jr c, .vertical_bicycle
 ; horizontal
-	ld bc, BG_MAP_WIDTH
 	add hl, bc
 	ld a, $5c ; horizontal bicycle track
 	call QueueVolatileTiles
@@ -386,7 +385,6 @@ RenderShamoutiCoastSand:
 .vertical_bicycle
 	ld a, $5d ; vertical bicycle track
 	call QueueVolatileTiles
-	ld bc, BG_MAP_WIDTH
 	add hl, bc
 	ld a, $5d ; vertical bicycle track
 	call QueueVolatileTiles
