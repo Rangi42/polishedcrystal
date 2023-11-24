@@ -7,6 +7,8 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh a, [hBGMapMode]
 	push af
 
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
@@ -68,6 +70,8 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh a, [hBGMapMode]
 	push af
 
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a

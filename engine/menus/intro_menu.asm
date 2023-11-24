@@ -1070,8 +1070,6 @@ CrystalIntroSequence:
 	farcall CrystalIntro
 
 StartTitleScreen:
-	ld hl, rIE
-	set LCD_STAT, [hl]
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
@@ -1089,12 +1087,12 @@ StartTitleScreen:
 	pop af
 	ldh [rSVBK], a
 
-	ld hl, rIE
-	res LCD_STAT, [hl]
 	ld hl, rLCDC
 	res rLCDC_SPRITE_SIZE, [hl]
 	call ClearScreen
 	call ApplyAttrAndTilemapInVBlank
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ldh [hSCX], a
@@ -1181,6 +1179,8 @@ TitleScreenEntrance:
 	ld hl, wJumptableIndex
 	inc [hl]
 
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 
