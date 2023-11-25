@@ -191,6 +191,8 @@ INCBIN "gfx/new_game/init_bg.2bpp.lz"
 	next1 "            :"
 	next1 "Traded <PK><MN> obey"
 	next1 "            :"
+;	next1 "RTC Enabled"
+;	next1 "            :"
 	done
 
 GetInitialOptionPointer:
@@ -209,7 +211,8 @@ GetInitialOptionPointer:
 	dw InitialOptions_ColorVariation
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
-	assert_table_length NUM_INITIAL_OPTIONS
+;	dw InitialOptions_RTC
+assert_table_length NUM_INITIAL_OPTIONS
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
@@ -437,6 +440,30 @@ InitialOptions_TradedMon:
 	jr .Display
 .SetYes:
 	set TRADED_AS_OT_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 17
+	rst PlaceString
+	and a
+	ret
+
+InitialOptions_RTC:
+	ld hl, wInitialOptions2
+	ldh a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit RTC_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit RTC_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res RTC_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set RTC_OPT, [hl]
 	ld de, YesString
 .Display:
 	hlcoord 15, 17

@@ -11,6 +11,7 @@ InitialOptionDescriptions:
 	dw .InitialOptionDesc_ColorVariation
 	dw .InitialOptionDesc_PerfectIVs
 	dw .InitialOptionDesc_TradedMon
+;	dw .InitialOptionDesc_RTC
 	assert_table_length NUM_INITIAL_OPTIONS
 
 .InitialOptionDesc_Natures:
@@ -123,4 +124,13 @@ InitialOptionDescriptions:
 
 	para "but Exp. Points"
 	line "won't be boosted."
+	prompt
+
+.InitialOptionDesc_RTC:
+	text "When set the RTC"
+	line "is enabled."
+
+	para "Disable this for"
+	line "if you do not have"
+	cont "an RTC."
 	prompt
