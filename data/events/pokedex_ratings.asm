@@ -17,6 +17,6 @@ OakRatings:
 	dw 199, SFX_DEX_FANFARE_170_199,      OakRating14
 	dw 214, SFX_DEX_FANFARE_200_229,      OakRating15
 	dw 229, SFX_DEX_FANFARE_200_229,      OakRating16
-	dw 239, SFX_DEX_FANFARE_230_PLUS,     OakRating17
-	dw 249, SFX_DEX_FANFARE_230_PLUS,     OakRating18
+	dw 259, SFX_DEX_FANFARE_230_PLUS,     OakRating17
+	dw 288, SFX_DEX_FANFARE_230_PLUS,     OakRating18
 	dw  -1, SFX_DEX_FANFARE_230_PLUS,     OakRating19

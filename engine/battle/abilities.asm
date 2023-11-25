@@ -2171,15 +2171,7 @@ RunPostBattleAbilities::
 	pop de
 	push de
 	push bc
-	ld a, MON_SPECIES
-	call GetPartyParamLocationAndValue
-	ld bc, MON_FORM - MON_SPECIES
-	add hl, bc
-	ld b, [hl]
-	ld hl, wNamedObjectIndex
-	ld [hli], a
-	ld [hl], b
-	call GetPokemonName
+	call GetCurNickname
 	ld hl, wStringBuffer1
 	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH

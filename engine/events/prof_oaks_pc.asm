@@ -75,7 +75,6 @@ Rate:
 	ld hl, OakPCText3
 	call PrintText
 	call JoyWaitAorB
-	pop bc
 	ld hl, wTempDexOwn
 	ld a, [hli]
 	ld c, [hl]
