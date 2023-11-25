@@ -1107,6 +1107,8 @@ BattleAnimFunction_Surf:
 
 .zero
 	call BattleAnim_IncAnonJumptableIndex
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, LOW(rSCY)
 	ldh [hLCDCPointer], a
 	ld a, $58
@@ -1164,6 +1166,8 @@ BattleAnimFunction_Surf:
 	ld a, [hl]
 	cp $70
 	jr c, .move_down
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ldh [hLYOverrideStart], a

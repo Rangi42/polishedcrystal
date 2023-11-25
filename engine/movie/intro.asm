@@ -1,6 +1,4 @@
 CrystalIntro:
-	ld hl, rIE
-	set LCD_STAT, [hl]
 	ldh a, [rSVBK]
 	push af
 	ld a, 5
@@ -44,8 +42,6 @@ CrystalIntro:
 	ldh [hInMenu], a
 	pop af
 	ldh [rSVBK], a
-	ld hl, rIE
-	res LCD_STAT, [hl]
 	ret
 
 .InitRAMAddrs:
@@ -203,6 +199,8 @@ IntroScene5:
 	call Intro_ClearBGPals
 	call ClearSprites
 	call ClearTileMap
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
@@ -356,6 +354,8 @@ IntroScene8:
 
 IntroScene9:
 ; Set up the next scene (same bg).
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	call ClearSprites
@@ -420,6 +420,8 @@ IntroScene11:
 	call Intro_ClearBGPals
 	call ClearSprites
 	call ClearTileMap
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
@@ -1506,6 +1508,8 @@ Intro_ResetLYOverrides:
 
 	pop af
 	ldh [rSVBK], a
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	ret

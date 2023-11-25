@@ -258,9 +258,6 @@ Gen2ToGen2LinkComms:
 	push af
 	xor a
 	ldh [rIF], a
-	ldh a, [rIE]
-	set LCD_STAT, a
-	ldh [rIE], a
 	pop af
 	ldh [rIF], a
 
@@ -1836,7 +1833,7 @@ WaitForOtherPlayerToExit:
 	push af
 	xor a
 	ldh [rIF], a
-	ld a, 1 << SERIAL | 1 << LCD_STAT | 1 << VBLANK
+	ld a, 1 << SERIAL | 1 << VBLANK
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a

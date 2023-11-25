@@ -7,6 +7,7 @@ DEF WALL_TILE  EQU %10
 ; TileCollisionTable indexes (see data/collision/collision_permissions.asm)
 DEF COLL_FLOOR             EQU $00
 DEF COLL_VOID              EQU $01
+DEF COLL_COAST_SAND        EQU $02
 DEF COLL_WALL              EQU $07
 DEF COLL_LONG_GRASS        EQU $14
 DEF COLL_HEADBUTT_TREE     EQU $15

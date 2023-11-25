@@ -223,6 +223,7 @@ WRAM0
 	"Sprites"
 	"Tilemap and Attrmap"
 	"Misc 480"
+	"Unused"
 	"Misc 1326"
 	org $cff0
 	"Options"

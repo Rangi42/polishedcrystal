@@ -2,7 +2,7 @@ TileCollisionTable::
 	table_width 1, TileCollisionTable
 	db LAND_TILE  ; COLL_FLOOR
 	db WALL_TILE  ; COLL_VOID
-	db LAND_TILE  ; 02
+	db LAND_TILE  ; COLL_COAST_SAND
 	db LAND_TILE  ; 03
 	db LAND_TILE  ; 04
 	db LAND_TILE  ; 05

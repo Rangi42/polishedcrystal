@@ -298,10 +298,9 @@ wAttrmapEnd::
 
 
 SECTION UNION "Misc 480", WRAM0
-; misc
+; footprints
 
-wMisc:: ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
-wMiscEnd::
+wFootprintQueue:: ds 7
 
 
 SECTION UNION "Misc 480", WRAM0
@@ -874,6 +873,11 @@ SECTION UNION "Misc 480", WRAM0
 wUnownPuzzle::
 wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
+
+
+SECTION "Unused", WRAM0
+
+	ds 76
 
 
 SECTION UNION "Misc 1326", WRAM0

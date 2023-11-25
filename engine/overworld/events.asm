@@ -282,6 +282,15 @@ CheckTileEvent:
 	jr c, .coord_event
 
 .coord_events_disabled
+	ld hl, wPlayerStepFlags
+	bit PLAYERSTEP_STOP_F, [hl]
+	jr z, .no_tile_effects
+
+	ld a, [wPlayerTile]
+	cp COLL_COAST_SAND
+	call z, RenderShamoutiCoastSand
+
+.no_tile_effects
 	call CheckStepCountScriptFlag
 	jr z, .step_count_disabled
 
@@ -324,6 +333,62 @@ CheckTileEvent:
 	ld l, a
 	ld a, [wMapScriptsBank]
 	jmp CallScript
+
+RenderShamoutiCoastSand:
+	call GetBGMapPlayerOffset
+	ld de, wFootprintQueue
+	ld bc, BG_MAP_WIDTH
+
+	; assume coast sand is tile $1:4f in TILESET_SHAMOUTI_ISLAND;
+	; footprint tiles must be in the same VRAM bank
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	jr z, .bicycle
+; walking
+	ld a, [wPlayerDirection]
+	and %1100
+	cp 8
+	jr c, .vertical
+; horizontal
+	add hl, bc
+	ld a, $5a ; upper horizontal footprint
+	call QueueVolatileTiles
+	inc hl
+	ld a, $5b ; lower horizontal footprint
+	call QueueVolatileTiles
+	jp FinishVolatileTiles
+
+.vertical
+	inc hl
+	ld a, $58 ; upper-right vertical footprint
+	call QueueVolatileTiles
+	add hl, bc
+	dec hl
+	ld a, $59 ; lower-left vertical footprint
+	call QueueVolatileTiles
+	jp FinishVolatileTiles
+
+.bicycle
+	ld a, [wPlayerDirection]
+	and %1100
+	cp 8
+	jr c, .vertical_bicycle
+; horizontal
+	add hl, bc
+	ld a, $5c ; horizontal bicycle track
+	call QueueVolatileTiles
+	inc hl
+	ld a, $5c ; horizontal bicycle track
+	call QueueVolatileTiles
+	jp FinishVolatileTiles
+
+.vertical_bicycle
+	ld a, $5d ; vertical bicycle track
+	call QueueVolatileTiles
+	add hl, bc
+	ld a, $5d ; vertical bicycle track
+	call QueueVolatileTiles
+	jp FinishVolatileTiles
 
 CheckWildEncounterCooldown:
 	ld hl, wWildEncounterCooldown

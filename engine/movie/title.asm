@@ -166,6 +166,8 @@ endc
 	rst ByteFill
 
 ; Let LCD Stat know we're messing around with SCX
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, rSCX - rJOYP
 	ldh [hLCDCPointer], a
 
