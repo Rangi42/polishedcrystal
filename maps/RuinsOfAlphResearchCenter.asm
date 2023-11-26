@@ -226,9 +226,9 @@ RuinsOfAlphResearchCenterModifiedDexText:
 	para "to store Unown"
 	line "data."
 
-	para "It records them in"
-	line "the sequence that"
-	cont "they were caught."
+	para "It records them"
+	line "in alphabetical"
+	cont "order."
 	done
 
 RuinsOfAlphResearchCenterDexUpgradedText:
