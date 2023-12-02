@@ -478,6 +478,9 @@ WillOWispDescription:
 
 StunSporeDescription:
 ThunderWaveDescription:
+	db   "A move that"
+	next "paralyzes the foe.@"
+
 GlareDescription:
 	db   "A move that may"
 	next "paralyze the foe.@"
