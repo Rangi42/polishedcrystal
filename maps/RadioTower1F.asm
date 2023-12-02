@@ -159,7 +159,7 @@ RadioTower1FRadioCardWomanScript:
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion4Text
 	yesorno
-	iftruefwd .WrongAnswer
+	iffalsefwd .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion5Text

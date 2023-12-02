@@ -2431,14 +2431,14 @@ BugCatcherGroup:
 	db "Arnie@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 15, VENONAT
+	dbp 16, VENONAT
 	db -1 ; end
 
 	; BUG_CATCHER
 	db "Arnie@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 19, VENONAT
+	dbp 20, VENONAT
 	db -1 ; end
 
 	; BUG_CATCHER
@@ -2586,9 +2586,9 @@ CamperGroup:
 	db "Ivan@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 10, DIGLETT
-	dbp 10, ZUBAT
-	dbp 14, DIGLETT
+	dbp 11, DIGLETT
+	dbp 11, ZUBAT
+	dbp 15, DIGLETT
 	db -1 ; end
 
 	; CAMPER
@@ -2885,7 +2885,7 @@ endc
 	db "Kim@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 15, VULPIX
+	dbp 17, VULPIX
 	db -1 ; end
 
 	; PICNICKER
@@ -4602,8 +4602,8 @@ OfficerMGroup:
 	db "Dirk@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 14, GROWLITHE
-	dbp 14, MACHOP
+	dbp 15, GROWLITHE
+	dbp 15, MACHOP
 	db -1 ; end
 
 
@@ -6823,9 +6823,9 @@ BreederGroup:
 	db "Theresa@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
 	; party
-	dbp 14, MAGBY, FEMALE
+	dbp 15, MAGBY, FEMALE
 		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-	dbp 14, ELEKID, FEMALE
+	dbp 16, ELEKID, FEMALE
 		db EVIOLITE, SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
