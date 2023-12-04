@@ -298,12 +298,6 @@ wAttrmapEnd::
 
 
 SECTION UNION "Misc 480", WRAM0
-; footprints
-
-wFootprintQueue:: ds 7
-
-
-SECTION UNION "Misc 480", WRAM0
 ; odd egg
 
 wOddEgg:: party_struct wOddEgg
@@ -875,9 +869,15 @@ wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
 
+SECTION "Footprint Queue", WRAM0
+; footprints
+
+wFootprintQueue:: ds 21
+
+
 SECTION "Unused", WRAM0
 
-	ds 76
+	ds 55
 
 
 SECTION UNION "Misc 1326", WRAM0
