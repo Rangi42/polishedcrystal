@@ -19,6 +19,7 @@ VioletOutskirts_MapScriptHeader:
 	fruittree_event 17, -2, FRUITTREE_ROUTE_42_1, PNK_APRICORN, PAL_NPC_PINK
 	fruittree_event 18, -2, FRUITTREE_ROUTE_42_2, GRN_APRICORN, PAL_NPC_GREEN
 	fruittree_event 19, -2, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_YELLOW
+	itemball_event 14, 24, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
 
 VioletOutskirtsAvalanche:
 	checkevent EVENT_BEAT_JASMINE
