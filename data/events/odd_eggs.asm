@@ -4,10 +4,10 @@ DEF ODD_EGG_LENGTH EQU 10
 OddEggProbabilities:
 	table_width 1, OddEggProbabilities
 	db 10
-	db 26
-	db 42
-	db 52
-	db 64
+	db 24
+	db 38
+	db 48
+	db 60
 	db 72
 	db 84
 	db 91
