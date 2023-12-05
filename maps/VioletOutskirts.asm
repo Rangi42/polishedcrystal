@@ -22,7 +22,7 @@ VioletOutskirts_MapScriptHeader:
 	itemball_event 14, 24, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
 
 VioletOutskirtsAvalanche:
-	checkevent EVENT_BEAT_JASMINE
+	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftruefwd .end
 	changeblock 4, -2, $0a
 	changeblock 6, -2, $0a
