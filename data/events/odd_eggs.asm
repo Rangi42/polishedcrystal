@@ -6,12 +6,12 @@ OddEggProbabilities:
 	db 10
 	db 26
 	db 42
-	db 44
-	db 56
-	db 68
-	db 80
-	db 88
-	db 92
+	db 52
+	db 64
+	db 72
+	db 84
+	db 91
+	db 93
 	db 100
 	assert_table_length NUM_ODD_EGGS
 
