@@ -650,7 +650,7 @@ Pokedex_UnsafeSetHBlankFunction:
 ; Thus, we assume worst-case mode0 access. Mode2 is always 40 cycles in
 ; doublespeed while worst-case mode0 is 37 after factoring in interrupt latency.
 PHB_LCDCode:
-LOAD UNION "Misc 480", WRAM0
+LOAD UNION "Misc 404", WRAM0
 wLCDPokedex::
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a

@@ -396,4 +396,6 @@ endr
 	mini_icon TaurosPaldeanFire
 	mini_icon TaurosPaldeanWater
 
+	mini_icon UrsalunaBloodmoon
+
 	assert_table_length NUM_UNIQUE_POKEMON

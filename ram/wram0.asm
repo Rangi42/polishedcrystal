@@ -236,37 +236,6 @@ wGlobalAnimXOffset:: db
 wSpriteAnimsEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
-
-wMusicPlayerWRAM::
-wSongSelection:: dw
-wNumNoteLines:: db
-wTmpCh:: db
-wChLastNotes:: ds 3
-wVolTimer:: db
-wC1Vol:: db
-wC1VolSub:: db
-wC2Vol:: db
-wC2VolSub:: db
-wC3Vol:: db
-wC3VolSub:: db
-wC4Vol:: db
-wC4VolSub:: db
-wNoteEnded:: ds 3
-wSongInfoSwitch:: db
-;wRenderedWaveform:: db
-wPitchesTmp:: ds 4
-;wWaveformTmp:: ds 16
-wTmpValue:: db
-; song list
-wSelectorTop:: db
-wSelectorCur:: db
-; song editor
-wChannelSelector:: db
-wAdjustingTempo:: db
-wMusicPlayerWRAMEnd::
-
-
 SECTION "Sprites", WRAM0
 
 wShadowOAM::
@@ -297,7 +266,39 @@ wAttrmap::
 wAttrmapEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
+; music player
+
+wMusicPlayerWRAM::
+wSongSelection:: dw
+wNumNoteLines:: db
+wTmpCh:: db
+wChLastNotes:: ds 3
+wVolTimer:: db
+wC1Vol:: db
+wC1VolSub:: db
+wC2Vol:: db
+wC2VolSub:: db
+wC3Vol:: db
+wC3VolSub:: db
+wC4Vol:: db
+wC4VolSub:: db
+wNoteEnded:: ds 3
+wSongInfoSwitch:: db
+;wRenderedWaveform:: db
+wPitchesTmp:: ds 4
+;wWaveformTmp:: ds 16
+wTmpValue:: db
+; song list
+wSelectorTop:: db
+wSelectorCur:: db
+; song editor
+wChannelSelector:: db
+wAdjustingTempo:: db
+wMusicPlayerWRAMEnd::
+
+
+SECTION UNION "Misc 404", WRAM0
 ; odd egg
 
 wOddEgg:: party_struct wOddEgg
@@ -305,13 +306,13 @@ wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds MON_NAME_LENGTH
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; hall of fame temp struct
 
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; timeset temp storage
 
 wTimeSetBuffer:: ds 20
@@ -319,33 +320,34 @@ wInitHourBuffer:: ds 13
 wInitMinuteBuffer:: ds 17
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; link patch lists
 
 wPlayerPatchLists:: ds 200
 wOTPatchLists:: ds 200
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; link engine
 
 wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; polished link transfer buffer
+
 wLinkReceivedPolishedMiscBuffer:: ds 10
 wLinkPolishedMiscBuffer:: ds 10
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; battle + pokédex (merged because pokédex can be called from battle)
 
 ; wLCDPokedex is defined in a LOAD UNION block in engine/pokedex/lcd.asm
 ; Reserve space for it at the beginning of this LOAD UNION
 	ds 15
-	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 480")
+	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 404")
 
 ; Battle data
 wBattle::
@@ -556,7 +558,7 @@ wSafariMonEating:: db
 
 wAlreadyDisobeyed:: db
 
-	ds 1 ; unused
+wAlreadyExecuted:: db
 
 wAlreadySawWeather:: db
 
@@ -566,15 +568,11 @@ wWhichMonFaintedFirst:: db
 wLastPlayerCounterMove:: db
 wLastEnemyCounterMove:: db
 
-	ds 1 ; unused
-
-wAlreadyExecuted:: db
-
 wTrickRoom:: db
 
 wBattleLowHealthAlarm:: db
 
-	ds 1 ; unused
+	ds 3 ; unused
 
 wPlayerHazards::
 ; bit
@@ -744,7 +742,8 @@ wPokedex_SearchDataEnd::
 wPokedex_SearchEnd::
 wPokedex_MenuCursorY:: db
 
-SECTION UNION "Misc 480", WRAM0
+
+SECTION UNION "Misc 404", WRAM0
 ; trade
 	ds 172
 
@@ -767,7 +766,7 @@ wLinkTradeGetmonShiny:: db
 wLinkTradeGetmonForm:: db
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; naming screen
 	ds 172
 
@@ -781,7 +780,7 @@ wNamingScreenStringEntryCoord:: dw
 wNamingScreenKeyboardWidth:: db
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; pokegear
 	ds 172
 
@@ -800,7 +799,7 @@ wPokegearNumberBuffer:: db
 wPokegearMapCursorSpawnpoint:: db
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; slot machine
 	ds 172
 
@@ -827,7 +826,7 @@ wSlotsDataEnd::
 wSlotsEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; card flip
 	ds 172
 
@@ -841,7 +840,7 @@ wDiscardPileEnd::
 wCardFlipEnd::
 
 
-;SECTION UNION "Misc 480", WRAM0
+;SECTION UNION "Misc 404", WRAM0
 ;; memory game
 ;	ds 172
 ;
@@ -860,7 +859,7 @@ wCardFlipEnd::
 ;wMemoryGameEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; Unown puzzle
 	ds 172
 
@@ -870,14 +869,14 @@ wUnownPuzzleEnd::
 
 
 SECTION "Footprint Queue", WRAM0
-; footprints
+; volatile footprints in sand
 
-wFootprintQueue:: ds 21
+wFootprintQueue:: ds 3 * 2 + 1
 
 
 SECTION "Unused", WRAM0
 
-	ds 55
+	ds 69 ; it's free real estate
 
 
 SECTION UNION "Misc 1326", WRAM0
