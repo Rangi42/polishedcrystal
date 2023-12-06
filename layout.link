@@ -222,7 +222,7 @@ WRAM0
 	align 8
 	"Sprites"
 	"Tilemap and Attrmap"
-	"Misc 480"
+	"Misc 404"
 	"Footprint Queue"
 	"Unused"
 	"Misc 1326"
