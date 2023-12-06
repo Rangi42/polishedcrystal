@@ -14,7 +14,7 @@ WarmBeach_MapScriptHeader:
 	bg_event 17, 14, BGEVENT_JUMPTEXT, WarmBeachShackSignText
 	bg_event 18, 20, BGEVENT_JUMPTEXT, WarmBeachShrineText
 	bg_event 19, 20, BGEVENT_JUMPTEXT, WarmBeachShrineText
-	bg_event  6, 20, BGEVENT_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
+	bg_event  7, 20, BGEVENT_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
 	def_object_events
 	object_event 11,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSightseermGareth, -1
