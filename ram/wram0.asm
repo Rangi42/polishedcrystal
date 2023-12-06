@@ -558,7 +558,7 @@ wSafariMonEating:: db
 
 wAlreadyDisobeyed:: db
 
-	ds 1 ; unused
+wAlreadyExecuted:: db
 
 wAlreadySawWeather:: db
 
@@ -568,15 +568,11 @@ wWhichMonFaintedFirst:: db
 wLastPlayerCounterMove:: db
 wLastEnemyCounterMove:: db
 
-	ds 1 ; unused
-
-wAlreadyExecuted:: db
-
 wTrickRoom:: db
 
 wBattleLowHealthAlarm:: db
 
-	ds 1 ; unused
+	ds 3 ; unused
 
 wPlayerHazards::
 ; bit
