@@ -154,6 +154,7 @@ AbilityDescriptions:
 	dw CudChewDescription
 	dw SharpnessDescription
 	dw ArmorTailDescription
+	dw MindsEyeDescription
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
@@ -908,4 +909,9 @@ SharpnessDescription:
 ArmorTailDescription:
 	text  "Stops foes using"
 	next1 "priority moves."
+	done
+
+MindsEyeDescription:
+	text  "Ignores the foe's"
+	next1 "efforts to evade."
 	done

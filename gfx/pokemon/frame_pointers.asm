@@ -284,7 +284,7 @@ FramesPointers:
 	dw MrRimeFrames
 	dw WyrdeerFrames
 	dw KleavorFrames
-	dw UrsalunaFrames
+	dw UrsalunaPlainFrames
 	dw SneaslerFrames
 	dw OverqwilFrames
 	dw DudunsparceTwoSegmentFrames
@@ -407,5 +407,7 @@ FramesPointers:
 	dw TaurosPaldeanFrames
 	dw TaurosPaldeanFireFrames
 	dw TaurosPaldeanWaterFrames
+
+	dw UrsalunaBloodmoonFrames
 
 	assert_table_length NUM_UNIQUE_POKEMON
