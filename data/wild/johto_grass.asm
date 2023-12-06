@@ -370,7 +370,7 @@
 	wildmon 12, NIDORAN_M
 	wildmon 13, NIDORAN_F
 	wildmon 14, LEDYBA
-	wildmon 15, PIDGEY
+	wildmon 14, PIDGEY
 	wildmon 10, CATERPIE
 	wildmon 12, WEEDLE
 	wildmon 12, WEEDLE
@@ -378,7 +378,7 @@
 	wildmon 12, NIDORAN_F
 	wildmon 13, NIDORAN_M
 	wildmon 14, SUNKERN
-	wildmon 15, PIDGEY
+	wildmon 14, PIDGEY
 	wildmon 10, CATERPIE
 	wildmon 12, WEEDLE
 	wildmon 12, WEEDLE
@@ -386,7 +386,7 @@
 	wildmon 12, PSYDUCK
 	wildmon 13, HOOTHOOT
 	wildmon 14, SPINARAK
-	wildmon 15, HOOTHOOT
+	wildmon 14, HOOTHOOT
 	wildmon 10, VENONAT
 	wildmon 12, VENONAT
 	wildmon 12, VENONAT
@@ -1488,26 +1488,26 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon 12, SNUBBULL
-	wildmon 13, RATTATA
-	wildmon 14, PIDGEY
+	wildmon 12, RATTATA
+	wildmon 13, PIDGEY
 	wildmon 10, ABRA
-	wildmon 14, JIGGLYPUFF
+	wildmon 13, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 10, DITTO
 	; day
 	wildmon 12, SNUBBULL
-	wildmon 13, RATTATA
-	wildmon 14, PIDGEY
+	wildmon 12, RATTATA
+	wildmon 13, PIDGEY
 	wildmon 10, ABRA
-	wildmon 14, JIGGLYPUFF
+	wildmon 13, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 10, DITTO
 	; nite
-	wildmon 13, DROWZEE
+	wildmon 12, DROWZEE
 	wildmon 12, RATTATA
-	wildmon 14, HOOTHOOT
+	wildmon 13, HOOTHOOT
 	wildmon 10, ABRA
-	wildmon 14, JIGGLYPUFF
+	wildmon 13, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 10, DITTO
 	end_grass_wildmons
@@ -1516,26 +1516,26 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon 13, SNUBBULL
-	wildmon 15, PIDGEY
+	wildmon 14, PIDGEY
 	wildmon 14, NIDORAN_F
 	wildmon 14, NIDORAN_M
-	wildmon 13, JIGGLYPUFF
+	wildmon 12, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 13, YANMA
 	; day
 	wildmon 13, SNUBBULL
-	wildmon 15, PIDGEY
+	wildmon 14, PIDGEY
 	wildmon 14, NIDORAN_M
 	wildmon 14, NIDORAN_F
-	wildmon 13, JIGGLYPUFF
+	wildmon 12, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 13, YANMA
 	; nite
 	wildmon 13, DROWZEE
-	wildmon 15, HOOTHOOT
+	wildmon 14, HOOTHOOT
 	wildmon 14, PSYDUCK
 	wildmon 14, HOOTHOOT
-	wildmon 13, JIGGLYPUFF
+	wildmon 12, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 13, YANMA
 	end_grass_wildmons
@@ -1930,6 +1930,34 @@
 	wildmon LEVEL_FROM_BADGES - 1, NOCTOWL
 	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	end_grass_wildmons
+
+	def_grass_wildmons CHERRYGROVE_BAY
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES - 1, SENTRET
+	wildmon LEVEL_FROM_BADGES + 1, PIDGEY
+	wildmon LEVEL_FROM_BADGES + 0, MAREEP
+	wildmon LEVEL_FROM_BADGES + 1, MAREEP
+	wildmon LEVEL_FROM_BADGES + 0, SUNKERN
+	wildmon LEVEL_FROM_BADGES + 1, SUNKERN
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES - 1, SENTRET
+	wildmon LEVEL_FROM_BADGES + 1, PIDGEY
+	wildmon LEVEL_FROM_BADGES + 0, MAREEP
+	wildmon LEVEL_FROM_BADGES + 1, MAREEP
+	wildmon LEVEL_FROM_BADGES + 0, SUNKERN
+	wildmon LEVEL_FROM_BADGES + 1, SUNKERN
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, WOOPER
+	wildmon LEVEL_FROM_BADGES - 1, RATTATA
+	wildmon LEVEL_FROM_BADGES + 1, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES + 0, MAREEP
+	wildmon LEVEL_FROM_BADGES + 1, MAREEP
+	wildmon LEVEL_FROM_BADGES + 0, GASTLY
+	wildmon LEVEL_FROM_BADGES + 1, GASTLY
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_32_COAST

@@ -4759,7 +4759,7 @@ PokemaniacGroup:
 	db "Issac@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 12, LICKITUNG
+	dbp 15, LICKITUNG
 		db LICK, SUPERSONIC, CUT, NO_MOVE
 	db -1 ; end
 
@@ -4767,8 +4767,8 @@ PokemaniacGroup:
 	db "Donald@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, SLOWPOKE
-	dbp 11, NIDORAN_M
+	dbp 13, SLOWPOKE
+	dbp 13, NIDORAN_M
 	db -1 ; end
 
 	; POKEMANIAC
@@ -4804,8 +4804,8 @@ CosplayerGroup:
 	db "Clara@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, VULPIX
-	dbp 11, VULPIX
+	dbp 14, VULPIX
+	dbp 14, VULPIX
 	db -1 ; end
 
 	; COSPLAYER
@@ -4850,8 +4850,8 @@ SuperNerdGroup:
 	db "Eric@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, GRIMER
-	dbp 12, PORYGON
+	dbp 13, GRIMER
+	dbp 14, PORYGON
 	db -1 ; end
 
 	; SUPER_NERD
@@ -4891,10 +4891,10 @@ SuperNerdGroup:
 	db "Teru@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 7, MAGNEMITE
-	dbp 11, VOLTORB
-	dbp 7, MAGNEMITE
 	dbp 9, MAGNEMITE
+	dbp 13, VOLTORB
+	dbp 9, MAGNEMITE
+	dbp 11, MAGNEMITE
 	db -1 ; end
 
 	; SUPER_NERD
