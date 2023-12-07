@@ -49,7 +49,7 @@ rept MON_PERSONALITY - MON_DVS
 endr
 	ld a, SHINY_MASK | HIDDEN_ABILITY | QUIRKY
 	ld [hli], a
-	ld [hl], MALE
+	ld [hl], MALE | PLAIN_FORM
 	ld hl, wTempMonHappiness
 	ld a, BASE_HAPPINESS
 	ld [hli], a
