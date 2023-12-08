@@ -5410,8 +5410,8 @@ MoveInfoBox:
 	ld hl, Moves + MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 6, 10
-	cp 2
-	jr c, .no_acc
+	cp -1
+	jr nc, .no_acc
 	ld [wTextDecimalByte], a
 	ld de, wTextDecimalByte
 	lb bc, 1, 3
