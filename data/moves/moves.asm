@@ -3,7 +3,7 @@ MACRO move
 	db \2 ; effect
 	db \3 ; power
 	db \4 ; type
-	db \5 ; accuracy
+	db \5 ; accuracy (-1 for moves that ignore accuracy checks)
 	db \6 ; pp
 	db \7 ; effect chance
 	db \8 ; category
