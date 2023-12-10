@@ -812,7 +812,7 @@ GetPreEvolution:
 	ret
 
 .found_preevo
-; if bc > NUM_SPECIES, lookup species+form on VariantSpeciesAndFormTable
+; if bc > NUM_SPECIES - 1, lookup species+form on VariantSpeciesAndFormTable
 ; else convert index directly to species+extspecies and give form of PLAIN_FORM (or parent's form if NO_FORM is used)
 	ld a, b
 	cp HIGH(NUM_SPECIES)
@@ -837,17 +837,13 @@ GetPreEvolution:
 	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
 	swap a
 	rlca
-	ld b, a
-	inc b ; extspecies | PLAIN_FORM
+	ld b, a ; extspecies | NO_FORM
 	ld a, [hl] ; we're pointing to mon form
-	and FORM_MASK
-	ld a, b
-	jr nz, .got_form
-	dec b
-	ld a, [wCurForm]
-	and FORM_MASK ; inherit form from parent in case of NO_FORM
-	or b
+	and FORM_MASK ; should we return NO_FORM?
+	jr z, .got_form
+	inc b ; extspecies | PLAIN_FORM
 .got_form
+	ld a, b
 	ld [wCurForm], a
 	scf
 	ret
