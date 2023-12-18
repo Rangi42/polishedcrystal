@@ -1,9 +1,13 @@
 PlaySlowCry:
+; used in scripts
+	xor a
+	ld [wStereoPanningMask], a ; no stereo
 	ldh a, [hScriptVar]
 	ld c, a
 	ldh a, [hScriptVar+1]
 	ld b, a
 PlaySlowCryBC:
+; can be used in stereo (e.g. battle engine)
 	call LoadCryHeader
 	ret c
 	; cry length *= 1.5
