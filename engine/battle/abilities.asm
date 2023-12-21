@@ -1211,7 +1211,7 @@ CompoundEyesAbility:
 
 HustleAccuracyAbility:
 ; Decrease accuracy for physical attacks by 20%
-	ld a, $45
+	ln a, 4, 5 ; 4/5 = 80%
 	jmp ApplyPhysicalAttackDamageMod
 
 TangledFeetAbility:
@@ -1659,14 +1659,14 @@ TechnicianAbility:
 
 HugePowerAbility:
 ; Doubles physical attack
-	ld a, $21
+	ln a, 2, 1 ; x2
 	jmp ApplyPhysicalAttackDamageMod
 
 HustleAbility:
 ; 150% physical attack, 80% accuracy (done elsewhere)
 GorillaTacticsAbility:
 ; 150% physical attack, locks into one move (done elsewhere)
-	ld a, $32
+	ln a, 3, 2 ; x1.5
 	jmp ApplyPhysicalAttackDamageMod
 
 OvergrowAbility:
@@ -1840,7 +1840,7 @@ GutsAbility:
 .got_status
 	and a
 	ret z
-	ld a, $32
+	ln a, 3, 2 ; x1.5
 	jmp ApplyPhysicalAttackDamageMod
 
 PixilateAbility:
@@ -1877,7 +1877,7 @@ EnemyMarvelScaleAbility:
 	call GetBattleVar
 	and a
 	ret z
-	ld a, $23
+	ln a, 2, 3 ; 2/3 = 67%
 	jmp ApplyPhysicalDefenseDamageMod
 
 EnemySolidRockAbility:
@@ -1914,7 +1914,7 @@ EnemyDrySkinAbility:
 
 EnemyFurCoatAbility:
 ; Doubles physical Defense
-	ld a, $12
+	ln a, 1, 2 ; 1/2 = 50%
 	jmp ApplyPhysicalDefenseDamageMod
 
 HydrationAbility:
