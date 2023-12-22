@@ -15,12 +15,7 @@ from sys import stderr
 import re
 
 # Paired registers are also useful
-PAIRS = {
-	'a': 'f', 'f': 'a',
-	'b': 'c', 'c': 'b',
-	'd': 'e', 'e': 'd',
-	'h': 'l', 'l': 'h',
-}
+PAIRS = dict(sum([[(x, y), (y, x)] for (x, y) in {'af', 'bc', 'de', 'hl'}], []))
 
 # Other useful utility functions for implementing conditions
 
@@ -105,7 +100,7 @@ patterns = {
 'a = ~a': [
 	# Bad: xor $ff
 	# Good: cpl
-	(lambda line1, prev: re.match(r'xor (?:255|-1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
+	(lambda line1, prev: re.match(r'xor (?:255|-[$%&]?0*1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
 ],
 'a = N - a': [
 	# Bad: ld b, a / ld a, N / sub b (or other intermediate registers)
@@ -640,6 +635,8 @@ def optimize(filename):
 				cur_label = Line(i+1, code, comment, text, code)
 			# Remove indentation from code, if any
 			code = code.lstrip()
+			# Normalize whitespace
+			code = re.sub(r'\s+', ' ', code)
 			# Record the line's properties
 			context = cur_label.code if cur_label else ''
 			cur_line = Line(i+1, code, comment, text, context)
