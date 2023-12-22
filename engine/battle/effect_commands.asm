@@ -4062,7 +4062,7 @@ BattleCommand_damagecalc:
 	jr z, .burn_done
 	call GetTrueUserAbility
 	cp GUTS
-	ld a, $12 ; 1/2 = 50%
+	ln a, 1, 2 ; 1/2 = 50%
 	call nz, ApplyPhysicalAttackDamageMod
 
 .burn_done
@@ -4120,7 +4120,7 @@ BattleCommand_damagecalc:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp c
-	ln a, 6, 5 ; x12
+	ln a, 6, 5 ; x1.2
 .life_orb
 	call z, MultiplyAndDivide
 	jr .done_attacker_item
@@ -4170,7 +4170,7 @@ BattleCommand_damagecalc:
 	ld a, b
 	cp HELD_ASSAULT_VEST
 	jr nz, .done_defender_item
-	ld a, $23 ; 2/3 = 67%
+	ln a, 2, 3 ; 2/3 = 67%
 	call ApplySpecialDefenseDamageMod
 	; fallthrough
 .done_defender_item
