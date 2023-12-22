@@ -1590,10 +1590,10 @@ _CheckTypeMatchup:
 	jr nz, .end
 	call GetTrueUserAbility
 	cp SCRAPPY
-	jr nz, .end
+	jr z, .end
 	call GetTrueUserAbility
 	cp MINDS_EYE
-	jr nz, .end
+	jr nz, .TypesLoop
 .end
 	pop hl
 	ret
@@ -1853,7 +1853,8 @@ BattleCommand_checkhit:
 	jr nz, .avoid_evasion_boost
 	call GetTrueUserAbility
 	cp KEEN_EYE
-	jr nz, .check_opponent_unaware
+	jr z, .avoid_evasion_boost
+	call GetTrueUserAbility
 	cp MINDS_EYE
 	jr nz, .check_opponent_unaware
 .avoid_evasion_boost
