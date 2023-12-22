@@ -459,7 +459,7 @@ CheckVermilionGymTrashCan:
 	jr z, .yes
 	ld a, [wVermilionGymTrashCan2]
 	call .CheckTrashCan
-	ld a, FALSE
+	ld a, FALSE ; no-optimize a = 0
 	jr nz, .done
 	ld a, [wVermilionGymTrashCan1]
 	ld [wVermilionGymTrashCan2], a

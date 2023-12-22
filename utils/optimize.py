@@ -90,7 +90,7 @@ patterns = {
 'a = 0': [
 	# Bad: ld a, 0
 	# Good: xor a (unless you need to preserve flags)
-	(lambda line1, prev: re.match(r'ld a, [%\$&]?0+$', line1.code)),
+	(lambda line1, prev: re.match(r'ld a, (?:[%\$&]?0+|FALSE)$', line1.code)),
 ],
 'a++|a--': [
 	# Bad: add|sub 1
