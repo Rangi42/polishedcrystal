@@ -65,10 +65,15 @@ patterns = {
 	(lambda line1, prev: line1.code != 'halt'),
 	(lambda line2, prev: line2.code == 'nop'),
 ],
-'no-ops': [
+'No-op ld': [
 	# Bad: ld b, b (or other identical registers)
 	# Good: omit (unless you need it for timing)
 	(lambda line1, prev: re.match(r'ld ([abcdehl]), \1$', line1.code)),
+],
+'No-op add|sub': [
+	# Bad: add|sub 0
+	# Good: omit (unless you need the flag effects)
+	(lambda line1, prev: re.match(r'(?:add|sub) (?:a, )?(?:[%\$&]?0+|FALSE)$', line1.code)),
 ],
 'Inefficient HRAM load': [
 	# Bad: ld a, [hFoo] (or [rFoo])
