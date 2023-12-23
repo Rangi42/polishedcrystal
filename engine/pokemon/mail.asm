@@ -123,7 +123,7 @@ CheckPokeItem::
 	push bc
 	push de
 	farcall SelectMonFromParty
-	ld a, $2
+	ld a, $2 ; refused
 	jr c, .pop_return
 
 	ld a, [wCurPartyMon]
@@ -132,7 +132,7 @@ CheckPokeItem::
 	rst AddNTimes
 	ld d, [hl]
 	call ItemIsMail
-	ld a, $3
+	ld a, $3 ; no mail
 	jr nc, .pop_return
 
 	ld a, BANK(sPartyMail)
@@ -157,7 +157,7 @@ CheckPokeItem::
 	cp "@"
 	jr z, .done
 	cp c
-	ld a, FALSE
+	ld a, FALSE ; no-optimize a = 0 (wrong mail)
 	jr nz, .close_sram_return
 	inc hl
 	inc de
@@ -168,12 +168,12 @@ CheckPokeItem::
 
 .done
 	farcall CheckCurPartyMonFainted
-	ld a, $4
+	ld a, $4 ; last mon
 	jr c, .close_sram_return
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	predef RemoveMonFromParty
-	ld a, TRUE
+	ld a, TRUE ; right mail
 
 .close_sram_return
 	call CloseSRAM

@@ -1252,29 +1252,28 @@ TitleScreenMain:
 	ld [hld], a
 	ld [hl], e
 
-; Save data can be deleted by pressing Up + B + Select.
 	call GetJoypad
 	ld hl, hJoyDown
 
+; Save data can be deleted by pressing Up + B + Select.
 	ld a, [hl]
-	and D_UP + B_BUTTON + SELECT
-	cp  D_UP + B_BUTTON + SELECT
+	or ~(D_UP + B_BUTTON + SELECT)
+	inc a
 	jr z, .delete_save_data
 
 ; The clock can be reset by pressing Down + B.
 	ld a, [hl]
-	and D_DOWN + B_BUTTON
-	cp  D_DOWN + B_BUTTON
+	or ~(D_DOWN + B_BUTTON)
+	inc a
 	jr z, .clock_reset
 
 ; The early game options can be reset by pressing Left + B.
 	ld a, [hl]
-	and D_LEFT + B_BUTTON
-	cp  D_LEFT + B_BUTTON
+	or ~(D_LEFT + B_BUTTON)
+	inc a
 	jr z, .early_option_reset
 
 ; Press Start or A to start the game.
-.check_start
 	ld a, [hl]
 	and START | A_BUTTON
 	jr nz, .start_game

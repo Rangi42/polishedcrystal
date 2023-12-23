@@ -62,7 +62,7 @@ LoseMoney:
 	or [hl]
 	inc hl
 	or [hl]
-	ld a, FALSE
+	ld a, FALSE ; no-optimize a = 0
 	jr z, .load
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
