@@ -19,7 +19,7 @@ SoftReset::
 	jr Init
 
 Crash::
-	ld b, b ; no-optimize no-ops (BGB breakpoint)
+	ld b, b ; no-optimize no-op ld (BGB breakpoint)
 
 	ldh [hCrashCode], a
 	xor a
