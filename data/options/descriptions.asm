@@ -80,8 +80,17 @@ InitialOptionDescriptions:
 	line "subtly varied"
 	cont "based on IVs."
 
+	para "The variation is"
+	line "pseudorandom, not"
+
+	para "correlated with"
+	line "stat quality."
+
 	para "Inspired by"
-	line "Stadium."
+	line "Stadium's color"
+
+	para "variation based"
+	line "on nicknames."
 	prompt
 
 .InitialOptionDesc_PerfectIVs:
