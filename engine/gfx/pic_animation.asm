@@ -1,10 +1,10 @@
 ; Pic animation arrangement.
 
-MACRO POKEANIM
+MACRO pokeanim
 	for i, 1, _NARG + 1
-		db (PokeAnim_\<i>_ - PokeAnim_SetupCommands) / 2
+		db (PokeAnim_\<i>_SetupCommand - PokeAnim_SetupCommands) / 2
 	endr
-	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
+	db (PokeAnim_Finish_SetupCommand - PokeAnim_SetupCommands) / 2
 ENDM
 
 PokeAnims:
@@ -18,14 +18,14 @@ PokeAnims:
 	dw .Egg1
 	dw .Egg2
 
-.Slow:   POKEANIM StereoCry, Setup2, Play
-.Normal: POKEANIM StereoCry, Setup, Play
-.Menu:   POKEANIM CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
-.Trade:  POKEANIM Extra, Play2, Extra, Play, SetWait, Wait, Cry, Setup, Play
-.Evolve: POKEANIM Extra, Play, SetWait, Wait, CryNoWait, Setup, Play
-.Hatch:  POKEANIM Extra, Play, CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
-.Egg1:   POKEANIM Setup, Play
-.Egg2:   POKEANIM Extra, Play
+.Slow:   pokeanim StereoCry, Setup2, Play
+.Normal: pokeanim StereoCry, Setup, Play
+.Menu:   pokeanim CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
+.Trade:  pokeanim Extra, Play2, Extra, Play, SetWait, Wait, Cry, Setup, Play
+.Evolve: pokeanim Extra, Play, SetWait, Wait, CryNoWait, Setup, Play
+.Hatch:  pokeanim Extra, Play, CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
+.Egg1:   pokeanim Setup, Play
+.Egg2:   pokeanim Extra, Play
 
 AnimateFrontpic:
 	call AnimateMon_CheckIfPokemon
@@ -125,22 +125,24 @@ SetUpPokeAnim:
 	scf
 	ret
 
-PokeAnim_SetupCommands:
-MACRO setup_command
-\1_: dw \1
+MACRO add_setup_command
+\1_SetupCommand:
+	dw \1
 ENDM
-	setup_command PokeAnim_Finish
-	setup_command PokeAnim_BasePic
-	setup_command PokeAnim_SetWait
-	setup_command PokeAnim_Wait
-	setup_command PokeAnim_Setup
-	setup_command PokeAnim_Setup2
-	setup_command PokeAnim_Extra
-	setup_command PokeAnim_Play
-	setup_command PokeAnim_Play2
-	setup_command PokeAnim_Cry
-	setup_command PokeAnim_CryNoWait
-	setup_command PokeAnim_StereoCry
+
+PokeAnim_SetupCommands:
+	add_setup_command PokeAnim_Finish
+	add_setup_command PokeAnim_BasePic
+	add_setup_command PokeAnim_SetWait
+	add_setup_command PokeAnim_Wait
+	add_setup_command PokeAnim_Setup
+	add_setup_command PokeAnim_Setup2
+	add_setup_command PokeAnim_Extra
+	add_setup_command PokeAnim_Play
+	add_setup_command PokeAnim_Play2
+	add_setup_command PokeAnim_Cry
+	add_setup_command PokeAnim_CryNoWait
+	add_setup_command PokeAnim_StereoCry
 
 PokeAnim_SetWait:
 	ld a, 18
