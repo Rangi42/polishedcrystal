@@ -44,11 +44,13 @@ with open(sys.argv[1], 'r', encoding='utf8') as sym_file:
 
 label_rx = re.compile(r'^\s*([a-z_][a-z0-9_#@]*):{1,2}(.*)', re.I)
 reference_rx = re.compile(r'\b([a-z_][a-z0-9_#@]*)\b', re.I)
+string_rx = re.compile(r'"(?:[^"\\]|\\.)*"')
 
 for filename in iglob('**/*.asm', recursive=True):
 	with open(filename, 'r', encoding='utf8') as asm_file:
 		scope = None
 		for index, line in enumerate(asm_file):
+			line = re.sub(string_rx, '""', line).split(';', 1)[0].rstrip()
 			if (m := label_rx.match(line)):
 				scope, line = m.groups()
 				if scope in labels:
