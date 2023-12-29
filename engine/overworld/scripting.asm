@@ -1576,7 +1576,6 @@ Script_setval:
 	ldh [hScriptVar], a
 	ret
 
-Script_setmonval:
 Script_setval16:
 	call Script_setval
 	call GetScriptByte
@@ -1588,22 +1587,6 @@ Script_addval:
 	ld hl, hScriptVar
 	add [hl]
 	ld [hl], a
-	ret
-
-Script_addval16:
-	call GetScriptByte
-	ld c, a
-	call GetScriptByte
-	ld b, a
-	ld hl, hScriptVar
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
-	add hl, bc
-	ld a, h
-	ldh [hScriptVar], a
-	ld a, l
-	ldh [hScriptVar+1], a
 	ret
 
 Script_random:

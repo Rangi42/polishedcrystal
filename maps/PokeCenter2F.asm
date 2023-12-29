@@ -109,7 +109,7 @@ LinkReceptionistScript_DoTradeOrBattle:
 	ifequalfwd LINK_ERR_OTHER_VERSION_TOO_LOW, .OtherPlayerWrongMinVersion
 	ifequalfwd LINK_ERR_MISMATCH_GAME_OPTIONS, .WrongOptions
 	ifequalfwd LINK_ERR_INCOMPATIBLE_ROOMS, .IncompatibleRooms
-	writetext Text_PleaseComeIn2
+	writetext Text_PleaseComeIn
 	waitbutton
 	closetext
 	scall PokeCenter2F_EnterRoom
@@ -219,20 +219,17 @@ PokeCenter2F_EnterRoom:
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
 	slow_step_up
 	slow_step_left
-PokeCenter2FMovementData_ReceptionistLooksRight:
 	turn_head_right
 	step_end
 
 PokeCenter2FMovementData_PlayerTakesThreeStepsUp:
 	step_up
-PokeCenter2FMovementData_PlayerTakesTwoStepsUp:
 	step_up
 	step_up
 	step_end
 
 PokeCenter2FMovementData_PlayerTakesThreeStepsDown:
 	step_down
-PokeCenter2FMovementData_PlayerTakesTwoStepsDown:
 	step_down
 	step_down
 	step_end
@@ -359,26 +356,8 @@ Text_IncompatibleRooms:
 	line "were chosen."
 	prompt
 
-Text_PleaseComeIn2:
-	text "Please come in."
-	done
-
 Text_TimeCapsuleClosed:
 	text "I'm sorry--the"
 	line "Time Capsule is"
 	cont "inoperative."
-	done
-
-Text_OhPleaseWait:
-	text "Oh, please wait."
-	done
-
-Text_ChangeTheLook:
-	text "We need to change"
-	line "the look here…"
-	done
-
-Text_LikeTheLook:
-	text "How does this"
-	line "style look to you?"
 	done

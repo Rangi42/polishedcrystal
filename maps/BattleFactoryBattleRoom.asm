@@ -83,14 +83,3 @@ MovementData_BattleFactoryBattleRoomOpponentWalksOut:
 	slow_step_up
 	slow_step_up
 	step_end
-
-MovementData_BattleFactoryBattleRoomReceptionistWalksToPlayer:
-	slow_step_right
-	slow_step_right
-	step_end
-
-MovementData_BattleFactoryBattleRoomReceptionistWalksAway:
-	slow_step_left
-	slow_step_left
-	turn_head_right
-	step_end

@@ -476,7 +476,6 @@ Music_WhiteTreehollowWhite2_Ch2:
 	octave 2
 	note G#, 3
 	note G#, 7
-Music_WhiteTreehollowWhite2_Ch2_loop:
 	octave 1
 	note G#, 2
 	octave 2
