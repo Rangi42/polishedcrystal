@@ -44,7 +44,7 @@ jobs:
         name: "Install dependencies"
         run: |
           sudo apt-get update
-          sudo apt-get install bison gcc git make python2 -y;
+          sudo apt-get install bison gcc git make -y;
       
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal

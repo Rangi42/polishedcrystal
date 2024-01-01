@@ -1,5 +1,5 @@
 WriteOAMDMACodeToHRAM::
-	lb bc, (OAMDMACodeEnd - OAMDMACode), LOW(hPushOAM)
+	lb bc, (OAMDMACode.End - OAMDMACode), LOW(hPushOAM)
 	ld hl, OAMDMACode
 .copy
 	ld a, [hli]
@@ -18,4 +18,4 @@ hPushOAM::
 	jr nz, .wait
 	ret
 ENDL
-OAMDMACodeEnd:
+.End:

@@ -246,17 +246,17 @@ DecompressMetatiles:
 	ret z
 	; fallthrough
 _DecompressMetatiles:
-	assert wDecompressedMetatiles == WRAM1_Begin
+	assert wDecompressedMetatiles == STARTOF(WRAMX)
 	ld hl, wTilesetBlocksAddress
 	ld c, BANK(wDecompressedMetatiles)
 	call .Decompress
 
-	assert wDecompressedAttributes == WRAM1_Begin
+	assert wDecompressedAttributes == STARTOF(WRAMX)
 	ld hl, wTilesetAttributesAddress
 	ld c, BANK(wDecompressedAttributes)
 	call .Decompress
 
-	assert wDecompressedCollisions == WRAM1_Begin
+	assert wDecompressedCollisions == STARTOF(WRAMX)
 	ld hl, wTilesetCollisionAddress
 	ld c, BANK(wDecompressedCollisions)
 	; fallthrough

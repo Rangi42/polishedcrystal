@@ -180,3 +180,5 @@ endc
 
 RomHeaderChecksum::
 	ds 2, $00
+
+ENDSECTION

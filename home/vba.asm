@@ -5,7 +5,7 @@ CheckVBA:
 	or ~%01111100
 	inc a
 	ret z
-	assert WRAM0_Begin <= wEchoRAMTest && wEchoRAMTest < WRAM0_End, \
+	assert STARTOF(WRAM0) <= wEchoRAMTest && wEchoRAMTest < STARTOF(WRAM0) + SIZEOF(WRAM0), \
 		"wEchoRAMTest is not in WRAM0"
 	ld hl, wEchoRAMTest
 	ld [hl], %11100100

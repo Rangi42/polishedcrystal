@@ -483,3 +483,5 @@ EVSpreads:
 		with_each_stat "db EV_SPREAD_{d:n}_?"
 	endr
 	assert_table_length NUM_EV_SPREADS
+
+ENDSECTION

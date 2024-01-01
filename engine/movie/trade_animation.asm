@@ -155,13 +155,13 @@ RunTradeAnimSequence:
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, vTiles0
-	ld bc, VRAM_End - vTiles0
+	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vTiles0
 	xor a
 	rst ByteFill
 	xor a
 	ldh [rVBK], a
 	hlbgcoord 0, 0
-	ld bc, VRAM_End - vBGMap0
+	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vBGMap0
 	ld a, " "
 	rst ByteFill
 	ld hl, TradeGameBoyLZ
@@ -453,7 +453,7 @@ TradeAnim_TubeToPlayer8:
 	call DisableLCD
 	call ClearSpriteAnims
 	hlbgcoord 0, 0
-	ld bc, VRAM_End - vBGMap0
+	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vBGMap0
 	ld a, " "
 	rst ByteFill
 	xor a

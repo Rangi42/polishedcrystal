@@ -12,7 +12,7 @@ If you just want to play Polished Crystal, use one of the .ips patches as descri
 
 To build on Windows, install [**Cygwin**](http://cygwin.com/install.html) with the default settings.
 
-In the installer, select the following packages: `git`, `python`, `make`, and `gcc-core`.
+In the installer, select the following packages: `git`, `make`, and `gcc-core`.
 
 In the **Cygwin terminal**:
 
@@ -22,7 +22,7 @@ cd polishedcrystal
 mkdir rgbds
 ```
 
-Then download [**rgbds**](https://rgbds.gbdev.io/). If you're building Polished Crystal 2.2.0, get rgbds version 0.3.9. If you're building the 3.0.0 beta, you'll need version **0.6.1**. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
+Then download [**rgbds**](https://rgbds.gbdev.io/). If you're building Polished Crystal 2.2.0, get rgbds version 0.3.9. If you're building the 3.0.0 beta, you'll need version **0.7.0**. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
 
 To build **polishedcrystal.gbc**:
 
@@ -45,10 +45,8 @@ make faithful monochrome
 
 ## Linux
 
-Python 2.7 is required.
-
 ```bash
-sudo apt-get install make python gcc git bison
+sudo apt-get install make gcc git bison
 
 git clone https://github.com/gbdev/rgbds.git
 cd rgbds

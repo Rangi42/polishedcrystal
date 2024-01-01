@@ -275,7 +275,7 @@ StackDexGraphics:
 	; Prepare H-blank code.
 	ld hl, PHB_LCDCode
 	ld de, wLCDPokedex
-	ld bc, PHB_LCDCodeEnd - PHB_LCDCode
+	ld bc, PHB_LCDCode.End - PHB_LCDCode
 	rst CopyBytes
 	ld a, LOW(wLCDPokedex)
 	ldh [hFunctionTargetLo], a
@@ -665,7 +665,7 @@ wPokedex_HBlankFunction::
 	reti
 wLCDPokedexEnd::
 ENDL
-PHB_LCDCodeEnd:
+.End:
 
 PHB_WaitUntilLY_Mode0:
 ; Don't use this for more timing-critical h-blank setups.

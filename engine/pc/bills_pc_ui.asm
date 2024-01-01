@@ -299,7 +299,7 @@ UseBillsPC:
 	; Copy LCD code to WRAM0
 	ld hl, BillsPC_LCDCode
 	ld de, wLCDBillsPC1
-	ld bc, BillsPC_LCDCodeEnd - BillsPC_LCDCode
+	ld bc, BillsPC_LCDCode.End - BillsPC_LCDCode
 	rst CopyBytes
 
 	; Set up for HBlank palette switching
@@ -3820,4 +3820,4 @@ endr
 	pop af
 	reti
 ENDL
-BillsPC_LCDCodeEnd:
+.End:
