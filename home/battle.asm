@@ -794,13 +794,13 @@ CheckSpeed::
 ; outspeeds, otherwise nz, randomly on tie (which also sets carry)
 	ld a, [wTrickRoom]
 	and a
-	jr z, _CheckSpeed
-	call _CheckSpeed
+	jr z, .CheckSpeed
+	call .CheckSpeed
 	ret c ; was random anyway, and we don't want to unset carry
 	xor 1
 	ret
 
-_CheckSpeed::
+.CheckSpeed:
 	; save battle turn so this can be used without screwing it up
 	; (needed for AI)
 	ldh a, [hBattleTurn]
