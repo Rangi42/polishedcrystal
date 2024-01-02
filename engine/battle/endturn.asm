@@ -14,7 +14,7 @@ HandleBetweenTurnEffects:
 	call HandleWeather
 	call CheckFaint
 	ret c
-	; Self-curing status from high Affection
+	call HandleAffectionSelfCure
 	call HandleFutureSight
 	call CheckFaint
 	ret c
@@ -371,6 +371,36 @@ WeatherEndedMessages:
 	fardw BattleText_TheSunlightFaded
 	fardw BattleText_TheSandstormSubsided
 	fardw BattleText_TheHailStopped
+
+HandleAffectionSelfCure:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	farcall CheckAffection
+	cp 2
+	ret c
+
+	; 20% to heal a status problem.
+	ld a, 5
+	call BattleRandomRange
+	and a
+	ret nz
+
+	; Do we actually have a status problem to heal?
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	ld a, [hl]
+	and a
+	ret z
+
+	ld [hl], 0
+	ld hl, PlayerAffectionSelfCureText
+	ld de, EnemyAffectionSelfCureText
+	farcall AffectionText
+	call UpdateBattleMonInParty
+	jmp UpdateEnemyMonInParty
 
 HandleFutureSight:
 	call SetFastestTurn

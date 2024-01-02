@@ -254,13 +254,14 @@ DEF GUARD_MIST      EQU %11110000
 
 ; wAttackMissed (higher gives priority)
 	const_def 1
-	const ATKFAIL_MISSED  ; "<USER>'s attack missed!"
-	const ATKFAIL_PROTECT ; "<TARGET> is protecting itself!"
-	const ATKFAIL_ABILITY ; ability immunity, might have side effects
-	const ATKFAIL_GENERIC ; "But it failed!"
-	const ATKFAIL_IMMUNE  ; "It doesn't affect <TARGET>!"
-	const ATKFAIL_ACCMISS ; missed from accuracy
-	const ATKFAIL_CUSTOM  ; custom message
+	const ATKFAIL_MISSED    ; "<USER>'s attack missed!"
+	const ATKFAIL_PROTECT   ; "<TARGET> is protecting itself!"
+	const ATKFAIL_ABILITY   ; ability immunity, might have side effects
+	const ATKFAIL_GENERIC   ; "But it failed!"
+	const ATKFAIL_IMMUNE    ; "It doesn't affect <TARGET>!"
+	const ATKFAIL_AFFECTION ; Evaded due to high Affection
+	const ATKFAIL_ACCMISS   ; missed from accuracy
+	const ATKFAIL_CUSTOM    ; custom message
 
 ; wDeferredSwitch
 	const_def

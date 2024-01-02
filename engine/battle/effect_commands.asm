@@ -622,6 +622,68 @@ MoveDisabled:
 	ld hl, DisabledMoveText
 	jmp StdBattleTextbox
 
+CheckOpponentAffection:
+	call StackCallOpponentTurn
+CheckAffection:
+; Returns an Affection level between 0-3.
+; If affection level is 0, also return z.
+	; Affection doesn't function in Link or Battle Tower battles.
+	ld a, [wLinkMode]
+	and a
+	jr nz, .no_affection
+	ld a, [wInBattleTowerBattle]
+	and a
+	jr z, .cont
+.no_affection
+	xor a
+	ret
+
+.cont
+	push hl
+	push bc
+	ld b, 3
+
+	; Convert current friendship value to Affection thresholds.
+	ld a, MON_HAPPINESS
+	call TrueUserPartyAttr
+
+	ld hl, .AffectionThresholds
+.loop
+	cp [hl]
+	jr nc, .done
+	inc hl
+	dec b
+	jr .loop
+.done
+	ld a, b
+	and a
+	pop bc
+	pop hl
+	ret
+
+.AffectionThresholds:
+	db 255
+	db 220
+	db 180
+	db 0
+
+OpponentAffectionText:
+	call StackCallOpponentTurn
+AffectionText:
+; Prints battle text and displays an affection animation.
+	; If it's the enemy's turn, text is in de.
+	ldh a, [hBattleTurn]
+	and a
+	jr z, _AffectionText
+	ld h, d
+	ld l, e
+_AffectionText:
+	call StdBattleTextbox
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_AFFECTION
+	farjp PlayBattleAnimDE_OnlyIfVisible
+
 GenericHitAnim:
 	; Flicker the monster pic unless flying or underground.
 	xor a
@@ -1174,9 +1236,18 @@ BattleCommand_critical:
 	ld hl, CriticalHitChances
 	ld b, 0
 	add hl, bc
+	ld b, [hl]
+
+	; Sufficient Affection doubles critrate, independently of stages.
+	call CheckAffection
+	cp 3
+	jr c, .no_affection_boost
+	sla b
+.no_affection_boost
 	ld a, 24
 	call BattleRandomRange
-	cp [hl]
+
+	cp b
 	ret nc
 .guranteed_crit
 	ld a, 1
@@ -1818,6 +1889,18 @@ BattleCommand_checkhit:
 	and a
 	ret z
 
+	; Affection-based evasion
+	call CheckOpponentAffection
+	cp 3
+	jr c, .no_affection_evasion
+
+	ld a, 10
+	call BattleRandomRange
+	and a
+	ld a, ATKFAIL_AFFECTION
+	jmp z, .Miss_skipset
+
+.no_affection_evasion
 	; Now doing usual accuracy check
 	ld a, [wPlayerAccLevel]
 	ld b, a
@@ -2432,6 +2515,7 @@ BattleCommand_applydamage:
 ; 2 - Ability (i.e. Sturdy)
 ; 3 - Nonconsumable item (i.e. Focus Band)
 ; 4 - Item consumed after use (i.e. Focus Sash)
+; 5 - High Affection
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_ENDURE, a
@@ -2440,6 +2524,19 @@ BattleCommand_applydamage:
 	jr .enduring
 
 .not_enduring
+	call CheckOpponentAffection
+	jr z, .cont
+
+	; chance to endure: AffLevel * 5 + 5
+	inc a
+	ld b, a
+	ld a, 20
+	call BattleRandomRange
+	cp b
+	ld b, $5
+	jr c, .enduring
+
+.cont
 	call GetOpponentItem
 	ld a, b
 	ld b, $3
@@ -2478,6 +2575,12 @@ BattleCommand_applydamage:
 	ld a, b
 	and a
 	ret z
+
+	cp 5
+	ld hl, PlayerAffectionEndureText
+	ld de, EnemyAffectionEndureText
+	jmp z, OpponentAffectionText
+
 	dec a
 	jr nz, .not_enduring2
 	ld hl, EnduredText
@@ -2598,8 +2701,21 @@ FailText_CheckOpponentProtect:
 	dec a
 	ld hl, DoesntAffectText
 	jr z, .printmsg
+	dec a
+	jr nz, .no_affection_evasion
+	push de
+	ld hl, PlayerAffectionEvasionText
+	ld de, EnemyAffectionEvasionText
+	call OpponentAffectionText
+	pop de
+
+	; Still counts as a miss in general.
+	jr .cont_atkmiss
+
+.no_affection_evasion
 	ld hl, AttackMissedText
 	call StdBattleTextbox
+.cont_atkmiss
 	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
@@ -2638,10 +2754,25 @@ BattleCommand_criticaltext:
 	and a
 	jr z, .wait
 
+	; At level 3 affection, critical hit chance is doubled.
+	; Thus, if this applies, show the relevant msg 50% of the
+	; time in place of the regular one.
+	call CheckAffection
+	cp 3
+	jr c, .no_affection_boost
+	call BattleRandom
+	add a
+	jr c, .no_affection_boost
+	ld hl, AffectionCriticalText
+	call _AffectionText
+	jr .crit_text_done
+
+.no_affection_boost
 	ld hl, CriticalHitText
 	call StdBattleTextbox
 
-; Add 1 to the critical hit count if it's the player's turn
+.crit_text_done
+	; Add 1 to the critical hit count if it's the player's turn
 	ld a, [wLinkMode]
 	and a
 	jr nz, .cont

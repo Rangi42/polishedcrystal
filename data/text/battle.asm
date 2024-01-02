@@ -1455,6 +1455,64 @@ BecameHealthyText:
 	line "became healthy!"
 	prompt
 
+PlayerAffectionEndureText:
+	text "<USER>"
+	line "toughed it out so"
+
+	para "<PLAYER>"
+	line "wouldn't feel sad!"
+	prompt
+
+EnemyAffectionEndureText:
+	text "<USER>"
+	line "toughed it out so"
+
+	para "<ENEMY>"
+	line "wouldn't feel sad!"
+	prompt
+
+PlayerAffectionEvasionText:
+	text "<USER>"
+	line "avoided the move"
+
+	para "in time with"
+	line "<PLAYER>'s"
+	cont "shout!"
+	prompt
+
+EnemyAffectionEvasionText:
+	text "<USER>"
+	line "avoided the move"
+
+	para "in time with"
+	line "<ENEMY>'s"
+	cont "shout!"
+	prompt
+
+PlayerAffectionSelfCureText:
+	text "<USER>"
+	line "became healthy so"
+
+	para "<PLAYER>"
+	line "wouldn't worry!"
+	prompt
+
+EnemyAffectionSelfCureText:
+	text "<USER>"
+	line "became healthy so"
+
+	para "<ENEMY>"
+	line "wouldn't worry!"
+	prompt
+
+AffectionCriticalText: ; same for both player and enemy
+	text "<USER>"
+	line "landed a critical"
+
+	para "hit, wishing to be"
+	line "praised!"
+	prompt
+
 NotifyAirBalloonText:
 	text "<USER>"
 	line "floats in the air"
