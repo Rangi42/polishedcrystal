@@ -4,7 +4,7 @@ HappinessChanges:
 	db  +3,  +2,  +0 ; Gained a level
 	db  +3,  +1,  +0 ; Vitamin
 	db  +1,  +1,  +0 ; X Item
-	db +10,  +5,  +1 ; EV lowering berry
+	db +10,  +5,  +0 ; EV lowering berry
 	db  +5,  +3,  +0 ; Battled a Gym Leader
 	db  +1,  +1,  +0 ; Learned a move
 	db  -1,  -1,  -1 ; Lost to an enemy
