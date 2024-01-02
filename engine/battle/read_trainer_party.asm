@@ -258,7 +258,7 @@ ReadTrainerParty:
 	ld hl, wOTPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-	ld [hl], 255
+	ld [hl], MAX_RETURN_HAPPINESS
 	pop bc
 	pop de
 	pop hl
