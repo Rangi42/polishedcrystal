@@ -5645,3 +5645,5 @@ Sfx_AbilitySlideout:
 	square_note 23, 14, 8, 2016
 	pitch_sweep 0, 8
 	sound_ret
+
+ENDSECTION

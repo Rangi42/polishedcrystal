@@ -24,7 +24,7 @@ InitSGBBorder::
 	call CopyGfxToSuperNintendoVRAM
 
 	ld hl, vTiles0
-	ld bc, VRAM_End - vTiles0
+	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vTiles0
 	xor a
 	rst ByteFill
 

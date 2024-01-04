@@ -16,7 +16,7 @@ HBlankCopy2bpp::
 ; vram to vram copy check:
 	cp HIGH(vTiles0) ; is source in RAM?
 	jr c, .innerLoop
-	cp HIGH(SRAM_Begin) ; is source past VRAM
+	cp HIGH(STARTOF(VRAM) + SIZEOF(VRAM)) ; is source past VRAM
 	jr nc, .innerLoop
 	jr VRAMToVRAMCopy
 .outerLoop

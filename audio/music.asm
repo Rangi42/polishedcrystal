@@ -567,3 +567,5 @@ INCLUDE "audio/music/m02/lugiassong.asm"
 
 SECTION "Song - rby/kantochampionbattle", ROMX
 INCLUDE "audio/music/rby/kantochampionbattle.asm"
+
+ENDSECTION

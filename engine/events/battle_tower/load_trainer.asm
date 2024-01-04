@@ -482,7 +482,7 @@ BT_AppendOTMon:
 	; Happiness is always 255
 	ld hl, MON_HAPPINESS
 	add hl, de
-	ld [hl], 255
+	ld [hl], MAX_RETURN_HAPPINESS
 
 	; Clear status conditions
 	ld hl, MON_STATUS

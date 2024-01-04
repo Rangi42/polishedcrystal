@@ -258,7 +258,7 @@ ReadTrainerParty:
 	ld hl, wOTPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-	ld [hl], 255
+	ld [hl], MAX_RETURN_HAPPINESS
 	pop bc
 	pop de
 	pop hl
@@ -483,3 +483,5 @@ EVSpreads:
 		with_each_stat "db EV_SPREAD_{d:n}_?"
 	endr
 	assert_table_length NUM_EV_SPREADS
+
+ENDSECTION

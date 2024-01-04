@@ -610,7 +610,7 @@ DecompressCreditsGFX:
 	ld hl, CreditsSequence1GFX
 .ok
 	ld b, BANK("Credits Graphics")
-	assert wDecompressedCreditsGFX == WRAM1_Begin
+	assert wDecompressedCreditsGFX == STARTOF(WRAMX)
 	jmp FarDecompressInB
 
 INCLUDE "data/credits_script.asm"
