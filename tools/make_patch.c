@@ -340,8 +340,6 @@ struct Buffer *process_template(const char *template_filename, const char *patch
 
 	// The ROM checksum will always differ
 	buffer_append(patches, &(struct Patch){0x14e, 2});
-	// The build timestamp (see home.asm) will always differ
-	buffer_append(patches, &(struct Patch){0x3fd7, 41});
 
 	// Fill in the template
 	const struct Symbol *current_hook = NULL;
