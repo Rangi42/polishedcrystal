@@ -373,7 +373,7 @@ endr
 	dec a
 	ld a, BASE_HAPPINESS
 	jr z, .set_happiness
-	ld a, $ff
+	ld a, MAX_RETURN_HAPPINESS
 .set_happiness
 	ld [de], a
 	inc de
