@@ -371,9 +371,12 @@ LoveBallMultiplier:
 FastBallMultiplier:
 ; multiply catch rate by 4 if enemy mon has base speed 100+
 	ld a, [wOTPartyMon1Species]
-	dec a
+	ld c, a
+	ld a, [wOTPartyMon1Form]
+	ld b, a
+	call GetSpeciesAndFormIndex
 	ld hl, BaseData + BASE_SPE
-	ld bc, BASE_DATA_SIZE
+	ld a, BASE_DATA_SIZE
 	rst AddNTimes
 	ld a, BANK(BaseData)
 	call GetFarByte
