@@ -147,7 +147,7 @@ CheckCriticalCapture:
 	inc d
 	jr .loop
 .got_multiplier
-	; Catch Charm doubles capture rate (Unverified for SwSh!)
+	; Catch Charm doubles capture rate
 	ld a, [wCurItem]
 	push af
 	ld a, CATCH_CHARM
