@@ -1,13 +1,7 @@
 Pokedex:
-	xor a
-	ld [wPokedex_CursorPos], a
-	ld [wPokedex_Offset], a
 	call StackDexGraphics
 
 	call Pokedex_Main
-
-	xor a
-	ld [wPokedex_CursorPos], a
 
 	jmp Pokedex_MainLoop
 
