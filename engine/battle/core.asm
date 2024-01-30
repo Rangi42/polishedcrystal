@@ -5175,8 +5175,26 @@ MoveSelectionScreen:
 	call ClearSprites
 	pop hl
 	call BattleMoveDescTextbox
+	; check if autoscroll is set to start
+	ld a, [wOptions1]
+	; save options in b temporarily
+	ld b, a
+	and AUTOSCROLL_MASK
+	cp AUTOSCROLL_START
+	jp nz, .not_start
+	; if autoscroll on start set to none temporarily
+	xor a
+	ld [wOptions1], a
+	push bc
 	call WaitPressAorB_BlinkCursor
-	jr .start_over
+	pop bc
+	; reset options
+	ld a, b
+	ld [wOptions1], a
+	jp .start_over
+.not_start
+    call WaitPressAorB_BlinkCursor
+	jp .start_over
 
 SetChoiceLock:
 ; Set choice lock to move choice c (0-3)
