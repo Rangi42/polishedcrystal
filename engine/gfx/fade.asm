@@ -1,6 +1,6 @@
 _DoFadePalettes::
-; w(BG|OB)Pals: Current palettes
-; wUnkn(BG|OB)Pals: Palettes we're fading towards
+; w(BG|OB)Pals2: Current palettes
+; w(BG|OB)Pals1: Palettes we're fading towards
 ; b: Controls partial fading gradient
 ; c: Fade duration
 ; wPalFadeMode can be 0 (fade everything), 1 (fade BG), 2 (fade OBJ)
