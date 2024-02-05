@@ -3847,6 +3847,10 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
+	call HailDefenseBoost
+	call DittoMetalPowder
+	call UnevolvedEviolite
+
 .lightscreen
 	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
@@ -4105,11 +4109,11 @@ DoStatChangeMod:
 	cp 7
 	jr nc, .higher
 	ln a, 2, 9
-	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
+	sub b ; between $23 (6, i.e. -1 stat change) and $28 (1, i.e. -6 stat change)
 	ret
 .higher
 	ln a, 1, 11
-	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
+	add b ; between $23 (8, i.e. +1 stat change) and $28 (13, i.e. +6 stat change)
 	swap a ; we want to add, not reduce damage
 	ret
 
