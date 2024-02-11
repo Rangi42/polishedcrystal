@@ -1,4 +1,4 @@
-RunActivationAbilitiesInner:
+RunEntryAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
 	; are re-enabled (which also takes care of existing ability slideouts)
 	call EnableAnimations
@@ -170,7 +170,7 @@ TraceAbility:
 	call GetBattleVarAddr
 	pop af
 	ld [hl], a
-	jmp RunActivationAbilitiesInner
+	jmp RunEntryAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
 	jmp StdBattleTextbox

@@ -189,14 +189,14 @@ HandleBetweenTurnEffects:
 	jr nz, .not_both2
 
 	farcall SpikesDamageBoth
-	farcall RunBothActivationAbilities
+	farcall RunBothEntryAbilities
 	jmp .endturn_loop
 .not_both2
 	call SetEnemyTurn
 	dec e
 	call z, SetPlayerTurn
 	farcall SpikesDamage
-	farcall RunActivationAbilities
+	farcall RunEntryAbilities
 	jmp .endturn_loop
 
 HandleEndturnBlockA:

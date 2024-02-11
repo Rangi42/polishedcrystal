@@ -98,7 +98,7 @@ DoBattle:
 	call AutomaticBattleWeather
 	call SpikesDamageBoth ; for Air Balloon
 	call BoostGiovannisArmoredMewtwo
-	call RunBothActivationAbilities
+	call RunBothEntryAbilities
 	jr BattleTurn
 
 WildFled_EnemyFled_LinkBattleCanceled:
@@ -966,7 +966,7 @@ ForceDeferredSwitch:
 .regular_spikes
 	call SpikesDamage
 .done_spikes
-	call RunActivationAbilities
+	call RunEntryAbilities
 
 .all_done
 	xor a
@@ -2103,7 +2103,7 @@ SuppressUserNeutralizingGas:
 	cp UNNERVE
 	ret z
 	call SwitchTurn
-	call RunActivationAbilities
+	call RunEntryAbilities
 	jmp SwitchTurn
 
 CheckEnemyTrainerDefeated:
@@ -3141,7 +3141,7 @@ PostBattleTasks::
 	pop bc
 	ret
 
-RunBothActivationAbilities:
+RunBothEntryAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
@@ -3161,20 +3161,20 @@ RunBothActivationAbilities:
 	ldh a, [hBattleTurn]
 	push af
 	call SetFastestTurn
-	farcall RunActivationAbilitiesInner
+	farcall RunEntryAbilitiesInner
 	call SwitchTurn
 .single_run
-	farcall RunActivationAbilitiesInner
+	farcall RunEntryAbilitiesInner
 	pop af
 	ldh [hBattleTurn], a
 	ret
 
-RunActivationAbilities:
+RunEntryAbilities:
 ; Trace will, on failure, copy a later switched in Pokémon's
 ; Ability. To handle this correctly without redundancy except
 ; on double switch-ins or similar, we need to do some extra
 ; handling around it.
-	farcall RunActivationAbilitiesInner
+	farcall RunEntryAbilitiesInner
 	call HasUserFainted
 	call nz, HasOpponentFainted
 	ret z
@@ -3187,7 +3187,7 @@ RunActivationAbilities:
 	ret nz
 	; invert whose turn it is to properly handle abilities.
 	call SwitchTurn
-	farcall RunActivationAbilitiesInner
+	farcall RunEntryAbilitiesInner
 	jmp SwitchTurn
 
 SpikesDamage_CheckMoldBreaker:
