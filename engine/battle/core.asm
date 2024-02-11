@@ -2096,7 +2096,7 @@ SuppressUserNeutralizingGas:
 	ld [hl], -1
 
 	; Unless opponent also has Neutralizing Gas or Unnerve, (re-)run its
-	; activation abilities. Yes, this means that it might run more than once.
+	; entry abilities. Yes, this means that it might run more than once.
 	call GetOpponentAbility
 	cp NEUTRALIZING_GAS
 	ret z
@@ -3142,7 +3142,7 @@ PostBattleTasks::
 	ret
 
 RunBothEntryAbilities:
-; runs both pokémon's activation abilities (Intimidate, etc.).
+; runs both pokémon's entry abilities (Intimidate, etc.).
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
 	; Only show Neutralizing Gas message once.
