@@ -394,6 +394,27 @@ SwapPartyItem:
 	farcall PartyMenuSelect
 	bit 1, b
 	jr c, .DontSwap
+
+	; Eggs can't hold items.
+	ld a, MON_IS_EGG
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
+	jr nz, .DontSwap
+
+	; First, swap mail metadata. Don't bother checking if we are holding Mail,
+	; doing the swap either way is harmless and simplifies checks.
+	; Note that wCurPartyMon is 0-indexed while wSwitchMon is 1-indexed.
+	push bc
+	push de
+	ld a, [wCurPartyMon]
+	inc a
+	ld c, a
+	ld a, [wSwitchMon]
+	ld e, a
+	farcall SwapPartyMonMail
+	pop de
+	pop bc
+
 	; wSwitchMon contains first selected pkmn
 	; wCurPartyMon contains second selected pkmn
 	; getting pkmn2 item and putting into stack item addr + item id
