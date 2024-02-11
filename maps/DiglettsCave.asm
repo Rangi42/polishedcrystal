@@ -197,4 +197,8 @@ DiglettsCavePokefanMText:
 
 	para "ground! That was"
 	line "shocking."
+
+	para "I heard Diglett"
+	line "on Cinnabar Island"
+	cont "look different."
 	done
