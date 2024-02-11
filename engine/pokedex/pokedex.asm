@@ -1,16 +1,22 @@
 Pokedex:
-	xor a
+	ld a, [wDexPrevCursorPos]
 	ld [wPokedex_CursorPos], a
+	ld a, [wDexPrevOffset]
 	ld [wPokedex_Offset], a
-	call StackDexGraphics
 
+	call StackDexGraphics
 	call Pokedex_Main
 
-	xor a
+	ld a, [wDexPrevCursorPos]
 	ld [wPokedex_CursorPos], a
 
-	jmp Pokedex_MainLoop
+	call Pokedex_MainLoop
 
+	ld a, [wPokedex_CursorPos]
+	ld [wDexPrevCursorPos], a
+	ld a, [wPokedex_Offset]
+	ld [wDexPrevOffset], a
+	ret
 
 Pokedex_LoadTilemap:
 	ld a, BANK(wDexTilemap)

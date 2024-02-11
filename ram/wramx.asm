@@ -492,8 +492,10 @@ wTempMonSlot:: db
 wDexCacheValid:: db
 wDexCacheSeen:: dw
 wDexCacheOwn:: dw
+wDexPrevCursorPos:: db
+wDexPrevOffset:: db
 
-	ds 34 ; unused
+	ds 32 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -1171,7 +1173,7 @@ wPlayerCaught2:: db
 
 wUsedObjectPals:: db
 for n, 8
-wLoadedObjPal{d:n}:: db 
+wLoadedObjPal{d:n}:: db
 endr
 wNeededPalIndex:: db
 
