@@ -1767,7 +1767,7 @@ IronFistAbility:
 	jr MoveBoostAbility
 
 IsPunchingMove:
-; Returns z|c if the move is a punching move, otherwise nz|nc.
+; Returns z if the move is a punching move, otherwise nz|nc.
 	ld hl, PunchingMoves
 	call IsInByteArray
 	sbc a
