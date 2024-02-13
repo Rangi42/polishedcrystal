@@ -280,7 +280,7 @@ BattleAnimCommands::
 	dw BattleAnimCmd_ResetObp0
 	dw BattleAnimCmd_Sound
 	dw BattleAnimCmd_Cry
-	dw DoNothing
+	dw BattleAnimCmd_CheckCriticalCapture
 	dw BattleAnimCmd_OAMOn
 	dw BattleAnimCmd_OAMOff
 	dw BattleAnimCmd_ClearObjs
@@ -802,6 +802,14 @@ BattleAnimCmd_BattlerGFX_2Row:
 BattleAnimCmd_CheckPokeball:
 	farcall GetPokeBallWobble
 	ld a, c
+	ld [wBattleAnimVar], a
+	ret
+
+BattleAnimCmd_CheckCriticalCapture:
+	ld hl, wBuffer2
+	ld a, BANK(wBuffer2)
+	call GetFarWRAMByte
+	and $10
 	ld [wBattleAnimVar], a
 	ret
 

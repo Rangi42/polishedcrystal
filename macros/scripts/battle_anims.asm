@@ -135,7 +135,10 @@ MACRO anim_cry
 	db \1 ; pitch
 ENDM
 
-	const_skip ; e2
+	const anim_checkcriticalcapture_command ; e2
+MACRO anim_checkcriticalcapture
+	db anim_checkcriticalcapture_command
+ENDM
 
 	const anim_oamon_command ; e3
 MACRO anim_oamon
