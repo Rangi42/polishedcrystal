@@ -2219,7 +2219,20 @@ BattleCommand_checkpriority:
 .check_prankster
 	call GetTrueUserAbility
 	cp PRANKSTER
+	jr z, .prankster
+	cp SOUNDPROOF
 	ret nz
+
+	; Soundproof vs status moves is handled here.
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInByteArray
+	ld b, ATKFAIL_ABILITY
+	jr c, .attack_fails
+	ret
+
+.prankster
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp STATUS
@@ -3378,7 +3391,7 @@ CheckThroatSpray:
 	ld a, [wAttackMissed]
 	and a
 	ret nz
-	
+
 	call HasUserFainted
 	ret z
 
@@ -3386,7 +3399,7 @@ CheckThroatSpray:
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
-	
+
 	push bc
 	call GetCurItemName
 	ld a, BATTLE_VARS_MOVE_ANIM
