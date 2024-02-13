@@ -2220,6 +2220,7 @@ BattleCommand_checkpriority:
 	call GetTrueUserAbility
 	cp PRANKSTER
 	jr z, .prankster
+	call GetOpponentAbilityAfterMoldBreaker
 	cp SOUNDPROOF
 	ret nz
 
