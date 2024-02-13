@@ -489,7 +489,19 @@ BattleAnim_ThrowPokeBall:
 	anim_sound 0, 1, SFX_CHANGE_DEX_MODE
 	anim_incobj 1
 	anim_incobj 2
-	anim_wait 32
+	anim_wait 16
+	anim_checkcriticalcapture
+	anim_jumpvar 0, .not_critical
+	anim_setobj 1, $c
+	anim_setobj 2, $c
+	anim_wait 12
+	anim_incobj 1
+	anim_incobj 2
+	anim_wait 24
+	anim_setobj 1, 4
+	anim_setobj 2, 4
+.not_critical
+	anim_wait 16
 	anim_sound 0, 1, SFX_BALL_BOUNCE
 	anim_wait 32
 	anim_wait 32

@@ -270,45 +270,56 @@ BattleAnimFunction_MoveFromUserToTargetAndDisappear:
 BattleAnimFunction_PokeBall_BG:
 	call BattleAnim_AnonJumptable
 .anon_dw
-	dw .zero
-	dw BattleAnimFunction_PokeBall.one
+	dw .load_ball_palette
+	dw BattleAnimFunction_PokeBall.throw_ball
 	dw DoNothing
-	dw BattleAnimFunction_PokeBall.three
-	dw BattleAnimFunction_PokeBall.four
+	dw BattleAnimFunction_PokeBall.prepare_bounce
+	dw BattleAnimFunction_PokeBall.bounce
 	dw DoNothing
-	dw BattleAnimFunction_PokeBall.six
+	dw BattleAnimFunction_PokeBall.shake
 	dw BattleAnimFunction_PokeBall.seven
-	dw BattleAnimFunction_PokeBall.eight
+	dw BattleAnimFunction_PokeBall.eight_or_ten
 	dw DoNothing
-	dw BattleAnimFunction_PokeBall.ten
+	dw BattleAnimFunction_PokeBall.eight_or_ten
 	dw DeinitBattleAnimation
+	dw BattleAnimFunction_PokeBall.twelve
+	dw DoNothing
+	dw BattleAnimFunction_PokeBall.fourteen
+	dw DoNothing
 
-.zero ; init
+.load_ball_palette
 	call GetBallAnimBGPal
 	jmp BattleAnim_IncAnonJumptableIndex
 
 BattleAnimFunction_PokeBall:
 	call BattleAnim_AnonJumptable
 .anon_dw
-	dw .zero
-	dw .one
+	dw .load_ball_palette
+	dw .throw_ball
 	dw DoNothing
-	dw .three
-	dw .four
+	dw .prepare_bounce
+	dw .bounce
 	dw DoNothing
-	dw .six
+	dw .shake
 	dw .seven
-	dw .eight
+	dw .eight_or_ten
 	dw DoNothing
-	dw .ten
+	dw .eight_or_ten
 	dw DeinitBattleAnimation
-.zero ; init
+	dw .twelve
+	dw DoNothing
+	dw .fourteen
+	dw DoNothing
+
+.load_ball_palette
 	call GetBallAnimPal
 	jmp BattleAnim_IncAnonJumptableIndex
 
-.one
+.throw_ball
+	; throw the ball; if the ball hasn't reached the enemy yet, we're done
 	call BattleAnimFunction_ThrowFromPlayerToEnemy
 	ret c
+	; absorb the Y offset into the coordinate...
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -316,20 +327,25 @@ BattleAnimFunction_PokeBall:
 	add hl, bc
 	add [hl]
 	ld [hl], a
+	; ...select a new frameset, and move onto the next part of the animation
 	ld a, BATTLEANIMFRAMESET_0B
 	call ReinitBattleAnimFrameset
 	jmp BattleAnim_IncAnonJumptableIndex
 
-.three
+.prepare_bounce
+	; initialize the parameters for the bounce; make sure this is only done once
 	call BattleAnim_IncAnonJumptableIndex
 	ld a, BATTLEANIMFRAMESET_09
 	call ReinitBattleAnimFrameset
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
+	; initial height 16, angle 0
 	xor a
 	ld [hli], a
-	ld [hl], $10
-.four
+	ld [hl], 16
+.bounce
+	; bounce up based on a sine wave with the current parameters (the angle is
+	; always negative, creating a negative Y offset)
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hli]
@@ -342,20 +358,23 @@ BattleAnimFunction_PokeBall:
 	add hl, bc
 	dec [hl]
 	ld a, [hl]
+	; if we didn't reach -180°, do nothing
 	and $1f
 	ret nz
 	ld [hl], a
+	; otherwise, reset the angle and reduce the bounce height by 4
 	ld hl, BATTLEANIMSTRUCT_VAR2
 	add hl, bc
 	ld a, [hl]
-	sub $4
+	sub 4
 	ld [hl], a
 	ret nz
+	; if the bounce height became 0, load a new frameset and go to the next part of the animation
 	ld a, BATTLEANIMFRAMESET_0C
 	call ReinitBattleAnimFrameset
 	jmp BattleAnim_IncAnonJumptableIndex
 
-.six
+.shake
 	ld a, BATTLEANIMFRAMESET_0D
 	call ReinitBattleAnimFrameset
 	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
@@ -363,7 +382,8 @@ BattleAnimFunction_PokeBall:
 	dec [hl]
 	ret
 
-.seven
+; Bottom of the PokeBall
+.seven ; open
 	call GetBallAnimPal
 	ld a, BATTLEANIMFRAMESET_0A
 	call ReinitBattleAnimFrameset
@@ -371,8 +391,7 @@ BattleAnimFunction_PokeBall:
 	ld hl, BATTLEANIMSTRUCT_VAR2
 	add hl, bc
 	ld [hl], $20
-.eight
-.ten
+.eight_or_ten ; close
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hli]
@@ -386,13 +405,44 @@ BattleAnimFunction_PokeBall:
 	dec [hl]
 	ld a, [hl]
 	and $1f
-	jr z, .done
+	jmp z, DeinitBattleAnimation
 	and $f
 	ret nz
+	jp BattleAnim_IncAnonJumptableIndex
+
+.twelve
+; critical shake
+	ld a, BATTLEANIMFRAMESET_0C
+	call ReinitBattleAnimFrameset
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	ld a, $10
+	ld [hl], a
 	jmp BattleAnim_IncAnonJumptableIndex
 
+.fourteen
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	ld a, [hl]
+	and a
+	jmp z, .done
+	dec [hl]
+	; a = ($10 - a) * 4
+	cpl
+	add $10 + 1
+	add a
+	add a
+	ld d, 2
+	farcall Sine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ret
+
 .done
-	jmp DeinitBattleAnimation
+	ld a, BATTLEANIMFRAMESET_09
+	call ReinitBattleAnimFrameset
+	jp BattleAnim_IncAnonJumptableIndex
 
 BattleAnimFunction_PokeBallBlocked:
 	call BattleAnim_AnonJumptable
