@@ -5988,9 +5988,8 @@ BattleAnim_StatUp:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
-	; anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 .loop
-	; anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_sound 0, 0, SFX_STAT_UP
 	anim_obj ANIM_OBJ_STAT_UP,   5, 4,  13, 6, $6
 	anim_wait 2
 	anim_obj ANIM_OBJ_STAT_UP,   4, 4,  13, 6, $6
@@ -6015,9 +6014,8 @@ BattleAnim_StatDown:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
-	; anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 .loop
-	; anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_sound 0, 0, SFX_STAT_DOWN
 	anim_obj ANIM_OBJ_STAT_DOWN, 5, 4,  7, 6, $6
 	anim_wait 2
 	anim_obj ANIM_OBJ_STAT_DOWN, 4, 4,  7, 6, $6

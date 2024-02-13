@@ -212,4 +212,6 @@ SFX:
 	fardw Sfx_Puddle
 	fardw Sfx_AbilitySlideout
 	fardw Sfx_CriticalCapture
+	fardw Sfx_StatUp
+	fardw Sfx_StatDown
 	assert_table_length NUM_SFX
