@@ -76,6 +76,10 @@ ResetWRAM_NotPlus:
 	xor a
 	ld [wSavedAtLeastOnce], a
 
+	; Key items are 0-terminated, just load 0 into the first entry.
+	xor a
+	ld [wKeyItems], a
+
 	ld [wBattlePoints], a
 	ld [wBattlePoints + 1], a
 
@@ -149,11 +153,28 @@ ResetWRAM:
 	ld hl, wNumBalls
 	call _ResetWRAM_InitList
 
+	; We want to preserve charms, so track those down and put on top.
+	ld hl, wKeyItems
+	push de
+	ld d, h
+	ld e, l
+.charms_loop
+	ld a, [hli]
+	and a
+	jr z, .charms_done
+	cp CHARMS_START
+	jr c, .charms_loop
+	ld [de], a
+	inc de
+	jr .charms_loop
+.charms_done
+	; Place a terminator after any charms, effectively deleting other items.
+	xor a
+	ld [de], a
+	pop de
+
 	ld hl, wNumBerries
 	call _ResetWRAM_InitList
-
-;	ld hl, wNumKeyItems
-;	call _ResetWRAM_InitList
 
 	ld hl, wNumPCItems
 	call _ResetWRAM_InitList
@@ -162,12 +183,6 @@ ResetWRAM:
 
 	ld hl, wTMsHMs
 rept ((NUM_TMS + NUM_HMS) + 7) / 8 - 1
-	ld [hli], a
-endr
-	ld [hl], a
-
-	ld hl, wKeyItems
-rept ((NUM_KEY_ITEMS) + 7) / 8 - 1
 	ld [hli], a
 endr
 	ld [hl], a

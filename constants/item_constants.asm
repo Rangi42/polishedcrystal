@@ -660,6 +660,8 @@ DEF NUM_WINGS EQU const_value
 	const HARSH_LURE   ; 1f
 	const POTENT_LURE  ; 20
 	const MALIGN_LURE  ; 21
+DEF CHARMS_START EQU const_value
+	; Only charms below this point!
 	const SHINY_CHARM  ; 22
 	const OVAL_CHARM   ; 23
 	const CATCH_CHARM  ; 24
