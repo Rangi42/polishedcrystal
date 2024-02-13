@@ -5667,6 +5667,8 @@ Sfx_StatUp:
 .Ch5:
 	duty_cycle 1
 	pitch_sweep 9, 7
+	square_note 4, 14, 8, 1760
+	square_note 4, 14, 8, 1780
 	square_note 4, 14, 8, 1800
 	square_note 4, 14, 8, 1820
 	square_note 4, 14, 8, 1840
@@ -5674,8 +5676,6 @@ Sfx_StatUp:
 	square_note 4, 14, 8, 1880
 	square_note 4, 14, 8, 1900
 	square_note 4, 14, 8, 1920
-	square_note 4, 14, 8, 1940
-	square_note 4, 14, 8, 1960
 	sound_ret
 
 
@@ -5685,16 +5685,16 @@ Sfx_StatDown:
 
 .Ch5:
 	duty_cycle 1
-	pitch_sweep 9, -7
-	square_note 4, 14, 8, 2000
-	square_note 4, 14, 8, 1980
-	square_note 4, 14, 8, 1960
-	square_note 4, 14, 8, 1940
+	pitch_sweep 9, 7
 	square_note 4, 14, 8, 1920
 	square_note 4, 14, 8, 1900
 	square_note 4, 14, 8, 1880
 	square_note 4, 14, 8, 1860
 	square_note 4, 14, 8, 1840
+	square_note 4, 14, 8, 1820
+	square_note 4, 14, 8, 1800
+	square_note 4, 14, 8, 1780
+	square_note 4, 14, 8, 1760
 	sound_ret
 
 
