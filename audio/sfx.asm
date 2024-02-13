@@ -5666,16 +5666,25 @@ Sfx_StatUp:
 
 .Ch5:
 	duty_cycle 1
-	pitch_sweep 9, 7
-	square_note 4, 14, 8, 1760
-	square_note 4, 14, 8, 1780
-	square_note 4, 14, 8, 1800
-	square_note 4, 14, 8, 1820
-	square_note 4, 14, 8, 1840
-	square_note 4, 14, 8, 1860
-	square_note 4, 14, 8, 1880
-	square_note 4, 14, 8, 1900
-	square_note 4, 14, 8, 1920
+	square_note 1, 14, 8, 1775
+	square_note 1, 14, 8, 1835
+	square_note 1, 14, 8, 1895
+	square_note 1, 14, 8, 1955
+	square_note 2, 14, 8, 0
+	square_note 1, 14, 8, 1790
+	square_note 1, 14, 8, 1850
+	square_note 1, 14, 8, 1910
+	square_note 1, 14, 8, 1970
+	square_note 2, 14, 8, 0
+	square_note 1, 14, 8, 1805
+	square_note 1, 14, 8, 1865
+	square_note 1, 14, 8, 1925
+	square_note 1, 14, 8, 1985
+	square_note 2, 14, 8, 0
+	square_note 1, 14, 8, 1820
+	square_note 1, 14, 8, 1880
+	square_note 1, 14, 8, 1940
+	square_note 1, 14, 8, 2000
 	sound_ret
 
 
@@ -5685,16 +5694,25 @@ Sfx_StatDown:
 
 .Ch5:
 	duty_cycle 1
-	pitch_sweep 9, 7
-	square_note 4, 14, 8, 1920
-	square_note 4, 14, 8, 1900
-	square_note 4, 14, 8, 1880
-	square_note 4, 14, 8, 1860
-	square_note 4, 14, 8, 1840
-	square_note 4, 14, 8, 1820
-	square_note 4, 14, 8, 1800
-	square_note 4, 14, 8, 1780
-	square_note 4, 14, 8, 1760
+	square_note 1, 14, 8, 1820
+	square_note 1, 14, 8, 1880
+	square_note 1, 14, 8, 1940
+	square_note 1, 14, 8, 2000
+	square_note 3, 14, 8, 0
+	square_note 1, 14, 8, 1805
+	square_note 1, 14, 8, 1865
+	square_note 1, 14, 8, 1925
+	square_note 1, 14, 8, 1985
+	square_note 3, 14, 8, 0
+	square_note 1, 14, 8, 1790
+	square_note 1, 14, 8, 1850
+	square_note 1, 14, 8, 1910
+	square_note 1, 14, 8, 1970
+	square_note 3, 14, 8, 0
+	square_note 1, 14, 8, 1775
+	square_note 1, 14, 8, 1835
+	square_note 1, 14, 8, 1895
+	square_note 1, 14, 8, 1955
 	sound_ret
 
 
