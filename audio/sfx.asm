@@ -5665,26 +5665,28 @@ Sfx_StatUp:
 	channel 5, .Ch5
 
 .Ch5:
-	duty_cycle 1
-	square_note 1, 14, 8, 1775
-	square_note 1, 14, 8, 1835
-	square_note 1, 14, 8, 1895
-	square_note 1, 14, 8, 1955
-	square_note 2, 14, 8, 0
-	square_note 1, 14, 8, 1790
-	square_note 1, 14, 8, 1850
+	square_note 1, 14, 8, 1900
+	square_note 1, 14, 8, 1700
 	square_note 1, 14, 8, 1910
-	square_note 1, 14, 8, 1970
-	square_note 2, 14, 8, 0
-	square_note 1, 14, 8, 1805
-	square_note 1, 14, 8, 1865
-	square_note 1, 14, 8, 1925
-	square_note 1, 14, 8, 1985
-	square_note 2, 14, 8, 0
-	square_note 1, 14, 8, 1820
-	square_note 1, 14, 8, 1880
+	square_note 1, 14, 8, 1710
+	square_note 1, 14, 8, 1920
+	square_note 1, 14, 8, 1720
+	square_note 1, 14, 8, 1930
+	square_note 1, 14, 8, 1730
 	square_note 1, 14, 8, 1940
+	square_note 1, 14, 8, 1740
+	square_note 1, 14, 8, 1950
+	square_note 1, 14, 8, 1750
+	square_note 1, 14, 8, 1960
+	square_note 1, 14, 8, 1760
+	square_note 1, 14, 8, 1970
+	square_note 1, 14, 8, 1770
+	square_note 1, 14, 8, 1980
+	square_note 1, 14, 8, 1780
+	square_note 1, 14, 8, 1990
+	square_note 1, 14, 8, 1790
 	square_note 1, 14, 8, 2000
+	square_note 1, 14, 8, 1800
 	sound_ret
 
 
@@ -5693,26 +5695,28 @@ Sfx_StatDown:
 	channel 5, .Ch5
 
 .Ch5:
-	duty_cycle 1
-	square_note 1, 14, 8, 1820
-	square_note 1, 14, 8, 1880
-	square_note 1, 14, 8, 1940
 	square_note 1, 14, 8, 2000
-	square_note 3, 14, 8, 0
-	square_note 1, 14, 8, 1805
-	square_note 1, 14, 8, 1865
-	square_note 1, 14, 8, 1925
-	square_note 1, 14, 8, 1985
-	square_note 3, 14, 8, 0
+	square_note 1, 14, 8, 1800
+	square_note 1, 14, 8, 1990
 	square_note 1, 14, 8, 1790
-	square_note 1, 14, 8, 1850
-	square_note 1, 14, 8, 1910
+	square_note 1, 14, 8, 1980
+	square_note 1, 14, 8, 1780
 	square_note 1, 14, 8, 1970
-	square_note 3, 14, 8, 0
-	square_note 1, 14, 8, 1775
-	square_note 1, 14, 8, 1835
-	square_note 1, 14, 8, 1895
-	square_note 1, 14, 8, 1955
+	square_note 1, 14, 8, 1770
+	square_note 1, 14, 8, 1960
+	square_note 1, 14, 8, 1760
+	square_note 1, 14, 8, 1950
+	square_note 1, 14, 8, 1750
+	square_note 1, 14, 8, 1940
+	square_note 1, 14, 8, 1740
+	square_note 1, 14, 8, 1930
+	square_note 1, 14, 8, 1730
+	square_note 1, 14, 8, 1920
+	square_note 1, 14, 8, 1720
+	square_note 1, 14, 8, 1910
+	square_note 1, 14, 8, 1710
+	square_note 1, 14, 8, 1900
+	square_note 1, 14, 8, 1700
 	sound_ret
 
 

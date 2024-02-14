@@ -1321,6 +1321,7 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
+	; If Bad Dreams is implemented, remember to add CheckFaint in endturn.asm
 	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
