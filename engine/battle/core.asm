@@ -2308,6 +2308,8 @@ AddBattleMoneyToAccount:
 	ret
 
 PlayVictoryMusic:
+	ld a, 1
+	ld [wBattleEnded], a
 	push de
 	ld e, MUSIC_NONE
 	call PlayMusic
