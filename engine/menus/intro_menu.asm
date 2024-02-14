@@ -169,7 +169,7 @@ ResetWRAM:
 	jr .charms_loop
 .charms_done
 	; Place a terminator after any charms, effectively deleting other items.
-	xor a
+	; xor a (implicit from the "jr z" above)
 	ld [de], a
 	pop de
 
