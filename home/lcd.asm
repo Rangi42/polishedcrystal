@@ -2,7 +2,9 @@ LCDGeneric::
 ; At this point it's assumed we're in WRAM bank 5!
 	ldh a, [rLY]
 	cp SCREEN_HEIGHT_PX
-	jr nc, .done
+	jr c, .continue
+	xor a
+.continue
 	push bc
 	ld c, a
 	ld b, HIGH(wLYOverrides)
@@ -13,8 +15,6 @@ LCDGeneric::
 	ld a, b
 	ldh [c], a
 	pop bc
-
-.done
 	pop af
 	reti
 
