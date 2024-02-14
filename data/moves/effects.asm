@@ -1597,7 +1597,6 @@ PerishSong:
 	checkobedience
 	usedmovetext
 	doturn
-	checkpriority
 	perishsong
 	endmove
 
