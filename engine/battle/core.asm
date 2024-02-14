@@ -3831,9 +3831,17 @@ CheckDanger:
 	ld a, [hli]
 	or [hl]
 	jr z, .no_danger
+
+	; Do nothing if the battle is over (this can be called after a battle).
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	; Disables low health alarm (used in case we are fainted or similar).
 	ld a, [wBattleLowHealthAlarm]
 	and a
 	ret nz
+
 	ld a, [wPlayerHPPal]
 	cp HP_RED
 	jr z, .danger
