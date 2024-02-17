@@ -86,8 +86,11 @@ MapRuinsofAlphHoOhChamberSignpost2Script:
 	end
 
 MapRuinsofAlphHoOhChamberSignpost3Script:
+	opentext
 	unowntypeface
-	showtext RuinsOfAlphHoOhChamberDescriptionText
+	writetext RuinsOfAlphHoOhChamberDescriptionText
+	waitbutton
+	closetext
 	restoretypeface
 	special RefreshSprites
 	end
