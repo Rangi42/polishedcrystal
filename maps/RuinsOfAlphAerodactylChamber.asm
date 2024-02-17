@@ -85,8 +85,11 @@ MapRuinsofAlphAerodactylChamberSignpost2Script:
 	end
 
 MapRuinsofAlphAerodactylChamberSignpost3Script:
+	opentext
 	unowntypeface
-	showtext RuinsOfAlphAerodactylChamberDescriptionText
+	writetext RuinsOfAlphAerodactylChamberDescriptionText
+	waitbutton
+	closetext
 	restoretypeface
 	special RefreshSprites
 	end

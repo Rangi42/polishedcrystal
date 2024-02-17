@@ -109,8 +109,11 @@ RuinsOfAlphKabutoChamberScientistScript:
 	jumptextfaceplayer RuinsOfAlphResearchCenterScientist1Text_GotAllUnown
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
+	opentext
 	unowntypeface
-	showtext RuinsOfAlphKabutoChamberDescriptionText
+	writetext RuinsOfAlphKabutoChamberDescriptionText
+	waitbutton
+	closetext
 	restoretypeface
 	special RefreshSprites
 	end
