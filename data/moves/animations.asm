@@ -5725,7 +5725,7 @@ BattleAnim_StatUp:
 	anim_obj ANIM_OBJ_STAT_UP, 44, 107, $30
 	anim_wait 12
 	anim_statloop .loop
-	anim_wait 16
+	anim_wait 8
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
@@ -5765,7 +5765,7 @@ BattleAnim_StatDown:
 	anim_obj ANIM_OBJ_STAT_DOWN, 44, 56, $10
 	anim_wait 12
 	anim_statloop .loop
-	anim_wait 16
+	anim_wait 8
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
