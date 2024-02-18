@@ -423,12 +423,20 @@ PlayStatChangeAnim:
 	ld de, ANIM_STAT_DOWN
 .got_anim
 	ld a, [wBattleAnimParam]
-	push af
+	ld b, a
+	ld a, [wNumHits]
+	ld c, a
+	push bc
 	ld a, [wChangedStat]
 	and $f
 	ld [wBattleAnimParam], a
+	xor a
+	ld [wNumHits], a
 	farcall FarPlayBattleAnimation
-	pop af
+	pop bc
+	ld a, c
+	ld [wNumHits], a
+	ld a, b
 	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
 
