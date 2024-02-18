@@ -3,7 +3,7 @@
 ; - Moves (see data/moves/moves.asm)
 ; - MoveNames (see data/moves/names.asm)
 ; - MoveDescriptions (see data/moves/descriptions.asm)
-; - BattleAnimations (see data/moves/animations.asm)
+; - BattleAnimations (see data/moves/animation_pointers.asm)
 	const_def
 	const NO_MOVE      ; $00
 	const ACROBATICS   ; $01

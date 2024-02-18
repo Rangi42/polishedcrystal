@@ -466,7 +466,12 @@ SECTION "bank32", ROMX
 INCLUDE "engine/battle_anims/bg_effects.asm"
 
 
-SECTION "Battle Animation Data", ROMX
+SECTION "Battle Animation Pointers", ROMX
+
+INCLUDE "data/moves/animation_pointers.asm"
+
+
+SECTION "Battle Animations", ROMX
 
 INCLUDE "data/moves/animations.asm"
 

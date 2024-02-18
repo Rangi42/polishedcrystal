@@ -879,7 +879,7 @@ GetBattleAnimPointer::
 	ret
 
 GetBattleAnimByte::
-	anonbankpush BattleAnimations
+	anonbankpush "Battle Animations"
 
 .Function:
 	push hl
