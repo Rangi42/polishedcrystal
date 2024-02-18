@@ -200,6 +200,8 @@ BattleAnimFrameData:
 	dw .Frameset_Hail ; c4
 	dw .Frameset_UTurn_Fall ; c5
 	dw .Frameset_Berry ; c6
+	dw .Frameset_StatUp ; c7
+	dw .Frameset_StatDown ; c8
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1366,4 +1368,12 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_1B, 48
 	oamframe BATTLEANIMOAMSET_94, 24
 	oamframe BATTLEANIMOAMSET_7F, 24
+	oamdelete
+
+.Frameset_StatUp:
+	oamframe BATTLEANIMOAMSET_STAT, 16
+	oamdelete
+
+.Frameset_StatDown:
+	oamframe BATTLEANIMOAMSET_STAT, 16, OAM_Y_FLIP
 	oamdelete

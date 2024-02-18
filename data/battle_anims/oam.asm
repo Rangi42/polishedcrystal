@@ -233,6 +233,7 @@ BattleAnimOAMData:
 	battleanimoam $18, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX2
 	battleanimoam $28, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX3
 	battleanimoam $20, 16, .OAMData_1c ; BATTLEANIMOAMSET_U_TURN_FALL
+	battleanimoam $00, 16, .OAMData_Stats ; BATTLEANIMOAMSET_STAT
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -1128,3 +1129,21 @@ BattleAnimOAMData:
 	dsprite  -2, 4,   0, 4, $02, $0
 	dsprite  -1, 4,  -2, 4, $03, $0
 	dsprite   0, 4,  -2, 4, $06, $0
+
+.OAMData_Stats:
+	dsprite  -1, 0,  -3, 0, $00, $0
+	dsprite  -1, 0,  -2, 0, $00, $0
+	dsprite  -1, 0,  -1, 0, $00, $0
+	dsprite  -1, 0,   0, 0, $00, $0
+	dsprite  -1, 0,   1, 0, $00, $0
+	dsprite  -1, 0,   2, 0, $00, $0
+	dsprite  -1, 0,   3, 0, $00, $0
+	dsprite  -1, 0,   4, 0, $00, $0
+	dsprite   0, 0,  -3, 0, $01, $0
+	dsprite   0, 0,  -2, 0, $01, $0
+	dsprite   0, 0,  -1, 0, $01, $0
+	dsprite   0, 0,   0, 0, $01, $0
+	dsprite   0, 0,   1, 0, $01, $0
+	dsprite   0, 0,   2, 0, $01, $0
+	dsprite   0, 0,   3, 0, $01, $0
+	dsprite   0, 0,   4, 0, $01, $0

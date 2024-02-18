@@ -1779,17 +1779,6 @@ BattleAnim_Growl:
 	anim_call BattleAnimSub_Sound
 	anim_wait 16
 	anim_loop 3, .loop
-	anim_wait 9
-	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
-	anim_wait 8
-	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $0, $40
-	anim_wait 64
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
-	anim_wait 1
-	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
-	anim_wait 5
-	anim_incobj 10
-	anim_wait 8
 	anim_ret
 
 BattleAnim_Roar:
@@ -5701,55 +5690,83 @@ BattleAnim_Trick:
 	anim_ret
 
 BattleAnim_StatUp:
-	anim_1gfx ANIM_GFX_SPEED
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
-	anim_sound 0, 0, SFX_STAT_UP
+	anim_1gfx ANIM_GFX_STATS
+	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
+	anim_jumpif DEFENSE, .defense
+	anim_jumpif SP_ATTACK, .sp_atk
+	anim_jumpif SP_DEFENSE, .sp_def
+	anim_jumpif SPEED, .speed
+	anim_jumpif ACCURACY, .accuracy
+	anim_jumpif EVASION, .evasion
+.attack
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ATTACK
+	anim_jump .continue
+.defense
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_DEFENSE
+	anim_jump .continue
+.sp_atk
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_ATTACK
+	anim_jump .continue
+.sp_def
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_DEFENSE
+	anim_jump .continue
+.speed
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SPEED
+	anim_jump .continue
+.accuracy
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ACCURACY
+	anim_jump .continue
+.evasion
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_EVASION
+.continue
+	anim_obp0 $30
 .loop
-	anim_obj ANIM_OBJ_STAT_UP,   5, 4,  13, 6, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_UP,   4, 4,  13, 6, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_UP,   6, 4,  13, 6, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_UP,   3, 4,  13, 6, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_UP,   7, 4,  13, 6, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_UP,   2, 4,  13, 6, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_UP,   8, 4,  13, 6, $8
-	anim_wait 2
+	anim_sound 0, 0, SFX_STAT_UP
+	anim_obj ANIM_OBJ_STAT_UP, 44, 107, $30
+	anim_wait 12
 	anim_statloop .loop
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT
-	anim_call BattleAnim_ShowMon_0
+	anim_wait 16
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
 BattleAnim_StatDown:
-	anim_1gfx ANIM_GFX_SPEED
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
-	anim_sound 0, 0, SFX_STAT_DOWN
+	anim_1gfx ANIM_GFX_STATS
+	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
+	anim_jumpif DEFENSE, .defense
+	anim_jumpif SP_ATTACK, .sp_atk
+	anim_jumpif SP_DEFENSE, .sp_def
+	anim_jumpif SPEED, .speed
+	anim_jumpif ACCURACY, .accuracy
+	anim_jumpif EVASION, .evasion
+.attack
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ATTACK
+	anim_jump .continue
+.defense
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_DEFENSE
+	anim_jump .continue
+.sp_atk
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_ATTACK
+	anim_jump .continue
+.sp_def
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_DEFENSE
+	anim_jump .continue
+.speed
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SPEED
+	anim_jump .continue
+.accuracy
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ACCURACY
+	anim_jump .continue
+.evasion
+	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_EVASION
+.continue
+	anim_obp0 $30
 .loop
-	anim_obj ANIM_OBJ_STAT_DOWN, 5, 4,  7, 6, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_DOWN, 4, 4,  7, 6, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_DOWN, 6, 4,  7, 6, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_DOWN, 3, 4,  7, 6, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_DOWN, 7, 4,  7, 6, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_DOWN, 2, 4,  7, 6, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_STAT_DOWN, 8, 4,  7, 6, $8
-	anim_wait 2
+	anim_sound 0, 0, SFX_STAT_DOWN
+	anim_obj ANIM_OBJ_STAT_DOWN, 44, 56, $10
+	anim_wait 12
 	anim_statloop .loop
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT
-	anim_call BattleAnim_ShowMon_0
+	anim_wait 16
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
 ; ================================

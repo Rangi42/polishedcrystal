@@ -47,6 +47,51 @@ if !DEF(MONOCHROME)
 	RGB 27, 21, 10
 	RGB 15, 11, 03
 	RGB 00, 00, 00
+; lightscreen
+	RGB 31, 31, 31
+	RGB 19, 31, 31
+	RGB 00, 28, 15
+	RGB 00, 00, 00
+; reflect
+	RGB 31, 31, 31
+	RGB 31, 23, 30
+	RGB 06, 16, 31
+	RGB 00, 00, 00
+; attack
+	RGB 31, 31, 31
+	RGB 31, 19, 08
+	RGB 29, 09, 10
+	RGB 21, 00, 07
+; defense
+	RGB 31, 31, 31
+	RGB 20, 28, 04
+	RGB 03, 22, 04
+	RGB 00, 16, 00
+; sp_attack
+	RGB 31, 31, 31
+	RGB 31, 25, 28
+	RGB 31, 16, 23
+	RGB 27, 00, 22
+; sp_defense
+	RGB 31, 31, 31
+	RGB 31, 29, 00
+	RGB 23, 22, 00
+	RGB 16, 16, 00
+; speed
+	RGB 31, 31, 31
+	RGB 19, 26, 28
+	RGB 00, 19, 29
+	RGB 09, 13, 30
+; accuracy
+	RGB 31, 31, 31
+	RGB 25, 20, 30
+	RGB 18, 10, 26
+	RGB 14, 06, 23
+; evasion
+	RGB 31, 31, 31
+	RGB 13, 29, 23
+	RGB 03, 23, 16
+	RGB 00, 18, 12
 else
 rept NUM_CUSTOM_BATTLE_PALETTES - 6
 	MONOCHROME_RGB_FOUR

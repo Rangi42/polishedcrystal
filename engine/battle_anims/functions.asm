@@ -94,7 +94,6 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RockSmash
 	dw BattleAnimFunction_Cotton
 	dw BattleAnimFunction_PauseThenRush
-	dw BattleAnimFunction_StraightDescent
 	dw BattleAnimFunction_52
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_54
@@ -102,6 +101,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_PokeBall_BG
 	dw BattleAnimFunction_RadialMoveOut
 	dw BattleAnimFunction_RadialMoveOut_Slow
+	dw BattleAnimFunction_RadialMoveOut_Stats
 	dw BattleAnimFunction_PowerUp
 	assert_table_length NUM_BATTLEANIMFUNCS
 
@@ -2289,24 +2289,6 @@ BattleAnimFunction_MoveUp:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_StraightDescent:
-; Reverse 1E
-	ld hl, BATTLEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld a, [hl]
-	cp $28
-	jmp nc, FarDeinitBattleAnimation
-
-	ld hl, BATTLEANIMSTRUCT_PARAM
-	add hl, bc
-	ld d, [hl]
-	ld hl, BATTLEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld a, [hl]
-	add d
-	ld [hl], a
-	ret
-
 BattleAnimFunction_PowerGem:
 	call BattleAnim_AnonJumptable
 .anon_dw
@@ -4188,63 +4170,58 @@ BattleAnimFunction_PauseThenRush:
 BattleAnimFunction_RadialMoveOut:
 	call BattleAnim_AnonJumptable
 .anon_dw
-	dw .initialize
+	dw .init
 	dw .step
 
-.initialize
-	ld hl, BATTLEANIMSTRUCT_VAR2
-	add hl, bc
-	xor a
-	ld [hld], a
-	ld [hl], a ; initial position = 0
-	call BattleAnim_IncAnonJumptableIndex
+.init
+	call BattleAnimFunc_RadialInit
 .step
-	ld hl, BATTLEANIMSTRUCT_VAR1
-	add hl, bc
-	push hl
-	ld a, [hli]
-	ld e, [hl]
-	ld d, a
-	ld hl, 6.0 ; speed
-	add hl, de
-	ld a, h
-	ld e, l
-	pop hl
-	ld [hli], a
-	ld [hl], e
-	cp 80 ; final position
-	jr FinishRadialMoveOut
+	lb de, 12, 80
+	jr BattleAnimFunc_RadialStep
 
 BattleAnimFunction_RadialMoveOut_Slow:
 	call BattleAnim_AnonJumptable
 .anon_dw
-	dw .initialize
+	dw .init
 	dw .step
 
-.initialize
-	ld hl, BATTLEANIMSTRUCT_VAR2
-	add hl, bc
-	xor a
-	ld [hld], a
-	ld [hl], a ; initial position = 0
-	call BattleAnim_IncAnonJumptableIndex
+.init
+	call BattleAnimFunc_RadialInit
 .step
+	lb de, 3, 80
+	jr BattleAnimFunc_RadialStep
+
+BattleAnimFunction_RadialMoveOut_Stats:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw .init
+	dw .step
+
+.init
+	call BattleAnimFunc_RadialInit
+.step
+	lb de, 6, 80
+	; fallthrough
+BattleAnimFunc_RadialStep:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
+	push bc
 	push hl
 	ld a, [hli]
-	ld e, [hl]
-	ld d, a
-	ld hl, 1.5 ; speed
-	add hl, de
+	ld c, [hl]
+	ld b, a
+	ld h, d ; speed x 2
+	ld l, 0
+	srl h
+	rr l
+	add hl, bc
 	ld a, h
-	ld e, l
+	ld c, l
 	pop hl
 	ld [hli], a
-	ld [hl], e
-	cp 60 ; final position
-	; fallthrough
-FinishRadialMoveOut:
+	ld [hl], c
+	pop bc
+	cp e ; final position
 	jmp nc, FarDeinitBattleAnimation
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
@@ -4262,3 +4239,11 @@ FinishRadialMoveOut:
 	add hl, bc
 	ld [hl], a
 	ret
+
+BattleAnimFunc_RadialInit:
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	xor a
+	ld [hld], a
+	ld [hl], a ; initial position = 0
+	jmp BattleAnim_IncAnonJumptableIndex
