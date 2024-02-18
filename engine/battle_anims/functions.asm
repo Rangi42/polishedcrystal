@@ -4220,6 +4220,7 @@ BattleAnimFunc_RadialStep:
 	pop hl
 	ld [hli], a
 	ld [hl], c
+	ld d, b ; used for Sine/Cosine
 	pop bc
 	cp e ; final position
 	jmp nc, FarDeinitBattleAnimation
