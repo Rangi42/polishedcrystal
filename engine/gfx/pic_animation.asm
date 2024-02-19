@@ -1,6 +1,6 @@
 ; Pic animation arrangement.
 
-POKEANIM: MACRO
+MACRO POKEANIM
 for i, 1, _NARG + 1
 	db (PokeAnim_\<i>_ - PokeAnim_SetupCommands) / 2
 endr
@@ -126,7 +126,7 @@ SetUpPokeAnim:
 	ret
 
 PokeAnim_SetupCommands:
-setup_command: MACRO
+MACRO setup_command
 \1_: dw \1
 ENDM
 	setup_command PokeAnim_Finish
@@ -605,7 +605,7 @@ PokeAnim_ConvertAndApplyBitmask:
 	add 13
 	ret
 
-poke_anim_box: MACRO
+MACRO poke_anim_box
 for y, 7, 7 * (\1 + 1), 7
 for x, 7 - \1, 7
 	db x + y

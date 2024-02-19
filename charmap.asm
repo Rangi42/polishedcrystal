@@ -300,7 +300,7 @@ NGRAMS_END EQU $52
 	setcharmap default
 
 
-rawchar: MACRO
+MACRO rawchar
 	setcharmap no_ngrams
 	db \#
 	setcharmap default

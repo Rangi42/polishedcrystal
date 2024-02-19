@@ -3,7 +3,7 @@ INCLUDE "constants.asm"
 
 SECTION "Tileset Headers", ROMX
 
-tileset: MACRO
+MACRO tileset
 	dba \1GFX0, \1GFX1, \1GFX2
 	dba \1Meta, \1Coll, \1Attr
 	dw \1Anim

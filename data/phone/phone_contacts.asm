@@ -1,4 +1,4 @@
-phone: MACRO
+MACRO phone
 	db  \1, \2 ; trainer
 	map_id \3 ; map
 	db  \4

@@ -19,21 +19,21 @@ INCBIN "gfx/music_player/note_lines.2bpp.lz"
 
 SECTION "Music Player", ROMX
 
-jrbutton: MACRO
+MACRO jrbutton
 ; assumes hl == hJoyPressed
 	ld a, [hl]
 	and \1
 	jr nz, \2
 ENDM
 
-jpbutton: MACRO
+MACRO jpbutton
 ; assumes hl == hJoyPressed
 	ld a, [hl]
 	and \1
 	jmp nz, \2
 ENDM
 
-jrheldbutton: MACRO
+MACRO jrheldbutton
 ; assumes hl == hJoyDown
 	ld a, [wTextDelayFrames]
 	and a
@@ -47,7 +47,7 @@ jrheldbutton: MACRO
 .no\@:
 ENDM
 
-jpheldbutton: MACRO
+MACRO jpheldbutton
 ; assumes hl == hJoyDown
 	ld a, [wTextDelayFrames]
 	and a

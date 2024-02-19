@@ -1,4 +1,4 @@
-RGB: MACRO
+MACRO RGB
 	rept _NARG / 3
 		if DEF(NOIR) && !DEF(LITERAL_NOIR_RGB_COLORS)
 			def x = (299 * \1 + 587 * \2 + 114 * \3) / 1000

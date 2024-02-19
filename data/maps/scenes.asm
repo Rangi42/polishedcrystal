@@ -1,4 +1,4 @@
-scene_var: MACRO
+MACRO scene_var
 ; db group, map
 ; dw address
 	map_id \1

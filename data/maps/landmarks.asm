@@ -1,4 +1,4 @@
-landmark: MACRO
+MACRO landmark
 	db \1, \2
 	dw \3
 ENDM

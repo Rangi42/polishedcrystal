@@ -1,4 +1,4 @@
-item_attribute: MACRO
+MACRO item_attribute
 ; price, held effect, parameter, pocket, field menu, battle menu
 	dw \1
 	db \2, \3, \4
@@ -517,7 +517,7 @@ ItemAttributes:
 	item_attribute 50, 0, 0, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 	assert_table_length NUM_ITEMS
 
-key_item_attribute: MACRO
+MACRO key_item_attribute
 ; selectable, field menu, battle menu
 	db \1
 	dn \2, \3

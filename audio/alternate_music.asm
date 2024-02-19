@@ -1,4 +1,4 @@
-alternate_music: MACRO
+MACRO alternate_music
 ; pointer, bitmask, unset music id, set music id
 	dw \1
 	db \2, \3, \4

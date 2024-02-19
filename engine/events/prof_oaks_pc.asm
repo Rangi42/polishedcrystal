@@ -92,7 +92,7 @@ endr
 	ret
 
 OakRatings:
-oakrating: MACRO
+MACRO oakrating
 	db \1
 	dw \2, \3
 ENDM

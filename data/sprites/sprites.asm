@@ -1,4 +1,4 @@
-overworld_sprite: MACRO
+MACRO overworld_sprite
 ; pointer, bank, type, palette
 	dab \1
 	db \2, \3
