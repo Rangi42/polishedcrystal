@@ -1,8 +1,8 @@
-flag_array: MACRO
+MACRO flag_array
 	ds ((\1) + 7) / 8
 ENDM
 
-breed_struct: MACRO
+MACRO breed_struct
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
@@ -39,7 +39,7 @@ breed_struct: MACRO
 \1Level::          db
 ENDM
 
-party_struct: MACRO
+MACRO party_struct
 	breed_struct \1
 \1Status::         db
 \1Unused::         db
@@ -54,7 +54,7 @@ party_struct: MACRO
 \1End::
 ENDM
 
-battle_struct: MACRO
+MACRO battle_struct
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
@@ -91,7 +91,7 @@ battle_struct: MACRO
 \1StructEnd::
 ENDM
 
-savemon_struct: MACRO
+MACRO savemon_struct
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
@@ -132,21 +132,21 @@ savemon_struct: MACRO
 \1End::
 ENDM
 
-pokedb: MACRO
+MACRO pokedb
 \1Mons::
 \1Mon1::        savemon_struct \1Mon1
 \1Mon2::        ds SAVEMON_STRUCT_LENGTH * (MONDB_ENTRIES - 1)
 \1End::
 ENDM
 
-newbox: MACRO
+MACRO newbox
 \1Entries:: ds MONS_PER_BOX
 \1Banks::   flag_array MONS_PER_BOX
 \1Name::    ds BOX_NAME_LENGTH
 \1Theme::   db
 ENDM
 
-map_connection_struct: MACRO
+MACRO map_connection_struct
 \1ConnectedMapGroup::       db
 \1ConnectedMapNumber::      db
 \1ConnectionStripPointer::  dw
@@ -158,7 +158,7 @@ map_connection_struct: MACRO
 \1ConnectionWindow::        dw
 ENDM
 
-channel_struct: MACRO
+MACRO channel_struct
 \1MusicID::           dw
 \1MusicBank::         db
 \1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
@@ -201,7 +201,7 @@ channel_struct: MACRO
 \1Field0x30::         dw
 ENDM
 
-mailmsg: MACRO
+MACRO mailmsg
 \1Message::     ds MAIL_MSG_LENGTH
 \1MessageEnd::  db
 \1Author::      ds PLAYER_NAME_LENGTH
@@ -212,7 +212,7 @@ mailmsg: MACRO
 \1End::
 ENDM
 
-hof_mon: MACRO
+MACRO hof_mon
 \1Species::     db
 \1ID::          dw
 \1Personality:: dw
@@ -221,7 +221,7 @@ hof_mon: MACRO
 \1End::
 ENDM
 
-roam_struct: MACRO
+MACRO roam_struct
 \1Species::     db
 \1Level::       db
 \1MapGroup::    db
@@ -234,13 +234,13 @@ roam_struct: MACRO
 \1End::
 ENDM
 
-bugcontestwinner: MACRO
+MACRO bugcontestwinner
 \1PersonID:: db
 \1Mon::      db
 \1Score::    dw
 ENDM
 
-hall_of_fame: MACRO
+MACRO hall_of_fame
 \1WinCount:: db
 \1Mon1:: hof_mon \1Mon1
 \1Mon2:: hof_mon \1Mon2
@@ -251,7 +251,7 @@ hall_of_fame: MACRO
 \1End:: db
 ENDM
 
-link_battle_record: MACRO
+MACRO link_battle_record
 \1Name::   ds NAME_LENGTH - 1
 \1ID::     dw
 \1Wins::   dw
@@ -259,7 +259,7 @@ link_battle_record: MACRO
 \1Draws::  dw
 ENDM
 
-trademon: MACRO
+MACRO trademon
 \1Species::     db
 \1SpeciesName:: ds MON_NAME_LENGTH
 \1Nickname::    ds MON_NAME_LENGTH
@@ -282,7 +282,7 @@ trademon: MACRO
 \1End::
 ENDM
 
-move_struct: MACRO
+MACRO move_struct
 \1Animation::    db
 \1Effect::       db
 \1Power::        db
@@ -294,7 +294,7 @@ move_struct: MACRO
 \1End::
 ENDM
 
-slot_reel: MACRO
+MACRO slot_reel
 \1ReelAction::   db
 \1TilemapAddr::  dw
 \1Position::     db
@@ -311,7 +311,7 @@ slot_reel: MACRO
 \1Slot0f::       db
 ENDM
 
-object_struct: MACRO
+MACRO object_struct
 \1Sprite::            db
 \1MapObjectIndex::    db
 \1SpriteTile::        db
@@ -347,7 +347,7 @@ object_struct: MACRO
 \1StructEnd::
 ENDM
 
-map_object: MACRO
+MACRO map_object
 \1ObjectStructID::  db
 \1ObjectSprite::    db
 \1ObjectYCoord::    db
@@ -362,7 +362,7 @@ map_object: MACRO
 \1ObjectEventFlag:: dw
 ENDM
 
-sprite_oam_struct: MACRO
+MACRO sprite_oam_struct
 \1YCoord::     db
 \1XCoord::     db
 \1TileID::     db
@@ -375,7 +375,7 @@ sprite_oam_struct: MACRO
 ; bit 2-0: pal # (cgb only)
 ENDM
 
-sprite_anim_struct: MACRO
+MACRO sprite_anim_struct
 \1Index::          db
 \1FramesetID::     db
 \1AnimSeqID::      db
@@ -394,7 +394,7 @@ sprite_anim_struct: MACRO
 \1Var4::           ds 1
 ENDM
 
-battle_anim_struct: MACRO
+MACRO battle_anim_struct
 \1_Index::              db
 \1_Anim01::             db
 \1_Anim02::             db
@@ -421,7 +421,7 @@ battle_anim_struct: MACRO
 \1_Anim17::             db
 ENDM
 
-battle_bg_effect: MACRO
+MACRO battle_bg_effect
 \1_Function:: db
 \1_01::       db
 \1_02::       db

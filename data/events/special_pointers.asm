@@ -1,4 +1,4 @@
-add_special: MACRO
+MACRO add_special
 \1Special::
 	dba \1
 ENDM

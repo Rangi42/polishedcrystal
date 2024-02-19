@@ -1,10 +1,10 @@
-ev_yield: MACRO
+MACRO ev_yield
 ; hp, atk, def, spd, sat, sdf
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
 	db (\5 << 6) | (\6 << 4)
 ENDM
 
-abilities_for: MACRO
+MACRO abilities_for
 ; mon, ability1, ability2, hiddenability
 	db \2, \3, \4
 	def ABIL_\1_\4 = HIDDEN_ABILITY
@@ -12,7 +12,7 @@ abilities_for: MACRO
 	def ABIL_\1_\2 = ABILITY_1
 ENDM
 
-tmhm: MACRO
+MACRO tmhm
 	; initialize bytes to 0
 	for n, (NUM_TM_HM_TUTOR + 7) / 8
 		def _tm{d:n} = 0

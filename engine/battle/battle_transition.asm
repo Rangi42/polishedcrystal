@@ -283,7 +283,7 @@ StartTrainerBattle_SetUpForSpinOutro:
 	ld [wBattleTransitionCounter], a
 	ret
 
-spintable_entry: MACRO
+MACRO spintable_entry
 	db \1
 	dw .wedge\2
 	dw \4 * SCREEN_WIDTH + \3 + wAttrMap
@@ -850,7 +850,7 @@ WipeLYOverrides:
 	jr nz, .loop
 	ret
 
-zoombox: MACRO
+MACRO zoombox
 ; width, height, start y, start x
 	db \1, \2
 	dw \4 * SCREEN_WIDTH + \3 + wAttrMap

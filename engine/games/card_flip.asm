@@ -1257,7 +1257,7 @@ CardFlip_UpdateCursorOAM:
 	jmp CardFlip_CopyOAM
 
 .OAMData:
-cardflip_cursor: MACRO
+MACRO cardflip_cursor
 if _NARG >= 5
 	dbpixel \1, \2, \3, \4
 	dw \5

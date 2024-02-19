@@ -1,10 +1,10 @@
 ; Syntactic sugar MACROs
 
-lb: MACRO ; r, hi, lo
+MACRO lb ; r, hi, lo
 	ld \1, LOW(\2) << 8 | LOW(\3)
 ENDM
 
-ln: MACRO ; r, hi, lo[, hi, lo]
+MACRO ln ; r, hi, lo[, hi, lo]
 	if _NARG == 3
 		ld \1, ((\2) & $f) << 4 | ((\3) & $f)
 	else
@@ -12,7 +12,7 @@ ln: MACRO ; r, hi, lo[, hi, lo]
 	endc
 ENDM
 
-maskbits: MACRO
+MACRO maskbits
 ; masks just enough bits to cover the first argument
 ; the second argument is an optional shift amount
 ; e.g. "maskbits 26" becomes "and %00011111" (since 26 - 1 = %00011001)
@@ -36,7 +36,7 @@ maskbits: MACRO
 	endc
 ENDM
 
-ldpixel: MACRO
+MACRO ldpixel
 	if _NARG >= 5
 		lb \1, \2 * 8 + \4, \3 * 8 + \5
 	else
@@ -54,22 +54,22 @@ eventflagset   EQUS "flagset wEventFlags,"
 eventflagreset EQUS "flagreset wEventFlags,"
 eventflagcheck EQUS "flagcheck wEventFlags,"
 
-flagset: MACRO
+MACRO flagset
 	ld hl, \1 + (\2 >> 3)
 	set (\2 & $7), [hl]
 ENDM
 
-flagreset: MACRO
+MACRO flagreset
 	ld hl, \1 + (\2 >> 3)
 	res (\2 & $7), [hl]
 ENDM
 
-flagcheck: MACRO
+MACRO flagcheck
 	ld hl, \1 + (\2 >> 3)
 	bit (\2 & $7), [hl]
 ENDM
 
-changebridgeblock: MACRO
+MACRO changebridgeblock
 	; lb de, \1 + 4, \2 + 4
 	; call GetBlockLocation
 	ld hl, wOverworldMapBlocks + (\2 / 2 + 3) * (\4_WIDTH + 6) + \1 / 2 + 3

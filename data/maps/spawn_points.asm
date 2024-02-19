@@ -1,4 +1,4 @@
-spawn: MACRO
+MACRO spawn
 ; map, y, x
 	map_id \1
 	db \2, \3

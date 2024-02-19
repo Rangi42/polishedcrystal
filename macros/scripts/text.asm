@@ -9,44 +9,44 @@ done   EQUS "db \"<DONE>\""   ; End a text box.
 prompt EQUS "db \"<PROMPT>\"" ; Prompt the player to end a text box (initiating some other event).
 page   EQUS "db \"@\","       ; Start a new Pokedex page.
 
-text_ram: MACRO
+MACRO text_ram
 	db "<RAM>"
 	dw \1
 ENDM
 
-text_promptbutton: MACRO
+MACRO text_promptbutton
 	db "<WAIT>"
 ENDM
 
-text_asm: MACRO
+MACRO text_asm
 	db "<ASM>"
 ENDM
 
-text_decimal: MACRO
+MACRO text_decimal
 	db "<NUM>"
 	dw \1 ; address
 	dn \2, \3 ; bytes, digits
 ENDM
 
-text_pause: MACRO
+MACRO text_pause
 	db "<PAUSE>"
 ENDM
 
-text_sound: MACRO
+MACRO text_sound
 	db "<SOUND>"
 	db \1 ; sfx
 ENDM
 
-text_today: MACRO
+MACRO text_today
 	db "<DAY>"
 ENDM
 
-text_far: MACRO
+MACRO text_far
 	db "<FAR>"
 	dw \1
 	db BANK(\1)
 ENDM
 
-text_end: MACRO
+MACRO text_end
 	db "@"
 ENDM
