@@ -1344,8 +1344,8 @@ BattleAnimFrameData:
 	oamdelete
 
 .Frameset_FocusBlast:
-	oamframe BATTLEANIMOAMSET_54,  1
-	oamframe BATTLEANIMOAMSET_53,  1
+	oamframe BATTLEANIMOAMSET_00,  1
+	oamframe BATTLEANIMOAMSET_07,  1
 	oamrestart
 
 .Frameset_Vortex:
