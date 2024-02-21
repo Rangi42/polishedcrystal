@@ -27,7 +27,9 @@ BattleCommand_metronome:
 	call CheckUserMove
 	jr z, .GetMove
 
+if DEF(DEBUG)
 	ld b, FOCUS_BLAST
+endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld [hl], b
