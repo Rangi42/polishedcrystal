@@ -66,7 +66,7 @@ endc
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,    100, 35,  30, PHYSICAL
 	move U_TURN,       EFFECT_SWITCH_HIT,         70, BUG,       100, 20,   0, PHYSICAL
 	move PIN_MISSILE,  EFFECT_MULTI_HIT,          25, BUG,        95, 20,   0, PHYSICAL
-	move LEER,         EFFECT_DEFENSE_DOWN,        0, NORMAL,    100, 30,   0, STATUS
+	move LEER,         EFFECT_METRONOME,        0, NORMAL,    100, 30,   0, STATUS
 	move BITE,         EFFECT_FLINCH_HIT,         60, DARK,      100, 25,  30, PHYSICAL
 	move GROWL,        EFFECT_ATTACK_DOWN,         0, NORMAL,    100, 40,   0, STATUS
 	move ROAR,         EFFECT_ROAR,                0, NORMAL,     -1, 20,   0, STATUS

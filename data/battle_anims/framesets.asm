@@ -136,7 +136,7 @@ BattleAnimFrameData:
 	dw .Frameset_85 ; 85
 	dw .Frameset_86 ; 86
 	dw .Frameset_87 ; 87
-	dw .Frameset_88 ; 88
+	dw .Frameset_Agility ; 88
 	dw .Frameset_89 ; 89
 	dw .Frameset_8a ; 8a
 	dw .Frameset_8b ; 8b
@@ -194,14 +194,16 @@ BattleAnimFrameData:
 	dw .Frameset_BulletPunch ; bf
 	dw .Frameset_LongPunch ; c0
 	dw .Frameset_FlashCannon ; c1
-	dw .Frameset_FocusBlast ; c1
-	dw .Frameset_Vortex ; c2
-	dw .Frameset_RedStar ; c3
-	dw .Frameset_Hail ; c4
-	dw .Frameset_UTurn_Fall ; c5
-	dw .Frameset_Berry ; c6
-	dw .Frameset_StatUp ; c7
-	dw .Frameset_StatDown ; c8
+	dw .Frameset_FocusBlast ; c2
+	dw .Frameset_Vortex ; c3
+	dw .Frameset_RedStar ; c4
+	dw .Frameset_Hail ; c5
+	dw .Frameset_UTurn_Fall ; c6
+	dw .Frameset_SwirlShort ; c7
+	dw .Frameset_BigGlowClear ; c8
+	dw .Frameset_Berry ; c9
+	dw .Frameset_StatUp ; ca
+	dw .Frameset_StatDown ; cb
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1043,7 +1045,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_1B, $08
 	db -1
 
-.Frameset_88:
+.Frameset_Agility:
 	db BATTLEANIMOAMSET_AC, $08
 	db -1
 
@@ -1347,9 +1349,10 @@ BattleAnimFrameData:
 	oamrestart
 
 .Frameset_Vortex:
-	oamframe BATTLEANIMOAMSET_VORTEX1,  2
-	oamframe BATTLEANIMOAMSET_VORTEX2,  2
-	oamframe BATTLEANIMOAMSET_VORTEX3,  2
+	oamframe BATTLEANIMOAMSET_D8,  1
+	oamframe BATTLEANIMOAMSET_D9,  1
+	oamframe BATTLEANIMOAMSET_DA,  1
+	oamframe BATTLEANIMOAMSET_DB,  1
 	oamrestart
 
 .Frameset_RedStar:
@@ -1363,6 +1366,22 @@ BattleAnimFrameData:
 .Frameset_UTurn_Fall:
 	oamframe BATTLEANIMOAMSET_U_TURN_FALL, 32
 	oamend
+
+.Frameset_SwirlShort:
+	oamframe BATTLEANIMOAMSET_CD,  1
+	oamframe BATTLEANIMOAMSET_BA,  1
+	oamframe BATTLEANIMOAMSET_CE,  1
+	oamframe BATTLEANIMOAMSET_94,  1
+	oamframe BATTLEANIMOAMSET_CD,  1, OAM_X_FLIP, OAM_Y_FLIP
+	oamframe BATTLEANIMOAMSET_BA,  1, OAM_X_FLIP, OAM_Y_FLIP
+	oamframe BATTLEANIMOAMSET_CE,  1, OAM_X_FLIP, OAM_Y_FLIP
+	oamframe BATTLEANIMOAMSET_94,  1, OAM_X_FLIP, OAM_Y_FLIP
+	oamdelete
+
+.Frameset_BigGlowClear:
+	oamframe BATTLEANIMOAMSET_DD, 1
+	oamframe BATTLEANIMOAMSET_DC,  1
+	oamrestart
 
 .Frameset_Berry:
 	oamframe BATTLEANIMOAMSET_1B, 48

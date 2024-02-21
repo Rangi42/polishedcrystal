@@ -31,6 +31,7 @@ AnimObjGFX:
 	battleanimgfx  9, AnimObjSpeedGFX
 	battleanimgfx  9, AnimObjChargeGFX
 	battleanimgfx 19, AnimObjWindGFX
+	battleanimgfx  4, AnimObjWindBGGFX
 	battleanimgfx 10, AnimObjWhipGFX
 	battleanimgfx 12, AnimObjEggGFX
 	battleanimgfx 18, AnimObjRopeGFX
@@ -53,12 +54,15 @@ AnimObjGFX:
 	battleanimgfx 24, AnimObjAeroblastGFX
 	battleanimgfx 16, AnimObjMoonGFX
 	battleanimgfx  9, AnimObjBugBuzzGFX
-	battleanimgfx 56, AnimObjLeafStormGFX
+	battleanimgfx 32, AnimObjVortexGFX
 	battleanimgfx  5, AnimObjHeartsGFX
 	battleanimgfx  5, AnimObjStarsGFX
 	battleanimgfx  8, AnimObjMiniGFX
 	battleanimgfx 48, AnimObjUTurnGFX
 	battleanimgfx 10, AnimObjBeamLightGFX
+	battleanimgfx 18, AnimObjFocusBlastGFX
+	battleanimgfx 13, AnimObjBigGlowClearGFX
+	battleanimgfx 24, AnimObjSwirlGFX
 	battleanimgfx 12, AnimObjBerryGFX
 	battleanimgfx  2, AnimObjStatsGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD

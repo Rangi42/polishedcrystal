@@ -568,32 +568,36 @@ BattleAnim_HiJumpKick:
 	anim_ret
 
 BattleAnim_FocusBlast:
-	anim_2gfx ANIM_GFX_LEAF_STORM, ANIM_GFX_WIND
-	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_GLOW_YELLOW
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_RED
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_GLOW_YELLOW
+	anim_3gfx ANIM_GFX_VORTEX, ANIM_GFX_WIND_BG, ANIM_GFX_SWIRL
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
-	anim_obj ANIM_OBJ_AGILITY, 8, 88, $8
+	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
 	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 8, 32, $6
+	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
 	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
-	anim_sound 6, 2, SFX_OUTRAGE
-	anim_obj ANIM_OBJ_VORTEX_YELLOW, 48, 96, $30
-	anim_wait 63
-	anim_incobj 5
+	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_sound 0, 1, SFX_OUTRAGE
+.loop
+	anim_obj ANIM_OBJ_SWIRL_SHORT, 44, 96, $0
+	anim_wait 8
+	anim_loop 4, .loop
+	anim_obj ANIM_OBJ_VORTEX, 44, 96, $0
+	anim_wait 64
+	anim_clearobjs
 	anim_wait 1
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_3gfx ANIM_GFX_CHARGE, ANIM_GFX_WIND, ANIM_GFX_EXPLOSION
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_FOCUS_BLAST, 48, 96, $12
-	anim_wait 42
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_EXPLOSION2, 128, 48, $0
-	anim_wait 5
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_EXPLOSION2, 144, 46, $0
-	anim_wait 5
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_EXPLOSION2, 136, 64, $0
-	anim_wait 16
+	anim_2gfx ANIM_GFX_BIG_GLOW_CLEAR, ANIM_GFX_FOCUS_BLAST
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+.loop2
+	anim_obj ANIM_OBJ_FOCUS_BLAST, 64, 88, $12
+	anim_wait 32
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $10
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
+	anim_sound 0, 1, SFX_EGG_BOMB
+	anim_obj ANIM_OBJ_BIG_GLOW_CLEAR, 136, 48, $0
+	anim_wait 40
 	anim_ret
 
 BattleAnim_HyperFang:
