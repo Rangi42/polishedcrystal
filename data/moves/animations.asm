@@ -2125,7 +2125,7 @@ BattleAnim_DoubleEdge:
 	anim_ret
 
 BattleAnim_CloseCombat:
-	anim_2gfx ANIM_GFX_WIND, ANIM_GFX_HIT
+	anim_2gfx ANIM_GFX_WIND_BG, ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_RAZOR_WIND
 	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
 	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
@@ -3871,7 +3871,7 @@ BattleAnim_FlashCannon:
 
 ; Aura Sphere animation from Pokémon Prism
 BattleAnim_AuraSphere:
-	anim_2gfx ANIM_GFX_BEAM, ANIM_GFX_WIND
+	anim_2gfx ANIM_GFX_BEAM, ANIM_GFX_WIND_BG
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
 	anim_obj ANIM_OBJ_AGILITY, 1, 0, 3, 0, $10
@@ -5145,7 +5145,7 @@ BattleAnim_ShadowBall:
 	anim_ret
 
 BattleAnim_FutureSight:
-	anim_1gfx ANIM_GFX_WIND
+	anim_1gfx ANIM_GFX_WIND_BG
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
 	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
