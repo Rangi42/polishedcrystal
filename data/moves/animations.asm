@@ -3054,7 +3054,7 @@ BattleAnim_Rage:
 	anim_ret
 
 BattleAnim_Agility:
-	anim_1gfx ANIM_GFX_WIND
+	anim_1gfx ANIM_GFX_WIND_BG
 	anim_obp0 $fc
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
