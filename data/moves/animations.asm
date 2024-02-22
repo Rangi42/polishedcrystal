@@ -277,17 +277,13 @@ BattleAnim_ThrowPokeBall:
 	anim_ret
 
 BattleAnim_SendOutMon:
-	anim_jumpif $0, .Normal
 	anim_jumpif $1, .Shiny
 	anim_1gfx ANIM_GFX_SMOKE
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_BETA_SEND_OUT_MON2, $0, $1, $0
 	anim_sound 0, 0, SFX_BALL_POOF
-	anim_obj ANIM_OBJ_BETA_BALL_POOF,   6, 0,  12, 0, $0
-	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
-	anim_wait 128
+	anim_obj ANIM_OBJ_BALL_POOF,   5, 4,  12, 0, $0
 	anim_wait 4
-	anim_call BattleAnim_ShowMon_0
+	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
+	anim_wait 32
 	anim_ret
 
 .Shiny:
@@ -317,15 +313,6 @@ BattleAnim_SendOutMon:
 	anim_wait 4
 	anim_sound 0, 0, SFX_SHINE
 	anim_obj ANIM_OBJ_SHINY,   6, 0,  12, 0, $38
-	anim_wait 32
-	anim_ret
-
-.Normal:
-	anim_1gfx ANIM_GFX_SMOKE
-	anim_sound 0, 0, SFX_BALL_POOF
-	anim_obj ANIM_OBJ_BALL_POOF,   5, 4,  12, 0, $0
-	anim_wait 4
-	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_wait 32
 	anim_ret
 
@@ -1338,18 +1325,10 @@ BattleAnim_Sing:
 
 BattleAnim_Poisonpowder:
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PURPLE
-	anim_call BattleAnim_SubPowder
-	anim_ret
-BattleAnim_Spore:
-	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_YELLOW
-	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $1, $0
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_call BattleAnim_SubPowder
-	anim_ret
+	anim_jump BattleAnim_SubPowder
 BattleAnim_StunSpore:
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_YELLOW
-	anim_call BattleAnim_SubPowder
-	anim_ret
+	anim_jump BattleAnim_SubPowder
 BattleAnim_SleepPowder:
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_GREEN
 BattleAnim_SubPowder:
@@ -1373,6 +1352,25 @@ BattleAnim_SubPowder:
 	anim_loop 2, .loop
 	anim_wait 96
 	anim_ret
+
+BattleAnim_Spore:
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_SPORE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGONBREATH
+	anim_3gfx ANIM_GFX_MUSHROOM, ANIM_GFX_POWDER, ANIM_GFX_SMOKE
+	anim_sound 0, 1, SFX_JUMP_OVER_LEDGE
+	anim_obj ANIM_OBJ_BALL_POOF_YFIX, 48, 88, $0
+	anim_wait 12
+	anim_obj ANIM_OBJ_MUSHROOM, 48, 88, $0
+	anim_wait 32
+	anim_sound 0, 1, SFX_SWEET_SCENT_2
+	anim_obj ANIM_OBJ_POWDER_SHOOT, 48, 88, $35
+	anim_obj ANIM_OBJ_POWDER_SHOOT, 48, 88, $2b
+	anim_obj ANIM_OBJ_POWDER_SHOOT, 48, 88, $39
+	anim_obj ANIM_OBJ_POWDER_SHOOT, 48, 88, $27
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_wait 16
+	anim_jump BattleAnim_SubPowder.loop
 
 BattleAnim_HyperBeam:
 	anim_1gfx ANIM_GFX_BEAM

@@ -359,12 +359,14 @@ BattleBGEffect_BattlerObj_1Row:
 	call BGEffect_CheckBattleTurn
 	jr nz, .player_turn
 	ld a, ANIM_OBJ_ENEMYFEET_1ROW
+	assert !HIGH(ANIM_OBJ_ENEMYFEET_1ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 16 * 8 + 4
 	jr .okay
 
 .player_turn
 	ld a, ANIM_OBJ_PLAYERHEAD_1ROW
+	assert !HIGH(ANIM_OBJ_PLAYERHEAD_1ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 6 * 8
 .okay
@@ -424,12 +426,14 @@ BattleBGEffect_BattlerObj_2Row:
 	call BGEffect_CheckBattleTurn
 	jr nz, .player_turn
 	ld a, ANIM_OBJ_ENEMYFEET_2ROW
+	assert !HIGH(ANIM_OBJ_ENEMYFEET_2ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 16 * 8 + 4
 	jr .okay
 
 .player_turn
 	ld a, ANIM_OBJ_PLAYERHEAD_2ROW
+	assert !HIGH(ANIM_OBJ_PLAYERHEAD_2ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 6 * 8
 .okay
@@ -467,6 +471,7 @@ BattleBGEffect_BattlerObj_2Row:
 	jmp EndBattleBGEffect
 
 _QueueBattleAnimation:
+	ld d, 0 ; playerhead+enemyfeet stuff is $0xx
 	farjp QueueBattleAnimation
 
 BattleBGEffect_RemoveMon:

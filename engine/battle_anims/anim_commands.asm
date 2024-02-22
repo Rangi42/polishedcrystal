@@ -293,7 +293,7 @@ BattleAnimCommands::
 	dw BattleAnimCmd_UpdateActorPic
 	dw BattleAnimCmd_SetBgPal
 	dw BattleAnimCmd_SetObjPal
-	dw DoNothing
+	dw BattleAnimCmd_HiObj
 	dw DoNothing
 	dw DoNothing
 	dw BattleAnimCmd_IfParamAnd
@@ -531,8 +531,15 @@ BattleAnimCmd_IfParamAnd:
 	ld [hl], d
 	ret
 
+BattleAnimCmd_HiObj:
+; index, x, y, param
+	ld d, 1
+	jr BattleAnimCmd_LowObj
 BattleAnimCmd_Obj:
 ; index, x, y, param
+	ld d, 0
+	; fallthrough
+BattleAnimCmd_LowObj:
 	call GetBattleAnimByte
 	ld [wBattleAnimTemp0], a
 	call GetBattleAnimByte

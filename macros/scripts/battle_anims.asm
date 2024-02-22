@@ -15,8 +15,12 @@ ENDM
 
 	const anim_obj_command ; d0
 MACRO anim_obj
+if HIGH(\1)
+	db anim_hiobj_command
+else
 	db anim_obj_command
-	db \1 ; object
+endc
+	db LOW(\1) ; object
 	if _NARG == 4
 		db \2 ; x
 		db \3 ; y
@@ -184,7 +188,8 @@ MACRO anim_setobjpal
 	db \2 ; battle pal
 ENDM
 
-	const_skip ; eb
+	; eb is reserved for $1xx anim objects, don't use!
+	const anim_hiobj_command ; eb
 
 	const_skip ; ec
 

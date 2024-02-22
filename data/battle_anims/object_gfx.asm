@@ -64,6 +64,7 @@ AnimObjGFX:
 	battleanimgfx 18, AnimObjFocusBlastGFX
 	battleanimgfx 13, AnimObjBigGlowClearGFX
 	battleanimgfx 24, AnimObjSwirlGFX
+	battleanimgfx 18, AnimObjMushroomGFX
 	battleanimgfx 12, AnimObjBerryGFX
 	battleanimgfx  2, AnimObjStatsGFX
 	battleanimgfx 10, AnimObjGlowGFX

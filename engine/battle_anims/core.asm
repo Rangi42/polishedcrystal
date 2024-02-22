@@ -26,9 +26,10 @@ QueueBattleAnimation:
 	; fallthrough
 
 InitBattleAnimation:
-	ld a, [wBattleAnimTemp0]
+	ld hl, wBattleAnimTemp0
+	ld a, [hli]
 	ld e, a
-	ld d, 0
+	; d was set to 0 or 1 previously
 	ld hl, BattleAnimObjects
 rept 6
 	add hl, de

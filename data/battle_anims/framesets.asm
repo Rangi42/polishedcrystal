@@ -8,7 +8,7 @@ BattleAnimFrameData:
 	dw .Frameset_05 ; 05
 	dw .Frameset_06 ; 06
 	dw .Frameset_07 ; 07
-	dw .Frameset_08 ; 08
+	dw .Frameset_BallPoof ; 08
 	dw .Frameset_09 ; 09
 	dw .Frameset_0a ; 0a
 	dw .Frameset_0b ; 0b
@@ -43,7 +43,7 @@ BattleAnimFrameData:
 	dw .Frameset_28 ; 28
 	dw .Frameset_29 ; 29
 	dw .Frameset_2a ; 2a
-	dw .Frameset_2b ; 2b
+	dw .Frameset_Powder ; 2b
 	dw .Frameset_2c ; 2c
 	dw .Frameset_2d ; 2d
 	dw .Frameset_2e ; 2e
@@ -210,6 +210,7 @@ BattleAnimFrameData:
 	dw .Frameset_TinyGlow                ; BATTLEANIMFRAMESET_TINY_GLOW
 	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
+	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -323,7 +324,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_52, $42
 	db -4
 
-.Frameset_08:
+.Frameset_BallPoof:
 	db BATTLEANIMOAMSET_00, $03
 	db BATTLEANIMOAMSET_07, $03
 	db BATTLEANIMOAMSET_08, $03
@@ -542,7 +543,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_2A, $01
 	db -4
 
-.Frameset_2b:
+.Frameset_Powder:
 	db BATTLEANIMOAMSET_14, $01
 	db BATTLEANIMOAMSET_15, $01
 	db -2
@@ -1446,3 +1447,11 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_21,  2
 	oamframe BATTLEANIMOAMSET_1B,  2
 	oamdelete
+
+.Frameset_BouncingMushroom:
+	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 16
+	oamframe BATTLEANIMOAMSET_MUSHROOM_3, 16
+	oamframe BATTLEANIMOAMSET_MUSHROOM_2,  4
+	oamframe BATTLEANIMOAMSET_MUSHROOM_1,  2
+	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 32
+	oamend

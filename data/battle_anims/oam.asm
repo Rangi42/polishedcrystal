@@ -240,6 +240,9 @@ BattleAnimOAMData:
 	battleanimoam $0c,  9, .OAMData_SwirlShort    ; BATTLEANIMOAMSET_SWIRL_SHORT_2
 	battleanimoam $06,  9, .OAMData_SwirlShort    ; BATTLEANIMOAMSET_SWIRL_SHORT_3
 	battleanimoam $12,  9, .OAMData_SwirlShort    ; BATTLEANIMOAMSET_SWIRL_SHORT_4
+	battleanimoam $00,  9, .OAMData_Mushroom1     ; BATTLEANIMOAMSET_MUSHROOM_1
+	battleanimoam $06,  9, .OAMData_Mushroom1     ; BATTLEANIMOAMSET_MUSHROOM_2
+	battleanimoam $0c,  9, .OAMData_Mushroom1     ; BATTLEANIMOAMSET_MUSHROOM_3
 	battleanimoam $00, 16, .OAMData_Stats         ; BATTLEANIMOAMSET_STAT
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
@@ -1180,6 +1183,28 @@ BattleAnimOAMData:
 	dsprite  -1, 4,  -2, 4, $03, $0
 	dsprite   0, 4,  -2, 4, $06, $0
 
+.OAMData_SwirlShort:
+	dbsprite  -2,  -2, 4, 4, $00, $0
+	dbsprite  -1,  -2, 4, 4, $01, $0
+	dbsprite   0,  -2, 4, 4, $02, $0
+	dbsprite  -2,  -1, 4, 4, $03, $0
+	dbsprite  -1,  -1, 4, 4, $04, $0
+	dbsprite   0,  -1, 4, 4, $05, $0
+	dbsprite  -2,   0, 4, 4, $02, X_FLIP | Y_FLIP
+	dbsprite  -1,   0, 4, 4, $01, X_FLIP | Y_FLIP
+	dbsprite   0,   0, 4, 4, $00, X_FLIP | Y_FLIP
+
+.OAMData_Mushroom1:
+	dbsprite  -2,  -2, 4, 4, $00, $0
+	dbsprite  -1,  -2, 4, 4, $01, $0
+	dbsprite   0,  -2, 4, 4, $00, X_FLIP
+	dbsprite  -2,  -1, 4, 4, $02, $0
+	dbsprite  -1,  -1, 4, 4, $03, $0
+	dbsprite   0,  -1, 4, 4, $02, X_FLIP
+	dbsprite  -2,   0, 4, 4, $04, $0
+	dbsprite  -1,   0, 4, 4, $05, $0
+	dbsprite   0,   0, 4, 4, $04, X_FLIP
+
 .OAMData_Stats:
 	dsprite  -1, 0,  -3, 0, $00, $0
 	dsprite  -1, 0,  -2, 0, $00, $0
@@ -1197,14 +1222,3 @@ BattleAnimOAMData:
 	dsprite   0, 0,   2, 0, $01, $0
 	dsprite   0, 0,   3, 0, $01, $0
 	dsprite   0, 0,   4, 0, $01, $0
-
-.OAMData_SwirlShort:
-	dbsprite  -2,  -2, 4, 4, $00, $0
-	dbsprite  -1,  -2, 4, 4, $01, $0
-	dbsprite   0,  -2, 4, 4, $02, $0
-	dbsprite  -2,  -1, 4, 4, $03, $0
-	dbsprite  -1,  -1, 4, 4, $04, $0
-	dbsprite   0,  -1, 4, 4, $05, $0
-	dbsprite  -2,   0, 4, 4, $02, X_FLIP | Y_FLIP
-	dbsprite  -1,   0, 4, 4, $01, X_FLIP | Y_FLIP
-	dbsprite   0,   0, 4, 4, $00, X_FLIP | Y_FLIP

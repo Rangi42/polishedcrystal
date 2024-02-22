@@ -37,11 +37,21 @@ if !DEF(MONOCHROME)
 	RGB 31, 26, 09
 	RGB 27, 08, 22
 	RGB 03, 10, 30
+; dragonbreath
+	RGB 31, 31, 31
+	RGB 31, 26, 09
+	RGB 27, 08, 22
+	RGB 00, 00, 00
 ; aurora
 	RGB 31, 20, 24
 	RGB 31, 31, 07
 	RGB 13, 27, 31
 	RGB 28, 22, 31
+; spore
+	RGB 31, 12 ,10
+	RGB 05, 27, 06
+	RGB 31, 31, 08
+	RGB 00, 28, 22
 ; berry
 	RGB 31, 31, 31
 	RGB 27, 21, 10
