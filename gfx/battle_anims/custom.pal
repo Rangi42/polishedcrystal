@@ -72,6 +72,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 07
 	RGB 31, 24, 02
 	RGB 31, 16, 01
+; dragonpulse
+	RGB 31, 31, 31
+	RGB 28, 28, 28
+	RGB 19, 14, 28
+	RGB 07, 06, 22
 ; snow
 	RGB 31, 31, 31
 	RGB 27, 31, 31

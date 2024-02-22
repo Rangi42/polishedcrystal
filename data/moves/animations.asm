@@ -1393,30 +1393,23 @@ BattleAnim_AuroraBeam:
 	anim_wait 64
 	anim_ret
 
-; Dragon Pulse animation from Pokémon Prism
 BattleAnim_DragonPulse:
-	anim_1gfx ANIM_GFX_EGG
-;	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
-	anim_sound 0, 0, SFX_OUTRAGE
-	anim_wait 56
-	anim_incbgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING
-;	anim_call BattleAnim_ShowMon_0
-	anim_bgp $1b
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_DRAGON_PULSE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_DRAGON_PULSE
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_2gfx ANIM_GFX_GLOW, ANIM_GFX_CHARGE,
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $1, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_obj ANIM_OBJ_SMALL_GLOW, 48, 96, $0
 .loop
 	anim_sound 0, 0, SFX_AEROBLAST
-	anim_obj ANIM_OBJ_SHADOW_BALL,  7, 6, 11, 4, $2
-	anim_wait 3
-	anim_obj ANIM_OBJ_SHADOW_BALL,  8, 2, 11, 4, $2
-	anim_wait 3
-	anim_loop 8, .loop
-	anim_call BattleAnim_UserObj_1Row
-	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
-	anim_wait 32
-	anim_call BattleAnim_ShowMon_1
-	anim_wait 1
-	anim_bgp $e4
+	anim_obj ANIM_OBJ_DRAGON_PULSE, 64, 88, $4
+	anim_wait 4
+	anim_loop 16, .loop
+	anim_incobj 1
+	anim_wait 16
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_wait 4
 	anim_ret
 
 ; X-Scissor animation from Pokémon Prism
