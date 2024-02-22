@@ -1278,27 +1278,44 @@ BattleAnim_RockSlide:
 	anim_ret
 
 BattleAnim_Avalanche:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_ICE
-	anim_1gfx ANIM_GFX_ROCKS
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $c0, $1, $0
+	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_SNOW
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_SNOW
+	anim_2gfx ANIM_GFX_ROCKS, ANIM_GFX_SMOKE_PUFF
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_Y, $c0, $1, $0
+	anim_bgp $90
+	anim_obj ANIM_OBJ_AVALANCHE_SMALL, 134, 250, $10
+	anim_wait 2
+	anim_obj ANIM_OBJ_SNOW_FALL, 110, 20, $12
+	anim_wait 2
 .loop
-	anim_sound 0, 1, SFX_STRENGTH
-	anim_obj ANIM_OBJ_SMALL_ICE_CHUNK,  16, 0,   8, 0, $40
-	anim_wait 4
-	anim_sound 0, 1, SFX_STRENGTH
-	anim_obj ANIM_OBJ_BIG_ICE_CHUNK,  15, 0,   8, 4, $30
-	anim_wait 4
-	anim_sound 0, 1, SFX_STRENGTH
-	anim_obj ANIM_OBJ_SMALL_ICE_CHUNK, -13, 0,   8, 4, $30
-	anim_wait 4
-	anim_sound 0, 1, SFX_STRENGTH
-	anim_obj ANIM_OBJ_BIG_ICE_CHUNK, -14, 0,   8, 0, $40
-	anim_wait 4
-	anim_sound 0, 1, SFX_STRENGTH
-	anim_obj ANIM_OBJ_SMALL_ICE_CHUNK, -15, 0,   8, 4, $30
-	anim_wait 16
+	anim_obj ANIM_OBJ_AVALANCHE_SMALL, 122, 250, $12
+	anim_wait 2
+	anim_obj ANIM_OBJ_SNOW_FALL, 142, 20, $0e
+	anim_wait 2
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_AVALANCHE_BIG, 144, 250, $0e
+	anim_wait 2
+	anim_obj ANIM_OBJ_SNOW_FALL, 118, 20, $11
+	anim_wait 2
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_AVALANCHE_SMALL, 154, 250, $0f
+	anim_wait 2
+	anim_obj ANIM_OBJ_SNOW_FALL, 130, 20, $10
+	anim_wait 2
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_AVALANCHE_BIG, 118, 250, $11
+	anim_wait 2
+	anim_obj ANIM_OBJ_SNOW_FALL, 154, 20, $0f
+	anim_wait 2
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_AVALANCHE_SMALL, 134, 250, $10
+	anim_wait 2
+	anim_obj ANIM_OBJ_SNOW_FALL, 110, 20, $12
+	anim_wait 2
+	anim_sound 0, 1, SFX_TACKLE
 	anim_loop 4, .loop
-	anim_wait 96
+	anim_wait 32
 	anim_ret
 
 BattleAnim_Sing:

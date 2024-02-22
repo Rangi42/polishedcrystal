@@ -62,6 +62,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 07
 	RGB 31, 24, 02
 	RGB 31, 16, 01
+; snow
+	RGB 31, 31, 31
+	RGB 27, 31, 31
+	RGB 20, 27, 31
+	RGB 18, 16, 24
 ; reflect
 	RGB 31, 31, 31
 	RGB 31, 23, 30

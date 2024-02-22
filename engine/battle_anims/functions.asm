@@ -433,7 +433,7 @@ BattleAnimFunction_PokeBall:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jmp z, .done
+	jr z, .done
 	dec [hl]
 	; a = ($10 - a) * 4
 	cpl

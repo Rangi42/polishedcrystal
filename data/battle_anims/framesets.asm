@@ -25,8 +25,8 @@ BattleAnimFrameData:
 	dw .Frameset_16 ; 16
 	dw .Frameset_17 ; 17
 	dw .Frameset_18 ; 18
-	dw .Frameset_19 ; 19
-	dw .Frameset_1a ; 1a
+	dw .Frameset_BigRockStarHeart ; 19
+	dw .Frameset_SmallRockStarHeart ; 1a
 	dw .Frameset_1b ; 1b
 	dw .Frameset_1c ; 1c
 	dw .Frameset_1d ; 1d
@@ -454,11 +454,11 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_1A, $04
 	db -4
 
-.Frameset_19:
+.Frameset_BigRockStarHeart:
 	db BATTLEANIMOAMSET_1B, $08
 	db -1
 
-.Frameset_1a:
+.Frameset_SmallRockStarHeart:
 	db BATTLEANIMOAMSET_0F, $08
 	db -1
 

@@ -60,6 +60,7 @@ AnimObjGFX:
 	battleanimgfx  8, AnimObjMiniGFX
 	battleanimgfx 48, AnimObjUTurnGFX
 	battleanimgfx 10, AnimObjBeamLightGFX
+	battleanimgfx  9, AnimObjSmokePuffGFX
 	battleanimgfx 18, AnimObjFocusBlastGFX
 	battleanimgfx 13, AnimObjBigGlowClearGFX
 	battleanimgfx 24, AnimObjSwirlGFX
@@ -67,7 +68,6 @@ AnimObjGFX:
 	battleanimgfx  2, AnimObjStatsGFX
 	battleanimgfx 10, AnimObjGlowGFX
 	battleanimgfx  9, AnimObjHit2GFX
-	battleanimgfx  9, AnimObjSmokePuffGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX
