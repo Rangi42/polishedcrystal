@@ -4317,13 +4317,13 @@ BattleAnimFunction_LastResort:
 	ld d, [hl]
 	push af
 	push de
-	call Sine
+	farcall Sine
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
 	pop de
 	pop af
-	call Cosine
+	farcall Cosine
 	ld hl, BATTLEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
