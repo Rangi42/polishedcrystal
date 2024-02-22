@@ -1102,28 +1102,24 @@ BattleAnim_Thunder:
 	anim_ret
 
 BattleAnim_AirSlash:
-BattleAnim_RazorWind: ; removed
-	anim_1gfx ANIM_GFX_WHIP
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $1, $0
-.loop
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND2, -13, 0,   5, 0, $3
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_WHIP
+	anim_resetobp0
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $0a, $2, $0
+	anim_sound 0, 1, SFX_CUT
+	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 152, 40, $0
+	anim_obj ANIM_OBJ_AIR_SLASH, 144, 40, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 152, 48, $8
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND2, -15, 0,   7, 0, $3
+	anim_obj ANIM_OBJ_AIR_SLASH, 136, 48, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 144, 56, $8
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND2, -13, 0,   8, 0, $3
+	anim_obj ANIM_OBJ_AIR_SLASH, 128, 56, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 136, 64, $8
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND1,  15, 0,   5, 0, $83
-	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND1,  15, 0,   8, 0, $83
-	anim_wait 4
-	anim_loop 3, .loop
-	anim_wait 24
+	anim_obj ANIM_OBJ_AIR_SLASH, 120, 64, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 128, 72, $8
+	anim_wait 32
 	anim_ret
 
 BattleAnim_Sonicboom:
