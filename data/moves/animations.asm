@@ -121,40 +121,53 @@ BattleAnim_DisarmVoice:
 	anim_ret
 
 BattleAnim_Scald:
+	anim_3gfx ANIM_GFX_HIT_2, ANIM_GFX_MISC, ANIM_GFX_SMOKE_PUFF
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
-	anim_bgeffect ANIM_BG_START_WATER, $0, $0, $0
-	anim_1gfx ANIM_GFX_WATER
-	anim_call BattleAnim_UserObj_2Row
-	anim_sound 0, 1, SFX_HYDRO_PUMP
-	anim_obj ANIM_OBJ_HYDRO_PUMP,  14, 4,   9, 0, $0
-	anim_bgeffect ANIM_BG_WATER, $1c, $0, $0
-	anim_wait 8
-	;anim_sound 0, 1, SFX_HYDRO_PUMP
-	anim_obj ANIM_OBJ_HYDRO_PUMP,  15, 4,   9, 0, $0
-	anim_bgeffect ANIM_BG_WATER, $8, $0, $0
-	anim_wait 8
-	;anim_sound 0, 1, SFX_HYDRO_PUMP
-	anim_obj ANIM_OBJ_HYDRO_PUMP, -16, 4,   9, 0, $0
-	anim_bgeffect ANIM_BG_WATER, $30, $0, $0
-	anim_wait 8
-	;anim_sound 0, 1, SFX_HYDRO_PUMP
-	anim_obj ANIM_OBJ_HYDRO_PUMP, -15, 4,   9, 0, $0
-	anim_bgeffect ANIM_BG_WATER, $1c, $0, $0
-	anim_wait 8
-	;anim_sound 0, 1, SFX_HYDRO_PUMP
-	anim_obj ANIM_OBJ_HYDRO_PUMP, -14, 4,   9, 0, $0
-	anim_bgeffect ANIM_BG_WATER, $8, $0, $0
-	anim_wait 16
-	anim_call BattleAnim_ShowMon_1
-	anim_bgeffect ANIM_BG_END_WATER, $0, $0, $0
-	anim_wait 16
-	anim_1gfx ANIM_GFX_FIRE
-.loop
-	anim_sound 0, 0, SFX_BURN
-	anim_obj ANIM_OBJ_BURNED,  17, 0,   7, 0, $10
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_WATER
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_VERY_BRIGHT
+	anim_bgp $90
+	anim_sound 0, 1, SFX_SURF
+	anim_obj ANIM_OBJ_SCALD, 64, 88, $4
 	anim_wait 4
-	anim_loop 3, .loop
-	anim_wait 6
+	anim_obj ANIM_OBJ_SCALD, 64, 88, $4
+	anim_wait 4
+	anim_obj ANIM_OBJ_SCALD, 64, 88, $4
+	anim_wait 4
+.loop
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_obj ANIM_OBJ_SCALD, 64, 88, $4
+	anim_obj ANIM_OBJ_SCALD_STEAM, 120, 46, $30
+	anim_wait 1
+	anim_obj ANIM_OBJ_SCALD_STEAM, 144, 34, $30
+	anim_wait 3
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_obj ANIM_OBJ_SCALD, 64, 88, $4
+	anim_wait 4
+	anim_loop 7, .loop
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_obj ANIM_OBJ_SCALD_STEAM, 120, 46, $30
+	anim_wait 1
+	anim_obj ANIM_OBJ_SCALD_STEAM, 144, 34, $30
+	anim_wait 3
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_SCALD_STEAM, 120, 46, $30
+	anim_wait 1
+	anim_obj ANIM_OBJ_SCALD_STEAM, 144, 34, $30
+	anim_wait 7
+	anim_setobjpal PAL_BATTLE_BG_TARGET, PAL_BTLCUSTOM_FIRE
+	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $0, $40
+	anim_sound 0, 1, SFX_POISON_STING
+.loop2
+	anim_obj ANIM_OBJ_SCALD_STEAM, 120, 46, $30
+	anim_wait 1
+	anim_obj ANIM_OBJ_SCALD_STEAM, 144, 34, $30
+	anim_wait 8
+	anim_loop 6, .loop2
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
 BattleAnim_ThrowPokeBall:

@@ -136,8 +136,8 @@ BattleAnimFrameData:
 	dw .Frameset_85 ; 85
 	dw .Frameset_86 ; 86
 	dw .Frameset_87 ; 87
-	dw .Frameset_Agility ; 88
-	dw .Frameset_89 ; 89
+	dw .Frameset_Agility                 ; BATTLEANIMFRAMESET_AGILITY
+	dw .Frameset_Cotton                  ; BATTLEANIMFRAMESET_COTTON
 	dw .Frameset_8a ; 8a
 	dw .Frameset_8b ; 8b
 	dw .Frameset_8c ; 8c
@@ -209,6 +209,7 @@ BattleAnimFrameData:
 	dw .Frameset_FlashCannonSparks       ; BATTLEANIMFRAMESET_FLASH_CANNON_SPARKS
 	dw .Frameset_TinyGlow                ; BATTLEANIMFRAMESET_TINY_GLOW
 	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
+	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1051,12 +1052,12 @@ BattleAnimFrameData:
 	db -1
 
 .Frameset_Agility:
-	db BATTLEANIMOAMSET_AC, $08
-	db -1
+	oamframe BATTLEANIMOAMSET_AC,  8
+	oamend
 
-.Frameset_89:
-	db BATTLEANIMOAMSET_AD, $08
-	db -1
+.Frameset_Cotton:
+	oamframe BATTLEANIMOAMSET_AD,  8
+	oamend
 
 .Frameset_8a:
 	db BATTLEANIMOAMSET_AE, $08
@@ -1438,4 +1439,10 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_74,  1
 	oamframe BATTLEANIMOAMSET_15,  1
 	oamframe BATTLEANIMOAMSET_14,  1
+	oamdelete
+
+.Frameset_OctazookaSmoke:
+	oamframe BATTLEANIMOAMSET_20,  2
+	oamframe BATTLEANIMOAMSET_21,  2
+	oamframe BATTLEANIMOAMSET_1B,  2
 	oamdelete
