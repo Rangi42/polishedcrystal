@@ -194,7 +194,7 @@ PlaceMapNameSign::
 .stage_5_sliding_out
 	add a
 	cpl
-	add SCREEN_HEIGHT_PX + TILE_WIDTH + 1 ; a = SCREEN_HEIGHT_PX + TILE_WIDTH - a
+	add SCREEN_HEIGHT_PX + 1 ; a = SCREEN_HEIGHT_PX - a
 .got_value
 	ldh [rWY], a
 	ldh [hWY], a
