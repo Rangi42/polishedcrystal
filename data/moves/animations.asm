@@ -1919,40 +1919,51 @@ BattleAnim_Leer:
 	anim_ret
 
 BattleAnim_Reflect:
-	anim_1gfx ANIM_GFX_REFLECT
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_REFLECT
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_ICE
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
 	anim_sound 0, 0, SFX_SHINE
-	anim_obj ANIM_OBJ_SCREEN,   9, 0,  10, 0, $0
-	anim_wait 24
+	anim_obj ANIM_OBJ_SCREEN, 72, 80, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $0
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $8
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $10
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $18
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $20
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $28
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $30
+	anim_obj ANIM_OBJ_DAZZLE, 72, 80, $38
+	anim_wait 20
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
 	anim_sound 0, 0, SFX_SHINE
-	anim_obj ANIM_OBJ_SCREEN,   9, 0,  10, 0, $0
+	anim_obj ANIM_OBJ_SCREEN, 72, 80, $0
 	anim_wait 64
 	anim_ret
 
 BattleAnim_LightScreen:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_REFLECT
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_LIGHT_SCREEN
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_sound 0, 0, SFX_FLASH
-	anim_obj ANIM_OBJ_SCREEN,   9, 0,  10, 0, $0
+	anim_obj ANIM_OBJ_SCREEN, 72, 80, $0
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $0
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $0
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $8
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $8
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $10
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $10
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $18
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $18
 	anim_wait 4
-	anim_obj ANIM_OBJ_SCREEN,   9, 0,  10, 0, $0
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $20
+	anim_obj ANIM_OBJ_SCREEN, 72, 80, $0
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $20
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $28
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $28
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $30
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $30
 	anim_wait 4
-	anim_obj ANIM_OBJ_SHINY,   9, 0,  10, 0, $38
+	anim_obj ANIM_OBJ_SHINY, 72, 80, $38
 	anim_wait 64
 	anim_ret
 
@@ -5033,17 +5044,18 @@ BattleAnim_SunnyDay:
 
 BattleAnim_MirrorCoat:
 	anim_2gfx ANIM_GFX_REFLECT, ANIM_GFX_SPEED
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_MIRROR_COAT
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 .loop
 	anim_sound 0, 0, SFX_SHINE
-	anim_obj ANIM_OBJ_SCREEN,   9, 0,  10, 0, $0
-	anim_obj ANIM_OBJ_SHOOTING_SPARKLE,   8, 0,   9, 0, $4
+	anim_obj ANIM_OBJ_SCREEN, 72, 80, $0
+	anim_obj ANIM_OBJ_SHOOTING_SPARKLE, 64, 72, $4
 	anim_wait 8
-	anim_obj ANIM_OBJ_SHOOTING_SPARKLE,   8, 0,  11, 0, $4
+	anim_obj ANIM_OBJ_SHOOTING_SPARKLE, 64, 88, $4
 	anim_wait 8
-	anim_obj ANIM_OBJ_SHOOTING_SPARKLE,   8, 0,  10, 0, $4
+	anim_obj ANIM_OBJ_SHOOTING_SPARKLE, 64, 80, $4
 	anim_wait 8
-	anim_obj ANIM_OBJ_SHOOTING_SPARKLE,   8, 0,  12, 0, $4
+	anim_obj ANIM_OBJ_SHOOTING_SPARKLE, 64, 96, $4
 	anim_wait 8
 	anim_loop 3, .loop
 	anim_wait 32
