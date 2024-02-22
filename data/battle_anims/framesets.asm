@@ -30,7 +30,7 @@ BattleAnimFrameData:
 	dw .Frameset_1b ; 1b
 	dw .Frameset_1c ; 1c
 	dw .Frameset_1d ; 1d
-	dw .Frameset_1e ; 1e
+	dw .Frameset_PoisonDroplet ; 1e
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20
 	dw .Frameset_21 ; 21
@@ -72,8 +72,8 @@ BattleAnimFrameData:
 	dw .Frameset_45 ; 45
 	dw .Frameset_46 ; 46
 	dw .Frameset_47 ; 47
-	dw .Frameset_48 ; 48
-	dw .Frameset_49 ; 49
+	dw .Frameset_RazorWind1 ; 48
+	dw .Frameset_RazorWind2 ; 49
 	dw .Frameset_4a ; 4a
 	dw .Frameset_4b ; 4b
 	dw .Frameset_4c ; 4c
@@ -473,8 +473,8 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_1D, $08
 	db -1
 
-.Frameset_1e:
-	db BATTLEANIMOAMSET_17, $08
+.Frameset_PoisonDroplet:
+	db BATTLEANIMOAMSET_17, $18
 	db -1
 
 .Frameset_1f:
@@ -704,7 +704,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_57, $c4
 	db -4
 
-.Frameset_48:
+.Frameset_RazorWind1:
 	db BATTLEANIMOAMSET_56, $01
 	db BATTLEANIMOAMSET_57, $01
 	db BATTLEANIMOAMSET_58, $01
@@ -713,7 +713,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_57, $02
 	db -4
 
-.Frameset_49:
+.Frameset_RazorWind2:
 	db BATTLEANIMOAMSET_56, $c1
 	db BATTLEANIMOAMSET_57, $c1
 	db BATTLEANIMOAMSET_58, $c1

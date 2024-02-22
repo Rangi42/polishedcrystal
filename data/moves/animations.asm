@@ -674,28 +674,19 @@ BattleAnim_Ember:
 	anim_wait 32
 	anim_ret
 
-; Will-O-Wisp animation from Pokémon Prism
 BattleAnim_WillOWisp:
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_WILL_O_WISP
 	anim_1gfx ANIM_GFX_FIRE
 	anim_bgp $1b
-	anim_sound 0, 1, SFX_SPITE
-	anim_obj ANIM_OBJ_DRAGON_RAGE, 8, 0, 11, 4, 0
-	anim_wait 48
+	anim_sound 6, 2, SFX_SLUDGE_BOMB
+	anim_obj ANIM_OBJ_DRAGON_RAGE, 64, 92, $0
+	anim_wait 40
+	anim_sound 0, 0, SFX_CURSE
 .loop
-	anim_sound 0, 0, SFX_SPARK
-	anim_obj ANIM_OBJ_BURNED, 17, 0,  7, 0, $a0
-	anim_obj ANIM_OBJ_BURNED, 17, 0,  7, 0, $20
+	anim_obj ANIM_OBJ_SACRED_FIRE, 132, 68, $0
 	anim_wait 8
 	anim_loop 4, .loop
-	anim_wait 16
-	anim_sound 0, 0, SFX_BURN
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $1
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $2
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $3
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $4
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $5
-	anim_wait 32
-	anim_bgp $e4
+	anim_wait 48
 	anim_ret
 
 BattleAnim_FirePunch:
@@ -974,16 +965,16 @@ BattleAnim_Surf:
 	anim_ret
 
 BattleAnim_VineWhip:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GREEN
-	anim_1gfx ANIM_GFX_WHIP
+	anim_2gfx ANIM_GFX_WHIP, ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_VINE_WHIP
-	anim_obj ANIM_OBJ_VINE_WHIP2,  14, 4,   6, 4, $80
+	anim_obj ANIM_OBJ_VINE_WHIP2, 116, 48, $80
 	anim_wait 4
 	anim_sound 0, 1, SFX_VINE_WHIP
-	anim_obj ANIM_OBJ_VINE_WHIP1,  16, 0,   7, 4, $0
-	anim_wait 4
-	anim_incobj 1
-	anim_wait 4
+	anim_obj ANIM_OBJ_VINE_WHIP1, 128, 54, $0
+	anim_wait 8
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_incobj  1
+	anim_wait 16
 	anim_ret
 
 BattleAnim_LeechSeed:
@@ -1138,28 +1129,24 @@ BattleAnim_Thunder:
 	anim_ret
 
 BattleAnim_AirSlash:
-BattleAnim_RazorWind: ; removed
-	anim_1gfx ANIM_GFX_WHIP
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $1, $0
-.loop
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND2, -13, 0,   5, 0, $3
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_WHIP
+	anim_resetobp0
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $0a, $2, $0
+	anim_sound 0, 1, SFX_CUT
+	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 152, 40, $0
+	anim_obj ANIM_OBJ_AIR_SLASH, 144, 40, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 152, 48, $8
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND2, -15, 0,   7, 0, $3
+	anim_obj ANIM_OBJ_AIR_SLASH, 136, 48, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 144, 56, $8
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND2, -13, 0,   8, 0, $3
+	anim_obj ANIM_OBJ_AIR_SLASH, 128, 56, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 136, 64, $8
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND1,  15, 0,   5, 0, $83
-	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_RAZOR_WIND1,  15, 0,   8, 0, $83
-	anim_wait 4
-	anim_loop 3, .loop
-	anim_wait 24
+	anim_obj ANIM_OBJ_AIR_SLASH, 120, 64, $28
+	anim_obj ANIM_OBJ_AIR_SLASH, 128, 72, $8
+	anim_wait 32
 	anim_ret
 
 BattleAnim_Sonicboom:
@@ -1219,10 +1206,19 @@ BattleAnim_Explosion:
 	anim_ret
 
 BattleAnim_Acid:
-	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_YELLOW
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_ACID
 	anim_1gfx ANIM_GFX_POISON
 	anim_call BattleAnimSub_Acid
-	anim_wait 64
+	anim_obj ANIM_OBJ_POISON_DROPLET, 128, 36, $11
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 144, 36, $0f
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 124, 36, $11
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 148, 36, $0f
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 120, 36, $11
+	anim_wait 48
 	anim_ret
 
 BattleAnim_RockThrow:
@@ -4513,7 +4509,7 @@ BattleAnim_PainSplit:
 	anim_ret
 
 BattleAnim_SacredFire:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_FIRE
 	anim_1gfx ANIM_GFX_FIRE
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
