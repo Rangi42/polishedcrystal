@@ -4271,7 +4271,7 @@ BattleAnimFunction_Roost:
 	add hl, bc
 	ld a, [hl]
 	ld d, $18
-	call Sine
+	farcall Sine
 	sra a
 	sra a
 	sra a
@@ -4286,7 +4286,7 @@ BattleAnimFunction_Roost:
 	ld a, [hl]
 	inc [hl]
 	ld d, $18
-	call Cosine
+	farcall Cosine
 	ld hl, BATTLEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
