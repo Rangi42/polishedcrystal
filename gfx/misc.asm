@@ -170,6 +170,8 @@ AnimObjSwirlGFX::        INCBIN "gfx/battle_anims/swirl.2bpp.lz"
 AnimObjBerryGFX::        INCBIN "gfx/battle_anims/berry.2bpp.lz"
 AnimObjStatsGFX::        INCBIN "gfx/battle_anims/stats.2bpp.lz"
 AnimObjGlowGFX::         INCBIN "gfx/battle_anims/glow.2bpp.lz"
+AnimObjHit2GFX::         INCBIN "gfx/battle_anims/hit2.2bpp.lz"
+AnimObjSmokePuffGFX::    INCBIN "gfx/battle_anims/smokepuff.2bpp.lz"
 AnimObjPokeBallBGGFX::   INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 

@@ -82,6 +82,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 10, 31, 31
 	RGB 16, 17, 29
+; verybright
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 28, 28, 28
+	RGB 10, 10, 10
 ; attack
 	RGB 31, 31, 31
 	RGB 31, 19, 08
