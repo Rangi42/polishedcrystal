@@ -67,6 +67,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 23, 30
 	RGB 06, 16, 31
 	RGB 00, 00, 00
+; acid
+	RGB 31, 31, 31
+	RGB 31, 31, 07
+	RGB 31, 23, 04
+	RGB 31, 16, 01
 ; attack
 	RGB 31, 31, 31
 	RGB 31, 19, 08

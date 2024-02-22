@@ -30,7 +30,7 @@ BattleAnimFrameData:
 	dw .Frameset_1b ; 1b
 	dw .Frameset_1c ; 1c
 	dw .Frameset_1d ; 1d
-	dw .Frameset_1e ; 1e
+	dw .Frameset_PoisonDroplet ; 1e
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20
 	dw .Frameset_21 ; 21
@@ -468,8 +468,8 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_1D, $08
 	db -1
 
-.Frameset_1e:
-	db BATTLEANIMOAMSET_17, $08
+.Frameset_PoisonDroplet:
+	db BATTLEANIMOAMSET_17, $18
 	db -1
 
 .Frameset_1f:

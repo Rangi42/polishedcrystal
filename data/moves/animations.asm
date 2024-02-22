@@ -1179,10 +1179,19 @@ BattleAnim_Explosion:
 	anim_ret
 
 BattleAnim_Acid:
-	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_YELLOW
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_ACID
 	anim_1gfx ANIM_GFX_POISON
 	anim_call BattleAnimSub_Acid
-	anim_wait 64
+	anim_obj ANIM_OBJ_POISON_DROPLET, 128, 36, $11
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 144, 36, $0f
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 124, 36, $11
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 148, 36, $0f
+	anim_wait 4
+	anim_obj ANIM_OBJ_POISON_DROPLET, 120, 36, $11
+	anim_wait 48
 	anim_ret
 
 BattleAnim_RockThrow:
