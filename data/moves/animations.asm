@@ -1,29 +1,56 @@
 BattleAnim_Moonblast:
-	anim_3gfx ANIM_GFX_MOON, ANIM_GFX_SHINE, ANIM_GFX_CHARGE
+	anim_4gfx ANIM_GFX_MOON, ANIM_GFX_SPEED, ANIM_GFX_GLOW, ANIM_GFX_SHINE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_MOON
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_MOON
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_MOONBLAST
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $4, $0
+	;anim_clearenemyhud
 	anim_bgp $1b
-	anim_obj ANIM_OBJ_MOON, 44, 104, $1
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $30
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $31
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $32
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $33
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $34
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $35
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $36
-	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $37
-	anim_wait 1
-	anim_sound 0, 0, SFX_MOONLIGHT
-	anim_wait 96
-	anim_clearobjs
-	anim_sound 3, 0, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_MOONBLAST, 64, 92, $4
+	anim_sound 0, 1, SFX_GAME_FREAK_LOGO_GS
+	anim_obj ANIM_OBJ_RISING_MOON, 90, 84, $30
+	anim_wait 40
+.loop
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 44, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 36, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 52, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 28, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 60, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 20, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_RISING_SPARKLE, 68, 108, $6
+	anim_wait 2
+	anim_loop 4, .loop
+	anim_wait 8
+	anim_sound 0, 1, SFX_GIGA_DRAIN
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $4
 	anim_wait 16
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_MOONBLAST
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
 	anim_sound 0, 0, SFX_METRONOME
-	anim_obj ANIM_OBJ_GLIMMER, 132, 28, $0
+	anim_obj ANIM_OBJ_GLIMMER_YFIX, 132, 28, $0
 	anim_wait 5
-	anim_obj ANIM_OBJ_GLIMMER, 112, 60, $0
+	anim_obj ANIM_OBJ_GLIMMER_YFIX, 112, 60, $0
 	anim_wait 5
-	anim_obj ANIM_OBJ_GLIMMER, 144, 68, $0
-	anim_wait 21
+	anim_obj ANIM_OBJ_GLIMMER_YFIX, 144, 68, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 148, 32, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 116, 64, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 148, 64, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 116, 32, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 132, 48, $0
+	anim_wait 32
 BattleAnim_0:
 	anim_ret
 

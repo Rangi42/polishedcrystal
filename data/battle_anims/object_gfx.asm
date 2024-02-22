@@ -65,6 +65,7 @@ AnimObjGFX:
 	battleanimgfx 24, AnimObjSwirlGFX
 	battleanimgfx 12, AnimObjBerryGFX
 	battleanimgfx  2, AnimObjStatsGFX
+	battleanimgfx 10, AnimObjGlowGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX
