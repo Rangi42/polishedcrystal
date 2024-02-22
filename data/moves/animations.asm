@@ -647,28 +647,19 @@ BattleAnim_Ember:
 	anim_wait 32
 	anim_ret
 
-; Will-O-Wisp animation from Pokémon Prism
 BattleAnim_WillOWisp:
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_WILL_O_WISP
 	anim_1gfx ANIM_GFX_FIRE
 	anim_bgp $1b
-	anim_sound 0, 1, SFX_SPITE
-	anim_obj ANIM_OBJ_DRAGON_RAGE, 8, 0, 11, 4, 0
-	anim_wait 48
+	anim_sound 6, 2, SFX_SLUDGE_BOMB
+	anim_obj ANIM_OBJ_DRAGON_RAGE, 64, 92, $0
+	anim_wait 40
+	anim_sound 0, 0, SFX_CURSE
 .loop
-	anim_sound 0, 0, SFX_SPARK
-	anim_obj ANIM_OBJ_BURNED, 17, 0,  7, 0, $a0
-	anim_obj ANIM_OBJ_BURNED, 17, 0,  7, 0, $20
+	anim_obj ANIM_OBJ_SACRED_FIRE, 132, 68, $0
 	anim_wait 8
 	anim_loop 4, .loop
-	anim_wait 16
-	anim_sound 0, 0, SFX_BURN
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $1
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $2
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $3
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $4
-	anim_obj ANIM_OBJ_FIRE_BLAST, 17, 0,  6, 0, $5
-	anim_wait 32
-	anim_bgp $e4
+	anim_wait 48
 	anim_ret
 
 BattleAnim_FirePunch:
@@ -4486,7 +4477,7 @@ BattleAnim_PainSplit:
 	anim_ret
 
 BattleAnim_SacredFire:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_FIRE
 	anim_1gfx ANIM_GFX_FIRE
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0

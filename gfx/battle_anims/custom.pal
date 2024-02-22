@@ -52,6 +52,11 @@ if !DEF(MONOCHROME)
 	RGB 19, 31, 31
 	RGB 00, 28, 15
 	RGB 00, 00, 00
+; will-o-wisp
+	RGB 31, 31, 31
+	RGB 00, 22, 29
+	RGB 15, 09, 27
+	RGB 31, 31, 31
 ; glowyellow
 	RGB 31, 31, 31
 	RGB 31, 31, 07
