@@ -938,16 +938,16 @@ BattleAnim_Surf:
 	anim_ret
 
 BattleAnim_VineWhip:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GREEN
-	anim_1gfx ANIM_GFX_WHIP
+	anim_2gfx ANIM_GFX_WHIP, ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_VINE_WHIP
-	anim_obj ANIM_OBJ_VINE_WHIP2,  14, 4,   6, 4, $80
+	anim_obj ANIM_OBJ_VINE_WHIP2, 116, 48, $80
 	anim_wait 4
 	anim_sound 0, 1, SFX_VINE_WHIP
-	anim_obj ANIM_OBJ_VINE_WHIP1,  16, 0,   7, 4, $0
-	anim_wait 4
-	anim_incobj 1
-	anim_wait 4
+	anim_obj ANIM_OBJ_VINE_WHIP1, 128, 54, $0
+	anim_wait 8
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_incobj  1
+	anim_wait 16
 	anim_ret
 
 BattleAnim_LeechSeed:

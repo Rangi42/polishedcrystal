@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, WILL_O_WISP
+	ld b, VINE_WHIP
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
