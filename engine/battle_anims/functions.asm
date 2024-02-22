@@ -104,6 +104,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RadialMoveOut_VerySlow
 	dw BattleAnimFunction_RadialMoveOut_Stats
 	dw BattleAnimFunction_PowerUp
+	dw BattleAnimFunction_Roost
 	dw BattleAnimFunction_LastResort
 	assert_table_length NUM_BATTLEANIMFUNCS
 
@@ -4262,6 +4263,47 @@ BattleAnimFunc_RadialInit:
 	ld [hld], a
 	ld [hl], a ; initial position = 0
 	jmp BattleAnim_IncAnonJumptableIndex
+
+BattleAnimFunction_Roost:
+; Moves object in a circle where the height is 1/8 the width, while also moving downward 1 pixel per frame
+; Obj Param: Defines where the object starts in the circle
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	ld d, $18
+	call Sine
+	sra a
+	sra a
+	sra a
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	add [hl]
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	inc [hl]
+	ld d, $18
+	call Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
+	and $7
+	ret nz
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	ld a, [hl]
+	cp $1e
+	jmp nc, FarDeinitBattleAnimation
+	inc [hl]
+	inc [hl]
+	ret
 
 BattleAnimFunction_LastResort:
 ; A rotating circle of objects centered at a position. It expands for $40 frames and then shrinks. Once radius reaches 0, the object disappears.

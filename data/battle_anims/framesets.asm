@@ -152,7 +152,7 @@ BattleAnimFrameData:
 	dw .Frameset_95 ; 95
 	dw .Frameset_96 ; 96
 	dw .Frameset_97 ; 97
-	dw .Frameset_98 ; 98
+	dw .Frameset_Feather ; 98
 	dw .Frameset_99 ; 99
 	dw .Frameset_9a ; 9a
 	dw .Frameset_9b ; 9b
@@ -1119,9 +1119,9 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_B4, $08
 	db -1
 
-.Frameset_98:
-	db BATTLEANIMOAMSET_6B, $08
-	db -1
+.Frameset_Feather:
+	oamframe BATTLEANIMOAMSET_6B,  8
+	oamend
 
 .Frameset_99:
 	db BATTLEANIMOAMSET_B6, $08
