@@ -192,12 +192,16 @@ ClearActorHUD:
 	and a
 	jr z, ClearPlayerHUD
 	; fallthrough
-
 ClearEnemyHUD:
 	hlcoord 0, 0
 	lb bc, 3, 11
 	jmp ClearBox
 
+BattleAnimCmd_ClearOpponentHUD:
+	ldh a, [hBattleTurn]
+	and a
+	jr z, ClearEnemyHUD
+	; fallthrough
 ClearPlayerHUD:
 	hlcoord 11, 7
 	lb bc, 5, 9
@@ -285,7 +289,7 @@ BattleAnimCommands::
 	dw BattleAnimCmd_OAMOff
 	dw BattleAnimCmd_ClearObjs
 	dw BattleAnimCmd_BeatUp
-	dw DoNothing
+	dw BattleAnimCmd_ClearOpponentHUD
 	dw BattleAnimCmd_UpdateActorPic
 	dw BattleAnimCmd_SetBgPal
 	dw BattleAnimCmd_SetObjPal

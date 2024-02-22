@@ -160,7 +160,10 @@ MACRO anim_beatup
 	db anim_beatup_command
 ENDM
 
-	const_skip ; e7
+	const anim_clearopponenthud_command ; e7
+MACRO anim_clearopponenthud
+	db anim_clearopponenthud_command
+ENDM
 
 	const anim_updateactorpic_command ; e8
 MACRO anim_updateactorpic

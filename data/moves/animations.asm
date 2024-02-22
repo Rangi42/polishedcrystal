@@ -7,7 +7,7 @@ BattleAnim_Moonblast:
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $4, $0
-	;anim_clearenemyhud
+	anim_clearopponenthud
 	anim_bgp $1b
 	anim_sound 0, 1, SFX_GAME_FREAK_LOGO_GS
 	anim_obj ANIM_OBJ_RISING_MOON, 90, 84, $30
