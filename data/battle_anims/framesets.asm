@@ -164,7 +164,7 @@ BattleAnimFrameData:
 	dw .Frameset_a1 ; a1
 	dw .Frameset_a2 ; a2
 	dw .Frameset_a3 ; a3
-	dw .Frameset_a4 ; a4
+	dw .Frameset_Glimmer ; BATTLEANIMFRAMESET_GLIMMER
 	dw .Frameset_a5 ; a5
 	dw .Frameset_a6 ; a6
 	dw .Frameset_a7 ; a7
@@ -193,17 +193,22 @@ BattleAnimFrameData:
 	dw .Frameset_BugBuzzR ; be
 	dw .Frameset_BulletPunch ; bf
 	dw .Frameset_LongPunch ; c0
-	dw .Frameset_FlashCannon ; c1
-	dw .Frameset_FocusBlast ; c2
-	dw .Frameset_Vortex ; c3
-	dw .Frameset_RedStar ; c4
-	dw .Frameset_Hail ; c5
-	dw .Frameset_UTurn_Fall ; c6
-	dw .Frameset_SwirlShort ; c7
-	dw .Frameset_BigGlowClear ; c8
-	dw .Frameset_Berry ; c9
-	dw .Frameset_StatUp ; ca
-	dw .Frameset_StatDown ; cb
+	dw .Frameset_FocusBlast ; c1
+	dw .Frameset_Vortex ; c2
+	dw .Frameset_RedStar ; c3
+	dw .Frameset_Hail ; c4
+	dw .Frameset_UTurn_Fall ; c5
+	dw .Frameset_SwirlShort ; c6
+	dw .Frameset_BigGlowClear ; c7
+	dw .Frameset_Berry ; c8
+	dw .Frameset_StatUp ; c9
+	dw .Frameset_StatDown ; ca
+	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
+	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
+	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
+	dw .Frameset_FlashCannonSparks       ; BATTLEANIMFRAMESET_FLASH_CANNON_SPARKS
+	dw .Frameset_TinyGlow                ; BATTLEANIMFRAMESET_TINY_GLOW
+	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1160,7 +1165,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_1B, $0b
 	db -4
 
-.Frameset_a4:
+.Frameset_Glimmer:
 	db BATTLEANIMOAMSET_BF, $04
 	db BATTLEANIMOAMSET_C0, $04
 	db BATTLEANIMOAMSET_C1, $04
@@ -1395,4 +1400,42 @@ BattleAnimFrameData:
 
 .Frameset_StatDown:
 	oamframe BATTLEANIMOAMSET_STAT, 16, OAM_Y_FLIP
+	oamdelete
+
+.Frameset_SparkleLong:
+	oamframe BATTLEANIMOAMSET_14,  3
+	oamframe BATTLEANIMOAMSET_15,  3
+	oamrestart
+
+.Frameset_FlashCannonChargeOrb:
+	oamwait 24
+	oamframe BATTLEANIMOAMSET_20,  4
+	oamframe BATTLEANIMOAMSET_1F,  4
+	oamframe BATTLEANIMOAMSET_1E,  4
+	oamend
+
+.Frameset_SlowGrowingGlow:
+	oamframe BATTLEANIMOAMSET_55,  24
+	oamframe BATTLEANIMOAMSET_54,  24
+	oamframe BATTLEANIMOAMSET_53,  24
+	oamend
+
+.Frameset_FlashCannonSparks:
+	oamframe BATTLEANIMOAMSET_20,  4
+	oamframe BATTLEANIMOAMSET_1F,  4
+	oamframe BATTLEANIMOAMSET_1E,  8
+	oamdelete
+
+
+.Frameset_TinyGlow:
+	oamframe BATTLEANIMOAMSET_54,  1
+	oamframe BATTLEANIMOAMSET_55,  1
+	oamrestart
+
+.Frameset_PulsingGlow:
+	oamframe BATTLEANIMOAMSET_14,  1
+	oamframe BATTLEANIMOAMSET_15,  1
+	oamframe BATTLEANIMOAMSET_74,  1
+	oamframe BATTLEANIMOAMSET_15,  1
+	oamframe BATTLEANIMOAMSET_14,  1
 	oamdelete
