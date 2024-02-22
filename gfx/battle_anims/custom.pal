@@ -32,6 +32,11 @@ if !DEF(MONOCHROME)
 	RGB 00, 19, 28
 	RGB 08, 09, 28
 	RGB 00, 00, 00
+; bubble
+	RGB 31, 31, 31
+	RGB 19, 28, 28
+	RGB 00, 23, 28
+	RGB 03, 10, 30
 ; dragon fire
 	RGB 31, 31, 31
 	RGB 31, 26, 09

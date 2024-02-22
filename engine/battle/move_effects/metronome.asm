@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, ROOST
+	ld b, AQUA_TAIL
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr

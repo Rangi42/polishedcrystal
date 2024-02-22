@@ -33,7 +33,7 @@ BattleAnimFrameData:
 	dw .Frameset_PoisonDroplet ; 1e
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20
-	dw .Frameset_21 ; 21
+	dw .Frameset_SmallBubble ; 21
 	dw .Frameset_22 ; 22
 	dw .Frameset_23 ; 23
 	dw .Frameset_24 ; 24
@@ -212,6 +212,7 @@ BattleAnimFrameData:
 	dw .Frameset_TinyGlow                ; BATTLEANIMFRAMESET_TINY_GLOW
 	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
+	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
@@ -492,9 +493,9 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_20, $03
 	db -4
 
-.Frameset_21:
-	db BATTLEANIMOAMSET_20, $08
-	db -1
+.Frameset_SmallBubble:
+	oamframe BATTLEANIMOAMSET_20,  8
+	oamend
 
 .Frameset_22:
 	db BATTLEANIMOAMSET_20, $08
@@ -1461,6 +1462,10 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_21,  2
 	oamframe BATTLEANIMOAMSET_1B,  2
 	oamdelete
+
+.Frameset_BubbleSplash:
+	oamframe BATTLEANIMOAMSET_20,  8
+	oamend
 
 .Frameset_BouncingMushroom:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 16

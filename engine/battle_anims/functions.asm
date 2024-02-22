@@ -96,7 +96,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_PauseThenRush
 	dw BattleAnimFunction_52
 	dw BattleAnimFunction_PowerGem
-	dw BattleAnimFunction_54
+	dw BattleAnimFunction_BubbleSplash
 	dw BattleAnimFunction_Moon
 	dw BattleAnimFunction_PokeBall_BG
 	dw BattleAnimFunction_RadialMoveOut
@@ -1004,7 +1004,7 @@ BattleAnim_ScatterHorizontal:
 	ld de, -$100
 	ret
 
-BattleAnimFunction_54:
+BattleAnimFunction_BubbleSplash:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw BattleAnimFunction_RockSmash.after_frameset
