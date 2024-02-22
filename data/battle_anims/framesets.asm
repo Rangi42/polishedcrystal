@@ -474,8 +474,8 @@ BattleAnimFrameData:
 	db -1
 
 .Frameset_PoisonDroplet:
-	db BATTLEANIMOAMSET_17, $18
-	db -1
+	oamframe BATTLEANIMOAMSET_17, 24
+	oamdelete
 
 .Frameset_1f:
 	db BATTLEANIMOAMSET_0F, $03
