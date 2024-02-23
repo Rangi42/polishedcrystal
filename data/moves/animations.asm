@@ -1919,7 +1919,7 @@ BattleAnim_Leer:
 
 BattleAnim_Reflect:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_REFLECT
-	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_ICE
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_REFLECT
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
 	anim_sound 0, 0, SFX_SHINE
@@ -5045,8 +5045,8 @@ BattleAnim_MirrorCoat:
 	anim_2gfx ANIM_GFX_REFLECT, ANIM_GFX_SPEED
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_MIRROR_COAT
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_sound 0, 0, SFX_METRONOME
 .loop
-	anim_sound 0, 0, SFX_SHINE
 	anim_obj ANIM_OBJ_SCREEN, 72, 80, $0
 	anim_obj ANIM_OBJ_SHOOTING_SPARKLE, 64, 72, $4
 	anim_wait 8

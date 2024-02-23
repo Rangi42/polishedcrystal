@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, MIRROR_COAT
+	ld b, REFLECT
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
