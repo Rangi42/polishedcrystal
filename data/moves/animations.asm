@@ -1867,7 +1867,7 @@ BattleAnim_ConfuseRay:
 BattleAnim_AquaTail:
 	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_WATER
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BUBBLE
-	anim_1gfx ANIM_GFX_BUBBLE
+	anim_3gfx ANIM_GFX_HIT_2, ANIM_GFX_BUBBLE, ANIM_GFX_SAND
 	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_RISING_BUBBLE, 64, 104, $0
 	anim_wait 16
@@ -1880,7 +1880,6 @@ BattleAnim_AquaTail:
 	anim_clearobjs
 	anim_wait 1
 	anim_call BattleAnim_TargetObj_1Row
-	anim_3gfx ANIM_GFX_BUBBLE, ANIM_GFX_HIT, ANIM_GFX_SAND
 	anim_bgeffect ANIM_BG_WOBBLE_MON, $0, $1, $0
 	anim_wait 16
 	anim_sound 0, 1, SFX_BUBBLE_BEAM

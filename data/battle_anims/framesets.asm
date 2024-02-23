@@ -214,6 +214,7 @@ BattleAnimFrameData:
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
+	dw .Frameset_Recover                 ; BATTLEANIMFRAMESET_RECOVER
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1473,4 +1474,8 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2,  4
 	oamframe BATTLEANIMOAMSET_MUSHROOM_1,  2
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 32
+	oamend
+
+.Frameset_Recover:
+	oamframe BATTLEANIMOAMSET_80,  8
 	oamend
