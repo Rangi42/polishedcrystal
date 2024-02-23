@@ -87,10 +87,10 @@ if !DEF(MONOCHROME)
 	RGB 27, 31, 31
 	RGB 20, 27, 31
 	RGB 18, 16, 24
-; reflect
+; mirrorcoat
 	RGB 31, 31, 31
-	RGB 31, 23, 30
-	RGB 06, 16, 31
+	RGB 31, 22, 25
+	RGB 29, 11, 11
 	RGB 00, 00, 00
 ; acid
 	RGB 31, 31, 31
