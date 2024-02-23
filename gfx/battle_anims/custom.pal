@@ -77,6 +77,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 07
 	RGB 31, 24, 02
 	RGB 31, 16, 01
+; glowluster
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 23, 30, 31
+	RGB 29, 25, 31
 ; dragonpulse
 	RGB 31, 31, 31
 	RGB 28, 28, 28

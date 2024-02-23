@@ -55,6 +55,8 @@ AnimObjGFX:
 	battleanimgfx 16, AnimObjMoonGFX
 	battleanimgfx  9, AnimObjBugBuzzGFX
 	battleanimgfx 32, AnimObjVortexGFX
+	battleanimgfx  6, AnimObjRingsGFX
+	battleanimgfx 13, AnimObjBigRingsGFX
 	battleanimgfx  5, AnimObjHeartsGFX
 	battleanimgfx  5, AnimObjStarsGFX
 	battleanimgfx  8, AnimObjMiniGFX

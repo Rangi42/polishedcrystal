@@ -196,15 +196,17 @@ BattleAnimFrameData:
 	dw .Frameset_LongPunch ; c1
 	dw .Frameset_FocusBlast ; c2
 	dw .Frameset_Vortex ; c3
-	dw .Frameset_RedStar ; c4
-	dw .Frameset_Hail ; c5
-	dw .Frameset_UTurn_Fall ; c6
-	dw .Frameset_SwirlShort ; c7
-	dw .Frameset_SmallGlow ; c8
-	dw .Frameset_BigGlowClear ; c9
-	dw .Frameset_Berry ; ca
-	dw .Frameset_StatUp ; cb
-	dw .Frameset_StatDown ; cc
+	dw .Frameset_ShrinkingRingSmall ; c4
+	dw .Frameset_ShrinkingRingBig ; c5
+	dw .Frameset_RedStar ; c6
+	dw .Frameset_Hail ; c7
+	dw .Frameset_UTurn_Fall ; c8
+	dw .Frameset_SwirlShort ; c9
+	dw .Frameset_SmallGlow ; ca
+	dw .Frameset_BigGlowClear ; cb
+	dw .Frameset_Berry ; cc
+	dw .Frameset_StatUp ; cd
+	dw .Frameset_StatDown ; ce
 	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
 	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
 	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
@@ -1371,6 +1373,16 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_DA,  1
 	oamframe BATTLEANIMOAMSET_DB,  1
 	oamrestart
+
+.Frameset_ShrinkingRingSmall:
+	oamframe BATTLEANIMOAMSET_DE,  2
+	oamframe BATTLEANIMOAMSET_54,  2
+	oamdelete
+
+.Frameset_ShrinkingRingBig:
+	oamframe BATTLEANIMOAMSET_DF,  2
+	oamframe BATTLEANIMOAMSET_DC,  2
+	oamdelete
 
 .Frameset_RedStar:
 	oamframe BATTLEANIMOAMSET_14, 30
