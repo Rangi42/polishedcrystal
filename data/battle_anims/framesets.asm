@@ -101,7 +101,7 @@ BattleAnimFrameData:
 	dw .Frameset_62 ; 62
 	dw .Frameset_63 ; 63
 	dw .Frameset_64 ; 64
-	dw .Frameset_Amnesia3 ; 65
+	dw .Frameset_Amnesia3_Recover        ; BATTLE_ANIM_FRAMESET_AMNESIA_3_RECOVER
 	dw .Frameset_66 ; 66
 	dw .Frameset_67 ; 67
 	dw .Frameset_68 ; 68
@@ -879,7 +879,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_25, $08
 	db -1
 
-.Frameset_Amnesia3:
+.Frameset_Amnesia3_Recover:
 	db BATTLEANIMOAMSET_80, $08
 	db -1
 
