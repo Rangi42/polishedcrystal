@@ -101,7 +101,7 @@ BattleAnimFrameData:
 	dw .Frameset_62 ; 62
 	dw .Frameset_63 ; 63
 	dw .Frameset_64 ; 64
-	dw .Frameset_65 ; 65
+	dw .Frameset_Amnesia3 ; 65
 	dw .Frameset_66 ; 66
 	dw .Frameset_67 ; 67
 	dw .Frameset_68 ; 68
@@ -214,7 +214,6 @@ BattleAnimFrameData:
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
-	dw .Frameset_Recover                 ; BATTLEANIMFRAMESET_RECOVER
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -880,7 +879,7 @@ BattleAnimFrameData:
 	db BATTLEANIMOAMSET_25, $08
 	db -1
 
-.Frameset_65:
+.Frameset_Amnesia3:
 	db BATTLEANIMOAMSET_80, $08
 	db -1
 
@@ -1474,8 +1473,4 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2,  4
 	oamframe BATTLEANIMOAMSET_MUSHROOM_1,  2
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 32
-	oamend
-
-.Frameset_Recover:
-	oamframe BATTLEANIMOAMSET_80,  8
 	oamend
