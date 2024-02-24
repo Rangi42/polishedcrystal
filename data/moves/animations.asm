@@ -2119,7 +2119,7 @@ BattleAnim_Headbutt:
 BattleAnim_ZenHeadbutt:
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE
 	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE
-	anim_2gfx ANIM_GFX_GLOW, ANIM_GFX_SHINE
+	anim_4gfx ANIM_GFX_HIT_2, ANIM_GFX_GLOW, ANIM_GFX_SHINE, ANIM_GFX_STARS
 	anim_battlergfx_2row
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
 	anim_bgp $1b
@@ -2138,7 +2138,6 @@ BattleAnim_ZenHeadbutt:
 	anim_loop 2, .loop
 	anim_clearobjs
 	anim_wait 1
-	anim_2gfx ANIM_GFX_STARS, ANIM_GFX_HIT
 	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $0, $0
 	anim_wait 6
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
