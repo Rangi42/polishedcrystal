@@ -61,6 +61,7 @@ AnimObjGFX:
 	battleanimgfx  5, AnimObjStarsGFX
 	battleanimgfx  8, AnimObjMiniGFX
 	battleanimgfx 48, AnimObjUTurnGFX
+	battleanimgfx  5, AnimObjMisc2GFX
 	battleanimgfx 10, AnimObjBeamLightGFX
 	battleanimgfx  9, AnimObjSmokePuffGFX
 	battleanimgfx 18, AnimObjFocusBlastGFX

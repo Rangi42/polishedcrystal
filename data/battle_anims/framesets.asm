@@ -215,6 +215,8 @@ BattleAnimFrameData:
 	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
+	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
+	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
@@ -1478,6 +1480,14 @@ BattleAnimFrameData:
 .Frameset_BubbleSplash:
 	oamframe BATTLEANIMOAMSET_20,  8
 	oamend
+
+.Frameset_DropletR:
+	oamframe BATTLEANIMOAMSET_E0,  16
+	oamdelete
+
+.Frameset_DropletL:
+	oamframe BATTLEANIMOAMSET_E0,  16, OAM_X_FLIP
+	oamdelete
 
 .Frameset_BouncingMushroom:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 16
