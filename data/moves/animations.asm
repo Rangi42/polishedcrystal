@@ -2585,19 +2585,23 @@ BattleAnim_Crabhammer:
 	anim_ret
 
 BattleAnim_IronHead:
-	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_METALLIC
+	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_BRIGHT
 	anim_3gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT, ANIM_GFX_REFLECT
 	anim_obp0 $0
 	anim_sound 0, 0, SFX_RAGE
 	anim_call BattleAnim_TargetObj_1Row
 	anim_call BattleAnimSub_Metallic
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_wait 4
+	anim_wait 6
 	anim_sound 0, 1, SFX_HEADBUTT
-	anim_wait 8
+	anim_wait 6
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 2
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_clearobjs
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_resetobp0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
 	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 128, 56, $0
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $28
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $5c
@@ -2605,6 +2609,7 @@ BattleAnim_IronHead:
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $e8
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $9c
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $d0
+	anim_wait 6
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $1c
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $50
 	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 64, $dc

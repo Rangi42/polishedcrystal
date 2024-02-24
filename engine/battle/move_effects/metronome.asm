@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, CRABHAMMER
+	ld b, IRON_HEAD
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
