@@ -14,8 +14,8 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 ; ice
 	RGB 31, 31, 31
-	RGB 15, 27, 29
-	RGB 14, 25, 31
+	RGB 13, 27, 31
+	RGB 10, 21, 29
 	RGB 00, 00, 00
 ; fire
 	RGB 31, 31, 31
