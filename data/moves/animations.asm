@@ -2385,17 +2385,42 @@ BattleAnim_PoisonSting:
 	anim_ret
 
 BattleAnim_PoisonJab:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_PURPLE
-	anim_3gfx ANIM_GFX_HORN, ANIM_GFX_HIT, ANIM_GFX_POISON
-	anim_sound 0, 1, SFX_HORN_ATTACK
-	anim_obj ANIM_OBJ_HORN,   9, 0,  12, 0, $1
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, 17, 0,  7, 0, $0
-	anim_wait 8
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PURPLE
-	anim_call BattleAnimSub_Sludge
-	anim_wait 24
-	anim_ret
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_PURPLE
+	anim_3gfx ANIM_GFX_OBJECTS_2, ANIM_GFX_HIT, ANIM_GFX_POISON
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
+.loop
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $38
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 140, 44, $0
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $20
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $8
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 124, 60, $0
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $10
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $28
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 140, 60, $0
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $18
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 124, 44, $0
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $30
+	anim_wait 4
+.ok
+	anim_loop 2, .loop
+	anim_jump BattleAnimSub_SludgeShort
 
 BattleAnim_PinMissile:
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GRAY
@@ -5452,6 +5477,21 @@ BattleAnimSub_Sludge:
 	anim_obj ANIM_OBJ_SLUDGE, -14, 4,   9, 0, $0
 	anim_wait 8
 	anim_loop 5, .loop
+	anim_ret
+
+BattleAnimSub_SludgeShort:
+.loop
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_SLUDGE, 132, 72, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_SLUDGE, 116, 72, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_SLUDGE, 148, 72, $0
+	anim_wait 8
+	anim_loop 2, .loop
+	anim_wait 48
 	anim_ret
 
 BattleAnimSub_Acid:

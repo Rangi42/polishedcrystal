@@ -106,6 +106,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_PowerUp
 	dw BattleAnimFunction_Roost
 	dw BattleAnimFunction_LastResort
+	dw BattleAnimFunction_RadialMoveInXYFix
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -4350,3 +4351,64 @@ BattleAnimFunction_LastResort:
 	and a
 	ret nz
 	jmp FarDeinitBattleAnimation
+
+BattleAnimFunction_RadialMoveInXYFix:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+
+.zero:
+	call BattleAnim_IncAnonJumptableIndex
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+
+	; Set x/y flip dynamically.
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	add a
+	swap a
+	ld [hl], a
+
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, 40
+	ld [hli], a
+	ld [hl], 0
+	; fallthrough
+.one:
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld d, [hl]
+	push af
+	push de
+	farcall Sine
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop de
+	pop af
+	farcall Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+	ld hl, -4.5
+	add hl, de
+	jmp nc, FarDeinitBattleAnimation
+	ld e, l
+	ld d, h
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	ld a, e
+	ld [hld], a
+	ld [hl], d
+	ret
