@@ -2727,21 +2727,30 @@ BattleAnim_Flash:
 	anim_ret
 
 BattleAnim_Astonish:
-	anim_2gfx ANIM_GFX_SHINE, ANIM_GFX_HIT
-	anim_call BattleAnim_TargetObj_2Row
-	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $0, $0
+	anim_2gfx ANIM_GFX_SHINE, ANIM_GFX_MISC_2
+	anim_battlergfx_2row
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $0, $0
+	anim_wait 6
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_sound 0, 1, SFX_TACKLE
-	anim_wait 4
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_sound 0, 0, SFX_RAZOR_WIND
+	anim_wait 12
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 1
+	anim_incobj 1
+	anim_battlergfx_2row
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
+	anim_wait 1
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_FORESIGHT, 140, 56, $0
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
+	anim_sound 0, 0, SFX_RAGE
+	anim_obj ANIM_OBJ_FORESIGHT, 136, 48, $0
+	anim_obj ANIM_OBJ_DROPLET_R, 146, 52, $38
+	anim_obj ANIM_OBJ_DROPLET_L, 126, 52, $28
+	anim_wait 32
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_wait 4
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_FORESIGHT, 146, 50, $0
-	anim_wait 20
-	anim_jump BattleAnim_ShowMon_0
+	anim_ret
 
 BattleAnim_Substitute:
 	anim_sound 0, 0, SFX_SURF
