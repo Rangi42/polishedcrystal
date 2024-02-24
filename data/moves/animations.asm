@@ -2423,6 +2423,7 @@ BattleAnim_PoisonJab:
 	anim_jump BattleAnimSub_SludgeShort
 
 BattleAnim_PinMissile:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GRAY
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_RAZOR_WIND
 	anim_obj ANIM_OBJ_MEDIUM_HORN, 64, 92, $28
@@ -2441,22 +2442,31 @@ BattleAnim_PinMissile:
 	anim_ret
 
 BattleAnim_IcicleSpear:
-	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
-	anim_obj ANIM_OBJ_ICICLE,   9, 0,   9, 0, $2
-	anim_wait 8
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_ICE
+	anim_3gfx ANIM_GFX_HORN, ANIM_GFX_ICE, ANIM_GFX_HIT
+	anim_sound 0, 0, SFX_SHINE
+	anim_obj ANIM_OBJ_MEDIUM_HORN, 64, 92, $28
+	anim_wait 12
+	anim_obj ANIM_OBJ_MEDIUM_HORN, 56, 84, $28
 	anim_sound 0, 1, SFX_HORN_ATTACK
-	anim_obj ANIM_OBJ_HIT,  16, 0,   5, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_ICICLE,  10, 0,  11, 0, $2
-	anim_wait 8
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_obj ANIM_OBJ_ICE_SPLASH, 136, 56, $28
+	anim_obj ANIM_OBJ_ICE_SPLASH, 136, 56, $10
+	anim_obj ANIM_OBJ_ICE_SPLASH, 136, 56, $9c
+	anim_wait 12
+	anim_obj ANIM_OBJ_MEDIUM_HORN, 52, 88, $28
 	anim_sound 0, 1, SFX_HORN_ATTACK
-	anim_obj ANIM_OBJ_HIT, -15, 0,   7, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_ICICLE,   9, 4,  10, 0, $2
-	anim_wait 8
+	anim_obj ANIM_OBJ_HIT_YFIX, 128, 48, $0
+	anim_obj ANIM_OBJ_ICE_SPLASH, 128, 48, $28
+	anim_obj ANIM_OBJ_ICE_SPLASH, 128, 48, $10
+	anim_obj ANIM_OBJ_ICE_SPLASH, 128, 48, $9c
+	anim_wait 12
 	anim_sound 0, 1, SFX_HORN_ATTACK
-	anim_obj ANIM_OBJ_HIT, -16, 4,   6, 0, $0
-	anim_wait 8
+	anim_obj ANIM_OBJ_HIT_YFIX, 132, 52, $0
+	anim_obj ANIM_OBJ_ICE_SPLASH, 132, 52, $28
+	anim_obj ANIM_OBJ_ICE_SPLASH, 132, 52, $10
+	anim_obj ANIM_OBJ_ICE_SPLASH, 132, 52, $9c
+	anim_wait 16
 	anim_ret
 
 BattleAnim_Transform:
