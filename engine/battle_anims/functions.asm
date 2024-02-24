@@ -106,6 +106,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_PowerUp
 	dw BattleAnimFunction_Roost
 	dw BattleAnimFunction_LastResort
+	dw BattleAnimFunction_DarkPulse
 	dw BattleAnimFunction_RadialMoveIn
 	dw BattleAnimFunction_NightSlash
 	assert_table_length NUM_BATTLEANIMFUNCS
@@ -4352,6 +4353,33 @@ BattleAnimFunction_LastResort:
 	and a
 	ret nz
 	jmp FarDeinitBattleAnimation
+
+BattleAnimFunction_DarkPulse:
+; Expands object out in a ring around position at 1 pixel at a time for 13 frames and then disappears
+; Obj Param: Defines starting position in circle, and sprite rotation
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hl]
+	cp $80
+	jmp nc, FarDeinitBattleAnimation
+	ld d, a
+	add $2
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+
+	; Set sprite rotation
+	push af
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	add a
+	swap a
+	xor 4
+	ld [hl], a
+	pop af
+
+	jmp BattleAnim_StepCircle
 
 BattleAnimFunction_RadialMoveIn:
 	call BattleAnim_AnonJumptable

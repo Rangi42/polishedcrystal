@@ -2950,26 +2950,23 @@ BattleAnim_Psybeam:
 	anim_wait 48
 	anim_ret
 
-; Dark Pulse animation from Pokémon Prism
 BattleAnim_DarkPulse:
-	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_EGG
-	anim_sound 0, 0, SFX_RAGE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_DARK_PULSE
+	anim_1gfx ANIM_GFX_OBJECTS_2
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_bgp $1b
-	anim_wait 32
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
-.loop
-	anim_sound 0, 0, SFX_AEROBLAST
-	anim_obj ANIM_OBJ_SHADOW_BALL,  7, 6, 11, 4, $2
-	anim_wait 3
-	anim_obj ANIM_OBJ_SHADOW_BALL,  8, 2, 11, 4, $2
-	anim_wait 3
-	anim_loop 8, .loop
-	anim_call BattleAnim_UserObj_1Row
-	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
-	anim_wait 32
-	anim_call BattleAnim_ShowMon_1
-	anim_wait 1
-	anim_bgp $e4
+	anim_sound 0, 1, SFX_SPITE
+	anim_obj ANIM_OBJ_DARK_PULSE, 52, 92, $0
+	anim_obj ANIM_OBJ_DARK_PULSE, 48, 96, $8
+	anim_obj ANIM_OBJ_DARK_PULSE, 44, 96, $10
+	anim_obj ANIM_OBJ_DARK_PULSE, 40, 96, $18
+	anim_obj ANIM_OBJ_DARK_PULSE, 36, 92, $20
+	anim_obj ANIM_OBJ_DARK_PULSE, 40, 88, $28
+	anim_obj ANIM_OBJ_DARK_PULSE, 44, 88, $30
+	anim_obj ANIM_OBJ_DARK_PULSE, 48, 88, $38
+	anim_wait 96
+	anim_incbgeffect ANIM_BG_WHIRLPOOL
 	anim_ret
 
 BattleAnim_DreamEater:
