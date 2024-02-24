@@ -82,6 +82,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 23, 30, 31
 	RGB 29, 25, 31
+; signalbeamblue
+	RGB 31, 31, 31
+	RGB 18, 30, 31
+	RGB 04, 22, 31
+	RGB 04, 17, 31
 ; dragonpulse
 	RGB 31, 31, 31
 	RGB 28, 28, 28

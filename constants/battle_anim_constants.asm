@@ -268,6 +268,8 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_AVALANCHE_SMALL
 	const ANIM_OBJ_AVALANCHE_BIG
 	const ANIM_OBJ_RED_STAR
+	const ANIM_OBJ_ZEN_HEADBUTT
+	const ANIM_OBJ_ZEN_HEADBUTT_PARTICLE
 	const ANIM_OBJ_SEISMIC_TOSS_UP
 	const ANIM_OBJ_SEISMIC_TOSS_DOWN
 	const ANIM_OBJ_SHELL_SMASH
@@ -1031,43 +1033,44 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 ; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
 ; the first 6 matches PAL_BATTLE_OB_GRAY/YELLOW/...
 	const_def
-	const PAL_BTLCUSTOM_GRAY          ; 0
-	const PAL_BTLCUSTOM_YELLOW        ; 1
-	const PAL_BTLCUSTOM_RED           ; 2
-	const PAL_BTLCUSTOM_GREEN         ; 3
-	const PAL_BTLCUSTOM_BLUE          ; 4
-	const PAL_BTLCUSTOM_BROWN         ; 5
-	const PAL_BTLCUSTOM_METALLIC      ; 6
-	const PAL_BTLCUSTOM_PURPLE        ; 7
-	const PAL_BTLCUSTOM_ICE           ; 8
-	const PAL_BTLCUSTOM_FIRE          ; 9
-	const PAL_BTLCUSTOM_GLOBE         ; a
-	const PAL_BTLCUSTOM_WATER         ; b
-	const PAL_BTLCUSTOM_BUBBLE        ; c
-	const PAL_BTLCUSTOM_DRAGON_FIRE   ; d
-	const PAL_BTLCUSTOM_DRAGONBREATH  ; e
-	const PAL_BTLCUSTOM_AURORA        ; f
-	const PAL_BTLCUSTOM_SPORE         ; 10
-	const PAL_BTLCUSTOM_BERRY         ; 11
-	const PAL_BTLCUSTOM_LIGHT_SCREEN  ; 12
-	const PAL_BTLCUSTOM_WILL_O_WISP   ; 13
-	const PAL_BTLCUSTOM_GLOW_YELLOW   ; 14
-	const PAL_BTLCUSTOM_GLOW_LUSTER   ; 15
-	const PAL_BTLCUSTOM_DRAGON_PULSE  ; 16
-	const PAL_BTLCUSTOM_SNOW          ; 17
-	const PAL_BTLCUSTOM_REFLECT       ; 18
-	const PAL_BTLCUSTOM_MIRROR_COAT   ; 19
-	const PAL_BTLCUSTOM_ACID          ; 1a
-	const PAL_BTLCUSTOM_MOON          ; 1b
-	const PAL_BTLCUSTOM_MOONBLAST     ; 1c
-	const PAL_BTLCUSTOM_VERY_BRIGHT   ; 1d
-	const PAL_BTLCUSTOM_ATTACK        ; 1e
-	const PAL_BTLCUSTOM_DEFENSE       ; 1f
-	const PAL_BTLCUSTOM_SP_ATTACK     ; 20
-	const PAL_BTLCUSTOM_SP_DEFENSE    ; 21
-	const PAL_BTLCUSTOM_SPEED         ; 22
-	const PAL_BTLCUSTOM_ACCURACY      ; 23
-	const PAL_BTLCUSTOM_EVASION       ; 24
+	const PAL_BTLCUSTOM_GRAY             ; 0
+	const PAL_BTLCUSTOM_YELLOW           ; 1
+	const PAL_BTLCUSTOM_RED              ; 2
+	const PAL_BTLCUSTOM_GREEN            ; 3
+	const PAL_BTLCUSTOM_BLUE             ; 4
+	const PAL_BTLCUSTOM_BROWN            ; 5
+	const PAL_BTLCUSTOM_METALLIC         ; 6
+	const PAL_BTLCUSTOM_PURPLE           ; 7
+	const PAL_BTLCUSTOM_ICE              ; 8
+	const PAL_BTLCUSTOM_FIRE             ; 9
+	const PAL_BTLCUSTOM_GLOBE            ; a
+	const PAL_BTLCUSTOM_WATER            ; b
+	const PAL_BTLCUSTOM_BUBBLE           ; c
+	const PAL_BTLCUSTOM_DRAGON_FIRE      ; d
+	const PAL_BTLCUSTOM_DRAGONBREATH     ; e
+	const PAL_BTLCUSTOM_AURORA           ; f
+	const PAL_BTLCUSTOM_SPORE            ; 10
+	const PAL_BTLCUSTOM_BERRY            ; 11
+	const PAL_BTLCUSTOM_LIGHT_SCREEN     ; 12
+	const PAL_BTLCUSTOM_WILL_O_WISP      ; 13
+	const PAL_BTLCUSTOM_GLOW_YELLOW      ; 14
+	const PAL_BTLCUSTOM_GLOW_LUSTER      ; 15
+	const PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE ; 16
+	const PAL_BTLCUSTOM_DRAGON_PULSE     ; 17
+	const PAL_BTLCUSTOM_SNOW             ; 18
+	const PAL_BTLCUSTOM_REFLECT          ; 19
+	const PAL_BTLCUSTOM_MIRROR_COAT      ; 1a
+	const PAL_BTLCUSTOM_ACID             ; 1b
+	const PAL_BTLCUSTOM_MOON             ; 1c
+	const PAL_BTLCUSTOM_MOONBLAST        ; 1d
+	const PAL_BTLCUSTOM_VERY_BRIGHT      ; 1e
+	const PAL_BTLCUSTOM_ATTACK           ; 1f
+	const PAL_BTLCUSTOM_DEFENSE          ; 20
+	const PAL_BTLCUSTOM_SP_ATTACK        ; 21
+	const PAL_BTLCUSTOM_SP_DEFENSE       ; 22
+	const PAL_BTLCUSTOM_SPEED            ; 23
+	const PAL_BTLCUSTOM_ACCURACY         ; 24
+	const PAL_BTLCUSTOM_EVASION          ; 25
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1

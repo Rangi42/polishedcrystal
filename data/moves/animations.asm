@@ -2116,23 +2116,52 @@ BattleAnim_Headbutt:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-; Zen Headbutt animation from Pokémon Prism
 BattleAnim_ZenHeadbutt:
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_TargetObj_1Row
-	anim_sound 0, 0, SFX_PSYCHIC
-	anim_bgeffect ANIM_BG_TELEPORT, $0, $1, $0
-	anim_wait 32
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
-	anim_wait 16
-;	anim_sound 0, 1, SFX_TACKLE
-	anim_bgeffect ANIM_BG_TACKLE, 0, $1, 2
-	anim_wait 4
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_HIT_YFIX, 17, 0,  7, 0, $0
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE
+	anim_2gfx ANIM_GFX_GLOW, ANIM_GFX_SHINE
+	anim_battlergfx_2row
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
+	anim_bgp $1b
+	anim_sound 0, 0, SFX_PSYBEAM
+	anim_obj ANIM_OBJ_ZEN_HEADBUTT, 44, 104, $30
 	anim_wait 8
-	anim_incbgeffect ANIM_BG_TELEPORT
-	anim_call BattleAnim_ShowMon_0
+.loop
+	anim_obj ANIM_OBJ_ZEN_HEADBUTT_PARTICLE,  44, 96, $5c
+	anim_wait 8
+	anim_obj ANIM_OBJ_ZEN_HEADBUTT_PARTICLE,  44, 96, $e8
+	anim_wait 8
+	anim_obj ANIM_OBJ_ZEN_HEADBUTT_PARTICLE,  44, 96, $d0
+	anim_wait 8
+	anim_obj ANIM_OBJ_ZEN_HEADBUTT_PARTICLE,  44, 96, $50
+	anim_wait 8
+	anim_loop 2, .loop
+	anim_clearobjs
+	anim_wait 1
+	anim_2gfx ANIM_GFX_STARS, ANIM_GFX_HIT
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $0, $0
+	anim_wait 6
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_wait 12
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 1
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_clearobjs
+	anim_wait 1
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_sound 0, 0, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+.loop2
+	anim_obj ANIM_OBJ_STAR_BURST, 136, 56, $5c
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAR_BURST, 136, 56, $e8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAR_BURST, 136, 56, $d0
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAR_BURST, 136, 56, $50
+	anim_wait 2
+	anim_loop 2, .loop2
+	anim_wait 32
 	anim_ret
 
 BattleAnim_Tackle:
