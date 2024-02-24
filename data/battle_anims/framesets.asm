@@ -218,6 +218,9 @@ BattleAnimFrameData:
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
+	dw .Frameset_PoisonJabV              ; BATTLEANIMFRAMESET_POISON_JAB_V
+	dw .Frameset_PoisonJabD              ; BATTLEANIMFRAMESET_POISON_JAB_D
+	dw .Frameset_PoisonJabH              ; BATTLEANIMFRAMESET_POISON_JAB_H
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1495,4 +1498,16 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2,  4
 	oamframe BATTLEANIMOAMSET_MUSHROOM_1,  2
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 32
+	oamend
+
+.Frameset_PoisonJabV:
+	oamframe BATTLEANIMOAMSET_6D,  32, OAM_Y_FLIP
+	oamend
+
+.Frameset_PoisonJabD:
+	oamframe BATTLEANIMOAMSET_AD,  32, OAM_X_FLIP
+	oamend
+
+.Frameset_PoisonJabH:
+	oamframe BATTLEANIMOAMSET_6C,  32, OAM_X_FLIP
 	oamend

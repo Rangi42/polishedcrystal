@@ -90,6 +90,7 @@ BattleAnimOAMUpdate:
 	xor [hl]
 	and $e0
 	ld [hl], a
+	call .SetXYFlip
 	pop af
 	push bc
 	call GetBattleAnimOAMPointer
@@ -114,7 +115,7 @@ BattleAnimOAMUpdate:
 	push hl
 	ld a, [hl]
 	ld hl, wBattleAnimTempOAMFlags
-	bit 6, [hl]
+	bit OAM_Y_FLIP, [hl]
 	jr z, .no_yflip
 	add $8
 	cpl
@@ -134,7 +135,7 @@ BattleAnimOAMUpdate:
 	push hl
 	ld a, [hl]
 	ld hl, wBattleAnimTempOAMFlags
-	bit 5, [hl]
+	bit OAM_X_FLIP, [hl]
 	jr z, .no_xflip
 	add $8
 	cpl
@@ -186,6 +187,37 @@ BattleAnimOAMUpdate:
 .exit_set_carry
 	pop bc
 	scf
+	ret
+
+.SetXYFlip:
+	; If frameset ID is dynamic, var3 may adjust XY flip.
+	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
+	add hl, bc
+	ld a, [hl]
+	cp FIRST_DYNAMIC_FRAMESET
+	ret c
+
+	push bc
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	ld a, [hl]
+	ld hl, wBattleAnimTempOAMFlags
+	ld b, Y_FLIP
+	cp 4
+	call nc, .ToggleXYFlip
+	sub 3
+	ld b, X_FLIP
+	cp 4
+	call c, .ToggleXYFlip
+	pop bc
+	ret
+
+.ToggleXYFlip:
+	push af
+	ld a, b
+	xor [hl]
+	ld [hl], a
+	pop af
 	ret
 
 InitBattleAnimBuffer:
