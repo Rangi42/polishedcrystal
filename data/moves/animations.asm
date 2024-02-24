@@ -2737,7 +2737,8 @@ BattleAnim_Astonish:
 	anim_wait 12
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_wait 1
-	anim_incobj 1
+	anim_clearobjs
+	anim_wait 1
 	anim_battlergfx_2row
 	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
 	anim_wait 1
