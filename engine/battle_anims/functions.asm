@@ -107,6 +107,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_Roost
 	dw BattleAnimFunction_LastResort
 	dw BattleAnimFunction_RadialMoveIn
+	dw BattleAnimFunction_NightSlash
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -4411,4 +4412,17 @@ BattleAnimFunction_RadialMoveIn:
 	ld a, e
 	ld [hld], a
 	ld [hl], d
+	ret
+
+BattleAnimFunction_NightSlash:
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+
+	; Set x/y flip dynamically.
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	add a
+	swap a
+	ld [hl], a
 	ret

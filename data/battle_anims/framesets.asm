@@ -220,6 +220,7 @@ BattleAnimFrameData:
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	dw .Frameset_MediumHorn              ; BATTLEANIMFRAMESET_MEDIUM_HORN
 	dw .Frameset_PoisonJab               ; BATTLEANIMFRAMESET_POISON_JAB
+	dw .Frameset_CutHorizontal           ; BATTLEANIMFRAMESET_CUT_HORIZONTAL
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1506,3 +1507,20 @@ BattleAnimFrameData:
 .Frameset_PoisonJab:
 	oamframe BATTLEANIMOAMSET_6C,  32
 	oamend
+
+.Frameset_CutHorizontal:
+	oamframe BATTLEANIMOAMSET_E2,  1
+	oamframe BATTLEANIMOAMSET_E3,  1
+	oamframe BATTLEANIMOAMSET_E4,  1
+	oamframe BATTLEANIMOAMSET_E5,  1
+	oamframe BATTLEANIMOAMSET_E6,  1
+	oamframe BATTLEANIMOAMSET_E7,  1
+	oamframe BATTLEANIMOAMSET_E8,  2
+	oamframe BATTLEANIMOAMSET_E9,  2
+	oamwait 2
+	oamframe BATTLEANIMOAMSET_E9,  2
+	oamwait 2
+	oamframe BATTLEANIMOAMSET_E9,  2
+	oamwait 2
+	oamframe BATTLEANIMOAMSET_E9,  2
+	oamdelete

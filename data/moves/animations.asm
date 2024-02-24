@@ -2647,17 +2647,23 @@ BattleAnim_DrillPeck:
 	anim_wait 16
 	anim_ret
 
-; Night Slash animation from Pokémon Prism
 BattleAnim_NightSlash:
-	anim_1gfx ANIM_GFX_CUT
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_WIND_BG
 	anim_bgp $1b
-	anim_obp0 0, 1, 2, 3
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
+	anim_obp0 $c0
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 88, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 32, $6
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $08, $2, $0
 	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 19, 0,  5, 0, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 4,  4, 4, $0
+	anim_obj ANIM_OBJ_CUT_HORIZONTAL, 112, 48, $0
+	anim_wait 40
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $08, $2, $0
+	anim_sound 0, 1, SFX_CUT
+	anim_obj ANIM_OBJ_CUT_HORIZONTAL, 152, 52, $20
 	anim_wait 32
-	anim_bgp $e4
 	anim_ret
 
 BattleAnim_DazzlinGleam:

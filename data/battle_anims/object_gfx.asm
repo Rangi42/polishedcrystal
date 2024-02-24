@@ -13,7 +13,7 @@ AnimObjGFX:
 	farbank "Battle Anim Graphics"
 	battleanimgfx  0, AnimObj00GFX
 	battleanimgfx 35, AnimObjHitGFX
-	battleanimgfx  6, AnimObjCutGFX
+	battleanimgfx  7, AnimObjCutGFX
 	battleanimgfx  6, AnimObjFireGFX
 	battleanimgfx 20, AnimObjWaterGFX
 	battleanimgfx 26, AnimObjLightningGFX
