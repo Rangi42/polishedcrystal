@@ -92,6 +92,11 @@ if !DEF(MONOCHROME)
 	RGB 18, 30, 31
 	RGB 04, 22, 31
 	RGB 04, 17, 31
+; psychoboost2
+	RGB 31, 31, 31
+	RGB 31, 18, 25
+	RGB 31, 00, 27
+	RGB 15, 06, 31
 ; dragonpulse
 	RGB 31, 31, 31
 	RGB 28, 28, 28

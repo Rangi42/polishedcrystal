@@ -241,6 +241,8 @@ BattleAnimOAMData:
 	battleanimoam $02, 10, .OAMData_e7            ; BATTLEANIMOAMSET_E7
 	battleanimoam $02, 11, .OAMData_e8            ; BATTLEANIMOAMSET_E8
 	battleanimoam $02,  7, .OAMData_e8            ; BATTLEANIMOAMSET_E9
+	battleanimoam $03,  4, .OAMData_02            ; BATTLEANIMOAMSET_EA
+	battleanimoam $01,  4, .OAMData_02            ; BATTLEANIMOAMSET_EB
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
 	battleanimoam $07, 10, .OAMData_HyperVoice    ; BATTLEANIMOAMSET_HYPER_VOICE

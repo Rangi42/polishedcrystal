@@ -2849,23 +2849,48 @@ BattleAnim_NightShade:
 	anim_ret
 
 BattleAnim_TrickRoom:
-	anim_1gfx ANIM_GFX_EXPLOSION
-	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
-	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $0
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $8
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $10
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $18
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $20
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $28
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $30
-	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $38
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PSYCHO_BOOST_2
+	anim_1gfx ANIM_GFX_TRICK_ROOM
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
+	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
+	anim_sound 0, 0, SFX_PSYBEAM
 .loop
-	anim_sound 0, 2, SFX_SHARPEN
-	anim_wait 18
-	anim_loop 4, .loop
-	anim_wait 36
-	anim_incbgeffect ANIM_BG_WHIRLPOOL
+	anim_obj ANIM_OBJ_TRICK_ROOM, 80, 72, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 156, 36, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 40, 24, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 140, 100, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 164, 64, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 48, 66, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 96, 24, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 60, 96, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 102, 86, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 150, 14, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 26, 80, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 12, 50, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 72, 30, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 110, 62, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 170, 94, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_TRICK_ROOM, 80, 104, $0
+	anim_wait 3
+	anim_loop 2, .loop
+	anim_wait 32
+	anim_incbgeffect ANIM_BG_PSYCHIC
+	anim_wait 4
 	anim_ret
 
 BattleAnim_Lick:
