@@ -288,9 +288,7 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_FLASH_CANNON
 	const ANIM_OBJ_PULSING_SPARKLE
 	const ANIM_OBJ_PULSING_SPARKLE_YFIX
-	const ANIM_OBJ_POISON_JAB_V
-	const ANIM_OBJ_POISON_JAB_H
-	const ANIM_OBJ_POISON_JAB_D
+	const ANIM_OBJ_POISON_JAB
 	const ANIM_OBJ_GLIMMER_YFIX
 	const ANIM_OBJ_SCALD
 	const ANIM_OBJ_SCALD_STEAM
@@ -626,9 +624,7 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 DEF FIRST_DYNAMIC_FRAMESET EQU const_value
 	; Framesets below this can be dynamically adjusted by BATTLEANIMSTRUCT_VAR3.
 	; If you do not want this, define the frameset above FIRST_DYNAMIC_FRAMESET.
-	const BATTLEANIMFRAMESET_POISON_JAB_V
-	const BATTLEANIMFRAMESET_POISON_JAB_D
-	const BATTLEANIMFRAMESET_POISON_JAB_H
+	const BATTLEANIMFRAMESET_POISON_JAB
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)

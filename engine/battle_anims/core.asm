@@ -90,7 +90,7 @@ BattleAnimOAMUpdate:
 	xor [hl]
 	and $e0
 	ld [hl], a
-	call .SetXYFlip
+	call .SetDynamicTileData
 	pop af
 	push bc
 	call GetBattleAnimOAMPointer
@@ -189,7 +189,7 @@ BattleAnimOAMUpdate:
 	scf
 	ret
 
-.SetXYFlip:
+.SetDynamicTileData:
 	; If frameset ID is dynamic, var3 may adjust XY flip.
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
@@ -197,28 +197,42 @@ BattleAnimOAMUpdate:
 	cp FIRST_DYNAMIC_FRAMESET
 	ret c
 
-	push bc
+	; Graphics are ordered in E S NE order.
 	ld hl, BATTLEANIMSTRUCT_VAR3
 	add hl, bc
 	ld a, [hl]
-	ld hl, wBattleAnimTempOAMFlags
-	ld b, Y_FLIP
-	cp 4
-	call nc, .ToggleXYFlip
-	sub 3
-	ld b, X_FLIP
-	cp 4
-	call c, .ToggleXYFlip
-	pop bc
-	ret
+	add a
+	ld hl, .tile_data
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 
-.ToggleXYFlip:
-	push af
-	ld a, b
+	; First, set XY flip.
+	ld a, [hli]
+	push hl
+	ld hl, wBattleAnimTempOAMFlags
 	xor [hl]
 	ld [hl], a
-	pop af
+	pop hl
+	ld a, [hl]
+
+	; Then, adjust tile ID
+	ld hl, wBattleAnimTempTileID
+	add [hl]
+	ld [hl], a
 	ret
+
+.tile_data
+	db X_FLIP, $00 ; W
+	db X_FLIP, $08 ; NW
+	db Y_FLIP, $04 ; N
+	db 0, $08 ; NE
+	db Y_FLIP, $00 ; E
+	db Y_FLIP, $08 ; SE
+	db X_FLIP, $04 ; S
+	db X_FLIP | Y_FLIP, $08 ; SW
 
 InitBattleAnimBuffer:
 	ld hl, BATTLEANIMSTRUCT_OAMFLAGS

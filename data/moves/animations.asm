@@ -2392,32 +2392,32 @@ BattleAnim_PoisonJab:
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
 .loop
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_POISON_JAB_D, 132, 56, $38
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $38
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_obj ANIM_OBJ_HIT_YFIX, 140, 44, $0
-	anim_obj ANIM_OBJ_POISON_JAB_H, 132, 56, $20
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $20
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_POISON_JAB_D, 132, 56, $8
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $8
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_obj ANIM_OBJ_HIT_YFIX, 124, 60, $0
-	anim_obj ANIM_OBJ_POISON_JAB_V, 132, 56, $10
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $10
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_POISON_JAB_D, 132, 56, $28
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $28
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_obj ANIM_OBJ_HIT_YFIX, 140, 60, $0
-	anim_obj ANIM_OBJ_POISON_JAB_H, 132, 56, $0
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $0
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_POISON_JAB_D, 132, 56, $18
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $18
 	anim_wait 4
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_obj ANIM_OBJ_HIT_YFIX, 124, 44, $0
-	anim_obj ANIM_OBJ_POISON_JAB_V, 132, 56, $30
+	anim_obj ANIM_OBJ_POISON_JAB, 132, 56, $30
 	anim_wait 4
 .ok
 	anim_loop 2, .loop
