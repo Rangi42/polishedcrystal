@@ -106,7 +106,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_PowerUp
 	dw BattleAnimFunction_Roost
 	dw BattleAnimFunction_LastResort
-	dw BattleAnimFunction_RadialMoveInXYFix
+	dw BattleAnimFunction_RadialMoveIn
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -4352,7 +4352,7 @@ BattleAnimFunction_LastResort:
 	ret nz
 	jmp FarDeinitBattleAnimation
 
-BattleAnimFunction_RadialMoveInXYFix:
+BattleAnimFunction_RadialMoveIn:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero

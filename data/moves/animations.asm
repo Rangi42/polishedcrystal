@@ -2423,22 +2423,20 @@ BattleAnim_PoisonJab:
 	anim_jump BattleAnimSub_SludgeShort
 
 BattleAnim_PinMissile:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GRAY
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
-.loop
-	anim_obj ANIM_OBJ_NEEDLE,   8, 0,  11, 4, $28
-	anim_wait 8
-	anim_obj ANIM_OBJ_NEEDLE,   7, 0,  10, 4, $28
+	anim_sound 0, 0, SFX_RAZOR_WIND
+	anim_obj ANIM_OBJ_MEDIUM_HORN, 64, 92, $28
+	anim_wait 12
+	anim_obj ANIM_OBJ_MEDIUM_HORN, 56, 84, $28
 	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_HIT_SMALL, -15, 0,   7, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_NEEDLE,   6, 4,  11, 0, $28
+	anim_obj ANIM_OBJ_HIT, 136, 56, $0
+	anim_wait 12
+	anim_obj ANIM_OBJ_MEDIUM_HORN, 52, 88, $28
 	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_HIT_SMALL,  16, 0,   6, 0, $0
-	anim_wait 8
+	anim_obj ANIM_OBJ_HIT, 128, 48, $0
+	anim_wait 12
 	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_HIT_SMALL, -16, 4,   6, 4, $0
-	anim_loop 3, .loop
+	anim_obj ANIM_OBJ_HIT, 132, 52, $0
 	anim_wait 16
 	anim_ret
 

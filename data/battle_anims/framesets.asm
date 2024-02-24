@@ -218,6 +218,7 @@ BattleAnimFrameData:
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
+	dw .Frameset_MediumHorn              ; BATTLEANIMFRAMESET_MEDIUM_HORN
 	dw .Frameset_PoisonJab               ; BATTLEANIMFRAMESET_POISON_JAB
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
@@ -1497,6 +1498,10 @@ BattleAnimFrameData:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_1,  2
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 32
 	oamend
+
+.Frameset_MediumHorn:
+	oamframe BATTLEANIMOAMSET_E1,  9
+	oamdelete
 
 .Frameset_PoisonJab:
 	oamframe BATTLEANIMOAMSET_6C,  32

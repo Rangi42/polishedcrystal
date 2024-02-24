@@ -301,6 +301,7 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_BUBBLE_SPLASH
 	const ANIM_OBJ_DROPLET_R
 	const ANIM_OBJ_DROPLET_L
+	const ANIM_OBJ_MEDIUM_HORN
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -398,7 +399,7 @@ DEF NUM_ANIM_OBJS EQU const_value
 	const BATTLEANIMFUNC_POWER_UP
 	const BATTLEANIMFUNC_ROOST
 	const BATTLEANIMFUNC_LAST_RESORT
-	const BATTLEANIMFUNC_RADIAL_MOVE_IN_XYFIX
+	const BATTLEANIMFUNC_RADIAL_MOVE_IN
 DEF NUM_BATTLEANIMFUNCS EQU const_value
 
 ; BattleAnimFrameData indexes (see data/battle_anims/framesets.asm)
@@ -621,6 +622,7 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_DROPLET_R
 	const BATTLEANIMFRAMESET_DROPLET_L
 	const BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
+	const BATTLEANIMFRAMESET_MEDIUM_HORN
 DEF FIRST_DYNAMIC_FRAMESET EQU const_value
 	; Framesets below this can be dynamically adjusted by BATTLEANIMSTRUCT_VAR3.
 	; If you do not want this, define the frameset above FIRST_DYNAMIC_FRAMESET.
@@ -854,6 +856,7 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_DE ; FA in MAE
 	const BATTLEANIMOAMSET_DF ; FB in MAE
 	const BATTLEANIMOAMSET_E0 ; DD in MAE
+	const BATTLEANIMOAMSET_E1 ; D8 in sour
 	const BATTLEANIMOAMSET_STONE_EDGE
 	const BATTLEANIMOAMSET_BRICK_BREAK
 	const BATTLEANIMOAMSET_HYPER_VOICE ; d1 in chatty

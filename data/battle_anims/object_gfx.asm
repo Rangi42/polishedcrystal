@@ -41,7 +41,7 @@ AnimObjGFX:
 	battleanimgfx 12, AnimObjSandGFX
 	battleanimgfx 14, AnimObjWebGFX
 	battleanimgfx 16, AnimObjHazeGFX
-	battleanimgfx  7, AnimObjHornGFX
+	battleanimgfx 11, AnimObjHornGFX
 	battleanimgfx  8, AnimObjFlowerGFX
 	battleanimgfx 40, AnimObjMiscGFX
 	battleanimgfx 36, AnimObjSkyAttackGFX
