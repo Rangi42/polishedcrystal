@@ -250,6 +250,8 @@ BattleAnimOAMData:
 	battleanimoam $09, 18, .OAMData_ef            ; BATTLEANIMOAMSET_F0
 	battleanimoam $00, 20, .OAMData_f1            ; BATTLEANIMOAMSET_F1
 	battleanimoam $05, 16, .OAMData_f2            ; BATTLEANIMOAMSET_F2
+	battleanimoam $0a,  9, .OAMData_f3            ; BATTLEANIMOAMSET_F3
+	battleanimoam $00,  4, .OAMData_f4            ; BATTLEANIMOAMSET_F4
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
 	battleanimoam $07, 10, .OAMData_HyperVoice    ; BATTLEANIMOAMSET_HYPER_VOICE
@@ -1368,6 +1370,23 @@ BattleAnimOAMData:
 	dbsprite   0,   0, 0, 7, $01, X_FLIP | Y_FLIP
 	dbsprite   1,  -1, 0, 7, $02, X_FLIP | Y_FLIP
 	dbsprite   0,  -1, 0, 7, $03, X_FLIP | Y_FLIP
+
+.OAMData_f3:
+	dsprite  -2, 4,  -2, 4, $00, $0
+	dsprite  -2, 4,  -1, 4, $03, $0
+	dsprite  -2, 4,   0, 4, $06, $0
+	dsprite  -1, 4,  -2, 4, $01, $0
+	dsprite  -1, 4,  -1, 4, $04, $0
+	dsprite  -1, 4,   0, 4, $07, $0
+	dsprite   0, 4,  -2, 4, $02, $0
+	dsprite   0, 4,  -1, 4, $05, $0
+	dsprite   0, 4,   0, 4, $08, $0
+
+.OAMData_f4:
+	dbsprite  -1,  1, 0, 0, $00, $0
+	dbsprite  -3,  2, 0, 0, $01, $0
+	dbsprite  -2,  2, 0, 0, $02, $0
+	dbsprite  -1,  2, 0, 0, $03, $0
 
 .OAMData_StoneEdge:
 	dsprite  -1, 0,  -1, 0, $00, $0

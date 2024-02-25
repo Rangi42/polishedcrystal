@@ -23,14 +23,14 @@ AnimObjGFX:
 	battleanimgfx 19, AnimObjRocksGFX
 	battleanimgfx  6, AnimObjIceGFX
 	battleanimgfx 10 ; use AnimBallObjGFX
-	battleanimgfx  9, AnimObjPoisonGFX
+	battleanimgfx 19, AnimObjPoisonGFX
 	battleanimgfx 14, AnimObjBubbleGFX
 	battleanimgfx 16, AnimObjNoiseGFX
 	battleanimgfx  2, AnimObjPowderGFX
 	battleanimgfx 11, AnimObjBeamGFX
 	battleanimgfx  9, AnimObjSpeedGFX
 	battleanimgfx 10, AnimObjChargeGFX
-	battleanimgfx 19, AnimObjWindGFX
+	battleanimgfx 21, AnimObjWindGFX
 	battleanimgfx  4, AnimObjWindBGGFX
 	battleanimgfx 10, AnimObjWhipGFX
 	battleanimgfx 12, AnimObjEggGFX

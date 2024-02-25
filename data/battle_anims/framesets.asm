@@ -186,31 +186,33 @@ BattleAnimFrameData:
 	dw .Frameset_b7 ; b7
 	dw .Frameset_b8 ; b8
 	dw .Frameset_b9 ; b9
-	dw .Frameset_StoneEdge ; ba
-	dw .Frameset_BrickBreak ; bb
-	dw .Frameset_HyperVoice ; bc
-	dw .Frameset_SeedBomb ; bd
-	dw .Frameset_MidGlowShrinking ; be
-	dw .Frameset_DragonPulse ; bf
-	dw .Frameset_BulletPunch ; c0
-	dw .Frameset_LongPunch ; c1
-	dw .Frameset_FocusBlast ; c2
-	dw .Frameset_IceLong ; c3
-	dw .Frameset_TrickRoom ; c4
-	dw .Frameset_Vortex ; c5
-	dw .Frameset_BulkUp ; c6
-	dw .Frameset_ShrinkingRingSmall ; c7
-	dw .Frameset_ShrinkingRingBig ; c8
-	dw .Frameset_PulsingEnergyOrbBig ; c9
-	dw .Frameset_RedStar ; ca
-	dw .Frameset_Hail ; cb
-	dw .Frameset_UTurn_Fall ; cc
-	dw .Frameset_SwirlShort ; cd
-	dw .Frameset_SmallGlow ; ce
-	dw .Frameset_BigGlowClear ; cf
-	dw .Frameset_Berry ; d0
-	dw .Frameset_StatUp ; d1
-	dw .Frameset_StatDown ; d2
+	dw .Frameset_GunkShot ; ba
+	dw .Frameset_StoneEdge ; bb
+	dw .Frameset_BrickBreak ; bc
+	dw .Frameset_HyperVoice ; bd
+	dw .Frameset_SeedBomb ; be
+	dw .Frameset_MidGlowShrinking ; bf
+	dw .Frameset_DragonPulse ; c0
+	dw .Frameset_BulletPunch ; c1
+	dw .Frameset_LongPunch ; c2
+	dw .Frameset_FocusBlast ; c3
+	dw .Frameset_IceLong ; c4
+	dw .Frameset_TrickRoom ; c5
+	dw .Frameset_Vortex ; c6
+	dw .Frameset_BulkUp ; c7
+	dw .Frameset_MudShot ; c8
+	dw .Frameset_ShrinkingRingSmall ; c9
+	dw .Frameset_ShrinkingRingBig ; ca
+	dw .Frameset_PulsingEnergyOrbBig ; cb
+	dw .Frameset_RedStar ; cc
+	dw .Frameset_Hail ; cd
+	dw .Frameset_UTurn_Fall ; ce
+	dw .Frameset_SwirlShort ; cf
+	dw .Frameset_SmallGlow ; d0
+	dw .Frameset_BigGlowClear ; d1
+	dw .Frameset_Berry ; d2
+	dw .Frameset_StatUp ; d3
+	dw .Frameset_StatDown ; d4
 	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
 	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
 	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
@@ -218,6 +220,7 @@ BattleAnimFrameData:
 	dw .Frameset_TinyGlow                ; BATTLEANIMFRAMESET_TINY_GLOW
 	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
+	dw .Frameset_InkSplash               ; BATTLEANIMFRAMESET_INK_SPLASH
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
@@ -1320,6 +1323,19 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_54, 40
 	battleoamend
 
+.Frameset_GunkShot:
+	battleoamwait 20
+	battleoamframe BATTLEANIMOAMSET_1F,  20
+	battleoamframe BATTLEANIMOAMSET_F4,  20
+	battleoamframe BATTLEANIMOAMSET_F3, 10
+	battleoamwait 4
+	battleoamframe BATTLEANIMOAMSET_F3, 4
+	battleoamwait 4
+	battleoamframe BATTLEANIMOAMSET_F3, 4
+	battleoamwait 4
+	battleoamframe BATTLEANIMOAMSET_F3, 4
+	battleoamdelete
+
 .Frameset_StoneEdge:
 	battleoamframe BATTLEANIMOAMSET_STONE_EDGE,  50
 	battleoamdelete
@@ -1413,6 +1429,10 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_EF,  32
 	battleoamframe BATTLEANIMOAMSET_F0,  24
 	battleoamframe BATTLEANIMOAMSET_F0,  24
+	battleoamend
+
+.Frameset_MudShot:
+	battleoamframe BATTLEANIMOAMSET_F4,  8
 	battleoamend
 
 .Frameset_ShrinkingRingSmall:
@@ -1519,6 +1539,10 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_21,  2
 	battleoamframe BATTLEANIMOAMSET_1B,  2
 	battleoamdelete
+
+.Frameset_InkSplash:
+	battleoamframe BATTLEANIMOAMSET_1F,  8
+	battleoamend
 
 .Frameset_BubbleSplash:
 	battleoamframe BATTLEANIMOAMSET_20,  8

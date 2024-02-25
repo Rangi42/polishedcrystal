@@ -4050,35 +4050,56 @@ BattleAnim_BellyDrum:
 	anim_ret
 
 BattleAnim_GunkShot:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_PURPLE
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PURPLE
-	anim_1gfx ANIM_GFX_POISON
-	anim_bgp $f8
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $85, $2, $0
-	anim_sound 6, 2, SFX_BUBBLE_BEAM
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
+	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_PURPLE
+	anim_2gfx ANIM_GFX_WIND_BG, ANIM_GFX_POISON
+	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
+	anim_obj ANIM_OBJ_GUNK_SHOT, 48, 96, $0
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
 .loop
-	anim_obj ANIM_OBJ_SLUDGE, 132, 72, $0
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_GUNK_SHOT_BUBBLES, 48, 88, $5c
+	anim_wait 2
+	anim_obj ANIM_OBJ_GUNK_SHOT_BUBBLES, 48, 88, $e8
+	anim_wait 2
+	anim_obj ANIM_OBJ_GUNK_SHOT_BUBBLES, 48, 88, $d0
+	anim_wait 2
+	anim_obj ANIM_OBJ_GUNK_SHOT_BUBBLES, 48, 88, $50
+	anim_wait 2
+	anim_loop 6, .loop
+	anim_wait 16
+	anim_clearobjs
+	anim_bgp $1b
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PSYCHO_BOOST_2
+	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_PSYCHO_BOOST_2
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $4, $10
+.loop2
 	anim_sound 6, 2, SFX_BUBBLE_BEAM
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_SLUDGE, 116, 72, $0
+	anim_obj ANIM_OBJ_MUD_SHOT, 64, 92, $4
+	anim_wait 4
+	anim_obj ANIM_OBJ_MUD_SHOT, 64, 92, $4
+	anim_wait 4
 	anim_sound 6, 2, SFX_BUBBLE_BEAM
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_SLUDGE, 148, 72, $0
-	anim_sound 6, 2, SFX_BUBBLE_BEAM
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_loop 4, .loop
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $5c
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $e8
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $d0
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $50
+	anim_obj ANIM_OBJ_MUD_SHOT, 64, 92, $4
+	anim_wait 4
+	anim_obj ANIM_OBJ_MUD_SHOT, 64, 92, $4
+	anim_wait 4
+	anim_loop 4, .loop2
+	anim_wait 4
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $5c
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $e8
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $d0
+	anim_obj ANIM_OBJ_INK_SPLASH, 136, 56, $50
 	anim_wait 32
 	anim_ret
 
