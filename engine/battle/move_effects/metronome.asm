@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, ENERGY_BALL
+	ld b, ICE_SHARD
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr

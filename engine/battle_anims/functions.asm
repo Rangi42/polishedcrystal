@@ -94,7 +94,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RockSmash
 	dw BattleAnimFunction_Cotton
 	dw BattleAnimFunction_PauseThenRush
-	dw BattleAnimFunction_52
+	dw BattleAnimFunction_AirCutter
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_BubbleSplash
 	dw BattleAnimFunction_Moon
@@ -107,6 +107,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_Roost
 	dw BattleAnimFunction_LastResort
 	dw BattleAnimFunction_DarkPulse
+	dw BattleAnimFunction_SpiralDescent_Fast
 	dw BattleAnimFunction_RadialMoveIn
 	dw BattleAnimFunction_NightSlash
 	assert_table_length NUM_BATTLEANIMFUNCS
@@ -2004,7 +2005,7 @@ BattleAnimFunction_Kick:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_52:
+BattleAnimFunction_AirCutter:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -4386,6 +4387,49 @@ BattleAnimFunction_DarkPulse:
 	pop af
 
 	jmp BattleAnim_StepCircle
+
+BattleAnimFunction_SpiralDescent_Fast:
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hl]
+	ld d, $18
+	push af
+	push de
+	farcall Sine
+	sra a
+	sra a
+	sra a
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	add [hl]
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop de
+	pop af
+	farcall Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	inc [hl]
+	inc [hl]
+	inc [hl]
+	ld a, [hl]
+	and $7
+	ret nz
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	ld a, [hl]
+	cp $18
+	jmp nc, FarDeinitBattleAnimation
+	inc [hl]
+	inc [hl]
+	inc [hl]
+	inc [hl]
+	inc [hl]
+	ret
 
 BattleAnimFunction_RadialMoveIn:
 	call BattleAnim_AnonJumptable

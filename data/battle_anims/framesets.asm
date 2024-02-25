@@ -112,7 +112,7 @@ BattleAnimFrameData:
 	dw .Frameset_6d ; 6d
 	dw .Frameset_6e ; 6e
 	dw .Frameset_6f ; 6f
-	dw .Frameset_70 ; 70
+	dw .Frameset_Mist ; 70
 	dw .Frameset_71 ; 71
 	dw .Frameset_72 ; 72
 	dw .Frameset_73 ; 73
@@ -195,21 +195,22 @@ BattleAnimFrameData:
 	dw .Frameset_BulletPunch ; c0
 	dw .Frameset_LongPunch ; c1
 	dw .Frameset_FocusBlast ; c2
-	dw .Frameset_TrickRoom ; c3
-	dw .Frameset_Vortex ; c4
-	dw .Frameset_BulkUp ; c5
-	dw .Frameset_ShrinkingRingSmall ; c6
-	dw .Frameset_ShrinkingRingBig ; c7
-	dw .Frameset_PulsingEnergyOrbBig ; c8
-	dw .Frameset_RedStar ; c9
-	dw .Frameset_Hail ; ca
-	dw .Frameset_UTurn_Fall ; cb
-	dw .Frameset_SwirlShort ; cc
-	dw .Frameset_SmallGlow ; cd
-	dw .Frameset_BigGlowClear ; ce
-	dw .Frameset_Berry ; cf
-	dw .Frameset_StatUp ; d0
-	dw .Frameset_StatDown ; d1
+	dw .Frameset_IceLong ; c3
+	dw .Frameset_TrickRoom ; c4
+	dw .Frameset_Vortex ; c5
+	dw .Frameset_BulkUp ; c6
+	dw .Frameset_ShrinkingRingSmall ; c7
+	dw .Frameset_ShrinkingRingBig ; c8
+	dw .Frameset_PulsingEnergyOrbBig ; c9
+	dw .Frameset_RedStar ; ca
+	dw .Frameset_Hail ; cb
+	dw .Frameset_UTurn_Fall ; cc
+	dw .Frameset_SwirlShort ; cd
+	dw .Frameset_SmallGlow ; ce
+	dw .Frameset_BigGlowClear ; cf
+	dw .Frameset_Berry ; d0
+	dw .Frameset_StatUp ; d1
+	dw .Frameset_StatDown ; d2
 	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
 	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
 	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
@@ -962,7 +963,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_90, 16
 	battleoamrestart
 
-.Frameset_70:
+.Frameset_Mist:
 	battleoamframe BATTLEANIMOAMSET_91, 16
 	battleoamframe BATTLEANIMOAMSET_92, 16
 	battleoamrestart
@@ -1378,6 +1379,12 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_00,  1
 	battleoamframe BATTLEANIMOAMSET_07,  1
 	battleoamrestart
+
+.Frameset_IceLong:
+	battleoamframe BATTLEANIMOAMSET_10,  3
+	battleoamframe BATTLEANIMOAMSET_0F,  3
+	battleoamframe BATTLEANIMOAMSET_12,  1
+	battleoamend
 
 .Frameset_TrickRoom:
 	battleoamframe BATTLEANIMOAMSET_0F,  1
