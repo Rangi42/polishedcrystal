@@ -107,6 +107,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 18, 25
 	RGB 31, 00, 27
 	RGB 15, 06, 31
+; gastroacid
+	RGB 31, 31, 31
+	RGB 27, 31, 05
+	RGB 15, 31, 01
+	RGB 09, 25, 00
 ; darkpulse
 	RGB 31, 31, 31
 	RGB 25, 00, 08
