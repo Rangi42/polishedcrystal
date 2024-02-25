@@ -198,6 +198,7 @@ BattleAnimFrameData:
 	dw .Frameset_FocusBlast ; c3
 	dw .Frameset_IceLong ; c4
 	dw .Frameset_TrickRoom ; c5
+	dw .Frameset_ClawTear                ; BATTLEANIMFRAMESET_CLAW_TEAR
 	dw .Frameset_Vortex ; c6
 	dw .Frameset_ShrinkingGlow           ; BATTLEANIMFRAMESET_SHRINKING_GLOW
 	dw .Frameset_BulkUp ; c7
@@ -1420,6 +1421,10 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_EB,  1
 	battleoamframe BATTLEANIMOAMSET_18,  1
 	battleoamdelete
+
+.Frameset_ClawTear:
+	battleoamframe BATTLEANIMOAMSET_EA, 16
+	battleoamend
 
 .Frameset_Vortex:
 	battleoamframe BATTLEANIMOAMSET_D8,  1
