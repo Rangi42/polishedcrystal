@@ -3124,18 +3124,41 @@ BattleAnim_SwordsDance:
 	anim_wait 56
 	anim_ret
 
-; Dragon Dance animation from Pokémon Prism
 BattleAnim_DragonDance:
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_TargetObj_1Row
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_DRAGONBREATH
+	anim_1gfx ANIM_GFX_CHARGE
+	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
 .loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $8, $2, $0
 	anim_sound 0, 0, SFX_OUTRAGE
-	anim_bgeffect ANIM_BG_WAVE_DEFORM_MON, $0, $1, $0
-	anim_wait 16
-	anim_incbgeffect ANIM_BG_WAVE_DEFORM_MON
-	anim_wait 16
-	anim_loop 3, .loop
+	anim_obj ANIM_OBJ_DRAGON_DANCE, 48, 104, $0
+	anim_wait 8
+	anim_loop 8, .loop
+	anim_wait 40
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
+	anim_wait 1
+	anim_1gfx ANIM_GFX_SPEED
+	anim_call BattleAnim_TargetObj_1Row
+	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+.loop2
+	anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_FOCUS, 44, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 36, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 52, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 28, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 60, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 20, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 68, 108, $8
+	anim_wait 2
+	anim_loop 3, .loop2
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 

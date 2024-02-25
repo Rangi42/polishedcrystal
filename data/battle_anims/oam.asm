@@ -245,6 +245,7 @@ BattleAnimOAMData:
 	battleanimoam $01,  4, .OAMData_02            ; BATTLEANIMOAMSET_EB
 	battleanimoam $00,  9, .OAMData_ec            ; BATTLEANIMOAMSET_EC
 	battleanimoam $06,  9, .OAMData_ed            ; BATTLEANIMOAMSET_ED
+	battleanimoam $09,  4, .OAMData_02            ; BATTLEANIMOAMSET_EE
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
 	battleanimoam $07, 10, .OAMData_HyperVoice    ; BATTLEANIMOAMSET_HYPER_VOICE

@@ -29,7 +29,7 @@ AnimObjGFX:
 	battleanimgfx  2, AnimObjPowderGFX
 	battleanimgfx 11, AnimObjBeamGFX
 	battleanimgfx  9, AnimObjSpeedGFX
-	battleanimgfx  9, AnimObjChargeGFX
+	battleanimgfx 10, AnimObjChargeGFX
 	battleanimgfx 19, AnimObjWindGFX
 	battleanimgfx  4, AnimObjWindBGGFX
 	battleanimgfx 10, AnimObjWhipGFX
