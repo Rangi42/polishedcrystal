@@ -221,6 +221,7 @@ BattleAnimFrameData:
 	dw .Frameset_PulsingGlow             ; BATTLEANIMFRAMESET_PULSING_SPARKLE
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
 	dw .Frameset_InkSplash               ; BATTLEANIMFRAMESET_INK_SPLASH
+	dw .Frameset_SmokePuff               ; BATTLEANIMFRAMESET_SMOKE_PUFF
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
@@ -1543,6 +1544,12 @@ BattleAnimFrameData:
 .Frameset_InkSplash:
 	battleoamframe BATTLEANIMOAMSET_1F,  8
 	battleoamend
+
+.Frameset_SmokePuff:
+	battleoamframe BATTLEANIMOAMSET_BD,  2
+	battleoamframe BATTLEANIMOAMSET_94,  2
+	battleoamframe BATTLEANIMOAMSET_1B,  2
+	battleoamdelete
 
 .Frameset_BubbleSplash:
 	battleoamframe BATTLEANIMOAMSET_20,  8
