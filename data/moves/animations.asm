@@ -4424,18 +4424,17 @@ BattleAnim_IcyWind:
 	anim_ret
 
 BattleAnim_PowerWhip:
-BattleAnim_Guillotine: ; removed
-	anim_1gfx ANIM_GFX_CUT
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $10
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
-	anim_sound 0, 1, SFX_VICEGRIP
-;	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, -13, 4,   5, 4, $0
-	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, -13, 0,   5, 0, $0
-;	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, -14, 4,   4, 4, $0
-;	anim_obj ANIM_OBJ_CUT_UP_RIGHT,  15, 4,   9, 4, $0
-	anim_obj ANIM_OBJ_CUT_UP_RIGHT,  15, 0,   9, 0, $0
-;	anim_obj ANIM_OBJ_CUT_UP_RIGHT,  14, 4,   8, 4, $0
-;	anim_obj ANIM_OBJ_CUT_UP_RIGHT,  15, 0,   9, 0, $0
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_GREEN
+	anim_2gfx ANIM_GFX_BIG_WHIP, ANIM_GFX_HIT
+	anim_sound 0, 0, SFX_CUT
+	anim_obj ANIM_OBJ_PUNISHMENT, 96, 245, $0c
+	anim_wait 2
+	anim_obj ANIM_OBJ_PUNISHMENT, 96, 245, $0c
+	anim_wait 12
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $08
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_Y, $28, $2, $0
+	anim_sound 0, 1, SFX_THUNDER
+	anim_obj ANIM_OBJ_HIT_BIG, 136, 48, $0
 	anim_wait 32
 	anim_ret
 

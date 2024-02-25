@@ -208,12 +208,13 @@ BattleAnimFrameData:
 	dw .Frameset_RedStar ; cc
 	dw .Frameset_Hail ; cd
 	dw .Frameset_UTurn_Fall ; ce
-	dw .Frameset_SwirlShort ; cf
-	dw .Frameset_SmallGlow ; d0
-	dw .Frameset_BigGlowClear ; d1
-	dw .Frameset_Berry ; d2
-	dw .Frameset_StatUp ; d3
-	dw .Frameset_StatDown ; d4
+	dw .Frameset_BigWhip ; cf
+	dw .Frameset_SwirlShort ; d0
+	dw .Frameset_SmallGlow ; d1
+	dw .Frameset_BigGlowClear ; d2
+	dw .Frameset_Berry ; d3
+	dw .Frameset_StatUp ; d4
+	dw .Frameset_StatDown ; d5
 	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
 	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
 	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
@@ -1469,6 +1470,17 @@ BattleAnimFrameData:
 .Frameset_UTurn_Fall:
 	battleoamframe BATTLEANIMOAMSET_U_TURN_FALL, 32
 	battleoamend
+
+.Frameset_BigWhip:
+	battleoamframe BATTLEANIMOAMSET_F5,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_C4,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_F5,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_F4,  1, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_F5,  1, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_C4,  1
+	battleoamframe BATTLEANIMOAMSET_F5,  1
+	battleoamframe BATTLEANIMOAMSET_F4,  1
+	battleoamrestart
 
 .Frameset_SwirlShort:
 	battleoamframe BATTLEANIMOAMSET_SWIRL_SHORT_1,  1
