@@ -186,7 +186,7 @@ BattleAnimFrameData:
 	dw .Frameset_b7 ; b7
 	dw .Frameset_b8 ; b8
 	dw .Frameset_b9 ; b9
-	dw .Frameset_GunkShot ; ba
+	dw .Frameset_GunkShot                ; BATTLEANIMFRAMESET_GUNK_SHOT
 	dw .Frameset_StoneEdge ; bb
 	dw .Frameset_BrickBreak ; bc
 	dw .Frameset_HyperVoice ; bd
@@ -200,7 +200,7 @@ BattleAnimFrameData:
 	dw .Frameset_TrickRoom ; c5
 	dw .Frameset_Vortex ; c6
 	dw .Frameset_BulkUp ; c7
-	dw .Frameset_MudShot ; c8
+	dw .Frameset_MudShot                 ; BATTLEANIMFRAMESET_MUD_SHOT
 	dw .Frameset_ShrinkingRingSmall ; c9
 	dw .Frameset_ShrinkingRingBig ; ca
 	dw .Frameset_PulsingEnergyOrbBig ; cb
@@ -1326,7 +1326,7 @@ BattleAnimFrameData:
 .Frameset_GunkShot:
 	battleoamwait 20
 	battleoamframe BATTLEANIMOAMSET_1F,  20
-	battleoamframe BATTLEANIMOAMSET_F4,  20
+	battleoamframe BATTLEANIMOAMSET_EE,  20
 	battleoamframe BATTLEANIMOAMSET_F3, 10
 	battleoamwait 4
 	battleoamframe BATTLEANIMOAMSET_F3, 4
@@ -1432,7 +1432,7 @@ BattleAnimFrameData:
 	battleoamend
 
 .Frameset_MudShot:
-	battleoamframe BATTLEANIMOAMSET_F4,  8
+	battleoamframe BATTLEANIMOAMSET_EE,  8
 	battleoamend
 
 .Frameset_ShrinkingRingSmall:
