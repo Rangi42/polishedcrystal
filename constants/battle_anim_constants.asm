@@ -1085,30 +1085,31 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BTLCUSTOM_DRAGONBREATH     ; e
 	const PAL_BTLCUSTOM_AURORA           ; f
 	const PAL_BTLCUSTOM_SPORE            ; 10
-	const PAL_BTLCUSTOM_BERRY            ; 11
-	const PAL_BTLCUSTOM_LIGHT_SCREEN     ; 12
-	const PAL_BTLCUSTOM_WILL_O_WISP      ; 13
-	const PAL_BTLCUSTOM_GLOW_YELLOW      ; 14
-	const PAL_BTLCUSTOM_GLOW_LUSTER      ; 15
-	const PAL_BTLCUSTOM_BRIGHT           ; 16
-	const PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE ; 17
-	const PAL_BTLCUSTOM_PSYCHO_BOOST_2   ; 18
-	const PAL_BTLCUSTOM_DARK_PULSE       ; 19
-	const PAL_BTLCUSTOM_DRAGON_PULSE     ; 1a
-	const PAL_BTLCUSTOM_SNOW             ; 1b
-	const PAL_BTLCUSTOM_REFLECT          ; 1c
-	const PAL_BTLCUSTOM_MIRROR_COAT      ; 1d
-	const PAL_BTLCUSTOM_ACID             ; 1e
-	const PAL_BTLCUSTOM_MOON             ; 1f
-	const PAL_BTLCUSTOM_MOONBLAST        ; 20
-	const PAL_BTLCUSTOM_VERY_BRIGHT      ; 21
-	const PAL_BTLCUSTOM_ATTACK           ; 22
-	const PAL_BTLCUSTOM_DEFENSE          ; 23
-	const PAL_BTLCUSTOM_SP_ATTACK        ; 24
-	const PAL_BTLCUSTOM_SP_DEFENSE       ; 25
-	const PAL_BTLCUSTOM_SPEED            ; 26
-	const PAL_BTLCUSTOM_ACCURACY         ; 27
-	const PAL_BTLCUSTOM_EVASION          ; 28
+	const PAL_BTLCUSTOM_PEACH            ; 11
+	const PAL_BTLCUSTOM_BERRY            ; 12
+	const PAL_BTLCUSTOM_LIGHT_SCREEN     ; 13
+	const PAL_BTLCUSTOM_WILL_O_WISP      ; 14
+	const PAL_BTLCUSTOM_GLOW_YELLOW      ; 15
+	const PAL_BTLCUSTOM_GLOW_LUSTER      ; 16
+	const PAL_BTLCUSTOM_BRIGHT           ; 17
+	const PAL_BTLCUSTOM_SIGNAL_BEAM_BLUE ; 18
+	const PAL_BTLCUSTOM_PSYCHO_BOOST_2   ; 19
+	const PAL_BTLCUSTOM_DARK_PULSE       ; 1a
+	const PAL_BTLCUSTOM_DRAGON_PULSE     ; 1b
+	const PAL_BTLCUSTOM_SNOW             ; 1c
+	const PAL_BTLCUSTOM_REFLECT          ; 1d
+	const PAL_BTLCUSTOM_MIRROR_COAT      ; 1e
+	const PAL_BTLCUSTOM_ACID             ; 1f
+	const PAL_BTLCUSTOM_MOON             ; 20
+	const PAL_BTLCUSTOM_MOONBLAST        ; 21
+	const PAL_BTLCUSTOM_VERY_BRIGHT      ; 22
+	const PAL_BTLCUSTOM_ATTACK           ; 23
+	const PAL_BTLCUSTOM_DEFENSE          ; 24
+	const PAL_BTLCUSTOM_SP_ATTACK        ; 25
+	const PAL_BTLCUSTOM_SP_DEFENSE       ; 26
+	const PAL_BTLCUSTOM_SPEED            ; 27
+	const PAL_BTLCUSTOM_ACCURACY         ; 28
+	const PAL_BTLCUSTOM_EVASION          ; 29
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1

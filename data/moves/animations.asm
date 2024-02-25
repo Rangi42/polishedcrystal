@@ -2997,14 +2997,14 @@ BattleAnim_DreamEater:
 	anim_ret
 
 BattleAnim_LeechLife:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_PURPLE
-	anim_setobjpal PAL_BATTLE_OB_GREEN, PAL_BTLCUSTOM_BLUE
+	anim_setobjpal PAL_BATTLE_OB_GREEN, PAL_BTLCUSTOM_PEACH
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GRAY
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
-	anim_obj ANIM_OBJ_NEEDLE,   8, 0,  11, 4, $14
+	anim_obj ANIM_OBJ_NEEDLE, 64, 92, $14
 	anim_wait 16
 	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_HIT_SMALL, -15, 0,   7, 0, $0
-	anim_wait 16
+	anim_obj ANIM_OBJ_HIT_SMALL, 136, 56, $0
+	anim_wait 12
 	anim_1gfx ANIM_GFX_CHARGE
 .loop
 	anim_sound 6, 3, SFX_WATER_GUN

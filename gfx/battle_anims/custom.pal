@@ -57,6 +57,11 @@ if !DEF(MONOCHROME)
 	RGB 05, 27, 06
 	RGB 31, 31, 08
 	RGB 00, 28, 22
+; peach
+	RGB 31, 31, 31
+	RGB 31, 25, 14
+	RGB 31, 13, 04
+	RGB 00, 00, 00
 ; berry
 	RGB 31, 31, 31
 	RGB 27, 21, 10
