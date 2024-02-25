@@ -189,26 +189,27 @@ BattleAnimFrameData:
 	dw .Frameset_StoneEdge ; ba
 	dw .Frameset_BrickBreak ; bb
 	dw .Frameset_HyperVoice ; bc
-	dw .Frameset_MidGlowShrinking ; bd
-	dw .Frameset_DragonPulse ; be
-	dw .Frameset_BulletPunch ; bf
-	dw .Frameset_LongPunch ; c0
-	dw .Frameset_FocusBlast ; c1
-	dw .Frameset_TrickRoom ; c2
-	dw .Frameset_Vortex ; c3
-	dw .Frameset_BulkUp ; c4
-	dw .Frameset_ShrinkingRingSmall ; c5
-	dw .Frameset_ShrinkingRingBig ; c6
-	dw .Frameset_PulsingEnergyOrbBig ; c7
-	dw .Frameset_RedStar ; c8
-	dw .Frameset_Hail ; c9
-	dw .Frameset_UTurn_Fall ; ca
-	dw .Frameset_SwirlShort ; cb
-	dw .Frameset_SmallGlow ; cc
-	dw .Frameset_BigGlowClear ; cd
-	dw .Frameset_Berry ; ce
-	dw .Frameset_StatUp ; cf
-	dw .Frameset_StatDown ; d0
+	dw .Frameset_SeedBomb ; bd
+	dw .Frameset_MidGlowShrinking ; be
+	dw .Frameset_DragonPulse ; bf
+	dw .Frameset_BulletPunch ; c0
+	dw .Frameset_LongPunch ; c1
+	dw .Frameset_FocusBlast ; c2
+	dw .Frameset_TrickRoom ; c3
+	dw .Frameset_Vortex ; c4
+	dw .Frameset_BulkUp ; c5
+	dw .Frameset_ShrinkingRingSmall ; c6
+	dw .Frameset_ShrinkingRingBig ; c7
+	dw .Frameset_PulsingEnergyOrbBig ; c8
+	dw .Frameset_RedStar ; c9
+	dw .Frameset_Hail ; ca
+	dw .Frameset_UTurn_Fall ; cb
+	dw .Frameset_SwirlShort ; cc
+	dw .Frameset_SmallGlow ; cd
+	dw .Frameset_BigGlowClear ; ce
+	dw .Frameset_Berry ; cf
+	dw .Frameset_StatUp ; d0
+	dw .Frameset_StatDown ; d1
 	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
 	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
 	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
@@ -1329,6 +1330,10 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_72,  0
 	battleoamframe BATTLEANIMOAMSET_73,  0
 	battleoamframe BATTLEANIMOAMSET_HYPER_VOICE,  0
+	battleoamdelete
+
+.Frameset_SeedBomb:
+	battleoamframe BATTLEANIMOAMSET_69,  40
 	battleoamdelete
 
 .Frameset_MidGlowShrinking:
