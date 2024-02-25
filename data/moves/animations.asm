@@ -4188,31 +4188,18 @@ BattleAnim_Spikes:
 	anim_ret
 
 BattleAnim_ToxicSpikes:
+	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_POISON
+	anim_sound 6, 2, SFX_MENU
+	anim_obj ANIM_OBJ_SPIKES, 48, 88, $20
+	anim_wait 8
+	anim_sound 6, 2, SFX_MENU
+	anim_obj ANIM_OBJ_SPIKES, 48, 88, $30
+	anim_wait 8
+	anim_sound 6, 2, SFX_MENU
+	anim_obj ANIM_OBJ_SPIKES, 48, 88, $28
+	anim_wait 40
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PURPLE
-	anim_1gfx ANIM_GFX_MISC
-	anim_sound 6, 2, SFX_MENU
-	anim_obj ANIM_OBJ_SPIKES,   6, 0,  11, 0, $20
-	anim_wait 8
-	anim_sound 6, 2, SFX_MENU
-	anim_obj ANIM_OBJ_SPIKES,   6, 0,  11, 0, $30
-	anim_wait 8
-	anim_sound 6, 2, SFX_MENU
-	anim_obj ANIM_OBJ_SPIKES,   6, 0,  11, 0, $28
-	anim_wait 32
-.loop
-	anim_1gfx ANIM_GFX_POISON
-	anim_sound 0, 1, SFX_TOXIC
-	anim_obj ANIM_OBJ_SLUDGE, -16, 4,   9, 0, $0
-	anim_wait 8
-	anim_sound 0, 1, SFX_TOXIC
-	anim_obj ANIM_OBJ_SLUDGE,  14, 4,   9, 0, $0
-	anim_wait 8
-	anim_sound 0, 1, SFX_TOXIC
-	anim_obj ANIM_OBJ_SLUDGE, -14, 4,   9, 0, $0
-	anim_wait 8
-	anim_loop 2, .loop
-	anim_wait 32
-	anim_ret
+	anim_jump BattleAnimSub_SludgeShort
 
 BattleAnim_ZapCannon:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
