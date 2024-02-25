@@ -5037,8 +5037,8 @@ SapHealth:
 	; for Drain Kiss, we want 75% drain instead of 50%
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp DRAIN_KISS
-	jr nz, .skip_drain_kiss
+	cp DRAINING_KISS
+	jr nz, .skip_draining_kiss
 	ld h, b
 	ld l, c
 	srl b
@@ -5047,7 +5047,7 @@ SapHealth:
 	ld b, h
 	ld c, l
 
-.skip_drain_kiss
+.skip_draining_kiss
 	call GetHPAbsorption
 
 	; check for Liquid Ooze
