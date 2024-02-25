@@ -2007,34 +2007,49 @@ BattleAnimFunction_Kick:
 
 BattleAnimFunction_AirCutter:
 	call BattleAnim_AnonJumptable
-.anon_dw
+
 	dw .zero
 	dw .one
-	dw DoNothing
+	dw .two
 
 .zero
-	call BattleAnim_IncAnonJumptableIndex
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	swap a
+	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
+	add hl, bc
+	ld [hl], a
+	ret
+
+.two
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
-	ld a, $30
-	ld [hli], a
-	ld [hl], $48
-.one
-	ld hl, BATTLEANIMSTRUCT_VAR1
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
+	ld a, [hl]
+	ld d, $10
 	farcall Sine
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
+	bit 7, a
+	jr z, .skip
 	ld [hl], a
+.skip
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
-	inc [hl]
 	ld a, [hl]
-	and $3f
-	ret nz
-	jmp BattleAnim_IncAnonJumptableIndex
+	sub 4
+	ld [hl], a
+.one
+	ld hl, BATTLEANIMSTRUCT_XCOORD
+	add hl, bc
+	ld a, [hl]
+	cp $e4
+	jmp nc, FarDeinitBattleAnimation
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	jmp BattleAnim_StepToTarget
 
 BattleAnimFunction_PowerUp:
 ; "Absorbing power"-like animation (pulls particles towards user)
