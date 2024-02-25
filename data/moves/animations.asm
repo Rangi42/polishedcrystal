@@ -600,12 +600,7 @@ BattleAnim_FocusBlast:
 	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_GLOW_YELLOW
 	anim_3gfx ANIM_GFX_VORTEX, ANIM_GFX_WIND_BG, ANIM_GFX_SWIRL
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
-	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
-	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
-	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_call BattleAnimSub_AgilityMinor
 	anim_sound 0, 1, SFX_OUTRAGE
 .loop
 	anim_obj ANIM_OBJ_SWIRL_SHORT, 44, 96, $0
@@ -2226,14 +2221,7 @@ BattleAnim_DoubleEdge:
 BattleAnim_CloseCombat:
 	anim_2gfx ANIM_GFX_WIND_BG, ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
-	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
-	anim_obj ANIM_OBJ_AGILITY, 8, 88, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 8, 32, $6
-	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
-	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
-	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_call BattleAnimSub_Agility
 	anim_wait 12
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
 	anim_bgp $90
@@ -3324,14 +3312,7 @@ BattleAnim_Agility:
 	anim_obp0 $fc
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   3, 0, $10
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   6, 0, $2
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,  11, 0, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   4, 0, $6
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   7, 0, $c
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,  10, 0, $4
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,  13, 0, $e
+	anim_call BattleAnimSub_Agility
 .loop
 	anim_sound 0, 0, SFX_RAZOR_WIND
 	anim_wait 4
@@ -4056,12 +4037,7 @@ BattleAnim_GunkShot:
 	anim_2gfx ANIM_GFX_WIND_BG, ANIM_GFX_POISON
 	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
 	anim_obj ANIM_OBJ_GUNK_SHOT, 48, 96, $0
-	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
-	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
-	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
-	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_call BattleAnimSub_AgilityMinor
 .loop
 	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_GUNK_SHOT_BUBBLES, 48, 88, $5c
@@ -4316,12 +4292,7 @@ BattleAnim_AuraSphere:
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_YELLOW
 	anim_4gfx ANIM_GFX_VORTEX, ANIM_GFX_GLOW, ANIM_GFX_WIND_BG, ANIM_GFX_SWIRL
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
-	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
-	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
-	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_call BattleAnimSub_AgilityMinor
 	anim_sound 0, 1, SFX_OUTRAGE
 .loop
 	anim_obj ANIM_OBJ_SWIRL_SHORT, 44, 96, $0
@@ -5288,6 +5259,26 @@ BattleAnim_Synthesis: ; removed
 	anim_call BattleAnimSub_Glimmer2
 	anim_ret
 
+BattleAnimSub_Agility:
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
+	anim_obj ANIM_OBJ_AGILITY, 8, 88, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 32, $6
+	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_ret
+
+BattleAnimSub_AgilityMinor:
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_ret
+
 BattleAnimSub_Glimmer:
 	anim_sound 0, 0, SFX_METRONOME
 	anim_obj ANIM_OBJ_GLIMMER,   5, 4,   8, 0, $0
@@ -5615,14 +5606,7 @@ BattleAnim_FutureSight:
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
 	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   3, 0, $10
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   6, 0, $2
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,  11, 0, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   4, 0, $6
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,   7, 0, $c
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,  10, 0, $4
-	anim_obj ANIM_OBJ_AGILITY,   1, 0,  13, 0, $e
+	anim_call BattleAnimSub_Agility
 .loop
 	anim_sound 0, 0, SFX_THROW_BALL
 	anim_wait 16
