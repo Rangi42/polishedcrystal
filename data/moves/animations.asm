@@ -3354,25 +3354,50 @@ BattleAnim_Barrier:
 
 BattleAnim_Waterfall:
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_WATER
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_TargetObj_2Row
-	anim_bgeffect ANIM_BG_BODY_SLAM, $0, $1, $0
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BUBBLE
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_BUBBLE
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_RISING_BUBBLE, 64, 104, $0
 	anim_wait 16
-	anim_call BattleAnim_ShowMon_0
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_RISING_BUBBLE, 32, 104, $0
+	anim_wait 16
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_RISING_BUBBLE, 48, 104, $0
+	anim_wait 32
+	anim_clearobjs
+	anim_wait 1
+	anim_call BattleAnim_TargetObj_2Row
+	anim_bgeffect ANIM_BG_BODY_SLAM, $0, BG_EFFECT_USER, $0
+	anim_wait 16
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, BG_EFFECT_TARGET, $0
+	anim_wait 4
+	anim_clearobjs
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, BG_EFFECT_USER, $0
 	anim_sound 0, 1, SFX_LICK
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 56, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 56, $50
 	anim_wait 3
 	anim_sound 0, 1, SFX_LICK
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   6, 0, $0
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 48, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 48, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 48, $50
 	anim_wait 3
 	anim_sound 0, 1, SFX_LICK
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   5, 0, $0
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 40, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 40, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 40, $50
 	anim_wait 3
 	anim_sound 0, 1, SFX_LICK
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   4, 0, $0
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 32, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 32, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 32, $50
 	anim_wait 3
 	anim_sound 0, 1, SFX_LICK
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   3, 0, $0
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 24, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 24, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 24, $50
 	anim_wait 8
 	anim_ret
 
