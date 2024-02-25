@@ -4949,9 +4949,12 @@ BattleAnim_SacredFire:
 	anim_ret
 
 BattleAnim_FlareBlitz:
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_FIRE
 	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_FIRE
 	anim_2gfx ANIM_GFX_FIRE, ANIM_GFX_HIT
 	anim_battlergfx_2row
+	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
 .loop
 	anim_sound 0, 1, SFX_MEGA_PUNCH
 	anim_obj ANIM_OBJ_FLARE_BLITZ, 44, 108, $6
@@ -4972,27 +4975,47 @@ BattleAnim_FlareBlitz:
 	anim_wait 2
 	anim_loop 3, .loop
 	anim_wait 16
-	anim_bgp $90
+	anim_incbgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING
+	anim_wait 1
 	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $0, $0
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
 	anim_wait 8
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 0, SFX_BURN
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $0
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $8
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $10
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $18
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $20
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $28
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $30
-	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $38
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 1
+	anim_clearobjs
+	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $4, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $30, $2, $0
+	anim_sound 0, 0, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_wait 4
+	anim_setobjpal PAL_BATTLE_BG_TARGET, PAL_BTLCUSTOM_FIRE
+	anim_sound 0, 0, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $0
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $28
+	anim_wait 1
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $30
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $38
+	anim_wait 1
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $20
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $18
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $4
+	anim_wait 1
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $2b
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $14
+	anim_wait 1
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $3b
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $24
+	anim_wait 1
+	anim_obj ANIM_OBJ_RADIAL_FLAME, 136, 56, $b
+	anim_sound 0, 0, SFX_KARATE_CHOP
 	anim_wait 2
-	anim_sound 0, 0, SFX_BURN
-	anim_wait 2
-	anim_sound 0, 0, SFX_BURN
+	anim_sound 0, 0, SFX_KARATE_CHOP
 	anim_wait 32
-	anim_jump BattleAnim_ShowMon_0
+	anim_wait 1
+	anim_clearobjs
+	anim_ret
 
 BattleAnim_Magnitude:
 	anim_1gfx ANIM_GFX_ROCKS
