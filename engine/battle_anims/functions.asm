@@ -4260,8 +4260,14 @@ BattleAnimFunc_RadialStep:
 	ret
 
 BattleAnimFunc_RadialInit:
-	ld hl, BATTLEANIMSTRUCT_VAR2
+	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
+	ld a, [hl]
+	ld hl, BATTLEANIMSTRUCT_VAR3
+	add hl, bc
+	add a
+	swap a
+	ld [hld], a
 	xor a
 	ld [hld], a
 	ld [hl], a ; initial position = 0

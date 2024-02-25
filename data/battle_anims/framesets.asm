@@ -189,27 +189,26 @@ BattleAnimFrameData:
 	dw .Frameset_StoneEdge ; ba
 	dw .Frameset_BrickBreak ; bb
 	dw .Frameset_HyperVoice ; bc
-	dw .Frameset_BugBuzzL ; bd
-	dw .Frameset_BugBuzzR ; be
-	dw .Frameset_DragonPulse ; bf
-	dw .Frameset_BulletPunch ; c0
-	dw .Frameset_LongPunch ; c1
-	dw .Frameset_FocusBlast ; c2
-	dw .Frameset_TrickRoom ; c3
-	dw .Frameset_Vortex ; c4
-	dw .Frameset_BulkUp ; c5
-	dw .Frameset_ShrinkingRingSmall ; c6
-	dw .Frameset_ShrinkingRingBig ; c7
-	dw .Frameset_PulsingEnergyOrbBig ; c8
-	dw .Frameset_RedStar ; c9
-	dw .Frameset_Hail ; ca
-	dw .Frameset_UTurn_Fall ; cb
-	dw .Frameset_SwirlShort ; cc
-	dw .Frameset_SmallGlow ; cd
-	dw .Frameset_BigGlowClear ; ce
-	dw .Frameset_Berry ; cf
-	dw .Frameset_StatUp ; d0
-	dw .Frameset_StatDown ; d1
+	dw .Frameset_MidGlowShrinking ; bd
+	dw .Frameset_DragonPulse ; be
+	dw .Frameset_BulletPunch ; bf
+	dw .Frameset_LongPunch ; c0
+	dw .Frameset_FocusBlast ; c1
+	dw .Frameset_TrickRoom ; c2
+	dw .Frameset_Vortex ; c3
+	dw .Frameset_BulkUp ; c4
+	dw .Frameset_ShrinkingRingSmall ; c5
+	dw .Frameset_ShrinkingRingBig ; c6
+	dw .Frameset_PulsingEnergyOrbBig ; c7
+	dw .Frameset_RedStar ; c8
+	dw .Frameset_Hail ; c9
+	dw .Frameset_UTurn_Fall ; ca
+	dw .Frameset_SwirlShort ; cb
+	dw .Frameset_SmallGlow ; cc
+	dw .Frameset_BigGlowClear ; cd
+	dw .Frameset_Berry ; ce
+	dw .Frameset_StatUp ; cf
+	dw .Frameset_StatDown ; d0
 	dw .Frameset_SparkleLong             ; BATTLEANIMFRAMESET_SPARKLE_LONG
 	dw .Frameset_FlashCannonChargeOrb    ; BATTLEANIMFRAMESET_FLASH_CANNON_CHARGE_ORB
 	dw .Frameset_SlowGrowingGlow         ; BATTLEANIMFRAMESET_SLOW_GROWING_GLOW
@@ -224,6 +223,7 @@ BattleAnimFrameData:
 	dw .Frameset_SpinningTriangleSlow    ; BATTLEANIMFRAMESET_SPINNING_TRIANGLE_SLOW
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	dw .Frameset_MediumHorn              ; BATTLEANIMFRAMESET_MEDIUM_HORN
+	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
 	dw .Frameset_PoisonJab               ; BATTLEANIMFRAMESET_POISON_JAB
 	dw .Frameset_CutHorizontal           ; BATTLEANIMFRAMESET_CUT_HORIZONTAL
 	assert_table_length NUM_BATTLEANIMFRAMESETS
@@ -1331,16 +1331,9 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_HYPER_VOICE,  0
 	battleoamdelete
 
-.Frameset_BugBuzzL:
-	battleoamframe BATTLEANIMOAMSET_BD,  4
-	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ1,  4
-	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ2,  4
-	battleoamdelete
-
-.Frameset_BugBuzzR:
-	battleoamframe BATTLEANIMOAMSET_BD,  4, OAM_X_FLIP
-	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_X_FLIP
-	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_X_FLIP
+.Frameset_MidGlowShrinking:
+	battleoamframe BATTLEANIMOAMSET_F1,  1
+	battleoamframe BATTLEANIMOAMSET_F2,  1
 	battleoamdelete
 
 .Frameset_DragonPulse:
@@ -1492,7 +1485,6 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_1E,  8
 	battleoamdelete
 
-
 .Frameset_TinyGlow:
 	battleoamframe BATTLEANIMOAMSET_54,  1
 	battleoamframe BATTLEANIMOAMSET_55,  1
@@ -1548,6 +1540,12 @@ BattleAnimFrameData:
 
 .Frameset_MediumHorn:
 	battleoamframe BATTLEANIMOAMSET_E1,  9
+	battleoamdelete
+
+.Frameset_BugBuzz:
+	battleoamframe BATTLEANIMOAMSET_14,  4, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_Y_FLIP
 	battleoamdelete
 
 .Frameset_PoisonJab:

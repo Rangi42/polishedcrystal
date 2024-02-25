@@ -3561,28 +3561,30 @@ BattleAnim_Thief:
 	anim_ret
 
 BattleAnim_BugBuzz:
-	anim_2gfx ANIM_GFX_BUG_BUZZ, ANIM_GFX_PSYCHIC
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_GLOW_LIME
+	anim_2gfx ANIM_GFX_MID_GLOW_CLEAR, ANIM_GFX_BUG_BUZZ
 	anim_battlergfx_2row
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $4a, $1, $0
 .loop
-	anim_sound 6, 2, SFX_TINGLE
-	anim_obj ANIM_OBJ_BUG_BUZZ_L, 32, 84, $28
-	anim_obj ANIM_OBJ_BUG_BUZZ_R, 64, 84, $38
+	anim_obj ANIM_OBJ_MID_GLOW_SHRINKING, 48, 96, $0
+	anim_sound 6, 2, SFX_BIND
+	anim_obj ANIM_OBJ_BUG_BUZZ, 32, 84, $28
+	anim_obj ANIM_OBJ_BUG_BUZZ, 64, 84, $38
 	anim_wait 2
-	anim_sound 6, 2, SFX_TINGLE
+	anim_sound 6, 2, SFX_BIND
 	anim_wait 2
-	anim_sound 6, 2, SFX_TINGLE
-	anim_obj ANIM_OBJ_BUG_BUZZ_L, 32, 84, $28
-	anim_obj ANIM_OBJ_BUG_BUZZ_R, 64, 84, $38
-	anim_obj ANIM_OBJ_HYPER_VOICE, 64, 88, $2
+	anim_sound 6, 2, SFX_BIND
+	anim_obj ANIM_OBJ_BUG_BUZZ, 32, 84, $28
+	anim_obj ANIM_OBJ_BUG_BUZZ, 64, 84, $38
 	anim_wait 2
-	anim_sound 6, 2, SFX_TINGLE
+	anim_sound 6, 2, SFX_BIND
 	anim_wait 2
 	anim_loop 6, .loop
 	anim_wait 2
 	anim_sound 6, 2, SFX_SUPERSONIC
 	anim_wait 6
 	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
+	anim_wait 1
 	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
 	anim_wait 64
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0

@@ -112,6 +112,11 @@ if !DEF(MONOCHROME)
 	RGB 25, 00, 08
 	RGB 09, 00, 06
 	RGB 19, 00, 06
+; glowlime
+	RGB 31, 31, 31
+	RGB 29, 31, 06
+	RGB 22, 25, 00
+	RGB 15, 20, 00
 ; dragonpulse
 	RGB 31, 31, 31
 	RGB 28, 28, 28
