@@ -80,18 +80,21 @@ endr
 BattleAnimOAMUpdate:
 	call InitBattleAnimBuffer
 	call GetBattleAnimFrame
+	ld a, h
 	cp oamwait_command
 	jmp z, .done
 	cp oamdelete_command
 	jmp z, .delete
-	push af
+
+	push hl
 	ld hl, wBattleAnimTempOAMFlags
 	ld a, [wBattleAnimTemp7]
 	xor [hl]
 	and $e0
 	ld [hl], a
 	call .SetDynamicTileData
-	pop af
+	pop hl
+
 	push bc
 	call GetBattleAnimOAMPointer
 	ld a, [wBattleAnimTempTileID]
