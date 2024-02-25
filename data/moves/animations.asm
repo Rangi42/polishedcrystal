@@ -5061,11 +5061,11 @@ BattleAnim_Megahorn:
 	anim_ret
 
 BattleAnim_Dragonbreath:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGON_FIRE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGONBREATH
 	anim_1gfx ANIM_GFX_FIRE
 	anim_sound 6, 2, SFX_EMBER
 .loop
-	anim_obj ANIM_OBJ_DRAGONBREATH,   8, 0,  11, 4, $4
+	anim_obj ANIM_OBJ_DRAGONBREATH, 64, 92, $4
 	anim_wait 4
 	anim_loop 10, .loop
 	anim_wait 64
