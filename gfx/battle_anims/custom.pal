@@ -97,6 +97,11 @@ if !DEF(MONOCHROME)
 	RGB 18, 30, 31
 	RGB 04, 22, 31
 	RGB 04, 17, 31
+; bulkup
+	RGB 31, 31, 31
+	RGB 29, 03, 04
+	RGB 31, 24, 02
+	RGB 31, 24, 02
 ; psychoboost2
 	RGB 31, 31, 31
 	RGB 31, 18, 25

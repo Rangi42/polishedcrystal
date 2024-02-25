@@ -3198,17 +3198,26 @@ BattleAnim_QuickAttack:
 	anim_wait 16
 	anim_ret
 
-; Bulk Up animation from Pokémon Prism
 BattleAnim_BulkUp:
-	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_WIND
-.loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, 8, $2, $0
-	anim_sound 0, 0, SFX_NOT_VERY_EFFECTIVE
-	anim_obj ANIM_OBJ_SWAGGER,  9, 4, 11, 0, $44
+	anim_2gfx ANIM_GFX_BULK_UP, ANIM_GFX_WIND
+	anim_sound 0, 0, SFX_SQUEAK
+	anim_obj ANIM_OBJ_BULK_UP, 48, 88, $0
 	anim_wait 32
-	anim_loop 2, .loop
-	anim_sound 0, 0, SFX_KINESIS
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $08, $2, $0
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BULK_UP
+	anim_sound 0, 0, SFX_HORN_ATTACK
 	anim_wait 16
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_GRAY
+	anim_wait 8
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $08, $2, $0
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BULK_UP
+	anim_sound 0, 0, SFX_HORN_ATTACK
+	anim_wait 24
+	anim_clearobjs
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_GRAY
+	anim_sound 0, 0, SFX_MENU
+	anim_obj ANIM_OBJ_SWAGGER, 72, 88, $44
+	anim_wait 32
 	anim_ret
 
 BattleAnim_DefenseCurl:
