@@ -265,6 +265,7 @@ BattleAnimOAMData:
 	battleanimoam $06,  9, .OAMData_Mushroom1     ; BATTLEANIMOAMSET_MUSHROOM_2
 	battleanimoam $0c,  9, .OAMData_Mushroom1     ; BATTLEANIMOAMSET_MUSHROOM_3
 	battleanimoam $00, 16, .OAMData_Stats         ; BATTLEANIMOAMSET_STAT
+	battleanimoam $00,  6, .OAMData_IcicleCrash   ; BATTLEANIMOAMSET_ICICLE_CRASH
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -1435,3 +1436,11 @@ BattleAnimOAMData:
 	dsprite   0, 0,   2, 0, $01, $0
 	dsprite   0, 0,   3, 0, $01, $0
 	dsprite   0, 0,   4, 0, $01, $0
+
+.OAMData_IcicleCrash
+	dsprite  -1, 0,  -1, 0, $00, $0
+	dsprite  -1, 0,   0, 0, $01, $0
+	dsprite   0, 0,  -1, 0, $02, $0
+	dsprite   0, 0,   0, 0, $03, $0
+	dsprite   1, 0,  -1, 0, $04, $0
+	dsprite   1, 0,   0, 0, $05, $0

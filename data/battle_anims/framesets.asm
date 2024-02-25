@@ -224,6 +224,10 @@ BattleAnimFrameData:
 	dw .Frameset_SpinningTriangleSlow    ; BATTLEANIMFRAMESET_SPINNING_TRIANGLE_SLOW
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	dw .Frameset_MediumHorn              ; BATTLEANIMFRAMESET_MEDIUM_HORN
+	dw .Frameset_Minimize                ; BATTLEANIMFRAMESET_MINIMIZE
+	dw .Frameset_IcicleCrash             ; BATTLEANIMFRAMESET_ICICLE_CRASH
+
+; VAR3 animations start here -------
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
 	dw .Frameset_PoisonJab               ; BATTLEANIMFRAMESET_POISON_JAB
 	dw .Frameset_CutHorizontal           ; BATTLEANIMFRAMESET_CUT_HORIZONTAL
@@ -1572,4 +1576,12 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_E9,  2
 	battleoamwait 2
 	battleoamframe BATTLEANIMOAMSET_E9,  2
+	battleoamdelete
+
+.Frameset_Minimize:
+	battleoamframe BATTLEANIMOAMSET_14,  6
+	battleoamdelete
+
+.Frameset_IcicleCrash:
+	battleoamframe BATTLEANIMOAMSET_ICICLE_CRASH, 32
 	battleoamdelete
