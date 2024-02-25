@@ -1131,13 +1131,14 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BTLCUSTOM_MOONBLAST        ; 24
 	const PAL_BTLCUSTOM_VERY_BRIGHT      ; 25
 	const PAL_BTLCUSTOM_PINK             ; 26
-	const PAL_BTLCUSTOM_ATTACK           ; 27
-	const PAL_BTLCUSTOM_DEFENSE          ; 28
-	const PAL_BTLCUSTOM_SP_ATTACK        ; 29
-	const PAL_BTLCUSTOM_SP_DEFENSE       ; 2a
-	const PAL_BTLCUSTOM_SPEED            ; 2b
-	const PAL_BTLCUSTOM_ACCURACY         ; 2c
-	const PAL_BTLCUSTOM_EVASION          ; 2d
+	const PAL_BTLCUSTOM_VERY_BRIGHT_PINK ; 27
+	const PAL_BTLCUSTOM_ATTACK           ; 28
+	const PAL_BTLCUSTOM_DEFENSE          ; 29
+	const PAL_BTLCUSTOM_SP_ATTACK        ; 2a
+	const PAL_BTLCUSTOM_SP_DEFENSE       ; 2b
+	const PAL_BTLCUSTOM_SPEED            ; 2c
+	const PAL_BTLCUSTOM_ACCURACY         ; 2d
+	const PAL_BTLCUSTOM_EVASION          ; 2e
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1
