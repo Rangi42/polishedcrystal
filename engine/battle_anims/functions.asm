@@ -94,11 +94,12 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RockSmash
 	dw BattleAnimFunction_Cotton
 	dw BattleAnimFunction_PauseThenRush
-	dw BattleAnimFunction_AirCutter
+	dw BattleAnimFunction_RockTomb
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_BubbleSplash
 	dw BattleAnimFunction_Moon
 	dw BattleAnimFunction_PokeBall_BG
+	dw BattleAnimFunction_AirCutter
 	dw BattleAnimFunction_RadialMoveOut
 	dw BattleAnimFunction_RadialMoveOut_Slow
 	dw BattleAnimFunction_RadialMoveOut_VerySlow
@@ -2005,51 +2006,36 @@ BattleAnimFunction_Kick:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_AirCutter:
+BattleAnimFunction_RockTomb:
 	call BattleAnim_AnonJumptable
-
+.anon_dw
 	dw .zero
 	dw .one
-	dw .two
+	dw DoNothing
 
 .zero
-	ld hl, BATTLEANIMSTRUCT_PARAM
-	add hl, bc
-	ld a, [hl]
-	and $f0
-	swap a
-	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld [hl], a
-	ret
-
-.two
+	call BattleAnim_IncAnonJumptableIndex
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
-	ld a, [hl]
-	ld d, $10
+	ld a, $30
+	ld [hli], a
+	ld [hl], $48
+.one
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
 	farcall Sine
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
-	bit 7, a
-	jr z, .skip
 	ld [hl], a
-.skip
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
+	inc [hl]
 	ld a, [hl]
-	sub 4
-	ld [hl], a
-.one
-	ld hl, BATTLEANIMSTRUCT_XCOORD
-	add hl, bc
-	ld a, [hl]
-	cp $e4
-	jmp nc, FarDeinitBattleAnimation
-	ld hl, BATTLEANIMSTRUCT_PARAM
-	add hl, bc
-	ld a, [hl]
-	jmp BattleAnim_StepToTarget
+	and $3f
+	ret nz
+	jmp BattleAnim_IncAnonJumptableIndex
 
 BattleAnimFunction_PowerUp:
 ; "Absorbing power"-like animation (pulls particles towards user)
@@ -4188,6 +4174,52 @@ BattleAnimFunction_PauseThenRush:
 	add hl, bc
 	ld a, [hl]
 	jr BattleAnim_StepToTarget
+
+BattleAnimFunction_AirCutter:
+	call BattleAnim_AnonJumptable
+
+	dw .zero
+	dw .one
+	dw .two
+
+.zero
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	swap a
+	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
+	add hl, bc
+	ld [hl], a
+	ret
+
+.two
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hl]
+	ld d, $10
+	farcall Sine
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	bit 7, a
+	jr z, .skip
+	ld [hl], a
+.skip
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hl]
+	sub 4
+	ld [hl], a
+.one
+	ld hl, BATTLEANIMSTRUCT_XCOORD
+	add hl, bc
+	ld a, [hl]
+	cp $e4
+	jmp nc, FarDeinitBattleAnimation
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	jmp BattleAnim_StepToTarget
 
 BattleAnimFunction_RadialMoveOut:
 	call BattleAnim_AnonJumptable
