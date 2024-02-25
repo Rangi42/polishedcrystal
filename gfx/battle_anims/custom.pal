@@ -47,6 +47,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 26, 09
 	RGB 27, 08, 22
 	RGB 00, 00, 00
+; dragonrage
+	RGB 31, 31, 31
+	RGB 31, 29, 09
+	RGB 03, 09, 26
+	RGB 00, 00, 00
 ; aurora
 	RGB 31, 20, 24
 	RGB 31, 31, 07
