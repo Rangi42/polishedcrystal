@@ -764,7 +764,7 @@ BattleAnimFunction_FireBlast:
 	ld [hl], a
 	cp $7
 	jr z, .seven
-	ld a, BATTLEANIMFRAMESET_11
+	ld a, BATTLEANIMFRAMESET_BURNED
 	jmp FarReinitBattleAnimFrameset
 
 .seven

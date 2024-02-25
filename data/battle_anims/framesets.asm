@@ -17,7 +17,7 @@ BattleAnimFrameData:
 	dw .Frameset_0e ; 0e
 	dw .Frameset_0f ; 0f
 	dw .Frameset_10 ; 10
-	dw .Frameset_11 ; 11
+	dw .Frameset_Burned                  ; BATTLEANIMFRAMESET_BURNED
 	dw .Frameset_12 ; 12
 	dw .Frameset_13 ; 13
 	dw .Frameset_14 ; 14
@@ -393,7 +393,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_10,  4
 	battleoamrestart
 
-.Frameset_11:
+.Frameset_Burned:
 	battleoamframe BATTLEANIMOAMSET_10,  4
 	battleoamframe BATTLEANIMOAMSET_0F,  4
 	battleoamframe BATTLEANIMOAMSET_0E,  4
