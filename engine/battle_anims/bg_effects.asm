@@ -271,9 +271,9 @@ BattleBGEffect_CycleBGPals_Inverted:
 	ret
 
 .Pals:
-	dc 1, 1, 1, 1 ; invert once
-	dc 1, 3, 2, 0
-	dc 2, 1, 3, 0
+	dc 0, 1, 2, 3
+	dc 1, 2, 0, 3
+	dc 2, 0, 1, 3
 	db -2
 
 BattleBGEffect_HideMon:

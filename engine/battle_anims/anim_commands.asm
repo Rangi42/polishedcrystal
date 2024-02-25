@@ -1282,65 +1282,23 @@ BattleAnim_SetBGPals:
 	ldh [rBGP], a
 	ldh a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
-if !DEF(MONOCHROME)
-	ld a, b
-	ld c, %00011011 ; 0, 1, 2, 3 (cycle inverts)
-	cp c
-	jr z, .invert
-	ldh a, [rBGP]
-	cp %01010101 ; 1, 1, 1, 1 (invert once)
-	jr z, .invert
-	cp c
-	jr nz, .no_invert
-.invert
-	cp c
-	ld c, 7 palettes
-	ld hl, wBGPals1
-	ld a, [hl]
-	jr z, .loop_invert_BGPals
-	and a
-	jr z, .already_inverted
-.loop_invert_BGPals
-	cpl
-	ld [hli], a
-	dec c
-	ld a, [hl]
-	jr nz, .loop_invert_BGPals
-	ld c, 2 palettes
-	ld hl, wOBPals1
-.loop_invert_OBPals
-	ld a, [hl]
-	cpl
-	ld [hli], a
-	dec c
-	jr nz, .loop_invert_OBPals
-.already_inverted
-	ld a, %11100100
-.no_invert
-	push af
-else
-	ldh a, [rBGP]
-endc
 	ld hl, wBGPals2
 	ld de, wBGPals1
+	ldh a, [rBGP]
 	ld b, a
 	ld c, 7
 	call CopyPals
 	ld hl, wOBPals2
 	ld de, wOBPals1
-if !DEF(MONOCHROME)
-	pop af
-else
 	ldh a, [rBGP]
-endc
 	ld b, a
 	ld c, 2
 	call CopyPals
 	pop af
 	ldh [rSVBK], a
-	ld a, $1
+	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ret
 
