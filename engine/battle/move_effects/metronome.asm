@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, POWER_WHIP
+	ld b, BUG_BITE
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr

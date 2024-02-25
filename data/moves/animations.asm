@@ -4753,25 +4753,28 @@ BattleAnim_WildCharge:
 
 BattleAnim_BugBite:
 	anim_2gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT
+	anim_call BattleAnim_UserObj_1Row
 .loop
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
 	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 132, 64, $0
-	anim_obj ANIM_OBJ_ROCK_SMASH, 132, 64, $5c
+	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 140, 44, $0
+	anim_obj ANIM_OBJ_ROCK_SMASH, 136, 56, $5c
 	anim_wait 4
 	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 128, 48, $0
-	anim_obj ANIM_OBJ_ROCK_SMASH, 128, 48, $5c
+	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 124, 60, $0
+	anim_obj ANIM_OBJ_ROCK_SMASH, 136, 56, $d0
 	anim_wait 4
 	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 144, 56, $0
-	anim_obj ANIM_OBJ_ROCK_SMASH, 144, 56, $d0
+	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 140, 60, $0
+	anim_obj ANIM_OBJ_ROCK_SMASH, 136, 56, $e8
 	anim_wait 4
 	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 122, 52, $0
-	anim_obj ANIM_OBJ_ROCK_SMASH, 122, 52, $50
+	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 124, 44, $0
+	anim_obj ANIM_OBJ_ROCK_SMASH, 136, 56, $50
 	anim_wait 4
-	anim_loop 5, .loop
+	anim_loop 3, .loop
 	anim_wait 32
+	anim_call BattleAnim_ShowMon_1
 	anim_ret
 
 BattleAnim_SteelWing:
