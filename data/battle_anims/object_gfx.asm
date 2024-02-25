@@ -53,6 +53,7 @@ AnimObjGFX:
 	battleanimgfx 18, AnimObjWaveGFX
 	battleanimgfx 24, AnimObjAeroblastGFX
 	battleanimgfx 16, AnimObjMoonGFX
+	battleanimgfx 16, AnimObjAuraSphereGFX
 	battleanimgfx  9, AnimObjBugBuzzGFX
 	battleanimgfx  9, AnimObjMidGlowClearGFX
 	battleanimgfx 32, AnimObjVortexGFX

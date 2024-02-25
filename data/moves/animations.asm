@@ -4309,46 +4309,41 @@ BattleAnim_FlashCannon:
 	anim_wait 32
 	anim_ret
 
-; Aura Sphere animation from Pokémon Prism
 BattleAnim_AuraSphere:
-	anim_2gfx ANIM_GFX_BEAM, ANIM_GFX_WIND_BG
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 3, 0, $10
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 6, 0, $2
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 11, 0, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 4, 0, $6
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 7, 0, $c
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 10, 0, $4
-	anim_obj ANIM_OBJ_AGILITY, 1, 0, 13, 0, $e
-	anim_sound 0, 0, SFX_RAZOR_WIND
-	anim_wait 32
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $8, $2, $10
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_BUBBLE
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BUBBLE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_BUBBLE
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_YELLOW
+	anim_4gfx ANIM_GFX_VORTEX, ANIM_GFX_GLOW, ANIM_GFX_WIND_BG, ANIM_GFX_SWIRL
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-;	anim_obj ANIM_OBJ_AEROBLAST,  9, 0, 11, 0, $0
-;	anim_wait 32
-	anim_sound 0, 0, SFX_SUPER_EFFECTIVE
-	anim_obj ANIM_OBJ_BEAM,  8, 0, 11, 4, $0
-	anim_incobj 8
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM, 10, 0, 10, 4, $0
-	anim_incobj 9
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM, 12, 0,  9, 4, $0
-	anim_incobj 10
-	anim_wait 2
-;	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
-	anim_obj ANIM_OBJ_BEAM, 14, 0,  8, 4, $0
-	anim_obj ANIM_OBJ_BEAM_TIP, 15, 6,  7, 6, $0
-	anim_incobj 11
-	anim_incobj 12
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM_TIP, 17, 4,  7, 0, $0
-	anim_wait 2
-	anim_incobj 13
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
-	anim_call BattleAnim_ShowMon_0
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_sound 0, 1, SFX_OUTRAGE
+.loop
+	anim_obj ANIM_OBJ_SWIRL_SHORT, 44, 96, $0
+	anim_wait 8
+	anim_loop 4, .loop
+	anim_obj ANIM_OBJ_VORTEX, 44, 96, $0
+	anim_wait 64
+	anim_clearobjs
+	anim_sound 0, 1, SFX_SLUDGE_BOMB
+	anim_obj ANIM_OBJ_SHRINKING_GLOW, 44, 96, $4
+	anim_wait 10
+	anim_3gfx ANIM_GFX_BIG_GLOW_CLEAR, ANIM_GFX_AURA_SPHERE, ANIM_GFX_WIND_BG
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+.loop2
+	anim_obj ANIM_OBJ_AURA_SPHERE, 64, 88, $6
+	anim_wait 12
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $08, $2, $0
+	anim_sound 0, 1, SFX_AEROBLAST
+	anim_obj ANIM_OBJ_BIG_GLOW_CLEAR, 136, 48, $0
+	anim_wait 8
+	anim_clearobjs
+	anim_wait 32
 	anim_ret
 
 BattleAnim_Foresight:

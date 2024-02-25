@@ -132,7 +132,7 @@ BattleAnimFrameData:
 	dw .Frameset_81 ; 81
 	dw .Frameset_82 ; 82
 	dw .Frameset_83 ; 83
-	dw .Frameset_84 ; 84
+	dw .Frameset_SeismicToss             ; BATTLEANIMFRAMESET_SEISMIC_TOSS
 	dw .Frameset_85 ; 85
 	dw .Frameset_86 ; 86
 	dw .Frameset_87 ; 87
@@ -1052,7 +1052,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_A2,  1
 	battleoamdelete
 
-.Frameset_84:
+.Frameset_SeismicToss:
 	battleoamframe BATTLEANIMOAMSET_A3,  8
 	battleoamend
 
