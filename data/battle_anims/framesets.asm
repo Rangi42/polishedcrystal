@@ -218,6 +218,8 @@ BattleAnimFrameData:
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
+	dw .Frameset_SpinningTriangle        ; BATTLEANIMFRAMESET_SPINNING_TRIANGLE
+	dw .Frameset_SpinningTriangleSlow    ; BATTLEANIMFRAMESET_SPINNING_TRIANGLE_SLOW
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
 	dw .Frameset_MediumHorn              ; BATTLEANIMFRAMESET_MEDIUM_HORN
 	dw .Frameset_PoisonJab               ; BATTLEANIMFRAMESET_POISON_JAB
@@ -1508,6 +1510,20 @@ BattleAnimFrameData:
 .Frameset_DropletL:
 	oamframe BATTLEANIMOAMSET_E0,  16, OAM_X_FLIP
 	oamdelete
+
+.Frameset_SpinningTriangle:
+	oamframe BATTLEANIMOAMSET_EC,  0
+	oamframe BATTLEANIMOAMSET_ED,  0
+	oamframe BATTLEANIMOAMSET_EC,  0, OAM_Y_FLIP
+	oamframe BATTLEANIMOAMSET_ED,  0, OAM_X_FLIP
+	oamrestart
+
+.Frameset_SpinningTriangleSlow:
+	oamframe BATTLEANIMOAMSET_EC,  2
+	oamframe BATTLEANIMOAMSET_ED,  2
+	oamframe BATTLEANIMOAMSET_EC,  2, OAM_Y_FLIP
+	oamframe BATTLEANIMOAMSET_ED,  2, OAM_X_FLIP
+	oamrestart
 
 .Frameset_BouncingMushroom:
 	oamframe BATTLEANIMOAMSET_MUSHROOM_2, 16

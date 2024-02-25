@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, TRICK_ROOM
+	ld b, DARK_PULSE
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
