@@ -37,9 +37,9 @@ GetBattleAnimFrame:
 	ld h, [hl]
 	ld l, a
 	ld a, h
-	cp oamrestart_command
+	cp HIGH(battleoamrestart_command)
 	jr z, .restart
-	cp oamend_command
+	cp HIGH(battleoamend_command)
 	jr z, .repeat_last
 	push hl
 	call .GetPointer
