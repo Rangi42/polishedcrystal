@@ -209,7 +209,7 @@ BattleAnimFrameData:
 	dw .Frameset_RedStar ; cc
 	dw .Frameset_Hail ; cd
 	dw .Frameset_UTurn_Fall ; ce
-	dw .Frameset_BigWhip ; cf
+	dw .Frameset_BigWhip                 ; BATTLEANIMFRAMESET_BIG_WHIP
 	dw .Frameset_SwirlShort ; d0
 	dw .Frameset_SmallGlow ; d1
 	dw .Frameset_BigGlowClear ; d2
@@ -1477,14 +1477,14 @@ BattleAnimFrameData:
 	battleoamend
 
 .Frameset_BigWhip:
-	battleoamframe BATTLEANIMOAMSET_F5,  1, OAM_X_FLIP
-	battleoamframe BATTLEANIMOAMSET_C4,  1, OAM_X_FLIP
-	battleoamframe BATTLEANIMOAMSET_F5,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_F4,  1, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_F5,  1, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_C4,  1
-	battleoamframe BATTLEANIMOAMSET_F5,  1
-	battleoamframe BATTLEANIMOAMSET_F4,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_2,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_3,  1, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_2,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_3,  1
 	battleoamrestart
 
 .Frameset_SwirlShort:

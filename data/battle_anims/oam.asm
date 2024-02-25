@@ -251,8 +251,8 @@ BattleAnimOAMData:
 	battleanimoam $00, 20, .OAMData_f1            ; BATTLEANIMOAMSET_F1
 	battleanimoam $05, 16, .OAMData_f2            ; BATTLEANIMOAMSET_F2
 	battleanimoam $0a,  9, .OAMData_f3            ; BATTLEANIMOAMSET_F3
-	battleanimoam $06,  6, .OAMData_f4            ; BATTLEANIMOAMSET_F4
-	battleanimoam $0c,  6, .OAMData_f5            ; BATTLEANIMOAMSET_F5
+	battleanimoam $06,  6, .OAMData_BigWhip3      ; BATTLEANIMOAMSET_BIG_WHIP_3
+	battleanimoam $0c,  6, .OAMData_BigWhip1      ; BATTLEANIMOAMSET_BIG_WHIP_1
 	battleanimoam $00, 17, .OAMData_f6            ; BATTLEANIMOAMSET_F6
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
@@ -270,6 +270,7 @@ BattleAnimOAMData:
 	battleanimoam $0c,  9, .OAMData_Mushroom1     ; BATTLEANIMOAMSET_MUSHROOM_3
 	battleanimoam $00, 16, .OAMData_Stats         ; BATTLEANIMOAMSET_STAT
 	battleanimoam $00,  6, .OAMData_IcicleCrash   ; BATTLEANIMOAMSET_ICICLE_CRASH
+	battleanimoam $00,  6, .OAMData_BigWhip2      ; BATTLEANIMOAMSET_BIG_WHIP_2
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -1384,7 +1385,7 @@ BattleAnimOAMData:
 	dsprite   0, 4,  -1, 4, $05, $0
 	dsprite   0, 4,   0, 4, $08, $0
 
-.OAMData_f4:
+.OAMData_BigWhip3:
 	dbsprite  -2,   0, 0, 0, $00, $0
 	dbsprite   1,   0, 0, 0, $01, $0
 	dbsprite  -2,   1, 0, 0, $02, $0
@@ -1392,7 +1393,7 @@ BattleAnimOAMData:
 	dbsprite   0,   1, 0, 0, $04, $0
 	dbsprite   1,   1, 0, 0, $05, $0
 
-.OAMData_f5:
+.OAMData_BigWhip1:
 	dbsprite   1,  -1, 0, 0, $00, $0
 	dbsprite   0,   0, 0, 0, $01, $0
 	dbsprite   1,   0, 0, 0, $02, $0
@@ -1494,3 +1495,11 @@ BattleAnimOAMData:
 	dsprite   0, 0,   0, 0, $03, $0
 	dsprite   1, 0,  -1, 0, $04, $0
 	dsprite   1, 0,   0, 0, $05, $0
+
+.OAMData_BigWhip2:
+	dbsprite   0,  -2, 0, 0, $00, $0
+	dbsprite   1,  -2, 0, 0, $01, $0
+	dbsprite   1,  -1, 0, 0, $02, $0
+	dbsprite   1,   0, 0, 0, $03, $0
+	dbsprite   0,   1, 0, 0, $04, $0
+	dbsprite   1,   1, 0, 0, $05, $0
