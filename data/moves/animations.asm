@@ -3133,33 +3133,7 @@ BattleAnim_DragonDance:
 	anim_obj ANIM_OBJ_DRAGON_DANCE, 48, 104, $0
 	anim_wait 8
 	anim_loop 8, .loop
-	anim_wait 40
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
-	anim_wait 1
-	anim_1gfx ANIM_GFX_SPEED
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-.loop2
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_obj ANIM_OBJ_FOCUS, 44, 108, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS, 36, 108, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS, 52, 108, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS, 28, 108, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS, 60, 108, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS, 20, 108, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS, 68, 108, $8
-	anim_wait 2
-	anim_loop 3, .loop2
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT
-	anim_call BattleAnim_ShowMon_0
+	anim_wait 48
 	anim_ret
 
 BattleAnim_HoneClaws:
