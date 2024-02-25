@@ -28,7 +28,7 @@ BattleCommand_metronome:
 	jr z, .GetMove
 
 if DEF(DEBUG)
-	ld b, TOXIC_SPIKES
+	ld b, FLASH_CANNON
 endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr

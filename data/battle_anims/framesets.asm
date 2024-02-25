@@ -199,6 +199,7 @@ BattleAnimFrameData:
 	dw .Frameset_IceLong ; c4
 	dw .Frameset_TrickRoom ; c5
 	dw .Frameset_Vortex ; c6
+	dw .Frameset_ShrinkingGlow           ; BATTLEANIMFRAMESET_SHRINKING_GLOW
 	dw .Frameset_BulkUp ; c7
 	dw .Frameset_MudShot                 ; BATTLEANIMFRAMESET_MUD_SHOT
 	dw .Frameset_ShrinkingRingSmall ; c9
@@ -1425,6 +1426,12 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_DA,  1
 	battleoamframe BATTLEANIMOAMSET_DB,  1
 	battleoamrestart
+
+.Frameset_ShrinkingGlow:
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_53,  2
+	battleoamframe BATTLEANIMOAMSET_55,  2
+	battleoamdelete
 
 .Frameset_BulkUp:
 	battleoamframe BATTLEANIMOAMSET_EF,  32

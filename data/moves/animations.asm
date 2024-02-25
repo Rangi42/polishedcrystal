@@ -4217,40 +4217,96 @@ BattleAnim_ZapCannon:
 	anim_ret
 
 BattleAnim_FlashCannon:
-	anim_3gfx ANIM_GFX_CHARGE, ANIM_GFX_SHINE, ANIM_GFX_LIGHTNING
-	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-.loop
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $38
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $20
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $10
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $28
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $0
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $18
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $30
-	anim_wait 4
-	anim_loop 2, .loop
-	anim_wait 16
-	anim_obp0 $30
-	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $4, $0
-	anim_sound 0, 0, SFX_CUT
-	anim_obj ANIM_OBJ_ZAP_CANNON, 64, 92, $2
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_BRIGHT
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BRIGHT
+	anim_4gfx ANIM_GFX_BIG_GLOW_CLEAR, ANIM_GFX_GLOW, ANIM_GFX_CHARGE, ANIM_GFX_SPEED
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_BIG_GLOW_CLEAR, 48, 96, $0
+	anim_wait 8
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
+	anim_clearobjs
+	anim_wait 1
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $3, $0
+	anim_obj ANIM_OBJ_PULSING_SPARKLE, 64, 80, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $00
+	anim_wait 6
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $30
+	anim_obj ANIM_OBJ_PULSING_SPARKLE, 32, 114, $0
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $0c
+	anim_obj ANIM_OBJ_PULSING_SPARKLE, 64, 114, $0
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $24
+	anim_obj ANIM_OBJ_PULSING_SPARKLE, 32, 80, $0
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $18
+	anim_obj ANIM_OBJ_PULSING_SPARKLE, 48, 96, $0
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_SLOW_GROWING_GLOW, 48, 96, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $00
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $30
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $0c
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $24
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_FLASH_CANNON_CHARGE, 48, 96, $18
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
+	anim_wait 6
+	anim_sound 0, 0, SFX_UNKNOWN_66
 	anim_wait 32
-	anim_obj ANIM_OBJ_GLIMMER, 132, 28, $0
-	anim_wait 5
+	anim_clearobjs
+	anim_wait 1
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_SIGNAL_BEAM_RED
+	anim_sound 0, 0, SFX_GIGA_DRAIN
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $4
+	anim_wait 24
+	anim_sound 0, 0, SFX_AEROBLAST
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_obj ANIM_OBJ_SHRINKING_GLOW, 140, 44, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_RED, 136, 48, $28
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $30
+	anim_wait 1
 	anim_sound 0, 0, SFX_METRONOME
-	anim_obj ANIM_OBJ_GLIMMER, 112, 60, $0
-	anim_wait 5
-	anim_obj ANIM_OBJ_GLIMMER, 144, 68, $0
-	anim_wait 16
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_RED, 136, 48, $38
+	anim_wait 1
+	anim_obj ANIM_OBJ_SHRINKING_GLOW, 124, 60, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $20
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_RED, 136, 48, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $18
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_RED, 136, 48, $4
+	anim_wait 1
+	anim_obj ANIM_OBJ_SHRINKING_GLOW, 140, 60, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $2b
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_RED, 136, 48, $14
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $3b
+	anim_wait 1
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_RED, 136, 48, $24
+	anim_wait 1
+	anim_obj ANIM_OBJ_SHRINKING_GLOW, 124, 44, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON_SPARKS_WHITE, 136, 48, $b
+	anim_wait 4
+	anim_obj ANIM_OBJ_SHRINKING_GLOW, 132, 52, $0
+	anim_wait 32
 	anim_ret
 
 ; Aura Sphere animation from Pokémon Prism

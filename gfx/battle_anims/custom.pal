@@ -92,6 +92,11 @@ if !DEF(MONOCHROME)
 	RGB 28, 28, 28
 	RGB 16, 16, 16
 	RGB 10, 10, 10
+; signalbeamred
+	RGB 31, 31, 31
+	RGB 31, 20, 22
+	RGB 31, 07, 05
+	RGB 20, 00, 00
 ; signalbeamblue
 	RGB 31, 31, 31
 	RGB 18, 30, 31
