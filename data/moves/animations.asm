@@ -5541,15 +5541,28 @@ BattleAnim_AerialAce:
 	anim_ret
 
 BattleAnim_Extremespeed:
-	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_CUT
-	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_sound 0, 0, SFX_MENU
+	anim_1gfx ANIM_GFX_SPEED
+	anim_bgeffect ANIM_BG_HIDE_MON, $0, BG_EFFECT_USER, $0
+	anim_sound 0, 0, SFX_RAZOR_WIND
 	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
-	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, -13, 0,   5, 0, $0
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_WIND_BG
+	anim_call BattleAnimSub_Agility
 	anim_wait 32
-	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $0a, $2, $0
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_HIT, 152, 48, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 44, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_HIT, 120, 52, $0
+	anim_wait 24
+	anim_clearobjs
+	anim_wait 8
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, BG_EFFECT_USER, $0
 	anim_wait 16
 	anim_ret
 
