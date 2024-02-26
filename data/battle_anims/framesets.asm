@@ -188,6 +188,7 @@ BattleAnimFrameData:
 	dw .Frameset_b9 ; b9
 	dw .Frameset_GunkShot                ; BATTLEANIMFRAMESET_GUNK_SHOT
 	dw .Frameset_StoneEdge ; bb
+	dw .Frameset_AquaJet
 	dw .Frameset_BrickBreak ; bc
 	dw .Frameset_HyperVoice ; bd
 	dw .Frameset_SeedBomb ; be
@@ -1345,6 +1346,13 @@ BattleAnimFrameData:
 
 .Frameset_StoneEdge:
 	battleoamframe BATTLEANIMOAMSET_STONE_EDGE,  50
+	battleoamdelete
+
+.Frameset_AquaJet:
+	battleoamframe BATTLEANIMOAMSET_F7,  1
+	battleoamframe BATTLEANIMOAMSET_F8,  1
+	battleoamframe BATTLEANIMOAMSET_F9,  1
+	battleoamframe BATTLEANIMOAMSET_FA,  1
 	battleoamdelete
 
 .Frameset_BrickBreak:

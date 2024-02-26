@@ -79,6 +79,7 @@ AnimObjGFX:
 	battleanimgfx 12, AnimObjBerryGFX
 	battleanimgfx  2, AnimObjStatsGFX
 	battleanimgfx 10, AnimObjGlowGFX
+	battleanimgfx 28, AnimObjAquaJetGFX
 	battleanimgfx  9, AnimObjHit2GFX
 	battleanimgfx  6, AnimObjIcicleCrashGFX
 	battleanimgfx 28, AnimObjVoltSwitchGFX

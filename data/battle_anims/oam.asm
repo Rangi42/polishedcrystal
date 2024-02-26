@@ -254,6 +254,10 @@ BattleAnimOAMData:
 	battleanimoam $06,  6, .OAMData_BigWhip3      ; BATTLEANIMOAMSET_BIG_WHIP_3
 	battleanimoam $0c,  6, .OAMData_BigWhip1      ; BATTLEANIMOAMSET_BIG_WHIP_1
 	battleanimoam $00, 17, .OAMData_ClawTear      ; BATTLEANIMOAMSET_CLAW_TEAR
+	battleanimoam $00, 12, .OAMData_f7            ; BATTLEANIMOAMSET_F7
+	battleanimoam $06, 16, .OAMData_f8            ; BATTLEANIMOAMSET_F8
+	battleanimoam $0e, 16, .OAMData_f8            ; BATTLEANIMOAMSET_F9
+	battleanimoam $16, 12, .OAMData_f7            ; BATTLEANIMOAMSET_FA
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
 	battleanimoam $07, 10, .OAMData_HyperVoice    ; BATTLEANIMOAMSET_HYPER_VOICE
@@ -1432,6 +1436,38 @@ BattleAnimOAMData:
 	dbsprite  -2,   0, -3, 3, $06, $0
 	dbsprite  -2,   1, -1, 1, $07, $0
 	dbsprite  -1,   1, -1, 1, $08, $0
+
+.OAMData_f7:
+	dbsprite  -2,  -1, 0, 0, $00, $0
+	dbsprite  -1,  -1, 0, 0, $01, $0
+	dbsprite   0,  -1, 0, 0, $01, X_FLIP
+	dbsprite   1,  -1, 0, 0, $00, X_FLIP
+	dbsprite  -2,   0, 0, 0, $02, $0
+	dbsprite  -1,   0, 0, 0, $03, $0
+	dbsprite   0,   0, 0, 0, $03, X_FLIP
+	dbsprite   1,   0, 0, 0, $02, X_FLIP
+	dbsprite  -2,   1, 0, 0, $04, $0
+	dbsprite  -1,   1, 0, 0, $05, $0
+	dbsprite   0,   1, 0, 0, $05, X_FLIP
+	dbsprite   1,   1, 0, 0, $04, X_FLIP
+
+.OAMData_f8:
+	dbsprite  -2,  -2, 0, 0, $00, $0
+	dbsprite  -1,  -2, 0, 0, $01, $0
+	dbsprite   0,  -2, 0, 0, $01, X_FLIP
+	dbsprite   1,  -2, 0, 0, $00, X_FLIP
+	dbsprite  -2,  -1, 0, 0, $02, $0
+	dbsprite  -1,  -1, 0, 0, $03, $0
+	dbsprite   0,  -1, 0, 0, $03, X_FLIP
+	dbsprite   1,  -1, 0, 0, $02, X_FLIP
+	dbsprite  -2,   0, 0, 0, $04, $0
+	dbsprite  -1,   0, 0, 0, $05, $0
+	dbsprite   0,   0, 0, 0, $05, X_FLIP
+	dbsprite   1,   0, 0, 0, $04, X_FLIP
+	dbsprite  -2,   1, 0, 0, $06, $0
+	dbsprite  -1,   1, 0, 0, $07, $0
+	dbsprite   0,   1, 0, 0, $07, X_FLIP
+	dbsprite   1,   1, 0, 0, $06, X_FLIP
 
 .OAMData_StoneEdge:
 	dsprite  -1, 0,  -1, 0, $00, $0
