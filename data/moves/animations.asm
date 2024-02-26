@@ -6173,34 +6173,24 @@ BattleAnim_GigaImpact:
 	anim_ret
 
 BattleAnim_Trick:
-	anim_2gfx ANIM_GFX_STATUS, ANIM_GFX_BUBBLE
+	anim_1gfx ANIM_GFX_STATUS
+	anim_clearopponenthud
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_sound 0, 1, SFX_GET_COIN_FROM_SLOTS
+	anim_obj ANIM_OBJ_TRICK, 90, 68, $18
+	anim_obj ANIM_OBJ_TRICK, 90, 68, $38
+	anim_wait 16
 .loop
-	anim_sound 6, 2, SFX_SHARPEN
-	anim_obj ANIM_OBJ_TRICK_FROM, 128, 64, $2
-	anim_wait 38
-	anim_sound 6, 2, SFX_SHARPEN
-	anim_obj ANIM_OBJ_TRICK_TO, 64, 76, $2
-	anim_wait 38
-	anim_loop 2, .loop
-.loop2
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_TRICK_FROM, 128, 64, $4
-	anim_wait 16
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_TRICK_TO, 64, 76, $4
-	anim_wait 16
-	anim_loop 2, .loop2
-	anim_sound 0, 1, SFX_KINESIS
-	anim_obj ANIM_OBJ_CHICK, 136, 24, $15
-	anim_obj ANIM_OBJ_CHICK, 136, 24, $aa
-	anim_obj ANIM_OBJ_CHICK, 136, 24, $bf
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_TRICK_FROM, 128, 64, $4
-	anim_wait 16
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_TRICK_TO, 64, 76, $4
-	anim_wait 16
+	anim_sound 0, 1, SFX_STOP_SLOT
 	anim_wait 32
+	anim_loop 4, .loop
+	anim_wait 7
+	anim_sound 0, 1, SFX_SLOT_MACHINE_START
+	anim_incobj 1
+	anim_incobj 2
+	anim_wait 6
+	anim_clearobjs
+	anim_wait 6
 	anim_ret
 
 BattleAnim_StatUp:
