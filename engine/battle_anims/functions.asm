@@ -4223,54 +4223,25 @@ BattleAnimFunction_AirCutter:
 	jmp BattleAnim_StepToTarget
 
 BattleAnimFunction_RadialMoveOut:
-	call BattleAnim_AnonJumptable
-.anon_dw
-	dw .init
-	dw .step
-
-.init
-	call BattleAnimFunc_RadialInit
-.step
 	lb de, 12, 80
-	jr BattleAnimFunc_RadialStep
+	jr BattleAnimFunc_DoRadialMoveOut
 
 BattleAnimFunction_RadialMoveOut_Slow:
-	call BattleAnim_AnonJumptable
-.anon_dw
-	dw .init
-	dw .step
-
-.init
-	call BattleAnimFunc_RadialInit
-.step
 	lb de, 3, 80
-	jr BattleAnimFunc_RadialStep
+	jr BattleAnimFunc_DoRadialMoveOut
 
 BattleAnimFunction_RadialMoveOut_VerySlow:
-	call BattleAnim_AnonJumptable
-.anon_dw
-	dw .init
-	dw .step
-
-.init
-	call BattleAnimFunc_RadialInit
-.step
 	lb de, 1, 120
-	jr BattleAnimFunc_RadialStep
+	jr BattleAnimFunc_DoRadialMoveOut
 
 BattleAnimFunction_RadialMoveOut_Fast:
-	call BattleAnim_AnonJumptable
-.anon_dw
-	dw .init
-	dw .step
-
-.init
-	call BattleAnimFunc_RadialInit
-.step
 	lb de, 20, 160
-	jr BattleAnimFunc_RadialStep
+	jr BattleAnimFunc_DoRadialMoveOut
 
 BattleAnimFunction_RadialMoveOut_Stats:
+	lb de, 6, 80
+	; fallthrough
+BattleAnimFunc_DoRadialMoveOut:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .init
@@ -4279,7 +4250,6 @@ BattleAnimFunction_RadialMoveOut_Stats:
 .init
 	call BattleAnimFunc_RadialInit
 .step
-	lb de, 6, 80
 	; fallthrough
 BattleAnimFunc_RadialStep:
 	ld hl, BATTLEANIMSTRUCT_VAR1
