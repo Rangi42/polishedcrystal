@@ -2578,7 +2578,7 @@ BattleAnimFunction_Amnesia:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
-	add BATTLEANIMFRAMESET_63
+	add BATTLEANIMFRAMESET_AMNESIA_1
 	call FarReinitBattleAnimFrameset
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc

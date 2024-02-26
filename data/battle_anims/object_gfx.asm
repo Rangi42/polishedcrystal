@@ -47,7 +47,7 @@ AnimObjGFX:
 	battleanimgfx 36, AnimObjSkyAttackGFX
 	battleanimgfx 16, AnimObjGlobeGFX
 	battleanimgfx 48, AnimObjShapesGFX
-	battleanimgfx 18, AnimObjObjectsGFX
+	battleanimgfx 21, AnimObjObjectsGFX
 	battleanimgfx 38, AnimObjShineGFX
 	battleanimgfx 35, AnimObjAngelsGFX
 	battleanimgfx 18, AnimObjWaveGFX

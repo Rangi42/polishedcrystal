@@ -99,9 +99,9 @@ BattleAnimFrameData:
 	dw .Frameset_60 ; 60
 	dw .Frameset_61 ; 61
 	dw .Frameset_62 ; 62
-	dw .Frameset_63 ; 63
-	dw .Frameset_64 ; 64
-	dw .Frameset_Amnesia3_Recover        ; BATTLE_ANIM_FRAMESET_AMNESIA_3_RECOVER
+	dw .Frameset_Amnesia1                ; BATTLEANIMFRAMESET_AMNESIA_1
+	dw .Frameset_Amnesia2                ; BATTLEANIMFRAMESET_AMNESIA_2
+	dw .Frameset_Amnesia3_Recover        ; BATTLEANIMFRAMESET_AMNESIA_3_RECOVER
 	dw .Frameset_66 ; 66
 	dw .Frameset_67 ; 67
 	dw .Frameset_68 ; 68
@@ -135,7 +135,7 @@ BattleAnimFrameData:
 	dw .Frameset_SeismicToss             ; BATTLEANIMFRAMESET_SEISMIC_TOSS
 	dw .Frameset_85 ; 85
 	dw .Frameset_86 ; 86
-	dw .Frameset_87 ; 87
+	dw .Frameset_MetronomeHand           ; BATTLEANIMFRAMESET_METRONOME_HAND
 	dw .Frameset_Agility                 ; BATTLEANIMFRAMESET_AGILITY
 	dw .Frameset_Cotton                  ; BATTLEANIMFRAMESET_COTTON
 	dw .Frameset_8a ; 8a
@@ -164,7 +164,7 @@ BattleAnimFrameData:
 	dw .Frameset_a1 ; a1
 	dw .Frameset_a2 ; a2
 	dw .Frameset_a3 ; a3
-	dw .Frameset_Glimmer ; BATTLEANIMFRAMESET_GLIMMER
+	dw .Frameset_Glimmer                 ; BATTLEANIMFRAMESET_GLIMMER
 	dw .Frameset_a5 ; a5
 	dw .Frameset_a6 ; a6
 	dw .Frameset_a7 ; a7
@@ -229,6 +229,7 @@ BattleAnimFrameData:
 	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
+	dw .Frameset_SmellingSalt_Surprised  ; BATTLEANIMFRAMESET_SMELLINGSALT_SURPRISED
 	dw .Frameset_SpinningTriangle        ; BATTLEANIMFRAMESET_SPINNING_TRIANGLE
 	dw .Frameset_SpinningTriangleSlow    ; BATTLEANIMFRAMESET_SPINNING_TRIANGLE_SLOW
 	dw .Frameset_BouncingMushroom        ; BATTLEANIMFRAMESET_BOUNCING_MUSHROOM
@@ -900,11 +901,11 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_7E,  4, OAM_X_FLIP
 	battleoamrestart
 
-.Frameset_63:
+.Frameset_Amnesia1:
 	battleoamframe BATTLEANIMOAMSET_7F,  8
 	battleoamend
 
-.Frameset_64:
+.Frameset_Amnesia2:
 	battleoamframe BATTLEANIMOAMSET_25,  8
 	battleoamend
 
@@ -1080,7 +1081,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_A9,  4, OAM_X_FLIP
 	battleoamrestart
 
-.Frameset_87:
+.Frameset_MetronomeHand:
 	battleoamframe BATTLEANIMOAMSET_1B,  8
 	battleoamend
 
@@ -1590,6 +1591,10 @@ BattleAnimFrameData:
 
 .Frameset_DropletL:
 	battleoamframe BATTLEANIMOAMSET_E0,  16, OAM_X_FLIP
+	battleoamdelete
+
+.Frameset_SmellingSalt_Surprised:
+	battleoamframe BATTLEANIMOAMSET_FB,  6
 	battleoamdelete
 
 .Frameset_SpinningTriangle:
