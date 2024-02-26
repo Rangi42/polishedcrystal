@@ -5996,31 +5996,39 @@ BattleAnim_RockBlast:
 	anim_ret
 
 BattleAnim_SkillSwap:
-	anim_2gfx ANIM_GFX_ICE, ANIM_GFX_CHARGE
-	anim_sound 6, 2, SFX_SHARPEN
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_SKILL_SWAP
+	anim_jump BattleAnim_Transfer_Orbs_branch
+
+BattleAnim_Transfer_Orbs_branch:
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_1gfx ANIM_GFX_CHARGE
 .loop
-	anim_obj ANIM_OBJ_SKILL_SWAP_FROM, 128, 64, $2
-	anim_wait 4
-	anim_loop 5, .loop
-	anim_wait 10
-	anim_sound 6, 2, SFX_SHARPEN
-.loop2
-	anim_obj ANIM_OBJ_SKILL_SWAP_TO, 64, 76, $2
-	anim_wait 4
-	anim_loop 5, .loop2
-	anim_wait 10
-	anim_sound 6, 2, SFX_SHARPEN
-.loop3
-	anim_obj ANIM_OBJ_SKILL_SWAP_FROM, 128, 64, $2
-	anim_wait 4
-	anim_loop 5, .loop3
-	anim_wait 10
-	anim_sound 6, 2, SFX_SHARPEN
-.loop4
-	anim_obj ANIM_OBJ_SKILL_SWAP_TO, 64, 76, $2
-	anim_wait 4
-	anim_loop 5, .loop4
-	anim_wait 48
+	anim_sound 6, 3, SFX_STOP_SLOT
+	anim_obj ANIM_OBJ_SKILL_SWAP_1, 136, 64, $2
+	anim_wait 6
+	anim_sound 6, 3, SFX_STOP_SLOT
+	anim_obj ANIM_OBJ_SKILL_SWAP_1, 136, 64, $2
+	anim_wait 6
+	anim_sound 6, 3, SFX_STOP_SLOT
+	anim_obj ANIM_OBJ_SKILL_SWAP_1, 136, 64, $2
+	anim_wait 6
+	anim_sound 6, 3, SFX_STOP_SLOT
+	anim_obj ANIM_OBJ_SKILL_SWAP_1, 136, 64, $2
+	anim_wait 6
+	anim_sound 6, 3, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_SKILL_SWAP_2, 52, 88, $8
+	anim_wait 6
+	anim_sound 6, 3, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_SKILL_SWAP_2, 52, 88, $8
+	anim_wait 6
+	anim_sound 6, 3, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_SKILL_SWAP_2, 52, 88, $8
+	anim_wait 6
+	anim_sound 6, 3, SFX_UNKNOWN_66
+	anim_obj ANIM_OBJ_SKILL_SWAP_2, 52, 88, $8
+	anim_wait 6
+	anim_loop 2, .loop
+	anim_wait 32
 	anim_ret
 
 BattleAnim_StoneEdge:

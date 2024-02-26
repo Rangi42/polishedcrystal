@@ -77,6 +77,11 @@ if !DEF(MONOCHROME)
 	RGB 19, 31, 31
 	RGB 00, 28, 15
 	RGB 00, 00, 00
+; skillswap
+	RGB 31, 31, 31
+	RGB 01, 22, 25
+	RGB 26, 28, 00
+	RGB 31, 30, 13
 ; will-o-wisp
 	RGB 31, 31, 31
 	RGB 00, 22, 29
