@@ -253,7 +253,7 @@ BattleAnimOAMData:
 	battleanimoam $0a,  9, .OAMData_f3            ; BATTLEANIMOAMSET_F3
 	battleanimoam $06,  6, .OAMData_BigWhip3      ; BATTLEANIMOAMSET_BIG_WHIP_3
 	battleanimoam $0c,  6, .OAMData_BigWhip1      ; BATTLEANIMOAMSET_BIG_WHIP_1
-	battleanimoam $00, 17, .OAMData_f6            ; BATTLEANIMOAMSET_F6
+	battleanimoam $00, 17, .OAMData_ClawTear      ; BATTLEANIMOAMSET_CLAW_TEAR
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
 	battleanimoam $07, 10, .OAMData_HyperVoice    ; BATTLEANIMOAMSET_HYPER_VOICE
@@ -1401,7 +1401,7 @@ BattleAnimOAMData:
 	dbsprite   0,   1, 0, 0, $04, $0
 	dbsprite   1,   1, 0, 0, $05, $0
 
-.OAMData_f6:
+.OAMData_ClawTear:
 	dbsprite  -2,  -2, -1, 1, $00, $0
 	dbsprite  -1,  -2, -1, 1, $01, $0
 	dbsprite   0,  -2, -1, 1, $02, $0

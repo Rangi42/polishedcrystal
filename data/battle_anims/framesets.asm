@@ -1423,7 +1423,7 @@ BattleAnimFrameData:
 	battleoamdelete
 
 .Frameset_ClawTear:
-	battleoamframe BATTLEANIMOAMSET_EA, 16
+	battleoamframe BATTLEANIMOAMSET_F6, 16
 	battleoamend
 
 .Frameset_Vortex:
