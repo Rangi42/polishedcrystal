@@ -58,7 +58,7 @@ BattleAnim_PlayRough:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 6, 2, SFX_THROW_BALL
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_3gfx ANIM_GFX_STARS, ANIM_GFX_HIT, ANIM_GFX_HEARTS
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $2, $0
@@ -3161,7 +3161,7 @@ BattleAnim_QuickAttack:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_MENU
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_sound 0, 1, SFX_COMET_PUNCH
 	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   7, 0, $0
@@ -3232,7 +3232,7 @@ BattleAnim_SeismicToss:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 0, SFX_MENU
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_1gfx ANIM_GFX_U_TURN
 	anim_obj ANIM_OBJ_U_TURN_LAUNCH, 64, 92, $18
@@ -3906,7 +3906,7 @@ BattleAnim_MachPunch:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_HIT
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
 	anim_sound 0, 0, SFX_MENU
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_sound 0, 1, SFX_MEGA_PUNCH
 	anim_obj ANIM_OBJ_PUNCH, -15, 0,   7, 0, $0
@@ -5268,7 +5268,7 @@ BattleAnimSub_Focus:
 	anim_wait 2
 	anim_ret
 
-BattleAnimSub_SpeedLine:
+BattleAnimSub_QuickAttack:
 	anim_obj ANIM_OBJ_SPEED_LINE, 24, 88, $2
 	anim_obj ANIM_OBJ_SPEED_LINE, 32, 88, $1
 	anim_obj ANIM_OBJ_SPEED_LINE, 40, 88, $0
@@ -5412,7 +5412,7 @@ BattleAnim_AquaJet:
 	anim_4gfx ANIM_GFX_HIT_2, ANIM_GFX_AQUA_JET, ANIM_GFX_BUBBLE, ANIM_GFX_SPEED
 	anim_sound 0, 0, SFX_MENU
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 6
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BUBBLE
 	anim_sound 0, 1, SFX_SURF
@@ -5527,7 +5527,7 @@ BattleAnim_AerialAce:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_CUT
 	anim_sound 0, 0, SFX_MENU
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_sound 0, 1, SFX_WING_ATTACK
 	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 160, 40, $0
@@ -5544,7 +5544,7 @@ BattleAnim_Extremespeed:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_CUT
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
 	anim_sound 0, 0, SFX_MENU
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_sound 0, 1, SFX_CUT
 	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, -13, 0,   5, 0, $0
@@ -5943,7 +5943,7 @@ BattleAnim_GyroBall:
 	anim_wait 16
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_HIT
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_resetobp0
 	anim_sound 0, 1, SFX_MOVE_PUZZLE_PIECE
@@ -6063,7 +6063,7 @@ BattleAnim_UTurn:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 6, 2, SFX_THROW_BALL
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
 	anim_1gfx ANIM_GFX_U_TURN
 	anim_obj ANIM_OBJ_U_TURN_LAUNCH, 64, 92, $18
@@ -6113,7 +6113,7 @@ BattleAnim_SuckerPunch:
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 122, 52, $0
 	anim_wait 12
-	anim_call BattleAnimSub_SpeedLine
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 8
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_wait 4
