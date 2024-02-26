@@ -3932,13 +3932,13 @@ BattleAnim_FeintAttack:
 	anim_bgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK, $0, $1, $80
 	anim_wait 96
 	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_HIT,  15, 0,   4, 0, $0
+	anim_obj ANIM_OBJ_HIT, 120, 40, $0
 	anim_wait 8
 	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_HIT, -13, 0,   5, 0, $0
+	anim_obj ANIM_OBJ_HIT, 152, 48, $0
 	anim_wait 8
 	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_HIT, -15, 0,   6, 0, $0
+	anim_obj ANIM_OBJ_HIT, 136, 56, $0
 	anim_wait 32
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK
 	anim_call BattleAnim_ShowMon_0
