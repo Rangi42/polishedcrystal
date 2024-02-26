@@ -4642,31 +4642,56 @@ BattleAnim_ShellSmash:
 	anim_ret
 
 BattleAnim_VoltSwitch:
-	anim_3gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION, ANIM_GFX_CHARGE
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $30
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $31
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $32
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $33
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $34
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $35
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $36
-	anim_obj ANIM_OBJ_CHARGE, 44, 88, $37
+	anim_3gfx ANIM_GFX_CHARGE, ANIM_GFX_VOLT_SWITCH, ANIM_GFX_LIGHTNING
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_YELLOW
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_battlergfx_2row
+	anim_sound 0, 0, SFX_WARP_TO
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $38
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $20
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $10
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $28
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $18
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $30
+	anim_wait 4
+	anim_sound 0, 0, SFX_ZAP_CANNON
+	anim_obj ANIM_OBJ_VOLT_SWITCH, 64, 92, $4
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 64, 92, $5c
+	anim_wait 2
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 76, 84, $d0
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 108, 76, $e8
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 112, 68, $50
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 100, 60, $5c
+	anim_wait 4
+	anim_sound 0, 0, SFX_THUNDERSHOCK
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $10, $FF
 .loop
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_wait 8
-	anim_loop 4, .loop
-	anim_wait 8
-	anim_wait 64
-	anim_sound 6, 2, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_ZAP_CANNON, 64, 92, $2
-	anim_wait 40
-	anim_sound 0, 1, SFX_ZAP_CANNON
-	anim_obj ANIM_OBJ_THUNDER_WAVE, 136, 56, $0
 	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
-	anim_wait 30
-	anim_call BattleAnim_ShowMon_1
-	anim_wait 1
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 132, 56, $5c
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 132, 56, $e8
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 128, 56, $d0
+	anim_wait 2
+	anim_obj ANIM_OBJ_VOLT_SWITCH_SPARKS, 156, 56, $50
+	anim_wait 2
+	anim_loop 8, .loop
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_wait 4
 	anim_ret
 
 BattleAnim_Spark:

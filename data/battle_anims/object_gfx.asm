@@ -81,6 +81,7 @@ AnimObjGFX:
 	battleanimgfx 10, AnimObjGlowGFX
 	battleanimgfx  9, AnimObjHit2GFX
 	battleanimgfx  6, AnimObjIcicleCrashGFX
+	battleanimgfx 28, AnimObjVoltSwitchGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

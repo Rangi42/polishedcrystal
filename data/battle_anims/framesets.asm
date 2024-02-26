@@ -234,6 +234,9 @@ BattleAnimFrameData:
 	dw .Frameset_MediumHorn              ; BATTLEANIMFRAMESET_MEDIUM_HORN
 	dw .Frameset_Minimize                ; BATTLEANIMFRAMESET_MINIMIZE
 	dw .Frameset_IcicleCrash             ; BATTLEANIMFRAMESET_ICICLE_CRASH
+	dw .Frameset_EnergyOrbLong           ; BATTLEANIMFRAMESET_ENERGY_ORB_LONG
+	dw .Frameset_VoltSwitch              ; BATTLEANIMFRAMESET_VOLT_SWITCH
+	dw .Frameset_DischargeSparksN        ; BATTLEANIMFRAMESET_DISCHARGE_SPARKS_N
 
 ; VAR3 animations start here -------
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
@@ -1389,12 +1392,6 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_01,  1
 	battleoamrestart
 
-.Frameset_FlashCannon:
-	battleoamframe BATTLEANIMOAMSET_1E,  4
-	battleoamframe BATTLEANIMOAMSET_55,  8
-	battleoamframe BATTLEANIMOAMSET_54,  20
-	battleoamdelete
-
 .Frameset_FocusBlast:
 	battleoamframe BATTLEANIMOAMSET_00,  1
 	battleoamframe BATTLEANIMOAMSET_07,  1
@@ -1614,7 +1611,7 @@ BattleAnimFrameData:
 	battleoamdelete
 
 .Frameset_BugBuzz:
-	battleoamframe BATTLEANIMOAMSET_14,  4, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_14,         4, OAM_Y_FLIP
 	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_Y_FLIP
 	battleoamframe BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_Y_FLIP
 	battleoamdelete
@@ -1647,3 +1644,24 @@ BattleAnimFrameData:
 .Frameset_IcicleCrash:
 	battleoamframe BATTLEANIMOAMSET_ICICLE_CRASH, 32
 	battleoamdelete
+
+.Frameset_EnergyOrbLong:
+	battleoamframe BATTLEANIMOAMSET_1E,  4
+	battleoamframe BATTLEANIMOAMSET_55,  8
+	battleoamframe BATTLEANIMOAMSET_54,  20
+	battleoamdelete
+
+.Frameset_VoltSwitch:
+	battleoamframe BATTLEANIMOAMSET_VOLT_SWITCH_1,  1
+	battleoamframe BATTLEANIMOAMSET_VOLT_SWITCH_2,  1
+	battleoamframe BATTLEANIMOAMSET_VOLT_SWITCH_3,  1
+	battleoamframe BATTLEANIMOAMSET_VOLT_SWITCH_4,  1
+	battleoamframe BATTLEANIMOAMSET_VOLT_SWITCH_5,  1
+	battleoamframe BATTLEANIMOAMSET_VOLT_SWITCH_6,  1
+	battleoamrestart
+
+.Frameset_DischargeSparksN:
+	battleoamframe BATTLEANIMOAMSET_DISCHARGE_SPARKS_N_1,  2, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_DISCHARGE_SPARKS_N_2,  2, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_82,  2
+	battleoamend
