@@ -103,6 +103,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RadialMoveOut
 	dw BattleAnimFunction_RadialMoveOut_Slow
 	dw BattleAnimFunction_RadialMoveOut_VerySlow
+	dw BattleAnimFunction_RadialMoveOut_Fast
 	dw BattleAnimFunction_RadialMoveOut_Stats
 	dw BattleAnimFunction_PowerUp
 	dw BattleAnimFunction_Roost
@@ -4255,6 +4256,18 @@ BattleAnimFunction_RadialMoveOut_VerySlow:
 	call BattleAnimFunc_RadialInit
 .step
 	lb de, 1, 120
+	jr BattleAnimFunc_RadialStep
+
+BattleAnimFunction_RadialMoveOut_Fast:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw .init
+	dw .step
+
+.init
+	call BattleAnimFunc_RadialInit
+.step
+	lb de, 20, 160
 	jr BattleAnimFunc_RadialStep
 
 BattleAnimFunction_RadialMoveOut_Stats:

@@ -245,6 +245,7 @@ BattleAnimFrameData:
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
 	dw .Frameset_PoisonJab               ; BATTLEANIMFRAMESET_POISON_JAB
 	dw .Frameset_CutHorizontal           ; BATTLEANIMFRAMESET_CUT_HORIZONTAL
+	dw .Frameset_SuckerPunch             ; BATTLEANIMFRAMESET_SUCKER_PUNCH
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1689,4 +1690,8 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_DISCHARGE_SPARKS_N_1,  2, OAM_X_FLIP, OAM_Y_FLIP
 	battleoamframe BATTLEANIMOAMSET_DISCHARGE_SPARKS_N_2,  2, OAM_X_FLIP
 	battleoamframe BATTLEANIMOAMSET_82,  2
+	battleoamend
+
+.Frameset_SuckerPunch:
+	battleoamframe BATTLEANIMOAMSET_FC,  8, OAM_X_FLIP
 	battleoamend
