@@ -4891,24 +4891,63 @@ BattleAnim_Return:
 	anim_ret
 
 BattleAnim_Psystrike: ; formerly Kinesis
-	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_NOISE
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_KINESIS,  10, 0,   9, 4, $0
-	anim_bgp $1b
-	anim_wait 8
-.loop
-	anim_sound 0, 0, SFX_AEROBLAST
-	anim_obj ANIM_OBJ_SOUND,   8, 0,  11, 0, $0
-	anim_wait 32
-	anim_loop 3, .loop
-	anim_wait 48
-	anim_sound 0, 0, SFX_PLACE_PUZZLE_PIECE_DOWN
-	anim_wait 10
-	anim_sound 0, 0, SFX_PLACE_PUZZLE_PIECE_DOWN
-	anim_wait 10
-	anim_sound 0, 0, SFX_PLACE_PUZZLE_PIECE_DOWN
-	anim_wait 28
-	anim_bgp $e4
+;	anim_4gfx ANIM_GFX_PSYSTRIKE, ANIM_GFX_CHARGE, ANIM_GFX_GLOW, ANIM_GFX_SPEED
+;	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_AURORA
+;	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $1, $0
+;	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $6, $0
+;	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+;	anim_sound 0, 0, SFX_BIND
+;	anim_obj ANIM_OBJ_PSYSTRIKE_BALL, 64, 88, $12
+;	anim_wait 32
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $1
+;	anim_sound 0, 1, SFX_PSYCHIC
+;	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
+;.loop
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $38
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $20
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $8
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $10
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $28
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $0
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $18
+;	anim_wait 4
+;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $30
+;	anim_wait 4
+;	anim_loop 2, .loop
+;	anim_wait 1
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $ff
+;	anim_sound 0, 1, SFX_GRAVITY
+;.loop2
+;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 148, 36, $0
+;	anim_obj ANIM_OBJ_FOCUS, 132, 68, $6
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_FOCUS, 124, 68, $6
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 116, 48, $0
+;	anim_obj ANIM_OBJ_FOCUS, 140, 68, $8
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_FOCUS, 116, 68, $8
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 132, 60, $0
+;	anim_obj ANIM_OBJ_FOCUS, 148, 68, $6
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_FOCUS, 108, 68, $8
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 124, 24, $0
+;	anim_obj ANIM_OBJ_FOCUS, 156, 68, $8
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 144, 52, $0
+;	anim_wait 2
+;	anim_loop 3, .loop2
+;	anim_incbgeffect ANIM_BG_PSYCHIC
+;	anim_wait 1
+;	anim_clearobjs
 	anim_ret
 
 BattleAnim_Safeguard:

@@ -185,7 +185,8 @@ AnimObjStatsGFX::        INCBIN "gfx/battle_anims/stats.2bpp.lz"
 AnimObjGlowGFX::         INCBIN "gfx/battle_anims/glow.2bpp.lz"
 AnimObjHit2GFX::         INCBIN "gfx/battle_anims/hit2.2bpp.lz"
 AnimObjIcicleCrashGFX::  INCBIN "gfx/battle_anims/iciclecrash.2bpp.lz"
-AnimObjVoltSwitchGFX:     INCBIN "gfx/battle_anims/voltswitch.2bpp.lz"
+AnimObjVoltSwitchGFX::   INCBIN "gfx/battle_anims/voltswitch.2bpp.lz"
+AnimObjPsystrikeGFX::    INCBIN "gfx/battle_anims/psystrike.2bpp.lz"
 AnimObjPokeBallBGGFX::   INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 
