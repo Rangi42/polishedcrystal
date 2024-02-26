@@ -1705,21 +1705,7 @@ BattleAnim_FocusEnergy:
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 .loop
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_obj ANIM_OBJ_FOCUS,   5, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   4, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   6, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   3, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   7, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   2, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   8, 4,  13, 4, $8
-	anim_wait 2
+	anim_call BattleAnimSub_Focus
 	anim_loop 3, .loop
 	anim_wait 8
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT
@@ -3653,21 +3639,7 @@ BattleAnim_Curse:
 	anim_wait 1
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
 .loop
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_obj ANIM_OBJ_FOCUS,   5, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   4, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   6, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   3, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   7, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   2, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   8, 4,  13, 4, $8
-	anim_wait 2
+	anim_call BattleAnimSub_Focus
 	anim_loop 3, .loop
 	anim_wait 8
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT
@@ -4502,21 +4474,7 @@ BattleAnim_Endure:
 	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
 	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 .loop
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_obj ANIM_OBJ_FOCUS,   5, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   4, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   6, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   3, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   7, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   2, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   8, 4,  13, 4, $8
-	anim_wait 2
+	anim_call BattleAnimSub_Focus
 	anim_loop 5, .loop
 	anim_wait 8
 	anim_incbgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING
@@ -5289,6 +5247,24 @@ BattleAnim_Synthesis: ; removed
 
 .one
 	anim_call BattleAnimSub_Glimmer2
+	anim_ret
+
+BattleAnimSub_Focus:
+	anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_FOCUS,   5, 4,  13, 4, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS,   4, 4,  13, 4, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS,   6, 4,  13, 4, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS,   3, 4,  13, 4, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS,   7, 4,  13, 4, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS,   2, 4,  13, 4, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS,   8, 4,  13, 4, $8
+	anim_wait 2
 	anim_ret
 
 BattleAnimSub_SpeedLine:
