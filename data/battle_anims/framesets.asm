@@ -207,6 +207,7 @@ BattleAnimFrameData:
 	dw .Frameset_ShrinkingRingSmall ; c9
 	dw .Frameset_ShrinkingRingBig ; ca
 	dw .Frameset_PulsingEnergyOrbBig ; cb
+	dw .Frameset_GyroBall ; cb
 	dw .Frameset_RedStar ; cc
 	dw .Frameset_Hail ; cd
 	dw .Frameset_UTurn_Fall ; ce
@@ -1468,6 +1469,17 @@ BattleAnimFrameData:
 .Frameset_PulsingEnergyOrbBig:
 	battleoamframe BATTLEANIMOAMSET_54,  1
 	battleoamframe BATTLEANIMOAMSET_EE,  1
+	battleoamrestart
+
+.Frameset_GyroBall:
+	battleoamframe BATTLEANIMOAMSET_85,  1
+	battleoamframe BATTLEANIMOAMSET_95,  1
+	battleoamframe BATTLEANIMOAMSET_B9,  1
+	battleoamframe BATTLEANIMOAMSET_BD,  1
+	battleoamframe BATTLEANIMOAMSET_85,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_95,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_B9,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BD,  1, OAM_X_FLIP, OAM_Y_FLIP
 	battleoamrestart
 
 .Frameset_RedStar:
