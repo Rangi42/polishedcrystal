@@ -4647,22 +4647,7 @@ BattleAnim_VoltSwitch:
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
 	anim_battlergfx_2row
 	anim_sound 0, 0, SFX_WARP_TO
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $38
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $20
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $10
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $28
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $0
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $18
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $30
-	anim_wait 4
+	anim_call BattleAnimSub_EnergyOrb
 	anim_sound 0, 0, SFX_ZAP_CANNON
 	anim_obj ANIM_OBJ_VOLT_SWITCH, 64, 92, $4
 	anim_wait 2
@@ -4725,22 +4710,8 @@ BattleAnim_WildCharge:
 	anim_bgp $1b
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $38
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $20
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $8
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $10
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $28
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $0
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $18
-	anim_wait 4
-	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $30
-	anim_wait 16
+	anim_call BattleAnimSub_EnergyOrb
+	anim_wait 12
 	anim_sound 0, 0, SFX_ZAP_CANNON
 	anim_obj ANIM_OBJ_THUNDER_WAVE, 48, 92, $0
 	anim_wait 24
@@ -4890,64 +4861,64 @@ BattleAnim_Return:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Psystrike: ; formerly Kinesis
-;	anim_4gfx ANIM_GFX_PSYSTRIKE, ANIM_GFX_CHARGE, ANIM_GFX_GLOW, ANIM_GFX_SPEED
-;	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_AURORA
-;	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $1, $0
-;	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $6, $0
-;	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
-;	anim_sound 0, 0, SFX_BIND
-;	anim_obj ANIM_OBJ_PSYSTRIKE_BALL, 64, 88, $12
-;	anim_wait 32
-;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $1
-;	anim_sound 0, 1, SFX_PSYCHIC
-;	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
-;.loop
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $38
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $20
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $8
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $10
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $28
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $0
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $18
-;	anim_wait 4
-;	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $30
-;	anim_wait 4
-;	anim_loop 2, .loop
-;	anim_wait 1
-;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $ff
-;	anim_sound 0, 1, SFX_GRAVITY
-;.loop2
-;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 148, 36, $0
-;	anim_obj ANIM_OBJ_FOCUS, 132, 68, $6
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_FOCUS, 124, 68, $6
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 116, 48, $0
-;	anim_obj ANIM_OBJ_FOCUS, 140, 68, $8
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_FOCUS, 116, 68, $8
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 132, 60, $0
-;	anim_obj ANIM_OBJ_FOCUS, 148, 68, $6
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_FOCUS, 108, 68, $8
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 124, 24, $0
-;	anim_obj ANIM_OBJ_FOCUS, 156, 68, $8
-;	anim_wait 2
-;	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 144, 52, $0
-;	anim_wait 2
-;	anim_loop 3, .loop2
-;	anim_incbgeffect ANIM_BG_PSYCHIC
-;	anim_wait 1
-;	anim_clearobjs
+BattleAnim_Psystrike:
+	anim_4gfx ANIM_GFX_PSYSTRIKE, ANIM_GFX_CHARGE, ANIM_GFX_GLOW, ANIM_GFX_SPEED
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_AURORA
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $1, $0
+	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $6, $0
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_sound 0, 0, SFX_BIND
+	anim_obj ANIM_OBJ_PSYSTRIKE_BALL, 64, 88, $12
+	anim_wait 32
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $1
+	anim_sound 0, 1, SFX_PSYCHIC
+	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
+.loop
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $38
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $20
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $10
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $28
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $18
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 136, 48, $30
+	anim_wait 4
+	anim_loop 2, .loop
+	anim_wait 1
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $ff
+	anim_sound 0, 1, SFX_GRAVITY
+.loop2
+	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 148, 36, $0
+	anim_obj ANIM_OBJ_FOCUS, 132, 68, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 124, 68, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 116, 48, $0
+	anim_obj ANIM_OBJ_FOCUS, 140, 68, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 116, 68, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 132, 60, $0
+	anim_obj ANIM_OBJ_FOCUS, 148, 68, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FOCUS, 108, 68, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 124, 24, $0
+	anim_obj ANIM_OBJ_FOCUS, 156, 68, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_SHRINKING_GLOW_YFIX, 144, 52, $0
+	anim_wait 2
+	anim_loop 3, .loop2
+	anim_incbgeffect ANIM_BG_PSYCHIC
+	anim_wait 1
+	anim_clearobjs
 	anim_ret
 
 BattleAnim_Safeguard:
@@ -5360,6 +5331,25 @@ BattleAnimSub_AgilityMinor:
 	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
 	anim_ret
 
+BattleAnimSub_EnergyOrb:
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $38
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $20
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $10
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $28
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $18
+	anim_wait 4
+	anim_obj ANIM_OBJ_ENERGY_ORB, 48, 88, $30
+	anim_wait 4
+	anim_ret
+
 BattleAnimSub_Glimmer:
 	anim_sound 0, 0, SFX_METRONOME
 	anim_obj ANIM_OBJ_GLIMMER,   5, 4,   8, 0, $0
@@ -5747,17 +5737,6 @@ BattleAnim_Whirlpool:
 	anim_wait 64
 	anim_incbgeffect ANIM_BG_WHIRLPOOL
 	anim_wait 1
-	anim_ret
-
-BattleAnimSub_Drain:
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $0
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $8
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $10
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $18
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $20
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $28
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $30
-	anim_obj ANIM_OBJ_DRAIN, -16, 4,   5, 4, $38
 	anim_ret
 
 BattleAnimSub_ShakeEnemy:
