@@ -204,6 +204,11 @@ BattleAnimOAMUpdate:
 	ld hl, BATTLEANIMSTRUCT_VAR3
 	add hl, bc
 	ld a, [hl]
+
+	; Perhaps set priority
+	bit 3, a
+	push af
+	and $7
 	add a
 	ld hl, .tile_data
 	add l
@@ -211,9 +216,13 @@ BattleAnimOAMUpdate:
 	adc h
 	sub l
 	ld h, a
+	pop af
 
 	; First, set XY flip.
 	ld a, [hli]
+	jr z, .no_priority
+	or PRIORITY
+.no_priority
 	push hl
 	ld hl, wBattleAnimTempOAMFlags
 	xor [hl]

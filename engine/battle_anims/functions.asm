@@ -4415,7 +4415,11 @@ BattleAnimFunction_DarkPulse:
 	xor 4
 	ld [hl], a
 	pop af
+	cp $30
+	jr nz, .no_priority
+	set 3, [hl] ; Set priority
 
+.no_priority
 	jmp BattleAnim_StepCircle
 
 BattleAnimFunction_SpiralDescent_Fast:
