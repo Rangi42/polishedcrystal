@@ -4406,6 +4406,16 @@ BattleAnimFunction_DarkPulse:
 	add hl, bc
 	ld a, [hl]
 
+	; Dark Pulse W ends early.
+	cp $20
+	jr nz, .dark_pulse_w_done
+	ld h, a
+	add a
+	cp d ; cp $40
+	jmp z, FarDeinitBattleAnimation
+	ld a, h
+
+.dark_pulse_w_done
 	; Set sprite rotation
 	push af
 	ld hl, BATTLEANIMSTRUCT_VAR3
