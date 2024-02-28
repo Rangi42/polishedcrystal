@@ -4429,8 +4429,20 @@ BattleAnimFunction_DarkPulse:
 	; Dark Pulse NW-NE should appear behind the mon.
 	cp $28
 	jr c, .no_priority
+	push af
+
+	; For NE, disable priority once we've reached a certain point.
+	cp $38
+	jr nz, .cont
+	ld a, d
+	cp $40
+	jr nc, .pop_af_no_priority
+
+.cont
 	set 3, [hl] ; Set priority
 
+.pop_af_no_priority
+	pop af
 .no_priority
 	jmp BattleAnim_StepCircle
 
