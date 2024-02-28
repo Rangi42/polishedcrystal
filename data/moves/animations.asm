@@ -2968,14 +2968,14 @@ BattleAnim_DarkPulse:
 	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_bgp $1b
 	anim_sound 0, 1, SFX_SPITE
-	anim_obj ANIM_OBJ_DARK_PULSE, 52, 92, $0
-	anim_obj ANIM_OBJ_DARK_PULSE, 48, 96, $8
-	anim_obj ANIM_OBJ_DARK_PULSE, 44, 96, $10
-	anim_obj ANIM_OBJ_DARK_PULSE, 40, 96, $18
-	anim_obj ANIM_OBJ_DARK_PULSE, 36, 92, $20
-	anim_obj ANIM_OBJ_DARK_PULSE, 40, 88, $28
-	anim_obj ANIM_OBJ_DARK_PULSE, 44, 88, $30
-	anim_obj ANIM_OBJ_DARK_PULSE, 48, 88, $38
+	anim_obj ANIM_OBJ_DARK_PULSE_E,  52, 92, $0
+	anim_obj ANIM_OBJ_DARK_PULSE_SE, 48, 96, $8
+	anim_obj ANIM_OBJ_DARK_PULSE_S,  44, 96, $10
+	anim_obj ANIM_OBJ_DARK_PULSE_SW, 40, 96, $18
+	anim_obj ANIM_OBJ_DARK_PULSE_W,  36, 92, $20
+	anim_obj ANIM_OBJ_DARK_PULSE_NW, 40, 88, $28
+	anim_obj ANIM_OBJ_DARK_PULSE_N,  44, 88, $30
+	anim_obj ANIM_OBJ_DARK_PULSE_NE, 48, 88, $38
 	anim_wait 96
 	anim_incbgeffect ANIM_BG_WHIRLPOOL
 	anim_ret
