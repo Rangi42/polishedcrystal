@@ -4425,8 +4425,10 @@ BattleAnimFunction_DarkPulse:
 	xor 4
 	ld [hl], a
 	pop af
-	cp $30
-	jr nz, .no_priority
+
+	; Dark Pulse NW-NE should appear behind the mon.
+	cp $28
+	jr c, .no_priority
 	set 3, [hl] ; Set priority
 
 .no_priority
