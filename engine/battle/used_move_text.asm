@@ -1,6 +1,6 @@
 if DEF(DEBUG)
 MoveTable:
-	; Crurent animation pending testing
+	; Current animation pending testing
 	db DARK_PULSE
 
 	; RBYGSC moves
