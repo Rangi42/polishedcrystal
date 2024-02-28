@@ -745,7 +745,7 @@ BattleAnim_Flamethrower:
 	anim_ret
 
 BattleAnim_FireBlast:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_FIRE
 	anim_1gfx ANIM_GFX_FIRE
 .loop1
 	anim_sound 6, 2, SFX_EMBER
@@ -855,7 +855,7 @@ BattleAnim_WaterPulse:
 	anim_ret
 
 BattleAnim_BubbleBeam:
-	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BUBBLE
 	anim_1gfx ANIM_GFX_BUBBLE
 .loop
 	anim_sound 16, 2, SFX_BUBBLE_BEAM
@@ -2758,14 +2758,15 @@ BattleAnim_Astonish:
 	anim_ret
 
 BattleAnim_Substitute:
-	anim_sound 0, 0, SFX_SURF
+	anim_sound 0, 0, SFX_SHARPEN
 	anim_jumpif $3, .dropsub2
 	anim_jumpif $2, .raisesub
 	anim_jumpif $1, .dropsub
 	anim_1gfx ANIM_GFX_SMOKE
 	anim_bgeffect ANIM_BG_REMOVE_MON, $0, $1, $0
-	anim_wait 48
+	anim_wait 32
 	anim_raisesub
+	anim_sound 0, 0, SFX_THROW_BALL
 	anim_obj ANIM_OBJ_BALL_POOF,   6, 0,  12, 0, $0
 	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_wait 32
@@ -2773,26 +2774,23 @@ BattleAnim_Substitute:
 
 .dropsub
 	anim_bgeffect ANIM_BG_REMOVE_MON, $0, $1, $0
-	anim_wait 48
+	anim_wait 32
 	anim_dropsub
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
-	anim_wait 32
 	anim_ret
 
 .raisesub
 	anim_bgeffect ANIM_BG_REMOVE_MON, $0, $1, $0
-	anim_wait 48
+	anim_wait 32
 	anim_raisesub
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
-	anim_wait 32
 	anim_ret
 
 .dropsub2
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_wait 48
+	anim_wait 32
 	anim_dropsub
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
-	anim_wait 32
 	anim_ret
 
 BattleAnim_Minimize:
@@ -3579,6 +3577,7 @@ BattleAnim_BugBuzz:
 BattleAnim_FlameCharge: ; formerly Flame Wheel
 	anim_1gfx ANIM_GFX_FIRE
 	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_FIRE
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
 .loop
 	anim_sound 6, 2, SFX_EMBER
@@ -4136,12 +4135,12 @@ BattleAnim_ZapCannon:
 	anim_sound 6, 2, SFX_ZAP_CANNON
 	anim_obj ANIM_OBJ_ZAP_CANNON,   8, 0,  11, 4, $2
 	anim_wait 40
+	anim_obp0 $0
 	anim_sound 0, 1, SFX_THUNDERSHOCK
 	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, -15, 0,   7, 0, $2
 	anim_wait 16
 	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, -15, 0,   7, 0, $0
 	anim_wait 128
-	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FlashCannon:
@@ -5765,6 +5764,7 @@ BattleAnimSub_Beam:
 	anim_ret
 
 BattleAnimSub_Explosion1:
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
 	anim_sound 0, 0, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_EXPLOSION1,   3, 0,   8, 0, $0
 	anim_wait 5
@@ -5782,6 +5782,7 @@ BattleAnimSub_Explosion1:
 	anim_ret
 
 BattleAnimSub_Explosion2:
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
 	anim_sound 0, 1, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_EXPLOSION1, -14, 4,   4, 0, $0
 	anim_wait 5

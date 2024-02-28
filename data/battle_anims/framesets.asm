@@ -116,9 +116,9 @@ BattleAnimFrameData:
 	dw .Frameset_71 ; 71
 	dw .Frameset_72 ; 72
 	dw .Frameset_73 ; 73
-	dw .Frameset_BarrageBall             ; BATTLEANIMFRAMESET_BARRAGE_BALL
+	dw .Frameset_BarrageBall_Heart       ; BATTLEANIMFRAMESET_BARRAGE_BALL_HEART
 	dw .Frameset_75 ; 75
-	dw .Frameset_Heart                   ; BATTLEANIMFRAMESET_HEART
+	dw .Frameset_Heart_Short             ; BATTLEANIMFRAMESET_HEART_SHORT
 	dw .Frameset_77 ; 77
 	dw .Frameset_78 ; 78
 	dw .Frameset_79 ; 79
@@ -995,7 +995,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_94,  7
 	battleoamrestart
 
-.Frameset_BarrageBall:
+.Frameset_BarrageBall_Heart:
 	battleoamframe BATTLEANIMOAMSET_86,  8
 	battleoamend
 
@@ -1003,7 +1003,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_96,  8
 	battleoamend
 
-.Frameset_Heart:
+.Frameset_Heart_Short:
 	battleoamframe BATTLEANIMOAMSET_86,  60
 	battleoamdelete
 
