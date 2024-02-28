@@ -209,7 +209,7 @@ endc
 ;- gen4 moves
 	li "Roost"
 	li "Gyro Ball"
-	li "U Turn"
+	li "U-Turn"
 	li "Close Combat"
 	li "Sucker Punch"
 	li "Toxic Spikes"

@@ -35,7 +35,7 @@ AnimObjGFX:
 	battleanimgfx 10, AnimObjWhipGFX
 	battleanimgfx 12, AnimObjEggGFX
 	battleanimgfx 18, AnimObjRopeGFX
-	battleanimgfx 13, AnimObjPsychicGFX
+	battleanimgfx 14, AnimObjPsychicGFX
 	battleanimgfx 10, AnimObjReflectGFX
 	battleanimgfx 27, AnimObjStatusGFX
 	battleanimgfx 12, AnimObjSandGFX
