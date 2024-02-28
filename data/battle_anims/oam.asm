@@ -1548,7 +1548,7 @@ BattleAnimOAMData:
 	dsprite   0, 0,   3, 0, $01, $0
 	dsprite   0, 0,   4, 0, $01, $0
 
-.OAMData_IcicleCrash
+.OAMData_IcicleCrash:
 	dsprite  -1, 0,  -1, 0, $00, $0
 	dsprite  -1, 0,   0, 0, $01, $0
 	dsprite   0, 0,  -1, 0, $02, $0

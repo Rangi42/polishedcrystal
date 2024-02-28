@@ -125,7 +125,7 @@ BattleAnimFrameData:
 	dw .Frameset_7a ; 7a
 	dw .Frameset_7b ; 7b
 	dw .Frameset_7c ; 7c
-	dw .Frameset_7d ; 7d
+	dw .Frameset_WithdrawShell           ; BATTLEANIMFRAMESET_WITHDRAW_SHELL
 	dw .Frameset_7e ; 7e
 	dw .Frameset_7f ; 7f
 	dw .Frameset_80 ; 80
@@ -1041,7 +1041,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_9E,  2
 	battleoamdelete
 
-.Frameset_7d:
+.Frameset_WithdrawShell:
 	battleoamframe BATTLEANIMOAMSET_9F,  8
 	battleoamend
 
