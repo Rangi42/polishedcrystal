@@ -240,6 +240,8 @@ BattleAnimFrameData:
 	dw .Frameset_EnergyOrbLong           ; BATTLEANIMFRAMESET_ENERGY_ORB_LONG
 	dw .Frameset_VoltSwitch              ; BATTLEANIMFRAMESET_VOLT_SWITCH
 	dw .Frameset_DischargeSparksN        ; BATTLEANIMFRAMESET_DISCHARGE_SPARKS_N
+	dw .Frameset_HoneClawsLeft           ; BATTLEANIMFRAMESET_HONE_CLAWS_LEFT
+	dw .Frameset_HoneClawsRight          ; BATTLEANIMFRAMESET_HONE_CLAWS_RIGHT
 
 ; VAR3 animations start here -------
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
@@ -1696,3 +1698,17 @@ BattleAnimFrameData:
 .Frameset_SuckerPunch:
 	battleoamframe BATTLEANIMOAMSET_FC,  8, OAM_X_FLIP
 	battleoamend
+
+.Frameset_HoneClawsLeft:
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_1,  1
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_2,  1
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_3,  2
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_4,  1
+	battleoamdelete
+
+.Frameset_HoneClawsRight:
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_1,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_2,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_3,  2, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_HONE_CLAWS_4,  1, OAM_X_FLIP
+	battleoamdelete

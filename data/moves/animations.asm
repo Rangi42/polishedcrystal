@@ -3141,21 +3141,37 @@ BattleAnim_DragonDance:
 	anim_ret
 
 BattleAnim_HoneClaws:
-	anim_1gfx ANIM_GFX_CUT
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_GRAY
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_SPEED
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_sound 0, 1, SFX_SCRATCH
+	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT, 24, 84, $0
+	anim_wait 7
+	anim_sound 0, 1, SFX_SHINE
+	anim_wait 5
+	anim_sound 0, 1, SFX_SCRATCH
+	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT, 72, 84, $0
+	anim_wait 7
+	anim_sound 0, 1, SFX_SHINE
+	anim_wait 5
 .loop
 	anim_sound 0, 1, SFX_SCRATCH
-	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   8, 0,  11, 0, $0
-	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   8, 0,  10, 1, $0
-	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   8, 0,  9, 2, $0
+	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT, 24, 84, $0
+	anim_wait 2
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 20, 72, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 28, 104, $0
+	anim_wait 5
 	anim_sound 0, 1, SFX_SCRATCH
-	anim_wait 32
-	anim_sound 0, 1, SFX_SCRATCH
-	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  11, 0, $0
-	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  10, 1, $0
-	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  9, 2, $0
-	anim_sound 0, 1, SFX_SCRATCH
-	anim_wait 32
-	anim_loop 2, .loop
+	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT, 72, 84, $0
+	anim_wait 2
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 76, 72, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_PULSING_SPARKLE_YFIX, 68, 104, $0
+	anim_wait 5
+	anim_loop 3, .loop
 	anim_ret
 
 BattleAnim_QuickAttack:
