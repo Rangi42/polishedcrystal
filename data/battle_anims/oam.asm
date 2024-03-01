@@ -285,6 +285,10 @@ BattleAnimOAMData:
 	battleanimoam $00, 16, .OAMData_VoltSwitch6   ; BATTLEANIMOAMSET_VOLT_SWITCH_6
 	battleanimoam $0f,  1, .OAMData_0f            ; BATTLEANIMOAMSET_DISCHARGE_SPARKS_N_1
 	battleanimoam $0e,  1, .OAMData_0f            ; BATTLEANIMOAMSET_DISCHARGE_SPARKS_N_2
+	battleanimoam $01, 15, .OAMData_HoneClaws1    ; BATTLEANIMOAMSET_HONE_CLAWS_1
+	battleanimoam $01, 18, .OAMData_HoneClaws2    ; BATTLEANIMOAMSET_HONE_CLAWS_2
+	battleanimoam $01, 21, .OAMData_HoneClaws3    ; BATTLEANIMOAMSET_HONE_CLAWS_3
+	battleanimoam $01,  9, .OAMData_HoneClaws3    ; BATTLEANIMOAMSET_HONE_CLAWS_4
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -1734,3 +1738,63 @@ BattleAnimOAMData:
 	dbsprite  -1,   1, 0, 0, $0b, $0
 	dbsprite   0,   1, 0, 0, $0c, $0
 	dbsprite   1,   1, 0, 0, $0d, $0
+
+.OAMData_HoneClaws1:
+	dbsprite  -1,  -1,  9,  9, $00, $0
+	dbsprite  -2,  -1,  9,  9, $01, $0
+	dbsprite  -1,  -1,  9,  9, $01, X_FLIP
+	dbsprite  -2,   0,  9,  9, $01, Y_FLIP
+	dbsprite  -1,   0,  9,  9, $01, X_FLIP | Y_FLIP
+	dbsprite  -1,  -1,  4,  4, $00, $0
+	dbsprite  -2,  -1,  4,  4, $01, $0
+	dbsprite  -1,  -1,  4,  4, $01, X_FLIP
+	dbsprite  -2,   0,  4,  4, $01, Y_FLIP
+	dbsprite  -1,   0,  4,  4, $01, X_FLIP | Y_FLIP
+	dbsprite  -1,  -1, -1, -1, $00, $0
+	dbsprite  -2,  -1, -1, -1, $01, $0
+	dbsprite  -1,  -1, -1, -1, $01, X_FLIP
+	dbsprite  -2,   0, -1, -1, $01, Y_FLIP
+	dbsprite  -1,   0, -1, -1, $01, X_FLIP | Y_FLIP
+
+.OAMData_HoneClaws2:
+	dbsprite  -1,  -1, 9,   9, $00, $0
+	dbsprite  -2,   0, 11,  7, $00, $0
+	dbsprite  -3,   0, 11,  7, $01, $0
+	dbsprite  -2,   0, 11,  7, $01, X_FLIP
+	dbsprite  -3,   1, 11,  7, $01, Y_FLIP
+	dbsprite  -2,   1, 11,  7, $01, X_FLIP | Y_FLIP
+	dbsprite  -1,  -1,  4,  4, $00, $0
+	dbsprite  -2,   0,  6,  2, $00, $0
+	dbsprite  -3,   0,  6,  2, $01, $0
+	dbsprite  -2,   0,  6,  2, $01, X_FLIP
+	dbsprite  -3,   1,  6,  2, $01, Y_FLIP
+	dbsprite  -2,   1,  6,  2, $01, X_FLIP | Y_FLIP
+	dbsprite  -1,  -1, -1, -1, $00, $0
+	dbsprite  -2,   0,  1, -3, $00, $0
+	dbsprite  -3,   0,  1, -3, $01, $0
+	dbsprite  -2,   0,  1, -3, $01, X_FLIP
+	dbsprite  -3,   1,  1, -3, $01, Y_FLIP
+	dbsprite  -2,   1,  1, -3, $01, X_FLIP | Y_FLIP
+
+.OAMData_HoneClaws3:
+	dbsprite  -1,  -1,  9,  9, $00, $0
+	dbsprite  -2,   0,  11, 7, $00, $0
+	dbsprite  -2,   1,  5,  5, $00, $0
+	dbsprite  -1,  -1,  4,  4, $00, $0
+	dbsprite  -2,   0,  6,  2, $00, $0
+	dbsprite  -2,   1,  0,  0, $00, $0
+	dbsprite  -1,  -1, -1, -1, $00, $0
+	dbsprite  -2,   0,  1, -3, $00, $0
+	dbsprite  -2,   1, -5, -5, $00, $0
+	dbsprite  -3,   1,  5,  5, $01, $0
+	dbsprite  -2,   1,  5,  5, $01, X_FLIP
+	dbsprite  -3,   2,  5,  5, $01, Y_FLIP
+	dbsprite  -2,   2,  5,  5, $01, X_FLIP | Y_FLIP
+	dbsprite  -3,   1,  0,  0, $01, $0
+	dbsprite  -2,   1,  0,  0, $01, X_FLIP
+	dbsprite  -3,   2,  0,  0, $01, Y_FLIP
+	dbsprite  -2,   2,  0,  0, $01, X_FLIP | Y_FLIP
+	dbsprite  -3,   1, -5, -5, $01, $0
+	dbsprite  -2,   1, -5, -5, $01, X_FLIP
+	dbsprite  -3,   2, -5, -5, $01, Y_FLIP
+	dbsprite  -2,   2, -5, -5, $01, X_FLIP | Y_FLIP
