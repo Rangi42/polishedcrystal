@@ -1740,11 +1740,11 @@ BattleAnimOAMData:
 	dbsprite   1,   1, 0, 0, $0d, $0
 
 .OAMData_HoneClaws1:
-	dbsprite  -1,  -1,  9,  9, $00, $0
-	dbsprite  -2,  -1,  9,  9, $01, $0
-	dbsprite  -1,  -1,  9,  9, $01, X_FLIP
-	dbsprite  -2,   0,  9,  9, $01, Y_FLIP
-	dbsprite  -1,   0,  9,  9, $01, X_FLIP | Y_FLIP
+	dbsprite   0,   0,  1,  1, $00, $0
+	dbsprite  -1,   0,  1,  1, $01, $0
+	dbsprite   0,   0,  1,  1, $01, X_FLIP
+	dbsprite  -1,   0,  1,  1, $01, Y_FLIP
+	dbsprite  -1,   0,  1,  1, $01, X_FLIP | Y_FLIP
 	dbsprite  -1,  -1,  4,  4, $00, $0
 	dbsprite  -2,  -1,  4,  4, $01, $0
 	dbsprite  -1,  -1,  4,  4, $01, X_FLIP
@@ -1757,12 +1757,12 @@ BattleAnimOAMData:
 	dbsprite  -1,   0, -1, -1, $01, X_FLIP | Y_FLIP
 
 .OAMData_HoneClaws2:
-	dbsprite  -1,  -1, 9,   9, $00, $0
-	dbsprite  -2,   0, 11,  7, $00, $0
-	dbsprite  -3,   0, 11,  7, $01, $0
-	dbsprite  -2,   0, 11,  7, $01, X_FLIP
-	dbsprite  -3,   1, 11,  7, $01, Y_FLIP
-	dbsprite  -2,   1, 11,  7, $01, X_FLIP | Y_FLIP
+	dbsprite   0,   0,  1,  1, $00, $0
+	dbsprite  -1,   0,  3,  7, $00, $0
+	dbsprite  -2,   0,  3,  7, $01, $0
+	dbsprite  -1,   0,  3,  7, $01, X_FLIP
+	dbsprite  -2,   1,  3,  7, $01, Y_FLIP
+	dbsprite  -1,   1,  3,  7, $01, X_FLIP | Y_FLIP
 	dbsprite  -1,  -1,  4,  4, $00, $0
 	dbsprite  -2,   0,  6,  2, $00, $0
 	dbsprite  -3,   0,  6,  2, $01, $0
@@ -1777,8 +1777,8 @@ BattleAnimOAMData:
 	dbsprite  -2,   1,  1, -3, $01, X_FLIP | Y_FLIP
 
 .OAMData_HoneClaws3:
-	dbsprite  -1,  -1,  9,  9, $00, $0
-	dbsprite  -2,   0,  11, 7, $00, $0
+	dbsprite   0,   0,  1,  1, $00, $0
+	dbsprite  -1,   0,  3,  7, $00, $0
 	dbsprite  -2,   1,  5,  5, $00, $0
 	dbsprite  -1,  -1,  4,  4, $00, $0
 	dbsprite  -2,   0,  6,  2, $00, $0
