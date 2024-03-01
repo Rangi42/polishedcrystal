@@ -126,7 +126,7 @@ BattleBGEffects:
 	dw BattleBGEffect_VibrateMon
 	dw BattleBGEffect_WobblePlayer
 	dw BattleBGEffect_WobbleScreen
-	dw BattleBGEffect_BounceAndShakeY
+	dw BattleBGEffect_ShakeMonY
 
 BattleBGEffects_AnonJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -1936,28 +1936,7 @@ BattleBGEffect_ShakeScreenX:
 	ldh [hSCX], a
 	ret
 
-BattleBGEffect_BounceAndShakeY:
-	; Handle the screen shake. We can't use GetShakeAmount because it
-	; assumes complete control over the bg effect struct.
-	ld hl, BG_EFFECT_STRUCT_PARAM
-	add hl, bc
-	bit 5, [hl]
-	jr z, .dont_swap
-	swap a
-.dont_swap
-	ld h, a
-	push hl
-	ld hl, BG_EFFECT_STRUCT_JT_INDEX
-	add hl, bc
-	ld a, [hl]
-	sub 2
-	pop hl
-	jr z, .got_scy
-	ld a, h
-.got_scy
-	ldh [hSCY], a
-
-	; Now handle the bouncing.
+BattleBGEffect_ShakeMonY:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1974,29 +1953,43 @@ BattleBGEffect_BounceAndShakeY:
 	ldh a, [hLYOverrideEnd]
 	inc a
 	ldh [hLYOverrideEnd], a
+	jr .reset_duration
+
+.reload_distance
+	; Toggles between distances.
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
-	ld [hl], $20
+	ld a, $80
+	xor [hl]
+	ld [hl], a
+.reset_duration
+	; (Re)set shake duration.
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	ld [hl], a
+	swap a
+	or [hl]
+	ld [hl], a
 	ret
 
 .one
-	push af
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	dec [hl]
+	ld a, [hl]
+	and $f
+	call z, .reload_distance
+
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
-	ld d, $10
-	farcall Cosine
-	add $10
-	ld d, a
-	pop af
-	ld a, 1
-	add d
-	call BGEffect_DisplaceLYOverridesBackup
-	ld hl, BG_EFFECT_STRUCT_PARAM
-	add hl, bc
-	inc [hl]
-	inc [hl]
-	ret
+	bit 7, a
+	jr z, .got_distance
+	xor a
+.got_distance
+	jmp BGEffect_DisplaceLYOverridesBackup
 
 BattleBGEffect_ShakeScreenY:
 	call BattleBGEffects_GetShakeAmount
@@ -2593,8 +2586,11 @@ BGEffect_DisplaceLYOverridesBackup:
 	ldh a, [hLYOverrideStart]
 	ld l, a
 	ld a, $90
+	inc e
+	jr .first_iteration
 .loop
 	ld [hli], a
+.first_iteration
 	dec e
 	jr nz, .loop
 	pop af
@@ -2609,8 +2605,8 @@ BGEffect_CheckBattleTurn:
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ldh a, [hBattleTurn]
-	and $1
 	xor [hl]
+	and $1
 	ret
 
 BGEffect_CheckMonVisible:
