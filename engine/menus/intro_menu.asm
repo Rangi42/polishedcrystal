@@ -118,7 +118,10 @@ ResetWRAM:
 	ld bc, wMoney - wGameData
 	rst ByteFill
 	ld hl, wMoneyEnd
-	ld bc, wBattlePoints - wMoneyEnd
+	ld bc, wKeyItems - wMoneyEnd
+	rst ByteFill
+	ld hl, wKeyItemsEnd
+	ld bc, wBattlePoints - wKeyItemsEnd
 	rst ByteFill
 	ld hl, wBattlePointsEnd
 	ld bc, wGameDataEnd - wBattlePointsEnd
