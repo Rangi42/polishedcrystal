@@ -4515,23 +4515,22 @@ BattleAnim_Charm:
 BattleAnim_Bulldoze:
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_TargetObj_2Row
-	anim_bgeffect ANIM_BG_WITHDRAW, $0, $1, $50
-	anim_wait 4
-	anim_incbgeffect ANIM_BG_WITHDRAW
-	anim_call BattleAnim_ShowMon_0
-	anim_wait 1
+	anim_bgeffect ANIM_BG_SHAKE_MON_Y, $0, $21, $4
 .loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $08, $2, $0
 	anim_sound 0, 1, SFX_SPARK
 	anim_wait 8
 	anim_loop 6, .loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
+	anim_incbgeffect ANIM_BG_SHAKE_MON_Y
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_clearobjs
+	anim_wait 1
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_Y, $40, $3, $0
 .loop2
 	anim_sound 0, 1, SFX_SPARK
 	anim_wait 4
 	anim_loop 12, .loop2
-	anim_wait 48
-	anim_incbgeffect ANIM_BG_SHAKE_SCREEN_X
+	anim_incbgeffect ANIM_BG_SHAKE_SCREEN_Y
+	anim_wait 16
 	anim_ret
 
 BattleAnim_Rollout:
