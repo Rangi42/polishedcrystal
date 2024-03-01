@@ -4515,7 +4515,7 @@ BattleAnim_Charm:
 BattleAnim_Bulldoze:
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_TargetObj_2Row
-	anim_bgeffect ANIM_BG_SHAKE_MON_Y, $0, $21, $4
+	anim_bgeffect ANIM_BG_SHAKE_MON_Y, $0, $11, $4
 .loop
 	anim_sound 0, 1, SFX_SPARK
 	anim_wait 8
