@@ -1,7 +1,8 @@
 if DEF(DEBUG)
 MoveTable:
 	; Current animation pending testing
-	db DARK_PULSE
+	db RETURN
+	db 0
 
 	; RBYGSC moves
 	db KARATE_CHOP
@@ -269,7 +270,7 @@ MoveTable:
 	db 0
 
 DisplayUsedMoveText:
-	jr .do_it ; comment this out for testing all move animations
+;	jr .do_it ; comment this out for testing all move animations
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld de, MoveTable

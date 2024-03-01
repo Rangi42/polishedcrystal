@@ -126,6 +126,7 @@ BattleBGEffects:
 	dw BattleBGEffect_VibrateMon
 	dw BattleBGEffect_WobblePlayer
 	dw BattleBGEffect_WobbleScreen
+	dw BattleBGEffect_BounceAndShakeY
 
 BattleBGEffects_AnonJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -1611,20 +1612,12 @@ BattleBGEffect_BounceDown:
 	ldh a, [hLYOverrideEnd]
 	inc a
 	ldh [hLYOverrideEnd], a
-	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
-	add hl, bc
-	ld [hl], $1
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
 	ld [hl], $20
 	ret
 
 .one
-	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
-	add hl, bc
-	ld a, [hl]
-	cp $38
-	ret nc
 	push af
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -1634,6 +1627,7 @@ BattleBGEffect_BounceDown:
 	add $10
 	ld d, a
 	pop af
+	ld a, 1
 	add d
 	call BGEffect_DisplaceLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_PARAM
@@ -1940,6 +1934,68 @@ BattleBGEffect_ShakeScreenX:
 	xor a
 .skip
 	ldh [hSCX], a
+	ret
+
+BattleBGEffect_BounceAndShakeY:
+	; Handle the screen shake. We can't use GetShakeAmount because it
+	; assumes complete control over the bg effect struct.
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	bit 5, [hl]
+	jr z, .dont_swap
+	swap a
+.dont_swap
+	ld h, a
+	push hl
+	ld hl, BG_EFFECT_STRUCT_JT_INDEX
+	add hl, bc
+	ld a, [hl]
+	sub 2
+	pop hl
+	jr z, .got_scy
+	ld a, h
+.got_scy
+	ldh [hSCY], a
+
+	; Now handle the bouncing.
+	call BattleBGEffects_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+	dw BattleAnim_ResetLCDStatCustom
+
+.zero
+	call BattleBGEffects_IncrementJumptable
+	call BattleBGEffects_ClearLYOverrides
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	ld a, $42
+	call BattleBGEffect_SetLCDStatCustoms2
+	ldh a, [hLYOverrideEnd]
+	inc a
+	ldh [hLYOverrideEnd], a
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld [hl], $20
+	ret
+
+.one
+	push af
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	ld d, $10
+	farcall Cosine
+	add $10
+	ld d, a
+	pop af
+	ld a, 1
+	add d
+	call BGEffect_DisplaceLYOverridesBackup
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	inc [hl]
+	inc [hl]
 	ret
 
 BattleBGEffect_ShakeScreenY:

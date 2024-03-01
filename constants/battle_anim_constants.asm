@@ -1036,6 +1036,7 @@ DEF NUM_BATTLEANIMOAMSETS EQU const_value
 	const ANIM_BG_VIBRATE_MON
 	const ANIM_BG_WOBBLE_PLAYER
 	const ANIM_BG_WOBBLE_SCREEN
+	const ANIM_BG_BOUNCE_AND_SHAKE_Y
 DEF NUM_ANIM_BGS EQU const_value - 1
 
 ; wBattleAnimTileDict keys (see wram.asm)
