@@ -1,7 +1,7 @@
 if DEF(DEBUG)
 MoveTable:
 	; Current animation pending testing
-	db RETURN
+	db BULLDOZE
 	db 0
 
 	; RBYGSC moves

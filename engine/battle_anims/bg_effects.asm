@@ -126,6 +126,7 @@ BattleBGEffects:
 	dw BattleBGEffect_VibrateMon
 	dw BattleBGEffect_WobblePlayer
 	dw BattleBGEffect_WobbleScreen
+	dw BattleBGEffect_ShakeMonX
 	dw BattleBGEffect_ShakeMonY
 
 BattleBGEffects_AnonJumptable:
@@ -1937,6 +1938,8 @@ BattleBGEffect_ShakeScreenX:
 	ret
 
 BattleBGEffect_ShakeMonY:
+; Oscillates a mon between +1 and +x+1 pixels in the Y axis, where x is
+; the argument given to BG_EFFEECT_STRUCT_PARAM.
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1948,7 +1951,7 @@ BattleBGEffect_ShakeMonY:
 	call BattleBGEffects_ClearLYOverrides
 	ld hl, rIE
 	set LCD_STAT, [hl]
-	ld a, $42
+	ld a, LOW(rSCY)
 	call BattleBGEffect_SetLCDStatCustoms2
 	ldh a, [hLYOverrideEnd]
 	inc a
@@ -1990,6 +1993,73 @@ BattleBGEffect_ShakeMonY:
 	xor a
 .got_distance
 	jmp BGEffect_DisplaceLYOverridesBackup
+
+BattleBGEffect_ShakeMonX:
+; Oscillates a mon between -x and +x pixels in the X axis, where x is
+; the argument given to BG_EFFEECT_STRUCT_PARAM.
+; Note that the oscillation distance is different from ShakeMonY.
+	call BattleBGEffects_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+	dw BattleAnim_ResetLCDStatCustom
+
+.zero
+	call BattleBGEffects_IncrementJumptable
+	call BattleBGEffects_ClearLYOverrides
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	ld a, LOW(rSCX)
+	call BattleBGEffect_SetLCDStatCustoms2
+	ldh a, [hLYOverrideEnd]
+	inc a
+	ldh [hLYOverrideEnd], a
+	jr .reset_duration
+
+.reload_distance
+	; Toggles between sides.
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	cpl
+	inc a
+	ld [hl], a
+.reset_duration
+	; (Re)set shake duration.
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	ld [hl], a
+	swap a
+	or [hl]
+	ld [hl], a
+	ret
+
+.one
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	dec [hl]
+	ld a, [hli]
+	and $f
+	call z, .reload_distance
+
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	ld e, a
+	ldh a, [hLYOverrideStart]
+	ld l, a
+	ldh a, [hLYOverrideEnd]
+	sub l
+	ld h, HIGH(wLYOverridesBackup)
+	ld d, a
+	ld a, e
+.loop
+	ld [hli], a
+	dec d
+	jr nz, .loop
+	ret
 
 BattleBGEffect_ShakeScreenY:
 	call BattleBGEffects_GetShakeAmount
