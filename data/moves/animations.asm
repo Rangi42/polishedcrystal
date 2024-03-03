@@ -2240,21 +2240,24 @@ BattleAnim_CloseCombat:
 	anim_ret
 
 BattleAnim_Hurricane:
-	anim_2gfx ANIM_GFX_WIND, ANIM_GFX_HIT
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BRIGHT
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BUBBLE
+	anim_2gfx ANIM_GFX_HURRICANE, ANIM_GFX_WIND_BG
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $90, $4, $10
-	anim_obp0 $30
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $4, $0
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_obj ANIM_OBJ_HURRICANE, 132, 56, $38
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
 .loop
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_GUST, 136, 72, $0
+	anim_sound 0, 1, SFX_THUNDER
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_wait 4
-	anim_loop 12, .loop
-	anim_obj ANIM_OBJ_HIT_YFIX, 144, 64, $18
-	anim_wait 8
-	anim_obj ANIM_OBJ_HIT_YFIX, 128, 32, $18
-	anim_wait 16
+	anim_loop 18, .loop
+	anim_wait 24
 	anim_ret
 
 BattleAnim_KnockOff:

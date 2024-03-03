@@ -83,6 +83,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_EncoreBellyDrum
 	dw BattleAnimFunction_SwaggerMorningSun
 	dw BattleAnimFunction_HiddenPower
+	dw BattleAnimFunction_HiddenPower_Fast
 	dw BattleAnimFunction_Curse
 	dw BattleAnimFunction_PerishSong
 	dw BattleAnimFunction_RapidSpin
@@ -3822,6 +3823,47 @@ BattleAnimFunction_HiddenPower:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
+	inc [hl]
+	jr .step_circle
+
+.one:
+	call BattleAnim_IncAnonJumptableIndex
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld [hl], $18
+.two:
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hl]
+	cp $80
+	jr nc, .done
+	ld d, a
+	add $8
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	jr .step_circle
+
+.done
+	jmp FarDeinitBattleAnimation
+
+.step_circle:
+	jmp BattleAnim_StepCircle
+
+BattleAnimFunction_HiddenPower_Fast:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+	dw .two
+
+.zero:
+	ld d, $18
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	inc [hl] ; increased rotation speed
 	inc [hl]
 	jr .step_circle
 
