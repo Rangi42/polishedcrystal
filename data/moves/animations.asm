@@ -479,23 +479,43 @@ BattleAnim_PlayerDamage:
 	anim_ret
 
 BattleAnim_Acrobatics:
-	anim_1gfx ANIM_GFX_HIT
-	anim_sound 0, 0, SFX_KINESIS
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK, $0, $1, $20
-	anim_wait 16
-	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   7, 0, $0
+	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_HIT
+	anim_battlergfx_1row
+	anim_bgeffect ANIM_BG_BATTLEROBJ_2ROW, $0, $0, $0
+	anim_wait 1
+	anim_bgeffect ANIM_BG_SHAKE_MON_X, $0, $11, $4
+.loop
+	anim_sound 0, 0, SFX_SQUEAK
+	anim_wait 8
+	anim_loop 3, .loop
+	anim_sound 0, 0, SFX_RAZOR_WIND
+	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
+	anim_incbgeffect ANIM_BG_SHAKE_MON_X
+	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
-	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_HIT_YFIX, -14, 0,   5, 0, $0
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_wait 12
-	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   3, 0, $0
-	anim_wait 24
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK
-	anim_call BattleAnim_ShowMon_0
+	anim_clearobjs
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $0, $0
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 140, 44, $0
 	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 124, 60, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 140, 60, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 124, 44, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HIT_YFIX, 132, 52, $0
+	anim_wait 8
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $a, $0
+	anim_wait 8
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_wait 16
 	anim_ret
 
 BattleAnim_KarateChop:
