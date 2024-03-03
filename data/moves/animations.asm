@@ -96,23 +96,27 @@ BattleAnim_PlayRough:
 	anim_ret
 
 BattleAnim_DisarmVoice:
-	anim_1gfx ANIM_GFX_PSYCHIC
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $8, $1, $20
-	anim_sound 6, 2, SFX_METRONOME
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PINK
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_RED
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_2gfx ANIM_GFX_HEARTS, ANIM_GFX_PSYCHIC
+	anim_battlergfx_2row
 .loop
-	anim_obj ANIM_OBJ_WAVE,   8, 0,  11, 0, $2
-	anim_wait 2
-	anim_loop 2, .loop
-	anim_wait 48
-.loop2
-	anim_1gfx ANIM_GFX_OBJECTS
-	anim_obj ANIM_OBJ_HEART,   16, 0,   7, 0, $0
-	anim_sound 0, 0, SFX_SWEET_KISS
-	anim_wait 24
-	anim_sound 0, 0, SFX_SWEET_KISS
-	anim_obj ANIM_OBJ_HEART,   16, 12,   7, 0, $0
-	anim_loop 2, .loop2
+	anim_sound 0, 0, SFX_ATTRACT
+	anim_obj ANIM_OBJ_SHOOTING_HEART, 64, 88, $4
+	anim_wait 6
+	anim_obj ANIM_OBJ_SHOOTING_HEART, 64, 80, $4
+	anim_obj ANIM_OBJ_WAVE, 64, 88, $2
+	anim_wait 6
+	anim_obj ANIM_OBJ_SHOOTING_HEART, 64, 96, $4
+	anim_wait 6
+	anim_loop 3, .loop
+	anim_wait 16
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
+	anim_wait 6
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
 	anim_wait 32
+	anim_call BattleAnim_ShowMon_1
 	anim_ret
 
 BattleAnim_Scald:

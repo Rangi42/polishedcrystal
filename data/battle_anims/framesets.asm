@@ -243,6 +243,7 @@ BattleAnimFrameData:
 	dw .Frameset_HoneClawsLeft           ; BATTLEANIMFRAMESET_HONE_CLAWS_LEFT
 	dw .Frameset_HoneClawsRight          ; BATTLEANIMFRAMESET_HONE_CLAWS_RIGHT
 	dw .Frameset_Hurricane               ; BATTLEANIMFRAMESET_HURRICANE
+	dw .Frameset_GrowingHeart            ; BATTLEANIMFRAMESET_GROWING_HEART
 
 ; VAR3 animations start here -------
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
@@ -1718,3 +1719,8 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_HURRICANE, 2
 	battleoamframe BATTLEANIMOAMSET_HURRICANE, 2, OAM_X_FLIP
 	battleoamrestart
+
+.Frameset_GrowingHeart:
+	battleoamframe BATTLEANIMOAMSET_0F,  6
+	battleoamframe BATTLEANIMOAMSET_1B,  6
+	battleoamdelete
