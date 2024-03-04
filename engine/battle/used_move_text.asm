@@ -1,9 +1,5 @@
 if DEF(DEBUG)
 MoveTable:
-	; Current animation pending testing
-	db BULLDOZE
-	db 0
-
 	; RBYGSC moves
 	db KARATE_CHOP
 	db DOUBLE_SLAP
@@ -280,6 +276,46 @@ DisplayUsedMoveText:
 	and a
 	ret z
 	ld [hl], a
+	cp SOLAR_BEAM
+	jr z, .chargeup_moves
+	cp DIG
+	jr z, .chargeup_moves
+	cp CURSE
+	jr z, .chargeup_moves ; works for both Curse anims too
+	cp FLY
+	jr z, .chargeup_moves
+	cp SUBSTITUTE
+	jr nz, .done_special_handling
+
+	call .DoMoveAnim
+	push hl
+	push de
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVarAddr
+	ld a, [hl]
+	push hl
+	push af
+	set SUBSTATUS_SUBSTITUTE, [hl]
+	farcall BattleCommand_lowersub
+	pop af
+	pop hl
+	ld [hl],  a
+	pop de
+	pop hl
+	jr .loop
+
+.chargeup_moves
+	ld a, 1
+	ld [wBattleAnimParam], a
+	call .DoMoveAnim
+	xor a
+	ld [wBattleAnimParam], a
+	; fallthrough
+.done_special_handling
+	call .DoMoveAnim
+	jr .loop
+
+.DoMoveAnim:
 	push hl
 	push de
 	farcall UpdateMoveData
@@ -287,7 +323,7 @@ DisplayUsedMoveText:
 	farcall AnimateCurrentMove
 	pop de
 	pop hl
-	jr .loop
+	ret
 
 .do_it
 else
