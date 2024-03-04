@@ -1,7 +1,7 @@
 ; Battle and sprite OAM animations
 
-MACRO oamframe
-	db \1 ; duration
+MACRO battleoamframe
+	dw \1 ; oam set
 	DEF x = \2
 	assert !(x & (1 << (OAM_X_FLIP + 1) | 1 << (OAM_Y_FLIP + 1))), \
 		"oamframe duration overflows into X/Y flip bits"
@@ -11,7 +11,44 @@ MACRO oamframe
 			shift
 		endr
 	endc
-	db x ; flags
+	db x ; duration + flags
+ENDM
+
+; For simplicity we will only check
+; the upper byte for the Battle oam commands.
+DEF battleoamend_command EQU $ffff
+MACRO battleoamend
+	dw battleoamend_command
+ENDM
+
+DEF battleoamrestart_command EQU $feff
+MACRO battleoamrestart
+	dw battleoamrestart_command
+ENDM
+
+DEF battleoamwait_command EQU $fdff
+MACRO battleoamwait
+	dw battleoamwait_command
+	db \1 ; frames
+ENDM
+
+DEF battleoamdelete_command  EQU $fcff
+MACRO battleoamdelete
+	dw battleoamdelete_command
+ENDM
+
+MACRO oamframe
+	db \1 ; oam set
+	DEF x = \2
+	assert !(x & (1 << (OAM_X_FLIP + 1) | 1 << (OAM_Y_FLIP + 1))), \
+		"oamframe duration overflows into X/Y flip bits"
+	if _NARG > 2
+		rept _NARG - 2
+			DEF x |= 1 << (\3 + 1)
+			shift
+		endr
+	endc
+	db x ; duration + flags
 ENDM
 
 	const_def -1, -1

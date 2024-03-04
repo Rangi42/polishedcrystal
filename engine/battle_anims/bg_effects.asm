@@ -126,6 +126,8 @@ BattleBGEffects:
 	dw BattleBGEffect_VibrateMon
 	dw BattleBGEffect_WobblePlayer
 	dw BattleBGEffect_WobbleScreen
+	dw BattleBGEffect_ShakeMonX
+	dw BattleBGEffect_ShakeMonY
 
 BattleBGEffects_AnonJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -271,9 +273,9 @@ BattleBGEffect_CycleBGPals_Inverted:
 	ret
 
 .Pals:
-	dc 1, 1, 1, 1 ; invert once
-	dc 1, 3, 2, 0
-	dc 2, 1, 3, 0
+	dc 0, 1, 2, 3
+	dc 1, 2, 0, 3
+	dc 2, 0, 1, 3
 	db -2
 
 BattleBGEffect_HideMon:
@@ -359,12 +361,14 @@ BattleBGEffect_BattlerObj_1Row:
 	call BGEffect_CheckBattleTurn
 	jr nz, .player_turn
 	ld a, ANIM_OBJ_ENEMYFEET_1ROW
+	assert !HIGH(ANIM_OBJ_ENEMYFEET_1ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 16 * 8 + 4
 	jr .okay
 
 .player_turn
 	ld a, ANIM_OBJ_PLAYERHEAD_1ROW
+	assert !HIGH(ANIM_OBJ_PLAYERHEAD_1ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 6 * 8
 .okay
@@ -424,12 +428,14 @@ BattleBGEffect_BattlerObj_2Row:
 	call BGEffect_CheckBattleTurn
 	jr nz, .player_turn
 	ld a, ANIM_OBJ_ENEMYFEET_2ROW
+	assert !HIGH(ANIM_OBJ_ENEMYFEET_2ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 16 * 8 + 4
 	jr .okay
 
 .player_turn
 	ld a, ANIM_OBJ_PLAYERHEAD_2ROW
+	assert !HIGH(ANIM_OBJ_PLAYERHEAD_2ROW)
 	ld [wBattleAnimTemp0], a
 	ld a, 6 * 8
 .okay
@@ -467,6 +473,7 @@ BattleBGEffect_BattlerObj_2Row:
 	jmp EndBattleBGEffect
 
 _QueueBattleAnimation:
+	ld d, 0 ; playerhead+enemyfeet stuff is $0xx
 	farjp QueueBattleAnimation
 
 BattleBGEffect_RemoveMon:
@@ -1606,20 +1613,12 @@ BattleBGEffect_BounceDown:
 	ldh a, [hLYOverrideEnd]
 	inc a
 	ldh [hLYOverrideEnd], a
-	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
-	add hl, bc
-	ld [hl], $1
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
 	ld [hl], $20
 	ret
 
 .one
-	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
-	add hl, bc
-	ld a, [hl]
-	cp $38
-	ret nc
 	push af
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -1629,6 +1628,7 @@ BattleBGEffect_BounceDown:
 	add $10
 	ld d, a
 	pop af
+	ld a, 1
 	add d
 	call BGEffect_DisplaceLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_PARAM
@@ -1935,6 +1935,130 @@ BattleBGEffect_ShakeScreenX:
 	xor a
 .skip
 	ldh [hSCX], a
+	ret
+
+BattleBGEffect_ShakeMonY:
+; Oscillates a mon between +1 and +x+1 pixels in the Y axis, where x is
+; the argument given to BG_EFFEECT_STRUCT_PARAM.
+	call BattleBGEffects_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+	dw BattleAnim_ResetLCDStatCustom
+
+.zero
+	call BattleBGEffects_IncrementJumptable
+	call BattleBGEffects_ClearLYOverrides
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	ld a, LOW(rSCY)
+	call BattleBGEffect_SetLCDStatCustoms2
+	ldh a, [hLYOverrideEnd]
+	inc a
+	ldh [hLYOverrideEnd], a
+	jr .reset_duration
+
+.reload_distance
+	; Toggles between distances.
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, $80
+	xor [hl]
+	ld [hl], a
+.reset_duration
+	; (Re)set shake duration.
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	ld [hl], a
+	swap a
+	or [hl]
+	ld [hl], a
+	ret
+
+.one
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	dec [hl]
+	ld a, [hl]
+	and $f
+	call z, .reload_distance
+
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	bit 7, a
+	jr z, .got_distance
+	xor a
+.got_distance
+	jmp BGEffect_DisplaceLYOverridesBackup
+
+BattleBGEffect_ShakeMonX:
+; Oscillates a mon between -x and +x pixels in the X axis, where x is
+; the argument given to BG_EFFEECT_STRUCT_PARAM.
+; Note that the oscillation distance is different from ShakeMonY.
+	call BattleBGEffects_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+	dw BattleAnim_ResetLCDStatCustom
+
+.zero
+	call BattleBGEffects_IncrementJumptable
+	call BattleBGEffects_ClearLYOverrides
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	ld a, LOW(rSCX)
+	call BattleBGEffect_SetLCDStatCustoms2
+	ldh a, [hLYOverrideEnd]
+	inc a
+	ldh [hLYOverrideEnd], a
+	jr .reset_duration
+
+.reload_distance
+	; Toggles between sides.
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	cpl
+	inc a
+	ld [hl], a
+.reset_duration
+	; (Re)set shake duration.
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	ld [hl], a
+	swap a
+	or [hl]
+	ld [hl], a
+	ret
+
+.one
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	dec [hl]
+	ld a, [hli]
+	and $f
+	call z, .reload_distance
+
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	ld e, a
+	ldh a, [hLYOverrideStart]
+	ld l, a
+	ldh a, [hLYOverrideEnd]
+	sub l
+	ld h, HIGH(wLYOverridesBackup)
+	ld d, a
+	ld a, e
+.loop
+	ld [hli], a
+	dec d
+	jr nz, .loop
 	ret
 
 BattleBGEffect_ShakeScreenY:
@@ -2532,8 +2656,11 @@ BGEffect_DisplaceLYOverridesBackup:
 	ldh a, [hLYOverrideStart]
 	ld l, a
 	ld a, $90
+	inc e
+	jr .first_iteration
 .loop
 	ld [hli], a
+.first_iteration
 	dec e
 	jr nz, .loop
 	pop af
@@ -2548,8 +2675,8 @@ BGEffect_CheckBattleTurn:
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ldh a, [hBattleTurn]
-	and $1
 	xor [hl]
+	and $1
 	ret
 
 BGEffect_CheckMonVisible:

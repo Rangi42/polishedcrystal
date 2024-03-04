@@ -708,7 +708,7 @@ ClefairyEvosAttacks:
 	db 19, DIZZY_PUNCH ; Bestow → Crystal unique move
 	db 22, TRI_ATTACK ; Wake-Up Slap → RBY TM move
 	db 25, MINIMIZE
-	db 28, DRAIN_KISS ; Stored Power → Sw/Sh move
+	db 28, DRAINING_KISS ; Stored Power → Sw/Sh move
 	db 31, METRONOME
 	db 34, REFLECT ; Cosmic Power → TM move
 	db 37, LIGHT_SCREEN ; Lucky Chant → TM move
@@ -2955,7 +2955,7 @@ JynxEvosAttacks:
 	db 18, ICE_PUNCH
 	db 21, METRONOME ; Heart Stamp → RBY TM move
 	db 25, MEAN_LOOK
-	db 28, DRAIN_KISS ; Fake Tears → Drain Kiss
+	db 28, DRAINING_KISS ; Fake Tears → Drain Kiss
 	db 33, PSYBEAM ; Wake-Up Slap → new move
 	db 39, AVALANCHE
 	db 44, BODY_SLAM
@@ -6235,7 +6235,7 @@ SylveonEvosAttacks:
 	db 9, DOUBLE_KICK ; Baby-Doll Eyes → LGPE move
 	db 13, QUICK_ATTACK
 	db 17, SWIFT
-	db 20, DRAIN_KISS
+	db 20, DRAINING_KISS
 	db 25, SKILL_SWAP
 	db 29, HEAL_BELL ; Misty Terrain → HGSS tutor move
 	db 33, LIGHT_SCREEN

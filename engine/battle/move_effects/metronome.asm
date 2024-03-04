@@ -27,9 +27,6 @@ BattleCommand_metronome:
 	call CheckUserMove
 	jr z, .GetMove
 
-if DEF(DEBUG)
-	ld b, WILL_O_WISP
-endc
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld [hl], b

@@ -18,20 +18,33 @@ GetBattleAnimFrame:
 	and a
 	jr z, .next_frame
 	dec [hl]
-	call .GetPointerAndAdvance
-	push af
+	call .GetPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push hl
+	call .GetPointer
+	inc hl
+	inc hl
 	jr .okay
 
 .next_frame
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	inc [hl]
-	call .GetPointerAndAdvance
-	cp oamrestart_command
+	call .GetPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, h
+	cp HIGH(battleoamrestart_command)
 	jr z, .restart
-	cp oamend_command
+	cp HIGH(battleoamend_command)
 	jr z, .repeat_last
-	push af
+	push hl
+	call .GetPointer
+	inc hl
+	inc hl
 	ld a, [hl]
 	push hl
 	and ~(Y_FLIP << 1 | X_FLIP << 1)
@@ -45,7 +58,7 @@ GetBattleAnimFrame:
 	and Y_FLIP << 1 | X_FLIP << 1 ; The << 1 is compensated in the "oamframe" macro
 	srl a
 	ld [wBattleAnimTemp7], a
-	pop af
+	pop hl
 	ret
 
 .repeat_last
@@ -53,6 +66,7 @@ GetBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_DURATION
 	add hl, bc
 	ld [hl], a
+
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	dec [hl]
@@ -64,13 +78,14 @@ GetBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_DURATION
 	add hl, bc
 	ld [hl], a
+
 	dec a
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
 	ld [hl], a
 	jr .loop
 
-.GetPointerAndAdvance:
+.GetPointer:
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld e, [hl]
@@ -83,16 +98,16 @@ GetBattleAnimFrame:
 	ld e, a
 	ld hl, BATTLEANIMSTRUCT_FRAME
 	add hl, bc
-	ld l, [hl]
+	ld a, [hl]
+	ld l, a
+	add a
+	add l
+	ld l, a
 	ld h, 0
-	add hl, hl
 	add hl, de
-	ld a, [hli]
 	ret
 
 GetBattleAnimOAMPointer:
-	ld l, a
-	ld h, 0
 	ld de, BattleAnimOAMData
 	add hl, hl
 	add hl, hl
