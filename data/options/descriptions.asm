@@ -73,12 +73,12 @@ InitialOptionDescriptions:
 	prompt
 
 .InitialOptionDesc_ColorVariation:
-	text "Both normal and"
-	line "shiny #mon"
+	text "Individual #-"
+	line "mon, both regular"
+	cont "and shiny, will"
 
 	para "have their colors"
-	line "subtly varied"
-	cont "based on IVs."
+	line "subtly varied."
 
 	para "The variation is"
 	line "pseudorandom, not"
