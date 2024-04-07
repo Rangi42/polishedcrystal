@@ -25,7 +25,7 @@ DisableDynPalUpdates::
 EnableDynPalUpdatesNoApply::
 	push hl
 	ld hl, wPalFlags
-	set NO_DYN_PAL_APPLY_F, [hl]
+	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
 	res DISABLE_DYN_PAL_F, [hl]
 	pop hl
 	jr CheckForUsedObjPals
@@ -70,7 +70,7 @@ CheckForUsedObjPals::
 
 	; If this flag was set, it's time to reset it
 	ld hl, wPalFlags
-	res NO_DYN_PAL_APPLY_F, [hl]
+	res NO_DYN_PAL_APPLY_ONCE_F, [hl]
 
 .done
 	pop af

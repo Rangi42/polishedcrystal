@@ -2653,7 +2653,7 @@ _UpdateSprites::
 	bit SPRITE_UPDATES_DISABLED_F, a
 	ret z
 	xor a
-	ldh [hUsedSpriteIndex], a
+	ldh [hUsedOAMIndex], a
 	ldh a, [hOAMUpdate]
 	push af
 	ld a, 1
@@ -2671,13 +2671,20 @@ _UpdateSprites::
 	jr z, .ok
 	ld b, 28 * SPRITEOAMSTRUCT_LENGTH
 .ok
-	ldh a, [hUsedSpriteIndex]
-	cp b
-	ret nc
+	ldh a, [hUsedWeatherSpriteIndex]
+	ld c, a
+	ldh a, [hUsedOAMIndex]
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
+	sub SPRITEOAMSTRUCT_LENGTH
+	cp c
+	ret c
+	ret z
 	ld l, a
 	ld h, HIGH(wShadowOAM)
-	ld de, 4
-	ld a, b
+	ld de, -SPRITEOAMSTRUCT_LENGTH
+	ld a, c
+	sub SPRITEOAMSTRUCT_LENGTH
 	ld c, OAM_YCOORD_HIDDEN
 .loop
 	ld [hl], c
@@ -2723,9 +2730,9 @@ ApplyBGMapAnchorToObjects:
 	ld [wPlayerBGMapOffsetY], a
 	jmp PopBCDEHL
 
-DEF PRIORITY_LOW  EQU $10
+DEF PRIORITY_LOW  EQU $30
 DEF PRIORITY_NORM EQU $20
-DEF PRIORITY_HIGH EQU $30
+DEF PRIORITY_HIGH EQU $10
 
 InitSprites:
 	call .DeterminePriorities
@@ -2884,14 +2891,17 @@ InitSprites:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ldh a, [hUsedSpriteIndex]
+	ldh a, [hUsedOAMIndex]
+	ld c, a ; no-optimize a = N - a (c gets used below)
+	ld a, SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1)
+	sub c
 	ld c, a
 	ld b, HIGH(wShadowOAM)
 	ld a, [hli]
 	ldh [hUsedSpriteTile], a
-	add c
-	cp LOW(wShadowOAMEnd)
-	jr nc, .full
+	sub c
+	cp LOW(wShadowOAM)
+	jr c, .full
 .addsprite
 	ldh a, [hCurSpriteYPixel]
 	add [hl]
@@ -2938,12 +2948,17 @@ InitSprites:
 .nope3
 	ld [bc], a
 	inc c
+	ld a, c
+	sub SPRITEOAMSTRUCT_LENGTH * 2
+	ld c, a
 	ldh a, [hUsedSpriteTile]
 	dec a
 	ldh [hUsedSpriteTile], a
 	jr nz, .addsprite
-	ld a, c
-	ldh [hUsedSpriteIndex], a
+	ld a, SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1)
+	sub c
+	ld c, a
+	ldh [hUsedOAMIndex], a
 .done
 	xor a
 	ret
