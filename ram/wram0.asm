@@ -1328,6 +1328,7 @@ wOverworldWeatherDelay:: db
 wOverworldWeatherCooldown:: db
 wSpriteOverlapCount:: db
 wWeatherFlags:: db
+wPrevWeather:: db
 
 SECTION "Options", WRAM0
 

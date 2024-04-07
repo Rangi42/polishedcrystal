@@ -79,11 +79,25 @@ SetCurrentWeather::
 .no_weather
 	ld a, OW_WEATHER_NONE
 .set_weather
+	ld b, a
+	ld a, [wCurrentWeather]
+	cp OW_WEATHER_NONE
+	jr nz, .do_cooldown
+	ld a, b
 	ld [wCurrentWeather], a
 	farcall LoadWeatherGraphics
 	xor a
 	ld [wOverworldWeatherCooldown], a
 	ret
+
+.do_cooldown
+	ld [wPrevWeather], a
+	ld a, b
+	ld [wCurrentWeather], a
+	ld a, 32
+	ld [wOverworldWeatherCooldown], a
+	ret
+
 
 .skip_row
 	ld hl, 8

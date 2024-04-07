@@ -46,9 +46,25 @@ DoOverworldWeather:
 	ret
 
 .on_cooldown
+	ld a, [wPrevWeather]
+	cp OW_WEATHER_RAIN
+	jr z, .rain_cooldown
+	cp OW_WEATHER_THUNDERSTORM
+	jr z, .rain_cooldown
+	cp OW_WEATHER_SNOW
+	jr z, .snow_cooldown
+	call DoSandFall
+	jr .cooldown_cleanup
+.snow_cooldown
 	call DoSnowFall
+	jr .cooldown_cleanup
+.rain_cooldown
 	call DoRainFall
 	call RainSplashCleanup
+.cooldown_cleanup
+	ld a, [wOverworldWeatherCooldown]
+	dec a
+	call z, ClearWeather
 	jr .done
 
 SpawnRandomWeatherFullScreen::
