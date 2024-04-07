@@ -40,16 +40,18 @@ SetCurrentWeather::
 	ld a, [hli]
 	cp -1
 	jr z, .ignore_flag
-	ld d, a
-	ld a, [hl]
 	ld e, a
-	ld b, CHECK_FLAG
+	ld a, [hl]
+	ld d, a
 	push hl
 	push de
+	push bc
+	ld b, CHECK_FLAG
 	call EventFlagAction
+	pop bc
 	pop de
 	pop hl
-	jr nz, .skip_row
+	jr z, .skip_row
 .ignore_flag
 	inc hl
 	call Random
