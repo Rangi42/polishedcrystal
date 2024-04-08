@@ -673,6 +673,9 @@ PerformMove:
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	call GetBattleVarAddr
+	res SUBSTATUS_PENDING_ITEMLOSS, [hl]
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp DESTINY_BOND
@@ -1805,6 +1808,10 @@ SubtractHP:
 HandleUserHealingItems:
 	call HasUserFainted
 	ret z
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_PENDING_ITEMLOSS, a
+	ret nz
 	push bc
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem

@@ -1,30 +1,37 @@
 BattleCommand_bugbite:
+	farcall ReadMoveScriptByte
+	ld b, a
+
 	; these abilities prevent us from eating it
 	call GetOpponentAbilityAfterMoldBreaker
 	cp UNNERVE
 	ret z
+	push bc
 	call CheckStickyHold
+	pop bc
 	ret nz
 
 	; these held item effects prevent us from eating it
+	push bc
 	call GetOpponentItem
 	ld a, b
 	cp HELD_NO_BUG_BITE
+	pop bc
 	ret z
 
 	; does the opponent even have a berry? DON'T check EdibleBerries,
 	; there are non-edible ones which we'll still eat (with no effect)
-	call GetOpponentItem
 	ld a, [hl]
 	ld [wCurItem], a
 	push bc
-	push hl
 	farcall CheckItemPocket
-	pop hl
 	pop bc
 	ld a, [wItemAttributeParamBuffer]
 	cp BERRIES
 	ret nz
+
+	call CheckPendingItemLoss
+	ret z
 
 	; OK, we will eat the berry. Done by reusing item effect functions,
 	; and if the opponent still has an item, eating it with no effect

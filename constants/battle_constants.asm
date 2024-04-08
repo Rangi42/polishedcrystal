@@ -104,6 +104,8 @@ DEF STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
 	const BATTLETYPE_GHOST
 	const BATTLETYPE_GROTTO
 	const BATTLETYPE_INVERSE
+
+	; constants below this is assumed to be unfleeable
 	const BATTLETYPE_TRAP
 	const BATTLETYPE_FORCEITEM
 	const BATTLETYPE_RED_GYARADOS
@@ -222,7 +224,7 @@ DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX
 ; wPlayerSubStatus4 or wEnemySubStatus4 bit flags
 	const_def
 	const SUBSTATUS_CURLED
-	const_skip
+	const SUBSTATUS_PENDING_ITEMLOSS
 	const SUBSTATUS_FOCUS_ENERGY
 	const SUBSTATUS_ROOST
 	const SUBSTATUS_SUBSTITUTE
