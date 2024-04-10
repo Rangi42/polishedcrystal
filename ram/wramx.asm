@@ -1508,6 +1508,16 @@ wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
 wPokeDB2UsedEntriesEnd::
 
 
+SECTION "OAM Backup", WRAMX
+
+wShadowOAMBackup::
+; wShadowOAMSpriteBackup00 - wShadowOAMSpriteBackup39
+for n, NUM_SPRITE_OAM_STRUCTS
+wShadowOAMSpriteBackup{02d:n}:: sprite_oam_struct wShadowOAMSpriteBackup{02d:n}
+endr
+wShadowOAMBackupEnd::
+
+
 SECTION UNION "Metatiles", WRAMX
 
 wDecompressedMetatiles:: ds 256 tiles

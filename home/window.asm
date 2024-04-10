@@ -59,6 +59,7 @@ OpenText::
 	ld a, BANK(ReanchorBGMap_NoOAMUpdate) ; aka BANK(LoadFonts_NoOAMUpdate)
 	rst Bankswitch
 
+	call ClearSpritesUnderTextbox
 	call ReanchorBGMap_NoOAMUpdate ; far-ok
 	call SpeechTextbox
 	call BGMapAnchorTopLeft
@@ -67,6 +68,34 @@ OpenText::
 	rst Bankswitch
 
 	ret
+
+
+ClearSpritesUnderTextbox::
+	ld de, wShadowOAM
+	ld hl, wShadowOAM
+	ld c, NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
+.loop
+	ld a, [hl]
+	cp $70
+	jr nc, .clear_sprite
+.next
+	ld hl, SPRITEOAMSTRUCT_LENGTH
+	add hl, de
+	ld e, l
+	dec c
+	jr nz, .loop
+	ldh a, [hOAMUpdate]
+	push af
+	ld a, TRUE
+	ldh [hOAMUpdate], a
+	call DelayFrame
+	pop af
+	ldh [hOAMUpdate], a
+	ret
+
+.clear_sprite
+	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)
+	jr .next
 
 BGMapAnchorTopLeft::
 	ldh a, [hOAMUpdate]

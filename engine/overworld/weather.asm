@@ -64,7 +64,9 @@ DoOverworldWeather:
 .cooldown_cleanup
 	ld a, [wOverworldWeatherCooldown]
 	dec a
-	call z, ClearWeather
+	jr nz, .done
+	call ClearWeather
+	call LoadWeatherGraphics
 	jr .done
 
 SpawnRandomWeatherFullScreen::
