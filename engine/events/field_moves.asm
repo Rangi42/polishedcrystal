@@ -18,7 +18,7 @@ ShakeHeadbuttTree:
 	jr z, .got_gfx
 	ld hl, HeadbuttTreeGFX
 .got_gfx
-	ld de, vTiles0 tile $63
+	ld de, vTiles0 tile $61
 	lb bc, BANK("Overworld Effect Graphics"), 12
 	call DecompressRequest2bpp
 	call Cut_Headbutt_GetPixelFacing
@@ -26,7 +26,7 @@ ShakeHeadbuttTree:
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $63
+	ld [hl], $61
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
