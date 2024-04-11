@@ -316,7 +316,12 @@ ScanForEmptyOAM:
 ; return empty OAM slot in de or carry set if none
 	ld de, wShadowOAM
 	ld hl, wShadowOAM
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ldh a, [hUsedOAMIndex]
+	cpl
+	add (SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS) + 1
+	rrca
+	rrca
+	ld b, a
 .loop
 	ld a, [hl]
 	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2) ; offscreen
