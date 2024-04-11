@@ -16,7 +16,7 @@ SetCurrentWeather::
 .set_weather
 	ld b, a
 	ld a, [wCurrentWeather]
-	cp OW_WEATHER_NONE
+	cp b
 	jr nz, .do_cooldown
 	ld a, b
 	ld [wCurrentWeather], a
