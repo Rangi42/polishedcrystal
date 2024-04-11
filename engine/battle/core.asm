@@ -7763,6 +7763,7 @@ StartBattle:
 
 	ld a, [wTimeOfDayPal]
 	push af
+	farcall ClearWeather
 	call BattleIntro
 	call DoBattle
 	call ExitBattle
