@@ -764,7 +764,7 @@ AnimSeq_DexCursor:
 	add hl, bc
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_SPRITEANIM_OK
-	ld [hl], 160
+	ld [hl], OAM_YCOORD_HIDDEN
 	jr nc, .done
 	push hl
 	push de

@@ -11,7 +11,7 @@ HideSprites::
 	ld hl, wShadowOAM
 	ld de, 4 ; length of an OAM struct
 	ld b, (wShadowOAMEnd - wShadowOAM) / 4 ; number of OAM structs
-	ld a, 160 ; y
+	ld a, OAM_YCOORD_HIDDEN
 .loop
 	ld [hl], a
 	add hl, de

@@ -405,7 +405,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear13
 	scall .Clear14
-	reloadmappart
+	refreshmap
 	endtext
 
 .Position1:
@@ -417,7 +417,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear11
 	scall .Clear12
 	scall .Clear14
-	reloadmappart
+	refreshmap
 	endtext
 
 .Position2:
@@ -429,7 +429,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear10
 	scall .Clear13
 	scall .Clear14
-	reloadmappart
+	refreshmap
 	endtext
 
 .Position3:
@@ -441,7 +441,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear11
 	scall .Clear12
 	scall .Clear14
-	reloadmappart
+	refreshmap
 	endtext
 
 .Position4:
@@ -453,7 +453,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear10
 	scall .Clear13
 	scall .Clear14
-	reloadmappart
+	refreshmap
 	endtext
 
 .Position5:
@@ -465,7 +465,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear11
 	scall .Clear12
 	scall .Clear14
-	reloadmappart
+	refreshmap
 	endtext
 
 .Position6:
@@ -477,7 +477,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear4
 	scall .Clear10
 	scall .Clear13
-	reloadmappart
+	refreshmap
 	endtext
 
 .EmergencyPosition:
@@ -493,7 +493,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Set12
 	scall .Clear13
 	scall .Set14
-	reloadmappart
+	refreshmap
 	closetext
 	setval 6
 	writemem wUndergroundSwitchPositions

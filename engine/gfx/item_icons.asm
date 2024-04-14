@@ -13,7 +13,7 @@ UpdateTMHMIconAndDescriptionAndOwnership::
 	call ClearTMHMIcon
 .ok
 	farcall LoadTMHMIconPalette
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 UpdateItemIconAndDescriptionAndBagQuantity::
 	farcall UpdateItemDescriptionAndBagQuantity
@@ -26,7 +26,7 @@ _UpdateItemIcon:
 .has_icon
 	call _LoadItemOrKeyItemIcon
 	farcall LoadItemIconPalette
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 UpdateKeyItemIconAndDescription::
 	farcall UpdateKeyItemDescription
@@ -35,7 +35,7 @@ _UpdateKeyItemIcon:
 	ld a, [wCurItem]
 	call _LoadItemOrKeyItemIcon
 	farcall LoadKeyItemIconPalette
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 LoadApricornIconForOverworld:
 	ld hl, ApricornIcon
@@ -149,7 +149,7 @@ ShowTMHMIcon::
 	farcall LoadTMHMIconPalette
 	; fallthrough
 PrintOverworldItemIcon:
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, "▲"
 	hlcoord 16, 13
 	ld [hli], a

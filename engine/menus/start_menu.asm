@@ -358,7 +358,7 @@ StartMenu_Pokegear:
 	jr nz, _ExitStartMenuAndDoScript
 	call CloseSubmenu
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	xor a
 	ret
@@ -395,9 +395,9 @@ StartMenu_Pokemon:
 	ld a, A_BUTTON | B_BUTTON | SELECT
 	ld [wMenuJoypadFilter], a
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	call ApplyTilemapInVBlank
-	call SetPalettes ; load regular palettes?
+	call SetDefaultBGPAndOBP ; load regular palettes?
 	call DelayFrame
 	farcall PartyMenuSelect
 	jr c, .return ; if cancelled or pressed B

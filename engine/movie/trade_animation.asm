@@ -118,10 +118,10 @@ RunTradeAnimSequence:
 	push af
 	xor a
 	ldh [hMapAnims], a
-	ld hl, wVramState
+	ld hl, wStateFlags
 	ld a, [hl]
 	push af
-	res 0, [hl] ; overworld sprite updating on
+	res SPRITE_UPDATES_DISABLED_F, [hl]
 	ld hl, wOptions1
 	ld a, [hl]
 	push af
@@ -138,7 +138,7 @@ RunTradeAnimSequence:
 	pop af
 	ld [wOptions1], a
 	pop af
-	ld [wVramState], a
+	ld [wStateFlags], a
 	pop af
 	ldh [hMapAnims], a
 	ret

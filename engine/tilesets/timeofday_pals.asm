@@ -132,6 +132,7 @@ Special_FadeBlackQuickly:
 	jmp ConvertTimePalsDecHL
 
 FillWhiteBGColor:
+; Copy white palette of wBGPals1 Pal0 into white palette of wBGPals1 Pal1-Pal6
 	ldh a, [rSVBK]
 	push af
 	ld a, $5

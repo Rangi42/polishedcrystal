@@ -8,7 +8,7 @@ PokegearPhone_Init:
 
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 
 	call InitPokegearTilemap
 	call ExitPokegearRadio_HandleMusic

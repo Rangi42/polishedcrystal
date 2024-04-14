@@ -41,8 +41,8 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh [hBGMapMode], a
 	pop af
 	ldh [hOAMUpdate], a
-	ld hl, wVramState
-	set 6, [hl]
+	ld hl, wStateFlags
+	set TEXT_STATE_F, [hl]
 	ret
 
 LoadFonts_NoOAMUpdate::
@@ -99,7 +99,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh [hBGMapMode], a
 	pop af
 	ldh [hOAMUpdate], a
-	ld hl, wVramState
-	set 6, [hl]
+	ld hl, wStateFlags
+	set TEXT_STATE_F, [hl]
 	ld b, 0
 	jmp SafeCopyTilemapAtOnce

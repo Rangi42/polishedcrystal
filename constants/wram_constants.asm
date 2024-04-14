@@ -65,7 +65,7 @@ DEF NUM_FRAMES EQU const_value
 ; wTextboxFlags::
 	const_def
 	const FAST_TEXT_DELAY_F  ; 0
-	const NO_TEXT_DELAY_F    ; 1
+	const TEXT_DELAY_F       ; 1
 	const NO_LINE_SPACING_F  ; 2
 	const USE_BG_MAP_WIDTH_F ; 3
 
@@ -141,6 +141,12 @@ DEF FACE_DOWN  EQU 8
 DEF FACE_UP    EQU 4
 DEF FACE_LEFT  EQU 2
 DEF FACE_RIGHT EQU 1
+
+; wStateFlags
+DEF SPRITE_UPDATES_DISABLED_F             EQU 0
+DEF LAST_12_SPRITE_OAM_STRUCTS_RESERVED_F EQU 1
+DEF TEXT_STATE_F                          EQU 6
+DEF SCRIPTED_MOVEMENT_STATE_F             EQU 7
 
 ; wPokemonWithdrawDepositParameter::
 DEF PC_WITHDRAW       EQU 0

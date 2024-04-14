@@ -263,9 +263,9 @@ EnterMapWarp:
 	ret
 
 LoadMapTimeOfDay:
-	ld hl, wVramState
-	res 6, [hl]
-	ld a, $1
+	ld hl, wStateFlags
+	res TEXT_STATE_F, [hl]
+	ld a, TRUE
 	ld [wSpriteUpdatesEnabled], a
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
@@ -360,8 +360,8 @@ RefreshMapSprites:
 	ld hl, wPlayerSpriteSetupFlags
 	bit 6, [hl]
 	jr nz, .skip
-	ld hl, wVramState
-	set 0, [hl]
+	ld hl, wStateFlags
+	set SPRITE_UPDATES_DISABLED_F, [hl]
 	call SafeUpdateSprites
 .skip
 	ld a, [wPlayerSpriteSetupFlags]

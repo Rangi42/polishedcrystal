@@ -36,7 +36,7 @@ GoldenrodMuseum2F_MapScriptHeader:
 LugiaPaintingScript:
 	checkevent EVENT_FOUGHT_LUGIA
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic LUGIA_PAINTING
 	waitbutton
 	closepokepic
@@ -49,7 +49,7 @@ LugiaPaintingScript:
 HoOhPaintingScript:
 	checkevent EVENT_FOUGHT_HO_OH
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic HO_OH_PAINTING
 	waitbutton
 	closepokepic
@@ -62,7 +62,7 @@ HoOhPaintingScript:
 BellTowerPaintingScript:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic BELL_TOWER_PAINTING
 	waitbutton
 	closepokepic
@@ -75,7 +75,7 @@ BellTowerPaintingScript:
 KabutoPuzzleScript:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic KABUTO_PUZZLE
 	waitbutton
 	closepokepic
@@ -88,7 +88,7 @@ KabutoPuzzleScript:
 OmanytePuzzleScript:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic OMANYTE_PUZZLE
 	waitbutton
 	closepokepic
@@ -101,7 +101,7 @@ OmanytePuzzleScript:
 AerodactylPuzzleScript:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic AERODACTYL_PUZZLE
 	waitbutton
 	closepokepic
@@ -114,7 +114,7 @@ AerodactylPuzzleScript:
 HoOhPuzzleScript:
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
 	iffalse_jumptext EmptyDisplayText
-	refreshscreen
+	reanchormap
 	paintingpic HO_OH_PUZZLE
 	waitbutton
 	closepokepic

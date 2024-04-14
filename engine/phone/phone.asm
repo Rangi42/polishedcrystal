@@ -41,7 +41,7 @@ INCLUDE "data/phone/permanent_numbers.asm"
 CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	cp COLL_DOOR
 	jr z, .no_call
 	cp COLL_STAIRCASE
@@ -311,7 +311,7 @@ PhoneScript_JustTalkToThem:
 	end
 
 Script_ReceivePhoneCall:
-	refreshscreen
+	reanchormap
 	callasm RingTwice_StartCall
 	memcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
 	waitbutton

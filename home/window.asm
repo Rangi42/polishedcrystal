@@ -1,5 +1,5 @@
-Script_refreshscreen::
-RefreshScreen::
+Script_reanchormap::
+ReanchorMap::
 	call ClearWindowData
 	ldh a, [hROMBank]
 	push af
@@ -29,8 +29,8 @@ CloseText::
 
 	pop af
 	ldh [hOAMUpdate], a
-	ld hl, wVramState
-	res 6, [hl]
+	ld hl, wStateFlags
+	res TEXT_STATE_F, [hl]
 	ret
 
 .CloseText:

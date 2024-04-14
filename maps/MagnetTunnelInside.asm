@@ -80,7 +80,7 @@ MagnetTunnelInsideMachine1:
 	iffalse_endtext
 	playsound SFX_GLASS_TING
 	changeblock 6, 10, $6b
-	reloadmappart
+	refreshmap
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
 	closetext
@@ -91,7 +91,7 @@ MagnetTunnelInsideMachine1:
 	earthquake 15
 	playsound SFX_STRENGTH
 	changeblock 6, 8, $6d
-	reloadmappart
+	refreshmap
 	disappear MAGNETTUNNELINSIDE_STONE_1
 	end
 
@@ -113,7 +113,7 @@ MagnetTunnelInsideMachine2:
 	iffalse_endtext
 	playsound SFX_GLASS_TING
 	changeblock 22, 20, $67
-	reloadmappart
+	refreshmap
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
 	closetext
@@ -124,7 +124,7 @@ MagnetTunnelInsideMachine2:
 	earthquake 15
 	playsound SFX_STRENGTH
 	changeblock 22, 20, $66
-	reloadmappart
+	refreshmap
 	disappear MAGNETTUNNELINSIDE_STONE_2
 	end
 
@@ -147,7 +147,7 @@ MagnetTunnelInsideMachine3:
 	iffalse_endtext
 	playsound SFX_GLASS_TING
 	changeblock 20, 8, $6b
-	reloadmappart
+	refreshmap
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
 	closetext
@@ -158,7 +158,7 @@ MagnetTunnelInsideMachine3:
 	earthquake 15
 	playsound SFX_STRENGTH
 	changeblock 20, 6, $6f
-	reloadmappart
+	refreshmap
 	disappear MAGNETTUNNELINSIDE_STONE_3
 	end
 
@@ -178,7 +178,7 @@ MagnetTunnelInsideMachine4:
 	iffalse_endtext
 	playsound SFX_GLASS_TING
 	changeblock 34, 8, $6b
-	reloadmappart
+	refreshmap
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
 	closetext
@@ -189,7 +189,7 @@ MagnetTunnelInsideMachine4:
 	earthquake 15
 	playsound SFX_STRENGTH
 	changeblock 34, 6, $35
-	reloadmappart
+	refreshmap
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	scall MagnetTunnelAlarmSounds
 	showemote EMOTE_QUESTION, PLAYER, 15
@@ -221,7 +221,7 @@ MagnetTunnelInsideMachine4:
 	closetext
 	changeblock 34, 8, $6a
 	changeblock 34, 6, $34
-	reloadmappart
+	refreshmap
 	moveobject MAGNETTUNNELINSIDE_STONE_4, 34, 7
 	appear MAGNETTUNNELINSIDE_STONE_4
 	playsound SFX_EMBER
@@ -230,7 +230,7 @@ MagnetTunnelInsideMachine4:
 	playsound SFX_STRENGTH
 	earthquake 15
 	changeblock 34, 4, $68
-	reloadmappart
+	refreshmap
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	setevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
 	end

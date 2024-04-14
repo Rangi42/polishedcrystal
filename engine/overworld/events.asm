@@ -20,36 +20,36 @@ OverworldLoop::
 
 DisableEvents:
 	xor a
-	ld [wScriptFlags3], a
+	ld [wEnabledPlayerEvents], a
 	ret
 
 EnableEvents::
 	ld a, $ff
-	ld [wScriptFlags3], a
+	ld [wEnabledPlayerEvents], a
 	ret
 
 EnableWildEncounters:
-	ld hl, wScriptFlags3
+	ld hl, wEnabledPlayerEvents
 	set 4, [hl]
 	ret
 
-CheckWarpConnxnScriptFlag:
-	ld hl, wScriptFlags3
+CheckWarpConnectionsEnabled:
+	ld hl, wEnabledPlayerEvents
 	bit 2, [hl]
 	ret
 
-CheckCoordEventScriptFlag:
-	ld hl, wScriptFlags3
+CheckCoordEventsEnabled:
+	ld hl, wEnabledPlayerEvents
 	bit 1, [hl]
 	ret
 
-CheckStepCountScriptFlag:
-	ld hl, wScriptFlags3
+CheckStepCountEnabled:
+	ld hl, wEnabledPlayerEvents
 	bit 0, [hl]
 	ret
 
-CheckWildEncountersScriptFlag:
-	ld hl, wScriptFlags3
+CheckWildEncountersEnabled:
+	ld hl, wEnabledPlayerEvents
 	bit 4, [hl]
 	ret
 
@@ -209,7 +209,7 @@ PlayerEvents:
 	and a
 	ret nz
 
-	call CheckTrainerBattle_GetPlayerEvent
+	call CheckTrainerEvent
 	jr c, .ok
 
 	call CheckTileEvent
@@ -250,7 +250,7 @@ PlayerEvents:
 	scf
 	ret
 
-CheckTrainerBattle_GetPlayerEvent:
+CheckTrainerEvent:
 	call CheckTrainerBattle
 	jr nc, .nope
 
@@ -265,7 +265,7 @@ CheckTrainerBattle_GetPlayerEvent:
 CheckTileEvent:
 ; Check for warps, coord events, or wild battles.
 
-	call CheckWarpConnxnScriptFlag
+	call CheckWarpConnectionsEnabled
 	jr z, .connections_disabled
 
 	farcall CheckMovingOffEdgeOfMap
@@ -275,7 +275,7 @@ CheckTileEvent:
 	jr c, .warp_tile
 
 .connections_disabled
-	call CheckCoordEventScriptFlag
+	call CheckCoordEventsEnabled
 	jr z, .coord_events_disabled
 
 	call CheckCurrentMapCoordEvents
@@ -286,19 +286,19 @@ CheckTileEvent:
 	bit PLAYERSTEP_STOP_F, [hl]
 	jr z, .no_tile_effects
 
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	cp COLL_COAST_SAND
 	call z, RenderShamoutiCoastSand
 
 .no_tile_effects
-	call CheckStepCountScriptFlag
+	call CheckStepCountEnabled
 	jr z, .step_count_disabled
 
 	call CountStep
 	ret c
 
 .step_count_disabled
-	call CheckWildEncountersScriptFlag
+	call CheckWildEncountersEnabled
 	jr z, .ok
 
 	call RandomEncounter
@@ -314,7 +314,7 @@ CheckTileEvent:
 	ret
 
 .warp_tile
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	cp COLL_HOLE
 	jr nz, .not_pit
 	ld a, PLAYEREVENT_FALL
@@ -1119,7 +1119,7 @@ RunMemScript:
 	pop af
 	ret
 
-LoadScriptBDE::
+LoadMemScript::
 ; If there's already a script here, don't overwrite.
 	ld hl, wMapReentryScriptQueueFlag
 	ld a, [hl]
@@ -1157,7 +1157,7 @@ TryTileCollisionEvent:
 	jr nc, .noevent
 .done
 	call PlayClickSFX
-	ld a, $ff
+	ld a, PLAYEREVENT_MAPSCRIPT
 	scf
 	ret
 
@@ -1275,7 +1275,7 @@ CanUseSweetHoney::
 	ld hl, wStatusFlags
 	bit STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
 	jr nz, .no
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	cp COLL_ICE
 	jr z, .no
 	and $f0
@@ -1377,7 +1377,7 @@ _TryWildEncounter_BugContest:
 	farjp CheckRepelEffect
 
 TryWildEncounter_BugContest:
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	cp COLL_LONG_GRASS
 	ld b, 40 percent
 	jr z, .ok

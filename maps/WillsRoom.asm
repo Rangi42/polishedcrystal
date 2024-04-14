@@ -23,11 +23,11 @@ WillsRoomEntranceTrigger:
 
 .Script:
 	applymovement PLAYER, WalkIntoEliteFourRoomMovement
-	refreshscreen
+	reanchormap
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 14, $2a
-	reloadmappart
+	refreshmap
 	closetext
 	setscene $1
 	setevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
@@ -70,7 +70,7 @@ WillScript:
 .EndBattle:
 	playsound SFX_ENTER_DOOR
 	changeblock 4, 2, $16
-	reloadmappart
+	refreshmap
 	setevent EVENT_WILLS_ROOM_EXIT_OPEN
 	setevent EVENT_BEAT_ELITE_4_WILL
 	waitsfx

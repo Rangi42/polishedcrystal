@@ -498,9 +498,9 @@ GiveItem:
 	farcall InitPartyMenuGFX
 .loop
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	farcall PartyMenuSelect
 	jr c, .finish
@@ -1185,7 +1185,7 @@ Pack_InitColors:
 	call ApplyTilemapInVBlank
 	ld a, CGB_PACKPALS
 	call GetCGBLayout
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 ; Note that the game assumes strict order of menu data headers!
 ItemsPocketMenuDataHeader:

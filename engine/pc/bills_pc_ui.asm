@@ -187,9 +187,9 @@ UseBillsPC:
 	farcall WipeAttrMap
 	call ClearSprites
 	call ClearSpriteAnims
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
+	ld a, [wStateFlags]
+	res SPRITE_UPDATES_DISABLED_F , a
+	ld [wStateFlags], a
 
 	call BillsPC_LoadUI
 
@@ -3525,7 +3525,7 @@ BillsPC_PlaceHeldMon:
 
 BillsPC_SetPals:
 	call BillsPC_ApplyPals
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 BillsPC_ApplyPals:
 ; Sets palettes. This writes palette data for HBlank row1 mons/etc into

@@ -44,7 +44,7 @@ SetInitialOptions:
 	farcall ApplyPals
 
 	call ApplyAttrAndTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 
 	ld hl, .InitialOptionsText
 	call PrintText
@@ -95,7 +95,7 @@ SetInitialOptions:
 
 ;	ld a, CGB_PLAIN
 ;	call GetCGBLayout
-;	call SetPalettes
+;	call SetDefaultBGPAndOBP
 
 	ld a, [wJumptableIndex]
 	push af

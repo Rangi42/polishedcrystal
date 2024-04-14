@@ -4,7 +4,7 @@ DEF WATER_TILE EQU %01 ; 'dec a' checks
 DEF WALL_TILE  EQU %10
 
 ; collision data types (see data/tilesets/*_collision.asm)
-; TileCollisionTable indexes (see data/collision/collision_permissions.asm)
+; CollisionPermissionTable indexes (see data/collision/collision_permissions.asm)
 DEF COLL_FLOOR             EQU $00
 DEF COLL_VOID              EQU $01
 DEF COLL_COAST_SAND        EQU $02

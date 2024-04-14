@@ -56,11 +56,11 @@ HandleStoneTableAction::
 	ret
 
 .check_on_warp
-	ld hl, wCurMapWarpsPointer
+	ld hl, wCurMapWarpEventsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wCurMapWarpCount]
+	ld a, [wCurMapWarpEventCount]
 	and a
 	jr z, .nope2
 
@@ -75,7 +75,7 @@ HandleStoneTableAction::
 	jr nz, .not_on_warp
 	pop af
 	ld d, a
-	ld a, [wCurMapWarpCount]
+	ld a, [wCurMapWarpEventCount]
 	sub d
 	inc a
 	scf
