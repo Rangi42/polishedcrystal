@@ -95,7 +95,7 @@ Pokedex_RefreshScreen:
 .dexno_ball_done
 	call Pokedex_RefreshOAM
 
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
 .tilemap_delay
@@ -143,9 +143,9 @@ StackDexGraphics:
 	farcall WipeAttrMap
 	call ClearSprites
 	call ClearSpriteAnims
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
+	ld a, [wStateFlags]
+	res SPRITE_UPDATES_DISABLED_F , a
+	ld [wStateFlags], a
 
 	xor a
 	ldh [hBGMapMode], a

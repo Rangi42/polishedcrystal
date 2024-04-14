@@ -493,7 +493,7 @@ ParsePlayerAction:
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, [wCurPlayerMove]
 	inc a ; cp STRUGGLE
 	call nz, PlayClickSFX
@@ -1017,7 +1017,7 @@ GetPlayerSwitchTarget:
 	call ClearSprites
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wPlayerSwitchTarget], a
@@ -1322,7 +1322,7 @@ endr
 
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 
 .wild
 	; For enemy, we need to mark as seen and set base exp unless link/BT
@@ -2434,9 +2434,9 @@ SetUpBattlePartyMenu: ; switch to fullscreen menu?
 
 JumpToPartyMenuAndPrintText:
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	jmp DelayFrame
 
 SelectBattleMon:
@@ -2561,7 +2561,7 @@ LostBattle:
 ; Greyscale
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	jr .end
 
 .LostLinkBattle:
@@ -2825,7 +2825,7 @@ OfferSwitch:
 	call _LoadStatusIcons
 	call DelayFrame
 	call GetMemCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call SafeLoadTempTileMapToTileMap
 	pop af
 	jr c, OfferSwitch
@@ -4374,7 +4374,7 @@ BattleMenu_SafariBall:
 	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	call ClearWindowData
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	scf
 	ret
 
@@ -4438,7 +4438,7 @@ BattleMenuPKMN_Loop:
 	call CloseWindow
 	call LoadTileMapToTempTileMap
 	call GetMemCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	jmp BattleMenu
 
 .GetMenu:
@@ -4610,7 +4610,7 @@ TryPlayerSwitch:
 	call GetMonBackpic
 	call CloseWindow
 	call GetMemCGBLayout
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 BattleMenu_Run:
 	call ClearSprites
@@ -5445,7 +5445,7 @@ MoveInfoBox:
 
 .icons
 	farcall LoadBattleCategoryAndTypePals
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld hl, CategoryIconGFX
 	ld bc, 2 tiles
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
@@ -6366,7 +6366,7 @@ FinishBattleAnim:
 	push af
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	jmp PopAFBCDEHL
 
@@ -8095,7 +8095,7 @@ DisplayLinkRecord:
 	call ApplyAttrAndTilemapInVBlank
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld c, 8
 	call DelayFrames
 	jmp WaitPressAorB_BlinkCursor
@@ -8535,7 +8535,7 @@ InitBattleDisplay:
 	call HideSprites
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	xor a
 	ldh [hSCX], a
 	ret
@@ -8660,9 +8660,9 @@ BattleStartMessage:
 
 	ld hl, WantToBattleText
 	call CheckPluralTrainer
-	jr nz, .PlaceBattleStartText
+	jr nz, .PrintBattleStartText
 	ld hl, WantsToBattleText
-	jr .PlaceBattleStartText
+	jr .PrintBattleStartText
 
 .wild
 	call BattleCheckEnemyShininess
@@ -8705,20 +8705,20 @@ BattleStartMessage:
 	cp BATTLETYPE_FISH
 	jr nz, .NotFishing
 	ld hl, HookedPokemonAttackedText
-	jr .PlaceBattleStartText
+	jr .PrintBattleStartText
 
 .NotFishing:
 	ld hl, PokemonFellFromTreeText
 	cp BATTLETYPE_TREE
-	jr z, .PlaceBattleStartText
+	jr z, .PrintBattleStartText
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
-	jr z, .PlaceBattleStartText
+	jr z, .PrintBattleStartText
 	cp BATTLETYPE_RED_GYARADOS ; or BATTLETYPE_LEGENDARY
-	jr nc, .PlaceBattleStartText
+	jr nc, .PrintBattleStartText
 	ld hl, WildPokemonAppearedText
 
-.PlaceBattleStartText:
+.PrintBattleStartText:
 	push hl
 	farcall BattleStart_TrainerHuds
 	pop hl

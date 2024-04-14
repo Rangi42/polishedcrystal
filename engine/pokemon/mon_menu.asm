@@ -148,7 +148,7 @@ SwitchPartyMons:
 	ld [wPartyMenuActionText], a
 
 	farcall LoadPartyMenuGFX
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
 
@@ -381,7 +381,7 @@ SwapPartyItem:
 	ld a, 4
 	ld [wPartyMenuActionText], a
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	hlcoord 0, 1
 	ld bc, 20 * 2
 	ld a, [wSwitchMon]
@@ -389,7 +389,7 @@ SwapPartyItem:
 	rst AddNTimes
 	ld [hl], "▷"
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	farcall PartyMenuSelect
 	bit 1, b
@@ -909,7 +909,7 @@ ChooseMoveToForget:
 	call SpeechTextbox
 .done
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	pop af
 	ret
@@ -938,7 +938,7 @@ ChooseMoveToRelearn:
 	push af
 	call nz, SpeechTextbox
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 .no_moves
 	pop af
@@ -1436,7 +1436,7 @@ SetUpMoveScreenBG:
 	rst PlaceString
 	hlcoord 15, 1
 	call PrintLevel
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	hlcoord 16, 0
 	lb bc, 1, 3
 	jmp ClearBox
@@ -1612,7 +1612,7 @@ MoveScreen_ListMovesFast:
 	ld de, wBGPals1 palette 0 + 2
 	push af
 	farcall LoadCategoryAndTypePals
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 
 	pop af
 	ld hl, TypeIconGFX

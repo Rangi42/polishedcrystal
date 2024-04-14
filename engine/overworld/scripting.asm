@@ -39,8 +39,8 @@ WaitScript:
 WaitScriptMovement:
 	call StopScript
 
-	ld hl, wVramState
-	bit 7, [hl]
+	ld hl, wStateFlags
+	bit SCRIPTED_MOVEMENT_STATE_F, [hl]
 	ret nz
 
 	farcall UnfreezeAllObjects
@@ -129,7 +129,7 @@ ScriptCommandTable:
 	dw Script_itemnotify                 ; 46
 	dw Script_pocketisfull               ; 47
 	dw Script_opentext                   ; 48
-	dw Script_refreshscreen              ; 49
+	dw Script_reanchormap                ; 49
 	dw Script_closetext                  ; 4a
 	dw Script_farwritetext               ; 4b
 	dw Script_writetext                  ; 4c
@@ -179,7 +179,7 @@ ScriptCommandTable:
 	dw Script_changemapblocks            ; 78
 	dw Script_changeblock                ; 79
 	dw Script_reloadmap                  ; 7a
-	dw Script_reloadmappart              ; 7b
+	dw Script_refreshmap              ; 7b
 	dw Script_usestonetable              ; 7c
 	dw Script_playmusic                  ; 7d
 	dw Script_encountermusic             ; 7e
@@ -870,7 +870,7 @@ Script_playsound:
 	jmp WaitPlaySFX
 
 Script_warpsound:
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	ld de, SFX_ENTER_DOOR
 	cp COLL_DOOR
 	jr z, .play
@@ -968,7 +968,7 @@ Script_faceplayer:
 	ld e, a
 	ldh a, [hLastTalked]
 	ld d, a
-	jr ApplyPersonFacing
+	jr ApplyObjectFacing
 
 Script_faceobject:
 	call GetScriptByte
@@ -992,7 +992,7 @@ Script_faceobject:
 	add a
 	ld e, a
 	ld d, c
-	jr ApplyPersonFacing
+	jr ApplyObjectFacing
 
 Script_turnobject:
 	call GetScriptByte
@@ -1007,7 +1007,7 @@ Script_turnobject:
 	ld e, a
 	; fallthrough
 
-ApplyPersonFacing::
+ApplyObjectFacing::
 	ld a, d
 	push de
 	call CheckObjectVisibility
@@ -1026,8 +1026,8 @@ ApplyPersonFacing::
 	pop de
 	ld a, e
 	call SetSpriteDirection
-	ld hl, wVramState
-	bit 6, [hl]
+	ld hl, wStateFlags
+	bit TEXT_STATE_F, [hl]
 	jr nz, .text_state
 	call LoadMapPart
 	hlcoord 0, 0
@@ -1277,7 +1277,7 @@ Script_reloadmapafterbattle:
 	jr z, .done
 	ld b, BANK(Script_SpecialBillCall)
 	ld de, Script_SpecialBillCall
-	call LoadScriptBDE
+	call LoadMemScript
 .done
 	; fallthrough
 
@@ -2209,7 +2209,7 @@ Script_changeblock:
 	ld [hl], a
 	jmp BufferScreen
 
-Script_reloadmappart::
+Script_refreshmap::
 	xor a
 	ldh [hBGMapMode], a
 	call LoadMapPart

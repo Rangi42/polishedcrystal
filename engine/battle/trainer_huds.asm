@@ -232,7 +232,7 @@ _ShowLinkBattleParticipants:
 	call LinkBattle_TrainerHuds
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, $e4
 	ldh [rOBP0], a
 	ret

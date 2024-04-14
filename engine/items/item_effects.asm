@@ -778,7 +778,7 @@ endc
 
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	xor a
 
 .toss
@@ -1376,7 +1376,7 @@ UseItem_SelectMon2:
 	push bc
 	farcall InitPartyMenuWithCancel
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	farcall PartyMenuSelect
 	pop bc
 	pop de
@@ -1496,7 +1496,7 @@ UseItem_GetMaxHPParameter:
 ChoosePkmnToUseItemOn:
 	farcall InitPartyMenuLayout
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	farjp PartyMenuSelect
 
@@ -1512,7 +1512,7 @@ ItemActionText:
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuActionText
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	pop af
 	pop bc

@@ -62,11 +62,11 @@ WillObjectBumpIntoWater:
 	add hl, bc
 	bit 7, [hl]
 	jr nz, WillObjectRemainOnWater
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	ld d, a
-	call GetTileCollision
+	call GetTilePermission
 	and a ; cp LAND_TILE
 	jr z, WillObjectBumpIntoTile
 	scf
@@ -75,17 +75,17 @@ WillObjectBumpIntoWater:
 WillObjectBumpIntoLand:
 	call CanObjectLeaveTile
 	ret c
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
-	call GetTileCollision
+	call GetTilePermission
 	dec a ; cp WATER_TILE
 	jr z, WillObjectBumpIntoTile
 	scf
 	ret
 
 WillObjectBumpIntoTile:
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	call GetSideWallDirectionMask
@@ -188,13 +188,13 @@ WillObjectRemainOnWater:
 	inc e
 
 .continue
-	call GetCoordTile
-	call GetTileCollision
+	call GetCoordTileCollision
+	call GetTilePermission
 	pop de
 	and a ; cp LAND_TILE
 	jr nz, .not_land
-	call GetCoordTile
-	call GetTileCollision
+	call GetCoordTileCollision
+	call GetTilePermission
 	and a ; cp LAND_TILE
 	jr nz, .not_land
 	xor a

@@ -49,7 +49,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question1IntroText
 	waitbutton
 	closetext
-	refreshscreen
+	reanchormap
 	trainerpic SILHOUETTE
 	waitbutton
 	closepokepic
@@ -408,7 +408,7 @@ CeladonUniversityHyperTestRoomTwin2Text:
 	done
 
 CeladonUniversityHyperTestRoomMagikarpSign:
-	refreshscreen
+	reanchormap
 	pokepic MAGIKARP, MAGIKARP_MASK1_FORM
 	cry MAGIKARP
 	waitbutton

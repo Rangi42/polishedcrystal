@@ -19,7 +19,7 @@ ReadAnyMail:
 	call ApplyTilemapInVBlank
 	ld a, [wBuffer3]
 	farcall LoadAndApplyMailPalettes
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	xor a
 	ldh [hJoyPressed], a
 	call .loop

@@ -1,9 +1,9 @@
 Special_CelebiShrineEvent:
 	call DelayFrame
-	ld a, [wVramState]
+	ld a, [wStateFlags]
 	push af
 	xor a
-	ld [wVramState], a
+	ld [wStateFlags], a
 
 	ld a, PAL_OW_GREEN
 	farcall CopySpritePalToOBPal7
@@ -51,7 +51,7 @@ Special_CelebiShrineEvent:
 
 .done
 	pop af
-	ld [wVramState], a
+	ld [wStateFlags], a
 
 	ld hl, wShadowOAM + 2
 	xor a

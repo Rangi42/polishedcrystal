@@ -900,7 +900,7 @@ SetBattleAnimPal:
 	ld b, a
 .finish
 	call .SetPaletteData
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 .UserPal:
 	ldh a, [hBattleTurn]

@@ -71,7 +71,7 @@ Script_LeftCableColosseum:
 	end
 
 PokeCenter2FLinkRecordSign:
-	refreshscreen
+	reanchormap
 	special Special_DisplayLinkRecord
 	endtext
 

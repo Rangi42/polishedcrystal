@@ -33,7 +33,7 @@ SplashScreen:
 	call ClearTileMap
 	ld a, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call GameFreakPresentsInit
 .joy_loop
 	call JoyTextDelay

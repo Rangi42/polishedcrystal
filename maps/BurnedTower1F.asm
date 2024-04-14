@@ -108,7 +108,7 @@ BurnedTowerRivalBattleScript:
 	playsound SFX_ENTER_DOOR
 	waitsfx
 	changeblock 8, 8, $25
-	reloadmappart
+	refreshmap
 	pause 15
 	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS

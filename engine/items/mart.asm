@@ -503,7 +503,7 @@ BuyMenu_InitGFX:
 	call ApplyTilemapInVBlank
 	ld a, CGB_BUYMENU_PALS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 ; Not graphics-related, but common to all BuyMenu_InitGFX callers
 	xor a
 	ld [wMenuScrollPositionBackup], a

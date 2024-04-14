@@ -276,7 +276,7 @@ LoadMapNameSignGFX:
 	rst AddNTimes ; preserves bc
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	call FarCopyColorWRAM
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 .continue
 	; save position in landmark name

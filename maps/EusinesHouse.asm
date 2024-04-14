@@ -31,7 +31,7 @@ CeladonEusine:
 	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
 	iftruefwd .OwnRaikou
 	showtext EusineShowsRaikouText
-	refreshscreen
+	reanchormap
 	pokepic RAIKOU
 	cry RAIKOU
 	waitbutton
@@ -42,7 +42,7 @@ CeladonEusine:
 	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
 	iftruefwd .OwnEntei
 	showtext EusineShowsEnteiText
-	refreshscreen
+	reanchormap
 	pokepic ENTEI
 	cry ENTEI
 	waitbutton
@@ -53,7 +53,7 @@ CeladonEusine:
 	checkflag ENGINE_PLAYER_CAUGHT_SUICUNE
 	iftruefwd .OwnSuicune
 	showtext EusineShowsSuicuneText
-	refreshscreen
+	reanchormap
 	pokepic SUICUNE
 	cry SUICUNE
 	waitbutton

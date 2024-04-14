@@ -3,7 +3,7 @@ Script_BattleWhiteout::
 	sjumpfwd Script_Whiteout
 
 Script_OverworldWhiteout::
-	refreshscreen
+	reanchormap
 	callasm OverworldWhiteoutFade
 
 Script_Whiteout:
@@ -45,12 +45,12 @@ OverworldWhiteoutFade:
 	call ClearSprites
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 BattleBGMap:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 ; Gen VI money loss code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm

@@ -25,7 +25,7 @@ _SweetHoney:
 	jmp QueueScript
 
 SweetHoneyScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	writetext UseSweetHoneyText
 	waitbutton

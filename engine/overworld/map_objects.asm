@@ -216,14 +216,14 @@ CopyNextCoordsTileToStandingCoordsTile:
 	ld hl, OBJECT_LAST_MAP_Y
 	add hl, bc
 	ld [hl], a
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	ld hl, OBJECT_LAST_TILE
 	add hl, bc
 	ld [hl], a
 	call SetTallGrassFlags
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	ret
@@ -248,7 +248,7 @@ UpdateTallGrassFlags:
 	add hl, bc
 	bit OVERHEAD_F, [hl]
 	ret z
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 SetTallGrassFlags:
@@ -321,9 +321,9 @@ GetNextTile:
 	ld [hl], a
 	ld e, a
 	push bc
-	call GetCoordTile
+	call GetCoordTileCollision
 	pop bc
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
 	ret
@@ -491,9 +491,9 @@ StepFunction_Reset:
 	add hl, bc
 	ld e, [hl]
 	push bc
-	call GetCoordTile
+	call GetCoordTileCollision
 	pop bc
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
 	call CopyNextCoordsTileToStandingCoordsTile
@@ -635,7 +635,7 @@ endr
 	dw .Strength_Stop
 
 .Strength_Start:
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	cp COLL_HOLE
@@ -2161,8 +2161,8 @@ CopyTempObjectData:
 	ret
 
 UpdateMapObjectDataAndSprites::
-	ld a, [wVramState]
-	bit 0, a
+	ld a, [wStateFlags]
+	bit SPRITE_UPDATES_DISABLED_F, a
 	ret z
 	ld bc, wObjectStructs
 	xor a
@@ -2250,9 +2250,9 @@ UpdateCurObjectData:
 	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
-	call GetCoordTile
+	call GetCoordTileCollision
 	pop bc
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
 	call UpdateTallGrassFlags
@@ -2649,8 +2649,8 @@ ResetObject:
 	db SPRITEMOVEDATA_STANDING_RIGHT
 
 _UpdateSprites::
-	ld a, [wVramState]
-	bit 0, a
+	ld a, [wStateFlags]
+	bit SPRITE_UPDATES_DISABLED_F, a
 	ret z
 	xor a
 	ldh [hUsedSpriteIndex], a
@@ -2665,8 +2665,8 @@ _UpdateSprites::
 	ret
 
 .fill
-	ld a, [wVramState]
-	bit 1, a
+	ld a, [wStateFlags]
+	bit LAST_12_SPRITE_OAM_STRUCTS_RESERVED_F, a
 	ld b, LOW(wShadowOAMEnd)
 	jr z, .ok
 	ld b, 28 * SPRITEOAMSTRUCT_LENGTH
