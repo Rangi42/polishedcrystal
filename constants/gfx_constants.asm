@@ -52,6 +52,8 @@ DEF NUM_SPRITE_OAM_STRUCTS EQU 40 ; see wShadowOAM
 	const ANIM_MON_EGG1
 	const ANIM_MON_EGG2
 
+DEF OAM_YCOORD_HIDDEN EQU 160 ; hides an OAM offscreen
+
 ; VWF flags (see engine/gfx/vwf.asm)
 	const_def
 	const VWF_SINGLE_F
