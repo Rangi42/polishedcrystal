@@ -36,6 +36,7 @@ FinishExitMenu::
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
+	farcall LoadWeatherPalNoApply
 	farcall FadeInPalettes_EnableDynNoApply
 	; fallthrough
 EnableSpriteUpdates::

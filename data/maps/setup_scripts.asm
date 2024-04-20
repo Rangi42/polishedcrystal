@@ -189,8 +189,6 @@ MapSetupScript_Continue:
 	mapsetup LoadMapAttributes_SkipObjects
 	mapsetup GetMapScreenCoords
 	mapsetup HandleContinueMap
-	mapsetup ClearWeather
-	mapsetup SetCurrentWeather
 	mapsetup LoadBlockData
 	mapsetup LoadConnectionBlockData
 	mapsetup BufferScreen
@@ -203,6 +201,8 @@ MapSetupScript_Continue:
 	mapsetup RefreshMapSprites
 	mapsetup PlayMapMusicBike
 	mapsetup FadeInPalettes
+	mapsetup ClearWeather
+	mapsetup SetCurrentWeather
 	mapsetup ActivateMapAnims
 	mapsetup LoadWildMonData
 	db -1 ; end

@@ -19,11 +19,14 @@ SetCurrentWeather::
 	bit OW_WEATHER_DO_FLY_F, a
 	jr nz, .skip_cooldown
 	ld a, [wCurrentWeather]
+	and a
+	jr z, .skip_cooldown
 	cp b
 	jr nz, .do_cooldown
 .skip_cooldown
 	ld a, b
 	ld [wCurrentWeather], a
+	farcall LoadWeatherPal
 	call LoadWeatherGraphics
 	xor a
 	ld [wOverworldWeatherCooldown], a

@@ -1,3 +1,6 @@
+LoadWeatherPalNoApply:
+	ld hl, wPalFlags
+	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
 LoadWeatherPal::
 	ld a, [wCurrentWeather]
 	and a
