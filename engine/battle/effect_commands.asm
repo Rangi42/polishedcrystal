@@ -2366,6 +2366,8 @@ BattleCommand_moveanimnosub:
 	; We hit, mark physical/special damage on opponent.
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
+	cp STATUS
+	jr z, .movestate_done
 	cp PHYSICAL
 	ld a, 1 << PHYSICAL
 	jr z, .got_cat
@@ -2386,6 +2388,7 @@ BattleCommand_moveanimnosub:
 	ld [hl], a
 	pop hl
 
+.movestate_done
 	ldh a, [hBattleTurn]
 	and a
 	ld de, wPlayerRolloutCount
@@ -5729,6 +5732,22 @@ FlinchTarget:
 	set SUBSTATUS_FLINCHED, [hl]
 	jmp EndRechargeOpp
 
+HasOpponentDamagedUs:
+; Check if the opponent has damaged us for the given category bits in a.
+; this turn. Returns nz if they have.
+	push bc
+	ld b, a
+	ldh a, [hBattleTurn]
+	and a
+	ld a, b
+	pop bc
+	jr nz, .got_cat_opp_side
+	swap a
+.got_cat_opp_side
+	ld hl, wMoveState
+	and [hl]
+	ret z
+	; fallthrough
 CheckOpponentWentFirst:
 ; Returns a=0, z if user went first
 ; Returns a=1, nz if opponent went first
@@ -6330,7 +6349,8 @@ BattleCommand_conditionalboost:
 	jmp BattleJumptable
 
 DoAvalanche:
-	call CheckOpponentWentFirst
+	ld a, 1 << PHYSICAL | 1 << SPECIAL
+	call HasOpponentDamagedUs
 	jr DoubleDamageIfNZ
 
 DoAcrobatics:

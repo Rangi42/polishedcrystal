@@ -2,13 +2,10 @@ BattleCommand_counter:
 	ld a, 1
 	ld [wAttackMissed], a
 
-	; Doesn't work if the target is immune to this mvoe's type
+	; Doesn't work if the target is immune to this move's type
 	call BattleCommand_resettypematchup
 	ld a, [wTypeMatchup]
 	and a
-	ret z
-
-	call CheckOpponentWentFirst
 	ret z
 
 	; Only works if countering of the same move category
@@ -19,19 +16,11 @@ BattleCommand_counter:
 	jr z, .got_cat
 	ld a, 1 << SPECIAL
 .got_cat
-	push bc
-	ld b, a
-	ldh a, [hBattleTurn]
-	and a
-	ld a, b
-	pop bc
-	jr nz, .got_cat_opp_side
-	swap a
-.got_cat_opp_side
-	ld hl, wMoveState
-	and [hl]
+	call HasOpponentDamagedUs
 	ret z
 
+	; TODO: is this necessary? if it is, then Avalanche is broken because it
+	; uses HasOpponentDamagedUs only (it can't check wCurDamage).
 	ld hl, wCurDamage
 	ld a, [hli]
 	or [hl]
