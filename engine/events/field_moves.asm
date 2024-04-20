@@ -63,6 +63,19 @@ ShakeHeadbuttTree:
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
+	ld a, [wCurSpriteOAMAddr]
+	sub 4 * SPRITEOAMSTRUCT_LENGTH
+	ld c, a
+	ld a, LOW(wShadowOAMEnd)
+	sub c
+	ld c, a
+	ld b, 0
+	ld h, HIGH(wShadowOAM)
+	ld a, [wCurSpriteOAMAddr]
+	sub 12 * SPRITEOAMSTRUCT_LENGTH
+	ld l, a
+	xor a
+	rst ByteFill
 	call ClearSpriteAnims
 	call DelayFrame
 	jmp UpdatePlayerSprite
