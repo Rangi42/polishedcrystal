@@ -5733,7 +5733,7 @@ FlinchTarget:
 	jmp EndRechargeOpp
 
 HasOpponentDamagedUs:
-; Check if the opponent has damaged us for the given category bits in a.
+; Check if the opponent has damaged us for the given category bits in a
 ; this turn. Returns nz if they have.
 	push bc
 	ld b, a
