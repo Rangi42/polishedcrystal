@@ -765,12 +765,14 @@ FlyFunction:
 
 .FlyScript:
 	refreshmap
-	callasm HideSprites
+;	callasm HideSprites
 	callasm ClearSavedObjPals
 	callasm CopyBGGreenToOBPal7
+	callasm LoadWeatherPal
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
+	callasm .SetWeatherFlyFlag
 	callasm FlyFromAnim
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
@@ -779,6 +781,7 @@ FlyFunction:
 	newloadmap MAPSETUP_FLY
 	callasm CopyBGGreenToOBPal7
 	callasm FlyToAnim
+	callasm .ClearWeatherFlyFlag
 	special WaitSFX
 	callasm .ReturnFromFly
 	end
@@ -789,6 +792,18 @@ FlyFunction:
 	farcall CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
+
+.SetWeatherFlyFlag:
+	ld a, [wWeatherFlags]
+	set OW_WEATHER_DO_FLY_F, a
+	ld [wWeatherFlags], a
+	ret
+
+.ClearWeatherFlyFlag:
+	ld a, [wWeatherFlags]
+	res OW_WEATHER_DO_FLY_F, a
+	ld [wWeatherFlags], a
+	ret
 
 WaterfallFunction:
 	call .TryWaterfall

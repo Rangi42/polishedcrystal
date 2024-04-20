@@ -442,7 +442,7 @@ StartMenu_Pokemon:
 ClearSpritesUnderStartMenu:
 	ld de, wShadowOAMSprite00XCoord
 	ld hl, wShadowOAMSprite00XCoord
-	ld c, NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
+	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
 	ld a, [hl]
 	cp $51

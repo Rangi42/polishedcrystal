@@ -102,6 +102,9 @@ SpriteAnimOAMData:
 	spriteanimoam $04, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_2
 	spriteanimoam $00, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_1
 	spriteanimoam $04, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_2
+	spriteanimoam $00, .OAMData_FlyMon                 ; SPRITE_ANIM_OAMSET_FLY_MON_1
+	spriteanimoam $04, .OAMData_FlyMon                 ; SPRITE_ANIM_OAMSET_FLY_MON_2
+	spriteanimoam $04, .OAMData_FlyMon2                ; SPRITE_ANIM_OAMSET_FLY_MON_3
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -160,6 +163,20 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $0
 	dsprite  0,  0, -1,  0, $02, $0
 	dsprite  0,  0,  0,  0, $03, $0
+
+.OAMData_FlyMon:
+	db 4
+	dsprite -1,  0, -1,  0, $00, -1
+	dsprite -1,  0,  0,  0, $01, -1
+	dsprite  0,  0, -1,  0, $02, -1
+	dsprite  0,  0,  0,  0, $03, -1
+
+.OAMData_FlyMon2:
+	db 4
+	dsprite -1,  0, -1,  0, $00, -2
+	dsprite -1,  0,  0,  0, $01, -2
+	dsprite  0,  0, -1,  0, $02, -2
+	dsprite  0,  0,  0,  0, $03, -2
 
 .OAMData_TradeMonIcon:
 	db 4

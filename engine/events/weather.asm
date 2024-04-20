@@ -15,9 +15,13 @@ SetCurrentWeather::
 	ld a, OW_WEATHER_RAIN
 .set_weather
 	ld b, a
+	ld a, [wWeatherFlags]
+	bit OW_WEATHER_DO_FLY_F, a
+	jr nz, .skip_cooldown
 	ld a, [wCurrentWeather]
 	cp b
 	jr nz, .do_cooldown
+.skip_cooldown
 	ld a, b
 	ld [wCurrentWeather], a
 	call LoadWeatherGraphics

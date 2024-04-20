@@ -73,10 +73,10 @@ OpenText::
 ClearSpritesUnderTextbox::
 	ld de, wShadowOAM
 	ld hl, wShadowOAM
-	ld c, NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
+	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
 	ld a, [hl]
-	cp $70
+	cp $6c
 	jr nc, .clear_sprite
 .next
 	ld hl, SPRITEOAMSTRUCT_LENGTH

@@ -29,6 +29,7 @@ ExitAllMenus::
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
+	call RestoreSprites
 	call UpdateSprites
 FinishExitMenu::
 	ld a, CGB_MAPPALS

@@ -2671,6 +2671,9 @@ _UpdateSprites::
 	jr z, .ok
 	ld b, 28 * SPRITEOAMSTRUCT_LENGTH
 .ok
+	ldh a, [hUsedOAMIndex]
+	cp b
+	ret nc
 	ldh a, [hUsedWeatherSpriteIndex]
 	ld c, a
 	ldh a, [hUsedOAMIndex]
@@ -2678,7 +2681,7 @@ _UpdateSprites::
 	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
 	sub SPRITEOAMSTRUCT_LENGTH
 	cp c
-	ret c
+	jr c, .fix
 	ret z
 	ld l, a
 	ld h, HIGH(wShadowOAM)
@@ -2691,6 +2694,11 @@ _UpdateSprites::
 	add hl, de
 	cp l
 	jr nz, .loop
+	ret
+
+.fix
+	ldh [hUsedWeatherSpriteIndex], a
+	ld c, a
 	ret
 
 ApplyBGMapAnchorToObjects:

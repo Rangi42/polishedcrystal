@@ -40,6 +40,20 @@ HideNormalSprites::
 	jr nz, .loop
 	ret
 
+HidePlayerSprite::
+; Set player sprite to 160 to hide it offscreen
+	ld hl, wShadowOAMSprite36YCoord
+	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld b, 4
+	ld a, 160
+.loop
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .loop
+	ret
+
+
 BackupSprites::
 ; Copy wShadowOAM to wShadowOAMBackup
 	ldh a, [rSVBK]

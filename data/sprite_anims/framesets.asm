@@ -63,6 +63,7 @@ SpriteAnimFrameData:
 	dw .Frameset_DexSlowpoke
 	dw .Frameset_TownMapFly
 	dw .Frameset_GreenWalk
+	dw .Frameset_FlyMon
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -399,4 +400,11 @@ SpriteAnimFrameData:
 
 .Frameset_TownMapFly:
 	oamframe SPRITE_ANIM_OAMSET_TOWN_MAP_FLY, 32
+	oamrestart
+
+.Frameset_FlyMon:
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_1,  8
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_2,  8
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_1,  8
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_3,  8, OAM_X_FLIP
 	oamrestart
