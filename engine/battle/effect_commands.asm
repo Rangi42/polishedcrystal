@@ -457,6 +457,11 @@ EndTurn:
 	jmp ResetDamage
 
 CantMove:
+	; Reset Destiny Bond state.
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_DESTINY_BOND, [hl]
+
 	call .cancel_fly_dig
 	call CheckRampageStatusAndGetRolloutCount ; hl becomes pointer to user substatus3
 	jr z, .rampage_done

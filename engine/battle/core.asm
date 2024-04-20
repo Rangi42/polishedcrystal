@@ -667,15 +667,18 @@ PerformMove:
 	xor a
 	ld [wDamageTaken], a
 	ld [wDamageTaken + 1], a
+
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_IN_ABILITY, [hl]
+
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_PENDING_ITEMLOSS, [hl]
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp DESTINY_BOND
