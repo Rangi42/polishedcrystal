@@ -1,4 +1,6 @@
 Pokepic::
+	call BackupSprites
+	call ClearSpritesUnderPokePic
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuHeader
 	call MenuBox
@@ -38,6 +40,43 @@ _Displaypic:
 	ld b, 1
 	jmp SafeCopyTilemapAtOnce
 
+ClearSpritesUnderPokePic:
+	ld de, wShadowOAMSprite00
+	ld hl, wShadowOAMSprite00
+	ld c, NUM_SPRITE_OAM_STRUCTS
+.loop
+	ld a, [hli]
+	cp 49
+	jr c, .next
+	cp 120
+	jr nc, .next
+	ld a, [hl]
+	cp 49
+	jr c, .next
+	cp 128
+	jr c, .clear_sprite
+; fallthrough
+.next
+	ld hl, SPRITEOAMSTRUCT_LENGTH
+	add hl, de
+	ld e, l
+	dec c
+	jr nz, .loop
+	ldh a, [hOAMUpdate]
+	push af
+	ld a, TRUE
+	ldh [hOAMUpdate], a
+	call DelayFrame
+	pop af
+	ldh [hOAMUpdate], a
+	ret
+
+.clear_sprite
+	dec l
+	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)
+	inc l
+	jr .next
+
 Trainerpic::
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuHeader
@@ -76,7 +115,7 @@ Paintingpic::
 	ld a, [wTrainerClass]
 	ld de, vTiles1
 	farcall GetPaintingPic
-	jr _Displaypic
+	jmp _Displaypic
 
 ClosePokepic::
 	ld hl, PokepicMenuDataHeader
@@ -86,6 +125,7 @@ ClosePokepic::
 	xor a
 	ldh [hBGMapMode], a
 	call LoadMapPart
+	call RestoreSprites
 	call UpdateSprites
 	ld b, 1
 	call SafeCopyTilemapAtOnce
