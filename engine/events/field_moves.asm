@@ -55,6 +55,7 @@ ShakeHeadbuttTree:
 
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
+	farcall DoOverworldWeather
 	call DelayFrame
 	jr .loop
 
