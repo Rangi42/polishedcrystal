@@ -188,6 +188,7 @@ INCLUDE "engine/battle/pick_psychic_inver_party.asm"
 SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"
+INCLUDE "engine/battle/evolve_battle.asm"
 
 
 SECTION "Battle Endturn", ROMX

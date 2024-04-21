@@ -6680,11 +6680,24 @@ GiveExperiencePoints:
 	jr nz, .level_loop
 	pop af
 	ld [wCurPartyLevel], a
-	ld hl, wEvolvableFlags
-	ld a, [wCurPartyMon]
-	ld c, a
-	ld b, SET_FLAG
-	predef FlagPredef
+
+;	ld hl, wEvolvableFlags
+;	ld a, [wCurPartyMon]
+;	ld c, a
+;	ld b, SET_FLAG
+;	predef FlagPredef
+	call LoadTileMapToTempTileMap
+	farcall EvolveDuringBattle
+	call SafeLoadTempTileMapToTileMap
+	call _LoadBattleFontsHPBar
+	call GetMonBackpic
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 2, 6
+	lb bc, 6, 6
+	predef PlaceGraphic
+	call ApplyTilemapInVBlank
+
 	pop af
 	ld [wCurPartyLevel], a
 

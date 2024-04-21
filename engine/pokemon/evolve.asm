@@ -16,7 +16,7 @@ EvolveAfterBattle:
 	push de
 	ld a, [wPartyCount]
 	and a
-	jmp z, EvolveAfterBattle_ReturnToMap
+	jr z, EvolveAfterBattle_ReturnToMap
 	push af
 EvolveAfterBattle_MasterLoop:
 	ld hl, wCurPartyMon
@@ -24,7 +24,7 @@ EvolveAfterBattle_MasterLoop:
 
 	pop af
 	cp [hl]
-	jmp z, EvolveAfterBattle_ReturnToMap
+	jr z, EvolveAfterBattle_ReturnToMap
 
 	push af
 	ld a, MON_SPECIES
@@ -34,6 +34,7 @@ EvolveAfterBattle_MasterLoop:
 	add hl, bc
 	ld a, [hl]
 	ld [wEvolutionOldForm], a
+
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld hl, wEvolvableFlags
@@ -43,6 +44,34 @@ EvolveAfterBattle_MasterLoop:
 	and a
 	jr z, EvolveAfterBattle_MasterLoop
 
+	call CheckHowToEvolve
+	jr z, EvolveAfterBattle_MasterLoop
+
+	ld a, $1
+	ld [wMonTriedToEvolve], a
+
+	call TryToEvolve
+	jr nc, EvolveAfterBattle_MasterLoop
+
+	call CancelEvolution
+	jr EvolveAfterBattle_MasterLoop
+
+EvolveAfterBattle_ReturnToMap:
+	pop de
+	pop bc
+	pop hl
+	ld a, [wLinkMode]
+	and a
+	ret nz
+	ld a, [wBattleMode]
+	and a
+	ret nz
+	ld a, [wMonTriedToEvolve]
+	and a
+	call nz, RestartMapMusic
+	ret
+
+CheckHowToEvolve:
 	ld a, [wEvolutionOldSpecies]
 	ld c, a
 	ld a, [wEvolutionOldForm]
@@ -58,7 +87,7 @@ EvolveAfterBattle_MasterLoop:
 .loop
 	ld a, [hli]
 	inc a
-	jr z, EvolveAfterBattle_MasterLoop
+	ret z ; cannot evolve
 	dec a
 	ld b, a
 
@@ -264,7 +293,7 @@ EvolveAfterBattle_MasterLoop:
 	ld b, a
 	ld a, [hli]
 	cp b
-	jmp nz, .dont_evolve_3
+	jr nz, .dont_evolve_3
 	jr .proceed
 
 .move
@@ -283,7 +312,7 @@ endr
 .move_proceed
 	pop bc
 	pop hl
-	jmp nz, .dont_evolve_3
+	jr nz, .dont_evolve_3
 	jr .proceed
 
 .crit
@@ -299,7 +328,7 @@ endr
 	cp 3
 	pop bc
 	pop hl
-	jmp c, .dont_evolve_3
+	jr c, .dont_evolve_3
 	jr .proceed
 
 .level
@@ -307,15 +336,13 @@ endr
 	ld b, a
 	ld a, [wTempMonLevel]
 	cp b
-	jmp c, .dont_evolve_3
+	jr c, .dont_evolve_3
 	call IsMonHoldingEverstone
-	jmp z, .dont_evolve_3
+	jr z, .dont_evolve_3
 
 .proceed
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
-	ld a, $1
-	ld [wMonTriedToEvolve], a
 
 	ld a, [hli]
 	ld [wEvolutionNewSpecies], a
@@ -333,6 +360,21 @@ endr
 	ld hl, wPartyMonNicknames
 	call GetNickname
 	call CopyName1
+
+	ld a, TRUE
+	and a
+	ret
+
+.dont_evolve_1
+	inc hl
+.dont_evolve_2
+	inc hl
+.dont_evolve_3
+	inc hl
+	inc hl
+	jmp .loop
+
+TryToEvolve:
 	ld hl, Text_WhatEvolving
 	call PrintText
 
@@ -354,7 +396,7 @@ endr
 	push af
 	call ClearSprites
 	pop af
-	jmp c, CancelEvolution
+	ret c
 
 	ld hl, Text_CongratulationsYourPokemon
 	call PrintText
@@ -434,30 +476,8 @@ endr
 
 	call LearnEvolutionMove
 	call LearnLevelMoves
-	jmp EvolveAfterBattle_MasterLoop
 
-.dont_evolve_1
-	inc hl
-.dont_evolve_2
-	inc hl
-.dont_evolve_3
-	inc hl
-	inc hl
-	jmp .loop
-
-EvolveAfterBattle_ReturnToMap:
-	pop de
-	pop bc
-	pop hl
-	ld a, [wLinkMode]
 	and a
-	ret nz
-	ld a, [wBattleMode]
-	and a
-	ret nz
-	ld a, [wMonTriedToEvolve]
-	and a
-	call nz, RestartMapMusic
 	ret
 
 UpdateSpeciesNameIfNotNicknamed:
@@ -498,8 +518,7 @@ UpdateSpeciesNameIfNotNicknamed:
 CancelEvolution:
 	ld hl, Text_StoppedEvolving
 	call PrintText
-	call ClearTileMap
-	jmp EvolveAfterBattle_MasterLoop
+	jmp ClearTileMap
 
 IsMonHoldingEverstone:
 	push hl

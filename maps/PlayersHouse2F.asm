@@ -250,7 +250,11 @@ endr
 	; ext species test
 	givepoke WYRDEER, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
-	givepoke FARIGIRAF, 50
+	; evolve during battle
+	givepoke RHYHORN, 50
+	loadmem wPartyMon6Exp+2, LOW(165812)
+	loadmem wPartyMon6Exp+1, HIGH(165812)
+	loadmem wPartyMon6Exp+0, 165812 >> 16
 	; fill pokedex
 	callasm FillPokedex
 ;	; new bark events
