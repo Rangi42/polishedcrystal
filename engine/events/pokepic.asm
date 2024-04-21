@@ -46,7 +46,7 @@ ClearSpritesUnderPokePic:
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
 	ld a, [hli]
-	cp 49
+	cp 41
 	jr c, .next
 	cp 120
 	jr nc, .next
