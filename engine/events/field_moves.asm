@@ -66,9 +66,8 @@ ShakeHeadbuttTree:
 	ldh [hBGMapMode], a
 	ld a, [wCurSpriteOAMAddr]
 	sub 4 * SPRITEOAMSTRUCT_LENGTH
-	ld c, a
-	ld a, LOW(wShadowOAMEnd)
-	sub c
+	cpl
+	add LOW(wShadowOAMEnd) + 1
 	ld c, a
 	ld b, 0
 	ld h, HIGH(wShadowOAM)
@@ -286,16 +285,12 @@ FlyFromAnim:
 	farcall CheckForUsedObjPals
 	ldh a, [hUsedOAMIndex]
 	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	jr c, .enough_room
-	call ClearSprites
-.enough_room
+	call nc, ClearSprites ; not enough OAM slots, clear all sprites.
 	ld a, [wUsedObjectPals]
 	set 7, a ; slot 7 already reserved for leaves.
 	ld [wUsedObjectPals], a
 	inc a
-	jr nz, .extra_pal_slot_available
-	call ClearSprites
-.extra_pal_slot_available
+	call z, ClearSprites ; no more object palettes available, clear all sprites.
 	call HidePlayerSprite
 	call DelayFrame
 	ld a, [wStateFlags]
@@ -321,7 +316,7 @@ FlyFromAnim:
 
 	ldh a, [hUsedOAMIndex]
 	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, $00
+	ld a, $00 ; no-optimize a = 0
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
 	cpl
@@ -372,7 +367,7 @@ FlyToAnim:
 
 	ldh a, [hUsedOAMIndex]
 	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, $00
+	ld a, $00 ; no-optimize a = 0
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
 	cpl
@@ -393,9 +388,8 @@ FlyToAnim:
 
 	ld a, [wCurSpriteOAMAddr]
 	sub 12 * SPRITEOAMSTRUCT_LENGTH
-	ld c, a
-	ld a, LOW(wShadowOAMEnd)
-	sub c
+	cpl
+	add LOW(wShadowOAMEnd) + 1
 	ld c, a
 	ld b, 0
 	ld h, HIGH(wShadowOAM)

@@ -29,9 +29,8 @@ HideNormalSprites::
 	ld de, SPRITEOAMSTRUCT_LENGTH
 	rra
 	rra ; / 4
-	ld b, a
-	ld a, NUM_SPRITE_OAM_STRUCTS
-	sub b
+	cpl
+	add NUM_SPRITE_OAM_STRUCTS + 1
 	ld b, a
 .loop
 	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)

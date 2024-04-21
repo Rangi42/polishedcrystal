@@ -122,9 +122,10 @@ SpawnRandomWeatherCoords::
 	ld [hli], a
 	call Random
 	cp 20 percent ; 20 percent splashes
-	ld a, $6e
-	jr c, .got_tile
-	ld a, $6d
+	; a = carry ? $6e : $6d
+	ccf
+	sbc a
+	add $6e
 .got_tile
 	ld [hli], a
 	ld a, 6 ; pallete 6

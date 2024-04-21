@@ -90,9 +90,8 @@ _DoFadePalettes::
 .outer_loop
 	call FadePalettesStep
 	call .FadeDelay
-	ld a, [wPalFadeDelayFrames]
-	dec a
-	ld [wPalFadeDelayFrames], a
+	ld hl, wPalFadeDelayFrames
+	dec [hl]
 	jp nz, .outer_loop
 .done
 	pop bc

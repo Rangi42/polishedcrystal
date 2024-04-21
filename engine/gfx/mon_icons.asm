@@ -154,7 +154,6 @@ SetOWFlyMonColor:
 	ld hl, wLoadedObjPal0
 	add hl, bc
 	ld [hl], a
-;	ld c, a
 	push bc
 	ld a, c
 	ld bc, 1 palettes
@@ -166,7 +165,7 @@ SetOWFlyMonColor:
 	pop bc
 	ldh a, [hUsedOAMIndex]
 	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, $00
+	ld a, $00 ; no-optimize a = 0
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
 	cpl
