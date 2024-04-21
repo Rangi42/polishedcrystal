@@ -296,6 +296,7 @@ PlaceNoYesBox:
 
 YesNoBox:
 ; Returns c (no) or nc (yes) and sets menu cursor appropriately.
+	call ClearSpritesUnderYesNoBox
 	call GetYesNoBoxPosition
 	; fallthrough
 PlaceYesNoBox::
@@ -308,6 +309,39 @@ PlaceYesNoBox::
 	ld a, 2
 	ld [wMenuCursorY], a
 	ret
+
+ClearSpritesUnderYesNoBox:
+	ld de, wShadowOAMSprite00
+	ld hl, wShadowOAMSprite00
+	ld c, NUM_SPRITE_OAM_STRUCTS
+.loop
+	ld a, [hli]
+	cp 65
+	jr c, .next
+	ld a, [hl]
+	cp 113
+	jr nc, .clear_sprite
+; fallthrough
+.next
+	ld hl, SPRITEOAMSTRUCT_LENGTH
+	add hl, de
+	ld e, l
+	dec c
+	jr nz, .loop
+	ldh a, [hOAMUpdate]
+	push af
+	ld a, TRUE
+	ldh [hOAMUpdate], a
+	call DelayFrame
+	pop af
+	ldh [hOAMUpdate], a
+	ret
+
+.clear_sprite
+	dec l
+	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)
+	inc l
+	jr .next
 
 HandleYesNoMenu:
 ; Returns c if cancelled, otherwise $ff or $00 in a for first or second option.
