@@ -2832,6 +2832,7 @@ InitSprites:
 	jr .next_sprite
 
 .InitSprite:
+	call .StorePlayerOAMLocation
 	ld hl, OBJECT_SPRITE_TILE
 	add hl, bc
 	ld a, [hl]
@@ -2980,3 +2981,20 @@ InitSprites:
 for n, 1, NUM_OBJECT_STRUCTS
 	dw wObject{d:n}Struct
 endr
+
+.StorePlayerOAMLocation
+	ld a, b
+	cp HIGH(wPlayerStruct)
+	ret nz
+	ld a, c
+	cp LOW(wPlayerStruct)
+	ret nz
+	ldh a, [hUsedOAMIndex]
+	push bc
+	ld c, a ; no-optimize a = N - a (c gets used below)
+	ld a, SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1)
+	sub c
+	pop bc
+	sub (3 * SPRITEOAMSTRUCT_LENGTH)
+	ld [wPlayerCurrentOAMSlot], a
+	ret

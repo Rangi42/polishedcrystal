@@ -199,6 +199,8 @@ wPalFlags:: db
 
 wCurrentWeather:: db
 
+wPlayerCurrentOAMSlot:: db
+
 SECTION "Sprite Animations", WRAM0
 
 ; wSpriteAnimDict is a 10x2 dictionary.

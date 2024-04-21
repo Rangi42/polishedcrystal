@@ -42,7 +42,9 @@ HideNormalSprites::
 
 HidePlayerSprite::
 ; Set player sprite to 160 to hide it offscreen
-	ld hl, wShadowOAMSprite36YCoord
+	ld h, HIGH(wShadowOAM)
+	ld a, [wPlayerCurrentOAMSlot]
+	ld l, a
 	ld de, SPRITEOAMSTRUCT_LENGTH
 	ld b, 4
 	ld a, 160
