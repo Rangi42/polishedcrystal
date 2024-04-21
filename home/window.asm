@@ -31,6 +31,8 @@ CloseText::
 	ldh [hOAMUpdate], a
 	ld hl, wStateFlags
 	res TEXT_STATE_F, [hl]
+	ld hl, wWeatherFlags
+	res OW_WEATHER_DISABLED_F, [hl]
 	ret
 
 .CloseText:
@@ -53,6 +55,8 @@ CloseText::
 
 Script_opentext::
 OpenText::
+	ld hl, wWeatherFlags
+	set OW_WEATHER_DISABLED_F, [hl]
 	call ClearWindowData
 	ldh a, [hROMBank]
 	push af

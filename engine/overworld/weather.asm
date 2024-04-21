@@ -2,6 +2,9 @@ DoOverworldWeather:
 	push de
 	push hl
 	push bc
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_DISABLED_F, [hl]
+	jr nz, .done
 	ld a, [wOverworldWeatherDelay]
 	and %1 ; 30 fps
 	jr z, .done

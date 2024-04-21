@@ -93,7 +93,8 @@ DEF NUM_FISHGROUPS EQU const_value
 
 ; wWeatherFlags
 	const_def
-	const OW_WEATHER_DO_FLY_F ; 0
+	const OW_WEATHER_DO_FLY_F   ; 0
+	const OW_WEATHER_DISABLED_F ; 1
 
 ; SpawnPoints indexes (see data/maps/spawn_points.asm)
 	const_def
