@@ -134,6 +134,7 @@ OWCutAnimation:
 
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
+	farcall DoOverworldWeather
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
