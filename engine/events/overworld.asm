@@ -765,7 +765,6 @@ FlyFunction:
 
 .FlyScript:
 	refreshmap
-;	callasm HideSprites
 	callasm ClearSavedObjPals
 	callasm CopyBGGreenToOBPal7
 	callasm LoadWeatherPal

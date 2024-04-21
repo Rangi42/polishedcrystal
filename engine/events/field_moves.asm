@@ -411,10 +411,6 @@ FlyToAnim:
 	inc a
 	dec c
 	jr nz, .loop2
-;	ld hl, wShadowOAM + 4 * 4
-;	ld bc, wShadowOAMEnd - (wShadowOAM + 4 * 4)
-;	xor a
-;	rst ByteFill
 	ret
 
 FlyFunction_InitGFX:

@@ -98,7 +98,7 @@ ClearSpritesUnderTextbox::
 	ret
 
 .clear_sprite
-	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)
+	ld [hl], OAM_YCOORD_HIDDEN
 	jr .next
 
 BGMapAnchorTopLeft::

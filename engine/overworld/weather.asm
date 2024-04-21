@@ -96,7 +96,7 @@ SpawnRandomWeatherCoords::
 	ld a, b
 	call RandomRange
 	ld [hli], a
-	ld a, $6d
+	ld a, SNOWFLAKE_TILE
 	ld [hli], a
 	ld a, 6 ; pallete 6
 	ld [hld], a
@@ -122,10 +122,11 @@ SpawnRandomWeatherCoords::
 	ld [hli], a
 	call Random
 	cp 20 percent ; 20 percent splashes
-	; a = carry ? $6e : $6d
+	; a = carry ? RAINSPLASH_TILE : RAINDROP_TILE
+	assert RAINDROP_TILE + 1 == RAINSPLASH_TILE
 	ccf
 	sbc a
-	add $6e
+	add RAINSPLASH_TILE
 .got_tile
 	ld [hli], a
 	ld a, 6 ; pallete 6
@@ -157,12 +158,12 @@ DoSnowFall:
 .loop
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	ld a, [hl]
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	jr z, .next
 	ld hl, SPRITEOAMSTRUCT_TILE_ID
 	add hl, de
 	ld a, [hli]
-	cp $6d ; tile id
+	cp SNOWFLAKE_TILE
 	jr nz, .next
 	ld a, [hl]
 	cp 6 ; pallete 6
@@ -189,7 +190,7 @@ DoSnowFall:
 	add 2
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
 	jr nc, .despawn
 
@@ -225,7 +226,7 @@ DoSnowFall:
 .despawn
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	ld a, SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
 	xor a
 	ld [hli], a
@@ -267,11 +268,11 @@ RainSplashCleanup:
 	ld hl, SPRITEOAMSTRUCT_TILE_ID
 	add hl, de
 	ld a, [hli]
-	cp $6e ; tile id
+	cp RAINSPLASH_TILE
 	jr nz, .next
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	ld [hl], SCREEN_HEIGHT_PX + (TILE_WIDTH * 2) ; offscreen
+	ld [hl], OAM_YCOORD_HIDDEN ; offscreen
 .next
 	ld hl, SPRITEOAMSTRUCT_LENGTH
 	add hl, de
@@ -295,7 +296,7 @@ SpawnSnowFlake:
 	inc a
 	ld [hli], a
 .finish
-	ld a, $6d ; tile id
+	ld a, SNOWFLAKE_TILE
 	ld [hli], a
 	ld a, 6 ; pallete 6
 	ld [hld], a
@@ -328,7 +329,7 @@ ScanForEmptyOAM:
 	ld b, a
 .loop
 	ld a, [hl]
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2) ; offscreen
+	cp OAM_YCOORD_HIDDEN ; offscreen
 	ret z
 	ld hl, SPRITEOAMSTRUCT_LENGTH
 	add hl, de
@@ -351,7 +352,7 @@ SpawnRainDrop:
 	add 8
 	ld [hli], a
 .finish
-	ld a, $6d ; tile id
+	ld a, RAINDROP_TILE
 	ld [hli], a
 	ld a, 6 ; pallete 6
 	ld [hld], a
@@ -365,7 +366,7 @@ SpawnRainDrop:
 	ret
 
 .spawn_on_right
-	ld a, SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	ld a, OAM_YCOORD_HIDDEN
 	call RandomRange
 	ld [hli], a
 	ld a, SCREEN_WIDTH_PX + TILE_WIDTH
@@ -384,14 +385,14 @@ DoRainFall:
 .loop
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	ld a, [hl]
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	jr z, .next
 	ld hl, SPRITEOAMSTRUCT_TILE_ID
 	add hl, de
 	ld a, [hli]
-	cp $6e
+	cp RAINSPLASH_TILE
 	jr z, .update_splash
-	cp $6d ; rain tile id
+	cp RAINDROP_TILE
 	jr nz, .next
 	ld a, [hl]
 	cp 6 ; pallete 6
@@ -416,7 +417,7 @@ DoRainFall:
 	add 8
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
 	jr nc, .despawn
 
@@ -451,7 +452,7 @@ DoRainFall:
 .despawn
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	ld a, SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
 	xor a
 	ld [hli], a
@@ -470,7 +471,7 @@ DoRainFall:
 	add hl, de
 	ld a, [hl]
 	sub c
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	jr nc, .despawn
 	ld [hli], a
 	ld a, [wPlayerStepVectorX]
@@ -485,7 +486,7 @@ DoRainFall:
 .splash
 	ld hl, SPRITEOAMSTRUCT_TILE_ID
 	add hl, de
-	ld [hl], $6e ; tile id
+	ld [hl], RAINSPLASH_TILE
 	jr .next
 
 
@@ -509,12 +510,12 @@ DoSandFall:
 .loop
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	ld a, [hl]
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	jr z, .next
 	ld hl, SPRITEOAMSTRUCT_TILE_ID
 	add hl, de
 	ld a, [hli]
-	cp $6d ; sand tile id
+	cp SANDSTORM_TILE
 	jr nz, .next
 	ld a, [hl]
 	cp 6 ; pallete 6
@@ -539,7 +540,7 @@ DoSandFall:
 	sub 4
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	cp SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
 	jr nc, .despawn
 
@@ -574,7 +575,7 @@ DoSandFall:
 .despawn
 	ld hl, SPRITEOAMSTRUCT_YCOORD
 	add hl, de
-	ld a, SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
 	xor a
 	ld [hli], a
@@ -593,7 +594,7 @@ SpawnSandDrop:
 	add 8
 	ld [hli], a
 .finish
-	ld a, $6d ; tile id
+	ld a, SANDSTORM_TILE
 	ld [hli], a
 	ld a, 6 ; pallete 6
 	ld [hld], a
@@ -607,7 +608,7 @@ SpawnSandDrop:
 	ret
 
 .spawn_on_right
-	ld a, SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	ld a, OAM_YCOORD_HIDDEN
 	call RandomRange
 	ld [hli], a
 	ld a, SCREEN_WIDTH_PX + TILE_WIDTH
@@ -715,7 +716,7 @@ endr
 .delete_sprite
 	; hl = sprite to delete
 	ld a, [hl]
-	ld [hl], SCREEN_HEIGHT_PX + (TILE_WIDTH * 2)
+	ld [hl], OAM_YCOORD_HIDDEN
 	; convert OAM y cord to screen y cord
 	sub TILE_WIDTH * 2
 	; decerement bytes in wWeatherScratch associated with this sprite
@@ -761,7 +762,7 @@ LoadWeatherGraphics:
 	lb bc, BANK(SnowGFX), 1
 	ld de, SnowGFX
 .continue
-	ld hl, vTiles0 tile $6d
+	ld hl, vTiles0 tile WEATHER_TILE_1
 	jmp Get2bpp
 
 

@@ -82,20 +82,6 @@ DEF NUM_FISHGROUPS EQU const_value
 	const LAKE_OF_RAGE_OVERCAST
 	const STORMY_BEACH_OVERCAST
 
-; GetCurrentWeather return values
-	const_def
-	const OW_WEATHER_NONE
-	const OW_WEATHER_RAIN
-	const OW_WEATHER_SNOW
-	const OW_WEATHER_THUNDERSTORM
-	const OW_WEATHER_SANDSTORM
-	DEF NUM_OW_WEATHERS EQU const_value - 1
-
-; wWeatherFlags
-	const_def
-	const OW_WEATHER_DO_FLY_F   ; 0
-	const OW_WEATHER_DISABLED_F ; 1
-
 ; SpawnPoints indexes (see data/maps/spawn_points.asm)
 	const_def
 	const SPAWN_HOME

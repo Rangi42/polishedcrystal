@@ -465,6 +465,6 @@ ClearSpritesUnderStartMenu:
 
 .clear_sprite
 	dec l
-	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)
+	ld [hl], OAM_YCOORD_HIDDEN
 	inc l
 	jr .next

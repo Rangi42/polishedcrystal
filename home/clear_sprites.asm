@@ -33,7 +33,7 @@ HideNormalSprites::
 	add NUM_SPRITE_OAM_STRUCTS + 1
 	ld b, a
 .loop
-	ld [hl], SCREEN_HEIGHT_PX + (2 * TILE_WIDTH)
+	ld [hl], OAM_YCOORD_HIDDEN
 	add hl, de
 	dec b
 	jr nz, .loop
@@ -46,7 +46,7 @@ HidePlayerSprite::
 	ld l, a
 	ld de, SPRITEOAMSTRUCT_LENGTH
 	ld b, 4
-	ld a, 160
+	ld a, OAM_YCOORD_HIDDEN
 .loop
 	ld [hl], a
 	add hl, de
