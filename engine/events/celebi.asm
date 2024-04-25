@@ -39,7 +39,12 @@ Special_CelebiShrineEvent:
 	call GetCelebiSpriteTile
 	inc d
 	push de
-	ld a, $90
+
+	ldh a, [hUsedOAMIndex]
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
+	sub (SPRITEOAMSTRUCT_LENGTH * 4)
+
 	ld [wCurSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call CelebiEvent_CountDown
