@@ -6,6 +6,18 @@ ClearSprites::
 	rst ByteFill
 	ret
 
+ClearNormalSprites::
+	ldh a, [hUsedOAMIndex]
+	ld c, a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
+	ld h, HIGH(wShadowOAM)
+	ld l, a
+	xor a
+	ld b, a
+	rst ByteFill
+	ret
+
 HideSprites::
 ; Set all OAM y-positions to 160 to hide them offscreen
 	ld hl, wShadowOAM

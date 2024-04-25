@@ -164,13 +164,14 @@ SetOWFlyMonColor:
 	farcall CopySpritePal
 	pop bc
 	ldh a, [hUsedOAMIndex]
-	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, $00 ; no-optimize a = 0
+	cp ((NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
+	; if we didn't have enough OAM slots, we need to use the last 13 slots
+	ld a, (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
 	cpl
 	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (SPRITEOAMSTRUCT_LENGTH * 13)
+	sub (13 * SPRITEOAMSTRUCT_LENGTH)
 .got_oam_addr
 	ld hl, wShadowOAM + 3
 	add l

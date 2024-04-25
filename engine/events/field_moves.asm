@@ -284,8 +284,8 @@ Cut_Headbutt_GetPixelFacing:
 FlyFromAnim:
 	farcall CheckForUsedObjPals
 	ldh a, [hUsedOAMIndex]
-	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	call nc, ClearSprites ; not enough OAM slots, clear all sprites.
+	cp ((NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
+	call nc, ClearNormalSprites ; not enough OAM slots, clear all sprites.
 	ld a, [wUsedObjectPals]
 	set 7, a ; slot 7 already reserved for leaves.
 	ld [wUsedObjectPals], a
@@ -315,13 +315,13 @@ FlyFromAnim:
 	jr nz, .exit
 
 	ldh a, [hUsedOAMIndex]
-	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, $00 ; no-optimize a = 0
+	cp ((NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
+	ld a, (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
 	cpl
 	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (SPRITEOAMSTRUCT_LENGTH * 13)
+	sub (13 * SPRITEOAMSTRUCT_LENGTH)
 .got_oam_addr
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
@@ -366,13 +366,13 @@ FlyToAnim:
 	jr nz, .exit
 
 	ldh a, [hUsedOAMIndex]
-	cp $9C - (13 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, $00 ; no-optimize a = 0
+	cp ((NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
+	ld a, (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
 	cpl
 	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (SPRITEOAMSTRUCT_LENGTH * 13)
+	sub (13 * SPRITEOAMSTRUCT_LENGTH)
 .got_oam_addr
 
 	ld [wCurSpriteOAMAddr], a
