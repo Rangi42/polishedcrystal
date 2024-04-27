@@ -31,26 +31,6 @@ HideSprites::
 	jr nz, .loop
 	ret
 
-HideNormalSprites::
-; Set all normal sprites (non-weather) to 160 to hide them offscreen
-	ldh a, [hUsedOAMIndex]
-	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	ld h, HIGH(wShadowOAM)
-	ld l, a
-	ld de, SPRITEOAMSTRUCT_LENGTH
-	rra
-	rra ; / 4
-	cpl
-	add NUM_SPRITE_OAM_STRUCTS + 1
-	ld b, a
-.loop
-	ld [hl], OAM_YCOORD_HIDDEN
-	add hl, de
-	dec b
-	jr nz, .loop
-	ret
-
 HidePlayerSprite::
 ; Set player sprite to 160 to hide it offscreen
 	ld h, HIGH(wShadowOAM)
