@@ -156,6 +156,7 @@ MapRadio:
 
 Special_UnownPuzzle:
 	call FadeToMenu
+	call BackupSprites
 	farcall UnownPuzzle
 	ld a, [wSolvedUnownPuzzle]
 	ldh [hScriptVar], a
