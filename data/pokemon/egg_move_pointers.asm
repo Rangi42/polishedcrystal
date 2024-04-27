@@ -263,7 +263,7 @@ EggMovePointers::
 	dw HappinyEggMoves           ; Happiny
 	dw MunchlaxEggMoves          ; Munchlax
 	dw MantykeEggMoves           ; Mantyke
-	dw NoEggMoves                ; Weavile
+	dw SneaselEggMoves           ; Weavile
 	dw NoEggMoves                ; Magnezone
 	dw LickitungEggMoves         ; Lickilicky
 	dw RhyhornEggMoves           ; Rhyperior
