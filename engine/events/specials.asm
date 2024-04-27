@@ -25,6 +25,7 @@ Special_GameCornerPrizeMonCheckDex:
 	ret nz
 	call SetSeenAndCaughtMon
 	call FadeToMenu
+	call BackupSprites
 	ld hl, wNamedObjectIndex
 	ldh a, [hScriptVar]
 	ld [hli], a
@@ -101,11 +102,13 @@ SpecialNameRater:
 
 Special_TownMap:
 	call FadeToMenu
+	call BackupSprites
 	farcall _TownMap
 	jmp ExitAllMenus
 
 Special_DisplayLinkRecord:
 	call FadeToMenu
+	call BackupSprites
 	farcall DisplayLinkRecord
 	jmp ExitAllMenus
 
@@ -187,6 +190,7 @@ Special_CardFlip:
 Special_StartGameCornerGame:
 	call FarQueueScript
 	call FadeToMenu
+	call BackupSprites
 	ld hl, wQueuedScriptBank
 	ld a, [hli]
 	push af
@@ -310,6 +314,7 @@ Special_FadeOutMusic:
 
 Diploma:
 	call FadeToMenu
+	call BackupSprites
 	farcall _Diploma
 	jmp ExitAllMenus
 
