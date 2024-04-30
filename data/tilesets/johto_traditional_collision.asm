@@ -125,7 +125,7 @@
 	tilecoll WALL, WALL, WALL, DOOR ; 7c
 	tilecoll WALL, WALL, WALL, DOOR ; 7d
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7e
-	tilecoll WALL, WALL, WALL, WALL ; 7f
+	tilecoll CHERRY_LEAVES, CHERRY_LEAVES, WALL, WALL ; 7f
 	tilecoll WALL, WALL, WALL, WALL ; 80
 	tilecoll WARP_CARPET_LEFT, WALL, FLOOR, WALL ; 81
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 82

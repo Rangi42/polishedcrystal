@@ -16,7 +16,13 @@ LoadWeatherPal::
 	dec a
 	jr z, .rain ; thunderstorm
 	assert OW_WEATHER_SANDSTORM == 4
-	jr .sandstorm
+	dec a
+	jr z, .sandstorm
+	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
+	; cherry blossoms
+	ld a, PAL_OW_PINK
+	jr .use_pal_6
+
 .snow
 	ldh a, [rSVBK]
 	push af

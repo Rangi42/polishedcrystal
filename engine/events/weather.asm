@@ -69,16 +69,26 @@ SetCurrentWeather::
 .not_snowing
 	ld a, [wMapGroup]
 	cp GROUP_RUGGED_ROAD_NORTH
-	jr nz, .no_weather
+	jr nz, .no_sandstorm
 	ld a, [wMapNumber]
 	cp MAP_RUGGED_ROAD_NORTH
 	jr z, .sandstorm
 	cp MAP_RUGGED_ROAD_SOUTH
-	jr nz, .no_weather
+	jr nz, .no_sandstorm
 .sandstorm
 	ld a, OW_WEATHER_SANDSTORM
 	jr .set_weather
 
+.no_sandstorm
+	ld a, [wMapGroup]
+	cp GROUP_CHERRYGROVE_CITY
+	jr nz, .no_weather
+	ld a, [wMapNumber]
+	cp MAP_CHERRYGROVE_CITY
+	jr nz, .no_weather
+	ld a, OW_WEATHER_CHERRY_BLOSSOMS
+	jmp .set_weather
+
 .no_weather
 	ld a, OW_WEATHER_NONE
-	jr .set_weather
+	jmp .set_weather
