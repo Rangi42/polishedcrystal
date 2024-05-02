@@ -1,4 +1,4 @@
-	db  91, 134,  95,  80, 100, 100 ; 600 BST
+	db  130, 140,  100,  100, 130, 100 ; 700 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db DRAGON, FLYING ; type
