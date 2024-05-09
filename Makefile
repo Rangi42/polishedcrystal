@@ -194,7 +194,7 @@ gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
 gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
 
 gfx/font/%.1bpp: tools/gfx += --trim-whitespace
-gfx/font/space.1bpp: tools/gfx =
+gfx/font/space.2bpp: tools/gfx =
 
 gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/flower_mail_border.1bpp: tools/gfx += --remove-whitespace
@@ -303,6 +303,12 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 
 %.2bpp.vram2p: %.2bpp
 	$Qtools/sub_2bpp.sh $< 255 128 > $@
+
+%.vwf.1bpp: %.2bpp
+	$Qtools/vwf -o $@ $<
+
+%.vwf.widths: %.2bpp
+	$Qtools/vwf -w $@ $<
 
 %.dimensions: %.png
 	$Qtools/png_dimensions $< $@

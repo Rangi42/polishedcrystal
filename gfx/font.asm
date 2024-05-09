@@ -21,7 +21,7 @@ INCBIN "gfx/font/unown.1bpp"
 FontCommon:
 INCBIN "gfx/font/common.1bpp"
 TextboxSpaceGFX::
-INCBIN "gfx/font/space.1bpp"
+INCBIN "gfx/font/space.vwf.1bpp"
 
 Frames:
 	table_width TEXTBOX_FRAME_TILES * LEN_1BPP_TILE, Frames
