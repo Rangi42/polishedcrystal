@@ -55,7 +55,7 @@ VWFWidths:
 	db 5 ; $b4 "u"
 	db 5 ; $b5 "v"
 	db 6 ; $b6 "w"
-	db 6 ; $b7 "x"
+	db 5 ; $b7 "x"
 	db 5 ; $b8 "y"
 	db 5 ; $b9 "z"
 	db 4 ; $ba "“"
