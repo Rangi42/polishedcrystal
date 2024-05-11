@@ -12,6 +12,10 @@ SetCurrentWeather::
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
+	call Random
+	cp 25 percent
+	ld a, OW_WEATHER_THUNDERSTORM
+	jr c, .set_weather
 	ld a, OW_WEATHER_RAIN
 .set_weather
 	ld b, a
