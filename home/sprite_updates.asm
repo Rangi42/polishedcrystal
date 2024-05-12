@@ -37,6 +37,7 @@ FinishExitMenu::
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
 	farcall LoadWeatherPalNoApply
+	farcall LoadWeatherGraphics
 	farcall FadeInPalettes_EnableDynNoApply
 	; fallthrough
 EnableSpriteUpdates::
