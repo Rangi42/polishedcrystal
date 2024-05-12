@@ -10,6 +10,8 @@ PlaySpriteAnimations:
 
 	ld a, LOW(wShadowOAM)
 	ld [wCurSpriteOAMAddr], a
+	ld a, LOW(wShadowOAMEnd) - SPRITEOAMSTRUCT_LENGTH
+	ld [hUsedOAMIndex], a
 	call DoNextFrameForAllSprites
 
 	jmp PopAFBCDEHL
