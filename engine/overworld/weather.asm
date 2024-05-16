@@ -735,7 +735,7 @@ Lightning:
 	ret nz
 	call SetWhitePals
 	farcall ApplyPals
-	ld de, SFX_THUNDER
+	ld de, SFX_THUNDER_OW
 	call PlaySFX
 	call DelayFrame
 	farcall LoadMapPals
