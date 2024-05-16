@@ -150,6 +150,7 @@ VBlank0::
 	call PlaceFootprints
 
 .done
+	call UpdateCGBPalsLYTimed
 	call PushOAM
 	; vblank-sensitive operations are done
 
