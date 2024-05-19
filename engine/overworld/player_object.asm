@@ -136,13 +136,13 @@ CopyObjectStruct::
 	call CheckObjectMask
 	and a
 	ret nz ; masked
-	ld hl, wObjectStructs + OBJECT_LENGTH * 1
+	ld hl, wObjectStructs + OBJECT_LENGTH + OBJECT_MAP_OBJECT_INDEX
 	ld a, 1
 	ld de, OBJECT_LENGTH
 .loop
 	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
-	and a
+	inc a
 	jr z, .done
 	add hl, de
 	ldh a, [hObjectStructIndexBuffer]
@@ -155,6 +155,7 @@ CopyObjectStruct::
 .done
 	ld d, h
 	ld e, l
+	dec de
 	call CopyMapObjectToObjectStruct
 	ld hl, wStateFlags
 	bit SCRIPTED_MOVEMENT_STATE_F, [hl]

@@ -6,11 +6,14 @@ DeleteMapObject::
 	add hl, bc
 	ld a, [hl]
 	push af
+	push hl
 	ld h, b
 	ld l, c
 	ld bc, OBJECT_LENGTH
 	xor a
 	rst ByteFill
+	pop hl
+	ld [hl], -1
 	pop af
 	cp -1
 	jr z, .ok
