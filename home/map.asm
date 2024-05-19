@@ -261,7 +261,7 @@ ReadMapScripts::
 	; fallthrough
 ReadObjectEvents::
 	push hl
-	call ClearObjectStructs
+	call ClearObjectAssociations
 	pop de
 	ld hl, wMap1Object
 	ld a, [de]
@@ -471,6 +471,20 @@ ClearObjectStructs::
 	ld bc, OBJECT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
 	rst ByteFill
+	ret
+
+ClearObjectAssociations::
+	push de
+	ld hl, wObject1Struct + OBJECT_MAP_OBJECT_INDEX
+	ld de, OBJECT_LENGTH
+	ld b, NUM_OBJECT_STRUCTS - 1
+	ld a, -1
+.loop
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .loop
+	pop de
 	ret
 
 GetWarpDestCoords::

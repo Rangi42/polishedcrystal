@@ -69,11 +69,169 @@ SuspendMapAnims:
 	ldh [hMapAnims], a
 	ret
 
+LoadMapObjects_Connection:
+	call ReassociateMapObjectsOrDelete
 LoadMapObjects:
 	ld a, MAPCALLBACK_OBJECTS
 	call RunMapCallback
 	call LoadObjectMasks
 	farjp InitializeVisibleSprites
+
+ReassociateMapObjectsOrDelete:
+; Reassociates the objects if their coordinates match the relative coordinates
+; of an object in the new map relative to the player, or it deletes the object.
+	ld a, 1
+	ldh [hObjectStructIndexBuffer], a
+	ld bc, wObjectStructs + OBJECT_LENGTH
+	ld e, NUM_OBJECT_STRUCTS - 1
+.loop_objects
+	push de
+	ld hl, OBJECT_LAST_MAP_X
+	add hl, bc
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	call .CheckForMatchingMapObject
+	jr nc, .DeleteObjectStruct
+
+	; reassociate the object to the new matching mapobject.
+	ld hl, OBJECT_MAP_OBJECT_INDEX
+	add hl, bc
+	ldh a, [hMapObjectIndexBuffer]
+	ld [hl], a
+
+	; Update the object's map xy coordinates.
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld a, d
+	ld [hli], a ; MapX
+	ld a, e
+	ld [hli], a; MapY
+	ld a, d
+	ld [hli], a ; LastMapX
+	ld a, e
+	ld [hli], a ; LastMapY
+	ld a, d
+	ld [hli], a ; InitX
+	ld [hl], e ; InitY
+.continue
+	pop de
+	ld hl, OBJECT_LENGTH
+	add hl, bc
+	ld b, h
+	ld c, l
+	ldh a, [hObjectStructIndexBuffer]
+	inc a
+	ldh [hObjectStructIndexBuffer], a
+	dec e
+	jr nz, .loop_objects
+	ret
+
+.DeleteObjectStruct
+	; delete the object struct.
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld d, OBJECT_LENGTH
+	xor a
+.delete_loop
+	ld [hli], a
+	dec d
+	jr nz, .delete_loop
+	; mark the object as free.
+	ld hl, OBJECT_MAP_OBJECT_INDEX
+	add hl, bc
+	ld [hl], -1
+	jr .continue
+
+.CheckForMatchingMapObject
+	push bc
+
+	; Get the old object's coordinates relative to the player's old map coordinates.
+	ld hl, wLastMapXCoord
+	ld a, d
+	sub 4
+	sub [hl]
+	dec hl ; wLastMapYCoord
+	ld d, a
+	ld a, e
+	sub 4
+	sub [hl]
+	ld e, a
+
+	ld a, 1
+	ldh [hMapObjectIndexBuffer], a
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
+.loop_map_objects
+	push bc
+
+	; get map object's xy and convert
+	ld hl, MAPOBJECT_Y_COORD
+	add hl, bc
+	ld a, [hli]
+	sub 4
+	ld c, a
+	ld a, [hl]
+	sub 4
+	ld b, a
+
+	; get the map object's coordinates relative to the player's new map coordinates.
+	push hl
+	ld hl, wXCoord
+	ld a, b
+	sub [hl]
+	dec hl ; wYCoord
+	ld b, a
+	ld a, c
+	sub [hl]
+	ld c, a
+	pop hl
+
+	; compare the old and new coordinates
+	cp e
+	jr nz, .next_map_object
+	ld a, b
+	cp d
+	jr nz, .next_map_object
+
+	; they match, so reassociate the the mapobject to the object.
+	ld d, b
+	ld e, c
+	pop bc
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, bc
+	ldh a, [hObjectStructIndexBuffer]
+	ld [hl], a
+
+	; convert the mapobject's xy relative coordinates to the new map's xy coordinates.
+	ld a, [wXCoord]
+	add d
+	add 4
+	ld d, a
+	ld a, [wYCoord]
+	add e
+	add 4
+	ld e, a
+	scf
+	jr .done
+
+.next_map_object
+	pop bc
+	ldh a, [hMapObjectIndexBuffer]
+	inc a
+	ldh [hMapObjectIndexBuffer], a
+	ld hl, MAPOBJECT_LENGTH
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld a, h
+	cp HIGH(wMapObjectsEnd)
+	jr nz, .loop_map_objects
+	ld a, l
+	cp LOW(wMapObjectsEnd)
+	jr nz, .loop_map_objects
+.done
+	pop bc
+	ret
 
 LoadObjectMasks:
 	ld hl, wObjectMasks
