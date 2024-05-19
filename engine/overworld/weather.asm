@@ -733,6 +733,8 @@ Lightning:
 	ld hl, wWeatherFlags
 	bit OW_WEATHER_DO_FLY_F, [hl]
 	ret nz
+	bit OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
+	ret nz
 	call SetWhitePals
 	farcall ApplyPals
 	ld de, SFX_THUNDER_OW

@@ -9,8 +9,9 @@ DEF NUM_OW_WEATHERS EQU const_value - 1
 
 ; wWeatherFlags
 	const_def
-	const OW_WEATHER_DO_FLY_F   ; 0
-	const OW_WEATHER_DISABLED_F ; 1
+	const OW_WEATHER_DO_FLY_F             ; 0
+	const OW_WEATHER_DISABLED_F           ; 1
+	const OW_WEATHER_LIGHTNING_DISABLED_F ; 2
 
 DEF WEATHER_TILE_1  EQU $6d
 DEF WEATHER_TILE_2  EQU $6e
