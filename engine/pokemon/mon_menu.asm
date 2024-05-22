@@ -1247,16 +1247,30 @@ MoveScreenLoop:
 	jmp .loop
 
 .perform_swap
+	; If we are swapping moves of the currently active mon in an ongoing battle,
+	; and the mon isn't transformed, we need special behaviour.
+
+	; Are we in a battle?
 	ld a, [wBattleMode]
 	and a
 	jr z, .regular_swap_move
 
-	; If we're transformed, the Moves screen shows our original moveset.
-	; So swapping in the moves screen swap our original moves, while
-	; swapping in the battle interface swaps our temporary moves.
+	; Are we transformed?
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .regular_swap_move
+
+	; Are we swapping the moves of our current battler?
+	ld a, [wCurBattleMon]
+	inc a
+	ld h, a
+
+	; wTempMonBox == 0 is implicit mid-battle.
+	ld a, [wTempMonSlot]
+	cp h
+	jr nz, .regular_swap_move
+
+	; Use the battle-specific moveswap routine.
 	ld a, [wMoveScreenCursor]
 	inc a
 	ld [wMenuCursorY], a
