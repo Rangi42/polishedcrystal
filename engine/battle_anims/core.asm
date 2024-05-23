@@ -27,8 +27,7 @@ QueueBattleAnimation:
 
 InitBattleAnimation:
 	ld hl, wBattleAnimTemp0
-	ld a, [hli]
-	ld e, a
+	ld e, [hl]
 	; d was set to 0 or 1 previously
 	ld hl, BattleAnimObjects
 rept 6
@@ -210,10 +209,9 @@ BattleAnimOAMUpdate:
 	push af
 	and $7
 	add a
-	ld hl, .tile_data
-	add l
+	add LOW(.tile_data)
 	ld l, a
-	adc h
+	adc HIGH(.tile_data)
 	sub l
 	ld h, a
 	pop af

@@ -1,5 +1,5 @@
 BattleCommand_bugbite:
-	farcall ReadMoveScriptByte
+	call ReadMoveScriptByte
 	ld b, a
 
 	; these abilities prevent us from eating it

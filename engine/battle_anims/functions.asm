@@ -433,8 +433,7 @@ BattleAnimFunction_PokeBall:
 	call FarReinitBattleAnimFrameset
 	ld hl, BATTLEANIMSTRUCT_VAR3
 	add hl, bc
-	ld a, $10
-	ld [hl], a
+	ld [hl], $10
 	jmp BattleAnim_IncAnonJumptableIndex
 
 .fourteen

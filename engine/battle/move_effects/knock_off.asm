@@ -1,5 +1,5 @@
 BattleCommand_knockoff:
-	farcall ReadMoveScriptByte
+	call ReadMoveScriptByte
 	ld b, a
 	ld a, [wAttackMissed]
 	and a
