@@ -91,6 +91,10 @@ ReassociateMapObjectsOrDelete:
 	ld a, [hli]
 	ld e, [hl]
 	ld d, a
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	ld [wCurIcon], a
 	call .CheckForMatchingMapObject
 	jr nc, .DeleteObjectStruct
 
@@ -164,9 +168,14 @@ ReassociateMapObjectsOrDelete:
 .loop_map_objects
 	push bc
 
-	; get map object's xy and convert
-	ld hl, MAPOBJECT_Y_COORD
+	ld hl, MAPOBJECT_SPRITE
 	add hl, bc
+	ld a, [wCurIcon]
+	cp [hl]
+	jr nz, .next_map_object
+	inc hl ; MAPOBJECT_Y_COORD
+
+	; get map object's xy and convert
 	ld a, [hli]
 	sub 4
 	ld c, a
