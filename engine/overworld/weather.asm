@@ -39,7 +39,6 @@ DoOverworldWeather:
 	cp OW_WEATHER_SANDSTORM
 	call z, DoOverworldSandstorm
 .done
-	farcall OWFadePalettesStep
 	ld hl, wOverworldWeatherDelay
 	inc [hl]
 	call WeatherSpriteLimitCheck

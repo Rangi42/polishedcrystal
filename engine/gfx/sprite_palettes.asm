@@ -26,7 +26,7 @@ LoadWeatherPal::
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
-	call ApplyOBPals
+	call ApplyWeatherPal
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
@@ -135,12 +135,23 @@ CopySpritePal::
 	rst AddNTimes
 .got_pal
 	pop de
+	push de ; push wOBPals1 palette *
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
+	pop hl ; pop wOBPals1 palette *
 	jr nz, .skip_apply
-	call ApplyOBPals
+
+	push hl
+	ld de, wOBPals2 - wOBPals1
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
@@ -148,6 +159,12 @@ CopySpritePal::
 	pop bc
 	pop af
 	ret
+
+ApplyWeatherPal:
+	ld hl, wOBPals1 palette 6
+	ld de, wOBPals2 palette 6
+	ld bc, 1 palettes
+	jmp FarCopyColorWRAM
 
 ApplyOBPals:
 	ld hl, wOBPals1

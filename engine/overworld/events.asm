@@ -182,7 +182,8 @@ HandleMapObjects:
 HandleMapBackground:
 	farcall _UpdateSprites
 	farcall ScrollScreen
-	farjp PlaceMapNameSign
+	farcall PlaceMapNameSign
+	farjp OWFadePalettesStep
 
 CheckPlayerState:
 	ld a, [wPlayerStepFlags]

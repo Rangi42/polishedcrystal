@@ -96,12 +96,13 @@ MapSetupScript_Connection:
 	mapsetup SaveScreen
 	mapsetup DeferredLoadMapGraphics
 	mapsetup DecompressMetatiles
+	mapsetup DisableDynPalUpdates
 	mapsetup LoadMapObjects
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
-	mapsetup EnableDynPalUpdates
+	mapsetup EnableDynPalUpdatesNoApply
+	mapsetup OWFadePalettesInit
 	mapsetup InitMapNameSign
-	mapsetup ApplyMapPalettes
 	mapsetup LoadWildMonData
 	mapsetup UpdateRoamMons
 	mapsetup ActivateMapAnims

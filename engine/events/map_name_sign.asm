@@ -280,7 +280,18 @@ LoadMapNameSignGFX:
 	rst AddNTimes ; preserves bc
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	call FarCopyColorWRAM
-	jmp SetDefaultBGPAndOBP
+
+	; copy sign palette for PAL_BG_TEXT
+	ld hl, SignPals
+	ld bc, 1 palettes
+	ld a, [wSign]
+	rst AddNTimes ; preserves bc
+	ld de, wBGPals2 palette PAL_BG_TEXT
+	call FarCopyColorWRAM
+
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
 
 .continue
 	; save position in landmark name
