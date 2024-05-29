@@ -90,9 +90,9 @@ _TimeOfDayPals::
 	ldh [rSVBK], a
 
 ; update palettes
-	farcall CheckForUsedObjPals
-	call _UpdateTimePals
-	call DelayFrame
+	farcall LoadMapPalettes
+	farcall EnableDynPalUpdatesNoApply
+	farcall OWFadePalettesInit
 
 ; successful change
 	scf
