@@ -14,9 +14,10 @@ SetCurrentWeather::
 	jr z, .not_overcast
 	call Random
 	cp 25 percent
-	ld a, OW_WEATHER_THUNDERSTORM
-	jr c, .set_weather
-	ld a, OW_WEATHER_RAIN
+	; a = carry ? OW_WEATHER_THUNDERSTORM : OW_WEATHER_RAIN
+	sbc a
+	and OW_WEATHER_THUNDERSTORM - OW_WEATHER_RAIN
+	add OW_WEATHER_RAIN
 .set_weather
 	ld b, a
 	ld a, [wWeatherFlags]
