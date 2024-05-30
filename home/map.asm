@@ -190,6 +190,20 @@ CopyWarpData::
 	ld a, [hli]
 	cp $ff
 	jr nz, .skip
+	ld a, [wMapGroup]
+	assert GROUP_HIDDEN_TREE_GROTTO == GROUP_HIDDEN_CAVE_GROTTO
+	cp GROUP_HIDDEN_TREE_GROTTO
+	jr nz, .not_grotto
+	ld a, [wMapNumber]
+	cp MAP_HIDDEN_TREE_GROTTO
+	jr z, .is_grotto
+	cp MAP_HIDDEN_CAVE_GROTTO
+	jr nz, .not_grotto
+.is_grotto
+	; set grotto exit flag
+	ld a, TRUE
+	ld [wGrottoExit], a
+.not_grotto
 	ld hl, wBackupWarpNumber
 	ld a, [hli]
 
