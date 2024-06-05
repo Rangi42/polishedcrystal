@@ -441,7 +441,8 @@ class ClientThread(threading.Thread):
                 signal = bytearray()
                 if (battleid > 0 and is_battler(battleid, userid) and
                     (data[0] == PO_CMD_LISTUSERS or
-                     data[0] == PO_CMD_BATTLEUSER)):
+                     data[0] == PO_CMD_BATTLEUSER or
+                     data[0] == PO_CMD_TRADEUSER)):
                     same_target = False
 
                     # No need to ask if BATTLEUSER target is the same
@@ -458,7 +459,10 @@ class ClientThread(threading.Thread):
                             target = battles[battleid].host
 
                         signal.append(0)
-                        signal.append(PO_SIGNAL_ASKBATTLE)
+                        if data[0] == PO_CMD_BATTLEUSER:
+                            signal.append(PO_SIGNAL_ASKBATTLE)
+                        else:
+                            signal.append(PO_SIGNAL_ASKTRADE)
                         signal.append(target)
 
                 if len(signal) > 0:
@@ -529,6 +533,41 @@ class ClientThread(threading.Thread):
                         response.append(user.otid & 0xFF)
                         response.extend(user.name)
                     ulock.release()
+
+                elif data[0] == PO_CMD_TRADEUSER:
+                    # who do we want to battle
+                    print(userid, ">>> Trade user")
+                    requestdata(self, data, 2)
+                    target = data[1]
+                    lock_users(userid, target)
+                    block.acquire()
+                    errcode = may_battle(userid, target)
+                    if errcode == PO_ERROR_OK:
+                        if battleid > 0:
+                            # Mark ourself as having accepted the battle
+                            if userid == battles[battleid].host:
+                                battles[battleid].host_accepted = True
+                            else:
+                                battles[battleid].client_accepted = True
+                        else:
+                            battleid = addbattle()
+                            battles[battleid].host = userid
+                            battles[battleid].client = target
+                            users[userid].battleid = battleid
+                            users[target].battleid = battleid
+
+                        if (battles[battleid].host_accepted and
+                            battles[battleid].client_accepted):
+                            response.append(battles[battleid].host)
+                            response.append(battles[battleid].client)
+                        else:
+                            response.append(0)
+                    else:
+                        response[1] = PO_SIGNAL_ERROR
+                        response.append(errcode)
+
+                    block.release()
+                    release_users(userid, target)
 
                 elif data[0] == PO_CMD_BATTLEUSER:
                     # who do we want to battle

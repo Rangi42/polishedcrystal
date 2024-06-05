@@ -1679,7 +1679,36 @@ LinkTrade:
 	vc_hook Trade_save_game_end
 	ld c, 50
 	call DelayFrames
+	ldh a, [hMobile]
+	and a
+	jr nz, .Mobile
 	jmp Gen2ToGen2LinkComms
+
+.Mobile
+	ld a, PO_CMD_SETINFO
+	farcall PO_ServerCommand
+	ret c
+	ld c, 50
+	call DelayFrames
+	ld a, PO_CMD_GETINFO
+	farcall PO_ServerCommand
+	ret c
+	call ClearScreen
+	farcall SetTradeRoomBGPals
+	farcall LoadTradeScreenGFX
+	farcall InitTradeSpeciesList
+	xor a
+	ld hl, wOtherPlayerLinkMode
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld a, 1
+	ld [wMenuCursorY], a
+	inc a
+	ld [wPlayerLinkAction], a
+	jmp LinkTrade_PlayerPartyMenu
+
 
 .TradeCancel:
 	text "Trade"

@@ -107,11 +107,89 @@ PO_Connect::
 	cp [hl]
 	jr z, .user_loop
 
+; Ask user if they want to battle or trade
+	push hl
+	ld hl, .BattleTradeMenuHeader
+	call LoadMenuHeader
+	call ApplyTilemapInVBlank
+	call VerticalMenu
+	call CloseWindow
+	pop hl
+	ld a, [wMenuCursorY]
+	dec a
+	jr z, .battle
+	dec a
+	jr nz, .get_user_list
+;.trade
+	ld b, [hl]
+	call PO_RequestTrade
+	jp c, .handle_signal
+	jr z, .get_user_list
+; fallthrough
+.init_trade
+	call PO_ClearInterface
+	hlcoord 1, 3
+	ld de, .DoTrade
+	call PlaceString
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+
+	; Register participant IDs
+	ld a, [wPO_Content]
+	ld [wPO_BattlePlayer1ID], a
+	ld b, a
+	ld a, [wPO_Content + 1]
+	ld [wPO_BattlePlayer2ID], a
+	ld c, a
+
+	ld a, LINK_MOBILE
+	ld [wLinkMode], a
+
+	; Check whether or not we are host and store it in SerialConnectionStatus.
+	; While mobile communication doesn't use this for most things, battles still
+	; rely on this variable to determine whether or not we are the host.
+	ld hl, hSerialConnectionStatus
+	ld [hl], USING_INTERNAL_CLOCK
+	ld a, [wPO_UserID]
+	cp b
+	jr nz, .is_trade_client
+	ld [hl], USING_EXTERNAL_CLOCK
+	ld b, c
+.is_trade_client
+	ld a, PO_CMD_GETINFO
+	call PO_ServerCommand
+	jmp c, .handle_signal
+
+	call ClearScreen
+	farcall SetTradeRoomBGPals
+	farcall LoadTradeScreenGFX
+	farcall InitTradeSpeciesList
+	xor a
+	ld hl, wOtherPlayerLinkMode
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld a, 1
+	ld [wMenuCursorY], a
+	inc a
+	ld [wPlayerLinkAction], a
+	farcall LinkTrade_PlayerPartyMenu
+
+	xor a
+	ldh [hBGMapMode], a
+	ld [wLinkMode], a
+	farcall LoadPokemonData
+	call LoadMapPart
+	call LoadStandardMenuHeader
+	jp .start
+
+.battle
 	; Attempt to battle with user
 	ld b, [hl]
 	call PO_RequestBattle
 	jp c, .handle_signal
-	jr z, .user_loop
+	jmp z, .get_user_list
 
 .init_battle
 	call PO_ClearInterface
@@ -143,28 +221,13 @@ PO_Connect::
 	ld [hl], USING_INTERNAL_CLOCK
 	ld a, [wPO_UserID]
 	cp b
-	jr nz, .is_client
+	jr nz, .is_battle_client
 	ld [hl], USING_EXTERNAL_CLOCK
 	ld b, c
-.is_client
+.is_battle_client
 	ld a, PO_CMD_GETINFO
 	call PO_ServerCommand
 	jr c, .handle_signal
-
-	call ClearScreen
-	farcall LoadTradeScreenGFX
-	farcall InitTradeSpeciesList
-	xor a
-	ld hl, wOtherPlayerLinkMode
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	ld a, 1
-	ld [wMenuCursorY], a
-	inc a
-	ld [wPlayerLinkAction], a
-	farcall LinkTrade_PlayerPartyMenu
 
 	; TODO: this is copied from link, they should probably share a function
 	ld a, [wOTPlayerGender]
@@ -223,8 +286,19 @@ PO_Connect::
 
 	; Handle battle requests
 	cp PO_SIGNAL_ASKBATTLE
-	jr nz, .disconnect ; TODO: other signals
+	jr z, .got_battle_request
+	cp PO_SIGNAL_ASKTRADE
+	jr nz, .disconnect
 
+	; Handle trade requests
+	; Just accept the invite automatically for now
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_ACCEPT
+	call PO_ServerCommand
+	jr c, .handle_signal
+	jp .init_trade
+
+.got_battle_request
 	; Just accept the invite automatically for now
 	ld a, PO_CMD_SETREPLY
 	ld b, PO_REPLY_ACCEPT
@@ -280,6 +354,24 @@ PO_Connect::
 .DoBattle:
 	db    "Loading battle…"
 	done
+
+.DoTrade:
+	db    "Loading trade…"
+	done
+
+.BattleTradeMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	db 11, 11 ; start coords
+	db 17, 19 ; end coords
+	dw .BattleTradeMenuData
+	db 1 ; default option
+
+.BattleTradeMenuData:
+	db $c0 ; flags
+	db 3 ; items
+	db "Battle@"
+	db "Trade@"
+	db "Cancel@"
 
 PO_GetUserListOnTick:
 	ld hl, wPO_RequestTimer
@@ -448,6 +540,49 @@ PO_RequestBattle:
 .AskingForBattle:
 	db    "Asking user to"
 	next1 "battle…"
+	done
+
+PO_RequestTrade:
+; Request trade with user id b. Returns z if the request failed, c on signal
+	ld a, PO_CMD_TRADEUSER
+	call PO_ServerCommand
+	jr c, .handle_signal
+
+	call PO_ClearInterface
+	hlcoord 1, 3
+	ld de, .AskingForTrade
+	call PlaceString
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+
+.loop
+	; Check if a trade is to commence
+	ld a, [wPO_Content]
+	and a
+	jr z, .next_try
+	ret ; Commence trade
+.next_try
+	; There's no need to flood the server, wait 1s between requests
+	ld c, 60
+	call DelayFrames
+
+	; Wait for a reply
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_WAIT
+	call PO_ServerCommand
+	jr c, .handle_signal
+	jr .loop
+
+.handle_signal
+	ld a, b
+	cp PO_SIGNAL_ERROR ; cannot trade the user
+	ret z
+	scf
+	ret
+
+.AskingForTrade:
+	db    "Asking user to"
+	next1 "trade…"
 	done
 
 PO_ClearInterface:
