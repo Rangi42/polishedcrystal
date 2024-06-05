@@ -269,7 +269,15 @@ Serial_ExchangeSyncBytes::
 Serial_PlaceWaitingTextAndSyncAndExchangeNybble::
 	call LoadTileMapToTempTileMap
 	call PlaceWaitingText
+	ldh a, [hMobile]
+	and a
+	jr nz, .Mobile
 	call Serial_SyncAndExchangeNybble
+	jr SafeLoadTempTileMapToTileMap
+
+.Mobile
+	farcall MobileTradeLinkTransfer
+; fallthrough
 SafeLoadTempTileMapToTileMap::
 	xor a
 	ldh [hBGMapMode], a

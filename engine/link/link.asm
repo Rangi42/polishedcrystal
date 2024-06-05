@@ -1779,13 +1779,21 @@ PlaceWaitingTextAndSyncAndExchangeNybble:
 	call ApplyAttrAndTilemapInVBlank
 	ld c, 50
 	call DelayFrames
+	ldh a, [hMobile]
+	and a
+	jr nz, .Mobile
 	call Serial_SyncAndExchangeNybble
+.Done
 	call ExitMenu
 	jmp ApplyAttrAndTilemapInVBlank
 
 .Waiting:
 	text "Waiting…!"
 	done
+
+.Mobile
+	call MobileTradeLinkTransfer
+	jr .Done
 
 LoadTradeScreenGFX:
 	ld hl, TradeScreenGFX
@@ -2699,4 +2707,27 @@ InitLinkTradePalMap:
 	pop bc
 	dec b
 	jr nz, .row
+	ret
+
+MobileTradeLinkTransfer:
+; Returns z if not on mobile, c if disconnected
+	ldh a, [hMobile]
+	and a
+	ret z
+	ld a, [wPlayerLinkAction]
+	and $f
+	jr .firstloop
+
+.loop
+	ld c, 60
+	call DelayFrames
+.firstloop
+	ld a, PO_CMD_TRADETURN
+	farcall PO_ServerCommand
+	ret c
+;	jr z, .loop
+	ld a, [wOtherPlayerLinkAction]
+	cp -1
+	jr z, .loop
+	ld [wOtherPlayerLinkMode], a
 	ret

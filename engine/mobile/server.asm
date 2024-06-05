@@ -151,6 +151,21 @@ PO_Connect::
 	call PO_ServerCommand
 	jr c, .handle_signal
 
+	call ClearScreen
+	farcall LoadTradeScreenGFX
+	farcall InitTradeSpeciesList
+	xor a
+	ld hl, wOtherPlayerLinkMode
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld a, 1
+	ld [wMenuCursorY], a
+	inc a
+	ld [wPlayerLinkAction], a
+	farcall LinkTrade_PlayerPartyMenu
+
 	; TODO: this is copied from link, they should probably share a function
 	ld a, [wOTPlayerGender]
 	dec a
@@ -467,13 +482,12 @@ PO_ServerCommand:
 	dec a
 	jp z, .BattleTurn
 	dec a
-	jr z, .TradeTurn
+	jp z, .TradeTurn
 	dec a
 	jp z, .SetReply
 	; failsafe fallthrough
 .WonderTrade:
 .GetBattle:
-.TradeTurn:
 .Disconnect:
 	; Disconnect from server. Response content is actually 1 byte, but
 	; this should ensure that we disconnect properly.
@@ -587,6 +601,17 @@ PO_ServerCommand:
 	; Server Protocol: CMD -> CMD, User Amount, Users
 	ld b, 1
 	jp PO_ExchangeData
+
+.TradeTurn:
+	ld a, [wPlayerLinkAction]
+	ld [wPO_Content], a
+	ld b, 2
+	call PO_ExchangeData
+	ret c
+	ld a, [wPO_Content]
+	ld [wOtherPlayerLinkAction], a
+	ret
+	
 
 .BattleTurn:
 	; Input action for battle turn. Returns z if waiting for other player.

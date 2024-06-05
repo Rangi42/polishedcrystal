@@ -179,6 +179,46 @@ class Battle:
         prev_offset = self.get_offset(user)
         self.set_offset(user, offset + prev_offset)
 
+    def pending_input_trade(self, user) -> bytearray():
+        opp = self.otheruser(user)
+        ret = bytearray()
+        action = self.get_action(user) & 0xF
+        action_opp = self.get_action(opp) & 0xF
+
+        # Check if we are ready for sending battle data
+        if self.get_offset(user) < self.get_offset(opp):
+            # The other user has already received the battle data for this turn.
+            # Send from the battle log.
+
+            # Append this decision
+            ret.append(self.log[self.get_offset(user)])
+
+            # Move offset to next turn
+            self.add_offset(user, 1)
+
+            # Set action as unperformed for next turn
+            self.set_action(user, 0xFF)
+            return ret
+
+        # Check if both users have made their decision
+        if (self.get_offset(user) == self.get_offset(opp) and
+            self.get_action(user) != 0xFF and
+            self.get_action(opp) != 0xFF):
+
+            self.log.append(self.get_action(user))
+
+           # Send trade turn to user
+            ret.append(self.get_action(opp))
+            self.add_offset(user, 1)
+
+            # Set action as unperformed for next turn
+            self.set_action(user, 0xFF)
+            return ret
+
+        # Otherwise, just send 0xFF
+        ret.append(0xFF)
+        return ret
+
     # Returns a bytearray of battle turn data to send
     def pending_input(self, user) -> bytearray():
         opp = self.otheruser(user)
@@ -540,6 +580,23 @@ class ClientThread(threading.Thread):
                         opp = battle.otheruser(user)
                         battle.set_action(user, data[1])
                         response.extend(battle.pending_input(user))
+                        battle.lock.release()
+
+                elif data[0] == PO_CMD_TRADETURN:
+                    print(userid, ">>> Trade turn")
+                    requestdata(self, data, 2)
+                    if (battleid == 0 or not is_battler(battleid, userid) or
+                        not battles[battleid].host_accepted or
+                        not battles[battleid].client_accepted):
+                        response[1] = PO_SIGNAL_ERROR
+                        response.append(PO_ERROR_UNAUTHORIZED)
+                    else:
+                        battle = battles[battleid]
+                        battle.lock.acquire()
+                        user = users[userid]
+                        opp = battle.otheruser(user)
+                        battle.set_action(user, data[1])
+                        response.extend(battle.pending_input_trade(user))
                         battle.lock.release()
 
                 elif data[0] == PO_CMD_SETREPLY:

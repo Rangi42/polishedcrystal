@@ -5896,7 +5896,7 @@ LinkBattleSendReceiveAction:
 	call LinkBattle_StageForSend
 BattleDoSendLink:
 	ld [wLinkBattleSentAction], a
-	call MobileLinkTransfer
+	call MobileBattleLinkTransfer
 	ret c
 	ret nz
 	vc_hook Wireless_start_exchange
@@ -5964,7 +5964,7 @@ LinkBattle_StageForSend:
 	add BATTLEACTION_SWITCH1 - 1
 	jr .use_move
 
-MobileLinkTransfer:
+MobileBattleLinkTransfer:
 ; Returns z if not on mobile, c if disconnected
 	ldh a, [hMobile]
 	and a
