@@ -161,6 +161,7 @@ PO_Connect::
 	call PO_ServerCommand
 	jmp c, .handle_signal
 
+	call ExitMenu
 	call ClearScreen
 	farcall LoadMobileTradePalettes
 	farcall LoadMobileTradeScreenGFX
@@ -183,7 +184,6 @@ PO_Connect::
 	ld [wLinkMode], a
 	farcall LoadPokemonData
 	call LoadMapPart
-	call LoadStandardMenuHeader
 	jp .start
 
 .battle
@@ -277,7 +277,6 @@ PO_Connect::
 	ld [wLinkMode], a
 	farcall LoadPokemonData
 	call LoadMapPart
-	call LoadStandardMenuHeader
 	jp .start
 
 .handle_signal
