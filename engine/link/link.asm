@@ -1714,6 +1714,8 @@ LinkTrade:
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
+	ld [wMobileLightsStep], a
+	ld [wMobileLightsFlags], a
 	ld a, 1
 	ld [wMenuCursorY], a
 	inc a
