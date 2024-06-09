@@ -463,12 +463,20 @@ class ClientThread(threading.Thread):
                         else:
                             target = battles[battleid].host
 
-                        signal.append(0)
-                        if battles[battleid].is_trade:
-                            signal.append(PO_SIGNAL_ASKTRADE)
+                        if not battles[battleid].client_accepted:
+                            signal.append(0)
+                        # if client hasn't accepted yet.
+                            if battles[battleid].is_trade:
+                                signal.append(PO_SIGNAL_ASKTRADE)
+                            else:
+                                signal.append(PO_SIGNAL_ASKBATTLE)
+                            signal.append(target)
                         else:
-                            signal.append(PO_SIGNAL_ASKBATTLE)
-                        signal.append(target)
+                            # we assume the battle/trade is over.
+                            users[battles[battleid].host].battleid = 0
+                            users[battles[battleid].client].battleid = 0
+                            del battles[battleid]
+                            battleid = 0
 
                 if len(signal) > 0:
                     response = signal

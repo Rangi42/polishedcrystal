@@ -1312,6 +1312,9 @@ ExitLinkCommunications:
 	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call ApplyAttrAndTilemapInVBlank
+	ldh a, [hMobile]
+	and a
+	ret nz
 	xor a
 	ldh [rSB], a
 	ldh [hSerialSend], a
