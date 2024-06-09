@@ -805,10 +805,20 @@ LinkMonStatsScreen:
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wMenuCursorY], a
+	ldh a, [hMobile]
+	and a
+	jr nz, .mobile
 	call LoadTradeScreenGFX
 	call Link_WaitBGMap
 	call InitTradeSpeciesList
 	call SetTradeRoomBGPals
+	jmp ApplyAttrAndTilemapInVBlank
+
+.mobile
+	farcall LoadMobileTradeScreenGFX
+	call Link_WaitBGMap
+	call InitTradeSpeciesList
+	farcall LoadMobileTradePalettes
 	jmp ApplyAttrAndTilemapInVBlank
 
 LinkTrade_PlayerPartyMenu:
@@ -1701,6 +1711,15 @@ LinkTrade:
 	ret c
 	ld c, 50
 	call DelayFrames
+	ld a, [wPO_BattlePlayer1ID]
+	ld b, a
+	ld a, [wPO_BattlePlayer2ID]
+	ld c, a
+	ld a, [wPO_UserID]
+	cp b
+	jr nz, .got_other_player
+	ld b, c
+.got_other_player
 	ld a, PO_CMD_GETINFO
 	farcall PO_ServerCommand
 	ret c

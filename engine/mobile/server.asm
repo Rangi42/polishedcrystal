@@ -143,7 +143,7 @@ PO_Connect::
 	ld [wPO_BattlePlayer2ID], a
 	ld c, a
 
-	ld a, LINK_MOBILE
+	ld a, LINK_MOBILE_TRADE
 	ld [wLinkMode], a
 
 	; Check whether or not we are host and store it in SerialConnectionStatus.
@@ -210,7 +210,7 @@ PO_Connect::
 	ld [wPO_BattlePlayer2ID], a
 	ld c, a
 
-	ld a, LINK_MOBILE
+	ld a, LINK_MOBILE_BATTLE
 	ld [wLinkMode], a
 
 	; in case we need random numbers on turn "0" (entry abilities, speed ties)

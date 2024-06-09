@@ -952,7 +952,10 @@ PreparePartyTempMon:
 	; In the trade center, we might be looking at the OT party.
 	ld a, [wLinkMode]
 	cp LINK_TRADECENTER
+	jr z, .trading
+	cp LINK_MOBILE_TRADE
 	jr nz, .got_box
+.trading
 	ld a, [wMonType]
 	and a ; cp PARTYMON
 	jr z, .got_box
