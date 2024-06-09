@@ -876,9 +876,17 @@ SECTION "Footprint Queue", WRAM0
 wFootprintQueue:: ds 3 * 2 + 1
 
 
-SECTION "Unused", WRAM0
+SECTION UNION "Misc 69", WRAM0 ; Giggidy
 
 	ds 69 ; it's free real estate
+
+
+SECTION UNION "Misc 69", WRAM0
+; mobile lights
+
+wMobileLightsStep:: db
+wMobileLightsFlags:: db
+wMobileLightsTimer:: db
 
 
 SECTION UNION "Misc 1326", WRAM0

@@ -661,6 +661,7 @@ SECTION "Mobile Communication", ROMX
 
 INCLUDE "engine/mobile/serial.asm"
 INCLUDE "engine/mobile/server.asm"
+INCLUDE "engine/mobile/trade.asm"
 
 
 SECTION "Battle Tower Text", ROMX

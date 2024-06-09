@@ -127,6 +127,7 @@ class Battle:
     lock: threading.RLock()
     host: int = 0
     client: int = 0
+    is_trade: bool = False
     host_accepted: bool = True
     client_accepted: bool = False
     host_action: int = 0xFF
@@ -450,6 +451,10 @@ class ClientThread(threading.Thread):
                         requestdata(self, data, 2)
                         if is_battler(battleid, data[1]):
                             same_target = True
+                    if data[0] == PO_CMD_TRADEUSER:
+                        requestdata(self, data, 2)
+                        if is_battler(battleid, data[1]):
+                            same_target = True
 
                     if not same_target:
                         target = 0
@@ -459,10 +464,10 @@ class ClientThread(threading.Thread):
                             target = battles[battleid].host
 
                         signal.append(0)
-                        if data[0] == PO_CMD_BATTLEUSER:
-                            signal.append(PO_SIGNAL_ASKBATTLE)
-                        else:
+                        if battles[battleid].is_trade:
                             signal.append(PO_SIGNAL_ASKTRADE)
+                        else:
+                            signal.append(PO_SIGNAL_ASKBATTLE)
                         signal.append(target)
 
                 if len(signal) > 0:
@@ -547,12 +552,15 @@ class ClientThread(threading.Thread):
                             # Mark ourself as having accepted the battle
                             if userid == battles[battleid].host:
                                 battles[battleid].host_accepted = True
+                                battles[battleid].is_trade = True
                             else:
                                 battles[battleid].client_accepted = True
+                                battles[battleid].is_trade = True
                         else:
                             battleid = addbattle()
                             battles[battleid].host = userid
                             battles[battleid].client = target
+                            battles[battleid].is_trade = True
                             users[userid].battleid = battleid
                             users[target].battleid = battleid
 

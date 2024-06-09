@@ -642,7 +642,11 @@ InitTradeMenuDisplay:
 	jmp LinkTrade_PlayerPartyMenu
 
 InitTradeSpeciesList:
+	ldh a, [hMobile]
 	ld hl, .TradeScreenTilemap
+	jr z, .not_mobile
+	ld hl, .MobileTradeScreenTilemap
+.not_mobile
 	decoord 0, 0
 	call Decompress
 	call InitLinkTradePalMap
@@ -654,6 +658,9 @@ InitTradeSpeciesList:
 
 .TradeScreenTilemap:
 INCBIN "gfx/trade/border.tilemap.lz"
+
+.MobileTradeScreenTilemap:
+INCBIN "gfx/mobile/border.tilemap.lz"
 
 .Cancel:
 	text "Cancel"
@@ -1023,6 +1030,7 @@ LinkTradeMenu:
 	jr z, .skip_anims
 	farcall PlaySpriteAnimationsAndDelayFrame
 .skip_anims
+	farcall DoNextStepForMobileTradeLights
 	call JoyTextDelay
 	call .GetJoypad
 	and a
@@ -2720,6 +2728,12 @@ InitLinkTradePalMap:
 	ld a, $3
 	ld bc, 6
 	rst ByteFill
+
+	ldh a, [hMobile]
+	and a
+	ret z
+	ld a, 3
+	ldcoord_a 1, 17, wAttrmap ; "M" in "MOBILE TRADE"
 	ret
 
 .fill_box:

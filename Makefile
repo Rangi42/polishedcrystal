@@ -248,6 +248,7 @@ gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates
 gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; $Qcat $^ > $@
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; $Qcat $^ > $@
 gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qcat $^ > $@
+gfx/mobile/mobile_trade_screen.2bpp: gfx/mobile/border.2bpp gfx/trade/textbox.2bpp gfx/mobile/border2.2bpp; $Qcat $^ > $@
 
 gfx/trainer_card/chris_card.2bpp: rgbgfx += -Z
 gfx/trainer_card/kris_card.2bpp: rgbgfx += -Z

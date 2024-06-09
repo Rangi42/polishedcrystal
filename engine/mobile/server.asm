@@ -117,7 +117,7 @@ PO_Connect::
 	pop hl
 	ld a, [wMenuCursorY]
 	dec a
-	jr z, .battle
+	jmp z, .battle
 	dec a
 	jr nz, .get_user_list
 ;.trade
@@ -161,8 +161,8 @@ PO_Connect::
 	jmp c, .handle_signal
 
 	call ClearScreen
-	farcall SetTradeRoomBGPals
-	farcall LoadTradeScreenGFX
+	farcall LoadMobileTradePalettes
+	farcall LoadMobileTradeScreenGFX
 	farcall InitTradeSpeciesList
 	xor a
 	ld hl, wOtherPlayerLinkMode
@@ -170,6 +170,7 @@ PO_Connect::
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
+	ld [wMobileLightsStep], a
 	ld a, 1
 	ld [wMenuCursorY], a
 	inc a

@@ -224,7 +224,7 @@ WRAM0
 	"Tilemap and Attrmap"
 	"Misc 404"
 	"Footprint Queue"
-	"Unused"
+	"Misc 69"
 	"Misc 1326"
 	org $cff0
 	"Options"
