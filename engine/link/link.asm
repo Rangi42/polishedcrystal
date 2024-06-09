@@ -1705,8 +1705,8 @@ LinkTrade:
 	farcall PO_ServerCommand
 	ret c
 	call ClearScreen
-	farcall SetTradeRoomBGPals
-	farcall LoadTradeScreenGFX
+	farcall LoadMobileTradePalettes
+	farcall LoadMobileTradeScreenGFX
 	farcall InitTradeSpeciesList
 	xor a
 	ld hl, wOtherPlayerLinkMode
