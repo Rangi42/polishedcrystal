@@ -63,6 +63,7 @@ PO_Connect::
 	call ClearScreen
 	xor a
 	ldh [hBGMapMode], a
+	farcall SetTradeRoomBGPals
 
 	hlcoord 2, 1
 	ld de, .PolishedOnline
