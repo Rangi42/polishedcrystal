@@ -1488,7 +1488,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon 12, SNUBBULL
-	wildmon 12, RATTATA
+	wildmon 12, RATTATA, ALOLAN_FORM
 	wildmon 13, PIDGEY
 	wildmon 10, ABRA
 	wildmon 13, JIGGLYPUFF
@@ -1496,7 +1496,7 @@
 	wildmon 10, DITTO
 	; day
 	wildmon 12, SNUBBULL
-	wildmon 12, RATTATA
+	wildmon 12, RATTATA, ALOLAN_FORM
 	wildmon 13, PIDGEY
 	wildmon 10, ABRA
 	wildmon 13, JIGGLYPUFF
@@ -1504,7 +1504,7 @@
 	wildmon 10, DITTO
 	; nite
 	wildmon 12, DROWZEE
-	wildmon 12, RATTATA
+	wildmon 12, RATTATA, ALOLAN_FORM
 	wildmon 13, HOOTHOOT
 	wildmon 10, ABRA
 	wildmon 13, JIGGLYPUFF
@@ -1907,29 +1907,29 @@
 	def_grass_wildmons VIOLET_OUTSKIRTS
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon LEVEL_FROM_BADGES - 2, RATTATA, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, RATTATA
 	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
 	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
 	wildmon LEVEL_FROM_BADGES - 3, GROWLITHE
 	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
-	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
-	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 3, RATICATE
+	wildmon LEVEL_FROM_BADGES - 1, RATICATE
 	; day
-	wildmon LEVEL_FROM_BADGES - 2, RATTATA, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, RATTATA
 	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
 	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
 	wildmon LEVEL_FROM_BADGES - 3, GROWLITHE
 	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
-	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
-	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 3, RATICATE
+	wildmon LEVEL_FROM_BADGES - 1, RATICATE
 	; nite
-	wildmon LEVEL_FROM_BADGES - 2, RATTATA, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, RATTATA
 	wildmon LEVEL_FROM_BADGES - 2, HOOTHOOT
 	wildmon LEVEL_FROM_BADGES - 0, GASTLY
 	wildmon LEVEL_FROM_BADGES - 3, VULPIX
 	wildmon LEVEL_FROM_BADGES - 1, NOCTOWL
-	wildmon LEVEL_FROM_BADGES - 3, RATICATE, ALOLAN_FORM
-	wildmon LEVEL_FROM_BADGES - 1, RATICATE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 3, RATICATE
+	wildmon LEVEL_FROM_BADGES - 1, RATICATE
 	end_grass_wildmons
 
 	def_grass_wildmons CHERRYGROVE_BAY
