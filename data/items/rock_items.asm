@@ -1,0 +1,16 @@
+RockItems:
+	db 1, HELIX_FOSSIL
+	db 1, DOME_FOSSIL
+	db 1, OLD_AMBER
+	db 1, BIG_NUGGET
+	db 2, RARE_BONE
+	db 4, NUGGET
+	db 6, STAR_PIECE
+	db 12, BIG_PEARL
+	db 18, STARDUST
+	db 24, HARD_STONE
+	db 24, SOFT_SAND
+	db 48, PEARL
+	db 64, BRICK_PIECE
+	db 48, NO_ITEM
+	db -1
