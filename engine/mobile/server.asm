@@ -1,19 +1,19 @@
 ; Polished Online
 DEF PO_PORT            EQU 57409
 
-DEF PO_CMD_DISCONNECT  EQU $00
-DEF PO_CMD_STATUS      EQU $01
-DEF PO_CMD_WONDERTRADE EQU $02
-DEF PO_CMD_SETINFO     EQU $03
-DEF PO_CMD_GETINFO     EQU $04
-DEF PO_CMD_LISTUSERS   EQU $05
-DEF PO_CMD_BATTLEUSER  EQU $06
-DEF PO_CMD_TRADEUSER   EQU $07
-DEF PO_CMD_GETBATTLE   EQU $08
-DEF PO_CMD_BATTLETURN  EQU $09
-DEF PO_CMD_TRADETURN   EQU $0a
-DEF PO_CMD_SETREPLY    EQU $0b
-DEF PO_CMD_GETVERSION  EQU $0c
+DEF PO_CMD_DISCONNECT   EQU $00
+DEF PO_CMD_STATUS       EQU $01
+DEF PO_CMD_WONDERTRADE  EQU $02
+DEF PO_CMD_SETINFO      EQU $03
+DEF PO_CMD_GETINFO      EQU $04
+DEF PO_CMD_LISTUSERS    EQU $05
+DEF PO_CMD_BATTLEUSER   EQU $06
+DEF PO_CMD_TRADEUSER    EQU $07
+DEF PO_CMD_GETBATTLE    EQU $08
+DEF PO_CMD_BATTLETURN   EQU $09
+DEF PO_CMD_TRADETURN    EQU $0a
+DEF PO_CMD_SETREPLY     EQU $0b
+DEF PO_CMD_GETINFO_VER  EQU $0c
 
 DEF PO_SIGNAL_ERROR       EQU $81
 DEF PO_SIGNAL_ASKBATTLE   EQU $86
@@ -624,7 +624,7 @@ PO_ServerCommand:
 	dec a
 	jp z, .SetReply
 	dec a
-	jp z, .GetVersion
+	jp z, .GetInfoVer
 	; failsafe fallthrough
 .WonderTrade:
 .GetBattle:
@@ -800,14 +800,14 @@ PO_ServerCommand:
 	rst CopyBytes
 	pop bc
 
-	ld a, PO_CMD_GETVERSION
+	ld a, PO_CMD_GETINFO_VER
 	call PO_ServerCommand
 	ret c
 	ld [wPO_LastGetInfoVersion], a
 	ret
 
-.GetVersion:
-	; Get the target user's data version in a
+.GetInfoVer:
+	; Get the target user's info version in a
 	; Server Protocol: CMD, User -> CMD, Version
 	ld a, b
 	ld [wPO_Content], a

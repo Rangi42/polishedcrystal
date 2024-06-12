@@ -4,19 +4,19 @@
 PO_PORT            = 57409
 
 # Commands sent by the client
-PO_CMD_DISCONNECT  = 0x00 # Disconnect from server
-PO_CMD_STATUS      = 0x01 # Server status
-PO_CMD_WONDERTRADE = 0x02 # Get a series of random bytes
-PO_CMD_SETINFO     = 0x03 # Set info (player name, ID, party)
-PO_CMD_GETINFO     = 0x04 # Get info about someone else
-PO_CMD_LISTUSERS   = 0x05 # List connected users
-PO_CMD_BATTLEUSER  = 0x06 # Battle an user
-PO_CMD_TRADEUSER   = 0x07 # Trade with an user
-PO_CMD_GETBATTLE   = 0x08 # Watch someone else's battle
-PO_CMD_BATTLETURN  = 0x09 # Battle turn
-PO_CMD_TRADETURN   = 0x0A # Offer trade or check if other side did
-PO_CMD_SETREPLY    = 0x0B # View or change battle/trade request response
-PO_CMD_GETVERSION  = 0x0C # Get user data version
+PO_CMD_DISCONNECT   = 0x00 # Disconnect from server
+PO_CMD_STATUS       = 0x01 # Server status
+PO_CMD_WONDERTRADE  = 0x02 # Get a series of random bytes
+PO_CMD_SETINFO      = 0x03 # Set info (player name, ID, party)
+PO_CMD_GETINFO      = 0x04 # Get info about someone else
+PO_CMD_LISTUSERS    = 0x05 # List connected users
+PO_CMD_BATTLEUSER   = 0x06 # Battle an user
+PO_CMD_TRADEUSER    = 0x07 # Trade with an user
+PO_CMD_GETBATTLE    = 0x08 # Watch someone else's battle
+PO_CMD_BATTLETURN   = 0x09 # Battle turn
+PO_CMD_TRADETURN    = 0x0A # Offer trade or check if other side did
+PO_CMD_SETREPLY     = 0x0B # View or change battle/trade request response
+PO_CMD_GETINFO_VER  = 0x0C # Get target user's info version
 
 # Signals the client about an error, or if someone wants to battle/trade
 PO_SIGNAL_ERROR       = 0x81 # There was an error
@@ -89,7 +89,7 @@ class User:
     otid: int = 0
     connected: bool = True
     battleid: int = 0
-    dataversion: int = 0 # Used to detect changes in the data
+    infoversion: int = 0 # Used to detect changes in the info
 
     def serialize(self) -> bytearray():
         ret = bytearray()
@@ -127,7 +127,7 @@ class User:
             setbytes(self.mail, bytes, MAIL_STRUCT_LENGTH * 5, bc)
         elif bytes[1] == 3:
             setbytes(self.mail, bytes, MAIL_STRUCT_LENGTH, bc, MAIL_STRUCT_LENGTH * 5)
-        self.dataversion += 1
+        self.infoversion += 1
 
 @dataclass
 class Battle:
@@ -723,11 +723,11 @@ class ClientThread(threading.Thread):
 
                     release_users(userid)
 
-                elif data[0] == PO_CMD_GETVERSION:
+                elif data[0] == PO_CMD_GETINFO_VER:
                     print(userid, ">>> Get version")
                     requestdata(self, data, 2)
                     target = data[1]
-                    response.append(users[target].dataversion)
+                    response.append(users[target].infoversion)
 
                 else:
                     print(userid, ">>> Unknown command", bytes2hexstr(data))

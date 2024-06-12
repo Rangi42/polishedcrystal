@@ -1727,7 +1727,7 @@ LinkTrade:
 .wait_for_update
 	; We wait until the other player's version is 4 versions higher
 	; than the last time we received their info.
-	ld a, PO_CMD_GETVERSION
+	ld a, PO_CMD_GETINFO_VER
 	push bc
 	push hl
 	farcall PO_ServerCommand
