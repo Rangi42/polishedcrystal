@@ -86,7 +86,7 @@ GenericTrainerCosplayerKuroko:
 GenericTrainerCooltrainerfSera:
 	generictrainer COOLTRAINERF, SERA, EVENT_BEAT_COOLTRAINERF_SERA, .SeenText, .BeatenText
 
-	text "I've gone out as a"
+	text "I've gone out as"
 	line "a Cosplayer, but"
 
 	para "an Ace Trainer's"
