@@ -16,6 +16,7 @@ PO_CMD_GETBATTLE   = 0x08 # Watch someone else's battle
 PO_CMD_BATTLETURN  = 0x09 # Battle turn
 PO_CMD_TRADETURN   = 0x0A # Offer trade or check if other side did
 PO_CMD_SETREPLY    = 0x0B # View or change battle/trade request response
+PO_CMD_GETVERSION  = 0x0C # Get user data version
 
 # Signals the client about an error, or if someone wants to battle/trade
 PO_SIGNAL_ERROR       = 0x81 # There was an error
@@ -48,6 +49,7 @@ PARTY_LENGTH = 6
 BOXMON_STRUCT_LENGTH = 0x20
 PARTYMON_STRUCT_LENGTH = 0x30
 RNG_LENGTH = 15
+MAIL_STRUCT_LENGTH = 0x2f
 
 import socket
 import threading
@@ -80,12 +82,14 @@ class User:
     mons: bytearray(PARTYMON_STRUCT_LENGTH * PARTY_LENGTH)
     ot: bytearray(NAME_LENGTH * PARTY_LENGTH)
     nicks: bytearray(MON_NAME_LENGTH * PARTY_LENGTH)
+    mail: bytearray(MAIL_STRUCT_LENGTH * PARTY_LENGTH)
     lock: threading.RLock()
     partymons: int = 0
     gender: int = 0
     otid: int = 0
     connected: bool = True
     battleid: int = 0
+    dataversion: int = 0 # Used to detect changes in the data
 
     def serialize(self) -> bytearray():
         ret = bytearray()
@@ -97,6 +101,7 @@ class User:
         ret.extend(self.mons)
         ret.extend(self.ot)
         ret.extend(self.nicks)
+        ret.extend(self.mail)
         return ret
 
     def unserialize(self, bytes):
@@ -118,6 +123,11 @@ class User:
             setbytes(self.ot, bytes, NAME_LENGTH * PARTY_LENGTH, bc)
             bc += NAME_LENGTH * PARTY_LENGTH
             setbytes(self.nicks, bytes, MON_NAME_LENGTH * PARTY_LENGTH, bc)
+        elif bytes[1] == 2:
+            setbytes(self.mail, bytes, MAIL_STRUCT_LENGTH * 5, bc)
+        elif bytes[1] == 3:
+            setbytes(self.mail, bytes, MAIL_STRUCT_LENGTH, bc, MAIL_STRUCT_LENGTH * 5)
+        self.dataversion += 1
 
 @dataclass
 class Battle:
@@ -323,8 +333,9 @@ def adduser() -> int:
     mons = bytearray(PARTYMON_STRUCT_LENGTH * PARTY_LENGTH)
     ot = bytearray(NAME_LENGTH * PARTY_LENGTH)
     nicks = bytearray(MON_NAME_LENGTH * PARTY_LENGTH)
+    mail = bytearray(MAIL_STRUCT_LENGTH * PARTY_LENGTH)
     lock = threading.RLock()
-    users.append(User(usercount, name, mons, ot, nicks, lock))
+    users.append(User(usercount, name, mons, ot, nicks, mail, lock))
     ret = usercount
     ulock.release()
     return ret
@@ -502,6 +513,10 @@ class ClientThread(threading.Thread):
                         reqlen += PARTYMON_STRUCT_LENGTH * 2 # 2 mons
                         reqlen += NAME_LENGTH * PARTY_LENGTH # otnames
                         reqlen += NAME_LENGTH * PARTY_LENGTH # nicknames
+                    elif data[1] == 2:
+                        reqlen += (MAIL_STRUCT_LENGTH) * 5 # 5 mail messages
+                    elif data[1] == 3:
+                        reqlen += MAIL_STRUCT_LENGTH # 1 mail message
                     requestdata(self, data, reqlen)
                     users[userid].unserialize(data)
                     release_users(userid)
@@ -518,16 +533,31 @@ class ClientThread(threading.Thread):
                         ret = users[target].serialize()
 
                     if len(ret) > 0:
-                        reqlen = 0
-                        reqlen += 4 # player ID + party size + gender
-                        reqlen += NAME_LENGTH # player name
-                        reqlen += PARTYMON_STRUCT_LENGTH * 4 # 4 mons
+                        data0reqlen = 0
+                        data0reqlen += 4 # player ID + party size + gender
+                        data0reqlen += NAME_LENGTH # player name
+                        data0reqlen += PARTYMON_STRUCT_LENGTH * 4 # 4 mons
+
+                        data1reqlen = data0reqlen
+                        data1reqlen += PARTYMON_STRUCT_LENGTH * 2 # 2 mons
+                        data1reqlen += NAME_LENGTH * PARTY_LENGTH # otnames
+                        data1reqlen += NAME_LENGTH * PARTY_LENGTH # nicknames
+
+                        data2reqlen = data1reqlen
+                        data2reqlen += (MAIL_STRUCT_LENGTH) * 5 # 5 mail messages
+
+                        data3reqlen = data2reqlen
+                        data3reqlen += MAIL_STRUCT_LENGTH # 1 mail message
 
                         # Check which half to return
                         if data[2] == 0:
-                            response.extend(ret[:reqlen])
-                        else:
-                            response.extend(ret[reqlen:])
+                            response.extend(ret[:data0reqlen])
+                        elif data[2] == 1:
+                            response.extend(ret[data0reqlen:data1reqlen])
+                        elif data[2] == 2:
+                            response.extend(ret[data1reqlen:data2reqlen])
+                        elif data[2] == 3:
+                            response.extend(ret[data2reqlen:data3reqlen])
                         release_users(target)
 
                 elif data[0] == PO_CMD_LISTUSERS:
@@ -692,6 +722,12 @@ class ClientThread(threading.Thread):
                                 response.append(0)
 
                     release_users(userid)
+
+                elif data[0] == PO_CMD_GETVERSION:
+                    print(userid, ">>> Get version")
+                    requestdata(self, data, 2)
+                    target = data[1]
+                    response.append(users[target].dataversion)
 
                 else:
                     print(userid, ">>> Unknown command", bytes2hexstr(data))

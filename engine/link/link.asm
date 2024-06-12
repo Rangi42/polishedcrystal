@@ -1483,7 +1483,12 @@ LinkTrade:
 	ld bc, MAIL_STRUCT_LENGTH
 	rst AddNTimes
 	push hl
+	ldh a, [hMobile]
+	and a
 	ld hl, wLinkPlayerMail
+	jr z, .not_mobile
+	ld hl, wMobileLinkReceivedMail
+.not_mobile
 	ld a, [wCurOTTradePartyMon]
 	ld bc, MAIL_STRUCT_LENGTH
 	rst AddNTimes
@@ -1709,8 +1714,6 @@ LinkTrade:
 	ld a, PO_CMD_SETINFO
 	farcall PO_ServerCommand
 	ret c
-	ld c, 50
-	call DelayFrames
 	ld a, [wPO_BattlePlayer1ID]
 	ld b, a
 	ld a, [wPO_BattlePlayer2ID]
@@ -1720,6 +1723,21 @@ LinkTrade:
 	jr nz, .got_other_player
 	ld b, c
 .got_other_player
+	ld hl, wPO_LastGetInfoVersion
+.wait_for_update
+	; We wait until the other player's version is 4 versions higher
+	; than the last time we received their info.
+	ld a, PO_CMD_GETVERSION
+	push bc
+	push hl
+	farcall PO_ServerCommand
+	pop hl
+	pop bc
+	ret c
+	sub 4 ; versions
+	cp [hl]
+	jr nz, .wait_for_update
+
 	ld a, PO_CMD_GETINFO
 	farcall PO_ServerCommand
 	ret c

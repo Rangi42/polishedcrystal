@@ -923,6 +923,15 @@ SECTION UNION "Misc 1326", WRAM0
 ; Assumes map blockdata for Pokécenters never exceed 308 bytes (size of PCC).
 	ds 308
 
+; skip the next 131 bytes to ensure we are after wLinkMobileDataEnd
+	ds 131
+
+; mobile mail data
+wMobileLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
+wMobileLinkReceivedMailEnd:: db
+
+	ds 69 ; Giggidy
+
 wMobilePacket::
 wMobilePacketCommand:: db
 wMobilePacketSize:: db
@@ -969,6 +978,9 @@ ENDU
 wPO_UserID:: db
 wPO_RequestTimer:: db
 
+; target user data version from last GETINFO
+wPO_LastGetInfoVersion:: db
+
 ; an "is host" isn't enough, in case we're spectating
 wPO_BattlePlayer1ID:: db
 wPO_BattlePlayer2ID:: db
@@ -979,7 +991,9 @@ wPO_RNGPointer:: db
 
 ; current battle log pointer, useful for spectators
 wPO_BattleLog:: dw
+wPO_End::
 
+assert wPO_End - STARTOF("Misc 1326") == 1326
 
 
 SECTION UNION "Misc 1326", WRAM0
@@ -1085,6 +1099,7 @@ for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 wLinkPlayerDataEnd::
+assert wLinkPlayerDataEnd < wMobilePacket, "wLinkPlayerData spills into Mobile data"
 
 NEXTU
 ; link patch lists

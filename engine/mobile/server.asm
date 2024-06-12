@@ -13,6 +13,7 @@ DEF PO_CMD_GETBATTLE   EQU $08
 DEF PO_CMD_BATTLETURN  EQU $09
 DEF PO_CMD_TRADETURN   EQU $0a
 DEF PO_CMD_SETREPLY    EQU $0b
+DEF PO_CMD_GETVERSION  EQU $0c
 
 DEF PO_SIGNAL_ERROR       EQU $81
 DEF PO_SIGNAL_ASKBATTLE   EQU $86
@@ -622,6 +623,8 @@ PO_ServerCommand:
 	jp z, .TradeTurn
 	dec a
 	jp z, .SetReply
+	dec a
+	jp z, .GetVersion
 	; failsafe fallthrough
 .WonderTrade:
 .GetBattle:
@@ -691,7 +694,33 @@ PO_ServerCommand:
 	ld bc, wPartyMonNicknamesEnd - wPartyMon5
 	call CopyBytes
 	ld b, wPartyMonNicknamesEnd - wPartyMon5 + 2
-	jp PO_ExchangeData
+	call PO_ExchangeData
+
+	ld de, wPO_Content
+	ld a, 2
+	ld [de], a
+	inc de
+	ld a, BANK(sPartyMail)
+	call GetSRAMBank
+	ld hl, sPartyMail
+	ld bc, MAIL_STRUCT_LENGTH * 5
+	call CopyBytes
+	call CloseSRAM
+	ld b, (MAIL_STRUCT_LENGTH * 5) + 2
+	call PO_ExchangeData
+
+	ld de, wPO_Content
+	ld a, 3
+	ld [de], a
+	inc de
+	ld a, BANK(sPartyMail)
+	call GetSRAMBank
+	ld hl, sPartyMail + (MAIL_STRUCT_LENGTH * 5)
+	ld bc, MAIL_STRUCT_LENGTH
+	call CopyBytes
+	call CloseSRAM
+	ld b, MAIL_STRUCT_LENGTH + 2
+	jmp PO_ExchangeData
 
 .GetInfo:
 	; Requests user data for user b.
@@ -722,16 +751,70 @@ PO_ServerCommand:
 	call CopyBytes
 	pop bc
 	ld a, b
+	push bc
 	ld [wPO_Content], a
 	ld a, 1
 	ld [wPO_Content + 1], a
 	ld b, 3
 	call PO_ExchangeData
+	pop bc
 	ret c
+	push bc
 	ld hl, wPO_Content
 	ld de, wOTPartyMon5
 	ld bc, wOTPartyDataEnd - wOTPartyMon5
 	rst CopyBytes
+	pop bc
+
+	ld a, b
+	push bc
+	ld [wPO_Content], a
+	ld a, 2
+	ld [wPO_Content + 1], a
+	ld b, 3
+	call PO_ExchangeData
+	pop bc
+	ret c
+	push bc
+
+	ld hl, wPO_Content
+	ld de, wMobileLinkReceivedMail
+	ld bc, MAIL_STRUCT_LENGTH * 5
+	rst CopyBytes
+	pop bc
+
+	push bc
+	ld a, b
+	ld [wPO_Content], a
+	ld a, 3
+	ld [wPO_Content + 1], a
+	ld b, 3
+	call PO_ExchangeData
+	pop bc
+	ret c
+	push bc
+
+	ld hl, wPO_Content
+	ld de, wMobileLinkReceivedMail + (MAIL_STRUCT_LENGTH * 5)
+	ld bc, MAIL_STRUCT_LENGTH
+	rst CopyBytes
+	pop bc
+
+	ld a, PO_CMD_GETVERSION
+	call PO_ServerCommand
+	ret c
+	ld [wPO_LastGetInfoVersion], a
+	ret
+
+.GetVersion:
+	; Get the target user's data version in a
+	; Server Protocol: CMD, User -> CMD, Version
+	ld a, b
+	ld [wPO_Content], a
+	ld b, 2
+	call PO_ExchangeData
+	ret c
+	ld a, [wPO_Content]
 	ret
 
 .ListUsers:
@@ -740,6 +823,7 @@ PO_ServerCommand:
 	jp PO_ExchangeData
 
 .TradeTurn:
+	; Server Protocol: CMD, Action -> CMD, Action
 	ld a, [wPlayerLinkAction]
 	ld [wPO_Content], a
 	ld b, 2
