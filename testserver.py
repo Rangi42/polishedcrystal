@@ -724,10 +724,15 @@ class ClientThread(threading.Thread):
                     release_users(userid)
 
                 elif data[0] == PO_CMD_GETINFO_VER:
-                    print(userid, ">>> Get version")
+                    print(userid, ">>> Get info version")
                     requestdata(self, data, 2)
                     target = data[1]
-                    response.append(users[target].infoversion)
+                    if not lock_users(target):
+                        response[1] = PO_SIGNAL_ERROR
+                        response.append(PO_ERROR_UNKNUSER)
+                    else:
+                        response.append(users[target].infoversion)
+                    release_users(target)
 
                 else:
                     print(userid, ">>> Unknown command", bytes2hexstr(data))
