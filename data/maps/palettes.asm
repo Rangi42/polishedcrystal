@@ -1,4 +1,4 @@
-special_pal_for: MACRO
+MACRO special_pal_for
 if !STRCMP("\1", "map")
 	db PAL_FOR_MAP
 	map_id \2 ; map id
@@ -16,7 +16,7 @@ endc
 ENDM
 
 SpecialBGPalettes:
-special_bg_pal: MACRO
+MACRO special_bg_pal
 	special_pal_for \1, \2
 	db \3 ; type
 	dw \4 ; source
@@ -94,7 +94,7 @@ ENDM
 	db 0 ; end
 
 SpecialOBPalettes:
-special_ob_pal: MACRO
+MACRO special_ob_pal
 	special_pal_for \1, \2
 	dw \3 ; source
 if _NARG == 6

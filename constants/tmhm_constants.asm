@@ -5,12 +5,12 @@
 
 __tmhm_value__ = 1
 
-add_tmnum: MACRO
+MACRO add_tmnum
 \1_TMNUM EQU __tmhm_value__
 __tmhm_value__ += 1
 ENDM
 
-add_tm: MACRO
+MACRO add_tm
 if !DEF(TM01)
 TM01 = const_value
 endc
@@ -99,7 +99,7 @@ endc
 	add_tm SWORDS_DANCE ; $4a
 NUM_TMS = __tmhm_value__ - 1
 
-add_hm: MACRO
+MACRO add_hm
 if !DEF(HM01)
 HM01 = const_value
 endc
@@ -115,7 +115,7 @@ ENDM
 	add_hm WATERFALL    ; $50
 NUM_HMS = __tmhm_value__ - NUM_TMS - 1
 
-add_mt: MACRO
+MACRO add_mt
 if !DEF(MT01)
 MT01 = const_value
 endc

@@ -1,4 +1,4 @@
-battleanimoam: MACRO
+MACRO battleanimoam
 	db \1 ; vtile offset
 	db \2 ; data length
 	dw \3 ; data pointer

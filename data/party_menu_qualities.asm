@@ -10,7 +10,7 @@
 	const PLACE_PARTYMON_RELEARNER
 	const PLACE_PARTYMON_BATTLETOWER
 
-partymenuqualities: MACRO
+MACRO partymenuqualities
 for i, 1, _NARG + 1
 	db PLACE_PARTYMON_\<i>
 endr

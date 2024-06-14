@@ -1,7 +1,7 @@
 ; Functions are defined in home/audio.asm.
 ; Specifying GetMapMusic makes the Bicycle music not play.
 
-music_map: MACRO
+MACRO music_map
 	map_id \1
 	dw \2
 ENDM
