@@ -235,13 +235,20 @@ PO_Connect::
 
 	; TODO: this is copied from link, they should probably share a function
 	ld a, [wOTPlayerGender]
-	dec a
-	ld a, CARRIE
-	jr z, .got_ot_gender
-	ld a, CAL
-.got_ot_gender
+	ld b, CAL
+	and a ; PLAYER_MALE
+	jr z, .got_other_gender
+	assert CAL - 1 == CARRIE
+	dec b
+	dec a ; PLAYER_FEMALE
+	jr z, .got_other_gender
+	; PLAYER_ENBY
+	ld b, JACKY
+.got_other_gender
+	ld a, b
 	ld [wOtherTrainerClass], a
 	call ClearScreen
+
 	ld hl, wOptions2
 	ld a, [hl]
 	push af
@@ -273,7 +280,7 @@ PO_Connect::
 	ld a, h
 	ldh [rIF], a
 	pop af
-	ld [wOptions], a
+	ld [wOptions2], a
 	xor a
 	ldh [hBGMapMode], a
 	ld [wLinkMode], a
