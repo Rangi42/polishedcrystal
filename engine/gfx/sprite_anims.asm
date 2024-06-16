@@ -806,9 +806,7 @@ AnimSeqs_IncAnonJumptableIndex:
 	ret
 
 AnimSeq_MobileTradeSentPulse:
-	farcall MobileTradeAnim_AnimateSentPulse
-	ret
+	farjp MobileTradeAnim_AnimateSentPulse
 
 AnimSeq_MobileTradeOTPulse:
-	farcall MobileTradeAnim_AnimateOTPulse
-	ret
+	farjp MobileTradeAnim_AnimateOTPulse

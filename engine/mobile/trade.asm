@@ -18,8 +18,7 @@ LoadMobileTradeScreenGFX:
 	ld hl, MobileTradeLightsGFX
 	ld de, vTiles0
 	lb bc, BANK(MobileTradeLightsGFX), 4
-	call DecompressRequest2bpp
-	ret
+	jmp DecompressRequest2bpp
 
 DoNextStepForMobileTradeLights:
 	ld a, [wMobileLightsTimer]
@@ -40,9 +39,8 @@ DoNextStepForMobileTradeLights:
 	jr z, .init_cycle_down
 
 .done
-	ld a, [wMobileLightsTimer]
-	inc a
-	ld [wMobileLightsTimer], a
+	ld hl, wMobileLightsTimer
+	dec [hl]
 	xor a
 	ldh [hOAMUpdate], a
 	ret
@@ -53,12 +51,10 @@ DoNextStepForMobileTradeLights:
 	jr .done
 
 .cycle_down
-	ld a, [wMobileLightsStep]
-	dec a
-	ld [wMobileLightsStep], a
-	jr z, .init_cycle_up
-	jr .done
-
+	ld hl, wMobileLightsStep
+	dec [hl]
+	jr nz, .done
+; fallthrough
 .init_cycle_up
 	ld hl, wMobileLightsFlags
 	res MOBILE_LIGHTS_CYCLE_DOWN_F, [hl]
@@ -73,10 +69,9 @@ UpdateMobileTradeLights:
 	add hl, hl
 	ld bc, MobileTradeLightSteps
 	add hl, bc
-	ld b, $30
-	ld c, $08
+	lb bc, $30, $08
 .loop
-	ld a, 0
+	xor a
 	add [hl]
 	inc hl
 	push hl
@@ -86,8 +81,8 @@ UpdateMobileTradeLights:
 
 	add LOW(Unknown_10327a)
 	ld l, a
-	ld a, HIGH(Unknown_10327a)
-	adc 0
+	adc HIGH(Unknown_10327a)
+	sub l
 	ld h, a
 
 	ld a, b
@@ -616,8 +611,8 @@ MobileTradeAnim_FadeToBlack:
 	ldh a, [rBGP]
 	and a
 	jr z, .blank
-	sla a
-	sla a
+	add a
+	add a
 	call DmgToCgbBGPals
 	call DmgToCgbObjPal0
 	ld c, 4
@@ -728,9 +723,7 @@ MobileTradeAnim_GiveTrademon1:
 	jr .loop2
 
 .done
-	jmp MobileTradeAnim_GiveTrademon2
-
-
+; fallthrough
 MobileTradeAnim_GiveTrademon2:
 	ld c, 40
 	ld hl, wBGPals2 + 1 palettes
@@ -799,8 +792,7 @@ MobileTradeAnim_GetTradeMon1:
 	ld de, SFX_GLASS_TING_2
 	call PlaySFX
 	call LoadMobileOBPalettes
-	jmp MobileTradeAnim_GetTrademon2
-
+; fallthrough
 MobileTradeAnim_GetTrademon2:
 	ld c, 20
 	ld hl, wBGPals2 + 1 palettes
@@ -844,8 +836,7 @@ MobileTradeAnim_GetTrademon2:
 	call MobileTradeAnim_DeleteSprites
 	ld a, $1
 	call MobileLoadCableGFX
-	jr .wait
-
+; fallthrough
 .wait
 	ld c, 1
 	call WaitMobileTradeSpriteAnims
@@ -866,8 +857,7 @@ MobileTradeAnim_GetTrademon2:
 	jr .loop2
 
 .done
-	jmp MobileTradeAnim_GetTradeMon3
-
+; fallthrough
 MobileTradeAnim_GetTradeMon3:
 	ld c, 40
 	ld hl, wBGPals2 palette 6
@@ -935,14 +925,13 @@ MobileLoadCableGFX:
 	lb bc, BANK(MobileCable1GFX), 16 ; aka BANK(MobileCable2GFX)
 	call Get2bpp
 	call DelayFrame
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ret
 
 MobileTradeAnim_DeleteSprites:
 	farcall DeinitializeAllSprites
-	call ClearSprites
-	ret
+	jmp ClearSprites
 
 MobileTradeAnim_AnimateSentPulse:
 	ld a, [wcf64]
@@ -958,8 +947,7 @@ MobileTradeAnim_AnimateSentPulse:
 	ret
 
 .delete
-	farcall DeinitializeSprite
-	ret
+	farjp DeinitializeSprite
 
 MobileTradeAnim_AnimateOTPulse:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
@@ -1094,14 +1082,14 @@ MobileTradeAnim_ClearBGMap:
 	ldh [rVBK], a
 	hlbgcoord 0, 0
 	ld bc, 2 * BG_MAP_HEIGHT * BG_MAP_WIDTH
-	ld a, $0
+	xor a
 	call ByteFill
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	hlbgcoord 0, 0
 	ld bc, 2 * BG_MAP_HEIGHT * BG_MAP_WIDTH
 	ld a, $7f
-	call ByteFill
+	rst ByteFill
 	ret
 
 LoadMobileTradeAttrmap:
@@ -1113,7 +1101,7 @@ LoadMobileTradeAttrmap:
 	ld hl, MobileTradeAttrmapLZ
 	debgcoord 0, 0, vBGMap1
 	call Decompress
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ret
 
@@ -1123,8 +1111,7 @@ LoadMobileTradeTilemap:
 	call Decompress
 	ld hl, MobileTradeTilemapLZ
 	debgcoord 0, 0, vBGMap1
-	call Decompress
-	ret
+	jmp Decompress
 
 LoadMobileOBPalettes:
 	ldh a, [rSVBK]
@@ -1161,8 +1148,7 @@ LoadMobileOBPalettes:
 	call DmgToCgbObjPal0
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
-	call DelayFrame
-	ret
+	jmp DelayFrame
 
 LoadMobileAdapterPalette:
 	ld a, [wMobileAdapaterDevice]
@@ -1178,8 +1164,7 @@ LoadMobileAdapterPalette:
 	ld a, BANK(wBGPals1)
 	ld de, wBGPals1 + 4 palettes
 	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ret
+	jmp FarCopyColorWRAM
 
 LoadMobileTradeGFX:
 	ld a, $1
@@ -1187,12 +1172,11 @@ LoadMobileTradeGFX:
 	ld hl, MobileTradeGFX
 	ld de, vTiles2
 	call Decompress
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld hl, MobileTradeSpritesGFX
 	ld de, vTiles0 tile $20
-	call Decompress
-	ret
+	jmp Decompress
 
 MobilePrintTakeGoodCareOfMonText:
 	ld a, $90
@@ -1200,8 +1184,7 @@ MobilePrintTakeGoodCareOfMonText:
 	ld hl, .MobileTakeGoodCareOfMonText
 	call PrintText
 	ld c, 80
-	call DelayFrames
-	ret
+	jmp DelayFrames
 
 .MobileTakeGoodCareOfMonText:
 	text_far _MobileTakeGoodCareOfMonText
@@ -1217,8 +1200,7 @@ MobilePrintTradeMonForPartnerMonText:
 	ld hl, .MobileForPartnersMonText
 	call PrintText
 	ld c, 80
-	call DelayFrames
-	ret
+	jmp DelayFrames
 
 .MobilePlayerWillTradeMonText:
 	text_far _MobilePlayerWillTradeMonText

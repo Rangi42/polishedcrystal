@@ -1713,10 +1713,8 @@ LinkTrade:
 	call DelayFrames
 	ldh a, [hMobile]
 	and a
-	jr nz, .Mobile
-	jmp Gen2ToGen2LinkComms
-
-.Mobile
+	jmp z, Gen2ToGen2LinkComms
+; Mobile
 	ld a, PO_CMD_SETINFO
 	farcall PO_ServerCommand
 	ret c
