@@ -117,6 +117,7 @@ PO_Connect::
 	call VerticalMenu
 	call CloseWindow
 	pop hl
+	jr c, .get_user_list ; user pressed B
 	ld a, [wMenuCursorY]
 	dec a
 	jmp z, .battle
