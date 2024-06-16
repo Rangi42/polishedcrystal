@@ -1057,7 +1057,7 @@ Function108b98:
 .asm_108bb0
 	ld de, wBGPals1 + 7 palettes
 	ld bc, 8 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ldh [rSVBK], a
 	ret
@@ -1124,22 +1124,22 @@ LoadMobileOBPalettes:
 	ld hl, MobileTradeOB2Palettes
 	ld de, wOBPals1
 	ld bc, 8 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, MobileTradeOB2Palettes
 	ld de, wOBPals2
 	ld bc, 8 palettes
-	call CopyBytes
+	rst CopyBytes
 	jr .done_copy
 
 .copy_MobileTradeOB1Palettes
 	ld hl, MobileTradeOB1Palettes
 	ld de, wOBPals1
 	ld bc, 8 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, MobileTradeOB1Palettes
 	ld de, wOBPals2
 	ld bc, 8 palettes
-	call CopyBytes
+	rst CopyBytes
 
 .done_copy
 	pop af

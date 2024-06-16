@@ -8,7 +8,7 @@ DNSQuery::
 	ld hl, wMobilePacketContent
 	ld de, wMobileDNSResponse
 	ld bc, 4
-	call CopyBytes
+	rst CopyBytes
 	or 1
 	ret
 
@@ -24,7 +24,7 @@ ConnectToIP::
 	ld de, wMobilePacketContent
 	push bc
 	ld bc, 4
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld a, b
 	ld [wMobilePacketContent + 4], a

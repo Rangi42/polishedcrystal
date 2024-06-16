@@ -250,7 +250,7 @@ PO_Connect::
 	ld hl, wOTPlayerName
 	ld de, wOTClassName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call ReturnToMapFromSubmenu
 	ldh a, [rIE]
 	push af
@@ -669,7 +669,7 @@ PO_ServerCommand:
 	ld hl, wPlayerID
 	ld de, wPO_Content + 1
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wPartyCount]
 	ld [de], a
 	inc de
@@ -678,10 +678,10 @@ PO_ServerCommand:
 	inc de
 	ld hl, wPlayerName
 	ld c, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPartyMons
 	ld c, wPartyMon5 - wPartyMons
-	call CopyBytes
+	rst CopyBytes
 	ld b, 4 + NAME_LENGTH + wPartyMon5 - wPartyMons + 2
 	call PO_ExchangeData
 	ret c
@@ -692,7 +692,7 @@ PO_ServerCommand:
 	ld hl, wPartyMon5
 	ld de, wPO_Content + 1
 	ld bc, wPartyMonNicknamesEnd - wPartyMon5
-	call CopyBytes
+	rst CopyBytes
 	ld b, wPartyMonNicknamesEnd - wPartyMon5 + 2
 	call PO_ExchangeData
 
@@ -704,7 +704,7 @@ PO_ServerCommand:
 	call GetSRAMBank
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH * 5
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld b, (MAIL_STRUCT_LENGTH * 5) + 2
 	call PO_ExchangeData
@@ -717,7 +717,7 @@ PO_ServerCommand:
 	call GetSRAMBank
 	ld hl, sPartyMail + (MAIL_STRUCT_LENGTH * 5)
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld b, MAIL_STRUCT_LENGTH + 2
 	jmp PO_ExchangeData
@@ -738,17 +738,17 @@ PO_ServerCommand:
 	ld hl, wPO_Content
 	ld de, wOTPlayerID
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	ld a, [hli]
 	ld [wOTPartyCount], a
 	ld a, [hli]
 	ld [wOTPlayerGender], a
 	ld de, wOTPlayerName
 	ld c, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld de, wOTPartyMons
 	ld c, wOTPartyMon5 - wOTPartyMons
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld a, b
 	push bc
@@ -923,7 +923,7 @@ PO_ExchangeData:
 	ld de, wPO_Data
 	push bc
 	ld bc, 254
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld a, c
 	ld [wPO_ResponseSize], a

@@ -188,7 +188,7 @@ Mobile_ISPLogin::
 	inc de
 	ld hl, wMobileConfig + MACFG_LOGIN
 	ld bc, MOBILE_CONFIG_LOGIN_BYTES
-	call CopyBytes
+	rst CopyBytes
 
 	; Dummy password
 	ld a, 8
@@ -196,12 +196,12 @@ Mobile_ISPLogin::
 	inc de
 	ld hl, .DION_DefaultPassword
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 
 	; Primary + secondary DNS is right after each other in config
 	ld hl, wMobileConfig + MACFG_PRIMARY_DNS
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 
 	; packet length: login length + login + pw length + pw + dns
 	ld b, 1 + MOBILE_CONFIG_LOGIN_BYTES + 1 + 8 + 8
@@ -263,7 +263,7 @@ ExchangeTCPData:
 	push bc
 	ld c, b
 	ld b, 0
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	push bc
 	inc b
