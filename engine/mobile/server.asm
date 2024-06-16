@@ -38,7 +38,7 @@ PolishedOnline_Addr:
 	asciistr "fiq.se"
 
 PolishedOnline_BackupIP:
-	db 71, 19, 149, 30
+	db 127, 0, 0, 1
 
 PO_Connect::
 ; Connects to Polished Online. Returns z if we're unable to connect.

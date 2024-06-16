@@ -102,6 +102,13 @@ SpriteAnimOAMData:
 	spriteanimoam $04, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_2
 	spriteanimoam $00, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_1
 	spriteanimoam $04, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_2
+	spriteanimoam $20, .OAMData_MobileTradeCableBulge  ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_CABLE_BULGE_1
+	spriteanimoam $21, .OAMData_MobileTradeCableBulge  ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_CABLE_BULGE_2
+	spriteanimoam $2a, .OAMData_MobileTradeSentPulse   ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_SENT_PULSE
+	spriteanimoam $22, .OAMData_MobileTradePing1       ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_PING_1
+	spriteanimoam $23, .OAMData_MobileTradePing2       ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_PING_2
+	spriteanimoam $27, .OAMData_MobileTradePing3       ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_PING_3
+	spriteanimoam $2a, .OAMData_MobileTradeOTPulse     ; SPRITE_ANIM_OAMSET_MOBILE_TRADE_OT_PULSE
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -796,3 +803,54 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $2
 	dsprite  0,  0, -1,  0, $02, $2
 	dsprite  0,  0,  0,  0, $03, $2
+
+.OAMData_MobileTradeCableBulge:
+	db 1
+	dbsprite -1, -1,  4,  4, $00, 2
+
+.OAMData_MobileTradeSentPulse:
+	db 4
+	dbsprite -1, -2,  4,  0, $00, 3
+	dbsprite -1, -1,  4,  0, $01, 3
+	dbsprite -1,  0,  4,  0, $02, 3
+	dbsprite -1,  1,  4,  0, $03, 3
+
+.OAMData_MobileTradePing1:
+	db 4
+	dbsprite -1, -1,  0,  0, $00, 1
+	dbsprite  0, -1,  0,  0, $00, 1 | X_FLIP
+	dbsprite -1,  0,  0,  0, $00, 1 | Y_FLIP
+	dbsprite  0,  0,  0,  0, $00, 1 | X_FLIP | Y_FLIP
+
+.OAMData_MobileTradePing2:
+	db 8
+	dbsprite -2, -2,  4,  4, $00, 1
+	dbsprite -1, -2,  4,  4, $01, 1
+	dbsprite  0, -2,  4,  4, $00, 1 | X_FLIP
+	dbsprite -2, -1,  4,  4, $02, 1
+	dbsprite  0, -1,  4,  4, $02, 1 | X_FLIP
+	dbsprite -2,  0,  4,  4, $00, 1 | Y_FLIP
+	dbsprite -1,  0,  4,  4, $01, 1 | Y_FLIP
+	dbsprite  0,  0,  4,  4, $00, 1 | X_FLIP | Y_FLIP
+
+.OAMData_MobileTradePing3:
+	db 12
+	dbsprite -2, -2,  0,  0, $00, 1
+	dbsprite -1, -2,  0,  0, $01, 1
+	dbsprite -2, -1,  0,  0, $02, 1
+	dbsprite  0, -2,  0,  0, $01, 1 | X_FLIP
+	dbsprite  1, -2,  0,  0, $00, 1 | X_FLIP
+	dbsprite  1, -1,  0,  0, $02, 1 | X_FLIP
+	dbsprite -2,  0,  0,  0, $02, 1 | Y_FLIP
+	dbsprite -2,  1,  0,  0, $00, 1 | Y_FLIP
+	dbsprite -1,  1,  0,  0, $01, 1 | Y_FLIP
+	dbsprite  1,  0,  0,  0, $02, 1 | X_FLIP | Y_FLIP
+	dbsprite  0,  1,  0,  0, $01, 1 | X_FLIP | Y_FLIP
+	dbsprite  1,  1,  0,  0, $00, 1 | X_FLIP | Y_FLIP
+
+.OAMData_MobileTradeOTPulse:
+	db 4
+	dbsprite -1, -2,  4,  0, $03, 4 | Y_FLIP
+	dbsprite -1, -1,  4,  0, $02, 4 | Y_FLIP
+	dbsprite -1,  0,  4,  0, $01, 4 | Y_FLIP
+	dbsprite -1,  1,  4,  0, $00, 4 | Y_FLIP

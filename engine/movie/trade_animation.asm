@@ -251,8 +251,8 @@ DoTradeAnimation:
 	dw TradeAnim_TextboxScrollStart   ; 1e
 	dw TradeAnim_ScrollOutRight       ; 1f
 	dw TradeAnim_ScrollOutRight2      ; 20
-	dw TraideAnim_Wait80              ; 21
-	dw TraideAnim_Wait40              ; 22
+	dw TradeAnim_Wait80              ; 21
+	dw TradeAnim_Wait40              ; 22
 	dw TradeAnim_RockingBall          ; 23
 	dw TradeAnim_DropBall             ; 24
 	dw TradeAnim_WaitAnim             ; 25
@@ -263,9 +263,9 @@ DoTradeAnimation:
 	dw TradeAnim_GetTrademonSFX       ; 2a
 	dw TradeAnim_End                  ; 2b
 	dw TradeAnim_AnimateFrontpic      ; 2c
-	dw TraideAnim_Wait96              ; 2d
-	dw TraideAnim_Wait80IfOTEgg       ; 2e
-	dw TraideAnim_Wait180IfOTEgg      ; 2f
+	dw TradeAnim_Wait96              ; 2d
+	dw TradeAnim_Wait80IfOTEgg       ; 2e
+	dw TradeAnim_Wait180IfOTEgg      ; 2f
 
 TradeAnim_IncrementJumptableIndex:
 	ld hl, wJumptableIndex
@@ -795,28 +795,28 @@ TradeAnim_ShowFrontpic:
 	predef PlaceGraphic
 	jmp ApplyTilemapInVBlank
 
-TraideAnim_Wait80:
+TradeAnim_Wait80:
 	ld c, 80
 	call DelayFrames
 	jmp TradeAnim_AdvanceScriptPointer
 
-TraideAnim_Wait40:
+TradeAnim_Wait40:
 	ld c, 40
 	call DelayFrames
 	jmp TradeAnim_AdvanceScriptPointer
 
-TraideAnim_Wait96:
+TradeAnim_Wait96:
 	ld c, 96
 	call DelayFrames
 	jmp TradeAnim_AdvanceScriptPointer
 
-TraideAnim_Wait80IfOTEgg:
+TradeAnim_Wait80IfOTEgg:
 	call IsOTTrademonEgg
 	ret z
 	ld c, 80
 	jmp DelayFrames
 
-TraideAnim_Wait180IfOTEgg:
+TradeAnim_Wait180IfOTEgg:
 	call IsOTTrademonEgg
 	ret z
 	ld c, 180

@@ -23,6 +23,7 @@ INCLUDE "macros/scripts/battle_anims.asm"
 INCLUDE "macros/scripts/trade_anims.asm"
 INCLUDE "macros/scripts/oam_anims.asm"
 INCLUDE "macros/scripts/pic_anims.asm"
+INCLUDE "macros/scripts/mobile_trade_anims.asm"
 
 if DEF(MONOCHROME)
 INCLUDE "macros/monochrome.asm"

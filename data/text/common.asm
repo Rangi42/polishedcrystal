@@ -4673,3 +4673,29 @@ CantChangeTradedMonBallTextData::
 	line "the Ball a traded"
 	cont "#mon is in."
 	prompt
+
+SECTION "_MobileTakeGoodCareOfMonText", ROMX
+_MobileTakeGoodCareOfMonText::
+	text "Take good care of"
+	line "@"
+	text_ram wOTTrademonSpeciesName
+	text "."
+	done
+
+SECTION "_MobileForPartnersMonText", ROMX
+_MobileForPartnersMonText::
+	text "for @"
+	text_ram wOTTrademonSenderName
+	text "'s"
+	line "@"
+	text_ram wOTTrademonSpeciesName
+	text "."
+	done
+
+SECTION "_MobilePlayerWillTradeMonText", ROMX
+_MobilePlayerWillTradeMonText::
+	text_ram wPlayerTrademonSenderName
+	text " will"
+	line "trade @"
+	text_ram wPlayerTrademonSpeciesName
+	text_end

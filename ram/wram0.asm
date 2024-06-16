@@ -888,6 +888,9 @@ wMobileLightsStep:: db
 wMobileLightsFlags:: db
 wMobileLightsTimer:: db
 
+wcf65:: db
+wc74e:: db
+wcf64:: db
 
 SECTION UNION "Misc 1326", WRAM0
 ; overworld map

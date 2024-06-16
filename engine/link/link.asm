@@ -1626,6 +1626,12 @@ LinkTrade:
 	call LoadFontsBattleExtra
 	ld a, CGB_PLAIN
 	call GetCGBLayout
+	ldh a, [hMobile]
+	and a
+	jr z, .not_mobile_2
+	farcall MobileTradeAnimation
+	jr .done_animation
+.not_mobile_2
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_2

@@ -7,40 +7,42 @@ DoAnimFrame:
 .Jumptable:
 ; entries correspond to SPRITE_ANIM_SEQ_* constants (see constants/sprite_anim_constants.asm)
 	table_width 2, DoAnimFrame.Jumptable
-	dw DoNothing                  ; SPRITE_ANIM_SEQ_NULL
-	dw AnimSeq_PartyMon           ; SPRITE_ANIM_SEQ_PARTY_MON
-	dw AnimSeq_PartyMonSwitch     ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
-	dw AnimSeq_PartyMonSelected   ; SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
-	dw AnimSeq_NamingScreenCursor ; SPRITE_ANIM_SEQ_NAMING_SCREEN_CURSOR
-	dw AnimSeq_MailCursor         ; SPRITE_ANIM_SEQ_COMPOSE_MAIL_CURSOR
-	dw AnimSeq_GameFreakLogo      ; SPRITE_ANIM_SEQ_GAMEFREAK_LOGO
-	dw AnimSeq_SlotsGolem         ; SPRITE_ANIM_SEQ_SLOTS_GOLEM
-	dw AnimSeq_SlotsChansey       ; SPRITE_ANIM_SEQ_SLOTS_CHANSEY
-	dw AnimSeq_SlotsChanseyEgg    ; SPRITE_ANIM_SEQ_SLOTS_EGG
-	;dw AnimSeq_MemoryGameCursor   ; SPRITE_ANIM_SEQ_MEMORY_GAME_CURSOR
-	dw AnimSeq_PokegearArrow      ; SPRITE_ANIM_SEQ_POKEGEAR_MODE_ARROW
-	dw AnimSeq_TradePokeBall      ; SPRITE_ANIM_SEQ_TRADE_POKE_BALL
-	dw AnimSeq_TradeTubeBulge     ; SPRITE_ANIM_SEQ_TRADE_TUBE_BULGE
-	dw AnimSeq_TrademonInTube     ; SPRITE_ANIM_SEQ_TRADEMON_IN_TUBE
-	dw AnimSeq_RevealNewMon       ; SPRITE_ANIM_SEQ_REVEAL_NEW_MON
-	dw AnimSeq_RadioTuningKnob    ; SPRITE_ANIM_SEQ_RADIO_TUNING_KNOB
-	dw AnimSeq_CutLeaves          ; SPRITE_ANIM_SEQ_CUT_GRASS_LEAVES
-	dw AnimSeq_FlyFrom            ; SPRITE_ANIM_SEQ_FLY_FROM
-	dw AnimSeq_FlyLeaf            ; SPRITE_ANIM_SEQ_FLY_LEAF
-	dw AnimSeq_FlyTo              ; SPRITE_ANIM_SEQ_FLY_TO
-	dw AnimSeq_IntroSuicune       ; SPRITE_ANIM_SEQ_INTRO_SUICUNE
-	dw AnimSeq_IntroPichuWooper   ; SPRITE_ANIM_SEQ_PICHU_WOOPER
-	dw AnimSeq_IntroUnown         ; SPRITE_ANIM_SEQ_UNOWN
-	dw AnimSeq_IntroUnownF        ; SPRITE_ANIM_SEQ_UNOWN_F
-	dw AnimSeq_IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
-	dw AnimSeq_Celebi             ; SPRITE_ANIM_SEQ_CELEBI
-	dw AnimSeq_MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
-	dw AnimSeq_PcCursor           ; SPRITE_ANIM_SEQ_PC_CURSOR
-	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
-	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
-	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
-	dw AnimSeq_DexCursor          ; SPRITE_ANIM_SEQ_DEX_CURSOR
-	dw AnimSeq_TownMapFly         ; SPRITE_ANIM_SEQ_TOWN_MAP_FLY
+	dw DoNothing                    ; SPRITE_ANIM_SEQ_NULL
+	dw AnimSeq_PartyMon             ; SPRITE_ANIM_SEQ_PARTY_MON
+	dw AnimSeq_PartyMonSwitch       ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	dw AnimSeq_PartyMonSelected     ; SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
+	dw AnimSeq_NamingScreenCursor   ; SPRITE_ANIM_SEQ_NAMING_SCREEN_CURSOR
+	dw AnimSeq_MailCursor           ; SPRITE_ANIM_SEQ_COMPOSE_MAIL_CURSOR
+	dw AnimSeq_GameFreakLogo        ; SPRITE_ANIM_SEQ_GAMEFREAK_LOGO
+	dw AnimSeq_SlotsGolem           ; SPRITE_ANIM_SEQ_SLOTS_GOLEM
+	dw AnimSeq_SlotsChansey         ; SPRITE_ANIM_SEQ_SLOTS_CHANSEY
+	dw AnimSeq_SlotsChanseyEgg      ; SPRITE_ANIM_SEQ_SLOTS_EGG
+	;dw AnimSeq_MemoryGameCursor     ; SPRITE_ANIM_SEQ_MEMORY_GAME_CURSOR
+	dw AnimSeq_PokegearArrow        ; SPRITE_ANIM_SEQ_POKEGEAR_MODE_ARROW
+	dw AnimSeq_TradePokeBall        ; SPRITE_ANIM_SEQ_TRADE_POKE_BALL
+	dw AnimSeq_TradeTubeBulge       ; SPRITE_ANIM_SEQ_TRADE_TUBE_BULGE
+	dw AnimSeq_TrademonInTube       ; SPRITE_ANIM_SEQ_TRADEMON_IN_TUBE
+	dw AnimSeq_RevealNewMon         ; SPRITE_ANIM_SEQ_REVEAL_NEW_MON
+	dw AnimSeq_RadioTuningKnob      ; SPRITE_ANIM_SEQ_RADIO_TUNING_KNOB
+	dw AnimSeq_CutLeaves            ; SPRITE_ANIM_SEQ_CUT_GRASS_LEAVES
+	dw AnimSeq_FlyFrom              ; SPRITE_ANIM_SEQ_FLY_FROM
+	dw AnimSeq_FlyLeaf              ; SPRITE_ANIM_SEQ_FLY_LEAF
+	dw AnimSeq_FlyTo                ; SPRITE_ANIM_SEQ_FLY_TO
+	dw AnimSeq_IntroSuicune         ; SPRITE_ANIM_SEQ_INTRO_SUICUNE
+	dw AnimSeq_IntroPichuWooper     ; SPRITE_ANIM_SEQ_PICHU_WOOPER
+	dw AnimSeq_IntroUnown           ; SPRITE_ANIM_SEQ_UNOWN
+	dw AnimSeq_IntroUnownF          ; SPRITE_ANIM_SEQ_UNOWN_F
+	dw AnimSeq_IntroSuicuneAway     ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
+	dw AnimSeq_Celebi               ; SPRITE_ANIM_SEQ_CELEBI
+	dw AnimSeq_MaxStatSparkle       ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
+	dw AnimSeq_PcCursor             ; SPRITE_ANIM_SEQ_PC_CURSOR
+	dw AnimSeq_PcQuick              ; SPRITE_ANIM_SEQ_PC_QUICK
+	dw AnimSeq_PcMode               ; SPRITE_ANIM_SEQ_PC_MODE
+	dw AnimSeq_PcPack               ; SPRITE_ANIM_SEQ_PC_PACK
+	dw AnimSeq_DexCursor            ; SPRITE_ANIM_SEQ_DEX_CURSOR
+	dw AnimSeq_TownMapFly           ; SPRITE_ANIM_SEQ_TOWN_MAP_FLY
+	dw AnimSeq_MobileTradeSentPulse ; SPRITE_ANIM_SEQ_MOBILE_TRADE_SENT_PULSE
+	dw AnimSeq_MobileTradeOTPulse   ; SPRITE_ANIM_SEQ_MOBILE_TRADE_OT_PULSE
 	assert_table_length NUM_SPRITE_ANIM_SEQS
 
 AnimSeq_PartyMon:
@@ -801,4 +803,12 @@ AnimSeqs_IncAnonJumptableIndex:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
+	ret
+
+AnimSeq_MobileTradeSentPulse:
+	farcall MobileTradeAnim_AnimateSentPulse
+	ret
+
+AnimSeq_MobileTradeOTPulse:
+	farcall MobileTradeAnim_AnimateOTPulse
 	ret
