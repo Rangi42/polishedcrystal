@@ -889,7 +889,7 @@ wMobileLightsFlags:: db
 wMobileLightsTimer:: db
 
 wcf65:: db
-wc74e:: db
+wMobileAdapaterDevice:: db
 wcf64:: db
 
 SECTION UNION "Misc 1326", WRAM0

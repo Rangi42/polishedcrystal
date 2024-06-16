@@ -593,7 +593,7 @@ MobileTradeAnim_ShowPlayerMonToBeSent:
 .skip_cry
 	ld c, 80
 	call DelayFrames
-	call Function108bec
+	call MobilePrintTradeMonForPartnerMonText
 	ld hl, MobileTradeBallPoofCableGFX
 	ld de, vTiles0 tile 0
 	lb bc, BANK(MobileTradeBallPoofCableGFX), 20
@@ -711,7 +711,7 @@ MobileTradeAnim_GiveTrademon1:
 	ld a, SPRITE_ANIM_INDEX_MOBILE_TRADE_CABLE_BULGE
 	call InitSpriteAnimStruct
 	xor a
-	call Function108ad4
+	call MobileLoadCableGFX
 	jr .next2
 
 .delete
@@ -721,7 +721,7 @@ MobileTradeAnim_GiveTrademon1:
 .replace
 	call MobileTradeAnim_DeleteSprites
 	ld a, $1
-	call Function108ad4
+	call MobileLoadCableGFX
 .next2
 	ld c, 1
 	call WaitMobileTradeSpriteAnims
@@ -811,61 +811,61 @@ MobileTradeAnim_GetTrademon2:
 	ld hl, wBGPals2 + 1 palettes
 	call Function1082fa
 	call LoadMobileOBPalettes
-.asm_1088ad
+.loop
 	ldh a, [hSCY]
 	cp $78
-	jr z, .asm_1088ee
+	jr z, .loop2
 	inc a
 	inc a
 	ldh [hSCY], a
 	cp $30
-	jr z, .asm_1088c5
+	jr z, .init_cable_bulge
 	cp $40
-	jr z, .asm_1088dd
+	jr z, .delete
 	cp $68
-	jr z, .asm_1088cf
-	jr .asm_1088e7
+	jr z, .init_cable_bulge_load_cable_gfx
+	jr .wait
 
-.asm_1088c5
+.init_cable_bulge
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_MOBILE_TRADE_CABLE_BULGE
 	call InitSpriteAnimStruct
-	jr .asm_1088e7
+	jr .wait
 
-.asm_1088cf
+.init_cable_bulge_load_cable_gfx
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_MOBILE_TRADE_CABLE_BULGE
 	call InitSpriteAnimStruct
 	xor a
-	call Function108ad4
-	jr .asm_1088e7
+	call MobileLoadCableGFX
+	jr .wait
 
-.asm_1088dd
+.delete
 	call MobileTradeAnim_DeleteSprites
 	ld a, $1
-	call Function108ad4
-	jr .asm_1088e7
+	call MobileLoadCableGFX
+	jr .wait
 
-.asm_1088e7
+.wait
 	ld c, 1
 	call WaitMobileTradeSpriteAnims
-	jr .asm_1088ad
+	jr .loop
 
-.asm_1088ee
+.loop2
 	ldh a, [hSCX]
 	cp $c
-	jr z, .asm_108906
+	jr z, .done
 	inc a
 	inc a
 	ldh [hSCX], a
 	cp -8
-	jr nz, .asm_1088e7
+	jr nz, .wait
 	call MobileTradeAnim_DeleteSprites
 	ld c, 1
 	call WaitMobileTradeSpriteAnims
-	jr .asm_1088ee
+	jr .loop2
 
-.asm_108906
+.done
 	jmp MobileTradeAnim_GetTradeMon3
 
 MobileTradeAnim_GetTradeMon3:
@@ -874,19 +874,6 @@ MobileTradeAnim_GetTradeMon3:
 	call Function1082f0
 	call LoadMobileOBPalettes
 	jmp MobileTradeAnim_AdvanceScriptPointer
-
-Function1082fa:
-.loop
-	call Function108b78
-	push hl
-	push bc
-	farcall PlaySpriteAnimations
-	pop bc
-	pop hl
-	call DelayFrame
-	dec c
-	jr nz, .loop
-	ret
 
 MobileTradeAnim_ShowOTMonFromTrade:
 	call ClearBGPalettes
@@ -930,18 +917,18 @@ MobileTradeAnim_ShowOTMonFromTrade:
 	ldh [hWY], a
 	ld a, [wOTTrademonSpecies]
 	farcall AnimateTrademonFrontpic
-	call Function108c16
+	call MobilePrintTakeGoodCareOfMonText
 	jmp MobileTradeAnim_AdvanceScriptPointer
 
-Function108ad4:
+MobileLoadCableGFX:
 	and a
-	jr z, .asm_108adc
+	jr z, .cable1
 	ld de, MobileCable2GFX
-	jr .asm_108adf
+	jr .got_cable
 
-.asm_108adc
+.cable1
 	ld de, MobileCable1GFX
-.asm_108adf
+.got_cable
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, vTiles2 tile $4a
@@ -994,14 +981,6 @@ WaitMobileTradeSpriteAnims:
 	jr nz, .loop
 	ret
 
-Function1082f0:
-.loop
-	call Function108b78
-	call DelayFrame
-	dec c
-	jr nz, .loop
-	ret
-
 Function108b5a:
 	ldh a, [rSVBK]
 	push af
@@ -1021,6 +1000,27 @@ Function108b5a:
 	ldh [rSVBK], a
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
+	ret
+
+Function1082fa:
+.loop
+	call Function108b78
+	push hl
+	push bc
+	farcall PlaySpriteAnimations
+	pop bc
+	pop hl
+	call DelayFrame
+	dec c
+	jr nz, .loop
+	ret
+
+Function1082f0:
+.loop
+	call Function108b78
+	call DelayFrame
+	dec c
+	jr nz, .loop
 	ret
 
 Function108b78:
@@ -1165,13 +1165,13 @@ LoadMobileOBPalettes:
 	ret
 
 LoadMobileAdapterPalette:
-	ld a, [wc74e]
+	ld a, [wMobileAdapaterDevice]
 	and $7f
 	cp $8 ; CONST: Amount of mobile adapters
-	jr c, .asm_108d12
+	jr c, .got_adapter
 	ld a, $7
 
-.asm_108d12
+.got_adapter
 	ld bc, 1 palettes
 	ld hl, MobileAdapterPalettes
 	call AddNTimes
@@ -1194,7 +1194,7 @@ LoadMobileTradeGFX:
 	call Decompress
 	ret
 
-Function108c16:
+MobilePrintTakeGoodCareOfMonText:
 	ld a, $90
 	ldh [hWY], a
 	ld hl, .MobileTakeGoodCareOfMonText
@@ -1207,7 +1207,7 @@ Function108c16:
 	text_far _MobileTakeGoodCareOfMonText
 	text_end
 
-Function108bec:
+MobilePrintTradeMonForPartnerMonText:
 	ld a, $90
 	ldh [hWY], a
 	ld hl, .MobilePlayerWillTradeMonText
@@ -1259,45 +1259,22 @@ GetPlayerTrademonFrontpic:
 	ld de, vTiles2
 	predef_jump FrontpicPredef
 
+MobileTradeSpritesGFX: INCBIN "gfx/mobile/mobile_trade_sprites.2bpp.lz"
+MobileTradeGFX: INCBIN "gfx/mobile/mobile_trade.2bpp.lz"
+MobileCable1GFX: INCBIN "gfx/mobile/mobile_cable_1.2bpp"
+MobileCable2GFX: INCBIN "gfx/mobile/mobile_cable_2.2bpp"
+MobileTradeScreenGFX:: INCBIN "gfx/mobile/mobile_trade_screen.2bpp.lz"
+MobileTradeLightsGFX:: INCBIN "gfx/mobile/mobile_trade_lights.2bpp.lz"
 MobileTradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lz"
 MobileTradeGameBoyLZ: INCBIN "gfx/trade/game_boy_cable.2bpp.lz"
 
+MobileTradeTilemapLZ: INCBIN "gfx/mobile/mobile_trade.tilemap.lz"
 
-MobileTradeSpritesGFX:
-INCBIN "gfx/mobile/mobile_trade_sprites.2bpp.lz"
+MobileTradeAttrmapLZ: INCBIN "gfx/mobile/mobile_trade.attrmap.lz"
 
-MobileTradeGFX:
-INCBIN "gfx/mobile/mobile_trade.2bpp.lz"
-
-
-MobileTradeOB1Palettes:
-INCLUDE "gfx/mobile/mobile_trade_ob1.pal"
-
-MobileTradeOB2Palettes:
-INCLUDE "gfx/mobile/mobile_trade_ob2.pal"
-
-MobileTradeTilemapLZ:
-INCBIN "gfx/mobile/mobile_trade.tilemap.lz"
-
-MobileTradeAttrmapLZ:
-INCBIN "gfx/mobile/mobile_trade.attrmap.lz"
-
-MobileAdapterPalettes:
-INCLUDE "gfx/mobile/mobile_adapters.pal"
-
-MobileTradeBGPalettes:
-INCLUDE "gfx/mobile/mobile_trade_bg.pal"
-
-MobileCable1GFX:
-INCBIN "gfx/mobile/mobile_cable_1.2bpp"
-
-MobileCable2GFX:
-INCBIN "gfx/mobile/mobile_cable_2.2bpp"
-
-MobileTradeScreenGFX:: INCBIN "gfx/mobile/mobile_trade_screen.2bpp.lz"
-
-MobileTradeLightsGFX:: INCBIN "gfx/mobile/mobile_trade_lights.2bpp.lz"
-
-MobileTradeBorderPalettes:: INCLUDE "gfx/mobile/mobile_border.pal"
-
+MobileTradeOB1Palettes: INCLUDE "gfx/mobile/mobile_trade_ob1.pal"
+MobileTradeOB2Palettes: INCLUDE "gfx/mobile/mobile_trade_ob2.pal"
+MobileAdapterPalettes: INCLUDE "gfx/mobile/mobile_adapters.pal"
+MobileTradeBGPalettes: INCLUDE "gfx/mobile/mobile_trade_bg.pal"
 MobileTradeLightsPalettes:: INCLUDE "gfx/mobile/mobile_trade_lights.pal"
+MobileTradeBorderPalettes:: INCLUDE "gfx/mobile/mobile_border.pal"
