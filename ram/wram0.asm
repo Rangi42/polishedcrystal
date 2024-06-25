@@ -201,6 +201,7 @@ wCurrentWeather:: db
 
 wPlayerCurrentOAMSlot:: db
 
+
 SECTION "Sprite Animations", WRAM0
 
 ; wSpriteAnimDict is a 10x2 dictionary.
@@ -1331,6 +1332,7 @@ wOverworldWeatherCooldown:: db
 wSpriteOverlapCount:: db
 wWeatherFlags:: db
 wPrevWeather:: db
+
 
 SECTION "Options", WRAM0
 

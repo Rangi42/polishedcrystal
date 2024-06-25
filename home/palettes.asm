@@ -5,15 +5,13 @@ UpdateCGBPalsLYTimed:
 	ldh a, [rLY]
 	cp 150
 	ret nc
-
-; fallthrough
+	; fallthrough
 UpdateCGBPals::
 ; any pals to update?
 	ldh a, [hCGBPalUpdate]
 	and a
 	ret z
-
-; fallthrough
+	; fallthrough
 ForceUpdateCGBPals::
 ; update bgp data from wBGPals2
 ; update obp data from wOBPals2

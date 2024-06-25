@@ -73,7 +73,6 @@ OpenText::
 
 	ret
 
-
 ClearSpritesUnderTextbox::
 	ld de, wShadowOAM
 	ld h, d

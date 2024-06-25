@@ -1508,7 +1508,7 @@ wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
 wPokeDB2UsedEntriesEnd::
 
 
-SECTION "OAM Backup", WRAMX
+SECTION "Sprites Backup", WRAMX
 
 wShadowOAMBackup::
 ; wShadowOAMSpriteBackup00 - wShadowOAMSpriteBackup39

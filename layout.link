@@ -244,7 +244,7 @@ WRAMX $2
 	align 8
 	"Sound Stack"
 	"Pic Animations RAM"
-	"OAM Backup"
+	"Sprites Backup"
 
 WRAMX $3
 	org $d000
