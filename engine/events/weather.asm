@@ -23,9 +23,27 @@ SetCurrentWeather::
 	ld a, [wWeatherFlags]
 	bit OW_WEATHER_DO_FLY_F, a
 	jr nz, .skip_cooldown
+	; if there was weather running then no cooldown
 	ld a, [wCurWeather]
 	and a
 	jr z, .skip_cooldown
+	; No cooldown if switching from rain to thunderstorm or vice versa
+	ld c, a
+	cp OW_WEATHER_RAIN
+	jr nz, .not_rain
+	ld a, b
+	cp OW_WEATHER_THUNDERSTORM
+	jr z, .skip_cooldown
+.not_rain
+	ld a, c
+	cp OW_WEATHER_THUNDERSTORM
+	jr nz, .compare_cur_and_prev_weather
+	ld a, b
+	cp OW_WEATHER_RAIN
+	jr z, .skip_cooldown
+	ld a, c
+.compare_cur_and_prev_weather
+	; if weather is different from previous weather then do cooldown
 	cp b
 	jr nz, .do_cooldown
 .skip_cooldown
