@@ -35,7 +35,7 @@ DoOverworldWeather:
 	ldh a, [hUsedOAMIndex]
 	; a = (SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS) - a
 	cpl
-	add SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS + 1
+	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
 	ld hl, hUsedWeatherSpriteIndex
 	cp [hl]
 	jr nc, .ok
@@ -413,7 +413,7 @@ ScanForEmptyOAM:
 	ldh a, [hUsedOAMIndex]
 	; a = (SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS) - a
 	cpl
-	add SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS + 1
+	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
 	; a = a / 4
 	rrca
 	rrca

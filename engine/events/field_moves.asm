@@ -49,9 +49,9 @@ ShakeHeadbuttTree:
 	dec [hl]
 
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (SPRITEOAMSTRUCT_LENGTH * 4)
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
@@ -127,9 +127,9 @@ OWCutAnimation:
 	ret nz
 
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (SPRITEOAMSTRUCT_LENGTH * 4)
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
@@ -319,9 +319,9 @@ FlyFromAnim:
 	ld a, (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 13) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (13 * SPRITEOAMSTRUCT_LENGTH)
+	add (NUM_SPRITE_OAM_STRUCTS - 13) * SPRITEOAMSTRUCT_LENGTH + 1
 .got_oam_addr
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
@@ -370,9 +370,9 @@ FlyToAnim:
 	ld a, (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - (13 * SPRITEOAMSTRUCT_LENGTH)
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 13) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (13 * SPRITEOAMSTRUCT_LENGTH)
+	add (NUM_SPRITE_OAM_STRUCTS - 13) * SPRITEOAMSTRUCT_LENGTH + 1
 .got_oam_addr
 
 	ld [wCurSpriteOAMAddr], a
