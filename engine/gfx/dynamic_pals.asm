@@ -6,8 +6,8 @@ ClearSavedObjPals::
 
 	xor a
 	ld [wUsedObjectPals], a
-	ld hl, wUsedObjectPals
-	ld bc, wNeededPalIndex - wUsedObjectPals
+	ld hl, wLoadedObjPal0
+	ld bc, wNeededPalIndex - wLoadedObjPal0
 	ld a, NO_PAL_LOADED
 	rst ByteFill
 
