@@ -79,8 +79,9 @@ ClearSpritesUnderTextbox::
 	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
+	; check if YCoord ≥ (TEXTBOX_Y + 1) * TILE_WIDTH
 	ld a, [hl]
-	cp $6c
+	cp (TEXTBOX_Y + 1) * TILE_WIDTH
 	jr nc, .clear_sprite
 .next
 	ld hl, SPRITEOAMSTRUCT_LENGTH

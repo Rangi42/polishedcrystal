@@ -280,8 +280,6 @@ LoadMapNameSignGFX:
 	rst AddNTimes ; preserves bc
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	call FarCopyColorWRAM
-
-	; copy sign palette for PAL_BG_TEXT
 	ld hl, wBGPals1 palette PAL_BG_TEXT
 	ld de, wBGPals2 palette PAL_BG_TEXT
 	ld bc, 1 palettes

@@ -197,8 +197,6 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
-wCurrentWeather:: db
-
 wPlayerCurrentOAMSlot:: db
 
 
@@ -1332,6 +1330,7 @@ wOverworldWeatherCooldown:: db
 wSpriteOverlapCount:: db
 wWeatherFlags:: db
 wPrevWeather:: db
+wCurWeather:: db
 
 
 SECTION "Options", WRAM0

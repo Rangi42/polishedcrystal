@@ -48,7 +48,7 @@ DoOverworldWeather:
 	and a
 	jr nz, .on_cooldown
 
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	ld hl, .DoWeather_Jumptable
 	call JumpTable
 .done
@@ -105,11 +105,11 @@ SpawnRandomWeatherFullScreen::
 SpawnRandomWeatherCoords::
 ; This is used to randomize the weather's starting positions on the screen from
 ; randomize weather sprite x/y coords from (0,0) to (b,c)
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	assert OW_WEATHER_RAIN == 1
 	dec a
 	jr z, .rain
@@ -315,7 +315,7 @@ DoOverworldRain:
 	jr z, .continue
 	farcall LoadWeatherPal
 .continue
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	cp OW_WEATHER_THUNDERSTORM
 	jr nz, .no_lightning
 
@@ -915,7 +915,7 @@ Lightning:
 	farjp OWFadePalettesInit
 
 LoadWeatherGraphics:
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z

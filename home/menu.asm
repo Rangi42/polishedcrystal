@@ -317,11 +317,13 @@ ClearSpritesUnderYesNoBox:
 	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
+	; Check if YCoord >= 8 * TILE_WIDTH + 1
 	ld a, [hli]
-	cp 65
+	cp 8 * TILE_WIDTH + 1
 	jr c, .next
+	; Check if XCoord >= 14 * TILE_WIDTH + 1
 	ld a, [hl]
-	cp 113
+	cp 14 * TILE_WIDTH + 1
 	jr nc, .clear_sprite
 ; fallthrough
 .next

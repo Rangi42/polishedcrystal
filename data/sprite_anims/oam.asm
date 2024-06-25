@@ -166,17 +166,17 @@ SpriteAnimOAMData:
 
 .OAMData_FlyMon:
 	db 4
-	dsprite -1,  0, -1,  0, $00, -1
-	dsprite -1,  0,  0,  0, $01, -1
-	dsprite  0,  0, -1,  0, $02, -1
-	dsprite  0,  0,  0,  0, $03, -1
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_FlyMon2:
 	db 4
-	dsprite -1,  0, -1,  0, $00, -2
-	dsprite -1,  0,  0,  0, $01, -2
-	dsprite  0,  0, -1,  0, $02, -2
-	dsprite  0,  0,  0,  0, $03, -2
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY_XFLIP
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY_XFLIP
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY_XFLIP
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY_XFLIP
 
 .OAMData_TradeMonIcon:
 	db 4
@@ -187,10 +187,10 @@ SpriteAnimOAMData:
 
 .OAMData_PartyMon:
 	db 4
-	dsprite -1,  0, -1,  0, $00, -1
-	dsprite -1,  0,  0,  0, $01, -1
-	dsprite  0,  0, -1,  0, $02, -1
-	dsprite  0,  0,  0,  0, $03, -1
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_MagnetTrain:
 	db 4
@@ -201,31 +201,31 @@ SpriteAnimOAMData:
 
 .OAMData_PartyMonWithMail1:
 	db 4
-	dsprite -1,  0, -1,  0, $00, -1
-	dsprite -1,  0,  0,  0, $01, -1
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0, -1,  0, $08, $0
-	dsprite  0,  0,  0,  0, $03, -1
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithMail2:
 	db 4
-	dsprite -1,  0, -1,  0, $04, -1
-	dsprite -1,  0,  0,  0, $05, -1
+	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0, -1,  0, $08, $0
-	dsprite  0,  0,  0,  0, $07, -1
+	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithItem1:
 	db 4
-	dsprite -1,  0, -1,  0, $00, -1
-	dsprite -1,  0,  0,  0, $01, -1
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0, -1,  0, $09, $0
-	dsprite  0,  0,  0,  0, $03, -1
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithItem2:
 	db 4
-	dsprite -1,  0, -1,  0, $04, -1
-	dsprite -1,  0,  0,  0, $05, -1
+	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0, -1,  0, $09, $0
-	dsprite  0,  0,  0,  0, $07, -1
+	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_Leaf:
 	db 1

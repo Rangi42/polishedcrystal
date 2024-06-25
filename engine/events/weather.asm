@@ -23,14 +23,14 @@ SetCurrentWeather::
 	ld a, [wWeatherFlags]
 	bit OW_WEATHER_DO_FLY_F, a
 	jr nz, .skip_cooldown
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	and a
 	jr z, .skip_cooldown
 	cp b
 	jr nz, .do_cooldown
 .skip_cooldown
 	ld a, b
-	ld [wCurrentWeather], a
+	ld [wCurWeather], a
 	farcall LoadWeatherPal
 	call LoadWeatherGraphics
 	xor a
@@ -40,7 +40,7 @@ SetCurrentWeather::
 .do_cooldown
 	ld [wPrevWeather], a
 	ld a, b
-	ld [wCurrentWeather], a
+	ld [wCurWeather], a
 	ld a, 32
 	ld [wOverworldWeatherCooldown], a
 	ret
@@ -150,11 +150,11 @@ SetCurrentWeather::
 ;	ld a, OW_WEATHER_NONE
 ;.set_weather
 ;	ld b, a
-;	ld a, [wCurrentWeather]
+;	ld a, [wCurWeather]
 ;	cp OW_WEATHER_NONE
 ;	jr nz, .do_cooldown
 ;	ld a, b
-;	ld [wCurrentWeather], a
+;	ld [wCurWeather], a
 ;	farcall LoadWeatherGraphics
 ;	xor a
 ;	ld [wOverworldWeatherCooldown], a
@@ -163,7 +163,7 @@ SetCurrentWeather::
 ;.do_cooldown
 ;	ld [wPrevWeather], a
 ;	ld a, b
-;	ld [wCurrentWeather], a
+;	ld [wCurWeather], a
 ;	ld a, 32
 ;	ld [wOverworldWeatherCooldown], a
 ;	ret

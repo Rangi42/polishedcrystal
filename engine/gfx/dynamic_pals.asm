@@ -8,7 +8,7 @@ ClearSavedObjPals::
 	ld [wUsedObjectPals], a
 	ld hl, wUsedObjectPals
 	ld bc, wNeededPalIndex - wUsedObjectPals
-	ld a, -1
+	ld a, NO_PAL_LOADED
 	rst ByteFill
 
 	pop af

@@ -46,17 +46,17 @@ ClearSpritesUnderPokePic:
 	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
-	; Check if 41 ≤ YCoord < 120
+	; Check if (5 * TILE_WIDTH + 1) ≤ YCoord < (15 * TILE_WIDTH)
 	ld a, [hli]
-	cp 41
+	cp 5 * TILE_WIDTH + 1
 	jr c, .next
-	cp 120
+	cp 15 * TILE_WIDTH
 	jr nc, .next
-	; Check if 49 ≤ XCoord < 128
+	; Check if (6 * TILE_WIDTH + 1) ≤ XCoord < (16 * TILE_WIDTH)
 	ld a, [hl]
-	cp 49
+	cp 6 * TILE_WIDTH + 1
 	jr c, .next
-	cp 128
+	cp 16 * TILE_WIDTH
 	jr c, .clear_sprite
 ; fallthrough
 .next

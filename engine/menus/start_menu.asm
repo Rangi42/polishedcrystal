@@ -445,9 +445,10 @@ ClearSpritesUnderStartMenu:
 	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
-	; Check if XCoord >= 81
+	; Check if XCoord >= 10 * TILE_WIDTH,
+	; which is the starting x-coord of the start menu.
 	ld a, [hl]
-	cp 81
+	cp 10 * TILE_WIDTH
 	jr nc, .clear_sprite
 ; fallthrough
 .next

@@ -78,3 +78,5 @@ DEF FIRST_COPY_BG_PAL EQU const_value
 	ow_npc_pal_const COPY_BG_TEXT      ; 2b
 DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value
+
+DEF NO_PAL_LOADED EQU -1

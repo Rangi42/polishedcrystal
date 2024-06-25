@@ -2,7 +2,7 @@ LoadWeatherPalNoApply:
 	ld hl, wPalFlags
 	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
 LoadWeatherPal::
-	ld a, [wCurrentWeather]
+	ld a, [wCurWeather]
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
@@ -22,7 +22,9 @@ LoadWeatherPal::
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
-	ld a, -1
+	; we are not loading an official palette, so it's okay
+	; if the dynamic pal system uses this slot later.
+	ld a, NO_PAL_LOADED
 	ld [wLoadedObjPal7], a
 	ld hl, wOBPals1 palette 6
 	ld bc, 1 palettes
