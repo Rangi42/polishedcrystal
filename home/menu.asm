@@ -219,7 +219,7 @@ CopyMenuHeader::
 	ret
 
 LoadMenuTextbox::
-	farcall ClearSpritesUnderTextbox
+	call ClearSpritesUnderTextbox
 	ld hl, MenuTextboxDataHeader
 	jr LoadMenuHeader
 

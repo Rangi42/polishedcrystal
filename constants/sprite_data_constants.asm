@@ -79,4 +79,5 @@ DEF FIRST_COPY_BG_PAL EQU const_value
 DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value
 
+; used by wLoadedObjPal0-7 to mark that no palette is loaded
 DEF NO_PAL_LOADED EQU -1
