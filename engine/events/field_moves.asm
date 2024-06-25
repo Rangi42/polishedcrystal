@@ -390,14 +390,12 @@ FlyToAnim:
 	sub 12 * SPRITEOAMSTRUCT_LENGTH
 	cpl
 	add LOW(wShadowOAMEnd) + 1
-	ld c, a
-	ld b, 0
+	ld b, a
 	ld h, HIGH(wShadowOAM)
 	ld a, [wCurSpriteOAMAddr]
 	sub 12 * SPRITEOAMSTRUCT_LENGTH
 	ld l, a
-	xor a
-	rst ByteFill
+	call HideSpritesInRange
 
 
 	ld hl, wShadowOAMSprite36 + 2 ; Tile ID

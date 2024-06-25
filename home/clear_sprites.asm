@@ -21,8 +21,9 @@ ClearNormalSprites::
 HideSprites::
 ; Set all OAM y-positions to 160 to hide them offscreen
 	ld hl, wShadowOAM
-	ld de, 4 ; length of an OAM struct
-	ld b, (wShadowOAMEnd - wShadowOAM) / 4 ; number of OAM structs
+	ld b, NUM_SPRITE_OAM_STRUCTS
+HideSpritesInRange::
+	ld de, SPRITEOAMSTRUCT_LENGTH
 	ld a, OAM_YCOORD_HIDDEN
 .loop
 	ld [hl], a
