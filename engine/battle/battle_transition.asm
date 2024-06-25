@@ -558,7 +558,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 
 .trainer_battle
 	; don't flash PAL_BG_GRAY, the poke ball palette
-	ld a, PALFADE_BG | PALFADE_FLASH | PALFADE_SKIP_LAST
+	ld a, PALFADE_BG | PALFADE_FLASH | PALFADE_SKIP_FIRST
 	ldh [hBattlePalFadeMode], a
 
 	; use PAL_BG_RED for the whole flashing screen

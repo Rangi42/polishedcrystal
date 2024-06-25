@@ -67,6 +67,7 @@ OWFadePalettesStep::
 _DoFadePalettes::
 ; w(BG|OB)Pals2: Current palettes
 ; w(BG|OB)Pals1: Palettes we're fading towards
+; b: Controls partial fading gradient
 ; c: Fade duration
 ; wPalFadeMode can be 0 (fade everything), 1 (fade BG), 2 (fade OBJ)
 	ldh a, [rSVBK]
@@ -162,10 +163,12 @@ FadePalettesStep:
 	jr z, .got_count
 	ld hl, wOBPals2
 .got_count
-
 	ld a, [wPalFadeMode]
-	and PALFADE_SKIP_LAST
+
+	and PALFADE_SKIP_FIRST
 	jr z, .inner_loop
+	ld bc, 1 palettes
+	add hl, bc
 	ld a, d
 	sub 4
 	ld d, a
