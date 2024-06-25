@@ -48,6 +48,8 @@ HidePlayerSprite::
 	ret
 
 
+FadeToMenu_BackupSprites::
+	call FadeToMenu
 BackupSprites::
 ; Copy wShadowOAM to wShadowOAMBackup
 	ldh a, [rSVBK]

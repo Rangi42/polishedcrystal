@@ -2659,30 +2659,36 @@ _UpdateSprites::
 	ld a, 1
 	ldh [hOAMUpdate], a
 	call InitSprites
-	call .fill
+	call .hide_unused_sprites
 	pop af
 	ldh [hOAMUpdate], a
 	ret
 
-.fill
-	ld a, [wStateFlags]
-	bit LAST_12_SPRITE_OAM_STRUCTS_RESERVED_F, a
+.hide_unused_sprites
+	; if objects fill the entire OAM, there are no unused sprites.
 	ld b, LOW(wShadowOAMEnd)
-	jr z, .ok
-	ld b, 28 * SPRITEOAMSTRUCT_LENGTH
-.ok
 	ldh a, [hUsedOAMIndex]
 	cp b
 	ret nc
+
 	ldh a, [hUsedWeatherSpriteIndex]
 	ld c, a
+
+	; objects are at the end of the OAM, so we need to get the OAM index of the slot before.
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub SPRITEOAMSTRUCT_LENGTH
+	add (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH + 1
+
+	; if the weather index is greater than the index of the slot before the objects,
+	; then we need to override the weather index with the slot before the objects.
+	; else if the weather index is equal to the index of the slot before the objects,
+	; then there are no sprites to hide.
 	cp c
-	jr c, .fix
+	jr c, .override_weather_index
 	ret z
+
+	; from the slot before the objects to the weather index, hide the sprites.
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 	ld de, -SPRITEOAMSTRUCT_LENGTH
@@ -2696,7 +2702,7 @@ _UpdateSprites::
 	jr nz, .loop
 	ret
 
-.fix
+.override_weather_index
 	ldh [hUsedWeatherSpriteIndex], a
 	ld c, a
 	ret
@@ -2743,6 +2749,7 @@ DEF PRIORITY_NORM EQU $20
 DEF PRIORITY_HIGH EQU $30
 
 InitSprites:
+	; Since OAM's are loaded in reverse order, we need to load the sprite priorities in reverse order.
 	call .DeterminePriorities
 	ld c, PRIORITY_LOW
 	call .InitSpritesByPriority
@@ -2901,9 +2908,9 @@ InitSprites:
 	ld h, [hl]
 	ld l, a
 	ldh a, [hUsedOAMIndex]
-	ld c, a ; no-optimize a = N - a (c gets used below)
-	ld a, SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1)
-	sub c
+	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1) + 1
 	ld c, a
 	ld b, HIGH(wShadowOAM)
 	ld a, [hli]
@@ -2990,11 +2997,8 @@ endr
 	cp LOW(wPlayerStruct)
 	ret nz
 	ldh a, [hUsedOAMIndex]
-	push bc
-	ld c, a ; no-optimize a = N - a (c gets used below)
-	ld a, SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1)
-	sub c
-	pop bc
-	sub (3 * SPRITEOAMSTRUCT_LENGTH)
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 	ld [wPlayerCurrentOAMSlot], a
 	ret

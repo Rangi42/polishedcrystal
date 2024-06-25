@@ -441,11 +441,13 @@ StartMenu_Pokemon:
 
 ClearSpritesUnderStartMenu:
 	ld de, wShadowOAMSprite00XCoord
-	ld hl, wShadowOAMSprite00XCoord
+	ld h, d
+	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
+	; Check if XCoord >= 81
 	ld a, [hl]
-	cp $51
+	cp 81
 	jr nc, .clear_sprite
 ; fallthrough
 .next

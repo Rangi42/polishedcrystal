@@ -76,7 +76,8 @@ OpenText::
 
 ClearSpritesUnderTextbox::
 	ld de, wShadowOAM
-	ld hl, wShadowOAM
+	ld h, d
+	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
 	ld a, [hl]

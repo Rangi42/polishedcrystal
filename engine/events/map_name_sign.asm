@@ -282,11 +282,9 @@ LoadMapNameSignGFX:
 	call FarCopyColorWRAM
 
 	; copy sign palette for PAL_BG_TEXT
-	ld hl, SignPals
-	ld bc, 1 palettes
-	ld a, [wSign]
-	rst AddNTimes ; preserves bc
+	ld hl, wBGPals1 palette PAL_BG_TEXT
 	ld de, wBGPals2 palette PAL_BG_TEXT
+	ld bc, 1 palettes
 	call FarCopyColorWRAM
 
 	ld a, TRUE

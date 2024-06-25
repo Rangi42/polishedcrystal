@@ -29,9 +29,9 @@ ShakeHeadbuttTree:
 	ld [hl], $61
 
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) + 1
-	sub (SPRITEOAMSTRUCT_LENGTH * 4)
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites

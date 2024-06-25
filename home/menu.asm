@@ -313,7 +313,8 @@ PlaceYesNoBox::
 
 ClearSpritesUnderYesNoBox:
 	ld de, wShadowOAMSprite00
-	ld hl, wShadowOAMSprite00
+	ld h, d
+	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
 	ld a, [hli]

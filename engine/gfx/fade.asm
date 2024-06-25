@@ -1,18 +1,12 @@
 OWFadePalettesInit::
 	ldh a, [rSVBK]
 	push af
-	push hl
-	push de
-	push bc
 	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 	ld a, 15
 	ld [wPalFadeDelayFrames], a
 	xor a
 	ld [wPalFadeDelay], a
-	pop bc
-	pop de
-	pop hl
 	pop af
 	ldh [rSVBK], a
 	ret

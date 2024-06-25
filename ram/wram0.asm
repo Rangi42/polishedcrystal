@@ -1326,7 +1326,7 @@ wOBP1:: db
 
 wNumHits:: db
 
-wOverworldWeatherDelay:: db
+wOverworldWeatherTimer:: db
 wOverworldWeatherCooldown:: db
 wSpriteOverlapCount:: db
 wWeatherFlags:: db

@@ -42,14 +42,17 @@ _Displaypic:
 
 ClearSpritesUnderPokePic:
 	ld de, wShadowOAMSprite00
-	ld hl, wShadowOAMSprite00
+	ld h, d
+	ld l, e
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
+	; Check if 41 ≤ YCoord < 120
 	ld a, [hli]
 	cp 41
 	jr c, .next
 	cp 120
 	jr nc, .next
+	; Check if 49 ≤ XCoord < 128
 	ld a, [hl]
 	cp 49
 	jr c, .next

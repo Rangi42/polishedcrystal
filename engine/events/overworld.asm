@@ -793,15 +793,13 @@ FlyFunction:
 	jmp UpdatePlayerSprite
 
 .SetWeatherFlyFlag:
-	ld a, [wWeatherFlags]
-	set OW_WEATHER_DO_FLY_F, a
-	ld [wWeatherFlags], a
+	ld hl, wWeatherFlags
+	set OW_WEATHER_DO_FLY_F, [hl]
 	ret
 
 .ClearWeatherFlyFlag:
-	ld a, [wWeatherFlags]
-	res OW_WEATHER_DO_FLY_F, a
-	ld [wWeatherFlags], a
+	ld hl, wWeatherFlags
+	res OW_WEATHER_DO_FLY_F, [hl]
 	ret
 
 WaterfallFunction:

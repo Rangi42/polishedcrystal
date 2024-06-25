@@ -133,12 +133,10 @@ SetOWFlyMonColor:
 	ld [wNeededPalIndex], a
 	ld b, a
 	push bc
+	ld b, 0
 	ld a, [wUsedObjectPals]
 	inc a
-	jr nz, .some_available
-	ld b, 0
-	jr .unset_bit_found
-.some_available
+	jr z, .unset_bit_found
 	dec a
 	ld b, -1
 .bit_check_loop
