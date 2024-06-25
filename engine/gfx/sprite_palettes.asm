@@ -22,8 +22,9 @@ LoadWeatherPal::
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
-	; we are not loading an official palette, so it's okay
-	; if the dynamic pal system uses this slot later.
+	; we are not loading an official palette,
+	; so this tells dynamic pals to not associate this
+	; palette with a sprite.
 	ld a, NO_PAL_LOADED
 	ld [wLoadedObjPal7], a
 	ld hl, wOBPals1 palette 6
