@@ -83,5 +83,5 @@ DEF VWF_OPAQUE EQU 1 << VWF_OPAQUE_F
 
 DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 
-DEF NUM_FLYFROM_ANIM_OAMS EQU 13 ; 4 for flymon, 9 for leaves
-DEF NUM_FLYTO_ANIM_OAMS   EQU 12 ; 4 for flymon, 8 for leaves
+DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
+DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
