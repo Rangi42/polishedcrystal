@@ -1,3 +1,12 @@
+MapConnOWFadePalettesInit::
+	farcall GetOvercastIndex
+	ld b, a
+	ld a, [wPrevOvercastIndex]
+	cp b
+	ld a, b
+	ld [wPrevOvercastIndex], a
+	jmp z, UpdateTimePals
+	; fallthrough
 OWFadePalettesInit::
 	ldh a, [rSVBK]
 	push af

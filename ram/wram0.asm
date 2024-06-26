@@ -1331,6 +1331,7 @@ wSpriteOverlapCount:: db
 wWeatherFlags:: db
 wPrevWeather:: db
 wCurWeather:: db
+wPrevOvercastIndex:: db
 
 
 SECTION "Options", WRAM0
