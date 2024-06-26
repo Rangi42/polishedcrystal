@@ -765,6 +765,7 @@ FlyFunction:
 
 .FlyScript:
 	refreshmap
+	callasm .StopPalFading
 	callasm ClearSavedObjPals
 	callasm CopyBGGreenToOBPal7
 	callasm LoadWeatherPal
@@ -800,6 +801,19 @@ FlyFunction:
 .ClearWeatherFlyFlag:
 	ld hl, wWeatherFlags
 	res OW_WEATHER_DO_FLY_F, [hl]
+	ret
+
+.StopPalFading:
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rSVBK], a
+	xor a
+	ld [wPalFadeDelayFrames], a
+	pop af
+	ldh [rSVBK], a
+	ld hl, wPalFlags
+	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
 	ret
 
 WaterfallFunction:
