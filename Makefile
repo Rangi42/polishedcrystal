@@ -137,12 +137,12 @@ preinclude_deps := includes.asm $(shell tools/scan_includes includes.asm)
 
 define DEP
 $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
-	$Q$$(RGBDS)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
+	$Q$$(RGBDS)rgbasm $$(RGBASM_FLAGS) -o $$@ $$<
 endef
 
 define VCDEP
 $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
-	$Q$$(RGBDS)rgbasm $$(RGBASM_VC_FLAGS) -L -o $$@ $$<
+	$Q$$(RGBDS)rgbasm $$(RGBASM_VC_FLAGS) -o $$@ $$<
 endef
 
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
