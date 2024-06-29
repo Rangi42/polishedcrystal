@@ -1246,7 +1246,8 @@ wHiddenGrottoContents::
 ; dbw content type, content id
 	ds NUM_HIDDEN_GROTTOES * 3
 
-	ds 2 ; unused
+wLastMapYCoord:: db ; current y coordinate relative to top-left corner of the previous map
+wLastMapXCoord:: db ; current x coordinate relative to top-left corner of previous map
 
 wCurHiddenGrotto:: db
 

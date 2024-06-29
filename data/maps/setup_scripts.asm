@@ -91,7 +91,7 @@ MapSetupScript_Connection:
 	mapsetup SaveScreen
 	mapsetup DeferredLoadMapGraphics
 	mapsetup DecompressMetatiles
-	mapsetup LoadMapObjects
+	mapsetup LoadMapObjects_Connection
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
 	mapsetup EnableDynPalUpdates
