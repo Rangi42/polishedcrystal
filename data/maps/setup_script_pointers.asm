@@ -55,3 +55,4 @@ MapSetupCommands:
 	add_mapsetup DisableDynPalUpdates ; 30
 	add_mapsetup EnableDynPalUpdates ; 31
 	add_mapsetup EnableDynPalUpdatesNoApply ; 32
+	add_mapsetup GrottoUpdatePlayerTallGrassFlags ; 33

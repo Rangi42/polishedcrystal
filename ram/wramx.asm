@@ -1179,7 +1179,9 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 70 ; unused
+wGrottoExit:: db
+
+	ds 69 ; unused
 
 wWingAmounts::
 wHealthWingAmount:: dw

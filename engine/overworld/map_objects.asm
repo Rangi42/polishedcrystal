@@ -243,6 +243,24 @@ CopyCurCoordsToNextCoords:
 	ld [hl], a
 	ret
 
+GrottoUpdatePlayerTallGrassFlags::
+	ld a, [wGrottoExit]
+	and a
+	ret z
+	xor a
+	ld [wGrottoExit], a
+	ld bc, wPlayerStruct
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld d, [hl]
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld e, [hl]
+	push bc
+	call GetCoordTileCollision
+	pop bc
+	jr SetTallGrassFlags
+
 UpdateTallGrassFlags:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
