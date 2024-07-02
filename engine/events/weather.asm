@@ -1,13 +1,3 @@
-MACRO ow_weather_map
-	map_id \1
-	dw \2 ; event
-	shift
-	rept NUM_OW_WEATHERS
-		shift
-		db (\1) percent
-	endr
-ENDM
-
 SetCurrentWeather::
 	farcall GetOvercastIndex
 	and a
