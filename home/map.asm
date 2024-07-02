@@ -885,6 +885,7 @@ MapTextbox::
 	rst Bankswitch
 
 	push hl
+	call ClearSpritesUnderTextbox
 	call SpeechTextbox
 	call SafeUpdateSprites
 	ld a, 1

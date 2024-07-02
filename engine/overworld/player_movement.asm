@@ -498,6 +498,13 @@ DoPlayerMovement::
 	ld a, [hl]
 	ld [wPlayerTurningDirection], a
 
+	ld a, [wOverworldWeatherCooldown]
+	and a
+	jr z, .no_cooldown
+	dec a
+	ld [wOverworldWeatherCooldown], a
+.no_cooldown
+
 	ld a, 4
 	ret
 

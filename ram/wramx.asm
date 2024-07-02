@@ -1508,6 +1508,16 @@ wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
 wPokeDB2UsedEntriesEnd::
 
 
+SECTION "Sprites Backup", WRAMX
+
+wShadowOAMBackup::
+; wShadowOAMSpriteBackup00 - wShadowOAMSpriteBackup39
+for n, NUM_SPRITE_OAM_STRUCTS
+wShadowOAMSpriteBackup{02d:n}:: sprite_oam_struct wShadowOAMSpriteBackup{02d:n}
+endr
+wShadowOAMBackupEnd::
+
+
 SECTION UNION "Metatiles", WRAMX
 
 wDecompressedMetatiles:: ds 256 tiles
@@ -1761,6 +1771,8 @@ wAbilityTiles:: ds 22 tiles
 ; + 1 to include the "'s"
 wAbilityPkmn:: ds MON_NAME_LENGTH + 1
 wAbilityName:: ds 20
+NEXTU
+wWeatherScratch:: ds SCREEN_HEIGHT_PX
 ENDU
 
 

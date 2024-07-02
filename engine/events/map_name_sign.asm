@@ -203,9 +203,13 @@ PlaceMapNameSign::
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	ldh [hLCDCPointer], a
+	ld hl, wWeatherFlags
+	res OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	ret
 
 LoadMapNameSignGFX:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	; load opaque space
 	ld hl, vTiles0 tile POPUP_MAP_FRAME_SPACE
 	call GetOpaque1bppSpaceTile
@@ -276,7 +280,14 @@ LoadMapNameSignGFX:
 	rst AddNTimes ; preserves bc
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	call FarCopyColorWRAM
-	jmp SetDefaultBGPAndOBP
+	ld hl, wBGPals1 palette PAL_BG_TEXT
+	ld de, wBGPals2 palette PAL_BG_TEXT
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
 
 .continue
 	; save position in landmark name

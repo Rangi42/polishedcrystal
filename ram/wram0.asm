@@ -197,6 +197,8 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
+wPlayerCurrentOAMSlot:: db
+
 
 SECTION "Sprite Animations", WRAM0
 
@@ -1322,6 +1324,14 @@ wOBP0:: db
 wOBP1:: db
 
 wNumHits:: db
+
+wOverworldWeatherTimer:: db
+wOverworldWeatherCooldown:: db
+wSpriteOverlapCount:: db
+wWeatherFlags:: db
+wPrevWeather:: db
+wCurWeather:: db
+wPrevOvercastIndex:: db
 
 
 SECTION "Options", WRAM0

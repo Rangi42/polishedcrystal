@@ -497,7 +497,9 @@ DEF CAUGHT_BIRDS_MASK  EQU (1 << PLAYER_CAUGHT_ARTICUNO_F) | (1 << PLAYER_CAUGHT
 
 ; wPalFlags
 	const_def
-	const NO_DYN_PAL_APPLY_F   ; 0
-	const SCAN_OBJECTS_FIRST_F ; 1
-	const USE_DAYTIME_PAL_F    ; 2
-	const DISABLE_DYN_PAL_F    ; 3
+	const NO_DYN_PAL_APPLY_ONCE_F        ; 0
+	const SCAN_OBJECTS_FIRST_F           ; 1
+	const USE_DAYTIME_PAL_F              ; 2
+	const DISABLE_DYN_PAL_F              ; 3
+	const NO_DYN_PAL_APPLY_UNTIL_RESET_F ; 4
+DEF NO_DYN_PAL_APPLY EQU (1 << NO_DYN_PAL_APPLY_ONCE_F) | (1 << NO_DYN_PAL_APPLY_UNTIL_RESET_F)

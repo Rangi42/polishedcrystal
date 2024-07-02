@@ -37,6 +37,7 @@
 	const SFX_TRANSACTION                 ; 22
 	const SFX_EXIT_BUILDING               ; 23
 	const SFX_BUMP                        ; 24
+	const SFX_THUNDER_OW                  ; d5
 	const SFX_SAVE                        ; 25
 	const SFX_POKEFLUTE                   ; 26
 	const SFX_ELEVATOR_END                ; 27

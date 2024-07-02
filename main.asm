@@ -720,3 +720,9 @@ SECTION "Dynamic Pals System", ROMX
 
 INCLUDE "engine/gfx/sprite_palettes.asm"
 INCLUDE "engine/gfx/dynamic_pals.asm"
+
+
+SECTION "Weather System", ROMX
+
+INCLUDE "engine/overworld/weather.asm"
+INCLUDE "engine/events/weather.asm"

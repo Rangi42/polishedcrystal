@@ -765,12 +765,14 @@ FlyFunction:
 
 .FlyScript:
 	refreshmap
-	callasm HideSprites
+	callasm .StopPalFading
 	callasm ClearSavedObjPals
 	callasm CopyBGGreenToOBPal7
+	callasm LoadWeatherPal
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
+	callasm .SetWeatherFlyFlag
 	callasm FlyFromAnim
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
@@ -779,6 +781,7 @@ FlyFunction:
 	newloadmap MAPSETUP_FLY
 	callasm CopyBGGreenToOBPal7
 	callasm FlyToAnim
+	callasm .ClearWeatherFlyFlag
 	special WaitSFX
 	callasm .ReturnFromFly
 	end
@@ -789,6 +792,29 @@ FlyFunction:
 	farcall CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
+
+.SetWeatherFlyFlag:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_DO_FLY_F, [hl]
+	ret
+
+.ClearWeatherFlyFlag:
+	ld hl, wWeatherFlags
+	res OW_WEATHER_DO_FLY_F, [hl]
+	ret
+
+.StopPalFading:
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rSVBK], a
+	xor a
+	ld [wPalFadeDelayFrames], a
+	pop af
+	ldh [rSVBK], a
+	ld hl, wPalFlags
+	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
+	ret
 
 WaterfallFunction:
 	call .TryWaterfall
