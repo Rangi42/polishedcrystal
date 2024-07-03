@@ -10,6 +10,8 @@ PlaySpriteAnimations:
 
 	ld a, LOW(wShadowOAM)
 	ld [wCurSpriteOAMAddr], a
+	ld a, LOW(wShadowOAMEnd) - SPRITEOAMSTRUCT_LENGTH
+	ldh [hUsedOAMIndex], a
 	call DoNextFrameForAllSprites
 
 	jmp PopAFBCDEHL
@@ -43,9 +45,9 @@ DoNextFrameForAllSprites:
 	ld h, HIGH(wShadowOAM)
 
 .loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> wShadowOAMEnd)
-	ld a, l
-	cp LOW(wShadowOAMEnd)
-	ret nc
+	ldh a, [hUsedOAMIndex]
+	cp l
+	ret c
 	xor a
 	ld [hli], a
 	jr .loop2
@@ -265,11 +267,23 @@ UpdateAnimFrame:
 	; fourth byte: attributes
 	; [de] = GetSpriteOAMAttr([hl])
 	ld a, [hl]
-	cp -1 ; this lets the party menu icons keep their dynamic color attribute
+	cp SPRITEOAM_SKIP_PAL_APPLY
 	jr z, .skipOAMAttributes
+	cp SPRITEOAM_SKIP_PAL_APPLY_XFLIP
+	jr z, .skipOAMAttributes_xflip
 	call GetSpriteOAMAttr
 	ld [de], a
+	jr .attributes_done
 .skipOAMAttributes
+	ld a, [de]
+	and ~X_FLIP
+	ld [de], a
+	jr .attributes_done
+.skipOAMAttributes_xflip
+	ld a, [de]
+	or X_FLIP
+	ld [de], a
+.attributes_done
 	inc hl
 	inc de
 	ld a, e

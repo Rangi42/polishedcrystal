@@ -99,6 +99,7 @@ HandleMap:
 	call NextOverworldFrame
 	call HandleMapBackground
 	call CheckPlayerState
+	farcall DoOverworldWeather
 	xor a
 	ret
 
@@ -181,7 +182,8 @@ HandleMapObjects:
 HandleMapBackground:
 	farcall _UpdateSprites
 	farcall ScrollScreen
-	farjp PlaceMapNameSign
+	farcall PlaceMapNameSign
+	farjp OWFadePalettesStep
 
 CheckPlayerState:
 	ld a, [wPlayerStepFlags]

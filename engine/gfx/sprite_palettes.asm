@@ -1,3 +1,58 @@
+LoadWeatherPalNoApply:
+	ld hl, wPalFlags
+	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
+LoadWeatherPal::
+	ld a, [wCurWeather]
+	assert OW_WEATHER_NONE == 0
+	and a
+	ret z
+	assert OW_WEATHER_RAIN == 1
+	dec a
+	jr z, .rain
+	assert OW_WEATHER_SNOW == 2
+	dec a
+	jr z, .snow
+	assert OW_WEATHER_THUNDERSTORM == 3
+	dec a
+	jr z, .rain ; thunderstorm
+	assert OW_WEATHER_SANDSTORM == 4
+	jr .sandstorm
+.snow
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rSVBK], a
+	; we are not loading an official palette,
+	; so this tells dynamic pals to not associate this
+	; palette with a sprite.
+	ld a, NO_PAL_LOADED
+	ld [wLoadedObjPal7], a
+	ld hl, wOBPals1 palette 6
+	ld bc, 1 palettes
+	rst ByteFill
+	ld a, [wPalFlags]
+	and NO_DYN_PAL_APPLY
+	jr nz, .skip_apply
+	call ApplyWeatherPal
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+.skip_apply
+	pop af
+	ldh [rSVBK], a
+	ret
+
+.rain
+	ld a, PAL_OW_RAIN
+	jr .use_pal_6
+
+.sandstorm
+	ld a, PAL_OW_SAND
+.use_pal_6
+	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal6], a
+	ld de, wOBPals1 palette 6
+	jr CopySpritePal
+
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)
 ; have hard-coded OB palette 7 in their OAM data.
@@ -85,12 +140,23 @@ CopySpritePal::
 	rst AddNTimes
 .got_pal
 	pop de
+	push de ; push wOBPals1 palette *
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
-	ld hl, wPalFlags
-	bit NO_DYN_PAL_APPLY_F, [hl]
+	pop hl ; pop wOBPals1 palette *
+	ld a, [wPalFlags]
+	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
-	call ApplyOBPals
+
+	push hl
+	ld de, wOBPals2 - wOBPals1
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
@@ -98,6 +164,12 @@ CopySpritePal::
 	pop bc
 	pop af
 	ret
+
+ApplyWeatherPal:
+	ld hl, wOBPals1 palette 6
+	ld de, wOBPals2 palette 6
+	ld bc, 1 palettes
+	jmp FarCopyColorWRAM
 
 ApplyOBPals:
 	ld hl, wOBPals1
