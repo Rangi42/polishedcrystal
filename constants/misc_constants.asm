@@ -23,9 +23,7 @@ DEF EVE_HOUR  EQU 17 ; 5 PM - 9 PM (4 hours)
 DEF NITE_HOUR EQU 21 ; 9 PM - 5 AM (8 hours)
 DEF MAX_HOUR  EQU 24 ; 12 AM - 12 AM (24 hours)
 
-if DEF(NO_RTC)
 DEF NO_RTC_SPEEDUP EQU 6
-endc
 
 ; significant money values
 DEF START_MONEY EQU 3000
