@@ -1382,7 +1382,7 @@ wInitialOptions::
 ; bit 2: color variation off/on
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
-; bit 5: nuzlocke mode off/on
+; bit 5: affection bonuses off/on
 ; bit 6: scaled exp on/off
 ; bit 7: physical-special split on/off
 	db

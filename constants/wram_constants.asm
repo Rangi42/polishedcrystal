@@ -96,8 +96,8 @@ DEF NUM_FONTS EQU const_value
 	const COLOR_VARY_OPT   ; 2
 	const PERFECT_IVS_OPT  ; 3
 	const TRADED_AS_OT_OPT ; 4
-	const NUZLOCKE_MODE    ; 5
-	const SCALED_EXP       ; 6
+	const AFFECTION_OPT    ; 5
+	const SCALED_EXP_OPT   ; 6
 	const PSS_OPT          ; 7
 
 DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT

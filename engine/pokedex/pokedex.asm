@@ -1692,7 +1692,7 @@ Pokedex_Bio:
 	ld e, a
 	ld d, 0
 	ld a, [wInitialOptions]
-	bit SCALED_EXP, a ; should we use gen 5+ formula?
+	bit SCALED_EXP_OPT, a ; should we use gen 5+ formula?
 	jr z, .got_exp
 	ld a, [wCurPartySpecies]
 	ld c, a

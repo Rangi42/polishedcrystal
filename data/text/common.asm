@@ -4398,20 +4398,6 @@ Text_MonCantBeCaught::
 	line "be caught!"
 	prompt
 
-SECTION "Text_NuzlockeBallFailure", ROMX
-Text_NuzlockeBallFailure::
-	text "You already"
-	line "encountered a"
-	cont "#mon here."
-	prompt
-
-SECTION "Text_NuzlockeReviveFailure", ROMX
-Text_NuzlockeReviveFailure::
-	text "You can't revive"
-	line "#mon in"
-	cont "Nuzlocke mode!"
-	prompt
-
 SECTION "_ItemUsedText", ROMX
 _ItemUsedText::
 	text "<PLAYER> used the"

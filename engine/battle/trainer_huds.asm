@@ -125,7 +125,7 @@ DrawEnemyHUDBorder:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
-	call DoesNuzlockeModePreventCapture
+	call CheckNuzlockeFlags
 	jr c, .nuzlocke
 	ld a, [wOTPartyMon1Species]
 	ld c, a
@@ -237,12 +237,7 @@ _ShowLinkBattleParticipants:
 	ldh [rOBP0], a
 	ret
 
-DoesNuzlockeModePreventCapture:
-	; Is nuzlocke mode on?
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr z, .no
-
+CheckNuzlockeFlags:
 	; Is tutorial battle?
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL

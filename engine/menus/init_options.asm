@@ -183,29 +183,33 @@ INCBIN "gfx/new_game/init_bg.2bpp.lz"
 	next1 "            :"
 	next1 "Exp. scaling"
 	next1 "            :"
+	next1 "Affection bonus"
+	next1 "            :"
 	next1 "Color variation"
 	next1 "            :"
 	next1 "Perfect stats"
 	next1 "            :"
 	next1 "Traded <PK><MN> obey"
 	next1 "            :"
-	next1 "Nuzlocke mode"
-	next1 "            :"
 	done
 
 GetInitialOptionPointer:
 	call StandardStackJumpTable
 
+; These are in the same order as InitialOptionDescriptions,
+; not the *_OPT bit order!
 .Pointers:
+	table_width 2, GetInitialOptionPointer.Pointers
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
 	dw InitialOptions_PSS
 	dw InitialOptions_EVs
 	dw InitialOptions_ExpScaling
+	dw InitialOptions_AffectionBonus
 	dw InitialOptions_ColorVariation
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
-	dw InitialOptions_NuzlockeMode
+	assert_table_length NUM_INITIAL_OPTIONS
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
@@ -325,21 +329,45 @@ InitialOptions_ExpScaling:
 	ldh a, [hJoyPressed]
 	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
-	bit SCALED_EXP, [hl]
+	bit SCALED_EXP_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
 .Toggle
-	bit SCALED_EXP, [hl]
+	bit SCALED_EXP_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
-	res SCALED_EXP, [hl]
+	res SCALED_EXP_OPT, [hl]
 	ld de, NoString
 	jr .Display
 .SetYes:
-	set SCALED_EXP, [hl]
+	set SCALED_EXP_OPT, [hl]
 	ld de, YesString
 .Display:
 	hlcoord 15, 9
+	rst PlaceString
+	and a
+	ret
+
+InitialOptions_AffectionBonus:
+	ld hl, wInitialOptions
+	ldh a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit AFFECTION_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit AFFECTION_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res AFFECTION_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set AFFECTION_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 11
 	rst PlaceString
 	and a
 	ret
@@ -363,7 +391,7 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 11
+	hlcoord 15, 13
 	rst PlaceString
 	and a
 	ret
@@ -387,7 +415,7 @@ InitialOptions_PerfectIVs:
 	set PERFECT_IVS_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 13
+	hlcoord 15, 15
 	rst PlaceString
 	and a
 	ret
@@ -409,30 +437,6 @@ InitialOptions_TradedMon:
 	jr .Display
 .SetYes:
 	set TRADED_AS_OT_OPT, [hl]
-	ld de, YesString
-.Display:
-	hlcoord 15, 15
-	rst PlaceString
-	and a
-	ret
-
-InitialOptions_NuzlockeMode:
-	ld hl, wInitialOptions
-	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
-	jr nz, .Toggle
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .SetYes
-.SetNo:
-	res NUZLOCKE_MODE, [hl]
-	ld de, NoString
-	jr .Display
-.SetYes:
-	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
 	hlcoord 15, 17

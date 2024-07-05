@@ -359,16 +359,11 @@ HatchEggs:
 	ld hl, .Text_HatchEgg
 	call PrintText
 
-	; Nuzlocke Mode always prompts for nickname. Otherwise, ask.
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr nz, .yesnickname
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox
 	jr c, .nonickname
 
-.yesnickname
 	; de = the relevant entry in wPartyMonNicknames.
 	pop de
 	push de
