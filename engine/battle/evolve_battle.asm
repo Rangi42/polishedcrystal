@@ -84,6 +84,7 @@ EvolveDuringBattle::
 
 .canceled
 	farcall CancelEvolution
+	call UpdatePlayerHPPal
 
 .done
 	ld a, BANK("Sound Stack")
