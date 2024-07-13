@@ -282,6 +282,7 @@ _CGB_FinishBattleScreenLayout:
 	call FillBoxWithByte
 
 	ld a, PAL_BATTLE_BG_EXP_GENDER
+	ldcoord_a 0, 1, wAttrmap
 	ldcoord_a 1, 1, wAttrmap
 	ldcoord_a 8, 1, wAttrmap
 	ldcoord_a 18, 8, wAttrmap
