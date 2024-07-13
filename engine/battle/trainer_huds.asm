@@ -126,7 +126,10 @@ DrawEnemyHUDBorder:
 	dec a
 	ret nz
 	call CheckNuzlockeFlags
-	jr c, .nuzlocke
+	jr nc, .no_nuzlocke
+	hlcoord 0, 1
+	ld [hl], "<NONO>"
+.no_nuzlocke
 	ld a, [wOTPartyMon1Species]
 	ld c, a
 	ld a, [wOTPartyMon1Form]
@@ -135,11 +138,6 @@ DrawEnemyHUDBorder:
 	ret z
 	hlcoord 1, 1
 	ld [hl], "<BALL>"
-	ret
-
-.nuzlocke
-	hlcoord 1, 1
-	ld [hl], "<NONO>"
 	ret
 
 PlaceHUDBorderTiles:
