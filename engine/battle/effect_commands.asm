@@ -3999,7 +3999,7 @@ WeatherDefenseBoost:
 	cp b
 	ld a, c
 	pop bc
-	ret z
+	ret nz
 	push bc
 	push de
 	push hl
