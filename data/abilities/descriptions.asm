@@ -912,6 +912,6 @@ ArmorTailDescription:
 	done
 
 MindsEyeDescription:
-	text  "Ignores the foe's"
-	next1 "efforts to evade."
+	text  "Bypass evasion and"
+	next1 "Ghost immunity."
 	done
