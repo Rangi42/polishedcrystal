@@ -1,22 +1,24 @@
 ; pokemon ids
-; indexes for:
+; indexes for (only species):
 ; - PokemonNames (see data/pokemon/names.asm)
+; - PokemonCries (see data/pokemon/cries.asm)
+; - AlphabeticalPokedexOrder (see data/pokemon/dex_order_alpha.asm)
+; - NewPokedexOrder (see data/pokemon/dex_order_new.asm)
+; - ValidPokemonLevels (see data/pokemon/valid_levels.asm)
+; indexes for (species + non-cosmetic variants):
 ; - BaseData (see data/pokemon/base_stats.asm)
 ; - EvosAttacksPointers (see data/pokemon/evos_attacks_pointers.asm)
 ; - EggMovePointers (see data/pokemon/egg_move_pointers.asm)
 ; - EvolutionMoves (see data/pokemon/evolution_moves.asm)
-; - PokemonCries (see data/pokemon/cries.asm)
+; - PokemonBodyData (see data/pokemon/body_data.asm)
+; - PokemonPalettes (see data/pokemon/palettes.asm)
+; - PokedexDataPointerTable (see data/pokemon/dex_entry_pointers.asm)
+; - FootprintPointers (see data/pokemon/footprint_pointers.asm)
+; indexes for (species + all variants):
 ; - MiniIconPointers (see data/pokemon/mini_icon_pointers.asm)
 ; - OverworldMonIconColors (see data/pokemon/overworld_icon_pals.asm)
 ; - PokemonPicPointers (see data/pokemon/pic_pointers.asm)
 ; - PokemonPicSizes (see data/pokemon/pic_sizes.asm)
-; - PokemonPalettes (see data/pokemon/palettes.asm)
-; - PokemonBodyData (see data/pokemon/body_data.asm)
-; - PokedexDataPointerTable (see data/pokemon/dex_entry_pointers.asm)
-; - AlphabeticalPokedexOrder (see data/pokemon/dex_order_alpha.asm)
-; - NewPokedexOrder (see data/pokemon/dex_order_new.asm)
-; - ValidPokemonLevels (see data/pokemon/valid_levels.asm)
-; - FootprintPointers (see data/pokemon/footprint_pointers.asm)
 ; - AnimationPointers (see gfx/pokemon/anim_pointers.asm)
 ; - AnimationIdlePointers (see gfx/pokemon/extra_pointers.asm)
 ; - BitmasksPointers (see gfx/pokemon/bitmask_pointers.asm)
