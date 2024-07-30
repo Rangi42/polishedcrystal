@@ -253,11 +253,14 @@ DanceTheatreLadyText:
 	line "into Leafeon, Gla-"
 	cont "ceon, or Sylveon,"
 
-	para "but none of the"
-	line "Kimono Girls use"
-	cont "those #mon."
+	para "but I don't see"
+	line "any of them here."
 
-	para "I wonder why?"
+	para "I wonder if the"
+	line "Kimono Girls who"
+
+	para "use them are"
+	line "somewhere else?"
 	done
 
 DanceTheatreFancyPanelText:
