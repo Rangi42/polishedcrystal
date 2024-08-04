@@ -60,7 +60,7 @@ You can post questions or comments on any of these sites. But please read the [F
   
 ![cherrygrove-city](screenshots/cherrygrove-city.png)
 ![pokemon-center](screenshots/pokemon-center.png)
-![nuzlocke-mode](screenshots/nuzlocke-mode.png)
+![bag](screenshots/bag.png)
 ![oaks-aide](screenshots/oaks-aide.png)
   
 ![elder-li](screenshots/elder-li.png)
@@ -68,7 +68,7 @@ You can post questions or comments on any of these sites. But please read the [F
 ![moss-rock](screenshots/moss-rock.png)
 ![rich-boy](screenshots/rich-boy.png)
   
-![tm58](screenshots/tm58.png)
+![tm43](screenshots/tm43.png)
 ![game-corner-prizes](screenshots/game-corner-prizes.png)
 ![goldenrod-move-tutor](screenshots/goldenrod-move-tutor.png)
 ![eviolite](screenshots/eviolite.png)
@@ -88,7 +88,7 @@ You can post questions or comments on any of these sites. But please read the [F
 ![route-45](screenshots/route-45.png)
 ![stats](screenshots/stats.png)
 
-![sitrus-berry](screenshots/sitrus-berry.png)
+![leppa-berry](screenshots/leppa-berry.png)
 ![weavile](screenshots/weavile.png)
 ![move-reminder](screenshots/move-reminder.png)
 ![moves](screenshots/moves.png)
