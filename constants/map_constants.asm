@@ -516,7 +516,7 @@ ENDM
 	map_const BATTLE_TOWER_OUTSIDE,                       10, 13 ; 17
 
 	newgroup                                                     ; 23
-	map_const ROUTE_2_SOUTH,                              10, 18 ;  1
+	map_const ROUTE_2_SOUTH,                              12, 18 ;  1
 	map_const ROUTE_22,                                   15,  9 ;  2
 	map_const VIRIDIAN_CITY,                              20, 18 ;  3
 	map_const VIRIDIAN_GYM,                                7, 22 ;  4

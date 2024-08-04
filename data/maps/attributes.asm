@@ -172,15 +172,15 @@ ENDM
 
 	map_attributes Route2North, ROUTE_2_NORTH, $f, NORTH | SOUTH
 	connection north, PewterCity, PEWTER_CITY, -5
-	connection south, Route2South, ROUTE_2_SOUTH, 0
+	connection south, Route2South, ROUTE_2_SOUTH, -2
 
 	map_attributes Route2South, ROUTE_2_SOUTH, $f, NORTH | SOUTH | EAST
-	connection north, Route2North, ROUTE_2_NORTH, 0
-	connection south, ViridianCity, VIRIDIAN_CITY, -5
+	connection north, Route2North, ROUTE_2_NORTH, 2
+	connection south, ViridianCity, VIRIDIAN_CITY, -3
 	connection east, Route16West, ROUTE_16_WEST, 8
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $f, NORTH | SOUTH | WEST
-	connection north, Route2South, ROUTE_2_SOUTH, 5
+	connection north, Route2South, ROUTE_2_SOUTH, 3
 	connection south, Route1, ROUTE_1, 5
 	connection west, Route22, ROUTE_22, 4
 
