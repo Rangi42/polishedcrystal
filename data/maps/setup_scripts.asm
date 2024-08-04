@@ -97,7 +97,7 @@ MapSetupScript_Connection:
 	mapsetup DeferredLoadMapGraphics
 	mapsetup DecompressMetatiles
 	mapsetup DisableDynPalUpdates
-	mapsetup LoadMapObjects
+	mapsetup LoadMapObjects_Connection
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
 	mapsetup EnableDynPalUpdatesNoApply
