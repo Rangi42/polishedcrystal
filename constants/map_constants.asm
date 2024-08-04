@@ -403,6 +403,7 @@ ENDM
 	map_const HAUNTED_RADIO_TOWER_4F,                      9,  4 ; 22
 	map_const HAUNTED_RADIO_TOWER_5F,                      8,  9 ; 23
 	map_const HAUNTED_RADIO_TOWER_6F,                      8,  9 ; 24
+	map_const ROUTE_16_WEST,                              31, 13 ; 25
 
 	newgroup                                                     ; 19
 	map_const ROUTE_28,                                   19,  9 ;  1
@@ -429,8 +430,8 @@ ENDM
 
 	newgroup                                                     ; 21
 	map_const ROUTE_7,                                    10,  9 ;  1
-	map_const ROUTE_16_NORTHEAST,                         11, 11 ;  2
-	map_const ROUTE_16_SOUTH,                             11, 11 ;  3
+	map_const ROUTE_16_NORTHEAST,                         14, 11 ;  2
+	map_const ROUTE_16_SOUTH,                             14, 11 ;  3
 	map_const ROUTE_17,                                   10, 63 ;  4
 	map_const ROUTE_18_WEST,                              12,  9 ;  5
 	map_const URAGA_CHANNEL_EAST,                         23,  9 ;  6
@@ -533,8 +534,7 @@ ENDM
 	map_const VIRIDIAN_FOREST_VIRIDIAN_GATE,               5,  4 ; 16
 	map_const VIRIDIAN_FOREST_PEWTER_GATE,                 5,  4 ; 17
 	map_const ROUTE_1_VIRIDIAN_GATE,                       5,  4 ; 18
-	map_const ROUTE_16_NORTHWEST,                         11, 11 ; 19
-	map_const ROUTE_16_WEST,                              34, 12 ; 20
+	map_const ROUTE_16_NORTHWEST,                         14, 11 ; 19
 
 	newgroup                                                     ; 24
 	map_const ROUTE_26,                                   10, 54 ;  1
