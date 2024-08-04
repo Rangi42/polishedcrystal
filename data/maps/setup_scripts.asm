@@ -43,6 +43,7 @@ MapSetupScript_Warp:
 	mapsetup DecompressMetatiles
 	mapsetup LoadMapTimeOfDay
 	mapsetup LoadMapObjects
+	mapsetup GrottoUpdatePlayerTallGrassFlags
 	mapsetup EnableLCD
 	mapsetup LoadMapPalettes
 	mapsetup SpawnInFacingDown
@@ -130,6 +131,7 @@ MapSetupScript_Train:
 	mapsetup FadeOutMapMusic
 	mapsetup EnableLCD
 	mapsetup LoadMapObjects
+	mapsetup GrottoUpdatePlayerTallGrassFlags
 	mapsetup LoadMapPalettes
 	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup RefreshMapSprites
