@@ -44,8 +44,11 @@ DoNextFrameForAllSprites:
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 
-.loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> wShadowOAMEnd)
+.loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - hUsedOAMIndex])
 	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH + 1
 	cp l
 	ret c
 	xor a
