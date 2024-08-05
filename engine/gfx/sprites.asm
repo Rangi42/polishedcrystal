@@ -44,7 +44,11 @@ DoNextFrameForAllSprites:
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 
-.loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - hUsedOAMIndex])
+	ldh a, [hInMenu]
+	dec a
+	jr z, .menu_clear_loop
+
+.ow_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - hUsedOAMIndex])
 	ldh a, [hUsedOAMIndex]
 	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
@@ -53,7 +57,15 @@ DoNextFrameForAllSprites:
 	ret c
 	xor a
 	ld [hli], a
-	jr .loop2
+	jr .ow_clear_loop
+
+.menu_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> wShadowOAMEnd)
+	ld a, l
+	cp LOW(wShadowOAMEnd)
+	ret nc
+	xor a
+	ld [hli], a
+	jr .menu_clear_loop
 
 DoNextFrameForFirst16Sprites:
 	ld hl, wSpriteAnimationStructs
