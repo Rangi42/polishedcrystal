@@ -124,7 +124,7 @@ OWCutAnimation:
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
-	ret nz
+	jr nz, .finish
 
 	ldh a, [hUsedOAMIndex]
 	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
@@ -137,6 +137,24 @@ OWCutAnimation:
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
+
+.finish
+	; hide tree/leaf sprites
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+	ld h, HIGH(wShadowOAM)
+	ld l, a
+	ld b, 4
+	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld a, OAM_YCOORD_HIDDEN
+.clear_loop
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .clear_loop
+	ret
 
 OWCutJumptable:
 	call StandardStackJumpTable
