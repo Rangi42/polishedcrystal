@@ -2496,6 +2496,8 @@ ContinueSpawnFacing:
 	jmp SetSpriteDirection
 
 StartFollow::
+	ld hl, wPlayerFlags + 1
+	set HIGH_PRIORITY_F, [hl]
 	push bc
 	ld a, b
 	call SetLeaderIfVisible
@@ -2529,6 +2531,8 @@ SetFollowerIfVisible:
 	ret
 
 StopFollow::
+	ld hl, wPlayerFlags + 1
+	res HIGH_PRIORITY_F, [hl]
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	; fallthrough
