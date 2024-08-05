@@ -229,6 +229,9 @@ CheckIndoorMap::
 	cp GATE
 	ret
 
+LoadMapAttributes_Connection::
+	ld hl, wMapSetupFlags
+	set MAPSETUP_CONNECTION_F, [hl]
 LoadMapAttributes::
 	ld a, [wMapTileset]
 	ld [wOldTileset], a
@@ -261,6 +264,11 @@ ReadMapScripts::
 	; fallthrough
 ReadObjectEvents::
 	push hl
+	ld hl, wMapSetupFlags
+	bit MAPSETUP_CONNECTION_F, [hl]
+	call z, ClearObjectStructs
+	ld hl, wMapSetupFlags
+	res MAPSETUP_CONNECTION_F, [hl]
 	call ClearObjectAssociations
 	pop de
 	ld hl, wMap1Object

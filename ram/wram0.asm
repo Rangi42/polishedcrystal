@@ -199,6 +199,8 @@ wPalFlags:: db
 
 wPlayerCurrentOAMSlot:: db
 
+wMapSetupFlags:: db
+
 
 SECTION "Sprite Animations", WRAM0
 

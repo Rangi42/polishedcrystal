@@ -88,7 +88,7 @@ MapSetupScript_BadWarp:
 MapSetupScript_Connection:
 	mapsetup SuspendMapAnims
 	mapsetup EnterMapConnection
-	mapsetup LoadMapAttributes
+	mapsetup LoadMapAttributes_Connection
 	mapsetup HandleNewMap
 	mapsetup SetCurrentWeather
 	mapsetup RefreshPlayerCoords
