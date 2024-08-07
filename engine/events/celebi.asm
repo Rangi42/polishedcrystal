@@ -46,7 +46,7 @@ Special_CelebiShrineEvent:
 	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	farcall DoNextFrameForAllSprites_OW
 	call CelebiEvent_CountDown
 	ld c, 2
 	call DelayFrames

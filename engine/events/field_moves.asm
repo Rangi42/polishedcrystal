@@ -34,7 +34,7 @@ ShakeHeadbuttTree:
 	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites_OW
 	call HideHeadbuttTree
 	ld a, 32
 	ld [wFrameCounter], a
@@ -54,7 +54,7 @@ ShakeHeadbuttTree:
 	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites_OW
 	farcall DoOverworldWeather
 	call DelayFrame
 	jr .loop
@@ -132,7 +132,7 @@ OWCutAnimation:
 	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
 
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites_OW
 	farcall DoOverworldWeather
 	call OWCutJumptable
 	call DelayFrame
@@ -342,7 +342,7 @@ FlyFromAnim:
 	add (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
 .got_oam_addr
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites_OW
 	farcall DoOverworldWeather
 	call FlyFunction_FrameTimer
 	call DelayFrame
@@ -394,7 +394,7 @@ FlyToAnim:
 .got_oam_addr
 
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites_OW
 	farcall DoOverworldWeather
 	call FlyFunction_FrameTimer
 	call DelayFrame

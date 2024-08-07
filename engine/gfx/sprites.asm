@@ -10,8 +10,6 @@ PlaySpriteAnimations:
 
 	ld a, LOW(wShadowOAM)
 	ld [wCurSpriteOAMAddr], a
-	ld a, LOW(wShadowOAMEnd) - SPRITEOAMSTRUCT_LENGTH
-	ldh [hUsedOAMIndex], a
 	call DoNextFrameForAllSprites
 
 	jmp PopAFBCDEHL
@@ -44,9 +42,41 @@ DoNextFrameForAllSprites:
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 
-	ldh a, [hInMenu]
-	dec a
-	jr z, .menu_clear_loop
+.loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> wShadowOAMEnd)
+	ld a, l
+	cp LOW(wShadowOAMEnd)
+	ret nc
+	xor a
+	ld [hli], a
+	jr .loop2
+
+DoNextFrameForAllSprites_OW:
+	ld hl, wSpriteAnimationStructs
+	ld e, 10
+
+.loop
+	ld a, [hl]
+	and a
+	jr z, .next
+	ld c, l
+	ld b, h
+	push hl
+	push de
+	call DoAnimFrame ; Uses a massive dw
+	call UpdateAnimFrame
+	pop de
+	pop hl
+	ret c
+
+.next
+	ld bc, $10
+	add hl, bc
+	dec e
+	jr nz, .loop
+
+	ld a, [wCurSpriteOAMAddr]
+	ld l, a
+	ld h, HIGH(wShadowOAM)
 
 .ow_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - hUsedOAMIndex])
 	ldh a, [hUsedOAMIndex]
@@ -58,14 +88,6 @@ DoNextFrameForAllSprites:
 	xor a
 	ld [hli], a
 	jr .ow_clear_loop
-
-.menu_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> wShadowOAMEnd)
-	ld a, l
-	cp LOW(wShadowOAMEnd)
-	ret nc
-	xor a
-	ld [hli], a
-	jr .menu_clear_loop
 
 DoNextFrameForFirst16Sprites:
 	ld hl, wSpriteAnimationStructs
