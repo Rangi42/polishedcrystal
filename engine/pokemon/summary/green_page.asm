@@ -167,7 +167,7 @@ endr
 	ld de, wBGPals1 + 2
 	farcall LoadOneColor
 	farcall LoadOneColor
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 
 	pop af
 	ldh [rSVBK], a
