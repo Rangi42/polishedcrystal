@@ -569,7 +569,9 @@ SummaryScreen_LoadPage:
 	bit 4, [hl]
 	call nz, SummaryScreen_PlaceFrontpic
 	ld b, 2
+	call ApplyAttrmapInVBlank
 	call SummaryScreen_SwitchPage
+	call ApplyTilemapInVBlank
 	ld a, 7 + 64
 	ldh [hWX], a
 	ld a, 16
