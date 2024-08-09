@@ -1508,7 +1508,7 @@ BillsPC_MenuStrings:
 	; pokémon management options
 	db "Withdraw@"
 	db "Deposit@"
-	db "Stats@"
+	db "Summary@"
 	db "Switch@"
 	db "Moves@"
 	db "Item@"
@@ -1548,7 +1548,7 @@ BillsPC_MenuJumptable:
 
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
-	farcall _OpenPartyStats
+	farcall _OpenPartySummary
 	call BillsPC_MoveCursorAfterStatScreen
 	jmp BillsPC_ReturnFromTransistion
 

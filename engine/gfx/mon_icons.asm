@@ -440,7 +440,7 @@ SetPartyMonMiniAnimSpeed:
 	ld hl, wPartyMon1Happiness
 	call GetPartyLocation
 	ld a, [hl]
-; same happiness thresholds as EggStatsScreen
+; same happiness thresholds as EggSummaryScreen
 	ld d, 0
 	cp $6
 	jr c, .gotindex

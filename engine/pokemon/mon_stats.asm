@@ -99,8 +99,6 @@ endr
 	pop bc
 
 	add hl, bc
-	ld bc, SCREEN_WIDTH
-	add hl, bc
 	ld de, wTempMonAttack
 	lb bc, 2, 3
 	call .PrintStat
@@ -117,7 +115,7 @@ endr
 	push hl
 	call PrintNum
 	pop hl
-	ld de, SCREEN_WIDTH * 2
+	ld de, $20
 	add hl, de
 	ret
 

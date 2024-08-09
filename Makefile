@@ -235,7 +235,6 @@ gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
 gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates --keep-whitespace --remove-xflip
 
 gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
-gfx/stats/stats_balls.2bpp: gfx/stats/stats.2bpp gfx/stats/balls.2bpp ; $Qcat $^ > $@
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/logo_version.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; $Qcat $^ > $@

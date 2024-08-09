@@ -55,6 +55,85 @@ LCDMusicPlayer::
 	pop af
 	reti
 
+LCDSummaryScreenHideWindow::
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, LCDSummaryScreenDone
+	ldh a, [rSTAT]
+	and 3
+	jr nz, LCDSummaryScreenDone
+	ld a, 200
+	ldh [rWX], a
+	jr LCDSummaryScreenProgress
+
+LCDSummaryScreenShowWindow::
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, LCDSummaryScreenDone
+	ld a, [hWX]
+	ldh [rWX], a
+	jr LCDSummaryScreenProgress
+
+LCDSummaryScreenScrollBackground::
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, LCDSummaryScreenDone
+	ld a, [rSCY]
+	add a, 4
+	ldh [rSCY], a
+	jr LCDSummaryScreenProgress
+
+LCDSummaryScreen::
+LCDSummaryScreenProgress::
+	push hl
+	push bc
+	ld b, 0
+	ld hl, wSummaryScreenStep
+	ld c, [hl]
+	ld hl, wSummaryScreenInterrupts
+	add hl, bc
+	ld a, [hli]
+	inc a
+	jr nz, .continue
+	; return to start of list
+	ld hl, wSummaryScreenStep
+	ld [hl], a
+	ld hl, wSummaryScreenInterrupts
+	ld a, [hli]
+	inc a
+.continue
+	dec a
+	ld [rLYC], a
+	ld a, [hl]
+	dec a ; cp a, 1 ; SUMMARY_LCD_SHOW_WINDOW
+	jr z, .show
+	dec a ; cp a, 2 ; SUMMARY_LCD_SCROLL_BACKGROUND
+	jr z, .nudge
+	ld hl, LCDSummaryScreenHideWindow
+	jr .setupNext
+.show
+	ld hl, LCDSummaryScreenShowWindow
+	jr .setupNext
+.nudge
+	ld hl, LCDSummaryScreenScrollBackground
+	; fallthrough
+.setupNext
+	ld a, l
+	ldh [hFunctionTargetLo], a
+	ld a, h
+	ldh [hFunctionTargetHi], a
+
+	; procede to next step
+	ld hl, wSummaryScreenStep
+	ld a, [hl]
+	add a, 2
+	ld [hl], a
+	pop bc
+	pop hl
+LCDSummaryScreenDone::
+	pop af
+	reti
+
 DisableLCD::
 ; Turn the LCD off
 

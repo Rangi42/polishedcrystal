@@ -1926,7 +1926,13 @@ _Pokedex_Stats:
 	hlcoord 1, 13
 	farcall PrintAbility
 	pop bc
+	ld a, [wTextboxFlags]
+	push af
+	set NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
 	farcall PrintAbilityDescription
+	pop af
+	ld [wTextboxFlags], a
 
 	; use correct vram bank for types and footprint
 	ld a, [wPokedex_MonInfoBank]
@@ -2029,7 +2035,13 @@ _Pokedex_Stats:
 	push bc
 	farcall PrintAbility
 	pop bc
+	ld a, [wTextboxFlags]
+	push af
+	set NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
 	farcall PrintAbilityDescription
+	pop af
+	ld [wTextboxFlags], a
 	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 

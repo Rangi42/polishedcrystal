@@ -114,7 +114,7 @@ PokemonActionSubmenu:
 	dbw MONMENUITEM_HEADBUTT,   MonMenu_Headbutt
 	dbw MONMENUITEM_WATERFALL,  MonMenu_Waterfall
 	dbw MONMENUITEM_ROCKSMASH,  MonMenu_RockSmash
-	dbw MONMENUITEM_STATS,      OpenPartyStats
+	dbw MONMENUITEM_SUMMARY,    OpenPartySummary
 	dbw MONMENUITEM_SWITCH,     SwitchPartyMons
 	dbw MONMENUITEM_ITEM,       GiveTakePartyMonItem
 	dbw MONMENUITEM_CANCEL,     CancelPokemonAction
@@ -721,18 +721,18 @@ TakeMail:
 	text_far _MailSentToPCText
 	text_end
 
-OpenPartyStats:
+OpenPartySummary:
 ; Stats screen for partymon in wCurPartyMon.
 	call PreparePartyTempMon
 	; fallthrough
-_OpenPartyStats:
+_OpenPartySummary:
 ; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
 	call LoadStandardMenuHeader
 	call ClearSprites
 	call LowVolume
 	ld a, TEMPMON
 	ld [wMonType], a
-	predef StatsScreenInit
+	predef SummaryScreenInit
 	; This ensures that MaxVolume works as it should if we're in the middle of
 	; playing a cry.
 	ld a, $77
