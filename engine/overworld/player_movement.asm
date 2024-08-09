@@ -27,6 +27,10 @@ DoPlayerMovement::
 	ret nz
 
 	ld a, c
+	and B_BUTTON ; holding b will brake
+	ret nz
+
+	ld a, c
 	or D_DOWN
 	ld [wCurInput], a
 	ret
