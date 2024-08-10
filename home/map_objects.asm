@@ -94,7 +94,7 @@ CheckObjectVisibility::
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	jr z, .not_visible
 	ldh [hObjectStructIndexBuffer], a
 	call GetObjectStruct
@@ -147,9 +147,9 @@ ApplyDeletionToMapObject::
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	ret z ; already hidden
-	ld [hl], -1
+	ld [hl], UNASSOCIATED_MAPOBJECT
 	push af
 	call .CheckStopFollow
 	pop af

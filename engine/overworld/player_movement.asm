@@ -974,7 +974,8 @@ CheckTrainerRun:
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
-	inc a ; cp -1
+	inc a
+	assert UNASSOCIATED_MAPOBJECT == -1
 	jr z, .next
 
 ; You're within their sight range

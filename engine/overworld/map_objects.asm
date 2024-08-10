@@ -8,20 +8,22 @@ DeleteMapObject::
 	ld [hli], a
 	ld a, [hl]
 	push af
-	ld a, -1
+	ld a, UNASSOCIATED_OBJECT
 	ld [hli], a
 	ld bc, OBJECT_LENGTH - 2
 	xor a
 	rst ByteFill
 	pop af
-	cp -1
+	cp UNASSOCIATED_OBJECT
+	jr z, .ok
+	cp TEMP_OBJECT
 	jr z, .ok
 	bit 7, a
 	jr nz, .ok
 	call GetMapObject
-	ld hl, OBJECT_SPRITE
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
-	ld [hl], -1
+	ld [hl], UNASSOCIATED_MAPOBJECT
 .ok
 	pop bc
 	farjp CheckForUsedObjPals
@@ -452,7 +454,9 @@ RestoreDefaultMovement:
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_OBJECT
+	jr z, .ok
+	cp TEMP_OBJECT
 	jr z, .ok
 	push bc
 	call GetMapObject
@@ -2144,11 +2148,12 @@ InitTempObject:
 
 CopyTempObjectData:
 ; load into wTempObjectCopy:
-; -1, -1, [de], [de + 1], [de + 2], [hMapObjectIndexBuffer], [NextMapX], [NextMapY], -1
+; TEMP_OBJECT, -1, [de], [de + 1], [de + 2], [hMapObjectIndexBuffer], [NextMapX], [NextMapY], -1
 ; This spawns the object at the same place as whichever object is loaded into bc.
 	ld hl, wTempObjectCopyMapObjectIndex
-	ld a, -1
+	ld a, TEMP_OBJECT
 	ld [hli], a
+	ld a, -1
 	ld [hli], a
 	ld a, [de]
 	inc de
@@ -2222,7 +2227,7 @@ RespawnObject:
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	ret z
 	cp NUM_OBJECT_STRUCTS
 	ret nc
@@ -2628,7 +2633,9 @@ ResetObject:
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_OBJECT
+	jr z, .set_standing
+	cp TEMP_OBJECT
 	jr z, .set_standing
 	push bc
 	call GetMapObject
