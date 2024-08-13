@@ -5176,6 +5176,7 @@ MoveSelectionScreen:
 	jmp MoveSelectionScreen
 
 .struggle
+	call ClearSprites
 	ld a, STRUGGLE
 	ld [wCurPlayerMove], a
 	ld hl, BattleText_PkmnHasNoMovesLeft
