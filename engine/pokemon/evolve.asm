@@ -842,8 +842,8 @@ GetPreEvolution:
 	and FORM_MASK ; should we return NO_FORM?
 	jr z, .got_form
 	inc b ; extspecies | PLAIN_FORM
-.got_form
 	ld a, b
+.got_form
 	ld [wCurForm], a
 	scf
 	ret
