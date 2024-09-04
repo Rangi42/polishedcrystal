@@ -735,9 +735,11 @@ _OpenPartyStats:
 	predef StatsScreenInit
 	; This ensures that MaxVolume works as it should if we're in the middle of
 	; playing a cry.
-	ld a, $77
+	ld a, MAX_VOLUME
 	ld [wLastVolume], a
 	call MaxVolume
+	xor a
+	ld [wLastVolume], a
 	call ExitMenu
 	xor a
 	ret
