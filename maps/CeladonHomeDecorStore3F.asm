@@ -22,8 +22,8 @@ CeladonHomeDecorStore3FClerk1Script:
 	faceplayer
 	opentext
 	writetext CeladonHomeDecorStore3FClerk1Text
-.Start:
 	special PlaceMoneyTopRight
+.Start:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
@@ -41,6 +41,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	setevent EVENT_DECO_CARPET_1
 	writetext BoughtRedCarpetText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext RedCarpetSentText
 	waitbutton
@@ -55,6 +56,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	setevent EVENT_DECO_CARPET_3
 	writetext BoughtYellowCarpetText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext YellowCarpetSentText
 	waitbutton
@@ -69,6 +71,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	setevent EVENT_DECO_CARPET_4
 	writetext BoughtGreenCarpetText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GreenCarpetSentText
 	waitbutton
@@ -112,6 +115,7 @@ CeladonHomeDecorStore3FClerk2Script:
 	takemoney $0, 35000
 	setevent EVENT_DECO_CARPET_2
 	writetext BoughtBlueCarpetText
+	special PlaceMoneyTopRight
 	playsound SFX_TRANSACTION
 	waitbutton
 	writetext BlueCarpetSentText
