@@ -820,9 +820,8 @@ GetPreEvolution:
 	ld a, c
 	cp LOW(NUM_SPECIES)
 	jr c, .not_variant
-	sla c ; bc * 2, since VariantSpeciesAndFormTable is two bytes wide
-	rl b
 	ld hl, VariantSpeciesAndFormTable - (NUM_SPECIES * 2)
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld [wCurPartySpecies], a
