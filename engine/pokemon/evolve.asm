@@ -826,7 +826,7 @@ GetPreEvolution:
 	ld a, [hli]
 	ld [wCurPartySpecies], a
 	ld a, [hl]
-	jr .got_form
+	jr .done
 
 .not_variant
 	inc bc
@@ -841,8 +841,9 @@ GetPreEvolution:
 	and FORM_MASK ; should we return NO_FORM?
 	jr z, .got_form
 	inc b ; extspecies | PLAIN_FORM
-	ld a, b
 .got_form
+	ld a, b
+.done
 	ld [wCurForm], a
 	scf
 	ret
