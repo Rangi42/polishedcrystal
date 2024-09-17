@@ -135,7 +135,7 @@ MarkUsedPal:
 	dec b
 	jr nz, .loaded_loop
 
-	; If this is the first pass, we do not want to 
+	; If this is the first pass, we do not want to
 	; load any pals yet, just mark the still active pals
 	ld hl, wPalFlags
 	bit SCAN_OBJECTS_FIRST_F, [hl]

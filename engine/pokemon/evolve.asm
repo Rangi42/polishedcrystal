@@ -793,7 +793,7 @@ GetPreEvolution:
 	and b
 	pop bc
 	jr z, .found_preevo
-	
+
 .not_preevo
 	inc hl
 	ld a, [hl]
