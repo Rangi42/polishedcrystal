@@ -425,7 +425,7 @@ BattleAnimFunction_PokeBall:
 	jmp z, FarDeinitBattleAnimation
 	and $f
 	ret nz
-	jp BattleAnim_IncAnonJumptableIndex
+	jmp BattleAnim_IncAnonJumptableIndex
 
 .twelve
 ; critical shake
@@ -458,7 +458,7 @@ BattleAnimFunction_PokeBall:
 .done
 	ld a, BATTLEANIMFRAMESET_09
 	call FarReinitBattleAnimFrameset
-	jp BattleAnim_IncAnonJumptableIndex
+	jmp BattleAnim_IncAnonJumptableIndex
 
 BattleAnimFunction_PokeBallBlocked:
 	call BattleAnim_AnonJumptable

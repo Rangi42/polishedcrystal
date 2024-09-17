@@ -358,7 +358,7 @@ RenderShamoutiCoastSand:
 	inc hl
 	ld a, $5b ; lower horizontal footprint
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 .vertical
 	inc hl
@@ -368,7 +368,7 @@ RenderShamoutiCoastSand:
 	dec hl
 	ld a, $59 ; lower-left vertical footprint
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 .bicycle
 	ld a, [wPlayerDirection]
@@ -382,7 +382,7 @@ RenderShamoutiCoastSand:
 	inc hl
 	ld a, $5c ; horizontal bicycle track
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 .vertical_bicycle
 	ld a, $5d ; vertical bicycle track
@@ -390,7 +390,7 @@ RenderShamoutiCoastSand:
 	add hl, bc
 	ld a, $5d ; vertical bicycle track
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 CheckWildEncounterCooldown:
 	ld hl, wWildEncounterCooldown
