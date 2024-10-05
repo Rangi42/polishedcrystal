@@ -243,10 +243,6 @@ CheckNuzlockeFlags:
 	cp BATTLETYPE_TUTORIAL
 	jr z, .no
 
-	; Is enemy shiny?
-	farcall BattleCheckEnemyShininess
-	jr c, .no
-
 	; Is location already done?
 	call GetCurrentLandmark
 	ld c, a
