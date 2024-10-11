@@ -4484,7 +4484,7 @@ BattleMenuPKMN_Loop:
 
 .MenuHeader:
 	db $00 ; flags
-	menu_coords 11, 9, 19, 17
+	menu_coords 10, 9, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
@@ -4492,13 +4492,13 @@ BattleMenuPKMN_Loop:
 	db $c0 ; flags
 	db 4 ; items
 	db "Switch@"
-	db "Stats@"
+	db "Summary@"
 	db "Moves@"
 	db "Cancel@"
 
 .EggMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 11, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .EggMenuData
 	db 1 ; default option
 
@@ -4506,7 +4506,7 @@ BattleMenuPKMN_Loop:
 	db $c0 ; flags
 	db 3 ; items
 	db "Switch@"
-	db "Stats@"
+	db "Summary@"
 	db "Cancel@"
 
 Battle_StatsScreen:
@@ -4520,7 +4520,7 @@ Battle_StatsScreen:
 	ld bc, $31 tiles
 	rst CopyBytes
 	call EnableLCD
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	call DisableLCD
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31

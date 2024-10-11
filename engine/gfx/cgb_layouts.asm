@@ -381,10 +381,18 @@ EnbyPokegearInterfacePalette:
 INCLUDE "gfx/pokegear/pokegear_x.pal"
 
 _CGB_StatsScreenHPPals:
-	ld de, wBGPals1
-	ld hl, HPBarInteriorPals
-	call LoadPalette_White_Col1_Col2_Black
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
+	ld hl, wBGPals1
+	ld bc, 8 palettes
+	ld a, -1
+	rst ByteFill
+	pop af
+	ldh [rSVBK], a
 
+	ld de, wBGPals1 palette 1
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
 	call GetPlayerOrMonPalettePointer
@@ -393,60 +401,74 @@ _CGB_StatsScreenHPPals:
 	call VaryBGPal1ByTempMonDVs
 	pop de
 
-	ld hl, GenderAndExpBarPals
+	ld hl, ItemIconPalettes
+	ld bc, $4
+	ld a, [wTempMonItem]
+	rst AddNTimes
+	ld de, wSummaryScreenPals palette 2
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld hl, StatsScreenPals
-	ld c, 4 palettes
-	call LoadPalettes
+	ld hl, GenderAndExpBarPals
+	ld de, wSummaryScreenPals palette 6
+	call LoadPalette_White_Col1_Col2_Black
 
 	ld hl, CaughtBallPals
 	ld bc, $4
 	ld a, [wTempMonCaughtBall]
 	and CAUGHT_BALL_MASK
 	rst AddNTimes
-	ld de, wBGPals1 palette 7
+	ld de, wSummaryScreenPals palette 7
 	call LoadPalette_White_Col1_Col2_Black
 
 	call WipeAttrMap
 
 	hlcoord 0, 0, wAttrmap
-	lb bc, 8, SCREEN_WIDTH
+	lb bc, 12, 8
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 18, 0, wAttrmap
-	ld [hl], $2
+	hlcoord 8, 0, wAttrmap
+	lb bc, 1, 14
+	; ld a, $1
+	call FillBoxWithByte
 
-	hlcoord 11, 5, wAttrmap
-	lb bc, 2, 2
+
+	hlcoord 0, 12, wAttrmap
+	lb bc, 1, 20
 	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 13, 5, wAttrmap
-	lb bc, 2, 2
-	ld a, $4
+	hlcoord 2, 12, wAttrmap
+	lb bc, 1, 3
+	xor a
 	call FillBoxWithByte
 
-	hlcoord 15, 5, wAttrmap
-	lb bc, 2, 2
-	ld a, $5
+	hlcoord 1, 11, wAttrmap
+	ld a, $3
+	ld [hli], a
+	ld a, Y_FLIP
+	ld bc, 3
+	rst ByteFill
+	ld a, X_FLIP | $3
+	ld [hl], a
+	hlcoord 5, 12, wAttrmap
+	ld [hl], a
+
+	hlcoord 7, 1, wAttrmap
+	lb bc, 11, 13
+	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 17, 5, wAttrmap
-	lb bc, 2, 2
+	hlcoord 5, 9, wAttrmap
 	ld a, $6
-	call FillBoxWithByte
+	ld [hl], a
 
-	hlcoord 8, 6, wAttrmap
-	lb bc, 1, 1
-	ld a, $7
+	hlcoord 2, 8, wAttrmap
+	lb bc, 3, 3
+	ld a, $2
 	call FillBoxWithByte
 
 	jmp _CGB_FinishLayout
-
-StatsScreenPals:
-INCLUDE "gfx/stats/pages.pal"
 
 _CGB_Pokedex:
 	call _CGB_Pokedex_PrepareOnly
