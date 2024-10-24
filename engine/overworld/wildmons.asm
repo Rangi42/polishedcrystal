@@ -870,14 +870,12 @@ JumpRoamMons:
 
 	ld a, [wRoamMon3MapGroup]
 	cp GROUP_N_A
-	jr z, .SkipSuicune
+	ret z
 	call JumpRoamMon
 	ld a, b
 	ld [wRoamMon3MapGroup], a
 	ld a, c
 	ld [wRoamMon3MapNumber], a
-.SkipSuicune:
-	; fallthrough
 
 JumpRoamMon:
 .loop
