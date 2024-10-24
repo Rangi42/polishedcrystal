@@ -115,7 +115,7 @@ endr
 	push hl
 	call PrintNum
 	pop hl
-	ld de, $20
+	ld de, BG_MAP_WIDTH
 	add hl, de
 	ret
 

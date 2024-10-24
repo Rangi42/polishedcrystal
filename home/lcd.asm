@@ -70,7 +70,7 @@ LCDSummaryScreenShowWindow::
 	ldh a, [rSTAT]
 	bit rSTAT_LYC_CMP, a
 	jr z, LCDSummaryScreenDone
-	ld a, [hWX]
+	ldh a, [hWX]
 	ldh [rWX], a
 	jr LCDSummaryScreenProgress
 
@@ -78,7 +78,7 @@ LCDSummaryScreenScrollBackground::
 	ldh a, [rSTAT]
 	bit rSTAT_LYC_CMP, a
 	jr z, LCDSummaryScreenDone
-	ld a, [rSCY]
+	ldh a, [rSCY]
 	add a, 4
 	ldh [rSCY], a
 	jr LCDSummaryScreenProgress
@@ -88,26 +88,27 @@ LCDSummaryScreenProgress::
 	push hl
 	push bc
 	ld b, 0
-	ld hl, wSummaryScreenStep
-	ld c, [hl]
+	ld a, [wSummaryScreenStep]
+	ld c, a
 	ld hl, wSummaryScreenInterrupts
 	add hl, bc
 	ld a, [hli]
 	inc a
 	jr nz, .continue
 	; return to start of list
-	ld hl, wSummaryScreenStep
-	ld [hl], a
+	ld [wSummaryScreenStep], a
 	ld hl, wSummaryScreenInterrupts
 	ld a, [hli]
 	inc a
 .continue
 	dec a
-	ld [rLYC], a
+	ldh [rLYC], a
 	ld a, [hl]
-	dec a ; cp a, 1 ; SUMMARY_LCD_SHOW_WINDOW
+	assert SUMMARY_LCD_SHOW_WINDOW == 1
+	dec a
 	jr z, .show
-	dec a ; cp a, 2 ; SUMMARY_LCD_SCROLL_BACKGROUND
+	assert SUMMARY_LCD_SCROLL_BACKGROUND == 2
+	dec a
 	jr z, .nudge
 	ld hl, LCDSummaryScreenHideWindow
 	jr .setupNext
@@ -125,9 +126,8 @@ LCDSummaryScreenProgress::
 
 	; procede to next step
 	ld hl, wSummaryScreenStep
-	ld a, [hl]
-	add a, 2
-	ld [hl], a
+	inc [hl]
+	inc [hl]
 	pop bc
 	pop hl
 LCDSummaryScreenDone::

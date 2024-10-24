@@ -402,7 +402,7 @@ _CGB_StatsScreenHPPals:
 	pop de
 
 	ld hl, ItemIconPalettes
-	ld bc, $4
+	ld bc, PAL_COLOR_SIZE * 2
 	ld a, [wTempMonItem]
 	rst AddNTimes
 	ld de, wSummaryScreenPals palette 2
@@ -429,7 +429,7 @@ _CGB_StatsScreenHPPals:
 
 	hlcoord 8, 0, wAttrmap
 	lb bc, 1, 14
-	; ld a, $1
+	; a == $1
 	call FillBoxWithByte
 
 
