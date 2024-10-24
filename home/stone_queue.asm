@@ -14,7 +14,9 @@ HandleStoneTableAction::
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, de
 	ld a, [hl]
-	cp $ff
+	cp UNASSOCIATED_OBJECT
+	jr z, .nope
+	cp TEMP_OBJECT
 	jr z, .nope
 
 	ld l, a

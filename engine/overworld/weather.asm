@@ -373,7 +373,7 @@ SpawnSnowFlake:
 	call Random
 	and %11
 	jr z, .spawn_on_right
-	
+
 	; sprite coord is (0, RandomRange(0, SCREEN_WIDTH_PX + 7) + TILE_WIDTH)
 	xor a
 	ld [hli], a

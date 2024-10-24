@@ -1420,10 +1420,7 @@ wRoamMon1:: roam_struct wRoamMon1
 wRoamMon2:: roam_struct wRoamMon2
 wRoamMon3:: roam_struct wRoamMon3
 
-wRoamMons_CurMapNumber:: db
-wRoamMons_CurMapGroup:: db
-wRoamMons_LastMapNumber:: db
-wRoamMons_LastMapGroup:: db
+	ds 4 ; previously used
 
 wBestMagikarpLengthMm::
 wBestMagikarpLengthMmHi:: db

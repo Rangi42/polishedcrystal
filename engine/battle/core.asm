@@ -5135,6 +5135,9 @@ MoveSelectionScreen:
 	call StdBattleTextbox
 .start_over
 	call SafeLoadTempTileMapToTileMap
+	ld c, 2
+	call DelayFrames
+	call LoadWeatherIconSprite
 	jmp MoveSelectionScreen
 
 .pressed_up
@@ -5173,6 +5176,7 @@ MoveSelectionScreen:
 	jmp MoveSelectionScreen
 
 .struggle
+	call ClearSprites
 	ld a, STRUGGLE
 	ld [wCurPlayerMove], a
 	ld hl, BattleText_PkmnHasNoMovesLeft
@@ -5201,7 +5205,7 @@ MoveSelectionScreen:
 	pop hl
 	call BattleMoveDescTextbox
 	call WaitPressAorB_BlinkCursor
-	jr .start_over
+	jmp .start_over
 
 SetChoiceLock:
 ; Set choice lock to move choice c (0-3)

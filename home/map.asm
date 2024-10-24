@@ -486,7 +486,7 @@ ClearObjectAssociations::
 	ld hl, wObject1Struct + OBJECT_MAP_OBJECT_INDEX
 	ld de, OBJECT_LENGTH
 	ld b, NUM_OBJECT_STRUCTS - 1
-	ld a, -1
+	ld a, UNASSOCIATED_OBJECT
 .loop
 	ld [hl], a
 	add hl, de

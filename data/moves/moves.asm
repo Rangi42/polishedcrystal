@@ -1,7 +1,7 @@
 MACRO move
 	db \1 ; animation
 	db \2 ; effect
-	db \3 ; power
+	db \3 ; power (0 for status moves, 1 for nonstandard base power)
 	db \4 ; type
 	db \5 ; accuracy (-1 for moves that ignore accuracy checks)
 	db \6 ; pp

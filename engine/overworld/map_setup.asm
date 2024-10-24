@@ -144,7 +144,7 @@ ReassociateMapObjectsOrDelete:
 	; mark the object as free.
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
-	ld [hl], -1
+	ld [hl], UNASSOCIATED_OBJECT
 	jr .continue
 
 .CheckForMatchingMapObject

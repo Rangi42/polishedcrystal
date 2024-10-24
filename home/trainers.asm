@@ -45,7 +45,7 @@ _CheckTrainerBattle::
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	jr z, .next
 
 ; Is facing the player...

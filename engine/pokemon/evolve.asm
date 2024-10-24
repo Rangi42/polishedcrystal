@@ -793,7 +793,7 @@ GetPreEvolution:
 	and b
 	pop bc
 	jr z, .found_preevo
-	
+
 .not_preevo
 	inc hl
 	ld a, [hl]
@@ -820,14 +820,13 @@ GetPreEvolution:
 	ld a, c
 	cp LOW(NUM_SPECIES)
 	jr c, .not_variant
-	sla c ; bc * 2, since VariantSpeciesAndFormTable is two bytes wide
-	rl b
 	ld hl, VariantSpeciesAndFormTable - (NUM_SPECIES * 2)
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld [wCurPartySpecies], a
 	ld a, [hl]
-	jr .got_form
+	jr .done
 
 .not_variant
 	inc bc
@@ -844,6 +843,7 @@ GetPreEvolution:
 	inc b ; extspecies | PLAIN_FORM
 .got_form
 	ld a, b
+.done
 	ld [wCurForm], a
 	scf
 	ret

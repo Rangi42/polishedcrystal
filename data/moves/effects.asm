@@ -1481,6 +1481,7 @@ Reversal:
 	hastarget
 	checkhit
 	checkpriority
+	critical
 	constantdamage
 	stab
 	moveanim

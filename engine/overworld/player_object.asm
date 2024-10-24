@@ -143,6 +143,7 @@ CopyObjectStruct::
 	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
 	inc a
+	assert UNASSOCIATED_OBJECT == -1
 	jr z, .done
 	add hl, de
 	ldh a, [hObjectStructIndexBuffer]
@@ -240,7 +241,7 @@ InitializeVisibleSprites:
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	jr nz, .next
 
 	ld a, [wXCoord]
@@ -325,7 +326,7 @@ CheckObjectEnteringVisibleRange::
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	jr nz, .next_v
 	ld hl, MAPOBJECT_X_COORD
 	add hl, bc
@@ -381,7 +382,7 @@ CheckObjectEnteringVisibleRange::
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	jr nz, .next_h
 	ld hl, MAPOBJECT_Y_COORD
 	add hl, bc

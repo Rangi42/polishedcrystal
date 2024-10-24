@@ -125,10 +125,12 @@ DrawEnemyHUDBorder:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
-	call CheckNuzlockeFlags
-	jr nc, .no_nuzlocke
-	hlcoord 0, 1
-	ld [hl], "<NONO>"
+	; We should perhaps make this an initial option in the future.
+	; For now, remove it entirely because it just confuses people.
+;	call CheckNuzlockeFlags
+;	jr nc, .no_nuzlocke
+;	hlcoord 0, 1
+;	ld [hl], "<NONO>"
 .no_nuzlocke
 	ld a, [wOTPartyMon1Species]
 	ld c, a
@@ -240,10 +242,6 @@ CheckNuzlockeFlags:
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .no
-
-	; Is enemy shiny?
-	farcall BattleCheckEnemyShininess
-	jr c, .no
 
 	; Is location already done?
 	call GetCurrentLandmark
