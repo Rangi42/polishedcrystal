@@ -1922,11 +1922,8 @@ _Pokedex_Stats:
 	sub l
 	ld h, a
 	ld b, [hl]
-	push bc
 	hlcoord 1, 13
-	farcall PrintAbility
-	pop bc
-	farcall PrintAbilityDescription
+	call Pokedex_PrintAbilityWithDescription
 
 	; use correct vram bank for types and footprint
 	ld a, [wPokedex_MonInfoBank]
@@ -2026,10 +2023,7 @@ _Pokedex_Stats:
 	ld h, a
 	ld b, [hl]
 	pop hl
-	push bc
-	farcall PrintAbility
-	pop bc
-	farcall PrintAbilityDescription
+	call Pokedex_PrintAbilityWithDescription
 	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
@@ -2038,6 +2032,19 @@ _Pokedex_Stats:
 	ret z
 	add $2c - 1 ; get corresponding EV tile
 	ld [hl], a
+	ret
+
+Pokedex_PrintAbilityWithDescription:
+	push bc
+	farcall PrintAbility
+	pop bc
+	ld a, [wTextboxFlags]
+	push af
+	set NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
+	farcall PrintAbilityDescription
+	pop af
+	ld [wTextboxFlags], a
 	ret
 
 Pokedex_SetModeSearchPals:
