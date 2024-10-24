@@ -54,55 +54,55 @@ jobs:
       # DOWNLOAD ALL BUILD ARTIFACTS
       - id: download-polishedcrystal
         name: "Download polishedcrystal"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polishedcrystal"
           path: "./build"
       - id: download-polishedcrystal-faithful
         name: "Download polishedcrystal-faithful"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polishedcrystal-faithful"
           path: "./build"
       - id: download-polishedcrystal-nortc
         name: "Download polishedcrystal-nortc"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polishedcrystal-nortc"
           path: "./build"
       - id: download-polishedcrystal-faithful-nortc
         name: "Download polishedcrystal-faithful-nortc"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polishedcrystal-faithful-nortc"
           path: "./build"
       - id: download-polisheddebug
         name: "Download polisheddebug"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polisheddebug"
           path: "./build"
       - id: download-polisheddebug-faithful
         name: "Download polisheddebug-faithful"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polisheddebug-faithful"
           path: "./build"
       - id: download-polisheddebug-nortc
         name: "Download polisheddebug-nortc"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polisheddebug-nortc"
           path: "./build"
       - id: download-polisheddebug-faithful-nortc
         name: "Download polisheddebug-faithful-nortc"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polisheddebug-faithful-nortc"
           path: "./build"
       - id: download-polishedcrystal-savepatch
         name: "Download polishedcrystal-savepatch"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: "polishedcrystal-savepatch"
           path: "./build"
