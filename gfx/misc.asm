@@ -50,8 +50,8 @@ TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lz"
 
 SECTION "Stats Graphics", ROMX
 
-GFX_Summary:: INCBIN "gfx/stats/stats.2bpp.lz"
-GFX_Summary_Sprites:: INCBIN "gfx/stats/stats_sprites.2bpp.lz"
+GFX_Summary:: INCBIN "gfx/stats/summary.2bpp.lz"
+GFX_Summary_Sprites:: INCBIN "gfx/stats/summary_sprites.2bpp.lz"
 GFX_Balls:: INCBIN "gfx/stats/balls.2bpp.lz"
 
 

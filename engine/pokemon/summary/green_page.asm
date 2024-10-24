@@ -1,5 +1,5 @@
 SummaryScreen_GreenPage:
-	ld a, $4C
+	ld a, SUMMARY_TILE_OAM_ITEM_TITLE
 	call SummaryScreen_UpdateTabTitle
 	ld hl, .GreenPalettes
 	ld bc, 1 palettes
@@ -22,11 +22,11 @@ SummaryScreen_GreenPage:
 	ld bc, NUM_MOVES
 	rst CopyBytes
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
-	ld a, $20 * 2
+	ld a, BG_MAP_WIDTH * 2
 	ld [wBuffer1], a
 	predef ListMoves
 	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
-	ld a, $20 * 2
+	ld a, BG_MAP_WIDTH * 2
 	ld [wBuffer1], a
 	predef ListMovePP
 
@@ -44,7 +44,7 @@ for n, 4
 endr
 .moves_done
 .PlaceAInfo:
-	lb bc, 132, $40
+	lb bc, 132, SUMMARY_TILE_OAM_A_INFO
 	ld hl, wSummaryScreenOAMSprite20
 .aInfoLoop
 	ld a, 108
@@ -66,7 +66,7 @@ endr
 .PlaceItemIcon:
 	ld de, 17
 	lb bc, 3, 3
-	ld a, $56
+	ld a, SUMMARY_TILE_ITEM
 .item_icon_loop
 	ld [hli], a
 	inc a
@@ -173,7 +173,7 @@ endr
 	ldh [rSVBK], a
 
 	pop af ; get category back
-	add a, $50
+	add a, SUMMARY_TILE_CATEGORY_START
 	hlcoord 1, 13
 	ld [hli], a
 	inc a
@@ -220,7 +220,7 @@ endr
 	db "  <BOLDP>/   %@"
 
 SummaryScreen_MoveInfoLoop:
-	ld a, $50
+	ld a, SUMMARY_TILE_OAM_MOVE_TITLE
 	call SummaryScreen_UpdateTabTitle
 	ld a, [wSummaryScreenPage]
 	and %11100011
@@ -256,7 +256,7 @@ SummaryScreen_MoveInfoJoypad:
 	jr .adjust_move_index
 .a_button
 .b_button
-	ld a, $4C
+	ld a, SUMMARY_TILE_OAM_ITEM_TITLE
 	call SummaryScreen_UpdateTabTitle
 	call SummaryScreen_GreenPage.PlaceItemText
 	call SummaryScreen_GreenPage.PlaceAInfo

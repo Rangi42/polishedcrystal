@@ -1,11 +1,11 @@
 SummaryScreen_PinkPage:
-	ld a, $44
+	ld a, SUMMARY_TILE_OAM_EXP_TITLE
 	call SummaryScreen_UpdateTabTitle
 	; Place pokerus
 	ld a, [wTempMonPokerusStatus]
 	and POKERUS_MASK
 	jr z, .pokerusDone
-	ld e, $3D ; pokerus
+	ld e, SUMMARY_TILE_POKERUS
 	cp POKERUS_CURED
 	jr nz, .placePokerus
 	inc e ; pokerus cured
@@ -68,11 +68,11 @@ SummaryScreen_PinkPage:
 
 	; Place ball
 	hlbgcoord 8, 3, wSummaryScreenWindowBuffer
-	ld a, $39 ; ball border
+	ld a, SUMMARY_TILE_BALL_SIDE_BORDER
 	ld [hli], a
-	ld a, $4F ; ball
+	ld a, SUMMARY_TILE_BALL
 	ld [hli], a
-	ld a, $39 ; ball border
+	ld a, SUMMARY_TILE_BALL_SIDE_BORDER
 	ld [hli], a
 
 	; ball palette
@@ -245,8 +245,8 @@ SummaryScreen_PinkPage:
 	RGB 00, 00, 00
 
 .BallSprites:
-	db 68, 144, $3E, Y_FLIP
-	db 84, 144, $3E, 0
+	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, Y_FLIP
+	db 84, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, 0
 
 .OTStr:
 	text "OT/"

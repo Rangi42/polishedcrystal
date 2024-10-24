@@ -1,5 +1,5 @@
 SummaryScreen_BluePage:
-	ld a, $48
+	ld a, SUMMARY_TILE_OAM_ABILITY_TITLE
 	call SummaryScreen_UpdateTabTitle
 	hlbgcoord 3, 1, wSummaryScreenWindowBuffer
 	call SummaryScreen_DrawPlayerHP
@@ -91,7 +91,7 @@ SummaryScreen_BluePage:
 .CheckHyper:
 	rlca
 	jr nc, .no_hyper_training
-	ld [hl], $40 ; hyper training indicator
+	ld [hl], SUMMARY_TILE_HYPER_TRAINING
 .no_hyper_training
 	add hl, de
 	ret
@@ -132,8 +132,7 @@ SummaryScreen_BluePage:
 	db "HP@"
 
 .AbilityTiles:
-	; $3f = bold H
-	db $3f, "1", "2", $3f
+	db SUMMARY_TILE_HIDDEN_H, "1", "2", SUMMARY_TILE_HIDDEN_H
 
 ; Copy of DrawPlayerHP that works on the window buffer
 SummaryScreen_DrawPlayerHP:

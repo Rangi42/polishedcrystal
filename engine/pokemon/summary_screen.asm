@@ -16,6 +16,47 @@
 ; TODO remove moves screen (by replacing it properly)
 ; TODO fix artifacts when exiting PC or in battle summary
 
+; vTiles0
+DEF SUMMARY_TILE_OAM_START                  EQU $3C
+DEF SUMMARY_TILE_OAM_PAGE                   EQU $3C
+DEF SUMMARY_TILE_OAM_SELECTED_PAGE          EQU $3D
+DEF SUMMARY_TILE_OAM_BALL_TOP_BORDER        EQU $3E
+DEF SUMMARY_TILE_OAM_A_INFO                 EQU $40
+DEF SUMMARY_TILE_OAM_TITLES                 EQU $44
+DEF SUMMARY_TILE_OAM_EXP_TITLE              EQU $44
+DEF SUMMARY_TILE_OAM_ABILITY_TITLE          EQU $48
+DEF SUMMARY_TILE_OAM_ITEM_TITLE             EQU $4C
+DEF SUMMARY_TILE_OAM_MOVE_TITLE             EQU $50
+DEF SUMMARY_TILE_OAM_MET_TITLE              EQU $54
+DEF SUMMARY_TILE_OAM_ARROW                  EQU $58
+
+; vTiles2
+DEF SUMMARY_TILE_START                      EQU $31
+DEF SUMMARY_TILE_SIDE_WINDOW_TL             EQU $31
+DEF SUMMARY_TILE_SIDE_WINDOW_L              EQU $32
+DEF SUMMARY_TILE_SIDE_WINDOW_T              EQU $34
+DEF SUMMARY_TILE_SIDE_WINDOW_BL             EQU $33
+DEF SUMMARY_TILE_SIDE_WINDOW_B              EQU $35
+DEF SUMMARY_TILE_BOTTOM_WINDOW_T            EQU $38
+DEF SUMMARY_TILE_BOTTOM_WINDOW_B            EQU SUMMARY_TILE_SIDE_WINDOW_B
+DEF SUMMARY_TILE_BOTTOM_WINDOW_CORNER       EQU $36
+DEF SUMMARY_TILE_BOTTOM_WINDOW_INNER_CORNER EQU $37
+DEF SUMMARY_TILE_BALL_SIDE_BORDER           EQU $39
+DEF SUMMARY_TILE_TYPE_BG_LEFT               EQU $3A
+DEF SUMMARY_TILE_TYPE_BG_MIDDLE             EQU $3B
+DEF SUMMARY_TILE_TYPE_BG_RIGHT              EQU $3C
+DEF SUMMARY_TILE_POKERUS                    EQU $3D
+DEF SUMMARY_TILE_HIDDEN_H                   EQU $39
+DEF SUMMARY_TILE_HYPER_TRAINING             EQU $40
+DEF SUMMARY_TILE_LEFT_ARROW                 EQU $41
+DEF SUMMARY_TILE_RIGHT_ARROW                EQU $42
+DEF SUMMARY_TILE_BALL                       EQU $4F
+DEF SUMMARY_TILE_CATEGORY_START             EQU $50
+DEF SUMMARY_TILE_ITEM                       EQU $56
+
+; vTiles3
+DEF SUMMARY_TILE_TYPE_START                 EQU $00
+
 SummaryScreenInit:
 	ldh a, [hMapAnims]
 	push af
@@ -183,28 +224,28 @@ SummaryScreenInit:
 
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
-	ld de, vTiles2 tile $31
+	ld de, vTiles2 tile SUMMARY_TILE_START
 	lb bc, BANK(GFX_Summary), 18
 	call DecompressRequest2bpp
 
 	ld a, 1
 	ldh [rVBK], a
 	ld de, TypeIconGFX
-	ld hl, vTiles3 tile $00
+	ld hl, vTiles3 tile SUMMARY_TILE_TYPE_START
 	lb bc, BANK(TypeIconGFX), 19 * 4
 	call Request1bpp
 	xor a
 	ldh [rVBK], a
 
 	ld de, CategoryIconGFX
-	ld hl, vTiles2 tile $50
+	ld hl, vTiles2 tile SUMMARY_TILE_CATEGORY_START
 	lb bc, BANK(CategoryIconGFX), 2 * NUM_CATEGORIES
 	call Request2bpp
 
 	ld hl, GFX_Summary_Sprites
-	ld de, vTiles0 tile $3C
+	ld de, vTiles0 tile SUMMARY_TILE_OAM_START
 	lb bc, BANK(GFX_Summary_Sprites), 8 * 4
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 ; Main summary screen event loop
 SummaryScreenLoop:
@@ -248,13 +289,13 @@ SummaryScreenLoop:
 .load_mon
 	call SummaryScreen_InitMon
 	call DelayFrame
-	jp SummaryScreen_LoadPage
+	jmp SummaryScreen_LoadPage
 
 .a_button
 	ld a, c
 	cp a, SUMMARY_GREEN_PAGE
 	ret nz
-	jp SummaryScreen_MoveInfoLoop
+	jmp SummaryScreen_MoveInfoLoop
 
 .d_right
 	inc c
@@ -280,7 +321,7 @@ SummaryScreenLoop:
 	call DelayFrame
 	ld hl, wSummaryScreenFlags
 	res 4, [hl]
-	jp SummaryScreen_LoadPage
+	jmp SummaryScreen_LoadPage
 
 .quit
 	pop af
@@ -342,7 +383,7 @@ SummaryScreen_InitMon:
 
 	call SummaryScreen_InitLayout
 	ld hl, GFX_Balls
-	ld de, vTiles2 tile $4F
+	ld de, vTiles2 tile SUMMARY_TILE_BALL
 	lb bc, BANK(GFX_Balls), 1
 	call DecompressRequest2bpp
 	ld a, [wTempMonCaughtBall]
@@ -357,7 +398,7 @@ SummaryScreen_InitMon:
 	add hl, de
 	push hl
 	pop de
-	ld hl, vTiles2 tile $4F
+	ld hl, vTiles2 tile SUMMARY_TILE_BALL
 	ld c, 1
 	call Request2bppInWRA6
 
@@ -394,46 +435,46 @@ SummaryScreen_InitLayout:
 
 	; Right window
 	hlcoord 7, 1
-	ld a, $31 ; upper-left border
+	ld a, SUMMARY_TILE_SIDE_WINDOW_TL
 	ld [hli], a
 	; hlcoord 8, 1
 	ld bc, 12
-	ld a, $34 ; upper border
+	ld a, SUMMARY_TILE_SIDE_WINDOW_T
 	rst ByteFill
 
 	hlcoord 7, 2
-	ld a, $32 ; left border
+	ld a, SUMMARY_TILE_SIDE_WINDOW_L
 	lb bc, 9, 1
 	call FillBoxWithByte
 	hlcoord 7, 11
-	ld a, $33 ;  lower-left border
+	ld a, SUMMARY_TILE_SIDE_WINDOW_BL
 	ld [hli], a
 	; hlcoord 7, 12
 	ld bc, 12
-	ld a, $35 ; bottom border
+	ld a, SUMMARY_TILE_SIDE_WINDOW_B
 	rst ByteFill
 
 	; Bottom window
 	hlcoord 0, 12
 	ld bc, SCREEN_WIDTH
-	ld a, $38 ; top border
+	ld a, SUMMARY_TILE_BOTTOM_WINDOW_T
 	rst ByteFill
 
 	hlcoord 1, 11
-	ld a, $36
+	ld a, SUMMARY_TILE_BOTTOM_WINDOW_CORNER
 	ld [hli], a
-	ld a, $35
+	ld a, SUMMARY_TILE_BOTTOM_WINDOW_B
 	ld bc, 3
 	rst ByteFill
-	ld [hl], $36
+	ld [hl], SUMMARY_TILE_BOTTOM_WINDOW_CORNER
 
 	hlcoord 1, 12
-	ld a, $37
+	ld a, SUMMARY_TILE_BOTTOM_WINDOW_INNER_CORNER
 	ld [hli], a
 	ld a, " "
 	ld c, 3
 	rst ByteFill
-	ld [hl], $37
+	ld [hl], SUMMARY_TILE_BOTTOM_WINDOW_INNER_CORNER
 
 	ld hl, wSummaryScreenTypes
 	ld a, [wBaseType1]
@@ -461,9 +502,9 @@ SummaryScreen_InitLayout:
 	call .ApplySummaryPalettes
 
 	hlcoord 19 - NUM_SUMMARY_PAGES * 2, 0
-	ld [hl], $41
+	ld [hl], SUMMARY_TILE_LEFT_ARROW
 	hlcoord 19, 0
-	ld [hl], $42
+	ld [hl], SUMMARY_TILE_RIGHT_ARROW
 	ret
 
 .PlaceHPBar:
@@ -525,16 +566,16 @@ SummaryScreen_InitLayout:
 	ret
 
 .PageSprites:
-	db 17, 104, $3C, $0
-	db 17, 120, $3C, $1
-	db 17, 136, $3C, $2
-	db 17, 152, $3C, $3
+	db 17, 104, SUMMARY_TILE_OAM_PAGE, $0
+	db 17, 120, SUMMARY_TILE_OAM_PAGE, $1
+	db 17, 136, SUMMARY_TILE_OAM_PAGE, $2
+	db 17, 152, SUMMARY_TILE_OAM_PAGE, $3
 
 .TabTitleSprites:
-	db 108, 20, $44, $0
-	db 108, 28, $45, $0
-	db 108, 36, $46, $0
-	db 108, 44, $47, $0
+	db 108, 20, SUMMARY_TILE_OAM_TITLES + 0, $0
+	db 108, 28, SUMMARY_TILE_OAM_TITLES + 1, $0
+	db 108, 36, SUMMARY_TILE_OAM_TITLES + 2, $0
+	db 108, 44, SUMMARY_TILE_OAM_TITLES + 3, $0
 
 SummaryScreen_LoadPage:
 	ld a, [wCurPartySpecies]
@@ -685,13 +726,13 @@ SummaryScreen_SwitchPage:
 	ld [rHDMA5], a ; HDMA 19 blocks of tiles
 
 	ld hl, wSummaryScreenOAMSprite00TileID
-	ld [hl], $3C
+	ld [hl], SUMMARY_TILE_OAM_PAGE
 	ld hl, wSummaryScreenOAMSprite01TileID
-	ld [hl], $3C
+	ld [hl], SUMMARY_TILE_OAM_PAGE
 	ld hl, wSummaryScreenOAMSprite02TileID
-	ld [hl], $3C
+	ld [hl], SUMMARY_TILE_OAM_PAGE
 	ld hl, wSummaryScreenOAMSprite03TileID
-	ld [hl], $3C
+	ld [hl], SUMMARY_TILE_OAM_PAGE
 	ld a, [wSummaryScreenFlags]
 	and $3
 	add a, a
@@ -700,7 +741,7 @@ SummaryScreen_SwitchPage:
 	ld e, a
 	ld hl, wSummaryScreenOAMSprite00TileID
 	add hl, de
-	ld [hl], $3D
+	ld [hl], SUMMARY_TILE_OAM_SELECTED_PAGE
 	ld hl, wSummaryScreenOAM
 	ld de, wShadowOAM
 	ld bc, wShadowOAMEnd - wShadowOAM
@@ -993,13 +1034,16 @@ SummaryScreen_PlaceTypeBG:
 	rst CopyBytes
 	ret
 .TypeBG:
-	db $3A, $3B, $3B, $3C
+	db SUMMARY_TILE_TYPE_BG_LEFT
+	db SUMMARY_TILE_TYPE_BG_MIDDLE
+	db SUMMARY_TILE_TYPE_BG_MIDDLE
+	db SUMMARY_TILE_TYPE_BG_RIGHT
 
 ; b = x
 ; c = y
 SummaryScreen_PlaceArrow:
 	ld hl, wSummaryScreenOAMSprite20
-	ld d, $58
+	ld d, SUMMARY_TILE_OAM_ARROW
 	ld e, $6
 .arrowLoop
 	ld a, c
@@ -1014,10 +1058,10 @@ SummaryScreen_PlaceArrow:
 	add a, b
 	ld b, a
 	inc d
-	ld a, $5C
+	ld a, SUMMARY_TILE_OAM_ARROW + 4
 	cp a, d
 	ret z
-	ld a, $5A
+	ld a, SUMMARY_TILE_OAM_ARROW + 2
 	cp a, d
 	jr nz, .arrowLoop
 	ld a, b
