@@ -248,7 +248,7 @@ BattleCommand_checkturn:
 
 	; Early Bird decreases the sleep timer twice as fast (including Rest).
 	call GetTrueUserAbility
-	cp EARLY_BIRD
+	sub EARLY_BIRD
 	jr nz, .no_early_bird
 	dec [hl]
 	jr z, .woke_up
@@ -265,7 +265,8 @@ BattleCommand_checkturn:
 
 .woke_up
 	; if user has Early Bird, display ability activation
-	cp EARLY_BIRD ; a is still user's ability
+	; a is still (user's ability - EARLY_BIRD)
+	and a
 	jr nz, .woke_up_no_early_bird
 	farcall DisableAnimations
 	farcall ShowAbilityActivation
