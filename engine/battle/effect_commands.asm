@@ -246,18 +246,17 @@ BattleCommand_checkturn:
 	and SLP_MASK
 	jr z, .not_asleep
 
-	dec [hl]
-	jr z, .woke_up
-
 	; Early Bird decreases the sleep timer twice as fast (including Rest).
 	call GetTrueUserAbility
 	cp EARLY_BIRD
 	jr nz, .no_early_bird
-	; duplicated, but too few lines to make merging it worth it
+	dec [hl]
+	jr z, .woke_up
+.no_early_bird
 	dec [hl]
 	jr z, .woke_up
 
-.no_early_bird
+	; Still asleep.
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_SLP
@@ -266,8 +265,7 @@ BattleCommand_checkturn:
 
 .woke_up
 	; if user has Early Bird, display ability activation
-	call GetTrueUserAbility
-	cp EARLY_BIRD
+	cp EARLY_BIRD ; a is still user's ability
 	jr nz, .woke_up_no_early_bird
 	farcall DisableAnimations
 	farcall ShowAbilityActivation
