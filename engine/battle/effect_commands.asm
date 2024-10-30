@@ -1943,6 +1943,8 @@ BattleCommand_checkhit:
 	jr nz, .avoid_evasion_boost
 	call GetTrueUserAbility
 	cp KEEN_EYE
+	jr z, .avoid_evasion_boost
+	cp ILLUMINATE
 	jr nz, .check_opponent_unaware
 .avoid_evasion_boost
 	ld a, c
