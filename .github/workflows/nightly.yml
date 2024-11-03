@@ -45,12 +45,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install bison gcc git make -y;
-      
+
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@v3
-          
+        uses: actions/checkout@v4
+
       # DOWNLOAD ALL BUILD ARTIFACTS
       - id: download-polishedcrystal
         name: "Download polishedcrystal"
@@ -106,14 +106,14 @@ jobs:
         with:
           name: "polishedcrystal-savepatch"
           path: "./build"
-      
+
       # DELETE OLD RELEASE
       - name: Delete old release
         id: delete_release
         uses: cb80/delrel@latest
         with:
           tag: ${{ env.NIGHTLY_TAG }}
-          
+
       # ADVANCE NIGHTLY TAG TO MASTER
       - name: Advance nightly tag to master
         run: |
@@ -130,7 +130,7 @@ jobs:
           body: ${{ env.NIGHTLY_BODY }}
           draft: false
           prerelease: true
-          
+
       # UPLOAD POLISHED CRYSTAL ASSETS
       - name: Upload regular assets
         id: upload
@@ -141,7 +141,7 @@ jobs:
             ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
             ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-          
+
       # UPLOAD FAITHFUL ASSETS
       - name: Upload faithful assets
         id: upload-faithful
@@ -163,7 +163,7 @@ jobs:
             ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
             ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-          
+
       # UPLOAD FAITHFUL NORTC ASSETS
       - name: Upload faithful nortc assets
         id: upload-faithful-nortc
@@ -174,7 +174,7 @@ jobs:
             ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
             ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-          
+
       # UPLOAD DEBUG ASSETS
       - name: Upload debug assets
         id: upload-debug
@@ -185,7 +185,7 @@ jobs:
             ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
             ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-          
+
       # UPLOAD FAITHFUL DEBUG ASSETS
       - name: Upload faithful debug assets
         id: upload-faithful-debug
@@ -207,7 +207,7 @@ jobs:
             ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
             ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-          
+
       # UPLOAD FAITHFUL NORTC DEBUG ASSETS
       - name: Upload faithful nortc debug assets
         id: upload-faithful-nortc-debug
@@ -218,7 +218,7 @@ jobs:
             ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
             ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.patch
             ./build/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-          
+
       # UPLOAD SAVE PATCH
       - name: Upload BSP
         id: upload-bsp

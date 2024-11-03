@@ -27,28 +27,28 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install bison gcc git make -y;
-          
+
       # CHECKOUT RGBDS
       - id: checkout-rgbds
         name: "Checkout gbdev/rgbds"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: rgbds
           ref: ${{ env.RGBDS_VERSION }}
           repository: gbdev/rgbds
-      
+
       # INSTALL RGBDS
       - id: install-rgbds
         name: "Install gbdev/rgbds"
         working-directory: rgbds
         run: |
           sudo make install
-      
+
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       # BUILD ROMS
       - id: build-polishedcrystal
         name: "Build polishedcrystal"
@@ -131,7 +131,7 @@ jobs:
           make -j$(nproc) bsp
           mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
           make tidy
-          
+
       # UPLOAD ARTIFACTS
       - id: upload-polishedcrystal
         name: "Upload polishedcrystal artifacts"
@@ -150,7 +150,7 @@ jobs:
           retention-days: 1
           path: |
             build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.*
-      
+
       - id: upload-polishedcrystal-nortc
         name: "Upload polishedcrystal-nortc artifacts"
         uses: actions/upload-artifact@v3
