@@ -240,7 +240,7 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Flash does not require the Zephyr Badge.
 * Updated language (Pack → Bag, Enemy → Foe, Cooltrainer → Ace Trainer, Fisher → Fisherman, Elixer → Elixir, Pink Bow → Silk Scarf, new Berry names, etc).
 * Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell).
-* Janine's pink badge is called the Marsh Badge; Sabrina's gold badge is called the Soul Badge.
+* Janine's pink badge is called the Marsh Badge; Sabrina's gold badge is called the Soul Badge. (The [Teraleak](https://en.wikipedia.org/wiki/Nintendo_data_leak#:~:text=Teraleak) confirmed this to be a [translation error](https://bsky.app/profile/mrcheeze.github.io/post/3lahqvymdpc2p).)
 * Fly to the Rock Tunnel/Power Plant Pokémon Center.
 * Fishing works 75% of the time, not 50%.
 * Nidorina and Nidoqueen can breed, and will produce eggs of either Nidoran gender.
