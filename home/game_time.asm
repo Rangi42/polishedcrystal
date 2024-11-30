@@ -63,7 +63,7 @@ UpdateGameTimer::
 ; (24 in-game hours will pass in 4 real-world hours)
 ; this does not affect the rate of the "hours played", which remains real-time
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
+	and 1 << RTC_OPT
 	jr nz, .using_rtc
 rept NO_RTC_SPEEDUP
 	call UpdateNoRTC

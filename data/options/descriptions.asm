@@ -8,16 +8,14 @@ InitialOptionDescriptions:
 	dw .InitialOptionDesc_EVs
 	dw .InitialOptionDesc_ExpScaling
 	dw .InitialOptionDesc_AffectionBonus
-	dw .InitialOptionDesc_ColorVariation
 	dw .InitialOptionDesc_NextPage
 
+	dw .InitialOptionDesc_RTC
 	dw .InitialOptionDesc_PerfectIVs
 	dw .InitialOptionDesc_TradedMon
-	dw .InitialOptionDesc_RTC
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
+	dw .InitialOptionDesc_ColorVariation
+	dw EmptyString
+	dw EmptyString
 	dw .InitialOptionDesc_PrevPage
 	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
 
@@ -134,20 +132,26 @@ InitialOptionDescriptions:
 	prompt
 
 .InitialOptionDesc_RTC:
-	text "When set the RTC"
-	line "is enabled."
+	text "Use the Real-Time"
+	line "Clock function to"
+	cont "track the time."
 
-	para "Disable this for"
-	line "if you do not have"
-	cont "an RTC."
+	para "If your cartridge"
+	line "or emulator does"
+	cont "not support RTC,"
+
+	assert NO_RTC_SPEEDUP == 6
+	para "disable this to"
+	line "make each in-game"
+	cont "day last 4 hours."
 	prompt
 
 .InitialOptionDesc_NextPage:
 	text "View the next"
-	line "set of options."
+	line "page of options."
 	prompt
 
 .InitialOptionDesc_PrevPage:
-	text "Return to the"
-	line "previous options."
+	text "View the previous"
+	line "page of options."
 	prompt

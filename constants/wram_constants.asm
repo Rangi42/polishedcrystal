@@ -106,13 +106,15 @@ DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT
 DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_IVS_OPT) | (1 << PSS_OPT)
 
 ; wInitialOptions2::
-	const_def
-	const EVS_OPT_DISABLED
-	const EVS_OPT_CLASSIC
-	const EVS_OPT_MODERN ; Not yet implemented
-	const RTC_OPT
+	const_def 3
+	const RTC_OPT ; 3
 
+	const_def
+	const EVS_OPT_DISABLED ; %00
+	const EVS_OPT_CLASSIC  ; %01
+	const EVS_OPT_MODERN   ; %10
 DEF EV_OPTMASK EQU %11
+
 DEF RESET_INIT_OPTS EQU 7
 
 

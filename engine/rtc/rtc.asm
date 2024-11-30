@@ -33,7 +33,7 @@ SaveRTC:
 
 ; do not talk to the RTC hardware in the no-RTC patch
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
+	and 1 << RTC_OPT
 	jr z, .no_rtc
 	; pulse the RTC to get its value
 	call LatchClock
@@ -64,7 +64,7 @@ StartClock::
 	; bit 6: Day count exceeds 255
 	call c, RecordRTCStatus
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
+	and 1 << RTC_OPT
 	ret z
 
 	; start the RTC hardware running

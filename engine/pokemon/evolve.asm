@@ -51,9 +51,8 @@ EvolveAfterBattle_MasterLoop:
 	ld [wMonTriedToEvolve], a
 
 	call TryToEvolve
-	jr nc, EvolveAfterBattle_MasterLoop
+	call c, CancelEvolution
 
-	call CancelEvolution
 	jr EvolveAfterBattle_MasterLoop
 
 EvolveAfterBattle_ReturnToMap:

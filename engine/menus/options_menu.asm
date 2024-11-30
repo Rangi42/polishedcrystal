@@ -143,7 +143,7 @@ GetOptionPointer:
 	dw Options_Frame
 	dw Options_Typeface
 	dw Options_Sound
-	dw Options_Unused
+	dw DoNothing
 	dw Options_Next
 	dw Options_Done
 
@@ -159,10 +159,10 @@ GetOptionPointer:
 	dw Options_Keyboard
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_Unused
-	dw Options_Unused
+	dw DoNothing
+	dw DoNothing
 	dw Options_Previous
-	dw Options_Unused
+	dw DoNothing
 	dw Options_Done
 
 Options_TextSpeed:
@@ -829,8 +829,4 @@ Options_UpdateCursorPosition:
 	ld a, [wJumptableIndex]
 	rst AddNTimes
 	ld [hl], "▶"
-	ret
-
-Options_Unused:
-	and a
 	ret

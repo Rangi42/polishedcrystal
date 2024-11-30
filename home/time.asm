@@ -20,7 +20,7 @@ GetClock::
 ; store clock data in wRTCDayHi-wRTCSeconds
 
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
+	and 1 << RTC_OPT
 	ret z
 
 ; enable clock r/w
@@ -201,7 +201,7 @@ SetClock::
 
 ; do not talk to the RTC hardware in the no-RTC patch
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
+	and 1 << RTC_OPT
 	ret z
 
 ; enable clock r/w
