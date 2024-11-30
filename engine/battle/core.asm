@@ -6697,6 +6697,7 @@ GiveExperiencePoints:
 	hlcoord 2, 6
 	lb bc, 6, 6
 	predef PlaceGraphic
+	call EmptyBattleTextbox
 
 	pop af
 	ld [wCurPartyLevel], a
