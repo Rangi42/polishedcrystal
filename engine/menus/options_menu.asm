@@ -129,7 +129,7 @@ StringOptions2:
 StringOptions3:
 	text  "Keyboard"
 	next1 "        :"
-	next1 "Evolve In Battle"
+	next1 "Evolve in Battle"
 	next1 "        :"
 	next1 "        " ; no-optimize trailing string space
 	next1 "        " ; no-optimize trailing string space
@@ -249,21 +249,16 @@ Options_BattleEffects:
 	jr z, .SetOn
 .SetOff:
 	res BATTLE_EFFECTS, [hl]
-	ld de, .Off
+	ld de, OffString
 	jr .Display
 .SetOn:
 	set BATTLE_EFFECTS, [hl]
-	ld de, .On
+	ld de, OnString
 .Display:
 	hlcoord 11, 5
 	rst PlaceString
 	and a
 	ret
-
-.Off:
-	db "Off@"
-.On:
-	db "On @"
 
 Options_BattleStyle:
 	ld hl, wOptions2
@@ -330,21 +325,16 @@ Options_RunningShoes:
 	jr z, .SetOn
 .SetOff:
 	res RUNNING_SHOES, [hl]
-	ld de, .Off
+	ld de, OffString
 	jr .Display
 .SetOn:
 	set RUNNING_SHOES, [hl]
-	ld de, .On
+	ld de, OnString
 .Display:
 	hlcoord 11, 9
 	rst PlaceString
 	and a
 	ret
-
-.Off:
-	db "Off@"
-.On:
-	db "On @"
 
 Options_Frame:
 	ld hl, wTextboxFrame
@@ -798,20 +788,20 @@ Options_EvolveInBattle:
 	jr z, .SetOn
 .SetOff:
 	res EVOLVE_IN_BATTLE_F, [hl]
-	ld de, .Off
+	ld de, OffString
 	jr .Display
 .SetOn:
 	set EVOLVE_IN_BATTLE_F, [hl]
-	ld de, .On
+	ld de, OnString
 .Display:
 	hlcoord 11, 5
 	rst PlaceString
 	and a
 	ret
 
-.Off:
+OffString:
 	db "Off@"
-.On:
+OnString:
 	db "On @"
 
 Options_Unused:
