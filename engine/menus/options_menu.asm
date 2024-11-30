@@ -33,6 +33,7 @@ OptionsMenu:
 	jr c, .ExitOptions
 
 .dpad
+	call CheckSkipOptions
 	call Options_UpdateCursorPosition
 	ld c, 3
 	call DelayFrames
@@ -44,6 +45,27 @@ OptionsMenu:
 	call WaitSFX
 	pop af
 	ldh [hInMenu], a
+	ret
+
+CheckSkipOptions:
+	ld a, [wCurOptionsPage]
+	cp 2 ; options page 3 has unused options we want to skip
+	ret nz
+	ld a, [wJumptableIndex]
+	cp 2 ; if we're on option 3 (unused), skip to ahead 4 options
+	jr z, .skip_ahead_4
+	cp 5 ; if we're on option 6 (unused), skip back 4 options
+	jr z, .skip_back_4
+	ret
+
+.skip_ahead_4
+	add 4
+	ld [wJumptableIndex], a
+	ret
+
+.skip_back_4
+	sub 4
+	ld [wJumptableIndex], a
 	ret
 
 OptionsMenu_LoadOptions:
@@ -97,8 +119,26 @@ StringOptions2:
 	next1 "        :"
 	next1 "Typeface"
 	next1 "        :"
-	next1 "Keyboard"
+	next1 "Previous"
+	next1 "        " ; no-optimize trailing string space
+	next1 "Next"
+	next1 "        " ; no-optimize trailing string space
+	next1 "Done"
+	done
+
+StringOptions3:
+	text  "Keyboard"
 	next1 "        :"
+	next1 "Evolve In Battle"
+	next1 "        :"
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
 	next1 "Previous"
 	next1 "        " ; no-optimize trailing string space
 	next1 "Done"
@@ -109,6 +149,12 @@ GetOptionPointer:
 	and a
 	ld a, [wJumptableIndex]
 	jr z, .page1
+	ld a, [wCurOptionsPage]
+	dec a
+	ld a, [wJumptableIndex]
+	jr z, .page2
+	add 8
+.page2
 	add 8
 .page1
 	call StackJumpTable
@@ -120,7 +166,7 @@ GetOptionPointer:
 	dw Options_RunningShoes
 	dw Options_Frame
 	dw Options_Sound
-	dw Options_NextPrevious
+	dw Options_Next
 	dw Options_Done
 
 	dw Options_ClockFormat
@@ -128,8 +174,17 @@ GetOptionPointer:
 	dw Options_TextAutoscroll
 	dw Options_TurningSpeed
 	dw Options_Typeface
+	dw Options_Previous
+	dw Options_Next
+	dw Options_Done
+
 	dw Options_Keyboard
-	dw Options_NextPrevious
+	dw Options_EvolveInBattle
+	dw Options_Unused
+	dw Options_Unused
+	dw Options_Unused
+	dw Options_Unused
+	dw Options_Previous
 	dw Options_Done
 
 Options_TextSpeed:
@@ -605,7 +660,7 @@ Options_Keyboard:
 	set QWERTY_KEYBOARD_F, [hl]
 	ld de, .QWERTY
 .Display:
-	hlcoord 11, 13
+	hlcoord 11, 3
 	rst PlaceString
 	and a
 	ret
@@ -615,21 +670,50 @@ Options_Keyboard:
 .QWERTY:
 	db "QWERTY@"
 
-Options_NextPrevious:
-	ld hl, wCurOptionsPage
+Options_Next:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | D_LEFT | D_RIGHT
 	jr z, .NonePressed
-	bit 0, [hl]
-	jr z, .Page2
-;.Page1:
-	res 0, [hl]
-	ld de, StringOptions1
+	ld a, [wCurOptionsPage]
+	and a
+	jr z, .goto_page2
+	inc a
+	ld [wCurOptionsPage], a
+	ld de, StringOptions3
 	jr .Display
-.Page2:
-	set 0, [hl]
+.goto_page2:
+	inc a
+	ld [wCurOptionsPage], a
 	ld de, StringOptions2
-.Display:
+.Display
+	push de
+	hlcoord 0, 0
+	lb bc, 16, 18
+	call Textbox
+	pop de
+	hlcoord 2, 2
+	rst PlaceString
+	call OptionsMenu_LoadOptions
+	ld a, NUM_OPTIONS - 1
+	ld [wJumptableIndex], a
+.NonePressed:
+	and a
+	ret
+
+Options_Previous:
+	ldh a, [hJoyPressed]
+	and A_BUTTON | D_LEFT | D_RIGHT
+	jr z, .NonePressed
+	ld a, [wCurOptionsPage]
+	dec a
+	jr z, .goto_page1
+	ld [wCurOptionsPage], a
+	ld de, StringOptions2
+	jr .Display
+.goto_page1:
+	ld [wCurOptionsPage], a
+	ld de, StringOptions1
+.Display
 	push de
 	hlcoord 0, 0
 	lb bc, 16, 18
@@ -699,4 +783,37 @@ Options_UpdateCursorPosition:
 	ld a, [wJumptableIndex]
 	rst AddNTimes
 	ld [hl], "▶"
+	ret
+
+Options_EvolveInBattle:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
+	bit EVOLVE_IN_BATTLE_F, [hl]
+	jr z, .SetOff
+	jr .SetOn
+.Toggle
+	bit EVOLVE_IN_BATTLE_F, [hl]
+	jr z, .SetOn
+.SetOff:
+	res EVOLVE_IN_BATTLE_F, [hl]
+	ld de, .Off
+	jr .Display
+.SetOn:
+	set EVOLVE_IN_BATTLE_F, [hl]
+	ld de, .On
+.Display:
+	hlcoord 11, 5
+	rst PlaceString
+	and a
+	ret
+
+.Off:
+	db "Off@"
+.On:
+	db "On @"
+
+Options_Unused:
+	and a
 	ret

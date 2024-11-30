@@ -6681,6 +6681,17 @@ GiveExperiencePoints:
 	pop af
 	ld [wCurPartyLevel], a
 
+	ld hl, wOptions3
+	bit EVOLVE_IN_BATTLE_F, [hl]
+	jr nz, .evolve_now
+	ld hl, wEvolvableFlags
+	ld a, [wCurPartyMon]
+	ld c, a
+	ld b, SET_FLAG
+	predef FlagPredef
+	jr .evolve_logic_done
+
+.evolve_now
 	call LoadTileMapToTempTileMap
 	call EvolveDuringBattle
 	call UpdatePlayerHPPal
@@ -6694,6 +6705,7 @@ GiveExperiencePoints:
 	predef PlaceGraphic
 	call EmptyBattleTextbox
 
+.evolve_logic_done
 	pop af
 	ld [wCurPartyLevel], a
 
