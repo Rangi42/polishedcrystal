@@ -6680,11 +6680,32 @@ GiveExperiencePoints:
 	jr nz, .level_loop
 	pop af
 	ld [wCurPartyLevel], a
+
+	ld hl, wOptions3
+	bit EVOLVE_IN_BATTLE_F, [hl]
+	jr nz, .evolve_now
 	ld hl, wEvolvableFlags
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, SET_FLAG
 	predef FlagPredef
+	jr .evolve_logic_done
+
+.evolve_now
+	call LoadTileMapToTempTileMap
+	call EvolveDuringBattle
+	call UpdatePlayerHPPal
+	call _LoadBattleFontsHPBar
+	call GetMonBackpic
+	call LoadTempTileMapToTileMap
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 2, 6
+	lb bc, 6, 6
+	predef PlaceGraphic
+	call EmptyBattleTextbox
+
+.evolve_logic_done
 	pop af
 	ld [wCurPartyLevel], a
 
