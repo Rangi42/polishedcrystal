@@ -1,6 +1,6 @@
 DefaultOptions3:
 ; wOptions3
-	db 0
+	db (1 << EVOLVE_IN_BATTLE_F)
 
 DefaultOptions:
 ; wOptions1

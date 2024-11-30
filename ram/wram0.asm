@@ -1340,7 +1340,8 @@ SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bits 1-7: unused
+; bit 1: evolve in battle
+; bits 2-7: unused
 	db
 
 wOptions::
