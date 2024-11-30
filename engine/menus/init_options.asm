@@ -1,4 +1,4 @@
-DEF NUM_INITIAL_OPTIONS EQU 9
+DEF NUM_INITIAL_OPTIONS_PER_PAGE EQU 8
 
 SetInitialOptions:
 	ld a, $10
@@ -81,7 +81,7 @@ SetInitialOptions:
 	jr nz, .edge_loop
 
 	hlcoord 2, 0
-	ld de, .InitialOptionsString
+	ld de, InitialOptionsString1
 	rst PlaceString
 
 	hlcoord 1, 17
@@ -96,29 +96,9 @@ SetInitialOptions:
 ;	ld a, CGB_PLAIN
 ;	call GetCGBLayout
 ;	call SetDefaultBGPAndOBP
-
-	ld a, [wJumptableIndex]
-	push af
 	xor a
-	ld [wJumptableIndex], a
-	ldh [hJoyPressed], a
-	ld c, NUM_INITIAL_OPTIONS
-.print_text_loop ; this next will display the settings of each option when the menu is opened
-	push bc
-	xor a
-	ldh [hJoyLast], a
-	call GetInitialOptionPointer
-	pop bc
-	ld hl, wJumptableIndex
-	inc [hl]
-	dec c
-	jr nz, .print_text_loop
-	pop af
-	ld [wJumptableIndex], a
-
-	ld a, $1
-	ldh [hBGMapMode], a
-	call ApplyTilemapInVBlank
+	ld [wCurOptionsPage], a
+	call InitialOptionsMenu_LoadOptions
 
 .joypad_loop
 	call JoyTextDelay
@@ -152,6 +132,13 @@ SetInitialOptions:
 .ShowDescription:
 	ld hl, InitialOptionDescriptions
 	ld a, [wJumptableIndex]
+	ld d, a
+	ld a, [wCurOptionsPage]
+	and a
+	ld a, d
+	jr z, .page1
+	add NUM_INITIAL_OPTIONS_PER_PAGE
+.page1
 	add a
 	ld d, 0
 	ld e, a
@@ -160,7 +147,19 @@ SetInitialOptions:
 	ld h, [hl]
 	ld l, a
 	call PrintText
-	jmp .rerender
+	ld a, [wCurOptionsPage]
+	and a
+	ld de, InitialOptionsString1
+	jr z, .Display
+	ld de, InitialOptionsString2
+.Display
+	push de
+	call InitialOptions_ReRender
+	pop de
+	hlcoord 2, 0
+	rst PlaceString
+	call InitialOptionsMenu_LoadOptions
+	jr .joypad_loop
 
 .InitialOptionsText:
 	text_far _InitialOptionsText
@@ -172,7 +171,7 @@ INCLUDE "gfx/new_game/init_bg.pal"
 .BGTiles:
 INCBIN "gfx/new_game/init_bg.2bpp.lz"
 
-.InitialOptionsString:
+InitialOptionsString1:
 	text  "Natures"
 	next1 "            :"
 	next1 "Abilities"
@@ -187,16 +186,64 @@ INCBIN "gfx/new_game/init_bg.2bpp.lz"
 	next1 "            :"
 	next1 "Color variation"
 	next1 "            :"
-	next1 "Perfect stats"
+	next1 "Next"
+	next1 "        " ; no-optimize trailing string space
+	done
+
+InitialOptionsString2:
+	text  "Perfect stats"
 	next1 "            :"
 	next1 "Traded <PK><MN> obey"
 	next1 "            :"
-;	next1 "RTC Enabled"
-;	next1 "            :"
+	next1 "RTC Enabled"
+	next1 "            :"
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "        " ; no-optimize trailing string space
+	next1 "Previous"
+	next1 "        " ; no-optimize trailing string space
 	done
 
+InitialOptionsString3:
+	done
+
+InitialOptionsMenu_LoadOptions:
+	ld a, [wJumptableIndex]
+	push af
+	xor a
+	ld [wJumptableIndex], a
+	ldh [hJoyPressed], a
+	ld c, NUM_INITIAL_OPTIONS_PER_PAGE
+.print_text_loop ; this next will display the settings of each option when the menu is opened
+	push bc
+	xor a
+	ldh [hJoyLast], a
+	call GetInitialOptionPointer
+	pop bc
+	ld hl, wJumptableIndex
+	inc [hl]
+	dec c
+	jr nz, .print_text_loop
+	pop af
+	ld [wJumptableIndex], a
+
+	ld a, $1
+	ldh [hBGMapMode], a
+	jmp ApplyTilemapInVBlank
+
 GetInitialOptionPointer:
-	call StandardStackJumpTable
+	ld a, [wCurOptionsPage]
+	and a
+	ld a, [wJumptableIndex]
+	jr z, .page1
+	add NUM_INITIAL_OPTIONS_PER_PAGE
+.page1
+	call StackJumpTable
 
 ; These are in the same order as InitialOptionDescriptions,
 ; not the *_OPT bit order!
@@ -209,10 +256,17 @@ GetInitialOptionPointer:
 	dw InitialOptions_ExpScaling
 	dw InitialOptions_AffectionBonus
 	dw InitialOptions_ColorVariation
+	dw InitialOptions_Next
+
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
-;	dw InitialOptions_RTC
-assert_table_length NUM_INITIAL_OPTIONS
+	dw InitialOptions_RTC
+	dw InitialOptions_Unused
+	dw InitialOptions_Unused
+	dw InitialOptions_Unused
+	dw InitialOptions_Unused
+	dw InitialOptions_Previous
+	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
@@ -418,7 +472,7 @@ InitialOptions_PerfectIVs:
 	set PERFECT_IVS_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 15
+	hlcoord 15, 1
 	rst PlaceString
 	and a
 	ret
@@ -442,7 +496,7 @@ InitialOptions_TradedMon:
 	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 17
+	hlcoord 15, 3
 	rst PlaceString
 	and a
 	ret
@@ -466,7 +520,7 @@ InitialOptions_RTC:
 	set RTC_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 17
+	hlcoord 15, 5
 	rst PlaceString
 	and a
 	ret
@@ -480,6 +534,64 @@ AllString:
 ModernString:
 	db "{-3d:MODERN_EV_LIMIT}@"
 
+InitialOptions_Next:
+	ldh a, [hJoyPressed]
+	and A_BUTTON | D_LEFT | D_RIGHT
+	jr z, .NonePressed
+	ld hl, wCurOptionsPage
+	ld a, [hl]
+	inc [hl]
+	and a
+	ld de, InitialOptionsString2
+	jr z, .Display
+	ld de, InitialOptionsString3
+.Display
+	push de
+	call InitialOptions_ReRender
+	pop de
+	hlcoord 2, 0
+	rst PlaceString
+	call InitialOptionsMenu_LoadOptions
+	; [wJumptableIndex] = [wCurOptionsPage] == 1 ? NUM_INITIAL_OPTIONS_PER_PAGE - 1 : NUM_INITIAL_OPTIONS_PER_PAGE - 2
+	ld a, [wCurOptionsPage]
+	dec a
+	ld a, NUM_INITIAL_OPTIONS_PER_PAGE -1
+	jr z, .GotPage
+	dec a
+.GotPage
+	ld [wJumptableIndex], a
+.NonePressed:
+	and a
+	ret
+
+InitialOptions_Previous:
+	ldh a, [hJoyPressed]
+	and A_BUTTON | D_LEFT | D_RIGHT
+	jr z, .NonePressed
+	ld hl, wCurOptionsPage
+	dec [hl]
+	ld de, InitialOptionsString1
+	jr z, .Display
+	ld de, InitialOptionsString2
+.Display
+	push de
+	call InitialOptions_ReRender
+	pop de
+	hlcoord 2, 0
+	rst PlaceString
+	call InitialOptionsMenu_LoadOptions
+	; [wJumptableIndex] = [wCurOptionsPage] == 0 ? NUM_INITIAL_OPTIONS_PER_PAGE - 1 : NUM_INITIAL_OPTIONS_PER_PAGE - 2
+	ld a, [wCurOptionsPage]
+	and a
+	ld a, NUM_INITIAL_OPTIONS_PER_PAGE - 1
+	jr z, .GotPage
+	dec a
+.GotPage
+	ld [wJumptableIndex], a
+.NonePressed:
+	and a
+	ret
+
 InitialOptionsControl:
 	ld hl, wJumptableIndex
 	ldh a, [hJoyLast]
@@ -492,11 +604,15 @@ InitialOptionsControl:
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-	cp NUM_INITIAL_OPTIONS - 1
+	cp NUM_INITIAL_OPTIONS_PER_PAGE - 1
 	jr nz, .Increase
 	ld [hl], -1
 .Increase:
 	inc [hl]
+	call GetInitSkipAmount
+	ld a, [hl]
+	add b
+	ld [hl], a
 	scf
 	ret
 
@@ -504,11 +620,50 @@ InitialOptionsControl:
 	ld a, [hl]
 	and a
 	jr nz, .Decrease
-	ld [hl], NUM_INITIAL_OPTIONS
+	ld [hl], NUM_INITIAL_OPTIONS_PER_PAGE
 .Decrease:
 	dec [hl]
+	call GetInitSkipAmount
+	ld a, [hl]
+	sub b
+	ld [hl], a
 	scf
 	ret
+
+GetInitSkipAmount:
+; preserves hl == wJumptableIndex
+	ld a, [hl]
+	ld c, a
+	ld a, [wCurOptionsPage]
+	ld b, a
+	push hl
+	ld hl, InitSkipTable
+.loop
+	ld a, [hli]
+	inc a
+	jr z, .done
+	dec a
+	cp b
+	jr nz, .next2
+	ld a, [hli]
+	cp c
+	jr nz, .next1
+	ld a, [hl]
+.done
+	ld b, a
+	pop hl
+	ret
+.next2
+	inc hl
+.next1
+	inc hl
+	jr .loop
+
+InitSkipTable:
+	; page, item, skip
+	db 1, 3, 4
+	db 1, 6, 4
+	db -1 ; end
 
 InitialOptions_UpdateCursorPosition:
 	hlcoord 1, 0
@@ -527,6 +682,41 @@ InitialOptions_UpdateCursorPosition:
 	rst AddNTimes
 	inc hl
 	ld [hl], "▶"
+	ret
+
+InitialOptions_Unused:
+	and a
+	ret
+
+InitialOptions_ReRender:
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 0, 0
+	ld a, " "
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	rst ByteFill
+
+	hlcoord 0, 0
+	ld a, $01 ; left
+	ld bc, SCREEN_WIDTH - 2
+	ld d, SCREEN_HEIGHT
+.edge_loop
+	ld [hli], a
+	inc a ; right
+	add hl, bc
+	ld [hli], a
+	dec a ; left
+	dec d
+	jr nz, .edge_loop
+
+	hlcoord 1, 17
+	ld a, $03
+	ld d, 12
+.select_start_loop
+	ld [hli], a
+	inc a
+	dec d
+	jr nz, .select_start_loop
 	ret
 
 INCLUDE "data/options/descriptions.asm"

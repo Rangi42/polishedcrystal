@@ -9,10 +9,17 @@ InitialOptionDescriptions:
 	dw .InitialOptionDesc_ExpScaling
 	dw .InitialOptionDesc_AffectionBonus
 	dw .InitialOptionDesc_ColorVariation
+	dw .InitialOptionDesc_NextPage
+
 	dw .InitialOptionDesc_PerfectIVs
 	dw .InitialOptionDesc_TradedMon
-;	dw .InitialOptionDesc_RTC
-	assert_table_length NUM_INITIAL_OPTIONS
+	dw .InitialOptionDesc_RTC
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
+	dw .InitialOptionDesc_PrevPage
+	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
 
 .InitialOptionDesc_Natures:
 	text "Natures raise one"
@@ -133,4 +140,14 @@ InitialOptionDescriptions:
 	para "Disable this for"
 	line "if you do not have"
 	cont "an RTC."
+	prompt
+
+.InitialOptionDesc_NextPage:
+	text "View the next"
+	line "set of options."
+	prompt
+
+.InitialOptionDesc_PrevPage:
+	text "Return to the"
+	line "previous options."
 	prompt
