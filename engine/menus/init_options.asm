@@ -1,4 +1,4 @@
-DEF NUM_INITIAL_OPTIONS EQU 9
+DEF NUM_INITIAL_OPTIONS_PER_PAGE EQU 7
 
 SetInitialOptions:
 	ld a, $10
@@ -23,7 +23,7 @@ SetInitialOptions:
 	xor a
 	rst ByteFill
 
-	hlcoord 1, 17, wAttrmap
+	hlcoord 1, 16, wAttrmap
 	ld a, $01
 	ld c, 12
 .attr_loop
@@ -80,11 +80,11 @@ SetInitialOptions:
 	dec d
 	jr nz, .edge_loop
 
-	hlcoord 2, 0
-	ld de, .InitialOptionsString
+	hlcoord 2, 1
+	ld de, InitialOptionsString1
 	rst PlaceString
 
-	hlcoord 1, 17
+	hlcoord 1, 16
 	ld a, $03
 	ld d, 12
 .select_start_loop
@@ -96,29 +96,9 @@ SetInitialOptions:
 ;	ld a, CGB_PLAIN
 ;	call GetCGBLayout
 ;	call SetDefaultBGPAndOBP
-
-	ld a, [wJumptableIndex]
-	push af
 	xor a
-	ld [wJumptableIndex], a
-	ldh [hJoyPressed], a
-	ld c, NUM_INITIAL_OPTIONS
-.print_text_loop ; this next will display the settings of each option when the menu is opened
-	push bc
-	xor a
-	ldh [hJoyLast], a
-	call GetInitialOptionPointer
-	pop bc
-	ld hl, wJumptableIndex
-	inc [hl]
-	dec c
-	jr nz, .print_text_loop
-	pop af
-	ld [wJumptableIndex], a
-
-	ld a, $1
-	ldh [hBGMapMode], a
-	call ApplyTilemapInVBlank
+	ld [wCurOptionsPage], a
+	call InitialOptionsMenu_LoadOptions
 
 .joypad_loop
 	call JoyTextDelay
@@ -152,6 +132,13 @@ SetInitialOptions:
 .ShowDescription:
 	ld hl, InitialOptionDescriptions
 	ld a, [wJumptableIndex]
+	ld d, a
+	ld a, [wCurOptionsPage]
+	and a
+	ld a, d
+	jr z, .page1
+	add NUM_INITIAL_OPTIONS_PER_PAGE
+.page1
 	add a
 	ld d, 0
 	ld e, a
@@ -160,7 +147,17 @@ SetInitialOptions:
 	ld h, [hl]
 	ld l, a
 	call PrintText
-	jmp .rerender
+	call InitialOptions_ReRender
+	ld a, [wCurOptionsPage]
+	and a
+	ld de, InitialOptionsString1
+	jr z, .Display
+	ld de, InitialOptionsString2
+.Display
+	hlcoord 2, 1
+	rst PlaceString
+	call InitialOptionsMenu_LoadOptions
+	jr .joypad_loop
 
 .InitialOptionsText:
 	text_far _InitialOptionsText
@@ -172,7 +169,7 @@ INCLUDE "gfx/new_game/init_bg.pal"
 .BGTiles:
 INCBIN "gfx/new_game/init_bg.2bpp.lz"
 
-.InitialOptionsString:
+InitialOptionsString1:
 	text  "Natures"
 	next1 "            :"
 	next1 "Abilities"
@@ -185,16 +182,57 @@ INCBIN "gfx/new_game/init_bg.2bpp.lz"
 	next1 "            :"
 	next1 "Affection bonus"
 	next1 "            :"
-	next1 "Color variation"
+	next1 "Next"
+	done
+
+InitialOptionsString2:
+	text  "Real-time clock"
 	next1 "            :"
 	next1 "Perfect stats"
 	next1 "            :"
 	next1 "Traded <PK><MN> obey"
 	next1 "            :"
+	next1 "Color variation"
+	next1 "            :"
+	next1 "            " ; no-optimize trailing string space
+	next1 "            " ; no-optimize trailing string space
+	next1 "            " ; no-optimize trailing string space
+	next1 "            " ; no-optimize trailing string space
+	next1 "Previous"
 	done
 
+InitialOptionsMenu_LoadOptions:
+	ld a, [wJumptableIndex]
+	push af
+	xor a
+	ld [wJumptableIndex], a
+	ldh [hJoyPressed], a
+	ld c, NUM_INITIAL_OPTIONS_PER_PAGE
+.print_text_loop ; this next will display the settings of each option when the menu is opened
+	push bc
+	xor a
+	ldh [hJoyLast], a
+	call GetInitialOptionPointer
+	pop bc
+	ld hl, wJumptableIndex
+	inc [hl]
+	dec c
+	jr nz, .print_text_loop
+	pop af
+	ld [wJumptableIndex], a
+
+	ld a, $1
+	ldh [hBGMapMode], a
+	jmp ApplyTilemapInVBlank
+
 GetInitialOptionPointer:
-	call StandardStackJumpTable
+	ld a, [wCurOptionsPage]
+	and a
+	ld a, [wJumptableIndex]
+	jr z, .page1
+	add NUM_INITIAL_OPTIONS_PER_PAGE
+.page1
+	call StackJumpTable
 
 ; These are in the same order as InitialOptionDescriptions,
 ; not the *_OPT bit order!
@@ -206,10 +244,16 @@ GetInitialOptionPointer:
 	dw InitialOptions_EVs
 	dw InitialOptions_ExpScaling
 	dw InitialOptions_AffectionBonus
-	dw InitialOptions_ColorVariation
+	dw InitialOptions_Next
+
+	dw InitialOptions_RTC
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
-	assert_table_length NUM_INITIAL_OPTIONS
+	dw InitialOptions_ColorVariation
+	dw DoNothing
+	dw DoNothing
+	dw InitialOptions_Previous
+	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
@@ -230,7 +274,7 @@ InitialOptions_Natures:
 	set NATURES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 1
+	hlcoord 15, 2
 	rst PlaceString
 	and a
 	ret
@@ -254,7 +298,7 @@ InitialOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 3
+	hlcoord 15, 4
 	rst PlaceString
 	and a
 	ret
@@ -278,7 +322,7 @@ InitialOptions_PSS:
 	set PSS_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 5
+	hlcoord 15, 6
 	rst PlaceString
 	and a
 	ret
@@ -319,7 +363,7 @@ InitialOptions_EVs:
 	jr c, .Display
 	ld de, NoString
 .Display:
-	hlcoord 15, 7
+	hlcoord 15, 8
 	rst PlaceString
 	and a
 	ret
@@ -343,7 +387,7 @@ InitialOptions_ExpScaling:
 	set SCALED_EXP_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 9
+	hlcoord 15, 10
 	rst PlaceString
 	and a
 	ret
@@ -367,7 +411,7 @@ InitialOptions_AffectionBonus:
 	set AFFECTION_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 11
+	hlcoord 15, 12
 	rst PlaceString
 	and a
 	ret
@@ -391,7 +435,7 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 13
+	hlcoord 15, 8
 	rst PlaceString
 	and a
 	ret
@@ -415,7 +459,7 @@ InitialOptions_PerfectIVs:
 	set PERFECT_IVS_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 15
+	hlcoord 15, 4
 	rst PlaceString
 	and a
 	ret
@@ -439,7 +483,31 @@ InitialOptions_TradedMon:
 	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 17
+	hlcoord 15, 6
+	rst PlaceString
+	and a
+	ret
+
+InitialOptions_RTC:
+	ld hl, wInitialOptions2
+	ldh a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit RTC_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit RTC_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res RTC_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set RTC_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 2
 	rst PlaceString
 	and a
 	ret
@@ -453,6 +521,40 @@ AllString:
 ModernString:
 	db "{-3d:MODERN_EV_LIMIT}@"
 
+InitialOptions_Next:
+	ldh a, [hJoyPressed]
+	and A_BUTTON | D_LEFT | D_RIGHT
+	jr z, .NonePressed
+	call InitialOptions_ReRender
+	ld de, InitialOptionsString2
+	hlcoord 2, 1
+	rst PlaceString
+	ld a, 1
+	ld [wCurOptionsPage], a
+	call InitialOptionsMenu_LoadOptions
+	ld a, NUM_INITIAL_OPTIONS_PER_PAGE - 1
+	ld [wJumptableIndex], a
+.NonePressed:
+	and a
+	ret
+
+InitialOptions_Previous:
+	ldh a, [hJoyPressed]
+	and A_BUTTON | D_LEFT | D_RIGHT
+	jr z, .NonePressed
+	call InitialOptions_ReRender
+	ld de, InitialOptionsString1
+	hlcoord 2, 1
+	rst PlaceString
+	xor a
+	ld [wCurOptionsPage], a
+	call InitialOptionsMenu_LoadOptions
+	ld a, NUM_INITIAL_OPTIONS_PER_PAGE - 1
+	ld [wJumptableIndex], a
+.NonePressed:
+	and a
+	ret
+
 InitialOptionsControl:
 	ld hl, wJumptableIndex
 	ldh a, [hJoyLast]
@@ -465,11 +567,16 @@ InitialOptionsControl:
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-	cp NUM_INITIAL_OPTIONS - 1
+	cp NUM_INITIAL_OPTIONS_PER_PAGE - 1
 	jr nz, .Increase
 	ld [hl], -1
 .Increase:
 	inc [hl]
+	call DoSkipOnPage2
+	jr nz, .no_skip_inc
+	inc [hl]
+	inc [hl]
+.no_skip_inc
 	scf
 	ret
 
@@ -477,29 +584,75 @@ InitialOptionsControl:
 	ld a, [hl]
 	and a
 	jr nz, .Decrease
-	ld [hl], NUM_INITIAL_OPTIONS
+	ld [hl], NUM_INITIAL_OPTIONS_PER_PAGE
 .Decrease:
 	dec [hl]
+	call DoSkipOnPage2
+	jr nz, .no_skip_dec
+	dec [hl]
+	dec [hl]
+.no_skip_dec
 	scf
 	ret
 
+DoSkipOnPage2:
+	ld a, [wCurOptionsPage]
+	dec a
+	ret nz ; no skip
+	ld a, [hl] ; [wJumptableIndex]
+	cp 4
+	ret z ; skip
+	cp 5
+	ret
+
 InitialOptions_UpdateCursorPosition:
-	hlcoord 1, 0
+	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
-	ld c, SCREEN_HEIGHT - 1
+	ld c, NUM_INITIAL_OPTIONS_PER_PAGE * 2
 .loop
 	ld [hl], " "
 	add hl, de
 	dec c
 	jr nz, .loop
-	; hlcoord 1, [wJumptableIndex] * 2
+	; hlcoord 1, [wJumptableIndex] * 2 + 1
 	ld a, [wJumptableIndex]
 	add a
-	ld hl, wTilemap
+	hlcoord 0, 1
 	ld bc, SCREEN_WIDTH
 	rst AddNTimes
 	inc hl
 	ld [hl], "▶"
+	ret
+
+InitialOptions_ReRender:
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 0, 0
+	ld a, " "
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	rst ByteFill
+
+	hlcoord 0, 0
+	ld a, $01 ; left
+	ld bc, SCREEN_WIDTH - 2
+	ld d, SCREEN_HEIGHT
+.edge_loop
+	ld [hli], a
+	inc a ; right
+	add hl, bc
+	ld [hli], a
+	dec a ; left
+	dec d
+	jr nz, .edge_loop
+
+	hlcoord 1, 16
+	ld a, $03
+	ld d, 12
+.select_start_loop
+	ld [hli], a
+	inc a
+	dec d
+	jr nz, .select_start_loop
 	ret
 
 INCLUDE "data/options/descriptions.asm"
