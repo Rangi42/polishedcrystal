@@ -13,8 +13,8 @@ InitialOptionDescriptions:
 	dw .InitialOptionDesc_RTC
 	dw .InitialOptionDesc_PerfectIVs
 	dw .InitialOptionDesc_TradedMon
+	dw .InitialOptionDesc_EvolveInBattle
 	dw .InitialOptionDesc_ColorVariation
-	dw EmptyString
 	dw EmptyString
 	dw .InitialOptionDesc_PrevPage
 	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
@@ -90,6 +90,15 @@ InitialOptionDescriptions:
 
 	para "Introduced in"
 	line "Gen 6."
+	prompt
+
+.InitialOptionDesc_EvolveInBattle:
+	text "Your #mon can"
+	line "evolve during"
+	cont "trainer battles."
+
+	para "Inspired by anime"
+	line "battles."
 	prompt
 
 .InitialOptionDesc_ColorVariation:

@@ -6681,8 +6681,8 @@ GiveExperiencePoints:
 	pop af
 	ld [wCurPartyLevel], a
 
-	ld hl, wOptions3
-	bit EVOLVE_IN_BATTLE_F, [hl]
+	ld hl, wInitialOptions2
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
 	jr nz, .evolve_now
 	ld hl, wEvolvableFlags
 	ld a, [wCurPartyMon]

@@ -192,10 +192,10 @@ InitialOptionsString2:
 	next1 "            :"
 	next1 "Traded <PK><MN> obey"
 	next1 "            :"
+	next1 "Evolve in battle"
+	next1 "            :"
 	next1 "Color variation"
 	next1 "            :"
-	next1 "            " ; no-optimize trailing string space
-	next1 "            " ; no-optimize trailing string space
 	next1 "            " ; no-optimize trailing string space
 	next1 "            " ; no-optimize trailing string space
 	next1 "Previous"
@@ -249,8 +249,8 @@ GetInitialOptionPointer:
 	dw InitialOptions_RTC
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
+	dw InitialOptions_EvolveInBattle
 	dw InitialOptions_ColorVariation
-	dw DoNothing
 	dw DoNothing
 	dw InitialOptions_Previous
 	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
@@ -416,6 +416,30 @@ InitialOptions_AffectionBonus:
 	and a
 	ret
 
+InitialOptions_EvolveInBattle:
+	ld hl, wInitialOptions2
+	ldh a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res EVOLVE_IN_BATTLE_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set EVOLVE_IN_BATTLE_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 8
+	rst PlaceString
+	and a
+	ret
+
 InitialOptions_ColorVariation:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
@@ -435,7 +459,7 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 8
+	hlcoord 15, 10
 	rst PlaceString
 	and a
 	ret
@@ -572,9 +596,8 @@ InitialOptionsControl:
 	ld [hl], -1
 .Increase:
 	inc [hl]
-	call DoSkipOnPage2
+	call CheckSkipPage2Item5
 	jr nz, .no_skip_inc
-	inc [hl]
 	inc [hl]
 .no_skip_inc
 	scf
@@ -587,21 +610,18 @@ InitialOptionsControl:
 	ld [hl], NUM_INITIAL_OPTIONS_PER_PAGE
 .Decrease:
 	dec [hl]
-	call DoSkipOnPage2
+	call CheckSkipPage2Item5
 	jr nz, .no_skip_dec
-	dec [hl]
 	dec [hl]
 .no_skip_dec
 	scf
 	ret
 
-DoSkipOnPage2:
+CheckSkipPage2Item5:
 	ld a, [wCurOptionsPage]
 	dec a
 	ret nz ; no skip
 	ld a, [hl] ; [wJumptableIndex]
-	cp 4
-	ret z ; skip
 	cp 5
 	ret
 

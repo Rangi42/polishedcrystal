@@ -16,7 +16,6 @@ DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 ; wOptions3::
 	const_def
 	const QWERTY_KEYBOARD_F  ; 0
-	const EVOLVE_IN_BATTLE_F ; 1
 
 ; wOptions1::
 	const_def 3
@@ -107,15 +106,16 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 
 ; wInitialOptions2::
 	const_def 3
-	const RTC_OPT ; 3
+	const RTC_OPT              ; 3
+	const EVOLVE_IN_BATTLE_OPT ; 4
+	const_skip 2
+	const RESET_INIT_OPTS      ; 7
+DEF EV_OPTMASK EQU %11
 
 	const_def
 	const EVS_OPT_DISABLED ; %00
 	const EVS_OPT_CLASSIC  ; %01
 	const EVS_OPT_MODERN   ; %10
-DEF EV_OPTMASK EQU %11
-
-DEF RESET_INIT_OPTS EQU 7
 
 
 ; wForgettingMove::

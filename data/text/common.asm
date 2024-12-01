@@ -2117,6 +2117,7 @@ SECTION "_CantUseTeleportText", ROMX
 _CantUseTeleportText::
 	text "Can't use that"
 	line "here."
+
 	para ""
 	done
 
@@ -3950,6 +3951,7 @@ SECTION "_MoveAskForgetText", ROMX
 _MoveAskForgetText::
 	text "Which move should"
 	next "be forgotten?"
+
 	para ""
 	done
 

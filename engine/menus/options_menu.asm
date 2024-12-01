@@ -77,10 +77,10 @@ StringOptions1:
 	next1 "        :Type"
 	next1 "Typeface"
 	next1 "        :"
+	next1 "Keyboard"
+	next1 "        :"
 	next1 "Sound"
 	next1 "        :"
-	next1 "        " ; no-optimize trailing string space
-	next1 "        " ; no-optimize trailing string space
 	next1 "Next"
 	next1 "        " ; no-optimize trailing string space
 	next1 "Done"
@@ -91,33 +91,15 @@ StringOptions2:
 	next1 "        :"
 	next1 "Battle Style"
 	next1 "        :"
-	next1 "Evolve in Battle"
-	next1 "        :"
 	next1 "Running Shoes"
 	next1 "        :"
 	next1 "Turning Speed"
-	next1 "        :"
-	next1 "Previous"
-	next1 "        " ; no-optimize trailing string space
-	next1 "Next"
-	next1 "        " ; no-optimize trailing string space
-	next1 "Done"
-	done
-
-StringOptions3:
-	text  "Keyboard"
 	next1 "        :"
 	next1 "Clock Format"
 	next1 "        :"
 	next1 "#dex Units"
 	next1 "        :"
-	next1 "        " ; no-optimize trailing string space
-	next1 "        " ; no-optimize trailing string space
-	next1 "        " ; no-optimize trailing string space
-	next1 "        " ; no-optimize trailing string space
 	next1 "Previous"
-	next1 "        " ; no-optimize trailing string space
-	next1 "        " ; no-optimize trailing string space
 	next1 "        " ; no-optimize trailing string space
 	next1 "Done"
 	done
@@ -127,13 +109,7 @@ GetOptionPointer:
 	and a
 	ld a, [wJumptableIndex]
 	jr z, .page1
-	ld a, [wCurOptionsPage]
-	dec a
-	ld a, [wJumptableIndex]
-	jr z, .page2
-	add 8
-.page2
-	add 8
+	add NUM_OPTIONS + 1
 .page1
 	call StackJumpTable
 
@@ -142,27 +118,18 @@ GetOptionPointer:
 	dw Options_TextAutoscroll
 	dw Options_Frame
 	dw Options_Typeface
+	dw Options_Keyboard
 	dw Options_Sound
-	dw DoNothing
 	dw Options_Next
 	dw Options_Done
 
 	dw Options_BattleEffects
 	dw Options_BattleStyle
-	dw Options_EvolveInBattle
 	dw Options_RunningShoes
 	dw Options_TurningSpeed
-	dw Options_Previous
-	dw Options_Next
-	dw Options_Done
-
-	dw Options_Keyboard
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw DoNothing
-	dw DoNothing
 	dw Options_Previous
-	dw DoNothing
 	dw Options_Done
 
 Options_TextSpeed:
@@ -309,10 +276,15 @@ Options_RunningShoes:
 	set RUNNING_SHOES, [hl]
 	ld de, OnString
 .Display:
-	hlcoord 11, 9
+	hlcoord 11, 7
 	rst PlaceString
 	and a
 	ret
+
+OffString:
+	db "Off@"
+OnString:
+	db "On @"
 
 Options_Frame:
 	ld hl, wTextboxFrame
@@ -374,7 +346,7 @@ Options_Sound:
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
-	hlcoord 11, 11
+	hlcoord 11, 13
 	rst PlaceString
 	and a
 	ret
@@ -403,7 +375,7 @@ Options_ClockFormat:
 	set CLOCK_FORMAT, [hl]
 	ld de, .TwentyFour
 .Display:
-	hlcoord 11, 5
+	hlcoord 11, 11
 	rst PlaceString
 	and a
 	ret
@@ -432,7 +404,7 @@ Options_PokedexUnits:
 	set POKEDEX_UNITS, [hl]
 	ld de, .Metric
 .Display:
-	hlcoord 11, 7
+	hlcoord 11, 13
 	rst PlaceString
 	and a
 	ret
@@ -512,7 +484,7 @@ Options_TurningSpeed:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 11
+	hlcoord 11, 9
 	rst PlaceString
 	and a
 	ret
@@ -628,7 +600,7 @@ Options_Keyboard:
 	set QWERTY_KEYBOARD_F, [hl]
 	ld de, .QWERTY
 .Display:
-	hlcoord 11, 3
+	hlcoord 11, 11
 	rst PlaceString
 	and a
 	ret
@@ -638,77 +610,23 @@ Options_Keyboard:
 .QWERTY:
 	db "QWERTY@"
 
-Options_EvolveInBattle:
-	ld hl, wOptions3
-	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
-	jr nz, .Toggle
-	bit EVOLVE_IN_BATTLE_F, [hl]
-	jr z, .SetOff
-	jr .SetOn
-.Toggle
-	bit EVOLVE_IN_BATTLE_F, [hl]
-	jr z, .SetOn
-.SetOff:
-	res EVOLVE_IN_BATTLE_F, [hl]
-	ld de, OffString
-	jr .Display
-.SetOn:
-	set EVOLVE_IN_BATTLE_F, [hl]
-	ld de, OnString
-.Display:
-	hlcoord 11, 7
-	rst PlaceString
-	and a
-	ret
-
-OffString:
-	db "Off@"
-OnString:
-	db "On @"
-
 Options_Next:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | D_LEFT | D_RIGHT
-	jr z, .NonePressed
+	jr z, _SwitchOptionsPage.NonePressed
 	ld hl, wCurOptionsPage
-	ld a, [hl]
 	inc [hl]
-	and a
 	ld de, StringOptions2
-	jr z, .Display
-	ld de, StringOptions3
-.Display
-	push de
-	hlcoord 0, 0
-	lb bc, 16, 18
-	call Textbox
-	pop de
-	hlcoord 2, 2
-	rst PlaceString
-	call OptionsMenu_LoadOptions
-	; [wJumptableIndex] = [wCurOptionsPage] == 1 ? NUM_OPTIONS - 1 : NUM_OPTIONS - 2
-	ld a, [wCurOptionsPage]
-	dec a
-	ld a, NUM_OPTIONS - 1
-	jr z, .GotPage
-	dec a
-.GotPage
-	ld [wJumptableIndex], a
-.NonePressed:
-	and a
-	ret
+	jr _SwitchOptionsPage
 
 Options_Previous:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | D_LEFT | D_RIGHT
-	jr z, .NonePressed
+	jr z, _SwitchOptionsPage.NonePressed
 	ld hl, wCurOptionsPage
 	dec [hl]
 	ld de, StringOptions1
-	jr z, .Display
-	ld de, StringOptions2
-.Display
+_SwitchOptionsPage:
 	push de
 	hlcoord 0, 0
 	lb bc, 16, 18
@@ -717,13 +635,7 @@ Options_Previous:
 	hlcoord 2, 2
 	rst PlaceString
 	call OptionsMenu_LoadOptions
-	; [wJumptableIndex] = [wCurOptionsPage] == 0 ? NUM_OPTIONS - 1 : NUM_OPTIONS - 2
-	ld a, [wCurOptionsPage]
-	and a
 	ld a, NUM_OPTIONS - 1
-	jr z, .GotPage
-	dec a
-.GotPage
 	ld [wJumptableIndex], a
 .NonePressed:
 	and a
@@ -757,10 +669,6 @@ OptionsControl:
 	ld [hl], -1
 .Increase:
 	inc [hl]
-	call GetSkipAmount
-	ld a, [hl]
-	add b
-	ld [hl], a
 	scf
 	ret
 
@@ -771,49 +679,8 @@ OptionsControl:
 	ld [hl], NUM_OPTIONS + 1
 .Decrease:
 	dec [hl]
-	call GetSkipAmount
-	ld a, [hl]
-	sub b
-	ld [hl], a
 	scf
 	ret
-
-GetSkipAmount:
-; preserves hl == wJumptableIndex
-	ld a, [hl]
-	ld c, a
-	ld a, [wCurOptionsPage]
-	ld b, a
-	push hl
-	ld hl, SkipTable
-.loop
-	ld a, [hli]
-	inc a
-	jr z, .done
-	dec a
-	cp b
-	jr nz, .next2
-	ld a, [hli]
-	cp c
-	jr nz, .next1
-	ld a, [hl]
-.done
-	ld b, a
-	pop hl
-	ret
-.next2
-	inc hl
-.next1
-	inc hl
-	jr .loop
-
-SkipTable:
-	; page, item, skip
-	db 0, 5, 1
-	db 2, 3, 2
-	db 2, 4, 2
-	db 2, 6, 1
-	db -1 ; end
 
 Options_UpdateCursorPosition:
 	hlcoord 1, 1
