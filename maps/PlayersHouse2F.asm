@@ -251,7 +251,7 @@ endr
 	givepoke WYRDEER, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; evolve during battle
-	givepoke RHYHORN, 50
+	givepoke MAGIKARP, 50
 	loadmem wPartyMon6Exp+2, LOW(165812)
 	loadmem wPartyMon6Exp+1, HIGH(165812)
 	loadmem wPartyMon6Exp+0, 165812 >> 16
