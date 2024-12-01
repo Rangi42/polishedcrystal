@@ -7946,7 +7946,6 @@ InitEnemyWildmon:
 
 ExitBattle:
 	call .HandleEndOfBattle
-	call HandleNuzlockeFlags
 	call BattleEnd_HandleRoamMons
 	xor a
 	ld [wLowHealthAlarm], a
@@ -7993,40 +7992,6 @@ ExitBattle:
 	ld [wForceEvolution], a
 	farcall EvolveAfterBattle
 	farjp GivePokerusAndConvertBerries
-
-HandleNuzlockeFlags:
-	ld a, [wBattleMode]
-	dec a
-	ret nz
-
-	; Roaming mons don't count
-	ld a, [wBattleType]
-	cp BATTLETYPE_ROAMING
-	ret z
-	; Uncatchable ghosts don't count
-	cp BATTLETYPE_GHOST
-	ret z
-
-	; Dupes clause: don't count duplicate encounters
-	ld a, [wOTPartyMon1Species]
-	ld c, a
-	ld a, [wOTPartyMon1Form]
-	ld b, a
-	call CheckCosmeticCaughtMon
-	ret nz
-
-	; Only flag landmarks for Nuzlocke runs after getting Poké Balls
-	eventflagcheck EVENT_LEARNED_TO_CATCH_POKEMON
-	ret z
-
-	; Get current landmark
-	call GetCurrentLandmark
-
-	; Use landmark as index into flag array
-	ld c, a
-	ld hl, wNuzlockeLandmarkFlags
-	ld b, SET_FLAG
-	predef_jump FlagPredef
 
 CheckPayDay:
 	ld hl, wPayDayMoney

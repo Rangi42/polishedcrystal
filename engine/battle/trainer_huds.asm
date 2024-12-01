@@ -125,13 +125,6 @@ DrawEnemyHUDBorder:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
-	; We should perhaps make this an initial option in the future.
-	; For now, remove it entirely because it just confuses people.
-;	call CheckNuzlockeFlags
-;	jr nc, .no_nuzlocke
-;	hlcoord 0, 1
-;	ld [hl], "<NONO>"
-.no_nuzlocke
 	ld a, [wOTPartyMon1Species]
 	ld c, a
 	ld a, [wOTPartyMon1Form]
@@ -235,29 +228,4 @@ _ShowLinkBattleParticipants:
 	call SetDefaultBGPAndOBP
 	ld a, $e4
 	ldh [rOBP0], a
-	ret
-
-CheckNuzlockeFlags:
-	; Is tutorial battle?
-	ld a, [wBattleType]
-	cp BATTLETYPE_TUTORIAL
-	jr z, .no
-
-	; Is location already done?
-	call GetCurrentLandmark
-	ld c, a
-	ld hl, wNuzlockeLandmarkFlags
-	; Use landmark as index into flag array
-	ld b, CHECK_FLAG
-	ld d, $0
-	predef FlagPredef
-	ld a, c
-	and a
-	jr z, .no
-
-	scf
-	ret
-
-.no
-	xor a
 	ret

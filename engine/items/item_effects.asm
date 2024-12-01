@@ -442,15 +442,6 @@ PokeBallEffect:
 
 	call ClearSprites
 
-	; Get current landmark
-	call GetCurrentLandmark
-
-	; Use landmark as index into flag array
-	ld c, a
-	ld hl, wNuzlockeLandmarkFlags
-	ld b, SET_FLAG
-	predef FlagPredef
-
 	farcall GiveExperiencePointsAfterCatch
 
 	ld a, [wOTPartyMon1Level]

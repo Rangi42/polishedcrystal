@@ -17,8 +17,6 @@ The current beta version is **3.0.0**. It has some incomplete original content a
 
 The most recent official version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then. I recommend playing the 3.0.0 beta instead.
 
-If you want to do a [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge), check out Nuzlocke mode in the Option menu!
-
 *If you have any questions about these steps, [read the FAQ](FAQ.md)!*
 
 
@@ -35,7 +33,6 @@ A full list of features is in [FEATURES.md](FEATURES.md). Features new to the be
 * More post-game content, like Gym Leader rematches and an event after the battle with Red.
 * An improved level curve with steadily increasing challenges throughout the game.
 * Music and graphics devamped from other versions.
-* Nuzlocke mode in the Option menu, enabling the basic rules of the [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge).
 
 
 ## Discussion
