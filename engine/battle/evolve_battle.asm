@@ -30,6 +30,12 @@ EvolveDuringBattle::
 	farcall TryToEvolve
 	jr c, .canceled
 
+	call .load_mon_data
+
+	call ResetPlayerAbility
+	jr .done
+
+.load_mon_data
 	ld hl, wPartyMon1Species
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
@@ -77,15 +83,16 @@ EvolveDuringBattle::
 	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-
-	call ResetPlayerAbility
-
-	jr .done
+	ret
 
 .canceled
 	farcall CancelEvolution
 
 .done
+	ld a, [wCurBattleMon]
+	ld [wCurPartyMon], a
+	call .load_mon_data
+
 	ld a, BANK("Sound Stack")
 	ldh [rSVBK], a
 	ld a, [wBackupMapMusic]
