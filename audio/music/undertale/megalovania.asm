@@ -1470,7 +1470,8 @@ Music_Megalovania_Ch4_loop:
 	rest 16
 	rest 16
 	rest 9
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 4, 1
 	rest 1
 	drum_note 4, 1
@@ -1483,109 +1484,145 @@ Music_Megalovania_Ch4_loop1:
 	sound_call Music_Megalovania_Ch4_ditty3
 	sound_loop 3, Music_Megalovania_Ch4_loop1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 Music_Megalovania_Ch4_loop2:
 	sound_call Music_Megalovania_Ch4_ditty4
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	sound_loop 3, Music_Megalovania_Ch4_loop2
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 Music_Megalovania_Ch4_loop3:
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 6, 1
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 6, 1
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 6, 1
 	sound_loop 3, Music_Megalovania_Ch4_loop3
 	drum_note 12, 1
 	drum_note 6, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 6, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
 	drum_note 12, 1
@@ -1593,188 +1630,250 @@ Music_Megalovania_Ch4_loop3:
 	rest 1
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 Music_Megalovania_Ch4_loop4:
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	sound_call Music_Megalovania_Ch4_ditty4
 	sound_loop 3, Music_Megalovania_Ch4_loop4
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 Music_Megalovania_Ch4_loop5:
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	sound_call Music_Megalovania_Ch4_ditty2
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	sound_loop 3, Music_Megalovania_Ch4_loop5
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 6, 1
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 Music_Megalovania_Ch4_loop6:
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	sound_call Music_Megalovania_Ch4_ditty2
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	sound_loop 3, Music_Megalovania_Ch4_loop6
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
 Music_Megalovania_Ch4_loop7:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	sound_call Music_Megalovania_Ch4_ditty2
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
 	sound_loop 3, Music_Megalovania_Ch4_loop7
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 6, 1
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
 Music_Megalovania_Ch4_loop8:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	sound_call Music_Megalovania_Ch4_ditty2
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
 	sound_loop 3, Music_Megalovania_Ch4_loop8
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 2
+	toggle_noise
+	toggle_noise 2
 	drum_note 4, 1
 	rest 1
 Music_Megalovania_Ch4_loop9:
 	drum_note 4, 1
 	sound_loop 63, Music_Megalovania_Ch4_loop9
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 2
+	toggle_noise
+	toggle_noise 2
 Music_Megalovania_Ch4_loop10:
 	sound_call Music_Megalovania_Ch4_ditty1
 	drum_note 9, 1
@@ -1816,102 +1915,134 @@ Music_Megalovania_Ch4_loop10:
 	rest 16
 	rest 16
 	rest 14
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 12, 1
 	drum_note 12, 1
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	drum_note 11, 1
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
-	noisesampleset 7
+	toggle_noise
+	toggle_noise 7
 	drum_note 12, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 7
+	toggle_noise
+	toggle_noise 7
 	drum_note 12, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 2
+	toggle_noise
+	toggle_noise 2
 	drum_note 4, 1
 	drum_note 9, 1
 	drum_note 10, 1
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 Music_Megalovania_Ch4_loop11:
 	sound_call Music_Megalovania_Ch4_ditty3
 	sound_loop 3, Music_Megalovania_Ch4_loop11
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 Music_Megalovania_Ch4_loop12:
 	sound_call Music_Megalovania_Ch4_ditty3
 	sound_loop 3, Music_Megalovania_Ch4_loop12
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 7, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 Music_Megalovania_Ch4_loop13:
 	sound_call Music_Megalovania_Ch4_ditty2
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	sound_loop 3, Music_Megalovania_Ch4_loop13
@@ -1952,69 +2083,89 @@ Music_Megalovania_Ch4_ditty1:
 	sound_ret
 
 Music_Megalovania_Ch4_ditty2:
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
 	sound_ret
 
 Music_Megalovania_Ch4_ditty3:
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	drum_note 6, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	sound_ret
 
 Music_Megalovania_Ch4_ditty4:
 	drum_note 6, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
 	drum_note 12, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	rest 1
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 12, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	sound_ret
