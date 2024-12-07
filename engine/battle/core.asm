@@ -6704,6 +6704,11 @@ GiveExperiencePoints:
 	lb bc, 6, 6
 	predef PlaceGraphic
 	call EmptyBattleTextbox
+	ld a, [wBattleMode]
+	dec a ; wild battle
+	jr z, .evolve_logic_done
+	call CheckEnemyTrainerDefeated
+	jr z, .evolve_logic_done
 	farcall RunEntryAbilitiesInner
 
 .evolve_logic_done
@@ -7982,7 +7987,7 @@ ExitBattle:
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	jmp ShowLinkBattleResult
+	jr ShowLinkBattleResult
 
 .not_linked
 	ld a, [wBattleResult]
