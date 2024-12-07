@@ -251,10 +251,10 @@ endr
 	givepoke WYRDEER, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; evolve during battle
-	givepoke MAGIKARP, 50
-	loadmem wPartyMon6Exp+2, LOW(165812)
-	loadmem wPartyMon6Exp+1, HIGH(165812)
-	loadmem wPartyMon6Exp+0, 165812 >> 16
+	givepoke PUPITAR, 54
+	loadmem wPartyMon6Exp+2, LOW(207967)
+	loadmem wPartyMon6Exp+1, HIGH(207967)
+	loadmem wPartyMon6Exp+0, 207967 >> 16
 	; fill pokedex
 	callasm FillPokedex
 ;	; new bark events

@@ -92,6 +92,7 @@ EvolveDuringBattle::
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
 	call .load_mon_data
+	call ResetPlayerAbility
 
 	ld a, BANK("Sound Stack")
 	ldh [rSVBK], a

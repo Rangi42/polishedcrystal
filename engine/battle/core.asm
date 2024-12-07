@@ -6704,6 +6704,7 @@ GiveExperiencePoints:
 	lb bc, 6, 6
 	predef PlaceGraphic
 	call EmptyBattleTextbox
+	farcall RunEntryAbilitiesInner
 
 .evolve_logic_done
 	pop af
