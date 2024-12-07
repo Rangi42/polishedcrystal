@@ -6681,9 +6681,17 @@ GiveExperiencePoints:
 	pop af
 	ld [wCurPartyLevel], a
 
+	ld a, [wBattleMode]
+	dec a ; wild battle
+	jr z, .defer_evolve
+	call CheckEnemyTrainerDefeated
+	jr z, .defer_evolve
+
 	ld hl, wInitialOptions2
 	bit EVOLVE_IN_BATTLE_OPT, [hl]
 	jr nz, .evolve_now
+
+.defer_evolve
 	ld hl, wEvolvableFlags
 	ld a, [wCurPartyMon]
 	ld c, a
@@ -6704,11 +6712,6 @@ GiveExperiencePoints:
 	lb bc, 6, 6
 	predef PlaceGraphic
 	call EmptyBattleTextbox
-	ld a, [wBattleMode]
-	dec a ; wild battle
-	jr z, .evolve_logic_done
-	call CheckEnemyTrainerDefeated
-	jr z, .evolve_logic_done
 	farcall RunEntryAbilitiesInner
 
 .evolve_logic_done
