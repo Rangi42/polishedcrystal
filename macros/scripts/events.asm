@@ -619,12 +619,11 @@ ENDM
 	const loadwildmon_command
 MACRO loadwildmon
 	db loadwildmon_command
-	db \1 ; pokemon
 	if _NARG == 3
-		db \2 ; form
+		dp \1, \2 ; pokemon
 		db \3 ; level
 	else
-		db 0  ; form
+		dp \1, PLAIN_FORM
 		db \2 ; level
 	endc
 ENDM
