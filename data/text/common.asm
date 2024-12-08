@@ -3951,7 +3951,9 @@ SECTION "_MoveAskForgetText", ROMX
 _MoveAskForgetText::
 	text "Which move should"
 	next "be forgotten?"
-	prompt
+
+	para ""
+	done
 
 SECTION "_StopLearningMoveText", ROMX
 _StopLearningMoveText::

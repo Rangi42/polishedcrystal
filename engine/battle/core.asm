@@ -6680,11 +6680,41 @@ GiveExperiencePoints:
 	jr nz, .level_loop
 	pop af
 	ld [wCurPartyLevel], a
+
+	ld a, [wBattleMode]
+	dec a ; wild battle
+	jr z, .defer_evolve
+	call CheckEnemyTrainerDefeated
+	jr z, .defer_evolve
+
+	ld hl, wInitialOptions2
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
+	jr nz, .evolve_now
+
+.defer_evolve
 	ld hl, wEvolvableFlags
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, SET_FLAG
 	predef FlagPredef
+	jr .evolve_logic_done
+
+.evolve_now
+	call LoadTileMapToTempTileMap
+	call EvolveDuringBattle
+	call UpdatePlayerHPPal
+	call _LoadBattleFontsHPBar
+	call GetMonBackpic
+	call LoadTempTileMapToTileMap
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 2, 6
+	lb bc, 6, 6
+	predef PlaceGraphic
+	call EmptyBattleTextbox
+	farcall RunEntryAbilitiesInner
+
+.evolve_logic_done
 	pop af
 	ld [wCurPartyLevel], a
 
@@ -7925,7 +7955,6 @@ InitEnemyWildmon:
 
 ExitBattle:
 	call .HandleEndOfBattle
-	call HandleNuzlockeFlags
 	call BattleEnd_HandleRoamMons
 	xor a
 	ld [wLowHealthAlarm], a
@@ -7961,7 +7990,7 @@ ExitBattle:
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	jmp ShowLinkBattleResult
+	jr ShowLinkBattleResult
 
 .not_linked
 	ld a, [wBattleResult]
@@ -7972,40 +8001,6 @@ ExitBattle:
 	ld [wForceEvolution], a
 	farcall EvolveAfterBattle
 	farjp GivePokerusAndConvertBerries
-
-HandleNuzlockeFlags:
-	ld a, [wBattleMode]
-	dec a
-	ret nz
-
-	; Roaming mons don't count
-	ld a, [wBattleType]
-	cp BATTLETYPE_ROAMING
-	ret z
-	; Uncatchable ghosts don't count
-	cp BATTLETYPE_GHOST
-	ret z
-
-	; Dupes clause: don't count duplicate encounters
-	ld a, [wOTPartyMon1Species]
-	ld c, a
-	ld a, [wOTPartyMon1Form]
-	ld b, a
-	call CheckCosmeticCaughtMon
-	ret nz
-
-	; Only flag landmarks for Nuzlocke runs after getting Poké Balls
-	eventflagcheck EVENT_LEARNED_TO_CATCH_POKEMON
-	ret z
-
-	; Get current landmark
-	call GetCurrentLandmark
-
-	; Use landmark as index into flag array
-	ld c, a
-	ld hl, wNuzlockeLandmarkFlags
-	ld b, SET_FLAG
-	predef_jump FlagPredef
 
 CheckPayDay:
 	ld hl, wPayDayMoney

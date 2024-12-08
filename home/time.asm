@@ -1,7 +1,6 @@
 ; Functions relating to the timer interrupt and the real-time-clock.
 
 ; do not talk to the RTC hardware in the no-RTC patch
-if !DEF(NO_RTC)
 LatchClock::
 ; latch clock counter data
 	xor a
@@ -9,7 +8,6 @@ LatchClock::
 	inc a
 	ld [MBC3LatchClock], a
 	ret
-endc
 
 UpdateTime::
 ; Assumes rSVBK == 1
@@ -21,9 +19,10 @@ UpdateTime::
 GetClock::
 ; store clock data in wRTCDayHi-wRTCSeconds
 
-if DEF(NO_RTC)
-	ret
-else
+	ld a, [wInitialOptions2]
+	and 1 << RTC_OPT
+	ret z
+
 ; enable clock r/w
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
@@ -63,7 +62,6 @@ else
 
 ; unlatch clock / disable clock r/w
 	jmp CloseSRAM
-endc
 
 FixDays::
 ; fix day count
@@ -202,9 +200,10 @@ SetClock::
 ; set clock data from hram
 
 ; do not talk to the RTC hardware in the no-RTC patch
-if DEF(NO_RTC)
-	ret
-else
+	ld a, [wInitialOptions2]
+	and 1 << RTC_OPT
+	ret z
+
 ; enable clock r/w
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
@@ -243,7 +242,6 @@ else
 
 ; cleanup
 	jmp CloseSRAM ; unlatch clock, disable clock r/w
-endc
 
 RecordRTCStatus::
 ; append flags to sRTCStatusFlags

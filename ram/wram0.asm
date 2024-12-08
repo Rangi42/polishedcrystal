@@ -1340,7 +1340,7 @@ SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bits 1-7: unused
+; bits 3-7: unused
 	db
 
 wOptions::
@@ -1394,7 +1394,9 @@ wInitialOptions2::
 ; bit 1: classic EVs (no 510 cap)
 ; bit 2: modern EVs (510 cap)
 ; (only one of bits 0-2 can be set)
-; bits 3-6: unused
+; bit 3: use RTC
+; bit 4: evolve in battle
+; bits 5-6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::
