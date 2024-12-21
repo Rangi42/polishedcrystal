@@ -8,12 +8,13 @@ SummaryScreen_PinkPage:
 	ld e, SUMMARY_TILE_POKERUS
 	cp POKERUS_CURED
 	jr nz, .placePokerus
-	inc e ; pokerus cured
+	assert SUMMARY_TILE_POKERUS + 1 == SUMMARY_TILE_POKERUS_CURED
+	inc e
 .placePokerus
 	hlbgcoord 0, 5, wSummaryScreenWindowBuffer
 	ld [hl], e
 	hlbgcoord 16, 5, wSummaryScreenWindowBuffer
-	ld a, 3
+	ld a, SUMMARY_PAL_SHINY_POKERUS
 	ld [hl], a
 .pokerusDone
 	; Place shiny
@@ -22,15 +23,9 @@ SummaryScreen_PinkPage:
 	jr nc, .shinyDone
 	hlbgcoord 10, 0, wSummaryScreenWindowBuffer
 	ld [hl], "★"
+	hlbgcoord 16 + 10, 0, wSummaryScreenWindowBuffer
+	ld [hl], SUMMARY_PAL_SHINY_POKERUS
 .shinyDone
-
-	; TODO status
-	hlcoord 5, 10
-	push hl
-	ld de, wTempMonStatus
-	farcall PlaceStatusString
-	pop hl
-	
 	ld a, [wTextboxFlags]
 	set USE_BG_MAP_WIDTH_F, a
 	ld [wTextboxFlags], a
@@ -75,18 +70,25 @@ SummaryScreen_PinkPage:
 	ld a, SUMMARY_TILE_BALL_SIDE_BORDER
 	ld [hli], a
 
-	; ball palette
 	hlbgcoord 25, 3, wSummaryScreenWindowBuffer
-	ld a, 7
+	ld a, SUMMARY_PAL_POKEBALL
 	ld [hli], a
 	
 	hlbgcoord 26, 3, wSummaryScreenWindowBuffer
-	ld [hl], X_FLIP | 3
-	ld hl, .BallSprites
+	ld [hl], X_FLIP | SUMMARY_PAL_SIDE_WINDOW
 
+	ld hl, .BallSprites
 	ld bc, 8
 	ld de, wSummaryScreenOAMSprite12
 	rst CopyBytes
+
+	ld hl, .StatusSprites
+	ld bc, 8
+	ld de, wSummaryScreenOAMSprite14
+	rst CopyBytes
+
+	ld c, 4
+	call DelayFrames
 
 	ld d, 0 | 8
 	ld a, [wBaseType1]
@@ -152,11 +154,22 @@ SummaryScreen_PinkPage:
 
 	ld hl, .PinkPalettes
 	ld bc, 1 palettes
-	ld de, wSummaryScreenPals
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_LOWER_WINDOW
 	rst CopyBytes
-	ld bc, 2 palettes
-	ld de, wSummaryScreenPals + 3 palettes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
 	rst CopyBytes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SHINY_POKERUS
+	rst CopyBytes
+
+	ld hl, CaughtBallPals
+	ld bc, $4
+	ld a, [wTempMonCaughtBall]
+	and CAUGHT_BALL_MASK
+	rst AddNTimes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_POKEBALL
+	farcall LoadPalette_White_Col1_Col2_Black
 
 	ret
 
@@ -239,14 +252,18 @@ SummaryScreen_PinkPage:
 	RGB 31, 31, 31
 	RGB 00, 00, 00
 
+	RGB 31, 29, 31
 	RGB 31, 19, 31
-	RGB 31, 19, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
+	RGB 27, 11, 27
+	RGB 31, 25, 02
 
 .BallSprites:
 	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, Y_FLIP
 	db 84, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, 0
+
+.StatusSprites:
+	db 31, 120, SUMMARY_TILE_OAM_STATUS + 0, 5
+	db 31, 128, SUMMARY_TILE_OAM_STATUS + 1, 5
 
 .OTStr:
 	text "OT/"

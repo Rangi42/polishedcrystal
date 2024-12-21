@@ -3,10 +3,10 @@ SummaryScreen_GreenPage:
 	call SummaryScreen_UpdateTabTitle
 	ld hl, .GreenPalettes
 	ld bc, 1 palettes
-	ld de, wSummaryScreenPals
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_LOWER_WINDOW
 	rst CopyBytes
-	ld bc, 2 palettes
-	ld de, wSummaryScreenPals + 3 palettes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
 	rst CopyBytes
 	call .PlaceItemText
 	hlcoord 2, 8
@@ -115,11 +115,6 @@ endr
 	RGB 31, 31, 31
 	RGB 00, 00, 00
 
-	RGB 21, 31, 14
-	RGB 21, 31, 14
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
 .ThreeDashes:
 	db "---@"
 
@@ -197,8 +192,8 @@ endr
 	ld hl, Moves + MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 8, 13
-	cp 2
-	jr c, .no_acc
+	cp 255
+	jr z, .no_acc
 	ld [wTextDecimalByte], a
 	ld de, wTextDecimalByte
 	lb bc, 1, 3

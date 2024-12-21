@@ -34,10 +34,10 @@ SummaryScreen_OrangePage:
 
 	ld hl, .OrangePalettes
 	ld bc, 1 palettes
-	ld de, wSummaryScreenPals
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_LOWER_WINDOW
 	rst CopyBytes
-	ld bc, 2 palettes
-	ld de, wSummaryScreenPals + 3 palettes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
 	rst CopyBytes
 
 	ret
@@ -49,11 +49,6 @@ SummaryScreen_OrangePage:
 	RGB 00, 00, 00
 
 	RGB 31, 30, 29
-	RGB 30, 24, 16
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 30, 24, 16
 	RGB 30, 24, 16
 	RGB 31, 31, 31
 	RGB 00, 00, 00

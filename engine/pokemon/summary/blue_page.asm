@@ -63,14 +63,21 @@ SummaryScreen_BluePage:
 	rlca
 	swap a
 	call .CheckHyper ; Spe
-	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
+
+	call SummaryScreen_ColorNatures
 
 	ld hl, .BluePalettes
 	ld bc, 1 palettes
-	ld de, wSummaryScreenPals
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_LOWER_WINDOW
 	rst CopyBytes
-	ld bc, 2 palettes
-	ld de, wSummaryScreenPals + 3 palettes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
+	rst CopyBytes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_NATURE_UP
+	rst CopyBytes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_NATURE_DOWN
 	rst CopyBytes
 
 	ld a, [wCurHPPal]
@@ -107,10 +114,15 @@ SummaryScreen_BluePage:
 	RGB 31, 31, 31
 	RGB 00, 00, 00
 
-	RGB 17, 31, 31
+	RGB 29, 31, 31
 	RGB 17, 31, 31
 	RGB 31, 31, 31
-	RGB 00, 00, 00
+	RGB 23, 07, 03
+
+	RGB 29, 31, 31
+	RGB 17, 31, 31
+	RGB 31, 31, 31
+	RGB 03, 15, 29
 
 .HPPalettes:
 	RGB 29, 31, 31
@@ -133,6 +145,40 @@ SummaryScreen_BluePage:
 
 .AbilityTiles:
 	db SUMMARY_TILE_HIDDEN_H, "1", "2", SUMMARY_TILE_HIDDEN_H
+
+SummaryScreen_ColorNatures:
+	ld c, STAT_ATK
+	hlbgcoord 16 + 8, 2, wSummaryScreenWindowBuffer
+	call .ColorNature
+	ld c, STAT_DEF
+	hlbgcoord 16 + 8, 3, wSummaryScreenWindowBuffer
+	call .ColorNature
+	ld c, STAT_SATK
+	hlbgcoord 16 + 8, 4, wSummaryScreenWindowBuffer
+	call .ColorNature
+	ld c, STAT_SDEF
+	hlbgcoord 16 + 8, 5, wSummaryScreenWindowBuffer
+	call .ColorNature
+	ld c, STAT_SPE
+	hlbgcoord 16 + 8, 6, wSummaryScreenWindowBuffer
+	; fallthrough
+; c = stat
+; hl = output attr coords
+.ColorNature:
+	ld a, [wTempMonNature]
+	push hl
+	farcall GetNatureStatMultiplier
+	pop hl
+	cp a, 10
+	ret z
+	ld a, SUMMARY_PAL_NATURE_UP
+	jr nc, .got_pal
+	ld a, SUMMARY_PAL_NATURE_DOWN
+.got_pal
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
 
 ; Copy of DrawPlayerHP that works on the window buffer
 SummaryScreen_DrawPlayerHP:

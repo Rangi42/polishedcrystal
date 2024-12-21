@@ -7,10 +7,7 @@
 ; * Green page:  Moves on right, item on bottom (item icon replacing level and gender on left), can be toggled for detailed move info
 ; * Orange page: Nature and character on right, met info on bottom
 
-; TODO use/make proper vblank routine to remove flicker due to music (other existing ones cause freezes, maybe because of GFX decompression requests?)
 ; TODO entire egg page
-; TODO status indication (including palette allocation)
-; TODO nature indicators (red/blue stats)
 ; TODO allow swapping move order
 ; TODO replace move learning page
 ; TODO remove moves screen (by replacing it properly)
@@ -29,6 +26,7 @@ DEF SUMMARY_TILE_OAM_ITEM_TITLE             EQU $4C
 DEF SUMMARY_TILE_OAM_MOVE_TITLE             EQU $50
 DEF SUMMARY_TILE_OAM_MET_TITLE              EQU $54
 DEF SUMMARY_TILE_OAM_ARROW                  EQU $58
+DEF SUMMARY_TILE_OAM_STATUS                 EQU $5C
 
 ; vTiles2
 DEF SUMMARY_TILE_START                      EQU $31
@@ -46,7 +44,8 @@ DEF SUMMARY_TILE_TYPE_BG_LEFT               EQU $3A
 DEF SUMMARY_TILE_TYPE_BG_MIDDLE             EQU $3B
 DEF SUMMARY_TILE_TYPE_BG_RIGHT              EQU $3C
 DEF SUMMARY_TILE_POKERUS                    EQU $3D
-DEF SUMMARY_TILE_HIDDEN_H                   EQU $39
+DEF SUMMARY_TILE_POKERUS_CURED              EQU $3E
+DEF SUMMARY_TILE_HIDDEN_H                   EQU $3F
 DEF SUMMARY_TILE_HYPER_TRAINING             EQU $40
 DEF SUMMARY_TILE_LEFT_ARROW                 EQU $41
 DEF SUMMARY_TILE_RIGHT_ARROW                EQU $42
@@ -56,6 +55,18 @@ DEF SUMMARY_TILE_ITEM                       EQU $56
 
 ; vTiles3
 DEF SUMMARY_TILE_TYPE_START                 EQU $00
+
+; bg palettes
+DEF SUMMARY_PAL_LOWER_WINDOW                EQU $00
+DEF SUMMARY_PAL_POKEMON                     EQU $01
+DEF SUMMARY_PAL_ITEM                        EQU $02
+DEF SUMMARY_PAL_SIDE_WINDOW                 EQU $03
+DEF SUMMARY_PAL_SHINY_POKERUS               EQU $04
+DEF SUMMARY_PAL_NATURE_UP                   EQU $04
+DEF SUMMARY_PAL_HP_BAR                      EQU $05
+DEF SUMMARY_PAL_GENDER_MARKER               EQU $06
+DEF SUMMARY_PAL_POKEBALL                    EQU $07
+DEF SUMMARY_PAL_NATURE_DOWN                 EQU $07
 
 SummaryScreenInit:
 	ldh a, [hMapAnims]
@@ -130,8 +141,6 @@ SummaryScreenInit:
 	ld a, [hl]
 	push af
 	set LCD_STAT, [hl]
-	ld a, 100
-	ld [rLYC], a
 	; save old window position
 	ldh a, [hWX]
 	ld b, a
@@ -318,7 +327,6 @@ SummaryScreenLoop:
 	and %11111100
 	or c
 	ld [wSummaryScreenFlags], a
-	call DelayFrame
 	ld hl, wSummaryScreenFlags
 	res 4, [hl]
 	jmp SummaryScreen_LoadPage
@@ -348,10 +356,34 @@ SummaryScreen_DoAnim:
 SummaryScreen_InitMon:
 	ld hl, wSummaryScreenFlags
 	res 6, [hl]
-	call ClearBGPalettes
-	call ClearTileMap
-	call ClearSprites
+
+	; Clear sprites except page icons
+	ld hl, wShadowOAM + 4 * 4
+	ld bc, wShadowOAMEnd - (wShadowOAM + 4 * 4)
+	xor a
+	rst ByteFill
+
+	; Clear content portions of summary screen
+	hlcoord 0, 1
+	lb bc, 10, 7
+	call ClearBox
+	hlcoord 0, 13
+	lb bc, 5, 20
+	call ClearBox
+
 	farcall HDMATransferTileMapToWRAMBank3
+
+	; Disable window rendering
+	ldh a, [rLCDC]
+	res rLCDC_WINDOW_ENABLE, a
+	ldh [rLCDC], a
+	ldh a, [rIE]
+	res LCD_STAT, a
+	ldh [rIE], a
+
+	ld a, 255
+	ld [rLYC], a
+
 	ld a, [wTempMonSlot]
 	ld [wPartyMenuCursor], a
 	dec a
@@ -402,8 +434,12 @@ SummaryScreen_InitMon:
 	ld c, 1
 	call Request2bppInWRA6
 
+	xor a
+	ldh [rVBK], a
+	farcall LoadSummaryStatusIcon
 	ld a, [wTempMonItem]
 	farcall LoadItemIconForSummaryScreen
+	farcall _CGB_StatsScreenHPPals
 	ld hl, wSummaryScreenFlags
 	set 4, [hl]
 	ret
@@ -519,8 +555,6 @@ SummaryScreen_InitLayout:
 	farcall ComputeHPBarPixels
 	ld hl, wCurHPPal
 	call SetHPPal
-	ld a, CGB_SUMMARY_SCREEN_HP_PALS
-	call GetCGBLayout
 	jmp DelayFrame
 
 .ApplySummaryPalettes:
@@ -561,8 +595,6 @@ SummaryScreen_InitLayout:
 	farcall ApplyOBPals
 	pop af
 	ldh [rSVBK], a
-	ld a, 1
-	ldh [hCGBPalUpdate], a
 	ret
 
 .PageSprites:
@@ -576,6 +608,55 @@ SummaryScreen_InitLayout:
 	db 108, 28, SUMMARY_TILE_OAM_TITLES + 1, $0
 	db 108, 36, SUMMARY_TILE_OAM_TITLES + 2, $0
 	db 108, 44, SUMMARY_TILE_OAM_TITLES + 3, $0
+
+SummaryScreen_InitAttrmap:
+	farcall WipeAttrMap
+
+	hlcoord 0, 0, wAttrmap
+	lb bc, 12, 8
+	ld a, SUMMARY_PAL_POKEMON
+	call FillBoxWithByte
+
+	hlcoord 8, 0, wAttrmap
+	lb bc, 1, 14
+	; a == SUMMARY_PAL_POKEMON
+	call FillBoxWithByte
+
+	hlcoord 0, 12, wAttrmap
+	lb bc, 1, 20
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	call FillBoxWithByte
+
+	hlcoord 2, 12, wAttrmap
+	lb bc, 1, 3
+	xor a
+	assert SUMMARY_PAL_LOWER_WINDOW == 0
+	call FillBoxWithByte
+
+	hlcoord 1, 11, wAttrmap
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	ld [hli], a
+	ld a, Y_FLIP | SUMMARY_PAL_LOWER_WINDOW
+	ld bc, 3
+	rst ByteFill
+	ld a, X_FLIP | SUMMARY_PAL_SIDE_WINDOW
+	ld [hl], a
+	hlcoord 5, 12, wAttrmap
+	ld [hl], a
+
+	hlcoord 7, 1, wAttrmap
+	lb bc, 11, 13
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	call FillBoxWithByte
+
+	hlcoord 5, 9, wAttrmap
+	ld [hl], SUMMARY_PAL_GENDER_MARKER
+
+	hlcoord 2, 8, wAttrmap
+	lb bc, 3, 3
+	ld a, SUMMARY_PAL_ITEM
+	call FillBoxWithByte
+	ret
 
 SummaryScreen_LoadPage:
 	ld a, [wCurPartySpecies]
@@ -609,10 +690,8 @@ SummaryScreen_LoadPage:
 	ld hl, wSummaryScreenFlags
 	bit 4, [hl]
 	call nz, SummaryScreen_PlaceFrontpic
-	ld b, 2
-	call ApplyAttrmapInVBlank
 	call SummaryScreen_SwitchPage
-	call ApplyTilemapInVBlank
+	farcall HDMATransferTileMapToWRAMBank3
 	ld a, 7 + 64
 	ldh [hWX], a
 	ld a, 16
@@ -779,6 +858,13 @@ SummaryScreen_SwitchPage:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(LCDSummaryScreenShowWindow)
 	ldh [hFunctionTargetHi], a
+
+	ldh a, [rLCDC]
+	set rLCDC_WINDOW_ENABLE, a
+	ldh [rLCDC], a
+	ldh a, [rIE]
+	set LCD_STAT, a
+	ldh [rIE], a
 
 	ld hl, .InterruptTable
 	ld b, 0

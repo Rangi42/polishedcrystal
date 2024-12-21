@@ -381,17 +381,6 @@ EnbyPokegearInterfacePalette:
 INCLUDE "gfx/pokegear/pokegear_x.pal"
 
 _CGB_StatsScreenHPPals:
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld hl, wBGPals1
-	ld bc, 8 palettes
-	ld a, -1
-	rst ByteFill
-	pop af
-	ldh [rSVBK], a
-
 	ld de, wBGPals1 palette 1
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
@@ -412,61 +401,7 @@ _CGB_StatsScreenHPPals:
 	ld de, wSummaryScreenPals palette 6
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld hl, CaughtBallPals
-	ld bc, $4
-	ld a, [wTempMonCaughtBall]
-	and CAUGHT_BALL_MASK
-	rst AddNTimes
-	ld de, wSummaryScreenPals palette 7
-	call LoadPalette_White_Col1_Col2_Black
-
-	call WipeAttrMap
-
-	hlcoord 0, 0, wAttrmap
-	lb bc, 12, 8
-	ld a, $1
-	call FillBoxWithByte
-
-	hlcoord 8, 0, wAttrmap
-	lb bc, 1, 14
-	; a == $1
-	call FillBoxWithByte
-
-
-	hlcoord 0, 12, wAttrmap
-	lb bc, 1, 20
-	ld a, $3
-	call FillBoxWithByte
-
-	hlcoord 2, 12, wAttrmap
-	lb bc, 1, 3
-	xor a
-	call FillBoxWithByte
-
-	hlcoord 1, 11, wAttrmap
-	ld a, $3
-	ld [hli], a
-	ld a, Y_FLIP
-	ld bc, 3
-	rst ByteFill
-	ld a, X_FLIP | $3
-	ld [hl], a
-	hlcoord 5, 12, wAttrmap
-	ld [hl], a
-
-	hlcoord 7, 1, wAttrmap
-	lb bc, 11, 13
-	ld a, $3
-	call FillBoxWithByte
-
-	hlcoord 5, 9, wAttrmap
-	ld a, $6
-	ld [hl], a
-
-	hlcoord 2, 8, wAttrmap
-	lb bc, 3, 3
-	ld a, $2
-	call FillBoxWithByte
+	farcall SummaryScreen_InitAttrmap
 
 	jmp _CGB_FinishLayout
 
