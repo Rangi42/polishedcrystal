@@ -414,6 +414,10 @@ SummaryScreen_InitMon:
 	ld [wSummaryScreenMoveCount], a
 
 	call SummaryScreen_InitLayout
+
+	xor a
+	ldh [rVBK], a
+
 	ld hl, GFX_Balls
 	ld de, vTiles2 tile SUMMARY_TILE_BALL
 	lb bc, BANK(GFX_Balls), 1
@@ -434,8 +438,6 @@ SummaryScreen_InitMon:
 	ld c, 1
 	call Request2bppInWRA6
 
-	xor a
-	ldh [rVBK], a
 	farcall LoadSummaryStatusIcon
 	ld a, [wTempMonItem]
 	farcall LoadItemIconForSummaryScreen
