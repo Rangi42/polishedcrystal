@@ -2365,6 +2365,14 @@ YoungsterGroup:
 	dbp LEVEL_FROM_BADGES + 8, SANDSLASH
 	db -1 ; end
 
+	; YOUNGSTER
+	db "Rory@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 55, FLAREON
+	dbp 53, TAUROS
+	dbp 55, RAPIDASH
+	db -1 ; end
 
 SECTION "BugCatcherGroup", ROMX
 BugCatcherGroup:
@@ -2977,6 +2985,14 @@ endc
 	dbp 62, PARASECT
 	db -1 ; end
 
+	; PICNICKER
+	db "Zane@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, JOLTEON
+	dbp 53, RAICHU
+	dbp 55, ELECTIVIRE
+	db -1 ; end
 
 SECTION "TwinsGroup", ROMX
 TwinsGroup:
@@ -4835,6 +4851,14 @@ CosplayerGroup:
 		db CHARCOAL
 	db -1 ; end
 
+	; COSPLAYER
+	db "Aaron@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, LANTURN
+	dbp 53, MAGNEZONE
+	dbp 55, ELECTRODE
+	db -1 ; end
 
 SECTION "SuperNerdGroup", ROMX
 SuperNerdGroup:
@@ -5004,6 +5028,14 @@ SuperNerdGroup:
 	dbp 56, CHARIZARD
 	db -1 ; end
 
+	; SUPER_NERD
+	db "Theo@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, ELECTRODE
+	dbp 55, MAGNEZONE
+	dbp 56, ELECTIVIRE
+	db -1 ; end
 
 SECTION "LassGroup", ROMX
 LassGroup:
@@ -5234,6 +5266,15 @@ endc
 		db QUICK_POWDER
 	dbp LEVEL_FROM_BADGES + 9, DITTO
 		db FOCUS_SASH
+	db -1 ; end
+
+	; LASS
+	db "Piper@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 55, TOGEKISS
+	dbp 53, JOLTEON
+	dbp 52, AMPHAROS
 	db -1 ; end
 
 
@@ -6239,6 +6280,14 @@ HexManiacGroup:
 	dbp 54, MISDREAVUS
 	db -1 ; end
 
+	; HEX_MANIAC
+	db "Corinne@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 53, MISMAGIUS
+	dbp 52, ESPEON
+	dbp 55, GENGAR
+	db -1 ; end
 
 SECTION "SageGroup", ROMX
 SageGroup:
@@ -7774,6 +7823,14 @@ ScientistGroup:
 	dbp 55, ALAKAZAM
 	db -1 ; end
 
+	; SCIENTIST
+	db "Lysander@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 52, ALAKAZAM
+	dbp 54, LAPRAS
+	dbp 53, NOCTOWL
+	db -1 ; end
 
 SECTION "RocketScientistGroup", ROMX
 RocketScientistGroup:
@@ -8068,6 +8125,15 @@ BlackbeltGroup:
 	dbp 56, POLIWRATH
 	db -1 ; end
 
+	; BLACKBELT_T
+	db "Kai@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, MAGMORTAR
+	dbp 52, ARCANINE
+	dbp 53, HOUNDOOM
+	db -1 ; end
+
 
 SECTION "BattleGirlGroup", ROMX
 BattleGirlGroup:
@@ -8135,6 +8201,15 @@ BattleGirlGroup:
 	dbp LEVEL_FROM_BADGES + 10, URSARING, MALE
 		db PROTECT_PADS, FAKE_PERFECT_DVS, ABIL_URSARING_UNNERVE | NAT_ATK_UP_SATK_DOWN
 		db PLAY_ROUGH, SLASH, BELLY_DRUM, NIGHT_SLASH
+	db -1 ; end
+
+	; BATTLE_GIRL
+	db "Sasha@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 52, PRIMEAPE
+	dbp 55, TYPHLOSION, HISUIAN_FORM
+	dbp 54, RAPIDASH
 	db -1 ; end
 
 
@@ -8350,6 +8425,14 @@ TeacherGroup:
 	dbp 56, SUNFLORA
 	db -1 ; end
 
+	; TEACHER
+	db "Serena@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 55, UMBREON
+	dbp 52, VAPOREON
+	dbp 54, ESPEON
+	db -1 ; end
 
 SECTION "GuitaristMGroup", ROMX
 GuitaristMGroup:
@@ -9162,6 +9245,15 @@ CooltrainerMGroup:
 	dbp 64, NIDOQUEEN
 		db LEFTOVERS, "Empress@"
 		ev_spread 192 Atk, 192 Spe
+	db -1 ; end
+
+	; COOLTRAINERM
+	db "Gideon@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, PORYGON_Z
+	dbp 53, SLOWKING
+	dbp 55, GLACEON
 	db -1 ; end
 
 

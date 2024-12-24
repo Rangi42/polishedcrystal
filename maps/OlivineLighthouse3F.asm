@@ -144,7 +144,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	done
 
 TrainerBird_keeperTheo:
-	trainer BIRD_KEEPER, THEO, EVENT_BEAT_BIRD_KEEPER_THEO, Bird_keeperTheoSeenText, Bird_keeperTheoBeatenText, 0, Bird_keeperTheoScript
+	trainer BIRD_KEEPER, THEO1, EVENT_BEAT_BIRD_KEEPER_THEO, Bird_keeperTheoSeenText, Bird_keeperTheoBeatenText, 0, Bird_keeperTheoScript
 
 Bird_keeperTheoScript:
 	endifjustbattled

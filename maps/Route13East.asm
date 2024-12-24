@@ -83,7 +83,7 @@ GenericTrainerCamperTanner:
 	done
 
 GenericTrainerPicnickerPiper:
-	generictrainer PICNICKER, PIPER, EVENT_BEAT_PICNICKER_PIPER, .SeenText, .BeatenText
+	generictrainer PICNICKER, PIPER1, EVENT_BEAT_PICNICKER_PIPER, .SeenText, .BeatenText
 
 	text "The way you were"
 	line "walking made me"

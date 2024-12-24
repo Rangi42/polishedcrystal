@@ -26,7 +26,7 @@ SafariZoneHub_MapScriptHeader:
 	itemball_event  8, 21, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
 
 GenericTrainerBug_maniacKai:
-	generictrainer BUG_MANIAC, KAI, EVENT_BEAT_BUG_MANIAC_KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText
+	generictrainer BUG_MANIAC, KAI1, EVENT_BEAT_BUG_MANIAC_KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText
 
 	text "Venonat is so"
 	line "similar to"

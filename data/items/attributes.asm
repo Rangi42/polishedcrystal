@@ -591,6 +591,8 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; MALIGN LURE
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
+; LIFT KEY
+	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; SHINY CHARM
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; OVAL CHARM

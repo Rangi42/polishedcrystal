@@ -210,7 +210,7 @@ GenericTrainerFisherLiam:
 	done
 
 GenericTrainerFisherGideon:
-	generictrainer FISHER, GIDEON, EVENT_BEAT_FISHER_GIDEON, .SeenText, .BeatenText
+	generictrainer FISHER, GIDEON1, EVENT_BEAT_FISHER_GIDEON, .SeenText, .BeatenText
 
 	text "What's the reason"
 	line "you became a"

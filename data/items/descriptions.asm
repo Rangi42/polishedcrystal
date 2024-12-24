@@ -291,6 +291,7 @@ KeyItemDescriptions:
 	dw HarshLureDesc
 	dw PotentLureDesc
 	dw MalignLureDesc
+	dw LiftKeyDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc
@@ -1653,6 +1654,11 @@ PotentLureDesc:
 MalignLureDesc:
 	text "A bottle with a"
 	next "malevolent odor."
+	done
+
+LiftKeyDesc:
+	text "Operates the lift"
+	next "in a building."
 	done
 
 ShinyCharmDesc:

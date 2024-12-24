@@ -326,7 +326,7 @@ WesleyScript:
 	done
 
 GenericTrainerCooltrainermAaron:
-	generictrainer COOLTRAINERM, AARON, EVENT_BEAT_COOLTRAINERM_AARON, .SeenText, .BeatenText
+	generictrainer COOLTRAINERM, AARON1, EVENT_BEAT_COOLTRAINERM_AARON, .SeenText, .BeatenText
 
 	text "#mon and their"
 	line "trainer become"

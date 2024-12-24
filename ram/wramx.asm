@@ -1036,8 +1036,6 @@ wPlayerState:: db
 wHallOfFameCount:: dw
 wTradeFlags:: flag_array PARTY_LENGTH
 
-	ds 1 ; unused
-
 wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 wFarfetchdPosition:: db
@@ -1067,7 +1065,7 @@ wDragonsDenB1FSceneID:: db
 wDragonShrineSceneID:: db
 wEcruteakGymSceneID:: db
 wEcruteakHouseSceneID:: db
-	ds 1 ; unused
+wRocketHideoutB4FSceneID:: db
 wElmsLabSceneID:: db
 wFarawayIslandSceneID:: db
 wFastShip1FSceneID:: db

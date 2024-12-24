@@ -137,6 +137,7 @@ DEF CRYS EQU __trainer_class__
 	const OLIVER
 	const CHAZ
 	const TYLER
+	const RORY2
 
 	trainerclass BUG_CATCHER ; 21
 	const WADE1
@@ -209,10 +210,11 @@ DEF CRYS EQU __trainer_class__
 	const EDNA
 	const TANYA
 	const LILY
-	const PIPER
+	const PIPER1
 	const GINGER
 	const CHEYENNE
 	const ADRIAN
+	const ZANE
 
 	trainerclass TWINS ; 24
 	const AMYANDMAY1
@@ -263,7 +265,7 @@ DEF CRYS EQU __trainer_class__
 	const KYLER
 	const MURPHY
 	const LIAM
-	const GIDEON
+	const GIDEON1
 	const HALL
 	const DALLAS
 
@@ -276,7 +278,7 @@ DEF CRYS EQU __trainer_class__
 	const JOSE3
 	const ROD
 	const ABE
-	const THEO
+	const THEO1
 	const TOBY
 	const DENIS
 	const HANK
@@ -406,6 +408,7 @@ DEF CRYS EQU __trainer_class__
 	const CHLOE
 	const BROOKE
 	const KUROKO
+	const AARON2
 
 	trainerclass SUPER_NERD ; 31
 	const STAN
@@ -423,11 +426,12 @@ DEF CRYS EQU __trainer_class__
 	const LUIS
 	const JOVAN
 	const MIGUEL
-	const RORY
+	const RORY1
 	const GREGG
 	const FOOTE
 	const DAVE
 	const KOUTA
+	const THEO2
 
 	trainerclass LASS ; 32
 	const DANA1
@@ -453,6 +457,7 @@ DEF CRYS EQU __trainer_class__
 	const GINA
 	const ALICE
 	const DUPLICA
+	const PIPER2
 
 	trainerclass BEAUTY ; 33
 	const VICTORIA
@@ -484,7 +489,7 @@ DEF CRYS EQU __trainer_class__
 	const ROBBY
 	const PIERRE
 	const DYLAN
-	const KAI
+	const KAI1
 
 	trainerclass RUIN_MANIAC ; 35
 	const JONES
@@ -579,6 +584,7 @@ DEF CRYS EQU __trainer_class__
 	const ESTHER
 	const MATILDA
 	const BETHANY
+	const CORINNE
 
 	trainerclass SAGE ; 3c
 	const CHOW
@@ -793,6 +799,7 @@ DEF CRYS EQU __trainer_class__
 	const JOSEPH
 	const NIGEL
 	const PIOTR
+	const LYSANDER
 
 	trainerclass ROCKET_SCIENTIST ; 55
 	const ROSS
@@ -830,6 +837,7 @@ DEF CRYS EQU __trainer_class__
 	const MANFORD
 	const ANDER
 	const TAKEO
+	const KAI2
 
 	trainerclass BATTLE_GIRL ; 59
 	const SUBARU
@@ -839,6 +847,7 @@ DEF CRYS EQU __trainer_class__
 	const RONDA
 	const PADMA
 	const EMY
+	const SASHA
 
 	trainerclass DRAGON_TAMER ; 5a
 	const PAUL
@@ -865,6 +874,7 @@ DEF CRYS EQU __trainer_class__
 	const SHIRLEY
 	const KATHRYN
 	const CLARICE
+	const SERENA
 
 	trainerclass GUITARISTM ; 5d
 	const CLYDE
@@ -952,7 +962,7 @@ DEF CRYS EQU __trainer_class__
 	const GAVEN2
 	const GAVEN3
 	const NICK
-	const AARON
+	const AARON1
 	const CODY
 	const MIKE
 	const RYAN
@@ -970,6 +980,7 @@ DEF CRYS EQU __trainer_class__
 	const COOLTRAINERM_COREY
 	const COOLTRAINERM_RAYMOND
 	const FERGUS
+	const GIDEON2
 
 	trainerclass COOLTRAINERF ; 6b
 	const BETH1

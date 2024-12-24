@@ -804,3 +804,6 @@ SECTION "LureIcon", ROMX
 HarshLureIcon::
 PotentLureIcon::
 MalignLureIcon:: INCBIN "gfx/items/lure.2bpp.lz"
+
+SECTION "LiftKeyIcon", ROMX
+LiftKeyIcon:: INCBIN "gfx/items/lift_key.2bpp.lz"
