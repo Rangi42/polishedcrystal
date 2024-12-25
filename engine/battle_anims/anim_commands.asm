@@ -264,7 +264,7 @@ RunBattleAnimCommand:
 
 BattleAnimCommands::
 ; entries correspond to anim_* constants (see macros/scripts/battle_anims.asm)
-	table_width 2, BattleAnimCommands
+	table_width 2
 	dw BattleAnimCmd_StatLoop
 	dw BattleAnimCmd_Obj
 	dw BattleAnimCmd_1GFX
@@ -970,7 +970,7 @@ SetBattleAnimPal:
 	jr .done_setpal
 
 CustomBattlePalettes:
-	table_width 1 palettes, CustomBattlePalettes
+	table_width 1 palettes
 INCLUDE "gfx/battle_anims/custom.pal"
 	assert_table_length NUM_CUSTOM_BATTLE_PALETTES
 

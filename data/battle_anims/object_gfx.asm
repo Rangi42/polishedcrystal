@@ -9,7 +9,7 @@ ENDM
 
 AnimObjGFX:
 ; entries correspond to ANIM_GFX_* constants
-	table_width 3, AnimObjGFX
+	table_width 3
 	farbank "Battle Anim Graphics"
 	battleanimgfx  0, AnimObj00GFX
 	battleanimgfx 35, AnimObjHitGFX
@@ -93,7 +93,7 @@ AnimObjGFX:
 
 AnimBallObjGFX:
 ; entries correspond to poke ball item constants
-	table_width 2, AnimBallObjGFX
+	table_width 2
 	farbank "Battle Ball Icons"
 	fardw AnimObjParkBallGFX
 	fardw AnimObjPokeBallGFX

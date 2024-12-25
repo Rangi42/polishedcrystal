@@ -5,7 +5,7 @@ ENDM
 
 SpriteMovementData::
 ; entries correspond to SPRITEMOVEDATA_* constants
-	table_width NUM_SPRITEMOVEDATA_FIELDS, SpriteMovementData
+	table_width NUM_SPRITEMOVEDATA_FIELDS
 	; function,                                              facing, action,                         flags1, flags2, palette flags
 	sprite_movement_data SPRITEMOVEFN_00,                    DOWN,   OBJECT_ACTION_STAND,            $02,    $00,    %0000 ; SPRITEMOVEDATA_00
 	sprite_movement_data SPRITEMOVEFN_STANDING,              DOWN,   OBJECT_ACTION_STAND,            $0c,    $00,    %0000 ; SPRITEMOVEDATA_STILL

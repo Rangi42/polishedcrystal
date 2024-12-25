@@ -1,5 +1,5 @@
 ElevatorFloorNames:
-	table_width 1, ElevatorFloorNames
+	table_width 1
 	dr .B4F
 	dr .B3F
 	dr .B2F

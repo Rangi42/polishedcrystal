@@ -1,5 +1,5 @@
 PaintingPicPointers::
-	table_width 2, PaintingPicPointers
+	table_width 2
 	farbank "Painting Pics"
 	fardw HoOhPaintingPic
 	fardw LugiaPaintingPic

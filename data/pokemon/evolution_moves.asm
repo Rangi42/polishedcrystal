@@ -1,5 +1,5 @@
 EvolutionMoves::
-	table_width 1, EvolutionMoves
+	table_width 1
 	db NO_MOVE      ; BULBASAUR
 	db NO_MOVE      ; IVYSAUR
 	db PETAL_DANCE  ; VENUSAUR

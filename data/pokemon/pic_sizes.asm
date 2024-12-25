@@ -16,7 +16,7 @@ ENDM
 	popc
 
 PokemonPicSizes::
-	list_start PokemonPicSizes
+	list_start
 	DEF size_value = 0
 INCLUDE "gfx/pokemon/bulbasaur/front.dimensions"
 INCLUDE "gfx/pokemon/ivysaur/front.dimensions"

@@ -1,5 +1,5 @@
 BattleTowerTrainers:
-	table_width (NAME_LENGTH - 1) + 1, BattleTowerTrainers
+	table_width (NAME_LENGTH - 1) + 1
 	rawchar "Yayoi@@@@@", ARTIST
 	rawchar "Sawyer@@@@", POKEMANIAC
 	rawchar "Santiago@@", FISHER

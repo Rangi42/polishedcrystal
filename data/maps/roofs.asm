@@ -1,7 +1,7 @@
 MapGroupRoofs:
 ; entries correspond to map groups
 ; values are indexes for LoadMapGroupRoof.Roofs
-	table_width 1, MapGroupRoofs
+	table_width 1
 	db -1            ; 0
 	db ROOF_OLIVINE  ; 1 (Olivine City)
 	db ROOF_AZALEA   ; 2 (Mahogany Town)
