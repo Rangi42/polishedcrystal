@@ -8,8 +8,7 @@ MACRO size_nybble
 ENDM
 
 ; Terrible hack because we can't read files into strings (yet!)
-	pushc
-	setcharmap main ; ASCII
+	pushc main ; ASCII
 	assert "U" == $55 && "f" == $66 && "w" == $77
 	DEF U EQUS " size_nybble 5"
 	DEF f EQUS " size_nybble 6"
