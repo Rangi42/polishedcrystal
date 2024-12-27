@@ -10,19 +10,19 @@ RocketHideoutB3F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 19, 13, BGEVENT_ITEM + RARE_CANDY, EVENT_ROCKET_HIDEOUT_B3F_HIDDEN_RARE_CANDY ; TODO: pick a better item
+	bg_event 19, 13, BGEVENT_ITEM + FULL_HEAL, EVENT_ROCKET_HIDEOUT_B3F_HIDDEN_FULL_HEAL
 
 	def_object_events
 	object_event 18,  8, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCosplayerAaron, -1
 	object_event  2, 18, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCoolDudeGideon, -1
-	itemball_event 12, 10, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_1_FROM_ROCKET_HIDEOUT_B3F ; TODO: pick a better item
-	itemball_event 18, 13, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_2_FROM_ROCKET_HIDEOUT_B3F ; TODO: pick a better item
+	itemball_event 12, 10, CARBOS, 1, EVENT_PICKED_UP_CARBOS_FROM_ROCKET_HIDEOUT_B3F
+	itemball_event 18, 13, ELIXIR, 1, EVENT_PICKED_UP_ELIXIR_FROM_ROCKET_HIDEOUT_B3F
 
 RocketHideoutB3FCosplayerAaron:
 	generictrainer COSPLAYER, AARON2, EVENT_BEAT_COSPLAYER_AARON, .SeenText, .BeatenText
 
-	text "Spark's energy"
-	line "is on point!"
+	text "Leader Spark's"
+	line "energy is high!"
 
 	para "Hope you're ready"
 	line "for a jolt!"
@@ -37,35 +37,27 @@ RocketHideoutB3FCosplayerAaron:
 	done
 
 .BeatenText:
-	text "Fast moves, sharp"
-	line "instincts. You've"
-	cont "got it all!"
+	text "Can't keep up!"
 	done
 
 RocketHideoutB3FCoolDudeGideon:
 	generictrainer COOLTRAINERM, GIDEON2, EVENT_BEAT_COOL_DUDE_GIDEON, .SeenText, .BeatenText
 
-	text "Blanche expects"
-	line "the best from"
-	cont "trainers."
-
-	para "Stay sharp if you"
-	line "plan to face them."
+	text "Leader Blanche ex-"
+	line "pects no less than"
+	cont "maximum effort!"
 	done
 
 .SeenText:
-	text "Mystic thrives on"
-	line "data and logic."
+	text "Emotion clouds"
+	line "judgement."
 
-	para "Emotions cloud"
-	line "judgement. Let's"
-	cont "see your focus."
+	para "Let's see if your"
+	cont "focus is good."
+	
 	done
 
 .BeatenText:
-	text "You've shown you"
-	line "can think clearly."
-
-	para "Keep using that"
-	line "sharp mind."
+	text "My judgement was"
+	line "flawed…"
 	done

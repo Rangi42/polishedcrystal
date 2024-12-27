@@ -17,7 +17,7 @@ RocketHideoutB4F_MapScriptHeader:
 	coord_event 17, 11, 0, RocketHideoutB4FMeetLeadersRightScript
 
 	def_bg_events
-	bg_event 17,  1, BGEVENT_ITEM + RARE_CANDY, EVENT_ROCKET_HIDEOUT_B4F_HIDDEN_RARE_CANDY
+	bg_event 17,  1, BGEVENT_ITEM + MAX_POTION, EVENT_ROCKET_HIDEOUT_B4F_HIDDEN_MAX_POTION
 
 	def_object_events
 	object_event 17,  3, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FCandelaScript, -1
@@ -27,9 +27,9 @@ RocketHideoutB4F_MapScriptHeader:
 	object_event 15, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FTeacherSerena, -1
 	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FSuperNerdTheo, -1
 	keyitemball_event 2,  2, LIFT_KEY, EVENT_PICKED_UP_LIFT_KEY_FROM_ROCKET_HIDEOUT_B4F
-	itemball_event 1,  4, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_1_FROM_ROCKET_HIDEOUT_B4F
-	itemball_event 2, 12, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_2_FROM_ROCKET_HIDEOUT_B4F
-	itemball_event 4, 20, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_3_FROM_ROCKET_HIDEOUT_B4F
+	itemball_event 1,  4, X_SP_ATK,    1, EVENT_PICKED_UP_X_SP_ATK_FROM_ROCKET_HIDEOUT_B4F
+	itemball_event 2, 12, PP_UP,        1, EVENT_PICKED_UP_PP_UP_FROM_ROCKET_HIDEOUT_B4F
+	itemball_event 4, 20, DUBIOUS_DISC, 1, EVENT_PICKED_UP_DUBIOUS_DISC_FROM_ROCKET_HIDEOUT_B4F
 
 	object_const_def
 	const ROCKETHIDEOUTB4F_CANDELA
@@ -117,9 +117,9 @@ RocketHideoutB4FMeetLeadersScript:
 
 
 .CandelaIntro1Text:
-	text "Candela: I am"
-	line "telling you, pure"
-	cont "power wins!"
+	text "Candela: I'm tell-"
+	line "ing you, raw power"
+	cont "wins every time!"
 
 	para "Training should be"
 	line "tough, like a"
@@ -127,9 +127,9 @@ RocketHideoutB4FMeetLeadersScript:
 	done
 
 .BlancheIntro1Text:
-	text "Blanche: Reckless"
-	line "power is pointless"
-	cont "without strategy."
+	text "Blanche: Strength"
+	line "is pointless with-"
+	cont "out strategy."
 
 	para "Smart planning"
 	line "wins, every time."
@@ -146,8 +146,8 @@ RocketHideoutB4FMeetLeadersScript:
 
 .CandelaIntro2Text:
 	text "Candela: Instinct?"
-	line "That's just"
-	cont "guesswork!"
+	line "That's just guess-"
+	cont "work!"
 
 	para "Real trainers rely"
 	line "on strength!"
@@ -415,18 +415,17 @@ RocketHideoutB4FYoungsterRoryScript:
 	end
 
 .GreetingText
-	text "Firepower is key"
-	line "for Valor."
+	text "Team Valor is…"
 
-	para "No strategy, no"
-	line "guesswork-just"
-	cont "force!"
+	para "Wait--no!"
+
+	para "I mean, I think"
+	line "I'm lost!"
 	done
 
 .BeatenText:
-	text "Looks like your"
-	line "fire burned"
-	cont "brighter today."
+	text "Which way was"
+	line "the elevator?"
 	done
 
 .AfterText:
@@ -469,17 +468,15 @@ RocketHideoutB4FTeacherSerena:
 	done
 
 .SeenText:
-	text "A calm mind and"
-	line "thoughtful action-"
-
-	para "That's the Mystic"
-	line "way. Let me teach"
-	cont "you."
+	text "Let me see if you"
+	line "are smart enough"
+	
+	para "to take on the"
+	line "leaders!"
 	done
 
 .BeatenText:
-	text "Blanche my"
-	line "lessons failed me!"
+	text "Class dismissed!"
 	done
 
 RocketHideoutB4FSuperNerdTheo:
@@ -507,21 +504,16 @@ RocketHideoutB4FSuperNerdTheo:
 	text "The leaders argue"
 	line "a lot, but they"
 	cont "are good friends."
-
-	para "We all here to"
-	line "have fun and"
-	cont "hang out."
 	done
 
 .SeenText:
-	text "Instinct is about"
-	line "making fast moves."
+	text "You here to chal-"
+	line "lenge the leaders?"
 
-	para "React or lose-"
-	line "simple."
+	para "You need to beat"
+	line "me first!"
 	done
 
 .BeatenText:
-	text "You reacted too"
-	line "fast for me!"
+	text "I choked!"
 	done

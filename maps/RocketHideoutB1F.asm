@@ -14,7 +14,7 @@ RocketHideoutB1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 13, 15, BGEVENT_ITEM + RARE_CANDY, EVENT_ROCKET_HIDEOUT_B1F_HIDDEN_RARE_CANDY ; TODO: pick a better item
+	bg_event 13, 15, BGEVENT_ITEM + MAX_REVIVE, EVENT_ROCKET_HIDEOUT_B1F_HIDDEN_MAX_REVIVE
 
 	def_object_events
 	object_event 20, 18, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, RocketHideoutB1FBlackBeltKai, -1
@@ -22,8 +22,8 @@ RocketHideoutB1F_MapScriptHeader:
 	object_event 18,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, RocketHideoutB1FPicnickerZane, -1
 	object_event 10, 17, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FBattleGirlSasha, -1
 	object_event  7, 23, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB1FLassPiper, -1
-	itemball_event  1, 17, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_1_FROM_ROCKET_HIDEOUT_B1F ; TODO: pick a better item
-	itemball_event  3, 14, RARE_CANDY, 1, EVENT_PICKED_UP_RARE_CANDY_2_FROM_ROCKET_HIDEOUT_B1F ; TODO: pick a better item
+	itemball_event  1, 17, MOON_STONE, 1, EVENT_PICKED_UP_MOON_STONE_FROM_ROCKET_HIDEOUT_B1F
+	itemball_event  3, 14, ZINC, 1, EVENT_PICKED_UP_ZINC_FROM_ROCKET_HIDEOUT_B1F
 
 RocketHideoutB1FDoorScript:
 	checkevent EVENT_BEAT_BLACK_BELT_KAI
@@ -33,7 +33,7 @@ RocketHideoutB1FDoorScript:
 	endcallback
 
 RocketHideoutB1FBlackBeltKai:
-	trainer BLACKBELT_T, KAI2, EVENT_BEAT_BLACK_BELT_KAI, .SeenText, .AfterText, 0, .Script
+	trainer BLACKBELT_T, KAI2, EVENT_BEAT_BLACK_BELT_KAI, .SeenText, .AfterText, 0, .BeatenText
 
 .Script:
 	checkevent EVENT_BEAT_BLACK_BELT_KAI
@@ -41,14 +41,11 @@ RocketHideoutB1FBlackBeltKai:
 	jumpthistextfaceplayer
 
 .SeenText:
-	text "Strength in all"
-	line "that matters."
-
-	para "In Valor, we push"
+	text "In Valor, we push"
 	line "limits."
 
-	para "No holding back-"
-	line "show me your fire!"
+	para "Strength in all"
+	line "that matters!"
 	done
 
 .AfterScript
@@ -58,109 +55,90 @@ RocketHideoutB1FBlackBeltKai:
 	end
 
 .AfterText:
-	text "You've got guts-I"
-	line "can respect that."
+	text "You've got guts…"
 
-	para "Maybe you belong"
-	line "in Valor after all."
+	para "Perhaps you should"
+	line "join Team Valor."
+	done
+
+.BeatenText:
+	text "You're strength is"
+	line "superior…"
 	done
 
 RocketHideoutB1FScientistLysander:
 	generictrainer SCIENTIST, LYSANDER, EVENT_BEAT_SCIENTIST_LYSANDER, .SeenText, .BeatenText
 
-	text "Candela found"
-	line "some old files"
-	cont "on this place."
+	text "Leader Blanche ex-"
+	line "cels in strategy."
 
-	para "She thinks if we"
-	line "we stand in these"
-
-	para "exact spots, we"
-	line "are optimally"
-	cont "defensible."
-
-	para "Blanche has calc-"
-	line "ulated otherwise."
+	para "He decides where"
+	line "we are stationed."
 	done
 
 .SeenText:
-	text "Mystic believes in"
+	text "Mystic values"
 	line "strategy."
 
-	para "Only a calculated"
-	line "mind can win here."
+	para "Only a strong mind"
+	line "could win here."
 	done
 
 .BeatenText:
-	text "Your tactics were"
-	line "flawless. Mystic"
-	cont "would approve."
-
-	para "Don't squander it."
+	text "You're tactics are"
+	line "flawless!"
 	done
 
 RocketHideoutB1FPicnickerZane:
 	generictrainer PICNICKER, ZANE, EVENT_BEAT_PICNICKER_ZANE, .SeenText, .BeatenText
 
-	text "Spark would say"
-	line "you've got good"
-	cont "instincts."
+	text "Spark would be"
+	line "impressed."
 
 	para "Let's see if you"
-	line "can keep it up!"
+	line "can keep going!"
 	done
 
 .SeenText:
-	text "Instinct teaches"
-	line "us to trust out"
-	cont "gut."
+	text "Team Instinct is"
+	line "all about trusting"
+	cont "your gut."
 
-	para "No time for plan-"
-	line "ning, just act!"
+	para "No time to think,"
+	line "just act!"
 	done
 
 .BeatenText:
-	text "You've got"
-	line "instincts, i'll"
-	cont "give you that."
+	text "You've got that"
+	line "'spark', alright."
 
-	para "Keep that spark"
-	line "alive!"
+	para "Keep it alive!"
 	done
 
 RocketHideoutB1FBattleGirlSasha:
 	generictrainer BATTLE_GIRL, SASHA, EVENT_BEAT_BATTLE_GIRL_SASHA, .SeenText, .BeatenText
 
-	text "You've got the"
-	line "fire of Valor."
+	text "The flame of Valor"
+	line "burns within you."
 
-	para "But can you keep"
-	line "it burning?"
-
-	para "Candela's training"
-	line "is even tougher."
+	para "Candela's trial"
+	line "will test your"
+	cont "limits."
 	done
 
 .SeenText:
-	text "Valor is about"
-	line "heat, passion, and"
+	text "Team Valor's all"
+	line "about passion and"
 	cont "taking risks."
 
-	para "We do this to"
-	line "grow."
-
 	para "Think you can"
-	line "match my"
-	cont "intensity?"
+	line "match my in-"
+	cont "tensity?"
 	done
 
 .BeatenText:
-	text "Alright, I'll"
-	line "admit your fire"
-	cont "burns bright."
-
-	para "Don't let it"
-	line "go to your head."
+	text "You're flame…"
+	line "Too bright!"
 	done
 
 RocketHideoutB1FLassPiper:
@@ -174,16 +152,14 @@ RocketHideoutB1FLassPiper:
 	done
 
 .SeenText:
-	text "Instinct is about"
-	line "following the"
-	cont "flow."
+	text "My strategy?"
 
-	para "No overthinking-"
-	line "react and win!"
+	para "Pure instinct and"
+	line "nothing more!"
 	done
 
 .BeatenText:
-	text "Guess your"
-	line "instincts were"
-	cont "better than mine."
+	text "I guess your in-"
+	line "stinct is better"
+	cont "than mine."
 	done
