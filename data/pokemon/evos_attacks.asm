@@ -5069,6 +5069,7 @@ UrsaringEvosAttacks:
 	evo_data EVOLVE_ITEM, MOON_STONE, URSALUNA
 	evo_data EVOLVE_LOCATION, SINJOH_RUINS, URSALUNA
 	evo_data EVOLVE_LOCATION, MYSTRI_STAGE, URSALUNA
+	evo_data EVOLVE_LOCATION, MURKY_SWAMP, URSALUNA, URSALUNA_BLOODMOON_FORM
 	db -1 ; no more evolutions
 	db 1, GUNK_SHOT ; HGSS tutor move
 	db 1, THIEF ; Covet → TM move
