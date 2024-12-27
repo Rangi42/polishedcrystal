@@ -1,5 +1,5 @@
 AbilityDescriptions:
-	table_width 2, AbilityDescriptions
+	table_width 2
 	dw NoAbilityDescription
 	dw StenchDescription
 	dw DrizzleDescription

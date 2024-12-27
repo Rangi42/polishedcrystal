@@ -105,6 +105,7 @@ _TimeOfDayPals::
 
 _UpdateTimePals::
 	ld c, $9 ; normal
+UpdatePalFromC::
 	call GetTimePalFade
 	jmp DmgToCgbTimePals
 

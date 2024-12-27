@@ -1,5 +1,5 @@
 AbilityNames:
-	table_width 2, AbilityNames
+	table_width 2
 	dw NoAbility
 	dw Stench
 	dw Drizzle

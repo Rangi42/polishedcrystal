@@ -6,7 +6,7 @@ ENDM
 
 PokemonBodyData:
 ; entries correspond to constants/pokemon_constants.asm
-	table_width BODY_DATA_SIZE, PokemonBodyData
+	table_width BODY_DATA_SIZE
 	body_data   7,   69, QUADRUPED,    GREEN  ; BULBASAUR
 	body_data  10,  130, QUADRUPED,    GREEN  ; IVYSAUR
 	body_data  20, 1000, QUADRUPED,    GREEN  ; VENUSAUR

@@ -1,5 +1,5 @@
 FootprintPointers::
-	table_width 2, FootprintPointers
+	table_width 2
 	dw BulbasaurFootprint
 	dw IvysaurFootprint
 	dw VenusaurFootprint

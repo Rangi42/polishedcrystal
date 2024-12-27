@@ -1,5 +1,5 @@
 ApricornNames::
-	list_start ApricornNames
+	list_start
 	li "?"
 	li "Red Apricorn"
 	li "Blu Apricorn"

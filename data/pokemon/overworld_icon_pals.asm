@@ -3,7 +3,7 @@ MACRO iconpal
 ENDM
 
 OverworldMonIconColors::
-	table_width 1, OverworldMonIconColors
+	table_width 1
 	iconpal TEAL, GREEN ; BULBASAUR
 	iconpal TEAL, GREEN ; IVYSAUR
 	iconpal TEAL, GREEN ; VENUSAUR

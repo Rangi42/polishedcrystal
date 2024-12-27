@@ -1,5 +1,5 @@
 PsychicInverMons:
-	table_width 12, PsychicInverMons
+	table_width 12
 
 	dbp 65, EXEGGUTOR, MALE
 		db FIGY_BERRY, DVS_HP_FIRE, NAT_SATK_UP_ATK_DOWN | ABIL_EXEGGUTOR_HARVEST

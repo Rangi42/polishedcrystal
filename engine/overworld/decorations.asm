@@ -49,7 +49,7 @@ _PlayerDecorationMenu:
 	dw .category_pointers
 
 .category_pointers:
-	table_width 2 + 2, _PlayerDecorationMenu.category_pointers
+	table_width 2 + 2
 	dw DecoBedMenu,      .bed
 	dw DecoCarpetMenu,   .carpet
 	dw DecoPlantMenu,    .plant
@@ -123,7 +123,7 @@ _PlayerDecorationMenu:
 	jr .loop
 
 .owned_pointers:
-	table_width 3, _PlayerDecorationMenu.owned_pointers
+	table_width 3
 	dwb FindOwnedBeds,      0 ; bed
 	dwb FindOwnedCarpets,   1 ; carpet
 	dwb FindOwnedPlants,    2 ; plant
@@ -448,7 +448,7 @@ DoDecorationAction2:
 	call StackJumpTable
 
 .DecoActions:
-	table_width 2, DoDecorationAction2.DecoActions
+	table_width 2
 	dw DecoAction_nothing
 	dw DecoAction_setupbed
 	dw DecoAction_putawaybed
@@ -521,7 +521,7 @@ GetDecoName:
 	ret
 
 .NameFunctions:
-	table_width 2, GetDecoName.NameFunctions
+	table_width 2
 	dw DoNothing
 	dw .plant
 	dw .bed
@@ -948,7 +948,7 @@ DescribeDecoration::
 
 .JumpTable:
 ; entries correspond to DECODESC_* constants
-	table_width 2, DescribeDecoration.JumpTable
+	table_width 2
 	dw DecorationDesc_Poster
 	dw DecorationDesc_LeftOrnament
 	dw DecorationDesc_RightOrnament

@@ -6,7 +6,7 @@ MACRO item_attribute
 ENDM
 
 ItemAttributes:
-	table_width ITEMATTR_STRUCT_LENGTH, ItemAttributes
+	table_width ITEMATTR_STRUCT_LENGTH
 ; POKE BALL
 	item_attribute 200, 0, 0, BALL, ITEMMENU_PARTY, ITEMMENU_CLOSE
 ; GREAT BALL
@@ -524,7 +524,7 @@ MACRO key_item_attribute
 ENDM
 
 KeyItemAttributes:
-	table_width KEYITEMATTR_STRUCT_LENGTH, KeyItemAttributes
+	table_width KEYITEMATTR_STRUCT_LENGTH
 ; BICYCLE
 	key_item_attribute 1, ITEMMENU_CLOSE, ITEMMENU_NOUSE
 ; OLD ROD

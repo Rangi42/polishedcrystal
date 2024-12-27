@@ -1,5 +1,5 @@
 TrainerClassNames::
-	list_start TrainerClassNames
+	list_start
 	li "?"                ; TRAINER_NONE
 	li "<PK><MN> Trainer" ; CARRIE
 	li "<PK><MN> Trainer" ; CAL

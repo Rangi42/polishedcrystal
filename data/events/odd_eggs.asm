@@ -2,7 +2,7 @@ DEF NUM_ODD_EGGS EQU 10
 DEF ODD_EGG_LENGTH EQU 10
 
 OddEggProbabilities:
-	table_width 1, OddEggProbabilities
+	table_width 1
 	db 10
 	db 24
 	db 38
@@ -16,7 +16,7 @@ OddEggProbabilities:
 	assert_table_length NUM_ODD_EGGS
 
 OddEggs:
-	table_width ODD_EGG_LENGTH, OddEggs
+	table_width ODD_EGG_LENGTH
 	dp PICHU, IS_EGG_MASK | PLAIN_FORM
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, NO_MOVE
 	db $BB, $BB, $BB ; DVs

@@ -1,6 +1,6 @@
 Cries:
 ; entries correspond to CRY_* constants (see constants/cry_constants.asm)
-	table_width 2, Cries
+	table_width 2
 	farbank "Cries"
 	fardw Cry_Nidoran_M
 	fardw Cry_Nidoran_F

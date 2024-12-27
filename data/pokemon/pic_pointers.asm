@@ -3,7 +3,7 @@ MACRO pics
 ENDM
 
 PokemonPicPointers::
-	table_width 5, PokemonPicPointers
+	table_width 5
 	pics Bulbasaur
 	pics Ivysaur
 	pics Venusaur

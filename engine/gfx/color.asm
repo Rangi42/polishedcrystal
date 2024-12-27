@@ -141,12 +141,12 @@ LoadCategoryAndTypePals:
 	jmp FarCopyColorWRAM
 
 CategoryIconPals:
-	table_width PAL_COLOR_SIZE * 2, CategoryIconPals
+	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/battle/categories.pal"
 	assert_table_length NUM_CATEGORIES
 
 TypeIconPals:
-	table_width PAL_COLOR_SIZE, TypeIconPals
+	table_width PAL_COLOR_SIZE
 INCLUDE "gfx/battle/types.pal"
 	assert_table_length NUM_TYPES + 1
 
@@ -193,27 +193,27 @@ endr
 ItemIconPalettes:
 CaughtBallPals:
 ParkBallIconPalette:
-	table_width PAL_COLOR_SIZE * 2, ItemIconPalettes
+	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/items/items.pal"
 	assert_table_length NUM_ITEMS + 1
 
 KeyItemIconPalettes:
-	table_width PAL_COLOR_SIZE * 2, KeyItemIconPalettes
+	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/items/key_items.pal"
 	assert_table_length NUM_KEY_ITEMS
 
 TMHMTypeIconPals:
-	table_width PAL_COLOR_SIZE * 2, TMHMTypeIconPals
+	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/items/tm_hm_types.pal"
 	assert_table_length NUM_TYPES
 
 ApricornIconPalettes:
-	table_width PAL_COLOR_SIZE * 2, ApricornIconPalettes
+	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/items/apricorns.pal"
 	assert_table_length NUM_APRICORNS
 
 WingIconPalettes:
-	table_width PAL_COLOR_SIZE * 2, WingIconPalettes
+	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/items/wings.pal"
 	assert_table_length NUM_WINGS
 
@@ -991,12 +991,12 @@ LoadMapPals:
 INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
-	table_width 1 palettes, TilesetBGPalette
+	table_width 1 palettes
 INCLUDE "gfx/tilesets/bg_tiles.pal"
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
 
 RoofPals:
-	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
+	table_width PAL_COLOR_SIZE * 2 * 3
 INCLUDE "gfx/tilesets/roofs.pal"
 	assert_table_length NUM_MAP_GROUPS + 1
 

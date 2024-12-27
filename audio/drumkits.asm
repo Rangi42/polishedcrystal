@@ -104,6 +104,7 @@ Drumkit6:
 	dr Snare9
 	dr Snare9
 	dr Snare9
+	dr Snare9
 
 Drum00:
 ; unused

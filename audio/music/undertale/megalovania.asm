@@ -1932,13 +1932,13 @@ Music_Megalovania_Ch4_loop10:
 	drum_note 12, 1
 	drum_note 7, 1
 	toggle_noise
-	toggle_noise 7
+	toggle_noise 6
 	drum_note 12, 1
 	toggle_noise
 	toggle_noise 5
 	drum_note 7, 1
 	toggle_noise
-	toggle_noise 7
+	toggle_noise 6
 	drum_note 12, 1
 	toggle_noise
 	toggle_noise 5

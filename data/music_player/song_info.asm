@@ -4,7 +4,7 @@ MACRO song_info
 ENDM
 
 SongInfo:
-	list_start SongInfo
+	list_start
 	; title, origin, composer, additional credits
 	song_info "Opening", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	song_info "Title Screen", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
