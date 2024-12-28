@@ -18,7 +18,7 @@ RocketHideoutB1F_MapScriptHeader:
 
 	def_object_events
 	object_event 20, 18, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, RocketHideoutB1FBlackBeltKai, -1
-	object_event  4,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FScientistLysander, -1
+	object_event  4,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FScientistSanders, -1
 	object_event 18,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, RocketHideoutB1FPicnickerZane, -1
 	object_event 10, 17, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FBattleGirlSasha, -1
 	object_event  7, 23, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB1FLassPiper, -1
@@ -41,10 +41,10 @@ RocketHideoutB1FBlackBeltKai:
 	jumpthistextfaceplayer
 
 .SeenText:
-	text "In Valor, we push"
-	line "limits."
+	text "In Team Valor, we"
+	line "push our limits."
 
-	para "Strength in all"
+	para "Strength is all"
 	line "that matters!"
 	done
 
@@ -62,12 +62,12 @@ RocketHideoutB1FBlackBeltKai:
 	done
 
 .BeatenText:
-	text "You're strength is"
+	text "Your strength is"
 	line "superior…"
 	done
 
-RocketHideoutB1FScientistLysander:
-	generictrainer SCIENTIST, LYSANDER, EVENT_BEAT_SCIENTIST_LYSANDER, .SeenText, .BeatenText
+RocketHideoutB1FScientistSanders:
+	generictrainer SCIENTIST, SANDERS, EVENT_BEAT_SCIENTIST_SANDERS, .SeenText, .BeatenText
 
 	text "Leader Blanche ex-"
 	line "cels in strategy."
@@ -77,15 +77,15 @@ RocketHideoutB1FScientistLysander:
 	done
 
 .SeenText:
-	text "Mystic values"
-	line "strategy."
+	text "Team Mystic"
+	line "values strategy."
 
 	para "Only a strong mind"
 	line "could win here."
 	done
 
 .BeatenText:
-	text "You're tactics are"
+	text "Your tactics are"
 	line "flawless!"
 	done
 
@@ -110,7 +110,7 @@ RocketHideoutB1FPicnickerZane:
 
 .BeatenText:
 	text "You've got that"
-	line "'spark', alright."
+	line "“spark”, alright."
 
 	para "Keep it alive!"
 	done
@@ -137,7 +137,7 @@ RocketHideoutB1FBattleGirlSasha:
 	done
 
 .BeatenText:
-	text "You're flame…"
+	text "Your flame…"
 	line "Too bright!"
 	done
 

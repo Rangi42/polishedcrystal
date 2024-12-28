@@ -584,7 +584,7 @@ DEF CRYS EQU __trainer_class__
 	const ESTHER
 	const MATILDA
 	const BETHANY
-	const CORINNE
+	const CORYN
 
 	trainerclass SAGE ; 3c
 	const CHOW
@@ -799,7 +799,7 @@ DEF CRYS EQU __trainer_class__
 	const JOSEPH
 	const NIGEL
 	const PIOTR
-	const LYSANDER
+	const SANDERS
 
 	trainerclass ROCKET_SCIENTIST ; 55
 	const ROSS

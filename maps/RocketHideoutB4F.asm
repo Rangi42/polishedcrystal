@@ -282,7 +282,7 @@ RocketHideoutB4FCandelaScript:
 
 .GreetingText:
 	text "Candela: Ready to"
-	line "text your strength?"
+	line "test your strength?"
 	done
 
 .SeenText:

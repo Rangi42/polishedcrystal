@@ -15,14 +15,14 @@ RocketHideoutB2F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 20,  6, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, RocketHideoutB2FHexManiacCorinne, -1
+	object_event 20,  6, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, RocketHideoutB2FHexManiacCoryn, -1
 	itemball_event 16,  2, ULTRA_BALL,  1, EVENT_PICKED_UP_ULTRA_BALL_FROM_ROCKET_HIDEOUT_B2F
 	itemball_event  1,  5, SUPER_REPEL, 1, EVENT_PICKED_UP_SUPER_REPEL_FROM_ROCKET_HIDEOUT_B2F
 	itemball_event  6,  6, NUGGET,      1, EVENT_PICKED_UP_NUGGET_FROM_ROCKET_HIDEOUT_B2F
 	itemball_event  3, 15, RARE_CANDY,  1, EVENT_PICKED_UP_RARE_CANDY_FROM_ROCKET_HIDEOUT_B2F
 
-RocketHideoutB2FHexManiacCorinne:
-	generictrainer HEX_MANIAC, CORINNE, EVENT_BEAT_HEX_MANIAC_CORINNE, .SeenText, .BeatenText
+RocketHideoutB2FHexManiacCoryn:
+	generictrainer HEX_MANIAC, CORYN, EVENT_BEAT_HEX_MANIAC_CORYN, .SeenText, .BeatenText
 
 	text "Team Mystic could"
 	line "use more talents"
@@ -31,7 +31,8 @@ RocketHideoutB2FHexManiacCorinne:
 
 .SeenText:
 	text "You might have"
-	line "potential"
+	line "potential for"
+	cont "Team Mystic."
 
 	para "Let me test your"
 	line "limits."

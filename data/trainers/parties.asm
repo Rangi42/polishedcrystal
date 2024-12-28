@@ -6281,7 +6281,7 @@ HexManiacGroup:
 	db -1 ; end
 
 	; HEX_MANIAC
-	db "Corinne@"
+	db "Coryn@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 53, MISMAGIUS
@@ -7824,7 +7824,7 @@ ScientistGroup:
 	db -1 ; end
 
 	; SCIENTIST
-	db "Lysander@"
+	db "Sanders@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 52, ALAKAZAM
@@ -8208,7 +8208,7 @@ BattleGirlGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 52, PRIMEAPE
-	dbp 55, TYPHLOSION, HISUIAN_FORM
+	dbp 55, TYPHLOSION
 	dbp 54, RAPIDASH
 	db -1 ; end
 
