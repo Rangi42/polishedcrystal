@@ -23,7 +23,7 @@ RocketHideoutB4F_MapScriptHeader:
 	object_event 17,  3, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FCandelaScript, -1
 	object_event 16,  6, SPRITE_SPARK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FSparkScript, -1
 	object_event 19,  6, SPRITE_BLANCHE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FBlancheScript, -1
-	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FYoungsterRoryScript, -1
+	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FYoungsterValorGrunt2Script, -1
 	object_event 15, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FTeacherSerena, -1
 	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FSuperNerdTheo, -1
 	keyitemball_event 2,  2, LIFT_KEY, EVENT_PICKED_UP_LIFT_KEY_FROM_ROCKET_HIDEOUT_B4F
@@ -35,7 +35,7 @@ RocketHideoutB4F_MapScriptHeader:
 	const ROCKETHIDEOUTB4F_CANDELA
 	const ROCKETHIDEOUTB4F_SPARK
 	const ROCKETHIDEOUTB4F_BLANCHE
-	const ROCKETHIDEOUTB4F_YOUNGSTER_RORY
+	const ROCKETHIDEOUTB4F_YOUNGSTER_VALOR_GRUNT_2
 	const ROCKETHIDEOUTB4F_TEACHER_SERENA
 	const ROCKETHIDEOUTB4F_SUPER_NERD_THEO
 	const ROCKETHIDEOUTB4F_LIFT_KEY
@@ -55,7 +55,7 @@ RocketHideoutB4FDoorScript:
 	endcallback
 
 RocketHideoutB4FLiftKeyScript:
-	checkevent EVENT_BEAT_YOUNGSTER_RORY
+	checkevent EVENT_BEAT_YOUNGSTER_VALOR_GRUNT_2
 	iftruefwd .beat_rory
 	disappear ROCKETHIDEOUTB4F_LIFT_KEY
 	endcallback
@@ -391,22 +391,22 @@ RocketHideoutB4FBlancheScript:
 	cont "ahead."
 	done
 
-RocketHideoutB4FYoungsterRoryScript:
+RocketHideoutB4FYoungsterValorGrunt2Script:
 	faceplayer
-	checkevent EVENT_BEAT_YOUNGSTER_RORY
+	checkevent EVENT_BEAT_YOUNGSTER_VALOR_GRUNT_2
 	iftruefwd .AfterBattle
 	opentext
 	writetext .GreetingText
 	closetext
 	winlosstext .BeatenText, 0
-	loadtrainer YOUNGSTER, RORY2
+	loadtrainer YOUNGSTER, VALOR_GRUNT_2
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_YOUNGSTER_RORY
+	setevent EVENT_BEAT_YOUNGSTER_VALOR_GRUNT_2
 	readvar VAR_FACING
-	ifnotequal RIGHT, .NotLeftOfRory
+	ifnotequal RIGHT, .NotLeftOfValorGrunt2
 	moveobject ROCKETHIDEOUTB4F_LIFT_KEY, 4, 2
-.NotLeftOfRory
+.NotLeftOfValorGrunt2
 	appear ROCKETHIDEOUTB4F_LIFT_KEY
 .AfterBattle
 	opentext

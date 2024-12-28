@@ -2366,7 +2366,7 @@ YoungsterGroup:
 	db -1 ; end
 
 	; YOUNGSTER
-	db "Rory@"
+	db "VGrunt2@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 55, FLAREON
@@ -4852,7 +4852,7 @@ CosplayerGroup:
 	db -1 ; end
 
 	; COSPLAYER
-	db "Aaron@"
+	db "IGrunt2@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 54, LANTURN
@@ -5269,7 +5269,7 @@ endc
 	db -1 ; end
 
 	; LASS
-	db "Piper@"
+	db "IGrunt1@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 55, TOGEKISS
@@ -8126,7 +8126,7 @@ BlackbeltGroup:
 	db -1 ; end
 
 	; BLACKBELT_T
-	db "Kai@"
+	db "VGrunt1@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 54, MAGMORTAR
@@ -9248,7 +9248,7 @@ CooltrainerMGroup:
 	db -1 ; end
 
 	; COOLTRAINERM
-	db "Gideon@"
+	db "MGrunt1@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 54, PORYGON_Z

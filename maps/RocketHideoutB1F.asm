@@ -17,26 +17,26 @@ RocketHideoutB1F_MapScriptHeader:
 	bg_event 13, 15, BGEVENT_ITEM + MAX_REVIVE, EVENT_ROCKET_HIDEOUT_B1F_HIDDEN_MAX_REVIVE
 
 	def_object_events
-	object_event 20, 18, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, RocketHideoutB1FBlackBeltKai, -1
+	object_event 20, 18, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, RocketHideoutB1FBlackBeltValorGrunt1, -1
 	object_event  4,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FScientistSanders, -1
 	object_event 18,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, RocketHideoutB1FPicnickerZane, -1
 	object_event 10, 17, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FBattleGirlSasha, -1
-	object_event  7, 23, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB1FLassPiper, -1
+	object_event  7, 23, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB1FLassInstinctGrunt1, -1
 	itemball_event  1, 17, MOON_STONE, 1, EVENT_PICKED_UP_MOON_STONE_FROM_ROCKET_HIDEOUT_B1F
 	itemball_event  3, 14, ZINC, 1, EVENT_PICKED_UP_ZINC_FROM_ROCKET_HIDEOUT_B1F
 
 RocketHideoutB1FDoorScript:
-	checkevent EVENT_BEAT_BLACK_BELT_KAI
+	checkevent EVENT_BEAT_BLACK_BELT_VALOR_GRUNT_1
 	iftruefwd .DoorOpen
 	changeblock 16, 16, $13
 .DoorOpen
 	endcallback
 
-RocketHideoutB1FBlackBeltKai:
-	trainer BLACKBELT_T, KAI2, EVENT_BEAT_BLACK_BELT_KAI, .SeenText, .AfterText, 0, .BeatenText
+RocketHideoutB1FBlackBeltValorGrunt1:
+	trainer BLACKBELT_T, VALOR_GRUNT_1, EVENT_BEAT_BLACK_BELT_VALOR_GRUNT_1, .SeenText, .AfterText, 0, .BeatenText
 
 .Script:
-	checkevent EVENT_BEAT_BLACK_BELT_KAI
+	checkevent EVENT_BEAT_BLACK_BELT_VALOR_GRUNT_1
 	iftruefwd .AfterScript
 	jumpthistextfaceplayer
 
@@ -141,8 +141,8 @@ RocketHideoutB1FBattleGirlSasha:
 	line "Too bright!"
 	done
 
-RocketHideoutB1FLassPiper:
-	generictrainer LASS, PIPER2, EVENT_BEAT_LASS_PIPER, .SeenText, .BeatenText
+RocketHideoutB1FLassInstinctGrunt1:
+	generictrainer LASS, INSTINCT_GRUNT_1, EVENT_BEAT_LASS_INSTINCT_GRUNT_1, .SeenText, .BeatenText
 
 	text "Spark's battles"
 	line "are unpredictable."

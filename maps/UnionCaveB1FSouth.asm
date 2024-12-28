@@ -150,7 +150,7 @@ GenericTrainerFirebreatherJay:
 	done
 
 GenericTrainerSuper_nerdRory:
-	generictrainer SUPER_NERD, RORY1, EVENT_BEAT_SUPER_NERD_RORY, .SeenText, .BeatenText
+	generictrainer SUPER_NERD, RORY, EVENT_BEAT_SUPER_NERD_RORY, .SeenText, .BeatenText
 
 	text "A jiffy is the"
 	line "scientific name"

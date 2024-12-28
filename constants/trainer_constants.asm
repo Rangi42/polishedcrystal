@@ -137,7 +137,7 @@ DEF CRYS EQU __trainer_class__
 	const OLIVER
 	const CHAZ
 	const TYLER
-	const RORY2
+	const VALOR_GRUNT_2
 
 	trainerclass BUG_CATCHER ; 21
 	const WADE1
@@ -210,7 +210,7 @@ DEF CRYS EQU __trainer_class__
 	const EDNA
 	const TANYA
 	const LILY
-	const PIPER1
+	const PIPER
 	const GINGER
 	const CHEYENNE
 	const ADRIAN
@@ -265,7 +265,7 @@ DEF CRYS EQU __trainer_class__
 	const KYLER
 	const MURPHY
 	const LIAM
-	const GIDEON1
+	const GIDEON
 	const HALL
 	const DALLAS
 
@@ -408,7 +408,7 @@ DEF CRYS EQU __trainer_class__
 	const CHLOE
 	const BROOKE
 	const KUROKO
-	const AARON2
+	const INSTINCT_GRUNT_2
 
 	trainerclass SUPER_NERD ; 31
 	const STAN
@@ -426,7 +426,7 @@ DEF CRYS EQU __trainer_class__
 	const LUIS
 	const JOVAN
 	const MIGUEL
-	const RORY1
+	const RORY
 	const GREGG
 	const FOOTE
 	const DAVE
@@ -457,7 +457,7 @@ DEF CRYS EQU __trainer_class__
 	const GINA
 	const ALICE
 	const DUPLICA
-	const PIPER2
+	const INSTINCT_GRUNT_1
 
 	trainerclass BEAUTY ; 33
 	const VICTORIA
@@ -489,7 +489,7 @@ DEF CRYS EQU __trainer_class__
 	const ROBBY
 	const PIERRE
 	const DYLAN
-	const KAI1
+	const KAI
 
 	trainerclass RUIN_MANIAC ; 35
 	const JONES
@@ -837,7 +837,7 @@ DEF CRYS EQU __trainer_class__
 	const MANFORD
 	const ANDER
 	const TAKEO
-	const KAI2
+	const VALOR_GRUNT_1
 
 	trainerclass BATTLE_GIRL ; 59
 	const SUBARU
@@ -962,7 +962,7 @@ DEF CRYS EQU __trainer_class__
 	const GAVEN2
 	const GAVEN3
 	const NICK
-	const AARON1
+	const AARON
 	const CODY
 	const MIKE
 	const RYAN
@@ -980,7 +980,7 @@ DEF CRYS EQU __trainer_class__
 	const COOLTRAINERM_COREY
 	const COOLTRAINERM_RAYMOND
 	const FERGUS
-	const GIDEON2
+	const MYSTIC_GRUNT_1
 
 	trainerclass COOLTRAINERF ; 6b
 	const BETH1
