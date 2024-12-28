@@ -237,7 +237,7 @@ GetInitialOptionPointer:
 ; These are in the same order as InitialOptionDescriptions,
 ; not the *_OPT bit order!
 .Pointers:
-	table_width 2, GetInitialOptionPointer.Pointers
+	table_width 2
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
 	dw InitialOptions_PSS

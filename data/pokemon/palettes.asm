@@ -1,5 +1,5 @@
 PokemonPalettes:
-	table_width PAL_COLOR_SIZE * 2 * 2, PokemonPalettes
+	table_width PAL_COLOR_SIZE * 2 * 2
 
 if DEF(MONOCHROME)
 rept NUM_EXT_POKEMON + 1

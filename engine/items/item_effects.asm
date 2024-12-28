@@ -10,7 +10,7 @@ _DoItemEffect::
 
 ItemEffects:
 ; entries correspond to item ids (see constants/item_constants.asm)
-	table_width 2, ItemEffects
+	table_width 2
 	dw PokeBallEffect     ; PARK_BALL
 	dw PokeBallEffect     ; POKE_BALL
 	dw PokeBallEffect     ; GREAT_BALL
@@ -281,7 +281,7 @@ DoKeyItemEffect::
 
 KeyItemEffects:
 ; entries correspond to key item ids (see constants/item_constants.asm)
-	table_width 2, KeyItemEffects
+	table_width 2
 	dw BikeFunction       ; BICYCLE
 	dw OldRod             ; OLD_ROD
 	dw GoodRod            ; GOOD_ROD

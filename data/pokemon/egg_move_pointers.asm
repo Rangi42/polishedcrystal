@@ -1,5 +1,5 @@
 EggMovePointers::
-	table_width 2, EggMovePointers
+	table_width 2
 	dw BulbasaurEggMoves         ; Bulbasaur
 	dw BulbasaurEggMoves         ; Ivysaur
 	dw BulbasaurEggMoves         ; Venusaur

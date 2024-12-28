@@ -1,5 +1,5 @@
 EnvironmentColorsPointers:
-	table_width 1, EnvironmentColorsPointers
+	table_width 1
 	dr .OutdoorColors ; unused
 	dr .OutdoorColors ; TOWN
 	dr .OutdoorColors ; ROUTE

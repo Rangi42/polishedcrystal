@@ -5,7 +5,7 @@ VarActionTable:
 ; words c000-ffff (WRAM/HRAM labels) are returned directly
 ; words 8000-bfff (shifted RAM labels) are shifted to c000-ffff and read into wStringBuffer2
 ; this means that vars cannot execute RAM code, nor return pointers to or values from ROM or VRAM/SRAM
-	table_width 2, VarActionTable
+	table_width 2
 	dw wStringBuffer2 in_stringbuffer2
 	dw wPartyCount in_stringbuffer2
 	dw Var_BattleResult ; execute

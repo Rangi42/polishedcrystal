@@ -31,13 +31,13 @@ BattleCommand_sketch:
 	ld [wTypeMatchup], a
 	ld b, a
 
-	; Fail if move is invalid or is Struggle.
+	; Fail if move is invalid or is Struggle. Sketch is implicitly checked below.
 	and a
 	jr z, .fail
 	inc a ; cp STRUGGLE
 	jr z, .fail
 
-	; Fail if user already knows that move
+	; Fail if user already knows that move (which will always include Sketch)
 	ld c, NUM_MOVES
 	push hl
 .does_user_already_know_move

@@ -1,6 +1,6 @@
 TrainerPicPointers::
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
-	table_width 3, TrainerPicPointers
+	table_width 3
 	dba CarriePic
 	dba CalPic
 	dba JackyPic

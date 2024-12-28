@@ -1,5 +1,5 @@
 Characteristics:
-	table_width 2, Characteristics
+	table_width 2
 	dw .Chara_HP0
 	dw .Chara_HP1
 	dw .Chara_HP2

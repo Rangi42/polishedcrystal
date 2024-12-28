@@ -1,6 +1,6 @@
 BattleAnimations::
 ; entries correspond to constants/move_constants.asm
-	table_width 2, BattleAnimations
+	table_width 2
 	farbank "Battle Animations"
 	fardw BattleAnim_0
 	fardw BattleAnim_Acrobatics

@@ -28,13 +28,30 @@ ShakeHeadbuttTree:
 	add hl, bc
 	ld [hl], $61
 
+	; shift all sprites left in OAM by 4 slots
+	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	; a = (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
+	ld h, HIGH(wShadowOAM)
+	ld l, a
+	sub (4 * SPRITEOAMSTRUCT_LENGTH)
+	ld e, a
+	ld d, h
+	ld b, 0
+	ldh a, [hUsedOAMIndex]
+	ld c, a
+.copy_loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .copy_loop
 
+	ld a, LOW(wShadowOAMSprite36)
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites_OW
+	call DoNextFrameForAllSprites
 	call HideHeadbuttTree
 	ld a, 32
 	ld [wFrameCounter], a
@@ -48,11 +65,7 @@ ShakeHeadbuttTree:
 	jr z, .done
 	dec [hl]
 
-	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
-	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
-
+	ld a, LOW(wShadowOAMSprite36)
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites_OW
 	farcall DoOverworldWeather
@@ -64,18 +77,39 @@ ShakeHeadbuttTree:
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
-	; a = LOW(wShadowOAMEnd) - ([wCurSpriteOAMAddr] - 4 * SPRITEOAMSTRUCT_LENGTH)
-	ld a, [wCurSpriteOAMAddr]
+
+	; shift all sprites right in OAM by 4 slots
+	; hl = source, de = destination, bc = length
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS) * SPRITEOAMSTRUCT_LENGTH - a - 1
 	cpl
-	add LOW(wShadowOAMEnd) + 4 * SPRITEOAMSTRUCT_LENGTH + 1
-	ld c, a
-	ld b, 0
-	ld h, HIGH(wShadowOAM)
-	ld a, [wCurSpriteOAMAddr]
-	sub 12 * SPRITEOAMSTRUCT_LENGTH
+	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
 	ld l, a
-	xor a
-	rst ByteFill
+	ld h, HIGH(wShadowOAM)
+	ld de, wShadowOAMSprite39 + 3
+	ld c, SPRITEOAMSTRUCT_LENGTH * 4
+.copy_done_loop
+	ld a, [hld]
+	ld [de], a
+	dec de
+	dec c
+	jr nz, .copy_done_loop
+	ld h, HIGH(wShadowOAM)
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+	ld l, a
+
+	ld c, 4
+	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld a, OAM_YCOORD_HIDDEN
+.hide_loop
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .hide_loop
+
 	call ClearSpriteAnims
 	call DelayFrame
 	jmp UpdatePlayerSprite
@@ -121,18 +155,34 @@ OWCutAnimation:
 	call WaitSFX
 	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
 	call PlaySFX
+	; shift all sprites left in OAM by 4 slots
+	; hl = source, de = destination, bc = length
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - a
+	cpl
+	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
+	ld h, HIGH(wShadowOAM)
+	ld l, a
+	sub (4 * SPRITEOAMSTRUCT_LENGTH)
+	ld e, a
+	ld d, h
+	ld b, 0
+	ldh a, [hUsedOAMIndex]
+	ld c, a
+.copy_loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .copy_loop
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .finish
 
-	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
-	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
-
+	ld a, LOW(wShadowOAMSprite36)
 	ld [wCurSpriteOAMAddr], a
-	call DoNextFrameForAllSprites_OW
+	call DoNextFrameForAllSprites
 	farcall DoOverworldWeather
 	call OWCutJumptable
 	call DelayFrame
@@ -140,20 +190,38 @@ OWCutAnimation:
 
 .finish
 	; hide tree/leaf sprites
+
+	; shift all sprites right in OAM by 4 slots
+	; hl = source, de = destination, bc = length
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS) * SPRITEOAMSTRUCT_LENGTH - a - 1
+	cpl
+	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
+	ld l, a
+	ld h, HIGH(wShadowOAM)
+	ld de, wShadowOAMSprite39 + 3
+	ld c, SPRITEOAMSTRUCT_LENGTH * 4
+.copy_done_loop
+	ld a, [hld]
+	ld [de], a
+	dec de
+	dec c
+	jr nz, .copy_done_loop
+
+	ld h, HIGH(wShadowOAM)
 	ldh a, [hUsedOAMIndex]
 	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
 	cpl
 	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
-	ld h, HIGH(wShadowOAM)
 	ld l, a
-	ld b, 4
+	ld c, 4
 	ld de, SPRITEOAMSTRUCT_LENGTH
 	ld a, OAM_YCOORD_HIDDEN
-.clear_loop
+.hide_loop
 	ld [hl], a
 	add hl, de
-	dec b
-	jr nz, .clear_loop
+	dec c
+	jr nz, .hide_loop
 	ret
 
 OWCutJumptable:

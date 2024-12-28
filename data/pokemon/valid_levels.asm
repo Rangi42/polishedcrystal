@@ -1,5 +1,5 @@
 ValidPokemonLevels: ; for Wonder Trade
-	table_width 2, ValidPokemonLevels
+	table_width 2
 	;  min, max
 	db   1,  15 ; Bulbasaur
 	db  16,  31 ; Ivysaur

@@ -1,5 +1,5 @@
 ItemNameOrder:
-	table_width 1, ItemNameOrder
+	table_width 1
 
 	db NAM_NO_ITEM
 
@@ -311,7 +311,7 @@ ItemNameOrder:
 	db -1 ; end
 
 KeyItemNameOrder:
-	table_width 1, KeyItemNameOrder
+	table_width 1
 	db NAM_BICYCLE
 	db NAM_OLD_ROD
 	db NAM_GOOD_ROD

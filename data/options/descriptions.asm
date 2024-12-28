@@ -1,7 +1,7 @@
 ; These are in the same order as GetInitialOptionPointer.Pointers,
 ; not the *_OPT bit order!
 InitialOptionDescriptions:
-	table_width 2, InitialOptionDescriptions
+	table_width 2
 	dw .InitialOptionDesc_Natures
 	dw .InitialOptionDesc_Abilities
 	dw .InitialOptionDesc_PSS

@@ -1,5 +1,5 @@
 AnimationExtraPointers:
-	table_width 2, AnimationExtraPointers
+	table_width 2
 	dw BulbasaurAnimationExtra
 	dw IvysaurAnimationExtra
 	dw VenusaurAnimationExtra

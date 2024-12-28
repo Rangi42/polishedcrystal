@@ -1,6 +1,6 @@
 TrainerPalettes:
 ; entries correspond to trainer classes
-	table_width PAL_COLOR_SIZE * 2, TrainerPalettes
+	table_width PAL_COLOR_SIZE * 2
 
 if !DEF(MONOCHROME)
 KrisPalette:

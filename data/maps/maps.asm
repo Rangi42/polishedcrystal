@@ -16,7 +16,7 @@ ENDM
 
 MapGroupPointers::
 ; pointers to the first map header of each map group
-	table_width 2, MapGroupPointers
+	table_width 2
 	dw MapGroup1
 	dw MapGroup2
 	dw MapGroup3
