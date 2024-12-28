@@ -278,7 +278,7 @@ DEF CRYS EQU __trainer_class__
 	const JOSE3
 	const ROD
 	const ABE
-	const THEO1
+	const THEO
 	const TOBY
 	const DENIS
 	const HANK
@@ -431,7 +431,7 @@ DEF CRYS EQU __trainer_class__
 	const FOOTE
 	const DAVE
 	const KOUTA
-	const THEO2
+	const INSTINCT_GRUNT_3
 
 	trainerclass LASS ; 32
 	const DANA1

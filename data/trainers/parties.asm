@@ -5029,7 +5029,7 @@ SuperNerdGroup:
 	db -1 ; end
 
 	; SUPER_NERD
-	db "Theo@"
+	db "IGrunt3@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 54, ELECTRODE
