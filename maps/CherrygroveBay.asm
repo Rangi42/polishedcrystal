@@ -41,12 +41,15 @@ CherrygroveBayGalarianBirdsScript:
 	callasm SetUpLureMenu
 	iffalse_endtext ; User canceled the menu
 	writetext .YouSprayedTheLureText
+	waitbutton
 	ifequalfwd POTENT_LURE_MENU_OPT, .Galarian_Articuno
 	ifequalfwd MALIGN_LURE_MENU_OPT, .Galarian_Zapdos
 ; HARSH_LURE_MENU_OPT, .Galarian_Moltres
-	opentext
 	checkevent EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_MOLTRES
 	iftruefwd .NothingHappens
+	closetext
+	callasm GalarianMoltresEvent
+	opentext
 	farwritetext MoltresText
 	cry MOLTRES
 	pause 15
@@ -54,7 +57,6 @@ CherrygroveBayGalarianBirdsScript:
 	loadwildmon MOLTRES, GALARIAN_FORM, 65
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
-	; disappear CHERRYGROVEBAY_GALARIAN_MOLTRES
 	setevent EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_MOLTRES
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
@@ -64,9 +66,11 @@ CherrygroveBayGalarianBirdsScript:
 	end
 
 .Galarian_Articuno
-	opentext
 	checkevent EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_ARTICUNO
 	iftruefwd .NothingHappens
+	closetext
+	callasm GalarianArticunoEvent
+	opentext
 	farwritetext ArticunoText
 	cry ARTICUNO
 	pause 15
@@ -74,7 +78,6 @@ CherrygroveBayGalarianBirdsScript:
 	loadwildmon ARTICUNO, GALARIAN_FORM, 65
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
-	; disappear CHERRYGROVEBAY_GALARIAN_ARTICUNO
 	setevent EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_ARTICUNO
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
@@ -84,9 +87,11 @@ CherrygroveBayGalarianBirdsScript:
 	end
 
 .Galarian_Zapdos
-	opentext
 	checkevent EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_ZAPDOS
 	iftruefwd .NothingHappens
+	closetext
+	callasm GalarianZapdosEvent
+	opentext
 	farwritetext ZapdosText
 	cry ZAPDOS
 	pause 15
@@ -94,7 +99,6 @@ CherrygroveBayGalarianBirdsScript:
 	loadwildmon ZAPDOS, GALARIAN_FORM, 65
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
-	; disappear CHERRYGROVEBAY_GALARIAN_ZAPDOS
 	setevent EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_ZAPDOS
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
@@ -105,6 +109,7 @@ CherrygroveBayGalarianBirdsScript:
 
 .NothingHappens
 	writetext .NothingHappensText
+	waitbutton
 	endtext
 
 .LikeToUseItemText
