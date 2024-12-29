@@ -206,7 +206,7 @@ RocketHideoutB4FSparkScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SPARK
 	showtext .AfterText1
-	verbosegiveitem MALIGN_LURE
+	verbosegivekeyitem MALIGN_LURE
 	showtext .AfterText2
 	end
 
@@ -273,7 +273,7 @@ RocketHideoutB4FCandelaScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CANDELA
 	showtext .AfterText1
-	verbosegiveitem HARSH_LURE
+	verbosegivekeyitem HARSH_LURE
 	showtext .AfterText2
 	end
 
@@ -338,7 +338,7 @@ RocketHideoutB4FBlancheScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLANCHE
 	showtext .AfterText1
-	verbosegiveitem POTENT_LURE
+	verbosegivekeyitem POTENT_LURE
 	showtext .AfterText2
 	end
 

@@ -11,6 +11,7 @@ CherrygroveBay_MapScriptHeader:
 	def_bg_events
 	bg_event 21, 21, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_CHERRYGROVE_BAY
 	bg_event 22, 21, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_CHERRYGROVE_BAY
+	bg_event 11, 12, BGEVENT_READ, CherrygroveBayGalarianBirdsScript
 
 	def_object_events
 	object_event  9, 32, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
@@ -27,6 +28,78 @@ CherrygroveBay_MapScriptHeader:
 	fruittree_event 14,  9, FRUITTREE_CHERRYGROVE_BAY_4, HONDEW_BERRY, PAL_NPC_GREEN
 	fruittree_event 15, 11, FRUITTREE_CHERRYGROVE_BAY_5, GREPA_BERRY, PAL_NPC_YELLOW
 	fruittree_event 14, 13, FRUITTREE_CHERRYGROVE_BAY_6, TAMATO_BERRY, PAL_NPC_RED
+
+CherrygroveBayGalarianBirdsScript:
+	callasm CheckForLures
+	iffalse_endtext ; User has no lures, do nothing
+	opentext
+	writetext .LikeToUseItemText
+	yesorno
+	iffalse_endtext
+	callasm CheckForLures
+	callasm SetUpLureMenu
+	iffalse_endtext ; User canceled the menu
+	ifequalfwd POTENT_LURE_MENU_OPT, .Galarian_Articuno
+	ifequalfwd MALIGN_LURE_MENU_OPT, .Galarian_Zapdos
+; HARSH_LURE_MENU_OPT, .Galarian_Moltres
+	opentext
+	farwritetext MoltresText
+	cry MOLTRES
+	pause 15
+	closetext
+	loadwildmon MOLTRES, GALARIAN_FORM, 65
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	startbattle
+	; disappear CHERRYGROVEBAY_GALARIAN_MOLTRES
+	; setevent EVENT_CHERRYGROVE_BAY_MOLTRES
+	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalsefwd .NoCatchGalarianMoltres
+	; setflag ENGINE_PLAYER_CAUGHT_GALARIAN_MOLTRES
+.NoCatchGalarianMoltres
+	end
+
+.Galarian_Articuno
+	opentext
+	farwritetext ArticunoText
+	cry ARTICUNO
+	pause 15
+	closetext
+	loadwildmon ARTICUNO, GALARIAN_FORM, 65
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	startbattle
+	; disappear CHERRYGROVEBAY_GALARIAN_ARTICUNO
+	; setevent EVENT_CHERRYGROVE_BAY_ARTICUNO
+	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalsefwd .NoCatchGalarianArticuno
+	; setflag ENGINE_PLAYER_CAUGHT_GALARIAN_ARTICUNO
+.NoCatchGalarianArticuno
+	end
+
+.Galarian_Zapdos
+	opentext
+	farwritetext ZapdosText
+	cry ZAPDOS
+	pause 15
+	closetext
+	loadwildmon ZAPDOS, GALARIAN_FORM, 65
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	startbattle
+	; disappear CHERRYGROVEBAY_GALARIAN_ZAPDOS
+	; setevent EVENT_CHERRYGROVE_BAY_ZAPDOS
+	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalsefwd .NoCatchGalarianZapdos
+	; setflag ENGINE_PLAYER_CAUGHT_GALARIAN_ZAPDOS
+.NoCatchGalarianZapdos
+	end
+
+.LikeToUseItemText
+	text "Would you like to"
+	line "use a Lure on"
+	cont "the Cherry tree?"
+	done
 
 CherrygroveBayHikerScript:
 	faceplayer

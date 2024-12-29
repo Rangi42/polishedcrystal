@@ -727,3 +727,8 @@ SECTION "Weather System", ROMX
 
 INCLUDE "engine/overworld/weather.asm"
 INCLUDE "engine/events/weather.asm"
+
+
+SECTION "LureMenu", ROMX
+
+INCLUDE "engine/menus/lure_menu.asm"
