@@ -51,7 +51,7 @@ RocketHideoutB4FDoorScript:
 	changeblock 16, 10, $69
 	endcallback
 .beat_theo
-	changeblock 16, 10, $13
+	changeblock 16, 10, $0d
 	endcallback
 
 RocketHideoutB4FLiftKeyScript:
@@ -446,14 +446,18 @@ RocketHideoutB4FTeacherSerena:
 
 .AfterScript
 	checkevent EVENT_BEAT_SUPER_NERD_INSTINCT_GRUNT_3
-	iftruefwd .OpenDoorScript
+	iftruefwd .DoorScript
 	endifjustbattled
 	jumptextfaceplayer .AfterText
 	end
 
-.OpenDoorScript
+.DoorScript
+	checkjustbattled
+	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	endifjustbattled
+	reloadmap
+	end
+.skip_open
 	jumptextfaceplayer .AfterText
 	end
 
@@ -489,14 +493,18 @@ RocketHideoutB4FSuperNerdInstinctGrunt3:
 
 .AfterScript
 	checkevent EVENT_BEAT_TEACHER_SERENA
-	iftruefwd .OpenDoorScript
+	iftruefwd .DoorScript
 	endifjustbattled
 	jumptextfaceplayer .AfterText
 	end
 
-.OpenDoorScript
+.DoorScript
+	checkjustbattled
+	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	endifjustbattled
+	reloadmap
+	end
+.skip_open
 	jumptextfaceplayer .AfterText
 	end
 

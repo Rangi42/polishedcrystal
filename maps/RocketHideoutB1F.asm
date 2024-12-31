@@ -33,7 +33,7 @@ RocketHideoutB1FDoorScript:
 	endcallback
 
 RocketHideoutB1FBlackBeltValorGrunt1:
-	trainer BLACKBELT_T, VALOR_GRUNT_1, EVENT_BEAT_BLACK_BELT_VALOR_GRUNT_1, .SeenText, .AfterText, 0, .BeatenText
+	trainer BLACKBELT_T, VALOR_GRUNT_1, EVENT_BEAT_BLACK_BELT_VALOR_GRUNT_1, .SeenText, .BeatenText, 0, .AfterScript
 
 .Script:
 	checkevent EVENT_BEAT_BLACK_BELT_VALOR_GRUNT_1
@@ -49,12 +49,17 @@ RocketHideoutB1FBlackBeltValorGrunt1:
 	done
 
 .AfterScript
+	checkjustbattled
+	iffalsefwd .AfterText
 	changeblock 16, 16, $0d
-	endifjustbattled
-	jumptextfaceplayer .AfterText
+	reloadmap
 	end
 
-.AfterText:
+.AfterText
+	jumptextfaceplayer .Text
+	end
+
+.Text
 	text "You've got guts…"
 
 	para "Perhaps you should"
