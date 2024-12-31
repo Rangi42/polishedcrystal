@@ -276,12 +276,12 @@ UnownQuestionAnimation:    INCLUDE "gfx/pokemon/unown_question/anim.asm"
 PichuPlainAnimation: INCLUDE "gfx/pokemon/pichu_plain/anim.asm"
 PichuSpikyAnimation: INCLUDE "gfx/pokemon/pichu_spiky/anim.asm"
 
-PikachuSparkAnimation:
 PikachuPlainAnimation:  INCLUDE "gfx/pokemon/pikachu_plain/anim.asm"
 PikachuFlyAnimation:    INCLUDE "gfx/pokemon/pikachu_fly/anim.asm"
 PikachuSurfAnimation:   INCLUDE "gfx/pokemon/pikachu_surf/anim.asm"
 PikachuPikaAnimation:   INCLUDE "gfx/pokemon/pikachu_pika/anim.asm"
 PikachuChuchuAnimation: INCLUDE "gfx/pokemon/pikachu_chuchu/anim.asm"
+PikachuSparkAnimation:  INCLUDE "gfx/pokemon/pikachu_spark/anim.asm"
 
 ArbokJohtoAnimation:  INCLUDE "gfx/pokemon/arbok_johto/anim.asm"
 ArbokKantoAnimation:  INCLUDE "gfx/pokemon/arbok_kanto/anim.asm"

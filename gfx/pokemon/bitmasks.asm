@@ -275,12 +275,12 @@ UnownQuestionBitmasks:    INCLUDE "gfx/pokemon/unown_question/bitmask.asm"
 PichuPlainBitmasks: INCLUDE "gfx/pokemon/pichu_plain/bitmask.asm"
 PichuSpikyBitmasks: INCLUDE "gfx/pokemon/pichu_spiky/bitmask.asm"
 
-PikachuSparkBitmasks:
 PikachuPlainBitmasks:  INCLUDE "gfx/pokemon/pikachu_plain/bitmask.asm"
 PikachuFlyBitmasks:    INCLUDE "gfx/pokemon/pikachu_fly/bitmask.asm"
 PikachuSurfBitmasks:   INCLUDE "gfx/pokemon/pikachu_surf/bitmask.asm"
 PikachuPikaBitmasks:   INCLUDE "gfx/pokemon/pikachu_pika/bitmask.asm"
 PikachuChuchuBitmasks: INCLUDE "gfx/pokemon/pikachu_chuchu/bitmask.asm"
+PikachuSparkBitmasks:  INCLUDE "gfx/pokemon/pikachu_spark/bitmask.asm"
 
 ArbokJohtoBitmasks:  INCLUDE "gfx/pokemon/arbok_johto/bitmask.asm"
 ArbokKantoBitmasks:  INCLUDE "gfx/pokemon/arbok_kanto/bitmask.asm"
