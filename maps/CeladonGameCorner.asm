@@ -2,6 +2,7 @@ CeladonGameCorner_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, CeladonGameCornerStairsScript
 
 	def_warp_events
 	warp_event 14, 13, CELADON_CITY, 6
@@ -47,8 +48,7 @@ CeladonGameCorner_MapScriptHeader:
 	bg_event 18,  9, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18, 10, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18, 11, BGEVENT_RIGHT, MapCeladonGameCornerSignpost35Script
-	bg_event 15,  0, BGEVENT_JUMPTEXT, CeladonGameCornerPoster1Text
-	bg_event  9,  0, BGEVENT_JUMPTEXT, CeladonGameCornerPoster2Text
+	bg_event  9,  0, BGEVENT_READ, CeladonGameCornerPosterScript
 
 	def_object_events
 	object_event  5,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
@@ -59,6 +59,13 @@ CeladonGameCorner_MapScriptHeader:
 	object_event  8, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
 	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
 	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
+
+CeladonGameCornerStairsScript:
+	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
+	iftruefwd .StairsOpen
+	changeblock 14, 0, $03
+.StairsOpen
+	endcallback
 
 CeladonGameCornerPokefanMScript:
 	showtextfaceplayer CeladonGameCornerPokefanMText
@@ -280,22 +287,22 @@ CeladonGameCornerGrampsText:
 	line "but… What to do?"
 	done
 
-CeladonGameCornerPoster1Text:
+CeladonGameCornerPosterScript:
+	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
+	iftruefwd .end
+	showtext .Text
+	playsound SFX_ENTER_DOOR
+	setevent EVENT_PUSHED_GAME_CORNER_SWITCH
+	changeblock 14, 0, $4d
+.end
+	end
+
+.Text
 	text "Hey!"
 
-	para "Underneath this"
-	line "poster…"
-
-	para "There's nothing!"
-	done
-
-CeladonGameCornerPoster2Text:
-	text "Hey!"
-
-	para "Underneath this"
-	line "poster…"
-
-	para "There's nothing!"
+	para "A switch behind"
+	line "the poster!?"
+	cont "Let's push it!"
 	done
 
 CeladonGameCornerLighterText:
