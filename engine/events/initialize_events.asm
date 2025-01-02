@@ -1,5 +1,8 @@
 InitializeEvents:
 ; initialize events
+	ld hl, wEventChecksumFlags
+	res EVENT_CHECKSUM_FULL_DONE_F, [hl]
+	res EVENT_CHECKSUM_VBLANK_ROUTINE_RUNNING_F, [hl]
 	ld hl, InitialEvents
 .events_loop
 	call .GetDWInDE
@@ -10,6 +13,7 @@ InitializeEvents:
 	pop hl
 	jr .events_loop
 .events_done
+	farcall RecalculateEventChecksum
 
 ; initialize engine flags
 	ld hl, InitialEngineFlags

@@ -1,5 +1,15 @@
 EventFlagAction::
 	ld hl, wEventFlags
+	ld a, b
+	cp CHECK_FLAG
+	jr z, FlagAction
+	push hl
+	ld hl, wEventChecksumFlags
+	res EVENT_CHECKSUM_VBLANK_ROUTINE_RUNNING_F, [hl]
+	pop hl
+	call FlagAction
+	farjp RecalculateEventChecksum
+
 FlagAction::
 ; Perform action b on bit de in flag array hl.
 

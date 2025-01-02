@@ -513,3 +513,8 @@ DEF NO_DYN_PAL_APPLY EQU (1 << NO_DYN_PAL_APPLY_ONCE_F) | (1 << NO_DYN_PAL_APPLY
 ; wMapSetupFlags
 	const_def
 	const MAPSETUP_CONNECTION_F ; 0
+
+; wEventChecksumFlags
+	const_def
+	const EVENT_CHECKSUM_FULL_DONE_F              ; 0
+	const EVENT_CHECKSUM_VBLANK_ROUTINE_RUNNING_F ; 1

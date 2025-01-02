@@ -52,9 +52,21 @@ DEF bcpixel EQUS "ldpixel bc,"
 
 ; Design patterns
 
-DEF eventflagset   EQUS "flagset wEventFlags,"
-DEF eventflagreset EQUS "flagreset wEventFlags,"
 DEF eventflagcheck EQUS "flagcheck wEventFlags,"
+
+MACRO eventflagset
+	ld hl, wEventChecksumFlags
+	res EVENT_CHECKSUM_VBLANK_ROUTINE_RUNNING_F, [hl]
+	flagset wEventFlags, \1
+	farcall RecalculateEventChecksum
+ENDM
+
+MACRO eventflagreset
+	ld hl, wEventChecksumFlags
+	res EVENT_CHECKSUM_VBLANK_ROUTINE_RUNNING_F, [hl]
+	flagreset wEventFlags, \1
+	farcall RecalculateEventChecksum
+ENDM
 
 MACRO flagset
 	ld hl, \1 + (\2 >> 3)

@@ -727,3 +727,7 @@ SECTION "Weather System", ROMX
 
 INCLUDE "engine/overworld/weather.asm"
 INCLUDE "engine/events/weather.asm"
+
+SECTION "Event Checksums", ROMX
+
+INCLUDE "engine/events/event_checksums.asm"

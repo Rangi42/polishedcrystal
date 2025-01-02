@@ -154,6 +154,8 @@ VBlank0::
 	call PushOAM
 	; vblank-sensitive operations are done
 
+	farcall VBlankEventChecksum
+
 	; inc frame counter
 	ld hl, hVBlankCounter
 	inc [hl]

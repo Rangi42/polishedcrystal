@@ -48,6 +48,7 @@ NewGamePlus:
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
+	farcall CheckEventChecksumRecalculate
 	jr _NewGame_FinishSetup
 
 NewGame:
@@ -314,6 +315,7 @@ LoadOrRegenerateLuckyIDNumber:
 Continue:
 	farcall TryLoadSaveFile
 	ret c
+	farcall CheckEventChecksumRecalculate
 
 	call LoadStandardMenuHeader
 	call DisplaySaveInfoOnContinue

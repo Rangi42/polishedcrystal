@@ -24,9 +24,12 @@ ResetOWMapState:
 	ld hl, wStatusFlags
 	res 2, [hl]
 .keep_flash
-	xor a
 ; reset map buffer event flags
+	ld hl, wEventChecksumFlags
+	res EVENT_CHECKSUM_VBLANK_ROUTINE_RUNNING_F, [hl]
+	xor a
 	ld [wEventFlags], a
+	farcall RecalculateEventChecksum
 ; reset ow state
 	ld hl, wOWState
 	ld [hli], a

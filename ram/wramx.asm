@@ -1165,6 +1165,7 @@ wParryFightCount::   db
 wErinFightCount::    db
 
 wEventFlags:: flag_array NUM_EVENTS
+wEventFlagsEnd::
 
 wCurBox:: db
 
@@ -1179,7 +1180,12 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 70 ; unused
+	ds 65 ; unused
+
+wEventChecksum:: db
+wEventChecksumFlags:: db
+wEventChecksumCurAddress:: dw
+wEventChecksumCurSummation:: db
 
 wWingAmounts::
 wHealthWingAmount:: dw
