@@ -14,7 +14,7 @@ DEF SAVE_CHECK_VALUE_2     EQU 127
 DEF SAVE_CHECK_VALUE_1_OLD EQU 99 ; check digit before save version 7
 
 ; save file version
-DEF SAVE_VERSION EQU 8
+DEF SAVE_VERSION EQU 9
 
 ; time of day boundaries
 DEF MORN_HOUR EQU  5 ; 5 AM - 9 AM (4 hours)

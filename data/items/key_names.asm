@@ -9,6 +9,7 @@ KeyItemNames::
 	li "Coin Case"
 	li "Apricorn Box"
 	li "Wing Case"
+	li "Candy Jar"
 	li "Type Chart"
 	li "GBC Sounds"
 	li "Blue Card"

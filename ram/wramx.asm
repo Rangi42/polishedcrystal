@@ -1177,7 +1177,14 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 70 ; unused
+	ds 64 ; unused
+
+wCandyAmounts::
+wExpCandyXSAmount:: db
+wExpCandySAmount:: db
+wExpCandyMAmount:: db
+wExpCandyLAmount:: db
+wExpCandyXLAmount:: db
 
 wWingAmounts::
 wHealthWingAmount:: dw
@@ -1360,13 +1367,9 @@ wPokedexFlags::
 wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-	ds 1 ; unused
-
 wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
-
-	ds 1 ; unused
 
 wUnlockedUnowns:: db
 

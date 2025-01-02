@@ -268,6 +268,7 @@ KeyItemIconPointers:
 	dba CoinCaseIcon
 	dba ApricornBoxIcon
 	dba WingCaseIcon
+	dba CandyJarIcon
 	dba TypeChartIcon
 	dba GBCSoundsIcon
 	dba BlueCardIcon
