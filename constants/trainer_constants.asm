@@ -669,6 +669,7 @@ DEF CRYS EQU __trainer_class__
 	const WINSTON
 	const GERALD
 	const IRVING
+	const VALOR_GRUNT_3
 
 	trainerclass LADY ; 4b
 	const JESSICA

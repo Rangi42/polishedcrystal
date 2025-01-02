@@ -7,7 +7,7 @@ CeladonGameCorner_MapScriptHeader:
 	def_warp_events
 	warp_event 14, 13, CELADON_CITY, 6
 	warp_event 15, 13, CELADON_CITY, 6
-	warp_event 15,  0, ROCKET_HIDEOUT_B1F, 2
+	warp_event 17,  0, ROCKET_HIDEOUT_B1F, 2
 
 	def_coord_events
 
@@ -59,11 +59,23 @@ CeladonGameCorner_MapScriptHeader:
 	object_event  8, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
 	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
 	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
+	object_event  9,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, CeladonGameCornerRichBoyValorGrunt3, EVENT_RICH_BOY_VALOR_GRUNT_3
+
+	object_const_def
+	const CELADONGAMECORNER_CLERK
+	const CELADONGAMECORNER_RECEPTIONIST
+	const CELADONGAMECORNER_POKEFAN_M
+	const CELADONGAMECORNER_POKEFAN_F
+	const CELADONGAMECORNER_FISHING_GURU
+	const CELADONGAMECORNER_FAT_GUY
+	const CELADONGAMECORNER_GYM_GUY
+	const CELADONGAMECORNER_GRAMPS
+	const CELADONGAMECORNER_VALOR_GRUNT_3
 
 CeladonGameCornerStairsScript:
 	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
 	iftruefwd .StairsOpen
-	changeblock 14, 0, $03
+	changeblock 16, 0, $03
 .StairsOpen
 	endcallback
 
@@ -165,6 +177,75 @@ MapCeladonGameCornerSignpost9Script:
 	waitbutton
 	special Special_CardFlip
 	endtext
+
+CeladonGameCornerRichBoyValorGrunt3:
+	trainer RICH_BOY, VALOR_GRUNT_3, EVENT_BEAT_RICH_BOY_VALOR_GRUNT_3, .SeenText, .BeatenText, 0, .AfterScript
+
+.Script:
+	checkevent EVENT_BEAT_RICH_BOY_VALOR_GRUNT_3
+	iftruefwd .AfterScript
+	jumpthistextfaceplayer
+
+.SeenText:
+	text "What're you doing"
+	line "snooping around"
+	cont "here?"
+
+	para "You better not be"
+	line "messing with Team"
+	cont "Valor!"
+	done
+
+.BeatenText:
+	text "I didn't see that"
+	line "coming…"
+	done
+
+.AfterScript
+	showtext .AfterText
+	readvar VAR_FACING
+	ifequalfwd RIGHT, .player_facing_right
+	ifequalfwd LEFT, .player_facing_left
+; .player_facing_up
+	applymovement CELADONGAMECORNER_VALOR_GRUNT_3, .LeaveMovementPlayerUp
+	sjumpfwd .done
+.player_facing_left
+	applymovement CELADONGAMECORNER_VALOR_GRUNT_3, .LeaveMovementPlayerRight
+	sjumpfwd .done
+.player_facing_right
+	applymovement CELADONGAMECORNER_VALOR_GRUNT_3, .LeaveMovementPlayerLeft
+.done
+	playsound SFX_EXIT_BUILDING
+	disappear CELADONGAMECORNER_VALOR_GRUNT_3
+	end
+
+.AfterText
+	text "Fine! There's"
+	line "nothing here"
+	cont "anyway!"
+	
+	para "The poster? Ha!"
+	line "It's just decor!"
+	done
+
+.LeaveMovementPlayerUp
+	step_right
+.LeaveMovementPlayerLeft
+rept 5
+	step_right
+endr
+	step_end
+
+.LeaveMovementPlayerRight
+	step_down
+	step_right
+	step_right
+	step_up
+rept 5
+	step_right
+endr
+	step_end
+
 
 CeladonGameCornerReceptionistText:
 	text "Welcome!"
@@ -293,7 +374,7 @@ CeladonGameCornerPosterScript:
 	showtext .Text
 	playsound SFX_ENTER_DOOR
 	setevent EVENT_PUSHED_GAME_CORNER_SWITCH
-	changeblock 14, 0, $4d
+	changeblock 16, 0, $4d
 .end
 	end
 

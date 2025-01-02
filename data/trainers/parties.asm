@@ -6838,6 +6838,15 @@ endc
 		db HEADBUTT, ATTRACT, MUD_SLAP, DISARM_VOICE
 	db -1 ; end
 
+	; RICH_BOY
+	db "VGrunt3@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 53, MAGMAR
+	dbp 54, GOLEM
+	dbp 55, MACHOKE
+	db -1 ; end
+
 
 SECTION "LadyGroup", ROMX
 LadyGroup:
