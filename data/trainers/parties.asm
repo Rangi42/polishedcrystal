@@ -6839,7 +6839,7 @@ endc
 	db -1 ; end
 
 	; RICH_BOY
-	db "VGrunt3@"
+	db "VGrunt3@" ; TODO: replace placeholder name
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 53, MAGMAR
