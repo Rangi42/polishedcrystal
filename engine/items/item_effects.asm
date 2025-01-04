@@ -2209,12 +2209,36 @@ CandyJar_MonSelected:
 	pop de ; restore exp_per_candy
 	jmp c, .done
 
+	; deduct candies from inventory
+	push de
 	ld a, [wItemQuantityChangeBuffer]
 	ld b, a
+	ld a, [wMenuSelection]
+	ld d, 0
+	ld e, a
+	ld hl, wCandyAmounts
+	add hl, de
+	ld a, [hl]
+	sub b
+	ld [hl], a
+	pop de
 
 	xor a
-	ld [wCandyBreakFlag], a
-.apply_candies_loop
+	ld [hMultiplicand + 0], a
+	ld a, d
+	ld [hMultiplicand + 1], a
+	ld a, e
+	ld [hMultiplicand + 2], a
+	ld a, [wItemQuantityChangeBuffer]
+	ldh [hMultiplier], a
+	farcall Multiply
+	ld a, [hProduct + 1]
+	ld c, a
+	ld a, [hProduct + 2]
+	ld d, a
+	ld a, [hProduct + 3]
+	ld e, a
+
 	push bc
 	push de
 	xor a ; PARTYMON
@@ -2232,12 +2256,10 @@ CandyJar_MonSelected:
 	adc d
 	ld [hld], a
 	ld a, [hl]
-	adc 0
+	adc c
 	ld [hl], a
 
 	; check if we reached max exp
-	push bc
-	push de
 	ld hl, wTempMonExp + 2
 	ld a, [wCandyMaxLevelExp + 0]
 	ld c, a
@@ -2257,11 +2279,6 @@ CandyJar_MonSelected:
 	ld a, d
 	ld [hli], a
 	ld [hl], e
-
-	; set break flag
-	ld hl, wCandyBreakFlag
-	inc [hl]
-
 .got_new_exp
 	ld a, MON_EXP
 	call GetPartyParamLocationAndValue
@@ -2274,7 +2291,7 @@ CandyJar_MonSelected:
 	ld a, MON_LEVEL
 	call GetPartyParamLocationAndValue
 	cp d
-	jr z, .no_level_up
+	jr z, .done
 	ld a, [hl]
 	ld [wCandyPrevLevel], a
 	ld [hl], d
@@ -2321,29 +2338,6 @@ CandyJar_MonSelected:
 	pop af
 	ld [wCurPartyMon], a
 
-.no_level_up
-	pop de
-	pop bc
-	ld a, [wCandyBreakFlag]
-	and a
-	jr nz, .max_level
-	dec b ; eat a candy
-	jmp nz, .apply_candies_loop
-.max_level
-
-	; b: candies_used = candies_selected - candies_remaining
-	ld a, [wItemQuantityChangeBuffer]
-	sub b
-	ld b, a
-	; deduct candies from inventory
-	ld a, [wMenuSelection]
-	ld d, 0
-	ld e, a
-	ld hl, wCandyAmounts
-	add hl, de
-	ld a, [hl]
-	sub b
-	ld [hl], a
 .done
 	xor a
 	ret

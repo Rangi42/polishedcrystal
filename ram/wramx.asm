@@ -315,7 +315,6 @@ wTempPocketCursor:: ds NUM_POCKETS
 NEXTU
 wCandyMaxLevelExp:: ds 3
 wCandyPrevLevel:: db
-wCandyBreakFlag:: db
 ENDU
 ENDU
 
