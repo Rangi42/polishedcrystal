@@ -1931,9 +1931,9 @@ WingCase_MonSelected:
 	ld a, [wItemQuantityChangeBuffer]
 	call CheckEVCap
 	ld [wItemQuantityChangeBuffer], a
-	ld hl, .XWillBeAppliedText
+	ld hl, XWillBeAppliedText
 	jr nc, .got_apply_str
-	ld hl, .OnlyXWillBeAppliedText
+	ld hl, OnlyXWillBeAppliedText
 
 	; If a is zero, return. a=1 will print the "no effect" message.
 	and a
@@ -2078,9 +2078,9 @@ WingCase_MonSelected:
 .UseHowManyText:
 	db "Use how many?     @"
 
-.OnlyXWillBeAppliedText:
+OnlyXWillBeAppliedText:
 	db "Only "
-.XWillBeAppliedText:
+XWillBeAppliedText:
 	text_decimal wItemQuantityChangeBuffer, 1, 3
 	text " will be"
 	line "applied. Proceed?"
@@ -2090,6 +2090,13 @@ INCLUDE "data/items/wing_names.asm"
 
 CandyJar_MonSelected:
 ; Runs when a mon has been selected.
+
+	; if mon is level 100, no effect.
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	cp MAX_LEVEL
+	jmp z, .no_effect
+
 	; What candy does the player want to choose?
 	ldh a, [hBGMapMode]
 	push af
@@ -2149,14 +2156,200 @@ CandyJar_MonSelected:
 	rst PlaceString
 	farcall SelectCandyQuantity
 	pop bc
-	jr c, .done
+	jmp c, .done
 
-	; TODO: Check the chosen amount and apply it.
-	ld a, 1
-	ret
+	; load max_exp into wCandyMaxLevelExp
+	call UseItem_GetBaseDataAndNickParameters
+	ld d, MAX_LEVEL
+	farcall CalcExpAtLevel
+	ldh a, [hProduct + 1]
+	ld [wCandyMaxLevelExp + 0], a
+	ldh a, [hProduct + 2]
+	ld [wCandyMaxLevelExp + 1], a
+	ldh a, [hProduct + 3]
+	ld [wCandyMaxLevelExp + 2], a
 
+	ld a, MON_EXP
+	call GetPartyParamLocationAndValue
+	; Load current_exp into cde
+	ld c, a
+	inc hl
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+
+	ld a, [wMenuSelection]
+	ld hl, .CandyExpAmounts
+	; hl += 2 * a
+	add a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	; de = exp_per_candy
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	push hl ; save exp_per_candy
+	ld a, [wItemQuantityChangeBuffer]
+	ld b, a
+	call CalcCandies
+	ld a, [wItemQuantityChangeBuffer]
+	sub b
+	ld [wItemQuantityChangeBuffer], a
+	ld a, b
+	and a
+	ld hl, XWillBeAppliedText
+	jr z, .got_text
+	ld hl, OnlyXWillBeAppliedText
+.got_text
+	call PrintText
+	call YesNoBox
+	pop de ; restore exp_per_candy
+	jmp c, .done
+
+	ld a, [wItemQuantityChangeBuffer]
+	ld b, a
+
+	xor a
+	ld [wCandyBreakFlag], a
+.apply_candies_loop
+	push bc
+	push de
+	xor a ; PARTYMON
+	ld [wMonType], a
+	predef CopyPkmnToTempMon
+	pop de
+	pop bc
+
+	; add exp
+	ld hl, wTempMonExp + 2
+	ld a, [hl]
+	add e
+	ld [hld], a
+	ld a, [hl]
+	adc d
+	ld [hld], a
+	ld a, [hl]
+	adc 0
+	ld [hl], a
+
+	; check if we reached max exp
+	push bc
+	push de
+	ld hl, wTempMonExp + 2
+	ld a, [wCandyMaxLevelExp + 0]
+	ld c, a
+	ld a, [wCandyMaxLevelExp + 1]
+	ld d, a
+	ld a, [wCandyMaxLevelExp + 2]
+	ld e, a
+	ld a, [hld]
+	sub e
+	ld a, [hld]
+	sbc d
+	ld a, [hl]
+	sbc c
+	jr c, .got_new_exp
+	ld a, c
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+
+	; set break flag
+	ld hl, wCandyBreakFlag
+	inc [hl]
+
+.got_new_exp
+	ld a, MON_EXP
+	call GetPartyParamLocationAndValue
+	ld d, h
+	ld e, l
+	ld hl, wTempMonExp
+	ld bc, 3
+	rst CopyBytes
+	farcall CalcLevel
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	cp d
+	jr z, .no_level_up
+	ld a, [hl]
+	ld [wCandyPrevLevel], a
+	ld [hl], d
+
+	call UseItem_GetMaxHPParameter
+	ld de, wStringBuffer3
+	ld bc, 12
+	rst CopyBytes
+
+	call UpdatePkmnStats
+	call VitaminHappiness
+	farcall LevelUpHappinessMod
+
+	ld a, PARTYMENUTEXT_LEVEL_UP
+	call ItemActionText
+
+	xor a ; PARTYMON
+	ld [wMonType], a
+	predef CopyPkmnToTempMon
+	farcall PrintStatDifferences
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	ld c, a
+	ld a, [wCandyPrevLevel]
+	ld b, a
+.move_level_loop
+	inc b
+	ld a, b
+	ld [wCurPartyLevel], a
+	push bc
+	predef LearnLevelMoves
+	pop bc
+	ld a, b
+	cp c
+	jr nz, .move_level_loop
+	ld a, c
+	ld [wCurPartyLevel], a
+
+	xor a
+	ld [wForceEvolution], a
+	ld a, [wCurPartyMon]
+	push af
+	farcall EvolvePokemon
+	pop af
+	ld [wCurPartyMon], a
+
+.no_level_up
+	pop de
+	pop bc
+	ld a, [wCandyBreakFlag]
+	and a
+	jr nz, .max_level
+	dec b ; eat a candy
+	jmp nz, .apply_candies_loop
+.max_level
+
+	; b: candies_used = candies_selected - candies_remaining
+	ld a, [wItemQuantityChangeBuffer]
+	sub b
+	ld b, a
+	; deduct candies from inventory
+	ld a, [wMenuSelection]
+	ld d, 0
+	ld e, a
+	ld hl, wCandyAmounts
+	add hl, de
+	ld a, [hl]
+	sub b
+	ld [hl], a
 .done
 	xor a
+	ret
+
+.no_effect
+	ld a, 1
 	ret
 
 .CandyMenu:
@@ -2259,6 +2452,69 @@ CandyJar_MonSelected:
 
 .UseHowManyText:
 	db "Use how many?     @"
+
+CalcCandies:
+; input:
+;   cde = current_exp
+;   b = candies_selected
+;   hl = exp_per_candy
+;   wCandyMaxLevelExp = max_exp
+; output:
+;   cde = new_exp
+;   b = candies_used
+.loop_add
+	; current_exp += exp_per_candy
+	ld a, l
+	add e
+	ld e, a
+	ld a, h
+	adc d
+	ld d, a
+	jr nc, .no_d_carry
+	inc c
+.no_d_carry
+
+	; Check if curent_exp >= max_exp
+	; carry: current_exp > max_exp
+	; z: current_exp == max_exp
+	push hl
+	ld hl, wCandyMaxLevelExp
+	ld a, [hli]
+	cp c
+	jr c, .got_flags
+	jr nz, .got_flags
+	ld a, [hli]
+	cp d
+	jr c, .got_flags
+	jr nz, .got_flags
+	ld a, [hl]
+	cp e
+	; carry is current exp is bigger
+	; zero is current exp is equal
+.got_flags
+	pop hl
+	jr c, .current_exp_more_than_max
+	jr z, .current_exp_equal_to_max
+
+; curent_exp is less than max_exp
+	dec b ; eat a candy
+	jr nz, .loop_add
+	ret
+
+.current_exp_more_than_max
+	; current exp = max exp
+	ld hl, wCandyMaxLevelExp
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+	dec b ; eat the candy that put it over max
+	ret
+
+.current_exp_equal_to_max
+	dec b ; eat the candy that put it at max
+	ret
 
 CoinCase:
 	ld hl, .coincasetext
