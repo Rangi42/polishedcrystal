@@ -943,11 +943,9 @@ CheckNullificationAbilities:
 .check_forcedmiss
 	; These have higher priority for specific abilities.
 	ld a, [wAttackMissed]
-	; cp ATKFAIL_MISSED
-	; cp ATKFAIL_PROTECT
 	dec a ; cp ATKFAIL_MISSED
 	ret z
-	dec a ; cp ATKFAIL_PROTECET
+	dec a ; cp ATKFAIL_PROTECT
 	ret z
 .ability_ok
 	ld a, ATKFAIL_ABILITY
