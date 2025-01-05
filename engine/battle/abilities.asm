@@ -945,9 +945,10 @@ CheckNullificationAbilities:
 	ld a, [wAttackMissed]
 	; cp ATKFAIL_MISSED
 	; cp ATKFAIL_PROTECT
-	dec a
-	cp ATKFAIL_PROTECT
-	ret c
+	dec a ; cp ATKFAIL_MISSED
+	ret z
+	dec a ; cp ATKFAIL_PROTECET
+	ret z
 .ability_ok
 	ld a, ATKFAIL_ABILITY
 	ld [wAttackMissed], a
