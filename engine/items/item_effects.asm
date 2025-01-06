@@ -2364,11 +2364,11 @@ CandyJar_MonSelected:
 .MenuItems:
 	db NUM_CANDIES
 	table_width 1
-	db EXP_CANDY_XS
-	db EXP_CANDY_S
-	db EXP_CANDY_M
-	db EXP_CANDY_L
-	db EXP_CANDY_XL
+	db EXP_CANDY_XS - 1
+	db EXP_CANDY_S - 1
+	db EXP_CANDY_M - 1
+	db EXP_CANDY_L - 1
+	db EXP_CANDY_XL - 1
 	assert_table_length NUM_CANDIES
 	db -1
 
