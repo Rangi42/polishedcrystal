@@ -298,6 +298,15 @@ KeyItemDescriptions:
 	dw CatchCharmDesc
 	assert_table_length NUM_KEY_ITEMS
 
+ExpCandyDescriptions:
+	table_width 2
+	dw ExpCandyXSDesc
+	dw ExpCandySDesc
+	dw ExpCandyMDesc
+	dw ExpCandyLDesc
+	dw ExpCandyXLDesc
+	assert_table_length NUM_CANDIES
+
 PokeBallDesc:
 	text "An item for catch-"
 	next "ing #mon."
@@ -1700,4 +1709,13 @@ WingCaseDesc:
 CandyJarDesc:
 	text "Holds up to 99 of"
 	next "each Exp.Candy."
+	done
+
+ExpCandyXSDesc:
+ExpCandySDesc:
+ExpCandyMDesc:
+ExpCandyLDesc:
+ExpCandyXLDesc:
+	text "A candy that"
+	next "gives Exp. Points."
 	done

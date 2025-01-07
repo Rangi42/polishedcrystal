@@ -8,6 +8,7 @@ NamesPointers::
 	dbw 0, wOTPartyMonOTs
 	dba TrainerClassNames
 	dba KeyItemNames
+	dba ExpCandyNames
 
 GetName::
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
@@ -170,6 +171,13 @@ GetApricornName::
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, APRICORN_NAME
+	jr PutNameInBufferAndGetName
+
+GetExpCandyName::
+	ld a, [wNamedObjectIndex]
+	dec a
+	ld [wCurSpecies], a
+	ld a, EXP_CANDY_NAME
 	jr PutNameInBufferAndGetName
 
 GetWingName::

@@ -69,6 +69,13 @@ _PlaceMenuItemName:
 	rst PlaceString
 	ret
 
+PlaceMenuExpCandyName:
+	push de
+	ld de, GetExpCandyName
+	ld a, [wMenuSelection]
+	cp CANCEL
+	jr _PlaceMenuItemName
+
 PlaceMenuTMHMName:
 	push de
 	ld a, [wMenuSelection]

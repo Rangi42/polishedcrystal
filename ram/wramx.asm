@@ -312,6 +312,9 @@ wTempDexLast:: dw ; the last species marked as seen
 wTempDexEnd::
 NEXTU
 wTempPocketCursor:: ds NUM_POCKETS
+NEXTU
+wCandyMaxLevelExp:: ds 3
+wCandyPrevLevel:: db
 ENDU
 ENDU
 

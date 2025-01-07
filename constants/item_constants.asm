@@ -619,13 +619,13 @@ DEF NUM_APRICORNS EQU const_value - 1
 DEF NUM_WINGS EQU const_value
 
 ; CANDY_JAR contents
-	const_def
-	const EXP_CANDY_XS ; 0
-	const EXP_CANDY_S  ; 1
-	const EXP_CANDY_M  ; 2
-	const EXP_CANDY_L  ; 3
-	const EXP_CANDY_XL ; 4
-DEF NUM_CANDIES EQU const_value
+	const_def 1
+	const EXP_CANDY_XS ; 1
+	const EXP_CANDY_S  ; 2
+	const EXP_CANDY_M  ; 3
+	const EXP_CANDY_L  ; 4
+	const EXP_CANDY_XL ; 5
+DEF NUM_CANDIES EQU const_value - 1
 
 ; key item ids
 ; indexes for:

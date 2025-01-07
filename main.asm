@@ -729,6 +729,11 @@ INCLUDE "engine/overworld/weather.asm"
 INCLUDE "engine/events/weather.asm"
 
 
+SECTION "Exp Candy Names", ROMX
+
+INCLUDE "data/items/exp_candy_names.asm"
+
+
 SECTION "LureMenu", ROMX
 
 INCLUDE "engine/menus/lure_menu.asm"
