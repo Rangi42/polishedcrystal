@@ -258,7 +258,7 @@ ReadTrainerParty:
 	ld hl, wOTPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-	ld [hl], 255
+	ld [hl], MAX_RETURN_HAPPINESS
 	pop bc
 	pop de
 	pop hl
@@ -476,10 +476,12 @@ WriteTrainerEVs:
 	jmp PopBCDEHL
 
 EVSpreads:
-	table_width NUM_STATS, EVSpreads
+	table_width NUM_STATS
 	for n, NUM_EV_SPREADS
 		; each EV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
 		; by `ev_spread` (see data/trainers/parties.asm)
 		with_each_stat "db EV_SPREAD_{d:n}_?"
 	endr
 	assert_table_length NUM_EV_SPREADS
+
+ENDSECTION

@@ -19,7 +19,7 @@ ReadAnyMail:
 	call ApplyTilemapInVBlank
 	ld a, [wBuffer3]
 	farcall LoadAndApplyMailPalettes
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	xor a
 	ldh [hJoyPressed], a
 	call .loop
@@ -59,7 +59,7 @@ ReadAnyMail:
 
 LoadMailGFXJumptable:
 ; entries correspond to mail items
-	table_width 2, LoadMailGFXJumptable
+	table_width 2
 	dw LoadFlowerMailGFX
 	dw LoadSurfMailGFX
 	dw LoadLiteBlueMailGFX

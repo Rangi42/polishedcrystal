@@ -97,12 +97,12 @@ VermilionGymSurgeScript:
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
-	checkevent EVENT_GOT_TM43_WILD_CHARGE
+	checkevent EVENT_GOT_TM57_WILD_CHARGE
 	iftrue_jumpopenedtext LtSurgeFightDoneText
 	writetext LtSurgeThunderBadgeText
 	promptbutton
 	verbosegivetmhm TM_WILD_CHARGE
-	setevent EVENT_GOT_TM43_WILD_CHARGE
+	setevent EVENT_GOT_TM57_WILD_CHARGE
 	jumpopenedtext SurgeOutroText
 
 GenericTrainerGentlemanGregory:
@@ -459,7 +459,7 @@ CheckVermilionGymTrashCan:
 	jr z, .yes
 	ld a, [wVermilionGymTrashCan2]
 	call .CheckTrashCan
-	ld a, FALSE
+	ld a, FALSE ; no-optimize a = 0
 	jr nz, .done
 	ld a, [wVermilionGymTrashCan1]
 	ld [wVermilionGymTrashCan2], a

@@ -278,7 +278,7 @@ Script_ReturnToRentalChallenge:
 	step_end
 
 PokemonJournalThortonScript:
-	setflag ENGINE_READ_PALMER_JOURNAL
+	setflag ENGINE_READ_THORTON_JOURNAL
 	jumpthistext
 
 	text "#mon Journal"

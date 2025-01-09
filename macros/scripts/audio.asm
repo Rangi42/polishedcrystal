@@ -146,9 +146,18 @@ MACRO vibrato
 ENDM
 
 	const toggle_noise_cmd ; $e5
+DEF _toggle_noisesampleset = 0
 MACRO toggle_noise
-	db toggle_noise_cmd
-	if _NARG > 0
+	; `toggle_noise` followed by `toggle_noise N` acts like `noisesampleset N`
+	; This maintains compatibility with Crystal Tracker
+	if _NARG == 0
+		DEF _toggle_noisesampleset = 1
+	elif _toggle_noisesampleset
+		DEF _toggle_noisesampleset = 0
+		db noisesampleset_cmd
+		db \1 ; noise
+	else
+		db toggle_noise_cmd
 		db \1 ; drum kit
 	endc
 ENDM
@@ -219,10 +228,7 @@ ENDM
 	const_skip 9
 
 	const noisesampleset_cmd ; $f9
-MACRO noisesampleset
-	db noisesampleset_cmd
-	db \1 ; noise
-ENDM
+	; this gets output by toggle_noise
 
 	const set_condition_cmd ; $fa
 MACRO set_condition

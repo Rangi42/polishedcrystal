@@ -1022,8 +1022,3 @@ Music_ReversalMountainWhite2_Ch4_branch_2:
 	drum_note 4, 2
 	drum_note 1, 3
 	sound_ret
-
-Music_ReversalMountainWhite2_Ch4_branch_3:
-	drum_note 4, 4
-	drum_note 1, 4
-	sound_ret

@@ -1,6 +1,6 @@
 MovementPointers:
 ; entries correspond to movement_* constants (see macros/scripts/movement.asm)
-	table_width 2, MovementPointers
+	table_width 2
 	dw Movement_turn_head_down        ; 00
 	dw Movement_turn_head_up          ; 01
 	dw Movement_turn_head_left        ; 02
@@ -220,8 +220,8 @@ Movement_step_end:
 	add hl, bc
 	ld [hl], $0
 
-	ld hl, wVramState
-	res 7, [hl]
+	ld hl, wStateFlags
+	res SCRIPTED_MOVEMENT_STATE_F, [hl]
 
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -237,8 +237,8 @@ Movement_remove_object:
 	ld [hl], -1
 
 .not_leading
-	ld hl, wVramState
-	res 7, [hl]
+	ld hl, wStateFlags
+	res SCRIPTED_MOVEMENT_STATE_F, [hl]
 	ret
 
 Movement_4b:
@@ -250,8 +250,8 @@ Movement_4b:
 	add hl, bc
 	ld [hl], STEP_TYPE_STANDING
 
-	ld hl, wVramState
-	res 7, [hl]
+	ld hl, wStateFlags
+	res SCRIPTED_MOVEMENT_STATE_F, [hl]
 	ret
 
 Movement_step_sleep_1:
@@ -709,7 +709,7 @@ NormalStep:
 	bit INVISIBLE_F, [hl]
 	jr nz, SetWalkStepType
 
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	cp COLL_LONG_GRASS

@@ -10,6 +10,7 @@ MoldBreakerSuppressedAbilities:
 	db FLASH_FIRE
 	db FUR_COAT
 	db HYPER_CUTTER
+	db ILLUMINATE
 	db IMMUNITY
 	db INNER_FOCUS
 	db INSOMNIA

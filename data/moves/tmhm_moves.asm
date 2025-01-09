@@ -1,6 +1,6 @@
 TMHMMoves:
 ; entries correspond to *_TMNUM constants (see constants/item_constants.asm)
-	table_width 1, TMHMMoves
+	table_width 1
 	db DYNAMICPUNCH ; TM01 (Chuck)
 	db DRAGON_CLAW  ; TM02 (Route 27)
 	db CURSE        ; TM03 (Celadon Mansion)
@@ -65,7 +65,7 @@ TMHMMoves:
 	db ACROBATICS   ; TM62 (Route 39 Farmhouse)
 	db WATER_PULSE  ; TM63 (Misty)
 	db EXPLOSION    ; TM64 (Underground)
-	db SHADOW_CLAW  ; TM65 (Lake of Rage)
+	db SHADOW_CLAW  ; TM65 (Lavender Soul House)
 	db POISON_JAB   ; TM66 (Janine)
 	db AVALANCHE    ; TM67 (Pryce)
 	db GIGA_IMPACT  ; TM68 (Celadon Game Corner)

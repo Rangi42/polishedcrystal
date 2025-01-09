@@ -3,7 +3,6 @@ _BasementKey:
 	ld a, [wMapGroup]
 	cp GROUP_WAREHOUSE_ENTRANCE
 	jr nz, .nope
-
 	ld a, [wMapNumber]
 	cp MAP_WAREHOUSE_ENTRANCE
 	jr nz, .nope
@@ -23,7 +22,7 @@ _BasementKey:
 	ret
 
 .nope
-	ld a, FALSE
+	xor a ; FALSE
 	ld [wItemEffectSucceeded], a
 	ret
 

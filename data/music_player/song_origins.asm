@@ -1,5 +1,5 @@
 SongOrigins:
-	list_start SongOrigins
+	list_start
 	li "R/B"
 	li "Y"
 	li "G/S"

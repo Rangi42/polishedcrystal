@@ -190,7 +190,7 @@ BossDoor:
 	waitbutton
 	playsound SFX_ENTER_DOOR
 	changeblock 10, 8, $7
-	reloadmappart
+	refreshmap
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	waitsfx

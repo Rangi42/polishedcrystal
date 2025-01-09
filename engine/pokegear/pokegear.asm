@@ -36,10 +36,10 @@ PokeGear:
 	ld a, $1
 	ldh [hInMenu], a
 	ld [wInPokegear], a
-	ld a, [wVramState]
+	ld a, [wStateFlags]
 	push af
 	xor a
-	ld [wVramState], a
+	ld [wStateFlags], a
 	call .InitTilemap
 	call DelayFrame
 .loop
@@ -58,7 +58,7 @@ PokeGear:
 	call PlaySFX
 	call WaitSFX
 	pop af
-	ld [wVramState], a
+	ld [wStateFlags], a
 	pop af
 	ldh [hInMenu], a
 	pop af
@@ -105,7 +105,7 @@ PokeGear:
 	call InitPokegearTilemap
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, %11100100
 	jmp DmgToCgbObjPal0
 
@@ -1190,10 +1190,10 @@ _TownMap:
 	ld a, $1
 	ldh [hInMenu], a
 
-	ld a, [wVramState]
+	ld a, [wStateFlags]
 	push af
 	xor a
-	ld [wVramState], a
+	ld [wStateFlags], a
 
 	call ClearBGPalettes
 	call ClearTileMap
@@ -1223,7 +1223,7 @@ _TownMap:
 	ld [wTownMapCursorObjectPointer + 1], a
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, %11100100
 	call DmgToCgbObjPal0
 	call DelayFrame
@@ -1244,7 +1244,7 @@ _TownMap:
 .resume
 	call .loop
 	pop af
-	ld [wVramState], a
+	ld [wStateFlags], a
 	pop af
 	ldh [hInMenu], a
 	pop af
@@ -1443,7 +1443,7 @@ PlayRadio:
 
 PlayRadioStationPointers:
 ; entries correspond to MAPRADIO_* constants
-	table_width 2, PlayRadioStationPointers
+	table_width 2
 	dw LoadStation_PokemonChannel
 	dw LoadStation_OaksPokemonTalk
 	dw LoadStation_PokedexShow
@@ -1492,7 +1492,7 @@ _FlyMap:
 	call FlyMap
 	ld a, CGB_FLY_MAP
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 .loop
 	call JoyTextDelay
 	ld hl, hJoyPressed

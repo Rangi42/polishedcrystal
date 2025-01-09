@@ -1,6 +1,6 @@
 MoveEffectsPointers:
 ; entries correspond to EFFECT_* constants
-	table_width 2, MoveEffectsPointers
+	table_width 2
 	dw NormalHit
 	dw NormalHit
 	dw NormalHit
@@ -60,7 +60,7 @@ MoveEffectsPointers:
 	dw ShellSmash
 	dw AttackDown
 	dw DefenseDown
-	dw StringShot
+	dw SpeedDown
 	dw SpecialAttackDown
 	dw SpecialDefenseDown
 	dw AccuracyDown
@@ -74,8 +74,8 @@ MoveEffectsPointers:
 	dw EvasionDown2
 	dw ResetStats
 	dw Safeguard
-	dw Reflect
-	dw LightScreen
+	dw Screen
+	dw Screen
 	dw Heal
 	dw Rampage
 	dw Trap
@@ -85,7 +85,7 @@ MoveEffectsPointers:
 	dw Conversion
 	dw PayDay
 	dw TriAttack
-	dw SuperFang
+	dw StaticDamage
 	dw Transform
 	dw Substitute
 	dw HyperBeam

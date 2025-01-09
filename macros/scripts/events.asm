@@ -508,9 +508,9 @@ MACRO opentext
 	db opentext_command
 ENDM
 
-	const refreshscreen_command
-MACRO refreshscreen
-	db refreshscreen_command
+	const reanchormap_command
+MACRO reanchormap
+	db reanchormap_command
 ENDM
 
 	const closetext_command
@@ -619,12 +619,11 @@ ENDM
 	const loadwildmon_command
 MACRO loadwildmon
 	db loadwildmon_command
-	db \1 ; pokemon
 	if _NARG == 3
-		db \2 ; form
+		dp \1, \2 ; pokemon
 		db \3 ; level
 	else
-		db 0  ; form
+		dp \1, PLAIN_FORM
 		db \2 ; level
 	endc
 ENDM
@@ -815,9 +814,9 @@ MACRO reloadmap
 	db reloadmap_command
 ENDM
 
-	const reloadmappart_command
-MACRO reloadmappart
-	db reloadmappart_command
+	const refreshmap_command
+MACRO refreshmap
+	db refreshmap_command
 ENDM
 
 	const usestonetable_command

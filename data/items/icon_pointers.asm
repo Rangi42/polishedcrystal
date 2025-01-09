@@ -1,5 +1,5 @@
 ItemIconPointers:
-	table_width 3, ItemIconPointers
+	table_width 3
 	dba NoItemIcon
 	dba PokeBallIcon
 	dba GreatBallIcon
@@ -258,7 +258,7 @@ ItemIconPointers:
 	assert_table_length NUM_ITEMS + 1
 
 KeyItemIconPointers:
-	table_width 3, KeyItemIconPointers
+	table_width 3
 	dba NoItemIcon
 	dba BicycleIcon
 	dba OldRodIcon

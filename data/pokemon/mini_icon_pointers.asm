@@ -3,7 +3,7 @@ MACRO mini_icon
 ENDM
 
 MiniIconPointers:
-	table_width 7, MiniIconPointers
+	table_width 7
 	mini_icon Bulbasaur
 	mini_icon Ivysaur
 	mini_icon Venusaur

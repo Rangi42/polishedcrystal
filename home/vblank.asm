@@ -38,7 +38,7 @@ VBlank::
 	ld hl, sp + 9
 	ld a, [hl]
 	inc a
-	cp HIGH(VRAM_Begin) + 1
+	cp HIGH(STARTOF(VRAM)) + 1
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
 
@@ -150,6 +150,7 @@ VBlank0::
 	call PlaceFootprints
 
 .done
+	call UpdateCGBPalsLYTimed
 	call PushOAM
 	; vblank-sensitive operations are done
 

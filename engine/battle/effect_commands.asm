@@ -246,18 +246,17 @@ BattleCommand_checkturn:
 	and SLP_MASK
 	jr z, .not_asleep
 
-	dec [hl]
-	jr z, .woke_up
-
 	; Early Bird decreases the sleep timer twice as fast (including Rest).
 	call GetTrueUserAbility
-	cp EARLY_BIRD
+	sub EARLY_BIRD
 	jr nz, .no_early_bird
-	; duplicated, but too few lines to make merging it worth it
+	dec [hl]
+	jr z, .woke_up
+.no_early_bird
 	dec [hl]
 	jr z, .woke_up
 
-.no_early_bird
+	; Still asleep.
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_SLP
@@ -266,8 +265,8 @@ BattleCommand_checkturn:
 
 .woke_up
 	; if user has Early Bird, display ability activation
-	call GetTrueUserAbility
-	cp EARLY_BIRD
+	; a is still (user's ability - EARLY_BIRD)
+	and a
 	jr nz, .woke_up_no_early_bird
 	farcall DisableAnimations
 	farcall ShowAbilityActivation
@@ -457,6 +456,11 @@ EndTurn:
 	jmp ResetDamage
 
 CantMove:
+	; Reset Destiny Bond state.
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_DESTINY_BOND, [hl]
+
 	call .cancel_fly_dig
 	call CheckRampageStatusAndGetRolloutCount ; hl becomes pointer to user substatus3
 	jr z, .rampage_done
@@ -621,6 +625,73 @@ MoveDisabled:
 
 	ld hl, DisabledMoveText
 	jmp StdBattleTextbox
+
+CheckOpponentAffection:
+	call StackCallOpponentTurn
+CheckAffection:
+; Returns an Affection level between 0-3.
+; If affection level is 0, also return z.
+	; Affection has to be enabled.
+	ld a, [wInitialOptions]
+	bit AFFECTION_OPT, a
+	jr z, .no_affection
+
+	; Affection doesn't function in Link or Battle Tower battles.
+	ld a, [wLinkMode]
+	and a
+	jr nz, .no_affection
+	ld a, [wInBattleTowerBattle]
+	and a
+	jr z, .cont
+.no_affection
+	xor a
+	ret
+
+.cont
+	push hl
+	push bc
+	ld b, 3
+
+	; Convert current friendship value to Affection thresholds.
+	ld a, MON_HAPPINESS
+	call TrueUserPartyAttr
+
+	ld hl, .AffectionThresholds
+.loop
+	cp [hl]
+	jr nc, .done
+	inc hl
+	dec b
+	jr .loop
+.done
+	ld a, b
+	and a
+	pop bc
+	pop hl
+	ret
+
+.AffectionThresholds:
+	db 255
+	db 220
+	db 180
+	db 0
+
+OpponentAffectionText:
+	call StackCallOpponentTurn
+AffectionText:
+; Prints battle text and displays an affection animation.
+	; If it's the enemy's turn, text is in de.
+	ldh a, [hBattleTurn]
+	and a
+	jr z, _AffectionText
+	ld h, d
+	ld l, e
+_AffectionText:
+	call StdBattleTextbox
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_AFFECTION
+	farjp PlayBattleAnimDE_OnlyIfVisible
 
 GenericHitAnim:
 	; Flicker the monster pic unless flying or underground.
@@ -1174,9 +1245,18 @@ BattleCommand_critical:
 	ld hl, CriticalHitChances
 	ld b, 0
 	add hl, bc
+	ld b, [hl]
+
+	; Sufficient Affection doubles critrate, independently of stages.
+	call CheckAffection
+	cp 3
+	jr c, .no_affection_boost
+	sla b
+.no_affection_boost
 	ld a, 24
 	call BattleRandomRange
-	cp [hl]
+
+	cp b
 	ret nc
 .guranteed_crit
 	ld a, 1
@@ -1818,6 +1898,18 @@ BattleCommand_checkhit:
 	and a
 	ret z
 
+	; Affection-based evasion
+	call CheckOpponentAffection
+	cp 3
+	jr c, .no_affection_evasion
+
+	ld a, 10
+	call BattleRandomRange
+	and a
+	ld a, ATKFAIL_AFFECTION
+	jmp z, .Miss_skipset
+
+.no_affection_evasion
 	; Now doing usual accuracy check
 	ld a, [wPlayerAccLevel]
 	ld b, a
@@ -1850,6 +1942,8 @@ BattleCommand_checkhit:
 	jr nz, .avoid_evasion_boost
 	call GetTrueUserAbility
 	cp KEEN_EYE
+	jr z, .avoid_evasion_boost
+	cp ILLUMINATE
 	jr nz, .check_opponent_unaware
 .avoid_evasion_boost
 	ld a, c
@@ -2136,7 +2230,21 @@ BattleCommand_checkpriority:
 .check_prankster
 	call GetTrueUserAbility
 	cp PRANKSTER
+	jr z, .prankster
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SOUNDPROOF
 	ret nz
+
+	; Soundproof vs status moves is handled here.
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInByteArray
+	ld b, ATKFAIL_ABILITY
+	jr c, .attack_fails
+	ret
+
+.prankster
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp STATUS
@@ -2264,6 +2372,8 @@ BattleCommand_moveanimnosub:
 	; We hit, mark physical/special damage on opponent.
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
+	cp STATUS
+	jr z, .movestate_done
 	cp PHYSICAL
 	ld a, 1 << PHYSICAL
 	jr z, .got_cat
@@ -2284,6 +2394,7 @@ BattleCommand_moveanimnosub:
 	ld [hl], a
 	pop hl
 
+.movestate_done
 	ldh a, [hBattleTurn]
 	and a
 	ld de, wPlayerRolloutCount
@@ -2432,6 +2543,7 @@ BattleCommand_applydamage:
 ; 2 - Ability (i.e. Sturdy)
 ; 3 - Nonconsumable item (i.e. Focus Band)
 ; 4 - Item consumed after use (i.e. Focus Sash)
+; 5 - High Affection
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_ENDURE, a
@@ -2440,6 +2552,19 @@ BattleCommand_applydamage:
 	jr .enduring
 
 .not_enduring
+	call CheckOpponentAffection
+	jr z, .cont
+
+	; chance to endure: AffLevel * 5 + 5
+	inc a
+	ld b, a
+	ld a, 20
+	call BattleRandomRange
+	cp b
+	ld b, $5
+	jr c, .enduring
+
+.cont
 	call GetOpponentItem
 	ld a, b
 	ld b, $3
@@ -2478,6 +2603,12 @@ BattleCommand_applydamage:
 	ld a, b
 	and a
 	ret z
+
+	cp 5
+	ld hl, PlayerAffectionEndureText
+	ld de, EnemyAffectionEndureText
+	jmp z, OpponentAffectionText
+
 	dec a
 	jr nz, .not_enduring2
 	ld hl, EnduredText
@@ -2598,8 +2729,21 @@ FailText_CheckOpponentProtect:
 	dec a
 	ld hl, DoesntAffectText
 	jr z, .printmsg
+	dec a
+	jr nz, .no_affection_evasion
+	push de
+	ld hl, PlayerAffectionEvasionText
+	ld de, EnemyAffectionEvasionText
+	call OpponentAffectionText
+	pop de
+
+	; Still counts as a miss in general.
+	jr .cont_atkmiss
+
+.no_affection_evasion
 	ld hl, AttackMissedText
 	call StdBattleTextbox
+.cont_atkmiss
 	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
@@ -2638,10 +2782,25 @@ BattleCommand_criticaltext:
 	and a
 	jr z, .wait
 
+	; At level 3 affection, critical hit chance is doubled.
+	; Thus, if this applies, show the relevant msg 50% of the
+	; time in place of the regular one.
+	call CheckAffection
+	cp 3
+	jr c, .no_affection_boost
+	call BattleRandom
+	add a
+	jr c, .no_affection_boost
+	ld hl, AffectionCriticalText
+	call _AffectionText
+	jr .crit_text_done
+
+.no_affection_boost
 	ld hl, CriticalHitText
 	call StdBattleTextbox
 
-; Add 1 to the critical hit count if it's the player's turn
+.crit_text_done
+	; Add 1 to the critical hit count if it's the player's turn
 	ld a, [wLinkMode]
 	and a
 	jr nz, .cont
@@ -3247,7 +3406,7 @@ CheckThroatSpray:
 	ld a, [wAttackMissed]
 	and a
 	ret nz
-	
+
 	call HasUserFainted
 	ret z
 
@@ -3255,7 +3414,7 @@ CheckThroatSpray:
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
-	
+
 	push bc
 	call GetCurItemName
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -3716,6 +3875,10 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
+	call HailDefenseBoost
+	call DittoMetalPowder
+	call UnevolvedEviolite
+
 .lightscreen
 	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
@@ -3837,7 +4000,7 @@ WeatherDefenseBoost:
 	cp b
 	ld a, c
 	pop bc
-	ret z
+	ret nz
 	push bc
 	push de
 	push hl
@@ -3974,11 +4137,11 @@ DoStatChangeMod:
 	cp 7
 	jr nc, .higher
 	ln a, 2, 9
-	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
+	sub b ; between $23 (6, i.e. -1 stat change) and $28 (1, i.e. -6 stat change)
 	ret
 .higher
 	ln a, 1, 11
-	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
+	add b ; between $23 (8, i.e. +1 stat change) and $28 (13, i.e. +6 stat change)
 	swap a ; we want to add, not reduce damage
 	ret
 
@@ -4062,7 +4225,7 @@ BattleCommand_damagecalc:
 	jr z, .burn_done
 	call GetTrueUserAbility
 	cp GUTS
-	ld a, $12 ; 1/2 = 50%
+	ln a, 1, 2 ; 1/2 = 50%
 	call nz, ApplyPhysicalAttackDamageMod
 
 .burn_done
@@ -4120,7 +4283,7 @@ BattleCommand_damagecalc:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp c
-	ln a, 6, 5 ; x12
+	ln a, 6, 5 ; x1.2
 .life_orb
 	call z, MultiplyAndDivide
 	jr .done_attacker_item
@@ -4170,7 +4333,7 @@ BattleCommand_damagecalc:
 	ld a, b
 	cp HELD_ASSAULT_VEST
 	jr nz, .done_defender_item
-	ld a, $23 ; 2/3 = 67%
+	ln a, 2, 3 ; 2/3 = 67%
 	call ApplySpecialDefenseDamageMod
 	; fallthrough
 .done_defender_item
@@ -4888,8 +5051,8 @@ SapHealth:
 	; for Drain Kiss, we want 75% drain instead of 50%
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp DRAIN_KISS
-	jr nz, .skip_drain_kiss
+	cp DRAINING_KISS
+	jr nz, .skip_draining_kiss
 	ld h, b
 	ld l, c
 	srl b
@@ -4898,7 +5061,7 @@ SapHealth:
 	ld b, h
 	ld c, l
 
-.skip_drain_kiss
+.skip_draining_kiss
 	call GetHPAbsorption
 
 	; check for Liquid Ooze
@@ -5575,6 +5738,22 @@ FlinchTarget:
 	set SUBSTATUS_FLINCHED, [hl]
 	jmp EndRechargeOpp
 
+HasOpponentDamagedUs:
+; Check if the opponent has damaged us for the given category bits in a
+; this turn. Returns nz if they have.
+	push bc
+	ld b, a
+	ldh a, [hBattleTurn]
+	and a
+	ld a, b
+	pop bc
+	jr nz, .got_cat_opp_side
+	swap a
+.got_cat_opp_side
+	ld hl, wMoveState
+	and [hl]
+	ret z
+	; fallthrough
 CheckOpponentWentFirst:
 ; Returns a=0, z if user went first
 ; Returns a=1, nz if opponent went first
@@ -6176,7 +6355,8 @@ BattleCommand_conditionalboost:
 	jmp BattleJumptable
 
 DoAvalanche:
-	call CheckOpponentWentFirst
+	ld a, 1 << PHYSICAL | 1 << SPECIAL
+	call HasOpponentDamagedUs
 	jr DoubleDamageIfNZ
 
 DoAcrobatics:

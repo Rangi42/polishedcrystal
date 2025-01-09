@@ -80,7 +80,6 @@ Music_LaverreCityXY_branch_ef2e5:
 	note B_, 16
 	note_type 12, 6, 7
 	note B_, 12
-Music_LaverreCityXY_Ch1_branch_1:
 	volume_envelope 8, 0
 	note F#, 12
 	volume_envelope 8, 7
@@ -230,7 +229,6 @@ Music_LaverreCityXY_branch_ef3f2:
 	note E_, 12
 	octave 1
 	note B_, 12
-Music_LaverreCityXY_Ch2_branch_1:
 	volume_envelope 5, 0
 	note D#, 12
 	volume_envelope 5, 7
@@ -260,7 +258,6 @@ Music_LaverreCityXY_Ch2_branch_1:
 	volume_envelope 5, 0
 	note F#, 12
 	note D#, 12
-Music_LaverreCityXY_Ch2_branch_2:
 	volume_envelope 10, 7
 	note G#, 8
 	note G#, 2
@@ -421,7 +418,6 @@ Music_LaverreCityXY_branch_ef4e3:
 	rest 2
 	note G#, 2
 	rest 2
-Music_LaverreCityXY_Ch3_branch_1:
 	note_type 12, 1, 3
 	octave 5
 	note F#, 12

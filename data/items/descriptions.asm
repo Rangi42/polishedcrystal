@@ -1,5 +1,5 @@
 ItemDescriptions:
-	table_width 2, ItemDescriptions
+	table_width 2
 	dw PokeBallDesc
 	dw GreatBallDesc
 	dw UltraBallDesc
@@ -257,7 +257,7 @@ ItemDescriptions:
 	assert_table_length NUM_ITEMS
 
 KeyItemDescriptions:
-	table_width 2, KeyItemDescriptions
+	table_width 2
 	dw BicycleDesc
 	dw OldRodDesc
 	dw GoodRodDesc
@@ -995,8 +995,8 @@ BerserkGeneDesc:
 	done
 
 LightBallDesc:
-	text "An odd, electrical"
-	next "orb. (Hold)"
+	text "Boost Pikachu's"
+	next "Attack and Sp.Atk."
 	done
 
 LeekDesc:
@@ -1005,8 +1005,8 @@ LeekDesc:
 	done
 
 ThickClubDesc:
-	text "A bone of some"
-	next "sort. Sell low."
+	text "Boost Cubone's and"
+	next "Marowak's Attack."
 	done
 
 LuckyPunchDesc:

@@ -24,7 +24,7 @@ Special_GameCornerPrizeMonCheckDex:
 	pop bc
 	ret nz
 	call SetSeenAndCaughtMon
-	call FadeToMenu
+	call FadeToMenu_BackupSprites
 	ld hl, wNamedObjectIndex
 	ldh a, [hScriptVar]
 	ld [hli], a
@@ -100,12 +100,12 @@ SpecialNameRater:
 	farjp NameRater
 
 Special_TownMap:
-	call FadeToMenu
+	call FadeToMenu_BackupSprites
 	farcall _TownMap
 	jmp ExitAllMenus
 
 Special_DisplayLinkRecord:
-	call FadeToMenu
+	call FadeToMenu_BackupSprites
 	farcall DisplayLinkRecord
 	jmp ExitAllMenus
 
@@ -155,7 +155,7 @@ MapRadio:
 	farjp PlayRadio
 
 Special_UnownPuzzle:
-	call FadeToMenu
+	call FadeToMenu_BackupSprites
 	farcall UnownPuzzle
 	ld a, [wSolvedUnownPuzzle]
 	ldh [hScriptVar], a
@@ -185,7 +185,7 @@ Special_CardFlip:
 
 Special_StartGameCornerGame:
 	call FarQueueScript
-	call FadeToMenu
+	call FadeToMenu_BackupSprites
 	ld hl, wQueuedScriptBank
 	ld a, [hli]
 	push af
@@ -308,7 +308,7 @@ Special_FadeOutMusic:
 	ret
 
 Diploma:
-	call FadeToMenu
+	call FadeToMenu_BackupSprites
 	farcall _Diploma
 	jmp ExitAllMenus
 

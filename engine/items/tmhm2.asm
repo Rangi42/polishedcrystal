@@ -2,7 +2,7 @@ TMHMPocket:
 	ld a, TRUE
 	ldh [hInMenu], a
 	call TMHM_PocketLoop
-	ld a, FALSE
+	ld a, FALSE ; no-optimize a = 0
 	ldh [hInMenu], a
 	ret nc
 	call PlaceHollowCursor
@@ -83,7 +83,7 @@ TMHM_ShowTMMoveDescription:
 	ld [wTempTMHM], a
 	predef GetTMHMMove
 	farcall LoadTMHMIconPalette
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld a, [wTempTMHM]
 	ld [wCurMove], a
 	hlcoord 1, 14
@@ -410,9 +410,9 @@ ChooseMonToLearnTMHM_NoRefresh:
 	ld [wPartyMenuActionText], a
 .loopback
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	farcall PartyMenuSelect
 	ret c

@@ -89,6 +89,7 @@ SetTradeMiniIconColor:
 	; fallthrough
 _SetMonColor:
 	ld hl, wShadowOAM + 3
+_ShiftedSetMonColor:
 	ld c, 4
 	ld de, 4
 .loop
@@ -129,11 +130,52 @@ SetOWFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
-	ld de, wOBPals1
 	ld [wNeededPalIndex], a
+	ld b, a
+	push bc
+	ld b, 0
+	ld a, [wUsedObjectPals]
+	inc a
+	jr z, .unset_bit_found
+	dec a
+	ld b, -1
+.bit_check_loop
+	inc b
+	rrca
+	jr c, .bit_check_loop
+.unset_bit_found
+	ld a, b
+	pop bc
+	ld c, a
+	ld a, b
+	ld b, 0
+	ld hl, wLoadedObjPal0
+	add hl, bc
+	ld [hl], a
+	push bc
+	ld a, c
+	ld bc, 1 palettes
+	ld hl, wOBPals1
+	rst AddNTimes
+	ld d, h
+	ld e, l
 	farcall CopySpritePal
-	xor a ; OBJ 0
-	jr _SetMonColor
+	pop bc
+	ldh a, [hUsedOAMIndex]
+	cp (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS - 1) * SPRITEOAMSTRUCT_LENGTH
+	; if we didn't have enough OAM slots, we need to use the last NUM_FLYFROM_ANIM_OAMS slots
+	ld a, (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH
+	jr nc, .got_oam_addr
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
+.got_oam_addr
+	ld hl, wShadowOAM + SPRITEOAMSTRUCT_ATTRIBUTES
+	add l
+	ld l, a
+	ld a, c
+	jmp _ShiftedSetMonColor
 
 SetPartyMenuMonMiniColors:
 	push hl

@@ -136,19 +136,19 @@ CeladonGameCornerGrampsScript:
 MapCeladonGameCornerSignpost35Script:
 	random $6
 	ifequalfwd $0, MapCeladonGameCornerSignpost16Script
-	refreshscreen
+	reanchormap
 	setval $0
 	special Special_SlotMachine
 	endtext
 
 MapCeladonGameCornerSignpost16Script:
-	refreshscreen
+	reanchormap
 	setval $1
 	special Special_SlotMachine
 	endtext
 
 MapCeladonGameCornerSignpost11Script:
-	refreshscreen
+	reanchormap
 	special Special_CardFlip
 	endtext
 

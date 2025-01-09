@@ -139,8 +139,6 @@ BattleCommandPointers:
 	command roost
 	command skillswap
 	command trick
-	command knockoff
-	command bugbite
 	command toxic
 	command gyroball
 	command checkpowder
@@ -148,14 +146,18 @@ BattleCommandPointers:
 	command brickbreak
 	command trickroom
 
-	; The following commands have an argument: stat to raise/lower.
+	; The following commands have an argument
+	; Argument: check if possible (false) vs perform the action (true)
+	commandx bugbite
+	commandx knockoff
+
+	; Argument: stat to lower
 	; (raise|lower)stat: can miss, silent
 	; force(raise|lower)stat: (always)
 	; (raise|lower)stathit: can miss, respects secondary, silent
 	; (raise|lower)oppstat: can miss, respects sub+mist+clear body
 	; force(raise|lower)oppstat: respects sub+mist+clear body
 	; (raise|lower)oppstathit: can miss, respects secondary+sub+mist+clear body, silent
-
 	commandx raisestat
 	commandx lowerstat
 	commandx forceraisestat

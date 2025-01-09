@@ -2,7 +2,7 @@
 	setcharmap no_ngrams
 
 ItemNames::
-	list_start ItemNames
+	list_start
 	li "Park Ball"
 
 	li "Poké Ball"

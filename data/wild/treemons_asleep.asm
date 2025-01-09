@@ -1,7 +1,7 @@
 ; Used by CheckSleepingTreeMon
 
 AsleepTreeMons:
-	table_width 1, AsleepTreeMons
+	table_width 1
 	dr .Morn
 	dr .Day
 	dr .Nite

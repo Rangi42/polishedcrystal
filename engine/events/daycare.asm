@@ -797,9 +797,6 @@ DayCare_GenerateEgg:
 	xor a
 	ld [wTempMonItem], a
 
-	; Set moves for the egg
-	call InitEggMoves
-
 	; Set OTID to the player
 	ld hl, wTempMonID
 	ld a, [wPlayerID]
@@ -1032,6 +1029,9 @@ DayCare_GenerateEgg:
 
 	; Mark as an egg (same byte as form)
 	set MON_IS_EGG_F, [hl]
+
+	; Set moves for the egg
+	call InitEggMoves
 
 	; Ball inheritance: from the mother or non-Ditto. If both
 	; parents share species, pick at random.

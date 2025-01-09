@@ -22,25 +22,24 @@ BattleCommand_perishsong:
 	and a
 	jr nz, .opponent_done
 
-	; Check if opponent Soundproof immunity applies
-	call GetOpponentAbilityAfterMoldBreaker
-	cp SOUNDPROOF
-	jr z, .soundproof
+	; Check if opponent has immunity to this move in some way.
+	; This will, if applicable, print an immunity message, so
+	; we shouldn't do that here too.
+	push de
+	push bc
+	call BattleCommand_checkpriority
+	pop bc
+	pop de
+
+	ld a, [wAttackMissed]
+	and a
+	jr nz, .immune
+
 	ld a, 4
 	ld [de], a
 	inc b
-	jr .opponent_done
 
-.soundproof
-	; Otherwise, notify about soundproof immunity
-	push bc
-	farcall DisableAnimations
-	farcall ShowEnemyAbilityActivation
-	ld hl, DoesntAffectText
-	call StdBattleTextbox
-	farcall EnableAnimations
-	pop bc
-
+.immune
 	; Don't print a failure message if Soundproof suppressed the effect
 	dec b
 	ret z

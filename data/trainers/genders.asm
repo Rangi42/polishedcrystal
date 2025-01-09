@@ -1,5 +1,5 @@
 BTTrainerClassGenders:
-	table_width 1, BTTrainerClassGenders
+	table_width 1
 	; CARRIE, CAL, JACKY, FALKNER, BUGSY, WHITNEY, MORTY, CHUCK
 	genders FEMALE, MALE, FEMALE, MALE, FEMALE, FEMALE, MALE, MALE
 	; JASMINE, PRYCE, CLAIR, WILL, KOGA, BRUNO, KAREN, CHAMPION

@@ -1020,7 +1020,7 @@ DEF CRYS EQU __trainer_class__
 
 	trainerclass VETERANF ; 6e
 	const JOANNE
-	const SYLVIE
+	const JONET
 	const LITVYAK
 	const MADOKA
 

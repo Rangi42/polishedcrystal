@@ -1,6 +1,6 @@
 TrainerEncounterMusic:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
-	table_width 1, TrainerEncounterMusic
+	table_width 1
 	db MUSIC_HIKER_ENCOUNTER
 	db MUSIC_BEAUTY_ENCOUNTER ; carrie
 	db MUSIC_HIKER_ENCOUNTER ; cal

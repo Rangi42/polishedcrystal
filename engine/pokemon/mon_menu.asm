@@ -148,7 +148,7 @@ SwitchPartyMons:
 	ld [wPartyMenuActionText], a
 
 	farcall LoadPartyMenuGFX
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
 
@@ -381,7 +381,7 @@ SwapPartyItem:
 	ld a, 4
 	ld [wPartyMenuActionText], a
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	hlcoord 0, 1
 	ld bc, 20 * 2
 	ld a, [wSwitchMon]
@@ -389,11 +389,32 @@ SwapPartyItem:
 	rst AddNTimes
 	ld [hl], "▷"
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	farcall PartyMenuSelect
 	bit 1, b
 	jr c, .DontSwap
+
+	; Eggs can't hold items.
+	ld a, MON_IS_EGG
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
+	jr nz, .DontSwap
+
+	; First, swap mail metadata. Don't bother checking if we are holding Mail,
+	; doing the swap either way is harmless and simplifies checks.
+	; Note that wCurPartyMon is 0-indexed while wSwitchMon is 1-indexed.
+	push bc
+	push de
+	ld a, [wCurPartyMon]
+	inc a
+	ld c, a
+	ld a, [wSwitchMon]
+	ld e, a
+	farcall SwapPartyMonMail
+	pop de
+	pop bc
+
 	; wSwitchMon contains first selected pkmn
 	; wCurPartyMon contains second selected pkmn
 	; getting pkmn2 item and putting into stack item addr + item id
@@ -714,9 +735,11 @@ _OpenPartyStats:
 	predef StatsScreenInit
 	; This ensures that MaxVolume works as it should if we're in the middle of
 	; playing a cry.
-	ld a, $77
+	ld a, MAX_VOLUME
 	ld [wLastVolume], a
 	call MaxVolume
+	xor a
+	ld [wLastVolume], a
 	call ExitMenu
 	xor a
 	ret
@@ -888,7 +911,7 @@ ChooseMoveToForget:
 	call SpeechTextbox
 .done
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	pop af
 	ret
@@ -917,7 +940,7 @@ ChooseMoveToRelearn:
 	push af
 	call nz, SpeechTextbox
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 .no_moves
 	pop af
@@ -1226,16 +1249,30 @@ MoveScreenLoop:
 	jmp .loop
 
 .perform_swap
+	; If we are swapping moves of the currently active mon in an ongoing battle,
+	; and the mon isn't transformed, we need special behaviour.
+
+	; Are we in a battle?
 	ld a, [wBattleMode]
 	and a
 	jr z, .regular_swap_move
 
-	; If we're transformed, the Moves screen shows our original moveset.
-	; So swapping in the moves screen swap our original moves, while
-	; swapping in the battle interface swaps our temporary moves.
+	; Are we transformed?
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .regular_swap_move
+
+	; Are we swapping the moves of our current battler?
+	ld a, [wCurBattleMon]
+	inc a
+	ld h, a
+
+	; wTempMonBox == 0 is implicit mid-battle.
+	ld a, [wTempMonSlot]
+	cp h
+	jr nz, .regular_swap_move
+
+	; Use the battle-specific moveswap routine.
 	ld a, [wMoveScreenCursor]
 	inc a
 	ld [wMenuCursorY], a
@@ -1415,7 +1452,7 @@ SetUpMoveScreenBG:
 	rst PlaceString
 	hlcoord 15, 1
 	call PrintLevel
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	hlcoord 16, 0
 	lb bc, 1, 3
 	jmp ClearBox
@@ -1591,7 +1628,7 @@ MoveScreen_ListMovesFast:
 	ld de, wBGPals1 palette 0 + 2
 	push af
 	farcall LoadCategoryAndTypePals
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 
 	pop af
 	ld hl, TypeIconGFX
@@ -1629,8 +1666,8 @@ MoveScreen_ListMovesFast:
 	ld hl, Moves + MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 15, 12
-	cp 2
-	jr c, .no_acc
+	cp -1
+	jr nc, .no_acc
 	ld [wTextDecimalByte], a
 	ld de, wTextDecimalByte
 	lb bc, 1, 3

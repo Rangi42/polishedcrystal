@@ -40,11 +40,11 @@ BattleCommand_skillswap:
 	ld [wPlayerCudChewBerry], a
 	ld [wEnemyCudChewBerry], a
 
-	; Don't use RunBothActivationAbilities, because
+	; Don't use RunBothEntryAbilities, because
 	; Skill Swap always runs the user first
-	farcall RunActivationAbilitiesInner
+	farcall RunEntryAbilitiesInner
 	call SwitchTurn
-	farcall RunActivationAbilitiesInner
+	farcall RunEntryAbilitiesInner
 	jmp SwitchTurn
 
 .failed

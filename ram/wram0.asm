@@ -197,6 +197,10 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
+wPlayerCurrentOAMSlot:: db
+
+wMapSetupFlags:: db
+
 
 SECTION "Sprite Animations", WRAM0
 
@@ -918,7 +922,7 @@ SECTION UNION "Misc 1326", WRAM0
 
 	; LCD hblank code block. Labels are defined as part of the code.
 	ds $cf
-	assert BillsPC_LCDCodeEnd - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
+	assert BillsPC_LCDCode.End - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
@@ -1323,12 +1327,20 @@ wOBP1:: db
 
 wNumHits:: db
 
+wOverworldWeatherTimer:: db
+wOverworldWeatherCooldown:: db
+wSpriteOverlapCount:: db
+wWeatherFlags:: db
+wPrevWeather:: db
+wCurWeather:: db
+wPrevOvercastIndex:: db
+
 
 SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bits 1-7: unused
+; bits 3-7: unused
 	db
 
 wOptions::
@@ -1372,7 +1384,7 @@ wInitialOptions::
 ; bit 2: color variation off/on
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
-; bit 5: nuzlocke mode off/on
+; bit 5: affection bonuses off/on
 ; bit 6: scaled exp on/off
 ; bit 7: physical-special split on/off
 	db
@@ -1382,7 +1394,9 @@ wInitialOptions2::
 ; bit 1: classic EVs (no 510 cap)
 ; bit 2: modern EVs (510 cap)
 ; (only one of bits 0-2 can be set)
-; bits 3-6: unused
+; bit 3: use RTC
+; bit 4: evolve in battle
+; bits 5-6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::

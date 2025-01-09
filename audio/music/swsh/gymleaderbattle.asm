@@ -2125,7 +2125,8 @@ Music_GymLeaderBattleSwSh_Ch4_ditty4:
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty5:
-	noisesampleset 5
+	toggle_noise
+	toggle_noise 5
 	drum_note 2, 4
 	drum_note 2, 4
 	drum_note 2, 4
@@ -2155,7 +2156,8 @@ Music_GymLeaderBattleSwSh_Ch4_ditty5:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 9, 16
-	noisesampleset 4
+	toggle_noise
+	toggle_noise 4
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty6:

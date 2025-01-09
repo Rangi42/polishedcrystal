@@ -104,8 +104,8 @@ GoldenrodHarborPokefanmScript:
 	faceplayer
 	opentext
 	writetext GoldenrodHarborDollVendorText
-.Start:
 	special PlaceMoneyTopRight
+.Start:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
@@ -123,6 +123,7 @@ GoldenrodHarborPokefanmScript:
 	setevent EVENT_DECO_MAGIKARP_DOLL
 	writetext GoldenrodHarborMagikarpDollText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GoldenrodHarborMagikarpDollSentText
 	waitbutton
@@ -137,6 +138,7 @@ GoldenrodHarborPokefanmScript:
 	setevent EVENT_DECO_MARILL_DOLL
 	writetext GoldenrodHarborMarillDollText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GoldenrodHarborMarillDollSentText
 	waitbutton
@@ -151,6 +153,7 @@ GoldenrodHarborPokefanmScript:
 	setevent EVENT_DECO_OCTILLERY_DOLL
 	writetext GoldenrodHarborOctilleryDollText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GoldenrodHarborOctilleryDollSentText
 	waitbutton
@@ -184,8 +187,8 @@ GoldenrodHarborYoungsterScript:
 	faceplayer
 	opentext
 	writetext GoldenrodHarborPlantVendorText
-.Start:
 	special PlaceMoneyTopRight
+.Start:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
@@ -203,6 +206,7 @@ GoldenrodHarborYoungsterScript:
 	setevent EVENT_DECO_PLANT_1
 	writetext GoldenrodHarborMagnaPlantText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GoldenrodHarborMagnaPlantSentText
 	waitbutton
@@ -217,6 +221,7 @@ GoldenrodHarborYoungsterScript:
 	setevent EVENT_DECO_PLANT_2
 	writetext GoldenrodHarborTropicPlantText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GoldenrodHarborTropicPlantSentText
 	waitbutton
@@ -231,6 +236,7 @@ GoldenrodHarborYoungsterScript:
 	setevent EVENT_DECO_PLANT_3
 	writetext GoldenrodHarborJumboPlantText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext GoldenrodHarborJumboPlantSentText
 	waitbutton

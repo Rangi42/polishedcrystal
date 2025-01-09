@@ -7,7 +7,7 @@ _CheckContactMove::
 	cp HELD_PUNCHING_GLOVE
 	jr nz, .not_punching_glove
 	farcall IsPunchingMove
-	ret c
+	ret z
 
 .not_punching_glove
 	ld a, BATTLE_VARS_MOVE

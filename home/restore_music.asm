@@ -83,7 +83,7 @@ DeleteSavedMusic::
 	ldh a, [rSVBK]
 	push af
 
-	ld a, BANK(wSoundEngineBackup)
+	ld a, BANK("Sound Stack")
 	ldh [rSVBK], a
 	xor a
 	ld [wSoundEngineBackup], a

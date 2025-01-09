@@ -14,7 +14,7 @@ HandleBetweenTurnEffects:
 	call HandleWeather
 	call CheckFaint
 	ret c
-	; Self-curing status from high Affection
+	call HandleAffectionSelfCure
 	call HandleFutureSight
 	call CheckFaint
 	ret c
@@ -69,6 +69,8 @@ HandleBetweenTurnEffects:
 	; gravity
 	; terrain (dissipating, grass terrain recovery is elsewhere)
 	call HandleEndturnBlockB
+	call CheckFaint
+	ret c
 	; Things below do not exist in 7gen -- it's here to avoid some quirks
 	call HandleLeppaBerry
 	call HandleHealingItems
@@ -189,14 +191,14 @@ HandleBetweenTurnEffects:
 	jr nz, .not_both2
 
 	farcall SpikesDamageBoth
-	farcall RunBothActivationAbilities
+	farcall RunBothEntryAbilities
 	jmp .endturn_loop
 .not_both2
 	call SetEnemyTurn
 	dec e
 	call z, SetPlayerTurn
 	farcall SpikesDamage
-	farcall RunActivationAbilities
+	farcall RunEntryAbilities
 	jmp .endturn_loop
 
 HandleEndturnBlockA:
@@ -262,7 +264,7 @@ HandleWeather:
 	and a ; cp WEATHER_NONE
 	ret z
 
-; sandstorm/hail damage, abilities like rain dish, etc.
+	; sandstorm/hail damage, abilities like rain dish, etc.
 	xor a
 	ld [wAlreadySawWeather], a
 	call SetFastestTurn
@@ -371,6 +373,36 @@ WeatherEndedMessages:
 	fardw BattleText_TheSunlightFaded
 	fardw BattleText_TheSandstormSubsided
 	fardw BattleText_TheHailStopped
+
+HandleAffectionSelfCure:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	farcall CheckAffection
+	cp 2
+	ret c
+
+	; 20% to heal a status problem.
+	ld a, 5
+	call BattleRandomRange
+	and a
+	ret nz
+
+	; Do we actually have a status problem to heal?
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	ld a, [hl]
+	and a
+	ret z
+
+	ld [hl], 0
+	ld hl, PlayerAffectionSelfCureText
+	ld de, EnemyAffectionSelfCureText
+	farcall AffectionText
+	call UpdateBattleMonInParty
+	jmp UpdateEnemyMonInParty
 
 HandleFutureSight:
 	call SetFastestTurn
