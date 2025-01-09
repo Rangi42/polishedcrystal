@@ -1370,4 +1370,11 @@ MACRO scalltable
 	dw \1 ; pointer table
 ENDM
 
+	const setmapobjectmovedata_command
+MACRO setmapobjectmovedata
+	db setmapobjectmovedata_command
+	db \1 ; person
+	db \2 ; SpriteMovementData index
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

@@ -53,7 +53,7 @@ RocketHideoutB3FCoolDudeMysticGrunt1:
 	line "judgement."
 
 	para "Let's see if your"
-	cont "focus is good."
+	line "focus is good."
 	
 	done
 

@@ -313,10 +313,10 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; ORANGETICKET
 	dw IsntTheTimeMessage ; MYSTICTICKET
 	dw IsntTheTimeMessage ; OLD_SEA_MAP
+	dw IsntTheTimeMessage ; LIFT_KEY
 	dw IsntTheTimeMessage ; HARSH_LURE
 	dw IsntTheTimeMessage ; POTENT_LURE
 	dw IsntTheTimeMessage ; MALIGN_LURE
-	dw IsntTheTimeMessage ; LIFT_KEY
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
 	dw IsntTheTimeMessage ; CATCH_CHARM

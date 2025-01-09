@@ -289,10 +289,10 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
+	dw LiftKeyDesc
 	dw HarshLureDesc
 	dw PotentLureDesc
 	dw MalignLureDesc
-	dw LiftKeyDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc

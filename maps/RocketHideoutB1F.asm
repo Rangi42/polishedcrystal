@@ -52,7 +52,10 @@ RocketHideoutB1FBlackBeltValorGrunt1:
 	checkjustbattled
 	iffalsefwd .AfterText
 	changeblock 16, 16, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 
 .AfterText

@@ -112,10 +112,15 @@ CherrygroveBayGalarianBirdsScript:
 	waitbutton
 	endtext
 
+.OzakuraTreeText
+	text "It's the Ozakura"
+	line "of Cherrygrove!"
+	done
+
 .LikeToUseItemText
 	text "Would you like to"
 	line "use a Lure on"
-	cont "the Cherry tree?"
+	cont "the Ozakura?"
 	done
 
 .WhichLureText
@@ -125,8 +130,7 @@ CherrygroveBayGalarianBirdsScript:
 
 .YouSprayedTheLureText
 	text "You sprayed the"
-	line "Lure on the Cherry"
-	cont "tree."
+	line "Lure on the tree."
 	done
 
 .NothingHappensText

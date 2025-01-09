@@ -92,6 +92,7 @@ RocketHideoutB4FMeetLeadersRightScript:
 	step_end
 
 RocketHideoutB4FMeetLeadersScript:
+	setscene $1
 	showtext .CandelaIntro1Text
 	turnobject ROCKETHIDEOUTB4F_SPARK, RIGHT
 	showtext .BlancheIntro1Text
@@ -112,7 +113,8 @@ RocketHideoutB4FMeetLeadersScript:
 	showtext .SparkIntro3Text
 	turnobject ROCKETHIDEOUTB4F_BLANCHE, DOWN
 	showtext .CandelaIntro3Text
-	setscene $1
+	setmapobjectmovedata ROCKETHIDEOUTB4F_SPARK, SPRITEMOVEDATA_STANDING_DOWN
+	setmapobjectmovedata ROCKETHIDEOUTB4F_BLANCHE, SPRITEMOVEDATA_STANDING_DOWN
 	end
 
 
@@ -159,7 +161,7 @@ RocketHideoutB4FMeetLeadersScript:
 	cont "the time!"
 
 	para "What about the"
-	line "big tree project?"
+	line "Ozakura project?"
 	done
 
 .SparkIntro2Text:
@@ -193,6 +195,8 @@ TooEarly:
 
 RocketHideoutB4FSparkScript:
 	faceplayer
+	checkevent EVENT_BEAT_SPARK
+	iftrue_jumptext .AfterText2
 	opentext
 	writetext .GreetingText
 	yesorno
@@ -205,10 +209,12 @@ RocketHideoutB4FSparkScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SPARK
-	showtext .AfterText1
+	opentext
+	writetext .AfterText1
+	waitbutton
 	verbosegivekeyitem MALIGN_LURE
-	showtext .AfterText2
-	end
+	writetext .AfterText2
+	waitendtext
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -239,8 +245,9 @@ RocketHideoutB4FSparkScript:
 	done
 
 .AfterText2:
-	text "It draws bold"
-	line "energy."
+	text "The Malign Lure"
+	line "draws on bold"
+	cont "energy."
 
 	para "It's my way of"
 	line "sparking some"
@@ -260,6 +267,8 @@ RocketHideoutB4FSparkScript:
 
 RocketHideoutB4FCandelaScript:
 	faceplayer
+	checkevent EVENT_BEAT_CANDELA
+	iftrue_jumptext .AfterText2
 	opentext
 	writetext .GreetingText
 	yesorno
@@ -272,10 +281,12 @@ RocketHideoutB4FCandelaScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CANDELA
-	showtext .AfterText1
+	opentext
+	writetext .AfterText1
+	waitbutton
 	verbosegivekeyitem HARSH_LURE
-	showtext .AfterText2
-	end
+	writetext .AfterText2
+	waitendtext
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -305,8 +316,9 @@ RocketHideoutB4FCandelaScript:
 	done
 
 .AfterText2:
-	text "Candela: it draws"
-	line "fierce power."
+	text "Candela: The Harsh"
+	line "Lure draws fierce"
+	cont "power."
 
 	para "This is my contri-"
 	line "bution to our"
@@ -325,6 +337,8 @@ RocketHideoutB4FCandelaScript:
 
 RocketHideoutB4FBlancheScript:
 	faceplayer
+	checkevent EVENT_BEAT_BLANCHE
+	iftrue_jumptext .AfterText2
 	opentext
 	writetext .GreetingText
 	yesorno
@@ -337,10 +351,12 @@ RocketHideoutB4FBlancheScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLANCHE
-	showtext .AfterText1
+	opentext
+	writetext .AfterText1
+	waitbutton
 	verbosegivekeyitem POTENT_LURE
-	showtext .AfterText2
-	end
+	writetext .AfterText2
+	waitendtext
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -372,8 +388,9 @@ RocketHideoutB4FBlancheScript:
 	done
 
 .AfterText2:
-	text "It amplifies"
-	line "precision."
+	text "The Potent Lure"
+	line "amplifies its"
+	cont "precision."
 
 	para "It's my contri-"
 	line "bution to ensuring"
@@ -409,9 +426,7 @@ RocketHideoutB4FYoungsterValorGrunt2Script:
 .NotLeftOfValorGrunt2
 	appear ROCKETHIDEOUTB4F_LIFT_KEY
 .AfterBattle
-	opentext
-	writetext .AfterText
-	closetext
+	showtext .AfterText
 	end
 
 .GreetingText

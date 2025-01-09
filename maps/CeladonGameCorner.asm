@@ -370,15 +370,25 @@ CeladonGameCornerGrampsText:
 
 CeladonGameCornerPosterScript:
 	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
-	iftruefwd .end
-	showtext .Text
+	iftruefwd .AlreadyPushed
+	showtext .PushSwitchText
+	playsound SFX_PUSH_BUTTON
 	playsound SFX_ENTER_DOOR
 	setevent EVENT_PUSHED_GAME_CORNER_SWITCH
 	changeblock 16, 0, $4d
-.end
 	end
 
-.Text
+.AlreadyPushed
+	showtext .AlreadyPushedText
+	end
+
+.AlreadyPushedText
+	text "The switch has"
+	line "already been"
+	cont "pushed."
+	done
+
+.PushSwitchText
 	text "Hey!"
 
 	para "A switch behind"
