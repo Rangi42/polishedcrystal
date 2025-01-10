@@ -209,9 +209,15 @@ GenericTrainerSwimmerfSally:
 GenericTrainerSwimmerfTara:
 	generictrainer SWIMMERF, TARA, EVENT_BEAT_SWIMMERF_TARA, .SeenText, .BeatenText
 
-	text "There's a grove of"
-	line "golden trees north"
-	cont "of Ecruteak City."
+	text "There's a large"
+	line "tree north of here"
+	cont "called 'Ozakura'…"
+
+	para "Some say many bird"
+	line "#MON come from"
+
+	para "far away to nest"
+	line "there."
 
 	para "I'd love to visit"
 	line "someday."
@@ -232,16 +238,22 @@ GenericTrainerHikerTony:
 	generictrainer HIKER, TONY, EVENT_BEAT_HIKER_TONY, .SeenText, .BeatenText
 
 	text "After a long hike,"
-	line "resting under the"
+	line "I saw what looked"
 
-	para "cherry trees hits"
-	line "the spot."
+	para "like a big bird"
+	line "flying this way!"
+
+	para "Where was it head-"
+	line "ing to and why?"
 	done
 
 .SeenText:
 	text "I hiked through"
 	line "miles of woods"
-	cont "to get here!"
+
+	para "just to see the"
+	line "legendary bird"
+	cont "#MON!"
 	done
 
 .BeatenText:
@@ -254,6 +266,16 @@ CherrygroveBayFisherText:
 
 	para "from afar while"
 	line "I fish."
+
+	para "Oh! And I also saw"
+	line "some really big"
+	
+	para "birds the other"
+	line "day."
+	
+	para "I think they were"
+	line "headed to that big"
+	cont "ol' tree nearby?"
 	done
 
 CherrygroveBayHikerText:
