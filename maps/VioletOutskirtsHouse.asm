@@ -2,159 +2,159 @@ VioletOutskirtsHouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-    ;callback MAPCALLBACK_OBJECTS, VioletOutskirtsHouseCaretaker
+	;callback MAPCALLBACK_OBJECTS, VioletOutskirtsHouseCaretaker
 
 	def_warp_events
 	warp_event  3,  7, VIOLET_OUTSKIRTS, 2
-    warp_event  4,  7, VIOLET_OUTSKIRTS, 2
+	warp_event  4,  7, VIOLET_OUTSKIRTS, 2
 
 	def_coord_events
 
 	def_bg_events
-    bg_event  0,  1, BGEVENT_READ, VioletOutskirtsGhostBattleScript
-    bg_event  1,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
-    bg_event  2,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseRadioText
-    bg_event  6,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
-    bg_event  7,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
-    ;bg_event  6,  6, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
+	bg_event  0,  1, BGEVENT_READ, VioletOutskirtsGhostBattleScript
+	bg_event  1,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
+	bg_event  2,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseRadioText
+	bg_event  6,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
+	bg_event  7,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
+	;bg_event  6,  6, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
 
 	def_object_events
-    object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
 
-    object_const_def
-    const VIOLETOUTSKIRTSHOUSE_CARETAKER
+	object_const_def
+	const VIOLETOUTSKIRTSHOUSE_CARETAKER
 
 VioletOutskirtsHouseCaretaker:
-    checkevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
-    iftruefwd .Appear
-    disappear VIOLETOUTSKIRTSHOUSE_CARETAKER
+	checkevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
+	iftruefwd .Appear
+	disappear VIOLETOUTSKIRTSHOUSE_CARETAKER
 .Appear
-    endcallback
+	endcallback
 
 VioletOutskirtsGhostBattleScript:
-    checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-    iftrue_jumptext VioletOutskirtsHouseStillAPresenceText
-    checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-    iftrue_jumptext VioletOutskirtsHouseNotSafeHereText
-    opentext
-    writetext VioletOutskirtsHouseOldShrineText
-    checkevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
-    iftruefwd .Done
-    promptbutton
-    writetext VioletOutskirtsHouseAhText
-    waitbutton
-    closetext
-    loadvar VAR_BATTLETYPE, BATTLETYPE_GHOST
-    loadwildmon TYPHLOSION, HISUIAN_FORM, 60
-    startbattle
-    special CheckBattleCaughtResult
-    iftruefwd .CaughtHisuianTyphlosion
-    reloadmapafterbattle
-    opentext
-    checkkeyitem SILPHSCOPE2
-    iffalsefwd .NoSilphScope2
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue_jumptext VioletOutskirtsHouseStillAPresenceText
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	iftrue_jumptext VioletOutskirtsHouseNotSafeHereText
+	opentext
+	writetext VioletOutskirtsHouseOldShrineText
+	checkevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
+	iftruefwd .Done
+	promptbutton
+	writetext VioletOutskirtsHouseAhText
+	waitbutton
+	closetext
+	loadvar VAR_BATTLETYPE, BATTLETYPE_GHOST
+	loadwildmon TYPHLOSION, HISUIAN_FORM, 60
+	startbattle
+	special CheckBattleCaughtResult
+	iftruefwd .CaughtHisuianTyphlosion
+	reloadmapafterbattle
+	opentext
+	checkkeyitem SILPHSCOPE2
+	iffalsefwd .NoSilphScope2
 ; Defeated (or ran from) Typhlosion
-    setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-    writetext VioletOutskirtsHouseStillAPresenceText
-    sjumpfwd .Done
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	writetext VioletOutskirtsHouseStillAPresenceText
+	sjumpfwd .Done
 ; Didn't identify Typhlosion
 .NoSilphScope2
-    setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-    writetext VioletOutskirtsHouseNotSafeHereText
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	writetext VioletOutskirtsHouseNotSafeHereText
 .Done
-    waitbutton
-    endtext
+	waitbutton
+	endtext
 
 .CaughtHisuianTyphlosion
-    setevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
-    reloadmapafterbattle
-    end
+	setevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
+	reloadmapafterbattle
+	end
 
 VioletOutskirtsHouseCaretakerScript:
-    checkevent EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
-    iftrue_jumptextfaceplayer VioletOutskirtsHouseCaretakerThankYouText
-    setevent EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
-    jumpthistextfaceplayer
+	checkevent EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
+	iftrue_jumptextfaceplayer VioletOutskirtsHouseCaretakerThankYouText
+	setevent EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
+	jumpthistextfaceplayer
 
-    text "…… ……"
+	text "…… ……"
 
-    para "You found my"
-    line "friend…"
+	para "You found my"
+	line "friend…"
 
-    para "It would guide"
-    line "departed spirits"
-    cont "to the next life…"
+	para "It would guide"
+	line "departed spirits"
+	cont "to the next life…"
 
-    para "As I tended to"
-    line "their graves…"
+	para "As I tended to"
+	line "their graves…"
 
-    para "…… ……"
+	para "…… ……"
 
-    para "That was so"
-    line "long ago…"
+	para "That was so"
+	line "long ago…"
 
-    para "No one visits"
-    line "anymore…"
+	para "No one visits"
+	line "anymore…"
 
-    para "The graves are"
-    line "left untended…"
+	para "The graves are"
+	line "left untended…"
 
-    para "But you… still"
-    line "came here…"
+	para "But you… still"
+	line "came here…"
 
-    para "…… ……"
+	para "…… ……"
 
-    para "Thank you…"
+	para "Thank you…"
 
-    para "Please take care"
-    line "of my… friend…"
-    done
+	para "Please take care"
+	line "of my… friend…"
+	done
 
 VioletOutskirtsHouseOldShrineText:
-    text "It's a very old"
-    line "shrine."
-    done
+	text "It's a very old"
+	line "shrine."
+	done
 
 VioletOutskirtsHouseAhText:
-    text "…… …… ……"
+	text "…… …… ……"
 
-    para "…… …… ……"
+	para "…… …… ……"
 
-    para "Ah!"
-    done
+	para "Ah!"
+	done
 
 VioletOutskirtsHouseCaretakerThankYouText:
-    text "…… ……"
+	text "…… ……"
 
-    para "Thank you…"
-    line "dear…"
-    done
+	para "Thank you…"
+	line "dear…"
+	done
 
-VioletOutskirtsHouseTheresAPresenceText
-    text "There's a strong"
-    line "presence here…"
-    done
+VioletOutskirtsHouseTheresAPresenceText:
+	text "There's a strong"
+	line "presence here…"
+	done
 
 VioletOutskirtsHouseStillAPresenceText:
-    text "The spirit is"
-    line "gone, but there's"
-    cont "still a presence…"
-    done
+	text "The spirit is"
+	line "gone, but there's"
+	cont "still a presence…"
+	done
 
 VioletOutskirtsHouseNotSafeHereText:
-    text "There's still a"
-    line "strong presence."
+	text "There's still a"
+	line "strong presence."
 
-    para "It's not safe here!"
-    done
+	para "It's not safe here!"
+	done
 
 VioletOutskirtsHouseRadioText:
-    text "It doesn't seem"
-    line "to work."
-    done
+	text "It doesn't seem"
+	line "to work."
+	done
 
 VioletOutskirtsHouseDustText:
-    text "It's covered in a"
-    line "thick layer of"
-    cont "dust."
-    done
+	text "It's covered in a"
+	line "thick layer of"
+	cont "dust."
+	done
