@@ -909,7 +909,7 @@ CheckNullificationAbilities:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
-	jr z, .ability_ok
+	jr z, .check_forcedmiss
 	ret
 
 .damp
@@ -940,6 +940,13 @@ CheckNullificationAbilities:
 	cp EFFECT_BURN
 	jr nz, .check_others
 
+.check_forcedmiss
+	; These have higher priority for specific abilities.
+	ld a, [wAttackMissed]
+	dec a ; cp ATKFAIL_MISSED
+	ret z
+	dec a ; cp ATKFAIL_PROTECT
+	ret z
 .ability_ok
 	ld a, ATKFAIL_ABILITY
 	ld [wAttackMissed], a
