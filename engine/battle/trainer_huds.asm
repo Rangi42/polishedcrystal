@@ -131,6 +131,9 @@ DrawEnemyHUDBorder:
 	ld b, a
 	call CheckCosmeticCaughtMon
 	ret z
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	ret z
 	hlcoord 1, 1
 	ld [hl], "<BALL>"
 	ret

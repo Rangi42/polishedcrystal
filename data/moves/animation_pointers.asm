@@ -286,6 +286,7 @@ endc
 	fardw BattleAnim_ThrowPokeBall
 	fardw BattleAnim_SendOutMon
 	fardw BattleAnim_ReturnMon
+	fardw BattleAnim_Transform
 	fardw BattleAnim_Miss
 	fardw BattleAnim_EnemyDamage
 	fardw BattleAnim_PlayerDamage

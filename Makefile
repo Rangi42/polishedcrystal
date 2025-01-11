@@ -167,6 +167,7 @@ $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
 gfx/battle/lyra_back.2bpp: rgbgfx += -Z
 gfx/battle/substitute-back.2bpp: rgbgfx += -Z
 gfx/battle/substitute-front.2bpp: rgbgfx += -Z
+gfx/battle/ghost.2bpp: rgbgfx += -Z
 
 gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
 gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace
