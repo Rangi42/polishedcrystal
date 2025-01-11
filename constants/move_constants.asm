@@ -293,13 +293,14 @@ DEF NUM_ATTACKS EQU const_value - 1
 	const ANIM_THROW_POKE_BALL    ; $112
 	const ANIM_SEND_OUT_MON       ; $113
 	const ANIM_RETURN_MON         ; $114
+	const ANIM_GHOST_TRANSFORM    ; $115
 
 	; Generic "hit" animations
-	const ANIM_MISS               ; $115
-	const ANIM_ENEMY_DAMAGE       ; $116
-	const ANIM_PLAYER_DAMAGE      ; $117
-	const ANIM_HIT_CONFUSION      ; $118
-	const ANIM_HELD_ITEM_TRIGGER  ; $119
+	const ANIM_MISS               ; $116
+	const ANIM_ENEMY_DAMAGE       ; $117
+	const ANIM_PLAYER_DAMAGE      ; $118
+	const ANIM_HIT_CONFUSION      ; $119
+	const ANIM_HELD_ITEM_TRIGGER  ; $11a
 
 DEF ANIM_AFFECTION EQU ANIM_IN_LOVE ; just an alias for now
 DEF NUM_BATTLE_ANIMS EQU const_value - 1
