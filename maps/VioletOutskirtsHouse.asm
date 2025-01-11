@@ -2,7 +2,7 @@ VioletOutskirtsHouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	;callback MAPCALLBACK_OBJECTS, VioletOutskirtsHouseCaretaker
+	callback MAPCALLBACK_OBJECTS, VioletOutskirtsHouseCaretaker
 
 	def_warp_events
 	warp_event  3,  7, VIOLET_OUTSKIRTS, 2
@@ -16,19 +16,24 @@ VioletOutskirtsHouse_MapScriptHeader:
 	bg_event  2,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseRadioText
 	bg_event  6,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
 	bg_event  7,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
-	;bg_event  6,  6, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETARY_CARETAKER
 
 	object_const_def
 	const VIOLETOUTSKIRTSHOUSE_CARETAKER
 
 VioletOutskirtsHouseCaretaker:
 	checkevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
-	iftruefwd .Appear
+	iftruefwd .endcallback
 	disappear VIOLETOUTSKIRTSHOUSE_CARETAKER
-.Appear
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+	iftruefwd .endcallback
+	special LoadMapPalettes
+	special FadeInPalettes_EnableDynNoApply
+	showtext VioletOutskirtsHouseNotAloneText
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+.endcallback
 	endcallback
 
 VioletOutskirtsGhostBattleScript:
@@ -66,6 +71,7 @@ VioletOutskirtsGhostBattleScript:
 	endtext
 
 .CaughtHisuianTyphlosion
+	appear VIOLETOUTSKIRTSHOUSE_CARETAKER
 	setevent EVENT_CAUGHT_HISUIAN_TYPHLOSION
 	reloadmapafterbattle
 	end
@@ -157,4 +163,10 @@ VioletOutskirtsHouseDustText:
 	text "It's covered in a"
 	line "thick layer of"
 	cont "dust."
+	done
+
+VioletOutskirtsHouseNotAloneText:
+	text "There is a sense"
+	line "that something"
+	cont "is watching you…"
 	done
