@@ -13,7 +13,7 @@ VioletOutskirts_MapScriptHeader:
 	def_bg_events
 	bg_event 10, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_VIOLET_OUTSKIRTS
 	bg_event 11, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_VIOLET_OUTSKIRTS
-	bg_event 19,  9, BGEVENT_JUMPTEXT, VioletOutskirtsCemetarySignText
+	bg_event 19,  9, BGEVENT_JUMPTEXT, VioletOutskirtsCemeterySignText
 	bg_event 25,  8, BGEVENT_JUMPTEXT, VioletOutskirtsHeadstoneText
 	bg_event 27,  8, BGEVENT_JUMPTEXT, VioletOutskirtsHeadstoneText
 	bg_event 29,  8, BGEVENT_JUMPTEXT, VioletOutskirtsHeadstoneText
@@ -39,8 +39,8 @@ VioletOutskirtsAvalanche:
 .end
 	endcallback
 
-VioletOutskirtsCemetarySignText:
-	text "Violet Cemetary"
+VioletOutskirtsCemeterySignText:
+	text "Violet Cemetery"
 	line "Caretaker's House"
 	done
 

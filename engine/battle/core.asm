@@ -3962,12 +3962,13 @@ DrawEnemyHUD:
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	call GetBaseData
+
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	ld de, wEnemyMonNickname
-	jr nz, .not_ghost
 	ld de, .ghost_nickname
-.not_ghost
+	jr z, .got_nickname
+	ld de, wEnemyMonNickname
+.got_nickname
 	hlcoord 1, 0
 	rst PlaceString
 	ld h, b
@@ -7789,7 +7790,6 @@ DropEnemySub:
 	ld hl, GhostFrontpic
 	ld de, vTiles2
 	call DecompressRequest2bpp
-	call DelayFrame
 	jr .got_pic
 
 .not_ghost_battle
@@ -7857,7 +7857,6 @@ BattleIntro:
 	res rLCDC_WINDOW_TILEMAP, [hl]
 	call InitBattleDisplay
 	call BattleStartMessage
-;	jr .skip_ghost_reveal
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
 	jr nz, .skip_ghost_reveal

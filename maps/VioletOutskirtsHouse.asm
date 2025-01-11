@@ -18,7 +18,7 @@ VioletOutskirtsHouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETARY_CARETAKER
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETERY_CARETAKER
 
 	object_const_def
 	const VIOLETOUTSKIRTSHOUSE_CARETAKER
@@ -77,9 +77,9 @@ VioletOutskirtsGhostBattleScript:
 	end
 
 VioletOutskirtsHouseCaretakerScript:
-	checkevent EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
+	checkevent EVENT_TALKED_TO_VIOLET_CEMETERY_CARETAKER
 	iftrue_jumptextfaceplayer VioletOutskirtsHouseCaretakerThankYouText
-	setevent EVENT_TALKED_TO_VIOLET_CEMETARY_CARETAKER
+	setevent EVENT_TALKED_TO_VIOLET_CEMETERY_CARETAKER
 	jumpthistextfaceplayer
 
 	text "…… ……"
@@ -100,7 +100,7 @@ VioletOutskirtsHouseCaretakerScript:
 	line "long ago…"
 
 	para "No one visits"
-	line "anymore…"
+	line "any more…"
 
 	para "The graves are"
 	line "left untended…"
