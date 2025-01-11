@@ -25,7 +25,7 @@ LegendaryAppearedText:
 	prompt
 
 GhostAppearedText:
-	text "A ghost"
+	text "A Ghost"
 	line "appeared!"
 	prompt
 

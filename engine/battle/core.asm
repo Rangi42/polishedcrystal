@@ -7782,25 +7782,25 @@ DropEnemySub:
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	call GetBaseData
+	call GetFrontpicOrGhostpic
+	pop af
+	ld [wCurForm], a
+	pop af
+	ld [wCurPartySpecies], a
+	ret
 
+GetFrontpicOrGhostpic:
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
 	jr nz, .not_ghost_battle
 	lb bc, BANK(GhostFrontpic), 7 * 7
 	ld hl, GhostFrontpic
 	ld de, vTiles2
-	call DecompressRequest2bpp
-	jr .got_pic
+	jmp DecompressRequest2bpp
 
 .not_ghost_battle
 	ld de, vTiles2
-	predef FrontpicPredef
-.got_pic
-	pop af
-	ld [wCurForm], a
-	pop af
-	ld [wCurPartySpecies], a
-	ret
+	predef_jump FrontpicPredef
 
 GetFrontpic_DoAnim:
 	ldh a, [hBattleTurn]
@@ -7985,20 +7985,7 @@ InitEnemyWildmon:
 	ld a, 1
 	ld [wEnemySwitchTarget], a
 	call SendInUserPkmn
-
-	ld a, [wBattleType]
-	cp BATTLETYPE_GHOST
-	jr nz, .not_ghost_battle
-	lb bc, BANK(GhostFrontpic), 7 * 7
-	ld hl, GhostFrontpic
-	ld de, vTiles2
-	call DecompressRequest2bpp
-	jr .got_pic
-
-.not_ghost_battle
-	ld de, vTiles2
-	predef FrontpicPredef
-.got_pic
+	call GetFrontpicOrGhostpic
 	xor a
 	ld [wTrainerClass], a
 	ldh [hGraphicStartTile], a
