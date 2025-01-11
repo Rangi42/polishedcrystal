@@ -14,7 +14,7 @@ SoulHouse_MapScriptHeader:
 
 	def_object_events
 	object_event  9,  7, SPRITE_AGATHA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AgathaScript, -1
-	object_event  4,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, MrFujiText, -1 ; TODO: EVENT_SOUL_HOUSE_MR_FUJI
+	object_event  4,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MrFujiScript, -1 ; TODO: EVENT_SOUL_HOUSE_MR_FUJI
 	object_event  7,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SoulHouseTeacherText, -1
 	object_event  2,  7, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SoulHouseLassText, -1
 	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SoulHouseGrannyText, -1
@@ -44,6 +44,21 @@ AgathaScript:
 AgathaAfterScript:
 	jumpopenedtext AgathaAfterText
 
+MrFujiScript:
+	faceplayer
+	opentext
+	writetext MrFujiText
+	waitbutton
+	checkevent EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
+	iftrue_endtext
+	writetext MrFujiGiveSilphScopeText
+	waitbutton
+	verbosegivekeyitem SILPHSCOPE2
+	writetext MrFujiUseThisText
+	waitbutton
+	setevent EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
+	endtext
+
 MrFujiText:
 	text "Mr.Fuji: Welcome."
 
@@ -67,6 +82,21 @@ MrFujiText:
 
 	para "I'm sure that will"
 	line "make them happy."
+	done
+
+MrFujiGiveSilphScopeText:
+	text "Here, I have"
+	line "a gift for you."
+
+	para "Please, take it."
+	done
+
+MrFujiUseThisText:
+	text "You may use that"
+	line "to help ease the"
+
+	para "souls of any"
+	line "restless #mon."
 	done
 
 SoulHouseTeacherText:
