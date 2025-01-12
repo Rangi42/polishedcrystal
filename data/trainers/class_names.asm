@@ -137,9 +137,9 @@ TrainerClassNames::
 	li "<PK><MN> Trainer" ; ANABEL
 	li "Valet"            ; DARACH
 	li "Lady"             ; CAITLIN
-	li "<PK><MN> Trainer" ; CANDELA
-	li "<PK><MN> Trainer" ; BLANCHE
-	li "<PK><MN> Trainer" ; SPARK_T
+	li "Leader"           ; CANDELA
+	li "Leader"           ; BLANCHE
+	li "Leader"           ; SPARK_T
 	li "Trainer"          ; FLANNERY
 	li "Fighter"          ; MAYLENE
 	li "Swimmer"          ; MARLON
