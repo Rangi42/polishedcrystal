@@ -270,7 +270,7 @@ ScriptCommandTable:
 	dw Script_iffalsefwd                 ; d3
 	dw Script_iftruefwd                  ; d4
 	dw Script_scalltable                 ; d5
-	dw Script_setmapobjectmovedata          ; d6
+	dw Script_setmapobjectmovedata       ; d6
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::

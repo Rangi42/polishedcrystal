@@ -215,7 +215,12 @@ RocketHideoutB4FSparkScript:
 	waitbutton
 	verbosegivekeyitem MALIGN_LURE
 	writetext .AfterText2
-	waitendtext
+	waitbutton
+	checkevent EVENT_BEAT_CANDELA
+	iffalse_endtext
+	checkevent EVENT_BEAT_BLANCHE
+	iffalse_endtext
+	sjump RocketHideoutB4FDefeatedAllLeadersScript
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -287,7 +292,12 @@ RocketHideoutB4FCandelaScript:
 	waitbutton
 	verbosegivekeyitem HARSH_LURE
 	writetext .AfterText2
-	waitendtext
+	waitbutton
+	checkevent EVENT_BEAT_SPARK
+	iffalse_endtext
+	checkevent EVENT_BEAT_BLANCHE
+	iffalse_endtext
+	sjump RocketHideoutB4FDefeatedAllLeadersScript
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -357,7 +367,12 @@ RocketHideoutB4FBlancheScript:
 	waitbutton
 	verbosegivekeyitem POTENT_LURE
 	writetext .AfterText2
-	waitendtext
+	waitbutton
+	checkevent EVENT_BEAT_SPARK
+	iffalse_endtext
+	checkevent EVENT_BEAT_CANDELA
+	iffalse_endtext
+	sjump RocketHideoutB4FDefeatedAllLeadersScript
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -540,4 +555,71 @@ RocketHideoutB4FSuperNerdNolan:
 
 .BeatenText:
 	text "I choked!"
+	done
+
+RocketHideoutB4FDefeatedAllLeadersScript:
+	closetext
+	special FadeOutPalettes
+	warpfacing UP, ROCKET_HIDEOUT_B4F, 17, 7
+	turnobject ROCKETHIDEOUTB4F_SPARK, DOWN
+	turnobject ROCKETHIDEOUTB4F_BLANCHE, DOWN
+	special LoadMapPalettes
+	special FadeInPalettes_EnableDynNoApply
+	showtext .FinalText
+	end
+
+.FinalText:
+	text "Candela: You're"
+	line "stronger than I"
+	cont "expected."
+
+	para "The sprays we've"
+	line "given you are more"
+	cont "than they seem."
+
+	para "Blanche: Each"
+	line "lure contains the"
+
+	para "essense of a"
+	line "legendary bird."
+
+	para "They were created"
+	line "to call out to"
+
+	para "others of their"
+	line "kind."
+
+	para "Spark: But they're"
+	line "only useful in the"
+	cont "right place."
+
+	para "That's why The"
+	line "Great Tree is"
+	line "important."
+
+	para "Candela: The tree"
+	line "is ancient,"
+	
+	para "a sacred site for"
+	line "roosting."
+
+	para "It's connected to"
+	line "the energy of the"
+	cont "region."
+
+	para "Blanche: Birds of"
+	line "great power have"
+
+	para "gathered there for"
+	line "generations."
+
+	para "The tree amplifies"
+	line "the call of the"
+	cont "lures."
+
+	para "Spark: So if you"
+	line "use them there,"
+
+	para "who knows what"
+	line "might appear!"
 	done
