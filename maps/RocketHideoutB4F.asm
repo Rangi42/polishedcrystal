@@ -161,7 +161,8 @@ RocketHideoutB4FMeetLeadersScript:
 	cont "the time!"
 
 	para "What about the"
-	line "Ozakura project?"
+	line "The Great Tree"
+	cont "project?"
 	done
 
 .SparkIntro2Text:

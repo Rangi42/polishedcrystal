@@ -112,15 +112,16 @@ CherrygroveBayGalarianBirdsScript:
 	waitbutton
 	endtext
 
-.OzakuraTreeText
-	text "It's the Ozakura"
-	line "of Cherrygrove!"
+.GreatTreeText
+	text "It's The Great"
+	line "Tree of Cherry-"
+	cont "grove!"
 	done
 
 .LikeToUseItemText
 	text "Would you like to"
 	line "use a Lure on"
-	cont "the Ozakura?"
+	cont "The Great Tree?"
 	done
 
 .WhichLureText
@@ -209,9 +210,9 @@ GenericTrainerSwimmerfSally:
 GenericTrainerSwimmerfTara:
 	generictrainer SWIMMERF, TARA, EVENT_BEAT_SWIMMERF_TARA, .SeenText, .BeatenText
 
-	text "There's a large"
-	line "tree north of here"
-	cont "called 'Ozakura'…"
+	text "North of here is"
+	line "The Great Tree of"
+	cont "Cherrygrove."
 
 	para "Some say many bird"
 	line "#MON come from"
