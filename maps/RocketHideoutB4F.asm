@@ -23,9 +23,9 @@ RocketHideoutB4F_MapScriptHeader:
 	object_event 17,  3, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FCandelaScript, -1
 	object_event 16,  6, SPRITE_SPARK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FSparkScript, -1
 	object_event 19,  6, SPRITE_BLANCHE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FBlancheScript, -1
-	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FYoungsterValorGrunt2Script, -1
+	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FYoungsterArdenScript, -1
 	object_event 15, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FTeacherSerena, -1
-	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FSuperNerdInstinctGrunt3, -1
+	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FSuperNerdNolan, -1
 	keyitemball_event 2,  2, LIFT_KEY, EVENT_PICKED_UP_LIFT_KEY_FROM_ROCKET_HIDEOUT_B4F
 	itemball_event 1,  4, X_SP_ATK,    1, EVENT_PICKED_UP_X_SP_ATK_FROM_ROCKET_HIDEOUT_B4F
 	itemball_event 2, 12, PP_UP,        1, EVENT_PICKED_UP_PP_UP_FROM_ROCKET_HIDEOUT_B4F
@@ -35,9 +35,9 @@ RocketHideoutB4F_MapScriptHeader:
 	const ROCKETHIDEOUTB4F_CANDELA
 	const ROCKETHIDEOUTB4F_SPARK
 	const ROCKETHIDEOUTB4F_BLANCHE
-	const ROCKETHIDEOUTB4F_YOUNGSTER_VALOR_GRUNT_2
+	const ROCKETHIDEOUTB4F_YOUNGSTER_ARDEN
 	const ROCKETHIDEOUTB4F_TEACHER_SERENA
-	const ROCKETHIDEOUTB4F_SUPER_NERD_INSTINCT_GRUNT_3
+	const ROCKETHIDEOUTB4F_SUPER_NERD_NOLAN
 	const ROCKETHIDEOUTB4F_LIFT_KEY
 
 RocketHideoutB4FDoorScript:
@@ -46,7 +46,7 @@ RocketHideoutB4FDoorScript:
 	changeblock 16, 10, $69
 	endcallback
 .beat_serena
-	checkevent EVENT_BEAT_SUPER_NERD_INSTINCT_GRUNT_3
+	checkevent EVENT_BEAT_SUPER_NERD_NOLAN
 	iftruefwd .beat_theo
 	changeblock 16, 10, $69
 	endcallback
@@ -55,7 +55,7 @@ RocketHideoutB4FDoorScript:
 	endcallback
 
 RocketHideoutB4FLiftKeyScript:
-	checkevent EVENT_BEAT_YOUNGSTER_VALOR_GRUNT_2
+	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
 	iftruefwd .beat_rory
 	disappear ROCKETHIDEOUTB4F_LIFT_KEY
 	endcallback
@@ -409,22 +409,22 @@ RocketHideoutB4FBlancheScript:
 	cont "ahead."
 	done
 
-RocketHideoutB4FYoungsterValorGrunt2Script:
+RocketHideoutB4FYoungsterArdenScript:
 	faceplayer
-	checkevent EVENT_BEAT_YOUNGSTER_VALOR_GRUNT_2
+	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
 	iftruefwd .AfterBattle
 	opentext
 	writetext .GreetingText
 	closetext
 	winlosstext .BeatenText, 0
-	loadtrainer YOUNGSTER, VALOR_GRUNT_2
+	loadtrainer YOUNGSTER, ARDEN
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_YOUNGSTER_VALOR_GRUNT_2
+	setevent EVENT_BEAT_YOUNGSTER_ARDEN
 	readvar VAR_FACING
-	ifnotequal RIGHT, .NotLeftOfValorGrunt2
+	ifnotequal RIGHT, .NotLeftOfArden
 	moveobject ROCKETHIDEOUTB4F_LIFT_KEY, 4, 2
-.NotLeftOfValorGrunt2
+.NotLeftOfArden
 	appear ROCKETHIDEOUTB4F_LIFT_KEY
 .AfterBattle
 	showtext .AfterText
@@ -461,7 +461,7 @@ RocketHideoutB4FTeacherSerena:
 	jumpthistextfaceplayer
 
 .AfterScript
-	checkevent EVENT_BEAT_SUPER_NERD_INSTINCT_GRUNT_3
+	checkevent EVENT_BEAT_SUPER_NERD_NOLAN
 	iftruefwd .DoorScript
 	endifjustbattled
 	jumptextfaceplayer .AfterText
@@ -499,11 +499,11 @@ RocketHideoutB4FTeacherSerena:
 	text "Class dismissed!"
 	done
 
-RocketHideoutB4FSuperNerdInstinctGrunt3:
-	trainer SUPER_NERD, INSTINCT_GRUNT_3, EVENT_BEAT_SUPER_NERD_INSTINCT_GRUNT_3, .SeenText, .AfterText, 0, .Script
+RocketHideoutB4FSuperNerdNolan:
+	trainer SUPER_NERD, NOLAN, EVENT_BEAT_SUPER_NERD_NOLAN, .SeenText, .AfterText, 0, .Script
 
 .Script
-	checkevent EVENT_BEAT_SUPER_NERD_INSTINCT_GRUNT_3
+	checkevent EVENT_BEAT_SUPER_NERD_NOLAN
 	iftruefwd .AfterScript
 	jumpthistextfaceplayer
 

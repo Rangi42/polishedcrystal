@@ -13,13 +13,13 @@ RocketHideoutB3F_MapScriptHeader:
 	bg_event 19, 13, BGEVENT_ITEM + FULL_HEAL, EVENT_ROCKET_HIDEOUT_B3F_HIDDEN_FULL_HEAL
 
 	def_object_events
-	object_event 18,  8, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCosplayerInstinctGrunt2, -1
-	object_event  2, 18, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCoolDudeMysticGrunt1, -1
+	object_event 18,  8, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCosplayerLyric, -1
+	object_event  2, 18, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCoolDudeDaric, -1
 	itemball_event 12, 10, CARBOS, 1, EVENT_PICKED_UP_CARBOS_FROM_ROCKET_HIDEOUT_B3F
 	itemball_event 18, 13, ELIXIR, 1, EVENT_PICKED_UP_ELIXIR_FROM_ROCKET_HIDEOUT_B3F
 
-RocketHideoutB3FCosplayerInstinctGrunt2:
-	generictrainer COSPLAYER, INSTINCT_GRUNT_2, EVENT_BEAT_COSPLAYER_INSTINCT_GRUNT_2, .SeenText, .BeatenText
+RocketHideoutB3FCosplayerLyric:
+	generictrainer COSPLAYER, LYRIC, EVENT_BEAT_COSPLAYER_LYRIC, .SeenText, .BeatenText
 
 	text "Leader Spark's"
 	line "energy is high!"
@@ -40,8 +40,8 @@ RocketHideoutB3FCosplayerInstinctGrunt2:
 	text "Can't keep up!"
 	done
 
-RocketHideoutB3FCoolDudeMysticGrunt1:
-	generictrainer COOLTRAINERM, MYSTIC_GRUNT_1, EVENT_BEAT_COOL_DUDE_MYSTIC_GRUNT_1, .SeenText, .BeatenText
+RocketHideoutB3FCoolDudeDaric:
+	generictrainer COOLTRAINERM, DARIC, EVENT_BEAT_COOL_DUDE_DARIC, .SeenText, .BeatenText
 
 	text "Leader Blanche ex-"
 	line "pects no less than"

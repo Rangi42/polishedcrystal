@@ -137,7 +137,7 @@ DEF CRYS EQU __trainer_class__
 	const OLIVER
 	const CHAZ
 	const TYLER
-	const VALOR_GRUNT_2
+	const ARDEN
 
 	trainerclass BUG_CATCHER ; 21
 	const WADE1
@@ -408,7 +408,7 @@ DEF CRYS EQU __trainer_class__
 	const CHLOE
 	const BROOKE
 	const KUROKO
-	const INSTINCT_GRUNT_2
+	const LYRIC
 
 	trainerclass SUPER_NERD ; 31
 	const STAN
@@ -431,7 +431,7 @@ DEF CRYS EQU __trainer_class__
 	const FOOTE
 	const DAVE
 	const KOUTA
-	const INSTINCT_GRUNT_3
+	const NOLAN
 
 	trainerclass LASS ; 32
 	const DANA1
@@ -457,7 +457,7 @@ DEF CRYS EQU __trainer_class__
 	const GINA
 	const ALICE
 	const DUPLICA
-	const INSTINCT_GRUNT_1
+	const MAVIS
 
 	trainerclass BEAUTY ; 33
 	const VICTORIA
@@ -669,7 +669,7 @@ DEF CRYS EQU __trainer_class__
 	const WINSTON
 	const GERALD
 	const IRVING
-	const VALOR_GRUNT_3
+	const TOBIN
 
 	trainerclass LADY ; 4b
 	const JESSICA
@@ -838,7 +838,7 @@ DEF CRYS EQU __trainer_class__
 	const MANFORD
 	const ANDER
 	const TAKEO
-	const VALOR_GRUNT_1
+	const RYLAN
 
 	trainerclass BATTLE_GIRL ; 59
 	const SUBARU
@@ -981,7 +981,7 @@ DEF CRYS EQU __trainer_class__
 	const COOLTRAINERM_COREY
 	const COOLTRAINERM_RAYMOND
 	const FERGUS
-	const MYSTIC_GRUNT_1
+	const DARIC
 
 	trainerclass COOLTRAINERF ; 6b
 	const BETH1

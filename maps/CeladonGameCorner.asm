@@ -59,7 +59,7 @@ CeladonGameCorner_MapScriptHeader:
 	object_event  8, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
 	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
 	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
-	object_event  9,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, CeladonGameCornerRichBoyValorGrunt3, EVENT_RICH_BOY_VALOR_GRUNT_3
+	object_event  9,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, CeladonGameCornerRichBoyTobin, EVENT_RICH_BOY_TOBIN
 
 	object_const_def
 	const CELADONGAMECORNER_CLERK
@@ -70,7 +70,7 @@ CeladonGameCorner_MapScriptHeader:
 	const CELADONGAMECORNER_FAT_GUY
 	const CELADONGAMECORNER_GYM_GUY
 	const CELADONGAMECORNER_GRAMPS
-	const CELADONGAMECORNER_VALOR_GRUNT_3
+	const CELADONGAMECORNER_TOBIN
 
 CeladonGameCornerStairsScript:
 	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
@@ -178,11 +178,11 @@ MapCeladonGameCornerSignpost9Script:
 	special Special_CardFlip
 	endtext
 
-CeladonGameCornerRichBoyValorGrunt3:
-	trainer RICH_BOY, VALOR_GRUNT_3, EVENT_BEAT_RICH_BOY_VALOR_GRUNT_3, .SeenText, .BeatenText, 0, .AfterScript
+CeladonGameCornerRichBoyTobin:
+	trainer RICH_BOY, TOBIN, EVENT_BEAT_RICH_BOY_TOBIN, .SeenText, .BeatenText, 0, .AfterScript
 
 .Script:
-	checkevent EVENT_BEAT_RICH_BOY_VALOR_GRUNT_3
+	checkevent EVENT_BEAT_RICH_BOY_TOBIN
 	iftruefwd .AfterScript
 	jumpthistextfaceplayer
 
@@ -207,16 +207,16 @@ CeladonGameCornerRichBoyValorGrunt3:
 	ifequalfwd RIGHT, .player_facing_right
 	ifequalfwd LEFT, .player_facing_left
 ; .player_facing_up
-	applymovement CELADONGAMECORNER_VALOR_GRUNT_3, .LeaveMovementPlayerUp
+	applymovement CELADONGAMECORNER_TOBIN, .LeaveMovementPlayerUp
 	sjumpfwd .done
 .player_facing_left
-	applymovement CELADONGAMECORNER_VALOR_GRUNT_3, .LeaveMovementPlayerRight
+	applymovement CELADONGAMECORNER_TOBIN, .LeaveMovementPlayerRight
 	sjumpfwd .done
 .player_facing_right
-	applymovement CELADONGAMECORNER_VALOR_GRUNT_3, .LeaveMovementPlayerLeft
+	applymovement CELADONGAMECORNER_TOBIN, .LeaveMovementPlayerLeft
 .done
 	playsound SFX_EXIT_BUILDING
-	disappear CELADONGAMECORNER_VALOR_GRUNT_3
+	disappear CELADONGAMECORNER_TOBIN
 	end
 
 .AfterText
