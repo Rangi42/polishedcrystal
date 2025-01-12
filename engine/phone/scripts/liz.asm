@@ -75,7 +75,7 @@ LizGossip:
 	sjumpfwd LizGossipScript
 
 .Teacher:
-	gettrainerclassname TEACHER, $1
+	gettrainerclassname TEACHER_F, $1
 	sjumpfwd LizGossipScript
 
 .SwimmerF:

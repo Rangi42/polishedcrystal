@@ -453,7 +453,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	done
 
 RocketHideoutB4FTeacherSerena:
-	trainer TEACHER, SERENA, EVENT_BEAT_TEACHER_SERENA, .SeenText, .AfterText, 0, .Script
+	trainer TEACHER_F, SERENA, EVENT_BEAT_TEACHER_SERENA, .SeenText, .AfterText, 0, .Script
 
 .Script
 	checkevent EVENT_BEAT_TEACHER_SERENA
@@ -500,7 +500,7 @@ RocketHideoutB4FTeacherSerena:
 	done
 
 RocketHideoutB4FSuperNerdNolan:
-	trainer SUPER_NERD, NOLAN, EVENT_BEAT_SUPER_NERD_NOLAN, .SeenText, .AfterText, 0, .Script
+	trainer TEACHER_M, NOLAN, EVENT_BEAT_SUPER_NERD_NOLAN, .SeenText, .AfterText, 0, .Script
 
 .Script
 	checkevent EVENT_BEAT_SUPER_NERD_NOLAN

@@ -5028,15 +5028,6 @@ SuperNerdGroup:
 	dbp 56, CHARIZARD
 	db -1 ; end
 
-	; SUPER_NERD
-	db "Nolan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, ELECTRODE
-	dbp 55, MAGNEZONE
-	dbp 56, ELECTIVIRE
-	db -1 ; end
-
 SECTION "LassGroup", ROMX
 LassGroup:
 
@@ -8391,17 +8382,17 @@ EngineerGroup:
 		db ABILITY_2 | NAT_NEUTRAL
 	db -1 ; end
 
-SECTION "TeacherGroup", ROMX
-TeacherGroup:
+SECTION "TeacherFGroup", ROMX
+TeacherFGroup:
 
-	; TEACHER
+	; TEACHER_F
 	db "Colette@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 60, CLEFAIRY
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Hillary@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8410,14 +8401,14 @@ TeacherGroup:
 	dbp 59, MAROWAK
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Shirley@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 47, WIGGLYTUFF
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Kathryn@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8426,7 +8417,7 @@ TeacherGroup:
 	dbp LEVEL_FROM_BADGES + 2, FURRET
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Clarice@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8434,7 +8425,7 @@ TeacherGroup:
 	dbp 56, SUNFLORA
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Serena@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -11552,6 +11543,19 @@ ReiGroup:
 	dbp 75, NINETALES
 		db LEFTOVERS
 		db NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SHADOW_BALL
+	db -1 ; end
+
+
+SECTION "TeacherMGroup", ROMX
+TeacherMGroup:
+
+	; TEACHER_M
+	db "Nolan@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, ELECTRODE
+	dbp 55, MAGNEZONE
+	dbp 56, ELECTIVIRE
 	db -1 ; end
 
 ENDSECTION

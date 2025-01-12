@@ -92,7 +92,8 @@ TrainerClassNames::
 	li "Battle Girl"      ; BATTLE_GIRL
 	li "Dragon Tamer"     ; DRAGON_TAMER
 	li "Engineer"         ; ENGINEER
-	li "Teacher"          ; TEACHER
+	li "Teacher"          ; TEACHER_F
+	li "Teacher"          ; TEACHER_M
 	li "Guitarist"        ; GUITARISTM
 	li "Guitarist"        ; GUITARISTF
 	li "Biker"            ; BIKER

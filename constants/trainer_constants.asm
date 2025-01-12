@@ -431,7 +431,6 @@ DEF CRYS EQU __trainer_class__
 	const FOOTE
 	const DAVE
 	const KOUTA
-	const NOLAN
 
 	trainerclass LASS ; 32
 	const DANA1
@@ -869,13 +868,16 @@ DEF CRYS EQU __trainer_class__
 	const GUSTAV
 	const NICOLAS
 
-	trainerclass TEACHER ; 5c
+	trainerclass TEACHER_F ; 5c
 	const COLETTE
 	const HILLARY
 	const SHIRLEY
 	const KATHRYN
 	const CLARICE
 	const SERENA
+
+	trainerclass TEACHER_M ; 9a
+	const NOLAN
 
 	trainerclass GUITARISTM ; 5d
 	const CLYDE
@@ -1136,16 +1138,16 @@ DEF CRYS EQU __trainer_class__
 
 DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
-	trainerclass OMASTAR_FOSSIL ; 9a
+	trainerclass OMASTAR_FOSSIL ; 9b
 
-	trainerclass KABUTOPS_FOSSIL ; 9b
+	trainerclass KABUTOPS_FOSSIL ; 9c
 
-	trainerclass AERODACTYL_FOSSIL ; 9c
+	trainerclass AERODACTYL_FOSSIL ; 9d
 
-	trainerclass CUBONE_ARMOR ; 9d
+	trainerclass CUBONE_ARMOR ; 9e
 
-	trainerclass METEORITE ; 9e
+	trainerclass METEORITE ; 9f
 
-	trainerclass SILHOUETTE ; 9f
+	trainerclass SILHOUETTE ; a0
 
 DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1
