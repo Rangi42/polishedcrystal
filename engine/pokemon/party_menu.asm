@@ -835,10 +835,8 @@ PlacePartyMonTMHMCompatibility:
 	rst PlaceString
 
 .next
-	ld a, [wCurPartyMon]
-	inc a
-	ld [wCurPartyMon], a
-
+	ld hl, wCurPartyMon
+	inc [hl]
 	pop hl
 	ld de, SCREEN_WIDTH * 2
 	add hl, de
