@@ -793,7 +793,7 @@ PlacePartyMonTMHMCompatibility:
 	ret z
 	ld c, a
 	ld b, 0
-	ld a, 0
+	xor a
 	ld [wCurPartyMon], a
 	hlcoord 12, 2
 .loop
