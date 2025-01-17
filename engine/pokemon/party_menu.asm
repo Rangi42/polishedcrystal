@@ -852,7 +852,7 @@ PlacePartyMonTMHMCompatibility:
 	pop hl
 	pop hl
 
-	call .PlaceLearned
+	ld de, .string_learned
 	rst PlaceString
 	jr .next
 
@@ -874,10 +874,6 @@ PlacePartyMonTMHMCompatibility:
 
 .string_not_able
 	db "Not able@"
-
-.PlaceLearned:
-	ld de, .string_learned
-	ret
 
 .string_learned
 	db "Learned@"
