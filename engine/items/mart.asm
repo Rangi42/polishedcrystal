@@ -817,7 +817,7 @@ ReceiveExpCandy:
 	ld a, [wItemQuantityChangeBuffer]
 	ld c, a
 	ld a, [hl]
-	add a, c
+	add c
 	cp 100
 	ret nc
 	ld [hl], a

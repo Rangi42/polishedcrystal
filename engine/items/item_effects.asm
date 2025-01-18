@@ -2224,19 +2224,19 @@ CandyJar_MonSelected:
 	pop de
 
 	xor a
-	ld [hMultiplicand + 0], a
+	ldh [hMultiplicand + 0], a
 	ld a, d
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 	ld a, e
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	ld a, [wItemQuantityChangeBuffer]
 	ldh [hMultiplier], a
 	farcall Multiply
-	ld a, [hProduct + 1]
+	ldh a, [hProduct + 1]
 	ld c, a
-	ld a, [hProduct + 2]
+	ldh a, [hProduct + 2]
 	ld d, a
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	ld e, a
 
 	push bc
@@ -2451,64 +2451,78 @@ CalcCandies:
 ; input:
 ;   cde = current_exp
 ;   b = candies_selected
-;   hl = exp_per_candy
 ;   wCandyMaxLevelExp = max_exp
 ; output:
 ;   cde = new_exp
 ;   b = candies_used
-.loop_add
-	; current_exp += exp_per_candy
-	ld a, l
-	add e
+	; cde = wCandyMaxLevelExp - cde
+	ld a, [wCandyMaxLevelExp + 2]
+	sub e
 	ld e, a
-	ld a, h
-	adc d
+	ld a, [wCandyMaxLevelExp + 1]
+	sbc d
 	ld d, a
-	jr nc, .no_d_carry
-	inc c
-.no_d_carry
-
-	; Check if curent_exp >= max_exp
-	; carry: current_exp > max_exp
-	; z: current_exp == max_exp
-	push hl
-	ld hl, wCandyMaxLevelExp
-	ld a, [hli]
-	cp c
-	jr c, .got_flags
-	jr nz, .got_flags
-	ld a, [hli]
-	cp d
-	jr c, .got_flags
-	jr nz, .got_flags
-	ld a, [hl]
-	cp e
-	; carry is current exp is bigger
-	; zero is current exp is equal
-.got_flags
-	pop hl
-	jr c, .current_exp_more_than_max
-	jr z, .current_exp_equal_to_max
-
-; curent_exp is less than max_exp
-	dec b ; eat a candy
-	jr nz, .loop_add
-	ret
-
-.current_exp_more_than_max
-	; current exp = max exp
-	ld hl, wCandyMaxLevelExp
-	ld a, [hli]
+	ld a, [wCandyMaxLevelExp + 0]
+	sbc c
 	ld c, a
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	dec b ; eat the candy that put it over max
+
+	xor a ; EXP_CANDY_XS - 1
+	ldh [hQuotient + 0], a
+	ld a, c
+	ldh [hDividend + 1], a
+	ld a, d
+	ldh [hDividend + 2], a
+	ld a, e
+	ldh [hDividend + 3], a
+
+	ld a, [wMenuSelection]
+	and a
+	jr z, .divide_100
+	cp EXP_CANDY_XL - 1
+	jr nz, .divide_100_x_division_amount
+; divide by 10000 x division amount
+	ld a, 100
+	ldh [hDivisor], a
+	call Divide
+; fallthrough
+.divide_100_x_division_amount
+	dec a
+	push bc
+	push hl
+	ld b, 0
+	ld c, a
+	ld hl, .CandyDivisionAmounts
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	pop bc
+	ldh [hDivisor], a
+	call Divide
+; fallthrough
+.divide_100
+	ld a, 100
+	ldh [hDivisor], a
+	call Divide
+	ldh a, [hRemainder]
+	and a
+	ldh a, [hQuotient + 2]
+	jr z, .dont_round_up
+	inc a
+.dont_round_up
+	; if a >= b, then we return b
+	; otherwise, we return a
+	cp b
+	ret nc
+	ld b, a
 	ret
 
-.current_exp_equal_to_max
-	dec b ; eat the candy that put it at max
-	ret
+.CandyDivisionAmounts:
+	table_width 1, .CandyDivisionAmounts
+	db 800 / 100
+	db 3000 / 100
+	db 10000 / 100
+	db 30000 / 10000
+	assert_table_length NUM_CANDIES - 1 ; first candy doesn't divide
 
 CoinCase:
 	ld hl, .coincasetext
