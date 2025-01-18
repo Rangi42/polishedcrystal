@@ -233,7 +233,7 @@ PrinterStatusStringPointers:
 GBPrinterString_Null: db "@"
 GBPrinterString_CheckingLink: next " Checking link…@"
 GBPrinterString_Transmitting: next "  Transmitting…@"
-GBPrinterString_Printing: next "    Printing…@"
+GBPrinterString_Printing:     next "    Printing…@"
 GBPrinterString_PrinterError1:
 	db   " Printer Error 1"
 	next ""
@@ -244,13 +244,13 @@ GBPrinterString_PrinterError2:
 	db   " Printer Error 2"
 	next ""
 	next "The Game Link"
-	next "Cable is out."
+	next "Cable is not set."
 	db   "@"
 GBPrinterString_PrinterError3:
 	db   " Printer Error 3"
 	next ""
 	next "The paper is"
-	next "jammed."
+	next "jammed or empty."
 	db   "@"
 GBPrinterString_PrinterError4:
 	db   " Printer Error 4"
