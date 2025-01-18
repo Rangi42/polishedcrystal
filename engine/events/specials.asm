@@ -312,6 +312,11 @@ Diploma:
 	farcall _Diploma
 	jmp ExitAllMenus
 
+PrintDiploma:
+	call FadeToMenu_BackupSprites
+	farcall _PrintDiploma
+	jmp ExitAllMenus
+
 Special_GetOvercastIndex::
 	call GetOvercastIndex
 	ldh [hScriptVar], a
