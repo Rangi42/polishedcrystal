@@ -9,6 +9,11 @@ DEF AUTO_INPUT EQU $ff
 	const TEMPMON    ; 3
 	const WILDMON    ; 4
 
+; wJumptableIndex::
+DEF JUMPTABLE_INDEX_MASK EQU %01111111
+	const_def 7
+	shift_const JUMPTABLE_EXIT
+
 ; wJoypadDisable::
 DEF JOYPAD_DISABLE_MON_FAINT_F    EQU 6
 DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
