@@ -99,15 +99,15 @@ endc
 	jr .doGameTime
 
 .VBlanks:
-	dw VBlank0          ; 0
-	dw VBlank1          ; 1
-	dw VBlank2          ; 2
-	dw VBlank1          ; 3
-	dw VBlank4          ; 4 (pokédex)
-	dw VBlank5          ; 5
-	dw VBlank6          ; 6
-	dw VBlank7          ; 7
-	dw VBlank_GBPrinter ; 8
+	dw VBlank0 ; 0
+	dw VBlank1 ; 1
+	dw VBlank2 ; 2
+	dw VBlank1 ; 3
+	dw VBlank4 ; 4 (pokédex)
+	dw VBlank5 ; 5
+	dw VBlank6 ; 6
+	dw VBlank7 ; 7
+	dw VBlank8 ; 8
 
 VBlank0::
 ; normal operation
@@ -401,7 +401,7 @@ VBlank7::
 	rst Bankswitch
 	jmp VBlankSafeCopyTilemapAtOnce ; far-ok
 
-VBlank_GBPrinter:
+VBlank8:
 	; bg map
 	; tiles
 	; oam

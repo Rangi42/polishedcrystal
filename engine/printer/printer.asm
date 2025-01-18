@@ -105,14 +105,9 @@ _PrintDiploma:
 CheckCancelPrint:
 	ldh a, [hJoyDown]
 	and B_BUTTON
-	jr nz, .pressed_b
+	jr nz, .loop
 	and a
 	ret
-
-.pressed_b
-	ld a, [wUnusedGameboyPrinterSafeCancelFlag]
-	cp $0c
-	jr nz, .cancel
 
 ; wait for printer activity to finish before canceling?
 .loop
@@ -132,7 +127,6 @@ CheckCancelPrint:
 	and a
 	jr nz, .loop2
 
-.cancel
 	ld a, $1
 	ldh [hPrinter], a
 	scf
@@ -237,30 +231,30 @@ PrinterStatusStringPointers:
 	dw GBPrinterString_PrinterError4 ; error 4
 
 GBPrinterString_Null: db "@"
-GBPrinterString_CheckingLink: next " CHECKING LINK...@"
-GBPrinterString_Transmitting: next "  TRANSMITTING...@"
-GBPrinterString_Printing: next "    PRINTING...@"
+GBPrinterString_CheckingLink: next " Checking link…@"
+GBPrinterString_Transmitting: next "  Transmitting…@"
+GBPrinterString_Printing: next "    Printing…@"
 GBPrinterString_PrinterError1:
 	db   " Printer Error 1"
 	next ""
-	next "Check the Game Boy"
-	next "Printer Manual."
+	next "The batteries have"
+	next "lost their charge."
 	db   "@"
 GBPrinterString_PrinterError2:
 	db   " Printer Error 2"
 	next ""
-	next "Check the Game Boy"
-	next "Printer Manual."
+	next "The Game Link"
+	next "Cable is out."
 	db   "@"
 GBPrinterString_PrinterError3:
 	db   " Printer Error 3"
 	next ""
-	next "Check the Game Boy"
-	next "Printer Manual."
+	next "The paper is"
+	next "jammed."
 	db   "@"
 GBPrinterString_PrinterError4:
 	db   " Printer Error 4"
 	next ""
-	next "Check the Game Boy"
-	next "Printer Manual."
+	next "The temperature is"
+	next "too hot or cold."
 	db   "@"

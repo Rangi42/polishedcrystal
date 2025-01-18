@@ -455,7 +455,7 @@ _PrinterReceive::
 	dw Printer_Send0x00 ; 12
 	dw Printer_Send0x00 ; 13
 	dw Printer_ReceiveTwoPrinterHandshakeAndSend0x00 ; 14
-	dw Printer_ReceiveTwoPrinterStatusFlagsAndExitSendLoop_2 ; 15
+	dw Printer_ReceiveTwoPrinterStatusFlagsAndExitSendLoop ; 15
 
 	dw Printer_Send0x33 ; 16 triggered by pressing B
 	dw Printer_Send0x08 ; 17
@@ -572,12 +572,4 @@ Printer_SerialSend:
 	ldh [rSC], a
 	ld a, (1 << rSC_ON) | (1 << rSC_CLOCK)
 	ldh [rSC], a
-	ret
-
-Printer_ReceiveTwoPrinterStatusFlagsAndExitSendLoop_2:
-; identical to Printer_ReceiveTwoPrinterStatusFlagsAndExitSendLoop, but referenced less
-	ldh a, [rSB]
-	ld [wPrinterStatusFlags], a
-	xor a
-	ld [wPrinterOpcode], a
 	ret

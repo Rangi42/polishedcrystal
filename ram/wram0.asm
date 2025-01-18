@@ -1055,7 +1055,6 @@ SECTION UNION "Misc 1326", WRAM0
 wGameboyPrinterRAM::
 wGameboyPrinter2bppSource:: ds 40 tiles
 wGameboyPrinter2bppSourceEnd::
-wUnusedGameboyPrinterSafeCancelFlag:: db
 wPrinterRowIndex:: db
 
 ; Printer data
