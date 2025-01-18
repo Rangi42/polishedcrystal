@@ -47,7 +47,7 @@ CeladonUniversityClassroom3TeacherText:
 	line "for Spark?"
 
 	para "He will be back"
-	line "tomrrow morning."
+	line "tomorrow morning."
 	done
 
 CeladonUniversityClassroom3ChildText:

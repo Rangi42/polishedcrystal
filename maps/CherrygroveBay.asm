@@ -219,9 +219,6 @@ GenericTrainerSwimmerfTara:
 
 	para "far away to nest"
 	line "there."
-
-	para "I'd love to visit"
-	line "someday."
 	done
 
 .SeenText:

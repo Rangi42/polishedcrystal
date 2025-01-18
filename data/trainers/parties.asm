@@ -5028,6 +5028,7 @@ SuperNerdGroup:
 	dbp 56, CHARIZARD
 	db -1 ; end
 
+
 SECTION "LassGroup", ROMX
 LassGroup:
 

@@ -554,7 +554,7 @@ TrainerClassAttributes:
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
-	; Teacher_M
+; Teacher_M
 	db 0, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
