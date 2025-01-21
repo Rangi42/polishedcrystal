@@ -4,8 +4,8 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  0,  7, GOLDENROD_POKECOM_CENTER_1F, 3
-	warp_event  1,  7, GOLDENROD_POKECOM_CENTER_1F, 3
+	warp_event  0,  8, GOLDENROD_POKECOM_CENTER_1F, 3
+	warp_event  1,  8, GOLDENROD_POKECOM_CENTER_1F, 3
 
 	def_coord_events
 
@@ -13,7 +13,7 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	bg_event  3,  2, BGEVENT_JUMPTEXT, RangiComputerText
 	bg_event  6,  2, BGEVENT_JUMPTEXT, LunaComputerText
 	bg_event  9,  2, BGEVENT_JUMPTEXT, FredrikComputerText
-	bg_event  9,  5, BGEVENT_JUMPTEXT, UnattendedComputerText
+	bg_event  9,  5, BGEVENT_JUMPTEXT, VulcanComputerText
 	bg_event  6,  5, BGEVENT_JUMPTEXT, AizawaComputerText
 	bg_event  4,  2, BGEVENT_READ, RangiKeyboardScript
 
@@ -22,6 +22,7 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	object_event  7,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
 	object_event 10,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminFredrikText, -1
 	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
+	object_event 10,  6, SPRITE_PI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_AZURE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminVulcanText, -1
 
 	object_const_def
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
@@ -83,12 +84,28 @@ AdminAizawaText:
 	line "team for this!"
 	done
 
-UnattendedComputerText:
-	text "There's a screen-"
-	line "saver endlessly"
+AdminVulcanText:
+	text "Vulcan: How's the"
+	line "weather?"
 
-	para "running through"
-	line "a 3D maze."
+	para "That's no small"
+	line "talk… I actually"
+	cont "implemented it!"
+
+	para "We thought it"
+	line "couldn't be done…"
+
+	para "I proved myself"
+	line "wrong!"
+	done
+
+VulcanComputerText:
+	text "A weather map"
+	line "is displayed on"
+	cont "the screen."
+
+	para "It's showing"
+	line "rain in Johto."
 	done
 
 RangiComputerText:
