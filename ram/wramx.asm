@@ -1248,7 +1248,7 @@ wTimerEventStartDay:: db
 
 wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 
-	ds 19 ; previously nuzlocke flags
+	ds 19 ; unused
 
 wHiddenGrottoContents::
 ; dbw content type, content id
