@@ -832,6 +832,8 @@ EvoStoneEffect:
 	jr z, .no_effect
 
 .force_evolution
+	ld a, PARTYMENUACTION_CHOOSE_POKEMON
+	ld [wPartyMenuActionText], a
 	ld a, $1
 	ld [wForceEvolution], a
 	farcall EvolvePokemon
