@@ -1085,7 +1085,7 @@ wGameboyPrinterRAMEnd::
 
 wPrinterOpcode:: db
 wPrinterConnectionOpen:: db
-wGBPrinterBrightness:: db
+
 
 SECTION "Video", WRAM0
 
