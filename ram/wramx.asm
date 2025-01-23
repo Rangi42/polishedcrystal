@@ -1512,6 +1512,11 @@ wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
 wPokeDB2UsedEntriesEnd::
 
 
+SECTION "16-bit WRAM tables", WRAMX, ALIGN[8]
+; align this section to $100
+wram_conversion_table wMoveIndexTable, MOVE_TABLE
+
+
 SECTION "Sprites Backup", WRAMX
 
 wShadowOAMBackup::

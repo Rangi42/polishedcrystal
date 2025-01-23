@@ -17,7 +17,7 @@ MACRO ___conversion_table_load
 		ld l, h ;return zero for invalid entries (since they will never be allocated)
 		ret nc
 	endc
-	add a, a
+	add a
 	ld l, a
 	if \2_ENTRIES >= $80
 		; if there are $80 entries or more, we have to deal with carry
@@ -71,7 +71,7 @@ MACRO ___conversion_table_store
 			ld a, l
 			xor h
 			and \2_CACHE_SIZE - 1
-			add a, LOW(\1EntryCache)
+			add LOW(\1EntryCache)
 			ld l, a
 			ld h, HIGH(\1EntryCache)
 			ld a, [hl]
@@ -83,7 +83,7 @@ MACRO ___conversion_table_store
 		cp \2_ENTRIES + 1
 		jr nc, .cache_miss
 		ld c, a
-		add a, a
+		add a
 		ld l, a
 		if \2_ENTRIES >= $80
 			; if there are at least $80 entries, we have to deal with carry
@@ -172,7 +172,7 @@ MACRO ___conversion_table_store
 		ld a, e
 		xor d
 		and \2_CACHE_SIZE - 1
-		add a, LOW(\1EntryCache)
+		add LOW(\1EntryCache)
 		ld l, a
 		ld h, HIGH(\1EntryCache)
 		ld [hl], c
@@ -197,7 +197,7 @@ MACRO ___conversion_table_store
 		and \2_SAVED_RECENT_INDEXES - 1
 	endc
 	ld [hl], a
-	add a, LOW(\1LastAllocated)
+	add LOW(\1LastAllocated)
 	ld l, a
 	ld h, HIGH(\1LastAllocated)
 	ld [hl], c
@@ -219,7 +219,7 @@ MACRO ___conversion_table_store
 	; try starting at the last allocated position + 1
 	ld c, l ;fallback position in case we don't get a valid one; l = LOW(\1LastAllocatedIndex) = 1 here
 	ld a, [hl]
-	add a, LOW(\1LastAllocated)
+	add LOW(\1LastAllocated)
 	ld l, a
 	ld h, HIGH(\1LastAllocated)
 	ld a, [hl]
@@ -396,7 +396,7 @@ MACRO ___conversion_bitmap_free_unused
 	endc
 	; b contains minus the number of cleared entries now
 	ld a, \2_ENTRIES
-	add a, b
+	add b
 	ld [\1UsedSlots], a
 ENDM
 
@@ -411,7 +411,7 @@ MACRO ___conversion_bitmap_set
 	rlca
 	ld b, a
 	and $1f
-	add a, LOW(wConversionTableBitmap)
+	add LOW(wConversionTableBitmap)
 	ld l, a
 	ld a, b
 	ld h, HIGH(wConversionTableBitmap)
@@ -419,14 +419,14 @@ MACRO ___conversion_bitmap_set
 	inc c
 	ret z
 	rlca
-	add a, a
+	add a
 	ld b, a
 	sbc a
 	and 3
 	inc a
 	sla b
 	jr nc, .bitmap_set_skip_shift
-	add a, a
+	add a
 .bitmap_set_skip_shift
 	bit 2, b
 	jr z, .bitmap_set_skip_swap
@@ -454,7 +454,7 @@ MACRO ___conversion_table_lock_ID
 	ld a, BANK(\1)
 	ldh [rSVBK], a
 	ld a, LOW(\1LockedEntries)
-	add a, l
+	add l
 	ld l, a
 	ld a, h
 	ld h, HIGH(\1LockedEntries)

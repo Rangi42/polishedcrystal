@@ -739,3 +739,7 @@ SECTION "GB Printer", ROMX
 INCLUDE "engine/printer/printer.asm"
 INCLUDE "engine/printer/printer_serial.asm"
 INCLUDE "audio/music/printer.asm"
+
+
+SECTION "16-bit ID stuff", ROMX
+INCLUDE "engine/16/table_functions.asm"

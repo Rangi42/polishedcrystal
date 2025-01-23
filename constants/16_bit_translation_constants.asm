@@ -12,3 +12,9 @@
 ;                          conversion is also valid without using the table. This guarantees that high values (such
 ;                          as $FF), often handled as negative indexes, retain their special meanings without requiring
 ;                          an allocation
+
+DEF MOVE_TABLE_ENTRIES                EQU 230
+DEF MOVE_TABLE_LOCKED_ENTRIES         EQU  18
+DEF MOVE_TABLE_CACHE_SIZE             EQU  16
+DEF MOVE_TABLE_SAVED_RECENT_INDEXES   EQU  16
+DEF MOVE_TABLE_MINIMUM_RESERVED_INDEX EQU $FF

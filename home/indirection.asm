@@ -1,3 +1,7 @@
+PUSHS
+
+SECTION "home indirection", ROM0
+
 LoadIndirectPointer::
 	; in: a:hl: indirect table, bc: index
 	; out: a:hl: pointer to element, b: copy of a, c: clobbered, de: preserved, zero flag: set if pointer is null
@@ -11,7 +15,7 @@ LoadIndirectPointer::
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	add a, a
+	add a
 	jr nc, .loop
 	res 7, d
 	dec bc
@@ -37,7 +41,7 @@ LoadIndirectPointer::
 	inc hl
 	cpl
 	inc a
-	add a, c
+	add c
 	ld c, a
 	jr c, .loop ;subtracting by addition has the carry flipped
 	dec b
@@ -74,3 +78,5 @@ LoadDoubleIndirectPointer::
 	call nz, GetFarWord
 	ld a, b
 	ret
+
+POPS

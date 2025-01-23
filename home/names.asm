@@ -1,6 +1,4 @@
 NamesPointers::
-	dba PokemonNames
-	dba MoveNames
 	dba ApricornNames
 	dba WingNames
 	dba ItemNames
@@ -19,20 +17,10 @@ GetName::
 	push af
 
 	ld a, [wNamedObjectTypeBuffer]
-	cp MON_NAME
-	jr nz, .NotPokeName
-
-	ld hl, wNamedObjectIndex
-	ld a, [wCurSpecies]
-	ld [hli], a
-	ld a, [wCurForm]
-	ld [hl], a
-	call GetPokemonName
-	ld hl, MON_NAME_LENGTH
-	add hl, de
-	ld e, l
-	ld d, h
-	jr .done
+	dec a ; MON_NAME
+	jr z, .PokeName
+	dec a ; MOVE_NAME
+	jr z, .MoveName
 
 .NotPokeName:
 	dec a
@@ -52,7 +40,7 @@ GetName::
 	ld de, wStringBuffer1
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-
+; fallthrough
 .done
 	pop af
 	pop bc
@@ -61,12 +49,43 @@ GetName::
 	rst Bankswitch
 	ret
 
+.PokeName:
+	ld hl, wNamedObjectIndex
+	ld a, [wCurSpecies]
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
+	call GetPokemonName
+	ld hl, MON_NAME_LENGTH
+	add hl, de
+	ld e, l
+	ld d, h
+	jr .done
+
+.MoveName:
+	call GetMoveName
+	jr .done
+
+
+GetNthString16::
+; Like GetNthString, but with a 16-bit index in bc
+	inc b
+	jr .handle_loop
+.loop
+	xor a
+	call GetNthString.loop ; will act as a = $100
+.handle_loop
+	dec b
+	jr nz, .loop
+	ld a, c
+	; fallthrough
 GetNthString::
 ; Return the address of the
 ; ath string starting from hl.
 	and a
 	ret z
 
+.loop
 	push bc
 	ld b, a
 .readChar
@@ -202,15 +221,25 @@ GetTMHMName::
 
 GetMoveName::
 	push hl
-
-	ld a, MOVE_NAME
-	ld [wNamedObjectTypeBuffer], a
-
-	ld a, [wNamedObjectIndex] ; move id
-	ld [wCurSpecies], a
-
-	call GetName
+	push bc
+	ldh a, [hROMBank]
+	push af
+	ld a, BANK(MoveNames)
+	rst Bankswitch
+	ld a, [wNamedObjectIndex]
+	call GetMoveIndexFromID
+	dec hl
+	ld b, h
+	ld c, l
+	ld hl, MoveNames
+	call GetNthString16
 	ld de, wStringBuffer1
-
+	push de
+	ld bc, MOVE_NAME_LENGTH
+	call CopyBytes
+	pop de
+	pop af
+	rst Bankswitch
+	pop bc
 	pop hl
 	ret
