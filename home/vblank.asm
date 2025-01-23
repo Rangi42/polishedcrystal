@@ -419,7 +419,7 @@ VBlank8:
 
 	call Joypad
 
-	call AskSerial
+	farcall AskSerial
 
 	call VBlankUpdateSound
 
