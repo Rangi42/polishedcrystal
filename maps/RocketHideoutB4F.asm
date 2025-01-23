@@ -142,7 +142,7 @@ RocketHideoutB4FMeetLeadersScript:
 	line "are missing the"
 	cont "point!"
 
-	para "Instinct is key-"
+	para "Instinct is key--"
 	line "trust your gut!"
 	done
 
@@ -167,7 +167,7 @@ RocketHideoutB4FMeetLeadersScript:
 
 .SparkIntro2Text:
 	text "Spark: Right! The"
-	line "big cherry tree-"
+	line "big cherry tree--"
 	done
 
 .SparkIntro3Text:
@@ -304,7 +304,8 @@ RocketHideoutB4FCandelaScript:
 
 .GreetingText:
 	text "Candela: Ready to"
-	line "test your strength?"
+	line "test out your"
+	cont "strength?"
 	done
 
 .SeenText:

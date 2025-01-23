@@ -113,7 +113,7 @@ CherrygroveBayGalarianBirdsScript:
 	endtext
 
 .GreatTreeText
-	text "It's The Great"
+	text "It's the Great"
 	line "Tree of Cherry-"
 	cont "grove!"
 	done
@@ -121,7 +121,7 @@ CherrygroveBayGalarianBirdsScript:
 .LikeToUseItemText
 	text "Would you like to"
 	line "use a Lure on"
-	cont "The Great Tree?"
+	cont "the Great Tree?"
 	done
 
 .WhichLureText
@@ -211,10 +211,10 @@ GenericTrainerSwimmerfTara:
 	generictrainer SWIMMERF, TARA, EVENT_BEAT_SWIMMERF_TARA, .SeenText, .BeatenText
 
 	text "North of here is"
-	line "The Great Tree of"
+	line "the Great Tree of"
 	cont "Cherrygrove."
 
-	para "Some say many bird"
+	para "Some say rare bird"
 	line "#MON come from"
 
 	para "far away to nest"
