@@ -7994,6 +7994,7 @@ InitEnemyWildmon:
 	predef_jump PlaceGraphic
 
 ExitBattle:
+	call PostBattleTasks
 	call .HandleEndOfBattle
 	call BattleEnd_HandleRoamMons
 	xor a

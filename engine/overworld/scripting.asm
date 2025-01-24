@@ -1243,7 +1243,6 @@ Script_catchtutorial:
 	jr Script_reloadmap
 
 Script_reloadmapafterbattle:
-	farcall PostBattleTasks
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	xor a
