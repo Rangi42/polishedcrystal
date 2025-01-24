@@ -161,7 +161,7 @@ RocketHideoutB4FMeetLeadersScript:
 	cont "the time!"
 
 	para "What about the"
-	line "The Great Tree"
+	line "the Great Tree"
 	cont "project?"
 	done
 
@@ -582,7 +582,8 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 	line "lure contains the"
 
 	para "essense of a"
-	line "legendary bird."
+	line "legendary bird"
+	cont "#mon."
 
 	para "They were created"
 	line "to call out to"
@@ -594,7 +595,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 	line "only useful in the"
 	cont "right place."
 
-	para "That's why The"
+	para "That's why the"
 	line "Great Tree is"
 	line "important."
 
