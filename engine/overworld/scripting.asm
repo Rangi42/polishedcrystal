@@ -2568,10 +2568,6 @@ Script_giveapricorn:
 
 Script_paintingpic:
 	call GetScriptByte
-	and a
-	jr nz, .ok
-	ldh a, [hScriptVar]
-.ok
 	ld [wTrainerClass], a
 	farjp Paintingpic
 
