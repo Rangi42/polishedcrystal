@@ -62,15 +62,15 @@
 	tilecoll WALL, WALL, WALL, WALL ; 3d
 	tilecoll WALL, WALL, WALL, WALL ; 3e
 	tilecoll WALL, WALL, WALL, WALL ; 3f
-	tilecoll FLOOR, FLOOR, WALL, WALL ; 40
+	tilecoll WALL, WALL, VOID, VOID ; 40
 	tilecoll WALL, WALL, WALL, WALL ; 41
 	tilecoll WALL, WALL, WALL, WALL ; 42
 	tilecoll WALL, WALL, WALL, WALL ; 43
-	tilecoll FLOOR, FLOOR, WALL, WALL ; 44
+	tilecoll WALL, WALL, VOID, VOID ; 44
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 45
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 46
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 47
-	tilecoll FLOOR, FLOOR, WALL, WALL ; 48
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 48
 	tilecoll WALL, WALL, WALL, WALL ; 49
 	tilecoll WALL, WALL, WALL, WALL ; 4a
 	tilecoll WALL, WALL, WALL, WALL ; 4b
@@ -82,5 +82,7 @@
 	tilecoll WALL, WALL, FLOOR, WALL ; 51
 	tilecoll BOTTOM_WALL, FLOOR, FLOOR, WALL ; 52
 	tilecoll FLOOR, WALL, WALL, WALL ; 53
-	tilecoll FLOOR, FLOOR, WALL, WALL ; 54
-	tilecoll FLOOR, WALL, WALL, WALL ; 55
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 54
+	tilecoll FLOOR, WALL, FLOOR, WALL ; 55
+	tilecoll WALL, WALL, VOID, VOID ; 56
+	tilecoll WARP_CARPET_DOWN, WARP_CARPET_DOWN, VOID, VOID ; 57
