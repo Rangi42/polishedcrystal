@@ -1339,6 +1339,7 @@ MoveScreenLoop:
 	prompt
 
 GetForgottenMoves::
+	; TODO: 16bit moves
 ; retrieve a list of a mon's forgotten moves, excluding ones beyond level
 ; and moves the mon already knows
 	; c = species
@@ -1353,9 +1354,7 @@ GetForgottenMoves::
 	; bc = index
 	predef GetEvosAttacksPointer
 .skip_evos
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	inc hl
+	farcall GetNextEvoAttackByte
 	inc a
 	jr nz, .skip_evos
 
@@ -1368,16 +1367,12 @@ GetForgottenMoves::
 	pop hl
 	inc b ; so that we can use jr nc
 .loop
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	inc hl
+	farcall GetNextEvoAttackByte
 	and a
 	ret z
 	cp b
 	ret nc
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	inc hl
+	farcall GetNextEvoAttackByte
 
 	; exclude moves the user already knows
 	push hl

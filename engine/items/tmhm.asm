@@ -6,19 +6,26 @@ CanLearnTMHMMove:
 	push hl
 
 	ld a, [wPutativeTMHMMove]
-	ld b, a
-	ld c, 0
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, TMHMMoves
 .loop
 	ld a, [hli]
-	and a
+	or [hl]
 	jr z, .end
+	dec hl
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	jr nz, .loop
 	cp b
-	jr z, .found
-	inc c
-	jr .loop
+	jr nz, .loop
 
-.found
+	ld a, l
+	sub LOW(TMHMMoves + 2)
+	rrca
+	ld c, a
 	pop hl
 	ld b, CHECK_FLAG
 	push de
@@ -35,11 +42,15 @@ CanLearnTMHMMove:
 GetTMHMMove:
 	ld a, [wTempTMHM]
 	dec a
+	add a
 	ld hl, TMHMMoves
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetMoveIDFromIndex
 	ld [wTempTMHM], a
 	ret
 

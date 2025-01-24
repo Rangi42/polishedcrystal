@@ -22,6 +22,12 @@ IsInArray::
 	add hl, de
 	jr .loop
 
+FarIsInWordArray::
+; Find value bc in array a:hl.
+	call StackCallInBankA
+.Function:
+	jr IsInWordArray
+
 IsInWordArray_NextItem:
 	add hl, de
 IsInWordArray::

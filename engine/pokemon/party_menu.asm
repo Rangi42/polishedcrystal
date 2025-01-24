@@ -909,22 +909,15 @@ PlacePartyMonEvoStoneCompatibility:
 	ld c, e
 	; bc = index
 	predef GetEvosAttacksPointer
-; Reads up to 10 EVOLVE_ITEM entries
-	ld de, wStringBuffer3
-	ld a, BANK(EvosAttacks)
-	ld bc, 10 * 4 + 1
-	push de
-	call FarCopyBytes
-	pop hl
 	ld a, [wCurItem]
 	ld b, a
 	ld de, .string_not_able
 .loop2
-	ld a, [hli]
+	farcall GetNextEvoAttackByte
 	cp -1
 	jr z, .done
 	cp EVOLVE_ITEM
-	ld a, [hli]
+	farcall GetNextEvoAttackByte
 	inc hl
 	inc hl
 	jr nz, .loop2

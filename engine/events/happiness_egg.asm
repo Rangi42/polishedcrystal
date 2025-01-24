@@ -327,8 +327,15 @@ DayCareStep::
 	ld h, b
 	ld l, c
 	ld c, a
+	push bc
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
 	ld a, BANK(EggMoves)
-	call FarIsInByteArray
+	call FarIsInWordArray
+	pop bc
 	ld a, c
 	pop bc
 	pop de

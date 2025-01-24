@@ -7351,8 +7351,7 @@ _GetNewBaseExp:
 	ld b, a
 	; bc = index
 	predef GetEvosAttacksPointer
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
+	farcall GetNextEvoAttackByte
 	inc a
 	ld a, 4 ; basic mon (not evolved, but can evolve): *4/20 -> *0.2
 	jr nz, .got_multiplier
