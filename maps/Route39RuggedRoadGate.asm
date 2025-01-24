@@ -21,9 +21,68 @@ Route39RuggedRoadGate_MapScriptHeader:
 
 	def_object_events
 	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39RuggedRoadGateOfficerText, -1
+	object_event  7,  5, SPRITE_BEACH_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39RuggedRoadGateSwimmerScript, -1
 
 	object_const_def
 	const ROUTE39RUGGEDROADGATE_OFFICER
+
+Route39RuggedRoadGateSwimmerScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_RARE_CANDY_FROM_RUGGED_ROAD_GATE
+	iftrue_jumpopenedtext .LovelyDay
+	writetext .BadDay
+	checkkeyitem GO_GOGGLES
+	iffalse_endtext
+	writetext .FoundGoggles
+	verbosegiveitem RARE_CANDY
+	iffalse_jumpopenedtext .NoRoom
+	setevent EVENT_GOT_RARE_CANDY_FROM_RUGGED_ROAD_GATE
+	jumpopenedtext .ThanksAgain
+
+.LovelyDay:
+	text "Lovely day today,"
+	line "isn't it?"
+
+	para "I heard that the"
+	line "mountaintop view"
+	cont "is great!"
+	done
+
+.BadDay:
+	text "Argh! A boat guard"
+	line "chased me off the"
+
+	para "harbor when I swam"
+	line "near the boat."
+
+	para "And I lost my Go-"
+	line "Goggles too…"
+
+	para "Man, this is not"
+	line "my day!"
+	prompt
+
+.FoundGoggles:
+	text "Oh, you found"
+	line "them!"
+
+	para "I already bought"
+	line "new ones, though…"
+
+	para "Here, take this as"
+	line "thanks!"
+	prompt
+
+.NoRoom:
+	text "Uh-oh, your Bag"
+	line "looks rather full…"
+	done
+
+.ThanksAgain:
+	text "Keep the goggles."
+	line "Thanks again!"
+	done
 
 Route39RuggedRoadGateStepLeftThreeTrigger:
 	checkkeyitem GO_GOGGLES
