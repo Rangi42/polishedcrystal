@@ -80,6 +80,9 @@ rom_obj := \
 	gfx/items.o \
 	gfx/misc.o
 
+# Add all *.asm files from data/maps/scripts as *.o files
+rom_obj += $(patsubst %.asm,%.o,$(wildcard data/maps/scripts/*.asm))
+
 crystal_obj    := $(rom_obj:.o=.o)
 crystal_vc_obj :=$(rom_obj:.o=_vc.o)
 
