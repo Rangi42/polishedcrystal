@@ -179,7 +179,7 @@ ScriptCommandTable:
 	dw Script_changemapblocks            ; 78
 	dw Script_changeblock                ; 79
 	dw Script_reloadmap                  ; 7a
-	dw Script_refreshmap              ; 7b
+	dw Script_refreshmap                 ; 7b
 	dw Script_usestonetable              ; 7c
 	dw Script_playmusic                  ; 7d
 	dw Script_encountermusic             ; 7e
@@ -270,6 +270,7 @@ ScriptCommandTable:
 	dw Script_iffalsefwd                 ; d3
 	dw Script_iftruefwd                  ; d4
 	dw Script_scalltable                 ; d5
+	dw Script_setmapobjectpal            ; d6
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -2627,3 +2628,12 @@ Script_keyitemnotify:
 	; The key item icon overwrites nine font tiles, including
 	; the "▶" needed by the right cursor arrow.
 	farjp LoadFonts_NoOAMUpdate
+
+Script_setmapobjectpal:
+	call GetScriptByte
+	call GetMapObject
+	ld hl, MAPOBJECT_PALETTE
+	add hl, bc
+	call GetScriptByte
+	ld [hl], a
+	ret

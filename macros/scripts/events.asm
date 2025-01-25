@@ -1370,4 +1370,11 @@ MACRO scalltable
 	dw \1 ; pointer table
 ENDM
 
+	const setmapobjectpal_command
+MACRO setmapobjectpal
+	db setmapobjectpal_command
+	db \1 ; person
+	db \2 ; palette
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

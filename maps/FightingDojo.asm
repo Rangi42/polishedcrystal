@@ -16,12 +16,12 @@ FightingDojo_MapScriptHeader:
 	bg_event  9,  0, BGEVENT_READ, MapFightingDojoSignpost2Script
 
 	def_object_events
-	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RematchRed0Script, EVENT_REMATCH_GYM_LEADER_1
-	object_event  0,  2, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RematchGreen1Script, EVENT_REMATCH_GYM_LEADER_2
-	object_event  0,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RematchBlue1Script, EVENT_REMATCH_GYM_LEADER_3
-	object_event  0,  4, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RematchBlue2Script, EVENT_REMATCH_GYM_LEADER_4
-	object_event  0,  5, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RematchBrown1Script, EVENT_REMATCH_GYM_LEADER_5
-	object_event  0,  6, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RematchBrown2Script, EVENT_REMATCH_GYM_LEADER_6
+	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RematchRed0Script, EVENT_REMATCH_GYM_LEADER_1
+	object_event  0,  2, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RematchGreen1Script, EVENT_REMATCH_GYM_LEADER_2
+	object_event  0,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RematchBlue1Script, EVENT_REMATCH_GYM_LEADER_3
+	object_event  0,  4, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RematchBlue2Script, EVENT_REMATCH_GYM_LEADER_4
+	object_event  0,  5, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RematchBrown1Script, EVENT_REMATCH_GYM_LEADER_5
+	object_event  0,  6, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RematchBrown2Script, EVENT_REMATCH_GYM_LEADER_6
 	object_event  4,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FightingDojoBlackBelt, -1
 
 	object_const_def
@@ -44,21 +44,22 @@ FightingDojoSetupRematchesCallback:
 	endcallback
 
 MACRO rematch
-	; rematch person, varsprite, sprite, y, x, face
+	; rematch person, varsprite, sprite, y, x, face, palette
 	moveobject \1, \5, \4
 	turnobject \1, \6
+	setmapobjectpal \1, \7
 	appear \1
 	variablesprite \2, \3
 ENDM
 
 MACRO rematch_left
-	; rematch_left person, varsprite, sprite
-	rematch \1, \2, \3, 6, 3, RIGHT
+	; rematch_left person, varsprite, sprite, palette
+	rematch \1, \2, \3, 6, 3, RIGHT, \4
 ENDM
 
 MACRO rematch_right
-	; rematch_right person, varsprite, sprite
-	rematch \1, \2, \3, 6, 6, LEFT
+	; rematch_right person, varsprite, sprite, palette
+	rematch \1, \2, \3, 6, 6, LEFT, \4
 ENDM
 
 .SetupDailyRematches:
@@ -66,7 +67,7 @@ ENDM
 	ifequalfwd MONDAY, .Monday
 	ifequalfwd TUESDAY, .Tuesday
 	ifequalfwd WEDNESDAY, .Wednesday
-	ifequalfwd THURSDAY, .Thursday
+	ifequal THURSDAY, .Thursday
 	ifequal FRIDAY, .Friday
 	ifequal SATURDAY, .Saturday
 
@@ -74,24 +75,24 @@ ENDM
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd .SundayNight
 .SundayMorningAndDay
-	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_JASMINE
-	rematch_right REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_ERIKA
+	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_JASMINE, PAL_NPC_RED
+	rematch_right REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_ERIKA, PAL_NPC_GREEN
 	endcallback
 .SundayNight
-	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_SABRINA, 4, 6, DOWN
+	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_SABRINA, 4, 6, DOWN, PAL_NPC_RED
 	endcallback
 
 .Monday
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd .MondayNight
 .MondayMorningAndDay
-	rematch_left REMATCH_BLUE_2, SPRITE_COPYCAT, SPRITE_FALKNER
-	rematch_right REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_JANINE
+	rematch_left REMATCH_BLUE_2, SPRITE_COPYCAT, SPRITE_FALKNER, PAL_NPC_BLUE
+	rematch_right REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_JANINE, PAL_NPC_PURPLE
 	endcallback
 .MondayNight
 	checkevent EVENT_BEAT_WALKER
 	iffalsefwd .NoWalker
-	rematch REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_WALKER, 4, 8, DOWN
+	rematch REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_WALKER, 4, 8, DOWN, PAL_NPC_BLUE
 .NoWalker
 	endcallback
 
@@ -99,13 +100,13 @@ ENDM
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd .TuesdayNight
 .TuesdayMorningAndDay
-	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_PRYCE
-	rematch_right REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_BLAINE
+	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_PRYCE, PAL_NPC_BROWN
+	rematch_right REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_BLAINE, PAL_NPC_BROWN
 	endcallback
 .TuesdayNight
 	checkevent EVENT_BEAT_LORELEI_AGAIN
 	iffalsefwd .NoLorelei
-	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_LORELEI, 4, 6, DOWN
+	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_LORELEI, 4, 6, DOWN, PAL_NPC_RED
 .NoLorelei
 	endcallback
 
@@ -115,16 +116,16 @@ ENDM
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd .WednesdayNight
 .WednesdayDay
-	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_BROCK
-	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_MISTY, 5, 2, RIGHT
-	rematch_right REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_BLUE
+	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_BROCK, PAL_NPC_BROWN
+	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_MISTY, 5, 2, RIGHT, PAL_NPC_ORANGE
+	rematch_right REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_BLUE, PAL_NPC_BLUE
 	endcallback
 .WednesdayMorning
-	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_BROCK
-	rematch_right REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_MISTY
+	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_BROCK, PAL_NPC_BROWN
+	rematch_right REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_MISTY, PAL_NPC_ORANGE
 	endcallback
 .WednesdayNight
-	rematch REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_BLUE, 4, 8, DOWN
+	rematch REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_BLUE, 4, 8, DOWN, PAL_NPC_BLUE
 	endcallback
 
 .Thursday
@@ -135,14 +136,14 @@ ENDM
 .ThursdayDay
 	checkevent EVENT_BEAT_PALMER
 	iffalsefwd .NoPalmer
-	rematch REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_PALMER, 6, 3, DOWN
+	rematch REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_PALMER, 6, 3, DOWN, PAL_NPC_GREEN
 .NoPalmer
 	endcallback
 .ThursdayMorning
-	rematch REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_BUGSY, 6, 1, DOWN
+	rematch REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_BUGSY, 6, 1, DOWN, PAL_NPC_GREEN
 	endcallback
 .ThursdayNight
-	rematch REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_MORTY, 4, 2, DOWN
+	rematch REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_MORTY, 4, 2, DOWN, PAL_NPC_BROWN
 	endcallback
 
 .Friday
@@ -153,14 +154,14 @@ ENDM
 .FridayDay
 	checkevent EVENT_BEAT_YELLOW
 	iffalsefwd .NoYellow
-	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_YELLOW, 6, 6, DOWN
+	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_YELLOW, 6, 6, DOWN, PAL_NPC_ORANGE
 .NoYellow
 	endcallback
 .FridayMorning
-	rematch REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_SURGE, 7, 6, DOWN
+	rematch REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_SURGE, 7, 6, DOWN, PAL_NPC_BROWN
 	endcallback
 .FridayNight
-	rematch REMATCH_BLUE_2, SPRITE_COPYCAT, SPRITE_CLAIR, 6, 2, RIGHT
+	rematch REMATCH_BLUE_2, SPRITE_COPYCAT, SPRITE_CLAIR, 6, 2, RIGHT, PAL_NPC_BLUE
 	endcallback
 
 .Saturday
@@ -169,16 +170,16 @@ ENDM
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd .SaturdayNight
 .SaturdayDay
-	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_WHITNEY
-	rematch_right REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_CHUCK
+	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_WHITNEY, PAL_NPC_RED
+	rematch_right REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_CHUCK, PAL_NPC_BROWN
 	endcallback
 .SaturdayMorning
-	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_WHITNEY
+	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_WHITNEY, PAL_NPC_RED
 	endcallback
 .SaturdayNight
 	checkevent EVENT_BEAT_AGATHA
 	iffalsefwd .NoAgatha
-	rematch REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_AGATHA, 4, 2, DOWN
+	rematch REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_AGATHA, 4, 2, DOWN, PAL_NPC_BROWN
 .NoAgatha
 	endcallback
 
