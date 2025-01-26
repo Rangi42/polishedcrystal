@@ -289,6 +289,7 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
+	dw LiftKeyDesc
 	dw HarshLureDesc
 	dw PotentLureDesc
 	dw MalignLureDesc
@@ -1663,6 +1664,11 @@ PotentLureDesc:
 MalignLureDesc:
 	text "A bottle with a"
 	next "malevolent odor."
+	done
+
+LiftKeyDesc:
+	text "Operates the lift"
+	next "in a building."
 	done
 
 ShinyCharmDesc:

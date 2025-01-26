@@ -94,7 +94,8 @@ TrainerGroups:
 	dba BattleGirlGroup
 	dba DragonTamerGroup
 	dba EngineerGroup
-	dba TeacherGroup
+	dba TeacherFGroup
+	dba TeacherMGroup
 	dba GuitaristMGroup
 	dba GuitaristFGroup
 	dba BikerGroup

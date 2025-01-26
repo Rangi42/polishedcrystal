@@ -291,6 +291,7 @@ KeyItemIconPointers:
 	dba OrangeTicketIcon
 	dba MysticTicketIcon
 	dba OldSeaMapIcon
+	dba LiftKeyIcon
 	dba HarshLureIcon
 	dba PotentLureIcon
 	dba MalignLureIcon

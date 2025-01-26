@@ -80,7 +80,8 @@ BattleTowerTrainers:
 	rawchar "Morse@@@@@", SUPER_NERD
 	rawchar "Phelps@@@@", SWIMMERM
 	rawchar "Zeke@@@@@@", DRAGON_TAMER
-	rawchar "Bisom@@@@@", TEACHER
+	rawchar "Bisom@@@@@", TEACHER_F
+	rawchar "Dyrland@@@", TEACHER_M
 	rawchar "Nadia@@@@@", BREEDER
 	rawchar "Hatcher@@@", GENTLEMAN
 	rawchar "Frida@@@@@", ARTIST
@@ -96,7 +97,8 @@ BattleTowerTrainers:
 	rawchar "Axl@@@@@@@", SUPER_NERD
 	rawchar "Gerald@@@@", SIGHTSEERM
 	rawchar "Kafuka@@@@", SCHOOLGIRL
-	rawchar "Hong@@@@@@", TEACHER
+	rawchar "Hong@@@@@@", TEACHER_F
+	rawchar "Mott@@@@@@", TEACHER_M
 	rawchar "Pov@@@@@@@", BOARDER
 	rawchar "Collins@@@", POKEFANM
 	rawchar "Darwin@@@@", BUG_CATCHER

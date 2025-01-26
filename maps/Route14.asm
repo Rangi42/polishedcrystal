@@ -178,7 +178,7 @@ GenericTrainerSchoolboyTravis:
 	done
 
 GenericTrainerTeacherClarice:
-	generictrainer TEACHER, CLARICE, EVENT_BEAT_TEACHER_CLARICE, .SeenText, .BeatenText
+	generictrainer TEACHER_F, CLARICE, EVENT_BEAT_TEACHER_CLARICE, .SeenText, .BeatenText
 
 	text "Don't relax just"
 	line "'cause you won."
