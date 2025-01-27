@@ -1377,4 +1377,11 @@ MACRO setmapobjectmovedata
 	db \2 ; SpriteMovementData index
 ENDM
 
+	const setmapobjectpal_command
+MACRO setmapobjectpal
+	db setmapobjectpal_command
+	db \1 ; person
+	db \2 ; palette
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value
