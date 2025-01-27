@@ -96,13 +96,13 @@ You can post questions or comments on any of these sites. But please read the [F
 ![cerulean-city](screenshots/cerulean-city.png)
   
 ![celadon-city](screenshots/celadon-city.png)
-![fly-to-rock-tunnel](screenshots/fly-to-rock-tunnel.png)
+![weather](screenshots/weather.png)
 ![viridian-forest](screenshots/viridian-forest.png)
 ![mismagius](screenshots/mismagius.png)
   
 ![fighting-dojo](screenshots/fighting-dojo.png)
 ![silph-co](screenshots/silph-co.png)
-![new-balls](screenshots/new-balls.png)
+![pokedex](screenshots/pokedex.png)
 ![rock-tunnel](screenshots/rock-tunnel.png)
   
 ![safari-zone](screenshots/safari-zone.png)
