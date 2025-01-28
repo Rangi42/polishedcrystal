@@ -247,9 +247,17 @@ OverworldHatchEgg::
 	call ReanchorMap
 	call LoadStandardMenuHeader
 	call HatchEggs
-	call ExitAllMenus
-	call RestartMapMusic
-	jmp CloseText
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
+	call ClearBGPalettes
+	call ExitMenu
+	call ReloadTilesetAndPalettes
+	call CloseText
+	call RestoreSprites
+	call UpdateSprites
+	farcall EnableDynPalUpdatesNoApply
+	call FinishExitMenu
+	jmp RestartMapMusic
 
 HatchEggs:
 	xor a
@@ -672,8 +680,11 @@ EggHatch_AnimationSequence:
 	push af
 	ld e, MUSIC_NONE
 	call PlayMusic
+	farcall FadeOutPalettes
 	farcall BlankScreen
 	call DisableLCD
+	ld a, CGB_PLAIN
+	call GetCGBLayout
 	ld a, " "
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
