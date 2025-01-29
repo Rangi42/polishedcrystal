@@ -614,7 +614,7 @@ GetMartDialogGroup:
 	dwb .TMMartPointers, 0
 	dwb .BlueCardMartPointers, 0
 	dwb .BTMartPointers, 0
-	dwb .ExpCandyMartPointers, 0
+	dwb .ExpCandyMartPointers, 2
 
 .StandardMartPointers:
 	dw Text_Mart_HowMany
