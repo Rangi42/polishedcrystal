@@ -12,7 +12,7 @@ _CheckContactMove::
 .not_punching_glove
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp a, STRUGGLE
+	cp STRUGGLE
 	ret nc
 	ld hl, AbnormalContactMoves
 	call IsInByteArray
@@ -23,7 +23,7 @@ _CheckContactMove::
 .not_abnormal
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
-	cp a, b
+	cp b
 	ret z
 	and a
 .protective_pads
