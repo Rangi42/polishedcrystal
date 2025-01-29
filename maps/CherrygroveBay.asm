@@ -30,9 +30,11 @@ CherrygroveBay_MapScriptHeader:
 	fruittree_event 14, 13, FRUITTREE_CHERRYGROVE_BAY_6, TAMATO_BERRY, PAL_NPC_RED
 
 CherrygroveBayGalarianBirdsScript:
+	opentext
+	writetext .GreatTreeText
+	waitbutton
 	callasm CheckForLures
 	iffalse_endtext ; User has no lures, do nothing
-	opentext
 	writetext .LikeToUseItemText
 	yesorno
 	iffalse_endtext
