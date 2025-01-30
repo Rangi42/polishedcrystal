@@ -69,7 +69,7 @@ jobs:
 
       # BUILD VC PATCHES
       - id: build-polishedcrystal-vc
-        name: "Build polishedcrystal"
+        name: "Build polishedcrystal vc"
         run: |
           make -j$(nproc) vc
           mkdir build
@@ -79,14 +79,13 @@ jobs:
           make tidy
 
       - id: build-polishedcrystal-faithful-vc
-        name: "Build polishedcrystal-faithful"
+        name: "Build polishedcrystal-faithful vc"
         run: |
           make -j$(nproc) faithful vc
           mv polishedcrystal-3.1.0.gbc build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}-vc.gbc
           mv polishedcrystal-3.1.0.patch build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.1.0.sym build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}-vc.sym
           make tidy
-
 
       # BUILD DEBUG ROMS
       - id: build-polisheddebug
@@ -105,8 +104,8 @@ jobs:
           mv polishedcrystal-3.1.0.sym build/polisheddebug-faithful-3.1.0-${{ env.SHORT_SHA }}.sym
           make tidy
 
-        - id: build-polisheddebug-vc
-        name: "Build polisheddebug"
+      - id: build-polisheddebug-vc
+        name: "Build polisheddebug vc"
         run: |
           make -j$(nproc) debug vc
           mv polishedcrystal-3.1.0.gbc build/polisheddebug-3.1.0-${{ env.SHORT_SHA }}-vc.gbc
@@ -115,7 +114,7 @@ jobs:
           make tidy
 
       - id: build-polisheddebug-faithful-vc
-        name: "Build polisheddebug-faithful"
+        name: "Build polisheddebug-faithful vc"
         run: |
           make -j$(nproc) faithful debug vc
           mv polishedcrystal-3.1.0.gbc build/polisheddebug-faithful-3.1.0-${{ env.SHORT_SHA }}-vc.gbc
@@ -123,8 +122,9 @@ jobs:
           mv polishedcrystal-3.1.0.sym build/polisheddebug-faithful-3.1.0-${{ env.SHORT_SHA }}-vc.sym
           make tidy
 
-      # UPLOAD ARTIFACTS
+      # UPLOAD ARTIFACTS – only if the repo is owned by Rangi42 (i.e., not a fork)
       - id: upload-polishedcrystal
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal artifacts"
         uses: actions/upload-artifact@v3
         with:
@@ -134,6 +134,7 @@ jobs:
             build/polishedcrystal-3.1.0-${{ env.SHORT_SHA }}.*
 
       - id: upload-polishedcrystal-faithful
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal-faithful artifacts"
         uses: actions/upload-artifact@v3
         with:
@@ -143,6 +144,7 @@ jobs:
             build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}.*
 
       - id: upload-polisheddebug
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug artifacts"
         uses: actions/upload-artifact@v3
         with:
@@ -152,6 +154,7 @@ jobs:
             build/polisheddebug-3.1.0-${{ env.SHORT_SHA }}.*
 
       - id: upload-polisheddebug-faithful
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug-faithful artifacts"
         uses: actions/upload-artifact@v3
         with:
