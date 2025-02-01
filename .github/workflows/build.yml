@@ -42,6 +42,7 @@ jobs:
         name: "Install gbdev/rgbds"
         working-directory: rgbds
         run: |
+          sudo apt-get install -yq libpng-dev
           sudo make install
 
       # CHECKOUT REPOSITORY
