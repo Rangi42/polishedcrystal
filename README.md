@@ -51,16 +51,16 @@ You can post questions or comments on any of these sites. But please read the [F
 ## Screenshots
 
 ![title-screen](screenshots/title-screen.png)
+![which-photo](screenshots/which-photo.png)
 ![running-shoes](screenshots/running-shoes.png)
 ![town-map](screenshots/town-map.png)
-![lyra](screenshots/lyra.png)
   
+![lyra](screenshots/lyra.png)
 ![cherrygrove-city](screenshots/cherrygrove-city.png)
 ![pokemon-center](screenshots/pokemon-center.png)
 ![bag](screenshots/bag.png)
-![oaks-aide](screenshots/oaks-aide.png)
   
-![elder-li](screenshots/elder-li.png)
+![oaks-aide](screenshots/oaks-aide.png)
 ![move-tutor](screenshots/move-tutor.png)
 ![moss-rock](screenshots/moss-rock.png)
 ![rich-boy](screenshots/rich-boy.png)
@@ -86,7 +86,7 @@ You can post questions or comments on any of these sites. But please read the [F
 ![stats](screenshots/stats.png)
 
 ![leppa-berry](screenshots/leppa-berry.png)
-![weavile](screenshots/weavile.png)
+![regional-forms](screenshots/regional-forms.png)
 ![move-reminder](screenshots/move-reminder.png)
 ![moves](screenshots/moves.png)
   
@@ -102,7 +102,7 @@ You can post questions or comments on any of these sites. But please read the [F
   
 ![fighting-dojo](screenshots/fighting-dojo.png)
 ![silph-co](screenshots/silph-co.png)
-![new-balls](screenshots/new-balls.png)
+![stormy-beach](screenshots/stormy-beach.png)
 ![rock-tunnel](screenshots/rock-tunnel.png)
   
 ![safari-zone](screenshots/safari-zone.png)
