@@ -150,7 +150,7 @@ jobs:
           name: "polisheddebug"
           retention-days: 1
           path: |
-            build/polishedcrystal-debug-${{ env.SHORT_SHA }}.*
+            build/polishedcrystal-debug-3.0.0-${{ env.SHORT_SHA }}.*
 
       - id: upload-polisheddebug-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
