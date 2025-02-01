@@ -126,7 +126,7 @@ jobs:
       - id: upload-polishedcrystal
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polishedcrystal"
           retention-days: 1
@@ -136,7 +136,7 @@ jobs:
       - id: upload-polishedcrystal-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal-faithful artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polishedcrystal-faithful"
           retention-days: 1
@@ -146,7 +146,7 @@ jobs:
       - id: upload-polisheddebug
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polisheddebug"
           retention-days: 1
@@ -156,7 +156,7 @@ jobs:
       - id: upload-polisheddebug-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug-faithful artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polisheddebug-faithful"
           retention-days: 1
