@@ -11,10 +11,10 @@ on:
   #   - cron: '0 5 * * *'
 
 env:
-  NIGHTLY_TAG: "v3.1.0"
-  NIGHTLY_NAME: "3.1.0"
+  NIGHTLY_TAG: "v3.1.1"
+  NIGHTLY_NAME: "3.1.1"
   NIGHTLY_BODY: |
-    This is the current Polished Crystal 3.1.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
+    This is the current Polished Crystal 3.1.1 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
 
     The **.gbc** assets are ROMs. If you just want to play the game, download one (regular, `-faithful` which omits some non-canon changes, or `noir` which is in grayscale) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator. (***Do not use VBA*** or VBA-M.)
 
@@ -114,9 +114,9 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polishedcrystal-3.1.0-${{ env.SHORT_SHA }}.gbc
-            ./build/polishedcrystal-3.1.0-${{ env.SHORT_SHA }}.patch
-            ./build/polishedcrystal-3.1.0-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-3.1.1-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-3.1.1-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-3.1.1-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD FAITHFUL ASSETS
       - name: Upload faithful assets
@@ -125,9 +125,9 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}.gbc
-            ./build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}.patch
-            ./build/polishedcrystal-faithful-3.1.0-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-faithful-3.1.1-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-3.1.1-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-faithful-3.1.1-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD DEBUG ASSETS
       - name: Upload debug assets
@@ -136,9 +136,9 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polishedcrystal-debug-3.1.0-${{ env.SHORT_SHA }}.gbc
-            ./build/polishedcrystal-debug-3.1.0-${{ env.SHORT_SHA }}.patch
-            ./build/polishedcrystal-debug-3.1.0-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-debug-3.1.1-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-debug-3.1.1-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-debug-3.1.1-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD FAITHFUL DEBUG ASSETS
       - name: Upload faithful debug assets
@@ -147,6 +147,6 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polishedcrystal-faithful-debug-3.1.0-${{ env.SHORT_SHA }}.gbc
-            ./build/polishedcrystal-faithful-debug-3.1.0-${{ env.SHORT_SHA }}.patch
-            ./build/polishedcrystal-faithful-debug-3.1.0-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-faithful-debug-3.1.1-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-debug-3.1.1-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-faithful-debug-3.1.1-${{ env.SHORT_SHA }}.sym

@@ -257,6 +257,7 @@ OverworldHatchEgg::
 	call UpdateSprites
 	farcall EnableDynPalUpdatesNoApply
 	call FinishExitMenu
+	farcall Script_refreshmap
 	jmp RestartMapMusic
 
 HatchEggs:
