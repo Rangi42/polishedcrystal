@@ -31,7 +31,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 ### Which file do I need to play?
 
-The [3.1.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.0) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.1.0-0a4a362f.gbc`, or `polishedcrystal-faithful-3.1.0-0a4a362f.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
+The [3.1.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.0) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.1.0.gbc`, or `polishedcrystal-faithful-3.1.0.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
 
 Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to walk through walls.
 
