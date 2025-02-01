@@ -63,8 +63,8 @@ jobs:
         name: "Build polishedcrystal-faithful"
         run: |
           make -j$(nproc) faithful
-          mv polishedcrystal-3.0.0.gbc build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0.sym build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-faithful-3.0.0.gbc build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-faithful-3.0.0.sym build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}.sym
           make tidy
 
       # BUILD VC PATCHES
@@ -73,18 +73,18 @@ jobs:
         run: |
           make -j$(nproc) vc
           mkdir build
-          mv polishedcrystal-3.0.0.gbc build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}-vc.gbc
+          mv polishedcrystal-3.0.0_vc.gbc build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}_vc.gbc
           mv polishedcrystal-3.0.0.patch build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0.sym build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}-vc.sym
+          mv polishedcrystal-3.0.0_vc.sym build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}_vc.sym
           make tidy
 
       - id: build-polishedcrystal-faithful-vc
         name: "Build polishedcrystal-faithful vc"
         run: |
           make -j$(nproc) faithful vc
-          mv polishedcrystal-3.0.0.gbc build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}-vc.gbc
-          mv polishedcrystal-3.0.0.patch build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0.sym build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}-vc.sym
+          mv polishedcrystal-faithful-3.0.0.gbc build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-faithful-3.0.0.patch build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-faithful-3.0.0.sym build/polishedcrystal-faithful-3.0.0-${{ env.SHORT_SHA }}_vc.sym
           make tidy
 
       # BUILD DEBUG ROMS
@@ -92,34 +92,34 @@ jobs:
         name: "Build polisheddebug"
         run: |
           make -j$(nproc) debug vc
-          mv polishedcrystal-3.0.0.gbc build/polisheddebug-3.0.0-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0.sym build/polisheddebug-3.0.0-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-debug-3.0.0.gbc build/polishedcrystal-debug-3.0.0-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-debug-3.0.0.sym build/polishedcrystal-debug-3.0.0-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polisheddebug-faithful
         name: "Build polisheddebug-faithful"
         run: |
           make -j$(nproc) faithful debug vc
-          mv polishedcrystal-3.0.0.gbc build/polisheddebug-faithful-3.0.0-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0.sym build/polisheddebug-faithful-3.0.0-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-faithful-debug-3.0.0.gbc build/polishedcrystal-faithful-debug-3.0.0-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-faithful-debug-3.0.0.sym build/polishedcrystal-faithful-debug-3.0.0-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polisheddebug-vc
         name: "Build polisheddebug vc"
         run: |
           make -j$(nproc) debug vc
-          mv polishedcrystal-3.0.0.gbc build/polisheddebug-3.0.0-${{ env.SHORT_SHA }}-vc.gbc
-          mv polishedcrystal-3.0.0.patch build/polisheddebug-3.0.0-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0.sym build/polisheddebug-3.0.0-${{ env.SHORT_SHA }}-vc.sym
+          mv polishedcrystal-debug-3.0.0_vc.gbc build/polishedcrystal-debug-3.0.0-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-debug-3.0.0.patch build/polishedcrystal-debug-3.0.0-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-debug-3.0.0.sym build/polishedcrystal-debug-3.0.0-${{ env.SHORT_SHA }}_vc.sym
           make tidy
 
       - id: build-polisheddebug-faithful-vc
         name: "Build polisheddebug-faithful vc"
         run: |
           make -j$(nproc) faithful debug vc
-          mv polishedcrystal-3.0.0.gbc build/polisheddebug-faithful-3.0.0-${{ env.SHORT_SHA }}-vc.gbc
-          mv polishedcrystal-3.0.0.patch build/polisheddebug-faithful-3.0.0-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0.sym build/polisheddebug-faithful-3.0.0-${{ env.SHORT_SHA }}-vc.sym
+          mv polishedcrystal-faithful-debug-3.0.0_vc.gbc build/polishedcrystal-faithful-debug-3.0.0-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-faithful-debug-3.0.0.patch build/polishedcrystal-faithful-debug-3.0.0-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-faithful-debug-3.0.0_vc.sym build/polishedcrystal-faithful-debug-3.0.0-${{ env.SHORT_SHA }}_vc.sym
           make tidy
 
       # UPLOAD ARTIFACTS – only if the repo is owned by Rangi42 (i.e., not a fork)
