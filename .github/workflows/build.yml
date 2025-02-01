@@ -72,7 +72,6 @@ jobs:
         name: "Build polishedcrystal vc"
         run: |
           make -j$(nproc) vc
-          mkdir build
           mv polishedcrystal-3.0.0_vc.gbc build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}_vc.gbc
           mv polishedcrystal-3.0.0.patch build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}.patch
           mv polishedcrystal-3.0.0_vc.sym build/polishedcrystal-3.0.0-${{ env.SHORT_SHA }}_vc.sym
