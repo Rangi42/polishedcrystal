@@ -69,18 +69,46 @@ jobs:
           name: "polishedcrystal-faithful"
           path: "./build"
 
-      - id: download-polishedcrystal
-        name: "Download polishedcrystal"
+      - id: download-polishedcrystal-vc
+        name: "Download polishedcrystal-vc"
         uses: actions/download-artifact@v4.1.7
         with:
-          name: "polishedcrystal"
+          name: "polishedcrystal-vc"
           path: "./build"
 
-      - id: download-polishedcrystal-faithful
-        name: "Download polishedcrystal-faithful"
+      - id: download-polishedcrystal-faithful-vc
+        name: "Download polishedcrystal-faithful-vc"
         uses: actions/download-artifact@v4.1.7
         with:
-          name: "polishedcrystal-faithful"
+          name: "polishedcrystal-faithful-vc"
+          path: "./build"
+
+      - id: download-polisheddebug
+        name: "Download polisheddebug"
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: "polisheddebug"
+          path: "./build"
+
+      - id: download-polisheddebug-faithful
+        name: "Download polisheddebug-faithful"
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: "polisheddebug-faithful"
+          path: "./build"
+
+      - id: download-polisheddebug-vc
+        name: "Download polisheddebug-vc"
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: "polisheddebug-vc"
+          path: "./build"
+
+      - id: download-polisheddebug-faithful-vc
+        name: "Download polisheddebug-faithful-vc"
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: "polisheddebug-faithful-vc"
           path: "./build"
 
       # DELETE OLD RELEASE
