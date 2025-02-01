@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
   # Uncomment to enable scheduled runs, if desired:
   # schedule:
   #   - cron: '0 5 * * *'
