@@ -41,7 +41,7 @@ LoadStandardFontPointer::
 	ret
 
 .FontPointers:
-	table_width 2, LoadStandardFontPointer.FontPointers
+	table_width 2
 	dw FontNormal
 	dw FontNarrow
 	dw FontBold

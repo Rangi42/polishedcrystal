@@ -324,7 +324,7 @@ endc
 	ret
 
 AIScoringPointers:
-	table_width 2, AIScoringPointers
+	table_width 2
 	farbank AIScoring
 	fardw AI_Basic
 	fardw AI_Setup

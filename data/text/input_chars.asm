@@ -1,7 +1,7 @@
 ; see engine/naming_screen.asm
 
 NameInputLower:
-	table_width 1, NameInputLower
+	table_width 1
 	rawchar "abcdefghi"
 	rawchar "jklmnopqr"
 	rawchar "stuvwxyz-"
@@ -10,7 +10,7 @@ NameInputLower:
 	assert_table_length 9 * 5
 
 NameInputUpper:
-	table_width 1, NameInputUpper
+	table_width 1
 	rawchar "ABCDEFGHI"
 	rawchar "JKLMNOPQR"
 	rawchar "STUVWXYZ "
@@ -19,7 +19,7 @@ NameInputUpper:
 	assert_table_length 9 * 5
 
 MailEntry_Uppercase:
-	table_width 1, MailEntry_Uppercase
+	table_width 1
 	rawchar "ABCDEFGHIJ"
 	rawchar "KLMNOPQRST"
 	rawchar "UVWXYZ?!…:"
@@ -28,7 +28,7 @@ MailEntry_Uppercase:
 	assert_table_length 10 * 5
 
 MailEntry_Lowercase:
-	table_width 1, MailEntry_Lowercase
+	table_width 1
 	rawchar "abcdefghij"
 	rawchar "klmnopqrst"
 	rawchar "uvwxyz -.,"
@@ -37,7 +37,7 @@ MailEntry_Lowercase:
 	assert_table_length 10 * 5
 
 NameInputLowerQwerty:
-	table_width 1, NameInputLowerQwerty
+	table_width 1
 	rawchar "qwertyuio"
 	rawchar "asdfghjkl"
 	rawchar "zxcvbnmp-"
@@ -46,7 +46,7 @@ NameInputLowerQwerty:
 	assert_table_length 9 * 5
 
 NameInputUpperQwerty:
-	table_width 1, NameInputUpperQwerty
+	table_width 1
 	rawchar "QWERTYUIO"
 	rawchar "ASDFGHJKL"
 	rawchar "ZXCVBNMP "
@@ -55,7 +55,7 @@ NameInputUpperQwerty:
 	assert_table_length 9 * 5
 
 MailEntryQwerty_Uppercase:
-	table_width 1, MailEntryQwerty_Uppercase
+	table_width 1
 	rawchar "QWERTYUIOP"
 	rawchar "ASDFGHJKL:"
 	rawchar "ZXCVBNM?!…"
@@ -64,7 +64,7 @@ MailEntryQwerty_Uppercase:
 	assert_table_length 10 * 5
 
 MailEntryQwerty_Lowercase:
-	table_width 1, MailEntryQwerty_Lowercase
+	table_width 1
 	rawchar "qwertyuiop"
 	rawchar "asdfghjkl-"
 	rawchar "zxcvbnm,. "

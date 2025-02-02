@@ -9,12 +9,18 @@ DEF AUTO_INPUT EQU $ff
 	const TEMPMON    ; 3
 	const WILDMON    ; 4
 
+; wJumptableIndex::
+DEF JUMPTABLE_INDEX_MASK EQU %01111111
+	const_def 7
+	shift_const JUMPTABLE_EXIT
+
 ; wJoypadDisable::
 DEF JOYPAD_DISABLE_MON_FAINT_F    EQU 6
 DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 
 ; wOptions3::
-DEF QWERTY_KEYBOARD_F EQU 0
+	const_def
+	const QWERTY_KEYBOARD_F  ; 0
 
 ; wOptions1::
 	const_def 3
@@ -104,13 +110,17 @@ DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT
 DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_IVS_OPT) | (1 << PSS_OPT)
 
 ; wInitialOptions2::
-	const_def
-	const EVS_OPT_DISABLED
-	const EVS_OPT_CLASSIC
-	const EVS_OPT_MODERN ; Not yet implemented
-
+	const_def 3
+	const RTC_OPT              ; 3
+	const EVOLVE_IN_BATTLE_OPT ; 4
+	const_skip 2
+	const RESET_INIT_OPTS      ; 7
 DEF EV_OPTMASK EQU %11
-DEF RESET_INIT_OPTS EQU 7
+
+	const_def
+	const EVS_OPT_DISABLED ; %00
+	const EVS_OPT_CLASSIC  ; %01
+	const EVS_OPT_MODERN   ; %10
 
 
 ; wForgettingMove::
@@ -486,10 +496,13 @@ DEF CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
 
 ; wPlayerCaught2::
 	const_def
-	const PLAYER_CAUGHT_MEW_F       ; 0
-	const PLAYER_CAUGHT_MEWTWO_F    ; 1
-	const PLAYER_CAUGHT_CELEBI_F    ; 2
-	const PLAYER_CAUGHT_SUDOWOODO_F ; 3
+	const PLAYER_CAUGHT_MEW_F               ; 0
+	const PLAYER_CAUGHT_MEWTWO_F            ; 1
+	const PLAYER_CAUGHT_CELEBI_F            ; 2
+	const PLAYER_CAUGHT_SUDOWOODO_F         ; 3
+	const PLAYER_CAUGHT_GALARIAN_ARTICUNO_F ; 4
+	const PLAYER_CAUGHT_GALARIAN_ZAPDOS_F   ; 5
+	const PLAYER_CAUGHT_GALARIAN_MOLTRES_F  ; 6
 
 DEF CAUGHT_DUO_MASK    EQU (1 << PLAYER_CAUGHT_HO_OH_F) | (1 << PLAYER_CAUGHT_LUGIA_F)
 DEF CAUGHT_BEASTS_MASK EQU (1 << PLAYER_CAUGHT_RAIKOU_F) | (1 << PLAYER_CAUGHT_ENTEI_F) | (1 << PLAYER_CAUGHT_SUICUNE_F)

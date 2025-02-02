@@ -1,6 +1,6 @@
 TMHMMoves:
 ; entries correspond to *_TMNUM constants (see constants/item_constants.asm)
-	table_width 1, TMHMMoves
+	table_width 1
 	db DYNAMICPUNCH ; TM01 (Chuck)
 	db DRAGON_CLAW  ; TM02 (Route 27)
 	db CURSE        ; TM03 (Celadon Mansion)

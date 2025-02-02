@@ -172,3 +172,4 @@ SpecialsPointers::
 	add_special ShowTMHMIcon
 	add_special FixPlayerEVsAndStats
 	add_special FadeInPalettes_EnableDynNoApply
+	add_special PrintDiploma

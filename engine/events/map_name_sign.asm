@@ -335,7 +335,7 @@ LoadMapNameSignGFX:
 	jr .loop
 
 SignPals:
-	table_width 1 palettes, SignPals
+	table_width 1 palettes
 INCLUDE "gfx/signs/signs.pal"
 	assert_table_length NUM_SIGNS
 

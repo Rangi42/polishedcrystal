@@ -1,5 +1,5 @@
 NatureNames:
-	table_width 1, NatureNames
+	table_width 1
 	dr .Hardy
 	dr .Lonely
 	dr .Brave
@@ -56,7 +56,7 @@ NatureNames:
 .NoNature: db "---@"
 
 NatureIndicators:
-	table_width 1, NatureIndicators
+	table_width 1
 	dr .HardyInd
 	dr .LonelyInd
 	dr .BraveInd

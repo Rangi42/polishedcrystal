@@ -1,17 +1,23 @@
 ; These are in the same order as GetInitialOptionPointer.Pointers,
 ; not the *_OPT bit order!
 InitialOptionDescriptions:
-	table_width 2, InitialOptionDescriptions
+	table_width 2
 	dw .InitialOptionDesc_Natures
 	dw .InitialOptionDesc_Abilities
 	dw .InitialOptionDesc_PSS
 	dw .InitialOptionDesc_EVs
 	dw .InitialOptionDesc_ExpScaling
 	dw .InitialOptionDesc_AffectionBonus
-	dw .InitialOptionDesc_ColorVariation
+	dw .InitialOptionDesc_NextPage
+
+	dw .InitialOptionDesc_RTC
 	dw .InitialOptionDesc_PerfectIVs
 	dw .InitialOptionDesc_TradedMon
-	assert_table_length NUM_INITIAL_OPTIONS
+	dw .InitialOptionDesc_EvolveInBattle
+	dw .InitialOptionDesc_ColorVariation
+	dw EmptyString
+	dw .InitialOptionDesc_PrevPage
+	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
 
 .InitialOptionDesc_Natures:
 	text "Natures raise one"
@@ -86,6 +92,15 @@ InitialOptionDescriptions:
 	line "Gen 6."
 	prompt
 
+.InitialOptionDesc_EvolveInBattle:
+	text "Your #mon can"
+	line "evolve during"
+	cont "trainer battles."
+
+	para "Inspired by anime"
+	line "battles."
+	prompt
+
 .InitialOptionDesc_ColorVariation:
 	text "Individual #-"
 	line "mon, both regular"
@@ -123,4 +138,29 @@ InitialOptionDescriptions:
 
 	para "but Exp. Points"
 	line "won't be boosted."
+	prompt
+
+.InitialOptionDesc_RTC:
+	text "Use the Real-Time"
+	line "Clock function to"
+	cont "track the time."
+
+	para "If your cartridge"
+	line "or emulator does"
+	cont "not support RTC,"
+
+	assert NO_RTC_SPEEDUP == 6
+	para "disable this to"
+	line "make each in-game"
+	cont "day last 4 hours."
+	prompt
+
+.InitialOptionDesc_NextPage:
+	text "View the next"
+	line "page of options."
+	prompt
+
+.InitialOptionDesc_PrevPage:
+	text "View the previous"
+	line "page of options."
 	prompt

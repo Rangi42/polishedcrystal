@@ -1,6 +1,6 @@
 MoveEffectsPointers:
 ; entries correspond to EFFECT_* constants
-	table_width 2, MoveEffectsPointers
+	table_width 2
 	dw NormalHit
 	dw NormalHit
 	dw NormalHit

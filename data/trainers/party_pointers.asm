@@ -2,7 +2,7 @@
 
 TrainerGroups:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
-	table_width 3, TrainerGroups
+	table_width 3
 	dba CarrieGroup
 	dba CalGroup
 	dba JackyGroup
@@ -94,7 +94,8 @@ TrainerGroups:
 	dba BattleGirlGroup
 	dba DragonTamerGroup
 	dba EngineerGroup
-	dba TeacherGroup
+	dba TeacherFGroup
+	dba TeacherMGroup
 	dba GuitaristMGroup
 	dba GuitaristFGroup
 	dba BikerGroup

@@ -1,6 +1,6 @@
 BattleAnimations::
 ; entries correspond to constants/move_constants.asm
-	table_width 2, BattleAnimations
+	table_width 2
 	farbank "Battle Animations"
 	fardw BattleAnim_0
 	fardw BattleAnim_Acrobatics
@@ -286,6 +286,7 @@ endc
 	fardw BattleAnim_ThrowPokeBall
 	fardw BattleAnim_SendOutMon
 	fardw BattleAnim_ReturnMon
+	fardw BattleAnim_Transform
 	fardw BattleAnim_Miss
 	fardw BattleAnim_EnemyDamage
 	fardw BattleAnim_PlayerDamage

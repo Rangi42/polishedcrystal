@@ -3,7 +3,7 @@ MACRO pics
 ENDM
 
 PokemonPicPointers::
-	table_width 5, PokemonPicPointers
+	table_width 5
 	pics Bulbasaur
 	pics Ivysaur
 	pics Venusaur
@@ -288,7 +288,7 @@ PokemonPicPointers::
 	pics MrRime
 	pics Wyrdeer
 	pics Kleavor
-	pics Ursaluna
+	pics UrsalunaPlain
 	pics Sneasler
 	pics Overqwil
 	pics DudunsparceTwoSegment
@@ -411,5 +411,7 @@ PokemonPicPointers::
 	pics TaurosPaldean
 	pics TaurosPaldeanFire
 	pics TaurosPaldeanWater
+
+	pics UrsalunaBloodmoon
 
 	assert_table_length NUM_UNIQUE_POKEMON

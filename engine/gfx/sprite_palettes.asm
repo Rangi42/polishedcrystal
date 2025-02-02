@@ -178,21 +178,21 @@ ApplyOBPals:
 	jmp FarCopyColorWRAM
 
 MapObjectPals:
-	table_width 1 palettes, MapObjectPals
+	table_width 1 palettes
 INCLUDE "gfx/overworld/npc_sprites.pal"
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES ; morn, day, nite, eve
 
 SingleObjectPals:
-	table_width 1 palettes, SingleObjectPals
+	table_width 1 palettes
 INCLUDE "gfx/overworld/npc_single_object.pal"
 	assert_table_length NUM_OW_INDIVIDUAL_PALS
 
 DarknessOBPalette:
-	table_width 1 palettes, DarknessOBPalette
+	table_width 1 palettes
 INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS + NUM_OW_INDIVIDUAL_PALS
 
 OvercastOBPalette:
-	table_width 1 palettes, OvercastOBPalette
+	table_width 1 palettes
 INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES

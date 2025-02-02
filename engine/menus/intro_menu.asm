@@ -44,11 +44,33 @@ NewGame_ClearTileMapEtc:
 	jmp ClearWindowData
 
 NewGamePlus:
+	ld hl, .text
+	call PrintText
+	call YesNoBox
+	jr c, .no
 	xor a
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
 	jr _NewGame_FinishSetup
+
+.no
+	farjp _MainMenu
+
+.text
+	text "New Game+ will"
+	line "keep your previous"
+
+	para "game's money,"
+	line "Battle Points, and"
+
+	para "any #mon stored"
+	line "in the PC!"
+
+	para "Are you sure you"
+	line "you want to start"
+	cont "New Game+?"
+	done
 
 NewGame:
 	xor a

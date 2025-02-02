@@ -203,7 +203,7 @@ UpdateChannels:
 	call StackJumpTable
 
 .Jumptable:
-	table_width 2, UpdateChannels.Jumptable
+	table_width 2
 ; music channels
 	dw .Channel1
 	dw .Channel2
@@ -1229,7 +1229,7 @@ GetNoiseSample:
 
 MusicCommands:
 ; entries correspond to audio constants (see macros/scripts/audio.asm)
-	table_width 2, MusicCommands
+	table_width 2
 	dw Music_Octave8 ; octave 8
 	dw Music_Octave7 ; octave 7
 	dw Music_Octave6 ; octave 6
@@ -2388,7 +2388,7 @@ MonoOrStereoTracks:
 	db $11, $22, $44, $88
 
 ChannelPointers:
-	table_width 2, ChannelPointers
+	table_width 2
 ; music channels
 	dw wChannel1
 	dw wChannel2

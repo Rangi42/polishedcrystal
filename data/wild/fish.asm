@@ -6,7 +6,7 @@ ENDM
 
 FishGroups:
 ; entries correspond to FISHGROUP_* constants
-	table_width FISHGROUP_DATA_LENGTH, FishGroups
+	table_width FISHGROUP_DATA_LENGTH
 	fishgroup 65 percent, (65 + 5) percent, .Shore_Old,            .Shore_Good,            .Shore_Super
 	fishgroup 75 percent, (75 + 1) percent, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
 	fishgroup 70 percent, (70 + 5) percent, .Lake_Old,             .Lake_Good,             .Lake_Super

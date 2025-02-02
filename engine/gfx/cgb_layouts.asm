@@ -13,7 +13,7 @@ LoadCGBLayout::
 	call StackJumpTable
 
 .Jumptable:
-	table_width 2, LoadCGBLayout.Jumptable
+	table_width 2
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
@@ -1205,7 +1205,7 @@ GetBillsPCThemePalette:
 	ret
 
 .ThemePals:
-	table_width PAL_COLOR_SIZE * 4, GetBillsPCThemePalette.ThemePals
+	table_width PAL_COLOR_SIZE * 4
 INCLUDE "gfx/pc/themes.pal"
 	assert_table_length NUM_BILLS_PC_THEMES
 

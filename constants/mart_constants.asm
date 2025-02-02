@@ -12,6 +12,7 @@
 	const MARTTYPE_TM
 	const MARTTYPE_BLUECARD
 	const MARTTYPE_BP
+	const MARTTYPE_EXP_CANDY
 
 ; Marts indexes (see data/items/marts.asm)
 	const_def

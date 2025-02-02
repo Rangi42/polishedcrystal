@@ -52,6 +52,12 @@ ENDM
 	map_const ROUTE_42,                                   30,  9 ;  5
 	map_const ROUTE_44,                                   30,  9 ;  6
 	map_const MAHOGANY_TOWN,                              10,  9 ;  7
+	map_const LAKE_OF_RAGE_HIDDEN_POWER_HOUSE,             4,  4 ;  8
+	map_const LAKE_OF_RAGE_MAGIKARP_HOUSE,                 4,  4 ;  9
+	map_const ROUTE_43_MAHOGANY_GATE,                      5,  4 ; 10
+	map_const ROUTE_43_GATE,                               5,  4 ; 11
+	map_const ROUTE_43,                                   10, 27 ; 12
+	map_const LAKE_OF_RAGE,                               20, 18 ; 13
 
 	newgroup                                                     ;  3
 	map_const SPROUT_TOWER_1F,                             8,  8 ;  1
@@ -96,7 +102,7 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B2F,                       15,  9 ; 40
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
-	map_const WAREHOUSE_ENTRANCE,                         16, 18 ; 43
+	map_const WAREHOUSE_ENTRANCE,                         16, 20 ; 43
 	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 21 ; 44
 	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 45
 	map_const UNDERGROUND_WAREHOUSE,                      10,  9 ; 46
@@ -228,12 +234,14 @@ ENDM
 	map_const AZALEA_TOWN,                                20,  9 ;  7
 
 	newgroup                                                     ;  9
-	map_const LAKE_OF_RAGE_HIDDEN_POWER_HOUSE,             4,  4 ;  1
-	map_const LAKE_OF_RAGE_MAGIKARP_HOUSE,                 4,  4 ;  2
-	map_const ROUTE_43_MAHOGANY_GATE,                      5,  4 ;  3
-	map_const ROUTE_43_GATE,                               5,  4 ;  4
-	map_const ROUTE_43,                                   10, 27 ;  5
-	map_const LAKE_OF_RAGE,                               20, 18 ;  6
+	map_const BATTLE_TOWER_1F,                            11,  8 ;  1
+	map_const BATTLE_TOWER_2F,                            11,  5 ;  2
+	map_const BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ;  3
+	map_const BATTLE_TOWER_ELEVATOR,                       2,  2 ;  4
+	map_const BATTLE_TOWER_HALLWAY,                       11,  2 ;  5
+	map_const ROUTE_40_BATTLE_TOWER_GATE,                  5,  4 ;  6
+	map_const BATTLE_TOWER_OUTSIDE,                       10, 13 ;  7
+	map_const ROUTE_40,                                   10, 20 ;  8
 
 	newgroup                                                     ; 10
 	map_const ROUTE_32,                                   10, 45 ;  1
@@ -250,6 +258,7 @@ ENDM
 	map_const ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
 	map_const MAGNET_TUNNEL_EAST,                         10, 11 ; 13
 	map_const VIOLET_OUTSKIRTS,                           20, 10 ; 14
+	map_const VIOLET_OUTSKIRTS_HOUSE,                      4,  4 ; 15
 
 	newgroup                                                     ; 11
 	map_const ROUTE_34,                                   10, 27 ;  1
@@ -276,7 +285,7 @@ ENDM
 	map_const GOLDENROD_DEPT_STORE_ROOF,                   8,  6 ; 22
 	map_const GOLDENROD_GAME_CORNER,                      10,  7 ; 23
 	map_const GOLDENROD_POKECOM_CENTER_1F,                16,  8 ; 24
-	map_const GOLDENROD_POKECOM_CENTER_OFFICE,             6,  4 ; 25
+	map_const GOLDENROD_POKECOM_CENTER_OFFICE,             6,  5 ; 25
 	map_const ILEX_FOREST_AZALEA_GATE,                     5,  4 ; 26
 	map_const ROUTE_34_ILEX_FOREST_GATE,                   5,  4 ; 27
 	map_const ROUTE_35_GOLDENROD_GATE,                     5,  4 ; 28
@@ -498,23 +507,15 @@ ENDM
 	map_const ROCKET_HIDEOUT_ELEVATOR,                     2,  2 ; 67
 
 	newgroup                                                     ; 22
-	map_const ROUTE_40,                                   10, 20 ;  1
-	map_const ROUTE_41,                                   32, 27 ;  2
-	map_const CIANWOOD_CITY,                              15, 27 ;  3
-	map_const MANIAS_HOUSE,                                4,  4 ;  4
-	map_const CIANWOOD_GYM,                                5,  9 ;  5
-	map_const CIANWOOD_POKECENTER_1F,                      6,  4 ;  6
-	map_const CIANWOOD_PHARMACY,                           4,  4 ;  7
-	map_const CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  8
-	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
-	map_const MOVE_MANIACS_HOUSE,                          4,  4 ; 10
-	map_const BATTLE_TOWER_1F,                            11,  8 ; 11
-	map_const BATTLE_TOWER_2F,                            11,  5 ; 12
-	map_const BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 13
-	map_const BATTLE_TOWER_ELEVATOR,                       2,  2 ; 14
-	map_const BATTLE_TOWER_HALLWAY,                       11,  2 ; 15
-	map_const ROUTE_40_BATTLE_TOWER_GATE,                  5,  4 ; 16
-	map_const BATTLE_TOWER_OUTSIDE,                       10, 13 ; 17
+	map_const ROUTE_41,                                   32, 27 ;  1
+	map_const CIANWOOD_CITY,                              15, 27 ;  2
+	map_const MANIAS_HOUSE,                                4,  4 ;  3
+	map_const CIANWOOD_GYM,                                5,  9 ;  4
+	map_const CIANWOOD_POKECENTER_1F,                      6,  4 ;  5
+	map_const CIANWOOD_PHARMACY,                           4,  4 ;  6
+	map_const CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  7
+	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  8
+	map_const MOVE_MANIACS_HOUSE,                          4,  4 ;  9
 
 	newgroup                                                     ; 23
 	map_const ROUTE_2_SOUTH,                              12, 18 ;  1

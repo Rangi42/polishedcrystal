@@ -424,6 +424,8 @@ _ChooseWildEncounter:
 	ld a, [wMapNumber]
 	cp MAP_SOUL_HOUSE_B1F ; first Ghost map in its group
 	jr c, .not_ghost
+	cp MAP_ROUTE_16_WEST ; non-ghost map in soul house group
+	jr z, .not_ghost
 	ld a, SILPHSCOPE2
 	ld [wCurKeyItem], a
 	call CheckKeyItem

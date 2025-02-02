@@ -60,7 +60,7 @@ DoOverworldWeather:
 	jmp PopBCDEHL
 
 .DoWeather_Jumptable:
-	table_width 2, .DoWeather_Jumptable
+	table_width 2
 	dw DoNothing
 	dw DoOverworldRain
 	dw DoOverworldSnow
@@ -73,7 +73,7 @@ DoOverworldWeather:
 	call StackJumpTable
 
 .Cooldown_Jumptable:
-	table_width 2, .Cooldown_Jumptable
+	table_width 2
 	dw .cooldown_cleanup
 	dw .rain_cooldown
 	dw .snow_cooldown

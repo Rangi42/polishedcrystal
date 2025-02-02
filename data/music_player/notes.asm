@@ -1,5 +1,5 @@
 NoteNames:
-	table_width 2, NoteNames
+	table_width 2
 	db "- "
 	db "C "
 	db "C<SHARP>"

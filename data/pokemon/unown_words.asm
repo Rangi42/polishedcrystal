@@ -1,6 +1,6 @@
 UnownWords:
 ; entries correspond to UNOWN_* form constants
-	table_width 1, UnownWords
+	table_width 1
 	dr UnownWord1
 	dr UnownWord2
 	dr UnownWord3

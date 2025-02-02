@@ -28,6 +28,19 @@ _UpdateItemIcon:
 	farcall LoadItemIconPalette
 	jmp SetDefaultBGPAndOBP
 
+UpdateExpCandyIconAndDescriptionAndBagQuantity::
+	farcall UpdateExpCandyDescriptionAndBagQuantity
+	ld hl, ExpCandyIconPointers
+	ld a, [wCurItem]
+	cp NUM_CANDIES + 1
+	jr c, .has_icon
+	xor a
+.has_icon
+	call _LoadItemOrKeyItemIcon
+	farcall LoadExpCandyIconPalette
+	jmp SetDefaultBGPAndOBP
+	ret
+
 UpdateKeyItemIconAndDescription::
 	farcall UpdateKeyItemDescription
 _UpdateKeyItemIcon:

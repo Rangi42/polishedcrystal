@@ -10,5 +10,54 @@ RocketHideoutB3F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
+	bg_event 19, 13, BGEVENT_ITEM + FULL_HEAL, EVENT_ROCKET_HIDEOUT_B3F_HIDDEN_FULL_HEAL
 
 	def_object_events
+	object_event 18,  8, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCosplayerLyric, -1
+	object_event  2, 18, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB3FCoolDudeDaric, -1
+	itemball_event 12, 10, CARBOS, 1, EVENT_PICKED_UP_CARBOS_FROM_ROCKET_HIDEOUT_B3F
+	itemball_event 18, 13, ELIXIR, 1, EVENT_PICKED_UP_ELIXIR_FROM_ROCKET_HIDEOUT_B3F
+
+RocketHideoutB3FCosplayerLyric:
+	generictrainer COSPLAYER, LYRIC, EVENT_BEAT_COSPLAYER_LYRIC, .SeenText, .BeatenText
+
+	text "Leader Spark's"
+	line "energy is high!"
+
+	para "Hope you're ready"
+	line "for a jolt!"
+	done
+
+.SeenText:
+	text "Instinct doesn't"
+	line "need calculations."
+
+	para "We just strike"
+	line "fast and hard."
+	done
+
+.BeatenText:
+	text "Can't keep up!"
+	done
+
+RocketHideoutB3FCoolDudeDaric:
+	generictrainer COOLTRAINERM, DARIC, EVENT_BEAT_COOL_DUDE_DARIC, .SeenText, .BeatenText
+
+	text "Leader Blanche ex-"
+	line "pects no less than"
+	cont "maximum effort!"
+	done
+
+.SeenText:
+	text "Emotion clouds"
+	line "judgement."
+
+	para "Let's see if your"
+	line "focus is good."
+	
+	done
+
+.BeatenText:
+	text "My judgement was"
+	line "flawed…"
+	done

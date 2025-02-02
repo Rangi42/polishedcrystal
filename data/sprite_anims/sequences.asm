@@ -1,6 +1,6 @@
 SpriteAnimSeqData:
 ; entries correspond to SPRITE_ANIM_INDEX_* constants (see constants/sprite_anim_constants.asm)
-	table_width 3, SpriteAnimSeqData
+	table_width 3
 	; frameset, sequence, tile
 ; SPRITE_ANIM_INDEX_PARTY_MON
 	db SPRITE_ANIM_FRAMESET_PARTY_MON, SPRITE_ANIM_SEQ_PARTY_MON, $00

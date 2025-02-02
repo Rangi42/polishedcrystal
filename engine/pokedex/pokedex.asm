@@ -2825,7 +2825,7 @@ else
 	RGB_MONOCHROME_BLACK
 endc
 BodyColorPals:
-	table_width 2, BodyColorPals
+	table_width 2
 INCLUDE "gfx/pokedex/body_colors.pal"
 	assert_table_length NUM_BODY_COLORS
 
