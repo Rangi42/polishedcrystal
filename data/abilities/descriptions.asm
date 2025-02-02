@@ -1,5 +1,5 @@
 AbilityDescriptions:
-	table_width 2, AbilityDescriptions
+	table_width 2
 	dw NoAbilityDescription
 	dw StenchDescription
 	dw DrizzleDescription
@@ -154,6 +154,7 @@ AbilityDescriptions:
 	dw CudChewDescription
 	dw SharpnessDescription
 	dw ArmorTailDescription
+	dw MindsEyeDescription
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
@@ -908,4 +909,9 @@ SharpnessDescription:
 ArmorTailDescription:
 	text  "Stops foes using"
 	next1 "priority moves."
+	done
+
+MindsEyeDescription:
+	text  "Bypass evasion and"
+	next1 "Ghost immunity."
 	done

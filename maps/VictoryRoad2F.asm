@@ -19,7 +19,7 @@ VictoryRoad2F_MapScriptHeader:
 	def_object_events
 	object_event 20,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerVeteranfJoanne, -1
-	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfSylvie, -1
+	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfJonet, -1
 	tmhmball_event  8,  4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
 	itemball_event 20,  5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
 	itemball_event  9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
@@ -85,8 +85,8 @@ GenericTrainerVeteranfJoanne:
 	cont "Victory Road!"
 	done
 
-GenericTrainerVeteranfSylvie:
-	generictrainer VETERANF, SYLVIE, EVENT_BEAT_VETERANF_SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText
+GenericTrainerVeteranfJonet:
+	generictrainer VETERANF, JONET, EVENT_BEAT_VETERANF_JONET, VeteranfJonetSeenText, VeteranfJonetBeatenText
 
 	text "Did somebody"
 	line "capture Moltres"
@@ -192,7 +192,7 @@ VeteranfJoanneBeatenText:
 	text "Aiyah!"
 	done
 
-VeteranfSylvieSeenText:
+VeteranfJonetSeenText:
 	text "There's supposed"
 	line "to be a Moltres"
 	cont "roosting here."
@@ -201,7 +201,7 @@ VeteranfSylvieSeenText:
 	line "it!"
 	done
 
-VeteranfSylvieBeatenText:
+VeteranfJonetBeatenText:
 	text "I'd have won if"
 	line "I had a legendary"
 	cont "#mon…"

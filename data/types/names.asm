@@ -1,6 +1,6 @@
 TypeNames:
 ; entries correspond to types (see constants/type_constants.asm)
-	table_width 1, TypeNames
+	table_width 1
 	dr Normal
 	dr Fighting
 	dr Flying
@@ -26,7 +26,7 @@ TypeNames:
 EggGroupNames:
 ; entries correspond to egg groups (see constants/pokemon_data_constants.asm)
 ; placed here because several egg groups use the same string as a type
-	table_width 1, EggGroupNames
+	table_width 1
 	dr Monster
 	dr Water1
 	dr Bug

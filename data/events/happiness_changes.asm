@@ -1,5 +1,5 @@
 HappinessChanges:
-	table_width 3, HappinessChanges
+	table_width 3
 ; change if happiness < 100, change if happiness < 160, change otherwise
 	db  +3,  +2,  +0 ; Gained a level
 	db  +3,  +1,  +0 ; Vitamin

@@ -1,6 +1,6 @@
 RadioChannelSongs:
 ; entries correspond to radio channel ids (see constants/radio_constants.asm)
-	table_width 1, RadioChannelSongs
+	table_width 1
 	db MUSIC_POKEMON_TALK
 	db MUSIC_POKEMON_CENTER
 	db MUSIC_TITLE

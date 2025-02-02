@@ -6,6 +6,10 @@ Serial::
 	push bc
 	push af
 
+	ld a, [wPrinterConnectionOpen]
+	bit PRINTER_CONNECTION_OPEN, a
+	jr nz, .printer
+
 	ldh a, [hSerialConnectionStatus]
 	inc a ; is it equal to -1?
 	jr z, .init_player_number
@@ -65,11 +69,16 @@ Serial::
 	ld a, SERIAL_NO_DATA_BYTE
 	ldh [hSerialSend], a
 
+.end
 	pop af
 	pop bc
 	pop de
 	pop hl
 	reti
+
+.printer
+	farcall _PrinterReceive
+	jr .end
 
 ; hl = send data
 ; de = receive data

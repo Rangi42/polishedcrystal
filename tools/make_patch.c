@@ -1,5 +1,5 @@
 #define PROGRAM_NAME "make_patch"
-#define USAGE_OPTS "labels.sym patched.gbc original.gbc vc.patch.template vc.patch"
+#define USAGE_OPTS "values.sym patched.gbc original.gbc vc.patch.template vc.patch"
 
 #include "common.h"
 
@@ -103,21 +103,24 @@ int parse_number(const char *input, int base) {
 
 void parse_symbol_value(char *input, int *restrict bank, int *restrict address) {
 	char *colon = strchr(input, ':');
-	if (!colon) {
-		error_exit("Error: Cannot parse bank+address: \"%s\"\n", input);
+	if (colon) {
+		*colon++ = '\0';
+		*bank = parse_number(input, 16);
+		*address = parse_number(colon, 16);
+	} else {
+		*bank = 0;
+		*address = parse_number(input, 16);
 	}
-	*colon++ = '\0';
-	*bank = parse_number(input, 16);
-	*address = parse_number(colon, 16);
 }
 
-void parse_symbols(const char *filename, struct Symbol **symbols) {
+struct Symbol *parse_symbols(const char *filename) {
 	FILE *file = xfopen(filename, 'r');
 	struct Buffer *buffer = buffer_create(1);
 
 	enum { SYM_PRE, SYM_VALUE, SYM_SPACE, SYM_NAME } state = SYM_PRE;
 	int bank = 0;
 	int address = 0;
+	struct Symbol *symbols = NULL;
 
 	for (;;) {
 		int c = getc(file);
@@ -125,7 +128,7 @@ void parse_symbols(const char *filename, struct Symbol **symbols) {
 			if (state == SYM_NAME) {
 				// The symbol name has ended; append the buffered symbol
 				buffer_append(buffer, &(char []){'\0'});
-				symbol_append(symbols, buffer->data, bank, address);
+				symbol_append(&symbols, buffer->data, bank, address);
 			}
 			// Skip to the next line, ignoring anything after the symbol value and name
 			state = SYM_PRE;
@@ -154,6 +157,7 @@ void parse_symbols(const char *filename, struct Symbol **symbols) {
 
 	fclose(file);
 	buffer_free(buffer);
+	return symbols;
 }
 
 int strfind(const char *s, const char *list[], int count) {
@@ -165,7 +169,7 @@ int strfind(const char *s, const char *list[], int count) {
 	return -1;
 }
 
-#define vstrfind(s, ...) strfind(s, (const char *[]){__VA_ARGS__}, sizeof (const char *[]){__VA_ARGS__} / sizeof(const char *))
+#define vstrfind(s, ...) strfind(s, (const char *[]){__VA_ARGS__}, COUNTOF((const char *[]){__VA_ARGS__}))
 
 int parse_arg_value(const char *arg, bool absolute, const struct Symbol *symbols, const char *patch_name) {
 	// Comparison operators for "ConditionValueB" evaluate to their particular values
@@ -409,7 +413,7 @@ struct Buffer *process_template(const char *template_filename, const char *patch
 int compare_patch(const void *patch1, const void *patch2) {
 	unsigned int offset1 = ((const struct Patch *)patch1)->offset;
 	unsigned int offset2 = ((const struct Patch *)patch2)->offset;
-	return offset1 > offset2 ? 1 : offset1 < offset2 ? -1 : 0;
+	return (offset1 > offset2) - (offset1 < offset2);
 }
 
 bool verify_completeness(FILE *restrict orig_rom, FILE *restrict new_rom, struct Buffer *patches) {
@@ -445,8 +449,7 @@ int main(int argc, char *argv[]) {
 		usage_exit(1);
 	}
 
-	struct Symbol *symbols = NULL;
-	parse_symbols(argv[1], &symbols);
+	struct Symbol *symbols = parse_symbols(argv[1]);
 
 	FILE *new_rom = xfopen(argv[2], 'r');
 	FILE *orig_rom = xfopen(argv[3], 'r');

@@ -219,6 +219,7 @@ CopyMenuHeader::
 	ret
 
 LoadMenuTextbox::
+	call ClearSpritesUnderTextbox
 	ld hl, MenuTextboxDataHeader
 	jr LoadMenuHeader
 
@@ -296,6 +297,7 @@ PlaceNoYesBox:
 
 YesNoBox:
 ; Returns c (no) or nc (yes) and sets menu cursor appropriately.
+	call ClearSpritesUnderYesNoBox
 	call GetYesNoBoxPosition
 	; fallthrough
 PlaceYesNoBox::
@@ -308,6 +310,42 @@ PlaceYesNoBox::
 	ld a, 2
 	ld [wMenuCursorY], a
 	ret
+
+ClearSpritesUnderYesNoBox:
+	ld de, wShadowOAMSprite00
+	ld h, d
+	ld l, e
+	ld c, NUM_SPRITE_OAM_STRUCTS
+.loop
+	; Check if YCoord >= 8 * TILE_WIDTH + 1
+	ld a, [hli]
+	cp 8 * TILE_WIDTH + 1
+	jr c, .next
+	; Check if XCoord >= 14 * TILE_WIDTH + 1
+	ld a, [hl]
+	cp 14 * TILE_WIDTH + 1
+	jr nc, .clear_sprite
+; fallthrough
+.next
+	ld hl, SPRITEOAMSTRUCT_LENGTH
+	add hl, de
+	ld e, l
+	dec c
+	jr nz, .loop
+	ldh a, [hOAMUpdate]
+	push af
+	ld a, TRUE
+	ldh [hOAMUpdate], a
+	call DelayFrame
+	pop af
+	ldh [hOAMUpdate], a
+	ret
+
+.clear_sprite
+	dec l
+	ld [hl], OAM_YCOORD_HIDDEN
+	inc l
+	jr .next
 
 HandleYesNoMenu:
 ; Returns c if cancelled, otherwise $ff or $00 in a for first or second option.

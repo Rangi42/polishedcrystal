@@ -31,17 +31,11 @@ MACRO maskbits
 ; 	maskbits 26
 ; 	cp 26
 ; 	jr nc, .loop
-	def x = 1
-	rept 8
-		if x + 1 < (\1)
-			redef x = (x << 1) | 1
-		endc
-	endr
+	def x = (1 << BITWIDTH((\1) - 1)) - 1
 	if _NARG == 2
-		and x << (\2)
-	else
-		and x
+		def x <<= \2
 	endc
+	and x
 ENDM
 
 MACRO ldpixel

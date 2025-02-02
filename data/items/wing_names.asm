@@ -1,5 +1,5 @@
 WingNames::
-	list_start WingNames
+	list_start
 	li "Health Wing"
 	li "Muscle Wing"
 	li "Resist Wing"

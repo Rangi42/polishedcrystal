@@ -1,3 +1,69 @@
+GalarianArticunoEvent:
+	call DelayFrame
+	ld a, [wStateFlags]
+	push af
+	xor a
+	ld [wStateFlags], a
+
+	ld a, PAL_OW_PURPLE
+	farcall CopySpritePalToOBPal7
+
+	call ClearSpriteAnims
+	ld hl, ArticunoGalarianIcon
+	ld de, vTiles0 tile $84
+	lb bc, BANK(ArticunoGalarianIcon), 4 * 2
+	call DecompressRequest2bpp
+
+	ld hl, ArticunoGalarianIcon
+	ld de, vTiles0 tile $8c
+	lb bc, BANK(ArticunoGalarianIcon), 4 * 2
+	call DecompressRequest2bpp
+	jr DoCelebiEvent
+
+GalarianMoltresEvent:
+	call DelayFrame
+	ld a, [wStateFlags]
+	push af
+	xor a
+	ld [wStateFlags], a
+
+	ld a, PAL_OW_RED
+	farcall CopySpritePalToOBPal7
+
+	call ClearSpriteAnims
+	ld hl, MoltresGalarianIcon
+	ld de, vTiles0 tile $84
+	lb bc, BANK(MoltresGalarianIcon), 4 * 2
+	call DecompressRequest2bpp
+
+	ld hl, MoltresGalarianIcon
+	ld de, vTiles0 tile $8c
+	lb bc, BANK(MoltresGalarianIcon), 4 * 2
+	call DecompressRequest2bpp
+	jr DoCelebiEvent
+
+GalarianZapdosEvent:
+	call DelayFrame
+	ld a, [wStateFlags]
+	push af
+	xor a
+	ld [wStateFlags], a
+
+	ld a, PAL_OW_RED
+	farcall CopySpritePalToOBPal7
+
+	call ClearSpriteAnims
+	ld hl, ZapdosGalarianIcon
+	ld de, vTiles0 tile $84
+	lb bc, BANK(ZapdosGalarianIcon), 4 * 2
+	call DecompressRequest2bpp
+
+	ld hl, ZapdosGalarianIcon
+	ld de, vTiles0 tile $8c
+	lb bc, BANK(ZapdosGalarianIcon), 4 * 2
+	call DecompressRequest2bpp
+	jr DoCelebiEvent
+
 Special_CelebiShrineEvent:
 	call DelayFrame
 	ld a, [wStateFlags]
@@ -13,6 +79,8 @@ Special_CelebiShrineEvent:
 	ld de, vTiles0 tile $84
 	lb bc, BANK(SpecialCelebiGFX), 4 * 4
 	call DecompressRequest2bpp
+; fallthrough
+DoCelebiEvent:
 	xor a
 	ld [wJumptableIndex], a
 
@@ -39,9 +107,14 @@ Special_CelebiShrineEvent:
 	call GetCelebiSpriteTile
 	inc d
 	push de
-	ld a, $90
+
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	farcall DoNextFrameForAllSprites_OW
 	call CelebiEvent_CountDown
 	ld c, 2
 	call DelayFrames

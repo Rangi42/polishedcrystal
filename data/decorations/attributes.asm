@@ -6,7 +6,7 @@ MACRO decoration
 ENDM
 
 DecorationAttributes:
-	table_width DECOATTR_STRUCT_LENGTH, DecorationAttributes
+	table_width DECOATTR_STRUCT_LENGTH
 	decoration DECO_PLANT,    0,                 0,                  EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1, 0
 	decoration DECO_PLANT,    PUT_IT_AWAY,       PUT_AWAY_BED,       EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1, 0
 	decoration DECO_BED,      FEATHERY_BED,      SET_UP_BED,         EVENT_DECO_BED_1,                   $83

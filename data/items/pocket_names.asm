@@ -1,5 +1,5 @@
 ItemPocketNames:
-	table_width 1, ItemPocketNames
+	table_width 1
 	dr .Item
 	dr .Medicine
 	dr .Ball

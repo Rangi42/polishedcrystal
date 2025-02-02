@@ -94,11 +94,9 @@ CinnabarVolcanoMoltres:
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalsefwd .NoCandela
+	iffalsefwd .NoCatch
 	setflag ENGINE_PLAYER_CAUGHT_MOLTRES
-	setevent EVENT_CELADON_UNIVERSITY_CANDELA
-	clearevent EVENT_SHAMOUTI_COAST_CANDELA
-.NoCandela
+.NoCatch
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	iffalsefwd .end
 	checkevent EVENT_ROUTE_10_ZAPDOS

@@ -7,7 +7,7 @@ ENDM
 
 UnlockedUnownLetterSets:
 ; entries correspond to UNLOCKED_UNOWNS_* constants
-	table_width 2, UnlockedUnownLetterSets
+	table_width 2
 	dw .Set_A_J
 	dw .Set_K_Q
 	dw .Set_R_W

@@ -123,7 +123,6 @@ SirfetchDFrames:  INCLUDE "gfx/pokemon/sirfetch_d/frames.asm"
 MrRimeFrames:     INCLUDE "gfx/pokemon/mr__rime/frames.asm"
 WyrdeerFrames:    INCLUDE "gfx/pokemon/wyrdeer/frames.asm"
 KleavorFrames:    INCLUDE "gfx/pokemon/kleavor/frames.asm"
-UrsalunaFrames:   INCLUDE "gfx/pokemon/ursaluna/frames.asm"
 SneaslerFrames:   INCLUDE "gfx/pokemon/sneasler/frames.asm"
 OverqwilFrames:   INCLUDE "gfx/pokemon/overqwil/frames.asm"
 FarigirafFrames:  INCLUDE "gfx/pokemon/farigiraf/frames.asm"
@@ -184,3 +183,6 @@ DudunsparceThreeSegmentFrames: INCLUDE "gfx/pokemon/dudunsparce_three_segment/fr
 
 WooperPlainFrames:   INCLUDE "gfx/pokemon/wooper_plain/frames.asm"
 WooperPaldeanFrames: INCLUDE "gfx/pokemon/wooper_paldean/frames.asm"
+
+UrsalunaPlainFrames:     INCLUDE "gfx/pokemon/ursaluna_plain/frames.asm"
+UrsalunaBloodmoonFrames: INCLUDE "gfx/pokemon/ursaluna_bloodmoon/frames.asm"

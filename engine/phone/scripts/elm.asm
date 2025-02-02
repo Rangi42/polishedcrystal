@@ -76,7 +76,7 @@ ElmEvolutionScript:
 	end
 
 ElmPhoneScript_EvolutionMethodsTable:
-	table_width 2, ElmPhoneScript_EvolutionMethodsTable
+	table_width 2
 	dw .EvolveNone
 	dw .EvolveLevel
 	dw .EvolveItem

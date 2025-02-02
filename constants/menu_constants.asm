@@ -109,3 +109,9 @@ DEF NUM_PARTYMENUACTIONS EQU const_value
 	const NAME_TRENDY
 	const NAME_BOX
 DEF NUM_NAME_TYPES EQU const_value
+
+; Lure Menu Options (see engine/menus/lure_menu.asm)
+	const_def 1
+	const HARSH_LURE_MENU_OPT  ; 1
+	const POTENT_LURE_MENU_OPT ; 2
+	const MALIGN_LURE_MENU_OPT ; 3

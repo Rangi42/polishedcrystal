@@ -27,6 +27,10 @@ DoPlayerMovement::
 	ret nz
 
 	ld a, c
+	and B_BUTTON ; holding b will brake
+	ret nz
+
+	ld a, c
 	or D_DOWN
 	ld [wCurInput], a
 	ret
@@ -498,12 +502,19 @@ DoPlayerMovement::
 	ld a, [hl]
 	ld [wPlayerTurningDirection], a
 
+	ld a, [wOverworldWeatherCooldown]
+	and a
+	jr z, .no_cooldown
+	dec a
+	ld [wOverworldWeatherCooldown], a
+.no_cooldown
+
 	ld a, 4
 	ret
 
 .Steps:
 ; entries correspond to STEP_* constants (see constants/map_object_constants.asm)
-	table_width 2, DoPlayerMovement.Steps
+	table_width 2
 	dw .SlowStep ; x0.5
 	dw .NormalStep ; x1
 	dw .FastStep ; x4
@@ -963,7 +974,8 @@ CheckTrainerRun:
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
-	inc a ; cp -1
+	inc a
+	assert UNASSOCIATED_MAPOBJECT == -1
 	jr z, .next
 
 ; You're within their sight range

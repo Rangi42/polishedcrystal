@@ -29,12 +29,15 @@ ExitAllMenus::
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
+	call RestoreSprites
 	call UpdateSprites
 FinishExitMenu::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
+	farcall LoadWeatherPalNoApply
+	farcall LoadWeatherGraphics
 	farcall FadeInPalettes_EnableDynNoApply
 	; fallthrough
 EnableSpriteUpdates::

@@ -1,5 +1,5 @@
 BattleAnimFrameData:
-	table_width 2, BattleAnimFrameData
+	table_width 2
 	dw .Frameset_00 ; 00
 	dw .Frameset_01 ; 01
 	dw .Frameset_02 ; 02
