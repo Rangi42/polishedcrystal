@@ -149,6 +149,7 @@ Some of these may never be added; they're just suggestions.
 * More music
    * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
+   * PGo music for the Celadon hideout and leader battles
    * S/M Malie City (Day) (for Shamouti Shrine)
 * More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarckus.org/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
@@ -166,7 +167,6 @@ Some of these may never be added; they're just suggestions.
 * Level ranges for wild Pokémon, instead of single values
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Make more trainers rematchable
-* Allow evolution during battle (optional)
 * Use Mart interface for selling decorations, with a red sidebar
 * Make Eggs use their Pokémon's palette
 
@@ -180,5 +180,6 @@ There are some features that I do *not* ever plan to add to Polished Crystal:
 * Terastalization
 * Ash-Greninja
 * Ash Ketchum
-* Genn 1 Exp. All/Gen 6+ Exp. Share
+* Gen 1 Exp. All/Gen 6+ Exp. Share
 * Levels above 100
+* DED cries

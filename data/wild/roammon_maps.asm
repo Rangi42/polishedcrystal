@@ -12,7 +12,7 @@ MACRO roam_map
 ENDM
 
 RoamMaps:
-	list_start RoamMaps
+	list_start
 	roam_map ROUTE_29, ROUTE_30, ROUTE_46
 	roam_map ROUTE_30, ROUTE_29, ROUTE_31
 	roam_map ROUTE_31, ROUTE_30, ROUTE_32, ROUTE_36

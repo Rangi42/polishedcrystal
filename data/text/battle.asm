@@ -35,6 +35,17 @@ LegendaryAppearedText:
 	line "appeared!"
 	prompt
 
+GhostAppearedText:
+	text "A Ghost"
+	line "appeared!"
+	prompt
+
+SilphScopeRevealText:
+	text "SilphScope2"
+	line "unveiled the"
+	cont "Ghost's identity!"
+	prompt
+
 HookedPokemonAttackedText:
 	text "The hooked"
 	line ""

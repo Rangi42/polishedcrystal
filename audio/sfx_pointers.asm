@@ -1,6 +1,6 @@
 SFX:
 ; entries correspond to SFX_* constants
-	table_width 2, SFX
+	table_width 2
 	farbank "Sound Effects"
 	fardw Sfx_DexFanfare5079
 	fardw Sfx_Item
@@ -39,6 +39,7 @@ SFX:
 	fardw Sfx_Transaction
 	fardw Sfx_ExitBuilding
 	fardw Sfx_Bump
+	fardw Sfx_Thunder_OW
 	fardw Sfx_Save
 	fardw Sfx_Pokeflute
 	fardw Sfx_ElevatorEnd

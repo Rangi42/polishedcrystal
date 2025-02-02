@@ -3,7 +3,7 @@ MACRO mini_icon
 ENDM
 
 MiniIconPointers:
-	table_width 7, MiniIconPointers
+	table_width 7
 	mini_icon Bulbasaur
 	mini_icon Ivysaur
 	mini_icon Venusaur
@@ -395,5 +395,7 @@ endr
 	mini_icon TaurosPaldean
 	mini_icon TaurosPaldeanFire
 	mini_icon TaurosPaldeanWater
+
+	mini_icon UrsalunaBloodmoon
 
 	assert_table_length NUM_UNIQUE_POKEMON

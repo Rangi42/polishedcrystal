@@ -197,6 +197,10 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
+wPlayerCurrentOAMSlot:: db
+
+wMapSetupFlags:: db
+
 
 SECTION "Sprite Animations", WRAM0
 
@@ -1138,6 +1142,44 @@ wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
 
 
+SECTION UNION "Misc 1326", WRAM0
+
+; GB Printer data
+wGameboyPrinterRAM::
+wGameboyPrinter2bppSource:: ds 40 tiles
+wGameboyPrinter2bppSourceEnd::
+wPrinterRowIndex:: db
+
+; Printer data
+wPrinterData:: ds 4
+wPrinterChecksum:: dw
+wPrinterHandshake:: db
+wPrinterStatusFlags::
+; bit 7: set if error 1 (battery low)
+; bit 6: set if error 4 (too hot or cold)
+; bit 5: set if error 3 (paper jammed or empty)
+; if this and the previous byte are both $ff: error 2 (connection error)
+	db
+
+wHandshakeFrameDelay:: db
+wPrinterSerialFrameDelay:: db
+wPrinterSendByteOffset:: dw
+wPrinterSendByteCounter:: dw
+
+; tilemap backup?
+wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterStatus:: db
+	ds 1
+; High nibble is for margin before the image, low nibble is for after.
+wPrinterMargins:: db
+wPrinterExposureTime:: db
+	ds 16
+wGameboyPrinterRAMEnd::
+
+wPrinterOpcode:: db
+wPrinterConnectionOpen:: db
+
+
 SECTION "Video", WRAM0
 
 wBGMapBuffer:: ds 48
@@ -1266,6 +1308,7 @@ wTradeDialog::
 wRandomValue::
 wEchoRAMTest::
 	db
+wPrinterQueueLength::
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db
 
@@ -1416,12 +1459,20 @@ wOBP1:: db
 
 wNumHits:: db
 
+wOverworldWeatherTimer:: db
+wOverworldWeatherCooldown:: db
+wSpriteOverlapCount:: db
+wWeatherFlags:: db
+wPrevWeather:: db
+wCurWeather:: db
+wPrevOvercastIndex:: db
+
 
 SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bits 1-7: unused
+; bits 3-7: unused
 	db
 
 wOptions::
@@ -1465,7 +1516,7 @@ wInitialOptions::
 ; bit 2: color variation off/on
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
-; bit 5: nuzlocke mode off/on
+; bit 5: affection bonuses off/on
 ; bit 6: scaled exp on/off
 ; bit 7: physical-special split on/off
 	db
@@ -1475,7 +1526,9 @@ wInitialOptions2::
 ; bit 1: classic EVs (no 510 cap)
 ; bit 2: modern EVs (510 cap)
 ; (only one of bits 0-2 can be set)
-; bits 3-6: unused
+; bit 3: use RTC
+; bit 4: evolve in battle
+; bits 5-6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::

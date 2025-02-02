@@ -1,31 +1,3 @@
-HealPartyEvenForNuzlocke:
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr z, HealParty
-
-	ld a, [wInitialOptions]
-	res NUZLOCKE_MODE, a
-	ld [wInitialOptions], a
-	call HealParty
-	ld a, [wInitialOptions]
-	set NUZLOCKE_MODE, a
-	ld [wInitialOptions], a
-	ret
-
-HealPartyMonEvenForNuzlocke:
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr z, HealPartyMon
-
-	ld a, [wInitialOptions]
-	res NUZLOCKE_MODE, a
-	ld [wInitialOptions], a
-	call HealPartyMon
-	ld a, [wInitialOptions]
-	set NUZLOCKE_MODE, a
-	ld [wInitialOptions], a
-	ret
-
 HealParty:
 	ld a, [wPartyCount]
 	ld c, a
@@ -65,19 +37,6 @@ HealPartyMon:
 	dec bc
 	dec bc
 
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr z, .Revive
-	ld a, [bc]
-	push hl
-	ld h, b
-	ld l, c
-	inc hl
-	or [hl]
-	pop hl
-	ret z
-
-.Revive:
 	ld a, [hli]
 	ld [bc], a
 	inc bc

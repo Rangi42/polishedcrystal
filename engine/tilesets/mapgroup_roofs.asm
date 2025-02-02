@@ -20,7 +20,7 @@ LoadMapGroupRoof::
 	jmp DecompressRequest2bpp
 
 MapGroupRoofGFX:
-	table_width 2, MapGroupRoofGFX
+	table_width 2
 	farbank "Roof Graphics"
 	fardw NewBarkRoofGFX
 	fardw VioletRoofGFX

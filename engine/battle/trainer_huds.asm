@@ -125,21 +125,17 @@ DrawEnemyHUDBorder:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
-	call DoesNuzlockeModePreventCapture
-	jr c, .nuzlocke
 	ld a, [wOTPartyMon1Species]
 	ld c, a
 	ld a, [wOTPartyMon1Form]
 	ld b, a
 	call CheckCosmeticCaughtMon
 	ret z
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	ret z
 	hlcoord 1, 1
 	ld [hl], "<BALL>"
-	ret
-
-.nuzlocke
-	hlcoord 1, 1
-	ld [hl], "<NONO>"
 	ret
 
 PlaceHUDBorderTiles:
@@ -235,38 +231,4 @@ _ShowLinkBattleParticipants:
 	call SetDefaultBGPAndOBP
 	ld a, $e4
 	ldh [rOBP0], a
-	ret
-
-DoesNuzlockeModePreventCapture:
-	; Is nuzlocke mode on?
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr z, .no
-
-	; Is tutorial battle?
-	ld a, [wBattleType]
-	cp BATTLETYPE_TUTORIAL
-	jr z, .no
-
-	; Is enemy shiny?
-	farcall BattleCheckEnemyShininess
-	jr c, .no
-
-	; Is location already done?
-	call GetCurrentLandmark
-	ld c, a
-	ld hl, wNuzlockeLandmarkFlags
-	; Use landmark as index into flag array
-	ld b, CHECK_FLAG
-	ld d, $0
-	predef FlagPredef
-	ld a, c
-	and a
-	jr z, .no
-
-	scf
-	ret
-
-.no
-	xor a
 	ret

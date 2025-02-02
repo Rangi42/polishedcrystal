@@ -1,7 +1,7 @@
 MACRO move
 	db \1 ; animation
 	db \2 ; effect
-	db \3 ; power
+	db \3 ; power (0 for status moves, 1 for nonstandard base power)
 	db \4 ; type
 	db \5 ; accuracy (-1 for moves that ignore accuracy checks)
 	db \6 ; pp
@@ -11,7 +11,7 @@ ENDM
 
 Moves::
 ; entries correspond to move ids (see constants/move_constants.asm)
-	table_width MOVE_LENGTH, Moves
+	table_width MOVE_LENGTH
 	move ACROBATICS,      EFFECT_CONDITIONAL_BOOST,  55, FLYING,    100, 15,   0, PHYSICAL
 	move KARATE_CHOP,     EFFECT_NORMAL_HIT,         50, FIGHTING,  100, 25,   0, PHYSICAL
 	move DOUBLE_SLAP,     EFFECT_MULTI_HIT,          15, NORMAL,     85, 10,   0, PHYSICAL

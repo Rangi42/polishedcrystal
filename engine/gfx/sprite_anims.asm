@@ -6,7 +6,7 @@ DoAnimFrame:
 
 .Jumptable:
 ; entries correspond to SPRITE_ANIM_SEQ_* constants (see constants/sprite_anim_constants.asm)
-	table_width 2, DoAnimFrame.Jumptable
+	table_width 2
 	dw DoNothing                    ; SPRITE_ANIM_SEQ_NULL
 	dw AnimSeq_PartyMon             ; SPRITE_ANIM_SEQ_PARTY_MON
 	dw AnimSeq_PartyMonSwitch       ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH

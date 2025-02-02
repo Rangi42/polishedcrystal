@@ -160,6 +160,7 @@ EcruteakCherishBallHouse_BlockData:
 EcruteakDestinyKnotHouse_BlockData:
 VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
+VioletOutskirtsHouse_BlockData:
 ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.ablk.lz"
 

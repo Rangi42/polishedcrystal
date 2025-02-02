@@ -43,7 +43,9 @@ NEXTU
 hMoveMon:: db
 ENDU
 
-	ds 3 ; unused
+hPrinter:: db
+
+	ds 2 ; unused
 
 UNION
 ; math-related values
@@ -206,9 +208,12 @@ ENDU
 hScriptBank:: db
 hScriptPos:: dw
 
+hUsedWeatherSpriteIndex:: db
+hUsedOAMIndex:: db
+
 hMobile:: db
 
-	ds 8 ; unused
+	ds 6 ; unused
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp

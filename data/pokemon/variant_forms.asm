@@ -2,7 +2,7 @@
 ; then continue with entries for these species+form combinations.
 
 CosmeticSpeciesAndFormTable:
-	table_width 2, CosmeticSpeciesAndFormTable
+	table_width 2
 	dp UNOWN,      UNOWN_B_FORM
 	dp UNOWN,      UNOWN_C_FORM
 	dp UNOWN,      UNOWN_D_FORM
@@ -63,7 +63,7 @@ CosmeticSpeciesAndFormTable:
 	; fallthrough
 
 VariantSpeciesAndFormTable:
-	table_width 2, VariantSpeciesAndFormTable
+	table_width 2
 	dp GYARADOS,   GYARADOS_RED_FORM
 	dp MEWTWO,     MEWTWO_ARMORED_FORM
 	dp DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM
@@ -109,6 +109,7 @@ VariantSpeciesAndFormTable:
 	dp TAUROS,     PALDEAN_FORM
 	dp TAUROS,     TAUROS_PALDEAN_FIRE_FORM
 	dp TAUROS,     TAUROS_PALDEAN_WATER_FORM
+	dp URSALUNA,   URSALUNA_BLOODMOON_FORM
 	assert_table_length NUM_VARIANT_FORMS
 
 	db 0 ; end

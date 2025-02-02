@@ -42,7 +42,7 @@ GetBattleVarAddr::
 
 BattleVarPairs:
 ; entries correspond to BATTLE_VARS_* constants
-	table_width 2, BattleVarPairs
+	table_width 2
 ;                   player                 enemy
 .Substatus1:     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
 .Substatus2:     db PLAYER_SUBSTATUS_2,    ENEMY_SUBSTATUS_2
@@ -73,7 +73,7 @@ BattleVarPairs:
 
 BattleVarLocations:
 ; entries correspond to PLAYER_* and ENEMY_* constants
-	table_width 2 + 2, BattleVarLocations
+	table_width 2 + 2
 	dw wPlayerSubStatus1,             wEnemySubStatus1
 	dw wPlayerSubStatus2,             wEnemySubStatus2
 	dw wPlayerSubStatus3,             wEnemySubStatus3

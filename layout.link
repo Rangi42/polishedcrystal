@@ -36,7 +36,6 @@ ROM0
 
 ROMX $01
 	"bank1"
-	"Effect Command Pointers"
 
 ROMX $02
 	"bank2"
@@ -245,6 +244,7 @@ WRAMX $2
 	align 8
 	"Sound Stack"
 	"Pic Animations RAM"
+	"Sprites Backup"
 
 WRAMX $3
 	org $d000

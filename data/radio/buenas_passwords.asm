@@ -10,7 +10,7 @@ MACRO password_group
 ENDM
 
 BuenasPasswordTable:
-	table_width 1, BuenasPasswordTable
+	table_width 1
 	dr .JohtoStarters
 	dr .Beverages
 	dr .HealingItems

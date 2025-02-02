@@ -1,5 +1,5 @@
 PokemonNames::
-	table_width MON_NAME_LENGTH - 1, PokemonNames
+	table_width MON_NAME_LENGTH - 1
 	rawchar "?000?@@@@@"
 	rawchar "Bulbasaur@"
 	rawchar "Ivysaur@@@"

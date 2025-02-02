@@ -55,7 +55,7 @@ RunScriptCommand:
 
 ScriptCommandTable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
-	table_width 2, ScriptCommandTable
+	table_width 2
 	dw Script_scall                      ; 00
 	dw Script_farscall                   ; 01
 	dw Script_memcall                    ; 02
@@ -179,7 +179,7 @@ ScriptCommandTable:
 	dw Script_changemapblocks            ; 78
 	dw Script_changeblock                ; 79
 	dw Script_reloadmap                  ; 7a
-	dw Script_refreshmap              ; 7b
+	dw Script_refreshmap                 ; 7b
 	dw Script_usestonetable              ; 7c
 	dw Script_playmusic                  ; 7d
 	dw Script_encountermusic             ; 7e
@@ -270,6 +270,8 @@ ScriptCommandTable:
 	dw Script_iffalsefwd                 ; d3
 	dw Script_iftruefwd                  ; d4
 	dw Script_scalltable                 ; d5
+	dw Script_setmapobjectmovedata       ; d6
+	dw Script_setmapobjectpal            ; d7
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -1243,7 +1245,6 @@ Script_catchtutorial:
 	jr Script_reloadmap
 
 Script_reloadmapafterbattle:
-	farcall PostBattleTasks
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	xor a
@@ -2260,8 +2261,10 @@ Script_pause:
 	jr z, .loop
 	ld [wScriptDelay], a
 .loop
-	ld c, 2
-	call DelayFrames
+rept 2
+	farcall DoOverworldWeather
+	call DelayFrame
+endr
 	ld hl, wScriptDelay
 	dec [hl]
 	jr nz, .loop
@@ -2566,10 +2569,6 @@ Script_giveapricorn:
 
 Script_paintingpic:
 	call GetScriptByte
-	and a
-	jr nz, .ok
-	ldh a, [hScriptVar]
-.ok
 	ld [wTrainerClass], a
 	farjp Paintingpic
 
@@ -2630,3 +2629,32 @@ Script_keyitemnotify:
 	; The key item icon overwrites nine font tiles, including
 	; the "▶" needed by the right cursor arrow.
 	farjp LoadFonts_NoOAMUpdate
+
+Script_setmapobjectmovedata:
+	call GetScriptByte
+	cp LAST_TALKED
+	jr nz, .ok
+	ldh a, [hLastTalked]
+.ok
+	call CheckObjectVisibility
+	ret c
+	ld hl, OBJECT_MAP_OBJECT_INDEX
+	add hl, bc
+	ld a, [hl]
+	cp -1
+	ret z
+	call GetMapObject
+	ld hl, MAPOBJECT_MOVEMENT
+	add hl, bc
+	call GetScriptByte
+	ld [hl], a
+	ret
+
+Script_setmapobjectpal:
+	call GetScriptByte
+	call GetMapObject
+	ld hl, MAPOBJECT_PALETTE
+	add hl, bc
+	call GetScriptByte
+	ld [hl], a
+	ret

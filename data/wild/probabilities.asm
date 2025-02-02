@@ -1,5 +1,5 @@
 GrassMonProbTable:
-	table_width 1, GrassMonProbTable
+	table_width 1
 	db 30  ; 30% chance
 	db 60  ; 30% chance
 	db 80  ; 20% chance
@@ -10,7 +10,7 @@ GrassMonProbTable:
 	assert_table_length NUM_GRASSMON
 
 WaterMonProbTable:
-	table_width 1, WaterMonProbTable
+	table_width 1
 	db 60  ; 60% chance
 	db 90  ; 30% chance
 	db 100 ; 10% chance

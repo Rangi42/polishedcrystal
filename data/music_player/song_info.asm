@@ -4,7 +4,7 @@ MACRO song_info
 ENDM
 
 SongInfo:
-	list_start SongInfo
+	list_start
 	; title, origin, composer, additional credits
 	song_info "Opening", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	song_info "Title Screen", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
@@ -189,6 +189,7 @@ SongInfo:
 	song_info "Vs.Champion", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
 	song_info "Credits", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
 	song_info "Post-Credits", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	song_info "Printer", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	song_info "Title", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
 	song_info "Dewford Town", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_SHANTYTOWN
 	song_info "Marine Tube", ORIGIN_B2W2, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM

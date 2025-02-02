@@ -333,7 +333,7 @@ FadeToMapMusic::
 	ld [wMusicFade], a
 	ld a, e
 	ld [wMusicFadeIDLo], a
-	ld a, d
+	xor a ; music hi byte is always 0
 	ld [wMusicFadeIDHi], a
 	ld a, e
 	ld [wMapMusic], a

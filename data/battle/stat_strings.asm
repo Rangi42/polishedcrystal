@@ -1,6 +1,6 @@
 StatStrings:
 ; entries correspond to stat constants
-	table_width 1, StatStrings
+	table_width 1
 	dr .health
 	dr .attack
 	dr .defense

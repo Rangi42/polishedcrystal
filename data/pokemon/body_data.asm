@@ -6,7 +6,7 @@ ENDM
 
 PokemonBodyData:
 ; entries correspond to constants/pokemon_constants.asm
-	table_width BODY_DATA_SIZE, PokemonBodyData
+	table_width BODY_DATA_SIZE
 	body_data   7,   69, QUADRUPED,    GREEN  ; BULBASAUR
 	body_data  10,  130, QUADRUPED,    GREEN  ; IVYSAUR
 	body_data  20, 1000, QUADRUPED,    GREEN  ; VENUSAUR
@@ -351,5 +351,7 @@ PokemonBodyData:
 	body_data  14, 1150, QUADRUPED,    BLACK  ; TAUROS (PALDEAN_FORM)
 	body_data  14,  850, QUADRUPED,    BLACK  ; TAUROS (TAUROS_PALDEAN_FIRE_FORM)
 	body_data  14, 1100, QUADRUPED,    BLACK  ; TAUROS (TAUROS_PALDEAN_WATER_FORM)
+
+	body_data  27, 3330, BIPEDAL_TAIL, BROWN  ; URSALUNA (URSALUNA_BLOODMOON_FORM)
 
 	assert_table_length NUM_EXT_POKEMON

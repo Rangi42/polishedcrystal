@@ -476,7 +476,7 @@ WriteTrainerEVs:
 	jmp PopBCDEHL
 
 EVSpreads:
-	table_width NUM_STATS, EVSpreads
+	table_width NUM_STATS
 	for n, NUM_EV_SPREADS
 		; each EV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
 		; by `ev_spread` (see data/trainers/parties.asm)

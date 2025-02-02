@@ -619,12 +619,11 @@ ENDM
 	const loadwildmon_command
 MACRO loadwildmon
 	db loadwildmon_command
-	db \1 ; pokemon
 	if _NARG == 3
-		db \2 ; form
+		dp \1, \2 ; pokemon
 		db \3 ; level
 	else
-		db 0  ; form
+		dp \1, PLAIN_FORM
 		db \2 ; level
 	endc
 ENDM
@@ -1369,6 +1368,20 @@ ENDM
 MACRO scalltable
 	db scalltable_command
 	dw \1 ; pointer table
+ENDM
+
+	const setmapobjectmovedata_command
+MACRO setmapobjectmovedata
+	db setmapobjectmovedata_command
+	db \1 ; person
+	db \2 ; SpriteMovementData index
+ENDM
+
+	const setmapobjectpal_command
+MACRO setmapobjectpal
+	db setmapobjectpal_command
+	db \1 ; person
+	db \2 ; palette
 ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

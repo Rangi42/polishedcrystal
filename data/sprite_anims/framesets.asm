@@ -1,6 +1,6 @@
 SpriteAnimFrameData:
 ; entries correspond to SPRITE_ANIM_FRAMESET_* constants (see constants/sprite_anim_constants.asm)
-	table_width 2, SpriteAnimFrameData
+	table_width 2
 	dw .Frameset_00
 	dw .Frameset_PartyMon
 	dw .Frameset_PartyMonWithMail
@@ -63,6 +63,7 @@ SpriteAnimFrameData:
 	dw .Frameset_DexSlowpoke
 	dw .Frameset_TownMapFly
 	dw .Frameset_GreenWalk
+	dw .Frameset_FlyMon
 	dw .Frameset_MobileTradeCableBulge
 	dw .Frameset_MobileTradeSentPulse
 	dw .Frameset_MobileTradePing
@@ -407,7 +408,14 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_TOWN_MAP_FLY, 32
 	oamrestart
 
-.Frameset_MobileTradeCableBulge:
+.Frameset_FlyMon:
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_1,  8
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_2,  8
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_1,  8
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_3,  8, OAM_X_FLIP
+	oamrestart
+
+	.Frameset_MobileTradeCableBulge:
 	oamframe SPRITE_ANIM_OAMSET_MOBILE_TRADE_CABLE_BULGE_1,  3
 	oamframe SPRITE_ANIM_OAMSET_MOBILE_TRADE_CABLE_BULGE_2,  3
 	oamrestart

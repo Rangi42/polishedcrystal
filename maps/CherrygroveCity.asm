@@ -148,7 +148,7 @@ CherrygroveRivalTriggerNorth:
 	turnobject PLAYER, LEFT
 	applymovement CHERRYGROVECITY_RIVAL, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_RIVAL
-	special HealPartyEvenForNuzlocke
+	special HealParty
 	setscene $2
 	playmusic MUSIC_CHERRYGROVE_CITY
 	end

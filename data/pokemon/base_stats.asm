@@ -34,7 +34,7 @@ MACRO tmhm
 ENDM
 
 BaseData::
-	table_width BASE_DATA_SIZE, BaseData
+	table_width BASE_DATA_SIZE
 INCLUDE "data/pokemon/base_stats/bulbasaur.asm"
 INCLUDE "data/pokemon/base_stats/ivysaur.asm"
 INCLUDE "data/pokemon/base_stats/venusaur.asm"
@@ -319,7 +319,7 @@ INCLUDE "data/pokemon/base_stats/sirfetch_d.asm"
 INCLUDE "data/pokemon/base_stats/mr__rime.asm"
 INCLUDE "data/pokemon/base_stats/wyrdeer.asm"
 INCLUDE "data/pokemon/base_stats/kleavor.asm"
-INCLUDE "data/pokemon/base_stats/ursaluna.asm"
+INCLUDE "data/pokemon/base_stats/ursaluna_plain.asm"
 INCLUDE "data/pokemon/base_stats/sneasler.asm"
 INCLUDE "data/pokemon/base_stats/overqwil.asm"
 INCLUDE "data/pokemon/base_stats/dudunsparce.asm"
@@ -379,5 +379,7 @@ INCLUDE "data/pokemon/base_stats/wooper_paldean.asm"
 INCLUDE "data/pokemon/base_stats/tauros_paldean.asm"
 INCLUDE "data/pokemon/base_stats/tauros_paldean_fire.asm"
 INCLUDE "data/pokemon/base_stats/tauros_paldean_water.asm"
+
+INCLUDE "data/pokemon/base_stats/ursaluna_bloodmoon.asm"
 
 	assert_table_length NUM_EXT_POKEMON

@@ -201,7 +201,7 @@ Route6AdvancedTipsSignText:
 	cont "the holder, like"
 
 	para "an Iron Ball or"
-	line "a Ring Target."
+	line "a Choice Scarf."
 
 	para "But with the move"
 	line "Trick, the holder"
