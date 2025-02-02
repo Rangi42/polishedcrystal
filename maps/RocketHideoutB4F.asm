@@ -581,7 +581,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 	para "Blanche: Each"
 	line "lure contains the"
 
-	para "essense of a"
+	para "essence of a"
 	line "legendary bird"
 	cont "#mon."
 
