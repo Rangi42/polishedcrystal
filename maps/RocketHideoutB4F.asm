@@ -597,7 +597,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 
 	para "That's why the"
 	line "Great Tree is"
-	line "important."
+	cont "important."
 
 	para "Candela: The tree"
 	line "is ancient,"
