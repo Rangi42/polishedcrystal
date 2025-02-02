@@ -723,7 +723,14 @@ CheckMoveSpeed::
 	call GetTrueUserAbility
 	cp QUICK_DRAW
 	jr nz, .quick_draw_done
-	ld b, a
+	ld b, a ; for BufferAbility
+
+	; Quick Draw only works on attacking moves
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	jr nz, .quick_draw_done
+
 	farcall BufferAbility
 	ld a, 100
 	call BattleRandomRange

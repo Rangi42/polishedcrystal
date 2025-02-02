@@ -185,7 +185,7 @@ GoldenrodMuseum2FScientistScript:
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
 	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
 	jumpthistextfaceplayer
-	
+
 	text "These artifacts"
 	line "are fascinating!"
 
@@ -260,14 +260,14 @@ GoldenrodMuseum2FTutorIntroText:
 	line "was necessary"
 
 	para "to preserve a"
-  line "piece of Johto's"
-  cont "history."
+	line "piece of Johto's"
+	cont "history."
 
 	para "Even #mon"
-  line "can understand"
+	line "can understand"
 
 	para "the value of"
-  line "preservation!"
+	line "preservation!"
 	done
 
 GoldenrodMuseum2FTutorBatonPassText:

@@ -623,7 +623,7 @@ RetrieveBreedmon:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	call HealPartyMonEvenForNuzlocke
+	call HealPartyMon
 	ld a, [wCurPartyLevel]
 	ld d, a
 	farcall CalcExpAtLevel

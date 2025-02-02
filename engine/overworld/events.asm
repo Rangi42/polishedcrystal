@@ -99,6 +99,7 @@ HandleMap:
 	call NextOverworldFrame
 	call HandleMapBackground
 	call CheckPlayerState
+	farcall DoOverworldWeather
 	xor a
 	ret
 
@@ -181,7 +182,8 @@ HandleMapObjects:
 HandleMapBackground:
 	farcall _UpdateSprites
 	farcall ScrollScreen
-	farjp PlaceMapNameSign
+	farcall PlaceMapNameSign
+	farjp OWFadePalettesStep
 
 CheckPlayerState:
 	ld a, [wPlayerStepFlags]
@@ -356,7 +358,7 @@ RenderShamoutiCoastSand:
 	inc hl
 	ld a, $5b ; lower horizontal footprint
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 .vertical
 	inc hl
@@ -366,7 +368,7 @@ RenderShamoutiCoastSand:
 	dec hl
 	ld a, $59 ; lower-left vertical footprint
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 .bicycle
 	ld a, [wPlayerDirection]
@@ -380,7 +382,7 @@ RenderShamoutiCoastSand:
 	inc hl
 	ld a, $5c ; horizontal bicycle track
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 .vertical_bicycle
 	ld a, $5d ; vertical bicycle track
@@ -388,7 +390,7 @@ RenderShamoutiCoastSand:
 	add hl, bc
 	ld a, $5d ; vertical bicycle track
 	call QueueVolatileTiles
-	jp FinishVolatileTiles
+	jmp FinishVolatileTiles
 
 CheckWildEncounterCooldown:
 	ld hl, wWildEncounterCooldown
@@ -562,7 +564,7 @@ TryObjectEvent:
 	call StackJumpTable
 
 ObjectEventTypeArray:
-	table_width 2, ObjectEventTypeArray
+	table_width 2
 	dw .script   ; OBJECTTYPE_SCRIPT
 	dw .itemball ; OBJECTTYPE_ITEMBALL
 	dw .trainer  ; OBJECTTYPE_TRAINER
@@ -656,7 +658,7 @@ TryBGEvent:
 	call StackJumpTable
 
 BGEventJumptable:
-	table_width 2, BGEventJumptable
+	table_width 2
 	dw .read     ; BGEVENT_READ
 	dw .up       ; BGEVENT_UP
 	dw .down     ; BGEVENT_DOWN
@@ -793,7 +795,7 @@ PlayerMovement:
 
 PlayerMovementPointers:
 ; entries correspond to PLAYERMOVEMENT_* constants
-	table_width 2, PlayerMovementPointers
+	table_width 2
 	dw .normal
 	dw .warp
 	dw .turn
@@ -1039,7 +1041,7 @@ DoPlayerEvent:
 
 PlayerEventScriptPointers:
 ; entries correspond to PLAYEREVENT_* constants
-	table_width 3, PlayerEventScriptPointers
+	table_width 3
 	dba InvalidEventScript       ; PLAYEREVENT_NONE
 	dba SeenByTrainerScript      ; PLAYEREVENT_SEENBYTRAINER
 	dba TalkToTrainerScript      ; PLAYEREVENT_TALKTOTRAINER

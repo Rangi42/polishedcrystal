@@ -14,6 +14,13 @@
 	wildmon  45, TENTACRUEL
 	end_water_wildmons
 
+	def_water_wildmons ROUTE_2_SOUTH
+	db 6 percent ; encounter rate
+	wildmon  53, GOLDEEN
+	wildmon  55, PSYDUCK
+	wildmon  57, SEAKING
+	end_water_wildmons
+
 	def_water_wildmons ROUTE_4
 	db 4 percent ; encounter rate
 	wildmon  55, GOLDEEN
@@ -68,6 +75,13 @@
 	wildmon  49, TENTACOOL
 	wildmon  53, QUAGSIRE
 	wildmon  55, TENTACRUEL
+	end_water_wildmons
+
+	def_water_wildmons ROUTE_16_WEST
+	db 6 percent ; encounter rate
+	wildmon  53, TENTACOOL
+	wildmon  55, SEAKING
+	wildmon  57, TENTACRUEL
 	end_water_wildmons
 
 	def_water_wildmons LUCKY_ISLAND

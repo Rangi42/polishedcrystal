@@ -1,5 +1,5 @@
 Marts:
-	table_width 2, Marts
+	table_width 2
 	dw CherrygroveMart
 	dw CherrygroveMartAfterDex
 	dw VioletMart

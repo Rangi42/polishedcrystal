@@ -1,6 +1,6 @@
 DecorationNames:
 ; entries correspond to constants/deco_constants.asm
-	list_start DecorationNames
+	list_start
 	li "Cancel"
 	li "Put it away"
 	li "Magna Plant"

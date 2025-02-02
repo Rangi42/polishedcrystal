@@ -20,7 +20,7 @@ SaffronCity_MapScriptHeader:
 	warp_event 17, 35, ROUTE_6_SAFFRON_GATE, 2
 	warp_event 39, 18, ROUTE_8_SAFFRON_GATE, 1
 	warp_event 39, 19, ROUTE_8_SAFFRON_GATE, 2
-	warp_event 34, 11, POKEMON_TRAINER_FAN_CLUB, 1
+	warp_event 32, 11, POKEMON_TRAINER_FAN_CLUB, 1
 	warp_event  5, 29, SAFFRON_ORRE_SPEECH_HOUSE, 1
 	warp_event 13, 29, SAFFRON_BOOK_SPEECH_HOUSE, 1
 	warp_event 21, 29, SAFFRON_HITMONTOP_KID_HOUSE, 1
@@ -35,7 +35,7 @@ SaffronCity_MapScriptHeader:
 	bg_event 15, 21, BGEVENT_JUMPTEXT, SilphCoSignText
 	bg_event 25, 29, BGEVENT_JUMPTEXT, MrPsychicsHouseSignText
 	bg_event 11,  5, BGEVENT_JUMPTEXT, SaffronCityMagnetTrainStationSignText
-	bg_event 32, 12, BGEVENT_JUMPTEXT, PokemonTrainerFanClubSignText
+	bg_event 35, 11, BGEVENT_JUMPTEXT, PokemonTrainerFanClubSignText
 	bg_event  5, 21, BGEVENT_JUMPTEXT, SaffronTrainerTips1Text
 	bg_event 35, 21, BGEVENT_JUMPTEXT, SaffronTrainerTips2Text
 
@@ -44,9 +44,9 @@ SaffronCity_MapScriptHeader:
 	object_event 18, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SaffronCityPokefanMScript, -1
 	object_event 32,  7, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityCooltrainerMText, -1
 	object_event 20, 24, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityCooltrainerFText, -1
-	object_event 27, 12, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityFisherScript, -1
+	object_event 35, 14, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityFisherScript, -1
 	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityYoungster1Text, -1
-	object_event 35, 22, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityYoungster2Text, -1
+	object_event 35, 23, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityYoungster2Text, -1
 	object_event 14,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityLass2Text, -1
 	object_event  3, 24, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN) | (1 << EVE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt1Text, -1
 	object_event  4, 25, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt2Text, -1

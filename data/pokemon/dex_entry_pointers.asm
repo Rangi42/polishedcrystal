@@ -1,6 +1,6 @@
 PokedexDataPointerTable:
 ; entries correspond to constants/pokemon_constants.asm
-	table_width 3, PokedexDataPointerTable
+	table_width 3
 	dba BulbasaurPokedexEntry
 	dba IvysaurPokedexEntry
 	dba VenusaurPokedexEntry
@@ -345,5 +345,7 @@ PokedexDataPointerTable:
 	dba TaurosPaldeanPokedexEntry
 	dba TaurosPaldeanFirePokedexEntry
 	dba TaurosPaldeanWaterPokedexEntry
+
+	dba UrsalunaBloodmoonPokedexEntry
 
 	assert_table_length NUM_EXT_POKEMON

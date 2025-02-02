@@ -1811,3 +1811,8 @@ SECTION "TaurosPaldeanWater Mini Icon", ROMX
 TaurosPaldeanWaterMini::     INCBIN "gfx/minis/tauros_paldean_water.2bpp.lz"
 TaurosPaldeanWaterMiniMask:: INCBIN "gfx/minis/tauros_paldean_water_mask.1bpp.lz"
 TaurosPaldeanWaterIcon::     INCBIN "gfx/icons/tauros_paldean_water.2bpp.lz"
+
+SECTION "UrsalunaBloodmoon Mini Icon", ROMX
+UrsalunaBloodmoonMini::     INCBIN "gfx/minis/ursaluna_bloodmoon.2bpp.lz"
+UrsalunaBloodmoonMiniMask:: INCBIN "gfx/minis/ursaluna_bloodmoon_mask.1bpp.lz"
+UrsalunaBloodmoonIcon::     INCBIN "gfx/icons/ursaluna_bloodmoon.2bpp.lz"

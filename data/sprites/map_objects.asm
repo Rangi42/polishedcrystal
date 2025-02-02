@@ -5,7 +5,7 @@ ENDM
 
 SpriteMovementData::
 ; entries correspond to SPRITEMOVEDATA_* constants
-	table_width NUM_SPRITEMOVEDATA_FIELDS, SpriteMovementData
+	table_width NUM_SPRITEMOVEDATA_FIELDS
 	; function,                                              facing, action,                         flags1, flags2, palette flags
 	sprite_movement_data SPRITEMOVEFN_00,                    DOWN,   OBJECT_ACTION_STAND,            $02,    $00,    %0000 ; SPRITEMOVEDATA_00
 	sprite_movement_data SPRITEMOVEFN_STANDING,              DOWN,   OBJECT_ACTION_STAND,            $0c,    $00,    %0000 ; SPRITEMOVEDATA_STILL
@@ -19,7 +19,7 @@ SpriteMovementData::
 	sprite_movement_data SPRITEMOVEFN_STANDING,              RIGHT,  OBJECT_ACTION_STAND,            $00,    $00,    %0000 ; SPRITEMOVEDATA_STANDING_RIGHT
 	sprite_movement_data SPRITEMOVEFN_FAST_RANDOM_SPIN,      DOWN,   OBJECT_ACTION_STAND,            $00,    $00,    %0000 ; SPRITEMOVEDATA_SPINRANDOM_FAST
 	sprite_movement_data SPRITEMOVEFN_OBEY_DPAD,             DOWN,   OBJECT_ACTION_STAND,            $02,    $00,    %0000 ; SPRITEMOVEDATA_PLAYER
-	sprite_movement_data SPRITEMOVEFN_CUT_TREE,              DOWN,   OBJECT_ACTION_CUT_TREE,         $0c,    $00,    %0000 ; SPRITEMOVEDATA_CUTTABLE_TREE
+	sprite_movement_data SPRITEMOVEFN_CUT_TREE,              DOWN,   OBJECT_ACTION_CUT_TREE,         $0c,    LOW_PRIORITY,    %0000 ; SPRITEMOVEDATA_CUTTABLE_TREE
 	sprite_movement_data SPRITEMOVEFN_FOLLOW,                DOWN,   OBJECT_ACTION_STAND,            $02,    $00,    %0000 ; SPRITEMOVEDATA_FOLLOWING
 	sprite_movement_data SPRITEMOVEFN_SCRIPTED,              DOWN,   OBJECT_ACTION_STAND,            $02,    $00,    %0000 ; SPRITEMOVEDATA_SCRIPTED
 	sprite_movement_data SPRITEMOVEFN_BIG_SNORLAX,           DOWN,   OBJECT_ACTION_BIG_SNORLAX,      $2e,    $01,    %1100 ; SPRITEMOVEDATA_SNORLAX
@@ -54,5 +54,5 @@ SpriteMovementData::
 	sprite_movement_data SPRITEMOVEFN_ALOLAN_EXEGGUTOR,      DOWN,   OBJECT_ACTION_ALOLAN_EXEGGUTOR, $0c,    $00,    %0000 ; SPRITEMOVEDATA_ALOLAN_EXEGGUTOR
 	sprite_movement_data SPRITEMOVEFN_TINY_WINDOWS,          DOWN,   OBJECT_ACTION_TINY_WINDOWS,     $8e,    $02,    %0000 ; SPRITEMOVEDATA_TINY_WINDOWS
 	sprite_movement_data SPRITEMOVEFN_STANDING,              UP,     OBJECT_ACTION_STAND,            $8e,    $02,    %0000 ; SPRITEMOVEDATA_PLACEHOLDER_UP
-	sprite_movement_data SPRITEMOVEFN_MICROPHONE,            LEFT,   OBJECT_ACTION_MICROPHONE,       $0c,    $00,    %0000 ; SPRITEMOVEDATA_MICROPHONE
+	sprite_movement_data SPRITEMOVEFN_MICROPHONE,            LEFT,   OBJECT_ACTION_MICROPHONE,       $0c,    LOW_PRIORITY,    %0000 ; SPRITEMOVEDATA_MICROPHONE
 	assert_table_length NUM_SPRITEMOVEDATA

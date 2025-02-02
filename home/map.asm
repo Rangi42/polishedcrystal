@@ -229,6 +229,9 @@ CheckIndoorMap::
 	cp GATE
 	ret
 
+LoadMapAttributes_Connection::
+	ld hl, wMapSetupFlags
+	set MAPSETUP_CONNECTION_F, [hl]
 LoadMapAttributes::
 	ld a, [wMapTileset]
 	ld [wOldTileset], a
@@ -261,7 +264,12 @@ ReadMapScripts::
 	; fallthrough
 ReadObjectEvents::
 	push hl
-	call ClearObjectStructs
+	ld hl, wMapSetupFlags
+	bit MAPSETUP_CONNECTION_F, [hl]
+	call z, ClearObjectStructs
+	ld hl, wMapSetupFlags
+	res MAPSETUP_CONNECTION_F, [hl]
+	call ClearObjectAssociations
 	pop de
 	ld hl, wMap1Object
 	ld a, [de]
@@ -471,6 +479,20 @@ ClearObjectStructs::
 	ld bc, OBJECT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
 	rst ByteFill
+	ret
+
+ClearObjectAssociations::
+	push de
+	ld hl, wObject1Struct + OBJECT_MAP_OBJECT_INDEX
+	ld de, OBJECT_LENGTH
+	ld b, NUM_OBJECT_STRUCTS - 1
+	ld a, UNASSOCIATED_OBJECT
+.loop
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .loop
+	pop de
 	ret
 
 GetWarpDestCoords::
@@ -885,6 +907,7 @@ MapTextbox::
 	rst Bankswitch
 
 	push hl
+	call ClearSpritesUnderTextbox
 	call SpeechTextbox
 	call SafeUpdateSprites
 	ld a, 1

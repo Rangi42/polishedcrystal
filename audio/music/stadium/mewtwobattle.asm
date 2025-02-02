@@ -1934,9 +1934,11 @@ Music_MewtwoBattleStadium_Ch4_ditty3:
 	drum_note 5, 1
 	drum_note 5, 3
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	drum_note 5, 1
 	drum_note 5, 1
 	drum_note 7, 1
@@ -1945,10 +1947,12 @@ Music_MewtwoBattleStadium_Ch4_ditty3:
 	drum_note 5, 3
 	drum_note 5, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
 	drum_note 11, 3
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	drum_note 5, 1
 	drum_note 5, 1
 	drum_note 7, 1
@@ -1958,9 +1962,11 @@ Music_MewtwoBattleStadium_Ch4_ditty3:
 	drum_note 5, 1
 	drum_note 5, 3
 	rest 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	drum_note 5, 1
 	drum_note 5, 1
 	drum_note 7, 1
@@ -1969,13 +1975,15 @@ Music_MewtwoBattleStadium_Ch4_ditty3:
 	drum_note 5, 3
 	drum_note 5, 1
 	drum_note 5, 1
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
 	drum_note 11, 3
 	drum_note 11, 2
 	drum_note 11, 1
 	drum_note 11, 1
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty4:
@@ -1992,9 +2000,11 @@ Music_MewtwoBattleStadium_Ch4_ditty5:
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty7:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty8:
@@ -2064,30 +2074,36 @@ Music_MewtwoBattleStadium_Ch4_ditty17:
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty18:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 2
 	drum_note 11, 1
 	drum_note 11, 1
 	drum_note 11, 1
 	drum_note 11, 1
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty19:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 1
 	drum_note 11, 1
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty20:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
 	drum_note 11, 2
 	drum_note 11, 1
 	drum_note 11, 1
 	drum_note 11, 2
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty21:
@@ -2104,17 +2120,21 @@ Music_MewtwoBattleStadium_Ch4_ditty23:
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty24:
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
 	rest 2
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	drum_note 10, 2
 	rest 1
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4_ditty25:
 	drum_note 4, 2
-	noisesampleset 0
+	toggle_noise
+	toggle_noise 0
 	drum_note 11, 3
-	noisesampleset 1
+	toggle_noise
+	toggle_noise 1
 	sound_ret

@@ -243,12 +243,22 @@ DoEggStep::
 	ret
 
 OverworldHatchEgg::
+	call BackupSprites
 	call ReanchorMap
 	call LoadStandardMenuHeader
 	call HatchEggs
-	call ExitAllMenus
-	call RestartMapMusic
-	jmp CloseText
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
+	call ClearBGPalettes
+	call ExitMenu
+	call ReloadTilesetAndPalettes
+	call CloseText
+	call RestoreSprites
+	call UpdateSprites
+	farcall EnableDynPalUpdatesNoApply
+	call FinishExitMenu
+	farcall Script_refreshmap
+	jmp RestartMapMusic
 
 HatchEggs:
 	xor a
@@ -358,16 +368,11 @@ HatchEggs:
 	ld hl, .Text_HatchEgg
 	call PrintText
 
-	; Nuzlocke Mode always prompts for nickname. Otherwise, ask.
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr nz, .yesnickname
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox
 	jr c, .nonickname
 
-.yesnickname
 	; de = the relevant entry in wPartyMonNicknames.
 	pop de
 	push de
@@ -676,8 +681,11 @@ EggHatch_AnimationSequence:
 	push af
 	ld e, MUSIC_NONE
 	call PlayMusic
+	farcall FadeOutPalettes
 	farcall BlankScreen
 	call DisableLCD
+	ld a, CGB_PLAIN
+	call GetCGBLayout
 	ld a, " "
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0

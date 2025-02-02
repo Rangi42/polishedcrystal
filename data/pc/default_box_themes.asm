@@ -1,5 +1,5 @@
 BillsPC_DefaultBoxThemes:
-	table_width 1, BillsPC_DefaultBoxThemes
+	table_width 1
 	db THEME_GRASS
 	db THEME_FIRE
 	db THEME_WATER

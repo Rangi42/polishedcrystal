@@ -495,7 +495,7 @@ DoTextUntilTerminator::
 	ret
 
 TextCommands::
-	table_width 2, TextCommands
+	table_width 2
 	dw TextCommand_START         ; $00 <START>
 	dw TextCommand_RAM           ; $01 <RAM>
 	dw TextCommand_PROMPT_BUTTON ; $02 <WAIT>

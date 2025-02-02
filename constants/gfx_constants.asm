@@ -40,6 +40,11 @@ DEF SPRITEOAMSTRUCT_ATTRIBUTES rb ; 3
 DEF SPRITEOAMSTRUCT_LENGTH EQU _RS
 DEF NUM_SPRITE_OAM_STRUCTS EQU 40 ; see wShadowOAM
 
+; Used to prevent updating the OAM's palette (0-7) during the next anim frame,
+; useful when dynamically applying a palette, such as party menu sprites and overworld fly mon sprites.
+DEF SPRITEOAM_SKIP_PAL_APPLY       EQU -1
+DEF SPRITEOAM_SKIP_PAL_APPLY_XFLIP EQU -2 ; Same as above, but with X-flip attribute.
+
 ; PokeAnims indexes (see engine/gfx/pic_animation.asm)
 	const_def
 	const ANIM_MON_SLOW
@@ -77,3 +82,6 @@ DEF VWF_OPAQUE EQU 1 << VWF_OPAQUE_F
 	const DEXTILE_FROM_DEXMAP_F
 
 DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
+
+DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
+DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves

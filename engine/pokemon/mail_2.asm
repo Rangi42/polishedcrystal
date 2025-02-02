@@ -59,7 +59,7 @@ ReadAnyMail:
 
 LoadMailGFXJumptable:
 ; entries correspond to mail items
-	table_width 2, LoadMailGFXJumptable
+	table_width 2
 	dw LoadFlowerMailGFX
 	dw LoadSurfMailGFX
 	dw LoadLiteBlueMailGFX

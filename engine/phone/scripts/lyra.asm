@@ -57,7 +57,7 @@ LyraPhone_GetFirstMonNextMoveLevel:
 	ret
 
 LyraPhoneScript_GreetingsTable:
-	table_width 2, LyraPhoneScript_GreetingsTable
+	table_width 2
 	dw .MornGreeting
 	dw .DayGreeting
 	dw .NiteGreeting
@@ -77,7 +77,7 @@ LyraPhoneScript_GreetingsTable:
 	end
 
 LyraPhoneScript_JohtoLandmarksTable:
-	table_width 2, LyraPhoneScript_JohtoLandmarksTable
+	table_width 2
 	dw .Generic
 	dw .NewBarkTown
 	dw .Route29

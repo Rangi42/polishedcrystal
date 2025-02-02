@@ -3962,7 +3962,13 @@ DrawEnemyHUD:
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	call GetBaseData
+
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	ld de, .ghost_nickname
+	jr z, .got_nickname
 	ld de, wEnemyMonNickname
+.got_nickname
 	hlcoord 1, 0
 	rst PlaceString
 	ld h, b
@@ -3988,6 +3994,10 @@ endr
 	ld [hl], a
 
 .not_shiny
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	ld a, " "
+	jr z, .got_gender
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
@@ -4076,6 +4086,9 @@ endr
 	ld [hli], a
 	ld [hl], $58
 	jmp FinishBattleAnim
+
+.ghost_nickname:
+	db "Ghost@"
 
 BattleAnimateHPBar:
 	predef AnimateHPBar
@@ -5135,6 +5148,9 @@ MoveSelectionScreen:
 	call StdBattleTextbox
 .start_over
 	call SafeLoadTempTileMapToTileMap
+	ld c, 2
+	call DelayFrames
+	call LoadWeatherIconSprite
 	jmp MoveSelectionScreen
 
 .pressed_up
@@ -5173,6 +5189,7 @@ MoveSelectionScreen:
 	jmp MoveSelectionScreen
 
 .struggle
+	call ClearSprites
 	ld a, STRUGGLE
 	ld [wCurPlayerMove], a
 	ld hl, BattleText_PkmnHasNoMovesLeft
@@ -5201,7 +5218,7 @@ MoveSelectionScreen:
 	pop hl
 	call BattleMoveDescTextbox
 	call WaitPressAorB_BlinkCursor
-	jr .start_over
+	jmp .start_over
 
 SetChoiceLock:
 ; Set choice lock to move choice c (0-3)
@@ -6423,13 +6440,13 @@ GiveExperiencePoints:
 	ld a, [wEnemyMonBaseExp]
 	ldh [hMultiplicand + 2], a
 	ld a, [wInitialOptions]
-	bit SCALED_EXP, a
+	bit SCALED_EXP_OPT, a
 	call nz, GetNewBaseExp
 	ld a, [wEnemyMonLevel]
 	ldh [hMultiplier], a
 	call Multiply
 	ld a, [wInitialOptions]
-	bit SCALED_EXP, a
+	bit SCALED_EXP_OPT, a
 	ld a, 7
 	jr z, .got_exp_divisor
 	ld a, 5
@@ -6676,11 +6693,41 @@ GiveExperiencePoints:
 	jr nz, .level_loop
 	pop af
 	ld [wCurPartyLevel], a
+
+	ld a, [wBattleMode]
+	dec a ; wild battle
+	jr z, .defer_evolve
+	call CheckEnemyTrainerDefeated
+	jr z, .defer_evolve
+
+	ld hl, wInitialOptions2
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
+	jr nz, .evolve_now
+
+.defer_evolve
 	ld hl, wEvolvableFlags
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, SET_FLAG
 	predef FlagPredef
+	jr .evolve_logic_done
+
+.evolve_now
+	call LoadTileMapToTempTileMap
+	call EvolveDuringBattle
+	call UpdatePlayerHPPal
+	call _LoadBattleFontsHPBar
+	call GetMonBackpic
+	call LoadTempTileMapToTileMap
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 2, 6
+	lb bc, 6, 6
+	predef PlaceGraphic
+	call EmptyBattleTextbox
+	farcall RunEntryAbilitiesInner
+
+.evolve_logic_done
 	pop af
 	ld [wCurPartyLevel], a
 
@@ -6791,7 +6838,7 @@ GiveExperiencePoints:
 
 .done_sharing_exp
 	ld a, [wInitialOptions]
-	bit SCALED_EXP, a
+	bit SCALED_EXP_OPT, a
 	jr z, .done_scaling
 
 	; Level multiplier
@@ -7735,13 +7782,25 @@ DropEnemySub:
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	call GetBaseData
-	ld de, vTiles2
-	predef FrontpicPredef
+	call GetFrontpicOrGhostpic
 	pop af
 	ld [wCurForm], a
 	pop af
 	ld [wCurPartySpecies], a
 	ret
+
+GetFrontpicOrGhostpic:
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, .not_ghost_battle
+	lb bc, BANK(GhostFrontpic), 7 * 7
+	ld hl, GhostFrontpic
+	ld de, vTiles2
+	jmp DecompressRequest2bpp
+
+.not_ghost_battle
+	ld de, vTiles2
+	predef_jump FrontpicPredef
 
 GetFrontpic_DoAnim:
 	ldh a, [hBattleTurn]
@@ -7763,9 +7822,12 @@ StartBattle:
 
 	ld a, [wTimeOfDayPal]
 	push af
+	farcall ClearWeather
 	call BattleIntro
 	call DoBattle
 	call ExitBattle
+	farcall LoadWeatherGraphics
+	farcall LoadWeatherPal
 	pop af
 	ld [wTimeOfDayPal], a
 	scf
@@ -7795,6 +7857,23 @@ BattleIntro:
 	res rLCDC_WINDOW_TILEMAP, [hl]
 	call InitBattleDisplay
 	call BattleStartMessage
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, .skip_ghost_reveal
+	ld a, SILPHSCOPE2
+	call _CheckKeyItem
+	jr nc, .skip_ghost_reveal
+	ld hl, SilphScopeRevealText
+	call StdBattleTextbox
+	ld de, vTiles0
+	predef GetFrontpic
+	ld de, ANIM_GHOST_TRANSFORM
+	call PlayBattleAnimDE
+	ld hl, WildPokemonAppearedText
+	call StdBattleTextbox
+	ld a, BATTLETYPE_NORMAL
+	ld [wBattleType], a
+.skip_ghost_reveal
 	ld hl, rLCDC
 	set rLCDC_WINDOW_TILEMAP, [hl]
 	xor a
@@ -7906,9 +7985,7 @@ InitEnemyWildmon:
 	ld a, 1
 	ld [wEnemySwitchTarget], a
 	call SendInUserPkmn
-
-	ld de, vTiles2
-	predef FrontpicPredef
+	call GetFrontpicOrGhostpic
 	xor a
 	ld [wTrainerClass], a
 	ldh [hGraphicStartTile], a
@@ -7917,8 +7994,8 @@ InitEnemyWildmon:
 	predef_jump PlaceGraphic
 
 ExitBattle:
+	call PostBattleTasks
 	call .HandleEndOfBattle
-	call HandleNuzlockeFlags
 	call BattleEnd_HandleRoamMons
 	xor a
 	ld [wLowHealthAlarm], a
@@ -7954,7 +8031,7 @@ ExitBattle:
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	jmp ShowLinkBattleResult
+	jr ShowLinkBattleResult
 
 .not_linked
 	ld a, [wBattleResult]
@@ -7965,40 +8042,6 @@ ExitBattle:
 	ld [wForceEvolution], a
 	farcall EvolveAfterBattle
 	farjp GivePokerusAndConvertBerries
-
-HandleNuzlockeFlags:
-	ld a, [wBattleMode]
-	dec a
-	ret nz
-
-	; Roaming mons don't count
-	ld a, [wBattleType]
-	cp BATTLETYPE_ROAMING
-	ret z
-	; Uncatchable ghosts don't count
-	cp BATTLETYPE_GHOST
-	ret z
-
-	; Dupes clause: don't count duplicate encounters
-	ld a, [wOTPartyMon1Species]
-	ld c, a
-	ld a, [wOTPartyMon1Form]
-	ld b, a
-	call CheckCosmeticCaughtMon
-	ret nz
-
-	; Only flag landmarks for Nuzlocke runs after getting Poké Balls
-	eventflagcheck EVENT_LEARNED_TO_CATCH_POKEMON
-	ret z
-
-	; Get current landmark
-	call GetCurrentLandmark
-
-	; Use landmark as index into flag array
-	ld c, a
-	ld hl, wNuzlockeLandmarkFlags
-	ld b, SET_FLAG
-	predef_jump FlagPredef
 
 CheckPayDay:
 	ld hl, wPayDayMoney
@@ -8684,6 +8727,10 @@ BattleStartMessage:
 	call CheckSleepingTreeMon
 	jr c, .skip_cry
 
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr z, .cry_no_anim
+
 	farcall CheckBattleEffects
 	jr c, .cry_no_anim
 
@@ -8719,6 +8766,9 @@ BattleStartMessage:
 	jr z, .PrintBattleStartText
 	cp BATTLETYPE_RED_GYARADOS ; or BATTLETYPE_LEGENDARY
 	jr nc, .PrintBattleStartText
+	ld hl, GhostAppearedText
+	cp BATTLETYPE_GHOST
+	jr z, .PrintBattleStartText
 	ld hl, WildPokemonAppearedText
 
 .PrintBattleStartText:

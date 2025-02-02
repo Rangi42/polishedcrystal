@@ -19,7 +19,7 @@ ENDM
 
 PartyMenuQualityPointers:
 ; entries correspond to PARTYMENUACTION_* constants
-	table_width 1, PartyMenuQualityPointers
+	table_width 1
 	dr .Default
 	dr .Default
 	dr .Default

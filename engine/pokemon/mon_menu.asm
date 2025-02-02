@@ -733,9 +733,12 @@ _OpenPartyStats:
 	ld a, TEMPMON
 	ld [wMonType], a
 	predef StatsScreenInit
-	; This ensures that MaxVolume works as it should if we're in the middle of
-	; playing a cry.
-	ld a, $77
+	; check if the cry is still playing
+	call CheckSFX
+	ld a, MAX_VOLUME
+	jr nz, .still_playing_cry
+	xor a
+.still_playing_cry
 	ld [wLastVolume], a
 	call MaxVolume
 	call ExitMenu

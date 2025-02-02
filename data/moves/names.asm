@@ -1,5 +1,5 @@
 MoveNames::
-	list_start MoveNames
+	list_start
 	li "?"
 	li "Acrobatics"
 	li "Karate Chop"

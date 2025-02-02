@@ -71,14 +71,14 @@ OptionsMenu_LoadOptions:
 StringOptions1:
 	text  "Text Speed"
 	next1 "        :"
-	next1 "Battle Effects"
-	next1 "        :"
-	next1 "Battle Style"
-	next1 "        :"
-	next1 "Running Shoes"
+	next1 "Text Autoscroll"
 	next1 "        :"
 	next1 "Frame"
 	next1 "        :Type"
+	next1 "Typeface"
+	next1 "        :"
+	next1 "Keyboard"
+	next1 "        :"
 	next1 "Sound"
 	next1 "        :"
 	next1 "Next"
@@ -87,17 +87,17 @@ StringOptions1:
 	done
 
 StringOptions2:
-	text  "Clock Format"
+	text  "Battle Effects"
 	next1 "        :"
-	next1 "#dex Units"
+	next1 "Battle Style"
 	next1 "        :"
-	next1 "Text Autoscroll"
+	next1 "Running Shoes"
 	next1 "        :"
 	next1 "Turning Speed"
 	next1 "        :"
-	next1 "Typeface"
+	next1 "Clock Format"
 	next1 "        :"
-	next1 "Keyboard"
+	next1 "#dex Units"
 	next1 "        :"
 	next1 "Previous"
 	next1 "        " ; no-optimize trailing string space
@@ -109,27 +109,27 @@ GetOptionPointer:
 	and a
 	ld a, [wJumptableIndex]
 	jr z, .page1
-	add 8
+	add NUM_OPTIONS + 1
 .page1
 	call StackJumpTable
 
 .Pointers:
 	dw Options_TextSpeed
+	dw Options_TextAutoscroll
+	dw Options_Frame
+	dw Options_Typeface
+	dw Options_Keyboard
+	dw Options_Sound
+	dw Options_Next
+	dw Options_Done
+
 	dw Options_BattleEffects
 	dw Options_BattleStyle
 	dw Options_RunningShoes
-	dw Options_Frame
-	dw Options_Sound
-	dw Options_NextPrevious
-	dw Options_Done
-
+	dw Options_TurningSpeed
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_TextAutoscroll
-	dw Options_TurningSpeed
-	dw Options_Typeface
-	dw Options_Keyboard
-	dw Options_NextPrevious
+	dw Options_Previous
 	dw Options_Done
 
 Options_TextSpeed:
@@ -194,21 +194,16 @@ Options_BattleEffects:
 	jr z, .SetOn
 .SetOff:
 	res BATTLE_EFFECTS, [hl]
-	ld de, .Off
+	ld de, OffString
 	jr .Display
 .SetOn:
 	set BATTLE_EFFECTS, [hl]
-	ld de, .On
+	ld de, OnString
 .Display:
-	hlcoord 11, 5
+	hlcoord 11, 3
 	rst PlaceString
 	and a
 	ret
-
-.Off:
-	db "Off@"
-.On:
-	db "On @"
 
 Options_BattleStyle:
 	ld hl, wOptions2
@@ -250,7 +245,7 @@ Options_BattleStyle:
 	set BATTLE_PREDICT, [hl]
 	ld de, .Predict
 .Display:
-	hlcoord 11, 7
+	hlcoord 11, 5
 	rst PlaceString
 	and a
 	ret
@@ -275,20 +270,20 @@ Options_RunningShoes:
 	jr z, .SetOn
 .SetOff:
 	res RUNNING_SHOES, [hl]
-	ld de, .Off
+	ld de, OffString
 	jr .Display
 .SetOn:
 	set RUNNING_SHOES, [hl]
-	ld de, .On
+	ld de, OnString
 .Display:
-	hlcoord 11, 9
+	hlcoord 11, 7
 	rst PlaceString
 	and a
 	ret
 
-.Off:
+OffString:
 	db "Off@"
-.On:
+OnString:
 	db "On @"
 
 Options_Frame:
@@ -323,7 +318,7 @@ UpdateFrame:
 	inc a
 	ld e, a
 	ld d, 0
-	hlcoord 17, 11
+	hlcoord 17, 7
 	ld a, " "
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
@@ -380,7 +375,7 @@ Options_ClockFormat:
 	set CLOCK_FORMAT, [hl]
 	ld de, .TwentyFour
 .Display:
-	hlcoord 11, 3
+	hlcoord 11, 11
 	rst PlaceString
 	and a
 	ret
@@ -409,7 +404,7 @@ Options_PokedexUnits:
 	set POKEDEX_UNITS, [hl]
 	ld de, .Metric
 .Display:
-	hlcoord 11, 5
+	hlcoord 11, 13
 	rst PlaceString
 	and a
 	ret
@@ -449,7 +444,7 @@ Options_TextAutoscroll:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 7
+	hlcoord 11, 5
 	rst PlaceString
 	and a
 	ret
@@ -554,7 +549,7 @@ Options_Typeface:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 11
+	hlcoord 11, 9
 	rst PlaceString
 	and a
 	ret
@@ -605,7 +600,7 @@ Options_Keyboard:
 	set QWERTY_KEYBOARD_F, [hl]
 	ld de, .QWERTY
 .Display:
-	hlcoord 11, 13
+	hlcoord 11, 11
 	rst PlaceString
 	and a
 	ret
@@ -615,21 +610,23 @@ Options_Keyboard:
 .QWERTY:
 	db "QWERTY@"
 
-Options_NextPrevious:
-	ld hl, wCurOptionsPage
+Options_Next:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | D_LEFT | D_RIGHT
-	jr z, .NonePressed
-	bit 0, [hl]
-	jr z, .Page2
-;.Page1:
-	res 0, [hl]
-	ld de, StringOptions1
-	jr .Display
-.Page2:
-	set 0, [hl]
+	jr z, _SwitchOptionsPage.NonePressed
+	ld hl, wCurOptionsPage
+	inc [hl]
 	ld de, StringOptions2
-.Display:
+	jr _SwitchOptionsPage
+
+Options_Previous:
+	ldh a, [hJoyPressed]
+	and A_BUTTON | D_LEFT | D_RIGHT
+	jr z, _SwitchOptionsPage.NonePressed
+	ld hl, wCurOptionsPage
+	dec [hl]
+	ld de, StringOptions1
+_SwitchOptionsPage:
 	push de
 	hlcoord 0, 0
 	lb bc, 16, 18
