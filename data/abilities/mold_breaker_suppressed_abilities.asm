@@ -10,6 +10,7 @@ MoldBreakerSuppressedAbilities:
 	db FLASH_FIRE
 	db FUR_COAT
 	db HYPER_CUTTER
+	db ILLUMINATE
 	db IMMUNITY
 	db INNER_FOCUS
 	db INSOMNIA
@@ -22,6 +23,7 @@ MoldBreakerSuppressedAbilities:
 	db MAGIC_BOUNCE
 	db MAGMA_ARMOR
 	db MARVEL_SCALE
+	db MINDS_EYE
 	db MOTOR_DRIVE
 	db MULTISCALE
 	db OBLIVIOUS

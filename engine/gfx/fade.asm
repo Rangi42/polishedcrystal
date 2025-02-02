@@ -1,6 +1,81 @@
+MapConnOWFadePalettesInit::
+	farcall GetOvercastIndex
+	ld b, a
+	ld a, [wPrevOvercastIndex]
+	cp b
+	ld a, b
+	ld [wPrevOvercastIndex], a
+	jmp z, UpdateTimePals
+	; fallthrough
+OWFadePalettesInit::
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
+	ld a, 15
+	ld [wPalFadeDelayFrames], a
+	xor a
+	ld [wPalFadeDelay], a
+	pop af
+	ldh [rSVBK], a
+	ret
+
+OWFadePalettesStep::
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
+
+	ld a, [wPalFadeDelayFrames]
+	and a
+	jr z, .end_early_and_reset_ob_dyn_pal
+
+	push hl
+	push de
+	push bc
+
+	ld a, [wPalFadeDelay]
+	and a
+	jr nz, .obj
+	inc a
+	ld [wPalFadeMode], a
+	ld [wPalFadeDelay], a
+	jr .fade
+.obj
+	inc a
+	ld [wPalFadeMode], a
+	xor a
+	ld [wPalFadeDelay], a
+.fade
+	call FadePalettesStep
+
+	ld a, [wPalFadeDelay]
+	and a
+	jr nz, .no_upload
+	ld a, 1
+	ldh [hCGBPalUpdate], a
+	ld hl, wPalFadeDelayFrames
+	dec [hl]
+.no_upload
+
+	pop bc
+	pop de
+	pop hl
+
+.end_early
+	pop af
+	ldh [rSVBK], a
+	ret
+
+.end_early_and_reset_ob_dyn_pal:
+	ld a, [wPalFlags]
+	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, a
+	ld [wPalFlags], a
+	jr .end_early
+
 _DoFadePalettes::
-; w(BG|OB)Pals: Current palettes
-; wUnkn(BG|OB)Pals: Palettes we're fading towards
+; w(BG|OB)Pals2: Current palettes
+; w(BG|OB)Pals1: Palettes we're fading towards
 ; b: Controls partial fading gradient
 ; c: Fade duration
 ; wPalFadeMode can be 0 (fade everything), 1 (fade BG), 2 (fade OBJ)
@@ -13,6 +88,51 @@ _DoFadePalettes::
 	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 
+	call FadePalettesInit
+	jr c, .done
+
+.outer_loop
+	call FadePalettesStep
+	call .FadeDelay
+	ld hl, wPalFadeDelayFrames
+	dec [hl]
+	jr nz, .outer_loop
+.done
+	pop bc
+	ld a, [wPalFadeMode]
+	bit PALFADE_FLASH_F, a
+	res PALFADE_FLASH_F, a
+	ld [wPalFadeMode], a
+	jr nz, .restart_dofade
+	pop de
+	pop hl
+	pop af
+	ldh [rSVBK], a
+	ret
+
+.FadeDelay:
+	ld a, [wPalFadeDelayFrames]
+	ld c, a
+	ld hl, wPalFadeDelay
+	ld a, [hl]
+	call SimpleDivide
+	inc b
+	dec b
+	jr nz, .delay_ok
+	inc b
+.delay_ok
+	ld a, [hl]
+	sub b
+	ld [hld], a
+	ld a, 1
+	jr nz, .delay_finished
+	ld [hl], a
+.delay_finished
+	ld c, b
+	ldh [hCGBPalUpdate], a
+	jmp DelayFrames
+
+FadePalettesInit:
 	; No matter what, we always take up to 31 color fade steps.
 	; Evenly divide DelayFrames in case the fade duration is more.
 	ld a, c
@@ -26,17 +146,22 @@ _DoFadePalettes::
 .got_delay
 	and a
 	jr nz, .has_delay
-	call SetPalettes
-	jmp .done
+	call SetDefaultBGPAndOBP
+	scf
+	ret
 
 .has_delay
 	ld a, [wPalFadeMode]
 	bit PALFADE_PARTIAL_F, a
-	jr z, .outer_loop
+	jr z, .not_partial
 	ld a, b
 	ld [wPalFadeDelay], a
 
-.outer_loop
+.not_partial
+	and a
+	ret
+
+FadePalettesStep:
 	ld a, [wPalFadeMode]
 	and PALFADE_WHICH
 	ld hl, wBGPals2
@@ -140,20 +265,6 @@ _DoFadePalettes::
 	pop de
 	dec d
 	jr nz, .inner_loop
-	call .FadeDelay
-	ld hl, wPalFadeDelayFrames
-	dec [hl]
-	jmp nz, .outer_loop
-.done
-	pop bc
-	ld hl, wPalFadeMode
-	bit PALFADE_FLASH_F, [hl]
-	res PALFADE_FLASH_F, [hl]
-	jmp nz, .restart_dofade
-	pop de
-	pop hl
-	pop af
-	ldh [rSVBK], a
 	ret
 
 .getGreen:
@@ -235,25 +346,3 @@ _DoFadePalettes::
 	ret z
 	ld l, h
 	ret
-
-.FadeDelay:
-	ld a, [wPalFadeDelayFrames]
-	ld c, a
-	ld hl, wPalFadeDelay
-	ld a, [hl]
-	call SimpleDivide
-	inc b
-	dec b
-	jr nz, .delay_ok
-	inc b
-.delay_ok
-	ld a, [hl]
-	sub b
-	ld [hld], a
-	ld a, 1
-	jr nz, .delay_finished
-	ld [hl], a
-.delay_finished
-	ld c, b
-	ldh [hCGBPalUpdate], a
-	jmp DelayFrames

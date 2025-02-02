@@ -35,6 +35,10 @@ ResetOWMapState:
 
 EnterMapConnection:
 ; Return carry if a connection has been entered.
+
+	ld hl, wPalFlags
+	set MAP_CONNECTION_PAL_F, [hl]
+
 	ld hl, DualMapConnections
 .dual_loop
 ; check end
@@ -90,7 +94,7 @@ EnterMapConnection:
 	and a
 	jmp z, EnterSouthConnection
 	dec a
-	jr z, EnterNorthConnection
+	jmp z, EnterNorthConnection
 	dec a
 	jr z, EnterWestConnection
 	dec a
@@ -111,8 +115,12 @@ EnterWestConnection:
 	ld [wMapGroup], a
 	ld a, [wWestConnectedMapNumber]
 	ld [wMapNumber], a
+	ld a, [wXCoord]
+	ld [wLastMapXCoord], a
 	ld a, [wWestConnectionStripXOffset]
 	ld [wXCoord], a
+	ld a, [wYCoord]
+	ld [wLastMapYCoord], a
 	ld a, [wWestConnectionStripYOffset]
 	ld hl, wYCoord
 	add [hl]
@@ -148,8 +156,12 @@ EnterEastConnection:
 	ld [wMapGroup], a
 	ld a, [wEastConnectedMapNumber]
 	ld [wMapNumber], a
+	ld a, [wXCoord]
+	ld [wLastMapXCoord], a
 	ld a, [wEastConnectionStripXOffset]
 	ld [wXCoord], a
+	ld a, [wYCoord]
+	ld [wLastMapYCoord], a
 	ld a, [wEastConnectionStripYOffset]
 	ld hl, wYCoord
 	add [hl]
@@ -168,8 +180,12 @@ EnterNorthConnection:
 	ld [wMapGroup], a
 	ld a, [wNorthConnectedMapNumber]
 	ld [wMapNumber], a
+	ld a, [wYCoord]
+	ld [wLastMapYCoord], a
 	ld a, [wNorthConnectionStripYOffset]
 	ld [wYCoord], a
+	ld a, [wXCoord]
+	ld [wLastMapXCoord], a
 	ld a, [wNorthConnectionStripXOffset]
 	ld hl, wXCoord
 	add [hl]
@@ -182,8 +198,12 @@ EnterSouthConnection:
 	ld [wMapGroup], a
 	ld a, [wSouthConnectedMapNumber]
 	ld [wMapNumber], a
+	ld a, [wYCoord]
+	ld [wLastMapYCoord], a
 	ld a, [wSouthConnectionStripYOffset]
 	ld [wYCoord], a
+	ld a, [wXCoord]
+	ld [wLastMapXCoord], a
 	ld a, [wSouthConnectionStripXOffset]
 	ld hl, wXCoord
 	add [hl]
@@ -263,9 +283,9 @@ EnterMapWarp:
 	ret
 
 LoadMapTimeOfDay:
-	ld hl, wVramState
-	res 6, [hl]
-	ld a, $1
+	ld hl, wStateFlags
+	res TEXT_STATE_F, [hl]
+	ld a, TRUE
 	ld [wSpriteUpdatesEnabled], a
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
@@ -360,8 +380,8 @@ RefreshMapSprites:
 	ld hl, wPlayerSpriteSetupFlags
 	bit 6, [hl]
 	jr nz, .skip
-	ld hl, wVramState
-	set 0, [hl]
+	ld hl, wStateFlags
+	set SPRITE_UPDATES_DISABLED_F, [hl]
 	call SafeUpdateSprites
 .skip
 	ld a, [wPlayerSpriteSetupFlags]

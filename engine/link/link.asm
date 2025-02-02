@@ -1122,7 +1122,7 @@ LinkTrade_TradeStatsMenu:
 	dec a
 	ld [wCurTradePartyMon], a
 	ld [wPlayerLinkAction], a
-	call PrintWaitingTextAndSyncAndExchangeNybble
+	call PlaceWaitingTextAndSyncAndExchangeNybble
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jmp z, InitTradeMenuDisplay
@@ -1184,7 +1184,7 @@ LinkTrade_TradeStatsMenu:
 	rst PlaceString
 	ld a, $1
 	ld [wPlayerLinkAction], a
-	call PrintWaitingTextAndSyncAndExchangeNybble
+	call PlaceWaitingTextAndSyncAndExchangeNybble
 	ld c, 100
 	call DelayFrames
 	jmp InitTradeMenuDisplay
@@ -1293,7 +1293,7 @@ LinkTradePartymonMenuCheckCancel:
 	ldcoord_a 9, 17
 	ld a, $f
 	ld [wPlayerLinkAction], a
-	call PrintWaitingTextAndSyncAndExchangeNybble
+	call PlaceWaitingTextAndSyncAndExchangeNybble
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jr nz, .loop1
@@ -1410,13 +1410,13 @@ LinkTrade:
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
 	rst PlaceString
-	call PrintWaitingTextAndSyncAndExchangeNybble
+	call PlaceWaitingTextAndSyncAndExchangeNybble
 	jr .finish_cancel
 
 .try_trade
 	ld a, $2
 	ld [wPlayerLinkAction], a
-	call PrintWaitingTextAndSyncAndExchangeNybble
+	call PlaceWaitingTextAndSyncAndExchangeNybble
 	ld a, [wOtherPlayerLinkMode]
 	dec a
 	jr nz, .do_trade
@@ -1767,7 +1767,7 @@ LinkTextbox::
 	jr nz, .row_loop
 	ret
 
-PrintWaitingTextAndSyncAndExchangeNybble:
+PlaceWaitingTextAndSyncAndExchangeNybble:
 	call LoadStandardMenuHeader
 	hlcoord 5, 10
 	lb bc, 1, 9
@@ -1796,7 +1796,7 @@ LoadTradeScreenGFX:
 SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette
 	farcall ApplyPals
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 WaitForOtherPlayerToExit:
 	ld c, 3

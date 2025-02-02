@@ -1,4 +1,4 @@
-RunActivationAbilitiesInner:
+RunEntryAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
 	; are re-enabled (which also takes care of existing ability slideouts)
 	call EnableAnimations
@@ -170,7 +170,7 @@ TraceAbility:
 	call GetBattleVarAddr
 	pop af
 	ld [hl], a
-	jmp RunActivationAbilitiesInner
+	jmp RunEntryAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
 	jmp StdBattleTextbox
@@ -909,7 +909,7 @@ CheckNullificationAbilities:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
-	jr z, .ability_ok
+	jr z, .check_forcedmiss
 	ret
 
 .damp
@@ -940,6 +940,13 @@ CheckNullificationAbilities:
 	cp EFFECT_BURN
 	jr nz, .check_others
 
+.check_forcedmiss
+	; These have higher priority for specific abilities.
+	ld a, [wAttackMissed]
+	dec a ; cp ATKFAIL_MISSED
+	ret z
+	dec a ; cp ATKFAIL_PROTECT
+	ret z
 .ability_ok
 	ld a, ATKFAIL_ABILITY
 	ld [wAttackMissed], a
@@ -1321,6 +1328,7 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
+	; If Bad Dreams is implemented, remember to add CheckFaint in endturn.asm
 	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
@@ -1767,7 +1775,7 @@ IronFistAbility:
 	jr MoveBoostAbility
 
 IsPunchingMove:
-; Returns z|c if the move is a punching move, otherwise nz|nc.
+; Returns z if the move is a punching move, otherwise nz|nc.
 	ld hl, PunchingMoves
 	call IsInByteArray
 	sbc a
@@ -1777,7 +1785,7 @@ IsPunchingMove:
 INCLUDE "data/moves/punching_moves.asm"
 
 SharpnessAbility:
-; 120% damage for slicing moves
+; 150% damage for slicing moves
 	ld hl, SlicingMoves
 	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
@@ -2106,12 +2114,6 @@ RunPostBattleAbilities::
 	jr .loop
 
 .HoneyOrPickup:
-	; These abilities are ignored if we already hold an item.
-	ld a, MON_ITEM
-	call GetPartyParamLocationAndValue
-	and a
-	ret nz
-
 	ld a, b
 	cp PICKUP
 	jr z, .Pickup
@@ -2157,8 +2159,35 @@ RunPostBattleAbilities::
 .GotItemAfterBattle:
 	ld a, MON_ITEM
 	call GetPartyParamLocationAndValue
+
+	; Are we holding an item currently?
+	ld a, [hl]
+	and a
+	jr z, .not_holding_item
+
+	; If we are already holding an item, check if we have room in the bag.
+	; If we don't, abort the ability activation.
+	push hl
+	push de
+	push bc
+	ld a, c
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumItems
+	call ReceiveItem
+	pop bc
+	pop de
+	pop hl
+	ret nc
+	ld a, c
+	jr .gave_item
+
+.not_holding_item
 	ld a, c
 	ld [hl], a
+
+.gave_item
 	push de
 	push bc
 	ld [wNamedObjectIndex], a

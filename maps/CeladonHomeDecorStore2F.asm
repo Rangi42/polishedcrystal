@@ -20,8 +20,8 @@ CeladonHomeDecorStore2FClerkScript:
 	faceplayer
 	opentext
 	writetext CeladonHomeDecorStore2FClerkText
-.Start:
 	special PlaceMoneyTopRight
+.Start:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
@@ -39,6 +39,7 @@ CeladonHomeDecorStore2FClerkScript:
 	setevent EVENT_DECO_BED_2
 	writetext BoughtPinkBedText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext PinkBedSentText
 	waitbutton
@@ -53,6 +54,7 @@ CeladonHomeDecorStore2FClerkScript:
 	setevent EVENT_DECO_BED_3
 	writetext BoughtPolkaDotBedText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext PolkaDotBedSentText
 	waitbutton
@@ -67,6 +69,7 @@ CeladonHomeDecorStore2FClerkScript:
 	setevent EVENT_DECO_BED_4
 	writetext BoughtPikachuBedText
 	playsound SFX_TRANSACTION
+	special PlaceMoneyTopRight
 	waitbutton
 	writetext PikachuBedSentText
 	waitbutton

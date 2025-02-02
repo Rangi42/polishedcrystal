@@ -28,6 +28,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * SadisticMystic, sinusoidal, TKOWL and Kate Dering for vanilla battle engine testing and documentation.
 * ax6 and NieDzejkob for developing and optimizing lzcomp.
 * Kurausukun and earthoul for translating battle mechanics information from the Japanese Pokémon wiki.
+* vulcandth for implementing weather effects in the overworld, to include rain, lightning, snow, and sandstorm.
+* vulcandth for implementing the dynamic palettes for objects in the overworld.
+* vulcandth for adding compatibility to build the virtual console patches.
 
 
 ## Music
@@ -51,6 +54,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
 * bloodless for sprites of Buck, Maylene, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
+* Gmerc for sprites of Alolan Meowth, Persian, and Exeggutor.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
@@ -92,6 +96,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
 * Sea for Crys's fishing sprites.
+* SoupPotato (aka SourApple) for the overworld weather sprites.
 
 
 ## Content

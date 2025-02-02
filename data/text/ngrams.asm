@@ -1,5 +1,5 @@
 NgramStrings:
-	table_width 1, NgramStrings
+	table_width 1
 	dr .e_
 	dr ._t
 	dr .ou

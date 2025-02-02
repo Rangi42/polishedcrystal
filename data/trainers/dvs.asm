@@ -1,6 +1,6 @@
 TrainerClassDVsAndPersonality:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
-	table_width 5, TrainerClassDVsAndPersonality
+	table_width 5
 	;  EVs  HP   Def  SAt
 	;  *    Atk  Spe  SDf  Gender
 	db 252, PERFECT_DVS,   FEMALE ; carrie
@@ -94,7 +94,8 @@ TrainerClassDVsAndPersonality:
 	db  64, $FF, $DD, $DD, FEMALE ; battle girl
 	db  72, $DF, $DF, $DD, MALE   ; dragon tamer
 	db  72, $DD, $DD, $DD, MALE   ; engineer
-	db  72, $DD, $DD, $DD, FEMALE ; teacher
+	db  72, $DD, $DD, $DD, FEMALE ; teacher_f
+	db  72, $DD, $DD, $DD, MALE   ; teacher_m
 	db  72, $DD, $DD, $DD, MALE   ; guitaristm
 	db  72, $DD, $DD, $DD, FEMALE ; guitaristf
 	db  72, $DD, $DD, $DD, MALE   ; biker

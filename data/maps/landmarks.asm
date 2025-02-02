@@ -5,7 +5,7 @@ MACRO landmark
 ENDM
 
 Landmarks:
-	table_width 4, Landmarks
+	table_width 4
 	landmark  -8, -16, SpecialMapName
 	landmark 140, 100, NewBarkTownName
 	landmark 120, 100, Route29Name

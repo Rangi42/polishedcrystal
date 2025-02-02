@@ -708,7 +708,7 @@ ClefairyEvosAttacks:
 	db 19, DIZZY_PUNCH ; Bestow → Crystal unique move
 	db 22, TRI_ATTACK ; Wake-Up Slap → RBY TM move
 	db 25, MINIMIZE
-	db 28, DRAIN_KISS ; Stored Power → Sw/Sh move
+	db 28, DRAINING_KISS ; Stored Power → Sw/Sh move
 	db 31, METRONOME
 	db 34, REFLECT ; Cosmic Power → TM move
 	db 37, LIGHT_SCREEN ; Lucky Chant → TM move
@@ -2955,7 +2955,7 @@ JynxEvosAttacks:
 	db 18, ICE_PUNCH
 	db 21, METRONOME ; Heart Stamp → RBY TM move
 	db 25, MEAN_LOOK
-	db 28, DRAIN_KISS ; Fake Tears → Drain Kiss
+	db 28, DRAINING_KISS ; Fake Tears → Drain Kiss
 	db 33, PSYBEAM ; Wake-Up Slap → new move
 	db 39, AVALANCHE
 	db 44, BODY_SLAM
@@ -5069,6 +5069,7 @@ UrsaringEvosAttacks:
 	evo_data EVOLVE_ITEM, MOON_STONE, URSALUNA
 	evo_data EVOLVE_LOCATION, SINJOH_RUINS, URSALUNA
 	evo_data EVOLVE_LOCATION, MYSTRI_STAGE, URSALUNA
+	evo_data EVOLVE_LOCATION, MURKY_SWAMP, URSALUNA, URSALUNA_BLOODMOON_FORM
 	db -1 ; no more evolutions
 	db 1, GUNK_SHOT ; HGSS tutor move
 	db 1, THIEF ; Covet → TM move
@@ -6235,7 +6236,7 @@ SylveonEvosAttacks:
 	db 9, DOUBLE_KICK ; Baby-Doll Eyes → LGPE move
 	db 13, QUICK_ATTACK
 	db 17, SWIFT
-	db 20, DRAIN_KISS
+	db 20, DRAINING_KISS
 	db 25, SKILL_SWAP
 	db 29, HEAL_BELL ; Misty Terrain → HGSS tutor move
 	db 33, LIGHT_SCREEN
@@ -6383,7 +6384,7 @@ KleavorEvosAttacks:
 	db 57, SWORDS_DANCE
 	db -1 ; no more level-up moves
 
-UrsalunaEvosAttacks:
+UrsalunaPlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, BULLDOZE ; evolution move
 	db 1, GUNK_SHOT ; HGSS tutor move
@@ -6403,6 +6404,29 @@ UrsalunaEvosAttacks:
 	db 58, THRASH
 	db 67, CLOSE_COMBAT ; Hammer Arm → SV TM move
 	db 76, DOUBLE_EDGE ; new move
+	db 85, GUNK_SHOT ; SV TM move
+	db -1 ; no more level-up moves
+
+UrsalunaBloodmoonEvoAttacks:
+	db -1 ; no more evolutions
+	db 1, BULLDOZE ; evolution move
+	db 1, GUNK_SHOT ; HGSS tutor move
+	db 1, THIEF ; Covet → TM move
+	db 1, SCRATCH
+	db 1, LEER
+	db 1, LICK
+	db 1, HEALINGLIGHT ; Moonlight → similar move
+	db 8, FURY_STRIKES ; Fury Swipes → similar move
+	db 15, FEINT_ATTACK
+	db 22, DEFENSE_CURL ; Harden → similar move
+	db 25, SHADOW_BALL ; new move
+	db 29, SLASH
+	db 38, SCARY_FACE
+	db 47, REST
+	db 49, NIGHT_SLASH ; Snore → egg move
+	db 58, MOONBLAST
+	db 67, FOCUS_BLAST ; Hammer Arm → SV TM move
+	db 76, HYPER_BEAM ; Blood Moon → SV TM move
 	db 85, GUNK_SHOT ; SV TM move
 	db -1 ; no more level-up moves
 

@@ -106,6 +106,10 @@ FarChangeStat:
 	jr z, .ability_check
 	cp KEEN_EYE
 	ld c, ACCURACY
+	jr z, .ability_check
+	cp ILLUMINATE
+	jr z, .ability_check
+	cp MINDS_EYE
 	jr nz, .check_item
 .ability_check
 	ld a, [wChangedStat]
@@ -417,38 +421,27 @@ PlayStatChangeAnim:
 	push hl
 	push de
 	push bc
-if !DEF(MONOCHROME)
-	ld hl, StatPals
-	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY + 2
-	ld a, [wChangedStat]
-	and $f
-	add a
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld bc, 4
-	call FarCopyColorWRAM
-	ld b, 2
-	call SafeCopyTilemapAtOnce
-endc
-	pop bc
-	push bc
 	ld de, ANIM_STAT_UP
 	bit STAT_LOWER_F, b
 	jr z, .got_anim
 	ld de, ANIM_STAT_DOWN
 .got_anim
+	ld a, [wBattleAnimParam]
+	ld b, a
 	ld a, [wNumHits]
-	push af
+	ld c, a
+	push bc
+	ld a, [wChangedStat]
+	and $f
+	ld [wBattleAnimParam], a
 	xor a
 	ld [wNumHits], a
 	farcall FarPlayBattleAnimation
-	pop af
+	pop bc
+	ld a, c
 	ld [wNumHits], a
-	ld a, CGB_BATTLE_COLORS
-	call GetCGBLayout
-	call SetPalettes
+	ld a, b
+	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
 
 StatPals: ; similar to X items

@@ -3,7 +3,7 @@ MainMenu:
 	farcall NewGame_ClearTileMapEtc
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	xor a ; FALSE
 	ld [wGameTimerPaused], a
 	call MainMenu_GetWhichMenu
@@ -161,7 +161,9 @@ MainMenu_PrintCurrentTimeAndDay:
 ;; kroc - NoRTC patch
 ;; to get the main menu to show the correct time of the save,
 ;; we need to pull the backed-up RTC time from the save file
-if DEF(NO_RTC)
+	ld a, [wInitialOptions2]
+	and 1 << RTC_OPT
+	jr nz, .using_rtc
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
 	ld hl, sPlayerData + wRTCDayHi - wPlayerData
@@ -169,7 +171,7 @@ if DEF(NO_RTC)
 	ld bc, 5
 	rst CopyBytes
 	call CloseSRAM
-endc
+.using_rtc
 
 	call UpdateTime
 	bccoord 1, 15

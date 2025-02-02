@@ -6,7 +6,7 @@ MACRO item_attribute
 ENDM
 
 ItemAttributes:
-	table_width ITEMATTR_STRUCT_LENGTH, ItemAttributes
+	table_width ITEMATTR_STRUCT_LENGTH
 ; POKE BALL
 	item_attribute 200, 0, 0, BALL, ITEMMENU_PARTY, ITEMMENU_CLOSE
 ; GREAT BALL
@@ -524,7 +524,7 @@ MACRO key_item_attribute
 ENDM
 
 KeyItemAttributes:
-	table_width KEYITEMATTR_STRUCT_LENGTH, KeyItemAttributes
+	table_width KEYITEMATTR_STRUCT_LENGTH
 ; BICYCLE
 	key_item_attribute 1, ITEMMENU_CLOSE, ITEMMENU_NOUSE
 ; OLD ROD
@@ -540,6 +540,8 @@ KeyItemAttributes:
 ; APRICORN BOX
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; WING CASE
+	key_item_attribute 0, ITEMMENU_PARTY, ITEMMENU_NOUSE
+; CANDY JAR
 	key_item_attribute 0, ITEMMENU_PARTY, ITEMMENU_NOUSE
 ; MUSIC PLAYER
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_CURRENT
@@ -585,6 +587,8 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; OLD SEA MAP
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
+; LIFT KEY
+	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; HARSH LURE
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; POTENT LURE

@@ -1,5 +1,7 @@
 # Changelog
 
+Note: The changelog is severely out of date, and will be updated *later*.
+
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
 > What's the point of going through all the trouble of the debug process if you're going to go and fiddle with the game afterwards…?

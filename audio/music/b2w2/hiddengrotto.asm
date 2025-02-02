@@ -37,29 +37,6 @@ Music_HiddenGrottoB2W2_Ch1:
 	rest 4
 	sound_jump Music_HiddenGrottoB2W2_Ch1
 
-Music_HiddenGrottoB2W2_Ch1_branch_1:
-	octave 4
-	note F#, 2
-	note E_, 2
-	note D_, 2
-	note C_, 16
-	rest 2
-	note C_, 2
-	note F#, 16
-	rest 10
-	note F#, 2
-	note E_, 2
-	note D_, 2
-	note C_, 16
-	rest 3
-	octave 3
-	note G_, 16
-	rest 4
-	octave 4
-	note C_, 16
-	rest 4
-	sound_ret
-
 Music_HiddenGrottoB2W2_Ch2:
 	duty_cycle 2
 	vibrato 18, 1, 5

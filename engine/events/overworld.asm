@@ -162,12 +162,12 @@ CheckForSurfingPikachu:
 	ret
 
 FieldMovePokepicScript:
-	refreshscreen
+	reanchormap
 	pokepic 0
 	cry 0
 	waitsfx
 	closepokepic
-	reloadmappart
+	refreshmap
 	end
 
 FieldMoveFailed:
@@ -276,7 +276,7 @@ CheckMapForSomethingToCut:
 	ret
 
 Script_CutFromMenu:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	callasm GetBuffer6
 	ifequalfwd $0, Script_CutTree
@@ -435,7 +435,7 @@ UseFlash:
 	jmp QueueScript
 
 Script_UseFlash:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
@@ -483,7 +483,7 @@ SurfFunction:
 	cp PLAYER_SURF_PIKA
 	jr z, .alreadyfail
 	call GetFacingTileCoord
-	call GetTileCollision
+	call GetTilePermission
 	dec a ; cp WATER_TILE
 	jr nz, .cannotsurf
 	call CheckDirection
@@ -617,7 +617,7 @@ TrySurfOW::
 
 ; Must be facing water.
 	ld a, [wFacingTileID]
-	call GetTileCollision
+	call GetTilePermission
 	dec a ; cp WATER_TILE
 	jr nz, .quit
 
@@ -764,13 +764,15 @@ FlyFunction:
 	ret
 
 .FlyScript:
-	reloadmappart
-	callasm HideSprites
+	refreshmap
+	callasm .StopPalFading
 	callasm ClearSavedObjPals
 	callasm CopyBGGreenToOBPal7
+	callasm LoadWeatherPal
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
+	callasm .SetWeatherFlyFlag
 	callasm FlyFromAnim
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
@@ -779,6 +781,7 @@ FlyFunction:
 	newloadmap MAPSETUP_FLY
 	callasm CopyBGGreenToOBPal7
 	callasm FlyToAnim
+	callasm .ClearWeatherFlyFlag
 	special WaitSFX
 	callasm .ReturnFromFly
 	end
@@ -789,6 +792,29 @@ FlyFunction:
 	farcall CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
+
+.SetWeatherFlyFlag:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_DO_FLY_F, [hl]
+	ret
+
+.ClearWeatherFlyFlag:
+	ld hl, wWeatherFlags
+	res OW_WEATHER_DO_FLY_F, [hl]
+	ret
+
+.StopPalFading:
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rSVBK], a
+	xor a
+	ld [wPalFadeDelayFrames], a
+	pop af
+	ldh [rSVBK], a
+	ld hl, wPalFlags
+	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
+	ret
 
 WaterfallFunction:
 	call .TryWaterfall
@@ -833,7 +859,7 @@ CheckMapCanWaterfall:
 	ret
 
 Script_WaterfallFromMenu:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 
 Script_UsedWaterfall:
@@ -854,7 +880,7 @@ Script_AutoWaterfall:
 .CheckContinueWaterfall:
 	xor a
 	ldh [hScriptVar], a
-	ld a, [wPlayerTile]
+	ld a, [wPlayerTileCollision]
 	cp COLL_WATERFALL
 	ret z
 	ld a, $1
@@ -987,7 +1013,7 @@ EscapeRopeOrDig:
 	text_end
 
 .UsedEscapeRopeScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	farwritetext _UseEscapeRopeText
 	waitbutton
@@ -995,7 +1021,7 @@ EscapeRopeOrDig:
 	sjumpfwd .UsedDigOrEscapeRopeScript
 
 .UsedDigScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	farwritetext _UseDigText
@@ -1076,7 +1102,7 @@ TeleportFunction:
 	text_end
 
 .TeleportScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	playsound SFX_WARP_TO
 	applymovement PLAYER, .TeleportFrom
@@ -1132,7 +1158,7 @@ PrepareOverworldMove:
 	jmp GetPartyNickname
 
 Script_StrengthFromMenu:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 
 Script_UsedStrength:
@@ -1262,7 +1288,7 @@ TryWhirlpoolMenu:
 	ret
 
 Script_WhirlpoolFromMenu:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 
 Script_UsedWhirlpool:
@@ -1370,7 +1396,7 @@ TryHeadbuttFromMenu:
 	ret
 
 HeadbuttFromMenuScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 
 HeadbuttScript:
@@ -1382,7 +1408,7 @@ HeadbuttScript:
 	setflag ENGINE_HEADBUTT_ACTIVE
 
 AutoHeadbuttScript:
-	refreshscreen
+	reanchormap
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
@@ -1486,7 +1512,7 @@ GetFacingObject:
 	ret
 
 RockSmashFromMenuScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 
 RockSmashScript:
@@ -1500,7 +1526,7 @@ AutoRockSmashScript:
 	playsound SFX_STRENGTH
 	earthquake 84
 	applymovementlasttalked MovementData_RockSmash
-	disappear -2
+	disappear LAST_TALKED
 
 	callasm RockMonEncounter
 	readmem wTempWildMonSpecies
@@ -1574,7 +1600,7 @@ FishFunction:
 	cp PLAYER_SURF_PIKA
 	jr z, .fail
 	call GetFacingTileCoord
-	call GetTileCollision
+	call GetTilePermission
 	dec a ; cp WATER_TILE
 	jr nz, .fail
 	farcall CheckFacingObject
@@ -1758,7 +1784,7 @@ Fishing_CheckFacingUp:
 	ret
 
 Script_FishCastRod:
-	reloadmappart
+	refreshmap
 	loadmem hBGMapMode, $0
 	special UpdateTimePals
 	callasm LoadFishingGFX
@@ -1864,7 +1890,7 @@ Script_GetOnBike_Register:
 	sjumpfwd FinishGettingOnBike
 
 Script_GetOnBike:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	loadvar VAR_MOVEMENT, PLAYER_BIKE
 	farwritetext _GotOnBikeText
@@ -1879,7 +1905,7 @@ Script_GetOffBike_Register:
 	sjumpfwd FinishGettingOffBike
 
 Script_GetOffBike:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	farwritetext _GotOffBikeText

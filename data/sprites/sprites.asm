@@ -6,7 +6,7 @@ ENDM
 
 SpriteHeaders:
 ; entries correspond to SPRITE_* constants
-	table_width SPRITEDATA_LENGTH, SpriteHeaders
+	table_width SPRITEDATA_LENGTH
 	overworld_sprite ChrisSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ChrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ChrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_RED

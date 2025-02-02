@@ -26,8 +26,8 @@ _DeleteSaveData:
 	ld a, 3
 .EmptyBank:
 	call GetSRAMBank
-	ld hl, SRAM_Begin
-	ld bc, SRAM_End - SRAM_Begin
+	ld hl, STARTOF(SRAM)
+	ld bc, SIZEOF(SRAM)
 	xor a
 	rst ByteFill
 	jmp CloseSRAM

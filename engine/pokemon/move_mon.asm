@@ -373,7 +373,7 @@ endr
 	dec a
 	ld a, BASE_HAPPINESS
 	jr z, .set_happiness
-	ld a, $ff
+	ld a, MAX_RETURN_HAPPINESS
 .set_happiness
 	ld [de], a
 	inc de
@@ -623,7 +623,7 @@ RetrieveBreedmon:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	call HealPartyMonEvenForNuzlocke
+	call HealPartyMon
 	ld a, [wCurPartyLevel]
 	ld d, a
 	farcall CalcExpAtLevel

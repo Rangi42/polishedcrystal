@@ -1,5 +1,5 @@
 HiddenGrottoData:
-	table_width 11, HiddenGrottoData
+	table_width 11
 
 	; db warp number, rare item, level
 	; dp common mon 1

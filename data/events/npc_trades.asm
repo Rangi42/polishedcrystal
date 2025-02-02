@@ -1,5 +1,5 @@
 NPCTrades:
-	table_width NPCTRADE_STRUCT_LENGTH, NPCTrades
+	table_width NPCTRADE_STRUCT_LENGTH
 ; NPC_TRADE_MIKE in Goldenrod City
 	db TRADE_DIALOGSET_COLLECTOR
 	dp ABRA, NO_FORM  ; wants

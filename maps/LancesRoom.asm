@@ -33,11 +33,11 @@ LancesRoomEntranceTrigger:
 
 .Script:
 	applymovement PLAYER, WalkIntoEliteFourRoomMovement
-	refreshscreen
+	reanchormap
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 6, 22, $34
-	reloadmappart
+	refreshmap
 	closetext
 	setscene $1
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
@@ -96,7 +96,7 @@ LanceScript:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	playsound SFX_ENTER_DOOR
 	changeblock 6, 0, $b
-	reloadmappart
+	refreshmap
 	closetext
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	musicfadeout MUSIC_BEAUTY_ENCOUNTER, $10

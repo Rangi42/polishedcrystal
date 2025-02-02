@@ -95,7 +95,7 @@ Pokedex_RefreshScreen:
 .dexno_ball_done
 	call Pokedex_RefreshOAM
 
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
 .tilemap_delay
@@ -143,9 +143,9 @@ StackDexGraphics:
 	farcall WipeAttrMap
 	call ClearSprites
 	call ClearSpriteAnims
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
+	ld a, [wStateFlags]
+	res SPRITE_UPDATES_DISABLED_F , a
+	ld [wStateFlags], a
 
 	xor a
 	ldh [hBGMapMode], a
@@ -275,7 +275,7 @@ StackDexGraphics:
 	; Prepare H-blank code.
 	ld hl, PHB_LCDCode
 	ld de, wLCDPokedex
-	ld bc, PHB_LCDCodeEnd - PHB_LCDCode
+	ld bc, PHB_LCDCode.End - PHB_LCDCode
 	rst CopyBytes
 	ld a, LOW(wLCDPokedex)
 	ldh [hFunctionTargetLo], a
@@ -665,7 +665,7 @@ wPokedex_HBlankFunction::
 	reti
 wLCDPokedexEnd::
 ENDL
-PHB_LCDCodeEnd:
+.End:
 
 PHB_WaitUntilLY_Mode0:
 ; Don't use this for more timing-critical h-blank setups.

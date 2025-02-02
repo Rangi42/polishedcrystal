@@ -5,7 +5,7 @@ ENDM
 
 PokemonCries::
 ; entries correspond to constants/pokemon_constants.asm
-	table_width MON_CRY_LENGTH, PokemonCries
+	table_width MON_CRY_LENGTH
 	mon_cry CRY_BULBASAUR,   $080,  $081 ; Bulbasaur
 	mon_cry CRY_BULBASAUR,   $020,  $100 ; Ivysaur
 	mon_cry CRY_BULBASAUR,   $000,  $140 ; Venusaur

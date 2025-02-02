@@ -3,7 +3,7 @@
 ; These are grouped together since they're both checked at level-up.
 
 EvosAttacksPointers::
-	table_width 2, EvosAttacksPointers
+	table_width 2
 	dw BulbasaurEvosAttacks
 	dw IvysaurEvosAttacks
 	dw VenusaurEvosAttacks
@@ -288,7 +288,7 @@ EvosAttacksPointers::
 	dw MrRimeEvosAttacks
 	dw WyrdeerEvosAttacks
 	dw KleavorEvosAttacks
-	dw UrsalunaEvosAttacks
+	dw UrsalunaPlainEvosAttacks
 	dw SneaslerEvosAttacks
 	dw OverqwilEvosAttacks
 	dw DudunsparceEvosAttacks
@@ -348,5 +348,7 @@ EvosAttacksPointers::
 	dw TaurosPaldeanEvosAttacks
 	dw TaurosPaldeanFireEvosAttacks
 	dw TaurosPaldeanWaterEvosAttacks
+
+	dw UrsalunaBloodmoonEvoAttacks
 
 	assert_table_length NUM_EXT_POKEMON

@@ -2,24 +2,28 @@ INCLUDE "data/sprites/facings.asm"
 
 DeleteMapObject::
 	push bc
-	ld hl, OBJECT_MAP_OBJECT_INDEX
-	add hl, bc
-	ld a, [hl]
-	push af
 	ld h, b
 	ld l, c
-	ld bc, OBJECT_LENGTH
+	xor a
+	ld [hli], a
+	ld a, [hl]
+	push af
+	ld a, UNASSOCIATED_OBJECT
+	ld [hli], a
+	ld bc, OBJECT_LENGTH - 2
 	xor a
 	rst ByteFill
 	pop af
-	cp -1
+	cp UNASSOCIATED_OBJECT
+	jr z, .ok
+	cp TEMP_OBJECT
 	jr z, .ok
 	bit 7, a
 	jr nz, .ok
 	call GetMapObject
-	ld hl, OBJECT_SPRITE
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
-	ld [hl], -1
+	ld [hl], UNASSOCIATED_MAPOBJECT
 .ok
 	pop bc
 	farjp CheckForUsedObjPals
@@ -176,7 +180,7 @@ _HandleStepType:
 
 StepTypesJumptable:
 ; entries correspond to STEP_TYPE_* constants (see constants/map_object_constants.asm)
-	table_width 2, StepTypesJumptable
+	table_width 2
 	dw StepFunction_Reset           ; STEP_TYPE_RESET
 	dw StepFunction_FromMovement    ; STEP_TYPE_FROM_MOVEMENT
 	dw StepFunction_NPCWalk         ; STEP_TYPE_NPC_WALK
@@ -216,14 +220,14 @@ CopyNextCoordsTileToStandingCoordsTile:
 	ld hl, OBJECT_LAST_MAP_Y
 	add hl, bc
 	ld [hl], a
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	ld hl, OBJECT_LAST_TILE
 	add hl, bc
 	ld [hl], a
 	call SetTallGrassFlags
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	ret
@@ -243,12 +247,25 @@ CopyCurCoordsToNextCoords:
 	ld [hl], a
 	ret
 
+GrottoUpdatePlayerTallGrassFlags::
+	ld bc, wPlayerStruct
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld d, [hl]
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld e, [hl]
+	push bc
+	call GetCoordTileCollision
+	pop bc
+	jr SetTallGrassFlags
+
 UpdateTallGrassFlags:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	bit OVERHEAD_F, [hl]
 	ret z
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 SetTallGrassFlags:
@@ -321,9 +338,9 @@ GetNextTile:
 	ld [hl], a
 	ld e, a
 	push bc
-	call GetCoordTile
+	call GetCoordTileCollision
 	pop bc
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
 	ret
@@ -437,7 +454,9 @@ RestoreDefaultMovement:
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_OBJECT
+	jr z, .ok
+	cp TEMP_OBJECT
 	jr z, .ok
 	push bc
 	call GetMapObject
@@ -491,9 +510,9 @@ StepFunction_Reset:
 	add hl, bc
 	ld e, [hl]
 	push bc
-	call GetCoordTile
+	call GetCoordTileCollision
 	pop bc
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
 	call CopyNextCoordsTileToStandingCoordsTile
@@ -526,7 +545,7 @@ endr
 
 .Pointers:
 ; entries correspond to SPRITEMOVEFN_* constants (see constants/map_object_constants.asm)
-	table_width 2, StepFunction_FromMovement.Pointers
+	table_width 2
 	dw DoNothing                     ; SPRITEMOVEFN_00
 	dw .RandomWalkY                  ; SPRITEMOVEFN_RANDOM_WALK_Y
 	dw .RandomWalkX                  ; SPRITEMOVEFN_RANDOM_WALK_X
@@ -635,7 +654,7 @@ endr
 	dw .Strength_Stop
 
 .Strength_Start:
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]
 	cp COLL_HOLE
@@ -1341,6 +1360,9 @@ StepFunction_Skyfall:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	set HIGH_PRIORITY_F, [hl]
 	call IncrementObjectStructField1c
 .Step:
 	ld hl, OBJECT_STEP_DURATION
@@ -1384,6 +1406,9 @@ StepFunction_Skyfall:
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
 	ld [hl], 0
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res HIGH_PRIORITY_F, [hl]
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_FROM_MOVEMENT
@@ -2129,11 +2154,12 @@ InitTempObject:
 
 CopyTempObjectData:
 ; load into wTempObjectCopy:
-; -1, -1, [de], [de + 1], [de + 2], [hMapObjectIndexBuffer], [NextMapX], [NextMapY], -1
+; TEMP_OBJECT, -1, [de], [de + 1], [de + 2], [hMapObjectIndexBuffer], [NextMapX], [NextMapY], -1
 ; This spawns the object at the same place as whichever object is loaded into bc.
 	ld hl, wTempObjectCopyMapObjectIndex
-	ld a, -1
+	ld a, TEMP_OBJECT
 	ld [hli], a
+	ld a, -1
 	ld [hli], a
 	ld a, [de]
 	inc de
@@ -2161,8 +2187,8 @@ CopyTempObjectData:
 	ret
 
 UpdateMapObjectDataAndSprites::
-	ld a, [wVramState]
-	bit 0, a
+	ld a, [wStateFlags]
+	bit SPRITE_UPDATES_DISABLED_F, a
 	ret z
 	ld bc, wObjectStructs
 	xor a
@@ -2207,7 +2233,7 @@ RespawnObject:
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_MAPOBJECT
 	ret z
 	cp NUM_OBJECT_STRUCTS
 	ret nc
@@ -2250,9 +2276,9 @@ UpdateCurObjectData:
 	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
-	call GetCoordTile
+	call GetCoordTileCollision
 	pop bc
-	ld hl, OBJECT_TILE
+	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
 	call UpdateTallGrassFlags
@@ -2481,6 +2507,8 @@ ContinueSpawnFacing:
 	jmp SetSpriteDirection
 
 StartFollow::
+	ld hl, wPlayerFlags + 1
+	set HIGH_PRIORITY_F, [hl]
 	push bc
 	ld a, b
 	call SetLeaderIfVisible
@@ -2514,6 +2542,8 @@ SetFollowerIfVisible:
 	ret
 
 StopFollow::
+	ld hl, wPlayerFlags + 1
+	res HIGH_PRIORITY_F, [hl]
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	; fallthrough
@@ -2609,7 +2639,9 @@ ResetObject:
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]
-	cp -1
+	cp UNASSOCIATED_OBJECT
+	jr z, .set_standing
+	cp TEMP_OBJECT
 	jr z, .set_standing
 	push bc
 	call GetMapObject
@@ -2649,41 +2681,62 @@ ResetObject:
 	db SPRITEMOVEDATA_STANDING_RIGHT
 
 _UpdateSprites::
-	ld a, [wVramState]
-	bit 0, a
+	ld a, [wStateFlags]
+	bit SPRITE_UPDATES_DISABLED_F, a
 	ret z
 	xor a
-	ldh [hUsedSpriteIndex], a
+	ldh [hUsedOAMIndex], a
 	ldh a, [hOAMUpdate]
 	push af
 	ld a, 1
 	ldh [hOAMUpdate], a
 	call InitSprites
-	call .fill
+	call .hide_unused_sprites
 	pop af
 	ldh [hOAMUpdate], a
 	ret
 
-.fill
-	ld a, [wVramState]
-	bit 1, a
+.hide_unused_sprites
+	; if objects fill the entire OAM, there are no unused sprites.
 	ld b, LOW(wShadowOAMEnd)
-	jr z, .ok
-	ld b, 28 * SPRITEOAMSTRUCT_LENGTH
-.ok
-	ldh a, [hUsedSpriteIndex]
+	ldh a, [hUsedOAMIndex]
 	cp b
 	ret nc
+
+	ldh a, [hUsedWeatherSpriteIndex]
+	ld c, a
+
+	; objects are at the end of the OAM, so we need to get the OAM index of the slot before.
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH + 1
+
+	; if the weather index is greater than the index of the slot before the objects,
+	; then we need to override the weather index with the slot before the objects.
+	; else if the weather index is equal to the index of the slot before the objects,
+	; then there are no sprites to hide.
+	cp c
+	jr c, .override_weather_index
+	ret z
+
+	; from the slot before the objects to the weather index, hide the sprites.
 	ld l, a
 	ld h, HIGH(wShadowOAM)
-	ld de, 4
-	ld a, b
-	ld c, SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
+	ld de, -SPRITEOAMSTRUCT_LENGTH
+	ld a, c
+	sub SPRITEOAMSTRUCT_LENGTH
+	ld c, OAM_YCOORD_HIDDEN
 .loop
 	ld [hl], c
 	add hl, de
 	cp l
 	jr nz, .loop
+	ret
+
+.override_weather_index
+	ldh [hUsedWeatherSpriteIndex], a
+	ld c, a
 	ret
 
 ApplyBGMapAnchorToObjects:
@@ -2728,12 +2781,13 @@ DEF PRIORITY_NORM EQU $20
 DEF PRIORITY_HIGH EQU $30
 
 InitSprites:
+	; Since OAM's are loaded in reverse order, we need to load the sprite priorities in reverse order.
 	call .DeterminePriorities
-	ld c, PRIORITY_HIGH
+	ld c, PRIORITY_LOW
 	call .InitSpritesByPriority
 	ld c, PRIORITY_NORM
 	call .InitSpritesByPriority
-	ld c, PRIORITY_LOW
+	ld c, PRIORITY_HIGH
 	jr .InitSpritesByPriority
 
 .DeterminePriorities:
@@ -2817,6 +2871,7 @@ InitSprites:
 	jr .next_sprite
 
 .InitSprite:
+	call .StorePlayerOAMLocation
 	ld hl, OBJECT_SPRITE_TILE
 	add hl, bc
 	ld a, [hl]
@@ -2884,14 +2939,17 @@ InitSprites:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ldh a, [hUsedSpriteIndex]
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1) + 1
 	ld c, a
 	ld b, HIGH(wShadowOAM)
 	ld a, [hli]
 	ldh [hUsedSpriteTile], a
-	add c
-	cp LOW(wShadowOAMEnd)
-	jr nc, .full
+	sub c
+	cp LOW(wShadowOAM)
+	jr c, .full
 .addsprite
 	ldh a, [hCurSpriteYPixel]
 	add [hl]
@@ -2938,12 +2996,17 @@ InitSprites:
 .nope3
 	ld [bc], a
 	inc c
+	ld a, c
+	sub SPRITEOAMSTRUCT_LENGTH * 2
+	ld c, a
 	ldh a, [hUsedSpriteTile]
 	dec a
 	ldh [hUsedSpriteTile], a
 	jr nz, .addsprite
-	ld a, c
-	ldh [hUsedSpriteIndex], a
+	ld a, SPRITEOAMSTRUCT_LENGTH * (NUM_SPRITE_OAM_STRUCTS - 1)
+	sub c
+	ld c, a
+	ldh [hUsedOAMIndex], a
 .done
 	xor a
 	ret
@@ -2957,3 +3020,17 @@ InitSprites:
 for n, 1, NUM_OBJECT_STRUCTS
 	dw wObject{d:n}Struct
 endr
+
+.StorePlayerOAMLocation
+	ld a, b
+	cp HIGH(wPlayerStruct)
+	ret nz
+	ld a, c
+	cp LOW(wPlayerStruct)
+	ret nz
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+	ld [wPlayerCurrentOAMSlot], a
+	ret

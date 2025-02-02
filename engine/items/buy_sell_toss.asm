@@ -100,6 +100,33 @@ SelectWingQuantity:
 	dw DoNothing
 	db 0
 
+SelectCandyQuantity:
+	ld hl, .MenuHeader
+	call LoadMenuHeader
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+.loop
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	call BuySellToss_UpdateQuantityDisplay ; update display
+	call BuySellToss_InterpretJoypad       ; joy action
+	jr nc, .loop
+	cp -1
+	jr nz, .nope ; pressed B
+	call ExitMenu
+	scf
+	ret
+
+.nope
+	call ExitMenu
+	and a
+	ret
+
+.MenuHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 15, 11, 19, 13
+	dw DoNothing
+	db 0
+
 SelectQuantityToToss:
 	ld hl, TossItem_MenuDataHeader
 	call LoadMenuHeader

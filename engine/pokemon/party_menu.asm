@@ -11,7 +11,7 @@ SelectTradeOrDayCareMon:
 	call ApplyTilemapInVBlank
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	call PartyMenuSelect
 	jmp ReturnToMapWithSpeechTextbox
@@ -38,7 +38,7 @@ BT_SwapRentals:
 	call ApplyTilemapInVBlank
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	call PartyMenuSelect
 	jmp c, .return
@@ -49,7 +49,7 @@ BT_SwapRentals:
 	ld de, .TradeWhichPKMN
 	rst PlaceString
 	call ApplyTilemapInVBlank
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	call PartyMenuSelect
 	jr c, .loop
@@ -187,7 +187,7 @@ BT_PartySelect:
 	call ApplyTilemapInVBlank
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	call PartyMenuSelect
 	jr c, .return
@@ -529,7 +529,7 @@ InitPartyMenuLayout:
 	call InitPartyMenuWithCancel
 	call InitPartyMenuGFX
 	call WritePartyMenuTilemap
-	jmp PrintPartyMenuText
+	jmp PlacePartyMenuText
 
 LoadPartyMenuGFX:
 	call LoadFontsBattleExtra
@@ -793,6 +793,8 @@ PlacePartyMonTMHMCompatibility:
 	ret z
 	ld c, a
 	ld b, 0
+	xor a
+	ld [wCurPartyMon], a
 	hlcoord 12, 2
 .loop
 	push bc
@@ -803,6 +805,23 @@ PlacePartyMonTMHMCompatibility:
 	ld hl, wPartyMon1Species
 	ld a, b
 	call GetPartyLocation
+
+	; check if move is already known
+	push hl
+	ld a, MON_MOVES
+	call GetPartyParamLocationAndValue
+	ld a, [wPutativeTMHMMove]
+	ld b, a
+	ld c, NUM_MOVES
+.knows_move_loop
+	ld a, [hli]
+	cp b
+	jr z, .already_known
+	dec c
+	jr nz, .knows_move_loop
+	pop hl
+
+	; check if move is learnable if not already known
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld bc, MON_FORM - MON_SPECIES
@@ -816,6 +835,8 @@ PlacePartyMonTMHMCompatibility:
 	rst PlaceString
 
 .next
+	ld hl, wCurPartyMon
+	inc [hl]
 	pop hl
 	ld de, SCREEN_WIDTH * 2
 	add hl, de
@@ -825,10 +846,20 @@ PlacePartyMonTMHMCompatibility:
 	jr nz, .loop
 	ret
 
+.already_known:
+	pop hl
+	pop hl
+
+	ld de, .string_learned
+	rst PlaceString
+	jr .next
+
 .PlaceAbleNotAble:
 	ld a, c
 	and a
 	jr nz, .able
+
+.not_able
 	ld de, .string_not_able
 	ret
 
@@ -841,6 +872,9 @@ PlacePartyMonTMHMCompatibility:
 
 .string_not_able
 	db "Not able@"
+
+.string_learned
+	db "Learned@"
 
 PlacePartyMonEvoStoneCompatibility:
 	ld a, [wPartyCount]
@@ -1147,7 +1181,7 @@ InitPartySwap:
 
 	call InitPartyMenuNoCancel
 	call WritePartyMenuTilemap
-	call PrintPartyMenuText
+	call PlacePartyMenuText
 
 	hlcoord 0, 1
 	ld bc, 20 * 2
@@ -1238,7 +1272,7 @@ PartyMenuSelect:
 	scf
 	ret
 
-PrintPartyMenuText:
+PlacePartyMenuText:
 	hlcoord 0, 14
 	lb bc, 2, 18
 	call Textbox

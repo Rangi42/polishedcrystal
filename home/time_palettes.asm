@@ -9,8 +9,8 @@ RTC::
 	call UpdateTime
 
 ; obj update on?
-	ld a, [wVramState]
-	bit 0, a ; obj update
+	ld a, [wStateFlags]
+	bit SPRITE_UPDATES_DISABLED_F, a ; obj update
 	ret z
 	; fallthrough
 

@@ -14,7 +14,7 @@ DEF OBJECT_STEP_DURATION    rb ; 0a
 DEF OBJECT_ACTION           rb ; 0b
 DEF OBJECT_STEP_FRAME       rb ; 0c
 DEF OBJECT_FACING           rb ; 0d
-DEF OBJECT_TILE             rb ; 0e
+DEF OBJECT_TILE_COLLISION   rb ; 0e
 DEF OBJECT_LAST_TILE        rb ; 0f
 DEF OBJECT_MAP_X            rb ; 10
 DEF OBJECT_MAP_Y            rb ; 11
@@ -37,6 +37,10 @@ DEF OBJECT_PAL_INDEX        rb ; 21
 DEF OBJECT_LENGTH EQU _RS
 DEF NUM_OBJECT_STRUCTS EQU 13 ; see wObjectStructs
 DEF FIRST_VRAM1_OBJECT_STRUCT EQU 8
+
+; object_struct OBJECT_MAP_OBJECT_INDEX values
+DEF UNASSOCIATED_OBJECT EQU -1
+DEF TEMP_OBJECT         EQU -2
 
 ; object_struct OBJECT_DIRECTION values
 DEF OW_DOWN  EQU DOWN  << 2
@@ -115,6 +119,9 @@ DEF MAPOBJECT_EVENT_FLAG       rw ; c
 DEF MAPOBJECT_LENGTH EQU _RS
 DEF NUM_OBJECTS EQU $15
 DEF PLAYER_OBJECT EQU 0
+
+; map_object MAPOBJECT_OBJECT_STRUCT_ID values
+DEF UNASSOCIATED_MAPOBJECT EQU -1
 
 ; SpriteMovementData struct members (see data/sprites/map_objects.asm)
 rsreset

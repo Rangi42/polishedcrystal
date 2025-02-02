@@ -194,7 +194,7 @@ PlaceMapNameSign::
 .stage_5_sliding_out
 	add a
 	cpl
-	add SCREEN_HEIGHT_PX + TILE_WIDTH + 1 ; a = SCREEN_HEIGHT_PX + TILE_WIDTH - a
+	add SCREEN_HEIGHT_PX + 1 ; a = SCREEN_HEIGHT_PX - a
 .got_value
 	ldh [rWY], a
 	ldh [hWY], a
@@ -203,9 +203,13 @@ PlaceMapNameSign::
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	ldh [hLCDCPointer], a
+	ld hl, wWeatherFlags
+	res OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	ret
 
 LoadMapNameSignGFX:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	; load opaque space
 	ld hl, vTiles0 tile POPUP_MAP_FRAME_SPACE
 	call GetOpaque1bppSpaceTile
@@ -276,7 +280,14 @@ LoadMapNameSignGFX:
 	rst AddNTimes ; preserves bc
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	call FarCopyColorWRAM
-	jmp SetPalettes
+	ld hl, wBGPals1 palette PAL_BG_TEXT
+	ld de, wBGPals2 palette PAL_BG_TEXT
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
 
 .continue
 	; save position in landmark name
@@ -324,7 +335,7 @@ LoadMapNameSignGFX:
 	jr .loop
 
 SignPals:
-	table_width 1 palettes, SignPals
+	table_width 1 palettes
 INCLUDE "gfx/signs/signs.pal"
 	assert_table_length NUM_SIGNS
 

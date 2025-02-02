@@ -79,7 +79,6 @@ Music_MountCoronetDPPt_Ch1_loop:
 	note C_, 2
 	octave 4
 	note A#, 2
-Music_MountCoronetDPPt_Ch1_branch_2:
 	volume_envelope 8, 7
 	octave 2
 	note G_, 4
@@ -478,7 +477,6 @@ Music_MountCoronetDPPt_Ch2_loop:
 	volume_envelope 4, 5
 	note A#, 10
 	note A#, 4
-Music_MountCoronetDPPt_Ch2_branch_2:
 	volume_envelope 8, 5
 	duty_cycle 1
 	octave 2
@@ -743,7 +741,6 @@ Music_MountCoronetDPPt_Ch3_branch_0:
 	rest 16
 	rest 16
 	rest 16
-Music_MountCoronetDPPt_Ch3_branch_1:
 	rest 12
 	octave 2
 	note F_, 2

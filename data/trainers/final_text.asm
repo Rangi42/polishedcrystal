@@ -45,7 +45,7 @@ FinalText_TeamRocket:
 	dw Giovanni2FinalPkmnText
 
 FinalText_SinglePhrases:
-	table_width 2, FinalText_SinglePhrases
+	table_width 2
 	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
 	dw JackyFinalPkmnText

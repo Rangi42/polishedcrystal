@@ -2,7 +2,7 @@ HatchSpeedNames:
 ; entries correspond to HATCH_* (see constants/pokemon_data_constants.asm)
 ; "step cycles to hatch" are stored in one nybble, and
 ; only 0-7 are used for hatchable mons (legendaries use 15)
-	table_width 1, HatchSpeedNames
+	table_width 1
 	dr Fastest
 	dr Faster
 	dr Fast
@@ -15,7 +15,7 @@ HatchSpeedNames:
 
 GrowthRateNames:
 ; entries correspond to GROWTH_* (see constants/pokemon_data_constants.asm)
-	table_width 1, GrowthRateNames
+	table_width 1
 	dr MediumFast
 	dr MediumSlow
 	dr Fast
@@ -34,7 +34,7 @@ Unknown:    db "Unknown@"
 
 BodyColorNames:
 ; entries correspond to colors (see constants/pokemon_data_constants.asm)
-	table_width 1, BodyColorNames
+	table_width 1
 	dr BodyRed
 	dr BodyBlue
 	dr BodyYellow

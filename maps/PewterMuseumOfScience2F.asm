@@ -60,7 +60,7 @@ Museum2FTutorSeismicTossScript:
 	jumpopenedtext Text_Museum2FTutorTaught
 
 Museum2FMoonStoneSignpostScript:
-	refreshscreen
+	reanchormap
 	trainerpic METEORITE
 	waitbutton
 	closepokepic

@@ -1,5 +1,5 @@
 FootprintPointers::
-	table_width 2, FootprintPointers
+	table_width 2
 	dw BulbasaurFootprint
 	dw IvysaurFootprint
 	dw VenusaurFootprint
@@ -344,5 +344,7 @@ FootprintPointers::
 	dw TaurosFootprint
 	dw TaurosFootprint
 	dw TaurosFootprint
+
+	dw UrsalunaFootprint
 
 	assert_table_length NUM_EXT_POKEMON
