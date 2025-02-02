@@ -214,11 +214,9 @@ Route10Zapdos:
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalsefwd .NoSpark
+	iffalsefwd .NoCatch
 	setflag ENGINE_PLAYER_CAUGHT_ZAPDOS
-	setevent EVENT_CELADON_UNIVERSITY_SPARK
-	clearevent EVENT_SHAMOUTI_COAST_SPARK
-.NoSpark
+.NoCatch
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	iffalsefwd .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES

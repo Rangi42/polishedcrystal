@@ -288,7 +288,7 @@ EvosAttacksPointers::
 	dw MrRimeEvosAttacks
 	dw WyrdeerEvosAttacks
 	dw KleavorEvosAttacks
-	dw UrsalunaEvosAttacks
+	dw UrsalunaPlainEvosAttacks
 	dw SneaslerEvosAttacks
 	dw OverqwilEvosAttacks
 	dw DudunsparceEvosAttacks
@@ -348,5 +348,7 @@ EvosAttacksPointers::
 	dw TaurosPaldeanEvosAttacks
 	dw TaurosPaldeanFireEvosAttacks
 	dw TaurosPaldeanWaterEvosAttacks
+
+	dw UrsalunaBloodmoonEvoAttacks
 
 	assert_table_length NUM_EXT_POKEMON

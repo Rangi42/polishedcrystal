@@ -92,7 +92,8 @@ TrainerPicPointers::
 	dba BattleGirlPic
 	dba DragonTamerPic
 	dba EngineerPic
-	dba TeacherPic
+	dba TeacherFPic
+	dba TeacherMPic
 	dba GuitaristmPic
 	dba GuitaristfPic
 	dba BikerPic

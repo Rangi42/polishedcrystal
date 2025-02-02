@@ -312,6 +312,11 @@ Diploma:
 	farcall _Diploma
 	jmp ExitAllMenus
 
+PrintDiploma:
+	call FadeToMenu_BackupSprites
+	farcall _PrintDiploma
+	jmp ExitAllMenus
+
 Special_GetOvercastIndex::
 	call GetOvercastIndex
 	ldh [hScriptVar], a
@@ -439,10 +444,28 @@ RespawnOneOffs:
 
 	ld de, ENGINE_PLAYER_CAUGHT_HO_OH
 	farcall EngineFlagAction
-	ret nz
+	jr nz, .CaughtHoOh
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
 	eventflagreset EVENT_EUSINES_HOUSE_EUSINE
+.CaughtHoOh
+
+	ld de, ENGINE_PLAYER_CAUGHT_GALARIAN_ARTICUNO
+	farcall EngineFlagAction
+	jr nz, .CaughtGalarianArticuno
+	eventflagreset EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_ARTICUNO
+.CaughtGalarianArticuno
+
+	ld de, ENGINE_PLAYER_CAUGHT_GALARIAN_ZAPDOS
+	farcall EngineFlagAction
+	jr nz, .CaughtGalarianZapdos
+	eventflagreset EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_ZAPDOS
+.CaughtGalarianZapdos
+
+	ld de, ENGINE_PLAYER_CAUGHT_GALARIAN_MOLTRES
+	farcall EngineFlagAction
+	ret nz
+	eventflagreset EVENT_CHERRYGROVE_BAY_FOUGHT_GALARIAN_MOLTRES
 	ret
 
 RespawnRoamingRaikou:

@@ -26,7 +26,7 @@ jobs:
         name: "Install build dependencies"
         run: |
           sudo apt-get update
-          sudo apt-get install bison gcc git make -y;
+          sudo apt-get install bison gcc git make libpng-dev -y;
 
       # CHECKOUT RGBDS
       - id: checkout-rgbds
@@ -53,20 +53,37 @@ jobs:
       - id: build-polishedcrystal
         name: "Build polishedcrystal"
         run: |
-          make -j$(nproc) vc
+          make -j$(nproc)
           mkdir build
-          mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0-beta.patch build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-3.2.0-beta.gbc build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-3.2.0-beta.sym build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polishedcrystal-faithful
         name: "Build polishedcrystal-faithful"
         run: |
+          make -j$(nproc) faithful
+          mv polishedcrystal-faithful-3.2.0-beta.gbc build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-faithful-3.2.0-beta.sym build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.sym
+          make tidy
+
+      # BUILD VC PATCHES
+      - id: build-polishedcrystal-vc
+        name: "Build polishedcrystal vc"
+        run: |
+          make -j$(nproc) vc
+          mv polishedcrystal-3.2.0-beta_vc.gbc build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-3.2.0-beta.patch build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-3.2.0-beta_vc.sym build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}_vc.sym
+          make tidy
+
+      - id: build-polishedcrystal-faithful-vc
+        name: "Build polishedcrystal-faithful vc"
+        run: |
           make -j$(nproc) faithful vc
-          mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0-beta.patch build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-faithful-3.2.0-beta.gbc build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-faithful-3.2.0-beta.patch build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-faithful-3.2.0-beta.sym build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}_vc.sym
           make tidy
 
       # BUILD DEBUG ROMS
@@ -74,70 +91,73 @@ jobs:
         name: "Build polisheddebug"
         run: |
           make -j$(nproc) debug vc
-          mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0-beta.patch build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-debug-3.2.0-beta.gbc build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-debug-3.2.0-beta.sym build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
       - id: build-polisheddebug-faithful
         name: "Build polisheddebug-faithful"
         run: |
           make -j$(nproc) faithful debug vc
-          mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-          mv polishedcrystal-3.0.0-beta.patch build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-          mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          mv polishedcrystal-faithful-debug-3.2.0-beta.gbc build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+          mv polishedcrystal-faithful-debug-3.2.0-beta.sym build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
 
-      # BUILD SAVE PATCH
-      - id: build-polishedcrystal-bsp
-        name: "Build polishedcrystal-savepatch"
+      - id: build-polisheddebug-vc
+        name: "Build polisheddebug vc"
         run: |
-          make -j$(nproc) bsp
-          mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+          make -j$(nproc) debug vc
+          mv polishedcrystal-debug-3.2.0-beta_vc.gbc build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-debug-3.2.0-beta.patch build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-debug-3.2.0-beta.sym build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}_vc.sym
           make tidy
 
-      # UPLOAD ARTIFACTS
+      - id: build-polisheddebug-faithful-vc
+        name: "Build polisheddebug-faithful vc"
+        run: |
+          make -j$(nproc) faithful debug vc
+          mv polishedcrystal-faithful-debug-3.2.0-beta_vc.gbc build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}_vc.gbc
+          mv polishedcrystal-faithful-debug-3.2.0-beta.patch build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+          mv polishedcrystal-faithful-debug-3.2.0-beta_vc.sym build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}_vc.sym
+          make tidy
+
+      # UPLOAD ARTIFACTS – only if the repo is owned by Rangi42 (i.e., not a fork)
       - id: upload-polishedcrystal
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polishedcrystal"
           retention-days: 1
           path: |
-            build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.*
+            build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.*
 
       - id: upload-polishedcrystal-faithful
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal-faithful artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polishedcrystal-faithful"
           retention-days: 1
           path: |
-            build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.*
+            build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.*
 
       - id: upload-polisheddebug
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polisheddebug"
           retention-days: 1
           path: |
-            build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.*
+            build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.*
 
       - id: upload-polisheddebug-faithful
+        if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug-faithful artifacts"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "polisheddebug-faithful"
           retention-days: 1
           path: |
-            build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.*
-
-      - id: upload-polishedcrystal-savepatch
-        name: "Upload polishedcrystal savepatch"
-        uses: actions/upload-artifact@v3
-        with:
-          name: "polishedcrystal-savepatch"
-          retention-days: 1
-          path: |
-            build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.*
+            build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.*

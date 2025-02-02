@@ -5,14 +5,16 @@ on:
   push:
     branches:
       - master
-#  schedule:
-#    - cron: '0 5 * * *'
+  workflow_dispatch:
+  # Uncomment to enable scheduled runs, if desired:
+  # schedule:
+  #   - cron: '0 5 * * *'
 
 env:
-  NIGHTLY_TAG: "v3.0.0-beta"
-  NIGHTLY_NAME: "3.0.0-beta"
+  NIGHTLY_TAG: "v3.2.0-beta"
+  NIGHTLY_NAME: "3.2.0-beta"
   NIGHTLY_BODY: |
-    This is the current Polished Crystal 3.0.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
+    This is the current Polished Crystal 3.2.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
 
     The **.gbc** assets are ROMs. If you just want to play the game, download one (regular, `-faithful` which omits some non-canon changes, or `noir` which is in grayscale) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator. (***Do not use VBA*** or VBA-M.)
 
@@ -20,16 +22,17 @@ env:
 
     The **.patch** assets are 3DS Virtual Console patches to enable trading and battling over Wi-Fi. You can bundle the .gbc and corresponding .patch into a playable .cia file using [poke-cia](https://github.com/vulcandth/poke-cia).
 
-    The **.bsp** asset is a [BSP](https://github.com/aaaaaa123456789/bsp) save file patch in case you need to upgrade a save file from an older 3.0.0 beta build, using a patcher like the one for [Pokémon Prism](http://pokemonprism.com/patcher.html).
-
-    The **polisheddebug** assets are ROMs and symbol files with extra features to help debug the game. Do ***not*** download these to just play with; use them to help the developers diagnose and fix bugs, or create new features.
+    The **polishedcrystal** assets are ROMs and symbol files with extra features to help debug the game. Do ***not*** download these to just play with; use them to help the developers diagnose and fix bugs, or create new features.
 
 jobs:
   build:
     name: "Nightly"
     uses: Rangi42/polishedcrystal/.github/workflows/build.yml@master
+
   release:
     name: "Nightly / Release"
+    # Only proceed with the release job if this is the official repository (not a fork)
+    if: ${{ github.repository_owner == 'Rangi42' }}
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -58,29 +61,26 @@ jobs:
         with:
           name: "polishedcrystal"
           path: "./build"
+
       - id: download-polishedcrystal-faithful
         name: "Download polishedcrystal-faithful"
         uses: actions/download-artifact@v4.1.7
         with:
           name: "polishedcrystal-faithful"
           path: "./build"
+
       - id: download-polisheddebug
         name: "Download polisheddebug"
         uses: actions/download-artifact@v4.1.7
         with:
           name: "polisheddebug"
           path: "./build"
+
       - id: download-polisheddebug-faithful
         name: "Download polisheddebug-faithful"
         uses: actions/download-artifact@v4.1.7
         with:
           name: "polisheddebug-faithful"
-          path: "./build"
-      - id: download-polishedcrystal-savepatch
-        name: "Download polishedcrystal-savepatch"
-        uses: actions/download-artifact@v4.1.7
-        with:
-          name: "polishedcrystal-savepatch"
           path: "./build"
 
       # DELETE OLD RELEASE
@@ -114,9 +114,9 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-            ./build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-3.2.0-beta-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD FAITHFUL ASSETS
       - name: Upload faithful assets
@@ -125,19 +125,20 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-            ./build/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-faithful-3.2.0-beta-${{ env.SHORT_SHA }}.sym
 
+      # UPLOAD DEBUG ASSETS
       - name: Upload debug assets
         id: upload-debug
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-            ./build/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+            ./build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-debug-3.2.0-beta-${{ env.SHORT_SHA }}.sym
 
       # UPLOAD FAITHFUL DEBUG ASSETS
       - name: Upload faithful debug assets
@@ -146,14 +147,6 @@ jobs:
         with:
           tag_name: ${{ env.NIGHTLY_TAG }}
           files: |
-            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
-            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
-            ./build/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
-
-      # UPLOAD SAVE PATCH
-      - name: Upload BSP
-        id: upload-bsp
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ env.NIGHTLY_TAG }}
-          files: ./build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+            ./build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.gbc
+            ./build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.patch
+            ./build/polishedcrystal-faithful-debug-3.2.0-beta-${{ env.SHORT_SHA }}.sym

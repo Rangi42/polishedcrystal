@@ -3336,3 +3336,13 @@ TaurosPaldeanWaterPokedexEntry::
 	page "horns. Its high"
 	next "body fat allows it"
 	next "to float easily.@"
+
+SECTION "UrsalunaBloodmoonPokedexEntry", ROMX
+UrsalunaBloodmoonPokedexEntry::
+	db "Peat@"
+	db   "It can see in the"
+	next "dark with its left"
+	next "eye, and protects"
+	page "itself with mud"
+	next "that is as hard as"
+	next "iron.@"

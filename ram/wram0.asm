@@ -1049,6 +1049,44 @@ wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
 
 
+SECTION UNION "Misc 1326", WRAM0
+
+; GB Printer data
+wGameboyPrinterRAM::
+wGameboyPrinter2bppSource:: ds 40 tiles
+wGameboyPrinter2bppSourceEnd::
+wPrinterRowIndex:: db
+
+; Printer data
+wPrinterData:: ds 4
+wPrinterChecksum:: dw
+wPrinterHandshake:: db
+wPrinterStatusFlags::
+; bit 7: set if error 1 (battery low)
+; bit 6: set if error 4 (too hot or cold)
+; bit 5: set if error 3 (paper jammed or empty)
+; if this and the previous byte are both $ff: error 2 (connection error)
+	db
+
+wHandshakeFrameDelay:: db
+wPrinterSerialFrameDelay:: db
+wPrinterSendByteOffset:: dw
+wPrinterSendByteCounter:: dw
+
+; tilemap backup?
+wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterStatus:: db
+	ds 1
+; High nibble is for margin before the image, low nibble is for after.
+wPrinterMargins:: db
+wPrinterExposureTime:: db
+	ds 16
+wGameboyPrinterRAMEnd::
+
+wPrinterOpcode:: db
+wPrinterConnectionOpen:: db
+
+
 SECTION "Video", WRAM0
 
 wBGMapBuffer:: ds 48
@@ -1177,6 +1215,7 @@ wTradeDialog::
 wRandomValue::
 wEchoRAMTest::
 	db
+wPrinterQueueLength::
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db
 

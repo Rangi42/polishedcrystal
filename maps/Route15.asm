@@ -27,7 +27,7 @@ Route15_MapScriptHeader:
 	object_event 43,  6, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_14_CUT_TREE_3
 
 GenericTrainerTeacherColette:
-	generictrainer TEACHER, COLETTE, EVENT_BEAT_TEACHER_COLETTE, TeacherColetteSeenText, TeacherColetteBeatenText
+	generictrainer TEACHER_F, COLETTE, EVENT_BEAT_TEACHER_COLETTE, TeacherColetteSeenText, TeacherColetteBeatenText
 
 	text "Before I became a"
 	line "teacher, I used to"
@@ -37,7 +37,7 @@ GenericTrainerTeacherColette:
 	done
 
 GenericTrainerTeacherHillary:
-	generictrainer TEACHER, HILLARY, EVENT_BEAT_TEACHER_HILLARY, TeacherHillarySeenText, TeacherHillaryBeatenText
+	generictrainer TEACHER_F, HILLARY, EVENT_BEAT_TEACHER_HILLARY, TeacherHillarySeenText, TeacherHillaryBeatenText
 
 	text "Studying is impor-"
 	line "tant, but exercise"

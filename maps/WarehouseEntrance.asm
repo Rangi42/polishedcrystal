@@ -8,36 +8,37 @@ WarehouseEntrance_MapScriptHeader:
 
 	def_warp_events
 	warp_event  1,  2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 7
-	warp_event  1, 34, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 4
+	warp_event  1, 38, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 4
 	warp_event 16,  6, WAREHOUSE_ENTRANCE, 4
-	warp_event 27, 19, WAREHOUSE_ENTRANCE, 3
-	warp_event 28, 19, WAREHOUSE_ENTRANCE, 3
-	warp_event 28, 15, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
-	warp_event 19, 32, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 10
+	warp_event 27, 23, WAREHOUSE_ENTRANCE, 3
+	warp_event 28, 23, WAREHOUSE_ENTRANCE, 3
+	warp_event 28, 19, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
+	warp_event 19, 36, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 10
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 16,  6, BGEVENT_READ, BasementDoorScript
 	bg_event 17,  6, BGEVENT_JUMPTEXT, GoldenrodUndergroundNoEntryText
-	bg_event  4, 13, BGEVENT_ITEM + PARALYZEHEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARALYZEHEAL
-	bg_event  2, 18, BGEVENT_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
+	bg_event  4, 17, BGEVENT_ITEM + PARALYZEHEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARALYZEHEAL
+	bg_event  2, 22, BGEVENT_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
 	bg_event 15,  8, BGEVENT_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
-	bg_event 20, 27, BGEVENT_ITEM + X_SP_ATK, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_X_SP_ATK
+	bg_event 20, 31, BGEVENT_ITEM + X_SP_ATK, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_X_SP_ATK
 
 	def_object_events
-	object_event  5, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BargainMerchantScript, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
-	object_event  5, 14, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
-	object_event  5, 15, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
-	object_event  5, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BitterMerchantScript, EVENT_WAREHOUSE_ENTRANCE_GRANNY
-	object_event 13, 25, SPRITE_PIERS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PiersScript, -1
-	object_event  3, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdEric, -1
+	object_event  5, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BargainMerchantScript, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
+	object_event  5, 18, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
+	object_event  5, 19, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
+	object_event  5, 25, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BitterMerchantScript, EVENT_WAREHOUSE_ENTRANCE_GRANNY
+	object_event 13, 29, SPRITE_PIERS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PiersScript, -1
+	object_event  3, 35, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdEric, -1
 	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdTeru, -1
-	object_event  1, 27, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
+	object_event  1, 31, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
 	object_event  0,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
-	object_event  8, 27, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerClara, -1
-	object_event 14, 25, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_MICROPHONE, 0, 0, -1, -1, PAL_NPC_EMOTE_GRAY, OBJECTTYPE_COMMAND, jumptextfaceplayer, PiersMicrophoneText, -1
-	keyitemball_event  5, 24, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+	object_event  8, 31, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerClara, -1
+	object_event 14, 29, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_MICROPHONE, 0, 0, -1, -1, PAL_NPC_EMOTE_GRAY, OBJECTTYPE_COMMAND, jumptextfaceplayer, PiersMicrophoneText, -1
+	object_event  5, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLACK, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundCandyManScript, -1
+	keyitemball_event  5, 28, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 
 	object_const_def
 	const WAREHOUSEENTRANCE_GRAMPS
@@ -386,6 +387,49 @@ BasementDoorScript::
 	refreshmap
 	setevent EVENT_USED_BASEMENT_KEY
 	endtext
+
+GoldenrodUndergroundCandyManScript:
+	checkevent EVENT_GOT_CANDY_JAR
+	iftruefwd .AlreadyGotCandyJar
+	opentext
+	writetext .GiveCandyJarText1
+	waitbutton
+	verbosegivekeyitem CANDY_JAR
+	setevent EVENT_GOT_CANDY_JAR
+	writetext .GiveCandyJarText2
+	waitbutton
+	setval 1
+	writemem wExpCandySAmount
+	endtext
+
+.AlreadyGotCandyJar:
+	pokemart MARTTYPE_EXP_CANDY, 0
+
+.GiveCandyJarText1:
+	text "Psst! Over here…"
+	line "You look like you"
+	cont "could use a boost."
+
+	para "Don't ask too many"
+	line "questions."
+
+	para "Here, take this."
+	done
+
+.GiveCandyJarText2:
+	text "It's a Candy Jar."
+	
+	para "You'll need it to"
+	line "store my, uh,"
+	cont "special candy."
+
+	para "First one's on me!"
+	line "Try it out."
+
+	para "…For your"
+	line "#mon,"
+	cont "of course."
+	done
 
 PiersScript:
 	faceplayer

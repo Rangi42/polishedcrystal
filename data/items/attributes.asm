@@ -541,6 +541,8 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; WING CASE
 	key_item_attribute 0, ITEMMENU_PARTY, ITEMMENU_NOUSE
+; CANDY JAR
+	key_item_attribute 0, ITEMMENU_PARTY, ITEMMENU_NOUSE
 ; MUSIC PLAYER
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_CURRENT
 ; TYPE CHART
@@ -585,6 +587,8 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; OLD SEA MAP
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
+; LIFT KEY
+	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; HARSH LURE
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; POTENT LURE

@@ -33,6 +33,7 @@ OpenMartDialog::
 	dw TMMart
 	dw BlueCardMart
 	dw BTMart
+	dw ExpCandyMart
 
 MartDialog:
 	xor a ; MARTTYPE_STANDARD, STANDARDMART_HOWMAYIHELPYOU
@@ -48,6 +49,36 @@ HerbShop:
 	call BuyMenu
 	ld hl, Text_HerbShop_ComeAgain
 	jmp MartTextbox
+
+ExpCandyMart:
+	ld b, BANK(ExpCandyShopData)
+	ld de, ExpCandyShopData
+	call LoadMartPointer
+	call ReadMart
+	call LoadStandardMenuHeader
+	ld hl, .Text_ExpCandyMart_Intro
+	call MartTextbox
+	call ExpCandyBuyMenu
+	ld hl, .Text_ExpCandyMart_ComeAgain
+	jmp MartTextbox
+
+.Text_ExpCandyMart_Intro:
+	text "You again? Guess"
+	line "you liked that"
+	cont "candy."
+
+	para "I can hook you up."
+	line "For a price, of"
+	cont "course."
+	done
+
+.Text_ExpCandyMart_ComeAgain
+	text "Don't tell anyone"
+	line "where you got"
+	cont "these, okay?"
+	done
+
+INCLUDE "data/items/exp_candy_shop.asm"
 
 BargainShop:
 	ld b, BANK(BargainShopData)
@@ -435,6 +466,13 @@ BuyMenu_Finish:
 	and a
 	ret
 
+ExpCandyBuyMenu:
+	call BuyMenu_InitGFX
+.loop
+	call ExpCandyBuyMenuLoop ; menu loop
+	jr nc, .loop
+	jr BuyMenu_Finish
+
 BuyTMMenu:
 	call BuyMenu_InitGFX
 .loop
@@ -576,6 +614,7 @@ GetMartDialogGroup:
 	dwb .TMMartPointers, 0
 	dwb .BlueCardMartPointers, 0
 	dwb .BTMartPointers, 0
+	dwb .ExpCandyMartPointers, 2
 
 .StandardMartPointers:
 	dw Text_Mart_HowMany
@@ -665,6 +704,14 @@ GetMartDialogGroup:
 	dw Text_BTMart_HereYouGo
 	dw BlueCardBuyMenuLoop
 
+.ExpCandyMartPointers:
+	dw Text_Mart_HowMany
+	dw Text_Mart_CostsThisMuch
+	dw Text_Mart_InsufficientFunds
+	dw Text_Mart_BagFull
+	dw Text_Mart_HereYouGo
+	dw ExpCandyBuyMenuLoop
+
 BuyMenuLoop:
 	farcall PlaceMoneyTopRight
 	call UpdateSprites
@@ -727,6 +774,55 @@ BuyMenuLoop:
 .PremierBallText
 	text_far MartPremierBallText
 	text_end
+
+ExpCandyBuyMenuLoop:
+	farcall PlaceMoneyTopRight
+	call UpdateSprites
+	ld hl, MenuDataHeader_ExpCandyBuy
+	call CopyMenuHeader
+	call DoMartScrollingMenu
+	call SpeechTextbox
+	ld a, [wMenuJoypad]
+	cp B_BUTTON
+	jmp z, MartMenuLoop_SetCarry
+	call MartAskPurchaseQuantity
+	jr c, .cancel
+	call ExpCandyConfirmPurchase
+	jr c, .cancel
+	ld de, wMoney
+	ld bc, hMoneyTemp
+	call CompareMoney
+	jmp c, MartMenuLoop_InsufficientFunds
+	call ReceiveExpCandy
+	jmp nc, MartMenuLoop_InsufficientBagSpace
+	call PlayTransactionSound
+	ld de, wMoney
+	ld bc, hMoneyTemp
+	call TakeMoney
+	ld a, MARTTEXT_HERE_YOU_GO
+	call LoadBuyMenuText
+	call JoyWaitAorB
+.cancel
+	call SpeechTextbox
+	and a
+	ret
+
+ReceiveExpCandy:
+	ld hl, wCandyAmounts
+	ld a, [wCurItem]
+	dec a
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [wItemQuantityChangeBuffer]
+	ld c, a
+	ld a, [hl]
+	add c
+	cp 100
+	ret nc
+	ld [hl], a
+	scf
+	ret
 
 BuyTMMenuLoop:
 	farcall PlaceMoneyTopRight
@@ -858,6 +954,15 @@ StandardMartAskPurchaseQuantity:
 MartConfirmPurchase:
 BTMartConfirmPurchase:
 	predef PartyMonItemName
+	ld a, MARTTEXT_COSTS_THIS_MUCH
+	call LoadBuyMenuText
+	jmp YesNoBox
+
+ExpCandyConfirmPurchase:
+	ld a, [wCurItem]
+	ld [wNamedObjectIndex], a
+	call GetExpCandyName
+	call CopyName1
 	ld a, MARTTEXT_COSTS_THIS_MUCH
 	call LoadBuyMenuText
 	jmp YesNoBox
@@ -1068,6 +1173,21 @@ MenuDataHeader_Buy:
 	dba PlaceMenuItemName
 	dba MartMenu_PrintBCDPrices
 	dba UpdateItemIconAndDescriptionAndBagQuantity
+
+MenuDataHeader_ExpCandyBuy:
+	db MENU_BACKUP_TILES
+	menu_coords 6, 3, 19, 11
+	dw .menudata2
+	db 1 ; default option
+
+.menudata2
+	db $30 ; pointers
+	db 4, 8 ; rows, columns
+	db 1 ; horizontal spacing
+	dbw 0, wCurMart
+	dba PlaceMenuExpCandyName
+	dba MartMenu_PrintBCDPrices
+	dba UpdateExpCandyIconAndDescriptionAndBagQuantity
 
 TMMenuDataHeader_Buy:
 	db MENU_BACKUP_TILES
