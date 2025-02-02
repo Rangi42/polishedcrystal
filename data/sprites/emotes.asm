@@ -1,6 +1,6 @@
 Emotes:
 ; entries correspond to EMOTE_* constants
-	table_width 2, Emotes
+	table_width 2
 	farbank "Emote Graphics"
 	fardw ShockEmote
 	fardw QuestionEmote
@@ -14,7 +14,7 @@ Emotes:
 
 EmotePalettes:
 ; entries correspond to EMOTE_* constants
-	table_width 1, EmotePalettes
+	table_width 1
 	db PAL_OW_EMOTE_BLACK  ; EMOTE_SHOCK
 	db PAL_OW_EMOTE_BLACK  ; EMOTE_QUESTION
 	db PAL_OW_EMOTE_GREEN  ; EMOTE_HAPPY

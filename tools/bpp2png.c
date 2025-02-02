@@ -70,8 +70,8 @@ void mingle_2bpp_planes(uint8_t *bpp_data, long size) {
 	for (long i = 0; i < size; i += 2) {
 		// Interleave aka "mingle" bits
 		// <https://graphics.stanford.edu/~seander/bithacks.html#Interleave64bitOps>
-#define EXPAND_PLANE(b) (((b) * 0x0101010101010101ULL & 0x8040201008040201ULL) * 0x0102040810204081ULL)
-		uint16_t r = ((EXPAND_PLANE(bpp_data[i]) >> 49) & 0x5555) | ((EXPAND_PLANE(bpp_data[i + 1]) >> 48) & 0xAAAA);
+#define EXPAND_PLANE(b) (((((b) * 0x0101010101010101ULL & 0x8040201008040201ULL) * 0x0102040810204081ULL) >> 48) & 0xAAAA)
+		uint16_t r = (EXPAND_PLANE(bpp_data[i]) >> 1) | EXPAND_PLANE(bpp_data[i + 1]);
 		bpp_data[i] = r >> 8;
 		bpp_data[i + 1] = r & 0xff;
 	}
@@ -160,10 +160,12 @@ void read_gbcpal(Palette palette, const char *filename) {
 	free(pal_data);
 }
 
-unsigned int write_png(const char *filename, uint8_t *bpp_data, unsigned int width, unsigned int height, Palette palette) {
+unsigned int write_png(const char *filename, uint8_t *bpp_data, unsigned int depth,
+		unsigned int width, unsigned int height, Palette palette) {
 	LodePNGState state;
 	lodepng_state_init(&state);
-	state.info_raw.bitdepth = state.info_png.color.bitdepth = 2;
+	state.encoder.auto_convert = 0; // Always use the colortype we specify
+	state.info_raw.bitdepth = state.info_png.color.bitdepth = depth;
 
 	if (palette) {
 		state.info_raw.colortype = state.info_png.color.colortype =  LCT_PALETTE;
@@ -230,7 +232,8 @@ int main(int argc, char *argv[]) {
 	bpp_data = rearrange_tiles_to_scanlines(bpp_data, options.width, height);
 
 	const char *png_filename = argv[1];
-	unsigned int error = write_png(png_filename, bpp_data, options.width, height, options.palette ? palette : NULL);
+	unsigned int error = write_png(png_filename, bpp_data, options.depth, options.width, height,
+		options.palette ? palette : NULL);
 	if (error) {
 		error_exit("Could not write to file \"%s\": %s\n", png_filename, lodepng_error_text(error));
 	}

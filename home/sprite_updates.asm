@@ -9,9 +9,9 @@ DisableSpriteUpdates::
 	xor a
 	ldh [hMapAnims], a
 	ld [wSpriteUpdatesEnabled], a
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
+	ld a, [wStateFlags]
+	res SPRITE_UPDATES_DISABLED_F, a
+	ld [wStateFlags], a
 	ret
 
 CloseSubmenu::
@@ -29,19 +29,22 @@ ExitAllMenus::
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
+	call RestoreSprites
 	call UpdateSprites
 FinishExitMenu::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
+	farcall LoadWeatherPalNoApply
+	farcall LoadWeatherGraphics
 	farcall FadeInPalettes_EnableDynNoApply
 	; fallthrough
 EnableSpriteUpdates::
-	ld a, $1
+	ld a, TRUE
 	ld [wSpriteUpdatesEnabled], a
 	ldh [hMapAnims], a
-	ld a, [wVramState]
-	set 0, a
-	ld [wVramState], a
+	ld a, [wStateFlags]
+	set SPRITE_UPDATES_DISABLED_F, a
+	ld [wStateFlags], a
 	ret

@@ -50,6 +50,45 @@ DoNextFrameForAllSprites:
 	ld [hli], a
 	jr .loop2
 
+DoNextFrameForAllSprites_OW:
+	ld hl, wSpriteAnimationStructs
+	ld e, 10
+
+.loop
+	ld a, [hl]
+	and a
+	jr z, .next
+	ld c, l
+	ld b, h
+	push hl
+	push de
+	call DoAnimFrame ; Uses a massive dw
+	call UpdateAnimFrame
+	pop de
+	pop hl
+	ret c
+
+.next
+	ld bc, $10
+	add hl, bc
+	dec e
+	jr nz, .loop
+
+	ld a, [wCurSpriteOAMAddr]
+	ld l, a
+	ld h, HIGH(wShadowOAM)
+
+.ow_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - hUsedOAMIndex])
+	ldh a, [hUsedOAMIndex]
+	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
+	cpl
+	add (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH + 1
+	cp l
+	ret c
+	xor a
+	ld [hli], a
+	jr .ow_clear_loop
+
 DoNextFrameForFirst16Sprites:
 	ld hl, wSpriteAnimationStructs
 	ld e, 10
@@ -265,11 +304,23 @@ UpdateAnimFrame:
 	; fourth byte: attributes
 	; [de] = GetSpriteOAMAttr([hl])
 	ld a, [hl]
-	cp -1 ; this lets the party menu icons keep their dynamic color attribute
+	cp SPRITEOAM_SKIP_PAL_APPLY
 	jr z, .skipOAMAttributes
+	cp SPRITEOAM_SKIP_PAL_APPLY_XFLIP
+	jr z, .skipOAMAttributes_xflip
 	call GetSpriteOAMAttr
 	ld [de], a
+	jr .attributes_done
 .skipOAMAttributes
+	ld a, [de]
+	and ~X_FLIP
+	ld [de], a
+	jr .attributes_done
+.skipOAMAttributes_xflip
+	ld a, [de]
+	or X_FLIP
+	ld [de], a
+.attributes_done
 	inc hl
 	inc de
 	ld a, e

@@ -89,8 +89,8 @@ endr
 ; Now that we have the input, we can do stuff with it.
 
 ; For example, soft reset:
-	and A_BUTTON | B_BUTTON | SELECT | START
-	cp  A_BUTTON | B_BUTTON | SELECT | START
+	or ~(A_BUTTON | B_BUTTON | SELECT | START)
+	inc a
 	jmp z, SoftReset
 
 	ret

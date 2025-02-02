@@ -123,17 +123,9 @@ CheckPartyFullAfterContest:
 	ret
 
 GiveANickname_YesNo:
-	ld a, [wInitialOptions]
-	bit NUZLOCKE_MODE, a
-	jr nz, .AlwaysNickname
 	ld hl, TextJump_GiveANickname
 	call PrintText
 	jmp YesNoBox
-
-.AlwaysNickname:
-	ld a, TRUE
-	and a
-	ret
 
 TextJump_GiveANickname:
 	; Give a nickname to the @  you received?

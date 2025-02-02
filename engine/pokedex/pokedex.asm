@@ -1,16 +1,22 @@
 Pokedex:
-	xor a
+	ld a, [wDexPrevCursorPos]
 	ld [wPokedex_CursorPos], a
+	ld a, [wDexPrevOffset]
 	ld [wPokedex_Offset], a
-	call StackDexGraphics
 
+	call StackDexGraphics
 	call Pokedex_Main
 
-	xor a
+	ld a, [wDexPrevCursorPos]
 	ld [wPokedex_CursorPos], a
 
-	jmp Pokedex_MainLoop
+	call Pokedex_MainLoop
 
+	ld a, [wPokedex_CursorPos]
+	ld [wDexPrevCursorPos], a
+	ld a, [wPokedex_Offset]
+	ld [wDexPrevOffset], a
+	ret
 
 Pokedex_LoadTilemap:
 	ld a, BANK(wDexTilemap)
@@ -1686,7 +1692,7 @@ Pokedex_Bio:
 	ld e, a
 	ld d, 0
 	ld a, [wInitialOptions]
-	bit SCALED_EXP, a ; should we use gen 5+ formula?
+	bit SCALED_EXP_OPT, a ; should we use gen 5+ formula?
 	jr z, .got_exp
 	ld a, [wCurPartySpecies]
 	ld c, a
@@ -2812,7 +2818,7 @@ else
 	RGB_MONOCHROME_BLACK
 endc
 BodyColorPals:
-	table_width 2, BodyColorPals
+	table_width 2
 INCLUDE "gfx/pokedex/body_colors.pal"
 	assert_table_length NUM_BODY_COLORS
 

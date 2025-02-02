@@ -1,6 +1,6 @@
 TreeMons:
 ; entries correspond to TREEMON_SET_* constants
-	table_width 2, TreeMons
+	table_width 2
 	dw TreeMonSet_City
 	dw TreeMonSet_Canyon
 	dw TreeMonSet_Town
@@ -45,7 +45,7 @@ TreeMonSet_Town:
 	tree_mon 20, AIPOM,      10
 	db -1
 	; rare
-	tree_mon 60, PIDGEY,     10
+	tree_mon 60, SPEAROW,    10
 	tree_mon 30, HERACROSS,  10
 	tree_mon 10, MEOWTH,     10
 	db -1
@@ -106,7 +106,7 @@ TreeMonSet_Apricorns:
 	tree_mon 10, VOLTORB, HISUIAN_FORM, 10
 	db -1
 	; rare
-	tree_mon 40, PIDGEY,                10
+	tree_mon 40, SPEAROW,               10
 	tree_mon 20, VOLTORB, HISUIAN_FORM, 10
 	tree_mon 20, HERACROSS,             10
 	tree_mon 20, MEOWTH,                10

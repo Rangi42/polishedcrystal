@@ -936,9 +936,13 @@ SECTION "Kleavor Pics", ROMX
 KleavorFrontpic: INCBIN "gfx/pokemon/kleavor/front.animated.2bpp.lz"
 KleavorBackpic:  INCBIN "gfx/pokemon/kleavor/back.2bpp.lz"
 
-SECTION "Ursaluna Pics", ROMX
-UrsalunaFrontpic: INCBIN "gfx/pokemon/ursaluna/front.animated.2bpp.lz"
-UrsalunaBackpic:  INCBIN "gfx/pokemon/ursaluna/back.2bpp.lz"
+SECTION "UrsalunaPlain Pics", ROMX
+UrsalunaPlainFrontpic: INCBIN "gfx/pokemon/ursaluna_plain/front.animated.2bpp.lz"
+UrsalunaPlainBackpic:  INCBIN "gfx/pokemon/ursaluna_plain/back.2bpp.lz"
+
+SECTION "UrsalunaBloodmoon Pics", ROMX
+UrsalunaBloodmoonFrontpic: INCBIN "gfx/pokemon/ursaluna_bloodmoon/front.animated.2bpp.lz"
+UrsalunaBloodmoonBackpic:  INCBIN "gfx/pokemon/ursaluna_bloodmoon/back.2bpp.lz"
 
 SECTION "EggPic", ROMX
 EggPic: INCBIN "gfx/pokemon/egg/front.animated.2bpp.lz"

@@ -25,7 +25,7 @@ _SafeCopyTilemapAtOnce::
 	jr .gotPalUpdate
 .doNotUseOldValue
 	dec a
-	call nz, SetPalettes
+	call nz, SetDefaultBGPAndOBP
 	lb de, 0, 1
 .gotPalUpdate
 	xor a

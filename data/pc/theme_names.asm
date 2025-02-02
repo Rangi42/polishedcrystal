@@ -1,5 +1,5 @@
 BillsPC_ThemeNames:
-	table_width 1, BillsPC_ThemeNames
+	table_width 1
 	dr .Standard
 	dr .Pro
 	dr .Mobile

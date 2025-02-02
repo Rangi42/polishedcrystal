@@ -606,7 +606,7 @@ WillGroup:
 	dbp 49, JYNX
 		db BRIGHTPOWDER
 		ev_spread 144 SAt, 144 Spe
-		db NASTY_PLOT, DRAIN_KISS, ICE_BEAM, PSYCHIC_M
+		db NASTY_PLOT, DRAINING_KISS, ICE_BEAM, PSYCHIC_M
 	dbp 50, EXEGGUTOR
 		db MIRACLE_SEED
 		ev_spread 144 HP, 144 SAt
@@ -634,7 +634,7 @@ WillGroup:
 		db SHADOW_BALL, MEGAHORN, EARTHQUAKE, PSYCHIC_M
 	dbp 68, JYNX
 		db BRIGHTPOWDER, FAKE_PERFECT_DVS
-		db NASTY_PLOT, DRAIN_KISS, ICE_BEAM, PSYCHIC_M
+		db NASTY_PLOT, DRAINING_KISS, ICE_BEAM, PSYCHIC_M
 	dbp 68, EXEGGUTOR
 		db MIRACLE_SEED, FAKE_PERFECT_DVS
 		db REFLECT, GIGA_DRAIN, SLEEP_POWDER, PSYCHIC_M
@@ -2365,6 +2365,14 @@ YoungsterGroup:
 	dbp LEVEL_FROM_BADGES + 8, SANDSLASH
 	db -1 ; end
 
+	; YOUNGSTER
+	db "Arden@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 55, FLAREON
+	dbp 53, TAUROS
+	dbp 55, RAPIDASH
+	db -1 ; end
 
 SECTION "BugCatcherGroup", ROMX
 BugCatcherGroup:
@@ -2431,14 +2439,14 @@ BugCatcherGroup:
 	db "Arnie@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 15, VENONAT
+	dbp 16, VENONAT
 	db -1 ; end
 
 	; BUG_CATCHER
 	db "Arnie@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 19, VENONAT
+	dbp 20, VENONAT
 	db -1 ; end
 
 	; BUG_CATCHER
@@ -2586,9 +2594,9 @@ CamperGroup:
 	db "Ivan@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 10, DIGLETT
-	dbp 10, ZUBAT
-	dbp 14, DIGLETT
+	dbp 11, DIGLETT
+	dbp 11, ZUBAT
+	dbp 15, DIGLETT
 	db -1 ; end
 
 	; CAMPER
@@ -2885,7 +2893,7 @@ endc
 	db "Kim@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 15, VULPIX
+	dbp 17, VULPIX
 	db -1 ; end
 
 	; PICNICKER
@@ -2977,6 +2985,14 @@ endc
 	dbp 62, PARASECT
 	db -1 ; end
 
+	; PICNICKER
+	db "Zane@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, JOLTEON
+	dbp 53, RAICHU
+	dbp 55, ELECTIVIRE
+	db -1 ; end
 
 SECTION "TwinsGroup", ROMX
 TwinsGroup:
@@ -4602,8 +4618,8 @@ OfficerMGroup:
 	db "Dirk@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 14, GROWLITHE
-	dbp 14, MACHOP
+	dbp 15, GROWLITHE
+	dbp 15, MACHOP
 	db -1 ; end
 
 
@@ -4759,7 +4775,7 @@ PokemaniacGroup:
 	db "Issac@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 12, LICKITUNG
+	dbp 15, LICKITUNG
 		db LICK, SUPERSONIC, CUT, NO_MOVE
 	db -1 ; end
 
@@ -4767,8 +4783,8 @@ PokemaniacGroup:
 	db "Donald@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, SLOWPOKE
-	dbp 11, NIDORAN_M
+	dbp 13, SLOWPOKE
+	dbp 13, NIDORAN_M
 	db -1 ; end
 
 	; POKEMANIAC
@@ -4804,8 +4820,8 @@ CosplayerGroup:
 	db "Clara@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, VULPIX
-	dbp 11, VULPIX
+	dbp 14, VULPIX
+	dbp 14, VULPIX
 	db -1 ; end
 
 	; COSPLAYER
@@ -4835,6 +4851,14 @@ CosplayerGroup:
 		db CHARCOAL
 	db -1 ; end
 
+	; COSPLAYER
+	db "Lyric@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, LANTURN
+	dbp 53, MAGNEZONE
+	dbp 55, ELECTRODE
+	db -1 ; end
 
 SECTION "SuperNerdGroup", ROMX
 SuperNerdGroup:
@@ -4850,8 +4874,8 @@ SuperNerdGroup:
 	db "Eric@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 11, GRIMER
-	dbp 12, PORYGON
+	dbp 13, GRIMER
+	dbp 14, PORYGON
 	db -1 ; end
 
 	; SUPER_NERD
@@ -4891,10 +4915,10 @@ SuperNerdGroup:
 	db "Teru@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 7, MAGNEMITE
-	dbp 11, VOLTORB
-	dbp 7, MAGNEMITE
 	dbp 9, MAGNEMITE
+	dbp 13, VOLTORB
+	dbp 9, MAGNEMITE
+	dbp 11, MAGNEMITE
 	db -1 ; end
 
 	; SUPER_NERD
@@ -5234,6 +5258,15 @@ endc
 		db QUICK_POWDER
 	dbp LEVEL_FROM_BADGES + 9, DITTO
 		db FOCUS_SASH
+	db -1 ; end
+
+	; LASS
+	db "Mavis@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 55, TOGEKISS
+	dbp 53, JOLTEON
+	dbp 52, AMPHAROS
 	db -1 ; end
 
 
@@ -6239,6 +6272,14 @@ HexManiacGroup:
 	dbp 54, MISDREAVUS
 	db -1 ; end
 
+	; HEX_MANIAC
+	db "Coryn@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 53, MISMAGIUS
+	dbp 52, ESPEON
+	dbp 55, GENGAR
+	db -1 ; end
 
 SECTION "SageGroup", ROMX
 SageGroup:
@@ -6789,6 +6830,15 @@ endc
 		db HEADBUTT, ATTRACT, MUD_SLAP, DISARM_VOICE
 	db -1 ; end
 
+	; RICH_BOY
+	db "Tobin@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 53, MAGMAR
+	dbp 54, GOLEM
+	dbp 55, MACHOKE
+	db -1 ; end
+
 
 SECTION "LadyGroup", ROMX
 LadyGroup:
@@ -6823,9 +6873,9 @@ BreederGroup:
 	db "Theresa@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
 	; party
-	dbp 14, MAGBY, FEMALE
+	dbp 15, MAGBY, FEMALE
 		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-	dbp 14, ELEKID, FEMALE
+	dbp 16, ELEKID, FEMALE
 		db EVIOLITE, SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -7774,6 +7824,14 @@ ScientistGroup:
 	dbp 55, ALAKAZAM
 	db -1 ; end
 
+	; SCIENTIST
+	db "Sanders@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 52, ALAKAZAM
+	dbp 54, LAPRAS
+	dbp 53, NOCTOWL
+	db -1 ; end
 
 SECTION "RocketScientistGroup", ROMX
 RocketScientistGroup:
@@ -8068,6 +8126,15 @@ BlackbeltGroup:
 	dbp 56, POLIWRATH
 	db -1 ; end
 
+	; BLACKBELT_T
+	db "Rylan@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, MAGMORTAR
+	dbp 52, ARCANINE
+	dbp 53, HOUNDOOM
+	db -1 ; end
+
 
 SECTION "BattleGirlGroup", ROMX
 BattleGirlGroup:
@@ -8135,6 +8202,15 @@ BattleGirlGroup:
 	dbp LEVEL_FROM_BADGES + 10, URSARING, MALE
 		db PROTECT_PADS, FAKE_PERFECT_DVS, ABIL_URSARING_UNNERVE | NAT_ATK_UP_SATK_DOWN
 		db PLAY_ROUGH, SLASH, BELLY_DRUM, NIGHT_SLASH
+	db -1 ; end
+
+	; BATTLE_GIRL
+	db "Sasha@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 52, PRIMEAPE
+	dbp 55, TYPHLOSION
+	dbp 54, RAPIDASH
 	db -1 ; end
 
 
@@ -8307,17 +8383,17 @@ EngineerGroup:
 		db ABILITY_2 | NAT_NEUTRAL
 	db -1 ; end
 
-SECTION "TeacherGroup", ROMX
-TeacherGroup:
+SECTION "TeacherFGroup", ROMX
+TeacherFGroup:
 
-	; TEACHER
+	; TEACHER_F
 	db "Colette@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 60, CLEFAIRY
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Hillary@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8326,14 +8402,14 @@ TeacherGroup:
 	dbp 59, MAROWAK
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Shirley@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 47, WIGGLYTUFF
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Kathryn@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8342,7 +8418,7 @@ TeacherGroup:
 	dbp LEVEL_FROM_BADGES + 2, FURRET
 	db -1 ; end
 
-	; TEACHER
+	; TEACHER_F
 	db "Clarice@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8350,6 +8426,14 @@ TeacherGroup:
 	dbp 56, SUNFLORA
 	db -1 ; end
 
+	; TEACHER_F
+	db "Serena@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 55, UMBREON
+	dbp 52, VAPOREON
+	dbp 54, ESPEON
+	db -1 ; end
 
 SECTION "GuitaristMGroup", ROMX
 GuitaristMGroup:
@@ -9164,6 +9248,15 @@ CooltrainerMGroup:
 		ev_spread 192 Atk, 192 Spe
 	db -1 ; end
 
+	; COOLTRAINERM
+	db "Daric@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, PORYGON_Z
+	dbp 53, SLOWKING
+	dbp 55, GLACEON
+	db -1 ; end
+
 
 SECTION "CooltrainerFGroup", ROMX
 CooltrainerFGroup:
@@ -9708,15 +9801,15 @@ VeteranFGroup:
 	db -1 ; end
 
 	; VETERANF
-	db "Sylvie@"
+	db "Jonet@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
 	dbp 41, TYPHLOSION
 		db CHARCOAL
 		db FLAME_CHARGE, THUNDERPUNCH, DIG, STRENGTH
-	dbp 40, GLACEON
+	dbp 40, ESPEON
 		db NEVERMELTICE
-		db ICE_BEAM, RECOVER, BARRIER, IRON_TAIL
+		db PSYCHIC_M, REFLECT, SHADOW_BALL, QUICK_ATTACK
 	dbp 39, TOGEKISS
 		db LEFTOVERS
 		db FLY, FRESH_SNACK, AURA_SPHERE, EXTREMESPEED
@@ -9916,7 +10009,7 @@ ArianaGroup:
 	dbp 40, ARBOK, FEMALE | ARBOK_ARIANA_FORM
 		db POISON_BARB, ABILITY_1 | NAT_NEUTRAL
 		db GLARE, SCREECH, ACID, CRUNCH
-	dbp 41, GLOOM, FEMALE
+	dbp 41, VILEPLUME, FEMALE
 		db MIRACLE_SEED, ABILITY_1 | NAT_NEUTRAL
 		db LEECH_SEED, ACID, SLEEP_POWDER, GIGA_DRAIN
 	dbp 42, HONCHKROW, FEMALE
@@ -9931,7 +10024,7 @@ ArianaGroup:
 	dbp 35, ARBOK, FEMALE | ARBOK_ARIANA_FORM
 		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
 		db WRAP, ACID, CRUNCH, GLARE
-	dbp 36, VILEPLUME, FEMALE
+	dbp 36, GLOOM, FEMALE
 		db MIRACLE_SEED, ABILITY_1 | NAT_NEUTRAL
 		db MEGA_DRAIN, GROWTH, SLEEP_POWDER, ACID
 	dbp 37, MURKROW, FEMALE
@@ -10225,7 +10318,7 @@ LoreleiGroup:
 	dbp 44, JYNX
 		db SITRUS_BERRY
 		ev_spread 240 SAt
-		db DRAIN_KISS, SING, AVALANCHE, PETAL_DANCE
+		db DRAINING_KISS, SING, AVALANCHE, PETAL_DANCE
 	dbp 43, LAPRAS
 		db NO_ITEM
 		ev_spread 120 SAt, 120 SDf
@@ -10250,7 +10343,7 @@ LoreleiGroup:
 		db ICE_BEAM, BARRIER, HYPER_VOICE, MIRROR_COAT
 	dbp 75, JYNX
 		db PINK_BOW
-		db DRAIN_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
+		db DRAINING_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
 	dbp 74, LAPRAS
 		db BRIGHTPOWDER
 		db ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, OUTRAGE
@@ -10279,7 +10372,7 @@ LoreleiGroup:
 	dbp 60, JYNX
 		db PINK_BOW
 		ev_spread 68 SAt, 252 Spe
-		db DRAIN_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
+		db DRAINING_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
 	dbp 59, LAPRAS
 		db BRIGHTPOWDER
 		ev_spread 160 HP, 80 SAt, 80 Spe
@@ -10973,7 +11066,7 @@ ValerieGroup:
 	dbp 40, SYLVEON
 		db SITRUS_BERRY
 		ev_spread 224 SAt
-		db MOONBLAST, CALM_MIND, DRAIN_KISS, SWIFT
+		db MOONBLAST, CALM_MIND, DRAINING_KISS, SWIFT
 	db -1 ; end
 
 	; VALERIE
@@ -11003,7 +11096,7 @@ ValerieGroup:
 	dbp 60, SYLVEON, FEMALE
 		db PINK_BOW, ABILITY_1 | NAT_NEUTRAL
 		ev_spread 252 SAt, 68 Spe
-		db MOONBLAST, CALM_MIND, DRAIN_KISS, HYPER_VOICE
+		db MOONBLAST, CALM_MIND, DRAINING_KISS, HYPER_VOICE
 	db -1 ; end
 
 	; VALERIE
@@ -11027,7 +11120,7 @@ ValerieGroup:
 		db AURA_SPHERE, FRESH_SNACK, DAZZLINGLEAM, AIR_SLASH
 	dbp 75, SYLVEON, FEMALE
 		db PINK_BOW, ABILITY_1 | NAT_NEUTRAL
-		db MOONBLAST, CALM_MIND, DRAIN_KISS, HYPER_VOICE
+		db MOONBLAST, CALM_MIND, DRAINING_KISS, HYPER_VOICE
 	db -1 ; end
 
 
@@ -11452,3 +11545,18 @@ ReiGroup:
 		db LEFTOVERS
 		db NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SHADOW_BALL
 	db -1 ; end
+
+
+SECTION "TeacherMGroup", ROMX
+TeacherMGroup:
+
+	; TEACHER_M
+	db "Nolan@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, ELECTRODE
+	dbp 55, MAGNEZONE
+	dbp 56, ELECTIVIRE
+	db -1 ; end
+
+ENDSECTION

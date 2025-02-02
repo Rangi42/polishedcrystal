@@ -160,6 +160,7 @@ EcruteakCherishBallHouse_BlockData:
 EcruteakDestinyKnotHouse_BlockData:
 VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
+VioletOutskirtsHouse_BlockData:
 ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.ablk.lz"
 
@@ -1919,3 +1920,5 @@ BattleFactoryHallway_BlockData:
 SECTION "BattleFactoryBattleRoom_BlockData", ROMX
 BattleFactoryBattleRoom_BlockData:
 	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"
+
+ENDSECTION

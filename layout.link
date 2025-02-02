@@ -36,7 +36,6 @@ ROM0
 
 ROMX $01
 	"bank1"
-	"Effect Command Pointers"
 
 ROMX $02
 	"bank2"
@@ -222,7 +221,8 @@ WRAM0
 	align 8
 	"Sprites"
 	"Tilemap and Attrmap"
-	"Misc 480"
+	"Misc 404"
+	"Footprint Queue"
 	"Unused"
 	"Misc 1326"
 	org $cff0
@@ -243,6 +243,7 @@ WRAMX $2
 	align 8
 	"Sound Stack"
 	"Pic Animations RAM"
+	"Sprites Backup"
 
 WRAMX $3
 	org $d000

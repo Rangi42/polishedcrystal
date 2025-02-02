@@ -1,5 +1,5 @@
 SongArtists:
-	list_start SongArtists
+	list_start
 	li ""
 	li "Junichi Masuda"
 	li "Go Ichinose"

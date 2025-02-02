@@ -90,9 +90,9 @@ _TimeOfDayPals::
 	ldh [rSVBK], a
 
 ; update palettes
-	farcall CheckForUsedObjPals
-	call _UpdateTimePals
-	call DelayFrame
+	farcall LoadMapPalettes
+	farcall EnableDynPalUpdatesNoApply
+	farcall OWFadePalettesInit
 
 ; successful change
 	scf
@@ -105,6 +105,7 @@ _TimeOfDayPals::
 
 _UpdateTimePals::
 	ld c, $9 ; normal
+UpdatePalFromC::
 	call GetTimePalFade
 	jmp DmgToCgbTimePals
 
@@ -132,6 +133,7 @@ Special_FadeBlackQuickly:
 	jmp ConvertTimePalsDecHL
 
 FillWhiteBGColor:
+; Copy white palette of wBGPals1 Pal0 into white palette of wBGPals1 Pal1-Pal6
 	ldh a, [rSVBK]
 	push af
 	ld a, $5

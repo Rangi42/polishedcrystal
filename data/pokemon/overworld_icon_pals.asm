@@ -3,7 +3,7 @@ MACRO iconpal
 ENDM
 
 OverworldMonIconColors::
-	table_width 1, OverworldMonIconColors
+	table_width 1
 	iconpal TEAL, GREEN ; BULBASAUR
 	iconpal TEAL, GREEN ; IVYSAUR
 	iconpal TEAL, GREEN ; VENUSAUR
@@ -368,5 +368,7 @@ endr
 	iconpal BLACK, BROWN ; TAUROS, PALDEAN_FORM
 	iconpal RED, PURPLE ; TAUROS, TAUROS_PALDEAN_FIRE_FORM
 	iconpal BLUE, GREEN ; TAUROS, TAUROS_PALDEAN_WATER_FORM
+
+	iconpal BROWN, RED ; URSALUNA, URSALUNA_BLOODMOON_FORM
 
 	assert_table_length NUM_UNIQUE_POKEMON

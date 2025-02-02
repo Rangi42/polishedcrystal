@@ -197,6 +197,10 @@ wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
+wPlayerCurrentOAMSlot:: db
+
+wMapSetupFlags:: db
+
 
 SECTION "Sprite Animations", WRAM0
 
@@ -236,37 +240,6 @@ wGlobalAnimXOffset:: db
 wSpriteAnimsEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
-
-wMusicPlayerWRAM::
-wSongSelection:: dw
-wNumNoteLines:: db
-wTmpCh:: db
-wChLastNotes:: ds 3
-wVolTimer:: db
-wC1Vol:: db
-wC1VolSub:: db
-wC2Vol:: db
-wC2VolSub:: db
-wC3Vol:: db
-wC3VolSub:: db
-wC4Vol:: db
-wC4VolSub:: db
-wNoteEnded:: ds 3
-wSongInfoSwitch:: db
-;wRenderedWaveform:: db
-wPitchesTmp:: ds 4
-;wWaveformTmp:: ds 16
-wTmpValue:: db
-; song list
-wSelectorTop:: db
-wSelectorCur:: db
-; song editor
-wChannelSelector:: db
-wAdjustingTempo:: db
-wMusicPlayerWRAMEnd::
-
-
 SECTION "Sprites", WRAM0
 
 wShadowOAM::
@@ -297,13 +270,39 @@ wAttrmap::
 wAttrmapEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
-; footprints
+SECTION UNION "Misc 404", WRAM0
+; music player
 
-wFootprintQueue:: ds 7
+wMusicPlayerWRAM::
+wSongSelection:: dw
+wNumNoteLines:: db
+wTmpCh:: db
+wChLastNotes:: ds 3
+wVolTimer:: db
+wC1Vol:: db
+wC1VolSub:: db
+wC2Vol:: db
+wC2VolSub:: db
+wC3Vol:: db
+wC3VolSub:: db
+wC4Vol:: db
+wC4VolSub:: db
+wNoteEnded:: ds 3
+wSongInfoSwitch:: db
+;wRenderedWaveform:: db
+wPitchesTmp:: ds 4
+;wWaveformTmp:: ds 16
+wTmpValue:: db
+; song list
+wSelectorTop:: db
+wSelectorCur:: db
+; song editor
+wChannelSelector:: db
+wAdjustingTempo:: db
+wMusicPlayerWRAMEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; odd egg
 
 wOddEgg:: party_struct wOddEgg
@@ -311,13 +310,13 @@ wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds MON_NAME_LENGTH
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; hall of fame temp struct
 
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; timeset temp storage
 
 wTimeSetBuffer:: ds 20
@@ -325,33 +324,34 @@ wInitHourBuffer:: ds 13
 wInitMinuteBuffer:: ds 17
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; link patch lists
 
 wPlayerPatchLists:: ds 200
 wOTPatchLists:: ds 200
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; link engine
 
 wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; polished link transfer buffer
+
 wLinkReceivedPolishedMiscBuffer:: ds 10
 wLinkPolishedMiscBuffer:: ds 10
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; battle + pokédex (merged because pokédex can be called from battle)
 
 ; wLCDPokedex is defined in a LOAD UNION block in engine/pokedex/lcd.asm
 ; Reserve space for it at the beginning of this LOAD UNION
 	ds 15
-	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 480")
+	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 404")
 
 ; Battle data
 wBattle::
@@ -562,7 +562,7 @@ wSafariMonEating:: db
 
 wAlreadyDisobeyed:: db
 
-	ds 1 ; unused
+wAlreadyExecuted:: db
 
 wAlreadySawWeather:: db
 
@@ -572,15 +572,11 @@ wWhichMonFaintedFirst:: db
 wLastPlayerCounterMove:: db
 wLastEnemyCounterMove:: db
 
-	ds 1 ; unused
-
-wAlreadyExecuted:: db
-
 wTrickRoom:: db
 
 wBattleLowHealthAlarm:: db
 
-	ds 1 ; unused
+	ds 3 ; unused
 
 wPlayerHazards::
 ; bit
@@ -750,7 +746,8 @@ wPokedex_SearchDataEnd::
 wPokedex_SearchEnd::
 wPokedex_MenuCursorY:: db
 
-SECTION UNION "Misc 480", WRAM0
+
+SECTION UNION "Misc 404", WRAM0
 ; trade
 	ds 172
 
@@ -773,7 +770,7 @@ wLinkTradeGetmonShiny:: db
 wLinkTradeGetmonForm:: db
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; naming screen
 	ds 172
 
@@ -787,7 +784,7 @@ wNamingScreenStringEntryCoord:: dw
 wNamingScreenKeyboardWidth:: db
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; pokegear
 	ds 172
 
@@ -806,7 +803,7 @@ wPokegearNumberBuffer:: db
 wPokegearMapCursorSpawnpoint:: db
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; slot machine
 	ds 172
 
@@ -833,7 +830,7 @@ wSlotsDataEnd::
 wSlotsEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; card flip
 	ds 172
 
@@ -847,7 +844,7 @@ wDiscardPileEnd::
 wCardFlipEnd::
 
 
-;SECTION UNION "Misc 480", WRAM0
+;SECTION UNION "Misc 404", WRAM0
 ;; memory game
 ;	ds 172
 ;
@@ -866,7 +863,7 @@ wCardFlipEnd::
 ;wMemoryGameEnd::
 
 
-SECTION UNION "Misc 480", WRAM0
+SECTION UNION "Misc 404", WRAM0
 ; Unown puzzle
 	ds 172
 
@@ -875,9 +872,15 @@ wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
 
+SECTION "Footprint Queue", WRAM0
+; volatile footprints in sand
+
+wFootprintQueue:: ds 3 * 2 + 1
+
+
 SECTION "Unused", WRAM0
 
-	ds 76
+	ds 69 ; it's free real estate
 
 
 SECTION UNION "Misc 1326", WRAM0
@@ -919,7 +922,7 @@ SECTION UNION "Misc 1326", WRAM0
 
 	; LCD hblank code block. Labels are defined as part of the code.
 	ds $cf
-	assert BillsPC_LCDCodeEnd - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
+	assert BillsPC_LCDCode.End - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
@@ -1044,6 +1047,44 @@ SECTION UNION "Misc 1326", WRAM0
 
 wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
+
+
+SECTION UNION "Misc 1326", WRAM0
+
+; GB Printer data
+wGameboyPrinterRAM::
+wGameboyPrinter2bppSource:: ds 40 tiles
+wGameboyPrinter2bppSourceEnd::
+wPrinterRowIndex:: db
+
+; Printer data
+wPrinterData:: ds 4
+wPrinterChecksum:: dw
+wPrinterHandshake:: db
+wPrinterStatusFlags::
+; bit 7: set if error 1 (battery low)
+; bit 6: set if error 4 (too hot or cold)
+; bit 5: set if error 3 (paper jammed or empty)
+; if this and the previous byte are both $ff: error 2 (connection error)
+	db
+
+wHandshakeFrameDelay:: db
+wPrinterSerialFrameDelay:: db
+wPrinterSendByteOffset:: dw
+wPrinterSendByteCounter:: dw
+
+; tilemap backup?
+wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterStatus:: db
+	ds 1
+; High nibble is for margin before the image, low nibble is for after.
+wPrinterMargins:: db
+wPrinterExposureTime:: db
+	ds 16
+wGameboyPrinterRAMEnd::
+
+wPrinterOpcode:: db
+wPrinterConnectionOpen:: db
 
 
 SECTION "Video", WRAM0
@@ -1174,6 +1215,7 @@ wTradeDialog::
 wRandomValue::
 wEchoRAMTest::
 	db
+wPrinterQueueLength::
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db
 
@@ -1324,12 +1366,20 @@ wOBP1:: db
 
 wNumHits:: db
 
+wOverworldWeatherTimer:: db
+wOverworldWeatherCooldown:: db
+wSpriteOverlapCount:: db
+wWeatherFlags:: db
+wPrevWeather:: db
+wCurWeather:: db
+wPrevOvercastIndex:: db
+
 
 SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bits 1-7: unused
+; bits 3-7: unused
 	db
 
 wOptions::
@@ -1373,7 +1423,7 @@ wInitialOptions::
 ; bit 2: color variation off/on
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
-; bit 5: nuzlocke mode off/on
+; bit 5: affection bonuses off/on
 ; bit 6: scaled exp on/off
 ; bit 7: physical-special split on/off
 	db
@@ -1383,7 +1433,9 @@ wInitialOptions2::
 ; bit 1: classic EVs (no 510 cap)
 ; bit 2: modern EVs (510 cap)
 ; (only one of bits 0-2 can be set)
-; bits 3-6: unused
+; bit 3: use RTC
+; bit 4: evolve in battle
+; bits 5-6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::

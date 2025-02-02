@@ -114,7 +114,7 @@ VBABSODMessage:
 	done
 
 BSODErrorStrings:
-	table_width 1, BSODErrorStrings
+	table_width 1
 	dr .Rst0             ; ERR_RST_0
 	dr .DivZero          ; ERR_DIV_ZERO
 	dr .EggSpecies       ; ERR_EGG_SPECIES

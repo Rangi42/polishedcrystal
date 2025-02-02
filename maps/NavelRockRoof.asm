@@ -50,7 +50,7 @@ Leaf:
 	special Special_FadeInQuickly
 	pause 30
 	special HealParty
-	refreshscreen
+	reanchormap
 	checktime 1 << NITE
 	iffalsefwd .Sun
 	changeblock 6, 0, $76

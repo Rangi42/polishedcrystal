@@ -172,15 +172,15 @@ ENDM
 
 	map_attributes Route2North, ROUTE_2_NORTH, $f, NORTH | SOUTH
 	connection north, PewterCity, PEWTER_CITY, -5
-	connection south, Route2South, ROUTE_2_SOUTH, 0
+	connection south, Route2South, ROUTE_2_SOUTH, -2
 
 	map_attributes Route2South, ROUTE_2_SOUTH, $f, NORTH | SOUTH | EAST
-	connection north, Route2North, ROUTE_2_NORTH, 0
-	connection south, ViridianCity, VIRIDIAN_CITY, -5
-	connection east, Route16West, ROUTE_16_WEST, 8
+	connection north, Route2North, ROUTE_2_NORTH, 2
+	connection south, ViridianCity, VIRIDIAN_CITY, -3
+	connection east, Route16West, ROUTE_16_WEST, 7
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $f, NORTH | SOUTH | WEST
-	connection north, Route2South, ROUTE_2_SOUTH, 5
+	connection north, Route2South, ROUTE_2_SOUTH, 3
 	connection south, Route1, ROUTE_1, 5
 	connection west, Route22, ROUTE_22, 4
 
@@ -235,23 +235,23 @@ ENDM
 	connection east, UragaChannelEast, URAGA_CHANNEL_EAST, 0
 
 	map_attributes Route17, ROUTE_17, $43, NORTH | SOUTH
-	connection north, Route16South, ROUTE_16_SOUTH, 0
+	connection north, Route16South, ROUTE_16_SOUTH, -3
 	connection south, Route18West, ROUTE_18_WEST, 0
 
 	map_attributes Route16South, ROUTE_16_SOUTH, $f, SOUTH
-	connection south, Route17, ROUTE_17, 0
+	connection south, Route17, ROUTE_17, 3
 
 	map_attributes Route16Northeast, ROUTE_16_NORTHEAST, $f, WEST | EAST
-	connection west, Route16West, ROUTE_16_WEST, 0
+	connection west, Route16West, ROUTE_16_WEST, -1
 	connection east, CeladonCity, CELADON_CITY, -10
 
 	map_attributes Route16Northwest, ROUTE_16_NORTHWEST, $f, WEST | EAST
-	connection west, Route16West, ROUTE_16_WEST, 0
+	connection west, Route16West, ROUTE_16_WEST, -1
 	connection east, CeladonCity, CELADON_CITY, -10
 
 	map_attributes Route16West, ROUTE_16_WEST, $f, WEST | EAST
-	connection west, Route2South, ROUTE_2_SOUTH, -8
-	connection east, Route16Northwest, ROUTE_16_NORTHWEST, 0
+	connection west, Route2South, ROUTE_2_SOUTH, -7
+	connection east, Route16Northwest, ROUTE_16_NORTHWEST, 1
 
 	map_attributes CeladonCity, CELADON_CITY, $f, WEST | EAST
 	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10
@@ -601,6 +601,7 @@ ENDM
 	map_attributes VioletNicknameSpeechHouse, VIOLET_NICKNAME_SPEECH_HOUSE, $0, 0
 	map_attributes VioletPokeCenter1F, VIOLET_POKECENTER_1F, $0, 0
 	map_attributes VioletOnixTradeHouse, VIOLET_ONIX_TRADE_HOUSE, $0, 0
+	map_attributes VioletOutskirtsHouse, VIOLET_OUTSKIRTS_HOUSE, $0, 0
 	map_attributes Route32RuinsOfAlphGate, ROUTE_32_RUINS_OF_ALPH_GATE, $0, 0
 	map_attributes Route32PokeCenter1F, ROUTE_32_POKECENTER_1F, $0, 0
 	map_attributes Route32CoastHouse, ROUTE_32_COAST_HOUSE, $0, 0

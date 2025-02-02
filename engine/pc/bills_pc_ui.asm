@@ -187,9 +187,9 @@ UseBillsPC:
 	farcall WipeAttrMap
 	call ClearSprites
 	call ClearSpriteAnims
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
+	ld a, [wStateFlags]
+	res SPRITE_UPDATES_DISABLED_F , a
+	ld [wStateFlags], a
 
 	call BillsPC_LoadUI
 
@@ -299,7 +299,7 @@ UseBillsPC:
 	; Copy LCD code to WRAM0
 	ld hl, BillsPC_LCDCode
 	ld de, wLCDBillsPC1
-	ld bc, BillsPC_LCDCodeEnd - BillsPC_LCDCode
+	ld bc, BillsPC_LCDCode.End - BillsPC_LCDCode
 	rst CopyBytes
 
 	; Set up for HBlank palette switching
@@ -3525,7 +3525,7 @@ BillsPC_PlaceHeldMon:
 
 BillsPC_SetPals:
 	call BillsPC_ApplyPals
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 BillsPC_ApplyPals:
 ; Sets palettes. This writes palette data for HBlank row1 mons/etc into
@@ -3820,4 +3820,4 @@ endr
 	pop af
 	reti
 ENDL
-BillsPC_LCDCodeEnd:
+.End:

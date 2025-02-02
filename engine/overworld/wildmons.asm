@@ -424,6 +424,8 @@ _ChooseWildEncounter:
 	ld a, [wMapNumber]
 	cp MAP_SOUL_HOUSE_B1F ; first Ghost map in its group
 	jr c, .not_ghost
+	cp MAP_ROUTE_16_WEST ; non-ghost map in soul house group
+	jr z, .not_ghost
 	ld a, SILPHSCOPE2
 	ld [wCurKeyItem], a
 	call CheckKeyItem
@@ -788,7 +790,7 @@ UpdateRoamMons:
 .SkipEntei:
 	ld a, [wRoamMon3MapGroup]
 	cp GROUP_N_A
-	jr z, .SkipSuicune
+	ret z
 	ld b, a
 	ld a, [wRoamMon3MapNumber]
 	ld c, a
@@ -797,9 +799,6 @@ UpdateRoamMons:
 	ld [wRoamMon3MapGroup], a
 	ld a, c
 	ld [wRoamMon3MapNumber], a
-
-.SkipSuicune: ; no-optimize stub jump
-	jr _BackUpMapIndices
 
 .Update:
 	ld hl, RoamMaps
@@ -843,14 +842,6 @@ UpdateRoamMons:
 	ld b, $0
 	add hl, bc
 	add hl, bc
-	ld a, [wRoamMons_LastMapGroup]
-	cp [hl]
-	jr nz, .done
-	inc hl
-	ld a, [wRoamMons_LastMapNumber]
-	cp [hl]
-	jr z, .update_loop
-	dec hl
 
 .done
 	ld a, [hli]
@@ -881,25 +872,12 @@ JumpRoamMons:
 
 	ld a, [wRoamMon3MapGroup]
 	cp GROUP_N_A
-	jr z, .SkipSuicune
+	ret z
 	call JumpRoamMon
 	ld a, b
 	ld [wRoamMon3MapGroup], a
 	ld a, c
 	ld [wRoamMon3MapNumber], a
-.SkipSuicune:
-	; fallthrough
-
-_BackUpMapIndices:
-	ld a, [wRoamMons_CurMapNumber]
-	ld [wRoamMons_LastMapNumber], a
-	ld a, [wRoamMons_CurMapGroup]
-	ld [wRoamMons_LastMapGroup], a
-	ld a, [wMapNumber]
-	ld [wRoamMons_CurMapNumber], a
-	ld a, [wMapGroup]
-	ld [wRoamMons_CurMapGroup], a
-	ret
 
 JumpRoamMon:
 .loop

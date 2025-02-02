@@ -6,9 +6,9 @@ ClearSavedObjPals::
 
 	xor a
 	ld [wUsedObjectPals], a
-	ld hl, wUsedObjectPals
-	ld bc, wNeededPalIndex - wUsedObjectPals
-	ld a, -1
+	ld hl, wLoadedObjPal0
+	ld bc, wNeededPalIndex - wLoadedObjPal0
+	ld a, NO_PAL_LOADED
 	rst ByteFill
 
 	pop af
@@ -25,7 +25,7 @@ DisableDynPalUpdates::
 EnableDynPalUpdatesNoApply::
 	push hl
 	ld hl, wPalFlags
-	set NO_DYN_PAL_APPLY_F, [hl]
+	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
 	res DISABLE_DYN_PAL_F, [hl]
 	pop hl
 	jr CheckForUsedObjPals
@@ -70,7 +70,7 @@ CheckForUsedObjPals::
 
 	; If this flag was set, it's time to reset it
 	ld hl, wPalFlags
-	res NO_DYN_PAL_APPLY_F, [hl]
+	res NO_DYN_PAL_APPLY_ONCE_F, [hl]
 
 .done
 	pop af
@@ -135,7 +135,7 @@ MarkUsedPal:
 	dec b
 	jr nz, .loaded_loop
 
-	; If this is the first pass, we do not want to 
+	; If this is the first pass, we do not want to
 	; load any pals yet, just mark the still active pals
 	ld hl, wPalFlags
 	bit SCAN_OBJECTS_FIRST_F, [hl]
@@ -147,21 +147,19 @@ MarkUsedPal:
 	push bc
 
 	; Pal is not already loaded, find a empty pal slot
-	lb bc, 0, 8
-	ld hl, wUsedObjectPals
-	ld a, 1
-	ld d, a
-.search_again
-	ld a, d
-	and [hl]
-	jr z, .found_empty
-	ld a, d
-	rla
-	ld d, a
+	ld a, [wUsedObjectPals]
+	inc a
+	jr nz, .some_available
+	ld b, 7
+	jr .unset_bit_found
+.some_available
+	dec a
+	ld b, -1
+.bit_check_loop
 	inc b
-	dec c
-	jr nz, .search_again
-.found_empty
+	rrca
+	jr c, .bit_check_loop
+.unset_bit_found
 	ld a, b
 	pop bc
 

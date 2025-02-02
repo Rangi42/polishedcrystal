@@ -188,4 +188,4 @@ BattleCommand_transform:
 	cp IMPOSTER
 	ret z ; avoid infinite loop
 
-	farjp RunActivationAbilitiesInner
+	farjp RunEntryAbilitiesInner

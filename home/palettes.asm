@@ -1,15 +1,22 @@
 ; Functions dealing with palettes.
 
+UpdateCGBPalsLYTimed:
+; checks if there is time to run UpdateCGBPals.
+	ldh a, [rLY]
+	cp 150
+	ret nc
+	; fallthrough
 UpdateCGBPals::
 ; any pals to update?
 	ldh a, [hCGBPalUpdate]
 	and a
 	ret z
-
+	; fallthrough
 ForceUpdateCGBPals::
 ; update bgp data from wBGPals2
 ; update obp data from wOBPals2
 ; return carry if successful
+; Completes in 588 cycles
 
 	ldh a, [rSVBK]
 	push af
@@ -235,7 +242,7 @@ ClearVBank1::
 	ldh [rVBK], a
 
 	ld hl, vTiles0
-	ld bc, VRAM_End - vTiles0
+	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vTiles0
 	xor a
 	rst ByteFill
 

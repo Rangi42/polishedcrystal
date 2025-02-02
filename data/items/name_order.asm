@@ -1,5 +1,5 @@
 ItemNameOrder:
-	table_width 1, ItemNameOrder
+	table_width 1
 
 	db NAM_NO_ITEM
 
@@ -311,7 +311,7 @@ ItemNameOrder:
 	db -1 ; end
 
 KeyItemNameOrder:
-	table_width 1, KeyItemNameOrder
+	table_width 1
 	db NAM_BICYCLE
 	db NAM_OLD_ROD
 	db NAM_GOOD_ROD
@@ -320,6 +320,7 @@ KeyItemNameOrder:
 	db NAM_COIN_CASE
 	db NAM_APRICORN_BOX
 	db NAM_WING_CASE
+	db NAM_CANDY_JAR
 	db NAM_TYPE_CHART
 	db NAM_GBC_SOUNDS
 	db NAM_BLUE_CARD
@@ -345,6 +346,7 @@ KeyItemNameOrder:
 	db NAM_HARSH_LURE
 	db NAM_POTENT_LURE
 	db NAM_MALIGN_LURE
+	db NAM_LIFT_KEY
 	db NAM_SHINY_CHARM
 	db NAM_OVAL_CHARM
 	db NAM_CATCH_CHARM

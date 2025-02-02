@@ -33,13 +33,13 @@ RunBattleTowerTrainer:
 
 	xor a
 	ld [wLinkMode], a
-	farcall HealPartyEvenForNuzlocke
+	farcall HealParty
 	farcall PopulateBattleTowerTeam
 
 	predef StartBattle
 
 	farcall LoadPokemonData
-	farcall HealPartyEvenForNuzlocke
+	farcall HealParty
 	ld a, [wBattleResult]
 	and a
 	ld b, BTCHALLENGE_LOST

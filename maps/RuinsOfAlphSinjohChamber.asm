@@ -27,8 +27,11 @@ RuinsOfAlphSinjohChamber_MapScriptHeader:
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_P
 
 RuinsofAlphSinjohChamberSignpost:
+	opentext
 	unowntypeface
-	showtext RuinsofAlphSinjohChamberMystriText
+	writetext RuinsofAlphSinjohChamberMystriText
+	waitbutton
+	closetext
 	restoretypeface
 	showtext RuinsofAlphSinjohChamberSurpriseText
 	special Special_FadeOutMusic

@@ -3,7 +3,7 @@ Script_BattleWhiteout::
 	sjumpfwd Script_Whiteout
 
 Script_OverworldWhiteout::
-	refreshscreen
+	reanchormap
 	callasm OverworldWhiteoutFade
 
 Script_Whiteout:
@@ -27,7 +27,7 @@ Script_Whiteout:
 	waitbutton
 	special FadeOutPalettes
 	pause 40
-	special HealPartyEvenForNuzlocke
+	special HealParty
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftruefwd .bug_contest
 	callasm GetWhiteoutSpawn
@@ -45,12 +45,12 @@ OverworldWhiteoutFade:
 	call ClearSprites
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 BattleBGMap:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 ; Gen VI money loss code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
@@ -62,7 +62,7 @@ LoseMoney:
 	or [hl]
 	inc hl
 	or [hl]
-	ld a, FALSE
+	ld a, FALSE ; no-optimize a = 0
 	jr z, .load
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges

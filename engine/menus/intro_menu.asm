@@ -44,11 +44,33 @@ NewGame_ClearTileMapEtc:
 	jmp ClearWindowData
 
 NewGamePlus:
+	ld hl, .text
+	call PrintText
+	call YesNoBox
+	jr c, .no
 	xor a
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
 	jr _NewGame_FinishSetup
+
+.no
+	farjp _MainMenu
+
+.text
+	text "New Game+ will"
+	line "keep your previous"
+
+	para "game's money,"
+	line "Battle Points, and"
+
+	para "any #mon stored"
+	line "in the PC!"
+
+	para "Are you sure you"
+	line "you want to start"
+	cont "New Game+?"
+	done
 
 NewGame:
 	xor a
@@ -75,6 +97,10 @@ _NewGame_FinishSetup:
 ResetWRAM_NotPlus:
 	xor a
 	ld [wSavedAtLeastOnce], a
+
+	; Key items are 0-terminated, just load 0 into the first entry.
+	xor a
+	ld [wKeyItems], a
 
 	ld [wBattlePoints], a
 	ld [wBattlePoints + 1], a
@@ -114,7 +140,10 @@ ResetWRAM:
 	ld bc, wMoney - wGameData
 	rst ByteFill
 	ld hl, wMoneyEnd
-	ld bc, wBattlePoints - wMoneyEnd
+	ld bc, wKeyItems - wMoneyEnd
+	rst ByteFill
+	ld hl, wKeyItemsEnd
+	ld bc, wBattlePoints - wKeyItemsEnd
 	rst ByteFill
 	ld hl, wBattlePointsEnd
 	ld bc, wGameDataEnd - wBattlePointsEnd
@@ -149,11 +178,28 @@ ResetWRAM:
 	ld hl, wNumBalls
 	call _ResetWRAM_InitList
 
+	; We want to preserve charms, so track those down and put on top.
+	ld hl, wKeyItems
+	push de
+	ld d, h
+	ld e, l
+.charms_loop
+	ld a, [hli]
+	and a
+	jr z, .charms_done
+	cp CHARMS_START
+	jr c, .charms_loop
+	ld [de], a
+	inc de
+	jr .charms_loop
+.charms_done
+	; Place a terminator after any charms, effectively deleting other items.
+	; xor a (implicit from the "jr z" above)
+	ld [de], a
+	pop de
+
 	ld hl, wNumBerries
 	call _ResetWRAM_InitList
-
-;	ld hl, wNumKeyItems
-;	call _ResetWRAM_InitList
 
 	ld hl, wNumPCItems
 	call _ResetWRAM_InitList
@@ -162,12 +208,6 @@ ResetWRAM:
 
 	ld hl, wTMsHMs
 rept ((NUM_TMS + NUM_HMS) + 7) / 8 - 1
-	ld [hli], a
-endr
-	ld [hl], a
-
-	ld hl, wKeyItems
-rept ((NUM_KEY_ITEMS) + 7) / 8 - 1
 	ld [hli], a
 endr
 	ld [hl], a
@@ -751,7 +791,7 @@ GenderMenu::
 	inc a
 	ld [hl], a
 	; load opaque palettes
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	; make other palettes transparent
 	ld hl, wBGPals2 palette 0 + 2
 	call .MakeTransparent
@@ -767,7 +807,7 @@ GenderMenu::
 	inc a
 	ld [hl], a
 	; load opaque palettes
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	; make other palettes transparent
 	ld hl, wBGPals2 palette 2 + 2
 	call .MakeTransparent
@@ -783,7 +823,7 @@ GenderMenu::
 	inc a
 	ld [hl], a
 	; load opaque palettes
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	; make other paletees transparent
 	ld hl, wBGPals2 palette 0 + 2
 	call .MakeTransparent
@@ -1252,29 +1292,28 @@ TitleScreenMain:
 	ld [hld], a
 	ld [hl], e
 
-; Save data can be deleted by pressing Up + B + Select.
 	call GetJoypad
 	ld hl, hJoyDown
 
+; Save data can be deleted by pressing Up + B + Select.
 	ld a, [hl]
-	and D_UP + B_BUTTON + SELECT
-	cp  D_UP + B_BUTTON + SELECT
+	or ~(D_UP + B_BUTTON + SELECT)
+	inc a
 	jr z, .delete_save_data
 
 ; The clock can be reset by pressing Down + B.
 	ld a, [hl]
-	and D_DOWN + B_BUTTON
-	cp  D_DOWN + B_BUTTON
+	or ~(D_DOWN + B_BUTTON)
+	inc a
 	jr z, .clock_reset
 
 ; The early game options can be reset by pressing Left + B.
 	ld a, [hl]
-	and D_LEFT + B_BUTTON
-	cp  D_LEFT + B_BUTTON
+	or ~(D_LEFT + B_BUTTON)
+	inc a
 	jr z, .early_option_reset
 
 ; Press Start or A to start the game.
-.check_start
 	ld a, [hl]
 	and START | A_BUTTON
 	jr nz, .start_game

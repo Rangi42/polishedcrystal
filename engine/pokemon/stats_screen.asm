@@ -893,11 +893,11 @@ StatsScreen_PlaceFrontpic:
 	call StatsScreen_GetAnimationParam
 	jr nc, .no_cry
 	call .Animate
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 .no_cry
 	call .DontAnimate
-	jmp SetPalettes
+	jmp SetDefaultBGPAndOBP
 
 .DontAnimate:
 	ld hl, wStatsScreenFlags
@@ -998,7 +998,7 @@ EggStatsScreen:
 	rst PlaceString
 	ld hl, wStatsScreenFlags
 	set 5, [hl]
-	call SetPalettes ; pals
+	call SetDefaultBGPAndOBP ; pals
 	call DelayFrame
 	hlcoord 0, 0
 	call PrepMonFrontpic

@@ -188,6 +188,7 @@ INCLUDE "engine/battle/pick_psychic_inver_party.asm"
 SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"
+INCLUDE "engine/battle/evolve_battle.asm"
 
 
 SECTION "Battle Endturn", ROMX
@@ -466,7 +467,12 @@ SECTION "bank32", ROMX
 INCLUDE "engine/battle_anims/bg_effects.asm"
 
 
-SECTION "Battle Animation Data", ROMX
+SECTION "Battle Animation Pointers", ROMX
+
+INCLUDE "data/moves/animation_pointers.asm"
+
+
+SECTION "Battle Animations", ROMX
 
 INCLUDE "data/moves/animations.asm"
 
@@ -481,11 +487,15 @@ SECTION "Move Animations", ROMX
 INCLUDE "engine/battle_anims/anim_commands.asm"
 INCLUDE "engine/battle_anims/core.asm"
 INCLUDE "data/battle_anims/objects.asm"
-INCLUDE "engine/battle_anims/functions.asm"
 INCLUDE "engine/battle_anims/helpers.asm"
 INCLUDE "data/battle_anims/framesets.asm"
 INCLUDE "data/battle_anims/oam.asm"
 INCLUDE "data/battle_anims/object_gfx.asm"
+
+
+SECTION "Move Animation Functions", ROMX
+
+INCLUDE "engine/battle_anims/functions.asm"
 
 
 SECTION "Pic Animations", ROMX
@@ -711,3 +721,26 @@ SECTION "Dynamic Pals System", ROMX
 
 INCLUDE "engine/gfx/sprite_palettes.asm"
 INCLUDE "engine/gfx/dynamic_pals.asm"
+
+
+SECTION "Weather System", ROMX
+
+INCLUDE "engine/overworld/weather.asm"
+INCLUDE "engine/events/weather.asm"
+
+
+SECTION "Exp Candy Names", ROMX
+
+INCLUDE "data/items/exp_candy_names.asm"
+
+
+SECTION "GB Printer", ROMX
+
+INCLUDE "engine/printer/printer.asm"
+INCLUDE "engine/printer/printer_serial.asm"
+INCLUDE "audio/music/printer.asm"
+
+
+SECTION "LureMenu", ROMX
+
+INCLUDE "engine/menus/lure_menu.asm"

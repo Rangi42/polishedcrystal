@@ -276,3 +276,4 @@ GetFishGroupIndex:
 	jr .done
 
 INCLUDE "data/wild/fish.asm"
+INCLUDE "data/items/fish_items.asm"

@@ -14,7 +14,7 @@ DEF SAVE_CHECK_VALUE_2     EQU 127
 DEF SAVE_CHECK_VALUE_1_OLD EQU 99 ; check digit before save version 7
 
 ; save file version
-DEF SAVE_VERSION EQU 8
+DEF SAVE_VERSION EQU 9
 
 ; time of day boundaries
 DEF MORN_HOUR EQU  5 ; 5 AM - 9 AM (4 hours)
@@ -23,9 +23,7 @@ DEF EVE_HOUR  EQU 17 ; 5 PM - 9 PM (4 hours)
 DEF NITE_HOUR EQU 21 ; 9 PM - 5 AM (8 hours)
 DEF MAX_HOUR  EQU 24 ; 12 AM - 12 AM (24 hours)
 
-if DEF(NO_RTC)
 DEF NO_RTC_SPEEDUP EQU 6
-endc
 
 ; significant money values
 DEF START_MONEY EQU 3000

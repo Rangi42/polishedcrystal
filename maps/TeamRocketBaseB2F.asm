@@ -330,7 +330,7 @@ TeamRocketBaseB2FLockedDoor:
 	waitbutton
 	playsound SFX_ENTER_DOOR
 	changeblock 14, 12, $7
-	reloadmappart
+	refreshmap
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	waitsfx

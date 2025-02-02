@@ -11,6 +11,14 @@ _SweetHoney:
 	jr nz, .no_battle
 	farcall ChooseWildEncounter
 	jr nz, .no_battle
+
+	; This might do useless things due to improperly filled level data.
+	; This is harmless, because we only run this to deal with Magnet Pull,
+	; Static, etc.
+	farcall ApplyAbilityEffectsOnEncounterMon
+
+	; Force the mon to be the same level as the lead, not necessarily the one
+	; we send out.
 	ld a, [wPartyMon1Level]
 	ld [wCurPartyLevel], a
 	ld a, TRUE
@@ -25,7 +33,7 @@ _SweetHoney:
 	jmp QueueScript
 
 SweetHoneyScript:
-	reloadmappart
+	refreshmap
 	special UpdateTimePals
 	writetext UseSweetHoneyText
 	waitbutton
