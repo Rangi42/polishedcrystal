@@ -1,6 +1,6 @@
 # Features
 
-These are *most* of the new features as of 2.2.0. Some would be spoilers.
+These are *some* of the new features as of 2.2.0. Some would be spoilers.
 
 > We've been greedy in the amount of gameplay elements we've squeezed in there. There's so much included that I even had colleagues saying to me: "Are you sure you should be going this far with a remake?" In that sense, it's not simply a remake—I think it's more than that. For that reason, I would like to see these games enjoyed by as large a number of people as possible.
 >

@@ -727,3 +727,20 @@ SECTION "Weather System", ROMX
 
 INCLUDE "engine/overworld/weather.asm"
 INCLUDE "engine/events/weather.asm"
+
+
+SECTION "Exp Candy Names", ROMX
+
+INCLUDE "data/items/exp_candy_names.asm"
+
+
+SECTION "GB Printer", ROMX
+
+INCLUDE "engine/printer/printer.asm"
+INCLUDE "engine/printer/printer_serial.asm"
+INCLUDE "audio/music/printer.asm"
+
+
+SECTION "LureMenu", ROMX
+
+INCLUDE "engine/menus/lure_menu.asm"

@@ -1360,6 +1360,9 @@ StepFunction_Skyfall:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	set HIGH_PRIORITY_F, [hl]
 	call IncrementObjectStructField1c
 .Step:
 	ld hl, OBJECT_STEP_DURATION
@@ -1403,6 +1406,9 @@ StepFunction_Skyfall:
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
 	ld [hl], 0
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res HIGH_PRIORITY_F, [hl]
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_FROM_MOVEMENT

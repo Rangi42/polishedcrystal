@@ -155,6 +155,16 @@ LoadKeyItemIconPalette:
 	ld bc, KeyItemIconPalettes - PAL_COLOR_SIZE * 2
 	jr LoadIconPalette
 
+LoadExpCandyIconPalette:
+	ld a, [wCurItem]
+	ld hl, ExpCandyIconPalette
+	jr LoadIconPaletteFromHL
+
+ExpCandyIconPalette:
+	; Exp Candy
+	RGB 18, 29, 31
+	RGB 03, 21, 24
+
 LoadItemIconPalette:
 	ld a, [wCurItem]
 LoadItemIconPaletteFromA:

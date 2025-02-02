@@ -1,6 +1,6 @@
 NAME := polishedcrystal
 MODIFIERS :=
-VERSION := 3.0.0-beta
+VERSION := 3.2.0-beta
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc

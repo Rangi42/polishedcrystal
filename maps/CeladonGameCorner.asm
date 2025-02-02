@@ -2,11 +2,12 @@ CeladonGameCorner_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, CeladonGameCornerStairsScript
 
 	def_warp_events
 	warp_event 14, 13, CELADON_CITY, 6
 	warp_event 15, 13, CELADON_CITY, 6
-	warp_event 15,  0, ROCKET_HIDEOUT_B1F, 2
+	warp_event 17,  0, ROCKET_HIDEOUT_B1F, 2
 
 	def_coord_events
 
@@ -47,8 +48,7 @@ CeladonGameCorner_MapScriptHeader:
 	bg_event 18,  9, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18, 10, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18, 11, BGEVENT_RIGHT, MapCeladonGameCornerSignpost35Script
-	bg_event 15,  0, BGEVENT_JUMPTEXT, CeladonGameCornerPoster1Text
-	bg_event  9,  0, BGEVENT_JUMPTEXT, CeladonGameCornerPoster2Text
+	bg_event  9,  0, BGEVENT_READ, CeladonGameCornerPosterScript
 
 	def_object_events
 	object_event  5,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
@@ -59,6 +59,25 @@ CeladonGameCorner_MapScriptHeader:
 	object_event  8, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
 	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
 	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
+	object_event  9,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, CeladonGameCornerRichBoyTobin, EVENT_RICH_BOY_TOBIN
+
+	object_const_def
+	const CELADONGAMECORNER_CLERK
+	const CELADONGAMECORNER_RECEPTIONIST
+	const CELADONGAMECORNER_POKEFAN_M
+	const CELADONGAMECORNER_POKEFAN_F
+	const CELADONGAMECORNER_FISHING_GURU
+	const CELADONGAMECORNER_FAT_GUY
+	const CELADONGAMECORNER_GYM_GUY
+	const CELADONGAMECORNER_GRAMPS
+	const CELADONGAMECORNER_TOBIN
+
+CeladonGameCornerStairsScript:
+	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
+	iftruefwd .StairsOpen
+	changeblock 16, 0, $03
+.StairsOpen
+	endcallback
 
 CeladonGameCornerPokefanMScript:
 	showtextfaceplayer CeladonGameCornerPokefanMText
@@ -158,6 +177,75 @@ MapCeladonGameCornerSignpost9Script:
 	waitbutton
 	special Special_CardFlip
 	endtext
+
+CeladonGameCornerRichBoyTobin:
+	trainer RICH_BOY, TOBIN, EVENT_BEAT_RICH_BOY_TOBIN, .SeenText, .BeatenText, 0, .AfterScript
+
+.Script:
+	checkevent EVENT_BEAT_RICH_BOY_TOBIN
+	iftruefwd .AfterScript
+	jumpthistextfaceplayer
+
+.SeenText:
+	text "What're you doing"
+	line "snooping around"
+	cont "here?"
+
+	para "You better not be"
+	line "messing with Team"
+	cont "Valor!"
+	done
+
+.BeatenText:
+	text "I didn't see that"
+	line "coming…"
+	done
+
+.AfterScript
+	showtext .AfterText
+	readvar VAR_FACING
+	ifequalfwd RIGHT, .player_facing_right
+	ifequalfwd LEFT, .player_facing_left
+; .player_facing_up
+	applymovement CELADONGAMECORNER_TOBIN, .LeaveMovementPlayerUp
+	sjumpfwd .done
+.player_facing_left
+	applymovement CELADONGAMECORNER_TOBIN, .LeaveMovementPlayerRight
+	sjumpfwd .done
+.player_facing_right
+	applymovement CELADONGAMECORNER_TOBIN, .LeaveMovementPlayerLeft
+.done
+	playsound SFX_EXIT_BUILDING
+	disappear CELADONGAMECORNER_TOBIN
+	end
+
+.AfterText
+	text "Fine! There's"
+	line "nothing here"
+	cont "anyway!"
+	
+	para "The poster? Ha!"
+	line "It's just decor!"
+	done
+
+.LeaveMovementPlayerUp
+	step_right
+.LeaveMovementPlayerLeft
+rept 5
+	step_right
+endr
+	step_end
+
+.LeaveMovementPlayerRight
+	step_down
+	step_right
+	step_right
+	step_up
+rept 5
+	step_right
+endr
+	step_end
+
 
 CeladonGameCornerReceptionistText:
 	text "Welcome!"
@@ -280,22 +368,32 @@ CeladonGameCornerGrampsText:
 	line "but… What to do?"
 	done
 
-CeladonGameCornerPoster1Text:
-	text "Hey!"
+CeladonGameCornerPosterScript:
+	checkevent EVENT_PUSHED_GAME_CORNER_SWITCH
+	iftruefwd .AlreadyPushed
+	showtext .PushSwitchText
+	playsound SFX_PUSH_BUTTON
+	playsound SFX_ENTER_DOOR
+	setevent EVENT_PUSHED_GAME_CORNER_SWITCH
+	changeblock 16, 0, $4d
+	end
 
-	para "Underneath this"
-	line "poster…"
+.AlreadyPushed
+	showtext .AlreadyPushedText
+	end
 
-	para "There's nothing!"
+.AlreadyPushedText
+	text "The switch has"
+	line "already been"
+	cont "pushed."
 	done
 
-CeladonGameCornerPoster2Text:
+.PushSwitchText
 	text "Hey!"
 
-	para "Underneath this"
-	line "poster…"
-
-	para "There's nothing!"
+	para "A switch behind"
+	line "the poster!?"
+	cont "Let's push it!"
 	done
 
 CeladonGameCornerLighterText:

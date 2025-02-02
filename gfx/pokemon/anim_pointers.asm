@@ -284,7 +284,7 @@ AnimationPointers:
 	dw MrRimeAnimation
 	dw WyrdeerAnimation
 	dw KleavorAnimation
-	dw UrsalunaAnimation
+	dw UrsalunaPlainAnimation
 	dw SneaslerAnimation
 	dw OverqwilAnimation
 	dw DudunsparceTwoSegmentAnimation
@@ -407,5 +407,7 @@ AnimationPointers:
 	dw TaurosPaldeanAnimation
 	dw TaurosPaldeanFireAnimation
 	dw TaurosPaldeanWaterAnimation
+
+	dw UrsalunaBloodmoonAnimation
 
 	assert_table_length NUM_UNIQUE_POKEMON

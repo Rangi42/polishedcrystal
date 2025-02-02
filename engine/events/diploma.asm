@@ -1,4 +1,10 @@
 _Diploma:
+	call PlaceDiplomaPage1OnScreen
+	call WaitPressAorB_BlinkCursor
+	call PlaceDiplomaPage2OnScreen
+	jmp WaitPressAorB_BlinkCursor
+
+PlaceDiplomaPage1OnScreen:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -23,9 +29,21 @@ _Diploma:
 	ld a, CGB_NEW_DIPLOMA
 	call GetCGBLayout
 	call SetDefaultBGPAndOBP
-	call DelayFrame
-	call WaitPressAorB_BlinkCursor
+	jmp DelayFrame
 
+.PlayerString:
+	text "Player"
+	done
+
+.DiplomaString:
+	text "This certifies"
+	next "that you have"
+	next "completed the"
+	next "National #dex."
+	next "Congratulations!"
+	done
+
+PlaceDiplomaPage2OnScreen:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $7f
@@ -48,20 +66,7 @@ _Diploma:
 	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	jmp WaitPressAorB_BlinkCursor
-
-.PlayerString:
-	text "Player"
-	done
-
-.DiplomaString:
-	text "This certifies"
-	next "that you have"
-	next "completed the"
-	next "National #dex."
-	next "Congratulations!"
-	done
+	jmp PrintNum
 
 .PlayTime:
 	text "Play Time"

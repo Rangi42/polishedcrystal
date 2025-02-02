@@ -55,7 +55,7 @@ endc
 
 .skip_crash
 	ldh a, [hVBlank]
-	and %111
+	and %1111
 	add a
 	ld e, a
 	ld d, 0
@@ -99,14 +99,15 @@ endc
 	jr .doGameTime
 
 .VBlanks:
-	dw VBlank0   ; 0
-	dw VBlank1   ; 1
-	dw VBlank2   ; 2
-	dw VBlank1   ; 3
-	dw VBlank4   ; 4 (pokédex)
-	dw VBlank5   ; 5
-	dw VBlank6   ; 6
-	dw VBlank7   ; 7
+	dw VBlank0 ; 0
+	dw VBlank1 ; 1
+	dw VBlank2 ; 2
+	dw VBlank1 ; 3
+	dw VBlank4 ; 4 (pokédex)
+	dw VBlank5 ; 5
+	dw VBlank6 ; 6
+	dw VBlank7 ; 7
+	dw VBlank8 ; 8
 
 VBlank0::
 ; normal operation
@@ -399,3 +400,29 @@ VBlank7::
 	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
 	rst Bankswitch
 	jmp VBlankSafeCopyTilemapAtOnce ; far-ok
+
+VBlank8:
+	; bg map
+	; tiles
+	; oam
+	; joypad
+	; serial
+	; sound
+
+	ldh a, [hROMBank]
+	ldh [hROMBankBackup], a
+
+	call UpdateBGMap
+	call Serve2bppRequest
+
+	call PushOAM
+
+	call Joypad
+
+	farcall AskSerial
+
+	call VBlankUpdateSound
+
+	ldh a, [hROMBankBackup]
+	rst Bankswitch
+	ret

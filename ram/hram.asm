@@ -43,7 +43,9 @@ NEXTU
 hMoveMon:: db
 ENDU
 
-	ds 3 ; unused
+hPrinter:: db
+
+	ds 2 ; unused
 
 UNION
 ; math-related values

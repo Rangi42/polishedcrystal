@@ -248,7 +248,7 @@ endr
 	givepoke TYPHLOSION, HISUIAN_FORM, 50
 	loadmem wPartyMon3Shiny, SHINY_MASK
 	; ext species test
-	givepoke WYRDEER, 50
+	givepoke URSALUNA, URSALUNA_BLOODMOON_FORM, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; evolve during battle
 	givepoke PUPITAR, 54

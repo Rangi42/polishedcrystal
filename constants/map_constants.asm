@@ -102,7 +102,7 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B2F,                       15,  9 ; 40
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
-	map_const WAREHOUSE_ENTRANCE,                         16, 18 ; 43
+	map_const WAREHOUSE_ENTRANCE,                         16, 20 ; 43
 	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 21 ; 44
 	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 45
 	map_const UNDERGROUND_WAREHOUSE,                      10,  9 ; 46
@@ -285,7 +285,7 @@ ENDM
 	map_const GOLDENROD_DEPT_STORE_ROOF,                   8,  6 ; 22
 	map_const GOLDENROD_GAME_CORNER,                      10,  7 ; 23
 	map_const GOLDENROD_POKECOM_CENTER_1F,                16,  8 ; 24
-	map_const GOLDENROD_POKECOM_CENTER_OFFICE,             6,  4 ; 25
+	map_const GOLDENROD_POKECOM_CENTER_OFFICE,             6,  5 ; 25
 	map_const ILEX_FOREST_AZALEA_GATE,                     5,  4 ; 26
 	map_const ROUTE_34_ILEX_FOREST_GATE,                   5,  4 ; 27
 	map_const ROUTE_35_GOLDENROD_GATE,                     5,  4 ; 28

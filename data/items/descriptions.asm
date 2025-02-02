@@ -266,6 +266,7 @@ KeyItemDescriptions:
 	dw CoinCaseDesc
 	dw ApricornBoxDesc
 	dw WingCaseDesc
+	dw CandyJarDesc
 	dw TypeChartDesc
 	dw GBCSoundsDesc
 	dw BlueCardDesc
@@ -288,6 +289,7 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
+	dw LiftKeyDesc
 	dw HarshLureDesc
 	dw PotentLureDesc
 	dw MalignLureDesc
@@ -295,6 +297,15 @@ KeyItemDescriptions:
 	dw OvalCharmDesc
 	dw CatchCharmDesc
 	assert_table_length NUM_KEY_ITEMS
+
+ExpCandyDescriptions:
+	table_width 2
+	dw ExpCandyXSDesc
+	dw ExpCandySDesc
+	dw ExpCandyMDesc
+	dw ExpCandyLDesc
+	dw ExpCandyXLDesc
+	assert_table_length NUM_CANDIES
 
 PokeBallDesc:
 	text "An item for catch-"
@@ -1655,6 +1666,11 @@ MalignLureDesc:
 	next "malevolent odor."
 	done
 
+LiftKeyDesc:
+	text "Operates the lift"
+	next "in a building."
+	done
+
 ShinyCharmDesc:
 	text "A charm for find-"
 	next "ing shiny #mon."
@@ -1688,4 +1704,18 @@ TypeChartDesc:
 WingCaseDesc:
 	text "Holds up to 999 of"
 	next "each Wing."
+	done
+
+CandyJarDesc:
+	text "Holds up to 99 of"
+	next "each Exp.Candy."
+	done
+
+ExpCandyXSDesc:
+ExpCandySDesc:
+ExpCandyMDesc:
+ExpCandyLDesc:
+ExpCandyXLDesc:
+	text "A candy that"
+	next "gives Exp. Points."
 	done

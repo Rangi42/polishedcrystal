@@ -92,7 +92,8 @@ TrainerClassNames::
 	li "Battle Girl"      ; BATTLE_GIRL
 	li "Dragon Tamer"     ; DRAGON_TAMER
 	li "Engineer"         ; ENGINEER
-	li "Teacher"          ; TEACHER
+	li "Teacher"          ; TEACHER_F
+	li "Teacher"          ; TEACHER_M
 	li "Guitarist"        ; GUITARISTM
 	li "Guitarist"        ; GUITARISTF
 	li "Biker"            ; BIKER
@@ -137,9 +138,9 @@ TrainerClassNames::
 	li "<PK><MN> Trainer" ; ANABEL
 	li "Valet"            ; DARACH
 	li "Lady"             ; CAITLIN
-	li "<PK><MN> Trainer" ; CANDELA
-	li "<PK><MN> Trainer" ; BLANCHE
-	li "<PK><MN> Trainer" ; SPARK_T
+	li "Leader"           ; CANDELA
+	li "Leader"           ; BLANCHE
+	li "Leader"           ; SPARK_T
 	li "Trainer"          ; FLANNERY
 	li "Fighter"          ; MAYLENE
 	li "Swimmer"          ; MARLON

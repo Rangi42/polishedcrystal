@@ -185,6 +185,7 @@ Music:
 	dba Music_ChampionBattleB2W2
 	dba Music_Credits
 	dba Music_PostCredits
+	dba Music_Printer
 	dba Music_TitleScreenXY
 	dba Music_DewfordTownRSE
 	dba Music_MarineTubeB2W2

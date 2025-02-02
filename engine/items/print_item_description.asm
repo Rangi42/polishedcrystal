@@ -21,6 +21,11 @@ PrintDescription:
 	rst PlaceString
 	ret
 
+PrintExpCandyDescription:
+	ld hl, ExpCandyDescriptions
+	ld a, [wCurSpecies]
+	jr PrintDescription
+
 PrintTMHMDescription:
 ; Print the description for TM/HM [wCurMove] at de.
 	ld a, [wCurMove]

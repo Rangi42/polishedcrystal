@@ -312,6 +312,9 @@ wTempDexLast:: dw ; the last species marked as seen
 wTempDexEnd::
 NEXTU
 wTempPocketCursor:: ds NUM_POCKETS
+NEXTU
+wCandyMaxLevelExp:: ds 3
+wCandyPrevLevel:: db
 ENDU
 ENDU
 
@@ -1036,8 +1039,6 @@ wPlayerState:: db
 wHallOfFameCount:: dw
 wTradeFlags:: flag_array PARTY_LENGTH
 
-	ds 1 ; unused
-
 wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 wFarfetchdPosition:: db
@@ -1067,7 +1068,7 @@ wDragonsDenB1FSceneID:: db
 wDragonShrineSceneID:: db
 wEcruteakGymSceneID:: db
 wEcruteakHouseSceneID:: db
-	ds 1 ; unused
+wRocketHideoutB4FSceneID:: db
 wElmsLabSceneID:: db
 wFarawayIslandSceneID:: db
 wFastShip1FSceneID:: db
@@ -1179,7 +1180,14 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 70 ; unused
+	ds 64 ; unused
+
+wCandyAmounts::
+wExpCandyXSAmount:: db
+wExpCandySAmount:: db
+wExpCandyMAmount:: db
+wExpCandyLAmount:: db
+wExpCandyXLAmount:: db
 
 wWingAmounts::
 wHealthWingAmount:: dw
@@ -1240,7 +1248,7 @@ wTimerEventStartDay:: db
 
 wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 
-	ds 19 ; previously nuzlocke flags
+	ds 19 ; unused
 
 wHiddenGrottoContents::
 ; dbw content type, content id
@@ -1362,13 +1370,9 @@ wPokedexFlags::
 wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-	ds 1 ; unused
-
 wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
-
-	ds 1 ; unused
 
 wUnlockedUnowns:: db
 
