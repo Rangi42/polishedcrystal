@@ -281,7 +281,7 @@ BT_PartySelect:
 	prompt
 
 .Stats:
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	jmp .loop
 
 .Moves:
@@ -297,19 +297,19 @@ BT_PartySelect:
 
 .EggMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 13, 19, 17
+	menu_coords 10, 13, 19, 17
 	dw .EggMenuData
 	db 1 ; default option
 
 .EggMenuData:
 	db $c0 ; flags
 	db 2 ; items
-	db "Stats@"
+	db "Summary@"
 	db "Cancel@"
 
 .MenuHeader:
 	db $00 ; flags
-	menu_coords 11, 9, 19, 17
+	menu_coords 10, 9, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
@@ -317,20 +317,20 @@ BT_PartySelect:
 	db $c0 ; flags
 	db 4 ; items
 	db "Enter@"
-	db "Stats@"
+	db "Summary@"
 	db "Moves@"
 	db "Cancel@"
 
 .BannedMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 11, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .BannedMenuData
 	db 1 ; default option
 
 .BannedMenuData:
 	db $c0 ; flags
 	db 3 ; items
-	db "Stats@"
+	db "Summary@"
 	db "Moves@"
 	db "Cancel@"
 

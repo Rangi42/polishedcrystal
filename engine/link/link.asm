@@ -792,7 +792,7 @@ LinkMonStatsScreen:
 	ld [wCurPartyMon], a
 	ld a, [wMonType]
 	push af
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	pop af
 	ld [wMonType], a
 	ld a, [wCurPartyMon]
