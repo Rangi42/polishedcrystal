@@ -368,14 +368,7 @@ BattleAnim_Sap:
 	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_LIME
 	anim_bgeffect BATTLE_BG_EFFECT_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $6, $0
 	anim_1gfx ANIM_GFX_CHARGE
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB,  16, 0,   6, 0, $2
-	anim_wait 6
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB, -15, 0,   8, 0, $3
-	anim_wait 6
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB, -15, 0,   4, 0, $4
+	anim_call BattleAnimSub_AbsorbHeal
 	anim_wait 16
 	anim_ret
 
@@ -409,12 +402,7 @@ BattleAnim_InLove:
 	anim_ret
 
 BattleAnim_InSandstorm:
-	anim_1gfx ANIM_GFX_POWDER
-	anim_obj ANIM_OBJ_SANDSTORM,  11, 0,   0, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_SANDSTORM,   9, 0,   0, 0, $1
-	anim_wait 8
-	anim_obj ANIM_OBJ_SANDSTORM,   7, 0,   0, 0, $2
+	anim_call BattleAnimSub_Sandstorm
 .loop
 	anim_sound 0, 1, SFX_MENU
 	anim_wait 8
@@ -427,26 +415,7 @@ BattleAnim_InHail:
 	anim_1gfx ANIM_GFX_ICE
 	anim_bgeffect ANIM_BG_WHITE_HUES, $0, $8, $0
 .loop
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 88, 0, $0
-	anim_obj ANIM_OBJ_HAIL, 68, 0, $1
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 188, 0, $2
-	anim_obj ANIM_OBJ_HAIL, 168, 0, $0
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 28, 0, $1
-	anim_obj ANIM_OBJ_HAIL, 8, 0, $2
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 238, 0, $0
-	anim_obj ANIM_OBJ_HAIL, 218, 0, $1
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 138, 0, $2
-	anim_obj ANIM_OBJ_HAIL, 118, 0, $1
-	anim_wait 8
+	anim_call BattleAnimSub_Hail
 	anim_loop 2, .loop
 	anim_ret
 
@@ -1643,14 +1612,7 @@ BattleAnim_Absorb:
 	anim_1gfx ANIM_GFX_CHARGE
 	anim_obj ANIM_OBJ_ABSORB_CENTER,   5, 4,  11, 0, $0
 .loop
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB,  16, 0,   6, 0, $2
-	anim_wait 6
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB, -15, 0,   8, 0, $3
-	anim_wait 6
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB, -15, 0,   4, 0, $4
+	anim_call BattleAnimSub_AbsorbHeal
 	anim_wait 6
 	anim_loop 5, .loop
 	anim_wait 32
@@ -1663,14 +1625,7 @@ BattleAnim_MegaDrain:
 	anim_bgeffect ANIM_BG_FADE_MONS_TO_BLACK_REPEATING, $0, $0, $10
 	anim_setvar $0
 .loop
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB,  16, 0,   6, 0, $2
-	anim_wait 6
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB, -15, 0,   8, 0, $3
-	anim_wait 6
-	anim_sound 6, 3, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_ABSORB, -15, 0,   4, 0, $4
+	anim_call BattleAnimSub_AbsorbHeal
 	anim_wait 6
 	anim_incvar
 	anim_jumpvar $7, .done
@@ -2264,13 +2219,7 @@ BattleAnim_Hurricane:
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $90, $4, $10
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $4, $0
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
-	anim_obj ANIM_OBJ_HURRICANE, 132, 56, $38
-	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
-	anim_obj ANIM_OBJ_AGILITY, 8, 48, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_AGILITY, 8, 56, $c
-	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
-	anim_obj ANIM_OBJ_AGILITY, 8, 104, $e
+	anim_call BattleAnimSub_AgilityMinor
 .loop
 	anim_sound 0, 1, SFX_THUNDER
 	anim_wait 4
@@ -3521,6 +3470,7 @@ BattleAnim_LowKick:
 
 BattleAnim_WingAttack:
 	anim_1gfx ANIM_GFX_HIT
+BattleAnimSub_WingAttack:
 	anim_sound 0, 1, SFX_WING_ATTACK
 	anim_obj ANIM_OBJ_HIT_YFIX, -14, 4,   7, 0, $0
 	anim_obj ANIM_OBJ_HIT_YFIX,  14, 4,   7, 0, $0
@@ -4466,12 +4416,7 @@ BattleAnim_Outrage:
 	anim_ret
 
 BattleAnim_Sandstorm:
-	anim_1gfx ANIM_GFX_POWDER
-	anim_obj ANIM_OBJ_SANDSTORM,  11, 0,   0, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_SANDSTORM,   9, 0,   0, 0, $1
-	anim_wait 8
-	anim_obj ANIM_OBJ_SANDSTORM,   7, 0,   0, 0, $2
+	anim_call BattleAnimSub_Sandstorm
 .loop
 	anim_sound 0, 1, SFX_MENU
 	anim_wait 8
@@ -4484,26 +4429,7 @@ BattleAnim_Hail:
 	anim_1gfx ANIM_GFX_ICE
 	anim_bgeffect ANIM_BG_WHITE_HUES, $0, $8, $0
 .loop
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 88, 0, $0
-	anim_obj ANIM_OBJ_HAIL, 68, 0, $1
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 188, 0, $2
-	anim_obj ANIM_OBJ_HAIL, 168, 0, $0
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 28, 0, $1
-	anim_obj ANIM_OBJ_HAIL, 8, 0, $2
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 238, 0, $0
-	anim_obj ANIM_OBJ_HAIL, 218, 0, $1
-	anim_wait 8
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_HAIL, 138, 0, $2
-	anim_obj ANIM_OBJ_HAIL, 118, 0, $1
-	anim_wait 8
+	anim_call BattleAnimSub_Hail
 	anim_loop 3, .loop
 	anim_ret
 
@@ -4793,19 +4719,7 @@ BattleAnim_SteelWing:
 	anim_call BattleAnim_ShowMon_0
 	anim_1gfx ANIM_GFX_HIT
 	anim_resetobp0
-	anim_sound 0, 1, SFX_WING_ATTACK
-	anim_obj ANIM_OBJ_HIT_YFIX, -14, 4,   7, 0, $0
-	anim_obj ANIM_OBJ_HIT_YFIX,  14, 4,   7, 0, $0
-	anim_wait 6
-	anim_sound 0, 1, SFX_WING_ATTACK
-	anim_obj ANIM_OBJ_HIT_YFIX, -14, 0,   7, 0, $0
-	anim_obj ANIM_OBJ_HIT_YFIX,  15, 0,   7, 0, $0
-	anim_wait 6
-	anim_sound 0, 1, SFX_WING_ATTACK
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 4,   7, 0, $0
-	anim_obj ANIM_OBJ_HIT_YFIX,  15, 4,   7, 0, $0
-	anim_wait 16
-	anim_ret
+	anim_jump BattleAnimSub_WingAttack
 
 BattleAnim_MeanLook:
 	anim_1gfx ANIM_GFX_PSYCHIC
@@ -5850,6 +5764,17 @@ BattleAnimSub_Beam:
 	anim_obj ANIM_OBJ_BEAM_TIP,  15, 6,   7, 6, $0
 	anim_ret
 
+BattleAnimSub_AbsorbHeal:
+	anim_sound 6, 3, SFX_WATER_GUN
+	anim_obj ANIM_OBJ_ABSORB,  16, 0,   6, 0, $2
+	anim_wait 6
+	anim_sound 6, 3, SFX_WATER_GUN
+	anim_obj ANIM_OBJ_ABSORB, -15, 0,   8, 0, $3
+	anim_wait 6
+	anim_sound 6, 3, SFX_WATER_GUN
+	anim_obj ANIM_OBJ_ABSORB, -15, 0,   4, 0, $4
+	anim_ret
+
 BattleAnimSub_Explosion1:
 	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
 	anim_sound 0, 0, SFX_EGG_BOMB
@@ -5969,6 +5894,44 @@ BattleAnimSub_Metallic:
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 64
 	anim_setbgpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_DEFAULT
+	anim_ret
+
+BattleAnimSub_Hail:
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_HAIL, 88, 0, $0
+	anim_obj ANIM_OBJ_HAIL, 68, 0, $1
+	anim_wait 8
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_HAIL, 188, 0, $2
+	anim_obj ANIM_OBJ_HAIL, 168, 0, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_HAIL, 28, 0, $1
+	anim_obj ANIM_OBJ_HAIL, 8, 0, $2
+	anim_wait 8
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_HAIL, 238, 0, $0
+	anim_obj ANIM_OBJ_HAIL, 218, 0, $1
+	anim_wait 8
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_HAIL, 138, 0, $2
+	anim_obj ANIM_OBJ_HAIL, 118, 0, $1
+	anim_wait 8
+	anim_ret
+
+BattleAnimSub_Sandstorm:
+	anim_1gfx ANIM_GFX_POWDER
+	anim_obj ANIM_OBJ_SANDSTORM,  11, 0,   0, 0, $0
+	anim_wait 8
+	anim_obj ANIM_OBJ_SANDSTORM,   9, 0,   0, 0, $1
+	anim_wait 8
+	anim_obj ANIM_OBJ_SANDSTORM,   7, 0,   0, 0, $2
+	anim_1gfx ANIM_GFX_POWDER
+	anim_obj ANIM_OBJ_SANDSTORM,  11, 0,   0, 0, $0
+	anim_wait 8
+	anim_obj ANIM_OBJ_SANDSTORM,   9, 0,   0, 0, $1
+	anim_wait 8
+	anim_obj ANIM_OBJ_SANDSTORM,   7, 0,   0, 0, $2
 	anim_ret
 
 BattleAnimSub_SandOrMud:
