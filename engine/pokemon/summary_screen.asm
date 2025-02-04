@@ -13,61 +13,6 @@
 ; TODO remove moves screen (by replacing it properly)
 ; TODO fix artifacts when exiting PC or in battle summary
 
-; vTiles0
-DEF SUMMARY_TILE_OAM_START                  EQU $3C
-DEF SUMMARY_TILE_OAM_PAGE                   EQU $3C
-DEF SUMMARY_TILE_OAM_SELECTED_PAGE          EQU $3D
-DEF SUMMARY_TILE_OAM_BALL_TOP_BORDER        EQU $3E
-DEF SUMMARY_TILE_OAM_A_INFO                 EQU $40
-DEF SUMMARY_TILE_OAM_TITLES                 EQU $44
-DEF SUMMARY_TILE_OAM_EXP_TITLE              EQU $44
-DEF SUMMARY_TILE_OAM_ABILITY_TITLE          EQU $48
-DEF SUMMARY_TILE_OAM_ITEM_TITLE             EQU $4C
-DEF SUMMARY_TILE_OAM_MOVE_TITLE             EQU $50
-DEF SUMMARY_TILE_OAM_MET_TITLE              EQU $54
-DEF SUMMARY_TILE_OAM_ARROW                  EQU $58
-DEF SUMMARY_TILE_OAM_STATUS                 EQU $5C
-
-; vTiles2
-DEF SUMMARY_TILE_START                      EQU $31
-DEF SUMMARY_TILE_SIDE_WINDOW_TL             EQU $31
-DEF SUMMARY_TILE_SIDE_WINDOW_L              EQU $32
-DEF SUMMARY_TILE_SIDE_WINDOW_T              EQU $34
-DEF SUMMARY_TILE_SIDE_WINDOW_BL             EQU $33
-DEF SUMMARY_TILE_SIDE_WINDOW_B              EQU $35
-DEF SUMMARY_TILE_BOTTOM_WINDOW_T            EQU $38
-DEF SUMMARY_TILE_BOTTOM_WINDOW_B            EQU SUMMARY_TILE_SIDE_WINDOW_B
-DEF SUMMARY_TILE_BOTTOM_WINDOW_CORNER       EQU $36
-DEF SUMMARY_TILE_BOTTOM_WINDOW_INNER_CORNER EQU $37
-DEF SUMMARY_TILE_BALL_SIDE_BORDER           EQU $39
-DEF SUMMARY_TILE_TYPE_BG_LEFT               EQU $3A
-DEF SUMMARY_TILE_TYPE_BG_MIDDLE             EQU $3B
-DEF SUMMARY_TILE_TYPE_BG_RIGHT              EQU $3C
-DEF SUMMARY_TILE_POKERUS                    EQU $3D
-DEF SUMMARY_TILE_POKERUS_CURED              EQU $3E
-DEF SUMMARY_TILE_HIDDEN_H                   EQU $3F
-DEF SUMMARY_TILE_HYPER_TRAINING             EQU $40
-DEF SUMMARY_TILE_LEFT_ARROW                 EQU $41
-DEF SUMMARY_TILE_RIGHT_ARROW                EQU $42
-DEF SUMMARY_TILE_BALL                       EQU $4F
-DEF SUMMARY_TILE_CATEGORY_START             EQU $50
-DEF SUMMARY_TILE_ITEM                       EQU $56
-
-; vTiles3
-DEF SUMMARY_TILE_TYPE_START                 EQU $00
-
-; bg palettes
-DEF SUMMARY_PAL_LOWER_WINDOW                EQU $00
-DEF SUMMARY_PAL_POKEMON                     EQU $01
-DEF SUMMARY_PAL_ITEM                        EQU $02
-DEF SUMMARY_PAL_SIDE_WINDOW                 EQU $03
-DEF SUMMARY_PAL_SHINY_POKERUS               EQU $04
-DEF SUMMARY_PAL_NATURE_UP                   EQU $04
-DEF SUMMARY_PAL_HP_BAR                      EQU $05
-DEF SUMMARY_PAL_GENDER_MARKER               EQU $06
-DEF SUMMARY_PAL_POKEBALL                    EQU $07
-DEF SUMMARY_PAL_NATURE_DOWN                 EQU $07
-
 SummaryScreenInit:
 	ldh a, [hMapAnims]
 	push af
@@ -264,7 +209,7 @@ SummaryScreenLoop:
 
 .Joypad:
 	ld a, [wSummaryScreenFlags]
-	and $3
+	and SUMMARY_FLAGS_PAGE_MASK
 	ld c, a ; page
 
 	call GetJoypad
@@ -324,11 +269,11 @@ SummaryScreenLoop:
 
 .set_page
 	ld a, [wSummaryScreenFlags]
-	and %11111100
+	and ~SUMMARY_FLAGS_PAGE_MASK
 	or c
 	ld [wSummaryScreenFlags], a
 	ld hl, wSummaryScreenFlags
-	res 4, [hl]
+	res SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	jmp SummaryScreen_LoadPage
 
 .quit
@@ -347,19 +292,19 @@ SummaryScreen_DoAnim:
 	farcall SetUpPokeAnim
 	jr nc, .finish
 	ld hl, wSummaryScreenFlags
-	res 6, [hl]
+	res SUMMARY_FLAGS_DO_ANIM_F, [hl]
 .finish
 	ld hl, wSummaryScreenFlags
-	res 5, [hl]
+	res SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
 	farjp HDMATransferTileMapToWRAMBank3
 
 SummaryScreen_InitMon:
 	ld hl, wSummaryScreenFlags
-	res 6, [hl]
+	res SUMMARY_FLAGS_DO_ANIM_F, [hl]
 
 	; Clear sprites except page icons
-	ld hl, wShadowOAM + 4 * 4
-	ld bc, wShadowOAMEnd - (wShadowOAM + 4 * 4)
+	ld hl, wShadowOAMSprite04
+	ld bc, wShadowOAMEnd - (wShadowOAMSprite04)
 	xor a
 	rst ByteFill
 
@@ -443,7 +388,7 @@ SummaryScreen_InitMon:
 	farcall LoadItemIconForSummaryScreen
 	farcall _CGB_StatsScreenHPPals
 	ld hl, wSummaryScreenFlags
-	set 4, [hl]
+	set SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	ret
 
 EggSummaryInit:
@@ -463,12 +408,12 @@ SummaryScreen_InitLayout:
 
 	ld hl, .PageSprites
 	ld de, wSummaryScreenOAMSprite00
-	ld bc, 4 * 4
+	ld bc, 4 * SPRITEOAMSTRUCT_LENGTH
 	rst CopyBytes
 
 	ld hl, .TabTitleSprites
 	ld de, wSummaryScreenOAMSprite36
-	ld bc, 4 * 4
+	ld bc, 4 * SPRITEOAMSTRUCT_LENGTH
 	rst CopyBytes
 
 	; Right window
@@ -684,13 +629,13 @@ SummaryScreen_LoadPage:
 	dec e
 	jr nz, .loop
 
-	ld c, 4 * 20
+	ld c, 20 * SPRITEOAMSTRUCT_LENGTH
 	ld a, 0
 	ld hl, wSummaryScreenOAMSprite04
 	rst ByteFill
 	call .PageTilemap
 	ld hl, wSummaryScreenFlags
-	bit 4, [hl]
+	bit SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	call nz, SummaryScreen_PlaceFrontpic
 	call SummaryScreen_SwitchPage
 	farcall HDMATransferTileMapToWRAMBank3
@@ -719,7 +664,7 @@ SummaryScreen_LoadPage:
 
 .ClearBox:
 	ld a, [wSummaryScreenFlags]
-	and $3
+	and SUMMARY_FLAGS_PAGE_MASK
 	ld c, a
 	hlcoord 0, 13
 	lb bc, 5, 20
@@ -747,7 +692,7 @@ SummaryScreen_LoadPage:
 
 .PageTilemap:
 	ld a, [wSummaryScreenFlags]
-	and $3
+	and SUMMARY_FLAGS_PAGE_MASK
 	call StackJumpTable
 
 .Jumptable:
@@ -815,7 +760,7 @@ SummaryScreen_SwitchPage:
 	ld hl, wSummaryScreenOAMSprite03TileID
 	ld [hl], SUMMARY_TILE_OAM_PAGE
 	ld a, [wSummaryScreenFlags]
-	and $3
+	and SUMMARY_FLAGS_PAGE_MASK
 	add a, a
 	add a, a
 	ld d, 0
@@ -871,7 +816,7 @@ SummaryScreen_SwitchPage:
 	ld hl, .InterruptTable
 	ld b, 0
 	ld a, [wSummaryScreenFlags]
-	and $3
+	and SUMMARY_FLAGS_PAGE_MASK
 	sla a
 	ld c, a
 	add hl, bc
@@ -1006,7 +951,7 @@ SummaryScreen_PlaceFrontpic:
 
 .DontAnimate:
 	ld hl, wSummaryScreenFlags
-	set 5, [hl]
+	set SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
 	hlcoord 0, 1
 	ld a, [wCurPartySpecies]
 	cp UNOWN
@@ -1030,7 +975,7 @@ SummaryScreen_PlaceFrontpic:
 	lb de, $0, $2
 	predef LoadMonAnimation
 	ld hl, wSummaryScreenFlags
-	set 6, [hl]
+	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret
 
 SummaryScreen_GetAnimationParam:

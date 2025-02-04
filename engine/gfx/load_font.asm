@@ -86,7 +86,7 @@ LoadSummaryStatusIcon:
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile 92
+	ld hl, vTiles0 tile SUMMARY_TILE_OAM_STATUS
 	lb bc, BANK(SummaryStatusIconGFX), 2
 	call Request2bpp
 	farcall LoadSummaryStatusIconPalette

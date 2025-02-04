@@ -164,7 +164,7 @@ SummaryScreen_PinkPage:
 	rst CopyBytes
 
 	ld hl, CaughtBallPals
-	ld bc, $4
+	ld bc, 2 colors
 	ld a, [wTempMonCaughtBall]
 	and CAUGHT_BALL_MASK
 	rst AddNTimes

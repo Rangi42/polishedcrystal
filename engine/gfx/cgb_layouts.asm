@@ -391,7 +391,7 @@ _CGB_StatsScreenHPPals:
 	pop de
 
 	ld hl, ItemIconPalettes
-	ld bc, PAL_COLOR_SIZE * 2
+	ld bc, 2 colors
 	ld a, [wTempMonItem]
 	rst AddNTimes
 	ld de, wSummaryScreenPals palette 2

@@ -1,8 +1,6 @@
 SummaryScreen_OrangePage:
-	ld a, $54
+	ld a, SUMMARY_TILE_OAM_MET_TITLE
 	call SummaryScreen_UpdateTabTitle
-; Fourth stats page code by TPP Anniversary Crystal 251
-; Ported by FIQ
 	call .TN_PrintToD
 	call .TN_PrintLV
 	call .TN_PrintLocation
@@ -94,7 +92,7 @@ SummaryScreen_OrangePage:
 	ld h, b
 	ld l, c
 	inc hl
-;	hlcoord 11, 9
+;	hlcoord = 11, 9
 	inc a
 	jr z, .hatched
 	dec a
@@ -104,7 +102,7 @@ SummaryScreen_OrangePage:
 	rst PlaceString
 	ld h, b
 	ld l, c
-;	hlcoord 15, 9
+;	hlcoord = 15, 9
 	ld de, wBuffer2
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	jmp PrintNum

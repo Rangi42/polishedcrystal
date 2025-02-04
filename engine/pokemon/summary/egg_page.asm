@@ -25,7 +25,7 @@ EggSummaryScreen:
 	hlcoord 1, 9
 	rst PlaceString
 	ld hl, wSummaryScreenFlags
-	set 5, [hl]
+	set SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
 	call SetDefaultBGPAndOBP ; pals
 	call DelayFrame
 	hlcoord 0, 0
@@ -102,5 +102,5 @@ SummaryScreen_AnimateEgg:
 	ld d, $0
 	predef LoadMonAnimation
 	ld hl, wSummaryScreenFlags
-	set 6, [hl]
+	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret

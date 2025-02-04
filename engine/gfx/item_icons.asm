@@ -78,7 +78,7 @@ DecompressItemIconForSummaryScreen::
 	call FarDecompressWRA6InB
 	call WhiteOutDecompressedItemIconCorners
 	pop bc
-	ld hl, vTiles2 tile $56
+	ld hl, vTiles2 tile SUMMARY_TILE_ITEM
 	ld de, wDecompressScratch
 	jmp Request2bppInWRA6
 

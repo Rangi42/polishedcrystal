@@ -30,14 +30,14 @@ SummaryScreen_GreenPage:
 	ld [wBuffer1], a
 	predef ListMovePP
 
-for n, 4
+for n, NUM_MOVES
 	ld a, [wTempMonMoves + n]
 	and a
 	jr z, .moves_done
 	ld a, [wSummaryScreenTypes + 2 + n]
 	ld d, (2 + n) | 8
 	lb bc, 72, 41 + n * 20
-	ld hl, wSummaryScreenOAMSprite04 + n * 4 * 4
+	ld hl, wSummaryScreenOAMSprite04 + n * 4 * SPRITEOAMSTRUCT_LENGTH
 	call SummaryScreen_PlaceTypeOBJ
 	debgcoord 0, 1 + n * 2, wSummaryScreenWindowBuffer
 	call SummaryScreen_PlaceTypeBG
@@ -53,13 +53,13 @@ endr
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, $4
+	ld a, SUMMARY_PAL_A_INFO
 	ld [hli], a
 	ld a, 8
-	add a, b
+	add b
 	ld b, a
 	inc c
-	cp a, 132 + 8 * 4
+	cp a, 132 + 8 * SPRITEOAMSTRUCT_LENGTH
 	jr nz, .aInfoLoop
 	ret
 
@@ -159,7 +159,7 @@ endr
 	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
 
-	ld de, wBGPals1 + 2
+	ld de, wBGPals1 color 1
 	farcall LoadOneColor
 	farcall LoadOneColor
 	call SetDefaultBGPAndOBP

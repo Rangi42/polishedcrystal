@@ -4,7 +4,7 @@ SummaryScreen_BluePage:
 	hlbgcoord 3, 1, wSummaryScreenWindowBuffer
 	call SummaryScreen_DrawPlayerHP
 	hlbgcoord 19, 1, wSummaryScreenWindowBuffer
-	ld a, 5
+	ld a, SUMMARY_PAL_HP_BAR
 	ld bc, 10
 	rst ByteFill
 	ld a, [wTextboxFlags]

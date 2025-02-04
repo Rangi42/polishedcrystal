@@ -86,8 +86,8 @@ LoadSummaryStatusIconPalette:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld de, wOBPals1 palette 5 + 4
-	ld bc, 2
+	ld de, wOBPals1 palette 5 color 2
+	ld bc, 1 colors
 	jmp FarCopyColorWRAM
 
 LoadPlayerStatusIconPalette:
