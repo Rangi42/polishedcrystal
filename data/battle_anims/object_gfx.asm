@@ -89,6 +89,7 @@ AnimObjGFX:
 	battleanimgfx 12, AnimObjWaterBallGFX
 	battleanimgfx 10, AnimObjBeamSolarGFX
 	battleanimgfx  4, AnimObjPetalsGFX
+	battleanimgfx 10, AnimObjGlowShadowGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

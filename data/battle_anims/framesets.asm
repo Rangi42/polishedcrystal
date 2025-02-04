@@ -22,7 +22,7 @@ BattleAnimFrameData:
 	dw .Frameset_13 ; 13
 	dw .Frameset_14 ; 14
 	dw .Frameset_15 ; 15
-	dw .Frameset_16 ; 16
+	dw .Frameset_16 ; 16                 ; BATTLEANIMFRAMESET_RAZOR_LEAF_1
 	dw .Frameset_17 ; 17
 	dw .Frameset_18 ; 18
 	dw .Frameset_BigRockStarHeart ; 19
