@@ -383,6 +383,13 @@ INCLUDE "gfx/pokegear/pokegear_x.pal"
 _CGB_StatsScreenHPPals:
 	ld de, wBGPals1 palette 1
 	ld a, [wCurPartySpecies]
+	ld b, a
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr z, .done
+	ld b, EGG
+.done
+	ld a, b
 	ld bc, wTempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black

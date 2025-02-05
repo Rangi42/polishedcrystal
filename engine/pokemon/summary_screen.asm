@@ -6,8 +6,8 @@
 ; * Blue page:   Stats on right, ability on bottom
 ; * Green page:  Moves on right, item on bottom (item icon replacing level and gender on left), can be toggled for detailed move info
 ; * Orange page: Nature and character on right, met info on bottom
+; * Egg page:    Blanked status info and vague egg hatch time information
 
-; TODO entire egg page
 ; TODO allow swapping move order
 ; TODO replace move learning page
 ; TODO remove moves screen (by replacing it properly)
@@ -198,7 +198,7 @@ SummaryScreen_InitTiles:
 
 	ld hl, GFX_Summary_Sprites
 	ld de, vTiles0 tile SUMMARY_TILE_OAM_START
-	lb bc, BANK(GFX_Summary_Sprites), 8 * 4
+	lb bc, BANK(GFX_Summary_Sprites), 9 * 4
 	jmp DecompressRequest2bpp
 
 ; Main summary screen event loop
@@ -212,9 +212,15 @@ SummaryScreenLoop:
 	and SUMMARY_FLAGS_PAGE_MASK
 	ld c, a ; page
 
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld b, D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
+	jr z, .got_mask
+	ld b, D_DOWN | D_UP | B_BUTTON
+.got_mask
 	call GetJoypad
 	ldh a, [hJoyPressed]
-	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
+	and b
 
 	bit B_BUTTON_F, a
 	jr nz, .quit
@@ -338,9 +344,6 @@ SummaryScreen_InitMon:
 	ld [wCurPartySpecies], a
 	ld a, [wTempMonForm]
 	ld [wCurForm], a
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	jr nz, EggSummaryInit
 
 	; count the number of moves the current mon has
 	xor a
@@ -389,18 +392,6 @@ SummaryScreen_InitMon:
 	farcall _CGB_StatsScreenHPPals
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
-	ret
-
-EggSummaryInit:
-	ld a, [wCurPartySpecies]
-	push af
-	ld a, EGG
-	ld [wCurPartySpecies], a
-	call EggSummaryScreen
-	pop af
-	ld [wCurPartySpecies], a
-	ld hl, wJumptableIndex
-	inc [hl]
 	ret
 
 SummaryScreen_InitLayout:
@@ -633,10 +624,18 @@ SummaryScreen_LoadPage:
 	ld a, 0
 	ld hl, wSummaryScreenOAMSprite04
 	rst ByteFill
+
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr z, .not_egg
+	call SummaryScreen_Egg
+	jr .frontpic_done
+.not_egg
 	call .PageTilemap
 	ld hl, wSummaryScreenFlags
 	bit SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	call nz, SummaryScreen_PlaceFrontpic
+.frontpic_done
 	call SummaryScreen_SwitchPage
 	farcall HDMATransferTileMapToWRAMBank3
 	ld a, 7 + 64
@@ -675,6 +674,10 @@ SummaryScreen_LoadPage:
 	hlcoord 2, 8
 	lb bc, 3, 3
 	call ClearBox
+
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ret nz
 
 	hlcoord 1, 9
 	call PrintLevel
@@ -813,6 +816,10 @@ SummaryScreen_SwitchPage:
 	set LCD_STAT, a
 	ldh [rIE], a
 
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld hl, .EggInterrupts
+	jr nz, .egg
 	ld hl, .InterruptTable
 	ld b, 0
 	ld a, [wSummaryScreenFlags]
@@ -824,6 +831,7 @@ SummaryScreen_SwitchPage:
 	ld b, a
 	ld h, [hl]
 	ld l, b
+.egg
 	ld de, wSummaryScreenInterrupts
 	ld bc, 16 * 2
 	rst CopyBytes
@@ -933,6 +941,22 @@ endr
 	db 83,  SUMMARY_LCD_SHOW_WINDOW
 	db 91,  SUMMARY_LCD_HIDE_WINDOW
 	db 127, SUMMARY_LCD_SCROLL_BACKGROUND
+	db -1
+.EggInterrupts:
+	db 22,  SUMMARY_LCD_SHOW_WINDOW
+	db 23,  SUMMARY_LCD_HIDE_WINDOW
+	db 31,  SUMMARY_LCD_SHOW_WINDOW
+	db 39,  SUMMARY_LCD_HIDE_WINDOW
+	db 43,  SUMMARY_LCD_SHOW_WINDOW
+	db 51,  SUMMARY_LCD_HIDE_WINDOW
+	db 59,  SUMMARY_LCD_SHOW_WINDOW
+	db 67,  SUMMARY_LCD_HIDE_WINDOW
+	db 71,  SUMMARY_LCD_SHOW_WINDOW
+	db 79,  SUMMARY_LCD_HIDE_WINDOW
+	db 83,  SUMMARY_LCD_SHOW_WINDOW
+	db 91,  SUMMARY_LCD_HIDE_WINDOW
+	db 111, SUMMARY_LCD_SCROLL_BACKGROUND
+	db 123, SUMMARY_LCD_SCROLL_BACKGROUND
 	db -1
 
 ; Animated PokePic

@@ -1,37 +1,71 @@
-; TODO redo the entire egg screen
-EggSummaryScreen:
-	xor a
-	ldh [hBGMapMode], a
-	ld hl, wCurHPPal
-	call SetHPPal
-	ld a, CGB_SUMMARY_SCREEN_HP_PALS
-	call GetCGBLayout
-	call SummaryScreen_PlaceEggDivider
-	ld de, EggString
-	hlcoord 8, 1
+SummaryScreen_Egg:
+	ld a, SUMMARY_TILE_OAM_EGG_TITLE
+	call SummaryScreen_UpdateTabTitle
+
+	ld a, " "
+	hlcoord 11, 0
+	ld [hl], a
+	hlcoord 19, 0
+	ld [hl], a
+
+	ld a, 240
+	ld hl, wSummaryScreenOAMSprite00YCoord
+	ld [hl], a
+	ld hl, wSummaryScreenOAMSprite01YCoord
+	ld [hl], a
+	ld hl, wSummaryScreenOAMSprite02YCoord
+	ld [hl], a
+	ld hl, wSummaryScreenOAMSprite03YCoord
+	ld [hl], a
+
+	ld de, .NoString
+	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	rst PlaceString
+	ld de, .EggString
+	hlbgcoord 0, 1, wSummaryScreenWindowBuffer
+	rst PlaceString
+	ld de, .OTString
+	hlbgcoord 0, 4, wSummaryScreenWindowBuffer
+	rst PlaceString
+	ld de, .IDString
+	hlbgcoord 2, 5, wSummaryScreenWindowBuffer
+	rst PlaceString
+
 	ld a, [wTempMonHappiness] ; egg status
-	ld de, EggSoonString
+	ld de, .SoonString
 	cp $6
 	jr c, .picked
-	ld de, EggCloseString
+	ld de, .CloseString
 	cp $b
 	jr c, .picked
-	ld de, EggMoreTimeString
+	ld de, .MoreTimeString
 	cp $29
 	jr c, .picked
-	ld de, EggALotMoreTimeString
+	ld de, .ALotMoreTimeString
 .picked
-	hlcoord 1, 9
+	hlcoord 1, 13
 	rst PlaceString
-	ld hl, wSummaryScreenFlags
-	set SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
-	call SetDefaultBGPAndOBP ; pals
-	call DelayFrame
-	hlcoord 0, 0
+
+	ld hl, .EggPalettes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_LOWER_WINDOW
+	rst CopyBytes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
+	rst CopyBytes
+	ld bc, 1 palettes
+	ld de, wSummaryScreenPals palette SUMMARY_PAL_SHINY_POKERUS
+	rst CopyBytes
+
+	ld a, [wCurPartySpecies]
+	push af
+	ld a, EGG
+	ld [wCurPartySpecies], a
+	hlcoord 0, 1
 	call PrepMonFrontpic
-	farcall HDMATransferTileMapToWRAMBank3
-	call SummaryScreen_AnimateEgg
+	call .AnimateEgg
+	pop af
+	ld [wCurPartySpecies], a
 
 	ld a, [wTempMonHappiness]
 	cp 6
@@ -39,48 +73,63 @@ EggSummaryScreen:
 	ld de, SFX_2_BOOPS
 	jmp PlaySFX
 
-SummaryScreen_PlaceEggDivider:
-	hlcoord 0, 7
-	ld b, SCREEN_WIDTH
-	ld a, $3e
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ret
+.EggPalettes:
+	RGB 30, 29, 16
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 
-EggString:
-	text "Egg"
-	next "OT/?????"
-	next "<ID>№.?????"
+	RGB 31, 31, 29
+	RGB 30, 29, 16
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 29
+	RGB 30, 29, 16
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+
+.NoString:
+	text "№.???"
 	done
 
-EggSoonString:
+.EggString:
+	text "Egg"
+	done
+
+.OTString:
+	text "OT/?????"
+	done
+
+.IDString:
+	text "<ID>№.?????"
+	done
+
+.SoonString:
 	text "It's making sounds"
 	next "inside. It's going"
 	next "to hatch soon!"
 	done
 
-EggCloseString:
+.CloseString:
 	text "It moves around"
-	next "inside sometimes."
-	next "It must be close"
-	next "to hatching."
+	next "sometimes. It's"
+	next "close to hatching."
 	done
 
-EggMoreTimeString:
+.MoreTimeString:
 	text "Wonder what's"
 	next "inside? It needs"
 	next "more time, though."
 	done
 
-EggALotMoreTimeString:
+.ALotMoreTimeString:
 	text "This Egg needs a"
 	next "lot more time to"
 	next "hatch."
 	done
 
-SummaryScreen_AnimateEgg:
+.AnimateEgg:
 	call SummaryScreen_GetAnimationParam
 	ret nc
 	ld a, [wTempMonHappiness]
@@ -98,7 +147,7 @@ SummaryScreen_AnimateEgg:
 	ld de, vTiles2 tile $00
 	predef FrontpicPredef
 	pop de
-	hlcoord 0, 0
+	hlcoord 0, 1
 	ld d, $0
 	predef LoadMonAnimation
 	ld hl, wSummaryScreenFlags
