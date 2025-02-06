@@ -6702,7 +6702,9 @@ GiveExperiencePoints:
 
 	ld hl, wInitialOptions2
 	bit EVOLVE_IN_BATTLE_OPT, [hl]
-	jr nz, .evolve_now
+	jr z, .defer_evolve
+	call EvolveDuringBattle
+	jr .evolve_logic_done
 
 .defer_evolve
 	ld hl, wEvolvableFlags
@@ -6710,22 +6712,6 @@ GiveExperiencePoints:
 	ld c, a
 	ld b, SET_FLAG
 	predef FlagPredef
-	jr .evolve_logic_done
-
-.evolve_now
-	call LoadTileMapToTempTileMap
-	call EvolveDuringBattle
-	call UpdatePlayerHPPal
-	call _LoadBattleFontsHPBar
-	call GetMonBackpic
-	call LoadTempTileMapToTileMap
-	ld a, $31
-	ldh [hGraphicStartTile], a
-	hlcoord 2, 6
-	lb bc, 6, 6
-	predef PlaceGraphic
-	call EmptyBattleTextbox
-	farcall RunEntryAbilitiesInner
 
 .evolve_logic_done
 	pop af
