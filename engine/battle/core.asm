@@ -4423,20 +4423,9 @@ BattleMenuPKMN_Loop:
 	jmp z, TryPlayerSwitch
 	dec a ; STATS
 	jr z, .Stats
-	dec a ; MOVES
-	jr z, .Moves
 	dec a ; CANCEL
 	jr z, .Cancel
 	jr .loop
-
-.Moves:
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
-	jr nz, .Cancel
-	farcall ManagePokemonMoves
-	call GetMonBackpic
 
 .Cancel: ; no-optimize stub jump
 	jr BattleMenuPKMN_Loop
@@ -4499,16 +4488,15 @@ BattleMenuPKMN_Loop:
 
 .MenuHeader:
 	db $00 ; flags
-	menu_coords 10, 9, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db $c0 ; flags
-	db 4 ; items
+	db 3 ; items
 	db "Switch@"
 	db "Summary@"
-	db "Moves@"
 	db "Cancel@"
 
 .EggMenuHeader:

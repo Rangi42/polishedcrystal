@@ -118,7 +118,6 @@ PokemonActionSubmenu:
 	dbw MONMENUITEM_SWITCH,     SwitchPartyMons
 	dbw MONMENUITEM_ITEM,       GiveTakePartyMonItem
 	dbw MONMENUITEM_CANCEL,     CancelPokemonAction
-	dbw MONMENUITEM_MOVE,       ManagePokemonMoves
 	dbw MONMENUITEM_MAIL,       MonMailAction
 
 SwitchPartyMons:
@@ -969,33 +968,6 @@ PreparePartyTempMon:
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wTempMonSlot], a
-	ret
-
-ManagePokemonMoves:
-	call PreparePartyTempMon
-	; fallthrough
-_ManagePokemonMoves:
-	ld a, [wTempMonBox]
-	ld b, a
-	ld a, [wTempMonSlot]
-	ld c, a
-	farcall GetStorageBoxMon
-	ld hl, wTempMonIsEgg
-	bit MON_IS_EGG_F, [hl]
-	jr nz, .egg
-	ld hl, wOptions1
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	xor a
-	ld [wMoveScreenMode], a
-	call MoveScreenLoop
-	pop af
-	ld [wOptions1], a
-	call ClearBGPalettes
-
-.egg
-	xor a
 	ret
 
 MoveScreen:

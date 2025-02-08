@@ -295,6 +295,8 @@ SummaryScreen_MoveInfoJoypad:
 	ld a, [wSummaryMoveSwap]
 	inc a
 	jr nz, .swap_moves
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
 	ld a, [wSummaryScreenPage]
 	rrca
 	rrca
@@ -302,6 +304,8 @@ SummaryScreen_MoveInfoJoypad:
 	ld [wSummaryMoveSwap], a
 	ret
 .b_button
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
 	ld a, [wSummaryMoveSwap]
 	inc a
 	jr z, .quit
@@ -373,6 +377,8 @@ SummaryScreen_MoveInfoJoypad:
 	call SummaryScreen_GreenPage.PrintMoves
 	call SummaryScreen_InitLayout.ApplySummaryPalettes
 	call SummaryScreen_SwitchPage
+	ld de, SFX_SWITCH_POKEMON
+	call PlaySFX
 .end_swap
 	pop af
 	call SummaryScreen_GreenPage.ShowMove

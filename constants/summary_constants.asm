@@ -60,7 +60,7 @@ DEF SUMMARY_TILE_CATEGORY_START             EQU $50
 DEF SUMMARY_TILE_ITEM                       EQU $56
 
 ; vTiles3
-DEF SUMMARY_TILE_TYPE_START                 EQU $00
+DEF SUMMARY_TILE_TYPE_START                 EQU $04
 
 ; bg palettes
 DEF SUMMARY_PAL_LOWER_WINDOW                EQU $00

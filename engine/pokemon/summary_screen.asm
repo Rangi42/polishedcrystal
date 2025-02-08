@@ -252,6 +252,8 @@ SummaryScreenLoop:
 	ld a, c
 	cp SUMMARY_GREEN_PAGE
 	ret nz
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
 	jmp SummaryScreen_MoveInfoLoop
 
 .d_right
@@ -1064,6 +1066,7 @@ SummaryScreen_UpdateTabTitle:
 SummaryScreen_PlaceTypeOBJ:
 	add a
 	add a
+	add a, SUMMARY_TILE_TYPE_START
 	ld e, a
 rept 4
 	ld a, c
