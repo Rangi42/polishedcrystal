@@ -574,7 +574,7 @@ SummaryScreen_InitAttrmap:
 	ld a, Y_FLIP | SUMMARY_PAL_LOWER_WINDOW
 	ld bc, 3
 	rst ByteFill
-	ld a, X_FLIP | SUMMARY_PAL_SIDE_WINDOW
+	ld a, X_FLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
 	ld [hl], a
 	hlcoord 5, 12, wAttrmap
 	ld [hl], a

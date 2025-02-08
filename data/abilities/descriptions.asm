@@ -912,6 +912,6 @@ ArmorTailDescription:
 	done
 
 MindsEyeDescription:
-	text  "Bypass evasion and"
-	next1 "Ghost immunity."
+	text "Bypass evasion and"
+	next "Ghost immunity."
 	done

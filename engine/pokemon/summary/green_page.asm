@@ -145,7 +145,7 @@ endr
 	push af
 	ld e, a
 	ld a, [wSummaryMoveSwap]
-	cp a, e
+	cp e
 
 	jr z, .no_swap
 	inc a
@@ -245,8 +245,7 @@ endr
 
 .description
 	hlcoord 1, 15
-	predef PrintMoveDesc
-	ret
+	predef_jump PrintMoveDesc
 
 .String_na:
 	db "---@"
@@ -357,7 +356,7 @@ SummaryScreen_MoveInfoJoypad:
 	rrca
 	and %00000111
 	push af
-	cp a, b
+	cp b
 	jr z, .end_swap
 	ld c, a
 	push bc

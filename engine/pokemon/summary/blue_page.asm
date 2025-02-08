@@ -171,10 +171,10 @@ SummaryScreen_ColorNatures:
 	pop hl
 	cp 10
 	ret z
-	ld a, SUMMARY_PAL_NATURE_UP
-	jr nc, .got_pal
-	ld a, SUMMARY_PAL_NATURE_DOWN
-.got_pal
+	; a = carry ? SUMMARY_PAL_NATURE_DOWN : SUMMARY_PAL_NATURE_UP
+	sbc a
+	and SUMMARY_PAL_NATURE_DOWN - SUMMARY_PAL_NATURE_UP
+	add SUMMARY_PAL_NATURE_UP
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
