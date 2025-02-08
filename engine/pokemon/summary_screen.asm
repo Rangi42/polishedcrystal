@@ -1065,7 +1065,7 @@ SummaryScreen_UpdateTabTitle:
 SummaryScreen_PlaceTypeOBJ:
 	add a
 	add a
-	add a, SUMMARY_TILE_TYPE_START
+	add SUMMARY_TILE_TYPE_START
 	ld e, a
 rept 4
 	ld a, c
