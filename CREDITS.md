@@ -31,6 +31,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * vulcandth for implementing weather effects in the overworld, to include rain, lightning, snow, and sandstorm.
 * vulcandth for implementing the dynamic palettes for objects in the overworld.
 * vulcandth for adding compatibility to build the virtual console patches.
+* VermilionCosmos for various bug fixes and improvements (including PC cursor adjustments, the TownMap_InitFlyPossible fix, making Throat Spray work for non-damaging moves, and palette fixes after swapping Pokémon).
 * Emi for the revamped summary screen.
 
 

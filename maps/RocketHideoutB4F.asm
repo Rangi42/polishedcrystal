@@ -581,7 +581,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 	para "Blanche: Each"
 	line "lure contains the"
 
-	para "essense of a"
+	para "essence of a"
 	line "legendary bird"
 	cont "#mon."
 
@@ -597,7 +597,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 
 	para "That's why the"
 	line "Great Tree is"
-	line "important."
+	cont "important."
 
 	para "Candela: The tree"
 	line "is ancient,"
