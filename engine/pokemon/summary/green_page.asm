@@ -292,6 +292,11 @@ SummaryScreen_MoveInfoJoypad:
 	jr .adjust_move_index
 .a_button
 .select
+	; Don't swap moves during battle
+	ld a, [wBattleMode]
+	and a
+	ret nz
+	; TODO support battle swapping?
 	ld a, [wSummaryMoveSwap]
 	inc a
 	jr nz, .swap_moves
@@ -385,7 +390,7 @@ SummaryScreen_MoveInfoJoypad:
 	ld a, -1
 	ld [wSummaryMoveSwap], a
 	call SummaryScreen_ClearSwapArrow
-	jmp SummaryScreen_UpdateGFX
+	jr SummaryScreen_UpdateGFX
 ; hl = address
 .swap_addresses:
 	ld d, h

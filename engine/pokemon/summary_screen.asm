@@ -9,7 +9,6 @@
 ; * Egg page:    Blanked status info and vague egg hatch time information
 
 ; TODO replace move learning page
-; TODO fix artifacts when exiting PC
 
 SummaryScreenInit:
 	ldh a, [hMapAnims]
