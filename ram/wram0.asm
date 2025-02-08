@@ -992,10 +992,11 @@ wSummaryScreenStep:: db
 wSummaryScreenInterrupts:: ds 2 * 16
 wSummaryScreenPage:: db
 wSummaryScreenMoveCount:: db
+wSummaryMoveSwap:: db
 
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
-ds 14
+ds 13
 assert (@ - STARTOF("Misc 1326")) % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10
@@ -1220,7 +1221,7 @@ wBattleTransitionSineWaveOffset::
 wBattleTransitionSpinQuadrant:: db
 
 NEXTU
-; stats screen
+; summary screen
 wSummaryScreenFlags:: db
 
 NEXTU

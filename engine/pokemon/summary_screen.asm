@@ -8,10 +8,8 @@
 ; * Orange page: Nature and character on right, met info on bottom
 ; * Egg page:    Blanked status info and vague egg hatch time information
 
-; TODO allow swapping move order
 ; TODO replace move learning page
-; TODO remove moves screen (by replacing it properly)
-; TODO fix artifacts when exiting PC or in battle summary
+; TODO fix artifacts when exiting PC
 
 SummaryScreenInit:
 	ldh a, [hMapAnims]
@@ -80,8 +78,7 @@ SummaryScreenInit:
 	ld [hli], a
 	ld c, [hl]
 	push bc
-	ld a, HIGH(LCDSummaryScreenHideWindow)
-	ld [hl], a
+	ld [hl], HIGH(LCDSummaryScreenHideWindow)
 	ld hl, rIE
 	ld a, [hl]
 	push af
@@ -115,12 +112,12 @@ SummaryScreenInit:
 	ldh [hWY], a
 
 	pop af
-	ld [rIE], a
+	ldh [rIE], a
 
 	pop bc
 	ld hl, hFunctionTarget
-	ld [hl], b
-	inc hl
+	ld a, b
+	ld [hli], a
 	ld [hl], c
 
 	pop bc
@@ -198,7 +195,7 @@ SummaryScreen_InitTiles:
 
 	ld hl, GFX_Summary_Sprites
 	ld de, vTiles0 tile SUMMARY_TILE_OAM_START
-	lb bc, BANK(GFX_Summary_Sprites), 9 * 4
+	lb bc, BANK(GFX_Summary_Sprites), 10 * 4
 	jmp DecompressRequest2bpp
 
 ; Main summary screen event loop
@@ -253,7 +250,7 @@ SummaryScreenLoop:
 
 .a_button
 	ld a, c
-	cp a, SUMMARY_GREEN_PAGE
+	cp SUMMARY_GREEN_PAGE
 	ret nz
 	jmp SummaryScreen_MoveInfoLoop
 
@@ -333,7 +330,7 @@ SummaryScreen_InitMon:
 	ldh [rIE], a
 
 	ld a, 255
-	ld [rLYC], a
+	ldh [rLYC], a
 
 	ld a, [wTempMonSlot]
 	ld [wPartyMenuCursor], a
@@ -372,9 +369,9 @@ SummaryScreen_InitMon:
 	call DecompressRequest2bpp
 	ld a, [wTempMonCaughtBall]
 	and CAUGHT_BALL_MASK
+	add a
 	ld h, 0
 	ld l, a
-	add hl, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -500,7 +497,7 @@ SummaryScreen_InitLayout:
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
-	ld c, 0
+	ld bc, 0
 .objPalettes
 	ld d, 0
 	ld hl, wSummaryScreenTypes
@@ -527,7 +524,7 @@ SummaryScreen_InitLayout:
 	pop bc
 	inc c
 	ld a, 5
-	cp a, c
+	cp c
 	jr nc, .objPalettes
 
 	farcall ApplyOBPals
@@ -593,8 +590,7 @@ SummaryScreen_InitAttrmap:
 	hlcoord 2, 8, wAttrmap
 	lb bc, 3, 3
 	ld a, SUMMARY_PAL_ITEM
-	call FillBoxWithByte
-	ret
+	jmp FillBoxWithByte
 
 SummaryScreen_LoadPage:
 	ld a, [wCurPartySpecies]
@@ -621,7 +617,7 @@ SummaryScreen_LoadPage:
 	jr nz, .loop
 
 	ld c, 20 * SPRITEOAMSTRUCT_LENGTH
-	ld a, 0
+	xor a
 	ld hl, wSummaryScreenOAMSprite04
 	rst ByteFill
 
@@ -737,35 +733,36 @@ INCLUDE "engine/pokemon/summary/egg_page.asm"
 ; See home/lcd.asm
 SummaryScreen_SwitchPage:
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld a, HIGH(wSummaryScreenWindowBuffer)
-	ld [rHDMA1], a
+	ldh [rHDMA1], a
 	ld a, LOW(wSummaryScreenWindowBuffer)
-	ld [rHDMA2], a
+	ldh [rHDMA2], a
 	ld a, HIGH(vBGMap1)
-	ld [rHDMA3], a
+	ldh [rHDMA3], a
 	ld a, LOW(vBGMap1)
-	ld [rHDMA4], a
+	ldh [rHDMA4], a
 
 .lineWait
-	ld a, [rLY]
-	cp a, 84
+	ldh a, [rLY]
+	cp 84
 	jr nz, .lineWait
 	ld a, $80 | 18
-	ld [rHDMA5], a ; HDMA 19 blocks of tiles
+	ldh [rHDMA5], a ; HDMA 19 blocks of tiles
 
+	ld a, SUMMARY_TILE_OAM_PAGE
 	ld hl, wSummaryScreenOAMSprite00TileID
-	ld [hl], SUMMARY_TILE_OAM_PAGE
+	ld [hl], a
 	ld hl, wSummaryScreenOAMSprite01TileID
-	ld [hl], SUMMARY_TILE_OAM_PAGE
+	ld [hl], a
 	ld hl, wSummaryScreenOAMSprite02TileID
-	ld [hl], SUMMARY_TILE_OAM_PAGE
+	ld [hl], a
 	ld hl, wSummaryScreenOAMSprite03TileID
-	ld [hl], SUMMARY_TILE_OAM_PAGE
+	ld [hl], a
 	ld a, [wSummaryScreenFlags]
 	and SUMMARY_FLAGS_PAGE_MASK
-	add a, a
-	add a, a
+	add a
+	add a
 	ld d, 0
 	ld e, a
 	ld hl, wSummaryScreenOAMSprite00TileID
@@ -777,31 +774,31 @@ SummaryScreen_SwitchPage:
 	rst CopyBytes
 
 .copyWait
-	ld a, [rHDMA5]
+	ldh a, [rHDMA5]
 	inc a
 	jr nz, .copyWait
 	inc a ; 1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld a, HIGH(wSummaryScreenWindowBuffer + $10)
-	ld [rHDMA1], a
+	ldh [rHDMA1], a
 	ld a, LOW(wSummaryScreenWindowBuffer + $10)
-	ld [rHDMA2], a
+	ldh [rHDMA2], a
 	ld a, HIGH(vBGMap3)
-	ld [rHDMA3], a
+	ldh [rHDMA3], a
 	ld a, LOW(vBGMap3)
-	ld [rHDMA4], a
+	ldh [rHDMA4], a
 
 	call .WaitUntilHBlank
 	ld a, $80 | 18
-	ld [rHDMA5], a ; HDMA 19 blocks of attributes
+	ldh [rHDMA5], a ; HDMA 19 blocks of attributes
 
 .l128
-	ld a, [rLY]
-	cp a, 128
+	ldh a, [rLY]
+	cp 128
 	jr nz, .l128
 
 	ld a, 10
-	ld [rLYC], a
+	ldh [rLYC], a
 	ld a, 2
 	ld [wSummaryScreenStep], a
 	ld a, LOW(LCDSummaryScreenShowWindow)
@@ -824,7 +821,7 @@ SummaryScreen_SwitchPage:
 	ld b, 0
 	ld a, [wSummaryScreenFlags]
 	and SUMMARY_FLAGS_PAGE_MASK
-	sla a
+	add a
 	ld c, a
 	add hl, bc
 	ld a, [hli]
@@ -847,8 +844,8 @@ SummaryScreen_SwitchPage:
 	call .CopyPalettes
 
 .l60
-	ld a, [rLY]
-	cp a, 62
+	ldh a, [rLY]
+	cp 62
 	jr nc, .l60
 	
 	ld c, 1 * 2
@@ -856,7 +853,7 @@ SummaryScreen_SwitchPage:
 	call .WaitUntilHBlank
 	ld a, 1 << rBGPI_AUTO_INCREMENT
 	ldh [rBGPI], a
-	jr .CopyPalettes
+	assert @ == .CopyPalettes, "Can't fallthrough to .CopyPalettes" ; fallthrough
 
 ; copies c palettes during hblanks
 ; assumed to be called durring hblank
@@ -1065,15 +1062,15 @@ SummaryScreen_UpdateTabTitle:
 ; d  = attributes
 ; hl = destination
 SummaryScreen_PlaceTypeOBJ:
-	sla a
-	sla a
+	add a
+	add a
 	ld e, a
 rept 4
 	ld a, c
 	ld [hli], a
 	ld a, b
 	ld [hli], a
-	add a, 8
+	add 8
 	ld b, a
 	ld a, e
 	inc e
@@ -1098,10 +1095,9 @@ SummaryScreen_PlaceTypeBG:
 
 ; b = x
 ; c = y
-SummaryScreen_PlaceArrow:
-	ld hl, wSummaryScreenOAMSprite20
-	ld d, SUMMARY_TILE_OAM_ARROW
-	ld e, $6
+SummaryScreen_PlaceSwapArrow:
+	ld hl, wSummaryScreenOAMSprite24
+	lb de, SUMMARY_TILE_OAM_SWAP_ARROW, SUMMARY_PAL_BOTTOM_ARROW
 .arrowLoop
 	ld a, c
 	ld [hli], a ; y
@@ -1112,20 +1108,52 @@ SummaryScreen_PlaceArrow:
 	ld a, e
 	ld [hli], a ; attr
 	ld a, 8
-	add a, b
+	add b
+	ld b, a
+	inc d
+	ld a, SUMMARY_TILE_OAM_SWAP_ARROW + 4
+	cp d
+	ret z
+	ld a, SUMMARY_TILE_OAM_SWAP_ARROW + 2
+	cp d
+	jr nz, .arrowLoop
+	ld a, b
+	sub 16
+	ld b, a
+	ld a, 8
+	add c
+	ld c, a
+	jr .arrowLoop
+
+; b = x
+; c = y
+SummaryScreen_PlaceArrow:
+	ld hl, wSummaryScreenOAMSprite20
+	lb de, SUMMARY_TILE_OAM_ARROW, SUMMARY_PAL_TOP_ARROW
+.arrowLoop
+	ld a, c
+	ld [hli], a ; y
+	ld a, b
+	ld [hli], a ; x
+	ld a, d
+	ld [hli], a ; tile
+	ld a, e
+	ld [hli], a ; attr
+	ld a, 8
+	add b
 	ld b, a
 	inc d
 	ld a, SUMMARY_TILE_OAM_ARROW + 4
-	cp a, d
+	cp d
 	ret z
 	ld a, SUMMARY_TILE_OAM_ARROW + 2
-	cp a, d
+	cp d
 	jr nz, .arrowLoop
 	ld a, b
-	sub a, 16
+	sub 16
 	ld b, a
 	ld a, 8
-	add a, c
+	add c
 	ld c, a
 	inc e
 	jr .arrowLoop

@@ -4449,6 +4449,8 @@ BattleMenuPKMN_Loop:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
+	call GetMonBackpic
+	call GetMonFrontpic
 	call _LoadStatusIcons
 	call GetMonBackpic
 	call CloseWindow

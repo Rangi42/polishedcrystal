@@ -17,32 +17,10 @@ SummaryScreen_GreenPage:
 	hlcoord 5, 9
 	ld [hl], a
 
-	ld hl, wTempMonMoves
-	ld de, wListMoves_MoveIndicesBuffer
-	ld bc, NUM_MOVES
-	rst CopyBytes
-	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
-	ld a, BG_MAP_WIDTH * 2
-	ld [wBuffer1], a
-	predef ListMoves
-	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
-	ld a, BG_MAP_WIDTH * 2
-	ld [wBuffer1], a
-	predef ListMovePP
+	call .PrintMoves
 
-for n, NUM_MOVES
-	ld a, [wTempMonMoves + n]
-	and a
-	jr z, .moves_done
-	ld a, [wSummaryScreenTypes + 2 + n]
-	ld d, (2 + n) | 8
-	lb bc, 72, 41 + n * 20
-	ld hl, wSummaryScreenOAMSprite04 + n * 4 * SPRITEOAMSTRUCT_LENGTH
-	call SummaryScreen_PlaceTypeOBJ
-	debgcoord 0, 1 + n * 2, wSummaryScreenWindowBuffer
-	call SummaryScreen_PlaceTypeBG
-endr
-.moves_done
+	ld a, -1
+	ld [wSummaryMoveSwap], a
 .PlaceAInfo:
 	lb bc, 132, SUMMARY_TILE_OAM_A_INFO
 	ld hl, wSummaryScreenOAMSprite20
@@ -59,7 +37,7 @@ endr
 	add b
 	ld b, a
 	inc c
-	cp a, 132 + 8 * SPRITEOAMSTRUCT_LENGTH
+	cp 132 + 8 * SPRITEOAMSTRUCT_LENGTH
 	jr nz, .aInfoLoop
 	ret
 
@@ -118,15 +96,77 @@ endr
 .ThreeDashes:
 	db "---@"
 
+.PrintMoves
+	; Clear move names
+	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
+	ld de, 64 - 12
+	ld a, " "
+	ld bc, 12
+	rst ByteFill
+	ld c, 12
+	add hl, de
+	rst ByteFill
+	ld c, 12
+	add hl, de
+	rst ByteFill
+	ld c, 12
+	add hl, de
+	rst ByteFill
+
+	ld hl, wTempMonMoves
+	ld de, wListMoves_MoveIndicesBuffer
+	ld bc, NUM_MOVES
+	rst CopyBytes
+	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
+	ld a, BG_MAP_WIDTH * 2
+	ld [wBuffer1], a
+	predef ListMoves
+	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
+	ld a, BG_MAP_WIDTH * 2
+	ld [wBuffer1], a
+	predef ListMovePP
+
+for n, NUM_MOVES
+	ld a, [wTempMonMoves + n]
+	and a
+	ret z
+	ld a, [wSummaryScreenTypes + 2 + n]
+	ld d, (2 + n) | 8
+	lb bc, 72, 41 + n * 20
+	ld hl, wSummaryScreenOAMSprite04 + n * 4 * SPRITEOAMSTRUCT_LENGTH
+	call SummaryScreen_PlaceTypeOBJ
+	debgcoord 0, 1 + n * 2, wSummaryScreenWindowBuffer
+	call SummaryScreen_PlaceTypeBG
+endr
+	ret
+
 ; a = move
 .ShowMove:
 	push af
 	ld e, a
+	ld a, [wSummaryMoveSwap]
+	cp a, e
+
+	jr z, .no_swap
+	inc a
+	jr z, .no_swap
+	dec a
 	ld hl, 0
 	ld bc, 20
 	call AddNTimes
 	ld a, 31
-	add a, l
+	add l
+	ld c, a
+	ld b, 58
+	call SummaryScreen_PlaceSwapArrow
+.no_swap 
+	pop af
+	push af
+	ld hl, 0
+	ld bc, 20
+	call AddNTimes
+	ld a, 31
+	add l
 	ld c, a
 	ld b, 58
 	call SummaryScreen_PlaceArrow
@@ -146,9 +186,9 @@ endr
 
 	ld hl, Moves + MOVE_CATEGORY
 	call GetCurMoveProperty
-	add a, a
+	add a
 	push af ; keep doubled category for later
-	add a, a
+	add a
 	ld b, 0
 	ld c, a
 	ld hl, CategoryIconPals
@@ -168,7 +208,7 @@ endr
 	ldh [rSVBK], a
 
 	pop af ; get category back
-	add a, SUMMARY_TILE_CATEGORY_START
+	add SUMMARY_TILE_CATEGORY_START
 	hlcoord 1, 13
 	ld [hli], a
 	inc a
@@ -241,6 +281,8 @@ SummaryScreen_MoveInfoJoypad:
 	jr nz, .b_button
 	bit A_BUTTON_F, a
 	jr nz, .a_button
+	bit SELECT_F, a
+	jr nz, .select
 	bit D_UP_F, a
 	jr nz, .d_up
 	bit D_DOWN_F, a
@@ -250,7 +292,25 @@ SummaryScreen_MoveInfoJoypad:
 	ld b, 0
 	jr .adjust_move_index
 .a_button
+.select
+	ld a, [wSummaryMoveSwap]
+	inc a
+	jr nz, .swap_moves
+	ld a, [wSummaryScreenPage]
+	rrca
+	rrca
+	and %00000111
+	ld [wSummaryMoveSwap], a
+	ret
 .b_button
+	ld a, [wSummaryMoveSwap]
+	inc a
+	jr z, .quit
+	ld a, -1
+	ld [wSummaryMoveSwap], a
+	call SummaryScreen_ClearSwapArrow
+	jmp SummaryScreen_UpdateGFX
+.quit
 	ld a, SUMMARY_TILE_OAM_ITEM_TITLE
 	call SummaryScreen_UpdateTabTitle
 	call SummaryScreen_GreenPage.PlaceItemText
@@ -267,7 +327,7 @@ SummaryScreen_MoveInfoJoypad:
 .adjust_move_index
 	ld a, [wSummaryScreenMoveCount]
 	dec a
-	cp a, c
+	cp c
 	jr nc, .set_move_index
 	ld c, b
 .set_move_index
@@ -276,14 +336,81 @@ SummaryScreen_MoveInfoJoypad:
 	call SummaryScreen_GreenPage.ShowMove
 	call SummaryScreen_UpdateGFX
 	pop af
-	sla a
-	sla a
+	add a
+	add a
 	and %00011100
 	ld c, a
 	ld a, [wSummaryScreenPage]
 	and %11100011
-	or a, c
+	or c
 	ld [wSummaryScreenPage], a
+	ret
+.swap_moves
+	dec a ; back to original value
+	ld b, a
+
+	ld a, BANK(wTempMonMoves)
+	ldh [rSVBK], a
+
+	ld a, [wSummaryScreenPage]
+	rrca
+	rrca
+	and %00000111
+	push af
+	cp a, b
+	jr z, .end_swap
+	ld c, a
+	push bc
+	ld hl, wTempMonMoves
+	call .swap_addresses
+	pop bc
+	push bc
+	ld hl, wTempMonPP
+	call .swap_addresses
+	pop bc
+	ld hl, wSummaryScreenTypes + 2
+	call .swap_addresses
+	farcall UpdateStorageBoxMonFromTemp
+	call SummaryScreen_GreenPage.PrintMoves
+	call SummaryScreen_InitLayout.ApplySummaryPalettes
+	call SummaryScreen_SwitchPage
+.end_swap
+	pop af
+	call SummaryScreen_GreenPage.ShowMove
+	ld a, -1
+	ld [wSummaryMoveSwap], a
+	call SummaryScreen_ClearSwapArrow
+	jmp SummaryScreen_UpdateGFX
+; hl = address
+.swap_addresses:
+	ld d, h
+	ld e, l
+
+	ld a, b
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	ld a, c
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a
+
+	ld b, [hl]
+	ld a, [de]
+	ld [hl], a
+	ld a, b
+	ld [de], a
+	ret
+
+SummaryScreen_ClearSwapArrow:
+	ld hl, wSummaryScreenOAMSprite24
+	ld bc, 4 * SPRITEOAMSTRUCT_LENGTH
+	rst ByteFill
 	ret
 
 SummaryScreen_UpdateGFX:
@@ -291,5 +418,4 @@ SummaryScreen_UpdateGFX:
 	ld de, wShadowOAM
 	ld bc, wShadowOAMEnd - wShadowOAM
 	rst CopyBytes
-	farcall HDMATransferTileMapToWRAMBank3
-	ret
+	farjp HDMATransferTileMapToWRAMBank3

@@ -82,7 +82,7 @@ LCDSummaryScreenScrollBackground::
 	bit rSTAT_LYC_CMP, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [rSCY]
-	add a, 4
+	add 4
 	ldh [rSCY], a
 	jr LCDSummaryScreenProgress
 

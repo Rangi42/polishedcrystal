@@ -14,8 +14,7 @@ SummaryScreen_PinkPage:
 	hlbgcoord 0, 5, wSummaryScreenWindowBuffer
 	ld [hl], e
 	hlbgcoord 16, 5, wSummaryScreenWindowBuffer
-	ld a, SUMMARY_PAL_SHINY_POKERUS
-	ld [hl], a
+	ld [hl], SUMMARY_PAL_SHINY_POKERUS
 .pokerusDone
 	; Place shiny
 	ld bc, wTempMonShiny
@@ -102,7 +101,7 @@ SummaryScreen_PinkPage:
 	ld a, [wBaseType1]
 	ld e, a
 	ld a, [wBaseType2]
-	cp a, e
+	cp e
 	jr z, .doneTypes
 	ld d, 1 | 8
 	lb bc, 104, 76
@@ -169,9 +168,7 @@ SummaryScreen_PinkPage:
 	and CAUGHT_BALL_MASK
 	rst AddNTimes
 	ld de, wSummaryScreenPals palette SUMMARY_PAL_POKEBALL
-	farcall LoadPalette_White_Col1_Col2_Black
-
-	ret
+	farjp LoadPalette_White_Col1_Col2_Black
 
 .PrintNextLevel:
 	ld a, [wTempMonLevel]

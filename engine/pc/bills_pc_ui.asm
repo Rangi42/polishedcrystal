@@ -1548,7 +1548,7 @@ BillsPC_MenuJumptable:
 
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
-	farcall _OpenPartySummary
+	farcall _OpenTempmonSummary
 	call BillsPC_MoveCursorAfterStatScreen
 	jmp BillsPC_ReturnFromTransistion
 
@@ -3608,6 +3608,8 @@ BillsPC_RestoreUI:
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 
+	ld a, 71
+	ldh [rLYC], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
 

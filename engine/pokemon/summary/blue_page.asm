@@ -169,7 +169,7 @@ SummaryScreen_ColorNatures:
 	push hl
 	farcall GetNatureStatMultiplier
 	pop hl
-	cp a, 10
+	cp 10
 	ret z
 	ld a, SUMMARY_PAL_NATURE_UP
 	jr nc, .got_pal

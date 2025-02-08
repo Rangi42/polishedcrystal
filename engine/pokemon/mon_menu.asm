@@ -722,10 +722,14 @@ TakeMail:
 	text_end
 
 OpenPartySummary:
+	call OpenTempmonSummary
+	jmp ReturnToMapFromSubmenu
+
+OpenTempmonSummary:
 ; Stats screen for partymon in wCurPartyMon.
 	call PreparePartyTempMon
 	; fallthrough
-_OpenPartySummary:
+_OpenTempmonSummary:
 ; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
 	call LoadStandardMenuHeader
 	call ClearSprites
