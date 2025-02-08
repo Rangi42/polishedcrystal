@@ -20,7 +20,6 @@ Route16West_MapScriptHeader:
 	itemball_event 42, 16, METRONOME_I, 1, EVENT_ROUTE_16_WEST_METRONOME
 	itemball_event 50,  3, PP_UP, 1, EVENT_ROUTE_16_WEST_PP_UP
 	itemball_event 21,  4, MAX_REVIVE, 1, EVENT_ROUTE_16_WEST_MAX_REVIVE
-	cuttree_event  3,  9, EVENT_ROUTE_16_WEST_CUT_TREE_1
 	cuttree_event 57,  4, EVENT_ROUTE_16_WEST_CUT_TREE_2
 
 GenericTrainerLassGina:
