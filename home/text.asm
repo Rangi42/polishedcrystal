@@ -367,7 +367,11 @@ _PlaceBattleNickname:
 	rst PlaceString
 	ld h, b
 	ld l, c
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
 	ld de, wEnemyMonNickname
+	jr nz, PlaceCommandCharacter
+	ld de, GhostNicknameText
 	jr PlaceCommandCharacter
 
 .EnemyText:
@@ -376,6 +380,9 @@ SpaceText::
 	db " " ; fallthrough, no "@"
 EmptyString::
 	db "@"
+
+GhostNicknameText:
+	db "Ghost@"
 
 PlaceEnemysName::
 	push de

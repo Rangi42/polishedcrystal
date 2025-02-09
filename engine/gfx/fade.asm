@@ -20,6 +20,21 @@ OWFadePalettesInit::
 	ldh [rSVBK], a
 	ret
 
+CancelOWFadePalettes::
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
+	xor a
+	ld [wPalFadeDelayFrames], a
+	ld [wPalFadeDelay], a
+	farcall ApplyPals
+	ld hl, wPalFlags
+	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
+	pop af
+	ldh [rSVBK], a
+	ret
+
 OWFadePalettesStep::
 	ldh a, [rSVBK]
 	push af

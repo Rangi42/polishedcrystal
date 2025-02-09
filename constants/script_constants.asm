@@ -142,6 +142,8 @@ DEF BGEVENT_ITEM EQU NUM_BGEVENTS
 	const OBJECTTYPE_GENERICTRAINER
 	const OBJECTTYPE_POKEMON
 	const OBJECTTYPE_COMMAND
+	const OBJECTTYPE_SCRIPT_NOCLICKSFX ; does not play click sound
+	const OBJECTTYPE_DONOTHING ; does not play click sound
 DEF NUM_OBJECT_TYPES EQU const_value
 
 ; elevfloor macro values

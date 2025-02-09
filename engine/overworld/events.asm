@@ -545,7 +545,6 @@ TryObjectEvent:
 	farcall CheckFacingObject
 	ret nc
 
-	call PlayTalkObject
 	ldh a, [hObjectStructIndexBuffer]
 	call GetObjectStruct
 	ld hl, OBJECT_MAP_OBJECT_INDEX
@@ -558,9 +557,16 @@ TryObjectEvent:
 	add hl, bc
 	ld a, [hl]
 
-	cp NUM_OBJECT_TYPES
+	cp NUM_OBJECT_TYPES - 1
 	ret nc
 
+	cp OBJECTTYPE_SCRIPT_NOCLICKSFX
+	jr z, .skip_click_sfx
+
+	push af
+	call PlayTalkObject
+	pop af
+.skip_click_sfx
 	call StackJumpTable
 
 ObjectEventTypeArray:
@@ -571,7 +577,8 @@ ObjectEventTypeArray:
 	dw .trainer  ; OBJECTTYPE_GENERICTRAINER
 	dw .pokemon  ; OBJECTTYPE_POKEMON
 	dw .command  ; OBJECTTYPE_COMMAND
-	assert_table_length NUM_OBJECT_TYPES
+	dw .script   ; OBJECTTYPE_SCRIPT_NOCLICKSFX
+	assert_table_length NUM_OBJECT_TYPES - 1
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER

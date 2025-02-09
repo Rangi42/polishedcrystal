@@ -1346,6 +1346,10 @@ endr
 	and a
 	jr nz, .enemy_extras_done
 
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr z, .skip_set_seen_mon
+
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -1354,6 +1358,7 @@ endr
 	call SetSeenMon
 	pop bc
 
+.skip_set_seen_mon
 	ld a, [wBaseExp]
 	ld [wEnemyMonBaseExp], a
 
@@ -3965,7 +3970,7 @@ DrawEnemyHUD:
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	ld de, .ghost_nickname
+	ld de, GhostNicknameText
 	jr z, .got_nickname
 	ld de, wEnemyMonNickname
 .got_nickname
@@ -4086,9 +4091,6 @@ endr
 	ld [hli], a
 	ld [hl], $58
 	jmp FinishBattleAnim
-
-.ghost_nickname:
-	db "Ghost@"
 
 BattleAnimateHPBar:
 	predef AnimateHPBar
@@ -7849,6 +7851,13 @@ BattleIntro:
 	call StdBattleTextbox
 	ld a, BATTLETYPE_NORMAL
 	ld [wBattleType], a
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wEnemyMonForm]
+	ld b, a
+	push bc
+	call SetSeenMon
+	pop bc
 .skip_ghost_reveal
 	ld hl, rLCDC
 	set rLCDC_WINDOW_TILEMAP, [hl]
