@@ -754,7 +754,7 @@ LinkTradeOTPartymonMenuLoop:
 	jmp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
-	call LinkMonStatsScreen
+	call LinkMonSummaryScreen
 	call InitLinkTradePalMap
 	call ApplyAttrAndTilemapInVBlank
 	jmp LinkTradePartiesMenuMasterLoop
@@ -786,7 +786,7 @@ LinkTradeOTPartymonMenuLoop:
 	jmp z, LinkTradePartiesMenuMasterLoop
 	jmp LinkTradeOTPartymonMenuCheckCancel
 
-LinkMonStatsScreen:
+LinkMonSummaryScreen:
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
@@ -834,7 +834,7 @@ LinkTradePartymonMenuLoop:
 	and a
 	jr z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
-	jmp nz, LinkTrade_TradeStatsMenu
+	jmp nz, LinkTrade_TradeSummaryMenu
 	bit D_DOWN_F, a
 	jr z, .not_d_down
 	ld a, [wMenuCursorY]
@@ -1030,7 +1030,7 @@ LinkTradeMenu:
 	scf
 	ret
 
-LinkTrade_TradeStatsMenu:
+LinkTrade_TradeSummaryMenu:
 	call LoadTileMapToTempTileMap
 	ld a, [wMenuCursorY]
 	push af
@@ -1038,7 +1038,7 @@ LinkTrade_TradeStatsMenu:
 	lb bc, 1, 18
 	call LinkTextbox
 	hlcoord 2, 16
-	ld de, .String_Stats_Trade
+	ld de, .String_Summary_Trade
 	rst PlaceString
 	call Link_WaitBGMap
 
@@ -1067,7 +1067,7 @@ LinkTrade_TradeStatsMenu:
 	bit D_RIGHT_F, a
 	jr nz, .d_right
 	bit B_BUTTON_F, a
-	jr z, .show_stats
+	jr z, .show_summary
 .b_button
 	pop af
 	ld [wMenuCursorY], a
@@ -1102,10 +1102,10 @@ LinkTrade_TradeStatsMenu:
 	jr nz, .b_button
 	jr .try_trade
 
-.show_stats
+.show_summary
 	pop af
 	ld [wMenuCursorY], a
-	call LinkMonStatsScreen
+	call LinkMonSummaryScreen
 	call SafeLoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
@@ -1194,8 +1194,8 @@ LinkTrade_TradeStatsMenu:
 	text_far _LinkTradeCantBattleText
 	text_end
 
-.String_Stats_Trade:
-	text "Stats     Trade"
+.String_Summary_Trade:
+	text "Summary   Trade"
 	done
 
 .Text_Abnormal:

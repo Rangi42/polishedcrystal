@@ -23,7 +23,7 @@ SummaryScreenInit:
 	ld c, a
 
 	push bc
-	call ClearBGPalettes
+	call ClearPalettes
 	call ClearTileMap
 	farcall WipeAttrMap
 
@@ -45,6 +45,10 @@ SummaryScreenInit:
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
+	ld hl, wBGPals1
+	ld a, $ff
+	ld bc, 8 palettes
+	rst ByteFill
 	ld hl, .SummaryScreenObjPalettes
 	ld bc, 8 palettes
 	ld de, wOBPals1
@@ -100,6 +104,7 @@ SummaryScreenInit:
 	call SummaryScreenLoop
 	; Clean up
 
+	call ClearSprites
 	call ClearBGPalettes
 	call ClearTileMap
 

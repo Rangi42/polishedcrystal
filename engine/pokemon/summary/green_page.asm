@@ -294,7 +294,9 @@ SummaryScreen_MoveInfoJoypad:
 .select
 	; Don't swap moves during battle
 	ld a, [wBattleMode]
-	and a
+	ld b, a
+	ld a, [wLinkMode]
+	or b
 	ret nz
 	; TODO support battle swapping?
 	ld a, [wSummaryMoveSwap]
