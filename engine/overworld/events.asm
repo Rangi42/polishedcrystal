@@ -560,9 +560,13 @@ TryObjectEvent:
 	cp NUM_OBJECT_TYPES - 1
 	ret nc
 
+	cp OBJECTTYPE_SCRIPT_NOCLICKSFX
+	jr z, .skip_click_sfx
+
 	push af
 	call PlayTalkObject
 	pop af
+.skip_click_sfx
 	call StackJumpTable
 
 ObjectEventTypeArray:
@@ -573,6 +577,7 @@ ObjectEventTypeArray:
 	dw .trainer  ; OBJECTTYPE_GENERICTRAINER
 	dw .pokemon  ; OBJECTTYPE_POKEMON
 	dw .command  ; OBJECTTYPE_COMMAND
+	dw .script   ; OBJECTTYPE_SCRIPT_NOCLICKSFX
 	assert_table_length NUM_OBJECT_TYPES - 1
 
 .script:
