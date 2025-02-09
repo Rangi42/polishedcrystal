@@ -3970,7 +3970,7 @@ DrawEnemyHUD:
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	ld de, .ghost_nickname
+	ld de, GhostNicknameText
 	jr z, .got_nickname
 	ld de, wEnemyMonNickname
 .got_nickname
@@ -4091,9 +4091,6 @@ endr
 	ld [hli], a
 	ld [hl], $58
 	jmp FinishBattleAnim
-
-.ghost_nickname:
-	db "Ghost@"
 
 BattleAnimateHPBar:
 	predef AnimateHPBar
