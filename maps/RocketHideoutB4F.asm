@@ -487,7 +487,10 @@ RocketHideoutB4FTeacherSerena:
 	checkjustbattled
 	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 .skip_open
 	jumptextfaceplayer .AfterText
@@ -534,7 +537,10 @@ RocketHideoutB4FSuperNerdNolan:
 	checkjustbattled
 	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 .skip_open
 	jumptextfaceplayer .AfterText
