@@ -142,8 +142,9 @@ DEF BGEVENT_ITEM EQU NUM_BGEVENTS
 	const OBJECTTYPE_GENERICTRAINER
 	const OBJECTTYPE_POKEMON
 	const OBJECTTYPE_COMMAND
-	const OBJECTTYPE_SCRIPT_NOCLICKSFX ; does not play click sound
-	const OBJECTTYPE_DONOTHING ; does not play click sound
+DEF SILENT_OBJECT_TYPES EQU const_value ; types below do not call PlayTalkObject to play SFX_READ_TEXT_2
+	const OBJECTTYPE_SCRIPT_SILENT
+	const OBJECTTYPE_DONOTHING
 DEF NUM_OBJECT_TYPES EQU const_value
 
 ; elevfloor macro values
