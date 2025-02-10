@@ -1422,6 +1422,9 @@ AutoHeadbuttScript:
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
+	; if there's no possibility of a encounter,
+	; then donn't allow farming for items.
+	ifequalfwd TREEMON_NO_ENCOUNTER_SET, .no_item
 	iffalsefwd .no_battle
 	randomwildmon
 	startbattle

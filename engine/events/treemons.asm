@@ -114,6 +114,11 @@ RockItemEncounter:
 
 INCLUDE "data/items/rock_items.asm"
 
+	const_def
+	const TREEMON_NO_ENCOUNTER
+	const TREEMON_ENCOUNTER
+	const TREEMON_NO_ENCOUNTER_SET
+
 TreeMonEncounter:
 	xor a
 	ld [wTempWildMonSpecies], a
@@ -121,7 +126,7 @@ TreeMonEncounter:
 
 	ld hl, TreeMonMaps
 	call GetTreeMonSet
-	jr nc, .no_battle
+	jr nc, .no_tree_mon_set
 
 	call GetTreeMons
 	jr nc, .no_battle
@@ -131,12 +136,17 @@ TreeMonEncounter:
 
 	ld a, BATTLETYPE_TREE
 	ld [wBattleType], a
-	ld a, 1
+	ld a, TREEMON_ENCOUNTER
 	ldh [hScriptVar], a
 	ret
 
 .no_battle
-	xor a
+	xor a ; TREEMON_NO_ENCOUNTER
+	ldh [hScriptVar], a
+	ret
+
+.no_tree_mon_set
+	ld a, TREEMON_NO_ENCOUNTER_SET
 	ldh [hScriptVar], a
 	ret
 
