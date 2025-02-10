@@ -19,7 +19,7 @@ PredefPointers::
 	add_predef ListMoves
 	add_predef ListMovePP
 	add_predef GetGender
-	add_predef StatsScreenInit
+	add_predef SummaryScreenInit
 	add_predef DrawPlayerHP
 	add_predef PlayBattleAnim
 	add_predef PartyMonItemName

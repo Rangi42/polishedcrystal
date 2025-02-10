@@ -381,11 +381,15 @@ EnbyPokegearInterfacePalette:
 INCLUDE "gfx/pokegear/pokegear_x.pal"
 
 _CGB_StatsScreenHPPals:
-	ld de, wBGPals1
-	ld hl, HPBarInteriorPals
-	call LoadPalette_White_Col1_Col2_Black
-
+	ld de, wBGPals1 palette 1
 	ld a, [wCurPartySpecies]
+	ld b, a
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr z, .done
+	ld b, EGG
+.done
+	ld a, b
 	ld bc, wTempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
@@ -393,60 +397,20 @@ _CGB_StatsScreenHPPals:
 	call VaryBGPal1ByTempMonDVs
 	pop de
 
-	ld hl, GenderAndExpBarPals
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld hl, StatsScreenPals
-	ld c, 4 palettes
-	call LoadPalettes
-
-	ld hl, CaughtBallPals
-	ld bc, $4
-	ld a, [wTempMonCaughtBall]
-	and CAUGHT_BALL_MASK
+	ld hl, ItemIconPalettes
+	ld bc, 2 colors
+	ld a, [wTempMonItem]
 	rst AddNTimes
-	ld de, wBGPals1 palette 7
+	ld de, wSummaryScreenPals palette 2
 	call LoadPalette_White_Col1_Col2_Black
 
-	call WipeAttrMap
+	ld hl, GenderAndExpBarPals
+	ld de, wSummaryScreenPals palette 6
+	call LoadPalette_White_Col1_Col2_Black
 
-	hlcoord 0, 0, wAttrmap
-	lb bc, 8, SCREEN_WIDTH
-	ld a, $1
-	call FillBoxWithByte
-
-	hlcoord 18, 0, wAttrmap
-	ld [hl], $2
-
-	hlcoord 11, 5, wAttrmap
-	lb bc, 2, 2
-	ld a, $3
-	call FillBoxWithByte
-
-	hlcoord 13, 5, wAttrmap
-	lb bc, 2, 2
-	ld a, $4
-	call FillBoxWithByte
-
-	hlcoord 15, 5, wAttrmap
-	lb bc, 2, 2
-	ld a, $5
-	call FillBoxWithByte
-
-	hlcoord 17, 5, wAttrmap
-	lb bc, 2, 2
-	ld a, $6
-	call FillBoxWithByte
-
-	hlcoord 8, 6, wAttrmap
-	lb bc, 1, 1
-	ld a, $7
-	call FillBoxWithByte
+	farcall SummaryScreen_InitAttrmap
 
 	jmp _CGB_FinishLayout
-
-StatsScreenPals:
-INCLUDE "gfx/stats/pages.pal"
 
 _CGB_Pokedex:
 	call _CGB_Pokedex_PrepareOnly

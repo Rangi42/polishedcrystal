@@ -4425,20 +4425,9 @@ BattleMenuPKMN_Loop:
 	jmp z, TryPlayerSwitch
 	dec a ; STATS
 	jr z, .Stats
-	dec a ; MOVES
-	jr z, .Moves
 	dec a ; CANCEL
 	jr z, .Cancel
 	jr .loop
-
-.Moves:
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
-	jr nz, .Cancel
-	farcall ManagePokemonMoves
-	call GetMonBackpic
 
 .Cancel: ; no-optimize stub jump
 	jr BattleMenuPKMN_Loop
@@ -4451,6 +4440,8 @@ BattleMenuPKMN_Loop:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
+	call GetMonBackpic
+	call GetMonFrontpic
 	call _LoadStatusIcons
 	call GetMonBackpic
 	call CloseWindow
@@ -4499,21 +4490,20 @@ BattleMenuPKMN_Loop:
 
 .MenuHeader:
 	db $00 ; flags
-	menu_coords 11, 9, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db $c0 ; flags
-	db 4 ; items
+	db 3 ; items
 	db "Switch@"
-	db "Stats@"
-	db "Moves@"
+	db "Summary@"
 	db "Cancel@"
 
 .EggMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 11, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .EggMenuData
 	db 1 ; default option
 
@@ -4521,7 +4511,7 @@ BattleMenuPKMN_Loop:
 	db $c0 ; flags
 	db 3 ; items
 	db "Switch@"
-	db "Stats@"
+	db "Summary@"
 	db "Cancel@"
 
 Battle_StatsScreen:
@@ -4535,7 +4525,7 @@ Battle_StatsScreen:
 	ld bc, $31 tiles
 	rst CopyBytes
 	call EnableLCD
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	call DisableLCD
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31

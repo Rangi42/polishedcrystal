@@ -170,6 +170,7 @@ VBlank0::
 	ld [wTextDelayFrames], a
 .noDelay2
 	call Joypad
+	ei
 	; fallthrough
 
 VBlank2::
