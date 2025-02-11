@@ -306,7 +306,7 @@ GetWalkingMonSprite:
 	ld a, [wFollowerPartyNum]
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1DVs
-	call AddNTimes
+	rst AddNTimes
 ;	predef GetUnownLetter
 ;	ld a, [wUnownLetter]
 	dec a

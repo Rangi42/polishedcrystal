@@ -6,7 +6,7 @@ Special_BillsGrandfather:
 	ld a, [wCurForm]
 	ldh [hScriptVar+1], a
 	call GetPartyPokemonName
-	jmp CopyPokemonName_Buffer1_Buffer3
+	farjp CopyPokemonName_Buffer1_Buffer3
 
 .cancel
 	xor a
