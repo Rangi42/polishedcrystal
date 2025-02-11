@@ -210,7 +210,7 @@ PlacePrinterStatusString:
 	rst PlaceString
 	hlcoord 2, 15
 	ld de, String_PressBToCancel
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	xor a
