@@ -153,7 +153,7 @@ endr
 	dec a
 	ld hl, 0
 	ld bc, 20
-	call AddNTimes
+	rst AddNTimes
 	ld a, 31
 	add l
 	ld c, a
@@ -164,7 +164,7 @@ endr
 	push af
 	ld hl, 0
 	ld bc, 20
-	call AddNTimes
+	rst AddNTimes
 	ld a, 31
 	add l
 	ld c, a

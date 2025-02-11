@@ -4426,8 +4426,8 @@ BattleMenuPKMN_Loop:
 	dec a ; STATS
 	jr z, .Stats
 	dec a ; CANCEL
-	jr z, .Cancel
-	jr .loop
+	jr nz, .loop
+	; fallthrough
 
 .Cancel: ; no-optimize stub jump
 	jr BattleMenuPKMN_Loop

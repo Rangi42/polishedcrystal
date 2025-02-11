@@ -20,10 +20,10 @@ SummaryScreen_OrangePage:
 .PlaceNatureInfo:
 	ld de, .NatureString
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
-	call PlaceString
+	rst PlaceString
 	ld de, .CharacterString
 	hlbgcoord 0, 2, wSummaryScreenWindowBuffer
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonNature]
 	ld b, a
 	call GetNature

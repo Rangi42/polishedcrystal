@@ -588,16 +588,17 @@ TryObjectEvent:
 	add hl, bc
 	ld a, [hl]
 
-	cp NUM_OBJECT_TYPES - 1
+	; failsafe
+	cp NUM_OBJECT_TYPES
 	ret nc
 
-	cp OBJECTTYPE_SCRIPT_NOCLICKSFX
+	cp SILENT_OBJECT_TYPES
 	jr z, .skip_click_sfx
-
 	push af
 	call PlayTalkObject
 	pop af
 .skip_click_sfx
+
 	call StackJumpTable
 
 ObjectEventTypeArray:
@@ -608,8 +609,9 @@ ObjectEventTypeArray:
 	dw .trainer  ; OBJECTTYPE_GENERICTRAINER
 	dw .pokemon  ; OBJECTTYPE_POKEMON
 	dw .command  ; OBJECTTYPE_COMMAND
-	dw .script   ; OBJECTTYPE_SCRIPT_NOCLICKSFX
-	assert_table_length NUM_OBJECT_TYPES - 1
+	dw .script   ; OBJECTTYPE_SCRIPT_SILENT
+	dw DoNothing ; OBJECTTYPE_DONOTHING
+	assert_table_length NUM_OBJECT_TYPES
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
