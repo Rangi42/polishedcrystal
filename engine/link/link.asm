@@ -2700,3 +2700,11 @@ InitLinkTradePalMap:
 	dec b
 	jr nz, .row
 	ret
+
+HideCursor:
+	ld hl, wCursorCurrentTile
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld [hl], " "
+	ret

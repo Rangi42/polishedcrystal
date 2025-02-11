@@ -9,12 +9,40 @@ INCLUDE "engine/menus/init_options.asm"
 INCLUDE "engine/pokemon/learn.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
+
+
+SECTION "event happiness egg", ROMX
+
 INCLUDE "engine/events/happiness_egg.asm"
+
+
+SECTION "event shiny ditto", ROMX
+
 INCLUDE "engine/events/shiny_ditto.asm"
+
+
+SECTION "event shuckle", ROMX
+
 INCLUDE "engine/events/shuckle.asm"
+
+
+SECTION "event bills grandfather", ROMX
+
 INCLUDE "engine/events/bills_grandfather.asm"
+
+
+SECTION "event hidden power guru", ROMX
+
 INCLUDE "engine/events/hidden_power_guru.asm"
+
+
+SECTION "event mint tea", ROMX
+
 INCLUDE "engine/events/mint_tea.asm"
+
+
+SECTION "event haircut etc", ROMX
+
 INCLUDE "engine/events/haircut_etc.asm"
 
 
@@ -744,3 +772,9 @@ INCLUDE "audio/music/printer.asm"
 SECTION "LureMenu", ROMX
 
 INCLUDE "engine/menus/lure_menu.asm"
+
+
+SECTION "Following", ROMX
+
+INCLUDE "gfx/following_sprite_pointers.asm"
+INCLUDE "engine/events/follower.asm"

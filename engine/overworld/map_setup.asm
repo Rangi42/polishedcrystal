@@ -276,6 +276,16 @@ CheckObjectFlag:
 	ld a, [hl]
 	and a
 	jr z, .masked
+
+	; TODO: followers appearance
+	; bad hack, but there should be more sophisticated conditions for sprite appearance than event flags...
+	cp SPRITE_FOLLOWER
+	jr nz, .ok
+	ld a, [wPartyCount]
+	and a
+	jr z, .masked
+.ok
+
 	ld hl, MAPOBJECT_EVENT_FLAG
 	add hl, bc
 	ld a, [hli]
@@ -359,6 +369,7 @@ CheckUpdatePlayerSprite:
 .surfing
 	ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
+	ld [wFollowerState], a
 	scf
 	ret
 

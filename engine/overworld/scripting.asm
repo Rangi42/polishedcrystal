@@ -272,6 +272,15 @@ ScriptCommandTable:
 	dw Script_scalltable                 ; d5
 	dw Script_setmapobjectmovedata       ; d6
 	dw Script_setmapobjectpal            ; d7
+	dw Script_freezefollower             ; d8
+	dw Script_unfreezefollower           ; d9
+	dw Script_getfollowerdirection       ; da
+	dw Script_followcry                  ; db
+	dw Script_stowfollower               ; dc
+	dw Script_appearfollower             ; dd
+	dw Script_appearfolloweronestep      ; de
+	dw Script_savefollowercoords         ; df
+	dw Script_silentstowfollower         ; e0
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -1062,6 +1071,9 @@ Script_variablesprite:
 
 Script_appear:
 	call GetScriptByte
+	ld b, a
+Script_appear_skipinput::
+	ld a, b
 	call _CopyObjectStruct
 	ldh a, [hMapObjectIndexBuffer]
 	ld b, 0 ; clear
@@ -1314,17 +1326,14 @@ Script_memcall:
 	ld d, [hl]
 	; fallthrough
 
-ScriptCall:
-; Bug: The script stack has a capacity of 5 scripts, yet there is
-; nothing to stop you from pushing a sixth script.  The high part
-; of the script address can then be overwritten by modifications
-; to wScriptDelay, causing the script to return to the rst/interrupt
-; space.
-
-	push de
+ScriptCall::
 	ld hl, wScriptStackSize
-	ld e, [hl]
+	ld a, [hl]
+	cp 5
+	jr nc, .stack_overflow
+	push de
 	inc [hl]
+	ld e, a
 	ld d, $0
 	ld hl, wScriptStack
 	add hl, de
@@ -1344,6 +1353,10 @@ ScriptCall:
 	ld a, d
 	ldh [hScriptPos + 1], a
 	ret
+
+.stack_overflow
+	ld a, ERR_STACK_OVERFLOW
+	jmp Crash
 
 CallCallback::
 	ldh a, [hScriptBank]
@@ -2276,6 +2289,8 @@ Script_deactivatefacing:
 	jr z, .no_time
 	ld [wScriptDelay], a
 .no_time
+; fallthrough
+DoScriptWait:
 	ld a, SCRIPT_WAIT
 	ld [wScriptMode], a
 	jmp StopScript
@@ -2657,4 +2672,41 @@ Script_setmapobjectpal:
 	add hl, bc
 	call GetScriptByte
 	ld [hl], a
+	ret
+
+Script_freezefollower:
+	farcall _FreezeFollower
+	ret
+
+Script_unfreezefollower:
+	farcall _UnfreezeFollower
+	ret
+
+Script_getfollowerdirection:
+	jmp Script_GetFollowerDirectionFromPlayer
+
+Script_followcry:
+	ld a, [wFollowerSpriteID]
+	jmp PlayCry
+
+Script_stowfollower:
+	farcall _StowFollower
+	jmp DoScriptWait
+
+Script_appearfollower:
+	farcall _AppearFollower
+	jmp DoScriptWait
+
+Script_appearfolloweronestep:
+	farcall _AppearFollowerOneStep
+	jmp DoScriptWait
+
+Script_savefollowercoords:
+	farcall _SaveFollowerCoords
+	ret
+
+Script_silentstowfollower:
+	xor a
+	ld [wScriptDelay], a
+	farcall _SilentStowFollower
 	ret

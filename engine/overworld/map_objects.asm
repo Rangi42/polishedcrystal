@@ -205,6 +205,9 @@ StepTypesJumptable:
 	dw StepFunction_SkyfallTop      ; STEP_TYPE_SKYFALL_TOP
 	dw StepFunction_NPCStairs       ; STEP_TYPE_NPC_STAIRS
 	dw StepFunction_PlayerStairs    ; STEP_TYPE_PLAYER_STAIRS
+	dw StepFunction_PokeballOpening ; 1b
+	dw StepFunction_PokeballClosing ; 1a
+	dw StepFunction_NPCJumpInPlace  ; 1b
 	assert_table_length NUM_STEP_TYPES
 
 CopyNextCoordsTileToStandingCoordsTile:
@@ -340,9 +343,120 @@ GetNextTile:
 	push bc
 	call GetCoordTileCollision
 	pop bc
+	push af
+	call HideFollowerIfNPCBump
+	pop af
+	push af
+	call UpdateFollowerSprite
+	pop af
 	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld [hl], a
+	ret
+
+HideFollowerIfNPCBump:
+	ldh a, [hMapObjectIndexBuffer]
+	cp PLAYER
+	ret z
+	cp FOLLOWER
+	ret z
+	push hl
+	push bc
+	call WillPersonBumpIntoSomeoneElse
+	jr nc, .return
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	cp SPRITE_FOLLOWER
+	jr nz, .return
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	set INVISIBLE_F, [hl]
+	ld hl, wFollowerFlags
+	set FOLLOWER_INVISIBLE_F, [hl]
+	set FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
+.return
+	pop bc
+	pop hl
+	ret
+
+UpdateFollowerSprite:
+	ld e, a
+	ldh a, [hMapObjectIndexBuffer]
+	call CheckFollowerInvisOneStep
+	cp FOLLOWER
+	ld a, e
+	ret nz
+	ld hl, OBJECT_TILE_COLLISION
+	add hl, bc
+	ld d, [hl]
+	push de
+	ld a, d ; previous
+	call GetTilePermission
+	pop de
+	ld d, a
+	push de
+	ld a, e ; next
+	call GetTilePermission
+	pop de
+	cp d
+	ret z
+	and a ; LAND_TILE = 0
+	jr z, .land_tile
+	cp WATER_TILE
+	jr z, .water_tile
+	ret
+
+.land_tile
+	ld hl, wFollowerFlags
+	bit FOLLOWER_IN_POKEBALL_F, [hl]
+	ret z
+	call SpawnPokeballOpening
+	ret
+
+.water_tile
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	set INVISIBLE_F, [hl]
+	ld hl, wFollowerFlags
+	set FOLLOWER_INVISIBLE_F, [hl]
+	set FOLLOWER_IN_POKEBALL_F, [hl]
+	call SpawnPokeballClosing
+	ret
+
+CheckFollowerInvisOneStep:
+	; Although the below could be optimized, it is currently easier to understand.
+	cp PLAYER
+	ret nz
+	ld hl, wFollowerFlags
+	bit FOLLOWER_INVISIBLE_F, [hl]
+	ret z
+	bit FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
+	ret z
+;	push hl
+;	push bc
+;	push de
+;	ld bc, wObject1Struct
+;	call IsObjectStandingOnSomeoneElse
+;	pop de
+;	pop bc
+;	pop hl
+	ret c
+	res FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
+	bit FOLLOWER_IN_POKEBALL_F, [hl]
+	push bc
+	ld bc, wObject1Struct
+	jmp nz, .spawn_pokeball
+	res FOLLOWER_INVISIBLE_F, [hl]
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	res INVISIBLE_F, [hl]
+	pop bc
+	ret
+
+.spawn_pokeball
+	call SpawnPokeballOpening
+	pop bc
 	ret
 
 AddStepVector:
@@ -578,7 +692,10 @@ endr
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
 	dw .MovementTinyWindows          ; SPRITEMOVEFN_TINY_WINDOWS
-	dw .MovementMicrophone          ; SPRITEMOVEFN_MICROPHONE
+	dw .MovementMicrophone           ; SPRITEMOVEFN_MICROPHONE
+	dw .MovementFollowerObj          ; 1c
+	dw .MovementPokeballOpening      ; 1d
+	dw .MovementPokeballClosing      ; 1e
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -696,7 +813,85 @@ endr
 	ld [hl], STANDING
 	ret
 
+.MovementFollowerObj:
+	ld a, [wFollowerFlags]
+	bit FOLLOWER_FROZEN_F, a
+	jr z, .follow_not_exact
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STAND
+	ret
+
+.follow_not_exact
+	call .MoveFollowNotExact
+	ret nc
+	push af
+	ld a, [wFollowerNextMovement]
+	cp FOLLOWERMOVE_NUM_TYPES
+	jr c, .get_step
+	xor a
+.get_step
+	ld e, a
+	ld d, 0
+	ld hl, .step_functions
+	add hl, de
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld [wFollowerNextMovement], a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	pop af
+	jp hl
+
+.step_functions
+	dbw FOLLOWERMOVE_NORMAL,   NormalStep ; FOLLOWERMOVE_NORMAL
+	dbw FOLLOWERMOVE_NORMAL,   SlideStep  ; FOLLOWERMOVE_SLIDE
+	dbw FOLLOWERMOVE_NORMAL,   .BigStep   ; FOLLOWERMOVE_BIG_STEP
+	dbw FOLLOWERMOVE_STILL,    .TurnHead  ; FOLLOWERMOVE_STILL
+	dbw FOLLOWERMOVE_BIG_STEP, .TurnHead  ; FOLLOWERMOVE_PREPARE_JUMP
+
+.BigStep
+; need to modify the speed parameter
+	ld e, a
+	xor a
+	ld [wFollowerNextMovement], a
+	ld a, [wPlayerStepType]
+	cp STEP_TYPE_PLAYER_JUMP
+	jr z, .regular
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	jr z, .biking
+	ld a, [wPlayerTileCollision]
+	cp COLL_ICE
+	jr z, .biking
+.regular
+	ld a, e
+	and $3
+	or STEP_BIKE << 2
+	jmp JumpStep
+
+.biking
+	ld a, e
+	and %00000011
+	or %00001100 ; very big step
+	jmp JumpStep
+
+.TurnHead:
+; TurnHead uses different arguments, so modify it here
+	and %00000011
+	add a
+	add a
+	jmp TurnHead
+
 .FollowNotExact:
+	call .MoveFollowNotExact
+	jmp c, NormalStep
+	ret
+
+.MoveFollowNotExact:
 	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
@@ -740,7 +935,8 @@ endr
 	and %00001100
 	or d
 	pop bc
-	jmp NormalStep
+	scf
+	ret
 
 .standing
 	pop bc
@@ -750,6 +946,7 @@ endr
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
+	and a
 	ret
 
 .MovementBigStanding:
@@ -906,6 +1103,36 @@ endr
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_TRACKING_OBJECT
+	ret
+
+.MovementPokeballOpening:
+	ld hl, OBJECT_RANGE
+	add hl, bc
+	ld [hl], FOLLOWER
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld [hl], 4
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_POKEBALL_OPENING
+	ld hl, wFollowerFlags
+	set FOLLOWER_EXITING_BALL_F, [hl]
+	ret
+
+.MovementPokeballClosing:
+	ld hl, OBJECT_RANGE
+	add hl, bc
+	ld [hl], FOLLOWER
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld [hl], 4
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_POKEBALL_CLOSING
+	ld hl, wFollowerFlags
+	set FOLLOWER_ENTERING_BALL_F, [hl]
 	ret
 
 .MovementEmote:
@@ -1113,6 +1340,168 @@ WaitStep_InPlace:
 	ld [hl], STEP_TYPE_FROM_MOVEMENT
 	ret
 
+PokeballTracking:
+	ld hl, OBJECT_1D
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, OBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	and a
+	ret z
+	ld hl, OBJECT_SPRITE_X
+	add hl, de
+	ld a, [hl]
+	ld hl, OBJECT_SPRITE_X
+	add hl, bc
+	ld [hl], a
+	ld hl, OBJECT_SPRITE_Y
+	add hl, de
+	ld a, [hl]
+	ld hl, OBJECT_SPRITE_Y
+	add hl, bc
+	ld [hl], a
+	ret
+
+StepFunction_PokeballOpening:
+	call Field1cAnonymousJumptable
+.anon_dw
+	dw .Closed
+	dw .Opening
+	dw .Open
+
+.Closed:
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], OW_LEFT
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	jmp nz, PokeballTracking
+	ld [hl], 4
+	call IncrementObjectStructField1c
+	jmp PokeballTracking
+
+.Opening:
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], OW_UP
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	jmp nz, PokeballTracking
+	ld [hl], 4
+	call IncrementObjectStructField1c
+	jmp PokeballTracking
+
+.Open:
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], OW_DOWN
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	jmp nz, PokeballTracking
+	ld hl, OBJECT_1D
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, OBJECT_FLAGS1
+	add hl, de
+	res INVISIBLE_F, [hl]
+	ld hl, wFollowerFlags
+	res FOLLOWER_INVISIBLE_F, [hl]
+	res FOLLOWER_IN_POKEBALL_F, [hl]
+	res FOLLOWER_EXITING_BALL_F, [hl]
+	jmp DeleteMapObject
+
+StepFunction_PokeballClosing:
+	call Field1cAnonymousJumptable
+.anon_dw
+	dw .Open
+	dw .Closing
+	dw .Closed
+
+.Open:
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], OW_DOWN
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	jmp nz, PokeballTracking
+	ld [hl], 4
+	call IncrementObjectStructField1c
+	jmp PokeballTracking
+
+.Closing:
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], OW_UP
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	jmp nz, PokeballTracking
+	ld [hl], 4
+	call IncrementObjectStructField1c
+	jmp PokeballTracking
+
+.Closed:
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], OW_LEFT
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	jmp nz, PokeballTracking
+	ld hl, wFollowerFlags
+	set FOLLOWER_IN_POKEBALL_F, [hl]
+	res FOLLOWER_ENTERING_BALL_F, [hl]
+	jmp DeleteMapObject
+
+StepFunction_NPCJumpInPlace:
+	call Field1cAnonymousJumptable
+.anon_dw
+	dw .Jump
+	dw .Land
+
+.Jump:
+	ld h, 4
+	call UpdateJumpPositionInPlace
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	ret nz
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res OVERHEAD_F, [hl]
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld [hl], 4
+	jmp IncrementObjectStructField1c
+
+.Land:
+	ld h, 4
+	call UpdateJumpPositionInPlace
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	ret nz
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_FROM_MOVEMENT
+	xor a
+	ld hl, OBJECT_SPRITE_Y_OFFSET
+	add hl, bc
+	ld [hl], a
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res HIGH_PRIORITY_F, [hl]
+	ret
+
 StepFunction_NPCJump:
 	call Field1cAnonymousJumptable
 ; anonymous dw
@@ -1144,6 +1533,10 @@ StepFunction_NPCJump:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_FROM_MOVEMENT
+	xor a
+	ld hl, OBJECT_SPRITE_Y_OFFSET
+	add hl, bc
+	ld [hl], a
 	ret
 
 StepFunction_PlayerJump:
@@ -1175,6 +1568,8 @@ StepFunction_PlayerJump:
 	jmp IncrementObjectStructField1c
 
 .initland
+	ld a, FOLLOWERMOVE_STILL
+	ld [wFollowerNextMovement], a
 	call GetNextTile
 	ld hl, wPlayerStepFlags
 	set PLAYERSTEP_START_F, [hl]
@@ -1186,6 +1581,8 @@ StepFunction_PlayerJump:
 	add hl, bc
 	dec [hl]
 	ret nz
+	ld a, FOLLOWERMOVE_PREPARE_JUMP
+	ld [wFollowerNextMovement], a
 	ld hl, wPlayerStepFlags
 	set PLAYERSTEP_STOP_F, [hl]
 	call CopyNextCoordsTileToStandingCoordsTile
@@ -1769,6 +2166,7 @@ StepFunction_SkyfallTop:
 
 UpdateJumpPosition:
 	call GetStepVector
+UpdateJumpPositionInPlace:
 	push af
 	ld a, h
 	ld hl, OBJECT_JUMP_HEIGHT
@@ -1886,6 +2284,22 @@ UpdateDiagonalStairsPosition:
 	ret
 
 GetPlayerNextMovementByte:
+if 0
+; TODO: Followers: I don't know what this is for
+	ld hl, wPlayerNextMovement
+	ld d, [hl]
+	ld [hl], movement_step_sleep
+	inc hl ; wPlayerMovement
+	ld e, [hl]
+	ld [hl], d
+	ld a, e
+	cp movement_step_sleep
+	ld a, d
+	ret z
+	inc hl ; wPlayerLastMovement
+	ld [hl], e
+	ret
+else
 ; copy [wPlayerNextMovement] to [wPlayerMovement]
 	ld a, [wPlayerNextMovement]
 	ld hl, wPlayerMovement
@@ -1896,6 +2310,7 @@ GetPlayerNextMovementByte:
 ; recover the previous value of [wPlayerNextMovement]
 	ld a, [hl]
 	ret
+endc
 
 GetMovementByte:
 	ld hl, wMovementDataPointer
@@ -2035,6 +2450,30 @@ GetFollowerNextMovementByte:
 	scf
 	ret
 
+SpawnPokeballOpening::
+	push bc
+	ld de, .PokeballOpeningObject
+	call CopyTempObjectData
+	call InitTempObject
+	pop bc
+	ret
+
+.PokeballOpeningObject:
+	; vtile, palette, movement
+	db $f0, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_OPENING
+
+SpawnPokeballClosing::
+	push bc
+	ld de, .PokeballClosingObject
+	call CopyTempObjectData
+	call InitTempObject
+	pop bc
+	ret
+
+.PokeballClosingObject:
+	; vtile, palette, movement
+	db $f0, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_CLOSING
+
 SpawnShadow:
 	push bc
 	ld de, .ShadowObject
@@ -2108,7 +2547,7 @@ ShakeScreen:
 .ScreenShakeObject:
 	db $80, PAL_OW_EMOTE_GRAY, SPRITEMOVEDATA_SCREENSHAKE
 
-DespawnEmote:
+DespawnEmote::
 	push bc
 	ldh a, [hMapObjectIndexBuffer]
 	ld c, a
@@ -2152,6 +2591,14 @@ InitTempObject:
 	ld e, l
 	farjp CopyTempObjectToObjectStruct
 
+CopySpriteTempObjectData:
+	ld hl, wTempObjectCopyMapObjectIndex
+	ld [hl], -1
+	inc hl
+	ld a, [de]
+	inc de
+	ld [hli], a
+	jr CopyTempObjectData.sprite_vtile
 CopyTempObjectData:
 ; load into wTempObjectCopy:
 ; TEMP_OBJECT, -1, [de], [de + 1], [de + 2], [hMapObjectIndexBuffer], [NextMapX], [NextMapY], -1
@@ -2161,6 +2608,7 @@ CopyTempObjectData:
 	ld [hli], a
 	ld a, -1
 	ld [hli], a
+.sprite_vtile
 	ld a, [de]
 	inc de
 	ld [hli], a
@@ -2503,8 +2951,18 @@ RefreshPlayerSprite:
 SpawnInFacingDown:
 	xor a ; DOWN
 ContinueSpawnFacing:
+	push af
 	ld bc, wPlayerStruct
-	jmp SetSpriteDirection
+	call SetSpriteDirection
+	ld a, FOLLOWER
+	call CheckObjectVisibility
+	jr c, .ok
+	pop af
+	push af
+	call SetSpriteDirection
+.ok
+	pop af
+	ret
 
 StartFollow::
 	ld hl, wPlayerFlags + 1
@@ -2589,6 +3047,23 @@ FreezeAllObjects:
 	inc a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
+	call TryUnfreezeFollower
+	ret
+
+TryUnfreezeFollower:
+	ld a, [wFollowerFlags]
+	bit FOLLOWER_FROZEN_F, a
+	ret nz
+	ld a, FOLLOWER
+	call GetObjectStruct
+	ld hl, OBJECT_MOVEMENT_TYPE
+	add hl, bc
+	ld a, [hl]
+	cp SPRITEMOVEDATA_FOLLOWEROBJ
+	ret nz
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res FROZEN_F, [hl]
 	ret
 
 _UnfreezeFollowerObject::
@@ -2610,6 +3085,74 @@ _UnfreezeFollowerObject::
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res FROZEN_F, [hl]
+	ret
+
+_FreezeFollower::
+	ld bc, wObject1Struct
+	call DoesObjectHaveASprite
+	ret z
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	set FROZEN_F, [hl]
+	ld hl, wFollowerFlags
+	set FOLLOWER_FROZEN_F, [hl]
+	ret
+
+_UnfreezeFollower::
+	ld bc, wObject1Struct
+	call DoesObjectHaveASprite
+	ret z
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res FROZEN_F, [hl]
+	ld hl, wFollowerFlags
+	res FOLLOWER_FROZEN_F, [hl]
+	ret
+
+_StowFollower::
+	ld a, 20
+	ld [wScriptDelay], a
+_SilentStowFollower::
+	ld bc, wObject1Struct
+	call DoesObjectHaveASprite
+	ret z
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	set INVISIBLE_F, [hl]
+	ld hl, wFollowerFlags
+	set FOLLOWER_INVISIBLE_F, [hl]
+	set FOLLOWER_IN_POKEBALL_F, [hl]
+	ld a, [wScriptDelay] ; Silent check.
+	and a
+	ret z
+	jmp SpawnPokeballClosing
+
+_AppearFollower::
+	ld b, FOLLOWER
+	farcall Script_appear_skipinput
+_AppearFollowerOneStep::
+	ld bc, wObject1Struct
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	set INVISIBLE_F, [hl]
+	ld hl, wFollowerFlags
+	set FOLLOWER_INVISIBLE_F, [hl]
+	set FOLLOWER_IN_POKEBALL_F, [hl]
+	call SpawnPokeballOpening
+	ld a, 20
+	ld [wScriptDelay], a
+	ret
+
+_SaveFollowerCoords::
+	ld hl, wObject1MapX
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
+	; b = X coord, c = Y coord
+	ld hl, wMap1ObjectYCoord
+	ld [hl], c
+	inc hl
+	ld [hl], b
 	ret
 
 UnfreezeAllObjects::
@@ -2875,11 +3418,21 @@ InitSprites:
 	ld hl, OBJECT_SPRITE_TILE
 	add hl, bc
 	ld a, [hl]
+	ldh [hCurSpriteTile], a
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	inc a
+	jr z, .vram_1
+	ld hl, OBJECT_SPRITE_TILE
+	add hl, bc
+	ld a, [hl]
 	and ~(1 << 7)
 	ldh [hCurSpriteTile], a
 	xor a
 	bit 7, [hl]
 	jr nz, .skip1
+.vram_1
 	or VRAM_BANK_1
 .skip1
 	ld hl, OBJECT_FLAGS2

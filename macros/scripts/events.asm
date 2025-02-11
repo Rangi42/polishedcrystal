@@ -1384,4 +1384,49 @@ MACRO setmapobjectpal
 	db \2 ; palette
 ENDM
 
+	const freezefollower_command
+MACRO freezefollower
+	db freezefollower_command
+ENDM
+
+	const unfreezefollower_command
+MACRO unfreezefollower
+	db unfreezefollower_command
+ENDM
+
+	const getfollowerdirection_command
+MACRO getfollowerdirection
+	db getfollowerdirection_command
+ENDM
+
+	const followcry_command
+MACRO followcry
+	db followcry_command
+ENDM
+
+	const stowfollower_command
+MACRO stowfollower
+	db stowfollower_command
+ENDM
+
+	const appearfollower_command
+MACRO appearfollower
+	db appearfollower_command
+ENDM
+
+	const appearfolloweronestep_command
+MACRO appearfolloweronestep
+	db appearfolloweronestep_command
+ENDM
+
+	const savefollowercoords_command
+MACRO savefollowercoords
+	db savefollowercoords_command
+ENDM
+
+	const silentstowfollower_command
+MACRO silentstowfollower
+	db silentstowfollower_command
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

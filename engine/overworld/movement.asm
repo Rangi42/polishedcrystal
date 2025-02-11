@@ -105,6 +105,7 @@ MovementPointers:
 	dw Movement_stairs_step_right     ; 65
 	dw Movement_exeggutor_shake       ; 66
 	dw Movement_step_right            ; 67
+	dw Movement_jump_in_place         ; 68
 	assert_table_length NUM_MOVEMENT_CMDS
 
 Movement_teleport_from:
@@ -663,7 +664,7 @@ Movement_fast_jump_step_left:
 Movement_fast_jump_step_right:
 	ld a, STEP_BIKE << 2 | RIGHT
 Movement_jump_step:
-	jr JumpStep ; no-optimize stub jump
+	jmp JumpStep ; no-optimize stub jump
 
 Movement_turn_step_down:
 	ld a, OW_DOWN
@@ -749,7 +750,14 @@ SlideStep:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
-	jr SetWalkStepType
+	call SetWalkStepType
+	ret nz
+	ld a, [wFollowerNextMovement]
+	and a
+	ret nz
+	ld a, FOLLOWERMOVE_SLIDE
+	ld [wFollowerNextMovement], a
+	ret
 
 JumpStep:
 	call InitStep
@@ -810,4 +818,33 @@ DiagonalStairsStep:
 	ld [hl], STEP_TYPE_NPC_STAIRS
 	ret nz
 	ld [hl], STEP_TYPE_PLAYER_STAIRS
+	ret
+
+Movement_jump_in_place:
+JumpInPlace:
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	set HIGH_PRIORITY_F, [hl]
+
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld [hl], 4
+
+	ld hl, OBJECT_JUMP_HEIGHT
+	add hl, bc
+	ld [hl], 0
+
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res OVERHEAD_F, [hl]
+
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STEP
+
+	call SpawnShadow
+
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_NPC_JUMP_INPLACE
 	ret

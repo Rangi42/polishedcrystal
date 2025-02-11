@@ -521,3 +521,14 @@ DEF NO_DYN_PAL_APPLY EQU (1 << NO_DYN_PAL_APPLY_ONCE_F) | (1 << NO_DYN_PAL_APPLY
 ; wMapSetupFlags
 	const_def
 	const MAPSETUP_CONNECTION_F ; 0
+
+; wFollowerFlags::
+	const_def
+	const FOLLOWER_INVISIBLE_F          ; 0
+	const FOLLOWER_INVISIBLE_ONE_STEP_F ; 1
+	const FOLLOWER_FROZEN_F             ; 2
+	const FOLLOWER_IN_POKEBALL_F        ; 3
+	const FOLLOWER_ENTERING_BALL_F      ; 4
+	const FOLLOWER_EXITING_BALL_F       ; 5
+
+DEF FOLLOWER_INVISIBLE EQU (1 << FOLLOWER_INVISIBLE_F)

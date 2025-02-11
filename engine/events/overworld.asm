@@ -551,9 +551,7 @@ AutoSurfScript:
 
 	special UpdatePlayerSprite
 	playmapmusic
-; step into the water
 	special Special_SurfStartStep ; (slow_step_x, step_end)
-	applymovement PLAYER, wMovementBuffer ; PLAYER, MovementBuffer
 	end
 
 CantSurfText:
@@ -774,6 +772,7 @@ FlyFunction:
 	ret
 
 .FlyScript:
+	silentstowfollower
 	refreshmap
 	callasm .StopPalFading
 	callasm ClearSavedObjPals
@@ -787,6 +786,7 @@ FlyFunction:
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
 	callasm SkipUpdateMapSprites
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
 	callasm CopyBGGreenToOBPal7

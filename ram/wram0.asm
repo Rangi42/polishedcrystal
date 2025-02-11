@@ -152,6 +152,8 @@ wLinkMode::
 wPlayerNextMovement:: db
 wPlayerMovement:: db
 
+wFollowerNextMovement:: db
+
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba
 
@@ -201,6 +203,8 @@ wPlayerCurrentOAMSlot:: db
 
 wMapSetupFlags:: db
 
+wFollowerSpriteID:: db
+wFollowerPartyNum:: db
 
 SECTION "Sprite Animations", WRAM0
 

@@ -60,6 +60,10 @@ _CheckTrainerBattle::
 	cp b
 	jr c, .next
 
+; ...and no follower in the way
+	call CheckFollowerBetweenObjectAndPlayer
+	jr z, .next
+
 ; And hasn't already been beaten
 	push bc
 	push de
@@ -100,6 +104,17 @@ _CheckTrainerBattle::
 	ld a, c
 	ld [wSeenTrainerDirection], a
 	jr LoadTrainer_continue
+
+CheckFollowerBetweenObjectAndPlayer::
+	push bc
+	farcall GetFollowerDirectionFromPlayer
+	ld a, c
+	xor 1
+	add a
+	add a
+	pop bc
+	cp c
+	ret
 
 TalkToTrainer::
 	ld a, 1

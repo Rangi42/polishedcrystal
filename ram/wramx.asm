@@ -1180,7 +1180,10 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 64 ; unused
+wFollowerFlags:: db
+wFollowerState:: db
+
+	ds 62 ; unused
 
 wCandyAmounts::
 wExpCandyXSAmount:: db

@@ -598,3 +598,6 @@ CrysSurfSpriteGFX:: INCBIN "gfx/sprites/crys_surf.2bpp.lz"
 
 SECTION "ThortonSpriteGFX", ROMX
 ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lz"
+
+SECTION "AnimPokeBallSpriteGFX", ROMX
+AnimPokeBallSpriteGFX:: INCBIN "gfx/sprites/anim_pokeball.2bpp.lz"

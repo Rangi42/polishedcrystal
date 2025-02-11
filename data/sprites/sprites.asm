@@ -208,4 +208,4 @@ SpriteHeaders:
 	overworld_sprite CrysBikeSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CrysSurfSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite ThortonSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
-	assert_table_length NUM_OVERWORLD_SPRITES
+	assert_table_length NUM_OVERWORLD_SPRITES - 1

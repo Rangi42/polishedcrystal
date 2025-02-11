@@ -119,6 +119,7 @@ DEF MAPOBJECT_EVENT_FLAG       rw ; c
 DEF MAPOBJECT_LENGTH EQU _RS
 DEF NUM_OBJECTS EQU $15
 DEF PLAYER_OBJECT EQU 0
+DEF FOLLOWER_OBJECT EQU 1
 
 ; map_object MAPOBJECT_OBJECT_STRUCT_ID values
 DEF UNASSOCIATED_MAPOBJECT EQU -1
@@ -186,6 +187,9 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
 	const SPRITEMOVEDATA_PLACEHOLDER_UP       ; 2e
 	const SPRITEMOVEDATA_MICROPHONE           ; 2f
+	const SPRITEMOVEDATA_FOLLOWEROBJ          ; 30
+	const SPRITEMOVEDATA_POKEBALL_OPENING     ; 31
+	const SPRITEMOVEDATA_POKEBALL_CLOSING     ; 32
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -223,6 +227,9 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
 	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
 	const SPRITEMOVEFN_MICROPHONE            ; 20
+	const SPRITEMOVEFN_FOLLOWER_OBJ          ; 21
+	const SPRITEMOVEFN_POKEBALL_OPENING      ; 22
+	const SPRITEMOVEFN_POKEBALL_CLOSING      ; 23
 DEF NUM_SPRITEMOVEFN EQU const_value
 
 ; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
@@ -251,6 +258,9 @@ DEF NUM_SPRITEMOVEFN EQU const_value
 	const STEP_TYPE_SKYFALL_TOP      ; 15
 	const STEP_TYPE_NPC_STAIRS       ; 16
 	const STEP_TYPE_PLAYER_STAIRS    ; 17
+	const STEP_TYPE_POKEBALL_OPENING ; 18
+	const STEP_TYPE_POKEBALL_CLOSING ; 19
+	const STEP_TYPE_NPC_JUMP_INPLACE ; 1a
 DEF NUM_STEP_TYPES EQU const_value
 
 ; ObjectActionPairPointers indexes (see engine/overworld/map_object_action.asm)
@@ -367,3 +377,12 @@ DEF NUM_FACINGS EQU const_value
 	const STEP_FAST          ; a (same as STEP_RUN but without doubling animation speed)
 	const STEP_STAIRS        ; b
 DEF NUM_STEPS EQU const_value
+
+; MovementFunction_FollowerObj arguments (engine/overworld/map_objects.asm)
+	const_def
+	const FOLLOWERMOVE_NORMAL       ; 0
+	const FOLLOWERMOVE_SLIDE        ; 1
+	const FOLLOWERMOVE_BIG_STEP     ; 2
+	const FOLLOWERMOVE_STILL        ; 3
+	const FOLLOWERMOVE_PREPARE_JUMP ; 4
+DEF FOLLOWERMOVE_NUM_TYPES EQU const_value

@@ -76,6 +76,7 @@ rom_obj := \
 	gfx/minis_icons.o \
 	gfx/pokemon.o \
 	gfx/sprites.o \
+	gfx/following_sprites.o \
 	gfx/trainers.o \
 	gfx/items.o \
 	gfx/misc.o

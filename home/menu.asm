@@ -17,7 +17,14 @@ MenuTextboxWaitButton::
 ExitMenu::
 	push af
 	farcall _ExitMenu
+	call UpdateFollowPalette
 	pop af
+	ret
+
+UpdateFollowPalette:
+	ld a, SPRITE_FOLLOWER
+	call GetSpritePalette
+	ld [wObject1Palette], a
 	ret
 
 GetTileBackupMenuBoxDims::
@@ -267,13 +274,6 @@ VerticalMenu::
 	ret
 .okay
 	and a
-	ret
-
-GetMenu2::
-	call LoadMenuHeader
-	call VerticalMenu
-	call CloseWindow
-	ld a, [wMenuCursorY]
 	ret
 
 GetYesNoBoxPosition:
@@ -747,12 +747,4 @@ PlaceHollowCursor::
 	ld h, [hl]
 	ld l, a
 	ld [hl], "▷"
-	ret
-
-HideCursor::
-	ld hl, wCursorCurrentTile
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld [hl], " "
 	ret

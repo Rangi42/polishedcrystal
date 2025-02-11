@@ -1,0 +1,2 @@
+FollowingSpritePointers::
+	dba PikachuFollowingSprite

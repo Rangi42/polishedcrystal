@@ -847,7 +847,10 @@ WhichSidePutAwayText:
 DecoAction_AskWhichSide:
 	call MenuTextbox
 	ld hl, WhichSideMenuHeader
-	call GetMenu2
+	call LoadMenuHeader
+	call VerticalMenu
+	call CloseWindow
+	ld a, [wMenuCursorY]
 	call ExitMenu
 	call CopyMenuData2
 	jr c, .nope

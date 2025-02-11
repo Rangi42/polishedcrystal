@@ -34,6 +34,7 @@ VarActionTable:
 	dw Var_CountTrainerStars ; execute
 	dw Var_Landmark ; execute
 	dw wPlayerGender ; in de
+	dw wFollowerState ; in de
 	assert_table_length NUM_VARS
 
 _GetVarAction::

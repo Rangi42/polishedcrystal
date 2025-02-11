@@ -525,4 +525,9 @@ MACRO paired_step_right
 	db movement_paired_step_right ; $67
 ENDM
 
+	const movement_jump_in_place ; $68
+MACRO jump_in_place
+	db movement_jump_in_place
+ENDM
+
 DEF NUM_MOVEMENT_CMDS EQU const_value
