@@ -1205,7 +1205,7 @@ PsyduckEvosAttacks:
 	db 28, AQUA_TAIL
 	db 31, RAIN_DANCE ; Soak → TM move
 	db 34, PSYBEAM ; Psych Up → egg move
-	db 47, AMNESIA
+	db 37, AMNESIA
 	db 40, HYDRO_PUMP
 	db 43, NASTY_PLOT ; Wonder Room → SV TM move
 	db 46, PSYCHIC_M ; TM move
@@ -1258,7 +1258,7 @@ PrimeapeEvosAttacks:
 	evo_data EVOLVE_MOVE, OUTRAGE, ANNIHILAPE
 	db -1 ; no more evolutions
 	db 1, OUTRAGE
-	db 1, RAGE
+	db 1, RAGE ; evolution move
 	db 1, SCRATCH
 	db 1, LOW_KICK
 	db 1, LEER
@@ -1382,7 +1382,7 @@ PoliwhirlEvosAttacks:
 	db 18, RAIN_DANCE
 	db 21, BODY_SLAM
 	db 27, BUBBLE_BEAM
-	db 28, LOW_KICK ; Mud Shot → LGPE move
+	db 32, LOW_KICK ; Mud Shot → LGPE move
 	db 37, BELLY_DRUM
 	db 43, GROWTH ; Wake-Up Slap → event move
 	db 48, HYDRO_PUMP
@@ -2017,7 +2017,7 @@ DodrioEvosAttacks:
 	db 1, PECK
 	db 1, GROWL
 	db 5, QUICK_ATTACK
-	db 9, RAGE
+	db 8, RAGE
 	db 12, FURY_STRIKES ; Fury Attack → similar move
 	db 15, PURSUIT
 	db 19, BATON_PASS ; Pluck → XD move
@@ -3219,7 +3219,7 @@ JolteonEvosAttacks:
 	db 5, MUD_SLAP ; Sand Attack → similar move
 	db 9, DOUBLE_KICK ; Baby-Doll Eyes → LGPE move
 	db 13, QUICK_ATTACK
-	db 17, DOUBLE_KICK
+	db 17, SPARK ; Double Kick → new move
 	db 20, LIGHT_SCREEN ; Thunder Fang → TM move
 	db 25, PIN_MISSILE
 	db 29, AGILITY
@@ -6061,7 +6061,7 @@ TangrowthEvosAttacks:
 	db 40, ANCIENTPOWER
 	db 43, BODY_SLAM ; Slam → similar move
 	db 46, PAIN_SPLIT ; Tickle → HGSS tutor move
-	db 49, SWORDS_DANCE ; Wring Out → TM move
+	db 48, SWORDS_DANCE ; Wring Out → TM move
 	db 50, BATON_PASS ; Grassy Terrain → new move
 	db 53, POWER_WHIP
 	db -1 ; no more level-up moves
