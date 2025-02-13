@@ -80,6 +80,7 @@ BattleBGEffects:
 	dw BattleBGEffect_AlternateHues
 	dw BattleBGEffect_CycleOBPalsGrayAndYellow
 	dw BattleBGEffect_CycleMidOBPalsGrayAndYellow
+	dw BattleBGEffect_CycleOBPalsGrayAndYellowFullShift
 	dw BattleBGEffect_CycleBGPals_Inverted
 	dw BattleBGEffect_HideMon
 	dw BattleBGEffect_ShowMon
@@ -253,6 +254,19 @@ BattleBGEffect_CycleOBPalsGrayAndYellow:
 .PalsCGB:
 	dc 3, 2, 1, 0
 	dc 2, 1, 0, 0
+	db -2
+
+BattleBGEffect_CycleOBPalsGrayAndYellowFullShift:
+	ld de, .PalsCGB
+	call BattleBGEffect_GetNthDMGPal
+	ld [wOBP0], a
+	ret
+
+.PalsCGB:
+	dc 3, 2, 1, 0
+	dc 2, 1, 0, 3
+	dc 1, 0, 3, 2
+	dc 0, 3, 2, 1
 	db -2
 
 BattleBGEffect_CycleMidOBPalsGrayAndYellow:

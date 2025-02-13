@@ -24,9 +24,9 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 ; globe
 	RGB 31, 31, 31
-	RGB 03, 22, 31
-	RGB 04, 19, 08
-	RGB 00, 00, 00
+	RGB 03, 27, 14
+	RGB 04, 11, 18
+	RGB 04, 19, 31
 ; water
 	RGB 31, 31, 31
 	RGB 00, 19, 28
@@ -52,7 +52,7 @@ if !DEF(MONOCHROME)
 	RGB 31, 29, 09
 	RGB 03, 09, 26
 	RGB 00, 00, 00
-; aurora
+; tricolor
 	RGB 31, 20, 24
 	RGB 31, 31, 07
 	RGB 13, 27, 31
@@ -137,7 +137,7 @@ if !DEF(MONOCHROME)
 	RGB 25, 00, 08
 	RGB 09, 00, 06
 	RGB 19, 00, 06
-; glowlime
+; palelime
 	RGB 31, 31, 31
 	RGB 29, 31, 06
 	RGB 22, 25, 00
@@ -184,6 +184,11 @@ if !DEF(MONOCHROME)
 	RGB 10, 10, 10
 ; pink
 	RGB 31, 31, 31
+	RGB 31, 19, 24
+	RGB 30, 09, 13
+	RGB 00, 00, 00
+; brightpink
+	RGB 31, 31, 31
 	RGB 31, 26, 29
 	RGB 29, 16, 22
 	RGB 00, 00, 00
@@ -192,6 +197,26 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 28, 28, 28
 	RGB 29, 22, 26
+; aurora
+	RGB 31, 28, 16
+	RGB 15, 31, 20
+	RGB 15, 24, 31
+	RGB 31, 15, 26
+; outrage
+	RGB 31, 31, 31
+	RGB 31, 26, 09
+	RGB 27, 08, 22
+	RGB 25, 01, 05
+; absorb
+	RGB 31, 31, 31
+	RGB 31, 31, 07
+	RGB 12, 25, 01
+	RGB 05, 14, 00
+; shadow_ball
+	RGB 31, 31, 31
+	RGB 08, 01, 08
+	RGB 08, 00, 14
+	RGB 10, 00, 24
 ; attack
 	RGB 31, 31, 31
 	RGB 31, 19, 08

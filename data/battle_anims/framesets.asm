@@ -22,7 +22,7 @@ BattleAnimFrameData:
 	dw .Frameset_13 ; 13
 	dw .Frameset_14 ; 14
 	dw .Frameset_15 ; 15
-	dw .Frameset_16 ; 16
+	dw .Frameset_16 ; 16                 ; BATTLEANIMFRAMESET_RAZOR_LEAF_1
 	dw .Frameset_17 ; 17
 	dw .Frameset_18 ; 18
 	dw .Frameset_BigRockStarHeart ; 19
@@ -244,6 +244,8 @@ BattleAnimFrameData:
 	dw .Frameset_HoneClawsRight          ; BATTLEANIMFRAMESET_HONE_CLAWS_RIGHT
 	dw .Frameset_Hurricane               ; BATTLEANIMFRAMESET_HURRICANE
 	dw .Frameset_GrowingHeart            ; BATTLEANIMFRAMESET_GROWING_HEART
+	dw .Frameset_WaterBall               ; BATTLEANIMFRAMESET_WATER_BALL
+	dw .Frameset_GrowingBall             ; BATTLEANIMFRAMESET_GROWING_BALL
 
 ; VAR3 animations start here -------
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
@@ -1724,3 +1726,32 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_0F,  6
 	battleoamframe BATTLEANIMOAMSET_1B,  6
 	battleoamdelete
+
+.Frameset_GrowingBall:
+	battleoamframe BATTLEANIMOAMSET_1F,  2
+	battleoamframe BATTLEANIMOAMSET_1E,  2
+	battleoamframe BATTLEANIMOAMSET_1F,  2
+	battleoamframe BATTLEANIMOAMSET_1E,  2
+	battleoamframe BATTLEANIMOAMSET_1F,  2
+	battleoamframe BATTLEANIMOAMSET_1E,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_1E,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_1E,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_55,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_1E,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_55,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_55,  2
+	battleoamdelete
+
+.Frameset_WaterBall:
+	battleoamframe BATTLEANIMOAMSET_1B,  2
+	battleoamframe BATTLEANIMOAMSET_7F,  2
+	battleoamframe BATTLEANIMOAMSET_1B,  2
+	battleoamframe BATTLEANIMOAMSET_7F,  2
+	battleoamframe BATTLEANIMOAMSET_01,  2 ; HIT
+	battleoamrestart
