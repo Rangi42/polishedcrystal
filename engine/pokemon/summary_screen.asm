@@ -622,7 +622,7 @@ SummaryScreen_LoadPage:
 	dec e
 	jr nz, .loop
 
-	ld c, 20 * SPRITEOAMSTRUCT_LENGTH
+	ld c, 32 * SPRITEOAMSTRUCT_LENGTH
 	xor a
 	ld hl, wSummaryScreenOAMSprite04
 	rst ByteFill
