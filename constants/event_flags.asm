@@ -1535,8 +1535,7 @@
 	const EVENT_BEAT_KIYO
 ; TowerTycoon
 	const EVENT_BEAT_PALMER
-; Jessie&James
-	const EVENT_BEAT_JESSIE_AND_JAMES
+	const_skip ; unused
 ; Lorelei
 	const EVENT_BEAT_LORELEI
 	const EVENT_BEAT_LORELEI_AGAIN
