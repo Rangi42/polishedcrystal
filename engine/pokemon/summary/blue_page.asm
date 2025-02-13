@@ -13,7 +13,7 @@ SummaryScreen_BluePage:
 	ld [wTextboxFlags], a
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	ld de, .HPString
-	call PlaceString
+	rst PlaceString
 	hlbgcoord 0, 2, wSummaryScreenWindowBuffer
 	ld bc, 8
 	farcall PrintTempMonStats

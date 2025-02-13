@@ -55,7 +55,7 @@ NewGamePlus:
 	jr _NewGame_FinishSetup
 
 .no
-	farjp _MainMenu
+	jmp _MainMenu
 
 .text
 	text "New Game+ will"

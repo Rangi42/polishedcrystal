@@ -144,13 +144,13 @@ AbilityDescriptions:
 	dw GalvanizeDescription
 	dw CorrosionDescription
 	dw TanglingHairDescription
+	dw ScreenCleanerDescription
+	dw SteelySpiritDescription
+	dw PerishBodyDescription
 	dw GorillaTacticsDescription
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
 	dw QuickDrawDescription
-	dw SteelySpiritDescription
-	dw PerishBodyDescription
-	dw ScreenCleanerDescription
 	dw CudChewDescription
 	dw SharpnessDescription
 	dw ArmorTailDescription
