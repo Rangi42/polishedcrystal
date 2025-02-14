@@ -47,15 +47,12 @@ NewGamePlus:
 	ld hl, .text
 	call PrintText
 	call YesNoBox
-	jr c, .no
+	jr c, _MainMenu
 	xor a
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
 	jr _NewGame_FinishSetup
-
-.no
-	jmp _MainMenu
 
 .text
 	text "New Game+ will"
