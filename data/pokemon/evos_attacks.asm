@@ -6423,7 +6423,7 @@ UrsalunaBloodmoonEvoAttacks:
 	db 29, SLASH
 	db 38, SCARY_FACE
 	db 47, REST
-	db 49, NIGHT_SLASH ; Snore → egg move
+	db 49, EARTH_POWER ; Snore → egg move
 	db 58, MOONBLAST
 	db 67, FOCUS_BLAST ; Hammer Arm → SV TM move
 	db 76, HYPER_BEAM ; Blood Moon → SV TM move
