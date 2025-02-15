@@ -6,7 +6,7 @@
 
 Polished Crystal v3.1.1 brings with it a lot of changes. What started as a Dex expansion, through three years of development it has evolved into a strikingly different game from the v3.0.0-beta release with numerous added features from newer generations, a plethora of code optimizations, and many quality of life improvements. Ultimately, the game aims to feel like a modern Pokemon game with retro graphics. The rule of thumb is to assume that things work like modern games, and if it doesn't, it is either an oversight or a bug.
 
-What follows is a list of the changes made from the v3.0.0-beta release to v3.1.0, with a section at the end with changes from v2.2 to v3.0.0-beta. This is not an exhaustive list, but covers all of the major changes, and a majority of the minor ones. There are content spoilers.
+What follows is a list of the changes made from the v3.0.0-beta release to v3.1.0, with a section at the end with changes from v2.2.0 to v3.0.0-beta. This is not an exhaustive list, but covers all of the major changes, and a majority of the minor ones. There are content spoilers.
 
 Note: There is a hotfix release (v3.1.1) that fixes one bug that caused the overworld graphics to glitch out badly when hatching an egg.
 
@@ -14,7 +14,7 @@ Note: There is a hotfix release (v3.1.1) that fixes one bug that caused the over
 The total number of unique pokemon has risen to 335 (including Red Gyarados, Spikey-Ear Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there is a total of 289 unique species. 332 Pokemon are currently available for full dex completion. In general, if a Pokemon shares some relation to Generations 1 or 2, then it is very likely in the game, with the exception of Paradox Pokemon and Mega Evolutions.
 
 _Availability:_
-- Reincluded post-3.0 Beta: Spearow, Fearow, Aipom, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Lickitung, Stantler, Shuckle, Cleffa, Igglybuff, Smoochum, Deliberd.
+- Reincluded post-3.0.0-beta: Spearow, Fearow, Aipom, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Lickitung, Stantler, Shuckle, Cleffa, Igglybuff, Smoochum, Deliberd.
 - Added in v3.1.1: Ambipom, Lickilicky, Wyrdeer, Ferigeraf, Paldean Wooper, Clodsire, Annihilape, Hisuian Growlithe, Hisuian Arcanine, Galarian Corsola, Cursola, Dudunsparce, Bonsley, Hisuian Voltorb, Hisuian Electrode, Galarian Farfetch'd, Sirfetch'd, Happiny, Kleavor, Mantyke, Galarian Meowth, Perrserker, Mime Jr., Galarian Mr. Mime, Mr. Rime, Hisuian Qwilfish, Overqwil, Hisuian Sneasel, Sneasler, Paldean Tauros (Plain, Fire, and Water), Ursaluna (Plain, Bloodmoon), Wynaut, Hisuian Typhlosian, Galarian Artiuno, Galarian Zapdos, and Galarian Moltres.
 - All Magikarp Jump forms are now included.
 
@@ -38,7 +38,7 @@ _Evolution Methods:_
 
 _Typing And Stats:_
 - Farfetch'd was reverted to Normal/Flying with the inclusion of Galarian Farfetch'd.
-- Girafarig and Ferigeraf are now Dark/Psychic.
+- Girafarig and Ferigiraf are now Dark/Psychic.
 - Galarian Corsola and Cursola are Ghost/Rock.
 - Lugia is Water/Flying.
 
@@ -151,7 +151,7 @@ _Miscellaneous:_
 - Analogue Pocket support for the non-RTC version.
 - Updated credits for sprite work (gmerc, Farore) and contributions.
 
-_From 2.2 to 3.0 Beta:_
+_From v2.2.0 to v3.0.0-beta:_
 * Add: Medicine and Berry pockets in the Bag.
 * Add: Store up to 30 phone numbers in Pokégear.
 * Add: Always keep the option to Teleport away from Indigo Plateau.
@@ -325,7 +325,7 @@ _From 2.2 to 3.0 Beta:_
 
 ## Fixes
 
-_From 3.0 Beta to v3.1.1:_
+_From v3.0.0-beta to v3.1.0:_
 - Fully paralyzed animation is faster now.
 - Poison status outside of battle now interacts with Poison Heal properly, dealing no damage.
 - Run Away prevents being trapped in unfaithful build.
@@ -543,7 +543,7 @@ _From 3.0 Beta to v3.1.1:_
 - Fixed #775, #795, #782, #790, #801, #902, #915, #916, #900, #949, #950, #905.
 - Fixed breeding bug where egg mons are only female when breeding with basic Pokemon. Fixed another breeding bug for variant forms. So breeding works properly in all cases now...we hope.
 
-_From v2.2 to 3.0 Beta:_
+_From v2.2.0 to v3.0.0-beta:_
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Pay Day pays 5 times the user's level, not 2.
