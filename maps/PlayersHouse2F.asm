@@ -246,9 +246,9 @@ endr
 	loadmem wPartyMon2PP+3, 10
 	loadmem wPartyMon2PokerusStatus, 1
 	; variant form test
-	givepoke TYPHLOSION, HISUIAN_FORM, 50
-	loadmem wPartyMon3Shiny, SHINY_MASK
-	loadmem wPartyMon3PokerusStatus, POKERUS_CURED
+	givepoke PIKACHU, 50
+;	loadmem wPartyMon3Shiny, SHINY_MASK
+;	loadmem wPartyMon3PokerusStatus, POKERUS_CURED
 	; ext species test
 	givepoke URSALUNA, URSALUNA_BLOODMOON_FORM, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50

@@ -101,6 +101,11 @@ LoadOverworldGFX::
 	ld hl, OverworldEffectGFX
 	lb bc, BANK(OverworldEffectGFX), 17
 	ld de, vTiles0 tile $6f
+	call DecompressRequest2bpp
+
+	ld hl, AnimPokeBallSpriteGFX
+	lb bc, BANK(AnimPokeBallSpriteGFX), 12
+	ld de, vTiles0 tile $61
 	jmp DecompressRequest2bpp
 
 SafeGetSprite:
@@ -110,8 +115,6 @@ SafeGetSprite:
 	ret
 
 GetSprite::
-	call GetFollowingSprite
-	ret c
 	call GetMonSprite
 	ret c
 
@@ -161,6 +164,8 @@ GetMonSprite:
 	jr z, .BreedMon2
 	cp SPRITE_GROTTO_MON
 	jr z, .GrottoMon
+	cp SPRITE_FOLLOWER
+	jr z, .follower
 
 	cp SPRITE_VARS
 	jr c, .Normal
@@ -252,6 +257,28 @@ GetMonSprite:
 	scf
 	ret
 
+.follower
+	call GetFirstAliveMon
+;	cp PIKACHU
+;	jr nz, .not_pikachu
+	ld a, BANK(FollowingSpritePointers)
+	ld hl, FollowingSpritePointers
+	call GetFarByte
+	ld b, a
+	inc hl
+	ld a, BANK(FollowingSpritePointers)
+	call GetFarWord
+	call SwapHLDE
+	lb hl, 0, WALKING_SPRITE
+	ld c, 12
+	scf
+	ret
+
+.not_pikachu
+	xor a
+	ret
+
+
 GetFirstAliveMon::
 ; Returns [wParty#Sprite] in a; party number in d
 	ld a, [wPartyCount]
@@ -284,77 +311,6 @@ GetFirstAliveMon::
 	ld a, [bc]
 	ret
 
-GetFollowingSprite:
-	cp SPRITE_FOLLOWER
-	jr nz, GetWalkingMonSprite.nope
-
-	call GetFirstAliveMon
-	ld [wFollowerSpriteID], a
-	push af
-	ld a, d
-	ld [wFollowerPartyNum], a
-	pop af
-
-GetWalkingMonSprite:
-	push af
-	dec a
-
-	ld hl, FollowingSpritePointers
-; TODO: followers - rework this routine
-	cp (UNOWN - 1) ; we already decremented
-	jr nz, .not_unown
-	ld a, [wFollowerPartyNum]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1DVs
-	rst AddNTimes
-;	predef GetUnownLetter
-;	ld a, [wUnownLetter]
-	dec a
-;	ld hl, UnownFollowingSpritePointers
-
-.not_unown
-	ld d, 0
-	ld e, a
-	add hl, de
-	add hl, de
-	add hl, de
-;	assert BANK(FollowingSpritePointers) == BANK(UnownFollowingSpritePointers), \
-;			"FollowingSpritePointers Bank is not equal to UnownFollowingSpritePointers"
-	ld a, BANK(FollowingSpritePointers)
-	push af
-	call GetFarByte
-	ld b, a
-	inc hl
-	pop af
-	call GetFarWord
-
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
-
-	push bc
-	ld a, b
-	ld de, wDecompressScratch
-	call FarDecompress
-	pop bc
-	ld de, wDecompressScratch
-
-	pop af
-	ldh [rSVBK], a
-
-	ld h, 0
-	ld c, 12
-	ld l, WALKING_SPRITE
-
-	pop af
-
-	scf
-	ret
-.nope
-	and a
-	ret
-
 DoesSpriteHaveFacings::
 ; Checks to see whether we can apply a facing to a sprite.
 ; Returns zero for Pokémon sprites, carry for the rest.
@@ -370,12 +326,6 @@ DoesSpriteHaveFacings::
 	ret
 
 _GetSpritePalette::
-	ld c, a
-	push bc
-	call GetFollowingSprite
-	pop bc
-	ld a, c
-	jr c, .follower
 	call GetMonSprite
 	jr c, .is_pokemon
 
@@ -390,38 +340,6 @@ _GetSpritePalette::
 
 .is_pokemon
 	farjp GetOverworldMonIconPalette
-
-.follower
-	dec a
-;	ld hl, MenuMonPals
-	ld b, 0
-	ld c, a
-	add hl, bc
-;	ld a, BANK(MenuMonPals)
-	call GetFarByte
-	push de
-	ld d, a
-	ld a, [wFollowerPartyNum]
-	dec a
-	ld hl, wPartyMon1DVs
-	call GetPartyLocation
-	ld b, h
-	ld c, l
-	farcall CheckShininess
-	ld a, d
-	pop de
-	jr c, .shiny
-	swap a
-.shiny
-	and $f
-;	ld hl, FollowingPalLookupTable
-	ld b, 0
-	ld c, a
-	add hl, bc
-;	ld a, BANK(FollowingPalLookupTable)
-	call GetFarByte
-	ld c, a
-	ret
 
 GetUsedSprite::
 	ldh a, [hUsedSpriteIndex]

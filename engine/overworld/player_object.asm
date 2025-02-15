@@ -21,7 +21,7 @@ SpawnPlayer:
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
-	xor a
+	xor a ; PLAYER
 	ld hl, PlayerObjectTemplate
 	call CopyPlayerObjectTemplate
 
@@ -58,7 +58,7 @@ SpawnPlayer:
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld [hl], e
-	xor a
+	xor a ; PLAYER_STRUCT
 	ldh [hMapObjectIndexBuffer], a
 	ld bc, wMapObjects
 	ldh [hObjectStructIndexBuffer], a
@@ -77,13 +77,13 @@ PlayerObjectTemplate:
 	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 FollowObjTemplate:
-;_NUM_OBJECT_EVENTS = 0
+	def_object_events (no db)
 	object_event -4, -4, SPRITE_FOLLOWER, SPRITEMOVEDATA_FOLLOWNOTEXACT, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, _FollowerScript, -1
 
 PUSHS
 SECTION "Follower Script Home", ROM0
 _FollowerScript:
-	farjp FollowerScript
+	farsjump FollowerScript
 POPS
 
 CheckFollowerLoaded:
@@ -284,7 +284,7 @@ CopyObjectStruct::
 	ret ; overflow
 
 .follower
-	ld hl, wObject1Struct
+	ld hl, wObject1Struct + OBJECT_MAP_OBJECT_INDEX
 	ld a, FOLLOWER
 	ldh [hObjectStructIndexBuffer], a
 

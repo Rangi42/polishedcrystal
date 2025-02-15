@@ -344,7 +344,7 @@ GetNextTile:
 	call GetCoordTileCollision
 	pop bc
 	push af
-	call HideFollowerIfNPCBump
+;	call HideFollowerIfNPCBump
 	pop af
 	push af
 	call UpdateFollowerSprite
@@ -383,7 +383,9 @@ HideFollowerIfNPCBump:
 UpdateFollowerSprite:
 	ld e, a
 	ldh a, [hMapObjectIndexBuffer]
+	push af
 	call CheckFollowerInvisOneStep
+	pop af
 	cp FOLLOWER
 	ld a, e
 	ret nz
@@ -814,6 +816,9 @@ endr
 	ret
 
 .MovementFollowerObj:
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	set LOW_PRIORITY_F, [hl]
 	ld a, [wFollowerFlags]
 	bit FOLLOWER_FROZEN_F, a
 	jr z, .follow_not_exact
@@ -847,11 +852,15 @@ endr
 	jp hl
 
 .step_functions
-	dbw FOLLOWERMOVE_NORMAL,   NormalStep ; FOLLOWERMOVE_NORMAL
+	dbw FOLLOWERMOVE_NORMAL,   .NormalStep ; FOLLOWERMOVE_NORMAL
 	dbw FOLLOWERMOVE_NORMAL,   SlideStep  ; FOLLOWERMOVE_SLIDE
 	dbw FOLLOWERMOVE_NORMAL,   .BigStep   ; FOLLOWERMOVE_BIG_STEP
 	dbw FOLLOWERMOVE_STILL,    .TurnHead  ; FOLLOWERMOVE_STILL
 	dbw FOLLOWERMOVE_BIG_STEP, .TurnHead  ; FOLLOWERMOVE_PREPARE_JUMP
+
+.NormalStep
+	ld d, OBJECT_ACTION_STEP
+	jmp NormalStep
 
 .BigStep
 ; need to modify the speed parameter
@@ -2460,7 +2469,7 @@ SpawnPokeballOpening::
 
 .PokeballOpeningObject:
 	; vtile, palette, movement
-	db $f0, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_OPENING
+	db $e1, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_OPENING
 
 SpawnPokeballClosing::
 	push bc
@@ -2472,7 +2481,7 @@ SpawnPokeballClosing::
 
 .PokeballClosingObject:
 	; vtile, palette, movement
-	db $f0, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_CLOSING
+	db $e1, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_CLOSING
 
 SpawnShadow:
 	push bc
@@ -3418,21 +3427,21 @@ InitSprites:
 	ld hl, OBJECT_SPRITE_TILE
 	add hl, bc
 	ld a, [hl]
-	ldh [hCurSpriteTile], a
-	ld hl, OBJECT_SPRITE
-	add hl, bc
-	ld a, [hl]
-	inc a
-	jr z, .vram_1
-	ld hl, OBJECT_SPRITE_TILE
-	add hl, bc
-	ld a, [hl]
+;	ldh [hCurSpriteTile], a
+;	ld hl, OBJECT_SPRITE
+;	add hl, bc
+;	ld a, [hl]
+;	inc a
+;	jr z, .vram_1
+;	ld hl, OBJECT_SPRITE_TILE
+;	add hl, bc
+;	ld a, [hl]
 	and ~(1 << 7)
 	ldh [hCurSpriteTile], a
 	xor a
 	bit 7, [hl]
 	jr nz, .skip1
-.vram_1
+;.vram_1
 	or VRAM_BANK_1
 .skip1
 	ld hl, OBJECT_FLAGS2
