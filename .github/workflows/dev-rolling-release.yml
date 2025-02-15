@@ -14,7 +14,9 @@ env:
   DEV_TAG: "do-not-checkout"
   DEV_NAME: "Development Rolling Release"
   DEV_BODY: |
-    This is the current Polished Crystal dev rolling release. The assets all have an 8-character commit hash at the end to identify the exact code they're built from.
+    This is the current Polished Crystal development rolling release – **strictly for testing and development purposes.** These builds are experimental and are provided to help developers and testers verify the latest changes and features. **Do not use these builds for regular gameplay.** The assets all have an 8-character commit hash at the end to identify the exact code they're built from.
+
+    **Important:** Save game compatibility is not guaranteed in these builds, and the official save patcher will not support them upon release.
 
     The **.gbc** assets are ROMs. If you just want to play the game, download one (regular, `-faithful` which omits some non-canon changes, or `noir` which is in grayscale) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator. (***Do not use VBA*** or VBA-M.)
 
@@ -22,7 +24,7 @@ env:
 
     The **.patch** assets are 3DS Virtual Console patches to enable trading and battling over Wi-Fi. You can bundle the .gbc and corresponding .patch into a playable .cia file using [poke-cia](https://github.com/vulcandth/poke-cia).
 
-    The **polisheddebug** assets are ROMs and symbol files with extra features to help debug the game. Do ***not*** download these just to play; use them to help the developers diagnose and fix bugs, or to create new features.
+    The **debug** assets are ROMs and symbol files with extra features to help debug the game. Do ***not*** download these just to play; use them to help the developers diagnose and fix bugs, or to create new features.
 
 jobs:
   build:

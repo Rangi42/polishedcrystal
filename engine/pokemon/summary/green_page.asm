@@ -184,8 +184,7 @@ endr
 	ld de, .String_PowAcc
 	rst PlaceString
 
-	ld hl, Moves + MOVE_CATEGORY
-	call GetCurMoveProperty
+	call GetCurMoveFixedCategory
 	add a
 	push af ; keep doubled category for later
 	add a
