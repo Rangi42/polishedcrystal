@@ -6453,11 +6453,12 @@ GiveExperiencePoints:
 	add hl, bc
 	ld a, [wPlayerID]
 	cp [hl]
-	jr nz, .boosted
+	jr nz, .may_boost
 	inc hl
 	ld a, [wPlayerID + 1]
 	cp [hl]
 	jr z, .no_boost
+.may_boost
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr z, .boosted
