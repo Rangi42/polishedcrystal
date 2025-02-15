@@ -13,7 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 180 ; base exp
 endc
-	db NO_ITEM, NO_ITEM ; items
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio
 
 	abilities_for SEAKING, SWIFT_SWIM, WATER_VEIL, LIGHTNING_ROD
