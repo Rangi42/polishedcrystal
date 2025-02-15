@@ -695,12 +695,8 @@ ElmText1:
 ElmText2:
 	text_far _ElmText2
 	text_asm
-	xor a
-	ld [wStereoPanningMask], a
-	ld [wCryTracks], a
-	ld de, GLACEON - 1
-	call PlayCryHeader
-	call WaitSFX
+	lp bc, GLACEON
+	call PlayCry
 	ld hl, ElmText3
 	ret
 
