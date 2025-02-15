@@ -4,16 +4,18 @@
 >
 > — Satoru Iwata, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html)"
 
-Polished Crystal v3.1.1 brings with it a lot of changes. What started as a Dex expansion, through three years of development it has evolved into a strikingly different game from the 3.0 Beta release with numerous added features from newer generations, a plethora of code optimizations, and many quality of life improvements. Ultimately, the game aims to feel like a modern Pokemon game with retro graphics. The rule of thumb is to assume that things work like modern games, and if it doesn't, it is either an oversight or a bug.
+Polished Crystal v3.1.1 brings with it a lot of changes. What started as a Dex expansion, through three years of development it has evolved into a strikingly different game from the v3.0.0-beta release with numerous added features from newer generations, a plethora of code optimizations, and many quality of life improvements. Ultimately, the game aims to feel like a modern Pokemon game with retro graphics. The rule of thumb is to assume that things work like modern games, and if it doesn't, it is either an oversight or a bug.
 
-What follows is a list of the changes made from the 3.0 Beta release to v3.1.1, with a section at the end with changes from v2.2 to 3.0 Beta. This is not an exhaustive list, but covers all of the major changes, and a majority of the minor ones. There are content spoilers.
+What follows is a list of the changes made from the v3.0.0-beta release to v3.1.0, with a section at the end with changes from v2.2 to v3.0.0-beta. This is not an exhaustive list, but covers all of the major changes, and a majority of the minor ones. There are content spoilers.
+
+Note: There is a hotfix release (v3.1.1) that fixes one bug that caused the overworld graphics to glitch out badly when hatching an egg.
 
 ## Pokemon
 The total number of unique pokemon has risen to 335 (including Red Gyarados, Spikey-Ear Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there is a total of 289 unique species. 332 Pokemon are currently available for full dex completion. In general, if a Pokemon shares some relation to Generations 1 or 2, then it is very likely in the game, with the exception of Paradox Pokemon and Mega Evolutions.
 
 _Availability:_
 - Reincluded post-3.0 Beta: Spearow, Fearow, Aipom, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Lickitung, Stantler, Shuckle, Cleffa, Igglybuff, Smoochum, Deliberd.
-- Added in v3.1.1: Ambipom, Lickilicky, Wyrdeer, Ferigeraf, Paldean Wooper, Clodsire, Annihilape, Hisuian Growlithe, Hisuian Arcanine, Galarian Corsola, Cursola, Dundunsparce, Bonsley, Hisuian Voltorb, Hisuian Electrode, Galarian Farfetch'd, Sirfetch'd, Happiny, Kleavor, Mantyke, Galarian Meowth, Perrserker, Mime Jr., Galarian Mr. Mime, Mr. Rime, Hisuian Qwilfish, Overqwil, Hisuian Sneasel, Sneasler, Paldean Tauros (Plain, Fire, and Water), Ursaluna (Plain, Bloodmoon), Wynaut, Hisuian Typhlosian, Galarian Artiuno, Galarian Zapdos, and Galarian Moltres.
+- Added in v3.1.1: Ambipom, Lickilicky, Wyrdeer, Ferigeraf, Paldean Wooper, Clodsire, Annihilape, Hisuian Growlithe, Hisuian Arcanine, Galarian Corsola, Cursola, Dudunsparce, Bonsley, Hisuian Voltorb, Hisuian Electrode, Galarian Farfetch'd, Sirfetch'd, Happiny, Kleavor, Mantyke, Galarian Meowth, Perrserker, Mime Jr., Galarian Mr. Mime, Mr. Rime, Hisuian Qwilfish, Overqwil, Hisuian Sneasel, Sneasler, Paldean Tauros (Plain, Fire, and Water), Ursaluna (Plain, Bloodmoon), Wynaut, Hisuian Typhlosian, Galarian Artiuno, Galarian Zapdos, and Galarian Moltres.
 - All Magikarp Jump forms are now included.
 
 _Evolution Methods:_
@@ -24,7 +26,7 @@ _Evolution Methods:_
 - Primape evolves into Annihilape by leveling up while knowing Outrage.
 - Scyther evolves into Kleavor by leveling up while holding a Hard Stone.
 - Girafarig evolves into Farigiraf by leveling up while knowing Zen Headbutt.
-- Dunsparce evolves into Dundunsparce at level 32.
+- Dunsparce evolves into Dudunsparce at level 32.
 - Hisuian Qwilfish evolves into Overqwil at level 33.
 - Ursaring evolves into Ursaluna by leveling up at the Sinjoh Ruins or the Mystri Stage. You can also use a Moon Stone. It evolves into Bloodmoon Ursaluna by leveling up in Murky Swamp.
 - Magneton evolves into Magnezone by leveling up in Magnet Tunnel or Dim Cave. You can also use a Thunderstone.
@@ -47,14 +49,14 @@ _Initial Options:_
 - The options menu pages were reorganized so that properties of the world/setting are initial options and properties of your equipment/interface are in-game options.
 - No Real Time Clock (RTC) was turned into a initial option.
 - Evolve in Battle added as an initial option (see next section).
-- New EV settings for play include choosing whether or not EVs exist, are 510 max for any Pokemon (like modern games), or All in which a Pokemon can gain 255 EVs in every stat. These settings apply both to the player and to NPCs.
+- New EV settings for play include choosing whether or not EVs exist, are 510 max for any Pokemon (like modern games), or All in which a Pokemon can gain 252 EVs in every stat. These settings apply both to the player and to NPCs.
 - Affection is included and can be turned on and off.
 - New Game+ now preserves Catch/Oval/Shiny Charm (in addition to your money, mom's money, battle points, and any boxed Pokemon like before).
 - Nuzlocke Mode has been removed along with some features that were added as a replacement. This is because the option caused players to believe that the game was balanced around the feature and often suggested changes based on this misperception.
 
 _Moves and Battle:_
 - Tons of move animation and sprite changes.
-- You can not evolve during battle just like in the anime.
+- You can now evolve during battle just like in the anime.
 - Implemented several abilities, such as Bulletproof, Honey Gatherer, Sharpness, Armor Tail, and Cud Chew.
 - Added new moves: Flare Blitz, Stone Edge, Astonish, Brave Bird, Brick Break, Bug Buzz, Bullet Punch, Drain Punch, Flash Cannon, Focus Blast, Hurricane, Hyper Voice, Iron Head, Play Rough, Shadow Claw.
 - Healing moves were reduced to 5 pp except Fresh Snack aka Softboiled+Milk Drink.
@@ -113,7 +115,7 @@ _Overworld And NPCs:_
 - Dynamic level scaling based on badge number was included for both wildmons and trainers in certain locations.
     For Wildmons: Hidden grottoes, all optional areas, and the Safari Zone.
     For Trainers: Route Leaders, and alls trainers in the optional routes.
-- Three-Segment Dundunsparce more common during swarms.
+- Three-Segment Dudunsparce more common during swarms.
 - Holding B on cycling road hits the brakes on the bike.
 - You can now call Elm to know how your lead party mon evolves. You can also call Lyra to find out when your mon will learn its next move (but it will not specify the move). There is also a hint that Lyra calls are useful now.
 - New heal spot right before Victory Road.
@@ -411,7 +413,7 @@ _From 3.0 Beta to v3.1.1:_
 - Fix AI teleport usage.
 - Rebalanced fishing item drop rate.
 - Fix party icon colors when varying colors by DVs is off.
-- Ghost types can be affected by Wrap/etc. They can still flee/switch. (Oct 1st 2022)   <<< need help with this one
+- Ghost types can be affected by Wrap/etc passive damage. They can still flee/switch.
 - Revise initial option descriptions.
 - Make more items available.
 - Show icon for Park Balls.
@@ -511,7 +513,7 @@ _From 3.0 Beta to v3.1.1:_
 - Fix Soundproof to work against all sound status moves.
 - Fix map name sign display issues.
 - Mirror Herb now works on evolved Pokémon.
-- Fix Battle Factory elevations
+- Fix Battle Factory elevations.
 - Use Berry Tree tiles in Cherrygrove Bay.
 - Make field abilities like Magnet Pull work when Sweet Honey is used.
 - Fix move swap for non-active party members in battle.
@@ -528,19 +530,18 @@ _From 3.0 Beta to v3.1.1:_
 - Hide weather icon when 'No moves left' text is displayed and show it if present when move description is closed in battle.
 - Fix stats screen at max volume.
 - More helpful item descriptions for Light Ball and Thick Club.
-- fix form overwrite for variant eggs
-- Buying decorations should visually update money
-- correct bg pal for 10-char enemy mon name
+- Buying decorations visually updates money.
+- Correct background palette for 10 character enemy mon names.
 - Fix Route 16 being full of ghosts! (Near Halloween, no less!)
 - Modernize Illuminate.
 - Quick Draw now only works on attacking moves, and fixed the slideout.   
 - Fixed bugs with initial and in-game options.
 - Use the originally intended roof colors for Cianwood and Mahogany.
-- Update Battle Tower Picnicker to use the same pallete as the one on Route 40.
+- Update Battle Tower Picnicker to use the same palette as the one on Route 40.
 - Minor bug fix to Water Absorb and friends.
 - Fade in palettes for ending the Bug Catching Catching contest early.
 - Fixed #775, #795, #782, #790, #801, #902, #915, #916, #900, #949, #950, #905.
-- Fixed breeding bug where egg mons are only female. Fixed another breeding bug for variant forms. And another that causes the graphics to spazz out if an egg is even hatched. So breeding works properly in all cases...we hope.
+- Fixed breeding bug where egg mons are only female when breeding with basic Pokemon. Fixed another breeding bug for variant forms. So breeding works properly in all cases now...we hope.
 
 _From v2.2 to 3.0 Beta:_
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
@@ -572,5 +573,4 @@ _From v2.2 to 3.0 Beta:_
 * Fix: Magnet Train tracks were missing tiles.
 * Fix: Shiny icon is the star from Gen 3+.
 * Fix: SPRITE_DRAGONITE uses Dragonite's side view.
-
 * Remove: Rebattling Breeders like in B2/W2.
