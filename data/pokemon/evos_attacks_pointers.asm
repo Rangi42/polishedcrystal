@@ -349,6 +349,6 @@ EvosAttacksPointers::
 	dw TaurosPaldeanFireEvosAttacks
 	dw TaurosPaldeanWaterEvosAttacks
 
-	dw UrsalunaBloodmoonEvoAttacks
+	dw UrsalunaBloodmoonEvosAttacks
 
 	assert_table_length NUM_EXT_POKEMON
