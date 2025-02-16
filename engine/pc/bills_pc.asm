@@ -788,10 +788,10 @@ EncodeTempMon:
 	push hl
 	call GetMoveIndexFromID
 	ld a, l
-	push de
 	ld [de], a ; low byte
 	inc de
 	ld a, h
+	pop hl
 	and %11 ; clamp to 2 bits (just in case)
 	or c
 	rla
@@ -804,7 +804,7 @@ EncodeTempMon:
 	ld [de], a
 
 	; Move Extra bytes.
-	; de == wEncodedTempMonExtra
+	ld de, wEncodedTempMonExtra
 	ld hl, wTempMonExtra
 	ld bc, 2
 	rst CopyBytes
