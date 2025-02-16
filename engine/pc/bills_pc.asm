@@ -779,10 +779,34 @@ EncodeTempMon:
 	ld bc, wEncodedTempMonExtra - wEncodedTempMonHappiness
 	rst CopyBytes
 
+	; Convert Move IDs to Move Indexes.
+	ld hl, wTempMonMoves
+	ld de, wEncodedTempMonMovesLow
+	lb bc, NUM_MOVES, 0
+.moves_loop
+	ld a, [hli]
+	push hl
+	call GetMoveIndexFromID
+	ld a, l
+	push de
+	ld [de], a ; low byte
+	inc de
+	ld a, h
+	and %11 ; clamp to 2 bits (just in case)
+	or c
+	rla
+	rla
+	ld c, a
+	dec b
+	jr nz, .moves_loop
+	ld de, wEncodedTempMonMovesHigh
+	ld a, c
+	ld [de], a
+
 	; Move Extra bytes.
 	; de == wEncodedTempMonExtra
 	ld hl, wTempMonExtra
-	ld bc, 3
+	ld bc, 2
 	rst CopyBytes
 
 	; Move name-related bytes.
@@ -891,10 +915,36 @@ DecodeTempMon:
 	call ChecksumTempMon
 	push af
 
+	; convert move indexes to move IDs
+	ld hl, wEncodedTempMonMovesHigh
+	ld a, [hl]
+	ld c, a
+	ld hl, wEncodedTempMonMovesLow + 3
+	ld de, wTempMonMoves + 3
+	ld b, NUM_MOVES
+.moves_loop
+	ld a, [hld]
+	push hl
+	ld l, a
+	ld a, c
+	and %11
+	ld h, a
+	ld a, c
+	and %00111111
+	rra
+	rra
+	ld c, a
+	call GetMoveIDFromIndex
+	pop hl
+	ld [de], a
+	dec de
+	dec b
+	jr nz, .moves_loop
+
 	; Move extra data back
 	ld hl, wEncodedTempMonExtra
 	ld de, wTempMonExtra
-	ld bc, 3
+	ld bc, 2
 	rst CopyBytes
 
 	; Reverse the 7bit character encoding back to its original state.

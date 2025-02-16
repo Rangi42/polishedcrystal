@@ -188,7 +188,7 @@ DEF PARTYMON_STRUCT_LENGTH EQU _RS
 rsreset
 DEF SAVEMON_SPECIES            rb
 DEF SAVEMON_ITEM               rb
-DEF SAVEMON_MOVES              rb NUM_MOVES
+DEF SAVEMON_MOVES_LOW          rb NUM_MOVES
 DEF SAVEMON_ID                 rw
 DEF SAVEMON_EXP                rb 3
 DEF SAVEMON_EVS                rb NUM_STATS
@@ -225,7 +225,8 @@ DEF SAVEMON_CAUGHTLEVEL        rb
 DEF SAVEMON_CAUGHTLOCATION     rb
 DEF SAVEMON_LEVEL              rb
 ; savemon_struct is different from party_struct beyond this point
-DEF SAVEMON_EXTRA              rb 3
+DEF SAVEMON_MOVES_HIGH         rb ; high 2 bits of each 10-bit move packed into 1 byte
+DEF SAVEMON_EXTRA              rb 2
 DEF SAVEMON_NICKNAME           rb MON_NAME_LENGTH - 1
 DEF SAVEMON_OT                 rb PLAYER_NAME_LENGTH - 1
 DEF SAVEMON_STRUCT_LENGTH EQU _RS

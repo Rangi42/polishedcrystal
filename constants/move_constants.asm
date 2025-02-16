@@ -266,6 +266,9 @@ endc
 	const STRUGGLE      ; $ff
 DEF NUM_ATTACKS EQU const_value - 1
 
+; assert NUM_ATTACKS is less than 10-bits wide
+assert NUM_ATTACKS < 1024, "NUM_ATTACKS is too large"
+
 ; Animations with negative IDs will play even when animations are disabled
 	const_def -1, -1
 	; These animations play no matter the battle animation settings
