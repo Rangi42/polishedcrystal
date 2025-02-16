@@ -114,11 +114,10 @@ PokemonActionSubmenu:
 	dbw MONMENUITEM_HEADBUTT,   MonMenu_Headbutt
 	dbw MONMENUITEM_WATERFALL,  MonMenu_Waterfall
 	dbw MONMENUITEM_ROCKSMASH,  MonMenu_RockSmash
-	dbw MONMENUITEM_STATS,      OpenPartyStats
+	dbw MONMENUITEM_SUMMARY,    OpenPartySummary
 	dbw MONMENUITEM_SWITCH,     SwitchPartyMons
 	dbw MONMENUITEM_ITEM,       GiveTakePartyMonItem
 	dbw MONMENUITEM_CANCEL,     CancelPokemonAction
-	dbw MONMENUITEM_MOVE,       ManagePokemonMoves
 	dbw MONMENUITEM_MAIL,       MonMailAction
 
 SwitchPartyMons:
@@ -721,25 +720,30 @@ TakeMail:
 	text_far _MailSentToPCText
 	text_end
 
-OpenPartyStats:
+OpenPartySummary:
+	call OpenTempmonSummary
+	jmp ReturnToMapFromSubmenu
+
+OpenTempmonSummary:
 ; Stats screen for partymon in wCurPartyMon.
 	call PreparePartyTempMon
 	; fallthrough
-_OpenPartyStats:
+_OpenTempmonSummary:
 ; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
 	call LoadStandardMenuHeader
 	call ClearSprites
 	call LowVolume
 	ld a, TEMPMON
 	ld [wMonType], a
-	predef StatsScreenInit
-	; This ensures that MaxVolume works as it should if we're in the middle of
-	; playing a cry.
+	predef SummaryScreenInit
+	; check if the cry is still playing
+	call CheckSFX
 	ld a, MAX_VOLUME
+	jr nz, .still_playing_cry
+	xor a
+.still_playing_cry
 	ld [wLastVolume], a
 	call MaxVolume
-	xor a
-	ld [wLastVolume], a
 	call ExitMenu
 	xor a
 	ret
@@ -964,33 +968,6 @@ PreparePartyTempMon:
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wTempMonSlot], a
-	ret
-
-ManagePokemonMoves:
-	call PreparePartyTempMon
-	; fallthrough
-_ManagePokemonMoves:
-	ld a, [wTempMonBox]
-	ld b, a
-	ld a, [wTempMonSlot]
-	ld c, a
-	farcall GetStorageBoxMon
-	ld hl, wTempMonIsEgg
-	bit MON_IS_EGG_F, [hl]
-	jr nz, .egg
-	ld hl, wOptions1
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	xor a
-	ld [wMoveScreenMode], a
-	call MoveScreenLoop
-	pop af
-	ld [wOptions1], a
-	call ClearBGPalettes
-
-.egg
-	xor a
 	ret
 
 MoveScreen:

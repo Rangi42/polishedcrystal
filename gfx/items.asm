@@ -822,3 +822,6 @@ ExpCandyLIcon:: INCBIN "gfx/items/exp_candy_l.2bpp.lz"
 
 SECTION "ExpCandyXLIcon", ROMX
 ExpCandyXLIcon:: INCBIN "gfx/items/exp_candy_xl.2bpp.lz"
+
+SECTION "LiftKeyIcon", ROMX
+LiftKeyIcon:: INCBIN "gfx/items/lift_key.2bpp.lz"

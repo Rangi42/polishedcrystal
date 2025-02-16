@@ -1132,7 +1132,7 @@ endc
 	dbw 28, AQUA_TAIL
 	dbw 31, RAIN_DANCE ; Soak → TM move
 	dbw 34, PSYBEAM ; Psych Up → egg move
-	dbw 47, AMNESIA
+	dbw 37, AMNESIA
 	dbw 40, HYDRO_PUMP
 	dbw 43, NASTY_PLOT ; Wonder Room → SV TM move
 	dbw 46, PSYCHIC_M ; TM move
@@ -1185,7 +1185,7 @@ endc
 	evo_data EVOLVE_MOVE, OUTRAGE, ANNIHILAPE
 	db -1 ; no more evolutions
 	dbw 1, OUTRAGE
-	dbw 1, RAGE
+	dbw 1, RAGE ; evolution move
 	dbw 1, SCRATCH
 	dbw 1, LOW_KICK
 	dbw 1, LEER
@@ -1273,7 +1273,7 @@ endc
 	dbw 18, RAIN_DANCE
 	dbw 21, BODY_SLAM
 	dbw 27, BUBBLE_BEAM
-	dbw 28, LOW_KICK ; Mud Shot → LGPE move
+	dbw 32, LOW_KICK ; Mud Shot → LGPE move
 	dbw 37, BELLY_DRUM
 	dbw 43, GROWTH ; Wake-Up Slap → event move
 	dbw 48, HYDRO_PUMP
@@ -1737,7 +1737,7 @@ endc
 	dbw 1, PECK
 	dbw 1, GROWL
 	dbw 5, QUICK_ATTACK
-	dbw 9, RAGE
+	dbw 8, RAGE
 	dbw 12, FURY_STRIKES ; Fury Attack → similar move
 	dbw 15, PURSUIT
 	dbw 19, BATON_PASS ; Pluck → XD move
@@ -2742,7 +2742,7 @@ endc
 	dbw 5, MUD_SLAP ; Sand Attack → similar move
 	dbw 9, DOUBLE_KICK ; Baby-Doll Eyes → LGPE move
 	dbw 13, QUICK_ATTACK
-	dbw 17, DOUBLE_KICK
+	dbw 17, SPARK ; Double Kick → new move
 	dbw 20, LIGHT_SCREEN ; Thunder Fang → TM move
 	dbw 25, PIN_MISSILE
 	dbw 29, AGILITY

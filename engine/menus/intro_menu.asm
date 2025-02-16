@@ -44,11 +44,30 @@ NewGame_ClearTileMapEtc:
 	jmp ClearWindowData
 
 NewGamePlus:
+	ld hl, .text
+	call PrintText
+	call YesNoBox
+	jr c, _MainMenu
 	xor a
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
 	jr _NewGame_FinishSetup
+
+.text
+	text "New Game+ will"
+	line "keep your previous"
+
+	para "game's money,"
+	line "Battle Points, and"
+
+	para "any #mon stored"
+	line "in the PC!"
+
+	para "Are you sure you"
+	line "you want to start"
+	cont "New Game+?"
+	done
 
 NewGame:
 	xor a
@@ -694,12 +713,8 @@ ElmText1:
 ElmText2:
 	text_far _ElmText2
 	text_asm
-	xor a
-	ld [wStereoPanningMask], a
-	ld [wCryTracks], a
-	ld de, GLACEON - 1
-	call PlayCryHeader
-	call WaitSFX
+	lp bc, GLACEON
+	call PlayCry
 	ld hl, ElmText3
 	ret
 

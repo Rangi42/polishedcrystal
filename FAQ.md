@@ -15,6 +15,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 * [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
 * [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
 * [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)
+* [What happened to Nuzlocke Mode?](#what-happened-to-nuzlocke-mode)
 * [I don't recognize this move, what is it?](#i-dont-recognize-this-move-what-is-it)
 * [How do I evolve my Pokémon?](#how-do-i-evolve-my-pokémon)
 * [Where do I get the legendary Pokémon?](#where-do-i-get-the-legendary-pokémon)
@@ -30,13 +31,11 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 ### Which file do I need to play?
 
-The [nightly 3.0.0 beta release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.0.0-beta-xxxxxxxx.gbc`, or `polishedcrystal-3.0.0-beta-xxxxxxxx-faithful.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
+The [3.1.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.0) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.1.0.gbc`, or `polishedcrystal-faithful-3.1.0.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
 
 Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to walk through walls.
 
-Remember the commit hash at the end of the nightly filename to identify which code is running.
-
-The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) provides .ips patch files. Apply these to a default Crystal ROM with a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android).
+The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) is not recommended for general play (it is very old, and not the latest stable release). Only make use of this if you have an existing 2.x save and don't want to start over, since 2.x saves are not compatible with version 3.0.0 and above.
 
 This is the ROM you should use for patching 2.2.0:
 
@@ -55,29 +54,23 @@ Cheat codes are *not* officially supported: new updates may change or break old 
 
 ### Is there documentation for all the {Pokémon, items, moves, etc}?
 
-The game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
+A [wiki](https://github.com/Rangi42/polishedcrystal/wiki) is provided with various info. For things not present in the wiki, the game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
-* [Base stats and TM learnsets](data/pokemon/base_stats/)
-* [Level-up learnsets and evolution methods](data/pokemon/evos_attacks.asm)
-* [Egg moves](data/pokemon/egg_moves.asm)
 * [Move attributes](data/moves/moves.asm)
-* [TM+HM+tutor list](data/moves/tmhm_moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
-
-For information that's not all in one file, like [faithful version differences](https://github.com/Rangi42/polishedcrystal/search?q=DEF+FAITHFUL), you can use GitHub's search in this repository.
 
 You can also just use in-game features! The Pokédex has a lot more information, including base stats and detailed wild locations.
 
 
 ### Why is shiny Gyarados gold? Is the red Gyarados shiny?
 
-I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
+I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It's shiny locked, meaning it can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
 
 
 ### My Pokémon is a different color, is it shiny?
 
-There's only a 1 in 4,096 chance to encounter a shiny Pokémon, and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
+There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
 
 
 ### What are the options at the start of a new game?
@@ -85,12 +78,21 @@ There's only a 1 in 4,096 chance to encounter a shiny Pokémon, and they'll be m
 * **Natures:** Enables [natures](https://bulbapedia.bulbagarden.net/wiki/Nature) from Gen 3 onward.
 * **Abilities:** Enables [abilities](https://bulbapedia.bulbagarden.net/wiki/Ability) from Gen 3 onward.
 * **Phys/Spcl split:** Enables the [Physical/Special split](https://bulbapedia.bulbagarden.net/wiki/Damage_category) from Gen 4 onward.
+* **EV gain:** Changes how [EVs](https://bulbapedia.bulbagarden.net/wiki/Effort_values) behave. You can choose "All", which allows maxing every stat, "510" which features the modern 510 EV limit, or "No" which disables their effect completely, and will also cause Tyrogue's evolution to depend purely on its IVs.
 * **Exp. scaling:** Enables the [experience formula](https://bulbapedia.bulbagarden.net/wiki/Experience#Gain_formula) from Gen 5, 7 and 8, which scales experience by the ratio of the opponent's level to your level.
-* **IVs vary colors:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
-* **Perfect stats:** All Pokémon stats, for you and the opponent, are calculated as if they had maximum IVs. The actual IVs are still random, so color variation and Hidden Power type are not affected.
-* **Traded Pokémon treat you as OT:** All differences in traded Pokémon go away: they always obey you, don't gain boosted experience, and can be nicknamed.
+* **Affection bonus:** Enables the modern Affection system, which can do things like make your Pokémon survive at 1 HP, cure themselves of status problems or evade attacks.
+* **Real-time clock:** Enables the game to keep track of time even when you are not playing. Some cartridges or emulators may not support this. Disabling it will cause time to only tick when you play, and a day will last 4 hours.
+* **Perfect stats:** All Pokémon stats, for you and the opponent, are calculated as if they had maximum IVs. The actual IVs are still random, so color variation and Hidden Power type are not affected. Note that this has no impact on EVs in any way.
+* **Traded PKMN obey:** All differences in traded Pokémon go away: they always obey you, don't gain boosted experience, and can be nicknamed.
+* **Evolve in battle:** Allows your Pokémon to evolve in the middle of a battle if their evolution conditions are met.
+* **Color variation:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
 
 If you need to change these options after starting a game, press Left+B at the title screen to reset them.
+
+
+### What happened to Nuzlocke Mode?
+
+Having a built-in Nuzlocke Mode led to assumptions that the game catered specifically to the Nuzlocke community, and was balanced accordingly. The problem is that this led to a lot of people complaining that we didn't, for example, offer a built-in level cap or infinite Rare Candies. In the end, we chose to remove the Nuzlocke Mode option to make it clear that, while we have nothing against people doing self-imposed challenges, we have no plans to specifically design the game around them.
 
 
 ### I don't recognize this move, what is it?
@@ -109,7 +111,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 ### How do I evolve my Pokémon?
 
 * Ask Lyra! She gives you her phone number when you reach the Day-Care on Route 34.
-* Gen 1's trade evolutions now evolve by having at least five vitamins' worth of EVs in the right stat: Machoke into Machamp with Attack EVs (from Protein), Graveler into Golem with Defense (from Iron), Haunter into Gengar with Speed (from Carbos), and Kadabra into Alakazam with Special Attack (from Calcium).
+* Gen 1's trade evolutions now evolve by using the Linking Cord item.
 * Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
 * Yanma, Tangela, and Piloswine evolve while knowing AncientPower.
 * Eevee evolves into Leafeon in Ilex Forest, site of the Moss Rock.
@@ -123,11 +125,10 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Articuno is in the Seafoam Islands.
 * Zapdos is above the Power Plant after you fix the generator.
 * Moltres is inside Cinnabar Volcano.
+* Their Galarian counterparts can be found by summoning them to the great cherry tree in Cherrygrove Bay. In order to do this, you need Lures which you can obtain from battles in the old Rocket Hideout in Celadon City.
 * Raikou and Entei are roaming Johto after you awaken them.
 * Suicune is in the Bell Tower after you get the Clear Bell.
-* Lugia is in the Whirl Islands after:
-  * (3.0.0-beta) you visit Shamouti Island and then get the Silver Wing there.
-  * (2.2.0) you catch all three legendary birds and then get the Silver Wing in Victory Road.
+* Lugia is in the Whirl Islands after you visit Shamouti Island and then get the Silver Wing there.
 * Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and then get the Rainbow Wing in Bell Tower.
 * Mewtwo is in Cerulean Cave.
 * Mew is a secret; look around Cinnabar Island!
@@ -136,11 +137,8 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### Where do I get this item?
 
-* Helix Fossil and Dome Fossil are:
-  * (3.0.0-beta) in Mt. Moon, or may appear from breakable rocks.
-  * (2.2.0) in Quiet Cave.
-* Old Amber is in Pewter City.
-  * (3.0.0-beta) Also may appear from breakable rocks.
+* Helix Fossil and Dome Fossil are in Mt. Moon, or may appear from breakable rocks.
+* Old Amber is in Pewter City, or may appear from breakable rocks.
 * Razor Claw is in Quiet Cave, or held by some wild Sneasel.
 * Razor Fang is in Victory Road, or held by some wild Gligar.
 * Electirizer is in Rock Tunnel, or held by some wild Electabuzz family.
@@ -151,12 +149,9 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * King's Rock is in Slowpoke Well, or held by some wild Slowpoke family and Poliwhirl/Poliwrath/Politoed.
 * Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite family and Steelix.
 * Dragon Scale is in Mt. Mortar, or held by some wild Horsea family and Dratini family.
-  * (2.2.0) Also in Dragon's Den.
-* Dusk Stones are in Dark Cave, Quiet Cave, Cerulean Cave, and Mt. Moon. Bill's grandpa also gives you one.
-  * (3.0.0-beta) Also in Union Cave, Dim Cave, and Scary Cave. You can win one in Bug-Catching Contest in the evening.
-* Shiny Stones are in National Park, Cherrygrove Bay, and Mt. Moon. Bill's grandpa also gives you one.
-* Bill's grandpa lives in Goldenrod City and gives you one of each Evolution stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells the Fire, Water, Thunder, and Leaf Stones.
-  * (3.0.0-beta) The Celadon Dept. Store also sells Ice Stones.
+* Dusk Stones are in Cerulean Cave, Dark Cave, Dim Cave, Mt. Moon, Quiet Cave, Scary Cave or Union Cave. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the evening.
+* Shiny Stones are in Cherrygrove Bay, Mt. Moon or National Park. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the morning.
+* Bill's grandpa lives in Goldenrod City and gives you one of each Evolution stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells several evolution stones and the Linking Cord.
 
 
 ### Where do I get Silver/Gold Leaves?
@@ -164,8 +159,6 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
 Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
-
-(3.0.0-beta) Both Leaves may also drop from Headbutt trees.
 
 
 ### Where do I get this TM/HM?
@@ -198,10 +191,3 @@ I was hesitant to make original changes like this, because the goal is to be an 
 The regular version makes creative changes to Pokémon base stats and types, and to some move properties, mostly inspired by [Drayano's Sacred Gold and Storm Silver](https://gbatemp.net/threads/pokemon-sacred-gold-storm-silver.327567/). It also improves some translated terms that [Nob Ogasawara](https://twitter.com/dougdinsdale) [complained about](https://lparchive.org/Pokemon-Blue/code.html).
 
 The faithful version does not change those things, besides updating stats to the latest canon generation.
-
-
-### I want the missing Pokémon back!
-
-As [FEATURES.md](FEATURES.md) notes, 14 Pokémon had to be removed to make room for 17 Pokémon from Gen 4 (as well as Sylveon from Gen 6 to complete the Eeveelutions). I won't be able to restore them until the engine supports species IDs larger than 8 bits. There are some plans for 9-bit IDs, allowing over 500 Pokémon, but it will take time.
-
-I do think that the added Pokémon are one part of "polishing" Crystal version. Some of the new or improved things from Gen 4, like Leafeon, Tangrowth, or the extra map of Slowpoke Well, were originally planned for Gen 2, as we now know from the [Space World '97](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo) ROMs. The Sinjoh Ruins in HG/SS emphasize this connection between Johto/Gen 2 and Sinnoh/Gen 4. Although cutting any Pokémon is regrettable, I'd consider skipping Pokémon like Porygon-Z or Honchkrow to be worse than replacing Delibird or Lickitung.

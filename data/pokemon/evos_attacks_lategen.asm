@@ -324,7 +324,7 @@ EvosAttacksPointersLateGen::
 	dbw 40, ANCIENTPOWER
 	dbw 43, BODY_SLAM ; Slam → similar move
 	dbw 46, PAIN_SPLIT ; Tickle → HGSS tutor move
-	dbw 49, SWORDS_DANCE ; Wring Out → TM move
+	dbw 48, SWORDS_DANCE ; Wring Out → TM move
 	dbw 50, BATON_PASS ; Grassy Terrain → new move
 	dbw 53, POWER_WHIP
 	db -1 ; no more level-up moves
@@ -680,7 +680,7 @@ endc
 	dbw 29, SLASH
 	dbw 38, SCARY_FACE
 	dbw 47, REST
-	dbw 49, CRUNCH ; Snore → egg move
+	dbw 49, EARTHQUAKE ; High Horsepower → TM move
 	dbw 58, THRASH
 	dbw 67, CLOSE_COMBAT ; Hammer Arm → SV TM move
 	dbw 76, DOUBLE_EDGE ; new move

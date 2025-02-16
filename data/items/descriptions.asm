@@ -289,6 +289,7 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
+	dw LiftKeyDesc
 	dw HarshLureDesc
 	dw PotentLureDesc
 	dw MalignLureDesc
@@ -1040,8 +1041,8 @@ ArmorSuitDesc:
 	done
 
 AirBalloonDesc:
-	text "Avoids one Ground"
-	next "attack. (Hold)"
+	text "Avoids Ground att-"
+	next "acks until popped."
 	done
 
 AssaultVestDesc:
@@ -1663,6 +1664,11 @@ PotentLureDesc:
 MalignLureDesc:
 	text "A bottle with a"
 	next "malevolent odor."
+	done
+
+LiftKeyDesc:
+	text "Operates the lift"
+	next "in a building."
 	done
 
 ShinyCharmDesc:

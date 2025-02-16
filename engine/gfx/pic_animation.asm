@@ -81,12 +81,12 @@ LoadMonAnimation:
 	ld a, d
 	ld [wPokeAnimGraphicStartTile], a
 
-	ld a, $1
+	ld a, BANK(wCurPartySpecies)
 	ld hl, wCurPartySpecies
 	call GetFarWRAMByte
 	ld [wPokeAnimSpecies], a
 
-	ld a, $1
+	ld a, BANK(wCurForm)
 	ld hl, wCurForm
 	call GetFarWRAMByte
 	ld [wPokeAnimVariant], a

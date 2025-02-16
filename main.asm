@@ -269,7 +269,7 @@ INCLUDE "engine/events/pokerus/check_pokerus.asm"
 INCLUDE "engine/events/lucky_number.asm"
 INCLUDE "engine/pokemon/caught_data.asm"
 INCLUDE "engine/pokemon/search2.asm"
-INCLUDE "engine/pokemon/stats_screen.asm"
+INCLUDE "engine/pokemon/summary_screen.asm"
 INCLUDE "engine/events/catch_tutorial.asm"
 INCLUDE "engine/movie/evolution_animation.asm"
 INCLUDE "engine/movie/init_hof_credits.asm"
@@ -741,5 +741,11 @@ INCLUDE "engine/printer/printer_serial.asm"
 INCLUDE "audio/music/printer.asm"
 
 
+SECTION "LureMenu", ROMX
+
+INCLUDE "engine/menus/lure_menu.asm"
+
+
 SECTION "16-bit ID stuff", ROMX
+
 INCLUDE "engine/16/table_functions.asm"

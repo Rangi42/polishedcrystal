@@ -667,14 +667,15 @@ DEF NUM_CANDIES EQU const_value - 1
 	const ORANGETICKET ; 1d
 	const MYSTICTICKET ; 1e
 	const OLD_SEA_MAP  ; 1f
-	const HARSH_LURE   ; 20
-	const POTENT_LURE  ; 21
-	const MALIGN_LURE  ; 22
+	const LIFT_KEY     ; 20
+	const HARSH_LURE   ; 21
+	const POTENT_LURE  ; 22
+	const MALIGN_LURE  ; 23
 DEF CHARMS_START EQU const_value
 	; Only charms below this point!
-	const SHINY_CHARM  ; 23
-	const OVAL_CHARM   ; 24
-	const CATCH_CHARM  ; 25
+	const SHINY_CHARM  ; 24
+	const OVAL_CHARM   ; 25
+	const CATCH_CHARM  ; 26
 DEF NUM_KEY_ITEMS EQU const_value - 1
 
 ; Alphabetical order (see data/items/name_order.asm)
@@ -694,6 +695,7 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_GS_BALL
 	const NAM_HARSH_LURE
 	const NAM_ITEMFINDER
+	const NAM_LIFT_KEY
 	const NAM_LOST_ITEM
 	const NAM_MACHINE_PART
 	const NAM_MALIGN_LURE

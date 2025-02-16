@@ -1370,7 +1370,21 @@ MACRO scalltable
 	dw \1 ; pointer table
 ENDM
 
-	const givepokemove_command
+	const setmapobjectmovedata_command
+MACRO setmapobjectmovedata
+	db setmapobjectmovedata_command
+	db \1 ; person
+	db \2 ; SpriteMovementData index
+ENDM
+
+	const setmapobjectpal_command
+MACRO setmapobjectpal
+	db setmapobjectpal_command
+	db \1 ; person
+	db \2 ; palette
+ENDM
+
+const givepokemove_command
 MACRO givepokemove
 	db givepokemove_command
 	dw \1 ; move

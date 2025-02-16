@@ -313,6 +313,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; ORANGETICKET
 	dw IsntTheTimeMessage ; MYSTICTICKET
 	dw IsntTheTimeMessage ; OLD_SEA_MAP
+	dw IsntTheTimeMessage ; LIFT_KEY
 	dw IsntTheTimeMessage ; HARSH_LURE
 	dw IsntTheTimeMessage ; POTENT_LURE
 	dw IsntTheTimeMessage ; MALIGN_LURE
@@ -2198,10 +2199,9 @@ CandyJar_MonSelected:
 	ld b, a
 	call CalcCandies
 	ld a, [wItemQuantityChangeBuffer]
-	sub b
-	ld [wItemQuantityChangeBuffer], a
+	cp b
 	ld a, b
-	and a
+	ld [wItemQuantityChangeBuffer], a
 	ld hl, XWillBeAppliedText
 	jr z, .got_text
 	ld hl, OnlyXWillBeAppliedText
@@ -2469,7 +2469,7 @@ CalcCandies:
 	ld c, a
 
 	xor a ; EXP_CANDY_XS - 1
-	ldh [hQuotient + 0], a
+	ldh [hDividend + 0], a
 	ld a, c
 	ldh [hDividend + 1], a
 	ld a, d
@@ -2483,9 +2483,14 @@ CalcCandies:
 	cp EXP_CANDY_XL - 1
 	jr nz, .divide_100_x_division_amount
 ; divide by 10000 x division amount
+	push af
 	ld a, 100
 	ldh [hDivisor], a
-	call Divide
+	push bc
+	ld b, 4
+	farcall Divide
+	pop bc
+	pop af
 ; fallthrough
 .divide_100_x_division_amount
 	dec a
@@ -2499,12 +2504,28 @@ CalcCandies:
 	pop hl
 	pop bc
 	ldh [hDivisor], a
-	call Divide
+	push bc
+	ld b, 4
+	farcall Divide
+	pop bc
 ; fallthrough
 .divide_100
 	ld a, 100
 	ldh [hDivisor], a
-	call Divide
+	push bc
+	ld b, 4
+	farcall Divide
+	pop bc
+
+	; if there are values in these bytes,
+	; then we can use all the candies...
+	ldh a, [hQuotient + 0]
+	and a
+	ret nz
+	ldh a, [hQuotient + 1]
+	and a
+	ret nz
+
 	ldh a, [hRemainder]
 	and a
 	ldh a, [hQuotient + 2]

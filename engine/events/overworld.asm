@@ -284,7 +284,7 @@ Script_CutFromMenu:
 	refreshmap
 	special UpdateTimePals
 	callasm GetBuffer6
-	ifequalfwd $0, Script_CutTree
+	ifequal $0, Script_CutTree
 ;Script_CutGrass:
 	callasm PrepareOverworldMove
 	farwritetext _UseCutText
@@ -299,6 +299,9 @@ GetBuffer6:
 	ret
 
 CutDownGrass:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
+	farcall CancelOWFadePalettes
 	farcall CopyBGGreenToOBPal7
 	ld hl, wBuffer3 ; OverworldMapTile
 	ld a, [hli]
@@ -313,6 +316,8 @@ CutDownGrass:
 	call DelayFrame
 	ld a, 1 ; Animation type
 	farcall OWCutAnimation
+	ld hl, wWeatherFlags
+	res OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	call BufferScreen
 	call GetMovementPermissions
 	call UpdateSprites
@@ -371,6 +376,9 @@ AutoCutTreeScript:
 	endtext
 
 CutDownTree:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
+	farcall CancelOWFadePalettes
 	farcall CopyBGGreenToOBPal7
 	xor a
 	ldh [hBGMapMode], a
@@ -379,6 +387,8 @@ CutDownTree:
 	call DelayFrame
 	xor a ; Animation type
 	farcall OWCutAnimation
+	ld hl, wWeatherFlags
+	res OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	call BufferScreen
 	call GetMovementPermissions
 	call UpdateSprites
@@ -1422,6 +1432,9 @@ AutoHeadbuttScript:
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
+	; if there's no possibility of a encounter,
+	; then donn't allow farming for items.
+	ifequalfwd TREEMON_NO_ENCOUNTER_SET, .no_item
 	iffalsefwd .no_battle
 	randomwildmon
 	startbattle

@@ -20,20 +20,18 @@ MonMenuOptions:
 	mon_menu_option MONMENU_FIELD_MOVE, MONMENUITEM_HEADBUTT,   HEADBUTT
 	mon_menu_option MONMENU_FIELD_MOVE, MONMENUITEM_ROCKSMASH,  ROCK_SMASH
 ; options
-	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_STATS,      .stats
+	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_SUMMARY,    .summary
 	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_SWITCH,     .switch
 	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_ITEM,       .item
 	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_CANCEL,     .cancel
-	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_MOVE,       .move
 	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_MAIL,       .mail
 	mon_menu_option MONMENU_MENUOPTION, MONMENUITEM_ERROR,      .error
 	assert_table_length NUM_MONMENUITEMS
 	db -1 ; end
 
-.stats:  db "STATS@"
-.switch: db "SWITCH@"
-.item:   db "ITEM@"
-.cancel: db "CANCEL@"
-.move:   db "MOVE@"
-.mail:   db "MAIL@"
-.error:  db "ERROR!@"
+.summary: db "Summary@"
+.switch:  db "Switch@"
+.item:    db "Item@"
+.cancel:  db "Cancel@"
+.mail:    db "Mail@"
+.error:   db "Error!@"

@@ -53,7 +53,7 @@ EvosAttacksPointersVariants::
 	dw .TaurosPaldeanFireEvosAttacks
 	dw .TaurosPaldeanWaterEvosAttacks
 
-	dw .UrsalunaBloodmoonEvoAttacks
+	dw .UrsalunaBloodmoonEvosAttacks
 .IndirectEnd::
 
 .GyaradosRedEvosAttacks
@@ -966,7 +966,7 @@ endc
 	dbw 80, OUTRAGE ; HGSS tutor move
 	db -1 ; no more level-up moves
 
-.UrsalunaBloodmoonEvoAttacks
+.UrsalunaBloodmoonEvosAttacks
 	db -1 ; no more evolutions
 	dbw 1, BULLDOZE ; evolution move
 	dbw 1, GUNK_SHOT ; HGSS tutor move
@@ -982,7 +982,7 @@ endc
 	dbw 29, SLASH
 	dbw 38, SCARY_FACE
 	dbw 47, REST
-	dbw 49, NIGHT_SLASH ; Snore → egg move
+	dbw 49, EARTH_POWER
 	dbw 58, MOONBLAST
 	dbw 67, FOCUS_BLAST ; Hammer Arm → SV TM move
 	dbw 76, HYPER_BEAM ; Blood Moon → SV TM move

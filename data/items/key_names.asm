@@ -32,6 +32,7 @@ KeyItemNames::
 	li "OrangeTicket"
 	li "MysticTicket"
 	li "Old Sea Map"
+	li "Lift Key"
 	li "Harsh Lure"
 	li "Potent Lure"
 	li "Malign Lure"

@@ -258,8 +258,11 @@ DragonTamerPic: INCBIN "gfx/trainers/dragon_tamer.2bpp.lz"
 SECTION "EngineerPic", ROMX
 EngineerPic: INCBIN "gfx/trainers/engineer.2bpp.lz"
 
-SECTION "TeacherPic", ROMX
-TeacherPic: INCBIN "gfx/trainers/teacher.2bpp.lz"
+SECTION "TeacherFPic", ROMX
+TeacherFPic: INCBIN "gfx/trainers/teacher_f.2bpp.lz"
+
+SECTION "TeacherMPic", ROMX
+TeacherMPic: INCBIN "gfx/trainers/teacher_m.2bpp.lz"
 
 SECTION "GuitaristmPic", ROMX
 GuitaristmPic: INCBIN "gfx/trainers/guitarist_m.2bpp.lz"

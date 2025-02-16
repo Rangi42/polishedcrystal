@@ -157,7 +157,7 @@ GenericTrainerSailorKenneth:
 	done
 
 GenericTrainerTeacherShirley:
-	generictrainer TEACHER, SHIRLEY, EVENT_BEAT_TEACHER_SHIRLEY, TeacherShirleySeenText, TeacherShirleyBeatenText
+	generictrainer TEACHER_F, SHIRLEY, EVENT_BEAT_TEACHER_SHIRLEY, TeacherShirleySeenText, TeacherShirleyBeatenText
 
 	text "We're on a field"
 	line "trip to the ruins"

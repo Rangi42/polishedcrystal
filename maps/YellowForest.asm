@@ -112,7 +112,7 @@ GenericTrainerSchoolgirlIsabel:
 	done
 
 GenericTrainerTeacherKathryn:
-	generictrainer TEACHER, KATHRYN, EVENT_BEAT_TEACHER_KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText
+	generictrainer TEACHER_F, KATHRYN, EVENT_BEAT_TEACHER_KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText
 
 	text "Keeping an eye on"
 	line "everyone during a"
