@@ -1384,10 +1384,14 @@ Tackle_BGEffect25_2d_two:
 Rollout_FillLYOverridesBackup:
 	push af
 	ld a, [wFXAnimIDHi]
-	or a
+	if HIGH(ROLLOUT)
+		cp HIGH(ROLLOUT)
+	else
+		or a
+	endc
 	jr nz, .not_rollout
 	ld a, [wFXAnimIDLo]
-	cp ROLLOUT
+	cp LOW(ROLLOUT)
 	jr z, .rollout
 .not_rollout
 	pop af

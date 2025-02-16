@@ -2338,7 +2338,6 @@ BattleCommand_lowersub:
 
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	inc a
 	ld [wBattleAnimParam], a
 	ld a, SUBSTITUTE
@@ -2426,9 +2425,8 @@ BattleCommand_moveanimnosub:
 .pursuit
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
-	call PlayFXAnimID
+	call SetMoveAnimationID
+	call PlaySelectedFXAnim
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2453,13 +2451,12 @@ BattleCommand_moveanimnosub:
 	push af
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
+	call SetMoveAnimationID
 	pop af
-	jmp z, PlayFXAnimID
+	jmp z, PlaySelectedFXAnim
 	xor a
 	ld [wNumHits], a
-	jmp PlayFXAnimID
+	jmp PlaySelectedFXAnim
 
 
 StatUpDownAnim:
@@ -2478,9 +2475,8 @@ StatUpDownAnim:
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
-	jmp PlayFXAnimID
+	call SetMoveAnimationID
+	jmp PlaySelectedFXAnim
 
 BattleCommand_raisesub:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -2493,7 +2489,6 @@ BattleCommand_raisesub:
 
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	ld a, $2
 	ld [wBattleAnimParam], a
 	ld a, SUBSTITUTE
@@ -3149,7 +3144,6 @@ BattleCommand_postfainteffects:
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	inc a
 	ld [wBattleAnimParam], a
 	ld a, DESTINY_BOND
@@ -4590,7 +4584,8 @@ PlayFXAnimID:
 	ld [wFXAnimIDLo], a
 	ld a, d
 	ld [wFXAnimIDHi], a
-
+; fallthrough
+PlaySelectedFXAnim:
 	ld c, 3
 	call DelayFrames
 
@@ -6664,7 +6659,6 @@ PlayDamageAnim:
 LoadMoveAnim:
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -6674,7 +6668,7 @@ LoadMoveAnim:
 	; fallthrough
 
 LoadAnim:
-	ld [wFXAnimIDLo], a
+	call SetMoveAnimationID
 	jr PlayUserBattleAnim
 
 PlayOpponentBattleAnim:
@@ -6691,6 +6685,16 @@ PlayUserBattleAnim:
 	push bc
 	farcall PlayBattleAnim
 	jmp PopBCDEHL
+
+SetMoveAnimationID:
+	push hl
+	call GetMoveIndexFromID
+	ld a, l
+	ld [wFXAnimID], a
+	ld a, h
+	ld [wFXAnimID + 1], a
+	pop hl
+	ret
 
 CallBattleCore:
 	ld a, BANK(BattleCore)

@@ -698,7 +698,13 @@ HandleWrap:
 
 	push de
 	ld a, [de]
+	push hl
+	call GetMoveIndexFromID
+	ld a, l
 	ld [wFXAnimIDLo], a
+	ld a, h
+	ld [wFXAnimIDHi], a
+	pop hl
 	dec [hl]
 	ld hl, BattleText_UserWasReleasedFromStringBuffer1
 	jr z, .print_text
@@ -710,7 +716,6 @@ HandleWrap:
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	predef PlayBattleAnim
 	call SwitchTurn
 

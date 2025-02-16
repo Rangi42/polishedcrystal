@@ -265,45 +265,43 @@ endc
 	const DISARM_VOICE  ; $fe
 	const STRUGGLE      ; $ff
 DEF NUM_ATTACKS EQU const_value - 1
-; Battle animations use the same constants as the moves up to this point
-	; These animations don't play if battle anims are disabled.
-	const_next $100
-	; Pseudo-moves (replaces default move anim for certain species)
-	const ANIM_FURY_ATTACK        ; $100
-	const ANIM_MILK_DRINK         ; $101
-	const ANIM_WITHDRAW           ; $102
-	const ANIM_HARDEN             ; $103
 
-	const ANIM_SLP                ; $104
-	const ANIM_BRN                ; $105
-	const ANIM_PSN                ; $106
-	const ANIM_SAP                ; $107
-	const ANIM_FRZ                ; $108
-	const ANIM_PAR                ; $109
-	const ANIM_IN_LOVE            ; $10a
-	const ANIM_IN_SANDSTORM       ; $10b
-	const ANIM_IN_HAIL            ; $10c
-	const ANIM_UNDER_CURSE        ; $10d
-	const ANIM_CONFUSED           ; $10e
-	const ANIM_STAT_UP            ; $10f
-	const ANIM_STAT_DOWN          ; $110
-	const ANIM_SHARPEN            ; $111
-
+; Animations with negative IDs will play even when animations are disabled
+	const_def -1, -1
 	; These animations play no matter the battle animation settings
-	const ANIM_THROW_POKE_BALL    ; $112
-	const ANIM_SEND_OUT_MON       ; $113
-	const ANIM_RETURN_MON         ; $114
-	const ANIM_GHOST_TRANSFORM    ; $115
-
 	; Generic "hit" animations
-	const ANIM_MISS               ; $116
-	const ANIM_ENEMY_DAMAGE       ; $117
-	const ANIM_PLAYER_DAMAGE      ; $118
-	const ANIM_HIT_CONFUSION      ; $119
-	const ANIM_HELD_ITEM_TRIGGER  ; $11a
+	const ANIM_HELD_ITEM_TRIGGER     ;  -1 (ffff)
+	const ANIM_HIT_CONFUSION         ;  -2 (fffe)
+	const ANIM_PLAYER_DAMAGE         ;  -3 (fffd)
+	const ANIM_ENEMY_DAMAGE          ;  -4 (fffc)
+	const ANIM_MISS                  ;  -5 (fffb)
+	; These animations play no matter the battle animation settings
+	const ANIM_GHOST_TRANSFORM       ;  -6 (fffa)
+	const ANIM_RETURN_MON            ;  -7 (fff9)
+	const ANIM_SEND_OUT_MON          ;  -8 (fff8)
+	const ANIM_THROW_POKE_BALL       ;  -9 (fff7)
 
+	; Pseudo-moves (replaces default move anim for certain species)
+	const ANIM_SHARPEN               ; -10 (fff6)
+	const ANIM_STAT_DOWN             ; -11 (fff5)
+	const ANIM_STAT_UP               ; -12 (fff4)
+	const ANIM_CONFUSED              ; -13 (fff3)
+	const ANIM_UNDER_CURSE           ; -14 (fff2)
+	const ANIM_IN_HAIL               ; -15 (fff1)
+	const ANIM_IN_SANDSTORM          ; -16 (fff0)
+	const ANIM_IN_LOVE               ; -17 (ffef)
+	const ANIM_PAR                   ; -18 (ffee)
+	const ANIM_FRZ                   ; -19 (ffed)
+	const ANIM_SAP                   ; -20 (ffec)
+	const ANIM_PSN                   ; -21 (ffeb)
+	const ANIM_BRN                   ; -22 (ffea)
+	const ANIM_SLP                   ; -23 (ffe9)
+	const ANIM_HARDEN                ; -24 (ffe8)
+	const ANIM_WITHDRAW              ; -25 (ffe7)
+	const ANIM_MILK_DRINK            ; -26 (ffe6)
+	const ANIM_FURY_ATTACK           ; -27 (ffe5)
 DEF ANIM_AFFECTION EQU ANIM_IN_LOVE ; just an alias for now
-DEF NUM_BATTLE_ANIMS EQU const_value - 1
+DEF NUM_BATTLE_ANIMS EQU -const_value - 1
 DEF FIRST_UNCONDITIONAL_ANIM EQU ANIM_THROW_POKE_BALL
 
 ; wNumHits uses offsets from ANIM_MISS

@@ -483,7 +483,15 @@ ParsePlayerAction:
 	jr nz, .reset_bide
 	xor a
 	ld [wMoveSelectionMenuType], a
-	inc a ; ld a, ACROBATICS
+	if HIGH(ACROBATICS)
+		ld a, HIGH(ACROBATICS)
+	endc
+	ld [wFXAnimIDHi], a
+	if LOW(ACROBATICS) == (HIGH(ACROBATICS) + 1)
+		inc a
+	else
+		ld a, LOW(ACROBATICS)
+	endc
 	ld [wFXAnimIDLo], a
 	call MoveSelectionScreen
 	push af

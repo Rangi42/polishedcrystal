@@ -37,7 +37,6 @@ BattleCommand_transform:
 	push de
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	ld a, $1
 	ld [wBattleAnimParam], a
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -153,7 +152,6 @@ BattleCommand_transform:
 .after_anim
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimIDHi], a
 	ld a, $2
 	ld [wBattleAnimParam], a
 	pop af

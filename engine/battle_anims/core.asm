@@ -248,7 +248,8 @@ InitBattleAnimBuffer:
 	ld hl, BATTLEANIMSTRUCT_OAMFLAGS
 	add hl, bc
 	ld a, [hl]
-	and %10000000
+
+	and PRIORITY
 	ld [wBattleAnimTempOAMFlags], a
 	xor a
 	ld [wBattleAnimTemp7], a
@@ -272,54 +273,62 @@ InitBattleAnimBuffer:
 	ld [wBattleAnimTempXOffset], a
 	ld a, [hli]
 	ld [wBattleAnimTempYOffset], a
+
 	ldh a, [hBattleTurn]
 	and a
 	ret z
+
 	ld hl, BATTLEANIMSTRUCT_OAMFLAGS
 	add hl, bc
 	ld a, [hl]
 	ld [wBattleAnimTempOAMFlags], a
 	bit 0, [hl]
 	ret z
+
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hli]
 	cpl
-	add (-10 * 8) + 4 + 1 ; a = (-10 * 8) + 4 - a
+	add (-10 * TILE_WIDTH) + 4 + 1 ; a = (-10 * TILE_WIDTH) + 4 - a
 	ld [wBattleAnimTempXCoord], a
 	ld a, [hli]
 	ld d, a
 	ld a, [wBattleAnimTemp1]
 	cp $ff
-	jr nz, .check_psystrike_freshsnack
-	ld a, 5 * 8
-	add d
+	jr nz, .vertical_flip
+	ld a, 5 * TILE_WIDTH
 	jr .done
 
-.check_psystrike_freshsnack
+.vertical_flip
 	sub d
 	push af
-	ld a, [wFXAnimIDHi]
-	or a
-	jr nz, .no_sub
-	ld a, [wFXAnimIDLo]
-	cp PSYSTRIKE
-	jr z, .sub_8
-	cp FRESH_SNACK
-	jr nz, .no_sub
-.sub_8
-	pop af
-	sub 1 * 8
-	jr .done
-.no_sub
-	pop af
+	push hl
+	push bc
+	ld hl, wFXAnimID
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld de, 2
+	ld hl, .extra_offset_moves
+	call IsInWordArray
+	pop bc
+	pop hl
+	pop de
+	sbc a
+	and -(1 * TILE_WIDTH)
 .done
+	add d
 	ld [wBattleAnimTempYCoord], a
 	ld a, [hli]
 	cpl
 	inc a
 	ld [wBattleAnimTempXOffset], a
 	ret
+
+.extra_offset_moves
+	dw PSYSTRIKE
+	dw FRESH_SNACK
+	dw -1
 
 GetBattleAnimTileOffset:
 	push hl

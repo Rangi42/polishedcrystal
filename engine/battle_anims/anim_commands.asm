@@ -51,11 +51,11 @@ BattleAnimRunScript:
 	; If not, the "battle effects" option can disable it.
 	ld a, [wFXAnimIDHi]
 	cp HIGH(FIRST_UNCONDITIONAL_ANIM)
-	jr c, .conditional
-	jr nz, .unconditional
+	jr c, .unconditional
+	jr nz, .conditional
 	ld a, [wFXAnimIDLo]
 	cp LOW(FIRST_UNCONDITIONAL_ANIM)
-	jr nc, .unconditional
+	jr c, .unconditional
 
 .conditional
 	farcall CheckBattleEffects
@@ -107,11 +107,15 @@ RunBattleAnimScript:
 
 ; Speed up Rollout's animation.
 	ld a, [wFXAnimIDHi]
-	or a
+	if HIGH(ROLLOUT)
+		cp HIGH(ROLLOUT)
+	else
+		or a
+	endc
 	jr nz, .not_rollout
 
 	ld a, [wFXAnimIDLo]
-	cp ROLLOUT
+	cp LOW(ROLLOUT)
 	jr nz, .not_rollout
 
 	ld a, $2e
