@@ -18,6 +18,7 @@ GetMoveAttribute::
 .done
 	pop bc
 	ret
+
 GetMoveAddress::
 ; Get the far address for move a's attributes in a:hl.
 ; This structure will not contain the animation byte! All MOVE_* constants must be reduced by 1 when indexing.
@@ -30,6 +31,7 @@ GetMoveAddress::
 	call LoadIndirectPointer
 	pop bc
 	ret
+
 GetMoveData::
 ; Copy move struct a to de.
 	ld [de], a

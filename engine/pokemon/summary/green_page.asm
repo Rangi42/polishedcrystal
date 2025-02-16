@@ -213,7 +213,7 @@ endr
 	inc a
 	ld [hl], a
 
-	ld hl, Moves + MOVE_POWER
+	ld a, MOVE_POWER
 	call GetCurMoveProperty
 	hlcoord 3, 13
 	cp 2
@@ -228,7 +228,7 @@ endr
 	rst PlaceString
 
 .place_accuracy
-	ld hl, Moves + MOVE_ACC
+	ld a, MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 8, 13
 	cp 255

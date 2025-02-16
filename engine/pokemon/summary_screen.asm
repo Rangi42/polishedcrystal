@@ -467,7 +467,7 @@ SummaryScreen_InitLayout:
 	and a
 	jr z, .moveTypesEnd
 	ld [wCurMove], a
-	ld hl, Moves + MOVE_TYPE
+	ld a, MOVE_TYPE
 	call GetCurMoveProperty
 	ld hl, wSummaryScreenTypes - 252 + 2
 	add hl, bc

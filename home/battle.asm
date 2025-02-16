@@ -432,7 +432,7 @@ GetFixedCategory::
 ; return category in a without modifying hl
 ; if category is STATUS, return it
 	push hl
-	ld bc, MOVE_CATEGORY
+	ld bc, MOVE_CATEGORY - 1
 	add hl, bc
 	call GetFarByte
 	pop hl
@@ -446,7 +446,7 @@ GetFixedCategory::
 	ret nz
 ; return PHYSICAL or SPECIAL depending on the type
 	push hl
-	ld bc, MOVE_TYPE
+	ld bc, MOVE_TYPE - 1
 	add hl, bc
 	ldh a, [hTemp2]
 	call GetFarByte
