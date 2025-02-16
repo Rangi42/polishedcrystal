@@ -114,6 +114,7 @@ ResetWRAM:
 	ld a, BANK(wGameData)
 	ldh [rSVBK], a
 
+	xor a
 	ld hl, wShadowOAM
 	ld bc, wOptions3 - wShadowOAM
 	rst ByteFill
