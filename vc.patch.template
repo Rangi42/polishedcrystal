@@ -55,6 +55,11 @@ Mode = 2
 Address = {hex @}
 Type = 4
 
+[ExchangeBytes5]
+Mode = 2
+Address = {hex @}
+Type = 4
+
 [Wireless_net_recheck]
 Mode = 2
 Address = {hex @}
