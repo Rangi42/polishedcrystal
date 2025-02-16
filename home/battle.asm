@@ -74,12 +74,6 @@ OTPartyAttr::
 	ld a, [wCurOTMon]
 	jr DoBattlePartyAttr
 
-ResetDamage::
-	xor a
-	ld [wCurDamage], a
-	ld [wCurDamage + 1], a
-	ret
-
 StackCallOpponentTurn::
 ; Falls through to SwitchTurn after inserting SwitchTurn in the call stack,
 ; so the subsequent function pointer is "wrapped" by SwitchTurns.

@@ -237,19 +237,6 @@ CopyPals::
 	jr nz, CopyPals
 	ret
 
-ClearVBank1::
-	ld a, 1
-	ldh [rVBK], a
-
-	ld hl, vTiles0
-	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vTiles0
-	xor a
-	rst ByteFill
-
-	xor a
-	ldh [rVBK], a
-	ret
-
 Special_ReloadSpritesNoPalettes::
 	ldh a, [rSVBK]
 	push af

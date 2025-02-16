@@ -2,26 +2,26 @@
 ; This lists all exceptions
 AbnormalContactMoves:
 	; Special moves that make contact
-	db DRAINING_KISS
-	db PETAL_DANCE
+	dw DRAINING_KISS
+	dw PETAL_DANCE
 	; Physical moves that don't make contact
-	db BONEMERANG
-	db BULLDOZE
-	db EARTHQUAKE
-	db EXPLOSION
-	db GUNK_SHOT
-	db ICE_SHARD
-	db ICICLE_CRASH
-	db ICICLE_SPEAR
-	db MAGNITUDE
-	db PAY_DAY
-	db PIN_MISSILE
-	db POISON_STING
-	db RAZOR_LEAF
-	db ROCK_BLAST
-	db ROCK_SLIDE
-	db ROCK_THROW
-	db SACRED_FIRE
-	db SEED_BOMB
-	db STONE_EDGE
-	db STRUGGLE ; -1
+	dw BONEMERANG
+	dw BULLDOZE
+	dw EARTHQUAKE
+	dw EXPLOSION
+	dw GUNK_SHOT
+	dw ICE_SHARD
+	dw ICICLE_CRASH
+	dw ICICLE_SPEAR
+	dw MAGNITUDE
+	dw PAY_DAY
+	dw PIN_MISSILE
+	dw POISON_STING
+	dw RAZOR_LEAF
+	dw ROCK_BLAST
+	dw ROCK_SLIDE
+	dw ROCK_THROW
+	dw SACRED_FIRE
+	dw SEED_BOMB
+	dw STONE_EDGE
+	dw STRUGGLE ; -1

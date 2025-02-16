@@ -12,19 +12,26 @@ _CheckContactMove::
 .not_punching_glove
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	ld b, a
+	call GetMoveIndexFromID
+	cphl STRUGGLE
 	ret nc
+	ld a, b
 	push af
+	ld b, h
+	ld c, l
 	ld hl, AbnormalContactMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	ld b, PHYSICAL
 	jr nc, .not_abnormal
 	assert PHYSICAL + 1 == SPECIAL
 	inc b
 .not_abnormal
 	pop af
-	ld hl, Moves + MOVE_CATEGORY
-	call GetMoveProperty ; checks category properly even if PSS is off
+	ld l, a
+	ld a, MOVE_CATEGORY
+	call GetMoveAttribute ; checks category properly even if PSS is off
 	cp b
 	ret z
 	and a

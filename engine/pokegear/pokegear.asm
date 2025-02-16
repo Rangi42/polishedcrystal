@@ -109,6 +109,19 @@ PokeGear:
 	ld a, %11100100
 	jmp DmgToCgbObjPal0
 
+ClearVBank1::
+	ld a, 1
+	ldh [rVBK], a
+
+	ld hl, vTiles0
+	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vTiles0
+	xor a
+	rst ByteFill
+
+	xor a
+	ldh [rVBK], a
+	ret
+
 Pokegear_LoadGFX:
 	call ClearVBank1
 	ld hl, TownMapGFX

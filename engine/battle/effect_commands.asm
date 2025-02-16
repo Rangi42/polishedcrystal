@@ -461,7 +461,12 @@ EndTurn:
 	ld a, [wMoveState]
 	set 7, a
 	ld [wMoveState], a
-	jmp ResetDamage
+; fallthrough
+ResetDamage::
+	xor a
+	ld [wCurDamage], a
+	ld [wCurDamage + 1], a
+	ret
 
 CantMove:
 	; Reset Destiny Bond state.
