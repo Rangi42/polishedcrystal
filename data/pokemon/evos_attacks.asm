@@ -28,8 +28,7 @@ EvosAttacksPointers::
 	indirect_entries NUM_KANTO_POKEMON, EvosAttacksPointersKanto
 	indirect_entries NUM_JOHTO_POKEMON, EvosAttacksPointersJohto
 	indirect_entries NUM_SPECIES, EvosAttacksPointersLateGen
-	indirect_entries FIRST_VARIANT_FORM_MON - 1, ; skip the cosmetic forms
-	indirect_entries NUM_UNIQUE_POKEMON, EvosAttacksPointersVariants
+	indirect_entries NUM_UNIQUE_POKEMON - (FIRST_VARIANT_FORM_MON - 1 - NUM_SPECIES), EvosAttacksPointersVariants
 	indirect_table_end
 
 INCLUDE "data/pokemon/evos_attacks_kanto.asm"
