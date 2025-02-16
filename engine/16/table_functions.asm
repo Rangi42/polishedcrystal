@@ -1,5 +1,18 @@
 INCLUDE "engine/16/macros.asm"
 
+ForceGarbageCollection::
+	push bc
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("16-bit WRAM tables")
+	ldh [rSVBK], a
+	call PokemonTableGarbageCollection
+	call MoveTableGarbageCollection
+	pop af
+	ldh [rSVBK], a
+	pop bc
+	ret
+
 ; Note: ID = 8-bit ID used in memory, etc.; index = true 16-bit index into tables
 
 _GetMoveIndexFromID::

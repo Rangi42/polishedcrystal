@@ -301,6 +301,11 @@ SavePokemonData:
 	rst CopyBytes
 	jmp CloseSRAM
 
+SaveIndexTables:
+	; saving is already a long operation, so take the chance to GC the table
+	farcall ForceGarbageCollection
+	ret
+
 SaveChecksum:
 	ld hl, sGameData
 	ld bc, sGameDataEnd - sGameData
