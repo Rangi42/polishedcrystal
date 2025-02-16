@@ -25,7 +25,7 @@ MoveReminderScript:
 	writetext MoveReminderPromptText
 	yesorno
 	iffalsefwd .refused
-	setval NO_MOVE ; to toggle move relearner
+	setval16 NO_MOVE ; to toggle move relearner
 	writetext MoveReminderWhichMonText
 	waitbutton
 	special Special_MoveTutor

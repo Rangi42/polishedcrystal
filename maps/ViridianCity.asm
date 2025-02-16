@@ -66,7 +66,7 @@ ViridianCityTutorDreamEaterScript:
 	writetext Text_ViridianCityTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval DREAM_EATER
+	setval16 DREAM_EATER
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

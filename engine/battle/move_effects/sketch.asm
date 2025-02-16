@@ -11,13 +11,13 @@ BattleCommand_sketch:
 .not_linked
 	; If the opponent has a substitute up, fail.
 	call CheckSubstituteOpp
-	jr nz, .fail
+	jmp nz, .fail
 
 	; If the user is transformed, fail.
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
-	jr nz, .fail
+	jmp nz, .fail
 
 	; Get the battle move structs.
 	ldh a, [hBattleTurn]
@@ -34,7 +34,10 @@ BattleCommand_sketch:
 	; Fail if move is invalid or is Struggle. Sketch is implicitly checked below.
 	and a
 	jr z, .fail
-	inc a ; cp STRUGGLE
+	push bc
+	ld bc, STRUGGLE
+	call CompareMove
+	pop bc
 	jr z, .fail
 
 	; Fail if user already knows that move (which will always include Sketch)
@@ -93,7 +96,10 @@ BattleCommand_sketch:
 	sub l
 	ld h, a
 	ld a, [hl]
-	cp SKETCH
+	push bc
+	ld bc, SKETCH
+	call CompareMove
+	pop bc
 	jr nz, .finished_overwriting_sketch
 
 	ld [hl], b

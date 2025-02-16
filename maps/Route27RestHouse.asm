@@ -48,7 +48,7 @@ Route27RestHouseGranny:
 	iffalsefwd .NoSilverLeaf
 	yesorno
 	iffalsefwd .TutorRefused
-	setval SKILL_SWAP
+	setval16 SKILL_SWAP
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

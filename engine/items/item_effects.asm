@@ -2682,7 +2682,10 @@ RestorePPEffect:
 
 .ppup2
 	ld a, [hl]
-	cp SKETCH
+	push hl
+	call GetMoveIndexFromID
+	cphl SKETCH
+	pop hl
 	jr z, .CantUsePPUpOnSketch
 
 	ld bc, MON_PP - MON_MOVES

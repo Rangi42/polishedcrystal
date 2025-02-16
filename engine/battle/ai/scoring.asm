@@ -976,7 +976,10 @@ AI_Smart_SpeedDownHit:
 ; Player is faster than enemy.
 
 	ld a, [wEnemyMoveStruct + MOVE_ANIM]
-	cp ICY_WIND
+	push hl
+	call GetMoveIndexFromID
+	cphl ICY_WIND
+	pop hl
 	ret nz
 	call AICheckEnemyQuarterHP
 	ret nc
@@ -1712,7 +1715,10 @@ AI_Smart_Earthquake:
 
 ; Greatly encourage this move if the player is underground and the enemy is faster.
 	ld a, [wPlayerSelectedMove]
-	cp DIG
+	push hl
+	call GetMoveIndexFromID
+	cphl DIG
+	pop hl
 	ret nz
 
 	ld a, [wPlayerSubStatus3]
@@ -1952,7 +1958,10 @@ AI_Smart_JumpKick:
 AI_Smart_Gust:
 ; Greatly encourage this move if the player is flying and the enemy is faster.
 	ld a, [wPlayerSelectedMove]
-	cp FLY
+	push hl
+	call GetMoveIndexFromID
+	cphl FLY
+	pop hl
 	ret nz
 
 	ld a, [wPlayerSubStatus3]

@@ -41,7 +41,7 @@ Route46TutorRoute46Script:
 	writetext Text_Route46TutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval ROLLOUT
+	setval16 ROLLOUT
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

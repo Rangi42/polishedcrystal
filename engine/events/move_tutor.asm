@@ -8,6 +8,10 @@ Special_MoveTutor:
 	xor a
 	ld [wItemAttributeParamBuffer], a
 	ldh a, [hScriptVar]
+	ld l, a
+	ldh a, [hScriptVar + 1]
+	ld h, a
+	call GetMoveIDFromIndex
 	and a
 	ld [wPutativeTMHMMove], a
 	jr z, .relearner

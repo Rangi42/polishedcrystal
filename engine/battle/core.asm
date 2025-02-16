@@ -471,7 +471,7 @@ ParsePlayerAction:
 .using_move
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	jr z, .lavender_ghost
+	jmp z, .lavender_ghost
 
 	call SetPlayerTurn
 	call CheckLockedIn
@@ -503,7 +503,8 @@ ParsePlayerAction:
 	call FarCopyColorWRAM
 	call SetDefaultBGPAndOBP
 	ld a, [wCurPlayerMove]
-	inc a ; cp STRUGGLE
+	call GetMoveIndexFromID
+	cphl STRUGGLE
 	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -5199,7 +5200,8 @@ MoveSelectionScreen:
 
 .struggle
 	call ClearSprites
-	ld a, STRUGGLE
+	ld hl, STRUGGLE
+	call GetMoveIDFromIndex
 	ld [wCurPlayerMove], a
 	ld hl, BattleText_PkmnHasNoMovesLeft
 	call StdBattleTextbox
@@ -5791,7 +5793,8 @@ ParseEnemyAction:
 	ret
 
 .struggle
-	ld a, STRUGGLE
+	ld hl, STRUGGLE
+	call GetMoveIDFromIndex
 	jr .finish
 
 ResetVarsForSubstatusRage:
@@ -5864,18 +5867,22 @@ endc
 	and a
 	jr nz, .switch
 	ld a, [wCurPlayerMove]
-	inc a ; cp STRUGGLE
-	ld a, BATTLEACTION_STRUGGLE
+	call GetMoveIndexFromID
+	ld b, BATTLEACTION_STRUGGLE
+	cphl STRUGGLE
 	jr z, .use_move
 	ld a, [wCurMoveNum]
+	ld b, a
 .use_move
+	ld a, b
+.send
 	and $0f
 	ret
 
 .switch
 	ld a, [wPlayerSwitchTarget]
 	add BATTLEACTION_SWITCH1 - 1
-	jr .use_move
+	jr .send
 
 LoadEnemyWildmon:
 ; Initialize wildmon data

@@ -29,7 +29,7 @@ WarmBeachShackTutorBodySlamScript:
 	iffalsefwd .NoSilverLeaf
 	yesorno
 	iffalsefwd .TutorRefused
-	setval BODY_SLAM
+	setval16 BODY_SLAM
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
@@ -85,7 +85,7 @@ WarmBeachShackTutorEndureScript:
 	iffalsefwd .NoSilverLeaf
 	yesorno
 	iffalsefwd .TutorRefused
-	setval ENDURE
+	setval16 ENDURE
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

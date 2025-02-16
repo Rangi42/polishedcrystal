@@ -137,21 +137,21 @@ MoveTutor:
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .FirePunch:
-	setval FIRE_PUNCH
+	setval16 FIRE_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .ThunderPunch:
-	setval THUNDERPUNCH
+	setval16 THUNDERPUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .IcePunch:
-	setval ICE_PUNCH
+	setval16 ICE_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

@@ -297,11 +297,16 @@ BattleCommand_checkturn:
 	; Sleep Talk bypasses sleep.
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp SLEEP_TALK
-	jr z, .not_asleep
+	ld hl, .sleep_bypass_moves
+	call CheckMoveInList
+	jr c, .not_asleep
 
 	call CantMove
 	jmp EndTurn
+
+.sleep_bypass_moves
+	dw SLEEP_TALK
+	dw -1
 
 .not_asleep
 	ld a, BATTLE_VARS_STATUS
@@ -312,12 +317,9 @@ BattleCommand_checkturn:
 	; Sacred Fire, Scald, and Flare Blitz thaw the user.
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp SACRED_FIRE
-	jr z, .thaw
-	cp SCALD
-	jr z, .thaw
-	cp FLARE_BLITZ
-	jr z, .thaw
+	ld hl, .thawing_moves
+	call CheckMoveInList
+	jr c, .thaw
 
 	; Check for defrosting
 	call BattleRandom
@@ -332,6 +334,12 @@ BattleCommand_checkturn:
 
 	call CantMove
 	jmp EndTurn
+
+.thawing_moves
+	dw SACRED_FIRE
+	dw SCALD
+	dw FLARE_BLITZ
+	dw -1
 
 .thaw
 	call BattleCommand_defrost
@@ -478,12 +486,17 @@ CantMove:
 .cancel_fly_dig
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
-	cp FLY
-	jr z, .fly_dig
-	cp DIG
-	ret nz
-.fly_dig
+	push hl
+	ld hl, .fly_dig_moves
+	call CheckMoveInList
+	pop hl
+	ret nc
 	jmp AppearUserRaiseSub
+
+.fly_dig_moves
+	dw FLY
+	dw DIG
+	dw -1
 
 VerifyChosenMove:
 ; Returns z if the used move is the move we selected in the move screen.
@@ -1367,7 +1380,8 @@ BattleCommand_stab:
 	; Struggle doesn't apply STAB or matchups
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	inc a ; cp STRUGGLE
+	ld bc, STRUGGLE
+	call CompareMove
 	ret z
 
 	; Apply type matchups
@@ -2103,17 +2117,8 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
 	bit SUBSTATUS_FLYING, a
-	jr z, .LockedOn
-
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-
-	cp EARTHQUAKE
-	ret z
-	cp MAGNITUDE
-	ret z
-
-.LockedOn:
+	ld hl, .DigMoves
+	jr nz, .check_move_in_list
 	ld a, 1
 	and a
 	ret
@@ -2153,26 +2158,28 @@ BattleCommand_checkhit:
 	ret z
 
 	bit SUBSTATUS_FLYING, a
-	jr z, .DigMoves
-
+	ld hl, .FlyMoves
+	jr z, .check_move_in_list
+	ld hl, .DigMoves
+.check_move_in_list
+	; returns z (and a = 0) if the current move is in a given list, or nz (and a = 1) if not
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-
-	cp GUST
-	ret z
-	cp THUNDER
-	ret z
-	cp HURRICANE
+	call CheckMoveInList
+	sbc a
+	inc a
 	ret
+
+.FlyMoves:
+	dw GUST
+	dw THUNDER
+	dw HURRICANE
+	dw -1
 
 .DigMoves:
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-
-	cp EARTHQUAKE
-	ret z
-	cp MAGNITUDE
-	ret
+	dw EARTHQUAKE
+	dw MAGNITUDE
+	dw -1
 
 .WeatherAccCheck:
 ; Returns z if the move used always hits in the current weather
@@ -2346,7 +2353,8 @@ BattleCommand_lowersub:
 	ld [wNumHits], a
 	inc a
 	ld [wBattleAnimParam], a
-	ld a, SUBSTITUTE
+	ld hl, SUBSTITUTE
+	call GetMoveIDFromIndex
 	jmp LoadAnim
 
 .mimic_anims
@@ -2436,14 +2444,16 @@ BattleCommand_moveanimnosub:
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp FLY
-	jr z, .fly_dig
-	cp DIG
-	ret nz
-
-.fly_dig
+	ld hl, .fly_dig_moves
+	call CheckMoveInList
+	ret nc
 ; clear sprite
 	jmp AppearUserLowerSub
+
+.fly_dig_moves
+	dw FLY
+	dw DIG
+	dw -1
 
 .multihit
 .conversion
@@ -2497,7 +2507,8 @@ BattleCommand_raisesub:
 	ld [wNumHits], a
 	ld a, $2
 	ld [wBattleAnimParam], a
-	ld a, SUBSTITUTE
+	ld hl, SUBSTITUTE
+	call GetMoveIDFromIndex
 	jmp LoadAnim
 
 BattleCommand_failuretext:
@@ -2512,10 +2523,11 @@ BattleCommand_failuretext:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 
-	cp FLY
-	jr z, .fly_dig
-	cp DIG
-	jr z, .fly_dig
+	push hl
+	ld hl, .fly_dig_moves
+	call CheckMoveInList
+	pop hl
+	jr c, .fly_dig
 
 ; Move effect:
 	inc hl
@@ -2540,6 +2552,11 @@ BattleCommand_failuretext:
 	res SUBSTATUS_FLYING, [hl]
 	call AppearUserRaiseSub
 	jmp EndMoveEffect
+
+.fly_dig_moves
+	dw FLY
+	dw DIG
+	dw -1
 
 BattleCommand_applydamage:
 ; b is set to an endure flag as follows:
@@ -3152,7 +3169,8 @@ BattleCommand_postfainteffects:
 	ld [wNumHits], a
 	inc a
 	ld [wBattleAnimParam], a
-	ld a, DESTINY_BOND
+	ld hl, DESTINY_BOND
+	call GetMoveIDFromIndex
 	call LoadAnim
 	call SwitchTurn
 
@@ -5814,18 +5832,33 @@ BattleCommand_charge:
 	call GetBattleVarAddr
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld b, a
-	cp FLY
-	jr z, .set_flying
-	cp DIG
+	ld b, a ; why?
+	push bc ; we will save b anyways just in case
+	push hl
+	ld h, a
+	ld bc, FLY
+	call CompareMove
+	ld a, 1 << SUBSTATUS_FLYING
+	jr z, .got_move_type
+	if HIGH(FLY) != HIGH(DIG)
+		ld bc, DIG
+	else
+		ld c, LOW(DIG)
+	endc
+	ld a, h
+	call CompareMove
+	ld a, 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .dont_set_digging
-	set SUBSTATUS_UNDERGROUND, [hl]
-	jr .dont_set_digging
 
-.set_flying
-	set SUBSTATUS_FLYING, [hl]
-
+.got_move_type
+	pop hl
+	or [hl]
+	ld [hl], a
+	push hl ; push again so we can pop it in the fallthrough
+; fallthrough
 .dont_set_digging
+	pop hl
+	pop bc
 	call ResetDamage
 
 	ld hl, .UsedText
@@ -5837,18 +5870,29 @@ BattleCommand_charge:
 	text_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-
-	ld hl, .SolarBeam
-	cp SOLAR_BEAM
-	ret z
-
-	ld hl, .Fly
-	cp FLY
-	ret z
-
-	ld hl, .Dig
-	cp DIG
+	push bc
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	ld de, 4
+	ld hl, .move_messages
+	call IsInWordArray ; hl will point to the low byte of the found item
+	jr c, .found_text
+	ld hl, .move_messages
+.found_text
+	inc hl
+	inc hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop bc
 	ret
+
+.move_messages
+	dw SOLAR_BEAM, .SolarBeam
+	dw FLY,        .Fly
+	dw DIG,        .Dig
+	dw -1
 
 .SolarBeam:
 ; 'took in sunlight!'
@@ -6133,7 +6177,8 @@ BattleCommand_heal:
 	jr z, .hp_full
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp REST
+	ld bc, REST
+	call CompareMove
 	jr nz, .not_rest
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -6852,4 +6897,30 @@ CheckBattleEffects:
 	ret
 .off
 	scf
+	ret
+
+CompareMove:
+	; checks if the move ID in a matches the move in bc
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	cp b
+	ld a, l
+	pop hl
+	ret nz
+	cp c
+	ret
+CheckMoveInList:
+	; checks if the move ID in a belongs to a list of moves in hl
+	push bc
+	push de
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	ld de, 2
+	call IsInWordArray
+	pop de
+	pop bc
 	ret

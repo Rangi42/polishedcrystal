@@ -44,7 +44,7 @@ CherrygroveBayTutorEarthPowerScript:
 	writetext Text_CherrygroveBayTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval EARTH_POWER
+	setval16 EARTH_POWER
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

@@ -38,7 +38,7 @@ MountMortarB1FTutorDefenseCurlScript:
 	writetext Text_MountMortarB1FTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval DEFENSE_CURL
+	setval16 DEFENSE_CURL
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

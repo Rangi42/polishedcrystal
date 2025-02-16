@@ -228,7 +228,7 @@ GoldenrodMuseum2FTutorBatonPassScript:
 	writetext GoldenrodMuseum2FTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval BATON_PASS
+	setval16 BATON_PASS
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

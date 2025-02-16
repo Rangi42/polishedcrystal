@@ -47,7 +47,7 @@ GoldenrodHarborTutorHyperVoiceScript:
 	writetext Text_GoldenrodHarborTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval HYPER_VOICE
+	setval16 HYPER_VOICE
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

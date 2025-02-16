@@ -319,7 +319,7 @@ Route31MailRecipientScript:
 	writetext Text_Route31TutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval SLEEP_TALK
+	setval16 SLEEP_TALK
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

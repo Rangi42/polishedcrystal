@@ -148,7 +148,7 @@ ScaryCave1FPharmacistScript:
 	iffalsefwd .NoSilverLeaf
 	yesorno
 	iffalsefwd .TutorRefused
-	setval SUCKER_PUNCH
+	setval16 SUCKER_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

@@ -227,7 +227,7 @@ YellowForestTutorSeedBombScript:
 	writetext Text_YellowForestTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval SEED_BOMB
+	setval16 SEED_BOMB
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

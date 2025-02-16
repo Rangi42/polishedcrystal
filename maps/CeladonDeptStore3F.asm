@@ -44,7 +44,7 @@ CeladonDeptStore3FTutorCounterScript:
 	writetext Text_CeladonDeptStore3FTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval COUNTER
+	setval16 COUNTER
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

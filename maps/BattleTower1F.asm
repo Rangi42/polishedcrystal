@@ -336,7 +336,7 @@ BattleTowerTutorTrickScript:
 		done
 	yesorno
 	iffalsefwd .TutorRefused
-	setval TRICK
+	setval16 TRICK
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

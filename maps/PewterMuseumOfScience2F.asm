@@ -45,7 +45,7 @@ Museum2FTutorSeismicTossScript:
 	writetext Text_Museum2FTutorQuestion
 	yesorno
 	iffalsefwd .TutorRefused
-	setval SEISMIC_TOSS
+	setval16 SEISMIC_TOSS
 	writetext ClearText
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove

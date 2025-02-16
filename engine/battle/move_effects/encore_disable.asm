@@ -1,7 +1,7 @@
 BattleCommand_encore:
 	ldh a, [hBattleTurn]
 	and a
-	ld b, ENCORE
+	ld bc, ENCORE
 	ld de, wEnemyEncoreCount
 	ld hl, wEnemyMonMoves
 	jr z, DoEncoreDisable
@@ -12,7 +12,7 @@ BattleCommand_encore:
 BattleCommand_disable:
 	ldh a, [hBattleTurn]
 	and a
-	ld b, DISABLE
+	ld bc, DISABLE
 	ld de, wEnemyDisableCount
 	ld hl, wEnemyMonMoves
 	jr z, DoEncoreDisable
@@ -27,13 +27,20 @@ DoEncoreDisable:
 	call GetBattleVar
 	and a
 	jr z, .failed
-	cp STRUGGLE
+	ld b, a
+	push bc
+	ld bc, STRUGGLE
+	call CompareMove
+	pop bc
 	jr z, .failed
 
 	; Don't allow encoring Encore
-	cp b
+	call CompareMove
 	jr nz, .move_ok
-	cp ENCORE
+	push bc
+	ld bc, ENCORE
+	call CompareMove
+	pop bc
 	jr z, .failed
 .move_ok
 
@@ -71,8 +78,7 @@ DoEncoreDisable:
 	farcall ShowPotentialAbilityActivation
 
 	; Get move effect text and duration
-	ld a, b
-	cp DISABLE
+	cpbc DISABLE
 	ld hl, WasDisabledText
 	ld a, 4
 	jr z, .got_text_and_duration
