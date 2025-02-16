@@ -228,7 +228,6 @@ GetMoveName::
 	rst Bankswitch
 	ld a, [wNamedObjectIndex]
 	call GetMoveIndexFromID
-	dec hl
 	ld b, h
 	ld c, l
 	ld hl, MoveNames
