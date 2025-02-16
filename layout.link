@@ -36,7 +36,6 @@ ROM0
 
 ROMX $01
 	"bank1"
-	"Effect Command Pointers"
 
 ROMX $02
 	"bank2"
@@ -286,6 +285,7 @@ SRAM $1
 	"Box metadata"
 	"PokeDB bank 1C"
 	"PokeDB bank 2C"
+	"Saved 16-bit conversion tables"
 
 SRAM $2
 	"PokeDB bank 1A"

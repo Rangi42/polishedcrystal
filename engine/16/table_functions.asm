@@ -6,7 +6,6 @@ ForceGarbageCollection::
 	push af
 	ld a, BANK("16-bit WRAM tables")
 	ldh [rSVBK], a
-	call PokemonTableGarbageCollection
 	call MoveTableGarbageCollection
 	pop af
 	ldh [rSVBK], a

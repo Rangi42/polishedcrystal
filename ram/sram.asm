@@ -24,7 +24,9 @@ sGameDataEnd::
 
 sOptions3:: db
 
-	ds 393 ; unused
+sConversionTableChecksum:: dw
+
+	ds 391 ; unused
 
 sChecksum:: dw
 
@@ -50,7 +52,9 @@ sBackupGameDataEnd::
 
 sBackupOptions3:: db
 
-	ds 393 ; unused
+sBackupConversionTableChecksum:: dw
+
+	ds 391 ; unused
 
 sBackupChecksum:: dw
 
@@ -171,3 +175,9 @@ sBoxMons1C:: pokedb sBoxMons1C, MONDB_ENTRIES_C
 SECTION "PokeDB bank 2C", SRAM
 
 sBoxMons2C:: pokedb sBoxMons2C, MONDB_ENTRIES_C
+
+
+SECTION "Saved 16-bit conversion tables", SRAM
+; the Pokémon index table isn't stored here to improve save data packing
+sMoveIndexTable:: ds wMoveIndexTableEnd - wMoveIndexTable
+sBackupMoveIndexTable:: ds wMoveIndexTableEnd - wMoveIndexTable

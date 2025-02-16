@@ -104,9 +104,18 @@ ResetWRAM_NotPlus:
 	ret
 
 ResetWRAM:
+	ld a, BANK("16-bit WRAM tables")
+	ldh [rSVBK], a
+	xor a
+	ld hl, wMoveIndexTable
+	ld bc, wMoveIndexTableEnd - wMoveIndexTable
+	rst ByteFill
+
+	ld a, BANK(wGameData)
+	ldh [rSVBK], a
+
 	ld hl, wShadowOAM
 	ld bc, wOptions3 - wShadowOAM
-	xor a
 	rst ByteFill
 
 	ld hl, wRAM1Start
