@@ -13,17 +13,19 @@ BattleCommand_metronome:
 	call LoadMoveAnim
 
 .GetMove:
-	call BattleRandom
+	call ChooseRandomMove
 
 ; None of the moves in MetronomeExcepts.
-	push af
+	ld de, 2
 	ld hl, MetronomeExcepts
-	call IsInByteArray
-	pop bc
+	call IsInWordArray
 	jr c, .GetMove
+	ld h, b
+	ld l, c
+	call GetMoveIDFromIndex
 
 ; No moves the user already has.
-	ld a, b
+	ld b, a
 	call CheckUserMove
 	jr z, .GetMove
 
@@ -32,5 +34,37 @@ BattleCommand_metronome:
 	ld [hl], b
 	call UpdateMoveData
 	jmp ResetTurn
+
+ChooseRandomMove:
+	; chooses a random valid move and returns it in bc
+	call BattleRandom
+	if HIGH(NUM_ATTACKS)
+		maskbits HIGH(NUM_ATTACKS) + 1
+		if HIGH(NUM_ATTACKS) & (HIGH(NUM_ATTACKS) + 1)
+			; if HIGH(NUM_ATTACKS) is not one less than a power of two
+			cp HIGH(NUM_ATTACKS) + 1
+			jr nc, ChooseRandomMove
+		endc
+		ld b, a
+		call BattleRandom
+		ld c, a
+		or b
+		jr z, ChooseRandomMove
+		if LOW(NUM_ATTACKS) != $ff
+			ld a, b
+			cp HIGH(NUM_ATTACKS)
+			ret nz
+			ld a, c
+			cp LOW(NUM_ATTACKS) + 1
+			jr nc, ChooseRandomMove
+		endc
+	else
+		cp NUM_ATTACKS
+		jr nc, ChooseRandomMove
+		inc a
+		ld c, a
+		ld b, 0
+	endc
+	ret
 
 INCLUDE "data/moves/metronome_exception_moves.asm"

@@ -1209,9 +1209,15 @@ BattleCommand_critical:
 .CheckCritical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
 	push bc
+	push de
+	ld de, 2
 	ld hl, CriticalHitMoves
-	call IsInByteArray
+	ld b, h
+	ld c, l
+	call IsInWordArray
+	pop de
 	pop bc
 	jr nc, .ScopeLens
 
@@ -5898,13 +5904,19 @@ BattleCommand_traptarget:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld [de], a
-	ld b, a
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, .Traps
 
 .find_trap_text
 	ld a, [hli]
+	cp c
+	ld a, [hli]
+	jr nz, .next_trap_text
 	cp b
 	jr z, .found_trap_text
+.next_trap_text
 	inc hl
 	inc hl
 	jr .find_trap_text
@@ -5916,9 +5928,9 @@ BattleCommand_traptarget:
 	jmp StdBattleTextbox
 
 .Traps:
-	dbw WRAP,      WrappedByText     ; 'was WRAPPED by'
-	dbw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
-	dbw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
+	dw WRAP,      WrappedByText     ; 'was WRAPPED by'
+	dw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
+	dw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
 
 BattleCommand_recoil:
 	ld a, BATTLE_VARS_MOVE_ANIM

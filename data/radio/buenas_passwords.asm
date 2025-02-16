@@ -4,6 +4,8 @@ MACRO password_group
 		dp \3, NO_FORM
 		dp \4, NO_FORM
 		dp \5, NO_FORM
+	elif \1 == BUENA_MOVE
+		dw \4, \5, \5
 	else
 		db \3, \4, \5
 	endc

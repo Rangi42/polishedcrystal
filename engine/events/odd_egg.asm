@@ -10,7 +10,7 @@ GiveOddEgg:
 	sub l
 	cpl
 	ld hl, OddEggs
-	ld bc, ODD_EGG_LENGTH
+	ld bc, EGG_LENGTH
 	rst AddNTimes
 
 	; Get random gender
@@ -40,8 +40,22 @@ GiveSpecialEgg:
 	xor a ; item
 	ld [de], a
 	inc de
-	ld bc, NUM_MOVES
-	rst CopyBytes
+
+	; copy moves
+	ld b, NUM_MOVES
+.move_loop
+	ld a, [hli]
+	push hl
+	ld h, [hl]
+	ld l, a
+	call GetMoveIDFromIndex
+	ld [de], a
+	inc de
+	pop hl
+	inc hl
+	dec b
+	jr nz, .move_loop
+
 	call SwapHLDE
 	xor a
 	ld bc, MON_DVS - MON_ID
