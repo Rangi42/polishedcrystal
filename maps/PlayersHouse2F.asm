@@ -236,10 +236,10 @@ endr
 	loadmem wPartyMon1Stats+9, LOW(999)
 	; hm slave
 	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
-	loadmem wPartyMon2Moves+0, FLY
-	loadmem wPartyMon2Moves+1, HEADBUTT
-	loadmem wPartyMon2Moves+2, DIG
-	loadmem wPartyMon2Moves+3, FRESH_SNACK
+	givepokemove FLY,         wPartyMon2, 0
+	givepokemove HEADBUTT,    wPartyMon2, 1
+	givepokemove DIG,         wPartyMon2, 2
+	givepokemove FRESH_SNACK, wPartyMon2, 3
 	loadmem wPartyMon2PP+0, 15
 	loadmem wPartyMon2PP+1, 15
 	loadmem wPartyMon2PP+2, 10

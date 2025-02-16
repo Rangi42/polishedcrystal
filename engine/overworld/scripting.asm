@@ -270,6 +270,7 @@ ScriptCommandTable:
 	dw Script_iffalsefwd                 ; d3
 	dw Script_iftruefwd                  ; d4
 	dw Script_scalltable                 ; d5
+	dw Script_givepokemove               ; d6
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -2636,3 +2637,30 @@ Script_keyitemnotify:
 	; The key item icon overwrites nine font tiles, including
 	; the "▶" needed by the right cursor arrow.
 	farjp LoadFonts_NoOAMUpdate
+
+Script_givepokemove:
+	; Get Move
+	call GetScriptByte
+	ld l, a
+	call GetScriptByte
+	ld h, a
+	call GetMoveIDFromIndex
+	ld d, a
+
+	; Get Pokemon
+	call GetScriptByte
+	ld l, a
+	call GetScriptByte
+	ld h, a
+	lb bc, 0, wPartyMon1Moves - wPartyMon1
+	add hl, bc
+
+	; Get Move number
+	call GetScriptByte
+	ld c, a
+	add hl, bc
+
+	; Set move
+	ld a, d
+	ld [hl], a
+	ret

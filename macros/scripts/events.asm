@@ -1370,4 +1370,13 @@ MACRO scalltable
 	dw \1 ; pointer table
 ENDM
 
+	const givepokemove_command
+MACRO givepokemove
+	db givepokemove_command
+	dw \1 ; move
+	dw \1 ; wPartyMon#
+	db \3 ; slot
+	assert (\3 >= 0) && (\3 < 4), "givepokemove Move Number \3 is not 0-3!"
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value
