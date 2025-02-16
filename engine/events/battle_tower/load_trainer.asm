@@ -1,4 +1,4 @@
-DEF BTMON_SIZE EQU 9 ; species + personality extspecies/gender/form + item + 4 moves + DV index + personality ability/nature
+DEF BTMON_SIZE EQU 13 ; species + personality extspecies/gender/form + item + 4 moves + DV index + personality ability/nature
 
 INCLUDE "data/battle_tower/classes.asm"
 INCLUDE "data/battle_tower/tiers.asm"
@@ -435,10 +435,8 @@ BT_AppendOTMon:
 	ld a, MON_ITEM
 	call .Copy
 
-	; Add moves
-	ld bc, NUM_MOVES
 	ld a, MON_MOVES
-	call .Copy
+	call .CopyMoves
 
 	push hl
 	ld hl, MON_MOVES
@@ -557,6 +555,29 @@ BT_AppendOTMon:
 	sub e
 	ld d, a
 	rst CopyBytes
+	pop de
+	ret
+
+.CopyMoves:
+	push de
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a
+	ld b, NUM_MOVES
+.move_loop
+	ld a, [hli]
+	push hl
+	ld h, [hl]
+	ld l, a
+	call GetMoveIDFromIndex
+	ld [de], a
+	inc de
+	pop hl
+	inc hl
+	dec b
+	jr nz, .move_loop
 	pop de
 	ret
 

@@ -78,3 +78,45 @@ MACRO changebridgeblock
 	; hard-coding the above calculation for efficiency
 	ld [hl], \3
 ENDM
+
+MACRO smartcp
+	IF \1 == 0
+		and a
+	ELSE
+		cp \1
+	ENDC
+ENDM
+
+MACRO cp16
+; arg1: 16 bit register
+; arg2: value to compare to
+	if STRCMP("\1","hl")
+		REDEF _reghi EQUS "h"
+		REDEF _reglo EQUS "l"
+	elif STRCMP("\1","de")
+		REDEF _reghi EQUS "d"
+		REDEF _reglo EQUS "e"
+	elif STRCMP("\1","bc")
+		REDEF _reghi EQUS "b"
+		REDEF _reglo EQUS "c"
+	else
+		FAIL
+	endc
+	if \2 == 0
+		ld a, _reghi
+		or _reglo
+		jp z, .done\@
+	else
+		ld a, _reghi
+		smartcp HIGH(\2)
+		jr c, .done\@
+		jr nz, .done\@
+		ld a, _reglo
+		smartcp LOW(\2)
+	endc
+.done\@
+ENDM
+
+DEF cphl EQUS "cp16 hl,"
+DEF cpde EQUS "cp16 de,"
+DEF cpbc EQUS "cp16 bc,"

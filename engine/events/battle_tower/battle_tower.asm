@@ -6,8 +6,19 @@ Special_BattleTower_Battle:
 	call DelayFrame
 	ld a, [wBattleTowerBattleEnded]
 	and a
-	ret nz
+	jr nz, .clear_locks
 	jr .loop
+
+.clear_locks
+	xor a
+	lb bc, NUM_MOVES * 3, LOCKED_MOVE_ID_BATTLE_TOWER_MON1_MOVE1
+.lock_loop
+	ld l, c
+	call LockMoveID
+	inc c
+	dec b
+	jr nz, .lock_loop
+	ret
 
 Special_BattleTower_GetBattleResult:
 ; Gets the last battle result.
