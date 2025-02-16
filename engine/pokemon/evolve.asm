@@ -910,6 +910,7 @@ GetEvosAttacksPointer:
 ; input: b = form, c = species
 ; output: bc = index, hl = pointer
 	call GetSpeciesAndFormIndex
+	inc bc ; TODO: 16bit - verify this is correct
 _GetEvosAttacksPointer:
 	ld hl, EvosAttacksPointers
 	ld a, BANK(EvosAttacksPointers)
