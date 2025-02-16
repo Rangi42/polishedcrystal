@@ -407,10 +407,6 @@ BattleJumptable::
 	pop bc
 	ret
 
-GetCurMoveProperty::
-	ld a, [wCurMove]
-GetMoveProperty::
-	dec a
 GetMoveAttr::
 ; Assuming hl = Moves + x, return attribute x of move a.
 	push bc
@@ -424,13 +420,8 @@ GetMoveAttr::
 GetFixedMoveStruct::
 ; a = move + 1
 ; de = destination
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
 	push de
-	call FarCopyBytes
+	call GetMoveData
 	pop hl
 	call GetFixedCategory
 	ld bc, MOVE_CATEGORY
@@ -441,17 +432,14 @@ GetFixedMoveStruct::
 GetCurMoveFixedCategory::
 	ld a, [wCurMove]
 GetMoveFixedCategory::
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
+	call GetMoveAddress
+	ldh [hTemp2], a
 GetFixedCategory::
 ; return category in a without modifying hl
 ; if category is STATUS, return it
 	push hl
 	ld bc, MOVE_CATEGORY
 	add hl, bc
-	ld a, BANK(Moves)
 	call GetFarByte
 	pop hl
 	cp STATUS
@@ -466,7 +454,7 @@ GetFixedCategory::
 	push hl
 	ld bc, MOVE_TYPE
 	add hl, bc
-	ld a, BANK(Moves)
+	ldh a, [hTemp2]
 	call GetFarByte
 	pop hl
 	cp SPECIAL_TYPES

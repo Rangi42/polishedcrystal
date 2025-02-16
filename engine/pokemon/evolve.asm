@@ -763,8 +763,9 @@ FillMoves:
 	ld hl, MON_PP - MON_MOVES
 	add hl, de
 	push hl
-	ld hl, Moves + MOVE_PP
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	pop hl
 	ld [hl], a
 	pop hl

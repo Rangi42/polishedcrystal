@@ -1489,8 +1489,9 @@ MoveScreen_ListMoves:
 .defaultpp_loop
 	ld a, [hli]
 	push hl
-	ld hl, Moves + MOVE_PP
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	pop hl
 	ld [de], a
 	inc de
@@ -1616,7 +1617,7 @@ MoveScreen_ListMovesFast:
 	ld [hli], a
 	ld [hl], $5a
 
-	ld hl, Moves + MOVE_TYPE
+	ld a, MOVE_TYPE
 	call GetCurMoveProperty
 	pop bc
 	ld c, a
@@ -1643,7 +1644,7 @@ MoveScreen_ListMovesFast:
 	ld [hli], a
 	ld [hl], $5e
 
-	ld hl, Moves + MOVE_POWER
+	ld a, MOVE_POWER
 	call GetCurMoveProperty
 	hlcoord 10, 12
 	cp 2
@@ -1658,7 +1659,7 @@ MoveScreen_ListMovesFast:
 	rst PlaceString
 
 .place_accuracy
-	ld hl, Moves + MOVE_ACC
+	ld a, MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 15, 12
 	cp -1

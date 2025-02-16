@@ -33,22 +33,6 @@ HideSpritesInRange::
 	jr nz, .loop
 	ret
 
-HidePlayerSprite::
-; Set player sprite to 160 to hide it offscreen
-	ld h, HIGH(wShadowOAM)
-	ld a, [wPlayerCurrentOAMSlot]
-	ld l, a
-	ld de, SPRITEOAMSTRUCT_LENGTH
-	ld b, 4
-	ld a, OAM_YCOORD_HIDDEN
-.loop
-	ld [hl], a
-	add hl, de
-	dec b
-	jr nz, .loop
-	ret
-
-
 FadeToMenu_BackupSprites::
 	call FadeToMenu
 BackupSprites::

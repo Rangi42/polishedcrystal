@@ -1060,7 +1060,11 @@ Script_variablesprite:
 
 Script_appear:
 	call GetScriptByte
-	call _CopyObjectStruct
+	ldh [hMapObjectIndexBuffer], a
+	call UnmaskObject
+	ldh a, [hMapObjectIndexBuffer]
+	call GetMapObject
+	farcall CopyObjectStruct
 	ldh a, [hMapObjectIndexBuffer]
 	ld b, 0 ; clear
 	; fallthrough

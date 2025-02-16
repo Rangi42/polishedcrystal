@@ -80,8 +80,9 @@ LearnMove:
 
 	push hl
 	push de
-	ld hl, Moves + MOVE_PP
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	pop de
 	pop hl
 	ld b, a

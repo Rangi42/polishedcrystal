@@ -3286,8 +3286,9 @@ GetMaxPPOfMove:
 .gotdatmove
 	ld a, [hl]
 	push hl
-	ld hl, Moves + MOVE_PP
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	ld b, a
 	ld de, wStringBuffer1
 	ld [de], a

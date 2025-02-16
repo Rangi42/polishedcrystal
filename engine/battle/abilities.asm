@@ -436,10 +436,10 @@ ForewarnAbility:
 	jr .compare_power
 .not_special
 	ld a, b
-	dec a
 	push hl
-	ld hl, Moves + MOVE_POWER
-	call GetMoveAttr
+	ld l, a
+	ld a, MOVE_POWER
+	call GetMoveAttribute
 	pop hl
 	ld c, a
 	; Status moves have 0 power

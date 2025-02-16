@@ -46,8 +46,8 @@ ENDU
 hPrinter:: db
 
 hTemp:: db
+hTemp2:: db
 
-	ds 1 ; unused
 
 UNION
 ; math-related values

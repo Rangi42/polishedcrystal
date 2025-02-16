@@ -185,8 +185,9 @@ LoadIconPaletteFromHL:
 
 LoadTMHMIconPalette:
 	ld a, [wNamedObjectIndex]
-	ld hl, Moves + MOVE_TYPE
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_TYPE
+	call GetMoveAttribute
 	ld hl, TMHMTypeIconPals
 	ld c, a
 	ld b, 0

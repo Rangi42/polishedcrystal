@@ -2,16 +2,6 @@
 ; (not to be confused with the real-time clock, which either continues to
 ; increment when the GameBoy is switched off, or in the no-RTC patch, runs
 ; at 6x speed while the game time remains real-time)
-ResetGameTime::
-	xor a
-	ld [wGameTimeCap], a
-	ld [wGameTimeHours], a
-	ld [wGameTimeHours + 1], a
-	ld [wGameTimeMinutes], a
-	ld [wGameTimeSeconds], a
-	ld [wGameTimeFrames], a
-	ret
-
 GameTimer::
 	ldh a, [rSVBK]
 	push af

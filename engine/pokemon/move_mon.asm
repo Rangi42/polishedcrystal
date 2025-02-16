@@ -433,8 +433,9 @@ FillPP:
 	jr z, .next
 	push hl
 	push bc
-	ld hl, Moves + MOVE_PP
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	pop bc
 	pop hl
 .next
@@ -1074,8 +1075,9 @@ GivePoke::
 .add_move
 	ld a, b
 	ld [de], a
-	ld hl, Moves + MOVE_PP
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	ld hl, MON_PP - MON_MOVES
 	add hl, de
 	ld [hl], a

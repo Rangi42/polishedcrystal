@@ -50,9 +50,9 @@ BattleCommand_sketch:
 	; We now have the move in b ready to be written. Get move PP into c.
 	push bc
 	ld a, b
-	dec a
-	ld hl, Moves + MOVE_PP
-	call GetMoveAttr
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	pop bc
 	ld c, a
 	pop hl

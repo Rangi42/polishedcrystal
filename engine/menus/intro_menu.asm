@@ -235,8 +235,16 @@ endr
 	farcall InitDecorations
 
 	farcall DeletePartyMonMail
-
-	jmp ResetGameTime
+; fallthrough
+ResetGameTime::
+	xor a
+	ld [wGameTimeCap], a
+	ld [wGameTimeHours], a
+	ld [wGameTimeHours + 1], a
+	ld [wGameTimeMinutes], a
+	ld [wGameTimeSeconds], a
+	ld [wGameTimeFrames], a
+	ret
 
 _ResetWRAM_InitList:
 ; Loads 0 in the count and -1 in the first item or mon slot.

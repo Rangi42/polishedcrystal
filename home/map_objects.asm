@@ -134,13 +134,6 @@ CheckObjectTime::
 	db 1 << NITE ; 4
 	db 1 << EVE  ; 8
 
-_CopyObjectStruct::
-	ldh [hMapObjectIndexBuffer], a
-	call UnmaskObject
-	ldh a, [hMapObjectIndexBuffer]
-	call GetMapObject
-	farjp CopyObjectStruct
-
 ApplyDeletionToMapObject::
 	ldh [hMapObjectIndexBuffer], a
 	call GetMapObject

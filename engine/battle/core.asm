@@ -658,8 +658,9 @@ INCLUDE "data/moves/priorities.asm"
 
 GetMoveEffect:
 	ld a, b
-	ld hl, Moves + MOVE_EFFECT
-	call GetMoveProperty
+	ld l, a
+	ld a, MOVE_EFFECT
+	call GetMoveAttribute
 	ld b, a
 	ret
 
@@ -5434,7 +5435,7 @@ MoveInfoBox:
 	ld de, .PowAcc
 	rst PlaceString
 
-	ld hl, Moves + MOVE_POWER
+	ld a, MOVE_POWER
 	call GetCurMoveProperty
 	hlcoord 1, 10
 	cp 2
@@ -5449,7 +5450,7 @@ MoveInfoBox:
 	rst PlaceString
 
 .place_accuracy
-	ld hl, Moves + MOVE_ACC
+	ld a, MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 6, 10
 	cp -1
