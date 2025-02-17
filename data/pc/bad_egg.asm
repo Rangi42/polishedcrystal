@@ -1,7 +1,7 @@
 BadEggRLE:
 	db UNOWN, 1 ; $c6
 	db $00, 1
-	db HIDDEN_POWER, 1 ; $ed
+	db 0, 1 ; $ed
 	db $00, 17
 	db ABILITY_1 | QUIRKY, 1 ; $38
 	db MALE | IS_EGG_MASK | UNOWN_QUESTION_FORM, 1 ; $68

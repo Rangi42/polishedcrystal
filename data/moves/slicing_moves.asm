@@ -1,9 +1,9 @@
 SlicingMoves:
-	db AERIAL_ACE
-	db AIR_SLASH
-	db CUT
-	db NIGHT_SLASH
-	db RAZOR_LEAF
-	db SLASH
-	db X_SCISSOR
-	db -1
+	dw AERIAL_ACE
+	dw AIR_SLASH
+	dw CUT
+	dw NIGHT_SLASH
+	dw RAZOR_LEAF
+	dw SLASH
+	dw X_SCISSOR
+	dw -1

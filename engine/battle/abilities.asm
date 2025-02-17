@@ -421,8 +421,14 @@ ForewarnAbility:
 	push af
 	push hl
 	; Check for special cases
+	call GetMoveIndexFromID
+	push bc
+	ld b, h
+	ld c, l
 	ld hl, DynamicPowerMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
+	pop bc
 	pop hl
 	pop bc
 	jr nc, .not_special
@@ -487,6 +493,8 @@ ForewarnAbility:
 	ld hl, ForewarnText
 	call StdBattleTextbox
 	jmp EnableAnimations
+
+INCLUDE "data/moves/dynamic_power_moves.asm"
 
 FriskAbility:
 	farcall GetOpponentItem
@@ -929,7 +937,13 @@ CheckNullificationAbilities:
 .movelist_nullification
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	call IsInByteArray
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	ld de, 2
+	call IsInWordArray
 	jr c, .ability_ok
 	ret
 
@@ -1776,8 +1790,14 @@ IronFistAbility:
 
 IsPunchingMove:
 ; Returns z if the move is a punching move, otherwise nz|nc.
+	push bc
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, PunchingMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
+	pop bc
 	sbc a
 	inc a
 	ret
@@ -1796,7 +1816,13 @@ MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	push bc
-	call IsInByteArray
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	ld de, 2
+	call IsInWordArray
 	pop bc
 	ret nc
 	ld a, b

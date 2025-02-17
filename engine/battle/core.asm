@@ -638,15 +638,32 @@ GetMovePriority:
 	push de
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 
 	ld hl, MovePriorities
-	ld de, 2
-	call IsInArray
+.loop
+	ld a, [hli]
 	inc a
-	jr z, .got_priority
+	jr z, .done
+	dec a
+	cp b
+	jr nz, .skip
+	ld a, [hli]
+	cp c
+	jr z, .got
 	inc hl
+	jr .loop
+
+.skip
+	inc hl
+	inc hl
+	jr .loop
+
+.got
 	ld a, [hl]
-.got_priority
+.done
 	xor $80 ; treat it as a signed byte
 	ld b, a
 	call GetTrueUserAbility

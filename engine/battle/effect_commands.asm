@@ -1643,8 +1643,12 @@ _CheckTypeMatchup:
 ; Handle powder moves
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, PowderMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	jr nc, .skip_powder
 	call GetOpponentItemAfterUnnerve
 	ld a, b
@@ -1755,6 +1759,8 @@ _CheckTypeMatchup:
 	pop hl
 	ret
 
+INCLUDE "data/moves/powder_moves.asm"
+
 BattleCommand_checkpowder:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -1784,8 +1790,12 @@ BattleCommand_checkpowder:
 	jr z, BattleCommand_resettypematchup
 	; fallthrough for poisonpowder
 .powder
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, PowderMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	ret nc
 	; fallthrough
 BattleCommand_resettypematchup:
@@ -2260,8 +2270,12 @@ BattleCommand_checkpriority:
 	; Soundproof vs status moves is handled here.
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, SoundMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	ld b, ATKFAIL_ABILITY
 	jr c, .attack_fails
 	ret
@@ -3446,8 +3460,12 @@ CheckThroatSpray:
 	call GetCurItemName
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, SoundMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	pop bc
 	ret nc
 
@@ -6342,8 +6360,12 @@ CheckSubstituteOpp:
 	push hl
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, SoundMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	pop hl
 	pop de
 	pop bc

@@ -10,8 +10,12 @@ BattleCommand_bounceback:
 	ret z
 
 	; Some moves bypass Substitute
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, SubstituteBypassMoves
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	jr c, .sub_ok
 
 	; Otherwise, Substitute blocks it

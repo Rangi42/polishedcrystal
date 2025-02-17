@@ -1,20 +1,20 @@
 MovePriorities:
 	; no move is for explicit switch-out
-	db NO_MOVE,       10
-	db ENDURE,        4
-	db PROTECT,       4
-	db EXTREMESPEED,  2
-	db AQUA_JET,      1
-	db BULLET_PUNCH,  1
-	db ICE_SHARD,     1
-	db MACH_PUNCH,    1
-	db QUICK_ATTACK,  1
-	db SUCKER_PUNCH,  1
+	dwb NO_MOVE,       10
+	dwb ENDURE,        4
+	dwb PROTECT,       4
+	dwb EXTREMESPEED,  2
+	dwb AQUA_JET,      1
+	dwb BULLET_PUNCH,  1
+	dwb ICE_SHARD,     1
+	dwb MACH_PUNCH,    1
+	dwb QUICK_ATTACK,  1
+	dwb SUCKER_PUNCH,  1
 	; everything else 0
-	db AVALANCHE,    -4
-	db COUNTER,      -5
-	db MIRROR_COAT,  -5
-	db ROAR,         -6
-	db TELEPORT,     -6
-	db TRICK_ROOM,   -7
+	dwb AVALANCHE,    -4
+	dwb COUNTER,      -5
+	dwb MIRROR_COAT,  -5
+	dwb ROAR,         -6
+	dwb TELEPORT,     -6
+	dwb TRICK_ROOM,   -7
 	db -1
