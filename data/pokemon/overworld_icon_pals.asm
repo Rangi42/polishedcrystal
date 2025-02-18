@@ -41,7 +41,7 @@ OverworldMonIconColors::
 	iconpal PINK, RED ; CLEFAIRY
 	iconpal PINK, RED ; CLEFABLE
 	iconpal RED, ORANGE ; VULPIX
-	iconpal RED, GRAY ; NINETALES
+	iconpal YELLOW, GRAY ; NINETALES
 	iconpal PINK, RED ; JIGGLYPUFF
 	iconpal PINK, RED ; WIGGLYTUFF
 	iconpal BLUE, GREEN ; ZUBAT
@@ -57,7 +57,7 @@ OverworldMonIconColors::
 	iconpal BROWN, GRAY ; DUGTRIO
 	iconpal BROWN, RED ; MEOWTH
 	iconpal BROWN, RED ; PERSIAN
-	iconpal BROWN, AZURE ; PSYDUCK
+	iconpal YELLOW, AZURE ; PSYDUCK
 	iconpal BLUE, AZURE ; GOLDUCK
 	iconpal BROWN, GREEN ; MANKEY
 	iconpal BROWN, GREEN ; PRIMEAPE
@@ -99,8 +99,8 @@ OverworldMonIconColors::
 	iconpal PURPLE, BLUE ; HAUNTER
 	iconpal PURPLE, BLUE ; GENGAR
 	iconpal GRAY, AZURE ; ONIX
-	iconpal BROWN, PURPLE ; DROWZEE
-	iconpal BROWN, PURPLE ; HYPNO
+	iconpal YELLOW, PURPLE ; DROWZEE
+	iconpal YELLOW, PURPLE ; HYPNO
 	iconpal ORANGE, BLUE ; KRABBY
 	iconpal ORANGE, BLUE ; KINGLER
 	iconpal RED, BLUE ; VOLTORB
@@ -128,7 +128,7 @@ OverworldMonIconColors::
 	iconpal PINK, GREEN ; MR__MIME
 	iconpal GREEN, RED ; SCYTHER
 	iconpal PURPLE, RED ; JYNX
-	iconpal BROWN, RED ; ELECTABUZZ
+	iconpal YELLOW, RED ; ELECTABUZZ
 	iconpal RED, BROWN ; MAGMAR
 	iconpal BROWN, BLUE ; PINSIR
 	iconpal BROWN, RED ; TAUROS
@@ -138,7 +138,7 @@ OverworldMonIconColors::
 	iconpal PURPLE, AZURE ; DITTO
 	iconpal BROWN, GRAY ; EEVEE
 	iconpal AZURE, PURPLE ; VAPOREON
-	iconpal BROWN, GREEN ; JOLTEON
+	iconpal YELLOW, GREEN ; JOLTEON
 	iconpal ORANGE, BLUE ; FLAREON
 	iconpal AZURE, PURPLE ; PORYGON
 	iconpal AZURE, GRAY ; OMANYTE
@@ -152,7 +152,7 @@ OverworldMonIconColors::
 	iconpal RED, RED ; MOLTRES
 	iconpal AZURE, PINK ; DRATINI
 	iconpal BLUE, RED ; DRAGONAIR
-	iconpal ORANGE, BLUE ; DRAGONITE
+	iconpal YELLOW, BLUE ; DRAGONITE
 	iconpal PURPLE, GREEN ; MEWTWO
 	iconpal PINK, AZURE ; MEW
 	iconpal GREEN, RED ; CHIKORITA
@@ -242,11 +242,11 @@ OverworldMonIconColors::
 	iconpal BROWN, AZURE ; TYROGUE
 	iconpal BROWN, AZURE ; HITMONTOP
 	iconpal PURPLE, PINK ; SMOOCHUM
-	iconpal BROWN, RED ; ELEKID
+	iconpal YELLOW, RED ; ELEKID
 	iconpal RED, BROWN ; MAGBY
 	iconpal PINK, AZURE ; MILTANK
 	iconpal PINK, RED ; BLISSEY
-	iconpal BROWN, RED ; RAIKOU
+	iconpal YELLOW, RED ; RAIKOU
 	iconpal RED, BROWN ; ENTEI
 	iconpal BLUE, WHITE ; SUICUNE
 	iconpal GREEN, TEAL ; LARVITAR
