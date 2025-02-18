@@ -61,10 +61,11 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo and Soldier sprites.
+* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, the Ace Duo and Soldier sprites, and overworld weather sprites.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
+* Avoman for editing many Pokémon sprites and Crys's back sprite.
 * ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
@@ -98,7 +99,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
 * Sea for Crys's fishing sprites.
-* SoupPotato (aka SourApple) for the overworld weather sprites.
+
 
 
 ## Content
