@@ -6407,7 +6407,7 @@ UrsalunaPlainEvosAttacks:
 	db 85, GUNK_SHOT ; SV TM move
 	db -1 ; no more level-up moves
 
-UrsalunaBloodmoonEvoAttacks:
+UrsalunaBloodmoonEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, BULLDOZE ; evolution move
 	db 1, GUNK_SHOT ; HGSS tutor move
