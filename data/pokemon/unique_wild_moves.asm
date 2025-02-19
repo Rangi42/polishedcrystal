@@ -1,7 +1,12 @@
 MACRO unique_moves
 	db \1 ; landmark
-	dp \2 ; species
-	db \3 ; move
+	if _NARG == 4
+		dp \2, \3 ; species, form
+		db \4 ; move
+	else
+		dp \2 ; species
+		db \3 ; move
+	endc
 ENDM
 
 ; TODO: finish unique moves
@@ -30,7 +35,6 @@ UniqueWildMoves:
 	unique_moves BURNED_TOWER,     0,          0
 	unique_moves WHIRL_ISLANDS,    0,          0
 	unique_moves CLIFF_CAVE,       0,          0
-	unique_moves YELLOW_FOREST,    PIKACHU,    FLY          ; replaced with Surf if Surfing
 	unique_moves QUIET_CAVE,       MUNCHLAX,   GIGA_IMPACT  ; Snorlax move
 	unique_moves MT_MORTAR,        0,          0
 	unique_moves LAKE_OF_RAGE,     MAGIKARP,   HYDRO_PUMP   ; Pokéwalker move
@@ -82,4 +86,6 @@ UniqueWildMoves:
 	unique_moves ROUTE_23,         GYARADOS,   POWER_WHIP   ; Sw/Sh TR move
 	unique_moves ROUTE_44,         AIPOM,      ROCK_BLAST   ; new move
 	unique_moves ROUTE_49,         PARASECT,   CONFUSE_RAY  ; Prism tutor move
+	unique_moves YELLOW_FOREST,    PIKACHU,    PLAIN_FORM,        FLY  ; Yellow special move, assumed only Pikachu can learn Fly
+	unique_moves YELLOW_FOREST,    PIKACHU,    PIKACHU_SURF_FORM, SURF ; Yellow special move, assumed only Pikachu can learn Surf
 	db -1
