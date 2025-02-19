@@ -29,7 +29,7 @@ LyraPhoneScript:
 	sjumpfwd .done
 
 .describe_next_move
-	callasm LyraPhone_GetFirstMonNextMoveLevel
+	callasm LyraPhone_GetFirstMonNextMove
 	iffalsefwd .no_move
 	ifequalfwd -1, .egg
 	farwritetext LyraPhoneNextMoveLevelText
@@ -48,12 +48,17 @@ LyraPhoneScript:
 .CeladonUniversity: db "Celadon U@"
 .PokemonLeague:     db "#mon League@"
 
-LyraPhone_GetFirstMonNextMoveLevel:
-	; wStringBuffer3 = species name
+LyraPhone_GetFirstMonNextMove:
+	; [wStringBuffer3] = species name
 	call EvolutionPhone_GetFirstNonEggPartyMon
-	; hScriptVar = move level
-	farcall GetNextMoveLevel
+	; a = move level, d = move name
+	farcall GetNextMove
+	; [hScriptVar] = move level
 	ldh [hScriptVar], a
+	; [wStringBuffer1] = move name
+	ld a, d
+	ld [wNamedObjectIndex], a
+	call GetMoveName
 	ret
 
 LyraPhoneScript_GreetingsTable:
