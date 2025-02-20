@@ -26,12 +26,13 @@ EcruteakCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 15, 21, BGEVENT_JUMPTEXT, EcruteakCitySignText
-	bg_event  8, 28, BGEVENT_JUMPTEXT, EcruteakGymSignText
-	bg_event 21, 21, BGEVENT_JUMPTEXT, EcruteakDanceTheaterSignText
-	bg_event  7,  9, BGEVENT_JUMPTEXT, BurnedTowerSignText
-	bg_event 15, 11, BGEVENT_JUMPTEXT, EcruteakShrineSignText
-	bg_event 21, 11, BGEVENT_JUMPTEXT, EcruteakBarrierStationSignText
+	bg_event 15, 21, BGEVENT_JUMPTEXT, EcruteakCitySign
+	bg_event  8, 28, BGEVENT_JUMPTEXT, EcruteakGymSign
+	bg_event 21, 21, BGEVENT_JUMPTEXT, EcruteakDanceTheaterSign
+	bg_event  7,  9, BGEVENT_JUMPTEXT, BurnedTowerSign
+	bg_event 15, 11, BGEVENT_JUMPTEXT, EcruteakShrineSign
+	bg_event 21, 11, BGEVENT_JUMPTEXT, EcruteakBarrierStationSign
+	bg_event 21, 26, BGEVENT_JUMPTEXT, EcruteakCityAdvancedTips
 	bg_event 25, 14, BGEVENT_ITEM + HYPER_POTION, EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION
 	bg_event 33, 16, BGEVENT_ITEM + RARE_CANDY, EVENT_ECRUTEAK_CITY_HIDDEN_RARE_CANDY
 	bg_event  1, 17, BGEVENT_ITEM + ULTRA_BALL, EVENT_ECRUTEAK_CITY_HIDDEN_ULTRA_BALL
@@ -191,7 +192,7 @@ EcruteakCityGramps3Text:
 	cont "Hohoho!"
 	done
 
-EcruteakCitySignText:
+EcruteakCitySign:
 	text "Ecruteak City"
 	line "A Historical City"
 
@@ -199,7 +200,7 @@ EcruteakCitySignText:
 	line "Meets the Present"
 	done
 
-EcruteakGymSignText:
+EcruteakGymSign:
 	text "Ecruteak City"
 	line "#mon Gym"
 	cont "Leader: Morty"
@@ -208,12 +209,31 @@ EcruteakGymSignText:
 	line "the Future"
 	done
 
-EcruteakDanceTheaterSignText:
+EcruteakCityAdvancedTips:
+	text "Advanced Tips!"
+
+	para "Some #mon you"
+	line "encounter may"
+
+	para "have a rare"
+	line "ability, also"
+
+	para "known as a"
+	line "hidden Ability!"
+
+	para "A hatched #mon"
+	line "also has a low"
+
+	para "chance to have"
+	line "a hidden Ability."
+	done
+
+EcruteakDanceTheaterSign:
 	text "Ecruteak Dance"
 	line "Theater"
 	done
 
-BurnedTowerSignText:
+BurnedTowerSign:
 	text "Burned Tower"
 
 	para "It was destroyed"
@@ -224,7 +244,7 @@ BurnedTowerSignText:
 	line "as it is unsafe."
 	done
 
-EcruteakShrineSignText:
+EcruteakShrineSign:
 	text "Ecruteak Shrine"
 
 	para "“Life is a lamp-"
@@ -232,7 +252,7 @@ EcruteakShrineSignText:
 	cont "wind.”"
 	done
 
-EcruteakBarrierStationSignText:
+EcruteakBarrierStationSign:
 	text "Barrier Station"
 	line "to Bell Tower"
 

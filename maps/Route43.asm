@@ -646,7 +646,7 @@ Route43TrainerTipsText:
 Route43AdvancedTipsText:
 	text "Advanced Tips!"
 
-	para "A Pokemon can pass"
+	para "A #mon can pass"
 	line "down its nature"
 	cont "via inheritance"
 
