@@ -394,7 +394,7 @@ GoldenrodCityGymLassText:
 	line "right now."
 
 	para "She bolted out of"
-	line "here and shouted"
+	line "here and shouted,"
 
 	para "“I have got to get"
 	line "a Radio Card!”"
