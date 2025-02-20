@@ -5209,6 +5209,13 @@ MoveSelectionScreen:
 	call ClearSprites
 	pop hl
 	call BattleMoveDescTextbox
+	assert INST_TEXT == 0
+	ld a, [wOptions]
+	and TEXT_DELAY_MASK
+	jr nz, .no_delay
+	ld c, 10
+	call DelayFrames ; 0.333s delay to allow users with autoscroll on start to see the description
+.no_delay
 	call WaitPressAorB_BlinkCursor
 	jmp .start_over
 
