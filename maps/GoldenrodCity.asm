@@ -390,9 +390,11 @@ GoldenrodCityRocket6Text:
 	done
 
 GoldenrodCityGymLassText:
-	text "The Gym Leader,"
-	line "Whitney, went"
-	cont "flying by saying,"
+	text "Whitney isn't here"
+	line "right now."
+
+	para "She bolted out of"
+	line "here and shouted,"
 
 	para "“I have got to get"
 	line "a Radio Card!”"
