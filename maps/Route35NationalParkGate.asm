@@ -25,6 +25,7 @@ Route35NationalParkGate_MapScriptHeader:
 	object_event 14,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route35OfficerScriptContest, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
 	object_event 18,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route35NationalParkGateYoungsterText, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
 	object_event 12,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route35NationalParkGateOfficerScript, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
+	object_event  5,  2, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route35NationalParkGatePokefanFScript, -1
 
 	object_const_def
 	const ROUTE35NATIONALPARKGATE_OFFICER1
@@ -194,6 +195,55 @@ Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement:
 	step_up
 	step_up
 	step_end
+
+Route35NationalParkGatePokefanFScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_CHARM_INTRO
+	iftruefwd Route35NationalParkGateTutorCharmScript
+	writetext Route35NationalParkGatePokefanFText
+	waitbutton
+	setevent EVENT_LISTENED_TO_CHARM_INTRO
+Route35NationalParkGateTutorCharmScript:
+	writetext Text_Route35NationalParkGateTutorCharm
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalsefwd .NoSilverLeaf
+	writetext Text_Route35NationalParkGateTutorQuestion
+	yesorno
+	iffalsefwd .TutorRefused
+	setval CHARM
+	writetext ClearText
+	special Special_MoveTutor
+	ifequalfwd $0, .TeachMove
+.TutorRefused
+	jumpthisopenedtext
+
+	text "Aw, I guess your"
+	line "#mon are cute"
+	cont "enough,"
+
+	para "but they still"
+	line "could be cuter!"
+	done
+
+.NoSilverLeaf
+	jumpthisopenedtext
+
+	text "Sorry, but I can't"
+	line "teach the move"
+
+	para "unless you have a"
+	line "a Silver Leaf."
+	done
+
+.TeachMove
+	takeitem SILVER_LEAF
+	jumpthisopenedtext
+
+	text "Your #mon is"
+	line "cuter already!"
+	done
 
 Route35NationalParkGateOfficer1AskToParticipateText:
 	text "Today's "
@@ -398,4 +448,38 @@ BugCatchingContestExplanationText:
 
 	para "have at the end of"
 	line "the contest."
+	done
+
+Route35NationalParkGatePokefanFText:
+	text "Many #mon go to"
+	line "National Park"
+
+	para "with their"
+	line "trainers,"
+
+	para "and they're all"
+	line "so, so cute!"
+
+	para "Yes, the Bug"
+	line "#mon too!"
+	done
+
+Text_Route35NationalParkGateTutorCharm:
+	text "I can make your"
+	line "#mon cuter with"
+	cont "the move Charm."
+
+	para "Even opposing"
+	line "#mon won't want"
+
+	para "to hit it as"
+	line "hard afterwards!"
+	done
+
+Text_Route35NationalParkGateTutorQuestion:
+	text "I just need a"
+	line "Silver Leaf, so"
+
+	para "can I teach Charm?"
+	line "Pretty please?"
 	done
