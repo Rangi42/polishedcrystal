@@ -724,9 +724,8 @@ DayCare_GenerateEgg:
 	inc a ; or PLAIN_FORM
 .parent_form_ok
 	ld [wCurForm], a
-	ld b, a
-	push bc
-	farcall GetBaseEvolution
+	ld d, a
+	farcall GetBaseEvolution ; presently preserves de
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
 
@@ -762,11 +761,10 @@ DayCare_GenerateEgg:
 	ld a, [wCurPartySpecies]
 	ld [wTempMonSpecies], a
 
-	pop bc
 	ld a, [wCurForm]
 	and FORM_MASK
 	jr nz, .form_ok
-	ld a, b
+	ld a, d
 	ld [wCurForm], a
 .form_ok
 	call GetBaseData

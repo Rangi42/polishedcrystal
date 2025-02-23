@@ -771,6 +771,8 @@ GetPreEvolution:
 ; Return carry and the new species in wCurPartySpecies+wCurForm
 ; if a pre-evolution is found.
 
+; Present behavior preserves de
+
 	ld bc, 0
 .loop ; For each Pokemon...
 	ld hl, EvosAttacksPointers
