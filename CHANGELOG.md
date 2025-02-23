@@ -26,12 +26,8 @@ This is the newest stable version release which finished a number of branches th
 - The Candy Jar can now be obtained in the Goldenrod Underground. Exp Candies can be bought as well.
 - Support for the GB Printer was added so that players can print the Deploma.
 - The Galarian Bird event is completed. They are now accessible through the Pokemon Go trainers in the old Rocket Hideout in Celadon City.
-- Cherrygrove Tree in the bay now has text without the items used for the G-Bird event.
 
 ### Fixes
-- Use the correct Swimmer sprite for the Go-Goggles NPC.
-- Several fixes to the amount of exp the Exp Candies give, as well as to their price display.
-- GB Printer brightness modifications.
 - Updated the title version label to v3.1.0 and the copyright year to 2025.
 - A graphical bug with the microphone so that it is below the player sprite.
 
@@ -138,7 +134,7 @@ _Overworld And NPCs:_
 - Player turns around after using a Pokecenter.
 - Added Trainer Tip signs for some new features and some more Advanced Tips to Kanto.
 - There are now several new routes based off of pokewalker locations or otherwise connecting proximinal routes that weren't connected before, such as Magnet Tunnel, Rugged Road, and Snowtop Mountain. Additionally, Stormy Beach, Cherrygrove Bay, Murky Swamp, and Violet Outskirts were all populated with wildmons.
-- Speical attention was given to Snowtop Mountain in that you can't get phone calls there and that there is a cool interactive cutscene there where you can view the scenery.
+- Special attention was given to Snowtop Mountain in that you can't get phone calls there and that there is a cool interactive cutscene there where you can view the scenery.
 - Violet Outskirts was also given a spooky event. Take the Sylph Scope there for an evert mon.
 - Removed Celadon Outskirts.
 - Dynamic level scaling based on badge number was included for both wildmons and trainers in certain locations.
@@ -177,10 +173,12 @@ _Overworld And NPCs:_
 
 _Miscellaneous:_
 - Feature Glaceon in the intro to reflect Rangi's profile picture.
-- Analogue Pocket support for the non-RTC version.
+- Analogue Pocket support for the RTC-off setting.
 - Updated credits for sprite work (gmerc, Farore) and contributions.
 
 ### Fixes
+Note: Some of these fixes may be intra-version fixes, and may not be all carried over from v3.0.0-beta.
+
 - Fully paralyzed animation is faster now.
 - Poison status outside of battle now interacts with Poison Heal properly, dealing no damage.
 - Run Away prevents being trapped in unfaithful build.
