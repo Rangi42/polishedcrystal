@@ -704,16 +704,28 @@ DayCare_GenerateEgg:
 	ld [wBreedMotherOrNonDitto], a
 	and a
 	ld a, [wBreedMon1Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon1Form]
+	ld c, a
 	jr z, .GotMother
 	ld a, [wBreedMon2Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon2Form]
+	ld c, a
 
 .GotMother:
+	ld [wCurPartySpecies], a
+	ld hl, wBreedMon1Form
+	call .inherit_mother_unless_samespecies ; this should preserve c!
 	and SPECIESFORM_MASK
+	ld b, a
+	ld d, a
+	farcall CheckInvalidVariants ; conveniently, forms we don't want to pass on are here
+	ld a, d
+	jr nc, .parent_form_ok
+	assert PLAIN_FORM == 1
+	and EXTSPECIES_MASK
+	inc a ; or PLAIN_FORM
+.parent_form_ok
 	ld [wCurForm], a
+	ld b, a
+	push bc
 	farcall GetBaseEvolution
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
@@ -721,8 +733,11 @@ DayCare_GenerateEgg:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	cp NIDORAN_F
+	jr z, .may_be_nidoran
+	cp NIDORAN_M
 	jr nz, .nidoran_check_done
-	assert !HIGH(NIDORAN_F)
+.may_be_nidoran
+	assert !HIGH(NIDORAN_F) && !HIGH(NIDORAN_M)
 	ld a, [wCurForm]
 	and EXTSPECIES_MASK
 	jr nz, .nidoran_check_done
@@ -746,43 +761,13 @@ DayCare_GenerateEgg:
 
 	ld a, [wCurPartySpecies]
 	ld [wTempMonSpecies], a
-	ld c, a
 
-	; Form inheritance: from the mother or non-Ditto.
-	; Should only happen if stored pre-evo form is NO_FORM.
-	; If both parents share species, pick at random.
-	; Must assign [wCurForm] before GetBaseData.
-	ld hl, wBreedMon1Form
-	call .inherit_mother_unless_samespecies ; this should preserve c!
+	pop bc
 	ld a, [wCurForm]
-	ld b, a
 	and FORM_MASK
 	jr nz, .form_ok
 	ld a, b
-	and EXTSPECIES_MASK ; get extspecies of child
-	ld b, a
-	ld a, [hl]
-	and FORM_MASK ; get form of parent
-	or b
 	ld [wCurForm], a
-	ld b, a
-
-; it's useful for mons to have forms found only in CosmeticSpeciesAndFormTable (see: Ekans)
-; but we don't want to breed mons that shouldn't be hatched (see: Spiky-eared Pichu)
-	push bc
-	call GetCosmeticSpeciesAndFormIndex ; first, ensure the form even exists for this mon
-	pop bc
-	jr nc, .clear_form
-	ld hl, InvalidBreedmons
-	call GetSpeciesAndFormIndexFromHL
-	jr nc, .form_ok
-.clear_form
-	ld hl, wCurForm
-	ld a, [hl]
-	and EXTSPECIES_MASK
-	or PLAIN_FORM
-	ld [hl], a
-
 .form_ok
 	call GetBaseData
 
@@ -1095,4 +1080,3 @@ DayCare_GenerateEgg:
 .String_EGG:
 	rawchar "Egg@"
 
-INCLUDE "data/pokemon/invalid_breedmons.asm"
