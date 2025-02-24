@@ -525,6 +525,9 @@ WillOWispDescription:
 
 StunSporeDescription:
 ThunderWaveDescription:
+	db   "A move that"
+	next "paralyzes the foe.@"
+
 GlareDescription:
 	text "A move that may"
 	next "paralyze the foe."
