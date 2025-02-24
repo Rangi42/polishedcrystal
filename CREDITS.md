@@ -68,8 +68,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
-* Sea for Hisuian Growlithe's animation.
-* ShadowOne333 and Sea for Annihilape's front and back sprites.
+* mauvesea for Hisuian Growlithe's animation.
+* ShadowOne333 and mauvesea for Annihilape's and Alolan Sandslash's front and back sprites.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
@@ -97,7 +97,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
-* Sea for Crys's fishing sprites.
+* mauvesea for Crys's fishing sprites.
 * SoupPotato (aka SourApple) for the overworld weather sprites.
 
 
