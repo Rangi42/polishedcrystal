@@ -451,8 +451,8 @@ BugCatchingContestExplanationText:
 	done
 
 Route35NationalParkGatePokefanFText:
-	text "Many #mon go to"
-	line "National Park"
+	text "Many #mon come"
+	line "to National Park"
 
 	para "with their"
 	line "trainers,"

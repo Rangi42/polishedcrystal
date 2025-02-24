@@ -77,10 +77,10 @@ Route1617Gate2FPsychicText:
 	line "#mon battle."
 
 	para "He's an inspiration"
-	line "of mine,"
+	line "of mine, so I've"
 
-	para "so I've worked on"
-	line "my own technique."
+	para "worked on my own"
+	line "technique."
 	done
 
 Text_Route1617Gate2FTutorTrickRoom:

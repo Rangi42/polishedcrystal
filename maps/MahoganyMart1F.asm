@@ -232,14 +232,13 @@ MahoganyMart1FLanceSplitUpText:
 	done
 
 MahoganyMart1FVeteranFText:
-	text "That basement used"
+	text "Our basement used"
 	line "to be a ninja"
+	cont "hideout."
 
-	para "hideout. Some of"
-	line "their arts have"
-
-	para "even survived to"
-	line "this very day."
+	para "Some of their arts"
+	line "have survived to"
+	cont "this very day."
 
 	para "One such art would"
 	line "greatly increase"
