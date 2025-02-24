@@ -249,7 +249,7 @@ PlateauLyraText1:
 	para "I've been travel-"
 	line "ing around Johto,"
 
-	para "earning badges and"
+	para "earning Badges and"
 	line "gaining strength."
 
 	para "You know what"

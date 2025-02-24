@@ -343,7 +343,7 @@ Text_LyraGoodbye1:
 
 	para "I heard that you"
 	line "have all the Gym"
-	cont "badges in Johto."
+	cont "Badges in Johto."
 
 	para "…You're really"
 	line "something,"

@@ -99,7 +99,7 @@ LoreleiRematchAfterText:
 	line "over, you know."
 
 	para "You can earn more"
-	line "badges in Kanto,"
+	line "Badges in Kanto,"
 
 	para "catch new species"
 	line "of #mon,"
@@ -222,7 +222,7 @@ LoreleiOneMoreBadgeText:
 
 LoreleiAllBadgesText:
 	text "Go on ahead. You"
-	line "have enough badges"
+	line "have enough Badges"
 
 	para "to challenge the"
 	line "#mon League."

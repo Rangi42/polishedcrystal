@@ -299,7 +299,7 @@ NationalParkLassText:
 	text "Look! Check out my"
 	line "bag!"
 
-	para "I pinned my badges"
+	para "I pinned my Badges"
 	line "onto it."
 	done
 

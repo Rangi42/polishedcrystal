@@ -1406,7 +1406,7 @@ ElmGiveTicketText1:
 	line "on new Gyms."
 
 	para "If you earn eight"
-	line "more badges,"
+	line "more Badges,"
 
 	para "the Elite Four"
 	line "will battle you"

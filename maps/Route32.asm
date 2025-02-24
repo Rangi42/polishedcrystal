@@ -1004,6 +1004,6 @@ Route32AdvancedTips2Text:
 	cont "trainer, you pay"
 
 	para "them money based"
-	line "on how many badges"
+	line "on how many Badges"
 	cont "you own!"
 	done

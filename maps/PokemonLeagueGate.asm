@@ -47,7 +47,7 @@ VictoryRoadGateOfficerText:
 
 	para "The guards ahead"
 	line "will check your"
-	cont "badges."
+	cont "Badges."
 
 	para "Go on now."
 	done

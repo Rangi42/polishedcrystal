@@ -345,7 +345,7 @@ Route42LyraGreetingText:
 	line "to Mahogany Town"
 
 	para "for another Gym"
-	line "badge?"
+	line "Badge?"
 
 	para "Then I have a"
 	line "present for you!"

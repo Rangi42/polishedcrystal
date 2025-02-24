@@ -153,7 +153,7 @@ ChucksWifeEasierToFlyText:
 
 ChucksWifeChubbyText:
 	text "That's Cianwood's"
-	line "Gym badge!"
+	line "Gym Badge!"
 
 	para "My husband lost to"
 	line "you, so he needs"

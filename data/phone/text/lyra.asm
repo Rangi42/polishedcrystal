@@ -137,7 +137,7 @@ LyraPhoneSpecialText_FirstBadge:
 	line "you, <PLAYER>."
 
 	para "Oh, you got your"
-	line "first badge in"
+	line "first Badge in"
 	cont "Kanto too?"
 	cont "Good going!"
 

@@ -101,7 +101,7 @@ GenericTrainerSrandjrJoandcath1:
 	text "Jo: I'm helping my"
 	line "junior Cath to"
 
-	para "earn a badge"
+	para "earn a Badge"
 	line "from Whitney."
 
 	para "She's improving"

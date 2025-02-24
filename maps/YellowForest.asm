@@ -314,7 +314,7 @@ YellowForestWalkerSeenText:
 
 	para "Walker: You're"
 	line "collecting Gym"
-	cont "badges, huh?"
+	cont "Badges, huh?"
 
 	para "Then my son lost"
 	line "to you!"
@@ -324,7 +324,7 @@ YellowForestWalkerSeenText:
 	cont "for myself."
 
 	para "I don't have a"
-	line "badge, but you'll"
+	line "Badge, but you'll"
 
 	para "get something"
 	line "nice if you win!"

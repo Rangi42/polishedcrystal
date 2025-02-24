@@ -132,7 +132,7 @@ CinnabarIslandBlueNotReadyText:
 	line "battle me, show me"
 
 	para "how many Kanto"
-	line "badges you've got."
+	line "Badges you've got."
 
 	para "Less than seven…"
 	line "You're not ready"
