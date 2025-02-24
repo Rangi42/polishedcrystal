@@ -20,7 +20,7 @@ This is the newest stable version release which finished a number of branches th
 - Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp. There are now 46 variant Pokémon for a total of 391 unique Pokémon.
 - Added the much requested NPC to point the players in the direction of the Go-Goggles.
 - The Candy Jar can now be obtained in the Goldenrod Underground. Exp Candies can be bought as well.
-- Support for the GB Printer was added so that players can print the Deploma.
+- Support for the GB Printer was added so that players can print the Diploma.
 - The Galarian Bird event is completed. They are now accessible through the Pokemon Go trainers in the old Rocket Hideout in Celadon City.
 
 ### Fixes
@@ -36,7 +36,7 @@ The total number of unique Pokémon has risen to 390 (including Red Gyarados, Sp
 
 _Availability:_
 - Reincluded post-3.0.0-beta: Spearow, Fearow, Aipom, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Lickitung, Stantler, Shuckle, Cleffa, Igglybuff, Smoochum, Deliberd.
-- Added in v3.1.1: Ambipom, Lickilicky, Wyrdeer, Ferigeraf, Paldean Wooper, Clodsire, Annihilape, Hisuian Growlithe, Hisuian Arcanine, Galarian Corsola, Cursola, Dudunsparce, Bonsley, Hisuian Voltorb, Hisuian Electrode, Galarian Farfetch'd, Sirfetch'd, Happiny, Kleavor, Mantyke, Galarian Meowth, Perrserker, Mime Jr., Galarian Mr. Mime, Mr. Rime, Hisuian Qwilfish, Overqwil, Hisuian Sneasel, Sneasler, Paldean Tauros (Plain, Fire, and Water), Ursaluna (Plain), Wynaut, Hisuian Typhlosian, Galarian Articuno, Galarian Zapdos, and Galarian Moltres. (The three legendary birds are still unavailable.)
+- Added in v3.1.1: Ambipom, Lickilicky, Wyrdeer, Farigiraf, Paldean Wooper, Clodsire, Annihilape, Hisuian Growlithe, Hisuian Arcanine, Galarian Corsola, Cursola, Dudunsparce, Bonsley, Hisuian Voltorb, Hisuian Electrode, Galarian Farfetch'd, Sirfetch'd, Happiny, Kleavor, Mantyke, Galarian Meowth, Perrserker, Mime Jr., Galarian Mr. Mime, Mr. Rime, Hisuian Qwilfish, Overqwil, Hisuian Sneasel, Sneasler, Paldean Tauros (Plain, Fire, and Water), Ursaluna (Plain), Wynaut, Hisuian Typhlosian, Galarian Articuno, Galarian Zapdos, and Galarian Moltres. (The three legendary birds are still unavailable.)
 - All Magikarp Jump forms are now included.
 
 _Evolution Methods:_
@@ -44,7 +44,7 @@ _Evolution Methods:_
 - Bonsley evolves by leveling up while knowing Rock Throw.
 - Aipom evolves by leveling up while knowing Double Slap.
 - Koffing evolves into Galarian Weezing by leveling up while holding a Charcoal.
-- Primape evolves into Annihilape by leveling up while knowing Outrage.
+- Primeape evolves into Annihilape by leveling up while knowing Outrage.
 - Scyther evolves into Kleavor by leveling up while holding a Hard Stone.
 - Girafarig evolves into Farigiraf by leveling up while knowing Zen Headbutt.
 - Dunsparce evolves into Dudunsparce at level 32.
@@ -59,7 +59,7 @@ _Evolution Methods:_
 
 _Typing And Stats:_
 - Farfetch'd was reverted to Normal/Flying with the inclusion of Galarian Farfetch'd.
-- Girafarig and Ferigiraf are now Dark/Psychic.
+- Girafarig and Farigiraf are now Dark/Psychic.
 - Galarian Corsola and Cursola are Ghost/Rock.
 - Lugia is Water/Flying.
 
@@ -68,7 +68,7 @@ _Typing And Stats:_
 _Initial Options:_
 - You can now choose a third player character sprite option.
 - The options menu pages were reorganized so that properties of the world/setting are initial options and properties of your equipment/interface are in-game options.
-- No Real Time Clock (RTC) was turned into a initial option.
+- No Real Time Clock (RTC) was turned into an initial option.
 - Evolve in Battle added as an initial option (see next section).
 - New EV settings for play include choosing whether or not EVs exist, are 510 max for any Pokemon (like modern games), or All in which a Pokemon can gain 252 EVs in every stat. These settings apply both to the player and to NPCs.
 - Affection is included and can be turned on and off.
@@ -119,7 +119,7 @@ _Items And Rewards:_
     * Snowball -> Covert Cloak
     * UtilUmbrella -> Loaded Dice
 - Added GBC Sound key item.
-- The Pokedex UI is overhauled, and is extensive in use and function. This includes a New Unown mode UI, and it play cries in the new Dex entry mode.
+- The Pokedex UI is overhauled, and is extensive in use and function. This includes a New Unown mode UI, and it plays cries in the new Dex entry mode.
 - Sound effect for new Premier Ball.
 - Added Go-Goggles key item. 
 
@@ -131,11 +131,11 @@ _Overworld And NPCs:_
 - Added Trainer Tip signs for some new features and some more Advanced Tips to Kanto.
 - There are now several new routes based off of pokewalker locations or otherwise connecting proximinal routes that weren't connected before, such as Magnet Tunnel, Rugged Road, and Snowtop Mountain. Additionally, Stormy Beach, Cherrygrove Bay, Murky Swamp, and Violet Outskirts were all populated with wildmons.
 - Special attention was given to Snowtop Mountain in that you can't get phone calls there and that there is a cool interactive cutscene there where you can view the scenery.
-- Violet Outskirts was also given a spooky event. Take the Sylph Scope there for an evert mon.
+- Violet Outskirts was also given a spooky event. Take the Sylph Scope there for an event mon.
 - Removed Celadon Outskirts.
 - Dynamic level scaling based on badge number was included for both wildmons and trainers in certain locations.
     For Wildmons: Hidden grottoes, all optional areas, and the Safari Zone.
-    For Trainers: Route Leaders, and alls trainers in the optional routes.
+    For Trainers: Route Leaders, and all trainers in the optional routes.
 - Three-Segment Dudunsparce more common during swarms.
 - Holding B on cycling road hits the brakes on the bike.
 - You can now call Elm to know how your lead party mon evolves. You can also call Lyra to find out when your mon will learn its next move (but it will not specify the move). There is also a hint that Lyra calls are useful now.
@@ -178,7 +178,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Fully paralyzed animation is faster now.
 - Poison status outside of battle now interacts with Poison Heal properly, dealing no damage.
 - Run Away prevents being trapped in unfaithful build.
-- Updated a few egg move pools (like giving one to weavile).
+- Updated a few egg move pools (like giving one to Weavile).
 - Field Moves no longer crash when used by legendaries.
 - Moon Ball and Love Ball now work properly
 - Critical Captures now work properly.
@@ -212,7 +212,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Updated many mons movepools, learnsets, and tm compatibility to include or exclude moves they should or shouldn't learn in line with current generations.
 - Balanced some wildmon levels.
 - Updated several trainer parties.
-- Fixed Ssveral Pokégear phone bugs.
+- Fixed Several Pokégear phone bugs.
 - Several music player fixes.
 - Fix trade glitches.
 - Fixed Professor Oak's PC problems.
@@ -251,7 +251,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Text alignment fixes.
 - Gave the sailboat text in Goldenrod Harbor.
 - Swimmers in the Battle Tower now have walking sprites.
-- Many graphic bugs fixes.
+- Many graphic bug fixes.
 - Fixed Trick bug so it can be used if one mon has an item.
 - Fixed catch tutorial.
 - Fix frontier brain battles no occurring bug.
@@ -289,7 +289,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Journal total count and entry bug fixes.
 - Buena's Password now operates in the evening.
 - Fixed party naming screen issues.
-- Marlon palatte fly glitch.
+- Marlon palette fly glitch.
 - Sylveon breeding bug. No more eldritch Eevees.
 - Tea/Hyper Training factors in EVs.
 - Knock Off against Substitute interaction fix.
@@ -314,8 +314,8 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Critical hit chance calculations fix.
 - Neutralizing Gas and Intimidate interactions.
 - Lake of Rage softlock.
-- Regional Varients can now be obtained through Wonder Trade.
-- Can no longer wondertrade Spikey Ear Pichu.
+- Regional Variants can now be obtained through Wonder Trade.
+- Can no longer Wonder Trade Spiky-Eared Pichu.
 - Audio Engine Fixes.
 - Eusine and Gramps interaction rework.
 - Crys's sprites and anims.
