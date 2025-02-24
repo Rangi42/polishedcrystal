@@ -144,7 +144,7 @@ NgramStrings:
 .for:              rawchar "for@"
 .ve_:              rawchar "ve @"
 .ed_ :             rawchar "ed @"
-.It_apostrophe_s_: rawchar "It's@"
+.It_apostrophe_s_: rawchar "It's @"
 .that_:            rawchar "that @"
 ._you_:            rawchar " you @"
 .Poke:             rawchar "Poké@"
