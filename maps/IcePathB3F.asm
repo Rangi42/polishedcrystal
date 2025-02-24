@@ -26,7 +26,7 @@ LoreleiScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftruefwd LoreleiRematchScript
 	checkevent EVENT_BEAT_LORELEI
-	iftrue_jumpopenedtext LoreleiAfterText
+	iftruefwd LoreleiAfterScript
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftruefwd LoreleiAfterIntroScript
 	writetext LoreleiIntroText
@@ -50,17 +50,19 @@ LoreleiAfterIntroScript:
 	promptbutton
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
+LoreleiAfterScript:
+	readvar VAR_BADGES
+	ifequalfwd NUM_JOHTO_BADGES, .AllEightBadges
+	writetext LoreleiOneMoreBadgeText
+	sjumpfwd .Finish
+
+.AllEightBadges:
+	writetext LoreleiAllBadgesText
+.Finish
+	promptbutton
 	jumpthisopenedtext
 
-LoreleiAfterText:
-	text "Go on ahead. You"
-	line "can challenge the"
-
-	para "#mon League"
-	line "with one more"
-	cont "Badge."
-
-	para "If you do beat"
+	text "If you do beat"
 	line "them, meet me here"
 	cont "for a rematch."
 	done
@@ -207,4 +209,21 @@ LoreleiRematchSeenText:
 LoreleiRematchBeatenText:
 	text "As expected of"
 	line "the Champion!"
+	done
+
+LoreleiOneMoreBadgeText:
+	text "Go on ahead. You"
+	line "can challenge the"
+
+	para "#mon League"
+	line "with one more"
+	cont "Badge."
+	done
+
+LoreleiAllBadgesText:
+	text "Go on ahead. You"
+	line "have enough badges"
+
+	para "to challenge the"
+	line "#mon League."
 	done
