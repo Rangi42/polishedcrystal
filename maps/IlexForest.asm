@@ -1012,24 +1012,21 @@ IlexForestSignpost:
 IlexForestTrainerTips:
 	text "Trainer Tips!"
 
-	para "Some moves can"
-	line "be used outside"
-	cont "of battle!"
+	para "As long as you"
+	line "have the HM in"
+	cont "your bag,"
 
-	para "These are called"
-	line "Hidden Machines,"
-	cont "or HMs for short."
+	para "and #mon in"
+	line "your party that"
 
-	para "As long as a #-"
-	line "mon is compatible,"
+	para "are compatible"
+	line "with that HM can"
 
-	para "it can use the"
-	line "move outside of"
-	cont "battle."
+	para "use the move out-"
+	line "of battle. You"
 
-	para "You don't even"
-	line "have to teach it"
-	cont "the move!"
+	para "don't even have to"
+	line "teach it!"
 	done
 
 Text_IlexForestShrine:
