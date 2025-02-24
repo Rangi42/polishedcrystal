@@ -6,11 +6,7 @@
 > — Satoru Iwata, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html)"
 
 
-Polished Crystal v3.1.1 brings with it a lot of changes. What started as a Dex expansion, through three years of development it has evolved into a strikingly different game from the v3.0.0-beta release with numerous added features from newer generations, a plethora of code optimizations, and many quality of life improvements. Ultimately, the game aims to feel like a modern Pokemon game with retro graphics. The rule of thumb is to assume that things work like modern games, and if it doesn't, it is either a bug or an oversight.
-
-What follows is a short description alongside a list of the changes made to several iterations of Polished Crystal from the last stable release (v3.0.0-beta). This is not an exhaustive list, but covers all of the major changes, and a majority of the minor ones. There are content spoilers.
-
-Note: There are some changes listed from v2.2.0 to v3.0.0-beta as well. These are not in any way exhaustive, and likely don't list several major changes.
+***Note: The following changelog may contain spoilers.***
 
 ## v3.1.1
 
@@ -21,7 +17,7 @@ This is a hotfix release that removes one bug that caused the overworld graphics
 This is the newest stable version release which finished a number of branches that were under development and added them to v3.0.0, along with a few other small additions.
 
 ### Additions
-- Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp. 332 Pokemon now complete the pokedex.
+- Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp. There are now 46 variant Pokémon for a total of 391 unique Pokémon.
 - Added the much requested NPC to point the players in the direction of the Go-Goggles.
 - The Candy Jar can now be obtained in the Goldenrod Underground. Exp Candies can be bought as well.
 - Support for the GB Printer was added so that players can print the Deploma.
@@ -36,7 +32,7 @@ This is the newest stable version release which finished a number of branches th
 Previously known as the "9bit" Branch of development, this version represents the bulk of the myriad of changes to v3.0.0-beta, which are covered in the following subsections.
 
 ### Pokemon
-The total number of unique pokemon has risen to 335 (including Red Gyarados, Spikey-Ear Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there is a total of 289 unique species. 331 Pokemon are currently available for full dex completion. In general, if a Pokemon shares some relation to Generations 1 or 2, then it is very likely in the game, with the exception of Paradox Pokemon and Mega Evolutions.
+The total number of unique Pokémon has risen to 390 (including Red Gyarados, Spiky-Eared Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there are 289 species required to complete the Pokédex. In general, if a Pokémon has some connection to Generations I or II, it is very likely present in the game, except for Paradox Pokémon and Mega Evolutions.
 
 _Availability:_
 - Reincluded post-3.0.0-beta: Spearow, Fearow, Aipom, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Lickitung, Stantler, Shuckle, Cleffa, Igglybuff, Smoochum, Deliberd.
@@ -600,4 +596,6 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 * Fix: Magnet Train tracks were missing tiles.
 * Fix: Shiny icon is the star from Gen 3+.
 * Fix: SPRITE_DRAGONITE uses Dragonite's side view.
+
+### Removals
 * Remove: Rebattling Breeders like in B2/W2.
