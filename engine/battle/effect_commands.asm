@@ -1785,6 +1785,8 @@ BattleCommand_resettypematchup:
 	ld [wTypeModifier], a
 	ret
 
+INCLUDE "data/moves/powder_moves.asm"
+
 BattleCommand_damagevariation:
 ; Modify the damage spread between 85% and 100%.
 

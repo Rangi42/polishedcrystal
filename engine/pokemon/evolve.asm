@@ -759,9 +759,9 @@ EvoFlagAction:
 	ret
 
 GetBaseEvolution:
-; Find the first mon in the evolution chain including wCurPartySpecies.
+; Find the first mon in the evolution chain including wCurPartySpecies+wCurForm.
 
-; Return carry and the new species in wCurPartySpecies
+; Return carry and the new species in wCurPartySpecies+wCurForm
 ; if a base evolution is found.
 
 	call GetPreEvolution
@@ -770,6 +770,8 @@ GetPreEvolution:
 
 ; Return carry and the new species in wCurPartySpecies+wCurForm
 ; if a pre-evolution is found.
+
+; Present behavior preserves de
 
 	ld bc, 0
 .loop ; For each Pokemon...
@@ -961,13 +963,15 @@ GetEvolutionData:
 
 INCLUDE "data/pokemon/multi_evos.asm"
 
-GetNextMoveLevel:
+GetNextMove:
 ; input: b = form, c = species, d = level
-; output: a = level of next move (0 if none, -1 if egg)
+; output: a = level of next move (0 if none, -1 if egg), d = id of next move (0 if none/egg)
 	assert MON_IS_EGG == MON_EXTSPECIES && MON_EXTSPECIES == MON_FORM
 	bit MON_IS_EGG_F, b
 	jr z, .not_egg
 	ld a, -1
+.no_move
+	ld d, 0
 	ret
 .not_egg
 	call GetEvosAttacksPointer
@@ -978,11 +982,14 @@ GetNextMoveLevel:
 .find_move
 	ld a, [hli]
 	inc a
-	ret z ; no move
+	jr z, .no_move
 	dec a
 	cp d
 	jr c, .next_move
-	ret nz ; got move
+	jr z, .next_move
+	; got move
+	ld d, [hl]
+	ret
 .next_move
 	inc hl
 	jr .find_move

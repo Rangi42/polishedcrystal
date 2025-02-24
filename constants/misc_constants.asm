@@ -14,7 +14,7 @@ DEF SAVE_CHECK_VALUE_2     EQU 127
 DEF SAVE_CHECK_VALUE_1_OLD EQU 99 ; check digit before save version 7
 
 ; save file version
-DEF SAVE_VERSION EQU 9
+DEF SAVE_VERSION EQU 10
 
 ; time of day boundaries
 DEF MORN_HOUR EQU  5 ; 5 AM - 9 AM (4 hours)
@@ -56,4 +56,5 @@ DEF KIRK_SHUCKIE_ID EQU 00518
 	const ERR_OLDBOX
 	const ERR_NEWBOX
 	const ERR_WINSTACK_OVERFLOW
+	const ERR_CORRUPTED_SAVESTATE
 DEF NUM_ERR_CODES EQU const_value

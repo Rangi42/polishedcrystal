@@ -212,9 +212,7 @@ BT_PartySelect:
 	dec a ; Enter
 	jr z, .Enter
 	dec a ; Stats
-	jmp z, .Stats
-	dec a ; Moves
-	jmp z, .Moves
+	jr z, .Stats
 	jr .loop ; Cancel
 
 .return
@@ -281,57 +279,47 @@ BT_PartySelect:
 	prompt
 
 .Stats:
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	jmp .loop
-
-.Moves:
-	; For Eggs, "Moves" is actually the "Cancel" option
-	ld a, MON_IS_EGG
-	call GetPartyParamLocationAndValue
-	bit MON_IS_EGG_F, a
-	jr nz, .Cancel
-	farcall ManagePokemonMoves
 
 .Cancel:
 	jmp .loop
 
 .EggMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 13, 19, 17
+	menu_coords 10, 13, 19, 17
 	dw .EggMenuData
 	db 1 ; default option
 
 .EggMenuData:
 	db $c0 ; flags
 	db 2 ; items
-	db "Stats@"
+	db "Summary@"
 	db "Cancel@"
 
 .MenuHeader:
 	db $00 ; flags
-	menu_coords 11, 9, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db $c0 ; flags
-	db 4 ; items
+	db 3 ; items
 	db "Enter@"
-	db "Stats@"
-	db "Moves@"
+	db "Summary@"
 	db "Cancel@"
 
 .BannedMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 11, 19, 17
+	menu_coords 10, 13, 19, 17
 	dw .BannedMenuData
 	db 1 ; default option
 
 .BannedMenuData:
 	db $c0 ; flags
-	db 3 ; items
-	db "Stats@"
-	db "Moves@"
+	db 2 ; items
+	db "Summary@"
 	db "Cancel@"
 
 BTText_EnterBattle:

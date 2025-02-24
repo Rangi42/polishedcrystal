@@ -77,6 +77,19 @@ ApplyHPBarPals:
 	ld a, e
 	jmp FillBoxWithByte
 
+LoadSummaryStatusIconPalette:
+	xor a
+	ld de, wTempMonStatus
+	farcall GetStatusConditionIndex
+	ld hl, StatusIconPals
+	ld c, a
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	ld de, wOBPals1 palette 5 color 2
+	ld bc, 1 colors
+	jmp FarCopyColorWRAM
+
 LoadPlayerStatusIconPalette:
 	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus

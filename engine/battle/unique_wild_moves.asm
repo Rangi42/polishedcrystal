@@ -21,13 +21,12 @@ CheckUniqueWildMove:
 	; If form isn't specified in the unique wildmove list, any form will do.
 	ld a, [hli] ; form
 	ld b, a
-	and FORM_MASK
-	jr nz, .specific_form
+	and a, FORM_MASK
 	ld a, [wCurForm]
+	jr nz, .specific_form
 	and EXTSPECIES_MASK
 	jr .compare_form
 .specific_form
-	ld a, [wCurForm]
 	and SPECIESFORM_MASK
 .compare_form
 	cp b
@@ -45,19 +44,10 @@ CheckUniqueWildMove:
 	jr z, .TeachMove ; assume this is for Explosion in TeamRocketBaseB1F
 	cp UNION_CAVE
 	jr z, .TeachMove ; assume this is a Lapras in UnionCaveB2F
-	cp YELLOW_FOREST
-	jr nz, .ChanceToTeach
-	; assume this is a Pikachu in YellowForest; Surf (always teach) or Fly?
-	ld a, [wPlayerState]
-	cp PLAYER_SURF
-	jr z, .SurfingPikachu
-	cp PLAYER_SURF_PIKA
-	jr nz, .ChanceToTeach
-.SurfingPikachu
-	ld a, SURF
-	ld b, a
-	jr .TeachMove
-.ChanceToTeach
+	ld a, b
+	cp SURF
+	jr z, .TeachMove ; assume only Pikachu can learn Surf
+
 	call Random
 	add a
 	ret nc
@@ -79,11 +69,8 @@ CheckUniqueWildMove:
 	ld a, b
 	ld [hl], a
 
-	; assume only Pikachu can learn Surf or Fly
-	cp SURF
-	jr z, .UseSurfingPikachu
+	; assume only Pikachu can learn Fly
 	cp FLY
-	ld a, PIKACHU_FLY_FORM
 	jr z, .UseFlyingPikachu
 	ret
 
@@ -95,11 +82,9 @@ CheckUniqueWildMove:
 	inc hl
 	jr .loop
 
-.UseSurfingPikachu
-	ld a, PIKACHU_SURF_FORM
 .UseFlyingPikachu
-	ld b, a
-	ld a, [wCurForm]
+	ld b, PIKACHU_FLY_FORM
+	ld a, [wOTPartyMon1Form]
 	and ~FORM_MASK
 	or b
 	ld [wCurForm], a

@@ -1041,8 +1041,8 @@ ArmorSuitDesc:
 	done
 
 AirBalloonDesc:
-	text "Avoids one Ground"
-	next "attack. (Hold)"
+	text "Avoids Ground att-"
+	next "acks until popped."
 	done
 
 AssaultVestDesc:

@@ -55,13 +55,12 @@
 	const MONMENUITEM_HEADBUTT   ; 11
 	const MONMENUITEM_ROCKSMASH  ; 12
 	; options
-	const MONMENUITEM_STATS      ; 13
+	const MONMENUITEM_SUMMARY    ; 13
 	const MONMENUITEM_SWITCH     ; 14
 	const MONMENUITEM_ITEM       ; 15
 	const MONMENUITEM_CANCEL     ; 16
-	const MONMENUITEM_MOVE       ; 17
-	const MONMENUITEM_MAIL       ; 18
-	const MONMENUITEM_ERROR      ; 19
+	const MONMENUITEM_MAIL       ; 17
+	const MONMENUITEM_ERROR      ; 18
 DEF NUM_MONMENUITEMS EQU const_value - 1
 
 ; MonMenuOptions categories

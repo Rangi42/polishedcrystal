@@ -1,7 +1,7 @@
 BattleIntroSlidingPics:
 	ldh a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK(wLYOverrides)
 	ldh [rSVBK], a
 	call .subfunction1
 	ld hl, rIE
@@ -33,7 +33,7 @@ BattleIntroSlidingPics:
 	push af
 .loop2
 	ldh a, [rLY]
-	cp $60
+	cp $5f
 	jr nz, .loop2
 	ld a, d
 	ldh [hSCX], a
@@ -58,9 +58,9 @@ BattleIntroSlidingPics:
 	ret
 
 .subfunction3
-	ld hl, wShadowOAM + 1 ; x pixel
+	ld hl, wShadowOAMSprite00XCoord
 	ld c, $12 ; 18
-	ld de, $4
+	ld de, SPRITEOAMSTRUCT_LENGTH
 .loop3
 	dec [hl]
 	dec [hl]
@@ -85,13 +85,13 @@ BattleIntroSlidingPics:
 	dec c
 	jr nz, .loop4
 	ld a, e
-	ld c, $22 ; 34
+	ld c, $21 ; 33
 .loop5
 	ld [hli], a
 	dec c
 	jr nz, .loop5
 	xor a
-	ld c, $30 ; 48
+	ld c, $31 ; 49
 .loop6
 	ld [hli], a
 	dec c

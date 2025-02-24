@@ -175,6 +175,7 @@ VBlank0::
 VBlank2::
 VBlankUpdateSound::
 ; sound only
+	ei
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 	jmp _UpdateSound ; far-ok
@@ -262,7 +263,6 @@ VBlank4::
 	and 1 << LCD_STAT
 	ldh [rIE], a
 
-	ei
 	call VBlankUpdateSound
 
 	; Ensure that we don't miss an interrupt in the tiny window between di+reti
@@ -333,7 +333,6 @@ VBlank1::
 	xor a
 	ldh [rIF], a
 
-	ei
 	call VBlankUpdateSound
 	di
 
@@ -381,7 +380,6 @@ VBlank5::
 	ldh a, [rIE]
 	push af
 
-	ei
 	call VBlankUpdateSound
 	di
 

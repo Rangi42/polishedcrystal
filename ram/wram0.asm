@@ -981,6 +981,25 @@ wBillsPC_QuickFrames:: db
 
 wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
+wSummaryScreenPals:: ds 8 palettes
+
+wSummaryScreenOAM::
+for n, NUM_SPRITE_OAM_STRUCTS
+wSummaryScreenOAMSprite{02d:n}:: sprite_oam_struct wSummaryScreenOAMSprite{02d:n}
+endr
+wSummaryScreenTypes:: ds 6
+wSummaryScreenStep:: db
+wSummaryScreenInterrupts:: ds 2 * 16
+wSummaryScreenPage:: db
+wSummaryScreenMoveCount:: db
+wSummaryMoveSwap:: db
+
+; Used to align window buffer for DMA copying
+; Feel free to use or move data, an assert will fail if the memory becomes misaligned
+ds 13
+assert (@ - STARTOF("Misc 1326")) % 16 == 0
+
+wSummaryScreenWindowBuffer:: ds 32 * 10
 
 SECTION UNION "Misc 1326", WRAM0
 ; raw link data
@@ -1202,8 +1221,8 @@ wBattleTransitionSineWaveOffset::
 wBattleTransitionSpinQuadrant:: db
 
 NEXTU
-; stats screen
-wStatsScreenFlags:: db
+; summary screen
+wSummaryScreenFlags:: db
 
 NEXTU
 ; miscellaneous
@@ -1448,6 +1467,13 @@ wDaysSince:: db
 
 ; Temporary backup for options
 wOptionsBuffer:: db
+
+SECTION "SRAM Access Count", WRAM0
+
+; Contains a count of the number of times SRAM has been opened in a
+; session. Protects against bugs from emulators that do not load SRAM
+; when loading a savestate.
+wSRAMAccessCount:: db
 
 SECTION "Rom Checksum", WRAM0
 

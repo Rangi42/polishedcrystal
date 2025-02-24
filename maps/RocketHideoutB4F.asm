@@ -487,7 +487,10 @@ RocketHideoutB4FTeacherSerena:
 	checkjustbattled
 	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 .skip_open
 	jumptextfaceplayer .AfterText
@@ -534,7 +537,10 @@ RocketHideoutB4FSuperNerdNolan:
 	checkjustbattled
 	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 .skip_open
 	jumptextfaceplayer .AfterText
@@ -581,7 +587,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 	para "Blanche: Each"
 	line "lure contains the"
 
-	para "essense of a"
+	para "essence of a"
 	line "legendary bird"
 	cont "#mon."
 
@@ -597,7 +603,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 
 	para "That's why the"
 	line "Great Tree is"
-	line "important."
+	cont "important."
 
 	para "Candela: The tree"
 	line "is ancient,"

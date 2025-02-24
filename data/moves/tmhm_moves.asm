@@ -84,11 +84,11 @@ TMHMMoves:
 	db WHIRLPOOL    ; HM05 (Route 42)
 	db WATERFALL    ; HM06 (Ice Path)
 	assert_table_length NUM_TMS + NUM_HMS
-	db AGILITY      ; MT01 (TODO)
+	db AGILITY      ; MT01 (Mahogany Mart)
 	db AQUA_TAIL    ; MT02 (Route 4)
 	db BATON_PASS   ; MT03 (Goldenrod Museum)
 	db BODY_SLAM    ; MT04 (Warm Beach)
-	db CHARM        ; MT05 (TODO)
+	db CHARM        ; MT05 (Route 35-Natioal Park Gate)
 	db COUNTER      ; MT06 (Celadon Dept. Store)
 	db DEFENSE_CURL ; MT07 (Mount Mortar)
 	db DOUBLE_EDGE  ; MT08 (Safari Zone)
@@ -112,9 +112,8 @@ TMHMMoves:
 	db SWAGGER      ; MT26 (Celadon City)
 	db THUNDERPUNCH ; MT27 (Goldenrod City)
 	db TRICK        ; MT28 (Battle Tower)
-	db TRICK_ROOM   ; MT29 (TODO)
+	db TRICK_ROOM   ; MT29 (Route 16 South Gate)
 	db ZAP_CANNON   ; MT30 (Power Plant)
 	db ZEN_HEADBUTT ; MT31 (Saffron City)
 	assert_table_length NUM_TM_HM_TUTOR
-; TODO: Agility, Baton Pass, Charm, Trick Room
 	db 0 ; end

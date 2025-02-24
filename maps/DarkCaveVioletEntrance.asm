@@ -161,7 +161,7 @@ DarkCaveVioletEntranceFalknerExplanationText:
 	line "of situation."
 
 	para "So you're here to"
-	line "earn a badge?"
+	line "earn a Badge?"
 
 	para "Then meet me at"
 	line "the Violet Gym."

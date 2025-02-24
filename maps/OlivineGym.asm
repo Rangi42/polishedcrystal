@@ -129,7 +129,7 @@ OlivineGymGentlemanPreston:
 	text "Impressive!"
 	line "You should earn"
 
-	para "more badges with"
+	para "more Badges with"
 	line "that much skill."
 	done
 

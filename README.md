@@ -12,15 +12,15 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The **current official release** is **v3.1.0** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
+The **current official release** is **v3.1.1** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
 
-- **[Download v3.1.0 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.0)**
+- **[Download v3.1.1 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1)**
 
 The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) (September 20, 2016). However, **v3.1.0** includes *significant* enhancements and is recommended for all players.
 
 *If you have any questions about playing or patching, [read the FAQ](FAQ.md)!*
 
-## What’s New in v3.1.0
+## What’s New in v3.1.1
 
 Below is a brief summary of the major changes and additions. A more detailed changelog will be released soon.
 
@@ -40,7 +40,7 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 
 A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 
-- **253 Pokémon**, including some new evolutions.
+- **289 Pokémon species**, including some new evolutions, plus **56 cosmetic forms** (e.g., Magikarp patterns, Pikachu Fly/Surf, Arbok patterns, Unown Forms) and **46 variants** (Alolan, Galarian, Hisuian, misc.)—for a total of **391 unique Pokémon**.
 - **48 new moves**, **75 TMs**, and **31 move tutors**.
 - Modern mechanics, such as the **Fairy type**, **Physical/Special split**, **Natures**, **Abilities**, and more.
 - **Unlimited TMs** and quality-of-life features like **Running Shoes** and continuous **Repel**.

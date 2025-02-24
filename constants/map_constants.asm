@@ -294,7 +294,7 @@ ENDM
 	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 31
 	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32
 	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 33
-	map_const MAGNET_TUNNEL_WEST,                          9, 11 ; 34
+	map_const MAGNET_TUNNEL_WEST,                          9, 18 ; 34
 	map_const MAGNET_TUNNEL_INSIDE,                       23, 18 ; 35
 
 	newgroup                                                     ; 12

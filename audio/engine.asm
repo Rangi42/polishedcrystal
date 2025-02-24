@@ -43,6 +43,8 @@ _InitSound::
 	xor a
 	rst ByteFill
 
+	dec a
+	ld [wCh3LoadedWaveform], a ; initializes to -1 so title music can use sample 0
 	ld a, MAX_VOLUME
 	ld [wVolume], a
 	call MusicOn

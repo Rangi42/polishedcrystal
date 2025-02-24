@@ -194,7 +194,7 @@ BlueOutroText:
 	para "real deal. You are"
 	line "a good trainer."
 
-	para "With eight badges"
+	para "With eight Badges"
 	line "from Kanto, you"
 
 	para "can challenge the"

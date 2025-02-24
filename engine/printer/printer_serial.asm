@@ -403,7 +403,7 @@ Printer_Get2bpp:
 	jr nc, .loop
 	call SwapHLDE
 	ld bc, 16
-	call CopyBytes
+	rst CopyBytes
 	reti
 
 PrinterDataPacket1:

@@ -556,8 +556,7 @@ GetWonderTradeOTForm:
 	push hl
 	push bc
 	ld b, [hl]
-	ld hl, InvalidVariants
-	call GetSpeciesAndFormIndexFromHL
+	call CheckInvalidVariants
 	pop bc
 	pop hl
 	jr c, .loop
@@ -570,6 +569,10 @@ GetWonderTradeOTForm:
 	and SPECIESFORM_MASK
 	ld d, a
 	jr .loop
+
+CheckInvalidVariants:
+	ld hl, InvalidVariants
+	jmp GetSpeciesAndFormIndexFromHL
 
 INCLUDE "data/pokemon/invalid_variants.asm"
 
