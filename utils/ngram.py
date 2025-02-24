@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Disclaimer: This is ChatGPT code!
 
 import argparse
 import subprocess
