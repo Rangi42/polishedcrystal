@@ -22,9 +22,8 @@ WriteBattleTowerTrainerName:
 	ret
 
 NewRentalTeam:
-; Gives the player 6 rental Pokémon to choose from. The first 3
-; are guranteed to be legal together (the first 6 run into problems with
-; Item Clause).
+; Gives the player 6 rental Pokémon to choose from. They are guranteed to
+; be legal in any combination (no duplicate Pokémon).
 	; First, figure out tier selection.
 	ld a, [wBattleFactorySwapCount]
 	ld c, 6
@@ -80,7 +79,7 @@ NewRentalTeam:
 	ld [wOTPartyCount], a
 
 	ld hl, wBT_MonParty
-	ld b, BATTLETOWER_PARTY_LENGTH
+	ld b, PARTY_LENGTH
 
 .generate_loop
 	push bc
@@ -101,66 +100,8 @@ NewRentalTeam:
 	farcall BT_LegalityCheck
 	jr nz, .generate_team
 
-.generate_filler
-	; The picks are legal. Now, generate filler to fill up the rest
-	; of the party without checking for legality. We do, however, still
-	; want them to be distinct sets, checked later.
-	ld a, BATTLETOWER_PARTY_LENGTH
-	ld [wOTPartyCount], a
-
-	ld hl, wBT_MonParty + BATTLETOWER_PARTYDATA_SIZE
-	ld b, PARTY_LENGTH - BATTLETOWER_PARTY_LENGTH
-
-.filler_loop
-	push bc
-	ld a, [hli]
-	ld b, a
-
-	; Ignore set index, we want to pick a random mon.
-	ld c, -1
-	call BT_AppendOTMon
-
-	ld a, c
-	ld [hli], a
-	pop bc
-	dec b
-	jr nz, .filler_loop
-
-	; Now, verify that all sets are distinct. This does check both
-	; group + index, even if group is currently redundant. This is
-	; in case we generate mons from different groups in the future.
-	ld de, wBT_MonParty
-	ld a, [wOTPartyCount]
-	dec a
-	ld c, a
-.outer_loop
-	ld h, d
-	ld l, e
-	inc hl
-	inc hl
-	ld b, c
-.inner_loop
-	; Is group identical?
-	ld a, [de]
-	cp [hl]
-	inc de
-	inc hl
-	jr nz, .next
-
-	; Is set identical?
-	ld a, [de]
-	cp [hl]
-	jr z, .generate_filler
-
-.next
-	dec de
-	inc hl
-	dec b
-	jr nz, .inner_loop
-	inc de
-	inc de
-	dec c
-	jr nz, .outer_loop
+	; We don't need to verify distinct sets, since that would implicitly
+	; violate Species Clause.
 	ret
 
 LoadRentalParty:
