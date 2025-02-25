@@ -59,12 +59,12 @@ def detokenize_line(token_list):
 def get_repo_lines():
 	"""
 	Retrieve lines from grep+sed:
-	  git grep -hP '^\t(?:text|next1|next|line|cont|para|done|prompt|page) "(.+)"' \
-	  | sed -E 's/^.[a-z0-9]+ "(.+)"/\1/g'
+	  git grep -hP '^\t(?:text|next1|next|line|cont|para|done|prompt|page) +"(.+)"' \
+	  | sed -E 's/^.[a-z0-9]+ +"(.+)"/\1/g'
 	"""
 	GREP_CMD = r"""
-	git grep -hP '^\t(?:text|next1|next|line|cont|para|done|prompt|page) "(.+)"' \
-	| sed -E 's/^.[a-z0-9]+ "(.+)"/\1/g'
+	git grep -hP '^\t(?:text|next1|next|line|cont|para|done|prompt|page) +"(.+)"' \
+	| sed -E 's/^.[a-z0-9]+ +"(.+)"/\1/g'
 	""".strip()
 	output = subprocess.check_output(GREP_CMD, shell=True)
 	lines = output.decode('utf-8').splitlines()
