@@ -31,7 +31,7 @@ This is the newest stable version release which finished a number of branches th
 
 Previously known as the "9bit" branch of development, this version represents the bulk of the myriad of changes to v3.0.0-beta, which are covered in the following subsections.
 
-### Pokemon
+### Pokémon
 The total number of unique Pokémon has risen to 390 (including Red Gyarados, Spiky-Eared Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there are 289 species required to complete the Pokédex. In general, if a Pokémon has some connection to Generations I or II, it is very likely present in the game, except for convergent species, Paradox Pokémon, and Mega Evolutions.
 
 _Availability:_
@@ -55,7 +55,7 @@ _Evolution Methods:_
 - Mime Jr. evolves into Plain Mr. Mime at level 30 and Galarian Mr. Mime at Ice Path. You can also use an Ice Stone for the latter.
 - Hisuian Sneasel, Galarian Corsola, and Galarian Mr. Mime evolve the way they do in the mainline games.
 - In addition to evolving by leveling up in Ilex Forest and Ice Path, respectively, Eevee can evolve into Leafeon using a Leaf Stone and Glaceon using an Ice Stone.
-- Non-Alolan Pokemon evolve into their Alolan form evolutions by using an Odd Souvenir.
+- Non-Alolan Pokémon evolve into their Alolan form evolutions by using an Odd Souvenir.
 
 _Typing And Stats:_
 - Farfetch'd was reverted to Normal/Flying with the inclusion of Galarian Farfetch'd.
@@ -70,9 +70,9 @@ _Initial Options:_
 - The options menu pages were reorganized so that properties of the world/setting are initial options and properties of your equipment/interface are in-game options.
 - No Real Time Clock (RTC) was turned into an initial option.
 - Evolve in Battle added as an initial option (see next section).
-- New EV settings for play include choosing whether or not EVs exist, are 510 max for any Pokemon (like modern games), or All in which a Pokemon can gain 252 EVs in every stat. These settings apply both to the player and to NPCs.
+- New EV settings for play include choosing whether or not EVs exist, are 510 max for any Pokémon (like modern games), or All in which a Pokémon can gain 252 EVs in every stat. These settings apply both to the player and to NPCs.
 - Affection is included and can be turned on and off.
-- New Game+ now preserves Catch/Oval/Shiny Charm (in addition to your money, mom's money, battle points, and any boxed Pokemon like before).
+- New Game+ now preserves Catch/Oval/Shiny Charm (in addition to your money, mom's money, battle points, and any boxed Pokémon like before).
 - Nuzlocke Mode has been removed along with some features that were added as a replacement. This is because the option caused players to believe that the game was balanced around the feature and often suggested changes based on this misperception.
 
 _Moves and Battle:_
@@ -92,7 +92,7 @@ _Moves and Battle:_
 - Stat change sound effects and graphics.
 - Use the Generation 5 gym symbol for the gym battle intro splash.
 - You can now switch and sort key items in the bag.
-- Can no longer change the ball of traded pokemon.
+- Can no longer change the ball of traded Pokémon.
 - Hyper Training now requires level 50 if modern EVs are enabled.
 
 _Items And Rewards:_
@@ -101,12 +101,12 @@ _Items And Rewards:_
 - Gold Leaf and Silver Leaf are no longer obtainable through headbutt. Instead, EV Wings can be obtained some of the time.
 - One Odd Souvenir is accessible before the Johto Elite Four from Elm for finishing the Mystery Egg quest.
 - Mirror Herb can now be used to transfer egg moves to an empty move slot using the daycare.
-- Mint Leaf can be traded to the Tea Lady in Celadon apartments to change your Pokemon's nature.
+- Mint Leaf can be traded to the Tea Lady in Celadon apartments to change your Pokémon's nature.
 - Removed the Dawn Stone for the Oval Stone.
 - Exp share and power items available pre-E4.
 - Oak gives the Shiny Charm now.
 - Catching Charm can now be gotten from Prof. Oak.
-- Sweet Honey added which attracts wild pokemon at the level of your party lead. Additionally an NPC was added who will sell it to you in the Goldenrod Flower shop.
+- Sweet Honey added, which attracts wild Pokémon at the level of your party lead. Additionally an NPC was added who will sell it to you in the Goldenrod Flower shop.
 - You can now buy PewterCrunch.
 - Add Battle Factory items.
 - Fourth Trainer Star is for beating Palmer or Thorton.
@@ -147,13 +147,13 @@ _Overworld And NPCs:_
 - NPC trade changes (such as one for Galarian Weezing and changing the one in Violet so that it's a Poliwag for a Voltorb).
 - Lucky Number is now Daily, not Weekly.
 - Moved and added, or removed/replaced some cameo trainers. These include Piers, Katy, Thorton and Melony added, while Skyla was replaced with Marlon and Anabel was moved to the outside of Battle Tower.
-- Many added pokemon are now available in the wild.
+- Many added Pokémon are now available in the wild.
 - Alolan Exeggutor now blocks paths instead of Vileplume.
 - Added a nurse's office to Celadon University.
 - Added an Endure move tutor.
 - Added Kimono Girls Mako and Mina.
 - Nature Changing NPC with mint leaf tea.
-- Added a bunch of pokemon journals.
+- Added a bunch of Pokémon journals.
 - Several NPC interactions (haircuts and the friendship option for Shrine Maiden Rei) now exclusively give affection.
 - More NPC hints about all kinds of features and items.
 - Olivine Lighthouse shines at night.
@@ -390,7 +390,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Minor bug fix to Water Absorb and friends.
 - Fade in palettes for ending the Bug Catching Catching contest early.
 - Fixed GitHub issues #775, #795, #782, #790, #801, #902, #915, #916, #900, #949, #950, #905.
-- Fixed breeding bug where egg mons are only female when breeding with basic Pokemon. Fixed another breeding bug for variant forms. So breeding works properly in all cases now...we hope.
+- Fixed breeding bugs where hatched Pokémon are only female when breeding with basic Pokémon, and another breeding bug for variant forms.
 
 ## v3.0.0-beta
 
