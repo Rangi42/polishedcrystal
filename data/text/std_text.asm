@@ -271,7 +271,6 @@ ContestResults_ReadyToJudgeText:
 ContestResults_PlayerWonAPrizeText:
 	text "<PLAYER>, the No."
 	text_ram wStringBuffer3
-	text ""
 	line "finisher, wins"
 	cont ""
 	text_ram wStringBuffer4
@@ -320,7 +319,6 @@ ContestResults_PartyFullText:
 
 GymStatue_CityGymText:
 	text_ram wStringBuffer3
-	text ""
 	line "#mon Gym"
 
 	para "Leader: "
@@ -450,7 +448,6 @@ VendingMachineClangText:
 
 	para ""
 	text_ram wStringBuffer3
-	text ""
 	line "popped out."
 	done
 
@@ -458,7 +455,6 @@ VendingMachineScoreText:
 	text "Score! An extra"
 	line ""
 	text_ram wStringBuffer3
-	text ""
 	cont "popped out."
 	done
 

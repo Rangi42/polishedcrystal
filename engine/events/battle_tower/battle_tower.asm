@@ -519,7 +519,6 @@ Special_BattleTower_NextRentalBattle:
 	text "You can expect to"
 	line "see a "
 	text_ram wOTPartyMonNicknames
-	text ""
 	cont "with "
 	text_ram wStringBuffer1
 	text "."

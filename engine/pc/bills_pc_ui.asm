@@ -2514,7 +2514,6 @@ BillsPC_PackFullText:
 BillsPC_MovedToPackText:
 	text "Moved "
 	text_ram wStringBuffer1
-	text ""
 	line "to Bag."
 	prompt
 
