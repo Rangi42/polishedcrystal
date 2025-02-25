@@ -135,6 +135,7 @@ Var_CountTrainerStars:
 	; star for completing the Pokédex
 	push bc
 	farcall Pokedex_CountSeenOwn
+	pop bc
 	ld hl, wTempDexOwn
 	ld a, [hli]
 	cp HIGH(NUM_POKEMON)
@@ -144,7 +145,6 @@ Var_CountTrainerStars:
 	jr c, .nostar3
 	inc b
 .nostar3
-	pop bc
 	; star for beating Tower Tycoon Palmer or Factory Head Thorton
 	eventflagcheck EVENT_BEAT_PALMER
 	jr nz, .star4
