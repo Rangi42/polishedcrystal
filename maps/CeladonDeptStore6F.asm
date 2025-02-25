@@ -54,7 +54,7 @@ CeladonDeptStore3FGameboyKid1Text:
 	line "#mon while"
 
 	para "it was holding"
-	line "an Up-Grade."
+	line "an Upgrade."
 	done
 
 CeladonDeptStore3FGameboyKid2Text:
@@ -68,8 +68,8 @@ CeladonDeptStore3FGameboyKid2Text:
 	line "coins…"
 
 	para "I'll raise it with"
-	line "an Up-Grade to"
-	cont "make it evolve!"
+	line "an Upgrade to make"
+	cont "it evolve!"
 	done
 
 CeladonDeptStore6FDirectoryText:

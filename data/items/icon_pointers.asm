@@ -215,7 +215,7 @@ ItemIconPointers:
 	dba PowerBandIcon
 	dba PowerAnkletIcon
 	dba DragonScaleIcon
-	dba UpGradeIcon
+	dba UpgradeIcon
 	dba DubiousDiscIcon
 	dba ProtectorIcon
 	dba ElectirizerIcon

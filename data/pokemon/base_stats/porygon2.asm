@@ -4,7 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 45 ; catch rate
 	db 180 ; base exp
-	db NO_ITEM, UP_GRADE ; held items
+	db NO_ITEM, UPGRADE ; held items
 	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 	abilities_for PORYGON2, TRACE, DOWNLOAD, ANALYTIC

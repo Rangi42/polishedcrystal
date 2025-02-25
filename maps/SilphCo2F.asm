@@ -28,17 +28,17 @@ SilphCo2F_MapScriptHeader:
 SilphCo2FScientist1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_UP_GRADE
-	iftruefwd SilphCo2FScientist1GaveUpGradeScript
+	checkevent EVENT_GOT_UPGRADE
+	iftruefwd SilphCo2FScientist1GaveUpgradeScript
 	writetext SilphCo2FScientist1Text1
 	promptbutton
-	verbosegiveitem UP_GRADE
-	iffalsefwd SilphCo2FScientist1NoRoomForUpGradeScript
-	setevent EVENT_GOT_UP_GRADE
-SilphCo2FScientist1GaveUpGradeScript:
+	verbosegiveitem UPGRADE
+	iffalsefwd SilphCo2FScientist1NoRoomForUpgradeScript
+	setevent EVENT_GOT_UPGRADE
+SilphCo2FScientist1GaveUpgradeScript:
 	writetext SilphCo2FScientist1Text2
 	waitbutton
-SilphCo2FScientist1NoRoomForUpGradeScript:
+SilphCo2FScientist1NoRoomForUpgradeScript:
 	endtext
 
 SilphCo2FScientist1Text1:

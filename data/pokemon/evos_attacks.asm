@@ -3249,7 +3249,7 @@ FlareonEvosAttacks:
 	db -1 ; no more level-up moves
 
 PorygonEvosAttacks:
-	evo_data EVOLVE_HOLDING, UP_GRADE, TR_ANYTIME, PORYGON2
+	evo_data EVOLVE_HOLDING, UPGRADE, TR_ANYTIME, PORYGON2
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, CONVERSION

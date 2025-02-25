@@ -37,7 +37,7 @@ SilphCoOfficerScript:
 	jumpopenedtext SilphCoOfficerText
 
 .OfficerScriptAfterPowerRestored
-	jumpopenedtext SilphCoOfficerText_GotUpGrade
+	jumpopenedtext SilphCoOfficerText_GotUpgrade
 
 SilphCoReceptionistText:
 	text "Welcome. This is"
@@ -64,7 +64,7 @@ SilphCoOfficerText:
 	cont "three years ago."
 	done
 
-SilphCoOfficerText_GotUpGrade:
+SilphCoOfficerText_GotUpgrade:
 	text "You're responsible"
 	line "for restoring the"
 	cont "power supply?"

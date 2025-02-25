@@ -144,7 +144,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Electirizer is in Rock Tunnel, or held by some wild Electabuzz family.
 * Magmarizer is on Cinnabar Island, or held by some wild Magmar family.
 * Protector is in Mt. Mortar, or held by some wild Rhyhorn/Rhydon.
-* Up-Grade is given to you in Silph Co. after fixing the Power Plant generator.
+* Upgrade is given to you in Silph Co. after fixing the Power Plant generator.
 * Dubious Disc is in Celadon City.
 * King's Rock is in Slowpoke Well, or held by some wild Slowpoke family and Poliwhirl/Poliwrath/Politoed.
 * Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite family and Steelix.
