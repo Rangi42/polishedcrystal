@@ -181,7 +181,7 @@ MACRO _dchr
 	if _compressing_text && (!DEF(___huffman_data_{02X:_chr}) || !DEF(___huffman_length_{02X:_chr}))
 		; We're compressing text, but this character does not have a Huffman code; don't compress after all
 		if DEF(DEBUG)
-			assert warn 0, "Uncompressible character in text: {#02X:_chr}"
+			warn "Uncompressible character in text: {#02X:_chr}"
 		endc
 		DEF _might_compress_text = 0
 		DEF _compressing_text = 0
