@@ -17,22 +17,22 @@ This is a hotfix release that removes one bug that caused the overworld graphics
 This is the newest stable version release which finished a number of branches that were under development and added them to v3.0.0, along with a few other small additions.
 
 ### Additions
-- Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp. There are now 46 variant Pokémon for a total of 391 unique Pokémon.
+- Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp (though it will be a one-off encounter in future). There are now 289 species of Pokémon plus 46 variant forms and 56 cosmetic forms.
 - Added the much requested NPC to point the players in the direction of the Go-Goggles.
 - The Candy Jar can now be obtained in the Goldenrod Underground. Exp Candies can be bought as well.
-- Support for the GB Printer was added so that players can print the Diploma.
-- The Galarian Bird event is completed. They are now accessible through the Pokemon Go trainers in the old Rocket Hideout in Celadon City.
+- Support for the GB Printer was added so that players can print the Diploma by talking to the Graphic Artist in Celadon Mansion.
+- The Galarian legendary birds can now be encountered after defeating the Pokémon Go team leaders in the old Rocket Hideout in Celadon City.
 
 ### Fixes
 - Updated the title version label to v3.1.0 and the copyright year to 2025.
-- A graphical bug with the microphone so that it is below the player sprite.
+- A graphical bug with Piers' microphone so that it is below the player sprite.
 
 ## v3.0.0
 
-Previously known as the "9bit" Branch of development, this version represents the bulk of the myriad of changes to v3.0.0-beta, which are covered in the following subsections.
+Previously known as the "9bit" branch of development, this version represents the bulk of the myriad of changes to v3.0.0-beta, which are covered in the following subsections.
 
 ### Pokemon
-The total number of unique Pokémon has risen to 390 (including Red Gyarados, Spiky-Eared Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there are 289 species required to complete the Pokédex. In general, if a Pokémon has some connection to Generations I or II, it is very likely present in the game, except for Paradox Pokémon and Mega Evolutions.
+The total number of unique Pokémon has risen to 390 (including Red Gyarados, Spiky-Eared Pichu, and Armored Mewtwo). Excluding regional and alternate forms, there are 289 species required to complete the Pokédex. In general, if a Pokémon has some connection to Generations I or II, it is very likely present in the game, except for convergent species, Paradox Pokémon, and Mega Evolutions.
 
 _Availability:_
 - Reincluded post-3.0.0-beta: Spearow, Fearow, Aipom, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Lickitung, Stantler, Shuckle, Cleffa, Igglybuff, Smoochum, Deliberd.
@@ -389,7 +389,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Update Battle Tower Picnicker to use the same palette as the one on Route 40.
 - Minor bug fix to Water Absorb and friends.
 - Fade in palettes for ending the Bug Catching Catching contest early.
-- Fixed #775, #795, #782, #790, #801, #902, #915, #916, #900, #949, #950, #905.
+- Fixed GitHub issues #775, #795, #782, #790, #801, #902, #915, #916, #900, #949, #950, #905.
 - Fixed breeding bug where egg mons are only female when breeding with basic Pokemon. Fixed another breeding bug for variant forms. So breeding works properly in all cases now...we hope.
 
 ## v3.0.0-beta
