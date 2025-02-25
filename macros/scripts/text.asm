@@ -4,6 +4,8 @@ DEF _might_compress_text = 0
 DEF _compressing_text = 0
 ; Add an "@" terminator to compressed 'text' which uncompressed does not need.
 DEF _compression_terminator = 0
+; A text command was just output; see if we need to resume compressing afterwards
+DEF _commanding_text = 0
 
 ; Text commands
 
@@ -11,6 +13,7 @@ MACRO text_start
 ; Enter text writing mode.
 	stop_compressing_text
 	db "<START>"
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_ram
@@ -18,18 +21,21 @@ MACRO text_ram
 	stop_compressing_text
 	db "<RAM>"
 	dw \1 ; address
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_promptbutton
 ; Wait for button press; show arrow.
 	stop_compressing_text
 	db "<WAIT>"
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_asm
 ; Start interpreting assembly code.
 	stop_compressing_text
 	db "<ASM>"
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_decimal
@@ -38,12 +44,14 @@ MACRO text_decimal
 	db "<NUM>"
 	dw \1 ; address
 	dn \2, \3 ; bytes, digits
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_pause
 ; Pause for 30 frames unless A or B is pressed.
 	stop_compressing_text
 	db "<PAUSE>"
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_sound
@@ -51,12 +59,14 @@ MACRO text_sound
 	stop_compressing_text
 	db "<SOUND>"
 	db \1 ; sfx
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_today
 ; Print the weekday.
 	stop_compressing_text
 	db "<DAY>"
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_far
@@ -64,12 +74,14 @@ MACRO text_far
 	stop_compressing_text
 	db "<FAR>"
 	dab \1 ; text_pointer
+	DEF _commanding_text = 1
 ENDM
 
 MACRO text_end
 ; Stops processing text commands.
 	stop_compressing_text
 	db "@"
+	DEF _commanding_text = 1
 ENDM
 
 MACRO stop_compressing_text
@@ -79,6 +91,14 @@ MACRO stop_compressing_text
 		DEF _compression_terminator = 1
 		_dtxt "@"
 	endc
+ENDM
+
+MACRO resume_compressing_text
+	; Resumes compressing text after a text command.
+	if _commanding_text && !_compressing_text
+		text ""
+	endc
+	DEF _commanding_text = 0
 ENDM
 
 
@@ -92,46 +112,55 @@ MACRO text
 	DEF _might_compress_text = 1
 	DEF _compressing_text = 0
 	DEF _compression_terminator = 0
+	DEF _commanding_text = 0
 	_dtxt \#
 ENDM
 
 MACRO next1
 ; Move one screen row down.
+	resume_compressing_text
 	_dtxt "<LNBRK>", \#
 ENDM
 
 MACRO next
 ; Move one line down (two rows).
+	resume_compressing_text
 	_dtxt "<NEXT>", \#
 ENDM
 
 MACRO line
 ; Start writing at the bottom line.
+	resume_compressing_text
 	_dtxt "<LINE>", \#
 ENDM
 
 MACRO cont
 ; Scroll to the next line.
+	resume_compressing_text
 	_dtxt "<CONT>", \#
 ENDM
 
 MACRO para
 ; Start a new paragraph.
+	resume_compressing_text
 	_dtxt "<PARA>", \#
 ENDM
 
 MACRO done
 ; End a text box.
+	resume_compressing_text
 	_dtxt "<DONE>", \#
 ENDM
 
 MACRO prompt
 ; Prompt the player to end a text box (initiating some other event).
+	resume_compressing_text
 	_dtxt "<PROMPT>", \#
 ENDM
 
 MACRO page
 ; Start a new Pokedex page.
+	resume_compressing_text
 	_dtxt "@", \#
 ENDM
 
