@@ -3759,8 +3759,8 @@ endc
 
 	push bc
 	call GetOpponentItem
-	ld a, [hl]
-	cp METAL_POWDER
+	ld a, b
+	cp HELD_METAL_POWDER
 	pop bc
 	ret nz
 	jr SetDefenseBoost
