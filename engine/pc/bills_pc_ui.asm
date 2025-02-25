@@ -157,14 +157,14 @@ BillsPC_LoadUI:
 
 	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $41
+	ld de, vTiles2 tile $42
 	lb bc, BANK(BattleExtrasGFX), 3
 	call DecompressRequest2bpp
 
-	; Box frame tiles and Pokérus symbol
+	; Box frame tiles and Pokérus symbols
 	ld hl, BillsPC_TileGFX
 	ld de, vTiles2 tile $31
-	lb bc, BANK(BillsPC_TileGFX), 16
+	lb bc, BANK(BillsPC_TileGFX), 17
 	call DecompressRequest2bpp
 
 	; Set up background + outline palettes
@@ -1165,7 +1165,7 @@ _GetCursorMon:
 	farcall GetGender
 	hlcoord 4, 8
 	jr c, .genderless
-	ld a, $41
+	ld a, $42
 	jr nz, .male
 	; female
 	inc a
@@ -1179,17 +1179,16 @@ _GetCursorMon:
 	pop hl
 	inc hl
 	jr z, .not_shiny
-	ld [hl], $43
+	ld [hl], $44
 .not_shiny
 	ld a, [wTempMonPokerusStatus]
 	and POKERUS_MASK
 	inc hl
 	jr z, .did_pokerus
-	; TODO: smiley face if cured (use shiny color + custom color 3?)
-	ld [hl], "."
+	ld [hl], $41 ; cured
 	cp POKERUS_CURED
 	jr z, .did_pokerus
-	ld [hl], $40 ; Rs
+	ld [hl], $40 ; infected
 .did_pokerus
 
 	; Item
@@ -1564,9 +1563,9 @@ BillsPC_MoveCursorAfterStatScreen:
 	add b ; add to remainder (column offset)
 	ld b, a
 	pop af
-	ld a, $12 ; box baseline $YX
+	ln a, 1, 2 ; box baseline Y, X
 	jr nz, .got_baseline
-	ld a, $30 ; party baseline $YX
+	ln a, 3, 0 ; party baseline Y, X
 .got_baseline
 	add b
 	; cursor is now in a
