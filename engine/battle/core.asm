@@ -4433,14 +4433,13 @@ BattleMenuPKMN_Loop:
 	jr BattleMenuPKMN_Loop
 
 .Stats:
-	call Battle_StatsScreen
+	farcall OpenPartySummary
 	jr BattleMenuPKMN_ReturnFromStats
 
 .PressedB:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
-	call GetMonBackpic
 	call GetMonFrontpic
 	call _LoadStatusIcons
 	call GetMonBackpic
@@ -4493,29 +4492,6 @@ BattleMenuPKMN_Loop:
 	db "Switch@"
 	db "Summary@"
 	db "Cancel@"
-
-Battle_StatsScreen:
-	call DisableLCD
-	ld hl, vTiles2 tile $31
-	ld de, vTiles0
-	ld bc, $11 tiles
-	rst CopyBytes
-	ld hl, vTiles2
-	ld de, vTiles0 tile $11
-	ld bc, $31 tiles
-	rst CopyBytes
-	call EnableLCD
-	farcall OpenPartySummary
-	call DisableLCD
-	ld hl, vTiles0
-	ld de, vTiles2 tile $31
-	ld bc, $11 tiles
-	rst CopyBytes
-	ld hl, vTiles0 tile $11
-	ld de, vTiles2
-	ld bc, $31 tiles
-	rst CopyBytes
-	jmp EnableLCD
 
 AI_OpponentCanSwitch:
 	call StackCallOpponentTurn
@@ -4594,6 +4570,7 @@ TryPlayerSwitch:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
+	call GetMonFrontpic
 	call _LoadStatusIcons
 	call GetMonBackpic
 	call CloseWindow
