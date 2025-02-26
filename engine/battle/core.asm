@@ -4451,14 +4451,7 @@ BattleMenuPKMN_Loop:
 	jmp BattleMenu
 
 .GetMenu:
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
 	ld hl, .MenuHeader
-	jr z, .got_menuheader
-	ld hl, .EggMenuHeader
-.got_menuheader
 	call CopyMenuHeader
 	xor a
 	ldh [hBGMapMode], a
@@ -4495,19 +4488,6 @@ BattleMenuPKMN_Loop:
 	db 1 ; default option
 
 .MenuData:
-	db $c0 ; flags
-	db 3 ; items
-	db "Switch@"
-	db "Summary@"
-	db "Cancel@"
-
-.EggMenuHeader:
-	db $00 ; flags
-	menu_coords 10, 11, 19, 17
-	dw .EggMenuData
-	db 1 ; default option
-
-.EggMenuData:
 	db $c0 ; flags
 	db 3 ; items
 	db "Switch@"
