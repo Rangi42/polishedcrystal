@@ -120,6 +120,8 @@ BT_SwapRentals:
 .reset_switch
 	xor a
 	ld [wSwitchMon], a
+	call LoadPartyMenuGFX
+	call SetDefaultBGPAndOBP
 	jmp .loop
 
 .improper_swap
@@ -325,6 +327,8 @@ BTText_SameItem:
 	prompt
 
 BT_ConfirmPartySelection:
+	call LoadPartyMenuGFX
+	call SetDefaultBGPAndOBP
 	call InitPartyMenuLayout
 	farcall FreezeMonIcons
 	hlcoord 1, 16
