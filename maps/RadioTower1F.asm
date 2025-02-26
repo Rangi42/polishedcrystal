@@ -74,56 +74,42 @@ RadioTower1FLuckyNumberManScript:
 	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
 
 .FirstPlace:
-	writetext WonFirstPlaceText
-	playsound SFX_1ST_PLACE
-	waitsfx
-	promptbutton
 	giveitem MASTER_BALL
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonFirstPlaceText
+	special ShowItemIcon
+	playsound SFX_1ST_PLACE
+	sjump .Finish
 
 .SecondPlace:
-	writetext WonSecondPlaceText
-	playsound SFX_2ND_PLACE
-	waitsfx
-	promptbutton
 	giveitem BOTTLE_CAP
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonSecondPlaceText
+	special ShowItemIcon
+	playsound SFX_2ND_PLACE
+	sjump .Finish
 
 .ThirdPlace:
-	writetext WonThirdPlaceText
-	playsound SFX_2ND_PLACE
-	waitsfx
-	promptbutton
 	giveitem PP_MAX
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonThirdPlaceText
+	special ShowItemIcon
+	playsound SFX_2ND_PLACE
+	sjump .Finish
 
 .FourthPlace:
-	writetext WonFourthPlaceText
-	playsound SFX_3RD_PLACE
-	waitsfx
-	promptbutton
 	giveitem PP_UP
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonFourthPlaceText
+	special ShowItemIcon
+	playsound SFX_3RD_PLACE
+	sjump .Finish
 
 .FifthPlace:
+	giveitem RARE_CANDY
 	writetext WonFifthPlaceText
+	special ShowItemIcon
 	playsound SFX_3RD_PLACE
+.Finish:
 	waitsfx
 	promptbutton
-	giveitem RARE_CANDY
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
 	jumpthisopenedtext
@@ -330,8 +316,9 @@ WonFourthPlaceText:
 	line "matched the last"
 	cont "two numbers."
 
-	para "You've won fourth"
-	line "prize, a PP Up."
+	para "You've won"
+	line "fourth prize,"
+	cont "a PP Up."
 	done
 
 WonFifthPlaceText:
