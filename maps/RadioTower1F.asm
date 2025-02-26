@@ -78,28 +78,28 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonFirstPlaceText
 	special ShowItemIcon
 	playsound SFX_1ST_PLACE
-	sjump .Finish
+	sjumpfwd .Finish
 
 .SecondPlace:
 	giveitem BOTTLE_CAP
 	writetext WonSecondPlaceText
 	special ShowItemIcon
 	playsound SFX_2ND_PLACE
-	sjump .Finish
+	sjumpfwd .Finish
 
 .ThirdPlace:
 	giveitem PP_MAX
 	writetext WonThirdPlaceText
 	special ShowItemIcon
 	playsound SFX_2ND_PLACE
-	sjump .Finish
+	sjumpfwd .Finish
 
 .FourthPlace:
 	giveitem PP_UP
 	writetext WonFourthPlaceText
 	special ShowItemIcon
 	playsound SFX_3RD_PLACE
-	sjump .Finish
+	sjumpfwd .Finish
 
 .FifthPlace:
 	giveitem RARE_CANDY
