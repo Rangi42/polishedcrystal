@@ -102,7 +102,7 @@ PokeDollVendingMachine:
 
 .JigglypuffDoll:
 	checkmoney YOUR_MONEY, 2400
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_JIGGLYPUFF_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 2400
@@ -117,7 +117,7 @@ PokeDollVendingMachine:
 
 .DittoDoll:
 	checkmoney YOUR_MONEY, 2400
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_DITTO_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 2400
@@ -132,7 +132,7 @@ PokeDollVendingMachine:
 
 .MeowthDoll:
 	checkmoney YOUR_MONEY, 2400
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_MEOWTH_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 2400

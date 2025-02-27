@@ -45,7 +45,7 @@ FarmerMScript_SellMilk:
 
 .Buy1:
 	checkmoney YOUR_MONEY, ROUTE39FARMHOUSE_MILK_PRICE
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem MOOMOO_MILK
 	iffalsefwd .BagFull
 	takemoney YOUR_MONEY, ROUTE39FARMHOUSE_MILK_PRICE
@@ -53,7 +53,7 @@ FarmerMScript_SellMilk:
 
 .Buy12:
 	checkmoney YOUR_MONEY, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem MOOMOO_MILK, 12
 	iffalsefwd .BagFull
 	takemoney YOUR_MONEY, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE

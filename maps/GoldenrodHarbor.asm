@@ -116,7 +116,7 @@ GoldenrodHarborPokefanmScript:
 
 .MagikarpDoll:
 	checkmoney YOUR_MONEY, 1400
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_MAGIKARP_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 1400
@@ -131,7 +131,7 @@ GoldenrodHarborPokefanmScript:
 
 .MarillDoll:
 	checkmoney YOUR_MONEY, 5600
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_MARILL_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 5600
@@ -146,7 +146,7 @@ GoldenrodHarborPokefanmScript:
 
 .OctilleryDoll:
 	checkmoney YOUR_MONEY, 11200
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_OCTILLERY_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 11200
@@ -199,7 +199,7 @@ GoldenrodHarborYoungsterScript:
 
 .MagnaPlant:
 	checkmoney YOUR_MONEY, 6400
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_1
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 6400
@@ -214,7 +214,7 @@ GoldenrodHarborYoungsterScript:
 
 .TropicPlant:
 	checkmoney YOUR_MONEY, 9600
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_2
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 9600
@@ -229,7 +229,7 @@ GoldenrodHarborYoungsterScript:
 
 .JumboPlant:
 	checkmoney YOUR_MONEY, 12800
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_3
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 12800

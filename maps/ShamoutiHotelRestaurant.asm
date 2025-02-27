@@ -34,7 +34,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	yesorno
 	iffalsefwd .NeverMind
 	checkmoney YOUR_MONEY, 5000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	setflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
 	waitsfx
 	playsound SFX_TRANSACTION

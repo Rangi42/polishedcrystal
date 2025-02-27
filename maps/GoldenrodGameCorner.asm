@@ -119,7 +119,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	checktmhm TM_FLAMETHROWER
 	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins GOLDENRODGAMECORNER_TM35_COINS
-	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequalfwd HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_FLAMETHROWER, STRING_BUFFER_3
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -131,7 +131,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	checktmhm TM_THUNDERBOLT
 	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins GOLDENRODGAMECORNER_TM24_COINS
-	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequalfwd HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_THUNDERBOLT, STRING_BUFFER_3
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -143,7 +143,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	checktmhm TM_ICE_BEAM
 	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins GOLDENRODGAMECORNER_TM13_COINS
-	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequalfwd HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_ICE_BEAM, STRING_BUFFER_3
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -205,7 +205,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .abra
 	checkcoins GOLDENRODGAMECORNER_ABRA_COINS
-	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getmonname ABRA, STRING_BUFFER_3
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -222,7 +222,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .cubone
 	checkcoins GOLDENRODGAMECORNER_CUBONE_COINS
-	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getmonname CUBONE, STRING_BUFFER_3
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -239,7 +239,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .clefairy
 	checkcoins GOLDENRODGAMECORNER_CLEFAIRY_COINS
-	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getmonname CLEFAIRY, STRING_BUFFER_3
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText

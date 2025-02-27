@@ -48,7 +48,7 @@ RocketScript_Southbound:
 	writetext RocketText_TollFee
 	promptbutton
 	checkmoney YOUR_MONEY, ROUTE43GATE_TOLL - 1
-	ifequalfwd $0, RocketScript_TollSouth
+	ifequalfwd HAVE_MORE, RocketScript_TollSouth
 	sjumpfwd RocketScript_YoureBrokeSouth
 
 RocketScript_TollSouth:
@@ -80,7 +80,7 @@ RocketScript_Northbound:
 	writetext RocketText_TollFee
 	promptbutton
 	checkmoney YOUR_MONEY, ROUTE43GATE_TOLL - 1
-	ifequalfwd $0, RocketScript_TollNorth
+	ifequalfwd HAVE_MORE, RocketScript_TollNorth
 	sjumpfwd RocketScript_YoureBrokeNorth
 
 RocketScript_TollNorth:

@@ -58,7 +58,7 @@ CeladonHomeDecorStore1FClerkScript:
 
 .BulbasaurDoll:
 	checkmoney YOUR_MONEY, 16000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_BULBASAUR_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 16000
@@ -73,7 +73,7 @@ CeladonHomeDecorStore1FClerkScript:
 
 .CharmanderDoll:
 	checkmoney YOUR_MONEY, 16000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_CHARMANDER_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 16000
@@ -88,7 +88,7 @@ CeladonHomeDecorStore1FClerkScript:
 
 .SquirtleDoll:
 	checkmoney YOUR_MONEY, 16000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_SQUIRTLE_DOLL
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 16000

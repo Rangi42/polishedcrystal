@@ -70,7 +70,7 @@ CeladonDeptStore3FSnesScript:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney YOUR_MONEY, 20000
-	ifequal $2, VideoGameClerkNoMoneyScript
+	ifequal HAVE_LESS, VideoGameClerkNoMoneyScript
 	takemoney YOUR_MONEY, 20000
 	setevent EVENT_DECO_SNES
 	writetext BoughtSnesText
@@ -88,7 +88,7 @@ CeladonDeptStore3FN64Script:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney YOUR_MONEY, 25000
-	ifequal $2, VideoGameClerkNoMoneyScript
+	ifequal HAVE_LESS, VideoGameClerkNoMoneyScript
 	takemoney YOUR_MONEY, 25000
 	setevent EVENT_DECO_N64
 	writetext BoughtN64Text
@@ -106,7 +106,7 @@ CeladonDeptStore3FGameCubeScript:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney YOUR_MONEY, 30000
-	ifequal $2, VideoGameClerkNoMoneyScript
+	ifequal HAVE_LESS, VideoGameClerkNoMoneyScript
 	takemoney YOUR_MONEY, 30000
 	setevent EVENT_DECO_GAMECUBE
 	writetext BoughtGameCubeText
@@ -124,7 +124,7 @@ CeladonDeptStore3FWiiScript:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney YOUR_MONEY, 40000
-	ifequal $2, VideoGameClerkNoMoneyScript
+	ifequal HAVE_LESS, VideoGameClerkNoMoneyScript
 	takemoney YOUR_MONEY, 40000
 	setevent EVENT_DECO_WII
 	writetext BoughtWiiText

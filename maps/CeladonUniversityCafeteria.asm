@@ -219,7 +219,7 @@ CeladonUniversityCafeteriaBakerScript:
 	yesorno
 	iffalse_jumpopenedtext .Text4
 	checkmoney YOUR_MONEY, 4000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem LEFTOVERS
 	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_BOUGHT_LEFTOVERS

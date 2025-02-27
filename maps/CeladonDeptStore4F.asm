@@ -35,7 +35,7 @@ PosterClerkScript:
 
 .MarillPoster:
 	checkmoney YOUR_MONEY, 3200
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_3
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 3200
@@ -50,7 +50,7 @@ PosterClerkScript:
 
 .ClefairyPoster:
 	checkmoney YOUR_MONEY, 4800
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_2
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 4800
@@ -65,7 +65,7 @@ PosterClerkScript:
 
 .PikachuPoster:
 	checkmoney YOUR_MONEY, 6400
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_1
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 6400

@@ -126,7 +126,7 @@ MoveTutor:
 	yesorno
 	iffalse_jumpopenedtext GoldenrodCityMoveTutorHmTooBadText
 	checkcoins 200
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	writetext GoldenrodCityMoveTutorWhichMoveShouldITeachText
 	loadmenu .MoveMenuDataHeader
 	verticalmenu

@@ -65,7 +65,7 @@ PewterCityPokefanMScript:
 	yesorno
 	iffalse_jumpopenedtext .Text3
 	checkmoney YOUR_MONEY, 300
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem PEWTERCRUNCH
 	iffalse_jumpopenedtext .Text4
 	waitsfx

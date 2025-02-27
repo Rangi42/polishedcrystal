@@ -34,7 +34,7 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .RedCarpet:
 	checkmoney YOUR_MONEY, 45000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_1
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 45000
@@ -49,7 +49,7 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .YellowCarpet:
 	checkmoney YOUR_MONEY, 45000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_3
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 45000
@@ -64,7 +64,7 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .GreenCarpet:
 	checkmoney YOUR_MONEY, 45000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_4
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 45000
@@ -111,7 +111,7 @@ CeladonHomeDecorStore3FClerk2Script:
 	yesorno
 	iffalse_jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 	checkmoney YOUR_MONEY, 35000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	takemoney YOUR_MONEY, 35000
 	setevent EVENT_DECO_CARPET_2
 	writetext BoughtBlueCarpetText

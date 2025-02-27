@@ -32,7 +32,7 @@ CeladonHomeDecorStore2FClerkScript:
 
 .PinkBed:
 	checkmoney YOUR_MONEY, 62000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_2
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 62000
@@ -47,7 +47,7 @@ CeladonHomeDecorStore2FClerkScript:
 
 .PolkaDotBed:
 	checkmoney YOUR_MONEY, 94000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_3
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 94000
@@ -62,7 +62,7 @@ CeladonHomeDecorStore2FClerkScript:
 
 .PikachuBed:
 	checkmoney YOUR_MONEY, 126000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_4
 	iftruefwd .AlreadyBought
 	takemoney YOUR_MONEY, 126000

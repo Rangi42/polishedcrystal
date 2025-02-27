@@ -55,7 +55,7 @@ RageCandyBarMerchantScript:
 	yesorno
 	iffalse_jumpopenedtext RageCandyBarMerchantRefusedText
 	checkmoney YOUR_MONEY, 300
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem RAGECANDYBAR
 	iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
 	waitsfx

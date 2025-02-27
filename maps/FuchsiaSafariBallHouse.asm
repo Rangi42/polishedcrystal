@@ -32,7 +32,7 @@ FuchsiaSafariBallHouseOfficerScript:
 
 .Buy1:
 	checkmoney YOUR_MONEY, 2000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem SAFARI_BALL
 	iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 2000
@@ -40,7 +40,7 @@ FuchsiaSafariBallHouseOfficerScript:
 
 .Buy10:
 	checkmoney YOUR_MONEY, 20000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem SAFARI_BALL, 10
 	iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 20000

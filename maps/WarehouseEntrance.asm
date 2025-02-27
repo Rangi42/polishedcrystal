@@ -226,7 +226,7 @@ OlderHaircutBrotherScript:
 	yesorno
 	iffalsefwd .Refused
 	checkmoney YOUR_MONEY, 500
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	writetext GoldenrodUndergroundOlderHaircutBrotherAskWhichMonText
 	promptbutton
 	special Special_OlderHaircutBrother
@@ -301,7 +301,7 @@ YoungerHaircutBrotherScript:
 	yesorno
 	iffalsefwd .Refused
 	checkmoney YOUR_MONEY, 300
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	writetext GoldenrodUndergroundYoungerHaircutBrotherAskWhichMonText
 	promptbutton
 	special Special_YoungerHaircutBrother

@@ -39,7 +39,7 @@ BigLaprasDollScript:
 	yesorno
 	iffalse_jumpopenedtext BigDollClerkNoSaleText
 	checkmoney YOUR_MONEY, 300000
-	ifequal $2, BigDollClerkNoMoneyScript
+	ifequal HAVE_LESS, BigDollClerkNoMoneyScript
 	takemoney YOUR_MONEY, 300000
 	setevent EVENT_DECO_BIG_LAPRAS_DOLL
 	writetext BoughtBigLaprasDollText
@@ -57,7 +57,7 @@ BigSnorlaxDollScript:
 	yesorno
 	iffalse_jumpopenedtext BigDollClerkNoSaleText
 	checkmoney YOUR_MONEY, 200000
-	ifequal $2, BigDollClerkNoMoneyScript
+	ifequal HAVE_LESS, BigDollClerkNoMoneyScript
 	takemoney YOUR_MONEY, 200000
 	setevent EVENT_DECO_BIG_SNORLAX_DOLL
 	writetext BoughtBigSnorlaxDollText
@@ -75,7 +75,7 @@ BigOnixDollScript:
 	yesorno
 	iffalse_jumpopenedtext BigDollClerkNoSaleText
 	checkmoney YOUR_MONEY, 250000
-	ifequal $2, BigDollClerkNoMoneyScript
+	ifequal HAVE_LESS, BigDollClerkNoMoneyScript
 	takemoney YOUR_MONEY, 250000
 	setevent EVENT_DECO_BIG_ONIX_DOLL
 	writetext BoughtBigOnixDollText
