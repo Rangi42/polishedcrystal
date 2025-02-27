@@ -13,7 +13,7 @@ IcePathB3F_MapScriptHeader:
 	bg_event 16,  3, BGEVENT_JUMPTEXT, Text_IcePathB3FIceRock
 
 	def_object_events
-	object_event 10,  3, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LoreleiScript, -1
+	object_event 10,  3, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, LoreleiScript, -1
 	itemball_event  5,  7, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
 	smashrock_event  6, 6
 

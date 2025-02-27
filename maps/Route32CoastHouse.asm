@@ -12,7 +12,7 @@ Route32CoastHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GourmetManiacScript, -1
+	object_event  2,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GourmetManiacScript, -1
 
 GourmetManiacScript:
 	faceplayer

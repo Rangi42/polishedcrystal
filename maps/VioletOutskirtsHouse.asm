@@ -18,7 +18,7 @@ VioletOutskirtsHouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETERY_CARETAKER
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETERY_CARETAKER
 
 	object_const_def
 	const VIOLETOUTSKIRTSHOUSE_CARETAKER
