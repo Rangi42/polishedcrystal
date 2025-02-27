@@ -13,7 +13,7 @@ Route1617Gate2F_MapScriptHeader:
 	bg_event  6,  2, BGEVENT_UP, Route1617Gate2FBinoculars2
 
 	def_object_events
-	object_event 2, 5, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route1617Gate2FPsychicScript, -1
+	object_event 2, 5, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route1617Gate2FPsychicScript, -1
 
 Route1617Gate2FPsychicScript:
 	faceplayer

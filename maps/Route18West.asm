@@ -15,7 +15,7 @@ Route18West_MapScriptHeader:
 	bg_event -1,  5, BGEVENT_JUMPTEXT, UragaChannelSignText
 
 	def_object_events
-	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
+	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE

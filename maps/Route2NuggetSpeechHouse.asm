@@ -12,7 +12,7 @@ Route2NuggetSpeechHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  1,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route2NuggetSpeechHouseFisherScript, -1
+	object_event  1,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route2NuggetSpeechHouseFisherScript, -1
 
 Route2NuggetSpeechHouseFisherScript:
 	checkevent EVENT_GOT_NUGGET_FROM_GUY
