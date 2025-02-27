@@ -1557,7 +1557,7 @@ CoinVendor_IntroScript:
 
 .Buy50:
 	checkcoins 49950
-	ifequalfwd $0, .CoinCaseFull
+	ifequalfwd HAVE_MORE, .CoinCaseFull
 	checkmoney YOUR_MONEY, 1000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	givecoins 50
@@ -1570,7 +1570,7 @@ CoinVendor_IntroScript:
 
 .Buy500:
 	checkcoins 49500
-	ifequalfwd $0, .CoinCaseFull
+	ifequalfwd HAVE_MORE, .CoinCaseFull
 	checkmoney YOUR_MONEY, 10000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	givecoins 500
