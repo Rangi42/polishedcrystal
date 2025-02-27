@@ -38,9 +38,9 @@ BigLaprasDollScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext BigDollClerkNoSaleText
-	checkmoney $0, 300000
+	checkmoney YOUR_MONEY, 300000
 	ifequal $2, BigDollClerkNoMoneyScript
-	takemoney $0, 300000
+	takemoney YOUR_MONEY, 300000
 	setevent EVENT_DECO_BIG_LAPRAS_DOLL
 	writetext BoughtBigLaprasDollText
 	playsound SFX_TRANSACTION
@@ -56,9 +56,9 @@ BigSnorlaxDollScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext BigDollClerkNoSaleText
-	checkmoney $0, 200000
+	checkmoney YOUR_MONEY, 200000
 	ifequal $2, BigDollClerkNoMoneyScript
-	takemoney $0, 200000
+	takemoney YOUR_MONEY, 200000
 	setevent EVENT_DECO_BIG_SNORLAX_DOLL
 	writetext BoughtBigSnorlaxDollText
 	playsound SFX_TRANSACTION
@@ -74,9 +74,9 @@ BigOnixDollScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext BigDollClerkNoSaleText
-	checkmoney $0, 250000
+	checkmoney YOUR_MONEY, 250000
 	ifequal $2, BigDollClerkNoMoneyScript
-	takemoney $0, 250000
+	takemoney YOUR_MONEY, 250000
 	setevent EVENT_DECO_BIG_ONIX_DOLL
 	writetext BoughtBigOnixDollText
 	playsound SFX_TRANSACTION

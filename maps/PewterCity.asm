@@ -64,12 +64,12 @@ PewterCityPokefanMScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .Text3
-	checkmoney $0, 300
+	checkmoney YOUR_MONEY, 300
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem PEWTERCRUNCH
 	iffalse_jumpopenedtext .Text4
 	waitsfx
-	takemoney $0, 300
+	takemoney YOUR_MONEY, 300
 	special PlaceMoneyTopRight
 	waitsfx
 	playsound SFX_TRANSACTION

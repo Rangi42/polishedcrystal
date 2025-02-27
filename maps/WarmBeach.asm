@@ -108,14 +108,14 @@ WarmBeachLassScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .Text4
-	checkmoney $0, 4000
+	checkmoney YOUR_MONEY, 4000
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem SHELL_BELL
 	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_SEASHORE_SHELL_BELL
 	waitsfx
 	playsound SFX_TRANSACTION
-	takemoney $0, 4000
+	takemoney YOUR_MONEY, 4000
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 

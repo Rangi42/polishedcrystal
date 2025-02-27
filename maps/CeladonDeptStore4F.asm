@@ -34,11 +34,11 @@ PosterClerkScript:
 	endtext
 
 .MarillPoster:
-	checkmoney $0, 3200
+	checkmoney YOUR_MONEY, 3200
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_3
 	iftruefwd .AlreadyBought
-	takemoney $0, 3200
+	takemoney YOUR_MONEY, 3200
 	setevent EVENT_DECO_POSTER_3
 	writetext BoughtMarillPosterText
 	playsound SFX_TRANSACTION
@@ -49,11 +49,11 @@ PosterClerkScript:
 	sjump .Start
 
 .ClefairyPoster:
-	checkmoney $0, 4800
+	checkmoney YOUR_MONEY, 4800
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_2
 	iftruefwd .AlreadyBought
-	takemoney $0, 4800
+	takemoney YOUR_MONEY, 4800
 	setevent EVENT_DECO_POSTER_2
 	writetext BoughtClefairyPosterText
 	playsound SFX_TRANSACTION
@@ -64,11 +64,11 @@ PosterClerkScript:
 	sjump .Start
 
 .PikachuPoster:
-	checkmoney $0, 6400
+	checkmoney YOUR_MONEY, 6400
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_1
 	iftruefwd .AlreadyBought
-	takemoney $0, 6400
+	takemoney YOUR_MONEY, 6400
 	setevent EVENT_DECO_POSTER_1
 	writetext BoughtPikachuPosterText
 	playsound SFX_TRANSACTION

@@ -31,19 +31,19 @@ FuchsiaSafariBallHouseOfficerScript:
 	done
 
 .Buy1:
-	checkmoney $0, 2000
+	checkmoney YOUR_MONEY, 2000
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem SAFARI_BALL
 	iffalse_jumpopenedtext .BagFullText
-	takemoney $0, 2000
+	takemoney YOUR_MONEY, 2000
 	sjumpfwd .Done
 
 .Buy10:
-	checkmoney $0, 20000
+	checkmoney YOUR_MONEY, 20000
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem SAFARI_BALL, 10
 	iffalse_jumpopenedtext .BagFullText
-	takemoney $0, 20000
+	takemoney YOUR_MONEY, 20000
 
 .Done:
 	special PlaceMoneyTopRight

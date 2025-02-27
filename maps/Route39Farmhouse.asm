@@ -44,19 +44,19 @@ FarmerMScript_SellMilk:
 	sjumpfwd .Cancel
 
 .Buy1:
-	checkmoney $0, ROUTE39FARMHOUSE_MILK_PRICE
+	checkmoney YOUR_MONEY, ROUTE39FARMHOUSE_MILK_PRICE
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK
 	iffalsefwd .BagFull
-	takemoney $0, ROUTE39FARMHOUSE_MILK_PRICE
+	takemoney YOUR_MONEY, ROUTE39FARMHOUSE_MILK_PRICE
 	sjumpfwd .Done
 
 .Buy12:
-	checkmoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
+	checkmoney YOUR_MONEY, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK, 12
 	iffalsefwd .BagFull
-	takemoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
+	takemoney YOUR_MONEY, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
 
 .Done:
 	setflag ENGINE_BOUGHT_MOOMOO_MILK

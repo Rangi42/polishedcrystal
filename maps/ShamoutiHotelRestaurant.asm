@@ -33,12 +33,12 @@ ShamoutiHotelRestaurantChallengeScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalsefwd .NeverMind
-	checkmoney $0, 5000
+	checkmoney YOUR_MONEY, 5000
 	ifequalfwd $2, .NotEnoughMoney
 	setflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
 	waitsfx
 	playsound SFX_TRANSACTION
-	takemoney $0, 5000
+	takemoney YOUR_MONEY, 5000
 	special PlaceMoneyTopRight
 	writetext ShamoutiHotelRestaurantReceptionistText
 	waitbutton

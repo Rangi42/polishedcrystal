@@ -1558,10 +1558,10 @@ CoinVendor_IntroScript:
 .Buy50:
 	checkcoins 49950
 	ifequalfwd $0, .CoinCaseFull
-	checkmoney $0, 1000
+	checkmoney YOUR_MONEY, 1000
 	ifequalfwd $2, .NotEnoughMoney
 	givecoins 50
-	takemoney $0, 1000
+	takemoney YOUR_MONEY, 1000
 	waitsfx
 	playsound SFX_TRANSACTION
 	farwritetext CoinVendor_Buy50CoinsText
@@ -1571,10 +1571,10 @@ CoinVendor_IntroScript:
 .Buy500:
 	checkcoins 49500
 	ifequalfwd $0, .CoinCaseFull
-	checkmoney $0, 10000
+	checkmoney YOUR_MONEY, 10000
 	ifequalfwd $2, .NotEnoughMoney
 	givecoins 500
-	takemoney $0, 10000
+	takemoney YOUR_MONEY, 10000
 	waitsfx
 	playsound SFX_TRANSACTION
 	farwritetext CoinVendor_Buy500CoinsText
@@ -1646,11 +1646,11 @@ VendingMachineScript:
 	endtext
 
 .FreshWater:
-	checkmoney $0, 200
+	checkmoney YOUR_MONEY, 200
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem FRESH_WATER
 	iffalsefwd .NotEnoughSpace
-	takemoney $0, 200
+	takemoney YOUR_MONEY, 200
 	getitemname FRESH_WATER, STRING_BUFFER_3
 	scall .VendItem
 	random $20
@@ -1661,11 +1661,11 @@ VendingMachineScript:
 	sjumpfwd .ExtraItem
 
 .SodaPop:
-	checkmoney $0, 300
+	checkmoney YOUR_MONEY, 300
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem SODA_POP
 	iffalsefwd .NotEnoughSpace
-	takemoney $0, 300
+	takemoney YOUR_MONEY, 300
 	getitemname SODA_POP, STRING_BUFFER_3
 	scall .VendItem
 	random $20
@@ -1676,11 +1676,11 @@ VendingMachineScript:
 	sjumpfwd .ExtraItem
 
 .Lemonade:
-	checkmoney $0, 350
+	checkmoney YOUR_MONEY, 350
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem LEMONADE
 	iffalsefwd .NotEnoughSpace
-	takemoney $0, 350
+	takemoney YOUR_MONEY, 350
 	getitemname LEMONADE, STRING_BUFFER_3
 	scall .VendItem
 	random $20

@@ -57,11 +57,11 @@ CeladonHomeDecorStore1FClerkScript:
 	endtext
 
 .BulbasaurDoll:
-	checkmoney $0, 16000
+	checkmoney YOUR_MONEY, 16000
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BULBASAUR_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 16000
+	takemoney YOUR_MONEY, 16000
 	setevent EVENT_DECO_BULBASAUR_DOLL
 	writetext BoughtBulbasaurDollText
 	playsound SFX_TRANSACTION
@@ -72,11 +72,11 @@ CeladonHomeDecorStore1FClerkScript:
 	sjump .Start
 
 .CharmanderDoll:
-	checkmoney $0, 16000
+	checkmoney YOUR_MONEY, 16000
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CHARMANDER_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 16000
+	takemoney YOUR_MONEY, 16000
 	setevent EVENT_DECO_CHARMANDER_DOLL
 	writetext BoughtCharmanderDollText
 	playsound SFX_TRANSACTION
@@ -87,11 +87,11 @@ CeladonHomeDecorStore1FClerkScript:
 	sjump .Start
 
 .SquirtleDoll:
-	checkmoney $0, 16000
+	checkmoney YOUR_MONEY, 16000
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_SQUIRTLE_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 16000
+	takemoney YOUR_MONEY, 16000
 	setevent EVENT_DECO_SQUIRTLE_DOLL
 	writetext BoughtSquirtleDollText
 	playsound SFX_TRANSACTION

@@ -125,16 +125,16 @@ for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
 endr
 	; max money
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 999999
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 1000000
+	givemoney YOUR_MONEY, 999999
 	givecoins 50000
 	loadmem wBattlePoints+0, 0
 	loadmem wBattlePoints+1, 250

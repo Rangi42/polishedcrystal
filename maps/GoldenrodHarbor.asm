@@ -115,11 +115,11 @@ GoldenrodHarborPokefanmScript:
 	endtext
 
 .MagikarpDoll:
-	checkmoney $0, 1400
+	checkmoney YOUR_MONEY, 1400
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MAGIKARP_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 1400
+	takemoney YOUR_MONEY, 1400
 	setevent EVENT_DECO_MAGIKARP_DOLL
 	writetext GoldenrodHarborMagikarpDollText
 	playsound SFX_TRANSACTION
@@ -130,11 +130,11 @@ GoldenrodHarborPokefanmScript:
 	sjump .Start
 
 .MarillDoll:
-	checkmoney $0, 5600
+	checkmoney YOUR_MONEY, 5600
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MARILL_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 5600
+	takemoney YOUR_MONEY, 5600
 	setevent EVENT_DECO_MARILL_DOLL
 	writetext GoldenrodHarborMarillDollText
 	playsound SFX_TRANSACTION
@@ -145,11 +145,11 @@ GoldenrodHarborPokefanmScript:
 	sjump .Start
 
 .OctilleryDoll:
-	checkmoney $0, 11200
+	checkmoney YOUR_MONEY, 11200
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_OCTILLERY_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 11200
+	takemoney YOUR_MONEY, 11200
 	setevent EVENT_DECO_OCTILLERY_DOLL
 	writetext GoldenrodHarborOctilleryDollText
 	playsound SFX_TRANSACTION
@@ -198,11 +198,11 @@ GoldenrodHarborYoungsterScript:
 	endtext
 
 .MagnaPlant:
-	checkmoney $0, 6400
+	checkmoney YOUR_MONEY, 6400
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_1
 	iftruefwd .AlreadyBought
-	takemoney $0, 6400
+	takemoney YOUR_MONEY, 6400
 	setevent EVENT_DECO_PLANT_1
 	writetext GoldenrodHarborMagnaPlantText
 	playsound SFX_TRANSACTION
@@ -213,11 +213,11 @@ GoldenrodHarborYoungsterScript:
 	sjump .Start
 
 .TropicPlant:
-	checkmoney $0, 9600
+	checkmoney YOUR_MONEY, 9600
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_2
 	iftruefwd .AlreadyBought
-	takemoney $0, 9600
+	takemoney YOUR_MONEY, 9600
 	setevent EVENT_DECO_PLANT_2
 	writetext GoldenrodHarborTropicPlantText
 	playsound SFX_TRANSACTION
@@ -228,11 +228,11 @@ GoldenrodHarborYoungsterScript:
 	sjump .Start
 
 .JumboPlant:
-	checkmoney $0, 12800
+	checkmoney YOUR_MONEY, 12800
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_3
 	iftruefwd .AlreadyBought
-	takemoney $0, 12800
+	takemoney YOUR_MONEY, 12800
 	setevent EVENT_DECO_PLANT_3
 	writetext GoldenrodHarborJumboPlantText
 	playsound SFX_TRANSACTION

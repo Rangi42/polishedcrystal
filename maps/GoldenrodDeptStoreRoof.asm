@@ -101,11 +101,11 @@ PokeDollVendingMachine:
 	endtext
 
 .JigglypuffDoll:
-	checkmoney $0, 2400
+	checkmoney YOUR_MONEY, 2400
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_JIGGLYPUFF_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 2400
+	takemoney YOUR_MONEY, 2400
 	setevent EVENT_DECO_JIGGLYPUFF_DOLL
 	writetext BoughtJigglypuffDollText
 	playsound SFX_TRANSACTION
@@ -116,11 +116,11 @@ PokeDollVendingMachine:
 	sjump .Start
 
 .DittoDoll:
-	checkmoney $0, 2400
+	checkmoney YOUR_MONEY, 2400
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_DITTO_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 2400
+	takemoney YOUR_MONEY, 2400
 	setevent EVENT_DECO_DITTO_DOLL
 	writetext BoughtDittoDollText
 	playsound SFX_TRANSACTION
@@ -131,11 +131,11 @@ PokeDollVendingMachine:
 	sjump .Start
 
 .MeowthDoll:
-	checkmoney $0, 2400
+	checkmoney YOUR_MONEY, 2400
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MEOWTH_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 2400
+	takemoney YOUR_MONEY, 2400
 	setevent EVENT_DECO_MEOWTH_DOLL
 	writetext BoughtMeowthDollText
 	playsound SFX_TRANSACTION

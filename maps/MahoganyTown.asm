@@ -54,13 +54,13 @@ RageCandyBarMerchantScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext RageCandyBarMerchantRefusedText
-	checkmoney $0, 300
+	checkmoney YOUR_MONEY, 300
 	ifequalfwd $2, .NotEnoughMoney
 	giveitem RAGECANDYBAR
 	iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
 	waitsfx
 	playsound SFX_TRANSACTION
-	takemoney $0, 300
+	takemoney YOUR_MONEY, 300
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 

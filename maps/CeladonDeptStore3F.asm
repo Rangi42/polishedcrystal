@@ -69,9 +69,9 @@ CeladonDeptStore3FSnesScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
-	checkmoney $0, 20000
+	checkmoney YOUR_MONEY, 20000
 	ifequal $2, VideoGameClerkNoMoneyScript
-	takemoney $0, 20000
+	takemoney YOUR_MONEY, 20000
 	setevent EVENT_DECO_SNES
 	writetext BoughtSnesText
 	playsound SFX_TRANSACTION
@@ -87,9 +87,9 @@ CeladonDeptStore3FN64Script:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
-	checkmoney $0, 25000
+	checkmoney YOUR_MONEY, 25000
 	ifequal $2, VideoGameClerkNoMoneyScript
-	takemoney $0, 25000
+	takemoney YOUR_MONEY, 25000
 	setevent EVENT_DECO_N64
 	writetext BoughtN64Text
 	playsound SFX_TRANSACTION
@@ -105,9 +105,9 @@ CeladonDeptStore3FGameCubeScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
-	checkmoney $0, 30000
+	checkmoney YOUR_MONEY, 30000
 	ifequal $2, VideoGameClerkNoMoneyScript
-	takemoney $0, 30000
+	takemoney YOUR_MONEY, 30000
 	setevent EVENT_DECO_GAMECUBE
 	writetext BoughtGameCubeText
 	playsound SFX_TRANSACTION
@@ -123,9 +123,9 @@ CeladonDeptStore3FWiiScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
-	checkmoney $0, 40000
+	checkmoney YOUR_MONEY, 40000
 	ifequal $2, VideoGameClerkNoMoneyScript
-	takemoney $0, 40000
+	takemoney YOUR_MONEY, 40000
 	setevent EVENT_DECO_WII
 	writetext BoughtWiiText
 	playsound SFX_TRANSACTION

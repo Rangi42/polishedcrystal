@@ -31,11 +31,11 @@ CeladonHomeDecorStore2FClerkScript:
 	endtext
 
 .PinkBed:
-	checkmoney $0, 62000
+	checkmoney YOUR_MONEY, 62000
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_2
 	iftruefwd .AlreadyBought
-	takemoney $0, 62000
+	takemoney YOUR_MONEY, 62000
 	setevent EVENT_DECO_BED_2
 	writetext BoughtPinkBedText
 	playsound SFX_TRANSACTION
@@ -46,11 +46,11 @@ CeladonHomeDecorStore2FClerkScript:
 	sjump .Start
 
 .PolkaDotBed:
-	checkmoney $0, 94000
+	checkmoney YOUR_MONEY, 94000
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_3
 	iftruefwd .AlreadyBought
-	takemoney $0, 94000
+	takemoney YOUR_MONEY, 94000
 	setevent EVENT_DECO_BED_3
 	writetext BoughtPolkaDotBedText
 	playsound SFX_TRANSACTION
@@ -61,11 +61,11 @@ CeladonHomeDecorStore2FClerkScript:
 	sjump .Start
 
 .PikachuBed:
-	checkmoney $0, 126000
+	checkmoney YOUR_MONEY, 126000
 	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_4
 	iftruefwd .AlreadyBought
-	takemoney $0, 126000
+	takemoney YOUR_MONEY, 126000
 	setevent EVENT_DECO_BED_4
 	writetext BoughtPikachuBedText
 	playsound SFX_TRANSACTION
