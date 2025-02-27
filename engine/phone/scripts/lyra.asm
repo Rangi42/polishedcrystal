@@ -58,8 +58,7 @@ LyraPhone_GetFirstMonNextMove:
 	; [wStringBuffer1] = move name
 	ld a, d
 	ld [wNamedObjectIndex], a
-	call GetMoveName
-	ret
+	jmp GetMoveName
 
 LyraPhoneScript_GreetingsTable:
 	table_width 2
