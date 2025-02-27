@@ -255,7 +255,7 @@ PokemaniacBrent1Script:
 	askforphonenumber PHONE_POKEMANIAC_BRENT
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername POKEMANIAC, BRENT1, $0
+	gettrainername POKEMANIAC, BRENT1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 
@@ -382,7 +382,7 @@ PicnickerTiffany1Script:
 	askforphonenumber PHONE_PICNICKER_TIFFANY
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername PICNICKER, TIFFANY1, $0
+	gettrainername PICNICKER, TIFFANY1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

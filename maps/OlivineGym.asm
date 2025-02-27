@@ -134,7 +134,7 @@ OlivineGymGentlemanPreston:
 	done
 
 OlivineGymStatue:
-	gettrainername JASMINE, 1, $1
+	gettrainername JASMINE, 1, STRING_BUFFER_4
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftruefwd .Returned
 	jumpstd gymstatue0

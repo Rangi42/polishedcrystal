@@ -82,7 +82,7 @@ TrainerYoungsterJoey:
 	askforphonenumber PHONE_YOUNGSTER_JOEY
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 

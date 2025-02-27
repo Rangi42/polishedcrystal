@@ -185,7 +185,7 @@ TrainerBug_catcherWade1:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
 	ifequalfwd $1, .PhoneFullSTD
 	ifequalfwd $2, .DeclinedNumberSTD
-	gettrainername BUG_CATCHER, WADE1, $0
+	gettrainername BUG_CATCHER, WADE1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 

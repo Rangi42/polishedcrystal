@@ -372,12 +372,12 @@ BugContestResultsScript:
 	farwritetext ContestResults_ReadyToJudgeText
 	waitbutton
 	special BugContestJudging
-	getnum $0
+	getnum STRING_BUFFER_3
 	ifequalfwd 1, .FirstPlace
 	ifequalfwd 2, .SecondPlace
 	ifequalfwd 3, .ThirdPlace
 	readmem wBugContestOfficerPrize
-	getitemname $0, $1
+	getitemname USE_SCRIPT_VAR, STRING_BUFFER_4
 	farwritetext ContestResults_ConsolationPrizeText
 	promptbutton
 	waitsfx
@@ -397,7 +397,7 @@ BugContestResultsScript:
 .SecondPlace
 .ThirdPlace
 	readmem wBugContestOfficerPrize
-	getitemname $0, $1
+	getitemname USE_SCRIPT_VAR, STRING_BUFFER_4
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
 	readmem wBugContestOfficerPrize
@@ -1497,13 +1497,13 @@ RematchGiftFScript:
 	end
 
 GymStatue0Script:
-	getcurlandmarkname $0
+	getcurlandmarkname STRING_BUFFER_3
 	opentext
 	farwritetext GymStatue_CityGymText
 	waitendtext
 
 GymStatue1Script:
-	getcurlandmarkname $0
+	getcurlandmarkname STRING_BUFFER_3
 	opentext
 	farwritetext GymStatue_CityGymText
 	promptbutton
@@ -1511,7 +1511,7 @@ GymStatue1Script:
 	waitendtext
 
 GymStatue2Script:
-	getcurlandmarkname $0
+	getcurlandmarkname STRING_BUFFER_3
 	opentext
 	farwritetext GymStatue_CityGymText
 	promptbutton
@@ -1519,7 +1519,7 @@ GymStatue2Script:
 	waitendtext
 
 GymStatue3Script:
-	getcurlandmarkname $0
+	getcurlandmarkname STRING_BUFFER_3
 	opentext
 	farwritetext GymStatue_CityGymText
 	promptbutton
@@ -1651,13 +1651,13 @@ VendingMachineScript:
 	giveitem FRESH_WATER
 	iffalsefwd .NotEnoughSpace
 	takemoney $0, 200
-	getitemname FRESH_WATER, $0
+	getitemname FRESH_WATER, STRING_BUFFER_3
 	scall .VendItem
 	random $20
 	ifnotequal $0, .Start
 	giveitem FRESH_WATER
 	iffalse .Start
-	getitemname FRESH_WATER, $0
+	getitemname FRESH_WATER, STRING_BUFFER_3
 	sjumpfwd .ExtraItem
 
 .SodaPop:
@@ -1666,13 +1666,13 @@ VendingMachineScript:
 	giveitem SODA_POP
 	iffalsefwd .NotEnoughSpace
 	takemoney $0, 300
-	getitemname SODA_POP, $0
+	getitemname SODA_POP, STRING_BUFFER_3
 	scall .VendItem
 	random $20
 	ifnotequal $0, .Start
 	giveitem SODA_POP
 	iffalse .Start
-	getitemname SODA_POP, $0
+	getitemname SODA_POP, STRING_BUFFER_3
 	sjumpfwd .ExtraItem
 
 .Lemonade:
@@ -1681,13 +1681,13 @@ VendingMachineScript:
 	giveitem LEMONADE
 	iffalsefwd .NotEnoughSpace
 	takemoney $0, 350
-	getitemname LEMONADE, $0
+	getitemname LEMONADE, STRING_BUFFER_3
 	scall .VendItem
 	random $20
 	ifnotequal $0, .Start
 	giveitem LEMONADE
 	iffalse .Start
-	getitemname LEMONADE, $0
+	getitemname LEMONADE, STRING_BUFFER_3
 	sjumpfwd .ExtraItem
 
 .VendItem:

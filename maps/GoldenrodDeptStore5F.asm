@@ -76,7 +76,7 @@ GoldenrodDeptStore5FTwinScript:
 	promptbutton
 	random NUM_BERRIES
 	addval FIRST_BERRY
-	getitemname $0, $1
+	getitemname USE_SCRIPT_VAR, STRING_BUFFER_4
 	verbosegiveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText
 	setflag ENGINE_DAILY_MYSTERY_GIFT

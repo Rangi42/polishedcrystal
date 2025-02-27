@@ -131,7 +131,7 @@ MahoganyGymGuyScript:
 	jumptextfaceplayer MahoganyGymGuyText
 
 MahoganyGymStatue:
-	gettrainername PRYCE, 1, $1
+	gettrainername PRYCE, 1, STRING_BUFFER_4
 	checkflag ENGINE_GLACIERBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

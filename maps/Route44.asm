@@ -165,7 +165,7 @@ Bird_keeperVance1Script:
 	askforphonenumber PHONE_BIRDKEEPER_VANCE
 	ifequalfwd $1, Route44PhoneFullM
 	ifequalfwd $2, Route44NumberDeclinedM
-	gettrainername BIRD_KEEPER, VANCE1, $0
+	gettrainername BIRD_KEEPER, VANCE1, STRING_BUFFER_3
 	scall Route44RegisteredNumberM
 	sjumpfwd Route44NumberAcceptedM
 
@@ -301,7 +301,7 @@ FisherWilton1Script:
 	askforphonenumber PHONE_FISHER_WILTON
 	ifequal $1, Route44PhoneFullM
 	ifequal $2, Route44NumberDeclinedM
-	gettrainername FISHER, WILTON1, $0
+	gettrainername FISHER, WILTON1, STRING_BUFFER_3
 	scall Route44RegisteredNumberM
 	sjump Route44NumberAcceptedM
 

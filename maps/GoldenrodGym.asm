@@ -163,7 +163,7 @@ GoldenrodGymGuyScript:
 	done
 
 GoldenrodGymStatue:
-	gettrainername WHITNEY, 1, $1
+	gettrainername WHITNEY, 1, STRING_BUFFER_4
 	checkflag ENGINE_PLAINBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

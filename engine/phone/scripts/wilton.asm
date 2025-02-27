@@ -1,5 +1,5 @@
 WiltonPhoneScript1:
-	gettrainername FISHER, WILTON1, $0
+	gettrainername FISHER, WILTON1, STRING_BUFFER_3
 	checkflag ENGINE_WILTON_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -16,15 +16,15 @@ WiltonPhoneScript1:
 	farsjump WiltonHaventFoundAnythingScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_44, $2
+	getlandmarkname ROUTE_44, STRING_BUFFER_5
 	farsjump WiltonNotBitingScript
 
 .HasItem:
-	getlandmarkname ROUTE_44, $2
+	getlandmarkname ROUTE_44, STRING_BUFFER_5
 	farsjump WiltonWantThisScript
 
 WiltonPhoneScript2:
-	gettrainername FISHER, WILTON1, $0
+	gettrainername FISHER, WILTON1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_WILTON_READY_FOR_REMATCH
 	iftruefwd .GenericCall
@@ -44,13 +44,13 @@ WiltonThursdayMorning:
 	setflag ENGINE_WILTON_THRUSDAY_MORNING
 
 WiltonWantsBattle:
-	getlandmarkname ROUTE_44, $2
+	getlandmarkname ROUTE_44, STRING_BUFFER_5
 	setflag ENGINE_WILTON_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 WiltonHasItem:
 	setflag ENGINE_WILTON_HAS_ITEM
-	getlandmarkname ROUTE_44, $2
+	getlandmarkname ROUTE_44, STRING_BUFFER_5
 	clearevent EVENT_WILTON_HAS_ULTRA_BALL
 	clearevent EVENT_WILTON_HAS_GREAT_BALL
 	clearevent EVENT_WILTON_HAS_POKE_BALL

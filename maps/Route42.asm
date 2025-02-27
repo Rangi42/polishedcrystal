@@ -180,7 +180,7 @@ FisherTully1Script:
 	askforphonenumber PHONE_FISHER_TULLY
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername FISHER, TULLY1, $0
+	gettrainername FISHER, TULLY1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

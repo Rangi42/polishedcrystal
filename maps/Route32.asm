@@ -483,7 +483,7 @@ TrainerFisherRalph1:
 	askforphonenumber PHONE_FISHER_RALPH
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername FISHER, RALPH1, $0
+	gettrainername FISHER, RALPH1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
@@ -593,7 +593,7 @@ TrainerPicnickerLiz1:
 	askforphonenumber PHONE_PICNICKER_LIZ
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername PICNICKER, LIZ1, $0
+	gettrainername PICNICKER, LIZ1, STRING_BUFFER_3
 	callstd registerednumberf
 	jumpstd numberacceptedf
 

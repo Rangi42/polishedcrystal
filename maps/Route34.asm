@@ -218,7 +218,7 @@ TrainerCamperTodd1:
 	askforphonenumber PHONE_CAMPER_TODD
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername CAMPER, TODD1, $0
+	gettrainername CAMPER, TODD1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
@@ -317,7 +317,7 @@ TrainerPicnickerGina1:
 	askforphonenumber PHONE_PICNICKER_GINA
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername PICNICKER, GINA1, $0
+	gettrainername PICNICKER, GINA1, STRING_BUFFER_3
 	callstd registerednumberf
 	jumpstd numberacceptedf
 

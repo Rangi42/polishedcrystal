@@ -94,7 +94,7 @@ PewterGymGuyScript:
 	jumptextfaceplayer PewterGymGuyText
 
 PewterGymStatue:
-	gettrainername BROCK, 1, $1
+	gettrainername BROCK, 1, STRING_BUFFER_4
 	checkflag ENGINE_BOULDERBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

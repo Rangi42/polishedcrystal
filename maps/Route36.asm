@@ -180,7 +180,7 @@ TrainerSchoolboyAlan1:
 	askforphonenumber PHONE_SCHOOLBOY_ALAN
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 

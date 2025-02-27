@@ -68,7 +68,7 @@ TrainerJugglerIrwin:
 	askforphonenumber PHONE_JUGGLER_IRWIN
 	ifequalfwd $1, Route35PhoneFullM
 	ifequalfwd $2, Route35NumberDeclinedM
-	gettrainername JUGGLER, IRWIN1, $0
+	gettrainername JUGGLER, IRWIN1, STRING_BUFFER_3
 	scall Route35RegisteredNumberM
 	sjumpfwd Route35NumberAcceptedM
 
@@ -152,7 +152,7 @@ TrainerBug_catcherArnie1:
 	askforphonenumber PHONE_BUG_CATCHER_ARNIE
 	ifequal $1, Route35PhoneFullM
 	ifequal $2, Route35NumberDeclinedM
-	gettrainername BUG_CATCHER, ARNIE1, $0
+	gettrainername BUG_CATCHER, ARNIE1, STRING_BUFFER_3
 	scall Route35RegisteredNumberM
 	sjump Route35NumberAcceptedM
 

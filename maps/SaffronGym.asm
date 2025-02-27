@@ -179,7 +179,7 @@ SaffronGymGuyScript:
 	jumptextfaceplayer SaffronGymGuyText
 
 SaffronGymStatue:
-	gettrainername SABRINA, 1, $1
+	gettrainername SABRINA, 1, STRING_BUFFER_4
 	checkflag ENGINE_SOULBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

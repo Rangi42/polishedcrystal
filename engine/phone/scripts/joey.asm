@@ -1,5 +1,5 @@
 JoeyPhoneScript1:
-	gettrainername YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, STRING_BUFFER_3
 	checkflag ENGINE_JOEY_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -17,11 +17,11 @@ JoeyPhoneScript1:
 	farsjump PhoneScript_HangupText_Male
 
 .WantsBattle:
-	getlandmarkname ROUTE_30, $2
+	getlandmarkname ROUTE_30, STRING_BUFFER_5
 	farsjump JoeyReminderScript
 
 JoeyPhoneScript2:
-	gettrainername YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_JOEY_READY_FOR_REMATCH
 	iftruefwd .Generic
@@ -38,6 +38,6 @@ JoeyMondayAfternoon:
 	setflag ENGINE_JOEY_MONDAY_AFTERNOON
 
 JoeyWantsBattle:
-	getlandmarkname ROUTE_30, $2
+	getlandmarkname ROUTE_30, STRING_BUFFER_5
 	setflag ENGINE_JOEY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male

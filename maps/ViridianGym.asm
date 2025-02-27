@@ -114,7 +114,7 @@ GenericTrainerAceDuoElanandida2:
 	done
 
 ViridianGymStatue:
-	gettrainername BLUE, 1, $1
+	gettrainername BLUE, 1, STRING_BUFFER_4
 	checkflag ENGINE_EARTHBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

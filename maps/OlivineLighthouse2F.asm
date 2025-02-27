@@ -50,7 +50,7 @@ SailorHuey1Script:
 	askforphonenumber PHONE_SAILOR_HUEY
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername SAILOR, HUEY1, $0
+	gettrainername SAILOR, HUEY1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

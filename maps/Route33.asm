@@ -53,7 +53,7 @@ TrainerHikerAnthony:
 	askforphonenumber PHONE_HIKER_ANTHONY
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername HIKER, ANTHONY1, $0
+	gettrainername HIKER, ANTHONY1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 

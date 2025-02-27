@@ -195,7 +195,7 @@ VermilionGymTrashCanScript:
 	end
 
 VermilionGymStatue:
-	gettrainername LT_SURGE, 1, $1
+	gettrainername LT_SURGE, 1, STRING_BUFFER_4
 	checkflag ENGINE_THUNDERBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

@@ -122,7 +122,7 @@ GenericTrainerTwinsJoandzoe2:
 	done
 
 CeladonGymStatue:
-	gettrainername ERIKA, 1, $1
+	gettrainername ERIKA, 1, STRING_BUFFER_4
 	checkflag ENGINE_RAINBOWBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

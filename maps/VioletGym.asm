@@ -94,7 +94,7 @@ VioletGymGuyScript:
 	jumptextfaceplayer VioletGymGuyText
 
 VioletGymStatue:
-	gettrainername FALKNER, 1, $1
+	gettrainername FALKNER, 1, STRING_BUFFER_4
 	checkflag ENGINE_ZEPHYRBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

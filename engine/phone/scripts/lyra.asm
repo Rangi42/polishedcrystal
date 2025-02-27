@@ -1,7 +1,7 @@
 LyraPhoneScript:
 	readmem wTimeOfDay
 	scalltable LyraPhoneScript_GreetingsTable
-	getcurlandmarkname $1
+	getcurlandmarkname STRING_BUFFER_4
 	readvar VAR_LANDMARK
 	; Special-case too-long landmark names
 	ifnotequal CELADON_UNIVERSITY, .not_celadon_university

@@ -189,7 +189,7 @@ CeruleanGymStatue2:
 	jumptext CeruleanGymNote2
 
 CeruleanGymStatue:
-	gettrainername MISTY, 1, $1
+	gettrainername MISTY, 1, STRING_BUFFER_4
 	checkflag ENGINE_CASCADEBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

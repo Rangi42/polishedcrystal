@@ -194,7 +194,7 @@ FuchsiaGymGuyScript:
 	jumptextfaceplayer FuchsiaGymGuyText
 
 FuchsiaGymStatue:
-	gettrainername JANINE, 1, $1
+	gettrainername JANINE, 1, STRING_BUFFER_4
 	checkflag ENGINE_MARSHBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

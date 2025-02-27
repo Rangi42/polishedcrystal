@@ -177,7 +177,7 @@ BlackbeltKenji1Script:
 	askforphonenumber PHONE_BLACKBELT_KENJI
 	ifequalfwd $1, Route45PhoneFullM
 	ifequalfwd $2, Route45NumberDeclinedM
-	gettrainername BLACKBELT_T, KENJI1, $0
+	gettrainername BLACKBELT_T, KENJI1, STRING_BUFFER_3
 	scall Route45RegisteredNumberM
 	sjumpfwd Route45NumberAcceptedM
 
@@ -287,7 +287,7 @@ HikerParry1Script:
 	askforphonenumber PHONE_HIKER_PARRY
 	ifequal $1, Route45PhoneFullM
 	ifequal $2, Route45NumberDeclinedM
-	gettrainername HIKER, PARRY1, $0
+	gettrainername HIKER, PARRY1, STRING_BUFFER_3
 	scall Route45RegisteredNumberM
 	sjump Route45NumberAcceptedM
 

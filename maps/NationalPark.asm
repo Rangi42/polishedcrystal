@@ -125,7 +125,7 @@ SchoolboyJack1Script:
 	askforphonenumber PHONE_SCHOOLBOY_JACK
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername SCHOOLBOY, JACK1, $0
+	gettrainername SCHOOLBOY, JACK1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 
@@ -246,7 +246,7 @@ PokefanfBeverly1Script:
 	askforphonenumber PHONE_POKEFAN_BEVERLY
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername POKEFANF, BEVERLY1, $0
+	gettrainername POKEFANF, BEVERLY1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

@@ -66,7 +66,7 @@ TrainerPokefanmDerek1:
 	askforphonenumber PHONE_POKEFANM_DEREK
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

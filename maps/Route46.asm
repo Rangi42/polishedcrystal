@@ -89,7 +89,7 @@ PicnickerErin1Script:
 	askforphonenumber PHONE_PICNICKER_ERIN
 	ifequalfwd $1, Route46PhoneFullF
 	ifequalfwd $2, Route46NumberDeclinedF
-	gettrainername PICNICKER, ERIN1, $0
+	gettrainername PICNICKER, ERIN1, STRING_BUFFER_3
 	scall Route46RegisteredNumberF
 	sjumpfwd Route46NumberAcceptedF
 

@@ -72,7 +72,7 @@ Route35NationalParkGate_LeavingContestEarly:
 	opentext
 	readvar VAR_CONTESTMINUTES
 	addval $1
-	getnum $0
+	getnum STRING_BUFFER_3
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
 	iffalsefwd Route35NationalParkGate_GoBackIn

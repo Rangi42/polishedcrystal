@@ -23,7 +23,7 @@ AzaleaGym_MapScriptHeader:
 	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmay2, -1
 
 AzaleaGymStatue:
-	gettrainername BUGSY, 1, $1
+	gettrainername BUGSY, 1, STRING_BUFFER_4
 	checkflag ENGINE_HIVEBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

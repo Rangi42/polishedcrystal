@@ -101,7 +101,7 @@ GenericTrainerBlackbeltLung:
 	done
 
 CianwoodGymStatue:
-	gettrainername CHUCK, 1, $1
+	gettrainername CHUCK, 1, STRING_BUFFER_4
 	checkflag ENGINE_STORMBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

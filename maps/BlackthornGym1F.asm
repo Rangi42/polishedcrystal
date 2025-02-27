@@ -42,7 +42,7 @@ BlackthornGym1FBoulderCallback:
 	endcallback
 
 BlackthornGymStatue:
-	gettrainername CLAIR, 1, $1
+	gettrainername CLAIR, 1, STRING_BUFFER_4
 	checkflag ENGINE_RISINGBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

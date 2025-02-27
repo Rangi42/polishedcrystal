@@ -67,7 +67,7 @@ TrainerCooltrainermGaven1:
 	askforphonenumber PHONE_COOLTRAINERM_GAVEN
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername COOLTRAINERM, GAVEN1, $0
+	gettrainername COOLTRAINERM, GAVEN1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 
@@ -165,7 +165,7 @@ TrainerCooltrainerfBeth1:
 	askforphonenumber PHONE_COOLTRAINERF_BETH
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername COOLTRAINERF, BETH1, $0
+	gettrainername COOLTRAINERF, BETH1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

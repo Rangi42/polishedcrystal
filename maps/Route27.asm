@@ -212,7 +212,7 @@ Bird_keeperJose1Script:
 	askforphonenumber PHONE_BIRDKEEPER_JOSE
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername BIRD_KEEPER, JOSE1, $0
+	gettrainername BIRD_KEEPER, JOSE1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 
@@ -347,7 +347,7 @@ CooltrainerfReena1Script:
 	askforphonenumber PHONE_COOLTRAINERF_REENA
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername COOLTRAINERF, REENA1, $0
+	gettrainername COOLTRAINERF, REENA1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

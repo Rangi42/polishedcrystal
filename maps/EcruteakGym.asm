@@ -151,7 +151,7 @@ EcruteakGymGuyScript:
 	jumptextfaceplayer EcruteakGymGuyText
 
 EcruteakGymStatue:
-	gettrainername MORTY, 1, $1
+	gettrainername MORTY, 1, STRING_BUFFER_4
 	checkflag ENGINE_FOGBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1

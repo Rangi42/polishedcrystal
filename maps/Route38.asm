@@ -69,7 +69,7 @@ TrainerLassDana1:
 	askforphonenumber PHONE_LASS_DANA
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .DeclinedPhoneNumber
-	gettrainername LASS, DANA1, $0
+	gettrainername LASS, DANA1, STRING_BUFFER_3
 	callstd registerednumberf
 	jumpstd numberacceptedf
 
@@ -177,7 +177,7 @@ TrainerSchoolboyChad1:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .SaidNo
-	gettrainername SCHOOLBOY, CHAD1, $0
+	gettrainername SCHOOLBOY, CHAD1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
