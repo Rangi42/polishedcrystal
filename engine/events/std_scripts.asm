@@ -1559,7 +1559,7 @@ CoinVendor_IntroScript:
 	checkcoins 49950
 	ifequalfwd $0, .CoinCaseFull
 	checkmoney YOUR_MONEY, 1000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	givecoins 50
 	takemoney YOUR_MONEY, 1000
 	waitsfx
@@ -1572,7 +1572,7 @@ CoinVendor_IntroScript:
 	checkcoins 49500
 	ifequalfwd $0, .CoinCaseFull
 	checkmoney YOUR_MONEY, 10000
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	givecoins 500
 	takemoney YOUR_MONEY, 10000
 	waitsfx
@@ -1647,7 +1647,7 @@ VendingMachineScript:
 
 .FreshWater:
 	checkmoney YOUR_MONEY, 200
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem FRESH_WATER
 	iffalsefwd .NotEnoughSpace
 	takemoney YOUR_MONEY, 200
@@ -1662,7 +1662,7 @@ VendingMachineScript:
 
 .SodaPop:
 	checkmoney YOUR_MONEY, 300
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem SODA_POP
 	iffalsefwd .NotEnoughSpace
 	takemoney YOUR_MONEY, 300
@@ -1677,7 +1677,7 @@ VendingMachineScript:
 
 .Lemonade:
 	checkmoney YOUR_MONEY, 350
-	ifequalfwd $2, .NotEnoughMoney
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem LEMONADE
 	iffalsefwd .NotEnoughSpace
 	takemoney YOUR_MONEY, 350
