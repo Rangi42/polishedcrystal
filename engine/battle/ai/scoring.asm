@@ -2450,7 +2450,7 @@ AIDamageCalc:
 	farjp BattleCommand_resettypematchup
 
 .multihit
-	; Multiply base power by 5 if Skill Link or Loaded Dice, 3 otherwise
+	; Multiply base power by 5 for Skill Link, 4 for Loaded Dice, 3 otherwise
 	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_LOADED_DICE
