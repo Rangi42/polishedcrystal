@@ -67,7 +67,7 @@ CherrygroveCityGuideGent:
 	opentext
 	writetext GuideGentGiftText
 	promptbutton
-	getstring .mapcardname, $1
+	getstring .mapcardname, STRING_BUFFER_4
 	callstd receiveitem
 	setflag ENGINE_MAP_CARD
 	writetext GotMapCardText

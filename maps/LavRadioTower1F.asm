@@ -41,7 +41,7 @@ LavRadioTower1FGentlemanScript:
 	iffalse_jumpopenedtext .OffTheAirText
 	writetext .ReturnedMachinePartText
 	promptbutton
-	getstring .expncardname, $1
+	getstring .expncardname, STRING_BUFFER_4
 	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
 	jumpthisopenedtext

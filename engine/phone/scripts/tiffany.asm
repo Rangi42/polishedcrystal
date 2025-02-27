@@ -66,27 +66,27 @@ TiffanysFamilyMembers:
 	ifequalfwd $5, .Brother
 
 .Grandma:
-	getstring Phone_GrandmaString, $1
+	getstring Phone_GrandmaString, STRING_BUFFER_4
 	sjumpfwd .PoorClefairy
 
 .Grandpa:
-	getstring Phone_GrandpaString, $1
+	getstring Phone_GrandpaString, STRING_BUFFER_4
 	sjumpfwd .PoorClefairy
 
 .Mom:
-	getstring Phone_MomString, $1
+	getstring Phone_MomString, STRING_BUFFER_4
 	sjumpfwd .PoorClefairy
 
 .Dad:
-	getstring Phone_DadString, $1
+	getstring Phone_DadString, STRING_BUFFER_4
 	sjumpfwd .PoorClefairy
 
 .Sister:
-	getstring Phone_SisterString, $1
+	getstring Phone_SisterString, STRING_BUFFER_4
 	sjumpfwd .PoorClefairy
 
 .Brother:
-	getstring Phone_BrotherString, $1
+	getstring Phone_BrotherString, STRING_BUFFER_4
 	; fallthrough
 
 .PoorClefairy:

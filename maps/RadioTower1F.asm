@@ -155,7 +155,7 @@ RadioTower1FRadioCardWomanScript:
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
 	promptbutton
-	getstring .RadioCardText, $1
+	getstring .RadioCardText, STRING_BUFFER_4
 	callstd receiveitem
 	writetext RadioTower1FPokegearIsARadioText
 	promptbutton

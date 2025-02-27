@@ -66,7 +66,7 @@ MomEventScript:
 	opentext
 	writetext MomIntroText
 	promptbutton
-	getstring GearName, $1
+	getstring GearName, STRING_BUFFER_4
 	callstd receiveitem
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD

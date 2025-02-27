@@ -319,25 +319,25 @@ DayToTextScript:
 	ifequalfwd THURSDAY, .Thursday
 	ifequalfwd FRIDAY, .Friday
 	ifequalfwd SATURDAY, .Saturday
-	getstring .SundayText, 0
+	getstring .SundayText, STRING_BUFFER_3
 	end
 .Monday:
-	getstring .MondayText, 0
+	getstring .MondayText, STRING_BUFFER_3
 	end
 .Tuesday:
-	getstring .TuesdayText, 0
+	getstring .TuesdayText, STRING_BUFFER_3
 	end
 .Wednesday:
-	getstring .WednesdayText, 0
+	getstring .WednesdayText, STRING_BUFFER_3
 	end
 .Thursday:
-	getstring .ThursdayText, 0
+	getstring .ThursdayText, STRING_BUFFER_3
 	end
 .Friday:
-	getstring .FridayText, 0
+	getstring .FridayText, STRING_BUFFER_3
 	end
 .Saturday:
-	getstring .SaturdayText, 0
+	getstring .SaturdayText, STRING_BUFFER_3
 	end
 .SundayText:
 	db "Sunday@"

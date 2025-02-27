@@ -96,7 +96,7 @@ Route23ZephyrBadgeOfficerScript:
 Route23ZephyrBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER1, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER1
-	getstring .ZephyrBadgeText, 0
+	getstring .ZephyrBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -114,7 +114,7 @@ Route23HiveBadgeOfficerScript:
 Route23HiveBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER2, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER2
-	getstring .HiveBadgeText, 0
+	getstring .HiveBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -132,7 +132,7 @@ Route23PlainBadgeOfficerScript:
 Route23PlainBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER3, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER3
-	getstring .PlainBadgeText, 0
+	getstring .PlainBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -150,7 +150,7 @@ Route23FogBadgeOfficerScript:
 Route23FogBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER4, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER4
-	getstring .FogBadgeText, 0
+	getstring .FogBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -168,7 +168,7 @@ Route23StormBadgeOfficerScript:
 Route23StormBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER5, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER5
-	getstring .StormBadgeText, 0
+	getstring .StormBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -186,7 +186,7 @@ Route23MineralBadgeOfficerScript:
 Route23MineralBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER6, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER6
-	getstring .MineralBadgeText, 0
+	getstring .MineralBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -204,7 +204,7 @@ Route23GlacierBadgeOfficerScript:
 Route23GlacierBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER7, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER7
-	getstring .GlacierBadgeText, 0
+	getstring .GlacierBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -222,7 +222,7 @@ Route23RisingBadgeOfficerScript:
 Route23RisingBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER8, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER8
-	getstring .RisingBadgeText, 0
+	getstring .RisingBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
