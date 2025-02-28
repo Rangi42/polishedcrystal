@@ -74,6 +74,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
 * Nuuk for the sprite and animation of Farigiraf.
+* mauvesea for the Pokedex icon and sprite.
+* Cesare_CBass for the Pokegear icon.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
