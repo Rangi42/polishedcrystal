@@ -940,18 +940,14 @@ SpawnCherryBlossom:
 
 	; convert screen coords to pixel coords
 	ld a, d
-	sla a
-	sla a
-	sla a
-	sla a
+	swap a
+	and $f0
 	add 16
 	ld d, a
 
 	ld a, e
-	sla a
-	sla a
-	sla a
-	sla a
+	swap a
+	and $f0
 	add 16
 	ld e, a
 
