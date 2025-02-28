@@ -13,7 +13,7 @@ CeladonUniversityNursesOffice_MapScriptHeader:
 	bg_event  2,  0, BGEVENT_JUMPTEXT, CeladonUniversityNursesOfficeSignText
 
 	def_object_events
-	object_event  4,  2, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityNursesOfficeNurseScript, -1
+	object_event  4,  2, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityNursesOfficeNurseScript, -1
 
 CeladonUniversityNursesOfficeNurseScript:
 	showtextfaceplayer CeladonUniversityNursesOfficeNurseText

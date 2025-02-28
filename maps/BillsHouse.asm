@@ -15,7 +15,7 @@ BillsHouse_MapScriptHeader:
 	bg_event  5,  1, BGEVENT_JUMPTEXT, BillsHousePCText
 
 	def_object_events
-	object_event  2,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsHouseBillScript, EVENT_NEVER_MET_BILL
+	object_event  2,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsHouseBillScript, EVENT_NEVER_MET_BILL
 
 PokemonJournalBillScript:
 	setflag ENGINE_READ_BILL_JOURNAL

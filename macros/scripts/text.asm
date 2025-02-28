@@ -4,6 +4,8 @@ DEF _might_compress_text = 0
 DEF _compressing_text = 0
 ; Add an "@" terminator to compressed 'text' which uncompressed does not need.
 DEF _compression_terminator = 0
+; A terminator has stopped compressing text; see if we need to resume trying to compress.
+DEF _stopped_compressing_text = 0
 
 ; Text commands
 
@@ -79,6 +81,7 @@ MACRO stop_compressing_text
 		DEF _compression_terminator = 1
 		_dtxt "@"
 	endc
+	DEF _stopped_compressing_text = 1
 ENDM
 
 
@@ -89,9 +92,7 @@ MACRO text
 	if _might_compress_text || _compressing_text
 		fail "'text' was already started!"
 	endc
-	DEF _might_compress_text = 1
-	DEF _compressing_text = 0
-	DEF _compression_terminator = 0
+	DEF _stopped_compressing_text = 1
 	_dtxt \#
 ENDM
 
@@ -136,6 +137,11 @@ MACRO page
 ENDM
 
 MACRO _dtxt
+	if _stopped_compressing_text && !_might_compress_text && !_compressing_text
+		DEF _might_compress_text = 1
+		DEF _compression_terminator = 0
+	endc
+	DEF _stopped_compressing_text = 0
 	if !_might_compress_text && !_compressing_text
 		db \#
 	else
@@ -175,7 +181,7 @@ MACRO _dchr
 	if _compressing_text && (!DEF(___huffman_data_{02X:_chr}) || !DEF(___huffman_length_{02X:_chr}))
 		; We're compressing text, but this character does not have a Huffman code; don't compress after all
 		if DEF(DEBUG)
-			assert warn 0, "Uncompressible character in text: {#02X:_chr}"
+			warn "Uncompressible character in text: {#02X:_chr}"
 		endc
 		DEF _might_compress_text = 0
 		DEF _compressing_text = 0

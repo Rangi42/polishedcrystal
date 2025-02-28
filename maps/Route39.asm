@@ -20,19 +20,19 @@ Route39_MapScriptHeader:
 	bg_event  5, 27, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 	def_object_events
-	object_event  7, 28, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
-	object_event 13, 43, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
-	object_event 10, 36, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
-	object_event 11, 33, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
-	pokemon_event  3, 26, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
-	pokemon_event  6, 25, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
-	pokemon_event  4, 29, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
-	pokemon_event  8, 27, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, Route39MiltankText, -1
-	object_event 13, 21, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
+	object_event  7, 28, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
+	object_event 13, 43, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
+	object_event 10, 36, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
+	object_event 11, 33, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
+	pokemon_event  3, 26, MILTANK, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	pokemon_event  6, 25, MILTANK, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	pokemon_event  4, 29, MILTANK, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	pokemon_event  8, 27, MILTANK, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, Route39MiltankText, -1
+	object_event 13, 21, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
 	fruittree_event  9, 17, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
-	object_event  4, 36, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
-	object_event  4, 44, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
-	object_event 15, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
+	object_event  4, 36, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
+	object_event  4, 44, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
+	object_event 15, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
 	tmhmball_event  1, 21, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 	smashrock_event 12, 10
 	smashrock_event 15,  8
@@ -66,7 +66,7 @@ TrainerPokefanmDerek1:
 	askforphonenumber PHONE_POKEFANM_DEREK
 	ifequalfwd $1, .PhoneFull
 	ifequalfwd $2, .NumberDeclined
-	gettrainername POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, STRING_BUFFER_3
 	scall .RegisteredNumber
 	sjumpfwd .NumberAccepted
 

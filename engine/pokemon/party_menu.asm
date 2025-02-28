@@ -120,6 +120,8 @@ BT_SwapRentals:
 .reset_switch
 	xor a
 	ld [wSwitchMon], a
+	call LoadPartyMenuGFX
+	call SetDefaultBGPAndOBP
 	jmp .loop
 
 .improper_swap
@@ -212,7 +214,7 @@ BT_PartySelect:
 	dec a ; Enter
 	jr z, .Enter
 	dec a ; Stats
-	jmp z, .Stats
+	jr z, .Stats
 	jr .loop ; Cancel
 
 .return
@@ -224,7 +226,7 @@ BT_PartySelect:
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
-	ld hl, .EggMenuHeader
+	ld hl, .BannedMenuHeader
 	jmp nz, BT_DisplayMenu
 
 	; Check if mon is banned
@@ -285,18 +287,6 @@ BT_PartySelect:
 .Cancel:
 	jmp .loop
 
-.EggMenuHeader:
-	db $00 ; flags
-	menu_coords 10, 13, 19, 17
-	dw .EggMenuData
-	db 1 ; default option
-
-.EggMenuData:
-	db $c0 ; flags
-	db 2 ; items
-	db "Summary@"
-	db "Cancel@"
-
 .MenuHeader:
 	db $00 ; flags
 	menu_coords 10, 11, 19, 17
@@ -337,6 +327,8 @@ BTText_SameItem:
 	prompt
 
 BT_ConfirmPartySelection:
+	call LoadPartyMenuGFX
+	call SetDefaultBGPAndOBP
 	call InitPartyMenuLayout
 	farcall FreezeMonIcons
 	hlcoord 1, 16

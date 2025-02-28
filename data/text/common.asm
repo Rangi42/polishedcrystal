@@ -99,7 +99,6 @@ _HowManyShouldIMakeText::
 SECTION "_RecoveredSomeHPText", ROMX
 _RecoveredSomeHPText::
 	text_ram wStringBuffer1
-	text ""
 	line "recovered "
 	text_decimal wCurHPAnimDeltaHP, 2, 3
 	text "HP!"
@@ -129,14 +128,12 @@ _BurnWasHealedText::
 SECTION "_WasDefrostedText", ROMX
 _WasDefrostedText::
 	text_ram wStringBuffer1
-	text ""
 	line "was defrosted."
 	done
 
 SECTION "_WokeUpText", ROMX
 _WokeUpText::
 	text_ram wStringBuffer1
-	text ""
 	line "woke up."
 	done
 
@@ -150,7 +147,6 @@ _HealthReturnedText::
 SECTION "_RevitalizedText", ROMX
 _RevitalizedText::
 	text_ram wStringBuffer1
-	text ""
 	line "is revitalized."
 	done
 
@@ -286,7 +282,6 @@ _PutAwayAndSetUpText::
 	text "Put away the"
 	line ""
 	text_ram wStringBuffer3
-	text ""
 
 	para "and set up the"
 	line ""
@@ -1357,7 +1352,6 @@ SECTION "_NPCTradeAfterText2", ROMX
 _NPCTradeAfterText2::
 	text "Hi! The "
 	text_ram wMonOrItemNameBuffer
-	text ""
 	line "you traded me is"
 	cont "doing great!"
 	done
@@ -1682,7 +1676,6 @@ SECTION "_YourMonHasGrownText", ROMX
 _YourMonHasGrownText::
 	text "Your "
 	text_ram wStringBuffer1
-	text ""
 	line "has grown a lot."
 
 	para "Its level grew"
@@ -1716,7 +1709,6 @@ _BackAlreadyText::
 	text "Huh? Back already?"
 	line "Your "
 	text_ram wStringBuffer1
-	text ""
 
 	para "needs a little"
 	line "more time with us."
@@ -1865,7 +1857,6 @@ _NameRaterPerfectNameText::
 
 	para "Treat "
 	text_ram wStringBuffer1
-	text ""
 	line "with loving care."
 	done
 
@@ -1993,7 +1984,6 @@ _ContainedMoveText::
 
 	para "Teach "
 	text_ram wStringBuffer2
-	text ""
 	line "to a #mon?"
 	done
 
@@ -2288,6 +2278,14 @@ _FoundItemText::
 	text "!"
 	done
 
+SECTION "_GotTheItemText", ROMX
+_GotTheItemText:
+	text "<PLAYER> got"
+	line "the "
+	text_ram wStringBuffer4
+	text "!"
+	done
+	
 SECTION "WhiteoutText", ROMX
 WhiteoutText::
 	text "<PLAYER> is out of"
@@ -2354,7 +2352,6 @@ ForfeitToTrainerText::
 SECTION "_PoisonFaintText", ROMX
 _PoisonFaintText::
 	text_ram wStringBuffer3
-	text ""
 	line "recovered from"
 	cont "its poisoning!"
 	prompt
@@ -2518,7 +2515,6 @@ SECTION "_LeftWithDayCareLadyText", ROMX
 _LeftWithDayCareLadyText::
 	text "It's "
 	text_ram wBreedMon2Nickname
-	text ""
 	line "that was left with"
 	cont "the Day-Care Lady."
 	done
@@ -2527,7 +2523,6 @@ SECTION "_LeftWithDayCareManText", ROMX
 _LeftWithDayCareManText::
 	text "It's "
 	text_ram wBreedMon1Nickname
-	text ""
 	line "that was left with"
 	cont "the Day-Care Man."
 	done
@@ -3154,7 +3149,6 @@ SECTION "_PokemonHoldItemText", ROMX
 _PokemonHoldItemText::
 	text "Made "
 	text_ram wMonOrItemNameBuffer
-	text ""
 	line "hold "
 	text_ram wStringBuffer2
 	text "."
@@ -3183,7 +3177,6 @@ SECTION "_PokemonTookItemText", ROMX
 _PokemonTookItemText::
 	text "Took "
 	text_ram wStringBuffer1
-	text ""
 	line "from "
 	text_ram wMonOrItemNameBuffer
 	text "."
@@ -3515,7 +3508,6 @@ SECTION "_PocketIsFullText", ROMX
 _PocketIsFullText::
 	text "The "
 	text_ram wStringBuffer3
-	text ""
 	line "is full…"
 	prompt
 
@@ -3547,7 +3539,6 @@ SECTION "_StoppedEvolvingText", ROMX
 _StoppedEvolvingText::
 	text "Huh? "
 	text_ram wStringBuffer2
-	text ""
 	line "stopped evolving!"
 	prompt
 
@@ -3555,7 +3546,6 @@ SECTION "_EvolvingText", ROMX
 _EvolvingText::
 	text "What? "
 	text_ram wStringBuffer2
-	text ""
 	line "is evolving!"
 	done
 
@@ -3804,7 +3794,6 @@ TMMartCostsThisMuchText::
 	text_ram wStringBuffer2
 	text " "
 	text_ram wStringBuffer1
-	text ""
 	line "will be ¥"
 	text_decimal hMoneyTemp, 3, 7
 	text "."
@@ -3966,7 +3955,6 @@ _StopLearningMoveText::
 SECTION "_DidNotLearnMoveText", ROMX
 _DidNotLearnMoveText::
 	text_ram wMonOrItemNameBuffer
-	text ""
 	line "did not learn"
 	cont ""
 	text_ram wStringBuffer2
@@ -3976,7 +3964,6 @@ _DidNotLearnMoveText::
 SECTION "_AskForgetMoveText", ROMX
 _AskForgetMoveText::
 	text_ram wMonOrItemNameBuffer
-	text ""
 	line "wants to learn"
 	cont ""
 	text_ram wStringBuffer2
@@ -4208,7 +4195,6 @@ SECTION "Text_BallCaught", ROMX
 Text_BallCaught::
 	text "Gotcha! "
 	text_ram wEnemyMonNickname
-	text ""
 	line "was caught!"
 	text_sound SFX_CAUGHT_MON
 	text_end

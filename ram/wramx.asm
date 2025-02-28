@@ -397,6 +397,9 @@ ENDU
 
 wCurIconMonHasItemOrMail:: db
 
+wCurSpecialItem::
+wCurExpCandy::
+wCurApricorn::
 wCurKeyItem::
 wCurTMHM::
 wCurItem::

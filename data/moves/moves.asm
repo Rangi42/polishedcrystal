@@ -7,6 +7,7 @@ MACRO move
 	db \6 ; pp
 	db \7 ; effect chance
 	db \8 ; category
+	assert (\2 != EFFECT_MULTI_HIT || \3 < 52), "AI routines assume multihit BP x 5 <= 255"
 ENDM
 
 Moves::

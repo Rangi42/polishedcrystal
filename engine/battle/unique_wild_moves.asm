@@ -21,7 +21,7 @@ CheckUniqueWildMove:
 	; If form isn't specified in the unique wildmove list, any form will do.
 	ld a, [hli] ; form
 	ld b, a
-	and a, FORM_MASK
+	and FORM_MASK
 	ld a, [wCurForm]
 	jr nz, .specific_form
 	and EXTSPECIES_MASK
@@ -83,10 +83,9 @@ CheckUniqueWildMove:
 	jr .loop
 
 .UseFlyingPikachu
-	ld b, PIKACHU_FLY_FORM
 	ld a, [wOTPartyMon1Form]
 	and ~FORM_MASK
-	or b
+	or PIKACHU_FLY_FORM
 	ld [wCurForm], a
 	ld [wOTPartyMon1Form], a
 	ld [wEnemyMonForm], a

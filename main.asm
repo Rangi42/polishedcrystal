@@ -677,6 +677,7 @@ SECTION "Item Text", ROMX
 
 INCLUDE "data/items/names.asm"
 INCLUDE "data/items/key_names.asm"
+INCLUDE "data/items/special_names.asm"
 INCLUDE "data/items/apricorn_names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 

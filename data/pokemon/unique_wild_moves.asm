@@ -21,7 +21,6 @@ UniqueWildMoves:
 	unique_moves SPROUT_TOWER,     BELLSPROUT, GROWTH       ; knows Growth early
 	unique_moves ROUTE_32_COAST,   FLAAFFY,    PURSUIT      ; Prism tutor move
 	unique_moves RUINS_OF_ALPH,    SHUCKLE,    ANCIENTPOWER ; Sw/Sh move
-	unique_moves RUINS_OF_ALPH,    SMEARGLE,   SKETCH       ; knows Sketch twice
 	unique_moves SLOWPOKE_WELL,    SLOWPOKE,   GROWTH       ; Prism tutor move
 	unique_moves ILEX_FOREST,      0,          0
 	unique_moves ROUTE_34_COAST,   STARYU,     DREAM_EATER  ; new move
@@ -74,7 +73,6 @@ UniqueWildMoves:
 	unique_moves SHAMOUTI_ISLAND,  0,          0
 	unique_moves BEAUTIFUL_BEACH,  0,          0
 	unique_moves ROCKY_BEACH,      DONPHAN,    LOW_KICK     ; HGSS tutor move
-	unique_moves NOISY_FOREST,     SCIZOR,     CRABHAMMER   ; new move
 	unique_moves NOISY_FOREST,     PINECO,     PAIN_SPLIT   ; HGSS tutor move
 	unique_moves SHRINE_RUINS,     HYPNO,      METRONOME    ; RBY TM move
 	unique_moves SHAMOUTI_TUNNEL,  GOLBAT,     OUTRAGE      ; Prism tutor move

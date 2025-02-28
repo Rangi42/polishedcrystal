@@ -236,10 +236,10 @@ endr
 	jr .joy_loop
 
 .RegisteredItemText:
-	db    "▲ -"
-	next1 "◀ -"
-	next1 "▶ -"
-	next1 "▼ -@"
+	db "▲ -<LNBRK>"
+	db "◀ -<LNBRK>"
+	db "▶ -<LNBRK>"
+	db "▼ -@"
 
 InvertedTextPalette:
 INCLUDE "gfx/overworld/register_item.pal"

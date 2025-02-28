@@ -12,7 +12,7 @@ SilverCaveRoom3_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 10,  6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
+	object_event 10,  6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
 
 	object_const_def
 	const SILVERCAVEROOM3_RED

@@ -90,16 +90,32 @@ AskOverwriteSaveFile:
 	jr z, .erase
 	call CompareLoadedAndSavedPlayerID
 	jr z, .ok
+if !DEF(DEBUG)
+	ld a, [wOptions1]
+	push af
+	and ~(TEXT_DELAY_MASK | AUTOSCROLL_MASK)
+	or SLOW_TEXT
+	ld [wOptions1], a
+endc
 	ld hl, AnotherSaveFileText
 	ld b, BANK(AnotherSaveFileText)
 	call MapTextbox
 	call LoadMenuTextbox
+if !DEF(DEBUG)
+	call NoYesBox
+	pop af
+	ld [wOptions1], a
+	ld a, [wMenuCursorY]
+	dec a
+	call CloseWindow ; preserves af
+	jr z, .refused
+else
 	call YesNoBox
 	ld a, [wMenuCursorY]
 	dec a
-	call CloseWindow
-	and a
+	call CloseWindow ; preserves af
 	jr nz, .refused
+endc
 .erase
 	call ErasePreviousSave
 .ok

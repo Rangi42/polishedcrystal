@@ -197,7 +197,7 @@ LoadIconPaletteFromHL:
 	jmp FarCopyColorWRAM
 
 LoadTMHMIconPalette:
-	ld a, [wNamedObjectIndex]
+	ld a, [wTempTMHM]
 	ld hl, Moves + MOVE_TYPE
 	call GetMoveProperty
 	ld hl, TMHMTypeIconPals
@@ -206,12 +206,18 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, wBGPals1 palette 7 + 2
-	ld bc, 4
-	call FarCopyColorWRAM
-	ld hl, BlackColor
-	ld bc, 2
-	jmp FarCopyColorWRAM
+	jr LoadIconPaletteFromHL
+
+LoadSpecialItemIconPalette:
+	ld a, [wCurSpecialItem]
+	ld bc, SpecialItemIconPalettes
+	assert POKEGEAR + 1 == NUM_SPECIAL_ITEMS
+	cp POKEGEAR
+	jr nz, LoadIconPalette
+	ld h, a
+	ld a, [wPlayerGender]
+	add h
+	jr LoadIconPalette
 
 ItemIconPalettes:
 CaughtBallPals:
@@ -239,6 +245,11 @@ WingIconPalettes:
 	table_width PAL_COLOR_SIZE * 2
 INCLUDE "gfx/items/wings.pal"
 	assert_table_length NUM_WINGS
+
+SpecialItemIconPalettes:
+	table_width PAL_COLOR_SIZE * 2
+INCLUDE "gfx/items/special_items.pal"
+	assert_table_length NUM_SPECIAL_ITEMS + NUM_PLAYER_GENDERS - 1
 
 LoadStatsScreenPals:
 	ldh a, [rSVBK]

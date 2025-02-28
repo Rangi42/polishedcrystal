@@ -12,7 +12,7 @@ FuchsiaSafariBallHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FuchsiaSafariBallHouseOfficerScript, -1
+	object_event  2,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FuchsiaSafariBallHouseOfficerScript, -1
 
 FuchsiaSafariBallHouseOfficerScript:
 	faceplayer
@@ -31,19 +31,19 @@ FuchsiaSafariBallHouseOfficerScript:
 	done
 
 .Buy1:
-	checkmoney $0, 2000
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 2000
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem SAFARI_BALL
 	iffalse_jumpopenedtext .BagFullText
-	takemoney $0, 2000
+	takemoney YOUR_MONEY, 2000
 	sjumpfwd .Done
 
 .Buy10:
-	checkmoney $0, 20000
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 20000
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	giveitem SAFARI_BALL, 10
 	iffalse_jumpopenedtext .BagFullText
-	takemoney $0, 20000
+	takemoney YOUR_MONEY, 20000
 
 .Done:
 	special PlaceMoneyTopRight

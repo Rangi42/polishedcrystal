@@ -24,9 +24,11 @@ sGameDataEnd::
 
 sOptions3:: db
 
-	ds 393 ; unused
+	ds 392 ; unused
 
 sChecksum:: dw
+
+sSRAMAccessCount:: db
 
 sCheckValue2:: db ; loaded with 127, used to check save corruption
 

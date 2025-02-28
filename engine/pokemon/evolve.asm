@@ -759,9 +759,9 @@ EvoFlagAction:
 	ret
 
 GetBaseEvolution:
-; Find the first mon in the evolution chain including wCurPartySpecies.
+; Find the first mon in the evolution chain including wCurPartySpecies+wCurForm.
 
-; Return carry and the new species in wCurPartySpecies
+; Return carry and the new species in wCurPartySpecies+wCurForm
 ; if a base evolution is found.
 
 	call GetPreEvolution
@@ -770,6 +770,8 @@ GetPreEvolution:
 
 ; Return carry and the new species in wCurPartySpecies+wCurForm
 ; if a pre-evolution is found.
+
+; Present behavior preserves de
 
 	ld bc, 0
 .loop ; For each Pokemon...

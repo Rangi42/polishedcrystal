@@ -3,12 +3,6 @@ CheckFaint:
 
 HandleBetweenTurnEffects:
 ; Things handled at endturn. Things commented out are currently not in Polished.
-	ld hl, wTotalBattleTurns
-	inc [hl]
-	jr nz, .done_turn_increment
-	dec [hl]
-
-.done_turn_increment
 	call CheckFaint
 	ret c
 	call HandleWeather

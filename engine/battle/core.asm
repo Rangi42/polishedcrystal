@@ -139,6 +139,12 @@ WildFled_EnemyFled_LinkBattleCanceled:
 
 BattleTurn:
 .loop
+	ld hl, wTotalBattleTurns
+	inc [hl]
+	jr nz, .done_turn_increment
+	dec [hl]
+
+.done_turn_increment
 	call CheckContestBattleOver
 	ret c
 
@@ -4433,14 +4439,13 @@ BattleMenuPKMN_Loop:
 	jr BattleMenuPKMN_Loop
 
 .Stats:
-	call Battle_StatsScreen
+	farcall OpenPartySummary
 	jr BattleMenuPKMN_ReturnFromStats
 
 .PressedB:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
-	call GetMonBackpic
 	call GetMonFrontpic
 	call _LoadStatusIcons
 	call GetMonBackpic
@@ -4451,14 +4456,7 @@ BattleMenuPKMN_Loop:
 	jmp BattleMenu
 
 .GetMenu:
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
 	ld hl, .MenuHeader
-	jr z, .got_menuheader
-	ld hl, .EggMenuHeader
-.got_menuheader
 	call CopyMenuHeader
 	xor a
 	ldh [hBGMapMode], a
@@ -4500,42 +4498,6 @@ BattleMenuPKMN_Loop:
 	db "Switch@"
 	db "Summary@"
 	db "Cancel@"
-
-.EggMenuHeader:
-	db $00 ; flags
-	menu_coords 10, 11, 19, 17
-	dw .EggMenuData
-	db 1 ; default option
-
-.EggMenuData:
-	db $c0 ; flags
-	db 3 ; items
-	db "Switch@"
-	db "Summary@"
-	db "Cancel@"
-
-Battle_StatsScreen:
-	call DisableLCD
-	ld hl, vTiles2 tile $31
-	ld de, vTiles0
-	ld bc, $11 tiles
-	rst CopyBytes
-	ld hl, vTiles2
-	ld de, vTiles0 tile $11
-	ld bc, $31 tiles
-	rst CopyBytes
-	call EnableLCD
-	farcall OpenPartySummary
-	call DisableLCD
-	ld hl, vTiles0
-	ld de, vTiles2 tile $31
-	ld bc, $11 tiles
-	rst CopyBytes
-	ld hl, vTiles0 tile $11
-	ld de, vTiles2
-	ld bc, $31 tiles
-	rst CopyBytes
-	jmp EnableLCD
 
 AI_OpponentCanSwitch:
 	call StackCallOpponentTurn
@@ -4614,6 +4576,7 @@ TryPlayerSwitch:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
+	call GetMonFrontpic
 	call _LoadStatusIcons
 	call GetMonBackpic
 	call CloseWindow
@@ -5209,6 +5172,13 @@ MoveSelectionScreen:
 	call ClearSprites
 	pop hl
 	call BattleMoveDescTextbox
+	assert INST_TEXT == 0
+	ld a, [wOptions1]
+	and TEXT_DELAY_MASK
+	jr nz, .no_delay
+	ld c, 10
+	call DelayFrames ; 0.333s delay to allow users with autoscroll on start to see the description
+.no_delay
 	call WaitPressAorB_BlinkCursor
 	jmp .start_over
 
