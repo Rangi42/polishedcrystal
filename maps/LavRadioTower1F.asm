@@ -41,8 +41,7 @@ LavRadioTower1FGentlemanScript:
 	iffalse_jumpopenedtext .OffTheAirText
 	writetext .ReturnedMachinePartText
 	promptbutton
-	getstring .expncardname, STRING_BUFFER_4
-	callstd receiveitem
+	givespecialitem EXPN_CARD
 	setflag ENGINE_EXPN_CARD
 	jumpthisopenedtext
 
@@ -90,9 +89,6 @@ LavRadioTower1FGentlemanScript:
 	para "Please take this"
 	line "as my thanks."
 	done
-
-.expncardname
-	db "Expn.Card@"
 
 LavRadioTower1FSuperNerd2Script:
 	checkflag ENGINE_EXPN_CARD

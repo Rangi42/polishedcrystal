@@ -825,3 +825,9 @@ ExpCandyXLIcon:: INCBIN "gfx/items/exp_candy_xl.2bpp.lz"
 
 SECTION "LiftKeyIcon", ROMX
 LiftKeyIcon:: INCBIN "gfx/items/lift_key.2bpp.lz"
+
+SECTION "PokedexIcon", ROMX
+PokedexItemIcon:: INCBIN "gfx/items/pokedex.2bpp.lz"
+
+SECTION "PokegearIcon", ROMX
+PokegearItemIcon:: INCBIN "gfx/items/pokegear.2bpp.lz"

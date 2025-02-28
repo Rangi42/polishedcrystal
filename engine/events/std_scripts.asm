@@ -45,7 +45,6 @@ StdScripts::
 	dw GymStatue1Script
 	dw GymStatue2Script
 	dw GymStatue3Script
-	dw ReceiveItemScript
 	dw PCScript
 	dw GameCornerCoinVendorScript
 	dw HappinessCheckScript
@@ -1526,13 +1525,6 @@ GymStatue3Script:
 	farwritetext GymStatue_ThreeWinningTrainersText
 	waitendtext
 
-ReceiveItemScript:
-	waitsfx
-	farwritetext ReceivedItemText
-	playsound SFX_ITEM
-	waitsfx
-	end
-
 GameCornerCoinVendorScript:
 	faceplayer
 	opentext
@@ -1556,7 +1548,7 @@ CoinVendor_IntroScript:
 	sjumpfwd .Cancel
 
 .Buy50:
-	checkcoins 49950
+	checkcoins MAX_COINS - 50
 	ifequalfwd HAVE_MORE, .CoinCaseFull
 	checkmoney YOUR_MONEY, 1000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
@@ -1569,7 +1561,7 @@ CoinVendor_IntroScript:
 	sjump .loop
 
 .Buy500:
-	checkcoins 49500
+	checkcoins MAX_COINS - 500
 	ifequalfwd HAVE_MORE, .CoinCaseFull
 	checkmoney YOUR_MONEY, 10000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney

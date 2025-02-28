@@ -67,8 +67,7 @@ CherrygroveCityGuideGent:
 	opentext
 	writetext GuideGentGiftText
 	promptbutton
-	getstring .mapcardname, STRING_BUFFER_4
-	callstd receiveitem
+	givespecialitem MAP_CARD
 	setflag ENGINE_MAP_CARD
 	writetext GotMapCardText
 	promptbutton
@@ -85,9 +84,6 @@ CherrygroveCityGuideGent:
 	setscene $2
 	waitsfx
 	end
-
-.mapcardname
-	db "Map Card@"
 
 CherrygroveRivalTriggerSouth:
 	moveobject CHERRYGROVECITY_RIVAL, 39, 7

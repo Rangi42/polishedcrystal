@@ -104,9 +104,7 @@ MrPokemonsHouse_OakScript:
 	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	pause 10
 	opentext
-	writetext MrPokemonsHouse_GetDexText
-	playsound SFX_ITEM
-	waitsfx
+	givespecialitem POKEDEX
 	setflag ENGINE_POKEDEX
 	writetext MrPokemonsHouse_OakText2
 	waitbutton
@@ -336,11 +334,6 @@ if !DEF(DEBUG)
 	para "It's a hi-tech"
 	line "encyclopedia!"
 endc
-	done
-
-MrPokemonsHouse_GetDexText:
-	text "<PLAYER> received"
-	line "#dex!"
 	done
 
 MrPokemonsHouse_OakText2:

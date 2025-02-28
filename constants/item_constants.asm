@@ -719,3 +719,18 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_TYPE_CHART
 	const NAM_WING_CASE
 	assert const_value - 1 == NUM_KEY_ITEMS
+
+; special items ids
+; story items that have names and icons but do not go in the bag
+; Pokegear must be highest value due to special palette handling
+; indexes for:
+; - SpecialItemNames (see data/items/special_names.asm)
+; - SpecialItemIconPointers (see data/items/icon_pointers.asm)
+; - SpecialItemIconPalettes (see gfx/items/special_items.pal)
+	const_def
+	const POKEDEX
+	const MAP_CARD
+	const RADIO_CARD
+	const EXPN_CARD
+	const POKEGEAR
+DEF NUM_SPECIAL_ITEMS EQU const_value

@@ -272,6 +272,7 @@ ScriptCommandTable:
 	dw Script_scalltable                 ; d5
 	dw Script_setmapobjectmovedata       ; d6
 	dw Script_setmapobjectpal            ; d7
+	dw Script_givespecialitem            ; d8
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -579,7 +580,7 @@ Script_verbosegiveitem:
 	call Script_giveitem
 	call CurItemName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveItemScript)
 	ld de, GiveItemScript
@@ -618,7 +619,7 @@ Script_verbosegiveitemvar:
 	ldh [hScriptVar], a
 	call CurItemName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveItemScript)
 	ld de, GiveItemScript
@@ -1845,13 +1846,13 @@ Script_checkmoney:
 CompareMoneyAction:
 	jr c, .two
 	jr z, .one
-	xor a
+	xor a ; ld a, HAVE_MORE
 	jr .done
 .one
-	ld a, 1
+	ld a, HAVE_AMOUNT
 	jr .done
 .two
-	ld a, 2
+	ld a, HAVE_LESS
 .done
 	ldh [hScriptVar], a
 	ret
@@ -2408,7 +2409,7 @@ Script_verbosegivetmhm:
 	call Script_givetmhm
 	call CurTMHMName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	; off by one error?
 	ld hl, wTempTMHM
@@ -2605,7 +2606,7 @@ Script_verbosegivekeyitem:
 	call Script_givekeyitem
 	call GetCurKeyItemName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveKeyItemScript)
 	ld de, GiveKeyItemScript
@@ -2658,3 +2659,24 @@ Script_setmapobjectpal:
 	call GetScriptByte
 	ld [hl], a
 	ret
+
+Script_givespecialitem:
+	call GetScriptByte
+	ld [wNamedObjectIndex], a
+	ld [wCurSpecialItem], a
+	call GetSpecialItemName
+	ld de, wStringBuffer1
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveSpecialItemScript)
+	ld de, GiveSpecialItemScript
+	jmp ScriptCall
+
+GiveSpecialItemScript:
+	farwritetext _GotTheItemText
+	special ShowSpecialItemIcon
+	playsound SFX_ITEM
+	waitsfx
+	writetext ClearText
+	callasm LoadFonts_NoOAMUpdate
+	end

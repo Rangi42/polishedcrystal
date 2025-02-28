@@ -1384,4 +1384,10 @@ MACRO setmapobjectpal
 	db \2 ; palette
 ENDM
 
+	const givespecialitem_command
+MACRO givespecialitem
+	db givespecialitem_command
+	db \1 ; key item
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

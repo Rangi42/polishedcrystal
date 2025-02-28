@@ -103,10 +103,11 @@ CeladonGameCornerFisherScript:
 	promptbutton
 	checkkeyitem COIN_CASE
 	iffalsefwd .NoCoinCase
-	checkcoins 49999
+	checkcoins MAX_COINS - 18
 	ifequalfwd HAVE_MORE, .FullCoinCase
-	getstring .coinname, STRING_BUFFER_4
-	callstd receiveitem
+	writetext CeladonGameCornerReceived18CoinsText ; TODO load coins icon
+	playsound SFX_ITEM
+	waitsfx
 	givecoins 18
 	setevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
 .FisherOffer:
@@ -129,9 +130,6 @@ CeladonGameCornerFisherScript:
 	closetext
 	turnobject LAST_TALKED, LEFT
 	end
-
-.coinname
-	db "Coin@"
 
 .NoCoinCase:
 	writetext CeladonGameCornerFisherNoCoinCaseText
@@ -322,6 +320,11 @@ CeladonGameCornerFisherFullCoinCaseText:
 	para "You must be riding"
 	line "a winning streak"
 	cont "too."
+	done
+
+CeladonGameCornerReceived18CoinsText:
+	text "<PLAYER> received"
+	line "18 Coins!"
 	done
 
 FisherOfferText:

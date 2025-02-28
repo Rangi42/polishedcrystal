@@ -66,8 +66,7 @@ MomEventScript:
 	opentext
 	writetext MomIntroText
 	promptbutton
-	getstring GearName, STRING_BUFFER_4
-	callstd receiveitem
+	givespecialitem POKEGEAR
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
@@ -102,9 +101,6 @@ MomEventScript:
 	turnobject PLAYERSHOUSE1F_MOM1, LEFT
 	special RestartMapMusic
 	end
-
-GearName:
-	db "#gear@"
 
 PlayersHouse1FFridgeText:
 	text "Let's see what's"

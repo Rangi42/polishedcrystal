@@ -309,3 +309,12 @@ ExpCandyIconPointers:
 	dba ExpCandyLIcon
 	dba ExpCandyXLIcon
 	assert_table_length NUM_CANDIES + 1
+
+SpecialItemIconPointers:
+	table_width 3
+	dba PokedexItemIcon
+	dba NoItemIcon ; TODO MAP_CARD
+	dba NoItemIcon ; TODO RADIO_CARD
+	dba NoItemIcon ; TODO EXPN_CARD
+	dba PokegearItemIcon
+	assert_table_length NUM_SPECIAL_ITEMS

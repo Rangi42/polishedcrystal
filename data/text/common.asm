@@ -2278,6 +2278,14 @@ _FoundItemText::
 	text "!"
 	done
 
+SECTION "_GotTheItemText", ROMX
+_GotTheItemText:
+	text "<PLAYER> got"
+	line "the "
+	text_ram wStringBuffer4
+	text "!"
+	done
+	
 SECTION "WhiteoutText", ROMX
 WhiteoutText::
 	text "<PLAYER> is out of"

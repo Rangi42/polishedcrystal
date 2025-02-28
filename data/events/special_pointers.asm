@@ -170,6 +170,7 @@ SpecialsPointers::
 	add_special ShowItemIcon
 	add_special ShowKeyItemIcon
 	add_special ShowTMHMIcon
+	add_special ShowSpecialItemIcon
 	add_special FixPlayerEVsAndStats
 	add_special FadeInPalettes_EnableDynNoApply
 	add_special PrintDiploma

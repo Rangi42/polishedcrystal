@@ -155,8 +155,7 @@ RadioTower1FRadioCardWomanScript:
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
 	promptbutton
-	getstring .RadioCardText, STRING_BUFFER_4
-	callstd receiveitem
+	givespecialitem RADIO_CARD
 	writetext RadioTower1FPokegearIsARadioText
 	promptbutton
 	setflag ENGINE_RADIO_CARD
@@ -172,9 +171,6 @@ RadioTower1FRadioCardWomanScript:
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
 	disappear RADIOTOWER1F_WHITNEY
 	end
-
-.RadioCardText:
-	db "Radio Card@"
 
 .WrongAnswer:
 	playsound SFX_WRONG

@@ -5173,7 +5173,7 @@ MoveSelectionScreen:
 	pop hl
 	call BattleMoveDescTextbox
 	assert INST_TEXT == 0
-	ld a, [wOptions]
+	ld a, [wOptions1]
 	and TEXT_DELAY_MASK
 	jr nz, .no_delay
 	ld c, 10
