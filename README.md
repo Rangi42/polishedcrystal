@@ -40,7 +40,7 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 
 A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 
-- **289 Pokémon species**, including some new evolutions, plus **56 cosmetic forms** (e.g., Magikarp patterns, Pikachu Fly/Surf, Arbok patterns, Unown Forms) and **46 variants** (Alolan, Galarian, Hisuian, misc.)—for a total of **391 unique Pokémon**.
+- **289 Pokémon species**, including some new evolutions, plus **56 cosmetic forms** (e.g., Magikarp patterns, Pikachu Fly/Surf, Arbok patterns, Unown Forms) and **46 variants** (Alolan, Galarian, Hisuian, etc.)—for a total of **391 unique Pokémon**.
 - **73 new moves** (72 on faithful builds), **75 TMs**, and **31 move tutors**.
 - Modern mechanics, such as the **Fairy type**, **Physical/Special split**, **Natures**, **Abilities**, and more.
 - **Unlimited TMs** and quality-of-life features like **Running Shoes** and continuous **Repel**.
