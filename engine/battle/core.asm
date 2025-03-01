@@ -5766,7 +5766,7 @@ LinkBattleSendReceiveAction:
 	call .StageForSend
 	ld [wLinkBattleSentAction], a
 	vc_hook Wireless_start_exchange
-	call PlaceWaitingText
+	farcall PlaceWaitingText
 	ld a, [wLinkBattleSentAction]
 	ld [wPlayerLinkAction], a
 	ld a, $ff
