@@ -49,27 +49,27 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 Not every emulator is compatible with Polished Crystal. With the exception of the Virtual Console emulator, we do not offer any support if an emulator has a bug that isn't reproducible on official hardware. As such, we recommend the following emulators to limit compatibility issues:
 
-## PC:
+#### PC:
 * [mGBA](https://mgba.io/) - most popular emulator, no known incompatiblities, can also conveniently play GBA games
 * [SameBoy](https://sameboy.github.io/) - one of the most accurate emulators, also has an iOS release
 * [BGB](https://bgb.bircd.org/) - Polished Crystal developers use this emulator, more accurate than mGBA, powerful debugger
 
-## Android:
+#### Android:
 * [RetroArch](https://www.retroarch.com/) - use SameBoy or Gambatte core, **do not use VBA-M core**
 
-## iOS:
+#### iOS:
 * [SameBoy](https://sameboy.github.io/) - see PC section
 
 Conversely, the following emulators are known to have issues and **should not be used** to play Polished Crystal:
 
-## PC:
+#### PC:
 * VBA - this emulator has not been updated since 2004, do not ever use
 * VBA-M - despite being actively updated, still is an extremely inaccurate emulator, use mGBA instead
 
-## iOS:
+#### iOS:
 * Delta - despite using the fairly accurate Gambatte core, this emulator has reported issues that haven't been reproduced on any other emulator, and since SameBoy is also on iOS using this emulator is discouraged
 
-## Other:
+#### Other:
 * Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
 
 If you have a preferred emulator that isn't listed above, using it should be fine. Most modern emulators can indeed run Polished Crystal just fine. Be aware, though, that if you're consistently having an issue that isn't reproduced on either official hardware or the most accurate emulators, you will not be provided any support.
