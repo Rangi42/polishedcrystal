@@ -786,7 +786,9 @@ wNamingScreenKeyboardWidth:: db
 
 SECTION UNION "Misc 404", WRAM0
 ; pokegear
-	ds 172
+	ds 132
+
+wRadioCompressedText:: ds 2 * SCREEN_WIDTH
 
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
