@@ -77,25 +77,8 @@ VermilionGymSurgeScript:
 	setevent EVENT_BEAT_JUGGLER_HORTON
 	setevent EVENT_BEAT_GUITARISTF_JANET
 	opentext
-	writetext ReceivedThunderBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_THUNDERBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge THUNDERBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM57_WILD_CHARGE
 	iftrue_jumpopenedtext LtSurgeFightDoneText
@@ -231,11 +214,6 @@ LtSurgeWinLossText:
 
 	para "OK, kid. You get"
 	line "the Thunder Badge!"
-	done
-
-ReceivedThunderBadgeText:
-	text "<PLAYER> received"
-	line "the Thunder Badge."
 	done
 
 LtSurgeThunderBadgeText:

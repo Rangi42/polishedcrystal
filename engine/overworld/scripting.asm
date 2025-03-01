@@ -273,6 +273,7 @@ ScriptCommandTable:
 	dw Script_setmapobjectmovedata       ; d6
 	dw Script_setmapobjectpal            ; d7
 	dw Script_givespecialitem            ; d8
+	dw Script_givebadge                  ; d9
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -961,8 +962,7 @@ Script_faceplayer:
 	ldh a, [hLastTalked]
 	and a
 	ret z
-	ld d, $0
-	ldh a, [hLastTalked]
+	ld d, 0
 	ld e, a
 	farcall GetRelativeFacing
 	ld a, d
@@ -2674,9 +2674,80 @@ Script_givespecialitem:
 
 GiveSpecialItemScript:
 	farwritetext _GotTheItemText
-	special ShowSpecialItemIcon
+	callasm ShowSpecialItemIcon
 	playsound SFX_ITEM
 	waitsfx
 	writetext ClearText
 	callasm LoadFonts_NoOAMUpdate
 	end
+
+Script_givebadge:
+	call GetScriptByte
+	assert JOHTO_REGION == KANTO_REGION - 1
+	cp KANTO_REGION << 4 ; region is in high nybble
+	assert JOHTO_REGION == 0 && NUM_JOHTO_BADGES == 8
+	jr c, .got_region
+	xor KANTO_REGION << 4 | NUM_JOHTO_BADGES
+.got_region
+	ld [wNamedObjectIndex], a
+	ld [wCurBadge], a
+	assert ENGINE_BADGES + NUM_BADGES < $100
+	ld de, ENGINE_BADGES
+	add e
+	ld e, a
+	ld b, SET_FLAG
+	farcall EngineFlagAction
+	call GetBadgeName
+	ld de, wStringBuffer1
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveBadgeScript)
+	ld de, GiveBadgeScript
+	jmp ScriptCall
+
+GiveBadgeScript:
+	farwritetext _ReceivedTheBadgeText
+	callasm ShowBadgeIcon
+	playsound SFX_GET_BADGE
+	waitsfx
+	writetext ClearText
+	special LoadMapPalettes
+	callasm SetDefaultBGPAndOBP
+	special LoadFonts_NoOAMUpdate
+	end
+
+ShowBadgeIcon:
+	ld a, [wCurBadge]
+	assert JOHTO_REGION == 0 && KANTO_REGION == 1
+	cp NUM_JOHTO_BADGES
+	ld b, BANK(BadgeGFX)
+	ld hl, BadgeGFX
+	jr c, .got_region
+	sub NUM_JOHTO_BADGES
+	ld b, BANK(BadgeGFX2)
+	ld hl, BadgeGFX2
+.got_region
+	push af
+	call FarDecompressWRA6InB
+	pop af
+	ld bc, 4 tiles
+	ld hl, wDecompressScratch
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	ld c, 4
+	ld hl, vTiles0 tile "↑"
+	call Request2bppInWRA6
+	farcall LoadSingleBadgePalette
+	ld a, "↑"
+	hlcoord 17, 13
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	hlcoord 17, 14
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ld b, 2
+	jmp SafeCopyTilemapAtOnce

@@ -20,6 +20,7 @@ DEF TRAINER_CLASS_NAME_LENGTH EQU 13
 	const KEY_ITEM_NAME     ; 9
 	const EXP_CANDY_NAME    ; 10
 	const SPECIAL_ITEM_NAME ; 11
+	const BADGE_NAME        ; 12
 
 ; see home/text.asm
 DEF BORDER_WIDTH   EQU 2

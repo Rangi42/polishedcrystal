@@ -52,10 +52,7 @@ VioletGymFalknerScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_FALKNER
 	opentext
-	writetext ReceivedZephyrBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_ZEPHYRBADGE
+	givebadge ZEPHYRBADGE, JOHTO_REGION
 .FightDone:
 	checkevent EVENT_GOT_TM31_ROOST
 	iftrue_jumpopenedtext FalknerFightDoneText
@@ -139,11 +136,6 @@ FalknerWinLossText:
 	para "It's the official"
 	line "#mon League"
 	cont "Zephyr Badge."
-	done
-
-ReceivedZephyrBadgeText:
-	text "<PLAYER> received"
-	line "the Zephyr Badge."
 	done
 
 FalknerZephyrBadgeText:

@@ -33,10 +33,7 @@ OlivineGymJasmineScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
 	opentext
-	writetext Text_ReceivedMineralBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_MINERALBADGE
+	givebadge MINERALBADGE, JOHTO_REGION
 	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setmapscene ROUTE_42, $1
 .FightDone:
@@ -186,11 +183,6 @@ Jasmine_BetterTrainer:
 
 	para "confer upon you"
 	line "this Badge."
-	done
-
-Text_ReceivedMineralBadge:
-	text "<PLAYER> received"
-	line "the Mineral Badge."
 	done
 
 Jasmine_BadgeSpeech:

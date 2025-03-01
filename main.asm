@@ -692,6 +692,11 @@ SECTION "Pokemon Names", ROMX
 INCLUDE "data/pokemon/names.asm"
 
 
+SECTION "Badge Names", ROMX
+
+INCLUDE "data/events/badge_names.asm"
+
+
 SECTION "Move Names", ROMX
 
 INCLUDE "data/moves/names.asm"

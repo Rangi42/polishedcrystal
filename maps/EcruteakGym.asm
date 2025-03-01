@@ -75,10 +75,7 @@ EcruteakGymMortyScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MORTY
 	opentext
-	writetext Text_ReceivedFogBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_FOGBADGE
+	givebadge FOGBADGE, JOHTO_REGION
 	setmapscene ECRUTEAK_HOUSE, $1
 	setevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_RANG_CLEAR_BELL_2
@@ -215,11 +212,6 @@ MortyWinLossText:
 
 	para "All right. This"
 	line "Badge is yours."
-	done
-
-Text_ReceivedFogBadge:
-	text "<PLAYER> received"
-	line "the Fog Badge."
 	done
 
 MortyText_FogBadgeSpeech:

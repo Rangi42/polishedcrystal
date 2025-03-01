@@ -41,10 +41,7 @@ ViridianGymBlueScript:
 	setevent EVENT_BEAT_COOLTRAINERF_BONITA
 	setevent EVENT_BEAT_ACE_DUO_ELAN_AND_IDA
 	opentext
-	writetext Text_ReceivedEarthBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_EARTHBADGE
+	givebadge EARTHBADGE, KANTO_REGION
 	setevent EVENT_FINAL_BATTLE_WITH_LYRA
 .FightDone:
 	checkevent EVENT_GOT_TM71_STONE_EDGE
@@ -167,11 +164,6 @@ LeaderBlueWinText:
 
 	para "it's the Earth"
 	line "Badge."
-	done
-
-Text_ReceivedEarthBadge:
-	text "<PLAYER> received"
-	line "the Earth Badge."
 	done
 
 LeaderBlueAfterText:

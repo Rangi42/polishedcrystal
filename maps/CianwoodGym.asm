@@ -51,10 +51,7 @@ CianwoodGymChuckScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CHUCK
 	opentext
-	writetext GetStormBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_STORMBADGE
+	givebadge STORMBADGE, JOHTO_REGION
 	specialphonecall SPECIALCALL_YELLOWFOREST
 .FightDone:
 	checkevent EVENT_GOT_TM01_DYNAMICPUNCH
@@ -164,11 +161,6 @@ ChuckLossText:
 	para "How about that!"
 	line "You're worthy of"
 	cont "the Storm Badge!"
-	done
-
-GetStormBadgeText:
-	text "<PLAYER> received"
-	line "the Storm Badge."
 	done
 
 ChuckExplainBadgeText:

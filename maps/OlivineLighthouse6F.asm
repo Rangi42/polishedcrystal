@@ -60,6 +60,7 @@ OlivineLighthouseJasmine:
 	special FadeInPalettes_EnableDynNoApply
 	showtext AmphyPaluPaluluText
 	showemote EMOTE_BOLT, OLIVINELIGHTHOUSE6F_AMPHAROS, 15
+	setlasttalked OLIVINELIGHTHOUSE6F_JASMINE
 	showtextfaceplayer JasmineThankYouText
 	setevent EVENT_JASMINE_RETURNED_TO_GYM
 	clearevent EVENT_OLIVINE_GYM_JASMINE

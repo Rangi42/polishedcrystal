@@ -79,25 +79,8 @@ CeruleanGymMistyScript:
 	setevent EVENT_BEAT_SAILOR_PARKER
 	setevent EVENT_BEAT_SAILOR_EDDIE
 	opentext
-	writetext ReceivedCascadeBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_CASCADEBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge CASCADEBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM63_WATER_PULSE
 	iftrue_jumpopenedtext MistyFightDoneText
@@ -293,11 +276,6 @@ MistyWinLossText:
 	line "you are skilled…"
 
 	para "Here you go. It's"
-	line "the Cascade Badge."
-	done
-
-ReceivedCascadeBadgeText:
-	text "<PLAYER> received"
 	line "the Cascade Badge."
 	done
 

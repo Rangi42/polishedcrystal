@@ -44,13 +44,7 @@ AzaleaGymBugsyScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BUGSY
 	opentext
-	writethistext
-		text "<PLAYER> received"
-		line "the Hive Badge."
-		done
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_HIVEBADGE
+	givebadge HIVEBADGE, JOHTO_REGION
 	setmapscene AZALEA_TOWN, $1
 	setevent EVENT_BEAT_TWINS_AMY_AND_MAY
 	setevent EVENT_BEAT_BUG_CATCHER_BENNY

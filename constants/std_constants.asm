@@ -54,3 +54,4 @@
 	const vendingmachine
 	const treegrotto
 	const cavegrotto
+	const kantopostgymevents

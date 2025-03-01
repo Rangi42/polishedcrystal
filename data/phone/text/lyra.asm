@@ -138,8 +138,7 @@ LyraPhoneSpecialText_FirstBadge:
 
 	para "Oh, you got your"
 	line "first Badge in"
-	cont "Kanto too?"
-	cont "Good going!"
+	cont "Kanto? Good going!"
 
 	para "Let's both keep on"
 	line "winning Badges."
