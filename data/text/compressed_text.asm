@@ -6,7 +6,7 @@ ENDM
 MACRO _parent_node
 	if STRIN("\1", "$") == 1
 		; hex literals indicate parent nodes
-		assert $00 < \1 && \1 < $7f, "invalid parent node value \1"
+		assert ROOT_NODE_ID < \1 && \1 < FIRST_LEAF_NODE_ID, "invalid parent node value \1"
 		db \1
 	elif STRIN("\1", "\"") == 1
 		; string literals indicate leaf nodes
@@ -18,12 +18,13 @@ MACRO _parent_node
 			fail "already mapped leaf node character \1"
 		endc
 		DEF ___huffman_leaf_node_{02X:x} = 1
-		if $7f <= \1 && \1 <= $eb
-			; characters $7f-$eb correspond to leaf nodes $7f-$eb
+		if FIRST_LEAF_NODE_ID <= \1 && \1 < FIRST_SHIFTED_LEAF_NODE_ID
+			; these characters directly correspond to the lower set of leaf node IDs
 			db \1
-		elif $4d <= \1 && \1 <= $5c
-			; characters $4d-$5c correspond to leaf nodes $ec-$fb
-			db \1 + $ec - $4d
+		elif FIRST_SHIFTED_LEAF_CHAR_ID <= \1 && \1 <= LAST_SHIFTED_LEAF_CHAR_ID
+			; lower characters correspond to the higher set of leaf node IDs
+			; (since node IDs below the first leaf node ID must be parent nodes)
+			db \1 + FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
 		else
 			; other characters are unmapped; leaf nodes $fd-$ff are unused
 			fail "unmapped leaf node character \1"

@@ -812,7 +812,8 @@ DecompressStringToRAM::
 	ret
 
 ReadHuffmanChar:
-	xor a ; start at node $00
+	assert ROOT_NODE_ID == $00
+	xor a
 .tree_loop
 	; "c = [hli]" when b reaches 0, then carry = next bit from c
 	dec b
@@ -829,15 +830,16 @@ ReadHuffmanChar:
 	adc HIGH(TextCompressionHuffmanTree)
 	sub e
 	ld d, a
-	; keep traversing the tree until a leaf node ($7f and above)
+	; keep traversing the tree until a leaf node
 	ld a, [de]
-	cp $7f
+	cp FIRST_LEAF_NODE_ID
 	jr c, .tree_loop
 
-	; leaf node IDs $ec-$fb correspond to characters $4d-$5c
-	cp $ec
+	; shifted leaf node IDs correspond to lesser characters
+	; (since node IDs below the first leaf node ID must be parent nodes)
+	cp FIRST_SHIFTED_LEAF_NODE_ID
 	ret c
-	sub $ec - $4d
+	sub FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
 	ret
 
 CheckTerminatorChar:
