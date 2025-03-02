@@ -124,7 +124,10 @@ SpawnRandomWeatherCoords::
 	assert OW_WEATHER_THUNDERSTORM == 3
 	dec a
 	jr z, .rain
+	dec a
+	ret nz
 	assert OW_WEATHER_SANDSTORM == 4
+	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
 .sand
 	call .find_oam_and_radomize
 	ret c
@@ -875,7 +878,7 @@ DoCherryBlossomFall:
 
 SpawnCherryBlossom:
 	call Random
-	cp 5 percent
+	cp 8 percent
 	ret nc
 	push hl ; location to store the new sprite
 	; Pick random starting point to spread the cherry blossoms
@@ -886,54 +889,76 @@ SpawnCherryBlossom:
 	call RandomRange
 	ld e, a ; random starting y coord
 
-	ld b, SCREEN_WIDTH / 2
-.scan_x_loop
-	ld c, SCREEN_HEIGHT / 2
-.scan_y_loop
+	; load diagonal offset and apply it to X
+	xor a
+	ld [wWeatherDiagonalOffset], a
+	add d
+	cp SCREEN_WIDTH / 2
+	jr c, .offset_applied
+	sub SCREEN_WIDTH / 2 ; wrap X offset if needed
+.offset_applied
+	ld d, a
+
+	; Set tile-count loop counter (width * height)
+	ld bc, (SCREEN_WIDTH / 2) * (SCREEN_HEIGHT / 2)
+
+.scan_loop
 	push bc
 
-	push de
 	; Convert screen coords to map coords
 	ld a, [wXCoord]
 	add d
-	ld h, a ; map X coord
+	ld h, a ; map X
 
 	ld a, [wYCoord]
 	add e
-	ld l, a ; map Y coord
+	ld l, a ; map Y
 
-	; Check collision
+	; Check collision at current coords
+	push de
 	ld d, h
 	ld e, l
 	call GetCoordTileCollision
 	pop de
 
 	cp COLL_CHERRY_LEAVES
-	jr z, .found_leaf
+	jr z, .found_leaf ; suitable tile found
 
-	pop bc
-	inc e
-	ld a, e
-	cp SCREEN_HEIGHT / 2
-	jr nz, .scan_y_continue
-	xor a
-	ld e, a
-.scan_y_continue
-	dec c
-	jr nz, .scan_y_loop
-
-	inc d
+	; Advance diagonally
+	inc d ; advance X
 	ld a, d
 	cp SCREEN_WIDTH / 2
-	jr nz, .scan_x_continue
+	jr nz, .x_ok
 	xor a
 	ld d, a
-.scan_x_continue
-	dec b
-	jr nz, .scan_x_loop
+.x_ok
 
+	inc e ; advance Y
+	ld a, e
+	cp SCREEN_HEIGHT / 2
+	jr nz, .y_ok
+	xor a
+	ld e, a
+
+	; Completed full diagonal pass? Increment offset
+	ld a, [wWeatherDiagonalOffset]
+	inc a
+	cp SCREEN_WIDTH / 2
+	jr nz, .update_offset
+	xor a ; reset offset if reached max
+.update_offset
+	ld [wWeatherDiagonalOffset], a
+.y_ok
+
+	pop bc
+	dec bc
+	ld a, b
+	or c
+	jr nz, .scan_loop
+
+	; No suitable tile found
 	pop hl
-	ret ; no leaf tile found
+	ret
 
 .found_leaf
 	pop bc

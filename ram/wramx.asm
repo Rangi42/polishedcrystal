@@ -144,6 +144,10 @@ wTempDayOfWeek::
 
 	ds 59
 
+NEXTU
+
+wWeatherDiagonalOffset:: db
+
 UNION
 ; trainer data
 wSeenTrainerBank:: db
