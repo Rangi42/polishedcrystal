@@ -28,12 +28,15 @@ ENDM
 DEF NUM_NONTRAINER_PHONECONTACTS EQU const_value - 1
 
 DEF KRIS EQU __trainer_class__
+DEF BLUE_TRAINER_PAL EQU __trainer_class__
 	trainerclass CARRIE ; 1
 
 DEF CHRIS EQU __trainer_class__
+DEF RED_TRAINER_PAL EQU __trainer_class__
 	trainerclass CAL ; 2
 
 DEF CRYS EQU __trainer_class__
+DEF GREEN_TRAINER_PAL EQU __trainer_class__
 	trainerclass JACKY ; 3
 
 	trainerclass FALKNER ; 4

@@ -157,6 +157,7 @@ wTempTrainerClass:: db
 wTempTrainerID:: db
 wSeenTextPointer:: dw
 wWinTextPointer:: dw
+wTrainerPal:: db
 wGenericTempTrainerHeaderEnd::
 wLossTextPointer:: dw
 wScriptAfterPointer:: dw
