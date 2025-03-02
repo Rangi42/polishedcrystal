@@ -2905,7 +2905,7 @@ PlaceWaitingText::
 	jr .proceed
 
 .notinbattle
-	farcall LinkTextbox
+	call LinkTextbox
 
 .proceed
 	hlcoord 5, 11
