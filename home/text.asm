@@ -476,11 +476,7 @@ DoTextUntilTerminator::
 	and a
 	ret nz
 	ld a, [hli]
-	cp "@"
-	ret z
-	cp "<DONE>"
-	ret z
-	cp "<PROMPT>"
+	call CheckTerminatorChar
 	ret z
 	call .TextCommand
 	jr .loop
@@ -779,13 +775,11 @@ DecompressString::
 	ret
 
 DecompressStringToRAM::
-; Inputs:
-; HL = Address of compressed string
-; DE = Destination address
+; input: hl = string, de = destination
 
 	ld a, [hl]
 	cp "<CTXT>"
-	jr nz, .not_compressed
+	jr nz, .copy_loop
 
 	inc hl ; skip "<CTXT>"
 
@@ -797,37 +791,23 @@ DecompressStringToRAM::
 	pop de
 	; check for characters that signal end of compression
 	; (same ones that finish PlaceString)
-	cp "<DONE>"
-	jr z, .end
-	cp "<PROMPT>"
-	jr z, .end
-	cp "@"
-	jr z, .end
+	call CheckTerminatorChar
+	jr z, .append_terminator
 
 	; Store decompressed char to WRAM and advance
 	ld [de], a
 	inc de
 	jr .character_loop
 
-.end
-	; Append terminator
-	ld [de], a
-	ret
-
-.not_compressed
-	; copy until terminator
-.loop
+.copy_loop
 	ld a, [hli]
-	cp "<DONE>"
-	jr z, .end2
-	cp "<PROMPT>"
-	jr z, .end2
-	cp "@"
-	jr z, .end2
+	call CheckTerminatorChar
+	jr z, .append_terminator
 	ld [de], a
 	inc de
-	jr .loop
-.end2
+	jr .copy_loop
+
+.append_terminator
 	ld [de], a
 	ret
 
@@ -858,4 +838,13 @@ ReadHuffmanChar:
 	cp $ec
 	ret c
 	sub $ec - $4d
+	ret
+
+CheckTerminatorChar:
+; check for a character that terminates `_dchr` Huffman compression
+	cp "@"
+	ret z
+	cp "<DONE>"
+	ret z
+	cp "<PROMPT>"
 	ret
