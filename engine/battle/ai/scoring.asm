@@ -2451,7 +2451,7 @@ AIDamageCalc:
 
 .multihit
 	; Multiply base power by 5 for Skill Link, 4 for Loaded Dice, 3 otherwise
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_LOADED_DICE
 	ld b, 4

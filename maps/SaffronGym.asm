@@ -75,25 +75,8 @@ SaffronGymSabrinaScript:
 	setevent EVENT_BEAT_PSYCHIC_FRANKLIN
 	setevent EVENT_BEAT_MEDIUM_REBECCA
 	opentext
-	writetext ReceivedMarshBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_SOULBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge SOULBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
 	iftrue_jumpopenedtext SabrinaFightDoneText
@@ -231,15 +214,6 @@ if DEF(FAITHFUL)
 	cont "the Marsh Badge."
 else
 	cont "the Soul Badge."
-endc
-	done
-
-ReceivedMarshBadgeText:
-	text "<PLAYER> received"
-if DEF(FAITHFUL)
-	line "the Marsh Badge."
-else
-	line "the Soul Badge."
 endc
 	done
 

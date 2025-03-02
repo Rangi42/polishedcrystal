@@ -124,8 +124,12 @@ ResetWRAM_NotPlus:
 
 ResetWRAM:
 	ld hl, wShadowOAM
-	ld bc, wOptions3 - wShadowOAM
+	ld bc, wMusic - wShadowOAM
 	xor a
+	rst ByteFill
+
+	ld hl, wMusicEnd
+	ld bc, wOptions3 - wMusicEnd
 	rst ByteFill
 
 	ld hl, wRAM1Start

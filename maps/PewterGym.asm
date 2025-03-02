@@ -35,25 +35,8 @@ PewterGymBrockScript:
 	setevent EVENT_BEAT_CAMPER_JERRY
 	setevent EVENT_BEAT_HIKER_EDWIN
 	opentext
-	writetext ReceivedBoulderBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_BOULDERBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge BOULDERBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
 	iftrue_jumpopenedtext BrockFightDoneText
@@ -137,11 +120,6 @@ BrockWinLossText:
 
 	para "Go ahead--take"
 	line "this Badge."
-	done
-
-ReceivedBoulderBadgeText:
-	text "<PLAYER> received"
-	line "the Boulder Badge."
 	done
 
 BrockBoulderBadgeText:

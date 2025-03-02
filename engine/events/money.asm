@@ -187,7 +187,7 @@ _GiveUpto50K:
 	ret
 
 .maxcoins ; also max battle points
-	bigdw 50000
+	bigdw MAX_COINS
 
 TakeBP::
 	ld de, wBattlePoints

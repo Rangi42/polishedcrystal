@@ -36,10 +36,7 @@ MahoganyGymPryceScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PRYCE
 	opentext
-	writetext Text_ReceivedGlacierBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_GLACIERBADGE
+	givebadge GLACIERBADGE, JOHTO_REGION
 	; Begin Team Rocket takeover of Radio Tower
 	setflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	setevent EVENT_GOLDENROD_CITY_CIVILIANS
@@ -185,11 +182,6 @@ PryceText_Impressed:
 
 	para "You are worthy of"
 	line "this Badge!"
-	done
-
-Text_ReceivedGlacierBadge:
-	text "<PLAYER> received"
-	line "the Glacier Badge."
 	done
 
 PryceText_GlacierBadgeSpeech:

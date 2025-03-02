@@ -342,7 +342,7 @@ CheckIfTrendyPhraseIsLucky:
 	ret
 
 .KeyPhrase:
-	db "Lucky@"
+	rawchar "Lucky@"
 
 RespawnOneOffs:
 	eventflagreset EVENT_BEAT_FLANNERY

@@ -92,25 +92,8 @@ SeafoamGymBlaineScript:
 	setevent EVENT_BEAT_SUPER_NERD_WALDO
 	setevent EVENT_BEAT_SUPER_NERD_MERLE
 	opentext
-	writetext ReceivedVolcanoBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_VOLCANOBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge VOLCANOBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
 	iftrue_jumpopenedtext BlaineFightDoneText
@@ -268,11 +251,6 @@ BlaineWinLossText:
 
 	para "You've earned the"
 	line "Volcano Badge!"
-	done
-
-ReceivedVolcanoBadgeText:
-	text "<PLAYER> received"
-	line "the Volcano Badge."
 	done
 
 BlaineAfterBattleText:

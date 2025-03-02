@@ -145,12 +145,8 @@ DragonShrineTestScript:
 	opentext
 	writetext DragonShrineHereRisingBadgeText
 	waitbutton
-	setflag ENGINE_RISINGBADGE
-	playsound SFX_GET_BADGE
-	writetext DragonShrinePlayerReceivedRisingBadgeText
-	waitsfx
+	givebadge RISINGBADGE, JOHTO_REGION
 	special RestartMapMusic
-	promptbutton
 	specialphonecall SPECIALCALL_MASTERBALL
 	setscene $1
 	setmapscene DRAGONS_DEN_B1F, $1
@@ -552,11 +548,6 @@ DragonShrineHereRisingBadgeText:
 	line "Rising Badge…"
 
 	para "Hurry up! Take it!"
-	done
-
-DragonShrinePlayerReceivedRisingBadgeText:
-	text "<PLAYER> received"
-	line "the Rising Badge."
 	done
 
 DragonShrineRisingBadgeExplanationText:

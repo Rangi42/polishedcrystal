@@ -10,6 +10,7 @@ NamesPointers::
 	dba KeyItemNames
 	dba ExpCandyNames
 	dba SpecialItemNames
+	dba BadgeNames
 
 GetName::
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
@@ -165,6 +166,13 @@ GetKeyItemName::
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, KEY_ITEM_NAME
+	jr PutNameInBufferAndGetName
+
+GetBadgeName::
+; Get badge name wNamedObjectIndex
+	ld a, [wNamedObjectIndex]
+	ld [wCurSpecies], a
+	ld a, BADGE_NAME
 	jr PutNameInBufferAndGetName
 
 GetApricornName::

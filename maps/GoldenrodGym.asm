@@ -56,10 +56,7 @@ GoldenrodGymWhitneyScript:
 	writetext WhitneyWhatDoYouWantText
 	promptbutton
 	waitsfx
-	writetext PlayerReceivedPlainBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_PLAINBADGE
+	givebadge PLAINBADGE, JOHTO_REGION
 .GotPlainBadge:
 	writetext WhitneyPlainBadgeText
 	promptbutton
@@ -228,11 +225,6 @@ WhitneyWhatDoYouWantText:
 	para "Oh, right."
 	line "I forgot. Here's"
 	cont "the Plain Badge."
-	done
-
-PlayerReceivedPlainBadgeText:
-	text "<PLAYER> received"
-	line "the Plain Badge."
 	done
 
 WhitneyPlainBadgeText:

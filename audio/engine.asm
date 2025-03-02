@@ -64,7 +64,7 @@ MusicFadeRestart:
 	ret
 
 MusicOn:
-	ld a, 1
+	ld a, TRUE
 	ld [wMusicPlaying], a
 	ret
 

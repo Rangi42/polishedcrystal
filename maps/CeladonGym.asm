@@ -41,25 +41,8 @@ CeladonGymErikaScript:
 	setevent EVENT_BEAT_AROMA_LADY_DAHLIA
 	setevent EVENT_BEAT_TWINS_JO_AND_ZOE
 	opentext
-	writetext PlayerReceivedRainbowBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_RAINBOWBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge RAINBOWBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
 	iftrue_jumpopenedtext ErikaAfterBattleText
@@ -166,11 +149,6 @@ ErikaBeatenText:
 
 	para "I shall give you"
 	line "the Rainbow Badge…"
-	done
-
-PlayerReceivedRainbowBadgeText:
-	text "<PLAYER> received"
-	line "the Rainbow Badge."
 	done
 
 ErikaExplainTMText:

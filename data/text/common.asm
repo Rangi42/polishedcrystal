@@ -2283,9 +2283,17 @@ _GotTheItemText:
 	text "<PLAYER> got"
 	line "the "
 	text_ram wStringBuffer4
-	text "!"
+	text "."
 	done
-	
+
+SECTION "_ReceivedTheBadgeText", ROMX
+_ReceivedTheBadgeText:
+	text "<PLAYER> received"
+	line "the "
+	text_ram wStringBuffer4
+	text " Badge."
+	done
+
 SECTION "WhiteoutText", ROMX
 WhiteoutText::
 	text "<PLAYER> is out of"

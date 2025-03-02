@@ -1390,4 +1390,10 @@ MACRO givespecialitem
 	db \1 ; key item
 ENDM
 
+	const givebadge_command
+MACRO givebadge
+	db givebadge_command
+	dn \2, \1 ; region, badge
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

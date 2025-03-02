@@ -48,25 +48,8 @@ FuchsiaGymJanineScript:
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_SCHOOLBOY
 	special RefreshSprites
 	opentext
-	writetext Text_ReceivedSoulBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_MARSHBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .AfterBattle
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .AfterBattle
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .AfterBattle
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .AfterBattle
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge MARSHBADGE, KANTO_REGION
+	callstd kantopostgymevents
 	sjumpfwd .AfterBattle
 .FightDone:
 	faceplayer
@@ -242,15 +225,6 @@ else
 	para "Here's the Marsh"
 endc
 	line "Badge. Take it."
-	done
-
-Text_ReceivedSoulBadge:
-	text "<PLAYER> received"
-if DEF(FAITHFUL)
-	line "the Soul Badge."
-else
-	line "the Marsh Badge."
-endc
 	done
 
 JanineText_ToxicSpeech:

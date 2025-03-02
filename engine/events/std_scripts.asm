@@ -55,6 +55,7 @@ StdScripts::
 	dw VendingMachineScript
 	dw TreeGrottoScript
 	dw CaveGrottoScript
+	dw KantoPostGymEventsScript
 
 PokeCenterNurseScript:
 	opentext
@@ -1764,3 +1765,25 @@ _HiddenGrottoBackupMap:
 	ld a, [wMapNumber]
 	ld [wBackupMapNumber], a
 	ret
+
+KantoPostGymEventsScript:
+	readvar VAR_BADGES
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
+	end
+
+.FirstBadge:
+	specialphonecall SPECIALCALL_FIRSTBADGE
+	end
+
+.SecondBadge:
+	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
+	iftruefwd .Done
+	specialphonecall SPECIALCALL_SECONDBADGE
+.Done:
+	end
+
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
+	end
