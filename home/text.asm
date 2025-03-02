@@ -476,11 +476,7 @@ DoTextUntilTerminator::
 	and a
 	ret nz
 	ld a, [hli]
-	cp "@"
-	ret z
-	cp "<DONE>"
-	ret z
-	cp "<PROMPT>"
+	call CheckTerminatorChar
 	ret z
 	call .TextCommand
 	jr .loop
@@ -702,33 +698,8 @@ DecompressString::
 
 	push de ; push current coords
 
-	xor a ; start at node $00
-.tree_loop
-	; "c = [hli]" when b reaches 0, then carry = next bit from c
-	dec b
-	jr nz, .no_reload
-	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
-	inc hl
-	ld b, 8
-.no_reload
-	sla c
-	; de = TextCompressionHuffmanTree[node=a][branch=carry]
-	adc a
-	add LOW(TextCompressionHuffmanTree)
-	ld e, a
-	adc HIGH(TextCompressionHuffmanTree)
-	sub e
-	ld d, a
-	; keep traversing the tree until a leaf node ($7f and above)
-	ld a, [de]
-	cp $7f
-	jr c, .tree_loop
+	call ReadHuffmanChar
 
-	; leaf node IDs $ec-$fb correspond to characters $4d-$5c
-	cp $ec
-	jr c, .got_char
-	sub $ec - $4d
-.got_char
 	; buffer character for printing
 	ldh [hCompressedTextBuffer], a
 
@@ -801,4 +772,81 @@ DecompressString::
 	ld l, a
 	ldh a, [hPlaceStringCoords+1]
 	ld h, a
+	ret
+
+DecompressStringToRAM::
+; input: hl = string, de = destination
+
+	ld a, [hl]
+	cp "<CTXT>"
+	jr nz, .copy_loop
+
+	inc hl ; skip "<CTXT>"
+
+	ld b, 1 ; start with no bits to read a byte right away
+.character_loop
+
+	push de
+	call ReadHuffmanChar
+	pop de
+	; check for characters that signal end of compression
+	; (same ones that finish PlaceString)
+	call CheckTerminatorChar
+	jr z, .append_terminator
+
+	; Store decompressed char to WRAM and advance
+	ld [de], a
+	inc de
+	jr .character_loop
+
+.copy_loop
+	ld a, [hli]
+	call CheckTerminatorChar
+	jr z, .append_terminator
+	ld [de], a
+	inc de
+	jr .copy_loop
+
+.append_terminator
+	ld [de], a
+	ret
+
+ReadHuffmanChar:
+	assert ROOT_NODE_ID == $00
+	xor a
+.tree_loop
+	; "c = [hli]" when b reaches 0, then carry = next bit from c
+	dec b
+	jr nz, .no_reload
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
+	inc hl
+	ld b, 8
+.no_reload
+	sla c
+	; de = TextCompressionHuffmanTree[node=a][branch=carry]
+	adc a
+	add LOW(TextCompressionHuffmanTree)
+	ld e, a
+	adc HIGH(TextCompressionHuffmanTree)
+	sub e
+	ld d, a
+	; keep traversing the tree until a leaf node
+	ld a, [de]
+	cp FIRST_LEAF_NODE_ID
+	jr c, .tree_loop
+
+	; shifted leaf node IDs correspond to lesser characters
+	; (since node IDs below the first leaf node ID must be parent nodes)
+	cp FIRST_SHIFTED_LEAF_NODE_ID
+	ret c
+	sub FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
+	ret
+
+CheckTerminatorChar:
+; check for a character that terminates `_dchr` Huffman compression
+	cp "@"
+	ret z
+	cp "<DONE>"
+	ret z
+	cp "<PROMPT>"
 	ret
