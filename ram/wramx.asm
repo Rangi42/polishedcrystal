@@ -544,7 +544,7 @@ wTilesetGFX0Address:: dw
 wTilesetGFX1Bank:: db
 wTilesetGFX1Address:: dw
 wTilesetGFX2Bank:: db
-wTilesetGFX2Address:: dw ; BANK("Tileset GFX2 Data")
+wTilesetGFX2Address:: dw
 wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
 
