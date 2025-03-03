@@ -157,11 +157,11 @@ wTempTrainerClass:: db
 wTempTrainerID:: db
 wSeenTextPointer:: dw
 wWinTextPointer:: dw
-wTrainerPal:: db
 wGenericTempTrainerHeaderEnd::
 wLossTextPointer:: dw
 wScriptAfterPointer:: dw
 wRunningTrainerBattleScript:: db
+wTrainerPal:: db
 wTempTrainerEnd::
 	ds 1
 wStashedTextPointer:: dw
