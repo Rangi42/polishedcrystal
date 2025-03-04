@@ -1192,16 +1192,6 @@ RevivalHerb:
 	predef ChangeHappiness
 	jmp LooksBitterMessage
 
-ReviveEffect:
-	ld b, PARTYMENUACTION_HEALING_ITEM
-	call UseItem_SelectMon
-	jmp c, ItemNotUsed_ExitMenu
-
-	call RevivePokemon
-	and a
-	jmp nz, WontHaveAnyEffectMessage
-	ret
-
 RevivePokemon:
 	call IsMonFainted
 	ld a, 1
@@ -1348,6 +1338,10 @@ WingCase:
 CandyJar:
 	call FixPlayerEVsAndStats
 	ld hl, CandyJar_MonSelected
+	jr UseItem_SelectMon_Loop
+
+ReviveEffect:
+	ld hl, RevivePokemon
 	jr UseItem_SelectMon_Loop
 
 RestoreHPEffect:
