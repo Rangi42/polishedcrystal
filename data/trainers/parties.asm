@@ -10660,7 +10660,7 @@ BuckGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	; TODO: movesets, etc
-	dbp 65, UMBREON
+	dbp 65, CLOYSTER
 	dbp 64, GOLEM
 	dbp 62, POLIWRATH
 	dbp 63, FORRETRESS
@@ -10690,7 +10690,7 @@ MarleyGroup:
 	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 8, ARCANINE
+	dbp LEVEL_FROM_BADGES + 8, AERODACTYL
 		ev_spread 240 Spe ; maybe 252 since these are "stat trainers"?
 	dbp LEVEL_FROM_BADGES + 6, RAICHU
 		ev_spread 240 Spe
@@ -10707,7 +10707,7 @@ MarleyGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	; TODO: movesets, etc
-	dbp 60, ARCANINE
+	dbp 60, NINETALES, ALOLAN_FORM
 	dbp 59, PIDGEOT
 	dbp 58, RAICHU
 	dbp 56, CROBAT
@@ -10720,7 +10720,7 @@ MarleyGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	; TODO: movesets, etc
-	dbp 75, ARCANINE
+	dbp 75, NINETALES, ALOLAN_FORM
 	dbp 74, PIDGEOT
 	dbp 73, RAICHU
 	dbp 71, CROBAT
@@ -10737,7 +10737,7 @@ MiraGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	; TODO: movesets, etc
-	dbp 58, TOGEKISS
+	dbp 58, GENGAR
 	dbp 57, ALAKAZAM
 	dbp 56, MAGMORTAR
 	dbp 55, VILEPLUME
@@ -10767,9 +10767,9 @@ AnabelGroup:
 	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp 30, ESPEON
+	dbp 30, UMBREON
 		ev_spread 136 SDf
-	dbp 28, SNORLAX
+	dbp 28, MISDREAVUS
 		ev_spread 136 SDf
 	dbp 29, SLOWKING
 		ev_spread 136 SDf
@@ -10777,7 +10777,7 @@ AnabelGroup:
 		ev_spread 136 SDf
 	dbp 28, POLITOED
 		ev_spread 136 SDf
-	dbp 29, ALAKAZAM
+	dbp 29, MR__MIME
 		ev_spread 136 SDf
 	db -1 ; end
 
@@ -10786,7 +10786,7 @@ AnabelGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	; TODO: movesets, etc
-	dbp 74, SNORLAX
+	dbp 74, UMBREON
 	dbp 75, SLOWKING
 	dbp 73, BLASTOISE
 	dbp 71, BELLOSSOM
