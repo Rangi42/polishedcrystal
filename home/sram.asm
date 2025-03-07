@@ -15,7 +15,7 @@ GetSRAMBank::
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
 
- 	; verify integrity of sram
+	; verify integrity of sram
 	; if wSRAMAccessCount != sSRAMAccessCount + 1,
 	; crash the game
 	ld a, BANK(sSRAMAccessCount)
