@@ -216,7 +216,7 @@ endc
 	move REST,            EFFECT_HEAL,                0, PSYCHIC,    -1, 5,    0, STATUS
 	move ROCK_SLIDE,      EFFECT_FLINCH_HIT,         75, ROCK,       90, 10,  30, PHYSICAL
 	move HYPER_FANG,      EFFECT_FLINCH_HIT,         80, NORMAL,     90, 15,  10, PHYSICAL
-	move BULK_UP,         EFFECT_BULK_UP,             0, FIGHTING,  100, 20,   0, STATUS
+	move BULK_UP,         EFFECT_BULK_UP,             0, FIGHTING,   -1, 20,   0, STATUS
 	move CONVERSION,      EFFECT_CONVERSION,          0, NORMAL,     -1, 30,   0, STATUS
 	move TRI_ATTACK,      EFFECT_TRI_ATTACK,         80, NORMAL,    100, 10,  20, SPECIAL
 	move SUPER_FANG,      EFFECT_SUPER_FANG,          1, NORMAL,     90, 10,   0, PHYSICAL
@@ -276,7 +276,7 @@ endc
 	move MEAN_LOOK,       EFFECT_MEAN_LOOK,           0, NORMAL,     -1,  5,   0, STATUS
 	move ATTRACT,         EFFECT_ATTRACT,             0, NORMAL,    100, 15,   0, STATUS
 	move SLEEP_TALK,      EFFECT_SLEEP_TALK,          0, NORMAL,    100, 10,   0, STATUS
-	move HEAL_BELL,       EFFECT_HEAL_BELL,           0, NORMAL,    100,  5,   0, STATUS
+	move HEAL_BELL,       EFFECT_HEAL_BELL,           0, NORMAL,     -1,  5,   0, STATUS
 	move RETURN,          EFFECT_RETURN,              1, NORMAL,    100, 20,   0, PHYSICAL
 	move PSYSTRIKE,       EFFECT_PSYSTRIKE,         100, PSYCHIC,   100, 10,   0, SPECIAL
 	move BUG_BUZZ,        EFFECT_SP_DEF_DOWN_HIT,    90, BUG,       100, 10,  10, SPECIAL
