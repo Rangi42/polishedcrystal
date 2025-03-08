@@ -304,7 +304,7 @@ EvosAttacksPointers::
 	dw DudunsparceEvosAttacks
 
 	dw RattataAlolanEvosAttacks
-	dw RaticateAlolanEvosAttacks
+	dw RaticatePlainEvosAttacks ; RaticateAlolan
 	dw RaichuAlolanEvosAttacks
 	dw SandshrewAlolanEvosAttacks
 	dw SandslashAlolanEvosAttacks
