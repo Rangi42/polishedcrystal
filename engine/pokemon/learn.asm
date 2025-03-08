@@ -116,11 +116,18 @@ LearnMove:
 	jr nz, .done_pikachu
 	ld a, [wPutativeTMHMMove]
 	ld b, PIKACHU_FLY_FORM
-	cp FLY
+	push hl
+	call GetMoveIndexFromID
+	cphl FLY
+	pop hl
 	jr z, .got_form
 	assert PIKACHU_FLY_FORM + 1 == PIKACHU_SURF_FORM
 	inc b
-	cp SURF
+	ld a, [wPutativeTMHMMove]
+	push hl
+	call GetMoveIndexFromID
+	cphl SURF
+	pop hl
 	jr nz, .done_pikachu
 .got_form
 	ld a, [hl]

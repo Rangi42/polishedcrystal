@@ -156,9 +156,14 @@ MoveDeletion:
 	and EXTSPECIES_MASK
 	ret nz
 	ld a, [wMoveScreenSelectedMove]
-	cp FLY
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	cpbc FLY
 	jr z, .reset_pikachu_form
-	cp SURF
+	cpbc SURF
 	ret nz
 .reset_pikachu_form
 	ld a, [hl]

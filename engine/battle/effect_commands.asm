@@ -1042,7 +1042,8 @@ IgnoreSleepOnly:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
-	xor SLEEP_TALK
+	call GetMoveIndexFromID
+	cphl SLEEP_TALK
 	ret nz
 
 	ld a, BATTLE_VARS_STATUS
@@ -1764,7 +1765,8 @@ INCLUDE "data/moves/powder_moves.asm"
 BattleCommand_checkpowder:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp SING
+	call GetMoveIndexFromID
+	cphl SING
 	jr nz, .not_sing
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]
@@ -1774,23 +1776,24 @@ BattleCommand_checkpowder:
 	ret
 
 .not_sing
-	cp THUNDER_WAVE
+	cphl THUNDER_WAVE
 	jr z, BattleCommand_resettypematchup
-	cp TOXIC
+	cphl TOXIC
 	jr z, .check_corrosion
-	cp POISONPOWDER
+	cphl POISONPOWDER
 	jr nz, .powder
 .check_corrosion
+	call GetMoveIDFromIndex
 	ld b, a
 	call GetTrueUserAbility
 	cp CORROSION
 	ret z
 	ld a, b
-	cp TOXIC
+	call GetMoveIndexFromID
+	cphl TOXIC
 	jr z, BattleCommand_resettypematchup
 	; fallthrough for poisonpowder
 .powder
-	call GetMoveIndexFromID
 	ld b, h
 	ld c, l
 	ld hl, PowderMoves
@@ -2106,7 +2109,8 @@ BattleCommand_checkhit:
 	jr z, .not_blocked
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp SWAGGER
+	call GetMoveIndexFromID
+	cphl SWAGGER
 	jr z, .blocked
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -2144,7 +2148,8 @@ BattleCommand_checkhit:
 	ret nz
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp TOXIC
+	call GetMoveIndexFromID
+	cphl TOXIC
 	ret
 
 .PursuitCheck:
@@ -2208,17 +2213,19 @@ BattleCommand_checkhit:
 .RainAccCheck:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
 
-	cp THUNDER
+	cphl THUNDER
 	ret z
-	cp HURRICANE
+	cphl HURRICANE
 	ret
 
 .HailAccCheck:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	call GetMoveIndexFromID
 
-	cp BLIZZARD
+	cphl BLIZZARD
 	ret
 
 .NoGuardCheck:
@@ -2238,9 +2245,10 @@ BattleCommand_checkhit:
 	jr z, .no_minimize
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp BODY_SLAM
+	call GetMoveIndexFromID
+	cphl BODY_SLAM
 	ret z
-	cp STOMP
+	cphl STOMP
 	ret z
 .no_minimize
 	or 1
@@ -5096,7 +5104,8 @@ SapHealth:
 	; for Drain Kiss, we want 75% drain instead of 50%
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp DRAINING_KISS
+	call GetMoveIndexFromID
+	cphl DRAINING_KISS
 	jr nz, .skip_draining_kiss
 	ld h, b
 	ld l, c
@@ -6015,9 +6024,10 @@ BattleCommand_recoil:
 	ret z
 
 	ld a, b
-	cp DOUBLE_EDGE
+	call GetMoveIndexFromID
+	cphl DOUBLE_EDGE
 	jr z, .OneThirdRecoil
-	cp FLARE_BLITZ
+	cphl FLARE_BLITZ
 	jr z, .OneThirdRecoil
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -6859,23 +6869,19 @@ AppearUserRaiseSub:
 
 CheckBattleAnimSubstitution:
 ; Checks the animation ID and possibly change it based on species.
-	assert !HIGH(NUM_ATTACKS), "This function is now obsolete."
-
-	; Moves are 1-255.
 	ld a, [wFXAnimIDHi]
-	and a
-	ret nz
-
+	ld b, a
 	ld a, [wFXAnimIDLo]
-	cp FRESH_SNACK
+	ld c, a
+	cpbc FRESH_SNACK
 	ld de, ANIM_MILK_DRINK
 	ld hl, .MilkDrinkUsers
 	jr z, .check_species_list
-	cp FURY_STRIKES
+	cpbc FURY_STRIKES
 	ld de, ANIM_FURY_ATTACK
 	ld hl, FuryAttackUsers
 	jr z, .check_species_list
-	cp DEFENSE_CURL
+	cpbc DEFENSE_CURL
 	ret nz
 
 	; Defense Curl has 3 variations

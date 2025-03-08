@@ -433,10 +433,12 @@ ForewarnAbility:
 	pop bc
 	jr nc, .not_special
 	; Counter/Mirror Coat are regarded as 160BP moves, everything else as 80BP
+	ld a, b
+	call GetMoveIndexFromID
 	ld c, 160
-	cp COUNTER
+	cphl COUNTER
 	jr z, .compare_power
-	cp MIRROR_COAT
+	cphl MIRROR_COAT
 	jr z, .compare_power
 	ld c, 80
 	jr .compare_power

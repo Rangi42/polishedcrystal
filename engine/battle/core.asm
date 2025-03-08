@@ -708,7 +708,8 @@ PerformMove:
 	res SUBSTATUS_IN_ABILITY, [hl]
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp DESTINY_BOND
+	call GetMoveIndexFromID
+	cphl DESTINY_BOND
 	jr z, .skip_destinybond_reset
 	res SUBSTATUS_DESTINY_BOND, [hl]
 .skip_destinybond_reset

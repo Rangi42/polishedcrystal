@@ -54,7 +54,8 @@ CheckUniqueWildMove:
 	cp PLAYER_SURF_PIKA
 	jr nz, .ChanceToTeach
 .SurfingPikachu
-	ld a, SURF
+	ld hl, SURF
+	call GetMoveIDFromIndex
 	ld b, a
 	jr .TeachMove
 .ChanceToTeach
@@ -80,9 +81,10 @@ CheckUniqueWildMove:
 	ld [hl], a
 
 	; assume only Pikachu can learn Surf or Fly
-	cp SURF
+	call GetMoveIndexFromID
+	cphl SURF
 	jr z, .UseSurfingPikachu
-	cp FLY
+	cphl FLY
 	ld a, PIKACHU_FLY_FORM
 	jr z, .UseFlyingPikachu
 	ret
@@ -93,7 +95,7 @@ CheckUniqueWildMove:
 	inc hl
 .inc1andloop
 	inc hl
-	jr .loop
+	jmp .loop
 
 .UseSurfingPikachu
 	ld a, PIKACHU_SURF_FORM
