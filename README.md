@@ -24,7 +24,7 @@ The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcr
 
 Below is a brief summary of the major changes and additions. A more detailed changelog will be released soon.
 
-- **Customizable New Game Setup:** You can now toggle Natures on/off, choose how EVs work (classic no-limit, modern 510 limit, or disabled), and configure various other gameplay options before starting a new adventure.
+- **Customizable New Game Setup:** You can now toggle Natures and Abilities on/off, choose how EVs work (classic no-limit, modern 510 limit, or disabled), and configure various other gameplay options before starting a new adventure.
 - **DVs No Longer Determine Natures/Shininess/Gender/Unown Form:** DVs still affect color variation (slightly different hues for the same species), but everything else is now handled separately.
 - **Overhauled Battle Engine and HUD:**
   - Abilities are now supported.
@@ -40,8 +40,8 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 
 A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 
-- **289 Pokémon species**, including some new evolutions, plus **56 cosmetic forms** (e.g., Magikarp patterns, Pikachu Fly/Surf, Arbok patterns, Unown Forms) and **46 variants** (Alolan, Galarian, Hisuian, misc.)—for a total of **391 unique Pokémon**.
-- **48 new moves**, **75 TMs**, and **31 move tutors**.
+- **289 Pokémon species**, including some new evolutions, plus **56 cosmetic forms** (e.g., Magikarp patterns, Pikachu Fly/Surf, Arbok patterns, Unown Forms) and **46 variants** (Alolan, Galarian, Hisuian, etc.)—for a total of **391 unique Pokémon**.
+- **73 new moves** (72 on faithful builds), **75 TMs**, and **31 move tutors**.
 - Modern mechanics, such as the **Fairy type**, **Physical/Special split**, **Natures**, **Abilities**, and more.
 - **Unlimited TMs** and quality-of-life features like **Running Shoes** and continuous **Repel**.
 - **New/Revamped Maps**: Some from R/B/Y, some devamped from HG/SS, plus original locations.
