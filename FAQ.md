@@ -67,7 +67,7 @@ Conversely, the following emulators are known to have issues and **should not be
 * VBA-M - despite being actively updated, still is an extremely inaccurate emulator, use mGBA instead
 
 #### iOS:
-* Delta - despite using the fairly accurate Gambatte core, this emulator has reported issues that haven't been reproduced on any other emulator, and since SameBoy is also on iOS using this emulator is discouraged
+* Delta - despite using the fairly accurate Gambatte core, this emulator has reported issues that haven't been reproduced on any other emulator. Until there is more clarity on the issue, we encourage using SameBoy instead
 
 #### Other:
 * Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
