@@ -304,7 +304,7 @@ EvosAttacksPointers::
 	dw DudunsparceEvosAttacks
 
 	dw RattataAlolanEvosAttacks
-	dw RaticatePlainEvosAttacks ; Uses same learnset as raticate plain
+	dw RaticatePlainEvosAttacks ; RaticateAlolan
 	dw RaichuAlolanEvosAttacks
 	dw SandshrewAlolanEvosAttacks
 	dw SandslashAlolanEvosAttacks
