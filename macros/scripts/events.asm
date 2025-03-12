@@ -1066,14 +1066,6 @@ MACRO gettrainerclassname
 	db \2 ; memory
 ENDM
 
-	const getname_command
-MACRO getname
-	db getname_command
-	db \1 ; type
-	db \2 ; id
-	db \3 ; memory
-ENDM
-
 	const wait_command
 MACRO wait
 	db wait_command

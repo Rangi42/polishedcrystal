@@ -220,60 +220,59 @@ ScriptCommandTable:
 	dw Script_battletowertext            ; a1
 	dw Script_getlandmarkname            ; a2
 	dw Script_gettrainerclassname        ; a3
-	dw Script_getname                    ; a4
-	dw Script_wait                       ; a5
-	dw Script_checksave                  ; a6
-	dw Script_trainerpic                 ; a7
-	dw Script_givetmhm                   ; a8
-	dw Script_checktmhm                  ; a9
-	dw Script_verbosegivetmhm            ; aa
-	dw Script_tmhmnotify                 ; ab
-	dw Script_gettmhmname                ; ac
-	dw Script_checkdarkness              ; ad
-	dw Script_checkunits                 ; ae
-	dw Script_unowntypeface              ; af
-	dw Script_restoretypeface            ; b0
-	dw Script_jumpstashedtext            ; b1
-	dw Script_jumpopenedtext             ; b2
-	dw Script_iftrue_jumptext            ; b3
-	dw Script_iffalse_jumptext           ; b4
-	dw Script_iftrue_jumptextfaceplayer  ; b5
-	dw Script_iffalse_jumptextfaceplayer ; b6
-	dw Script_iftrue_jumpopenedtext      ; b7
-	dw Script_iffalse_jumpopenedtext     ; b8
-	dw Script_writethistext              ; b9
-	dw Script_jumpthistext               ; ba
-	dw Script_jumpthistextfaceplayer     ; bb
-	dw Script_jumpthisopenedtext         ; bc
-	dw Script_showtext                   ; bd
-	dw Script_showtextfaceplayer         ; be
-	dw Script_applyonemovement           ; bf
-	dw Script_showcrytext                ; c0
-	dw Script_endtext                    ; c1
-	dw Script_waitendtext                ; c2
-	dw Script_iftrue_endtext             ; c3
-	dw Script_iffalse_endtext            ; c4
-	dw Script_loadgrottomon              ; c5
-	dw Script_giveapricorn               ; c6
-	dw Script_paintingpic                ; c7
-	dw Script_checkegg                   ; c8
-	dw Script_givekeyitem                ; c9
-	dw Script_checkkeyitem               ; ca
-	dw Script_takekeyitem                ; cb
-	dw Script_verbosegivekeyitem         ; cc
-	dw Script_keyitemnotify              ; cd
-	dw Script_givebp                     ; ce
-	dw Script_takebp                     ; cf
-	dw Script_checkbp                    ; d0
-	dw Script_sjumpfwd                   ; d1
-	dw Script_ifequalfwd                 ; d2
-	dw Script_iffalsefwd                 ; d3
-	dw Script_iftruefwd                  ; d4
-	dw Script_scalltable                 ; d5
-	dw Script_setmapobjectmovedata       ; d6
-	dw Script_setmapobjectpal            ; d7
-	dw Script_givespecialitem            ; d8
-	dw Script_givebadge                  ; d9
+	dw Script_wait                       ; a4
+	dw Script_checksave                  ; a5
+	dw Script_trainerpic                 ; a6
+	dw Script_givetmhm                   ; a7
+	dw Script_checktmhm                  ; a8
+	dw Script_verbosegivetmhm            ; a9
+	dw Script_tmhmnotify                 ; aa
+	dw Script_gettmhmname                ; ab
+	dw Script_checkdarkness              ; ac
+	dw Script_checkunits                 ; ad
+	dw Script_unowntypeface              ; ae
+	dw Script_restoretypeface            ; af
+	dw Script_jumpstashedtext            ; b0
+	dw Script_jumpopenedtext             ; b1
+	dw Script_iftrue_jumptext            ; b2
+	dw Script_iffalse_jumptext           ; b3
+	dw Script_iftrue_jumptextfaceplayer  ; b4
+	dw Script_iffalse_jumptextfaceplayer ; b5
+	dw Script_iftrue_jumpopenedtext      ; b6
+	dw Script_iffalse_jumpopenedtext     ; b7
+	dw Script_writethistext              ; b8
+	dw Script_jumpthistext               ; b9
+	dw Script_jumpthistextfaceplayer     ; ba
+	dw Script_jumpthisopenedtext         ; bb
+	dw Script_showtext                   ; bc
+	dw Script_showtextfaceplayer         ; bd
+	dw Script_applyonemovement           ; be
+	dw Script_showcrytext                ; bf
+	dw Script_endtext                    ; c0
+	dw Script_waitendtext                ; c1
+	dw Script_iftrue_endtext             ; c2
+	dw Script_iffalse_endtext            ; c3
+	dw Script_loadgrottomon              ; c4
+	dw Script_giveapricorn               ; c5
+	dw Script_paintingpic                ; c6
+	dw Script_checkegg                   ; c7
+	dw Script_givekeyitem                ; c8
+	dw Script_checkkeyitem               ; c9
+	dw Script_takekeyitem                ; ca
+	dw Script_verbosegivekeyitem         ; cb
+	dw Script_keyitemnotify              ; cc
+	dw Script_givebp                     ; cd
+	dw Script_takebp                     ; ce
+	dw Script_checkbp                    ; cf
+	dw Script_sjumpfwd                   ; d0
+	dw Script_ifequalfwd                 ; d1
+	dw Script_iffalsefwd                 ; d2
+	dw Script_iftruefwd                  ; d3
+	dw Script_scalltable                 ; d4
+	dw Script_setmapobjectmovedata       ; d5
+	dw Script_setmapobjectpal            ; d6
+	dw Script_givespecialitem            ; d7
+	dw Script_givebadge                  ; d8
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -579,8 +578,7 @@ Script_battletowertext:
 
 Script_verbosegiveitem:
 	call Script_giveitem
-	call CurItemName
-	ld de, wStringBuffer1
+	call GetCurItemName
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveItemScript)
@@ -618,8 +616,7 @@ Script_verbosegiveitemvar:
 	sbc a
 	and TRUE
 	ldh [hScriptVar], a
-	call CurItemName
-	ld de, wStringBuffer1
+	call GetCurItemName
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveItemScript)
@@ -628,7 +625,7 @@ Script_verbosegiveitemvar:
 
 Script_itemnotify:
 	call GetPocketName
-	call CurItemName
+	call GetCurItemName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
 	call MapTextbox
@@ -638,7 +635,7 @@ Script_itemnotify:
 
 Script_pocketisfull:
 	call GetPocketName
-	call CurItemName
+	call GetCurItemName
 	ld b, BANK(_PocketIsFullText)
 	ld hl, _PocketIsFullText
 	jmp MapTextbox
@@ -683,16 +680,6 @@ CopySpecialPocketName:
 
 TMHMPocketName:
 	db "TM Pocket@"
-
-CurItemName:
-	ld a, [wCurItem]
-	ld [wNamedObjectIndex], a
-	jmp GetItemName
-
-CurTMHMName:
-	ld a, [wCurTMHM]
-	ld [wNamedObjectIndex], a
-	jmp GetTMHMName
 
 Script_pokemart:
 	call Script_faceplayer
@@ -1654,7 +1641,6 @@ Script_getmonname:
 	ld [hli], a
 	ld [hl], d
 	call GetPokemonName
-	ld de, wStringBuffer1
 
 ConvertMemToText:
 	call GetScriptByte
@@ -1677,7 +1663,6 @@ Script_getitemname:
 .ok
 	ld [wNamedObjectIndex], a
 	call GetItemName
-	ld de, wStringBuffer1
 	jr ConvertMemToText
 
 Script_getcurlandmarkname:
@@ -1706,22 +1691,11 @@ Script_gettrainername:
 	farcall GetTrainerName
 	jr ConvertMemToText
 
-Script_getname:
-	call GetScriptByte
-	ld [wNamedObjectTypeBuffer], a
-	; fallthrough
-
-ContinueToGetName:
-	call GetScriptByte
-	ld [wCurSpecies], a
-	call GetName
-	ld de, wStringBuffer1
-	jr ConvertMemToText
-
 Script_gettrainerclassname:
-	ld a, TRAINER_NAME
-	ld [wNamedObjectTypeBuffer], a
-	jr ContinueToGetName
+	call GetScriptByte
+	ld [wNamedObjectIndex], a
+	call GetTrainerClassName
+	jr ConvertMemToText
 
 Script_getmoney:
 	call ResetStringBuffer1
@@ -2407,7 +2381,7 @@ Script_checktmhm:
 
 Script_verbosegivetmhm:
 	call Script_givetmhm
-	call CurTMHMName
+	call GetCurTMHMName
 	ld de, wStringBuffer1
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
@@ -2430,7 +2404,7 @@ GiveTMHMScript:
 
 Script_tmhmnotify:
 	call GetTMHMPocketName
-	call CurTMHMName
+	call GetCurTMHMName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
 	call MapTextbox
@@ -2605,7 +2579,6 @@ Script_takekeyitem:
 Script_verbosegivekeyitem:
 	call Script_givekeyitem
 	call GetCurKeyItemName
-	ld de, wStringBuffer1
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveKeyItemScript)
@@ -2665,7 +2638,6 @@ Script_givespecialitem:
 	ld [wNamedObjectIndex], a
 	ld [wCurSpecialItem], a
 	call GetSpecialItemName
-	ld de, wStringBuffer1
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveSpecialItemScript)
@@ -2698,7 +2670,6 @@ Script_givebadge:
 	ld b, SET_FLAG
 	farcall EngineFlagAction
 	call GetBadgeName
-	ld de, wStringBuffer1
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveBadgeScript)

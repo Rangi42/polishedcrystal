@@ -63,11 +63,13 @@ NamingScreen:
 	call StackJumpTable
 
 .Jumptable:
+	table_width 2, .Jumptable
 	dw .Pokemon
 	dw .Player
 	dw .Rival
 	dw .TrendyPhrase
 	dw .Box
+	assert_table_length NUM_NAMING_SCREEN_TYPES
 
 .Pokemon:
 	ld a, [wCurPartySpecies]

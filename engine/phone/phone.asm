@@ -385,6 +385,7 @@ GetCallerName:
 	ld a, c
 	and a
 	jr z, .NotTrainer
+	ld [wNamedObjectIndex], a
 
 	call Phone_GetTrainerName
 	push hl
@@ -396,7 +397,7 @@ GetCallerName:
 	pop hl
 	ld de, SCREEN_WIDTH + 3
 	add hl, de
-	call Phone_GetTrainerClassName
+	call GetTrainerClassName
 	rst PlaceString
 	ret
 
@@ -515,14 +516,6 @@ Phone_GetTrainerName:
 	push hl
 	push bc
 	farcall GetTrainerName
-	pop bc
-	pop hl
-	ret
-
-Phone_GetTrainerClassName:
-	push hl
-	push bc
-	farcall GetTrainerClassName
 	pop bc
 	pop hl
 	ret

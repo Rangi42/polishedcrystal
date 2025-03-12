@@ -1,16 +1,17 @@
 NamesPointers::
+; entries correspond to *_NAME constants (see constants/text_constants.asm)
+	table_width 3
 	dba PokemonNames
-	dba MoveNames
-	dba ApricornNames
-	dba WingNames
-	dba ItemNames
-	dbw 0, wPartyMonOTs
-	dbw 0, wOTPartyMonOTs
 	dba TrainerClassNames
+	dba MoveNames
+	dba ItemNames
 	dba KeyItemNames
-	dba ExpCandyNames
 	dba SpecialItemNames
 	dba BadgeNames
+	dba ApricornNames
+	dba WingNames
+	dba ExpCandyNames
+	assert_table_length NUM_NAME_TYPES
 
 GetName::
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
@@ -111,7 +112,7 @@ GetPartyPokemonName::
 	ld a, [wCurForm]
 	ld [hl], a
 	pop hl
-	; fall-through
+	; fallthrough
 GetPokemonName::
 ; Get Pokemon name wNamedObjectIndex.
 	push hl
@@ -146,37 +147,45 @@ GetPokemonName::
 	pop hl
 	ret
 
+GetTrainerClassName::
+	ld a, [wNamedObjectIndex]
+	ld [wCurSpecies], a
+	ld a, TRAINER_CLASS_NAME
+	jr PutNameInBufferAndGetName
+
+GetMoveName::
+	ld a, [wNamedObjectIndex]
+	ld [wCurSpecies], a
+	ld a, MOVE_NAME
+	jr PutNameInBufferAndGetName
+
 GetCurItemName::
-; Get item name from item in CurItem
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
+	; fallthrough
 GetItemName::
-; Get item name wNamedObjectIndex.
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, ITEM_NAME
 	jr PutNameInBufferAndGetName
 
 GetCurKeyItemName::
-; Get item name from item in CurItem
 	ld a, [wCurKeyItem]
 	ld [wNamedObjectIndex], a
+	; fallthrough
 GetKeyItemName::
-; Get key item item name wNamedObjectIndex.
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, KEY_ITEM_NAME
 	jr PutNameInBufferAndGetName
 
 GetBadgeName::
-; Get badge name wNamedObjectIndex
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, BADGE_NAME
 	jr PutNameInBufferAndGetName
 
 GetApricornName::
-; Get apricorn name wNamedObjectIndex.
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, APRICORN_NAME
@@ -196,11 +205,11 @@ GetSpecialItemName::
 	jr PutNameInBufferAndGetName
 
 GetWingName::
-; Get wing name wNamedObjectIndex.
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, WING_NAME
 	; fallthrough
+
 PutNameInBufferAndGetName::
 	push hl
 	push bc
@@ -211,21 +220,10 @@ PutNameInBufferAndGetName::
 	pop hl
 	ret
 
+GetCurTMHMName::
+	ld a, [wCurTMHM]
+	ld [wNamedObjectIndex], a
+	; fallthrough
 GetTMHMName::
 	homecall _GetTMHMName
-	ret
-
-GetMoveName::
-	push hl
-
-	ld a, MOVE_NAME
-	ld [wNamedObjectTypeBuffer], a
-
-	ld a, [wNamedObjectIndex] ; move id
-	ld [wCurSpecies], a
-
-	call GetName
-	ld de, wStringBuffer1
-
-	pop hl
 	ret
