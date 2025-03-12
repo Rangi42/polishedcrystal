@@ -1,4 +1,4 @@
-NamesPointers::
+NamesPointers:
 ; entries correspond to *_NAME constants (see constants/text_constants.asm)
 	table_width 3
 	dba PokemonNames
@@ -13,7 +13,7 @@ NamesPointers::
 	dba ExpCandyNames
 	assert_table_length NUM_NAME_TYPES
 
-GetName::
+GetName:
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
 	ldh a, [hROMBank]
 	push hl
@@ -149,12 +149,14 @@ GetPokemonName::
 
 GetTrainerClassName::
 	ld a, [wNamedObjectIndex]
+	dec a
 	ld [wCurSpecies], a
 	ld a, TRAINER_CLASS_NAME
 	jr PutNameInBufferAndGetName
 
 GetMoveName::
 	ld a, [wNamedObjectIndex]
+	dec a
 	ld [wCurSpecies], a
 	ld a, MOVE_NAME
 	jr PutNameInBufferAndGetName
@@ -187,6 +189,7 @@ GetBadgeName::
 
 GetApricornName::
 	ld a, [wNamedObjectIndex]
+	dec a
 	ld [wCurSpecies], a
 	ld a, APRICORN_NAME
 	jr PutNameInBufferAndGetName

@@ -1,6 +1,5 @@
 MoveNames::
 	list_start
-	li "?"
 	li "Acrobatics"
 	li "Karate Chop"
 	li "DoubleSlap"
@@ -260,4 +259,4 @@ endc
 	li "Play Rough"
 	li "Disarm Voice"
 	li "Struggle"
-	assert_list_length NUM_ATTACKS + 1
+	assert_list_length NUM_ATTACKS
