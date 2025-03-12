@@ -2373,7 +2373,7 @@ CandyJar_MonSelected:
 	jmp WingCase_MonSelected.DisplayNthString
 
 .CandyNames:
-	list_start .CandyNames
+	list_start
 	li "XS"
 	li "S"
 	li "M"
@@ -2419,7 +2419,7 @@ CandyJar_MonSelected:
 	jmp PlaceWholeStringInBoxAtOnce
 
 .CandyExpAmounts:
-	table_width 2, .CandyExpAmounts
+	table_width 2
 	bigdw 100
 	bigdw 800
 	bigdw 3000
@@ -2534,7 +2534,7 @@ CalcCandies:
 	ret
 
 .CandyDivisionAmounts:
-	table_width 1, .CandyDivisionAmounts
+	table_width 1
 	db 800 / 100
 	db 3000 / 100
 	db 10000 / 100
