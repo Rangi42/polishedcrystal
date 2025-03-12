@@ -386,8 +386,11 @@ GetCallerName:
 	and a
 	jr z, .NotTrainer
 	ld [wNamedObjectIndex], a
-
-	call Phone_GetTrainerName
+	push hl
+	push bc
+	farcall GetTrainerName
+	pop bc
+	pop hl
 	push hl
 	push bc
 	rst PlaceString
@@ -432,41 +435,30 @@ Phone_NoSignal:
 	jr Phone_CallEnd
 
 HangUp::
-	call HangUp_Beep
-	call HangUp_Wait20Frames
+	ld hl, PhoneClickText
+	call PrintText
+	ld de, SFX_HANG_UP
+	call PlaySFX
+	call Phone_Wait20Frames
+	; fallthrough
 Phone_CallEnd:
-	call HangUp_BoopOn
-	call HangUp_Wait20Frames
-	call SpeechTextbox
-	call HangUp_Wait20Frames
-	call HangUp_BoopOn
-	call HangUp_Wait20Frames
-	call SpeechTextbox
-	call HangUp_Wait20Frames
-	call HangUp_BoopOn
-	call HangUp_Wait20Frames
+	call .BoopWaitTextWait
+	call .BoopWaitTextWait
+	; fallthrough
+.BoopWaitTextWait:
+	ld hl, PhoneEllipseText
+	call PrintText
+	call Phone_Wait20Frames
 	call SpeechTextbox
 	; fallthrough
-
-HangUp_Wait20Frames:
 Phone_Wait20Frames:
 	ld c, 20
 	call DelayFrames
 	jmp ApplyTilemap
 
-HangUp_Beep:
-	ld hl, PhoneClickText
-	call PrintText
-	ld de, SFX_HANG_UP
-	jmp PlaySFX
-
 PhoneClickText:
 	text_far _PhoneClickText
 	text_end
-
-HangUp_BoopOn:
-	ld hl, PhoneEllipseText
-	jmp PrintText
 
 PhoneEllipseText:
 	text_far _PhoneEllipseText
@@ -509,14 +501,6 @@ GetCallerTrainerClass:
 	ld a, [hli]
 	ld b, [hl]
 	ld c, a
-	pop hl
-	ret
-
-Phone_GetTrainerName:
-	push hl
-	push bc
-	farcall GetTrainerName
-	pop bc
 	pop hl
 	ret
 
