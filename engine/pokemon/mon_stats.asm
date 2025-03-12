@@ -1029,14 +1029,9 @@ ListMoves:
 	jr z, .no_more_moves
 	push de
 	push hl
-	push hl
-	ld [wCurSpecies], a
-	ld a, MOVE_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, wStringBuffer1
-	pop hl
 	push bc
+	ld [wNamedObjectIndex], a
+	call GetMoveName
 	rst PlaceString
 	pop bc
 	ld a, b
