@@ -233,10 +233,10 @@ ScrollMapDown::
 	ld de, wBGMapPalBuffer + 8
 .done
 	call BackupBGMapRow
-	ld a, [wBGMapAnchor]
+	ld hl, wBGMapAnchor
+	ld a, [hli]
+	ld d, [hl]
 	ld e, a
-	ld a, [wBGMapAnchor + 1]
-	ld d, a
 	call CheckPlayerCoastSandColl
 	ld a, SCREEN_WIDTH + 4
 	ld hl, wBGMapBufferPtrs + 8
@@ -269,15 +269,13 @@ ScrollMapUp::
 	call BackupBGMapRow
 	ld hl, wBGMapAnchor
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld bc, $0200
-	add hl, bc
-; cap d at HIGH(vBGMap1)
-	ld a, h
+	ld e, a
+	ld a, [hl]
+	; add $0200, but cap at HIGH(vBGMap1)
+	inc a
+	inc a
 	and %00000011
 	or HIGH(vBGMap0)
-	ld e, l
 	ld d, a
 	call CheckPlayerCoastSandColl
 	ld a, SCREEN_WIDTH + 4
@@ -309,10 +307,10 @@ ScrollMapRight::
 	ld de, wBGMapPalBuffer + 8
 .done
 	call BackupBGMapColumn
-	ld a, [wBGMapAnchor]
+	ld hl, wBGMapAnchor
+	ld a, [hli]
+	ld d, [hl]
 	ld e, a
-	ld a, [wBGMapAnchor + 1]
-	ld d, a
 	call CheckPlayerCoastSandColl
 	ld a, SCREEN_HEIGHT + 4
 	ld hl, wBGMapBufferPtrs + 8
@@ -343,17 +341,16 @@ ScrollMapLeft::
 	ld de, wBGMapPalBuffer + 8
 .done
 	call BackupBGMapColumn
-	ld a, [wBGMapAnchor]
-
+	ld hl, wBGMapAnchor
+	ld a, [hli]
 	; add SCREEN_HEIGHT, but wrap-around the last 5 bits
 	swap a
 	rrca
 	add SCREEN_HEIGHT << 3
 	rlca
 	swap a
+	ld d, [hl]
 	ld e, a
-	ld a, [wBGMapAnchor + 1]
-	ld d, a
 	call CheckPlayerCoastSandColl
 	ld a, SCREEN_HEIGHT + 4
 	ld hl, wBGMapBufferPtrs + 8

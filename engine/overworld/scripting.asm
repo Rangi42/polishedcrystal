@@ -1713,7 +1713,7 @@ Script_getcoins:
 	lb bc, PRINTNUM_LEFTALIGN | 2, 6
 	call PrintNum
 	ld de, wStringBuffer1
-	jmp ConvertMemToText
+	jr ConvertMemToText
 
 Script_getnum:
 	call ResetStringBuffer1
