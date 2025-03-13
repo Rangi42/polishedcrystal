@@ -207,30 +207,65 @@ UpdateOverworldMap:
 	inc [hl]
 	ret
 
+CheckPlayerCoastSandColl:
+	ld a, [wPlayerTileCollision]
+	cp COLL_COAST_SAND
+	ret z
+	ld a, [wPlayerLastTile]
+	cp COLL_COAST_SAND
+	ret
+
 ScrollMapDown::
+	call CheckPlayerCoastSandColl
+	jr nz, .reload_walked_tiles
+	hlcoord 0, 0
+	ld de, wBGMapBuffer
+	call BackupBGMapRow
+	hlcoord 0, 0, wAttrmap
+	ld de, wBGMapPalBuffer
+	jr .done
+.reload_walked_tiles
 	call ReloadWalkedTile
 	hlcoord 0, 0
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapRow
 	hlcoord 0, 0, wAttrmap
 	ld de, wBGMapPalBuffer + 8
+.done
 	call BackupBGMapRow
 	ld a, [wBGMapAnchor]
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
 	ld d, a
+	call CheckPlayerCoastSandColl
+	ld a, SCREEN_WIDTH + 4
+	ld hl, wBGMapBufferPtrs + 8
+	jr nz, .got_arguments
+	ld a, SCREEN_WIDTH
+	ld hl, wBGMapBufferPtrs
+.got_arguments
 	call UpdateBGMapRow
 	ld a, $1
 	ldh [hBGMapUpdate], a
 	ret
 
 ScrollMapUp::
+	call CheckPlayerCoastSandColl
+	jr nz, .reload_walked_tiles
+	hlcoord 0, SCREEN_HEIGHT - 2
+	ld de, wBGMapBuffer
+	call BackupBGMapRow
+	hlcoord 0, SCREEN_HEIGHT - 2, wAttrmap
+	ld de, wBGMapPalBuffer
+	jr .done
+.reload_walked_tiles
 	call ReloadWalkedTile
 	hlcoord 0, SCREEN_HEIGHT - 2
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapRow
 	hlcoord 0, SCREEN_HEIGHT - 2, wAttrmap
 	ld de, wBGMapPalBuffer + 8
+.done
 	call BackupBGMapRow
 	ld hl, wBGMapAnchor
 	ld a, [hli]
@@ -244,35 +279,69 @@ ScrollMapUp::
 	or HIGH(vBGMap0)
 	ld e, l
 	ld d, a
+	call CheckPlayerCoastSandColl
+	ld a, SCREEN_WIDTH + 4
+	ld hl, wBGMapBufferPtrs + 8
+	jr nz, .got_arguments
+	ld a, SCREEN_WIDTH
+	ld hl, wBGMapBufferPtrs
+.got_arguments
 	call UpdateBGMapRow
 	ld a, $1
 	ldh [hBGMapUpdate], a
 	ret
 
 ScrollMapRight::
+	call CheckPlayerCoastSandColl
+	jr nz, .reload_walked_tiles
+	hlcoord 0, 0
+	ld de, wBGMapBuffer
+	call BackupBGMapColumn
+	hlcoord 0, 0, wAttrmap
+	ld de, wBGMapPalBuffer
+	jr .done
+.reload_walked_tiles
 	call ReloadWalkedTile
 	hlcoord 0, 0
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapColumn
 	hlcoord 0, 0, wAttrmap
 	ld de, wBGMapPalBuffer + 8
+.done
 	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
 	ld d, a
+	call CheckPlayerCoastSandColl
+	ld a, SCREEN_HEIGHT + 4
+	ld hl, wBGMapBufferPtrs + 8
+	jr nz, .got_arguments
+	ld a, SCREEN_HEIGHT
+	ld hl, wBGMapBufferPtrs
+.got_arguments
 	call UpdateBGMapColumn
 	ld a, $1
 	ldh [hBGMapUpdate], a
 	ret
 
 ScrollMapLeft::
+	call CheckPlayerCoastSandColl
+	jr nz, .reload_walked_tiles
+	hlcoord SCREEN_WIDTH - 2, 0
+	ld de, wBGMapBuffer
+	call BackupBGMapColumn
+	hlcoord SCREEN_WIDTH - 2, 0, wAttrmap
+	ld de, wBGMapPalBuffer
+	jr .done
+.reload_walked_tiles
 	call ReloadWalkedTile
 	hlcoord SCREEN_WIDTH - 2, 0
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapColumn
 	hlcoord SCREEN_WIDTH - 2, 0, wAttrmap
 	ld de, wBGMapPalBuffer + 8
+.done
 	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
 
@@ -285,6 +354,13 @@ ScrollMapLeft::
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
 	ld d, a
+	call CheckPlayerCoastSandColl
+	ld a, SCREEN_HEIGHT + 4
+	ld hl, wBGMapBufferPtrs + 8
+	jr nz, .got_arguments
+	ld a, SCREEN_HEIGHT
+	ld hl, wBGMapBufferPtrs
+.got_arguments
 	call UpdateBGMapColumn
 	ld a, $1
 	ldh [hBGMapUpdate], a
@@ -321,13 +397,19 @@ BackupBGMapColumn::
 	ret
 
 UpdateBGMapRow::
-	ld hl, wBGMapBufferPtrs + 8
+; input a = tile count
+; hl = wBGMapBufferPtrs
+	push af
 	push de
 	call .iteration
 	pop de
 	ld a, BG_MAP_WIDTH
 	add e
 	ld e, a
+	call .iteration
+	pop af
+	ldh [hBGMapTileCount], a
+	ret
 
 .iteration
 	ld c, 10
@@ -345,12 +427,12 @@ UpdateBGMapRow::
 	ld e, a
 	dec c
 	jr nz, .loop
-	ld a, SCREEN_WIDTH + 4
-	ldh [hBGMapTileCount], a
 	ret
 
 UpdateBGMapColumn::
-	ld hl, wBGMapBufferPtrs + 8
+; input a = tile count
+; hl = wBGMapBufferPtrs
+	push af
 	ld c, SCREEN_HEIGHT
 .loop
 	ld a, e
@@ -371,6 +453,67 @@ UpdateBGMapColumn::
 .skip
 	dec c
 	jr nz, .loop
-	ld a, SCREEN_HEIGHT + 4
+	pop af
 	ldh [hBGMapTileCount], a
+	ret
+
+ReloadWalkedTile:
+; Update tile player is to walk on
+	hlcoord 8, 6
+	ld de, wBGMapBuffer
+	call .CommitTiles
+	hlcoord 8, 6, wAttrmap
+	ld de, wBGMapPalBuffer
+	call .CommitTiles
+	ld a, [wBGMapAnchor]
+	swap a
+	rrca
+	add 8 << 3
+	rlca
+	swap a
+	add $c0
+	ld l, a
+	ld a, [wBGMapAnchor + 1]
+	adc 0
+	ld h, a
+	ld c, 4
+	ld de, wBGMapBufferPtrs
+.ptr_loop
+	ld a, h
+	and HIGH($9800 | $9900 | $9a00 | $9b00) ; clamp within VRAM addresses
+	ld h, a
+	ld a, l
+	ld [de], a
+	inc de
+	ld a, h
+	ld [de], a
+	inc de
+
+	ld a, BG_MAP_WIDTH
+	call .AddHLDecC
+	jr nz, .ptr_loop
+	ret
+
+.CommitTiles:
+	ld c, 4
+.tile_loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	inc de
+	ld a, SCREEN_WIDTH - 1
+	call .AddHLDecC
+	jr nz, .tile_loop
+	ret
+
+.AddHLDecC:
+	; hl += a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	dec c
 	ret

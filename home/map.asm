@@ -1032,67 +1032,6 @@ UnmaskObject::
 	ld [hl], 0 ; unmasked
 	ret
 
-ReloadWalkedTile:
-; Update tile player is to walk on
-	hlcoord 8, 6
-	ld de, wBGMapBuffer
-	call .CommitTiles
-	hlcoord 8, 6, wAttrmap
-	ld de, wBGMapPalBuffer
-	call .CommitTiles
-	ld a, [wBGMapAnchor]
-	swap a
-	rrca
-	add 8 << 3
-	rlca
-	swap a
-	add $c0
-	ld l, a
-	ld a, [wBGMapAnchor + 1]
-	adc 0
-	ld h, a
-	ld c, 4
-	ld de, wBGMapBufferPtrs
-.ptr_loop
-	ld a, h
-	and HIGH($9800 | $9900 | $9a00 | $9b00) ; clamp within VRAM addresses
-	ld h, a
-	ld a, l
-	ld [de], a
-	inc de
-	ld a, h
-	ld [de], a
-	inc de
-
-	ld a, BG_MAP_WIDTH
-	call .AddHLDecC
-	jr nz, .ptr_loop
-	ret
-
-.CommitTiles:
-	ld c, 4
-.tile_loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-	ld a, SCREEN_WIDTH - 1
-	call .AddHLDecC
-	jr nz, .tile_loop
-	ret
-
-.AddHLDecC:
-	; hl += a
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
-	dec c
-	ret
-
 _LoadTilesetGFX:
 ; Loads one of up to 3 tileset groups depending on a
 	jr z, _LoadTilesetGFX0
