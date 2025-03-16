@@ -4869,7 +4869,7 @@ CanStatusTarget:
 ; Input:
 ; a=0: Check Mold Breaker and Substitute (user directly poisoning foe)
 ; a=1: Ignore MB and sub (Toxic Spikes, target on-contact abilities)
-; a=2: Ignore MB and sub, check victim for Corrosion (Toxic Orb)
+; a=2: Ignore MB, sub, and Safeguard, check victim for Corrosion (Toxic Orb)
 ; bc: Type immunities
 ; d: Ability immunity
 ; e: Item immunity
@@ -4892,7 +4892,6 @@ CanStatusTarget:
 	pop af
 	and a
 	push af
-	and a
 	jr z, .check_psn_status_move
 	dec a
 	jr z, .not_corrosive
@@ -4938,12 +4937,19 @@ CanStatusTarget:
 	pop de
 	cp e
 	jr z, .cant_item
+
+	; Toxic/Flame Orb bypasses Safeguard.
 	pop af
-	and a
-	jr nz, .no_mold_breaker
+	push af
+	cp 2
+	jr z, .no_safeguard
 	call SafeCheckSafeguard
 	ld hl, SafeguardProtectText
-	jr nz, .end
+	jr nz, .pop_and_end
+
+.no_safeguard
+	pop af ; "and a" was performed earlier.
+	jr nz, .no_mold_breaker
 	call CheckSubstituteOpp
 	ld hl, ButItFailedText
 	jr nz, .end
