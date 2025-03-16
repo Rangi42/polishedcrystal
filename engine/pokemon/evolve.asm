@@ -573,10 +573,15 @@ LearnEvolutionMove:
 	ld hl, EvolutionMoves
 	add hl, bc
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	or h
+	ld a, BANK(EvolutionMoves)
+	call GetFarByte
+	ld d, a
+	inc hl
+	ld a, BANK(EvolutionMoves)
+	call GetFarByte
+	ld l, d
+	ld h, a
+	or l
 	ret z
 	call GetMoveIDFromIndex
 
@@ -629,10 +634,12 @@ LearnLevelMoves:
 	ld b, a
 	ld a, [wCurPartyLevel]
 	cp b
+	push af ; preserve z
 	call GetNextEvoAttackByte
 	ld e, a
 	call GetNextEvoAttackByte
 	ld d, a
+	pop af
 	jr nz, .find_move
 
 	push hl
