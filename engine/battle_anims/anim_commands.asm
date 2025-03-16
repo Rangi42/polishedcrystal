@@ -51,11 +51,11 @@ BattleAnimRunScript:
 	; If not, the "battle effects" option can disable it.
 	ld a, [wFXAnimIDHi]
 	cp HIGH(FIRST_UNCONDITIONAL_ANIM)
-	jr c, .unconditional
-	jr nz, .conditional
+	jr c, .conditional
+	jr nz, .unconditional
 	ld a, [wFXAnimIDLo]
 	cp LOW(FIRST_UNCONDITIONAL_ANIM)
-	jr c, .unconditional
+	jr nc, .unconditional
 
 .conditional
 	farcall CheckBattleEffects
