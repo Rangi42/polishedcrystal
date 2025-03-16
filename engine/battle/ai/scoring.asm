@@ -95,7 +95,9 @@ AI_Setup:
 
 	cp EFFECT_CURSE
 	jr nz, .not_curse
+	push bc
 	call CheckIfUserIsGhostType
+	pop bc
 	jr nz, .checkmove
 	jr .statup
 

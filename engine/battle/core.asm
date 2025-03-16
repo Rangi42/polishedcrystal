@@ -648,10 +648,10 @@ GetMovePriority:
 	inc a
 	jr z, .done
 	dec a
-	cp b
+	cp c
 	jr nz, .skip
 	ld a, [hli]
-	cp c
+	cp b
 	jr z, .got
 	inc hl
 	jr .loop

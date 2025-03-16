@@ -428,11 +428,12 @@ GetCurMoveFixedCategory::
 GetMoveFixedCategory::
 	call GetMoveAddress
 	ldh [hTemp2], a
+	dec hl
 GetFixedCategory::
 ; return category in a without modifying hl
 ; if category is STATUS, return it
 	push hl
-	ld bc, MOVE_CATEGORY - 1
+	ld bc, MOVE_CATEGORY
 	add hl, bc
 	call GetFarByte
 	pop hl
@@ -446,7 +447,7 @@ GetFixedCategory::
 	ret nz
 ; return PHYSICAL or SPECIAL depending on the type
 	push hl
-	ld bc, MOVE_TYPE - 1
+	ld bc, MOVE_TYPE
 	add hl, bc
 	ldh a, [hTemp2]
 	call GetFarByte
