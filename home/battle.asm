@@ -671,6 +671,7 @@ GetWeatherAfterUserUmbrella::
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [wBattleWeather] otherwise.
+; Only call this function directly if Utility Umbrella doesn't apply.
 	call CheckNeutralizingGas
 	jr z, .weather
 	ld a, [wPlayerAbility]
