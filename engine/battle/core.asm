@@ -1408,7 +1408,6 @@ endr
 	bit SWITCH_BATON_PASS, a
 	jr z, .substitute_check_done
 
-	; This untoggles the substitute doll state.
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
