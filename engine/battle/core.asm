@@ -2888,28 +2888,37 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 
 	ld bc, wTempMonSpecies
 	farcall CheckFaintedFrzSlp
-	jr c, .skip_cry
-	farcall CheckBattleEffects
-	jr c, .cry_no_anim
-	hlcoord 12, 0
-	lb de, $0, ANIM_MON_SLOW
-	predef AnimateFrontpic
-	jr .skip_cry
-
-.cry_no_anim
-	ld a, $f
-	ld [wCryTracks], a
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld a, [wTempEnemyMonForm]
-	ld b, a
-	call PlayStereoCry
-
-.skip_cry
+	call nc, BattleAnimateFrontpic
 	call UpdateEnemyHUD
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
+
+BattleAnimateFrontpic:
+; Plays battle cry and animation.
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr z, .cry_no_anim
+
+	farcall CheckBattleEffects
+	jr c, .cry_no_anim
+
+	ld a, [wEnemySubStatus4]
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr nz, .cry_no_anim
+
+	hlcoord 12, 0
+	lb de, $0, ANIM_MON_SLOW
+	predef_jump AnimateFrontpic ; also plays cry
+
+.cry_no_anim
+	ld a, $f
+	ld [wCryTracks], a
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	jmp PlayStereoCry
 
 NewEnemyMonStatus:
 	xor a
@@ -8681,30 +8690,7 @@ BattleStartMessage:
 
 .not_shiny
 	call CheckSleepingTreeMon
-	jr c, .skip_cry
-
-	ld a, [wBattleType]
-	cp BATTLETYPE_GHOST
-	jr z, .cry_no_anim
-
-	farcall CheckBattleEffects
-	jr c, .cry_no_anim
-
-	hlcoord 12, 0
-	lb de, $0, ANIM_MON_NORMAL
-	predef AnimateFrontpic
-	jr .skip_cry ; cry is played during the animation
-
-.cry_no_anim
-	ld a, $f
-	ld [wCryTracks], a
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	call PlayStereoCry
-
-.skip_cry
+	call nc, BattleAnimateFrontpic
 	call ResetVariableBattleMusicCondition
 
 	ld a, [wBattleType]
