@@ -4878,6 +4878,7 @@ CanStatusTarget:
 ;     z -- we can
 ;  c|nz -- we can't, due to ability
 ; nc|nz -- we can't, failure msg in HL
+	and a
 	push af
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
@@ -4890,7 +4891,6 @@ CanStatusTarget:
 	jr nz, .not_corrosive
 
 	pop af
-	and a
 	push af
 	jr z, .check_psn_status_move
 	dec a
