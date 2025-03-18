@@ -1402,6 +1402,23 @@ endr
 	bit SWITCH_FORCED, a
 	call nz, StdBattleTextbox
 	call LoadTileMapToTempTileMap
+
+	; If we used Baton Pass behind a Substitute, hide behind the doll.
+	ld a, [wDeferredSwitch]
+	bit SWITCH_BATON_PASS, a
+	jr z, .substitute_check_done
+
+	; This untoggles the substitute doll state.
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr z, .substitute_check_done
+	xor a
+	ld [wFXAnimIDHi], a
+	ld a, SUBSTITUTE
+	farcall LoadAnim
+
+.substitute_check_done
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerSwitchTarget
@@ -2903,10 +2920,10 @@ BattleAnimateFrontpic:
 	farcall CheckBattleEffects
 	jr c, .cry_no_anim
 
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckEnemyActiveSubPic
 	jr nz, .cry_no_anim
 
+.no_substitute
 	hlcoord 12, 0
 	lb de, $0, ANIM_MON_SLOW
 	predef_jump AnimateFrontpic ; also plays cry
@@ -2919,6 +2936,30 @@ BattleAnimateFrontpic:
 	ld a, [wCurForm]
 	ld b, a
 	jmp PlayStereoCry
+
+CheckPlayerActiveSubPic:
+	ld a, [wPlayerSubStatus4]
+	jr _CheckActiveSubPic
+
+CheckEnemyActiveSubPic:
+	ld a, [wEnemySubStatus4]
+	jr _CheckActiveSubPic
+
+CheckActiveSubPic:
+; Returns nz if we currently have a substitute doll visible.
+; NOT the same as whether or not we have a Substitute.
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	; fallthrough
+_CheckActiveSubPic:
+	bit SUBSTATUS_SUBSTITUTE, a
+	ret z
+
+	; Baton Pass will temporarily dismiss the substitute doll.
+	ld a, [wDeferredSwitch]
+	xor 1 << SWITCH_BATON_PASS
+	bit SWITCH_BATON_PASS, a
+	ret
 
 NewEnemyMonStatus:
 	xor a
@@ -7688,8 +7729,7 @@ CalcExpBar:
 	ret
 
 GetMonBackpic:
-	ld a, [wPlayerSubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckPlayerActiveSubPic
 	ld hl, BattleAnimCmd_RaiseSub
 	jr nz, GetBackpic_DoAnim
 	; fallthrough
@@ -7723,8 +7763,7 @@ GetBackpic_DoAnim:
 	ret
 
 GetMonFrontpic:
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckEnemyActiveSubPic
 	ld hl, BattleAnimCmd_RaiseSub
 	jr nz, GetFrontpic_DoAnim
 	; fallthrough
