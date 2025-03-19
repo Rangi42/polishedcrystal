@@ -48,6 +48,10 @@ NoSkillSwapEntry:
 	ld hl, NoSkillSwapEntryAbilities
 	jr AbilityChangeCheck_IsInByteArray
 
+AbilityCanBeSuppressed:
+	ld hl, AbilitySuppressionExcepts
+	jr AbilityChangeCheck_IsInByteArray
+
 AbilityCanBeTraced:
 	ld hl, TraceExcepts
 	jr AbilityChangeCheck_IsInByteArray
@@ -78,6 +82,7 @@ TraceExcepts:
 	; fallthrough
 SkillSwapExcepts:
 	db NO_ABILITY
+AbilitySuppressionExcepts:
 	db NEUTRALIZING_GAS
 	db -1
 

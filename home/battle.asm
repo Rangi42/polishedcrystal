@@ -512,26 +512,40 @@ ApplySpecialAttackDamageMod::
 	ld b, SPECIAL
 	jr ApplyAttackDamageMod
 
-GetOpponentAbility::
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	ret z
-	push bc
-	ld b, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	ld a, b
-	pop bc
-	ret nz
+GetTrueUserAbility:
+; Get true user ability after Neutralizing Gas.
+; A "true" user might be external, if Future Sight is active.
+	farcall GetFutureSightUser
+	jr z, .not_external
+
+	; External users have no ability.
 	xor a
 	ret
 
-GetTrueUserAbility::
-; Get true user ability after Neutralizing Gas.
-; A "true" user might be external, if Future Sight is active.
-	farjp _GetTrueUserAbility
+.not_external
+	call StackCallOpponentTurn
+GetOpponentAbility::
+	; Get opponent ability.
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	push af
+
+	; Check if it's suppressed by Neutralizing Gas.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp NEUTRALIZING_GAS
+	jr nz, .not_suppressed
+	pop af
+	push hl
+	farcall AbilityCanBeSuppressed
+	pop hl
+	ret c
+	xor a
+	ret
+
+.not_suppressed
+	pop af
+	ret
 
 GetOpponentAbilityAfterMoldBreaker::
 ; Returns an opponent's ability unless Mold Breaker
