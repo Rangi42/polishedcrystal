@@ -536,12 +536,12 @@ HandleLeechSeed:
 	farcall RestoreHP
 	jr .done
 .hurt
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 .done
 	jmp SwitchTurn
 
@@ -567,12 +567,12 @@ HandlePoison:
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	ld hl, RegainedHealthText
 	call DoPoisonBurnDamageAnim
 	farcall RestoreHP
-	farjp EnableAnimations
+	farjp EndAbility
 
 HandleBurn:
 	call SetFastestTurn

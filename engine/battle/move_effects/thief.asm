@@ -52,15 +52,15 @@ CheckStickyHold:
 	jr nz, .no_sticky_hold
 
 	; Don't display anything if we're in Pickpocket
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, ItemCantBeStolenText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 	or 1
 	ret
 

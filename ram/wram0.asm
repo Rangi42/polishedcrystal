@@ -663,7 +663,7 @@ wEnemyCharging:: db
 
 wGivingExperienceToExpShareHolders:: db
 
-wAnimationsDisabled:: db ; used to temporarily disable animations for abilities
+wInAbility:: db ; disables animations for abilities among other things
 
 wBattleEnded:: db
 

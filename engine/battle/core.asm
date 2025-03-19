@@ -4702,7 +4702,7 @@ CheckRunSpeed:
 	cp RUN_AWAY
 	jr nz, .no_flee_ability
 	call SetPlayerTurn
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	jmp .can_escape
 .no_flee_ability

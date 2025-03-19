@@ -268,13 +268,13 @@ BattleCommand_checkturn:
 	; a is still (user's ability - EARLY_BIRD)
 	and a
 	jr nz, .woke_up_no_early_bird
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 .woke_up_no_early_bird
 	ld hl, WokeUpText
 	call StdBattleTextbox
 	; does nothing in case we never showed an ability activation
-	farcall EnableAnimations
+	farcall EndAbility
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy1
@@ -2465,7 +2465,7 @@ BattleCommand_moveanimnosub:
 
 
 StatUpDownAnim:
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 	call _CheckBattleEffects
@@ -2623,11 +2623,11 @@ BattleCommand_applydamage:
 .not_enduring2
 	dec a
 	jr nz, .enduring_with_item
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, EnduredText
 	call StdBattleTextbox
-	farjp EnableAnimations
+	farjp EndAbility
 
 .enduring_with_item
 	push af
@@ -3623,10 +3623,10 @@ EndMoveDamageChecks:
 	call SwitchTurn
 	call CanStealItem
 	jr nz, .no_pickpocket
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	call BattleCommand_thief
-	farcall EnableAnimations
+	farcall EndAbility
 .no_pickpocket
 	jmp SwitchTurn
 
@@ -4836,11 +4836,11 @@ BattleCommand_sleep:
 	jmp StdBattleTextbox
 
 .ability_ok
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	call AnimateFailedMove
 	call PrintDoesntAffect
-	farjp EnableAnimations
+	farjp EndAbility
 
 CanPoisonTarget:
 	ld a, b
@@ -5088,12 +5088,12 @@ SapHealth:
 
 .damage
 	pop hl
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
-	farjp EnableAnimations
+	farjp EndAbility
 
 GetHPAbsorption:
 ; From damage in bc, get resulting absorbed HP
@@ -5458,7 +5458,7 @@ StatusTargetVerbose:
 	jr .done
 
 .ability_ok
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
 .failed
@@ -5466,7 +5466,7 @@ StatusTargetVerbose:
 	call AnimateFailedMove
 	pop hl
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 .done
 	pop af
 	; a contains the status problem we wanted to afflict. So this returns nz.
@@ -6031,11 +6031,11 @@ BattleCommand_confuse:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
 	jr nz, .no_ability_protection
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
-	farjp EnableAnimations
+	farjp EndAbility
 
 .no_ability_protection
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
@@ -6172,10 +6172,10 @@ BattleCommand_heal:
 	jmp StdBattleTextbox
 
 .ability_prevents_rest
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	call AnimateFailedMove
-	farjp EnableAnimations
+	farjp EndAbility
 
 .hp_full
 	call AnimateFailedMove
@@ -6286,7 +6286,7 @@ CheckSubstituteOpp:
 
 .not_future_sight
 	; don't let move effects impact ability processing
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	jr nz, .no_sound_move
 	push bc
@@ -6609,7 +6609,7 @@ TryAnimateCurrentMove:
 	ret nz
 	; fallthrough
 AnimateCurrentMove:
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 	push hl
@@ -6682,7 +6682,7 @@ CallBattleCore:
 	jmp FarCall_hl
 
 AnimateFailedMove:
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 	call BattleCommand_lowersub

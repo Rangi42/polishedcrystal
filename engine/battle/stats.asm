@@ -122,12 +122,12 @@ FarChangeStat:
 	farcall CheckAlreadyExecuted
 	ret nz
 	farcall ShowPotentialAbilityActivation
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	farcall AnimateFailedMove
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
-	farjp EnableAnimations
+	farjp EndAbility
 
 .check_item
 	push bc

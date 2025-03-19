@@ -752,11 +752,11 @@ CheckMoveSpeed::
 	cp 30
 	jr nc, .quick_draw_done
 
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 	jr .go_first
 
 .quick_draw_done
