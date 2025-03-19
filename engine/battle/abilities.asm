@@ -1,4 +1,19 @@
 RunEntryAbilitiesInner:
+	; See if we are doing a Neutralizing Gas deactivation, which
+	; ignores some entry abilities.
+	call GetOpponentAbility
+	inc a
+	jr z, RunEntryAbilitiesInner_SkillSwap
+	jr _RunEntryAbilitiesInner
+
+RunEntryAbilitiesInner_SkillSwap:
+; Runs on Skill Swap or pending Neutralizing Gas deactivation.
+	; Some abilities do nothing in this case.
+	call GetTrueUserAbility
+	farcall NoSkillSwapEntry
+	ret c
+	; fallthrough
+_RunEntryAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
 	; are re-enabled (which also takes care of existing ability slideouts)
 	call EnableAnimations
@@ -301,11 +316,6 @@ DownloadAbility:
 	farjp CheckMirrorHerb
 
 ImposterAbility:
-	; Disallowed on Neutralizing Gas (even in switch-out mode)
-	call GetOpponentAbility
-	inc a
-	ret z
-
 	call DisableAnimations
 	; flags for the transform wave anim to not affect slideouts
 	call ShowPotentialAbilityActivation

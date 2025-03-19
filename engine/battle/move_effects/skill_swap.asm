@@ -35,14 +35,18 @@ BattleCommand_skillswap:
 
 	; Don't use RunBothEntryAbilities, because
 	; Skill Swap always runs the user first
-	farcall RunEntryAbilitiesInner
+	farcall RunEntryAbilitiesInner_SkillSwap
 	call SwitchTurn
-	farcall RunEntryAbilitiesInner
+	farcall RunEntryAbilitiesInner_SkillSwap
 	jmp SwitchTurn
 
 .failed
 	call AnimateFailedMove
 	jmp PrintButItFailed
+
+NoSkillSwapEntry:
+	ld hl, NoSkillSwapEntryAbilities
+	jr AbilityChangeCheck_IsInByteArray
 
 AbilityCanBeTraced:
 	ld hl, TraceExcepts
@@ -75,4 +79,9 @@ TraceExcepts:
 SkillSwapExcepts:
 	db NO_ABILITY
 	db NEUTRALIZING_GAS
+	db -1
+
+NoSkillSwapEntryAbilities:
+	db IMPOSTER
+	db CLOUD_NINE
 	db -1
