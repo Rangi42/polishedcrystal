@@ -143,17 +143,9 @@ ObliviousAbility:
 
 TraceAbility:
 	call GetOpponentAbility
-	inc a
-	ret z ; Neutralizing Gas sentinel upon fainting
-	dec a
-	ret z
-	cp TRACE
-	jr z, .trace_failure
-	cp IMPOSTER
-	jr z, .trace_failure
-	; just in case
-	cp NEUTRALIZING_GAS
-	ret z
+	farcall AbilityCanBeTraced
+	ret c
+
 	push af
 	ld b, a
 	farcall BufferAbility
