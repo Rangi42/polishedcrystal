@@ -718,9 +718,8 @@ CursedBodyAbility:
 
 RunContactAbilities:
 ; turn perspective is from the attacker
-	call GetTrueUserAbility
 	ld hl, UserContactAbilities
-	call AbilityJumptable
+	call UserAbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
 	call SwitchTurn
 	ld hl, TargetContactAbilities
@@ -1149,56 +1148,37 @@ WaterAbsorbAbility:
 
 ApplySpeedAbilities:
 ; Passive speed boost abilities
-	call GetTrueUserAbility
-	cp UNBURDEN
-	jr z, .unburden
-	cp SWIFT_SWIM
-	jr z, .swift_swim
-	cp CHLOROPHYLL
-	jr z, .clorophyll
-	cp SAND_RUSH
-	jr z, .sand_rush
-	cp SLUSH_RUSH
-	jr z, .slush_rush
-	cp QUICK_FEET
-	ret nz
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	and a
-	ret z
-	ln a, 3, 2 ; x1.5
-	jr .apply_mod
-.unburden
+	ld hl, SpeedAbilities
+	jmp UserAbilityJumptable
+
+SpeedAbilities:
+	dbw UNBURDEN, UnburdenAbility
+	dbw SWIFT_SWIM, SwiftSwimAbility
+	dbw CHLOROPHYLL, ChlorophyllAbility
+	dbw SAND_RUSH, SandRushAbility
+	dbw SLUSH_RUSH, SlushRushAbility
+	dbw QUICK_FEET, QuickFeetAbility
+
+UnburdenAbility:
 	; Only if we have the Unburden volatile
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
 	bit SUBSTATUS_UNBURDEN, a
 	ret z
 	ln a, 2, 1 ; x2
-	jr .apply_mod
-.swift_swim
-	ld h, WEATHER_RAIN
-	jr .weather_ability
-.clorophyll
-	ld h, WEATHER_SUN
-	jr .weather_ability
-.sand_rush
-	ld h, WEATHER_SANDSTORM
-	jr .weather_ability
-.slush_rush
-	ld h, WEATHER_HAIL
-.weather_ability
-	call GetWeatherAfterUserUmbrella
-	cp h
-	ret nz
-	ln a, 2, 1 ; x2
-.apply_mod
+	jmp MultiplyAndDivide
+
+QuickFeetAbility:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and a
+	ret z
+	ln a, 3, 2 ; x1.5
 	jmp MultiplyAndDivide
 
 ApplyAccuracyAbilities:
-	call GetTrueUserAbility
 	ld hl, UserAccuracyAbilities
-	call AbilityJumptable
+	call UserAbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, TargetAccuracyAbilities
 	jmp AbilityJumptable
@@ -1243,6 +1223,22 @@ WonderSkinAbility:
 	ln a, 1, 2 ; x0.5
 	jmp MultiplyAndDivide
 
+SwiftSwimAbility:
+	ld b, WEATHER_RAIN
+	jr WeatherSpeedAbility
+ChlorophyllAbility:
+	ld b, WEATHER_SUN
+	jr WeatherSpeedAbility
+SandRushAbility:
+	ld b, WEATHER_SANDSTORM
+	jr WeatherSpeedAbility
+SlushRushAbility:
+	ld b, WEATHER_HAIL
+WeatherSpeedAbility:
+; Doubles Speed in relevant weather
+	ln c, 2, 1 ; x2
+	jr WeatherBoostAbility
+
 SandVeilAbility:
 	ld b, WEATHER_SANDSTORM
 	jr WeatherAccAbility
@@ -1250,10 +1246,12 @@ SnowCloakAbility:
 	ld b, WEATHER_HAIL
 WeatherAccAbility:
 ; Decrease target accuracy by 20% in relevant weather
+	ln c, 4, 5 ; x0.8
+WeatherBoostAbility:
 	call GetWeatherAfterOpponentUmbrella
 	cp b
 	ret nz
-	ln a, 4, 5 ; x0.8
+	ld a, c
 	jmp MultiplyAndDivide
 
 RunWeatherAbilities:
@@ -1605,9 +1603,8 @@ MoodyAbility:
 	farjp CheckMirrorHerb
 
 ApplyDamageAbilities_AfterTypeMatchup:
-	call GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
-	call AbilityJumptable
+	call UserAbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, DefensiveDamageAbilities_AfterTypeMatchup
 	jmp AbilityJumptable
@@ -1622,9 +1619,8 @@ DefensiveDamageAbilities_AfterTypeMatchup:
 	dbw -1, -1
 
 ApplyDamageAbilities:
-	call GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities
-	call AbilityJumptable
+	call UserAbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, DefensiveDamageAbilities
 	jmp AbilityJumptable
