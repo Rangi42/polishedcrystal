@@ -758,116 +758,6 @@ EvoFlagAction:
 	pop de
 	ret
 
-GetBaseEvolution:
-; Find the first mon in the evolution chain including wCurPartySpecies+wCurForm.
-
-; Return carry and the new species in wCurPartySpecies+wCurForm
-; if a base evolution is found.
-
-	call GetPreEvolution
-GetPreEvolution:
-; Find the first mon to evolve into wCurPartySpecies+wCurForm.
-
-; Return carry and the new species in wCurPartySpecies+wCurForm
-; if a pre-evolution is found.
-
-; Present behavior preserves de
-
-	ld bc, 0
-.loop ; For each Pokemon...
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-.loop2 ; For each evolution...
-	ld a, [hli]
-	inc a
-	jr z, .no_evolve ; If we jump, this Pokemon does not evolve into wCurPartySpecies.
-	dec a
-	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
-	jr z, .inc
-	cp EVOLVE_HOLDING ; This evolution type has the extra parameter of time of day comparison.
-	jr z, .inc
-	cp EVOLVE_PARTY ; This evolution type has the extra parameter of form comparison.
-	jr nz, .check_speciesform
-.inc
-	inc hl
-
-.check_speciesform
-	inc hl
-	ld a, [wCurPartySpecies]
-	cp [hl]
-	inc hl
-	jr nz, .not_preevo
-	ld a, [hl]
-	and FORM_MASK
-	push bc
-	ld b, EXTSPECIES_MASK
-	jr z, .skip_form
-	ld b, SPECIESFORM_MASK
-.skip_form
-	ld a, [wCurForm]
-	xor [hl]
-	and b
-	pop bc
-	jr z, .found_preevo
-
-.not_preevo
-	inc hl
-	ld a, [hl]
-	and a
-	jr nz, .loop2
-
-.no_evolve
-	inc bc
-	ld a, b
-	cp HIGH(NUM_EXT_POKEMON)
-	jr c, .loop
-	ld a, c
-	cp LOW(NUM_EXT_POKEMON)
-	jr c, .loop
-	and a
-	ret
-
-.found_preevo
-; if bc > NUM_SPECIES - 1, lookup species+form on VariantSpeciesAndFormTable
-; else convert index directly to species+extspecies and give form of PLAIN_FORM (or parent's form if NO_FORM is used)
-	ld a, b
-	cp HIGH(NUM_SPECIES)
-	jr c, .not_variant
-	ld a, c
-	cp LOW(NUM_SPECIES)
-	jr c, .not_variant
-	ld hl, VariantSpeciesAndFormTable - (NUM_SPECIES * 2)
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld [wCurPartySpecies], a
-	ld a, [hl]
-	jr .done
-
-.not_variant
-	inc bc
-	ld a, c
-	ld [wCurPartySpecies], a
-	ld a, b ; convert b to extspecies
-	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
-	swap a
-	rlca
-	ld b, a ; extspecies | NO_FORM
-	ld a, [hl] ; we're pointing to mon form
-	and FORM_MASK ; should we return NO_FORM?
-	jr z, .got_form
-	inc b ; extspecies | PLAIN_FORM
-.got_form
-	ld a, b
-.done
-	ld [wCurForm], a
-	scf
-	ret
-
 GetEvosAttacksPointer:
 ; input: b = form, c = species
 ; output: bc = index, hl = pointer
@@ -924,12 +814,6 @@ GetEvolutionData:
 	pop af
 	ret
 
-.copy_string:
-	ld de, wStringBuffer1
-	ld hl, wStringBuffer4
-	call CopyName2
-	jr .done
-
 .get_item_name_and_time:
 	inc hl
 	ld a, [hld] ; parameter 2 (time)
@@ -959,7 +843,11 @@ GetEvolutionData:
 	ld [hld], a
 	ld [hl], e
 	call GetPokemonName
-	jr .copy_string
+.copy_string:
+	ld de, wStringBuffer1
+	ld hl, wStringBuffer4
+	call CopyName2
+	jr .done
 
 INCLUDE "data/pokemon/multi_evos.asm"
 

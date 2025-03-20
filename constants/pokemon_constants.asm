@@ -8,7 +8,7 @@
 ; indexes for (species + non-cosmetic variants):
 ; - BaseData (see data/pokemon/base_stats.asm)
 ; - EvosAttacksPointers (see data/pokemon/evos_attacks_pointers.asm)
-; - EggMovePointers (see data/pokemon/egg_move_pointers.asm)
+; - EggSpeciesMovesPointers (see data/pokemon/egg_move_pointers.asm)
 ; - EvolutionMoves (see data/pokemon/evolution_moves.asm)
 ; - PokemonBodyData (see data/pokemon/body_data.asm)
 ; - PokemonPalettes (see data/pokemon/palettes.asm)

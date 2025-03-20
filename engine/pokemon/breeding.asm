@@ -583,13 +583,15 @@ InheritEggMove:
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
-	ld hl, EggMovePointers
+	ld hl, EggSpeciesMovesPointers
 	add hl, bc
 	add hl, bc
-	ld a, BANK(EggMovePointers)
+	ld a, BANK(EggSpeciesMovesPointers)
 	call GetFarWord
+	inc hl
+	inc hl
 .loop
-	ld a, BANK(EggMoves)
+	ld a, BANK(EggSpeciesMoves)
 	call GetFarByte
 	inc a
 	ret z

@@ -1,350 +1,350 @@
-EggMovePointers::
+EggSpeciesMovesPointers::
 	table_width 2
-	dw BulbasaurEggMoves         ; Bulbasaur
-	dw BulbasaurEggMoves         ; Ivysaur
-	dw BulbasaurEggMoves         ; Venusaur
-	dw CharmanderEggMoves        ; Charmander
-	dw CharmanderEggMoves        ; Charmeleon
-	dw CharmanderEggMoves        ; Charizard
-	dw SquirtleEggMoves          ; Squirtle
-	dw SquirtleEggMoves          ; Wartortle
-	dw SquirtleEggMoves          ; Blastoise
-	dw NoEggMoves                ; Caterpie
-	dw NoEggMoves                ; Metapod
-	dw NoEggMoves                ; Butterfree
-	dw NoEggMoves                ; Weedle
-	dw NoEggMoves                ; Kakuna
-	dw NoEggMoves                ; Beedrill
-	dw PidgeyEggMoves            ; Pidgey
-	dw PidgeyEggMoves            ; Pidgeotto
-	dw PidgeyEggMoves            ; Pidgeot
-	dw RattataPlainEggMoves      ; Rattata
-	dw RattataPlainEggMoves      ; Raticate
-	dw SpearowEggMoves           ; Spearow
-	dw SpearowEggMoves           ; Fearow
-	dw EkansEggMoves             ; Ekans
-	dw EkansEggMoves             ; Arbok
-	dw PichuEggMoves             ; Pikachu
-	dw PichuEggMoves             ; Raichu
-	dw SandshrewPlainEggMoves    ; Sandshrew
-	dw SandshrewPlainEggMoves    ; Sandslash
-	dw NidoranFEggMoves          ; NidoranF
-	dw NidoranFEggMoves          ; Nidorina
-	dw NidoranFEggMoves          ; Nidoqueen
-	dw NidoranMEggMoves          ; NidoranM
-	dw NidoranMEggMoves          ; Nidorino
-	dw NidoranMEggMoves          ; Nidoking
-	dw CleffaEggMoves            ; Clefairy
-	dw CleffaEggMoves            ; Clefable
-	dw VulpixPlainEggMoves       ; Vulpix
-	dw VulpixPlainEggMoves       ; Ninetales
-	dw IgglybuffEggMoves         ; Jigglypuff
-	dw IgglybuffEggMoves         ; Wigglytuff
-	dw ZubatEggMoves             ; Zubat
-	dw ZubatEggMoves             ; Golbat
-	dw OddishEggMoves            ; Oddish
-	dw OddishEggMoves            ; Gloom
-	dw OddishEggMoves            ; Vileplume
-	dw ParasEggMoves             ; Paras
-	dw ParasEggMoves             ; Parasect
-	dw VenonatEggMoves           ; Venonat
-	dw VenonatEggMoves           ; Venomoth
-	dw DiglettPlainEggMoves      ; Diglett
-	dw DiglettPlainEggMoves      ; Dugtrio
-	dw MeowthPlainEggMoves       ; Meowth
-	dw MeowthPlainEggMoves       ; Persian
-	dw PsyduckEggMoves           ; Psyduck
-	dw PsyduckEggMoves           ; Golduck
-	dw MankeyEggMoves            ; Mankey
-	dw MankeyEggMoves            ; Primeape
-	dw GrowlitheEggMoves         ; Growlithe
-	dw GrowlitheEggMoves         ; Arcanine
-	dw PoliwagEggMoves           ; Poliwag
-	dw PoliwagEggMoves           ; Poliwhirl
-	dw PoliwagEggMoves           ; Poliwrath
-	dw AbraEggMoves              ; Abra
-	dw AbraEggMoves              ; Kadabra
-	dw AbraEggMoves              ; Alakazam
-	dw MachopEggMoves            ; Machop
-	dw MachopEggMoves            ; Machoke
-	dw MachopEggMoves            ; Machamp
-	dw BellsproutEggMoves        ; Bellsprout
-	dw BellsproutEggMoves        ; Weepinbell
-	dw BellsproutEggMoves        ; Victreebel
-	dw TentacoolEggMoves         ; Tentacool
-	dw TentacoolEggMoves         ; Tentacruel
-	dw GeodudePlainEggMoves      ; Geodude
-	dw GeodudePlainEggMoves      ; Graveler
-	dw GeodudePlainEggMoves      ; Golem
-	dw PonytaPlainEggMoves       ; Ponyta
-	dw PonytaPlainEggMoves       ; Rapidash
-	dw SlowpokePlainEggMoves     ; Slowpoke
-	dw SlowpokePlainEggMoves     ; Slowbro
-	dw NoEggMoves                ; Magnemite
-	dw NoEggMoves                ; Magneton
-	dw FarfetchDPlainEggMoves    ; FarfetchD
-	dw DoduoEggMoves             ; Doduo
-	dw DoduoEggMoves             ; Dodrio
-	dw SeelEggMoves              ; Seel
-	dw SeelEggMoves              ; Dewgong
-	dw GrimerPlainEggMoves       ; Grimer
-	dw GrimerPlainEggMoves       ; Muk
-	dw ShellderEggMoves          ; Shellder
-	dw ShellderEggMoves          ; Cloyster
-	dw GastlyEggMoves            ; Gastly
-	dw GastlyEggMoves            ; Haunter
-	dw GastlyEggMoves            ; Gengar
-	dw OnixEggMoves              ; Onix
-	dw DrowzeeEggMoves           ; Drowzee
-	dw DrowzeeEggMoves           ; Hypno
-	dw KrabbyEggMoves            ; Krabby
-	dw KrabbyEggMoves            ; Kingler
-	dw NoEggMoves                ; Voltorb
-	dw NoEggMoves                ; Electrode
-	dw ExeggcuteEggMoves         ; Exeggcute
-	dw ExeggcuteEggMoves         ; Exeggutor
-	dw CuboneEggMoves            ; Cubone
-	dw CuboneEggMoves            ; Marowak
-	dw TyrogueEggMoves           ; Hitmonlee
-	dw TyrogueEggMoves           ; Hitmonchan
-	dw LickitungEggMoves         ; Lickitung
-	dw KoffingEggMoves           ; Koffing
-	dw KoffingEggMoves           ; Weezing
-	dw RhyhornEggMoves           ; Rhyhorn
-	dw RhyhornEggMoves           ; Rhydon
-	dw HappinyEggMoves           ; Chansey
-	dw TangelaEggMoves           ; Tangela
-	dw KangaskhanEggMoves        ; Kangaskhan
-	dw HorseaEggMoves            ; Horsea
-	dw HorseaEggMoves            ; Seadra
-	dw GoldeenEggMoves           ; Goldeen
-	dw GoldeenEggMoves           ; Seaking
-	dw NoEggMoves                ; Staryu
-	dw NoEggMoves                ; Starmie
-	dw MimeJrEggMoves            ; Mr.Mime
-	dw ScytherEggMoves           ; Scyther
-	dw SmoochumEggMoves          ; Jynx
-	dw ElekidEggMoves            ; Electabuzz
-	dw MagbyEggMoves             ; Magmar
-	dw PinsirEggMoves            ; Pinsir
-	dw NoEggMoves                ; Tauros
-	dw NoEggMoves                ; Magikarp
-	dw NoEggMoves                ; Gyarados
-	dw LaprasEggMoves            ; Lapras
-	dw NoEggMoves                ; Ditto
-	dw EeveeEggMoves             ; Eevee
-	dw EeveeEggMoves             ; Vaporeon
-	dw EeveeEggMoves             ; Jolteon
-	dw EeveeEggMoves             ; Flareon
-	dw NoEggMoves                ; Porygon
-	dw OmanyteEggMoves           ; Omanyte
-	dw OmanyteEggMoves           ; Omastar
-	dw KabutoEggMoves            ; Kabuto
-	dw KabutoEggMoves            ; Kabutops
-	dw AerodactylEggMoves        ; Aerodactyl
-	dw MunchlaxEggMoves          ; Snorlax
-	dw NoEggMoves                ; Articuno
-	dw NoEggMoves                ; Zapdos
-	dw NoEggMoves                ; Moltres
-	dw DratiniEggMoves           ; Dratini
-	dw DratiniEggMoves           ; Dragonair
-	dw DratiniEggMoves           ; Dragonite
-	dw NoEggMoves                ; Mewtwo
-	dw NoEggMoves                ; Mew
-	dw ChikoritaEggMoves         ; Chikorita
-	dw ChikoritaEggMoves         ; Bayleef
-	dw ChikoritaEggMoves         ; Meganium
-	dw CyndaquilEggMoves         ; Cyndaquil
-	dw CyndaquilEggMoves         ; Quilava
-	dw CyndaquilEggMoves         ; Typhlosion
-	dw TotodileEggMoves          ; Totodile
-	dw TotodileEggMoves          ; Croconaw
-	dw TotodileEggMoves          ; Feraligatr
-	dw SentretEggMoves           ; Sentret
-	dw SentretEggMoves           ; Furret
-	dw HoothootEggMoves          ; Hoothoot
-	dw HoothootEggMoves          ; Noctowl
-	dw LedybaEggMoves            ; Ledyba
-	dw LedybaEggMoves            ; Ledian
-	dw SpinarakEggMoves          ; Spinarak
-	dw SpinarakEggMoves          ; Ariados
-	dw ZubatEggMoves             ; Crobat
-	dw ChinchouEggMoves          ; Chinchou
-	dw ChinchouEggMoves          ; Lanturn
-	dw PichuEggMoves             ; Pichu
-	dw CleffaEggMoves            ; Cleffa
-	dw IgglybuffEggMoves         ; Igglybuff
-	dw TogepiEggMoves            ; Togepi
-	dw TogepiEggMoves            ; Togetic
-	dw NatuEggMoves              ; Natu
-	dw NatuEggMoves              ; Xatu
-	dw MareepEggMoves            ; Mareep
-	dw MareepEggMoves            ; Flaaffy
-	dw MareepEggMoves            ; Ampharos
-	dw OddishEggMoves            ; Bellossom
-	dw AzurillEggMoves           ; Marill
-	dw AzurillEggMoves           ; Azumarill
-	dw BonslyEggMoves            ; Sudowoodo
-	dw PoliwagEggMoves           ; Politoed
-	dw HoppipEggMoves            ; Hoppip
-	dw HoppipEggMoves            ; Skiploom
-	dw HoppipEggMoves            ; Jumpluff
-	dw AipomEggMoves             ; Aipom
-	dw SunkernEggMoves           ; Sunkern
-	dw SunkernEggMoves           ; Sunflora
-	dw YanmaEggMoves             ; Yanma
-	dw WooperPlainEggMoves       ; Wooper
-	dw WooperPlainEggMoves       ; Quagsire
-	dw EeveeEggMoves             ; Espeon
-	dw EeveeEggMoves             ; Umbreon
-	dw MurkrowEggMoves           ; Murkrow
-	dw SlowpokePlainEggMoves     ; Slowking
-	dw MisdreavusEggMoves        ; Misdreavus
-	dw NoEggMoves                ; Unown
-	dw WynautEggMoves            ; Wobbuffet
-	dw GirafarigEggMoves         ; Girafarig
-	dw PinecoEggMoves            ; Pineco
-	dw PinecoEggMoves            ; Forretress
-	dw DunsparceEggMoves         ; Dunsparce
-	dw GligarEggMoves            ; Gligar
-	dw OnixEggMoves              ; Steelix
-	dw SnubbullEggMoves          ; Snubbull
-	dw SnubbullEggMoves          ; Granbull
-	dw QwilfishEggMoves          ; Qwilfish
-	dw ScytherEggMoves           ; Scizor
-	dw ShuckleEggMoves           ; Shuckle
-	dw HeracrossEggMoves         ; Heracross
-	dw SneaselEggMoves           ; Sneasel
-	dw TeddiursaEggMoves         ; Teddiursa
-	dw TeddiursaEggMoves         ; Ursaring
-	dw SlugmaEggMoves            ; Slugma
-	dw SlugmaEggMoves            ; Magcargo
-	dw SwinubEggMoves            ; Swinub
-	dw SwinubEggMoves            ; Piloswine
-	dw CorsolaPlainEggMoves      ; Corsola
-	dw RemoraidEggMoves          ; Remoraid
-	dw RemoraidEggMoves          ; Octillery
-	dw DelibirdEggMoves          ; Delibird
-	dw MantykeEggMoves           ; Mantine
-	dw SkarmoryEggMoves          ; Skarmory
-	dw HoundourEggMoves          ; Houndour
-	dw HoundourEggMoves          ; Houndoom
-	dw HorseaEggMoves            ; Kingdra
-	dw PhanpyEggMoves            ; Phanpy
-	dw PhanpyEggMoves            ; Donphan
-	dw NoEggMoves                ; Porygon2
-	dw StantlerEggMoves          ; Stantler
-	dw NoEggMoves                ; Smeargle
-	dw TyrogueEggMoves           ; Tyrogue
-	dw TyrogueEggMoves           ; Hitmontop
-	dw SmoochumEggMoves          ; Smoochum
-	dw ElekidEggMoves            ; Elekid
-	dw MagbyEggMoves             ; Magby
-	dw MiltankEggMoves           ; Miltank
-	dw HappinyEggMoves           ; Blissey
-	dw NoEggMoves                ; Raikou
-	dw NoEggMoves                ; Entei
-	dw NoEggMoves                ; Suicune
-	dw LarvitarEggMoves          ; Larvitar
-	dw LarvitarEggMoves          ; Pupitar
-	dw LarvitarEggMoves          ; Tyranitar
-	dw NoEggMoves                ; Lugia
-	dw NoEggMoves                ; HoOh
-	dw NoEggMoves                ; Celebi
-	dw AzurillEggMoves           ; Azurill
-	dw WynautEggMoves            ; Wynaut
-	dw AipomEggMoves             ; Ambipom
-	dw NoEggMoves                ; Egg
-	dw NoEggMoves                ; $100
-	dw MisdreavusEggMoves        ; Mismagius
-	dw MurkrowEggMoves           ; Honchkrow
-	dw BonslyEggMoves            ; Bonsly
-	dw MimeJrEggMoves            ; Mime Jr.
-	dw HappinyEggMoves           ; Happiny
-	dw MunchlaxEggMoves          ; Munchlax
-	dw MantykeEggMoves           ; Mantyke
-	dw SneaselEggMoves           ; Weavile
-	dw NoEggMoves                ; Magnezone
-	dw LickitungEggMoves         ; Lickilicky
-	dw RhyhornEggMoves           ; Rhyperior
-	dw TangelaEggMoves           ; Tangrowth
-	dw ElekidEggMoves            ; Electivire
-	dw MagbyEggMoves             ; Magmortar
-	dw TogepiEggMoves            ; Togekiss
-	dw YanmaEggMoves             ; Yanmega
-	dw EeveeEggMoves             ; Leafeon
-	dw EeveeEggMoves             ; Glaceon
-	dw GligarEggMoves            ; Gliscor
-	dw SwinubEggMoves            ; Mamoswine
-	dw NoEggMoves                ; PorygonZ
-	dw EeveeEggMoves             ; Sylveon
-	dw MeowthGalarianEggMoves    ; Perrserker
-	dw CorsolaGalarianEggMoves   ; Cursola
-	dw FarfetchDGalarianEggMoves ; SirfetchD
-	dw MimeJrEggMoves            ; Mr.Rime
-	dw StantlerEggMoves          ; Wyrdeer
-	dw ScytherEggMoves           ; Kleavor
-	dw TeddiursaEggMoves         ; Ursaluna
-	dw SneaselHisuianEggMoves    ; Sneasler
-	dw QwilfishHisuianEggMoves   ; Overqwil
-	dw DunsparceEggMoves         ; Dudunsparce
-	dw GirafarigEggMoves         ; Farigiraf
-	dw WooperPaldeanEggMoves     ; Clodsire
-	dw MankeyEggMoves            ; Annihilape
+	dw BulbasaurEggSpeciesMoves         ; Bulbasaur
+	dw BulbasaurEggSpeciesMoves         ; Ivysaur
+	dw BulbasaurEggSpeciesMoves         ; Venusaur
+	dw CharmanderEggSpeciesMoves        ; Charmander
+	dw CharmanderEggSpeciesMoves        ; Charmeleon
+	dw CharmanderEggSpeciesMoves        ; Charizard
+	dw SquirtleEggSpeciesMoves          ; Squirtle
+	dw SquirtleEggSpeciesMoves          ; Wartortle
+	dw SquirtleEggSpeciesMoves          ; Blastoise
+	dw CaterpieEggSpeciesMoves          ; Caterpie
+	dw CaterpieEggSpeciesMoves          ; Metapod
+	dw CaterpieEggSpeciesMoves          ; Butterfree
+	dw WeedleEggSpeciesMoves            ; Weedle
+	dw WeedleEggSpeciesMoves            ; Kakuna
+	dw WeedleEggSpeciesMoves            ; Beedrill
+	dw PidgeyEggSpeciesMoves            ; Pidgey
+	dw PidgeyEggSpeciesMoves            ; Pidgeotto
+	dw PidgeyEggSpeciesMoves            ; Pidgeot
+	dw RattataPlainEggSpeciesMoves      ; Rattata
+	dw RattataPlainEggSpeciesMoves      ; Raticate
+	dw SpearowEggSpeciesMoves           ; Spearow
+	dw SpearowEggSpeciesMoves           ; Fearow
+	dw EkansEggSpeciesMoves             ; Ekans
+	dw EkansEggSpeciesMoves             ; Arbok
+	dw PichuEggSpeciesMoves             ; Pikachu
+	dw PichuEggSpeciesMoves             ; Raichu
+	dw SandshrewPlainEggSpeciesMoves    ; Sandshrew
+	dw SandshrewPlainEggSpeciesMoves    ; Sandslash
+	dw NidoranFEggSpeciesMoves          ; NidoranF
+	dw NidoranFEggSpeciesMoves          ; Nidorina
+	dw NidoranFEggSpeciesMoves          ; Nidoqueen
+	dw NidoranMEggSpeciesMoves          ; NidoranM
+	dw NidoranMEggSpeciesMoves          ; Nidorino
+	dw NidoranMEggSpeciesMoves          ; Nidoking
+	dw CleffaEggSpeciesMoves            ; Clefairy
+	dw CleffaEggSpeciesMoves            ; Clefable
+	dw VulpixPlainEggSpeciesMoves       ; Vulpix
+	dw VulpixPlainEggSpeciesMoves       ; Ninetales
+	dw IgglybuffEggSpeciesMoves         ; Jigglypuff
+	dw IgglybuffEggSpeciesMoves         ; Wigglytuff
+	dw ZubatEggSpeciesMoves             ; Zubat
+	dw ZubatEggSpeciesMoves             ; Golbat
+	dw OddishEggSpeciesMoves            ; Oddish
+	dw OddishEggSpeciesMoves            ; Gloom
+	dw OddishEggSpeciesMoves            ; Vileplume
+	dw ParasEggSpeciesMoves             ; Paras
+	dw ParasEggSpeciesMoves             ; Parasect
+	dw VenonatEggSpeciesMoves           ; Venonat
+	dw VenonatEggSpeciesMoves           ; Venomoth
+	dw DiglettPlainEggSpeciesMoves      ; Diglett
+	dw DiglettPlainEggSpeciesMoves      ; Dugtrio
+	dw MeowthPlainEggSpeciesMoves       ; Meowth
+	dw MeowthPlainEggSpeciesMoves       ; Persian
+	dw PsyduckEggSpeciesMoves           ; Psyduck
+	dw PsyduckEggSpeciesMoves           ; Golduck
+	dw MankeyEggSpeciesMoves            ; Mankey
+	dw MankeyEggSpeciesMoves            ; Primeape
+	dw GrowlithePlainEggSpeciesMoves    ; Growlithe
+	dw GrowlithePlainEggSpeciesMoves    ; Arcanine
+	dw PoliwagEggSpeciesMoves           ; Poliwag
+	dw PoliwagEggSpeciesMoves           ; Poliwhirl
+	dw PoliwagEggSpeciesMoves           ; Poliwrath
+	dw AbraEggSpeciesMoves              ; Abra
+	dw AbraEggSpeciesMoves              ; Kadabra
+	dw AbraEggSpeciesMoves              ; Alakazam
+	dw MachopEggSpeciesMoves            ; Machop
+	dw MachopEggSpeciesMoves            ; Machoke
+	dw MachopEggSpeciesMoves            ; Machamp
+	dw BellsproutEggSpeciesMoves        ; Bellsprout
+	dw BellsproutEggSpeciesMoves        ; Weepinbell
+	dw BellsproutEggSpeciesMoves        ; Victreebel
+	dw TentacoolEggSpeciesMoves         ; Tentacool
+	dw TentacoolEggSpeciesMoves         ; Tentacruel
+	dw GeodudePlainEggSpeciesMoves      ; Geodude
+	dw GeodudePlainEggSpeciesMoves      ; Graveler
+	dw GeodudePlainEggSpeciesMoves      ; Golem
+	dw PonytaPlainEggSpeciesMoves       ; Ponyta
+	dw PonytaPlainEggSpeciesMoves       ; Rapidash
+	dw SlowpokePlainEggSpeciesMoves     ; Slowpoke
+	dw SlowpokePlainEggSpeciesMoves     ; Slowbro
+	dw MagnemiteEggSpeciesMoves         ; Magnemite
+	dw MagnemiteEggSpeciesMoves         ; Magneton
+	dw FarfetchDPlainEggSpeciesMoves    ; FarfetchD
+	dw DoduoEggSpeciesMoves             ; Doduo
+	dw DoduoEggSpeciesMoves             ; Dodrio
+	dw SeelEggSpeciesMoves              ; Seel
+	dw SeelEggSpeciesMoves              ; Dewgong
+	dw GrimerPlainEggSpeciesMoves       ; Grimer
+	dw GrimerPlainEggSpeciesMoves       ; Muk
+	dw ShellderEggSpeciesMoves          ; Shellder
+	dw ShellderEggSpeciesMoves          ; Cloyster
+	dw GastlyEggSpeciesMoves            ; Gastly
+	dw GastlyEggSpeciesMoves            ; Haunter
+	dw GastlyEggSpeciesMoves            ; Gengar
+	dw OnixEggSpeciesMoves              ; Onix
+	dw DrowzeeEggSpeciesMoves           ; Drowzee
+	dw DrowzeeEggSpeciesMoves           ; Hypno
+	dw KrabbyEggSpeciesMoves            ; Krabby
+	dw KrabbyEggSpeciesMoves            ; Kingler
+	dw VoltorbPlainEggSpeciesMoves      ; Voltorb
+	dw VoltorbPlainEggSpeciesMoves      ; Electrode
+	dw ExeggcuteEggSpeciesMoves         ; Exeggcute
+	dw ExeggcuteEggSpeciesMoves         ; Exeggutor
+	dw CuboneEggSpeciesMoves            ; Cubone
+	dw CuboneEggSpeciesMoves            ; Marowak
+	dw TyrogueEggSpeciesMoves           ; Hitmonlee
+	dw TyrogueEggSpeciesMoves           ; Hitmonchan
+	dw LickitungEggSpeciesMoves         ; Lickitung
+	dw KoffingEggSpeciesMoves           ; Koffing
+	dw KoffingEggSpeciesMoves           ; Weezing
+	dw RhyhornEggSpeciesMoves           ; Rhyhorn
+	dw RhyhornEggSpeciesMoves           ; Rhydon
+	dw HappinyEggSpeciesMoves           ; Chansey
+	dw TangelaEggSpeciesMoves           ; Tangela
+	dw KangaskhanEggSpeciesMoves        ; Kangaskhan
+	dw HorseaEggSpeciesMoves            ; Horsea
+	dw HorseaEggSpeciesMoves            ; Seadra
+	dw GoldeenEggSpeciesMoves           ; Goldeen
+	dw GoldeenEggSpeciesMoves           ; Seaking
+	dw StaryuEggSpeciesMoves            ; Staryu
+	dw StaryuEggSpeciesMoves           ; Starmie
+	dw MimeJrEggSpeciesMoves            ; Mr.Mime
+	dw ScytherEggSpeciesMoves           ; Scyther
+	dw SmoochumEggSpeciesMoves          ; Jynx
+	dw ElekidEggSpeciesMoves            ; Electabuzz
+	dw MagbyEggSpeciesMoves             ; Magmar
+	dw PinsirEggSpeciesMoves            ; Pinsir
+	dw NoEggSpeciesMoves                ; Tauros
+	dw MagikarpEggSpeciesMoves          ; Magikarp
+	dw MagikarpEggSpeciesMoves          ; Gyarados
+	dw LaprasEggSpeciesMoves            ; Lapras
+	dw NoEggSpeciesMoves                ; Ditto
+	dw EeveeEggSpeciesMoves             ; Eevee
+	dw EeveeEggSpeciesMoves             ; Vaporeon
+	dw EeveeEggSpeciesMoves             ; Jolteon
+	dw EeveeEggSpeciesMoves             ; Flareon
+	dw PorygonEggSpeciesMoves           ; Porygon
+	dw OmanyteEggSpeciesMoves           ; Omanyte
+	dw OmanyteEggSpeciesMoves           ; Omastar
+	dw KabutoEggSpeciesMoves            ; Kabuto
+	dw KabutoEggSpeciesMoves            ; Kabutops
+	dw AerodactylEggSpeciesMoves        ; Aerodactyl
+	dw MunchlaxEggSpeciesMoves          ; Snorlax
+	dw NoEggSpeciesMoves                ; Articuno
+	dw NoEggSpeciesMoves                ; Zapdos
+	dw NoEggSpeciesMoves                ; Moltres
+	dw DratiniEggSpeciesMoves           ; Dratini
+	dw DratiniEggSpeciesMoves           ; Dragonair
+	dw DratiniEggSpeciesMoves           ; Dragonite
+	dw NoEggSpeciesMoves                ; Mewtwo
+	dw NoEggSpeciesMoves                ; Mew
+	dw ChikoritaEggSpeciesMoves         ; Chikorita
+	dw ChikoritaEggSpeciesMoves         ; Bayleef
+	dw ChikoritaEggSpeciesMoves         ; Meganium
+	dw CyndaquilEggSpeciesMoves         ; Cyndaquil
+	dw CyndaquilEggSpeciesMoves         ; Quilava
+	dw CyndaquilEggSpeciesMoves         ; Typhlosion
+	dw TotodileEggSpeciesMoves          ; Totodile
+	dw TotodileEggSpeciesMoves          ; Croconaw
+	dw TotodileEggSpeciesMoves          ; Feraligatr
+	dw SentretEggSpeciesMoves           ; Sentret
+	dw SentretEggSpeciesMoves           ; Furret
+	dw HoothootEggSpeciesMoves          ; Hoothoot
+	dw HoothootEggSpeciesMoves          ; Noctowl
+	dw LedybaEggSpeciesMoves            ; Ledyba
+	dw LedybaEggSpeciesMoves            ; Ledian
+	dw SpinarakEggSpeciesMoves          ; Spinarak
+	dw SpinarakEggSpeciesMoves          ; Ariados
+	dw ZubatEggSpeciesMoves             ; Crobat
+	dw ChinchouEggSpeciesMoves          ; Chinchou
+	dw ChinchouEggSpeciesMoves          ; Lanturn
+	dw PichuEggSpeciesMoves             ; Pichu
+	dw CleffaEggSpeciesMoves            ; Cleffa
+	dw IgglybuffEggSpeciesMoves         ; Igglybuff
+	dw TogepiEggSpeciesMoves            ; Togepi
+	dw TogepiEggSpeciesMoves            ; Togetic
+	dw NatuEggSpeciesMoves              ; Natu
+	dw NatuEggSpeciesMoves              ; Xatu
+	dw MareepEggSpeciesMoves            ; Mareep
+	dw MareepEggSpeciesMoves            ; Flaaffy
+	dw MareepEggSpeciesMoves            ; Ampharos
+	dw OddishEggSpeciesMoves            ; Bellossom
+	dw AzurillEggSpeciesMoves           ; Marill
+	dw AzurillEggSpeciesMoves           ; Azumarill
+	dw BonslyEggSpeciesMoves            ; Sudowoodo
+	dw PoliwagEggSpeciesMoves           ; Politoed
+	dw HoppipEggSpeciesMoves            ; Hoppip
+	dw HoppipEggSpeciesMoves            ; Skiploom
+	dw HoppipEggSpeciesMoves            ; Jumpluff
+	dw AipomEggSpeciesMoves             ; Aipom
+	dw SunkernEggSpeciesMoves           ; Sunkern
+	dw SunkernEggSpeciesMoves           ; Sunflora
+	dw YanmaEggSpeciesMoves             ; Yanma
+	dw WooperPlainEggSpeciesMoves       ; Wooper
+	dw WooperPlainEggSpeciesMoves       ; Quagsire
+	dw EeveeEggSpeciesMoves             ; Espeon
+	dw EeveeEggSpeciesMoves             ; Umbreon
+	dw MurkrowEggSpeciesMoves           ; Murkrow
+	dw SlowpokePlainEggSpeciesMoves     ; Slowking
+	dw MisdreavusEggSpeciesMoves        ; Misdreavus
+	dw NoEggSpeciesMoves                ; Unown
+	dw WynautEggSpeciesMoves            ; Wobbuffet
+	dw GirafarigEggSpeciesMoves         ; Girafarig
+	dw PinecoEggSpeciesMoves            ; Pineco
+	dw PinecoEggSpeciesMoves            ; Forretress
+	dw DunsparceEggSpeciesMoves         ; Dunsparce
+	dw GligarEggSpeciesMoves            ; Gligar
+	dw OnixEggSpeciesMoves              ; Steelix
+	dw SnubbullEggSpeciesMoves          ; Snubbull
+	dw SnubbullEggSpeciesMoves          ; Granbull
+	dw QwilfishEggSpeciesMoves          ; Qwilfish
+	dw ScytherEggSpeciesMoves           ; Scizor
+	dw ShuckleEggSpeciesMoves           ; Shuckle
+	dw HeracrossEggSpeciesMoves         ; Heracross
+	dw SneaselEggSpeciesMoves           ; Sneasel
+	dw TeddiursaEggSpeciesMoves         ; Teddiursa
+	dw TeddiursaEggSpeciesMoves         ; Ursaring
+	dw SlugmaEggSpeciesMoves            ; Slugma
+	dw SlugmaEggSpeciesMoves            ; Magcargo
+	dw SwinubEggSpeciesMoves            ; Swinub
+	dw SwinubEggSpeciesMoves            ; Piloswine
+	dw CorsolaPlainEggSpeciesMoves      ; Corsola
+	dw RemoraidEggSpeciesMoves          ; Remoraid
+	dw RemoraidEggSpeciesMoves          ; Octillery
+	dw DelibirdEggSpeciesMoves          ; Delibird
+	dw MantykeEggSpeciesMoves           ; Mantine
+	dw SkarmoryEggSpeciesMoves          ; Skarmory
+	dw HoundourEggSpeciesMoves          ; Houndour
+	dw HoundourEggSpeciesMoves          ; Houndoom
+	dw HorseaEggSpeciesMoves            ; Kingdra
+	dw PhanpyEggSpeciesMoves            ; Phanpy
+	dw PhanpyEggSpeciesMoves            ; Donphan
+	dw PorygonEggSpeciesMoves           ; Porygon2
+	dw StantlerEggSpeciesMoves          ; Stantler
+	dw NoEggSpeciesMoves                ; Smeargle
+	dw TyrogueEggSpeciesMoves           ; Tyrogue
+	dw TyrogueEggSpeciesMoves           ; Hitmontop
+	dw SmoochumEggSpeciesMoves          ; Smoochum
+	dw ElekidEggSpeciesMoves            ; Elekid
+	dw MagbyEggSpeciesMoves             ; Magby
+	dw MiltankEggSpeciesMoves           ; Miltank
+	dw HappinyEggSpeciesMoves           ; Blissey
+	dw NoEggSpeciesMoves                ; Raikou
+	dw NoEggSpeciesMoves                ; Entei
+	dw NoEggSpeciesMoves                ; Suicune
+	dw LarvitarEggSpeciesMoves          ; Larvitar
+	dw LarvitarEggSpeciesMoves          ; Pupitar
+	dw LarvitarEggSpeciesMoves          ; Tyranitar
+	dw NoEggSpeciesMoves                ; Lugia
+	dw NoEggSpeciesMoves                ; HoOh
+	dw NoEggSpeciesMoves                ; Celebi
+	dw AzurillEggSpeciesMoves           ; Azurill
+	dw WynautEggSpeciesMoves            ; Wynaut
+	dw AipomEggSpeciesMoves             ; Ambipom
+	dw NoEggSpeciesMoves                ; Egg
+	dw NoEggSpeciesMoves                ; $100
+	dw MisdreavusEggSpeciesMoves        ; Mismagius
+	dw MurkrowEggSpeciesMoves           ; Honchkrow
+	dw BonslyEggSpeciesMoves            ; Bonsly
+	dw MimeJrEggSpeciesMoves            ; Mime Jr.
+	dw HappinyEggSpeciesMoves           ; Happiny
+	dw MunchlaxEggSpeciesMoves          ; Munchlax
+	dw MantykeEggSpeciesMoves           ; Mantyke
+	dw SneaselEggSpeciesMoves           ; Weavile
+	dw MagnemiteEggSpeciesMoves         ; Magnezone
+	dw LickitungEggSpeciesMoves         ; Lickilicky
+	dw RhyhornEggSpeciesMoves           ; Rhyperior
+	dw TangelaEggSpeciesMoves           ; Tangrowth
+	dw ElekidEggSpeciesMoves            ; Electivire
+	dw MagbyEggSpeciesMoves             ; Magmortar
+	dw TogepiEggSpeciesMoves            ; Togekiss
+	dw YanmaEggSpeciesMoves             ; Yanmega
+	dw EeveeEggSpeciesMoves             ; Leafeon
+	dw EeveeEggSpeciesMoves             ; Glaceon
+	dw GligarEggSpeciesMoves            ; Gliscor
+	dw SwinubEggSpeciesMoves            ; Mamoswine
+	dw PorygonEggSpeciesMoves           ; PorygonZ
+	dw EeveeEggSpeciesMoves             ; Sylveon
+	dw MeowthGalarianEggSpeciesMoves    ; Perrserker
+	dw CorsolaGalarianEggSpeciesMoves   ; Cursola
+	dw FarfetchDGalarianEggSpeciesMoves ; SirfetchD
+	dw MimeJrEggSpeciesMoves            ; Mr.Rime
+	dw StantlerEggSpeciesMoves          ; Wyrdeer
+	dw ScytherEggSpeciesMoves           ; Kleavor
+	dw TeddiursaEggSpeciesMoves         ; Ursaluna
+	dw SneaselHisuianEggSpeciesMoves    ; Sneasler
+	dw QwilfishHisuianEggSpeciesMoves   ; Overqwil
+	dw DunsparceEggSpeciesMoves         ; Dudunsparce
+	dw GirafarigEggSpeciesMoves         ; Farigiraf
+	dw WooperPaldeanEggSpeciesMoves     ; Clodsire
+	dw MankeyEggSpeciesMoves            ; Annihilape
 	assert_table_length NUM_SPECIES
 
-	dw NoEggMoves                ; Gyarados (Red Form)
+	dw MagikarpEggSpeciesMoves          ; Gyarados (Red Form)
 
-	dw NoEggMoves                ; Mewtwo (Armored Form)
+	dw NoEggSpeciesMoves                ; Mewtwo (Armored Form)
 
-	dw DunsparceEggMoves         ; Dundunsparse (Three Segment Form)
+	dw DunsparceEggSpeciesMoves         ; Dundunsparse (Three Segment Form)
 
-	dw RattataAlolanEggMoves     ; Rattata (Alolan Form)
-	dw RattataAlolanEggMoves     ; Raticate (Alolan Form)
-	dw PichuEggMoves             ; Raichu (Alolan Form)
-	dw SandshrewAlolanEggMoves   ; Sandshrew (Alolan Form)
-	dw SandshrewAlolanEggMoves   ; Sandslash (Alolan Form)
-	dw VulpixAlolanEggMoves      ; Vulpix (Alolan Form)
-	dw VulpixAlolanEggMoves      ; Ninetales (Alolan Form)
-	dw DiglettAlolanEggMoves     ; Diglett (Alolan Form)
-	dw DiglettAlolanEggMoves     ; Dugtrio (Alolan Form)
-	dw MeowthAlolanEggMoves      ; Meowth (Alolan Form)
-	dw MeowthAlolanEggMoves      ; Persian (Alolan Form)
-	dw GeodudeAlolanEggMoves     ; Geodude (Alolan Form)
-	dw GeodudeAlolanEggMoves     ; Graveler (Alolan Form)
-	dw GeodudeAlolanEggMoves     ; Golem (Alolan Form)
-	dw GrimerAlolanEggMoves      ; Grimer (Alolan Form)
-	dw GrimerAlolanEggMoves      ; Muk (Alolan Form)
-	dw ExeggcuteEggMoves         ; Exeggutor (Alolan Form)
-	dw CuboneEggMoves            ; Marowak (Alolan Form)
+	dw RattataAlolanEggSpeciesMoves     ; Rattata (Alolan Form)
+	dw RattataAlolanEggSpeciesMoves     ; Raticate (Alolan Form)
+	dw PichuEggSpeciesMoves             ; Raichu (Alolan Form)
+	dw SandshrewAlolanEggSpeciesMoves   ; Sandshrew (Alolan Form)
+	dw SandshrewAlolanEggSpeciesMoves   ; Sandslash (Alolan Form)
+	dw VulpixAlolanEggSpeciesMoves      ; Vulpix (Alolan Form)
+	dw VulpixAlolanEggSpeciesMoves      ; Ninetales (Alolan Form)
+	dw DiglettAlolanEggSpeciesMoves     ; Diglett (Alolan Form)
+	dw DiglettAlolanEggSpeciesMoves     ; Dugtrio (Alolan Form)
+	dw MeowthAlolanEggSpeciesMoves      ; Meowth (Alolan Form)
+	dw MeowthAlolanEggSpeciesMoves      ; Persian (Alolan Form)
+	dw GeodudeAlolanEggSpeciesMoves     ; Geodude (Alolan Form)
+	dw GeodudeAlolanEggSpeciesMoves     ; Graveler (Alolan Form)
+	dw GeodudeAlolanEggSpeciesMoves     ; Golem (Alolan Form)
+	dw GrimerAlolanEggSpeciesMoves      ; Grimer (Alolan Form)
+	dw GrimerAlolanEggSpeciesMoves      ; Muk (Alolan Form)
+	dw ExeggcuteEggSpeciesMoves         ; Exeggutor (Alolan Form)
+	dw CuboneEggSpeciesMoves            ; Marowak (Alolan Form)
 
-	dw MeowthGalarianEggMoves    ; Meowth (Galarian Form)
-	dw PonytaGalarianEggMoves    ; Ponyta (Galarian Form)
-	dw PonytaGalarianEggMoves    ; Rapidash (Galarian Form)
-	dw SlowpokeGalarianEggMoves  ; Slowpoke (Galarian Form)
-	dw SlowpokeGalarianEggMoves  ; Slowbro (Galarian Form)
-	dw FarfetchDGalarianEggMoves ; Farfetch'D (Galarian Form)
-	dw KoffingEggMoves           ; Weezing (Galarian Form)
-	dw MimeJrEggMoves            ; Mr.Mime (Galarian Form)
-	dw NoEggMoves                ; Articuno (Galarian Form)
-	dw NoEggMoves                ; Zapdos (Galarian Form)
-	dw NoEggMoves                ; Moltres (Galarian Form)
-	dw SlowpokeGalarianEggMoves  ; Slowking (Galarian Form)
-	dw CorsolaGalarianEggMoves   ; Corsola (Galarian Form)
+	dw MeowthGalarianEggSpeciesMoves    ; Meowth (Galarian Form)
+	dw PonytaGalarianEggSpeciesMoves    ; Ponyta (Galarian Form)
+	dw PonytaGalarianEggSpeciesMoves    ; Rapidash (Galarian Form)
+	dw SlowpokeGalarianEggSpeciesMoves  ; Slowpoke (Galarian Form)
+	dw SlowpokeGalarianEggSpeciesMoves  ; Slowbro (Galarian Form)
+	dw FarfetchDGalarianEggSpeciesMoves ; Farfetch'D (Galarian Form)
+	dw KoffingEggSpeciesMoves           ; Weezing (Galarian Form)
+	dw MimeJrEggSpeciesMoves            ; Mr.Mime (Galarian Form)
+	dw NoEggSpeciesMoves                ; Articuno (Galarian Form)
+	dw NoEggSpeciesMoves                ; Zapdos (Galarian Form)
+	dw NoEggSpeciesMoves                ; Moltres (Galarian Form)
+	dw SlowpokeGalarianEggSpeciesMoves  ; Slowking (Galarian Form)
+	dw CorsolaGalarianEggSpeciesMoves   ; Corsola (Galarian Form)
 
-	dw GrowlitheHisuianEggMoves  ; Growlithe (Hisuian Form)
-	dw GrowlitheHisuianEggMoves  ; Arcanine (Hisuian Form)
-	dw NoEggMoves                ; Voltorb (Hisuian Form)
-	dw NoEggMoves                ; Electrode (Hisuian Form)
-	dw CyndaquilEggMoves         ; Typhlosion (Hisuian Form)
-	dw QwilfishHisuianEggMoves   ; Qwilfish (Hisuian Form)
-	dw SneaselHisuianEggMoves    ; Sneasel (Hisuian Form)
+	dw GrowlitheHisuianEggSpeciesMoves  ; Growlithe (Hisuian Form)
+	dw GrowlitheHisuianEggSpeciesMoves  ; Arcanine (Hisuian Form)
+	dw VoltorbHisuianEggSpeciesMoves    ; Voltorb (Hisuian Form)
+	dw VoltorbHisuianEggSpeciesMoves    ; Electrode (Hisuian Form)
+	dw CyndaquilEggSpeciesMoves         ; Typhlosion (Hisuian Form)
+	dw QwilfishHisuianEggSpeciesMoves   ; Qwilfish (Hisuian Form)
+	dw SneaselHisuianEggSpeciesMoves    ; Sneasel (Hisuian Form)
 
-	dw WooperPaldeanEggMoves     ; Wooper (Paldean Form)
-	dw NoEggMoves                ; Tauros (Paldean Form)
-	dw NoEggMoves                ; Tauros (Paldean Fire Form)
-	dw NoEggMoves                ; Tauros (Paldean Water Form)
+	dw WooperPaldeanEggSpeciesMoves     ; Wooper (Paldean Form)
+	dw NoEggSpeciesMoves                ; Tauros (Paldean Form)
+	dw NoEggSpeciesMoves                ; Tauros (Paldean Fire Form)
+	dw NoEggSpeciesMoves                ; Tauros (Paldean Water Form)
 
-	dw NoEggMoves                ; Ursaluna (Bloodmoon Form)
+	dw NoEggSpeciesMoves                ; Ursaluna (Bloodmoon Form)
 
 	assert_table_length NUM_EXT_POKEMON

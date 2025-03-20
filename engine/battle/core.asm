@@ -7335,41 +7335,92 @@ _GetNewBaseExp:
 	ldh [hMultiplicand + 2], a
 
 	ld a, [wCurSpecies]
-	ld [wCurPartySpecies], a
-	; wCurForm should already be set... right?
-	farcall GetPreEvolution
-	jr c, .not_basic
-
-	; let's see if we have an evolution
-	; c = species
-	ld a, [wCurPartySpecies]
 	ld c, a
-	; b = form
+	; wCurForm should already be set... right?
 	ld a, [wCurForm]
+	and SPECIESFORM_MASK
 	ld b, a
-	; bc = index
+	ld hl, LegendaryMons
+	push bc
+	call GetSpeciesAndFormIndexFromHL
+	pop bc
+	ld a, 10
+	jr c, .got_multiplier ; legendary: *10/20 -> *0.5
+
+	; check if mon has a pre-evolution
+	; basic: *4/20 ->  *0.2
+	; 1st stage or non-evolver: *7/20 -> *0.35
+	; 2nd stage: *0.5
+	push bc
+	call GetSpeciesAndFormIndex
+	ld hl, EggSpeciesMovesPointers
+	add hl, bc
+	add hl, bc
+	pop bc
+	ld a, BANK(EggSpeciesMovesPointers)
+	call GetFarWord
+	ld a, BANK(EggSpeciesMoves)
+	call GetFarWord
+	inc l
+	jr z, .stage_1_or_nonevolver
+	dec l
+	ld a, l
+	cp c
+	jr nz, .is_evo
+	ld a, h
+	cp b
+	jr nz, .is_evo
 	predef GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc a
-	ld a, 4 ; basic mon (not evolved, but can evolve): *4/20 -> *0.2
+	ld a, 4
 	jr nz, .got_multiplier
 	jr .stage_1_or_nonevolver
 
-.not_basic
-	ld a, [wCurPartySpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	ld hl, LegendaryMons
-	call GetSpeciesAndFormIndexFromHL
-	jr c, .legendary
-	farcall GetPreEvolution
-.legendary
-	ld a, 10 ; stage 2 or legendary: *10/20 -> *0.5
-	jr c, .got_multiplier
+	; check if that pre-evolution evolves into this mon
+	; if it doesn't, this mon is stage 2
+.is_evo
+	push bc
+	ld b, h
+	ld c, l
+	predef GetEvosAttacksPointer
+	pop bc
+.evos_loop
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
+	ld d, a
+	inc a
+	ld a, 10
+	jr z, .got_multiplier
+	ld a, d
+	cp EVOLVE_PARTY
+	jr z, .inc_3
+	cp EVOLVE_STAT
+	jr z, .inc_3
+	cp EVOLVE_HOLDING
+	jr nz, .inc_2
+.inc_3
+	inc hl
+.inc_2
+	inc hl
+	inc hl
+	push hl
+	ld a, BANK(EvosAttacks)
+	call GetFarWord
+	ld d, l
+	ld a, h
+	pop hl
+	inc hl
+	inc hl
+	cp b
+	jr nz, .evos_loop
+	ld a, d
+	cp c
+	jr nz, .evos_loop
+	
 .stage_1_or_nonevolver
-	ld a, 7 ; stage 1 or non-evolver: *7/20 -> *0.35
+	ld a, 7
 .got_multiplier
 	ldh [hMultiplier], a
 	call Multiply
