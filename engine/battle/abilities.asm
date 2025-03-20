@@ -1158,6 +1158,7 @@ SpeedAbilities:
 	dbw SAND_RUSH, SandRushAbility
 	dbw SLUSH_RUSH, SlushRushAbility
 	dbw QUICK_FEET, QuickFeetAbility
+	dbw -1, -1
 
 UnburdenAbility:
 	; Only if we have the Unburden volatile
