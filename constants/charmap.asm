@@ -20,7 +20,7 @@ ENDM
 	charmap "<FAR>",    $08
 	charmap "<PLURAL>", $09
 
-	; n-grams: $09 - $51 (defined below)
+	; n-grams: $0a - $51 (defined below)
 
 DEF SPECIALS_START EQU $52
 

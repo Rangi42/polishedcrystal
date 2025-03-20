@@ -409,10 +409,10 @@ PlaceCommandCharacter::
 	jmp NextChar
 
 MACRO plural ; TODO: move this elsewhere?
-  for i, charlen(\1)
-    db charsub(\1, charlen(\1) - i)
-  endr
-  db "@", \2, "@"
+	for i, charlen(\1)
+		db charsub(\1, charlen(\1) - i)
+	endr
+	db "@", \2, "@"
 ENDM
 
 TextCommand_PLURAL:
@@ -432,6 +432,19 @@ TextCommand_PLURAL:
 	; Iterate until the pattern no longer matches our string.
 	dec bc
 	ld a, [bc]
+
+	; If we find a terminator in the input string, we must have gone past it
+	; into other data. Handle this separately. The reason for this is that
+	; otherwise, if the plural table is also at a terminator, we'll misalign the
+	; parser into reading output as input and vice versa.
+	cp "@"
+	jr nz, .not_at_start
+	cp [hl]
+	jr nz, .no_match
+	inc hl
+	jr .match
+
+.not_at_start
 	cp [hl]
 	ld a, [hli] ; To check if we found the terminator.
 	jr z, .check_match_loop
@@ -440,6 +453,7 @@ TextCommand_PLURAL:
 	cp "@"
 	jr nz, .no_match
 
+.match
 	; We have a match. Print out the adjusted string.
 	inc bc
 	ld d, h
