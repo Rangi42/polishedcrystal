@@ -1127,6 +1127,7 @@ wMemCGBLayout:: db
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
+NEXTU
 wTrainerCardBadgePaletteAddr:: dw
 NEXTU
 wPlayerHPPal:: db
