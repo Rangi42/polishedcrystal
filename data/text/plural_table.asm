@@ -6,23 +6,29 @@ MACRO plural ; TODO: move this elsewhere?
 ENDM
 
 PluralTable:
+	; Note that order matters since "ay" is a subset of "y" for example.
+if !DEF(FAITHFUL)
 	plural "e of Rage", "es of Rage" ; Cakes of Rage
-	plural "Honey", "Honey" ; (Sweet) Honey
-	plural "ay", "ays" ; Light Clays
-	plural "y", "ies" ; Rare Candies
-	plural "x", "xes" ; PP Maxes
-	plural "ilk", "ilk" ; Moomoo Milk
-	plural "Crunch", "Crunchies" ; PewterCrunchies
-	plural "h", "hes" ; Sacred Ashes
-	plural "Powder", "Powder" ; EnergyPowder
-	plural "c.", "cs." ; Guard Specs.
-	plural "ts", "ts" ; Heavy Boots
-	plural "ef", "efs" ; X Sp.Defs
-	plural "f", "ves" ; Silk Scarves
-	plural "Sand", "Sand" ; Soft Sand
-	plural "es", "es" ; BlackGlasses
-	plural "rs", "rs" ; Leftovers
-	plural "ds", "ds" ; Protect Pads
-	plural "Dice", "Dice" ; Loaded Dice
-	plural "s", "ses" ; Scope Lenses
-	plural "", "s" ; everything else
+endc
+	plural "Honey",     "Honey"      ; (Sweet) Honey
+	plural "ay",        "ays"        ; Light Clays, and Throat Sprays
+	plural "y",         "ies"        ; Rare Candies, Berries, etc
+	plural "x",         "xes"        ; PP Maxes
+	plural "lk",        "lk"         ; Moomoo Milk
+	plural "runch",     "runchies"   ; PewterCrunchies
+	plural "h",         "hes"        ; Sacred Ashes, Mulches, etc
+	plural "der",       "der"        ; Powders (EnergyPowder, Heal Powder, etc)
+if DEF(FAITHFUL)
+	plural "c.",        "cs."        ; Guard Specs.
+endc
+	plural "ts",        "ts"         ; Guard Stats, Heavy Boots
+	plural "ef",        "efs"        ; X Sp.Defs
+	plural "f",         "ves"        ; Silk Scarves, Silver Leaves, etc
+	plural "Sand",      "Sand"       ; Soft Sand
+	plural "es",        "es"         ; BlackGlasses, Wise Glasses, Safe Goggles
+	plural "rs",        "rs"         ; Leftovers
+	plural "ds",        "ds"         ; Protect Pads
+	plural "Dice",      "Dice"       ; Loaded Dice
+	plural "ns",        "nses"       ; Lenses (Scope Lenses, Wide Lenses, etc)
+	plural "s",         "s"          ; Carbos
+	plural "",          "s"          ; everything else
