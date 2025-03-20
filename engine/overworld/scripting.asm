@@ -274,6 +274,7 @@ ScriptCommandTable:
 	dw Script_givespecialitem            ; d7
 	dw Script_givebadge                  ; d8
 	dw Script_setquantity                ; d9
+	dw Script_pluralize                  ; da
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -2728,4 +2729,34 @@ Script_setquantity:
 ; Sets wItemQuantityChangeBuffer to hScriptVar, for text_plural benefit.
 	ldh a, [hScriptVar]
 	ld [wItemQuantityChangeBuffer], a
+	ret
+
+Script_pluralize:
+; Pluralizes a string buffer. This is needed for non-instant/scrolling text.
+; The reason is that otherwise, we can end up scrolling "Oran Berry", then
+; replace "y" with "ies" which looks silly.
+; This assumes that we can safely write to (string buffer)-1!
+	call GetScriptWord
+	; fallthrough (input in hl)
+Pluralize:
+	; Avoid going beyond the beginning of the string.
+	dec hl
+	ld a, [hl]
+	push hl
+	push af
+	ld a, "@"
+	ld [hli], a
+
+	; Track down the terminator.
+.terminator_loop
+	ld a, [hli]
+	cp "@"
+	jr nz, .terminator_loop
+	ld b, h
+	ld c, l
+	dec bc
+	call TextCommand_PLURAL
+	pop af
+	pop hl
+	ld [hl], a
 	ret
