@@ -408,6 +408,83 @@ PlaceCommandCharacter::
 	pop de
 	jmp NextChar
 
+MACRO plural ; TODO: move this elsewhere?
+  for i, charlen(\1)
+    db charsub(\1, charlen(\1) - i)
+  endr
+  db "@", \2, "@"
+ENDM
+
+TextCommand_PLURAL:
+; Pluralize the last word. Might perform edits on it (Candy -> Candies).
+	; If wItemQuantityBuffer is 1, do nothing.
+	ld a, [wItemQuantityChangeBuffer]
+	dec a
+	ret z
+
+	; Try to pattern match the previous string with the plural table below.
+	push hl
+	push bc
+
+	ld hl, .PluralTable
+
+.check_match_loop
+	; Iterate until the pattern no longer matches our string.
+	dec bc
+	ld a, [bc]
+	cp [hl]
+	ld a, [hli] ; To check if we found the terminator.
+	jr z, .check_match_loop
+
+	; Did we hit the terminator?
+	cp "@"
+	jr nz, .no_match
+
+	; We have a match. Print out the adjusted string.
+	inc bc
+	ld d, h
+	ld e, l
+	ld h, b
+	ld l, c
+	pop bc
+	call PlaceString
+	pop hl
+	ret
+
+.no_match
+	ld b, 2
+.no_match_loop
+	ld a, [hli]
+	cp "@"
+	jr nz, .no_match_loop
+	dec b
+	jr nz, .no_match_loop
+	pop bc
+	push bc
+	jr .check_match_loop
+
+.PluralTable:
+	plural "e of Rage", "es of Rage" ; Cakes of Rage
+	plural "Honey", "Honey" ; (Sweet) Honey
+	plural "ay", "ays" ; Light Clays
+	plural "y", "ies" ; Rare Candies
+	plural "x", "xes" ; PP Maxes
+	plural "ilk", "ilk" ; Moomoo Milk
+	plural "Crunch", "Crunchies" ; PewterCrunchies
+	plural "h", "hes" ; Sacred Ashes
+	plural "Powder", "Powder" ; EnergyPowder
+	plural "c.", "cs." ; Guard Specs.
+	plural "ts", "ts" ; Heavy Boots
+	plural "ef", "efs" ; X Sp.Defs
+	plural "f", "ves" ; Silk Scarves
+	plural "Sand", "Sand" ; Soft Sand
+	plural "es", "es" ; BlackGlasses
+	plural "rs", "rs" ; Leftovers
+	plural "ds", "ds" ; Protect Pads
+	plural "Dice", "Dice" ; Loaded Dice
+	plural "s", "ses" ; Scope Lenses
+	plural "", "s" ; everything else
+
 TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	decoord TEXTBOX_INNERX, TEXTBOX_INNERY - 1
@@ -508,6 +585,7 @@ TextCommands::
 	dw TextCommand_SOUND         ; $06 <SOUND>
 	dw TextCommand_DAY           ; $07 <DAY>
 	dw TextCommand_FAR           ; $08 <FAR>
+	dw TextCommand_PLURAL        ; $09 <PLURAL>
 	assert_table_length NGRAMS_START
 
 _ImplicitlyStartedText:

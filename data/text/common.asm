@@ -2413,7 +2413,7 @@ _AskQuantityThrowAwayText::
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
 	text_ram wStringBuffer2
-	text "(s)?"
+	text "<PLURAL>?"
 	done
 
 SECTION "_ThrewAwayText", ROMX
@@ -3109,15 +3109,6 @@ _StartMenuContestEndText::
 SECTION "_ItemsTossOutHowManyText", ROMX
 _ItemsTossOutHowManyText::
 	text "Toss out how many"
-	line ""
-	text_ram wStringBuffer2
-	text "(s)?"
-	done
-
-SECTION "_ItemsThrowAwayText", ROMX
-_ItemsThrowAwayText::
-	text "Throw away "
-	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
 	text_ram wStringBuffer2
 	text "(s)?"
