@@ -7344,13 +7344,10 @@ _GetNewBaseExp:
 	push bc
 	call GetSpeciesAndFormIndexFromHL
 	pop bc
-	ld a, 10
-	jr c, .got_multiplier ; legendary: *10/20 -> *0.5
+	ld a, 10 ; legendary: *10/20 -> *0.5
+	jr c, .got_multiplier
 
 	; check if mon has a pre-evolution
-	; basic: *4/20 ->  *0.2
-	; 1st stage or non-evolver: *7/20 -> *0.35
-	; 2nd stage: *0.5
 	push bc
 	call GetSpeciesAndFormIndex
 	ld hl, EggSpeciesMovesPointers
@@ -7374,7 +7371,7 @@ _GetNewBaseExp:
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc a
-	ld a, 4
+	ld a, 4 ; basic: *4/20 ->  *0.2
 	jr nz, .got_multiplier
 	jr .stage_1_or_nonevolver
 
@@ -7391,7 +7388,7 @@ _GetNewBaseExp:
 	call GetFarByte
 	ld d, a
 	inc a
-	ld a, 10
+	ld a, 10 ; 2nd stage: *10/20 -> *0.5
 	jr z, .got_multiplier
 	ld a, d
 	cp EVOLVE_PARTY
@@ -7420,7 +7417,7 @@ _GetNewBaseExp:
 	jr nz, .evos_loop
 	
 .stage_1_or_nonevolver
-	ld a, 7
+	ld a, 7 ; 1st stage or non-evolver: *7/20 -> *0.35
 .got_multiplier
 	ldh [hMultiplier], a
 	call Multiply
