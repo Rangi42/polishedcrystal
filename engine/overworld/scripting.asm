@@ -2725,7 +2725,7 @@ ShowBadgeIcon:
 	jmp SafeCopyTilemapAtOnce
 
 Script_setquantity:
-; Sets wItemQuantityChangeBuffer to hScriptVar, for <PLURAL> benefit.
+; Sets wItemQuantityChangeBuffer to hScriptVar, for text_plural benefit.
 	ldh a, [hScriptVar]
 	ld [wItemQuantityChangeBuffer], a
 	ret

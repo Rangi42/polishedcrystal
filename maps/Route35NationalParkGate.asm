@@ -395,7 +395,9 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 Route35NationalParkGateOfficer1WantToFinishText:
 	text "You still have "
 	text_decimal wItemQuantityChangeBuffer, 1, 2
-	line "minute<PLURAL> left."
+	line "minute"
+	text_plural
+	text " left."
 
 	para "Do you want to"
 	line "finish now?"
