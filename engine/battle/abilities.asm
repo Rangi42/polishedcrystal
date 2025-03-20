@@ -3,9 +3,8 @@ RunEntryAbilitiesInner:
 	; ignores some entry abilities.
 	call GetOpponentAbility
 	inc a
-	jr z, RunEntryAbilitiesInner_SkillSwap
-	jr _RunEntryAbilitiesInner
-
+	jr nz, _RunEntryAbilitiesInner
+	; fallthrough
 RunEntryAbilitiesInner_SkillSwap:
 ; Runs on Skill Swap or pending Neutralizing Gas deactivation.
 	; Some abilities do nothing in this case.

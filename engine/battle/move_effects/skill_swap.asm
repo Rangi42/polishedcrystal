@@ -62,7 +62,7 @@ AbilityCanBeSkillSwapped:
 AbilityChangeCheck_IsInByteArray:
 ; Returns carry if ability is part of a blacklist in hl.
 	; Handle Neutralizing Gas sentinel (-1).
-	add 1
+	add 1 ; no-optimize a++|a-- (sets carry)
 	dec a ; doesn't mess with carry
 	ret c
 
