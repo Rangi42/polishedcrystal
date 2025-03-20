@@ -1,4 +1,4 @@
-MACRO plural ; TODO: move this elsewhere?
+MACRO plural
 	for i, charlen(\1)
 		db charsub(\1, charlen(\1) - i)
 	endr
