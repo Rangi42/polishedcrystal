@@ -20,25 +20,25 @@ SilphCo2F_MapScriptHeader:
 	bg_event 13,  3, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
-	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
-	object_event  8,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
-	object_event  2,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
+	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
+	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
+	object_event  8,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
+	object_event  2,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
 
 SilphCo2FScientist1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_UP_GRADE
-	iftruefwd SilphCo2FScientist1GaveUpGradeScript
+	checkevent EVENT_GOT_UPGRADE
+	iftruefwd SilphCo2FScientist1GaveUpgradeScript
 	writetext SilphCo2FScientist1Text1
 	promptbutton
-	verbosegiveitem UP_GRADE
-	iffalsefwd SilphCo2FScientist1NoRoomForUpGradeScript
-	setevent EVENT_GOT_UP_GRADE
-SilphCo2FScientist1GaveUpGradeScript:
+	verbosegiveitem UPGRADE
+	iffalsefwd SilphCo2FScientist1NoRoomForUpgradeScript
+	setevent EVENT_GOT_UPGRADE
+SilphCo2FScientist1GaveUpgradeScript:
 	writetext SilphCo2FScientist1Text2
 	waitbutton
-SilphCo2FScientist1NoRoomForUpGradeScript:
+SilphCo2FScientist1NoRoomForUpgradeScript:
 	endtext
 
 SilphCo2FScientist1Text1:

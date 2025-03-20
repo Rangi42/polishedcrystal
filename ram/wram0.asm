@@ -786,7 +786,9 @@ wNamingScreenKeyboardWidth:: db
 
 SECTION UNION "Misc 404", WRAM0
 ; pokegear
-	ds 172
+	ds 132
+
+wRadioCompressedText:: ds 2 * SCREEN_WIDTH
 
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
@@ -997,7 +999,7 @@ wSummaryMoveSwap:: db
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
 ds 13
-assert (@ - STARTOF("Misc 1326")) % 16 == 0
+assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10
 
@@ -1475,6 +1477,13 @@ wDaysSince:: db
 
 ; Temporary backup for options
 wOptionsBuffer:: db
+
+SECTION "SRAM Access Count", WRAM0
+
+; Contains a count of the number of times SRAM has been opened in a
+; session. Protects against bugs from emulators that do not load SRAM
+; when loading a savestate.
+wSRAMAccessCount:: db
 
 SECTION "Rom Checksum", WRAM0
 

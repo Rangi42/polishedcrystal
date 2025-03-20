@@ -14,12 +14,12 @@ FuchsiaGym_MapScriptHeader:
 	bg_event  6, 15, BGEVENT_READ, FuchsiaGymStatue
 
 	def_object_events
-	object_event  5,  7, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1
-	object_event  1, 10, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
-	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
-	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
-	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
-	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymGuyScript, -1
+	object_event  5,  7, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1
+	object_event  1, 10, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
+	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
+	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
+	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
+	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymGuyScript, -1
 
 	object_const_def
 	const FUCHSIAGYM_JANINE
@@ -48,25 +48,8 @@ FuchsiaGymJanineScript:
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_SCHOOLBOY
 	special RefreshSprites
 	opentext
-	writetext Text_ReceivedSoulBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_MARSHBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .AfterBattle
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .AfterBattle
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .AfterBattle
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .AfterBattle
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge MARSHBADGE, KANTO_REGION
+	callstd kantopostgymevents
 	sjumpfwd .AfterBattle
 .FightDone:
 	faceplayer
@@ -194,7 +177,7 @@ FuchsiaGymGuyScript:
 	jumptextfaceplayer FuchsiaGymGuyText
 
 FuchsiaGymStatue:
-	gettrainername JANINE, 1, $1
+	gettrainername JANINE, 1, STRING_BUFFER_4
 	checkflag ENGINE_MARSHBADGE
 	iftruefwd .Beaten
 	jumpstd gymstatue1
@@ -242,15 +225,6 @@ else
 	para "Here's the Marsh"
 endc
 	line "Badge. Take it."
-	done
-
-Text_ReceivedSoulBadge:
-	text "<PLAYER> received"
-if DEF(FAITHFUL)
-	line "the Soul Badge."
-else
-	line "the Marsh Badge."
-endc
 	done
 
 JanineText_ToxicSpeech:

@@ -1697,7 +1697,7 @@ Pokedex_Bio:
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
-	and EXTSPECIES_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	push bc
 	farcall _GetNewBaseExp

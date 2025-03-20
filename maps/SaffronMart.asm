@@ -13,8 +13,8 @@ SaffronMart_MapScriptHeader:
 
 	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_SAFFRON
-	object_event  7,  2, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMartCooltrainerMText, -1
-	object_event  7,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMartCooltrainerFText, -1
+	object_event  7,  2, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMartCooltrainerMText, -1
+	object_event  7,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMartCooltrainerFText, -1
 
 SaffronMartCooltrainerMText:
 	text "There's a big"

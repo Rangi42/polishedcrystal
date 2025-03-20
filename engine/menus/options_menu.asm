@@ -452,17 +452,17 @@ Options_TextAutoscroll:
 .Strings:
 	dw .None
 	dw .Start
-	dw .AandB
+	dw .B
 	dw .AorB
 
 .None:
-	db "None   @"
+	db "None  @"
 .Start:
-	db "Start  @"
-.AandB:
-	db "A and B@"
+	db "Start @"
+.B:
+	db "B     @"
 .AorB:
-	db "A or B @"
+	db "A or B@"
 
 Options_TurningSpeed:
 	ldh a, [hJoyPressed]

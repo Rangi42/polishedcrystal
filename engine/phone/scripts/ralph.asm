@@ -1,5 +1,5 @@
 RalphPhoneScript1:
-	gettrainername FISHER, RALPH1, $0
+	gettrainername FISHER, RALPH1, STRING_BUFFER_3
 	checkflag ENGINE_RALPH_READY_FOR_REMATCH
 	iftruefwd Ralph_Rematch
 	farscall PhoneScript_AnswerPhone_Male
@@ -15,15 +15,15 @@ Ralph_CheckSwarm:
 	farsjump RalphNoItemScript
 
 Ralph_Rematch:
-	getlandmarkname ROUTE_32, $2
+	getlandmarkname ROUTE_32, STRING_BUFFER_5
 	farsjump RalphReminderScript
 
 Ralph_ReportSwarm:
-	getlandmarkname ROUTE_32, $2
+	getlandmarkname ROUTE_32, STRING_BUFFER_5
 	farsjump RalphHurryScript
 
 RalphPhoneScript2:
-	gettrainername FISHER, RALPH1, $0
+	gettrainername FISHER, RALPH1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalsefwd Ralph_CheckSwarm2
@@ -41,7 +41,7 @@ Ralph_CheckSwarm2:
 Ralph_WednesdayMorning:
 	setflag ENGINE_RALPH_WEDNESDAY_MORNING
 Ralph_FightMe:
-	getlandmarkname ROUTE_32, $2
+	getlandmarkname ROUTE_32, STRING_BUFFER_5
 	setflag ENGINE_RALPH_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
@@ -49,8 +49,8 @@ Ralph_SetUpSwarm:
 	checkflag ENGINE_FISH_SWARM
 	iftruefwd .Generic
 	setflag ENGINE_FISH_SWARM
-	getmonname QWILFISH, $1
-	getlandmarkname ROUTE_32, $2
+	getmonname QWILFISH, STRING_BUFFER_4
+	getlandmarkname ROUTE_32, STRING_BUFFER_5
 	setval FISHSWARM_QWILFISH
 	special Special_ActivateFishingSwarm
 	farsjump RalphItemScript

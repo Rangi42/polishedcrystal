@@ -272,7 +272,9 @@ ScriptCommandTable:
 	dw Script_scalltable                 ; d5
 	dw Script_setmapobjectmovedata       ; d6
 	dw Script_setmapobjectpal            ; d7
-	dw Script_givepokemove               ; d8
+	dw Script_givespecialitem            ; d8
+	dw Script_givebadge                  ; d9
+	dw Script_givepokemove               ; da
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -580,7 +582,7 @@ Script_verbosegiveitem:
 	call Script_giveitem
 	call CurItemName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveItemScript)
 	ld de, GiveItemScript
@@ -619,7 +621,7 @@ Script_verbosegiveitemvar:
 	ldh [hScriptVar], a
 	call CurItemName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveItemScript)
 	ld de, GiveItemScript
@@ -961,8 +963,7 @@ Script_faceplayer:
 	ldh a, [hLastTalked]
 	and a
 	ret z
-	ld d, $0
-	ldh a, [hLastTalked]
+	ld d, 0
 	ld e, a
 	farcall GetRelativeFacing
 	ld a, d
@@ -1850,13 +1851,13 @@ Script_checkmoney:
 CompareMoneyAction:
 	jr c, .two
 	jr z, .one
-	xor a
+	xor a ; ld a, HAVE_MORE
 	jr .done
 .one
-	ld a, 1
+	ld a, HAVE_AMOUNT
 	jr .done
 .two
-	ld a, 2
+	ld a, HAVE_LESS
 .done
 	ldh [hScriptVar], a
 	ret
@@ -2413,7 +2414,7 @@ Script_verbosegivetmhm:
 	call Script_givetmhm
 	call CurTMHMName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	; off by one error?
 	ld hl, wTempTMHM
@@ -2610,7 +2611,7 @@ Script_verbosegivekeyitem:
 	call Script_givekeyitem
 	call GetCurKeyItemName
 	ld de, wStringBuffer1
-	ld a, 1
+	ld a, STRING_BUFFER_4
 	call CopyConvertedText
 	ld b, BANK(GiveKeyItemScript)
 	ld de, GiveKeyItemScript
@@ -2663,6 +2664,98 @@ Script_setmapobjectpal:
 	call GetScriptByte
 	ld [hl], a
 	ret
+
+Script_givespecialitem:
+	call GetScriptByte
+	ld [wNamedObjectIndex], a
+	ld [wCurSpecialItem], a
+	call GetSpecialItemName
+	ld de, wStringBuffer1
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveSpecialItemScript)
+	ld de, GiveSpecialItemScript
+	jmp ScriptCall
+
+GiveSpecialItemScript:
+	farwritetext _GotTheItemText
+	callasm ShowSpecialItemIcon
+	playsound SFX_ITEM
+	waitsfx
+	writetext ClearText
+	callasm LoadFonts_NoOAMUpdate
+	end
+
+Script_givebadge:
+	call GetScriptByte
+	assert JOHTO_REGION == KANTO_REGION - 1
+	cp KANTO_REGION << 4 ; region is in high nybble
+	assert JOHTO_REGION == 0 && NUM_JOHTO_BADGES == 8
+	jr c, .got_region
+	xor KANTO_REGION << 4 | NUM_JOHTO_BADGES
+.got_region
+	ld [wNamedObjectIndex], a
+	ld [wCurBadge], a
+	assert ENGINE_BADGES + NUM_BADGES < $100
+	ld de, ENGINE_BADGES
+	add e
+	ld e, a
+	ld b, SET_FLAG
+	farcall EngineFlagAction
+	call GetBadgeName
+	ld de, wStringBuffer1
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveBadgeScript)
+	ld de, GiveBadgeScript
+	jmp ScriptCall
+
+GiveBadgeScript:
+	farwritetext _ReceivedTheBadgeText
+	callasm ShowBadgeIcon
+	playsound SFX_GET_BADGE
+	waitsfx
+	writetext ClearText
+	special LoadMapPalettes
+	callasm SetDefaultBGPAndOBP
+	special LoadFonts_NoOAMUpdate
+	end
+
+ShowBadgeIcon:
+	ld a, [wCurBadge]
+	assert JOHTO_REGION == 0 && KANTO_REGION == 1
+	cp NUM_JOHTO_BADGES
+	ld b, BANK(BadgeGFX)
+	ld hl, BadgeGFX
+	jr c, .got_region
+	sub NUM_JOHTO_BADGES
+	ld b, BANK(BadgeGFX2)
+	ld hl, BadgeGFX2
+.got_region
+	push af
+	call FarDecompressWRA6InB
+	pop af
+	ld bc, 4 tiles
+	ld hl, wDecompressScratch
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	ld c, 4
+	ld hl, vTiles0 tile "↑"
+	call Request2bppInWRA6
+	farcall LoadSingleBadgePalette
+	ld a, "↑"
+	hlcoord 17, 13
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	hlcoord 17, 14
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ld b, 2
+	jmp SafeCopyTilemapAtOnce
 
 Script_givepokemove:
 	; Get Move

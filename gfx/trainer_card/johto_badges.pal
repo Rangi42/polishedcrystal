@@ -19,15 +19,15 @@ if !DEF(MONOCHROME)
 	RGB 23, 22, 26
 	RGB 11, 10, 23
 	RGB 00, 00, 00
-; Storm Badge
-	RGB 31, 31, 31
-	RGB 27, 16, 08
-	RGB 12, 07, 04
-	RGB 00, 00, 00
 ; Mineral Badge
 	RGB 31, 31, 31
 	RGB 23, 26, 29
 	RGB 15, 19, 23
+	RGB 00, 00, 00
+; Storm Badge
+	RGB 31, 31, 31
+	RGB 27, 16, 08
+	RGB 12, 07, 04
 	RGB 00, 00, 00
 ; Glacier Badge
 	RGB 31, 31, 31

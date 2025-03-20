@@ -1384,7 +1384,19 @@ MACRO setmapobjectpal
 	db \2 ; palette
 ENDM
 
-const givepokemove_command
+	const givespecialitem_command
+MACRO givespecialitem
+	db givespecialitem_command
+	db \1 ; key item
+ENDM
+
+	const givebadge_command
+MACRO givebadge
+	db givebadge_command
+	dn \2, \1 ; region, badge
+ENDM
+
+	const givepokemove_command
 MACRO givepokemove
 	db givepokemove_command
 	dw \1 ; move

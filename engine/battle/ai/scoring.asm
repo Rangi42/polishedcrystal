@@ -1285,9 +1285,7 @@ AI_Smart_PriorityHit:
 	ld a, 1
 	ldh [hBattleTurn], a
 	push hl
-	farcall BattleCommand_damagestats
-	farcall BattleCommand_damagecalc
-	farcall BattleCommand_stab
+	call AIDamageCalc
 	pop hl
 	ld a, [wCurDamage + 1]
 	ld c, a
@@ -2408,6 +2406,43 @@ AI_Aggressive:
 AIDamageCalc:
 	ld a, 1
 	ldh [hBattleTurn], a
+
+	; Run this twice in case of Parental Bond.
+	call .do_it
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOOP, [hl]
+	res SUBSTATUS_IN_LOOP, [hl] ; don't leave stray flags
+	ret nz
+	call GetTrueUserAbility
+	cp PARENTAL_BOND
+	ret nz
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	set SUBSTATUS_IN_ABILITY, [hl]
+	push hl
+	ld hl, wCurDamage
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	push hl
+	push de
+	call .do_it
+	pop de
+	pop hl
+	ld a, e
+	add [hl]
+	ld [hld], a
+	ld a, d
+	adc [hl]
+	jr c, .overflow ; If this happens, we deal more than enough damage anyway.
+	ld [hl], a
+.overflow
+	pop hl
+	res SUBSTATUS_IN_ABILITY, [hl]
+	ret
+
+.do_it
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
@@ -2432,10 +2467,15 @@ AIDamageCalc:
 	farjp BattleCommand_resettypematchup
 
 .multihit
-	; Multiply base power by 5 if Skill Link, 3 otherwise
+	; Multiply base power by 5 for Skill Link, 4 for Loaded Dice, 3 otherwise
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_LOADED_DICE
+	ld b, 4
+	jr z, .multihit_boost
 	call GetTrueUserAbility
 	cp SKILL_LINK
-	ld b, 5
+	inc b
 	jr z, .multihit_boost
 	ld b, 3
 	jr .multihit_boost
@@ -2443,6 +2483,9 @@ AIDamageCalc:
 	; Multiply base power by 2
 	ld b, 2
 .multihit_boost
+	push bc
+	farcall BattleCommand_startloop ; to notify Parental Bond to not kick in.
+	pop bc
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	ld c, a
 .multihit_loop

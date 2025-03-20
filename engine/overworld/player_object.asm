@@ -62,7 +62,7 @@ PlayerObjectTemplate:
 ; Said bytes seem to be unused, but the game freezes when you first spawn
 ; in your room if this is not loaded.
 	def_object_events (no db)
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
+	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 PlayerSpawn_ConvertCoords:
 	push bc

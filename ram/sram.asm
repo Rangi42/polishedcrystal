@@ -26,9 +26,11 @@ sOptions3:: db
 
 sConversionTableChecksum:: dw
 
-	ds 391 ; unused
+	ds 390 ; unused
 
 sChecksum:: dw
+
+sSRAMAccessCount:: db
 
 sCheckValue2:: db ; loaded with 127, used to check save corruption
 

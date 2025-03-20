@@ -42,9 +42,15 @@ FarCopyRadioText::
 	rst Bankswitch
 	ld l, e
 	ld h, d
-	ld de, wRadioText
-	ld bc, 2 * SCREEN_WIDTH
+	ld de, wRadioCompressedText
+	ld bc, SCREEN_WIDTH * 2
 	rst CopyBytes
+	ld hl, wRadioCompressedText
+	ld de, wRadioText
+	ld a, [hli]
+	ld [de], a
+	inc de
+	call DecompressStringToRAM
 	pop af
 	rst Bankswitch
 	ret

@@ -7,6 +7,7 @@ MACRO move
 	db \5 ; pp
 	db \6 ; effect chance
 	db \7 ; category
+	assert (\1 != EFFECT_MULTI_HIT || \2 < 52), "AI routines assume multihit BP x 5 <= 255"
 ENDM
 
 Moves::
@@ -219,7 +220,7 @@ endc
 	move EFFECT_HEAL,                0, PSYCHIC,    -1, 5,    0, STATUS   ; REST
 	move EFFECT_FLINCH_HIT,         75, ROCK,       90, 10,  30, PHYSICAL ; ROCK_SLIDE
 	move EFFECT_FLINCH_HIT,         80, NORMAL,     90, 15,  10, PHYSICAL ; HYPER_FANG
-	move EFFECT_BULK_UP,             0, FIGHTING,  100, 20,   0, STATUS   ; BULK_UP
+	move EFFECT_BULK_UP,             0, FIGHTING,   -1, 20,   0, STATUS   ; BULK_UP
 	move EFFECT_CONVERSION,          0, NORMAL,     -1, 30,   0, STATUS   ; CONVERSION
 	move EFFECT_TRI_ATTACK,         80, NORMAL,    100, 10,  20, SPECIAL  ; TRI_ATTACK
 	move EFFECT_SUPER_FANG,          1, NORMAL,     90, 10,   0, PHYSICAL ; SUPER_FANG
@@ -279,7 +280,7 @@ endc
 	move EFFECT_MEAN_LOOK,           0, NORMAL,     -1,  5,   0, STATUS   ; MEAN_LOOK
 	move EFFECT_ATTRACT,             0, NORMAL,    100, 15,   0, STATUS   ; ATTRACT
 	move EFFECT_SLEEP_TALK,          0, NORMAL,    100, 10,   0, STATUS   ; SLEEP_TALK
-	move EFFECT_HEAL_BELL,           0, NORMAL,    100,  5,   0, STATUS   ; HEAL_BELL
+	move EFFECT_HEAL_BELL,           0, NORMAL,     -1,  5,   0, STATUS   ; HEAL_BELL
 	move EFFECT_RETURN,              1, NORMAL,    100, 20,   0, PHYSICAL ; RETURN
 	move EFFECT_PSYSTRIKE,         100, PSYCHIC,   100, 10,   0, SPECIAL  ; PSYSTRIKE
 	move EFFECT_SP_DEF_DOWN_HIT,    90, BUG,       100, 10,  10, SPECIAL  ; BUG_BUZZ

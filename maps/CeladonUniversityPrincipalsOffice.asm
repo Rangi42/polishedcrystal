@@ -16,7 +16,7 @@ CeladonUniversityPrincipalsOffice_MapScriptHeader:
 	bg_event  1,  1, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
 
 	def_object_events
-	object_event  2,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
+	object_event  2,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
 
 CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY

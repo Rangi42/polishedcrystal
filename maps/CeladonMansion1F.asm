@@ -18,10 +18,10 @@ CeladonMansion1F_MapScriptHeader:
 	bg_event  2,  3, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonMansionManagerScript, -1
-	pokemon_event  2,  6, MEOWTH, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, CeladonMansion1FMeowthText, -1
-	pokemon_event  3,  4, CLEFAIRY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PINK, CeladonMansion1FClefairyText, -1
-	pokemon_event  4,  4, NIDORAN_F, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_TEAL, CeladonMansion1FNidoranFText, -1
+	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonMansionManagerScript, -1
+	pokemon_event  2,  6, MEOWTH, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, CeladonMansion1FMeowthText, -1
+	pokemon_event  3,  4, CLEFAIRY, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, CeladonMansion1FClefairyText, -1
+	pokemon_event  4,  4, NIDORAN_F, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_TEAL, CeladonMansion1FNidoranFText, -1
 
 CeladonMansionManagersSuiteSign:
 	jumpthistext
