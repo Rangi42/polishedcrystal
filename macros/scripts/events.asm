@@ -1388,4 +1388,9 @@ MACRO givebadge
 	dn \2, \1 ; region, badge
 ENDM
 
+	const setquantity_command
+MACRO setquantity
+	db setquantity_command
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

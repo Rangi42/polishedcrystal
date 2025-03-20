@@ -273,6 +273,7 @@ ScriptCommandTable:
 	dw Script_setmapobjectpal            ; d6
 	dw Script_givespecialitem            ; d7
 	dw Script_givebadge                  ; d8
+	dw Script_setquantity                ; d9
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -2722,3 +2723,9 @@ ShowBadgeIcon:
 	ld [hl], a
 	ld b, 2
 	jmp SafeCopyTilemapAtOnce
+
+Script_setquantity:
+; Sets wItemQuantityChangeBuffer to hScriptVar, for <PLURAL> benefit.
+	ldh a, [hScriptVar]
+	ld [wItemQuantityChangeBuffer], a
+	ret
