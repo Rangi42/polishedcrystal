@@ -1,4 +1,5 @@
 	; use rawchars so VWF will work in the PC
+	; also check the plural table (Pluralize)
 	setcharmap no_ngrams
 
 ItemNames::

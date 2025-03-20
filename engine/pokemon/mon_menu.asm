@@ -17,6 +17,10 @@ HasNoItems:
 TossItemFromPC:
 	push de
 	call PartyMonItemName
+
+	; Force plural.
+	xor a
+	ld [wItemQuantityChangeBuffer], a
 	ld hl, .TossHowMany
 	call MenuTextbox
 	farcall SelectQuantityToToss
@@ -54,7 +58,7 @@ TossItemFromPC:
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_far _ItemsThrowAwayText
+	text_far _AskQuantityThrowAwayText
 	text_end
 
 .TossedThisMany:
