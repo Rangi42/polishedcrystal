@@ -1,6 +1,9 @@
+	; use rawchars so `plural` can reverse strings
+	setcharmap no_ngrams
+
 MACRO plural
-	for i, charlen(\1)
-		db charsub(\1, charlen(\1) - i)
+	for i, CHARLEN(\1)
+		db CHARSUB(\1, CHARLEN(\1) - i)
 	endr
 	db "@", \2, "@"
 ENDM
@@ -32,3 +35,5 @@ endc
 	plural "ns",        "nses"       ; Lenses (Scope Lenses, Wide Lenses, etc)
 	plural "s",         "s"          ; Carbos
 	plural "",          "s"          ; everything else
+
+	setcharmap default

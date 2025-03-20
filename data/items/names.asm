@@ -1,5 +1,6 @@
+; If you change the item names, also update PluralTable (see data/text/plural_table.asm)
+
 	; use rawchars so VWF will work in the PC
-	; also check the plural table (Pluralize)
 	setcharmap no_ngrams
 
 ItemNames::
