@@ -3,9 +3,8 @@ RunEntryAbilitiesInner:
 	; ignores some entry abilities.
 	call GetOpponentAbility
 	inc a
-	jr z, RunEntryAbilitiesInner_SkillSwap
-	jr _RunEntryAbilitiesInner
-
+	jr nz, _RunEntryAbilitiesInner
+	; fallthrough
 RunEntryAbilitiesInner_SkillSwap:
 ; Runs on Skill Swap or pending Neutralizing Gas deactivation.
 	; Some abilities do nothing in this case.
@@ -1507,7 +1506,7 @@ GetCappedStats:
 	or d
 	ld b, a
 	ld a, [hl]
-	cp 1
+	dec a
 	jr z, .minimized
 .maxed
 	ld a, c

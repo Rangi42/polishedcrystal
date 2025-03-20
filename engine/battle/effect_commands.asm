@@ -2451,7 +2451,7 @@ BattleCommand_moveanimnosub:
 	xor 1
 	ld [wBattleAnimParam], a
 	ld a, [de]
-	cp $1
+	dec a
 	push af
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -5009,7 +5009,7 @@ CanStatusTarget:
 	ret
 .cant_ability
 	xor a
-	cp 1
+	cp 1 ; no-optimize a == 1 (TODO: can this be dec a?)
 	ret
 
 BattleCommand_poisontarget:

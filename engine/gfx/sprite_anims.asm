@@ -83,21 +83,17 @@ AnimSeq_PartyMonSwitch:
 	and $10 ; bit 4
 	jr z, .load_zero
 	ld a, e
-	and a
+	and a ; 0?
 	jr z, .load_minus_two
-	cp 1
+	dec a ; 1?
 	jr z, .load_minus_one
 .load_zero
-	xor a
-	ld [hl], a
-	ret
-
-.load_minus_one
-	ld [hl], -1
-	ret
-
+	ld a, 2
 .load_minus_two
-	ld [hl], -2
+	dec a
+.load_minus_one
+	dec a
+	ld [hl], a
 	ret
 
 AnimSeq_PartyMonSelected:
