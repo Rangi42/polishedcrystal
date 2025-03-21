@@ -264,6 +264,18 @@ endc
 	const PLAY_ROUGH    ; $fd
 	const DISARM_VOICE  ; $fe
 	const STRUGGLE      ; $ff
+
+	const WEATHER_BALL  ; $100
+	const MOONLIGHT     ; $101
+	const MORNING_SUN   ; $102
+	const MILK_DRINK    ; $103
+	const FURY_SWIPES   ; $104
+	const MYSTICAL_FIRE ; $105
+	const FIRE_FANG     ; $106
+	const ICE_FANG      ; $107
+	const THUNDER_FANG  ; $108
+	const POISON_FANG   ; $109
+	const PSYCHIC_FANGS ; $10A
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

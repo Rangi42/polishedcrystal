@@ -476,6 +476,10 @@ SECTION "Battle Animations", ROMX
 
 INCLUDE "data/moves/animations.asm"
 
+SECTION "Battle Animations 2", ROMX
+
+INCLUDE "data/moves/animations_2.asm"
+
 
 SECTION "Sine", ROMX
 

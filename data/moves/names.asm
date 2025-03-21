@@ -260,4 +260,16 @@ endc
 	li "Play Rough"
 	li "Disarm Voice"
 	li "Struggle"
+	
+	li "Weather Ball"
+	li "Moonlight"
+	li "Morning Sun"
+	li "Milk Drink"
+	li "Fury Swipes"
+	li "MysticalFire"
+	li "Fire Fang"
+	li "Ice Fang"
+	li "Thunder Fang"
+	li "Poison Fang"
+	li "PsychicFangs"
 	assert_list_length NUM_ATTACKS + 1

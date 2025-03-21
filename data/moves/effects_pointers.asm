@@ -10,10 +10,14 @@ MoveEffectsPointers:
 	dw RecoilHit
 	dw FlinchHit
 	dw PoisonHit
+	dw ToxicHit
 	dw BurnHit
 	dw ParalyzeHit
 	dw SleepHit
 	dw FreezeHit
+	dw BurnFlinchHit
+	dw FreezeFlinchHit
+	dw ParalyzeFlinchHit
 	dw ConfuseHit
 	dw AttackUpHit
 	dw DefenseUpHit
@@ -154,4 +158,5 @@ MoveEffectsPointers:
 	dw LowKick
 	dw BrickBreak
 	dw TrickRoom
+	dw WeatherBall
 	assert_table_length NUM_MOVE_EFECTS

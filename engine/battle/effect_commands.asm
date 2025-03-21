@@ -71,6 +71,7 @@ INCLUDE "engine/battle/move_effects/trick_room.asm"
 INCLUDE "engine/battle/move_effects/triple_kick.asm"
 INCLUDE "engine/battle/move_effects/toxic.asm"
 INCLUDE "engine/battle/move_effects/weather.asm"
+INCLUDE "engine/battle/move_effects/weather_ball.asm"
 
 
 DoTurn:
@@ -3402,6 +3403,12 @@ BattleCommand_posthiteffects:
 	ret z
 	cp EFFECT_STOMP
 	ret z
+	cp EFFECT_BURN_FLINCH_HIT
+	ret z
+	cp EFFECT_FREEZE_FLINCH_HIT
+	ret z
+	cp EFFECT_PARALYZE_FLINCH_HIT
+	ret z
 
 	; Serene Grace boosts King's Rock
 	call GetTrueUserAbility
@@ -5079,6 +5086,30 @@ PoisonOpponent:
 	set PSN, [hl]
 	jmp UpdateOpponentInParty
 
+BattleCommand_toxictarget:
+	ld b, 0
+	call CanPoisonTarget
+	ret nz
+	ld a, [wTypeModifier]
+	and a
+	ret z
+	ld a, [wEffectFailed]
+	and a
+	ret nz
+
+	call ToxicOpponent
+	call DisplayStatusProblem
+	call UpdateOpponentInParty
+	call RefreshBattleHuds
+	jmp PostStatusWithSynchronize
+
+ToxicOpponent:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set PSN, [hl]
+	set TOX, [hl]
+	jmp UpdateOpponentInParty
+
 BattleCommand_draintarget:
 	ld hl, SuckedHealthText
 	; fallthrough
@@ -5291,6 +5322,51 @@ BattleCommand_paralyzetarget:
 	call RefreshBattleHuds
 	call PrintParalyze
 	jmp PostStatusWithSynchronize
+
+BattleCommand_burnflinchtarget:
+	call GetStatusFlinch
+	sra b
+	push bc
+	jr nc, FangMaybeFlinch
+	call BattleCommand_burntarget
+	jr FangMaybeFlinch
+
+BattleCommand_freezeflinchtarget:
+	call GetStatusFlinch
+	sra b
+	push bc
+	jr nc, FangMaybeFlinch
+	call BattleCommand_freezetarget
+	jr FangMaybeFlinch
+
+BattleCommand_paralyzeflinchtarget:
+	call GetStatusFlinch
+	sra b
+	push bc
+	jr nc, FangMaybeFlinch
+	call BattleCommand_paralyzetarget
+	; fallthrough
+FangMaybeFlinch:
+	pop bc
+	sra b
+	ret nc
+	jp BattleCommand_flinchtarget
+
+GetStatusFlinch:
+	ld b, 0
+	ld a, [wEffectFailed]
+	and a
+	ret nz
+	ld a, 19
+	call BattleRandomRange
+	and a
+	ld b, %11
+	ret z
+	cp a, 10
+	ld b, %10
+	ret c
+	ld b, %01
+	ret
 
 CheckAlreadyExecuted:
 	ld a, [wAlreadyExecuted]
