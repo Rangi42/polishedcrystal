@@ -1,6 +1,6 @@
+NegativeBattleAnimations:
 ; entries correspond to constants/move_constants.asm
-:
-	table_width 2, :-
+	table_width 2
 ; negative entries first (see the constants file for details)
 	farbank "Battle Animations"
 	fardw BattleAnim_FuryAttack
