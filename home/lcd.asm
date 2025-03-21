@@ -1,5 +1,6 @@
 LCDGeneric::
-; At this point it's assumed we're in WRAM bank 5!
+; Unlike vanilla, it's *not* assume we're in BANK(wLYOverrides),
+; since interrupts can now occur during VBlank
 	ldh a, [rLY]
 	cp SCREEN_HEIGHT_PX
 	jr c, .continue
@@ -8,12 +9,18 @@ LCDGeneric::
 	push bc
 	ld c, a
 	ld b, HIGH(wLYOverrides)
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wLYOverrides)
+	ldh [rSVBK], a
 	ld a, [bc]
 	ld b, a
 	ldh a, [hLCDCPointer]
 	ld c, a
 	ld a, b
 	ldh [c], a
+	pop af
+	ldh [rSVBK], a
 	pop bc
 	pop af
 	reti

@@ -18,7 +18,7 @@ CinnabarIsland_MapScriptHeader:
 	bg_event 11, 12, BGEVENT_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
 
 	def_object_events
-	object_event 20, 14, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	object_event 20, 14, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
 	itemball_event 22,  2, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 
 	object_const_def
@@ -132,7 +132,7 @@ CinnabarIslandBlueNotReadyText:
 	line "battle me, show me"
 
 	para "how many Kanto"
-	line "badges you've got."
+	line "Badges you've got."
 
 	para "Less than seven…"
 	line "You're not ready"

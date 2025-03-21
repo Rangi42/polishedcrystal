@@ -22,7 +22,6 @@ VanceLostAMonText:
 	text "But get this, a"
 	line "wild "
 	text_ram wStringBuffer4
-	text ""
 
 	para "just barely eluded"
 	line "us."

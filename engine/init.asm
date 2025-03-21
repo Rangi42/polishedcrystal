@@ -63,7 +63,17 @@ _Init::
 	call ClearVRAM
 	call ClearSprites
 
-	; Write checksum to WRAM for save state check
+; Initialize SRAM access count
+	ld a, SRAM_ENABLE
+	ld [MBC3SRamEnable], a
+	ld a, BANK(sSRAMAccessCount)
+	ld [MBC3SRamBank], a
+	ld a, -1
+	ld [sSRAMAccessCount], a
+	ld a, SRAM_DISABLE
+	ld [MBC3SRamEnable], a
+
+; Write checksum to WRAM for save state check
 	ld a, [RomHeaderChecksum]
 	ld [wRomChecksum], a
 	ld a, [RomHeaderChecksum + 1]

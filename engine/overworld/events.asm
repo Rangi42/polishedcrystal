@@ -562,7 +562,7 @@ TryObjectEvent:
 	ret nc
 
 	cp SILENT_OBJECT_TYPES
-	jr z, .skip_click_sfx
+	jr nc, .skip_click_sfx
 	push af
 	call PlayTalkObject
 	pop af

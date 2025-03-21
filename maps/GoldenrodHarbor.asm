@@ -16,20 +16,20 @@ GoldenrodHarbor_MapScriptHeader:
 	bg_event 22, 21, BGEVENT_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
 	def_object_events
-	object_event 17,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
-	object_event 13,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherPaton, -1
+	object_event 17,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
+	object_event 13,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherPaton, -1
 	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
-	object_event 27, 15, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
-	object_event 22, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
-	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MAGIKARP, -1, -1, PAL_NPC_ORANGE, OBJECTTYPE_SCRIPT, PLAIN_FORM, GoldenrodHarborMagikarpScript, -1
-	object_event 16, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
-	object_event 16, 20, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, trade, NPC_TRADE_JACQUES, -1
-	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
-	object_event  6, 14, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
-	object_event 23, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
-	object_event 23, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
-	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_TOP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, GoldenrodHarborSailboatScript, -1
-	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, GoldenrodHarborSailboatScript, -1
+	object_event 27, 15, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
+	object_event 22, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
+	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MAGIKARP, -1, PAL_NPC_ORANGE, OBJECTTYPE_SCRIPT, PLAIN_FORM, GoldenrodHarborMagikarpScript, -1
+	object_event 16, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
+	object_event 16, 20, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, trade, NPC_TRADE_JACQUES, -1
+	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
+	object_event  6, 14, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
+	object_event 23, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
+	object_event 23, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
+	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_TOP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, GoldenrodHarborSailboatScript, -1
+	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, GoldenrodHarborSailboatScript, -1
 
 GoldenrodHarborFisherScript:
 	faceplayer
@@ -115,11 +115,11 @@ GoldenrodHarborPokefanmScript:
 	endtext
 
 .MagikarpDoll:
-	checkmoney $0, 1400
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 1400
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_MAGIKARP_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 1400
+	takemoney YOUR_MONEY, 1400
 	setevent EVENT_DECO_MAGIKARP_DOLL
 	writetext GoldenrodHarborMagikarpDollText
 	playsound SFX_TRANSACTION
@@ -130,11 +130,11 @@ GoldenrodHarborPokefanmScript:
 	sjump .Start
 
 .MarillDoll:
-	checkmoney $0, 5600
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 5600
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_MARILL_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 5600
+	takemoney YOUR_MONEY, 5600
 	setevent EVENT_DECO_MARILL_DOLL
 	writetext GoldenrodHarborMarillDollText
 	playsound SFX_TRANSACTION
@@ -145,11 +145,11 @@ GoldenrodHarborPokefanmScript:
 	sjump .Start
 
 .OctilleryDoll:
-	checkmoney $0, 11200
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 11200
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_OCTILLERY_DOLL
 	iftruefwd .AlreadyBought
-	takemoney $0, 11200
+	takemoney YOUR_MONEY, 11200
 	setevent EVENT_DECO_OCTILLERY_DOLL
 	writetext GoldenrodHarborOctilleryDollText
 	playsound SFX_TRANSACTION
@@ -198,11 +198,11 @@ GoldenrodHarborYoungsterScript:
 	endtext
 
 .MagnaPlant:
-	checkmoney $0, 6400
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 6400
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_1
 	iftruefwd .AlreadyBought
-	takemoney $0, 6400
+	takemoney YOUR_MONEY, 6400
 	setevent EVENT_DECO_PLANT_1
 	writetext GoldenrodHarborMagnaPlantText
 	playsound SFX_TRANSACTION
@@ -213,11 +213,11 @@ GoldenrodHarborYoungsterScript:
 	sjump .Start
 
 .TropicPlant:
-	checkmoney $0, 9600
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 9600
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_2
 	iftruefwd .AlreadyBought
-	takemoney $0, 9600
+	takemoney YOUR_MONEY, 9600
 	setevent EVENT_DECO_PLANT_2
 	writetext GoldenrodHarborTropicPlantText
 	playsound SFX_TRANSACTION
@@ -228,11 +228,11 @@ GoldenrodHarborYoungsterScript:
 	sjump .Start
 
 .JumboPlant:
-	checkmoney $0, 12800
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 12800
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_3
 	iftruefwd .AlreadyBought
-	takemoney $0, 12800
+	takemoney YOUR_MONEY, 12800
 	setevent EVENT_DECO_PLANT_3
 	writetext GoldenrodHarborJumboPlantText
 	playsound SFX_TRANSACTION

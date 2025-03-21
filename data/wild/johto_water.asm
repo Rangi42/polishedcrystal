@@ -353,7 +353,7 @@
 	def_water_wildmons YELLOW_FOREST
 	db 6 percent ; encounter rate
 	wildmon LEVEL_FROM_BADGES - 4, MARILL
-	wildmon LEVEL_FROM_BADGES - 4, PIKACHU
+	wildmon LEVEL_FROM_BADGES - 4, PIKACHU, PIKACHU_SURF_FORM
 	wildmon LEVEL_FROM_BADGES - 4, PSYDUCK
 	end_water_wildmons
 

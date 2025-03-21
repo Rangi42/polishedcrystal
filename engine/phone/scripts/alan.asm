@@ -1,5 +1,5 @@
 AlanPhoneScript1:
-	gettrainername SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, STRING_BUFFER_3
 	checkflag ENGINE_ALAN_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -16,15 +16,15 @@ AlanPhoneScript1:
 	farsjump AlanHangUpScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_36, $2
+	getlandmarkname ROUTE_36, STRING_BUFFER_5
 	farsjump AlanReminderScript
 
 .FireStone:
-	getlandmarkname ROUTE_36, $2
+	getlandmarkname ROUTE_36, STRING_BUFFER_5
 	farsjump AlanComePickUpScript
 
 AlanPhoneScript2:
-	gettrainername SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ALAN_READY_FOR_REMATCH
 	iftruefwd .Generic
@@ -50,11 +50,11 @@ AlanWednesdayDay:
 	setflag ENGINE_ALAN_WEDNESDAY_AFTERNOON
 
 AlanWantsBattle:
-	getlandmarkname ROUTE_36, $2
+	getlandmarkname ROUTE_36, STRING_BUFFER_5
 	setflag ENGINE_ALAN_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 AlanHasFireStone:
 	setflag ENGINE_ALAN_HAS_FIRE_STONE
-	getlandmarkname ROUTE_36, $2
+	getlandmarkname ROUTE_36, STRING_BUFFER_5
 	farsjump PhoneScript_FoundItem_Male

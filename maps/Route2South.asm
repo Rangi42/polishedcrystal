@@ -13,8 +13,8 @@ Route2South_MapScriptHeader:
 	bg_event  9, 29, BGEVENT_JUMPTEXT, Route2SignText
 
 	def_object_events
-	object_event 14, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacRob, -1
-	object_event  4, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacDoug, -1
+	object_event 14, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacRob, -1
+	object_event  4, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacDoug, -1
 	itemball_event 18, 30, ELIXIR, 1, EVENT_ROUTE_2_ELIXIR
 	cuttree_event 15, 16, EVENT_ROUTE_2_CUT_TREE_3
 	cuttree_event 16, 24, EVENT_ROUTE_2_CUT_TREE_4

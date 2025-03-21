@@ -2772,7 +2772,7 @@ endc
 	db -1 ; no more level-up moves
 
 .PorygonEvosAttacks
-	evo_data EVOLVE_HOLDING, UP_GRADE, TR_ANYTIME, PORYGON2
+	evo_data EVOLVE_HOLDING, UPGRADE, TR_ANYTIME, PORYGON2
 	db -1 ; no more evolutions
 	dbw 1, TACKLE
 	dbw 1, CONVERSION

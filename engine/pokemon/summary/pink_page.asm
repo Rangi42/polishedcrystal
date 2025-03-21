@@ -215,15 +215,14 @@ SummaryScreen_PinkPage:
 .PlaceOTInfo:
 	; for rental mons, replace the whole thing with "Rental #mon"
 	farcall BT_InRentalMode
+	hlbgcoord 0, 4, wSummaryScreenWindowBuffer
 	jr nz, .not_rental_mon
-	hlcoord 0, 15
 	ld de, .Rental_OT
 	rst PlaceString
 	ret
 
 .not_rental_mon
 	ld de, .OTStr
-	hlbgcoord 0, 4, wSummaryScreenWindowBuffer
 	rst PlaceString
 	ld de, .IDStr
 	hlbgcoord 2, 5, wSummaryScreenWindowBuffer

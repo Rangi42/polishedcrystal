@@ -1824,6 +1824,8 @@ BattleCommand_resettypematchup:
 	ld [wTypeModifier], a
 	ret
 
+INCLUDE "data/moves/powder_moves.asm"
+
 BattleCommand_damagevariation:
 ; Modify the damage spread between 85% and 100%.
 
@@ -3807,8 +3809,8 @@ endc
 
 	push bc
 	call GetOpponentItem
-	ld a, [hl]
-	cp METAL_POWDER
+	ld a, b
+	cp HELD_METAL_POWDER
 	pop bc
 	ret nz
 	jr SetDefenseBoost

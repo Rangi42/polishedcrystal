@@ -1811,10 +1811,15 @@ CopyRadioTextToRAM:
 	ld a, [hl]
 	cp "<FAR>"
 	jmp z, FarCopyRadioText
-	ld de, wRadioText
+	ld de, wRadioCompressedText
 	ld bc, SCREEN_WIDTH * 2
 	rst CopyBytes
-	ret
+	ld hl, wRadioCompressedText
+	ld de, wRadioText
+	ld a, [hli]
+	ld [de], a
+	inc de
+	jmp DecompressStringToRAM
 
 StartRadioStation:
 	ld a, [wNumRadioLinesPrinted]

@@ -1,15 +1,15 @@
 LyraPhoneScript:
 	readmem wTimeOfDay
 	scalltable LyraPhoneScript_GreetingsTable
-	getcurlandmarkname $1
+	getcurlandmarkname STRING_BUFFER_4
 	readvar VAR_LANDMARK
 	; Special-case too-long landmark names
 	ifnotequal CELADON_UNIVERSITY, .not_celadon_university
-	getstring .CeladonUniversity, $1
+	getstring .CeladonUniversity, STRING_BUFFER_4
 	sjumpfwd .got_landmark
 .not_celadon_university
 	ifnotequal POKEMON_LEAGUE, .got_landmark
-	getstring .PokemonLeague, $1
+	getstring .PokemonLeague, STRING_BUFFER_4
 .got_landmark
 	farwritetext LyraPhoneLandmarkText
 	ifless SHAMOUTI_LANDMARK, .not_shamouti
@@ -29,7 +29,7 @@ LyraPhoneScript:
 	sjumpfwd .done
 
 .describe_next_move
-	callasm LyraPhone_GetFirstMonNextMoveLevel
+	callasm LyraPhone_GetFirstMonNextMove
 	iffalsefwd .no_move
 	ifequalfwd -1, .egg
 	farwritetext LyraPhoneNextMoveLevelText
@@ -48,13 +48,17 @@ LyraPhoneScript:
 .CeladonUniversity: db "Celadon U@"
 .PokemonLeague:     db "#mon League@"
 
-LyraPhone_GetFirstMonNextMoveLevel:
-	; wStringBuffer3 = species name
+LyraPhone_GetFirstMonNextMove:
+	; [wStringBuffer3] = species name
 	call EvolutionPhone_GetFirstNonEggPartyMon
-	; hScriptVar = move level
-	farcall GetNextMoveLevel
+	; a = move level, d = move name
+	farcall GetNextMove
+	; [hScriptVar] = move level
 	ldh [hScriptVar], a
-	ret
+	; [wStringBuffer1] = move name
+	ld a, d
+	ld [wNamedObjectIndex], a
+	jmp GetMoveName
 
 LyraPhoneScript_GreetingsTable:
 	table_width 2
@@ -242,13 +246,13 @@ LyraPhoneScript2:
 	iftruefwd .lyrasegg_totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftruefwd .lyrasegg_chikorita
-	getstring .Chicory, $1
+	getstring .Chicory, STRING_BUFFER_4
 	sjumpfwd .lyrasegg_end
 .lyrasegg_totodile
-	getstring .Cinder, $1
+	getstring .Cinder, STRING_BUFFER_4
 	sjumpfwd .lyrasegg_end
 .lyrasegg_chikorita:
-	getstring .Toto, $1
+	getstring .Toto, STRING_BUFFER_4
 .lyrasegg_end
 	farwritetext LyraPhoneSpecialText_LyrasEgg
 	setevent EVENT_LYRA_GAVE_AWAY_EGG

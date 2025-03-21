@@ -13,10 +13,10 @@ DragonShrine_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  4,  8, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
-	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  5,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  4,  8, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
+	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 
 	object_const_def
 	const DRAGONSHRINE_ELDER1
@@ -145,12 +145,8 @@ DragonShrineTestScript:
 	opentext
 	writetext DragonShrineHereRisingBadgeText
 	waitbutton
-	setflag ENGINE_RISINGBADGE
-	playsound SFX_GET_BADGE
-	writetext DragonShrinePlayerReceivedRisingBadgeText
-	waitsfx
+	givebadge RISINGBADGE, JOHTO_REGION
 	special RestartMapMusic
-	promptbutton
 	specialphonecall SPECIALCALL_MASTERBALL
 	setscene $1
 	setmapscene DRAGONS_DEN_B1F, $1
@@ -552,11 +548,6 @@ DragonShrineHereRisingBadgeText:
 	line "Rising Badge…"
 
 	para "Hurry up! Take it!"
-	done
-
-DragonShrinePlayerReceivedRisingBadgeText:
-	text "<PLAYER> received"
-	line "the Rising Badge."
 	done
 
 DragonShrineRisingBadgeExplanationText:

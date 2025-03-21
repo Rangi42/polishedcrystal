@@ -337,13 +337,13 @@ TrainerCard_PrintTopHalfOfCard:
 	jmp PrintNum
 
 .Top_Headings:
-	db     "┌" - 4, "Name/"
-	next1  "┌" - 4, "<ID>№."
-	next1  "┌" - 3
+	db     "┌" - 4, "Name/<LNBRK>"
+	db     "┌" - 4, "<ID>№.<LNBRK>"
+	db     "┌" - 3
 	ds 11, "┌" - 2
-	db     "┌" - 1
-	next1  ""
-	next1  " Money@"
+	db     "┌" - 1, "<LNBRK>"
+	db     "<LNBRK>"
+	db     " Money@"
 
 TrainerCardSetup_ClearBottomHalf:
 	hlcoord 1, 10
@@ -635,12 +635,12 @@ TrainerCard_JohtoBadgesOAM:
 	db $0c | $80, $20, $24, $20 | $80
 
 	; Mineral Badge
-	db $80, $38, 5, 5, 5, 5
+	db $80, $38, 4, 4, 4, 4
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
 	; Storm Badge
-	db $80, $18, 4, 4, 4, 4
+	db $80, $18, 5, 5, 5, 5
 	db $14, $20, $24, $20 | $80
 	db $14 | $80, $20, $24, $20 | $80
 

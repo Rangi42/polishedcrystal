@@ -1102,7 +1102,7 @@ _LoadTilesetGFX2:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX2Address
-	ld a, BANK("Tileset GFX2 Data")
+	ld a, [wTilesetGFX2Bank]
 	ld de, vTiles4
 	jr _DoLoadTilesetGFX
 
@@ -1124,7 +1124,7 @@ _LoadTilesetGFX0:
 
 .skip_roof
 	ld hl, wTilesetGFX0Address
-	ld a, [wTilesetDataBank]
+	ld a, [wTilesetGFX0Bank]
 	ld de, vTiles2
 	call _DoLoadTilesetGFX0
 	pop af
@@ -1135,7 +1135,7 @@ _LoadTilesetGFX1:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX1Address
-	ld a, [wTilesetDataBank]
+	ld a, [wTilesetGFX1Bank]
 	ld de, vTiles5
 	; fallthrough
 

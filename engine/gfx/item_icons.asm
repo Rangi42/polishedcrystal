@@ -146,6 +146,13 @@ WhiteOutDecompressedItemIconCorners:
 	ld [hl], a
 	ret
 
+ShowSpecialItemIcon::
+	ld a, [wCurSpecialItem]
+	ld hl, SpecialItemIconPointers
+	call _LoadItemOrKeyItemIconForOverworld
+	farcall LoadSpecialItemIconPalette
+	jr PrintOverworldItemIcon
+
 ShowParkBallIcon::
 	ld hl, ParkBallIcon
 	lb bc, BANK(ParkBallIcon), 9

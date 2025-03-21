@@ -14,7 +14,7 @@ CeladonMansionRoof_MapScriptHeader:
 	bg_event  6,  1, BGEVENT_LEFT, MapCeladonMansionRoofSignpost0Script
 
 	def_object_events
-	object_event  7,  5, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonMansionRoofFisherText, -1
+	object_event  7,  5, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonMansionRoofFisherText, -1
 
 MapCeladonMansionRoofSignpost0Script:
 	jumptext CeladonMansionRoofGraffitiText

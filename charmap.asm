@@ -244,73 +244,73 @@ DEF NGRAMS_VAR_START EQU $4f
 	newcharmap default, compressing
 
 	charmap "e ",       $09
-	charmap " t",       $0a
-	charmap "ou",       $0b
+	charmap "ou",       $0a
+	charmap "th",       $0b
 	charmap "in",       $0c
-	charmap "th",       $0d
-	charmap "he",       $0e
-	charmap "t ",       $0f
-	charmap "er",       $10
+	charmap "t ",       $0d
+	charmap "er",       $0e
+	charmap "s ",       $0f
+	charmap "an",       $10
 	charmap "on",       $11
-	charmap "re",       $12
-	charmap "s ",       $13
-	charmap "at",       $14
-	charmap "an",       $15
-	charmap "to",       $16
-	charmap "ha",       $17
-	charmap "ng",       $18
-	charmap "it",       $19
-	charmap "is",       $1a
-	charmap "ea",       $1b
-	charmap "ve",       $1c
-	charmap "ar",       $1d
+	charmap "to ",      $12
+	charmap "d ",       $13
+	charmap "ea",       $14
+	charmap "y ",       $15
+	charmap "en",       $16
+	charmap "or",       $17
+	charmap "at",       $18
+	charmap ", ",       $19
+	charmap "ll",       $1a
+	charmap "I ",       $1b
+	charmap "ar",       $1c
+	charmap "it",       $1d
 	charmap "st",       $1e
-	charmap "le",       $1f
-	charmap "or",       $20
-	charmap "te",       $21
-	charmap "as",       $22
-	charmap "yo",       $23
-	charmap "y ",       $24
-	charmap "r ",       $25
-	charmap " b",       $26
-	charmap "en",       $27
-	charmap "me",       $28
-	charmap "e t",      $29
-	charmap ", ",       $2a
-	charmap "es",       $2b
-	charmap "e you",    $2c
-	charmap "se",       $2d
-	charmap "ne",       $2e
-	charmap " h",       $2f
-	charmap "I ",       $30
-	charmap "our",      $31
-	charmap "You",      $32
-	charmap "nd",       $33
-	charmap "ow",       $34
-	charmap " c",       $35
-	charmap " wa",      $36
-	charmap "ome",      $37
-	charmap "are",      $38
-	charmap "The",      $39
-	charmap "t's",      $3a
-	charmap "ut",       $3b
-	charmap "nt",       $3c
-	charmap "the",      $3d
-	charmap "you",      $3e
-	charmap "ing",      $3f
-	charmap "hat",      $40
-	charmap "and",      $41
-	charmap "for",      $42
-	charmap "all",      $43
-	charmap "here",     $44
-	charmap "that",     $45
-	charmap "have",     $46
-	charmap "rain",     $47
-	charmap "this",     $48
-	charmap "ight",     $49
-	charmap "with",     $4a
-	charmap "ould",     $4b
-	charmap "attle",    $4c
+	charmap "ow",       $1f
+	charmap "ha",       $20
+	charmap "a ",       $21
+	charmap "om",       $22
+	charmap "le",       $23
+	charmap "of ",      $24
+	charmap "se",       $25
+	charmap "re",       $26
+	charmap "to",       $27
+	charmap "'s ",      $28
+	charmap "Th",       $29
+	charmap "is",       $2a
+	charmap "ra",       $2b
+	charmap "ch",       $2c
+	charmap "I'm ",     $2d
+	charmap "o ",       $2e
+	charmap "gh",       $2f
+	charmap "es",       $30
+	charmap "wa",       $31
+	charmap "e.",       $32
+	charmap "oo",       $33
+	charmap "ck",       $34
+	charmap "r ",       $35
+	charmap "l ",       $36
+	charmap "be",       $37
+	charmap "li",       $38
+	charmap "ed",       $39
+	charmap "us",       $3a
+	charmap "ti",       $3b
+	charmap " you",     $3c
+	charmap "ing ",     $3d
+	charmap "the ",     $3e
+	charmap "you",      $3f
+	charmap "ing",      $40
+	charmap "is ",      $41
+	charmap "the",      $42
+	charmap "You ",     $43
+	charmap "er ",      $44
+	charmap "with",     $45
+	charmap "batt",     $46
+	charmap "for",      $47
+	charmap "ve ",      $48
+	charmap "ed ",      $49
+	charmap "It's ",    $4a
+	charmap "that ",    $4b
+	charmap " you ",    $4c
 
 DEF NGRAMS_END EQU $51
 

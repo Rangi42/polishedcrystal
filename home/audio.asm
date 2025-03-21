@@ -282,7 +282,7 @@ WaitSFX::
 	ret
 
 MaxVolume::
-	ld a, $77 ; max
+	ld a, MAX_VOLUME
 	ld [wVolume], a
 	ret
 

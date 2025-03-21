@@ -397,6 +397,10 @@ ENDU
 
 wCurIconMonHasItemOrMail:: db
 
+wCurBadge::
+wCurSpecialItem::
+wCurExpCandy::
+wCurApricorn::
 wCurKeyItem::
 wCurTMHM::
 wCurItem::
@@ -532,16 +536,19 @@ wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
 wTilesetDataBank:: db
-wTilesetGFX0Address:: dw
-wTilesetGFX1Address:: dw
 wTilesetBlocksAddress:: dw
 wTilesetCollisionAddress:: dw
 wTilesetAttributesAddress:: dw
-wTilesetGFX2Address:: dw ; BANK("Tileset GFX2 Data")
+wTilesetGFX0Bank:: db
+wTilesetGFX0Address:: dw
+wTilesetGFX1Bank:: db
+wTilesetGFX1Address:: dw
+wTilesetGFX2Bank:: db
+wTilesetGFX2Address:: dw
 wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
 
-	ds 5 ; unused
+	ds 2 ; unused
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
