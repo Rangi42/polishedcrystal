@@ -82,7 +82,7 @@ CheckUniqueWildMove:
 	inc hl
 .inc1andloop
 	inc hl
-	jmp .loop
+	jr .loop
 
 .UseFlyingPikachu
 	ld a, [wOTPartyMon1Form]

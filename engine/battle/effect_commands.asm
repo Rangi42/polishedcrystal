@@ -2,6 +2,7 @@ INCLUDE "data/battle/critical_hit_chances.asm"
 INCLUDE "data/items/edible_berries.asm"
 INCLUDE "data/moves/continuous_moves.asm"
 INCLUDE "data/moves/critical_hit_moves.asm"
+INCLUDE "data/moves/powder_moves.asm"
 INCLUDE "data/moves/reversal_power.asm"
 INCLUDE "data/pokemon/fury_attack_users.asm"
 INCLUDE "data/pokemon/withdraw_harden_users.asm"
@@ -1821,8 +1822,6 @@ BattleCommand_resettypematchup:
 .reset
 	ld [wTypeModifier], a
 	ret
-
-INCLUDE "data/moves/powder_moves.asm"
 
 BattleCommand_damagevariation:
 ; Modify the damage spread between 85% and 100%.

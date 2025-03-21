@@ -1,6 +1,6 @@
+NegativeBattleAnimations:
 ; entries correspond to constants/move_constants.asm
-:
-	table_width 3, :-
+	table_width 3
 ; negative entries first (see the constants file for details)
 	dba BattleAnim_FuryAttack
 	dba BattleAnim_MilkDrink

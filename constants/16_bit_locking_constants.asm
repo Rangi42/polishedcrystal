@@ -12,7 +12,4 @@
 	const LOCKED_MOVE_ID_BATTLE_TOWER_MON3_MOVE2
 	const LOCKED_MOVE_ID_BATTLE_TOWER_MON3_MOVE3
 	const LOCKED_MOVE_ID_BATTLE_TOWER_MON3_MOVE4
-
-if const_value > MOVE_TABLE_LOCKED_ENTRIES
-	fail "Too many locked move IDs"
-endc
+assert const_value <= MOVE_TABLE_LOCKED_ENTRIES, "Too many locked move IDs"
