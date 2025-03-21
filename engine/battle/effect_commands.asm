@@ -4865,6 +4865,12 @@ CanSleepTarget:
 	lb bc, -1, -1
 	lb de, INSOMNIA, HELD_PREVENT_SLEEP
 	ld h, SLP_MASK
+	jr CanStatusTarget
+CanFreezeTarget:
+	ld a, b
+	lb bc, ICE, ICE
+	lb de, MAGMA_ARMOR, HELD_PREVENT_FREEZE
+	ld h, 1 << FRZ
 CanStatusTarget:
 ; Input:
 ; a=0: Check Mold Breaker and Substitute (user directly poisoning foe)
@@ -5012,33 +5018,6 @@ CanStatusTarget:
 	cp 1
 	ret
 
-BattleCommand_poisontarget:
-	ld b, 0
-	call CanPoisonTarget
-	ret nz
-	ld a, [wTypeModifier]
-	and a
-	ret z
-	ld a, [wEffectFailed]
-	and a
-	ret nz
-
-	call PoisonOpponent
-	ld de, ANIM_PSN
-	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
-
-	ld hl, WasPoisonedText
-	call StdBattleTextbox
-
-	jmp PostStatusWithSynchronize
-
-PoisonOpponent:
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	set PSN, [hl]
-	jmp UpdateOpponentInParty
-
 BattleCommand_draintarget:
 	ld hl, SuckedHealthText
 	; fallthrough
@@ -5128,36 +5107,57 @@ HandleBigRoot:
 	ret
 
 BattleCommand_burntarget:
-	xor a
-	ld [wNumHits], a
-
 	; Needs to be checked here too, because it should prevent defrosting
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
+	call GetBattleVarAddr ; Addr to set hl for Defrost benefit
 	and a
 	jr nz, Defrost
 	ld b, a ; a == 0
 	call CanBurnTarget
 	ret nz
+	ld b, 1 << BRN
+	jr StatusTarget
+BattleCommand_poisontarget:
+	ld b, 0
+	call CanPoisonTarget
+	ret nz
+	ld b, 1 << PSN
+	jr StatusTarget
+BattleCommand_paralyzetarget:
+	ld b, 0
+	call CanParalyzeTarget
+	ret nz
+	ld b, 1 << PAR
+	jr StatusTarget
+BattleCommand_freezetarget:
+	; Can't freeze in harsh sunlight.
+	call GetWeatherAfterOpponentUmbrella
+	cp WEATHER_SUN
+	ret z
+	ld b, 0
+	call CanFreezeTarget
+	ret nz
+	ld b, 1 << FRZ
+	; fallthrough
+StatusTarget:
 	ld a, [wTypeModifier]
 	and a
 	ret z
 	ld a, [wEffectFailed]
 	and a
 	ret nz
-
+	; fallthrough
+DisplayAndSetStatusProblem:
+	xor a
+	ld [wBattleAnimParam], a
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
-	set BRN, [hl]
+	ld [hl], b
 	call UpdateOpponentInParty
-	ld de, ANIM_BRN
-	call PlayOpponentBattleAnim
+	call DisplayStatusProblem
 	call RefreshBattleHuds
-
-	ld hl, WasBurnedText
-	call StdBattleTextbox
 	jmp PostStatusWithSynchronize
 
 Defrost:
@@ -5184,72 +5184,6 @@ Defrost:
 
 	ld hl, DefrostedOpponentText
 	jmp StdBattleTextbox
-
-BattleCommand_freezetarget:
-	xor a
-	ld [wNumHits], a
-	call CheckSubstituteOpp
-	ret nz
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	and a
-	ret nz
-	ld a, [wTypeModifier]
-	and a
-	ret z
-	call GetWeatherAfterOpponentUmbrella
-	cp WEATHER_SUN
-	ret z
-	call CheckIfTargetIsIceType
-	ret z
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_FREEZE
-	ret z
-	call GetOpponentAbilityAfterMoldBreaker
-	cp MAGMA_ARMOR
-	ret z
-	call IsLeafGuardActive
-	ret z
-	ld a, [wEffectFailed]
-	and a
-	ret nz
-	call SafeCheckSafeguard
-	ret nz
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	set FRZ, [hl]
-	call UpdateOpponentInParty
-	ld de, ANIM_FRZ
-	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
-
-	ld hl, WasFrozenText
-	call StdBattleTextbox
-	jmp PostStatus
-
-BattleCommand_paralyzetarget:
-	xor a
-	ld [wNumHits], a
-	ld b, 0
-	call CanParalyzeTarget
-	ret nz
-	ld a, [wTypeModifier]
-	and a
-	ret z
-	ld a, [wEffectFailed]
-	and a
-	ret nz
-
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	set PAR, [hl]
-	call UpdateOpponentInParty
-	ld de, ANIM_PAR
-	call PlayOpponentBattleAnim
-	call RefreshBattleHuds
-	call PrintParalyze
-	jmp PostStatusWithSynchronize
 
 CheckAlreadyExecuted:
 	ld a, [wAlreadyExecuted]
@@ -6267,11 +6201,6 @@ PrintDidntAffect2:
 PrintDidntAffect:
 ; 'it didn't affect'
 	ld hl, DidntAffectText
-	jmp StdBattleTextbox
-
-PrintParalyze:
-; 'paralyzed! maybe it can't attack!'
-	ld hl, ParalyzedText
 	jmp StdBattleTextbox
 
 CheckSubstituteOpp:

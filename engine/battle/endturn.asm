@@ -1003,31 +1003,16 @@ HandleStatusOrbs:
 	push bc
 	ld b, 2
 	farcall CanPoisonTarget
-	pop bc
-	ret nz
-	ld de, ANIM_PSN
-	ld hl, BadlyPoisonedText
 	jr .do_status
 .burn
 	push bc
 	ld b, 2
 	farcall CanBurnTarget
+.do_status
 	pop bc
 	ret nz
-	ld de, ANIM_BRN
-	ld hl, WasBurnedText
 	; fallthrough
-.do_status
-	push hl
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld [hl], b
-	xor a
-	ld [wNumHits], a
-	farcall PlayOpponentBattleAnim
-	call RefreshBattleHuds
-	pop hl
-	jmp StdBattleTextbox
+	farjp StatusTarget
 
 HandleRoost:
 	call SetFastestTurn
