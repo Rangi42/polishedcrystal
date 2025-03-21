@@ -1761,8 +1761,6 @@ _CheckTypeMatchup:
 	pop hl
 	ret
 
-INCLUDE "data/moves/powder_moves.asm"
-
 BattleCommand_checkpowder:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -3405,6 +3403,12 @@ BattleCommand_posthiteffects:
 	cp EFFECT_FLINCH_HIT
 	ret z
 	cp EFFECT_STOMP
+	ret z
+	cp EFFECT_BURN_FLINCH_HIT
+	ret z
+	cp EFFECT_FREEZE_FLINCH_HIT
+	ret z
+	cp EFFECT_PARALYZE_FLINCH_HIT
 	ret z
 
 	; Serene Grace boosts King's Rock
