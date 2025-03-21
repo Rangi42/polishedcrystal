@@ -1874,6 +1874,7 @@ HiddenPower:
 	checkpriority
 	critical
 	hiddenpower
+	damagestats
 	damagecalc
 	stab
 	damagevariation

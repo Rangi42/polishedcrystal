@@ -3933,9 +3933,6 @@ BattleCommand_damagestats:
 	call TrueUserPartyAttr
 	pop hl
 	ld e, a
-
-	ld a, 1
-	and a
 	ret
 
 TruncateHL_BC:
