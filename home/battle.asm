@@ -863,17 +863,20 @@ GetBattleAnimPointer::
 
 .Function:
 	ld a, [hli]
+	ld [wBattleAnimBank], a
+	ld a, [hli]
 	ld [wBattleAnimAddress], a
 	ld a, [hl]
 	ld [wBattleAnimAddress + 1], a
 	ret
 
 GetBattleAnimByte::
-	anonbankpush "Battle Animations"
-
-.Function:
 	push hl
 	push de
+	ldh a, [hROMBank]
+	push af
+	ld a, [wBattleAnimBank]
+	rst Bankswitch
 
 	ld hl, wBattleAnimAddress
 	ld a, [hli]
@@ -887,6 +890,9 @@ GetBattleAnimByte::
 	ld a, d
 	ld [hld], a
 	ld [hl], e
+
+	pop af
+	rst Bankswitch
 
 	pop de
 	pop hl

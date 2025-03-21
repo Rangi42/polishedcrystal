@@ -260,6 +260,17 @@ MoveDescriptions1:
 	dw PlayRoughDescription
 	dw DisarmVoiceDescription
 	dw StruggleDescription
+	dw WeatherBallDescription
+	dw HealingLightDescription
+	dw HealingLightDescription
+	dw FreshSnackDescription
+	dw FuryStrikesDescription
+	dw MysticalFireDescription
+	dw FireFangDescription
+	dw IceFangDescription
+	dw ThunderFangDescription
+	dw PoisonFangDescription
+	dw PsychicFangsDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -445,11 +456,16 @@ PlayRoughDescription:
 	next "lower Attack."
 	done
 
-RockSmashDescription:
 if !DEF(FAITHFUL)
+RockSmashDescription:
+endc
+PsychicFangsDescription:
 	text "Removes Reflect"
 	next "and Light Screen."
 	done
+
+if DEF(FAITHFUL)
+RockSmashDescription:
 endc
 CrunchDescription:
 IronTailDescription:
@@ -473,6 +489,7 @@ IcyWindDescription:
 	done
 
 MoonblastDescription:
+MysticalFireDescription:
 	text "An attack that may"
 	next "lower Sp.Atk."
 	done
@@ -1252,4 +1269,29 @@ GyroBallDescription:
 TrickDescription:
 	text "Swaps held items"
 	next "with the foe."
+	done
+
+WeatherBallDescription:
+	text "An attack that"
+	next "weather changes."
+	done
+
+FireFangDescription:
+	text "May burn or"
+	next "flinch target."
+	done
+
+IceFangDescription:
+	text "May freeze or"
+	next "flinch target."
+	done
+
+ThunderFangDescription:
+	text "May paralyze or"
+	next "flinch target."
+	done
+
+PoisonFangDescription:
+	text "May badly poison"
+	next "the target."
 	done

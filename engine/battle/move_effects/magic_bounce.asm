@@ -88,3 +88,5 @@ BattleCommand_bounceback:
 	ld [hl], a
 	call UpdateMoveData
 	jmp SwitchTurn
+
+INCLUDE "data/moves/substitute_bypass_moves.asm"

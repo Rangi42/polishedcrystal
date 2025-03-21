@@ -70,6 +70,7 @@ INCLUDE "engine/battle/move_effects/trick_room.asm"
 INCLUDE "engine/battle/move_effects/triple_kick.asm"
 INCLUDE "engine/battle/move_effects/toxic.asm"
 INCLUDE "engine/battle/move_effects/weather.asm"
+INCLUDE "engine/battle/move_effects/weather_ball.asm"
 
 
 DoTurn:
@@ -5080,6 +5081,34 @@ PoisonOpponent:
 	set PSN, [hl]
 	jmp UpdateOpponentInParty
 
+BattleCommand_toxictarget:
+	ld b, 0
+	call CanPoisonTarget
+	ret nz
+	ld a, [wTypeModifier]
+	and a
+	ret z
+	ld a, [wEffectFailed]
+	and a
+	ret nz
+
+	call ToxicOpponent
+	ld de, ANIM_PSN
+	call PlayOpponentBattleAnim
+	call RefreshBattleHuds
+
+	ld hl, WasPoisonedText
+	call StdBattleTextbox
+
+	jmp PostStatusWithSynchronize
+
+ToxicOpponent:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set PSN, [hl]
+	set TOX, [hl]
+	jmp UpdateOpponentInParty
+
 BattleCommand_draintarget:
 	ld hl, SuckedHealthText
 	; fallthrough
@@ -5292,6 +5321,61 @@ BattleCommand_paralyzetarget:
 	call RefreshBattleHuds
 	call PrintParalyze
 	jmp PostStatusWithSynchronize
+
+BattleCommand_burnflinchtarget:
+	call GetStatusFlinch
+	sra b
+	push bc
+	jr nc, .skip_status
+	call BattleCommand_burntarget
+.skip_status
+	pop bc
+	sra b
+	ret nc
+	call BattleCommand_flinchtarget
+	ret
+
+BattleCommand_freezeflinchtarget:
+	call GetStatusFlinch
+	sra b
+	push bc
+	jr nc, .skip_status
+	call BattleCommand_freezetarget
+.skip_status
+	pop bc
+	sra b
+	ret nc
+	call BattleCommand_flinchtarget
+	ret
+
+BattleCommand_paralyzeflinchtarget:
+	call GetStatusFlinch
+	sra b
+	push bc
+	jr nc, .skip_status
+	call BattleCommand_paralyzetarget
+.skip_status
+	pop bc
+	sra b
+	ret nc
+	call BattleCommand_flinchtarget
+	ret
+
+GetStatusFlinch:
+	ld b, 0
+	ld a, [wEffectFailed]
+	and a
+	ret nz
+	ld a, 19
+	call BattleRandomRange
+	and a
+	ld b, %11
+	ret z
+	cp a, 10
+	ld b, %10
+	ret c
+	ld b, %01
+	ret
 
 CheckAlreadyExecuted:
 	ld a, [wAlreadyExecuted]
