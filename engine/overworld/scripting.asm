@@ -588,7 +588,15 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
+	readmem wItemQuantityChangeBuffer
+	ifequalfwd 1, .OneItem
+	pluralize wStringBuffer4
+	farwritetext _GainedMultipleItemsText
+	sjumpfwd .FinishGiveItem
+.OneItem:
 	farwritetext _GainedItemText
+	; fallthrough
+.FinishGiveItem:
 	special ShowItemIcon
 	iffalsefwd .Full
 	specialsound

@@ -3498,6 +3498,16 @@ _GainedItemText::
 	text "."
 	done
 
+SECTION "_GainedMultipleItemsText", ROMX
+_GainedMultipleItemsText::
+	text "<PLAYER> gained"
+	line ""
+	text_decimal wItemQuantityChangeBuffer, 1, 2
+	text " "
+	text_ram wStringBuffer4
+	text "."
+	done
+
 SECTION "_PutItemInPocketText", ROMX
 _PutItemInPocketText::
 	text "<PLAYER> put the"
