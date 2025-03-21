@@ -4867,6 +4867,10 @@ CanSleepTarget:
 	ld h, SLP_MASK
 	jr CanStatusTarget
 CanFreezeTarget:
+	; Harsh sunlight prevents freeze.
+	call GetWeatherAfterOpponentUmbrella
+	cp WEATHER_SUN
+	ret z
 	ld a, b
 	lb bc, ICE, ICE
 	lb de, MAGMA_ARMOR, HELD_PREVENT_FREEZE
@@ -5132,10 +5136,6 @@ BattleCommand_paralyzetarget:
 	ld b, 1 << PAR
 	jr StatusTarget
 BattleCommand_freezetarget:
-	; Can't freeze in harsh sunlight.
-	call GetWeatherAfterOpponentUmbrella
-	cp WEATHER_SUN
-	ret z
 	ld b, 0
 	call CanFreezeTarget
 	ret nz
