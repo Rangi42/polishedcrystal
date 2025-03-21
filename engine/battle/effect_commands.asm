@@ -5099,13 +5099,9 @@ BattleCommand_toxictarget:
 	ret nz
 
 	call ToxicOpponent
-	ld de, ANIM_PSN
-	call PlayOpponentBattleAnim
+	call DisplayStatusProblem
+	call UpdateOpponentInParty
 	call RefreshBattleHuds
-
-	ld hl, WasPoisonedText
-	call StdBattleTextbox
-
 	jmp PostStatusWithSynchronize
 
 ToxicOpponent:
@@ -5332,40 +5328,30 @@ BattleCommand_burnflinchtarget:
 	call GetStatusFlinch
 	sra b
 	push bc
-	jr nc, .skip_status
+	jr nc, FangMaybeFlinch
 	call BattleCommand_burntarget
-.skip_status
-	pop bc
-	sra b
-	ret nc
-	call BattleCommand_flinchtarget
-	ret
+	jr FangMaybeFlinch
 
 BattleCommand_freezeflinchtarget:
 	call GetStatusFlinch
 	sra b
 	push bc
-	jr nc, .skip_status
+	jr nc, FangMaybeFlinch
 	call BattleCommand_freezetarget
-.skip_status
-	pop bc
-	sra b
-	ret nc
-	call BattleCommand_flinchtarget
-	ret
+	jr FangMaybeFlinch
 
 BattleCommand_paralyzeflinchtarget:
 	call GetStatusFlinch
 	sra b
 	push bc
-	jr nc, .skip_status
+	jr nc, FangMaybeFlinch
 	call BattleCommand_paralyzetarget
-.skip_status
+	; fallthrough
+FangMaybeFlinch:
 	pop bc
 	sra b
 	ret nc
-	call BattleCommand_flinchtarget
-	ret
+	jp BattleCommand_flinchtarget
 
 GetStatusFlinch:
 	ld b, 0

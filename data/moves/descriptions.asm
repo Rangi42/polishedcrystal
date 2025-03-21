@@ -1275,8 +1275,8 @@ TrickDescription:
 	done
 
 WeatherBallDescription:
-	text "An attack that"
-	next "weather changes."
+	text "Changes type based"
+	next "on the weather."
 	done
 
 FireFangDescription:
