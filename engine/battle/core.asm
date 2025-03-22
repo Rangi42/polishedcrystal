@@ -2451,7 +2451,7 @@ AskUseNextPokemon:
 
 .pressed_b
 	ld a, [wMenuCursorY]
-	cp $1 ; YES
+	dec a ; YES?
 	jr z, .loop
 	jmp CheckRunSpeed
 
@@ -4840,7 +4840,7 @@ endr
 	pop af
 	jr c, .dont_forfeit
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a
 	jr z, .dont_forfeit
 
 	call EmptyBattleTextbox

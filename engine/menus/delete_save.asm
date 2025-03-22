@@ -14,7 +14,7 @@ _DeleteSaveData:
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a
 	ret z
 
 	xor a
@@ -53,7 +53,7 @@ _ResetInitialOptions:
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a
 	ret z
 	ld a, [wInitialOptions2]
 	set RESET_INIT_OPTS, a

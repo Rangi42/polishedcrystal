@@ -871,7 +871,7 @@ QueryWhichSide:
 	ld hl, wDecoRightOrnament
 	ld de, wDecoLeftOrnament
 	ld a, [wBuffer2]
-	cp 1
+	dec a
 	ret z
 	jmp SwapHLDE
 

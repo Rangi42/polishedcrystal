@@ -25,20 +25,19 @@ EngineFlagAction::
 
 ; What are we doing with this flag?
 	ld a, b
-	cp 1
-	jr c, .reset ; b = 0
-	jr z, .set   ; b = 1
+	and a ; 0?
+	jr z, .reset
+	dec a ; 1?
+	ld a, [de]
+	jr z, .set
 
 ; Return the given flag in c.
-.check
-	ld a, [de]
 	and c
 	ld c, a
 	ret
 
 ; Set the given flag.
 .set
-	ld a, [de]
 	or c
 	ld [de], a
 	ret

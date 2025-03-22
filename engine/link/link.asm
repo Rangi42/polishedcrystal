@@ -1252,7 +1252,7 @@ CheckAnyOtherAliveMonsForTrade:
 
 LinkTradeOTPartymonMenuCheckCancel:
 	ld a, [wMenuCursorY]
-	cp 1
+	dec a
 	jmp nz, LinkTradePartiesMenuMasterLoop
 	call HideCursor
 	push hl
@@ -2494,9 +2494,9 @@ DetermineLinkBattleResult:
 	call .BothSides_CheckNumberMonsAtFullHealth
 	jr z, .drawn
 	ld a, e
-	cp $1
+	dec a ; 1?
 	jr z, .victory
-	cp $2
+	dec a ; 2?
 	jr z, .defeat
 	ld hl, wPartyMon1HP
 	call .CalcPercentHPRemaining
@@ -2755,7 +2755,7 @@ Serial_ExchangeByte::
 	and a
 	jr nz, .ok
 	ldh a, [hSerialConnectionStatus]
-	cp $1
+	dec a
 	jr nz, .doNotIncrementTimeoutCounter
 	call CheckwLinkTimeoutFramesNonzero
 	jr z, .doNotIncrementTimeoutCounter

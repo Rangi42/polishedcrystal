@@ -993,7 +993,7 @@ endr
 	pop bc
 	ld a, [hl]
 	; a = carry (iff a == 0) ? d : 0
-	cp 1
+	cp 1 ; no-optimize a == 1 (dec a can't set carry)
 	sbc a
 	and d
 	ret

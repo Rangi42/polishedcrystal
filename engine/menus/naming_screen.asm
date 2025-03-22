@@ -337,11 +337,11 @@ NamingScreenJoypadLoop:
 
 .a
 	call NamingScreen_PressedA_GetCursorCommand
-	cp $1
+	dec a ; 1?
 	jr z, .select
-	cp $2
+	dec a ; 2?
 	jr z, .b
-	cp $3
+	dec a ; 3?
 	jr z, .end
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter
@@ -568,9 +568,9 @@ NamingScreen_GetDPad:
 	ret
 
 .caps_del_done_left
-	cp $1
+	dec a
 	jr nz, .wrap_around_command_left
-	ld a, $4
+	ld a, $3
 .wrap_around_command_left
 	dec a
 	dec a
@@ -992,11 +992,11 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 
 .a
 	call NamingScreen_PressedA_GetCursorCommand
-	cp $1
+	dec a ; 1?
 	jr z, .select
-	cp $2
+	dec a ; 2?
 	jr z, .b
-	cp $3
+	dec a ; 3?
 	jr z, .finished
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter

@@ -32,7 +32,7 @@ SnowtopMountainInsideFixFacing:
 .FixFacing:
 	ld hl, wPrevWarp
 	ld a, [hli]
-	cp 1
+	dec a ; warp 1?
 	ret nz
 	assert wPrevWarp + 1 == wPrevMapGroup
 	ld a, [hli]

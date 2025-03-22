@@ -98,7 +98,7 @@ UseRegisteredItem:
 	xor a
 	ld [wUsingItemWithSelect], a
 	ld a, [wItemEffectSucceeded]
-	cp 1
+	dec a ; TRUE?
 	jr nz, ._cantuse
 	scf
 	ld a, HMENURETURN_SCRIPT
