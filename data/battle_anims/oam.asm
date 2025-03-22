@@ -133,7 +133,7 @@ BattleAnimOAMData:
 	battleanimoam $00, 12, .OAMData_7b            ; BATTLEANIMOAMSET_7B
 	battleanimoam $00, 14, .OAMData_7c            ; BATTLEANIMOAMSET_7C
 	battleanimoam $00, 15, .OAMData_7d            ; BATTLEANIMOAMSET_7D
-	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_7E
+;	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_7E ; - duplicate unused
 	battleanimoam $08,  4, .OAMData_03            ; BATTLEANIMOAMSET_7F
 	battleanimoam $0d,  1, .OAMData_0f            ; BATTLEANIMOAMSET_80
 	battleanimoam $0e,  4, .OAMData_81            ; BATTLEANIMOAMSET_81
@@ -155,7 +155,7 @@ BattleAnimOAMData:
 	battleanimoam $08,  4, .OAMData_8f            ; BATTLEANIMOAMSET_91
 	battleanimoam $0c,  4, .OAMData_8f            ; BATTLEANIMOAMSET_92
 	battleanimoam $00,  6, .OAMData_93            ; BATTLEANIMOAMSET_93
-	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_94
+;	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_94 ; - duplicate unused
 	battleanimoam $0e, 13, .OAMData_95            ; BATTLEANIMOAMSET_95
 	battleanimoam $15,  4, .OAMData_30            ; BATTLEANIMOAMSET_96
 	battleanimoam $04,  4, .OAMData_30            ; BATTLEANIMOAMSET_97
@@ -193,11 +193,11 @@ BattleAnimOAMData:
 	battleanimoam $0a, 16, .OAMData_00            ; BATTLEANIMOAMSET_B7
 	battleanimoam $10, 16, .OAMData_1c            ; BATTLEANIMOAMSET_B8
 	battleanimoam $1b, 14, .OAMData_b9            ; BATTLEANIMOAMSET_B9
-	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_BA
+;	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_BA ; - duplicate unused
 	battleanimoam $08,  2, .OAMData_11            ; BATTLEANIMOAMSET_BB
 	battleanimoam $20,  6, .OAMData_bc            ; BATTLEANIMOAMSET_BC
 	battleanimoam $29, 14, .OAMData_bd            ; BATTLEANIMOAMSET_BD
-	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_BE
+;	battleanimoam $04,  4, .OAMData_03            ; BATTLEANIMOAMSET_BE ; - duplicate unused
 	battleanimoam $1a,  4, .OAMData_30            ; BATTLEANIMOAMSET_BF
 	battleanimoam $16,  9, .OAMData_01            ; BATTLEANIMOAMSET_C0
 	battleanimoam $10, 16, .OAMData_c1            ; BATTLEANIMOAMSET_C1
@@ -261,11 +261,11 @@ BattleAnimOAMData:
 	battleanimoam $00, 12, .OAMData_fb            ; BATTLEANIMOAMSET_FB
 	battleanimoam $04,  6, .OAMData_93            ; BATTLEANIMOAMSET_FC
 	battleanimoam $11,  2, .OAMData_StoneEdge     ; BATTLEANIMOAMSET_STONE_EDGE
-	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK
+;	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BRICK_BREAK ; - duplicate unused
 	battleanimoam $07, 10, .OAMData_HyperVoice    ; BATTLEANIMOAMSET_HYPER_VOICE
 	battleanimoam $fc,  3, .OAMData_BugBuzz1      ; BATTLEANIMOAMSET_BUG_BUZZ1
 	battleanimoam $f8,  5, .OAMData_BugBuzz2      ; BATTLEANIMOAMSET_BUG_BUZZ2
-	battleanimoam $1f,  4, .OAMData_03            ; BATTLEANIMOAMSET_BULLET_PUNCH
+	battleanimoam $1b,  4, .OAMData_03            ; BATTLEANIMOAMSET_BULLET_PUNCH
 	battleanimoam $20, 16, .OAMData_1c            ; BATTLEANIMOAMSET_U_TURN_FALL
 	battleanimoam $00,  9, .OAMData_SwirlShort    ; BATTLEANIMOAMSET_SWIRL_SHORT_1
 	battleanimoam $0c,  9, .OAMData_SwirlShort    ; BATTLEANIMOAMSET_SWIRL_SHORT_2

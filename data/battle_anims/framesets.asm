@@ -166,8 +166,8 @@ BattleAnimFrameData:
 	dw .Frameset_MorningSun              ; BATTLEANIMFRAMESET_MORNING_SUN
 	dw .Frameset_Glimmer                 ; BATTLEANIMFRAMESET_GLIMMER
 	dw .Frameset_a5 ; a5
-	dw .Frameset_a6 ; a6
-	dw .Frameset_a7 ; a7
+	dw .Frameset_CrossChop1 ; BATTLEANIMFRAMESET_CROSS_CHOP_1
+	dw .Frameset_CrossChop2 ; BATTLEANIMFRAMESET_CROSS_CHOP_2
 	dw .Frameset_a8 ; a8
 	dw .Frameset_a9 ; a9
 	dw .Frameset_aa ; aa
@@ -189,7 +189,6 @@ BattleAnimFrameData:
 	dw .Frameset_GunkShot                ; BATTLEANIMFRAMESET_GUNK_SHOT
 	dw .Frameset_StoneEdge ; bb
 	dw .Frameset_AquaJet
-	dw .Frameset_BrickBreak ; bc
 	dw .Frameset_HyperVoice ; bd
 	dw .Frameset_SeedBomb                ; BATTLEANIMFRAMESET_SEED_BOMB
 	dw .Frameset_MidGlowShrinking ; bf
@@ -901,12 +900,12 @@ BattleAnimFrameData:
 
 .Frameset_61:
 	battleoamframe BATTLEANIMOAMSET_1B,  4
-	battleoamframe BATTLEANIMOAMSET_7E,  4
+	battleoamframe BATTLEANIMOAMSET_21,  4
 	battleoamrestart
 
 .Frameset_62:
 	battleoamframe BATTLEANIMOAMSET_1B,  4, OAM_X_FLIP
-	battleoamframe BATTLEANIMOAMSET_7E,  4, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_21,  4, OAM_X_FLIP
 	battleoamrestart
 
 .Frameset_Amnesia1:
@@ -998,7 +997,7 @@ BattleAnimFrameData:
 
 .Frameset_73:
 	battleoamframe BATTLEANIMOAMSET_1B,  7
-	battleoamframe BATTLEANIMOAMSET_94,  7
+	battleoamframe BATTLEANIMOAMSET_21,  7
 	battleoamrestart
 
 .Frameset_BarrageBall_Heart:
@@ -1187,7 +1186,7 @@ BattleAnimFrameData:
 	battleoamend
 
 .Frameset_9f:
-	battleoamframe BATTLEANIMOAMSET_BA, 32
+	battleoamframe BATTLEANIMOAMSET_21, 32
 	battleoamend
 
 .Frameset_a0:
@@ -1219,41 +1218,13 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_C2, 32
 	battleoamdelete
 
-.Frameset_a6:
-	battleoamframe BATTLEANIMOAMSET_4B,  2
-	battleoamframe BATTLEANIMOAMSET_4C,  2
-	battleoamframe BATTLEANIMOAMSET_4D, 32
-	battleoamframe BATTLEANIMOAMSET_4D, 32
-	battleoamframe BATTLEANIMOAMSET_4D, 32
-	battleoamframe BATTLEANIMOAMSET_4F,  1
-	battleoamframe BATTLEANIMOAMSET_50,  1
-	battleoamframe BATTLEANIMOAMSET_51,  1
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamdelete
+.Frameset_CrossChop1:
+	battleoamframe BATTLEANIMOAMSET_21,  8
+	battleoamend
 
-.Frameset_a7:
-	battleoamframe BATTLEANIMOAMSET_4B,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4C,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4D, 32, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4D, 32, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4D, 32, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4F,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_50,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_51,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamdelete
+.Frameset_CrossChop2:
+	battleoamframe BATTLEANIMOAMSET_21,  8, OAM_X_FLIP
+	battleoamend
 
 .Frameset_a8:
 	battleoamframe BATTLEANIMOAMSET_C3,  1
@@ -1364,10 +1335,6 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_F9,  1
 	battleoamframe BATTLEANIMOAMSET_FA,  1
 	battleoamdelete
-
-.Frameset_BrickBreak:
-	battleoamframe BATTLEANIMOAMSET_BRICK_BREAK, 8
-	battleoamend
 
 .Frameset_HyperVoice:
 	battleoamframe BATTLEANIMOAMSET_18,  0
@@ -1536,7 +1503,7 @@ BattleAnimFrameData:
 
 .Frameset_Berry:
 	battleoamframe BATTLEANIMOAMSET_1B, 48
-	battleoamframe BATTLEANIMOAMSET_94, 24
+	battleoamframe BATTLEANIMOAMSET_21, 24
 	battleoamframe BATTLEANIMOAMSET_7F, 24
 	battleoamdelete
 

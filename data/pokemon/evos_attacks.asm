@@ -289,20 +289,8 @@ BeedrillEvosAttacks:
 PidgeyEvosAttacks:
 	evo_data EVOLVE_LEVEL, 18, PIDGEOTTO
 	db -1 ; no more evolutions
-	db 1, TACKLE
-	db 5, GUST ; Sand Attack → Gust
-	db 9, MUD_SLAP ; Gust → GSC TM move
-	db 13, QUICK_ATTACK
-	db 17, RAGE ; Whirlwind → RBY TM move
-	db 21, CHARM ; Twister → egg move
-	db 25, SWIFT ; Feather Dance → TM move
-	db 29, AGILITY
-	db 33, WING_ATTACK
-	db 37, ROOST
-	db 41, DRILL_PECK ; Tailwind → new move
-	db 45, STEEL_WING ; Mirror Move → TM move
-	db 49, AIR_SLASH
-	db 53, HURRICANE
+	db 1, KARATE_CHOP
+	db 1, CROSS_CHOP
 	db -1 ; no more level-up moves
 
 PidgeottoEvosAttacks:

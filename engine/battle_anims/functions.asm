@@ -95,7 +95,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RockSmash
 	dw BattleAnimFunction_Cotton
 	dw BattleAnimFunction_PauseThenRush
-	dw BattleAnimFunction_RockTomb
+	dw BattleAnimFunction_FallAndStop
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_BubbleSplash
 	dw BattleAnimFunction_Moon
@@ -2008,7 +2008,7 @@ BattleAnimFunction_Kick:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_RockTomb:
+BattleAnimFunction_FallAndStop:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero

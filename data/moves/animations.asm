@@ -491,22 +491,18 @@ BattleAnim_Acrobatics:
 	anim_ret
 
 BattleAnim_KarateChop:
-	anim_1gfx ANIM_GFX_HIT
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_CHOP
+	anim_obj ANIM_OBJ_VERTICAL_CHOP, 136, 71, $0
+	anim_wait 8
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_PALM, -15, 0,   5, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   5, 0, $0
-	anim_wait 6
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 40, $0
+	anim_wait 3
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_PALM, -15, 0,   5, 4, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   5, 4, $0
-	anim_wait 6
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_wait 3
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_PALM, -15, 0,   6, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   6, 0, $0
-	anim_wait 16
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 64, $0
+	anim_wait 20
 	anim_ret
 
 BattleAnim_DoubleSlap:
@@ -5400,16 +5396,25 @@ BattleAnim_HiddenPower:
 	anim_ret
 
 BattleAnim_CrossChop:
-	anim_1gfx ANIM_GFX_CUT
-	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CROSS_CHOP1, -13, 0,   5, 0, $0
-	anim_obj ANIM_OBJ_CROSS_CHOP2,  15, 0,   9, 0, $0
-	anim_wait 8
+	anim_3gfx ANIM_GFX_CUT, ANIM_GFX_CHOP, ANIM_GFX_HIT
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $58, $1, $0
+	anim_obj ANIM_OBJ_CROSS_CHOP1, 128, 48, $28
+	anim_obj ANIM_OBJ_CROSS_CHOP2, 142, 48, $38
+	anim_setobj $1, $2
+	anim_setobj $2, $2
+	anim_wait 48
+	anim_clearobjs
+	anim_obj ANIM_OBJ_CROSS_CHOP1, 116, 36, $8
+	anim_obj ANIM_OBJ_CROSS_CHOP2, 154, 36, $18
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $58, $2, $0
-	anim_wait 92
+	anim_setobj $3, $3
+	anim_setobj $4, $3
 	anim_sound 0, 1, SFX_VICEGRIP
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $10
-	anim_wait 16
+	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 150, 38, $0
+	anim_obj ANIM_OBJ_CUT_LONG_DOWN_RIGHT, 120, 38, $0
+	anim_wait 32
 	anim_ret
 
 BattleAnim_AquaJet:
