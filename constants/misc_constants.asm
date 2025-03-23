@@ -43,6 +43,9 @@ DEF HOF_MASTER_COUNT EQU 200
 ; Kirk ID
 DEF KIRK_SHUCKIE_ID EQU 00518
 
+; initial best Magikarp length (in mm)
+DEF BEST_MAGIKARP_LENGTH EQU 1067
+
 ; crash error codes
 	const_def
 	const ERR_RST_0

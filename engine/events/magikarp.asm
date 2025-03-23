@@ -154,6 +154,11 @@ PrintMagikarpLength:
 	inc e
 	jr .inchloop
 .inchdone
+	ld a, [wMagikarpLengthMmHi]
+	ld b, a
+	ld a, [wMagikarpLengthMmLo]
+	ld c, a
+	push bc
 	ld a, e
 	ld [wMagikarpLengthMmHi], a
 	ld a, l
@@ -170,6 +175,11 @@ PrintMagikarpLength:
 	ld a, "″"
 	ld [hli], a
 	ld [hl], "@"
+	pop bc
+	ld hl, wMagikarpLengthMmHi
+	ld a, b
+	ld [hli], a
+	ld [hl], c
 	ret
 
 CalcMagikarpLength:
