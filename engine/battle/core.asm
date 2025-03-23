@@ -6151,7 +6151,7 @@ CheckValidMagikarpLength:
 	jr c, .CheckMagikarpArea
 ; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
 	ld a, [wMagikarpLengthMmLo]
-	cp LOW(1600)
+	cp LOW(1616)
 	jr nc, .redo
 
 ; 20% chance of skipping this check
@@ -6160,7 +6160,7 @@ CheckValidMagikarpLength:
 	jr c, .CheckMagikarpArea
 ; Try again if length >= 1575 mm (i.e. if LOW(length) >= 2 inches)
 	ld a, [wMagikarpLengthMmLo]
-	cp LOW(1575)
+	cp LOW(1600)
 	jr nc, .redo
 
 .CheckMagikarpArea:
