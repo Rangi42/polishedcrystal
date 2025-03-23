@@ -6149,7 +6149,7 @@ CheckValidMagikarpLength:
 	call Random
 	cp 5 percent
 	jr c, .CheckMagikarpArea
-; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
+; Try again if length >= 1616 mm (i.e. if LOW(length) >= 4 inches)
 	ld a, [wMagikarpLengthMmLo]
 	cp LOW(1616)
 	jr nc, .redo
@@ -6158,7 +6158,7 @@ CheckValidMagikarpLength:
 	call Random
 	cp 20 percent - 1
 	jr c, .CheckMagikarpArea
-; Try again if length >= 1575 mm (i.e. if LOW(length) >= 2 inches)
+; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
 	ld a, [wMagikarpLengthMmLo]
 	cp LOW(1600)
 	jr nc, .redo
