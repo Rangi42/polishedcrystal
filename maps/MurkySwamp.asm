@@ -284,9 +284,9 @@ GenericTrainerLassAbigail:
 	text "The rumor is that"
 	line "a strange red orb"
 
-	para "can be seen, glow-"
-	line "ing like a blood"
-	cont "moon."
+	para "can be seen,"
+	line "glowing like a"
+	cont "blood moon."
 
 	para "That sounds scary."
 	done
