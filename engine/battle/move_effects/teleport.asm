@@ -1,6 +1,6 @@
 BattleCommand_teleport:
 	ld a, [wBattleType]
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_NEVER_SHINY, BATTLETYPE_LEGENDARY
 	jr nc, .failed
 
 ; Switch, don't run, in trainer battles
