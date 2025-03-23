@@ -305,6 +305,7 @@ CalcMagikarpLength:
 	adc b
 	ld d, a
 
+.done
 	ld hl, wMagikarpLengthMm
 	ld a, d
 	ld [hli], a
