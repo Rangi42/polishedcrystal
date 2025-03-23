@@ -9,7 +9,7 @@
 
 	abilities_for URSALUNA_BLOODMOON, MINDS_EYE, MINDS_EYE, MINDS_EYE
 	db GROWTH_MEDIUM_FAST ; growth rate
-	dn EGG_NONE, EGG_NONE ; egg groups
+	dn EGG_GROUND, EGG_GROUND ; egg groups
 
 	ev_yield 3 SAt
 
