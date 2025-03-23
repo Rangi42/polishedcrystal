@@ -559,27 +559,47 @@ LearnEvolutionMove:
 	ld a, [wCurForm]
 	ld b, a
 	; bc = index
+	push bc
 	call GetSpeciesAndFormIndex
 	ld hl, EvolutionMoves
 	add hl, bc
 	ld a, [hl]
 	and a
-	ret z
+	jr z, .pop_bc_and_ret
 
 	ld d, a
-	ld hl, wPartyMon1Moves
-	ld a, [wCurPartyMon]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld a, MON_MOVES
+	call GetPartyParamLocationAndValue
 
 	ld b, NUM_MOVES
-.check_move
+.check_cur_moves
 	ld a, [hli]
 	cp d
-	ret z
+	jr z, .pop_bc_and_ret
 	dec b
-	jr nz, .check_move
+	jr nz, .check_cur_moves
 
+	; don't teach move already learned at this level
+	pop bc
+	call GetEvosAttacksPointer
+.skip_evos
+	ld a, [hli]
+	inc a
+	jr nz, .skip_evos
+
+.check_level_moves
+	ld a, [hli]
+	ld b, a
+	ld a, [wCurPartyLevel]
+	cp b
+	ld a, [hli]
+	jr c, .ok
+	jr nz, .check_level_moves
+	cp d
+	jr nz, .check_level_moves
+	ret
+
+.ok
 	ld a, d
 	ld [wPutativeTMHMMove], a
 	ld [wNamedObjectIndex], a
@@ -591,6 +611,10 @@ LearnEvolutionMove:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
+	ret
+
+.pop_bc_and_ret
+	pop bc
 	ret
 
 LearnLevelMoves:
