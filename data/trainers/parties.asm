@@ -1,75 +1,58 @@
+;	setcharmap no_ngrams
+
 INCLUDE "data/trainers/party_pointers.asm"
+INCLUDE "data/trainers/macros.asm"
 
 ; All trainers follow a basic structure:
-	; Name
-		; String in format "TEXT@"
-	; Type
-		; TRAINERTYPE_NORMAL:      level, species, form (3 bytes)
-		; TRAINERTYPE_ITEM:        item (1 byte)
-		; TRAINERTYPE_EVS:         EVs (1 byte, marks the setting of all EVs)
-		; TRAINERTYPE_DVS:         DVs (3 bytes)
-		; TRAINERTYPE_PERSONALITY: personality (1 byte)
-		; TRAINERTYPE_NICKNAME:    nickname (max 10 bytes)
-		; TRAINERTYPE_MOVES:       moves (4 bytes)
-	; party
-		; Up to six monsters following the data type
-	; $ff
-
-; Do not use the byte $ff in trainer data, since it's the end marker.
-; That means:
-; * DVs cannot be $ff -- use $00 instead (ReadTrainerParty converts it to $ff)
-; * "9" cannot be used in nicknames
+	; tr_name "Name"
+		; String in format "TEXT". Terminator ("@") is implicit.
+	; tr_mon Level, "Nickname", Species @ Item, Gender+Form
+		; Level is a range between 1-MAX_LEVEL inclusive.
+		; "Nickname" is optional, in format "TEXT". Terminator is implicit.
+		; Species denotes the Pokémon species.
+		; You can add " @ Item" to the Species parameter to specify held itme.
+		; Gender+Form is optional. If unspecified, gender will take from class
+		; and form will be a default form (usually Plain) based on the Pokémon.
+	; tr_extra Ability, Nature
+		; Defines ability (based on species) and Nature.
+	; tr_evs Spread
+		; Defines an EV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
+		; If the player has the "no EV limit" option set, the EV will be set to
+		; the sum of the given EVs, divided by 2, capped to 252. If the 510
+		; option is sethe EVs will be applied as-is.
+	; tr_dvs Spread
+		; Defines a DV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
+		; You can also specify "12 All" to set all DVs to 12.
+		; If you specify a Hidden Power type, DVs will be implicitly set to make
+		; Hidden Power's type be the specified type.
+	; tr_moves Move1[, Move2, ...]
+		; Specifies up to 4 moves for the Pokémon.
+		; You can use HP_TYPE (for example HP_FIRE) to give the mon Hidden Power
+		; and implicitly adjust the DVs to correspond to the given HP type.
+	; tr_end
 
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
-
-
-; TODO: do `dp mon[, form] / db level` and eliminate this macro
-MACRO dbp
-	db (\1)
-	shift
-	dp \#
-ENDM
-
-DEF NUM_EV_SPREADS = 0
-
-MACRO ev_spread
-	def_evs \#
-	if !DEF(EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
-		def EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_EV_SPREADS
-		with_each_stat "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
-		redef NUM_EV_SPREADS += 1
-	endc
-	db EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
-ENDM
 
 
 SECTION "CarrieGroup", ROMX
 CarrieGroup:
 
 	; CARRIE
-	db "Carrie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 60, MEGANIUM
-		db SITRUS_BERRY
-		db GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
-	dbp 60, TYPHLOSION
-		db QUICK_CLAW
-		db SUNNY_DAY, THUNDERPUNCH, FLAMETHROWER, SUBSTITUTE
-	dbp 60, FERALIGATR
-		db LUM_BERRY
-		db SURF, CRUNCH, ICE_PUNCH, ROCK_SLIDE
-	dbp 60, SKARMORY
-		db ROCKY_HELMET
-		db SPIKES, ROOST, DRILL_PECK, STEEL_WING
-	dbp 60, HOUNDOOM
-		db POISON_BARB
-		db NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SLUDGE_BOMB
-	dbp 60, WIGGLYTUFF
-		db CHESTO_BERRY
-		db HYPER_VOICE, DAZZLINGLEAM, REST, SWEET_KISS
-	db -1 ; end
+	tr_name "Carrie"
+	tr_mon 60, MEGANIUM @ SITRUS_BERRY
+		tr_moves GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
+	tr_mon 60, TYPHLOSION @ QUICK_CLAW
+		tr_moves SUNNY_DAY, THUNDERPUNCH, FLAMETHROWER, SUBSTITUTE
+	tr_mon 60, FERALIGATR @ LUM_BERRY
+		tr_moves SURF, CRUNCH, ICE_PUNCH, ROCK_SLIDE
+	tr_mon 60, SKARMORY @ ROCKY_HELMET
+		tr_moves SPIKES, ROOST, DRILL_PECK, STEEL_WING
+	tr_mon 60, HOUNDOOM @ POISON_BARB
+		tr_moves NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SLUDGE_BOMB
+	tr_mon 60, WIGGLYTUFF @ CHESTO_BERRY
+		tr_moves HYPER_VOICE, DAZZLINGLEAM, REST, SWEET_KISS
+	tr_end
 
 
 SECTION "CalGroup", ROMX
@@ -11560,3 +11543,5 @@ TeacherMGroup:
 	db -1 ; end
 
 ENDSECTION
+
+;	setcharmap default
