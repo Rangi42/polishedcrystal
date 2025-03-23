@@ -6135,32 +6135,32 @@ CheckValidMagikarpLength:
 	cp MAGIKARP
 	jr nz, .okay
 
-	; Get Magikarp's length
+; Get Magikarp's length
 	ld de, wOTPartyMon1DVs
 	ld bc, wPlayerID
 	farcall CalcMagikarpLength
 
-	; We're clear if the length is < 5'
+; No reason to keep going if length > 1536 mm (i.e. if HIGH(length) > 5 feet)
 	ld a, [wMagikarpLengthMmHi]
-	cp 5 ; feet
+	cp HIGH(1536)
 	jr nz, .CheckMagikarpArea
 
-	; 5% chance of skipping size checks
+; 5% chance of skipping both size checks
 	call Random
 	cp 5 percent
 	jr c, .CheckMagikarpArea
-	; Try again if > 3"
+; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
 	ld a, [wMagikarpLengthMmLo]
-	cp 3 ; inches
+	cp LOW(1600)
 	jr nc, .redo
 
-	; 20% chance of skipping this check
+; 20% chance of skipping this check
 	call Random
 	cp 20 percent - 1
 	jr c, .CheckMagikarpArea
-	; Try again if > 2"
+; Try again if length >= 1575 mm (i.e. if LOW(length) >= 2 inches)
 	ld a, [wMagikarpLengthMmLo]
-	cp 2 ; inches
+	cp LOW(1575)
 	jr nc, .redo
 
 .CheckMagikarpArea:
@@ -6171,13 +6171,13 @@ CheckValidMagikarpLength:
 	cp MAP_LAKE_OF_RAGE
 	jr nz, .okay
 .LakeOfRageMagikarp
-	; 40% chance of not flooring
+; 40% chance of not flooring
 	call Random
 	cp 40 percent - 2
 	jr c, .okay
-	; Floor at length 3'
+; Try again if length < 1024 mm (i.e. if HIGH(length) < 3 feet)
 	ld a, [wMagikarpLengthMmHi]
-	cp 3 ; feet
+	cp HIGH(1024)
 	jr c, .redo
 
 .okay:

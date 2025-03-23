@@ -271,9 +271,9 @@ _ResetWRAM_InitList:
 
 InitializeMagikarpHouse:
 	ld hl, wBestMagikarpLengthMmHi
-	ld a, $3
+	ld a, HIGH(BEST_MAGIKARP_LENGTH)
 	ld [hli], a
-	ld a, $6
+	ld a, LOW(BEST_MAGIKARP_LENGTH)
 	ld [hli], a
 	ld de, .Ralph
 	jmp CopyName2
