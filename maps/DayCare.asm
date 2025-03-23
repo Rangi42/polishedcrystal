@@ -133,9 +133,6 @@ DayCareLadyScript:
 	giveegg TOTODILE
 .GotLyrasEgg
 	iffalse_jumpopenedtext DayCareText_PartyAndBoxFull
-	farwritetext _ReceivedEggText
-	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
-	waitsfx
 	writetext DayCareLadyText_DescribeLyrasEgg
 	setevent EVENT_GOT_LYRAS_EGG
 	waitendtext
