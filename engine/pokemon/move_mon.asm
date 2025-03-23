@@ -900,7 +900,7 @@ RemoveMonFromParty:
 	ld e, 0
 	farjp SetStorageBoxPointer
 
-ComputeNPCTrademonStats:
+ComputeNPCTrademonStatsAndEggSteps:
 	ld a, MON_LEVEL
 	call GetPartyParamLocationAndValue
 	ld [wCurPartyLevel], a
@@ -929,11 +929,24 @@ ComputeNPCTrademonStats:
 	ld [hld], a
 	ld a, [wCurForm]
 	and IS_EGG_MASK
-	ret nz
+	jr nz, .set_egg_steps
 	ld a, [de]
 	inc de
 	ld [hli], a
 	ld a, [de]
+	ld [hl], a
+	ret
+
+.set_egg_steps
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocationAndValue
+	ld a, [wBaseEggSteps]
+	and $f
+	inc a
+	ld b, a
+	add a
+	add a
+	add b
 	ld [hl], a
 	ret
 

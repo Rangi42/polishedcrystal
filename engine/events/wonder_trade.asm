@@ -364,7 +364,7 @@ endr
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall ComputeNPCTrademonStats
+	farcall ComputeNPCTrademonStatsAndEggSteps
 	farcall GivePokerusToWonderTradeMon
 	pop af
 	ld [wCurPartyMon], a
