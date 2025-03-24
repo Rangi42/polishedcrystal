@@ -39,10 +39,10 @@ DEF AUTOSCROLL_AORB    EQU %01100
 DEF TURNING_SPEED_MASK EQU %10000
 
 	const_def
-	const INST_TEXT ; %00
-	const FAST_TEXT ; %01
-	const MED_TEXT  ; %10
-	const SLOW_TEXT ; %11
+	const SLOW_TEXT ; %00
+	const MED_TEXT ; %01
+	const FAST_TEXT  ; %10
+	const INST_TEXT ; %11
 
 ; wTextboxFrame::
 	const_def
