@@ -346,7 +346,8 @@ ElmPhoneEvoText_Party:
 	para "while you have a"
 	line ""
 	text_ram wStringBuffer4
-	cont "in your party too."
+	text " in"
+	cont "your party too."
 	prompt
 
 ElmPhoneEvoText_Egg:
