@@ -17,7 +17,7 @@ INCLUDE "data/trainers/macros.asm"
 		; Defines an EV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
 		; If the player has the "no EV limit" option set, the EV will be set to
 		; the sum of the given EVs, divided by 2, capped to 252. If the 510
-		; option is sethe EVs will be applied as-is.
+		; option is set, the EVs will be applied as-is.
 	; tr_dvs Spread
 		; Defines a DV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
 		; You can also specify "12 All" to set all DVs to 12.
@@ -965,28 +965,20 @@ MistyGroup:
 	db -1 ; end
 
 	; MISTY
-	db "Misty@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 73, GOLDUCK
-		db TWISTEDSPOON
-		db PSYCHIC_M, SCALD, ICE_BEAM, CALM_MIND
-	dbp 72, QUAGSIRE
-		db NO_ITEM
-		db EARTHQUAKE, SCALD, RECOVER, TOXIC
-	dbp 72, KINGLER
-		db KINGS_ROCK
-		db SWORDS_DANCE, CRABHAMMER, X_SCISSOR, ROCK_SLIDE
-	dbp 73, LANTURN
-		db NEVERMELTICE
-		db SURF, THUNDERBOLT, ICE_BEAM, CONFUSE_RAY
-	dbp 74, OCTILLERY
-		db CHARCOAL
-		db FIRE_BLAST, ICE_BEAM, HYDRO_PUMP, POWER_WHIP
-	dbp 75, STARMIE
-		db LEFTOVERS
-		db RECOVER, PSYCHIC_M, THUNDERBOLT, SURF
-	db -1 ; end
+	tr_name "Misty"
+	tr_mon 73, GOLDUCK @ TWISTEDSPOON
+		tr_moves PSYCHIC_M, SCALD, ICE_BEAM, CALM_MIND
+	tr_mon 72, QUAGSIRE
+		tr_moves EARTHQUAKE, SCALD, RECOVER, TOXIC
+	tr_mon 72, KINGLER @ KINGS_ROCK
+		tr_moves SWORDS_DANCE, CRABHAMMER, X_SCISSOR, ROCK_SLIDE
+	tr_mon 73, LANTURN @ NEVERMELTICE
+		tr_moves SURF, THUNDERBOLT, ICE_BEAM, CONFUSE_RAY
+	tr_mon 74, OCTILLERY @ CHARCOAL
+		tr_moves FIRE_BLAST, ICE_BEAM, HYDRO_PUMP, POWER_WHIP
+	tr_mon 75, STARMIE @ LEFTOVERS
+		tr_moves RECOVER, PSYCHIC_M, THUNDERBOLT, SURF
+	tr_end
 
 
 SECTION "LtSurgeGroup", ROMX
@@ -1915,12 +1907,9 @@ SECTION "Lyra1Group", ROMX
 Lyra1Group:
 
 	; LYRA1
-	db "Lyra@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 5, CHIKORITA
-		db "Chicory@"
-	db -1 ; end
+	tr_name "Lyra"
+	tr_mon 5, "Chicory", CHIKORITA
+	tr_end
 
 	; LYRA1
 	db "Lyra@"
@@ -2136,22 +2125,14 @@ SECTION "Lyra2Group", ROMX
 Lyra2Group:
 
 	; LYRA2
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
-	; party
-	dbp 69, PIDGEOT
-		db NO_ITEM, "@"
-	dbp 70, ARCANINE
-		db NO_ITEM, "@"
-	dbp 70, AZUMARILL
-		db NO_ITEM, "@"
-	dbp 71, AMPHAROS
-		db NO_ITEM, "@"
-	dbp 68, FARIGIRAF
-		db NO_ITEM, "@"
-	dbp 72, MEGANIUM
-		db SITRUS_BERRY, "Chicory@"
-	db -1 ; end
+	tr_name "Lyra"
+	tr_mon 69, PIDGEOT
+	tr_mon 70, ARCANINE
+	tr_mon 70, AZUMARILL
+	tr_mon 71, AMPHAROS
+	tr_mon 68, FARIGIRAF
+	tr_mon 72, "Chicory", MEGANIUM @ SITRUS_BERRY
+	tr_end
 
 	; LYRA2
 	db "Lyra@"

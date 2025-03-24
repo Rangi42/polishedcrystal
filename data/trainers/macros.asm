@@ -12,6 +12,9 @@ MACRO ev_spread
 	if !DEF(EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
 		def EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_EV_SPREADS
 		with_each_stat "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
+		if _tr_mons > 0
+			println "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
+		endc
 		redef NUM_EV_SPREADS += 1
 	endc
 	db EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
@@ -59,7 +62,7 @@ MACRO tr_mon
 	if STRIN("\2", "\"") != 0
 		; The pokémon is nicknamed.
 		def _tr_flags |= TRAINERTYPE_NICKNAME
-		redef _tr_pk{d:x}_nickname = \2
+		redef _tr_pk{d:x}_nickname EQUS \2
 		shift ; since it's optional
 	endc
 
@@ -70,13 +73,18 @@ MACRO tr_mon
 		redef _tr_pk{d:x}_species EQUS STRSUB("\2", 1, STRIN("\2", "@") - 2)
 	else
 		; Just "Species", no held item.
-		redef _tr_pk{d:x}_species EQUS \2
+		redef _tr_pk{d:x}_species EQUS "\2"
 	endc
 
 	; Was form/gender specified?
 	if _NARG == 3
 		def _tr_pk{d:x}_form = \3
 	endc
+ENDM
+
+MACRO tr_evs
+	def _tr_flags |= TRAINERTYPE_EVS
+	redef _tr_pk{d:x}_evs EQUS "\#"
 ENDM
 
 MACRO tr_moves
@@ -107,6 +115,15 @@ MACRO tr_end
 		if _tr_flags & TRAINERTYPE_ITEM
 			db _tr_pk{d:x}_item
 		endc
+
+		if _tr_flags & TRAINERTYPE_NICKNAME
+			db "{_tr_pk{d:x}_nickname}@"
+		endc
+
+		if _tr_flags & TRAINERTYPE_EVS
+			ev_spread {_tr_pk{d:x}_evs}
+		endc
+
 		if _tr_flags & TRAINERTYPE_MOVES
 			for i, 1, NUM_MOVES + 1
 				db _tr_pk{d:x}_move{d:i}
@@ -114,5 +131,6 @@ MACRO tr_end
 		endc
 	endr
 
+	def _tr_mons = 0
 	db -1
 ENDM
