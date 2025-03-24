@@ -2097,28 +2097,20 @@ Lyra1Group:
 	db -1 ; end
 
 	; LYRA1
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 44, PIDGEOT
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 Spe
-	dbp 43, GIRAFARIG
-		db NO_ITEM, "@"
-		ev_spread 132 Atk, 132 Spe
-	dbp 45, SUNFLORA
-		db NO_ITEM, "@"
-		ev_spread 132 SAt, 132 Spe
-	dbp 45, ARCANINE
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 Atk
-	dbp 46, AMPHAROS
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 SAt
-	dbp 47, FERALIGATR
-		db SITRUS_BERRY, "Toto@"
-		ev_spread 252 Atk, 12 Spe
-	db -1 ; end
+	tr_name "Lyra"
+	tr_mon 44, PIDGEOT
+		tr_evs 132 HP, 132 Spe
+	tr_mon 43, GIRAFARIG
+		tr_evs 132 Atk, 132 Spe
+	tr_mon 45, SUNFLORA
+		tr_evs 132 SAt, 132 Spe
+	tr_mon 45, ARCANINE
+		tr_evs 132 HP, 132 Atk
+	tr_mon 46, AMPHAROS
+		tr_evs 132 HP, 132 SAt
+	tr_mon 47, "Toto", FERALIGATR @ SITRUS_BERRY
+		tr_evs 252 Atk, 12 Spe
+	tr_end
 
 
 SECTION "Lyra2Group", ROMX
