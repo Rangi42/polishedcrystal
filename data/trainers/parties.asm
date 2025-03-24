@@ -1,5 +1,3 @@
-;	setcharmap no_ngrams
-
 INCLUDE "data/trainers/party_pointers.asm"
 INCLUDE "data/trainers/macros.asm"
 
@@ -11543,5 +11541,3 @@ TeacherMGroup:
 	db -1 ; end
 
 ENDSECTION
-
-;	setcharmap default
