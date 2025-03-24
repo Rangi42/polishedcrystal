@@ -100,8 +100,16 @@ MACRO tr_extra
 		error "No gender specified for current mon."
 	endc
 
-	redef _tr_pk{d:x}_ability EQUS "ABIL_{_tr_pk{d:x}_species}_\1"
-	redef _tr_pk{d:x}_nature |= NAT_\2
+	; Both ability and nature is optional.
+	if !DEF(NAT_\1)
+		redef _tr_pk{d:x}_ability EQUS "ABIL_{_tr_pk{d:x}_species}_\1"
+		shift
+	endc
+
+	; If we still have a parameter to process, it's nature.
+	if _NARG == 1
+		redef _tr_pk{d:x}_nature |= NAT_\1
+	endc
 ENDM
 
 MACRO tr_evs

@@ -12,7 +12,8 @@ INCLUDE "data/trainers/macros.asm"
 		; Gender+Form is optional. If unspecified, gender will take from class
 		; and form will be a default form (usually Plain) based on the Pokémon.
 	; tr_extra Ability, Nature
-		; Defines ability (based on species) and Nature.
+		; Defines ability (based on species), Nature or both.
+		; Nature takes the form of "ATK_UP_SATK_DOWN", not "ADAMANT".
 	; tr_evs Spread
 		; Defines an EV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
 		; If the player has the "no EV limit" option set, the EV will be set to
@@ -5179,13 +5180,13 @@ endc
 	; LASS
 	tr_name "Alice"
 	tr_mon 60, "VuiVui", EEVEE @ EVIOLITE, FEMALE
-		tr_extra RUN_AWAY, SPE_UP_DEF_DOWN
+		tr_extra SPE_UP_DEF_DOWN
 		tr_moves RETURN, SHADOW_BALL, PROTECT, ATTRACT
 	tr_mon 61, "Eon", UMBREON @ LEFTOVERS, MALE
-		tr_extra SYNCHRONIZE, SDEF_UP_SATK_DOWN
+		tr_extra SDEF_UP_SATK_DOWN
 		tr_moves CHARM, REST, TOXIC, PURSUIT
 	tr_mon 61, "Vee", ESPEON @ SHELL_BELL, MALE
-		tr_extra SYNCHRONIZE, SATK_UP_ATK_DOWN
+		tr_extra SATK_UP_ATK_DOWN
 		tr_moves PSYCHIC_M, HEALINGLIGHT, GROWTH, BITE
 	tr_end
 
