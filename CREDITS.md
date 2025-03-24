@@ -67,14 +67,15 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Scarlax for many new Pokémon animations.
 * ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
-* Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
-* mauvesea for Hisuian Growlithe's animation.
+* Cure for front sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
+* mauvesea for Hisuian Growlithe's animation and back sprite, and back sprites of Paldean Wooper, Hisuian Growlithe, Alolan Rattata and Alolan Raticate.
+* ShadowOne333 for Hitmonchan's and Gengar's front sprite and animations, and back sprites of Hitmonchan, Gengar, Suicune, and Alolan Grimer.
 * ShadowOne333 and mauvesea for Annihilape's and Alolan Sandslash's front and back sprites.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
 * Nuuk for the sprite and animation of Farigiraf.
-* mauvesea for the Pokedex icon and sprite.
+* mauvesea for the Pokedex icon and overworld sprite.
 * Cesare_CBass for the Pokegear icon.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
@@ -99,7 +100,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
-* mauvesea for Crys's fishing sprites.
+* mauvesea for Crys's fishing sprites and DJ Mary's overworld sprite.
 * SoupPotato (aka SourApple) for the overworld weather sprites.
 
 
