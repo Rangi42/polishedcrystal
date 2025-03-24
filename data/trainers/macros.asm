@@ -74,23 +74,35 @@ MACRO tr_mon
 		redef _tr_pk{d:x}_species EQUS "\2"
 	endc
 
+	; Ability constant prefix.
+	redef _tr_curabil EQUS "ABIL_{_tr_pk{d:x}_species}"
+
 	; Was form/gender specified?
 	if _NARG == 3
-		; If you specify form, you must also specify gender.
-		; TODO: in the future, we should allow implicit gender by making
-		; bit 7 "invert inherited gender" instead of "female" (which causes
-		; ambiguity between "male" and "no gender specified"), alleviating the
-		; need for this check.
+		; Is gender defined?
 		if STRIN("\3", "MALE") == 0 && STRIN("\3", "GENDERLESS") == 0
-			error "Form, but not gender, specified (Use 'GENDERLESS' if genderless)"
+			; Check if we must define gender (TRAINERTYPE_PERSONALITY enabled).
+			if (_tr_flags & TRAINERTYPE_PERSONALITY)
+				error "No gender specified for current mon."
+			endc
+		else
+			if !(_tr_flags & TRAINERTYPE_PERSONALITY) && x > 0
+				error "No gender specified for previous mon."
+			endc
+			def _tr_flags |= TRAINERTYPE_PERSONALITY
 		endc
-
-		if !(_tr_flags & TRAINERTYPE_PERSONALITY) && x > 0
-			error "No gender specified for previous mon."
-		endc
-
-		def _tr_flags |= TRAINERTYPE_PERSONALITY
 		def _tr_pk{d:x}_form = \3
+
+		; Possibly change ability constant prefix based on form.
+		if STRIN("\3", "ALOLAN_FORM")
+			redef _tr_curabil EQUS "{_tr_curabil}_ALOLAN"
+		elif STRIN("\3", "GALARIAN_FORM")
+			redef _tr_curabil EQUS "{_tr_curabil}_GALARIAN"
+		elif STRIN("\3", "HISUIAN_FORM")
+			redef _tr_curabil EQUS "{_tr_curabil}_HISUIAN"
+		elif STRIN("\3", "PALDEAN_FORM")
+			redef _tr_curabil EQUS "{_tr_curabil}_PALDEAN"
+		endc
 	endc
 ENDM
 
@@ -102,7 +114,7 @@ MACRO tr_extra
 
 	; Both ability and nature is optional.
 	if !DEF(NAT_\1)
-		redef _tr_pk{d:x}_ability EQUS "ABIL_{_tr_pk{d:x}_species}_\1"
+		redef _tr_pk{d:x}_ability EQUS "{_tr_curabil}_\1"
 		shift
 	endc
 

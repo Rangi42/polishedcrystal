@@ -4008,14 +4008,11 @@ GruntMGroup:
 	db -1 ; end
 
 	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 33, RATICATE, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 33, SNEASEL, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	tr_name "Grunt"
+	tr_mon 33, RATICATE, MALE | ALOLAN_FORM
+		tr_extra GLUTTONY
+	tr_mon 33, SNEASEL, MALE
+	tr_end
 
 	; GRUNTM
 	db "Grunt@"
@@ -11118,15 +11115,13 @@ SECTION "PiersGroup", ROMX
 PiersGroup:
 
 	; PIERS
-	db "Piers@"
-	db TRAINERTYPE_NORMAL
-	; party
 	; TODO: movesets, etc
-	dbp 16, MURKROW, MALE
-	dbp 17, QWILFISH, MALE | HISUIAN_FORM
-	dbp 17, MUK, MALE | ALOLAN_FORM
-	dbp 19, RATICATE, MALE | ALOLAN_FORM
-	db -1 ; end
+	tr_name "Piers"
+	tr_mon 16, MURKROW
+	tr_mon 17, QWILFISH, HISUIAN_FORM
+	tr_mon 17, MUK, ALOLAN_FORM
+	tr_mon 19, RATICATE, ALOLAN_FORM
+	tr_end
 
 	; PIERS
 	db "Piers@"
