@@ -12,8 +12,9 @@ INCLUDE "data/trainers/macros.asm"
 		; Gender+Form is optional. If unspecified, gender will take from class
 		; and form will be a default form (usually Plain) based on the Pokémon.
 	; tr_extra Ability, Nature
-		; Defines ability (based on species), Nature or both.
+		; Defines ability (based on species), Nature and Shininess.
 		; Nature takes the form of "ATK_UP_SATK_DOWN", not "ADAMANT".
+		; All parameters are optional.
 	; tr_evs Spread
 		; Defines an EV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
 		; If the player has the "no EV limit" option set, the EV will be set to
@@ -8668,13 +8669,11 @@ ArtistGroup:
 	db -1 ; end
 
 	; ARTIST
-	db "Alina@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
-	; party
-	dbp 57, SMEARGLE
-		db MIRACLE_SEED, DVS_HP_GRASS ; green
-		db SPORE, FLAMETHROWER, SOLAR_BEAM, GIGA_DRAIN
-	db -1 ; end
+	tr_name "Alina"
+	tr_mon 57, SMEARGLE @ MIRACLE_SEED
+		tr_dvs XDVS_HP_GRASS ; green
+		tr_moves SPORE, FLAMETHROWER, SOLAR_BEAM, GIGA_DRAIN
+	tr_end
 
 	; ARTIST
 	db "Marlene@"
@@ -10124,22 +10123,20 @@ SECTION "MysticalmanGroup", ROMX
 MysticalmanGroup:
 
 	; MYSTICALMAN
-	db "Eusine@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 27, DROWZEE, MALE
-		db EVIOLITE, FAKE_PERFECT_DVS, ABIL_DROWZEE_INSOMNIA | NAT_NEUTRAL
-		db DREAM_EATER, HYPNOSIS, DISABLE, PSYBEAM
-	dbp 27, HAUNTER, MALE
-		db SPELL_TAG, FAKE_PERFECT_DVS, ABIL_HAUNTER_LEVITATE | NAT_NEUTRAL
-		db SHADOW_BALL, HYPNOSIS, CONFUSE_RAY, CURSE
-	dbp 28, ELECTRODE, MALE
-		db MAGNET, FAKE_PERFECT_DVS, SHINY_MASK | ABIL_ELECTRODE_AFTERMATH | NAT_NEUTRAL
-		db THUNDER, SCREECH, SONIC_BOOM, ROLLOUT
-	dbp 29, ALAKAZAM, MALE
-		db TWISTEDSPOON, DVS_HP_FIGHTING, ABIL_ALAKAZAM_SYNCHRONIZE | NAT_NEUTRAL
-		db REFLECT, LIGHT_SCREEN, HIDDEN_POWER, PSYBEAM
-	db -1 ; end
+	tr_name "Eusine"
+	tr_mon 27, DROWZEE @ EVIOLITE, MALE
+		tr_extra INSOMNIA
+		tr_moves DREAM_EATER, HYPNOSIS, DISABLE, PSYBEAM
+	tr_mon 27, HAUNTER @ SPELL_TAG, MALE
+		tr_extra LEVITATE
+		tr_moves SHADOW_BALL, HYPNOSIS, CONFUSE_RAY, CURSE
+	tr_mon 28, ELECTRODE @ MAGNET, MALE
+		tr_extra AFTERMATH, SHINY
+		tr_moves THUNDER, SCREECH, SONIC_BOOM, ROLLOUT
+	tr_mon 29, ALAKAZAM @ TWISTEDSPOON, MALE
+		tr_extra SYNCHRONIZE
+		tr_moves REFLECT, LIGHT_SCREEN, HP_FIGHTING, PSYBEAM
+	tr_end
 
 
 SECTION "KarateKingGroup", ROMX

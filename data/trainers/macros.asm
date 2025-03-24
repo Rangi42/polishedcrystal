@@ -48,22 +48,22 @@ DEF XDVS_HP_DARK     EQUS "14 Atk"
 endc
 
 MACRO dv_spread
-	def_evs \#
+	def_dvs \#
 
 	; This is a temporary way of handling DVs which replicate the legacy method,
 	; so we can keep checking for whether the ROM matches or not.
 	; When everything is verified and ready, this can behave like ev_spread.
-	if (EV_HP | EV_ATK) == 255
+	if EV_HP == 15 && EV_ATK == 15
 		db 0
 	else
 		dn EV_HP, EV_ATK
 	endc
-	if (EV_DEF | EV_SPE) == 255
+	if EV_DEF == 15 && EV_SPE == 15
 		db 0
 	else
 		dn EV_DEF, EV_SPE
 	endc
-	if (EV_SAT | EV_SDF) == 255
+	if EV_SAT == 15 && EV_SDF == 15
 		db 0
 	else
 		dn EV_SAT, EV_SDF
@@ -89,51 +89,51 @@ ENDM
 
 MACRO tr_mon
 	; First, reset all stale data from the previous Trainer's mons.
-	def x = {d:_tr_mons}
+	def p = {d:_tr_mons}
 	def _tr_mons += 1
-	redef _tr_pk{d:x}_nickname EQUS ""
-	redef _tr_pk{d:x}_item EQUS "NO_ITEM"
-	def _tr_pk{d:x}_form = NO_FORM
+	redef _tr_pk{d:p}_nickname EQUS ""
+	redef _tr_pk{d:p}_item EQUS "NO_ITEM"
+	def _tr_pk{d:p}_form = NO_FORM
 
 	; Provides default null EV+DV spreads if 1+ mon has them explicitly. Should
 	; we instead reference the trainer class defines?
-	redef _tr_pk{d:x}_evs EQUS "0 HP"
-	redef _tr_pk{d:x}_dvs EQUS "15 All"
+	redef _tr_pk{d:p}_evs EQUS "0 HP"
+	redef _tr_pk{d:p}_dvs EQUS "15 All"
 
 	; If Hidden Power type is specified, track if we also have an explicit DV.
 	; If we don't, the DV will be set to match the Hidden Power type.
-	redef _tr_pk{d:x}_hp_type EQUS ""
-	def _tr_pk{d:x}_dvs_explicit = FALSE
+	redef _tr_pk{d:p}_hp_type EQUS ""
+	def _tr_pk{d:p}_dvs_explicit = FALSE
 
-	redef _tr_pk{d:x}_ability EQUS "ABILITY_1"
-	redef _tr_pk{d:x}_nature = NAT_NEUTRAL
+	redef _tr_pk{d:p}_ability EQUS "ABILITY_1"
+	redef _tr_pk{d:p}_extra = NAT_NEUTRAL
 	for i, 1, NUM_MOVES + 1
-		def _tr_pk{d:x}_move{d:i} = NO_MOVE
+		def _tr_pk{d:p}_move{d:i} = NO_MOVE
 	endr
 
 	; Then actually define the data. Level is always required.
-	def _tr_pk{d:x}_level = \1
+	def _tr_pk{d:p}_level = \1
 
 	; Is the mon nicknamed?
 	if STRIN("\2", "\"") != 0
 		; The pokémon is nicknamed.
 		def _tr_flags |= TRAINERTYPE_NICKNAME
-		redef _tr_pk{d:x}_nickname EQUS \2
+		redef _tr_pk{d:p}_nickname EQUS \2
 		shift ; since it's optional
 	endc
 
 	if STRIN("\2", "@") != 0
 		; Format "Species @ Item" was used, so add the item.
 		def _tr_flags |= TRAINERTYPE_ITEM
-		redef _tr_pk{d:x}_item EQUS STRSUB("\2", STRIN("\2", "@") + 2)
-		redef _tr_pk{d:x}_species EQUS STRSUB("\2", 1, STRIN("\2", "@") - 2)
+		redef _tr_pk{d:p}_item EQUS STRSUB("\2", STRIN("\2", "@") + 2)
+		redef _tr_pk{d:p}_species EQUS STRSUB("\2", 1, STRIN("\2", "@") - 2)
 	else
 		; Just "Species", no held item.
-		redef _tr_pk{d:x}_species EQUS "\2"
+		redef _tr_pk{d:p}_species EQUS "\2"
 	endc
 
 	; Ability constant prefix.
-	redef _tr_curabil EQUS "ABIL_{_tr_pk{d:x}_species}"
+	redef _tr_curabil EQUS "ABIL_{_tr_pk{d:p}_species}"
 
 	; Was form/gender specified?
 	if _NARG == 3
@@ -149,7 +149,7 @@ MACRO tr_mon
 			endc
 			def _tr_flags |= TRAINERTYPE_PERSONALITY
 		endc
-		def _tr_pk{d:x}_form = \3
+		def _tr_pk{d:p}_form = \3
 
 		; Possibly change ability constant prefix based on form.
 		if STRIN("\3", "ALOLAN_FORM")
@@ -170,27 +170,33 @@ MACRO tr_extra
 		fail "No gender specified for current mon."
 	endc
 
-	; Both ability and nature is optional.
-	if !DEF(NAT_\1)
-		redef _tr_pk{d:x}_ability EQUS "{_tr_curabil}_\1"
-		shift
-	endc
-
-	; If we still have a parameter to process, it's nature.
-	if _NARG == 1
-		redef _tr_pk{d:x}_nature |= NAT_\1
-	endc
+	; All of these fields are optional.
+	for i, 1, _NARG + 1
+		if STRCMP("\<i>", "SHINY") == 0
+			redef _tr_pk{d:p}_extra |= SHINY_MASK
+		elif DEF(NAT_\<i>)
+			redef _tr_pk{d:p}_extra |= NAT_\<i>
+		else
+			redef _tr_pk{d:p}_ability EQUS "{_tr_curabil}_\<i>"
+		endc
+	endr
 ENDM
 
 MACRO tr_evs
 	def _tr_flags |= TRAINERTYPE_EVS
-	redef _tr_pk{d:x}_evs EQUS "\#"
+	redef _tr_pk{d:p}_evs EQUS "\#"
 ENDM
 
 MACRO tr_dvs
 	def _tr_flags |= TRAINERTYPE_DVS
-	redef _tr_pk{d:x}_dvs EQUS "\#"
-	def _tr_pk{d:x}_dvs_explicit = TRUE
+
+	; check if a constant was used
+	if STRIN("\#", "_")
+		redef _tr_pk{d:p}_dvs EQUS "{\#}"
+	else
+		redef _tr_pk{d:p}_dvs EQUS "\#"
+	endc
+	def _tr_pk{d:p}_dvs_explicit = TRUE
 ENDM
 
 MACRO tr_moves
@@ -201,10 +207,10 @@ MACRO tr_moves
 	for i, 1, _NARG + 1
 		if STRIN("\<i>", "HP_") == 1
 			def _tr_flags |= TRAINERTYPE_DVS ; for Hidden Power type
-			def _tr_pk{d:x}_move{d:i} = HIDDEN_POWER
-			redef _tr_pk{d:x}_hp_type EQUS \<i>
+			def _tr_pk{d:p}_move{d:i} = HIDDEN_POWER
+			redef _tr_pk{d:p}_hp_type EQUS "\<i>"
 		else
-			def _tr_pk{d:x}_move{d:i} = \<i>
+			def _tr_pk{d:p}_move{d:i} = \<i>
 		endc
 	endr
 ENDM
@@ -216,42 +222,42 @@ MACRO tr_end
 	db _tr_flags
 
 	; Now for all the mon data.
-	for x, 0, _tr_mons
+	for p, 0, _tr_mons
 		; We can't have implicit moves, for now.
-		if _tr_flags & TRAINERTYPE_MOVES && _tr_pk{d:x}_move1 == NO_MOVE
-			fail "Unspecified move list for _tr_pk{d:x}_species"
+		if _tr_flags & TRAINERTYPE_MOVES && _tr_pk{d:p}_move1 == NO_MOVE
+			fail "Unspecified move list for _tr_pk{d:p}_species"
 		endc
 
 		; If we have implicit DVs, but a Hidden Power type, set that now.
-		if STRIN("{_tr_pk{d:x}_hp_type}", "HP_") && _tr_pk{d:x}_dvs_explicit != TRUE
-			redef _tr_pk{d:x}_dvs EQUS "XDVS_{_tr_pk{d:x}_hp_type}"
+		if STRIN("{_tr_pk{d:p}_hp_type}", "HP_") && _tr_pk{d:p}_dvs_explicit != TRUE
+			redef _tr_pk{d:p}_dvs EQUS "{XDVS_{_tr_pk{d:p}_hp_type}}"
 		endc
-		db _tr_pk{d:x}_level
-		dp _tr_pk{d:x}_species, _tr_pk{d:x}_form
+		db _tr_pk{d:p}_level
+		dp _tr_pk{d:p}_species, _tr_pk{d:p}_form
 
 		if _tr_flags & TRAINERTYPE_ITEM
-			db _tr_pk{d:x}_item
+			db _tr_pk{d:p}_item
 		endc
 
 		if _tr_flags & TRAINERTYPE_DVS
-			dv_spread {_tr_pk{d:x}_evs}
+			dv_spread {_tr_pk{d:p}_dvs}
 		endc
 
 		if _tr_flags & TRAINERTYPE_PERSONALITY
-			db {_tr_pk{d:x}_ability} | {_tr_pk{d:x}_nature}
+			db {_tr_pk{d:p}_ability} | {_tr_pk{d:p}_extra}
 		endc
 
 		if _tr_flags & TRAINERTYPE_NICKNAME
-			db "{_tr_pk{d:x}_nickname}@"
+			db "{_tr_pk{d:p}_nickname}@"
 		endc
 
 		if _tr_flags & TRAINERTYPE_EVS
-			ev_spread {_tr_pk{d:x}_evs}
+			ev_spread {_tr_pk{d:p}_evs}
 		endc
 
 		if _tr_flags & TRAINERTYPE_MOVES
 			for i, 1, NUM_MOVES + 1
-				db _tr_pk{d:x}_move{d:i}
+				db _tr_pk{d:p}_move{d:i}
 			endr
 		endc
 	endr
