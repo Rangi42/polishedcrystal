@@ -50,7 +50,8 @@ MACRO tr_mon
 	def _tr_pk{d:x}_dvs_spe = 0
 	def _tr_pk{d:x}_dvs_sat = 0
 	def _tr_pk{d:x}_dvs_sdf = 0
-	def _tr_pk{d:x}_extra = NAT_NEUTRAL
+	redef _tr_pk{d:x}_ability EQUS "ABILITY_1"
+	redef _tr_pk{d:x}_nature = NAT_NEUTRAL
 	for i, 1, NUM_MOVES + 1
 		def _tr_pk{d:x}_move{d:i} = NO_MOVE
 	endr
@@ -78,8 +79,32 @@ MACRO tr_mon
 
 	; Was form/gender specified?
 	if _NARG == 3
+		; If you specify form, you must also specify gender.
+		; TODO: in the future, we should allow implicit gender by making
+		; bit 7 "invert inherited gender" instead of "female" (which causes
+		; ambiguity between "male" and "no gender specified"), alleviating the
+		; need for this check.
+		if STRIN("\3", "MALE") == 0 && STRIN("\3", "GENDERLESS") == 0
+			error "Form, but not gender, specified (Use 'GENDERLESS' if genderless)"
+		endc
+
+		if !(_tr_flags & TRAINERTYPE_PERSONALITY) && x > 0
+			error "No gender specified for previous mon."
+		endc
+
+		def _tr_flags |= TRAINERTYPE_PERSONALITY
 		def _tr_pk{d:x}_form = \3
 	endc
+ENDM
+
+MACRO tr_extra
+	; If we specify extra data, we must also specify gender!
+	if !(_tr_flags & TRAINERTYPE_PERSONALITY)
+		error "No gender specified for current mon."
+	endc
+
+	redef _tr_pk{d:x}_ability EQUS "ABIL_{_tr_pk{d:x}_species}_\1"
+	redef _tr_pk{d:x}_nature |= NAT_\2
 ENDM
 
 MACRO tr_evs
@@ -114,6 +139,11 @@ MACRO tr_end
 
 		if _tr_flags & TRAINERTYPE_ITEM
 			db _tr_pk{d:x}_item
+		endc
+
+		if _tr_flags & TRAINERTYPE_PERSONALITY
+			db ABILITY_1 | NAT_NEUTRAL
+;			db {_tr_pk{d:x}_ability} | {_tr_pk{d:x}_nature}
 		endc
 
 		if _tr_flags & TRAINERTYPE_NICKNAME
