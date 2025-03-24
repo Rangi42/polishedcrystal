@@ -7,6 +7,69 @@ ENDM
 
 DEF NUM_EV_SPREADS = 0
 
+; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
+; Chosen for stat importance: Speed > * > Atk (hidden power is a special move)
+; ("XDVS_" is a placeholder before I have replaced the full party table,
+; will be replaced with "DVS_" when fully ready)
+if DEF(FAITHFUL)
+DEF XDVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
+DEF XDVS_HP_FLYING   EQUS "14 HP, 14 Atk, 14 Def, 14 SAt, 14 SDf"
+DEF XDVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
+DEF XDVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
+DEF XDVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
+DEF XDVS_HP_BUG      EQUS "14 Atk, 14 Def, 14 SDf"
+DEF XDVS_HP_GHOST    EQUS "14 Atk, 14 SDf"
+DEF XDVS_HP_STEEL    EQUS "14 SDf"
+DEF XDVS_HP_FIRE     EQUS "14 Atk, 14 Spe, 14 SAt"
+DEF XDVS_HP_WATER    EQUS "14 Atk, 14 Def, 14 SAt"
+DEF XDVS_HP_GRASS    EQUS "14 Atk, 14 SAt"
+DEF XDVS_HP_ELECTRIC EQUS "14 SAt"
+DEF XDVS_HP_PSYCHIC  EQUS "14 Atk, 14 Spe"
+DEF XDVS_HP_ICE      EQUS "14 Atk, 14 Def"
+DEF XDVS_HP_DRAGON   EQUS "14 Atk"
+DEF XDVS_HP_DARK     EQUS "15 All"
+else
+DEF XDVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
+DEF XDVS_HP_FLYING   EQUS "14 Spe, 14 SAt, 14 SDf"
+DEF XDVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
+DEF XDVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
+DEF XDVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
+DEF XDVS_HP_BUG      EQUS "14 Spe, 14 SDf"
+DEF XDVS_HP_GHOST    EQUS "14 Def, 14 SDf"
+DEF XDVS_HP_STEEL    EQUS "14 SDf"
+DEF XDVS_HP_FIRE     EQUS "14 Def, 14 Spe, 14 SAt"
+DEF XDVS_HP_WATER    EQUS "14 Spe, 14 SAt"
+DEF XDVS_HP_GRASS    EQUS "14 Def, 14 SAt"
+DEF XDVS_HP_ELECTRIC EQUS "14 SAt"
+DEF XDVS_HP_PSYCHIC  EQUS "14 Def, 14 Spe"
+DEF XDVS_HP_ICE      EQUS "14 Spe"
+DEF XDVS_HP_DRAGON   EQUS "14 Def"
+DEF XDVS_HP_DARK     EQUS "14 Atk"
+endc
+
+MACRO dv_spread
+	def_evs \#
+
+	; This is a temporary way of handling DVs which replicate the legacy method,
+	; so we can keep checking for whether the ROM matches or not.
+	; When everything is verified and ready, this can behave like ev_spread.
+	if (EV_HP | EV_ATK) == 255
+		db 0
+	else
+		dn EV_HP, EV_ATK
+	endc
+	if (EV_DEF | EV_SPE) == 255
+		db 0
+	else
+		dn EV_DEF, EV_SPE
+	endc
+	if (EV_SAT | EV_SDF) == 255
+		db 0
+	else
+		dn EV_SAT, EV_SDF
+	endc
+ENDM
+
 MACRO ev_spread
 	def_evs \#
 	if !DEF(EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
@@ -32,21 +95,16 @@ MACRO tr_mon
 	redef _tr_pk{d:x}_item EQUS "NO_ITEM"
 	def _tr_pk{d:x}_form = NO_FORM
 
-	; Provides a default null EV spread if 1+ mon has explicit EVs. Should we
-	; instead reference the trainer class EV define?
+	; Provides default null EV+DV spreads if 1+ mon has them explicitly. Should
+	; we instead reference the trainer class defines?
 	redef _tr_pk{d:x}_evs EQUS "0 HP"
+	redef _tr_pk{d:x}_dvs EQUS "15 All"
 
-	; DVs need to be defined individually for Hidden Power benefit.
-	; "Explicit" will override standard Hidden Power DV recalculation,
-	; and error out if it results in a different Hidden Power type than
-	; specified.
+	; If Hidden Power type is specified, track if we also have an explicit DV.
+	; If we don't, the DV will be set to match the Hidden Power type.
+	redef _tr_pk{d:x}_hp_type EQUS ""
 	def _tr_pk{d:x}_dvs_explicit = FALSE
-	def _tr_pk{d:x}_dvs_hp = 0
-	def _tr_pk{d:x}_dvs_atk = 0
-	def _tr_pk{d:x}_dvs_def = 0
-	def _tr_pk{d:x}_dvs_spe = 0
-	def _tr_pk{d:x}_dvs_sat = 0
-	def _tr_pk{d:x}_dvs_sdf = 0
+
 	redef _tr_pk{d:x}_ability EQUS "ABILITY_1"
 	redef _tr_pk{d:x}_nature = NAT_NEUTRAL
 	for i, 1, NUM_MOVES + 1
@@ -83,11 +141,11 @@ MACRO tr_mon
 		if STRIN("\3", "MALE") == 0 && STRIN("\3", "GENDERLESS") == 0
 			; Check if we must define gender (TRAINERTYPE_PERSONALITY enabled).
 			if (_tr_flags & TRAINERTYPE_PERSONALITY)
-				error "No gender specified for current mon."
+				fail "No gender specified for current mon."
 			endc
 		else
 			if !(_tr_flags & TRAINERTYPE_PERSONALITY) && x > 0
-				error "No gender specified for previous mon."
+				fail "No gender specified for previous mon."
 			endc
 			def _tr_flags |= TRAINERTYPE_PERSONALITY
 		endc
@@ -109,7 +167,7 @@ ENDM
 MACRO tr_extra
 	; If we specify extra data, we must also specify gender!
 	if !(_tr_flags & TRAINERTYPE_PERSONALITY)
-		error "No gender specified for current mon."
+		fail "No gender specified for current mon."
 	endc
 
 	; Both ability and nature is optional.
@@ -129,13 +187,25 @@ MACRO tr_evs
 	redef _tr_pk{d:x}_evs EQUS "\#"
 ENDM
 
+MACRO tr_dvs
+	def _tr_flags |= TRAINERTYPE_DVS
+	redef _tr_pk{d:x}_dvs EQUS "\#"
+	def _tr_pk{d:x}_dvs_explicit = TRUE
+ENDM
+
 MACRO tr_moves
 	def _tr_flags |= TRAINERTYPE_MOVES
 	if _NARG > NUM_MOVES
-		error "A mon may only have {d:NUM_MOVES} moves."
+		fail "A mon may only have {d:NUM_MOVES} moves."
 	endc
 	for i, 1, _NARG + 1
-		def _tr_pk{d:x}_move{d:i} = \<i>
+		if STRIN("\<i>", "HP_") == 1
+			def _tr_flags |= TRAINERTYPE_DVS ; for Hidden Power type
+			def _tr_pk{d:x}_move{d:i} = HIDDEN_POWER
+			redef _tr_pk{d:x}_hp_type EQUS \<i>
+		else
+			def _tr_pk{d:x}_move{d:i} = \<i>
+		endc
 	endr
 ENDM
 
@@ -149,13 +219,22 @@ MACRO tr_end
 	for x, 0, _tr_mons
 		; We can't have implicit moves, for now.
 		if _tr_flags & TRAINERTYPE_MOVES && _tr_pk{d:x}_move1 == NO_MOVE
-			error "Unspecified move list for _tr_pk{d:x}_species"
+			fail "Unspecified move list for _tr_pk{d:x}_species"
+		endc
+
+		; If we have implicit DVs, but a Hidden Power type, set that now.
+		if STRIN("{_tr_pk{d:x}_hp_type}", "HP_") && _tr_pk{d:x}_dvs_explicit != TRUE
+			redef _tr_pk{d:x}_dvs EQUS "XDVS_{_tr_pk{d:x}_hp_type}"
 		endc
 		db _tr_pk{d:x}_level
 		dp _tr_pk{d:x}_species, _tr_pk{d:x}_form
 
 		if _tr_flags & TRAINERTYPE_ITEM
 			db _tr_pk{d:x}_item
+		endc
+
+		if _tr_flags & TRAINERTYPE_DVS
+			dv_spread {_tr_pk{d:x}_evs}
 		endc
 
 		if _tr_flags & TRAINERTYPE_PERSONALITY

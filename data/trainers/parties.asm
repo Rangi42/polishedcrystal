@@ -23,7 +23,8 @@ INCLUDE "data/trainers/macros.asm"
 		; Defines a DV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
 		; You can also specify "12 All" to set all DVs to 12.
 		; If you specify a Hidden Power type, DVs will be implicitly set to make
-		; Hidden Power's type be the specified type.
+		; Hidden Power's type be the specified type if not already set.
+		; Unlike with EVs, implicit DVs default to 15, not 0.
 	; tr_moves Move1[, Move2, ...]
 		; Specifies up to 4 moves for the Pokémon.
 		; You can use HP_TYPE (for example HP_FIRE) to give the mon Hidden Power
@@ -2168,12 +2169,11 @@ SECTION "YoungsterGroup", ROMX
 YoungsterGroup:
 
 	; YOUNGSTER
-	db "Joey@"
-	db TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
-	; party
-	dbp 5, RATTATA, MALE
-		db FAKE_PERFECT_DVS, ABIL_RATTATA_GUTS | NAT_ATK_UP_SATK_DOWN
-	db -1 ; end
+	tr_name "Joey"
+	tr_mon 5, RATTATA, MALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+	tr_end
 
 	; YOUNGSTER
 	db "Joey@"
