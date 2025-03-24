@@ -12,9 +12,6 @@ MACRO ev_spread
 	if !DEF(EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
 		def EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_EV_SPREADS
 		with_each_stat "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
-		if _tr_mons > 0
-			println "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
-		endc
 		redef NUM_EV_SPREADS += 1
 	endc
 	db EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
@@ -142,8 +139,7 @@ MACRO tr_end
 		endc
 
 		if _tr_flags & TRAINERTYPE_PERSONALITY
-			db ABILITY_1 | NAT_NEUTRAL
-;			db {_tr_pk{d:x}_ability} | {_tr_pk{d:x}_nature}
+			db {_tr_pk{d:x}_ability} | {_tr_pk{d:x}_nature}
 		endc
 
 		if _tr_flags & TRAINERTYPE_NICKNAME
