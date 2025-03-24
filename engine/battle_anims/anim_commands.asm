@@ -232,15 +232,20 @@ RunBattleAnimCommand:
 	ret
 
 .not_done_with_anim
+	cp $ed
+	jr z, .var_wait 
 	cp $cf
-	jr nc, .do_anim
-
-	ld [wBattleAnimDelay], a
-	ret
+	jr c, .default_wait
 
 .do_anim
 	call .DoCommand
 	jr .loop
+
+.var_wait
+	ld a, [wBuffer1]
+.default_wait
+	ld [wBattleAnimDelay], a
+	ret
 
 .CheckTimer:
 	ld a, [wBattleAnimDelay]
@@ -294,7 +299,7 @@ BattleAnimCommands::
 	dw BattleAnimCmd_SetBgPal
 	dw BattleAnimCmd_SetObjPal
 	dw BattleAnimCmd_HiObj
-	dw DoNothing
+	dw BattleAnimCmd_SetVarWait
 	dw DoNothing
 	dw BattleAnimCmd_IfParamAnd
 	dw BattleAnimCmd_JumpUntil
@@ -303,8 +308,8 @@ BattleAnimCommands::
 	dw BattleAnimCmd_OBP0
 	dw BattleAnimCmd_OBP1
 	dw BattleAnimCmd_ClearSprites
-	dw DoNothing
-	dw DoNothing
+	dw BattleAnimCmd_SetSound
+	dw BattleAnimCmd_PlaySound
 	dw DoNothing
 	dw BattleAnimCmd_IfParamEqual
 	dw BattleAnimCmd_SetVar
@@ -434,6 +439,11 @@ BattleAnimCmd_JumpUntil:
 	ld a, d
 	ld [hld], a
 	ld [hl], e
+	ret
+
+BattleAnimCmd_SetVarWait:
+	call GetBattleAnimByte
+	ld [wPokeAnimWaitCounter], a
 	ret
 
 BattleAnimCmd_SetVar:
@@ -1080,8 +1090,28 @@ BattleAnimCmd_ClearSprites:
 	set 3, [hl]
 	ret
 
+BattleAnimCmd_SetSound:
+	call GetBattleAnimByte
+	ld [wBuffer2], a
+	call GetBattleAnimByte
+	ld [wBuffer3], a
+	ret
+
+BattleAnimCmd_PlaySound:
+	ld a, [wBuffer2]
+	call BattleAnimCmd_Sound.SetSFXAttributes
+	ld a, [wBuffer3]
+	cp -1
+	ret z
+	jr BattleAnimCmd_Sound.PlaySFX
+
 BattleAnimCmd_Sound:
 	call GetBattleAnimByte
+	call BattleAnimCmd_Sound.SetSFXAttributes
+	call GetBattleAnimByte
+	jr BattleAnimCmd_Sound.PlaySFX
+
+.SetSFXAttributes
 	ld e, a
 	srl a
 	srl a
@@ -1096,8 +1126,9 @@ BattleAnimCmd_Sound:
 	add hl, de
 	ld a, [hl]
 	ld [wStereoPanningMask], a
+	ret
 
-	call GetBattleAnimByte
+.PlaySFX
 	ld e, a
 	ld d, 0
 	farjp PlayStereoSFX
