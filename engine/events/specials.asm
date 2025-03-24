@@ -82,7 +82,7 @@ SpecialNameRival:
 	jmp InitName
 
 .DefaultRivalName:
-	db "Silver@"
+	rawchar "Silver@"
 
 SpecialTrendyPhrase:
 	ld b, $3 ; trendy phrase
@@ -94,7 +94,7 @@ SpecialTrendyPhrase:
 	jmp InitName
 
 .DefaultTrendyPhrase:
-	db "Nothing@"
+	rawchar "Nothing@"
 
 SpecialNameRater:
 	farjp NameRater
