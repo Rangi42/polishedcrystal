@@ -5,6 +5,7 @@ MACRO dbp
 	dp \#
 ENDM
 
+DEF NUM_DV_SPREADS = 0
 DEF NUM_EV_SPREADS = 0
 
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
@@ -47,25 +48,12 @@ endc
 
 MACRO dv_spread
 	def_dvs \#
-
-	; This is a temporary way of handling DVs which replicate the legacy method,
-	; so we can keep checking for whether the ROM matches or not.
-	; When everything is verified and ready, this can behave like ev_spread.
-	if EV_HP == 15 && EV_ATK == 15
-		db 0
-	else
-		dn EV_HP, EV_ATK
+	if !DEF(DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
+		def DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_DV_SPREADS
+		with_each_stat "def DV_SPREAD_{d:NUM_DV_SPREADS}_? EQU EV_?"
+		redef NUM_DV_SPREADS += 1
 	endc
-	if EV_DEF == 15 && EV_SPE == 15
-		db 0
-	else
-		dn EV_DEF, EV_SPE
-	endc
-	if EV_SAT == 15 && EV_SDF == 15
-		db 0
-	else
-		dn EV_SAT, EV_SDF
-	endc
+	db DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
 ENDM
 
 MACRO ev_spread

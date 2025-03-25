@@ -1090,11 +1090,9 @@ RandomPhoneMon:
 	jr z, .no_item
 	inc c
 .no_item
-	; TRAINERTYPE_DVS uses 3 more bytes
+	; TRAINERTYPE_DVS uses 1 more byte
 	bit TRNTYPE_DVS, b
 	jr z, .no_dvs
-	inc c
-	inc c
 	inc c
 .no_dvs
 	; TRAINERTYPE_PERSONALITY uses 1 more byte
