@@ -3151,30 +3151,22 @@ SECTION "OfficerFGroup", ROMX
 OfficerFGroup:
 
 	def_trainer_class OFFICERF
-	db "Jamie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, GROWLITHE
-	dbp 58, ARCANINE
-	dbp 57, BLASTOISE
-	db -1 ; end
+	def_trainer JAMIE, "Jamie"
+	tr_mon 54, GROWLITHE
+	tr_mon 58, ARCANINE
+	tr_mon 57, BLASTOISE
+	end_trainer
 
-	; OFFICERF
-	db "Mara@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, GROWLITHE
-	db -1 ; end
+	def_trainer MARA, "Mara"
+	tr_mon 17, GROWLITHE
+	end_trainer
 
-	; OFFICERF
-	db "Jenny@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, SQUIRTLE
-	dbp 53, SQUIRTLE
-	dbp 53, SQUIRTLE
-	dbp 53, SQUIRTLE
-	db -1 ; end
+	def_trainer JENNY, "Jenny"
+	tr_mon 53, SQUIRTLE
+	tr_mon 53, SQUIRTLE
+	tr_mon 53, SQUIRTLE
+	tr_mon 53, SQUIRTLE
+	end_trainer
 
 
 SECTION "NurseGroup", ROMX
