@@ -3020,140 +3020,73 @@ SECTION "PokefanMGroup", ROMX
 PokefanMGroup:
 
 	def_trainer_class POKEFANM
-	db "Derek@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 18, PIKACHU
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer DEREK1, "Derek"
+	tr_mon 18, PIKACHU @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Derek@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 19, PIKACHU
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer DEREK2, "Derek"
+	tr_mon 19, PIKACHU @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Derek@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 36, PIKACHU
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer DEREK3, "Derek"
+	tr_mon 36, PIKACHU @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "William@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 16, RAICHU
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer WILLIAM, "William"
+	tr_mon 16, RAICHU @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Robert@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 56, QUAGSIRE
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer ROBERT, "Robert"
+	tr_mon 56, QUAGSIRE @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Joshua@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 54, PIKACHU
-		db SITRUS_BERRY
-	dbp 54, PIKACHU
-		db SITRUS_BERRY
-	dbp 54, PIKACHU
-		db SITRUS_BERRY
-	dbp 54, PIKACHU
-		db SITRUS_BERRY
-	dbp 54, PIKACHU
-		db SITRUS_BERRY
-	dbp 54, PIKACHU
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer JOSHUA, "Joshua"
+	tr_mon 54, PIKACHU @ SITRUS_BERRY
+	tr_mon 54, PIKACHU @ SITRUS_BERRY
+	tr_mon 54, PIKACHU @ SITRUS_BERRY
+	tr_mon 54, PIKACHU @ SITRUS_BERRY
+	tr_mon 54, PIKACHU @ SITRUS_BERRY
+	tr_mon 54, PIKACHU @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Carter@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 59, BULBASAUR
-		db SITRUS_BERRY
-	dbp 59, CHARMANDER
-		db SITRUS_BERRY
-	dbp 59, SQUIRTLE
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer CARTER, "Carter"
+	tr_mon 59, BULBASAUR @ SITRUS_BERRY
+	tr_mon 59, CHARMANDER @ SITRUS_BERRY
+	tr_mon 59, SQUIRTLE @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Trevor@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 57, PSYDUCK
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer TREVOR, "Trevor"
+	tr_mon 57, PSYDUCK @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Brandon@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 13, SNUBBULL
-		db ORAN_BERRY
-	dbp 13, MAREEP
-		db NO_ITEM
-	db -1 ; end
+	def_trainer BRANDON, "Brandon"
+	tr_mon 13, SNUBBULL @ ORAN_BERRY
+	tr_mon 13, MAREEP
+	end_trainer
 
-	; POKEFANM
-	db "Jeremy@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 44, MEOWTH
-		db SITRUS_BERRY
-	dbp 45, PERSIAN
-		db SITRUS_BERRY
-	dbp 44, MEOWTH
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer JEREMY, "Jeremy"
+	tr_mon 44, MEOWTH @ SITRUS_BERRY
+	tr_mon 45, PERSIAN @ SITRUS_BERRY
+	tr_mon 44, MEOWTH @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Colin@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 49, DELIBIRD
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer COLIN, "Colin"
+	tr_mon 49, DELIBIRD @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Alex@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 56, NIDOKING
-		db KINGS_ROCK
-	dbp 56, SLOWKING
-		db KINGS_ROCK
-	dbp 56, SEAKING
-		db KINGS_ROCK
-	db -1 ; end
+	def_trainer ALEX, "Alex"
+	tr_mon 56, NIDOKING @ KINGS_ROCK
+	tr_mon 56, SLOWKING @ KINGS_ROCK
+	tr_mon 56, SEAKING @ KINGS_ROCK
+	end_trainer
 
-	; POKEFANM
-	db "Rex@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 53, PHANPY
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer REX, "Rex"
+	tr_mon 53, PHANPY @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANM
-	db "Allan@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 53, TEDDIURSA
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer ALLAN, "Allan"
+	tr_mon 53, TEDDIURSA @ SITRUS_BERRY
+	end_trainer
 
 
 SECTION "PokefanFGroup", ROMX
