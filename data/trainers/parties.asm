@@ -2423,263 +2423,171 @@ SECTION "BirdKeeperGroup", ROMX
 BirdKeeperGroup:
 
 	def_trainer_class BIRD_KEEPER
-	db "Vance@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, PIDGEOTTO
-	dbp 36, PIDGEOTTO
-	db -1 ; end
+	def_trainer VANCE1, "Vance"
+	tr_mon 36, PIDGEOTTO
+	tr_mon 36, PIDGEOTTO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Vance@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 40, PIDGEOTTO
-	dbp 40, PIDGEOTTO
-	db -1 ; end
+	def_trainer VANCE2, "Vance"
+	tr_mon 40, PIDGEOTTO
+	tr_mon 40, PIDGEOTTO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Vance@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 45, PIDGEOT
-		db TOXIC, QUICK_ATTACK, ROAR, FLY
-	dbp 45, PIDGEOT
-		db SWIFT, PROTECT, STEEL_WING, FLY
-	db -1 ; end
+	def_trainer VANCE3, "Vance"
+	tr_mon 45, PIDGEOT
+		tr_moves TOXIC, QUICK_ATTACK, ROAR, FLY
+	tr_mon 45, PIDGEOT
+		tr_moves SWIFT, PROTECT, STEEL_WING, FLY
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Jose@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, FARFETCH_D
-	db -1 ; end
+	def_trainer JOSE1, "Jose"
+	tr_mon 44, FARFETCH_D
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Jose@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 48, FARFETCH_D
-	db -1 ; end
+	def_trainer JOSE2, "Jose"
+	tr_mon 48, FARFETCH_D
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Jose@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 55, FARFETCH_D
-		db SWORDS_DANCE, NIGHT_SLASH, PROTECT, BRAVE_BIRD
-	db -1 ; end
+	def_trainer JOSE3, "Jose"
+	tr_mon 55, FARFETCH_D
+		tr_moves SWORDS_DANCE, NIGHT_SLASH, PROTECT, BRAVE_BIRD
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Rod@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 7, PIDGEY
-	dbp 8, HOOTHOOT
-	db -1 ; end
+	def_trainer ROD, "Rod"
+	tr_mon 7, PIDGEY
+	tr_mon 8, HOOTHOOT
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Abe@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, SPEAROW
-	db -1 ; end
+	def_trainer ABE, "Abe"
+	tr_mon 9, SPEAROW
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Theo@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, PIDGEY
-	dbp 16, HOOTHOOT
-	dbp 19, PIDGEOTTO
-	dbp 17, HOOTHOOT
-	dbp 16, PIDGEY
-	db -1 ; end
+	def_trainer THEO, "Theo"
+	tr_mon 17, PIDGEY
+	tr_mon 16, HOOTHOOT
+	tr_mon 19, PIDGEOTTO
+	tr_mon 17, HOOTHOOT
+	tr_mon 16, PIDGEY
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Toby@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, DODUO
-	dbp 17, DODUO
-	dbp 18, DODUO
-	db -1 ; end
+	def_trainer TOBY, "Toby"
+	tr_mon 16, DODUO
+	tr_mon 17, DODUO
+	tr_mon 18, DODUO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Denis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, SPEAROW
-	dbp 20, FEAROW
-	dbp 18, SPEAROW
-	db -1 ; end
+	def_trainer DENIS, "Denis"
+	tr_mon 18, SPEAROW
+	tr_mon 20, FEAROW
+	tr_mon 18, SPEAROW
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Hank@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 13, PIDGEY
-	dbp 56, PIDGEOT
-	db -1 ; end
+	def_trainer HANK, "Hank"
+	tr_mon 13, PIDGEY
+	tr_mon 56, PIDGEOT
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Roy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, FEAROW
-	dbp 59, PIDGEOT
-	db -1 ; end
+	def_trainer ROY, "Roy"
+	tr_mon 55, FEAROW
+	tr_mon 59, PIDGEOT
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Boris@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, DODUO
-	dbp 55, DODUO
-	dbp 58, DODRIO
-	db -1 ; end
+	def_trainer BORIS, "Boris"
+	tr_mon 56, DODUO
+	tr_mon 55, DODUO
+	tr_mon 58, DODRIO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Bob@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, NOCTOWL
-	db -1 ; end
+	def_trainer BOB, "Bob"
+	tr_mon 59, NOCTOWL
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Peter@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 7, PIDGEY
-	dbp 8, PIDGEY
-	dbp 10, SPEAROW
-	db -1 ; end
+	def_trainer PETER, "Peter"
+	tr_mon 7, PIDGEY
+	tr_mon 8, PIDGEY
+	tr_mon 10, SPEAROW
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Perry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, FARFETCH_D
-	db -1 ; end
+	def_trainer PERRY, "Perry"
+	tr_mon 59, FARFETCH_D
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Bret@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, PIDGEOT
-	dbp 57, FEAROW
-	db -1 ; end
+	def_trainer BRET, "Bret"
+	tr_mon 57, PIDGEOT
+	tr_mon 57, FEAROW
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Mick@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, PIDGEOT
-	dbp 60, MURKROW
-	dbp 60, NOCTOWL
-	db -1 ; end
+	def_trainer MICK, "Mick"
+	tr_mon 62, PIDGEOT
+	tr_mon 60, MURKROW
+	tr_mon 60, NOCTOWL
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Powell@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, PIDGEOT
-	db -1 ; end
+	def_trainer POWELL, "Powell"
+	tr_mon LEVEL_FROM_BADGES + 8, PIDGEOT
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Tony@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 4, PIDGEOTTO
-		db GUST, QUICK_ATTACK, RAGE, MUD_SLAP
-	dbp LEVEL_FROM_BADGES + 4, PIDGEOTTO
-		db GUST, QUICK_ATTACK, RAGE, DOUBLE_TEAM
-	dbp LEVEL_FROM_BADGES + 7, GOLDUCK
-		db SURF, DISABLE, SCREECH, ZEN_HEADBUTT
-	db -1 ; end
+	def_trainer BIRD_KEEPER_TONY, "Tony"
+	tr_mon LEVEL_FROM_BADGES + 4, PIDGEOTTO
+		tr_moves GUST, QUICK_ATTACK, RAGE, MUD_SLAP
+	tr_mon LEVEL_FROM_BADGES + 4, PIDGEOTTO
+		tr_moves GUST, QUICK_ATTACK, RAGE, DOUBLE_TEAM
+	tr_mon LEVEL_FROM_BADGES + 7, GOLDUCK
+		tr_moves SURF, DISABLE, SCREECH, ZEN_HEADBUTT
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Julian@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, HOOTHOOT
-	dbp LEVEL_FROM_BADGES + 4, PIDGEOTTO
-	dbp LEVEL_FROM_BADGES + 5, MURKROW
-	db -1 ; end
+	def_trainer JULIAN, "Julian"
+	tr_mon LEVEL_FROM_BADGES + 0, HOOTHOOT
+	tr_mon LEVEL_FROM_BADGES + 4, PIDGEOTTO
+	tr_mon LEVEL_FROM_BADGES + 5, MURKROW
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Justin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, XATU
-	dbp 50, NOCTOWL
-	db -1 ; end
+	def_trainer BIRD_KEEPER_JUSTIN, "Justin"
+	tr_mon 57, XATU
+	tr_mon 50, NOCTOWL
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Gail@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, PIDGEOT
-	dbp 53, PIDGEOTTO
-	db -1 ; end
+	def_trainer GAIL, "Gail"
+	tr_mon 56, PIDGEOT
+	tr_mon 53, PIDGEOTTO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Josh@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, DODRIO
-	db -1 ; end
+	def_trainer BIRD_KEEPER_JOSH, "Josh"
+	tr_mon 55, DODRIO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Bert@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, SKARMORY
-	dbp 57, DODRIO
-	db -1 ; end
+	def_trainer BERT, "Bert"
+	tr_mon 60, SKARMORY
+	tr_mon 57, DODRIO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Ernie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, PIDGEOT
-	db -1 ; end
+	def_trainer ERNIE, "Ernie"
+	tr_mon 61, PIDGEOT
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Kinsey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, FARFETCH_D
-	dbp 58, DODRIO
-	dbp 58, PIDGEOTTO
-	db -1 ; end
+	def_trainer KINSLEY, "Kinsey" ; MISMATCH
+	tr_mon 58, FARFETCH_D
+	tr_mon 58, DODRIO
+	tr_mon 58, PIDGEOTTO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Easton@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, DODUO
-	dbp 57, DODUO
-	dbp 59, DODRIO
-	dbp 59, DODRIO
-	db -1 ; end
+	def_trainer EASTON, "Easton"
+	tr_mon 57, DODUO
+	tr_mon 57, DODUO
+	tr_mon 59, DODRIO
+	tr_mon 59, DODRIO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Bryan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES - 1, PIDGEY
-	dbp LEVEL_FROM_BADGES + 1, PIDGEOTTO
-	db -1 ; end
+	def_trainer BRYAN, "Bryan"
+	tr_mon LEVEL_FROM_BADGES - 1, PIDGEY
+	tr_mon LEVEL_FROM_BADGES + 1, PIDGEOTTO
+	end_trainer
 
-	; BIRD_KEEPER
-	db "Trent@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, PIDGEY
-	dbp 44, PIDGEOTTO
-	dbp 55, PIDGEOT
-	db -1 ; end
+	def_trainer TRENT, "Trent"
+	tr_mon 33, PIDGEY
+	tr_mon 44, PIDGEOTTO
+	tr_mon 55, PIDGEOT
+	end_trainer
 
 
 SECTION "HikerGroup", ROMX
