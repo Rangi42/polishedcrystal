@@ -191,9 +191,16 @@ ENDM
 	; eb is reserved for $1xx anim objects, don't use!
 	const anim_hiobj_command ; eb
 
-	const_skip ; ec
+	const anim_setvarwait_command ; ec
+MACRO anim_setvarwait
+	db anim_setvarwait_command
+	db \1 ; wait frames
+ENDM
 
-	const_skip ; ed
+	const anim_dovarwait_command ; ed
+MACRO anim_dovarwait
+	db anim_dovarwait_command
+ENDM
 
 	const anim_jumpand_command ; ee
 MACRO anim_jumpand
@@ -240,9 +247,17 @@ MACRO anim_clearsprites
 	db anim_clearsprites_command
 ENDM
 
-	const_skip ; f5
+	const anim_setsound_command ; f5
+MACRO anim_setsound
+	db anim_setsound_command
+	db (\1 << 2) | \2 ; duration, tracks
+	db \3 ; id
+ENDM
 
-	const_skip ; f6
+	const anim_playsound_command ; f6
+MACRO anim_playsound
+	db anim_playsound_command
+ENDM
 
 	const_skip ; f7
 
