@@ -1707,157 +1707,107 @@ SECTION "BugCatcherGroup", ROMX
 BugCatcherGroup:
 
 	def_trainer_class BUG_CATCHER
-	db "Wade@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 2, CATERPIE
-	dbp 2, CATERPIE
-	dbp 3, WEEDLE
-	dbp 2, CATERPIE
-	db -1 ; end
+	def_trainer WADE1, "Wade"
+	tr_mon 2, CATERPIE
+	tr_mon 2, CATERPIE
+	tr_mon 3, WEEDLE
+	tr_mon 2, CATERPIE
+	end_trainer
 
-	; BUG_CATCHER
-	db "Wade@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, METAPOD
-	dbp 9, METAPOD
-	dbp 10, KAKUNA
-	dbp 9, METAPOD
-	db -1 ; end
+	def_trainer WADE2, "Wade"
+	tr_mon 9, METAPOD
+	tr_mon 9, METAPOD
+	tr_mon 10, KAKUNA
+	tr_mon 9, METAPOD
+	end_trainer
 
-	; BUG_CATCHER
-	db "Wade@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 14, BUTTERFREE
-	dbp 14, BUTTERFREE
-	dbp 15, BEEDRILL
-	dbp 14, BUTTERFREE
-	db -1 ; end
+	def_trainer WADE3, "Wade"
+	tr_mon 14, BUTTERFREE
+	tr_mon 14, BUTTERFREE
+	tr_mon 15, BEEDRILL
+	tr_mon 14, BUTTERFREE
+	end_trainer
 
-	; BUG_CATCHER
-	db "Wade@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 24, BUTTERFREE
-		db CONFUSION, POISONPOWDER, SUPERSONIC, HEALINGLIGHT
-	dbp 24, BUTTERFREE
-		db CONFUSION, STUN_SPORE, SUPERSONIC, HEALINGLIGHT
-	dbp 25, BEEDRILL
-		db FURY_STRIKES, FOCUS_ENERGY, PIN_MISSILE, RAGE
-	dbp 24, BUTTERFREE
-		db CONFUSION, SLEEP_POWDER, SUPERSONIC, HEALINGLIGHT
-	db -1 ; end
+	def_trainer WADE4, "Wade"
+	tr_mon 24, BUTTERFREE
+		tr_moves CONFUSION, POISONPOWDER, SUPERSONIC, HEALINGLIGHT
+	tr_mon 24, BUTTERFREE
+		tr_moves CONFUSION, STUN_SPORE, SUPERSONIC, HEALINGLIGHT
+	tr_mon 25, BEEDRILL
+		tr_moves FURY_STRIKES, FOCUS_ENERGY, PIN_MISSILE, RAGE
+	tr_mon 24, BUTTERFREE
+		tr_moves CONFUSION, SLEEP_POWDER, SUPERSONIC, HEALINGLIGHT
+	end_trainer
 
-	; BUG_CATCHER
-	db "Wade@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 30, BUTTERFREE
-		db CONFUSION, POISONPOWDER, SUPERSONIC, GUST
-	dbp 30, BUTTERFREE
-		db CONFUSION, STUN_SPORE, SUPERSONIC, GUST
-	dbp 32, BEEDRILL
-		db FURY_STRIKES, PURSUIT, U_TURN, DOUBLE_TEAM
-	dbp 34, BUTTERFREE
-		db PSYBEAM, SLEEP_POWDER, GUST, HEALINGLIGHT
-	db -1 ; end
+	def_trainer WADE5, "Wade"
+	tr_mon 30, BUTTERFREE
+		tr_moves CONFUSION, POISONPOWDER, SUPERSONIC, GUST
+	tr_mon 30, BUTTERFREE
+		tr_moves CONFUSION, STUN_SPORE, SUPERSONIC, GUST
+	tr_mon 32, BEEDRILL
+		tr_moves FURY_STRIKES, PURSUIT, U_TURN, DOUBLE_TEAM
+	tr_mon 34, BUTTERFREE
+		tr_moves PSYBEAM, SLEEP_POWDER, GUST, HEALINGLIGHT
+	end_trainer
 
-	; BUG_CATCHER
-	db "Arnie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, VENONAT
-	db -1 ; end
+	def_trainer ARNIE1, "Arnie"
+	tr_mon 16, VENONAT
+	end_trainer
 
-	; BUG_CATCHER
-	db "Arnie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, VENONAT
-	db -1 ; end
+	def_trainer ARNIE2, "Arnie"
+	tr_mon 20, VENONAT
+	end_trainer
 
-	; BUG_CATCHER
-	db "Arnie@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 28, VENOMOTH
-		db DISABLE, SUPERSONIC, CONFUSION, LEECH_LIFE
-	db -1 ; end
+	def_trainer ARNIE3, "Arnie"
+	tr_mon 28, VENOMOTH
+		tr_moves DISABLE, SUPERSONIC, CONFUSION, LEECH_LIFE
+	end_trainer
 
-	; BUG_CATCHER
-	db "Arnie@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, VENOMOTH
-		db GUST, SUPERSONIC, PSYBEAM, LEECH_LIFE
-	db -1 ; end
+	def_trainer ARNIE4, "Arnie"
+	tr_mon 36, VENOMOTH
+		tr_moves GUST, SUPERSONIC, PSYBEAM, LEECH_LIFE
+	end_trainer
 
-	; BUG_CATCHER
-	db "Arnie@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 40, VENOMOTH
-		db GUST, SUPERSONIC, PSYCHIC_M, TOXIC
-	db -1 ; end
+	def_trainer ARNIE5, "Arnie"
+	tr_mon 40, VENOMOTH
+		tr_moves GUST, SUPERSONIC, PSYCHIC_M, TOXIC
+	end_trainer
 
-	; BUG_CATCHER
-	db "Don@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 3, CATERPIE
-	dbp 3, CATERPIE
-	db -1 ; end
+	def_trainer DON, "Don"
+	tr_mon 3, CATERPIE
+	tr_mon 3, CATERPIE
+	end_trainer
 
-	; BUG_CATCHER
-	db "Benny@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 7, WEEDLE
-	dbp 10, KAKUNA
-	dbp 12, BEEDRILL
-	db -1 ; end
+	def_trainer BENNY, "Benny"
+	tr_mon 7, WEEDLE
+	tr_mon 10, KAKUNA
+	tr_mon 12, BEEDRILL
+	end_trainer
 
-	; BUG_CATCHER
-	db "Al@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 13, CATERPIE
-	dbp 13, WEEDLE
-	db -1 ; end
+	def_trainer AL, "Al"
+	tr_mon 13, CATERPIE
+	tr_mon 13, WEEDLE
+	end_trainer
 
-	; BUG_CATCHER
-	db "Josh@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 12, PARAS
-	dbp 12, VENONAT
-	db -1 ; end
+	def_trainer JOSH, "Josh"
+	tr_mon 12, PARAS
+	tr_mon 12, VENONAT
+	end_trainer
 
-	; BUG_CATCHER
-	db "Ken@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 46, ARIADOS
-	dbp 47, PINSIR
-	db -1 ; end
+	def_trainer KEN, "Ken"
+	tr_mon 46, ARIADOS
+	tr_mon 47, PINSIR
+	end_trainer
 
-	; BUG_CATCHER
-	db "Wayne@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, PARAS
-	dbp 10, PINECO
-	db -1 ; end
+	def_trainer WAYNE, "Wayne"
+	tr_mon 9, PARAS
+	tr_mon 10, PINECO
+	end_trainer
 
-	; BUG_CATCHER
-	db "Oscar@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, LEDIAN
-	dbp LEVEL_FROM_BADGES + 5, SCYTHER
-	db -1 ; end
+	def_trainer OSCAR, "Oscar"
+	tr_mon LEVEL_FROM_BADGES + 4, LEDIAN
+	tr_mon LEVEL_FROM_BADGES + 5, SCYTHER
+	end_trainer
 
 
 SECTION "CamperGroup", ROMX
