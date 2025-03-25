@@ -3173,33 +3173,22 @@ SECTION "NurseGroup", ROMX
 NurseGroup:
 
 	def_trainer_class NURSE
-	db "Beatrice@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, CHANSEY
-	db -1 ; end
+	def_trainer BEATRICE, "Beatrice"
+	tr_mon LEVEL_FROM_BADGES + 5, CHANSEY
+	end_trainer
 
-	; NURSE
-	db "Keiko@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, HAPPINY
-	dbp LEVEL_FROM_BADGES + 5, CHANSEY
-	db -1 ; end
+	def_trainer KEIKO, "Keiko"
+	tr_mon LEVEL_FROM_BADGES + 0, HAPPINY
+	tr_mon LEVEL_FROM_BADGES + 5, CHANSEY
+	end_trainer
 
-	; NURSE
-	db "Joy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, CHANSEY
-	db -1 ; end
+	def_trainer JOY, "Joy"
+	tr_mon LEVEL_FROM_BADGES + 6, CHANSEY
+	end_trainer
 
-	; NURSE
-	db "Winifred@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, BLISSEY
-	db -1 ; end
+	def_trainer WINIFRED, "Winifred"
+	tr_mon LEVEL_FROM_BADGES + 6, BLISSEY
+	end_trainer
 
 
 SECTION "PokemaniacGroup", ROMX
