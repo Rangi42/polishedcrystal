@@ -80,11 +80,24 @@ MACRO ev_spread
 	db EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
 ENDM
 
-MACRO tr_name
+DEF _tr_class = 0
+
+MACRO def_trainer_class
+	assert (\1 == _tr_class), "Trainer class ID mismatch"
+	def _tr_class += 1
+	def _tr_party = 1
+ENDM
+
+MACRO def_trainer
 	; Reset trainer macro state.
 	def _tr_flags = 0
 	def _tr_mons = 0
+	if _NARG == 2
+		assert (\1 == _tr_party), "Trainer party ID mismatch"
+		shift
+	endc
 	redef _tr_name EQUS \1
+	def _tr_party += 1
 ENDM
 
 MACRO tr_mon
@@ -216,7 +229,7 @@ MACRO tr_moves
 	endr
 ENDM
 
-MACRO tr_end
+MACRO end_trainer
 ; Write out the party data from stored trainer buffer.
 	; First, the trainer name and flags.
 	db "{_tr_name}@"

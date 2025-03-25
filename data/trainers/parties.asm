@@ -2,7 +2,7 @@ INCLUDE "data/trainers/party_pointers.asm"
 INCLUDE "data/trainers/macros.asm"
 
 ; All trainers follow a basic structure:
-	; tr_name "Name"
+	; def_trainer "Name"
 		; String in format "TEXT". Terminator ("@") is implicit.
 	; tr_mon Level, "Nickname", Species @ Item, Gender+Form
 		; Level is a range between 1-MAX_LEVEL inclusive.
@@ -30,17 +30,18 @@ INCLUDE "data/trainers/macros.asm"
 		; Specifies up to 4 moves for the Pokémon.
 		; You can use HP_TYPE (for example HP_FIRE) to give the mon Hidden Power
 		; and implicitly adjust the DVs to correspond to the given HP type.
-	; tr_end
+	; end_trainer
 
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
 
+	def_trainer_class TRAINER_NONE
 
 SECTION "CarrieGroup", ROMX
 CarrieGroup:
 
-	; CARRIE
-	tr_name "Carrie"
+	def_trainer_class CARRIE
+	def_trainer 1, "Carrie"
 	tr_mon 60, MEGANIUM @ SITRUS_BERRY
 		tr_moves GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
 	tr_mon 60, TYPHLOSION @ QUICK_CLAW
@@ -53,14 +54,14 @@ CarrieGroup:
 		tr_moves NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SLUDGE_BOMB
 	tr_mon 60, WIGGLYTUFF @ CHESTO_BERRY
 		tr_moves HYPER_VOICE, DAZZLINGLEAM, REST, SWEET_KISS
-	tr_end
+	end_trainer
 
 
 SECTION "CalGroup", ROMX
 CalGroup:
 
-	; CAL
-	tr_name "Cal"
+	def_trainer_class CAL
+	def_trainer 1, "Cal"
 	tr_mon 60, TYPHLOSION @ QUICK_CLAW
 		tr_moves SUNNY_DAY, THUNDERPUNCH, FLAMETHROWER, SUBSTITUTE
 	tr_mon 60, MEGANIUM @ SITRUS_BERRY
@@ -73,14 +74,14 @@ CalGroup:
 		tr_moves CONFUSE_RAY, CURSE, FEINT_ATTACK, PROTECT
 	tr_mon 60, CLEFABLE @ PINK_BOW
 		tr_moves SING, HEALINGLIGHT, METRONOME, MOONBLAST
-	tr_end
+	end_trainer
 
 
 SECTION "JackyGroup", ROMX
 JackyGroup:
 
-	; JACKY
-	tr_name "Jacky"
+	def_trainer_class JACKY
+	def_trainer 1, "Jacky"
 	tr_mon 60, FERALIGATR @ LUM_BERRY
 		tr_moves SURF, CRUNCH, ICE_PUNCH, ROCK_SLIDE
 	tr_mon 60, MEGANIUM @ SITRUS_BERRY
@@ -93,14 +94,14 @@ JackyGroup:
 		tr_moves EXPLOSION, POISON_JAB, TOXIC_SPIKES, DARK_PULSE
 	tr_mon 60, TOGETIC @ WIDE_LENS
 		tr_moves DAZZLINGLEAM, METRONOME, ANCIENTPOWER, EXTRASENSORY
-	tr_end
+	end_trainer
 
 
 SECTION "FalknerGroup", ROMX
 FalknerGroup:
 
-	; FALKNER
-	tr_name "Falkner"
+	def_trainer_class FALKNER
+	def_trainer 1, "Falkner"
 	tr_mon 11, PIDGEY
 		tr_evs 32 HP
 		tr_moves TACKLE, GUST, MUD_SLAP, NO_MOVE
@@ -110,10 +111,9 @@ FalknerGroup:
 	tr_mon 13, PIDGEOTTO @ PECHA_BERRY
 		tr_evs 32 HP
 		tr_moves GUST, MUD_SLAP, QUICK_ATTACK, ROOST
-	tr_end
+	end_trainer
 
-	; FALKNER
-	tr_name "Falkner"
+	def_trainer 2, "Falkner"
 	tr_mon 73, NOCTOWL @ TWISTEDSPOON
 		tr_moves AIR_SLASH, PSYCHIC_M, HYPNOSIS, DREAM_EATER
 	tr_mon 70, GLISCOR @ SCOPE_LENS
@@ -126,14 +126,14 @@ FalknerGroup:
 		tr_moves BRAVE_BIRD, NIGHT_SLASH, SUCKER_PUNCH, CONFUSE_RAY
 	tr_mon 75, PIDGEOT @ SHARP_BEAK
 		tr_moves HURRICANE, HYPER_BEAM, STEEL_WING, ROOST
-	tr_end
+	end_trainer
 
 
 SECTION "BugsyGroup", ROMX
 BugsyGroup:
 
-	; BUGSY
-	tr_name "Bugsy"
+	def_trainer_class BUGSY
+	def_trainer 1, "Bugsy"
 	tr_mon 14, BUTTERFREE @ NO_ITEM, MALE ; NO_ITEM needed to match
 		tr_evs 32 SAt, 32 Spe
 		tr_moves TACKLE, POISONPOWDER, SLEEP_POWDER, CONFUSION
@@ -146,10 +146,9 @@ BugsyGroup:
 	tr_mon 17, SCYTHER, FEMALE
 		tr_evs 64 Atk
 		tr_moves QUICK_ATTACK, LEER, PURSUIT, U_TURN
-	tr_end
+	end_trainer
 
-	; BUGSY
-	tr_name "Bugsy"
+	def_trainer 2, "Bugsy"
 	tr_mon 73, HERACROSS @ BLACK_BELT, MALE
 		tr_moves MEGAHORN, CROSS_CHOP, ROCK_SMASH, STONE_EDGE
 	tr_mon 71, LEDIAN @ KINGS_ROCK, FEMALE
@@ -166,14 +165,14 @@ endc
 		tr_moves MEGAHORN, SWORDS_DANCE, CLOSE_COMBAT, EARTHQUAKE
 	tr_mon 75, SCYTHER @ EVIOLITE, FEMALE
 		tr_moves SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, AERIAL_ACE
-	tr_end
+	end_trainer
 
 
 SECTION "WhitneyGroup", ROMX
 WhitneyGroup:
 
-	; WHITNEY
-	tr_name "Whitney"
+	def_trainer_class WHITNEY
+	def_trainer 1, "Whitney"
 	tr_mon 19, CLEFAIRY, FEMALE
 		tr_evs 96 HP
 		tr_moves METRONOME, DISARM_VOICE, DOUBLE_SLAP, ATTRACT
@@ -187,10 +186,9 @@ WhitneyGroup:
 		tr_extra SCRAPPY
 		tr_evs 48 Atk, 48 Spe
 		tr_moves DEFENSE_CURL, STOMP, FRESH_SNACK, ROLLOUT
-	tr_end
+	end_trainer
 
-	; WHITNEY
-	tr_name "Whitney"
+	def_trainer 2, "Whitney"
 	tr_mon 71, STANTLER @ LIGHT_CLAY, FEMALE
 		tr_moves REFLECT, LIGHT_SCREEN, DOUBLE_EDGE, ZEN_HEADBUTT
 	tr_mon 72, CLEFABLE @ PINK_BOW, FEMALE
@@ -204,14 +202,14 @@ WhitneyGroup:
 	tr_mon 75, MILTANK @ BRIGHTPOWDER, FEMALE
 		tr_extra SCRAPPY
 		tr_moves DEFENSE_CURL, ROLLOUT, FRESH_SNACK, BODY_SLAM
-	tr_end
+	end_trainer
 
 
 SECTION "MortyGroup", ROMX
 MortyGroup:
 
-	; MORTY
-	tr_name "Morty"
+	def_trainer_class MORTY
+	def_trainer 1, "Morty"
 	tr_mon 24, HAUNTER, MALE
 		tr_extra LEVITATE
 		tr_evs 64 Atk, 64 Spe
@@ -237,10 +235,9 @@ else
 endc
 		tr_evs 64 SAt, 64 Spe
 		tr_moves HYPNOSIS, THUNDERBOLT, SHADOW_BALL, DREAM_EATER
-	tr_end
+	end_trainer
 
-	; MORTY
-	tr_name "Morty"
+	def_trainer 2, "Morty"
 	tr_mon 72, GENGAR @ LEFTOVERS, MALE
 if DEF(FAITHFUL)
 		tr_extra CURSED_BODY
@@ -269,14 +266,14 @@ else
 		tr_extra LEVITATE
 endc
 		tr_moves NASTY_PLOT, SHADOW_BALL, THUNDERBOLT, DESTINY_BOND
-	tr_end
+	end_trainer
 
 
 SECTION "ChuckGroup", ROMX
 ChuckGroup:
 
-	; CHUCK
-	tr_name "Chuck"
+	def_trainer_class CHUCK
+	def_trainer 1, "Chuck"
 	tr_mon 30, PRIMEAPE, MALE
 		tr_extra DEFIANT
 		tr_evs 160 Atk
@@ -297,10 +294,9 @@ endc
 		tr_extra WATER_ABSORB
 		tr_evs 160 Atk
 		tr_moves ICE_PUNCH, HYPNOSIS, WATERFALL, DYNAMICPUNCH
-	tr_end
+	end_trainer
 
-	; CHUCK
-	tr_name "Chuck"
+	def_trainer 2, "Chuck"
 	tr_mon 71, ANNIHILAPE @ DRAGON_FANG, MALE
 		tr_extra DEFIANT
 		tr_moves EARTHQUAKE, STONE_EDGE, OUTRAGE, CROSS_CHOP
@@ -319,14 +315,14 @@ endc
 	tr_mon 75, POLIWRATH @ LEFTOVERS, MALE
 		tr_extra WATER_ABSORB
 		tr_moves WATERFALL, BULK_UP, ICE_PUNCH, CROSS_CHOP
-	tr_end
+	end_trainer
 
 
 SECTION "JasmineGroup", ROMX
 JasmineGroup:
 
-	; JASMINE
-	tr_name "Jasmine"
+	def_trainer_class JASMINE
+	def_trainer 1, "Jasmine"
 	tr_mon 34, SKARMORY
 		tr_evs 192 HP
 		tr_moves MUD_SLAP, DRILL_PECK, SPIKES, STEEL_WING
@@ -342,10 +338,9 @@ JasmineGroup:
 	tr_mon 37, STEELIX @ LEFTOVERS
 		tr_evs 192 HP
 		tr_moves BODY_SLAM, SCREECH, ROCK_SLIDE, IRON_TAIL
-	tr_end
+	end_trainer
 
-	; JASMINE
-	tr_name "Jasmine"
+	def_trainer 2, "Jasmine"
 	tr_mon 74, SKARMORY @ LEFTOVERS
 		tr_dvs 14 All
 		tr_moves SPIKES, SCREECH, DRILL_PECK, STEEL_WING
@@ -368,14 +363,14 @@ endc
 	tr_mon 75, STEELIX @ LEFTOVERS
 		tr_dvs 14 All
 		tr_moves EARTHQUAKE, ROCK_SLIDE, CRUNCH, IRON_HEAD
-	tr_end
+	end_trainer
 
 
 SECTION "PryceGroup", ROMX
 PryceGroup:
 
-	; PRYCE
-	tr_name "Pryce"
+	def_trainer_class PRYCE
+	def_trainer 1, "Pryce"
 	tr_mon 39, DEWGONG @ CHESTO_BERRY
 		tr_evs 224 HP
 		tr_moves WATERFALL, REST, RAIN_DANCE, AURORA_BEAM
@@ -391,10 +386,9 @@ PryceGroup:
 	tr_mon 42, MAMOSWINE @ SITRUS_BERRY
 		tr_evs 224 Atk
 		tr_moves MAGNITUDE, ANCIENTPOWER, AVALANCHE, FURY_STRIKES
-	tr_end
+	end_trainer
 
-	; PRYCE
-	tr_name "Pryce"
+	def_trainer 2, "Pryce"
 	tr_mon 73, DEWGONG @ FOCUS_BAND
 		tr_moves PROTECT, TOXIC, SURF, ICE_BEAM
 	tr_mon 73, CLOYSTER @ KINGS_ROCK
@@ -407,14 +401,14 @@ PryceGroup:
 		tr_moves SING, TOXIC, ICE_BEAM, THUNDERBOLT
 	tr_mon 75, MAMOSWINE @ HARD_STONE
 		tr_moves EARTHQUAKE, AVALANCHE, STONE_EDGE, ANCIENTPOWER
-	tr_end
+	end_trainer
 
 
 SECTION "ClairGroup", ROMX
 ClairGroup:
 
-	; CLAIR
-	tr_name "Clair"
+	def_trainer_class CLAIR
+	def_trainer 1, "Clair"
 	tr_mon 43, GYARADOS, FEMALE
 		tr_evs 4 Atk, 252 Spe
 		tr_moves CRUNCH, THRASH, DRAGON_PULSE, AQUA_TAIL
@@ -441,10 +435,9 @@ endc
 		tr_extra SNIPER
 		tr_evs 252 SAt, 4 Spe
 		tr_moves SMOKESCREEN, HYPER_BEAM, DRAGON_PULSE, SURF
-	tr_end
+	end_trainer
 
-	; CLAIR
-	tr_name "Clair"
+	def_trainer 2, "Clair"
 	tr_mon 72, GYARADOS @ BRIGHTPOWDER, FEMALE
 		tr_moves DRAGON_DANCE, WATERFALL, FLY, EARTHQUAKE
 	tr_mon 74, EXEGGUTOR @ LUM_BERRY, FEMALE | ALOLAN_FORM
@@ -464,14 +457,14 @@ endc
 	tr_mon 75, KINGDRA @ CHESTO_BERRY, FEMALE
 		tr_extra SNIPER
 		tr_moves DRAGON_DANCE, WATERFALL, OUTRAGE, REST
-	tr_end
+	end_trainer
 
 
 SECTION "WillGroup", ROMX
 WillGroup:
 
-	; WILL
-	tr_name "Will"
+	def_trainer_class WILL
+	def_trainer 1, "Will"
 	tr_mon 48, WYRDEER @ TWISTEDSPOON
 		tr_evs 252 HP, 36 Spe
 		tr_moves PSYCHIC_M, SHADOW_BALL, CALM_MIND, HYPNOSIS
@@ -490,10 +483,9 @@ WillGroup:
 	tr_mon 51, XATU @ LEFTOVERS
 		tr_evs 4 HP, 252 SAt
 		tr_moves QUICK_ATTACK, CONFUSE_RAY, PSYCHIC_M, FUTURE_SIGHT
-	tr_end
+	end_trainer
 
-	; WILL
-	tr_name "Will"
+	def_trainer 2, "Will"
 	tr_mon 67, WYRDEER @ TWISTEDSPOON
 		tr_moves SHADOW_BALL, MEGAHORN, EARTHQUAKE, PSYCHIC_M
 	tr_mon 68, JYNX @ BRIGHTPOWDER
@@ -506,14 +498,14 @@ WillGroup:
 		tr_moves SURF, PSYCHIC_M, THUNDER_WAVE, REST
 	tr_mon 70, XATU @ LEFTOVERS
 		tr_moves QUICK_ATTACK, FUTURE_SIGHT, CONFUSE_RAY, PSYCHIC_M
-	tr_end
+	end_trainer
 
 
 SECTION "KogaGroup", ROMX
 KogaGroup:
 
-	; KOGA
-	tr_name "Koga"
+	def_trainer_class KOGA
+	def_trainer 1, "Koga"
 	tr_mon 50, VENOMOTH @ SILVERPOWDER
 		tr_evs 252 SAt, 68 Spe
 		tr_moves SUPERSONIC, BUG_BUZZ, PSYCHIC_M, TOXIC
@@ -532,10 +524,9 @@ KogaGroup:
 	tr_mon 53, CROBAT @ LEFTOVERS
 		tr_evs 252 HP, 68 Atk
 		tr_moves DOUBLE_TEAM, POISON_JAB, SUPER_FANG, TOXIC
-	tr_end
+	end_trainer
 
-	; KOGA
-	tr_name "Koga"
+	def_trainer 2, "Koga"
 	tr_mon 69, TENTACRUEL @ WISE_GLASSES, MALE
 		tr_moves POWER_WHIP, ICE_BEAM, SURF, SLUDGE_BOMB
 	tr_mon 71, FORRETRESS @ SILK_SCARF, MALE
@@ -548,14 +539,14 @@ KogaGroup:
 		tr_moves WILL_O_WISP, THUNDER, SLUDGE_BOMB, EXPLOSION
 	tr_mon 72, CROBAT @ LEFTOVERS, MALE
 		tr_moves SCREECH, TOXIC, CRUNCH, AERIAL_ACE
-	tr_end
+	end_trainer
 
 
 SECTION "BrunoGroup", ROMX
 BrunoGroup:
 
-	; BRUNO
-	tr_name "Bruno"
+	def_trainer_class BRUNO
+	def_trainer 1, "Bruno"
 	tr_mon 51, HITMONTOP @ QUICK_CLAW
 		tr_evs 176 Atk, 176 Spe
 		tr_moves PURSUIT, CLOSE_COMBAT, DIG, PROTECT
@@ -574,10 +565,9 @@ BrunoGroup:
 	tr_mon 55, MACHAMP @ LEFTOVERS
 		tr_evs 100 HP, 252 Atk
 		tr_moves ROCK_SLIDE, FORESIGHT, CROSS_CHOP, BULK_UP
-	tr_end
+	end_trainer
 
-	; BRUNO
-	tr_name "Bruno"
+	def_trainer 2, "Bruno"
 	tr_mon 70, HITMONTOP @ QUICK_CLAW
 		tr_moves BULK_UP, SUCKER_PUNCH, COUNTER, HI_JUMP_KICK
 	tr_mon 71, SNEASLER @ SILVERPOWDER
@@ -590,14 +580,14 @@ BrunoGroup:
 		tr_moves CURSE, EARTHQUAKE, STONE_EDGE, IRON_HEAD
 	tr_mon 74, MACHAMP @ MUSCLE_BAND
 		tr_moves BULK_UP, STONE_EDGE, BODY_SLAM, CROSS_CHOP
-	tr_end
+	end_trainer
 
 
 SECTION "KarenGroup", ROMX
 KarenGroup:
 
-	; KAREN
-	tr_name "Karen"
+	def_trainer_class KAREN
+	def_trainer 1, "Karen"
 	tr_mon 53, UMBREON @ LEFTOVERS, FEMALE
 		tr_evs 252 HP, 132 Def
 		tr_moves MUD_SLAP, CONFUSE_RAY, FEINT_ATTACK, MEAN_LOOK
@@ -616,10 +606,9 @@ KarenGroup:
 	tr_mon 57, HOUNDOOM @ CHARCOAL, FEMALE
 		tr_evs 192 SAt, 192 Spe
 		tr_moves ROAR, PURSUIT, FLAMETHROWER, DARK_PULSE
-	tr_end
+	end_trainer
 
-	; KAREN
-	tr_name "Karen"
+	def_trainer 2, "Karen"
 	tr_mon 71, UMBREON @ LEFTOVERS
 		tr_moves CHARM, HEALINGLIGHT, PURSUIT, TOXIC
 	tr_mon 72, WEAVILE @ KINGS_ROCK
@@ -632,14 +621,14 @@ KarenGroup:
 		tr_moves EARTHQUAKE, CRUNCH, STONE_EDGE, PURSUIT
 	tr_mon 76, HOUNDOOM @ WISE_GLASSES
 		tr_moves ROAR, NASTY_PLOT, FIRE_BLAST, DARK_PULSE
-	tr_end
+	end_trainer
 
 
 SECTION "ChampionGroup", ROMX
 ChampionGroup:
 
-	; CHAMPION
-	tr_name "Lance"
+	def_trainer_class CHAMPION
+	def_trainer LANCE, "Lance"
 	tr_mon 57, GYARADOS @ MUSCLE_BAND, MALE
 		tr_extra INTIMIDATE, SPE_UP_SATK_DOWN
 		tr_evs 164 Atk, 252 Spe
@@ -668,10 +657,9 @@ endc
 		tr_extra MULTISCALE, ATK_UP_SATK_DOWN, SHINY
 		tr_evs 252 HP, 164 Atk
 		tr_moves SUBSTITUTE, DRAGON_DANCE, FLY, EXTREMESPEED
-	tr_end
+	end_trainer
 
-	; CHAMPION
-	tr_name "Lance"
+	def_trainer LANCE2, "Lance"
 	tr_mon 75, GYARADOS @ LIFE_ORB, MALE
 		tr_extra SPE_UP_SATK_DOWN
 		tr_moves DRAGON_DANCE, FLY, WATERFALL, EARTHQUAKE
@@ -695,14 +683,14 @@ endc
 	tr_mon 80, DRAGONITE @ WEAK_POLICY, MALE
 		tr_extra MULTISCALE, ATK_UP_SATK_DOWN, SHINY
 		tr_moves DRAGON_DANCE, EXTREMESPEED, OUTRAGE, IRON_HEAD
-	tr_end
+	end_trainer
 
 
 SECTION "BrockGroup", ROMX
 BrockGroup:
 
-	; BROCK
-	tr_name "Brock"
+	def_trainer_class BROCK
+	def_trainer 1, "Brock"
 	tr_mon 64, GOLEM
 		tr_evs 252 HP, 196 Atk
 		tr_moves DEFENSE_CURL, ROLLOUT, ROCK_SLIDE, EARTHQUAKE
@@ -721,10 +709,9 @@ BrockGroup:
 	tr_mon 65, AERODACTYL
 		tr_evs 252 Atk, 196 SAt
 		tr_moves AERIAL_ACE, SUPERSONIC, ANCIENTPOWER, HYPER_BEAM
-	tr_end
+	end_trainer
 
-	; BROCK
-	tr_name "Brock"
+	def_trainer 2, "Brock"
 	tr_mon 74, ONIX @ SOFT_SAND
 		tr_moves IRON_HEAD, ROCK_SLIDE, EARTHQUAKE, SANDSTORM
 	tr_mon 73, RHYPERIOR @ KINGS_ROCK
@@ -737,14 +724,14 @@ BrockGroup:
 		tr_moves STONE_EDGE, EARTHQUAKE, AERIAL_ACE, CRUNCH
 	tr_mon 75, GOLEM @ LEFTOVERS
 		tr_moves EXPLOSION, BODY_SLAM, STONE_EDGE, EARTHQUAKE
-	tr_end
+	end_trainer
 
 
 SECTION "MistyGroup", ROMX
 MistyGroup:
 
-	; MISTY
-	tr_name "Misty"
+	def_trainer_class MISTY
+	def_trainer 1, "Misty"
 	tr_mon 61, GOLDUCK
 		tr_evs 100 HP, 252 SAt
 		tr_moves WATER_PULSE, DISABLE, CALM_MIND, PSYCHIC_M
@@ -763,10 +750,9 @@ MistyGroup:
 	tr_mon 64, STARMIE @ SITRUS_BERRY
 		tr_evs 252 SAt, 100 Spe
 		tr_moves SCALD, CONFUSE_RAY, RECOVER, ICE_BEAM
-	tr_end
+	end_trainer
 
-	; MISTY
-	tr_name "Misty"
+	def_trainer 2, "Misty"
 	tr_mon 73, GOLDUCK @ TWISTEDSPOON
 		tr_moves PSYCHIC_M, SCALD, ICE_BEAM, CALM_MIND
 	tr_mon 72, QUAGSIRE
@@ -779,14 +765,14 @@ MistyGroup:
 		tr_moves FIRE_BLAST, ICE_BEAM, HYDRO_PUMP, POWER_WHIP
 	tr_mon 75, STARMIE @ LEFTOVERS
 		tr_moves RECOVER, PSYCHIC_M, THUNDERBOLT, SURF
-	tr_end
+	end_trainer
 
 
 SECTION "LtSurgeGroup", ROMX
 LtSurgeGroup:
 
-	; LT_SURGE
-	tr_name "Lt.Surge"
+	def_trainer_class LT_SURGE
+	def_trainer 1, "Lt.Surge"
 	tr_mon 58, ELECTABUZZ @ EVIOLITE
 		tr_evs 252 HP, 36 Def
 		tr_moves QUICK_ATTACK, THUNDERPUNCH, LIGHT_SCREEN, WILD_CHARGE
@@ -805,10 +791,9 @@ LtSurgeGroup:
 	tr_mon 60, RAICHU @ SITRUS_BERRY
 		tr_evs 36 Atk, 252 SAt
 		tr_moves THUNDER_WAVE, QUICK_ATTACK, WILD_CHARGE, THUNDER
-	tr_end
+	end_trainer
 
-	; LT_SURGE
-	tr_name "Lt.Surge"
+	def_trainer 2, "Lt.Surge"
 	tr_mon 74, ELECTIVIRE @ BLACK_BELT
 		tr_moves CROSS_CHOP, THUNDERPUNCH, LIGHT_SCREEN, WILD_CHARGE
 	tr_mon 72, ELECTRODE @ SILK_SCARF
@@ -821,14 +806,14 @@ LtSurgeGroup:
 		tr_moves SURF, ICE_BEAM, THUNDERBOLT, RECOVER
 	tr_mon 75, RAICHU @ BRIGHTPOWDER
 		tr_moves THUNDER_WAVE, NASTY_PLOT, THUNDERBOLT, FOCUS_BLAST
-	tr_end
+	end_trainer
 
 
 SECTION "ErikaGroup", ROMX
 ErikaGroup:
 
-	; ERIKA
-	tr_name "Erika"
+	def_trainer_class ERIKA
+	def_trainer 1, "Erika"
 	tr_mon 61, SUNFLORA
 		tr_evs 192 SAt, 192 Spe
 if DEF(FAITHFUL)
@@ -857,10 +842,9 @@ endc
 	tr_mon 65, BELLOSSOM @ SITRUS_BERRY
 		tr_evs 132 SAt, 252 Spe
 		tr_moves SUNNY_DAY, HEALINGLIGHT, PETAL_DANCE, SOLAR_BEAM
-	tr_end
+	end_trainer
 
-	; ERIKA
-	tr_name "Erika"
+	def_trainer 2, "Erika"
 	tr_mon 72, SUNFLORA @ BRIGHTPOWDER
 if DEF(FAITHFUL)
 		tr_moves SUNNY_DAY, LEECH_SEED, GIGA_DRAIN, EARTH_POWER
@@ -877,14 +861,14 @@ endc
 		tr_moves PETAL_DANCE, HEALINGLIGHT, LEECH_SEED, TOXIC
 	tr_mon 75, BELLOSSOM @ PINK_BOW
 		tr_moves SLEEP_POWDER, MOONBLAST, PETAL_DANCE, HP_ROCK
-	tr_end
+	end_trainer
 
 
 SECTION "JanineGroup", ROMX
 JanineGroup:
 
-	; JANINE
-	tr_name "Janine"
+	def_trainer_class JANINE
+	def_trainer 1, "Janine"
 	tr_mon 64, CROBAT
 		tr_evs 252 Atk, 164 Spe
 		tr_moves SCREECH, TOXIC, CONFUSE_RAY, AERIAL_ACE
@@ -903,10 +887,9 @@ JanineGroup:
 	tr_mon 66, VENOMOTH @ SITRUS_BERRY
 		tr_evs 208 SAt, 208 Spe
 		tr_moves SLUDGE_BOMB, DOUBLE_TEAM, GUST, PSYCHIC_M
-	tr_end
+	end_trainer
 
-	; JANINE
-	tr_name "Janine"
+	def_trainer 2, "Janine"
 	tr_mon 73, CROBAT @ KINGS_ROCK
 		tr_moves DOUBLE_TEAM, POISON_JAB, AERIAL_ACE, TOXIC
 	tr_mon 72, ARIADOS @ QUICK_CLAW
@@ -919,14 +902,14 @@ JanineGroup:
 		tr_moves SLUDGE_BOMB, FIRE_BLAST, WILL_O_WISP, EXPLOSION
 	tr_mon 75, VENOMOTH @ BRIGHTPOWDER
 		tr_moves SLUDGE_BOMB, DOUBLE_TEAM, SLEEP_POWDER, PSYCHIC_M
-	tr_end
+	end_trainer
 
 
 SECTION "SabrinaGroup", ROMX
 SabrinaGroup:
 
-	; SABRINA
-	tr_name "Sabrina"
+	def_trainer_class SABRINA
+	def_trainer 1, "Sabrina"
 	tr_mon 61, ESPEON
 		tr_evs 252 SAt, 68 Spe
 		tr_moves MUD_SLAP, QUICK_ATTACK, SWIFT, PSYCHIC_M
@@ -945,10 +928,9 @@ SabrinaGroup:
 	tr_mon 62, ALAKAZAM @ SITRUS_BERRY
 		tr_evs 252 SAt, 68 Spe
 		tr_moves RECOVER, FUTURE_SIGHT, PSYCHIC_M, REFLECT
-	tr_end
+	end_trainer
 
-	; SABRINA
-	tr_name "Sabrina"
+	def_trainer 2, "Sabrina"
 	tr_mon 74, ESPEON @ LEFTOVERS
 		tr_moves PSYCHIC_M, BATON_PASS, REFLECT, LIGHT_SCREEN
 	tr_mon 73, MR__MIME
@@ -961,14 +943,14 @@ SabrinaGroup:
 		tr_moves THUNDER_WAVE, NASTY_PLOT, SCALD, PSYCHIC_M
 	tr_mon 75, ALAKAZAM @ FOCUS_BAND
 		tr_moves RECOVER, SHADOW_BALL, PSYCHIC_M, FOCUS_BLAST
-	tr_end
+	end_trainer
 
 
 SECTION "BlaineGroup", ROMX
 BlaineGroup:
 
-	; BLAINE
-	tr_name "Blaine"
+	def_trainer_class BLAINE
+	def_trainer 1, "Blaine"
 	tr_mon 65, MAGCARGO
 		tr_evs 228 SAt, 252 Spe
 		tr_moves CURSE, WILL_O_WISP, FLAMETHROWER, ROCK_SLIDE
@@ -987,10 +969,9 @@ BlaineGroup:
 	tr_mon 69, RAPIDASH @ SITRUS_BERRY
 		tr_evs 252 Atk, 228 Spe
 		tr_moves QUICK_ATTACK, FIRE_SPIN, PLAY_ROUGH, FIRE_BLAST
-	tr_end
+	end_trainer
 
-	; BLAINE
-	tr_name "Blaine"
+	def_trainer 2, "Blaine"
 	tr_mon 71, MAGCARGO @ FOCUS_BAND
 		tr_moves RECOVER, SHELL_SMASH, FLAME_CHARGE, ROCK_SLIDE
 	tr_mon 72, MAGMORTAR @ BLACK_BELT
@@ -1003,14 +984,14 @@ BlaineGroup:
 		tr_moves FIRE_BLAST, FOCUS_BLAST, EARTH_POWER, HIDDEN_POWER
 	tr_mon 75, RAPIDASH @ POISON_BARB
 		tr_moves MEGAHORN, POISON_JAB, FLARE_BLITZ, WILD_CHARGE
-	tr_end
+	end_trainer
 
 
 SECTION "BlueGroup", ROMX
 BlueGroup:
 
-	; BLUE
-	tr_name "Blue"
+	def_trainer_class BLUE
+	def_trainer 1, "Blue"
 	tr_mon 68, EXEGGUTOR @ ROOM_SERVICE
 		tr_moves PSYCHIC_M, LEECH_SEED, TRICK_ROOM, GIGA_DRAIN
 	tr_mon 69, UMBREON @ LEFTOVERS
@@ -1027,10 +1008,9 @@ if DEF(FAITHFUL)
 else
 		tr_moves SURF, ICE_BEAM, BODY_SLAM, FLASH_CANNON
 endc
-	tr_end
+	end_trainer
 
-	; BLUE
-	tr_name "Blue"
+	def_trainer 2, "Blue"
 	tr_mon 74, UMBREON @ BRIGHTPOWDER
 		tr_moves CONFUSE_RAY, TOXIC, FEINT_ATTACK, PROTECT
 	tr_mon 73, MACHAMP @ BLACK_BELT
@@ -1043,14 +1023,14 @@ endc
 		tr_moves ROAR, OUTRAGE, FLARE_BLITZ, EXTREMESPEED
 	tr_mon 75, BLASTOISE @ LEFTOVERS
 		tr_moves SURF, ICE_BEAM, REST, SLEEP_TALK
-	tr_end
+	end_trainer
 
 
 SECTION "RedGroup", ROMX
 RedGroup:
 
-	; RED
-	tr_name "Red"
+	def_trainer_class RED
+	def_trainer 1, "Red"
 	tr_mon 90, PIKACHU @ LIGHT_BALL, MALE | PIKACHU_RED_FORM
 		tr_extra STATIC, SPE_UP_SDEF_DOWN
 		tr_moves THUNDERBOLT, SURF, IRON_TAIL, WILD_CHARGE
@@ -1074,14 +1054,14 @@ else
 		tr_extra TOUGH_CLAWS, ATK_UP_SATK_DOWN
 		tr_moves FLARE_BLITZ, SWORDS_DANCE, EARTHQUAKE, DRAGON_CLAW
 endc
-	tr_end
+	end_trainer
 
 
 SECTION "LeafGroup", ROMX
 LeafGroup:
 
-	; LEAF
-	tr_name "Green"
+	def_trainer_class LEAF
+	def_trainer 1, "Green"
 	tr_mon 96, LAPRAS @ LEFTOVERS, FEMALE
 		tr_extra SHELL_ARMOR, SATK_UP_ATK_DOWN
 		tr_moves ICE_BEAM, THUNDERBOLT, REST, SLEEP_TALK
@@ -1105,37 +1085,35 @@ else
 		tr_extra MAGIC_GUARD, SATK_UP_ATK_DOWN
 		tr_moves NASTY_PLOT, PSYCHIC_M, AURA_SPHERE, ICE_BEAM
 endc
-	tr_end
+	end_trainer
 
 
 SECTION "Rival0Group", ROMX
 Rival0Group:
 
-	; RIVAL0
-	tr_name "boy"
+	def_trainer_class RIVAL0
+	def_trainer 1, "boy"
 	tr_mon 4, RATTATA
 	tr_mon 5, CHIKORITA @ ORAN_BERRY
-	tr_end
+	end_trainer
 
-	; RIVAL0
-	tr_name "boy"
+	def_trainer 2, "boy"
 	tr_mon 4, RATTATA
 	tr_mon 5, CYNDAQUIL @ ORAN_BERRY
-	tr_end
+	end_trainer
 
-	; RIVAL0
-	tr_name "boy"
+	def_trainer 3, "boy"
 	tr_mon 4, RATTATA
 	tr_mon 5, TOTODILE @ ORAN_BERRY
-	tr_end
+	end_trainer
 
 
 SECTION "Rival1Group", ROMX
 Rival1Group:
 
 	; For EV spreads, keep continuity until pre-E4 (need Surf to lose EVs).
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer_class RIVAL1
+	def_trainer RIVAL1_4, "<RIVAL>"
 	tr_mon 14, GASTLY
 		tr_evs 72 Spe
 		tr_moves LICK, DISABLE, MEAN_LOOK, CURSE ; default for level
@@ -1148,10 +1126,9 @@ Rival1Group:
 	tr_mon 18, BAYLEEF @ ORAN_BERRY
 		tr_evs 72 Atk
 		tr_moves RAZOR_LEAF, POISONPOWDER, HEALINGLIGHT, REFLECT ; No Light Screen
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_5, "<RIVAL>"
 	tr_mon 14, GASTLY
 		tr_evs 72 Spe
 	tr_mon 16, ZUBAT
@@ -1160,10 +1137,9 @@ Rival1Group:
 		tr_evs 72 HP
 	tr_mon 18, QUILAVA @ ORAN_BERRY
 		tr_evs 72 SAt
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_6, "<RIVAL>"
 	tr_mon 14, GASTLY
 		tr_evs 72 Spe
 	tr_mon 16, ZUBAT
@@ -1172,10 +1148,9 @@ Rival1Group:
 		tr_evs 72 HP
 	tr_mon 18, CROCONAW @ ORAN_BERRY
 		tr_evs 72 Spe
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_7, "<RIVAL>"
 	tr_mon 20, HAUNTER
 		tr_evs 104 Spe
 		tr_moves LICK, CONFUSE_RAY, MEAN_LOOK, CURSE
@@ -1191,10 +1166,9 @@ Rival1Group:
 	tr_mon 22, BAYLEEF @ ORAN_BERRY
 		tr_evs 72 Atk, 32 SAt
 		tr_moves REFLECT, RAZOR_LEAF, POISONPOWDER, DISARM_VOICE
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_8, "<RIVAL>"
 	tr_mon 20, HAUNTER
 		tr_evs 104 Spe
 		tr_moves LICK, CONFUSE_RAY, MEAN_LOOK, CURSE
@@ -1210,10 +1184,9 @@ Rival1Group:
 	tr_mon 22, QUILAVA @ ORAN_BERRY
 		tr_evs 72 SAt, 32 Spe
 		tr_moves LEER, SMOKESCREEN, EMBER, QUICK_ATTACK
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_9, "<RIVAL>"
 	tr_mon 20, HAUNTER
 		tr_evs 104 Spe
 		tr_moves LICK, CONFUSE_RAY, MEAN_LOOK, CURSE
@@ -1229,10 +1202,9 @@ Rival1Group:
 	tr_mon 22, CROCONAW @ ORAN_BERRY
 		tr_evs 32 Atk, 72 Spe
 		tr_moves LEER, RAGE, WATER_GUN, BITE
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_10, "<RIVAL>"
 	tr_mon 40, GOLBAT
 		tr_evs 116 Atk, 116 Spe
 		tr_moves LEECH_LIFE, BITE, CONFUSE_RAY, WING_ATTACK
@@ -1248,10 +1220,9 @@ Rival1Group:
 	tr_mon 43, MEGANIUM @ SITRUS_BERRY
 		tr_evs 72 Atk, 160 SAt ; Still has some Atk EVs for continuity
 		tr_moves REFLECT, LIGHT_SCREEN, PETAL_DANCE, ANCIENTPOWER
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_11, "<RIVAL>"
 	tr_mon 40, GOLBAT
 		tr_evs 116 Atk, 116 Spe
 		tr_moves LEECH_LIFE, BITE, CONFUSE_RAY, WING_ATTACK
@@ -1267,10 +1238,9 @@ Rival1Group:
 	tr_mon 43, TYPHLOSION @ SITRUS_BERRY
 		tr_evs 88 Atk, 72 SAt, 72 Spe
 		tr_moves SMOKESCREEN, FLAME_CHARGE, DIG, SWIFT
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_12, "<RIVAL>"
 	tr_mon 40, GOLBAT
 		tr_evs 116 Atk, 116 Spe
 		tr_moves LEECH_LIFE, BITE, CONFUSE_RAY, WING_ATTACK
@@ -1286,10 +1256,9 @@ Rival1Group:
 	tr_mon 43, FERALIGATR @ SITRUS_BERRY
 		tr_evs 160 Atk, 72 Spe
 		tr_moves SLASH, SURF, CRUNCH, NIGHT_SLASH
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_13, "<RIVAL>"
 	tr_mon 45, WEAVILE @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, SCREECH, NIGHT_SLASH, X_SCISSOR
 	tr_mon 47, GOLBAT @ EVIOLITE
@@ -1302,10 +1271,9 @@ Rival1Group:
 		tr_moves DISABLE, PSYCHIC_M, RECOVER, CONFUSE_RAY
 	tr_mon 49, MEGANIUM @ SITRUS_BERRY
 		tr_moves REFLECT, LIGHT_SCREEN, ENERGY_BALL, ANCIENTPOWER
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_14, "<RIVAL>"
 	tr_mon 45, WEAVILE @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, SCREECH, NIGHT_SLASH, X_SCISSOR
 	tr_mon 47, GOLBAT @ EVIOLITE
@@ -1318,10 +1286,9 @@ Rival1Group:
 		tr_moves DISABLE, PSYCHIC_M, RECOVER, CONFUSE_RAY
 	tr_mon 49, TYPHLOSION @ SITRUS_BERRY
 		tr_moves SMOKESCREEN, QUICK_ATTACK, DIG, FLAMETHROWER
-	tr_end
+	end_trainer
 
-	; RIVAL1
-	tr_name "<RIVAL>"
+	def_trainer RIVAL1_15, "<RIVAL>"
 	tr_mon 45, WEAVILE @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, SCREECH, NIGHT_SLASH, X_SCISSOR
 	tr_mon 47, GOLBAT @ EVIOLITE
@@ -1334,14 +1301,14 @@ Rival1Group:
 		tr_moves DISABLE, PSYCHIC_M, RECOVER, CONFUSE_RAY
 	tr_mon 49, FERALIGATR @ SITRUS_BERRY
 		tr_moves CRUNCH, SURF, SLASH, SCARY_FACE
-	tr_end
+	end_trainer
 
 
 SECTION "Rival2Group", ROMX
 Rival2Group:
 
-	; RIVAL2
-	tr_name "<RIVAL>"
+	def_trainer_class RIVAL2
+	def_trainer 1, "<RIVAL>"
 	tr_mon 61, WEAVILE @ KINGS_ROCK
 		tr_evs 252 Atk, 204 Spe
 		tr_moves SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
@@ -1360,10 +1327,9 @@ Rival2Group:
 	tr_mon 65, MEGANIUM @ MIRACLE_SEED
 		tr_evs 252 Atk, 204 Spe
 		tr_moves SEED_BOMB, POISONPOWDER, BODY_SLAM, LIGHT_SCREEN
-	tr_end
+	end_trainer
 
-	; RIVAL2
-	tr_name "<RIVAL>"
+	def_trainer 2, "<RIVAL>"
 	tr_mon 61, WEAVILE @ KINGS_ROCK
 		tr_evs 252 Atk, 204 Spe
 		tr_moves SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
@@ -1382,10 +1348,9 @@ Rival2Group:
 	tr_mon 65, TYPHLOSION @ CHARCOAL
 		tr_evs 204 Atk, 252 SAt
 		tr_moves FLAMETHROWER, EARTH_POWER, THUNDERPUNCH, SMOKESCREEN
-	tr_end
+	end_trainer
 
-	; RIVAL2
-	tr_name "<RIVAL>"
+	def_trainer 3, "<RIVAL>"
 	tr_mon 61, WEAVILE @ KINGS_ROCK
 		tr_evs 252 Atk, 204 Spe
 		tr_moves SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
@@ -1404,10 +1369,9 @@ Rival2Group:
 	tr_mon 65, FERALIGATR @ MYSTIC_WATER
 		tr_evs 204 Atk, 252 Spe
 		tr_moves WATERFALL, CRUNCH, SLASH, SCARY_FACE
-	tr_end
+	end_trainer
 
-	; RIVAL2
-	tr_name "<RIVAL>"
+	def_trainer 4, "<RIVAL>"
 	tr_mon 68, WEAVILE @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
 	tr_mon 69, CROBAT @ POISON_BARB
@@ -1420,10 +1384,9 @@ Rival2Group:
 		tr_moves RECOVER, TRI_ATTACK, PSYCHIC_M, REFLECT
 	tr_mon 72, MEGANIUM @ LEFTOVERS
 		tr_moves PETAL_DANCE, MOONBLAST, LIGHT_SCREEN, ANCIENTPOWER
-	tr_end
+	end_trainer
 
-	; RIVAL2
-	tr_name "<RIVAL>"
+	def_trainer 5, "<RIVAL>"
 	tr_mon 68, WEAVILE @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
 	tr_mon 69, CROBAT @ POISON_BARB
@@ -1436,10 +1399,9 @@ Rival2Group:
 		tr_moves RECOVER, TRI_ATTACK, PSYCHIC_M, REFLECT
 	tr_mon 72, TYPHLOSION @ LEFTOVERS
 		tr_moves FIRE_BLAST, FOCUS_BLAST, EARTH_POWER, SMOKESCREEN
-	tr_end
+	end_trainer
 
-	; RIVAL2
-	tr_name "<RIVAL>"
+	def_trainer 6, "<RIVAL>"
 	tr_mon 68, WEAVILE @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
 	tr_mon 69, CROBAT @ POISON_BARB
@@ -1452,7 +1414,7 @@ Rival2Group:
 		tr_moves RECOVER, TRI_ATTACK, PSYCHIC_M, REFLECT
 	tr_mon 72, FERALIGATR @ LEFTOVERS
 		tr_moves SURF, CRUNCH, SLASH, OUTRAGE
-	tr_end
+	end_trainer
 
 ; TODO: give Lyra custom movesets
 
@@ -1460,17 +1422,15 @@ Rival2Group:
 SECTION "Lyra1Group", ROMX
 Lyra1Group:
 
-	; LYRA1
-	tr_name "Lyra"
+	def_trainer_class LYRA1
+	def_trainer LYRA1_1, "Lyra"
 	tr_mon 5, "Chicory", CHIKORITA
-	tr_end
+	end_trainer
 
-	; LYRA1
-	tr_name "Lyra"
+	def_trainer LYRA1_2, "Lyra"
 	tr_mon 5, "Cinder", CYNDAQUIL
-	tr_end
+	end_trainer
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_NICKNAME
 	; party
@@ -1478,7 +1438,6 @@ Lyra1Group:
 		db "Toto@"
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
@@ -1500,7 +1459,6 @@ Lyra1Group:
 		db RAZOR_LEAF, POISONPOWDER, HEALINGLIGHT, REFLECT ; No Light Screen
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1518,7 +1476,6 @@ Lyra1Group:
 		ev_spread 72 Spe
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1536,7 +1493,6 @@ Lyra1Group:
 		ev_spread 72 Atk
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1557,7 +1513,6 @@ Lyra1Group:
 		ev_spread 200 HP
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1578,7 +1533,6 @@ Lyra1Group:
 		ev_spread 200 Spe
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1599,7 +1553,6 @@ Lyra1Group:
 		ev_spread 200 Atk
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1623,7 +1576,6 @@ Lyra1Group:
 		ev_spread 252 HP, 12 SAt
 	db -1 ; end
 
-	; LYRA1
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
@@ -1647,8 +1599,7 @@ Lyra1Group:
 		ev_spread 12 Atk, 252 Spe
 	db -1 ; end
 
-	; LYRA1
-	tr_name "Lyra"
+	def_trainer "Lyra"
 	tr_mon 44, PIDGEOT
 		tr_evs 132 HP, 132 Spe
 	tr_mon 43, GIRAFARIG
@@ -1661,21 +1612,21 @@ Lyra1Group:
 		tr_evs 132 HP, 132 SAt
 	tr_mon 47, "Toto", FERALIGATR @ SITRUS_BERRY
 		tr_evs 252 Atk, 12 Spe
-	tr_end
+	end_trainer
 
 
 SECTION "Lyra2Group", ROMX
 Lyra2Group:
 
-	; LYRA2
-	tr_name "Lyra"
+	def_trainer_class LYRA2
+	def_trainer "Lyra"
 	tr_mon 69, PIDGEOT
 	tr_mon 70, ARCANINE
 	tr_mon 70, AZUMARILL
 	tr_mon 71, AMPHAROS
 	tr_mon 68, FARIGIRAF
 	tr_mon 72, "Chicory", MEGANIUM @ SITRUS_BERRY
-	tr_end
+	end_trainer
 
 	; LYRA2
 	db "Lyra@"
@@ -1717,12 +1668,12 @@ Lyra2Group:
 SECTION "YoungsterGroup", ROMX
 YoungsterGroup:
 
-	; YOUNGSTER
-	tr_name "Joey"
+	def_trainer_class YOUNGSTER
+	def_trainer "Joey"
 	tr_mon 5, RATTATA, MALE
 		tr_extra GUTS, ATK_UP_SATK_DOWN
 		tr_dvs 15 All
-	tr_end
+	end_trainer
 
 	; YOUNGSTER
 	db "Joey@"
@@ -1881,7 +1832,7 @@ YoungsterGroup:
 SECTION "BugCatcherGroup", ROMX
 BugCatcherGroup:
 
-	; BUG_CATCHER
+	def_trainer_class BUG_CATCHER
 	db "Wade@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -2038,7 +1989,7 @@ BugCatcherGroup:
 SECTION "CamperGroup", ROMX
 CamperGroup:
 
-	; CAMPER
+	def_trainer_class CAMPER
 	db "Todd@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -2236,7 +2187,7 @@ CamperGroup:
 SECTION "PicnickerGroup", ROMX
 PicnickerGroup:
 
-	; PICNICKER
+	def_trainer_class PICNICKER
 	db "Liz@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -2501,7 +2452,7 @@ endc
 SECTION "TwinsGroup", ROMX
 TwinsGroup:
 
-	; TWINS
+	def_trainer_class TWINS
 	db "Amy & Mimi@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -2625,7 +2576,7 @@ TwinsGroup:
 SECTION "FisherGroup", ROMX
 FisherGroup:
 
-	; FISHER
+	def_trainer_class FISHER
 	db "Ralph@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -2772,11 +2723,11 @@ FisherGroup:
 	db -1 ; end
 
 	; FISHER
-	tr_name "Marvin"
+	def_trainer "Marvin"
 	tr_mon 20, MAGIKARP, MALE | MAGIKARP_CALICO1_FORM
 	tr_mon 25, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
 	tr_mon 30, GYARADOS, MALE
-	tr_end
+	end_trainer
 
 	; FISHER
 	db "Andre@"
@@ -2786,7 +2737,7 @@ FisherGroup:
 	db -1 ; end
 
 	; FISHER
-	tr_name "Raymond"
+	def_trainer "Raymond"
 	tr_mon 30, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
 		tr_moves SPLASH, TACKLE, REVERSAL, DRAGON_RAGE
 	tr_mon 30, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
@@ -2795,7 +2746,7 @@ FisherGroup:
 		tr_moves SPLASH, TACKLE, REVERSAL, DRAGON_RAGE
 	tr_mon 30, MAGIKARP, MALE | MAGIKARP_ORCA_FORM
 		tr_moves SPLASH, TACKLE, REVERSAL, DRAGON_RAGE
-	tr_end
+	end_trainer
 
 	; FISHER
 	db "Edgar@"
@@ -2960,7 +2911,7 @@ FisherGroup:
 SECTION "BirdKeeperGroup", ROMX
 BirdKeeperGroup:
 
-	; BIRD_KEEPER
+	def_trainer_class BIRD_KEEPER
 	db "Vance@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -3223,7 +3174,7 @@ BirdKeeperGroup:
 SECTION "HikerGroup", ROMX
 HikerGroup:
 
-	; HIKER
+	def_trainer_class HIKER
 	db "Anthony@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -3541,7 +3492,7 @@ SECTION "GruntMGroup", ROMX
 GruntMGroup:
 
 	; unused
-	; GRUNTM
+	def_trainer_class GRUNTM
 	db "Grunt@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -3557,11 +3508,11 @@ GruntMGroup:
 	db -1 ; end
 
 	; GRUNTM
-	tr_name "Grunt"
+	def_trainer "Grunt"
 	tr_mon 33, RATICATE, MALE | ALOLAN_FORM
 		tr_extra GLUTTONY
 	tr_mon 33, SNEASEL, MALE
-	tr_end
+	end_trainer
 
 	; GRUNTM
 	db "Grunt@"
@@ -3818,7 +3769,7 @@ GruntMGroup:
 SECTION "GruntFGroup", ROMX
 GruntFGroup:
 
-	; GRUNTF
+	def_trainer_class GRUNTF
 	db "Grunt@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -3876,7 +3827,7 @@ GruntFGroup:
 SECTION "PokefanMGroup", ROMX
 PokefanMGroup:
 
-	; POKEFANM
+	def_trainer_class POKEFANM
 	db "Derek@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -4016,7 +3967,7 @@ PokefanMGroup:
 SECTION "PokefanFGroup", ROMX
 PokefanFGroup:
 
-	; POKEFANF
+	def_trainer_class POKEFANF
 	db "Beverly@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -4096,7 +4047,7 @@ PokefanFGroup:
 SECTION "OfficerMGroup", ROMX
 OfficerMGroup:
 
-	; OFFICERM
+	def_trainer_class OFFICERM
 	db "Keith@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4116,7 +4067,7 @@ OfficerMGroup:
 SECTION "OfficerFGroup", ROMX
 OfficerFGroup:
 
-	; OFFICERF
+	def_trainer_class OFFICERF
 	db "Jamie@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4146,7 +4097,7 @@ OfficerFGroup:
 SECTION "NurseGroup", ROMX
 NurseGroup:
 
-	; NURSE
+	def_trainer_class NURSE
 	db "Beatrice@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4179,7 +4130,7 @@ NurseGroup:
 SECTION "PokemaniacGroup", ROMX
 PokemaniacGroup:
 
-	; POKEMANIAC
+	def_trainer_class POKEMANIAC
 	db "Brent@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4306,7 +4257,7 @@ PokemaniacGroup:
 SECTION "CosplayerGroup", ROMX
 CosplayerGroup:
 
-	; COSPLAYER
+	def_trainer_class COSPLAYER
 	db "Clara@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4353,7 +4304,7 @@ CosplayerGroup:
 SECTION "SuperNerdGroup", ROMX
 SuperNerdGroup:
 
-	; SUPER_NERD
+	def_trainer_class SUPER_NERD
 	db "Stan@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4522,7 +4473,7 @@ SuperNerdGroup:
 SECTION "LassGroup", ROMX
 LassGroup:
 
-	; LASS
+	def_trainer_class LASS
 	db "Dana@"
 	db TRAINERTYPE_MOVES
 	; party
@@ -4724,7 +4675,7 @@ endc
 	db -1 ; end
 
 	; LASS
-	tr_name "Alice"
+	def_trainer "Alice"
 	tr_mon 60, "VuiVui", EEVEE @ EVIOLITE, FEMALE
 		tr_extra SPE_UP_DEF_DOWN
 		tr_moves RETURN, SHADOW_BALL, PROTECT, ATTRACT
@@ -4734,7 +4685,7 @@ endc
 	tr_mon 61, "Vee", ESPEON @ SHELL_BELL, MALE
 		tr_extra SATK_UP_ATK_DOWN
 		tr_moves PSYCHIC_M, HEALINGLIGHT, GROWTH, BITE
-	tr_end
+	end_trainer
 
 	; LASS
 	db "Duplica@"
@@ -4761,7 +4712,7 @@ endc
 SECTION "BeautyGroup", ROMX
 BeautyGroup:
 
-	; BEAUTY
+	def_trainer_class BEAUTY
 	db "Victoria@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -4890,7 +4841,7 @@ BeautyGroup:
 SECTION "BugManiacGroup", ROMX
 BugManiacGroup:
 
-	; BUG_MANIAC
+	def_trainer_class BUG_MANIAC
 	db "Lou@"
 	db TRAINERTYPE_MOVES
 	; party
@@ -5012,7 +4963,7 @@ BugManiacGroup:
 SECTION "RuinManiacGroup", ROMX
 RuinManiacGroup:
 
-	; RUIN_MANIAC
+	def_trainer_class RUIN_MANIAC
 	db "Jones@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5058,7 +5009,7 @@ RuinManiacGroup:
 SECTION "FirebreatherGroup", ROMX
 FirebreatherGroup:
 
-	; FIREBREATHER
+	def_trainer_class FIREBREATHER
 	db "Otis@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5151,7 +5102,7 @@ FirebreatherGroup:
 SECTION "JugglerGroup", ROMX
 JugglerGroup:
 
-	; JUGGLER
+	def_trainer_class JUGGLER
 	db "Irwin@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5222,7 +5173,7 @@ JugglerGroup:
 SECTION "SchoolboyGroup", ROMX
 SchoolboyGroup:
 
-	; SCHOOLBOY
+	def_trainer_class SCHOOLBOY
 	db "Jack@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5474,7 +5425,7 @@ SchoolboyGroup:
 SECTION "SchoolgirlGroup", ROMX
 SchoolgirlGroup:
 
-	; SCHOOLGIRL
+	def_trainer_class SCHOOLGIRL
 	db "Molly@"
 	db TRAINERTYPE_NICKNAME
 	; party
@@ -5546,7 +5497,7 @@ SchoolgirlGroup:
 SECTION "PsychicGroup", ROMX
 PsychicGroup:
 
-	; PSYCHIC_T
+	def_trainer_class PSYCHIC_T
 	db "Nathan@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5679,7 +5630,7 @@ PsychicGroup:
 SECTION "HexManiacGroup", ROMX
 HexManiacGroup:
 
-	; HEX_MANIAC
+	def_trainer_class HEX_MANIAC
 	db "Tamara@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5772,7 +5723,7 @@ HexManiacGroup:
 SECTION "SageGroup", ROMX
 SageGroup:
 
-	; SAGE
+	def_trainer_class SAGE
 	db "Chow@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5844,7 +5795,7 @@ SageGroup:
 SECTION "MediumGroup", ROMX
 MediumGroup:
 
-	; MEDIUM
+	def_trainer_class MEDIUM
 	db "Martha@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5881,7 +5832,7 @@ MediumGroup:
 SECTION "KimonoGirl1Group", ROMX
 KimonoGirl1Group:
 
-	; KIMONO_GIRL_1
+	def_trainer_class KIMONO_GIRL_1
 	db "Naoko@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5893,7 +5844,7 @@ KimonoGirl1Group:
 SECTION "KimonoGirl2Group", ROMX
 KimonoGirl2Group:
 
-	; KIMONO_GIRL_2
+	def_trainer_class KIMONO_GIRL_2
 	db "Sayo@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5905,7 +5856,7 @@ KimonoGirl2Group:
 SECTION "KimonoGirl3Group", ROMX
 KimonoGirl3Group:
 
-	; KIMONO_GIRL_3
+	def_trainer_class KIMONO_GIRL_3
 	db "Zuki@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5917,7 +5868,7 @@ KimonoGirl3Group:
 SECTION "KimonoGirl4Group", ROMX
 KimonoGirl4Group:
 
-	; KIMONO_GIRL_4
+	def_trainer_class KIMONO_GIRL_4
 	db "Kuni@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5929,7 +5880,7 @@ KimonoGirl4Group:
 SECTION "KimonoGirl5Group", ROMX
 KimonoGirl5Group:
 
-	; KIMONO_GIRL_5
+	def_trainer_class KIMONO_GIRL_5
 	db "Miki@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5941,7 +5892,7 @@ KimonoGirl5Group:
 SECTION "KimonoGirl6Group", ROMX
 KimonoGirl6Group:
 
-	; KIMONO_GIRL_6
+	def_trainer_class KIMONO_GIRL_6
 	db "Mako@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5953,7 +5904,7 @@ KimonoGirl6Group:
 SECTION "KimonoGirl7Group", ROMX
 KimonoGirl7Group:
 
-	; KIMONO_GIRL_7
+	def_trainer_class KIMONO_GIRL_7
 	db "Ami@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5965,7 +5916,7 @@ KimonoGirl7Group:
 SECTION "KimonoGirl8roup", ROMX
 KimonoGirl8Group:
 
-	; KIMONO_GIRL_8
+	def_trainer_class KIMONO_GIRL_8
 	db "Mina@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -5977,7 +5928,7 @@ KimonoGirl8Group:
 SECTION "ElderGroup", ROMX
 ElderGroup:
 
-	; ELDER
+	def_trainer_class ELDER
 	db "Li@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6017,7 +5968,7 @@ ElderGroup:
 SECTION "SrAndJrGroup", ROMX
 SrAndJrGroup:
 
-	; SR_AND_JR
+	def_trainer_class SR_AND_JR
 	db "Jo & Cath@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6069,7 +6020,7 @@ SrAndJrGroup:
 SECTION "CoupleGroup", ROMX
 CoupleGroup:
 
-	; COUPLE
+	def_trainer_class COUPLE
 	db "Gail & Eli@"
 	db TRAINERTYPE_PERSONALITY
 	; party
@@ -6221,7 +6172,7 @@ CoupleGroup:
 SECTION "GentlemanGroup", ROMX
 GentlemanGroup:
 
-	; GENTLEMAN
+	def_trainer_class GENTLEMAN
 	db "Preston@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6280,7 +6231,7 @@ GentlemanGroup:
 SECTION "RichBoyGroup", ROMX
 RichBoyGroup:
 
-	; RICH_BOY
+	def_trainer_class RICH_BOY
 	db "Winston@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6331,7 +6282,7 @@ endc
 SECTION "LadyGroup", ROMX
 LadyGroup:
 
-	; LADY
+	def_trainer_class LADY
 	db "Jessica@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -6345,7 +6296,7 @@ LadyGroup:
 SECTION "BreederGroup", ROMX
 BreederGroup:
 
-	; BREEDER
+	def_trainer_class BREEDER
 	db "Julie@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -6425,7 +6376,7 @@ BreederGroup:
 SECTION "BakerGroup", ROMX
 BakerGroup:
 
-	; BAKER
+	def_trainer_class BAKER
 	db "Chelsie@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6466,7 +6417,7 @@ endc
 SECTION "CowgirlGroup", ROMX
 CowgirlGroup:
 
-	; COWGIRL
+	def_trainer_class COWGIRL
 	db "Annie@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -6500,7 +6451,7 @@ CowgirlGroup:
 SECTION "SailorGroup", ROMX
 SailorGroup:
 
-	; SAILOR
+	def_trainer_class SAILOR
 	db "Huey@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6637,7 +6588,7 @@ SailorGroup:
 SECTION "SwimmerMGroup", ROMX
 SwimmerMGroup:
 
-	; SWIMMERM
+	def_trainer_class SWIMMERM
 	db "Harold@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -6907,7 +6858,7 @@ SwimmerMGroup:
 SECTION "SwimmerFGroup", ROMX
 SwimmerFGroup:
 
-	; SWIMMERF
+	def_trainer_class SWIMMERF
 	db "Elaine@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7167,7 +7118,7 @@ SwimmerFGroup:
 SECTION "BurglarGroup", ROMX
 BurglarGroup:
 
-	; BURGLAR
+	def_trainer_class BURGLAR
 	db "Duncan@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7218,7 +7169,7 @@ BurglarGroup:
 SECTION "PIGroup", ROMX
 PIGroup:
 
-	; PI
+	def_trainer_class PI
 	db "Looker@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7231,7 +7182,7 @@ PIGroup:
 SECTION "ScientistGroup", ROMX
 ScientistGroup:
 
-	; SCIENTIST
+	def_trainer_class SCIENTIST
 	db "Lowell@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7324,7 +7275,7 @@ ScientistGroup:
 SECTION "RocketScientistGroup", ROMX
 RocketScientistGroup:
 
-	; SCIENTIST
+	def_trainer_class ROCKET_SCIENTIST
 	db "Ross@"
 	db TRAINERTYPE_PERSONALITY
 	; party
@@ -7372,7 +7323,7 @@ RocketScientistGroup:
 SECTION "BoarderGroup", ROMX
 BoarderGroup:
 
-	; BOARDER
+	def_trainer_class BOARDER
 	db "Ronald@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7437,7 +7388,7 @@ BoarderGroup:
 SECTION "SkierGroup", ROMX
 SkierGroup:
 
-	; SKIER
+	def_trainer_class SKIER
 	db "Roxanne@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7481,7 +7432,7 @@ SkierGroup:
 SECTION "BlackbeltGroup", ROMX
 BlackbeltGroup:
 
-	; BLACKBELT_T
+	def_trainer_class BLACKBELT_T
 	db "Kenji@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7627,7 +7578,7 @@ BlackbeltGroup:
 SECTION "BattleGirlGroup", ROMX
 BattleGirlGroup:
 
-	; BATTLE_GIRL
+	def_trainer_class BATTLE_GIRL
 	db "Subaru@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7705,7 +7656,7 @@ BattleGirlGroup:
 SECTION "DragonTamerGroup", ROMX
 DragonTamerGroup:
 
-	; DRAGON_TAMER
+	def_trainer_class DRAGON_TAMER
 	db "Paul@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7784,7 +7735,7 @@ endc
 SECTION "EngineerGroup", ROMX
 EngineerGroup:
 
-	; ENGINEER
+	def_trainer_class ENGINEER
 	db "Smith@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7874,7 +7825,7 @@ EngineerGroup:
 SECTION "TeacherFGroup", ROMX
 TeacherFGroup:
 
-	; TEACHER_F
+	def_trainer_class TEACHER_F
 	db "Colette@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7923,10 +7874,23 @@ TeacherFGroup:
 	dbp 54, ESPEON
 	db -1 ; end
 
+SECTION "TeacherMGroup", ROMX
+TeacherMGroup:
+
+	def_trainer_class TEACHER_M
+	db "Nolan@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp 54, ELECTRODE
+	dbp 55, MAGNEZONE
+	dbp 56, ELECTIVIRE
+	db -1 ; end
+
+
 SECTION "GuitaristMGroup", ROMX
 GuitaristMGroup:
 
-	; GUITARISTM
+	def_trainer_class GUITARISTM
 	db "Clyde@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -7978,7 +7942,7 @@ GuitaristMGroup:
 SECTION "GuitaristFGroup", ROMX
 GuitaristFGroup:
 
-	; GUITARISTF
+	def_trainer_class GUITARISTF
 	db "Janet@"
 	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -8029,7 +7993,7 @@ GuitaristFGroup:
 SECTION "BikerGroup", ROMX
 BikerGroup:
 
-	; BIKER
+	def_trainer_class BIKER
 	db "Dwayne@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8141,7 +8105,7 @@ BikerGroup:
 SECTION "RoughneckGroup", ROMX
 RoughneckGroup:
 
-	; ROUGHNECK
+	def_trainer_class ROUGHNECK
 	db "Brian@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8170,7 +8134,7 @@ RoughneckGroup:
 SECTION "TamerGroup", ROMX
 TamerGroup:
 
-	; TAMER
+	def_trainer_class TAMER
 	db "Brett@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8208,7 +8172,7 @@ TamerGroup:
 SECTION "ArtistGroup", ROMX
 ArtistGroup:
 
-	; ARTIST
+	def_trainer_class ARTIST
 	db "Reina@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8217,11 +8181,11 @@ ArtistGroup:
 	db -1 ; end
 
 	; ARTIST
-	tr_name "Alina"
+	def_trainer "Alina"
 	tr_mon 57, SMEARGLE @ MIRACLE_SEED
 		tr_dvs XDVS_HP_GRASS ; green
 		tr_moves SPORE, FLAMETHROWER, SOLAR_BEAM, GIGA_DRAIN
-	tr_end
+	end_trainer
 
 	; ARTIST
 	db "Marlene@"
@@ -8252,7 +8216,7 @@ ArtistGroup:
 SECTION "AromaLadyGroup", ROMX
 AromaLadyGroup:
 
-	; AROMA_LADY
+	def_trainer_class AROMA_LADY
 	db "Dahlia@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -8299,19 +8263,25 @@ AromaLadyGroup:
 SECTION "SoldierGroup", ROMX
 SoldierGroup:
 
+	def_trainer_class SOLDIER
+
 
 SECTION "WaiterGroup", ROMX
 WaiterGroup:
+
+	def_trainer_class WAITER
 
 
 SECTION "WaitressGroup", ROMX
 WaitressGroup:
 
+	def_trainer_class WAITRESS
+
 
 SECTION "SightseerMGroup", ROMX
 SightseerMGroup:
 
-	; SIGHTSEERM
+	def_trainer_class SIGHTSEERM
 	db "Jaska@"
 	db TRAINERTYPE_NORMAL
 
@@ -8356,7 +8326,7 @@ SightseerMGroup:
 SECTION "SightseerFGroup", ROMX
 SightseerFGroup:
 
-	; SIGHTSEERF
+	def_trainer_class SIGHTSEERF
 	db "Rosie@"
 	db TRAINERTYPE_NORMAL
 
@@ -8416,7 +8386,7 @@ SightseerFGroup:
 SECTION "SightseersGroup", ROMX
 SightseersGroup:
 
-	; SIGHTSEERS
+	def_trainer_class SIGHTSEERS
 	db "Li & Su@"
 	db TRAINERTYPE_PERSONALITY
 	; party
@@ -8460,7 +8430,7 @@ SightseersGroup:
 SECTION "CooltrainerMGroup", ROMX
 CooltrainerMGroup:
 
-	; COOLTRAINERM
+	def_trainer_class COOLTRAINERM
 	db "Gaven@"
 	db TRAINERTYPE_MOVES
 	; party
@@ -8747,7 +8717,7 @@ CooltrainerMGroup:
 SECTION "CooltrainerFGroup", ROMX
 CooltrainerFGroup:
 
-	; COOLTRAINERF
+	def_trainer_class COOLTRAINERF
 	db "Beth@"
 	db TRAINERTYPE_MOVES
 	; party
@@ -9020,7 +8990,7 @@ endc
 SECTION "AceDuoGroup", ROMX
 AceDuoGroup:
 
-	; ACE_DUO
+	def_trainer_class ACE_DUO
 	db "Elan & Ida@"
 	db TRAINERTYPE_PERSONALITY
 	; party
@@ -9156,7 +9126,7 @@ AceDuoGroup:
 SECTION "VeteranMGroup", ROMX
 VeteranMGroup:
 
-	; VETERANM
+	def_trainer_class VETERANM
 	db "Matthew@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
@@ -9262,7 +9232,7 @@ endc
 SECTION "VeteranFGroup", ROMX
 VeteranFGroup:
 
-	; VETERANF
+	def_trainer_class VETERANF
 	db "Joanne@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
@@ -9360,7 +9330,7 @@ endc
 SECTION "ProtonGroup", ROMX
 ProtonGroup:
 
-	; PROTON
+	def_trainer_class PROTON
 	db "Proton@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
@@ -9394,7 +9364,7 @@ ProtonGroup:
 SECTION "PetrelGroup", ROMX
 PetrelGroup:
 
-	; PETREL
+	def_trainer_class PETREL
 	db "Petrel@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -9441,7 +9411,7 @@ PetrelGroup:
 SECTION "ArcherGroup", ROMX
 ArcherGroup:
 
-	; ARCHER
+	def_trainer_class ARCHER
 	db "Archer@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -9488,7 +9458,7 @@ ArcherGroup:
 SECTION "ArianaGroup", ROMX
 ArianaGroup:
 
-	; ARIANA
+	def_trainer_class ARIANA
 	db "Ariana@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -9522,7 +9492,7 @@ ArianaGroup:
 SECTION "GiovanniGroup", ROMX
 GiovanniGroup:
 
-	; GIOVANNI
+	def_trainer_class GIOVANNI
 	db "Giovanni@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
@@ -9568,7 +9538,7 @@ endc
 SECTION "ProfOakGroup", ROMX
 ProfOakGroup:
 
-	; PROF_OAK
+	def_trainer_class PROF_OAK
 	db "Oak@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -9600,7 +9570,7 @@ endc
 SECTION "ProfElmGroup", ROMX
 ProfElmGroup:
 
-	; PROF_ELM
+	def_trainer_class PROF_ELM
 	db "Elm@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -9612,7 +9582,6 @@ ProfElmGroup:
 	dbp LEVEL_FROM_BADGES + 5, TOTODILE
 	db -1 ; end
 
-	; PROF_ELM
 	db "Elm@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -9653,7 +9622,7 @@ ProfElmGroup:
 SECTION "ProfIvyGroup", ROMX
 ProfIvyGroup:
 
-	; PROF_IVY
+	def_trainer_class PROF_IVY
 	db "Ivy@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -9670,8 +9639,8 @@ ProfIvyGroup:
 SECTION "MysticalmanGroup", ROMX
 MysticalmanGroup:
 
-	; MYSTICALMAN
-	tr_name "Eusine"
+	def_trainer_class MYSTICALMAN
+	def_trainer "Eusine"
 	tr_mon 27, DROWZEE @ EVIOLITE, MALE
 		tr_extra INSOMNIA
 		tr_moves DREAM_EATER, HYPNOSIS, DISABLE, PSYBEAM
@@ -9684,13 +9653,13 @@ MysticalmanGroup:
 	tr_mon 29, ALAKAZAM @ TWISTEDSPOON, MALE
 		tr_extra SYNCHRONIZE
 		tr_moves REFLECT, LIGHT_SCREEN, HP_FIGHTING, PSYBEAM
-	tr_end
+	end_trainer
 
 
 SECTION "KarateKingGroup", ROMX
 KarateKingGroup:
 
-	; KARATE_KING
+	def_trainer_class KARATE_KING
 	db "Kiyo@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
@@ -9710,7 +9679,7 @@ SECTION "TowerTycoonGroup", ROMX
 TowerTycoonGroup:
 
 	; unused
-	; TOWERTYCOON
+	def_trainer_class TOWERTYCOON
 	db "Palmer@"
 	db TRAINERTYPE_NORMAL
 	db -1 ; end
@@ -9743,8 +9712,7 @@ TowerTycoonGroup:
 SECTION "FactoryHeadGroup", ROMX
 FactoryHeadGroup:
 
-	; unused
-	; FACTORYHEAD
+	def_trainer_class FACTORYHEAD
 	db "Thorton@"
 	db TRAINERTYPE_NORMAL
 	db -1 ; end
@@ -9758,7 +9726,7 @@ FactoryHeadGroup:
 SECTION "JessieJamesGroup", ROMX
 JessieJamesGroup:
 
-	; JESSIE_JAMES
+	def_trainer_class JESSIE_JAMES
 	db "& James@"
 	db TRAINERTYPE_PERSONALITY
 	; party
@@ -9779,7 +9747,7 @@ JessieJamesGroup:
 SECTION "LoreleiGroup", ROMX
 LoreleiGroup:
 
-	; LORELEI
+	def_trainer_class LORELEI
 	db "Lorelei@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
@@ -9867,7 +9835,7 @@ LoreleiGroup:
 SECTION "AgathaGroup", ROMX
 AgathaGroup:
 
-	; AGATHA
+	def_trainer_class AGATHA
 	db "Agatha@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -9938,7 +9906,7 @@ endc
 SECTION "StevenGroup", ROMX
 StevenGroup:
 
-	; STEVEN
+	def_trainer_class STEVEN
 	db "Steven@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -10002,7 +9970,7 @@ endc
 SECTION "CynthiaGroup", ROMX
 CynthiaGroup:
 
-	; CYNTHIA
+	def_trainer_class CYNTHIA
 	db "Cynthia@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
@@ -10058,11 +10026,14 @@ endc
 		db SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, SCREECH
 	db -1 ; end
 
+	; Inver's Pokémon are defined elsewhere.
+	def_trainer_class INVER
+
 
 SECTION "CherylGroup", ROMX
 CherylGroup:
 
-	; CHERYL
+	def_trainer_class CHERYL
 	db "Cheryl@"
 	db TRAINERTYPE_EVS
 	; party
@@ -10109,7 +10080,7 @@ CherylGroup:
 SECTION "RileyGroup", ROMX
 RileyGroup:
 
-	; RILEY
+	def_trainer_class RILEY
 	db "Riley@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -10139,7 +10110,7 @@ RileyGroup:
 SECTION "BuckGroup", ROMX
 BuckGroup:
 
-	; BUCK
+	def_trainer_class BUCK
 	db "Buck@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -10169,7 +10140,7 @@ BuckGroup:
 SECTION "MarleyGroup", ROMX
 MarleyGroup:
 
-	; MARLEY
+	def_trainer_class MARLEY
 	db "Marley@"
 	db TRAINERTYPE_EVS
 	; party
@@ -10216,7 +10187,7 @@ MarleyGroup:
 SECTION "MiraGroup", ROMX
 MiraGroup:
 
-	; MIRA
+	def_trainer_class MIRA
 	db "Mira@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -10246,7 +10217,7 @@ MiraGroup:
 SECTION "AnabelGroup", ROMX
 AnabelGroup:
 
-	; ANABEL
+	def_trainer_class ANABEL
 	db "Anabel@"
 	db TRAINERTYPE_EVS
 	; party
@@ -10282,7 +10253,7 @@ AnabelGroup:
 SECTION "DarachGroup", ROMX
 DarachGroup:
 
-	; DARACH
+	def_trainer_class DARACH
 	db "Darach@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -10304,7 +10275,7 @@ endc
 SECTION "CaitlinGroup", ROMX
 CaitlinGroup:
 
-	; CAITLIN
+	def_trainer_class CAITLIN
 	db "Caitlin@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -10321,7 +10292,7 @@ CaitlinGroup:
 SECTION "CandelaGroup", ROMX
 CandelaGroup:
 
-	; CANDELA
+	def_trainer_class CANDELA
 	db "Candela@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -10344,7 +10315,7 @@ CandelaGroup:
 SECTION "BlancheGroup", ROMX
 BlancheGroup:
 
-	; BLANCHE
+	def_trainer_class BLANCHE
 	db "Blanche@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -10367,7 +10338,7 @@ BlancheGroup:
 SECTION "SparkGroup", ROMX
 SparkGroup:
 
-	; SPARK_T
+	def_trainer_class SPARK_T
 	db "Spark@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
 	; party
@@ -10390,7 +10361,7 @@ SparkGroup:
 SECTION "FlanneryGroup", ROMX
 FlanneryGroup:
 
-	; FLANNERY
+	def_trainer_class FLANNERY
 	db "Flannery@"
 	db TRAINERTYPE_EVS
 	; party
@@ -10426,7 +10397,7 @@ FlanneryGroup:
 SECTION "MayleneGroup", ROMX
 MayleneGroup:
 
-	; MAYLENE
+	def_trainer_class MAYLENE
 	db "Maylene@"
 	db TRAINERTYPE_EVS
 	; party
@@ -10474,7 +10445,7 @@ endc
 SECTION "MarlonGroup", ROMX
 MarlonGroup:
 
-	; MARLON
+	def_trainer_class MARLON
 	db "Marlon@"
 	db TRAINERTYPE_EVS
 	; party
@@ -10527,7 +10498,7 @@ MarlonGroup:
 SECTION "ValerieGroup", ROMX
 ValerieGroup:
 
-	; VALERIE
+	def_trainer_class VALERIE
 	db "Valerie@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
@@ -10611,7 +10582,7 @@ ValerieGroup:
 SECTION "KukuiGroup", ROMX
 KukuiGroup:
 
-	; KUKUI
+	def_trainer_class KUKUI
 	db "Kukui@"
 	db TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY
 	; party
@@ -10659,14 +10630,14 @@ KukuiGroup:
 SECTION "PiersGroup", ROMX
 PiersGroup:
 
-	; PIERS
+	def_trainer_class PIERS
 	; TODO: movesets, etc
-	tr_name "Piers"
+	def_trainer "Piers"
 	tr_mon 16, MURKROW
 	tr_mon 17, QWILFISH, HISUIAN_FORM
 	tr_mon 17, MUK, ALOLAN_FORM
 	tr_mon 19, RATICATE, ALOLAN_FORM
-	tr_end
+	end_trainer
 
 	; PIERS
 	db "Piers@"
@@ -10689,7 +10660,7 @@ endc
 SECTION "KatyGroup", ROMX
 KatyGroup:
 
-	; KATY
+	def_trainer_class KATY
 	db "Katy@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -10719,7 +10690,7 @@ KatyGroup:
 SECTION "VictorGroup", ROMX
 VictorGroup:
 
-	; VICTOR
+	def_trainer_class VICTOR
 	db "Victor@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
@@ -10732,7 +10703,7 @@ VictorGroup:
 SECTION "BillGroup", ROMX
 BillGroup:
 
-	; BILL_T
+	def_trainer_class BILL_T
 	db "Bill@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
@@ -10760,7 +10731,7 @@ BillGroup:
 SECTION "YellowGroup", ROMX
 YellowGroup:
 
-	; YELLOW
+	def_trainer_class YELLOW
 	db "Yellow@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
@@ -10818,7 +10789,7 @@ YellowGroup:
 SECTION "WalkerGroup", ROMX
 WalkerGroup:
 
-	; WALKER
+	def_trainer_class WALKER
 	db "Walker@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
@@ -10872,7 +10843,7 @@ endc
 SECTION "ImakuniGroup", ROMX
 ImakuniGroup:
 
-	; IMAKUNI
+	def_trainer_class IMAKUNI
 	db "Imakuni@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -10895,7 +10866,7 @@ ImakuniGroup:
 SECTION "LawrenceGroup", ROMX
 LawrenceGroup:
 
-	; LAWRENCE
+	def_trainer_class LAWRENCE
 	db "Lawrence@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
@@ -10955,7 +10926,7 @@ endc
 SECTION "ReiGroup", ROMX
 ReiGroup:
 
-	; REI
+	def_trainer_class REI
 	db "Maiden Rei@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS
 	; party
@@ -11026,19 +10997,6 @@ ReiGroup:
 	dbp 75, NINETALES
 		db LEFTOVERS
 		db NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SHADOW_BALL
-	db -1 ; end
-
-
-SECTION "TeacherMGroup", ROMX
-TeacherMGroup:
-
-	; TEACHER_M
-	db "Nolan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, ELECTRODE
-	dbp 55, MAGNEZONE
-	dbp 56, ELECTIVIRE
 	db -1 ; end
 
 ENDSECTION
