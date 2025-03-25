@@ -1461,7 +1461,7 @@ Lyra1Group:
 		tr_evs 72 Spe
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_6, "Lyra"
 	tr_mon 16, PIDGEY
 		tr_evs 36 HP, 36 Spe
 	tr_mon 17, GROWLITHE
@@ -1472,7 +1472,7 @@ Lyra1Group:
 		tr_evs 72 Atk
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_7, "Lyra"
 	tr_mon 33, PIDGEOTTO
 		tr_evs 100 HP, 100 Spe
 	tr_mon 34, GROWLITHE
@@ -1485,7 +1485,7 @@ Lyra1Group:
 		tr_evs 200 HP
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_8, "Lyra"
 	tr_mon 33, PIDGEOTTO
 		tr_evs 100 HP, 100 Spe
 	tr_mon 34, SUNFLORA
@@ -1498,7 +1498,7 @@ Lyra1Group:
 		tr_evs 200 Spe
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_9, "Lyra"
 	tr_mon 33, PIDGEOTTO
 		tr_evs 100 HP, 100 Spe
 	tr_mon 34, SUNFLORA
@@ -1511,7 +1511,7 @@ Lyra1Group:
 		tr_evs 200 Atk
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_10, "Lyra"
 	tr_mon 44, PIDGEOT
 		tr_evs 132 HP, 132 Spe
 	tr_mon 43, GIRAFARIG
@@ -1526,7 +1526,7 @@ Lyra1Group:
 		tr_evs 252 HP, 12 SAt
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_11, "Lyra"
 	tr_mon 44, PIDGEOT
 		tr_evs 132 HP, 132 Spe
 	tr_mon 43, GIRAFARIG
@@ -1541,7 +1541,7 @@ Lyra1Group:
 		tr_evs 12 Atk, 252 Spe
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer LYRA1_12, "Lyra"
 	tr_mon 44, PIDGEOT
 		tr_evs 132 HP, 132 Spe
 	tr_mon 43, GIRAFARIG
@@ -1561,7 +1561,7 @@ SECTION "Lyra2Group", ROMX
 Lyra2Group:
 
 	def_trainer_class LYRA2
-	def_trainer "Lyra"
+	def_trainer 1, "Lyra"
 	tr_mon 69, PIDGEOT
 	tr_mon 70, ARCANINE
 	tr_mon 70, AZUMARILL
@@ -1570,7 +1570,7 @@ Lyra2Group:
 	tr_mon 72, "Chicory", MEGANIUM @ SITRUS_BERRY
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer 2, "Lyra"
 	tr_mon 69, PIDGEOT
 	tr_mon 70, SUNFLORA
 	tr_mon 70, AZUMARILL
@@ -1579,7 +1579,7 @@ Lyra2Group:
 	tr_mon 72, "Cinder", TYPHLOSION @ SITRUS_BERRY
 	end_trainer
 
-	def_trainer "Lyra"
+	def_trainer 3, "Lyra"
 	tr_mon 69, PIDGEOT
 	tr_mon 70, SUNFLORA
 	tr_mon 70, ARCANINE
@@ -1593,165 +1593,115 @@ SECTION "YoungsterGroup", ROMX
 YoungsterGroup:
 
 	def_trainer_class YOUNGSTER
-	def_trainer "Joey"
+	def_trainer JOEY1, "Joey"
 	tr_mon 5, RATTATA, MALE
 		tr_extra GUTS, ATK_UP_SATK_DOWN
 		tr_dvs 15 All
 	end_trainer
 
-	; YOUNGSTER
-	db "Joey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
-	; party
-	dbp 15, RATTATA, MALE
-		db ORAN_BERRY, FAKE_PERFECT_DVS, ABIL_RATTATA_GUTS | NAT_ATK_UP_SATK_DOWN
-		ev_spread 48 Atk, 48 Spe
-	db -1 ; end
+	def_trainer JOEY2, "Joey"
+	tr_mon 15, RATTATA @ ORAN_BERRY, MALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_evs 48 Atk, 48 Spe
+	end_trainer
 
-	; YOUNGSTER
-	db "Joey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 25, RATICATE, MALE
-		db ORAN_BERRY, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
-		ev_spread 80 Atk, 80 Spe
-		db LEER, QUICK_ATTACK, HYPER_FANG, SCARY_FACE
-	db -1 ; end
+	def_trainer JOEY3, "Joey"
+	tr_mon 25, RATICATE @ ORAN_BERRY, MALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_evs 80 Atk, 80 Spe
+		tr_moves LEER, QUICK_ATTACK, HYPER_FANG, SCARY_FACE
+	end_trainer
 
-	; YOUNGSTER
-	db "Joey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 30, RATICATE, MALE
-		db SITRUS_BERRY, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
-		ev_spread 112 Atk, 112 Spe
-		db LEER, QUICK_ATTACK, HYPER_FANG, PURSUIT
-	db -1 ; end
+	def_trainer JOEY4, "Joey"
+	tr_mon 30, RATICATE @ SITRUS_BERRY, MALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_evs 112 Atk, 112 Spe
+		tr_moves LEER, QUICK_ATTACK, HYPER_FANG, PURSUIT
+	end_trainer
 
-	; YOUNGSTER
-	db "Joey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 40, RATICATE, MALE
-		db SITRUS_BERRY, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
-		ev_spread 160 Atk, 160 Spe
-		db HYPER_BEAM, QUICK_ATTACK, HYPER_FANG, PURSUIT
-	db -1 ; end
+	def_trainer JOEY5, "Joey"
+	tr_mon 40, RATICATE @ SITRUS_BERRY, MALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_evs 160 Atk, 160 Spe
+		tr_moves HYPER_BEAM, QUICK_ATTACK, HYPER_FANG, PURSUIT
+	end_trainer
 
-	; YOUNGSTER
-	db "Mikey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 2, RATTATA
-	dbp 4, PIDGEY
-	db -1 ; end
+	def_trainer MIKEY, "Mikey"
+	tr_mon 2, RATTATA
+	tr_mon 4, PIDGEY
+	end_trainer
 
-	; YOUNGSTER
-	db "Albert@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 8, RATTATA
-	dbp 10, ZUBAT
-	db -1 ; end
+	def_trainer ALBERT, "Albert"
+	tr_mon 8, RATTATA
+	tr_mon 10, ZUBAT
+	end_trainer
 
-	; YOUNGSTER
-	db "Gordon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 11, WOOPER
-	db -1 ; end
+	def_trainer GORDON, "Gordon"
+	tr_mon 11, WOOPER
+	end_trainer
 
-	; YOUNGSTER
-	db "Warren@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, FEAROW
-	dbp 60, RATICATE
-	db -1 ; end
+	def_trainer WARREN, "Warren"
+	tr_mon 56, FEAROW
+	tr_mon 60, RATICATE
+	end_trainer
 
-	; YOUNGSTER
-	db "Jimmy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, RATICATE
-	dbp 60, ARBOK
-	dbp 60, PARASECT
-	db -1 ; end
+	def_trainer JIMMY, "Jimmy"
+	tr_mon 60, RATICATE
+	tr_mon 60, ARBOK
+	tr_mon 60, PARASECT
+	end_trainer
 
-	; YOUNGSTER
-	db "Owen@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, GROWLITHE
-	dbp 54, GROWLITHE
-	db -1 ; end
+	def_trainer OWEN, "Owen"
+	tr_mon 53, GROWLITHE
+	tr_mon 54, GROWLITHE
+	end_trainer
 
-	; YOUNGSTER
-	db "Jason@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, SANDSLASH
-	dbp 55, CROBAT
-	db -1 ; end
+	def_trainer JASON, "Jason"
+	tr_mon 55, SANDSLASH
+	tr_mon 55, CROBAT
+	end_trainer
 
-	; YOUNGSTER
-	db "Josh@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, RATICATE
-	dbp 62, GOLBAT
-	dbp 60, RATICATE
-	db -1 ; end
+	def_trainer YOUNGSTER_JOSH, "Josh"
+	tr_mon 60, RATICATE
+	tr_mon 62, GOLBAT
+	tr_mon 60, RATICATE
+	end_trainer
 
-	; YOUNGSTER
-	db "Regis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, GOLBAT
-	dbp 58, ELECTRODE
-	db -1 ; end
+	def_trainer REGIS, "Regis"
+	tr_mon 58, GOLBAT
+	tr_mon 58, ELECTRODE
+	end_trainer
 
-	; YOUNGSTER
-	db "Alfie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, SANDSLASH
-	dbp 55, QUAGSIRE
-	db -1 ; end
+	def_trainer ALFIE, "Alfie"
+	tr_mon 54, SANDSLASH
+	tr_mon 55, QUAGSIRE
+	end_trainer
 
-	; YOUNGSTER
-	db "Oliver@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, GOLBAT
-	dbp 54, RATICATE
-	db -1 ; end
+	def_trainer OLIVER, "Oliver"
+	tr_mon 54, GOLBAT
+	tr_mon 54, RATICATE
+	end_trainer
 
-	; YOUNGSTER
-	db "Chaz@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, SANDSHREW
-	dbp 55, RATICATE
-	db -1 ; end
+	def_trainer CHAZ, "Chaz"
+	tr_mon 54, SANDSHREW
+	tr_mon 55, RATICATE
+	end_trainer
 
-	; YOUNGSTER
-	db "Tyler@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, WEEPINBELL
-	dbp LEVEL_FROM_BADGES + 9, QUAGSIRE
-	dbp LEVEL_FROM_BADGES + 8, SANDSLASH
-	db -1 ; end
+	def_trainer TYLER, "Tyler"
+	tr_mon LEVEL_FROM_BADGES + 8, WEEPINBELL
+	tr_mon LEVEL_FROM_BADGES + 9, QUAGSIRE
+	tr_mon LEVEL_FROM_BADGES + 8, SANDSLASH
+	end_trainer
 
-	; YOUNGSTER
-	db "Arden@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, FLAREON
-	dbp 53, TAUROS
-	dbp 55, RAPIDASH
-	db -1 ; end
+	def_trainer ARDEN, "Arden"
+	tr_mon 55, FLAREON
+	tr_mon 53, TAUROS
+	tr_mon 55, RAPIDASH
+	end_trainer
 
 SECTION "BugCatcherGroup", ROMX
 BugCatcherGroup:
