@@ -3578,129 +3578,86 @@ SECTION "BeautyGroup", ROMX
 BeautyGroup:
 
 	def_trainer_class BEAUTY
-	db "Victoria@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, SENTRET
-	dbp 13, SENTRET
-	dbp 17, SENTRET
-	db -1 ; end
+	def_trainer VICTORIA, "Victoria"
+	tr_mon 9, SENTRET
+	tr_mon 13, SENTRET
+	tr_mon 17, SENTRET
+	end_trainer
 
-	; BEAUTY
-	db "Samantha@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 16, MEOWTH
-		db SCRATCH, GROWL, BITE, PAY_DAY
-	dbp 16, MEOWTH
-		db SCRATCH, GROWL, BITE, SLASH
-	db -1 ; end
+	def_trainer SAMANTHA, "Samantha"
+	tr_mon 16, MEOWTH
+		tr_moves SCRATCH, GROWL, BITE, PAY_DAY
+	tr_mon 16, MEOWTH
+		tr_moves SCRATCH, GROWL, BITE, SLASH
+	end_trainer
 
-	; BEAUTY
-	db "Cassie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 47, VILEPLUME
-	dbp 49, BUTTERFREE
-	db -1 ; end
+	def_trainer CASSIE, "Cassie"
+	tr_mon 47, VILEPLUME
+	tr_mon 49, BUTTERFREE
+	end_trainer
 
-	; BEAUTY
-	db "Julia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, PARAS
-	dbp 56, EXEGGCUTE
-	dbp 59, PARASECT
-	db -1 ; end
+	def_trainer JULIA, "Julia"
+	tr_mon 56, PARAS
+	tr_mon 56, EXEGGCUTE
+	tr_mon 59, PARASECT
+	end_trainer
 
-	; BEAUTY
-	db "Valencia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, SUNKERN
-	dbp 18, SKIPLOOM
-	dbp 18, SUNFLORA
-	db -1 ; end
+	def_trainer VALENCIA, "Valencia"
+	tr_mon 18, SUNKERN
+	tr_mon 18, SKIPLOOM
+	tr_mon 18, SUNFLORA
+	end_trainer
 
-	; BEAUTY
-	db "Olivia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 19, CORSOLA
-	db -1 ; end
+	def_trainer OLIVIA, "Olivia"
+	tr_mon 19, CORSOLA
+	end_trainer
 
-	; BEAUTY
-	db "Callie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, CLEFABLE
-	dbp 16, WIGGLYTUFF
-	db -1 ; end
+	def_trainer CALLIE, "Callie"
+	tr_mon 16, CLEFABLE
+	tr_mon 16, WIGGLYTUFF
+	end_trainer
 
-	; BEAUTY
-	db "Cassandra@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, CLEFABLE
-	dbp 16, WIGGLYTUFF
-	db -1 ; end
+	def_trainer CASSANDRA, "Cassandra"
+	tr_mon 16, CLEFABLE
+	tr_mon 16, WIGGLYTUFF
+	end_trainer
 
-	; BEAUTY
-	db "Charlotte@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME
-	; party
-	dbp 20, BELLOSSOM, FEMALE
-		db SHINY_MASK | ABILITY_1 | NAT_NEUTRAL, "Blossom@"
-	db -1 ; end
+	def_trainer CHARLOTTE, "Charlotte"
+	tr_mon 20, "Blossom", BELLOSSOM, FEMALE
+		tr_extra SHINY
+	end_trainer
 
-	; BEAUTY
-	db "Bridget@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, CORSOLA
-	dbp 55, SUNFLORA
-	db -1 ; end
+	def_trainer BRIDGET, "Bridget"
+	tr_mon 55, CORSOLA
+	tr_mon 55, SUNFLORA
+	end_trainer
 
-	; BEAUTY
-	db "Veronica@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, WIGGLYTUFF
-	dbp 54, MILTANK
-	dbp 56, CLEFABLE
-	db -1 ; end
+	def_trainer VERONICA, "Veronica"
+	tr_mon 54, WIGGLYTUFF
+	tr_mon 54, MILTANK
+	tr_mon 56, CLEFABLE
+	end_trainer
 
-	; BEAUTY
-	db "Nicole@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
-	; party
-	dbp 60, MARILL, FEMALE
-		db EVIOLITE, ABIL_MARILL_HUGE_POWER | NAT_NEUTRAL
-	dbp 63, AZUMARILL, FEMALE
-		db LEFTOVERS, ABIL_AZUMARILL_HUGE_POWER | NAT_NEUTRAL
-	dbp 60, MARILL, FEMALE
-		db BLACK_BELT, ABIL_MARILL_HUGE_POWER | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer BEAUTY_NICOLE, "Nicole"
+	tr_mon 60, MARILL @ EVIOLITE, FEMALE
+		tr_extra HUGE_POWER
+	tr_mon 63, AZUMARILL @ LEFTOVERS, FEMALE
+		tr_extra HUGE_POWER
+	tr_mon 60, MARILL @ BLACK_BELT, FEMALE
+		tr_extra HUGE_POWER
+	end_trainer
 
-	; BEAUTY
-	db "Rachael@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 9, MACHAMP, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 7, CLEFABLE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer RACHAEL, "Rachael"
+	tr_mon LEVEL_FROM_BADGES + 9, MACHAMP, MALE
+	tr_mon LEVEL_FROM_BADGES + 7, CLEFABLE, FEMALE
+	end_trainer
 
-	; BEAUTY
-	db "Ioana@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, SNUBBULL
-	dbp 55, GRANBULL
-	dbp 52, JIGGLYPUFF
-	dbp 54, SUNFLORA
-	db -1 ; end
+	def_trainer IOANA, "Ioana"
+	tr_mon 52, SNUBBULL
+	tr_mon 55, GRANBULL
+	tr_mon 52, JIGGLYPUFF
+	tr_mon 54, SUNFLORA
+	end_trainer
 
 
 SECTION "BugManiacGroup", ROMX
