@@ -3307,169 +3307,108 @@ SECTION "SuperNerdGroup", ROMX
 SuperNerdGroup:
 
 	def_trainer_class SUPER_NERD
-	db "Stan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, GRIMER
-	db -1 ; end
+	def_trainer STAN, "Stan"
+	tr_mon 20, GRIMER
+	end_trainer
 
-	; SUPER_NERD
-	db "Eric@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 13, GRIMER
-	dbp 14, PORYGON
-	db -1 ; end
+	def_trainer ERIC, "Eric"
+	tr_mon 13, GRIMER
+	tr_mon 14, PORYGON
+	end_trainer
 
-	; SUPER_NERD
-	db "Sam@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, GRIMER
-	dbp 56, MUK
-	db -1 ; end
+	def_trainer SAM, "Sam"
+	tr_mon 55, GRIMER
+	tr_mon 56, MUK
+	end_trainer
 
-	; SUPER_NERD
-	db "Tyrone@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, MAGNEMITE
-	dbp 56, MAGNETON
-	dbp 55, MAGNEMITE
-	db -1 ; end
+	def_trainer TOM, "Tyrone" ; MISMATCH
+	tr_mon 55, MAGNEMITE
+	tr_mon 56, MAGNETON
+	tr_mon 55, MAGNEMITE
+	end_trainer
 
-	; SUPER_NERD
-	db "Pat@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, PORYGON2
-	db -1 ; end
+	def_trainer PAT, "Pat"
+	tr_mon 56, PORYGON2
+	end_trainer
 
-	; SUPER_NERD
-	db "Shawn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, MAGNEMITE
-	dbp 46, MUK
-	dbp 45, MAGNETON
-	db -1 ; end
+	def_trainer SHAWN, "Shawn"
+	tr_mon 44, MAGNEMITE
+	tr_mon 46, MUK
+	tr_mon 45, MAGNETON
+	end_trainer
 
-	; SUPER_NERD
-	db "Teru@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, MAGNEMITE
-	dbp 13, VOLTORB
-	dbp 9, MAGNEMITE
-	dbp 11, MAGNEMITE
-	db -1 ; end
+	def_trainer TERU, "Teru"
+	tr_mon 9, MAGNEMITE
+	tr_mon 13, VOLTORB
+	tr_mon 9, MAGNEMITE
+	tr_mon 11, MAGNEMITE
+	end_trainer
 
-	; SUPER_NERD
-	db "Hugh@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 9, SEADRA
-		db SMOKESCREEN, OUTRAGE, SURF, WATERFALL
-	db -1 ; end
+	def_trainer HUGH, "Hugh"
+	tr_mon LEVEL_FROM_BADGES + 9, SEADRA
+		tr_moves SMOKESCREEN, OUTRAGE, SURF, WATERFALL
+	end_trainer
 
-	; SUPER_NERD
-	db "Markus@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 9, SLOWBRO
-		db CONFUSION, HEADBUTT, WATER_PULSE, STRENGTH
-	db -1 ; end
+	def_trainer MARKUS, "Markus"
+	tr_mon LEVEL_FROM_BADGES + 9, SLOWBRO
+		tr_moves CONFUSION, HEADBUTT, WATER_PULSE, STRENGTH
+	end_trainer
 
-	; SUPER_NERD
-	db "Cary@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, FLAREON
-	db -1 ; end
+	def_trainer CARY, "Cary"
+	tr_mon 63, FLAREON
+	end_trainer
 
-	; SUPER_NERD
-	db "Waldo@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 65, CHARIZARD
-	db -1 ; end
+	def_trainer WALDO, "Waldo"
+	tr_mon 65, CHARIZARD
+	end_trainer
 
-	; SUPER_NERD
-	db "Merle@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, MAGCARGO
-	db -1 ; end
+	def_trainer MERLE, "Merle"
+	tr_mon 63, MAGCARGO
+	end_trainer
 
-	; SUPER_NERD
-	db "Luis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, MAGMAR
-	dbp 63, WEEZING
-	dbp 59, MAGMAR
-	db -1 ; end
+	def_trainer LUIS, "Luis"
+	tr_mon 62, MAGMAR
+	tr_mon 63, WEEZING
+	tr_mon 59, MAGMAR
+	end_trainer
 
-	; SUPER_NERD
-	db "Jovan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, MAGNETON
-	dbp 60, VOLTORB
-	dbp 61, ELECTRODE
-	db -1 ; end
+	def_trainer JOVAN, "Jovan"
+	tr_mon 62, MAGNETON
+	tr_mon 60, VOLTORB
+	tr_mon 61, ELECTRODE
+	end_trainer
 
-	; SUPER_NERD
-	db "Miguel@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 62, OMASTAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 62, KABUTOPS, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 64, UMBREON, MALE
-		db SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer MIGUEL, "Miguel"
+	tr_mon 62, OMASTAR, MALE
+	tr_mon 62, KABUTOPS, MALE
+	tr_mon 64, UMBREON, MALE
+		tr_extra SHINY
+	end_trainer
 
-	; SUPER_NERD
-	db "Rory@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, PORYGON
-	db -1 ; end
+	def_trainer RORY, "Rory"
+	tr_mon 26, PORYGON
+	end_trainer
 
-	; SUPER_NERD
-	db "Gregg@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, PORYGON
-	dbp 55, PORYGON2
-	db -1 ; end
+	def_trainer GREGG, "Gregg"
+	tr_mon 53, PORYGON
+	tr_mon 55, PORYGON2
+	end_trainer
 
-	; SUPER_NERD
-	db "Foote@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, SNORLAX
-	db -1 ; end
+	def_trainer FOOTE, "Foote"
+	tr_mon 54, SNORLAX
+	end_trainer
 
-	; SUPER_NERD
-	db "Dave@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, LARVITAR
-	dbp 53, PUPITAR
-	dbp 56, PORYGON_Z
-	db -1 ; end
+	def_trainer DAVE, "Dave"
+	tr_mon 52, LARVITAR
+	tr_mon 53, PUPITAR
+	tr_mon 56, PORYGON_Z
+	end_trainer
 
-	; SUPER_NERD
-	db "Kouta@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, CROBAT
-	dbp 53, POLITOED
-	dbp 56, CHARIZARD
-	db -1 ; end
+	def_trainer KOUTA, "Kouta"
+	tr_mon 54, CROBAT
+	tr_mon 53, POLITOED
+	tr_mon 56, CHARIZARD
+	end_trainer
 
 
 SECTION "LassGroup", ROMX
