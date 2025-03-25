@@ -2594,317 +2594,210 @@ SECTION "HikerGroup", ROMX
 HikerGroup:
 
 	def_trainer_class HIKER
-	db "Anthony@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 12, GEODUDE
-	dbp 12, MACHOP
-	db -1 ; end
+	def_trainer ANTHONY1, "Anthony"
+	tr_mon 12, GEODUDE
+	tr_mon 12, MACHOP
+	end_trainer
 
-	; HIKER
-	db "Anthony@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, GEODUDE
-	dbp 18, MACHOKE
-	db -1 ; end
+	def_trainer ANTHONY2, "Anthony"
+	tr_mon 16, GEODUDE
+	tr_mon 18, MACHOKE
+	end_trainer
 
-	; HIKER
-	db "Anthony@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 25, GRAVELER
-	dbp 27, GRAVELER
-	dbp 29, MACHOKE
-	db -1 ; end
+	def_trainer ANTHONY3, "Anthony"
+	tr_mon 25, GRAVELER
+	tr_mon 27, GRAVELER
+	tr_mon 29, MACHOKE
+	end_trainer
 
-	; HIKER
-	db "Anthony@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, GRAVELER
-	dbp 30, GRAVELER
-	dbp 32, MACHOKE
-	db -1 ; end
+	def_trainer ANTHONY4, "Anthony"
+	tr_mon 30, GRAVELER
+	tr_mon 30, GRAVELER
+	tr_mon 32, MACHOKE
+	end_trainer
 
-	; HIKER
-	db "Anthony@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 34, GRAVELER
-		db MAGNITUDE, MUD_SLAP, SANDSTORM, ROCK_SLIDE
-	dbp 36, GOLEM
-		db BULLDOZE, EXPLOSION, DEFENSE_CURL, ROLLOUT
-	dbp 34, MACHAMP
-		db KARATE_CHOP, BULLET_PUNCH, HEADBUTT, DIG
-	db -1 ; end
+	def_trainer ANTHONY5, "Anthony"
+	tr_mon 34, GRAVELER
+		tr_moves MAGNITUDE, MUD_SLAP, SANDSTORM, ROCK_SLIDE
+	tr_mon 36, GOLEM
+		tr_moves BULLDOZE, EXPLOSION, DEFENSE_CURL, ROLLOUT
+	tr_mon 34, MACHAMP
+		tr_moves KARATE_CHOP, BULLET_PUNCH, HEADBUTT, DIG
+	end_trainer
 
-	; HIKER
-	db "Parry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, ONIX
-	db -1 ; end
+	def_trainer PARRY1, "Parry"
+	tr_mon 30, ONIX
+	end_trainer
 
-	; HIKER
-	db "Parry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, ONIX
-	dbp 35, PILOSWINE
-	db -1 ; end
+	def_trainer PARRY2, "Parry"
+	tr_mon 36, ONIX
+	tr_mon 35, PILOSWINE
+	end_trainer
 
-	; HIKER
-	db "Parry@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, PILOSWINE
-		db EARTHQUAKE, AVALANCHE, REST, TAKE_DOWN
-	dbp 36, DUGTRIO
-		db MAGNITUDE, DIG, MUD_SLAP, SLASH
-	dbp 39, STEELIX
-		db DIG, IRON_TAIL, SANDSTORM, HEADBUTT
-	db -1 ; end
+	def_trainer PARRY3, "Parry"
+	tr_mon 36, PILOSWINE
+		tr_moves EARTHQUAKE, AVALANCHE, REST, TAKE_DOWN
+	tr_mon 36, DUGTRIO
+		tr_moves MAGNITUDE, DIG, MUD_SLAP, SLASH
+	tr_mon 39, STEELIX
+		tr_moves DIG, IRON_TAIL, SANDSTORM, HEADBUTT
+	end_trainer
 
-	; HIKER
-	db "Russell@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 6, GEODUDE
-	dbp 8, GEODUDE
-	dbp 10, GEODUDE
-	db -1 ; end
+	def_trainer RUSSELL, "Russell"
+	tr_mon 6, GEODUDE
+	tr_mon 8, GEODUDE
+	tr_mon 10, GEODUDE
+	end_trainer
 
-	; HIKER
-	db "Phillip@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, GEODUDE
-	dbp 23, GEODUDE
-	dbp 25, GRAVELER
-	db -1 ; end
+	def_trainer PHILLIP, "Phillip"
+	tr_mon 23, GEODUDE
+	tr_mon 23, GEODUDE
+	tr_mon 25, GRAVELER
+	end_trainer
 
-	; HIKER
-	db "Leonard@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, GEODUDE
-	dbp 25, MACHOP
-	db -1 ; end
+	def_trainer LEONARD, "Leonard"
+	tr_mon 23, GEODUDE
+	tr_mon 25, MACHOP
+	end_trainer
 
-	; HIKER
-	db "Benjamin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 24, DIGLETT
-	dbp 24, DUNSPARCE
-	dbp 28, GLIGAR
-	db -1 ; end
+	def_trainer BENJAMIN, "Benjamin"
+	tr_mon 24, DIGLETT
+	tr_mon 24, DUNSPARCE
+	tr_mon 28, GLIGAR
+	end_trainer
 
-	; HIKER
-	db "Erik@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, GRAVELER
-	dbp 37, DONPHAN
-	dbp 37, GLIGAR
-	db -1 ; end
+	def_trainer ERIK, "Erik"
+	tr_mon 35, GRAVELER
+	tr_mon 37, DONPHAN
+	tr_mon 37, GLIGAR
+	end_trainer
 
-	; HIKER
-	db "Michael@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, GEODUDE
-	dbp 35, GRAVELER
-	dbp 35, GOLEM
-	db -1 ; end
+	def_trainer MICHAEL, "Michael"
+	tr_mon 35, GEODUDE
+	tr_mon 35, GRAVELER
+	tr_mon 35, GOLEM
+	end_trainer
 
-	; HIKER
-	db "Timothy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, SANDSLASH
-	dbp 37, DUGTRIO
-	db -1 ; end
+	def_trainer TIMOTHY, "Timothy"
+	tr_mon 36, SANDSLASH
+	tr_mon 37, DUGTRIO
+	end_trainer
 
-	; HIKER
-	db "Bailey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 15, GEODUDE
-	dbp 15, GEODUDE
-	dbp 15, GEODUDE
-	dbp 17, LARVITAR
-	db -1 ; end
+	def_trainer BAILEY, "Bailey"
+	tr_mon 15, GEODUDE
+	tr_mon 15, GEODUDE
+	tr_mon 15, GEODUDE
+	tr_mon 17, LARVITAR
+	end_trainer
 
-	; HIKER
-	db "Eoin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 50, DIGLETT
-	dbp 52, GRAVELER
-	dbp 54, DUGTRIO
-	db -1 ; end
+	def_trainer TIM, "Eoin" ; MISMATCH
+	tr_mon 50, DIGLETT
+	tr_mon 52, GRAVELER
+	tr_mon 54, DUGTRIO
+	end_trainer
 
-	; HIKER
-	db "Noland@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, DUGTRIO
-	dbp 47, GOLEM
-	db -1 ; end
+	def_trainer NOLAND, "Noland"
+	tr_mon 45, DUGTRIO
+	tr_mon 47, GOLEM
+	end_trainer
 
-	; HIKER
-	db "Clarke@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, DUGTRIO
-	dbp 55, ONIX
-	db -1 ; end
+	def_trainer SIDNEY, "Clarke" ; MISMATCH
+	tr_mon 53, DUGTRIO
+	tr_mon 55, ONIX
+	end_trainer
 
-	; HIKER
-	db "Kenny@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, SANDSLASH
-	dbp 56, GRAVELER
-	dbp 58, GOLEM
-	dbp 56, GRAVELER
-	db -1 ; end
+	def_trainer KENNY, "Kenny"
+	tr_mon 54, SANDSLASH
+	tr_mon 56, GRAVELER
+	tr_mon 58, GOLEM
+	tr_mon 56, GRAVELER
+	end_trainer
 
-	; HIKER
-	db "Jim@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, MACHAMP
-	db -1 ; end
+	def_trainer JIM, "Jim"
+	tr_mon 57, MACHAMP
+	end_trainer
 
-	; HIKER
-	db "Daniel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 12, ONIX
-	db -1 ; end
+	def_trainer DANIEL, "Daniel"
+	tr_mon 12, ONIX
+	end_trainer
 
-	; HIKER
-	db "Edwin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, GOLEM
-	db -1 ; end
+	def_trainer EDWIN, "Edwin"
+	tr_mon 62, GOLEM
+	end_trainer
 
-	; HIKER
-	db "Devin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 1, DUNSPARCE
-	dbp LEVEL_FROM_BADGES + 2, ONIX
-	dbp LEVEL_FROM_BADGES + 1, LARVITAR
-	db -1 ; end
+	def_trainer DEVIN, "Devin"
+	tr_mon LEVEL_FROM_BADGES + 1, DUNSPARCE
+	tr_mon LEVEL_FROM_BADGES + 2, ONIX
+	tr_mon LEVEL_FROM_BADGES + 1, LARVITAR
+	end_trainer
 
-	; HIKER
-	db "Seamus@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, DUDUNSPARCE
-	dbp 53, ONIX
-	dbp 54, GOLEM
-	dbp 53, ONIX
-	db -1 ; end
+	def_trainer SEAMUS, "Seamus"
+	tr_mon 56, DUDUNSPARCE
+	tr_mon 53, ONIX
+	tr_mon 54, GOLEM
+	tr_mon 53, ONIX
+	end_trainer
 
-	; HIKER
-	db "Tony@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 2, DUNSPARCE
-	dbp LEVEL_FROM_BADGES + 3, ONIX
-	dbp LEVEL_FROM_BADGES + 2, DUNSPARCE
-	db -1 ; end
+	def_trainer TONY, "Tony"
+	tr_mon LEVEL_FROM_BADGES + 2, DUNSPARCE
+	tr_mon LEVEL_FROM_BADGES + 3, ONIX
+	tr_mon LEVEL_FROM_BADGES + 2, DUNSPARCE
+	end_trainer
 
-	; HIKER
-	db "Marcos@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, SANDSLASH
-	dbp 59, SANDSHREW
-	dbp 62, MACHOKE
-	dbp 62, ONIX
-	db -1 ; end
+	def_trainer MARCOS, "Marcos"
+	tr_mon 60, SANDSLASH
+	tr_mon 59, SANDSHREW
+	tr_mon 62, MACHOKE
+	tr_mon 62, ONIX
+	end_trainer
 
-	; HIKER
-	db "Gerard@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, RHYHORN
-	dbp 61, RHYDON
-	db -1 ; end
+	def_trainer GERARD, "Gerard"
+	tr_mon 59, RHYHORN
+	tr_mon 61, RHYDON
+	end_trainer
 
-	; HIKER
-	db "Dent@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, ONIX
-	dbp 59, STEELIX
-	dbp 59, GOLEM
-	db -1 ; end
+	def_trainer DENT, "Dent"
+	tr_mon 58, ONIX
+	tr_mon 59, STEELIX
+	tr_mon 59, GOLEM
+	end_trainer
 
-	; HIKER
-	db "Bruce@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, GRAVELER
-	dbp 62, RHYDON
-	dbp 63, CLEFAIRY
-	db -1 ; end
+	def_trainer BRUCE, "Bruce"
+	tr_mon 57, GRAVELER
+	tr_mon 62, RHYDON
+	tr_mon 63, CLEFAIRY
+	end_trainer
 
-	; HIKER
-	db "Dwight@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, MAGNETON
-	dbp 62, STEELIX
-	db -1 ; end
+	def_trainer DWIGHT, "Dwight"
+	tr_mon 62, MAGNETON
+	tr_mon 62, STEELIX
+	end_trainer
 
-	; HIKER
-	db "Lester@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, CLEFABLE
-	dbp 53, SCYTHER
-	dbp 54, MACHOKE
-	db -1 ; end
+	def_trainer LESTER, "Lester"
+	tr_mon 55, CLEFABLE
+	tr_mon 53, SCYTHER
+	tr_mon 54, MACHOKE
+	end_trainer
 
-	; HIKER
-	db "Grady@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, GRAVELER
-	dbp LEVEL_FROM_BADGES + 4, GRAVELER
-	dbp LEVEL_FROM_BADGES + 5, SANDSLASH
-	db -1 ; end
+	def_trainer GRADY, "Grady"
+	tr_mon LEVEL_FROM_BADGES + 4, GRAVELER
+	tr_mon LEVEL_FROM_BADGES + 4, GRAVELER
+	tr_mon LEVEL_FROM_BADGES + 5, SANDSLASH
+	end_trainer
 
-	; HIKER
-	db "Steve@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 7, STEELIX
-	db -1 ; end
+	def_trainer STEVE, "Steve"
+	tr_mon LEVEL_FROM_BADGES + 7, STEELIX
+	end_trainer
 
-	; HIKER
-	db "Derrick@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, CLODSIRE
-	dbp 53, DUGTRIO
-	dbp 55, GOLEM
-	db -1 ; end
+	def_trainer DERRICK, "Derrick"
+	tr_mon 53, CLODSIRE
+	tr_mon 53, DUGTRIO
+	tr_mon 55, GOLEM
+	end_trainer
 
-	; HIKER
-	db "Floyd@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, STEELIX
-	db -1 ; end
+	def_trainer FLOYD, "Floyd"
+	tr_mon 57, STEELIX
+	end_trainer
 
 
 SECTION "GruntMGroup", ROMX
