@@ -2199,167 +2199,117 @@ SECTION "FisherGroup", ROMX
 FisherGroup:
 
 	def_trainer_class FISHER
-	db "Ralph@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 11, GOLDEEN
-	db -1 ; end
+	def_trainer RALPH1, "Ralph"
+	tr_mon 11, GOLDEEN
+	end_trainer
 
-	; FISHER
-	db "Ralph@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, GOLDEEN
-	db -1 ; end
+	def_trainer RALPH2, "Ralph"
+	tr_mon 17, GOLDEEN
+	end_trainer
 
-	; FISHER
-	db "Ralph@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, QWILFISH
-	dbp 19, GOLDEEN
-	db -1 ; end
+	def_trainer RALPH3, "Ralph"
+	tr_mon 17, QWILFISH
+	tr_mon 19, GOLDEEN
+	end_trainer
 
-	; FISHER
-	db "Ralph@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, QWILFISH
-	dbp 32, SEAKING
-	db -1 ; end
+	def_trainer RALPH4, "Ralph"
+	tr_mon 30, QWILFISH
+	tr_mon 32, SEAKING
+	end_trainer
 
-	; FISHER
-	db "Ralph@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, QWILFISH
-		db TOXIC, MINIMIZE, SURF, PIN_MISSILE
-	dbp 36, LANTURN
-		db REVERSAL, WATERFALL, THUNDERBOLT, CONFUSE_RAY
-	dbp 39, SEAKING
-		db WATERFALL, AGILITY, FURY_STRIKES, POISON_JAB
-	db -1 ; end
+	def_trainer RALPH5, "Ralph"
+	tr_mon 36, QWILFISH
+		tr_moves TOXIC, MINIMIZE, SURF, PIN_MISSILE
+	tr_mon 36, LANTURN
+		tr_moves REVERSAL, WATERFALL, THUNDERBOLT, CONFUSE_RAY
+	tr_mon 39, SEAKING
+		tr_moves WATERFALL, AGILITY, FURY_STRIKES, POISON_JAB
+	end_trainer
 
-	; FISHER
-	db "Tully@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, QWILFISH
-	db -1 ; end
+	def_trainer TULLY1, "Tully"
+	tr_mon 30, QWILFISH
+	end_trainer
 
-	; FISHER
-	db "Tully@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, GOLDEEN
-	dbp 35, QWILFISH
-	db -1 ; end
+	def_trainer TULLY2, "Tully"
+	tr_mon 35, GOLDEEN
+	tr_mon 35, QWILFISH
+	end_trainer
 
-	; FISHER
-	db "Tully@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 40, POLIWHIRL
-	dbp 40, SEAKING
-	dbp 40, QWILFISH
-	db -1 ; end
+	def_trainer TULLY3, "Tully"
+	tr_mon 40, POLIWHIRL
+	tr_mon 40, SEAKING
+	tr_mon 40, QWILFISH
+	end_trainer
 
-	; FISHER
-	db "Tully@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 43, POLIWRATH
-		db RAIN_DANCE, HYPNOSIS, WATERFALL, CLOSE_COMBAT
-	dbp 43, SEAKING
-		db AGILITY, WATERFALL, BODY_SLAM, POISON_JAB
-	dbp 45, QWILFISH
-		db ROLLOUT, WATERFALL, PIN_MISSILE, TAKE_DOWN
-	db -1 ; end
+	def_trainer TULLY4, "Tully"
+	tr_mon 43, POLIWRATH
+		tr_moves RAIN_DANCE, HYPNOSIS, WATERFALL, CLOSE_COMBAT
+	tr_mon 43, SEAKING
+		tr_moves AGILITY, WATERFALL, BODY_SLAM, POISON_JAB
+	tr_mon 45, QWILFISH
+		tr_moves ROLLOUT, WATERFALL, PIN_MISSILE, TAKE_DOWN
+	end_trainer
 
-	; FISHER
-	db "Wilton@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 34, GOLDEEN
-	dbp 36, REMORAID
-	dbp 36, SEAKING
-	db -1 ; end
+	def_trainer WILTON1, "Wilton"
+	tr_mon 34, GOLDEEN
+	tr_mon 36, REMORAID
+	tr_mon 36, SEAKING
+	end_trainer
 
-	; FISHER
-	db "Wilton@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, GOLDEEN
-	dbp 38, REMORAID
-	dbp 38, SEAKING
-	db -1 ; end
+	def_trainer WILTON2, "Wilton"
+	tr_mon 36, GOLDEEN
+	tr_mon 38, REMORAID
+	tr_mon 38, SEAKING
+	end_trainer
 
-	; FISHER
-	db "Wilton@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 38, GOLDEEN
-		db WATERFALL, FURY_STRIKES, POISON_JAB, RAIN_DANCE
-	dbp 40, SEAKING
-		db WATERFALL, BODY_SLAM, POISON_JAB, AGILITY
-	dbp 42, OCTILLERY
-		db PSYBEAM, AURORA_BEAM, OCTAZOOKA, HYPER_BEAM
-	db -1 ; end
+	def_trainer WILTON3, "Wilton"
+	tr_mon 38, GOLDEEN
+		tr_moves WATERFALL, FURY_STRIKES, POISON_JAB, RAIN_DANCE
+	tr_mon 40, SEAKING
+		tr_moves WATERFALL, BODY_SLAM, POISON_JAB, AGILITY
+	tr_mon 42, OCTILLERY
+		tr_moves PSYBEAM, AURORA_BEAM, OCTAZOOKA, HYPER_BEAM
+	end_trainer
 
-	; FISHER
-	db "Justin@"
-	db TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
-	; party
-	dbp 5, MAGIKARP, MALE | PLAIN_FORM
-		db $87, $78, $77, ABILITY_1 | NAT_NEUTRAL
-	dbp 5, MAGIKARP, MALE | MAGIKARP_FOREHEAD1_FORM
-		db $88, $B8, $8B, ABILITY_1 | NAT_NEUTRAL
-	dbp 15, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
-		db $A2, $AA, $2A, ABILITY_1 | NAT_NEUTRAL
-	dbp 5, MAGIKARP, MALE | MAGIKARP_ORCA_FORM
-		db $39, $93, $99, ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer JUSTIN, "Justin"
+	tr_mon 5, MAGIKARP, MALE | PLAIN_FORM
+		tr_dvs 8 HP, 7 Atk, 7 Def, 8 Spe, 7 SAt, 7 SDf
+	tr_mon 5, MAGIKARP, MALE | MAGIKARP_FOREHEAD1_FORM
+		tr_dvs 8 HP, 8 Atk, 11 Def, 8 Spe, 8 SAt, 11 SDf
+	tr_mon 15, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
+		tr_dvs 10 HP, 2 Atk, 10 Def, 10 Spe, 2 SAt, 10 SDf
+	tr_mon 5, MAGIKARP, MALE | MAGIKARP_ORCA_FORM
+		tr_dvs 3 HP, 9 Atk, 9 Def, 3 Spe, 9 SAt, 9 SDf
+	end_trainer
 
-	; FISHER
-	db "Arnold@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, CLOYSTER
-	db -1 ; end
+	def_trainer ARNOLD, "Arnold"
+	tr_mon 62, CLOYSTER
+	end_trainer
 
-	; FISHER
-	db "Kyle@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, SEAKING
-	dbp 54, QWILFISH
-	dbp 57, SEAKING
-	db -1 ; end
+	def_trainer KYLE, "Kyle"
+	tr_mon 57, SEAKING
+	tr_mon 54, QWILFISH
+	tr_mon 57, SEAKING
+	end_trainer
 
-	; FISHER
-	db "Henry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, POLIWAG
-	dbp 9, POLIWAG
-	db -1 ; end
+	def_trainer HENRY, "Henry"
+	tr_mon 9, POLIWAG
+	tr_mon 9, POLIWAG
+	end_trainer
 
-	; FISHER
-	def_trainer "Marvin"
+
+	def_trainer MARVIN, "Marvin"
 	tr_mon 20, MAGIKARP, MALE | MAGIKARP_CALICO1_FORM
 	tr_mon 25, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
 	tr_mon 30, GYARADOS, MALE
 	end_trainer
 
-	; FISHER
-	db "Andre@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 32, GYARADOS
-	db -1 ; end
+	def_trainer ANDRE, "Andre"
+	tr_mon 32, GYARADOS
+	end_trainer
 
-	; FISHER
-	def_trainer "Raymond"
+
+	def_trainer RAYMOND, "Raymond"
 	tr_mon 30, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
 		tr_moves SPLASH, TACKLE, REVERSAL, DRAGON_RAGE
 	tr_mon 30, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
@@ -2370,164 +2320,103 @@ FisherGroup:
 		tr_moves SPLASH, TACKLE, REVERSAL, DRAGON_RAGE
 	end_trainer
 
-	; FISHER
-	db "Edgar@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, REMORAID
-		db FLAMETHROWER, PSYBEAM, AURORA_BEAM, BUBBLE_BEAM
-	dbp 36, REMORAID
-		db ICE_BEAM, PSYBEAM, AURORA_BEAM, BUBBLE_BEAM
-	db -1 ; end
+	def_trainer EDGAR, "Edgar"
+	tr_mon 36, REMORAID
+		tr_moves FLAMETHROWER, PSYBEAM, AURORA_BEAM, BUBBLE_BEAM
+	tr_mon 36, REMORAID
+		tr_moves ICE_BEAM, PSYBEAM, AURORA_BEAM, BUBBLE_BEAM
+	end_trainer
 
-	; FISHER
-	db "Jonah@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, SHELLDER
-	dbp 46, OCTILLERY
-	dbp 44, REMORAID
-	dbp 46, CLOYSTER
-	db -1 ; end
+	def_trainer JONAH, "Jonah"
+	tr_mon 44, SHELLDER
+	tr_mon 46, OCTILLERY
+	tr_mon 44, REMORAID
+	tr_mon 46, CLOYSTER
+	end_trainer
 
-	; FISHER
-	db "Martin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, REMORAID
-	dbp 58, OCTILLERY
-	db -1 ; end
+	def_trainer MARTIN, "Martin"
+	tr_mon 56, REMORAID
+	tr_mon 58, OCTILLERY
+	end_trainer
 
-	; FISHER
-	db "Stephen@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, MAGIKARP
-	dbp 58, QUAGSIRE
-	dbp 55, QWILFISH
-	dbp 55, TENTACRUEL
-	db -1 ; end
+	def_trainer STEPHEN, "Stephen"
+	tr_mon 60, MAGIKARP
+	tr_mon 58, QUAGSIRE
+	tr_mon 55, QWILFISH
+	tr_mon 55, TENTACRUEL
+	end_trainer
 
-	; FISHER
-	db "Barney@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, GYARADOS
-	dbp 56, GYARADOS
-	dbp 56, GYARADOS
-	db -1 ; end
+	def_trainer BARNEY, "Barney"
+	tr_mon 57, GYARADOS
+	tr_mon 56, GYARADOS
+	tr_mon 56, GYARADOS
+	end_trainer
 
-	; FISHER
-	db "Scott@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 40, QWILFISH
-	dbp 40, QWILFISH
-	dbp 42, SEAKING
-	db -1 ; end
+	def_trainer SCOTT, "Scott"
+	tr_mon 40, QWILFISH
+	tr_mon 40, QWILFISH
+	tr_mon 42, SEAKING
+	end_trainer
 
-	; FISHER
-	db "Paton@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, GOLDEEN
-	dbp LEVEL_FROM_BADGES + 2, MANTINE
-	db -1 ; end
+	def_trainer PATON, "Paton"
+	tr_mon LEVEL_FROM_BADGES + 0, GOLDEEN
+	tr_mon LEVEL_FROM_BADGES + 2, MANTINE
+	end_trainer
 
-	; FISHER
-	db "Kiley@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | PLAIN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | MAGIKARP_DAPPLES_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | MAGIKARP_TIGER_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 5, MANTINE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer KILEY, "Kiley"
+	tr_mon LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | PLAIN_FORM
+	tr_mon LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | MAGIKARP_DAPPLES_FORM
+	tr_mon LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | MAGIKARP_TIGER_FORM
+	tr_mon LEVEL_FROM_BADGES + 5, MANTINE, MALE
+	end_trainer
 
-	; FISHER
-	db "Francis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, REMORAID
-	dbp LEVEL_FROM_BADGES + 5, CHINCHOU
-	dbp LEVEL_FROM_BADGES + 4, QWILFISH
-	db -1 ; end
+	def_trainer FRANCIS, "Francis"
+	tr_mon LEVEL_FROM_BADGES + 4, REMORAID
+	tr_mon LEVEL_FROM_BADGES + 5, CHINCHOU
+	tr_mon LEVEL_FROM_BADGES + 4, QWILFISH
+	end_trainer
 
-	; FISHER
-	db "Virgil@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 51, MAGIKARP, MALE | MAGIKARP_MASK1_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 52, MAGIKARP, MALE | MAGIKARP_CALICO1_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 53, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 54, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 55, MAGIKARP, MALE | MAGIKARP_TWO_TONE_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 56, MAGIKARP, MALE | MAGIKARP_ORCA_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer LEROY, "Virgil" ; MISMATCH
+	tr_mon 51, MAGIKARP, MALE | MAGIKARP_MASK1_FORM
+	tr_mon 52, MAGIKARP, MALE | MAGIKARP_CALICO1_FORM
+	tr_mon 53, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
+	tr_mon 54, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
+	tr_mon 55, MAGIKARP, MALE | MAGIKARP_TWO_TONE_FORM
+	tr_mon 56, MAGIKARP, MALE | MAGIKARP_ORCA_FORM
+	end_trainer
 
-	; FISHER
-	db "Kyler@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 48, MAGIKARP, MALE | PLAIN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 48, MAGIKARP, MALE | MAGIKARP_BUBBLES_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 48, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer KYLER, "Kyler"
+	tr_mon 48, MAGIKARP, MALE | PLAIN_FORM
+	tr_mon 48, MAGIKARP, MALE | MAGIKARP_BUBBLES_FORM
+	tr_mon 48, MAGIKARP, MALE | MAGIKARP_CALICO3_FORM
+	end_trainer
 
-	; FISHER
-	db "Murphy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, CORSOLA
-	dbp 56, CORSOLA
-	dbp 58, CORSOLA
-	dbp 60, CORSOLA
-	db -1 ; end
+	def_trainer MURPHY, "Murphy"
+	tr_mon 54, CORSOLA
+	tr_mon 56, CORSOLA
+	tr_mon 58, CORSOLA
+	tr_mon 60, CORSOLA
+	end_trainer
 
-	; FISHER
-	db "Liam@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, SEADRA
-	db -1 ; end
+	def_trainer LIAM, "Liam"
+	tr_mon 62, SEADRA
+	end_trainer
 
-	; FISHER
-	db "Gideon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, LANTURN
-	dbp 56, MANTINE
-	db -1 ; end
+	def_trainer GIDEON, "Gideon"
+	tr_mon 60, LANTURN
+	tr_mon 56, MANTINE
+	end_trainer
 
-	; FISHER
-	db "Hall@"
-	db TRAINERTYPE_DVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 56, QWILFISH
-		db %10000111, %11011000, %00101000, "Dopefish@" ; green
-	db -1 ; end
+	def_trainer HALL, "Hall"
+	tr_mon 56, "Dopefish", QWILFISH
+		tr_dvs 8 HP, 7 Atk, 13 Def, 8 Spe, 2 SAt, 8 SDf ; green
+	end_trainer
 
-	; FISHER
-	db "Dallas@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, QWILFISH
-	dbp 63, LANTURN
-	dbp 65, GYARADOS
-	db -1 ; end
+	def_trainer DALLAS, "Dallas"
+	tr_mon 61, QWILFISH
+	tr_mon 63, LANTURN
+	tr_mon 65, GYARADOS
+	end_trainer
 
 
 SECTION "BirdKeeperGroup", ROMX
