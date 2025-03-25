@@ -3846,42 +3846,25 @@ JugglerGroup:
 	end_trainer
 
 ;	; unused
-;	; JUGGLER
-;	def_trainer "Irwin"
-;	need_db_fix TRAINERTYPE_NORMAL
-;
-;	; party
+;	def_trainer IRWIN2, "Irwin"
 ;	tr_mon 6, VOLTORB
 ;	tr_mon 10, VOLTORB
 ;	tr_mon 14, VOLTORB
 ;	tr_mon 18, VOLTORB
-;
 ;	end_trainer
 
-;	; unused
-;	; JUGGLER
-;	def_trainer "Irwin"
-;	need_db_fix TRAINERTYPE_NORMAL
-;
-;	; party
+;	def_trainer IRWIN3, "Irwin"
 ;	tr_mon 18, VOLTORB
 ;	tr_mon 22, VOLTORB
 ;	tr_mon 26, VOLTORB
 ;	tr_mon 30, ELECTRODE
-;
 ;	end_trainer
 
-;	; unused
-;	; JUGGLER
-;	def_trainer "Irwin"
-;	need_db_fix TRAINERTYPE_NORMAL
-;
-;	; party
+;	def_trainer IRWIN4, "Irwin"
 ;	tr_mon 18, VOLTORB
 ;	tr_mon 22, VOLTORB
 ;	tr_mon 26, VOLTORB
 ;	tr_mon 30, ELECTRODE
-;
 ;	end_trainer
 
 	def_trainer FRITZ, "Fritz"
@@ -5383,49 +5366,22 @@ BlackbeltGroup:
 	end_trainer
 
 ;	; unused
-;	; BLACKBELT_T
 ;	def_trainer KENJI2, "Kenji"
-;	need_db_fix TRAINERTYPE_NORMAL
-;
-;	; party
 ;	tr_mon 36, ONIX
 ;	tr_mon 38, HITMONLEE
 ;	tr_mon 36, ONIX
 ;	tr_mon 39, MACHOKE
-;
 ;	end_trainer
 
-;	; unused
-;	; BLACKBELT_T
 ;	def_trainer KENJI3, "Kenji"
-;	need_db_fix TRAINERTYPE_MOVES
-;
-;	; party
-;
 ;	tr_mon 33, ONIX
-;		need_db_fix WRAP
-;		need_db_fix ROCK_THROW
-;		need_db_fix TOXIC
-;		need_db_fix DIG
-;
+;		tr_moves WRAP, ROCK_THROW, TOXIC, DIG
 ;	tr_mon 38, MACHAMP
-;		need_db_fix HEADBUTT
-;		need_db_fix SWAGGER
-;		need_db_fix THUNDERPUNCH
-;		need_db_fix BULLET_PUNCH
-;
+;		tr_moves HEADBUTT, SWAGGER, THUNDERPUNCH, BULLET_PUNCH
 ;	tr_mon 33, STEELIX
-;		need_db_fix EARTHQUAKE
-;		need_db_fix ROCK_THROW
-;		need_db_fix IRON_TAIL
-;		need_db_fix SANDSTORM
-;
+;		tr_moves EARTHQUAKE, ROCK_THROW, IRON_TAIL, SANDSTORM
 ;	tr_mon 36, HITMONLEE
-;		need_db_fix DOUBLE_TEAM
-;		need_db_fix HI_JUMP_KICK
-;		need_db_fix MUD_SLAP
-;		need_db_fix SWIFT
-;
+;		tr_moves DOUBLE_TEAM, HI_JUMP_KICK, MUD_SLAP, SWIFT
 ;	end_trainer
 
 	def_trainer YOSHI, "Yoshi"
