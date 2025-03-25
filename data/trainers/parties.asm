@@ -3275,48 +3275,33 @@ SECTION "CosplayerGroup", ROMX
 CosplayerGroup:
 
 	def_trainer_class COSPLAYER
-	db "Clara@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 14, VULPIX
-	dbp 14, VULPIX
-	db -1 ; end
+	def_trainer CLARA, "Clara"
+	tr_mon 14, VULPIX
+	tr_mon 14, VULPIX
+	end_trainer
 
-	; COSPLAYER
-	db "Chloe@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, VULPIX
-	dbp LEVEL_FROM_BADGES + 5, PIKACHU
-	dbp LEVEL_FROM_BADGES + 5, VULPIX
-	db -1 ; end
+	def_trainer CHLOE, "Chloe"
+	tr_mon LEVEL_FROM_BADGES + 5, VULPIX
+	tr_mon LEVEL_FROM_BADGES + 5, PIKACHU
+	tr_mon LEVEL_FROM_BADGES + 5, VULPIX
+	end_trainer
 
-	; COSPLAYER
-	db "Brooke@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, NINETALES
-	dbp 60, VULPIX
-	db -1 ; end
+	def_trainer BROOKE, "Brooke"
+	tr_mon 62, NINETALES
+	tr_mon 60, VULPIX
+	end_trainer
 
-	; COSPLAYER
-	db "Kuroko@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 60, VULPIX
-		db EVIOLITE
-	dbp 62, NINETALES
-		db CHARCOAL
-	db -1 ; end
+	def_trainer KUROKO, "Kuroko"
+	tr_mon 60, VULPIX @ EVIOLITE
+	tr_mon 62, NINETALES @ CHARCOAL
+	end_trainer
 
-	; COSPLAYER
-	db "Lyric@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, LANTURN
-	dbp 53, MAGNEZONE
-	dbp 55, ELECTRODE
-	db -1 ; end
+	def_trainer LYRIC, "Lyric"
+	tr_mon 54, LANTURN
+	tr_mon 53, MAGNEZONE
+	tr_mon 55, ELECTRODE
+	end_trainer
+
 
 SECTION "SuperNerdGroup", ROMX
 SuperNerdGroup:
