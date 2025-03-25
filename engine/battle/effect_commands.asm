@@ -5005,11 +5005,13 @@ CanStatusTarget:
 .pop_and_end
 	pop af
 .end
+	; return nc|nz -- we can't, failure msg in HL
 	or 1
 	ret
 .cant_ability
-	xor a
-	cp 1 ; no-optimize a == 1 (TODO: can this be dec a?)
+	; return c|nz -- we can't, due to ability
+	scf
+	sbc a
 	ret
 
 BattleCommand_poisontarget:

@@ -81,18 +81,14 @@ AnimSeq_PartyMonSwitch:
 	add hl, bc
 	ld a, d
 	and $10 ; bit 4
+	; This works because a>1, meaning zero is always written to [hl]
 	jr z, .load_zero
 	ld a, e
-	and a ; 0?
-	jr z, .load_minus_two
-	dec a ; 1?
-	jr z, .load_minus_one
 .load_zero
-	ld a, 2
-.load_minus_two
-	dec a
-.load_minus_one
-	dec a
+	sub 2
+	jr c, .got_load
+	xor a
+.got_load
 	ld [hl], a
 	ret
 

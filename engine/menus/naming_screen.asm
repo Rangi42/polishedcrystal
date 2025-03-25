@@ -573,7 +573,6 @@ NamingScreen_GetDPad:
 	ld a, $3
 .wrap_around_command_left
 	dec a
-	dec a
 	ld e, a
 	add a
 	add e
