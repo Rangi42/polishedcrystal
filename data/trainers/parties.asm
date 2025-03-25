@@ -3415,208 +3415,141 @@ SECTION "LassGroup", ROMX
 LassGroup:
 
 	def_trainer_class LASS
-	db "Dana@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 19, FLAAFFY
-		db TACKLE, GROWL, THUNDERSHOCK, THUNDER_WAVE
-	dbp 19, PSYDUCK
-		db SCRATCH, LEER, DISABLE, CONFUSION
-	db -1 ; end
+	def_trainer DANA1, "Dana"
+	tr_mon 19, FLAAFFY
+		tr_moves TACKLE, GROWL, THUNDERSHOCK, THUNDER_WAVE
+	tr_mon 19, PSYDUCK
+		tr_moves SCRATCH, LEER, DISABLE, CONFUSION
+	end_trainer
 
-	; LASS
-	db "Dana@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 21, FLAAFFY
-		db TACKLE, GROWL, THUNDERSHOCK, THUNDER_WAVE
-	dbp 21, PSYDUCK
-		db SCRATCH, LEER, DISABLE, CONFUSION
-	db -1 ; end
+	def_trainer DANA2, "Dana"
+	tr_mon 21, FLAAFFY
+		tr_moves TACKLE, GROWL, THUNDERSHOCK, THUNDER_WAVE
+	tr_mon 21, PSYDUCK
+		tr_moves SCRATCH, LEER, DISABLE, CONFUSION
+	end_trainer
 
-	; LASS
-	db "Dana@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 29, PSYDUCK
-		db SCRATCH, DISABLE, CONFUSION, SCREECH
-	dbp 29, FLAAFFY
-		db TACKLE, THUNDERSHOCK, THUNDER_WAVE, THUNDERBOLT
-	db -1 ; end
+	def_trainer DANA3, "Dana"
+	tr_mon 29, PSYDUCK
+		tr_moves SCRATCH, DISABLE, CONFUSION, SCREECH
+	tr_mon 29, FLAAFFY
+		tr_moves TACKLE, THUNDERSHOCK, THUNDER_WAVE, THUNDERBOLT
+	end_trainer
 
-	; LASS
-	db "Dana@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 32, PSYDUCK
-		db SCRATCH, DISABLE, CONFUSION, SCREECH
+	def_trainer DANA4, "Dana"
+	tr_mon 32, PSYDUCK
+		tr_moves SCRATCH, DISABLE, CONFUSION, SCREECH
 if DEF(FAITHFUL)
-	dbp 32, FLAAFFY
-		db TACKLE, THUNDERPUNCH, THUNDER_WAVE, THUNDERBOLT
+	tr_mon 32, FLAAFFY
+		tr_moves TACKLE, THUNDERPUNCH, THUNDER_WAVE, THUNDERBOLT
 else
-	dbp 32, AMPHAROS
-		db TACKLE, THUNDERPUNCH, THUNDER_WAVE, THUNDERBOLT
+	tr_mon 32, AMPHAROS
+		tr_moves TACKLE, THUNDERPUNCH, THUNDER_WAVE, THUNDERBOLT
 endc
-	db -1 ; end
+	end_trainer
 
-	; LASS
-	db "Dana@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, AMPHAROS
-		db SWIFT, THUNDERPUNCH, THUNDER_WAVE, THUNDERBOLT
-	dbp 36, GOLDUCK
-		db DISABLE, SURF, PSYCHIC_M, SCREECH
-	db -1 ; end
+	def_trainer DANA5, "Dana"
+	tr_mon 36, AMPHAROS
+		tr_moves SWIFT, THUNDERPUNCH, THUNDER_WAVE, THUNDERBOLT
+	tr_mon 36, GOLDUCK
+		tr_moves DISABLE, SURF, PSYCHIC_M, SCREECH
+	end_trainer
 
-	; LASS
-	db "Cathy@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 18, SNUBBULL
-		db SCARY_FACE, CHARM, BITE, LICK
-	db -1 ; end
+	def_trainer CATHY, "Cathy"
+	tr_mon 18, SNUBBULL
+		tr_moves SCARY_FACE, CHARM, BITE, LICK
+	end_trainer
 
-	; LASS
-	db "Amanda@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, GLOOM
-	dbp 60, ARBOK
-	dbp 57, GLOOM
-	db -1 ; end
+	def_trainer AMANDA, "Amanda"
+	tr_mon 57, GLOOM
+	tr_mon 60, ARBOK
+	tr_mon 57, GLOOM
+	end_trainer
 
-	; LASS
-	db "Krise@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 14, ODDISH
-	dbp 17, CUBONE
-	db -1 ; end
+	def_trainer KRISE, "Krise"
+	tr_mon 14, ODDISH
+	tr_mon 17, CUBONE
+	end_trainer
 
-	; LASS
-	db "Connie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, AZUMARILL
-	dbp 21, MAGNETON
-	db -1 ; end
+	def_trainer CONNIE, "Connie"
+	tr_mon 20, AZUMARILL
+	tr_mon 21, MAGNETON
+	end_trainer
 
-	; LASS
-	db "Linda@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, BULBASAUR
-	dbp 59, IVYSAUR
-	dbp 61, VENUSAUR
-	db -1 ; end
+	def_trainer LINDA, "Linda"
+	tr_mon 57, BULBASAUR
+	tr_mon 59, IVYSAUR
+	tr_mon 61, VENUSAUR
+	end_trainer
 
-	; LASS
-	db "Laura@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 52, GLOOM
-		db SITRUS_BERRY
-	dbp 54, PIDGEOTTO
-		db NO_ITEM
-	dbp 54, BELLOSSOM
-		db NO_ITEM
-	db -1 ; end
+	def_trainer LAURA, "Laura"
+	tr_mon 52, GLOOM @ SITRUS_BERRY
+	tr_mon 54, PIDGEOTTO
+	tr_mon 54, BELLOSSOM
+	end_trainer
 
-	; LASS
-	db "Shannon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, PARAS
-	dbp 53, PARAS
-	dbp 55, PARASECT
-	db -1 ; end
+	def_trainer SHANNON, "Shannon"
+	tr_mon 53, PARAS
+	tr_mon 53, PARAS
+	tr_mon 55, PARASECT
+	end_trainer
 
-	; LASS
-	db "Michelle@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, LEAFEON
-	dbp 57, TANGELA
-	dbp 58, JUMPLUFF
-	db -1 ; end
+	def_trainer MICHELLE, "Michelle"
+	tr_mon 56, LEAFEON
+	tr_mon 57, TANGELA
+	tr_mon 58, JUMPLUFF
+	end_trainer
 
-	; LASS
-	db "Ellen@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, WIGGLYTUFF
-	dbp 54, GRANBULL
-	db -1 ; end
+	def_trainer ELLEN, "Ellen"
+	tr_mon 52, WIGGLYTUFF
+	tr_mon 54, GRANBULL
+	end_trainer
 
-	; LASS
-	db "Iris@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, WEEPINBELL
-	dbp 59, TANGELA
-	dbp 60, JIGGLYPUFF
-	dbp 61, BELLOSSOM
-	db -1 ; end
+	def_trainer IRIS, "Iris"
+	tr_mon 59, WEEPINBELL
+	tr_mon 59, TANGELA
+	tr_mon 60, JIGGLYPUFF
+	tr_mon 61, BELLOSSOM
+	end_trainer
 
-	; LASS
-	db "Miriam@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, CLEFAIRY
-	dbp 61, CLEFABLE
-	dbp 59, JIGGLYPUFF
-	dbp 61, WIGGLYTUFF
-	db -1 ; end
+	def_trainer MIRIAM, "Miriam"
+	tr_mon 59, CLEFAIRY
+	tr_mon 61, CLEFABLE
+	tr_mon 59, JIGGLYPUFF
+	tr_mon 61, WIGGLYTUFF
+	end_trainer
 
-	; LASS
-	db "Layla@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, CLEFAIRY
-	dbp LEVEL_FROM_BADGES + 5, TOGETIC
-	db -1 ; end
+	def_trainer LAYLA, "Layla"
+	tr_mon LEVEL_FROM_BADGES + 5, CLEFAIRY
+	tr_mon LEVEL_FROM_BADGES + 5, TOGETIC
+	end_trainer
 
-	; LASS
-	db "Rose@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 2, ESPEON, FEMALE
-		db SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 2, TOGETIC, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ROSE, "Rose"
+	tr_mon LEVEL_FROM_BADGES + 2, ESPEON, FEMALE
+		tr_extra SHINY
+	tr_mon LEVEL_FROM_BADGES + 2, TOGETIC, FEMALE
+	end_trainer
 
-	; LASS
-	db "Meadow@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, MEOWTH
-	dbp 53, MEOWTH
-	dbp 55, PERSIAN
-	db -1 ; end
+	def_trainer MEADOW, "Meadow"
+	tr_mon 53, MEOWTH
+	tr_mon 53, MEOWTH
+	tr_mon 55, PERSIAN
+	end_trainer
 
-	; LASS
-	db "Jennifer@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, CLEFAIRY
-	dbp 52, MARILL
-	dbp 54, CLEFABLE
-	dbp 54, AZUMARILL
-	db -1 ; end
+	def_trainer JENNIFER, "Jennifer"
+	tr_mon 52, CLEFAIRY
+	tr_mon 52, MARILL
+	tr_mon 54, CLEFABLE
+	tr_mon 54, AZUMARILL
+	end_trainer
 
-	; LASS
-	db "Gina@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 63, RAICHU
-		db LEFTOVERS
-		db THUNDERBOLT, SURF, THUNDER_WAVE, SUBSTITUTE
-	db -1 ; end
+	def_trainer GINA, "Gina"
+	tr_mon 63, RAICHU @ LEFTOVERS
+		tr_moves THUNDERBOLT, SURF, THUNDER_WAVE, SUBSTITUTE
+	end_trainer
 
-	; LASS
-	def_trainer "Alice"
+
+	def_trainer ALICE, "Alice"
 	tr_mon 60, "VuiVui", EEVEE @ EVIOLITE, FEMALE
 		tr_extra SPE_UP_DEF_DOWN
 		tr_moves RETURN, SHADOW_BALL, PROTECT, ATTRACT
@@ -3628,26 +3561,17 @@ endc
 		tr_moves PSYCHIC_M, HEALINGLIGHT, GROWTH, BITE
 	end_trainer
 
-	; LASS
-	db "Duplica@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp LEVEL_FROM_BADGES + 7, DITTO
-		db METAL_POWDER
-	dbp LEVEL_FROM_BADGES + 8, DITTO
-		db QUICK_POWDER
-	dbp LEVEL_FROM_BADGES + 9, DITTO
-		db FOCUS_SASH
-	db -1 ; end
+	def_trainer DUPLICA, "Duplica"
+	tr_mon LEVEL_FROM_BADGES + 7, DITTO @ METAL_POWDER
+	tr_mon LEVEL_FROM_BADGES + 8, DITTO @ QUICK_POWDER
+	tr_mon LEVEL_FROM_BADGES + 9, DITTO @ FOCUS_SASH
+	end_trainer
 
-	; LASS
-	db "Mavis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, TOGEKISS
-	dbp 53, JOLTEON
-	dbp 52, AMPHAROS
-	db -1 ; end
+	def_trainer MAVIS, "Mavis"
+	tr_mon 55, TOGEKISS
+	tr_mon 53, JOLTEON
+	tr_mon 52, AMPHAROS
+	end_trainer
 
 
 SECTION "BeautyGroup", ROMX
