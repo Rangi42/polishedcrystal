@@ -89,8 +89,7 @@ ENDM
 
 MACRO tr_mon
 	; First, reset all stale data from the previous Trainer's mons.
-	def p = {d:_tr_mons}
-	def _tr_mons += 1
+	def p = _tr_mons
 	redef _tr_pk{d:p}_nickname EQUS ""
 	redef _tr_pk{d:p}_item EQUS "NO_ITEM"
 	def _tr_pk{d:p}_form = NO_FORM
@@ -115,7 +114,7 @@ MACRO tr_mon
 	def _tr_pk{d:p}_level = \1
 
 	; Is the mon nicknamed?
-	if STRIN("\2", "\"") != 0
+	if STRIN("\2", "\"")
 		; The pokémon is nicknamed.
 		def _tr_flags |= TRAINERTYPE_NICKNAME
 		redef _tr_pk{d:p}_nickname EQUS \2
@@ -138,7 +137,7 @@ MACRO tr_mon
 	; Was form/gender specified?
 	if _NARG == 3
 		; Is gender defined?
-		if STRIN("\3", "MALE") == 0 && STRIN("\3", "GENDERLESS") == 0
+		if !STRIN("\3", "MALE") && !STRIN("\3", "GENDERLESS")
 			; Check if we must define gender (TRAINERTYPE_PERSONALITY enabled).
 			if (_tr_flags & TRAINERTYPE_PERSONALITY)
 				fail "No gender specified for current mon."
@@ -162,6 +161,8 @@ MACRO tr_mon
 			redef _tr_curabil EQUS "{_tr_curabil}_PALDEAN"
 		endc
 	endc
+
+	def _tr_mons += 1
 ENDM
 
 MACRO tr_extra
@@ -172,7 +173,7 @@ MACRO tr_extra
 
 	; All of these fields are optional.
 	for i, 1, _NARG + 1
-		if STRCMP("\<i>", "SHINY") == 0
+		if !STRCMP("\<i>", "SHINY")
 			redef _tr_pk{d:p}_extra |= SHINY_MASK
 		elif DEF(NAT_\<i>)
 			redef _tr_pk{d:p}_extra |= NAT_\<i>
@@ -222,9 +223,9 @@ MACRO tr_end
 	db _tr_flags
 
 	; Now for all the mon data.
-	for p, 0, _tr_mons
+	for p, _tr_mons
 		; We can't have implicit moves, for now.
-		if _tr_flags & TRAINERTYPE_MOVES && _tr_pk{d:p}_move1 == NO_MOVE
+		if (_tr_flags & TRAINERTYPE_MOVES) && _tr_pk{d:p}_move1 == NO_MOVE
 			fail "Unspecified move list for _tr_pk{d:p}_species"
 		endc
 
