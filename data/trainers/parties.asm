@@ -1814,198 +1814,129 @@ SECTION "CamperGroup", ROMX
 CamperGroup:
 
 	def_trainer_class CAMPER
-	db "Todd@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 14, PSYDUCK
-	db -1 ; end
+	def_trainer TODD1, "Todd"
+	tr_mon 14, PSYDUCK
+	end_trainer
 
-	; CAMPER
-	db "Todd@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, GEODUDE
-	dbp 17, GEODUDE
-	dbp 23, PSYDUCK
-	db -1 ; end
+	def_trainer TODD2, "Todd"
+	tr_mon 17, GEODUDE
+	tr_mon 17, GEODUDE
+	tr_mon 23, PSYDUCK
+	end_trainer
 
-	; CAMPER
-	db "Todd@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, GEODUDE
-	dbp 23, GEODUDE
-	dbp 26, PSYDUCK
-	db -1 ; end
+	def_trainer TODD3, "Todd"
+	tr_mon 23, GEODUDE
+	tr_mon 23, GEODUDE
+	tr_mon 26, PSYDUCK
+	end_trainer
 
-	; CAMPER
-	db "Todd@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, GRAVELER
-	dbp 30, GRAVELER
-	dbp 30, SLUGMA
-	dbp 32, PSYDUCK
-	db -1 ; end
+	def_trainer TODD4, "Todd"
+	tr_mon 30, GRAVELER
+	tr_mon 30, GRAVELER
+	tr_mon 30, SLUGMA
+	tr_mon 32, PSYDUCK
+	end_trainer
 
-	; CAMPER
-	db "Todd@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 34, GRAVELER
-		db MUD_SLAP, BULLDOZE, SANDSTORM, ROCK_SLIDE
-	dbp 34, GRAVELER
-		db DEFENSE_CURL, ROLLOUT, MAGNITUDE, ROCK_SLIDE
-	dbp 36, MAGCARGO
-		db ROCK_THROW, DEFENSE_CURL, CALM_MIND, FLAMETHROWER
-	dbp 34, GOLDUCK
-		db DISABLE, PSYCHIC_M, SURF, CALM_MIND
-	db -1 ; end
+	def_trainer TODD5, "Todd"
+	tr_mon 34, GRAVELER
+		tr_moves MUD_SLAP, BULLDOZE, SANDSTORM, ROCK_SLIDE
+	tr_mon 34, GRAVELER
+		tr_moves DEFENSE_CURL, ROLLOUT, MAGNITUDE, ROCK_SLIDE
+	tr_mon 36, MAGCARGO
+		tr_moves ROCK_THROW, DEFENSE_CURL, CALM_MIND, FLAMETHROWER
+	tr_mon 34, GOLDUCK
+		tr_moves DISABLE, PSYCHIC_M, SURF, CALM_MIND
+	end_trainer
 
-	; CAMPER
-	db "Roland@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 10, NIDORAN_M
-	db -1 ; end
+	def_trainer ROLAND, "Roland"
+	tr_mon 10, NIDORAN_M
+	end_trainer
 
-	; CAMPER
-	db "Ivan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 11, DIGLETT
-	dbp 11, ZUBAT
-	dbp 15, DIGLETT
-	db -1 ; end
+	def_trainer IVAN, "Ivan"
+	tr_mon 11, DIGLETT
+	tr_mon 11, ZUBAT
+	tr_mon 15, DIGLETT
+	end_trainer
 
-	; CAMPER
-	db "Barry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, NIDOKING
-	db -1 ; end
+	def_trainer BARRY, "Barry"
+	tr_mon 60, NIDOKING
+	end_trainer
 
-	; CAMPER
-	db "Lloyd@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, NIDOKING
-	db -1 ; end
+	def_trainer LLOYD, "Lloyd"
+	tr_mon 56, NIDOKING
+	end_trainer
 
-	; CAMPER
-	db "Dean@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, GOLDUCK
-	dbp 52, SANDSLASH
-	db -1 ; end
+	def_trainer DEAN, "Dean"
+	tr_mon 54, GOLDUCK
+	tr_mon 52, SANDSLASH
+	end_trainer
 
-	; CAMPER
-	db "Sid@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, DUGTRIO
-	dbp 51, PRIMEAPE
-	dbp 51, POLIWRATH
-	db -1 ; end
+	def_trainer SID, "Sid"
+	tr_mon 53, DUGTRIO
+	tr_mon 51, PRIMEAPE
+	tr_mon 51, POLIWRATH
+	end_trainer
 
-	; CAMPER
-	db "Ted@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, MANKEY
-	db -1 ; end
+	def_trainer TED, "Ted"
+	tr_mon 18, MANKEY
+	end_trainer
 
-	; CAMPER
-	db "John@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, GRAVELER
-	dbp 36, GRAVELER
-	dbp 40, GOLBAT
-	dbp 42, GOLDUCK
-	db -1 ; end
+	def_trainer JOHN, "John"
+	tr_mon 33, GRAVELER
+	tr_mon 36, GRAVELER
+	tr_mon 40, GOLBAT
+	tr_mon 42, GOLDUCK
+	end_trainer
 
-	; CAMPER
-	db "Jerry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, RHYDON
-	db -1 ; end
+	def_trainer JERRY, "Jerry"
+	tr_mon 62, RHYDON
+	end_trainer
 
-	; CAMPER
-	db "Spencer@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, SANDSHREW
-	dbp 29, SANDSLASH
-	dbp 30, GOLBAT
-	db -1 ; end
+	def_trainer SPENCER, "Spencer"
+	tr_mon 28, SANDSHREW
+	tr_mon 29, SANDSLASH
+	tr_mon 30, GOLBAT
+	end_trainer
 
-	; CAMPER
-	db "Quentin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, FEAROW
-	dbp 30, PRIMEAPE
-	dbp 30, TAUROS
-	db -1 ; end
+	def_trainer QUENTIN, "Quentin"
+	tr_mon 30, FEAROW
+	tr_mon 30, PRIMEAPE
+	tr_mon 30, TAUROS
+	end_trainer
 
-	; CAMPER
-	db "Grant@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 1, SUNFLORA
-	dbp LEVEL_FROM_BADGES + 1, MARILL
-	db -1 ; end
+	def_trainer GRANT, "Grant"
+	tr_mon LEVEL_FROM_BADGES + 1, SUNFLORA
+	tr_mon LEVEL_FROM_BADGES + 1, MARILL
+	end_trainer
 
-	; CAMPER
-	db "Craig@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, PIDGEOTTO
-	dbp LEVEL_FROM_BADGES + 5, MANKEY
-	dbp LEVEL_FROM_BADGES + 6, SANDSLASH
-	db -1 ; end
+	def_trainer CRAIG, "Craig"
+	tr_mon LEVEL_FROM_BADGES + 5, PIDGEOTTO
+	tr_mon LEVEL_FROM_BADGES + 5, MANKEY
+	tr_mon LEVEL_FROM_BADGES + 6, SANDSLASH
+	end_trainer
 
-	; CAMPER
-	db "Felix@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, CHARMELEON
-	db -1 ; end
+	def_trainer FELIX, "Felix"
+	tr_mon LEVEL_FROM_BADGES + 8, CHARMELEON
+	end_trainer
 
-	; CAMPER
-	db "Tanner@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, SUDOWOODO
-	db -1 ; end
+	def_trainer TANNER, "Tanner"
+	tr_mon 58, SUDOWOODO
+	end_trainer
 
-	; CAMPER
-	db "Clark@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 56, QUILAVA
-		db "Campfire@"
-	db -1 ; end
+	def_trainer CLARK, "Clark"
+	tr_mon 56, "Campfire", QUILAVA
+	end_trainer
 
-	; CAMPER
-	db "Pedro@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, FURRET
-	db -1 ; end
+	def_trainer PEDRO, "Pedro"
+	tr_mon 62, FURRET
+	end_trainer
 
-	; CAMPER
-	db "Amos@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, DODRIO
-	dbp LEVEL_FROM_BADGES + 7, NIDORINO
-	dbp LEVEL_FROM_BADGES + 7, NIDORINA
-	dbp LEVEL_FROM_BADGES + 9, TAUROS
-	db -1 ; end
+	def_trainer AMOS, "Amos"
+	tr_mon LEVEL_FROM_BADGES + 8, DODRIO
+	tr_mon LEVEL_FROM_BADGES + 7, NIDORINO
+	tr_mon LEVEL_FROM_BADGES + 7, NIDORINA
+	tr_mon LEVEL_FROM_BADGES + 9, TAUROS
+	end_trainer
 
 
 SECTION "PicnickerGroup", ROMX
