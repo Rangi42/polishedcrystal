@@ -1943,389 +1943,256 @@ SECTION "PicnickerGroup", ROMX
 PicnickerGroup:
 
 	def_trainer_class PICNICKER
-	db "Liz@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 10, NIDORAN_F
-	db -1 ; end
+	def_trainer LIZ1, "Liz"
+	tr_mon 10, NIDORAN_F
+	end_trainer
 
-	; PICNICKER
-	db "Liz@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 15, WEEPINBELL
-	dbp 15, NIDORINA
-	db -1 ; end
+	def_trainer LIZ2, "Liz"
+	tr_mon 15, WEEPINBELL
+	tr_mon 15, NIDORINA
+	end_trainer
 
-	; PICNICKER
-	db "Liz@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 19, WEEPINBELL
-	dbp 19, NIDORINO
-	dbp 21, NIDOQUEEN
-	db -1 ; end
+	def_trainer LIZ3, "Liz"
+	tr_mon 19, WEEPINBELL
+	tr_mon 19, NIDORINO
+	tr_mon 21, NIDOQUEEN
+	end_trainer
 
-	; PICNICKER
-	db "Liz@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 24, WEEPINBELL
-	dbp 26, NIDORINO
-	dbp 26, NIDOQUEEN
-	db -1 ; end
+	def_trainer LIZ4, "Liz"
+	tr_mon 24, WEEPINBELL
+	tr_mon 26, NIDORINO
+	tr_mon 26, NIDOQUEEN
+	end_trainer
 
-	; PICNICKER
-	db "Liz@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 30, WEEPINBELL
-		db SLEEP_POWDER, POISONPOWDER, STUN_SPORE, SLUDGE_BOMB
-	dbp 32, NIDOKING
-		db EARTHQUAKE, DOUBLE_KICK, POISON_STING, IRON_TAIL
-	dbp 32, NIDOQUEEN
-		db EARTHQUAKE, DOUBLE_KICK, LEER, BODY_SLAM
-	db -1 ; end
+	def_trainer LIZ5, "Liz"
+	tr_mon 30, WEEPINBELL
+		tr_moves SLEEP_POWDER, POISONPOWDER, STUN_SPORE, SLUDGE_BOMB
+	tr_mon 32, NIDOKING
+		tr_moves EARTHQUAKE, DOUBLE_KICK, POISON_STING, IRON_TAIL
+	tr_mon 32, NIDOQUEEN
+		tr_moves EARTHQUAKE, DOUBLE_KICK, LEER, BODY_SLAM
+	end_trainer
 
-	; PICNICKER
-	db "Gina@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 9, SUNKERN
-	dbp 9, HOPPIP
-	dbp 12, BULBASAUR
-	db -1 ; end
+	def_trainer GINA1, "Gina"
+	tr_mon 9, SUNKERN
+	tr_mon 9, HOPPIP
+	tr_mon 12, BULBASAUR
+	end_trainer
 
-	; PICNICKER
-	db "Gina@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 14, SUNKERN
-	dbp 14, HOPPIP
-	dbp 17, IVYSAUR
-	db -1 ; end
+	def_trainer GINA2, "Gina"
+	tr_mon 14, SUNKERN
+	tr_mon 14, HOPPIP
+	tr_mon 17, IVYSAUR
+	end_trainer
 
-	; PICNICKER
-	db "Gina@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, SUNFLORA
-	dbp 27, SKIPLOOM
-	dbp 29, IVYSAUR
-	db -1 ; end
+	def_trainer GINA3, "Gina"
+	tr_mon 26, SUNFLORA
+	tr_mon 27, SKIPLOOM
+	tr_mon 29, IVYSAUR
+	end_trainer
 
-	; PICNICKER
-	db "Gina@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, SUNFLORA
-	dbp 31, JUMPLUFF
-	dbp 32, IVYSAUR
-	db -1 ; end
+	def_trainer GINA4, "Gina"
+	tr_mon 30, SUNFLORA
+	tr_mon 31, JUMPLUFF
+	tr_mon 32, IVYSAUR
+	end_trainer
 
-	; PICNICKER
-	db "Gina@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 33, SUNFLORA
+	def_trainer GINA5, "Gina"
+	tr_mon 33, SUNFLORA
 if DEF(FAITHFUL)
-		db LEECH_SEED, GIGA_DRAIN, SUNNY_DAY, EARTH_POWER
+		tr_moves LEECH_SEED, GIGA_DRAIN, SUNNY_DAY, EARTH_POWER
 else
-		db LEECH_SEED, GIGA_DRAIN, SUNNY_DAY, FLAMETHROWER
+		tr_moves LEECH_SEED, GIGA_DRAIN, SUNNY_DAY, FLAMETHROWER
 endc
-	dbp 34, JUMPLUFF
-		db ACROBATICS, SLEEP_POWDER, STUN_SPORE, MEGA_DRAIN
-	dbp 38, VENUSAUR
-		db SOLAR_BEAM, RAZOR_LEAF, HEADBUTT, MUD_SLAP
-	db -1 ; end
+	tr_mon 34, JUMPLUFF
+		tr_moves ACROBATICS, SLEEP_POWDER, STUN_SPORE, MEGA_DRAIN
+	tr_mon 38, VENUSAUR
+		tr_moves SOLAR_BEAM, RAZOR_LEAF, HEADBUTT, MUD_SLAP
+	end_trainer
 
-	; PICNICKER
-	db "Erin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, PONYTA
-	dbp 16, ODDISH
-	db -1 ; end
+	def_trainer ERIN1, "Erin"
+	tr_mon 18, PONYTA
+	tr_mon 16, ODDISH
+	end_trainer
 
-	; PICNICKER
-	db "Erin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 32, PONYTA
-	dbp 32, GLOOM
-	db -1 ; end
+	def_trainer ERIN2, "Erin"
+	tr_mon 32, PONYTA
+	tr_mon 32, GLOOM
+	end_trainer
 
-	; PICNICKER
-	db "Erin@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, RAPIDASH
-		db DOUBLE_TEAM, STOMP, FIRE_SPIN, SUNNY_DAY
-	dbp 34, RAICHU
-		db SWIFT, MUD_SLAP, QUICK_ATTACK, THUNDERBOLT
-	dbp 36, VILEPLUME
-		db SLEEP_POWDER, ACID, HEALINGLIGHT, PETAL_DANCE
-	db -1 ; end
+	def_trainer ERIN3, "Erin"
+	tr_mon 36, RAPIDASH
+		tr_moves DOUBLE_TEAM, STOMP, FIRE_SPIN, SUNNY_DAY
+	tr_mon 34, RAICHU
+		tr_moves SWIFT, MUD_SLAP, QUICK_ATTACK, THUNDERBOLT
+	tr_mon 36, VILEPLUME
+		tr_moves SLEEP_POWDER, ACID, HEALINGLIGHT, PETAL_DANCE
+	end_trainer
 
-	; PICNICKER
-	db "Tiffany@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 31, CLEFAIRY
-		db ENCORE, SING, TRI_ATTACK, MINIMIZE
-	db -1 ; end
+	def_trainer TIFFANY1, "Tiffany"
+	tr_mon 31, CLEFAIRY
+		tr_moves ENCORE, SING, TRI_ATTACK, MINIMIZE
+	end_trainer
 
-	; PICNICKER
-	db "Tiffany@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 40, CLEFAIRY
-		db REFLECT, TRI_ATTACK, MINIMIZE, METRONOME
-	db -1 ; end
+	def_trainer TIFFANY2, "Tiffany"
+	tr_mon 40, CLEFAIRY
+		tr_moves REFLECT, TRI_ATTACK, MINIMIZE, METRONOME
+	end_trainer
 
-	; PICNICKER
-	db "Tiffany@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 44, CLEFABLE
-		db METRONOME, ENCORE, HEALINGLIGHT, MINIMIZE
-	db -1 ; end
+	def_trainer TIFFANY3, "Tiffany"
+	tr_mon 44, CLEFABLE
+		tr_moves METRONOME, ENCORE, HEALINGLIGHT, MINIMIZE
+	end_trainer
 
-	; PICNICKER
-	db "Tiffany@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 49, CLEFABLE
-		db HEALINGLIGHT, TRI_ATTACK, MINIMIZE, METRONOME
-	db -1 ; end
+	def_trainer TIFFANY4, "Tiffany"
+	tr_mon 49, CLEFABLE
+		tr_moves HEALINGLIGHT, TRI_ATTACK, MINIMIZE, METRONOME
+	end_trainer
 
-	; PICNICKER
-	db "Kim@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, VULPIX
-	db -1 ; end
+	def_trainer KIM, "Kim"
+	tr_mon 17, VULPIX
+	end_trainer
 
-	; PICNICKER
-	db "Cindy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, NIDOQUEEN
-	db -1 ; end
+	def_trainer CINDY, "Cindy"
+	tr_mon 61, NIDOQUEEN
+	end_trainer
 
-	; PICNICKER
-	db "Hope@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, FLAAFFY
-	db -1 ; end
+	def_trainer HOPE, "Hope"
+	tr_mon 62, FLAAFFY
+	end_trainer
 
-	; PICNICKER
-	db "Sharon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 50, FURRET
-	dbp 52, RAPIDASH
-	db -1 ; end
+	def_trainer SHARON, "Sharon"
+	tr_mon 50, FURRET
+	tr_mon 52, RAPIDASH
+	end_trainer
 
-	; PICNICKER
-	db "Debra@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 50, SEAKING
-	db -1 ; end
+	def_trainer DEBRA, "Debra"
+	tr_mon 50, SEAKING
+	end_trainer
 
-	; PICNICKER
-	db "Heidi@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, JUMPLUFF
-	dbp 53, JUMPLUFF
-	db -1 ; end
+	def_trainer HEIDI, "Heidi"
+	tr_mon 53, JUMPLUFF
+	tr_mon 53, JUMPLUFF
+	end_trainer
 
-	; PICNICKER
-	db "Edna@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 51, NIDORINA
-	dbp 55, RAICHU
-	db -1 ; end
+	def_trainer EDNA, "Edna"
+	tr_mon 51, NIDORINA
+	tr_mon 55, RAICHU
+	end_trainer
 
-	; PICNICKER
-	db "Tanya@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, EXEGGUTOR
-	db -1 ; end
+	def_trainer TANYA, "Tanya"
+	tr_mon 61, EXEGGUTOR
+	end_trainer
 
-	; PICNICKER
-	db "Lily@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, NIDORINA
-	dbp LEVEL_FROM_BADGES + 2, BELLSPROUT
-	dbp LEVEL_FROM_BADGES + 6, WEEPINBELL
-	db -1 ; end
+	def_trainer LILY, "Lily"
+	tr_mon LEVEL_FROM_BADGES + 4, NIDORINA
+	tr_mon LEVEL_FROM_BADGES + 2, BELLSPROUT
+	tr_mon LEVEL_FROM_BADGES + 6, WEEPINBELL
+	end_trainer
 
-	; PICNICKER
-	db "Piper@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, HYPNO
-	db -1 ; end
+	def_trainer PIPER, "Piper"
+	tr_mon 55, HYPNO
+	end_trainer
 
-	; PICNICKER
-	db "Ginger@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, MUNCHLAX
-	db -1 ; end
+	def_trainer GINGER, "Ginger"
+	tr_mon 54, MUNCHLAX
+	end_trainer
 
-	; PICNICKER
-	db "Cheyenne@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, RAICHU
-	db -1 ; end
+	def_trainer CHEYENNE, "Cheyenne"
+	tr_mon 62, RAICHU
+	end_trainer
 
-	; PICNICKER
-	db "Adrian@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, PARASECT
-	db -1 ; end
+	def_trainer ADRIAN, "Adrian"
+	tr_mon 62, PARASECT
+	end_trainer
 
-	; PICNICKER
-	db "Zane@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, JOLTEON
-	dbp 53, RAICHU
-	dbp 55, ELECTIVIRE
-	db -1 ; end
+	def_trainer ZANE, "Zane"
+	tr_mon 54, JOLTEON
+	tr_mon 53, RAICHU
+	tr_mon 55, ELECTIVIRE
+	end_trainer
 
 SECTION "TwinsGroup", ROMX
 TwinsGroup:
 
 	def_trainer_class TWINS
-	db "Amy & Mimi@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 13, SPINARAK
-	dbp 13, LEDYBA
-	db -1 ; end
+	def_trainer AMYANDMIMI1, "Amy & Mimi"
+	tr_mon 13, SPINARAK
+	tr_mon 13, LEDYBA
+	end_trainer
 
-	; TWINS
-	db "Amy & Mimi@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 10, LEDYBA
-	dbp 10, SPINARAK
-	db -1 ; end
+	def_trainer AMYANDMIMI2, "Amy & Mimi"
+	tr_mon 10, LEDYBA
+	tr_mon 10, SPINARAK
+	end_trainer
 
-	; TWINS
-	db "Tori & Til@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 16, MARILL
-		db DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH
-	dbp 16, MAREEP
-		db GROWL, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
-	db -1 ; end
+	def_trainer ANNANDANNE1, "Tori & Til"
+	tr_mon 16, MARILL
+		tr_moves DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH
+	tr_mon 16, MAREEP
+		tr_moves GROWL, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
+	end_trainer
 
-	; TWINS
-	db "Tori & Til@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 16, MAREEP
-		db GROWL, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
-	dbp 16, MARILL
-		db DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH
-	db -1 ; end
+	def_trainer ANNANDANNE2, "Tori & Til"
+	tr_mon 16, MAREEP
+		tr_moves GROWL, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
+	tr_mon 16, MARILL
+		tr_moves DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH
+	end_trainer
 
-	; TWINS
-	db "Lo & Zoe@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, VICTREEBEL
-	dbp 59, VILEPLUME
-	db -1 ; end
+	def_trainer JOANDZOE1, "Lo & Zoe"
+	tr_mon 59, VICTREEBEL
+	tr_mon 59, VILEPLUME
+	end_trainer
 
-	; TWINS
-	db "Lo & Zoe@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, VILEPLUME
-	dbp 59, VICTREEBEL
-	db -1 ; end
+	def_trainer JOANDZOE2, "Lo & Zoe"
+	tr_mon 59, VILEPLUME
+	tr_mon 59, VICTREEBEL
+	end_trainer
 
-	; TWINS
-	db "Meg & Peg@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, TEDDIURSA
-	dbp 45, PHANPY
-	db -1 ; end
+	def_trainer MEGANDPEG1, "Meg & Peg"
+	tr_mon 45, TEDDIURSA
+	tr_mon 45, PHANPY
+	end_trainer
 
-	; TWINS
-	db "Meg & Peg@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, PHANPY
-	dbp 45, TEDDIURSA
-	db -1 ; end
+	def_trainer MEGANDPEG2, "Meg & Peg"
+	tr_mon 45, PHANPY
+	tr_mon 45, TEDDIURSA
+	end_trainer
 
-	; TWINS
-	db "Lea & Pia@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 38, DRATINI
-		db THUNDER_WAVE, DRAGON_PULSE, FLAMETHROWER, HEADBUTT
-	dbp 38, DRATINI
-		db THUNDER_WAVE, DRAGON_PULSE, ICE_BEAM, HEADBUTT
-	db -1 ; end
+	def_trainer LEAANDPIA1, "Lea & Pia"
+	tr_mon 38, DRATINI
+		tr_moves THUNDER_WAVE, DRAGON_PULSE, FLAMETHROWER, HEADBUTT
+	tr_mon 38, DRATINI
+		tr_moves THUNDER_WAVE, DRAGON_PULSE, ICE_BEAM, HEADBUTT
+	end_trainer
 
-	; TWINS
-	db "Lea & Pia@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 38, DRATINI
-		db THUNDER_WAVE, DRAGON_PULSE, ICE_BEAM, HEADBUTT
-	dbp 38, DRATINI
-		db THUNDER_WAVE, DRAGON_PULSE, FLAMETHROWER, HEADBUTT
-	db -1 ; end
+	def_trainer LEAANDPIA2, "Lea & Pia"
+	tr_mon 38, DRATINI
+		tr_moves THUNDER_WAVE, DRAGON_PULSE, ICE_BEAM, HEADBUTT
+	tr_mon 38, DRATINI
+		tr_moves THUNDER_WAVE, DRAGON_PULSE, FLAMETHROWER, HEADBUTT
+	end_trainer
 
-	; TWINS
-	db "Day & Dani@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 51, PIKACHU
-	dbp 51, PIKACHU
-	db -1 ; end
+	def_trainer DAYANDDANI1, "Day & Dani"
+	tr_mon 51, PIKACHU
+	tr_mon 51, PIKACHU
+	end_trainer
 
-	; TWINS
-	db "Day & Dani@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 51, PIKACHU
-	dbp 51, PIKACHU
-	db -1 ; end
+	def_trainer DAYANDDANI2, "Day & Dani"
+	tr_mon 51, PIKACHU
+	tr_mon 51, PIKACHU
+	end_trainer
 
-	; TWINS
-	db "Kay & Tia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, QUAGSIRE
-	dbp 56, CLODSIRE
-	db -1 ; end
+	def_trainer KAYANDTIA1, "Kay & Tia"
+	tr_mon 56, QUAGSIRE
+	tr_mon 56, CLODSIRE
+	end_trainer
 
-	; TWINS
-	db "Kay & Tia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, CLODSIRE
-	dbp 56, QUAGSIRE
-	db -1 ; end
+	def_trainer KAYANDTIA2, "Kay & Tia"
+	tr_mon 56, CLODSIRE
+	tr_mon 56, QUAGSIRE
+	end_trainer
 
 
 SECTION "FisherGroup", ROMX
