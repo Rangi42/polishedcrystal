@@ -2805,277 +2805,174 @@ GruntMGroup:
 
 	; unused
 	def_trainer_class GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	db -1 ; end
+	def_trainer 1, "Grunt"
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 8, RATTATA
-	dbp 10, ZUBAT
-	dbp 10, GASTLY
-	db -1 ; end
+	def_trainer 2, "Grunt"
+	tr_mon 8, RATTATA
+	tr_mon 10, ZUBAT
+	tr_mon 10, GASTLY
+	end_trainer
 
-	; GRUNTM
-	def_trainer "Grunt"
+
+	def_trainer 3, "Grunt"
 	tr_mon 33, RATICATE, MALE | ALOLAN_FORM
 		tr_extra GLUTTONY
 	tr_mon 33, SNEASEL, MALE
 	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 32, GRIMER, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 33, HOUNDOUR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 34, MUK, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 4, "Grunt"
+	tr_mon 32, GRIMER, MALE
+	tr_mon 33, HOUNDOUR, MALE
+	tr_mon 34, MUK, MALE | ALOLAN_FORM
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 31, RATTATA, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 33, HOUNDOUR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 32, RATICATE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 32, RATICATE, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 33, MEOWTH, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 5, "Grunt"
+	tr_mon 31, RATTATA, MALE
+	tr_mon 33, HOUNDOUR, MALE
+	tr_mon 32, RATICATE, MALE
+	tr_mon 32, RATICATE, MALE | ALOLAN_FORM
+	tr_mon 33, MEOWTH, MALE
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 34, GOLBAT
-	dbp 34, VENOMOTH
-	db -1 ; end
+	def_trainer 6, "Grunt"
+	tr_mon 34, GOLBAT
+	tr_mon 34, VENOMOTH
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, KOFFING
-	dbp 33, GRIMER
-	dbp 34, GOLBAT
-	dbp 34, RATICATE
-	db -1 ; end
+	def_trainer 7, "Grunt"
+	tr_mon 33, KOFFING
+	tr_mon 33, GRIMER
+	tr_mon 34, GOLBAT
+	tr_mon 34, RATICATE
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, WEEZING
-	db -1 ; end
+	def_trainer 8, "Grunt"
+	tr_mon 36, WEEZING
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, RATICATE
-	dbp 36, WEEZING
-	db -1 ; end
+	def_trainer 9, "Grunt"
+	tr_mon 35, RATICATE
+	tr_mon 36, WEEZING
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 32, ZUBAT
-	dbp 35, GOLBAT
-	dbp 33, MUK
-	db -1 ; end
+	def_trainer 10, "Grunt"
+	tr_mon 32, ZUBAT
+	tr_mon 35, GOLBAT
+	tr_mon 33, MUK
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 34, MUK
-	dbp 35, HAUNTER
-	dbp 36, RATICATE
-	db -1 ; end
+	def_trainer 11, "Grunt"
+	tr_mon 34, MUK
+	tr_mon 35, HAUNTER
+	tr_mon 36, RATICATE
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 23, RATICATE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 24, PERSIAN, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 12, "Grunt"
+	tr_mon 23, RATICATE, MALE
+	tr_mon 24, PERSIAN, MALE | ALOLAN_FORM
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, RATICATE
-	db -1 ; end
+	def_trainer 13, "Grunt"
+	tr_mon 37, RATICATE
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, RATICATE
-	dbp 35, GOLBAT
-	db -1 ; end
+	def_trainer 14, "Grunt"
+	tr_mon 35, RATICATE
+	tr_mon 35, GOLBAT
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, MUK
-	dbp 35, WEEZING
-	db -1 ; end
+	def_trainer 15, "Grunt"
+	tr_mon 35, MUK
+	tr_mon 35, WEEZING
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 26, MEOWTH, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 26, GASTLY, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 27, RATICATE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 26, RATTATA, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 16, "Grunt"
+	tr_mon 26, MEOWTH, MALE | ALOLAN_FORM
+	tr_mon 26, GASTLY, MALE
+	tr_mon 27, RATICATE, MALE
+	tr_mon 26, RATTATA, MALE | ALOLAN_FORM
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 32, GOLBAT
-	db -1 ; end
+	def_trainer 17, "Grunt"
+	tr_mon 32, GOLBAT
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 27, HOUNDOUR
-	dbp 28, GOLBAT
-	dbp 28, RATICATE
-	db -1 ; end
+	def_trainer 18, "Grunt"
+	tr_mon 27, HOUNDOUR
+	tr_mon 28, GOLBAT
+	tr_mon 28, RATICATE
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, VENONAT
-	dbp 28, VENOMOTH
-	db -1 ; end
+	def_trainer 19, "Grunt"
+	tr_mon 28, VENONAT
+	tr_mon 28, VENOMOTH
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, ZUBAT
-	dbp 27, GRIMER
-	dbp 28, MEOWTH
-	db -1 ; end
+	def_trainer 20, "Grunt"
+	tr_mon 26, ZUBAT
+	tr_mon 27, GRIMER
+	tr_mon 28, MEOWTH
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, DROWZEE
-	dbp 27, ZUBAT
-	dbp 28, HAUNTER
-	db -1 ; end
+	def_trainer 21, "Grunt"
+	tr_mon 26, DROWZEE
+	tr_mon 27, ZUBAT
+	tr_mon 28, HAUNTER
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, GOLBAT
-	dbp 23, HAUNTER
-	dbp 23, GOLBAT
-	db -1 ; end
+	def_trainer 22, "Grunt"
+	tr_mon 23, GOLBAT
+	tr_mon 23, HAUNTER
+	tr_mon 23, GOLBAT
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, KOFFING
-	dbp 25, HOUNDOUR
-	dbp 23, TENTACOOL
-	db -1 ; end
+	def_trainer 23, "Grunt"
+	tr_mon 23, KOFFING
+	tr_mon 25, HOUNDOUR
+	tr_mon 23, TENTACOOL
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, HAUNTER
-	dbp 36, WEEZING
-	db -1 ; end
+	def_trainer 24, "Grunt"
+	tr_mon 37, HAUNTER
+	tr_mon 36, WEEZING
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, TENTACRUEL
-	dbp 35, MUK
-	db -1 ; end
+	def_trainer 25, "Grunt"
+	tr_mon 36, TENTACRUEL
+	tr_mon 35, MUK
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, ZUBAT
-	dbp 24, RATICATE
-	dbp 25, MURKROW
-	db -1 ; end
+	def_trainer 26, "Grunt"
+	tr_mon 23, ZUBAT
+	tr_mon 24, RATICATE
+	tr_mon 25, MURKROW
+	end_trainer
 
 	; unused
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	db -1 ; end
+	def_trainer 27, "Grunt"
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, RATICATE
-	db -1 ; end
+	def_trainer 28, "Grunt"
+	tr_mon 33, RATICATE
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 10, RATTATA
-	dbp 10, MEOWTH
-	db -1 ; end
+	def_trainer 29, "Grunt"
+	tr_mon 10, RATTATA
+	tr_mon 10, MEOWTH
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 25, GOLBAT
-	dbp 25, GOLBAT
-	dbp 30, ARBOK
-	db -1 ; end
+	def_trainer 30, "Grunt"
+	tr_mon 25, GOLBAT
+	tr_mon 25, GOLBAT
+	tr_mon 30, ARBOK
+	end_trainer
 
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 51, GOLBAT
-	dbp 52, WEEZING
-	dbp 51, MUK
-	db -1 ; end
+	def_trainer 31, "Grunt"
+	tr_mon 51, GOLBAT
+	tr_mon 52, WEEZING
+	tr_mon 51, MUK
+	end_trainer
 
 
 SECTION "GruntFGroup", ROMX
