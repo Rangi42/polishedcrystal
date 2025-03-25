@@ -3093,80 +3093,43 @@ SECTION "PokefanFGroup", ROMX
 PokefanFGroup:
 
 	def_trainer_class POKEFANF
-	db "Beverly@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 16, SNUBBULL
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer BEVERLY1, "Beverly"
+	tr_mon 16, SNUBBULL @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Beverly@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 18, SNUBBULL
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer BEVERLY2, "Beverly"
+	tr_mon 18, SNUBBULL @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Beverly@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 30, GRANBULL
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer BEVERLY3, "Beverly"
+	tr_mon 30, GRANBULL @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Ruth@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 20, PIKACHU
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer RUTH, "Ruth"
+	tr_mon 20, PIKACHU @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Georgia@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 44, SENTRET
-		db ORAN_BERRY
-	dbp 44, SENTRET
-		db ORAN_BERRY
-	dbp 44, SENTRET
-		db ORAN_BERRY
-	dbp 46, FURRET
-		db SITRUS_BERRY
-	dbp 44, SENTRET
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer GEORGIA, "Georgia"
+	tr_mon 44, SENTRET @ ORAN_BERRY
+	tr_mon 44, SENTRET @ ORAN_BERRY
+	tr_mon 44, SENTRET @ ORAN_BERRY
+	tr_mon 46, FURRET @ SITRUS_BERRY
+	tr_mon 44, SENTRET @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Jaime@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 16, MEOWTH
-		db ORAN_BERRY
-	db -1 ; end
+	def_trainer JAIME, "Jaime"
+	tr_mon 16, MEOWTH @ ORAN_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Boone@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 57, PERSIAN
-		db SITRUS_BERRY
-	dbp 55, WIGGLYTUFF
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer BOONE, "Boone"
+	tr_mon 57, PERSIAN @ SITRUS_BERRY
+	tr_mon 55, WIGGLYTUFF @ SITRUS_BERRY
+	end_trainer
 
-	; POKEFANF
-	db "Eleanor@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 57, GRANBULL
-		db SITRUS_BERRY
-	dbp 55, CLEFABLE
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer ELEANOR, "Eleanor"
+	tr_mon 57, GRANBULL @ SITRUS_BERRY
+	tr_mon 55, CLEFABLE @ SITRUS_BERRY
+	end_trainer
 
 
 SECTION "OfficerMGroup", ROMX
