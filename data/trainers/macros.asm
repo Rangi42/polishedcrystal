@@ -275,7 +275,5 @@ MACRO end_trainer
 			endr
 		endc
 	endr
-
-	def _tr_mons = 0
 	db -1
 ENDM

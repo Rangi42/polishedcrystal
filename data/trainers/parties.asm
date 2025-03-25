@@ -7173,8 +7173,8 @@ endc
 		tr_moves SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, SCREECH
 	end_trainer
 
-	; Inver's Pokémon are defined elsewhere.
-	def_trainer_class INVER
+
+INCLUDE "data/trainers/psychic_inver.asm"
 
 
 SECTION "CherylGroup", ROMX
