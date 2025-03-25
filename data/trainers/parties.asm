@@ -104,7 +104,7 @@ FalknerGroup:
 	def_trainer 1, "Falkner"
 	tr_mon 11, PIDGEY
 		tr_evs 32 HP
-		tr_moves TACKLE, GUST, MUD_SLAP, NO_MOVE
+		tr_moves TACKLE, GUST, MUD_SLAP
 	tr_mon 11, HOOTHOOT
 		tr_evs 32 HP
 		tr_moves TACKLE, HYPNOSIS, PECK, CONFUSION
@@ -3246,7 +3246,7 @@ PokemaniacGroup:
 
 	def_trainer ISSAC, "Issac"
 	tr_mon 15, LICKITUNG
-		tr_moves LICK, SUPERSONIC, CUT, NO_MOVE
+		tr_moves LICK, SUPERSONIC, CUT
 	end_trainer
 
 	def_trainer DONALD, "Donald"
@@ -4636,7 +4636,7 @@ BreederGroup:
 	tr_mon 28, MUNCHLAX @ EVIOLITE
 		tr_moves METRONOME, BODY_SLAM, SCREECH, GUNK_SHOT
 	tr_mon 29, DITTO @ METAL_POWDER
-		tr_moves TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
+		tr_moves TRANSFORM
 	end_trainer
 
 	def_trainer CARLENE, "Carlene"
@@ -4646,7 +4646,7 @@ BreederGroup:
 		tr_moves SPORE, SWORDS_DANCE, BODY_SLAM, EARTHQUAKE
 	tr_mon 62, DITTO @ METAL_POWDER, FEMALE
 		tr_extra SHINY
-		tr_moves TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
+		tr_moves TRANSFORM
 	end_trainer
 
 	def_trainer SOPHIE, "Sophie"
