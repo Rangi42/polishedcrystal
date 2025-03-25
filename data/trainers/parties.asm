@@ -1431,173 +1431,115 @@ Lyra1Group:
 	tr_mon 5, "Cinder", CYNDAQUIL
 	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 5, TOTODILE
-		db "Toto@"
-	db -1 ; end
+	def_trainer LYRA1_3, "Lyra"
+	tr_mon 5, "Toto", TOTODILE
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp 16, PIDGEY
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 Spe
-		db TACKLE, GUST, MUD_SLAP, QUICK_ATTACK ; default for level
-	dbp 17, MARILL
-		db NO_ITEM, "@"
-		ev_spread 72 Atk
-		db DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH ; default for level
-	dbp 15, MAREEP
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 SAt
-		db THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP, SPARK ; default for level
-	dbp 18, BAYLEEF
-		db ORAN_BERRY, "Chicory@"
-		ev_spread 72 HP
-		db RAZOR_LEAF, POISONPOWDER, HEALINGLIGHT, REFLECT ; No Light Screen
-	db -1 ; end
+	def_trainer LYRA1_4, "Lyra"
+	tr_mon 16, PIDGEY
+		tr_evs 36 HP, 36 Spe
+		tr_moves TACKLE, GUST, MUD_SLAP, QUICK_ATTACK ; default for level
+	tr_mon 17, MARILL
+		tr_evs 72 Atk
+		tr_moves DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH ; default for level
+	tr_mon 15, MAREEP
+		tr_evs 36 HP, 36 SAt
+		tr_moves THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP, SPARK ; default for level
+	tr_mon 18, "Chicory", BAYLEEF @ ORAN_BERRY
+		tr_evs 72 HP
+		tr_moves RAZOR_LEAF, POISONPOWDER, HEALINGLIGHT, REFLECT ; No Light Screen
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 16, PIDGEY
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 Spe
-	dbp 17, SUNKERN
-		db NO_ITEM, "@"
-		ev_spread 36 SAt, 36 Spe
-	dbp 15, MAREEP
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 SAt
-	dbp 18, QUILAVA
-		db ORAN_BERRY, "Cinder@"
-		ev_spread 72 Spe
-	db -1 ; end
+	def_trainer LYRA1_5, "Lyra"
+	tr_mon 16, PIDGEY
+		tr_evs 36 HP, 36 Spe
+	tr_mon 17, SUNKERN
+		tr_evs 36 SAt, 36 Spe
+	tr_mon 15, MAREEP
+		tr_evs 36 HP, 36 SAt
+	tr_mon 18, "Cinder", QUILAVA @ ORAN_BERRY
+		tr_evs 72 Spe
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 16, PIDGEY
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 Spe
-	dbp 17, GROWLITHE
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 Atk
-	dbp 15, MAREEP
-		db NO_ITEM, "@"
-		ev_spread 36 HP, 36 SAt
-	dbp 18, CROCONAW
-		db ORAN_BERRY, "Toto@"
-		ev_spread 72 Atk
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 16, PIDGEY
+		tr_evs 36 HP, 36 Spe
+	tr_mon 17, GROWLITHE
+		tr_evs 36 HP, 36 Atk
+	tr_mon 15, MAREEP
+		tr_evs 36 HP, 36 SAt
+	tr_mon 18, "Toto", CROCONAW @ ORAN_BERRY
+		tr_evs 72 Atk
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 33, PIDGEOTTO
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 Spe
-	dbp 34, GROWLITHE
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 Atk
-	dbp 34, AZUMARILL
-		db NO_ITEM, "@"
-		ev_spread 200 Atk
-	dbp 32, FLAAFFY
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 SAt
-	dbp 37, BAYLEEF
-		db ORAN_BERRY, "Chicory@"
-		ev_spread 200 HP
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 33, PIDGEOTTO
+		tr_evs 100 HP, 100 Spe
+	tr_mon 34, GROWLITHE
+		tr_evs 100 HP, 100 Atk
+	tr_mon 34, AZUMARILL
+		tr_evs 200 Atk
+	tr_mon 32, FLAAFFY
+		tr_evs 100 HP, 100 SAt
+	tr_mon 37, "Chicory", BAYLEEF @ ORAN_BERRY
+		tr_evs 200 HP
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 33, PIDGEOTTO
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 Spe
-	dbp 34, SUNFLORA
-		db NO_ITEM, "@"
-		ev_spread 100 SAt, 100 Spe
-	dbp 34, AZUMARILL
-		db NO_ITEM, "@"
-		ev_spread 200 Atk
-	dbp 32, FLAAFFY
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 SAt
-	dbp 37, QUILAVA
-		db ORAN_BERRY, "Cinder@"
-		ev_spread 200 Spe
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 33, PIDGEOTTO
+		tr_evs 100 HP, 100 Spe
+	tr_mon 34, SUNFLORA
+		tr_evs 100 SAt, 100 Spe
+	tr_mon 34, AZUMARILL
+		tr_evs 200 Atk
+	tr_mon 32, FLAAFFY
+		tr_evs 100 HP, 100 SAt
+	tr_mon 37, "Cinder", QUILAVA @ ORAN_BERRY
+		tr_evs 200 Spe
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 33, PIDGEOTTO
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 Spe
-	dbp 34, SUNFLORA
-		db NO_ITEM, "@"
-		ev_spread 100 SAt, 100 Spe
-	dbp 34, GROWLITHE
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 Atk
-	dbp 32, FLAAFFY
-		db NO_ITEM, "@"
-		ev_spread 100 HP, 100 SAt
-	dbp 37, CROCONAW
-		db ORAN_BERRY, "Toto@"
-		ev_spread 200 Atk
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 33, PIDGEOTTO
+		tr_evs 100 HP, 100 Spe
+	tr_mon 34, SUNFLORA
+		tr_evs 100 SAt, 100 Spe
+	tr_mon 34, GROWLITHE
+		tr_evs 100 HP, 100 Atk
+	tr_mon 32, FLAAFFY
+		tr_evs 100 HP, 100 SAt
+	tr_mon 37, "Toto", CROCONAW @ ORAN_BERRY
+		tr_evs 200 Atk
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 44, PIDGEOT
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 Spe
-	dbp 43, GIRAFARIG
-		db NO_ITEM, "@"
-		ev_spread 132 Atk, 132 Spe
-	dbp 45, ARCANINE
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 Atk
-	dbp 45, AZUMARILL
-		db NO_ITEM, "@"
-		ev_spread 252 Atk, 12 Spe
-	dbp 46, AMPHAROS
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 SAt
-	dbp 47, MEGANIUM
-		db SITRUS_BERRY, "Chicory@"
-		ev_spread 252 HP, 12 SAt
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 44, PIDGEOT
+		tr_evs 132 HP, 132 Spe
+	tr_mon 43, GIRAFARIG
+		tr_evs 132 Atk, 132 Spe
+	tr_mon 45, ARCANINE
+		tr_evs 132 HP, 132 Atk
+	tr_mon 45, AZUMARILL
+		tr_evs 252 Atk, 12 Spe
+	tr_mon 46, AMPHAROS
+		tr_evs 132 HP, 132 SAt
+	tr_mon 47, "Chicory", MEGANIUM @ SITRUS_BERRY
+		tr_evs 252 HP, 12 SAt
+	end_trainer
 
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 44, PIDGEOT
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 Spe
-	dbp 43, GIRAFARIG
-		db NO_ITEM, "@"
-		ev_spread 132 Atk, 132 Spe
-	dbp 45, SUNFLORA
-		db NO_ITEM, "@"
-		ev_spread 132 SAt, 132 Spe
-	dbp 45, AZUMARILL
-		db NO_ITEM, "@"
-		ev_spread 252 Atk, 12 Spe
-	dbp 46, AMPHAROS
-		db NO_ITEM, "@"
-		ev_spread 132 HP, 132 SAt
-	dbp 47, TYPHLOSION
-		db SITRUS_BERRY, "Cinder@"
-		ev_spread 12 Atk, 252 Spe
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 44, PIDGEOT
+		tr_evs 132 HP, 132 Spe
+	tr_mon 43, GIRAFARIG
+		tr_evs 132 Atk, 132 Spe
+	tr_mon 45, SUNFLORA
+		tr_evs 132 SAt, 132 Spe
+	tr_mon 45, AZUMARILL
+		tr_evs 252 Atk, 12 Spe
+	tr_mon 46, AMPHAROS
+		tr_evs 132 HP, 132 SAt
+	tr_mon 47, "Cinder", TYPHLOSION @ SITRUS_BERRY
+		tr_evs 12 Atk, 252 Spe
+	end_trainer
 
 	def_trainer "Lyra"
 	tr_mon 44, PIDGEOT
