@@ -106,6 +106,8 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RadialMoveOut_VerySlow
 	dw BattleAnimFunction_RadialMoveOut_Fast
 	dw BattleAnimFunction_RadialMoveOut_Spore
+	dw BattleAnimFunction_RadialMoveOut_Chop1
+	dw BattleAnimFunction_RadialMoveOut_Chop2
 	dw BattleAnimFunction_RadialMoveOut_Stats
 	dw BattleAnimFunction_PowerUp
 	dw BattleAnimFunction_Roost
@@ -4285,6 +4287,14 @@ BattleAnimFunction_RadialMoveOut_Spore:
 	lb de, 3, 40
 	jr BattleAnimFunc_DoRadialMoveOut
 
+BattleAnimFunction_RadialMoveOut_Chop1:
+	lb de, 1, 40
+	jr BattleAnimFunc_RadialStep
+
+BattleAnimFunction_RadialMoveOut_Chop2:
+	lb de, 12, 60
+	jr BattleAnimFunc_RadialStep
+
 BattleAnimFunction_RadialMoveOut_Stats:
 	lb de, 6, 80
 	; fallthrough
@@ -4293,6 +4303,8 @@ BattleAnimFunc_DoRadialMoveOut:
 .anon_dw
 	dw .init
 	dw .step
+	dw BattleAnimFunction_RadialMoveOut_Chop1
+	dw BattleAnimFunction_RadialMoveOut_Chop2
 
 .init
 	call BattleAnimFunc_RadialInit
