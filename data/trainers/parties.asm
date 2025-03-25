@@ -4795,7 +4795,7 @@ PokemaniacGroup:
 	db -1 ; end
 
 	; POKEMANIAC
-	db "Luigi@"
+	db "Enzo@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp LEVEL_FROM_BADGES + 8, SHUCKLE

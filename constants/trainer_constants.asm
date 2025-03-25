@@ -400,7 +400,7 @@ DEF CRYS EQU __trainer_class__
 	const ISSAC
 	const DONALD
 	const ZACH
-	const LUIGI
+	const ENZO
 	const MILLER
 	const AIDAN
 
