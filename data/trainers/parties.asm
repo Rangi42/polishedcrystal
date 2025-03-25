@@ -2979,58 +2979,41 @@ SECTION "GruntFGroup", ROMX
 GruntFGroup:
 
 	def_trainer_class GRUNTF
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 10, ZUBAT
-	dbp 12, EKANS
-	db -1 ; end
+	def_trainer 1, "Grunt"
+	tr_mon 10, ZUBAT
+	tr_mon 12, EKANS
+	end_trainer
 
-	; GRUNTF
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, ARBOK
-	db -1 ; end
+	def_trainer 2, "Grunt"
+	tr_mon 35, ARBOK
+	end_trainer
 
-	; GRUNTF
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, UMBREON
-	dbp 35, GLOOM
-	db -1 ; end
+	def_trainer 3, "Grunt"
+	tr_mon 36, UMBREON
+	tr_mon 35, GLOOM
+	end_trainer
 
-	; GRUNTF
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, EKANS
-	dbp 34, ODDISH
-	dbp 35, ARBOK
-	dbp 36, GLOOM
-	db -1 ; end
+	def_trainer 4, "Grunt"
+	tr_mon 33, EKANS
+	tr_mon 34, ODDISH
+	tr_mon 35, ARBOK
+	tr_mon 36, GLOOM
+	end_trainer
 
-	; GRUNTF
-	db "Grunt@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 29, ARBOK
-		db GLARE, SCREECH, ACID, CRUNCH
-	dbp 28, QWILFISH
-		db DEFENSE_CURL, MINIMIZE, WATER_GUN, ROLLOUT
-	dbp 28, GLOOM
-		db GROWTH, STUN_SPORE, SLEEP_POWDER, MEGA_DRAIN
-	db -1 ; end
+	def_trainer 5, "Grunt"
+	tr_mon 29, ARBOK
+		tr_moves GLARE, SCREECH, ACID, CRUNCH
+	tr_mon 28, QWILFISH
+		tr_moves DEFENSE_CURL, MINIMIZE, WATER_GUN, ROLLOUT
+	tr_mon 28, GLOOM
+		tr_moves GROWTH, STUN_SPORE, SLEEP_POWDER, MEGA_DRAIN
+	end_trainer
 
-	; GRUNTF
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 22, EKANS
-	dbp 23, ARBOK
-	dbp 23, GLOOM
-	db -1 ; end
+	def_trainer 6, "Grunt"
+	tr_mon 22, EKANS
+	tr_mon 23, ARBOK
+	tr_mon 23, GLOOM
+	end_trainer
 
 
 SECTION "PokefanMGroup", ROMX
