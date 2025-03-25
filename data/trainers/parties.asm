@@ -1570,41 +1570,23 @@ Lyra2Group:
 	tr_mon 72, "Chicory", MEGANIUM @ SITRUS_BERRY
 	end_trainer
 
-	; LYRA2
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
-	; party
-	dbp 69, PIDGEOT
-		db NO_ITEM, "@"
-	dbp 70, SUNFLORA
-		db NO_ITEM, "@"
-	dbp 70, AZUMARILL
-		db NO_ITEM, "@"
-	dbp 71, AMPHAROS
-		db NO_ITEM, "@"
-	dbp 68, FARIGIRAF
-		db NO_ITEM, "@"
-	dbp 72, TYPHLOSION
-		db SITRUS_BERRY, "Cinder@"
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 69, PIDGEOT
+	tr_mon 70, SUNFLORA
+	tr_mon 70, AZUMARILL
+	tr_mon 71, AMPHAROS
+	tr_mon 68, FARIGIRAF
+	tr_mon 72, "Cinder", TYPHLOSION @ SITRUS_BERRY
+	end_trainer
 
-	; LYRA2
-	db "Lyra@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
-	; party
-	dbp 69, PIDGEOT
-		db NO_ITEM, "@"
-	dbp 70, SUNFLORA
-		db NO_ITEM, "@"
-	dbp 70, ARCANINE
-		db NO_ITEM, "@"
-	dbp 71, AMPHAROS
-		db NO_ITEM, "@"
-	dbp 68, FARIGIRAF
-		db NO_ITEM, "@"
-	dbp 72, FERALIGATR
-		db SITRUS_BERRY, "Toto@"
-	db -1 ; end
+	def_trainer "Lyra"
+	tr_mon 69, PIDGEOT
+	tr_mon 70, SUNFLORA
+	tr_mon 70, ARCANINE
+	tr_mon 71, AMPHAROS
+	tr_mon 68, FARIGIRAF
+	tr_mon 72, "Toto", FERALIGATR @ SITRUS_BERRY
+	end_trainer
 
 
 SECTION "YoungsterGroup", ROMX
