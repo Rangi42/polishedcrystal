@@ -3745,3300 +3745,2239 @@ SECTION "RuinManiacGroup", ROMX
 RuinManiacGroup:
 
 	def_trainer_class RUIN_MANIAC
-	db "Jones@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 8, OMANYTE
-	dbp 8, KABUTO
-	db -1 ; end
+	def_trainer JONES, "Jones"
+	tr_mon 8, OMANYTE
+	tr_mon 8, KABUTO
+	end_trainer
 
-	; RUIN_MANIAC
-	db "Leland@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, DUNSPARCE
-	dbp 25, AERODACTYL
-	db -1 ; end
+	def_trainer LELAND, "Leland"
+	tr_mon 23, DUNSPARCE
+	tr_mon 25, AERODACTYL
+	end_trainer
 
-	; RUIN_MANIAC
-	db "Petry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, OMANYTE
-	dbp 23, KABUTO
-	dbp 25, AERODACTYL
-	db -1 ; end
+	def_trainer PETRY, "Petry"
+	tr_mon 23, OMANYTE
+	tr_mon 23, KABUTO
+	tr_mon 25, AERODACTYL
+	end_trainer
 
-	; RUIN_MANIAC
-	db "Glyn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 25, OMASTAR
-	dbp 25, KABUTOPS
-	db -1 ; end
+	def_trainer GLYN, "Glyn"
+	tr_mon 25, OMASTAR
+	tr_mon 25, KABUTOPS
+	end_trainer
 
-	; RUIN_MANIAC
-	db "Smilte@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, SANDSLASH
-	dbp 54, DUGTRIO
-	dbp 56, AERODACTYL
-	db -1 ; end
+	def_trainer SMILTE, "Smilte"
+	tr_mon 54, SANDSLASH
+	tr_mon 54, DUGTRIO
+	tr_mon 56, AERODACTYL
+	end_trainer
 
 
 SECTION "FirebreatherGroup", ROMX
 FirebreatherGroup:
 
 	def_trainer_class FIREBREATHER
-	db "Otis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, MAGMAR
-	dbp 58, WEEZING
-	dbp 61, MAGMAR
-	db -1 ; end
+	def_trainer OTIS, "Otis"
+	tr_mon 59, MAGMAR
+	tr_mon 58, WEEZING
+	tr_mon 61, MAGMAR
+	end_trainer
 
-	; FIREBREATHER
-	db "Dick@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, CHARMANDER
-	dbp 55, CHARMELEON
-	dbp 57, CHARIZARD
-	db -1 ; end
+	def_trainer DICK, "Dick"
+	tr_mon 53, CHARMANDER
+	tr_mon 55, CHARMELEON
+	tr_mon 57, CHARIZARD
+	end_trainer
 
-	; FIREBREATHER
-	db "Ned@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, KOFFING
-	dbp 17, GROWLITHE
-	dbp 16, KOFFING
-	db -1 ; end
+	def_trainer NED, "Ned"
+	tr_mon 16, KOFFING
+	tr_mon 17, GROWLITHE
+	tr_mon 16, KOFFING
+	end_trainer
 
-	; FIREBREATHER
-	db "Burt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, WEEZING
-	dbp 61, MAGCARGO
-	db -1 ; end
+	def_trainer BURT, "Burt"
+	tr_mon 59, WEEZING
+	tr_mon 61, MAGCARGO
+	end_trainer
 
-	; FIREBREATHER
-	db "Bill@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 8, KOFFING
-	dbp 8, KOFFING
-	db -1 ; end
+	def_trainer BILL, "Bill"
+	tr_mon 8, KOFFING
+	tr_mon 8, KOFFING
+	end_trainer
 
-	; FIREBREATHER
-	db "Walt@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 11, MAGMAR
-	dbp 16, MAGMAR
-	db -1 ; end
+	def_trainer WALT, "Walt"
+	tr_mon 11, MAGMAR
+	tr_mon 16, MAGMAR
+	end_trainer
 
-	; FIREBREATHER
-	db "Ray@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 11, VULPIX
-	db -1 ; end
+	def_trainer RAY, "Ray"
+	tr_mon 11, VULPIX
+	end_trainer
 
-	; FIREBREATHER
-	db "Lyle@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, KOFFING
-	dbp 46, FLAREON
-	dbp 45, WEEZING
-	db -1 ; end
+	def_trainer LYLE, "Lyle"
+	tr_mon 44, KOFFING
+	tr_mon 46, FLAREON
+	tr_mon 45, WEEZING
+	end_trainer
 
-	; FIREBREATHER
-	db "Jay@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, MAGMAR
-	db -1 ; end
+	def_trainer JAY, "Jay"
+	tr_mon 26, MAGMAR
+	end_trainer
 
-	; FIREBREATHER
-	db "Oleg@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, WEEZING
-	db -1 ; end
+	def_trainer OLEG, "Oleg"
+	tr_mon LEVEL_FROM_BADGES + 6, WEEZING
+	end_trainer
 
-	; FIREBREATHER
-	db "Tala@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, WEEZING
-	dbp 62, MAGMORTAR
-	db -1 ; end
+	def_trainer TALA, "Tala"
+	tr_mon 61, WEEZING
+	tr_mon 62, MAGMORTAR
+	end_trainer
 
 
 SECTION "JugglerGroup", ROMX
 JugglerGroup:
 
 	def_trainer_class JUGGLER
-	db "Irwin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 2, VOLTORB
-	dbp 6, VOLTORB
-	dbp 10, VOLTORB
-	dbp 14, VOLTORB
-	db -1 ; end
+	def_trainer IRWIN1, "Irwin"
+	tr_mon 2, VOLTORB
+	tr_mon 6, VOLTORB
+	tr_mon 10, VOLTORB
+	tr_mon 14, VOLTORB
+	end_trainer
 
 ;	; unused
 ;	; JUGGLER
-;	db "Irwin@"
-;	db TRAINERTYPE_NORMAL
+;	def_trainer "Irwin"
+;	need_db_fix TRAINERTYPE_NORMAL
 ;
 ;	; party
-;	dbp 6, VOLTORB
-;	dbp 10, VOLTORB
-;	dbp 14, VOLTORB
-;	dbp 18, VOLTORB
+;	tr_mon 6, VOLTORB
+;	tr_mon 10, VOLTORB
+;	tr_mon 14, VOLTORB
+;	tr_mon 18, VOLTORB
 ;
-;	db -1 ; end
+;	end_trainer
 
 ;	; unused
 ;	; JUGGLER
-;	db "Irwin@"
-;	db TRAINERTYPE_NORMAL
+;	def_trainer "Irwin"
+;	need_db_fix TRAINERTYPE_NORMAL
 ;
 ;	; party
-;	dbp 18, VOLTORB
-;	dbp 22, VOLTORB
-;	dbp 26, VOLTORB
-;	dbp 30, ELECTRODE
+;	tr_mon 18, VOLTORB
+;	tr_mon 22, VOLTORB
+;	tr_mon 26, VOLTORB
+;	tr_mon 30, ELECTRODE
 ;
-;	db -1 ; end
+;	end_trainer
 
 ;	; unused
 ;	; JUGGLER
-;	db "Irwin@"
-;	db TRAINERTYPE_NORMAL
+;	def_trainer "Irwin"
+;	need_db_fix TRAINERTYPE_NORMAL
 ;
 ;	; party
-;	dbp 18, VOLTORB
-;	dbp 22, VOLTORB
-;	dbp 26, VOLTORB
-;	dbp 30, ELECTRODE
+;	tr_mon 18, VOLTORB
+;	tr_mon 22, VOLTORB
+;	tr_mon 26, VOLTORB
+;	tr_mon 30, ELECTRODE
 ;
-;	db -1 ; end
+;	end_trainer
 
-	; JUGGLER
-	db "Fritz@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, MR__MIME
-	dbp 45, MAGMAR
-	dbp 45, MACHOKE
-	db -1 ; end
+	def_trainer FRITZ, "Fritz"
+	tr_mon 45, MR__MIME
+	tr_mon 45, MAGMAR
+	tr_mon 45, MACHOKE
+	end_trainer
 
-	; JUGGLER
-	db "Horton@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, ELECTRODE
-	dbp 53, ELECTRODE
-	dbp 53, ELECTRODE
-	db -1 ; end
+	def_trainer HORTON, "Horton"
+	tr_mon 53, ELECTRODE
+	tr_mon 53, ELECTRODE
+	tr_mon 53, ELECTRODE
+	end_trainer
 
 
 SECTION "SchoolboyGroup", ROMX
 SchoolboyGroup:
 
 	def_trainer_class SCHOOLBOY
-	db "Jack@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 12, ODDISH
-	dbp 15, VOLTORB
-	db -1 ; end
+	def_trainer JACK1, "Jack"
+	tr_mon 12, ODDISH
+	tr_mon 15, VOLTORB
+	end_trainer
 
-	; SCHOOLBOY
-	db "Jack@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 14, ODDISH
-	dbp 17, VOLTORB
-	db -1 ; end
+	def_trainer JACK2, "Jack"
+	tr_mon 14, ODDISH
+	tr_mon 17, VOLTORB
+	end_trainer
 
-	; SCHOOLBOY
-	db "Jack@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, GLOOM
-	dbp 31, ELECTRODE
-	db -1 ; end
+	def_trainer JACK3, "Jack"
+	tr_mon 28, GLOOM
+	tr_mon 31, ELECTRODE
+	end_trainer
 
-	; SCHOOLBOY
-	db "Jack@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, GLOOM
-	dbp 33, GROWLITHE
-	dbp 33, ELECTRODE
-	db -1 ; end
+	def_trainer JACK4, "Jack"
+	tr_mon 30, GLOOM
+	tr_mon 33, GROWLITHE
+	tr_mon 33, ELECTRODE
+	end_trainer
 
-	; SCHOOLBOY
-	db "Jack@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 35, ELECTRODE
-		db SCREECH, SONIC_BOOM, ROLLOUT, LIGHT_SCREEN
-	dbp 35, GROWLITHE
-		db SUNNY_DAY, LEER, TAKE_DOWN, FLAME_CHARGE
-	dbp 37, VILEPLUME
-		db SOLAR_BEAM, SLEEP_POWDER, ACID, HEALINGLIGHT
-	db -1 ; end
+	def_trainer JACK5, "Jack"
+	tr_mon 35, ELECTRODE
+		tr_moves SCREECH, SONIC_BOOM, ROLLOUT, LIGHT_SCREEN
+	tr_mon 35, GROWLITHE
+		tr_moves SUNNY_DAY, LEER, TAKE_DOWN, FLAME_CHARGE
+	tr_mon 37, VILEPLUME
+		tr_moves SOLAR_BEAM, SLEEP_POWDER, ACID, HEALINGLIGHT
+	end_trainer
 
-	; SCHOOLBOY
-	db "Alan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, TANGELA
-	db -1 ; end
+	def_trainer ALAN1, "Alan"
+	tr_mon 17, TANGELA
+	end_trainer
 
-	; SCHOOLBOY
-	db "Alan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, TANGELA
-	dbp 17, YANMA
-	db -1 ; end
+	def_trainer ALAN2, "Alan"
+	tr_mon 17, TANGELA
+	tr_mon 17, YANMA
+	end_trainer
 
-	; SCHOOLBOY
-	db "Alan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, NATU
-	dbp 22, TANGELA
-	dbp 20, QUAGSIRE
-	dbp 25, YANMA
-	db -1 ; end
+	def_trainer ALAN3, "Alan"
+	tr_mon 20, NATU
+	tr_mon 22, TANGELA
+	tr_mon 20, QUAGSIRE
+	tr_mon 25, YANMA
+	end_trainer
 
-	; SCHOOLBOY
-	db "Alan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 27, NATU
-	dbp 27, TANGELA
-	dbp 30, QUAGSIRE
-	dbp 30, YANMA
-	db -1 ; end
+	def_trainer ALAN4, "Alan"
+	tr_mon 27, NATU
+	tr_mon 27, TANGELA
+	tr_mon 30, QUAGSIRE
+	tr_mon 30, YANMA
+	end_trainer
 
-	; SCHOOLBOY
-	db "Alan@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 35, XATU
-		db PECK, NIGHT_SHADE, SWIFT, FUTURE_SIGHT
-	dbp 38, TANGROWTH
-		db ANCIENTPOWER, POISONPOWDER, VINE_WHIP, MEGA_DRAIN
-	dbp 37, YANMA
-		db QUICK_ATTACK, DOUBLE_TEAM, DRAGON_RAGE, WING_ATTACK
-	dbp 35, QUAGSIRE
-		db LEER, HEADBUTT, AMNESIA, EARTHQUAKE
-	db -1 ; end
+	def_trainer ALAN5, "Alan"
+	tr_mon 35, XATU
+		tr_moves PECK, NIGHT_SHADE, SWIFT, FUTURE_SIGHT
+	tr_mon 38, TANGROWTH
+		tr_moves ANCIENTPOWER, POISONPOWDER, VINE_WHIP, MEGA_DRAIN
+	tr_mon 37, YANMA
+		tr_moves QUICK_ATTACK, DOUBLE_TEAM, DRAGON_RAGE, WING_ATTACK
+	tr_mon 35, QUAGSIRE
+		tr_moves LEER, HEADBUTT, AMNESIA, EARTHQUAKE
+	end_trainer
 
-	; SCHOOLBOY
-	db "Chad@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, MR__MIME
-	db -1 ; end
+	def_trainer CHAD1, "Chad"
+	tr_mon 20, MR__MIME
+	end_trainer
 
-	; SCHOOLBOY
-	db "Chad@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, MR__MIME
-	dbp 20, MAGNEMITE
-	db -1 ; end
+	def_trainer CHAD2, "Chad"
+	tr_mon 20, MR__MIME
+	tr_mon 20, MAGNEMITE
+	end_trainer
 
-	; SCHOOLBOY
-	db "Chad@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 27, MR__MIME
-	dbp 31, MAGNETON
-	db -1 ; end
+	def_trainer CHAD3, "Chad"
+	tr_mon 27, MR__MIME
+	tr_mon 31, MAGNETON
+	end_trainer
 
-	; SCHOOLBOY
-	db "Chad@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, MR__MIME
-	dbp 34, MAGNETON
-	db -1 ; end
+	def_trainer CHAD4, "Chad"
+	tr_mon 30, MR__MIME
+	tr_mon 34, MAGNETON
+	end_trainer
 
-	; SCHOOLBOY
-	db "Chad@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 34, MR__MIME
-		db PSYCHIC_M, LIGHT_SCREEN, REFLECT, ENCORE
-	dbp 38, MAGNETON
-		db ZAP_CANNON, THUNDER_WAVE, SUPERSONIC, SWIFT
-	db -1 ; end
+	def_trainer CHAD5, "Chad"
+	tr_mon 34, MR__MIME
+		tr_moves PSYCHIC_M, LIGHT_SCREEN, REFLECT, ENCORE
+	tr_mon 38, MAGNETON
+		tr_moves ZAP_CANNON, THUNDER_WAVE, SUPERSONIC, SWIFT
+	end_trainer
 
-	; SCHOOLBOY
-	db "Kipp@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, VOLTORB
-	dbp 58, VOLTORB
-	dbp 55, MAGNEMITE
-	dbp 58, MAGNETON
-	db -1 ; end
+	def_trainer KIPP, "Kipp"
+	tr_mon 55, VOLTORB
+	tr_mon 58, VOLTORB
+	tr_mon 55, MAGNEMITE
+	tr_mon 58, MAGNETON
+	end_trainer
 
-	; SCHOOLBOY
-	db "Johnny@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
-	; party
-	dbp 18, BELLSPROUT
-		db GOLD_LEAF, "Gold@"
-	dbp 16, SPINARAK
-		db NO_ITEM, "Spin@"
-	dbp 17, RATTATA
-		db ORAN_BERRY, "Rat@"
-	db -1 ; end
+	def_trainer JOHNNY, "Johnny"
+	tr_mon 18, "Gold", BELLSPROUT @ GOLD_LEAF
+	tr_mon 16, "Spin", SPINARAK
+	tr_mon 17, "Rat", RATTATA @ ORAN_BERRY
+	end_trainer
 
-	; SCHOOLBOY
-	db "Danny@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, JYNX
-	dbp 61, ELECTABUZZ
-	dbp 61, MAGMAR
-	db -1 ; end
+	def_trainer DANNY, "Danny"
+	tr_mon 61, JYNX
+	tr_mon 61, ELECTABUZZ
+	tr_mon 61, MAGMAR
+	end_trainer
 
-	; SCHOOLBOY
-	db "Tommy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, XATU
-	dbp 57, ALAKAZAM
-	db -1 ; end
+	def_trainer TOMMY, "Tommy"
+	tr_mon 56, XATU
+	tr_mon 57, ALAKAZAM
+	end_trainer
 
-	; SCHOOLBOY
-	db "Dudley@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 55, ODDISH
-		db SITRUS_BERRY
-	db -1 ; end
+	def_trainer DUDLEY, "Dudley"
+	tr_mon 55, ODDISH @ SITRUS_BERRY
+	end_trainer
 
-	; SCHOOLBOY
-	db "Joe@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 54, TANGROWTH
-		db SITRUS_BERRY
-	dbp 54, VAPOREON
-		db NO_ITEM
-	db -1 ; end
+	def_trainer JOE, "Joe"
+	tr_mon 54, TANGROWTH @ SITRUS_BERRY
+	tr_mon 54, VAPOREON
+	end_trainer
 
-	; SCHOOLBOY
-	db "Billy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, PARAS
-	dbp 59, PARASECT
-	dbp 57, POLIWHIRL
-	dbp 55, DITTO
-	db -1 ; end
+	def_trainer BILLY, "Billy"
+	tr_mon 57, PARAS
+	tr_mon 59, PARASECT
+	tr_mon 57, POLIWHIRL
+	tr_mon 55, DITTO
+	end_trainer
 
-	; SCHOOLBOY
-	db "Nate@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 46, LEDIAN
-	dbp 48, EXEGGUTOR
-	db -1 ; end
+	def_trainer NATE, "Nate"
+	tr_mon 46, LEDIAN
+	tr_mon 48, EXEGGUTOR
+	end_trainer
 
-	; SCHOOLBOY
-	db "Ricky@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, AIPOM
-	dbp 46, DITTO
-	db -1 ; end
+	def_trainer RICKY, "Ricky"
+	tr_mon 44, AIPOM
+	tr_mon 46, DITTO
+	end_trainer
 
-	; SCHOOLBOY
-	db "Sherman@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, FURRET
-	dbp 61, PIDGEOT
-	db -1 ; end
+	def_trainer SHERMAN, "Sherman"
+	tr_mon 59, FURRET
+	tr_mon 61, PIDGEOT
+	end_trainer
 
-	; SCHOOLBOY
-	db "Connor@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, SENTRET
-	db -1 ; end
+	def_trainer SCHOOLBOY_CONNOR, "Connor"
+	tr_mon 59, SENTRET
+	end_trainer
 
-	; SCHOOLBOY
-	db "Torin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, SANDSLASH
-	dbp 55, GOLBAT
-	db -1 ; end
+	def_trainer TORIN, "Torin"
+	tr_mon 58, SANDSLASH
+	tr_mon 55, GOLBAT
+	end_trainer
 
-	; SCHOOLBOY
-	db "Travis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, ODDISH
-	db -1 ; end
+	def_trainer TRAVIS, "Travis"
+	tr_mon 59, ODDISH
+	end_trainer
 
 
 SECTION "SchoolgirlGroup", ROMX
 SchoolgirlGroup:
 
 	def_trainer_class SCHOOLGIRL
-	db "Molly@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 7, TEDDIURSA
-		db "Teddy@"
-	dbp 6, PHANPY
-		db "@"
-	db -1 ; end
+	def_trainer MOLLY, "Molly"
+	tr_mon 7, "Teddy", TEDDIURSA
+	tr_mon 6, PHANPY
+	end_trainer
 
-	; SCHOOLGIRL
-	db "Eliza@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
-	; party
-	dbp 18, ODDISH
-		db SILVER_LEAF, "Silver@"
-	dbp 16, LEDYBA
-		db NO_ITEM, "Lady@"
-	dbp 17, SENTRET
-		db ORAN_BERRY, "Tret@"
-	db -1 ; end
+	def_trainer ELIZA, "Eliza"
+	tr_mon 18, "Silver", ODDISH @ SILVER_LEAF
+	tr_mon 16, "Lady", LEDYBA
+	tr_mon 17, "Tret", SENTRET @ ORAN_BERRY
+	end_trainer
 
-	; SCHOOLGIRL
-	db "Faith@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 57, BELLSPROUT
-		db "@"
-	dbp 58, WEEPINBELL
-		db "@"
-	dbp 59, VICTREEBEL
-		db "Audrey@"
-	db -1 ; end
+	def_trainer FAITH, "Faith"
+	tr_mon 57, BELLSPROUT
+	tr_mon 58, WEEPINBELL
+	tr_mon 59, "Audrey", VICTREEBEL
+	end_trainer
 
-	; SCHOOLGIRL
-	db "Sarah@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp LEVEL_FROM_BADGES + 2, CHARMANDER
-		db "Charmer@"
-	dbp LEVEL_FROM_BADGES + 0, SENTRET
-		db "@"
-	dbp LEVEL_FROM_BADGES + 1, MARILL
-		db "@"
-	db -1 ; end
+	def_trainer SARAH, "Sarah"
+	tr_mon LEVEL_FROM_BADGES + 2, "Charmer", CHARMANDER
+	tr_mon LEVEL_FROM_BADGES + 0, SENTRET
+	tr_mon LEVEL_FROM_BADGES + 1, MARILL
+	end_trainer
 
-	; SCHOOLGIRL
-	db "Isabel@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp LEVEL_FROM_BADGES + 2, SQUIRTLE
-		db "Turtle@"
-	dbp LEVEL_FROM_BADGES + 0, PIDGEY
-		db "@"
-	dbp LEVEL_FROM_BADGES + 1, PIKACHU
-		db "@"
-	db -1 ; end
+	def_trainer ISABEL, "Isabel"
+	tr_mon LEVEL_FROM_BADGES + 2, "Turtle", SQUIRTLE
+	tr_mon LEVEL_FROM_BADGES + 0, PIDGEY
+	tr_mon LEVEL_FROM_BADGES + 1, PIKACHU
+	end_trainer
 
-	; SCHOOLGIRL
-	db "Imogen@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 13, BULBASAUR
-		db "Garlic@"
-	dbp 11, POLIWAG
-		db "@"
-	db -1 ; end
+	def_trainer IMOGEN, "Imogen"
+	tr_mon 13, "Garlic", BULBASAUR
+	tr_mon 11, POLIWAG
+	end_trainer
 
 
 SECTION "PsychicGroup", ROMX
 PsychicGroup:
 
 	def_trainer_class PSYCHIC_T
-	db "Nathan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, GIRAFARIG
-	db -1 ; end
+	def_trainer NATHAN, "Nathan"
+	tr_mon 26, GIRAFARIG
+	end_trainer
 
-	; PSYCHIC_T
-	db "Franklin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, KADABRA
-	dbp 56, GIRAFARIG
-	db -1 ; end
+	def_trainer FRANKLIN, "Franklin"
+	tr_mon 53, KADABRA
+	tr_mon 56, GIRAFARIG
+	end_trainer
 
-	; PSYCHIC_T
-	db "Herman@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, EXEGGCUTE
-	dbp 53, EXEGGCUTE
-	dbp 55, EXEGGUTOR
-	db -1 ; end
+	def_trainer HERMAN, "Herman"
+	tr_mon 53, EXEGGCUTE
+	tr_mon 53, EXEGGCUTE
+	tr_mon 55, EXEGGUTOR
+	end_trainer
 
-	; PSYCHIC_T
-	db "Fidel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, XATU
-	db -1 ; end
+	def_trainer FIDEL, "Fidel"
+	tr_mon 57, XATU
+	end_trainer
 
-	; PSYCHIC_T
-	db "Greg@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 17, DROWZEE
-		db HYPNOSIS, DISABLE, DREAM_EATER, 0
-	db -1 ; end
+	def_trainer GREG, "Greg"
+	tr_mon 17, DROWZEE
+		tr_moves HYPNOSIS, DISABLE, DREAM_EATER
+	end_trainer
 
-	; PSYCHIC_T
-	db "Norman@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 17, SLOWPOKE
-		db TACKLE, GROWL, WATER_GUN, 0
-	dbp 20, SLOWPOKE
-		db CURSE, BODY_SLAM, WATER_GUN, CONFUSION
-	db -1 ; end
+	def_trainer NORMAN, "Norman"
+	tr_mon 17, SLOWPOKE
+		tr_moves TACKLE, GROWL, WATER_GUN
+	tr_mon 20, SLOWPOKE
+		tr_moves CURSE, BODY_SLAM, WATER_GUN, CONFUSION
+	end_trainer
 
-	; PSYCHIC_T
-	db "Mark@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 14, ABRA
-		db TELEPORT, FLASH, 0, 0
-	dbp 14, ABRA
-		db TELEPORT, FLASH, 0, 0
-	dbp 16, KADABRA
-		db TELEPORT, CALM_MIND, CONFUSION, 0
-	db -1 ; end
+	def_trainer MARK, "Mark"
+	tr_mon 14, ABRA
+		tr_moves TELEPORT, FLASH
+	tr_mon 14, ABRA
+		tr_moves TELEPORT, FLASH
+	tr_mon 16, KADABRA
+		tr_moves TELEPORT, CALM_MIND, CONFUSION
+	end_trainer
 
-	; PSYCHIC_T
-	db "Phil@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, KADABRA
-	dbp 35, XATU
-	db -1 ; end
+	def_trainer PHIL, "Phil"
+	tr_mon 36, KADABRA
+	tr_mon 35, XATU
+	end_trainer
 
-	; PSYCHIC_T
-	db "Vernon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, ESPEON
-	db -1 ; end
+	def_trainer RICHARD, "Vernon" ; MISMATCH
+	tr_mon 44, ESPEON
+	end_trainer
 
-	; PSYCHIC_T
-	db "Gilbert@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 38, STARMIE
-	dbp 36, EXEGGCUTE
-	dbp 40, GIRAFARIG
-	db -1 ; end
+	def_trainer GILBERT, "Gilbert"
+	tr_mon 38, STARMIE
+	tr_mon 36, EXEGGCUTE
+	tr_mon 40, GIRAFARIG
+	end_trainer
 
-	; PSYCHIC_T
-	db "Jared@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, MR__MIME
-	dbp 55, EXEGGCUTE
-	dbp 55, EXEGGCUTE
-	db -1 ; end
+	def_trainer JARED, "Jared"
+	tr_mon 53, MR__MIME
+	tr_mon 55, EXEGGCUTE
+	tr_mon 55, EXEGGCUTE
+	end_trainer
 
-	; PSYCHIC_T
-	db "Rodney@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, DROWZEE
-	dbp 47, HYPNO
-	db -1 ; end
+	def_trainer RODNEY, "Rodney"
+	tr_mon 45, DROWZEE
+	tr_mon 47, HYPNO
+	end_trainer
 
-	; PSYCHIC_T
-	db "Leon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, NOCTOWL
-	dbp 55, HYPNO
-	dbp 53, GIRAFARIG
-	db -1 ; end
+	def_trainer LEON, "Leon"
+	tr_mon 54, NOCTOWL
+	tr_mon 55, HYPNO
+	tr_mon 53, GIRAFARIG
+	end_trainer
 
-	; PSYCHIC_T
-	db "Uri@"
-	db TRAINERTYPE_NICKNAME
-	; party
-	dbp 57, KADABRA
-		db "Hocus@"
-	dbp 57, KADABRA
-		db "Pocus@"
-	db -1 ; end
+	def_trainer URI, "Uri"
+	tr_mon 57, "Hocus", KADABRA
+	tr_mon 57, "Pocus", KADABRA
+	end_trainer
 
-	; PSYCHIC_T
-	db "Virgil@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, NATU
-	dbp LEVEL_FROM_BADGES + 6, XATU
-	db -1 ; end
+	def_trainer VIRGIL, "Virgil"
+	tr_mon LEVEL_FROM_BADGES + 4, NATU
+	tr_mon LEVEL_FROM_BADGES + 6, XATU
+	end_trainer
 
 
 SECTION "HexManiacGroup", ROMX
 HexManiacGroup:
 
 	def_trainer_class HEX_MANIAC
-	db "Tamara@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, GASTLY
-	dbp 18, MISDREAVUS
-	db -1 ; end
+	def_trainer TAMARA, "Tamara"
+	tr_mon 16, GASTLY
+	tr_mon 18, MISDREAVUS
+	end_trainer
 
-	; HEX_MANIAC
-	db "Ashley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, HAUNTER
-	dbp LEVEL_FROM_BADGES + 6, MISMAGIUS
-	db -1 ; end
+	def_trainer ASHLEY, "Ashley"
+	tr_mon LEVEL_FROM_BADGES + 5, HAUNTER
+	tr_mon LEVEL_FROM_BADGES + 6, MISMAGIUS
+	end_trainer
 
-	; HEX_MANIAC
-	db "Amy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, MISDREAVUS
-	dbp 56, GENGAR
-	dbp 53, HAUNTER
-	dbp 56, MISMAGIUS
-	db -1 ; end
+	def_trainer AMY, "Amy"
+	tr_mon 53, MISDREAVUS
+	tr_mon 56, GENGAR
+	tr_mon 53, HAUNTER
+	tr_mon 56, MISMAGIUS
+	end_trainer
 
-	; HEX_MANIAC
-	db "Luna@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 54, KADABRA
-		db PSYCHIC_M, SHADOW_BALL, CONFUSE_RAY, FUTURE_SIGHT
-	dbp 56, NINETALES
-		db PSYCHIC_M, SHADOW_BALL, CONFUSE_RAY, FLAMETHROWER
-	db -1 ; end
+	def_trainer LUNA, "Luna"
+	tr_mon 54, KADABRA
+		tr_moves PSYCHIC_M, SHADOW_BALL, CONFUSE_RAY, FUTURE_SIGHT
+	tr_mon 56, NINETALES
+		tr_moves PSYCHIC_M, SHADOW_BALL, CONFUSE_RAY, FLAMETHROWER
+	end_trainer
 
-	; HEX_MANIAC
-	db "Natalie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, DROWZEE
-	dbp 54, DROWZEE
-	dbp 56, HYPNO
-	db -1 ; end
+	def_trainer NATALIE, "Natalie"
+	tr_mon 54, DROWZEE
+	tr_mon 54, DROWZEE
+	tr_mon 56, HYPNO
+	end_trainer
 
-	; HEX_MANIAC
-	db "Vivian@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, HAUNTER
-	dbp 52, HAUNTER
-	dbp 54, HAUNTER
-	dbp 56, ALAKAZAM
-	db -1 ; end
+	def_trainer VIVIAN, "Vivian"
+	tr_mon 54, HAUNTER
+	tr_mon 52, HAUNTER
+	tr_mon 54, HAUNTER
+	tr_mon 56, ALAKAZAM
+	end_trainer
 
-	; HEX_MANIAC
-	db "Esther@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, MISMAGIUS
-	dbp 62, MISMAGIUS
-	db -1 ; end
+	def_trainer ESTHER, "Esther"
+	tr_mon 62, MISMAGIUS
+	tr_mon 62, MISMAGIUS
+	end_trainer
 
-	; HEX_MANIAC
-	db "Matilda@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, DROWZEE
-	dbp LEVEL_FROM_BADGES + 4, MISDREAVUS
-	dbp LEVEL_FROM_BADGES + 5, HYPNO
-	db -1 ; end
+	def_trainer MATILDA, "Matilda"
+	tr_mon LEVEL_FROM_BADGES + 3, DROWZEE
+	tr_mon LEVEL_FROM_BADGES + 4, MISDREAVUS
+	tr_mon LEVEL_FROM_BADGES + 5, HYPNO
+	end_trainer
 
-	; HEX_MANIAC
-	db "Bethany@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, HAUNTER
-	dbp 55, GENGAR
-	dbp 54, MISDREAVUS
-	db -1 ; end
+	def_trainer BETHANY, "Bethany"
+	tr_mon 53, HAUNTER
+	tr_mon 55, GENGAR
+	tr_mon 54, MISDREAVUS
+	end_trainer
 
-	; HEX_MANIAC
-	db "Coryn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, MISMAGIUS
-	dbp 52, ESPEON
-	dbp 55, GENGAR
-	db -1 ; end
+	def_trainer CORYN, "Coryn"
+	tr_mon 53, MISMAGIUS
+	tr_mon 52, ESPEON
+	tr_mon 55, GENGAR
+	end_trainer
+
 
 SECTION "SageGroup", ROMX
 SageGroup:
 
 	def_trainer_class SAGE
-	db "Chow@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 3, BELLSPROUT
-	dbp 3, BELLSPROUT
-	dbp 3, BELLSPROUT
-	db -1 ; end
+	def_trainer CHOW, "Chow"
+	tr_mon 3, BELLSPROUT
+	tr_mon 3, BELLSPROUT
+	tr_mon 3, BELLSPROUT
+	end_trainer
 
-	; SAGE
-	db "Nico@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 3, BELLSPROUT
-	dbp 3, BELLSPROUT
-	dbp 3, HOOTHOOT
-	db -1 ; end
+	def_trainer NICO, "Nico"
+	tr_mon 3, BELLSPROUT
+	tr_mon 3, BELLSPROUT
+	tr_mon 3, HOOTHOOT
+	end_trainer
 
-	; SAGE
-	db "Jin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 7, BELLSPROUT
-	db -1 ; end
+	def_trainer JIN, "Jin"
+	tr_mon 7, BELLSPROUT
+	end_trainer
 
-	; SAGE
-	db "Troy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 7, BELLSPROUT
-	dbp 7, GASTLY
-	db -1 ; end
+	def_trainer TROY, "Troy"
+	tr_mon 7, BELLSPROUT
+	tr_mon 7, GASTLY
+	end_trainer
 
-	; SAGE
-	db "Jeffrey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 22, HAUNTER
-	dbp 21, VULPIX
-	db -1 ; end
+	def_trainer JEFFREY, "Jeffrey"
+	tr_mon 22, HAUNTER
+	tr_mon 21, VULPIX
+	end_trainer
 
-	; SAGE
-	db "Ping@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, GASTLY
-	dbp 17, HOOTHOOT
-	dbp 18, GASTLY
-	dbp 18, NOCTOWL
-	db -1 ; end
+	def_trainer PING, "Ping"
+	tr_mon 17, GASTLY
+	tr_mon 17, HOOTHOOT
+	tr_mon 18, GASTLY
+	tr_mon 18, NOCTOWL
+	end_trainer
 
-	; SAGE
-	db "Edmond@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 3, BELLSPROUT
-	dbp 3, HOOTHOOT
-	dbp 3, BELLSPROUT
-	db -1 ; end
+	def_trainer EDMOND, "Edmond"
+	tr_mon 3, BELLSPROUT
+	tr_mon 3, HOOTHOOT
+	tr_mon 3, BELLSPROUT
+	end_trainer
 
-	; SAGE
-	db "Neal@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 6, BELLSPROUT
-	dbp 6, HOOTHOOT
-	db -1 ; end
+	def_trainer NEAL, "Neal"
+	tr_mon 6, BELLSPROUT
+	tr_mon 6, HOOTHOOT
+	end_trainer
 
 
 SECTION "MediumGroup", ROMX
 MediumGroup:
 
 	def_trainer_class MEDIUM
-	db "Martha@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, GASTLY
-	dbp 20, HAUNTER
-	dbp 20, MISDREAVUS
-	db -1 ; end
+	def_trainer MARTHA, "Martha"
+	tr_mon 18, GASTLY
+	tr_mon 20, HAUNTER
+	tr_mon 20, MISDREAVUS
+	end_trainer
 
-	; MEDIUM
-	db "Grace@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, HAUNTER
-	dbp 20, MISDREAVUS
-	db -1 ; end
+	def_trainer GRACE, "Grace"
+	tr_mon 20, HAUNTER
+	tr_mon 20, MISDREAVUS
+	end_trainer
 
-	; MEDIUM
-	db "Rebecca@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, DROWZEE
-	dbp 54, HYPNO
-	db -1 ; end
+	def_trainer REBECCA, "Rebecca"
+	tr_mon 54, DROWZEE
+	tr_mon 54, HYPNO
+	end_trainer
 
-	; MEDIUM
-	db "Doris@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, SLOWPOKE
-	dbp 55, SLOWBRO
-	db -1 ; end
+	def_trainer DORIS, "Doris"
+	tr_mon 53, SLOWPOKE
+	tr_mon 55, SLOWBRO
+	end_trainer
 
 
 SECTION "KimonoGirl1Group", ROMX
 KimonoGirl1Group:
 
 	def_trainer_class KIMONO_GIRL_1
-	db "Naoko@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 20, FLAREON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer NAOKO, "Naoko"
+	tr_mon 20, FLAREON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl2Group", ROMX
 KimonoGirl2Group:
 
 	def_trainer_class KIMONO_GIRL_2
-	db "Sayo@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 20, ESPEON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer SAYO, "Sayo"
+	tr_mon 20, ESPEON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl3Group", ROMX
 KimonoGirl3Group:
 
 	def_trainer_class KIMONO_GIRL_3
-	db "Zuki@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 20, UMBREON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer ZUKI, "Zuki"
+	tr_mon 20, UMBREON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl4Group", ROMX
 KimonoGirl4Group:
 
 	def_trainer_class KIMONO_GIRL_4
-	db "Kuni@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 20, VAPOREON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer KUNI, "Kuni"
+	tr_mon 20, VAPOREON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl5Group", ROMX
 KimonoGirl5Group:
 
 	def_trainer_class KIMONO_GIRL_5
-	db "Miki@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 20, JOLTEON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer MIKI, "Miki"
+	tr_mon 20, JOLTEON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl6Group", ROMX
 KimonoGirl6Group:
 
 	def_trainer_class KIMONO_GIRL_6
-	db "Mako@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp LEVEL_FROM_BADGES + 10, LEAFEON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer MAKO, "Mako"
+	tr_mon LEVEL_FROM_BADGES + 10, LEAFEON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl7Group", ROMX
 KimonoGirl7Group:
 
 	def_trainer_class KIMONO_GIRL_7
-	db "Ami@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp LEVEL_FROM_BADGES + 10, GLACEON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer AMI, "Ami"
+	tr_mon LEVEL_FROM_BADGES + 10, GLACEON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "KimonoGirl8roup", ROMX
 KimonoGirl8Group:
 
 	def_trainer_class KIMONO_GIRL_8
-	db "Mina@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp LEVEL_FROM_BADGES + 10, SYLVEON
-		db LUM_BERRY
-	db -1 ; end
+	def_trainer MINA, "Mina"
+	tr_mon LEVEL_FROM_BADGES + 10, SYLVEON @ LUM_BERRY
+	end_trainer
 
 
 SECTION "ElderGroup", ROMX
 ElderGroup:
 
 	def_trainer_class ELDER
-	db "Li@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 7, HOOTHOOT
-	dbp 7, GASTLY
-	dbp 10, BELLSPROUT
-	db -1 ; end
+	def_trainer LI, "Li"
+	tr_mon 7, HOOTHOOT
+	tr_mon 7, GASTLY
+	tr_mon 10, BELLSPROUT
+	end_trainer
 
-	; ELDER
-	db "Gaku@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, NOCTOWL
-	dbp 38, FLAREON
-	dbp 38, WEEPINBELL
-	db -1 ; end
+	def_trainer GAKU, "Gaku"
+	tr_mon 37, NOCTOWL
+	tr_mon 38, FLAREON
+	tr_mon 38, WEEPINBELL
+	end_trainer
 
-	; ELDER
-	db "Masa@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, NOCTOWL
-	dbp 38, JOLTEON
-	dbp 38, WARTORTLE
-	db -1 ; end
+	def_trainer MASA, "Masa"
+	tr_mon 37, NOCTOWL
+	tr_mon 38, JOLTEON
+	tr_mon 38, WARTORTLE
+	end_trainer
 
-	; ELDER
-	db "Koji@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, NOCTOWL
-	dbp 38, VAPOREON
-	dbp 38, NINETALES
-	db -1 ; end
+	def_trainer KOJI, "Koji"
+	tr_mon 37, NOCTOWL
+	tr_mon 38, VAPOREON
+	tr_mon 38, NINETALES
+	end_trainer
 
 
 SECTION "SrAndJrGroup", ROMX
 SrAndJrGroup:
 
 	def_trainer_class SR_AND_JR
-	db "Jo & Cath@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, TEDDIURSA
-	dbp 16, JIGGLYPUFF
-	db -1 ; end
+	def_trainer JOANDCATH1, "Jo & Cath"
+	tr_mon 18, TEDDIURSA
+	tr_mon 16, JIGGLYPUFF
+	end_trainer
 
-	; SR_AND_JR
-	db "Jo & Cath@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, JIGGLYPUFF
-	dbp 18, TEDDIURSA
-	db -1 ; end
+	def_trainer JOANDCATH2, "Jo & Cath"
+	tr_mon 16, JIGGLYPUFF
+	tr_mon 18, TEDDIURSA
+	end_trainer
 
-	; SR_AND_JR
-	db "Ivy & Amy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, FLAAFFY
-	dbp 28, GLOOM
-	db -1 ; end
+	def_trainer IVYANDAMY1, "Ivy & Amy"
+	tr_mon 30, FLAAFFY
+	tr_mon 28, GLOOM
+	end_trainer
 
-	; SR_AND_JR
-	db "Ivy & Amy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, GLOOM
-	dbp 30, FLAAFFY
-	db -1 ; end
+	def_trainer IVYANDAMY2, "Ivy & Amy"
+	tr_mon 28, GLOOM
+	tr_mon 30, FLAAFFY
+	end_trainer
 
-	; SR_AND_JR
-	db "Bea & May@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, IVYSAUR
-	dbp LEVEL_FROM_BADGES + 0, BULBASAUR
-	db -1 ; end
+	def_trainer BEAANDMAY1, "Bea & May"
+	tr_mon LEVEL_FROM_BADGES + 4, IVYSAUR
+	tr_mon LEVEL_FROM_BADGES + 0, BULBASAUR
+	end_trainer
 
-	; SR_AND_JR
-	db "Bea & May@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, BULBASAUR
-	dbp LEVEL_FROM_BADGES + 4, IVYSAUR
-	db -1 ; end
+	def_trainer BEAANDMAY2, "Bea & May"
+	tr_mon LEVEL_FROM_BADGES + 0, BULBASAUR
+	tr_mon LEVEL_FROM_BADGES + 4, IVYSAUR
+	end_trainer
 
 
 SECTION "CoupleGroup", ROMX
 CoupleGroup:
 
 	def_trainer_class COUPLE
-	db "Gail & Eli@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 13, SANDSHREW, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 15, MARILL, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 15, PIKACHU, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 13, POLIWAG, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer GAILANDELI1, "Gail & Eli"
+	tr_mon 13, SANDSHREW, MALE
+	tr_mon 15, MARILL, MALE
+	tr_mon 15, PIKACHU, FEMALE
+	tr_mon 13, POLIWAG, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Gail & Eli@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 15, PIKACHU, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 13, POLIWAG, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 13, SANDSHREW, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 15, MARILL, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer GAILANDELI2, "Gail & Eli"
+	tr_mon 15, PIKACHU, FEMALE
+	tr_mon 13, POLIWAG, FEMALE
+	tr_mon 13, SANDSHREW, MALE
+	tr_mon 15, MARILL, MALE
+	end_trainer
 
-	; COUPLE
-	db "Duff & Eda@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 2, CLOYSTER, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 2, ONIX, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer DUFFANDEDA1, "Duff & Eda"
+	tr_mon LEVEL_FROM_BADGES + 2, CLOYSTER, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 2, ONIX, MALE
+	end_trainer
 
-	; COUPLE
-	db "Duff & Eda@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 2, ONIX, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 2, CLOYSTER, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer DUFFANDEDA2, "Duff & Eda"
+	tr_mon LEVEL_FROM_BADGES + 2, ONIX, MALE
+	tr_mon LEVEL_FROM_BADGES + 2, CLOYSTER, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Fox & Rae@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 6, FLAREON, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 6, GLACEON, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer FOXANDRAE1, "Fox & Rae"
+	tr_mon LEVEL_FROM_BADGES + 6, FLAREON, MALE
+	tr_mon LEVEL_FROM_BADGES + 6, GLACEON, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Fox & Rae@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 6, GLACEON, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 6, FLAREON, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer FOXANDRAE2, "Fox & Rae"
+	tr_mon LEVEL_FROM_BADGES + 6, GLACEON, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 6, FLAREON, MALE
+	end_trainer
 
-	; COUPLE
-	db "Moe & Lulu@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 53, GLOOM, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 53, WEEPINBELL, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer MOEANDLULU1, "Moe & Lulu"
+	tr_mon 53, GLOOM, MALE
+	tr_mon 53, WEEPINBELL, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Moe & Lulu@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 53, WEEPINBELL, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 53, GLOOM, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer MOEANDLULU2, "Moe & Lulu"
+	tr_mon 53, WEEPINBELL, FEMALE
+	tr_mon 53, GLOOM, MALE
+	end_trainer
 
-	; COUPLE
-	db "Vic & Tara@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 54, MAGMAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 53, SUNKERN, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer VICANDTARA1, "Vic & Tara"
+	tr_mon 54, MAGMAR, MALE
+	tr_mon 53, SUNKERN, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Vic & Tara@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 53, SUNKERN, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 54, MAGMAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer VICANDTARA2, "Vic & Tara"
+	tr_mon 53, SUNKERN, FEMALE
+	tr_mon 54, MAGMAR, MALE
+	end_trainer
 
-	; COUPLE
-	db "Tim & Sue@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 53, KADABRA, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 57, GOLDUCK, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer TIMANDSUE1, "Tim & Sue"
+	tr_mon 53, KADABRA, MALE
+	tr_mon 57, GOLDUCK, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Tim & Sue@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 57, GOLDUCK, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 53, KADABRA, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer TIMANDSUE2, "Tim & Sue"
+	tr_mon 57, GOLDUCK, FEMALE
+	tr_mon 53, KADABRA, MALE
+	end_trainer
 
-	; COUPLE
-	db "Joe & Jo@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 56, ALAKAZAM, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 52, BUTTERFREE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer JOEANDJO1, "Joe & Jo"
+	tr_mon 56, ALAKAZAM, MALE
+	tr_mon 52, BUTTERFREE, FEMALE
+	end_trainer
 
-	; COUPLE
-	db "Joe & Jo@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 52, BUTTERFREE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 56, ALAKAZAM, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer JOEANDJO2, "Joe & Jo"
+	tr_mon 52, BUTTERFREE, FEMALE
+	tr_mon 56, ALAKAZAM, MALE
+	end_trainer
 
 
 SECTION "GentlemanGroup", ROMX
 GentlemanGroup:
 
 	def_trainer_class GENTLEMAN
-	db "Preston@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, GROWLITHE
-	dbp 18, SKARMORY
-	db -1 ; end
+	def_trainer PRESTON, "Preston"
+	tr_mon 18, GROWLITHE
+	tr_mon 18, SKARMORY
+	end_trainer
 
-	; GENTLEMAN
-	db "Edward@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 49, PERSIAN
-	db -1 ; end
+	def_trainer EDWARD, "Edward"
+	tr_mon 49, PERSIAN
+	end_trainer
 
-	; GENTLEMAN
-	db "Gregory@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, PIKACHU
-	dbp 53, FLAAFFY
-	dbp 53, CHINCHOU
-	db -1 ; end
+	def_trainer GREGORY, "Gregory"
+	tr_mon 56, PIKACHU
+	tr_mon 53, FLAAFFY
+	tr_mon 53, CHINCHOU
+	end_trainer
 
-	; GENTLEMAN
-	db "Alfred@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 22, NOCTOWL
-	db -1 ; end
+	def_trainer ALFRED, "Alfred"
+	tr_mon 22, NOCTOWL
+	end_trainer
 
-	; GENTLEMAN
-	db "Milton@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, GROWLITHE
-	dbp 56, ARCANINE
-	db -1 ; end
+	def_trainer MILTON, "Milton"
+	tr_mon 53, GROWLITHE
+	tr_mon 56, ARCANINE
+	end_trainer
 
-	; GENTLEMAN
-	db "Camus@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, SKARMORY
-	dbp 56, ARCANINE
-	dbp 54, PERSIAN
-	db -1 ; end
+	def_trainer CAMUS, "Camus"
+	tr_mon 55, SKARMORY
+	tr_mon 56, ARCANINE
+	tr_mon 54, PERSIAN
+	end_trainer
 
-	; GENTLEMAN
-	db "Geoffrey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 50, MEOWTH
-	db -1 ; end
+	def_trainer GEOFFREY, "Geoffrey"
+	tr_mon 50, MEOWTH
+	end_trainer
 
 
 SECTION "RichBoyGroup", ROMX
 RichBoyGroup:
 
 	def_trainer_class RICH_BOY
-	db "Winston@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 46, PIDGEOT
-	dbp 44, FURRET
-	dbp 45, AMPHAROS
-	db -1 ; end
+	def_trainer WINSTON, "Winston"
+	tr_mon 46, PIDGEOT
+	tr_mon 44, FURRET
+	tr_mon 45, AMPHAROS
+	end_trainer
 
-	; RICH_BOY
-	db "Gerald@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 42, AZUMARILL
-		db NUGGET
-	dbp 40, BLISSEY
-		db NUGGET
-	db -1 ; end
+	def_trainer GERALD, "Gerald"
+	tr_mon 42, AZUMARILL @ NUGGET
+	tr_mon 40, BLISSEY @ NUGGET
+	end_trainer
 
-	; RICH_BOY
-	db "Irving@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 4, TOGETIC, MALE
-		db KINGS_ROCK, $EE, $EE, $EE, ABIL_TOGETIC_SERENE_GRACE | NAT_NEUTRAL
-		db HEADBUTT, METRONOME, SWEET_KISS, DISARM_VOICE
-	dbp LEVEL_FROM_BADGES + 4, CHANSEY, FEMALE
-		db KINGS_ROCK, $EE, $EE, $EE, ABIL_CHANSEY_SERENE_GRACE | NAT_NEUTRAL
-		db HEADBUTT, FRESH_SNACK, SWEET_KISS, ZEN_HEADBUTT
-	dbp LEVEL_FROM_BADGES + 5, SYLVEON, FEMALE
+	def_trainer IRVING, "Irving"
+	tr_mon LEVEL_FROM_BADGES + 4, TOGETIC @ KINGS_ROCK , MALE
+		tr_extra SERENE_GRACE
+		tr_dvs 14 All
+		tr_moves HEADBUTT, METRONOME, SWEET_KISS, DISARM_VOICE
+	tr_mon LEVEL_FROM_BADGES + 4, CHANSEY @ KINGS_ROCK, FEMALE
+		tr_extra SERENE_GRACE
+		tr_dvs 14 All
+		tr_moves HEADBUTT, FRESH_SNACK, SWEET_KISS, ZEN_HEADBUTT
+	tr_mon LEVEL_FROM_BADGES + 5, SYLVEON @ KINGS_ROCK, FEMALE
 if DEF(FAITHFUL)
-		db KINGS_ROCK, $EE, $EE, $EE, ABIL_SYLVEON_CUTE_CHARM | NAT_NEUTRAL
+		tr_extra CUTE_CHARM
 else
-		db KINGS_ROCK, $EE, $EE, $EE, ABIL_SYLVEON_SERENE_GRACE | NAT_NEUTRAL
+		tr_extra SERENE_GRACE
 endc
-		db HEADBUTT, ATTRACT, MUD_SLAP, DISARM_VOICE
-	db -1 ; end
+		tr_dvs 14 All
+		tr_moves HEADBUTT, ATTRACT, MUD_SLAP, DISARM_VOICE
+	end_trainer
 
-	; RICH_BOY
-	db "Tobin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, MAGMAR
-	dbp 54, GOLEM
-	dbp 55, MACHOKE
-	db -1 ; end
+	def_trainer TOBIN, "Tobin"
+	tr_mon 53, MAGMAR
+	tr_mon 54, GOLEM
+	tr_mon 55, MACHOKE
+	end_trainer
 
 
 SECTION "LadyGroup", ROMX
 LadyGroup:
 
 	def_trainer_class LADY
-	db "Jessica@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 55, BLISSEY
-		db NUGGET
-	dbp 54, FURRET
-		db NUGGET
-	db -1 ; end
+	def_trainer JESSICA, "Jessica"
+	tr_mon 55, BLISSEY @ NUGGET
+	tr_mon 54, FURRET @ NUGGET
+	end_trainer
 
 
 SECTION "BreederGroup", ROMX
 BreederGroup:
 
 	def_trainer_class BREEDER
-	db "Julie@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 7, PICHU
-		db EVIOLITE
-	dbp 10, DITTO
-		db METAL_POWDER
-	dbp 8, TOGEPI
-		db EVIOLITE
-	db -1 ; end
+	def_trainer JULIE, "Julie"
+	tr_mon 7, PICHU @ EVIOLITE
+	tr_mon 10, DITTO @ METAL_POWDER
+	tr_mon 8, TOGEPI @ EVIOLITE
+	end_trainer
 
-	; BREEDER
-	db "Theresa@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
-	; party
-	dbp 15, MAGBY, FEMALE
-		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-	dbp 16, ELEKID, FEMALE
-		db EVIOLITE, SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer THERESA, "Theresa"
+	tr_mon 15, MAGBY @ EVIOLITE, FEMALE
+	tr_mon 16, ELEKID @ EVIOLITE, FEMALE
+		tr_extra SHINY
+	end_trainer
 
-	; BREEDER
-	db "Jody@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 27, TYROGUE
-		db EVIOLITE
-		db TACKLE, RAGE, FORESIGHT, HI_JUMP_KICK
-	dbp 28, MUNCHLAX
-		db EVIOLITE
-		db METRONOME, BODY_SLAM, SCREECH, GUNK_SHOT
-	dbp 29, DITTO
-		db METAL_POWDER
-		db TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
-	db -1 ; end
+	def_trainer JODY, "Jody"
+	tr_mon 27, TYROGUE @ EVIOLITE
+		tr_moves TACKLE, RAGE, FORESIGHT, HI_JUMP_KICK
+	tr_mon 28, MUNCHLAX @ EVIOLITE
+		tr_moves METRONOME, BODY_SLAM, SCREECH, GUNK_SHOT
+	tr_mon 29, DITTO @ METAL_POWDER
+		tr_moves TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
+	end_trainer
 
-	; BREEDER
-	db "Carlene@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 58, SMEARGLE, FEMALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		db SPORE, NASTY_PLOT, HYPER_VOICE, PSYCHIC_M
-	dbp 58, SMEARGLE, FEMALE
-		db MUSCLE_BAND, ABILITY_1 | NAT_NEUTRAL
-		db SPORE, SWORDS_DANCE, BODY_SLAM, EARTHQUAKE
-	dbp 62, DITTO, FEMALE
-		db METAL_POWDER, SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
-		db TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
-	db -1 ; end
+	def_trainer CARLENE, "Carlene"
+	tr_mon 58, SMEARGLE @ WISE_GLASSES, FEMALE
+		tr_moves SPORE, NASTY_PLOT, HYPER_VOICE, PSYCHIC_M
+	tr_mon 58, SMEARGLE @ MUSCLE_BAND, FEMALE
+		tr_moves SPORE, SWORDS_DANCE, BODY_SLAM, EARTHQUAKE
+	tr_mon 62, DITTO @ METAL_POWDER, FEMALE
+		tr_extra SHINY
+		tr_moves TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
+	end_trainer
 
-	; BREEDER
-	db "Sophie@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp LEVEL_FROM_BADGES + 2, PICHU
-		db EVIOLITE
-	dbp LEVEL_FROM_BADGES + 3, PIKACHU
-		db LIGHT_BALL
-	dbp LEVEL_FROM_BADGES + 4, RAICHU
-		db DESTINY_KNOT
-	db -1 ; end
+	def_trainer SOPHIE, "Sophie"
+	tr_mon LEVEL_FROM_BADGES + 2, PICHU @ EVIOLITE
+	tr_mon LEVEL_FROM_BADGES + 3, PIKACHU @ LIGHT_BALL
+	tr_mon LEVEL_FROM_BADGES + 4, RAICHU @ DESTINY_KNOT
+	end_trainer
 
-	; BREEDER
-	db "Brenda@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 55, CLEFABLE
-		db PINK_BOW
-	dbp 54, WIGGLYTUFF
-		db SITRUS_BERRY
-	dbp 56, SNORLAX
-		db LEFTOVERS
-	db -1 ; end
+	def_trainer BRENDA, "Brenda"
+	tr_mon 55, CLEFABLE @ PINK_BOW
+	tr_mon 54, WIGGLYTUFF @ SITRUS_BERRY
+	tr_mon 56, SNORLAX @ LEFTOVERS
+	end_trainer
 
 
 SECTION "BakerGroup", ROMX
 BakerGroup:
 
 	def_trainer_class BAKER
-	db "Chelsie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, MILTANK
+	def_trainer CHELSIE, "Chelsie"
+	tr_mon 18, MILTANK
 if DEF(FAITHFUL)
-	dbp 18, MAGMAR
+	tr_mon 18, MAGMAR
 else
-	dbp 18, SUNFLORA
+	tr_mon 18, SUNFLORA
 endc
-	db -1 ; end
+	end_trainer
 
-	; BAKER
-	db "Sharyn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 46, MILTANK
-	dbp 46, TAUROS
-	db -1 ; end
+	def_trainer SHARYN, "Sharyn"
+	tr_mon 46, MILTANK
+	tr_mon 46, TAUROS
+	end_trainer
 
-	; BAKER
-	db "Margaret@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, CHANSEY
-	dbp 55, MILTANK
-	db -1 ; end
+	def_trainer MARGARET, "Margaret"
+	tr_mon 55, CHANSEY
+	tr_mon 55, MILTANK
+	end_trainer
 
-	; BAKER
-	db "Olga@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 50, TEDDIURSA
-	dbp 55, URSARING
-	dbp 53, CHANSEY
-	db -1 ; end
+	def_trainer OLGA, "Olga"
+	tr_mon 50, TEDDIURSA
+	tr_mon 55, URSARING
+	tr_mon 53, CHANSEY
+	end_trainer
 
 
 SECTION "CowgirlGroup", ROMX
 CowgirlGroup:
 
 	def_trainer_class COWGIRL
-	db "Annie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 5, MILTANK, FEMALE
-		db LEFTOVERS, FAKE_PERFECT_DVS, ABIL_MILTANK_SCRAPPY | NAT_ATK_UP_SATK_DOWN
-		db DEFENSE_CURL, ROLLOUT, FRESH_SNACK, BODY_SLAM
-	dbp LEVEL_FROM_BADGES + 5, TAUROS, MALE
-		db LEFTOVERS, FAKE_PERFECT_DVS, ABIL_TAUROS_ANGER_POINT | NAT_ATK_UP_SATK_DOWN
-		db ZEN_HEADBUTT, QUICK_ATTACK, PURSUIT, BULK_UP
-	db -1 ; end
+	def_trainer ANNIE, "Annie"
+	tr_mon LEVEL_FROM_BADGES + 5, MILTANK @ LEFTOVERS, FEMALE
+		tr_extra SCRAPPY, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_moves DEFENSE_CURL, ROLLOUT, FRESH_SNACK, BODY_SLAM
+	tr_mon LEVEL_FROM_BADGES + 5, TAUROS @ LEFTOVERS, MALE
+		tr_extra ANGER_POINT, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_moves ZEN_HEADBUTT, QUICK_ATTACK, PURSUIT, BULK_UP
+	end_trainer
 
-	; COWGIRL
-	db "April@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, TAUROS
-	dbp LEVEL_FROM_BADGES + 7, TAUROS, PALDEAN_FORM
-	dbp LEVEL_FROM_BADGES + 8, TAUROS, TAUROS_PALDEAN_FIRE_FORM
-	dbp LEVEL_FROM_BADGES + 9, TAUROS, TAUROS_PALDEAN_WATER_FORM
-	db -1 ; end
+	def_trainer APRIL, "April"
+	tr_mon LEVEL_FROM_BADGES + 6, TAUROS
+	tr_mon LEVEL_FROM_BADGES + 7, TAUROS, PALDEAN_FORM
+	tr_mon LEVEL_FROM_BADGES + 8, TAUROS, TAUROS_PALDEAN_FIRE_FORM
+	tr_mon LEVEL_FROM_BADGES + 9, TAUROS, TAUROS_PALDEAN_WATER_FORM
+	end_trainer
 
-	; COWGIRL
-	db "Daniela@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, TAUROS
-	dbp LEVEL_FROM_BADGES + 3, MILTANK
-	db -1 ; end
+	def_trainer DANIELA, "Daniela"
+	tr_mon LEVEL_FROM_BADGES + 3, TAUROS
+	tr_mon LEVEL_FROM_BADGES + 3, MILTANK
+	end_trainer
 
 
 SECTION "SailorGroup", ROMX
 SailorGroup:
 
 	def_trainer_class SAILOR
-	db "Huey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, POLIWAG
-	dbp 20, POLIWHIRL
-	db -1 ; end
+	def_trainer HUEY1, "Huey"
+	tr_mon 18, POLIWAG
+	tr_mon 20, POLIWHIRL
+	end_trainer
 
-	; SAILOR
-	db "Huey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, POLIWHIRL
-	dbp 28, POLIWHIRL
-	db -1 ; end
+	def_trainer HUEY2, "Huey"
+	tr_mon 28, POLIWHIRL
+	tr_mon 28, POLIWHIRL
+	end_trainer
 
-	; SAILOR
-	db "Huey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 34, POLIWHIRL
-	dbp 34, POLIWRATH
-	db -1 ; end
+	def_trainer HUEY3, "Huey"
+	tr_mon 34, POLIWHIRL
+	tr_mon 34, POLIWRATH
+	end_trainer
 
-	; SAILOR
-	db "Huey@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 38, POLITOED
-		db WHIRLPOOL, RAIN_DANCE, BODY_SLAM, PERISH_SONG
-	dbp 38, POLIWRATH
-		db SURF, STRENGTH, ICE_PUNCH, CLOSE_COMBAT
-	db -1 ; end
+	def_trainer HUEY4, "Huey"
+	tr_mon 38, POLITOED
+		tr_moves WHIRLPOOL, RAIN_DANCE, BODY_SLAM, PERISH_SONG
+	tr_mon 38, POLIWRATH
+		tr_moves SURF, STRENGTH, ICE_PUNCH, CLOSE_COMBAT
+	end_trainer
 
-	; SAILOR
-	db "Eugene@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 17, POLIWHIRL
-	dbp 17, RATICATE
-	dbp 19, KRABBY
-	db -1 ; end
+	def_trainer EUGENE, "Eugene"
+	tr_mon 17, POLIWHIRL
+	tr_mon 17, RATICATE
+	tr_mon 19, KRABBY
+	end_trainer
 
-	; SAILOR
-	db "Terrell@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, POLIWHIRL
-	db -1 ; end
+	def_trainer TERRELL, "Terrell"
+	tr_mon 20, POLIWHIRL
+	end_trainer
 
-	; SAILOR
-	db "Kent@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 18, KRABBY
-		db WATER_GUN, LEER, SCRATCH, DEFENSE_CURL
-	dbp 20, KRABBY
-		db BUBBLE_BEAM, LEER, SCRATCH, DEFENSE_CURL
-	db -1 ; end
+	def_trainer KENT, "Kent"
+	tr_mon 18, KRABBY
+		tr_moves WATER_GUN, LEER, SCRATCH, DEFENSE_CURL
+	tr_mon 20, KRABBY
+		tr_moves BUBBLE_BEAM, LEER, SCRATCH, DEFENSE_CURL
+	end_trainer
 
-	; SAILOR
-	db "Roberto@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, MACHOP
-	dbp 18, MACHOP
-	dbp 18, POLIWHIRL
-	db -1 ; end
+	def_trainer ERNEST, "Roberto" ; MISMATCH
+	tr_mon 18, MACHOP
+	tr_mon 18, MACHOP
+	tr_mon 18, POLIWHIRL
+	end_trainer
 
-	; SAILOR
-	db "Jeff@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 46, RATICATE
-	dbp 46, RATICATE
-	db -1 ; end
+	def_trainer JEFF, "Jeff"
+	tr_mon 46, RATICATE
+	tr_mon 46, RATICATE
+	end_trainer
 
-	; SAILOR
-	db "Garrett@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 48, KINGLER
-	db -1 ; end
+	def_trainer GARRETT, "Garrett"
+	tr_mon 48, KINGLER
+	end_trainer
 
-	; SAILOR
-	db "Kenneth@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 44, MACHOP
-	dbp 45, MACHOKE
-	dbp 46, POLIWRATH
-	dbp 45, MACHOKE
-	db -1 ; end
+	def_trainer KENNETH, "Kenneth"
+	tr_mon 44, MACHOP
+	tr_mon 45, MACHOKE
+	tr_mon 46, POLIWRATH
+	tr_mon 45, MACHOKE
+	end_trainer
 
-	; SAILOR
-	db "Stanley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, MACHOP
-	dbp 48, MACHOKE
-	dbp 44, PSYDUCK
-	db -1 ; end
+	def_trainer STANLY, "Stanley" ; MISMATCH
+	tr_mon 45, MACHOP
+	tr_mon 48, MACHOKE
+	tr_mon 44, PSYDUCK
+	end_trainer
 
-	; SAILOR
-	db "Harry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, WOOPER
-	db -1 ; end
+	def_trainer HARRY, "Harry"
+	tr_mon 20, WOOPER
+	end_trainer
 
-	; SAILOR
-	db "Parker@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, HORSEA
-	dbp 57, SEADRA
-	db -1 ; end
+	def_trainer PARKER, "Parker"
+	tr_mon 56, HORSEA
+	tr_mon 57, SEADRA
+	end_trainer
 
-	; SAILOR
-	db "Eddie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, AZUMARILL
-	db -1 ; end
+	def_trainer EDDIE, "Eddie"
+	tr_mon 59, AZUMARILL
+	end_trainer
 
-	; SAILOR
-	db "Harvey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, MACHOP
-	dbp LEVEL_FROM_BADGES + 2, MACHOKE
-	db -1 ; end
+	def_trainer HARVEY, "Harvey"
+	tr_mon LEVEL_FROM_BADGES + 0, MACHOP
+	tr_mon LEVEL_FROM_BADGES + 2, MACHOKE
+	end_trainer
 
 
 SECTION "SwimmerMGroup", ROMX
 SwimmerMGroup:
 
 	def_trainer_class SWIMMERM
-	db "Harold@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, REMORAID
-	dbp 58, SEADRA
-	db -1 ; end
+	def_trainer HAROLD, "Harold"
+	tr_mon 60, REMORAID
+	tr_mon 58, SEADRA
+	end_trainer
 
-	; SWIMMERM
-	db "Simon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, TENTACOOL
-	dbp 20, TENTACOOL
-	db -1 ; end
+	def_trainer SIMON, "Simon"
+	tr_mon 20, TENTACOOL
+	tr_mon 20, TENTACOOL
+	end_trainer
 
-	; SWIMMERM
-	db "Randall@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, SHELLDER
-	dbp 20, WARTORTLE
-	dbp 18, SHELLDER
-	db -1 ; end
+	def_trainer RANDALL, "Randall"
+	tr_mon 18, SHELLDER
+	tr_mon 20, WARTORTLE
+	tr_mon 18, SHELLDER
+	end_trainer
 
-	; SWIMMERM
-	db "Charlie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 21, SHELLDER
-	dbp 19, TENTACOOL
-	dbp 19, TENTACRUEL
-	db -1 ; end
+	def_trainer CHARLIE, "Charlie"
+	tr_mon 21, SHELLDER
+	tr_mon 19, TENTACOOL
+	tr_mon 19, TENTACRUEL
+	end_trainer
 
-	; SWIMMERM
-	db "George@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 16, TENTACOOL
-	dbp 17, TENTACOOL
-	dbp 16, TENTACOOL
-	dbp 19, STARYU
-	dbp 17, TENTACOOL
-	dbp 19, REMORAID
-	db -1 ; end
+	def_trainer GEORGE, "George"
+	tr_mon 16, TENTACOOL
+	tr_mon 17, TENTACOOL
+	tr_mon 16, TENTACOOL
+	tr_mon 19, STARYU
+	tr_mon 17, TENTACOOL
+	tr_mon 19, REMORAID
+	end_trainer
 
-	; SWIMMERM
-	db "Berke@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, QWILFISH
-	db -1 ; end
+	def_trainer BERKE, "Berke"
+	tr_mon 23, QWILFISH
+	end_trainer
 
-	; SWIMMERM
-	db "Kirk@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, GYARADOS
-	dbp 20, GYARADOS
-	db -1 ; end
+	def_trainer KIRK, "Kirk"
+	tr_mon 20, GYARADOS
+	tr_mon 20, GYARADOS
+	end_trainer
 
-	; SWIMMERM
-	db "Mathew@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, KRABBY
-	db -1 ; end
+	def_trainer MATHEW, "Mathew"
+	tr_mon 23, KRABBY
+	end_trainer
 
-	; SWIMMERM
-	db "Hal@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 24, SEEL
-	dbp 25, DEWGONG
-	dbp 24, SEEL
-	db -1 ; end
+	def_trainer HAL, "Hal"
+	tr_mon 24, SEEL
+	tr_mon 25, DEWGONG
+	tr_mon 24, SEEL
+	end_trainer
 
-	; SWIMMERM
-	db "Jerome@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, SEADRA
-	dbp 58, TENTACOOL
-	dbp 59, TENTACRUEL
-	dbp 58, SEAKING
-	db -1 ; end
+	def_trainer JEROME, "Jerome"
+	tr_mon 57, SEADRA
+	tr_mon 58, TENTACOOL
+	tr_mon 59, TENTACRUEL
+	tr_mon 58, SEAKING
+	end_trainer
 
-	; SWIMMERM
-	db "Tucker@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, SHELLDER
-	dbp 61, CLOYSTER
-	db -1 ; end
+	def_trainer TUCKER, "Tucker"
+	tr_mon 59, SHELLDER
+	tr_mon 61, CLOYSTER
+	end_trainer
 
-	; SWIMMERM
-	db "Rick@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 13, STARYU
-	dbp 18, STARMIE
-	dbp 16, HORSEA
-	db -1 ; end
+	def_trainer RICK, "Rick"
+	tr_mon 13, STARYU
+	tr_mon 18, STARMIE
+	tr_mon 16, HORSEA
+	end_trainer
 
-	; SWIMMERM
-	db "Frankie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, AZUMARILL
-	db -1 ; end
+	def_trainer CAMERON, "Frankie" ; MISMATCH
+	tr_mon 61, AZUMARILL
+	end_trainer
 
-	; SWIMMERM
-	db "Tyson@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, QUAGSIRE
-	dbp 58, OCTILLERY
-	dbp 62, QUAGSIRE
-	db -1 ; end
+	def_trainer SETH, "Tyson" ; MISMATCH
+	tr_mon 58, QUAGSIRE
+	tr_mon 58, OCTILLERY
+	tr_mon 62, QUAGSIRE
+	end_trainer
 
-	; SWIMMERM
-	db "James@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES - 4, STARYU
-	dbp LEVEL_FROM_BADGES + 2, STARMIE
-	dbp LEVEL_FROM_BADGES - 2, HORSEA
-	db -1 ; end
+	def_trainer JAMES, "James"
+	tr_mon LEVEL_FROM_BADGES - 4, STARYU
+	tr_mon LEVEL_FROM_BADGES + 2, STARMIE
+	tr_mon LEVEL_FROM_BADGES - 2, HORSEA
+	end_trainer
 
-	; SWIMMERM
-	db "Walter@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, HORSEA
-	dbp LEVEL_FROM_BADGES + 1, HORSEA
-	dbp LEVEL_FROM_BADGES + 2, SEADRA
-	db -1 ; end
+	def_trainer WALTER, "Walter"
+	tr_mon LEVEL_FROM_BADGES + 0, HORSEA
+	tr_mon LEVEL_FROM_BADGES + 1, HORSEA
+	tr_mon LEVEL_FROM_BADGES + 2, SEADRA
+	end_trainer
 
-	; SWIMMERM
-	db "Lewis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, STARYU
-	dbp 21, STARMIE
-	dbp 20, HORSEA
-	db -1 ; end
+	def_trainer LEWIS, "Lewis"
+	tr_mon 18, STARYU
+	tr_mon 21, STARMIE
+	tr_mon 20, HORSEA
+	end_trainer
 
-	; SWIMMERM
-	db "Michel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 2, STARYU
-	dbp LEVEL_FROM_BADGES + 4, STARMIE
-	db -1 ; end
+	def_trainer MICHEL, "Michel"
+	tr_mon LEVEL_FROM_BADGES + 2, STARYU
+	tr_mon LEVEL_FROM_BADGES + 4, STARMIE
+	end_trainer
 
-	; SWIMMERM
-	db "Lucas@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, VAPOREON
-	db -1 ; end
+	def_trainer LUCAS, "Lucas"
+	tr_mon LEVEL_FROM_BADGES + 8, VAPOREON
+	end_trainer
 
-	; SWIMMERM
-	db "Frank@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, MANTINE
-	db -1 ; end
+	def_trainer FRANK, "Frank"
+	tr_mon LEVEL_FROM_BADGES + 6, MANTINE
+	end_trainer
 
-	; SWIMMERM
-	db "Nadar@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, SEADRA
-	dbp LEVEL_FROM_BADGES + 5, QUAGSIRE
-	db -1 ; end
+	def_trainer NADAR, "Nadar"
+	tr_mon LEVEL_FROM_BADGES + 4, SEADRA
+	tr_mon LEVEL_FROM_BADGES + 5, QUAGSIRE
+	end_trainer
 
-	; SWIMMERM
-	db "Conrad@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, AZUMARILL
-	db -1 ; end
+	def_trainer CONRAD, "Conrad"
+	tr_mon LEVEL_FROM_BADGES + 6, AZUMARILL
+	end_trainer
 
-	; SWIMMERM
-	db "Romeo@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 57, AZUMARILL, MALE
-		db ABIL_AZUMARILL_HUGE_POWER | NAT_ATK_UP_SATK_DOWN
-		db AQUA_TAIL, PLAY_ROUGH, ROLLOUT, CLOSE_COMBAT
-	db -1 ; end
+	def_trainer ROMEO, "Romeo"
+	tr_mon 57, AZUMARILL, MALE
+		tr_extra HUGE_POWER, ATK_UP_SATK_DOWN
+		tr_moves AQUA_TAIL, PLAY_ROUGH, ROLLOUT, CLOSE_COMBAT
+	end_trainer
 
-	; SWIMMERM
-	db "Malcolm@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, CLOYSTER
-	dbp 55, DEWGONG
-	dbp 54, CLOYSTER
-	db -1 ; end
+	def_trainer MALCOLM, "Malcolm"
+	tr_mon 54, CLOYSTER
+	tr_mon 55, DEWGONG
+	tr_mon 54, CLOYSTER
+	end_trainer
 
-	; SWIMMERM
-	db "Armand@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, KINGLER
-	dbp 55, CLOYSTER
-	db -1 ; end
+	def_trainer ARMAND, "Armand"
+	tr_mon 55, KINGLER
+	tr_mon 55, CLOYSTER
+	end_trainer
 
-	; SWIMMERM
-	db "Thomas@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 5, WARTORTLE
-		db DEFENSE_CURL, BITE, SURF, RAPID_SPIN
-	db -1 ; end
+	def_trainer THOMAS, "Thomas"
+	tr_mon LEVEL_FROM_BADGES + 5, WARTORTLE
+		tr_moves DEFENSE_CURL, BITE, SURF, RAPID_SPIN
+	end_trainer
 
-	; SWIMMERM
-	db "Luis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, SEADRA
-	dbp 56, QUAGSIRE
-	db -1 ; end
+	def_trainer SWIMMERM_LUIS, "Luis"
+	tr_mon 60, SEADRA
+	tr_mon 56, QUAGSIRE
+	end_trainer
 
-	; SWIMMERM
-	db "Elmo@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, POLIWHIRL
-	dbp 56, TENTACRUEL
-	db -1 ; end
+	def_trainer ELMO, "Elmo"
+	tr_mon 60, POLIWHIRL
+	tr_mon 56, TENTACRUEL
+	end_trainer
 
-	; SWIMMERM
-	db "Duane@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, KINGLER
-	dbp 60, KABUTOPS
-	db -1 ; end
+	def_trainer DUANE, "Duane"
+	tr_mon 60, KINGLER
+	tr_mon 60, KABUTOPS
+	end_trainer
 
-	; SWIMMERM
-	db "Esteban@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, GOLDUCK
-	dbp 58, POLIWRATH
-	db -1 ; end
+	def_trainer ESTEBAN, "Esteban"
+	tr_mon 58, GOLDUCK
+	tr_mon 58, POLIWRATH
+	end_trainer
 
-	; SWIMMERM
-	db "Ezra@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, SEADRA
-	dbp 56, KINGDRA
-	db -1 ; end
+	def_trainer EZRA, "Ezra"
+	tr_mon 52, SEADRA
+	tr_mon 56, KINGDRA
+	end_trainer
 
-	; SWIMMERM
-	db "Ashe@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, POLITOED
-	dbp 63, POLIWRATH
-	db -1 ; end
+	def_trainer ASHE, "Ashe"
+	tr_mon 63, POLITOED
+	tr_mon 63, POLIWRATH
+	end_trainer
 
 
 SECTION "SwimmerFGroup", ROMX
 SwimmerFGroup:
 
 	def_trainer_class SWIMMERF
-	db "Elaine@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 21, STARYU
-	db -1 ; end
+	def_trainer ELAINE, "Elaine"
+	tr_mon 21, STARYU
+	end_trainer
 
-	; SWIMMERF
-	db "Paula@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 19, STARYU
-	dbp 19, SHELLDER
-	db -1 ; end
+	def_trainer PAULA, "Paula"
+	tr_mon 19, STARYU
+	tr_mon 19, SHELLDER
+	end_trainer
 
-	; SWIMMERF
-	db "Kaylee@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 18, GOLDEEN
-	dbp 20, GOLDEEN
-	dbp 20, SEAKING
-	db -1 ; end
+	def_trainer KAYLEE, "Kaylee"
+	tr_mon 18, GOLDEEN
+	tr_mon 20, GOLDEEN
+	tr_mon 20, SEAKING
+	end_trainer
 
-	; SWIMMERF
-	db "Susie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, PSYDUCK
-	dbp 22, GOLDEEN
-	db -1 ; end
+	def_trainer SUSIE, "Susie"
+	tr_mon 20, PSYDUCK
+	tr_mon 22, GOLDEEN
+	end_trainer
 
-	; SWIMMERF
-	db "Denise@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 22, SEEL
-	db -1 ; end
+	def_trainer DENISE, "Denise"
+	tr_mon 22, SEEL
+	end_trainer
 
-	; SWIMMERF
-	db "Kara@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, STARYU
-	dbp 20, STARMIE
-	db -1 ; end
+	def_trainer KARA, "Kara"
+	tr_mon 20, STARYU
+	tr_mon 20, STARMIE
+	end_trainer
 
-	; SWIMMERF
-	db "Wendy@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 21, HORSEA
-		db WATER_GUN, SMOKESCREEN, LEER, BUBBLE_BEAM
-	dbp 21, HORSEA
-		db DRAGON_RAGE, SMOKESCREEN, LEER, BUBBLE_BEAM
-	db -1 ; end
+	def_trainer WENDY, "Wendy"
+	tr_mon 21, HORSEA
+		tr_moves WATER_GUN, SMOKESCREEN, LEER, BUBBLE_BEAM
+	tr_mon 21, HORSEA
+		tr_moves DRAGON_RAGE, SMOKESCREEN, LEER, BUBBLE_BEAM
+	end_trainer
 
-	; SWIMMERF
-	db "Mary@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, GYARADOS
-	db -1 ; end
+	def_trainer MARY, "Mary"
+	tr_mon 20, GYARADOS
+	end_trainer
 
-	; SWIMMERF
-	db "Debbie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, AZUMARILL
-	db -1 ; end
+	def_trainer DAWN, "Debbie" ; MISMATCH
+	tr_mon 61, AZUMARILL
+	end_trainer
 
-	; SWIMMERF
-	db "Nicole@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, MARILL
-	dbp 59, MARILL
-	dbp 62, LAPRAS
-	db -1 ; end
+	def_trainer NICOLE, "Nicole"
+	tr_mon 59, MARILL
+	tr_mon 59, MARILL
+	tr_mon 62, LAPRAS
+	end_trainer
 
-	; SWIMMERF
-	db "Lori@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, STARMIE
-	dbp 62, STARMIE
-	dbp 62, STARMIE
-	db -1 ; end
+	def_trainer LORI, "Lori"
+	tr_mon 62, STARMIE
+	tr_mon 62, STARMIE
+	tr_mon 62, STARMIE
+	end_trainer
 
-	; SWIMMERF
-	db "Nikki@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, SEEL
-	dbp 58, SEEL
-	dbp 58, SEEL
-	dbp 62, DEWGONG
-	db -1 ; end
+	def_trainer NIKKI, "Nikki"
+	tr_mon 58, SEEL
+	tr_mon 58, SEEL
+	tr_mon 58, SEEL
+	tr_mon 62, DEWGONG
+	end_trainer
 
-	; SWIMMERF
-	db "Diana@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, GOLDUCK
-	db -1 ; end
+	def_trainer DIANA, "Diana"
+	tr_mon 58, GOLDUCK
+	end_trainer
 
-	; SWIMMERF
-	db "Briana@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, SEAKING
-	dbp 56, LAPRAS
-	db -1 ; end
+	def_trainer BRIANA, "Briana"
+	tr_mon 56, SEAKING
+	tr_mon 56, LAPRAS
+	end_trainer
 
-	; SWIMMERF
-	db "Viola@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, CLOYSTER
-	db -1 ; end
+	def_trainer VIOLA, "Viola"
+	tr_mon 58, CLOYSTER
+	end_trainer
 
-	; SWIMMERF
-	db "Lisa@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, LANTURN
-	db -1 ; end
+	def_trainer KATIE, "Lisa" ; MISMATCH
+	tr_mon LEVEL_FROM_BADGES + 3, LANTURN
+	end_trainer
 
-	; SWIMMERF
-	db "Jill@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, DEWGONG
-	db -1 ; end
+	def_trainer JILL, "Jill"
+	tr_mon LEVEL_FROM_BADGES + 3, DEWGONG
+	end_trainer
 
-	; SWIMMERF
-	db "Katie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 0, SEEL
-	dbp LEVEL_FROM_BADGES + 2, DEWGONG
-	db -1 ; end
+	def_trainer LISA, "Katie" ; MISMATCH
+	tr_mon LEVEL_FROM_BADGES + 0, SEEL
+	tr_mon LEVEL_FROM_BADGES + 2, DEWGONG
+	end_trainer
 
-	; SWIMMERF
-	db "Alison@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, CORSOLA
-	dbp LEVEL_FROM_BADGES + 4, SEEL
-	db -1 ; end
+	def_trainer ALISON, "Alison"
+	tr_mon LEVEL_FROM_BADGES + 4, CORSOLA
+	tr_mon LEVEL_FROM_BADGES + 4, SEEL
+	end_trainer
 
-	; SWIMMERF
-	db "Stephanie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, STARYU
-	dbp LEVEL_FROM_BADGES + 5, SEADRA
-	db -1 ; end
+	def_trainer STEPHANIE, "Stephanie"
+	tr_mon LEVEL_FROM_BADGES + 3, STARYU
+	tr_mon LEVEL_FROM_BADGES + 5, SEADRA
+	end_trainer
 
-	; SWIMMERF
-	db "Caroline@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, REMORAID
-	dbp LEVEL_FROM_BADGES + 3, REMORAID
-	dbp LEVEL_FROM_BADGES + 3, REMORAID
-	db -1 ; end
+	def_trainer CAROLINE, "Caroline"
+	tr_mon LEVEL_FROM_BADGES + 3, REMORAID
+	tr_mon LEVEL_FROM_BADGES + 3, REMORAID
+	tr_mon LEVEL_FROM_BADGES + 3, REMORAID
+	end_trainer
 
-	; SWIMMERF
-	db "Natalia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, STARYU
-	dbp LEVEL_FROM_BADGES + 4, STARYU
-	db -1 ; end
+	def_trainer NATALIA, "Natalia"
+	tr_mon LEVEL_FROM_BADGES + 4, STARYU
+	tr_mon LEVEL_FROM_BADGES + 4, STARYU
+	end_trainer
 
-	; SWIMMERF
-	db "Barbara@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, STARMIE
-	db -1 ; end
+	def_trainer BARBARA, "Barbara"
+	tr_mon LEVEL_FROM_BADGES + 5, STARMIE
+	end_trainer
 
-	; SWIMMERF
-	db "Sally@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 1, REMORAID
-	dbp LEVEL_FROM_BADGES + 3, MANTINE
-	db -1 ; end
+	def_trainer SALLY, "Sally"
+	tr_mon LEVEL_FROM_BADGES + 1, REMORAID
+	tr_mon LEVEL_FROM_BADGES + 3, MANTINE
+	end_trainer
 
-	; SWIMMERF
-	db "Tara@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 2, CORSOLA
-	dbp LEVEL_FROM_BADGES + 2, CORSOLA
-	db -1 ; end
+	def_trainer TARA, "Tara"
+	tr_mon LEVEL_FROM_BADGES + 2, CORSOLA
+	tr_mon LEVEL_FROM_BADGES + 2, CORSOLA
+	end_trainer
 
-	; SWIMMERF
-	db "Mayu@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, CORSOLA
-	dbp 59, CORSOLA
-	dbp 60, CORSOLA
-	db -1 ; end
+	def_trainer MAYU, "Mayu"
+	tr_mon 58, CORSOLA
+	tr_mon 59, CORSOLA
+	tr_mon 60, CORSOLA
+	end_trainer
 
-	; SWIMMERF
-	db "Leona@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, POLITOED
-	db -1 ; end
+	def_trainer LEONA, "Leona"
+	tr_mon 62, POLITOED
+	end_trainer
 
-	; SWIMMERF
-	db "Chelan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, AZUMARILL
-	db -1 ; end
+	def_trainer CHELAN, "Chelan"
+	tr_mon 61, AZUMARILL
+	end_trainer
 
-	; SWIMMERF
-	db "Kendra@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, SLOWKING
-	db -1 ; end
+	def_trainer KENDRA, "Kendra"
+	tr_mon 62, SLOWKING
+	end_trainer
 
-	; SWIMMERF
-	db "Woda@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, MANTINE
-	dbp 57, OCTILLERY
-	db -1 ; end
+	def_trainer WODA, "Woda"
+	tr_mon 57, MANTINE
+	tr_mon 57, OCTILLERY
+	end_trainer
 
-	; SWIMMERF
-	db "Rachel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, REMORAID
-	dbp 53, REMORAID
-	dbp 53, REMORAID
-	dbp 55, MANTINE
-	db -1 ; end
+	def_trainer RACHEL, "Rachel"
+	tr_mon 53, REMORAID
+	tr_mon 53, REMORAID
+	tr_mon 53, REMORAID
+	tr_mon 55, MANTINE
+	end_trainer
 
-	; SWIMMERF
-	db "Marina@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, GOLDUCK
-	dbp 63, LANTURN
-	dbp 63, GYARADOS
-	db -1 ; end
+	def_trainer MARINA, "Marina"
+	tr_mon 63, GOLDUCK
+	tr_mon 63, LANTURN
+	tr_mon 63, GYARADOS
+	end_trainer
 
 
 SECTION "BurglarGroup", ROMX
 BurglarGroup:
 
 	def_trainer_class BURGLAR
-	db "Duncan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 34, KOFFING
-	dbp 35, MAGMAR
-	dbp 34, WEEZING
-	db -1 ; end
+	def_trainer DUNCAN, "Duncan"
+	tr_mon 34, KOFFING
+	tr_mon 35, MAGMAR
+	tr_mon 34, WEEZING
+	end_trainer
 
-	; BURGLAR
-	db "Orson@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, GROWLITHE
-	dbp 34, WEEZING
-	db -1 ; end
+	def_trainer ORSON, "Orson"
+	tr_mon 36, GROWLITHE
+	tr_mon 34, WEEZING
+	end_trainer
 
-	; BURGLAR
-	db "Corey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
-	; party
-	dbp 44, KOFFING, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 46, WEEZING, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 46, MAGMAR, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 48, PERSIAN, MALE | ALOLAN_FORM
-		db AMULET_COIN, ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer COREY, "Corey"
+	tr_mon 44, KOFFING, MALE
+	tr_mon 46, WEEZING, MALE
+	tr_mon 46, MAGMAR, MALE
+	tr_mon 48, PERSIAN @ AMULET_COIN, MALE | ALOLAN_FORM
+	end_trainer
 
-	; BURGLAR
-	db "Pete@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, CHARMELEON
-	dbp 62, MAGMAR
-	db -1 ; end
+	def_trainer PETE, "Pete"
+	tr_mon 59, CHARMELEON
+	tr_mon 62, MAGMAR
+	end_trainer
 
-	; BURGLAR
-	db "Louis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, ARCANINE
-	dbp 62, RAPIDASH
-	db -1 ; end
+	def_trainer LOUIS, "Louis"
+	tr_mon 62, ARCANINE
+	tr_mon 62, RAPIDASH
+	end_trainer
 
 
 SECTION "PIGroup", ROMX
 PIGroup:
 
 	def_trainer_class PI
-	db "Looker@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 48, ARCANINE
-	dbp 48, ELECTABUZZ
-	dbp 50, POLITOED
-	db -1 ; end
+	def_trainer LOOKER, "Looker"
+	tr_mon 48, ARCANINE
+	tr_mon 48, ELECTABUZZ
+	tr_mon 50, POLITOED
+	end_trainer
 
 
 SECTION "ScientistGroup", ROMX
 ScientistGroup:
 
 	def_trainer_class SCIENTIST
-	db "Lowell@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, ARCANINE
-	db -1 ; end
+	def_trainer LOWELL, "Lowell"
+	tr_mon 60, ARCANINE
+	end_trainer
 
-	; SCIENTIST
-	db "Dennett@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, NINETALES
-	db -1 ; end
+	def_trainer DENNETT, "Dennett"
+	tr_mon 60, NINETALES
+	end_trainer
 
-	; SCIENTIST
-	db "Linden@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, MAGMAR
-	db -1 ; end
+	def_trainer LINDEN, "Linden"
+	tr_mon 60, MAGMAR
+	end_trainer
 
-	; SCIENTIST
-	db "Oskar@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 64, PORYGON2
-	dbp 62, NINETALES
-	dbp 60, MAGNEZONE
-	db -1 ; end
+	def_trainer OSKAR, "Oskar"
+	tr_mon 64, PORYGON2
+	tr_mon 62, NINETALES
+	tr_mon 60, MAGNEZONE
+	end_trainer
 
-	; SCIENTIST
-	db "Braydon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, MAGNETON
-	dbp 62, MAGNEZONE
-	dbp 63, ELECTRODE
-	db -1 ; end
+	def_trainer BRAYDON, "Braydon"
+	tr_mon 60, MAGNETON
+	tr_mon 62, MAGNEZONE
+	tr_mon 63, ELECTRODE
+	end_trainer
 
-	; SCIENTIST
-	db "Carl@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, PORYGON
-	dbp LEVEL_FROM_BADGES + 5, PORYGON
-	dbp LEVEL_FROM_BADGES + 6, MAGNETON
-	db -1 ; end
+	def_trainer CARL, "Carl"
+	tr_mon LEVEL_FROM_BADGES + 5, PORYGON
+	tr_mon LEVEL_FROM_BADGES + 5, PORYGON
+	tr_mon LEVEL_FROM_BADGES + 6, MAGNETON
+	end_trainer
 
-	; SCIENTIST
-	db "Dexter@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, MAGNETON
-	dbp 55, ALAKAZAM
-	db -1 ; end
+	def_trainer DEXTER, "Dexter"
+	tr_mon 54, MAGNETON
+	tr_mon 55, ALAKAZAM
+	end_trainer
 
-	; SCIENTIST
-	db "Joseph@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, DITTO
-	dbp 55, GOLDUCK
-	dbp 53, KADABRA
-	db -1 ; end
+	def_trainer JOSEPH, "Joseph"
+	tr_mon 54, DITTO
+	tr_mon 55, GOLDUCK
+	tr_mon 53, KADABRA
+	end_trainer
 
-	; SCIENTIST
-	db "Nigel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, ELECTABUZZ
-	dbp 55, LANTURN
-	db -1 ; end
+	def_trainer NIGEL, "Nigel"
+	tr_mon 54, ELECTABUZZ
+	tr_mon 55, LANTURN
+	end_trainer
 
-	; SCIENTIST
-	db "Piotr@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, GOLDUCK
-	dbp 55, ALAKAZAM
-	db -1 ; end
+	def_trainer PIOTR, "Piotr"
+	tr_mon 54, GOLDUCK
+	tr_mon 55, ALAKAZAM
+	end_trainer
 
-	; SCIENTIST
-	db "Sanders@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, ALAKAZAM
-	dbp 54, LAPRAS
-	dbp 53, NOCTOWL
-	db -1 ; end
+	def_trainer SANDERS, "Sanders"
+	tr_mon 52, ALAKAZAM
+	tr_mon 54, LAPRAS
+	tr_mon 53, NOCTOWL
+	end_trainer
 
 SECTION "RocketScientistGroup", ROMX
 RocketScientistGroup:
 
 	def_trainer_class ROCKET_SCIENTIST
-	db "Ross@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 30, KOFFING, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 30, GRIMER, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ROSS, "Ross"
+	tr_mon 30, KOFFING, MALE
+	tr_mon 30, GRIMER, MALE | ALOLAN_FORM
+	end_trainer
 
-	; SCIENTIST
-	db "Mitch@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 25, DITTO
-	dbp 25, PORYGON
-	db -1 ; end
+	def_trainer MITCH, "Mitch"
+	tr_mon 25, DITTO
+	tr_mon 25, PORYGON
+	end_trainer
 
-	; SCIENTIST
-	db "Jed@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 29, MAGNEMITE
-	dbp 30, MAGNETON
-	dbp 29, MAGNEMITE
-	db -1 ; end
+	def_trainer JED, "Jed"
+	tr_mon 29, MAGNEMITE
+	tr_mon 30, MAGNETON
+	tr_mon 29, MAGNEMITE
+	end_trainer
 
-	; SCIENTIST
-	db "Garrett@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, MAGNETON
-	dbp 36, MAGNEMITE
-	dbp 35, MAGNETON
-	db -1 ; end
+	def_trainer MARC, "Garrett" ; MISMATCH
+	tr_mon 35, MAGNETON
+	tr_mon 36, MAGNEMITE
+	tr_mon 35, MAGNETON
+	end_trainer
 
-	; SCIENTIST
-	db "Trenton@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 35, PORYGON_Z
-		db CONVERSION, RECOVER, TRI_ATTACK, PSYBEAM
-	db -1 ; end
+	def_trainer RICH, "Trenton" ; MISMATCH
+	tr_mon 35, PORYGON_Z
+		tr_moves CONVERSION, RECOVER, TRI_ATTACK, PSYBEAM
+	end_trainer
 
 
 SECTION "BoarderGroup", ROMX
 BoarderGroup:
 
 	def_trainer_class BOARDER
-	db "Ronald@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, SEEL
-	dbp 35, DEWGONG
-	dbp 33, SNEASEL
-	db -1 ; end
+	def_trainer RONALD, "Ronald"
+	tr_mon 33, SEEL
+	tr_mon 35, DEWGONG
+	tr_mon 33, SNEASEL
+	end_trainer
 
-	; BOARDER
-	db "Brad@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, SWINUB
-	dbp 35, SWINUB
-	db -1 ; end
+	def_trainer BRAD, "Brad"
+	tr_mon 35, SWINUB
+	tr_mon 35, SWINUB
+	end_trainer
 
-	; BOARDER
-	db "Douglas@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 33, SHELLDER
-	dbp 35, CLOYSTER
-	dbp 33, SHELLDER
-	db -1 ; end
+	def_trainer DOUGLAS, "Douglas"
+	tr_mon 33, SHELLDER
+	tr_mon 35, CLOYSTER
+	tr_mon 33, SHELLDER
+	end_trainer
 
-	; BOARDER
-	db "Shaun@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 65, CLOYSTER
-	dbp 60, DEWGONG
-	db -1 ; end
+	def_trainer SHAUN, "Shaun"
+	tr_mon 65, CLOYSTER
+	tr_mon 60, DEWGONG
+	end_trainer
 
-	; BOARDER
-	db "Bryce@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 65, DEWGONG
-	dbp 60, LAPRAS
-	db -1 ; end
+	def_trainer BRYCE, "Bryce"
+	tr_mon 65, DEWGONG
+	tr_mon 60, LAPRAS
+	end_trainer
 
-	; BOARDER
-	db "Stefan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, SWINUB
-	dbp 36, PILOSWINE
-	dbp 38, SNEASEL
-	db -1 ; end
+	def_trainer STEFAN, "Stefan"
+	tr_mon 36, SWINUB
+	tr_mon 36, PILOSWINE
+	tr_mon 38, SNEASEL
+	end_trainer
 
-	; BOARDER
-	db "Max@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 36, PILOSWINE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 37, SANDSLASH, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer MAX, "Max"
+	tr_mon 36, PILOSWINE, MALE
+	tr_mon 37, SANDSLASH, MALE | ALOLAN_FORM
+	end_trainer
 
 
 SECTION "SkierGroup", ROMX
 SkierGroup:
 
 	def_trainer_class SKIER
-	db "Roxanne@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, JYNX
-	db -1 ; end
+	def_trainer ROXANNE, "Roxanne"
+	tr_mon 36, JYNX
+	end_trainer
 
-	; SKIER
-	db "Clarissa@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, PILOSWINE
-	db -1 ; end
+	def_trainer CLARISSA, "Clarissa"
+	tr_mon 36, PILOSWINE
+	end_trainer
 
-	; SKIER
-	db "Cady@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, MAMOSWINE
-	db -1 ; end
+	def_trainer CADY, "Cady"
+	tr_mon 63, MAMOSWINE
+	end_trainer
 
-	; SKIER
-	db "Maria@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 39, JYNX
-	db -1 ; end
+	def_trainer MARIA, "Maria"
+	tr_mon 39, JYNX
+	end_trainer
 
-	; SKIER
-	db "Becky@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 37, LAPRAS, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 38, DEWGONG, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 38, NINETALES, FEMALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer BECKY, "Becky"
+	tr_mon 37, LAPRAS, FEMALE
+	tr_mon 38, DEWGONG, FEMALE
+	tr_mon 38, NINETALES, FEMALE | ALOLAN_FORM
+	end_trainer
 
 
 SECTION "BlackbeltGroup", ROMX
 BlackbeltGroup:
 
 	def_trainer_class BLACKBELT_T
-	db "Kenji@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 39, MACHOKE
-	db -1 ; end
+	def_trainer KENJI1, "Kenji"
+	tr_mon 39, MACHOKE
+	end_trainer
 
 ;	; unused
 ;	; BLACKBELT_T
-;	db "Kenji@"
-;	db TRAINERTYPE_NORMAL
+;	def_trainer KENJI2, "Kenji"
+;	need_db_fix TRAINERTYPE_NORMAL
 ;
 ;	; party
-;	dbp 36, ONIX
-;	dbp 38, HITMONLEE
-;	dbp 36, ONIX
-;	dbp 39, MACHOKE
+;	tr_mon 36, ONIX
+;	tr_mon 38, HITMONLEE
+;	tr_mon 36, ONIX
+;	tr_mon 39, MACHOKE
 ;
-;	db -1 ; end
+;	end_trainer
 
 ;	; unused
 ;	; BLACKBELT_T
-;	db "Kenji@"
-;	db TRAINERTYPE_MOVES
+;	def_trainer KENJI3, "Kenji"
+;	need_db_fix TRAINERTYPE_MOVES
 ;
 ;	; party
 ;
-;	dbp 33, ONIX
-;		db WRAP
-;		db ROCK_THROW
-;		db TOXIC
-;		db DIG
+;	tr_mon 33, ONIX
+;		need_db_fix WRAP
+;		need_db_fix ROCK_THROW
+;		need_db_fix TOXIC
+;		need_db_fix DIG
 ;
-;	dbp 38, MACHAMP
-;		db HEADBUTT
-;		db SWAGGER
-;		db THUNDERPUNCH
-;		db BULLET_PUNCH
+;	tr_mon 38, MACHAMP
+;		need_db_fix HEADBUTT
+;		need_db_fix SWAGGER
+;		need_db_fix THUNDERPUNCH
+;		need_db_fix BULLET_PUNCH
 ;
-;	dbp 33, STEELIX
-;		db EARTHQUAKE
-;		db ROCK_THROW
-;		db IRON_TAIL
-;		db SANDSTORM
+;	tr_mon 33, STEELIX
+;		need_db_fix EARTHQUAKE
+;		need_db_fix ROCK_THROW
+;		need_db_fix IRON_TAIL
+;		need_db_fix SANDSTORM
 ;
-;	dbp 36, HITMONLEE
-;		db DOUBLE_TEAM
-;		db HI_JUMP_KICK
-;		db MUD_SLAP
-;		db SWIFT
+;	tr_mon 36, HITMONLEE
+;		need_db_fix DOUBLE_TEAM
+;		need_db_fix HI_JUMP_KICK
+;		need_db_fix MUD_SLAP
+;		need_db_fix SWIFT
 ;
-;	db -1 ; end
+;	end_trainer
 
-	; BLACKBELT_T
-	db "Yoshi@"
-	db TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp 27, HITMONLEE
-		db "Bruce@"
-		db DOUBLE_KICK, BULK_UP, HI_JUMP_KICK, FOCUS_ENERGY
-	db -1 ; end
+	def_trainer YOSHI, "Yoshi"
+	tr_mon 27, "Bruce", HITMONLEE
+		tr_moves DOUBLE_KICK, BULK_UP, HI_JUMP_KICK, FOCUS_ENERGY
+	end_trainer
 
-	; BLACKBELT_T
-	db "Lao@"
-	db TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp 27, HITMONCHAN
-		db "Jackie@"
-		db AERIAL_ACE, THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH
-	db -1 ; end
+	def_trainer LAO, "Lao"
+	tr_mon 27, "Jackie", HITMONCHAN
+		tr_moves AERIAL_ACE, THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH
+	end_trainer
 
-	; BLACKBELT_T
-	db "Nob@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 25, MACHOP
-		db LEER, FOCUS_ENERGY, KARATE_CHOP, SEISMIC_TOSS
-	dbp 25, MACHOKE
-		db LEER, KARATE_CHOP, SEISMIC_TOSS, ROCK_SLIDE
-	db -1 ; end
+	def_trainer NOB, "Nob"
+	tr_mon 25, MACHOP
+		tr_moves LEER, FOCUS_ENERGY, KARATE_CHOP, SEISMIC_TOSS
+	tr_mon 25, MACHOKE
+		tr_moves LEER, KARATE_CHOP, SEISMIC_TOSS, ROCK_SLIDE
+	end_trainer
 
-	; BLACKBELT_T
-	db "Lung@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 23, MANKEY
-	dbp 23, MANKEY
-	dbp 25, PRIMEAPE
-	db -1 ; end
+	def_trainer LUNG, "Lung"
+	tr_mon 23, MANKEY
+	tr_mon 23, MANKEY
+	tr_mon 25, PRIMEAPE
+	end_trainer
 
-	; BLACKBELT_T
-	db "Wai@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 46, MACHOKE
-	dbp 48, MACHOKE
-	dbp 50, MACHOKE
-	db -1 ; end
+	def_trainer WAI, "Wai"
+	tr_mon 46, MACHOKE
+	tr_mon 48, MACHOKE
+	tr_mon 50, MACHOKE
+	end_trainer
 
-	; BLACKBELT_T
-	db "Inigo@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, PRIMEAPE
-	dbp 59, PRIMEAPE
-	dbp 60, MACHAMP
-	db -1 ; end
+	def_trainer INIGO, "Inigo"
+	tr_mon 59, PRIMEAPE
+	tr_mon 59, PRIMEAPE
+	tr_mon 60, MACHAMP
+	end_trainer
 
-	; BLACKBELT_T
-	db "Manford@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, POLIWRATH
-	db -1 ; end
+	def_trainer MANFORD, "Manford"
+	tr_mon 63, POLIWRATH
+	end_trainer
 
-	; BLACKBELT_T
-	db "Ander@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, PRIMEAPE
-	dbp 57, GRAVELER
-	dbp 62, MACHOKE
-	db -1 ; end
+	def_trainer ANDER, "Ander"
+	tr_mon 61, PRIMEAPE
+	tr_mon 57, GRAVELER
+	tr_mon 62, MACHOKE
+	end_trainer
 
-	; BLACKBELT_T
-	db "Takeo@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, HITMONTOP
-	dbp 54, HERACROSS
-	dbp 56, POLIWRATH
-	db -1 ; end
+	def_trainer TAKEO, "Takeo"
+	tr_mon 52, HITMONTOP
+	tr_mon 54, HERACROSS
+	tr_mon 56, POLIWRATH
+	end_trainer
 
-	; BLACKBELT_T
-	db "Rylan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, MAGMORTAR
-	dbp 52, ARCANINE
-	dbp 53, HOUNDOOM
-	db -1 ; end
+	def_trainer RYLAN, "Rylan"
+	tr_mon 54, MAGMORTAR
+	tr_mon 52, ARCANINE
+	tr_mon 53, HOUNDOOM
+	end_trainer
 
 
 SECTION "BattleGirlGroup", ROMX
 BattleGirlGroup:
 
 	def_trainer_class BATTLE_GIRL
-	db "Subaru@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, MACHOP
-	dbp LEVEL_FROM_BADGES + 7, MACHOKE
-	dbp LEVEL_FROM_BADGES + 8, PRIMEAPE
-	db -1 ; end
+	def_trainer SUBARU, "Subaru"
+	tr_mon LEVEL_FROM_BADGES + 6, MACHOP
+	tr_mon LEVEL_FROM_BADGES + 7, MACHOKE
+	tr_mon LEVEL_FROM_BADGES + 8, PRIMEAPE
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Diane@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, HITMONLEE
-	dbp LEVEL_FROM_BADGES + 8, URSARING
-	db -1 ; end
+	def_trainer DIANE, "Diane"
+	tr_mon LEVEL_FROM_BADGES + 8, HITMONLEE
+	tr_mon LEVEL_FROM_BADGES + 8, URSARING
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Kagami@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, PRIMEAPE
-	dbp LEVEL_FROM_BADGES + 5, MACHOKE
-	dbp LEVEL_FROM_BADGES + 7, URSARING
-	db -1 ; end
+	def_trainer KAGAMI, "Kagami"
+	tr_mon LEVEL_FROM_BADGES + 5, PRIMEAPE
+	tr_mon LEVEL_FROM_BADGES + 5, MACHOKE
+	tr_mon LEVEL_FROM_BADGES + 7, URSARING
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Nozomi@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, MACHOKE
-	dbp 36, MACHOKE
-	dbp 37, HITMONTOP
-	db -1 ; end
+	def_trainer NOZOMI, "Nozomi"
+	tr_mon 36, MACHOKE
+	tr_mon 36, MACHOKE
+	tr_mon 37, HITMONTOP
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Ronda@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, HITMONCHAN
-	dbp 39, MACHAMP
-	dbp 38, URSARING
-	db -1 ; end
+	def_trainer RONDA, "Ronda"
+	tr_mon 37, HITMONCHAN
+	tr_mon 39, MACHAMP
+	tr_mon 38, URSARING
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Padma@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 7, HITMONLEE
-	dbp LEVEL_FROM_BADGES + 8, HITMONCHAN
-	dbp LEVEL_FROM_BADGES + 9, HITMONTOP
-	db -1 ; end
+	def_trainer PADMA, "Padma"
+	tr_mon LEVEL_FROM_BADGES + 7, HITMONLEE
+	tr_mon LEVEL_FROM_BADGES + 8, HITMONCHAN
+	tr_mon LEVEL_FROM_BADGES + 9, HITMONTOP
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Emy@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 8, PRIMEAPE, FEMALE
-		db PROTECT_PADS, FAKE_PERFECT_DVS, ABIL_PRIMEAPE_DEFIANT | NAT_ATK_UP_SATK_DOWN
-		db CROSS_CHOP, GUNK_SHOT, BULK_UP, NIGHT_SLASH
-	dbp LEVEL_FROM_BADGES + 10, URSARING, MALE
-		db PROTECT_PADS, FAKE_PERFECT_DVS, ABIL_URSARING_UNNERVE | NAT_ATK_UP_SATK_DOWN
-		db PLAY_ROUGH, SLASH, BELLY_DRUM, NIGHT_SLASH
-	db -1 ; end
+	def_trainer EMY, "Emy"
+	tr_mon LEVEL_FROM_BADGES + 8, PRIMEAPE @ PROTECT_PADS, FEMALE
+		tr_extra DEFIANT, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_moves CROSS_CHOP, GUNK_SHOT, BULK_UP, NIGHT_SLASH
+	tr_mon LEVEL_FROM_BADGES + 10, URSARING @ PROTECT_PADS, MALE
+		tr_extra UNNERVE, ATK_UP_SATK_DOWN
+		tr_dvs 15 All
+		tr_moves PLAY_ROUGH, SLASH, BELLY_DRUM, NIGHT_SLASH
+	end_trainer
 
-	; BATTLE_GIRL
-	db "Sasha@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, PRIMEAPE
-	dbp 55, TYPHLOSION
-	dbp 54, RAPIDASH
-	db -1 ; end
+	def_trainer SASHA, "Sasha"
+	tr_mon 52, PRIMEAPE
+	tr_mon 55, TYPHLOSION
+	tr_mon 54, RAPIDASH
+	end_trainer
 
 
 SECTION "DragonTamerGroup", ROMX
 DragonTamerGroup:
 
 	def_trainer_class DRAGON_TAMER
-	db "Paul@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, DRATINI
-	dbp 37, DRATINI
-	dbp 38, DRAGONAIR
-	db -1 ; end
+	def_trainer PAUL, "Paul"
+	tr_mon 37, DRATINI
+	tr_mon 37, DRATINI
+	tr_mon 38, DRAGONAIR
+	end_trainer
 
-	; DRAGON_TAMER
-	db "Darin@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 38, DRAGONAIR
-		db BODY_SLAM, SURF, DRAGON_PULSE, AQUA_TAIL
-	dbp 38, CHARIZARD
-		db SLASH, FLY, DRAGON_CLAW, FLAME_CHARGE
-	db -1 ; end
+	def_trainer DARIN, "Darin"
+	tr_mon 38, DRAGONAIR
+		tr_moves BODY_SLAM, SURF, DRAGON_PULSE, AQUA_TAIL
+	tr_mon 38, CHARIZARD
+		tr_moves SLASH, FLY, DRAGON_CLAW, FLAME_CHARGE
+	end_trainer
 
-	; DRAGON_TAMER
-	db "Adam@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, YANMA
-	dbp 38, SEADRA
-	dbp 39, DRATINI
-	db -1 ; end
+	def_trainer ADAM, "Adam"
+	tr_mon 37, YANMA
+	tr_mon 38, SEADRA
+	tr_mon 39, DRATINI
+	end_trainer
 
-	; DRAGON_TAMER
-	db "Erick@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 39, DRAGONAIR
-		db THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, BODY_SLAM
-	dbp 38, SEADRA
-		db SMOKESCREEN, AQUA_JET, WATER_PULSE, OUTRAGE
+	def_trainer ERICK, "Erick"
+	tr_mon 39, DRAGONAIR
+		tr_moves THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, BODY_SLAM
+	tr_mon 38, SEADRA
+		tr_moves SMOKESCREEN, AQUA_JET, WATER_PULSE, OUTRAGE
 if DEF(FAITHFUL)
-	dbp 40, DRAGONAIR
-		db WRAP, DRAGON_RAGE, AQUA_TAIL, DRAGON_PULSE
+	tr_mon 40, DRAGONAIR
+		tr_moves WRAP, DRAGON_RAGE, AQUA_TAIL, DRAGON_PULSE
 else
-	dbp 40, YANMEGA
-		db DOUBLE_TEAM, DRAGON_RAGE, SLASH, DRAGON_PULSE
+	tr_mon 40, YANMEGA
+		tr_moves DOUBLE_TEAM, DRAGON_RAGE, SLASH, DRAGON_PULSE
 endc
-	db -1 ; end
+	end_trainer
 
-	; DRAGON_TAMER
-	db "Kazu@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 40, DRAGONAIR
-		db THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, FLAMETHROWER
-	dbp 40, DRAGONAIR
-		db THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, THUNDERBOLT
-	dbp 40, DRAGONAIR
-		db THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, ICE_BEAM
-	db -1 ; end
+	def_trainer KAZU, "Kazu"
+	tr_mon 40, DRAGONAIR
+		tr_moves THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, FLAMETHROWER
+	tr_mon 40, DRAGONAIR
+		tr_moves THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, THUNDERBOLT
+	tr_mon 40, DRAGONAIR
+		tr_moves THUNDER_WAVE, DRAGON_RAGE, AQUA_TAIL, ICE_BEAM
+	end_trainer
 
-	; DRAGON_TAMER
-	db "Aegon@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	def_trainer AEGON, "Aegon"
 
-	dbp LEVEL_FROM_BADGES + 8, DRAGONITE, MALE
-		db FOCUS_SASH, ABIL_DRAGONITE_MULTISCALE | NAT_ATK_UP_SATK_DOWN
-		ev_spread 252 Atk, 12 Spe
-		db FOCUS_ENERGY, DRAGON_CLAW, EARTHQUAKE, ICE_PUNCH
-	dbp LEVEL_FROM_BADGES + 8, KINGDRA, MALE
-		db FOCUS_SASH, ABIL_KINGDRA_SNIPER | NAT_SATK_UP_ATK_DOWN
-		ev_spread 252 SAt, 12 Spe
-		db DOUBLE_TEAM, DRAGON_PULSE, SURF, ICE_BEAM
-	dbp LEVEL_FROM_BADGES + 8, CHARIZARD, MALE
-		db FOCUS_SASH, ABIL_CHARIZARD_BLAZE | NAT_ATK_UP_SATK_DOWN
-		ev_spread 132 Atk, 132 Spe
-		db DRAGON_DANCE, DRAGON_CLAW, EARTHQUAKE, FLARE_BLITZ
-	db -1 ; end
+	tr_mon LEVEL_FROM_BADGES + 8, DRAGONITE @ FOCUS_SASH, MALE
+		tr_extra MULTISCALE, ATK_UP_SATK_DOWN
+		tr_evs 252 Atk, 12 Spe
+		tr_moves FOCUS_ENERGY, DRAGON_CLAW, EARTHQUAKE, ICE_PUNCH
+	tr_mon LEVEL_FROM_BADGES + 8, KINGDRA @ FOCUS_SASH, MALE
+		tr_extra SNIPER, SATK_UP_ATK_DOWN
+		tr_evs 252 SAt, 12 Spe
+		tr_moves DOUBLE_TEAM, DRAGON_PULSE, SURF, ICE_BEAM
+	tr_mon LEVEL_FROM_BADGES + 8, CHARIZARD @ FOCUS_SASH, MALE
+		tr_extra BLAZE, ATK_UP_SATK_DOWN
+		tr_evs 132 Atk, 132 Spe
+		tr_moves DRAGON_DANCE, DRAGON_CLAW, EARTHQUAKE, FLARE_BLITZ
+	end_trainer
 
 
 SECTION "EngineerGroup", ROMX
 EngineerGroup:
 
 	def_trainer_class ENGINEER
-	db "Smith@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, MAGNETON
-	dbp 60, MAGNEZONE
-	db -1 ; end
+	def_trainer SMITH, "Smith"
+	tr_mon 58, MAGNETON
+	tr_mon 60, MAGNEZONE
+	end_trainer
 
-	; ENGINEER
-	db "Bernie@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, MAGNEMITE
-	dbp 56, MAGNETON
-	dbp 54, MAGNEMITE
-	db -1 ; end
+	def_trainer BERNIE, "Bernie"
+	tr_mon 54, MAGNEMITE
+	tr_mon 56, MAGNETON
+	tr_mon 54, MAGNEMITE
+	end_trainer
 
-	; ENGINEER
-	db "Camden@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, MAGNETON
-	dbp 56, ELECTRODE
-	db -1 ; end
+	def_trainer CAMDEN, "Camden"
+	tr_mon 56, MAGNETON
+	tr_mon 56, ELECTRODE
+	end_trainer
 
-	; ENGINEER
-	db "Lang@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, ELECTRODE
-	dbp 55, ELECTRODE
-	db -1 ; end
+	def_trainer LANG, "Lang"
+	tr_mon 55, ELECTRODE
+	tr_mon 55, ELECTRODE
+	end_trainer
 
-	; ENGINEER
-	db "Hugo@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, MAGNETON
-	dbp 56, STEELIX
-	db -1 ; end
+	def_trainer HUGO, "Hugo"
+	tr_mon 54, MAGNETON
+	tr_mon 56, STEELIX
+	end_trainer
 
-	; ENGINEER
-	db "Howard@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, MAGNEZONE
-	db -1 ; end
+	def_trainer HOWARD, "Howard"
+	tr_mon 57, MAGNEZONE
+	end_trainer
 
-	; ENGINEER
-	db "Graden@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 2, GEODUDE, MALE | ALOLAN_FORM
-		db ABIL_GEODUDE_ALOLAN_GALVANIZE | NAT_NEUTRAL
-		db EXPLOSION, NO_MOVE, NO_MOVE, NO_MOVE
-	dbp LEVEL_FROM_BADGES + 2, GEODUDE, MALE | ALOLAN_FORM
-		db ABIL_GEODUDE_ALOLAN_GALVANIZE | NAT_NEUTRAL
-		db EXPLOSION, NO_MOVE, NO_MOVE, NO_MOVE
-	dbp LEVEL_FROM_BADGES + 3, ELEKID, MALE
-		db ABIL_ELEKID_STATIC | NAT_NEUTRAL
-		db THUNDERPUNCH, ROCK_SMASH, BODY_SLAM, BULK_UP
-	db -1 ; end
+	def_trainer GRADEN, "Graden"
+	tr_mon LEVEL_FROM_BADGES + 2, GEODUDE, MALE | ALOLAN_FORM
+		tr_extra GALVANIZE
+		tr_moves EXPLOSION
+	tr_mon LEVEL_FROM_BADGES + 2, GEODUDE, MALE | ALOLAN_FORM
+		tr_extra GALVANIZE
+		tr_moves EXPLOSION
+	tr_mon LEVEL_FROM_BADGES + 3, ELEKID, MALE
+		tr_extra STATIC
+		tr_moves THUNDERPUNCH, ROCK_SMASH, BODY_SLAM, BULK_UP
+	end_trainer
 
-	; ENGINEER
-	db "Gustav@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
-		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
-		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 3, MAGNEMITE, MALE
-		db ABILITY_2 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer GUSTAV, "Gustav"
+	tr_mon LEVEL_FROM_BADGES + 1, VOLTORB, MALE
+		tr_extra AFTERMATH
+	tr_mon LEVEL_FROM_BADGES + 1, VOLTORB, MALE
+		tr_extra AFTERMATH
+	tr_mon LEVEL_FROM_BADGES + 3, MAGNEMITE, MALE
+if DEF(FAITHFUL)
+		tr_extra STURDY
+else
+		tr_extra LEVITATE
+endc
+	end_trainer
 
-	; ENGINEER
-	db "Nicolas@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
-		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
-		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 3, MAGNEMITE, MALE
-		db ABILITY_2 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer NICOLAS, "Nicolas"
+	tr_mon LEVEL_FROM_BADGES + 1, VOLTORB, MALE
+		tr_extra AFTERMATH
+	tr_mon LEVEL_FROM_BADGES + 1, VOLTORB, MALE
+		tr_extra AFTERMATH
+	tr_mon LEVEL_FROM_BADGES + 3, MAGNEMITE, MALE
+if DEF(FAITHFUL)
+		tr_extra STURDY
+else
+		tr_extra LEVITATE
+endc
+	end_trainer
 
 SECTION "TeacherFGroup", ROMX
 TeacherFGroup:
 
 	def_trainer_class TEACHER_F
-	db "Colette@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, CLEFAIRY
-	db -1 ; end
+	def_trainer COLETTE, "Colette"
+	tr_mon 60, CLEFAIRY
+	end_trainer
 
-	; TEACHER_F
-	db "Hillary@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, AIPOM
-	dbp 56, SUNFLORA
-	dbp 59, MAROWAK
-	db -1 ; end
+	def_trainer HILLARY, "Hillary"
+	tr_mon 58, AIPOM
+	tr_mon 56, SUNFLORA
+	tr_mon 59, MAROWAK
+	end_trainer
 
-	; TEACHER_F
-	db "Shirley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 47, WIGGLYTUFF
-	db -1 ; end
+	def_trainer SHIRLEY, "Shirley"
+	tr_mon 47, WIGGLYTUFF
+	end_trainer
 
-	; TEACHER_F
-	db "Kathryn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, BELLOSSOM
-	dbp LEVEL_FROM_BADGES + 3, PIDGEOTTO
-	dbp LEVEL_FROM_BADGES + 2, FURRET
-	db -1 ; end
+	def_trainer KATHRYN, "Kathryn"
+	tr_mon LEVEL_FROM_BADGES + 5, BELLOSSOM
+	tr_mon LEVEL_FROM_BADGES + 3, PIDGEOTTO
+	tr_mon LEVEL_FROM_BADGES + 2, FURRET
+	end_trainer
 
-	; TEACHER_F
-	db "Clarice@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, FURRET
-	dbp 56, SUNFLORA
-	db -1 ; end
+	def_trainer CLARICE, "Clarice"
+	tr_mon 54, FURRET
+	tr_mon 56, SUNFLORA
+	end_trainer
 
-	; TEACHER_F
-	db "Serena@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, UMBREON
-	dbp 52, VAPOREON
-	dbp 54, ESPEON
-	db -1 ; end
+	def_trainer SERENA, "Serena"
+	tr_mon 55, UMBREON
+	tr_mon 52, VAPOREON
+	tr_mon 54, ESPEON
+	end_trainer
 
 SECTION "TeacherMGroup", ROMX
 TeacherMGroup:
 
 	def_trainer_class TEACHER_M
-	db "Nolan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, ELECTRODE
-	dbp 55, MAGNEZONE
-	dbp 56, ELECTIVIRE
-	db -1 ; end
+	def_trainer NOLAN, "Nolan"
+	tr_mon 54, ELECTRODE
+	tr_mon 55, MAGNEZONE
+	tr_mon 56, ELECTIVIRE
+	end_trainer
 
 
 SECTION "GuitaristMGroup", ROMX
 GuitaristMGroup:
 
 	def_trainer_class GUITARISTM
-	db "Clyde@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 50, ELECTABUZZ
-	db -1 ; end
+	def_trainer CLYDE, "Clyde"
+	tr_mon 50, ELECTABUZZ
+	end_trainer
 
-	; GUITARISTM
-	db "Vincent@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, VOLTORB
-	dbp 52, MAGNEMITE
-	dbp 55, JOLTEON
-	db -1 ; end
+	def_trainer VINCENT, "Vincent"
+	tr_mon 53, VOLTORB
+	tr_mon 52, MAGNEMITE
+	tr_mon 55, JOLTEON
+	end_trainer
 
-	; GUITARISTM
-	db "Roger@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, RAICHU
-	dbp 58, ELECTABUZZ
-	db -1 ; end
+	def_trainer ROGER, "Roger"
+	tr_mon 56, RAICHU
+	tr_mon 58, ELECTABUZZ
+	end_trainer
 
-	; GUITARISTM
-	db "Ezekiel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, MAGNEZONE
-	db -1 ; end
+	def_trainer EZEKIEL, "Ezekiel"
+	tr_mon 56, MAGNEZONE
+	end_trainer
 
-	; GUITARISTM
-	db "Biff@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, ONIX
-	dbp 54, MAGNETON
-	dbp 56, SKARMORY
-	db -1 ; end
+	def_trainer BIFF, "Biff"
+	tr_mon 52, ONIX
+	tr_mon 54, MAGNETON
+	tr_mon 56, SKARMORY
+	end_trainer
 
-	; GUITARISTM
-	db "Geddy@"
-	db TRAINERTYPE_NORMAL
-
-	; TODD: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer GEDDY, "Geddy"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
 
 SECTION "GuitaristFGroup", ROMX
 GuitaristFGroup:
 
 	def_trainer_class GUITARISTF
-	db "Janet@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 56, PIKACHU, FEMALE | PIKACHU_SURF_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-		db IRON_TAIL, EXTREMESPEED, SURF, THUNDERBOLT
-	dbp 54, ELECTABUZZ, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-		db LIGHT_SCREEN, THUNDERPUNCH, CROSS_CHOP, SCREECH
-	dbp 55, RAICHU, FEMALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-		db EXTREMESPEED, SURF, THUNDERBOLT, AGILITY
-	db -1 ; end
+	def_trainer JANET, "Janet"
+	tr_mon 56, PIKACHU, FEMALE | PIKACHU_SURF_FORM
+		tr_moves IRON_TAIL, EXTREMESPEED, SURF, THUNDERBOLT
+	tr_mon 54, ELECTABUZZ, FEMALE
+		tr_moves LIGHT_SCREEN, THUNDERPUNCH, CROSS_CHOP, SCREECH
+	tr_mon 55, RAICHU, FEMALE | ALOLAN_FORM
+		tr_moves EXTREMESPEED, SURF, THUNDERBOLT, AGILITY
+	end_trainer
 
-	; GUITARISTF
-	db "Morgan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, ELECTRODE
-	dbp 55, JOLTEON
-	db -1 ; end
+	def_trainer MORGAN, "Morgan"
+	tr_mon 55, ELECTRODE
+	tr_mon 55, JOLTEON
+	end_trainer
 
-	; GUITARISTF
-	db "Ritsuko@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, JOLTEON
-	dbp 58, JOLTEON
-	db -1 ; end
+	def_trainer RITSUKO, "Ritsuko"
+	tr_mon 56, JOLTEON
+	tr_mon 58, JOLTEON
+	end_trainer
 
-	; GUITARISTF
-	db "Wanda@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 53, MAGNEMITE
-	dbp 54, ELECTRODE
-	dbp 55, MAGNETON
-	db -1 ; end
+	def_trainer WANDA, "Wanda"
+	tr_mon 53, MAGNEMITE
+	tr_mon 54, ELECTRODE
+	tr_mon 55, MAGNETON
+	end_trainer
 
-	; GUITARISTF
-	db "Jaclyn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 56, ELECTIVIRE
-	db -1 ; end
+	def_trainer JACLYN, "Jaclyn"
+	tr_mon 56, ELECTIVIRE
+	end_trainer
 
 
 SECTION "BikerGroup", ROMX
 BikerGroup:
 
 	def_trainer_class BIKER
-	db "Dwayne@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, KOFFING
-	dbp 55, WEEZING
-	dbp 56, KOFFING
-	dbp 57, WEEZING
-	db -1 ; end
+	def_trainer DWAYNE, "Dwayne"
+	tr_mon 54, KOFFING
+	tr_mon 55, WEEZING
+	tr_mon 56, KOFFING
+	tr_mon 57, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Harris@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, FLAREON
-	db -1 ; end
+	def_trainer HARRIS, "Harris"
+	tr_mon 57, FLAREON
+	end_trainer
 
-	; BIKER
-	db "Zeke@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, KOFFING
-	dbp 56, WEEZING
-	db -1 ; end
+	def_trainer ZEKE, "Zeke"
+	tr_mon 55, KOFFING
+	tr_mon 56, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Charles@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, KOFFING
-	dbp 54, CHARMELEON
-	dbp 57, WEEZING
-	db -1 ; end
+	def_trainer CHARLES, "Charles"
+	tr_mon 54, KOFFING
+	tr_mon 54, CHARMELEON
+	tr_mon 57, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Reilly@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, WEEZING
-	db -1 ; end
+	def_trainer REILLY, "Reilly"
+	tr_mon 59, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Joel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, MAGMAR
-	dbp 57, MAGMAR
-	db -1 ; end
+	def_trainer JOEL, "Joel"
+	tr_mon 57, MAGMAR
+	tr_mon 57, MAGMAR
+	end_trainer
 
-	; BIKER
-	db "Glenn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, KOFFING
-	dbp 57, MAGMAR
-	dbp 59, WEEZING
-	db -1 ; end
+	def_trainer GLENN, "Glenn"
+	tr_mon 55, KOFFING
+	tr_mon 57, MAGMAR
+	tr_mon 59, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Dale@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, MUK
-	dbp 57, WEEZING
-	db -1 ; end
+	def_trainer DALE, "Dale"
+	tr_mon 57, MUK
+	tr_mon 57, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Jacob@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, MAGMAR
-	dbp 54, TENTACRUEL
-	db -1 ; end
+	def_trainer JACOB, "Jacob"
+	tr_mon 54, MAGMAR
+	tr_mon 54, TENTACRUEL
+	end_trainer
 
-	; BIKER
-	db "Aiden@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, URSARING
-	dbp 55, AZUMARILL
-	db -1 ; end
+	def_trainer AIDEN, "Aiden"
+	tr_mon 55, URSARING
+	tr_mon 55, AZUMARILL
+	end_trainer
 
-	; BIKER
-	db "Dan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, MUK
-	dbp 55, WEEZING
-	dbp 55, WEEZING
-	db -1 ; end
+	def_trainer DAN, "Dan"
+	tr_mon 57, MUK
+	tr_mon 55, WEEZING
+	tr_mon 55, WEEZING
+	end_trainer
 
-	; BIKER
-	db "Teddy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, ARBOK
-	db -1 ; end
+	def_trainer TEDDY, "Teddy"
+	tr_mon 58, ARBOK
+	end_trainer
 
-	; BIKER
-	db "Tyrone@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 22, TYROGUE
-	dbp 32, GRIMER
-	dbp 42, MUK
-	dbp 52, WEEZING
-	db -1 ; end
+	def_trainer TYRONE, "Tyrone"
+	tr_mon 22, TYROGUE
+	tr_mon 32, GRIMER
+	tr_mon 42, MUK
+	tr_mon 52, WEEZING
+	end_trainer
 
 
 SECTION "RoughneckGroup", ROMX
 RoughneckGroup:
 
 	def_trainer_class ROUGHNECK
-	db "Brian@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, TENTACRUEL
-	dbp 55, WEEZING
-	dbp 55, WEEZING
-	db -1 ; end
+	def_trainer BRIAN, "Brian"
+	tr_mon 55, TENTACRUEL
+	tr_mon 55, WEEZING
+	tr_mon 55, WEEZING
+	end_trainer
 
-	; ROUGHNECK
-	db "Theron@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, MUK
-	dbp 55, POLIWRATH
-	db -1 ; end
+	def_trainer THERON, "Theron"
+	tr_mon 55, MUK
+	tr_mon 55, POLIWRATH
+	end_trainer
 
-	; ROUGHNECK
-	db "Markey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 57, ARBOK
-	dbp 56, HOUNDOOM
-	db -1 ; end
+	def_trainer MARKEY, "Markey"
+	tr_mon 57, ARBOK
+	tr_mon 56, HOUNDOOM
+	end_trainer
 
 
 SECTION "TamerGroup", ROMX
 TamerGroup:
 
 	def_trainer_class TAMER
-	db "Brett@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 8, ARBOK
-	dbp LEVEL_FROM_BADGES + 8, TAUROS
-	dbp LEVEL_FROM_BADGES + 9, URSARING
-	db -1 ; end
+	def_trainer BRETT, "Brett"
+	tr_mon LEVEL_FROM_BADGES + 8, ARBOK
+	tr_mon LEVEL_FROM_BADGES + 8, TAUROS
+	tr_mon LEVEL_FROM_BADGES + 9, URSARING
+	end_trainer
 
-	; TAMER
-	db "Vince@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, KANGASKHAN
-	dbp 56, DONPHAN
-	db -1 ; end
+	def_trainer VINCE, "Vince"
+	tr_mon 54, KANGASKHAN
+	tr_mon 56, DONPHAN
+	end_trainer
 
-	; TAMER
-	db "Oswald@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, DONPHAN
-	dbp 62, URSARING
-	dbp 61, KANGASKHAN
-	db -1 ; end
+	def_trainer OSWALD, "Oswald"
+	tr_mon 60, DONPHAN
+	tr_mon 62, URSARING
+	tr_mon 61, KANGASKHAN
+	end_trainer
 
-	; TAMER
-	db "Jordan@"
-	db TRAINERTYPE_NORMAL
-
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer JORDAN, "Jordan"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
 
 SECTION "ArtistGroup", ROMX
 ArtistGroup:
 
 	def_trainer_class ARTIST
-	db "Reina@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, MR__MIME
-	dbp 55, SUDOWOODO
-	db -1 ; end
+	def_trainer REINA, "Reina"
+	tr_mon 55, MR__MIME
+	tr_mon 55, SUDOWOODO
+	end_trainer
 
-	; ARTIST
-	def_trainer "Alina"
+
+	def_trainer ALINA, "Alina"
 	tr_mon 57, SMEARGLE @ MIRACLE_SEED
 		tr_dvs XDVS_HP_GRASS ; green
 		tr_moves SPORE, FLAMETHROWER, SOLAR_BEAM, GIGA_DRAIN
 	end_trainer
 
-	; ARTIST
-	db "Marlene@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
-	; party
-	; TODO: fix DVs to appropriately color Smeargles
-	dbp 55, SMEARGLE
-		db CHARCOAL, DVS_HP_FIRE ; red
-		db FIRE_BLAST, FLAMETHROWER, EARTH_POWER, WILL_O_WISP
-	dbp 55, SMEARGLE
-		db MAGNET, DVS_HP_ELECTRIC ; yellow
-		db THUNDER, THUNDERBOLT, THUNDER_WAVE, RAIN_DANCE
-	dbp 55, SMEARGLE
-		db MYSTIC_WATER, DVS_HP_WATER ; blue
-		db HYDRO_PUMP, SURF, ICE_BEAM, SCALD
-	db -1 ; end
+	def_trainer MARLENE, "Marlene"
+	tr_mon 55, SMEARGLE @ CHARCOAL
+		tr_dvs XDVS_HP_FIRE ; red
+		tr_moves FIRE_BLAST, FLAMETHROWER, EARTH_POWER, WILL_O_WISP
+	tr_mon 55, SMEARGLE @ MAGNET
+		tr_dvs XDVS_HP_ELECTRIC ; yellow
+		tr_moves THUNDER, THUNDERBOLT, THUNDER_WAVE, RAIN_DANCE
+	tr_mon 55, SMEARGLE @ MYSTIC_WATER
+		tr_dvs XDVS_HP_WATER ; blue
+		tr_moves HYDRO_PUMP, SURF, ICE_BEAM, SCALD
+	end_trainer
 
-	; ARTIST
-	db "Rin@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
-	; party
-	dbp 64, SMEARGLE
-		db TWISTEDSPOON, DVS_HP_PSYCHIC ; pink
-		db PSYCHIC_M, SPORE, CALM_MIND, RECOVER
-	db -1 ; end
+	def_trainer RIN, "Rin"
+	tr_mon 64, SMEARGLE @ TWISTEDSPOON
+		tr_dvs XDVS_HP_PSYCHIC ; pink
+		tr_moves PSYCHIC_M, SPORE, CALM_MIND, RECOVER
+	end_trainer
 
 
 SECTION "AromaLadyGroup", ROMX
 AromaLadyGroup:
 
 	def_trainer_class AROMA_LADY
-	db "Dahlia@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, VILEPLUME
-	dbp 58, BELLOSSOM
-	db -1 ; end
+	def_trainer DAHLIA, "Dahlia"
+	tr_mon 58, VILEPLUME
+	tr_mon 58, BELLOSSOM
+	end_trainer
 
-	; AROMA_LADY
-	db "Bryony@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 55, BELLOSSOM
-		db SOLAR_BEAM, SUNNY_DAY, STUN_SPORE, GROWTH
-	dbp 55, BELLOSSOM
-		db SOLAR_BEAM, SUNNY_DAY, STUN_SPORE, GROWTH
-	db -1 ; end
+	def_trainer BRYONY, "Bryony"
+	tr_mon 55, BELLOSSOM
+		tr_moves SOLAR_BEAM, SUNNY_DAY, STUN_SPORE, GROWTH
+	tr_mon 55, BELLOSSOM
+		tr_moves SOLAR_BEAM, SUNNY_DAY, STUN_SPORE, GROWTH
+	end_trainer
 
-	; AROMA_LADY
-	db "Heather@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 35, CHIKORITA
-	dbp 45, BAYLEEF
-	dbp 55, MEGANIUM
-	db -1 ; end
+	def_trainer HEATHER, "Heather"
+	tr_mon 35, CHIKORITA
+	tr_mon 45, BAYLEEF
+	tr_mon 55, MEGANIUM
+	end_trainer
 
-	; AROMA_LADY
-	db "Holly@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, SUNFLORA
-	dbp 62, SUNFLORA
-	db -1 ; end
+	def_trainer HOLLY, "Holly"
+	tr_mon 62, SUNFLORA
+	tr_mon 62, SUNFLORA
+	end_trainer
 
-	; AROMA_LADY
-	db "Peony@"
-	db TRAINERTYPE_NORMAL
-
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer PEONY, "Peony"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
 
 SECTION "SoldierGroup", ROMX
@@ -7063,1365 +6002,943 @@ SECTION "SightseerMGroup", ROMX
 SightseerMGroup:
 
 	def_trainer_class SIGHTSEERM
-	db "Jaska@"
-	db TRAINERTYPE_NORMAL
+	def_trainer JASKA, "Jaska"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer BLAISE, "Blaise"
+	tr_mon 50, "Bulbasaur", BULBASAUR, MALE
+	end_trainer
 
-	; SIGHTSEERM
-	db "Blaise@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME
+	def_trainer GARETH, "Gareth"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
-	; TODO: party
-	dbp 50, BULBASAUR, MALE
-		db ABILITY_1 | NAT_NEUTRAL, "Bulbasaur@"
-	db -1 ; end
+	def_trainer CHESTER, "Chester"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
-	; SIGHTSEERM
-	db "Gareth@"
-	db TRAINERTYPE_NORMAL
-
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
-
-	; SIGHTSEERM
-	db "Chester@"
-	db TRAINERTYPE_NORMAL
-
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
-
-	; SIGHTSEERM
-	db "Hari@"
-	db TRAINERTYPE_NORMAL
-
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer HARI, "Hari"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
 
 SECTION "SightseerFGroup", ROMX
 SightseerFGroup:
 
 	def_trainer_class SIGHTSEERF
-	db "Rosie@"
-	db TRAINERTYPE_NORMAL
+	def_trainer ROSIE, "Rosie"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer KAMILA, "Kamila"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
-	; SIGHTSEERF
-	db "Kamila@"
-	db TRAINERTYPE_NORMAL
+	def_trainer NOELLE, "Noelle"
+	tr_mon 50, BULBASAUR
+	end_trainer
 
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
+	def_trainer PILAR, "Pilar"
+	tr_mon 60, "Antorcha", MAGBY, FEMALE
+	tr_mon 61, "Huesitos", CUBONE, MALE
+	tr_mon 64, "Luna", ESPEON, FEMALE
+	tr_mon 65, "Linterna", LANTURN, FEMALE
+	end_trainer
 
-	; SIGHTSEERF
-	db "Noelle@"
-	db TRAINERTYPE_NORMAL
-
-	; TODO: party
-	dbp 50, BULBASAUR
-	db -1 ; end
-
-	; SIGHTSEERF
-	db "Pilar@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME
-	; party
-	dbp 60, MAGBY, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL, "Antorcha@"
-	dbp 61, CUBONE, MALE
-		db ABILITY_1 | NAT_NEUTRAL, "Huesitos@"
-	dbp 64, ESPEON, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL, "Luna@"
-	dbp 65, LANTURN, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL, "Linterna@"
-	db -1 ; end
-
-	; SIGHTSEERF
-	db "Lenie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 6, ALAKAZAM, FEMALE
-		db FLAME_ORB, FAKE_PERFECT_DVS, ABIL_ALAKAZAM_SYNCHRONIZE | NAT_SATK_UP_ATK_DOWN
-		ev_spread 168 SAt
-		db LIGHT_SCREEN, REFLECT, PSYCHIC_M, SHADOW_BALL
-	dbp LEVEL_FROM_BADGES + 6, MACHAMP, FEMALE
-		db FLAME_ORB, FAKE_PERFECT_DVS, ABIL_MACHAMP_GUTS | NAT_ATK_UP_SATK_DOWN
-		ev_spread 168 Atk
-		db FACADE, MACH_PUNCH, BULLET_PUNCH, ICE_PUNCH
-	dbp LEVEL_FROM_BADGES + 6, JOLTEON, FEMALE
-		db FLAME_ORB, DVS_HP_ICE, ABIL_JOLTEON_QUICK_FEET | NAT_SATK_UP_ATK_DOWN
-		ev_spread 168 SAt
-		db THUNDERBOLT, QUICK_ATTACK, HIDDEN_POWER, SHADOW_BALL
-	db -1 ; end
+	def_trainer LENIE, "Lenie"
+	tr_mon LEVEL_FROM_BADGES + 6, ALAKAZAM @ FLAME_ORB, FEMALE
+		tr_extra SYNCHRONIZE, SATK_UP_ATK_DOWN
+		tr_evs 168 SAt
+		tr_moves LIGHT_SCREEN, REFLECT, PSYCHIC_M, SHADOW_BALL
+	tr_mon LEVEL_FROM_BADGES + 6, MACHAMP @ FLAME_ORB, FEMALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_evs 168 Atk
+		tr_moves FACADE, MACH_PUNCH, BULLET_PUNCH, ICE_PUNCH
+	tr_mon LEVEL_FROM_BADGES + 6, JOLTEON @ FLAME_ORB, FEMALE
+		tr_extra QUICK_FEET, SATK_UP_ATK_DOWN
+		tr_evs 168 SAt
+		tr_moves THUNDERBOLT, QUICK_ATTACK, HP_ICE, SHADOW_BALL
+	end_trainer
 
 
 SECTION "SightseersGroup", ROMX
 SightseersGroup:
 
 	def_trainer_class SIGHTSEERS
-	db "Li & Su@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 54, MAGMORTAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 54, ELECTIVIRE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer LIANDSU1, "Li & Su"
+	tr_mon 54, MAGMORTAR, MALE
+	tr_mon 54, ELECTIVIRE, FEMALE
+	end_trainer
 
-	; SIGHTSEERS
-	db "Li & Su@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 54, ELECTIVIRE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 54, MAGMORTAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer LIANDSU2, "Li & Su"
+	tr_mon 54, ELECTIVIRE, FEMALE
+	tr_mon 54, MAGMORTAR, MALE
+	end_trainer
 
-	; SIGHTSEERS
-	db "Cy & Vi@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 64, MR__MIME, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 64, JYNX, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer CYANDVI1, "Cy & Vi"
+	tr_mon 64, MR__MIME, MALE
+	tr_mon 64, JYNX, FEMALE
+	end_trainer
 
-	; SIGHTSEERS
-	db "Cy & Vi@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 64, JYNX, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 64, MR__MIME, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer CYANDVI2, "Cy & Vi"
+	tr_mon 64, JYNX, FEMALE
+	tr_mon 64, MR__MIME, MALE
+	end_trainer
 
 
 SECTION "CooltrainerMGroup", ROMX
 CooltrainerMGroup:
 
 	def_trainer_class COOLTRAINERM
-	db "Gaven@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 39, VICTREEBEL
-		db WRAP, TOXIC, ACID, RAZOR_LEAF
-	dbp 39, KINGLER
-		db BUBBLE_BEAM, STOMP, DIG, PROTECT
-	dbp 39, FLAREON
-		db MUD_SLAP, QUICK_ATTACK, BITE, FIRE_SPIN
-	db -1 ; end
+	def_trainer GAVEN1, "Gaven"
+	tr_mon 39, VICTREEBEL
+		tr_moves WRAP, TOXIC, ACID, RAZOR_LEAF
+	tr_mon 39, KINGLER
+		tr_moves BUBBLE_BEAM, STOMP, DIG, PROTECT
+	tr_mon 39, FLAREON
+		tr_moves MUD_SLAP, QUICK_ATTACK, BITE, FIRE_SPIN
+	end_trainer
 
-	; COOLTRAINERM
-	db "Gaven@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 41, VICTREEBEL
-		db WRAP, TOXIC, ACID, RAZOR_LEAF
-	dbp 41, KINGLER
-		db BUBBLE_BEAM, STOMP, DIG, PROTECT
-	dbp 41, FLAREON
-		db MUD_SLAP, QUICK_ATTACK, BITE, FIRE_SPIN
-	db -1 ; end
+	def_trainer GAVEN2, "Gaven"
+	tr_mon 41, VICTREEBEL
+		tr_moves WRAP, TOXIC, ACID, RAZOR_LEAF
+	tr_mon 41, KINGLER
+		tr_moves BUBBLE_BEAM, STOMP, DIG, PROTECT
+	tr_mon 41, FLAREON
+		tr_moves MUD_SLAP, QUICK_ATTACK, BITE, FIRE_SPIN
+	end_trainer
 
-	; COOLTRAINERM
-	db "Gaven@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 45, VICTREEBEL
-		db NO_ITEM
-		db GIGA_DRAIN, TOXIC, SLUDGE_BOMB, RAZOR_LEAF
-	dbp 45, KINGLER
-		db KINGS_ROCK
-		db SURF, STOMP, DIG, BLIZZARD
-	dbp 45, FLAREON
-		db NO_ITEM
-		db FLAMETHROWER, QUICK_ATTACK, BITE, FIRE_SPIN
-	db -1 ; end
+	def_trainer GAVEN3, "Gaven"
+	tr_mon 45, VICTREEBEL
+		tr_moves GIGA_DRAIN, TOXIC, SLUDGE_BOMB, RAZOR_LEAF
+	tr_mon 45, KINGLER @ KINGS_ROCK
+		tr_moves SURF, STOMP, DIG, BLIZZARD
+	tr_mon 45, FLAREON
+		tr_moves FLAMETHROWER, QUICK_ATTACK, BITE, FIRE_SPIN
+	end_trainer
 
-	; COOLTRAINERM
-	db "Nick@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 26, CHARMANDER
-		db EMBER, SMOKESCREEN, RAGE, SCARY_FACE
-	dbp 26, SQUIRTLE
-		db DEFENSE_CURL, WATER_GUN, BITE, CURSE
-	dbp 26, BULBASAUR
-		db LEECH_SEED, POISONPOWDER, SLEEP_POWDER, RAZOR_LEAF
-	db -1 ; end
+	def_trainer NICK, "Nick"
+	tr_mon 26, CHARMANDER
+		tr_moves EMBER, SMOKESCREEN, RAGE, SCARY_FACE
+	tr_mon 26, SQUIRTLE
+		tr_moves DEFENSE_CURL, WATER_GUN, BITE, CURSE
+	tr_mon 26, BULBASAUR
+		tr_moves LEECH_SEED, POISONPOWDER, SLEEP_POWDER, RAZOR_LEAF
+	end_trainer
 
-	; COOLTRAINERM
-	db "Aaron@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, IVYSAUR
-	dbp 28, CHARMELEON
-	dbp 28, WARTORTLE
-	db -1 ; end
+	def_trainer AARON, "Aaron"
+	tr_mon 28, IVYSAUR
+	tr_mon 28, CHARMELEON
+	tr_mon 28, WARTORTLE
+	end_trainer
 
-	; COOLTRAINERM
-	db "Cody@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, HORSEA
-	dbp 37, SEADRA
-	dbp 38, YANMA
-	db -1 ; end
+	def_trainer CODY, "Cody"
+	tr_mon 36, HORSEA
+	tr_mon 37, SEADRA
+	tr_mon 38, YANMA
+	end_trainer
 
-	; COOLTRAINERM
-	db "Mike@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 38, DRAGONAIR
-	db -1 ; end
+	def_trainer MIKE, "Mike"
+	tr_mon 38, DRAGONAIR
+	end_trainer
 
-	; COOLTRAINERM
-	db "Ryan@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 35, PIDGEOT
-		db MUD_SLAP, QUICK_ATTACK, ROAR, AERIAL_ACE
-	dbp 37, ELECTABUZZ
-		db THUNDERPUNCH, LIGHT_SCREEN, SWIFT, SCREECH
-	db -1 ; end
+	def_trainer RYAN, "Ryan"
+	tr_mon 35, PIDGEOT
+		tr_moves MUD_SLAP, QUICK_ATTACK, ROAR, AERIAL_ACE
+	tr_mon 37, ELECTABUZZ
+		tr_moves THUNDERPUNCH, LIGHT_SCREEN, SWIFT, SCREECH
+	end_trainer
 
-	; COOLTRAINERM
-	db "Blake@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 38, MAGNETON
-		db THUNDERBOLT, SUPERSONIC, SWIFT, SCREECH
-	dbp 36, QUAGSIRE
-		db WATER_GUN, HEADBUTT, AMNESIA, EARTHQUAKE
-	dbp 36, EXEGGCUTE
-		db LEECH_SEED, CONFUSION, SLEEP_POWDER, SOLAR_BEAM
-	db -1 ; end
+	def_trainer BLAKE, "Blake"
+	tr_mon 38, MAGNETON
+		tr_moves THUNDERBOLT, SUPERSONIC, SWIFT, SCREECH
+	tr_mon 36, QUAGSIRE
+		tr_moves WATER_GUN, HEADBUTT, AMNESIA, EARTHQUAKE
+	tr_mon 36, EXEGGCUTE
+		tr_moves LEECH_SEED, CONFUSION, SLEEP_POWDER, SOLAR_BEAM
+	end_trainer
 
-	; COOLTRAINERM
-	db "Andy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 10, BULBASAUR
-	dbp 10, CHARMANDER
-	dbp 10, SQUIRTLE
-	db -1 ; end
+	def_trainer ANDY, "Andy"
+	tr_mon 10, BULBASAUR
+	tr_mon 10, CHARMANDER
+	tr_mon 10, SQUIRTLE
+	end_trainer
 
-	; COOLTRAINERM
-	db "Sean@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 47, FLAREON
-	dbp 47, TANGELA
-	dbp 47, TAUROS
-	db -1 ; end
+	def_trainer SEAN, "Sean"
+	tr_mon 47, FLAREON
+	tr_mon 47, TANGELA
+	tr_mon 47, TAUROS
+	end_trainer
 
-	; COOLTRAINERM
-	db "Kevin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, RHYDON
-	dbp 56, CHARIZARD
-	dbp 56, BLASTOISE
-	db -1 ; end
+	def_trainer KEVIN, "Kevin"
+	tr_mon 54, RHYDON
+	tr_mon 56, CHARIZARD
+	tr_mon 56, BLASTOISE
+	end_trainer
 
-	; COOLTRAINERM
-	db "Allen@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, CHARMELEON
-		db SMOKESCREEN, METAL_CLAW, DRAGON_RAGE, FLAME_CHARGE
-	dbp 35, MAGNETON
-		db THUNDER_WAVE, THUNDERBOLT, TRI_ATTACK, FLASH_CANNON
-	db -1 ; end
+	def_trainer ALLEN, "Allen"
+	tr_mon 36, CHARMELEON
+		tr_moves SMOKESCREEN, METAL_CLAW, DRAGON_RAGE, FLAME_CHARGE
+	tr_mon 35, MAGNETON
+		tr_moves THUNDER_WAVE, THUNDERBOLT, TRI_ATTACK, FLASH_CANNON
+	end_trainer
 
-	; COOLTRAINERM
-	db "French@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, HOUNDOOM
-	dbp 63, ALAKAZAM
-	db -1 ; end
+	def_trainer FRENCH, "French"
+	tr_mon 62, HOUNDOOM
+	tr_mon 63, ALAKAZAM
+	end_trainer
 
-	; COOLTRAINERM
-	db "Henri@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 5, CHARMELEON
-	dbp LEVEL_FROM_BADGES + 5, WARTORTLE
-	dbp LEVEL_FROM_BADGES + 5, IVYSAUR
-	db -1 ; end
+	def_trainer HENRI, "Henri"
+	tr_mon LEVEL_FROM_BADGES + 5, CHARMELEON
+	tr_mon LEVEL_FROM_BADGES + 5, WARTORTLE
+	tr_mon LEVEL_FROM_BADGES + 5, IVYSAUR
+	end_trainer
 
-	; COOLTRAINERM
-	db "Connor@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, SCYTHER
-	dbp 62, CROCONAW
-	dbp 62, WARTORTLE
-	db -1 ; end
+	def_trainer CONNOR, "Connor"
+	tr_mon 63, SCYTHER
+	tr_mon 62, CROCONAW
+	tr_mon 62, WARTORTLE
+	end_trainer
 
-	; COOLTRAINERM
-	db "Kieran@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 52, HYPNO
-	dbp 53, RHYHORN
-	dbp 55, PRIMEAPE
-	db -1 ; end
+	def_trainer KIERAN, "Kieran"
+	tr_mon 52, HYPNO
+	tr_mon 53, RHYHORN
+	tr_mon 55, PRIMEAPE
+	end_trainer
 
-	; COOLTRAINERM
-	db "Finch@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 4, GEODUDE, MALE
-		db AIR_BALLOON, $DD, $DD, $DD, ABIL_GEODUDE_STURDY | NAT_DEF_UP_SPE_DOWN
-		ev_spread 12 HP
-		db TACKLE, DEFENSE_CURL, MUD_SLAP, ROLLOUT
-	dbp LEVEL_FROM_BADGES + 5, MAREEP, MALE
-		db AIR_BALLOON, $DD, $DD, $DD, ABIL_MAREEP_STATIC | NAT_SATK_UP_SDEF_DOWN
-		ev_spread 12 HP
-		db TACKLE, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
-	db -1 ; end
+	def_trainer FINCH, "Finch"
+	tr_mon LEVEL_FROM_BADGES + 4, GEODUDE @ AIR_BALLOON, MALE
+		tr_extra STURDY, DEF_UP_SPE_DOWN
+		tr_dvs 13 All
+		tr_evs 12 HP
+		tr_moves TACKLE, DEFENSE_CURL, MUD_SLAP, ROLLOUT
+	tr_mon LEVEL_FROM_BADGES + 5, MAREEP @ AIR_BALLOON, MALE
+		tr_extra STATIC, SATK_UP_SDEF_DOWN
+		tr_dvs 13 All
+		tr_evs 12 HP
+		tr_moves TACKLE, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
+	end_trainer
 
-	; COOLTRAINERM
-	db "Petrie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 3, BELLSPROUT, MALE
-		db MIRACLE_SEED, $EE, $EE, $EE, ABIL_BELLSPROUT_CHLOROPHYLL | NAT_ATK_UP_SATK_DOWN
-		ev_spread 20 Atk
-		db VINE_WHIP, GROWTH, WRAP, SLEEP_POWDER
-	dbp LEVEL_FROM_BADGES + 3, ZUBAT, MALE
-		db MIRACLE_SEED, $EE, $EE, $EE, ABIL_ZUBAT_INNER_FOCUS | NAT_SATK_UP_SDEF_DOWN
-		ev_spread 20 HP
-		db GUST, ABSORB, ASTONISH, BITE
-	dbp LEVEL_FROM_BADGES + 6, BULBASAUR, MALE
-		db MIRACLE_SEED, $EE, $EE, $EE, ABIL_BULBASAUR_CHLOROPHYLL | NAT_SPE_UP_DEF_DOWN
-		ev_spread 20 HP
-		db LEECH_SEED, VINE_WHIP, SLEEP_POWDER, MUD_SLAP
-	db -1 ; end
+	def_trainer PETRIE, "Petrie"
+	tr_mon LEVEL_FROM_BADGES + 3, BELLSPROUT @ MIRACLE_SEED, MALE
+		tr_extra CHLOROPHYLL, ATK_UP_SATK_DOWN
+		tr_dvs 14 All
+		tr_evs 20 Atk
+		tr_moves VINE_WHIP, GROWTH, WRAP, SLEEP_POWDER
+	tr_mon LEVEL_FROM_BADGES + 3, ZUBAT @ MIRACLE_SEED, MALE
+		tr_extra INNER_FOCUS, SATK_UP_SDEF_DOWN
+		tr_dvs 14 All
+		tr_evs 20 HP
+		tr_moves GUST, ABSORB, ASTONISH, BITE
+	tr_mon LEVEL_FROM_BADGES + 6, BULBASAUR @ MIRACLE_SEED, MALE
+		tr_extra CHLOROPHYLL, SPE_UP_DEF_DOWN
+		tr_dvs 14 All
+		tr_evs 20 HP
+		tr_moves LEECH_SEED, VINE_WHIP, SLEEP_POWDER, MUD_SLAP
+	end_trainer
 
-	; COOLTRAINERM
-	db "Corey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 63, PIDGEOT
-		db QUICK_CLAW, "@"
-		ev_spread 252 Atk, 132 Spe
-	dbp 62, RHYDON
-		db ROCKY_HELMET, "@"
-		ev_spread 252 HP, 132 Atk
-	dbp 62, SCYTHER
-		db EVIOLITE, "@"
-		ev_spread 252 HP, 132 Atk
-	dbp 62, HITMONLEE
-		db FOCUS_BAND, "@"
-		ev_spread 192 Atk, 192 Spe
-	dbp 63, SANDSLASH
-		db KINGS_ROCK, "@"
-		ev_spread 132 HP, 252 Atk ; has Gyro Ball, so no Speed.
-	dbp 64, VENUSAUR
-		db LEFTOVERS, "Bruteroot@"
-		ev_spread 252 HP, 132 SAt
-	db -1 ; end
+	def_trainer COOLTRAINERM_COREY, "Corey"
+	tr_mon 63, PIDGEOT @ QUICK_CLAW
+		tr_evs 252 Atk, 132 Spe
+	tr_mon 62, RHYDON @ ROCKY_HELMET
+		tr_evs 252 HP, 132 Atk
+	tr_mon 62, SCYTHER @ EVIOLITE
+		tr_evs 252 HP, 132 Atk
+	tr_mon 62, HITMONLEE @ FOCUS_BAND
+		tr_evs 192 Atk, 192 Spe
+	tr_mon 63, SANDSLASH @ KINGS_ROCK
+		tr_evs 132 HP, 252 Atk ; has Gyro Ball, so no Speed.
+	tr_mon 64, "Bruteroot", VENUSAUR @ LEFTOVERS
+		tr_evs 252 HP, 132 SAt
+	end_trainer
 
-	; COOLTRAINERM
-	db "Ray@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 63, DONPHAN
-		db SOFT_SAND, "@"
-		ev_spread 192 Atk, 192 Spe
-	dbp 62, VENOMOTH
-		db BLACK_SLUDGE, "@"
-		ev_spread 192 SAt, 192 Spe
-	dbp 62, GOLEM
-		db ROCKY_HELMET, "@"
-		ev_spread 192 Atk, 192 Spe
-	dbp 62, PINSIR
-		db KINGS_ROCK, "@"
-		ev_spread 192 Atk, 192 Spe
-	dbp 63, MACHAMP
-		db FOCUS_BAND, "@"
-		ev_spread 132 HP, 252 Atk
-	dbp 64, CHARIZARD
-		db LEFTOVERS, "Firebrand@"
-		ev_spread 192 Atk, 192 SAt
-	db -1 ; end
+	def_trainer COOLTRAINERM_RAYMOND, "Ray" ; MISMATCH
+	tr_mon 63, DONPHAN @ SOFT_SAND
+		tr_evs 192 Atk, 192 Spe
+	tr_mon 62, VENOMOTH @ BLACK_SLUDGE
+		tr_evs 192 SAt, 192 Spe
+	tr_mon 62, GOLEM @ ROCKY_HELMET
+		tr_evs 192 Atk, 192 Spe
+	tr_mon 62, PINSIR @ KINGS_ROCK
+		tr_evs 192 Atk, 192 Spe
+	tr_mon 63, MACHAMP @ FOCUS_BAND
+		tr_evs 132 HP, 252 Atk
+	tr_mon 64, "Firebrand", CHARIZARD @ LEFTOVERS
+		tr_evs 192 Atk, 192 SAt
+	end_trainer
 
-	; COOLTRAINERM
-	db "Fergus@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 63, GYARADOS
-		db BRIGHTPOWDER, "@"
-		ev_spread 132 SAt, 252 Spe
-	dbp 62, GOLDUCK
-		db TWISTEDSPOON, "@"
-		ev_spread 132 HP, 252 SAt
-	dbp 62, VAPOREON
-		db FOCUS_BAND, "@"
-		ev_spread 132 HP, 252 SAt
-	dbp 62, TENTACRUEL
-		db BLACK_SLUDGE, "@"
-		ev_spread 192 SAt, 192 Spe
-	dbp 63, KINGDRA
-		db QUICK_CLAW, "@"
-		ev_spread 192 SAt, 192 Spe
-	dbp 64, NIDOQUEEN
-		db LEFTOVERS, "Empress@"
-		ev_spread 192 Atk, 192 Spe
-	db -1 ; end
+	def_trainer FERGUS, "Fergus"
+	tr_mon 63, GYARADOS @ BRIGHTPOWDER
+		tr_evs 132 SAt, 252 Spe
+	tr_mon 62, GOLDUCK @ TWISTEDSPOON
+		tr_evs 132 HP, 252 SAt
+	tr_mon 62, VAPOREON @ FOCUS_BAND
+		tr_evs 132 HP, 252 SAt
+	tr_mon 62, TENTACRUEL @ BLACK_SLUDGE
+		tr_evs 192 SAt, 192 Spe
+	tr_mon 63, KINGDRA @ QUICK_CLAW
+		tr_evs 192 SAt, 192 Spe
+	tr_mon 64, "Empress", NIDOQUEEN @ LEFTOVERS
+		tr_evs 192 Atk, 192 Spe
+	end_trainer
 
-	; COOLTRAINERM
-	db "Daric@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, PORYGON_Z
-	dbp 53, SLOWKING
-	dbp 55, GLACEON
-	db -1 ; end
+	def_trainer DARIC, "Daric"
+	tr_mon 54, PORYGON_Z
+	tr_mon 53, SLOWKING
+	tr_mon 55, GLACEON
+	end_trainer
 
 
 SECTION "CooltrainerFGroup", ROMX
 CooltrainerFGroup:
 
 	def_trainer_class COOLTRAINERF
-	db "Beth@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 40, RAPIDASH
-		db STOMP, FIRE_SPIN, PLAY_ROUGH, AGILITY
-	dbp 39, FLAAFFY
-		db SWIFT, THUNDERSHOCK, THUNDER_WAVE, LIGHT_SCREEN
-	db -1 ; end
+	def_trainer BETH1, "Beth"
+	tr_mon 40, RAPIDASH
+		tr_moves STOMP, FIRE_SPIN, PLAY_ROUGH, AGILITY
+	tr_mon 39, FLAAFFY
+		tr_moves SWIFT, THUNDERSHOCK, THUNDER_WAVE, LIGHT_SCREEN
+	end_trainer
 
-	; COOLTRAINERF
-	db "Beth@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 45, RAPIDASH
-		db STOMP, FIRE_SPIN, PLAY_ROUGH, AGILITY
-	dbp 44, AMPHAROS
+	def_trainer BETH2, "Beth"
+	tr_mon 45, RAPIDASH
+		tr_moves STOMP, FIRE_SPIN, PLAY_ROUGH, AGILITY
+	tr_mon 44, AMPHAROS
 if DEF(FAITHFUL)
-		db THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, SWIFT
+		tr_moves THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, SWIFT
 else
-		db THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, DRAGON_PULSE
+		tr_moves THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, DRAGON_PULSE
 endc
-	db -1 ; end
+	end_trainer
 
-	; COOLTRAINERF
-	db "Beth@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 49, RAPIDASH
-		db FOCUS_BAND
-		db STOMP, FIRE_SPIN, PLAY_ROUGH, FIRE_BLAST
-	dbp 48, AMPHAROS
-		db NO_ITEM
+	def_trainer BETH3, "Beth"
+	tr_mon 49, RAPIDASH @ FOCUS_BAND
+		tr_moves STOMP, FIRE_SPIN, PLAY_ROUGH, FIRE_BLAST
+	tr_mon 48, AMPHAROS
 if DEF(FAITHFUL)
-		db THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, SWIFT
+		tr_moves THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, SWIFT
 else
-		db THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, DRAGON_PULSE
+		tr_moves THUNDERBOLT, THUNDER_WAVE, LIGHT_SCREEN, DRAGON_PULSE
 endc
-	db -1 ; end
+	end_trainer
 
-	; COOLTRAINERF
-	db "Reena@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, ARCANINE
-	dbp 40, NIDOQUEEN
-	dbp 38, STARMIE
-	db -1 ; end
+	def_trainer REENA1, "Reena"
+	tr_mon 37, ARCANINE
+	tr_mon 40, NIDOQUEEN
+	tr_mon 38, STARMIE
+	end_trainer
 
-	; COOLTRAINERF
-	db "Reena@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 41, ARCANINE
-	dbp 44, NIDOQUEEN
-	dbp 42, STARMIE
-	db -1 ; end
+	def_trainer REENA2, "Reena"
+	tr_mon 41, ARCANINE
+	tr_mon 44, NIDOQUEEN
+	tr_mon 42, STARMIE
+	end_trainer
 
-	; COOLTRAINERF
-	db "Reena@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 45, ARCANINE
-		db NO_ITEM
-		db BITE, LEER, TAKE_DOWN, FLAME_CHARGE
-	dbp 48, NIDOQUEEN
-		db SILK_SCARF
-		db EARTHQUAKE, DOUBLE_KICK, TOXIC, BODY_SLAM
-	dbp 46, STARMIE
-		db NO_ITEM
-		db BLIZZARD, PSYCHIC_M, WATERFALL, RECOVER
-	db -1 ; end
+	def_trainer REENA3, "Reena"
+	tr_mon 45, ARCANINE
+		tr_moves BITE, LEER, TAKE_DOWN, FLAME_CHARGE
+	tr_mon 48, NIDOQUEEN @ SILK_SCARF
+		tr_moves EARTHQUAKE, DOUBLE_KICK, TOXIC, BODY_SLAM
+	tr_mon 46, STARMIE
+		tr_moves BLIZZARD, PSYCHIC_M, WATERFALL, RECOVER
+	end_trainer
 
-	; COOLTRAINERF
-	db "Gwen@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, EEVEE
-	dbp 22, FLAREON
-	dbp 22, VAPOREON
-	dbp 22, JOLTEON
-	db -1 ; end
+	def_trainer GWEN, "Gwen"
+	tr_mon 26, EEVEE
+	tr_mon 22, FLAREON
+	tr_mon 22, VAPOREON
+	tr_mon 22, JOLTEON
+	end_trainer
 
-	; COOLTRAINERF
-	db "Lois@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 29, JUMPLUFF
-	dbp 29, NINETALES
-	db -1 ; end
+	def_trainer LOIS, "Lois"
+	tr_mon 29, JUMPLUFF
+	tr_mon 29, NINETALES
+	end_trainer
 
-	; COOLTRAINERF
-	db "Fran@"
-	db TRAINERTYPE_NORMAL
-	; party
+	def_trainer FRAN, "Fran"
 if DEF(FAITHFUL)
-	dbp 39, SEADRA
+	tr_mon 39, SEADRA
 else
-	dbp 39, CHARIZARD
+	tr_mon 39, CHARIZARD
 endc
-	db -1 ; end
+	end_trainer
 
-	; COOLTRAINERF
-	db "Lola@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 36, DRATINI
-	dbp 38, DRAGONAIR
-	db -1 ; end
+	def_trainer LOLA, "Lola"
+	tr_mon 36, DRATINI
+	tr_mon 38, DRAGONAIR
+	end_trainer
 
-	; COOLTRAINERF
-	db "Kate@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, SHELLDER
-	dbp 28, CLOYSTER
-	db -1 ; end
+	def_trainer KATE, "Kate"
+	tr_mon 26, SHELLDER
+	tr_mon 28, CLOYSTER
+	end_trainer
 
-	; COOLTRAINERF
-	db "Irene@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 22, GOLDEEN
-	dbp 24, SEAKING
-	db -1 ; end
+	def_trainer IRENE, "Irene"
+	tr_mon 22, GOLDEEN
+	tr_mon 24, SEAKING
+	end_trainer
 
-	; COOLTRAINERF
-	db "Kelly@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, MARILL
-	dbp 35, WARTORTLE
-	dbp 35, CROCONAW
-	db -1 ; end
+	def_trainer KELLY, "Kelly"
+	tr_mon 37, MARILL
+	tr_mon 35, WARTORTLE
+	tr_mon 35, CROCONAW
+	end_trainer
 
-	; COOLTRAINERF
-	db "Joyce@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 37, PIKACHU
-		db QUICK_ATTACK, DOUBLE_TEAM, THUNDERBOLT, THUNDER
-	dbp 38, BLASTOISE
-		db BITE, CURSE, SURF, RAIN_DANCE
-	db -1 ; end
+	def_trainer JOYCE, "Joyce"
+	tr_mon 37, PIKACHU
+		tr_moves QUICK_ATTACK, DOUBLE_TEAM, THUNDERBOLT, THUNDER
+	tr_mon 38, BLASTOISE
+		tr_moves BITE, CURSE, SURF, RAIN_DANCE
+	end_trainer
 
-	; COOLTRAINERF
-	db "Megan@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 35, BULBASAUR
-		db GROWL, LEECH_SEED, POISONPOWDER, RAZOR_LEAF
-	dbp 36, IVYSAUR
-		db GROWL, LEECH_SEED, POISONPOWDER, RAZOR_LEAF
-	dbp 37, VENUSAUR
-		db BODY_SLAM, SLEEP_POWDER, RAZOR_LEAF, GROWTH
-	db -1 ; end
+	def_trainer MEGAN, "Megan"
+	tr_mon 35, BULBASAUR
+		tr_moves GROWL, LEECH_SEED, POISONPOWDER, RAZOR_LEAF
+	tr_mon 36, IVYSAUR
+		tr_moves GROWL, LEECH_SEED, POISONPOWDER, RAZOR_LEAF
+	tr_mon 37, VENUSAUR
+		tr_moves BODY_SLAM, SLEEP_POWDER, RAZOR_LEAF, GROWTH
+	end_trainer
 
-	; COOLTRAINERF
-	db "Carol@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 47, ELECTRODE
-	dbp 47, STARMIE
-	dbp 47, NINETALES
-	db -1 ; end
+	def_trainer CAROL, "Carol"
+	tr_mon 47, ELECTRODE
+	tr_mon 47, STARMIE
+	tr_mon 47, NINETALES
+	end_trainer
 
-	; COOLTRAINERF
-	db "Quinn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, VENUSAUR
-	dbp 62, STARMIE
-	db -1 ; end
+	def_trainer QUINN, "Quinn"
+	tr_mon 63, VENUSAUR
+	tr_mon 62, STARMIE
+	end_trainer
 
-	; COOLTRAINERF
-	db "Emma@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 28, POLIWHIRL
-	db -1 ; end
+	def_trainer EMMA, "Emma"
+	tr_mon 28, POLIWHIRL
+	end_trainer
 
-	; COOLTRAINERF
-	db "Cybil@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 35, BUTTERFREE
-		db SUPERSONIC, PSYBEAM, HYPNOSIS, HEALINGLIGHT
-	dbp 36, BELLOSSOM
-		db ACID, SLEEP_POWDER, GIGA_DRAIN, HEALINGLIGHT
-	db -1 ; end
+	def_trainer CYBIL, "Cybil"
+	tr_mon 35, BUTTERFREE
+		tr_moves SUPERSONIC, PSYBEAM, HYPNOSIS, HEALINGLIGHT
+	tr_mon 36, BELLOSSOM
+		tr_moves ACID, SLEEP_POWDER, GIGA_DRAIN, HEALINGLIGHT
+	end_trainer
 
-	; COOLTRAINERF
-	db "Jenn@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 24, STARYU
-	dbp 26, STARMIE
-	db -1 ; end
+	def_trainer JENN, "Jenn"
+	tr_mon 24, STARYU
+	tr_mon 26, STARMIE
+	end_trainer
 
-	; COOLTRAINERF
-	db "Salma@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, SLOWKING
-	dbp 65, KANGASKHAN
-	db -1 ; end
+	def_trainer SALMA, "Salma"
+	tr_mon 62, SLOWKING
+	tr_mon 65, KANGASKHAN
+	end_trainer
 
-	; COOLTRAINERF
-	db "Bonita@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 62, GIRAFARIG
-	dbp 65, SUDOWOODO
-	db -1 ; end
+	def_trainer BONITA, "Bonita"
+	tr_mon 62, GIRAFARIG
+	tr_mon 65, SUDOWOODO
+	end_trainer
 
-	; COOLTRAINERF
-	db "Sera@"
-	db TRAINERTYPE_ITEM
-	; party
-	dbp 63, CHARMELEON
-		db EVIOLITE
-	dbp 61, AMPHAROS
-		db MAGNET
-	dbp 61, XATU
-		db TWISTEDSPOON
-	db -1 ; end
+	def_trainer SERA, "Sera"
+	tr_mon 63, CHARMELEON @ EVIOLITE
+	tr_mon 61, AMPHAROS @ MAGNET
+	tr_mon 61, XATU @ TWISTEDSPOON
+	end_trainer
 
-	; COOLTRAINERF
-	db "Neesha@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
-	; party
-	dbp 62, DEWGONG
-		db FOCUS_BAND, "@"
-		ev_spread 192 HP, 192 SDf
-	dbp 62, WIGGLYTUFF
-		db PINK_BOW, "@"
-		ev_spread 192 HP, 192 Def
-	dbp 62, RAPIDASH
-		db QUICK_CLAW, "@"
-		ev_spread 252 Atk, 132 SAt
-	dbp 63, VILEPLUME
-		db BLACK_SLUDGE, "@"
-		ev_spread 132 SAt, 252 Spe
-	dbp 63, NINETALES
-		db CHARCOAL, "@"
-		ev_spread 132 SAt, 252 Spe
-	dbp 63, BLASTOISE
-		db LEFTOVERS, "Shellshock@"
-		ev_spread 132 HP, 252 Spe
-	db -1 ; end
+	def_trainer NEESHA, "Neesha"
+	tr_mon 62, DEWGONG @ FOCUS_BAND
+		tr_evs 192 HP, 192 SDf
+	tr_mon 62, WIGGLYTUFF @ PINK_BOW
+		tr_evs 192 HP, 192 Def
+	tr_mon 62, RAPIDASH @ QUICK_CLAW
+		tr_evs 252 Atk, 132 SAt
+	tr_mon 63, VILEPLUME @ BLACK_SLUDGE
+		tr_evs 132 SAt, 252 Spe
+	tr_mon 63, NINETALES @ CHARCOAL
+		tr_evs 132 SAt, 252 Spe
+	tr_mon 63, "Shellshock", BLASTOISE @ LEFTOVERS
+		tr_evs 132 HP, 252 Spe
+	end_trainer
 
-	; COOLTRAINERF
-	db "Chiara@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 4, WEEPINBELL, FEMALE
-		db BINDING_BAND, ABIL_WEEPINBELL_CHLOROPHYLL | NAT_SPE_UP_DEF_DOWN
-		ev_spread 104 HP
-		db WRAP, SLEEP_POWDER, POISONPOWDER, STUN_SPORE
-	dbp LEVEL_FROM_BADGES + 4, AZUMARILL, FEMALE
-		db BINDING_BAND, ABIL_AZUMARILL_SAP_SIPPER | NAT_SPE_UP_DEF_DOWN
-		ev_spread 104 HP
-		db WHIRLPOOL, PERISH_SONG, AQUA_TAIL, PROTECT
-	dbp LEVEL_FROM_BADGES + 5, CHARMELEON, FEMALE
-		db BINDING_BAND, ABIL_CHARMELEON_SOLAR_POWER | NAT_SPE_UP_DEF_DOWN
-		ev_spread 104 HP
-		db FIRE_SPIN, DRAGON_RAGE, SMOKESCREEN, PROTECT
-	db -1 ; end
+	def_trainer CHIARA, "Chiara"
+	tr_mon LEVEL_FROM_BADGES + 4, WEEPINBELL @ BINDING_BAND, FEMALE
+		tr_extra CHLOROPHYLL, SPE_UP_DEF_DOWN
+		tr_evs 104 HP
+		tr_moves WRAP, SLEEP_POWDER, POISONPOWDER, STUN_SPORE
+	tr_mon LEVEL_FROM_BADGES + 4, AZUMARILL @ BINDING_BAND, FEMALE
+		tr_extra SAP_SIPPER, SPE_UP_DEF_DOWN
+		tr_evs 104 HP
+		tr_moves WHIRLPOOL, PERISH_SONG, AQUA_TAIL, PROTECT
+	tr_mon LEVEL_FROM_BADGES + 5, CHARMELEON @ BINDING_BAND, FEMALE
+		tr_extra SOLAR_POWER, SPE_UP_DEF_DOWN
+		tr_evs 104 HP
+		tr_moves FIRE_SPIN, DRAGON_RAGE, SMOKESCREEN, PROTECT
+	end_trainer
 
 
 SECTION "AceDuoGroup", ROMX
 AceDuoGroup:
 
 	def_trainer_class ACE_DUO
-	db "Elan & Ida@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 65, PORYGON2, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 65, AZUMARILL, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ELANANDIDA1, "Elan & Ida"
+	tr_mon 65, PORYGON2, MALE
+	tr_mon 65, AZUMARILL, FEMALE
+	end_trainer
 
-	; ACE_DUO
-	db "Elan & Ida@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 65, AZUMARILL, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 65, PORYGON2, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ELANANDIDA2, "Elan & Ida"
+	tr_mon 65, AZUMARILL, FEMALE
+	tr_mon 65, PORYGON2, MALE
+	end_trainer
 
-	; ACE_DUO
-	db "Ara & Bela@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 64, TAUROS, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 64, GIRAFARIG, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ARAANDBELA1, "Ara & Bela"
+	tr_mon 64, TAUROS, MALE
+	tr_mon 64, GIRAFARIG, FEMALE
+	end_trainer
 
-	; ACE_DUO
-	db "Ara & Bela@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 64, GIRAFARIG, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 64, TAUROS, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ARAANDBELA2, "Ara & Bela"
+	tr_mon 64, GIRAFARIG, FEMALE
+	tr_mon 64, TAUROS, MALE
+	end_trainer
 
-	; ACE_DUO
-	db "Thom & Kae@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 2, MAGMAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 2, ELECTABUZZ, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer THOMANDKAE1, "Thom & Kae"
+	tr_mon LEVEL_FROM_BADGES + 2, MAGMAR, MALE
+	tr_mon LEVEL_FROM_BADGES + 2, ELECTABUZZ, FEMALE
+	end_trainer
 
-	; ACE_DUO
-	db "Thom & Kae@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp LEVEL_FROM_BADGES + 2, ELECTABUZZ, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 2, MAGMAR, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer THOMANDKAE2, "Thom & Kae"
+	tr_mon LEVEL_FROM_BADGES + 2, ELECTABUZZ, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 2, MAGMAR, MALE
+	end_trainer
 
-	; ACE_DUO
-	db "Zac & Jen@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 62, DUGTRIO, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 62, ELECTIVIRE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ZACANDJEN1, "Zac & Jen"
+	tr_mon 62, DUGTRIO, MALE
+	tr_mon 62, ELECTIVIRE, FEMALE
+	end_trainer
 
-	; ACE_DUO
-	db "Zac & Jen@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 62, ELECTIVIRE, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 62, DUGTRIO, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer ZACANDJEN2, "Zac & Jen"
+	tr_mon 62, ELECTIVIRE, FEMALE
+	tr_mon 62, DUGTRIO, MALE
+	end_trainer
 
-	; ACE_DUO
-	db "Jake & Bri@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 37, SANDSLASH, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 39, GOLDUCK, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 37, PARASECT, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 39, VAPOREON, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer JAKEANDBRI1, "Jake & Bri"
+	tr_mon 37, SANDSLASH, MALE
+	tr_mon 39, GOLDUCK, MALE
+	tr_mon 37, PARASECT, FEMALE
+	tr_mon 39, VAPOREON, FEMALE
+	end_trainer
 
-	; ACE_DUO
-	db "Jake & Bri@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 37, PARASECT, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 39, VAPOREON, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 37, SANDSLASH, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 39, GOLDUCK, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer JAKEANDBRI2, "Jake & Bri"
+	tr_mon 37, PARASECT, FEMALE
+	tr_mon 39, VAPOREON, FEMALE
+	tr_mon 37, SANDSLASH, MALE
+	tr_mon 39, GOLDUCK, MALE
+	end_trainer
 
-	; ACE_DUO
-	db "Dan & Cara@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 38, SEADRA, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-		db SMOKESCREEN, WATER_PULSE, OUTRAGE, WATERFALL
-	dbp 38, SEADRA, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-		db SMOKESCREEN, WATER_PULSE, OUTRAGE, WHIRLPOOL
-	db -1 ; end
+	def_trainer DANANDCARA1, "Dan & Cara"
+	tr_mon 38, SEADRA, MALE
+		tr_moves SMOKESCREEN, WATER_PULSE, OUTRAGE, WATERFALL
+	tr_mon 38, SEADRA, FEMALE
+		tr_moves SMOKESCREEN, WATER_PULSE, OUTRAGE, WHIRLPOOL
+	end_trainer
 
-	; ACE_DUO
-	db "Dan & Cara@"
-	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 38, SEADRA, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-		db SMOKESCREEN, WATER_PULSE, OUTRAGE, WHIRLPOOL
-	dbp 38, SEADRA, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-		db SMOKESCREEN, WATER_PULSE, OUTRAGE, WATERFALL
-	db -1 ; end
+	def_trainer DANANDCARA2, "Dan & Cara"
+	tr_mon 38, SEADRA, FEMALE
+		tr_moves SMOKESCREEN, WATER_PULSE, OUTRAGE, WHIRLPOOL
+	tr_mon 38, SEADRA, MALE
+		tr_moves SMOKESCREEN, WATER_PULSE, OUTRAGE, WATERFALL
+	end_trainer
 
 
 SECTION "VeteranMGroup", ROMX
 VeteranMGroup:
 
 	def_trainer_class VETERANM
-	db "Matthew@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 41, FERALIGATR
-		db KINGS_ROCK
-		db SCARY_FACE, METAL_CLAW, CRUNCH, WATERFALL
-	dbp 40, AMPHAROS
-		db MAGNET
-		db THUNDER_WAVE, CONFUSE_RAY, DRAGON_PULSE, THUNDERBOLT
-	dbp 38, URSARING
-		db LEFTOVERS
-		db BELLY_DRUM, PLAY_ROUGH, SLASH, STRENGTH
-	dbp 38, NOCTOWL
-		db QUICK_CLAW
-		db REFLECT, PSYCHIC_M, SHADOW_BALL, AIR_SLASH
-	dbp 39, ARCANINE
-		db CHARCOAL
-		db FLAME_CHARGE, FLAMETHROWER, DOUBLE_KICK, TAKE_DOWN
-	dbp 37, SANDSLASH
-		db HARD_STONE
-		db SLASH, EARTHQUAKE, DEFENSE_CURL, ROLLOUT
-	db -1 ; end
+	def_trainer MATT, "Matthew" ; MISMATCH
+	tr_mon 41, FERALIGATR @ KINGS_ROCK
+		tr_moves SCARY_FACE, METAL_CLAW, CRUNCH, WATERFALL
+	tr_mon 40, AMPHAROS @ MAGNET
+		tr_moves THUNDER_WAVE, CONFUSE_RAY, DRAGON_PULSE, THUNDERBOLT
+	tr_mon 38, URSARING @ LEFTOVERS
+		tr_moves BELLY_DRUM, PLAY_ROUGH, SLASH, STRENGTH
+	tr_mon 38, NOCTOWL @ QUICK_CLAW
+		tr_moves REFLECT, PSYCHIC_M, SHADOW_BALL, AIR_SLASH
+	tr_mon 39, ARCANINE @ CHARCOAL
+		tr_moves FLAME_CHARGE, FLAMETHROWER, DOUBLE_KICK, TAKE_DOWN
+	tr_mon 37, SANDSLASH @ HARD_STONE
+		tr_moves SLASH, EARTHQUAKE, DEFENSE_CURL, ROLLOUT
+	end_trainer
 
-	; VETERANM
-	db "Remy@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 42, BLASTOISE
-		db MYSTIC_WATER
+	def_trainer REMY, "Remy"
+	tr_mon 42, BLASTOISE @ MYSTIC_WATER
 if DEF(FAITHFUL)
-		db SURF, AQUA_TAIL, ICE_BEAM, BODY_SLAM
+		tr_moves SURF, AQUA_TAIL, ICE_BEAM, BODY_SLAM
 else
-		db SURF, AQUA_TAIL, ICE_BEAM, FLASH_CANNON
+		tr_moves SURF, AQUA_TAIL, ICE_BEAM, FLASH_CANNON
 endc
-	dbp 41, NINETALES
-		db CHARCOAL
-		db FLAMETHROWER, SHADOW_BALL, CONFUSE_RAY, EXTRASENSORY
-	dbp 39, VICTREEBEL
-		db MIRACLE_SEED
-		db SLUDGE_BOMB, SEED_BOMB, SLEEP_POWDER, SWORDS_DANCE
-	dbp 39, RAICHU
-		db SILK_SCARF
-		db SURF, THUNDERBOLT, EXTREMESPEED, NASTY_PLOT
-	dbp 40, ALAKAZAM
-		db TWISTEDSPOON
-		db TRI_ATTACK, PSYBEAM, RECOVER, REFLECT
-	dbp 38, SKARMORY
-		db SHARP_BEAK
-		db DRILL_PECK, SWIFT, STEEL_WING, ROCK_SMASH
-	db -1 ; end
+	tr_mon 41, NINETALES @ CHARCOAL
+		tr_moves FLAMETHROWER, SHADOW_BALL, CONFUSE_RAY, EXTRASENSORY
+	tr_mon 39, VICTREEBEL @ MIRACLE_SEED
+		tr_moves SLUDGE_BOMB, SEED_BOMB, SLEEP_POWDER, SWORDS_DANCE
+	tr_mon 39, RAICHU @ SILK_SCARF
+		tr_moves SURF, THUNDERBOLT, EXTREMESPEED, NASTY_PLOT
+	tr_mon 40, ALAKAZAM @ TWISTEDSPOON
+		tr_moves TRI_ATTACK, PSYBEAM, RECOVER, REFLECT
+	tr_mon 38, SKARMORY @ SHARP_BEAK
+		tr_moves DRILL_PECK, SWIFT, STEEL_WING, ROCK_SMASH
+	end_trainer
 
-	; VETERANM
-	db "Barkhorn@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	def_trainer BARKHORN, "Barkhorn"
 
-	dbp LEVEL_FROM_BADGES + 5, PUPITAR, MALE
+	tr_mon LEVEL_FROM_BADGES + 5, PUPITAR @ ROCKY_HELMET, MALE
 if DEF(FAITHFUL)
-		db ROCKY_HELMET, ABIL_PUPITAR_SHED_SKIN | NAT_ATK_UP_SATK_DOWN
+		tr_extra SHED_SKIN, ATK_UP_SATK_DOWN
 else
-		db ROCKY_HELMET, ABIL_PUPITAR_BATTLE_ARMOR | NAT_ATK_UP_SATK_DOWN
+		tr_extra BATTLE_ARMOR, ATK_UP_SATK_DOWN
 endc
-		ev_spread 232 HP
-		db SANDSTORM, ROCK_SLIDE, PURSUIT, OUTRAGE
-	dbp LEVEL_FROM_BADGES + 6, FORRETRESS, MALE
-		db ROCKY_HELMET, ABIL_FORRETRESS_STURDY | NAT_ATK_UP_SATK_DOWN
-		ev_spread 232 HP
-		db SPIKES, EXPLOSION, SANDSTORM, DIG
-	dbp LEVEL_FROM_BADGES + 6, SKARMORY, MALE
-		db ROCKY_HELMET, ABIL_SKARMORY_STURDY | NAT_NEUTRAL
-		ev_spread 232 HP
-		db SPIKES, ROAR, TOXIC, PROTECT
-	dbp LEVEL_FROM_BADGES + 7, UMBREON, MALE
-		db ROCKY_HELMET, ABIL_UMBREON_SYNCHRONIZE | NAT_NEUTRAL
-		ev_spread 232 HP
-		db TOXIC, CONFUSE_RAY, FEINT_ATTACK, PROTECT
-	db -1 ; end
+		tr_evs 232 HP
+		tr_moves SANDSTORM, ROCK_SLIDE, PURSUIT, OUTRAGE
+	tr_mon LEVEL_FROM_BADGES + 6, FORRETRESS @ ROCKY_HELMET, MALE
+		tr_extra STURDY, ATK_UP_SATK_DOWN
+		tr_evs 232 HP
+		tr_moves SPIKES, EXPLOSION, SANDSTORM, DIG
+	tr_mon LEVEL_FROM_BADGES + 6, SKARMORY @ ROCKY_HELMET, MALE
+		tr_extra STURDY
+		tr_evs 232 HP
+		tr_moves SPIKES, ROAR, TOXIC, PROTECT
+	tr_mon LEVEL_FROM_BADGES + 7, UMBREON @ ROCKY_HELMET, MALE
+		tr_extra SYNCHRONIZE
+		tr_evs 232 HP
+		tr_moves TOXIC, CONFUSE_RAY, FEINT_ATTACK, PROTECT
+	end_trainer
 
-	; EN
-	db "En@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 60, DRAGONITE
-		db MUSCLE_BAND
-		db DRAGON_CLAW, DRAGON_DANCE, FLY, EARTHQUAKE
-	dbp 60, ARTICUNO
-		db QUICK_CLAW
-		db ICE_BEAM, BRAVE_BIRD, ROOST, U_TURN
-	dbp 60, ZAPDOS
-		db WISE_GLASSES
-		db THUNDERBOLT, AIR_SLASH, ROOST, EXTRASENSORY
-	dbp 60, MOLTRES
-		db FOCUS_BAND
-		db FLAMETHROWER, BRAVE_BIRD, WILL_O_WISP, ANCIENTPOWER
-	dbp 60, ARCANINE
-		db SHELL_BELL
-		db FLARE_BLITZ, WILD_CHARGE, CLOSE_COMBAT, EXTREMESPEED
-	dbp 60, SNORLAX
-		db LEFTOVERS
-		db BODY_SLAM, CRUNCH, REST, CURSE
-	db -1 ; end
+	def_trainer EN, "En"
+	tr_mon 60, DRAGONITE @ MUSCLE_BAND
+		tr_moves DRAGON_CLAW, DRAGON_DANCE, FLY, EARTHQUAKE
+	tr_mon 60, ARTICUNO @ QUICK_CLAW
+		tr_moves ICE_BEAM, BRAVE_BIRD, ROOST, U_TURN
+	tr_mon 60, ZAPDOS @ WISE_GLASSES
+		tr_moves THUNDERBOLT, AIR_SLASH, ROOST, EXTRASENSORY
+	tr_mon 60, MOLTRES @ FOCUS_BAND
+		tr_moves FLAMETHROWER, BRAVE_BIRD, WILL_O_WISP, ANCIENTPOWER
+	tr_mon 60, ARCANINE @ SHELL_BELL
+		tr_moves FLARE_BLITZ, WILD_CHARGE, CLOSE_COMBAT, EXTREMESPEED
+	tr_mon 60, SNORLAX @ LEFTOVERS
+		tr_moves BODY_SLAM, CRUNCH, REST, CURSE
+	end_trainer
 
 
 SECTION "VeteranFGroup", ROMX
 VeteranFGroup:
 
 	def_trainer_class VETERANF
-	db "Joanne@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 41, VENUSAUR
-		db MIRACLE_SEED
-		db GROWTH, SLUDGE_BOMB, PETAL_DANCE, SLEEP_POWDER
-	dbp 38, PIDGEOT
-		db QUICK_CLAW
-		db ROOST, FLY, SWIFT, ROAR
-	dbp 39, SCYTHER
-		db EVIOLITE
-		db SLASH, AERIAL_ACE, SWORDS_DANCE, PURSUIT
-	dbp 38, ELECTABUZZ
-		db MAGNET
-		db THUNDERBOLT, BULK_UP, KARATE_CHOP, LIGHT_SCREEN
-	dbp 40, POLIWRATH
-		db KINGS_ROCK
-		db WATERFALL, SURF, STRENGTH, BODY_SLAM
-	dbp 37, FLAREON
-		db CHARCOAL
-		db SMOKESCREEN, FLAME_CHARGE, QUICK_ATTACK, IRON_TAIL
-	db -1 ; end
+	def_trainer JOANNE, "Joanne"
+	tr_mon 41, VENUSAUR @ MIRACLE_SEED
+		tr_moves GROWTH, SLUDGE_BOMB, PETAL_DANCE, SLEEP_POWDER
+	tr_mon 38, PIDGEOT @ QUICK_CLAW
+		tr_moves ROOST, FLY, SWIFT, ROAR
+	tr_mon 39, SCYTHER @ EVIOLITE
+		tr_moves SLASH, AERIAL_ACE, SWORDS_DANCE, PURSUIT
+	tr_mon 38, ELECTABUZZ @ MAGNET
+		tr_moves THUNDERBOLT, BULK_UP, KARATE_CHOP, LIGHT_SCREEN
+	tr_mon 40, POLIWRATH @ KINGS_ROCK
+		tr_moves WATERFALL, SURF, STRENGTH, BODY_SLAM
+	tr_mon 37, FLAREON @ CHARCOAL
+		tr_moves SMOKESCREEN, FLAME_CHARGE, QUICK_ATTACK, IRON_TAIL
+	end_trainer
 
-	; VETERANF
-	db "Jonet@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 41, TYPHLOSION
-		db CHARCOAL
-		db FLAME_CHARGE, THUNDERPUNCH, DIG, STRENGTH
-	dbp 40, ESPEON
-		db NEVERMELTICE
-		db PSYCHIC_M, REFLECT, SHADOW_BALL, QUICK_ATTACK
-	dbp 39, TOGEKISS
-		db LEFTOVERS
-		db FLY, FRESH_SNACK, AURA_SPHERE, EXTREMESPEED
-	dbp 39, OCTILLERY
-		db QUICK_CLAW
-		db SURF, ICE_BEAM, PSYBEAM, SEED_BOMB
-	dbp 37, HERACROSS
-		db KINGS_ROCK
-		db ROCK_SMASH, STRENGTH, AERIAL_ACE, DOUBLE_TEAM
-	dbp 38, PUPITAR
-		db EVIOLITE
-		db EARTHQUAKE, ROCK_SLIDE, SCARY_FACE, DARK_PULSE
-	db -1 ; end
+	def_trainer JONET, "Jonet"
+	tr_mon 41, TYPHLOSION @ CHARCOAL
+		tr_moves FLAME_CHARGE, THUNDERPUNCH, DIG, STRENGTH
+	tr_mon 40, ESPEON @ NEVERMELTICE
+		tr_moves PSYCHIC_M, REFLECT, SHADOW_BALL, QUICK_ATTACK
+	tr_mon 39, TOGEKISS @ LEFTOVERS
+		tr_moves FLY, FRESH_SNACK, AURA_SPHERE, EXTREMESPEED
+	tr_mon 39, OCTILLERY @ QUICK_CLAW
+		tr_moves SURF, ICE_BEAM, PSYBEAM, SEED_BOMB
+	tr_mon 37, HERACROSS @ KINGS_ROCK
+		tr_moves ROCK_SMASH, STRENGTH, AERIAL_ACE, DOUBLE_TEAM
+	tr_mon 38, PUPITAR @ EVIOLITE
+		tr_moves EARTHQUAKE, ROCK_SLIDE, SCARY_FACE, DARK_PULSE
+	end_trainer
 
-	; VETERANF
-	db "Litvyak@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	def_trainer LITVYAK, "Litvyak"
 
-	dbp LEVEL_FROM_BADGES + 11, ALAKAZAM, FEMALE
-		db CHOICE_SPECS, DVS_HP_FIRE, ABIL_ALAKAZAM_TRACE | NAT_SATK_UP_ATK_DOWN
-		ev_spread 252 SAt, 44 Spe
-		db PSYCHIC_M, SHADOW_BALL, FOCUS_BLAST, HIDDEN_POWER
-	dbp LEVEL_FROM_BADGES + 11, PORYGON_Z, FEMALE
-		db CHOICE_SPECS, DVS_HP_GROUND, ABIL_PORYGON_Z_ADAPTABILITY | NAT_SATK_UP_ATK_DOWN
-		ev_spread 252 SAt, 44 Spe
-		db TRI_ATTACK, DARK_PULSE, ICE_BEAM, HIDDEN_POWER
-	dbp LEVEL_FROM_BADGES + 11, GENGAR, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 11, ALAKAZAM @ CHOICE_SPECS, FEMALE
+		tr_extra TRACE, SATK_UP_ATK_DOWN
+		tr_evs 252 SAt, 44 Spe
+		tr_moves PSYCHIC_M, SHADOW_BALL, FOCUS_BLAST, HP_FIRE
+	tr_mon LEVEL_FROM_BADGES + 11, PORYGON_Z @ CHOICE_SPECS, FEMALE
+		tr_extra ADAPTABILITY, SATK_UP_ATK_DOWN
+		tr_evs 252 SAt, 44 Spe
+		tr_moves TRI_ATTACK, DARK_PULSE, ICE_BEAM, HP_GROUND
+	tr_mon LEVEL_FROM_BADGES + 11, GENGAR @ CHOICE_SPECS, FEMALE
 if DEF(FAITHFUL)
-		db CHOICE_SPECS, DVS_HP_ICE, ABIL_GENGAR_CURSED_BODY | NAT_SATK_UP_ATK_DOWN
+		tr_extra CURSED_BODY, SATK_UP_ATK_DOWN
 else
-		db CHOICE_SPECS, DVS_HP_ICE, ABIL_GENGAR_LEVITATE | NAT_SATK_UP_ATK_DOWN
+		tr_extra LEVITATE, SATK_UP_ATK_DOWN
 endc
-		ev_spread 252 SAt, 44 Spe
-		db SHADOW_BALL, THUNDERBOLT, FOCUS_BLAST, HIDDEN_POWER
-	db -1 ; end
+		tr_evs 252 SAt, 44 Spe
+		tr_moves SHADOW_BALL, THUNDERBOLT, FOCUS_BLAST, HP_ICE
+	end_trainer
 
-	; MADOKA
-	db "Madoka@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 60, TYRANITAR
-		db MUSCLE_BAND
-		db ROCK_SLIDE, CRUNCH, IRON_HEAD, FIRE_PUNCH
-	dbp 60, RAIKOU
-		db LIGHT_CLAY
-		db THUNDERBOLT, REFLECT, LIGHT_SCREEN, SHADOW_BALL
-	dbp 60, ENTEI
-		db ASSAULT_VEST
-		db FLAME_CHARGE, EXTREMESPEED, STONE_EDGE, EARTHQUAKE
-	dbp 60, SUICUNE
-		db SHELL_BELL
-		db ICE_BEAM, SCALD, CALM_MIND, REST
-	dbp 60, SKARMORY
-		db LEFTOVERS
-		db BRAVE_BIRD, IRON_HEAD, ROOST, SWORDS_DANCE
-	dbp 60, KINGDRA
-		db WISE_GLASSES
-		db SURF, DRAGON_PULSE, ICE_BEAM, FLAMETHROWER
-	db -1 ; end
+	def_trainer MADOKA, "Madoka"
+	tr_mon 60, TYRANITAR @ MUSCLE_BAND
+		tr_moves ROCK_SLIDE, CRUNCH, IRON_HEAD, FIRE_PUNCH
+	tr_mon 60, RAIKOU @ LIGHT_CLAY
+		tr_moves THUNDERBOLT, REFLECT, LIGHT_SCREEN, SHADOW_BALL
+	tr_mon 60, ENTEI @ ASSAULT_VEST
+		tr_moves FLAME_CHARGE, EXTREMESPEED, STONE_EDGE, EARTHQUAKE
+	tr_mon 60, SUICUNE @ SHELL_BELL
+		tr_moves ICE_BEAM, SCALD, CALM_MIND, REST
+	tr_mon 60, SKARMORY @ LEFTOVERS
+		tr_moves BRAVE_BIRD, IRON_HEAD, ROOST, SWORDS_DANCE
+	tr_mon 60, KINGDRA @ WISE_GLASSES
+		tr_moves SURF, DRAGON_PULSE, ICE_BEAM, FLAMETHROWER
+	end_trainer
 
 
 SECTION "ProtonGroup", ROMX
 ProtonGroup:
 
 	def_trainer_class PROTON
-	db "Proton@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 39, GOLBAT
-		db KINGS_ROCK
-		db AERIAL_ACE, CONFUSE_RAY, SUPER_FANG, POISON_JAB
-	dbp 40, QWILFISH
-		db BRIGHTPOWDER
-		db MINIMIZE, BUBBLE_BEAM, PAIN_SPLIT, ROLLOUT
-	dbp 40, OCTILLERY
-		db LUM_BERRY
-		db OCTAZOOKA, POWER_WHIP, FLAMETHROWER, ICE_BEAM
-	dbp 41, WEEZING
-		db CHARCOAL
-		db FIRE_BLAST, EXPLOSION, SLUDGE_BOMB, SMOKESCREEN
-	db -1 ; end
+	def_trainer PROTON1, "Proton"
+	tr_mon 39, GOLBAT @ KINGS_ROCK
+		tr_moves AERIAL_ACE, CONFUSE_RAY, SUPER_FANG, POISON_JAB
+	tr_mon 40, QWILFISH @ BRIGHTPOWDER
+		tr_moves MINIMIZE, BUBBLE_BEAM, PAIN_SPLIT, ROLLOUT
+	tr_mon 40, OCTILLERY @ LUM_BERRY
+		tr_moves OCTAZOOKA, POWER_WHIP, FLAMETHROWER, ICE_BEAM
+	tr_mon 41, WEEZING @ CHARCOAL
+		tr_moves FIRE_BLAST, EXPLOSION, SLUDGE_BOMB, SMOKESCREEN
+	end_trainer
 
-	; PROTON
-	db "Proton@"
-	db TRAINERTYPE_EVS
-	; party
-	dbp 11, ZUBAT
-		ev_spread 32 Spe
-	dbp 12, QWILFISH
-		ev_spread 32 Spe
-	dbp 14, KOFFING
-		ev_spread 32 Spe
-	db -1 ; end
+	def_trainer PROTON2, "Proton"
+	tr_mon 11, ZUBAT
+		tr_evs 32 Spe
+	tr_mon 12, QWILFISH
+		tr_evs 32 Spe
+	tr_mon 14, KOFFING
+		tr_evs 32 Spe
+	end_trainer
 
 
 SECTION "PetrelGroup", ROMX
 PetrelGroup:
 
 	def_trainer_class PETREL
-	db "Petrel@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 39, KOFFING, MALE
-		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-		db TACKLE, EXPLOSION, VENOSHOCK, SMOKESCREEN
-	dbp 39, GOLBAT, MALE
-		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-		db LEECH_LIFE, AERIAL_ACE, CONFUSE_RAY, SUPER_FANG
-	dbp 40, MUK, MALE | ALOLAN_FORM
-		db HARD_STONE, ABILITY_1 | NAT_NEUTRAL
-		db FIRE_PUNCH, KNOCK_OFF, POISON_JAB, ROCK_SLIDE
-	dbp 41, WEEZING, MALE
-		db SILK_SCARF, ABILITY_1 | NAT_NEUTRAL
-		db TACKLE, EXPLOSION, VENOSHOCK, SMOKESCREEN
-	dbp 39, RATICATE, MALE | ALOLAN_FORM
-		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
-		db QUICK_ATTACK, SCREECH, CRUNCH, SUPER_FANG
-	db -1 ; end
+	def_trainer PETREL1, "Petrel"
+	tr_mon 39, KOFFING @ EVIOLITE, MALE
+		tr_moves TACKLE, EXPLOSION, VENOSHOCK, SMOKESCREEN
+	tr_mon 39, GOLBAT @ EVIOLITE, MALE
+		tr_moves LEECH_LIFE, AERIAL_ACE, CONFUSE_RAY, SUPER_FANG
+	tr_mon 40, MUK @ HARD_STONE, MALE | ALOLAN_FORM
+		tr_moves FIRE_PUNCH, KNOCK_OFF, POISON_JAB, ROCK_SLIDE
+	tr_mon 41, WEEZING @ SILK_SCARF, MALE
+		tr_moves TACKLE, EXPLOSION, VENOSHOCK, SMOKESCREEN
+	tr_mon 39, RATICATE @ BLACKGLASSES, MALE | ALOLAN_FORM
+		tr_moves QUICK_ATTACK, SCREECH, CRUNCH, SUPER_FANG
+	end_trainer
 
-	; PETREL
-	db "Petrel@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 34, GOLBAT, MALE
-		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 216 Atk
-		db BITE, AERIAL_ACE, CONFUSE_RAY, SUPER_FANG
-	dbp 35, MUK, MALE | ALOLAN_FORM
-		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 Atk, 108 Spe
-		db MINIMIZE, CRUNCH, VENOSHOCK, KNOCK_OFF
-	dbp 35, RATICATE, MALE | ALOLAN_FORM
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 Atk, 108 Spe
-		db SWORDS_DANCE, CRUNCH, SUPER_FANG, HYPER_FANG
-	dbp 36, WEEZING, MALE
-		db POISON_BARB, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 Atk, 108 SAt
-		db ENDURE, WILL_O_WISP, SLUDGE_BOMB, EXPLOSION
-	db -1 ; end
+	def_trainer PETREL2, "Petrel"
+	tr_mon 34, GOLBAT @ EVIOLITE, MALE
+		tr_evs 216 Atk
+		tr_moves BITE, AERIAL_ACE, CONFUSE_RAY, SUPER_FANG
+	tr_mon 35, MUK @ BLACKGLASSES, MALE | ALOLAN_FORM
+		tr_evs 108 Atk, 108 Spe
+		tr_moves MINIMIZE, CRUNCH, VENOSHOCK, KNOCK_OFF
+	tr_mon 35, RATICATE @ KINGS_ROCK, MALE | ALOLAN_FORM
+		tr_evs 108 Atk, 108 Spe
+		tr_moves SWORDS_DANCE, CRUNCH, SUPER_FANG, HYPER_FANG
+	tr_mon 36, WEEZING @ POISON_BARB, MALE
+		tr_evs 108 Atk, 108 SAt
+		tr_moves ENDURE, WILL_O_WISP, SLUDGE_BOMB, EXPLOSION
+	end_trainer
 
 
 SECTION "ArcherGroup", ROMX
 ArcherGroup:
 
 	def_trainer_class ARCHER
-	db "Archer@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 41, HOUNDOUR, MALE
-		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-		db SUPER_FANG, FIRE_SPIN, FEINT_ATTACK, WILL_O_WISP
-	dbp 43, RATICATE, MALE | ALOLAN_FORM
-		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
-		db CRUNCH, SUPER_FANG, HYPER_FANG, DOUBLE_EDGE
-	dbp 41, GENGAR, MALE
-		db SPELL_TAG, ABILITY_1 | NAT_NEUTRAL
-		db HYPNOSIS, CONFUSE_RAY, PAIN_SPLIT, SHADOW_BALL
-	dbp 42, WEEZING, MALE
-		db BRIGHTPOWDER, ABILITY_1 | NAT_NEUTRAL
-		db SMOKESCREEN, WILL_O_WISP, PAIN_SPLIT, SLUDGE_BOMB
-	dbp 44, HOUNDOOM, MALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db SMOKESCREEN, SUPER_FANG, FEINT_ATTACK, FLAMETHROWER
-	db -1 ; end
+	def_trainer ARCHER1, "Archer"
+	tr_mon 41, HOUNDOUR @ EVIOLITE, MALE
+		tr_moves SUPER_FANG, FIRE_SPIN, FEINT_ATTACK, WILL_O_WISP
+	tr_mon 43, RATICATE @ BLACKGLASSES, MALE | ALOLAN_FORM
+		tr_moves CRUNCH, SUPER_FANG, HYPER_FANG, DOUBLE_EDGE
+	tr_mon 41, GENGAR @ SPELL_TAG, MALE
+		tr_moves HYPNOSIS, CONFUSE_RAY, PAIN_SPLIT, SHADOW_BALL
+	tr_mon 42, WEEZING @ BRIGHTPOWDER, MALE
+		tr_moves SMOKESCREEN, WILL_O_WISP, PAIN_SPLIT, SLUDGE_BOMB
+	tr_mon 44, HOUNDOOM @ KINGS_ROCK, MALE
+		tr_moves SMOKESCREEN, SUPER_FANG, FEINT_ATTACK, FLAMETHROWER
+	end_trainer
 
-	; ARCHER
-	db "Archer@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 28, HAUNTER, MALE
-		db SPELL_TAG, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 176 SAt
-		db DISABLE, NIGHT_SHADE, CONFUSE_RAY, SHADOW_BALL
-	dbp 30, RATICATE, MALE | ALOLAN_FORM
-		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 88 Atk, 88 Spe
-		db PURSUIT, HYPER_FANG, SCARY_FACE, CRUNCH
-	dbp 28, WEEZING, MALE
-		db SILK_SCARF, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 88 Atk, 88 Spe
-		db WILL_O_WISP, EXPLOSION, VENOSHOCK, SMOKESCREEN
-	dbp 32, HOUNDOOM, MALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 88 Atk, 88 SAt
-		db FLAMETHROWER, SMOKESCREEN, FEINT_ATTACK, SUPER_FANG
-	db -1 ; end
+	def_trainer ARCHER2, "Archer"
+	tr_mon 28, HAUNTER @ SPELL_TAG, MALE
+		tr_evs 176 SAt
+		tr_moves DISABLE, NIGHT_SHADE, CONFUSE_RAY, SHADOW_BALL
+	tr_mon 30, RATICATE @ BLACKGLASSES, MALE | ALOLAN_FORM
+		tr_evs 88 Atk, 88 Spe
+		tr_moves PURSUIT, HYPER_FANG, SCARY_FACE, CRUNCH
+	tr_mon 28, WEEZING @ SILK_SCARF, MALE
+		tr_evs 88 Atk, 88 Spe
+		tr_moves WILL_O_WISP, EXPLOSION, VENOSHOCK, SMOKESCREEN
+	tr_mon 32, HOUNDOOM @ KINGS_ROCK, MALE
+		tr_evs 88 Atk, 88 SAt
+		tr_moves FLAMETHROWER, SMOKESCREEN, FEINT_ATTACK, SUPER_FANG
+	end_trainer
 
 
 SECTION "ArianaGroup", ROMX
 ArianaGroup:
 
 	def_trainer_class ARIANA
-	db "Ariana@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 40, ARBOK, FEMALE | ARBOK_ARIANA_FORM
-		db POISON_BARB, ABILITY_1 | NAT_NEUTRAL
-		db GLARE, SCREECH, ACID, CRUNCH
-	dbp 41, VILEPLUME, FEMALE
-		db MIRACLE_SEED, ABILITY_1 | NAT_NEUTRAL
-		db LEECH_SEED, ACID, SLEEP_POWDER, GIGA_DRAIN
-	dbp 42, HONCHKROW, FEMALE
-		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
-		db WING_ATTACK, NIGHT_SHADE, CONFUSE_RAY, FEINT_ATTACK
-	db -1 ; end
+	def_trainer ARIANA1, "Ariana"
+	tr_mon 40, ARBOK @ POISON_BARB, FEMALE | ARBOK_ARIANA_FORM
+		tr_moves GLARE, SCREECH, ACID, CRUNCH
+	tr_mon 41, VILEPLUME @ MIRACLE_SEED, FEMALE
+		tr_moves LEECH_SEED, ACID, SLEEP_POWDER, GIGA_DRAIN
+	tr_mon 42, HONCHKROW @ BLACKGLASSES, FEMALE
+		tr_moves WING_ATTACK, NIGHT_SHADE, CONFUSE_RAY, FEINT_ATTACK
+	end_trainer
 
-	; ARIANA
-	db "Ariana@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 35, ARBOK, FEMALE | ARBOK_ARIANA_FORM
-		db BLACKGLASSES, ABILITY_1 | NAT_NEUTRAL
-		db WRAP, ACID, CRUNCH, GLARE
-	dbp 36, GLOOM, FEMALE
-		db MIRACLE_SEED, ABILITY_1 | NAT_NEUTRAL
-		db MEGA_DRAIN, GROWTH, SLEEP_POWDER, ACID
-	dbp 37, MURKROW, FEMALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db WING_ATTACK, PURSUIT, CONFUSE_RAY, NIGHT_SHADE
-	db -1 ; end
+	def_trainer ARIANA2, "Ariana"
+	tr_mon 35, ARBOK @ BLACKGLASSES, FEMALE | ARBOK_ARIANA_FORM
+		tr_moves WRAP, ACID, CRUNCH, GLARE
+	tr_mon 36, GLOOM @ MIRACLE_SEED, FEMALE
+		tr_moves MEGA_DRAIN, GROWTH, SLEEP_POWDER, ACID
+	tr_mon 37, MURKROW @ KINGS_ROCK, FEMALE
+		tr_moves WING_ATTACK, PURSUIT, CONFUSE_RAY, NIGHT_SHADE
+	end_trainer
 
 
 SECTION "GiovanniGroup", ROMX
 GiovanniGroup:
 
 	def_trainer_class GIOVANNI
-	db "Giovanni@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 24, MEWTWO, MALE | MEWTWO_ARMORED_FORM
-		db ARMOR_SUIT, ABIL_MEWTWO_INSOMNIA | NAT_SATK_UP_ATK_DOWN, "?????@"
-		db SHADOW_BALL, PSYSTRIKE, NASTY_PLOT, AURA_SPHERE
-	db -1 ; end
+	def_trainer GIOVANNI1, "Giovanni"
+	tr_mon LEVEL_FROM_BADGES + 24, "?????", MEWTWO @ ARMOR_SUIT, MALE | MEWTWO_ARMORED_FORM
+		tr_extra INSOMNIA, SATK_UP_ATK_DOWN
+		tr_moves SHADOW_BALL, PSYSTRIKE, NASTY_PLOT, AURA_SPHERE
+	end_trainer
 
-	; GIOVANNI
-	db "Giovanni@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 64, NIDOKING, MALE
-		db LIFE_ORB, ABIL_NIDOKING_SHEER_FORCE | NAT_SPE_UP_ATK_DOWN
-		db SLUDGE_BOMB, EARTH_POWER, ICE_BEAM, FLAMETHROWER
-	dbp 62, DUGTRIO, MALE
-		db CHOICE_BAND, ABIL_DUGTRIO_ARENA_TRAP | NAT_SPE_UP_SATK_DOWN
-		db EARTHQUAKE, STONE_EDGE, SUCKER_PUNCH, TOXIC
-	dbp 60, HONCHKROW, FEMALE
-		db FOCUS_SASH, ABIL_HONCHKROW_MOXIE | NAT_ATK_UP_SATK_DOWN
-		db SUCKER_PUNCH, DRILL_PECK, ROOST, THUNDER_WAVE
-	dbp 60, KANGASKHAN, FEMALE
+	def_trainer GIOVANNI2, "Giovanni"
+	tr_mon 64, NIDOKING @ LIFE_ORB, MALE
+		tr_extra SHEER_FORCE, SPE_UP_ATK_DOWN
+		tr_moves SLUDGE_BOMB, EARTH_POWER, ICE_BEAM, FLAMETHROWER
+	tr_mon 62, DUGTRIO @ CHOICE_BAND, MALE
+		tr_extra ARENA_TRAP, SPE_UP_SATK_DOWN
+		tr_moves EARTHQUAKE, STONE_EDGE, SUCKER_PUNCH, TOXIC
+	tr_mon 60, HONCHKROW @ FOCUS_SASH, FEMALE
+		tr_extra MOXIE, ATK_UP_SATK_DOWN
+		tr_moves SUCKER_PUNCH, DRILL_PECK, ROOST, THUNDER_WAVE
 if !DEF(FAITHFUL)
-		db LUM_BERRY, ABIL_KANGASKHAN_PARENTAL_BOND | NAT_SPE_UP_SATK_DOWN
-		db BODY_SLAM, SEISMIC_TOSS, ICE_PUNCH, CRUNCH
+	tr_mon 60, KANGASKHAN @ LUM_BERRY, FEMALE
+		tr_extra PARENTAL_BOND, SPE_UP_SATK_DOWN
+		tr_moves BODY_SLAM, SEISMIC_TOSS, ICE_PUNCH, CRUNCH
 else
-		db LEFTOVERS, ABIL_KANGASKHAN_EARLY_BIRD | NAT_ATK_UP_SATK_DOWN
-		db DOUBLE_EDGE, EARTHQUAKE, CRUNCH, REST
+	tr_mon 60, KANGASKHAN @ LEFTOVERS, FEMALE
+		tr_extra EARLY_BIRD, ATK_UP_SATK_DOWN
+		tr_moves DOUBLE_EDGE, EARTHQUAKE, CRUNCH, REST
 endc
-	dbp 62, RHYDON, MALE
+	tr_mon 62, RHYDON @ EVIOLITE, MALE
 if !DEF(FAITHFUL)
-		db EVIOLITE, ABIL_RHYDON_SOLID_ROCK | NAT_ATK_UP_SATK_DOWN
+		tr_extra SOLID_ROCK, ATK_UP_SATK_DOWN
 else
-		db EVIOLITE, ABIL_RHYDON_LIGHTNING_ROD | NAT_ATK_UP_SATK_DOWN
+		tr_extra LIGHTNING_ROD, ATK_UP_SATK_DOWN
 endc
-		db ROCK_SLIDE, EARTHQUAKE, AVALANCHE, SWORDS_DANCE
-	dbp 64, NIDOQUEEN, FEMALE
-		db LIFE_ORB, ABIL_NIDOQUEEN_SHEER_FORCE | NAT_SPE_UP_DEF_DOWN
-		db SLUDGE_BOMB, EARTH_POWER, STONE_EDGE, CLOSE_COMBAT
-	db -1 ; end
+		tr_moves ROCK_SLIDE, EARTHQUAKE, AVALANCHE, SWORDS_DANCE
+	tr_mon 64, NIDOQUEEN @ LIFE_ORB, FEMALE
+		tr_extra SHEER_FORCE, SPE_UP_DEF_DOWN
+		tr_moves SLUDGE_BOMB, EARTH_POWER, STONE_EDGE, CLOSE_COMBAT
+	end_trainer
 
 
 SECTION "ProfOakGroup", ROMX
 ProfOakGroup:
 
 	def_trainer_class PROF_OAK
-	db "Oak@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 78, TAUROS, MALE
-		db CHOICE_SCARF, ABIL_TAUROS_INTIMIDATE | NAT_ATK_UP_SATK_DOWN
-		db DOUBLE_EDGE, EARTHQUAKE, ZEN_HEADBUTT, STONE_EDGE
-	dbp 76, DODRIO, FEMALE
-		db BERSERK_GENE, ABIL_DODRIO_TANGLED_FEET | NAT_ATK_UP_SATK_DOWN
-		db BRAVE_BIRD, HI_JUMP_KICK, KNOCK_OFF, QUICK_ATTACK
-	dbp 80, VENUSAUR, FEMALE
-		db BIG_ROOT, ABIL_VENUSAUR_THICK_FAT | NAT_SDEF_UP_ATK_DOWN
-		db GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
-	dbp 80, CHARIZARD, MALE
+	def_trainer 1, "Oak"
+	tr_mon 78, TAUROS @ CHOICE_SCARF, MALE
+		tr_extra INTIMIDATE, ATK_UP_SATK_DOWN
+		tr_moves DOUBLE_EDGE, EARTHQUAKE, ZEN_HEADBUTT, STONE_EDGE
+	tr_mon 76, DODRIO @ BERSERK_GENE, FEMALE
+		tr_extra TANGLED_FEET, ATK_UP_SATK_DOWN
+		tr_moves BRAVE_BIRD, HI_JUMP_KICK, KNOCK_OFF, QUICK_ATTACK
+	tr_mon 80, VENUSAUR @ BIG_ROOT, FEMALE
+		tr_extra THICK_FAT, SDEF_UP_ATK_DOWN
+		tr_moves GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
+	tr_mon 80, CHARIZARD @ LIFE_ORB, MALE
 if !DEF(FAITHFUL)
-		db LIFE_ORB, ABIL_CHARIZARD_TOUGH_CLAWS | NAT_SPE_UP_SATK_DOWN
+		tr_extra TOUGH_CLAWS, SPE_UP_SATK_DOWN
 else
-		db LIFE_ORB, ABIL_CHARIZARD_DROUGHT | NAT_SPE_UP_SATK_DOWN
+		tr_extra DROUGHT, SPE_UP_SATK_DOWN
 endc
-		db FLARE_BLITZ, DRAGON_CLAW, CRUNCH, DRAGON_DANCE
-	dbp 80, BLASTOISE, MALE
-		db WHITE_HERB, ABIL_BLASTOISE_TORRENT | NAT_SDEF_UP_SATK_DOWN
-		db WATERFALL, IRON_HEAD, CLOSE_COMBAT, SHELL_SMASH
-	dbp 82, NIDOKING, MALE
-		db LIFE_ORB, ABIL_NIDOKING_SHEER_FORCE | NAT_SPE_UP_SATK_DOWN
-		db POISON_JAB, EARTHQUAKE, ICE_PUNCH, THUNDERPUNCH
-	db -1 ; end
+		tr_moves FLARE_BLITZ, DRAGON_CLAW, CRUNCH, DRAGON_DANCE
+	tr_mon 80, BLASTOISE @ WHITE_HERB, MALE
+		tr_extra TORRENT, SDEF_UP_SATK_DOWN
+		tr_moves WATERFALL, IRON_HEAD, CLOSE_COMBAT, SHELL_SMASH
+	tr_mon 82, NIDOKING @ LIFE_ORB, MALE
+		tr_extra SHEER_FORCE, SPE_UP_SATK_DOWN
+		tr_moves POISON_JAB, EARTHQUAKE, ICE_PUNCH, THUNDERPUNCH
+	end_trainer
 
 
 SECTION "ProfElmGroup", ROMX
 ProfElmGroup:
 
 	def_trainer_class PROF_ELM
-	db "Elm@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 3, HOOTHOOT
-	dbp LEVEL_FROM_BADGES + 4, JIGGLYPUFF
-	dbp LEVEL_FROM_BADGES + 5, CYNDAQUIL
-	dbp LEVEL_FROM_BADGES + 5, CHIKORITA
-	dbp LEVEL_FROM_BADGES + 5, TOTODILE
-	db -1 ; end
+	def_trainer 1, "Elm"
+	tr_mon LEVEL_FROM_BADGES + 3, HOOTHOOT
+	tr_mon LEVEL_FROM_BADGES + 4, JIGGLYPUFF
+	tr_mon LEVEL_FROM_BADGES + 5, CYNDAQUIL
+	tr_mon LEVEL_FROM_BADGES + 5, CHIKORITA
+	tr_mon LEVEL_FROM_BADGES + 5, TOTODILE
+	end_trainer
 
-	db "Elm@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 3, AIPOM
-	dbp LEVEL_FROM_BADGES + 4, WIGGLYTUFF
-	dbp LEVEL_FROM_BADGES + 5, QUILAVA
-	dbp LEVEL_FROM_BADGES + 5, BAYLEEF
-	dbp LEVEL_FROM_BADGES + 5, CROCONAW
-	db -1 ; end
+	def_trainer 2, "Elm"
+	tr_mon LEVEL_FROM_BADGES + 3, AIPOM
+	tr_mon LEVEL_FROM_BADGES + 4, WIGGLYTUFF
+	tr_mon LEVEL_FROM_BADGES + 5, QUILAVA
+	tr_mon LEVEL_FROM_BADGES + 5, BAYLEEF
+	tr_mon LEVEL_FROM_BADGES + 5, CROCONAW
+	end_trainer
 
-	; PROF_ELM
-	db "Elm@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 4, AMBIPOM
-	dbp LEVEL_FROM_BADGES + 5, WIGGLYTUFF
-	dbp LEVEL_FROM_BADGES + 6, TYPHLOSION
-	dbp LEVEL_FROM_BADGES + 6, MEGANIUM
-	dbp LEVEL_FROM_BADGES + 6, FERALIGATR
-	db -1 ; end
+	def_trainer 3, "Elm"
+	tr_mon LEVEL_FROM_BADGES + 4, AMBIPOM
+	tr_mon LEVEL_FROM_BADGES + 5, WIGGLYTUFF
+	tr_mon LEVEL_FROM_BADGES + 6, TYPHLOSION
+	tr_mon LEVEL_FROM_BADGES + 6, MEGANIUM
+	tr_mon LEVEL_FROM_BADGES + 6, FERALIGATR
+	end_trainer
 
-	; PROF_ELM
-	db "Elm@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 7, AMBIPOM
-	dbp LEVEL_FROM_BADGES + 8, WIGGLYTUFF
-	dbp LEVEL_FROM_BADGES + 8, HERACROSS
-	dbp LEVEL_FROM_BADGES + 9, TYPHLOSION
-	dbp LEVEL_FROM_BADGES + 9, MEGANIUM
-	dbp LEVEL_FROM_BADGES + 9, FERALIGATR
-	db -1 ; end
+	def_trainer 4, "Elm"
+	tr_mon LEVEL_FROM_BADGES + 7, AMBIPOM
+	tr_mon LEVEL_FROM_BADGES + 8, WIGGLYTUFF
+	tr_mon LEVEL_FROM_BADGES + 8, HERACROSS
+	tr_mon LEVEL_FROM_BADGES + 9, TYPHLOSION
+	tr_mon LEVEL_FROM_BADGES + 9, MEGANIUM
+	tr_mon LEVEL_FROM_BADGES + 9, FERALIGATR
+	end_trainer
 
 
 SECTION "ProfIvyGroup", ROMX
 ProfIvyGroup:
 
 	def_trainer_class PROF_IVY
-	db "Ivy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 65, BUTTERFREE
-	dbp 64, POLITOED
-	dbp 64, VICTREEBEL
-	dbp 63, RHYPERIOR
-	dbp 63, NIDOQUEEN
-	dbp 66, GYARADOS
-	db -1 ; end
+	def_trainer 1, "Ivy"
+	tr_mon 65, BUTTERFREE
+	tr_mon 64, POLITOED
+	tr_mon 64, VICTREEBEL
+	tr_mon 63, RHYPERIOR
+	tr_mon 63, NIDOQUEEN
+	tr_mon 66, GYARADOS
+	end_trainer
 
 
 SECTION "MysticalmanGroup", ROMX
 MysticalmanGroup:
 
 	def_trainer_class MYSTICALMAN
-	def_trainer "Eusine"
+	def_trainer EUSINE, "Eusine"
 	tr_mon 27, DROWZEE @ EVIOLITE, MALE
 		tr_extra INSOMNIA
 		tr_moves DREAM_EATER, HYPNOSIS, DISABLE, PSYBEAM
@@ -8441,19 +6958,14 @@ SECTION "KarateKingGroup", ROMX
 KarateKingGroup:
 
 	def_trainer_class KARATE_KING
-	db "Kiyo@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 11, HITMONLEE
-		db BLACK_BELT
-		db BULK_UP, FOCUS_ENERGY, HI_JUMP_KICK, FORESIGHT
-	dbp LEVEL_FROM_BADGES + 11, HITMONCHAN
-		db KINGS_ROCK
-		db THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MACH_PUNCH
-	dbp LEVEL_FROM_BADGES + 11, HITMONTOP
-		db FOCUS_BAND
-		db BULK_UP, DOUBLE_KICK, RAPID_SPIN, COUNTER
-	db -1 ; end
+	def_trainer KIYO, "Kiyo"
+	tr_mon LEVEL_FROM_BADGES + 11, HITMONLEE @ BLACK_BELT
+		tr_moves BULK_UP, FOCUS_ENERGY, HI_JUMP_KICK, FORESIGHT
+	tr_mon LEVEL_FROM_BADGES + 11, HITMONCHAN @ KINGS_ROCK
+		tr_moves THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MACH_PUNCH
+	tr_mon LEVEL_FROM_BADGES + 11, HITMONTOP @ FOCUS_BAND
+		tr_moves BULK_UP, DOUBLE_KICK, RAPID_SPIN, COUNTER
+	end_trainer
 
 
 SECTION "TowerTycoonGroup", ROMX
@@ -8461,351 +6973,249 @@ TowerTycoonGroup:
 
 	; unused
 	def_trainer_class TOWERTYCOON
-	db "Palmer@"
-	db TRAINERTYPE_NORMAL
-	db -1 ; end
+	def_trainer 1, "Palmer"
+	end_trainer
 
-	; TOWERTYCOON
-	db "Palmer@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 74, GYARADOS
-		db MUSCLE_BAND
-		db DRAGON_DANCE, WATERFALL, CRUNCH, OUTRAGE
-	dbp 74, RHYPERIOR
-		db KINGS_ROCK
-		db EARTHQUAKE, ROCK_SLIDE, MEGAHORN, AVALANCHE
-	dbp 75, DRAGONITE
-		db WISE_GLASSES
-		db HURRICANE, DRAGON_PULSE, FIRE_BLAST, BLIZZARD
-	dbp 73, ALAKAZAM
-		db TWISTEDSPOON
-		db PSYCHIC_M, CONFUSE_RAY, TRI_ATTACK, LIGHT_SCREEN
-	dbp 73, SNORLAX
-		db LEFTOVERS
-		db SLEEP_TALK, REST, BODY_SLAM, GUNK_SHOT
-	dbp 72, HERACROSS
-		db BLACK_BELT
-		db MEGAHORN, CROSS_CHOP, SEISMIC_TOSS, NIGHT_SLASH
-	db -1 ; end
+	def_trainer 2, "Palmer"
+	tr_mon 74, GYARADOS @ MUSCLE_BAND
+		tr_moves DRAGON_DANCE, WATERFALL, CRUNCH, OUTRAGE
+	tr_mon 74, RHYPERIOR @ KINGS_ROCK
+		tr_moves EARTHQUAKE, ROCK_SLIDE, MEGAHORN, AVALANCHE
+	tr_mon 75, DRAGONITE @ WISE_GLASSES
+		tr_moves HURRICANE, DRAGON_PULSE, FIRE_BLAST, BLIZZARD
+	tr_mon 73, ALAKAZAM @ TWISTEDSPOON
+		tr_moves PSYCHIC_M, CONFUSE_RAY, TRI_ATTACK, LIGHT_SCREEN
+	tr_mon 73, SNORLAX @ LEFTOVERS
+		tr_moves SLEEP_TALK, REST, BODY_SLAM, GUNK_SHOT
+	tr_mon 72, HERACROSS @ BLACK_BELT
+		tr_moves MEGAHORN, CROSS_CHOP, SEISMIC_TOSS, NIGHT_SLASH
+	end_trainer
 
 
 SECTION "FactoryHeadGroup", ROMX
 FactoryHeadGroup:
 
 	def_trainer_class FACTORYHEAD
-	db "Thorton@"
-	db TRAINERTYPE_NORMAL
-	db -1 ; end
+	def_trainer 1, "Thorton"
+	end_trainer
 
-	; FACTORYHEAD
-	db "Thorton@"
-	db TRAINERTYPE_NORMAL
-	db -1 ; end
+	def_trainer 2, "Thorton"
+	end_trainer
 
 
 SECTION "JessieJamesGroup", ROMX
 JessieJamesGroup:
 
 	def_trainer_class JESSIE_JAMES
-	db "& James@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	; TODO: movesets, etc
-	dbp 26, WEEZING, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 26, ARBOK, FEMALE | ARBOK_KANTO_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 24, VICTREEBEL, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 24, WOBBUFFET, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 28, MEOWTH, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 1, "& James"
+	tr_mon 26, WEEZING, MALE
+	tr_mon 26, ARBOK, FEMALE | ARBOK_KANTO_FORM
+	tr_mon 24, VICTREEBEL, FEMALE
+	tr_mon 24, WOBBUFFET, MALE
+	tr_mon 28, MEOWTH, MALE
+	end_trainer
 
 
 SECTION "LoreleiGroup", ROMX
 LoreleiGroup:
 
 	def_trainer_class LORELEI
-	db "Lorelei@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
-	; party
-	dbp 39, GLACEON
-		db NO_ITEM
-		ev_spread 240 Spe
-		db ICE_BEAM, BARRIER, RECOVER, QUICK_ATTACK
-	dbp 41, DEWGONG
-		db NO_ITEM
-		ev_spread 240 HP
-		db WATERFALL, AURORA_BEAM, SLEEP_TALK, REST
-	dbp 40, CLOYSTER
-		db NO_ITEM
-		ev_spread 240 Atk
-		db DEFENSE_CURL, ROLLOUT, AURORA_BEAM, EXPLOSION
-	dbp 41, SLOWBRO
-		db NO_ITEM
-		ev_spread 240 HP
-		db PSYCHIC_M, WATER_PULSE, HEADBUTT, DISABLE
-	dbp 44, JYNX
-		db SITRUS_BERRY
-		ev_spread 240 SAt
-		db DRAINING_KISS, SING, AVALANCHE, PETAL_DANCE
-	dbp 43, LAPRAS
-		db NO_ITEM
-		ev_spread 120 SAt, 120 SDf
-		db ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, SURF
-	db -1 ; end
+	def_trainer 1, "Lorelei"
+	tr_mon 39, GLACEON
+		tr_evs 240 Spe
+		tr_moves ICE_BEAM, BARRIER, RECOVER, QUICK_ATTACK
+	tr_mon 41, DEWGONG
+		tr_evs 240 HP
+		tr_moves WATERFALL, AURORA_BEAM, SLEEP_TALK, REST
+	tr_mon 40, CLOYSTER
+		tr_evs 240 Atk
+		tr_moves DEFENSE_CURL, ROLLOUT, AURORA_BEAM, EXPLOSION
+	tr_mon 41, SLOWBRO
+		tr_evs 240 HP
+		tr_moves PSYCHIC_M, WATER_PULSE, HEADBUTT, DISABLE
+	tr_mon 44, JYNX @ SITRUS_BERRY
+		tr_evs 240 SAt
+		tr_moves DRAINING_KISS, SING, AVALANCHE, PETAL_DANCE
+	tr_mon 43, LAPRAS
+		tr_evs 120 SAt, 120 SDf
+		tr_moves ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, SURF
+	end_trainer
 
-	; LORELEI (team 2 rather than the last for the fighting dojo's benefit)
-	db "Lorelei@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 73, DEWGONG
-		db LEFTOVERS
-		db SURF, ICE_BEAM, REST, SLEEP_TALK
-	dbp 72, CLOYSTER
-		db MUSCLE_BAND
-		db EXPLOSION, ROCK_BLAST, ICICLE_CRASH, BARRIER
-	dbp 73, SLOWBRO
-		db WISE_GLASSES
-		db PSYCHIC_M, SURF, ICE_BEAM, CALM_MIND
-	dbp 72, GLACEON
-		db NEVERMELTICE
-		db ICE_BEAM, BARRIER, HYPER_VOICE, MIRROR_COAT
-	dbp 75, JYNX
-		db PINK_BOW
-		db DRAINING_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
-	dbp 74, LAPRAS
-		db BRIGHTPOWDER
-		db ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, OUTRAGE
-	db -1 ; end
+	def_trainer 2, "Lorelei"
+	tr_mon 73, DEWGONG @ LEFTOVERS
+		tr_moves SURF, ICE_BEAM, REST, SLEEP_TALK
+	tr_mon 72, CLOYSTER @ MUSCLE_BAND
+		tr_moves EXPLOSION, ROCK_BLAST, ICICLE_CRASH, BARRIER
+	tr_mon 73, SLOWBRO @ WISE_GLASSES
+		tr_moves PSYCHIC_M, SURF, ICE_BEAM, CALM_MIND
+	tr_mon 72, GLACEON @ NEVERMELTICE
+		tr_moves ICE_BEAM, BARRIER, HYPER_VOICE, MIRROR_COAT
+	tr_mon 75, JYNX @ PINK_BOW
+		tr_moves DRAINING_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
+	tr_mon 74, LAPRAS @ BRIGHTPOWDER
+		tr_moves ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, OUTRAGE
+	end_trainer
 
-	; LORELEI
-	db "Lorelei@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
-	; party
-	dbp 58, DEWGONG
-		db LEFTOVERS
-		ev_spread 160 HP, 160 SDf
-		db AQUA_TAIL, ICE_BEAM, REST, SLEEP_TALK
-	dbp 57, CLOYSTER
-		db SILK_SCARF
-		ev_spread 252 Atk, 68 Spe
-		db EXPLOSION, ROLLOUT, ICICLE_CRASH, BARRIER
-	dbp 58, SLOWBRO
-		db TWISTEDSPOON
-		ev_spread 252 HP, 68 SAt
-		db PSYCHIC_M, SURF, ICE_BEAM, CALM_MIND
-	dbp 56, GLACEON
-		db NEVERMELTICE
-		ev_spread 68 Atk, 252 SAt
-		db ICE_BEAM, BARRIER, HYPER_VOICE, QUICK_ATTACK
-	dbp 60, JYNX
-		db PINK_BOW
-		ev_spread 68 SAt, 252 Spe
-		db DRAINING_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
-	dbp 59, LAPRAS
-		db BRIGHTPOWDER
-		ev_spread 160 HP, 80 SAt, 80 Spe
-		db ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, OUTRAGE
-	db -1 ; end
+	def_trainer 3, "Lorelei"
+	tr_mon 58, DEWGONG @ LEFTOVERS
+		tr_evs 160 HP, 160 SDf
+		tr_moves AQUA_TAIL, ICE_BEAM, REST, SLEEP_TALK
+	tr_mon 57, CLOYSTER @ SILK_SCARF
+		tr_evs 252 Atk, 68 Spe
+		tr_moves EXPLOSION, ROLLOUT, ICICLE_CRASH, BARRIER
+	tr_mon 58, SLOWBRO @ TWISTEDSPOON
+		tr_evs 252 HP, 68 SAt
+		tr_moves PSYCHIC_M, SURF, ICE_BEAM, CALM_MIND
+	tr_mon 56, GLACEON @ NEVERMELTICE
+		tr_evs 68 Atk, 252 SAt
+		tr_moves ICE_BEAM, BARRIER, HYPER_VOICE, QUICK_ATTACK
+	tr_mon 60, JYNX @ PINK_BOW
+		tr_evs 68 SAt, 252 Spe
+		tr_moves DRAINING_KISS, NASTY_PLOT, ICE_BEAM, PSYCHIC_M
+	tr_mon 59, LAPRAS @ BRIGHTPOWDER
+		tr_evs 160 HP, 80 SAt, 80 Spe
+		tr_moves ICE_BEAM, ANCIENTPOWER, CONFUSE_RAY, OUTRAGE
+	end_trainer
 
 
 SECTION "AgathaGroup", ROMX
 AgathaGroup:
 
 	def_trainer_class AGATHA
-	db "Agatha@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 62, GENGAR, FEMALE
-		db SPELL_TAG, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 SAt, 252 Spe
-		db SHADOW_BALL, WILL_O_WISP, CURSE, DESTINY_BOND
-	dbp 62, CROBAT, FEMALE
-		db POISON_BARB, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 Atk, 108 Spe
-		db AIR_SLASH, CRUNCH, X_SCISSOR, POISON_JAB
-	dbp 61, MISDREAVUS, FEMALE
-		db EVIOLITE, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 HP, 108 SAt
-		db SHADOW_BALL, FLAMETHROWER, DAZZLINGLEAM, POWER_GEM
+	def_trainer 1, "Agatha"
+	tr_mon 62, GENGAR @ SPELL_TAG, FEMALE
+		tr_evs 108 SAt, 252 Spe
+		tr_moves SHADOW_BALL, WILL_O_WISP, CURSE, DESTINY_BOND
+	tr_mon 62, CROBAT @ POISON_BARB, FEMALE
+		tr_evs 252 Atk, 108 Spe
+		tr_moves AIR_SLASH, CRUNCH, X_SCISSOR, POISON_JAB
+	tr_mon 61, MISDREAVUS @ EVIOLITE, FEMALE
+		tr_evs 252 HP, 108 SAt
+		tr_moves SHADOW_BALL, FLAMETHROWER, DAZZLINGLEAM, POWER_GEM
 if DEF(FAITHFUL)
-	dbp 61, MUK, FEMALE
-		db SILK_SCARF, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 HP, 108 Spe
-		db EXPLOSION, SLUDGE_BOMB, SCREECH, MINIMIZE
+	tr_mon 61, MUK @ SILK_SCARF, FEMALE
+		tr_evs 252 HP, 108 Spe
+		tr_moves EXPLOSION, SLUDGE_BOMB, SCREECH, MINIMIZE
 else
-	dbp 61, MAROWAK, FEMALE | ALOLAN_FORM
-		db THICK_CLUB, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 Atk, 252 Spe
-		db SWORDS_DANCE, BONEMERANG, FIRE_PUNCH, SHADOW_CLAW
+	tr_mon 61, MAROWAK @ THICK_CLUB, FEMALE | ALOLAN_FORM
+		tr_evs 108 Atk, 252 Spe
+		tr_moves SWORDS_DANCE, BONEMERANG, FIRE_PUNCH, SHADOW_CLAW
 endc
-	dbp 63, ARBOK, FEMALE | ARBOK_AGATHA_FORM
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 SAt, 252 Spe
-		db SLUDGE_BOMB, GLARE, CRUNCH, BODY_SLAM
-	dbp 65, GENGAR, FEMALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 108 SAt, 252 Spe
-		db SHADOW_BALL, THUNDERBOLT, WILL_O_WISP, DESTINY_BOND
-	db -1 ; end
+	tr_mon 63, ARBOK @ KINGS_ROCK, FEMALE | ARBOK_AGATHA_FORM
+		tr_evs 108 SAt, 252 Spe
+		tr_moves SLUDGE_BOMB, GLARE, CRUNCH, BODY_SLAM
+	tr_mon 65, GENGAR @ QUICK_CLAW, FEMALE
+		tr_evs 108 SAt, 252 Spe
+		tr_moves SHADOW_BALL, THUNDERBOLT, WILL_O_WISP, DESTINY_BOND
+	end_trainer
 
-	; AGATHA
-	db "Agatha@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 73, GENGAR, FEMALE
-		db SPELL_TAG, ABILITY_1 | NAT_NEUTRAL
-		db SHADOW_BALL, WILL_O_WISP, CURSE, DESTINY_BOND
-	dbp 73, CROBAT, FEMALE
-		db MUSCLE_BAND, ABILITY_1 | NAT_NEUTRAL
-		db AIR_SLASH, CRUNCH, X_SCISSOR, POISON_JAB
-	dbp 72, MISMAGIUS, FEMALE
-		db CHARCOAL, ABILITY_1 | NAT_NEUTRAL
-		db SHADOW_BALL, FLAMETHROWER, DAZZLINGLEAM, POWER_GEM
+	def_trainer 2, "Agatha"
+	tr_mon 73, GENGAR @ SPELL_TAG, FEMALE
+		tr_moves SHADOW_BALL, WILL_O_WISP, CURSE, DESTINY_BOND
+	tr_mon 73, CROBAT @ MUSCLE_BAND, FEMALE
+		tr_moves AIR_SLASH, CRUNCH, X_SCISSOR, POISON_JAB
+	tr_mon 72, MISMAGIUS @ CHARCOAL, FEMALE
+		tr_moves SHADOW_BALL, FLAMETHROWER, DAZZLINGLEAM, POWER_GEM
 if DEF(FAITHFUL)
-	dbp 72, MUK, FEMALE
-		db SILK_SCARF, ABILITY_1 | NAT_NEUTRAL
-		db EXPLOSION, SLUDGE_BOMB, SCREECH, MINIMIZE
+	tr_mon 72, MUK @ SILK_SCARF, FEMALE
+		tr_moves EXPLOSION, SLUDGE_BOMB, SCREECH, MINIMIZE
 else
-	dbp 72, MAROWAK, FEMALE | ALOLAN_FORM
-		db THICK_CLUB, ABILITY_1 | NAT_NEUTRAL
-		db SWORDS_DANCE, BONEMERANG, ROCK_SMASH, SHADOW_CLAW
+	tr_mon 72, MAROWAK @ THICK_CLUB, FEMALE | ALOLAN_FORM
+		tr_moves SWORDS_DANCE, BONEMERANG, ROCK_SMASH, SHADOW_CLAW
 endc
-	dbp 74, ARBOK, FEMALE | ARBOK_AGATHA_FORM
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db SLUDGE_BOMB, GLARE, CRUNCH, BODY_SLAM
-	dbp 75, GENGAR, FEMALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		db SHADOW_BALL, THUNDERBOLT, WILL_O_WISP, DESTINY_BOND
-	db -1 ; end
+	tr_mon 74, ARBOK @ KINGS_ROCK, FEMALE | ARBOK_AGATHA_FORM
+		tr_moves SLUDGE_BOMB, GLARE, CRUNCH, BODY_SLAM
+	tr_mon 75, GENGAR @ WISE_GLASSES, FEMALE
+		tr_moves SHADOW_BALL, THUNDERBOLT, WILL_O_WISP, DESTINY_BOND
+	end_trainer
 
 
 SECTION "StevenGroup", ROMX
 StevenGroup:
 
 	def_trainer_class STEVEN
-	db "Steven@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 61, SKARMORY, MALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		db SPIKES, SCREECH, DRILL_PECK, STEEL_WING
-	dbp 60, FORRETRESS, MALE
-		db FOCUS_BAND, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, GYRO_BALL, EXPLOSION, SPIKES
+	def_trainer 1, "Steven"
+	tr_mon 61, SKARMORY @ QUICK_CLAW, MALE
+		tr_moves SPIKES, SCREECH, DRILL_PECK, STEEL_WING
+	tr_mon 60, FORRETRESS @ FOCUS_BAND, MALE
+		tr_moves EARTHQUAKE, GYRO_BALL, EXPLOSION, SPIKES
 if DEF(FAITHFUL)
-	dbp 58, MAGNEZONE, MALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		db THUNDERBOLT, FLASH_CANNON, TRI_ATTACK, EXPLOSION
+	tr_mon 58, MAGNEZONE @ WISE_GLASSES, MALE
+		tr_moves THUNDERBOLT, FLASH_CANNON, TRI_ATTACK, EXPLOSION
 else
-	dbp 58, BLASTOISE, MALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		db SURF, BLIZZARD, FLASH_CANNON, AURA_SPHERE
+	tr_mon 58, BLASTOISE @ WISE_GLASSES, MALE
+		tr_moves SURF, BLIZZARD, FLASH_CANNON, AURA_SPHERE
 endc
-	dbp 58, SANDSLASH, MALE | ALOLAN_FORM
-		db NEVERMELTICE, ABILITY_1 | NAT_NEUTRAL
-		db IRON_HEAD, ICICLE_CRASH, EARTHQUAKE, RAPID_SPIN
-	dbp 58, AERODACTYL, MALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db ROCK_SLIDE, CRUNCH, AERIAL_ACE, IRON_HEAD
-	dbp 62, STEELIX, MALE
-		db MUSCLE_BAND, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, STONE_EDGE, IRON_HEAD, SANDSTORM
-	db -1 ; end
+	tr_mon 58, SANDSLASH @ NEVERMELTICE, MALE | ALOLAN_FORM
+		tr_moves IRON_HEAD, ICICLE_CRASH, EARTHQUAKE, RAPID_SPIN
+	tr_mon 58, AERODACTYL @ KINGS_ROCK, MALE
+		tr_moves ROCK_SLIDE, CRUNCH, AERIAL_ACE, IRON_HEAD
+	tr_mon 62, STEELIX @ MUSCLE_BAND, MALE
+		tr_moves EARTHQUAKE, STONE_EDGE, IRON_HEAD, SANDSTORM
+	end_trainer
 
-	; STEVEN
-	db "Steven@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 78, SKARMORY, MALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		db SPIKES, SCREECH, DRILL_PECK, STEEL_WING
+	def_trainer 2, "Steven"
+	tr_mon 78, SKARMORY @ QUICK_CLAW, MALE
+		tr_moves SPIKES, SCREECH, DRILL_PECK, STEEL_WING
 if DEF(FAITHFUL)
-	dbp 77, FORRETRESS, MALE
-		db FOCUS_BAND, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, GYRO_BALL, EXPLOSION, SPIKES
+	tr_mon 77, FORRETRESS @ FOCUS_BAND, MALE
+		tr_moves EARTHQUAKE, GYRO_BALL, EXPLOSION, SPIKES
 else
-	dbp 76, RHYPERIOR, MALE
-		db FOCUS_BAND, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, STONE_EDGE, MEGAHORN, IRON_HEAD
+	tr_mon 76, RHYPERIOR @ FOCUS_BAND, MALE
+		tr_moves EARTHQUAKE, STONE_EDGE, MEGAHORN, IRON_HEAD
 endc
-	dbp 76, MAGNEZONE, MALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		db THUNDERBOLT, FLASH_CANNON, TRI_ATTACK, EXPLOSION
-	dbp 76, SANDSLASH, MALE | ALOLAN_FORM
-		db NEVERMELTICE, ABILITY_1 | NAT_NEUTRAL
-		db IRON_HEAD, ICICLE_CRASH, EARTHQUAKE, RAPID_SPIN
-	dbp 76, AERODACTYL, MALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db ROCK_SLIDE, CRUNCH, AERIAL_ACE, IRON_HEAD
-	dbp 80, STEELIX, MALE
-		db MUSCLE_BAND, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, STONE_EDGE, IRON_HEAD, SANDSTORM
-	db -1 ; end
+	tr_mon 76, MAGNEZONE @ WISE_GLASSES, MALE
+		tr_moves THUNDERBOLT, FLASH_CANNON, TRI_ATTACK, EXPLOSION
+	tr_mon 76, SANDSLASH @ NEVERMELTICE, MALE | ALOLAN_FORM
+		tr_moves IRON_HEAD, ICICLE_CRASH, EARTHQUAKE, RAPID_SPIN
+	tr_mon 76, AERODACTYL @ KINGS_ROCK, MALE
+		tr_moves ROCK_SLIDE, CRUNCH, AERIAL_ACE, IRON_HEAD
+	tr_mon 80, STEELIX @ MUSCLE_BAND, MALE
+		tr_moves EARTHQUAKE, STONE_EDGE, IRON_HEAD, SANDSTORM
+	end_trainer
 
 
 SECTION "CynthiaGroup", ROMX
 CynthiaGroup:
 
 	def_trainer_class CYNTHIA
-	db "Cynthia@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 60, TOGEKISS
-		db WISE_GLASSES
-		db AIR_SLASH, AURA_SPHERE, FRESH_SNACK, NASTY_PLOT
-	dbp 58, LEAFEON
-		db FOCUS_BAND
-		db SWORDS_DANCE, SEED_BOMB, DOUBLE_EDGE, ROAR
-	dbp 58, ELECTIVIRE
-		db MUSCLE_BAND
-		db CROSS_CHOP, THUNDERPUNCH, FIRE_PUNCH, LIGHT_SCREEN
-	dbp 58, YANMEGA
-		db QUICK_CLAW
+	def_trainer 1, "Cynthia"
+	tr_mon 60, TOGEKISS @ WISE_GLASSES
+		tr_moves AIR_SLASH, AURA_SPHERE, FRESH_SNACK, NASTY_PLOT
+	tr_mon 58, LEAFEON @ FOCUS_BAND
+		tr_moves SWORDS_DANCE, SEED_BOMB, DOUBLE_EDGE, ROAR
+	tr_mon 58, ELECTIVIRE @ MUSCLE_BAND
+		tr_moves CROSS_CHOP, THUNDERPUNCH, FIRE_PUNCH, LIGHT_SCREEN
+	tr_mon 58, YANMEGA @ QUICK_CLAW
 if DEF(FAITHFUL)
-		db PROTECT, BUG_BUZZ, ANCIENTPOWER, AIR_SLASH
+		tr_moves PROTECT, BUG_BUZZ, ANCIENTPOWER, AIR_SLASH
 else
-		db PROTECT, BUG_BUZZ, ANCIENTPOWER, DRAGON_PULSE
+		tr_moves PROTECT, BUG_BUZZ, ANCIENTPOWER, DRAGON_PULSE
 endc
-	dbp 62, URSALUNA
-		db LEFTOVERS
-		db EARTHQUAKE, SHADOW_CLAW, PLAY_ROUGH, GIGA_IMPACT
-	dbp 61, GLISCOR
-		db KINGS_ROCK
-		db SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, SCREECH
-	db -1 ; end
+	tr_mon 62, URSALUNA @ LEFTOVERS
+		tr_moves EARTHQUAKE, SHADOW_CLAW, PLAY_ROUGH, GIGA_IMPACT
+	tr_mon 61, GLISCOR @ KINGS_ROCK
+		tr_moves SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, SCREECH
+	end_trainer
 
-	; CYNTHIA
-	db "Cynthia@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 77, TOGEKISS
-		db WISE_GLASSES
-		db AIR_SLASH, AURA_SPHERE, FRESH_SNACK, NASTY_PLOT
-	dbp 76, LEAFEON
-		db FOCUS_BAND
-		db SWORDS_DANCE, SEED_BOMB, DOUBLE_EDGE, ROAR
-	dbp 76, ELECTIVIRE
-		db MUSCLE_BAND
-		db CROSS_CHOP, THUNDERPUNCH, FIRE_PUNCH, LIGHT_SCREEN
-	dbp 76, YANMEGA
-		db QUICK_CLAW
+	def_trainer 2, "Cynthia"
+	tr_mon 77, TOGEKISS @ WISE_GLASSES
+		tr_moves AIR_SLASH, AURA_SPHERE, FRESH_SNACK, NASTY_PLOT
+	tr_mon 76, LEAFEON @ FOCUS_BAND
+		tr_moves SWORDS_DANCE, SEED_BOMB, DOUBLE_EDGE, ROAR
+	tr_mon 76, ELECTIVIRE @ MUSCLE_BAND
+		tr_moves CROSS_CHOP, THUNDERPUNCH, FIRE_PUNCH, LIGHT_SCREEN
+	tr_mon 76, YANMEGA @ QUICK_CLAW
 if DEF(FAITHFUL)
-		db PROTECT, BUG_BUZZ, ANCIENTPOWER, AIR_SLASH
+		tr_moves PROTECT, BUG_BUZZ, ANCIENTPOWER, AIR_SLASH
 else
-		db PROTECT, BUG_BUZZ, ANCIENTPOWER, DRAGON_PULSE
+		tr_moves PROTECT, BUG_BUZZ, ANCIENTPOWER, DRAGON_PULSE
 endc
-	dbp 80, KINGDRA
-		db LEFTOVERS
-		db DRAGON_DANCE, OUTRAGE, WATERFALL, ICE_BEAM
-	dbp 78, GLISCOR
-		db KINGS_ROCK
-		db SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, SCREECH
-	db -1 ; end
+	tr_mon 80, KINGDRA @ LEFTOVERS
+		tr_moves DRAGON_DANCE, OUTRAGE, WATERFALL, ICE_BEAM
+	tr_mon 78, GLISCOR @ KINGS_ROCK
+		tr_moves SWORDS_DANCE, NIGHT_SLASH, X_SCISSOR, SCREECH
+	end_trainer
 
 	; Inver's Pokémon are defined elsewhere.
 	def_trainer_class INVER
@@ -8815,969 +7225,727 @@ SECTION "CherylGroup", ROMX
 CherylGroup:
 
 	def_trainer_class CHERYL
-	db "Cheryl@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 8, CHANSEY
-		ev_spread 136 HP ; maybe 252 since these are "stat trainers"?
-	dbp LEVEL_FROM_BADGES + 7, NIDORINA
-		ev_spread 136 HP
-	dbp LEVEL_FROM_BADGES + 4, CLEFABLE
-		ev_spread 136 HP
-	dbp LEVEL_FROM_BADGES + 6, AZUMARILL
-		ev_spread 136 HP
-	dbp LEVEL_FROM_BADGES + 5, WOBBUFFET
-		ev_spread 136 HP
-	db -1 ; end
+	def_trainer 1, "Cheryl"
+	tr_mon LEVEL_FROM_BADGES + 8, CHANSEY
+		tr_evs 136 HP ; maybe 252 since these are "stat trainers"?
+	tr_mon LEVEL_FROM_BADGES + 7, NIDORINA
+		tr_evs 136 HP
+	tr_mon LEVEL_FROM_BADGES + 4, CLEFABLE
+		tr_evs 136 HP
+	tr_mon LEVEL_FROM_BADGES + 6, AZUMARILL
+		tr_evs 136 HP
+	tr_mon LEVEL_FROM_BADGES + 5, WOBBUFFET
+		tr_evs 136 HP
+	end_trainer
 
-	; CHERYL
-	db "Cheryl@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 60, BLISSEY
-	dbp 59, NIDOQUEEN
-	dbp 56, CLEFABLE
-	dbp 56, WIGGLYTUFF
-	dbp 58, AZUMARILL
-	dbp 57, WOBBUFFET
-	db -1 ; end
+	def_trainer 2, "Cheryl"
+	tr_mon 60, BLISSEY
+	tr_mon 59, NIDOQUEEN
+	tr_mon 56, CLEFABLE
+	tr_mon 56, WIGGLYTUFF
+	tr_mon 58, AZUMARILL
+	tr_mon 57, WOBBUFFET
+	end_trainer
 
-	; CHERYL
-	db "Cheryl@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 75, BLISSEY
-	dbp 74, NIDOQUEEN
-	dbp 71, CLEFABLE
-	dbp 71, WIGGLYTUFF
-	dbp 73, AZUMARILL
-	dbp 72, WOBBUFFET
-	db -1 ; end
+	def_trainer 3, "Cheryl"
+	tr_mon 75, BLISSEY
+	tr_mon 74, NIDOQUEEN
+	tr_mon 71, CLEFABLE
+	tr_mon 71, WIGGLYTUFF
+	tr_mon 73, AZUMARILL
+	tr_mon 72, WOBBUFFET
+	end_trainer
 
 
 SECTION "RileyGroup", ROMX
 RileyGroup:
 
 	def_trainer_class RILEY
-	db "Riley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 58, MACHAMP
-	dbp 57, DRAGONITE
-	dbp 56, RHYPERIOR
-	dbp 55, NIDOKING
-	dbp 56, ELECTIVIRE
-	dbp 55, MAMOSWINE
-	db -1 ; end
+	def_trainer 1, "Riley"
+	tr_mon 58, MACHAMP
+	tr_mon 57, DRAGONITE
+	tr_mon 56, RHYPERIOR
+	tr_mon 55, NIDOKING
+	tr_mon 56, ELECTIVIRE
+	tr_mon 55, MAMOSWINE
+	end_trainer
 
-	; RILEY
-	db "Riley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 75, MACHAMP
-	dbp 74, DRAGONITE
-	dbp 73, RHYPERIOR
-	dbp 72, NIDOKING
-	dbp 73, ELECTIVIRE
-	dbp 72, MAMOSWINE
-	db -1 ; end
+	def_trainer 2, "Riley"
+	tr_mon 75, MACHAMP
+	tr_mon 74, DRAGONITE
+	tr_mon 73, RHYPERIOR
+	tr_mon 72, NIDOKING
+	tr_mon 73, ELECTIVIRE
+	tr_mon 72, MAMOSWINE
+	end_trainer
 
 
 SECTION "BuckGroup", ROMX
 BuckGroup:
 
 	def_trainer_class BUCK
-	db "Buck@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 65, UMBREON
-	dbp 64, GOLEM
-	dbp 62, POLIWRATH
-	dbp 63, FORRETRESS
-	dbp 62, SKARMORY
-	dbp 63, STEELIX
-	db -1 ; end
+	def_trainer 1, "Buck"
+	tr_mon 65, UMBREON
+	tr_mon 64, GOLEM
+	tr_mon 62, POLIWRATH
+	tr_mon 63, FORRETRESS
+	tr_mon 62, SKARMORY
+	tr_mon 63, STEELIX
+	end_trainer
 
-	; BUCK
-	db "Buck@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 75, GOLEM
-	dbp 72, POLIWRATH
-	dbp 73, FORRETRESS
-	dbp 72, SKARMORY
-	dbp 73, STEELIX
-	dbp 74, CLOYSTER
-	db -1 ; end
+	def_trainer 2, "Buck"
+	tr_mon 75, GOLEM
+	tr_mon 72, POLIWRATH
+	tr_mon 73, FORRETRESS
+	tr_mon 72, SKARMORY
+	tr_mon 73, STEELIX
+	tr_mon 74, CLOYSTER
+	end_trainer
 
 
 SECTION "MarleyGroup", ROMX
 MarleyGroup:
 
 	def_trainer_class MARLEY
-	db "Marley@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 8, ARCANINE
-		ev_spread 240 Spe ; maybe 252 since these are "stat trainers"?
-	dbp LEVEL_FROM_BADGES + 6, RAICHU
-		ev_spread 240 Spe
-	dbp LEVEL_FROM_BADGES + 5, CROBAT
-		ev_spread 240 Spe
-	dbp LEVEL_FROM_BADGES + 5, ELECTRODE
-		ev_spread 240 Spe
-	dbp LEVEL_FROM_BADGES + 7, WEAVILE
-		ev_spread 240 Spe
-	db -1 ; end
+	def_trainer 1, "Marley"
+	tr_mon LEVEL_FROM_BADGES + 8, ARCANINE
+		tr_evs 240 Spe ; maybe 252 since these are "stat trainers"?
+	tr_mon LEVEL_FROM_BADGES + 6, RAICHU
+		tr_evs 240 Spe
+	tr_mon LEVEL_FROM_BADGES + 5, CROBAT
+		tr_evs 240 Spe
+	tr_mon LEVEL_FROM_BADGES + 5, ELECTRODE
+		tr_evs 240 Spe
+	tr_mon LEVEL_FROM_BADGES + 7, WEAVILE
+		tr_evs 240 Spe
+	end_trainer
 
-	; MARLEY
-	db "Marley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 60, ARCANINE
-	dbp 59, PIDGEOT
-	dbp 58, RAICHU
-	dbp 56, CROBAT
-	dbp 56, ELECTRODE
-	dbp 58, AERODACTYL
-	db -1 ; end
+	def_trainer 2, "Marley"
+	tr_mon 60, ARCANINE
+	tr_mon 59, PIDGEOT
+	tr_mon 58, RAICHU
+	tr_mon 56, CROBAT
+	tr_mon 56, ELECTRODE
+	tr_mon 58, AERODACTYL
+	end_trainer
 
-	; MARLEY
-	db "Marley@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 75, ARCANINE
-	dbp 74, PIDGEOT
-	dbp 73, RAICHU
-	dbp 71, CROBAT
-	dbp 71, ELECTRODE
-	dbp 73, AERODACTYL
-	db -1 ; end
+	def_trainer 3, "Marley"
+	tr_mon 75, ARCANINE
+	tr_mon 74, PIDGEOT
+	tr_mon 73, RAICHU
+	tr_mon 71, CROBAT
+	tr_mon 71, ELECTRODE
+	tr_mon 73, AERODACTYL
+	end_trainer
 
 
 SECTION "MiraGroup", ROMX
 MiraGroup:
 
 	def_trainer_class MIRA
-	db "Mira@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 58, TOGEKISS
-	dbp 57, ALAKAZAM
-	dbp 56, MAGMORTAR
-	dbp 55, VILEPLUME
-	dbp 56, MAGNEZONE
-	dbp 55, PORYGON_Z
-	db -1 ; end
+	def_trainer 1, "Mira"
+	tr_mon 58, TOGEKISS
+	tr_mon 57, ALAKAZAM
+	tr_mon 56, MAGMORTAR
+	tr_mon 55, VILEPLUME
+	tr_mon 56, MAGNEZONE
+	tr_mon 55, PORYGON_Z
+	end_trainer
 
-	; MIRA
-	db "Mira@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 75, ALAKAZAM
-	dbp 74, GENGAR
-	dbp 71, VILEPLUME
-	dbp 73, MAGMORTAR
-	dbp 71, PORYGON_Z
-	dbp 73, MAGNEZONE
-	db -1 ; end
+	def_trainer 2, "Mira"
+	tr_mon 75, ALAKAZAM
+	tr_mon 74, GENGAR
+	tr_mon 71, VILEPLUME
+	tr_mon 73, MAGMORTAR
+	tr_mon 71, PORYGON_Z
+	tr_mon 73, MAGNEZONE
+	end_trainer
 
 
 SECTION "AnabelGroup", ROMX
 AnabelGroup:
 
 	def_trainer_class ANABEL
-	db "Anabel@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp 30, ESPEON
-		ev_spread 136 SDf
-	dbp 28, SNORLAX
-		ev_spread 136 SDf
-	dbp 29, SLOWKING
-		ev_spread 136 SDf
-	dbp 27, BELLOSSOM
-		ev_spread 136 SDf
-	dbp 28, POLITOED
-		ev_spread 136 SDf
-	dbp 29, ALAKAZAM
-		ev_spread 136 SDf
-	db -1 ; end
+	def_trainer 1, "Anabel"
+	tr_mon 30, ESPEON
+		tr_evs 136 SDf
+	tr_mon 28, SNORLAX
+		tr_evs 136 SDf
+	tr_mon 29, SLOWKING
+		tr_evs 136 SDf
+	tr_mon 27, BELLOSSOM
+		tr_evs 136 SDf
+	tr_mon 28, POLITOED
+		tr_evs 136 SDf
+	tr_mon 29, ALAKAZAM
+		tr_evs 136 SDf
+	end_trainer
 
-	; ANABEL
-	db "Anabel@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 74, SNORLAX
-	dbp 75, SLOWKING
-	dbp 73, BLASTOISE
-	dbp 71, BELLOSSOM
-	dbp 72, POLITOED
-	dbp 73, MR__MIME
-	db -1 ; end
+	def_trainer 2, "Anabel"
+	tr_mon 74, SNORLAX
+	tr_mon 75, SLOWKING
+	tr_mon 73, BLASTOISE
+	tr_mon 71, BELLOSSOM
+	tr_mon 72, POLITOED
+	tr_mon 73, MR__MIME
+	end_trainer
 
 
 SECTION "DarachGroup", ROMX
 DarachGroup:
 
 	def_trainer_class DARACH
-	db "Darach@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 58, NIDOQUEEN
-	dbp 56, HERACROSS
+	def_trainer 1, "Darach"
+	tr_mon 58, NIDOQUEEN
+	tr_mon 56, HERACROSS
 if DEF(FAITHFUL)
-	dbp 57, MACHAMP
-	dbp 56, SKARMORY
+	tr_mon 57, MACHAMP
+	tr_mon 56, SKARMORY
 else
-	dbp 57, BLASTOISE
-	dbp 56, FARFETCH_D
+	tr_mon 57, BLASTOISE
+	tr_mon 56, FARFETCH_D
 endc
-	dbp 58, MISMAGIUS
-	dbp 60, HOUNDOOM
-	db -1 ; end
+	tr_mon 58, MISMAGIUS
+	tr_mon 60, HOUNDOOM
+	end_trainer
 
 
 SECTION "CaitlinGroup", ROMX
 CaitlinGroup:
 
 	def_trainer_class CAITLIN
-	db "Caitlin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 58, ESPEON
-	dbp 56, XATU
-	dbp 57, STARMIE
-	dbp 56, JYNX
-	dbp 58, ALAKAZAM
-	dbp 60, HYPNO
-	db -1 ; end
+	def_trainer 1, "Caitlin"
+	tr_mon 58, ESPEON
+	tr_mon 56, XATU
+	tr_mon 57, STARMIE
+	tr_mon 56, JYNX
+	tr_mon 58, ALAKAZAM
+	tr_mon 60, HYPNO
+	end_trainer
 
 
 SECTION "CandelaGroup", ROMX
 CandelaGroup:
 
 	def_trainer_class CANDELA
-	db "Candela@"
-	db TRAINERTYPE_ITEM
-	; party
-	; TODO: movesets, etc
-	dbp 63, FLAREON
-		db NO_ITEM
-	dbp 62, MAGMAR
-		db NO_ITEM
-	dbp 63, CHARIZARD
-		db NO_ITEM
-	dbp 61, DRAGONITE
-		db NO_ITEM
-	dbp 62, ARCANINE
-		db NO_ITEM
-	dbp 65, MOLTRES
-		db CHARCOAL
-	db -1 ; end
+	def_trainer 1, "Candela"
+	tr_mon 63, FLAREON
+	tr_mon 62, MAGMAR
+	tr_mon 63, CHARIZARD
+	tr_mon 61, DRAGONITE
+	tr_mon 62, ARCANINE
+	tr_mon 65, MOLTRES @ CHARCOAL
+	end_trainer
 
 
 SECTION "BlancheGroup", ROMX
 BlancheGroup:
 
 	def_trainer_class BLANCHE
-	db "Blanche@"
-	db TRAINERTYPE_ITEM
-	; party
-	; TODO: movesets, etc
-	dbp 63, VAPOREON
-		db NO_ITEM
-	dbp 62, LAPRAS
-		db NO_ITEM
-	dbp 63, BLASTOISE
-		db NO_ITEM
-	dbp 61, JYNX
-		db NO_ITEM
-	dbp 62, STARMIE
-		db NO_ITEM
-	dbp 65, ARTICUNO
-		db NEVERMELTICE
-	db -1 ; end
+	def_trainer 1, "Blanche"
+	tr_mon 63, VAPOREON
+	tr_mon 62, LAPRAS
+	tr_mon 63, BLASTOISE
+	tr_mon 61, JYNX
+	tr_mon 62, STARMIE
+	tr_mon 65, ARTICUNO @ NEVERMELTICE
+	end_trainer
 
 
 SECTION "SparkGroup", ROMX
 SparkGroup:
 
 	def_trainer_class SPARK_T
-	db "Spark@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
-	; party
-	; TODO: movesets, etc
-	dbp 63, JOLTEON, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 62, ELECTABUZZ, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 63, VENUSAUR, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 61, SNORLAX, MALE
-		db NO_ITEM, ABILITY_1 | NAT_NEUTRAL
-	dbp 64, PIKACHU, MALE | PIKACHU_SPARK_FORM
-		db LIGHT_BALL, ABILITY_1 | NAT_NEUTRAL
-	dbp 65, ZAPDOS, MALE
-		db MAGNET, ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 1, "Spark"
+	tr_mon 63, JOLTEON, MALE
+	tr_mon 62, ELECTABUZZ, MALE
+	tr_mon 63, VENUSAUR, MALE
+	tr_mon 61, SNORLAX, MALE
+	tr_mon 64, PIKACHU @ LIGHT_BALL, MALE | PIKACHU_SPARK_FORM
+	tr_mon 65, ZAPDOS @ MAGNET, MALE
+	end_trainer
 
 
 SECTION "FlanneryGroup", ROMX
 FlanneryGroup:
 
 	def_trainer_class FLANNERY
-	db "Flannery@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp 64, MAGCARGO
-		ev_spread 252 SAt, 172 Spe
-	dbp 63, ARCANINE
-		ev_spread 252 Atk, 172 Spe
-	dbp 63, HOUNDOOM
-		ev_spread 172 SAt, 252 Spe
-	dbp 63, RAPIDASH
-		ev_spread 252 Atk, 172 Spe
-	dbp 61, NINETALES
-		ev_spread 172 SAt, 252 Spe
-	dbp 66, MAGMORTAR
-		ev_spread 172 HP, 252 Spe
-	db -1 ; end
+	def_trainer 1, "Flannery"
+	tr_mon 64, MAGCARGO
+		tr_evs 252 SAt, 172 Spe
+	tr_mon 63, ARCANINE
+		tr_evs 252 Atk, 172 Spe
+	tr_mon 63, HOUNDOOM
+		tr_evs 172 SAt, 252 Spe
+	tr_mon 63, RAPIDASH
+		tr_evs 252 Atk, 172 Spe
+	tr_mon 61, NINETALES
+		tr_evs 172 SAt, 252 Spe
+	tr_mon 66, MAGMORTAR
+		tr_evs 172 HP, 252 Spe
+	end_trainer
 
-	; FLANNERY
-	db "Flannery@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 74, MAGCARGO
-	dbp 73, ARCANINE
-	dbp 73, HOUNDOOM
-	dbp 73, RAPIDASH
-	dbp 72, NINETALES
-	dbp 75, MAGMORTAR
-	db -1 ; end
+	def_trainer 2, "Flannery"
+	tr_mon 74, MAGCARGO
+	tr_mon 73, ARCANINE
+	tr_mon 73, HOUNDOOM
+	tr_mon 73, RAPIDASH
+	tr_mon 72, NINETALES
+	tr_mon 75, MAGMORTAR
+	end_trainer
 
 
 SECTION "MayleneGroup", ROMX
 MayleneGroup:
 
 	def_trainer_class MAYLENE
-	db "Maylene@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp 59, HITMONTOP
-		ev_spread 140 Atk, 252 Spe
-	dbp 59, HITMONLEE
-		ev_spread 252 Atk, 140 Spe
-	dbp 59, HITMONCHAN
-		ev_spread 196 Atk, 196 Spe
+	def_trainer 1, "Maylene"
+	tr_mon 59, HITMONTOP
+		tr_evs 140 Atk, 252 Spe
+	tr_mon 59, HITMONLEE
+		tr_evs 252 Atk, 140 Spe
+	tr_mon 59, HITMONCHAN
+		tr_evs 196 Atk, 196 Spe
 if DEF(FAITHFUL)
-	dbp 62, HERACROSS
-		ev_spread 140 Atk, 252 Spe
-	dbp 62, PRIMEAPE
-		ev_spread 140 Atk, 252 Spe ; faithful, so no Gorilla Tactics
+	tr_mon 62, HERACROSS
+		tr_evs 140 Atk, 252 Spe
+	tr_mon 62, PRIMEAPE
+		tr_evs 140 Atk, 252 Spe ; faithful, so no Gorilla Tactics
 else
-	dbp 62, ELECTIVIRE
-		ev_spread 140 Atk, 252 Spe
-	dbp 62, MAGMORTAR
-		ev_spread 252 SAt, 140 Spe
+	tr_mon 62, ELECTIVIRE
+		tr_evs 140 Atk, 252 Spe
+	tr_mon 62, MAGMORTAR
+		tr_evs 252 SAt, 140 Spe
 endc
-	dbp 63, MACHAMP
-		ev_spread 140 HP, 252 Atk
-	db -1 ; end
+	tr_mon 63, MACHAMP
+		tr_evs 140 HP, 252 Atk
+	end_trainer
 
-	; MAYLENE
-	db "Maylene@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 72, HITMONTOP
-	dbp 72, HITMONLEE
-	dbp 72, HITMONCHAN
+	def_trainer 2, "Maylene"
+	tr_mon 72, HITMONTOP
+	tr_mon 72, HITMONLEE
+	tr_mon 72, HITMONCHAN
 if DEF(FAITHFUL)
-	dbp 73, HERACROSS
-	dbp 73, PRIMEAPE
+	tr_mon 73, HERACROSS
+	tr_mon 73, PRIMEAPE
 else
-	dbp 73, ELECTIVIRE
-	dbp 73, MAGMORTAR
+	tr_mon 73, ELECTIVIRE
+	tr_mon 73, MAGMORTAR
 endc
-	dbp 75, MACHAMP
-	db -1 ; end
+	tr_mon 75, MACHAMP
+	end_trainer
 
 
 SECTION "MarlonGroup", ROMX
 MarlonGroup:
 
 	def_trainer_class MARLON
-	db "Marlon@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp 33, QUAGSIRE
-		ev_spread 200 SDf
-	dbp 37, TENTACRUEL
-		ev_spread 200 Spe
-	dbp 34, BLASTOISE
-		ev_spread 200 HP
-	dbp 35, MANTINE
-		ev_spread 200 Def
-	dbp 34, STARMIE
-		ev_spread 200 SAt
-	db -1 ; end
+	def_trainer 1, "Marlon"
+	tr_mon 33, QUAGSIRE
+		tr_evs 200 SDf
+	tr_mon 37, TENTACRUEL
+		tr_evs 200 Spe
+	tr_mon 34, BLASTOISE
+		tr_evs 200 HP
+	tr_mon 35, MANTINE
+		tr_evs 200 Def
+	tr_mon 34, STARMIE
+		tr_evs 200 SAt
+	end_trainer
 
-	; MARLON
-	db "Marlon@"
-	db TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp 57, QUAGSIRE
-		ev_spread 68 HP, 252 SDf
-	dbp 60, TENTACRUEL
-		ev_spread 68 SAt, 252 Spe
-	dbp 58, BLASTOISE
-		ev_spread 252 HP, 68 SAt
-	dbp 59, MANTINE
-		ev_spread 68 HP, 252 Def
-	dbp 58, STARMIE
-		ev_spread 252 SAt, 68 Spe
-	dbp 57, CLOYSTER
-		ev_spread 252 Atk, 68 Spe
-	db -1 ; end
+	def_trainer 2, "Marlon"
+	tr_mon 57, QUAGSIRE
+		tr_evs 68 HP, 252 SDf
+	tr_mon 60, TENTACRUEL
+		tr_evs 68 SAt, 252 Spe
+	tr_mon 58, BLASTOISE
+		tr_evs 252 HP, 68 SAt
+	tr_mon 59, MANTINE
+		tr_evs 68 HP, 252 Def
+	tr_mon 58, STARMIE
+		tr_evs 252 SAt, 68 Spe
+	tr_mon 57, CLOYSTER
+		tr_evs 252 Atk, 68 Spe
+	end_trainer
 
-	; MARLON
-	db "Marlon@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 72, QUAGSIRE
-	dbp 75, TENTACRUEL
-	dbp 73, BLASTOISE
-	dbp 74, MANTINE
-	dbp 73, STARMIE
-	dbp 72, CLOYSTER
-	db -1 ; end
+	def_trainer 3, "Marlon"
+	tr_mon 72, QUAGSIRE
+	tr_mon 75, TENTACRUEL
+	tr_mon 73, BLASTOISE
+	tr_mon 74, MANTINE
+	tr_mon 73, STARMIE
+	tr_mon 72, CLOYSTER
+	end_trainer
 
 
 SECTION "ValerieGroup", ROMX
 ValerieGroup:
 
 	def_trainer_class VALERIE
-	db "Valerie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
-	; party
-	dbp 37, CLEFABLE
-		db NO_ITEM
-		ev_spread 224 HP
-		db DISARM_VOICE, MINIMIZE, BATON_PASS, METRONOME
-	dbp 37, MR__MIME
-		db NO_ITEM
-		ev_spread 224 HP
-		db PSYBEAM, CONFUSE_RAY, LIGHT_SCREEN, REFLECT
-	dbp 36, AZUMARILL
-		db NO_ITEM
-		ev_spread 224 Atk
-		db PLAY_ROUGH, AQUA_TAIL, DIZZY_PUNCH, ROLLOUT
-	dbp 38, TOGETIC
-		db NO_ITEM
-		ev_spread 224 SAt
-		db ANCIENTPOWER, FRESH_SNACK, DAZZLINGLEAM, ENCORE
-	dbp 40, SYLVEON
-		db SITRUS_BERRY
-		ev_spread 224 SAt
-		db MOONBLAST, CALM_MIND, DRAINING_KISS, SWIFT
-	db -1 ; end
+	def_trainer 1, "Valerie"
+	tr_mon 37, CLEFABLE
+		tr_evs 224 HP
+		tr_moves DISARM_VOICE, MINIMIZE, BATON_PASS, METRONOME
+	tr_mon 37, MR__MIME
+		tr_evs 224 HP
+		tr_moves PSYBEAM, CONFUSE_RAY, LIGHT_SCREEN, REFLECT
+	tr_mon 36, AZUMARILL
+		tr_evs 224 Atk
+		tr_moves PLAY_ROUGH, AQUA_TAIL, DIZZY_PUNCH, ROLLOUT
+	tr_mon 38, TOGETIC
+		tr_evs 224 SAt
+		tr_moves ANCIENTPOWER, FRESH_SNACK, DAZZLINGLEAM, ENCORE
+	tr_mon 40, SYLVEON @ SITRUS_BERRY
+		tr_evs 224 SAt
+		tr_moves MOONBLAST, CALM_MIND, DRAINING_KISS, SWIFT
+	end_trainer
 
-	; VALERIE
-	db "Valerie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 57, CLEFABLE, FEMALE
-		db LEFTOVERS, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 HP, 68 Def
-		db MOONBLAST, CALM_MIND, HEALINGLIGHT, METRONOME
-	dbp 57, MR__MIME, FEMALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 HP, 68 Def
-		db PSYCHIC_M, DAZZLINGLEAM, LIGHT_SCREEN, REFLECT
-	dbp 56, AZUMARILL, FEMALE
-		db MUSCLE_BAND, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 Atk, 68 Spe
-		db PLAY_ROUGH, WATERFALL, DIZZY_PUNCH, CLOSE_COMBAT
-	dbp 56, RAPIDASH, FEMALE | GALARIAN_FORM
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 Atk, 68 Spe
-		db FLAMETHROWER, ZEN_HEADBUTT, PLAY_ROUGH, SWORDS_DANCE
-	dbp 58, TOGEKISS, FEMALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 SAt, 68 Spe
-		db AURA_SPHERE, FRESH_SNACK, DAZZLINGLEAM, AIR_SLASH
-	dbp 60, SYLVEON, FEMALE
-		db PINK_BOW, ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 SAt, 68 Spe
-		db MOONBLAST, CALM_MIND, DRAINING_KISS, HYPER_VOICE
-	db -1 ; end
+	def_trainer 2, "Valerie"
+	tr_mon 57, CLEFABLE @ LEFTOVERS, FEMALE
+		tr_evs 252 HP, 68 Def
+		tr_moves MOONBLAST, CALM_MIND, HEALINGLIGHT, METRONOME
+	tr_mon 57, MR__MIME @ QUICK_CLAW, FEMALE
+		tr_evs 252 HP, 68 Def
+		tr_moves PSYCHIC_M, DAZZLINGLEAM, LIGHT_SCREEN, REFLECT
+	tr_mon 56, AZUMARILL @ MUSCLE_BAND, FEMALE
+		tr_evs 252 Atk, 68 Spe
+		tr_moves PLAY_ROUGH, WATERFALL, DIZZY_PUNCH, CLOSE_COMBAT
+	tr_mon 56, RAPIDASH @ KINGS_ROCK, FEMALE | GALARIAN_FORM
+		tr_evs 252 Atk, 68 Spe
+		tr_moves FLAMETHROWER, ZEN_HEADBUTT, PLAY_ROUGH, SWORDS_DANCE
+	tr_mon 58, TOGEKISS @ WISE_GLASSES, FEMALE
+		tr_evs 252 SAt, 68 Spe
+		tr_moves AURA_SPHERE, FRESH_SNACK, DAZZLINGLEAM, AIR_SLASH
+	tr_mon 60, SYLVEON @ PINK_BOW, FEMALE
+		tr_evs 252 SAt, 68 Spe
+		tr_moves MOONBLAST, CALM_MIND, DRAINING_KISS, HYPER_VOICE
+	end_trainer
 
-	; VALERIE
-	db "Valerie@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 73, CLEFABLE, FEMALE
-		db LEFTOVERS, ABILITY_1 | NAT_NEUTRAL
-		db MOONBLAST, CALM_MIND, FRESH_SNACK, THUNDER_WAVE
-	dbp 73, MR__MIME, FEMALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		db PSYCHIC_M, DAZZLINGLEAM, LIGHT_SCREEN, REFLECT
-	dbp 72, AZUMARILL, FEMALE
-		db MUSCLE_BAND, ABILITY_1 | NAT_NEUTRAL
-		db PLAY_ROUGH, WATERFALL, RETURN, CLOSE_COMBAT
-	dbp 72, RAPIDASH, FEMALE | GALARIAN_FORM
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db FIRE_BLAST, ZEN_HEADBUTT, PLAY_ROUGH, WILD_CHARGE
-	dbp 74, TOGEKISS, FEMALE
-		db WISE_GLASSES, ABILITY_1 | NAT_NEUTRAL
-		db AURA_SPHERE, FRESH_SNACK, DAZZLINGLEAM, AIR_SLASH
-	dbp 75, SYLVEON, FEMALE
-		db PINK_BOW, ABILITY_1 | NAT_NEUTRAL
-		db MOONBLAST, CALM_MIND, DRAINING_KISS, HYPER_VOICE
-	db -1 ; end
+	def_trainer 3, "Valerie"
+	tr_mon 73, CLEFABLE @ LEFTOVERS, FEMALE
+		tr_moves MOONBLAST, CALM_MIND, FRESH_SNACK, THUNDER_WAVE
+	tr_mon 73, MR__MIME @ QUICK_CLAW, FEMALE
+		tr_moves PSYCHIC_M, DAZZLINGLEAM, LIGHT_SCREEN, REFLECT
+	tr_mon 72, AZUMARILL @ MUSCLE_BAND, FEMALE
+		tr_moves PLAY_ROUGH, WATERFALL, RETURN, CLOSE_COMBAT
+	tr_mon 72, RAPIDASH @ KINGS_ROCK, FEMALE | GALARIAN_FORM
+		tr_moves FIRE_BLAST, ZEN_HEADBUTT, PLAY_ROUGH, WILD_CHARGE
+	tr_mon 74, TOGEKISS @ WISE_GLASSES, FEMALE
+		tr_moves AURA_SPHERE, FRESH_SNACK, DAZZLINGLEAM, AIR_SLASH
+	tr_mon 75, SYLVEON @ PINK_BOW, FEMALE
+		tr_moves MOONBLAST, CALM_MIND, DRAINING_KISS, HYPER_VOICE
+	end_trainer
 
 
 SECTION "KukuiGroup", ROMX
 KukuiGroup:
 
 	def_trainer_class KUKUI
-	db "Kukui@"
-	db TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY
-	; party
-	; TODO: movesets, etc
-	dbp 67, MAROWAK, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-		ev_spread 236 Atk, 252 Spe
-	dbp 65, NINETALES, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-		ev_spread 252 SAt, 236 Spe
-	dbp 66, MAGNEZONE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-		ev_spread 236 HP, 252 SAt
-	dbp 66, SNORLAX, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-		ev_spread 236 Def, 252 SDf
-	dbp 65, RATICATE, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-		ev_spread 236 Atk, 252 Spe
-	dbp 68, EXEGGUTOR, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-		ev_spread 236 SAt, 252 Spe
-	db -1 ; end
+	def_trainer 1, "Kukui"
+	tr_mon 67, MAROWAK, MALE | ALOLAN_FORM
+		tr_evs 236 Atk, 252 Spe
+	tr_mon 65, NINETALES, MALE | ALOLAN_FORM
+		tr_evs 252 SAt, 236 Spe
+	tr_mon 66, MAGNEZONE, MALE
+		tr_evs 236 HP, 252 SAt
+	tr_mon 66, SNORLAX, MALE
+		tr_evs 236 Def, 252 SDf
+	tr_mon 65, RATICATE, MALE | ALOLAN_FORM
+		tr_evs 236 Atk, 252 Spe
+	tr_mon 68, EXEGGUTOR, MALE | ALOLAN_FORM
+		tr_evs 236 SAt, 252 Spe
+	end_trainer
 
-	; KUKUI
-	db "Kukui@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	; TODO: movesets, etc
-	dbp 74, MAROWAK, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 72, NINETALES, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 73, MAGNEZONE, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 73, SNORLAX, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 72, MUK, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 75, EXEGGUTOR, MALE | ALOLAN_FORM
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
+	def_trainer 2, "Kukui"
+	tr_mon 74, MAROWAK, MALE | ALOLAN_FORM
+	tr_mon 72, NINETALES, MALE | ALOLAN_FORM
+	tr_mon 73, MAGNEZONE, MALE
+	tr_mon 73, SNORLAX, MALE
+	tr_mon 72, MUK, MALE | ALOLAN_FORM
+	tr_mon 75, EXEGGUTOR, MALE | ALOLAN_FORM
+	end_trainer
 
 
 SECTION "PiersGroup", ROMX
 PiersGroup:
 
 	def_trainer_class PIERS
-	; TODO: movesets, etc
-	def_trainer "Piers"
+
+	def_trainer 1, "Piers"
 	tr_mon 16, MURKROW
 	tr_mon 17, QWILFISH, HISUIAN_FORM
 	tr_mon 17, MUK, ALOLAN_FORM
 	tr_mon 19, RATICATE, ALOLAN_FORM
 	end_trainer
 
-	; PIERS
-	db "Piers@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 12, HONCHKROW, MALE
-	dbp LEVEL_FROM_BADGES + 16, OVERQWIL, MALE
-	dbp LEVEL_FROM_BADGES + 16, MUK, MALE | ALOLAN_FORM
-	dbp LEVEL_FROM_BADGES + 14, PERSIAN, MALE | ALOLAN_FORM
+	def_trainer 2, "Piers"
+	tr_mon LEVEL_FROM_BADGES + 12, HONCHKROW
+	tr_mon LEVEL_FROM_BADGES + 16, OVERQWIL
+	tr_mon LEVEL_FROM_BADGES + 16, MUK, ALOLAN_FORM
+	tr_mon LEVEL_FROM_BADGES + 14, PERSIAN, ALOLAN_FORM
 if DEF(FAITHFUL)
-	dbp LEVEL_FROM_BADGES + 14, UMBREON, MALE
+	tr_mon LEVEL_FROM_BADGES + 14, UMBREON
 else
-	dbp LEVEL_FROM_BADGES + 14, GIRAFARIG, MALE
+	tr_mon LEVEL_FROM_BADGES + 14, GIRAFARIG
 endc
-	dbp LEVEL_FROM_BADGES + 19, RATICATE, MALE | ALOLAN_FORM
-	db -1 ; end
+	tr_mon LEVEL_FROM_BADGES + 19, RATICATE, ALOLAN_FORM
+	end_trainer
 
 
 SECTION "KatyGroup", ROMX
 KatyGroup:
 
 	def_trainer_class KATY
-	db "Katy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 55, ARIADOS
-	dbp 55, BUTTERFREE
-	dbp 56, SHUCKLE
-	dbp 56, KLEAVOR
-	dbp 54, HERACROSS
-	dbp 57, URSARING
-	db -1 ; end
+	def_trainer 1, "Katy"
+	tr_mon 55, ARIADOS
+	tr_mon 55, BUTTERFREE
+	tr_mon 56, SHUCKLE
+	tr_mon 56, KLEAVOR
+	tr_mon 54, HERACROSS
+	tr_mon 57, URSARING
+	end_trainer
 
-	; KATY
-	db "Katy@"
-	db TRAINERTYPE_NORMAL
-	; party
-	; TODO: movesets, etc
-	dbp 73, ARIADOS
-	dbp 73, BUTTERFREE
-	dbp 74, SHUCKLE
-	dbp 74, KLEAVOR
-	dbp 72, HERACROSS
-	dbp 75, URSALUNA
-	db -1 ; end
+	def_trainer 2, "Katy"
+	tr_mon 73, ARIADOS
+	tr_mon 73, BUTTERFREE
+	tr_mon 74, SHUCKLE
+	tr_mon 74, KLEAVOR
+	tr_mon 72, HERACROSS
+	tr_mon 75, URSALUNA
+	end_trainer
 
 
 SECTION "VictorGroup", ROMX
 VictorGroup:
 
 	def_trainer_class VICTOR
-	db "Victor@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp 69, PIKACHU, MALE | PIKACHU_SURF_FORM
-		db LIGHT_BALL, ABIL_PIKACHU_STATIC | NAT_SATK_UP_ATK_DOWN, "Puka@"
-		db SURF, THUNDERBOLT, THUNDER_WAVE, EXTREMESPEED
-	db -1 ; end
+	def_trainer 1, "Victor"
+	tr_mon 69, "Puka", PIKACHU @ LIGHT_BALL, MALE | PIKACHU_SURF_FORM
+		tr_extra STATIC, SATK_UP_ATK_DOWN
+		tr_moves SURF, THUNDERBOLT, THUNDER_WAVE, EXTREMESPEED
+	end_trainer
 
 
 SECTION "BillGroup", ROMX
 BillGroup:
 
 	def_trainer_class BILL_T
-	db "Bill@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 62, VAPOREON
-		db MYSTIC_WATER
-		db RECOVER, BARRIER, HAZE, SCALD
-	dbp 62, JOLTEON
-		db MAGNET
-		db THUNDER_WAVE, THUNDERBOLT, LIGHT_SCREEN, QUICK_ATTACK
-	dbp 62, FLAREON
-		db CHARCOAL
-		db FLARE_BLITZ, DOUBLE_EDGE, SMOKESCREEN, ROCK_SMASH
-	dbp 63, LEAFEON
-		db MIRACLE_SEED
-		db SEED_BOMB, SWORDS_DANCE, HEALINGLIGHT, X_SCISSOR
-	dbp 63, GLACEON
-		db NEVERMELTICE
-		db ICE_BEAM, MIRROR_COAT, RECOVER, QUICK_ATTACK
-	dbp 66, PORYGON2
-		db EVIOLITE
-		db TRI_ATTACK, THUNDERBOLT, ICE_BEAM, RECOVER
-	db -1 ; end
+	def_trainer 1, "Bill"
+	tr_mon 62, VAPOREON @ MYSTIC_WATER
+		tr_moves RECOVER, BARRIER, HAZE, SCALD
+	tr_mon 62, JOLTEON @ MAGNET
+		tr_moves THUNDER_WAVE, THUNDERBOLT, LIGHT_SCREEN, QUICK_ATTACK
+	tr_mon 62, FLAREON @ CHARCOAL
+		tr_moves FLARE_BLITZ, DOUBLE_EDGE, SMOKESCREEN, ROCK_SMASH
+	tr_mon 63, LEAFEON @ MIRACLE_SEED
+		tr_moves SEED_BOMB, SWORDS_DANCE, HEALINGLIGHT, X_SCISSOR
+	tr_mon 63, GLACEON @ NEVERMELTICE
+		tr_moves ICE_BEAM, MIRROR_COAT, RECOVER, QUICK_ATTACK
+	tr_mon 66, PORYGON2 @ EVIOLITE
+		tr_moves TRI_ATTACK, THUNDERBOLT, ICE_BEAM, RECOVER
+	end_trainer
 
 
 SECTION "YellowGroup", ROMX
 YellowGroup:
 
 	def_trainer_class YELLOW
-	db "Yellow@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 5, RATTATA, FEMALE
-		db SITRUS_BERRY, ABIL_RATTATA_GUTS | NAT_ATK_UP_SATK_DOWN, "Ratty@"
-		ev_spread 240 Atk
-		db SUCKER_PUNCH, QUICK_ATTACK, HYPER_FANG, SWORDS_DANCE
-	dbp LEVEL_FROM_BADGES + 3, BUTTERFREE, FEMALE
-		db SITRUS_BERRY, ABIL_BUTTERFREE_TINTED_LENS | NAT_SATK_UP_ATK_DOWN, "Kitty@"
-		ev_spread 240 Spe
-		db BUG_BUZZ, SUPERSONIC, STUN_SPORE, PSYCHIC_M
-	dbp LEVEL_FROM_BADGES + 6, DODUO, FEMALE
-		db NO_ITEM, ABIL_DODUO_TANGLED_FEET | NAT_SPE_UP_DEF_DOWN, "Dody@"
-		ev_spread 240 Spe
-		db SWORDS_DANCE, ACROBATICS, RETURN, MUD_SLAP
-	dbp LEVEL_FROM_BADGES + 5, GRAVELER, FEMALE
-		db EVIOLITE, ABIL_GRAVELER_STURDY | NAT_ATK_UP_SATK_DOWN, "Gravvy@"
-		ev_spread 240 HP
-		db ROLLOUT, DEFENSE_CURL, EARTHQUAKE, ROCK_BLAST
-	dbp LEVEL_FROM_BADGES + 4, OMANYTE, FEMALE
-		db SITRUS_BERRY, ABIL_OMANYTE_SHELL_ARMOR | NAT_NEUTRAL, "Omny@"
-		ev_spread 240 HP
-		db SURF, PROTECT, ANCIENTPOWER, AURORA_BEAM
-	dbp LEVEL_FROM_BADGES + 8, PIKACHU, FEMALE | PIKACHU_YELLOW_FORM
-		db LIGHT_BALL, ABIL_PIKACHU_STATIC | NAT_SPE_UP_DEF_DOWN, "Chuchu@"
-		ev_spread 240 SAt
-		db SURF, FLY, THUNDERBOLT, QUICK_ATTACK
-	db -1 ; end
+	def_trainer 1, "Yellow"
+	tr_mon LEVEL_FROM_BADGES + 5, "Ratty", RATTATA @ SITRUS_BERRY, FEMALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_evs 240 Atk
+		tr_moves SUCKER_PUNCH, QUICK_ATTACK, HYPER_FANG, SWORDS_DANCE
+	tr_mon LEVEL_FROM_BADGES + 3, "Kitty", BUTTERFREE @ SITRUS_BERRY, FEMALE
+		tr_extra TINTED_LENS, SATK_UP_ATK_DOWN
+		tr_evs 240 Spe
+		tr_moves BUG_BUZZ, SUPERSONIC, STUN_SPORE, PSYCHIC_M
+	tr_mon LEVEL_FROM_BADGES + 6, "Dody", DODUO, FEMALE
+		tr_extra TANGLED_FEET, SPE_UP_DEF_DOWN
+		tr_evs 240 Spe
+		tr_moves SWORDS_DANCE, ACROBATICS, RETURN, MUD_SLAP
+	tr_mon LEVEL_FROM_BADGES + 5, "Gravvy", GRAVELER @ EVIOLITE, FEMALE
+		tr_extra STURDY, ATK_UP_SATK_DOWN
+		tr_evs 240 HP
+		tr_moves ROLLOUT, DEFENSE_CURL, EARTHQUAKE, ROCK_BLAST
+	tr_mon LEVEL_FROM_BADGES + 4, "Omny", OMANYTE @ SITRUS_BERRY, FEMALE
+		tr_extra SHELL_ARMOR
+		tr_evs 240 HP
+		tr_moves SURF, PROTECT, ANCIENTPOWER, AURORA_BEAM
+	tr_mon LEVEL_FROM_BADGES + 8, "Chuchu", PIKACHU @ LIGHT_BALL, FEMALE | PIKACHU_YELLOW_FORM
+		tr_extra STATIC, SPE_UP_DEF_DOWN
+		tr_evs 240 SAt
+		tr_moves SURF, FLY, THUNDERBOLT, QUICK_ATTACK
+	end_trainer
 
-	; YELLOW
-	db "Yellow@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
-	; party
-	dbp 72, OMASTAR, FEMALE
-		db WISE_GLASSES, ABIL_OMASTAR_SHELL_ARMOR | NAT_NEUTRAL, "Omny@"
-		db SCALD, ANCIENTPOWER, SPIKES, ICE_BEAM
-	dbp 73, RATICATE, FEMALE
-		db KINGS_ROCK, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN, "Ratty@"
-		db SWORDS_DANCE, QUICK_ATTACK, SUPER_FANG, CRUNCH
-	dbp 71, BUTTERFREE, FEMALE
-		db BRIGHTPOWDER, ABIL_BUTTERFREE_TINTED_LENS | NAT_SATK_UP_ATK_DOWN, "Free@"
-		db PSYCHIC_M, BUG_BUZZ, SLEEP_POWDER, STUN_SPORE
-	dbp 74, DODRIO, FEMALE
-		db SHARP_BEAK, ABIL_DODUO_TANGLED_FEET | NAT_SPE_UP_DEF_DOWN, "Dody@"
-		db DRILL_PECK, TRI_ATTACK, DOUBLE_TEAM, PURSUIT
-	dbp 73, GOLEM, FEMALE
-		db MUSCLE_BAND, ABIL_GOLEM_STURDY | NAT_ATK_UP_SATK_DOWN, "Gravvy@"
-		db ROLLOUT, DEFENSE_CURL, EARTHQUAKE, STONE_EDGE
-	dbp 75, PIKACHU, FEMALE | PIKACHU_YELLOW_FORM
-		db LIGHT_BALL, ABIL_PIKACHU_STATIC | NAT_SPE_UP_DEF_DOWN, "Chuchu@"
-		db SURF, FLY, THUNDERBOLT, EXTREMESPEED
-	db -1 ; end
+	def_trainer 2, "Yellow"
+	tr_mon 72, "Omny", OMASTAR @ WISE_GLASSES, FEMALE
+		tr_extra SHELL_ARMOR
+		tr_moves SCALD, ANCIENTPOWER, SPIKES, ICE_BEAM
+	tr_mon 73, "Ratty", RATICATE @ KINGS_ROCK, FEMALE
+		tr_extra GUTS, ATK_UP_SATK_DOWN
+		tr_moves SWORDS_DANCE, QUICK_ATTACK, SUPER_FANG, CRUNCH
+	tr_mon 71, "Free", BUTTERFREE @ BRIGHTPOWDER, FEMALE
+		tr_extra TINTED_LENS, SATK_UP_ATK_DOWN
+		tr_moves PSYCHIC_M, BUG_BUZZ, SLEEP_POWDER, STUN_SPORE
+	tr_mon 74, "Dody", DODRIO @ SHARP_BEAK, FEMALE
+		tr_extra TANGLED_FEET, SPE_UP_DEF_DOWN
+		tr_moves DRILL_PECK, TRI_ATTACK, DOUBLE_TEAM, PURSUIT
+	tr_mon 73, "Gravvy", GOLEM @ MUSCLE_BAND, FEMALE
+		tr_extra STURDY, ATK_UP_SATK_DOWN
+		tr_moves ROLLOUT, DEFENSE_CURL, EARTHQUAKE, STONE_EDGE
+	tr_mon 75, "Chuchu", PIKACHU @ LIGHT_BALL, FEMALE | PIKACHU_YELLOW_FORM
+		tr_extra STATIC, SPE_UP_DEF_DOWN
+		tr_moves SURF, FLY, THUNDERBOLT, EXTREMESPEED
+	end_trainer
 
 
 SECTION "WalkerGroup", ROMX
 WalkerGroup:
 
 	def_trainer_class WALKER
-	db "Walker@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
-	; party
-	dbp LEVEL_FROM_BADGES + 5, NOCTOWL
-		db NO_ITEM
-		ev_spread 184 Spe
-		db AERIAL_ACE, NIGHT_SHADE, REFLECT, EXTRASENSORY
-	dbp LEVEL_FROM_BADGES + 6, PIDGEOTTO
-		db NO_ITEM
-		ev_spread 184 SAt
-		db MUD_SLAP, ROOST, SWIFT, AIR_SLASH
-	dbp LEVEL_FROM_BADGES + 5, AERODACTYL
-		db NO_ITEM
-		ev_spread 184 Atk
-		db WING_ATTACK, SUPERSONIC, BITE, ANCIENTPOWER
-	dbp LEVEL_FROM_BADGES + 8, SKARMORY
-		db SITRUS_BERRY
-		ev_spread 184 HP
-		db METAL_CLAW, FURY_STRIKES, DRILL_PECK, SWIFT
-	db -1 ; end
+	def_trainer 1, "Walker"
+	tr_mon LEVEL_FROM_BADGES + 5, NOCTOWL
+		tr_evs 184 Spe
+		tr_moves AERIAL_ACE, NIGHT_SHADE, REFLECT, EXTRASENSORY
+	tr_mon LEVEL_FROM_BADGES + 6, PIDGEOTTO
+		tr_evs 184 SAt
+		tr_moves MUD_SLAP, ROOST, SWIFT, AIR_SLASH
+	tr_mon LEVEL_FROM_BADGES + 5, AERODACTYL
+		tr_evs 184 Atk
+		tr_moves WING_ATTACK, SUPERSONIC, BITE, ANCIENTPOWER
+	tr_mon LEVEL_FROM_BADGES + 8, SKARMORY @ SITRUS_BERRY
+		tr_evs 184 HP
+		tr_moves METAL_CLAW, FURY_STRIKES, DRILL_PECK, SWIFT
+	end_trainer
 
-	; WALKER
-	db "Walker@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 75, SKARMORY
-		db LEFTOVERS
-		db SCREECH, SPIKES, DRILL_PECK, NIGHT_SLASH
-	dbp 72, NOCTOWL
-		db SHARP_BEAK
-		db AIR_SLASH, PSYCHIC_M, SHADOW_BALL, REFLECT
-	dbp 74, PIDGEOT
-		db BRIGHTPOWDER
-		db ROOST, EXTREMESPEED, HURRICANE, ROAR
-	dbp 73, AERODACTYL
-		db MUSCLE_BAND
-		db ROCK_SLIDE, CRUNCH, IRON_HEAD, FLY
-	dbp 73, CHARIZARD
-		db CHARCOAL
+	def_trainer 2, "Walker"
+	tr_mon 75, SKARMORY @ LEFTOVERS
+		tr_moves SCREECH, SPIKES, DRILL_PECK, NIGHT_SLASH
+	tr_mon 72, NOCTOWL @ SHARP_BEAK
+		tr_moves AIR_SLASH, PSYCHIC_M, SHADOW_BALL, REFLECT
+	tr_mon 74, PIDGEOT @ BRIGHTPOWDER
+		tr_moves ROOST, EXTREMESPEED, HURRICANE, ROAR
+	tr_mon 73, AERODACTYL @ MUSCLE_BAND
+		tr_moves ROCK_SLIDE, CRUNCH, IRON_HEAD, FLY
+	tr_mon 73, CHARIZARD @ CHARCOAL
 if DEF(FAITHFUL)
-		db SWORDS_DANCE, FIRE_BLAST, ROCK_SLIDE, AERIAL_ACE
+		tr_moves SWORDS_DANCE, FIRE_BLAST, ROCK_SLIDE, AERIAL_ACE
 else
-		db SWORDS_DANCE, FIRE_BLAST, ROCK_SLIDE, DRAGON_CLAW
+		tr_moves SWORDS_DANCE, FIRE_BLAST, ROCK_SLIDE, DRAGON_CLAW
 endc
-	dbp 72, XATU
-		db QUICK_CLAW
-		db FUTURE_SIGHT, PAIN_SPLIT, REFLECT, PSYCHIC_M
-	db -1 ; end
+	tr_mon 72, XATU @ QUICK_CLAW
+		tr_moves FUTURE_SIGHT, PAIN_SPLIT, REFLECT, PSYCHIC_M
+	end_trainer
 
 
 SECTION "ImakuniGroup", ROMX
 ImakuniGroup:
 
 	def_trainer_class IMAKUNI
-	db "Imakuni@"
-	db TRAINERTYPE_ITEM
-	; party
-	; TODO: movesets, etc
-	dbp 62, GOLDUCK
-		db BRIGHTPOWDER
-	dbp 62, SLOWBRO
-		db TWISTEDSPOON
-	dbp 63, HYPNO
-		db QUICK_CLAW
-	dbp 61, FARFETCH_D
-		db LEEK
-	dbp 61, DODRIO
-		db SHARP_BEAK
-	dbp 64, WOBBUFFET
-		db LEFTOVERS
-	db -1 ; end
+	def_trainer 1, "Imakuni"
+	tr_mon 62, GOLDUCK @ BRIGHTPOWDER
+	tr_mon 62, SLOWBRO @ TWISTEDSPOON
+	tr_mon 63, HYPNO @ QUICK_CLAW
+	tr_mon 61, FARFETCH_D @ LEEK
+	tr_mon 61, DODRIO @ SHARP_BEAK
+	tr_mon 64, WOBBUFFET @ LEFTOVERS
+	end_trainer
 
 
 SECTION "LawrenceGroup", ROMX
 LawrenceGroup:
 
 	def_trainer_class LAWRENCE
-	db "Lawrence@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 70, ARTICUNO, MALE
-		db BRIGHTPOWDER, ABILITY_1 | NAT_NEUTRAL
-		db ICE_BEAM, AIR_SLASH, ANCIENTPOWER, REFLECT
-	dbp 66, CHARIZARD, MALE
-		db DRAGON_FANG, SHINY_MASK | ABILITY_1 | NAT_ATK_UP_SATK_DOWN
+	def_trainer 1, "Lawrence"
+	tr_mon 70, ARTICUNO @ BRIGHTPOWDER, MALE
+		tr_moves ICE_BEAM, AIR_SLASH, ANCIENTPOWER, REFLECT
+	tr_mon 66, CHARIZARD @ DRAGON_FANG, MALE
+		tr_extra ATK_UP_SATK_DOWN, SHINY
 if DEF(FAITHFUL)
-		db SWORDS_DANCE, FLARE_BLITZ, SLASH, AERIAL_ACE
+		tr_moves SWORDS_DANCE, FLARE_BLITZ, SLASH, AERIAL_ACE
 else
-		db SWORDS_DANCE, FLARE_BLITZ, SLASH, DRAGON_CLAW
+		tr_moves SWORDS_DANCE, FLARE_BLITZ, SLASH, DRAGON_CLAW
 endc
-	dbp 68, DRAGONITE, MALE
-		db LEFTOVERS, ABILITY_1 | NAT_NEUTRAL
-		db DRAGON_DANCE, OUTRAGE, AQUA_TAIL, EARTHQUAKE
-	dbp 67, TYRANITAR, MALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, STONE_EDGE, CRUNCH, SCARY_FACE
-	dbp 66, HONCHKROW, MALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		db NASTY_PLOT, DARK_PULSE, CONFUSE_RAY, PURSUIT
-	dbp 70, ZAPDOS, MALE
-		db SHARP_BEAK, ABILITY_1 | NAT_NEUTRAL
-		db DRILL_PECK, THUNDER, ANCIENTPOWER, LIGHT_SCREEN
-	db -1 ; end
+	tr_mon 68, DRAGONITE @ LEFTOVERS, MALE
+		tr_moves DRAGON_DANCE, OUTRAGE, AQUA_TAIL, EARTHQUAKE
+	tr_mon 67, TYRANITAR @ KINGS_ROCK, MALE
+		tr_moves EARTHQUAKE, STONE_EDGE, CRUNCH, SCARY_FACE
+	tr_mon 66, HONCHKROW @ QUICK_CLAW, MALE
+		tr_moves NASTY_PLOT, DARK_PULSE, CONFUSE_RAY, PURSUIT
+	tr_mon 70, ZAPDOS @ SHARP_BEAK, MALE
+		tr_moves DRILL_PECK, THUNDER, ANCIENTPOWER, LIGHT_SCREEN
+	end_trainer
 
-	; LAWRENCE
-	db "Lawrence@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-	; party
-	dbp 75, ARTICUNO, MALE
-		db BRIGHTPOWDER, ABILITY_1 | NAT_NEUTRAL
-		db ICE_BEAM, AIR_SLASH, ANCIENTPOWER, REFLECT
-	dbp 71, CHARIZARD, MALE
-		db DRAGON_FANG, SHINY_MASK | ABILITY_1 | NAT_ATK_UP_SATK_DOWN
+	def_trainer 2, "Lawrence"
+	tr_mon 75, ARTICUNO @ BRIGHTPOWDER, MALE
+		tr_moves ICE_BEAM, AIR_SLASH, ANCIENTPOWER, REFLECT
+	tr_mon 71, CHARIZARD @ DRAGON_FANG, MALE
+		tr_extra ATK_UP_SATK_DOWN, SHINY
 if DEF(FAITHFUL)
-		db SWORDS_DANCE, FLARE_BLITZ, SLASH, AERIAL_ACE
+		tr_moves SWORDS_DANCE, FLARE_BLITZ, SLASH, AERIAL_ACE
 else
-		db SWORDS_DANCE, FLARE_BLITZ, SLASH, DRAGON_CLAW
+		tr_moves SWORDS_DANCE, FLARE_BLITZ, SLASH, DRAGON_CLAW
 endc
-	dbp 73, DRAGONITE, MALE
-		db LEFTOVERS, ABILITY_1 | NAT_NEUTRAL
-		db DRAGON_DANCE, OUTRAGE, AQUA_TAIL, EARTHQUAKE
-	dbp 72, TYRANITAR, MALE
-		db KINGS_ROCK, ABILITY_1 | NAT_NEUTRAL
-		db EARTHQUAKE, STONE_EDGE, CRUNCH, SCARY_FACE
-	dbp 71, PORYGON_Z, MALE
-		db QUICK_CLAW, ABILITY_1 | NAT_NEUTRAL
-		db NASTY_PLOT, DARK_PULSE, TRI_ATTACK, THUNDERBOLT
-	dbp 75, ZAPDOS, MALE
-		db SHARP_BEAK, ABILITY_1 | NAT_NEUTRAL
-		db DRILL_PECK, THUNDER, ANCIENTPOWER, LIGHT_SCREEN
-	db -1 ; end
+	tr_mon 73, DRAGONITE @ LEFTOVERS, MALE
+		tr_moves DRAGON_DANCE, OUTRAGE, AQUA_TAIL, EARTHQUAKE
+	tr_mon 72, TYRANITAR @ KINGS_ROCK, MALE
+		tr_moves EARTHQUAKE, STONE_EDGE, CRUNCH, SCARY_FACE
+	tr_mon 71, PORYGON_Z @ QUICK_CLAW, MALE
+		tr_moves NASTY_PLOT, DARK_PULSE, TRI_ATTACK, THUNDERBOLT
+	tr_mon 75, ZAPDOS @ SHARP_BEAK, MALE
+		tr_moves DRILL_PECK, THUNDER, ANCIENTPOWER, LIGHT_SCREEN
+	end_trainer
 
 
 SECTION "ReiGroup", ROMX
 ReiGroup:
 
 	def_trainer_class REI
-	db "Maiden Rei@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS
-	; party
-	; TODO: movesets, etc
-	dbp LEVEL_FROM_BADGES + 3, KADABRA
-		db NO_ITEM
-		ev_spread 120 Spe
-	dbp LEVEL_FROM_BADGES + 3, NOCTOWL
-		db NO_ITEM
-		ev_spread 120 Spe
-	dbp LEVEL_FROM_BADGES + 2, MURKROW
-		db NO_ITEM
-		ev_spread 120 Spe
-	dbp LEVEL_FROM_BADGES + 4, NINETALES
-		db SITRUS_BERRY
-		ev_spread 120 Spe
-	db -1 ; end
+	def_trainer 1, "Maiden Rei"
+	tr_mon LEVEL_FROM_BADGES + 3, KADABRA
+		tr_evs 120 Spe
+	tr_mon LEVEL_FROM_BADGES + 3, NOCTOWL
+		tr_evs 120 Spe
+	tr_mon LEVEL_FROM_BADGES + 2, MURKROW
+		tr_evs 120 Spe
+	tr_mon LEVEL_FROM_BADGES + 4, NINETALES @ SITRUS_BERRY
+		tr_evs 120 Spe
+	end_trainer
 
-	; REI
-	db "Maiden Rei@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
-	; party
-	dbp 59, FLAREON
-		db MUSCLE_BAND
-		ev_spread 68 Atk, 252 Spe
-		db QUICK_ATTACK, ROCK_SMASH, DOUBLE_EDGE, FLARE_BLITZ
-	dbp 58, HONCHKROW
-		db BLACKGLASSES
-		ev_spread 68 Atk, 252 Spe
-		db DRILL_PECK, SUCKER_PUNCH, PURSUIT, BRAVE_BIRD
-	dbp 57, NOCTOWL
-		db QUICK_CLAW
-		ev_spread 68 SAt, 252 Spe
-		db SHADOW_BALL, AIR_SLASH, HYPNOSIS, DREAM_EATER
-	dbp 57, ALAKAZAM
-		db WISE_GLASSES
-		ev_spread 68 SAt, 252 Spe
-		db PSYCHIC_M, FOCUS_BLAST, SHADOW_BALL, THUNDER_WAVE
-	dbp 58, RAPIDASH
-		db KINGS_ROCK
-		ev_spread 68 HP, 252 Spe
-		db FIRE_BLAST, MEGAHORN, POISON_JAB, WILL_O_WISP
-	dbp 60, NINETALES
-		db LEFTOVERS
-		ev_spread 68 SAt, 252 Spe
-		db NASTY_PLOT, FLAMETHROWER, DARK_PULSE, SHADOW_BALL
-	db -1 ; end
+	def_trainer 2, "Maiden Rei"
+	tr_mon 59, FLAREON @ MUSCLE_BAND
+		tr_evs 68 Atk, 252 Spe
+		tr_moves QUICK_ATTACK, ROCK_SMASH, DOUBLE_EDGE, FLARE_BLITZ
+	tr_mon 58, HONCHKROW @ BLACKGLASSES
+		tr_evs 68 Atk, 252 Spe
+		tr_moves DRILL_PECK, SUCKER_PUNCH, PURSUIT, BRAVE_BIRD
+	tr_mon 57, NOCTOWL @ QUICK_CLAW
+		tr_evs 68 SAt, 252 Spe
+		tr_moves SHADOW_BALL, AIR_SLASH, HYPNOSIS, DREAM_EATER
+	tr_mon 57, ALAKAZAM @ WISE_GLASSES
+		tr_evs 68 SAt, 252 Spe
+		tr_moves PSYCHIC_M, FOCUS_BLAST, SHADOW_BALL, THUNDER_WAVE
+	tr_mon 58, RAPIDASH @ KINGS_ROCK
+		tr_evs 68 HP, 252 Spe
+		tr_moves FIRE_BLAST, MEGAHORN, POISON_JAB, WILL_O_WISP
+	tr_mon 60, NINETALES @ LEFTOVERS
+		tr_evs 68 SAt, 252 Spe
+		tr_moves NASTY_PLOT, FLAMETHROWER, DARK_PULSE, SHADOW_BALL
+	end_trainer
 
-	; REI
-	db "Maiden Rei@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-	; party
-	dbp 74, FLAREON
-		db MUSCLE_BAND
-		db QUICK_ATTACK, ROCK_SMASH, DOUBLE_EDGE, FLARE_BLITZ
-	dbp 73, HONCHKROW
-		db BLACKGLASSES
-		db DRILL_PECK, SUCKER_PUNCH, PURSUIT, BRAVE_BIRD
-	dbp 72, NOCTOWL
-		db QUICK_CLAW
-		db SHADOW_BALL, AIR_SLASH, HYPNOSIS, DREAM_EATER
-	dbp 72, ALAKAZAM
-		db WISE_GLASSES
-		db PSYCHIC_M, FOCUS_BLAST, SHADOW_BALL, THUNDER_WAVE
-	dbp 73, RAPIDASH
-		db KINGS_ROCK
-		db FLARE_BLITZ, MEGAHORN, POISON_JAB, WILL_O_WISP
-	dbp 75, NINETALES
-		db LEFTOVERS
-		db NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SHADOW_BALL
-	db -1 ; end
+	def_trainer 3, "Maiden Rei"
+	tr_mon 74, FLAREON @ MUSCLE_BAND
+		tr_moves QUICK_ATTACK, ROCK_SMASH, DOUBLE_EDGE, FLARE_BLITZ
+	tr_mon 73, HONCHKROW @ BLACKGLASSES
+		tr_moves DRILL_PECK, SUCKER_PUNCH, PURSUIT, BRAVE_BIRD
+	tr_mon 72, NOCTOWL @ QUICK_CLAW
+		tr_moves SHADOW_BALL, AIR_SLASH, HYPNOSIS, DREAM_EATER
+	tr_mon 72, ALAKAZAM @ WISE_GLASSES
+		tr_moves PSYCHIC_M, FOCUS_BLAST, SHADOW_BALL, THUNDER_WAVE
+	tr_mon 73, RAPIDASH @ KINGS_ROCK
+		tr_moves FLARE_BLITZ, MEGAHORN, POISON_JAB, WILL_O_WISP
+	tr_mon 75, NINETALES @ LEFTOVERS
+		tr_moves NASTY_PLOT, FIRE_BLAST, DARK_PULSE, SHADOW_BALL
+	end_trainer
 
 ENDSECTION
