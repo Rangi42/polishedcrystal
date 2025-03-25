@@ -156,7 +156,7 @@ MACRO tr_mon
 				fail "No gender specified for current mon."
 			endc
 		else
-			if !(_tr_flags & TRAINERTYPE_PERSONALITY) && x > 0
+			if !(_tr_flags & TRAINERTYPE_PERSONALITY) && p > 0
 				fail "No gender specified for previous mon."
 			endc
 			def _tr_flags |= TRAINERTYPE_PERSONALITY
