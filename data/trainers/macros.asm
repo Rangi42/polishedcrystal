@@ -9,42 +9,40 @@ DEF NUM_EV_SPREADS = 0
 
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
 ; Chosen for stat importance: Speed > * > Atk (hidden power is a special move)
-; ("XDVS_" is a placeholder before I have replaced the full party table,
-; will be replaced with "DVS_" when fully ready)
 if DEF(FAITHFUL)
-DEF XDVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
-DEF XDVS_HP_FLYING   EQUS "14 HP, 14 Atk, 14 Def, 14 SAt, 14 SDf"
-DEF XDVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
-DEF XDVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
-DEF XDVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
-DEF XDVS_HP_BUG      EQUS "14 Atk, 14 Def, 14 SDf"
-DEF XDVS_HP_GHOST    EQUS "14 Atk, 14 SDf"
-DEF XDVS_HP_STEEL    EQUS "14 SDf"
-DEF XDVS_HP_FIRE     EQUS "14 Atk, 14 Spe, 14 SAt"
-DEF XDVS_HP_WATER    EQUS "14 Atk, 14 Def, 14 SAt"
-DEF XDVS_HP_GRASS    EQUS "14 Atk, 14 SAt"
-DEF XDVS_HP_ELECTRIC EQUS "14 SAt"
-DEF XDVS_HP_PSYCHIC  EQUS "14 Atk, 14 Spe"
-DEF XDVS_HP_ICE      EQUS "14 Atk, 14 Def"
-DEF XDVS_HP_DRAGON   EQUS "14 Atk"
-DEF XDVS_HP_DARK     EQUS "15 All"
+DEF DVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
+DEF DVS_HP_FLYING   EQUS "14 HP, 14 Atk, 14 Def, 14 SAt, 14 SDf"
+DEF DVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
+DEF DVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
+DEF DVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
+DEF DVS_HP_BUG      EQUS "14 Atk, 14 Def, 14 SDf"
+DEF DVS_HP_GHOST    EQUS "14 Atk, 14 SDf"
+DEF DVS_HP_STEEL    EQUS "14 SDf"
+DEF DVS_HP_FIRE     EQUS "14 Atk, 14 Spe, 14 SAt"
+DEF DVS_HP_WATER    EQUS "14 Atk, 14 Def, 14 SAt"
+DEF DVS_HP_GRASS    EQUS "14 Atk, 14 SAt"
+DEF DVS_HP_ELECTRIC EQUS "14 SAt"
+DEF DVS_HP_PSYCHIC  EQUS "14 Atk, 14 Spe"
+DEF DVS_HP_ICE      EQUS "14 Atk, 14 Def"
+DEF DVS_HP_DRAGON   EQUS "14 Atk"
+DEF DVS_HP_DARK     EQUS "15 All"
 else
-DEF XDVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
-DEF XDVS_HP_FLYING   EQUS "14 Spe, 14 SAt, 14 SDf"
-DEF XDVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
-DEF XDVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
-DEF XDVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
-DEF XDVS_HP_BUG      EQUS "14 Spe, 14 SDf"
-DEF XDVS_HP_GHOST    EQUS "14 Def, 14 SDf"
-DEF XDVS_HP_STEEL    EQUS "14 SDf"
-DEF XDVS_HP_FIRE     EQUS "14 Def, 14 Spe, 14 SAt"
-DEF XDVS_HP_WATER    EQUS "14 Spe, 14 SAt"
-DEF XDVS_HP_GRASS    EQUS "14 Def, 14 SAt"
-DEF XDVS_HP_ELECTRIC EQUS "14 SAt"
-DEF XDVS_HP_PSYCHIC  EQUS "14 Def, 14 Spe"
-DEF XDVS_HP_ICE      EQUS "14 Spe"
-DEF XDVS_HP_DRAGON   EQUS "14 Def"
-DEF XDVS_HP_DARK     EQUS "14 Atk"
+DEF DVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
+DEF DVS_HP_FLYING   EQUS "14 Spe, 14 SAt, 14 SDf"
+DEF DVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
+DEF DVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
+DEF DVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
+DEF DVS_HP_BUG      EQUS "14 Spe, 14 SDf"
+DEF DVS_HP_GHOST    EQUS "14 Def, 14 SDf"
+DEF DVS_HP_STEEL    EQUS "14 SDf"
+DEF DVS_HP_FIRE     EQUS "14 Def, 14 Spe, 14 SAt"
+DEF DVS_HP_WATER    EQUS "14 Spe, 14 SAt"
+DEF DVS_HP_GRASS    EQUS "14 Def, 14 SAt"
+DEF DVS_HP_ELECTRIC EQUS "14 SAt"
+DEF DVS_HP_PSYCHIC  EQUS "14 Def, 14 Spe"
+DEF DVS_HP_ICE      EQUS "14 Spe"
+DEF DVS_HP_DRAGON   EQUS "14 Def"
+DEF DVS_HP_DARK     EQUS "14 Atk"
 endc
 
 MACRO dv_spread
@@ -92,11 +90,8 @@ MACRO def_trainer
 	; Reset trainer macro state.
 	def _tr_flags = 0
 	def _tr_mons = 0
-	if _NARG == 2
-		assert (\1 == _tr_party), "Trainer party ID mismatch"
-		shift
-	endc
-	redef _tr_name EQUS \1
+	assert (\1 == _tr_party), "Trainer party ID mismatch"
+	redef _tr_name EQUS \2
 	def _tr_party += 1
 ENDM
 
@@ -244,7 +239,7 @@ MACRO end_trainer
 
 		; If we have implicit DVs, but a Hidden Power type, set that now.
 		if STRIN("{_tr_pk{d:p}_hp_type}", "HP_") && _tr_pk{d:p}_dvs_explicit != TRUE
-			redef _tr_pk{d:p}_dvs EQUS "{XDVS_{_tr_pk{d:p}_hp_type}}"
+			redef _tr_pk{d:p}_dvs EQUS "{DVS_{_tr_pk{d:p}_hp_type}}"
 		endc
 		db _tr_pk{d:p}_level
 		dp _tr_pk{d:p}_species, _tr_pk{d:p}_form

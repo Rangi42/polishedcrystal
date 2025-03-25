@@ -5881,25 +5881,25 @@ ArtistGroup:
 
 	def_trainer ALINA, "Alina"
 	tr_mon 57, SMEARGLE @ MIRACLE_SEED
-		tr_dvs XDVS_HP_GRASS ; green
+		tr_dvs DVS_HP_GRASS ; green
 		tr_moves SPORE, FLAMETHROWER, SOLAR_BEAM, GIGA_DRAIN
 	end_trainer
 
 	def_trainer MARLENE, "Marlene"
 	tr_mon 55, SMEARGLE @ CHARCOAL
-		tr_dvs XDVS_HP_FIRE ; red
+		tr_dvs DVS_HP_FIRE ; red
 		tr_moves FIRE_BLAST, FLAMETHROWER, EARTH_POWER, WILL_O_WISP
 	tr_mon 55, SMEARGLE @ MAGNET
-		tr_dvs XDVS_HP_ELECTRIC ; yellow
+		tr_dvs DVS_HP_ELECTRIC ; yellow
 		tr_moves THUNDER, THUNDERBOLT, THUNDER_WAVE, RAIN_DANCE
 	tr_mon 55, SMEARGLE @ MYSTIC_WATER
-		tr_dvs XDVS_HP_WATER ; blue
+		tr_dvs DVS_HP_WATER ; blue
 		tr_moves HYDRO_PUMP, SURF, ICE_BEAM, SCALD
 	end_trainer
 
 	def_trainer RIN, "Rin"
 	tr_mon 64, SMEARGLE @ TWISTEDSPOON
-		tr_dvs XDVS_HP_PSYCHIC ; pink
+		tr_dvs DVS_HP_PSYCHIC ; pink
 		tr_moves PSYCHIC_M, SPORE, CALM_MIND, RECOVER
 	end_trainer
 
