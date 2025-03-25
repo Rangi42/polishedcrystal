@@ -3136,20 +3136,15 @@ SECTION "OfficerMGroup", ROMX
 OfficerMGroup:
 
 	def_trainer_class OFFICERM
-	db "Keith@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 15, GROWLITHE
-	dbp 15, GROWLITHE
-	db -1 ; end
+	def_trainer KEITH, "Keith"
+	tr_mon 15, GROWLITHE
+	tr_mon 15, GROWLITHE
+	end_trainer
 
-	; OFFICERM
-	db "Dirk@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 15, GROWLITHE
-	dbp 15, MACHOP
-	db -1 ; end
+	def_trainer DIRK, "Dirk"
+	tr_mon 15, GROWLITHE
+	tr_mon 15, MACHOP
+	end_trainer
 
 
 SECTION "OfficerFGroup", ROMX
