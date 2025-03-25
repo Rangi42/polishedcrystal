@@ -3195,127 +3195,80 @@ SECTION "PokemaniacGroup", ROMX
 PokemaniacGroup:
 
 	def_trainer_class POKEMANIAC
-	db "Brent@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 32, LICKITUNG
-	db -1 ; end
+	def_trainer BRENT1, "Brent"
+	tr_mon 32, LICKITUNG
+	end_trainer
 
-	; POKEMANIAC
-	db "Brent@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, KANGASKHAN
-	db -1 ; end
+	def_trainer BRENT2, "Brent"
+	tr_mon 37, KANGASKHAN
+	end_trainer
 
-	; POKEMANIAC
-	db "Brent@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 42, PORYGON
-		db RECOVER, PSYCHIC_M, CONVERSION, TRI_ATTACK
-	db -1 ; end
+	def_trainer BRENT3, "Brent"
+	tr_mon 42, PORYGON
+		tr_moves RECOVER, PSYCHIC_M, CONVERSION, TRI_ATTACK
+	end_trainer
 
-	; POKEMANIAC
-	db "Brent@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 47, CHANSEY
-		db ROLLOUT, ATTRACT, RETURN, FRESH_SNACK
-	db -1 ; end
+	def_trainer BRENT4, "Brent"
+	tr_mon 47, CHANSEY
+		tr_moves ROLLOUT, ATTRACT, RETURN, FRESH_SNACK
+	end_trainer
 
-	; POKEMANIAC
-	db "Larry@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 12, SLOWPOKE
-	db -1 ; end
+	def_trainer LARRY, "Larry"
+	tr_mon 12, SLOWPOKE
+	end_trainer
 
-	; POKEMANIAC
-	db "Andrew@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 24, MAROWAK
-	dbp 24, MAROWAK
-	db -1 ; end
+	def_trainer ANDREW, "Andrew"
+	tr_mon 24, MAROWAK
+	tr_mon 24, MAROWAK
+	end_trainer
 
-	; POKEMANIAC
-	db "Calvin@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 26, KANGASKHAN
-	db -1 ; end
+	def_trainer CALVIN, "Calvin"
+	tr_mon 26, KANGASKHAN
+	end_trainer
 
-	; POKEMANIAC
-	db "Shane@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 20, NIDORINA
-	dbp 20, NIDORINO
-	db -1 ; end
+	def_trainer SHANE, "Shane"
+	tr_mon 20, NIDORINA
+	tr_mon 20, NIDORINO
+	end_trainer
 
-	; POKEMANIAC
-	db "Beckett@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, SLOWBRO
-	db -1 ; end
+	def_trainer BEN, "Beckett" ; MISMATCH
+	tr_mon 30, SLOWBRO
+	end_trainer
 
-	; POKEMANIAC
-	db "Ron@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 30, NIDOKING
-	db -1 ; end
+	def_trainer RON, "Ron"
+	tr_mon 30, NIDOKING
+	end_trainer
 
-	; POKEMANIAC
-	db "Ethan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 45, RHYHORN
-	dbp 46, RHYDON
-	db -1 ; end
+	def_trainer ETHAN, "Ethan"
+	tr_mon 45, RHYHORN
+	tr_mon 46, RHYDON
+	end_trainer
 
-	; POKEMANIAC
-	db "Issac@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 15, LICKITUNG
-		db LICK, SUPERSONIC, CUT, NO_MOVE
-	db -1 ; end
+	def_trainer ISSAC, "Issac"
+	tr_mon 15, LICKITUNG
+		tr_moves LICK, SUPERSONIC, CUT, NO_MOVE
+	end_trainer
 
-	; POKEMANIAC
-	db "Donald@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 13, SLOWPOKE
-	dbp 13, NIDORAN_M
-	db -1 ; end
+	def_trainer DONALD, "Donald"
+	tr_mon 13, SLOWPOKE
+	tr_mon 13, NIDORAN_M
+	end_trainer
 
-	; POKEMANIAC
-	db "Zach@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 37, RHYHORN
-	db -1 ; end
+	def_trainer ZACH, "Zach"
+	tr_mon 37, RHYHORN
+	end_trainer
 
-	; POKEMANIAC
-	db "Miller@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 7, NIDOKING
-	dbp LEVEL_FROM_BADGES + 7, NIDOQUEEN
-	db -1 ; end
+	def_trainer MILLER, "Miller"
+	tr_mon LEVEL_FROM_BADGES + 7, NIDOKING
+	tr_mon LEVEL_FROM_BADGES + 7, NIDOQUEEN
+	end_trainer
 
-	; POKEMANIAC
-	db "Aidan@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 36, SNORLAX
-		db HEADBUTT, DEFENSE_CURL, ROLLOUT, EXPLOSION
-	dbp 36, PORYGON2
-		db CONVERSION, RECOVER, PSYBEAM, TRI_ATTACK
-	db -1 ; end
+	def_trainer AIDAN, "Aidan"
+	tr_mon 36, SNORLAX
+		tr_moves HEADBUTT, DEFENSE_CURL, ROLLOUT, EXPLOSION
+	tr_mon 36, PORYGON2
+		tr_moves CONVERSION, RECOVER, PSYBEAM, TRI_ATTACK
+	end_trainer
 
 
 SECTION "CosplayerGroup", ROMX
