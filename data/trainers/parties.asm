@@ -3664,122 +3664,81 @@ SECTION "BugManiacGroup", ROMX
 BugManiacGroup:
 
 	def_trainer_class BUG_MANIAC
-	db "Lou@"
-	db TRAINERTYPE_MOVES
-	; party
-	dbp 19, YANMA
-		db BUG_BITE, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
-	db -1 ; end
+	def_trainer LOU, "Lou"
+	tr_mon 19, YANMA
+		tr_moves BUG_BITE, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
+	end_trainer
 
-	; BUG_MANIAC
-	db "Rob@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, BEEDRILL
-	dbp 59, BUTTERFREE
-	db -1 ; end
+	def_trainer ROB, "Rob"
+	tr_mon 60, BEEDRILL
+	tr_mon 59, BUTTERFREE
+	end_trainer
 
-	; BUG_MANIAC
-	db "Ed@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 61, YANMA
-	dbp 62, BEEDRILL
-	dbp 62, BUTTERFREE
-	db -1 ; end
+	def_trainer ED, "Ed"
+	tr_mon 61, YANMA
+	tr_mon 62, BEEDRILL
+	tr_mon 62, BUTTERFREE
+	end_trainer
 
-	; BUG_MANIAC
-	db "Doug@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, BUTTERFREE
-	dbp 57, ARIADOS
-	db -1 ; end
+	def_trainer DOUG, "Doug"
+	tr_mon 59, BUTTERFREE
+	tr_mon 57, ARIADOS
+	end_trainer
 
-	; BUG_MANIAC
-	db "Dane@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, BEEDRILL
-	dbp 61, BUTTERFREE
-	db -1 ; end
+	def_trainer DANE, "Dane"
+	tr_mon 59, BEEDRILL
+	tr_mon 61, BUTTERFREE
+	end_trainer
 
-	; BUG_MANIAC
-	db "Dion@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 63, ARIADOS
-	db -1 ; end
+	def_trainer DION, "Dion"
+	tr_mon 63, ARIADOS
+	end_trainer
 
-	; BUG_MANIAC
-	db "Stacey@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, METAPOD
-	dbp 62, METAPOD
-	dbp 64, METAPOD
-	db -1 ; end
+	def_trainer STACEY, "Stacey"
+	tr_mon 60, METAPOD
+	tr_mon 62, METAPOD
+	tr_mon 64, METAPOD
+	end_trainer
 
-	; BUG_MANIAC
-	db "Ellis@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 58, WEEDLE
-	dbp 60, KAKUNA
-	dbp 62, BEEDRILL
-	db -1 ; end
+	def_trainer ELLIS, "Ellis"
+	tr_mon 58, WEEDLE
+	tr_mon 60, KAKUNA
+	tr_mon 62, BEEDRILL
+	end_trainer
 
-	; BUG_MANIAC
-	db "Abner@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 59, BUTTERFREE
-	dbp 59, BEEDRILL
-	dbp 59, PIKACHU
-	db -1 ; end
+	def_trainer ABNER, "Abner"
+	tr_mon 59, BUTTERFREE
+	tr_mon 59, BEEDRILL
+	tr_mon 59, PIKACHU
+	end_trainer
 
-	; BUG_MANIAC
-	db "Kenta@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, BEEDRILL
-	dbp 60, BEEDRILL
-	dbp 60, PARASECT
-	db -1 ; end
+	def_trainer KENTA, "Kenta"
+	tr_mon 60, BEEDRILL
+	tr_mon 60, BEEDRILL
+	tr_mon 60, PARASECT
+	end_trainer
 
-	; BUG_MANIAC
-	db "Robby@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 60, BUTTERFREE
-	dbp 60, BUTTERFREE
-	dbp 60, PARASECT
-	db -1 ; end
+	def_trainer ROBBY, "Robby"
+	tr_mon 60, BUTTERFREE
+	tr_mon 60, BUTTERFREE
+	tr_mon 60, PARASECT
+	end_trainer
 
-	; BUG_MANIAC
-	db "Pierre@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 54, YANMA
-	dbp 54, YANMA
-	dbp 56, YANMEGA
-	db -1 ; end
+	def_trainer PIERRE, "Pierre"
+	tr_mon 54, YANMA
+	tr_mon 54, YANMA
+	tr_mon 56, YANMEGA
+	end_trainer
 
-	; BUG_MANIAC
-	db "Dylan@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 55, LEDIAN
-	dbp 55, BUTTERFREE
-	db -1 ; end
+	def_trainer DYLAN, "Dylan"
+	tr_mon 55, LEDIAN
+	tr_mon 55, BUTTERFREE
+	end_trainer
 
-	; BUG_MANIAC
-	db "Kai@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 7, VENONAT
-	dbp LEVEL_FROM_BADGES + 9, VENOMOTH
-	db -1 ; end
+	def_trainer KAI, "Kai"
+	tr_mon LEVEL_FROM_BADGES + 7, VENONAT
+	tr_mon LEVEL_FROM_BADGES + 9, VENOMOTH
+	end_trainer
 
 
 SECTION "RuinManiacGroup", ROMX
