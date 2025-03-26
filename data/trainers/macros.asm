@@ -44,6 +44,7 @@ DEF DVS_HP_PSYCHIC  EQUS "14 Def, 14 Spe"
 DEF DVS_HP_ICE      EQUS "14 Spe"
 DEF DVS_HP_DRAGON   EQUS "14 Def"
 DEF DVS_HP_DARK     EQUS "14 Atk"
+DEF DVS_HP_FAIRY    EQUS "15 All" ; only in nonfaithful
 endc
 
 MACRO dv_spread
