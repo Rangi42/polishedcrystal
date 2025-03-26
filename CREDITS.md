@@ -54,17 +54,18 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
 * metalflygon08 for the many Pokémon and trainer sprites.
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
-* bloodless for sprites of Buck, Maylene, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
+* bloodless for sprites of Buck, Maylene, Veteran♂, Mismagius, Honchkrow, Bonsly, Mime Jr., some variant Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
 * Gmerc for sprites of Alolan Meowth, Persian, and Exeggutor.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
+* Dave.K for sprites and animations of Sneasler and Alolan Marowak.
 * Megaman-Omega for some of Prism's overworld sprites.
 * SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo and Soldier sprites.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
-* Scarlax for many new Pokémon animations.
+* Scarlax for front sprites and animations of Ambipom, Galarian Rapidash, Hisuian Typhlosion, Electivire, Hisuian Electrode, Magnezone, and many new Pokémon animations.
 * ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * Cure for front sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
