@@ -286,7 +286,6 @@ SRAM $1
 	"Box metadata"
 	"PokeDB bank 1C"
 	"PokeDB bank 2C"
-	"Saved 16-bit conversion tables"
 
 SRAM $2
 	"PokeDB bank 1A"
