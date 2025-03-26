@@ -244,11 +244,7 @@ MACRO tr_moves
 		fail "A mon may only have {d:NUM_MOVES} moves."
 	endc
 	for i, 1, _NARG + 1
-		; If a move list has "HIDDEN_POWER", but no typ, assume it's a mistake.
-		; Ignore if this is Unown (since it doesn't learn anything else...)
-		if !STRCMP("\<i>", "HIDDEN_POWER") && STRCMP(_tr_pk{d:p}_species, "UNOWN")
-			warn "Found HIDDEN_POWER, did you mean to specify a type?"
-		elif STRIN("\<i>", "HP_") == 1
+		if STRIN("\<i>", "HP_") == 1
 			def _tr_flags |= TRAINERTYPE_DVS ; for Hidden Power type
 			def _tr_pk{d:p}_move{d:i} = HIDDEN_POWER
 			redef _tr_pk{d:p}_hp_type EQUS "\<i>"
