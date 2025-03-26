@@ -78,8 +78,11 @@ MACRO def_trainer
 	; Reset trainer macro state.
 	def _tr_flags = 0
 	def _tr_mons = 0
+	def _tr_nick_lengths = 0
 	assert (\1 == _tr_party), "Trainer party ID mismatch"
 	redef _tr_name EQUS \2
+	def _tr_name_length = CHARLEN(\2) + 1
+	def _tr_size = 0
 	def _tr_party += 1
 ENDM
 
@@ -114,6 +117,7 @@ MACRO tr_mon
 		; The pokémon is nicknamed.
 		def _tr_flags |= TRAINERTYPE_NICKNAME
 		redef _tr_pk{d:p}_nickname EQUS \2
+		def _tr_nick_lengths += CHARLEN(\2)
 		shift ; since it's optional
 	endc
 
@@ -214,6 +218,42 @@ ENDM
 
 MACRO end_trainer
 ; Write out the party data from stored trainer buffer.
+	; First, write the byte length of the party.
+	; Pokémon data
+	def _tr_size += 3 ; level, species, form
+	if _tr_flags & TRAINERTYPE_ITEM
+		def _tr_size += 1
+	endc
+	if _tr_flags & TRAINERTYPE_PERSONALITY
+		def _tr_size += 1
+	endc
+	if _tr_flags & TRAINERTYPE_DVS
+		def _tr_size += 1
+	endc
+	if _tr_flags & TRAINERTYPE_EVS
+		def _tr_size += 1
+	endc
+	if _tr_flags & TRAINERTYPE_MOVES
+		def _tr_size += NUM_MOVES
+	endc
+	def _tr_size *= _tr_mons
+
+	if _tr_flags & TRAINERTYPE_NICKNAME
+		def _tr_size += _tr_nick_lengths + _tr_mons ; append terminators
+	endc
+
+	; Trainer name
+	def _tr_size += _tr_name_length
+
+	; Trainer flags
+	def _tr_size += 1
+
+	; Party size should never exceed 255, but just in case...
+	if (_tr_size > 255)
+		fail "Party size too large"
+	endc
+	db _tr_size
+
 	; First, the trainer name and flags.
 	db "{_tr_name}@"
 	db _tr_flags
@@ -258,5 +298,4 @@ MACRO end_trainer
 			endr
 		endc
 	endr
-	db -1
 ENDM

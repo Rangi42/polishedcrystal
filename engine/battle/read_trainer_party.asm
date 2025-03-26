@@ -15,16 +15,23 @@ ReadTrainerParty:
 	rst ByteFill
 
 	call FindTrainerData
+	ld a, b
+	add l
+	ld b, a
+	push bc
 
 	call GetNextTrainerDataByte
 	ld [wOtherTrainerType], a
 
 .loop2
 ; level
-	call GetNextTrainerDataByte
-	cp $ff
+	pop bc
+	ld a, l
+	sub b
 	ret z
+	push bc
 
+	call GetNextTrainerDataByte
 	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 
@@ -328,16 +335,23 @@ GetTrainerName::
 	ld h, [hl]
 	ld l, a
 	pop bc
+	call SkipTrainerParties
+	jr CopyTrainerName
 
-.loop
-	dec b
-	jr z, CopyTrainerName
-
-.skip
+SkipTrainerParties:
+; Skips b-1 parties
+	; Size of the current party.
 	call GetNextTrainerDataByte
-	cp $ff
-	jr nz, .skip
-	jr .loop
+	dec b
+	ret z
+
+	; Skip all of it.
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	jr SkipTrainerParties
 
 CopyTrainerName:
 	ld de, wStringBuffer1
@@ -370,6 +384,7 @@ SetTrainerBattleLevel:
 	ret
 
 FindTrainerData:
+; Returns party size in bytes excluding trainer name in b.
 	farcall SetBadgeBaseLevel
 
 	ld a, [wOtherTrainerClass]
@@ -388,17 +403,13 @@ FindTrainerData:
 
 	ld a, [wOtherTrainerID]
 	ld b, a
-.skip_trainer
-	dec b
-	jr z, .got_trainer
-.loop1
-	call GetNextTrainerDataByte
-	cp $ff
-	jr nz, .loop1
-	jr .skip_trainer
-.got_trainer
+	; fallthrough
+SkipTrainerPartiesAndName:
+	call SkipTrainerParties
+	ld b, a
 
 .skip_name
+	dec b
 	call GetNextTrainerDataByte
 	cp "@"
 	jr nz, .skip_name

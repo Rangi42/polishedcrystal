@@ -1,4 +1,4 @@
-DEF INVER_PREFIX = 7 ; "Inver@" + trainer flags
+DEF INVER_PREFIX = 8 ; length + "Inver@" + trainer flags
 
 PickPsychicInverParty:
 	ld hl, wInverIndexes
@@ -41,8 +41,6 @@ PickPsychicInverParty:
 	call .CopyBytes
 	dec c
 	jr nz, .party_loop
-
-	ld [hl], -1 ; end
 	ret
 
 .CopyBytes:

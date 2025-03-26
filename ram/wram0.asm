@@ -903,14 +903,12 @@ SECTION UNION "Misc 1326", WRAM0
 wInverIndexes:: ds NUM_INVER_MONS
 
 wInverGroup::
-	ds 7 ; db "Inver@"
-	db ; TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	ds 8 ; length + "Inver@" + flags
 	rept PARTY_LENGTH
 		ds 3 ; dbp <level>, <species>, <form>
 		ds 5 ; db <item>, <dv1>, <dv2>, <dv3>, <nat | abil>
 		ds NUM_MOVES ; moves
 	endr
-	db ; db -1 ; end
 
 
 SECTION UNION "Misc 1326", WRAM0
