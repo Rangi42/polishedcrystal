@@ -70,12 +70,19 @@ ENDM
 DEF _tr_class = 0
 
 MACRO def_trainer_class
+; Usage: def_trainer_class <CLASS_CONSTANT>
+; CLASS_CONSTANT is defined in trainer_constants.asm
 	assert (\1 == _tr_class), "Trainer class ID mismatch"
 	def _tr_class += 1
 	def _tr_party = 1
 ENDM
 
 MACRO def_trainer
+; Usage: def_trainer <TRAINER_CONSTANT>, <Name>
+; TRAINER_CONSTANT is defined in trainer_constants.asm
+; If there is no constant associated with the trainer, just use raw
+; numbers.
+; Name is formatted as "TEXT". Terminator ("@") is implicit.
 	; Reset trainer macro state.
 	def _tr_flags = 0
 	def _tr_mons = 0
@@ -88,6 +95,15 @@ MACRO def_trainer
 ENDM
 
 MACRO tr_mon
+; Usage: tr_mon <LEVEL>, [Nickname], <SPECIES/SPECIES @ ITEM>, [GENDER+FORM]
+; LEVEL determines the level of the mon.
+; Nickname (optional) is formatted as "TEXT". Terminator ("@") is implicit.
+; SPECIES is the species.
+; ITEM (optional) is the held item.
+; GENDER?FORM is the secondary species byte, used to define a mon's form and
+; gender. Note that if you specify a gender on one mon, you need to do so for
+; the entire party for technical reasons. Otherwise, both gender and form is
+; optional.
 	; First, reset all stale data from the previous Trainer's mons.
 	def p = _tr_mons
 	redef _tr_pk{d:p}_nickname EQUS ""
@@ -167,6 +183,14 @@ MACRO tr_mon
 ENDM
 
 MACRO tr_extra
+; Usage: tr_extra [ABILITY], [NATURE], [SHINY]
+; ABILITY defines a mon's ability. Note that this must be one that the
+; species normally gets.
+; NATURE defines a mon's nature, in the format "STAT_UP_STAT_DOWN", not
+; "ADAMANT". For example, ATK_UP_SATK_DOWN would be Adamant (+Atk -SAt).
+; SHINY, if written out, will make a mon shiny.
+; All of these parameters are optional, you can choose to just set a mon's
+; ability, or just make it shiny.
 	; If we specify extra data, we must also specify gender!
 	if !(_tr_flags & TRAINERTYPE_PERSONALITY)
 		fail "No gender specified for current mon."
@@ -185,11 +209,20 @@ MACRO tr_extra
 ENDM
 
 MACRO tr_evs
+; Usage: tr_evs <SPREAD>
+; Spread is written as "X HP/Atk/Def/Spe/SAt/SDf/All" to give a mon X EVs
+; in the given stat. You can use "All" to set all EVs to a single value.
+; Setting multiple different EV values in different stats is done by separating
+; them with commas. For example, "tr_evs 4 Atk, 64 SDf" will give a mon 4 EVs
+; in attack and 64 EVs in special defense. Unmentioned stats are set to 0.
 	def _tr_flags |= TRAINERTYPE_EVS
 	redef _tr_pk{d:p}_evs EQUS "\#"
 ENDM
 
 MACRO tr_dvs
+; Usage: tr_dvs <SPREAD>
+; See tr_evs for SPREAD's syntax, it's the same for tr_dvs.
+; WARNING: Unlike tr_evs, unmentioned DVs will be set to 15, not 0!
 	def _tr_flags |= TRAINERTYPE_DVS
 
 	; check if a constant was used
@@ -202,12 +235,20 @@ MACRO tr_dvs
 ENDM
 
 MACRO tr_moves
+; Usage: tr_moves <MOVE1>, [MOVE2], [MOVE3], [MOVE4]
+; MOVE* defines a mon's moves. You can specify between 1-4 moves.
+; For Hidden Power, use "HP_xxx" where xxx is a type. This will configure
+; DVs automatically unless you have already done so.
 	def _tr_flags |= TRAINERTYPE_MOVES
 	if _NARG > NUM_MOVES
 		fail "A mon may only have {d:NUM_MOVES} moves."
 	endc
 	for i, 1, _NARG + 1
-		if STRIN("\<i>", "HP_") == 1
+		; If a move list has "HIDDEN_POWER", but no typ, assume it's a mistake.
+		; Ignore if this is Unown (since it doesn't learn anything else...)
+		if !STRCMP("\<i>", "HIDDEN_POWER") && STRCMP(_tr_pk{d:p}_species, "UNOWN")
+			warn "Found HIDDEN_POWER, did you mean to specify a type?"
+		elif STRIN("\<i>", "HP_") == 1
 			def _tr_flags |= TRAINERTYPE_DVS ; for Hidden Power type
 			def _tr_pk{d:p}_move{d:i} = HIDDEN_POWER
 			redef _tr_pk{d:p}_hp_type EQUS "\<i>"

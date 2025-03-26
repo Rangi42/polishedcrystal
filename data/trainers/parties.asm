@@ -1,37 +1,17 @@
 INCLUDE "data/trainers/party_pointers.asm"
 INCLUDE "data/trainers/macros.asm"
 
-; All trainers follow a basic structure:
-	; def_trainer "Name"
-		; String in format "TEXT". Terminator ("@") is implicit.
-	; tr_mon Level, "Nickname", Species @ Item, Gender+Form
-		; Level is a range between 1-MAX_LEVEL inclusive.
-		; "Nickname" is optional, in format "TEXT". Terminator is implicit.
-		; Species denotes the Pokémon species.
-		; You can add " @ Item" to the Species parameter to specify held itme.
-		; Gender+Form is optional. If unspecified, gender will take from class
-		; and form will be a default form (usually Plain) based on the Pokémon.
-	; tr_extra Ability, Nature
-		; Defines ability (based on species), Nature and Shininess.
-		; Nature takes the form of "ATK_UP_SATK_DOWN", not "ADAMANT".
-		; All parameters are optional.
-	; tr_evs Spread
-		; Defines an EV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
-		; If the player has the "no EV limit" option set, the EV will be set to
-		; the sum of the given EVs, divided by 2, capped to 252. If the 510
-		; option is set, the EVs will be applied as-is.
-	; tr_dvs Spread
-		; Defines a DV spread of the format "4 HP, 4 Atk, 4 Def, 4 Spe, 4 SAt, 4 SDf".
-		; You can also specify "12 All" to set all DVs to 12.
-		; If you specify a Hidden Power type, DVs will be implicitly set to make
-		; Hidden Power's type be the specified type if not already set.
-		; Unlike with EVs, implicit DVs default to 15, not 0.
-	; tr_moves Move1[, Move2, ...]
-		; Specifies up to 4 moves for the Pokémon.
-		; You can use HP_TYPE (for example HP_FIRE) to give the mon Hidden Power
-		; and implicitly adjust the DVs to correspond to the given HP type.
+; All trainers follow a basic structure (<> is mandatory, [] is optional):
+	; def_trainer <TRAINER_CONSTANT>, <Name>
+	; tr_mon <LEVEL>, [Nickname], <SPECIES/SPECIES @ ITEM>, [GENDER+FORM]
+		; tr_extra [ABILITY], [NATURE], [SHINY]
+		; tr_dvs <SPREAD>
+		; tr_evs <SPREAD>
+		; tr_moves <MOVE1>, [MOVE2], [MOVE3], [MOVE4]
 	; end_trainer
-
+	; def_trainer, tr_mon and end_trainer are required. Other fields are
+	; optional and can be skipped. For full information about what each
+	; parameter does, see data/trainers/macros.asm.
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
 
