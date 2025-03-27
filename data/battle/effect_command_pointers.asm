@@ -145,6 +145,11 @@ BattleCommandPointers:
 	command lowkick
 	command brickbreak
 	command trickroom
+	command weatherball
+	command burnflinchtarget
+	command freezeflinchtarget
+	command paralyzeflinchtarget
+	command toxictarget
 
 	; The following commands have an argument
 	; Argument: check if possible (false) vs perform the action (true)

@@ -1739,6 +1739,7 @@ wSurfWaveBGEffect:: ds $32
 wBattleAnimsEnd::
 	ds $e
 wSurfWaveBGEffectEnd::
+wBattleAnimBank:: db
 
 
 SECTION "GBC Video", WRAMX

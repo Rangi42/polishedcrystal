@@ -184,6 +184,29 @@ PoisonHit:
 	poisontarget
 	endmove
 
+ToxicHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	toxictarget
+	endmove
+
 BurnHit:
 	checkobedience
 	usedmovetext
@@ -298,6 +321,75 @@ FreezeHit:
 	postfainteffects
 	posthiteffects
 	freezetarget
+	endmove
+
+BurnFlinchHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	burnflinchtarget
+	endmove
+
+FreezeFlinchHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	freezeflinchtarget
+	endmove
+
+ParalyzeFlinchHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	paralyzeflinchtarget
 	endmove
 
 ConfuseHit:
@@ -2113,4 +2205,25 @@ FlareBlitz:
 	postfainteffects
 	posthiteffects
 	burntarget
+	endmove
+
+WeatherBall:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	weatherball
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
 	endmove
