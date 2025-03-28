@@ -725,11 +725,13 @@ TradeAnim_ShowGivemonData:
 	call DmgToCgbBGPals
 	call TradeAnim_ShowGivemonFrontpic
 
+	ld c, 12
+	call DelayFrames
 	ld a, [wPlayerTrademonSpecies]
 	ld c, a
 	ld a, [wPlayerTrademonForm]
 	ld b, a
-	call _PlayMonCry
+	call PlayMonCry2
 	jmp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ShowGetmonData:
@@ -949,7 +951,7 @@ TradeAnim_RockingBall:
 	ld a, SPRITE_ANIM_INDEX_TRADE_POKE_BALL
 	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
-	ld a, $20
+	ld a, 32
 	ld [wFrameCounter], a
 	ret
 
@@ -964,7 +966,7 @@ TradeAnim_DropBall:
 	add hl, bc
 	ld [hl], $dc
 	call TradeAnim_AdvanceScriptPointer
-	ld a, $38
+	ld a, 57
 	ld [wFrameCounter], a
 	ret
 
@@ -973,7 +975,7 @@ TradeAnim_Poof:
 	ld a, SPRITE_ANIM_INDEX_TRADE_POOF
 	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
-	ld a, $10
+	ld a, 16
 	ld [wFrameCounter], a
 	ld de, SFX_BALL_POOF
 	jmp PlaySFX
