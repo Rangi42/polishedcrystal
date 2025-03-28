@@ -393,8 +393,10 @@ GetGSBallPichu:
 	call CopyTradeName
 
 	ld a, [wOTTrademonSpecies]
+	ld [wCurPartySpecies], a
 	ld c, a
 	ld a, [wOTTrademonForm]
+	ld [wCurForm], a
 	ld b, a
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
@@ -437,8 +439,6 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld a, 30
 	ld [wCurPartyLevel], a
-	ld a, [wOTTrademonSpecies]
-	ld [wCurPartySpecies], a
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
