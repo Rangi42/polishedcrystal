@@ -835,7 +835,10 @@ ShowPlayerTrademonStats:
 	ld de, wPlayerTrademonSpecies
 	jr nz, TrademonStats_Egg
 	call TrademonStats_MonTemplate
-	ld de, wPlayerTrademonSpecies
+	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonForm]
+	ld b, a
 	call TrademonStats_PrintSpeciesNumber
 	ld de, wPlayerTrademonSpeciesName
 	call TrademonStats_PrintSpeciesName
@@ -853,7 +856,10 @@ ShowOTTrademonStats:
 	ld de, wOTTrademonSpecies
 	jr nz, TrademonStats_Egg
 	call TrademonStats_MonTemplate
-	ld de, wOTTrademonSpecies
+	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	call TrademonStats_PrintSpeciesNumber
 	ld de, wOTTrademonSpeciesName
 	call TrademonStats_PrintSpeciesName
@@ -909,8 +915,15 @@ TrademonStats_EggData:
 	next "<ID>№.?????@"
 
 TrademonStats_PrintSpeciesNumber:
+	call GetPokedexNumber
+	ld de, wTextDecimalByte+1
+	ld a, c
+	ld [de], a
+	dec de
+	ld a, b
+	ld [de], a
 	hlcoord 10, 0
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNum
 	ld [hl], " "
 	ret
