@@ -729,9 +729,7 @@ TradeAnim_ShowGivemonData:
 	ld c, a
 	ld a, [wPlayerTrademonForm]
 	ld b, a
-	call _PlayCry
-.skip_cry
-
+	call _PlayMonCry
 	jmp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ShowGetmonData:

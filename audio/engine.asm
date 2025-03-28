@@ -2094,7 +2094,7 @@ _PlayMusic::
 	ld [wMusicNoiseSampleSet], a
 	jmp MusicOn
 
-_PlayCryHeader::
+_PlayCry::
 ; Play cry de using parameters:
 ;	wCryPitch
 ;	wCryLength

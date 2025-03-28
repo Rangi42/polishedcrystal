@@ -218,7 +218,7 @@ PokeAnim_Cry:
 	ld c, a
 	ld a, [wPokeAnimVariant]
 	ld b, a
-	call _PlayCry
+	call _PlayMonCry
 	ld hl, wPokeAnimSceneIndex
 	inc [hl]
 	ret
@@ -228,7 +228,7 @@ PokeAnim_CryNoWait:
 	ld c, a
 	ld a, [wPokeAnimVariant]
 	ld b, a
-	call PlayCry2
+	call PlayMonCry2
 	ld hl, wPokeAnimSceneIndex
 	inc [hl]
 	ret

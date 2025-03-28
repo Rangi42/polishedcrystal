@@ -1155,7 +1155,7 @@ endr
 
 .done_cry_tracks
 	push hl
-	call LoadCryHeader
+	call LoadCry
 	pop hl
 	jr c, .done
 
@@ -1192,7 +1192,7 @@ endr
 	ld a, 1
 	ld [wStereoPanningMask], a
 
-	farcall _PlayCryHeader
+	farcall _PlayCry
 
 .done
 	pop af

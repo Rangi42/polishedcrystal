@@ -887,11 +887,11 @@ Script_cry:
 	; species, the second ext+form.
 	call GetScriptByte
 	call GetCurPartyMonSpeciesIfZero
-	jmp z, PlayCry
+	jmp z, PlayMonCry
 	ld c, a
 	call GetScriptByte
 	ld b, a
-	jmp PlayCry
+	jmp PlayMonCry
 
 Script_setlasttalked:
 	call GetScriptByte
@@ -2513,7 +2513,7 @@ Script_loadgrottomon:
 	ld a, b
 	ld [wWildMonForm], a
 	ld [wCurForm], a
-	call PlayCry
+	call PlayMonCry
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a
 	farcall SetBadgeBaseLevel

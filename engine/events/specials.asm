@@ -297,7 +297,7 @@ PlayCurMonCry:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	jmp PlayCry
+	jmp PlayMonCry
 
 Special_FadeOutMusic:
 	xor a ; MUSIC_NONE
