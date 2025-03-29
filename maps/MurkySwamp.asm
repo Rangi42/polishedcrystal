@@ -215,7 +215,7 @@ MurkySwampBloodmoonUrsaluna:
 	end
 
 BloodmoonUrsalunaText:
-	text "Wa-gaaaaaahhh!"
+	text "Wa-gaaah!"
 	done
 	
 GenericTrainerBug_catcherOscar:
