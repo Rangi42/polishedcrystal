@@ -639,9 +639,9 @@ MonMailAction:
 	ld a, $3
 	ret c
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a ; 1?
 	jr z, .read
-	cp $2
+	dec a ; 2?
 	jr z, TakeMail
 	ld a, $3
 	ret
@@ -772,7 +772,7 @@ MonMenu_Cut:
 	farcall CutFunction
 _MonMenu_StandardCheck:
 	ld a, [wFieldMoveSucceeded]
-	cp $1
+	dec a
 	jr nz, _MonMenu_StandardFail
 _MonMenu_StandardSuccess:
 	ld b, $4

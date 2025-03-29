@@ -360,6 +360,11 @@ patterns = {
 	(lambda line1, prev: re.match(r'(?:cp|or) [%\$&]?0+$', line1.code)
 		or re.match(r'and (?:255|-1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
 ],
+'a == 1': [
+	# Okay: cp 1
+	# Good: dec a (unless you need a or carry)
+	(lambda line1, prev: re.match(r'cp [%\$&]?0*1$', line1.code)),
+],
 'ei + ret': [
 	# Bad: ei / ret
 	# Good: reti

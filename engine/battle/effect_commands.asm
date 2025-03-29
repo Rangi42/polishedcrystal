@@ -2451,7 +2451,7 @@ BattleCommand_moveanimnosub:
 	xor 1
 	ld [wBattleAnimParam], a
 	ld a, [de]
-	cp $1
+	dec a
 	push af
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -5012,11 +5012,13 @@ CanStatusTarget:
 .pop_and_end
 	pop af
 .end
+	; return nc|nz -- we can't, failure msg in HL
 	or 1
 	ret
 .cant_ability
-	xor a
-	cp 1
+	; return c|nz -- we can't, due to ability
+	scf
+	sbc a
 	ret
 
 BattleCommand_draintarget:

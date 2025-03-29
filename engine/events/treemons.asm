@@ -370,11 +370,11 @@ GetTreeMon:
 	push hl
 	call GetTreeScore
 	pop hl
-	and a
+	and a ; 0?
 	jr z, .bad
-	cp 1
+	dec a ; 1?
 	jr z, .good
-	cp 2
+	dec a ; 2?
 	jr z, .rare
 	ret
 
