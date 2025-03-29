@@ -1029,12 +1029,9 @@ ListMoves:
 	jr z, .no_more_moves
 	push de
 	push hl
-	push hl
+	push bc
 	ld [wNamedObjectIndex], a
 	call GetMoveName
-	ld de, wStringBuffer1
-	pop hl
-	push bc
 	rst PlaceString
 	pop bc
 	ld a, b
