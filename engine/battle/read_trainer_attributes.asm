@@ -1,26 +1,10 @@
-GetTrainerClassName:
-	ld a, c
-	ld [wCurSpecies], a
-	ld a, TRAINER_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, wStringBuffer1
-	ret
-
 GetOTName:
-	ld hl, wOTPlayerName
+	ld de, wOTPlayerName
 	ld a, [wLinkMode]
 	and a
-	jr nz, .ok
-
-	ld a, c
-	ld [wCurSpecies], a
-	ld a, TRAINER_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld hl, wStringBuffer1
-
-.ok
+	call z, GetTrainerClassName
+	ld h, d
+	ld l, e
 	ld bc, TRAINER_CLASS_NAME_LENGTH
 	ld de, wOTClassName
 	push de
@@ -30,7 +14,7 @@ GetOTName:
 
 GetTrainerAttributes:
 	ld a, [wTrainerClass]
-	ld c, a
+	ld [wNamedObjectIndex], a
 	call GetOTName
 	ld a, [wTrainerClass]
 	dec a
