@@ -108,7 +108,7 @@ DEF STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
 	; constants below this is assumed to be unfleeable
 	const BATTLETYPE_TRAP
 	const BATTLETYPE_FORCEITEM
-	const BATTLETYPE_RED_GYARADOS
+	const BATTLETYPE_NEVER_SHINY
 	const BATTLETYPE_LEGENDARY
 
 ; BattleVarPairs indexes (see home/battle_vars.asm)

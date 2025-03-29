@@ -1,11 +1,10 @@
-	frame 0, 06
-	frame 1, 06
-	frame 2, 06
-	setrepeat 2
-	frame 3, 06
-	frame 4, 06
-	frame 5, 06
-	dorepeat 4
-	frame 6, 06
-	frame 7, 06
+	frame 0, 14 ; 300 ms
+	frame 1, 04 ; 100 ms
+	frame 2, 04 ; 100 ms
+	frame 3, 39 ; 900 ms
+	frame 4, 02 ;  50 ms
+	frame 5, 08 ; 200 ms
+	frame 6, 02 ;  50 ms
+	frame 7, 08 ; 200 ms
+	frame 6, 08 ; 200 ms
 	endanim

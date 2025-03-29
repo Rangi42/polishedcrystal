@@ -400,6 +400,7 @@ DEF CRYS EQU __trainer_class__
 	const ISSAC
 	const DONALD
 	const ZACH
+	const ENZO
 	const MILLER
 	const AIDAN
 
@@ -449,6 +450,7 @@ DEF CRYS EQU __trainer_class__
 	const ELLEN
 	const IRIS
 	const MIRIAM
+	const ABIGAIL
 	const LAYLA
 	const ROSE
 	const MEADOW

@@ -345,6 +345,6 @@ EggSpeciesMovesPointers::
 	dw NoEggSpeciesMoves                ; Tauros (Paldean Fire Form)
 	dw NoEggSpeciesMoves                ; Tauros (Paldean Water Form)
 
-	dw NoEggSpeciesMoves                ; Ursaluna (Bloodmoon Form)
+	dw TeddiursaEggSpeciesMoves         ; Ursaluna (Bloodmoon Form)
 
 	assert_table_length NUM_EXT_POKEMON

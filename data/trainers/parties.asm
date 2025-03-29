@@ -4795,6 +4795,13 @@ PokemaniacGroup:
 	db -1 ; end
 
 	; POKEMANIAC
+	db "Enzo@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp LEVEL_FROM_BADGES + 8, SHUCKLE
+	db -1 ; end
+
+	; POKEMANIAC
 	db "Miller@"
 	db TRAINERTYPE_NORMAL
 	; party
@@ -5185,6 +5192,15 @@ endc
 	dbp 61, CLEFABLE
 	dbp 59, JIGGLYPUFF
 	dbp 61, WIGGLYTUFF
+	db -1 ; end
+
+	; LASS
+	db "Abigail@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp LEVEL_FROM_BADGES + 3, SKIPLOOM
+	dbp LEVEL_FROM_BADGES + 4, FLAAFFY
+	dbp LEVEL_FROM_BADGES + 5, GOLDUCK
 	db -1 ; end
 
 	; LASS

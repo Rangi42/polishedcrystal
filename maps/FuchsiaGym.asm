@@ -15,7 +15,7 @@ FuchsiaGym_MapScriptHeader:
 
 	def_object_events
 	object_event  5,  7, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1
-	object_event  1, 10, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
+	object_event  1, 10, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassAmandaScript, -1
 	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
 	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
 	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
@@ -71,27 +71,27 @@ FuchsiaGymJanineScript:
 	cont "victim."
 	done
 
-LassAliceScript:
+LassAmandaScript:
 	checkevent EVENT_BEAT_LASS_AMANDA
-	iftruefwd .AliceUnmasked
+	iftruefwd .AmandaUnmasked
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_1, Movement_NinjaSpin
 	faceplayer
 	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
 	special RefreshSprites
-.AliceUnmasked:
+.AmandaUnmasked:
 	checkevent EVENT_BEAT_LASS_AMANDA
-	iftrue_jumptextfaceplayer LassAliceAfterText
+	iftrue_jumptextfaceplayer LassAmandaAfterText
 	faceplayer
-	showtext LassAliceBeforeText
-	winlosstext LassAliceBeatenText, 0
+	showtext LassAmandaBeforeText
+	winlosstext LassAmandaBeatenText, 0
 	loadtrainer LASS, AMANDA
 	startbattle
-	iftruefwd .AliceBecomesJanine
+	iftruefwd .AmandaBecomesJanine
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LASS_AMANDA
 	end
 
-.AliceBecomesJanine:
+.AmandaBecomesJanine:
 	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_JANINE
 	reloadmapafterbattle
 	end
@@ -245,7 +245,7 @@ JanineText_ApplyMyself:
 	cont "Father and you!"
 	done
 
-LassAliceBeforeText:
+LassAmandaBeforeText:
 	text "Fufufu!"
 
 	para "I'm Janine, the"
@@ -255,11 +255,11 @@ LassAliceBeforeText:
 	line "Gotcha, sucker!"
 	done
 
-LassAliceBeatenText:
+LassAmandaBeatenText:
 	text "I had you fooled…"
 	done
 
-LassAliceAfterText:
+LassAmandaAfterText:
 	text "How will you dis-"
 	line "tinguish our real"
 	cont "Leader?"

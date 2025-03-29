@@ -375,6 +375,12 @@ RespawnOneOffs:
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
 
+	ld de, ENGINE_PLAYER_CAUGHT_BLOODMOON_URSALUNA
+	farcall EngineFlagAction
+	jr nz, .CaughtBloodmoonUrsaluna
+	eventflagreset EVENT_MURKY_SWAMP_BLOODMOON_URSALUNA
+.CaughtBloodmoonUrsaluna
+
 	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
 	farcall EngineFlagAction
 	jr nz, .CaughtArticuno

@@ -290,5 +290,6 @@ EngineFlags:
 	engine_flag wPlayerCaught2, PLAYER_CAUGHT_GALARIAN_ARTICUNO_F
 	engine_flag wPlayerCaught2, PLAYER_CAUGHT_GALARIAN_ZAPDOS_F
 	engine_flag wPlayerCaught2, PLAYER_CAUGHT_GALARIAN_MOLTRES_F
+	engine_flag wPlayerCaught2, PLAYER_CAUGHT_BLOODMOON_URSALUNA_F
 
 	assert_table_length NUM_ENGINE_FLAGS
