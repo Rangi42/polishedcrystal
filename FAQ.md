@@ -10,6 +10,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 ### Contents
 
 * [Which file do I need to play?](#which-file-do-i-need-to-play)
+* [Which emulator should I use?](#which-emulator-should-i-use)
 * [What are the .sym files for?](#what-are-the-sym-files-for)
 * [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
 * [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
@@ -26,16 +27,15 @@ If you have a question about playing Polished Crystal, or think you've found a b
 * [What is the Judge Machine?](#what-is-the-judge-machine)
 * [What are the "door-shaped grooves" in the Ruins of Alph and Route 47?](#what-are-the-door-shaped-grooves-in-the-ruins-of-alph-and-route-47)
 * [I don't like non-canon Pokémon types!](#i-dont-like-non-canon-pokémon-types)
-* [I want the missing Pokémon back!](#i-want-the-missing-pokémon-back)
 
 
 ### Which file do I need to play?
 
-The [3.1.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.0) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.1.0.gbc`, or `polishedcrystal-faithful-3.1.0.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
+The [3.1.1 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.1.1.gbc`, or `polishedcrystal-faithful-3.1.1.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
 
-Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to walk through walls.
+Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. If you're aware of this and you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to walk through walls.
 
-The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) is not recommended for general play (it is very old, and not the latest stable release). Only make use of this if you have an existing 2.x save and don't want to start over, since 2.x saves are not compatible with version 3.0.0 and above.
+The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) is not recommended for general play (it is very old, not supported for bugfixes and not the latest stable release). Only make use of this if you have an existing 2.x save and don't want to start over, since 2.x saves are not compatible with version 3.0.0 and above and cannot be patched.
 
 This is the ROM you should use for patching 2.2.0:
 
@@ -43,6 +43,36 @@ This is the ROM you should use for patching 2.2.0:
   (`md5: 9f2922b235a5eeb78d65594e82ef5dde`)
 
 It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
+
+
+### Which emulator should I use?
+
+Not every emulator is compatible with Polished Crystal. With the exception of the Virtual Console emulator, we do not offer any support if an emulator has a bug that isn't reproducible on official hardware. As such, we recommend the following emulators to limit compatibility issues:
+
+#### PC:
+* [mGBA](https://mgba.io/) - most popular emulator, no known incompatiblities, can also conveniently play GBA games
+* [SameBoy](https://sameboy.github.io/) - one of the most accurate emulators, also has an iOS release
+* [BGB](https://bgb.bircd.org/) - Polished Crystal developers use this emulator, more accurate than mGBA, powerful debugger
+
+#### Android:
+* [RetroArch](https://www.retroarch.com/) - use SameBoy or Gambatte core, **do not use VBA-M core**
+
+#### iOS:
+* [SameBoy](https://sameboy.github.io/) - see PC section
+
+Conversely, the following emulators are known to have issues and **should not be used** to play Polished Crystal:
+
+#### PC:
+* VBA - this emulator has not been updated since 2004, do not ever use
+* VBA-M - despite being actively updated, still is an extremely inaccurate emulator, use mGBA instead
+
+#### iOS:
+* Delta - despite using the fairly accurate Gambatte core, this emulator has reported issues that haven't been reproduced on any other emulator. Until there is more clarity on the issue, we encourage using SameBoy instead
+
+#### Other:
+* Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
+
+If you have a preferred emulator that isn't listed above, using it should be fine. Most modern emulators can indeed run Polished Crystal just fine. Be aware, though, that if you're consistently having an issue that isn't reproduced on either official hardware or the most accurate emulators, you will not be provided any support.
 
 
 ### What are the .sym files for?
@@ -94,6 +124,8 @@ If you need to change these options after starting a game, press Left+B at the t
 
 Having a built-in Nuzlocke Mode led to assumptions that the game catered specifically to the Nuzlocke community, and was balanced accordingly. The problem is that this led to a lot of people complaining that we didn't, for example, offer a built-in level cap or infinite Rare Candies. In the end, we chose to remove the Nuzlocke Mode option to make it clear that, while we have nothing against people doing self-imposed challenges, we have no plans to specifically design the game around them.
 
+Polished Crystal also has no support for in-game level caps, popular in Nuzlockes and other challenge runs. If you'd like to set a challenge for yourself by using them, see [this Wiki page](https://github.com/Rangi42/polishedcrystal/wiki/Nuzlocke#list-of-highest-levels).
+
 
 ### I don't recognize this move, what is it?
 
@@ -114,10 +146,10 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Gen 1's trade evolutions now evolve by using the Linking Cord item.
 * Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
 * Yanma, Tangela, and Piloswine evolve while knowing AncientPower.
-* Eevee evolves into Leafeon in Ilex Forest, site of the Moss Rock.
-* Eevee evolves into Glaceon in the Ice Path, site of the Ice Rock.
+* Eevee evolves into Leafeon either with a Leaf Stone or by leveling up in Ilex Forest, site of the Moss Rock.
+* Eevee evolves into Glaceon either with an Ice Stone or by leveling up in the Ice Path, site of the Ice Rock.
 * Eevee evolves into Sylveon with a Shiny Stone.
-* Magneton evolves into Magnezone in Rock Tunnel, site of the Lodestone.
+* Magneton evolves into Magnezone in Magnet Tunnel or Rock Tunnel, sites of the Lodestone.
 
 
 ### Where do I get the legendary Pokémon?
@@ -148,6 +180,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Dubious Disc is in Celadon City.
 * King's Rock is in Slowpoke Well, or held by some wild Slowpoke family and Poliwhirl/Poliwrath/Politoed.
 * Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite family and Steelix.
+* Hard Stone is given by Arthur on Route 36 on Thursdays, found by breaking rocks via Brick Break (Rock Smash in faithful) or held by some wild Happiny, Kantonian Corsola and Onix.
 * Dragon Scale is in Mt. Mortar, or held by some wild Horsea family and Dratini family.
 * Dusk Stones are in Cerulean Cave, Dark Cave, Dim Cave, Mt. Moon, Quiet Cave, Scary Cave or Union Cave. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the evening.
 * Shiny Stones are in Cherrygrove Bay, Mt. Moon or National Park. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the morning.
@@ -156,9 +189,9 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### Where do I get Silver/Gold Leaves?
 
-Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
+Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish and Gloom have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
-Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
+Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout and Weepinbell have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
 
 
 ### Where do I get this TM/HM?
@@ -171,7 +204,7 @@ Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. W
 
 ### What do blessings and photographs do?
 
-Daily blessings in Ecruteak City and photographs in Cianwood City make your Pokémon happier, just like haircuts or grooming.
+Daily blessings in Ecruteak City and photographs in Cianwood City make your Pokémon happier, just like haircuts or grooming. Using enough of them will raise your Pokémon's affection, which works similarly to affection mechanics in modern generations.
 
 
 ### What is the Judge Machine?

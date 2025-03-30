@@ -158,14 +158,14 @@ LoadContestantName:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; Copy the Trainer Class to c.
+; Copy the Trainer Class to [wNamedObjectIndex].
 	ld a, [hli]
-	ld c, a
+	ld [wNamedObjectIndex], a
 ; Save hl and bc for later.
 	push hl
 	push bc
 ; Get the Trainer Class name and copy it into wBugContestWinnerName.
-	farcall GetTrainerClassName
+	call GetTrainerClassName
 	ld hl, wStringBuffer1
 	ld de, wBugContestWinnerName
 	ld bc, TRAINER_CLASS_NAME_LENGTH

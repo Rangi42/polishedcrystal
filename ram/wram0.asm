@@ -114,7 +114,7 @@ wCurMove::
 wCreditsSpawn::
 	db
 
-wNamedObjectTypeBuffer:: db
+	ds 1 ; unused
 
 wCurOptionsPage:: db
 
@@ -663,7 +663,7 @@ wEnemyCharging:: db
 
 wGivingExperienceToExpShareHolders:: db
 
-wAnimationsDisabled:: db ; used to temporarily disable animations for abilities
+wInAbility:: db ; disables animations for abilities among other things
 
 wBattleEnded:: db
 
@@ -999,7 +999,7 @@ wSummaryMoveSwap:: db
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
 ds 13
-assert (@ - STARTOF("Misc 1326")) % 16 == 0
+assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10
 
@@ -1127,6 +1127,7 @@ wMemCGBLayout:: db
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
+NEXTU
 wTrainerCardBadgePaletteAddr:: dw
 NEXTU
 wPlayerHPPal:: db

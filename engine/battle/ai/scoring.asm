@@ -2482,8 +2482,8 @@ AIDamageCalc:
 	farcall BattleCommand_gyroball
 	jr .damagecalc
 .hidden_power
-	farcall HiddenPowerDamageStats
-	jr .damagecalc
+	farcall SetHiddenPowerType
+	jr .regular_damage
 .low_kick
 	farcall BattleCommand_damagestats
 	farcall BattleCommand_lowkick

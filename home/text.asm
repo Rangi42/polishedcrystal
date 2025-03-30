@@ -408,6 +408,70 @@ PlaceCommandCharacter::
 	pop de
 	jmp NextChar
 
+TextCommand_PLURAL:
+; Pluralize the last word. Might perform edits on it (Candy -> Candies).
+	; If wItemQuantityBuffer is 1, do nothing.
+	ld a, [wItemQuantityChangeBuffer]
+	dec a
+	ret z
+
+	; Try to pattern match the previous string with the plural table below.
+	push hl
+	push bc
+
+	ld hl, PluralTable
+
+.check_match_loop
+	; Iterate until the pattern no longer matches our string.
+	dec bc
+	ld a, [bc]
+
+	; If we find a terminator in the input string, we must have gone past it
+	; into other data. Handle this separately. The reason for this is that
+	; otherwise, if the plural table is also at a terminator, we'll misalign the
+	; parser into reading output as input and vice versa.
+	cp "@"
+	jr nz, .not_at_start
+	cp [hl]
+	jr nz, .no_match
+	inc hl
+	jr .match
+
+.not_at_start
+	cp [hl]
+	ld a, [hli] ; To check if we found the terminator.
+	jr z, .check_match_loop
+
+	; Did we hit the terminator?
+	cp "@"
+	jr nz, .no_match
+
+.match
+	; We have a match. Print out the adjusted string.
+	inc bc
+	ld d, h
+	ld e, l
+	ld h, b
+	ld l, c
+	pop bc
+	call PlaceString
+	pop hl
+	ret
+
+.no_match
+	ld b, 2
+.no_match_loop
+	ld a, [hli]
+	cp "@"
+	jr nz, .no_match_loop
+	dec b
+	jr nz, .no_match_loop
+	pop bc
+	push bc
+	jr .check_match_loop
+
+INCLUDE "data/text/plural_table.asm"
+
 TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	decoord TEXTBOX_INNERX, TEXTBOX_INNERY - 1
@@ -508,6 +572,7 @@ TextCommands::
 	dw TextCommand_SOUND         ; $06 <SOUND>
 	dw TextCommand_DAY           ; $07 <DAY>
 	dw TextCommand_FAR           ; $08 <FAR>
+	dw TextCommand_PLURAL        ; $09 <PLURAL>
 	assert_table_length NGRAMS_START
 
 _ImplicitlyStartedText:

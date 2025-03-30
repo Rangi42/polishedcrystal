@@ -536,12 +536,12 @@ HandleLeechSeed:
 	farcall RestoreHP
 	jr .done
 .hurt
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 .done
 	jmp SwitchTurn
 
@@ -567,12 +567,12 @@ HandlePoison:
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	ld hl, RegainedHealthText
 	call DoPoisonBurnDamageAnim
 	farcall RestoreHP
-	farjp EnableAnimations
+	farjp EndAbility
 
 HandleBurn:
 	call SetFastestTurn
@@ -1003,31 +1003,16 @@ HandleStatusOrbs:
 	push bc
 	ld b, 2
 	farcall CanPoisonTarget
-	pop bc
-	ret nz
-	ld de, ANIM_PSN
-	ld hl, BadlyPoisonedText
 	jr .do_status
 .burn
 	push bc
 	ld b, 2
 	farcall CanBurnTarget
+.do_status
 	pop bc
 	ret nz
-	ld de, ANIM_BRN
-	ld hl, WasBurnedText
 	; fallthrough
-.do_status
-	push hl
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld [hl], b
-	xor a
-	ld [wNumHits], a
-	farcall PlayOpponentBattleAnim
-	call RefreshBattleHuds
-	pop hl
-	jmp StdBattleTextbox
+	farjp StatusTarget
 
 HandleRoost:
 	call SetFastestTurn

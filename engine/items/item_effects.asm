@@ -695,24 +695,10 @@ PokeBallEffect:
 
 	ld a, [wEnemyMonStatus]
 	and (1 << FRZ) | SLP_MASK
-	jr nz, .skip_cry
-	farcall CheckBattleEffects
-	jr c, .cry_no_anim
-	hlcoord 12, 0
-	lb de, $0, ANIM_MON_SLOW
-	predef AnimateFrontpic
-	jr .skip_cry
+	jr nz, .skip_anim
+	farcall BattleAnimateFrontpic
 
-.cry_no_anim
-	ld a, $f
-	ld [wCryTracks], a
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	call PlayStereoCry
-
-.skip_cry
+.skip_anim
 	pop af
 	ld [wTempEnemyMonSpecies], a
 	pop hl
@@ -2373,7 +2359,7 @@ CandyJar_MonSelected:
 	jmp WingCase_MonSelected.DisplayNthString
 
 .CandyNames:
-	list_start .CandyNames
+	list_start
 	li "XS"
 	li "S"
 	li "M"
@@ -2419,7 +2405,7 @@ CandyJar_MonSelected:
 	jmp PlaceWholeStringInBoxAtOnce
 
 .CandyExpAmounts:
-	table_width 2, .CandyExpAmounts
+	table_width 2
 	bigdw 100
 	bigdw 800
 	bigdw 3000
@@ -2534,7 +2520,7 @@ CalcCandies:
 	ret
 
 .CandyDivisionAmounts:
-	table_width 1, .CandyDivisionAmounts
+	table_width 1
 	db 800 / 100
 	db 3000 / 100
 	db 10000 / 100

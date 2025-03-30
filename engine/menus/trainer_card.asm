@@ -62,8 +62,7 @@ TrainerCard:
 	xor a
 	ld [hli], a ; wJumptableIndex
 	ld [hli], a ; wTrainerCardBadgeFrameCounter
-	ld [hli], a ; wTrainerCardBadgeTileID
-	ld [hl], a  ; TODO: check if this is still needed
+	ld [hl], a  ; wTrainerCardBadgeTileID
 	ret
 
 .Jumptable:
@@ -544,16 +543,14 @@ endr
 .PrepOAM:
 	ld a, [wTrainerCardBadgeTileID]
 	and $80
-	jr nz, .xflip
 	ld hl, .facing1
-	jr .loop2
-
-.xflip
+	jr z, .loop2
 	ld hl, .facing2
 .loop2
 	ld a, [hli]
-	cp $ff
+	inc a
 	ret z
+	dec a
 	add b
 	ld [de], a
 	inc de
@@ -569,6 +566,7 @@ endr
 	ld [de], a
 	inc hl
 	inc de
+
 	push hl
 	push bc
 	ld hl, wTrainerCardBadgePaletteAddr + 1
@@ -584,6 +582,7 @@ endr
 	ld a, b
 	pop bc
 	pop hl
+
 	add [hl]
 	ld [de], a
 	inc hl

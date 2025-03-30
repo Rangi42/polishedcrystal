@@ -202,8 +202,8 @@ PlayMusic2::
 
 	jmp PopAFBCDEHL
 
-PlayCryHeader::
-; Play cry header de.
+PlayCry::
+; Play cry de.
 
 	push hl
 	push de
@@ -215,11 +215,11 @@ PlayCryHeader::
 
 	ld a, BANK(PokemonCries)
 	rst Bankswitch
-	call _LoadCryHeader
+	call _LoadCry
 
-	ld a, BANK(_PlayCryHeader)
+	ld a, BANK(_PlayCry)
 	rst Bankswitch
-	call _PlayCryHeader ; far-ok
+	call _PlayCry ; far-ok
 
 	pop af
 	rst Bankswitch

@@ -257,7 +257,7 @@ DoNPCTrade:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall ComputeNPCTrademonStats
+	farcall ComputeNPCTrademonStatsAndEggSteps
 	pop af
 	ld [wCurPartyMon], a
 	jmp PopAFBCDEHL

@@ -778,7 +778,7 @@ BattleBGEffect_RunPicResizeScript:
 	pop bc
 
 	; reset ability overlay if applicable
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret z
 	push hl
@@ -2490,7 +2490,7 @@ BattleBGEffect_SineWave:
 	jr c, .next
 
 	; If ability slideouts are up, don't sinewave them.
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	ld d, a
 	bit 6, d
 	jr z, .no_player_slideout

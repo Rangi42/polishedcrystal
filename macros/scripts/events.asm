@@ -1066,14 +1066,6 @@ MACRO gettrainerclassname
 	db \2 ; memory
 ENDM
 
-	const getname_command
-MACRO getname
-	db getname_command
-	db \1 ; type
-	db \2 ; id
-	db \3 ; memory
-ENDM
-
 	const wait_command
 MACRO wait
 	db wait_command
@@ -1394,6 +1386,17 @@ ENDM
 MACRO givebadge
 	db givebadge_command
 	dn \2, \1 ; region, badge
+ENDM
+
+	const setquantity_command
+MACRO setquantity
+	db setquantity_command
+ENDM
+
+	const pluralize_command
+MACRO pluralize
+	db pluralize_command
+	dw \1 ; pointer
 ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

@@ -1427,7 +1427,7 @@ endr
 	cp DEXDISP_NEWDESC
 	jr nz, .joypad_loop
 	call Pokedex_GetCursorSpecies
-	call PlayCry
+	call PlayMonCry
 
 .newdesc_joypad
 	call Pokedex_GetInput
@@ -1826,7 +1826,7 @@ Pokedex_Bio:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	jr .joypad_loop
 
 .GetEggGroupName:

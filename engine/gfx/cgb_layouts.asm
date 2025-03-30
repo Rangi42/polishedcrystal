@@ -235,7 +235,7 @@ _CGB_FinishBattleScreenLayout:
 	; don't screw with ability overlay areas
 	pop bc
 	ld b, 0
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	jr z, .overlay_done
 

@@ -87,7 +87,7 @@ Route36NationalParkGateLeftTheContestEarly:
 	opentext
 	readvar VAR_CONTESTMINUTES
 	addval $1
-	getnum STRING_BUFFER_3
+	setquantity
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
 	iffalsefwd .GoBackToContest

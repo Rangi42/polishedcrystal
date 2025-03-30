@@ -1108,8 +1108,9 @@ PeoplePlaces4: ; People
 	pop bc
 	jr c, PeoplePlaces4
 	push bc
-	farcall GetTrainerClassName
-	ld de, wStringBuffer1
+	ld a, c
+	ld [wNamedObjectIndex], a
+	call GetTrainerClassName
 	call CopyName1
 	pop bc
 	ld b, 1
