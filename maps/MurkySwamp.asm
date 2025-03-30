@@ -12,25 +12,29 @@ MurkySwamp_MapScriptHeader:
 
 	def_bg_events
 	bg_event 20, 10, BGEVENT_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
-	bg_event 22, 13, BGEVENT_ITEM + X_SP_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SP_DEF
+	bg_event  2, 30, BGEVENT_ITEM + X_SP_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SP_DEF
 	bg_event  5, 23, BGEVENT_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
 	bg_event 40, 33, BGEVENT_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
 
 	def_object_events
+	object_event  6,  2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, URSALUNA, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, URSALUNA_BLOODMOON_FORM, MurkySwampBloodmoonUrsaluna, EVENT_MURKY_SWAMP_BLOODMOON_URSALUNA
 	object_event 40, 26, SPRITE_CHERYL, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
 	object_event 17, 31, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, MurkySwampNurseBeatriceScript, -1
-	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_catcherOscar, -1
+	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBug_catcherOscar, -1
+	object_event 25, 33, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerLassAbigail, -1
+	object_event  8, 13, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacEnzo, -1
 	object_event 37, 17, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHex_maniacMatilda, -1
 	object_event  6, 22, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFirebreatherOleg, -1
 	object_event  4, 33, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MurkySwampPokemaniacText, -1
-	itemball_event 14,  9, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
-	itemball_event 10, 11, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
+	itemball_event 22, 13, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
+	itemball_event 14,  9, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
 	itemball_event 43, 23, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
 	itemball_event 14, 34, MULCH, 1, EVENT_MURKY_SWAMP_MULCH
 	cuttree_event  2, 14, EVENT_MURKY_SWAMP_CUT_TREE_1
 	cuttree_event  6, 19, EVENT_MURKY_SWAMP_CUT_TREE_2
 
 	object_const_def
+	const MURKYSWAMP_BLOODMOON_URSALUNA
 	const MURKYSWAMP_CHERYL
 	const MURKYSWAMP_NURSE
 
@@ -187,6 +191,33 @@ MurkySwampNurseBeatriceScript:
 	line "came here!"
 	done
 
+MurkySwampBloodmoonUrsaluna:
+	faceplayer
+	opentext
+	writetext BloodmoonUrsalunaText
+	cry URSALUNA
+	pause 15
+	closetext
+	loadwildmon URSALUNA, URSALUNA_BLOODMOON_FORM, 60
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftruefwd .GotLevel
+	loadwildmon URSALUNA, URSALUNA_BLOODMOON_FORM, 30
+.GotLevel
+	loadvar VAR_BATTLETYPE, BATTLETYPE_NEVER_SHINY
+	startbattle
+	disappear MURKYSWAMP_BLOODMOON_URSALUNA
+	setevent EVENT_MURKY_SWAMP_BLOODMOON_URSALUNA
+	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalsefwd .end
+	setflag ENGINE_PLAYER_CAUGHT_BLOODMOON_URSALUNA
+.end
+	end
+
+BloodmoonUrsalunaText:
+	text "Wa-gaaah!"
+	done
+	
 GenericTrainerBug_catcherOscar:
 	generictrainer BUG_CATCHER, OSCAR, EVENT_BEAT_BUG_CATCHER_OSCAR, .SeenText, .BeatenText
 
@@ -245,6 +276,54 @@ GenericTrainerFirebreatherOleg:
 
 .BeatenText:
 	text "I risked and lost!"
+	done
+
+GenericTrainerLassAbigail:
+	generictrainer LASS, ABIGAIL, EVENT_BEAT_LASS_ABIGAIL, .SeenText, .BeatenText
+
+	text "The rumor is that"
+	line "a strange red orb"
+	cont "can be seen,"
+
+	para "glowing like a"
+	line "blood moon."
+
+	para "That sounds scary."
+	done
+
+.SeenText:
+	text "People are scared"
+	line "to go deep into"
+	cont "the swamp."
+	done
+
+.BeatenText:
+	text "Eek!"
+	done
+
+GenericTrainerPokemaniacEnzo:
+	generictrainer POKEMANIAC, ENZO, EVENT_BEAT_POKEMANIAC_ENZO, .SeenText, .BeatenText
+
+	text "I don't think"
+	line "Gastly can make"
+
+	para "a red light like"
+	line "what I saw."
+
+	para "What could it be?"
+	done
+
+.SeenText
+	text "I saw a weird red"
+	line "light in the trees"
+
+	para "while looking for"
+	line "rare #mon!"
+	done
+
+.BeatenText
+	text "You have nothing"
+	line "to be afraid of."
 	done
 
 MurkySwampPokemaniacText:
