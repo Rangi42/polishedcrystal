@@ -518,7 +518,7 @@ FadeMusic:
 	ld [wVolume], a
 	; did we just get on a bike?
 	ld a, [wPlayerState]
-	cp $1 ; bicycle
+	dec a ; bicycle = 1
 	jr z, .bicycle
 	push bc
 	; restart sound

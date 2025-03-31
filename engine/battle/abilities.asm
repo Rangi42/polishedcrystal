@@ -1507,7 +1507,7 @@ GetCappedStats:
 	or d
 	ld b, a
 	ld a, [hl]
-	cp 1
+	dec a
 	jr z, .minimized
 .maxed
 	ld a, c

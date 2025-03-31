@@ -93,10 +93,9 @@ PlayBattleMusic:
 	cp GIOVANNI
 	jr nz, .othertrainer
 	ld a, [wOtherTrainerID]
-	cp 1 ; Armored Mewtwo
-	jr nz, .othertrainer
+	dec a ; Armored Mewtwo = GIOVANNI 1
 	ld e, MUSIC_MOTHER_BEAST_BATTLE_SM
-	jr .done
+	jr z, .done
 
 .othertrainer
 	ld a, [wOtherTrainerClass]

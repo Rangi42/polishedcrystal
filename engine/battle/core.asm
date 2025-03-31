@@ -2442,17 +2442,8 @@ AskUseNextPokemon:
 
 	ld hl, BattleText_UseNextMon
 	call StdBattleTextbox
-.loop
 	call YesNoBox
-	ld a, [wMenuCursorY]
-	jr c, .pressed_b
-	and a
-	ret
-
-.pressed_b
-	ld a, [wMenuCursorY]
-	cp $1 ; YES
-	jr z, .loop
+	ret nc
 	jmp CheckRunSpeed
 
 SetUpBattlePartyMenu_NoLoop:
@@ -4840,7 +4831,7 @@ endr
 	pop af
 	jr c, .dont_forfeit
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a
 	jr z, .dont_forfeit
 
 	call EmptyBattleTextbox

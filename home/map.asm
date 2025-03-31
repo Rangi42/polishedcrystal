@@ -1355,11 +1355,11 @@ GetMovementPermissions::
 	ret nz
 	ld a, [wTileRight]
 	and 7
-	cp $1
-	jr z, .ok_right
 	cp $5
 	jr z, .ok_right
 	cp $7
+	jr z, .ok_right
+	dec a ; $1?
 	ret nz
 
 .ok_right
