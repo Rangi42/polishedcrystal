@@ -834,6 +834,24 @@ StaticAbility:
 AfflictStatusAbility:
 	ld b, 1
 _AfflictStatusAbility:
+	; Shield Dust+Covert Cloak will protect against attacker's status ability.
+	inc b
+	dec b
+	jr nz, .enemy_ability
+	call GetOpponentAbility
+	cp SHIELD_DUST
+	ret z
+
+	push hl
+	push bc
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_COVERT_CLOAK
+	pop bc
+	pop hl
+	ret z
+
+.enemy_ability
 	; Only works 30% of the time.
 	ld a, 10
 	call BattleRandomRange
