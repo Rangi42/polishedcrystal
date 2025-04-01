@@ -12,6 +12,7 @@
 	frame 11, 08
 	frame 12, 09
 	frame 13, 03
-	frame 6, 04
+	frame 14, 04
 	frame 7, 09
+	frame 15, 09
 	endanim
