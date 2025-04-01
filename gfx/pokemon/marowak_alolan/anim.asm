@@ -1,8 +1,6 @@
 	frame 0, 06
-	setrepeat 2
-	frame 1, 09
+	frame 1, 24
 	frame 0, 18
-	dorepeat 2
 	frame 2, 05
 	frame 3, 04
 	frame 4, 03
