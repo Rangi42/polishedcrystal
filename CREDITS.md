@@ -60,7 +60,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
-* Dave.K for sprites and animations of Sneasler and Alolan Marowak.
+* Dave.K for sprites and animations of Bloodmoon Ursaluna, Sneasler and Alolan Marowak.
+* Dave.K and bloodless for sprites and animation of Rhyperior.
 * Megaman-Omega for some of Prism's overworld sprites.
 * SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo and Soldier sprites.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
