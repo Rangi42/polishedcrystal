@@ -3920,8 +3920,15 @@ GetOpponentActiveScreens:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	xor EFFECT_BRICK_BREAK
-	ret z
+	jr nz, .no_brick_break
 
+	; Set move anim param to notify that we are breaking screens.
+	call .GetScreen
+	ld [wBattleAnimParam], a
+	xor a
+	ret
+
+.no_brick_break
 	call GetTrueUserAbility
 	xor INFILTRATOR
 	ret z
@@ -3929,7 +3936,8 @@ GetOpponentActiveScreens:
 	ld a, [wCriticalHit]
 	dec a ; cp TRUE
 	ret z
-
+	; fallthrough
+.GetScreen:
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wEnemyScreens]
