@@ -4035,25 +4035,15 @@ HitSelfInConfusion:
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonDefense
-	ld de, wPlayerScreens
 	ld a, [wBattleMonLevel]
 	jr z, .got_it
-
 	ld hl, wEnemyMonDefense
-	ld de, wEnemyScreens
 	ld a, [wEnemyMonLevel]
 .got_it
 	push af
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld a, [de]
-	and SCREENS_REFLECT
-	jr z, .mimic_screen
-
-	sla c
-	rl b
-.mimic_screen
 	dec hl
 	dec hl
 	dec hl
