@@ -393,7 +393,12 @@ PlaceEnemysName::
 	rst PlaceString
 	ld h, b
 	ld l, c
+	ld a, [wTextboxFlags]
+	bit NEWLINE_ENEMY_F, a
 	ld de, SpaceText
+	jr z, .no_wordwrap
+	ld de, ContChar
+.no_wordwrap
 	rst PlaceString
 	push bc
 	farcall Battle_GetTrainerName
@@ -407,6 +412,9 @@ PlaceCommandCharacter::
 	ld l, c
 	pop de
 	jmp NextChar
+
+ContChar:
+	db "<CONT>@"
 
 TextCommand_PLURAL:
 ; Pluralize the last word. Might perform edits on it (Candy -> Candies).

@@ -874,8 +874,7 @@ EmptyBattleTextbox::
 	jr BattleTextbox
 
 StdBattleTextbox::
-; Open a textbox and print battle text at 20:hl.
-	anonbankpush BattleText
+	farjp _StdBattleTextbox
 
 BattleTextbox::
 ; Open a textbox and print text at hl.

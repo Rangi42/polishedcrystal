@@ -74,6 +74,7 @@ DEF NUM_FRAMES EQU const_value
 	const TEXT_DELAY_F       ; 1
 	const NO_LINE_SPACING_F  ; 2
 	const USE_BG_MAP_WIDTH_F ; 3
+	const NEWLINE_ENEMY_F    ; 4
 
 ; wOptions2::
 	const_def 3
