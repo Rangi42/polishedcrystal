@@ -43,9 +43,10 @@ FarCopyRadioText::
 	ld l, e
 	ld h, d
 	ld de, wRadioCompressedText
+	push de
 	ld bc, SCREEN_WIDTH * 2
 	rst CopyBytes
-	ld hl, wRadioCompressedText
+	pop hl
 	ld de, wRadioText
 	ld a, [hli]
 	ld [de], a
