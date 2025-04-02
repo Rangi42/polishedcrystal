@@ -1259,7 +1259,7 @@ BattleCommand_critical:
 	cp b
 	ret nc
 .guranteed_crit
-	ld a, 1
+	ld a, TRUE
 	ld [wCriticalHit], a
 	ret
 
@@ -3839,20 +3839,9 @@ BattleCommand_damagestats:
 	ld a, MON_ATK
 	call TrueUserPartyAttr
 .atk_ok
-	call GetTrueUserAbility
-	cp INFILTRATOR
-	jr z, .thickcluborlightball
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wEnemyScreens]
-	jr z, .got_opp_screens
-	ld a, [wPlayerScreens]
-.got_opp_screens
+	call GetOpponentActiveScreens
 	and SCREENS_REFLECT
 	jr z, .thickcluborlightball
-	ld a, [wCriticalHit]
-	and a
-	jr nz, .thickcluborlightball
 	sla c
 	rl b
 	jr .thickcluborlightball
@@ -3893,20 +3882,9 @@ BattleCommand_damagestats:
 	ld a, MON_SAT
 	call TrueUserPartyAttr
 .sat_ok
-	call GetTrueUserAbility
-	cp INFILTRATOR
-	jr z, .lightball
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wEnemyScreens]
-	jr z, .got_opp_screens2
-	ld a, [wPlayerScreens]
-.got_opp_screens2
+	call GetOpponentActiveScreens
 	and SCREENS_LIGHT_SCREEN
 	jr z, .lightball
-	ld a, [wCriticalHit]
-	and a
-	jr nz, .lightball
 	sla c
 	rl b
 
@@ -3933,6 +3911,30 @@ BattleCommand_damagestats:
 	call TrueUserPartyAttr
 	pop hl
 	ld e, a
+	ret
+
+GetOpponentActiveScreens:
+; Returns the opponent screens after Infiltrator, crits and Brick Break.
+	; Brick Break screen breaking is handled later, so that we can avoid it
+	; if the attack is ineffective. Thus, make it ignore screens here.
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	xor EFFECT_BRICK_BREAK
+	ret z
+
+	call GetTrueUserAbility
+	xor INFILTRATOR
+	ret z
+
+	ld a, [wCriticalHit]
+	dec a ; cp TRUE
+	ret z
+
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wEnemyScreens]
+	ret z
+	ld a, [wPlayerScreens]
 	ret
 
 TruncateHL_BC:
