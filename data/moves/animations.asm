@@ -495,6 +495,7 @@ BattleAnim_Acrobatics:
 	anim_ret
 
 BattleAnim_KarateChop:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GRAY
 	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_CHOP
 	anim_obj ANIM_OBJ_VERTICAL_CHOP, 136, 71, $0
 	anim_wait 8
@@ -5706,18 +5707,49 @@ BattleAnim_RockSmash:
 	anim_ret
 
 BattleAnim_BrickBreak:
-	anim_1gfx ANIM_GFX_HIT
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GRAY
+	anim_4gfx ANIM_GFX_CHOP, ANIM_GFX_SCREEN_DEBRIS, ANIM_GFX_HIT, ANIM_GFX_REFLECT
 	anim_sound 6, 2, SFX_SHINE
 	anim_obj ANIM_OBJ_VERTICAL_CHOP_STILL, 136, 24, $30
 	anim_wait 16
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $2, $0
+	anim_jumpif $1, .break_screen
 	anim_wait 64
 	anim_clearobjs
-	anim_obj ANIM_OBJ_VERTICAL_CHOP, 136, 82, $30
-	anim_wait 8
+	anim_obj ANIM_OBJ_VERTICAL_CHOP, 136, 71, $30
+	anim_wait 10
 	anim_sound 0, 1, SFX_KARATE_CHOP
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 136, 56, $0
+	anim_wait 34
+	anim_ret
+
+.break_screen
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_sound 0, 0, SFX_SHINE
+	anim_obj ANIM_OBJ_SCREEN, 135, 52, $0
+	anim_wait 32
+	anim_sound 0, 0, SFX_SHINE
+	anim_obj ANIM_OBJ_SCREEN, 135, 52, $0
+	anim_wait 16
+	anim_clearobjs
+	anim_obj ANIM_OBJ_VERTICAL_CHOP, 136, 71, $30
+	anim_wait 10
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
+	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 136, 56, $0
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $28
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $5c
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $10
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $e8
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $9c
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $d0
+	anim_wait 6
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $1c
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $50
+	anim_sound 0, 0, SFX_SHINE
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $dc
+	anim_obj ANIM_OBJ_SCREEN_DEBRIS, 136, 64, $90
 	anim_wait 34
 	anim_ret
 
