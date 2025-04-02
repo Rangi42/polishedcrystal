@@ -112,7 +112,7 @@ WildFled_EnemyFled_LinkBattleCanceled:
 	ld a, [wBattleType]
 	cp BATTLETYPE_ROAMING
 	jr z, .print_text
-	cp BATTLETYPE_RED_GYARADOS
+	cp BATTLETYPE_NEVER_SHINY
 	jr nc, .print_text ; also BATTLETYPE_LEGENDARY
 
 	ld hl, BattleText_WildFled
@@ -2442,17 +2442,8 @@ AskUseNextPokemon:
 
 	ld hl, BattleText_UseNextMon
 	call StdBattleTextbox
-.loop
 	call YesNoBox
-	ld a, [wMenuCursorY]
-	jr c, .pressed_b
-	and a
-	ret
-
-.pressed_b
-	ld a, [wMenuCursorY]
-	cp $1 ; YES
-	jr z, .loop
+	ret nc
 	jmp CheckRunSpeed
 
 SetUpBattlePartyMenu_NoLoop:
@@ -4681,7 +4672,7 @@ CheckRunSpeed:
 	jmp z, .can_escape
 	cp BATTLETYPE_GHOST
 	jmp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_NEVER_SHINY, BATTLETYPE_LEGENDARY
 	jmp nc, .cant_escape
 
 	ld a, [wLinkMode]
@@ -4840,7 +4831,7 @@ endr
 	pop af
 	jr c, .dont_forfeit
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a
 	jr z, .dont_forfeit
 
 	call EmptyBattleTextbox
@@ -6027,7 +6018,7 @@ ApplyLegendaryDVs:
 	push de
 	push bc
 	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
+	cp BATTLETYPE_NEVER_SHINY
 	jr z, .okay
 
 	push hl
@@ -8792,7 +8783,7 @@ BattleStartMessage:
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
 	jr z, .PrintBattleStartText
-	cp BATTLETYPE_RED_GYARADOS ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_NEVER_SHINY ; or BATTLETYPE_LEGENDARY
 	jr nc, .PrintBattleStartText
 	ld hl, GhostAppearedText
 	cp BATTLETYPE_GHOST

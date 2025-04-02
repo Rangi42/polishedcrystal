@@ -21,7 +21,7 @@ PokeAnims:
 .Slow:   pokeanim StereoCry, Setup2, Play
 .Normal: pokeanim StereoCry, Setup, Play
 .Menu:   pokeanim CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
-.Trade:  pokeanim Extra, Play2, Extra, Play, SetWait, Wait, Cry, Setup, Play
+.Trade:  pokeanim Extra, Play2, Extra, Play, SetWait, Wait, CryNoWait, Setup, Play
 .Evolve: pokeanim Extra, Play, SetWait, Wait, CryNoWait, Setup, Play
 .Hatch:  pokeanim Extra, Play, CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
 .Egg1:   pokeanim Setup, Play
@@ -140,7 +140,6 @@ PokeAnim_SetupCommands:
 	add_setup_command PokeAnim_Extra
 	add_setup_command PokeAnim_Play
 	add_setup_command PokeAnim_Play2
-	add_setup_command PokeAnim_Cry
 	add_setup_command PokeAnim_CryNoWait
 	add_setup_command PokeAnim_StereoCry
 
@@ -213,22 +212,12 @@ PokeAnim_Finish:
 	set 7, [hl]
 	ret
 
-PokeAnim_Cry:
-	ld a, [wPokeAnimSpecies]
-	ld c, a
-	ld a, [wPokeAnimVariant]
-	ld b, a
-	call _PlayCry
-	ld hl, wPokeAnimSceneIndex
-	inc [hl]
-	ret
-
 PokeAnim_CryNoWait:
 	ld a, [wPokeAnimSpecies]
 	ld c, a
 	ld a, [wPokeAnimVariant]
 	ld b, a
-	call PlayCry2
+	call PlayMonCry2
 	ld hl, wPokeAnimSceneIndex
 	inc [hl]
 	ret

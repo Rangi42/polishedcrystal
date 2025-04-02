@@ -872,7 +872,7 @@ Special_DayCareMon1:
 	ld c, a
 	ld a, [wBreedMon1Form]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, [wDayCareLady]
 	bit 0, a
 	jr z, DayCareMonCursor
@@ -888,7 +888,7 @@ Special_DayCareMon2:
 	ld c, a
 	ld a, [wBreedMon2Form]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, [wDayCareMan]
 	bit 0, a
 	jr z, DayCareMonCursor

@@ -82,7 +82,7 @@ SpecialNameRival:
 	jmp InitName
 
 .DefaultRivalName:
-	db "Silver@"
+	rawchar "Silver@"
 
 SpecialTrendyPhrase:
 	ld b, $3 ; trendy phrase
@@ -94,7 +94,7 @@ SpecialTrendyPhrase:
 	jmp InitName
 
 .DefaultTrendyPhrase:
-	db "Nothing@"
+	rawchar "Nothing@"
 
 SpecialNameRater:
 	farjp NameRater
@@ -297,7 +297,7 @@ PlayCurMonCry:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	jmp PlayCry
+	jmp PlayMonCry
 
 Special_FadeOutMusic:
 	xor a ; MUSIC_NONE
@@ -374,6 +374,12 @@ RespawnOneOffs:
 	jr nz, .CaughtSudowoodo
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
+
+	ld de, ENGINE_PLAYER_CAUGHT_BLOODMOON_URSALUNA
+	farcall EngineFlagAction
+	jr nz, .CaughtBloodmoonUrsaluna
+	eventflagreset EVENT_MURKY_SWAMP_BLOODMOON_URSALUNA
+.CaughtBloodmoonUrsaluna
 
 	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
 	farcall EngineFlagAction

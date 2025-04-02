@@ -44,13 +44,8 @@ BattleIntroSlidingPics:
 	dec d
 	pop af
 	push af
-	cp $1
-	jr z, .skip1
-	push de
-	call .subfunction3
-	pop de
-
-.skip1
+	dec a
+	call nz, .subfunction3
 	call DelayFrame
 	pop af
 	dec a
@@ -58,6 +53,7 @@ BattleIntroSlidingPics:
 	ret
 
 .subfunction3
+	push de
 	ld hl, wShadowOAMSprite00XCoord
 	ld c, $12 ; 18
 	ld de, SPRITEOAMSTRUCT_LENGTH
@@ -67,6 +63,7 @@ BattleIntroSlidingPics:
 	add hl, de
 	dec c
 	jr nz, .loop3
+	pop de
 	ret
 
 .subfunction4

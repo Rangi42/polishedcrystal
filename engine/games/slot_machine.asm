@@ -905,13 +905,11 @@ ReelAction_InitGolem:
 	ld [wSlotsDelay], a
 ReelAction_WaitGolem:
 	ld a, [wSlotsDelay]
-	cp 2
-	jr z, .two
-	cp 1
+	dec a
 	jr z, .one
-	ret
-
-.two
+	dec a
+	ret nz
+; two
 	call Slots_CheckMatchedAllThreeReels
 	jmp Slots_StopReel
 

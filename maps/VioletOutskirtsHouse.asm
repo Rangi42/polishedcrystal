@@ -166,7 +166,7 @@ VioletOutskirtsHouseDustText:
 	done
 
 VioletOutskirtsHouseNotAloneText:
-	text "There is a sense"
+	text "You have a sense"
 	line "that something"
 	cont "is watching you…"
 	done

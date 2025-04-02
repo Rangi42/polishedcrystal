@@ -198,14 +198,22 @@ JudgeSystem::
 
 ; Place the Pokédex number
 	ld a, [wCurPartySpecies]
-	ld [wTextDecimalByte], a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetPokedexNumber
+	ld de, wTextDecimalByte+1
+	ld a, c
+	ld [de], a
+	dec de
+	ld a, b
+	ld [de], a
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	ld de, wTextDecimalByte
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNum
 
 ; Place the chart

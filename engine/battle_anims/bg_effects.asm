@@ -1175,8 +1175,8 @@ BattleBGEffect_AcidArmor:
 	ldh a, [hLYOverrideEnd]
 	ld l, a
 	ld a, [hl]
-	cp $1
-	jr c, .okay
+	and a
+	jr z, .okay
 	cp $90
 	jr z, .okay
 	ld [hl], $0

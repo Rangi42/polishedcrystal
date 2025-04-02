@@ -863,7 +863,7 @@ GetEvolutionData:
 	ld a, [hli] ; parameter 1 low (species)
 	ld e, a
 	ld a, [hl] ; parameter 1 high (ext species/form)
-	ld hl, wNamedObjectIndex
+	ld hl, wNamedObjectIndex+1
 	ld [hld], a
 	ld [hl], e
 	call GetPokemonName
