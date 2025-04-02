@@ -455,6 +455,8 @@ TextCommand_PLURAL:
 	ld l, c
 	pop bc
 	call PlaceString
+	inc hl
+	ld [hl], "@"
 	pop hl
 	ret
 
