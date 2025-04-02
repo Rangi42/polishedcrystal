@@ -2764,6 +2764,8 @@ Pluralize:
 	ld c, l
 	dec bc
 	call TextCommand_PLURAL
+	ld a, "@"
+	ld [bc], a
 	pop af
 	pop hl
 	ld [hl], a
