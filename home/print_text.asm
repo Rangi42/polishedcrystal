@@ -3,6 +3,8 @@ PrintLetterDelay::
 
 ; wTextboxFlags[!0] and A or B override text speed with a one-frame delay.
 ; wOptions1[4] and wTextboxFlags[!1] disable the delay.
+	xor a
+	ld [wTimeSinceText], a
 
 	ld a, [wTextboxFlags]
 	bit 1, a
