@@ -51,7 +51,10 @@ FarCopyRadioText::
 	ld a, [hli]
 	ld [de], a
 	inc de
+.loop
 	call DecompressStringToRAM
+	cp "@"
+	jr z, .loop ; <DONE> terminates radio lines, not @
 	pop af
 	rst Bankswitch
 	ret

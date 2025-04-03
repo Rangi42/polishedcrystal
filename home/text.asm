@@ -849,15 +849,16 @@ DecompressString::
 
 DecompressStringToRAM::
 ; input: hl = string, de = destination
-
+.outer_loop
 	ld a, [hl]
 	cp "<CTXT>"
 	jr nz, .copy_loop
 
 	inc hl ; skip "<CTXT>"
 
+.do_decompression
 	ld b, 1 ; start with no bits to read a byte right away
-.character_loop
+.decompress_loop
 
 	push de
 	call ReadHuffmanChar
@@ -870,10 +871,12 @@ DecompressStringToRAM::
 	; Store decompressed char to WRAM and advance
 	ld [de], a
 	inc de
-	jr .character_loop
+	jr .decompress_loop
 
 .copy_loop
 	ld a, [hli]
+	cp "<CTXT>"
+	jr z, .do_decompression
 	call CheckTerminatorChar
 	jr z, .append_terminator
 	ld [de], a
@@ -881,6 +884,9 @@ DecompressStringToRAM::
 	jr .copy_loop
 
 .append_terminator
+	; to maintain generic usage, this function will return on
+	; any terminator encountered. it is up to the caller to decide
+	; what to do with the given terminator returned in a
 	ld [de], a
 	ret
 

@@ -469,7 +469,7 @@ _OPT_OakText1::
 	text_start
 	line "Oak: "
 	text_ram wMonOrItemNameBuffer
-	text_end
+	done
 
 SECTION "_OPT_OakText2", ROMX
 _OPT_OakText2::
@@ -695,7 +695,7 @@ _PokedexShowText::
 	text_start
 	line ""
 	text_ram wStringBuffer1
-	text_end
+	done
 
 ; Pokémon Music Channel / Pokémusic
 
@@ -867,11 +867,11 @@ _PnP_Text3::
 SECTION "_PnP_Text4", ROMX
 _PnP_Text4::
 	text_start
-	line "@"
+	line ""
 	text_ram wStringBuffer2
-	text " @"
+	text " "
 	text_ram wStringBuffer1
-	text_end
+	done
 
 SECTION "_PnP_cute", ROMX
 _PnP_cute::
@@ -972,9 +972,9 @@ _PnP_odd::
 SECTION "_PnP_Text5", ROMX
 _PnP_Text5::
 	text_start
-	line "@"
+	line ""
 	text_ram wStringBuffer1
-	text_end
+	done
 
 SECTION "_RocketRadioText1", ROMX
 _RocketRadioText1::
