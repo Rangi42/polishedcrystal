@@ -146,7 +146,6 @@ PopBCDEHL::
 	ret
 
 ClearText::
-	text_start
 	done
 
 
