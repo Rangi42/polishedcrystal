@@ -14,9 +14,6 @@ _StdBattleTextbox:
 	jr z, .loop
 
 .allow_advance
-	cpl
-	add 61
-
 	; Special-case enemy linebreaks
 	ld b, h
 	ld c, l
