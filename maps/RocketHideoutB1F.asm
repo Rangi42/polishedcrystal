@@ -22,21 +22,21 @@ RocketHideoutB1F_MapScriptHeader:
 	object_event 18,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, RocketHideoutB1FPicnickerZane, -1
 	object_event 10, 17, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, RocketHideoutB1FBattleGirlSasha, -1
 	object_event  7, 23, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, RocketHideoutB1FLassMavis, -1
-	itemball_event  1, 17, MOON_STONE, 1, EVENT_PICKED_UP_MOON_STONE_FROM_ROCKET_HIDEOUT_B1F
-	itemball_event  3, 14, ZINC, 1, EVENT_PICKED_UP_ZINC_FROM_ROCKET_HIDEOUT_B1F
+	itemball_event  1, 17, MOON_STONE, 1, EVENT_ROCKET_HIDEOUT_B1F_MOON_STONE
+	itemball_event  3, 14, ZINC, 1, EVENT_ROCKET_HIDEOUT_B1F_ZINC
 
 RocketHideoutB1FDoorScript:
-	checkevent EVENT_BEAT_BLACK_BELT_RYLAN
+	checkevent EVENT_BEAT_BLACKBELT_RYLAN
 	iftruefwd .DoorOpen
 	changeblock 16, 16, $13
 .DoorOpen
 	endcallback
 
 RocketHideoutB1FBlackBeltRylan:
-	trainer BLACKBELT_T, RYLAN, EVENT_BEAT_BLACK_BELT_RYLAN, .SeenText, .BeatenText, 0, .AfterScript
+	trainer BLACKBELT_T, RYLAN, EVENT_BEAT_BLACKBELT_RYLAN, .SeenText, .BeatenText, 0, .AfterScript
 
 .Script:
-	checkevent EVENT_BEAT_BLACK_BELT_RYLAN
+	checkevent EVENT_BEAT_BLACKBELT_RYLAN
 	iftruefwd .AfterScript
 	jumpthistextfaceplayer
 
