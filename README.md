@@ -35,7 +35,7 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 - **Storage System Redesign:** The PC storage interface is more like modern Pokémon games. You can switch boxes, move Pokémon around, and manage your party with minimal saving hassles.
 - **HGSS-Inspired Pokédex:** The new Pokédex includes base stats, egg groups, and a more comprehensive encounter map showing *all* methods of obtaining Pokémon.
 - **Enhanced Overworld Weather:** Instead of just darkening the screen, you’ll now see proper rain, snow, or sandstorms in applicable areas.
-- **Revamped Stats Screen:** Shows nature, abilities, seen and caught data, and more.
+- **Revamped Summary Screen:** Replaces the vanilla stats screen. Shows nature, abilities, seen and caught data, and more.
 
 ## Features
 
@@ -98,7 +98,7 @@ If you have questions or comments, please check or post on any of these sites. (
 ![ice-rock](screenshots/ice-rock.png)
 ![hex-maniac](screenshots/hex-maniac.png)
 ![route-45](screenshots/route-45.png)
-![stats](screenshots/stats.png)
+![summary](screenshots/summary.png)
 
 ![leppa-berry](screenshots/leppa-berry.png)
 ![regional-forms](screenshots/regional-forms.png)
