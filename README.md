@@ -12,15 +12,15 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The **current official release** is **v3.1.1** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
+The **current official release** is **v3.2.0** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
 
-- **[Download v3.1.1 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1)**
+- **[Download v3.2.0 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.2.0)**
 
-The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) (September 20, 2016). However, **v3.1.0** includes *significant* enhancements and is recommended for all players.
+The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) (September 20, 2016). However, **v3.2.0** includes *significant* enhancements and is recommended for all players.
 
 *If you have any questions about playing or patching, [read the FAQ](FAQ.md)!*
 
-## What’s New in v3.1.1
+## What’s New in v3.2.0
 
 Below is a brief summary of the major changes and additions. A more detailed changelog will be released soon.
 
@@ -35,6 +35,7 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 - **Storage System Redesign:** The PC storage interface is more like modern Pokémon games. You can switch boxes, move Pokémon around, and manage your party with minimal saving hassles.
 - **HGSS-Inspired Pokédex:** The new Pokédex includes base stats, egg groups, and a more comprehensive encounter map showing *all* methods of obtaining Pokémon.
 - **Enhanced Overworld Weather:** Instead of just darkening the screen, you’ll now see proper rain, snow, or sandstorms in applicable areas.
+- **Revamped Stats Screen:** Shows nature, abilities, seen and caught data, and more.
 
 ## Features
 
