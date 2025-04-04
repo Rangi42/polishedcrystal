@@ -1668,7 +1668,7 @@ SECTION UNION "Attributes", WRAMX
 
 ; Array of Pokémon in the pokédex list.
 wDexMons::
-for n, 1, NUM_SPECIES + 1
+for n, 1, NUM_POKEMON_PADDED + 1
 wDexMon{d:n}::
 wDexMon{d:n}Species:: db
 wDexMon{d:n}Form:: db
