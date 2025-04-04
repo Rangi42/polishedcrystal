@@ -31,7 +31,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 ### Which file do I need to play?
 
-The [3.1.1 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.1.1.gbc`, or `polishedcrystal-faithful-3.1.1.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
+The [3.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.2.0) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.2.0.gbc`, or `polishedcrystal-faithful-3.2.0.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
 
 Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. If you're aware of this and you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to walk through walls.
 
@@ -64,10 +64,10 @@ Conversely, the following emulators are known to have issues and **should not be
 
 #### PC:
 * VBA - this emulator has not been updated since 2004, do not ever use
-* VBA-M - despite being actively updated, still is an extremely inaccurate emulator, use mGBA instead
+* VBA-M - despite being actively updated, still is an very inaccurate emulator, use mGBA instead
 
 #### iOS:
-* Delta - despite using the fairly accurate Gambatte core, this emulator has reported issues that haven't been reproduced on any other emulator. Until there is more clarity on the issue, we encourage using SameBoy instead
+* Delta - while we have had a higher incidence rate of issues with Delta, there is presently no evidence that the emulator itself has any issues. We do still strongly recommend using SameBoy on iOS, as we still are awaiting evidence of any unusual issues with this emulator and save states
 
 #### Other:
 * Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
