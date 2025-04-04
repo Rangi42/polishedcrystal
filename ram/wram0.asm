@@ -114,7 +114,7 @@ wCurMove::
 wCreditsSpawn::
 	db
 
-	ds 1 ; unused
+wTimeSinceText:: db
 
 wCurOptionsPage:: db
 
