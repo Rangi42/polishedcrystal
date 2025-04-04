@@ -1,8 +1,20 @@
 _StdBattleTextbox:
-; Special-case enemy linebreaks
+; Additional battle-specific text handling
 	push hl
 	push de
 	push bc
+
+.loop
+	; Delay for 60 - wTimeSinceText frames, in case text was recently displayed.
+	ld a, [wTimeSinceText]
+	cp 60
+	jr nc, .allow_advance
+	call DelayFrame
+	call JoyCheckTextAdvance
+	jr z, .loop
+
+.allow_advance
+	; Special-case enemy linebreaks
 	ld b, h
 	ld c, l
 	ld hl, wTextboxFlags

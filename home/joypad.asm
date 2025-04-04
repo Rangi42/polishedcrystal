@@ -249,14 +249,19 @@ StopAutoInput::
 	ld [wInputType], a
 	ret
 
-JoyWaitAorB::
-.loop
-	call DelayFrame
+JoyCheckTextAdvance::
+; Returns nz if prompt should advance (usually with A or B).
 	call GetJoypad
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON
 	ret nz
 	call CheckAutoscroll
+	ret
+
+JoyWaitAorB::
+.loop
+	call DelayFrame
+	call JoyCheckTextAdvance
 	ret nz
 	call RTC
 	jr .loop

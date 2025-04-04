@@ -268,7 +268,7 @@ wBattleBerriesPocketCursor:: db
 wBattleKeyItemsPocketCursor:: db
 wLastBattlePocket:: db
 
-	ds 1 ; unused
+wTimeSinceText:: db
 
 wBattleItemsPocketScrollPosition:: db
 wBattleMedicinePocketScrollPosition:: db
