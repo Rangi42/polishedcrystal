@@ -64,7 +64,7 @@ Conversely, the following emulators are known to have issues and **should not be
 
 #### PC:
 * VBA - this emulator has not been updated since 2004, do not ever use
-* VBA-M - despite being actively updated, still is an very inaccurate emulator, use mGBA instead
+* VBA-M - despite being actively updated, still is a very inaccurate emulator, use mGBA instead
 
 #### iOS:
 * Delta - while we have had a higher incidence rate of issues with Delta, there is presently no evidence that the emulator itself has any issues. We do still strongly recommend using SameBoy on iOS, as we still are awaiting evidence of any unusual issues with this emulator and save states

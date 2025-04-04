@@ -16,7 +16,7 @@ The **current official release** is **v3.2.0** (the “Polished Crystal” relea
 
 - **[Download v3.2.0 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.2.0)**
 
-The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) (September 20, 2016). However, **v3.2.0** includes *significant* enhancements and is recommended for all players.
+The previous official version was [v3.1.1](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1) (February 1, 2025).
 
 *If you have any questions about playing or patching, [read the FAQ](FAQ.md)!*
 
