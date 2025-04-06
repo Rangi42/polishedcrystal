@@ -1591,7 +1591,7 @@ LinkTrade:
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurOTTradePartyMon], a
-	ld a, TRUE
+	ld a, EVOLVE_TRADE
 	ld [wForceEvolution], a
 
 	ld c, 100

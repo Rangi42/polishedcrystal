@@ -229,6 +229,27 @@ ElmPhoneEvoText_Item:
 	text "."
 	prompt
 
+ElmPhoneEvoText_TradeNoItem:
+	text_ram wStringBuffer3
+	line "evolves by trade,"
+
+	para "or when exposed to"
+	line "a "
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+ElmPhoneEvoText_TradeWithItem:
+	text_ram wStringBuffer3
+	line "evolves by trade,"
+
+	para "or when gaining a"
+	line "level with"
+	cont ""
+	text_ram wStringBuffer4
+	text " held."
+	prompt
+
 ElmPhoneEvoText_Holding:
 	text_ram wStringBuffer3
 	line "evolves when it"
@@ -380,9 +401,11 @@ ElmPhoneEvoText_Poliwhirl:
 	para "exposed to a"
 	line "Water Stone, or"
 
-	para "when it gains a"
-	line "level while hold-"
-	cont "ing a King's Rock."
+	para "when holding a"
+	line "King's Rock, if"
+
+	para "traded, or upon"
+	line "leveling up."
 	prompt
 
 ElmPhoneEvoText_SlowpokePlain:
@@ -391,9 +414,9 @@ ElmPhoneEvoText_SlowpokeGalarian:
 	line "evolves at level"
 	cont "37, or when it"
 
-	para "gains a level"
-	line "while holding a"
-	cont "a King's Rock."
+	para "holds King's Rock"
+	line "when traded or"
+	cont "gaining a level."
 	prompt
 
 ElmPhoneEvoText_Magneton:
@@ -423,12 +446,12 @@ ElmPhoneEvoText_Exeggcute:
 
 ElmPhoneEvoText_Koffing:
 	text_ram wStringBuffer3
-	line "evolves when it"
-	cont "reaches level 35,"
+	line "evolves at level"
+	cont "35, or when it"
 
-	para "or when it gains a"
-	line "level while hold-"
-	cont "ing Charcoal."
+	para "holds Charcoal"
+	line "when traded or"
+	cont "gaining a level."
 	prompt
 
 ElmPhoneEvoText_Cubone:
@@ -448,6 +471,10 @@ ElmPhoneEvoText_Scyther:
 	para "while holding a"
 	line "Metal Coat or a"
 	cont "Hard Stone."
+
+	para "The Metal Coat"
+	line "can also be held"
+	cont "while trading."
 	prompt
 
 ElmPhoneEvoText_Eevee:
