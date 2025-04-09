@@ -4042,27 +4042,24 @@ BattleCommand_clearmissdamage:
 
 HitSelfInConfusion:
 	call ResetDamage
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wBattleMonDefense
-	ld a, [wBattleMonLevel]
-	jr z, .got_it
-	ld hl, wEnemyMonDefense
-	ld a, [wEnemyMonLevel]
-.got_it
-	push af
-	ld a, [hli]
+	ld hl, wBattleMonLevel
+	call GetUserMonAttr
+	; e = Level
+	ld e, [hl]
+	ld bc, wBattleMonDefense + 1 - wBattleMonLevel
+	assert wBattleMonDefense - 2 == wBattleMonAttack
+	add hl, bc
+	; bc = Defense
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
 	ld b, a
-	ld c, [hl]
-	dec hl
-	dec hl
-	dec hl
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+	; hl = Attack
+	ld a, [hld]
+	ld h, [hl]
+	ld l, a
 	call TruncateHL_BC
 	ld d, 40
-	pop af
 	ld e, a
 	ret
 

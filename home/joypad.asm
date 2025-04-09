@@ -253,10 +253,7 @@ JoyCheckTextAdvance::
 ; Returns nz if prompt should advance (usually with A or B).
 	call GetJoypad
 	ldh a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON
-	ret nz
-	call CheckAutoscroll
-	ret
+	jmp _Autoscroll
 
 JoyWaitAorB::
 .loop
