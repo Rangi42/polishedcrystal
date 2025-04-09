@@ -460,26 +460,6 @@ ApplyPals:
 	ld bc, 16 palettes
 	jmp FarCopyColorWRAM
 
-LoadMailPalettes:
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, MailPals
-	add hl, de
-	ld de, wBGPals1
-	ld bc, 1 palettes
-	jmp FarCopyColorWRAM
-
-MailPals:
-INCLUDE "gfx/mail/mail.pal"
-
-LoadAndApplyMailPalettes:
-	call LoadMailPalettes
-	call ApplyPals
-	call WipeAttrMap
-	; fallthrough
 ApplyAttrMap:
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
