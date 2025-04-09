@@ -4,9 +4,6 @@ LoadCGBLayout::
 	jr nz, .not_ram
 	ld a, [wMemCGBLayout]
 .not_ram
-	assert CGB_PARTY_MENU_HP_PALS == NUM_CGB_LAYOUTS - 1
-	cp CGB_PARTY_MENU_HP_PALS
-	jmp z, ApplyPartyMenuHPPals
 	cp CGB_MAPPALS
 	call nz, ResetBGPals
 	dec a
@@ -45,7 +42,7 @@ LoadCGBLayout::
 	dw _CGB_ReadMail
 	dw _CGB_FlyMap
 	dw _CGB_NewDiploma
-	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
+	assert_table_length NUM_CGB_LAYOUTS - 1 ; discount CGB_RAM
 
 _CGB_BattleGrayscale:
 	push bc

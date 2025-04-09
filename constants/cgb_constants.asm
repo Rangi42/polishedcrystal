@@ -32,5 +32,4 @@
 	const CGB_READ_MAIL
 	const CGB_FLY_MAP
 	const CGB_NEW_DIPLOMA
-	const CGB_PARTY_MENU_HP_PALS
 DEF NUM_CGB_LAYOUTS EQU const_value

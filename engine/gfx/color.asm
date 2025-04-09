@@ -500,16 +500,14 @@ ApplyAttrMapVBank0::
 	ret
 
 ApplyPartyMenuHPPals:
-	ld hl, wHPPals
 	ld a, [wHPPalIndex]
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld e, l
-	ld d, h
-	ld a, [de]
-	inc a
-	ld e, a
+	add LOW(wHPPals)
+	ld l, a
+	adc HIGH(wHPPals)
+	sub l
+	ld h, a
+	ld e, [hl]
+	inc e
 	hlcoord 11, 2, wAttrmap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wHPPalIndex]

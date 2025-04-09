@@ -613,8 +613,7 @@ PlacePartyHPBar:
 	ld b, $0
 	add hl, bc
 	call SetHPPal
-	ld a, CGB_PARTY_MENU_HP_PALS
-	call GetCGBLayout
+	farcall ApplyPartyMenuHPPals
 .skip
 	ld hl, wHPPalIndex
 	inc [hl]
