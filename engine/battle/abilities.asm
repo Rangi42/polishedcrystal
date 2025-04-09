@@ -844,7 +844,7 @@ _AfflictStatusAbility:
 
 	push hl
 	push bc
-	call GetOpponentItemAfterUnnerve
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_COVERT_CLOAK
 	pop bc

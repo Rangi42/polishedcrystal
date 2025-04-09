@@ -462,7 +462,7 @@ TextCommand_PLURAL:
 	ld h, b
 	ld l, c
 	pop bc
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
