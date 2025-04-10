@@ -1901,14 +1901,6 @@ GetMovementByte:
 	ld hl, wMovementDataPointer
 	jmp _GetMovementByte
 
-GetMovementObject:
-	ld a, [wMovementObject]
-	ret
-
-_GetMovementObject:
-	ld hl, GetMovementObject
-	; fallthrough
-
 HandleMovementData:
 	call .StorePointer
 .loop
@@ -1936,12 +1928,6 @@ ContinueReadingMovement:
 	ld a, 1
 	ld [wMovementByteWasControlSwitch], a
 	ret
-
-DoMovementFunction:
-	push af
-	call ApplyMovementToFollower
-	pop af
-	call StackJumpTable
 
 INCLUDE "engine/overworld/movement.asm"
 

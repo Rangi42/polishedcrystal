@@ -1364,7 +1364,7 @@ Text_AdventurerMart_HowMany:
 Text_InformalMart_HowMany:
 Text_BazaarMart_HowMany:
 	; How many?
-	text_far _PharmacyHowManyText
+	text_far _HowManyText
 	text_end
 
 Text_Pharmacy_CostsThisMuch:

@@ -62,7 +62,7 @@ NamingScreen:
 	ld a, [wNamingScreenType]
 	call StackJumpTable
 
-NamingScreenJumptable:
+.Jumptable:
 	table_width 2
 	dw .Pokemon
 	dw .Player

@@ -638,11 +638,6 @@ WouldYouLikeToSaveTheGameText:
 	text_far _WouldYouLikeToSaveTheGameText
 	text_end
 
-SavingDontTurnOffThePowerText:
-	; SAVING… DON'T TURN OFF THE POWER.
-	text_far _SavingDontTurnOffThePowerText
-	text_end
-
 SavedTheGameText:
 	; saved the game.
 	text_far _SavedTheGameText
@@ -656,11 +651,6 @@ AnotherSaveFileText:
 SaveFileCorruptedText:
 	; The save file is corrupted!
 	text_far _SaveFileCorruptedText
-	text_end
-
-MoveMonWOMailSaveText:
-	; Each time you move a #MON, data will be saved. OK?
-	text_far _MoveMonWOMailSaveText
 	text_end
 
 VerifyGameVersion:

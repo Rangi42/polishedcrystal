@@ -251,45 +251,6 @@ SpecialItemIconPalettes:
 INCLUDE "gfx/items/special_items.pal"
 	assert_table_length NUM_SPECIAL_ITEMS + NUM_PLAYER_GENDERS - 1
 
-LoadStatsScreenPals:
-	ldh a, [rSVBK]
-	push af
-	ld a, $5
-	ldh [rSVBK], a
-	ld hl, StatsScreenPagePals
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld [wBGPals1 palette 0], a
-	ld a, [hl]
-	ld [wBGPals1 palette 0 + 1], a
-	ld a, c
-	and a ; pink page 0 has exp bar
-	ld hl, GenderAndExpBarPals + 2
-	jr z, .ok
-	ld a, [wCurHPPal]
-	add a
-	add a
-	add LOW(HPBarInteriorPals + 2)
-	ld l, a
-	adc HIGH(HPBarInteriorPals + 2)
-	sub l
-	ld h, a
-.ok
-	ld a, [hli]
-	ld [wBGPals1 palette 0 + 4], a
-	ld a, [hl]
-	ld [wBGPals1 palette 0 + 5], a
-	pop af
-	ldh [rSVBK], a
-	call ApplyPals
-	ld a, $1
-	ret
-
-StatsScreenPagePals:
-INCLUDE "gfx/stats/stats.pal"
-
 LoadOneColor:
 	ld c, 2
 LoadColorBytes:
@@ -415,10 +376,7 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
-	res 7, b
-	; fallthrough
-_ApplyWhiteTransparency:
-; Assumes the unused 16th color bit is unset.
+	res 7, b ; make sure the unused 16th color bit is unset
 if !DEF(MONOCHROME)
 	res 2, b
 	ld a, c

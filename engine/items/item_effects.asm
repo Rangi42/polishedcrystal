@@ -8,7 +8,7 @@ _DoItemEffect::
 	ld a, [wCurItem]
 	call StackJumpTable
 
-ItemEffects:
+.ItemEffects:
 ; entries correspond to item ids (see constants/item_constants.asm)
 	table_width 2
 	dw PokeBallEffect     ; PARK_BALL
@@ -279,7 +279,7 @@ DoKeyItemEffect::
 	dec a
 	call StackJumpTable
 
-KeyItemEffects:
+.KeyItemEffects:
 ; entries correspond to key item ids (see constants/item_constants.asm)
 	table_width 2
 	dw BikeFunction       ; BICYCLE
@@ -2995,7 +2995,6 @@ Ball_MonCantBeCaughtMessage:
 ItemWasntUsedMessage:
 	; Item wasn't used.
 	call PrintText
-_ItemWasntUsedMessage:
 	ld a, $2
 	ld [wItemEffectSucceeded], a
 	ret

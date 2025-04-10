@@ -639,14 +639,6 @@ BecameConfusedDueToFatigueText:
 	cont "due to fatigue!"
 	prompt
 
-BattleText_ItemHealedConfusion: ; ItemHealedConfusion
-	text "A "
-	text_ram wStringBuffer1
-	text " rid"
-	line "<USER>"
-	cont "of its confusion."
-	prompt
-
 AlreadyConfusedText:
 	text "<TARGET> is"
 	line "already confused!"
@@ -973,11 +965,6 @@ AlreadyBurnedText:
 	line "already burned!"
 	prompt
 
-WasFrozenText:
-	text "<TARGET>"
-	line "was frozen solid!"
-	prompt
-
 WontRiseAnymoreText:
 	text "<USER>'s"
 	line ""
@@ -1192,10 +1179,6 @@ NothingHappenedText:
 
 ButItFailedText:
 	text "But it failed!"
-	prompt
-
-ItFailedText:
-	text "It failed!"
 	prompt
 
 DidntAffectText:

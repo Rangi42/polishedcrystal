@@ -237,15 +237,9 @@ Special_CheckLuckyNumberShowFlag:
 SpecialCheckPokerus:
 ; Check if a monster in your party has Pokerus
 	farcall CheckPokerus
-	; fallthrough
-
-ScriptReturnCarry:
-	jr c, .carry
-	xor a
-	ldh [hScriptVar], a
-	ret
-.carry
-	ld a, 1
+	; a = carry ? TRUE : FALSE
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	ret
 

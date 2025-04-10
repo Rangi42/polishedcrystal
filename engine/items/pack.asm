@@ -831,11 +831,6 @@ DepositSellPack:
 	ret nc
 	jr ContinueDepositSellPack
 
-InitPocket:
-	ld [wCurPocket], a
-	call ClearPocketList
-	jmp WaitBGMap_DrawPackGFX
-
 DepositSellTutorial_InterpretJoypad:
 	ld hl, wMenuJoypad
 	ld a, [hl]
@@ -911,11 +906,6 @@ TutorialPack:
 .autoselect
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
-
-Pack_JumptableNext:
-	ld hl, wJumptableIndex
-	inc [hl]
-	ret
 
 PackJumptable_QuitNoScript:
 	xor a ; FALSE
@@ -1438,11 +1428,6 @@ Text_CantRegister:
 Text_MoveItemWhere:
 	; Where should this be moved to?
 	text_far _AskItemMoveText
-	text_end
-
-Text_PackEmptyString:
-	;
-	text_far ClearText
 	text_end
 
 PackInterfaceGFX:

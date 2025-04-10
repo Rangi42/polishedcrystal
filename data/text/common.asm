@@ -2521,20 +2521,6 @@ _PCGottaHavePokemonText::
 	line "#mon to call!"
 	prompt
 
-SECTION "_PCWhatText", ROMX
-_PCWhatText::
-	text "What?"
-	done
-
-SECTION "_PCMonHoldingMailText", ROMX
-_PCMonHoldingMailText::
-	text "There is a #mon"
-	line "holding Mail."
-
-	para "Please remove the"
-	line "Mail."
-	prompt
-
 SECTION "_ContestCaughtMonText", ROMX
 _ContestCaughtMonText::
 	text "Caught "
@@ -3325,12 +3311,6 @@ _WouldYouLikeToSaveTheGameText::
 	line "save the game?"
 	done
 
-SECTION "_SavingDontTurnOffThePowerText", ROMX
-_SavingDontTurnOffThePowerText::
-	text "Saving… Don't turn"
-	line "off the power!"
-	done
-
 SECTION "_SavedTheGameText", ROMX
 _SavedTheGameText::
 	text "<PLAYER> saved"
@@ -3353,20 +3333,6 @@ _SaveFileCorruptedText::
 	text "The save file is"
 	line "corrupted!"
 	prompt
-
-SECTION "_ChangeBoxSaveText", ROMX
-_ChangeBoxSaveText::
-	text "When you change a"
-	line "#mon Box, data"
-	cont "will be saved. OK?"
-	done
-
-SECTION "_MoveMonWOMailSaveText", ROMX
-_MoveMonWOMailSaveText::
-	text "Each time you move"
-	line "a #mon, data"
-	cont "will be saved. OK?"
-	done
 
 SECTION "_WindowPoppingErrorText", ROMX
 _WindowPoppingErrorText::
@@ -3485,11 +3451,6 @@ _HerbShopLadyIntroText::
 	para "Hehehehe…"
 	done
 
-SECTION "_HerbalLadyHowManyText", ROMX
-_HerbalLadyHowManyText::
-	text "How many?"
-	done
-
 SECTION "_HerbalLadyFinalPriceText", ROMX
 _HerbalLadyFinalPriceText::
 	text_decimal wItemQuantityChangeBuffer, 1, 2
@@ -3582,8 +3543,8 @@ _PharmacyIntroText::
 	line "some medicine?"
 	done
 
-SECTION "_PharmacyHowManyText", ROMX
-_PharmacyHowManyText::
+SECTION "_HowManyText", ROMX
+_HowManyText::
 	text "How many?"
 	done
 
@@ -4019,49 +3980,6 @@ SECTION "_BuenaComeAgainText", ROMX
 _BuenaComeAgainText::
 	text "Oh. Please come"
 	line "back again!"
-	done
-
-SECTION "Text_ExcuseMeYoureNotReady", ROMX
-Text_ExcuseMeYoureNotReady::
-	text "Excuse me."
-	line "You're not ready."
-	para ""
-	done
-
-SECTION "_BattleTowerReturnWhenReadyText", ROMX
-_BattleTowerReturnWhenReadyText::
-	text "Please return when"
-	line "you're ready."
-	done
-
-SECTION "Text_OnlyThreePkmnMayBeEntered", ROMX
-Text_OnlyThreePkmnMayBeEntered::
-	text "Three #mon"
-	line "must be entered."
-	para ""
-	done
-
-SECTION "Text_ThePkmnMustAllBeDifferentKinds", ROMX
-Text_ThePkmnMustAllBeDifferentKinds::
-	text "The three #mon"
-	line "must all be"
-	cont "different kinds."
-	para ""
-	done
-
-SECTION "Text_ThePkmnMustNotHoldTheSameItems", ROMX
-Text_ThePkmnMustNotHoldTheSameItems::
-	text "The three #mon"
-	line "must not hold the"
-	cont "same items."
-	para ""
-	done
-
-SECTION "Text_YouCantTakeAnEgg", ROMX
-Text_YouCantTakeAnEgg::
-	text "You can't take an"
-	line "Egg!"
-	para ""
 	done
 
 SECTION "Text_UberRestriction", ROMX
