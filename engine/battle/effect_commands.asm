@@ -1267,8 +1267,7 @@ TrueUserValidBattleItem:
 ; Items (and Abilities) never apply to external Future Sight users.
 	call GetFutureSightUser
 	ret nz
-	jr UserValidBattleItem
-
+	; fallthrough
 UserValidBattleItem:
 ; Checks if the user's held item applies to the species+form.
 ; Used for items like Leek, Lucky Punch, Thick Club, etc.
