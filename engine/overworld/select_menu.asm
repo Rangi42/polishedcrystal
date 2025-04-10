@@ -52,7 +52,7 @@ UseRegisteredItem:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ld c, 3
-	call SFXDelayFrames
+	call DelayFrames
 	pop de
 	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]

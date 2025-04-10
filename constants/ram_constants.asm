@@ -30,7 +30,7 @@ DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 	const STEREO         ; 6
 	const BATTLE_EFFECTS ; 7
 DEF TEXT_DELAY_MASK    EQU %00011
-; CheckAutoscroll relies on exact bit usage and order
+; JoyCheckTextAdvance relies on exact bit usage and order
 DEF AUTOSCROLL_MASK    EQU %01100
 DEF AUTOSCROLL_NONE    EQU %00000
 DEF AUTOSCROLL_START   EQU %00100

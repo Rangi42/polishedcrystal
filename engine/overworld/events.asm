@@ -537,7 +537,7 @@ PlayTalkObject:
 	pop de
 	push bc
 	ld c, 3
-	call SFXDelayFrames
+	call DelayFrames
 	pop bc
 	ret
 

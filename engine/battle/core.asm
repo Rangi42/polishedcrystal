@@ -1240,20 +1240,20 @@ endr
 	call GetPartyLocation
 	push hl
 	ld de, wBattleMonSpecies
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	push de
 	ld bc, MON_ID - MON_SPECIES
 	rst CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
 	add hl, bc ; skip ID, Exp, EVs
 	ld de, wBattleMonDVs
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld bc, MON_PKRUS - MON_DVS
 	rst CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
 	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, wBattleMonLevel
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	pop de
@@ -1285,7 +1285,7 @@ endr
 
 	call GetBaseData
 	ld de, wBattleMonType1
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld hl, wBaseType1
 	ld bc, 2
 	rst CopyBytes
@@ -1429,6 +1429,16 @@ endr
 	ld hl, wEnemySwitchTarget
 .got_switch_target
 	ld [hl], 0
+	ret
+
+.get_user_mon_attr_de
+	push hl
+	ld h, d
+	ld l, e
+	call GetUserMonAttr
+	ld d, h
+	ld e, l
+	pop hl
 	ret
 
 SetParticipant::

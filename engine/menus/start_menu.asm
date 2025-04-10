@@ -417,7 +417,7 @@ StartMenu_Pokemon:
 	call PokemonActionSubmenu
 .after_action
 	push af
-	call SFXDelay2
+	call Delay2
 	pop af
 	and a ; 0?
 	jr z, .choosemenu

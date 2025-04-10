@@ -22,7 +22,7 @@ Pack:
 	jr .loop
 
 .done
-	call SFXDelay2
+	call Delay2
 	ld a, [wCurPocket]
 	ld [wLastPocket], a
 	ld hl, wOptions1

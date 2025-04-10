@@ -16,11 +16,8 @@ ApplyTilemapInVBlank::
 _ApplyAttrOrTilemapInVBlank:
 	ldh [hBGMapMode], a
 
-SFXDelay2::
 Delay2::
 	ld c, 2
-
-SFXDelayFrames::
 DelayFrames::
 ; Wait c frames
 	call DelayFrame
@@ -28,7 +25,6 @@ DelayFrames::
 	jr nz, DelayFrames
 	ret
 
-SFXDelayFrame::
 DelayFrame::
 ; Wait for one frame
 	ldh a, [rLY]

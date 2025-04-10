@@ -142,11 +142,9 @@ GetOpaque1bppFontTile::
 ; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
 ; %00 = white, %11 = black, %10 = light, %01 = dark
 	lb bc, BANK(FontTiles), 1
-GetOpaque1bpp::
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	jr nz, RequestOpaque1bpp
-CopyOpaque1bpp:
 	ld a, 1
 	ldh [hRequestOpaque1bpp], a
 	jr _Copy1bpp

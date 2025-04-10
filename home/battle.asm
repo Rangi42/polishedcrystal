@@ -220,18 +220,6 @@ GetUserMonAttr::
 	pop bc
 	ret
 
-GetOpponentMonAttr_de::
-	call StackCallOpponentTurn
-GetUserMonAttr_de::
-	push hl
-	ld h, d
-	ld l, e
-	call GetUserMonAttr
-	ld d, h
-	ld e, l
-	pop hl
-	ret
-
 UpdateOpponentInParty::
 	call StackCallOpponentTurn
 UpdateUserInParty::
@@ -242,11 +230,8 @@ UpdateUserInParty::
 UpdateBattleMonInParty::
 ; Update level, status, current HP
 	ld a, [wCurBattleMon]
-	; fallthrough
-UpdateBattleMon::
 	ld hl, wPartyMon1Level
 	call GetPartyLocation
-
 	ld d, h
 	ld e, l
 	ld hl, wBattleMonLevel
@@ -555,9 +540,6 @@ GetOpponentAbilityAfterMoldBreaker::
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsIceType::
-	ld a, ICE
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsDarkType::
 	ld a, DARK

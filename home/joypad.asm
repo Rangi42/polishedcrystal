@@ -249,12 +249,6 @@ StopAutoInput::
 	ld [wInputType], a
 	ret
 
-JoyCheckTextAdvance::
-; Returns nz if prompt should advance (usually with A or B).
-	call GetJoypad
-	ldh a, [hJoyPressed]
-	jmp _Autoscroll
-
 JoyWaitAorB::
 .loop
 	call DelayFrame
@@ -263,15 +257,19 @@ JoyWaitAorB::
 	call RTC
 	jr .loop
 
-CheckIfAOrBPressed:
+JoyCheckTextAdvance::
+; Returns nz if prompt should advance (usually with A or B).
+	call GetJoypad
+	ldh a, [hJoyPressed]
+	jr _Autoscroll
+
+CheckIfAOrBPressed::
 	call JoyTextDelay
 	ldh a, [hJoyLast]
 _Autoscroll:
 	and A_BUTTON | B_BUTTON
 	ret nz
-	; fallthrough
-CheckAutoscroll:
-; Returns nz if we should autoscroll
+
 	ld a, [wOptions1]
 	and AUTOSCROLL_MASK
 	ret z
@@ -373,13 +371,6 @@ WaitPressAorB_BlinkCursor::
 	pop af
 	ldh [hMapObjectIndexBuffer], a
 	ret
-
-SimpleWaitPressAorB::
-.loop
-	call CheckIfAOrBPressed
-	ret nz
-	call DelayFrame
-	jr .loop
 
 ButtonSound::
 	ld a, [wLinkMode]

@@ -54,19 +54,13 @@ SpeechTextbox::
 	hlcoord TEXTBOX_X, TEXTBOX_Y
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
 Textbox::
-; Draw a text box at hl with room for
-; b lines of c characters each.
-; Places a border around the textbox,
-; then switches the palette to the
-; text black-and-white scheme.
+; Draw a text box at hl with room for b lines of c characters each.
+; Places a border around the textbox, then switches the palette to 7.
 	push bc
 	push hl
 	call TextboxBorder
 	pop hl
 	pop bc
-	; fallthrough
-TextboxPalette::
-; Fill text box width c height b at hl with pal 7
 	ld de, wAttrmap - wTilemap
 	add hl, de
 	inc b

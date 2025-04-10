@@ -1,12 +1,9 @@
 InitName::
-; Intended for names, so this function is limited to ten characters.
-	ld c, 10
-InitString::
-; Init a string of length c.
-	push hl
-_InitString::
-; if the string pointed to by hl is empty (defined as "zero or more spaces
+; If the string pointed to by hl is empty (defined as "zero or more spaces
 ; followed by a null"), then initialize it to the string pointed to by de.
+; Intended for names, so this function is limited to ten-character strings.
+	ld c, NAME_LENGTH - 1
+	push hl
 	push bc
 .loop
 	ld a, [hli]

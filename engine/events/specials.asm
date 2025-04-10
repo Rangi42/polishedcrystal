@@ -131,7 +131,7 @@ BugContestJudging:
 	jr .finish
 .firstplace
 	ld hl, .FirstPlacePrizes
-	call GetHourIntervalValue
+	call GetValueByTimeOfDay
 	jr .finish
 .secondplace
 	ld a, EVERSTONE
@@ -143,11 +143,10 @@ BugContestJudging:
 	ret
 
 .FirstPlacePrizes:
-	db MORN_HOUR, MOON_STONE
-	db DAY_HOUR,  SHINY_STONE
-	db EVE_HOUR,  SUN_STONE
-	db NITE_HOUR, DUSK_STONE
-	db -1,        MOON_STONE
+	db SHINY_STONE ; morn
+	db SUN_STONE   ; day
+	db DUSK_STONE  ; eve
+	db MOON_STONE  ; nite
 
 MapRadio:
 	ldh a, [hScriptVar]
