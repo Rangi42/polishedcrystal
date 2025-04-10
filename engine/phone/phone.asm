@@ -36,8 +36,6 @@ CheckCellNum::
 	xor a
 	ret
 
-INCLUDE "data/phone/permanent_numbers.asm"
-
 CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 

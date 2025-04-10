@@ -443,6 +443,3 @@ PlayStatChangeAnim:
 	ld a, b
 	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
-
-StatPals: ; similar to X items
-INCLUDE "gfx/battle/stats.pal"

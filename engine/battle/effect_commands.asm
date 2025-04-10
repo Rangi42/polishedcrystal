@@ -1269,8 +1269,6 @@ TrueUserValidBattleItem:
 	ret nz
 	jr UserValidBattleItem
 
-OpponentValidBattleItem:
-	call StackCallOpponentTurn
 UserValidBattleItem:
 ; Checks if the user's held item applies to the species+form.
 ; Used for items like Leek, Lucky Punch, Thick Club, etc.
@@ -3722,8 +3720,6 @@ EndMoveDamageChecks:
 	call RaiseStatWithItem
 	jmp SwitchTurn
 
-RaiseOpponentStatWithItem:
-	call StackCallOpponentTurn
 RaiseStatWithItem:
 	ld a, STAT_SKIPTEXT
 	call _RaiseStat
@@ -4763,10 +4759,7 @@ UpdateMoveData:
 
 IsOpponentLeafGuardActive:
 	call GetTrueUserAbility
-	jr DoLeafGuardCheck
-IsLeafGuardActive:
-; returns z if leaf guard applies for enemy
-	call GetOpponentAbilityAfterMoldBreaker
+	; fallthrough
 DoLeafGuardCheck:
 	cp LEAF_GUARD
 	ret nz
@@ -5571,35 +5564,6 @@ InvertDeferredSwitch:
 	ld [wDeferredSwitch], a
 	ret
 
-CheckPlayerHasMonToSwitchTo:
-	ld a, [wPartyCount]
-	ld d, a
-	ld e, 0
-	ld bc, PARTYMON_STRUCT_LENGTH
-.loop
-	ld a, [wCurBattleMon]
-	cp e
-	jr z, .next
-
-	ld a, e
-	ld hl, wPartyMon1HP
-	rst AddNTimes
-	ld a, [hli]
-	or [hl]
-	jr nz, .not_fainted
-
-.next
-	inc e
-	dec d
-	jr nz, .loop
-
-	scf
-	ret
-
-.not_fainted
-	and a
-	ret
-
 EndMultihit:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
@@ -6186,7 +6150,6 @@ PrintButItFailed:
 	ld hl, ButItFailedText
 	jmp StdBattleTextbox
 
-FailDisable:
 FailAttract:
 FailForesight:
 FailSpikes:
@@ -6453,11 +6416,6 @@ GetPlayerItem::
 	ld b, [hl]
 	jr GetItemHeldEffect
 
-GetEnemyItem::
-	ld hl, wEnemyMonItem
-	ld b, [hl]
-	jr GetItemHeldEffect
-
 GetOpponentItem:
 	call StackCallOpponentTurn
 GetUserItem::
@@ -6529,10 +6487,6 @@ GetItemHeldEffect:
 	pop hl
 	ret
 
-TryAnimateCurrentMove:
-	call CheckAlreadyExecuted
-	ret nz
-	; fallthrough
 AnimateCurrentMove:
 	ld a, [wInAbility]
 	and a
@@ -6548,28 +6502,6 @@ AnimateCurrentMove:
 	call LoadMoveAnim
 	call BattleCommand_raisesub
 	jmp PopBCDEHL
-
-PlayDamageAnim:
-	xor a
-	ld [wFXAnimIDHi], a
-
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	and a
-	ret z
-
-	ld [wFXAnimIDLo], a
-
-	ldh a, [hBattleTurn]
-	and a
-	ld a, BATTLEANIM_ENEMY_DAMAGE
-	jr z, .player
-	ld a, BATTLEANIM_PLAYER_DAMAGE
-
-.player
-	ld [wNumHits], a
-
-	jr PlayUserBattleAnim
 
 LoadMoveAnim:
 	xor a
@@ -6620,10 +6552,7 @@ BattleCommand_movedelay:
 	jmp DelayFrames
 
 EndMoveEffect:
-	ld b, endmove_command
-	; fallthrough
-SkipToBattleCommand:
-	ld c, 1
+	lb bc, endmove_command, 1
 	jr BattleCommandJump
 SkipToBattleCommandAfter:
 	ld c, 2

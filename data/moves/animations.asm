@@ -6255,36 +6255,7 @@ BattleAnim_Trick:
 	anim_ret
 
 BattleAnim_StatUp:
-	anim_1gfx ANIM_GFX_STATS
-	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
-	anim_jumpif DEFENSE, .defense
-	anim_jumpif SP_ATTACK, .sp_atk
-	anim_jumpif SP_DEFENSE, .sp_def
-	anim_jumpif SPEED, .speed
-	anim_jumpif ACCURACY, .accuracy
-	anim_jumpif EVASION, .evasion
-.attack
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ATTACK
-	anim_jump .continue
-.defense
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_DEFENSE
-	anim_jump .continue
-.sp_atk
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_ATTACK
-	anim_jump .continue
-.sp_def
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_DEFENSE
-	anim_jump .continue
-.speed
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SPEED
-	anim_jump .continue
-.accuracy
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ACCURACY
-	anim_jump .continue
-.evasion
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_EVASION
-.continue
-	anim_obp0 $30
+	anim_call BattleAnimSub_StatChange
 .loop
 	anim_sound 0, 0, SFX_STAT_UP
 	anim_obj ANIM_OBJ_STAT_UP, 44, 107, $30
@@ -6295,6 +6266,17 @@ BattleAnim_StatUp:
 	anim_ret
 
 BattleAnim_StatDown:
+	anim_call BattleAnimSub_StatChange
+.loop
+	anim_sound 0, 0, SFX_STAT_DOWN
+	anim_obj ANIM_OBJ_STAT_DOWN, 44, 56, $10
+	anim_wait 12
+	anim_statloop .loop
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
+	anim_ret
+
+BattleAnimSub_StatChange:
 	anim_1gfx ANIM_GFX_STATS
 	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
 	anim_jumpif DEFENSE, .defense
@@ -6325,13 +6307,6 @@ BattleAnim_StatDown:
 	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_EVASION
 .continue
 	anim_obp0 $30
-.loop
-	anim_sound 0, 0, SFX_STAT_DOWN
-	anim_obj ANIM_OBJ_STAT_DOWN, 44, 56, $10
-	anim_wait 12
-	anim_statloop .loop
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
 ; ================================
