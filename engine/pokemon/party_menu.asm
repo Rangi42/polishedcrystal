@@ -1246,7 +1246,7 @@ PartyMenuSelect:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	push bc
-	call Delay2
+	call SFXDelay2
 	pop bc
 	ret
 

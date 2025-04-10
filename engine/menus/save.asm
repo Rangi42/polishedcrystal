@@ -2,7 +2,7 @@ DEF BOXSAVE_USECURRENT EQU 1
 
 SaveMenu:
 	ld c, 4
-	call DelayFrames
+	call SFXDelayFrames
 	call LoadStandardMenuHeader
 	farcall DisplaySaveInfoOnSave
 	call SpeechTextbox
