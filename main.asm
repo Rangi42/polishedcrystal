@@ -235,7 +235,7 @@ SECTION "bank11", ROMX
 INCLUDE "engine/battle/ai/move.asm"
 INCLUDE "engine/pokemon/mail.asm"
 INCLUDE "engine/events/hidden_grottoes.asm"
-INCLUDE "engine/pokedex/pokedex_2.asm"
+INCLUDE "data/pokemon/dex_entry_pointers.asm"
 
 
 SECTION "Crystal Features 1", ROMX

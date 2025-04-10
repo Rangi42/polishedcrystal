@@ -196,7 +196,7 @@ GameFreakLogoJumper:
 	ld a, [hl]
 	call StackJumpTable
 
-GameFreakLogoScenes:
+.Jumptable:
 	dw GameFreakLogo_Init
 	dw GameFreakLogo_Bounce
 	dw GameFreakLogo_Ditto

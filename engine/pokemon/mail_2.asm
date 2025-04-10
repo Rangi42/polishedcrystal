@@ -53,7 +53,7 @@ ReadAnyMail:
 	pop bc
 	call StackJumpTable
 
-LoadMailGFXJumptable:
+.Jumptable:
 ; entries correspond to mail items
 	table_width 2
 	dw LoadFlowerMailGFX

@@ -19,7 +19,7 @@ PlayRadioShow:
 	ld a, [wCurRadioLine]
 	call StackJumpTable
 
-RadioJumptable:
+.Jumptable:
 ; entries correspond to constants/radio_constants.asm
 	table_width 2
 	dw OaksPkmnTalk1  ; $00

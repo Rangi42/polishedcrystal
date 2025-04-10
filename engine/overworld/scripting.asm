@@ -53,7 +53,7 @@ RunScriptCommand:
 	call GetScriptByte
 	call StackJumpTable
 
-ScriptCommandTable:
+.Jumptable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
 	table_width 2
 	dw Script_scall                      ; 00

@@ -3982,14 +3982,6 @@ _BuenaComeAgainText::
 	line "back again!"
 	done
 
-SECTION "Text_UberRestriction", ROMX
-Text_UberRestriction::
-	text_ram wStringBuffer1
-	text " must be"
-	line "<LV>70 or higher."
-	para ""
-	done
-
 SECTION "_BallBrokeFreeText", ROMX
 _BallBrokeFreeText::
 	text "Oh no! The #mon"

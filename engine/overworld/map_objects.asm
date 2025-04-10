@@ -178,7 +178,7 @@ _HandleStepType:
 .do_step_type
 	call StackJumpTable
 
-StepTypesJumptable:
+.StepTypesJumptable:
 ; entries correspond to STEP_TYPE_* constants (see constants/map_object_constants.asm)
 	table_width 2
 	dw StepFunction_Reset           ; STEP_TYPE_RESET
