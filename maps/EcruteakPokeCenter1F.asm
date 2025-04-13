@@ -175,7 +175,7 @@ EcruteakPokeCenter1FBillScript:
 	db   EON_MAIL
 	setcharmap no_ngrams
 	db   "Please keep this"
-	next "#mon safe!@@@@@@"
+	next "Pokémon safe!@@"
 	setcharmap default
 
 .SetEeveeMailOT:
