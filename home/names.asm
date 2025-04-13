@@ -1,5 +1,5 @@
-; PutNameInBufferAndGetName types
-	const_def 0, 3
+; GetName types
+	const_def 0, 4
 	const TRAINER_CLASS_NAME ; 0
 	const ITEM_NAME          ; 1
 	const KEY_ITEM_NAME      ; 2
@@ -8,7 +8,7 @@
 	const APRICORN_NAME      ; 5
 	const WING_NAME          ; 6
 	const EXP_CANDY_NAME     ; 7
-DEF NUM_NAME_TYPES EQU const_value / 3
+DEF NUM_NAME_TYPES EQU const_value / 4
 
 GetNthString16::
 ; Like GetNthString, but with a 16-bit index in bc
@@ -103,66 +103,58 @@ GetPokemonName::
 	pop hl
 	ret
 
-GetTrainerClassName::
-	ld a, [wNamedObjectIndex]
-	dec a
-	ld [wCurSpecies], a
-	ld a, TRAINER_CLASS_NAME
-	jr PutNameInBufferAndGetName
+GetCurTMHMName::
+	ld a, [wCurTMHM]
+	ld [wNamedObjectIndex], a
+	; fallthrough
+GetTMHMName::
+	homecall _GetTMHMName
+	ret
 
 GetCurItemName::
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
 	; fallthrough
 GetItemName::
-	ld a, [wNamedObjectIndex]
-	ld [wCurSpecies], a
 	ld a, ITEM_NAME
-	jr PutNameInBufferAndGetName
+	jr GetName
 
 GetCurKeyItemName::
 	ld a, [wCurKeyItem]
 	ld [wNamedObjectIndex], a
 	; fallthrough
 GetKeyItemName::
-	ld a, [wNamedObjectIndex]
-	ld [wCurSpecies], a
 	ld a, KEY_ITEM_NAME
-	jr PutNameInBufferAndGetName
-
-GetBadgeName::
-	ld a, [wNamedObjectIndex]
-	ld [wCurSpecies], a
-	ld a, BADGE_NAME
-	jr PutNameInBufferAndGetName
-
-GetApricornName::
-	ld a, [wNamedObjectIndex]
-	dec a
-	ld [wCurSpecies], a
-	ld a, APRICORN_NAME
-	jr PutNameInBufferAndGetName
-
-GetExpCandyName::
-	ld a, [wNamedObjectIndex]
-	dec a
-	ld [wCurSpecies], a
-	ld a, EXP_CANDY_NAME
-	jr PutNameInBufferAndGetName
+	jr GetName
 
 GetSpecialItemName::
-	ld a, [wNamedObjectIndex]
-	ld [wCurSpecies], a
 	ld a, SPECIAL_ITEM_NAME
-	jr PutNameInBufferAndGetName
+	jr GetName
+
+GetBadgeName::
+	ld a, BADGE_NAME
+	jr GetName
+
+GetApricornName::
+	ld a, APRICORN_NAME
+	jr GetName
 
 GetWingName::
-	ld a, [wNamedObjectIndex]
-	ld [wCurSpecies], a
 	ld a, WING_NAME
+	jr GetName
+
+GetExpCandyName::
+	ld a, EXP_CANDY_NAME
+	jr GetName
+
+GetTrainerClassName::
+	assert TRAINER_CLASS_NAME == 0
+	xor a
 	; fallthrough
 
-PutNameInBufferAndGetName:
+GetName:
+; input: a = .NamesPointers offset, [wNamedObjectIndex] = item index
+; output: de = wStringBuffer1 (filled with name), [wCurSpecies] = cur item
 	push hl
 	ld de, wStringBuffer1
 	push de
@@ -175,11 +167,15 @@ PutNameInBufferAndGetName:
 	ldh a, [hROMBank]
 	push af
 	ld a, [hli]
+	ld b, a
+	ld a, [hli]
 	rst Bankswitch
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wCurSpecies]
+	ld a, [wNamedObjectIndex]
+	add b
+	ld [wCurSpecies], a
 	call GetNthString
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
@@ -187,26 +183,23 @@ PutNameInBufferAndGetName:
 	rst Bankswitch
 	jmp PopBCDEHL
 
+MACRO names_list
+	db \2 ; index offset
+	dba \1 ; list pointer
+ENDM
+
 .NamesPointers:
 ; entries correspond to *_NAME constants
-	table_width 3
-	dba TrainerClassNames
-	dba ItemNames
-	dba KeyItemNames
-	dba SpecialItemNames
-	dba BadgeNames
-	dba ApricornNames
-	dba WingNames
-	dba ExpCandyNames
+	table_width 4
+	names_list TrainerClassNames, -1
+	names_list ItemNames,         0
+	names_list KeyItemNames,      0
+	names_list SpecialItemNames,  0
+	names_list BadgeNames,        0
+	names_list ApricornNames,     -1
+	names_list WingNames,         0
+	names_list ExpCandyNames,     -1
 	assert_table_length NUM_NAME_TYPES
-
-GetCurTMHMName::
-	ld a, [wCurTMHM]
-	ld [wNamedObjectIndex], a
-	; fallthrough
-GetTMHMName::
-	homecall _GetTMHMName
-	ret
 
 GetMoveName::
 	push hl
