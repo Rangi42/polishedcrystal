@@ -1,6 +1,5 @@
 MoveNames::
 	list_start
-	li "?"
 	li "Acrobatics"
 	li "Karate Chop"
 	li "DoubleSlap"
@@ -272,4 +271,4 @@ endc
 	li "Thunder Fang"
 	li "Poison Fang"
 	li "PsychicFangs"
-	assert_list_length NUM_ATTACKS + 1
+	assert_list_length NUM_ATTACKS

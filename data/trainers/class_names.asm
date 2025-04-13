@@ -1,6 +1,5 @@
 TrainerClassNames::
 	list_start
-	li "?"                ; TRAINER_NONE
 	li "<PK><MN> Trainer" ; CARRIE
 	li "<PK><MN> Trainer" ; CAL
 	li "<PK><MN> Trainer" ; JACKY
@@ -155,4 +154,4 @@ TrainerClassNames::
 	li "Student"          ; IMAKUNI
 	li "Collector"        ; LAWRENCE
 	li "Shrine"           ; REI
-	assert_list_length NUM_TRAINER_CLASSES + 1
+	assert_list_length NUM_TRAINER_CLASSES
