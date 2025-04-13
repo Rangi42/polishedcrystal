@@ -173,8 +173,10 @@ EcruteakPokeCenter1FBillScript:
 
 .GiftEeveeMail:
 	db   EON_MAIL
+	setcharmap no_ngrams
 	db   "Please keep this"
 	next "#mon safe!@@@@@@"
+	setcharmap default
 
 .SetEeveeMailOT:
 	ld hl, sPartyMon1MailAuthor
