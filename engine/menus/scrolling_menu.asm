@@ -590,12 +590,6 @@ ScrollingMenu_GetListItemCoordAndFunctionArgs:
 	pop bc
 	ret
 
-ScrollingMenu_GetAddressOfMenu_UseScrollingMenuCursorPosition:
-	ld a, [wMenuScrollPosition]
-	ld b, a
-	ld a, [wScrollingMenuCursorPosition]
-	sub b
-	; fallthrough
 ScrollingMenu_GetAddressOfCurListPosition:
 	ld c, a
 	ld a, [wMenuScrollPosition]

@@ -587,13 +587,15 @@ InheritEggMove:
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
-	ld hl, EggMovePointers
+	ld hl, EggSpeciesMovesPointers
 	add hl, bc
 	add hl, bc
-	ld a, BANK(EggMovePointers)
+	ld a, BANK(EggSpeciesMovesPointers)
 	call GetFarWord
+	inc hl
+	inc hl
 .loop
-	ld a, BANK(EggMoves)
+	ld a, BANK(EggSpeciesMoves)
 	push hl
 	call GetFarWord
 	ld b, h
@@ -884,7 +886,7 @@ Special_DayCareMon1:
 	ld c, a
 	ld a, [wBreedMon1Form]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, [wDayCareLady]
 	bit 0, a
 	jr z, DayCareMonCursor
@@ -900,7 +902,7 @@ Special_DayCareMon2:
 	ld c, a
 	ld a, [wBreedMon2Form]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, [wDayCareMan]
 	bit 0, a
 	jr z, DayCareMonCursor

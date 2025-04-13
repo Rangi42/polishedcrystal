@@ -1,4 +1,4 @@
-; ScriptCommandTable indexes (see engine/overworld/scripting.asm)
+; RunScriptCommand.Jumptable indexes (see engine/overworld/scripting.asm)
 	const_def
 
 	const scall_command
@@ -1386,6 +1386,17 @@ ENDM
 MACRO givebadge
 	db givebadge_command
 	dn \2, \1 ; region, badge
+ENDM
+
+	const setquantity_command
+MACRO setquantity
+	db setquantity_command
+ENDM
+
+	const pluralize_command
+MACRO pluralize
+	db pluralize_command
+	dw \1 ; pointer
 ENDM
 
 	const givepokemove_command

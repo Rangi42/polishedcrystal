@@ -23,9 +23,7 @@ QueueBattleAnimation:
 	ld b, h
 	ld hl, wLastAnimObjectIndex
 	inc [hl]
-	; fallthrough
 
-InitBattleAnimation:
 	ld hl, wBattleAnimTemp0
 	ld e, [hl]
 	; d was set to 0 or 1 previously

@@ -289,9 +289,9 @@ _ResetWRAM_InitList:
 
 InitializeMagikarpHouse:
 	ld hl, wBestMagikarpLengthMmHi
-	ld a, $3
+	ld a, HIGH(BEST_MAGIKARP_LENGTH)
 	ld [hli], a
-	ld a, $6
+	ld a, LOW(BEST_MAGIKARP_LENGTH)
 	ld [hli], a
 	ld de, .Ralph
 	jmp CopyName2
@@ -718,7 +718,7 @@ ElmText2:
 	text_far _ElmText2
 	text_asm
 	lp bc, GLACEON
-	call PlayCry
+	call PlayMonCry
 	ld hl, ElmText3
 	ret
 

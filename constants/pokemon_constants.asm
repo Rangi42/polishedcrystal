@@ -8,7 +8,7 @@
 ; indexes for (species + non-cosmetic variants):
 ; - BaseData (see data/pokemon/base_stats.asm)
 ; - EvosAttacksPointers (see data/pokemon/evos_attacks_pointers.asm)
-; - EggMovePointers (see data/pokemon/egg_move_pointers.asm)
+; - EggSpeciesMovesPointers (see data/pokemon/egg_move_pointers.asm)
 ; - EvolutionMoves (see data/pokemon/evolution_moves.asm)
 ; - PokemonBodyData (see data/pokemon/body_data.asm)
 ; - PokemonPalettes (see data/pokemon/palettes.asm)
@@ -507,3 +507,10 @@ DEF NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 2e
 ; these constants include EGG and a dummy entry as species
 DEF NUM_UNIQUE_POKEMON EQU const_value - 1 ; 189
 DEF NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 150
+
+; padding for wDexMons
+; NUM_POKEMON_PADDED % DEXLIST_WIDTH == 0
+DEF NUM_POKEMON_PADDED EQU NUM_POKEMON
+if FMOD(NUM_POKEMON, DEXLIST_WIDTH)
+	REDEF NUM_POKEMON_PADDED EQU NUM_POKEMON + DEXLIST_WIDTH - FMOD(NUM_POKEMON, DEXLIST_WIDTH)
+endc

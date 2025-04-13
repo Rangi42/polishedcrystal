@@ -490,6 +490,11 @@ wTempMonHyperTraining:: db
 	ds 2 ; the other 2 extra bytes
 NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
+NEXTU
+wPokedexShowPointerAddr:: dw
+wPokedexShowPointerBank:: db
+NEXTU
+wPokedexShowNextLine:: ds SCREEN_WIDTH
 ENDU
 
 ; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
@@ -741,8 +746,7 @@ wTrainerGroupBank:: db
 
 SECTION "Enemy Party", WRAMX
 
-wPokedexShowPointerAddr:: dw
-wPokedexShowPointerBank:: db
+	ds 2 ; unused
 
 wEnemyFleeing:: db
 wNumFleeAttempts:: db
@@ -1669,7 +1673,7 @@ SECTION UNION "Attributes", WRAMX
 
 ; Array of Pokémon in the pokédex list.
 wDexMons::
-for n, 1, NUM_SPECIES + 1
+for n, 1, NUM_POKEMON_PADDED + 1
 wDexMon{d:n}::
 wDexMon{d:n}Species:: db
 wDexMon{d:n}Form:: db

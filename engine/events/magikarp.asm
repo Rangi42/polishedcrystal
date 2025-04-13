@@ -154,6 +154,11 @@ PrintMagikarpLength:
 	inc e
 	jr .inchloop
 .inchdone
+	ld a, [wMagikarpLengthMmHi]
+	ld b, a
+	ld a, [wMagikarpLengthMmLo]
+	ld c, a
+	push bc
 	ld a, e
 	ld [wMagikarpLengthMmHi], a
 	ld a, l
@@ -170,6 +175,11 @@ PrintMagikarpLength:
 	ld a, "″"
 	ld [hli], a
 	ld [hl], "@"
+	pop bc
+	ld hl, wMagikarpLengthMmHi
+	ld a, b
+	ld [hli], a
+	ld [hl], c
 	ret
 
 CalcMagikarpLength:
@@ -294,57 +304,20 @@ CalcMagikarpLength:
 	ldh a, [hProduct + 2]
 	adc b
 	ld d, a
-	jr .done
+
+.done
+	ld hl, wMagikarpLengthMm
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+	ret
 
 .next
 	inc hl ; align to next triplet
 	ld a, [wTempByteValue]
 	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wTempByteValue], a
-	cp 16
-	jr c, .read
-
-	call .BCMinusDE
-	ld hl, 1600
-	add hl, bc
-	ld d, h
-	ld e, l
-
-.done
-
-;	; hl = de × 10
-;	ld h, d
-;	ld l, e
-;rept 2
-;	add hl, hl
-;endr
-;	add hl, de
-;	add hl, hl
-;
-;	; hl = hl / 254
-;	ld de, -254
-;	ld a, -1
-;.div_254
-;	inc a
-;	add hl, de
-;	jr c, .div_254
-;
-;	; d, e = hl / 12, hl % 12
-;	ld d, 0
-;.mod_12
-;	cp 12
-;	jr c, .ok
-;	sub 12
-;	inc d
-;	jr .mod_12
-;.ok
-;	ld e, a
-
-	ld hl, wMagikarpLengthMm
-	ld a, d
-	ld [hli], a
-	ld [hl], e
-	ret
+	jr .read
 
 .BCLessThanDE:
 ; return bc < de
@@ -368,9 +341,10 @@ CalcMagikarpLength:
 INCLUDE "data/events/magikarp_lengths.asm"
 
 Special_MagikarpHouseSign:
-	ld a, [wBestMagikarpLengthMmHi]
+	ld hl, wBestMagikarpLengthMmHi
+	ld a, [hli]
 	ld [wMagikarpLengthMmHi], a
-	ld a, [wBestMagikarpLengthMmLo]
+	ld a, [hl]
 	ld [wMagikarpLengthMmLo], a
 	call PrintMagikarpLength
 	ld hl, .CurrentRecordtext

@@ -276,8 +276,6 @@ Special_BattleTower_SetChallengeState:
 
 	; Otherwise, go ahead and write the challenge state
 	ldh a, [hScriptVar]
-	; fallthrough
-BT_SetChallengeState:
 	and BATTLETOWER_CHALLENGEMASK
 	ld c, a
 	call BT_GetTowerStatus
@@ -293,16 +291,9 @@ BT_SetTowerStatus:
 	jmp CloseSRAM
 
 Special_BattleTower_SetupRentalMode:
-	ld a, BATTLETOWER_RENTALMODE
-	; fallthrough
-BT_SetBattleMode:
-	and BATTLETOWER_MODEMASK
-	ld c, a
-	push bc
 	call BT_GetTowerStatus
-	pop bc
-	and ~BATTLETOWER_MODEMASK
-	or c
+	assert BATTLETOWER_MODEMASK == BATTLETOWER_RENTALMODE
+	or BATTLETOWER_RENTALMODE
 	jr BT_SetTowerStatus
 
 Special_BattleTower_GenerateNextOpponent:

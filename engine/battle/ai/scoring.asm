@@ -2204,42 +2204,6 @@ AIHasMoveEffect:
 	scf
 	ret
 
-AIHasMoveInArray:
-; Return carry if the enemy has a move in array hl.
-
-	push de
-	push bc
-	push hl
-	ld b, NUM_MOVES
-	ld de, wAIMoves
-.loop
-	ld a, [de]
-	inc de
-	and a
-	jr z, .next
-	call GetMoveIndexFromID
-	ld a, h
-	ld c, l
-	pop hl
-	push hl
-	push bc
-	push de
-	ld b, a
-	ld de, 2
-	call IsInWordArray
-	pop de
-	pop bc
-	jr c, .done
-.next
-	dec b
-	jr nz, .loop
-.done
-	; no-optimize pop's
-	pop hl
-	pop bc
-	pop de
-	ret
-
 INCLUDE "data/battle/ai/useful_moves.asm"
 
 AI_Opportunist:
@@ -2499,8 +2463,8 @@ AIDamageCalc:
 	farcall BattleCommand_gyroball
 	jr .damagecalc
 .hidden_power
-	farcall HiddenPowerDamageStats
-	jr .damagecalc
+	farcall SetHiddenPowerType
+	jr .regular_damage
 .low_kick
 	farcall BattleCommand_damagestats
 	farcall BattleCommand_lowkick

@@ -112,7 +112,7 @@ WildFled_EnemyFled_LinkBattleCanceled:
 	ld a, [wBattleType]
 	cp BATTLETYPE_ROAMING
 	jr z, .print_text
-	cp BATTLETYPE_RED_GYARADOS
+	cp BATTLETYPE_NEVER_SHINY
 	jr nc, .print_text ; also BATTLETYPE_LEGENDARY
 
 	ld hl, BattleText_WildFled
@@ -1268,20 +1268,20 @@ endr
 	call GetPartyLocation
 	push hl
 	ld de, wBattleMonSpecies
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	push de
 	ld bc, MON_ID - MON_SPECIES
 	rst CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
 	add hl, bc ; skip ID, Exp, EVs
 	ld de, wBattleMonDVs
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld bc, MON_PKRUS - MON_DVS
 	rst CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
 	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, wBattleMonLevel
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	pop de
@@ -1313,7 +1313,7 @@ endr
 
 	call GetBaseData
 	ld de, wBattleMonType1
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld hl, wBaseType1
 	ld bc, 2
 	rst CopyBytes
@@ -1430,6 +1430,22 @@ endr
 	bit SWITCH_FORCED, a
 	call nz, StdBattleTextbox
 	call LoadTileMapToTempTileMap
+
+	; If we used Baton Pass behind a Substitute, hide behind the doll.
+	ld a, [wDeferredSwitch]
+	bit SWITCH_BATON_PASS, a
+	jr z, .substitute_check_done
+
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr z, .substitute_check_done
+	xor a
+	ld [wFXAnimIDHi], a
+	ld a, SUBSTITUTE
+	farcall LoadAnim
+
+.substitute_check_done
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerSwitchTarget
@@ -1441,6 +1457,16 @@ endr
 	ld hl, wEnemySwitchTarget
 .got_switch_target
 	ld [hl], 0
+	ret
+
+.get_user_mon_attr_de
+	push hl
+	ld h, d
+	ld l, e
+	call GetUserMonAttr
+	ld d, h
+	ld e, l
+	pop hl
 	ret
 
 SetParticipant::
@@ -1476,17 +1502,6 @@ ResetParticipants::
 	ld bc, PARTY_LENGTH
 	rst ByteFill
 	pop af
-	pop bc
-	pop hl
-	ret
-
-GetParticipantsIncludingFainted::
-; Returns participants, including fainted, vs target mon to a.
-	push hl
-	push bc
-	call GetParticipantVar
-	ld a, [hl]
-	and $3f
 	pop bc
 	pop hl
 	ret
@@ -1793,17 +1808,18 @@ DealDamageToOpponent:
 	pop bc
 	jmp SwitchTurn
 
-SubtractHPFromOpponent:
-	call StackCallOpponentTurn
 SubtractHPFromUser:
-	ldh a, [hBattleTurn]
-	and a
-	jr nz, SubtractHPFromEnemy
-	; fallthrough
-SubtractHPFromPlayer:
 	push de
 	ld de, SubtractHP
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .enemy
 	call _SubtractHPFromPlayer
+	pop de
+	ret
+
+.enemy
+	call _SubtractHPFromEnemy
 	pop de
 	ret
 
@@ -1820,13 +1836,6 @@ _SubtractHPFromPlayer:
 	call _de_
 	pop af
 	ldh [hBattleTurn], a
-	ret
-
-SubtractHPFromEnemy:
-	push de
-	ld de, SubtractHP
-	call _SubtractHPFromEnemy
-	pop de
 	ret
 
 _SubtractHPFromEnemy:
@@ -1907,8 +1916,6 @@ _SubtractHP:
 	ld [wBuffer6], a
 	ret
 
-RestoreOpponentHP:
-	call StackCallOpponentTurn
 RestoreHP:
 	ld hl, wBattleMonMaxHP
 	ldh a, [hBattleTurn]
@@ -2454,17 +2461,8 @@ AskUseNextPokemon:
 
 	ld hl, BattleText_UseNextMon
 	call StdBattleTextbox
-.loop
 	call YesNoBox
-	ld a, [wMenuCursorY]
-	jr c, .pressed_b
-	and a
-	ret
-
-.pressed_b
-	ld a, [wMenuCursorY]
-	cp $1 ; YES
-	jr z, .loop
+	ret nc
 	jmp CheckRunSpeed
 
 SetUpBattlePartyMenu_NoLoop:
@@ -2916,27 +2914,53 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 
 	ld bc, wTempMonSpecies
 	farcall CheckFaintedFrzSlp
-	jr c, .skip_cry
+	call nc, BattleAnimateFrontpic
+	call UpdateEnemyHUD
+	ld a, $1
+	ldh [hBGMapMode], a
+	ret
+
+BattleAnimateFrontpic:
+; Plays battle cry and animation.
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr z, .cry_no_anim
+
 	farcall CheckBattleEffects
 	jr c, .cry_no_anim
+
+	call CheckEnemyActiveSubPic
+	jr nz, .cry_no_anim
+
+.no_substitute
 	hlcoord 12, 0
 	lb de, $0, ANIM_MON_SLOW
-	predef AnimateFrontpic
-	jr .skip_cry
+	predef_jump AnimateFrontpic ; also plays cry
 
 .cry_no_anim
 	ld a, $f
 	ld [wCryTracks], a
-	ld a, [wTempEnemyMonSpecies]
+	ld a, [wCurPartySpecies]
 	ld c, a
-	ld a, [wTempEnemyMonForm]
+	ld a, [wCurForm]
 	ld b, a
-	call PlayStereoCry
+	jmp PlayStereoCry
 
-.skip_cry
-	call UpdateEnemyHUD
-	ld a, $1
-	ldh [hBGMapMode], a
+CheckPlayerActiveSubPic:
+	ld a, [wPlayerSubStatus4]
+	jr _CheckActiveSubPic
+
+CheckEnemyActiveSubPic:
+	ld a, [wEnemySubStatus4]
+	; fallthrough
+_CheckActiveSubPic:
+	bit SUBSTATUS_SUBSTITUTE, a
+	ret z
+
+	; Baton Pass will temporarily dismiss the substitute doll.
+	ld a, [wDeferredSwitch]
+	xor 1 << SWITCH_BATON_PASS
+	bit SWITCH_BATON_PASS, a
 	ret
 
 NewEnemyMonStatus:
@@ -3664,10 +3688,6 @@ ItemRecoveryAnim_GotItem::
 BerryRecoveryAnim::
 	ld a, 1
 	ld [wBattleAnimParam], a
-	jr _ItemRecoveryAnim
-RegularRecoveryAnim::
-	xor a
-	ld [wBattleAnimParam], a
 	; fallthrough
 _ItemRecoveryAnim::
 	push hl
@@ -3791,20 +3811,6 @@ DoHeldConfusionHealingItem:
 	call GetBattleVarAddr
 	bit SUBSTATUS_CONFUSED, [hl]
 	res SUBSTATUS_CONFUSED, [hl]
-	ret
-
-GetPartymonItem:
-	ld hl, wPartyMon1Item
-	ld a, [wCurBattleMon]
-	call GetPartyLocation
-	ld bc, wBattleMonItem
-	ret
-
-GetOTPartymonItem:
-	ld hl, wOTPartyMon1Item
-	ld a, [wCurOTMon]
-	call GetPartyLocation
-	ld bc, wEnemyMonItem
 	ret
 
 UpdateBattleHUDs:
@@ -4660,7 +4666,7 @@ CheckRunSpeed:
 	jmp z, .can_escape
 	cp BATTLETYPE_GHOST
 	jmp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_NEVER_SHINY, BATTLETYPE_LEGENDARY
 	jmp nc, .cant_escape
 
 	ld a, [wLinkMode]
@@ -4681,7 +4687,7 @@ CheckRunSpeed:
 	cp RUN_AWAY
 	jr nz, .no_flee_ability
 	call SetPlayerTurn
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	jmp .can_escape
 .no_flee_ability
@@ -4819,7 +4825,7 @@ endr
 	pop af
 	jr c, .dont_forfeit
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a
 	jr z, .dont_forfeit
 
 	call EmptyBattleTextbox
@@ -5201,9 +5207,9 @@ MoveSelectionScreen:
 	call ClearSprites
 	pop hl
 	call BattleMoveDescTextbox
-	assert INST_TEXT == 0
 	ld a, [wOptions1]
 	and TEXT_DELAY_MASK
+	cp INST_TEXT
 	jr nz, .no_delay
 	ld c, 10
 	call DelayFrames ; 0.333s delay to allow users with autoscroll on start to see the description
@@ -6012,7 +6018,7 @@ ApplyLegendaryDVs:
 	push de
 	push bc
 	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
+	cp BATTLETYPE_NEVER_SHINY
 	jr z, .okay
 
 	push hl
@@ -6120,32 +6126,32 @@ CheckValidMagikarpLength:
 	cp MAGIKARP
 	jr nz, .okay
 
-	; Get Magikarp's length
+; Get Magikarp's length
 	ld de, wOTPartyMon1DVs
 	ld bc, wPlayerID
 	farcall CalcMagikarpLength
 
-	; We're clear if the length is < 5'
+; No reason to keep going if length > 1536 mm (i.e. if HIGH(length) > 5 feet)
 	ld a, [wMagikarpLengthMmHi]
-	cp 5 ; feet
+	cp HIGH(1536)
 	jr nz, .CheckMagikarpArea
 
-	; 5% chance of skipping size checks
+; 5% chance of skipping both size checks
 	call Random
 	cp 5 percent
 	jr c, .CheckMagikarpArea
-	; Try again if > 3"
+; Try again if length >= 1616 mm (i.e. if LOW(length) >= 4 inches)
 	ld a, [wMagikarpLengthMmLo]
-	cp 3 ; inches
+	cp LOW(1616)
 	jr nc, .redo
 
-	; 20% chance of skipping this check
+; 20% chance of skipping this check
 	call Random
 	cp 20 percent - 1
 	jr c, .CheckMagikarpArea
-	; Try again if > 2"
+; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
 	ld a, [wMagikarpLengthMmLo]
-	cp 2 ; inches
+	cp LOW(1600)
 	jr nc, .redo
 
 .CheckMagikarpArea:
@@ -6156,13 +6162,13 @@ CheckValidMagikarpLength:
 	cp MAP_LAKE_OF_RAGE
 	jr nz, .okay
 .LakeOfRageMagikarp
-	; 40% chance of not flooring
+; 40% chance of not flooring
 	call Random
 	cp 40 percent - 2
 	jr c, .okay
-	; Floor at length 3'
+; Try again if length < 1024 mm (i.e. if HIGH(length) < 3 feet)
 	ld a, [wMagikarpLengthMmHi]
-	cp 3 ; feet
+	cp HIGH(1024)
 	jr c, .redo
 
 .okay:
@@ -7320,40 +7326,88 @@ _GetNewBaseExp:
 	ldh [hMultiplicand + 2], a
 
 	ld a, [wCurSpecies]
-	ld [wCurPartySpecies], a
-	; wCurForm should already be set... right?
-	farcall GetPreEvolution
-	jr c, .not_basic
-
-	; let's see if we have an evolution
-	; c = species
-	ld a, [wCurPartySpecies]
 	ld c, a
-	; b = form
+	; wCurForm should already be set... right?
 	ld a, [wCurForm]
+	and SPECIESFORM_MASK
 	ld b, a
-	; bc = index
+	ld hl, LegendaryMons
+	push bc
+	call GetSpeciesAndFormIndexFromHL
+	pop bc
+	ld a, 10 ; legendary: *10/20 -> *0.5
+	jr c, .got_multiplier
+
+	; check if mon has a pre-evolution
+	push bc
+	call GetSpeciesAndFormIndex
+	ld hl, EggSpeciesMovesPointers
+	add hl, bc
+	add hl, bc
+	pop bc
+	ld a, BANK(EggSpeciesMovesPointers)
+	call GetFarWord
+	ld a, BANK(EggSpeciesMoves)
+	call GetFarWord
+	inc l
+	jr z, .stage_1_or_nonevolver
+	dec l
+	ld a, l
+	cp c
+	jr nz, .is_evo
+	ld a, h
+	cp b
+	jr nz, .is_evo
 	predef GetEvosAttacksPointer
 	farcall GetNextEvoAttackByte
 	inc a
-	ld a, 4 ; basic mon (not evolved, but can evolve): *4/20 -> *0.2
+	ld a, 4 ; basic: *4/20 ->  *0.2
 	jr nz, .got_multiplier
 	jr .stage_1_or_nonevolver
 
-.not_basic
-	ld a, [wCurPartySpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	ld hl, LegendaryMons
-	call GetSpeciesAndFormIndexFromHL
-	jr c, .legendary
-	farcall GetPreEvolution
-.legendary
-	ld a, 10 ; stage 2 or legendary: *10/20 -> *0.5
-	jr c, .got_multiplier
+	; check if that pre-evolution evolves into this mon
+	; if it doesn't, this mon is stage 2
+.is_evo
+	push bc
+	ld b, h
+	ld c, l
+	predef GetEvosAttacksPointer
+	pop bc
+.evos_loop
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
+	ld d, a
+	inc a
+	ld a, 10 ; 2nd stage: *10/20 -> *0.5
+	jr z, .got_multiplier
+	ld a, d
+	cp EVOLVE_PARTY
+	jr z, .inc_3
+	cp EVOLVE_STAT
+	jr z, .inc_3
+	cp EVOLVE_HOLDING
+	jr nz, .inc_2
+.inc_3
+	inc hl
+.inc_2
+	inc hl
+	inc hl
+	push hl
+	ld a, BANK(EvosAttacks)
+	call GetFarWord
+	ld d, l
+	ld a, h
+	pop hl
+	inc hl
+	inc hl
+	cp b
+	jr nz, .evos_loop
+	ld a, d
+	cp c
+	jr nz, .evos_loop
+	
 .stage_1_or_nonevolver
-	ld a, 7 ; stage 1 or non-evolver: *7/20 -> *0.35
+	ld a, 7 ; 1st stage or non-evolver: *7/20 -> *0.35
 .got_multiplier
 	ldh [hMultiplier], a
 	call Multiply
@@ -7712,8 +7766,7 @@ CalcExpBar:
 	ret
 
 GetMonBackpic:
-	ld a, [wPlayerSubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckPlayerActiveSubPic
 	ld hl, BattleAnimCmd_RaiseSub
 	jr nz, GetBackpic_DoAnim
 	; fallthrough
@@ -7747,8 +7800,7 @@ GetBackpic_DoAnim:
 	ret
 
 GetMonFrontpic:
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckEnemyActiveSubPic
 	ld hl, BattleAnimCmd_RaiseSub
 	jr nz, GetFrontpic_DoAnim
 	; fallthrough
@@ -7886,6 +7938,9 @@ LoadTrainerOrWildMonPic:
 	ld a, [wOtherTrainerClass]
 	and a
 	jr nz, .Trainer
+	ld a, [wWildMonForm]
+	ld [wCurForm], a
+	ld [wTempEnemyMonForm], a
 	ld a, [wTempWildMonSpecies]
 	ld [wCurPartySpecies], a
 
@@ -7919,10 +7974,9 @@ BackUpBGMap2:
 InitEnemy:
 	ld a, [wOtherTrainerClass]
 	and a
-	jr z, InitEnemyWildmon ; wild
-	; fallthrough
+	jr z, .wildmon
 
-InitEnemyTrainer:
+; trainer
 	ld [wTrainerClass], a
 	xor a
 	ld [wTempEnemyMonSpecies], a
@@ -7966,7 +8020,7 @@ InitEnemyTrainer:
 	inc [hl]
 	jr .partyloop
 
-InitEnemyWildmon:
+.wildmon
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
 	call LoadEnemyWildmon
@@ -8714,30 +8768,7 @@ BattleStartMessage:
 
 .not_shiny
 	call CheckSleepingTreeMon
-	jr c, .skip_cry
-
-	ld a, [wBattleType]
-	cp BATTLETYPE_GHOST
-	jr z, .cry_no_anim
-
-	farcall CheckBattleEffects
-	jr c, .cry_no_anim
-
-	hlcoord 12, 0
-	lb de, $0, ANIM_MON_NORMAL
-	predef AnimateFrontpic
-	jr .skip_cry ; cry is played during the animation
-
-.cry_no_anim
-	ld a, $f
-	ld [wCryTracks], a
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	call PlayStereoCry
-
-.skip_cry
+	call nc, BattleAnimateFrontpic
 	call ResetVariableBattleMusicCondition
 
 	ld a, [wBattleType]
@@ -8753,7 +8784,7 @@ BattleStartMessage:
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
 	jr z, .PrintBattleStartText
-	cp BATTLETYPE_RED_GYARADOS ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_NEVER_SHINY ; or BATTLETYPE_LEGENDARY
 	jr nc, .PrintBattleStartText
 	ld hl, GhostAppearedText
 	cp BATTLETYPE_GHOST

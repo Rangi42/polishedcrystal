@@ -1461,11 +1461,6 @@ IronBallDesc:
 	next "grounds. (Hold)"
 	done
 
-RingTargetDesc:
-	text "Loses type immun-"
-	next "ities. (Hold)"
-	done
-
 RedCardDesc:
 	text "Switches out foe"
 	next "when hit. (Hold)"

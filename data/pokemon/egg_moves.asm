@@ -2,9 +2,10 @@ SECTION "Egg Moves", ROMX
 
 INCLUDE "data/pokemon/egg_move_pointers.asm"
 
-EggMoves::
+EggSpeciesMoves::
 
-BulbasaurEggMoves:
+BulbasaurEggSpeciesMoves:
+	dp BULBASAUR, PLAIN_FORM
 	dw CHARM
 	dw PETAL_DANCE
 	dw LIGHT_SCREEN
@@ -12,7 +13,8 @@ BulbasaurEggMoves:
 	dw POWER_WHIP
 	dw $ff
 
-CharmanderEggMoves:
+CharmanderEggSpeciesMoves:
+	dp CHARMANDER, PLAIN_FORM
 	dw ANCIENTPOWER
 	dw BELLY_DRUM
 	dw BITE
@@ -23,7 +25,8 @@ CharmanderEggMoves:
 	dw OUTRAGE
 	dw $ff
 
-SquirtleEggMoves:
+SquirtleEggSpeciesMoves:
+	dp SQUIRTLE, PLAIN_FORM
 	dw CONFUSION
 	dw CRUNCH
 	dw FORESIGHT
@@ -32,7 +35,16 @@ SquirtleEggMoves:
 	dw AQUA_JET
 	dw $ff
 
-PidgeyEggMoves:
+CaterpieEggSpeciesMoves:
+	dp CATERPIE, PLAIN_FORM
+	dw $ff
+
+WeedleEggSpeciesMoves:
+	dp WEEDLE, PLAIN_FORM
+	dw $ff
+
+PidgeyEggSpeciesMoves:
+	dp PIDGEY, PLAIN_FORM
 	dw PECK
 	dw FEINT_ATTACK
 	dw FORESIGHT
@@ -44,8 +56,8 @@ PidgeyEggMoves:
 	dw BRAVE_BIRD
 	dw $ff
 
-RattataPlainEggMoves:
-RattataAlolanEggMoves:
+RattataPlainEggSpeciesMoves:
+	dp RATTATA, PLAIN_FORM
 	dw FURY_STRIKES
 	dw REVERSAL
 	dw SCREECH
@@ -53,7 +65,17 @@ RattataAlolanEggMoves:
 	dw COUNTER
 	dw $ff
 
-SpearowEggMoves:
+RattataAlolanEggSpeciesMoves:
+	dp RATTATA, ALOLAN_FORM
+	dw FURY_STRIKES
+	dw REVERSAL
+	dw SCREECH
+	dw BITE
+	dw COUNTER
+	dw $ff
+
+SpearowEggSpeciesMoves:
+	dp SPEAROW, PLAIN_FORM
 	dw ASTONISH
 	dw FEINT_ATTACK
 	dw QUICK_ATTACK
@@ -61,14 +83,16 @@ SpearowEggMoves:
 	dw TRI_ATTACK
 	dw $ff
 
-EkansEggMoves:
+EkansEggSpeciesMoves:
+	dp EKANS, NO_FORM
 	dw CRUNCH
 	dw DISABLE
 	dw PURSUIT
 	dw SCARY_FACE
 	dw $ff
 
-SandshrewPlainEggMoves:
+SandshrewPlainEggSpeciesMoves:
+	dp SANDSHREW, PLAIN_FORM
 	dw METAL_CLAW
 	dw RAPID_SPIN
 	dw SAFEGUARD
@@ -76,7 +100,8 @@ SandshrewPlainEggMoves:
 	dw NIGHT_SLASH
 	dw $ff
 
-SandshrewAlolanEggMoves:
+SandshrewAlolanEggSpeciesMoves:
+	dp SANDSHREW, ALOLAN_FORM
 	dw AMNESIA
 	dw RAPID_SPIN
 	dw SAFEGUARD
@@ -86,7 +111,8 @@ SandshrewAlolanEggMoves:
 	dw NIGHT_SLASH
 	dw $ff
 
-NidoranFEggMoves:
+NidoranFEggSpeciesMoves:
+	dp NIDORAN_F, PLAIN_FORM
 	dw CHARM
 	dw DISABLE
 	dw FOCUS_ENERGY
@@ -95,7 +121,8 @@ NidoranFEggMoves:
 	dw TAKE_DOWN
 	dw $ff
 
-NidoranMEggMoves:
+NidoranMEggSpeciesMoves:
+	dp NIDORAN_M, PLAIN_FORM
 	dw AMNESIA
 	dw CONFUSION
 	dw DISABLE
@@ -105,7 +132,8 @@ NidoranMEggMoves:
 	dw COUNTER
 	dw $ff
 
-VulpixPlainEggMoves:
+VulpixPlainEggSpeciesMoves:
+	dp VULPIX, PLAIN_FORM
 	dw FLAME_CHARGE
 	dw DISABLE
 	dw FLARE_BLITZ
@@ -117,7 +145,8 @@ VulpixPlainEggMoves:
 	dw ROAR
 	dw $ff
 
-VulpixAlolanEggMoves:
+VulpixAlolanEggSpeciesMoves:
+	dp VULPIX, ALOLAN_FORM
 	dw DISABLE
 	dw BLIZZARD
 	dw HYPNOSIS
@@ -128,7 +157,8 @@ VulpixAlolanEggMoves:
 	dw ROAR
 	dw $ff
 
-ZubatEggMoves:
+ZubatEggSpeciesMoves:
+	dp ZUBAT, PLAIN_FORM
 	dw FEINT_ATTACK
 	dw GUST
 	dw HYPNOSIS
@@ -139,14 +169,16 @@ ZubatEggMoves:
 	dw BRAVE_BIRD
 	dw $ff
 
-OddishEggMoves:
+OddishEggSpeciesMoves:
+	dp ODDISH, PLAIN_FORM
 	dw CHARM
 	dw RAZOR_LEAF
 	dw HEALINGLIGHT
 	dw SWORDS_DANCE
 	dw $ff
 
-ParasEggMoves:
+ParasEggSpeciesMoves:
+	dp PARAS, PLAIN_FORM
 	dw AGILITY
 	dw LEECH_SEED
 	dw METAL_CLAW
@@ -156,7 +188,8 @@ ParasEggMoves:
 	dw SHADOW_CLAW
 	dw $ff
 
-VenonatEggMoves:
+VenonatEggSpeciesMoves:
+	dp VENONAT, PLAIN_FORM
 	dw AGILITY
 	dw BATON_PASS
 	dw HEALINGLIGHT
@@ -164,8 +197,8 @@ VenonatEggMoves:
 	dw TOXIC_SPIKES
 	dw $ff
 
-DiglettPlainEggMoves:
-DiglettAlolanEggMoves:
+DiglettPlainEggSpeciesMoves:
+	dp DIGLETT, PLAIN_FORM
 	dw ANCIENTPOWER
 	dw FEINT_ATTACK
 	dw HEADBUTT
@@ -174,9 +207,18 @@ DiglettAlolanEggMoves:
 	dw SCREECH
 	dw $ff
 
-MeowthPlainEggMoves:
-MeowthAlolanEggMoves:
-MeowthGalarianEggMoves:
+DiglettAlolanEggSpeciesMoves:
+	dp DIGLETT, ALOLAN_FORM
+	dw ANCIENTPOWER
+	dw FEINT_ATTACK
+	dw HEADBUTT
+	dw PURSUIT
+	dw REVERSAL
+	dw SCREECH
+	dw $ff
+
+MeowthPlainEggSpeciesMoves:
+	dp MEOWTH, PLAIN_FORM
 	dw CHARM
 	dw HYPNOSIS
 	dw AMNESIA
@@ -184,7 +226,26 @@ MeowthGalarianEggMoves:
 	dw NIGHT_SLASH
 	dw $ff
 
-PsyduckEggMoves:
+MeowthAlolanEggSpeciesMoves:
+	dp MEOWTH, ALOLAN_FORM
+	dw CHARM
+	dw HYPNOSIS
+	dw AMNESIA
+	dw LEER
+	dw NIGHT_SLASH
+	dw $ff
+
+MeowthGalarianEggSpeciesMoves:
+	dp MEOWTH, GALARIAN_FORM
+	dw CHARM
+	dw HYPNOSIS
+	dw AMNESIA
+	dw LEER
+	dw NIGHT_SLASH
+	dw $ff
+
+PsyduckEggSpeciesMoves:
+	dp PSYDUCK, PLAIN_FORM
 	dw CONFUSE_RAY
 	dw CROSS_CHOP
 	dw ENCORE
@@ -197,7 +258,8 @@ PsyduckEggMoves:
 	dw PSYCHIC_M
 	dw $ff
 
-MankeyEggMoves:
+MankeyEggSpeciesMoves:
+	dp MANKEY, PLAIN_FORM
 	dw ENCORE
 	dw FORESIGHT
 	dw BULK_UP
@@ -209,8 +271,8 @@ MankeyEggMoves:
 	dw CLOSE_COMBAT
 	dw $ff
 
-GrowlitheEggMoves:
-GrowlitheHisuianEggMoves:
+GrowlithePlainEggSpeciesMoves:
+	dp GROWLITHE, PLAIN_FORM
 	dw DOUBLE_KICK
 	dw FIRE_SPIN
 	dw HEALINGLIGHT
@@ -222,7 +284,21 @@ GrowlitheHisuianEggMoves:
 	dw CLOSE_COMBAT
 	dw $ff
 
-PoliwagEggMoves:
+GrowlitheHisuianEggSpeciesMoves:
+	dp GROWLITHE, HISUIAN_FORM
+	dw DOUBLE_KICK
+	dw FIRE_SPIN
+	dw HEALINGLIGHT
+	dw THRASH
+	dw CRUNCH
+	dw FLARE_BLITZ
+	dw BODY_SLAM
+	dw SAFEGUARD
+	dw CLOSE_COMBAT
+	dw $ff
+
+PoliwagEggSpeciesMoves:
+	dp POLIWAG, PLAIN_FORM
 	dw ENCORE
 	dw HAZE
 	dw SPLASH
@@ -230,14 +306,16 @@ PoliwagEggMoves:
 	dw WATER_PULSE
 	dw $ff
 
-AbraEggMoves:
+AbraEggSpeciesMoves:
+	dp ABRA, PLAIN_FORM
 	dw BARRIER
 	dw ENCORE
 	dw LIGHT_SCREEN
 	dw KNOCK_OFF
 	dw $ff
 
-MachopEggMoves:
+MachopEggSpeciesMoves:
+	dp MACHOP, PLAIN_FORM
 	dw BULLET_PUNCH
 	dw ENCORE
 	dw BULK_UP
@@ -247,7 +325,8 @@ MachopEggMoves:
 	dw KNOCK_OFF
 	dw $ff
 
-BellsproutEggMoves:
+BellsproutEggSpeciesMoves:
+	dp BELLSPROUT, PLAIN_FORM
 	dw ENCORE
 	dw LEECH_LIFE
 	dw SWORDS_DANCE
@@ -256,7 +335,8 @@ BellsproutEggMoves:
 	dw POWER_WHIP
 	dw $ff
 
-TentacoolEggMoves:
+TentacoolEggSpeciesMoves:
+	dp TENTACOOL, PLAIN_FORM
 	dw AURORA_BEAM
 	dw CONFUSE_RAY
 	dw HAZE
@@ -266,12 +346,18 @@ TentacoolEggMoves:
 	dw KNOCK_OFF
 	dw $ff
 
-GeodudePlainEggMoves:
-GeodudeAlolanEggMoves:
+GeodudePlainEggSpeciesMoves:
+	dp GEODUDE, PLAIN_FORM
 	dw ROCK_SLIDE
 	dw $ff
 
-PonytaPlainEggMoves:
+GeodudeAlolanEggSpeciesMoves:
+	dp GEODUDE, ALOLAN_FORM
+	dw ROCK_SLIDE
+	dw $ff
+
+PonytaPlainEggSpeciesMoves:
+	dp PONYTA, PLAIN_FORM
 	dw CHARM
 	dw DOUBLE_KICK
 	dw HYPNOSIS
@@ -282,7 +368,8 @@ PonytaPlainEggMoves:
 	dw PLAY_ROUGH
 	dw $ff
 
-PonytaGalarianEggMoves:
+PonytaGalarianEggSpeciesMoves:
+	dp PONYTA, GALARIAN_FORM
 	dw CHARM
 	dw DOUBLE_KICK
 	dw HYPNOSIS
@@ -295,8 +382,9 @@ PonytaGalarianEggMoves:
 	dw PLAY_ROUGH
 	dw $ff
 
-SlowpokePlainEggMoves:
-SlowpokeGalarianEggMoves:
+SlowpokePlainEggSpeciesMoves:
+	dp SLOWPOKE, PLAIN_FORM
+	dp SLOWPOKE, GALARIAN_FORM
 	dw BELLY_DRUM
 	dw FUTURE_SIGHT
 	dw STOMP
@@ -304,9 +392,22 @@ SlowpokeGalarianEggMoves:
 	dw ZEN_HEADBUTT
 	dw $ff
 
-FarfetchDGalarianEggMoves:
+SlowpokeGalarianEggSpeciesMoves:
+	dp SLOWPOKE, GALARIAN_FORM
+	dw BELLY_DRUM
+	dw FUTURE_SIGHT
+	dw STOMP
+	dw SAFEGUARD
+	dw ZEN_HEADBUTT
+	dw $ff
+
+MagnemiteEggSpeciesMoves:
+	dp MAGNEMITE, PLAIN_FORM
+	dw $ff
+
+FarfetchDGalarianEggSpeciesMoves:
+	dp FARFETCH_D, GALARIAN_FORM
 	dw COUNTER
-FarfetchDPlainEggMoves:
 	dw FORESIGHT
 	dw GUST
 	dw QUICK_ATTACK
@@ -315,7 +416,18 @@ FarfetchDPlainEggMoves:
 	dw ROOST
 	dw $ff
 
-DoduoEggMoves:
+FarfetchDPlainEggSpeciesMoves:
+	dp FARFETCH_D, PLAIN_FORM
+	dw FORESIGHT
+	dw GUST
+	dw QUICK_ATTACK
+	dw STEEL_WING
+	dw NIGHT_SLASH
+	dw ROOST
+	dw $ff
+
+DoduoEggSpeciesMoves:
+	dp DODUO, PLAIN_FORM
 	dw FEINT_ATTACK
 	dw HAZE
 	dw SUPERSONIC
@@ -323,7 +435,8 @@ DoduoEggMoves:
 	dw BRAVE_BIRD
 	dw $ff
 
-SeelEggMoves:
+SeelEggSpeciesMoves:
+	dp SEEL, PLAIN_FORM
 	dw DISABLE
 	dw LICK
 	dw PECK
@@ -333,7 +446,8 @@ SeelEggMoves:
 	dw ICICLE_SPEAR
 	dw $ff
 
-GrimerPlainEggMoves:
+GrimerPlainEggSpeciesMoves:
+	dp GRIMER, PLAIN_FORM
 	dw HAZE
 	dw LICK
 	dw MEAN_LOOK
@@ -341,7 +455,8 @@ GrimerPlainEggMoves:
 	dw SHADOW_CLAW
 	dw $ff
 
-GrimerAlolanEggMoves:
+GrimerAlolanEggSpeciesMoves:
+	dp GRIMER, ALOLAN_FORM
 	dw HAZE
 	dw LICK
 	dw MEAN_LOOK
@@ -349,7 +464,8 @@ GrimerAlolanEggMoves:
 	dw PURSUIT
 	dw $ff
 
-ShellderEggMoves:
+ShellderEggSpeciesMoves:
+	dp SHELLDER, PLAIN_FORM
 	dw BARRIER
 	dw BUBBLE_BEAM
 	dw RAPID_SPIN
@@ -360,7 +476,8 @@ ShellderEggMoves:
 	dw ROCK_BLAST
 	dw $ff
 
-GastlyEggMoves:
+GastlyEggSpeciesMoves:
+	dp GASTLY, PLAIN_FORM
 	dw ASTONISH
 	dw DISABLE
 	dw HAZE
@@ -370,20 +487,23 @@ GastlyEggMoves:
 	dw FEINT_ATTACK
 	dw $ff
 
-OnixEggMoves:
+OnixEggSpeciesMoves:
+	dp ONIX, PLAIN_FORM
 	dw DEFENSE_CURL
 	dw ROCK_SLIDE
 	dw EARTHQUAKE
 	dw ROCK_BLAST
 	dw $ff
 
-DrowzeeEggMoves:
+DrowzeeEggSpeciesMoves:
+	dp DROWZEE, PLAIN_FORM
 	dw BARRIER
 	dw LIGHT_SCREEN
 	dw BELLY_DRUM
 	dw $ff
 
-KrabbyEggMoves:
+KrabbyEggSpeciesMoves:
+	dp KRABBY, PLAIN_FORM
 	dw AGILITY
 	dw HAZE
 	dw AMNESIA
@@ -392,14 +512,24 @@ KrabbyEggMoves:
 	dw KNOCK_OFF
 	dw $ff
 
-ExeggcuteEggMoves:
+VoltorbPlainEggSpeciesMoves:
+	dp VOLTORB, PLAIN_FORM
+	dw $ff
+
+VoltorbHisuianEggSpeciesMoves:
+	dp VOLTORB, HISUIAN_FORM
+	dw $ff
+
+ExeggcuteEggSpeciesMoves:
+	dp EXEGGCUTE, PLAIN_FORM
 	dw MEGA_DRAIN
 	dw HEALINGLIGHT
 	dw ANCIENTPOWER
 	dw REFLECT
 	dw $ff
 
-CuboneEggMoves:
+CuboneEggSpeciesMoves:
+	dp CUBONE, PLAIN_FORM
 	dw ANCIENTPOWER
 	dw BELLY_DRUM
 	dw DOUBLE_KICK
@@ -410,18 +540,21 @@ CuboneEggMoves:
 	dw IRON_HEAD
 	dw $ff
 
-LickitungEggMoves:
+LickitungEggSpeciesMoves:
+	dp LICKITUNG, PLAIN_FORM
 	dw THRASH
 	dw $ff
 
-KoffingEggMoves:
+KoffingEggSpeciesMoves:
+	dp KOFFING, PLAIN_FORM
 	dw PSYBEAM
 	dw SCREECH
 	dw DESTINY_BOND
 	dw PAIN_SPLIT
 	dw $ff
 
-RhyhornEggMoves:
+RhyhornEggSpeciesMoves:
+	dp RHYHORN, PLAIN_FORM
 	dw CRUNCH
 	dw MAGNITUDE
 	dw PURSUIT
@@ -431,13 +564,15 @@ RhyhornEggMoves:
 	dw COUNTER
 	dw $ff
 
-TangelaEggMoves:
+TangelaEggSpeciesMoves:
+	dp TANGELA, PLAIN_FORM
 	dw CONFUSION
 	dw AMNESIA
 	dw LEECH_SEED
 	dw $ff
 
-KangaskhanEggMoves:
+KangaskhanEggSpeciesMoves:
+	dp KANGASKHAN, PLAIN_FORM
 	dw DISABLE
 	dw FOCUS_ENERGY
 	dw FORESIGHT
@@ -445,7 +580,8 @@ KangaskhanEggMoves:
 	dw SAFEGUARD
 	dw $ff
 
-HorseaEggMoves:
+HorseaEggSpeciesMoves:
+	dp HORSEA, PLAIN_FORM
 	dw AURORA_BEAM
 	dw DISABLE
 	dw DRAGON_RAGE
@@ -456,14 +592,20 @@ HorseaEggMoves:
 	dw WATER_PULSE
 	dw $ff
 
-GoldeenEggMoves:
+GoldeenEggSpeciesMoves:
+	dp GOLDEEN, PLAIN_FORM
 	dw AQUA_TAIL
 	dw HYDRO_PUMP
 	dw PSYBEAM
 	dw QUICK_ATTACK
 	dw $ff
 
-ScytherEggMoves:
+StaryuEggSpeciesMoves:
+	dp STARYU, PLAIN_FORM
+	dw $ff
+
+ScytherEggSpeciesMoves:
+	dp SCYTHER, PLAIN_FORM
 	dw BATON_PASS
 	dw BUG_BUZZ
 	dw REVERSAL
@@ -473,14 +615,20 @@ ScytherEggMoves:
 	dw NIGHT_SLASH
 	dw $ff
 
-PinsirEggMoves:
+PinsirEggSpeciesMoves:
+	dp PINSIR, PLAIN_FORM
 	dw FEINT_ATTACK
 	dw FURY_STRIKES
 	dw QUICK_ATTACK
 	dw CLOSE_COMBAT
 	dw $ff
 
-LaprasEggMoves:
+MagikarpEggSpeciesMoves:
+	dp MAGIKARP, NO_FORM
+	dw $ff
+
+LaprasEggSpeciesMoves:
+	dp LAPRAS, PLAIN_FORM
 	dw AURORA_BEAM
 	dw DRAGON_DANCE
 	dw FORESIGHT
@@ -488,11 +636,17 @@ LaprasEggMoves:
 	dw HEAL_BELL
 	dw $ff
 
-EeveeEggMoves:
+EeveeEggSpeciesMoves:
+	dp EEVEE, PLAIN_FORM
 	dw CHARM
 	dw $ff
 
-OmanyteEggMoves:
+PorygonEggSpeciesMoves:
+	dp PORYGON, PLAIN_FORM
+	dw $ff
+
+OmanyteEggSpeciesMoves:
+	dp OMANYTE, PLAIN_FORM
 	dw AURORA_BEAM
 	dw BUBBLE_BEAM
 	dw HAZE
@@ -503,7 +657,8 @@ OmanyteEggMoves:
 	dw KNOCK_OFF
 	dw $ff
 
-KabutoEggMoves:
+KabutoEggSpeciesMoves:
+	dp KABUTO, PLAIN_FORM
 	dw AURORA_BEAM
 	dw BUBBLE_BEAM
 	dw CONFUSE_RAY
@@ -515,14 +670,16 @@ KabutoEggMoves:
 	dw KNOCK_OFF
 	dw $ff
 
-AerodactylEggMoves:
+AerodactylEggSpeciesMoves:
+	dp AERODACTYL, PLAIN_FORM
 	dw FORESIGHT
 	dw PURSUIT
 	dw STEEL_WING
 	dw ROOST
 	dw $ff
 
-DratiniEggMoves:
+DratiniEggSpeciesMoves:
+	dp DRATINI, PLAIN_FORM
 	dw EXTREMESPEED ; requires Dragon Shrine Dratini
 	dw HAZE
 	dw SUPERSONIC
@@ -530,7 +687,8 @@ DratiniEggMoves:
 	dw AQUA_JET
 	dw $ff
 
-ChikoritaEggMoves:
+ChikoritaEggSpeciesMoves:
+	dp CHIKORITA, PLAIN_FORM
 	dw LEECH_SEED
 	dw VINE_WHIP
 	dw ANCIENTPOWER
@@ -540,7 +698,8 @@ ChikoritaEggMoves:
 	dw HEAL_BELL
 	dw $ff
 
-CyndaquilEggMoves:
+CyndaquilEggSpeciesMoves:
+	dp CYNDAQUIL, PLAIN_FORM
 	dw DOUBLE_KICK
 	dw EXTRASENSORY
 	dw FLARE_BLITZ
@@ -552,7 +711,8 @@ CyndaquilEggMoves:
 	dw QUICK_ATTACK
 	dw $ff
 
-TotodileEggMoves:
+TotodileEggSpeciesMoves:
+	dp TOTODILE, PLAIN_FORM
 	dw DRAGON_DANCE
 	dw METAL_CLAW
 	dw CRUNCH
@@ -564,7 +724,8 @@ TotodileEggMoves:
 	dw AQUA_JET
 	dw $ff
 
-SentretEggMoves:
+SentretEggSpeciesMoves:
+	dp SENTRET, PLAIN_FORM
 	dw CHARM
 	dw FOCUS_ENERGY
 	dw PURSUIT
@@ -574,7 +735,8 @@ SentretEggMoves:
 	dw TRICK
 	dw $ff
 
-HoothootEggMoves:
+HoothootEggSpeciesMoves:
+	dp HOOTHOOT, PLAIN_FORM
 	dw AGILITY
 	dw FEINT_ATTACK
 	dw NIGHT_SHADE
@@ -584,7 +746,8 @@ HoothootEggMoves:
 	dw HURRICANE
 	dw $ff
 
-LedybaEggMoves:
+LedybaEggSpeciesMoves:
+	dp LEDYBA, PLAIN_FORM
 	dw DIZZY_PUNCH
 	dw ENCORE
 	dw PSYBEAM
@@ -594,7 +757,8 @@ LedybaEggMoves:
 	dw DRAIN_PUNCH
 	dw $ff
 
-SpinarakEggMoves:
+SpinarakEggSpeciesMoves:
+	dp SPINARAK, PLAIN_FORM
 	dw BATON_PASS
 	dw DISABLE
 	dw MEGAHORN
@@ -606,7 +770,8 @@ SpinarakEggMoves:
 	dw TOXIC_SPIKES
 	dw $ff
 
-ChinchouEggMoves:
+ChinchouEggSpeciesMoves:
+	dp CHINCHOU, PLAIN_FORM
 	dw AGILITY
 	dw HAZE
 	dw PSYBEAM
@@ -615,14 +780,16 @@ ChinchouEggMoves:
 	dw WATER_PULSE
 	dw $ff
 
-PichuEggMoves:
+PichuEggSpeciesMoves:
+	dp PICHU, PLAIN_FORM
 	dw DISARM_VOICE
 	dw DOUBLE_SLAP
 	dw ENCORE
 	dw REVERSAL
 	dw $ff
 
-CleffaEggMoves:
+CleffaEggSpeciesMoves:
+	dp CLEFFA, PLAIN_FORM
 	dw CALM_MIND
 	dw BELLY_DRUM
 	dw AMNESIA
@@ -630,13 +797,15 @@ CleffaEggMoves:
 	dw FRESH_SNACK
 	dw $ff
 
-IgglybuffEggMoves:
+IgglybuffEggSpeciesMoves:
+	dp IGGLYBUFF, PLAIN_FORM
 	dw FEINT_ATTACK
 	dw PERISH_SONG
 	dw MOONBLAST
 	dw $ff
 
-TogepiEggMoves:
+TogepiEggSpeciesMoves:
+	dp TOGEPI, PLAIN_FORM
 	dw EXTRASENSORY
 	dw FORESIGHT
 	dw FUTURE_SIGHT
@@ -645,7 +814,8 @@ TogepiEggMoves:
 	dw PECK
 	dw $ff
 
-NatuEggMoves:
+NatuEggSpeciesMoves:
+	dp NATU, PLAIN_FORM
 	dw DRILL_PECK
 	dw FEINT_ATTACK
 	dw HAZE
@@ -655,7 +825,8 @@ NatuEggMoves:
 	dw ROOST
 	dw $ff
 
-MareepEggMoves:
+MareepEggSpeciesMoves:
+	dp MAREEP, PLAIN_FORM
 	dw AGILITY
 	dw REFLECT
 	dw MUD_SLAP
@@ -666,27 +837,31 @@ MareepEggMoves:
 	dw SAFEGUARD
 	dw $ff
 
-HoppipEggMoves:
+HoppipEggSpeciesMoves:
+	dp HOPPIP, PLAIN_FORM
 	dw ENCORE
 	dw SEED_BOMB
 	dw $ff
 
-AipomEggMoves:
+AipomEggSpeciesMoves:
+	dp AIPOM, PLAIN_FORM
 	dw COUNTER
 	dw PURSUIT
 	dw $ff
 
-SunkernEggMoves:
+SunkernEggSpeciesMoves:
+	dp SUNKERN, PLAIN_FORM
 	dw $ff
 
-YanmaEggMoves:
+YanmaEggSpeciesMoves:
+	dp YANMA, PLAIN_FORM
 	dw FEINT_ATTACK
 	dw LEECH_LIFE
 	dw REVERSAL
 	dw $ff
 
-WooperPlainEggMoves:
-WooperPaldeanEggMoves:
+WooperPlainEggSpeciesMoves:
+	dp WOOPER, PLAIN_FORM
 	dw COUNTER
 	dw DOUBLE_KICK
 	dw ENCORE
@@ -696,7 +871,19 @@ WooperPaldeanEggMoves:
 	dw SAFEGUARD
 	dw $ff
 
-MurkrowEggMoves:
+WooperPaldeanEggSpeciesMoves:
+	dp WOOPER, PALDEAN_FORM
+	dw COUNTER
+	dw DOUBLE_KICK
+	dw ENCORE
+	dw RECOVER
+	dw BODY_SLAM
+	dw ANCIENTPOWER
+	dw SAFEGUARD
+	dw $ff
+
+MurkrowEggSpeciesMoves:
+	dp MURKROW, PLAIN_FORM
 	dw CONFUSE_RAY
 	dw DRILL_PECK
 	dw PERISH_SONG
@@ -707,13 +894,15 @@ MurkrowEggMoves:
 	dw ROOST
 	dw $ff
 
-MisdreavusEggMoves:
+MisdreavusEggSpeciesMoves:
+	dp MISDREAVUS, PLAIN_FORM
 	dw DESTINY_BOND
 	dw NASTY_PLOT
 	dw SCREECH
 	dw $ff
 
-GirafarigEggMoves:
+GirafarigEggSpeciesMoves:
+	dp GIRAFARIG, PLAIN_FORM
 	dw DOUBLE_KICK
 	dw FORESIGHT
 	dw FUTURE_SIGHT
@@ -724,14 +913,16 @@ GirafarigEggMoves:
 	dw CALM_MIND
 	dw $ff
 
-PinecoEggMoves:
+PinecoEggSpeciesMoves:
+	dp PINECO, PLAIN_FORM
 	dw PIN_MISSILE
 	dw SWIFT
 	dw REFLECT
 	dw TOXIC_SPIKES
 	dw $ff
 
-DunsparceEggMoves:
+DunsparceEggSpeciesMoves:
+	dp DUNSPARCE, NO_FORM
 	dw AGILITY
 	dw ASTONISH
 	dw BITE
@@ -741,7 +932,8 @@ DunsparceEggMoves:
 	dw HEX
 	dw $ff
 
-GligarEggMoves:
+GligarEggSpeciesMoves:
+	dp GLIGAR, PLAIN_FORM
 	dw AGILITY
 	dw BATON_PASS
 	dw METAL_CLAW
@@ -750,7 +942,8 @@ GligarEggMoves:
 	dw NIGHT_SLASH
 	dw $ff
 
-SnubbullEggMoves:
+SnubbullEggSpeciesMoves:
+	dp SNUBBULL, PLAIN_FORM
 	dw FEINT_ATTACK
 	dw LEER
 	dw METRONOME
@@ -761,7 +954,8 @@ SnubbullEggMoves:
 	dw CLOSE_COMBAT
 	dw $ff
 
-QwilfishEggMoves:
+QwilfishEggSpeciesMoves:
+	dp QWILFISH, PLAIN_FORM
 	dw BUBBLE_BEAM
 	dw HAZE
 	dw SUPERSONIC
@@ -769,10 +963,12 @@ QwilfishEggMoves:
 	dw WATER_PULSE
 	dw $ff
 
-QwilfishHisuianEggMoves:
+QwilfishHisuianEggSpeciesMoves:
+	dp QWILFISH, HISUIAN_FORM
 	dw $ff
 
-ShuckleEggMoves:
+ShuckleEggSpeciesMoves:
+	dp SHUCKLE, PLAIN_FORM
 	dw ROLLOUT
 	dw ACID
 	dw KNOCK_OFF
@@ -780,13 +976,15 @@ ShuckleEggMoves:
 	dw ROCK_BLAST
 	dw $ff
 
-HeracrossEggMoves:
+HeracrossEggSpeciesMoves:
+	dp HERACROSS, PLAIN_FORM
 	dw ROCK_BLAST
 	dw DEFENSE_CURL
 	dw PURSUIT
 	dw $ff
 
-SneaselEggMoves:
+SneaselEggSpeciesMoves:
+	dp SNEASEL, PLAIN_FORM
 	dw BITE
 	dw FORESIGHT
 	dw PURSUIT
@@ -796,10 +994,12 @@ SneaselEggMoves:
 	dw ICE_SHARD
 	dw $ff
 
-SneaselHisuianEggMoves:
+SneaselHisuianEggSpeciesMoves:
+	dp SNEASEL, HISUIAN_FORM
 	dw $ff
 
-TeddiursaEggMoves:
+TeddiursaEggSpeciesMoves:
+	dp TEDDIURSA, PLAIN_FORM
 	dw BELLY_DRUM
 	dw CROSS_CHOP
 	dw CRUNCH
@@ -814,12 +1014,14 @@ TeddiursaEggMoves:
 	dw CLOSE_COMBAT
 	dw $ff
 
-SlugmaEggMoves:
+SlugmaEggSpeciesMoves:
+	dp SLUGMA, PLAIN_FORM
 	dw SMOKESCREEN
 	dw CURSE
 	dw $ff
 
-SwinubEggMoves:
+SwinubEggSpeciesMoves:
+	dp SWINUB, PLAIN_FORM
 	dw AVALANCHE
 	dw BITE
 	dw TAKE_DOWN
@@ -830,8 +1032,8 @@ SwinubEggMoves:
 	dw ICICLE_SPEAR
 	dw $ff
 
-CorsolaPlainEggMoves:
-CorsolaGalarianEggMoves:
+CorsolaPlainEggSpeciesMoves:
+	dp CORSOLA, PLAIN_FORM
 	dw BARRIER
 	dw CONFUSE_RAY
 	dw HAZE
@@ -844,7 +1046,22 @@ CorsolaGalarianEggMoves:
 	dw ICICLE_SPEAR
 	dw $ff
 
-RemoraidEggMoves:
+CorsolaGalarianEggSpeciesMoves:
+	dp CORSOLA, GALARIAN_FORM
+	dw BARRIER
+	dw CONFUSE_RAY
+	dw HAZE
+	dw AMNESIA
+	dw SCREECH
+	dw ROCK_SLIDE
+	dw SAFEGUARD
+	dw CALM_MIND
+	dw WATER_PULSE
+	dw ICICLE_SPEAR
+	dw $ff
+
+RemoraidEggSpeciesMoves:
+	dp REMORAID, PLAIN_FORM
 	dw SPLASH
 	dw HAZE
 	dw OCTAZOOKA
@@ -856,7 +1073,8 @@ RemoraidEggMoves:
 	dw WATER_PULSE
 	dw $ff
 
-DelibirdEggMoves:
+DelibirdEggSpeciesMoves:
+	dp DELIBIRD, PLAIN_FORM
 	dw AURORA_BEAM
 	dw DESTINY_BOND
 	dw ICE_PUNCH
@@ -866,13 +1084,15 @@ DelibirdEggMoves:
 	dw SPLASH
 	dw $ff
 
-SkarmoryEggMoves:
+SkarmoryEggSpeciesMoves:
+	dp SKARMORY, PLAIN_FORM
 	dw DRILL_PECK
 	dw PURSUIT
 	dw BRAVE_BIRD
 	dw $ff
 
-HoundourEggMoves:
+HoundourEggSpeciesMoves:
+	dp HOUNDOUR, PLAIN_FORM
 	dw DESTINY_BOND
 	dw FIRE_SPIN
 	dw PURSUIT
@@ -882,7 +1102,8 @@ HoundourEggMoves:
 	dw WILL_O_WISP
 	dw $ff
 
-PhanpyEggMoves:
+PhanpyEggSpeciesMoves:
+	dp PHANPY, PLAIN_FORM
 	dw FOCUS_ENERGY
 	dw PLAY_ROUGH
 	dw WATER_GUN
@@ -893,14 +1114,16 @@ PhanpyEggMoves:
 	dw ENCORE
 	dw $ff
 
-StantlerEggMoves:
+StantlerEggSpeciesMoves:
+	dp STANTLER, PLAIN_FORM
 	dw BITE
 	dw DOUBLE_KICK
 	dw EXTRASENSORY
 	dw RAGE
 	dw $ff
 
-TyrogueEggMoves:
+TyrogueEggSpeciesMoves:
+	dp TYROGUE, PLAIN_FORM
 	dw BULLET_PUNCH
 	dw HI_JUMP_KICK
 	dw MACH_PUNCH
@@ -908,19 +1131,22 @@ TyrogueEggMoves:
 	dw RAPID_SPIN
 	dw $ff
 
-SmoochumEggMoves:
+SmoochumEggSpeciesMoves:
+	dp SMOOCHUM, PLAIN_FORM
 	dw BULK_UP
 	dw NASTY_PLOT
 	dw $ff
 
-ElekidEggMoves:
+ElekidEggSpeciesMoves:
+	dp ELEKID, PLAIN_FORM
 	dw BARRIER
 	dw CROSS_CHOP
 	dw KARATE_CHOP
 	dw BULK_UP
 	dw $ff
 
-MagbyEggMoves:
+MagbyEggSpeciesMoves:
+	dp MAGBY, PLAIN_FORM
 	dw BARRIER
 	dw BELLY_DRUM
 	dw CROSS_CHOP
@@ -931,13 +1157,15 @@ MagbyEggMoves:
 	dw SCREECH
 	dw $ff
 
-MiltankEggMoves:
+MiltankEggSpeciesMoves:
+	dp MILTANK, PLAIN_FORM
 	dw DIZZY_PUNCH
 	dw REVERSAL
 	dw SEISMIC_TOSS
 	dw $ff
 
-LarvitarEggMoves:
+LarvitarEggSpeciesMoves:
+	dp LARVITAR, PLAIN_FORM
 	dw DRAGON_DANCE
 	dw FOCUS_ENERGY
 	dw PURSUIT
@@ -947,7 +1175,8 @@ LarvitarEggMoves:
 	dw IRON_HEAD
 	dw $ff
 
-AzurillEggMoves:
+AzurillEggSpeciesMoves:
+	dp AZURILL, PLAIN_FORM
 	dw BELLY_DRUM
 	dw FORESIGHT
 	dw FUTURE_SIGHT
@@ -958,17 +1187,20 @@ AzurillEggMoves:
 	dw CALM_MIND
 	dw $ff
 
-WynautEggMoves:
+WynautEggSpeciesMoves:
+	dp WYNAUT, PLAIN_FORM
 	dw CHARM
 	dw ENCORE
 	dw $ff
 
-BonslyEggMoves:
+BonslyEggSpeciesMoves:
+	dp BONSLY, PLAIN_FORM
 	dw DEFENSE_CURL
 	dw EXPLOSION
 	dw $ff
 
-MimeJrEggMoves:
+MimeJrEggSpeciesMoves:
+	dp MIME_JR_, PLAIN_FORM
 	dw CONFUSE_RAY
 	dw FUTURE_SIGHT
 	dw HYPNOSIS
@@ -976,11 +1208,13 @@ MimeJrEggMoves:
 	dw TRICK
 	dw $ff
 
-HappinyEggMoves:
+HappinyEggSpeciesMoves:
+	dp HAPPINY, PLAIN_FORM
 	dw HEAL_BELL
 	dw $ff
 
-MantykeEggMoves:
+MantykeEggSpeciesMoves:
+	dp MANTYKE, PLAIN_FORM
 	dw HAZE
 	dw MIRROR_COAT
 	dw SPLASH
@@ -988,7 +1222,8 @@ MantykeEggMoves:
 	dw GUNK_SHOT
 	dw $ff
 
-MunchlaxEggMoves:
+MunchlaxEggSpeciesMoves:
+	dp MUNCHLAX, PLAIN_FORM
 	dw CHARM
 	dw COUNTER
 	dw CURSE
@@ -997,5 +1232,5 @@ MunchlaxEggMoves:
 	dw GUNK_SHOT
 	dw $ff
 
-NoEggMoves:
+NoEggSpeciesMoves:
 	dw $ff

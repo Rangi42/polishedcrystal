@@ -53,7 +53,7 @@ RunScriptCommand:
 	call GetScriptByte
 	call StackJumpTable
 
-ScriptCommandTable:
+.Jumptable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
 	table_width 2
 	dw Script_scall                      ; 00
@@ -273,7 +273,9 @@ ScriptCommandTable:
 	dw Script_setmapobjectpal            ; d6
 	dw Script_givespecialitem            ; d7
 	dw Script_givebadge                  ; d8
-	dw Script_givepokemove               ; d9
+	dw Script_setquantity                ; d9
+	dw Script_pluralize                  ; da
+	dw Script_givepokemove               ; db
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -587,7 +589,15 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
+	readmem wItemQuantityChangeBuffer
+	ifequalfwd 1, .OneItem
+	pluralize wStringBuffer4
+	farwritetext _GainedMultipleItemsText
+	sjumpfwd .FinishGiveItem
+.OneItem:
 	farwritetext _GainedItemText
+	; fallthrough
+.FinishGiveItem:
 	special ShowItemIcon
 	iffalsefwd .Full
 	specialsound
@@ -613,10 +623,7 @@ Script_verbosegiveitemvar:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	; a = carry ? TRUE : FALSE
-	sbc a
-	and TRUE
-	ldh [hScriptVar], a
+	call ScriptReturnCarry
 	call GetCurItemName
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
@@ -878,11 +885,11 @@ Script_cry:
 	; species, the second ext+form.
 	call GetScriptByte
 	call GetCurPartyMonSpeciesIfZero
-	jmp z, PlayCry
+	jmp z, PlayMonCry
 	ld c, a
 	call GetScriptByte
 	ld b, a
-	jmp PlayCry
+	jmp PlayMonCry
 
 Script_setlasttalked:
 	call GetScriptByte
@@ -1718,7 +1725,7 @@ Script_getcoins:
 	lb bc, PRINTNUM_LEFTALIGN | 2, 6
 	call PrintNum
 	ld de, wStringBuffer1
-	jmp ConvertMemToText
+	jr ConvertMemToText
 
 Script_getnum:
 	call ResetStringBuffer1
@@ -1775,7 +1782,7 @@ Script_giveitem:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	jr _ItemResult
+	jr ScriptReturnCarry
 
 Script_takeitem:
 	call GetScriptByte
@@ -1790,7 +1797,7 @@ Script_takeitem:
 	ld [wCurItemQuantity], a
 	ld hl, wNumItems
 	call TossItem
-	jr _ItemResult
+	jr ScriptReturnCarry
 
 Script_checkitem:
 	xor a
@@ -1799,12 +1806,65 @@ Script_checkitem:
 	ld [wCurItem], a
 	ld hl, wNumItems
 	call CheckItem
-_ItemResult:
+ScriptReturnCarry:
 	; a = carry ? TRUE : FALSE
 	sbc a
 	and TRUE
 	ldh [hScriptVar], a
 	ret
+
+Script_givekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call ReceiveKeyItem
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+Script_checkkeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call CheckKeyItem
+	jr ScriptReturnCarry
+
+Script_takekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call TossKeyItem
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+Script_verbosegivekeyitem:
+	call Script_givekeyitem
+	call GetCurKeyItemName
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveKeyItemScript)
+	ld de, GiveKeyItemScript
+	jmp ScriptCall
+
+GiveKeyItemScript:
+	farwritetext _GainedItemText
+	special ShowKeyItemIcon
+	playsound SFX_KEY_ITEM
+	waitsfx
+	waitbutton
+	keyitemnotify
+	end
+
+Script_keyitemnotify:
+	call GetKeyItemPocketName
+	call GetCurKeyItemName
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
+	call MapTextbox
+	; The key item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_givemoney:
 	call GetMoneyAccount
@@ -2508,7 +2568,7 @@ Script_loadgrottomon:
 	ld a, b
 	ld [wWildMonForm], a
 	ld [wCurForm], a
-	call PlayCry
+	call PlayMonCry
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a
 	farcall SetBadgeBaseLevel
@@ -2551,63 +2611,6 @@ Script_paintingpic:
 	call GetScriptByte
 	ld [wTrainerClass], a
 	farjp Paintingpic
-
-Script_givekeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call ReceiveKeyItem
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_checkkeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call CheckKeyItem
-	; a = carry ? TRUE : FALSE
-	sbc a
-	and TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_takekeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call TossKeyItem
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_verbosegivekeyitem:
-	call Script_givekeyitem
-	call GetCurKeyItemName
-	ld a, STRING_BUFFER_4
-	call CopyConvertedText
-	ld b, BANK(GiveKeyItemScript)
-	ld de, GiveKeyItemScript
-	jmp ScriptCall
-
-GiveKeyItemScript:
-	farwritetext _GainedItemText
-	special ShowKeyItemIcon
-	playsound SFX_KEY_ITEM
-	waitsfx
-	waitbutton
-	keyitemnotify
-	end
-
-Script_keyitemnotify:
-	call GetKeyItemPocketName
-	call GetCurKeyItemName
-	ld b, BANK(_PutItemInPocketText)
-	ld hl, _PutItemInPocketText
-	call MapTextbox
-	; The key item icon overwrites nine font tiles, including
-	; the "▶" needed by the right cursor arrow.
-	farjp LoadFonts_NoOAMUpdate
 
 Script_setmapobjectmovedata:
 	call GetScriptByte
@@ -2727,6 +2730,44 @@ ShowBadgeIcon:
 	ld [hl], a
 	ld b, 2
 	jmp SafeCopyTilemapAtOnce
+
+Script_setquantity:
+; Sets wItemQuantityChangeBuffer to hScriptVar, for text_plural benefit.
+	ldh a, [hScriptVar]
+	ld [wItemQuantityChangeBuffer], a
+	ret
+
+Script_pluralize:
+; Pluralizes a string buffer. This is needed for non-instant/scrolling text.
+; The reason is that otherwise, we can end up scrolling "Oran Berry", then
+; replace "y" with "ies" which looks silly.
+; This assumes that we can safely write to (string buffer)-1!
+	call GetScriptWord
+	; fallthrough (input in hl)
+Pluralize:
+	; Avoid going beyond the beginning of the string.
+	dec hl
+	ld a, [hl]
+	push hl
+	push af
+	ld a, "@"
+	ld [hli], a
+
+	; Track down the terminator.
+.terminator_loop
+	ld a, [hli]
+	cp "@"
+	jr nz, .terminator_loop
+	ld b, h
+	ld c, l
+	dec bc
+	call TextCommand_PLURAL
+	ld a, "@"
+	ld [bc], a
+	pop af
+	pop hl
+	ld [hl], a
+	ret
 
 Script_givepokemove:
 	; Get Move

@@ -68,6 +68,12 @@ MACRO text_far
 	dab \1 ; text_pointer
 ENDM
 
+MACRO text_plural
+; Overwrite text with its plural suffix.
+	stop_compressing_text
+	db "<PLURAL>"
+ENDM
+
 MACRO text_end
 ; Stops processing text commands.
 	stop_compressing_text

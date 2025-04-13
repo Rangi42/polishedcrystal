@@ -70,7 +70,7 @@ EvolutionAnimation:
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]
-	call PlayCry
+	call PlayMonCry
 
 .skip_cry
 	ld e, MUSIC_EVOLUTION
@@ -186,7 +186,7 @@ EvolutionAnimation:
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]
-	jmp PlayCry
+	jmp PlayMonCry
 
 .GetColoredCGBLayout:
 	ld c, FALSE

@@ -1,17 +1,13 @@
 ; get time of day based on the current hour
 GetTimeOfDay::
-	ld hl, TimesOfDay
-	call GetHourIntervalValue
+	ld hl, .TimesOfDay
+	call GetValueByTimeOfDay
 	ld [wTimeOfDay], a
 	ret
 
 ; hours for the time of day
-TimesOfDay:
-	db MORN_HOUR, NITE
-	db DAY_HOUR,  MORN
-	db EVE_HOUR,  DAY
-	db NITE_HOUR, EVE
-	db -1,        NITE
+.TimesOfDay:
+	db MORN, DAY, EVE, NITE
 
 StageRTCTimeForSave:
 	call UpdateTime

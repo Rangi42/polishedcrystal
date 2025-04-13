@@ -18,8 +18,9 @@ ENDM
 	charmap "<SOUND>",  $06
 	charmap "<DAY>",    $07
 	charmap "<FAR>",    $08
+	charmap "<PLURAL>", $09
 
-	; n-grams: $09 - $51 (defined below)
+	; n-grams: $0a - $51 (defined below)
 
 DEF SPECIALS_START EQU $52
 
@@ -229,7 +230,7 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "┘",        $ff
 
 
-DEF NGRAMS_START EQU $09
+DEF NGRAMS_START EQU $0a
 
 	newcharmap compressing, no_ngrams
 
@@ -243,7 +244,6 @@ DEF NGRAMS_VAR_START EQU $4f
 
 	newcharmap default, compressing
 
-	charmap "e ",       $09
 	charmap "ou",       $0a
 	charmap "th",       $0b
 	charmap "in",       $0c
@@ -310,7 +310,7 @@ DEF NGRAMS_VAR_START EQU $4f
 	charmap "ed ",      $49
 	charmap "It's ",    $4a
 	charmap "that ",    $4b
-	charmap " you ",    $4c
+	charmap "e ",       $4c
 
 DEF NGRAMS_END EQU $51
 

@@ -26,7 +26,7 @@ DisplayUsedMoveText:
 	jr z, .got_charging
 	ld a, [wEnemyCharging]
 .got_charging
-	cp 1
+	dec a
 	jr z, .charging
 
 	; update last move

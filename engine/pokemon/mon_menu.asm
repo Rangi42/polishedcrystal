@@ -17,6 +17,10 @@ HasNoItems:
 TossItemFromPC:
 	push de
 	call PartyMonItemName
+
+	; Force plural.
+	xor a
+	ld [wItemQuantityChangeBuffer], a
 	ld hl, .TossHowMany
 	call MenuTextbox
 	farcall SelectQuantityToToss
@@ -54,7 +58,7 @@ TossItemFromPC:
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_far _ItemsThrowAwayText
+	text_far _AskQuantityThrowAwayText
 	text_end
 
 .TossedThisMany:
@@ -371,7 +375,7 @@ PCGiveItem:
 SwapPartyItem:
 	ld a, [wPartyCount]
 	cp 2
-	jr c, .DontSwap
+	jmp c, .DontSwap
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wSwitchMon], a
@@ -403,11 +407,11 @@ SwapPartyItem:
 	; First, swap mail metadata. Don't bother checking if we are holding Mail,
 	; doing the swap either way is harmless and simplifies checks.
 	; Note that wCurPartyMon is 0-indexed while wSwitchMon is 1-indexed.
+	ld a, [wCurPartyMon]
+	ld c, a
 	push bc
 	push de
-	ld a, [wCurPartyMon]
-	inc a
-	ld c, a
+	inc c
 	ld a, [wSwitchMon]
 	ld e, a
 	farcall SwapPartyMonMail
@@ -418,7 +422,7 @@ SwapPartyItem:
 	; wCurPartyMon contains second selected pkmn
 	; getting pkmn2 item and putting into stack item addr + item id
 	call GetPartyItemLocation
-	ld a, [hl] ; a pkmn2 contains item
+	ld a, [hl] ; a contains pkmn2 item
 	push hl
 	push af
 	; getting pkmn 1 item and putting item id into b
@@ -426,14 +430,30 @@ SwapPartyItem:
 	dec a
 	ld [wCurPartyMon], a
 	call GetPartyItemLocation
-	ld a, [hl] ; a pkmn1 contains item
+	ld a, [hl] ; a contains pkmn1 item
 	ld b, a
 	; actual swap
 	pop af
-	ld [hl], a ; pkmn1 get pkm2 item
+	ld [hl], a ; pkmn1 get pkmn2 item
+	xor a ; ld a, MON_SPECIES
+	push hl
+	call GetPartyParamLocationAndValue
+	pop hl
+	ld [wCurPartySpecies], a ; load pkmn1 species
+	push bc
+	call UpdateMewtwoForm
+	pop bc
 	pop hl
 	ld a, b
-	ld [hl], a ; pkmn1 get pkm2 item
+	ld [hl], a ; pkmn2 get pkmn1 item
+	ld a, c
+	ld [wCurPartyMon], a ; restore pkmn2
+	xor a ; ld a, MON_SPECIES
+	push hl
+	call GetPartyParamLocationAndValue
+	pop hl
+	ld [wCurPartySpecies], a ; load pkmn2 species
+	call UpdateMewtwoForm
 	xor a
 	ld [wPartyMenuActionText], a
 	jmp CancelPokemonAction
@@ -619,9 +639,9 @@ MonMailAction:
 	ld a, $3
 	ret c
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a ; 1?
 	jr z, .read
-	cp $2
+	dec a ; 2?
 	jr z, TakeMail
 	ld a, $3
 	ret
@@ -752,7 +772,7 @@ MonMenu_Cut:
 	farcall CutFunction
 _MonMenu_StandardCheck:
 	ld a, [wFieldMoveSucceeded]
-	cp $1
+	dec a
 	jr nz, _MonMenu_StandardFail
 _MonMenu_StandardSuccess:
 	ld b, $4

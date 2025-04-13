@@ -167,6 +167,13 @@ VBlank0::
 	ld hl, hVBlankCounter
 	inc [hl]
 
+	; Increment time since text printing.
+	ld hl, wTimeSinceText
+	inc [hl]
+	jr nz, .no_overflow
+	dec [hl]
+
+.no_overflow
 	; advance random variables
 	call UpdateDividerCounters
 	call AdvanceRNGState

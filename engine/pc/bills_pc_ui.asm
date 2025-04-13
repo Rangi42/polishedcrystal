@@ -538,7 +538,6 @@ SetPartyIcons:
 	ld a, PARTY_LENGTH
 	call BillsPC_BlankTiles
 
-_SetPartyIcons:
 	; Write party members
 	lb bc, 0, 1
 	ld hl, wBillsPC_PartyList
@@ -560,7 +559,6 @@ SetBoxIcons:
 	ld a, MONS_PER_BOX
 	call BillsPC_BlankTiles
 
-_SetBoxIcons:
 	; Write box members
 	ld a, [wCurBox]
 	inc a

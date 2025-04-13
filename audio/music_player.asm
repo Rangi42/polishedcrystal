@@ -1116,7 +1116,6 @@ DrawNote:
 	ld a, [hl]
 	cp b
 	jr z, DrawLongerNote
-DrawChangedNote:
 	ld [hl], b
 	call SetVisualIntensity
 DrawNewNote:
@@ -1330,35 +1329,6 @@ UpdateVisualIntensity:
 	cp 2
 	jr z, .next_channel
 	jr .update_channels
-
-AddNoteToOld:
-	push hl
-	ld a, [wNumNoteLines]
-	add a
-	add a
-	ld c, a
-	ld b, 0
-	ld hl, wShadowOAM + 3 * 4
-	add hl, bc
-	push hl
-	pop de
-	pop hl
-rept 3
-	ld a, [hli]
-	ld [de], a
-	inc de
-endr
-	ld a, [hl]
-	ld [de], a
-
-	ld a, [wNumNoteLines]
-	inc a
-	cp $25
-	jr nz, .finish
-	xor a
-.finish
-	ld [wNumNoteLines], a
-	ret
 
 GetPitchAddr:
 	ld hl, wChannel1Pitch

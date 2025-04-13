@@ -289,13 +289,15 @@ DayCareStep::
 	ld b, [hl]
 	ld c, a
 	call GetSpeciesAndFormIndex
-	ld hl, EggMovePointers
+	ld hl, EggSpeciesMovesPointers
 	add hl, bc
 	add hl, bc
-	ld a, BANK(EggMovePointers)
+	ld a, BANK(EggSpeciesMovesPointers)
 	call GetFarWord
 	ld b, h
 	ld c, l
+	inc bc
+	inc bc ; first two bytes are base evolution
 	pop hl
 
 	; Check each move slot for the other mon for whether we already know the
@@ -333,7 +335,7 @@ DayCareStep::
 	ld b, h
 	ld c, l
 	pop hl
-	ld a, BANK(EggMoves)
+	ld a, BANK(EggSpeciesMoves)
 	call FarIsInWordArray
 	pop bc
 	ld a, c

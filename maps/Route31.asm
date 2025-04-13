@@ -346,8 +346,10 @@ Route31MailRecipientScript:
 	jumpopenedtext Text_Route31CantTakeLastMon
 
 ReceivedSpearowMailText:
+	setcharmap no_ngrams
 	db   "Dark Cave leads"
 	next "to another road@"
+	setcharmap default
 
 Bug_catcherWade1SeenText:
 	text "I caught a bunch"

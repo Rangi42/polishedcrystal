@@ -133,7 +133,8 @@ RefreshPlayerCoords:
 	ret
 
 CopyObjectStruct::
-	call CheckObjectMask
+	call GetObjectMask
+	ld a, [hl]
 	and a
 	ret nz ; masked
 	ld hl, wObjectStructs + OBJECT_LENGTH + OBJECT_MAP_OBJECT_INDEX

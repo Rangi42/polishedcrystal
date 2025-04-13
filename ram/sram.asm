@@ -30,9 +30,10 @@ sMoveIndexTable:: ds wMoveIndexTableEnd - wMoveIndexTable
 
 	ds 134 ; unused
 
-sChecksum:: dw
-
 sSRAMAccessCount:: db
+
+sChecksum:: dw
+	assert sChecksum == $ad0d, "Checksum has shifted."
 
 sCheckValue2:: db ; loaded with 127, used to check save corruption
 
@@ -63,6 +64,7 @@ sBackupMoveIndexTable:: ds wMoveIndexTableEnd - wMoveIndexTable
 	ds 135 ; unused
 
 sBackupChecksum:: dw
+	assert sBackupChecksum == $bf0d, "Backup checksum has shifted."
 
 sBackupCheckValue2:: db ; loaded with 127, used to check save corruption
 
