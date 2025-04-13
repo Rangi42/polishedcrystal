@@ -114,7 +114,7 @@ wCurMove::
 wCreditsSpawn::
 	db
 
-wNamedObjectTypeBuffer:: db
+	ds 1 ; unused
 
 wCurOptionsPage:: db
 

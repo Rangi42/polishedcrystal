@@ -7,19 +7,6 @@ DEF MOVE_NAME_LENGTH   EQU 13
 DEF ITEM_NAME_LENGTH   EQU 13
 DEF TRAINER_CLASS_NAME_LENGTH EQU 13
 
-; GetName types (see home/names.asm)
-	const_def 1
-	const MON_NAME           ; 1
-	const TRAINER_CLASS_NAME ; 2
-	const ITEM_NAME          ; 3
-	const KEY_ITEM_NAME      ; 4
-	const SPECIAL_ITEM_NAME  ; 5
-	const BADGE_NAME         ; 6
-	const APRICORN_NAME      ; 7
-	const WING_NAME          ; 8
-	const EXP_CANDY_NAME     ; 9
-DEF NUM_NAME_TYPES EQU const_value - 1
-
 ; see home/text.asm
 DEF BORDER_WIDTH   EQU 2
 DEF TEXTBOX_WIDTH  EQU SCREEN_WIDTH
