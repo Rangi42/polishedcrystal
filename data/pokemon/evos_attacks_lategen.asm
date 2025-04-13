@@ -747,4 +747,9 @@ endc
 	learnset 48, GUNK_SHOT ; Stomping Tantrum → HGSS tutor move
 	learnset 53, OUTRAGE
 
-	evos_attacks Egg
+	; Also terminates previous mon's learnset
+EggEvosAttacks:
+	db -1 ; no more evolutions
+	db -1 ; no more level-up moves
+
+	end_evos_attacks

@@ -896,3 +896,5 @@ endc
 	learnset 67, FOCUS_BLAST ; Hammer Arm → SV TM move
 	learnset 76, HYPER_BEAM ; Blood Moon → SV TM move
 	learnset 85, GUNK_SHOT ; SV TM move
+
+	end_evos_attacks

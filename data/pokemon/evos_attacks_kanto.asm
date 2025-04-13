@@ -2772,3 +2772,5 @@ endc
 	learnset 80, AMNESIA ; Baton Pass → Amnesia
 	learnset 90, NASTY_PLOT
 	learnset 100, AURA_SPHERE
+
+	end_evos_attacks

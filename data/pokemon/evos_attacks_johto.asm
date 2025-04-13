@@ -1921,3 +1921,5 @@ endc
 	learnset 82, NASTY_PLOT ; Leaf Storm → event move
 	learnset 91, PERISH_SONG
 	learnset 100, AURA_SPHERE ; Sw/Sh move
+
+	end_evos_attacks
