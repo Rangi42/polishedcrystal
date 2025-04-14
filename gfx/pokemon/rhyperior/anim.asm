@@ -7,4 +7,5 @@
 	frame 5, 04
 	dorepeat 5
 	frame 3, 05
+	frame 6, 05
 	endanim
