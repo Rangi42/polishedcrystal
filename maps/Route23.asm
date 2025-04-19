@@ -141,7 +141,7 @@ Route23PlainBadgeTriggerScript:
 	checkscene
 	ifgreater $2, Route23OfficerHaveBadgeScript
 	setscene $3
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .PlainBadgeText:
 	db "Plain Badge@"

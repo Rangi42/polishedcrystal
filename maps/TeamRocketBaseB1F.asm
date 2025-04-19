@@ -196,7 +196,7 @@ SecurityCamera3a:
 	turnobject PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
 	scall TrainerCameraGrunt1
-	ifequal $1, NoSecurityCamera
+	ifequalfwd $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
@@ -365,7 +365,7 @@ ExplodingTrap4:
 
 ExplodingTrap5:
 	checkevent EVENT_EXPLODING_TRAP_5
-	iftrue NoExplodingTrap
+	iftruefwd NoExplodingTrap
 	scall GeodudeExplodingTrap
 	reloadmapafterbattle
 	setevent EVENT_EXPLODING_TRAP_5
@@ -373,7 +373,7 @@ ExplodingTrap5:
 
 ExplodingTrap6:
 	checkevent EVENT_EXPLODING_TRAP_6
-	iftrue NoExplodingTrap
+	iftruefwd NoExplodingTrap
 	scall KoffingExplodingTrap
 	reloadmapafterbattle
 	setevent EVENT_EXPLODING_TRAP_6
@@ -381,7 +381,7 @@ ExplodingTrap6:
 
 ExplodingTrap7:
 	checkevent EVENT_EXPLODING_TRAP_7
-	iftrue NoExplodingTrap
+	iftruefwd NoExplodingTrap
 	scall VoltorbExplodingTrap
 	reloadmapafterbattle
 	setevent EVENT_EXPLODING_TRAP_7

@@ -51,11 +51,42 @@ WaitScriptMovement:
 
 RunScriptCommand:
 	call GetScriptByte
+	ld c, a ; save the command byte
 	call StackJumpTable
 
 .Jumptable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
 	table_width 2
+	dw Script_checkevent                 ; 00
+	dw Script_checkevent                 ; 01
+	dw Script_checkevent                 ; 02
+	dw Script_checkevent                 ; 03
+	dw Script_checkevent                 ; 04
+	dw Script_checkevent                 ; 05
+	dw Script_checkevent                 ; 06
+	dw Script_checkevent                 ; 07
+	dw Script_checkevent                 ; 08
+	dw Script_clearevent                 ; 09
+	dw Script_clearevent                 ; 0a
+	dw Script_clearevent                 ; 0b
+	dw Script_clearevent                 ; 0c
+	dw Script_clearevent                 ; 0d
+	dw Script_clearevent                 ; 0e
+	dw Script_clearevent                 ; 0f
+	dw Script_clearevent                 ; 10
+	dw Script_clearevent                 ; 11
+	dw Script_setevent                   ; 12
+	dw Script_setevent                   ; 13
+	dw Script_setevent                   ; 14
+	dw Script_setevent                   ; 15
+	dw Script_setevent                   ; 16
+	dw Script_setevent                   ; 17
+	dw Script_setevent                   ; 18
+	dw Script_setevent                   ; 19
+	dw Script_setevent                   ; 1a
+	dw Script_checkflag                  ; 1b
+	dw Script_clearflag                  ; 1c
+	dw Script_setflag                    ; 1d
 	dw Script_scall                      ; 00
 	dw Script_farscall                   ; 01
 	dw Script_memcall                    ; 02
@@ -107,12 +138,6 @@ RunScriptCommand:
 	dw Script_giveegg                    ; 30
 	dw Script_givepokemail               ; 31
 	dw Script_checkpokemail              ; 32
-	dw Script_checkevent                 ; 33
-	dw Script_clearevent                 ; 34
-	dw Script_setevent                   ; 35
-	dw Script_checkflag                  ; 36
-	dw Script_clearflag                  ; 37
-	dw Script_setflag                    ; 38
 	dw Script_wildon                     ; 39
 	dw Script_wildoff                    ; 3a
 	dw Script_warpmod                    ; 3b
@@ -2101,17 +2126,28 @@ Script_giveegg:
 	ret
 
 Script_setevent:
-	call GetScriptWordDE
+	ld a, c
+	sub setevent_command
+	ld d, a
+	call GetScriptByte
+	ld e, a
 	ld b, SET_FLAG
 	jmp EventFlagAction
 
 Script_clearevent:
-	call GetScriptWordDE
+	ld a, c
+	sub clearevent_command
+	ld d, a
+	call GetScriptByte
+	ld e, a
 	ld b, RESET_FLAG
 	jmp EventFlagAction
 
 Script_checkevent:
-	call GetScriptWordDE
+	assert checkevent_command == 0
+	ld d, c
+	call GetScriptByte
+	ld e, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	jr z, .false
@@ -2121,18 +2157,27 @@ Script_checkevent:
 	ret
 
 Script_setflag:
-	call GetScriptWordDE
+	assert HIGH(NUM_ENGINE_FLAGS) == 0
+	ld d, 0
+	call GetScriptByte
+	ld e, a
 	ld b, SET_FLAG
 	jr _EngineFlagAction
 
 Script_clearflag:
-	call GetScriptWordDE
+	assert HIGH(NUM_ENGINE_FLAGS) == 0
+	ld d, 0
+	call GetScriptByte
+	ld e, a
 	ld b, RESET_FLAG
 _EngineFlagAction:
 	farjp EngineFlagAction
 
 Script_checkflag:
-	call GetScriptWordDE
+	assert HIGH(NUM_ENGINE_FLAGS) == 0
+	ld d, 0
+	call GetScriptByte
+	ld e, a
 	ld b, 2 ; check
 	call _EngineFlagAction
 	ld a, c

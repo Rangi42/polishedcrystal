@@ -1,6 +1,52 @@
 ; RunScriptCommand.Jumptable indexes (see engine/overworld/scripting.asm)
 	const_def
 
+	const checkevent_command ; $00-08
+MACRO checkevent
+	db checkevent_command + HIGH(\1)
+	db LOW(\1) ; event_flag
+ENDM
+
+	const_next HIGH(NUM_EVENTS) + 1
+	assert HIGH(NUM_EVENTS) == 8, "HIGH(NUM_EVENTS) is no longer 8, this will shift the event commands"
+
+	const clearevent_command ; $09-11
+MACRO clearevent
+	db clearevent_command + HIGH(\1)
+	db LOW(\1) ; event_flag
+ENDM
+
+	const_next HIGH(NUM_EVENTS) + 1 + clearevent_command
+
+	const setevent_command ; $12-1A
+MACRO setevent
+	db setevent_command + HIGH(\1)
+	db LOW(\1) ; event_flag
+ENDM
+
+	const_next HIGH(NUM_EVENTS) + 1 + setevent_command
+
+	const checkflag_command
+MACRO checkflag
+	db checkflag_command
+	assert HIGH(\1) == 0, "checkflag command only supports 8-bit flags"
+	db LOW(\1) ; engine_flag
+ENDM
+
+	const clearflag_command
+MACRO clearflag
+	db clearflag_command
+	assert HIGH(\1) == 0, "clearflag command only supports 8-bit flags"
+	db LOW(\1) ; engine_flag
+ENDM
+
+	const setflag_command
+MACRO setflag
+	db setflag_command
+	assert HIGH(\1) == 0, "setflag command only supports 8-bit flags"
+	db LOW(\1) ; engine_flag
+ENDM
+
 	const scall_command
 MACRO scall
 	db scall_command
@@ -370,42 +416,6 @@ ENDM
 MACRO checkpokemail
 	db checkpokemail_command
 	dw \1 ; pointer
-ENDM
-
-	const checkevent_command
-MACRO checkevent
-	db checkevent_command
-	dw \1 ; event_flag
-ENDM
-
-	const clearevent_command
-MACRO clearevent
-	db clearevent_command
-	dw \1 ; event_flag
-ENDM
-
-	const setevent_command
-MACRO setevent
-	db setevent_command
-	dw \1 ; event_flag
-ENDM
-
-	const checkflag_command
-MACRO checkflag
-	db checkflag_command
-	dw \1 ; engine_flag
-ENDM
-
-	const clearflag_command
-MACRO clearflag
-	db clearflag_command
-	dw \1 ; engine_flag
-ENDM
-
-	const setflag_command
-MACRO setflag
-	db setflag_command
-	dw \1 ; engine_flag
 ENDM
 
 	const wildon_command

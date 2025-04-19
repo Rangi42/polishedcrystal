@@ -101,9 +101,9 @@ Kurt1:
 	checkevent EVENT_GAVE_KURT_GRN_APRICORN
 	iftruefwd .GiveFriendBall
 	checkevent EVENT_GAVE_KURT_WHT_APRICORN
-	iftrue .GiveFastBall
+	iftruefwd .GiveFastBall
 	checkevent EVENT_GAVE_KURT_BLK_APRICORN
-	iftrue .GiveHeavyBall
+	iftruefwd .GiveHeavyBall
 	checkevent EVENT_GAVE_KURT_PNK_APRICORN
 	iftrue .GiveLoveBall
 	checkevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
