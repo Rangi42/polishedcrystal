@@ -718,6 +718,51 @@ CloseCombat:
 	posthiteffects
 	endmove
 
+Superpower:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	lowerstat ATTACK
+	lowerstat DEFENSE
+	postfainteffects
+	posthiteffects
+	endmove
+
+Overheat:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	lowerstat $10 | SP_ATTACK
+	postfainteffects
+	posthiteffects
+	endmove
+
 StaticDamage:
 	checkobedience
 	usedmovetext
@@ -995,6 +1040,15 @@ ShellSmash:
 	forceraisestat $10 | SPEED
 	endmove
 
+QuiverDance:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat SP_ATTACK
+	forceraisestat SP_DEFENSE
+	forceraisestat SPEED
+	endmove
+
 AttackDown:
 	checkobedience
 	usedmovetext
@@ -1227,6 +1281,30 @@ Trap:
 	damagecalc
 	stab
 	damagevariation
+	clearmissdamage
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	traptarget
+	endmove
+
+Whirlpool:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	doubledivingdamage
 	clearmissdamage
 	moveanim
 	failuretext
@@ -2015,6 +2093,21 @@ MirrorCoat:
 	posthiteffects
 	endmove
 
+MetalBurst:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	metalburst
+	moveanim
+	failuretext
+	applydamage
+	postfainteffects
+	posthiteffects
+	endmove
+
 Earthquake:
 	checkobedience
 	usedmovetext
@@ -2028,6 +2121,28 @@ Earthquake:
 	stab
 	damagevariation
 	doubleundergrounddamage
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
+Surf:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	doubledivingdamage
 	moveanim
 	failuretext
 	applydamage
@@ -2181,6 +2296,31 @@ Dig:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
+	endmove
+
+Bounce:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	charge
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanimnosub
+	raisesub
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	paralyzetarget
 	endmove
 
 FlareBlitz:

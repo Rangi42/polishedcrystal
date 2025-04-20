@@ -276,6 +276,51 @@ endc
 	const THUNDER_FANG  ; $108
 	const POISON_FANG   ; $109
 	const PSYCHIC_FANGS ; $10A
+
+	const INFERNO       ; $10B
+	const OVERHEAT      ; $10C
+	const BLAZE_KICK    ; $10D
+	const BUBBLE        ; $10E
+	const MUDDY_WATER   ; $10F
+	const CLAMP         ; $110
+	const FLIP_TURN     ; $111
+	const RAZOR_SHELL   ; $112
+	const DIVE          ; $113
+	const WITHDRAW      ; $114
+	const LEAF_STORM    ; $115
+	const COTTON_SPORE  ; $116
+	const SHOCK_WAVE    ; $117
+	const PSYSHOCK      ; $118
+	const PSYCHO_CUT    ; $119
+	const MEDITATE      ; $11A
+	const ICE_BALL      ; $11B
+	const DUAL_CHOP     ; $11C
+	const BREAK_SWIPE   ; $11D
+	const DRACO_METEOR  ; $11E
+	const IRON_DEFENSE  ; $11F
+	const METAL_SOUND   ; $120
+	const MIRROR_SHOT   ; $121
+	const MAGNET_BOMB   ; $122
+	const METAL_BURST   ; $123
+	const INFESTATION   ; $124
+	const STRUGGLE_BUG  ; $125
+	const QUIVER_DANCE  ; $126
+	const ROCK_TOMB     ; $127
+	const ROCK_POLISH   ; $128
+	const DRILL_RUN     ; $129
+	const MUD_SHOT      ; $12A
+	const SAND_ATTACK   ; $12B
+	const CROSS_POISON  ; $12C
+	const POISON_GAS    ; $12D
+	const ACID_ARMOR    ; $12E
+	const BOUNCE        ; $12F
+	const AIR_CUTTER    ; $130
+	const POWERUPPUNCH  ; $131
+	const ROLLING_KICK  ; $132
+	const VITAL_THROW   ; $133
+	const JUMP_KICK     ; $134
+	const SUPERPOWER    ; $135
+	const DETECT        ; $136
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

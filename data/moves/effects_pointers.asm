@@ -159,4 +159,11 @@ MoveEffectsPointers:
 	dw BrickBreak
 	dw TrickRoom
 	dw WeatherBall
+	dw Overheat
+	dw QuiverDance
+	dw Superpower
+	dw MetalBurst
+	dw Bounce
+	dw Surf
+	dw Whirlpool
 	assert_table_length NUM_MOVE_EFECTS

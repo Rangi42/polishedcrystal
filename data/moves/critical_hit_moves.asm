@@ -8,4 +8,9 @@ CriticalHitMoves:
 	dw CROSS_CHOP
 	dw SHADOW_CLAW
 	dw STONE_EDGE
+	dw BLAZE_KICK
+	dw PSYCHO_CUT
+	dw DRILL_RUN
+	dw CROSS_POISON
+	dw AIR_CUTTER
 	dw -1

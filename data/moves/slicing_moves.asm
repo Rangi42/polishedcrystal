@@ -6,4 +6,6 @@ SlicingMoves:
 	dw RAZOR_LEAF
 	dw SLASH
 	dw X_SCISSOR
+	dw RAZOR_SHELL
+	dw PSYCHO_CUT
 	dw -1

@@ -629,6 +629,31 @@ CheckIfHPIsZero::
 	or [hl]
 	ret
 
+GetUserSemiInvuln:
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call SwitchTurn
+	call GetOpponentSemiInvuln.go
+	jmp SwitchTurn
+
+GetOpponentSemiInvuln:
+	; returns opponent semi invulnerable type in a
+	; sets z if opponent is not semi invulnerable
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+.go
+	call GetBattleVar
+	and SEMI_INVULNERABLE_MASK
+	ret z
+
+	ld hl, wEnemySemiInvulnerableType
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld hl, wPlayerSemiInvulnerableType
+.ok
+	ld a, [hl]
+	and a
+	ret
+
 GetWeatherAfterOpponentUmbrella::
 	call StackCallOpponentTurn
 GetWeatherAfterUserUmbrella::

@@ -2382,9 +2382,19 @@ _BattleFlewText::
 	line "flew up high!"
 	prompt
 
+SECTION "_BattleBouncedText", ROMX
+_BattleBouncedText::
+	line "sprang up!"
+	prompt
+
 SECTION "_BattleDugText", ROMX
 _BattleDugText::
 	line "dug a hole!"
+	prompt
+
+SECTION "_BattleDoveText", ROMX
+_BattleDoveText::
+	line "dove down!"
 	prompt
 
 SECTION "Text_BreedHuh", ROMX

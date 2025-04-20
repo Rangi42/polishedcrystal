@@ -2708,7 +2708,7 @@ BGEffect_CheckMonVisible:
 	ld hl, wEnemySubStatus3
 .got_substatus
 	ld a, [hld]
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and SEMI_INVULNERABLE_MASK
 	ret nz
 	bit SUBSTATUS_FAINTED, [hl]
 	ret

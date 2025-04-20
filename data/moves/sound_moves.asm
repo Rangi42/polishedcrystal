@@ -9,4 +9,5 @@ SoundMoves::
 	dw SING
 	dw SUPERSONIC
 	dw HEAL_BELL
+	dw METAL_SOUND
 	db -1

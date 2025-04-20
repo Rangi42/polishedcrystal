@@ -6370,7 +6370,7 @@ _BattleRandom::
 PlayBattleAnimDE_OnlyIfVisible:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and SEMI_INVULNERABLE_MASK
 	ret nz
 
 PlayBattleAnimDE:
