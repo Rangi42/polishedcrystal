@@ -5447,6 +5447,8 @@ HandleRampage:
 ; otherwise ends rampage if the attack missed for any reason
 	call HasUserFainted
 	ret z
+	call GetFutureSightUser
+	ret nc
 
 	call CheckRampageStatusAndGetRolloutCount
 	ret z
