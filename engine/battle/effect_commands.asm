@@ -3376,11 +3376,11 @@ BattleCommand_posthiteffects:
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
+	call GetFutureSightUser
+	ret nz
 	call HandleRampage
 	call CheckSheerForceNegation
 	ret z
-	call GetFutureSightUser
-	ret nz
 	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
@@ -5276,7 +5276,7 @@ LowerOppStatHit:
 _LowerOppStatHit:
 	or STAT_TARGET | STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 ChangeStat:
-; b contains stat to alter, or zero if it should be read from the move script
+; b contains stat to alter, or -1 if it should be read from the move script
 	farjp FarChangeStat
 
 ResetMiss:
