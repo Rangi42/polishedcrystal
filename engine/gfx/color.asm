@@ -833,7 +833,7 @@ InitCGBPals::
 	rst ByteFill
 	xor a
 	ldh [rVBK], a
-	ld a, $80
+	ld a, 1 << rBGPI_AUTO_INCREMENT
 	ldh [rBGPI], a
 	ld c, 4 * 8
 if !DEF(MONOCHROME)
@@ -851,7 +851,7 @@ else
 endc
 	dec c
 	jr nz, .bgpals_loop
-	ld a, $80
+	ld a, 1 << rOBPI_AUTO_INCREMENT
 	ldh [rOBPI], a
 	ld c, 4 * 8
 if !DEF(MONOCHROME)
