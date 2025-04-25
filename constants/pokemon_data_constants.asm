@@ -312,6 +312,7 @@ DEF NUM_HOF_TEAMS EQU 10
 	const EVOLVE_NONE ; only for Lyra's info
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
+	const EVOLVE_TRADE
 	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
 	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")

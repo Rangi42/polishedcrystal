@@ -69,9 +69,6 @@ ShuffleRange:
 	dec b
 	jr nz, .index_loop
 	pop hl
-	; fallthrough
-Shuffle:
-; Shuffles array in hl of length c.
 .shuffle_loop
 	dec c
 	ret z

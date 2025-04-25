@@ -24,13 +24,25 @@ _Init::
 	xor a
 	ldh [rLCDC], a
 
-; Place stack at its default location in HRAM for 'call nz, DoubleSpeed'
-	ld sp, $fffe
-
 ; Enable double speed now to speed up the rest of initialization
 	ldh a, [hCGB]
 	and a
-	call nz, DoubleSpeed
+	jr z, .no_double_speed
+	ld hl, rKEY1
+	bit 7, [hl]
+	jr nz, .no_double_speed
+	set 0, [hl]
+	xor a
+	ldh [rIF], a
+	ldh [rIE], a
+	ld a, $30
+	ldh [rJOYP], a
+	stop ; rgbasm adds a nop after this instruction by default
+.no_double_speed
+
+; Place stack at its default location in HRAM for 'rst ByteFill'
+; (which clears the WRAM0 that contains 'wStack')
+	ld sp, $fffe
 
 ; Clear WRAM bank 0
 	ld hl, wRAM0Start
@@ -63,7 +75,17 @@ _Init::
 	call ClearVRAM
 	call ClearSprites
 
-	; Write checksum to WRAM for save state check
+; Initialize SRAM access count
+	ld a, SRAM_ENABLE
+	ld [MBC3SRamEnable], a
+	ld a, BANK(sSRAMAccessCount)
+	ld [MBC3SRamBank], a
+	ld a, -1
+	ld [sSRAMAccessCount], a
+	ld a, SRAM_DISABLE
+	ld [MBC3SRamEnable], a
+
+; Write checksum to WRAM for save state check
 	ld a, [RomHeaderChecksum]
 	ld [wRomChecksum], a
 	ld a, [RomHeaderChecksum + 1]

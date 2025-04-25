@@ -63,11 +63,13 @@ NamingScreen:
 	call StackJumpTable
 
 .Jumptable:
+	table_width 2
 	dw .Pokemon
 	dw .Player
 	dw .Rival
 	dw .TrendyPhrase
 	dw .Box
+	assert_table_length NUM_NAMING_SCREEN_TYPES
 
 .Pokemon:
 	ld a, [wCurPartySpecies]
@@ -335,11 +337,11 @@ NamingScreenJoypadLoop:
 
 .a
 	call NamingScreen_PressedA_GetCursorCommand
-	cp $1
+	dec a ; 1?
 	jr z, .select
-	cp $2
+	dec a ; 2?
 	jr z, .b
-	cp $3
+	dec a ; 3?
 	jr z, .end
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter
@@ -566,11 +568,10 @@ NamingScreen_GetDPad:
 	ret
 
 .caps_del_done_left
-	cp $1
-	jr nz, .wrap_around_command_left
-	ld a, $4
-.wrap_around_command_left
 	dec a
+	jr nz, .wrap_around_command_left
+	ld a, $3
+.wrap_around_command_left
 	dec a
 	ld e, a
 	add a
@@ -850,7 +851,7 @@ _ComposeMailMessage:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .initwNamingScreenMaxNameLength
-	ld a, CGB_MAIL
+	ld a, CGB_WRITE_MAIL
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
 	call WaitTop
@@ -990,11 +991,11 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 
 .a
 	call NamingScreen_PressedA_GetCursorCommand
-	cp $1
+	dec a ; 1?
 	jr z, .select
-	cp $2
+	dec a ; 2?
 	jr z, .b
-	cp $3
+	dec a ; 3?
 	jr z, .finished
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter

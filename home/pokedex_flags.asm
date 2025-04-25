@@ -52,6 +52,7 @@ CheckCosmeticCaughtMon:
 	and EXTSPECIES_MASK
 	inc a
 	push bc
+	ld b, a
 	call CheckCaughtMon
 	pop bc
 	ret nz

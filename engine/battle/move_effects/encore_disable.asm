@@ -100,7 +100,7 @@ DoEncoreDisable:
 
 .failed
 	; Cursed Body prints nothing in this case.
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 

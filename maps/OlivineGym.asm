@@ -14,10 +14,10 @@ OlivineGym_MapScriptHeader:
 	bg_event  6, 13, BGEVENT_READ, OlivineGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, EVENT_OLIVINE_GYM_JASMINE
-	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
-	object_event  3, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
-	object_event  6,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
+	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, EVENT_OLIVINE_GYM_JASMINE
+	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
+	object_event  3, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
+	object_event  6,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
 
 OlivineGymJasmineScript:
 	faceplayer
@@ -33,10 +33,7 @@ OlivineGymJasmineScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
 	opentext
-	writetext Text_ReceivedMineralBadge
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_MINERALBADGE
+	givebadge MINERALBADGE, JOHTO_REGION
 	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setmapscene ROUTE_42, $1
 .FightDone:
@@ -129,12 +126,12 @@ OlivineGymGentlemanPreston:
 	text "Impressive!"
 	line "You should earn"
 
-	para "more badges with"
+	para "more Badges with"
 	line "that much skill."
 	done
 
 OlivineGymStatue:
-	gettrainername JASMINE, 1, $1
+	gettrainername JASMINE, 1, STRING_BUFFER_4
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftruefwd .Returned
 	jumpstd gymstatue0
@@ -186,11 +183,6 @@ Jasmine_BetterTrainer:
 
 	para "confer upon you"
 	line "this Badge."
-	done
-
-Text_ReceivedMineralBadge:
-	text "<PLAYER> received"
-	line "the Mineral Badge."
 	done
 
 Jasmine_BadgeSpeech:

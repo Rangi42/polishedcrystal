@@ -1,5 +1,5 @@
 BrentPhoneScript1:
-	gettrainername POKEMANIAC, BRENT1, $0
+	gettrainername POKEMANIAC, BRENT1, STRING_BUFFER_3
 	checkflag ENGINE_BRENT_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -14,11 +14,11 @@ BrentPhoneScript1:
 	farsjump BrentHangUpScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_43, $2
+	getlandmarkname ROUTE_43, STRING_BUFFER_5
 	farsjump BrentReminderScript
 
 BrentPhoneScript2:
-	gettrainername POKEMANIAC, BRENT1, $0
+	gettrainername POKEMANIAC, BRENT1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequalfwd $0, BrentBillTrivia
@@ -36,7 +36,7 @@ BrentMondayMorning:
 	setflag ENGINE_BRENT_MONDAY_MORNING
 
 BrentWantsBattle:
-	getlandmarkname ROUTE_43, $2
+	getlandmarkname ROUTE_43, STRING_BUFFER_5
 	setflag ENGINE_BRENT_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 

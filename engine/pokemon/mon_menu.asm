@@ -17,6 +17,10 @@ HasNoItems:
 TossItemFromPC:
 	push de
 	call PartyMonItemName
+
+	; Force plural.
+	xor a
+	ld [wItemQuantityChangeBuffer], a
 	ld hl, .TossHowMany
 	call MenuTextbox
 	farcall SelectQuantityToToss
@@ -54,7 +58,7 @@ TossItemFromPC:
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_far _ItemsThrowAwayText
+	text_far _AskQuantityThrowAwayText
 	text_end
 
 .TossedThisMany:
@@ -114,11 +118,10 @@ PokemonActionSubmenu:
 	dbw MONMENUITEM_HEADBUTT,   MonMenu_Headbutt
 	dbw MONMENUITEM_WATERFALL,  MonMenu_Waterfall
 	dbw MONMENUITEM_ROCKSMASH,  MonMenu_RockSmash
-	dbw MONMENUITEM_STATS,      OpenPartyStats
+	dbw MONMENUITEM_SUMMARY,    OpenPartySummary
 	dbw MONMENUITEM_SWITCH,     SwitchPartyMons
 	dbw MONMENUITEM_ITEM,       GiveTakePartyMonItem
 	dbw MONMENUITEM_CANCEL,     CancelPokemonAction
-	dbw MONMENUITEM_MOVE,       ManagePokemonMoves
 	dbw MONMENUITEM_MAIL,       MonMailAction
 
 SwitchPartyMons:
@@ -372,7 +375,7 @@ PCGiveItem:
 SwapPartyItem:
 	ld a, [wPartyCount]
 	cp 2
-	jr c, .DontSwap
+	jmp c, .DontSwap
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wSwitchMon], a
@@ -404,11 +407,11 @@ SwapPartyItem:
 	; First, swap mail metadata. Don't bother checking if we are holding Mail,
 	; doing the swap either way is harmless and simplifies checks.
 	; Note that wCurPartyMon is 0-indexed while wSwitchMon is 1-indexed.
+	ld a, [wCurPartyMon]
+	ld c, a
 	push bc
 	push de
-	ld a, [wCurPartyMon]
-	inc a
-	ld c, a
+	inc c
 	ld a, [wSwitchMon]
 	ld e, a
 	farcall SwapPartyMonMail
@@ -419,7 +422,7 @@ SwapPartyItem:
 	; wCurPartyMon contains second selected pkmn
 	; getting pkmn2 item and putting into stack item addr + item id
 	call GetPartyItemLocation
-	ld a, [hl] ; a pkmn2 contains item
+	ld a, [hl] ; a contains pkmn2 item
 	push hl
 	push af
 	; getting pkmn 1 item and putting item id into b
@@ -427,14 +430,30 @@ SwapPartyItem:
 	dec a
 	ld [wCurPartyMon], a
 	call GetPartyItemLocation
-	ld a, [hl] ; a pkmn1 contains item
+	ld a, [hl] ; a contains pkmn1 item
 	ld b, a
 	; actual swap
 	pop af
-	ld [hl], a ; pkmn1 get pkm2 item
+	ld [hl], a ; pkmn1 get pkmn2 item
+	xor a ; ld a, MON_SPECIES
+	push hl
+	call GetPartyParamLocationAndValue
+	pop hl
+	ld [wCurPartySpecies], a ; load pkmn1 species
+	push bc
+	call UpdateMewtwoForm
+	pop bc
 	pop hl
 	ld a, b
-	ld [hl], a ; pkmn1 get pkm2 item
+	ld [hl], a ; pkmn2 get pkmn1 item
+	ld a, c
+	ld [wCurPartyMon], a ; restore pkmn2
+	xor a ; ld a, MON_SPECIES
+	push hl
+	call GetPartyParamLocationAndValue
+	pop hl
+	ld [wCurPartySpecies], a ; load pkmn2 species
+	call UpdateMewtwoForm
 	xor a
 	ld [wPartyMenuActionText], a
 	jmp CancelPokemonAction
@@ -620,9 +639,9 @@ MonMailAction:
 	ld a, $3
 	ret c
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a ; 1?
 	jr z, .read
-	cp $2
+	dec a ; 2?
 	jr z, TakeMail
 	ld a, $3
 	ret
@@ -721,18 +740,22 @@ TakeMail:
 	text_far _MailSentToPCText
 	text_end
 
-OpenPartyStats:
+OpenPartySummary:
+	call OpenTempmonSummary
+	jmp ReturnToMapFromSubmenu
+
+OpenTempmonSummary:
 ; Stats screen for partymon in wCurPartyMon.
 	call PreparePartyTempMon
 	; fallthrough
-_OpenPartyStats:
+_OpenTempmonSummary:
 ; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
 	call LoadStandardMenuHeader
 	call ClearSprites
 	call LowVolume
 	ld a, TEMPMON
 	ld [wMonType], a
-	predef StatsScreenInit
+	predef SummaryScreenInit
 	; check if the cry is still playing
 	call CheckSFX
 	ld a, MAX_VOLUME
@@ -749,7 +772,7 @@ MonMenu_Cut:
 	farcall CutFunction
 _MonMenu_StandardCheck:
 	ld a, [wFieldMoveSucceeded]
-	cp $1
+	dec a
 	jr nz, _MonMenu_StandardFail
 _MonMenu_StandardSuccess:
 	ld b, $4
@@ -965,33 +988,6 @@ PreparePartyTempMon:
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wTempMonSlot], a
-	ret
-
-ManagePokemonMoves:
-	call PreparePartyTempMon
-	; fallthrough
-_ManagePokemonMoves:
-	ld a, [wTempMonBox]
-	ld b, a
-	ld a, [wTempMonSlot]
-	ld c, a
-	farcall GetStorageBoxMon
-	ld hl, wTempMonIsEgg
-	bit MON_IS_EGG_F, [hl]
-	jr nz, .egg
-	ld hl, wOptions1
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	xor a
-	ld [wMoveScreenMode], a
-	call MoveScreenLoop
-	pop af
-	ld [wOptions1], a
-	call ClearBGPalettes
-
-.egg
-	xor a
 	ret
 
 MoveScreen:

@@ -84,15 +84,6 @@ TreeItemEncounter:
 	cp LOW(999)
 	ret
 
-GetWings:
-	ldh a, [hScriptVar]
-	add LOW(wWingAmounts - 2)
-	ld l, a
-	adc HIGH(wWingAmounts - 2)
-	sub l
-	ld h, a
-	ret
-
 RockItemEncounter:
 	ld hl, RockItems
 	call Random
@@ -114,6 +105,11 @@ RockItemEncounter:
 
 INCLUDE "data/items/rock_items.asm"
 
+	const_def
+	const TREEMON_NO_ENCOUNTER
+	const TREEMON_ENCOUNTER
+	const TREEMON_NO_ENCOUNTER_SET
+
 TreeMonEncounter:
 	xor a
 	ld [wTempWildMonSpecies], a
@@ -121,7 +117,7 @@ TreeMonEncounter:
 
 	ld hl, TreeMonMaps
 	call GetTreeMonSet
-	jr nc, .no_battle
+	jr nc, .no_tree_mon_set
 
 	call GetTreeMons
 	jr nc, .no_battle
@@ -131,12 +127,17 @@ TreeMonEncounter:
 
 	ld a, BATTLETYPE_TREE
 	ld [wBattleType], a
-	ld a, 1
+	ld a, TREEMON_ENCOUNTER
 	ldh [hScriptVar], a
 	ret
 
 .no_battle
-	xor a
+	xor a ; TREEMON_NO_ENCOUNTER
+	ldh [hScriptVar], a
+	ret
+
+.no_tree_mon_set
+	ld a, TREEMON_NO_ENCOUNTER_SET
 	ldh [hScriptVar], a
 	ret
 
@@ -360,11 +361,11 @@ GetTreeMon:
 	push hl
 	call GetTreeScore
 	pop hl
-	and a
+	and a ; 0?
 	jr z, .bad
-	cp 1
+	dec a ; 1?
 	jr z, .good
-	cp 2
+	dec a ; 2?
 	jr z, .rare
 	ret
 

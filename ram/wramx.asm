@@ -397,6 +397,10 @@ ENDU
 
 wCurIconMonHasItemOrMail:: db
 
+wCurBadge::
+wCurSpecialItem::
+wCurExpCandy::
+wCurApricorn::
 wCurKeyItem::
 wCurTMHM::
 wCurItem::
@@ -486,6 +490,11 @@ wTempMonHyperTraining:: db
 	ds 2 ; the other 2 extra bytes
 NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
+NEXTU
+wPokedexShowPointerAddr:: dw
+wPokedexShowPointerBank:: db
+NEXTU
+wPokedexShowNextLine:: ds SCREEN_WIDTH
 ENDU
 
 ; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
@@ -532,16 +541,19 @@ wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
 wTilesetDataBank:: db
-wTilesetGFX0Address:: dw
-wTilesetGFX1Address:: dw
 wTilesetBlocksAddress:: dw
 wTilesetCollisionAddress:: dw
 wTilesetAttributesAddress:: dw
-wTilesetGFX2Address:: dw ; BANK("Tileset GFX2 Data")
+wTilesetGFX0Bank:: db
+wTilesetGFX0Address:: dw
+wTilesetGFX1Bank:: db
+wTilesetGFX1Address:: dw
+wTilesetGFX2Bank:: db
+wTilesetGFX2Address:: dw
 wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
 
-	ds 5 ; unused
+	ds 2 ; unused
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
@@ -734,8 +746,7 @@ wTrainerGroupBank:: db
 
 SECTION "Enemy Party", WRAMX
 
-wPokedexShowPointerAddr:: dw
-wPokedexShowPointerBank:: db
+	ds 2 ; unused
 
 wEnemyFleeing:: db
 wNumFleeAttempts:: db
@@ -1657,7 +1668,7 @@ SECTION UNION "Attributes", WRAMX
 
 ; Array of Pokémon in the pokédex list.
 wDexMons::
-for n, 1, NUM_SPECIES + 1
+for n, 1, NUM_POKEMON_PADDED + 1
 wDexMon{d:n}::
 wDexMon{d:n}Species:: db
 wDexMon{d:n}Form:: db

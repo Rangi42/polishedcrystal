@@ -214,7 +214,7 @@ ItemDescriptions:
 	dw PowerBandDesc
 	dw PowerAnkletDesc
 	dw DragonScaleDesc
-	dw UpGradeDesc
+	dw UpgradeDesc
 	dw DubiousDiscDesc
 	dw ProtectorDesc
 	dw ElectirizerDesc
@@ -1041,8 +1041,8 @@ ArmorSuitDesc:
 	done
 
 AirBalloonDesc:
-	text "Avoids one Ground"
-	next "attack. (Hold)"
+	text "Avoids Ground att-"
+	next "acks until popped."
 	done
 
 AssaultVestDesc:
@@ -1270,7 +1270,7 @@ DragonScaleDesc:
 	next "item."
 	done
 
-UpGradeDesc:
+UpgradeDesc:
 	text "A mysterious box"
 	next "made by Silph Co."
 	done
@@ -1459,11 +1459,6 @@ LaggingTailDesc:
 IronBallDesc:
 	text "Lowers Speed and"
 	next "grounds. (Hold)"
-	done
-
-RingTargetDesc:
-	text "Loses type immun-"
-	next "ities. (Hold)"
 	done
 
 RedCardDesc:

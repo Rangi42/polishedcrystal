@@ -365,6 +365,8 @@ HatchEggs:
 	rst CopyBytes
 
 	; This prints "Huh?" and does the egg hatch animation.
+	ld a, TRUE
+	ld [wSpriteUpdatesEnabled], a ; needed so SafeCopyTilemapAtOnceproperly updates textbox palettes when within nickname menu
 	ld hl, .Text_HatchEgg
 	call PrintText
 
@@ -581,13 +583,15 @@ InheritEggMove:
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
-	ld hl, EggMovePointers
+	ld hl, EggSpeciesMovesPointers
 	add hl, bc
 	add hl, bc
-	ld a, BANK(EggMovePointers)
+	ld a, BANK(EggSpeciesMovesPointers)
 	call GetFarWord
+	inc hl
+	inc hl
 .loop
-	ld a, BANK(EggMoves)
+	ld a, BANK(EggSpeciesMoves)
 	call GetFarByte
 	inc a
 	ret z
@@ -868,7 +872,7 @@ Special_DayCareMon1:
 	ld c, a
 	ld a, [wBreedMon1Form]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, [wDayCareLady]
 	bit 0, a
 	jr z, DayCareMonCursor
@@ -884,7 +888,7 @@ Special_DayCareMon2:
 	ld c, a
 	ld a, [wBreedMon2Form]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, [wDayCareMan]
 	bit 0, a
 	jr z, DayCareMonCursor

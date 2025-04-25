@@ -982,20 +982,17 @@ BattleAnimCmd_RaiseSub:
 	xor a
 	call GetSRAMBank
 
-GetSubstitutePic:
+	ld hl, SubstituteBackpic
+	lb bc, BANK(SubstituteBackpic), 6 * 6
+	ld de, vTiles2 tile $31
+
 	ldh a, [hBattleTurn]
 	and a
-	jr z, .player
+	jr z, .done
 
 	ld hl, SubstituteFrontpic
 	lb bc, BANK(SubstituteFrontpic), 7 * 7
 	ld de, vTiles2 tile $00
-	jr .done
-
-.player
-	ld hl, SubstituteBackpic
-	lb bc, BANK(SubstituteBackpic), 6 * 6
-	ld de, vTiles2 tile $31
 
 .done
 	call DecompressRequest2bpp
@@ -1155,7 +1152,7 @@ endr
 
 .done_cry_tracks
 	push hl
-	call LoadCryHeader
+	call LoadCry
 	pop hl
 	jr c, .done
 
@@ -1192,7 +1189,7 @@ endr
 	ld a, 1
 	ld [wStereoPanningMask], a
 
-	farcall _PlayCryHeader
+	farcall _PlayCry
 
 .done
 	pop af

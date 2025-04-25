@@ -40,7 +40,7 @@ BattleCommand_bounceback:
 	push af
 
 	push bc
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	pop bc
 	ld a, b
@@ -48,7 +48,7 @@ BattleCommand_bounceback:
 	call GetMoveName
 	ld hl, BouncedBackText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 
 	; Flag the bouncing
 	ld a, BATTLE_VARS_SUBSTATUS2
@@ -84,3 +84,5 @@ BattleCommand_bounceback:
 	ld [hl], a
 	call UpdateMoveData
 	jmp SwitchTurn
+
+INCLUDE "data/moves/substitute_bypass_moves.asm"

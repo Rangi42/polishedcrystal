@@ -98,7 +98,7 @@ UseRegisteredItem:
 	xor a
 	ld [wUsingItemWithSelect], a
 	ld a, [wItemEffectSucceeded]
-	cp 1
+	dec a ; TRUE?
 	jr nz, ._cantuse
 	scf
 	ld a, HMENURETURN_SCRIPT
@@ -236,10 +236,10 @@ endr
 	jr .joy_loop
 
 .RegisteredItemText:
-	db    "▲ -"
-	next1 "◀ -"
-	next1 "▶ -"
-	next1 "▼ -@"
+	db "▲ -<LNBRK>"
+	db "◀ -<LNBRK>"
+	db "▶ -<LNBRK>"
+	db "▼ -@"
 
 InvertedTextPalette:
 INCLUDE "gfx/overworld/register_item.pal"

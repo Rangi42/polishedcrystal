@@ -54,19 +54,13 @@ SpeechTextbox::
 	hlcoord TEXTBOX_X, TEXTBOX_Y
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
 Textbox::
-; Draw a text box at hl with room for
-; b lines of c characters each.
-; Places a border around the textbox,
-; then switches the palette to the
-; text black-and-white scheme.
+; Draw a text box at hl with room for b lines of c characters each.
+; Places a border around the textbox, then switches the palette to 7.
 	push bc
 	push hl
 	call TextboxBorder
 	pop hl
 	pop bc
-	; fallthrough
-TextboxPalette::
-; Fill text box width c height b at hl with pal 7
 	ld de, wAttrmap - wTilemap
 	add hl, de
 	inc b
@@ -367,7 +361,11 @@ _PlaceBattleNickname:
 	rst PlaceString
 	ld h, b
 	ld l, c
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
 	ld de, wEnemyMonNickname
+	jr nz, PlaceCommandCharacter
+	ld de, GhostNicknameText
 	jr PlaceCommandCharacter
 
 .EnemyText:
@@ -376,6 +374,9 @@ SpaceText::
 	db " " ; fallthrough, no "@"
 EmptyString::
 	db "@"
+
+GhostNicknameText:
+	db "Ghost@"
 
 PlaceEnemysName::
 	push de
@@ -386,7 +387,12 @@ PlaceEnemysName::
 	rst PlaceString
 	ld h, b
 	ld l, c
+	ld a, [wTextboxFlags]
+	bit NEWLINE_ENEMY_F, a
 	ld de, SpaceText
+	jr z, .no_wordwrap
+	ld de, ContChar
+.no_wordwrap
 	rst PlaceString
 	push bc
 	farcall Battle_GetTrainerName
@@ -400,6 +406,73 @@ PlaceCommandCharacter::
 	ld l, c
 	pop de
 	jmp NextChar
+
+ContChar:
+	db "<CONT>@"
+
+TextCommand_PLURAL:
+; Pluralize the last word. Might perform edits on it (Candy -> Candies).
+	; If wItemQuantityBuffer is 1, do nothing.
+	ld a, [wItemQuantityChangeBuffer]
+	dec a
+	ret z
+
+	; Try to pattern match the previous string with the plural table below.
+	push hl
+	push bc
+
+	ld hl, PluralTable
+
+.check_match_loop
+	; Iterate until the pattern no longer matches our string.
+	dec bc
+	ld a, [bc]
+
+	; If we find a terminator in the input string, we must have gone past it
+	; into other data. Handle this separately. The reason for this is that
+	; otherwise, if the plural table is also at a terminator, we'll misalign the
+	; parser into reading output as input and vice versa.
+	cp "@"
+	jr nz, .not_at_start
+	cp [hl]
+	jr nz, .no_match
+	inc hl
+	jr .match
+
+.not_at_start
+	cp [hl]
+	ld a, [hli] ; To check if we found the terminator.
+	jr z, .check_match_loop
+
+	; Did we hit the terminator?
+	cp "@"
+	jr nz, .no_match
+
+.match
+	; We have a match. Print out the adjusted string.
+	inc bc
+	ld d, h
+	ld e, l
+	ld h, b
+	ld l, c
+	pop bc
+	rst PlaceString
+	pop hl
+	ret
+
+.no_match
+	ld b, 2
+.no_match_loop
+	ld a, [hli]
+	cp "@"
+	jr nz, .no_match_loop
+	dec b
+	jr nz, .no_match_loop
+	pop bc
+	push bc
+	jr .check_match_loop
+
+INCLUDE "data/text/plural_table.asm"
 
 TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
@@ -469,11 +542,7 @@ DoTextUntilTerminator::
 	and a
 	ret nz
 	ld a, [hli]
-	cp "@"
-	ret z
-	cp "<DONE>"
-	ret z
-	cp "<PROMPT>"
+	call CheckTerminatorChar
 	ret z
 	call .TextCommand
 	jr .loop
@@ -505,6 +574,7 @@ TextCommands::
 	dw TextCommand_SOUND         ; $06 <SOUND>
 	dw TextCommand_DAY           ; $07 <DAY>
 	dw TextCommand_FAR           ; $08 <FAR>
+	dw TextCommand_PLURAL        ; $09 <PLURAL>
 	assert_table_length NGRAMS_START
 
 _ImplicitlyStartedText:
@@ -695,33 +765,8 @@ DecompressString::
 
 	push de ; push current coords
 
-	xor a ; start at node $00
-.tree_loop
-	; "c = [hli]" when b reaches 0, then carry = next bit from c
-	dec b
-	jr nz, .no_reload
-	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
-	inc hl
-	ld b, 8
-.no_reload
-	sla c
-	; de = TextCompressionHuffmanTree[node=a][branch=carry]
-	adc a
-	add LOW(TextCompressionHuffmanTree)
-	ld e, a
-	adc HIGH(TextCompressionHuffmanTree)
-	sub e
-	ld d, a
-	; keep traversing the tree until a leaf node ($7f and above)
-	ld a, [de]
-	cp $7f
-	jr c, .tree_loop
+	call ReadHuffmanChar
 
-	; leaf node IDs $ec-$fb correspond to characters $4d-$5c
-	cp $ec
-	jr c, .got_char
-	sub $ec - $4d
-.got_char
 	; buffer character for printing
 	ldh [hCompressedTextBuffer], a
 
@@ -794,4 +839,87 @@ DecompressString::
 	ld l, a
 	ldh a, [hPlaceStringCoords+1]
 	ld h, a
+	ret
+
+DecompressStringToRAM::
+; input: hl = string, de = destination
+.outer_loop
+	ld a, [hl]
+	cp "<CTXT>"
+	jr nz, .copy_loop
+
+	inc hl ; skip "<CTXT>"
+
+.do_decompression
+	ld b, 1 ; start with no bits to read a byte right away
+.decompress_loop
+
+	push de
+	call ReadHuffmanChar
+	pop de
+	; check for characters that signal end of compression
+	; (same ones that finish PlaceString)
+	call CheckTerminatorChar
+	jr z, .append_terminator
+
+	; Store decompressed char to WRAM and advance
+	ld [de], a
+	inc de
+	jr .decompress_loop
+
+.copy_loop
+	ld a, [hli]
+	cp "<CTXT>"
+	jr z, .do_decompression
+	call CheckTerminatorChar
+	jr z, .append_terminator
+	ld [de], a
+	inc de
+	jr .copy_loop
+
+.append_terminator
+	; to maintain generic usage, this function will return on
+	; any terminator encountered. it is up to the caller to decide
+	; what to do with the given terminator returned in a
+	ld [de], a
+	ret
+
+ReadHuffmanChar:
+	assert ROOT_NODE_ID == $00
+	xor a
+.tree_loop
+	; "c = [hli]" when b reaches 0, then carry = next bit from c
+	dec b
+	jr nz, .no_reload
+	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
+	inc hl
+	ld b, 8
+.no_reload
+	sla c
+	; de = TextCompressionHuffmanTree[node=a][branch=carry]
+	adc a
+	add LOW(TextCompressionHuffmanTree)
+	ld e, a
+	adc HIGH(TextCompressionHuffmanTree)
+	sub e
+	ld d, a
+	; keep traversing the tree until a leaf node
+	ld a, [de]
+	cp FIRST_LEAF_NODE_ID
+	jr c, .tree_loop
+
+	; shifted leaf node IDs correspond to lesser characters
+	; (since node IDs below the first leaf node ID must be parent nodes)
+	cp FIRST_SHIFTED_LEAF_NODE_ID
+	ret c
+	sub FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
+	ret
+
+CheckTerminatorChar:
+; check for a character that terminates `_dchr` Huffman compression
+	cp "@"
+	ret z
+	cp "<DONE>"
+	ret z
+	cp "<PROMPT>"
 	ret

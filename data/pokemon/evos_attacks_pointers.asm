@@ -304,7 +304,7 @@ EvosAttacksPointers::
 	dw DudunsparceEvosAttacks
 
 	dw RattataAlolanEvosAttacks
-	dw RaticateAlolanEvosAttacks
+	dw RaticatePlainEvosAttacks ; RaticateAlolan
 	dw RaichuAlolanEvosAttacks
 	dw SandshrewAlolanEvosAttacks
 	dw SandslashAlolanEvosAttacks
@@ -349,6 +349,6 @@ EvosAttacksPointers::
 	dw TaurosPaldeanFireEvosAttacks
 	dw TaurosPaldeanWaterEvosAttacks
 
-	dw UrsalunaBloodmoonEvoAttacks
+	dw UrsalunaBloodmoonEvosAttacks
 
 	assert_table_length NUM_EXT_POKEMON

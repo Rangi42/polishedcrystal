@@ -364,7 +364,7 @@ endr
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall ComputeNPCTrademonStats
+	farcall ComputeNPCTrademonStatsAndEggSteps
 	farcall GivePokerusToWonderTradeMon
 	pop af
 	ld [wCurPartyMon], a
@@ -393,8 +393,10 @@ GetGSBallPichu:
 	call CopyTradeName
 
 	ld a, [wOTTrademonSpecies]
+	ld [wCurPartySpecies], a
 	ld c, a
 	ld a, [wOTTrademonForm]
+	ld [wCurForm], a
 	ld b, a
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
@@ -437,8 +439,6 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld a, 30
 	ld [wCurPartyLevel], a
-	ld a, [wOTTrademonSpecies]
-	ld [wCurPartySpecies], a
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
@@ -556,8 +556,7 @@ GetWonderTradeOTForm:
 	push hl
 	push bc
 	ld b, [hl]
-	ld hl, InvalidVariants
-	call GetSpeciesAndFormIndexFromHL
+	call CheckInvalidVariants
 	pop bc
 	pop hl
 	jr c, .loop
@@ -570,6 +569,10 @@ GetWonderTradeOTForm:
 	and SPECIESFORM_MASK
 	ld d, a
 	jr .loop
+
+CheckInvalidVariants:
+	ld hl, InvalidVariants
+	jmp GetSpeciesAndFormIndexFromHL
 
 INCLUDE "data/pokemon/invalid_variants.asm"
 

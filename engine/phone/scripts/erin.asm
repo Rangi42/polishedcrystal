@@ -1,5 +1,5 @@
 ErinPhoneScript1:
-	gettrainername PICNICKER, ERIN1, $0
+	gettrainername PICNICKER, ERIN1, STRING_BUFFER_3
 	checkflag ENGINE_ERIN_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Female
@@ -14,11 +14,11 @@ ErinPhoneScript1:
 	farsjump ErinWorkingHardScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_46, $2
+	getlandmarkname ROUTE_46, STRING_BUFFER_5
 	farsjump ErinComeBattleScript
 
 ErinPhoneScript2:
-	gettrainername PICNICKER, ERIN1, $0
+	gettrainername PICNICKER, ERIN1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ERIN_READY_FOR_REMATCH
 	iftruefwd .GenericCall
@@ -35,6 +35,6 @@ ErinSaturdayNight:
 	setflag ENGINE_ERIN_SATURDAY_NIGHT
 
 ErinWantsBattle:
-	getlandmarkname ROUTE_46, $2
+	getlandmarkname ROUTE_46, STRING_BUFFER_5
 	setflag ENGINE_ERIN_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female

@@ -69,6 +69,17 @@ DecompressItemIconForOverworld::
 	ld de, wDecompressScratch
 	jmp Request2bppInWRA6
 
+LoadItemIconForSummaryScreen::
+	ld hl, ItemIconPointers
+	call _SetupLoadItemOrKeyItemIcon
+	push bc
+	call FarDecompressWRA6InB
+	call WhiteOutDecompressedItemIconCorners
+	pop bc
+	ld hl, vTiles2 tile SUMMARY_TILE_ITEM
+	ld de, wDecompressScratch
+	jmp Request2bppInWRA6
+
 LoadTMHMIcon::
 	ld hl, TMHMIcon
 	lb bc, BANK(TMHMIcon), 9
@@ -132,6 +143,13 @@ WhiteOutDecompressedItemIconCorners:
 	and c
 	ld [hl], a
 	ret
+
+ShowSpecialItemIcon::
+	ld a, [wCurSpecialItem]
+	ld hl, SpecialItemIconPointers
+	call _LoadItemOrKeyItemIconForOverworld
+	farcall LoadSpecialItemIconPalette
+	jr PrintOverworldItemIcon
 
 ShowParkBallIcon::
 	ld hl, ParkBallIcon

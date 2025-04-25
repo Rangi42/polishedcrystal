@@ -62,8 +62,7 @@ TrainerCard:
 	xor a
 	ld [hli], a ; wJumptableIndex
 	ld [hli], a ; wTrainerCardBadgeFrameCounter
-	ld [hli], a ; wTrainerCardBadgeTileID
-	ld [hl], a  ; TODO: check if this is still needed
+	ld [hl], a  ; wTrainerCardBadgeTileID
 	ret
 
 .Jumptable:
@@ -337,13 +336,13 @@ TrainerCard_PrintTopHalfOfCard:
 	jmp PrintNum
 
 .Top_Headings:
-	db     "┌" - 4, "Name/"
-	next1  "┌" - 4, "<ID>№."
-	next1  "┌" - 3
+	db     "┌" - 4, "Name/<LNBRK>"
+	db     "┌" - 4, "<ID>№.<LNBRK>"
+	db     "┌" - 3
 	ds 11, "┌" - 2
-	db     "┌" - 1
-	next1  ""
-	next1  " Money@"
+	db     "┌" - 1, "<LNBRK>"
+	db     "<LNBRK>"
+	db     " Money@"
 
 TrainerCardSetup_ClearBottomHalf:
 	hlcoord 1, 10
@@ -544,16 +543,14 @@ endr
 .PrepOAM:
 	ld a, [wTrainerCardBadgeTileID]
 	and $80
-	jr nz, .xflip
 	ld hl, .facing1
-	jr .loop2
-
-.xflip
+	jr z, .loop2
 	ld hl, .facing2
 .loop2
 	ld a, [hli]
-	cp $ff
+	inc a
 	ret z
+	dec a
 	add b
 	ld [de], a
 	inc de
@@ -569,6 +566,7 @@ endr
 	ld [de], a
 	inc hl
 	inc de
+
 	push hl
 	push bc
 	ld hl, wTrainerCardBadgePaletteAddr + 1
@@ -584,6 +582,7 @@ endr
 	ld a, b
 	pop bc
 	pop hl
+
 	add [hl]
 	ld [de], a
 	inc hl
@@ -635,12 +634,12 @@ TrainerCard_JohtoBadgesOAM:
 	db $0c | $80, $20, $24, $20 | $80
 
 	; Mineral Badge
-	db $80, $38, 5, 5, 5, 5
+	db $80, $38, 4, 4, 4, 4
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
 	; Storm Badge
-	db $80, $18, 4, 4, 4, 4
+	db $80, $18, 5, 5, 5, 5
 	db $14, $20, $24, $20 | $80
 	db $14 | $80, $20, $24, $20 | $80
 

@@ -55,13 +55,12 @@
 	const MONMENUITEM_HEADBUTT   ; 11
 	const MONMENUITEM_ROCKSMASH  ; 12
 	; options
-	const MONMENUITEM_STATS      ; 13
+	const MONMENUITEM_SUMMARY    ; 13
 	const MONMENUITEM_SWITCH     ; 14
 	const MONMENUITEM_ITEM       ; 15
 	const MONMENUITEM_CANCEL     ; 16
-	const MONMENUITEM_MOVE       ; 17
-	const MONMENUITEM_MAIL       ; 18
-	const MONMENUITEM_ERROR      ; 19
+	const MONMENUITEM_MAIL       ; 17
+	const MONMENUITEM_ERROR      ; 18
 DEF NUM_MONMENUITEMS EQU const_value - 1
 
 ; MonMenuOptions categories
@@ -108,7 +107,7 @@ DEF NUM_PARTYMENUACTIONS EQU const_value
 	const NAME_RIVAL
 	const NAME_TRENDY
 	const NAME_BOX
-DEF NUM_NAME_TYPES EQU const_value
+DEF NUM_NAMING_SCREEN_TYPES EQU const_value
 
 ; Lure Menu Options (see engine/menus/lure_menu.asm)
 	const_def 1

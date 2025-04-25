@@ -77,6 +77,19 @@ ApplyHPBarPals:
 	ld a, e
 	jmp FillBoxWithByte
 
+LoadSummaryStatusIconPalette:
+	xor a
+	ld de, wTempMonStatus
+	farcall GetStatusConditionIndex
+	ld hl, StatusIconPals
+	ld c, a
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	ld de, wOBPals1 palette 5 color 2
+	ld bc, 1 colors
+	jmp FarCopyColorWRAM
+
 LoadPlayerStatusIconPalette:
 	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus
@@ -184,7 +197,7 @@ LoadIconPaletteFromHL:
 	jmp FarCopyColorWRAM
 
 LoadTMHMIconPalette:
-	ld a, [wNamedObjectIndex]
+	ld a, [wTempTMHM]
 	ld hl, Moves + MOVE_TYPE
 	call GetMoveProperty
 	ld hl, TMHMTypeIconPals
@@ -193,12 +206,18 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, wBGPals1 palette 7 + 2
-	ld bc, 4
-	call FarCopyColorWRAM
-	ld hl, BlackColor
-	ld bc, 2
-	jmp FarCopyColorWRAM
+	jr LoadIconPaletteFromHL
+
+LoadSpecialItemIconPalette:
+	ld a, [wCurSpecialItem]
+	ld bc, SpecialItemIconPalettes
+	assert POKEGEAR + 1 == NUM_SPECIAL_ITEMS
+	cp POKEGEAR
+	jr nz, LoadIconPalette
+	ld h, a
+	ld a, [wPlayerGender]
+	add h
+	jr LoadIconPalette
 
 ItemIconPalettes:
 CaughtBallPals:
@@ -227,44 +246,10 @@ WingIconPalettes:
 INCLUDE "gfx/items/wings.pal"
 	assert_table_length NUM_WINGS
 
-LoadStatsScreenPals:
-	ldh a, [rSVBK]
-	push af
-	ld a, $5
-	ldh [rSVBK], a
-	ld hl, StatsScreenPagePals
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld [wBGPals1 palette 0], a
-	ld a, [hl]
-	ld [wBGPals1 palette 0 + 1], a
-	ld a, c
-	and a ; pink page 0 has exp bar
-	ld hl, GenderAndExpBarPals + 2
-	jr z, .ok
-	ld a, [wCurHPPal]
-	add a
-	add a
-	add LOW(HPBarInteriorPals + 2)
-	ld l, a
-	adc HIGH(HPBarInteriorPals + 2)
-	sub l
-	ld h, a
-.ok
-	ld a, [hli]
-	ld [wBGPals1 palette 0 + 4], a
-	ld a, [hl]
-	ld [wBGPals1 palette 0 + 5], a
-	pop af
-	ldh [rSVBK], a
-	call ApplyPals
-	ld a, $1
-	ret
-
-StatsScreenPagePals:
-INCLUDE "gfx/stats/stats.pal"
+SpecialItemIconPalettes:
+	table_width PAL_COLOR_SIZE * 2
+INCLUDE "gfx/items/special_items.pal"
+	assert_table_length NUM_SPECIAL_ITEMS + NUM_PLAYER_GENDERS - 1
 
 LoadOneColor:
 	ld c, 2
@@ -391,10 +376,7 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
-	res 7, b
-	; fallthrough
-_ApplyWhiteTransparency:
-; Assumes the unused 16th color bit is unset.
+	res 7, b ; make sure the unused 16th color bit is unset
 if !DEF(MONOCHROME)
 	res 2, b
 	ld a, c
@@ -436,26 +418,6 @@ ApplyPals:
 	ld bc, 16 palettes
 	jmp FarCopyColorWRAM
 
-LoadMailPalettes:
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, MailPals
-	add hl, de
-	ld de, wBGPals1
-	ld bc, 1 palettes
-	jmp FarCopyColorWRAM
-
-MailPals:
-INCLUDE "gfx/mail/mail.pal"
-
-LoadAndApplyMailPalettes:
-	call LoadMailPalettes
-	call ApplyPals
-	call WipeAttrMap
-	; fallthrough
 ApplyAttrMap:
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
@@ -496,16 +458,14 @@ ApplyAttrMapVBank0::
 	ret
 
 ApplyPartyMenuHPPals:
-	ld hl, wHPPals
 	ld a, [wHPPalIndex]
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld e, l
-	ld d, h
-	ld a, [de]
-	inc a
-	ld e, a
+	add LOW(wHPPals)
+	ld l, a
+	adc HIGH(wHPPals)
+	sub l
+	ld h, a
+	ld e, [hl]
+	inc e
 	hlcoord 11, 2, wAttrmap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wHPPalIndex]
@@ -807,6 +767,63 @@ LoadPaintingPalette:
 	ld bc, 8
 	jmp FarCopyColorWRAM
 
+LoadSingleBadgePalette:
+	; a = badge
+	ld a, [wCurBadge]
+	assert JOHTO_REGION == 0 && KANTO_REGION == 1
+	cp NUM_JOHTO_BADGES
+	; hl = palette
+	ld hl, JohtoBadgePalettes
+	jr c, .got_region
+	ld hl, KantoBadgePalettes
+	sub NUM_JOHTO_BADGES
+	cp RAINBOWBADGE
+	call z, .RainbowBadge
+.got_region
+	ld bc, 1 palettes
+	push bc
+	rst AddNTimes
+	pop bc
+	ld de, wBGPals1 palette PAL_BG_TEXT
+	jmp FarCopyColorWRAM
+
+.RainbowBadge
+; Special case: Rainbow Badge uses Volcano Badge, Thunder Badge, Cascade Badge and its own palette
+; BG pals 1, 4, 6 and 7 are safe to overwrite at present in Celadon Gym when the badge is received
+	push af
+	push hl
+	ld a, CASCADEBADGE
+	ld bc, 1 palettes
+	push bc
+	rst AddNTimes
+	pop bc
+	push bc
+	ld de, wBGPals1 palette 1
+	call FarCopyColorWRAM
+	assert CASCADEBADGE + 1 == THUNDERBADGE
+	pop bc
+	push bc
+	ld de, wBGPals1 palette 4
+	call FarCopyColorWRAM
+	assert THUNDERBADGE + 1 == RAINBOWBADGE
+	assert VOLCANOBADGE > RAINBOWBADGE
+	ld a, VOLCANOBADGE - RAINBOWBADGE
+	pop bc
+	push bc
+	rst AddNTimes
+	pop bc
+	ld de, wBGPals1 palette 6
+	call FarCopyColorWRAM
+	hlcoord 17, 13, wAttrmap
+	ld a, 6
+	ld [hli], a
+	ld [hl], 4
+	hlcoord 17, 14, wAttrmap
+	ld [hl], 1
+	pop hl
+	pop af
+	ret
+
 InitCGBPals::
 	ld a, $1
 	ldh [rVBK], a
@@ -816,7 +833,7 @@ InitCGBPals::
 	rst ByteFill
 	xor a
 	ldh [rVBK], a
-	ld a, $80
+	ld a, 1 << rBGPI_AUTO_INCREMENT
 	ldh [rBGPI], a
 	ld c, 4 * 8
 if !DEF(MONOCHROME)
@@ -834,7 +851,7 @@ else
 endc
 	dec c
 	jr nz, .bgpals_loop
-	ld a, $80
+	ld a, 1 << rOBPI_AUTO_INCREMENT
 	ldh [rOBPI], a
 	ld c, 4 * 8
 if !DEF(MONOCHROME)

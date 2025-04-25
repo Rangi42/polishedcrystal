@@ -99,8 +99,6 @@ endr
 	pop bc
 
 	add hl, bc
-	ld bc, SCREEN_WIDTH
-	add hl, bc
 	ld de, wTempMonAttack
 	lb bc, 2, 3
 	call .PrintStat
@@ -117,7 +115,7 @@ endr
 	push hl
 	call PrintNum
 	pop hl
-	ld de, SCREEN_WIDTH * 2
+	ld de, BG_MAP_WIDTH
 	add hl, de
 	ret
 
@@ -1031,14 +1029,9 @@ ListMoves:
 	jr z, .no_more_moves
 	push de
 	push hl
-	push hl
-	ld [wCurSpecies], a
-	ld a, MOVE_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, wStringBuffer1
-	pop hl
 	push bc
+	ld [wNamedObjectIndex], a
+	call GetMoveName
 	rst PlaceString
 	pop bc
 	ld a, b

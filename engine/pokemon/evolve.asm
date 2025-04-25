@@ -90,6 +90,9 @@ CheckHowToEvolve:
 	dec a
 	ld b, a
 
+	cp EVOLVE_TRADE
+	jr z, .trade
+
 	ld a, [wLinkMode]
 	and a
 	jmp nz, .dont_evolve_2
@@ -99,8 +102,9 @@ CheckHowToEvolve:
 	jmp z, .item
 
 	ld a, [wForceEvolution]
-	and a
-	jmp nz, .dont_evolve_2
+	assert EVOLVE_LEVEL == 1
+	cp EVOLVE_LEVEL + 1
+	jmp nc, .dont_evolve_2
 
 	ld a, b
 	cp EVOLVE_CRIT
@@ -145,6 +149,24 @@ CheckHowToEvolve:
 	swap a ; a = def
 	cp c ; set carry if atk > def
 	jr .stat_cmp_done
+
+.trade
+	; In modern vanilla, Kadabra evolves anyway. While this is cute, it can
+	; cause problems if a player want to keep the Kadabra upon trade. So don't
+	; let Kadabra bypass Everstone (Maybe in Faithful?)
+	call IsMonHoldingEverstone
+	jmp z, .dont_evolve_2
+
+	; Linking Cord isn't held, it's used as an evo stone.
+	ld a, [hli]
+	ld b, a
+	cp LINKING_CORD
+	jmp nz, .check_held_item
+
+	ld a, [wForceEvolution]
+	cp EVOLVE_TRADE
+	jmp nz, .dont_evolve_3
+	jmp .proceed
 
 .evs_enabled
 	ld hl, wTempMonAttack
@@ -261,22 +283,22 @@ CheckHowToEvolve:
 .holding
 	ld a, [hli]
 	ld b, a
-	ld a, [wTempMonItem]
-	cp b
-	jmp nz, .dont_evolve_2
 	ld a, [hli]
 	cp TR_ANYTIME
-	jr z, .ok
+	jr z, .check_held_item
 	cp TR_MORNDAY
 	ld a, [wTimeOfDay]
 	jr z, .holding_daylight
 	cp NITE
 	jmp c, .dont_evolve_3
-	jr .ok
+	jr .check_held_item
 .holding_daylight
 	cp NITE
 	jmp nc, .dont_evolve_3
-.ok
+.check_held_item
+	ld a, [wTempMonItem]
+	cp b
+	jmp nz, .dont_evolve_3
 	xor a
 	ld [wTempMonItem], a
 	jr .proceed
@@ -559,27 +581,47 @@ LearnEvolutionMove:
 	ld a, [wCurForm]
 	ld b, a
 	; bc = index
+	push bc
 	call GetSpeciesAndFormIndex
 	ld hl, EvolutionMoves
 	add hl, bc
 	ld a, [hl]
 	and a
-	ret z
+	jr z, .pop_bc_and_ret
 
 	ld d, a
-	ld hl, wPartyMon1Moves
-	ld a, [wCurPartyMon]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld a, MON_MOVES
+	call GetPartyParamLocationAndValue
 
 	ld b, NUM_MOVES
-.check_move
+.check_cur_moves
 	ld a, [hli]
 	cp d
-	ret z
+	jr z, .pop_bc_and_ret
 	dec b
-	jr nz, .check_move
+	jr nz, .check_cur_moves
 
+	; don't teach move already learned at this level
+	pop bc
+	call GetEvosAttacksPointer
+.skip_evos
+	ld a, [hli]
+	inc a
+	jr nz, .skip_evos
+
+.check_level_moves
+	ld a, [hli]
+	ld b, a
+	ld a, [wCurPartyLevel]
+	cp b
+	ld a, [hli]
+	jr c, .ok
+	jr nz, .check_level_moves
+	cp d
+	jr nz, .check_level_moves
+	ret
+
+.ok
 	ld a, d
 	ld [wPutativeTMHMMove], a
 	ld [wNamedObjectIndex], a
@@ -591,6 +633,10 @@ LearnEvolutionMove:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
+	ret
+
+.pop_bc_and_ret
+	pop bc
 	ret
 
 LearnLevelMoves:
@@ -758,114 +804,6 @@ EvoFlagAction:
 	pop de
 	ret
 
-GetBaseEvolution:
-; Find the first mon in the evolution chain including wCurPartySpecies.
-
-; Return carry and the new species in wCurPartySpecies
-; if a base evolution is found.
-
-	call GetPreEvolution
-GetPreEvolution:
-; Find the first mon to evolve into wCurPartySpecies+wCurForm.
-
-; Return carry and the new species in wCurPartySpecies+wCurForm
-; if a pre-evolution is found.
-
-	ld bc, 0
-.loop ; For each Pokemon...
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-.loop2 ; For each evolution...
-	ld a, [hli]
-	inc a
-	jr z, .no_evolve ; If we jump, this Pokemon does not evolve into wCurPartySpecies.
-	dec a
-	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
-	jr z, .inc
-	cp EVOLVE_HOLDING ; This evolution type has the extra parameter of time of day comparison.
-	jr z, .inc
-	cp EVOLVE_PARTY ; This evolution type has the extra parameter of form comparison.
-	jr nz, .check_speciesform
-.inc
-	inc hl
-
-.check_speciesform
-	inc hl
-	ld a, [wCurPartySpecies]
-	cp [hl]
-	inc hl
-	jr nz, .not_preevo
-	ld a, [hl]
-	and FORM_MASK
-	push bc
-	ld b, EXTSPECIES_MASK
-	jr z, .skip_form
-	ld b, SPECIESFORM_MASK
-.skip_form
-	ld a, [wCurForm]
-	xor [hl]
-	and b
-	pop bc
-	jr z, .found_preevo
-
-.not_preevo
-	inc hl
-	ld a, [hl]
-	and a
-	jr nz, .loop2
-
-.no_evolve
-	inc bc
-	ld a, b
-	cp HIGH(NUM_EXT_POKEMON)
-	jr c, .loop
-	ld a, c
-	cp LOW(NUM_EXT_POKEMON)
-	jr c, .loop
-	and a
-	ret
-
-.found_preevo
-; if bc > NUM_SPECIES - 1, lookup species+form on VariantSpeciesAndFormTable
-; else convert index directly to species+extspecies and give form of PLAIN_FORM (or parent's form if NO_FORM is used)
-	ld a, b
-	cp HIGH(NUM_SPECIES)
-	jr c, .not_variant
-	ld a, c
-	cp LOW(NUM_SPECIES)
-	jr c, .not_variant
-	ld hl, VariantSpeciesAndFormTable - (NUM_SPECIES * 2)
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld [wCurPartySpecies], a
-	ld a, [hl]
-	jr .done
-
-.not_variant
-	inc bc
-	ld a, c
-	ld [wCurPartySpecies], a
-	ld a, b ; convert b to extspecies
-	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
-	swap a
-	rlca
-	ld b, a ; extspecies | NO_FORM
-	ld a, [hl] ; we're pointing to mon form
-	and FORM_MASK ; should we return NO_FORM?
-	jr z, .got_form
-	inc b ; extspecies | PLAIN_FORM
-.got_form
-	ld a, b
-.done
-	ld [wCurForm], a
-	scf
-	ret
-
 GetEvosAttacksPointer:
 ; input: b = form, c = species
 ; output: bc = index, hl = pointer
@@ -910,6 +848,8 @@ GetEvolutionData:
 	ld a, [hli] ; evolution method
 	cp EVOLVE_ITEM
 	jr z, .get_item_name
+	cp EVOLVE_TRADE
+	jr z, .get_trade_item
 	cp EVOLVE_HOLDING
 	jr z, .get_item_name_and_time
 	cp EVOLVE_LOCATION
@@ -922,12 +862,11 @@ GetEvolutionData:
 	pop af
 	ret
 
-.copy_string:
-	ld de, wStringBuffer1
-	ld hl, wStringBuffer4
-	call CopyName2
-	jr .done
-
+.get_trade_item:
+	; Copy item constant to wStringBuffer5 so we can check it later.
+	ld a, [hl]
+	ld [wStringBuffer5], a
+	jr .get_item_name
 .get_item_name_and_time:
 	inc hl
 	ld a, [hld] ; parameter 2 (time)
@@ -953,21 +892,27 @@ GetEvolutionData:
 	ld a, [hli] ; parameter 1 low (species)
 	ld e, a
 	ld a, [hl] ; parameter 1 high (ext species/form)
-	ld hl, wNamedObjectIndex
+	ld hl, wNamedObjectIndex+1
 	ld [hld], a
 	ld [hl], e
 	call GetPokemonName
-	jr .copy_string
+.copy_string:
+	ld de, wStringBuffer1
+	ld hl, wStringBuffer4
+	call CopyName2
+	jr .done
 
 INCLUDE "data/pokemon/multi_evos.asm"
 
-GetNextMoveLevel:
+GetNextMove:
 ; input: b = form, c = species, d = level
-; output: a = level of next move (0 if none, -1 if egg)
+; output: a = level of next move (0 if none, -1 if egg), d = id of next move (0 if none/egg)
 	assert MON_IS_EGG == MON_EXTSPECIES && MON_EXTSPECIES == MON_FORM
 	bit MON_IS_EGG_F, b
 	jr z, .not_egg
 	ld a, -1
+.no_move
+	ld d, 0
 	ret
 .not_egg
 	call GetEvosAttacksPointer
@@ -978,11 +923,14 @@ GetNextMoveLevel:
 .find_move
 	ld a, [hli]
 	inc a
-	ret z ; no move
+	jr z, .no_move
 	dec a
 	cp d
 	jr c, .next_move
-	ret nz ; got move
+	jr z, .next_move
+	; got move
+	ld d, [hl]
+	ret
 .next_move
 	inc hl
 	jr .find_move

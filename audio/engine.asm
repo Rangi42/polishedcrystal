@@ -43,6 +43,8 @@ _InitSound::
 	xor a
 	rst ByteFill
 
+	dec a
+	ld [wCh3LoadedWaveform], a ; initializes to -1 so title music can use sample 0
 	ld a, MAX_VOLUME
 	ld [wVolume], a
 	call MusicOn
@@ -62,7 +64,7 @@ MusicFadeRestart:
 	ret
 
 MusicOn:
-	ld a, 1
+	ld a, TRUE
 	ld [wMusicPlaying], a
 	ret
 
@@ -516,7 +518,7 @@ FadeMusic:
 	ld [wVolume], a
 	; did we just get on a bike?
 	ld a, [wPlayerState]
-	cp $1 ; bicycle
+	dec a ; bicycle = 1
 	jr z, .bicycle
 	push bc
 	; restart sound
@@ -2092,7 +2094,7 @@ _PlayMusic::
 	ld [wMusicNoiseSampleSet], a
 	jmp MusicOn
 
-_PlayCryHeader::
+_PlayCry::
 ; Play cry de using parameters:
 ;	wCryPitch
 ;	wCryLength

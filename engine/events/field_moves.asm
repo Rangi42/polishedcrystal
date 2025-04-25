@@ -10,6 +10,9 @@ BlindingFlash::
 	jmp FadeInPalettes_EnableDynNoApply
 
 ShakeHeadbuttTree:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
+	farcall CancelOWFadePalettes
 	farcall CopyBGGreenToOBPal7
 	call ClearSpriteAnims
 	call GetCurrentLandmark
@@ -112,6 +115,8 @@ ShakeHeadbuttTree:
 
 	call ClearSpriteAnims
 	call DelayFrame
+	ld hl, wWeatherFlags
+	res OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	jmp UpdatePlayerSprite
 
 HideHeadbuttTree:

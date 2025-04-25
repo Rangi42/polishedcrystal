@@ -120,6 +120,8 @@ BT_SwapRentals:
 .reset_switch
 	xor a
 	ld [wSwitchMon], a
+	call LoadPartyMenuGFX
+	call SetDefaultBGPAndOBP
 	jmp .loop
 
 .improper_swap
@@ -212,9 +214,7 @@ BT_PartySelect:
 	dec a ; Enter
 	jr z, .Enter
 	dec a ; Stats
-	jmp z, .Stats
-	dec a ; Moves
-	jmp z, .Moves
+	jr z, .Stats
 	jr .loop ; Cancel
 
 .return
@@ -226,7 +226,7 @@ BT_PartySelect:
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
-	ld hl, .EggMenuHeader
+	ld hl, .BannedMenuHeader
 	jmp nz, BT_DisplayMenu
 
 	; Check if mon is banned
@@ -281,57 +281,35 @@ BT_PartySelect:
 	prompt
 
 .Stats:
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	jmp .loop
-
-.Moves:
-	; For Eggs, "Moves" is actually the "Cancel" option
-	ld a, MON_IS_EGG
-	call GetPartyParamLocationAndValue
-	bit MON_IS_EGG_F, a
-	jr nz, .Cancel
-	farcall ManagePokemonMoves
 
 .Cancel:
 	jmp .loop
 
-.EggMenuHeader:
-	db $00 ; flags
-	menu_coords 11, 13, 19, 17
-	dw .EggMenuData
-	db 1 ; default option
-
-.EggMenuData:
-	db $c0 ; flags
-	db 2 ; items
-	db "Stats@"
-	db "Cancel@"
-
 .MenuHeader:
 	db $00 ; flags
-	menu_coords 11, 9, 19, 17
+	menu_coords 10, 11, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db $c0 ; flags
-	db 4 ; items
+	db 3 ; items
 	db "Enter@"
-	db "Stats@"
-	db "Moves@"
+	db "Summary@"
 	db "Cancel@"
 
 .BannedMenuHeader:
 	db $00 ; flags
-	menu_coords 11, 11, 19, 17
+	menu_coords 10, 13, 19, 17
 	dw .BannedMenuData
 	db 1 ; default option
 
 .BannedMenuData:
 	db $c0 ; flags
-	db 3 ; items
-	db "Stats@"
-	db "Moves@"
+	db 2 ; items
+	db "Summary@"
 	db "Cancel@"
 
 BTText_EnterBattle:
@@ -349,6 +327,8 @@ BTText_SameItem:
 	prompt
 
 BT_ConfirmPartySelection:
+	call LoadPartyMenuGFX
+	call SetDefaultBGPAndOBP
 	call InitPartyMenuLayout
 	farcall FreezeMonIcons
 	hlcoord 1, 16
@@ -633,8 +613,7 @@ PlacePartyHPBar:
 	ld b, $0
 	add hl, bc
 	call SetHPPal
-	ld a, CGB_PARTY_MENU_HP_PALS
-	call GetCGBLayout
+	farcall ApplyPartyMenuHPPals
 .skip
 	ld hl, wHPPalIndex
 	inc [hl]
@@ -1228,7 +1207,7 @@ PartyMenuAttributes:
 	db 0
 
 PartyMenuSelect:
-; sets carry if exitted menu.
+; sets carry if exited menu.
 	call DoMenuJoypadLoop
 	call PlaceHollowCursor
 	ld a, [wPartyCount]
@@ -1254,22 +1233,21 @@ PartyMenuSelect:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurForm], a
-
-	ld de, SFX_READ_TEXT_2
-	call PlaySFX
-	push bc
-	call SFXDelay2
-	pop bc
+	call .sfx_delay_2
 	and a
 	ret
 
 .exitmenu
+	call .sfx_delay_2
+	scf
+	ret
+
+.sfx_delay_2
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	push bc
 	call SFXDelay2
 	pop bc
-	scf
 	ret
 
 PlacePartyMenuText:

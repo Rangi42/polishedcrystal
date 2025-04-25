@@ -7,19 +7,6 @@ DEF MOVE_NAME_LENGTH   EQU 13
 DEF ITEM_NAME_LENGTH   EQU 13
 DEF TRAINER_CLASS_NAME_LENGTH EQU 13
 
-; GetName types (see home/names.asm)
-	const_def 1
-	const MON_NAME       ; 1
-	const MOVE_NAME      ; 2
-	const APRICORN_NAME  ; 3
-	const WING_NAME      ; 4
-	const ITEM_NAME      ; 5
-	const PARTY_OT_NAME  ; 6
-	const ENEMY_OT_NAME  ; 7
-	const TRAINER_NAME   ; 8
-	const KEY_ITEM_NAME  ; 9
-	const EXP_CANDY_NAME ; 10
-
 ; see home/text.asm
 DEF BORDER_WIDTH   EQU 2
 DEF TEXTBOX_WIDTH  EQU SCREEN_WIDTH
@@ -46,3 +33,15 @@ DEF PRINTNUM_DELAY        EQU 1 << PRINTNUM_DELAY_F
 DEF PRINTNUM_MONEY        EQU 1 << PRINTNUM_MONEY_F
 DEF PRINTNUM_LEFTALIGN    EQU 1 << PRINTNUM_LEFTALIGN_F
 DEF PRINTNUM_LEADINGZEROS EQU 1 << PRINTNUM_LEADINGZEROS_F
+
+; Huffman text compression (see data/text/compressed_text.asm and home/text.asm)
+; tree starts at parent node $00
+DEF ROOT_NODE_ID               EQU $00
+; characters $7f-$eb correspond to leaf nodes $7f-$eb
+DEF FIRST_LEAF_NODE_ID         EQU $7f
+; characters $4d-$5c correspond to leaf nodes $ec-$fb
+DEF FIRST_SHIFTED_LEAF_CHAR_ID EQU $4d
+DEF LAST_SHIFTED_LEAF_CHAR_ID  EQU $5c
+DEF FIRST_SHIFTED_LEAF_NODE_ID EQU $ec
+assert FIRST_SHIFTED_LEAF_NODE_ID + LAST_SHIFTED_LEAF_CHAR_ID - FIRST_SHIFTED_LEAF_CHAR_ID == $fb
+assert FIRST_SHIFTED_LEAF_CHAR_ID < LAST_SHIFTED_LEAF_CHAR_ID && LAST_SHIFTED_LEAF_CHAR_ID < FIRST_LEAF_NODE_ID

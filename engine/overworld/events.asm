@@ -545,7 +545,6 @@ TryObjectEvent:
 	farcall CheckFacingObject
 	ret nc
 
-	call PlayTalkObject
 	ldh a, [hObjectStructIndexBuffer]
 	call GetObjectStruct
 	ld hl, OBJECT_MAP_OBJECT_INDEX
@@ -558,12 +557,20 @@ TryObjectEvent:
 	add hl, bc
 	ld a, [hl]
 
+	; failsafe
 	cp NUM_OBJECT_TYPES
 	ret nc
 
+	cp SILENT_OBJECT_TYPES
+	jr nc, .skip_click_sfx
+	push af
+	call PlayTalkObject
+	pop af
+.skip_click_sfx
+
 	call StackJumpTable
 
-ObjectEventTypeArray:
+.Jumptable:
 	table_width 2
 	dw .script   ; OBJECTTYPE_SCRIPT
 	dw .itemball ; OBJECTTYPE_ITEMBALL
@@ -571,6 +578,8 @@ ObjectEventTypeArray:
 	dw .trainer  ; OBJECTTYPE_GENERICTRAINER
 	dw .pokemon  ; OBJECTTYPE_POKEMON
 	dw .command  ; OBJECTTYPE_COMMAND
+	dw .script   ; OBJECTTYPE_SCRIPT_SILENT
+	dw DoNothing ; OBJECTTYPE_DONOTHING
 	assert_table_length NUM_OBJECT_TYPES
 
 .script:

@@ -220,18 +220,6 @@ GetUserMonAttr::
 	pop bc
 	ret
 
-GetOpponentMonAttr_de::
-	call StackCallOpponentTurn
-GetUserMonAttr_de::
-	push hl
-	ld h, d
-	ld l, e
-	call GetUserMonAttr
-	ld d, h
-	ld e, l
-	pop hl
-	ret
-
 UpdateOpponentInParty::
 	call StackCallOpponentTurn
 UpdateUserInParty::
@@ -242,11 +230,8 @@ UpdateUserInParty::
 UpdateBattleMonInParty::
 ; Update level, status, current HP
 	ld a, [wCurBattleMon]
-	; fallthrough
-UpdateBattleMon::
 	ld hl, wPartyMon1Level
 	call GetPartyLocation
-
 	ld d, h
 	ld e, l
 	ld hl, wBattleMonLevel
@@ -512,26 +497,40 @@ ApplySpecialAttackDamageMod::
 	ld b, SPECIAL
 	jr ApplyAttackDamageMod
 
-GetOpponentAbility::
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	ret z
-	push bc
-	ld b, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	ld a, b
-	pop bc
-	ret nz
+GetTrueUserAbility:
+; Get true user ability after Neutralizing Gas.
+; A "true" user might be external, if Future Sight is active.
+	farcall GetFutureSightUser
+	jr z, .not_external
+
+	; External users have no ability.
 	xor a
 	ret
 
-GetTrueUserAbility::
-; Get true user ability after Neutralizing Gas.
-; A "true" user might be external, if Future Sight is active.
-	farjp _GetTrueUserAbility
+.not_external
+	call StackCallOpponentTurn
+GetOpponentAbility::
+	; Get opponent ability.
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	push af
+
+	; Check if it's suppressed by Neutralizing Gas.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp NEUTRALIZING_GAS
+	jr nz, .not_suppressed
+	pop af
+	push hl
+	farcall AbilityCanBeSuppressed
+	pop hl
+	ret c
+	xor a
+	ret
+
+.not_suppressed
+	pop af
+	ret
 
 GetOpponentAbilityAfterMoldBreaker::
 ; Returns an opponent's ability unless Mold Breaker
@@ -541,9 +540,6 @@ GetOpponentAbilityAfterMoldBreaker::
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsIceType::
-	ld a, ICE
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsDarkType::
 	ld a, DARK
@@ -671,6 +667,7 @@ GetWeatherAfterUserUmbrella::
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [wBattleWeather] otherwise.
+; Only call this function directly if Utility Umbrella doesn't apply.
 	call CheckNeutralizingGas
 	jr z, .weather
 	ld a, [wPlayerAbility]
@@ -737,11 +734,11 @@ CheckMoveSpeed::
 	cp 30
 	jr nc, .quick_draw_done
 
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 	jr .go_first
 
 .quick_draw_done
@@ -859,8 +856,7 @@ EmptyBattleTextbox::
 	jr BattleTextbox
 
 StdBattleTextbox::
-; Open a textbox and print battle text at 20:hl.
-	anonbankpush BattleText
+	farjp _StdBattleTextbox
 
 BattleTextbox::
 ; Open a textbox and print text at hl.

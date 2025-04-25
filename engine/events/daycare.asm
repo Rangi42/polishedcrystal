@@ -164,7 +164,7 @@ DayCare_DepositPokemonText:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
 	jr PrintDayCareText
 
@@ -224,7 +224,7 @@ DayCare_TakeMoney_PlayCry:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, DAYCARETEXT_TOO_SOON
 	; fallthrough
 
@@ -704,29 +704,55 @@ DayCare_GenerateEgg:
 	ld [wBreedMotherOrNonDitto], a
 	and a
 	ld a, [wBreedMon1Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon1Form]
 	jr z, .GotMother
 	ld a, [wBreedMon2Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon2Form]
 
 .GotMother:
+	ld c, a
+	ld hl, wBreedMon1Form
+	call .inherit_mother_unless_samespecies ; this should preserve c!
 	and SPECIESFORM_MASK
-	ld [wCurForm], a
-	farcall GetBaseEvolution
+	ld d, a
+	push bc
+	farcall CheckInvalidVariants ; conveniently, forms we don't want to pass on are here
+	pop bc
+	ld a, d
+	jr nc, .parent_form_ok
+	assert PLAIN_FORM == 1
+	and EXTSPECIES_MASK
+	inc a ; or PLAIN_FORM
+.parent_form_ok
+	ld b, a
+	push bc
+	call GetSpeciesAndFormIndex
+	ld hl, EggSpeciesMovesPointers
+	add hl, bc
+	add hl, bc
+	pop bc
+	ld a, BANK(EggSpeciesMovesPointers)
+	call GetFarWord
+	ld a, BANK(EggSpeciesMoves)
+	call GetFarWord
+	ld a, l
+	inc a
+	jr nz, .found_preevo
+	ld h, b
+	ld l, c
+.found_preevo
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
 
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
-	cp NIDORAN_F
-	jr nz, .nidoran_check_done
-	assert !HIGH(NIDORAN_F)
-	ld a, [wCurForm]
+	ld a, h
+	ld [wCurForm], a
+	assert !HIGH(NIDORAN_F) && !HIGH(NIDORAN_M)
 	and EXTSPECIES_MASK
+	ld a, l
 	jr nz, .nidoran_check_done
-
+	cp NIDORAN_F
+	jr z, .random_nidoran
+	cp NIDORAN_M
+	jr nz, .nidoran_check_done
+.random_nidoran
 	; random Nidoran offspring
 	call Random
 	cp 1 + 50 percent
@@ -734,10 +760,10 @@ DayCare_GenerateEgg:
 	sbc a
 	and NIDORAN_F - NIDORAN_M
 	add NIDORAN_M
+.nidoran_check_done
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 
-.nidoran_check_done
 	; Clear tempmon struct
 	xor a
 	ld hl, wTempMon
@@ -746,43 +772,15 @@ DayCare_GenerateEgg:
 
 	ld a, [wCurPartySpecies]
 	ld [wTempMonSpecies], a
-	ld c, a
 
-	; Form inheritance: from the mother or non-Ditto.
-	; Should only happen if stored pre-evo form is NO_FORM.
-	; If both parents share species, pick at random.
-	; Must assign [wCurForm] before GetBaseData.
-	ld hl, wBreedMon1Form
-	call .inherit_mother_unless_samespecies ; this should preserve c!
 	ld a, [wCurForm]
 	ld b, a
 	and FORM_MASK
 	jr nz, .form_ok
-	ld a, b
-	and EXTSPECIES_MASK ; get extspecies of child
-	ld b, a
-	ld a, [hl]
-	and FORM_MASK ; get form of parent
+	ld a, d
+	and FORM_MASK
 	or b
 	ld [wCurForm], a
-	ld b, a
-
-; it's useful for mons to have forms found only in CosmeticSpeciesAndFormTable (see: Ekans)
-; but we don't want to breed mons that shouldn't be hatched (see: Spiky-eared Pichu)
-	push bc
-	call GetCosmeticSpeciesAndFormIndex ; first, ensure the form even exists for this mon
-	pop bc
-	jr nc, .clear_form
-	ld hl, InvalidBreedmons
-	call GetSpeciesAndFormIndexFromHL
-	jr nc, .form_ok
-.clear_form
-	ld hl, wCurForm
-	ld a, [hl]
-	and EXTSPECIES_MASK
-	or PLAIN_FORM
-	ld [hl], a
-
 .form_ok
 	call GetBaseData
 
@@ -1095,4 +1093,3 @@ DayCare_GenerateEgg:
 .String_EGG:
 	rawchar "Egg@"
 
-INCLUDE "data/pokemon/invalid_breedmons.asm"

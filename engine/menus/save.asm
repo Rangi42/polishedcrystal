@@ -90,16 +90,32 @@ AskOverwriteSaveFile:
 	jr z, .erase
 	call CompareLoadedAndSavedPlayerID
 	jr z, .ok
+if !DEF(DEBUG)
+	ld a, [wOptions1]
+	push af
+	and ~(TEXT_DELAY_MASK | AUTOSCROLL_MASK)
+	or SLOW_TEXT
+	ld [wOptions1], a
+endc
 	ld hl, AnotherSaveFileText
 	ld b, BANK(AnotherSaveFileText)
 	call MapTextbox
 	call LoadMenuTextbox
+if !DEF(DEBUG)
+	call NoYesBox
+	pop af
+	ld [wOptions1], a
+	ld a, [wMenuCursorY]
+	dec a
+	call CloseWindow ; preserves af
+	jr z, .refused
+else
 	call YesNoBox
 	ld a, [wMenuCursorY]
 	dec a
-	call CloseWindow
-	and a
+	call CloseWindow ; preserves af
 	jr nz, .refused
+endc
 .erase
 	call ErasePreviousSave
 .ok
@@ -622,11 +638,6 @@ WouldYouLikeToSaveTheGameText:
 	text_far _WouldYouLikeToSaveTheGameText
 	text_end
 
-SavingDontTurnOffThePowerText:
-	; SAVING… DON'T TURN OFF THE POWER.
-	text_far _SavingDontTurnOffThePowerText
-	text_end
-
 SavedTheGameText:
 	; saved the game.
 	text_far _SavedTheGameText
@@ -640,11 +651,6 @@ AnotherSaveFileText:
 SaveFileCorruptedText:
 	; The save file is corrupted!
 	text_far _SaveFileCorruptedText
-	text_end
-
-MoveMonWOMailSaveText:
-	; Each time you move a #MON, data will be saved. OK?
-	text_far _MoveMonWOMailSaveText
 	text_end
 
 VerifyGameVersion:

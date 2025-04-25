@@ -71,7 +71,7 @@ DoBattleBGEffectFunction:
 	ld a, [hl]
 	call StackJumpTable
 
-BattleBGEffects:
+.BattleBGEffects:
 	dw BattleBGEffect_End
 	dw BattleBGEffect_FlashInverted
 	dw BattleBGEffect_FlashWhite
@@ -80,6 +80,7 @@ BattleBGEffects:
 	dw BattleBGEffect_AlternateHues
 	dw BattleBGEffect_CycleOBPalsGrayAndYellow
 	dw BattleBGEffect_CycleMidOBPalsGrayAndYellow
+	dw BattleBGEffect_CycleOBPalsGrayAndYellowFullShift
 	dw BattleBGEffect_CycleBGPals_Inverted
 	dw BattleBGEffect_HideMon
 	dw BattleBGEffect_ShowMon
@@ -253,6 +254,19 @@ BattleBGEffect_CycleOBPalsGrayAndYellow:
 .PalsCGB:
 	dc 3, 2, 1, 0
 	dc 2, 1, 0, 0
+	db -2
+
+BattleBGEffect_CycleOBPalsGrayAndYellowFullShift:
+	ld de, .PalsCGB
+	call BattleBGEffect_GetNthDMGPal
+	ld [wOBP0], a
+	ret
+
+.PalsCGB:
+	dc 3, 2, 1, 0
+	dc 2, 1, 0, 3
+	dc 1, 0, 3, 2
+	dc 0, 3, 2, 1
 	db -2
 
 BattleBGEffect_CycleMidOBPalsGrayAndYellow:
@@ -764,7 +778,7 @@ BattleBGEffect_RunPicResizeScript:
 	pop bc
 
 	; reset ability overlay if applicable
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret z
 	push hl
@@ -1161,8 +1175,8 @@ BattleBGEffect_AcidArmor:
 	ldh a, [hLYOverrideEnd]
 	ld l, a
 	ld a, [hl]
-	cp $1
-	jr c, .okay
+	and a
+	jr z, .okay
 	cp $90
 	jr z, .okay
 	ld [hl], $0
@@ -2476,7 +2490,7 @@ BattleBGEffect_SineWave:
 	jr c, .next
 
 	; If ability slideouts are up, don't sinewave them.
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	ld d, a
 	bit 6, d
 	jr z, .no_player_slideout

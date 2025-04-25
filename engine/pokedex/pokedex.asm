@@ -1427,7 +1427,7 @@ endr
 	cp DEXDISP_NEWDESC
 	jr nz, .joypad_loop
 	call Pokedex_GetCursorSpecies
-	call PlayCry
+	call PlayMonCry
 
 .newdesc_joypad
 	call Pokedex_GetInput
@@ -1697,7 +1697,7 @@ Pokedex_Bio:
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
-	and EXTSPECIES_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	push bc
 	farcall _GetNewBaseExp
@@ -1826,7 +1826,7 @@ Pokedex_Bio:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	jr .joypad_loop
 
 .GetEggGroupName:
@@ -1922,11 +1922,8 @@ _Pokedex_Stats:
 	sub l
 	ld h, a
 	ld b, [hl]
-	push bc
 	hlcoord 1, 13
-	farcall PrintAbility
-	pop bc
-	farcall PrintAbilityDescription
+	call Pokedex_PrintAbilityWithDescription
 
 	; use correct vram bank for types and footprint
 	ld a, [wPokedex_MonInfoBank]
@@ -2026,10 +2023,7 @@ _Pokedex_Stats:
 	ld h, a
 	ld b, [hl]
 	pop hl
-	push bc
-	farcall PrintAbility
-	pop bc
-	farcall PrintAbilityDescription
+	call Pokedex_PrintAbilityWithDescription
 	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
@@ -2038,6 +2032,19 @@ _Pokedex_Stats:
 	ret z
 	add $2c - 1 ; get corresponding EV tile
 	ld [hl], a
+	ret
+
+Pokedex_PrintAbilityWithDescription:
+	push bc
+	farcall PrintAbility
+	pop bc
+	ld a, [wTextboxFlags]
+	push af
+	set NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
+	farcall PrintAbilityDescription
+	pop af
+	ld [wTextboxFlags], a
 	ret
 
 Pokedex_SetModeSearchPals:
@@ -3169,15 +3176,9 @@ Pokedex_SwitchMonInfoBank:
 	ld [hl], a
 	ret
 
-Pokedex_GetCursorMonInVBK1:
-	ld a, 1
-	ld [wPokedex_MonInfoBank], a
-	jr _Pokedex_GetCursorMon
 Pokedex_GetCursorMon:
 ; Displays information about the mon the cursor is currently hovering.
 	call Pokedex_SwitchMonInfoBank
-	; fallthrough
-_Pokedex_GetCursorMon:
 	; Set up proper palettes and switch between vbk0 and vbk1 usage.
 	swap a
 	rrca

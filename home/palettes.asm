@@ -26,7 +26,7 @@ ForceUpdateCGBPals::
 	ld hl, wBGPals2
 
 ; copy 8 pals to bgpd
-	ld a, %10000000 ; auto increment, index 0
+	ld a, 1 << rBGPI_AUTO_INCREMENT
 	ldh [rBGPI], a
 	lb bc, 4, LOW(rBGPD) ; 4 = NUM_PALS / 2
 .bgp

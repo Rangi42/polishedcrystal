@@ -70,7 +70,6 @@ VanceGenericText:
 
 	para "My "
 	text_ram wStringBuffer4
-	text ""
 	line "looks like it will"
 
 	para "get tough enough"

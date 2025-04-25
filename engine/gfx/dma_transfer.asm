@@ -58,13 +58,9 @@ HDMATransferToWRAMBank3:
 	ldh [rHDMA3], a
 	ldh a, [hBGMapAddress]
 	ldh [rHDMA4], a
-
 	ld a, $23
 	ldh [hDMATransfer], a
-	; fallthrough
-
-WaitDMATransfer:
-	jr .handleLoop ; no-optimize stub jump
+	jr .handleLoop
 .loop
 	call DelayFrame
 .handleLoop

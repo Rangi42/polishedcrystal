@@ -754,7 +754,7 @@ LinkTradeOTPartymonMenuLoop:
 	jmp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
-	call LinkMonStatsScreen
+	call LinkMonSummaryScreen
 	call InitLinkTradePalMap
 	call ApplyAttrAndTilemapInVBlank
 	jmp LinkTradePartiesMenuMasterLoop
@@ -786,13 +786,13 @@ LinkTradeOTPartymonMenuLoop:
 	jmp z, LinkTradePartiesMenuMasterLoop
 	jmp LinkTradeOTPartymonMenuCheckCancel
 
-LinkMonStatsScreen:
+LinkMonSummaryScreen:
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
 	ld a, [wMonType]
 	push af
-	farcall OpenPartyStats
+	farcall OpenPartySummary
 	pop af
 	ld [wMonType], a
 	ld a, [wCurPartyMon]
@@ -834,7 +834,7 @@ LinkTradePartymonMenuLoop:
 	and a
 	jr z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
-	jmp nz, LinkTrade_TradeStatsMenu
+	jmp nz, LinkTrade_TradeSummaryMenu
 	bit D_DOWN_F, a
 	jr z, .not_d_down
 	ld a, [wMenuCursorY]
@@ -1030,7 +1030,7 @@ LinkTradeMenu:
 	scf
 	ret
 
-LinkTrade_TradeStatsMenu:
+LinkTrade_TradeSummaryMenu:
 	call LoadTileMapToTempTileMap
 	ld a, [wMenuCursorY]
 	push af
@@ -1038,7 +1038,7 @@ LinkTrade_TradeStatsMenu:
 	lb bc, 1, 18
 	call LinkTextbox
 	hlcoord 2, 16
-	ld de, .String_Stats_Trade
+	ld de, .String_Summary_Trade
 	rst PlaceString
 	call Link_WaitBGMap
 
@@ -1067,7 +1067,7 @@ LinkTrade_TradeStatsMenu:
 	bit D_RIGHT_F, a
 	jr nz, .d_right
 	bit B_BUTTON_F, a
-	jr z, .show_stats
+	jr z, .show_summary
 .b_button
 	pop af
 	ld [wMenuCursorY], a
@@ -1102,10 +1102,10 @@ LinkTrade_TradeStatsMenu:
 	jr nz, .b_button
 	jr .try_trade
 
-.show_stats
+.show_summary
 	pop af
 	ld [wMenuCursorY], a
-	call LinkMonStatsScreen
+	call LinkMonSummaryScreen
 	call SafeLoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
@@ -1194,8 +1194,8 @@ LinkTrade_TradeStatsMenu:
 	text_far _LinkTradeCantBattleText
 	text_end
 
-.String_Stats_Trade:
-	text "Stats     Trade"
+.String_Summary_Trade:
+	text "Summary   Trade"
 	done
 
 .Text_Abnormal:
@@ -1252,7 +1252,7 @@ CheckAnyOtherAliveMonsForTrade:
 
 LinkTradeOTPartymonMenuCheckCancel:
 	ld a, [wMenuCursorY]
-	cp 1
+	dec a
 	jmp nz, LinkTradePartiesMenuMasterLoop
 	call HideCursor
 	push hl
@@ -1591,7 +1591,7 @@ LinkTrade:
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurOTTradePartyMon], a
-	ld a, TRUE
+	ld a, EVOLVE_TRADE
 	ld [wForceEvolution], a
 
 	ld c, 100
@@ -2476,165 +2476,6 @@ Special_CableClubCheckWhichChris:
 	ldh [hScriptVar], a
 	ret
 
-DetermineLinkBattleResult:
-	call UpdateEnemyMonInParty
-	ld hl, wPartyMon1HP
-	call .CountMonsRemaining
-	push bc
-	ld hl, wOTPartyMon1HP
-	call .CountMonsRemaining
-	ld a, c
-	pop bc
-	cp c
-	jr z, .even_number_of_mons_remaining
-	jr c, .defeat
-	jr .victory
-
-.even_number_of_mons_remaining
-	call .BothSides_CheckNumberMonsAtFullHealth
-	jr z, .drawn
-	ld a, e
-	cp $1
-	jr z, .victory
-	cp $2
-	jr z, .defeat
-	ld hl, wPartyMon1HP
-	call .CalcPercentHPRemaining
-	push de
-	ld hl, wOTPartyMon1HP
-	call .CalcPercentHPRemaining
-	pop hl
-	ld a, d
-	cp h
-	jr c, .victory
-	jr nz, .defeat
-	ld a, e
-	cp l
-	jr z, .drawn
-	jr nc, .defeat
-
-.victory
-	ld a, [wBattleResult]
-	and $f0
-	ld [wBattleResult], a
-	ret
-
-.defeat
-	ld a, [wBattleResult]
-	and $f0
-	inc a
-	ld [wBattleResult], a
-	ret
-
-.drawn
-	ld a, [wBattleResult]
-	and $f0
-	add $2
-	ld [wBattleResult], a
-	ret
-
-.CountMonsRemaining:
-	lb bc, 3, 0
-	ld de, PARTYMON_STRUCT_LENGTH - 1
-.loop
-	ld a, [hli]
-	or [hl]
-	jr nz, .not_fainted
-	inc c
-
-.not_fainted
-	add hl, de
-	dec b
-	jr nz, .loop
-	ret
-
-.CalcPercentHPRemaining:
-	ld de, 0
-	ld c, $3
-.loop2
-	ld a, [hli]
-	or [hl]
-	jr z, .next
-	dec hl
-	xor a
-	ldh [hDividend + 0], a
-	ld a, [hli]
-	ldh [hDividend + 1], a
-	ld a, [hli]
-	ldh [hDividend + 2], a
-	xor a
-	ldh [hDividend + 3], a
-	ld a, [hli]
-	ld b, a
-	ld a, [hld]
-	srl b
-	rra
-	srl b
-	rra
-	ldh [hDivisor], a
-	ld b, $4
-	farcall Divide
-	ldh a, [hQuotient + 2]
-	add e
-	ld e, a
-	ldh a, [hQuotient + 1]
-	adc d
-	ld d, a
-	dec hl
-
-.next
-	push de
-	ld de, $2f
-	add hl, de
-	pop de
-	dec c
-	jr nz, .loop2
-	ret
-
-.BothSides_CheckNumberMonsAtFullHealth:
-	ld hl, wPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	jr nz, .finish ; we have a pokemon that's neither fainted nor at full health
-	ld hl, wOTPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	ld e, $1
-	ret
-
-.finish
-	ld hl, wOTPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	ld e, $0
-	ret nz ; we both have pokemon that are neither fainted nor at full health
-	ld e, $2
-	ld a, $1
-	and a
-	ret
-
-.CheckFaintedOrFullHealth:
-	ld d, 3
-.loop3
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	or b
-	jr z, .fainted_or_full_health
-	ld a, [hli]
-	cp b
-	ret nz
-	ld a, [hld]
-	cp c
-	ret nz
-
-.fainted_or_full_health
-	push de
-	ld de, PARTYMON_STRUCT_LENGTH - 2
-	add hl, de
-	pop de
-	dec d
-	jr nz, .loop3
-	ret
-
 InitLinkTradePalMap:
 	hlcoord 0, 0, wAttrmap
 	lb bc, 16, 2
@@ -2699,4 +2540,279 @@ InitLinkTradePalMap:
 	pop bc
 	dec b
 	jr nz, .row
+	ret
+
+; hl = send data
+; de = receive data
+; bc = length of data
+Serial_ExchangeBytes::
+	ld a, $1
+	ldh [hSerialIgnoringInitialData], a
+.loop
+	ld a, [hl]
+	ldh [hSerialSend], a
+	call Serial_ExchangeByte
+	push bc
+	ld b, a
+	inc hl
+	ld a, 48
+.wait48
+	dec a
+	jr nz, .wait48
+	ldh a, [hSerialIgnoringInitialData]
+	and a
+	ld a, b
+	pop bc
+	jr z, .load
+	dec hl
+	cp SERIAL_PREAMBLE_BYTE
+	jr nz, .loop
+	xor a
+	ldh [hSerialIgnoringInitialData], a
+	jr .loop
+
+.load
+	ld [de], a
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
+	ret
+
+Serial_ExchangeByte::
+	xor a
+	ldh [hSerialReceivedNewData], a
+	ldh a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	jr nz, .loop
+	ld a, $1
+	ldh [rSC], a
+	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ldh [rSC], a
+
+.loop
+	ldh a, [hSerialReceivedNewData]
+	and a
+	jr nz, .ok
+	ldh a, [hSerialConnectionStatus]
+	dec a
+	jr nz, .doNotIncrementTimeoutCounter
+	call CheckwLinkTimeoutFramesNonzero
+	jr z, .doNotIncrementTimeoutCounter
+	call .delay_15_cycles
+	push hl
+	ld hl, wLinkTimeoutFrames + 1
+	inc [hl]
+	jr nz, .no_rollover_up
+	dec hl
+	inc [hl]
+
+.no_rollover_up
+	pop hl
+	call CheckwLinkTimeoutFramesNonzero
+	jr nz, .loop
+	jr SerialDisconnected
+
+.doNotIncrementTimeoutCounter
+	ldh a, [rIE]
+	and 1 << SERIAL | 1 << TIMER | 1 << VBLANK
+	cp 1 << SERIAL
+	jr nz, .loop
+	ld a, [wLinkByteTimeout]
+	dec a ; no-optimize inefficient WRAM increment/decrement
+	ld [wLinkByteTimeout], a
+	jr nz, .loop
+	ld a, [wLinkByteTimeout + 1]
+	dec a ; no-optimize inefficient WRAM increment/decrement
+	ld [wLinkByteTimeout + 1], a
+	jr nz, .loop
+	ldh a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
+	jr z, .ok
+
+	ld a, 255
+.delay_255_cycles
+	dec a
+	jr nz, .delay_255_cycles
+
+.ok
+	xor a
+	ldh [hSerialReceivedNewData], a
+	ldh a, [rIE]
+	and 1 << SERIAL | 1 << TIMER | 1 << VBLANK
+	sub 1 << SERIAL
+	jr nz, .skipReloadingTimeoutCounter2
+
+	;xor a
+	ld [wLinkByteTimeout], a
+	ld a, $50
+	ld [wLinkByteTimeout + 1], a
+
+.skipReloadingTimeoutCounter2
+	ldh a, [hSerialReceive]
+	cp SERIAL_NO_DATA_BYTE
+	ret nz
+	call CheckwLinkTimeoutFramesNonzero
+	jr z, .done
+	push hl
+	ld hl, wLinkTimeoutFrames + 1
+	ld a, [hl]
+	dec a
+	ld [hld], a
+	inc a
+	jr nz, .no_rollover
+	dec [hl]
+
+.no_rollover
+	pop hl
+	call CheckwLinkTimeoutFramesNonzero
+	jr z, SerialDisconnected
+
+.done
+	ldh a, [rIE]
+	and 1 << SERIAL | 1 << TIMER | 1 << VBLANK
+	cp 1 << SERIAL
+	ld a, SERIAL_NO_DATA_BYTE
+	ret z
+	ld a, [hl]
+	ldh [hSerialSend], a
+	call DelayFrame
+	jmp Serial_ExchangeByte
+
+.delay_15_cycles
+	ld a, 15
+.delay_15_cycles_loop
+	dec a
+	jr nz, .delay_15_cycles_loop
+	ret
+
+CheckwLinkTimeoutFramesNonzero::
+	push hl
+	ld hl, wLinkTimeoutFrames
+	ld a, [hli]
+	or [hl]
+	pop hl
+	ret
+
+SerialDisconnected::
+; a is always 0 when this is called
+	dec a
+	ld [wLinkTimeoutFrames], a
+	ld [wLinkTimeoutFrames + 1], a
+	ret
+
+; This is used to check that both players entered the same Cable Club room.
+Serial_ExchangeSyncBytes::
+	ld hl, wLinkPlayerSyncBuffer
+	ld de, wLinkReceivedSyncBuffer
+	ld c, $2
+	ld a, $1
+	ldh [hSerialIgnoringInitialData], a
+.loop
+	call DelayFrame
+	ld a, [hl]
+	ldh [hSerialSend], a
+	call Serial_ExchangeByte
+	ld b, a
+	inc hl
+	ldh a, [hSerialIgnoringInitialData]
+	and a
+	ld a, 0 ; no-optimize a = 0
+	ldh [hSerialIgnoringInitialData], a
+	jr nz, .loop
+	ld a, b
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	ret
+
+Serial_PlaceWaitingTextAndSyncAndExchangeNybble::
+	call LoadTileMapToTempTileMap
+	call PlaceWaitingText
+	call Serial_SyncAndExchangeNybble
+	jmp SafeLoadTempTileMapToTileMap
+
+PlaceWaitingText::
+	hlcoord 4, 10
+	lb bc, 1, 10
+
+	ld a, [wBattleMode]
+	and a
+	jr z, .notinbattle
+
+	call Textbox
+	jr .proceed
+
+.notinbattle
+	call LinkTextbox
+
+.proceed
+	hlcoord 5, 11
+	ld de, .Waiting
+	rst PlaceString
+	ld c, 50
+	jmp DelayFrames
+
+.Waiting:
+	db "Waiting…!@"
+
+Serial_SyncAndExchangeNybble::
+	vc_hook Wireless_WaitLinkTransfer
+	ld a, $ff
+	ld [wOtherPlayerLinkAction], a
+.loop
+	call LinkTransfer
+	call DelayFrame
+	call CheckwLinkTimeoutFramesNonzero
+	jr z, .check
+	push hl
+	ld hl, wLinkTimeoutFrames + 1
+	dec [hl]
+	jr nz, .skip
+	dec hl
+	dec [hl]
+	jr nz, .skip
+	pop hl
+	xor a
+	jmp SerialDisconnected
+
+.skip
+	pop hl
+
+.check
+	ld a, [wOtherPlayerLinkAction]
+	inc a
+	jr z, .loop
+
+	vc_patch Wireless_net_delay_1
+if DEF(VIRTUAL_CONSOLE)
+	ld b, 26
+else
+	ld b, 10
+endc
+	vc_patch_end
+.receive
+	call DelayFrame
+	call LinkTransfer
+	dec b
+	jr nz, .receive
+
+	vc_patch Wireless_net_delay_2
+if DEF(VIRTUAL_CONSOLE)
+	ld b, 26
+else
+	ld b, 10
+endc
+	vc_patch_end
+.acknowledge
+	call DelayFrame
+	call LinkDataReceived
+	dec b
+	jr nz, .acknowledge
+
+	ld a, [wOtherPlayerLinkAction]
+	ld [wOtherPlayerLinkMode], a
+	vc_hook Wireless_WaitLinkTransfer_ret
 	ret

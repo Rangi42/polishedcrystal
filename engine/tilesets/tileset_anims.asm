@@ -1197,7 +1197,7 @@ FlickeringCaveEntrancePalette:
 	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
 
-	ld a, %10100000 ; auto-increment, index $20 (pal 4 color 0)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4)
 	ldh [rBGPI], a
 
 	ldh a, [hVBlankCounter]

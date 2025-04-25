@@ -17,10 +17,10 @@ Route31_MapScriptHeader:
 	bg_event 13, 14, BGEVENT_JUMPTEXT, Route31AdvancedTipsSignText
 
 	def_object_events
-	object_event 28,  7, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
-	object_event 17,  7, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	object_event  9,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1
-	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
+	object_event 28,  7, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
+	object_event 17,  7, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
+	object_event  9,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1
+	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
 	cuttree_event 13,  5, EVENT_ROUTE_31_CUT_TREE_1
 	cuttree_event 25, 10, EVENT_ROUTE_31_CUT_TREE_2
 	fruittree_event 16,  7, FRUITTREE_ROUTE_31, PERSIM_BERRY, PAL_NPC_PINK
@@ -185,7 +185,7 @@ TrainerBug_catcherWade1:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
 	ifequalfwd $1, .PhoneFullSTD
 	ifequalfwd $2, .DeclinedNumberSTD
-	gettrainername BUG_CATCHER, WADE1, $0
+	gettrainername BUG_CATCHER, WADE1, STRING_BUFFER_3
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
@@ -346,8 +346,10 @@ Route31MailRecipientScript:
 	jumpopenedtext Text_Route31CantTakeLastMon
 
 ReceivedSpearowMailText:
+	setcharmap no_ngrams
 	db   "Dark Cave leads"
 	next "to another road@"
+	setcharmap default
 
 Bug_catcherWade1SeenText:
 	text "I caught a bunch"

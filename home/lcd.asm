@@ -1,5 +1,6 @@
 LCDGeneric::
-; At this point it's assumed we're in WRAM bank 5!
+; Unlike vanilla, it's *not* assume we're in BANK(wLYOverrides),
+; since interrupts can now occur during VBlank
 	ldh a, [rLY]
 	cp SCREEN_HEIGHT_PX
 	jr c, .continue
@@ -8,12 +9,18 @@ LCDGeneric::
 	push bc
 	ld c, a
 	ld b, HIGH(wLYOverrides)
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wLYOverrides)
+	ldh [rSVBK], a
 	ld a, [bc]
 	ld b, a
 	ldh a, [hLCDCPointer]
 	ld c, a
 	ld a, b
 	ldh [c], a
+	pop af
+	ldh [rSVBK], a
 	pop bc
 	pop af
 	reti
@@ -52,6 +59,84 @@ LCDMusicPlayer::
 	pop hl
 
 .done
+	pop af
+	reti
+
+LCDSummaryScreenHideWindow::
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, LCDSummaryScreenDone
+	ldh a, [rSTAT]
+	and 3
+	jr nz, LCDSummaryScreenDone
+	ld a, 200
+	ldh [rWX], a
+	jr LCDSummaryScreenProgress
+
+LCDSummaryScreenShowWindow::
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, LCDSummaryScreenDone
+	ldh a, [hWX]
+	ldh [rWX], a
+	jr LCDSummaryScreenProgress
+
+LCDSummaryScreenScrollBackground::
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, LCDSummaryScreenDone
+	ldh a, [rSCY]
+	add 4
+	ldh [rSCY], a
+	; fallthrough
+
+LCDSummaryScreenProgress::
+	push hl
+	push bc
+	ld b, 0
+	ld a, [wSummaryScreenStep]
+	ld c, a
+	ld hl, wSummaryScreenInterrupts
+	add hl, bc
+	ld a, [hli]
+	inc a
+	jr nz, .continue
+	; return to start of list
+	ld [wSummaryScreenStep], a
+	ld hl, wSummaryScreenInterrupts
+	ld a, [hli]
+	inc a
+.continue
+	dec a
+	ldh [rLYC], a
+	ld a, [hl]
+	assert SUMMARY_LCD_SHOW_WINDOW == 1
+	dec a
+	jr z, .show
+	assert SUMMARY_LCD_SCROLL_BACKGROUND == 2
+	dec a
+	jr z, .nudge
+	ld hl, LCDSummaryScreenHideWindow
+	jr .setupNext
+.show
+	ld hl, LCDSummaryScreenShowWindow
+	jr .setupNext
+.nudge
+	ld hl, LCDSummaryScreenScrollBackground
+	; fallthrough
+.setupNext
+	ld a, l
+	ldh [hFunctionTargetLo], a
+	ld a, h
+	ldh [hFunctionTargetHi], a
+
+	; procede to next step
+	ld hl, wSummaryScreenStep
+	inc [hl]
+	inc [hl]
+	pop bc
+	pop hl
+LCDSummaryScreenDone::
 	pop af
 	reti
 

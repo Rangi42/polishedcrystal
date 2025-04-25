@@ -19,7 +19,6 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_DEPOSIT
 	const BOXMENU_STATS
 	const BOXMENU_SWITCH
-	const BOXMENU_MOVES
 	const BOXMENU_ITEM
 	const BOXMENU_RELEASE
 	const BOXMENU_CHANGE
@@ -158,14 +157,14 @@ BillsPC_LoadUI:
 
 	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $41
+	ld de, vTiles2 tile $42
 	lb bc, BANK(BattleExtrasGFX), 3
 	call DecompressRequest2bpp
 
-	; Box frame tiles and Pokérus symbol
+	; Box frame tiles and Pokérus symbols
 	ld hl, BillsPC_TileGFX
 	ld de, vTiles2 tile $31
-	lb bc, BANK(BillsPC_TileGFX), 16
+	lb bc, BANK(BillsPC_TileGFX), 17
 	call DecompressRequest2bpp
 
 	; Set up background + outline palettes
@@ -539,7 +538,6 @@ SetPartyIcons:
 	ld a, PARTY_LENGTH
 	call BillsPC_BlankTiles
 
-_SetPartyIcons:
 	; Write party members
 	lb bc, 0, 1
 	ld hl, wBillsPC_PartyList
@@ -561,7 +559,6 @@ SetBoxIcons:
 	ld a, MONS_PER_BOX
 	call BillsPC_BlankTiles
 
-_SetBoxIcons:
 	; Write box members
 	ld a, [wCurBox]
 	inc a
@@ -1166,7 +1163,7 @@ _GetCursorMon:
 	farcall GetGender
 	hlcoord 4, 8
 	jr c, .genderless
-	ld a, $41
+	ld a, $42
 	jr nz, .male
 	; female
 	inc a
@@ -1180,17 +1177,16 @@ _GetCursorMon:
 	pop hl
 	inc hl
 	jr z, .not_shiny
-	ld [hl], $43
+	ld [hl], $44
 .not_shiny
 	ld a, [wTempMonPokerusStatus]
 	and POKERUS_MASK
 	inc hl
 	jr z, .did_pokerus
-	; TODO: smiley face if cured (use shiny color + custom color 3?)
-	ld [hl], "."
+	ld [hl], $41 ; cured
 	cp POKERUS_CURED
 	jr z, .did_pokerus
-	ld [hl], $40 ; Rs
+	ld [hl], $40 ; infected
 .did_pokerus
 
 	; Item
@@ -1435,7 +1431,7 @@ ManageBoxes:
 
 .StorageMonMenu:
 	db MENU_BACKUP_TILES
-	menu_coords 9, 2, 19, 17
+	menu_coords 9, 4, 19, 17
 	dw .StorageMenuData2
 	db 1 ; default option
 
@@ -1448,7 +1444,7 @@ ManageBoxes:
 
 .PartyMonMenu:
 	db MENU_BACKUP_TILES
-	menu_coords 10, 2, 19, 17
+	menu_coords 10, 4, 19, 17
 	dw .PartyMenuData2
 	db 1 ; default option
 
@@ -1473,22 +1469,20 @@ ManageBoxes:
 	dw BillsPC_MenuStrings
 
 .storageitems
-	db 7
+	db 6
 	db BOXMENU_WITHDRAW
 	db BOXMENU_STATS
 	db BOXMENU_SWITCH
-	db BOXMENU_MOVES
 	db BOXMENU_ITEM
 	db BOXMENU_RELEASE
 	db BOXMENU_CANCEL
 	db -1
 
 .partyitems
-	db 7
+	db 6
 	db BOXMENU_DEPOSIT
 	db BOXMENU_STATS
 	db BOXMENU_SWITCH
-	db BOXMENU_MOVES
 	db BOXMENU_ITEM
 	db BOXMENU_RELEASE
 	db BOXMENU_CANCEL
@@ -1508,9 +1502,8 @@ BillsPC_MenuStrings:
 	; pokémon management options
 	db "Withdraw@"
 	db "Deposit@"
-	db "Stats@"
+	db "Summary@"
 	db "Switch@"
-	db "Moves@"
 	db "Item@"
 	db "Release@"
 	; box options
@@ -1533,7 +1526,6 @@ BillsPC_MenuJumptable:
 	dw BillsPC_Deposit
 	dw BillsPC_Stats
 	dw BillsPC_Switch
-	dw BillsPC_Moves
 	dw BillsPC_Item
 	dw BillsPC_Release
 	dw BillsPC_Change
@@ -1548,7 +1540,7 @@ BillsPC_MenuJumptable:
 
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
-	farcall _OpenPartyStats
+	farcall _OpenTempmonSummary
 	call BillsPC_MoveCursorAfterStatScreen
 	jmp BillsPC_ReturnFromTransistion
 
@@ -1569,9 +1561,9 @@ BillsPC_MoveCursorAfterStatScreen:
 	add b ; add to remainder (column offset)
 	ld b, a
 	pop af
-	ld a, $12 ; box baseline $YX
+	ln a, 1, 2 ; box baseline Y, X
 	jr nz, .got_baseline
-	ld a, $30 ; party baseline $YX
+	ln a, 3, 0 ; party baseline Y, X
 .got_baseline
 	add b
 	; cursor is now in a
@@ -2142,21 +2134,6 @@ BillsPC_PrepareTransistion:
 
 	jmp ClearSprites
 
-BillsPC_Moves:
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	ld hl, .CantCheckEggMoves
-	jmp nz, BillsPC_PrintText
-	call BillsPC_PrepareTransistion
-	farcall _ManagePokemonMoves
-	call BillsPC_MoveCursorAfterStatScreen
-	jr BillsPC_ReturnFromTransistion
-
-.CantCheckEggMoves:
-	text "You can't check"
-	line "an Egg's moves!"
-	prompt
-
 BillsPC_GetStorageSpace:
 ; Forces game save until we have at least a free pokedb entries left.
 ; Returns nz if we abort the prompt with insufficient storage space left.
@@ -2534,7 +2511,6 @@ BillsPC_PackFullText:
 BillsPC_MovedToPackText:
 	text "Moved "
 	text_ram wStringBuffer1
-	text ""
 	line "to Bag."
 	prompt
 
@@ -3608,6 +3584,8 @@ BillsPC_RestoreUI:
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 
+	ld a, 71
+	ldh [rLYC], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
 
@@ -3669,7 +3647,7 @@ wLCDBillsPC1::
 
 	; start of VRAM writes
 	; second box mon
-	ld a, $80 | $2a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 5 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3677,7 +3655,7 @@ rept 4
 endr
 
 	; third box mon
-	ld a, $80 | $32
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 6 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3685,7 +3663,7 @@ rept 4
 endr
 
 	; fourth box mon
-	ld a, $80 | $3a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 7 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3712,7 +3690,7 @@ wLCDBillsPC2::
 
 	; start of VRAM writes
 	; first party mon
-	ld a, $80 | $12
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3720,7 +3698,7 @@ rept 4
 endr
 
 	; second party mon
-	ld a, $80 | $1a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3728,7 +3706,7 @@ rept 4
 endr
 
 	; first box mon
-	ld a, $80 | $22
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3799,8 +3777,7 @@ wLCDBillsPC3:
 .got_pal
 
 	; start of VRAM writes
-	; BG3 color 0
-	ld a, $80 | $18
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 0)
 	ldh [rBGPI], a
 rept 2
 	ld a, [hli]

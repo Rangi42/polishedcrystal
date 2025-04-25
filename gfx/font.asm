@@ -61,6 +61,9 @@ INCBIN "gfx/signs/building.2bpp"
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp.lz"
 
+SummaryStatusIconGFX:
+INCBIN "gfx/stats/status.2bpp"
+
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
 

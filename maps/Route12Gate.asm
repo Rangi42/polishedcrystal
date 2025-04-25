@@ -15,7 +15,7 @@ Route12Gate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  0,  5, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route12GateOfficerText, -1
+	object_event  0,  5, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route12GateOfficerText, -1
 
 Route12GateOfficerText:
 	text "Silence Bridge got"

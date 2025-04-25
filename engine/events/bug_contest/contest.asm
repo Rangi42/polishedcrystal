@@ -99,7 +99,17 @@ _BugContestJudging:
 	call GetPokemonName
 	ld hl, BugContest_FirstPlaceText
 	call PrintText
-	jmp BugContest_GetPlayersResult
+	ld hl, wBugContestThirdPlacePersonID
+	ld de, -5
+	ld b, 3
+.loop
+	ld a, [hl]
+	dec a ; Player = 1
+	ret z
+	add hl, de
+	dec b
+	jr nz, .loop
+	ret
 
 BugContest_FirstPlaceText:
 	text_far ContestJudging_FirstPlaceText
@@ -158,14 +168,14 @@ LoadContestantName:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; Copy the Trainer Class to c.
+; Copy the Trainer Class to [wNamedObjectIndex].
 	ld a, [hli]
-	ld c, a
+	ld [wNamedObjectIndex], a
 ; Save hl and bc for later.
 	push hl
 	push bc
 ; Get the Trainer Class name and copy it into wBugContestWinnerName.
-	farcall GetTrainerClassName
+	call GetTrainerClassName
 	ld hl, wStringBuffer1
 	ld de, wBugContestWinnerName
 	ld bc, TRAINER_CLASS_NAME_LENGTH
@@ -204,19 +214,6 @@ LoadContestantName:
 	ret
 
 INCLUDE "data/events/bug_contest_winners.asm"
-
-BugContest_GetPlayersResult:
-	ld hl, wBugContestThirdPlacePersonID
-	ld de, -5
-	ld b, 3
-.loop
-	ld a, [hl]
-	cp 1 ; Player
-	ret z
-	add hl, de
-	dec b
-	jr nz, .loop
-	ret
 
 ClearContestResults:
 	ld hl, wBugContestResults

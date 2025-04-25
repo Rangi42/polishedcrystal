@@ -38,15 +38,15 @@ Route23_MapScriptHeader:
 	bg_event  5, 32, BGEVENT_JUMPTEXT, VictoryRoadSignText
 
 	def_object_events
-	object_event 17, 131, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23ZephyrBadgeOfficerScript, -1
-	object_event 10, 123, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HiveBadgeOfficerScript, -1
-	object_event 13, 107, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23PlainBadgeOfficerScript, -1
-	object_event 12, 98, SPRITE_SWIMMING_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23FogBadgeOfficerScript, -1
-	object_event  7, 83, SPRITE_SWIMMING_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23StormBadgeOfficerScript, -1
-	object_event 13, 70, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23MineralBadgeOfficerScript, -1
-	object_event 15, 55, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23GlacierBadgeOfficerScript, -1
-	object_event 10, 47, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23RisingBadgeOfficerScript, -1
-	object_event  8, 32, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HealOfficerScript, -1
+	object_event 17, 131, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23ZephyrBadgeOfficerScript, -1
+	object_event 10, 123, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HiveBadgeOfficerScript, -1
+	object_event 13, 107, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23PlainBadgeOfficerScript, -1
+	object_event 12, 98, SPRITE_SWIMMING_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23FogBadgeOfficerScript, -1
+	object_event  7, 83, SPRITE_SWIMMING_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23StormBadgeOfficerScript, -1
+	object_event 13, 70, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23MineralBadgeOfficerScript, -1
+	object_event 15, 55, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23GlacierBadgeOfficerScript, -1
+	object_event 10, 47, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23RisingBadgeOfficerScript, -1
+	object_event  8, 32, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HealOfficerScript, -1
 
 	object_const_def
 	const ROUTE23_OFFICER1
@@ -96,7 +96,7 @@ Route23ZephyrBadgeOfficerScript:
 Route23ZephyrBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER1, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER1
-	getstring .ZephyrBadgeText, 0
+	getstring .ZephyrBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -114,7 +114,7 @@ Route23HiveBadgeOfficerScript:
 Route23HiveBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER2, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER2
-	getstring .HiveBadgeText, 0
+	getstring .HiveBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -132,7 +132,7 @@ Route23PlainBadgeOfficerScript:
 Route23PlainBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER3, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER3
-	getstring .PlainBadgeText, 0
+	getstring .PlainBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -150,7 +150,7 @@ Route23FogBadgeOfficerScript:
 Route23FogBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER4, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER4
-	getstring .FogBadgeText, 0
+	getstring .FogBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -168,7 +168,7 @@ Route23StormBadgeOfficerScript:
 Route23StormBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER5, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER5
-	getstring .StormBadgeText, 0
+	getstring .StormBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -186,7 +186,7 @@ Route23MineralBadgeOfficerScript:
 Route23MineralBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER6, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER6
-	getstring .MineralBadgeText, 0
+	getstring .MineralBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -204,7 +204,7 @@ Route23GlacierBadgeOfficerScript:
 Route23GlacierBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER7, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER7
-	getstring .GlacierBadgeText, 0
+	getstring .GlacierBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -222,7 +222,7 @@ Route23RisingBadgeOfficerScript:
 Route23RisingBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER8, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER8
-	getstring .RisingBadgeText, 0
+	getstring .RisingBadgeText, STRING_BUFFER_3
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
