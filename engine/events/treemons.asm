@@ -84,15 +84,6 @@ TreeItemEncounter:
 	cp LOW(999)
 	ret
 
-GetWings:
-	ldh a, [hScriptVar]
-	add LOW(wWingAmounts - 2)
-	ld l, a
-	adc HIGH(wWingAmounts - 2)
-	sub l
-	ld h, a
-	ret
-
 RockItemEncounter:
 	ld hl, RockItems
 	call Random

@@ -551,13 +551,6 @@ ScreenCleanerAbility:
 	ld hl, BattleText_LightScreenFell
 	jmp StdBattleTextbox
 
-RunEnemyOwnTempoAbility:
-	call SwitchTurn
-	call GetTrueUserAbility
-	cp OWN_TEMPO
-	call z, OwnTempoAbility
-	jmp SwitchTurn
-
 RunEnemySynchronizeAbility:
 	call SwitchTurn
 	call GetTrueUserAbility
@@ -844,7 +837,7 @@ _AfflictStatusAbility:
 
 	push hl
 	push bc
-	call GetOpponentItemAfterUnnerve
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_COVERT_CLOAK
 	pop bc

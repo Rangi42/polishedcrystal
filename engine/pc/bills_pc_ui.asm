@@ -538,7 +538,6 @@ SetPartyIcons:
 	ld a, PARTY_LENGTH
 	call BillsPC_BlankTiles
 
-_SetPartyIcons:
 	; Write party members
 	lb bc, 0, 1
 	ld hl, wBillsPC_PartyList
@@ -560,7 +559,6 @@ SetBoxIcons:
 	ld a, MONS_PER_BOX
 	call BillsPC_BlankTiles
 
-_SetBoxIcons:
 	; Write box members
 	ld a, [wCurBox]
 	inc a
@@ -3649,7 +3647,7 @@ wLCDBillsPC1::
 
 	; start of VRAM writes
 	; second box mon
-	ld a, $80 | $2a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 5 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3657,7 +3655,7 @@ rept 4
 endr
 
 	; third box mon
-	ld a, $80 | $32
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 6 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3665,7 +3663,7 @@ rept 4
 endr
 
 	; fourth box mon
-	ld a, $80 | $3a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 7 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3692,7 +3690,7 @@ wLCDBillsPC2::
 
 	; start of VRAM writes
 	; first party mon
-	ld a, $80 | $12
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3700,7 +3698,7 @@ rept 4
 endr
 
 	; second party mon
-	ld a, $80 | $1a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3708,7 +3706,7 @@ rept 4
 endr
 
 	; first box mon
-	ld a, $80 | $22
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4 color 2)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3779,8 +3777,7 @@ wLCDBillsPC3:
 .got_pal
 
 	; start of VRAM writes
-	; BG3 color 0
-	ld a, $80 | $18
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 0)
 	ldh [rBGPI], a
 rept 2
 	ld a, [hli]

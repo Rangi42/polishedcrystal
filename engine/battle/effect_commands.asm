@@ -1259,7 +1259,7 @@ BattleCommand_critical:
 	cp b
 	ret nc
 .guranteed_crit
-	ld a, 1
+	ld a, TRUE
 	ld [wCriticalHit], a
 	ret
 
@@ -1267,10 +1267,7 @@ TrueUserValidBattleItem:
 ; Items (and Abilities) never apply to external Future Sight users.
 	call GetFutureSightUser
 	ret nz
-	jr UserValidBattleItem
-
-OpponentValidBattleItem:
-	call StackCallOpponentTurn
+	; fallthrough
 UserValidBattleItem:
 ; Checks if the user's held item applies to the species+form.
 ; Used for items like Leek, Lucky Punch, Thick Club, etc.
@@ -3379,11 +3376,11 @@ BattleCommand_posthiteffects:
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
+	call GetFutureSightUser
+	ret nz
 	call HandleRampage
 	call CheckSheerForceNegation
 	ret z
-	call GetFutureSightUser
-	ret nz
 	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
@@ -3722,8 +3719,6 @@ EndMoveDamageChecks:
 	call RaiseStatWithItem
 	jmp SwitchTurn
 
-RaiseOpponentStatWithItem:
-	call StackCallOpponentTurn
 RaiseStatWithItem:
 	ld a, STAT_SKIPTEXT
 	call _RaiseStat
@@ -3839,20 +3834,9 @@ BattleCommand_damagestats:
 	ld a, MON_ATK
 	call TrueUserPartyAttr
 .atk_ok
-	call GetTrueUserAbility
-	cp INFILTRATOR
-	jr z, .thickcluborlightball
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wEnemyScreens]
-	jr z, .got_opp_screens
-	ld a, [wPlayerScreens]
-.got_opp_screens
+	call GetOpponentActiveScreens
 	and SCREENS_REFLECT
 	jr z, .thickcluborlightball
-	ld a, [wCriticalHit]
-	and a
-	jr nz, .thickcluborlightball
 	sla c
 	rl b
 	jr .thickcluborlightball
@@ -3893,20 +3877,9 @@ BattleCommand_damagestats:
 	ld a, MON_SAT
 	call TrueUserPartyAttr
 .sat_ok
-	call GetTrueUserAbility
-	cp INFILTRATOR
-	jr z, .lightball
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wEnemyScreens]
-	jr z, .got_opp_screens2
-	ld a, [wPlayerScreens]
-.got_opp_screens2
+	call GetOpponentActiveScreens
 	and SCREENS_LIGHT_SCREEN
 	jr z, .lightball
-	ld a, [wCriticalHit]
-	and a
-	jr nz, .lightball
 	sla c
 	rl b
 
@@ -3933,6 +3906,38 @@ BattleCommand_damagestats:
 	call TrueUserPartyAttr
 	pop hl
 	ld e, a
+	ret
+
+GetOpponentActiveScreens:
+; Returns the opponent screens after Infiltrator, crits and Brick Break.
+	; Brick Break screen breaking is handled later, so that we can avoid it
+	; if the attack is ineffective. Thus, make it ignore screens here.
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	xor EFFECT_BRICK_BREAK
+	jr nz, .no_brick_break
+
+	; Set move anim param to notify that we are breaking screens.
+	call .GetScreen
+	ld [wBattleAnimParam], a
+	xor a
+	ret
+
+.no_brick_break
+	call GetTrueUserAbility
+	xor INFILTRATOR
+	ret z
+
+	ld a, [wCriticalHit]
+	dec a ; cp TRUE
+	ret z
+	; fallthrough
+.GetScreen:
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wEnemyScreens]
+	ret z
+	ld a, [wPlayerScreens]
 	ret
 
 TruncateHL_BC:
@@ -4032,37 +4037,24 @@ BattleCommand_clearmissdamage:
 
 HitSelfInConfusion:
 	call ResetDamage
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wBattleMonDefense
-	ld de, wPlayerScreens
-	ld a, [wBattleMonLevel]
-	jr z, .got_it
-
-	ld hl, wEnemyMonDefense
-	ld de, wEnemyScreens
-	ld a, [wEnemyMonLevel]
-.got_it
-	push af
-	ld a, [hli]
+	ld hl, wBattleMonLevel
+	call GetUserMonAttr
+	; e = Level
+	ld e, [hl]
+	ld bc, wBattleMonDefense + 1 - wBattleMonLevel
+	assert wBattleMonDefense - 2 == wBattleMonAttack
+	add hl, bc
+	; bc = Defense
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
 	ld b, a
-	ld c, [hl]
-	ld a, [de]
-	and SCREENS_REFLECT
-	jr z, .mimic_screen
-
-	sla c
-	rl b
-.mimic_screen
-	dec hl
-	dec hl
-	dec hl
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+	; hl = Attack
+	ld a, [hld]
+	ld h, [hl]
+	ld l, a
 	call TruncateHL_BC
 	ld d, 40
-	pop af
 	ld e, a
 	ret
 
@@ -4766,10 +4758,7 @@ UpdateMoveData:
 
 IsOpponentLeafGuardActive:
 	call GetTrueUserAbility
-	jr DoLeafGuardCheck
-IsLeafGuardActive:
-; returns z if leaf guard applies for enemy
-	call GetOpponentAbilityAfterMoldBreaker
+	; fallthrough
 DoLeafGuardCheck:
 	cp LEAF_GUARD
 	ret nz
@@ -5287,7 +5276,7 @@ LowerOppStatHit:
 _LowerOppStatHit:
 	or STAT_TARGET | STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 ChangeStat:
-; b contains stat to alter, or zero if it should be read from the move script
+; b contains stat to alter, or -1 if it should be read from the move script
 	farjp FarChangeStat
 
 ResetMiss:
@@ -5458,6 +5447,8 @@ HandleRampage:
 ; otherwise ends rampage if the attack missed for any reason
 	call HasUserFainted
 	ret z
+	call GetFutureSightUser
+	ret nc
 
 	call CheckRampageStatusAndGetRolloutCount
 	ret z
@@ -5572,35 +5563,6 @@ InvertDeferredSwitch:
 	ret z
 	xor 1 << SWITCH_TARGET
 	ld [wDeferredSwitch], a
-	ret
-
-CheckPlayerHasMonToSwitchTo:
-	ld a, [wPartyCount]
-	ld d, a
-	ld e, 0
-	ld bc, PARTYMON_STRUCT_LENGTH
-.loop
-	ld a, [wCurBattleMon]
-	cp e
-	jr z, .next
-
-	ld a, e
-	ld hl, wPartyMon1HP
-	rst AddNTimes
-	ld a, [hli]
-	or [hl]
-	jr nz, .not_fainted
-
-.next
-	inc e
-	dec d
-	jr nz, .loop
-
-	scf
-	ret
-
-.not_fainted
-	and a
 	ret
 
 EndMultihit:
@@ -6189,7 +6151,6 @@ PrintButItFailed:
 	ld hl, ButItFailedText
 	jmp StdBattleTextbox
 
-FailDisable:
 FailAttract:
 FailForesight:
 FailSpikes:
@@ -6456,11 +6417,6 @@ GetPlayerItem::
 	ld b, [hl]
 	jr GetItemHeldEffect
 
-GetEnemyItem::
-	ld hl, wEnemyMonItem
-	ld b, [hl]
-	jr GetItemHeldEffect
-
 GetOpponentItem:
 	call StackCallOpponentTurn
 GetUserItem::
@@ -6532,10 +6488,6 @@ GetItemHeldEffect:
 	pop hl
 	ret
 
-TryAnimateCurrentMove:
-	call CheckAlreadyExecuted
-	ret nz
-	; fallthrough
 AnimateCurrentMove:
 	ld a, [wInAbility]
 	and a
@@ -6551,28 +6503,6 @@ AnimateCurrentMove:
 	call LoadMoveAnim
 	call BattleCommand_raisesub
 	jmp PopBCDEHL
-
-PlayDamageAnim:
-	xor a
-	ld [wFXAnimIDHi], a
-
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	and a
-	ret z
-
-	ld [wFXAnimIDLo], a
-
-	ldh a, [hBattleTurn]
-	and a
-	ld a, BATTLEANIM_ENEMY_DAMAGE
-	jr z, .player
-	ld a, BATTLEANIM_PLAYER_DAMAGE
-
-.player
-	ld [wNumHits], a
-
-	jr PlayUserBattleAnim
 
 LoadMoveAnim:
 	xor a
@@ -6623,10 +6553,7 @@ BattleCommand_movedelay:
 	jmp DelayFrames
 
 EndMoveEffect:
-	ld b, endmove_command
-	; fallthrough
-SkipToBattleCommand:
-	ld c, 1
+	lb bc, endmove_command, 1
 	jr BattleCommandJump
 SkipToBattleCommandAfter:
 	ld c, 2

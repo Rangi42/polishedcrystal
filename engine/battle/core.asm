@@ -1240,20 +1240,20 @@ endr
 	call GetPartyLocation
 	push hl
 	ld de, wBattleMonSpecies
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	push de
 	ld bc, MON_ID - MON_SPECIES
 	rst CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
 	add hl, bc ; skip ID, Exp, EVs
 	ld de, wBattleMonDVs
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld bc, MON_PKRUS - MON_DVS
 	rst CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
 	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, wBattleMonLevel
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	pop de
@@ -1285,7 +1285,7 @@ endr
 
 	call GetBaseData
 	ld de, wBattleMonType1
-	call GetUserMonAttr_de
+	call .get_user_mon_attr_de
 	ld hl, wBaseType1
 	ld bc, 2
 	rst CopyBytes
@@ -1431,6 +1431,16 @@ endr
 	ld [hl], 0
 	ret
 
+.get_user_mon_attr_de
+	push hl
+	ld h, d
+	ld l, e
+	call GetUserMonAttr
+	ld d, h
+	ld e, l
+	pop hl
+	ret
+
 SetParticipant::
 ; Sets current active mon as participant vs target mon. Preserves registers.
 	push hl
@@ -1464,17 +1474,6 @@ ResetParticipants::
 	ld bc, PARTY_LENGTH
 	rst ByteFill
 	pop af
-	pop bc
-	pop hl
-	ret
-
-GetParticipantsIncludingFainted::
-; Returns participants, including fainted, vs target mon to a.
-	push hl
-	push bc
-	call GetParticipantVar
-	ld a, [hl]
-	and $3f
 	pop bc
 	pop hl
 	ret
@@ -1781,17 +1780,18 @@ DealDamageToOpponent:
 	pop bc
 	jmp SwitchTurn
 
-SubtractHPFromOpponent:
-	call StackCallOpponentTurn
 SubtractHPFromUser:
-	ldh a, [hBattleTurn]
-	and a
-	jr nz, SubtractHPFromEnemy
-	; fallthrough
-SubtractHPFromPlayer:
 	push de
 	ld de, SubtractHP
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .enemy
 	call _SubtractHPFromPlayer
+	pop de
+	ret
+
+.enemy
+	call _SubtractHPFromEnemy
 	pop de
 	ret
 
@@ -1808,13 +1808,6 @@ _SubtractHPFromPlayer:
 	call _de_
 	pop af
 	ldh [hBattleTurn], a
-	ret
-
-SubtractHPFromEnemy:
-	push de
-	ld de, SubtractHP
-	call _SubtractHPFromEnemy
-	pop de
 	ret
 
 _SubtractHPFromEnemy:
@@ -1895,8 +1888,6 @@ _SubtractHP:
 	ld [wBuffer6], a
 	ret
 
-RestoreOpponentHP:
-	call StackCallOpponentTurn
 RestoreHP:
 	ld hl, wBattleMonMaxHP
 	ldh a, [hBattleTurn]
@@ -2933,13 +2924,6 @@ CheckPlayerActiveSubPic:
 
 CheckEnemyActiveSubPic:
 	ld a, [wEnemySubStatus4]
-	jr _CheckActiveSubPic
-
-CheckActiveSubPic:
-; Returns nz if we currently have a substitute doll visible.
-; NOT the same as whether or not we have a Substitute.
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
 	; fallthrough
 _CheckActiveSubPic:
 	bit SUBSTATUS_SUBSTITUTE, a
@@ -3676,10 +3660,6 @@ ItemRecoveryAnim_GotItem::
 BerryRecoveryAnim::
 	ld a, 1
 	ld [wBattleAnimParam], a
-	jr _ItemRecoveryAnim
-RegularRecoveryAnim::
-	xor a
-	ld [wBattleAnimParam], a
 	; fallthrough
 _ItemRecoveryAnim::
 	push hl
@@ -3803,20 +3783,6 @@ DoHeldConfusionHealingItem:
 	call GetBattleVarAddr
 	bit SUBSTATUS_CONFUSED, [hl]
 	res SUBSTATUS_CONFUSED, [hl]
-	ret
-
-GetPartymonItem:
-	ld hl, wPartyMon1Item
-	ld a, [wCurBattleMon]
-	call GetPartyLocation
-	ld bc, wBattleMonItem
-	ret
-
-GetOTPartymonItem:
-	ld hl, wOTPartyMon1Item
-	ld a, [wCurOTMon]
-	call GetPartyLocation
-	ld bc, wEnemyMonItem
 	ret
 
 UpdateBattleHUDs:
@@ -7939,6 +7905,9 @@ LoadTrainerOrWildMonPic:
 	ld a, [wOtherTrainerClass]
 	and a
 	jr nz, .Trainer
+	ld a, [wWildMonForm]
+	ld [wCurForm], a
+	ld [wTempEnemyMonForm], a
 	ld a, [wTempWildMonSpecies]
 	ld [wCurPartySpecies], a
 
@@ -7972,10 +7941,9 @@ BackUpBGMap2:
 InitEnemy:
 	ld a, [wOtherTrainerClass]
 	and a
-	jr z, InitEnemyWildmon ; wild
-	; fallthrough
+	jr z, .wildmon
 
-InitEnemyTrainer:
+; trainer
 	ld [wTrainerClass], a
 	xor a
 	ld [wTempEnemyMonSpecies], a
@@ -8019,7 +7987,7 @@ InitEnemyTrainer:
 	inc [hl]
 	jr .partyloop
 
-InitEnemyWildmon:
+.wildmon
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
 	call LoadEnemyWildmon

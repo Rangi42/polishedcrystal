@@ -619,18 +619,6 @@ Pokedex_GetMainOAM:
 	ld [hli], a
 	ret
 
-Pokedex_SetHBlankFunction:
-	; Don't run this 1 scanline before the LYC to be set.
-	push de
-	ld d, a
-.loop
-	ldh a, [rLY]
-	sub d
-	inc a ; LY - a + 1 == 0 means 1 scanline above intended LYC
-	jr z, .loop
-	ld a, d
-	pop de
-	; fallthrough
 Pokedex_UnsafeSetHBlankFunction:
 ; Can be used by H-blank functions for sequential triggers, since those use
 ; consistent timings and don't require the error-checking.
@@ -888,14 +876,14 @@ PHB_LoadRow:
 	; Pal col 1 (BG2).
 	pop hl
 	inc hl
-	ld a, $80 | $12
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 2)
 	ld c, LOW(rBGPD)
 	ldh [rBGPI], a
 rept 6
 	ld a, [hli]
 	ldh [c], a
 endr
-	ld a, $80 | $2a
+	ld a, (1 << rOBPI_AUTO_INCREMENT) | (0 palette 5 color 2)
 	ldh [rOBPI], a
 	pop de
 	push de
@@ -952,7 +940,7 @@ endr
 	ldh [c], a
 
 	; Prepare this for later.
-	ld a, $80 | $1a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 2)
 	ldh [rBGPI], a
 	ld a, e
 	ret
@@ -1163,10 +1151,6 @@ PVB_UpdateDexMap::
 	pop af
 	ldh [rSVBK], a
 	ret
-
-
-DexBotMenuXPositions:
-	db 66, 74, 91, 99, 107, 0
 
 DexDisplayOAMData:
 ; botmenu cursor x, indicator y, indicator x, indicator offset, indicator length

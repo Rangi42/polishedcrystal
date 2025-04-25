@@ -146,8 +146,6 @@ SetHour:
 
 DisplayHourOClock:
 	hlcoord 1, 9
-	; fallthrough
-_DisplayHourOClock:
 	push hl
 	ld a, [wInitHourBuffer]
 	ld [wStringBuffer2 + 1], a

@@ -109,8 +109,8 @@ SummaryScreen_PinkPage:
 	call SummaryScreen_PlaceTypeOBJ
 	debgcoord 4, 3, wSummaryScreenWindowBuffer
 	call SummaryScreen_PlaceTypeBG
+
 .doneTypes
-	
 	call .PlaceOTInfo
 	ld a, [wTextboxFlags]
 	res USE_BG_MAP_WIDTH_F, a
@@ -118,7 +118,7 @@ SummaryScreen_PinkPage:
 	hlcoord 9, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
-	
+
 	ld de, .ExpPointStr
 	hlcoord 1, 13
 	rst PlaceString

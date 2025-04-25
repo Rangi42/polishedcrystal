@@ -2033,8 +2033,6 @@ InitializePokegearPlayerIcon:
 
 LoadTownMapGFX:
 	ld de, vTiles2
-	; fallthrough
-_LoadTownMapGFX:
 	ld hl, TownMapGFX
 	lb bc, BANK(TownMapGFX), $45
 	jmp DecompressRequest2bpp

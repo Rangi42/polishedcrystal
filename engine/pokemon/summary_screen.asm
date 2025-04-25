@@ -845,7 +845,7 @@ SummaryScreen_SwitchPage:
 	ld c, 6 * 2
 	ld hl, wSummaryScreenPals + 2 palettes
 	call .WaitUntilHBlank
-	ld a, (2 palettes) | (1 << rBGPI_AUTO_INCREMENT)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2)
 	ldh [rBGPI], a
 	call .CopyPalettes
 

@@ -64,8 +64,12 @@ PlayBattleMusic:
 	jr nz, .trainermusic
 
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wTempEnemyMonForm]
+	and SPECIESFORM_MASK
+	ld b, a
 	ld hl, BattleMusic_Legendaries
-	call .loadfromarray
+	call .loadfromwordarray
 	jr c, .done
 
 	; Are we in the Safari Game?
@@ -135,6 +139,14 @@ PlayBattleMusic:
 	ld de, 2
 	call IsInArray
 	ret nc
+	jr .foundinarray
+
+.loadfromwordarray
+	ld de, 3
+	call IsInWordArray
+	ret nc
+	inc hl
+.foundinarray
 	inc hl
 	ld e, [hl]
 	ld d, 0

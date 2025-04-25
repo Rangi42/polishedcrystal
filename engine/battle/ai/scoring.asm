@@ -2193,36 +2193,6 @@ AIHasMoveEffect:
 	scf
 	ret
 
-AIHasMoveInArray:
-; Return carry if the enemy has a move in array hl.
-
-	push hl
-	push de
-	push bc
-
-.next
-	ld a, [hli]
-	cp -1
-	jr z, .done
-
-	ld b, a
-	ld c, NUM_MOVES + 1
-	ld de, wAIMoves
-
-.check
-	dec c
-	jr z, .next
-
-	ld a, [de]
-	inc de
-	cp b
-	jr nz, .check
-
-	scf
-
-.done
-	jmp PopBCDEHL
-
 INCLUDE "data/battle/ai/useful_moves.asm"
 
 AI_Opportunist:

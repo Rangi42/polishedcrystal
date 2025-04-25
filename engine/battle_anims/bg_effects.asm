@@ -71,7 +71,7 @@ DoBattleBGEffectFunction:
 	ld a, [hl]
 	call StackJumpTable
 
-BattleBGEffects:
+.BattleBGEffects:
 	dw BattleBGEffect_End
 	dw BattleBGEffect_FlashInverted
 	dw BattleBGEffect_FlashWhite

@@ -205,7 +205,7 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_MICROPHONE            ; 20
 DEF NUM_SPRITEMOVEFN EQU const_value
 
-; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
+; _HandleStepType.StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
 	const_def
 	const STEP_TYPE_RESET            ; 00
 	const STEP_TYPE_FROM_MOVEMENT    ; 01

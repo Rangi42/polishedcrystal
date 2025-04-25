@@ -613,8 +613,7 @@ PlacePartyHPBar:
 	ld b, $0
 	add hl, bc
 	call SetHPPal
-	ld a, CGB_PARTY_MENU_HP_PALS
-	call GetCGBLayout
+	farcall ApplyPartyMenuHPPals
 .skip
 	ld hl, wHPPalIndex
 	inc [hl]
@@ -1208,7 +1207,7 @@ PartyMenuAttributes:
 	db 0
 
 PartyMenuSelect:
-; sets carry if exitted menu.
+; sets carry if exited menu.
 	call DoMenuJoypadLoop
 	call PlaceHollowCursor
 	ld a, [wPartyCount]
@@ -1234,22 +1233,21 @@ PartyMenuSelect:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurForm], a
-
-	ld de, SFX_READ_TEXT_2
-	call PlaySFX
-	push bc
-	call SFXDelay2
-	pop bc
+	call .sfx_delay_2
 	and a
 	ret
 
 .exitmenu
+	call .sfx_delay_2
+	scf
+	ret
+
+.sfx_delay_2
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	push bc
 	call SFXDelay2
 	pop bc
-	scf
 	ret
 
 PlacePartyMenuText:

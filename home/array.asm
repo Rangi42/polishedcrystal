@@ -61,21 +61,6 @@ _AddNTimes::
 	pop bc
 	ret
 
-GetHourIntervalValue::
-	ldh a, [hHours]
-GetIntervalValue::
-; Input: hl = sorted array of db start, value; a = key
-; Output: a = first value where key < start
-.loop
-	cp [hl]
-	inc hl
-	jr c, .done
-	inc hl
-	jr .loop
-.done
-	ld a, [hl]
-	ret
-
 SortItems:
 ; Sorts an array with a size up to a terminator sorting index of -1.
 ; Assumes that the sorting function performs an insertion swap as opposed to

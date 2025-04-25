@@ -62,7 +62,7 @@ NamingScreen:
 	ld a, [wNamingScreenType]
 	call StackJumpTable
 
-NamingScreenJumptable:
+.Jumptable:
 	table_width 2
 	dw .Pokemon
 	dw .Player
@@ -851,7 +851,7 @@ _ComposeMailMessage:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .initwNamingScreenMaxNameLength
-	ld a, CGB_MAIL
+	ld a, CGB_WRITE_MAIL
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
 	call WaitTop

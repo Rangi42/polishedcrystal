@@ -256,13 +256,13 @@ HPBarAnim_BGMapUpdate:
 	jmp DelayFrame
 
 .enemy_hp_bar
-	lb bc, $94, 0
-	ld hl, wBGPals2 + 2 palettes + 4
+	lb bc, (1 << rBGPI_AUTO_INCREMENT) | (0 palette PAL_BATTLE_BG_ENEMY_HP color 2), 0
+	ld hl, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP color 2
 	jr .finish
 
 .player_hp_bar
-	lb bc, $9c, 1
-	ld hl, wBGPals2 + 3 palettes + 4
+	lb bc, (1 << rBGPI_AUTO_INCREMENT) | (0 palette PAL_BATTLE_BG_PLAYER_HP color 2), 1
+	ld hl, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP color 2
 .finish
 	xor a
 	ldh [hCGBPalUpdate], a

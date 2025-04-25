@@ -57,7 +57,7 @@ CrystalIntro:
 IntroSceneJumper:
 	call StandardStackJumpTable
 
-IntroScenes:
+.Jumptable:
 	dw IntroScene1
 	dw IntroScene2
 	dw IntroScene3

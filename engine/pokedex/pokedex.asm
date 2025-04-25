@@ -3176,15 +3176,9 @@ Pokedex_SwitchMonInfoBank:
 	ld [hl], a
 	ret
 
-Pokedex_GetCursorMonInVBK1:
-	ld a, 1
-	ld [wPokedex_MonInfoBank], a
-	jr _Pokedex_GetCursorMon
 Pokedex_GetCursorMon:
 ; Displays information about the mon the cursor is currently hovering.
 	call Pokedex_SwitchMonInfoBank
-	; fallthrough
-_Pokedex_GetCursorMon:
 	; Set up proper palettes and switch between vbk0 and vbk1 usage.
 	swap a
 	rrca

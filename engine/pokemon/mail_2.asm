@@ -17,8 +17,8 @@ ReadAnyMail:
 	call .LoadGFX
 	call EnableLCD
 	call ApplyTilemapInVBlank
-	ld a, [wBuffer3]
-	farcall LoadAndApplyMailPalettes
+	ld a, CGB_READ_MAIL
+	call GetCGBLayout
 	call SetDefaultBGPAndOBP
 	xor a
 	ldh [hJoyPressed], a
@@ -41,23 +41,19 @@ ReadAnyMail:
 	push hl
 	xor a
 	call GetSRAMBank
-	ld de, sPartyMon1MailAuthorID - sPartyMon1Mail
+	ld de, sPartyMon1MailSpecies - sPartyMon1Mail
 	add hl, de
-	ld a, [hli]
-	ld [wBuffer1], a
-	ld a, [hli]
-	ld [wBuffer2], a
 	ld a, [hli]
 	ld [wCurPartySpecies], a
 	ld b, [hl]
 	call CloseSRAM
 	ld a, b
+	ld [wCurItem], a
 	sub FIRST_MAIL
-	ld [wBuffer3], a
 	pop bc
 	call StackJumpTable
 
-LoadMailGFXJumptable:
+.Jumptable:
 ; entries correspond to mail items
 	table_width 2
 	dw LoadFlowerMailGFX
@@ -352,7 +348,7 @@ LoadBlueSkyMailGFX:
 	ld de, BlueSkyMailGrassGFX
 	ld c, 1 * 8
 	call LoadMailGFX_Color3
-	ld de, MailDragoniteGFX
+	ld de, MailDragoniteAndSentretGFX
 	ld c, 23 * 8
 	call LoadMailGFX_Color3
 	ld de, MailCloudGFX
@@ -633,12 +629,12 @@ MailGFX_PlaceMessage:
 	ld a, [de]
 	and a
 	ret z
-	ld a, [wBuffer3]
+	ld a, [wCurItem]
 	hlcoord 8, 14
-	cp $3 ; PORTRAITMAIL
+	cp PORTRAITMAIL
 	jr z, .place_author
 	hlcoord 6, 14
-	cp $6 ; MORPH_MAIL
+	cp MORPH_MAIL
 	jr z, .place_author
 	hlcoord 5, 14
 

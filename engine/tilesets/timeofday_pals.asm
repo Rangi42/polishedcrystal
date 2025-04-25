@@ -107,7 +107,7 @@ _UpdateTimePals::
 	ld c, $9 ; normal
 UpdatePalFromC::
 	call GetTimePalFade
-	jmp DmgToCgbTimePals
+	jr DmgToCgbTimePals
 
 FadeInPalettes_EnableDynNoApply:
 	farcall EnableDynPalUpdatesNoApply
@@ -124,45 +124,13 @@ Special_FadeInQuickly:
 	ld c, $0
 	call GetTimePalFade
 	ld b, $4
-	jmp ConvertTimePalsIncHL
+	jr ConvertTimePalsIncHL
 
 Special_FadeBlackQuickly:
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
-	jmp ConvertTimePalsDecHL
-
-FillWhiteBGColor:
-; Copy white palette of wBGPals1 Pal0 into white palette of wBGPals1 Pal1-Pal6
-	ldh a, [rSVBK]
-	push af
-	ld a, $5
-	ldh [rSVBK], a
-
-	ld hl, wBGPals1 palette 0
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	ld hl, wBGPals1 palette 1
-	ld c, 6
-.loop
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-rept 6
-	inc hl
-endr
-	dec c
-	jr nz, .loop
-
-	pop af
-	ldh [rSVBK], a
-	ret
-
-MACRO brightlevel
-	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
-ENDM
+	jr ConvertTimePalsDecHL
 
 ReplaceTimeOfDayPals:
 	ld a, [wMapTimeOfDay]
@@ -185,6 +153,10 @@ ReplaceTimeOfDayPals:
 	ld a, [hl]
 	ld [wTimeOfDayPalset], a
 	ret
+
+MACRO brightlevel
+	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
+ENDM
 
 .BrightnessLevels:
 	brightlevel 3, 2, 1, 0 ; PALETTE_AUTO
