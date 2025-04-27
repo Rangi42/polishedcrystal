@@ -2708,7 +2708,7 @@ BGEffect_CheckMonVisible:
 	ld hl, wEnemySubStatus3
 .got_substatus
 	ld a, [hld]
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret nz
 	bit SUBSTATUS_FAINTED, [hl]
 	ret

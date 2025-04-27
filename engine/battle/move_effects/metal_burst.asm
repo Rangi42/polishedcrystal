@@ -33,7 +33,7 @@ BattleCommand_metalburst:
 	call HalveBC
 
 	ld a, [hl]
-	add a, c
+	add c
 	ld [hld], a
 	ld a, [hl]
 	adc a, b

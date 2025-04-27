@@ -919,7 +919,7 @@ AI_Smart_Fly:
 ; flying or underground, and slower than the enemy.
 
 	ld a, [wPlayerSubStatus3]
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret z
 
 	call AICompareSpeed
@@ -1278,7 +1278,7 @@ AI_Smart_PriorityHit:
 
 ; Dismiss this move if the player is flying or underground.
 	ld a, [wPlayerSubStatus3]
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	jmp nz, AIDiscourageMove
 
 ; Greatly encourage this move if it will KO the player.
@@ -1954,7 +1954,7 @@ AI_Smart_JumpKick:
 
 	; Check if the player is semi-invulnerable
 	ld a, [wPlayerSubStatus3]
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret z
 	jmp AIDiscourageMove
 
@@ -2003,7 +2003,7 @@ AI_Smart_FutureSight:
 	ret nc
 
 	ld a, [wPlayerSubStatus3]
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret z
 
 	dec [hl]

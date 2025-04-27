@@ -629,26 +629,21 @@ CheckIfHPIsZero::
 	or [hl]
 	ret
 
-GetUserSemiInvuln:
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call SwitchTurn
-	call GetOpponentSemiInvuln.go
-	jmp SwitchTurn
-
 GetOpponentSemiInvuln:
-	; returns opponent semi invulnerable type in a
-	; sets z if opponent is not semi invulnerable
+	call StackCallOpponentTurn
+GetUserSemiInvuln:
+; returns opponent semi invulnerable type in a
+; sets z if opponent is not semi invulnerable
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-.go
 	call GetBattleVar
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret z
 
-	ld hl, wEnemySemiInvulnerableType
+	ld hl, wPlayerSemiInvulnerableType
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .ok
-	ld hl, wPlayerSemiInvulnerableType
+	ld hl, wEnemySemiInvulnerableType
 .ok
 	ld a, [hl]
 	and a

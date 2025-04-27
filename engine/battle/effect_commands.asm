@@ -486,7 +486,7 @@ CantMove:
 	call z, HandleRampage_ConfuseUser ; confuses user on last turn of rampage
 	pop hl
 .rampage_done
-	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | SEMI_INVULNERABLE_MASK | 1 << SUBSTATUS_ROLLOUT)
+	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_SEMI_INVULNERABLE | 1 << SUBSTATUS_ROLLOUT)
 	and [hl]
 	ld [hl], a
 	ret
@@ -716,7 +716,7 @@ GenericHitAnim:
 	ld de, ANIM_HIT_CONFUSION
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	call z, PlayFXAnimID
 	ret
 
@@ -4612,7 +4612,7 @@ FarPlayBattleAnimation:
 
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret nz
 
 	; fallthrough
@@ -4726,7 +4726,7 @@ SelfInflictDamageToSubstitute:
 	call BattleCommand_lowersubnoanim
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	call z, AppearUserLowerSub
 	call SwitchTurn
 
@@ -5799,7 +5799,7 @@ BattleCommand_charge:
 	call GetBattleVarAddr
 	bit SUBSTATUS_CHARGED, [hl]
 	jr z, .not_charging
-	and ~(1 << SUBSTATUS_CHARGED | SEMI_INVULNERABLE_MASK)
+	and ~(1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_SEMI_INVULNERABLE)
 	ld [hl], a
 	ret
 
@@ -5859,7 +5859,7 @@ BattleCommand_charge:
 	ld [hl], b
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	ld a, SEMI_INVULNERABLE_MASK
+	ld a, 1 << SUBSTATUS_SEMI_INVULNERABLE
 	or [hl]
 	ld [hl], a
 ; fallthrough
@@ -6589,7 +6589,7 @@ BattleCommand_doubleminimizedamage:
 CheckHiddenOpponent:
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
-	and SEMI_INVULNERABLE_MASK
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret
 
 GetPlayerItem::

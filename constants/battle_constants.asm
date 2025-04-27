@@ -221,8 +221,6 @@ DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX
 	const_skip
 	const SUBSTATUS_CONFUSED
 
-DEF SEMI_INVULNERABLE_MASK EQU 1 << SUBSTATUS_SEMI_INVULNERABLE
-
 ; wPlayerSubStatus4 or wEnemySubStatus4 bit flags
 	const_def
 	const SUBSTATUS_CURLED
