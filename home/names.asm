@@ -166,6 +166,7 @@ GetName:
 	ld h, [hl]
 	ld l, a
 
+	; Yes, setting wCurSpecies before adding b is intentional.
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	add b
