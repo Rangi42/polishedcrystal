@@ -576,7 +576,10 @@ wTrickRoom:: db
 
 wBattleLowHealthAlarm:: db
 
-	ds 3 ; unused
+wPlayerSemiInvulnerableType:: db
+wEnemySemiInvulnerableType:: db
+
+	ds 1 ; unused
 
 wPlayerHazards::
 ; bit

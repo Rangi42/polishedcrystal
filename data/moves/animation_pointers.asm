@@ -305,4 +305,49 @@ endc
 	dba BattleAnim_Struggle
 	dba BattleAnim_Struggle
 
+	dba BattleAnim_Struggle ; INFERNO
+	dba BattleAnim_Struggle ; OVERHEAT
+	dba BattleAnim_Struggle ; BLAZE_KICK
+	dba BattleAnim_Struggle ; BUBBLE
+	dba BattleAnim_Struggle ; MUDDY_WATER
+	dba BattleAnim_Struggle ; CLAMP
+	dba BattleAnim_Struggle ; FLIP_TURN
+	dba BattleAnim_Struggle ; RAZOR_SHELL
+	dba BattleAnim_Struggle ; DIVE
+	dba BattleAnim_Struggle ; WITHDRAW
+	dba BattleAnim_Struggle ; LEAF_STORM
+	dba BattleAnim_Struggle ; COTTON_SPORE
+	dba BattleAnim_Struggle ; SHOCK_WAVE
+	dba BattleAnim_Struggle ; PSYSHOCK
+	dba BattleAnim_Struggle ; PSYCHO_CUT
+	dba BattleAnim_Struggle ; MEDITATE
+	dba BattleAnim_Struggle ; ICE_BALL
+	dba BattleAnim_Struggle ; DUAL_CHOP
+	dba BattleAnim_Struggle ; BREAK_SWIPE
+	dba BattleAnim_Struggle ; DRACO_METEOR
+	dba BattleAnim_Struggle ; IRON_DEFENSE
+	dba BattleAnim_Struggle ; METAL_SOUND
+	dba BattleAnim_Struggle ; MIRROR_SHOT
+	dba BattleAnim_Struggle ; MAGNET_BOMB
+	dba BattleAnim_Struggle ; METAL_BURST
+	dba BattleAnim_Struggle ; INFESTATION
+	dba BattleAnim_Struggle ; STRUGGLE_BUG
+	dba BattleAnim_Struggle ; QUIVER_DANCE
+	dba BattleAnim_Struggle ; ROCK_TOMB
+	dba BattleAnim_Struggle ; ROCK_POLISH
+	dba BattleAnim_Struggle ; DRILL_RUN
+	dba BattleAnim_Struggle ; MUD_SHOT
+	dba BattleAnim_Struggle ; SAND_ATTACK
+	dba BattleAnim_Struggle ; CROSS_POISON
+	dba BattleAnim_Struggle ; POISON_GAS
+	dba BattleAnim_Struggle ; ACID_ARMOR
+	dba BattleAnim_Struggle ; BOUNCE
+	dba BattleAnim_Struggle ; AIR_CUTTER
+	dba BattleAnim_Struggle ; POWERUPPUNCH
+	dba BattleAnim_Struggle ; ROLLING_KICK
+	dba BattleAnim_Struggle ; VITAL_THROW
+	dba BattleAnim_Struggle ; JUMP_KICK
+	dba BattleAnim_Struggle ; SUPERPOWER
+	dba BattleAnim_Struggle ; DETECT
+
 	assert_table_length NUM_ATTACKS + 1

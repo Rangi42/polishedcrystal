@@ -340,7 +340,7 @@ PokeBallEffect:
 	; Everything below this are regular wild battles
 
 	ld a, [wEnemySubStatus3] ; BATTLE_VARS_SUBSTATUS3_OPP
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	jmp nz, Ball_MonIsHiddenMessage
 
 	ld a, [wPartyCount]

@@ -1,7 +1,7 @@
 ; Battle animation command interpreter.
 
 PlayBattleAnim:
-	farcall CheckBattleAnimSubstitution
+	call CheckBattleAnimSubstitution
 	ldh a, [rSVBK]
 	push af
 
@@ -13,6 +13,51 @@ PlayBattleAnim:
 	pop af
 	ldh [rSVBK], a
 	ret
+
+CheckBattleAnimSubstitution:
+; Checks the animation ID and possibly change it based on species.
+	ld a, [wFXAnimIDHi]
+	ld b, a
+	ld a, [wFXAnimIDLo]
+	ld c, a
+	cpbc FRESH_SNACK
+	ld de, ANIM_MILK_DRINK
+	ld hl, .MilkDrinkUsers
+	jr z, .check_species_list
+	cpbc FURY_STRIKES
+	ld de, ANIM_FURY_ATTACK
+	ld hl, FuryAttackUsers
+	jr z, .check_species_list
+	cpbc DEFENSE_CURL
+	ret nz
+
+	; Defense Curl has 3 variations
+	ld de, ANIM_WITHDRAW
+	ld hl, WithdrawUsers
+	call .check_species_list
+	ld de, ANIM_HARDEN
+	ld hl, HardenUsers
+	; fallthrough
+.check_species_list
+	push hl
+	ld hl, wBattleMonSpecies
+	call GetUserMonAttr
+	ld a, [hl]
+	ld bc, wBattleMonForm - wBattleMonSpecies
+	add hl, bc
+	ld c, a
+	ld b, [hl]
+	pop hl
+	call GetSpeciesAndFormIndexFromHL
+	ret nc
+	ld a, e
+	ld [wFXAnimIDLo], a
+	ld a, d
+	ld [wFXAnimIDHi], a
+	ret
+.MilkDrinkUsers:
+	dp MILTANK
+	db 0
 
 _PlayBattleAnim:
 	ld c, 6

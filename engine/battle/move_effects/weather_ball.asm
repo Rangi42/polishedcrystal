@@ -5,7 +5,7 @@ BattleCommand_weatherball:
 
 	call GetWeatherAfterUserUmbrella
 	ld [wBattleAnimParam], a
-	and a, a
+	and a
 	assert WEATHER_NONE == 0
 	jr z, .done
 	ld b, a

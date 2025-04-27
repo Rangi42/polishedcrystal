@@ -39,6 +39,7 @@ INCLUDE "engine/battle/move_effects/low_kick.asm"
 INCLUDE "engine/battle/move_effects/magic_bounce.asm"
 INCLUDE "engine/battle/move_effects/magnitude.asm"
 INCLUDE "engine/battle/move_effects/mean_look.asm"
+INCLUDE "engine/battle/move_effects/metal_burst.asm"
 INCLUDE "engine/battle/move_effects/metronome.asm"
 INCLUDE "engine/battle/move_effects/minimize.asm"
 INCLUDE "engine/battle/move_effects/pain_split.asm"
@@ -485,25 +486,20 @@ CantMove:
 	call z, HandleRampage_ConfuseUser ; confuses user on last turn of rampage
 	pop hl
 .rampage_done
-	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_ROLLOUT)
+	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_SEMI_INVULNERABLE | 1 << SUBSTATUS_ROLLOUT)
 	and [hl]
 	ld [hl], a
 	ret
 
 .cancel_fly_dig
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	push hl
-	ld hl, .fly_dig_moves
+	ld hl, SemiInvulnerableMoves
 	call CheckMoveInList
 	pop hl
 	ret nc
 	jmp AppearUserRaiseSub
-
-.fly_dig_moves
-	dw FLY
-	dw DIG
-	dw -1
 
 VerifyChosenMove:
 ; Returns z if the used move is the move we selected in the move screen.
@@ -720,7 +716,7 @@ GenericHitAnim:
 	ld de, ANIM_HIT_CONFUSION
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	call z, PlayFXAnimID
 	ret
 
@@ -2130,9 +2126,8 @@ BattleCommand_checkhit:
 	res SUBSTATUS_LOCK_ON, [hl]
 	ret z
 
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_FLYING, a
+	call GetOpponentSemiInvuln
+	bit SEMI_INVULNERABLE_FLYING, a
 	ld hl, .DigMoves
 	jr nz, .check_move_in_list
 	ld a, 1
@@ -2168,19 +2163,18 @@ BattleCommand_checkhit:
 .FlyDigMoves:
 ; Check for moves that can hit underground/flying opponents.
 ; Return z if the current move can hit the opponent.
-
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	call GetOpponentSemiInvuln
 	ret z
-
-	bit SUBSTATUS_FLYING, a
 	ld hl, .FlyMoves
-	jr z, .check_move_in_list
+	bit SEMI_INVULNERABLE_FLYING, a
+	jr nz, .check_move_in_list
 	ld hl, .DigMoves
+	bit SEMI_INVULNERABLE_DIGGING, a
+	jr nz, .check_move_in_list
+	ld hl, .DiveMoves
 .check_move_in_list
 	; returns z (and a = 0) if the current move is in a given list, or nz (and a = 1) if not
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	call CheckMoveInList
 	sbc a
@@ -2196,6 +2190,11 @@ BattleCommand_checkhit:
 .DigMoves:
 	dw EARTHQUAKE
 	dw MAGNITUDE
+	dw -1
+
+.DiveMoves:
+	dw SURF
+	dw WHIRLPOOL
 	dw -1
 
 .WeatherAccCheck:
@@ -2468,16 +2467,11 @@ BattleCommand_moveanimnosub:
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld hl, .fly_dig_moves
+	ld hl, SemiInvulnerableMoves
 	call CheckMoveInList
 	ret nc
 ; clear sprite
 	jmp AppearUserLowerSub
-
-.fly_dig_moves
-	dw FLY
-	dw DIG
-	dw -1
 
 .multihit
 .conversion
@@ -2548,7 +2542,7 @@ BattleCommand_failuretext:
 	call GetBattleVarAddr
 
 	push hl
-	ld hl, .fly_dig_moves
+	ld hl, SemiInvulnerableMoves
 	call CheckMoveInList
 	pop hl
 	jr c, .fly_dig
@@ -2572,15 +2566,9 @@ BattleCommand_failuretext:
 .fly_dig
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	res SUBSTATUS_UNDERGROUND, [hl]
-	res SUBSTATUS_FLYING, [hl]
+	res SUBSTATUS_SEMI_INVULNERABLE, [hl]
 	call AppearUserRaiseSub
 	jmp EndMoveEffect
-
-.fly_dig_moves
-	dw FLY
-	dw DIG
-	dw -1
 
 BattleCommand_applydamage:
 ; b is set to an endure flag as follows:
@@ -4624,7 +4612,7 @@ FarPlayBattleAnimation:
 
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret nz
 
 	; fallthrough
@@ -4738,7 +4726,7 @@ SelfInflictDamageToSubstitute:
 	call BattleCommand_lowersubnoanim
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	call z, AppearUserLowerSub
 	call SwitchTurn
 
@@ -5811,7 +5799,7 @@ BattleCommand_charge:
 	call GetBattleVarAddr
 	bit SUBSTATUS_CHARGED, [hl]
 	jr z, .not_charging
-	and ~(1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_FLYING)
+	and ~(1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_SEMI_INVULNERABLE)
 	ld [hl], a
 	ret
 
@@ -5842,48 +5830,52 @@ BattleCommand_charge:
 	call LoadMoveAnim
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
+	cp EFFECT_BOUNCE
+	jr z, .flying
 	cp EFFECT_FLY
 	jr nz, .not_flying
 
 .flying
 	farcall DisappearUser
 .not_flying
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	ld de, 3
+	ld hl, .semi_invuln_types
+	call IsInWordArray ; hl will point to the low byte of the found item
+	jr nc, .dont_set_digging
+	ld b, [hl]
+.got_semi_invuln_type
+	ld b, l
+	ld hl, wPlayerSemiInvulnerableType
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld hl, wEnemySemiInvulnerableType
+.ok
+	ld [hl], b
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld b, a ; why?
-	push bc ; we will save b anyways just in case
-	push hl
-	ld h, a
-	ld bc, FLY
-	call CompareMove
-	ld a, 1 << SUBSTATUS_FLYING
-	jr z, .got_move_type
-	if HIGH(FLY) != HIGH(DIG)
-		ld bc, DIG
-	else
-		ld c, LOW(DIG)
-	endc
-	ld a, h
-	call CompareMove
-	ld a, 1 << SUBSTATUS_UNDERGROUND
-	jr nz, .dont_set_digging
-
-.got_move_type
-	pop hl
+	ld a, 1 << SUBSTATUS_SEMI_INVULNERABLE
 	or [hl]
 	ld [hl], a
-	push hl ; push again so we can pop it in the fallthrough
 ; fallthrough
 .dont_set_digging
-	pop hl
-	pop bc
 	call ResetDamage
 
 	ld hl, .UsedText
 	call BattleTextbox
 	jmp EndMoveEffect
+
+.semi_invuln_types
+	dwb FLY,        SEMI_INVULNERABLE_FLYING
+	dwb BOUNCE,     SEMI_INVULNERABLE_FLYING
+	dwb DIG,        SEMI_INVULNERABLE_DIGGING
+	dwb DIVE,       SEMI_INVULNERABLE_DIVING
+	dw -1
 
 .UsedText:
 	text_far Text_BattleUser ; "[USER]"
@@ -5911,7 +5903,9 @@ BattleCommand_charge:
 .move_messages
 	dw SOLAR_BEAM, .SolarBeam
 	dw FLY,        .Fly
+	dw BOUNCE,     .Bounce
 	dw DIG,        .Dig
+	dw DIVE,       .Dive
 	dw -1
 
 .SolarBeam:
@@ -5924,9 +5918,19 @@ BattleCommand_charge:
 	text_far _BattleFlewText
 	text_end
 
+.Bounce:
+; 'sprang up!'
+	text_far _BattleBouncedText
+	text_end
+
 .Dig:
 ; 'dug a hole!'
 	text_far _BattleDugText
+	text_end
+
+.Dive:
+; 'dug a hole!'
+	text_far _BattleDoveText
 	text_end
 
 BattleCommand_traptarget:
@@ -6469,15 +6473,18 @@ DoPursuit:
 	jr DoubleDamageIfNZ
 
 BattleCommand_doubleflyingdamage:
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_FLYING, a
+	call GetOpponentSemiInvuln
+	bit SEMI_INVULNERABLE_FLYING, a
 	jr DoubleDamageIfNZ
 
 BattleCommand_doubleundergrounddamage:
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
+	call GetOpponentSemiInvuln
+	bit SEMI_INVULNERABLE_DIGGING, a
+	jr DoubleDamageIfNZ
+
+BattleCommand_doubledivingdamage:
+	call GetOpponentSemiInvuln
+	bit SEMI_INVULNERABLE_DIVING, a
 	; fallthrough
 DoubleDamageIfNZ:
 	ret z
@@ -6582,7 +6589,7 @@ BattleCommand_doubleminimizedamage:
 CheckHiddenOpponent:
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret
 
 GetPlayerItem::
@@ -6791,52 +6798,6 @@ AppearUserLowerSub:
 AppearUserRaiseSub:
 	farjp _AppearUserRaiseSub
 
-CheckBattleAnimSubstitution:
-; Checks the animation ID and possibly change it based on species.
-	ld a, [wFXAnimIDHi]
-	ld b, a
-	ld a, [wFXAnimIDLo]
-	ld c, a
-	cpbc FRESH_SNACK
-	ld de, ANIM_MILK_DRINK
-	ld hl, .MilkDrinkUsers
-	jr z, .check_species_list
-	cpbc FURY_STRIKES
-	ld de, ANIM_FURY_ATTACK
-	ld hl, FuryAttackUsers
-	jr z, .check_species_list
-	cpbc DEFENSE_CURL
-	ret nz
-
-	; Defense Curl has 3 variations
-	ld de, ANIM_WITHDRAW
-	ld hl, WithdrawUsers
-	call .check_species_list
-	ld de, ANIM_HARDEN
-	ld hl, HardenUsers
-	; fallthrough
-.check_species_list
-	push hl
-	ld hl, wBattleMonSpecies
-	call GetUserMonAttr
-	ld a, [hl]
-	ld bc, wBattleMonForm - wBattleMonSpecies
-	add hl, bc
-	ld c, a
-	ld b, [hl]
-	pop hl
-	call GetSpeciesAndFormIndexFromHL
-	ret nc
-	ld a, e
-	ld [wFXAnimIDLo], a
-	ld a, d
-	ld [wFXAnimIDHi], a
-	ret
-
-.MilkDrinkUsers:
-	dp MILTANK
-	db 0
-
 _CheckBattleEffects:
 ; Checks the options. Returns carry if battle animations are disabled.
 	push hl
@@ -6881,3 +6842,10 @@ CheckMoveInList:
 	pop de
 	pop bc
 	ret
+	
+SemiInvulnerableMoves:
+	dw FLY
+	dw BOUNCE
+	dw DIG
+	dw DIVE
+	dw -1

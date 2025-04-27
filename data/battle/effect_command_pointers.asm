@@ -116,6 +116,7 @@ BattleCommandPointers:
 	command rage
 	command doubleflyingdamage
 	command doubleundergrounddamage
+	command doubledivingdamage
 	command checkfuturesight
 	command futuresight
 	command doubleminimizedamage
@@ -150,6 +151,7 @@ BattleCommandPointers:
 	command freezeflinchtarget
 	command paralyzeflinchtarget
 	command toxictarget
+	command metalburst
 
 	; The following commands have an argument
 	; Argument: check if possible (false) vs perform the action (true)

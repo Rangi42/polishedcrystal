@@ -3,4 +3,5 @@ PowderMoves::
 	dw SLEEP_POWDER
 	dw SPORE
 	dw STUN_SPORE
+	dw COTTON_SPORE
 	dw -1

@@ -282,9 +282,8 @@ HandleWeather:
 	farjp RunWeatherAbilities
 
 .HandleSandstorm
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
+	call GetUserSemiInvuln
+	and (SEMI_INVULNERABLE_DIGGING | SEMI_INVULNERABLE_DIVING)
 	ret nz
 	call GetTrueUserAbility
 	cp MAGIC_GUARD
@@ -323,9 +322,8 @@ HandleWeather:
 	predef_jump SubtractHPFromUser
 
 .HandleHail
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
+	call GetUserSemiInvuln
+	and (SEMI_INVULNERABLE_DIGGING | SEMI_INVULNERABLE_DIVING)
 	ret nz
 	call GetTrueUserAbility
 	cp MAGIC_GUARD
@@ -518,7 +516,7 @@ HandleLeechSeed:
 	ld de, ANIM_SAP
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	jr nz, .no_anim
 	farcall PlayBattleAnimDE_OnlyIfVisible
 .no_anim
@@ -709,7 +707,7 @@ HandleWrap:
 
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	jr nz, .skip_anim
 	call SwitchTurn
 	xor a

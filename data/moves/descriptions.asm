@@ -271,6 +271,50 @@ MoveDescriptions1:
 	dw ThunderFangDescription
 	dw PoisonFangDescription
 	dw PsychicFangsDescription
+	dw InfernoDescription
+	dw OverheatDescription
+	dw BlazeKickDescription
+	dw BubbleDescription
+	dw MuddyWaterDescription
+	dw ClampDescription
+	dw FlipTurnDescription
+	dw RazorShellDescription
+	dw DiveDescription
+	dw WithdrawDescription
+	dw LeafStormDescription
+	dw CottonSporeDescription
+	dw ShockWaveDescription
+	dw PsyshockDescription
+	dw PsychoCutDescription
+	dw MeditateDescription
+	dw IceBallDescription
+	dw DualChopDescription
+	dw BreakSwipeDescription
+	dw DracoMeteorDescription
+	dw IronDefenseDescription
+	dw MetalSoundDescription
+	dw MirrorShotDescription
+	dw MagnetBombDescription
+	dw MetalBurstDescription
+	dw InfestationDescription
+	dw StruggleBugDescription
+	dw QuiverDanceDescription
+	dw RockTombDescription
+	dw RockPolishDescription
+	dw DrillRunDescription
+	dw MudBombDescription
+	dw SandAttackDescription
+	dw CrossPoisonDescription
+	dw PoisonGasDescription
+	dw AcidArmorDescription
+	dw BounceDescription
+	dw AirCutterDescription
+	dw PowerUpPunchDescription
+	dw RollingKickDescription
+	dw VitalThrowDescription
+	dw JumpKickDescription
+	dw SuperpowerDescription
+	dw DetectDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -291,6 +335,9 @@ CrossChopDescription:
 NightSlashDescription:
 ShadowClawDescription:
 StoneEdgeDescription:
+PsychoCutDescription:
+DrillRunDescription:
+AirCutterDescription:
 	text "Has a high criti-"
 	next "cal hit ratio."
 	done
@@ -300,6 +347,9 @@ FeintAttackDescription:
 DisarmVoiceDescription:
 AerialAceDescription:
 AuraSphereDescription:
+ShockWaveDescription:
+VitalThrowDescription:
+MagnetBombDescription:
 	text "An attack that"
 	next "never misses."
 	done
@@ -369,6 +419,7 @@ ExtrasensoryDescription:
 DarkPulseDescription:
 AstonishDescription:
 IcicleCrashDescription:
+RollingKickDescription:
 	text "An attack that may"
 	next "cause flinching."
 	done
@@ -377,6 +428,7 @@ PoisonStingDescription:
 SludgeBombDescription:
 PoisonJabDescription:
 GunkShotDescription:
+CrossPoisonDescription:
 	text "An attack that may"
 	next "poison the foe."
 	done
@@ -386,8 +438,14 @@ FlamethrowerDescription:
 FireBlastDescription:
 SacredFireDescription:
 ScaldDescription:
+BlazeKickDescription:
 	text "An attack that may"
 	next "inflict a burn."
+	done
+
+InfernoDescription:
+	text "An attack that"
+	next "always burns."
 	done
 
 BodySlamDescription:
@@ -430,6 +488,11 @@ MetalClawDescription:
 	next "up user's Attack."
 	done
 
+PowerUpPunchDescription:
+	text "An attack that"
+	next "ups user's Attack."
+	done
+
 SteelWingDescription:
 	text "An attack that may"
 	next "up user's Defense."
@@ -448,6 +511,18 @@ AncientpowerDescription:
 CloseCombatDescription:
 	text "Lowers the user's"
 	next "Def and Sp.Def."
+	done
+
+OverheatDescription:
+LeafStormDescription:
+DracoMeteorDescription:
+	text "Sharply lowers the"
+	next "user's Sp.Atk."
+	done
+
+SuperpowerDescription:
+	text "Lowers the user's"
+	next "Atk and Def."
 	done
 
 AuroraBeamDescription:
@@ -469,6 +544,7 @@ RockSmashDescription:
 endc
 CrunchDescription:
 IronTailDescription:
+RazorShellDescription:
 	text "An attack that may"
 	next "lower Defense."
 	done
@@ -488,10 +564,30 @@ IcyWindDescription:
 	next "lowers Speed."
 	done
 
+RockTombDescription:
+	text "A Rock attack"
+	next "that lowers Speed."
+	done
+
+MudBombDescription:
+	text "A muddy attack"
+	next "that lowers Speed."
+	done
+
 MoonblastDescription:
 MysticalFireDescription:
 	text "An attack that may"
 	next "lower Sp.Atk."
+	done
+
+StruggleBugDescription:
+	text "An attack that"
+	next "lowers Sp.Atk."
+	done
+
+BreakSwipeDescription:
+	text "An attack that"
+	next "lowers Attack."
 	done
 
 AcidDescription:
@@ -512,6 +608,8 @@ MudSlapDescription:
 	done
 
 OctazookaDescription:
+MuddyWaterDescription:
+MirrorShotDescription:
 	text "An attack that may"
 	next "lower accuracy."
 	done
@@ -533,6 +631,7 @@ NightShadeDescription:
 	done
 
 PoisonpowderDescription:
+PoisonGasDescription:
 	text "A move that may"
 	next "poison the foe."
 	done
@@ -576,7 +675,13 @@ SweetKissDescription:
 	next "confuse the foe."
 	done
 
+MeditateDescription:
+	text "Raises the user's"
+	next "Attack."
+	done
+
 DefenseCurlDescription:
+WithdrawDescription:
 	text "Raises the user's"
 	next "Defense."
 	done
@@ -597,11 +702,14 @@ SwordsDanceDescription:
 	done
 
 BarrierDescription:
+IronDefenseDescription:
+AcidArmorDescription:
 	text "Sharply raises the"
 	next "user's Defense."
 	done
 
 AgilityDescription:
+RockPolishDescription:
 	text "Sharply raises the"
 	next "user's Speed."
 	done
@@ -646,6 +754,11 @@ HoneClawsDescription:
 	next "Atk and accuracy."
 	done
 
+QuiverDanceDescription:
+	text "Raises Sp.Atk,"
+	next "Sp.Def, and Speed."
+	done
+
 GrowlDescription:
 	text "A move that lowers"
 	next "the foe's Attack."
@@ -663,6 +776,7 @@ StringShotDescription:
 
 SmokescreenDescription:
 FlashDescription:
+SandAttackDescription:
 	text "A move that lowers"
 	next "the foe's accuracy."
 	done
@@ -673,11 +787,13 @@ CharmDescription:
 	done
 
 ScreechDescription:
+MetalSoundDescription:
 	text "Sharply lowers the"
 	next "foe's Defense."
 	done
 
 ScaryFaceDescription:
+CottonSporeDescription:
 	text "Sharply lowers the"
 	next "foe's Speed."
 	done
@@ -727,6 +843,8 @@ OutrageDescription:
 FireSpinDescription:
 WhirlpoolDescription:
 WrapDescription:
+ClampDescription:
+InfestationDescription:
 	text "Traps the foe for"
 	next "2-5 turns."
 	done
@@ -758,6 +876,16 @@ SolarBeamDescription:
 
 FlyDescription:
 	text "1st turn: Fly"
+	next "2nd turn: Attack"
+	done
+
+BounceDescription:
+	text "1st turn: Bounce"
+	next "2nd turn: Attack"
+	done
+
+DiveDescription:
+	text "1st turn: Dive"
 	next "2nd turn: Attack"
 	done
 
@@ -810,6 +938,7 @@ HailDescription:
 
 UTurnDescription:
 VoltSwitchDescription:
+FlipTurnDescription:
 	text "Switches out after"
 	next "making its attack."
 	done
@@ -837,6 +966,11 @@ CounterDescription:
 MirrorCoatDescription:
 	text "Returns a special"
 	next "attack double."
+	done
+
+MetalBurstDescription:
+	text "Returns an attack"
+	next "back stronger."
 	done
 
 SpikesDescription:
@@ -964,6 +1098,11 @@ WaterGunDescription:
 	next "attack."
 	done
 
+BubbleDescription:
+	text "Shoots bubbles to"
+	next "attack."
+	done
+
 SurfDescription:
 	text "A strong Water-"
 	next "type attack."
@@ -1030,6 +1169,7 @@ SkillSwapDescription:
 	done
 
 HiJumpKickDescription:
+JumpKickDescription:
 	text "May miss and hurt"
 	next "the user."
 	done
@@ -1050,6 +1190,7 @@ SplashDescription:
 	done
 
 BonemerangDescription:
+DualChopDescription:
 	text "An attack that"
 	next "strikes twice."
 	done
@@ -1120,6 +1261,7 @@ SeedBombDescription:
 	done
 
 ProtectDescription:
+DetectDescription:
 	text "Foils attack that"
 	next "turn. It may fail."
 	done
@@ -1150,6 +1292,7 @@ PowerGemDescription:
 	done
 
 RolloutDescription:
+IceBallDescription:
 	text "Attacks 5 turns"
 	next "with rising power."
 	done
@@ -1195,6 +1338,7 @@ ReturnDescription:
 	done
 
 PsystrikeDescription:
+PsyshockDescription:
 	text "A wave that does"
 	next "physical damage."
 	done
