@@ -6,5 +6,6 @@ PunchingMoves:
 	dw FIRE_PUNCH
 	dw ICE_PUNCH
 	dw MACH_PUNCH
+	dw SHADOW_PUNCH
 	dw THUNDERPUNCH
 	dw -1

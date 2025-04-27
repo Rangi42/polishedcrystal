@@ -166,4 +166,9 @@ MoveEffectsPointers:
 	dw Bounce
 	dw Surf
 	dw Whirlpool
+	dw Twineedle
+	dw ResetStatsHit
+	dw Frustration
+	dw FakeOut
+	dw FirstImpression
 	assert_table_length NUM_MOVE_EFECTS

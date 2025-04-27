@@ -2418,6 +2418,8 @@ AIDamageCalc:
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
+	cp EFFECT_TWINEEDLE
+	jr z, .doublehit
 	cp EFFECT_GYRO_BALL
 	jr z, .gyro_ball
 	cp EFFECT_HIDDEN_POWER

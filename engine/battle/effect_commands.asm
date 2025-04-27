@@ -25,6 +25,7 @@ INCLUDE "engine/battle/move_effects/encore_disable.asm"
 INCLUDE "engine/battle/move_effects/endure.asm"
 INCLUDE "engine/battle/move_effects/explosion.asm"
 INCLUDE "engine/battle/move_effects/false_swipe.asm"
+INCLUDE "engine/battle/move_effects/first_turn.asm"
 INCLUDE "engine/battle/move_effects/focus_energy.asm"
 INCLUDE "engine/battle/move_effects/foresight.asm"
 INCLUDE "engine/battle/move_effects/future_sight.asm"
@@ -339,6 +340,7 @@ BattleCommand_checkturn:
 	jmp EndTurn
 
 .thawing_moves
+	dw FLAME_WHEEL
 	dw SACRED_FIRE
 	dw SCALD
 	dw FLARE_BLITZ
@@ -2455,6 +2457,8 @@ BattleCommand_moveanimnosub:
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
+	cp EFFECT_TWINEEDLE
+	jr z, .doublehit
 
 .normal_move
 	xor a
@@ -2552,6 +2556,8 @@ BattleCommand_failuretext:
 	ld a, [hl]
 
 	cp EFFECT_MULTI_HIT
+	jr z, .multihit
+	cp EFFECT_TWINEEDLE
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
 	jmp nz, EndMoveEffect
@@ -2898,8 +2904,9 @@ BattleCommand_startloop:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_DOUBLE_HIT
-	ld a, 2
-	jr z, .got_count
+	jr z, .double_hit
+	cp EFFECT_TWINEEDLE
+	jr z, .double_hit
 
 	call GetTrueUserAbility
 	cp SKILL_LINK
@@ -2928,6 +2935,9 @@ BattleCommand_startloop:
 	add 2
 .got_count
 	ld [hl], a
+	ret
+.double_hit
+	ld [hl], 2
 	ret
 
 BattleCommand_supereffectivetext:
@@ -4736,6 +4746,8 @@ SelfInflictDamageToSubstitute:
 	jr z, .ok
 	cp EFFECT_DOUBLE_HIT
 	jr z, .ok
+	cp EFFECT_TWINEEDLE
+	jr z, .ok
 	xor a
 	ld [hl], a
 .ok
@@ -5847,6 +5859,8 @@ BattleCommand_charge:
 	ld hl, .semi_invuln_types
 	call IsInWordArray ; hl will point to the low byte of the found item
 	jr nc, .dont_set_digging
+	inc hl
+	inc hl
 	ld b, [hl]
 .got_semi_invuln_type
 	ld b, l
@@ -5880,7 +5894,7 @@ BattleCommand_charge:
 .UsedText:
 	text_far Text_BattleUser ; "[USER]"
 	text_asm
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	push bc
 	call GetMoveIndexFromID
@@ -5902,6 +5916,7 @@ BattleCommand_charge:
 
 .move_messages
 	dw SOLAR_BEAM, .SolarBeam
+	dw SOLAR_BLADE, .SolarBeam
 	dw FLY,        .Fly
 	dw BOUNCE,     .Bounce
 	dw DIG,        .Dig
@@ -6017,6 +6032,8 @@ BattleCommand_recoil:
 
 	ld a, b
 	call GetMoveIndexFromID
+	cphl HEAD_SMASH
+	jr z, .OneHalfRecoil
 	cphl DOUBLE_EDGE
 	jr z, .OneThirdRecoil
 	cphl FLARE_BLITZ
@@ -6040,6 +6057,10 @@ BattleCommand_recoil:
 
 .StruggleRecoil
 	call GetQuarterMaxHP
+	jr .recoil_floor
+
+.OneHalfRecoil
+	call GetHalfMaxHP
 	jr .recoil_floor
 
 .OneThirdRecoil
@@ -6417,20 +6438,30 @@ BattleCommand_defrost:
 	jmp StdBattleTextbox
 
 BoostJumptable:
-	dbw AVALANCHE,  DoAvalanche
-	dbw ACROBATICS, DoAcrobatics
-	dbw FACADE,     DoFacade
-	dbw HEX,        DoHex
-	dbw VENOSHOCK,  DoVenoshock
-	dbw KNOCK_OFF,  DoKnockOff
-	dbw PURSUIT,    DoPursuit
-	dbw -1, -1
+	dw AVALANCHE,  DoAvalanche
+	dw REVENGE,    DoAvalanche
+	dw ACROBATICS, DoAcrobatics
+	dw FACADE,     DoFacade
+	dw HEX,        DoHex
+	dw VENOSHOCK,  DoVenoshock
+	dw KNOCK_OFF,  DoKnockOff
+	dw PURSUIT,    DoPursuit
+	dw -1,
 
 BattleCommand_conditionalboost:
-	ld hl, BoostJumptable
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	jmp BattleJumptable
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	ld hl, BoostJumptable
+	ld de, 4
+	call IsInWordArray
+	ret nc
+	inc hl
+	inc hl
+	push hl
+	ret ; Jump to option
 
 DoAvalanche:
 	ld a, 1 << PHYSICAL | 1 << SPECIAL
