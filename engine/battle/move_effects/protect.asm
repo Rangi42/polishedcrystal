@@ -15,38 +15,28 @@ ProtectChance:
 ; Returns nz upon failure.
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wPlayerProtectCount
+	ld de, wPlayerProtectCount
 	jr z, .got_protect_count
-	ld hl, wEnemyProtectCount
+	ld de, wEnemyProtectCount
 .got_protect_count
 	call CheckOpponentWentFirst
 	jr nz, .failed
 
-	; Cumulative 1/3 chance of success per successive use capped at 1/729.
-	ld a, [hl]
-	inc [hl]
-	and a
-	ret z
-	dec a
-	cp 5
-	jr nz, .no_overflow
-
-	; This will do a 1/243 chack, followed by a 1/3 check.
-	ld [hl], a
-	call ProtectChance ; Will re-increment [hl] back to its correct value.
-	ret nz
-	xor a
-.no_overflow
-	ld de, .ProtectChanceTable
-	add e
-	ld e, a
-	adc d
-	sub e
-	ld d, a
+	; Cumulative 1/3 chance of success per successive use.
 	ld a, [de]
+	inc a
+	cp 7
+	jr z, .no_overflow
+	ld [de], a
+.no_overflow
+	ld c, a
+.loop
+	dec c
+	ret z
+	ld a, 3
 	call BattleRandomRange
 	and a
-	ret z
+	jr z, .loop
 
 .failed
 	xor a
@@ -55,10 +45,3 @@ ProtectChance:
 	call PrintButItFailed
 	or 1
 	ret
-
-.ProtectChanceTable:
-	db 3
-	db 9
-	db 27
-	db 81
-	db 243
