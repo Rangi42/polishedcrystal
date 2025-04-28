@@ -1,7 +1,7 @@
 BattleCommand_endure:
 ; Endure shares code with Protect. See protect.asm.
 	call ProtectChance
-	ret c
+	ret nz
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
