@@ -1037,16 +1037,12 @@ FledInFearText:
 	line "fled in fear!"
 	prompt
 
-Hit1TimeText:
-	text "Hit "
-	text_decimal wStringBuffer1, 1, 1
-	text " time!"
-	prompt
-
 HitNTimesText:
 	text "Hit "
-	text_decimal wStringBuffer1, 1, 1
-	text " times!"
+	text_decimal wItemQuantityChangeBuffer, 1, 2
+	text " time"
+	text_plural
+	text "!"
 	prompt
 
 MistText:

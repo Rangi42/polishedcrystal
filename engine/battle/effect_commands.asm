@@ -5601,14 +5601,11 @@ BattleCommand_endloop:
 	push de
 	farcall ResolveOpponentBerserk
 	pop de
-	ld hl, wStringBuffer1
+	ld hl, wItemQuantityChangeBuffer
 	ld a, [de]
 	swap a
 	and $f
 	ld [hl], a
-	dec a
-	ld hl, Hit1TimeText
-	jr z, .got_hit_n_times_text
 	ld hl, HitNTimesText
 .got_hit_n_times_text
 	jmp StdBattleTextbox
