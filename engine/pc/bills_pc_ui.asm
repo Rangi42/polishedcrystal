@@ -3647,7 +3647,7 @@ wLCDBillsPC1::
 
 	; start of VRAM writes
 	; second box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 5 color 2)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 5 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3655,7 +3655,7 @@ rept 4
 endr
 
 	; third box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 6 color 2)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 6 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3663,7 +3663,7 @@ rept 4
 endr
 
 	; fourth box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 7 color 2)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 7 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3690,7 +3690,7 @@ wLCDBillsPC2::
 
 	; start of VRAM writes
 	; first party mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 2)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3698,7 +3698,7 @@ rept 4
 endr
 
 	; second party mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 2)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3706,7 +3706,7 @@ rept 4
 endr
 
 	; first box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4 color 2)
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
