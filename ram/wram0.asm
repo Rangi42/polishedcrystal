@@ -1446,15 +1446,16 @@ wInitialOptions::
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
 ; bit 5: affection bonuses off/on
-; bit 6: scaled exp on/off
+; bit 6: scaled exp on/off (cannot be set together with no exp)
 ; bit 7: physical-special split on/off
 	db
 
 wInitialOptions2::
-; bit 0: EVs disabled
-; bit 1: classic EVs (no 510 cap)
-; bit 2: modern EVs (510 cap)
-; (only one of bits 0-2 can be set)
+; bits 0-1: EVs (cannot be set to %11)
+; - %00: EVs disabled
+; - %01: classic EVs (no 510 cap)
+; - %10: modern EVs (510 cap)
+; bit 2: no exp on/off (cannot be set together with scaled exp)
 ; bit 3: use RTC
 ; bit 4: evolve in battle
 ; bits 5-6: unused

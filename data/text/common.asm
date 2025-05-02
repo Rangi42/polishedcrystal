@@ -1786,14 +1786,14 @@ Text_ABoostedStringBuffer2ExpPoints::
 	line "a boosted"
 	cont ""
 	text_decimal wStringBuffer2, 3, 6
-	text " Exp. Points!"
+	text " Exp.Points!"
 	prompt
 
 SECTION "Text_StringBuffer2ExpPoints", ROMX
 Text_StringBuffer2ExpPoints::
 	line ""
 	text_decimal wStringBuffer2, 3, 6
-	text " Exp. Points!"
+	text " Exp.Points!"
 	prompt
 
 SECTION "Text_GoPkmn", ROMX

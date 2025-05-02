@@ -6393,6 +6393,11 @@ GiveExperiencePoints:
 .participating
 	call GiveBattleEVs
 
+	; No experience if disabled
+	ld a, [wInitialOptions2]
+	bit NO_EXP_OPT, a
+	jmp nz, .next_mon
+
 	; No experience at level 100
 	ld hl, MON_LEVEL
 	add hl, bc
