@@ -101,6 +101,8 @@ MACRO genders
 	for i, 1, _NARG + 1
 		if !STRCMP("\<i>", "FEMALE")
 			def x |= y
+		else
+			static_assert !STRCMP("\<i>", "MALE")
 		endc
 		def y <<= 1
 	endr
@@ -124,9 +126,9 @@ MACRO def_evs
 	rept _NARG
 		def _got_ev = 0
 		with_each_stat """
-			def x = STRRIN(STRUPR("\1"), " ?")
-			if !_got_ev && x
-				redef _EV_VALUE EQUS STRSUB("\1", 1, x - 1)
+			def x = STRRFIND(STRUPR("\1"), " ?")
+			if !_got_ev && x != -1
+				redef _EV_VALUE EQUS STRSLICE("\1", 0, x)
 				def EV_? = \{_EV_VALUE}
 				def EV_TOTAL += EV_?
 				def _got_ev = 1
