@@ -4,11 +4,11 @@ MACRO parent_node
 ENDM
 
 MACRO _parent_node
-	if STRIN("\1", "$") == 1
+	if STRFIND("\1", "$") == 0
 		; hex literals indicate parent nodes
 		assert ROOT_NODE_ID < \1 && \1 < FIRST_LEAF_NODE_ID, "invalid parent node value \1"
 		db \1
-	elif STRIN("\1", "\"") == 1
+	elif STRFIND("\1", "\"") == 0
 		; string literals indicate leaf nodes
 		DEF x = \1
 		if !DEF(___huffman_data_{02X:x})
