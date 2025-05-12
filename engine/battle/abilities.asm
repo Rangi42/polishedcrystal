@@ -1030,9 +1030,7 @@ SpeedBoostAbility:
 	ld a, [hl]
 	and a
 	ret z
-
-	; this will proc the speed-up.
-	jr MotorDriveAbility
+	jr SpeedUpAbility
 
 CompetitiveAbility:
 	ld b, $10 | SP_ATTACK
@@ -1075,6 +1073,7 @@ RattledAbility:
 	; fallthrough
 MotorDriveAbility:
 SteadfastAbility:
+SpeedUpAbility:
 	ld b, SPEED
 StatUpAbility:
 	call HasUserFainted

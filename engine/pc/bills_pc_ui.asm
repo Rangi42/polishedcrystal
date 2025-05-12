@@ -2682,9 +2682,15 @@ BillsPC_CanReleaseMon:
 	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
+	jr z, .not_egg
+
+	; Allow release of Bad Eggs.
+	ld a, [wTempMonNickname]
+	cp "B" ; Assume "Bad Egg" (since the only alternative is "Egg").
 	ld a, RELEASE_EGG
 	ret nz
 
+.not_egg
 	xor a ; RELEASE_OK
 .done
 	and a
