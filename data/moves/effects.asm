@@ -1469,7 +1469,6 @@ DestinyBond:
 	checkobedience
 	usedmovetext
 	doturn
-	hastarget
 	checkpriority
 	destinybond
 	endmove
