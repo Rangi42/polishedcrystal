@@ -1,4 +1,4 @@
-DEF INVER_PREFIX = 8 ; length + "Inver@" + trainer flags
+DEF INVER_PREFIX = 1 + STRLEN("Inver@") + 1 ; length + name + trainer flags
 
 PickPsychicInverParty:
 	ld hl, wInverIndexes

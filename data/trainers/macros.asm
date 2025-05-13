@@ -11,40 +11,40 @@ DEF NUM_EV_SPREADS = 0
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
 ; Chosen for stat importance: Speed > * > Atk (hidden power is a special move)
 if DEF(FAITHFUL)
-DEF DVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
-DEF DVS_HP_FLYING   EQUS "14 HP, 14 Atk, 14 Def, 14 SAt, 14 SDf"
-DEF DVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
-DEF DVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
-DEF DVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
-DEF DVS_HP_BUG      EQUS "14 Atk, 14 Def, 14 SDf"
-DEF DVS_HP_GHOST    EQUS "14 Atk, 14 SDf"
-DEF DVS_HP_STEEL    EQUS "14 SDf"
-DEF DVS_HP_FIRE     EQUS "14 Atk, 14 Spe, 14 SAt"
-DEF DVS_HP_WATER    EQUS "14 Atk, 14 Def, 14 SAt"
-DEF DVS_HP_GRASS    EQUS "14 Atk, 14 SAt"
-DEF DVS_HP_ELECTRIC EQUS "14 SAt"
-DEF DVS_HP_PSYCHIC  EQUS "14 Atk, 14 Spe"
-DEF DVS_HP_ICE      EQUS "14 Atk, 14 Def"
-DEF DVS_HP_DRAGON   EQUS "14 Atk"
-DEF DVS_HP_DARK     EQUS "15 All"
+	DEF DVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
+	DEF DVS_HP_FLYING   EQUS "14 HP, 14 Atk, 14 Def, 14 SAt, 14 SDf"
+	DEF DVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
+	DEF DVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
+	DEF DVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
+	DEF DVS_HP_BUG      EQUS "14 Atk, 14 Def, 14 SDf"
+	DEF DVS_HP_GHOST    EQUS "14 Atk, 14 SDf"
+	DEF DVS_HP_STEEL    EQUS "14 SDf"
+	DEF DVS_HP_FIRE     EQUS "14 Atk, 14 Spe, 14 SAt"
+	DEF DVS_HP_WATER    EQUS "14 Atk, 14 Def, 14 SAt"
+	DEF DVS_HP_GRASS    EQUS "14 Atk, 14 SAt"
+	DEF DVS_HP_ELECTRIC EQUS "14 SAt"
+	DEF DVS_HP_PSYCHIC  EQUS "14 Atk, 14 Spe"
+	DEF DVS_HP_ICE      EQUS "14 Atk, 14 Def"
+	DEF DVS_HP_DRAGON   EQUS "14 Atk"
+	DEF DVS_HP_DARK     EQUS "15 All"
 else
-DEF DVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
-DEF DVS_HP_FLYING   EQUS "14 Spe, 14 SAt, 14 SDf"
-DEF DVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
-DEF DVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
-DEF DVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
-DEF DVS_HP_BUG      EQUS "14 Spe, 14 SDf"
-DEF DVS_HP_GHOST    EQUS "14 Def, 14 SDf"
-DEF DVS_HP_STEEL    EQUS "14 SDf"
-DEF DVS_HP_FIRE     EQUS "14 Def, 14 Spe, 14 SAt"
-DEF DVS_HP_WATER    EQUS "14 Spe, 14 SAt"
-DEF DVS_HP_GRASS    EQUS "14 Def, 14 SAt"
-DEF DVS_HP_ELECTRIC EQUS "14 SAt"
-DEF DVS_HP_PSYCHIC  EQUS "14 Def, 14 Spe"
-DEF DVS_HP_ICE      EQUS "14 Spe"
-DEF DVS_HP_DRAGON   EQUS "14 Def"
-DEF DVS_HP_DARK     EQUS "14 Atk"
-DEF DVS_HP_FAIRY    EQUS "15 All" ; only in nonfaithful
+	DEF DVS_HP_FIGHTING EQUS "14 Def, 14 Spe, 14 SAt, 14 SDf"
+	DEF DVS_HP_FLYING   EQUS "14 Spe, 14 SAt, 14 SDf"
+	DEF DVS_HP_POISON   EQUS "14 Def, 14 SAt, 14 SDf"
+	DEF DVS_HP_GROUND   EQUS "14 SAt, 14 SDf"
+	DEF DVS_HP_ROCK     EQUS "14 Def, 14 Spe, 14 SDf"
+	DEF DVS_HP_BUG      EQUS "14 Spe, 14 SDf"
+	DEF DVS_HP_GHOST    EQUS "14 Def, 14 SDf"
+	DEF DVS_HP_STEEL    EQUS "14 SDf"
+	DEF DVS_HP_FIRE     EQUS "14 Def, 14 Spe, 14 SAt"
+	DEF DVS_HP_WATER    EQUS "14 Spe, 14 SAt"
+	DEF DVS_HP_GRASS    EQUS "14 Def, 14 SAt"
+	DEF DVS_HP_ELECTRIC EQUS "14 SAt"
+	DEF DVS_HP_PSYCHIC  EQUS "14 Def, 14 Spe"
+	DEF DVS_HP_ICE      EQUS "14 Spe"
+	DEF DVS_HP_DRAGON   EQUS "14 Def"
+	DEF DVS_HP_DARK     EQUS "14 Atk"
+	DEF DVS_HP_FAIRY    EQUS "15 All" ; only in nonfaithful
 endc
 
 MACRO dv_spread
@@ -72,7 +72,7 @@ DEF _tr_class = 0
 MACRO def_trainer_class
 ; Usage: def_trainer_class <CLASS_CONSTANT>
 ; CLASS_CONSTANT is defined in trainer_constants.asm
-	assert (\1 == _tr_class), "Trainer class ID mismatch"
+	assert \1 == _tr_class, "Trainer class ID mismatch"
 	def _tr_class += 1
 	def _tr_party = 1
 ENDM
@@ -87,7 +87,7 @@ MACRO def_trainer
 	def _tr_flags = 0
 	def _tr_mons = 0
 	def _tr_nick_lengths = 0
-	assert (\1 == _tr_party), "Trainer party ID mismatch"
+	assert \1 == _tr_party, "Trainer party ID mismatch"
 	redef _tr_name EQUS \2
 	def _tr_name_length = CHARLEN(\2) + 1
 	def _tr_size = 0
@@ -130,7 +130,7 @@ MACRO tr_mon
 	def _tr_pk{d:p}_level = \1
 
 	; Is the mon nicknamed?
-	if STRIN("\2", "\"")
+	if STRFIND("\2", "\"") == 0
 		; The pokémon is nicknamed.
 		def _tr_flags |= TRAINERTYPE_NICKNAME
 		redef _tr_pk{d:p}_nickname EQUS \2
@@ -141,8 +141,8 @@ MACRO tr_mon
 	if STRIN("\2", "@") != 0
 		; Format "Species @ Item" was used, so add the item.
 		def _tr_flags |= TRAINERTYPE_ITEM
-		redef _tr_pk{d:p}_item EQUS STRSUB("\2", STRIN("\2", "@") + 2)
-		redef _tr_pk{d:p}_species EQUS STRSUB("\2", 1, STRIN("\2", "@") - 2)
+		redef _tr_pk{d:p}_item EQUS STRSLICE("\2", STRFIND("\2", " @ ") + 3, STRLEN("\2"))
+		redef _tr_pk{d:p}_species EQUS STRSLICE("\2", 0, STRFIND("\2", " @ "))
 	else
 		; Just "Species", no held item.
 		redef _tr_pk{d:p}_species EQUS "\2"
@@ -154,9 +154,9 @@ MACRO tr_mon
 	; Was form/gender specified?
 	if _NARG == 3
 		; Is gender defined?
-		if !STRIN("\3", "MALE") && !STRIN("\3", "GENDERLESS")
+		if STRFIND("\3", "MALE") == -1 && STRFIND("\3", "GENDERLESS") == -1
 			; Check if we must define gender (TRAINERTYPE_PERSONALITY enabled).
-			if (_tr_flags & TRAINERTYPE_PERSONALITY)
+			if _tr_flags & TRAINERTYPE_PERSONALITY
 				fail "No gender specified for current mon."
 			endc
 		else
@@ -168,13 +168,13 @@ MACRO tr_mon
 		def _tr_pk{d:p}_form = \3
 
 		; Possibly change ability constant prefix based on form.
-		if STRIN("\3", "ALOLAN_FORM")
+		if STRFIND("\3", "ALOLAN_FORM") != -1
 			redef _tr_curabil EQUS "{_tr_curabil}_ALOLAN"
-		elif STRIN("\3", "GALARIAN_FORM")
+		elif STRFIND("\3", "GALARIAN_FORM") != -1
 			redef _tr_curabil EQUS "{_tr_curabil}_GALARIAN"
-		elif STRIN("\3", "HISUIAN_FORM")
+		elif STRFIND("\3", "HISUIAN_FORM") != -1
 			redef _tr_curabil EQUS "{_tr_curabil}_HISUIAN"
-		elif STRIN("\3", "PALDEAN_FORM")
+		elif STRFIND("\3", "PALDEAN_FORM") != -1
 			redef _tr_curabil EQUS "{_tr_curabil}_PALDEAN"
 		endc
 	endc
@@ -226,7 +226,7 @@ MACRO tr_dvs
 	def _tr_flags |= TRAINERTYPE_DVS
 
 	; check if a constant was used
-	if STRIN("\#", "_")
+	if STRFIND("\#", "_") != -1
 		redef _tr_pk{d:p}_dvs EQUS "{\#}"
 	else
 		redef _tr_pk{d:p}_dvs EQUS "\#"
@@ -244,7 +244,7 @@ MACRO tr_moves
 		fail "A mon may only have {d:NUM_MOVES} moves."
 	endc
 	for i, 1, _NARG + 1
-		if STRIN("\<i>", "HP_") == 1
+		if STRFIND("\<i>", "HP_") == 0
 			def _tr_flags |= TRAINERTYPE_DVS ; for Hidden Power type
 			def _tr_pk{d:p}_move{d:i} = HIDDEN_POWER
 			redef _tr_pk{d:p}_hp_type EQUS "\<i>"
@@ -287,7 +287,7 @@ MACRO end_trainer
 	def _tr_size += 1
 
 	; Party size should never exceed 255, but just in case...
-	if (_tr_size > 255)
+	if _tr_size > 255
 		fail "Party size too large"
 	endc
 	db _tr_size
@@ -304,7 +304,7 @@ MACRO end_trainer
 		endc
 
 		; If we have implicit DVs, but a Hidden Power type, set that now.
-		if STRIN("{_tr_pk{d:p}_hp_type}", "HP_") && _tr_pk{d:p}_dvs_explicit != TRUE
+		if STRFIND("{_tr_pk{d:p}_hp_type}", "HP_") != -1 && _tr_pk{d:p}_dvs_explicit != TRUE
 			redef _tr_pk{d:p}_dvs EQUS "{DVS_{_tr_pk{d:p}_hp_type}}"
 		endc
 		db _tr_pk{d:p}_level

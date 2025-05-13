@@ -127,12 +127,14 @@ MACRO def_dvs
 	def EV_ALL = 0
 	def_dvs_or_evs \#
 ENDM
+
 MACRO def_evs
 ; each arg: 0-252 All/HP/Atk/Def/Spe/SAt/SDf (All sets all 6 stats).
 ; based on showdown importable syntax
 	with_each_stat_all "def EV_? = 0"
 	def_dvs_or_evs \#
 ENDM
+
 MACRO def_dvs_or_evs
 	def EV_TOTAL = 0
 	rept _NARG
