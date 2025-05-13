@@ -1054,61 +1054,41 @@ RandomPhoneMon:
 	ld [wTrainerGroupBank], a
 	ld a, BANK(TrainerGroups)
 	call GetFarWord
-
-.skip_trainer
-	dec e
-	jr z, .skipped
-.skip
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	inc hl
-	cp -1
-	jr nz, .skip
-	jr .skip_trainer
-.skipped
-
-.skip_name
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .skip_name
+	ld b, e
+	farcall SkipTrainerPartiesAndName
 
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
 	inc hl
 
-	; get trainer type
-	ld b, a
 	; nicknames have uneven length, so always use the first mon
-	bit TRNTYPE_NICKNAME, b
+	bit TRNTYPE_NICKNAME, a
 	jr nz, .got_mon
-	; TRAINERTYPE_NORMAL uses 2 bytes per mon
+
+	; TRAINERTYPE_NORMAL uses 3 bytes per mon (Level, Species, Form)
 	ld c, 3
 	; TRAINERTYPE_ITEM uses 1 more byte
-	bit TRNTYPE_ITEM, b
+	bit TRNTYPE_ITEM, a
 	jr z, .no_item
 	inc c
 .no_item
-	; TRAINERTYPE_DVS uses 3 more bytes
-	bit TRNTYPE_DVS, b
+	; TRAINERTYPE_DVS uses 1 more byte
+	bit TRNTYPE_DVS, a
 	jr z, .no_dvs
-	inc c
-	inc c
 	inc c
 .no_dvs
 	; TRAINERTYPE_PERSONALITY uses 1 more byte
-	bit TRNTYPE_PERSONALITY, b
+	bit TRNTYPE_PERSONALITY, a
 	jr z, .no_personality
 	inc c
 .no_personality
 	; TRAINERTYPE_EVs uses 1 more byte
-	bit TRNTYPE_EVS, b
+	bit TRNTYPE_EVS, a
 	jr z, .no_evs
 	inc c
 .no_evs
 	; TRAINERTYPE_MOVES uses 4 more bytes
-	bit TRNTYPE_MOVES, b
+	bit TRNTYPE_MOVES, a
 	jr z, .no_moves
 	inc c
 	inc c
@@ -1116,17 +1096,17 @@ RandomPhoneMon:
 	inc c
 .no_moves
 	; bc == size of mon sub-struct
-	xor a
-	ld b, a
+	ld b, 0
 
+	; b currently holds party size in bytes
+	ld a, b
+	add l
 	ld e, 0
 	push hl
 .count_mon
 	inc e
 	add hl, bc
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	cp -1
+	cp l
 	jr nz, .count_mon
 	pop hl
 
