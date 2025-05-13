@@ -3503,7 +3503,7 @@ endc
 	tr_mon 61, WIGGLYTUFF
 	end_trainer
 
-	def_trainer "Abigail"
+	def_trainer ABIGAIL, "Abigail"
 	tr_mon LEVEL_FROM_BADGES + 3, SKIPLOOM
 	tr_mon LEVEL_FROM_BADGES + 4, FLAAFFY
 	tr_mon LEVEL_FROM_BADGES + 5, GOLDUCK
