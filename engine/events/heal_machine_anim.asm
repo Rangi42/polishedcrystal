@@ -164,7 +164,7 @@ HealMachineAnim:
 	push bc
 	ld a, [wBuffer1]
 	bcpixel 2, 4
-	cp $1 ; ElmsLab
+	dec a ; ElmsLab = 1
 	jr z, .okay
 	bcpixel 0, 0
 

@@ -71,9 +71,7 @@ DecompressItemIconForOverworld::
 
 LoadItemIconForSummaryScreen::
 	ld hl, ItemIconPointers
-_LoadItemOrKeyItemIconForSummaryScreen:
 	call _SetupLoadItemOrKeyItemIcon
-DecompressItemIconForSummaryScreen::
 	push bc
 	call FarDecompressWRA6InB
 	call WhiteOutDecompressedItemIconCorners

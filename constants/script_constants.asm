@@ -134,7 +134,7 @@ DEF NUM_BGEVENTS EQU const_value
 DEF BGEVENT_ITEM EQU NUM_BGEVENTS
 
 ; object_event types
-; ObjectEventTypeArray indexes (see engine/overworld/events.asm)
+; TryObjectEvent.Jumptable indexes (see engine/overworld/events.asm)
 	const_def
 	const OBJECTTYPE_SCRIPT
 	const OBJECTTYPE_ITEMBALL

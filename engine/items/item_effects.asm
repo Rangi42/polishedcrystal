@@ -8,7 +8,7 @@ _DoItemEffect::
 	ld a, [wCurItem]
 	call StackJumpTable
 
-ItemEffects:
+.ItemEffects:
 ; entries correspond to item ids (see constants/item_constants.asm)
 	table_width 2
 	dw PokeBallEffect     ; PARK_BALL
@@ -279,7 +279,7 @@ DoKeyItemEffect::
 	dec a
 	call StackJumpTable
 
-KeyItemEffects:
+.KeyItemEffects:
 ; entries correspond to key item ids (see constants/item_constants.asm)
 	table_width 2
 	dw BikeFunction       ; BICYCLE
@@ -816,12 +816,20 @@ EvoStoneEffect:
 	ld a, MON_ITEM
 	call GetPartyParamLocationAndValue
 	cp EVERSTONE
-	jr z, .no_effect
+	jmp z, WontHaveAnyEffectMessage
 
 .force_evolution
 	ld a, PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
-	ld a, $1
+
+	; Linking Cord forces a trade evolution.
+	ld a, [wCurItem]
+	cp LINKING_CORD
+	ld a, EVOLVE_TRADE
+	jr z, InduceEvolutionWithItem
+	ld a, EVOLVE_ITEM
+	; fallthrough
+InduceEvolutionWithItem:
 	ld [wForceEvolution], a
 	farcall EvolvePokemon
 
@@ -1007,8 +1015,15 @@ RareCandy:
 	ld a, MON_LEVEL
 	call GetPartyParamLocationAndValue
 	cp MAX_LEVEL
-	jmp nc, EvoStoneEffect.force_evolution
+	jr c, .not_max_level
 
+	; This evolution check isn't limited to level-based evolution, but covers
+	; everything that can be induced by a level up. And we want to force the
+	; evolution!
+	ld a, EVOLVE_LEVEL
+	jmp InduceEvolutionWithItem
+
+.not_max_level
 	inc a
 	ld [hl], a
 	ld [wCurPartyLevel], a
@@ -2980,7 +2995,6 @@ Ball_MonCantBeCaughtMessage:
 ItemWasntUsedMessage:
 	; Item wasn't used.
 	call PrintText
-_ItemWasntUsedMessage:
 	ld a, $2
 	ld [wItemEffectSucceeded], a
 	ret

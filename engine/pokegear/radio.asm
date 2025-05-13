@@ -19,7 +19,7 @@ PlayRadioShow:
 	ld a, [wCurRadioLine]
 	call StackJumpTable
 
-RadioJumptable:
+.Jumptable:
 ; entries correspond to constants/radio_constants.asm
 	table_width 2
 	dw OaksPkmnTalk1  ; $00
@@ -134,17 +134,13 @@ PrintRadioLine:
 	cp 2
 	jr nc, .print
 	inc hl
-	ld [hl], "<START>"
 	inc a
 	ld [wNumRadioLinesPrinted], a
 	cp 2
 	jr nz, .print
-	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
-	call PlaceWholeStringInBoxAtOnce
-	jr .skip
+	dec hl
 .print
 	call PrintTextboxText
-.skip
 	ld a, RADIO_SCROLL
 	ld [wCurRadioLine], a
 	ld a, 100
@@ -162,7 +158,7 @@ RadioScroll:
 	ld a, [wNextRadioLine]
 	ld [wCurRadioLine], a
 	ld a, [wNumRadioLinesPrinted]
-	cp 1
+	dec a
 	call nz, CopyBottomLineToTopLine
 	jmp ClearBottomLine
 
@@ -744,24 +740,22 @@ CopyDexEntry:
 CopyDexEntryParts:
 	push af
 	push hl
-	ld de, wPokedexShowPointerBank
+	ld de, wPokedexShowNextLine+1
 	ld bc, SCREEN_WIDTH - 1
 	call FarCopyBytes
-	ld hl, wPokedexShowPointerAddr
-	ld a, "<START>"
-	ld [hli], a
-	ld a, "<LINE>"
-	ld [hli], a
+	ld hl, wPokedexShowNextLine
+	push hl
+	ld [hl], "<LINE>"
 	ld d, BANK(@)
-	call .CopyLine
+	call .GetTerminator
 	dec hl
 	ld [hl], "<DONE>"
-	ld hl, wPokedexShowPointerAddr
+	pop hl
 	call CopyRadioTextToRAM
 	pop hl
 	pop af
 	ld d, a
-	call .CopyLine
+	call .GetTerminator
 	ld a, l
 	ld [wPokedexShowPointerAddr], a
 	ld a, h
@@ -770,7 +764,7 @@ CopyDexEntryParts:
 	ld [wPokedexShowPointerBank], a
 	ret
 
-.CopyLine:
+.GetTerminator:
 	ld a, d
 	call GetFarByte
 	inc hl
@@ -778,7 +772,7 @@ CopyDexEntryParts:
 	ret z
 	cp "<NEXT>"
 	ret z
-	jr .CopyLine
+	jr .GetTerminator
 
 PokedexShowText:
 	; @ @

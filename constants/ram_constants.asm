@@ -30,7 +30,7 @@ DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 	const STEREO         ; 6
 	const BATTLE_EFFECTS ; 7
 DEF TEXT_DELAY_MASK    EQU %00011
-; CheckAutoscroll relies on exact bit usage and order
+; JoyCheckTextAdvance relies on exact bit usage and order
 DEF AUTOSCROLL_MASK    EQU %01100
 DEF AUTOSCROLL_NONE    EQU %00000
 DEF AUTOSCROLL_START   EQU %00100
@@ -39,10 +39,10 @@ DEF AUTOSCROLL_AORB    EQU %01100
 DEF TURNING_SPEED_MASK EQU %10000
 
 	const_def
-	const INST_TEXT ; %00
-	const FAST_TEXT ; %01
-	const MED_TEXT  ; %10
-	const SLOW_TEXT ; %11
+	const SLOW_TEXT ; %00
+	const MED_TEXT ; %01
+	const FAST_TEXT  ; %10
+	const INST_TEXT ; %11
 
 ; wTextboxFrame::
 	const_def
@@ -74,6 +74,7 @@ DEF NUM_FRAMES EQU const_value
 	const TEXT_DELAY_F       ; 1
 	const NO_LINE_SPACING_F  ; 2
 	const USE_BG_MAP_WIDTH_F ; 3
+	const NEWLINE_ENEMY_F    ; 4
 
 ; wOptions2::
 	const_def 3
@@ -110,18 +111,18 @@ DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT
 DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_IVS_OPT) | (1 << PSS_OPT)
 
 ; wInitialOptions2::
-	const_def 3
+	const_def 2
+	const NO_EXP_OPT           ; 2
 	const RTC_OPT              ; 3
 	const EVOLVE_IN_BATTLE_OPT ; 4
 	const_skip 2
 	const RESET_INIT_OPTS      ; 7
-DEF EV_OPTMASK EQU %11
 
 	const_def
 	const EVS_OPT_DISABLED ; %00
 	const EVS_OPT_CLASSIC  ; %01
 	const EVS_OPT_MODERN   ; %10
-
+DEF EV_OPTMASK EQU %11
 
 ; wForgettingMove::
 	const_def 6
@@ -497,13 +498,14 @@ DEF CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
 
 ; wPlayerCaught2::
 	const_def
-	const PLAYER_CAUGHT_MEW_F               ; 0
-	const PLAYER_CAUGHT_MEWTWO_F            ; 1
-	const PLAYER_CAUGHT_CELEBI_F            ; 2
-	const PLAYER_CAUGHT_SUDOWOODO_F         ; 3
-	const PLAYER_CAUGHT_GALARIAN_ARTICUNO_F ; 4
-	const PLAYER_CAUGHT_GALARIAN_ZAPDOS_F   ; 5
-	const PLAYER_CAUGHT_GALARIAN_MOLTRES_F  ; 6
+	const PLAYER_CAUGHT_MEW_F                ; 0
+	const PLAYER_CAUGHT_MEWTWO_F             ; 1
+	const PLAYER_CAUGHT_CELEBI_F             ; 2
+	const PLAYER_CAUGHT_SUDOWOODO_F          ; 3
+	const PLAYER_CAUGHT_GALARIAN_ARTICUNO_F  ; 4
+	const PLAYER_CAUGHT_GALARIAN_ZAPDOS_F    ; 5
+	const PLAYER_CAUGHT_GALARIAN_MOLTRES_F   ; 6
+	const PLAYER_CAUGHT_BLOODMOON_URSALUNA_F ; 7
 
 DEF CAUGHT_DUO_MASK    EQU (1 << PLAYER_CAUGHT_HO_OH_F) | (1 << PLAYER_CAUGHT_LUGIA_F)
 DEF CAUGHT_BEASTS_MASK EQU (1 << PLAYER_CAUGHT_RAIKOU_F) | (1 << PLAYER_CAUGHT_ENTEI_F) | (1 << PLAYER_CAUGHT_SUICUNE_F)

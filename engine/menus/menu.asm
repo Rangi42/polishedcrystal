@@ -7,7 +7,6 @@ _2DMenu_::
 	call UpdateSprites
 	call ApplyTilemap
 
-Get2DMenuSelection:
 	call Init2DMenuCursorPosition
 	call DoMenuJoypadLoop
 	call MenuClickSound
@@ -71,7 +70,6 @@ Draw2DMenu:
 	ldh [hBGMapMode], a
 	call MenuBox
 
-Place2DMenuItemStrings:
 	ld hl, wMenuData_2DMenuItemStringsAddr
 	ld a, [hli]
 	ld d, [hl]

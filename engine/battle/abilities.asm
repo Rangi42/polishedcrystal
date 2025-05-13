@@ -551,13 +551,6 @@ ScreenCleanerAbility:
 	ld hl, BattleText_LightScreenFell
 	jmp StdBattleTextbox
 
-RunEnemyOwnTempoAbility:
-	call SwitchTurn
-	call GetTrueUserAbility
-	cp OWN_TEMPO
-	call z, OwnTempoAbility
-	jmp SwitchTurn
-
 RunEnemySynchronizeAbility:
 	call SwitchTurn
 	call GetTrueUserAbility
@@ -834,6 +827,24 @@ StaticAbility:
 AfflictStatusAbility:
 	ld b, 1
 _AfflictStatusAbility:
+	; Shield Dust+Covert Cloak will protect against attacker's status ability.
+	inc b
+	dec b
+	jr nz, .enemy_ability
+	call GetOpponentAbility
+	cp SHIELD_DUST
+	ret z
+
+	push hl
+	push bc
+	farcall GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_COVERT_CLOAK
+	pop bc
+	pop hl
+	ret z
+
+.enemy_ability
 	; Only works 30% of the time.
 	ld a, 10
 	call BattleRandomRange
@@ -1019,9 +1030,7 @@ SpeedBoostAbility:
 	ld a, [hl]
 	and a
 	ret z
-
-	; this will proc the speed-up.
-	jr MotorDriveAbility
+	jr SpeedUpAbility
 
 CompetitiveAbility:
 	ld b, $10 | SP_ATTACK
@@ -1064,6 +1073,7 @@ RattledAbility:
 	; fallthrough
 MotorDriveAbility:
 SteadfastAbility:
+SpeedUpAbility:
 	ld b, SPEED
 StatUpAbility:
 	call HasUserFainted
@@ -1507,7 +1517,7 @@ GetCappedStats:
 	or d
 	ld b, a
 	ld a, [hl]
-	cp 1
+	dec a
 	jr z, .minimized
 .maxed
 	ld a, c

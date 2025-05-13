@@ -474,7 +474,6 @@ BrickBreak:
 	checkpriority
 	critical
 	resettypematchup
-	brickbreak
 	damagestats
 	damagecalc
 	stab
@@ -483,6 +482,7 @@ BrickBreak:
 	failuretext
 	applydamage
 	criticaltext
+	brickbreak
 	supereffectivetext
 	postfainteffects
 	posthiteffects

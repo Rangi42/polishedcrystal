@@ -260,3 +260,25 @@ CheckRTCStatus::
 	call GetSRAMBank
 	ld a, [sRTCStatusFlags]
 	jmp CloseSRAM
+
+GetValueByTimeOfDay::
+; input: hl = 'db morn val, day val, eve val, nite val'
+; output: a = value corresponding to current hour
+	assert 0 < MORN_HOUR && MORN_HOUR < DAY_HOUR && DAY_HOUR < EVE_HOUR && EVE_HOUR < NITE_HOUR
+	ldh a, [hHours]
+	cp MORN_HOUR
+	jr nc, .not_early
+	ld a, NITE_HOUR
+.not_early
+	cp DAY_HOUR
+	jr c, .ok
+	inc hl
+	cp EVE_HOUR
+	jr c, .ok
+	inc hl
+	cp NITE_HOUR
+	jr c, .ok
+	inc hl
+.ok
+	ld a, [hl]
+	ret

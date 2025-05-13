@@ -135,7 +135,6 @@ TMHM_ExitPack:
 _TMHM_ExitPack:
 	ld a, $2
 	ld [wMenuJoypad], a
-TMHM_ExitPocket:
 	and a
 	ret
 

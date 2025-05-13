@@ -3238,6 +3238,10 @@ PokemaniacGroup:
 	tr_mon 37, RHYHORN
 	end_trainer
 
+	def_trainer ENZO, "Enzo"
+	tr_mon LEVEL_FROM_BADGES + 8, SHUCKLE
+	end_trainer
+
 	def_trainer MILLER, "Miller"
 	tr_mon LEVEL_FROM_BADGES + 7, NIDOKING
 	tr_mon LEVEL_FROM_BADGES + 7, NIDOQUEEN
@@ -3497,6 +3501,12 @@ endc
 	tr_mon 61, CLEFABLE
 	tr_mon 59, JIGGLYPUFF
 	tr_mon 61, WIGGLYTUFF
+	end_trainer
+
+	def_trainer "Abigail"
+	tr_mon LEVEL_FROM_BADGES + 3, SKIPLOOM
+	tr_mon LEVEL_FROM_BADGES + 4, FLAAFFY
+	tr_mon LEVEL_FROM_BADGES + 5, GOLDUCK
 	end_trainer
 
 	def_trainer LAYLA, "Layla"

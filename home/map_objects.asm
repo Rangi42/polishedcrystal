@@ -136,7 +136,8 @@ CheckObjectTime::
 
 _CopyObjectStruct::
 	ldh [hMapObjectIndexBuffer], a
-	call UnmaskObject
+	call GetObjectMask
+	ld [hl], 0 ; unmasked
 	ldh a, [hMapObjectIndexBuffer]
 	call GetMapObject
 	farjp CopyObjectStruct

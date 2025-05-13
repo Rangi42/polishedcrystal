@@ -317,13 +317,20 @@ UnownPuzzle_A:
 	ld de, SFX_1ST_PLACE
 	call PlaySFX
 	call WaitSFX
-	call SimpleWaitPressAorB
+	call UnownPuzzle_WaitPressAorB
 	ld a, TRUE
 	ld [wSolvedUnownPuzzle], a
 UnownPuzzle_Quit:
 	ld hl, wJumptableIndex
 	set 7, [hl]
 	ret
+
+UnownPuzzle_WaitPressAorB:
+.loop
+	call CheckIfAOrBPressed
+	ret nz
+	call DelayFrame
+	jr .loop
 
 UnownPuzzle_InvalidAction:
 	ld de, SFX_WRONG

@@ -287,8 +287,6 @@ GetYesNoBoxPosition:
 NoYesBox:
 ; Returns c (no) or nc (yes). Doesn't mess with menu cursor.
 	call GetYesNoBoxPosition
-	; fallthrough
-PlaceNoYesBox:
 	ld hl, NoYesMenuDataHeader
 	call HandleYesNoMenu
 	ret c

@@ -54,19 +54,13 @@ SpeechTextbox::
 	hlcoord TEXTBOX_X, TEXTBOX_Y
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
 Textbox::
-; Draw a text box at hl with room for
-; b lines of c characters each.
-; Places a border around the textbox,
-; then switches the palette to the
-; text black-and-white scheme.
+; Draw a text box at hl with room for b lines of c characters each.
+; Places a border around the textbox, then switches the palette to 7.
 	push bc
 	push hl
 	call TextboxBorder
 	pop hl
 	pop bc
-	; fallthrough
-TextboxPalette::
-; Fill text box width c height b at hl with pal 7
 	ld de, wAttrmap - wTilemap
 	add hl, de
 	inc b
@@ -393,7 +387,12 @@ PlaceEnemysName::
 	rst PlaceString
 	ld h, b
 	ld l, c
+	ld a, [wTextboxFlags]
+	bit NEWLINE_ENEMY_F, a
 	ld de, SpaceText
+	jr z, .no_wordwrap
+	ld de, ContChar
+.no_wordwrap
 	rst PlaceString
 	push bc
 	farcall Battle_GetTrainerName
@@ -407,6 +406,9 @@ PlaceCommandCharacter::
 	ld l, c
 	pop de
 	jmp NextChar
+
+ContChar:
+	db "<CONT>@"
 
 TextCommand_PLURAL:
 ; Pluralize the last word. Might perform edits on it (Candy -> Candies).
@@ -454,7 +456,7 @@ TextCommand_PLURAL:
 	ld h, b
 	ld l, c
 	pop bc
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -841,15 +843,16 @@ DecompressString::
 
 DecompressStringToRAM::
 ; input: hl = string, de = destination
-
+.outer_loop
 	ld a, [hl]
 	cp "<CTXT>"
 	jr nz, .copy_loop
 
 	inc hl ; skip "<CTXT>"
 
+.do_decompression
 	ld b, 1 ; start with no bits to read a byte right away
-.character_loop
+.decompress_loop
 
 	push de
 	call ReadHuffmanChar
@@ -862,10 +865,12 @@ DecompressStringToRAM::
 	; Store decompressed char to WRAM and advance
 	ld [de], a
 	inc de
-	jr .character_loop
+	jr .decompress_loop
 
 .copy_loop
 	ld a, [hli]
+	cp "<CTXT>"
+	jr z, .do_decompression
 	call CheckTerminatorChar
 	jr z, .append_terminator
 	ld [de], a
@@ -873,6 +878,9 @@ DecompressStringToRAM::
 	jr .copy_loop
 
 .append_terminator
+	; to maintain generic usage, this function will return on
+	; any terminator encountered. it is up to the caller to decide
+	; what to do with the given terminator returned in a
 	ld [de], a
 	ret
 

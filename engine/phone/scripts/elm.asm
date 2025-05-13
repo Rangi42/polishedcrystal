@@ -80,6 +80,7 @@ ElmPhoneScript_EvolutionMethodsTable:
 	dw .EvolveNone
 	dw .EvolveLevel
 	dw .EvolveItem
+	dw .EvolveTrade
 	dw .EvolveHolding
 	dw .EvolveHappiness
 	dw .EvolveStat
@@ -112,6 +113,14 @@ ElmPhoneScript_EvolutionMethodsTable:
 	end
 .EvolveItem:
 	farwritetext ElmPhoneEvoText_Item
+	end
+.EvolveTrade:
+	readmem wStringBuffer5
+	ifequalfwd LINKING_CORD, .EvolveTradeNoItem
+	farwritetext ElmPhoneEvoText_TradeWithItem
+	end
+.EvolveTradeNoItem:
+	farwritetext ElmPhoneEvoText_TradeNoItem
 	end
 .EvolveHolding:
 	readmem wStringBuffer5

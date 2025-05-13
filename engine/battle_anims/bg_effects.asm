@@ -71,7 +71,7 @@ DoBattleBGEffectFunction:
 	ld a, [hl]
 	call StackJumpTable
 
-BattleBGEffects:
+.BattleBGEffects:
 	dw BattleBGEffect_End
 	dw BattleBGEffect_FlashInverted
 	dw BattleBGEffect_FlashWhite
@@ -1175,8 +1175,8 @@ BattleBGEffect_AcidArmor:
 	ldh a, [hLYOverrideEnd]
 	ld l, a
 	ld a, [hl]
-	cp $1
-	jr c, .okay
+	and a
+	jr z, .okay
 	cp $90
 	jr z, .okay
 	ld [hl], $0

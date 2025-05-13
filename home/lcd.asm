@@ -62,9 +62,6 @@ LCDMusicPlayer::
 	pop af
 	reti
 
-PUSHS
-SECTION "LCD Summary Screen", ROM0
-
 LCDSummaryScreenHideWindow::
 	ldh a, [rSTAT]
 	bit rSTAT_LYC_CMP, a
@@ -91,9 +88,8 @@ LCDSummaryScreenScrollBackground::
 	ldh a, [rSCY]
 	add 4
 	ldh [rSCY], a
-	jr LCDSummaryScreenProgress
+	; fallthrough
 
-LCDSummaryScreen::
 LCDSummaryScreenProgress::
 	push hl
 	push bc
@@ -143,9 +139,6 @@ LCDSummaryScreenProgress::
 LCDSummaryScreenDone::
 	pop af
 	reti
-
-POPS
-
 
 DisableLCD::
 ; Turn the LCD off

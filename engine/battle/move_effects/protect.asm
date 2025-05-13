@@ -1,6 +1,6 @@
 BattleCommand_protect:
 	call ProtectChance
-	ret c
+	ret nz
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
@@ -12,6 +12,7 @@ BattleCommand_protect:
 	jmp StdBattleTextbox
 
 ProtectChance:
+; Returns nz upon failure.
 	ldh a, [hBattleTurn]
 	and a
 	ld de, wPlayerProtectCount
@@ -21,46 +22,26 @@ ProtectChance:
 	call CheckOpponentWentFirst
 	jr nz, .failed
 
-; Halve the chance of a successful Protect for each consecutive use.
-
-	ld b, $ff
-	ld a, [de]
-	ld c, a
-.loop
-	ld a, c
-	and a
-	jr z, .done
-	dec c
-
-	srl b
-	ld a, b
-	and a
-	jr nz, .loop
-	jr .failed
-.done
-
-.rand
-	call BattleRandom
-	and a
-	jr z, .rand
-
-	dec a
-	cp b
-	jr nc, .failed
-
-; Another consecutive Protect use.
-
+	; Cumulative 1/3 chance of success per successive use.
 	ld a, [de]
 	inc a
+	cp 7
+	jr z, .no_overflow
 	ld [de], a
-
+.no_overflow
+	ld c, a
+.loop
+	dec c
+	ret z
+	ld a, 3
+	call BattleRandomRange
 	and a
-	ret
+	jr z, .loop
 
 .failed
 	xor a
 	ld [de], a
 	call AnimateFailedMove
 	call PrintButItFailed
-	scf
+	or 1
 	ret

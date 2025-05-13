@@ -1122,7 +1122,7 @@ BattleAnim_Thunder:
 BattleAnim_AirSlash:
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_WHIP
 	anim_resetobp0
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $0a, $2, $0
 	anim_sound 0, 1, SFX_CUT
 	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 152, 40, $0
@@ -1142,7 +1142,7 @@ BattleAnim_AirSlash:
 
 BattleAnim_Sonicboom:
 	anim_2gfx ANIM_GFX_WHIP, ANIM_GFX_HIT
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_sound 3, 0, SFX_RAZOR_WIND
 	anim_obj ANIM_OBJ_SONICBOOM_JP, 64, 80, $3
 	anim_wait 8
@@ -1390,7 +1390,7 @@ BattleAnim_AuroraBeam:
 BattleAnim_DragonPulse:
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_DRAGON_PULSE
 	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_DRAGON_PULSE
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_2gfx ANIM_GFX_GLOW, ANIM_GFX_CHARGE,
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $1, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
@@ -2034,7 +2034,7 @@ BattleAnim_Dig:
 
 BattleAnim_StringShot:
 	anim_1gfx ANIM_GFX_WEB
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_sound 6, 2, SFX_MENU
 	anim_obj ANIM_OBJ_STRING_SHOT,   8, 0,  10, 0, $0
 	anim_wait 4
@@ -3901,7 +3901,7 @@ BattleAnim_IceShard:
 
 BattleAnim_Protect:
 	anim_1gfx ANIM_GFX_OBJECTS
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_obj ANIM_OBJ_PROTECT,  10, 0,  10, 0, $0
 	anim_obj ANIM_OBJ_PROTECT,  10, 0,  10, 0, $d
 	anim_obj ANIM_OBJ_PROTECT,  10, 0,  10, 0, $1a
@@ -3956,7 +3956,7 @@ BattleAnim_FeintAttack:
 
 BattleAnim_SweetKiss:
 	anim_2gfx ANIM_GFX_OBJECTS, ANIM_GFX_ANGELS
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_obj ANIM_OBJ_SWEET_KISS,  12, 0,   5, 0, $0
 	anim_sound 0, 1, SFX_SWEET_KISS
 	anim_wait 32
@@ -4484,7 +4484,7 @@ BattleAnim_Endure:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 .loop
 	anim_call BattleAnimSub_Focus
 	anim_loop 5, .loop
@@ -5369,7 +5369,7 @@ BattleAnim_HiddenPower:
 	anim_1gfx ANIM_GFX_CHARGE
 	anim_call BattleAnim_TargetObj_1Row
 	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_obj ANIM_OBJ_HIDDEN_POWER,   5, 4,  11, 0, $0
 	anim_obj ANIM_OBJ_HIDDEN_POWER,   5, 4,  11, 0, $8
 	anim_obj ANIM_OBJ_HIDDEN_POWER,   5, 4,  11, 0, $10
@@ -5946,7 +5946,7 @@ BattleAnimSub_SandOrMud:
 	anim_wait 32
 	anim_ret
 
-BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2:
+BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0:
 	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_ret
 
@@ -6007,7 +6007,7 @@ BattleAnim_GyroBall:
 	anim_1gfx ANIM_GFX_GYRO_BALL
 	anim_battlergfx_2row
 	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING, $0, $1, $40
-	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 	anim_setbgpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_GRAY
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BRIGHT
 	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_BRIGHT
@@ -6255,36 +6255,7 @@ BattleAnim_Trick:
 	anim_ret
 
 BattleAnim_StatUp:
-	anim_1gfx ANIM_GFX_STATS
-	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
-	anim_jumpif DEFENSE, .defense
-	anim_jumpif SP_ATTACK, .sp_atk
-	anim_jumpif SP_DEFENSE, .sp_def
-	anim_jumpif SPEED, .speed
-	anim_jumpif ACCURACY, .accuracy
-	anim_jumpif EVASION, .evasion
-.attack
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ATTACK
-	anim_jump .continue
-.defense
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_DEFENSE
-	anim_jump .continue
-.sp_atk
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_ATTACK
-	anim_jump .continue
-.sp_def
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SP_DEFENSE
-	anim_jump .continue
-.speed
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_SPEED
-	anim_jump .continue
-.accuracy
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_ACCURACY
-	anim_jump .continue
-.evasion
-	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_EVASION
-.continue
-	anim_obp0 $30
+	anim_call BattleAnimSub_StatChange
 .loop
 	anim_sound 0, 0, SFX_STAT_UP
 	anim_obj ANIM_OBJ_STAT_UP, 44, 107, $30
@@ -6295,6 +6266,17 @@ BattleAnim_StatUp:
 	anim_ret
 
 BattleAnim_StatDown:
+	anim_call BattleAnimSub_StatChange
+.loop
+	anim_sound 0, 0, SFX_STAT_DOWN
+	anim_obj ANIM_OBJ_STAT_DOWN, 44, 56, $10
+	anim_wait 12
+	anim_statloop .loop
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
+	anim_ret
+
+BattleAnimSub_StatChange:
 	anim_1gfx ANIM_GFX_STATS
 	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
 	anim_jumpif DEFENSE, .defense
@@ -6325,13 +6307,6 @@ BattleAnim_StatDown:
 	anim_setobjpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_EVASION
 .continue
 	anim_obp0 $30
-.loop
-	anim_sound 0, 0, SFX_STAT_DOWN
-	anim_obj ANIM_OBJ_STAT_DOWN, 44, 56, $10
-	anim_wait 12
-	anim_statloop .loop
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING
 	anim_ret
 
 ; ================================
@@ -6554,7 +6529,7 @@ BattleAnim_StatDown:
 
 ;BattleAnim_SpiderWeb: ; removed
 ;	anim_1gfx ANIM_GFX_WEB
-;	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+;	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 ;	anim_obj ANIM_OBJ_SPIDER_WEB, -16, 4,   6, 0, $0
 ;	anim_sound 6, 2, SFX_SPIDER_WEB
 ;	anim_obj ANIM_OBJ_STRING_SHOT,   8, 0,  10, 0, $0
@@ -6650,7 +6625,7 @@ BattleAnim_StatDown:
 
 ;BattleAnim_LovelyKiss: ; removed
 ;	anim_2gfx ANIM_GFX_OBJECTS, ANIM_GFX_ANGELS
-;	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_$2
+;	anim_call BattleAnimSub_BGCycleOBPalsGrayAndYellow_0_2_0
 ;	anim_obj ANIM_OBJ_LOVELY_KISS, -13, 0,   5, 0, $0
 ;	anim_wait 32
 ;	anim_sound 0, 1, SFX_LICK

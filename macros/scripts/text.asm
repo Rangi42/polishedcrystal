@@ -154,12 +154,12 @@ MACRO _dtxt
 		rept _NARG
 			DEF _str EQUS \1
 			rept $7fff_ffff
-				if !STRLEN("{_str}")
+				if !STRLEN(#_str)
 					break
 				endc
-				DEF _sub EQUS CHARSUB("{_str}", 1)
-				REDEF _str EQUS STRSUB("{_str}", STRLEN("{_sub}") + 1)
-				_dchr "{_sub}"
+				DEF _sub EQUS STRCHAR(#_str, 0)
+				REDEF _str EQUS STRSLICE(#_str, STRLEN(#_sub), STRLEN(#_str))
+				_dchr #_sub
 				PURGE _sub
 			endr
 			PURGE _str

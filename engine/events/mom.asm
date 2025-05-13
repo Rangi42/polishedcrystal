@@ -94,11 +94,11 @@ Special_BankOfMom:
 	call CloseWindow
 	jr c, .cancel
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a ; 1?
 	jr z, .withdraw
-	cp $2
+	dec a ; 2?
 	jr z, .deposit
-	cp $3
+	dec a ; 3?
 	jr z, .stopsaving
 
 .cancel

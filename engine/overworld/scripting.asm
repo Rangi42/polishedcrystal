@@ -53,7 +53,7 @@ RunScriptCommand:
 	call GetScriptByte
 	call StackJumpTable
 
-ScriptCommandTable:
+.Jumptable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
 	table_width 2
 	dw Script_scall                      ; 00
@@ -622,10 +622,7 @@ Script_verbosegiveitemvar:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	; a = carry ? TRUE : FALSE
-	sbc a
-	and TRUE
-	ldh [hScriptVar], a
+	call ScriptReturnCarry
 	call GetCurItemName
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
@@ -887,11 +884,11 @@ Script_cry:
 	; species, the second ext+form.
 	call GetScriptByte
 	call GetCurPartyMonSpeciesIfZero
-	jmp z, PlayCry
+	jmp z, PlayMonCry
 	ld c, a
 	call GetScriptByte
 	ld b, a
-	jmp PlayCry
+	jmp PlayMonCry
 
 Script_setlasttalked:
 	call GetScriptByte
@@ -1780,7 +1777,7 @@ Script_giveitem:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	jr _ItemResult
+	jr ScriptReturnCarry
 
 Script_takeitem:
 	call GetScriptByte
@@ -1795,7 +1792,7 @@ Script_takeitem:
 	ld [wCurItemQuantity], a
 	ld hl, wNumItems
 	call TossItem
-	jr _ItemResult
+	jr ScriptReturnCarry
 
 Script_checkitem:
 	xor a
@@ -1804,12 +1801,65 @@ Script_checkitem:
 	ld [wCurItem], a
 	ld hl, wNumItems
 	call CheckItem
-_ItemResult:
+ScriptReturnCarry:
 	; a = carry ? TRUE : FALSE
 	sbc a
 	and TRUE
 	ldh [hScriptVar], a
 	ret
+
+Script_givekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call ReceiveKeyItem
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+Script_checkkeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call CheckKeyItem
+	jr ScriptReturnCarry
+
+Script_takekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call TossKeyItem
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+Script_verbosegivekeyitem:
+	call Script_givekeyitem
+	call GetCurKeyItemName
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveKeyItemScript)
+	ld de, GiveKeyItemScript
+	jmp ScriptCall
+
+GiveKeyItemScript:
+	farwritetext _GainedItemText
+	special ShowKeyItemIcon
+	playsound SFX_KEY_ITEM
+	waitsfx
+	waitbutton
+	keyitemnotify
+	end
+
+Script_keyitemnotify:
+	call GetKeyItemPocketName
+	call GetCurKeyItemName
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
+	call MapTextbox
+	; The key item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_givemoney:
 	call GetMoneyAccount
@@ -2513,7 +2563,7 @@ Script_loadgrottomon:
 	ld a, b
 	ld [wWildMonForm], a
 	ld [wCurForm], a
-	call PlayCry
+	call PlayMonCry
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a
 	farcall SetBadgeBaseLevel
@@ -2556,63 +2606,6 @@ Script_paintingpic:
 	call GetScriptByte
 	ld [wTrainerClass], a
 	farjp Paintingpic
-
-Script_givekeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call ReceiveKeyItem
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_checkkeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call CheckKeyItem
-	; a = carry ? TRUE : FALSE
-	sbc a
-	and TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_takekeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call TossKeyItem
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_verbosegivekeyitem:
-	call Script_givekeyitem
-	call GetCurKeyItemName
-	ld a, STRING_BUFFER_4
-	call CopyConvertedText
-	ld b, BANK(GiveKeyItemScript)
-	ld de, GiveKeyItemScript
-	jmp ScriptCall
-
-GiveKeyItemScript:
-	farwritetext _GainedItemText
-	special ShowKeyItemIcon
-	playsound SFX_KEY_ITEM
-	waitsfx
-	waitbutton
-	keyitemnotify
-	end
-
-Script_keyitemnotify:
-	call GetKeyItemPocketName
-	call GetCurKeyItemName
-	ld b, BANK(_PutItemInPocketText)
-	ld hl, _PutItemInPocketText
-	call MapTextbox
-	; The key item icon overwrites nine font tiles, including
-	; the "▶" needed by the right cursor arrow.
-	farjp LoadFonts_NoOAMUpdate
 
 Script_setmapobjectmovedata:
 	call GetScriptByte
@@ -2764,6 +2757,8 @@ Pluralize:
 	ld c, l
 	dec bc
 	call TextCommand_PLURAL
+	ld a, "@"
+	ld [bc], a
 	pop af
 	pop hl
 	ld [hl], a

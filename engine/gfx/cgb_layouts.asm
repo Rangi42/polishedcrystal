@@ -4,9 +4,6 @@ LoadCGBLayout::
 	jr nz, .not_ram
 	ld a, [wMemCGBLayout]
 .not_ram
-	assert CGB_PARTY_MENU_HP_PALS == NUM_CGB_LAYOUTS - 1
-	cp CGB_PARTY_MENU_HP_PALS
-	jmp z, ApplyPartyMenuHPPals
 	cp CGB_MAPPALS
 	call nz, ResetBGPals
 	dec a
@@ -41,10 +38,11 @@ LoadCGBLayout::
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
 	dw _CGB_NamingScreen
-	dw _CGB_Mail
+	dw _CGB_WriteMail
+	dw _CGB_ReadMail
 	dw _CGB_FlyMap
 	dw _CGB_NewDiploma
-	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
+	assert_table_length NUM_CGB_LAYOUTS - 1 ; discount CGB_RAM
 
 _CGB_BattleGrayscale:
 	push bc
@@ -593,9 +591,7 @@ _CGB_NamingScreen:
 
 	jmp ApplyAttrMap
 
-_CGB_Mail:
-	ld a, [wCurItem]
-	sub FIRST_MAIL
+_CGB_WriteMail:
 	call LoadMailPalettes
 
 	ldh a, [rSVBK]
@@ -664,6 +660,29 @@ FillNamingScreenTextBoxes:
 	hlcoord 1, 1, wAttrmap
 	lb bc, 4, SCREEN_WIDTH - 2
 	jmp FillBoxWithByte
+
+_CGB_ReadMail:
+	call LoadMailPalettes
+	call ApplyPals
+	call WipeAttrMap
+	jmp ApplyAttrMap
+
+LoadMailPalettes:
+	ld a, [wCurItem]
+	sub FIRST_MAIL
+	add a
+	add a
+	add a
+	add LOW(MailPals)
+	ld l, a
+	adc HIGH(MailPals)
+	sub l
+	ld h, a
+	ld de, wBGPals1
+	jmp LoadOnePalette
+
+MailPals:
+INCLUDE "gfx/mail/mail.pal"
 
 _CGB_MapPals:
 	call LoadMapPals

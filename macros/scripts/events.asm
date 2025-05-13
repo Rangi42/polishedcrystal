@@ -1,4 +1,4 @@
-; ScriptCommandTable indexes (see engine/overworld/scripting.asm)
+; RunScriptCommand.Jumptable indexes (see engine/overworld/scripting.asm)
 	const_def
 
 	const scall_command

@@ -90,6 +90,9 @@ CheckHowToEvolve:
 	dec a
 	ld b, a
 
+	cp EVOLVE_TRADE
+	jr z, .trade
+
 	ld a, [wLinkMode]
 	and a
 	jmp nz, .dont_evolve_2
@@ -99,8 +102,9 @@ CheckHowToEvolve:
 	jmp z, .item
 
 	ld a, [wForceEvolution]
-	and a
-	jmp nz, .dont_evolve_2
+	assert EVOLVE_LEVEL == 1
+	cp EVOLVE_LEVEL + 1
+	jmp nc, .dont_evolve_2
 
 	ld a, b
 	cp EVOLVE_CRIT
@@ -145,6 +149,24 @@ CheckHowToEvolve:
 	swap a ; a = def
 	cp c ; set carry if atk > def
 	jr .stat_cmp_done
+
+.trade
+	; In modern vanilla, Kadabra evolves anyway. While this is cute, it can
+	; cause problems if a player want to keep the Kadabra upon trade. So don't
+	; let Kadabra bypass Everstone (Maybe in Faithful?)
+	call IsMonHoldingEverstone
+	jmp z, .dont_evolve_2
+
+	; Linking Cord isn't held, it's used as an evo stone.
+	ld a, [hli]
+	ld b, a
+	cp LINKING_CORD
+	jmp nz, .check_held_item
+
+	ld a, [wForceEvolution]
+	cp EVOLVE_TRADE
+	jmp nz, .dont_evolve_3
+	jmp .proceed
 
 .evs_enabled
 	ld hl, wTempMonAttack
@@ -261,22 +283,22 @@ CheckHowToEvolve:
 .holding
 	ld a, [hli]
 	ld b, a
-	ld a, [wTempMonItem]
-	cp b
-	jmp nz, .dont_evolve_2
 	ld a, [hli]
 	cp TR_ANYTIME
-	jr z, .ok
+	jr z, .check_held_item
 	cp TR_MORNDAY
 	ld a, [wTimeOfDay]
 	jr z, .holding_daylight
 	cp NITE
 	jmp c, .dont_evolve_3
-	jr .ok
+	jr .check_held_item
 .holding_daylight
 	cp NITE
 	jmp nc, .dont_evolve_3
-.ok
+.check_held_item
+	ld a, [wTempMonItem]
+	cp b
+	jmp nz, .dont_evolve_3
 	xor a
 	ld [wTempMonItem], a
 	jr .proceed
@@ -559,27 +581,47 @@ LearnEvolutionMove:
 	ld a, [wCurForm]
 	ld b, a
 	; bc = index
+	push bc
 	call GetSpeciesAndFormIndex
 	ld hl, EvolutionMoves
 	add hl, bc
 	ld a, [hl]
 	and a
-	ret z
+	jr z, .pop_bc_and_ret
 
 	ld d, a
-	ld hl, wPartyMon1Moves
-	ld a, [wCurPartyMon]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld a, MON_MOVES
+	call GetPartyParamLocationAndValue
 
 	ld b, NUM_MOVES
-.check_move
+.check_cur_moves
 	ld a, [hli]
 	cp d
-	ret z
+	jr z, .pop_bc_and_ret
 	dec b
-	jr nz, .check_move
+	jr nz, .check_cur_moves
 
+	; don't teach move already learned at this level
+	pop bc
+	call GetEvosAttacksPointer
+.skip_evos
+	ld a, [hli]
+	inc a
+	jr nz, .skip_evos
+
+.check_level_moves
+	ld a, [hli]
+	ld b, a
+	ld a, [wCurPartyLevel]
+	cp b
+	ld a, [hli]
+	jr c, .ok
+	jr nz, .check_level_moves
+	cp d
+	jr nz, .check_level_moves
+	ret
+
+.ok
 	ld a, d
 	ld [wPutativeTMHMMove], a
 	ld [wNamedObjectIndex], a
@@ -591,6 +633,10 @@ LearnEvolutionMove:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
+	ret
+
+.pop_bc_and_ret
+	pop bc
 	ret
 
 LearnLevelMoves:
@@ -802,6 +848,8 @@ GetEvolutionData:
 	ld a, [hli] ; evolution method
 	cp EVOLVE_ITEM
 	jr z, .get_item_name
+	cp EVOLVE_TRADE
+	jr z, .get_trade_item
 	cp EVOLVE_HOLDING
 	jr z, .get_item_name_and_time
 	cp EVOLVE_LOCATION
@@ -814,6 +862,11 @@ GetEvolutionData:
 	pop af
 	ret
 
+.get_trade_item:
+	; Copy item constant to wStringBuffer5 so we can check it later.
+	ld a, [hl]
+	ld [wStringBuffer5], a
+	jr .get_item_name
 .get_item_name_and_time:
 	inc hl
 	ld a, [hld] ; parameter 2 (time)
@@ -839,7 +892,7 @@ GetEvolutionData:
 	ld a, [hli] ; parameter 1 low (species)
 	ld e, a
 	ld a, [hl] ; parameter 1 high (ext species/form)
-	ld hl, wNamedObjectIndex
+	ld hl, wNamedObjectIndex+1
 	ld [hld], a
 	ld [hl], e
 	call GetPokemonName

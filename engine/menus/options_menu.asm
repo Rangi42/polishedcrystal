@@ -167,17 +167,17 @@ Options_TextSpeed:
 	ret
 
 .Strings:
-	dw .Instant
-	dw .Fast
-	dw .Medium
 	dw .Slow
+	dw .Medium
+	dw .Fast
+	dw .Instant
 
-.Fast:
-	db "Fast   @"
-.Medium:
-	db "Medium @"
 .Slow:
 	db "Slow   @"
+.Medium:
+	db "Medium @"
+.Fast:
+	db "Fast   @"
 .Instant:
 	db "Instant@"
 

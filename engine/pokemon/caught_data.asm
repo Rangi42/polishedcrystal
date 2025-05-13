@@ -164,11 +164,6 @@ SetBoxMonCaughtData:
 	call SetBoxmonOrEggmonCaughtData
 	farjp UpdateStorageBoxMonFromTemp
 
-SetGiftBoxMonCaughtData:
-	ld hl, wTempMonCaughtData
-	call SetGiftMonCaughtData
-	farjp UpdateStorageBoxMonFromTemp
-
 SetGiftPartyMonCaughtData:
 	ld a, [wPartyCount]
 	dec a

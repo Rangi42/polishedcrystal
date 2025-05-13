@@ -246,9 +246,9 @@ StandardMart:
 	call VerticalMenu
 	jr c, .quit
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a ; 1?
 	jr z, .buy
-	cp $2
+	dec a ; 2?
 	jr z, .sell
 .quit
 	ld a, $4 ;  Come again!
@@ -585,9 +585,9 @@ MartAskPurchaseQuantity:
 	inc hl
 	inc hl
 	ld a, [hl]
-	and a
+	and a ; 0?
 	jmp z, StandardMartAskPurchaseQuantity
-	cp 1
+	dec a ; 1?
 	jmp z, BargainShopAskPurchaseQuantity
 	jmp RooftopSaleAskPurchaseQuantity
 
@@ -1364,7 +1364,7 @@ Text_AdventurerMart_HowMany:
 Text_InformalMart_HowMany:
 Text_BazaarMart_HowMany:
 	; How many?
-	text_far _PharmacyHowManyText
+	text_far _HowManyText
 	text_end
 
 Text_Pharmacy_CostsThisMuch:

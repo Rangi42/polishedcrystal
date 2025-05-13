@@ -517,7 +517,7 @@ ApplyAbilityEffectsOnEncounterMon:
 	rrca
 	ret c
 	ld a, c
-	cp 100
+	cp MAX_LEVEL
 	ret nc
 	inc c
 	ret
