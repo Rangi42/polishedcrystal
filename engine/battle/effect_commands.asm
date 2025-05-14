@@ -2311,9 +2311,6 @@ BattleCommand_effectchance:
 	xor a
 	ld [wEffectFailed], a
 	call CheckSubHit
-	push af
-	call ResetSubHit
-	pop af
 	jr nz, EffectChanceFailed
 
 	call GetOpponentAbilityAfterMoldBreaker
