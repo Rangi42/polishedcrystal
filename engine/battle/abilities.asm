@@ -811,6 +811,8 @@ PoisonTouchAbility:
 	; Poison Touch is the same as an opposing Poison Point, and since
 	; abilities always run from the ability user's POV...
 	; Doesn't apply when opponent has a Substitute up...
+	farcall CheckSubHit
+	ret nz
 	ld b, 0
 	jr DoPoisonAbility
 PoisonPointAbility:
