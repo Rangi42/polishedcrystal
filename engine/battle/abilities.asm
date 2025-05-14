@@ -419,28 +419,20 @@ ForewarnAbility:
 	ld a, [hli]
 	and a
 	jr z, .done
-	push af
-	push hl
+
 	; Check for special cases
-	ld hl, DynamicPowerMoves
-	call IsInByteArray
+	ld b, a
+	push hl
+	farcall GetMoveEffect
 	pop hl
-	pop bc
-	jr nc, .not_special
-	; Counter/Mirror Coat are regarded as 160BP moves, everything else as 80BP
-	ld c, 160
-	cp COUNTER
+	ld c, 120
+	cp EFFECT_COUNTER
 	jr z, .compare_power
-	cp MIRROR_COAT
-	jr z, .compare_power
-	ld c, 80
-	jr .compare_power
 .not_special
 	ld a, b
-	dec a
 	push hl
 	ld hl, Moves + MOVE_POWER
-	call GetMoveAttr
+	call GetMoveProperty
 	pop hl
 	ld c, a
 	; Status moves have 0 power

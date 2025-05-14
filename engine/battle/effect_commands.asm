@@ -1926,8 +1926,6 @@ BattleCommand_checkhit:
 	ret z
 	cp EFFECT_COUNTER
 	ret z
-	cp EFFECT_MIRROR_COAT
-	ret z
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	inc a ; cp STRUGGLE
