@@ -3225,6 +3225,8 @@ BattleCommand_posthiteffects:
 	; Defrost target if move is Fire-type.
 	call HasOpponentFainted
 	jr z, .defrost_done
+	call CheckSubHit
+	jr nz, .defrost_done
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
