@@ -120,20 +120,12 @@ DoTurn:
 	ret nz
 
 	call UpdateMoveData
-
+	; fallthrough
 DoMove:
 ; Get the user's move effect.
 	; Increase move usage counter if applicable
 	call IncreaseMetronomeCount
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	ld c, a
-	ld b, 0
-	ld hl, MoveEffectsPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(MoveEffectsPointers)
-	call GetFarWord
+	call GetMoveScript
 
 	ld a, l
 	ld [wBattleScriptBufferLoc], a
@@ -3362,17 +3354,15 @@ BattleCommand_posthiteffects:
 	farjp ResolveOpponentBerserk
 
 .flinch_up:
-	; Ensure that the move doesn't already have a flinch rate.
 	call HasOpponentFainted
 	ret z
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SHIELD_DUST
 	ret z
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_FLINCH_HIT
-	ret z
-	cp EFFECT_STOMP
+
+	; Ensure that the move doesn't already have a flinch rate.
+	ld b, flinchtarget_command
+	call HasBattleCommand
 	ret z
 
 	; Serene Grace boosts King's Rock
@@ -6595,6 +6585,48 @@ BattleCommandJump:
 	ld [wBattleScriptBufferLoc], a
 	ld a, h
 	ld [wBattleScriptBufferLoc + 1], a
+	ret
+
+GetMoveScript:
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	ld c, a
+	ld b, 0
+	ld hl, MoveEffectsPointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(MoveEffectsPointers)
+	jmp GetFarWord
+
+HasBattleCommand:
+; Check if the current move contains battle command b.
+; Return z if it does.
+	push hl
+	push bc
+	call GetMoveScript
+	pop bc
+
+.loop
+	ld a, BANK(MoveEffects)
+	call GetFarByte
+	cp endturn_command
+	jr nc, .not_found
+	cp b
+	jr z, .found
+
+	cp FIRST_MOVEARG_COMMAND
+	jr c, .next
+	cp LAST_MOVEARG_COMMAND + 1
+	jr nc, .next
+	inc hl
+.next
+	inc hl
+	jr .loop
+
+.not_found
+	or 1
+.found
+	pop hl
 	ret
 
 AppearUserLowerSub:
