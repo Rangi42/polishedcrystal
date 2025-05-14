@@ -481,8 +481,6 @@ ForewarnAbility:
 	call StdBattleTextbox
 	jmp EndAbility
 
-INCLUDE "data/moves/dynamic_power_moves.asm"
-
 FriskAbility:
 	farcall GetOpponentItem
 	ld a, [hl]
