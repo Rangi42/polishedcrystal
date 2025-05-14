@@ -87,6 +87,9 @@ DoTurn:
 
 .not_ghost
 ; Read in and execute the user's move effects for this turn.
+	xor a
+	ld [wMoveHitState], a
+
 	; Clear physical/special move use for user.
 	; For Counter/Mirror Coat, we store last damage done.
 	; This damage is stored alongside flags for whether it was physical
@@ -701,7 +704,7 @@ HitConfusion:
 	call StdBattleTextbox
 
 	xor a
-	ld [wCriticalHit], a
+	ld [wMoveHitState], a
 
 	call HitSelfInConfusion
 	call ConfusedDamageCalc
@@ -715,7 +718,6 @@ HitConfusion:
 	ld a, $1
 	ldh [hBGMapMode], a
 .enemy
-	ld c, $1
 	call TakeOpponentDamage
 	jmp BattleCommand_raisesub
 
@@ -1168,8 +1170,7 @@ BattleConsumePP:
 
 BattleCommand_critical:
 ; Determine whether this attack's hit will be critical.
-	xor a
-	ld [wCriticalHit], a
+	call ResetCrit
 
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVar
@@ -1261,8 +1262,44 @@ BattleCommand_critical:
 	cp b
 	ret nc
 .guranteed_crit
-	ld a, TRUE
-	ld [wCriticalHit], a
+	; fallthrough
+SetCrit:
+	ld a, 1 << MOVEHIT_CRITICAL
+	jr SetMoveHitState
+SetSubHit:
+	ld a, 1 << MOVEHIT_SUBSTITUTE
+SetMoveHitState:
+	push hl
+	ld hl, wMoveHitState
+	or [hl]
+	ld [hl], a
+	pop hl
+	ret
+
+ResetCrit:
+	ld a, 1 << MOVEHIT_CRITICAL
+	jr ResetMoveHitState
+ResetSubHit:
+	ld a, 1 << MOVEHIT_SUBSTITUTE
+ResetMoveHitState:
+	push hl
+	ld hl, wMoveHitState
+	cpl
+	and [hl]
+	ld [hl], a
+	pop hl
+	ret
+
+CheckCrit:
+	ld a, 1 << MOVEHIT_CRITICAL
+	jr CheckMoveHitState
+CheckSubHit:
+	ld a, 1 << MOVEHIT_SUBSTITUTE
+CheckMoveHitState:
+	push hl
+	ld hl, wMoveHitState
+	and [hl]
+	pop hl
 	ret
 
 TrueUserValidBattleItem:
@@ -2273,7 +2310,10 @@ BattleCommand_effectchance:
 	push hl
 	xor a
 	ld [wEffectFailed], a
-	call CheckSubstituteOpp
+	call CheckSubHit
+	push af
+	call ResetSubHit
+	pop af
 	jr nz, EffectChanceFailed
 
 	call GetOpponentAbilityAfterMoldBreaker
@@ -2678,14 +2718,9 @@ GetFailureResultText:
 	ld hl, ButItFailedText
 	jr z, .got_text
 	ld hl, AttackMissedText
-	ld a, [wCriticalHit]
-	cp $ff
-	jr nz, .got_text
-	ld hl, UnaffectedText
 .got_text
 	call FailText_CheckOpponentProtect
-	xor a
-	ld [wCriticalHit], a
+	call ResetCrit
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -2703,7 +2738,6 @@ GetFailureResultText:
 	ld a, $1
 	ld [wBattleAnimParam], a
 	call LoadMoveAnim
-	ld c, $1
 	jmp TakeOpponentDamage
 
 FailText_CheckOpponentProtect:
@@ -2783,8 +2817,7 @@ BattleCommand_criticaltext:
 ; Prints the message for critical hits.
 
 ; If there is no message to be printed, wait 20 frames.
-	ld a, [wCriticalHit]
-	and a
+	call CheckCrit
 	jr z, .wait
 
 	; At level 3 affection, critical hit chance is doubled.
@@ -2829,8 +2862,7 @@ BattleCommand_criticaltext:
 	predef FlagPredef ; c still contains wCurBatlteMon
 
 .cont
-	xor a
-	ld [wCriticalHit], a
+	call ResetCrit
 
 	; Maybe it fainted
 	call HasOpponentFainted
@@ -3935,9 +3967,8 @@ GetOpponentActiveScreens:
 	xor INFILTRATOR
 	ret z
 
-	ld a, [wCriticalHit]
-	dec a ; cp TRUE
-	ret z
+	call CheckCrit
+	ret nz
 	; fallthrough
 .GetScreen:
 	ldh a, [hBattleTurn]
@@ -4103,8 +4134,7 @@ ApplyStatBoostDamage:
 	cp 7
 	jr nc, GotStatLevel
 	ld b, a
-	ld a, [wCriticalHit]
-	and a
+	call CheckCrit
 	ret nz
 	ld a, b
 	jr GotStatLevel
@@ -4117,8 +4147,7 @@ ApplyDefStatBoostDamage:
 	cp 7
 	ld b, a
 	jr c, .no_crit_negation
-	ld a, [wCriticalHit]
-	and a
+	call CheckCrit
 	ret nz
 .no_crit_negation
 	ld a, 14
@@ -4249,8 +4278,7 @@ BattleCommand_damagecalc:
 
 .no_flash_fire
 	; Critical hits
-	ld a, [wCriticalHit]
-	and a
+	call CheckCrit
 	jr z, .no_crit
 
 	call GetTrueUserAbility
@@ -4604,19 +4632,6 @@ TakeOpponentDamage:
 	or b
 	jr z, .did_no_damage
 
-	ld a, c
-	and a
-	jr nz, .mimic_sub_check
-
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
-	jr z, .mimic_sub_check
-	call SwitchTurn
-	call SelfInflictDamageToSubstitute
-	jmp SwitchTurn
-
-.mimic_sub_check
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
@@ -4626,6 +4641,7 @@ TakeOpponentDamage:
 
 TakeDamage:
 ; opponent takes damage
+	call ResetSubHit
 	ld hl, wCurDamage
 	ld a, [hli]
 	ld b, a
@@ -4650,6 +4666,7 @@ TakeDamage:
 	jmp RefreshBattleHuds
 
 SelfInflictDamageToSubstitute:
+	call SetSubHit
 	ld hl, SubTookDamageText
 	call StdBattleTextbox
 
@@ -5107,7 +5124,7 @@ HandleBigRoot:
 
 BattleCommand_burntarget:
 	; Needs to be checked here too, because it should prevent defrosting
-	call CheckSubstituteOpp
+	call CheckSubHit
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar

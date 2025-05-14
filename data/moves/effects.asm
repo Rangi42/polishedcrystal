@@ -146,7 +146,6 @@ FlinchHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -157,6 +156,7 @@ FlinchHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	flinchtarget
 	posthiteffects
 	endmove
@@ -169,7 +169,6 @@ PoisonHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -180,6 +179,7 @@ PoisonHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	poisontarget
 	posthiteffects
 	endmove
@@ -192,7 +192,6 @@ BurnHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -203,6 +202,7 @@ BurnHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	burntarget
 	posthiteffects
 	endmove
@@ -215,7 +215,6 @@ ParalyzeHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -226,6 +225,7 @@ ParalyzeHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	paralyzetarget
 	posthiteffects
 	endmove
@@ -238,7 +238,6 @@ BodySlam:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -250,6 +249,7 @@ BodySlam:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	paralyzetarget
 	posthiteffects
 	endmove
@@ -262,7 +262,6 @@ SleepHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -273,6 +272,7 @@ SleepHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	sleep
 	posthiteffects
 	endmove
@@ -285,7 +285,6 @@ FreezeHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -296,6 +295,7 @@ FreezeHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	freezetarget
 	posthiteffects
 	endmove
@@ -308,7 +308,6 @@ ConfuseHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -319,6 +318,7 @@ ConfuseHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	confusetarget
 	posthiteffects
 	endmove
@@ -331,7 +331,6 @@ AttackUpHit:
 	checkhit
 	checkpriority
 	critical
-	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -341,8 +340,9 @@ AttackUpHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	raisestathit ATTACK
 	postfainteffects
+	selfeffectchance
+	raisestathit ATTACK
 	posthiteffects
 	endmove
 
@@ -354,7 +354,6 @@ DefenseUpHit:
 	checkhit
 	checkpriority
 	critical
-	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -365,6 +364,7 @@ DefenseUpHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	selfeffectchance
 	raisestathit DEFENSE
 	posthiteffects
 	endmove
@@ -377,7 +377,6 @@ SpeedUpHit:
 	checkhit
 	checkpriority
 	critical
-	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -388,6 +387,7 @@ SpeedUpHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	selfeffectchance
 	raisestathit SPEED
 	posthiteffects
 	endmove
@@ -400,7 +400,6 @@ AllUpHit:
 	checkhit
 	checkpriority
 	critical
-	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -411,6 +410,8 @@ AllUpHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	; A single effect chance triggers all stats
+	selfeffectchance
 	raisestathit ATTACK
 	raisestathit DEFENSE
 	raisestathit SPEED
@@ -427,7 +428,6 @@ AttackDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -438,6 +438,7 @@ AttackDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit ATTACK
 	posthiteffects
 	endmove
@@ -450,7 +451,6 @@ DefenseDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -461,6 +461,7 @@ DefenseDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit DEFENSE
 	posthiteffects
 	endmove
@@ -496,7 +497,6 @@ SpeedDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -507,6 +507,7 @@ SpeedDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit SPEED
 	posthiteffects
 	endmove
@@ -519,7 +520,6 @@ SpecialAttackDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -530,6 +530,7 @@ SpecialAttackDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit SP_ATTACK
 	posthiteffects
 	endmove
@@ -542,7 +543,6 @@ SpecialDefenseDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -553,6 +553,7 @@ SpecialDefenseDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit SP_DEFENSE
 	posthiteffects
 	endmove
@@ -565,7 +566,6 @@ AccuracyDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -576,6 +576,7 @@ AccuracyDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit ACCURACY
 	posthiteffects
 	endmove
@@ -588,7 +589,6 @@ EvasionDownHit:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -599,6 +599,7 @@ EvasionDownHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	loweroppstathit EVASION
 	posthiteffects
 	endmove
@@ -1306,7 +1307,6 @@ TriAttack:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -1317,6 +1317,7 @@ TriAttack:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	tristatuschance
 	posthiteffects
 	endmove
@@ -1724,7 +1725,6 @@ SacredFire:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -1735,6 +1735,7 @@ SacredFire:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	burntarget
 	posthiteffects
 	endmove
@@ -1844,7 +1845,6 @@ RapidSpin:
 	checkhit
 	checkpriority
 	critical
-	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -1856,6 +1856,7 @@ RapidSpin:
 	supereffectivetext
 	clearhazards
 	postfainteffects
+	selfeffectchance
 	raisestathit SPEED
 	posthiteffects
 	endmove
@@ -2000,7 +2001,6 @@ Stomp:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -2012,6 +2012,7 @@ Stomp:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	flinchtarget
 	posthiteffects
 	endmove
@@ -2046,7 +2047,6 @@ Thunder:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -2058,6 +2058,7 @@ Thunder:
 	criticaltext
 	supereffectivetext
 	postfainteffects
+	effectchance
 	paralyzetarget
 	posthiteffects
 	endmove
@@ -2101,7 +2102,6 @@ FlareBlitz:
 	checkhit
 	checkpriority
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -2113,6 +2113,7 @@ FlareBlitz:
 	supereffectivetext
 	recoil
 	postfainteffects
+	effectchance
 	burntarget
 	posthiteffects
 	endmove

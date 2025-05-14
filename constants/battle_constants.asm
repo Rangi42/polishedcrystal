@@ -265,6 +265,11 @@ DEF GUARD_MIST      EQU %11110000
 	const ATKFAIL_ACCMISS   ; missed from accuracy
 	const ATKFAIL_CUSTOM    ; custom message
 
+; wMoveHitState
+	const_def
+	const MOVEHIT_CRITICAL
+	const MOVEHIT_SUBSTITUTE
+
 ; wDeferredSwitch
 	const_def
 	const SWITCH_DEFERRED

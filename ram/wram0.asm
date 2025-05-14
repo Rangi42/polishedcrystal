@@ -381,10 +381,9 @@ wTypeModifier::
 ; bit 7: stab
 	db
 
-wCriticalHit::
-; 0 if not critical
-; 1 for a critical hit
-; 2 for a OHKO
+wMoveHitState::
+; bit 0: move was a critical hit
+; bit 1: move hit a substitute
 	db
 
 wAttackMissed::

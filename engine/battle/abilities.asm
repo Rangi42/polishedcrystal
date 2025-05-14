@@ -1729,9 +1729,14 @@ RivalryAbility:
 
 SheerForceAbility:
 ; 130% damage if a secondary effect is suppressed
-	ld a, [wEffectFailed]
-	and a
-	ret z
+	ld b, effectchance_command
+	farcall HasBattleCommand
+	jr z, .sheer_force_applies
+	ld b, selfeffectchance_command
+	farcall HasBattleCommand
+	ret nz
+
+.sheer_force_applies
 	ln a, 13, 10 ; x1.3
 	jmp MultiplyAndDivide
 
