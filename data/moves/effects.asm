@@ -202,9 +202,9 @@ BurnHit:
 	applydamage
 	criticaltext
 	supereffectivetext
+	burntarget
 	postfainteffects
 	posthiteffects
-	burntarget
 	endmove
 
 ParalyzeHit:
@@ -1304,6 +1304,7 @@ TriAttack:
 	checkhit
 	checkpriority
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -1730,10 +1731,9 @@ SacredFire:
 	applydamage
 	criticaltext
 	supereffectivetext
-	defrost
+	burntarget
 	postfainteffects
 	posthiteffects
-	burntarget
 	endmove
 
 Magnitude:
@@ -2109,8 +2109,7 @@ FlareBlitz:
 	criticaltext
 	supereffectivetext
 	recoil
-	defrost
+	burntarget
 	postfainteffects
 	posthiteffects
-	burntarget
 	endmove

@@ -85,7 +85,6 @@ BattleCommandPointers:
 	command kickcounter
 	command thief
 	command arenatrap
-	command defrost
 	command curse
 	command protect
 	command spikes

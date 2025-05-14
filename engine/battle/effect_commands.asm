@@ -334,7 +334,7 @@ BattleCommand_checkturn:
 	jmp EndTurn
 
 .thaw
-	call BattleCommand_defrost
+	call DefrostUser
 
 .not_frozen
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -3203,6 +3203,15 @@ BattleCommand_posthiteffects:
 
 	farcall RunHitAbilities
 
+	; Defrost target if move is Fire-type.
+	call HasOpponentFainted
+	jr z, .defrost_done
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	call z, DefrostOpponent
+
+.defrost_done
 	; Burst air balloons
 	call HasOpponentFainted
 	jr z, .air_balloon_done
@@ -5113,10 +5122,17 @@ BattleCommand_burntarget:
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr ; Addr to set hl for Defrost benefit
+	call GetBattleVar
 	and a
-	jr nz, Defrost
-	ld b, a ; a == 0
+	jr z, BurnTarget
+
+	; Defrost from Fire-type moves is handled elsewhere.
+	call CheckSheerForceNegation
+	ret z
+	jr DefrostOpponent
+
+BurnTarget:
+	ld b, 0
 	call CanBurnTarget
 	ret nz
 	ld b, 1 << BRN
@@ -5158,29 +5174,17 @@ DisplayAndSetStatusProblem:
 	call RefreshBattleHuds
 	jmp PostStatusWithSynchronize
 
-Defrost:
-	ld a, [hl]
-	and 1 << FRZ
+DefrostOpponent:
+	call StackCallOpponentTurn
+DefrostUser:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	bit FRZ, [hl]
 	ret z
+	res FRZ, [hl]
 
-	xor a
-	ld [hl], a
-
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wCurOTMon]
-	ld hl, wOTPartyMon1Status
-	jr z, .ok
-	ld a, [wCurBattleMon]
-	ld hl, wPartyMon1Status
-.ok
-
-	call GetPartyLocation
-	xor a
-	ld [hl], a
-	call UpdateOpponentInParty
-
-	ld hl, DefrostedOpponentText
+	call UpdateUserInParty
+	ld hl, WasDefrostedText
 	jmp StdBattleTextbox
 
 CheckAlreadyExecuted:
@@ -6230,24 +6234,6 @@ CheckUserMove:
 	ld a, 1
 	and a
 	ret
-
-BattleCommand_defrost:
-; Thaw the user.
-
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVarAddr
-	bit FRZ, [hl]
-	ret z
-	res FRZ, [hl]
-
-	ld a, MON_STATUS
-	call UserPartyAttr
-	res FRZ, [hl]
-
-.done
-	call RefreshBattleHuds
-	ld hl, WasDefrostedText
-	jmp StdBattleTextbox
 
 BoostJumptable:
 	dbw AVALANCHE,  DoAvalanche

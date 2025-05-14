@@ -955,11 +955,6 @@ WasBurnedText:
 	line "was burned!"
 	prompt
 
-DefrostedOpponentText:
-	text "<TARGET>"
-	line "was defrosted!"
-	prompt
-
 AlreadyBurnedText:
 	text "<TARGET> is"
 	line "already burned!"
