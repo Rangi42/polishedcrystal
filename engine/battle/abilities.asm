@@ -494,8 +494,6 @@ FriskAbility:
 	jmp EndAbility
 
 ScreenCleanerAbility:
-	; Text order is player 1's screens fade, then player 2's.
-	; Preserves current battle turn (i.e. when mon is switched out via Roar)
 	ld a, [wPlayerScreens]
 	and a
 	jr nz, .screens_up
@@ -507,21 +505,14 @@ ScreenCleanerAbility:
 	call ShowAbilityActivation
 	ldh a, [hBattleTurn]
 	push af
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	ld a, 1
-	jr z, .player_2
-	dec a
-.player_2
-	ldh [hBattleTurn], a
-	call .clear_screens
+	call .do_it
 	call SwitchTurn
-	call .clear_screens
+	call .do_it
 	pop af
 	ldh [hBattleTurn], a
 	jmp EndAbility
 
-.clear_screens
+.do_it
 	farcall GetTurnAndPlacePrefix
 	ld hl, wPlayerScreens
 	jr z, .got_screens
