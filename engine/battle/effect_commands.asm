@@ -3192,11 +3192,9 @@ BattleCommand_posthiteffects:
 	call HandleRampage
 
 	call HasOpponentFainted
-	jr z, .skip_sub_check
-	call CheckSubstituteOpp
+	call nz, CheckSubstituteOpp
 	ret nz
 
-.skip_sub_check
 	ld a, [wAttackMissed]
 	and a
 	ret nz
@@ -5118,12 +5116,6 @@ HandleBigRoot:
 	ret
 
 BattleCommand_burntarget:
-	; We need to check if the foe is fainted here, because we run this before
-	; postfainteffects+posthiteffects. The reason for this is to prevetn defrost
-	; followed by immediate burn from some Fire-type moves.
-	call HasOpponentFainted
-	ret z
-
 	; Needs to be checked here too, because it should prevent defrosting
 	call CheckSubstituteOpp
 	ret nz

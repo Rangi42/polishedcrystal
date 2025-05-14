@@ -157,8 +157,8 @@ FlinchHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	flinchtarget
+	posthiteffects
 	endmove
 
 PoisonHit:
@@ -180,8 +180,8 @@ PoisonHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	poisontarget
+	posthiteffects
 	endmove
 
 BurnHit:
@@ -202,8 +202,8 @@ BurnHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	burntarget
 	postfainteffects
+	burntarget
 	posthiteffects
 	endmove
 
@@ -226,8 +226,8 @@ ParalyzeHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	paralyzetarget
+	posthiteffects
 	endmove
 
 BodySlam:
@@ -250,8 +250,8 @@ BodySlam:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	paralyzetarget
+	posthiteffects
 	endmove
 
 SleepHit:
@@ -273,8 +273,8 @@ SleepHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	sleep
+	posthiteffects
 	endmove
 
 FreezeHit:
@@ -296,8 +296,8 @@ FreezeHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	freezetarget
+	posthiteffects
 	endmove
 
 ConfuseHit:
@@ -319,8 +319,8 @@ ConfuseHit:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	confusetarget
+	posthiteffects
 	endmove
 
 AttackUpHit:
@@ -364,8 +364,8 @@ DefenseUpHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	raisestathit DEFENSE
 	postfainteffects
+	raisestathit DEFENSE
 	posthiteffects
 	endmove
 
@@ -387,8 +387,8 @@ SpeedUpHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	raisestathit SPEED
 	postfainteffects
+	raisestathit SPEED
 	posthiteffects
 	endmove
 
@@ -410,12 +410,12 @@ AllUpHit:
 	applydamage
 	criticaltext
 	supereffectivetext
+	postfainteffects
 	raisestathit ATTACK
 	raisestathit DEFENSE
 	raisestathit SPEED
 	raisestathit SP_ATTACK
 	raisestathit SP_DEFENSE
-	postfainteffects
 	posthiteffects
 	endmove
 
@@ -437,8 +437,8 @@ AttackDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit ATTACK
 	postfainteffects
+	loweroppstathit ATTACK
 	posthiteffects
 	endmove
 
@@ -460,8 +460,8 @@ DefenseDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit DEFENSE
 	postfainteffects
+	loweroppstathit DEFENSE
 	posthiteffects
 	endmove
 
@@ -506,8 +506,8 @@ SpeedDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit SPEED
 	postfainteffects
+	loweroppstathit SPEED
 	posthiteffects
 	endmove
 
@@ -529,8 +529,8 @@ SpecialAttackDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit SP_ATTACK
 	postfainteffects
+	loweroppstathit SP_ATTACK
 	posthiteffects
 	endmove
 
@@ -552,8 +552,8 @@ SpecialDefenseDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit SP_DEFENSE
 	postfainteffects
+	loweroppstathit SP_DEFENSE
 	posthiteffects
 	endmove
 
@@ -575,8 +575,8 @@ AccuracyDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit ACCURACY
 	postfainteffects
+	loweroppstathit ACCURACY
 	posthiteffects
 	endmove
 
@@ -598,8 +598,8 @@ EvasionDownHit:
 	applydamage
 	criticaltext
 	supereffectivetext
-	loweroppstathit EVASION
 	postfainteffects
+	loweroppstathit EVASION
 	posthiteffects
 	endmove
 
@@ -620,9 +620,9 @@ CloseCombat:
 	applydamage
 	criticaltext
 	supereffectivetext
+	postfainteffects
 	lowerstat DEFENSE
 	lowerstat SP_DEFENSE
-	postfainteffects
 	posthiteffects
 	endmove
 
@@ -1142,8 +1142,8 @@ Trap:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	traptarget
+	posthiteffects
 	endmove
 
 Explosion:
@@ -1270,6 +1270,7 @@ KnockOff:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
+	; Must come after posthiteffects in case of indirect faint
 	knockoff TRUE
 	endmove
 
@@ -1291,9 +1292,10 @@ BugBite:
 	applydamage
 	criticaltext
 	supereffectivetext
-	bugbite TRUE
 	postfainteffects
 	posthiteffects
+	; Must come after posthiteffects in case of indirect faint
+	bugbite TRUE
 	endmove
 
 TriAttack:
@@ -1315,8 +1317,8 @@ TriAttack:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	tristatuschance
+	posthiteffects
 	endmove
 
 Transform:
@@ -1538,9 +1540,10 @@ Thief:
 	applydamage
 	criticaltext
 	supereffectivetext
-	thief
 	postfainteffects
 	posthiteffects
+	; Must come after posthiteffects in case of indirect faint
+	thief
 	endmove
 
 MeanLook:
@@ -1731,8 +1734,8 @@ SacredFire:
 	applydamage
 	criticaltext
 	supereffectivetext
-	burntarget
 	postfainteffects
+	burntarget
 	posthiteffects
 	endmove
 
@@ -1851,9 +1854,9 @@ RapidSpin:
 	applydamage
 	criticaltext
 	supereffectivetext
-	raisestathit SPEED
 	clearhazards
 	postfainteffects
+	raisestathit SPEED
 	posthiteffects
 	endmove
 
@@ -2009,8 +2012,8 @@ Stomp:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	flinchtarget
+	posthiteffects
 	endmove
 
 SolarBeam:
@@ -2055,8 +2058,8 @@ Thunder:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	posthiteffects
 	paralyzetarget
+	posthiteffects
 	endmove
 
 Teleport:
@@ -2109,7 +2112,7 @@ FlareBlitz:
 	criticaltext
 	supereffectivetext
 	recoil
-	burntarget
 	postfainteffects
+	burntarget
 	posthiteffects
 	endmove

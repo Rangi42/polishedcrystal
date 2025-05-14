@@ -17,7 +17,6 @@ FarChangeStat:
 	jr z, .player
 	call HasOpponentFainted
 	ret z
-	jr z, .not_fainted
 .player
 	call HasUserFainted
 	ret z
