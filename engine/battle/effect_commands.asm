@@ -3031,24 +3031,6 @@ BattleCommand_supereffectivetext:
 	ld [wAlreadyExecuted], a
 	jmp SwitchTurn
 
-CheckSheerForceNegation:
-; Check if a secondary effect was suppressed due to Sheer Force.
-; Most likely a bug introduced in Gen V, it is an established
-; mechanic at this point (VII) that if Sheer Force negates the
-; secondary effect of a move, various side effects don't trigger.
-; Returns z if an effect is negated.
-	call GetTrueUserAbility
-	cp SHEER_FORCE
-	ret nz
-	ld a, [wEffectFailed]
-	and a
-	jr z, .ret_nz
-	xor a
-	ret
-.ret_nz
-	or 1
-	ret
-
 ConsumeStolenOpponentItem::
 ; Separate function, since used items/cud chew berry shouldn't (necessarily)
 ; be updated when force-eating a berry via Bug Bite
@@ -6614,6 +6596,20 @@ GetMoveScript:
 	ld a, BANK(MoveEffectsPointers)
 	jmp GetFarWord
 
+CheckSheerForceNegation:
+; Check if a secondary effect is suppressed due to Sheer Force.
+; Most likely a bug introduced in Gen V, it is an established
+; mechanic at this point (VII) that if Sheer Force negates the
+; secondary effect of a move, various side effects don't trigger.
+; Returns z if an effect is negated.
+	call GetTrueUserAbility
+	cp SHEER_FORCE
+	ret nz
+	ld b, effectchance_command
+	call HasBattleCommand
+	ret z
+	ld b, selfeffectchance_command
+	; fallthrough
 HasBattleCommand:
 ; Check if the current move contains battle command b.
 ; Return z if it does.
