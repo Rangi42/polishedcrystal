@@ -5118,6 +5118,12 @@ HandleBigRoot:
 	ret
 
 BattleCommand_burntarget:
+	; We need to check if the foe is fainted here, because we run this before
+	; postfainteffects+posthiteffects. The reason for this is to prevetn defrost
+	; followed by immediate burn from some Fire-type moves.
+	call HasOpponentFainted
+	ret z
+
 	; Needs to be checked here too, because it should prevent defrosting
 	call CheckSubstituteOpp
 	ret nz
