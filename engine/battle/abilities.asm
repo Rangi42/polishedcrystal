@@ -813,8 +813,6 @@ PoisonTouchAbility:
 	; Doesn't apply when opponent has a Substitute up...
 	farcall CheckSubHit
 	ret nz
-	ld b, 0
-	jr DoPoisonAbility
 PoisonPointAbility:
 	ld b, 1
 	; fallthrough
