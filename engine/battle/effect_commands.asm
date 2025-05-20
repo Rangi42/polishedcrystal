@@ -1540,7 +1540,6 @@ BattleCommand_stab:
 	ret
 
 CheckAirborneAfterMoldBreaker:
-	push de
 	call SwitchTurn
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
@@ -1548,7 +1547,6 @@ CheckAirborneAfterMoldBreaker:
 	jr CheckAirborne_GotAbility
 
 CheckAirborne:
-	push de
 	call GetTrueUserAbility
 	ld b, a
 CheckAirborne_GotAbility:
@@ -1558,6 +1556,7 @@ CheckAirborne_GotAbility:
 ; ATKFAIL_ABILITY for Levitate.
 
 	; Check Iron Ball
+	push de
 	push bc
 	predef GetUserItemAfterUnnerve
 	ld a, b

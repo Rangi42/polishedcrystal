@@ -3249,10 +3249,13 @@ SpikesDamage:
 	ld c, 1
 SpikesDamage_GotAbility:
 ; Input: b: ability, c: 0 if forced out, 1 otherwise
+	push de
 	push bc
 	call SetParticipant
-	call HandleAirBalloon
+	ld d, 0
+	farcall CheckAirborne_GotAbility
 	pop bc
+	pop de
 	ret z
 
 	push bc
@@ -3261,20 +3264,7 @@ SpikesDamage_GotAbility:
 	cp HELD_HEAVY_BOOTS
 	pop bc
 	ret z
-	cp HELD_IRON_BALL
-	jr z, .iron_ball
 
-	ld a, b
-	cp LEVITATE
-	ret z
-
-	; Flying-types aren't affected by Spikes.
-	push bc
-	call CheckIfUserIsFlyingType
-	pop bc
-	ret z
-
-.iron_ball
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerHazards
