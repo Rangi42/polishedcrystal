@@ -919,7 +919,7 @@ ForceDeferredSwitch:
 	; Regenerator, Natural Cure, suppress Neutralizing Gas
 	push hl
 	farcall RunSwitchAbilities
-	call SuppressUserNeutralizingGas
+	call SuppressUserAbilities
 	call UpdateUserInParty
 	pop hl
 
@@ -2109,14 +2109,21 @@ FaintUserPokemon:
 	call StdBattleTextbox
 	call LoadTileMapToTempTileMap
 
-SuppressUserNeutralizingGas:
-; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should
-; regain Neutralizing Gas in case it procs.
+SuppressUserAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVarAddr
 	ld a, [hl]
+	ld [hl], NO_ABILITY
 	cp NEUTRALIZING_GAS
+	jr z, .neutralizing_gas
+	cp UNNERVE
 	ret nz
+	farcall HandleLeppaBerry
+	farjp HandleHealingItems
+
+.neutralizing_gas
+	; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should
+	; regain Neutralizing Gas in case it procs.
 	ld [hl], -1
 
 	; Unless opponent also has Neutralizing Gas or Unnerve, (re-)run its
