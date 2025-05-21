@@ -226,6 +226,9 @@ BlancheSpriteGFX:: INCBIN "gfx/sprites/blanche.2bpp.lz"
 SECTION "SparkSpriteGFX", ROMX
 SparkSpriteGFX:: INCBIN "gfx/sprites/spark.2bpp.lz"
 
+SECTION "MarySpriteGFX", ROMX
+MarySpriteGFX:: INCBIN "gfx/sprites/mary.2bpp.lz"
+
 SECTION "BuenaSpriteGFX", ROMX
 BuenaSpriteGFX:: INCBIN "gfx/sprites/buena.2bpp.lz"
 
