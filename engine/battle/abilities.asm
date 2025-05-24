@@ -483,7 +483,7 @@ ForewarnAbility:
 	ld [wBuffer3], a
 	ld a, c
 	ld [wBuffer4], a
-	jr .loop
+	jmp .loop
 .done
 	; Check if we have an attacking move in first place
 	ld a, [wBuffer3]

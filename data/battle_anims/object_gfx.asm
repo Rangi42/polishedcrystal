@@ -12,7 +12,7 @@ AnimObjGFX:
 	table_width 3
 	farbank "Battle Anim Graphics"
 	battleanimgfx  0, AnimObj00GFX
-	battleanimgfx 35, AnimObjHitGFX
+	battleanimgfx 31, AnimObjHitGFX
 	battleanimgfx  7, AnimObjCutGFX
 	battleanimgfx  6, AnimObjFireGFX
 	battleanimgfx 20, AnimObjWaterGFX
@@ -23,7 +23,7 @@ AnimObjGFX:
 	battleanimgfx 19, AnimObjRocksGFX
 	battleanimgfx  6, AnimObjIceGFX
 	battleanimgfx 10 ; use AnimBallObjGFX
-	battleanimgfx 19, AnimObjPoisonGFX
+	battleanimgfx 18, AnimObjPoisonGFX
 	battleanimgfx 14, AnimObjBubbleGFX
 	battleanimgfx 16, AnimObjNoiseGFX
 	battleanimgfx  2, AnimObjPowderGFX
@@ -90,6 +90,7 @@ AnimObjGFX:
 	battleanimgfx 10, AnimObjBeamSolarGFX
 	battleanimgfx  4, AnimObjPetalsGFX
 	battleanimgfx 10, AnimObjGlowShadowGFX
+	battleanimgfx  8, AnimObjChopGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

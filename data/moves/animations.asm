@@ -491,22 +491,18 @@ BattleAnim_Acrobatics:
 	anim_ret
 
 BattleAnim_KarateChop:
-	anim_1gfx ANIM_GFX_HIT
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_CHOP
+	anim_obj ANIM_OBJ_KARATE_CHOP, 136, 71, $0
+	anim_wait 8
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_PALM, -15, 0,   5, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   5, 0, $0
-	anim_wait 6
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 40, $0
+	anim_wait 3
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_PALM, -15, 0,   5, 4, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   5, 4, $0
-	anim_wait 6
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 52, $0
+	anim_wait 3
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_PALM, -15, 0,   6, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   6, 0, $0
-	anim_wait 16
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 64, $0
+	anim_wait 20
 	anim_ret
 
 BattleAnim_DoubleSlap:
@@ -1071,24 +1067,24 @@ BattleAnim_Thunderpunch:
 BattleAnim_Thundershock:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_THUNDERSHOCK_BALL, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_THUNDERSHOCK_CORE, 132, 52, $2
 	anim_wait 16
 	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE, -15, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_THUNDERSHOCK_SPARKS, 132, 52, $0
 	anim_wait 96
 	anim_ret
 
 BattleAnim_Thunderbolt:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_THUNDERBOLT_CORE, 132, 52, $2
 	anim_wait 16
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, -15, 0,   7, 0, $0
-	anim_wait 64
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_wait 64
+	anim_obj ANIM_OBJ_THUNDERBOLT_SPARKS, 132, 52, $0
+	anim_sound 0, 1, SFX_THUNDERBOLT
+.loop
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $7, $6
+	anim_wait 66
+	anim_loop 2, .loop
 	anim_ret
 
 BattleAnim_ThunderWave:
@@ -3409,10 +3405,12 @@ BattleAnim_PsychicM:
 
 BattleAnim_Toxic:
 	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PURPLE
+	anim_obp0 $80
 	anim_1gfx ANIM_GFX_POISON
 	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
 	anim_call BattleAnimSub_Acid
 	anim_wait 32
+	anim_obp0 $c4
 	anim_call BattleAnimSub_Sludge
 	anim_wait 64
 	anim_ret
@@ -4147,9 +4145,9 @@ BattleAnim_ZapCannon:
 	anim_wait 40
 	anim_obp0 $0
 	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_THUNDERBOLT_CORE, -15, 0,   7, 0, $2
 	anim_wait 16
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, -15, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_THUNDERBOLT_SPARKS, -15, 0,   7, 0, $0
 	anim_wait 128
 	anim_ret
 
@@ -4649,8 +4647,8 @@ BattleAnim_Spark:
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_wait 1
 	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, -15, 0,   7, 0, $2
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE, -15, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_THUNDERBOLT_CORE, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_THUNDERSHOCK_SPARKS, -15, 0,   7, 0, $0
 	anim_wait 32
 	anim_ret
 
@@ -4680,8 +4678,8 @@ BattleAnim_WildCharge:
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_wait 1
 	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, 136, 56, $2
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, 136, 56, $0
+	anim_obj ANIM_OBJ_THUNDERBOLT_CORE, 136, 56, $2
+	anim_obj ANIM_OBJ_THUNDERBOLT_SPARKS, 136, 56, $0
 	anim_wait 32
 	anim_ret
 

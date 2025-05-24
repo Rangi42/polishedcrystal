@@ -22,14 +22,14 @@ BattleAnimFrameData:
 	dw .Frameset_13 ; 13
 	dw .Frameset_14 ; 14
 	dw .Frameset_15 ; 15
-	dw .Frameset_16 ; 16                 ; BATTLEANIMFRAMESET_RAZOR_LEAF_1
+	dw .Frameset_16                      ; BATTLEANIMFRAMESET_RAZOR_LEAF_1
 	dw .Frameset_17 ; 17
 	dw .Frameset_18 ; 18
 	dw .Frameset_BigRockStarHeart ; 19
 	dw .Frameset_SmallRockStarHeart ; 1a
 	dw .Frameset_1b ; 1b
 	dw .Frameset_1c ; 1c
-	dw .Frameset_1d ; 1d
+	dw .Frameset_Acid                    ; BATTLEANIMFRAMESET_ACID
 	dw .Frameset_PoisonDroplet ; 1e
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20
@@ -512,7 +512,7 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_0A,  8
 	battleoamdelete
 
-.Frameset_1d:
+.Frameset_Acid:
 	battleoamframe BATTLEANIMOAMSET_1D,  8
 	battleoamend
 

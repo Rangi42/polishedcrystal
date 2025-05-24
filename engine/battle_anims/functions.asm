@@ -1330,7 +1330,7 @@ BattleAnimFunction_WaterGun:
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
-	cp $18
+	cp $10
 	jr nc, .splash
 	inc [hl]
 	ret
