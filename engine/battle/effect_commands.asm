@@ -3398,7 +3398,23 @@ CheckStatHerbsAfterIntimidate:
 	push hl
 	ld [hl], 0
 	call CheckStatHerbs
+	pop hl
+	push hl
+	ld a, [hl]
+	and a
+	jr z, .no_deferred_switch
+
+	; Awful hack: if Neutralizing Gas suppression is on-going, don't induce
+	; another switch...
+	call GetTrueUserAbility
+	inc a
+	jr z, .no_deferred_switch
+	call GetOpponentAbility
+	inc a
+	jr z, .no_deferred_switch
 	farcall DeferredSwitch
+
+.no_deferred_switch
 	pop hl
 	pop af
 	ld [hl], a
