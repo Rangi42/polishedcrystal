@@ -1776,6 +1776,21 @@ DealDamageToOpponent:
 	pop bc
 	jmp SwitchTurn
 
+SubtractHPFromUser_OverrideFaintOrder:
+; Subtract HP from user. If this results in a faint, the user is marked as
+; having fainted first, even if the opponent has already fainted.
+	call SubtractHPFromUser
+	push hl
+	push de
+	push bc
+	call HasUserFainted
+	jr nz, .did_not_faint
+	ldh a, [hBattleTurn]
+	inc a
+	ld [wWhichMonFaintedFirst], a
+.did_not_faint
+	jmp PopBCDEHL
+
 SubtractHPFromUser:
 	push de
 	ld de, SubtractHP
