@@ -3391,6 +3391,19 @@ BattleCommand_posthiteffects:
 	call c, FlinchTarget
 	ret
 
+CheckStatHerbsAfterIntimidate:
+	ld hl, wDeferredSwitch
+	ld a, [hl]
+	push af
+	push hl
+	ld [hl], 0
+	call CheckStatHerbs
+	farcall DeferredSwitch
+	pop hl
+	pop af
+	ld [hl], a
+	ret
+
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
 	call GetFutureSightUser

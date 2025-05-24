@@ -269,7 +269,7 @@ IntimidateAbility:
 
 .continue
 	call EndAbility
-	farcall CheckStatHerbs
+	farcall CheckStatHerbsAfterIntimidate
 	call SwitchTurn
 	farjp CheckMirrorHerb
 
