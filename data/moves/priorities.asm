@@ -4,16 +4,21 @@ MovePriorities:
 	dwb ENDURE,        4
 	dwb PROTECT,       4
 	dwb DETECT,        4
+	dwb FAKE_OUT,      3
 	dwb EXTREMESPEED,  2
+	dwb FIRSTIMPRESS,  2
 	dwb AQUA_JET,      1
 	dwb BULLET_PUNCH,  1
 	dwb ICE_SHARD,     1
 	dwb MACH_PUNCH,    1
 	dwb QUICK_ATTACK,  1
+	dwb SHADOW_SNEAK,  1
 	dwb SUCKER_PUNCH,  1
+	dwb VACUUM_WAVE,   1
 	; everything else 0
 	dwb VITAL_THROW,  -1
 	dwb AVALANCHE,    -4
+	dwb REVENGE,      -4
 	dwb COUNTER,      -5
 	dwb MIRROR_COAT,  -5
 	dwb ROAR,         -6

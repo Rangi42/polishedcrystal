@@ -45,6 +45,28 @@ SuckerPunch:
 	posthiteffects
 	endmove
 
+FirstImpression:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	firstturn
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
 LeechHit:
 	checkobedience
 	usedmovetext
@@ -116,6 +138,35 @@ MultiHit:
 	raisesub
 	endmove
 
+Twineedle:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	startloop
+	lowersub
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	clearmissdamage
+	moveanimnosub
+	failuretext
+	applydamage
+	criticaltext
+	cleartext
+	postfainteffects
+	posthiteffects
+	supereffectivetext
+	poisontarget
+	endloop
+	raisesub
+	endmove
+
 RecoilHit:
 	checkobedience
 	usedmovetext
@@ -143,6 +194,30 @@ FlinchHit:
 	usedmovetext
 	doturn
 	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	flinchtarget
+	endmove
+
+FakeOut:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	firstturn
 	checkhit
 	checkpriority
 	critical
@@ -1210,6 +1285,28 @@ ResetStats:
 	resetstats
 	endmove
 
+ResetStatsHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	resetstats
+	postfainteffects
+	posthiteffects
+
 Safeguard:
 	checkobedience
 	usedmovetext
@@ -1871,6 +1968,28 @@ Return:
 	critical
 	damagestats
 	happinesspower
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
+Frustration:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	unhappinesspower
 	damagecalc
 	stab
 	damagevariation

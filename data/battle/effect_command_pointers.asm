@@ -98,6 +98,7 @@ BattleCommandPointers:
 	command conditionalboost
 	command attract
 	command happinesspower
+	command unhappinesspower
 	command damagecalc
 	command safeguard
 	command checksafeguard
@@ -152,6 +153,7 @@ BattleCommandPointers:
 	command paralyzeflinchtarget
 	command toxictarget
 	command metalburst
+	command firstturn
 
 	; The following commands have an argument
 	; Argument: check if possible (false) vs perform the action (true)

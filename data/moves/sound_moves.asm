@@ -7,6 +7,7 @@ SoundMoves::
 	dw ROAR
 	dw SCREECH
 	dw SING
+	dw SNARL
 	dw SUPERSONIC
 	dw HEAL_BELL
 	dw METAL_SOUND

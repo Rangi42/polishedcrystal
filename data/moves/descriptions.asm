@@ -302,7 +302,7 @@ MoveDescriptions1:
 	dw RockTombDescription
 	dw RockPolishDescription
 	dw DrillRunDescription
-	dw MudBombDescription
+	dw MudShotDescription
 	dw SandAttackDescription
 	dw CrossPoisonDescription
 	dw PoisonGasDescription
@@ -315,6 +315,51 @@ MoveDescriptions1:
 	dw JumpKickDescription
 	dw SuperpowerDescription
 	dw DetectDescription
+
+	dw ConstrictDescription
+	dw BindDescription
+	dw BarrageDescription
+	dw CometPunchDescription
+	dw SpikeCannonDescription
+	dw PoundDescription
+	dw FakeOutDescription
+	dw EggBombDescription
+	dw FrustrationDescription
+	dw SelfDestructDescription
+	dw FlailDescription
+	dw HardenDescription
+	dw LovelyKissDescription
+	dw TailWhipDescription
+	dw WhirlwindDescription
+	dw SweetScentDescription
+	dw BlockDescription
+	dw RevengeDescription
+	dw VacuumWaveDescription
+	dw ClearSmogDescription
+	dw SludgeDescription
+	dw SandTombDescription
+	dw MudBombDescription
+	dw HeadSmashDescription
+	dw TwineedleDescription
+	dw FirstImpressDescription
+	dw SilverWindDescription
+	dw SignalBeamDescription
+	dw SpiderWebDescription
+	dw ShadowSneakDescription
+	dw ShadowPunchDescription
+	dw OminousWindDescription
+	dw FlameWheelDescription
+	dw MagicalLeafDescription
+	dw BulletSeedDescription
+	dw HornLeechDescription
+	dw LeafBladeDescription
+	dw WoodHammerDescription
+	dw SolarBladeDescription
+	dw ElectrowebDescription
+	dw PowderSnowDescription
+	dw TwisterDescription
+	dw SnarlDescription
+	dw FairyWindDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -338,6 +383,7 @@ StoneEdgeDescription:
 PsychoCutDescription:
 DrillRunDescription:
 AirCutterDescription:
+LeafBladeDescription:
 	text "Has a high criti-"
 	next "cal hit ratio."
 	done
@@ -350,6 +396,8 @@ AuraSphereDescription:
 ShockWaveDescription:
 VitalThrowDescription:
 MagnetBombDescription:
+ShadowPunchDescription:
+MagicalLeafDescription:
 	text "An attack that"
 	next "never misses."
 	done
@@ -359,6 +407,7 @@ MegaDrainDescription:
 LeechLifeDescription:
 GigaDrainDescription:
 DrainPunchDescription:
+HornLeechDescription:
 	text "Steals 1/2 of the"
 	next "damage inflicted."
 	done
@@ -379,6 +428,7 @@ FuryStrikesDescription:
 	done
 
 PinMissileDescription:
+SpikeCannonDescription:
 	text "Fires pins that"
 	next "strike 2-5 times."
 	done
@@ -393,8 +443,24 @@ RockBlastDescription:
 	next "hit 2-5 times."
 	done
 
+BarrageDescription:
+	text "Throws orbs to"
+	next "hit 2-5 times."
+	done
+
+CometPunchDescription:
+	text "Repeatedly punches"
+	next "2-5 times."
+	done
+
+BulletSeedDescription:
+	text "Fires seeds that"
+	next "strike 2-5 times."
+	done
+
 TakeDownDescription:
 DoubleEdgeDescription:
+WoodHammerDescription:
 	text "A tackle that also"
 	next "hurts the user."
 	done
@@ -403,6 +469,11 @@ FlareBlitzDescription:
 WildChargeDescription:
 BraveBirdDescription:
 	text "A charge that also"
+	next "hurts the user."
+	done
+
+HeadSmashDescription:
+	text "A headbutt that"
 	next "hurts the user."
 	done
 
@@ -420,6 +491,7 @@ DarkPulseDescription:
 AstonishDescription:
 IcicleCrashDescription:
 RollingKickDescription:
+TwisterDescription:
 	text "An attack that may"
 	next "cause flinching."
 	done
@@ -429,6 +501,7 @@ SludgeBombDescription:
 PoisonJabDescription:
 GunkShotDescription:
 CrossPoisonDescription:
+SludgeDescription:
 	text "An attack that may"
 	next "poison the foe."
 	done
@@ -439,6 +512,7 @@ FireBlastDescription:
 SacredFireDescription:
 ScaldDescription:
 BlazeKickDescription:
+FlameWheelDescription:
 	text "An attack that may"
 	next "inflict a burn."
 	done
@@ -465,6 +539,7 @@ ZapCannonDescription:
 
 IceBeamDescription:
 BlizzardDescription:
+PowderSnowDescription:
 	text "An attack that may"
 	next "freeze the foe."
 	done
@@ -474,6 +549,7 @@ ConfusionDescription:
 DizzyPunchDescription:
 WaterPulseDescription:
 HurricaneDescription:
+SignalBeamDescription:
 	text "An attack that may"
 	next "confuse the foe."
 	done
@@ -504,6 +580,8 @@ FlameChargeDescription:
 	done
 
 AncientpowerDescription:
+SilverWindDescription:
+OminousWindDescription:
 	text "An attack that may"
 	next "raise all stats."
 	done
@@ -550,6 +628,7 @@ RazorShellDescription:
 	done
 
 BubbleBeamDescription:
+ConstrictDescription:
 	text "An attack that may"
 	next "lower Speed."
 	done
@@ -569,8 +648,13 @@ RockTombDescription:
 	next "that lowers Speed."
 	done
 
-MudBombDescription:
+MudShotDescription:
 	text "A muddy attack"
+	next "that lowers Speed."
+	done
+
+ElectrowebDescription:
+	text "An electric attack"
 	next "that lowers Speed."
 	done
 
@@ -581,6 +665,7 @@ MysticalFireDescription:
 	done
 
 StruggleBugDescription:
+SnarlDescription:
 	text "An attack that"
 	next "lowers Sp.Atk."
 	done
@@ -610,6 +695,7 @@ MudSlapDescription:
 OctazookaDescription:
 MuddyWaterDescription:
 MirrorShotDescription:
+MudBombDescription:
 	text "An attack that may"
 	next "lower accuracy."
 	done
@@ -654,6 +740,7 @@ GlareDescription:
 SingDescription:
 SleepPowderDescription:
 HypnosisDescription:
+LovelyKissDescription:
 	text "May cause the foe"
 	next "to fall asleep."
 	done
@@ -682,6 +769,7 @@ MeditateDescription:
 
 DefenseCurlDescription:
 WithdrawDescription:
+HardenDescription:
 	text "Raises the user's"
 	next "Defense."
 	done
@@ -765,6 +853,7 @@ GrowlDescription:
 	done
 
 LeerDescription:
+TailWhipDescription:
 	text "A move that lowers"
 	next "the foe's Defense."
 	done
@@ -798,9 +887,19 @@ CottonSporeDescription:
 	next "foe's Speed."
 	done
 
+SweetScentDescription:
+	text "Lowers the foe's"
+	next "Evasiveness."
+	done
+
 HazeDescription:
 	text "Eliminates all"
 	next "stat changes."
+	done
+
+ClearSmogDescription:
+	text "Attack that resets"
+	next "all stat changes."
 	done
 
 SafeguardDescription:
@@ -845,6 +944,8 @@ WhirlpoolDescription:
 WrapDescription:
 ClampDescription:
 InfestationDescription:
+BindDescription:
+SandTombDescription:
 	text "Traps the foe for"
 	next "2-5 turns."
 	done
@@ -854,6 +955,7 @@ TrickRoomDescription:
 	next "first for 5 turns."
 	done
 
+SelfDestructDescription:
 ExplosionDescription:
 	text "Very powerful but"
 	next "makes user faint."
@@ -870,6 +972,7 @@ FalseSwipeDescription:
 	done
 
 SolarBeamDescription:
+SolarBladeDescription:
 	text "1st turn: Prepare"
 	next "2nd turn: Attack"
 	done
@@ -911,6 +1014,7 @@ HexDescription:
 	done
 
 AvalancheDescription:
+RevengeDescription:
 	text "Damage doubles if"
 	next "user is hit first."
 	done
@@ -1008,6 +1112,16 @@ BulletPunchDescription:
 	next "always goes first."
 	done
 
+VacuumWaveDescription:
+	text "A punch wave that"
+	next "always goes first."
+	done
+
+ShadowSneakDescription:
+	text "A shadow attack."
+	next "Always goes first."
+	done
+
 ExtremespeedDescription:
 	text "A powerful first-"
 	next "strike attack."
@@ -1058,6 +1172,11 @@ TackleDescription:
 	next "attack."
 	done
 
+PoundDescription:
+	text "An attack using a"
+	next "tail or foreleg."
+	done
+
 HornAttackDescription:
 	text "An attack using a"
 	next "horn to jab."
@@ -1078,6 +1197,16 @@ SuckerPunchDescription:
 	next "foe does."
 	done
 
+FirstImpressDescription:
+	text "A fast strike for"
+	next "only the 1st turn."
+	done
+
+FakeOutDescription:
+	text "A fast flinch hit"
+	next "for the 1st turn."
+	done
+
 DazzlingleamDescription:
 	text "Dazzles with a"
 	next "powerful flash."
@@ -1085,6 +1214,11 @@ DazzlingleamDescription:
 
 RoarDescription:
 	text "Scares wild foes"
+	next "to end battle."
+	done
+
+WhirlwindDescription:
+	text "Blows away foes"
 	next "to end battle."
 	done
 
@@ -1195,6 +1329,11 @@ DualChopDescription:
 	next "strikes twice."
 	done
 
+TwineedleDescription:
+	text "Strikes twice and"
+	next "may poison foe."
+	done
+
 RestDescription:
 	text "Sleep for 2 turns"
 	next "to fully recover."
@@ -1251,6 +1390,7 @@ CurseDescription:
 	done
 
 ReversalDescription:
+FlailDescription:
 	text "Stronger if the"
 	next "user's HP is low."
 	done
@@ -1313,6 +1453,8 @@ BugBiteDescription:
 	done
 
 MeanLookDescription:
+BlockDescription:
+SpiderWebDescription:
 	text "Prevents fleeing"
 	next "or switching."
 	done
@@ -1330,6 +1472,11 @@ SleepTalkDescription:
 HealBellDescription:
 	text "Eliminates all"
 	next "status problems."
+	done
+
+FrustrationDescription:
+	text "An attack based on"
+	next "lack of loyalty."
 	done
 
 ReturnDescription:
@@ -1441,4 +1588,14 @@ ThunderFangDescription:
 PoisonFangDescription:
 	text "May badly poison"
 	next "the target."
+	done
+
+EggBombDescription:
+	text "Hurls an egg at"
+	next "the target."
+	done
+
+FairyWindDescription:
+	text "Stirs a fairy wind"
+	next "up to damage foe. "
 	done

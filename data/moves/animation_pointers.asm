@@ -350,4 +350,49 @@ endc
 	dba BattleAnim_Struggle ; SUPERPOWER
 	dba BattleAnim_Struggle ; DETECT
 
+	dba BattleAnim_Struggle ; CONSTRICT
+	dba BattleAnim_Struggle ; BIND
+	dba BattleAnim_Struggle ; BARRAGE
+	dba BattleAnim_Struggle ; COMET_PUNCH
+	dba BattleAnim_Struggle ; SPIKE_CANNON
+	dba BattleAnim_Struggle ; POUND
+	dba BattleAnim_Struggle ; FAKE_OUT
+	dba BattleAnim_Struggle ; EGG_BOMB
+	dba BattleAnim_Struggle ; FRUSTRATION
+	dba BattleAnim_Struggle ; SELFDESTRUCT
+	dba BattleAnim_Struggle ; FLAIL
+	dba BattleAnim_Struggle ; HARDEN
+	dba BattleAnim_Struggle ; LOVELY_KISS
+	dba BattleAnim_Struggle ; TAIL_WHIP
+	dba BattleAnim_Struggle ; WHIRLWIND
+	dba BattleAnim_Struggle ; SWEET_SCENT
+	dba BattleAnim_Struggle ; BLOCK
+	dba BattleAnim_Struggle ; REVENGE
+	dba BattleAnim_Struggle ; VACUUM_WAVE
+	dba BattleAnim_Struggle ; CLEAR_SMOG
+	dba BattleAnim_Struggle ; SLUDGE
+	dba BattleAnim_Struggle ; SAND_TOMB
+	dba BattleAnim_Struggle ; MUD_BOMB
+	dba BattleAnim_Struggle ; HEAD_SMASH
+	dba BattleAnim_Struggle ; TWINEEDLE
+	dba BattleAnim_Struggle ; FIRSTIMPRESS
+	dba BattleAnim_Struggle ; SILVER_WIND
+	dba BattleAnim_Struggle ; SIGNAL_BEAM
+	dba BattleAnim_Struggle ; SPIDER_WEB
+	dba BattleAnim_Struggle ; SHADOW_SNEAK
+	dba BattleAnim_Struggle ; SHADOW_PUNCH
+	dba BattleAnim_Struggle ; OMINOUS_WIND
+	dba BattleAnim_Struggle ; FLAME_WHEEL
+	dba BattleAnim_Struggle ; MAGICAL_LEAF
+	dba BattleAnim_Struggle ; BULLET_SEED
+	dba BattleAnim_Struggle ; HORN_LEECH
+	dba BattleAnim_Struggle ; LEAF_BLADE
+	dba BattleAnim_Struggle ; WOOD_HAMMER
+	dba BattleAnim_Struggle ; SOLAR_BLADE
+	dba BattleAnim_Struggle ; ELECTROWEB
+	dba BattleAnim_Struggle ; POWDER_SNOW
+	dba BattleAnim_Struggle ; TWISTER
+	dba BattleAnim_Struggle ; SNARL
+	dba BattleAnim_Struggle ; FAIRY_WIND
+
 	assert_table_length NUM_ATTACKS + 1
