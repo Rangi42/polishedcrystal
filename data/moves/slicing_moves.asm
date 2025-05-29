@@ -2,9 +2,11 @@ SlicingMoves:
 	dw AERIAL_ACE
 	dw AIR_SLASH
 	dw CUT
+	dw LEAF_BLADE
 	dw NIGHT_SLASH
 	dw RAZOR_LEAF
 	dw SLASH
+	dw SOLAR_BLADE
 	dw X_SCISSOR
 	dw RAZOR_SHELL
 	dw PSYCHO_CUT

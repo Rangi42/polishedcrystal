@@ -1,3 +1,10 @@
+BattleCommand_unhappinesspower:
+	call BattleCommand_happinesspower
+	ld a, 102
+	sub d
+	ld d, a
+	ret
+
 BattleCommand_happinesspower:
 	push bc
 	ld hl, wBattleMonHappiness

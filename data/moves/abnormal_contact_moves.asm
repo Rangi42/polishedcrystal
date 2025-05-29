@@ -5,9 +5,12 @@ AbnormalContactMoves:
 	dw DRAINING_KISS
 	dw PETAL_DANCE
 	; Physical moves that don't make contact
+	dw BARRAGE
 	dw BONEMERANG
 	dw BULLDOZE
+	dw BULLET_SEED
 	dw EARTHQUAKE
+	dw EGG_BOMB
 	dw EXPLOSION
 	dw GUNK_SHOT
 	dw ICE_SHARD
@@ -23,5 +26,8 @@ AbnormalContactMoves:
 	dw ROCK_THROW
 	dw SACRED_FIRE
 	dw SEED_BOMB
+	dw SELFDESTRUCT
+	dw SPIKE_CANNON
 	dw STONE_EDGE
+	dw TWINEEDLE
 	dw STRUGGLE ; -1
