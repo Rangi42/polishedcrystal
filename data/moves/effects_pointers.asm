@@ -140,6 +140,7 @@ MoveEffectsPointers:
 	dw SolarBeam
 	dw Thunder
 	dw Teleport
+	dw Dig
 	dw Fly
 	dw FlareBlitz
 	dw NormalHit
@@ -167,8 +168,23 @@ MoveEffectsPointers:
 	dw Surf
 	dw Whirlpool
 	dw Twineedle
-	dw ResetStatsHit
+	dw ClearStatsHit
 	dw Frustration
 	dw FakeOut
 	dw FirstImpression
+	dw Mist
+	dw LuckyChant
+	dw ChangeAbility
+	dw Recycle
+	dw OHKO
+	dw MagicCoat
+	dw Eruption
+	dw ChargeHit
+	dw StaticDamage
+	dw LockOn
+	dw Soak
+	dw BurnUp
+	dw Gravity
+	dw MirrorMove
+	dw Incinerate
 	assert_table_length NUM_MOVE_EFECTS

@@ -2592,12 +2592,27 @@ CamperGroup:
 
 	; CAMPER
 	db "Ivan@"
+if DEF(DEBUG)
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+	; party
+	dbp 34, FEAROW
+		db LUM_BERRY
+		dw SPLASH, FLY, NO_MOVE, NO_MOVE
+	dbp 34, GENGAR
+		db IRON_BALL
+		dw WATER_SPOUT, NO_MOVE, NO_MOVE, NO_MOVE
+	dbp 34, FORRETRESS
+		db BERSERK_GENE
+		dw FISSURE, NO_MOVE, NO_MOVE, NO_MOVE
+	db -1 ; end
+else
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 11, DIGLETT
 	dbp 11, ZUBAT
 	dbp 15, DIGLETT
 	db -1 ; end
+endc
 
 	; CAMPER
 	db "Barry@"

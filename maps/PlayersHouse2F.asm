@@ -212,45 +212,56 @@ endr
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	; post-e4
 	setflag ENGINE_CREDITS_SKIP
+
+	; move test
+	givepoke MISDREAVUS, PLAIN_FORM, 30, SITRUS_BERRY
+	givepokemove GRAVITY, wPartyMon1, 0
+	givepokemove SOAK, wPartyMon1, 1
+	givepokemove PLUCK, wPartyMon1, 2
+	givepokemove INCINERATE, wPartyMon1, 3
+	loadmem wPartyMon3PP+0, 99
+	loadmem wPartyMon3PP+1, 99
+	loadmem wPartyMon3PP+2, 99
+	loadmem wPartyMon3PP+3, 99
+
 	; good party
 	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
-	loadmem wPartyMon1EVs+0, 252
-	loadmem wPartyMon1EVs+1, 252
-	loadmem wPartyMon1EVs+2, 252
-	loadmem wPartyMon1EVs+3, 252
-	loadmem wPartyMon1EVs+4, 252
-	loadmem wPartyMon1EVs+5, 252
-	loadmem wPartyMon1DVs+0, $ff
-	loadmem wPartyMon1DVs+1, $ff
-	loadmem wPartyMon1DVs+2, $ff
-	loadmem wPartyMon1Personality, ABILITY_2 | NAT_SATK_UP_ATK_DOWN
-	loadmem wPartyMon1Stats+0, HIGH(999)
-	loadmem wPartyMon1Stats+1, LOW(999)
-	loadmem wPartyMon1Stats+2, HIGH(999)
-	loadmem wPartyMon1Stats+3, LOW(999)
-	loadmem wPartyMon1Stats+4, HIGH(999)
-	loadmem wPartyMon1Stats+5, LOW(999)
-	loadmem wPartyMon1Stats+6, HIGH(999)
-	loadmem wPartyMon1Stats+7, LOW(999)
-	loadmem wPartyMon1Stats+8, HIGH(999)
-	loadmem wPartyMon1Stats+9, LOW(999)
+	loadmem wPartyMon2EVs+0, 252
+	loadmem wPartyMon2EVs+1, 252
+	loadmem wPartyMon2EVs+2, 252
+	loadmem wPartyMon2EVs+3, 252
+	loadmem wPartyMon2EVs+4, 252
+	loadmem wPartyMon2EVs+5, 252
+	loadmem wPartyMon2DVs+0, $ff
+	loadmem wPartyMon2DVs+1, $ff
+	loadmem wPartyMon2DVs+2, $ff
+	loadmem wPartyMon2Personality, ABILITY_2 | NAT_SATK_UP_ATK_DOWN
+	loadmem wPartyMon2Stats+0, HIGH(999)
+	loadmem wPartyMon2Stats+1, LOW(999)
+	loadmem wPartyMon2Stats+2, HIGH(999)
+	loadmem wPartyMon2Stats+3, LOW(999)
+	loadmem wPartyMon2Stats+4, HIGH(999)
+	loadmem wPartyMon2Stats+5, LOW(999)
+	loadmem wPartyMon2Stats+6, HIGH(999)
+	loadmem wPartyMon2Stats+7, LOW(999)
+	loadmem wPartyMon2Stats+8, HIGH(999)
+	loadmem wPartyMon2Stats+9, LOW(999)
 	; hm slave
 	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
-	givepokemove FLY,         wPartyMon2, 0
-	givepokemove HEADBUTT,    wPartyMon2, 1
-	givepokemove DIG,         wPartyMon2, 2
-	givepokemove FRESH_SNACK, wPartyMon2, 3
-	loadmem wPartyMon2PP+0, 15
-	loadmem wPartyMon2PP+1, 15
-	loadmem wPartyMon2PP+2, 10
-	loadmem wPartyMon2PP+3, 10
-	loadmem wPartyMon2PokerusStatus, 1
+	givepokemove FLY,         wPartyMon3, 0
+	givepokemove HEADBUTT,    wPartyMon3, 1
+	givepokemove DIG,         wPartyMon3, 2
+	givepokemove FRESH_SNACK, wPartyMon3, 3
+	loadmem wPartyMon3PP+0, 15
+	loadmem wPartyMon3PP+1, 15
+	loadmem wPartyMon3PP+2, 10
+	loadmem wPartyMon3PP+3, 10
+	loadmem wPartyMon3PokerusStatus, 1
 	; variant form test
 	givepoke TYPHLOSION, HISUIAN_FORM, 50
-	loadmem wPartyMon3Shiny, SHINY_MASK
-	loadmem wPartyMon3PokerusStatus, POKERUS_CURED
+	loadmem wPartyMon4Shiny, SHINY_MASK
+	loadmem wPartyMon4PokerusStatus, POKERUS_CURED
 	; ext species test
-	givepoke URSALUNA, URSALUNA_BLOODMOON_FORM, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; evolve during battle
 	givepoke PUPITAR, 54

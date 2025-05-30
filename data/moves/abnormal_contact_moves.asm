@@ -4,6 +4,7 @@ AbnormalContactMoves:
 	; Special moves that make contact
 	dw DRAINING_KISS
 	dw PETAL_DANCE
+	dw GRASS_KNOT
 	; Physical moves that don't make contact
 	dw BARRAGE
 	dw BONEMERANG
@@ -27,6 +28,7 @@ AbnormalContactMoves:
 	dw SACRED_FIRE
 	dw SEED_BOMB
 	dw SELFDESTRUCT
+	dw SKY_ATTACK
 	dw SPIKE_CANNON
 	dw STONE_EDGE
 	dw TWINEEDLE

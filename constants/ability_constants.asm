@@ -79,6 +79,7 @@
 	const GLUTTONY
 	const ANGER_POINT
 	const UNBURDEN
+	const SIMPLE
 	const DRY_SKIN
 	const DOWNLOAD
 	const IRON_FIST

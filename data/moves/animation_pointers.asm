@@ -395,4 +395,32 @@ endc
 	dba BattleAnim_Struggle ; SNARL
 	dba BattleAnim_Struggle ; FAIRY_WIND
 
+	dba BattleAnim_Struggle ; MIST
+	dba BattleAnim_Struggle ; LUCKY_CHANT
+	dba BattleAnim_Struggle ; BRINE
+	dba BattleAnim_Struggle ; GASTRO_ACID
+	dba BattleAnim_Struggle ; SIMPLE_BEAM
+	dba BattleAnim_Struggle ; WORRY_SEED
+	dba BattleAnim_Struggle ; RECYCLE
+	dba BattleAnim_Struggle ; FISSURE
+	dba BattleAnim_Struggle ; GUILLOTINE
+	dba BattleAnim_Struggle ; HORN_DRILL
+	dba BattleAnim_Struggle ; SHEER_COLD
+	dba BattleAnim_Struggle ; MAGIC_COAT
+	dba BattleAnim_Struggle ; ERUPTION
+	dba BattleAnim_Struggle ; WATER_SPOUT
+	dba BattleAnim_Struggle ; NUZZLE
+	dba BattleAnim_Struggle ; SKULL_BASH
+	dba BattleAnim_Struggle ; SKY_ATTACK
+	dba BattleAnim_Struggle ; RAZOR_WIND
+	dba BattleAnim_Struggle ; ENDEAVOR
+	dba BattleAnim_Struggle ; LOCK_ON
+	dba BattleAnim_Struggle ; MIND_READER
+	dba BattleAnim_Struggle ; SOAK
+	dba BattleAnim_Struggle ; BURN_UP
+	dba BattleAnim_Struggle ; GRAVITY
+	dba BattleAnim_Struggle ; GRASS_KNOT
+	dba BattleAnim_Struggle ; MIRROR_MOVE
+	dba BattleAnim_Struggle ; INCINERATE
+	dba BattleAnim_Struggle ; PLUCK
 	assert_table_length NUM_ATTACKS + 1

@@ -2377,6 +2377,21 @@ _BattleTookSunlightText::
 	line "took in sunlight!"
 	prompt
 
+SECTION "_BattleLoweredHeadText", ROMX
+_BattleLoweredHeadText::
+	line "lowered its head!"
+	prompt
+
+SECTION "_BattleGlowingText", ROMX
+_BattleGlowingText::
+	line "is glowing!"
+	prompt
+
+SECTION "_BattleMadeAWhirlwindText", ROMX
+_BattleMadeAWhirlwindText::
+	line "made a whirlwind!"
+	prompt
+
 SECTION "_BattleFlewText", ROMX
 _BattleFlewText::
 	line "flew up high!"

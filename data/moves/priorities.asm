@@ -4,6 +4,7 @@ MovePriorities:
 	dwb ENDURE,        4
 	dwb PROTECT,       4
 	dwb DETECT,        4
+	dwb MAGIC_COAT,    4
 	dwb FAKE_OUT,      3
 	dwb EXTREMESPEED,  2
 	dwb FIRSTIMPRESS,  2

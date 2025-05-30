@@ -360,6 +360,35 @@ MoveDescriptions1:
 	dw TwisterDescription
 	dw SnarlDescription
 	dw FairyWindDescription
+
+	dw MistDescription
+	dw LuckyChantDescription
+	dw BrineDescription
+	dw GastroAcidDescription
+	dw SimpleBeamDescription
+	dw WorrySeedDescription
+	dw RecycleDescription
+	dw FissureDescription
+	dw GuillotineDescription
+	dw HornDrillDescription
+	dw SheerColdDescription
+	dw MagicCoatDescription
+	dw EruptionDescription
+	dw WaterSpoutDescription
+	dw NuzzleDescription
+	dw SkullBashDescription
+	dw SkyAttackDescription
+	dw RazorWindDescription
+	dw EndeavorDescription
+	dw LockOnDescription
+	dw MindReaderDescription
+	dw SoakDescription
+	dw BurnUpDescription
+	dw GravityDescription
+	dw GrassKnotDescription
+	dw MirrorMoveDescription
+	dw IncinerateDescription
+	dw PluckDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -367,6 +396,7 @@ InvalidMoveDescription:
 	done
 
 LowKickDescription:
+GrassKnotDescription:
 	text "Deals more damage"
 	next "to heavier foes."
 	done
@@ -532,6 +562,7 @@ SparkDescription:
 	next "cause paralysis."
 	done
 
+NuzzleDescription:
 ZapCannonDescription:
 	text "An attack that"
 	next "always paralyzes."
@@ -907,6 +938,16 @@ SafeguardDescription:
 	next "status problems."
 	done
 
+MistDescription:
+	text "Prevents all"
+	next "stat decreases."
+	done
+
+LuckyChantDescription:
+	text "Prevents all"
+	next "critical hits."
+	done
+
 ReflectDescription:
 	text "Raises Defense"
 	next "with a barrier."
@@ -973,6 +1014,9 @@ FalseSwipeDescription:
 
 SolarBeamDescription:
 SolarBladeDescription:
+SkullBashDescription:
+SkyAttackDescription:
+RazorWindDescription:
 	text "1st turn: Prepare"
 	next "2nd turn: Attack"
 	done
@@ -1022,6 +1066,11 @@ RevengeDescription:
 VenoshockDescription:
 	text "Damage doubles if"
 	next "foe is poisoned."
+	done
+
+BrineDescription:
+	text "Damage doubles if"
+	next "foe has low HP."
 	done
 
 RainDanceDescription:
@@ -1452,6 +1501,11 @@ BugBiteDescription:
 	next "eats a held Berry."
 	done
 
+PluckDescription:
+	text "Pecks the foe and"
+	next "eats a held Berry."
+	done
+
 MeanLookDescription:
 BlockDescription:
 SpiderWebDescription:
@@ -1598,4 +1652,91 @@ EggBombDescription:
 FairyWindDescription:
 	text "Stirs a fairy wind"
 	next "up to damage foe. "
+	done
+
+GastroAcidDescription:
+	text "Suppresses foe's"
+	next "ability."
+	done
+
+SimpleBeamDescription:
+	text "Foe's ability"
+	next "becomes Simple."
+	done
+
+WorrySeedDescription:
+	text "Foe's ability"
+	next "becomes Insomnia."
+	done
+
+RecycleDescription:
+	text "Recycles a used"
+	next "item to use again."
+	done
+
+FissureDescription:
+	text "A ground type"
+	next "one-hit KO move."
+	done
+
+GuillotineDescription:
+	text "A powerful pincer"
+	next "one-hit KO move."
+	done
+
+HornDrillDescription:
+	text "A drilling"
+	next "one-hit KO move."
+	done
+
+SheerColdDescription:
+	text "A chilling"
+	next "one-hit KO move."
+	done
+
+MagicCoatDescription:
+	text "Reflects status-"
+	next "changing moves."
+	done
+
+EruptionDescription:
+WaterSpoutDescription:
+	text "Deals more damage"
+	next "with more HP."
+	done
+
+EndeavorDescription:
+	text "Cuts the foe's HP"
+	next "down to the user's."
+	done
+
+LockOnDescription:
+MindReaderDescription:
+	text "Ensures the next"
+	next "attack will hit."
+	done
+
+SoakDescription:
+	text "Soaks the target"
+	next "into a Water-type."
+	done
+
+BurnUpDescription:
+	text "User loses its"
+	next "Fire-type."
+	done
+
+GravityDescription:
+	text "Grounds the user"
+	next "and the foe."
+	done
+
+MirrorMoveDescription:
+	text "Counter the foe"
+	next "with its own move."
+	done
+
+IncinerateDescription:
+	text "Destroys the foe's"
+	next "held berries."
 	done
