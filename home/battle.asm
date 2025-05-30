@@ -493,6 +493,11 @@ GetTrueUserAbility:
 .not_external
 	call StackCallOpponentTurn
 GetOpponentAbility::
+	ld a, BATTLE_VARS_SUBSTATUS1_OPP
+	call GetBattleVar
+	bit SUBSTATUS_ABILITY_SUPPRESSED, a
+	jr nz, .ret_none
+
 	; Get opponent ability.
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
@@ -508,6 +513,7 @@ GetOpponentAbility::
 	farcall AbilityCanBeSuppressed
 	pop hl
 	ret c
+.ret_none
 	xor a
 	ret
 
@@ -634,7 +640,7 @@ GetOpponentSemiInvuln:
 GetUserSemiInvuln:
 ; returns opponent semi invulnerable type in a
 ; sets z if opponent is not semi invulnerable
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	and 1 << SUBSTATUS_SEMI_INVULNERABLE
 	ret z

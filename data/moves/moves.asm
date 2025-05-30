@@ -100,7 +100,7 @@ endc
 	move EFFECT_NORMAL_HIT,         35, FLYING,    100, 35,   0, PHYSICAL ; PECK
 	move EFFECT_NORMAL_HIT,         80, FLYING,    100, 20,   0, PHYSICAL ; DRILL_PECK
 	move EFFECT_CLOSE_COMBAT,      120, FIGHTING,  100,  5,   0, PHYSICAL ; CLOSE_COMBAT
-	move EFFECT_LOW_KICK,            1, FIGHTING,  100, 20,  30, PHYSICAL ; LOW_KICK
+	move EFFECT_LOW_KICK,            1, FIGHTING,  100, 20,   0, PHYSICAL ; LOW_KICK
 	move EFFECT_COUNTER,             1, FIGHTING,   -1, 20,   0, PHYSICAL ; COUNTER
 	move EFFECT_LEVEL_DAMAGE,        1, FIGHTING,  100, 20,   0, PHYSICAL ; SEISMIC_TOSS
 if DEF(FAITHFUL)
@@ -133,9 +133,9 @@ endc
 	move EFFECT_EARTHQUAKE,        100, GROUND,    100, 10,   0, PHYSICAL ; EARTHQUAKE
 	move EFFECT_CONDITIONAL_BOOST,  60, ICE,       100, 10,   0, PHYSICAL ; AVALANCHE
 if DEF(FAITHFUL)
-	move EFFECT_FLY,                80, GROUND,    100, 10,   0, PHYSICAL ; DIG
+	move EFFECT_DIG,                80, GROUND,    100, 10,   0, PHYSICAL ; DIG
 else
-	move EFFECT_FLY,                90, GROUND,    100, 10,   0, PHYSICAL ; DIG
+	move EFFECT_DIG,                90, GROUND,    100, 10,   0, PHYSICAL ; DIG
 endc
 	move EFFECT_TOXIC,               0, POISON,     90, 10,   0, STATUS   ; TOXIC
 	move EFFECT_CONFUSE_HIT,        50, PSYCHIC,   100, 25,  10, SPECIAL  ; CONFUSION
@@ -361,7 +361,7 @@ endc
 	move EFFECT_TRAP,               35, WATER,      85, 15,   0, PHYSICAL ; CLAMP
 	move EFFECT_SWITCH_HIT,         60, WATER,     100, 20,   0, PHYSICAL ; FLIP_TURN
 	move EFFECT_DEFENSE_DOWN_HIT,   75, WATER,      95, 10,  50, PHYSICAL ; RAZOR_SHELL
-	move EFFECT_FLY,                80, WATER,     100, 10,   0, PHYSICAL ; DIVE
+	move EFFECT_DIG,                80, WATER,     100, 10,   0, PHYSICAL ; DIVE
 	move EFFECT_DEFENSE_UP,          0, WATER,      -1, 40,   0, STATUS   ; WITHDRAW
 	move EFFECT_OVERHEAT,          130, GRASS,      90,  5,   0, SPECIAL  ; LEAF_STORM
 	move EFFECT_SPEED_DOWN_2,        0, GRASS,     100, 40,   0, STATUS   ; COTTON_SPORE
@@ -417,7 +417,7 @@ endc
 	move EFFECT_MEAN_LOOK,           0, NORMAL,     -1,  5,   0, STATUS   ; BLOCK
 	move EFFECT_CONDITIONAL_BOOST,  60, FIGHTING,  100, 10,   0, PHYSICAL ; REVENGE
 	move EFFECT_PRIORITY_HIT,       40, FIGHTING,  100, 30,   0, SPECIAL  ; VACUUM_WAVE
-	move EFFECT_RESET_STATS_HIT,    50, POISON,     -1, 15,   0, SPECIAL  ; CLEAR_SMOG
+	move EFFECT_CLEAR_STATS_HIT,    50, POISON,     -1, 15,   0, SPECIAL  ; CLEAR_SMOG
 	move EFFECT_POISON_HIT,         65, POISON,    100, 20,  30, SPECIAL  ; SLUDGE
 	move EFFECT_TRAP,               35, GROUND,     85, 15,   0, PHYSICAL ; SAND_TOMB
 	move EFFECT_ACCURACY_DOWN_HIT,  65, GROUND,     85, 10,  30, SPECIAL  ; MUD_BOMB
@@ -442,4 +442,33 @@ endc
 	move EFFECT_FLINCH_HIT,         40, DRAGON,    100, 20,  20, SPECIAL  ; TWISTER
 	move EFFECT_SP_ATK_DOWN_HIT,    55, DARK,       95, 15, 100, SPECIAL  ; SNARL
 	move EFFECT_NORMAL_HIT,         40, FAIRY,     100, 30,   0, SPECIAL  ; FAIRY_WIND
+
+	move EFFECT_MIST,                0, ICE,        -1, 30,   0, STATUS   ; MIST
+	move EFFECT_LUCKY_CHANT,         0, NORMAL,     -1, 30,   0, STATUS   ; LUCKY_CHANT
+	move EFFECT_CONDITIONAL_BOOST,  65, WATER,     100, 10,   0, SPECIAL  ; BRINE
+	move EFFECT_CHANGE_ABILITY,      0, POISON,    100, 10,   0, STATUS   ; GASTRO_ACID
+	move EFFECT_CHANGE_ABILITY,      0, NORMAL,    100, 15,   0, STATUS   ; SIMPLE_BEAM
+	move EFFECT_CHANGE_ABILITY,      0, GRASS,     100, 10,   0, STATUS   ; WORRY_SEED
+	move EFFECT_RECYCLE,             0, NORMAL,     -1, 10,   0, STATUS   ; RECYCLE
+	move EFFECT_OHKO,                0, GROUND,     30,  5,   0, PHYSICAL ; FISSURE
+	move EFFECT_OHKO,                0, NORMAL,     30,  5,   0, PHYSICAL ; GUILLOTINE
+	move EFFECT_OHKO,                0, NORMAL,     30,  5,   0, PHYSICAL ; HORN_DRILL
+	move EFFECT_OHKO,                0, ICE,        30,  5,   0, SPECIAL  ; SHEER_COLD
+	move EFFECT_MAGIC_COAT,          0, PSYCHIC,    -1, 15,   0, STATUS   ; MAGIC_COAT
+	move EFFECT_ERUPTION,          150, FIRE,      100,  5,   0, SPECIAL  ; ERUPTION
+	move EFFECT_ERUPTION,          150, WATER,     100,  5,   0, SPECIAL  ; WATER_SPOUT
+	move EFFECT_PARALYZE_HIT,       20, ELECTRIC,  100, 20, 100, PHYSICAL ; NUZZLE
+	move EFFECT_CHARGE_HIT,        130, NORMAL,    100, 10,   0, PHYSICAL ; SKULL_BASH
+	move EFFECT_CHARGE_HIT,        140, FLYING,     90,  5,   0, PHYSICAL ; SKY_ATTACK
+	move EFFECT_CHARGE_HIT,         80, NORMAL,    100, 10,   0, SPECIAL  ; RAZOR_WIND
+	move EFFECT_ENDEAVOR,            1, NORMAL,    100,  5,   0, PHYSICAL ; ENDEAVOR
+	move EFFECT_LOCK_ON,             0, NORMAL,     -1,  5,   0, STATUS   ; LOCK_ON
+	move EFFECT_LOCK_ON,             0, NORMAL,     -1,  5,   0, STATUS   ; MIND_READER
+	move EFFECT_SOAK,                0, WATER,     100, 20,   0, STATUS   ; SOAK
+	move EFFECT_BURN_UP,           130, FIRE,      100,  5,   0, SPECIAL  ; BURN_UP
+	move EFFECT_GRAVITY,             0, PSYCHIC,    -1,  5,   0, STATUS   ; GRAVITY
+	move EFFECT_LOW_KICK,            1, GRASS,     100, 20,   0, SPECIAL  ; GRASS_KNOT
+	move EFFECT_MIRROR_MOVE,         0, FLYING,     -1, 20,   0, STATUS   ; MIRROR_MOVE
+	move EFFECT_INCINERATE,         60, FIRE,      100, 15,   0, SPECIAL  ; INCINERATE
+	move EFFECT_BUG_BITE,           60, FLYING,    100, 20,   0, PHYSICAL ; PLUCK
 .IndirectEnd::

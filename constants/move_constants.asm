@@ -366,6 +366,35 @@ endc
 	const TWISTER       ; $161
 	const SNARL         ; $162
 	const FAIRY_WIND    ; $163
+
+	const MIST          ; $164
+	const LUCKY_CHANT   ; $165
+	const BRINE         ; $166
+	const GASTRO_ACID   ; $167
+	const SIMPLE_BEAM   ; $168
+	const WORRY_SEED    ; $169
+	const RECYCLE       ; $16A
+	const FISSURE       ; $16B
+	const GUILLOTINE    ; $16C
+	const HORN_DRILL    ; $16D
+	const SHEER_COLD    ; $16E
+	const MAGIC_COAT    ; $16F
+	const ERUPTION      ; $170
+	const WATER_SPOUT   ; $171
+	const NUZZLE        ; $172
+	const SKULL_BASH    ; $173
+	const SKY_ATTACK    ; $174
+	const RAZOR_WIND    ; $175
+	const ENDEAVOR      ; $176
+	const LOCK_ON       ; $177
+	const MIND_READER   ; $178
+	const SOAK          ; $179
+	const BURN_UP       ; $17A
+	const GRAVITY       ; $17B
+	const GRASS_KNOT    ; $17C
+	const MIRROR_MOVE   ; $17D
+	const INCINERATE    ; $17E
+	const PLUCK         ; $17F
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

@@ -1416,19 +1416,7 @@ HarvestAbility:
 	call GetUsedItemAddr
 	pop de
 	ld a, [hl]
-	and a
-	ret z
-	ld [wCurItem], a
-	ld b, a
-	push bc
-	push de
-	push hl
-	farcall CheckItemPocket
-	pop hl
-	pop de
-	pop bc
-	ld a, [wItemAttributeParamBuffer]
-	cp BERRIES
+	call IsItemBerry
 	ret nz
 
 	; Kill the used item
@@ -1444,6 +1432,31 @@ HarvestAbility:
 
 	; For the player, update backup items. Even in trainer battles.
 	jmp SetBackupItem
+
+IsItemBerry:
+; a: item
+; returns z if item is a berry
+	push hl
+	call GetUsedItemAddr
+	pop de
+	ld a, [hl]
+	and a
+	jr z, .no
+	ld [wCurItem], a
+	ld b, a
+	push bc
+	push de
+	push hl
+	farcall CheckItemPocket
+	pop hl
+	pop de
+	pop bc
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	ret
+.no
+	or 1
+	ret
 
 PickupAbility:
 ; At end of turn, pickup consumed opponent items if we don't have any

@@ -579,7 +579,11 @@ wBattleLowHealthAlarm:: db
 wPlayerSemiInvulnerableType:: db
 wEnemySemiInvulnerableType:: db
 
-	ds 1 ; unused
+wFieldEffects::
+; bit
+; 3-7 unused
+; 0-2 gravity
+	db
 
 wPlayerHazards::
 ; bit
@@ -603,7 +607,14 @@ wPlayerGuards::
 ; 0-3 safeguard
 	db
 
-	ds 2
+wPlayerTeamEffects::
+; bit
+; 6-7 wish
+; 3-5 tailwind
+; 0-2 lucky chant
+	db
+
+	ds 1
 
 wEnemyScreens::
 ; see wPlayerScreens
@@ -612,7 +623,11 @@ wEnemyGuards::
 ; see wPlayerGuards
 	db
 
-	ds 2
+wEnemyTeamEffects::
+; see wPlayerTeamEffects
+	db
+
+	ds 1
 
 wBattleWeather::
 ; 00 normal

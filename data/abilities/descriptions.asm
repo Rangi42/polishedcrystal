@@ -76,6 +76,7 @@ AbilityDescriptions:
 	dw GluttonyDescription
 	dw AngerPointDescription
 	dw UnburdenDescription
+	dw SimpleDescription
 	dw DrySkinDescription
 	dw DownloadDescription
 	dw IronFistDescription
@@ -524,6 +525,11 @@ AngerPointDescription:
 UnburdenDescription:
 	text "Boosts Speed when"
 	next "held item is lost."
+	done
+
+SimpleDescription:
+	text "Doubles the effect"
+	next "of stat changes."
 	done
 
 DrySkinDescription:

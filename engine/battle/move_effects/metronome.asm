@@ -26,7 +26,7 @@ BattleCommand_metronome:
 
 ; No moves the user already has.
 	ld b, a
-	call CheckUserMove
+	farcall CheckUserMove
 	jr z, .GetMove
 
 	ld a, BATTLE_VARS_MOVE

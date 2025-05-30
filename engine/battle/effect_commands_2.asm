@@ -1,0 +1,18 @@
+; Second bank of effect commands
+; Care needs to be taken to farcall utility methods in the effect_commands bank
+INCLUDE "engine/battle/move_effects/burn_up.asm"
+INCLUDE "engine/battle/move_effects/clearstats.asm"
+INCLUDE "engine/battle/move_effects/eruption.asm"
+INCLUDE "engine/battle/move_effects/false_swipe.asm"
+INCLUDE "engine/battle/move_effects/gravity.asm"
+INCLUDE "engine/battle/move_effects/gyro_ball.asm"
+INCLUDE "engine/battle/move_effects/incinerate.asm"
+INCLUDE "engine/battle/move_effects/lock_on.asm"
+INCLUDE "engine/battle/move_effects/lucky_chant.asm"
+INCLUDE "engine/battle/move_effects/magic_coat.asm"
+INCLUDE "engine/battle/move_effects/magnitude.asm"
+INCLUDE "engine/battle/move_effects/mirror_move.asm"
+INCLUDE "engine/battle/move_effects/mist.asm"
+INCLUDE "engine/battle/move_effects/ohko.asm"
+INCLUDE "engine/battle/move_effects/recycle.asm"
+INCLUDE "engine/battle/move_effects/soak.asm"
