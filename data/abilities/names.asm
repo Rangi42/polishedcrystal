@@ -76,6 +76,7 @@ AbilityNames:
 	dw Gluttony
 	dw AngerPoint
 	dw Unburden
+	dw Simple
 	dw DrySkin
 	dw Download
 	dw IronFist
@@ -233,6 +234,7 @@ SnowCloak:       rawchar "Snow Cloak@"
 Gluttony:        rawchar "Gluttony@"
 AngerPoint:      rawchar "Anger Point@"
 Unburden:        rawchar "Unburden@"
+Simple:          rawchar "Simple@"
 DrySkin:         rawchar "Dry Skin@"
 Download:        rawchar "Download@"
 IronFist:        rawchar "Iron Fist@"

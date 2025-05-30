@@ -194,7 +194,7 @@ DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX
 	const SUBSTATUS_CURSE
 	const SUBSTATUS_PROTECT
 	const SUBSTATUS_IDENTIFIED
-	const_skip
+	const SUBSTATUS_ABILITY_SUPPRESSED
 	const SUBSTATUS_ENDURE
 	const SUBSTATUS_FLASH_FIRE
 	const SUBSTATUS_IN_LOVE
@@ -218,7 +218,7 @@ DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX
 	const SUBSTATUS_RECHARGE
 	const SUBSTATUS_CHARGED
 	const SUBSTATUS_SEMI_INVULNERABLE
-	const_skip
+	const SUBSTATUS_MAGIC_COAT
 	const SUBSTATUS_CONFUSED
 
 ; wPlayerSubStatus4 or wEnemySubStatus4 bit flags
@@ -250,6 +250,14 @@ DEF SCREENS_LIGHT_SCREEN EQU %11110000
 DEF GUARD_SAFEGUARD EQU %00001111
 DEF GUARD_MIST      EQU %11110000
 
+; wPlayerTeamEffects or wEnemyTeamEffects bit masks
+DEF TEAM_LUCKY_CHANT EQU %00000111
+DEF TEAM_TAILWIND    EQU %00111000
+DEF TEAM_WISH        EQU %11000000
+
+; wFieldEffects bit masks
+DEF FIELD_GRAVITY    EQU %00000111
+
 ; values in wBattleWeather
 	const_def
 	const WEATHER_NONE
@@ -268,6 +276,15 @@ DEF GUARD_MIST      EQU %11110000
 	const ATKFAIL_AFFECTION ; Evaded due to high Affection
 	const ATKFAIL_ACCMISS   ; missed from accuracy
 	const ATKFAIL_CUSTOM    ; custom message
+
+; value returned from CheckUsableMove (see engine/battle/core.asm)
+	const_def 1
+	const MOVE_UNUSABLE_NO_PP
+	const MOVE_UNUSABLE_DISABLE
+	const MOVE_UNUSABLE_CHOICE_ITEM
+	const MOVE_UNUSABLE_ASSAULT_VEST
+	const MOVE_UNUSABLE_ENCORE
+	const MOVE_UNUSABLE_CHOICE_ABILITY
 
 ; wDeferredSwitch
 	const_def

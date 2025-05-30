@@ -45,6 +45,28 @@ SuckerPunch:
 	posthiteffects
 	endmove
 
+FirstImpression:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	firstturn
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
 LeechHit:
 	checkobedience
 	usedmovetext
@@ -116,6 +138,35 @@ MultiHit:
 	raisesub
 	endmove
 
+Twineedle:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	startloop
+	lowersub
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	clearmissdamage
+	moveanimnosub
+	failuretext
+	applydamage
+	criticaltext
+	cleartext
+	postfainteffects
+	posthiteffects
+	supereffectivetext
+	poisontarget
+	endloop
+	raisesub
+	endmove
+
 RecoilHit:
 	checkobedience
 	usedmovetext
@@ -143,6 +194,30 @@ FlinchHit:
 	usedmovetext
 	doturn
 	hastarget
+	checkhit
+	checkpriority
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	flinchtarget
+	endmove
+
+FakeOut:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	firstturn
 	checkhit
 	checkpriority
 	critical
@@ -1210,6 +1285,27 @@ ResetStats:
 	resetstats
 	endmove
 
+ClearStatsHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	clearstats
+	postfainteffects
+	posthiteffects
+
 Safeguard:
 	checkobedience
 	usedmovetext
@@ -1222,6 +1318,20 @@ Screen:
 	usedmovetext
 	doturn
 	screen
+	endmove
+
+Mist:
+	checkobedience
+	usedmovetext
+	doturn
+	mist
+	endmove
+
+LuckyChant:
+	checkobedience
+	usedmovetext
+	doturn
+	luckychant
 	endmove
 
 TrickRoom:
@@ -1569,6 +1679,7 @@ Splash:
 	checkobedience
 	usedmovetext
 	doturn
+	checkgravity
 	splash
 	endmove
 
@@ -1871,6 +1982,28 @@ Return:
 	critical
 	damagestats
 	happinesspower
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
+Frustration:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	unhappinesspower
 	damagecalc
 	stab
 	damagevariation
@@ -2275,6 +2408,29 @@ Teleport:
 	endmove
 
 Fly:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkgravity
+	charge
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanimnosub
+	raisesub
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
 Dig:
 	checkobedience
 	usedmovetext
@@ -2303,6 +2459,7 @@ Bounce:
 	usedmovetext
 	doturn
 	hastarget
+	checkgravity
 	charge
 	checkhit
 	checkpriority
@@ -2367,4 +2524,171 @@ WeatherBall:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
+	endmove
+
+ChangeAbility:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	bounceback
+	changeability
+	endmove
+
+Recycle:
+	checkobedience
+	usedmovetext
+	doturn
+	recycle
+	endmove
+
+MagicCoat:
+	checkobedience
+	usedmovetext
+	doturn
+	magiccoat
+	endmove
+
+OHKO:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	ohko
+	checkhit
+	checkpriority
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
+Eruption:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	eruption
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
+ChargeHit:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	charge
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	endmove
+
+LockOn:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkpriority
+	bounceback
+	lockon
+	endmove
+
+Soak:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	bounceback
+	soak
+	endmove
+
+BurnUp:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	checkburnup
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	burnup
+	endmove
+
+Gravity:
+	checkobedience
+	usedmovetext
+	doturn
+	gravity
+	endmove
+
+MirrorMove:
+	checkobedience
+	usedmovetext
+	doturn
+	mirrormove
+	endmove
+
+Incinerate:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	conditionalboost
+	moveanim
+	failuretext
+	incinerate FALSE
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	posthiteffects
+	incinerate TRUE
 	endmove

@@ -13,4 +13,6 @@ CriticalHitMoves:
 	dw DRILL_RUN
 	dw CROSS_POISON
 	dw AIR_CUTTER
+	dw LEAF_BLADE
+	dw RAZOR_WIND
 	dw -1

@@ -372,6 +372,16 @@ GetSpeed::
 .paralyze_done
 	farcall ApplySpeedAbilities
 
+	ld hl, wPlayerTeamEffects
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .got_tailwind
+	ld hl, wEnemyTeamEffects
+.got_tailwind
+	and TEAM_TAILWIND
+	ln a, 2, 1 ; x2
+	call nz, MultiplyAndDivide
+
 	; Apply item effects
 	predef GetUserItemAfterUnnerve
 	ld a, b
@@ -3281,11 +3291,9 @@ SpikesDamage:
 	ld c, 1
 SpikesDamage_GotAbility:
 ; Input: b: ability, c: 0 if forced out, 1 otherwise
-	push bc
-	call SetParticipant
-	call HandleAirBalloon
-	pop bc
-	ret z
+	ld a, [wFieldEffects]
+	and FIELD_GRAVITY
+	jr nz, .gravity
 
 	push bc
 	predef GetUserItemAfterUnnerve
@@ -3295,6 +3303,13 @@ SpikesDamage_GotAbility:
 	ret z
 	cp HELD_IRON_BALL
 	jr z, .iron_ball
+
+	push bc
+	call SetParticipant
+	call HandleAirBalloon
+	pop bc
+	ret z
+
 
 	ld a, b
 	cp LEVITATE
@@ -3307,6 +3322,7 @@ SpikesDamage_GotAbility:
 	ret z
 
 .iron_ball
+.gravity
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerHazards
@@ -5538,13 +5554,8 @@ CheckUsableMoves:
 CheckUsableMove:
 ; Check if move a in the move list is usable. Returns z if usable
 ; Note that the first move in the list is move 0, not move 1.
-; If nz, a contains a number describing why it isn't usable:
-; 1 - no PP
-; 2 - disabled
-; 3 - choiced item
-; 4 - assault vest on status move
-; 5 - encored
-; 6 - choiced ability
+; If nz, a contains a number describing why it isn't usable
+; MOVE_UNUSABLE_* (see constants/battle_constants.asm)
 	push hl
 	push de
 	push bc
@@ -5573,11 +5584,11 @@ CheckUsableMove:
 	add hl, bc
 	ld a, [hl]
 	and $3f
-	ld a, 1
+	ld a, MOVE_UNUSABLE_NO_PP
 	ret
 
 .CheckDisabled:
-	ld b, 2
+	ld b, MOVE_UNUSABLE_DISABLE
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerDisableCount]
@@ -5592,7 +5603,7 @@ CheckUsableMove:
 	ret
 
 .CheckChoiceItem:
-	ld b, 3
+	ld b, MOVE_UNUSABLE_CHOICE_ITEM
 	call .GetItemHeldEffect
 	cp HELD_CHOICE
 	ret nz
@@ -5612,14 +5623,14 @@ CheckUsableMove:
 	call GetMoveFixedCategory
 	pop bc
 	cp STATUS
-	ld a, 4
+	ld a, MOVE_UNUSABLE_ASSAULT_VEST
 	ret
 
 .CheckEncored:
 	call .GetEncoreCount
 	and $f
 	jr z, .RetNZ
-	ld b, 5
+	ld b, MOVE_UNUSABLE_ENCORE
 	; fallthrough
 .CheckEncoreVar:
 	call .GetEncoreCount
@@ -5634,7 +5645,7 @@ CheckUsableMove:
 	ret
 
 .CheckChoiceAbility:
-	ld b, 6
+	ld b, MOVE_UNUSABLE_CHOICE_ABILITY
 	call GetTrueUserAbility
 	cp GORILLA_TACTICS
 	ret nz

@@ -306,6 +306,26 @@ BattleText_ReflectFaded:
 	line "Reflect faded!"
 	prompt
 
+BattleText_LuckyChantEnded:
+	text_ram wStringBuffer1
+	text " #mon's"
+	line "Lucky Chant faded!"
+	prompt
+
+BattleText_AbilityAcquired:
+	text "<TARGET>"
+	line "acquired"
+	cont ""
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
+BattleText_AbilitySuppressed:
+	text "<TARGET>'s"
+	line "ability was"
+	cont "suppressed!"
+	prompt
+
 BattleText_TheRainStopped:
 	text "The rain stopped."
 	prompt
@@ -910,6 +930,11 @@ DestinyBondEffectText:
 	cont "opponent with it!"
 	prompt
 
+TookAimEffectText:
+	text "<USER>"
+	line "took aim!"
+	prompt
+
 BellChimedText:
 	text "A bell chimed!"
 	line ""
@@ -1140,6 +1165,12 @@ EliminatedStatsText:
 	line "were eliminated!"
 	prompt
 
+ClearedStatsText:
+	text "<TARGET>'s"
+	line "stat changes were"
+	cont "eliminated!"
+	prompt
+
 TransformedText:
 	text "<USER>"
 	line "transformed into"
@@ -1160,6 +1191,16 @@ TrickRoomEndedText:
 
 	para "returned to"
 	line "normal!"
+	prompt
+
+IntenseGravityText:
+	text "Gravity"
+	line "intensified!"
+	prompt
+
+GravityEndedText:
+	text "The intense"
+	line "gravity let up!"
 	prompt
 
 LightScreenEffectText:
@@ -1267,6 +1308,14 @@ KnockedOffItemText:
 	text "!"
 	prompt
 
+IncineratedItemText:
+	text "<USER>"
+	line "incinerated"
+	cont ""
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
 CantEscapeNowText:
 	text "<TARGET>"
 	line "can't escape now!"
@@ -1347,6 +1396,12 @@ FellInLoveText:
 CoveredByVeilText:
 	text "<USER> is"
 	line "covered by a veil!"
+	prompt
+
+LuckyChantUsedText:
+	text "<USER> is"
+	line "shielded from"
+	cont "critical hits!"
 	prompt
 
 SafeguardProtectText:
@@ -1560,6 +1615,25 @@ HarvestedItemText:
 	cont ""
 	text_ram wStringBuffer1
 	text "!"
+	prompt
+
+RecycledItemText:
+	text "<USER>"
+	line "found one"
+	cont ""
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
+SoakedTargetText:
+	text "<TARGET>"
+	line "transformed into"
+	cont "the Water type!"
+	prompt
+
+BurnedOutText:
+	text "<USER>"
+	line "burned itself out!"
 	prompt
 
 FirePoweredUpText:

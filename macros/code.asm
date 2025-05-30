@@ -87,36 +87,56 @@ MACRO smartcp
 	ENDC
 ENDM
 
-MACRO cp16
+MACRO cphl
 ; arg1: 16 bit register
 ; arg2: value to compare to
-	if STRCMP("\1","hl")
-		REDEF _reghi EQUS "h"
-		REDEF _reglo EQUS "l"
-	elif STRCMP("\1","de")
-		REDEF _reghi EQUS "d"
-		REDEF _reglo EQUS "e"
-	elif STRCMP("\1","bc")
-		REDEF _reghi EQUS "b"
-		REDEF _reglo EQUS "c"
-	else
-		FAIL
-	endc
-	if \2 == 0
-		ld a, _reghi
-		or _reglo
+	if \1 == 0
+		ld a, h
+		or l
 		jp z, .done\@
 	else
-		ld a, _reghi
-		smartcp HIGH(\2)
+		ld a, h
+		smartcp HIGH(\1)
 		jr c, .done\@
 		jr nz, .done\@
-		ld a, _reglo
-		smartcp LOW(\2)
+		ld a, l
+		smartcp LOW(\1)
 	endc
 .done\@
 ENDM
 
-DEF cphl EQUS "cp16 hl,"
-DEF cpde EQUS "cp16 de,"
-DEF cpbc EQUS "cp16 bc,"
+MACRO cpde
+; arg1: 16 bit register
+; arg2: value to compare to
+	if \1 == 0
+		ld a, d
+		or e
+		jp z, .done\@
+	else
+		ld a, d
+		smartcp HIGH(\1)
+		jr c, .done\@
+		jr nz, .done\@
+		ld a, e
+		smartcp LOW(\1)
+	endc
+.done\@
+ENDM
+
+MACRO cpbc
+; arg1: 16 bit register
+; arg2: value to compare to
+	if \1 == 0
+		ld a, b
+		or c
+		jp z, .done\@
+	else
+		ld a, b
+		smartcp HIGH(\1)
+		jr c, .done\@
+		jr nz, .done\@
+		ld a, c
+		smartcp LOW(\1)
+	endc
+.done\@
+ENDM

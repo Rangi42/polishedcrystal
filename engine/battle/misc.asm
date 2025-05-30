@@ -124,3 +124,28 @@ DoWeatherModifiers:
 	srl a
 	ld [wTypeMatchup], a
 	ret
+
+; TODO another routine exists in effect_commands.asm that does this, is this routine also necessary?
+CheckUserMove:
+; Return z if the user has move a.
+	ld b, a
+	ld de, wBattleMonMoves
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, wEnemyMonMoves
+.ok
+
+	ld c, NUM_MOVES
+.loop
+	ld a, [de]
+	inc de
+	cp b
+	ret z
+
+	dec c
+	jr nz, .loop
+
+	ld a, 1
+	and a
+	ret

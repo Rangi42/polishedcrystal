@@ -51,7 +51,7 @@ HandleBetweenTurnEffects:
 	call HandleSafeguard
 	call HandleMist
 	; tailwind
-	; lucky chant
+	call HandleLuckyChant
 	; rainbow dissipating (water+fire pledge)
 	; sea of fire dissipating (grass+fire pledge)
 	; swamp dissipating (water+grass pledge)
@@ -60,7 +60,7 @@ HandleBetweenTurnEffects:
 	; mud sport
 	; wonder room
 	; magic room
-	; gravity
+	call HandleGravity
 	; terrain (dissipating, grass terrain recovery is elsewhere)
 	call HandleEndturnBlockB
 	call CheckFaint
@@ -70,6 +70,10 @@ HandleBetweenTurnEffects:
 	call HandleHealingItems
 
 	; these run even if the user switched at endturn
+	ld hl, wPlayerSubStatus3
+	res SUBSTATUS_MAGIC_COAT, [hl]
+	ld hl, wEnemySubStatus3
+	res SUBSTATUS_MAGIC_COAT, [hl]
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_FLINCHED, [hl]
 	ld hl, wEnemySubStatus4
@@ -860,6 +864,24 @@ HandleTrickRoom:
 	ld hl, TrickRoomEndedText
 	jmp StdBattleTextbox
 
+HandleGravity:
+	ld hl, wFieldEffects
+	ld a, [hl]
+	and FIELD_GRAVITY
+	ret z
+	ld b, a
+	xor [hl]
+	ld [hl], a
+	ld a, b
+	dec a
+	jr nz, .not_done
+	ld hl, GravityEndedText
+	call StdBattleTextbox
+.not_done
+	or [hl]
+	ld [hl], a
+	ret
+
 HandleLeppaBerry:
 	call SetFastestTurn
 	call .do_it
@@ -943,7 +965,7 @@ HandleMist:
 	ld hl, wEnemyGuards
 .got_guards
 	ld de, BattleText_MistFaded
-
+	; fallthrough
 DecrementHighNibble:
 ; Decrements higher nibble in hl. If it reaches 0, print message in de.
 	ld a, [hl]
@@ -955,6 +977,32 @@ DecrementHighNibble:
 PrintTextAfterNibbleTick:
 	ld h, d
 	ld l, e
+	jmp StdBattleTextbox
+
+HandleLuckyChant:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerTeamEffects
+	jr z, .ok
+	ld hl, wEnemyTeamEffects
+.ok
+	ld a, [hl]
+	and TEAM_LUCKY_CHANT
+	ret z
+	dec a
+	push af
+	ld b, a
+	ld a, [hl]
+	and a, ~(TEAM_LUCKY_CHANT)
+	or b
+	ld [hl], a
+	pop af
+	ret nz
+	ld hl, BattleText_LuckyChantEnded
 	jmp StdBattleTextbox
 
 GetTurnAndPlacePrefix:

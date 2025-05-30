@@ -51,6 +51,8 @@ FarChangeStat:
 	bit STAT_TARGET_F, b
 	jr nz, .is_target
 	call GetTrueUserAbility
+	cp SIMPLE
+	call z, ApplySimpleBoost
 	cp CONTRARY
 	jmp nz, .perform_change
 	ld a, b
@@ -94,6 +96,8 @@ FarChangeStat:
 
 .check_ability
 	call GetOpponentAbilityAfterMoldBreaker
+	cp SIMPLE
+	jr z, .ability_simple
 	cp CLEAR_BODY
 	jr z, .ability_immune
 	cp WHITE_SMOKE
@@ -128,7 +132,9 @@ FarChangeStat:
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
 	farjp EndAbility
-
+.ability_simple
+	call ApplySimpleBoost
+	; fallthrough
 .check_item
 	push bc
 	farcall GetOpponentItemAfterUnnerve
@@ -443,3 +449,24 @@ PlayStatChangeAnim:
 	ld a, b
 	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
+
+ApplySimpleBoost:
+	push bc
+	ld a, [wChangedStat]
+	ld b, a
+	and $F
+	ld c, a
+	ld a, b
+	and $F0
+	swap a
+	sla a
+	inc a
+	cp a, 12
+	jr c, .constrained
+	ld a, 11
+.constrained
+	swap a
+	or c
+	ld [wChangedStat], a
+	pop bc
+	ret

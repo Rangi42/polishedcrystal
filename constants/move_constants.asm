@@ -321,6 +321,80 @@ endc
 	const JUMP_KICK     ; $134
 	const SUPERPOWER    ; $135
 	const DETECT        ; $136
+
+	const CONSTRICT     ; $137
+	const BIND          ; $138
+	const BARRAGE       ; $139
+	const COMET_PUNCH   ; $13A
+	const SPIKE_CANNON  ; $13B
+	const POUND         ; $13C
+	const FAKE_OUT      ; $13D
+	const EGG_BOMB      ; $13E
+	const FRUSTRATION   ; $13F
+	const SELFDESTRUCT  ; $140
+	const FLAIL         ; $141
+	const HARDEN        ; $142
+	const LOVELY_KISS   ; $143
+	const TAIL_WHIP     ; $144
+	const WHIRLWIND     ; $145
+	const SWEET_SCENT   ; $146
+	const BLOCK         ; $147
+	const REVENGE       ; $148
+	const VACUUM_WAVE   ; $149
+	const CLEAR_SMOG    ; $14A
+	const SLUDGE        ; $14B
+	const SAND_TOMB     ; $14C
+	const MUD_BOMB      ; $14D
+	const HEAD_SMASH    ; $14E
+	const TWINEEDLE     ; $150
+	const FIRSTIMPRESS  ; $151
+	const SILVER_WIND   ; $152
+	const SIGNAL_BEAM   ; $153
+	const SPIDER_WEB    ; $154
+	const SHADOW_SNEAK  ; $155
+	const SHADOW_PUNCH  ; $156
+	const OMINOUS_WIND  ; $157
+	const FLAME_WHEEL   ; $158
+	const MAGICAL_LEAF  ; $159
+	const BULLET_SEED   ; $15A
+	const HORN_LEECH    ; $15B
+	const LEAF_BLADE    ; $15C
+	const WOOD_HAMMER   ; $15D
+	const SOLAR_BLADE   ; $15E
+	const ELECTROWEB    ; $15F
+	const POWDER_SNOW   ; $160
+	const TWISTER       ; $161
+	const SNARL         ; $162
+	const FAIRY_WIND    ; $163
+
+	const MIST          ; $164
+	const LUCKY_CHANT   ; $165
+	const BRINE         ; $166
+	const GASTRO_ACID   ; $167
+	const SIMPLE_BEAM   ; $168
+	const WORRY_SEED    ; $169
+	const RECYCLE       ; $16A
+	const FISSURE       ; $16B
+	const GUILLOTINE    ; $16C
+	const HORN_DRILL    ; $16D
+	const SHEER_COLD    ; $16E
+	const MAGIC_COAT    ; $16F
+	const ERUPTION      ; $170
+	const WATER_SPOUT   ; $171
+	const NUZZLE        ; $172
+	const SKULL_BASH    ; $173
+	const SKY_ATTACK    ; $174
+	const RAZOR_WIND    ; $175
+	const ENDEAVOR      ; $176
+	const LOCK_ON       ; $177
+	const MIND_READER   ; $178
+	const SOAK          ; $179
+	const BURN_UP       ; $17A
+	const GRAVITY       ; $17B
+	const GRASS_KNOT    ; $17C
+	const MIRROR_MOVE   ; $17D
+	const INCINERATE    ; $17E
+	const PLUCK         ; $17F
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

@@ -15,6 +15,7 @@ INCLUDE "engine/battle/move_effects/baton_pass.asm"
 INCLUDE "engine/battle/move_effects/belly_drum.asm"
 INCLUDE "engine/battle/move_effects/brick_break.asm"
 INCLUDE "engine/battle/move_effects/bug_bite.asm"
+INCLUDE "engine/battle/move_effects/change_ability.asm"
 INCLUDE "engine/battle/move_effects/conversion.asm"
 INCLUDE "engine/battle/move_effects/counter.asm"
 INCLUDE "engine/battle/move_effects/curse.asm"
@@ -24,12 +25,11 @@ INCLUDE "engine/battle/move_effects/dream_eater.asm"
 INCLUDE "engine/battle/move_effects/encore_disable.asm"
 INCLUDE "engine/battle/move_effects/endure.asm"
 INCLUDE "engine/battle/move_effects/explosion.asm"
-INCLUDE "engine/battle/move_effects/false_swipe.asm"
+INCLUDE "engine/battle/move_effects/first_turn.asm"
 INCLUDE "engine/battle/move_effects/focus_energy.asm"
 INCLUDE "engine/battle/move_effects/foresight.asm"
 INCLUDE "engine/battle/move_effects/future_sight.asm"
 INCLUDE "engine/battle/move_effects/growth.asm"
-INCLUDE "engine/battle/move_effects/gyro_ball.asm"
 INCLUDE "engine/battle/move_effects/heal_bell.asm"
 INCLUDE "engine/battle/move_effects/healinglight.asm"
 INCLUDE "engine/battle/move_effects/hidden_power.asm"
@@ -37,7 +37,6 @@ INCLUDE "engine/battle/move_effects/knock_off.asm"
 INCLUDE "engine/battle/move_effects/leech_seed.asm"
 INCLUDE "engine/battle/move_effects/low_kick.asm"
 INCLUDE "engine/battle/move_effects/magic_bounce.asm"
-INCLUDE "engine/battle/move_effects/magnitude.asm"
 INCLUDE "engine/battle/move_effects/mean_look.asm"
 INCLUDE "engine/battle/move_effects/metal_burst.asm"
 INCLUDE "engine/battle/move_effects/metronome.asm"
@@ -158,12 +157,18 @@ DoMove:
 	ld hl, BattleCommandPointers
 	add hl, bc
 	add hl, bc
+	add hl, bc
 	pop bc
 
 	ld a, BANK(BattleCommandPointers)
+	call GetFarByte
+	push af
+	inc hl
+	ld a, BANK(BattleCommandPointers)
 	call GetFarWord
+	pop af
 
-	call _hl_
+	call FarCall_hl
 
 	jr .ReadMoveEffectCommand
 
@@ -339,6 +344,7 @@ BattleCommand_checkturn:
 	jmp EndTurn
 
 .thawing_moves
+	dw FLAME_WHEEL
 	dw SACRED_FIRE
 	dw SCALD
 	dw FLARE_BLITZ
@@ -551,7 +557,10 @@ IncreaseMetronomeCount:
 	ret
 .reset
 	; Struggle doesn't update last move set but does reset count
-	inc a ; cp STRUGGLE
+	push hl
+	call GetMoveIndexFromID
+	cphl STRUGGLE
+	pop hl
 	jr z, .done_update_selected_move
 	dec a
 	ld [de], a
@@ -1139,7 +1148,8 @@ BattleConsumePP:
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	inc a ; cp STRUGGLE
+	call GetMoveIndexFromID
+	cphl STRUGGLE
 	jr z, .end
 
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1190,6 +1200,16 @@ BattleCommand_critical:
 	call GetBattleVar
 	and a
 	ret z
+
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerTeamEffects
+	jr nz, .got_chant
+	ld hl, wEnemyTeamEffects
+.got_chant
+	ld a, [hl]
+	and TEAM_LUCKY_CHANT
+	ret nz
 
 	call GetOpponentAbilityAfterMoldBreaker
 	cp BATTLE_ARMOR
@@ -1541,6 +1561,16 @@ CheckAirborne_GotAbility:
 ; Returns a=0 and z if grounded. Returns nz if not.
 ; a contains ATKFAIL_MISSED for air balloon, ATKFAIL_IMMUNE for flying type,
 ; ATKFAIL_ABILITY for Levitate.
+
+	; Check Gravity
+	ld a, [wFieldEffects]
+	and FIELD_GRAVITY
+	jr z, .no_gravity
+	; All pokemon are grounded during Gravity
+	pop de
+	xor a
+	ret
+.no_gravity
 
 	; Check Iron Ball
 	push bc
@@ -1910,10 +1940,16 @@ BattleCommand_checkhit:
 	call .AntiMinimize
 	ret z
 
+	; Accuracy of -1 means always hits
+	ld a, BATTLE_VARS_MOVE_ACCURACY
+	call GetBattleVar
+	inc a
+	ret z
+
 	; Perfect-accuracy moves
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_ALWAYS_HIT
+	cp EFFECT_ALWAYS_HIT ; redundant?
 	ret z
 	cp EFFECT_ROAR
 	ret z
@@ -1921,9 +1957,12 @@ BattleCommand_checkhit:
 	ret z
 	cp EFFECT_MIRROR_COAT
 	ret z
+	cp EFFECT_OHKO
+	jmp z, .ohko_accuracy
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	inc a ; cp STRUGGLE
+	call GetMoveIndexFromID
+	cphl STRUGGLE
 	ret z
 
 	; Immunity might be set already from Prankster
@@ -2024,6 +2063,14 @@ BattleCommand_checkhit:
 	call DoStatChangeMod
 	add $11
 	call MultiplyAndDivide
+
+	ld a, [wFieldEffects]
+	and FIELD_GRAVITY
+	jr z, .no_gravity
+	ln a, 5, 3
+	call MultiplyAndDivide
+.no_gravity
+
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
@@ -2057,12 +2104,50 @@ BattleCommand_checkhit:
 	ret nz ; final acc ended up >=100%
 	ldh a, [hMultiplicand + 2]
 	ld b, a
+.finish_accuracy
 	ld a, 100
 	call BattleRandomRange
 	cp b
 	ret c
 	ld a, ATKFAIL_ACCMISS
 	jr .Miss_skipset
+
+.ohko_accuracy
+	; OHKO could have already set this
+	ld a, [wAttackMissed]
+	and a
+	ret nz
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	call GetMoveIndexFromID
+	cphl SHEER_COLD
+	ld d, 30
+	jr nz, .ok
+	; Sheer Cold has base 20% accuracy instead of 30% if used by non-Ice types
+	ld a, ICE
+	call CheckIfUserIsSomeType
+	jr z, .ok
+	ld d, 20
+.ok
+	; Get accuracy
+	ld a, [wBattleMonLevel]
+	ld b, a
+	ld a, [wEnemyMonLevel]
+	ld c, a
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .got_levels
+	ld a, c
+	ld c, b
+	ld b, a
+.got_levels
+	ld a, b
+	ld b, 0
+	sub a, c
+	jr c, .finish_accuracy
+	add d
+	ld b, a
+	jr .finish_accuracy
 
 .Miss:
 ; Keep the damage value intact if we're using (Hi) Jump Kick.
@@ -2455,6 +2540,8 @@ BattleCommand_moveanimnosub:
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
+	cp EFFECT_TWINEEDLE
+	jr z, .doublehit
 
 .normal_move
 	xor a
@@ -2552,6 +2639,8 @@ BattleCommand_failuretext:
 	ld a, [hl]
 
 	cp EFFECT_MULTI_HIT
+	jr z, .multihit
+	cp EFFECT_TWINEEDLE
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
 	jmp nz, EndMoveEffect
@@ -2898,8 +2987,9 @@ BattleCommand_startloop:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_DOUBLE_HIT
-	ld a, 2
-	jr z, .got_count
+	jr z, .double_hit
+	cp EFFECT_TWINEEDLE
+	jr z, .double_hit
 
 	call GetTrueUserAbility
 	cp SKILL_LINK
@@ -2928,6 +3018,9 @@ BattleCommand_startloop:
 	add 2
 .got_count
 	ld [hl], a
+	ret
+.double_hit
+	ld [hl], 2
 	ret
 
 BattleCommand_supereffectivetext:
@@ -4479,6 +4572,9 @@ BattleCommand_constantdamage:
 	cp EFFECT_SUPER_FANG
 	jr z, .super_fang
 
+	cp EFFECT_ENDEAVOR
+	jr z, .endeavor
+
 	cp EFFECT_REVERSAL
 	jr z, .reversal
 
@@ -4488,6 +4584,46 @@ BattleCommand_constantdamage:
 	xor a
 	jr .got_power
 
+.endeavor
+	ld hl, wBattleMonHP
+	ld de, wEnemyMonHP
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .got_endeavor_hp
+	push hl
+	push de
+	pop hl
+	pop de
+.got_endeavor_hp
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	ld a, [de]
+	ld b, a
+	inc de
+	ld a, [de]
+	ld e, a
+	ld d, b
+
+	ld a, d
+	cp h
+	jr c, .cannot_use
+	ld a, e
+	cp l
+	jr nc, .can_use
+.cannot_use
+	ld a, ATKFAIL_GENERIC
+	ld [wAttackMissed], a
+	ret
+.can_use
+	; subtract hl from de into ab
+	ld a, e
+	sub l
+	ld b, a
+	ld a, d
+	sbc h
+	jr .got_power
+	
 .super_fang
 	ld hl, wEnemyMonHP
 	ldh a, [hBattleTurn]
@@ -4735,6 +4871,8 @@ SelfInflictDamageToSubstitute:
 	cp EFFECT_MULTI_HIT
 	jr z, .ok
 	cp EFFECT_DOUBLE_HIT
+	jr z, .ok
+	cp EFFECT_TWINEEDLE
 	jr z, .ok
 	xor a
 	ld [hl], a
@@ -5847,6 +5985,8 @@ BattleCommand_charge:
 	ld hl, .semi_invuln_types
 	call IsInWordArray ; hl will point to the low byte of the found item
 	jr nc, .dont_set_digging
+	inc hl
+	inc hl
 	ld b, [hl]
 .got_semi_invuln_type
 	ld b, l
@@ -5868,6 +6008,16 @@ BattleCommand_charge:
 
 	ld hl, .UsedText
 	call BattleTextbox
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	call GetMoveIndexFromID
+	cphl SKULL_BASH
+	jr nz, .end
+	; ld a, STAT_SKIPTEXT | STAT_SILENT
+	xor a
+	ld b, $00 | DEFENSE
+	farcall _ForceRaiseStat
+.end
 	jmp EndMoveEffect
 
 .semi_invuln_types
@@ -5880,7 +6030,7 @@ BattleCommand_charge:
 .UsedText:
 	text_far Text_BattleUser ; "[USER]"
 	text_asm
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	push bc
 	call GetMoveIndexFromID
@@ -5901,16 +6051,32 @@ BattleCommand_charge:
 	ret
 
 .move_messages
-	dw SOLAR_BEAM, .SolarBeam
-	dw FLY,        .Fly
-	dw BOUNCE,     .Bounce
-	dw DIG,        .Dig
-	dw DIVE,       .Dive
+	dw SOLAR_BEAM,  .SolarBeam
+	dw SOLAR_BLADE, .SolarBeam
+	dw SKULL_BASH,  .SkullBash
+	dw SKY_ATTACK,  .SkyAttack
+	dw RAZOR_WIND,  .RazorWind
+	dw FLY,         .Fly
+	dw BOUNCE,      .Bounce
+	dw DIG,         .Dig
+	dw DIVE,        .Dive
 	dw -1
 
 .SolarBeam:
 ; 'took in sunlight!'
 	text_far _BattleTookSunlightText
+	text_end
+
+.SkullBash:
+	text_far _BattleLoweredHeadText
+	text_end
+
+.SkyAttack:
+	text_far _BattleGlowingText
+	text_end
+
+.RazorWind:
+	text_far _BattleMadeAWhirlwindText
 	text_end
 
 .Fly:
@@ -6004,7 +6170,8 @@ BattleCommand_recoil:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld b, a
-	inc a ; cp STRUGGLE
+	call GetMoveIndexFromID
+	cphl STRUGGLE
 	jr z, .StruggleRecoil
 
 	; For all other moves, potentially disable
@@ -6017,6 +6184,8 @@ BattleCommand_recoil:
 
 	ld a, b
 	call GetMoveIndexFromID
+	cphl HEAD_SMASH
+	jr z, .OneHalfRecoil
 	cphl DOUBLE_EDGE
 	jr z, .OneThirdRecoil
 	cphl FLARE_BLITZ
@@ -6040,6 +6209,10 @@ BattleCommand_recoil:
 
 .StruggleRecoil
 	call GetQuarterMaxHP
+	jr .recoil_floor
+
+.OneHalfRecoil
+	call GetHalfMaxHP
 	jr .recoil_floor
 
 .OneThirdRecoil
@@ -6324,6 +6497,10 @@ PrintButItFailed:
 	ld hl, ButItFailedText
 	jmp StdBattleTextbox
 
+ButItFailed:
+	call AnimateFailedMove
+	jr PrintButItFailed
+
 FailAttract:
 FailForesight:
 FailSpikes:
@@ -6374,30 +6551,6 @@ CheckSubstituteOpp:
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret
 
-CheckUserMove:
-; Return z if the user has move a.
-	ld b, a
-	ld de, wBattleMonMoves
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, wEnemyMonMoves
-.ok
-
-	ld c, NUM_MOVES
-.loop
-	ld a, [de]
-	inc de
-	cp b
-	ret z
-
-	dec c
-	jr nz, .loop
-
-	ld a, 1
-	and a
-	ret
-
 BattleCommand_defrost:
 ; Thaw the user.
 
@@ -6417,20 +6570,34 @@ BattleCommand_defrost:
 	jmp StdBattleTextbox
 
 BoostJumptable:
-	dbw AVALANCHE,  DoAvalanche
-	dbw ACROBATICS, DoAcrobatics
-	dbw FACADE,     DoFacade
-	dbw HEX,        DoHex
-	dbw VENOSHOCK,  DoVenoshock
-	dbw KNOCK_OFF,  DoKnockOff
-	dbw PURSUIT,    DoPursuit
-	dbw -1, -1
+	dw AVALANCHE,  DoAvalanche
+	dw REVENGE,    DoAvalanche
+	dw ACROBATICS, DoAcrobatics
+	dw FACADE,     DoFacade
+	dw HEX,        DoHex
+	dw VENOSHOCK,  DoVenoshock
+	dw KNOCK_OFF,  DoKnockOff
+	dw PURSUIT,    DoPursuit
+	dw BRINE,      DoBrine
+	dw -1,
 
 BattleCommand_conditionalboost:
-	ld hl, BoostJumptable
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	jmp BattleJumptable
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	ld hl, BoostJumptable
+	ld de, 4
+	call IsInWordArray
+	ret nc
+	inc hl
+	inc hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push hl
+	ret ; Jump to option
 
 DoAvalanche:
 	ld a, 1 << PHYSICAL | 1 << SPECIAL
@@ -6471,6 +6638,15 @@ DoPursuit:
 	ld a, [wDeferredSwitch]
 	and a
 	jr DoubleDamageIfNZ
+
+DoBrine:
+	call SwitchTurn
+	call GetHalfMaxHP
+	call CompareHP
+	call SwitchTurn
+	jr c, DoubleDamage
+	jr z, DoubleDamage
+	ret
 
 BattleCommand_doubleflyingdamage:
 	call GetOpponentSemiInvuln
