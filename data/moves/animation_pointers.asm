@@ -345,10 +345,10 @@ endc
 	dba BattleAnim_Struggle        ; AIR_CUTTER
 	dba BattleAnim_Struggle        ; POWERUPPUNCH
 	dba BattleAnim_RollingKick     ; ROLLING_KICK
-	dba BattleAnim_Struggle        ; VITAL_THROW
+	dba BattleAnim_VitalThrow      ; VITAL_THROW
 	dba BattleAnim_JumpKick        ; JUMP_KICK
-	dba BattleAnim_Struggle        ; SUPERPOWER
-	dba BattleAnim_Struggle        ; DETECT
+	dba BattleAnim_Superpower      ; SUPERPOWER
+	dba BattleAnim_Detect          ; DETECT
 
 	dba BattleAnim_Constrict       ; CONSTRICT
 	dba BattleAnim_Bind            ; BIND
@@ -356,18 +356,18 @@ endc
 	dba BattleAnim_CometPunch      ; COMET_PUNCH
 	dba BattleAnim_SpikeCannon     ; SPIKE_CANNON
 	dba BattleAnim_Pound           ; POUND
-	dba BattleAnim_Struggle        ; FAKE_OUT
+	dba BattleAnim_FakeOut         ; FAKE_OUT
 	dba BattleAnim_EggBomb         ; EGG_BOMB
-	dba BattleAnim_Struggle        ; FRUSTRATION
+	dba BattleAnim_Frustration     ; FRUSTRATION
 	dba BattleAnim_Selfdestruct    ; SELFDESTRUCT
-	dba BattleAnim_Struggle        ; FLAIL
+	dba BattleAnim_Flail           ; FLAIL
 	dba BattleAnim_Harden          ; HARDEN
 	dba BattleAnim_LovelyKiss      ; LOVELY_KISS
 	dba BattleAnim_TailWhip        ; TAIL_WHIP
 	dba BattleAnim_Whirlwind       ; WHIRLWIND
-	dba BattleAnim_Struggle        ; SWEET_SCENT
+	dba BattleAnim_SweetScent      ; SWEET_SCENT
 	dba BattleAnim_Struggle        ; BLOCK
-	dba BattleAnim_Struggle        ; REVENGE
+	dba BattleAnim_Revenge         ; REVENGE
 	dba BattleAnim_Struggle        ; VACUUM_WAVE
 	dba BattleAnim_Struggle        ; CLEAR_SMOG
 	dba BattleAnim_Sludge          ; SLUDGE
@@ -378,11 +378,11 @@ endc
 	dba BattleAnim_Struggle        ; FIRSTIMPRESS
 	dba BattleAnim_Struggle        ; SILVER_WIND
 	dba BattleAnim_Struggle        ; SIGNAL_BEAM
-	dba BattleAnim_Struggle        ; SPIDER_WEB
+	dba BattleAnim_SpiderWeb       ; SPIDER_WEB
 	dba BattleAnim_Struggle        ; SHADOW_SNEAK
 	dba BattleAnim_Struggle        ; SHADOW_PUNCH
 	dba BattleAnim_Struggle        ; OMINOUS_WIND
-	dba BattleAnim_Struggle        ; FLAME_WHEEL
+	dba BattleAnim_FlameWheel      ; FLAME_WHEEL
 	dba BattleAnim_Struggle        ; MAGICAL_LEAF
 	dba BattleAnim_Struggle        ; BULLET_SEED
 	dba BattleAnim_Struggle        ; HORN_LEECH
@@ -390,8 +390,8 @@ endc
 	dba BattleAnim_Struggle        ; WOOD_HAMMER
 	dba BattleAnim_Struggle        ; SOLAR_BLADE
 	dba BattleAnim_Struggle        ; ELECTROWEB
-	dba BattleAnim_Struggle        ; POWDER_SNOW
-	dba BattleAnim_Struggle        ; TWISTER
+	dba BattleAnim_PowderSnow      ; POWDER_SNOW
+	dba BattleAnim_Twister         ; TWISTER
 	dba BattleAnim_Struggle        ; SNARL
 	dba BattleAnim_Struggle        ; FAIRY_WIND
 
@@ -401,12 +401,12 @@ endc
 	dba BattleAnim_Struggle        ; GASTRO_ACID
 	dba BattleAnim_Struggle        ; SIMPLE_BEAM
 	dba BattleAnim_Struggle        ; WORRY_SEED
-	dba BattleAnim_Struggle        ; RECYCLE
+	dba BattleAnim_Recycle         ; RECYCLE
 	dba BattleAnim_Fissure         ; FISSURE
 	dba BattleAnim_Guillotine      ; GUILLOTINE
 	dba BattleAnim_HornDrill       ; HORN_DRILL
 	dba BattleAnim_Struggle        ; SHEER_COLD
-	dba BattleAnim_Struggle        ; MAGIC_COAT
+	dba BattleAnim_MagicCoat       ; MAGIC_COAT
 	dba BattleAnim_Struggle        ; ERUPTION
 	dba BattleAnim_Struggle        ; WATER_SPOUT
 	dba BattleAnim_Struggle        ; NUZZLE

@@ -114,6 +114,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_SpiralDescent_Fast
 	dw BattleAnimFunction_RadialMoveIn
 	dw BattleAnimFunction_NightSlash
+	dw BattleAnimFunction_RadialMoveOut_Delay
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -4273,9 +4274,16 @@ BattleAnimFunction_AirCutter:
 	ld a, [hl]
 	jmp BattleAnim_StepToTarget
 
+BattleAnimFunction_RadialMoveOut_Delay:
+	call BattleAnim_AnonJumptable
+	
+	dw DoNothing
+	dw BattleAnimFunction_RadialMoveOut
+;fallthrough
 BattleAnimFunction_RadialMoveOut:
 	lb de, 12, 80
 	jr BattleAnimFunc_DoRadialMoveOut
+
 
 BattleAnimFunction_RadialMoveOut_Slow:
 	lb de, 3, 80

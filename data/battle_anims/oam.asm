@@ -289,7 +289,8 @@ BattleAnimOAMData:
 	battleanimoam $01, 18, .OAMData_HoneClaws2    ; BATTLEANIMOAMSET_HONE_CLAWS_2
 	battleanimoam $01, 21, .OAMData_HoneClaws3    ; BATTLEANIMOAMSET_HONE_CLAWS_3
 	battleanimoam $01,  9, .OAMData_HoneClaws3    ; BATTLEANIMOAMSET_HONE_CLAWS_4
-	battleanimoam $00, 18, .OAMData_Hurricane  ; BATTLEANIMOAMSET_HURRICANE
+	battleanimoam $00, 18, .OAMData_Hurricane     ; BATTLEANIMOAMSET_HURRICANE
+	battleanimoam $30, 16, .OAMData_1c            ; BATTLEANIMOAMSET_RECYCLE
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -349,22 +350,22 @@ BattleAnimOAMData:
 	dsprite   1, 0,   0, 4, $00, $0 | X_FLIP | Y_FLIP
 
 .OAMData_1c:
-	dsprite  -2, 0,  -2, 0, $00, $0
-	dsprite  -2, 0,  -1, 0, $01, $0
-	dsprite  -2, 0,   0, 0, $02, $0
-	dsprite  -2, 0,   1, 0, $03, $0
-	dsprite  -1, 0,  -2, 0, $04, $0
-	dsprite  -1, 0,  -1, 0, $05, $0
-	dsprite  -1, 0,   0, 0, $06, $0
-	dsprite  -1, 0,   1, 0, $07, $0
-	dsprite   0, 0,  -2, 0, $08, $0
-	dsprite   0, 0,  -1, 0, $09, $0
-	dsprite   0, 0,   0, 0, $0a, $0
-	dsprite   0, 0,   1, 0, $0b, $0
-	dsprite   1, 0,  -2, 0, $0c, $0
-	dsprite   1, 0,  -1, 0, $0d, $0
-	dsprite   1, 0,   0, 0, $0e, $0
-	dsprite   1, 0,   1, 0, $0f, $0
+	dbsprite  -2,  -2, 0, 0, $00, $0
+	dbsprite  -1,  -2, 0, 0, $01, $0
+	dbsprite   0,  -2, 0, 0, $02, $0
+	dbsprite   1,  -2, 0, 0, $03, $0
+	dbsprite  -2,  -1, 0, 0, $04, $0
+	dbsprite  -1,  -1, 0, 0, $05, $0
+	dbsprite   0,  -1, 0, 0, $06, $0
+	dbsprite   1,  -1, 0, 0, $07, $0
+	dbsprite  -2,   0, 0, 0, $08, $0
+	dbsprite  -1,   0, 0, 0, $09, $0
+	dbsprite   0,   0, 0, 0, $0a, $0
+	dbsprite   1,   0, 0, 0, $0b, $0
+	dbsprite  -2,   1, 0, 0, $0c, $0
+	dbsprite  -1,   1, 0, 0, $0d, $0
+	dbsprite   0,   1, 0, 0, $0e, $0
+	dbsprite   1,   1, 0, 0, $0f, $0
 
 .OAMData_00:
 	dsprite  -2, 0,  -2, 0, $00, $0

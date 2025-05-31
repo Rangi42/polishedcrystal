@@ -160,8 +160,8 @@ BattleAnimFrameData:
 	dw .Frameset_ImpFlipped              ; BATTLEANIMFRAMESET_IMP_FLIPPED
 	dw .Frameset_Cherub                  ; BATTLEANIMFRAMESET_CHERUB
 	dw .Frameset_9f ; 9f
-	dw .Frameset_a0 ; a0
-	dw .Frameset_a1 ; a1
+	dw .Frameset_EncoreHand              ; BATTLEANIMFRAMESET_ENCORE_HAND
+	dw .Frameset_EncoreHandFlipped       ; BATTLEANIMFRAMESET_ENCORE_HAND_FLIPPED
 	dw .Frameset_a2 ; a2
 	dw .Frameset_MorningSun              ; BATTLEANIMFRAMESET_MORNING_SUN
 	dw .Frameset_Glimmer                 ; BATTLEANIMFRAMESET_GLIMMER
@@ -246,6 +246,7 @@ BattleAnimFrameData:
 	dw .Frameset_GrowingHeart            ; BATTLEANIMFRAMESET_GROWING_HEART
 	dw .Frameset_WaterBall               ; BATTLEANIMFRAMESET_WATER_BALL
 	dw .Frameset_GrowingBall             ; BATTLEANIMFRAMESET_GROWING_BALL
+	dw .Frameset_Recycle                 ; BATTLEANIMFRAMESET_RECYCLE
 
 ; VAR3 animations start here -------
 	dw .Frameset_BugBuzz                 ; BATTLEANIMFRAMESET_BUG_BUZZ
@@ -1190,11 +1191,11 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_BA, 32
 	battleoamend
 
-.Frameset_a0:
+.Frameset_EncoreHand:
 	battleoamframe BATTLEANIMOAMSET_BB, 32, OAM_X_FLIP
 	battleoamend
 
-.Frameset_a1:
+.Frameset_EncoreHandFlipped:
 	battleoamframe BATTLEANIMOAMSET_BB, 32
 	battleoamend
 
@@ -1754,4 +1755,11 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_1B,  2
 	battleoamframe BATTLEANIMOAMSET_7F,  2
 	battleoamframe BATTLEANIMOAMSET_01,  2 ; HIT
+	battleoamrestart
+
+.Frameset_Recycle:
+	battleoamframe BATTLEANIMOAMSET_A3,          6
+	battleoamframe BATTLEANIMOAMSET_B8,          6
+	battleoamframe BATTLEANIMOAMSET_U_TURN_FALL, 6
+	battleoamframe BATTLEANIMOAMSET_RECYCLE,     6
 	battleoamrestart

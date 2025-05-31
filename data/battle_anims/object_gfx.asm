@@ -50,7 +50,6 @@ AnimObjGFX:
 	battleanimgfx 21, AnimObjObjectsGFX
 	battleanimgfx 38, AnimObjShineGFX
 	battleanimgfx 35, AnimObjAngelsGFX
-	battleanimgfx 18, AnimObjWaveGFX
 	battleanimgfx 24, AnimObjAeroblastGFX
 	battleanimgfx 16, AnimObjMoonGFX
 	battleanimgfx 16, AnimObjAuraSphereGFX
@@ -91,6 +90,7 @@ AnimObjGFX:
 	battleanimgfx  4, AnimObjPetalsGFX
 	battleanimgfx 10, AnimObjGlowShadowGFX
 	battleanimgfx  8, AnimObjChopGFX
+	battleanimgfx 64, AnimObjRecycleGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX
