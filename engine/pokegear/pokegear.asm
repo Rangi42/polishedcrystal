@@ -450,8 +450,8 @@ PokegearClock_Joypad:
 	ret
 
 Pokegear_UpdateClock:
-	hlcoord 3, 5
-	lb bc, 5, 14
+	hlcoord 3, 4
+	lb bc, 7, 14
 	call ClearBox
 	ldh a, [hHours]
 	ld b, a
@@ -459,13 +459,24 @@ Pokegear_UpdateClock:
 	ld c, a
 	ld a, [wOptions2]
 	bit CLOCK_FORMAT, a
-	decoord 6, 8
+	decoord 6, 9
 	jr z, .h12
-	decoord 8, 8
+	decoord 8, 9
 .h12
 	call PrintHoursMins
+	ld hl, TimeOfDayStrings
+	ld a, [wTimeOfDay]
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld c, [hl]
+	add hl, bc
+	ld d, h
+	ld e, l
+	hlcoord 6, 7
+	rst PlaceString
 	ld hl, .DayText
-	bccoord 6, 6
+	bccoord 6, 5
 	jmp PlaceWholeStringInBoxAtOnce
 
 .DayText:

@@ -550,6 +550,14 @@ GetTimeOfDayString:
 	ld de, NITE_String
 	ret
 
+TimeOfDayStrings:
+	table_width 1
+	dr MORN_String
+	dr DAY_String
+	dr NITE_String
+	dr EVE_String
+	assert_table_length NUM_DAYTIMES
+
 NITE_String: db "Night@"
 MORN_String: db "Morning@"
 DAY_String:  db "Day@"
