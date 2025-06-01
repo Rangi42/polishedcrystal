@@ -229,12 +229,219 @@ FacingPlayerDistance::
 	call GetSpriteDirection
 	cp e
 	jr nz, .NotFacing
+
+	push de
+	ld hl, OBJECT_MAP_X ; x
+	add hl, bc
+	ld d, [hl]
+
+	ld hl, OBJECT_MAP_Y ; y
+	add hl, bc
+	ld e, [hl]
+
+	cp OW_LEFT
+	jr z, .check_boulder_left
+	cp OW_RIGHT
+	jr z, .check_boulder_right
+	cp OW_UP
+	jr z, .check_boulder_up
+	jmp .check_boulder_down
+
+.is_facing
 	scf
 	ret
 
 .NotFacing:
 	and a
 	ret
+
+.check_boulder_left
+	; trainer x = d, y = e
+	push bc
+	ld bc, wObject1Struct
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+.check_boulder_left_loop
+	; boulder would need to be at the left of the trainer
+	ld a, [hl]
+	cp d
+	jr nc, .next_left_check
+	; boulder would need to be to the right of the player
+	ld hl, wPlayerMapX
+	cp [hl]
+	jr c, .next_left_check
+	; boulder would need to be at the same y as the trainer
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld a, [hl]
+	cp e
+	jr nz, .next_left_check
+	; check for boulder sprite
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	cp SPRITE_BOULDER_ROCK_FOSSIL
+	jr nz, .next_left_check
+	; found a boulder
+	pop bc
+	pop de
+	jr .NotFacing
+
+.next_left_check
+	ld hl, OBJECT_LENGTH + OBJECT_MAP_X
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld a, b
+	cp HIGH(wObjectStructsEnd)
+	jr nz, .check_boulder_left_loop
+	ld a, c
+	cp LOW(wObjectStructsEnd)
+	jr nz, .check_boulder_left_loop
+	pop bc
+	pop de
+	jr .is_facing
+
+.check_boulder_right
+	; trainer x = d, y = e
+	push bc
+	ld bc, wObject1Struct
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+.check_boulder_right_loop
+	; boulder would need to be at the right of the trainer
+	ld a, [hl]
+	cp d
+	jr c, .next_right_check
+	; boulder would need to be to the left of the player
+	ld hl, wPlayerMapX
+	cp [hl]
+	jr nc, .next_right_check
+	; boulder would need to be at the same y as the trainer
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld a, [hl]
+	cp e
+	jr nz, .next_right_check
+	; check for boulder sprite
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	cp SPRITE_BOULDER_ROCK_FOSSIL
+	jr nz, .next_right_check
+	; found a boulder
+	pop bc
+	pop de
+	jr .NotFacing
+
+.next_right_check
+	ld hl, OBJECT_LENGTH + OBJECT_MAP_X
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld a, b
+	cp HIGH(wObjectStructsEnd)
+	jr nz, .check_boulder_right_loop
+	ld a, c
+	cp LOW(wObjectStructsEnd)
+	jr nz, .check_boulder_right_loop
+	pop bc
+	pop de
+	jr .is_facing
+
+.check_boulder_up
+	; trainer x = d, y = e
+	push bc
+	ld bc, wObject1Struct
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+.check_boulder_up_loop
+	; boulder would need to be above the trainer
+	ld a, [hl]
+	cp e
+	jr nc, .next_up_check
+	; boulder would need to be below the player
+	ld hl, wPlayerMapY
+	cp [hl]
+	jr c, .next_up_check
+	; boulder would need to be at the same x as the trainer
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld a, [hl]
+	cp d
+	jr nz, .next_up_check
+	; check for boulder sprite
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	cp SPRITE_BOULDER_ROCK_FOSSIL
+	jr nz, .next_up_check
+	; found a boulder
+	pop bc
+	pop de
+	jmp .NotFacing
+
+.next_up_check
+	ld hl, OBJECT_LENGTH + OBJECT_MAP_Y
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld a, b
+	cp HIGH(wObjectStructsEnd)
+	jr nz, .check_boulder_up_loop
+	ld a, c
+	cp LOW(wObjectStructsEnd)
+	jr nz, .check_boulder_up_loop
+	pop bc
+	pop de
+	jmp .is_facing
+
+.check_boulder_down
+	; trainer x = d, y = e
+	push bc
+	ld bc, wObject1Struct
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+.check_boulder_down_loop
+	; boulder would need to be below the trainer
+	ld a, [hl]
+	cp e
+	jr c, .next_down_check
+	; boulder would need to be above the player
+	ld hl, wPlayerMapY
+	cp [hl]
+	jr nc, .next_down_check
+	; boulder would need to be at the same x as the trainer
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld a, [hl]
+	cp d
+	jr nz, .next_down_check
+	; check for boulder sprite
+	ld hl, OBJECT_SPRITE
+	add hl, bc
+	ld a, [hl]
+	cp SPRITE_BOULDER_ROCK_FOSSIL
+	jr nz, .next_down_check
+	; found a boulder
+	pop bc
+	pop de
+	jmp .NotFacing
+
+.next_down_check
+	ld hl, OBJECT_LENGTH + OBJECT_MAP_Y
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld a, b
+	cp HIGH(wObjectStructsEnd)
+	jr nz, .check_boulder_down_loop
+	ld a, c
+	cp LOW(wObjectStructsEnd)
+	jr nz, .check_boulder_down_loop
+	pop bc
+	pop de
+	jmp .is_facing
 
 PrintWinLossText::
 	ld a, [wBattleResult]
