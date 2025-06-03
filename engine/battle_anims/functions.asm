@@ -114,6 +114,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_SpiralDescent_Fast
 	dw BattleAnimFunction_RadialMoveIn
 	dw BattleAnimFunction_NightSlash
+	dw BattleAnimFunction_RadialMoveOut_Delay
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -1115,6 +1116,15 @@ BattleAnimFunction_Bubble:
 	ld a, [hl]
 	cp $98
 	jr nc, .okay
+	ld de, $88 ; Assume Fast Value for Bubblebeam
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	and $0f
+	dec a
+	jr z, .fast
+	ld de, $60 ; Set Slow Value if PARAM ends with 1
+.fast
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -1122,7 +1132,6 @@ BattleAnimFunction_Bubble:
 	add hl, bc
 	ld h, [hl]
 	ld l, a
-	ld de, $60
 	add hl, de
 	ld e, l
 	ld d, h
@@ -4265,12 +4274,19 @@ BattleAnimFunction_AirCutter:
 	ld a, [hl]
 	jmp BattleAnim_StepToTarget
 
+BattleAnimFunction_RadialMoveOut_Delay:
+	call BattleAnim_AnonJumptable
+	
+	dw DoNothing
+	dw BattleAnimFunction_RadialMoveOut
+;fallthrough
 BattleAnimFunction_RadialMoveOut:
 	lb de, 12, 80
 	jr BattleAnimFunc_DoRadialMoveOut
 
+
 BattleAnimFunction_RadialMoveOut_Slow:
-	lb de, 3, 80
+	lb de, 3, 120
 	jr BattleAnimFunc_DoRadialMoveOut
 
 BattleAnimFunction_RadialMoveOut_VerySlow:

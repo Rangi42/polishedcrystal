@@ -252,6 +252,21 @@ if !DEF(MONOCHROME)
 	RGB 13, 29, 23
 	RGB 03, 23, 16
 	RGB 00, 18, 12
+; recycle
+	RGB 31, 31, 31
+	RGB 08, 09, 28
+	RGB 29, 03, 04
+	RGB 00, 00, 00
+; lavarocks
+	RGB 31, 31, 31
+	RGB 31, 13, 01
+	RGB 06, 05, 07
+	RGB 00, 00, 00
+; charred
+	RGB 31, 31, 31
+	RGB 14, 14, 15
+	RGB 12, 12, 13
+	RGB 09, 09, 11
 else
 rept NUM_CUSTOM_BATTLE_PALETTES - 6
 	MONOCHROME_RGB_FOUR
