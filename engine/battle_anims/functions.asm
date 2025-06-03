@@ -785,7 +785,7 @@ BattleAnimFunction_FireBlast:
 
 .set_up_eight
 	call BattleAnim_IncAnonJumptableIndex
-	ld a, BATTLEANIMFRAMESET_10
+	ld a, BATTLEANIMFRAMESET_EMBER
 	call FarReinitBattleAnimFrameset
 .eight
 	ld hl, BATTLEANIMSTRUCT_VAR1
@@ -1840,7 +1840,7 @@ BattleAnimFunction_LeechSeed:
 	jr nc, BattleAnim_StepThrownToTarget
 
 	ld [hl], $40
-	ld a, BATTLEANIMFRAMESET_57
+	ld a, BATTLEANIMFRAMESET_LEECH_SEED_2
 	call FarReinitBattleAnimFrameset
 	jmp BattleAnim_IncAnonJumptableIndex
 
@@ -1855,7 +1855,7 @@ BattleAnimFunction_LeechSeed:
 
 .flutter
 	call BattleAnim_IncAnonJumptableIndex
-	ld a, BATTLEANIMFRAMESET_58
+	ld a, BATTLEANIMFRAMESET_LEECH_SEED_3
 	jmp FarReinitBattleAnimFrameset
 
 BattleAnimFunction_Spikes_one:
@@ -4286,7 +4286,7 @@ BattleAnimFunction_RadialMoveOut:
 
 
 BattleAnimFunction_RadialMoveOut_Slow:
-	lb de, 3, 80
+	lb de, 3, 120
 	jr BattleAnimFunc_DoRadialMoveOut
 
 BattleAnimFunction_RadialMoveOut_VerySlow:

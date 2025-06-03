@@ -937,8 +937,13 @@ BattleAnim_HydroPump:
 	anim_wait 16
 	anim_ret
 
+BattleAnim_MuddyWater:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BROWN
+	anim_bgp $f8
+	anim_jump BattleAnim_Surf.start
 BattleAnim_Surf:
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
+.start
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_bgeffect ANIM_BG_SURF, $0, $0, $0
 	anim_obj ANIM_OBJ_SURF,  11, 0,  13, 0, $8
@@ -979,6 +984,7 @@ BattleAnim_LeechSeed:
 	anim_ret
 
 BattleAnim_RazorLeaf:
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_GREEN
 	anim_1gfx ANIM_GFX_PLANT
 	anim_sound 0, 0, SFX_VINE_WHIP
 	anim_obj ANIM_OBJ_RAZOR_LEAF,   6, 0,  10, 0, $28
@@ -1060,7 +1066,7 @@ BattleAnim_Thunderpunch:
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_sound 0, 1, SFX_THUNDER
-	anim_obj ANIM_OBJ_THUNDER3, -13, 0,   8, 4, $0
+	anim_obj ANIM_OBJ_THUNDER_RIGHT, -13, 0,   8, 4, $0
 	anim_wait 64
 	anim_ret
 
@@ -1105,13 +1111,13 @@ BattleAnim_Thunder:
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
 	anim_sound 0, 1, SFX_THUNDER
-	anim_obj ANIM_OBJ_THUNDER2,  15, 0,   8, 4, $0
+	anim_obj ANIM_OBJ_THUNDER_LEFT, 120, 68, $0
 	anim_wait 16
 	anim_sound 0, 1, SFX_THUNDER
-	anim_obj ANIM_OBJ_THUNDER3, -13, 0,   8, 4, $0
+	anim_obj ANIM_OBJ_THUNDER_RIGHT, 152, 68, $0
 	anim_wait 16
 	anim_sound 0, 1, SFX_THUNDER
-	anim_obj ANIM_OBJ_THUNDER1, -15, 0,   8, 4, $0
+	anim_obj ANIM_OBJ_THUNDER_CENTER, 136, 68, $0
 	anim_wait 48
 	anim_ret
 
@@ -3001,7 +3007,7 @@ BattleAnim_TriAttack:
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $4
 	anim_sound 0, 1, SFX_THUNDER
-	anim_obj ANIM_OBJ_THUNDER3, 152, 68, $0
+	anim_obj ANIM_OBJ_THUNDER_RIGHT, 152, 68, $0
 	anim_wait 16
 	anim_ret
 
@@ -3284,7 +3290,7 @@ BattleAnim_SeismicToss:
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
 	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
-	anim_1gfx ANIM_GFX_U_TURN
+	anim_1gfx ANIM_GFX_BLUR
 	anim_obj ANIM_OBJ_BLUR_DIAGONAL, 64, 92, $18
 	anim_wait 8
 	anim_clearobjs
@@ -6131,24 +6137,19 @@ BattleAnim_Transfer_Orbs_branch:
 	anim_ret
 
 BattleAnim_UTurn:
-	anim_1gfx ANIM_GFX_SPEED
+	anim_3gfx ANIM_GFX_HIT_2, ANIM_GFX_SPEED, ANIM_GFX_BLUR
 	anim_sound 6, 2, SFX_THROW_BALL
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
 	anim_call BattleAnimSub_QuickAttack
 	anim_wait 12
-	anim_1gfx ANIM_GFX_U_TURN
 	anim_obj ANIM_OBJ_BLUR_DIAGONAL, 64, 92, $18
 	anim_wait 8
 	anim_clearobjs
-	anim_wait 1
-	anim_1gfx ANIM_GFX_HIT
 	anim_wait 1
 	anim_sound 0, 1, SFX_DOUBLE_KICK
 	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 132, 56, $0
 	anim_wait 8
 	anim_clearobjs
-	anim_wait 1
-	anim_1gfx ANIM_GFX_U_TURN
 	anim_wait 1
 	anim_sound 0, 0, SFX_RETURN
 	anim_obj ANIM_OBJ_BLUR_VERTICAL_UP, 132, 30, $30
