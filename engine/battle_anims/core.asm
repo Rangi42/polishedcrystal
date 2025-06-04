@@ -45,7 +45,10 @@ endr
 	ld [hli], a ; 02
 	ld a, [de]
 	inc de
-	ld [hli], a ; Frameset ID
+	ld [hli], a ; Frameset ID hi
+	ld a, [de]
+	inc de
+	ld [hli], a ; Frameset ID lo
 	ld a, [de]
 	inc de
 	ld [hli], a ; Function
@@ -193,8 +196,12 @@ BattleAnimOAMUpdate:
 	; If frameset ID is dynamic, var3 may adjust XY flip.
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
-	ld a, [hl]
-	cp FIRST_DYNAMIC_FRAMESET
+	push bc
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
+	cpbc FIRST_DYNAMIC_FRAMESET
+	pop bc
 	ret c
 
 	; Graphics are ordered in E S NE order.
