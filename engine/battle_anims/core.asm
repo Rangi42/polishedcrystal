@@ -45,10 +45,10 @@ endr
 	ld [hli], a ; 02
 	ld a, [de]
 	inc de
-	ld [hli], a ; Frameset ID hi
+	ld [hli], a ; Frameset ID lo
 	ld a, [de]
 	inc de
-	ld [hli], a ; Frameset ID lo
+	ld [hli], a ; Frameset ID hi
 	ld a, [de]
 	inc de
 	ld [hli], a ; Function
