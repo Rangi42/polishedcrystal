@@ -1032,6 +1032,7 @@ BattleAnimFunction_RockSmash:
 	rlca
 	rlca
 	add $19
+	; Does not support 16 bit framesets
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -1469,6 +1470,7 @@ BattleAnimFunction_Clamp_Encore:
 
 .zero:
 	call BattleAnim_IncAnonJumptableIndex
+	; Does not support 16 bit framesets
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, [hl]
@@ -1806,6 +1808,7 @@ BattleAnimFunction_Wrap:
 	dw DoNothing
 
 .one:
+; Does not support 16 bit framesets
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, [hl]
@@ -2517,6 +2520,7 @@ BattleAnimFunction_Dizzy:
 
 .zero:
 	call BattleAnim_IncAnonJumptableIndex
+	; Does not support 16 bit framesets
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, [hl]
@@ -3642,6 +3646,7 @@ BattleAnimFunction_LockOnMindReader:
 	add hl, bc
 	ld a, [hl]
 	and $f
+	; Does not support 16 bit framesets
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	add [hl]

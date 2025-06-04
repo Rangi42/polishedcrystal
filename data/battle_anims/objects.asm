@@ -10,7 +10,7 @@ MACRO battleanimobj
 	db \2 ; enemy animation y fix param
 	; if $FF: y = y + 5 tiles
 	; else:   y = -y - (1 tile) * (is_softboiled_animation)
-	db \3 ; video sequence
+	dw \3 ; video sequence
 	db \4 ; callback
 	db \5 ; palette
 	db \6 ; tile offset
