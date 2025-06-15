@@ -390,7 +390,7 @@ MACRO battle_anim_struct
 \1_Index::              db
 \1_Anim01::             db
 \1_Anim02::             db
-\1_FramesetIndex::      db
+\1_FramesetIndex::      dw
 \1_FunctionIndex::      db
 \1_Anim05::             db
 \1_TileID::             db
@@ -410,7 +410,6 @@ MACRO battle_anim_struct
 \1_Anim14::             db
 \1_Anim15::             db
 \1_Anim16::             db
-\1_Anim17::             db
 ENDM
 
 MACRO battle_bg_effect

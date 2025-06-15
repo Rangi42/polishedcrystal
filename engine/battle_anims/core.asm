@@ -28,7 +28,7 @@ QueueBattleAnimation:
 	ld e, [hl]
 	; d was set to 0 or 1 previously
 	ld hl, BattleAnimObjects
-rept 6
+rept 7
 	add hl, de
 endr
 	ld e, l
@@ -198,8 +198,8 @@ BattleAnimOAMUpdate:
 	add hl, bc
 	push bc
 	ld a, [hli]
-	ld c, [hl]
-	ld b, a
+	ld b, [hl]
+	ld c, a
 	cpbc FIRST_DYNAMIC_FRAMESET
 	pop bc
 	ret c
