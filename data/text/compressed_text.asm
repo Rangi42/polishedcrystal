@@ -14,8 +14,8 @@ MACRO _branch_node
 			; (since node IDs below the first leaf node ID must be parent nodes)
 			db x + FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
 		else
-			; other characters are unmapped; leaf nodes $fd-$ff are unused
-			fail "invalid leaf node character ${02x:x} for code {_branch_code}"
+			; other characters are not mappable with leaf nodes
+			fail "invalid leaf node character {___huffman_char_{_branch_code}} (${02x:x}) for code {_branch_code}"
 		endc
 	else
 		DEF num_parent_nodes += 1
@@ -36,6 +36,6 @@ TextCompressionHuffmanTree:
 
 for x, 256
 	if DEF(___huffman_data_{02X:x}) && !DEF(___huffman_leaf_node_{02X:x})
-		fail "unreachable leaf node character {___huffman_char_{0{u:___huffman_length_{02X:x}}b:___huffman_data_{02X:x}}} ({#02X:x})"
+		fail "unreachable leaf node character {___huffman_char_{0{u:___huffman_length_{02X:x}}b:___huffman_data_{02X:x}}} ({#02x:x})"
 	endc
 endr
