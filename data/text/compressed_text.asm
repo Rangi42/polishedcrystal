@@ -1,30 +1,46 @@
+; root node
+DEF node_id = ROOT_NODE_ID
+DEF node_prefix_{02X:node_id} EQUS ""
+
 MACRO parent_node
-	_parent_node \1 ; left branch for bit 0
-	_parent_node \2 ; right branch for bit 1
+	_parent_node \1, 0 ; left branch for bit 0
+	_parent_node \2, 1 ; right branch for bit 1
+	DEF node_id += 1
 ENDM
 
 MACRO _parent_node
+	DEF x = \1
 	if STRFIND("\1", "$") == 0
 		; hex literals indicate parent nodes
-		assert ROOT_NODE_ID < \1 && \1 < FIRST_LEAF_NODE_ID, "invalid parent node value \1"
-		db \1
+		assert ROOT_NODE_ID < x && x < FIRST_LEAF_NODE_ID, "invalid parent node value \1"
+		if DEF(___huffman_char_{node_prefix_{02X:node_id}}\2)
+			fail "misplaced parent node \1 (expected leaf node {___huffman_char_{node_prefix_{02X:node_id}}\2} for code {node_prefix_{02X:node_id}}\2)"
+		endc
+		DEF node_prefix_{02X:x} EQUS "{node_prefix_{02X:node_id}}\2"
+		db x
 	elif STRFIND("\1", "\"") == 0
 		; string literals indicate leaf nodes
-		DEF x = \1
 		if !DEF(___huffman_data_{02X:x})
 			fail "invalid leaf node character \1"
 		endc
 		if DEF(___huffman_leaf_node_{02X:x})
-			fail "already mapped leaf node character \1"
+			fail "already mapped leaf node \1"
+		endc
+		if STRCMP("{node_prefix_{02X:node_id}}\2", STRFMT("%0{u:___huffman_length_{02X:x}}b", ___huffman_data_{02X:x}))
+			if DEF(___huffman_char_{node_prefix_{02X:node_id}}\2)
+				fail "miscoded leaf node \1 (expected {___huffman_char_{node_prefix_{02X:node_id}}\2} for code {node_prefix_{02X:node_id}}\2)"
+			else
+				fail "miscoded leaf node \1 (no mapping for code {node_prefix_{02X:node_id}}\2)"
+			endc
 		endc
 		DEF ___huffman_leaf_node_{02X:x} = 1
-		if FIRST_LEAF_NODE_ID <= \1 && \1 < FIRST_SHIFTED_LEAF_NODE_ID
+		if FIRST_LEAF_NODE_ID <= x && x < FIRST_SHIFTED_LEAF_NODE_ID
 			; these characters directly correspond to the lower set of leaf node IDs
-			db \1
-		elif FIRST_SHIFTED_LEAF_CHAR_ID <= \1 && \1 <= LAST_SHIFTED_LEAF_CHAR_ID
+			db x
+		elif FIRST_SHIFTED_LEAF_CHAR_ID <= x && x <= LAST_SHIFTED_LEAF_CHAR_ID
 			; lower characters correspond to the higher set of leaf node IDs
 			; (since node IDs below the first leaf node ID must be parent nodes)
-			db \1 + FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
+			db x + FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
 		else
 			; other characters are unmapped; leaf nodes $fd-$ff are unused
 			fail "unmapped leaf node character \1"
@@ -160,6 +176,7 @@ TextCompressionHuffmanTree:
 	parent_node "'m",       $7b        ; $7a - 111101011
 	parent_node "K",        "N"        ; $7b - 1111010111
 	; parent nodes $7c-$7e are unused
+	assert node_id <= FIRST_LEAF_NODE_ID, "too many parent nodes"
 
 for x, 256
 	if DEF(___huffman_data_{02X:x}) && !DEF(___huffman_leaf_node_{02X:x})
