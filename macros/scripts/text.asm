@@ -159,7 +159,7 @@ MACRO _dtxt
 				endc
 				DEF _sub EQUS STRCHAR(#_str, 0)
 				REDEF _str EQUS STRSLICE(#_str, STRLEN(#_sub), STRLEN(#_str))
-				_dchr #_sub
+				_dchr "{_sub}"
 				PURGE _sub
 			endr
 			PURGE _str
