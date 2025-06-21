@@ -45,7 +45,7 @@ class Node:
 	def __lt__(self, other):
 		return self.freq < other.freq
 
-	def generate_codes(self, prefix="", codes=None):
+	def generate_codes(self, prefix='', codes=None):
 		if codes is None:
 			codes = {}
 		if self.char:
@@ -64,20 +64,7 @@ while len(heap) > 1:
 	parent = Node(left.freq + right.freq, left, right)
 	heapq.heappush(heap, parent)
 
-root = heap[0]
+codes = heap[0].generate_codes()
 
-def generate_codes(node, prefix="", code_dict=None):
-	if code_dict is None:
-		code_dict = {}
-
-	if node is not None:
-		if node.char is not None:  # It's a leaf
-			code_dict[node.char] = prefix or "0"  # Edge case: single char
-		generate_codes(node.left, prefix + "0", code_dict)
-		generate_codes(node.right, prefix + "1", code_dict)
-
-	return code_dict
-
-codes = root.generate_codes()
 for char in order:
 	print(f'{char}: {codes[char]}')
