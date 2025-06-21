@@ -25,7 +25,7 @@ MACRO _branch_node
 ENDM
 
 TextCompressionHuffmanTree:
-	for parent_node_id, FIRST_LEAF_NODE_ID
+	for parent_node_id, ROOT_NODE_ID, FIRST_LEAF_NODE_ID
 		if !DEF(node_prefix_{02X:parent_node_id})
 			break ; all leaf nodes have been reached
 		endc
@@ -35,7 +35,8 @@ TextCompressionHuffmanTree:
 	assert num_parent_nodes <= FIRST_LEAF_NODE_ID, "too many parent nodes"
 
 for x, 256
-	if DEF(___huffman_data_{02X:x}) && !DEF(___huffman_leaf_node_{02X:x})
-		fail "unreachable leaf node character {___huffman_char_{0{u:___huffman_length_{02X:x}}b:___huffman_data_{02X:x}}} ({#02x:x})"
+	if DEF(___huffman_data_{02X:x})
+		assert DEF(___huffman_leaf_node_{02X:x}), \
+			"unreachable leaf node character {___huffman_char_{0{u:___huffman_length_{02X:x}}b:___huffman_data_{02X:x}}} ({#02x:x})"
 	endc
 endr
