@@ -1,3 +1,5 @@
+; Huffman tree nodes are generated from the codes in constants/charmap.asm.
+; Regenerate this table whenever the Huffman codes change.
 DEF num_parent_nodes = ROOT_NODE_ID
 DEF node_prefix_{02X:num_parent_nodes} EQUS ""
 
