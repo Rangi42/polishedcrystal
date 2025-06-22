@@ -4642,7 +4642,7 @@ TakeOpponentDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	farcall SubtractHPFromUser_SkipBerries
+	farcall SubtractHPFromUser_SkipItems
 .did_no_damage
 	jmp RefreshBattleHuds
 
