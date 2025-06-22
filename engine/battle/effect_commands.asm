@@ -162,6 +162,7 @@ DoMove:
 .endturn_herb
 	push af
 	call CheckEndMoveEffects
+	call CheckThroatSpray
 	call CheckPowerHerb
 	pop af
 	ret
@@ -3427,7 +3428,6 @@ CheckEndMoveEffects:
 	call HandleRampage
 	call CheckSheerForceNegation
 	ret z
-	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
 	ld a, [wDamageTaken]
