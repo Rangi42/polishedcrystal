@@ -1205,13 +1205,15 @@ TangledFeetAbility:
 	jmp MultiplyAndDivide
 
 WonderSkinAbility:
-; Double evasion for status moves
+; Set move accuracy to 50% if it's a status move
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp STATUS
 	ret nz
-	ln a, 1, 2 ; x0.5
-	jmp MultiplyAndDivide
+	ld a, BATTLE_VARS_MOVE_ACCURACY
+	call GetBattleVarAddr
+	ld [hl], 50
+	ret
 
 SwiftSwimAbility:
 	ld b, WEATHER_RAIN
