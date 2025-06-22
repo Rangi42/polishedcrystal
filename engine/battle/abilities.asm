@@ -1179,8 +1179,10 @@ UserAccuracyAbilities:
 	dbw -1, -1
 
 TargetAccuracyAbilities:
+	; note that Wonder Skin needs to be checked separately, because
+	; by the time this callback runs, base accuracy has already been
+	; accounted for.
 	dbw TANGLED_FEET, TangledFeetAbility
-	dbw WONDER_SKIN, WonderSkinAbility
 	dbw SAND_VEIL, SandVeilAbility
 	dbw SNOW_CLOAK, SnowCloakAbility
 	dbw -1, -1

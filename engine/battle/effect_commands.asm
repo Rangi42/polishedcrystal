@@ -2016,6 +2016,13 @@ BattleCommand_checkhit:
 .max_acc_ok
 	add 13
 	ld b, a
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp WONDER_SKIN
+	jr nz, .not_wonder_skin
+	farcall WonderSkinAbility
+
+.not_wonder_skin
 	xor a
 	ldh [hMultiplicand + 0], a
 	ldh [hMultiplicand + 1], a
