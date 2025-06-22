@@ -269,9 +269,8 @@ IntimidateAbility:
 
 .continue
 	call EndAbility
-	farcall CheckStatHerbsAfterIntimidate
-	call SwitchTurn
-	farjp CheckMirrorHerb
+	farcall CheckMirrorHerb
+	farjp CheckStatHerbsAfterIntimidate
 
 INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
@@ -1365,8 +1364,8 @@ HarvestAbility:
 	cp WEATHER_SUN
 	jr z, .ok
 	call BattleRandom
-	and 1
-	ret z
+	add a
+	ret c
 
 .ok
 	; Don't do anything if we have an item already

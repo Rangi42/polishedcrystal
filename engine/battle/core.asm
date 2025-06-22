@@ -1791,9 +1791,16 @@ SubtractHPFromUser_OverrideFaintOrder:
 .did_not_faint
 	jmp PopBCDEHL
 
+SubtractHPFromUser_SkipItems:
+; Self-damage from confusion should not trigger Berry consumption.
+	push de
+	ld de, _SubtractHP
+	jr DoSubtractHPFromUser
 SubtractHPFromUser:
 	push de
 	ld de, SubtractHP
+	; fallthrough
+DoSubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy

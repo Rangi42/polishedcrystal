@@ -4642,7 +4642,7 @@ TakeOpponentDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser_SkipBerries
 .did_no_damage
 	jmp RefreshBattleHuds
 
