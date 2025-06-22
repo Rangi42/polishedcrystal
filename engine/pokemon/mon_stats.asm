@@ -923,16 +923,6 @@ GetNatureStatMultiplier::
 GetStatusConditionIndex:
 ; de points to status, e.g. from a party_struct or battle_struct
 ; return the status condition index in a
-	push de
-	inc de
-	inc de
-	ld a, [de]
-	ld b, a
-	inc de
-	ld a, [de]
-	or b
-	pop de
-	jr z, .fnt
 	ld a, [de]
 	ld b, a
 	and SLP_MASK
