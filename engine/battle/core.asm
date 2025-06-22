@@ -859,6 +859,18 @@ ForceDeferredSwitch:
 	call .consume_item
 	call SwitchTurn
 
+	; Suction Cups can prevent this item from activating.
+	call GetTrueUserAbility
+	cp SUCTION_CUPS
+	jr nz, .items_done
+
+	farcall BeginAbility
+	farcall ShowAbilityActivation
+	ld hl, UnaffectedText
+	call StdBattleTextbox
+	farcall EndAbility
+	jmp .all_done
+
 .items_done
 	; Figure out which side is switching
 	bit SWITCH_TARGET, [hl]
