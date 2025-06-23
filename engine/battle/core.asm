@@ -1742,6 +1742,14 @@ LeppaRestorePP:
 
 DealDamageToOpponent:
 ; ONLY runs from attacking damage.
+	call GetOpponentAbilityAfterMoldBreaker
+	cp BERSERK
+	jr z, .berserk
+	call SwitchTurn
+	call SubtractHPFromUser
+	jmp SwitchTurn
+
+.berserk
 	; If user has more than 50%HP, set Berserk flag. Unset later if we still
 	; have more than 50%HP.
 	push bc
@@ -1757,15 +1765,9 @@ DealDamageToOpponent:
 
 .not_over_half
 	pop bc
-	push de
-	ld de, _SubtractHP
-	ldh a, [hBattleTurn]
-	and a
-	push af
-	call z, _SubtractHPFromEnemy
-	pop af
-	call nz, _SubtractHPFromPlayer
-	pop de
+	call SwitchTurn
+	call SubtractHPFromUser_SkipItems
+	call SwitchTurn
 
 	; deal with Berserk
 	push bc
