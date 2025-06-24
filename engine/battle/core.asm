@@ -3299,7 +3299,7 @@ SpikesDamage_GotAbility:
 	farcall CheckAirborne_GotAbility
 	pop bc
 	pop de
-	ret z
+	jmp nz, HandleAirBalloon
 
 	push bc
 	predef GetUserItemAfterUnnerve
