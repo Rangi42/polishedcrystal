@@ -443,7 +443,6 @@ HandleFutureSight:
 	xor a
 	ld [wAttackMissed], a
 	ld [wAlreadyDisobeyed], a
-	; Future Sight does typeless damage
 	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	farcall DoMove
