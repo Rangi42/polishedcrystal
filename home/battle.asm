@@ -321,35 +321,6 @@ ToggleBattleItems:
 	pop bc
 	jr .loop
 
-OpponentCanLoseItem::
-	call StackCallOpponentTurn
-UserCanLoseItem::
-; Returns z if user can't lose its held item. This happens if:
-; - user doesn't have a held item
-; - user is holding Armor Suit
-; - user is holding Mail
-; Does not check Sticky Hold (we just want to know if we can
-; theoretically lose our item at any point)
-	push hl
-	push de
-	push bc
-	farcall GetUserItem
-	ld a, [hl]
-	and a
-	jr z, .cannot_lose
-	cp ARMOR_SUIT
-	jr z, .cannot_lose
-	ld d, a
-	call ItemIsMail
-	jr c, .cannot_lose
-	or 1
-	jr .done
-
-.cannot_lose
-	xor a
-.done
-	jmp PopBCDEHL
-
 GetOpponentUsedItemAddr::
 	call StackCallOpponentTurn
 GetUsedItemAddr::
