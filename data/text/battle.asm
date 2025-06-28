@@ -1485,12 +1485,6 @@ TraceActivationText:
 	text "!"
 	prompt
 
-TraceFailureText:
-	text "<USER>"
-	line "failed to trace"
-	cont "<TARGET>!"
-	prompt
-
 BattleText_IntimidateResisted:
 	text "<TARGET>'s"
 	line ""
