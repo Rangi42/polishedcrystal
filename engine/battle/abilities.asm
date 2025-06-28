@@ -177,9 +177,6 @@ TraceAbility:
 	pop af
 	ld [hl], a
 	jmp RunEntryAbilitiesInner
-.trace_failure
-	ld hl, TraceFailureText
-	jmp StdBattleTextbox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
