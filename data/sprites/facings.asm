@@ -89,10 +89,10 @@ FacingStepDown1:
 
 FacingStepDown3:
 	db 4 ; #
-	db  0,  8, X_FLIP, $80
-	db  0,  0, X_FLIP, $81
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $82
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $83
+	db  0,  8, OAM_XFLIP, $80
+	db  0,  0, OAM_XFLIP, $81
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $82
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $83
 
 FacingStepUp0:
 FacingStepUp2:
@@ -111,10 +111,10 @@ FacingStepUp1:
 
 FacingStepUp3:
 	db 4 ; #
-	db  0,  8, X_FLIP, $84
-	db  0,  0, X_FLIP, $85
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $86
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $87
+	db  0,  8, OAM_XFLIP, $84
+	db  0,  0, OAM_XFLIP, $85
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $86
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $87
 
 FacingStepLeft0:
 FacingStepLeft2:
@@ -127,10 +127,10 @@ FacingStepLeft2:
 FacingStepRight0:
 FacingStepRight2:
 	db 4 ; #
-	db  0,  8, X_FLIP, $08
-	db  0,  0, X_FLIP, $09
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $0a
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $0b
+	db  0,  8, OAM_XFLIP, $08
+	db  0,  0, OAM_XFLIP, $09
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $0a
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $0b
 
 FacingStepLeft1:
 FacingStepLeft3:
@@ -143,10 +143,10 @@ FacingStepLeft3:
 FacingStepRight1:
 FacingStepRight3:
 	db 4 ; #
-	db  0,  8, X_FLIP, $88
-	db  0,  0, X_FLIP, $89
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $8a
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $8b
+	db  0,  8, OAM_XFLIP, $88
+	db  0,  0, OAM_XFLIP, $89
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $8a
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $8b
 
 FacingFishDown:
 	db 5 ; #
@@ -170,14 +170,14 @@ FacingFishLeft:
 	db  0,  8, 0, $09
 	db  8,  0, RELATIVE_ATTRIBUTES, $0a
 	db  8,  8, RELATIVE_ATTRIBUTES, $0b
-	db  5, -8, ABSOLUTE_TILE_ID | X_FLIP, $7b
+	db  5, -8, ABSOLUTE_TILE_ID | OAM_XFLIP, $7b
 
 FacingFishRight:
 	db 5 ; #
-	db  0,  8, X_FLIP, $08
-	db  0,  0, X_FLIP, $09
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $0a
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $0b
+	db  0,  8, OAM_XFLIP, $08
+	db  0,  0, OAM_XFLIP, $09
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $0a
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $0b
 	db  5, 16, ABSOLUTE_TILE_ID, $7b
 
 FacingEmote:
@@ -190,7 +190,7 @@ FacingEmote:
 FacingShadow:
 	db 2 ; #
 	db  0,  0, ABSOLUTE_TILE_ID, $7c
-	db  0,  8, ABSOLUTE_TILE_ID | X_FLIP, $7c
+	db  0,  8, ABSOLUTE_TILE_ID | OAM_XFLIP, $7c
 
 FacingBigDollSym: ; big snorlax or lapras doll
 	db 16 ; #
@@ -202,14 +202,14 @@ FacingBigDollSym: ; big snorlax or lapras doll
 	db 16,  8, 0, $05
 	db 24,  0, 0, $06
 	db 24,  8, 0, $07
-	db  0, 24, X_FLIP, $00
-	db  0, 16, X_FLIP, $01
-	db  8, 24, X_FLIP, $02
-	db  8, 16, X_FLIP, $03
-	db 16, 24, X_FLIP, $04
-	db 16, 16, X_FLIP, $05
-	db 24, 24, X_FLIP, $06
-	db 24, 16, X_FLIP, $07
+	db  0, 24, OAM_XFLIP, $00
+	db  0, 16, OAM_XFLIP, $01
+	db  8, 24, OAM_XFLIP, $02
+	db  8, 16, OAM_XFLIP, $03
+	db 16, 24, OAM_XFLIP, $04
+	db 16, 16, OAM_XFLIP, $05
+	db 24, 24, OAM_XFLIP, $06
+	db 24, 16, OAM_XFLIP, $07
 
 FacingWeirdTree1:
 	db 4 ; #
@@ -220,10 +220,10 @@ FacingWeirdTree1:
 
 FacingWeirdTree3:
 	db 4 ; #
-	db  0,  8, X_FLIP, $04
-	db  0,  0, X_FLIP, $05
-	db  8,  8, X_FLIP, $06
-	db  8,  0, X_FLIP, $07
+	db  0,  8, OAM_XFLIP, $04
+	db  0,  0, OAM_XFLIP, $05
+	db  8,  8, OAM_XFLIP, $06
+	db  8,  0, OAM_XFLIP, $07
 
 FacingBigDollAsym: ; big onix doll
 	db 14 ; #
@@ -235,11 +235,11 @@ FacingBigDollAsym: ; big onix doll
 	db 24,  8, 0, $0a
 	db  0, 24, 0, $03
 	db  0, 16, 0, $02
-	db  8, 24, X_FLIP, $02
+	db  8, 24, OAM_XFLIP, $02
 	db  8, 16, 0, $06
 	db 16, 24, 0, $09
 	db 16, 16, 0, $08
-	db 24, 24, X_FLIP, $04
+	db 24, 24, OAM_XFLIP, $04
 	db 24, 16, 0, $0b
 
 FacingBoulderDust1:
@@ -259,22 +259,22 @@ FacingBoulderDust2:
 FacingGrass1:
 	db 2 ; #
 	db  8,  0, ABSOLUTE_TILE_ID, $7d
-	db  8,  8, ABSOLUTE_TILE_ID | X_FLIP, $7d
+	db  8,  8, ABSOLUTE_TILE_ID | OAM_XFLIP, $7d
 
 FacingGrass2:
 	db 2 ; #
 	db  9, -1, ABSOLUTE_TILE_ID, $7d
-	db  9,  9, ABSOLUTE_TILE_ID | X_FLIP, $7d
+	db  9,  9, ABSOLUTE_TILE_ID | OAM_XFLIP, $7d
 
 FacingSplash1:
 	db 2 ; #
 	db  8,  0, ABSOLUTE_TILE_ID, $6f
-	db  8,  8, ABSOLUTE_TILE_ID | X_FLIP, $6f
+	db  8,  8, ABSOLUTE_TILE_ID | OAM_XFLIP, $6f
 
 FacingSplash2:
 	db 2 ; #
 	db  9, -1, ABSOLUTE_TILE_ID, $6f
-	db  9,  9, ABSOLUTE_TILE_ID | X_FLIP, $6f
+	db  9,  9, ABSOLUTE_TILE_ID | OAM_XFLIP, $6f
 
 FacingCutTree:
 	db 4 ; #
@@ -335,17 +335,17 @@ FacingBigGyarados2:
 
 FacingStepDownFlip:
 	db 4 ; #
-	db  0,  0, X_FLIP, $01
-	db  0,  8, X_FLIP, $00
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $03
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $02
+	db  0,  0, OAM_XFLIP, $01
+	db  0,  8, OAM_XFLIP, $00
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $03
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $02
 
 FacingStepUpFlip:
 	db 4 ; #
-	db  0,  0, X_FLIP, $05
-	db  0,  8, X_FLIP, $04
-	db  8,  0, RELATIVE_ATTRIBUTES | X_FLIP, $07
-	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $06
+	db  0,  0, OAM_XFLIP, $05
+	db  0,  8, OAM_XFLIP, $04
+	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $07
+	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $06
 
 FacingPokecomNews:
 FacingMicrophone:
@@ -424,8 +424,8 @@ FacingAlolanExeggutor3:
 	db  0,  8, NEXT_PALETTE, $09
 	db  8,  0, NEXT_PALETTE, $0a
 	db  8,  8, NEXT_PALETTE, $0b
-	db -8,  0, X_FLIP, $0d
-	db -8,  8, X_FLIP, $0c
+	db -8,  0, OAM_XFLIP, $0d
+	db -8,  8, OAM_XFLIP, $0c
 	db  0,  8, 0, $80
 
 FacingTinyWindows0:
@@ -452,11 +452,11 @@ FacingTinyWindows3:
 FacingTinyWindows4:
 	db 6 ; #
 	db  4, -16, 0, $86
-	db  4,   8, X_FLIP, $86
+	db  4,   8, OAM_XFLIP, $86
 	db 12, -16, 0, $88
 	db 12,  -8, 0, $87
-	db 12,   0, X_FLIP, $87
-	db 12,   8, X_FLIP, $88
+	db 12,   0, OAM_XFLIP, $87
+	db 12,   8, OAM_XFLIP, $88
 
 FacingTinyWindows5:
 	db 6 ; #

@@ -41,12 +41,12 @@ ClearDisplayForEndgame:
 	ret
 
 ResetDisplayBetweenHallOfFameMons:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wScratchTileMap
-	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
+	ld bc, TILEMAP_WIDTH * TILEMAP_HEIGHT
 	ld a, " "
 	rst ByteFill
 	hlbgcoord 0, 0
@@ -54,5 +54,5 @@ ResetDisplayBetweenHallOfFameMons:
 	lb bc, $0, $40
 	call Request2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret

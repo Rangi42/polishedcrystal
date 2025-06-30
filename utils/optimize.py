@@ -27,7 +27,7 @@ def isVolatile(code):
 
 def isNotReallyHram(code):
 	return any(r in code for r in {
-		'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB', 'rRTCLATCH'
+		'rROMB', 'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB', 'rRTCLATCH', 'rRTCREG'
 	})
 
 # Each line has five properties:

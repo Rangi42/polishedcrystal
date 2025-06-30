@@ -50,7 +50,7 @@ PrintLetterDelay::
 	call GetJoypad
 ; Finish execution if A or B is pressed
 	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr z, .textDelayLoop
 .done
 	jmp PopBCDEHL

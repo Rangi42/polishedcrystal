@@ -275,14 +275,14 @@ VBlank4::
 	xor a
 	ldh [rIF], a
 	ldh a, [rIE]
-	and 1 << LCD_STAT
+	and IE_STAT
 	ldh [rIE], a
 
 	call VBlankUpdateSound
 
 	; Ensure that we don't miss an interrupt in the tiny window between di+reti
 	ldh a, [rIE]
-	and 1 << LCD_STAT
+	and IE_STAT
 	jr z, .di
 	ldh a, [rLYC]
 	ld b, a

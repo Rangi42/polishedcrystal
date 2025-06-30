@@ -34,7 +34,7 @@ FillTileMap::
 	rst ByteFill
 	; Update the BG Map.
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a
+	bit B_LCDC_ENABLE, a
 	ret z
 	jr ApplyTilemapInVBlank
 
@@ -260,7 +260,7 @@ HandleLineBreak:
 	bit USE_BG_MAP_WIDTH_F, a
 	ld bc, SCREEN_WIDTH
 	jr z, .got_screen_width
-	ld c, BG_MAP_WIDTH
+	ld c, TILEMAP_WIDTH
 
 .got_screen_width
 	bit NO_LINE_SPACING_F, a
@@ -681,7 +681,7 @@ TextCommand_PAUSE::
 	push bc
 	call GetJoypad
 	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr nz, .done
 	ld c, 30
 	call DelayFrames

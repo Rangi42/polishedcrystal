@@ -4,13 +4,13 @@
 LatchClock::
 ; latch clock counter data
 	xor a
-	ld [MBC3LatchClock], a
+	ld [rRTCLATCH], a
 	inc a
-	ld [MBC3LatchClock], a
+	ld [rRTCLATCH], a
 	ret
 
 UpdateTime::
-; Assumes rSVBK == 1
+; Assumes rWBK == 1
 	call GetClock ; read the clock hardware
 	call FixDays  ; keep the number of days passed in-bounds
 	call FixTime  ; calculate the time based on the start time and RTC duration
@@ -24,39 +24,39 @@ GetClock::
 	ret z
 
 ; enable clock r/w
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
 
 ; clock data is 'backwards' in wram
 	call LatchClock
-	ld hl, MBC3SRamBank
-	ld de, MBC3RTC
+	ld hl, rRAMB
+	ld de, rRTCREG
 	ld bc, wRTCSeconds
 
-	ld [hl], RTC_S
+	ld [hl], RAMB_RTC_S
 	ld a, [de]
 	and $3f
 	ld [bc], a ; wRTCSeconds
 	dec bc
 
-	ld [hl], RTC_M
+	ld [hl], RAMB_RTC_M
 	ld a, [de]
 	and $3f
 	ld [bc], a ; wRTCMinutes
 	dec bc
 
-	ld [hl], RTC_H
+	ld [hl], RAMB_RTC_H
 	ld a, [de]
 	and $1f
 	ld [bc], a ; wRTCHours
 	dec bc
 
-	ld [hl], RTC_DL
+	ld [hl], RAMB_RTC_DL
 	ld a, [de]
 	ld [bc], a ; wRTCDayLo
 	dec bc
 
-	ld [hl], RTC_DH
+	ld [hl], RAMB_RTC_DH
 	ld a, [de]
 	ld [bc], a ; wRTCDayHi
 
@@ -205,37 +205,37 @@ SetClock::
 	ret z
 
 ; enable clock r/w
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
 
 ; set clock data
 ; stored 'backwards' in hram
 	call LatchClock
-	ld hl, MBC3SRamBank
-	ld de, MBC3RTC
+	ld hl, rRAMB
+	ld de, rRTCREG
 	ld bc, wRTCSeconds
 
-	ld [hl], RTC_S
+	ld [hl], RAMB_RTC_S
 	ld a, [bc] ; wRTCSeconds
 	ld [de], a
 	dec bc
 
-	ld [hl], RTC_M
+	ld [hl], RAMB_RTC_M
 	ld a, [bc] ; wRTCMinutes
 	ld [de], a
 	dec bc
 
-	ld [hl], RTC_H
+	ld [hl], RAMB_RTC_H
 	ld a, [bc] ; wRTCHours
 	ld [de], a
 	dec bc
 
-	ld [hl], RTC_DL
+	ld [hl], RAMB_RTC_DL
 	ld a, [bc] ; wRTCDayLo
 	ld [de], a
 	dec bc
 
-	ld [hl], RTC_DH
+	ld [hl], RAMB_RTC_DH
 	ld a, [bc] ; wRTCDayHi
 	res 6, a ; make sure timer is active
 	ld [de], a

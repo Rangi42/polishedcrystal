@@ -319,15 +319,15 @@ JudgeSystem::
 	call JoyTextDelay
 	ldh a, [hJoyLast]
 	; B button quits
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	ret nz
 	; Up or down switches between party members
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr nz, .prev_mon
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jr nz, .next_mon
 	; Left or right toggles between EVs and IVs
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr z, .input_loop
 	ldh a, [hChartScreen]
 	cpl
@@ -555,10 +555,10 @@ RenderChart:
 	call FarDecompressWRA6InB
 ; Render the radar chart onto the graphics
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call OutlineRadarChart
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 CalcBTimesCOver256:

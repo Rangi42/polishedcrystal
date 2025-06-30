@@ -18,15 +18,15 @@ ForceUpdateCGBPals::
 ; return carry if successful
 ; Completes in 588 cycles
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wBGPals2
 
 ; copy 8 pals to bgpd
-	ld a, 1 << rBGPI_AUTO_INCREMENT
+	ld a, BGPI_AUTOINC
 	ldh [rBGPI], a
 	lb bc, 4, LOW(rBGPD) ; 4 = NUM_PALS / 2
 .bgp
@@ -54,7 +54,7 @@ endr
 	jr nz, .obp
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; clear pal update queue
 	xor a
@@ -75,11 +75,11 @@ DmgToCgbBGPals::
 	push bc
 	push af
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 
 	ld a, 5 ; gfx
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; copy & reorder bg pal buffer
 	ld hl, wBGPals2 ; to
@@ -95,7 +95,7 @@ DmgToCgbBGPals::
 	ldh [hCGBPalUpdate], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	jmp PopAFBCDEHL
 
@@ -113,11 +113,11 @@ DmgToCgbObjPals::
 	push hl
 	push de
 	push bc
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; copy & reorder obj pal buffer
 	ld hl, wOBPals2 ; to
@@ -133,7 +133,7 @@ DmgToCgbObjPals::
 	ldh [hCGBPalUpdate], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	jmp PopBCDEHL
 
 DmgToCgbObjPal0::
@@ -143,10 +143,10 @@ DmgToCgbObjPal0::
 	push bc
 	push af
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 5 ; gfx
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wOBPals2
 	ld de, wOBPals1
@@ -158,7 +158,7 @@ DmgToCgbObjPal0::
 	ldh [hCGBPalUpdate], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	jmp PopAFBCDEHL
 
@@ -169,10 +169,10 @@ DmgToCgbObjPal1::
 	push bc
 	push af
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 5 ; gfx
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wOBPals2 palette 1
 	ld de, wOBPals1 palette 1
@@ -184,7 +184,7 @@ DmgToCgbObjPal1::
 	ldh [hCGBPalUpdate], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	jmp PopAFBCDEHL
 
@@ -192,7 +192,7 @@ CopyPals::
 ; copy c palettes in order b from de to hl
 
 	push bc
-	ld c, 4 ; NUM_PAL_COLORS
+	ld c, 4 ; PAL_COLORS
 .loop
 	push de
 	push hl
@@ -224,7 +224,7 @@ CopyPals::
 	jr nz, .loop
 
 ; de += 8 (next pal)
-	ld a, 1 palettes ; NUM_PAL_COLORS * 2 ; bytes per pal
+	ld a, 1 palettes ; PAL_COLORS * 2 ; bytes per pal
 	add e
 	ld e, a
 	adc d
@@ -251,31 +251,31 @@ ClearVBank1::
 	ret
 
 Special_ReloadSpritesNoPalettes::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wBGPals2
 	ld bc, 8 palettes
 	xor a
 	rst ByteFill
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, 1
 	ldh [hCGBPalUpdate], a
 	jmp DelayFrame
 
 SetBlackObjectPals::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wOBPals2
 	ld bc, 8 palettes
 	xor a
 	rst ByteFill
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, 1
 	ldh [hCGBPalUpdate], a
 	jmp DelayFrame

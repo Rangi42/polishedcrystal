@@ -53,7 +53,7 @@ _PrintDiploma:
 	push af
 	xor a
 	ldh [rIF], a
-	ld a, (1 << SERIAL) | (1 << VBLANK)
+	ld a, IE_SERIAL | IE_VBLANK
 	ldh [rIE], a
 
 	ld hl, hVBlank
@@ -104,7 +104,7 @@ _PrintDiploma:
 
 CheckCancelPrint:
 	ldh a, [hJoyDown]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .loop
 	and a
 	ret
@@ -118,9 +118,9 @@ CheckCancelPrint:
 	ld [wPrinterOpcode], a
 	ld a, $88
 	ldh [rSB], a
-	ld a, (0 << rSC_ON) | (1 << rSC_CLOCK)
+	ld a, SC_INTERNAL
 	ldh [rSC], a
-	ld a, (1 << rSC_ON) | (1 << rSC_CLOCK)
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 .loop2
 	ld a, [wPrinterOpcode]

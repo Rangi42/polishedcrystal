@@ -108,12 +108,12 @@ ScrollingMenuJoyAction:
 .not_quick_pack
 	call ScrollingMenu_GetMenuSelection
 	jr z, .b_button
-	ld a, A_BUTTON
+	ld a, PAD_A
 	scf
 	ret
 
 .b_button
-	ld a, B_BUTTON
+	ld a, PAD_B
 	scf
 	ret
 
@@ -129,7 +129,7 @@ ScrollingMenuJoyAction:
 	call ScrollingMenu_GetCursorPosition
 	dec a
 	ld [wScrollingMenuCursorPosition], a
-	ld a, SELECT
+	ld a, PAD_SELECT
 	scf
 	ret
 
@@ -137,7 +137,7 @@ ScrollingMenuJoyAction:
 	ld a, [wMenuDataFlags]
 	bit 6, a
 	jr z, .unsetZeroFlag
-	ld a, START
+	ld a, PAD_START
 	scf
 	ret
 
@@ -148,7 +148,7 @@ ScrollingMenuJoyAction:
 	ld a, [wMenuDataFlags]
 	bit 3, a
 	jr z, .unsetZeroFlag
-	ld a, D_LEFT
+	ld a, PAD_LEFT
 	scf
 	ret
 
@@ -159,7 +159,7 @@ ScrollingMenuJoyAction:
 	ld a, [wMenuDataFlags]
 	bit 2, a
 	jr z, .unsetZeroFlag
-	ld a, D_RIGHT
+	ld a, PAD_RIGHT
 	scf
 	ret
 
@@ -335,15 +335,15 @@ ScrollingMenu_InitFlags:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, A_BUTTON | B_BUTTON | D_UP | D_DOWN
+	ld a, PAD_A | PAD_B | PAD_UP | PAD_DOWN
 	bit 7, c
 	jr z, .disallow_select
-	add SELECT
+	add PAD_SELECT
 
 .disallow_select
 	bit 6, c
 	jr z, .disallow_start
-	add START
+	add PAD_START
 
 .disallow_start
 	ld [wMenuJoypadFilter], a

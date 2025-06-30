@@ -29,7 +29,7 @@ _TitleScreen:
 
 ; Clear screen palettes
 	hlbgcoord 0, 0
-	ld bc, SCREEN_WIDTH * BG_MAP_WIDTH
+	ld bc, SCREEN_WIDTH * TILEMAP_WIDTH
 	xor a
 	rst ByteFill
 
@@ -39,7 +39,7 @@ _TitleScreen:
 
 ; line 0 (copyright)
 	hlbgcoord 0, 0, vBGMap1
-	ld bc, BG_MAP_WIDTH
+	ld bc, TILEMAP_WIDTH
 	ld a, 7 ; palette
 	rst ByteFill
 
@@ -49,27 +49,27 @@ _TitleScreen:
 
 ; lines 3-4
 	hlbgcoord 0, 3
-	ld bc, 2 * BG_MAP_WIDTH
+	ld bc, 2 * TILEMAP_WIDTH
 	ld a, 2
 	rst ByteFill
 ; line 5
 	hlbgcoord 0, 5
-	ld bc, BG_MAP_WIDTH
+	ld bc, TILEMAP_WIDTH
 	ld a, 3
 	rst ByteFill
 ; line 6
 	hlbgcoord 0, 6
-	ld bc, BG_MAP_WIDTH
+	ld bc, TILEMAP_WIDTH
 	ld a, 4
 	rst ByteFill
 ; line 7
 	hlbgcoord 0, 7
-	ld bc, BG_MAP_WIDTH
+	ld bc, TILEMAP_WIDTH
 	ld a, 5
 	rst ByteFill
 ; lines 8-9
 	hlbgcoord 0, 8
-	ld bc, 2 * BG_MAP_WIDTH
+	ld bc, 2 * TILEMAP_WIDTH
 	ld a, 6
 	rst ByteFill
 
@@ -81,7 +81,7 @@ _TitleScreen:
 
 ; Suicune gfx
 	hlbgcoord 0, 12
-	ld bc, 6 * BG_MAP_WIDTH ; the rest of the screen
+	ld bc, 6 * TILEMAP_WIDTH ; the rest of the screen
 	ld a, 8
 	rst ByteFill
 
@@ -101,7 +101,7 @@ _TitleScreen:
 
 ; Clear screen tiles
 	hlbgcoord 0, 0
-	ld bc, 64 * BG_MAP_WIDTH
+	ld bc, 64 * TILEMAP_WIDTH
 	ld a, " "
 	rst ByteFill
 
@@ -132,11 +132,11 @@ endc
 	call InitializeBackground
 
 ; Save WRAM bank
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 ; WRAM bank 5
 	ld a, 5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; Update palette colors
 	ld hl, TitleScreenPalettes
@@ -151,13 +151,13 @@ endc
 
 ; Restore WRAM bank
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; LY/SCX trickery starts here
 
 	push af
 	ld a, BANK(wLYOverrides)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; Make sure the LYOverrides buffer is empty
 	ld hl, wLYOverrides
@@ -167,19 +167,19 @@ endc
 
 ; Let LCD Stat know we're messing around with SCX
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, rSCX - rJOYP
 	ldh [hLCDCPointer], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; Reset audio
 	call ChannelsOff
 	call EnableLCD
 
 	ldh a, [rLCDC]
-	set rLCDC_SPRITE_SIZE, a
+	set B_LCDC_OBJ_SIZE, a
 	ldh [rLCDC], a
 
 	ld a, +112

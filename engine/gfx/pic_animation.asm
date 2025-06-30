@@ -51,10 +51,10 @@ LoadMonAnimation:
 	ld c, a
 	pop hl
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push bc
 	push de
@@ -96,14 +96,14 @@ LoadMonAnimation:
 	ld [wPokeAnimFrontpicHeight], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 SetUpPokeAnim:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	ld b, 0
@@ -118,7 +118,7 @@ SetUpPokeAnim:
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, c
 	and $80
 	ret z
@@ -235,16 +235,16 @@ PokeAnim_StereoCry:
 	ret
 
 PokeAnim_DeinitFrames:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call PokeAnim_PlaceGraphic
 	farcall HDMATransferTileMapToWRAMBank3
 	call PokeAnim_SetVBank0
 	farcall HDMATransferAttrMapToWRAMBank3
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 AnimateMon_CheckIfPokemon:
@@ -259,10 +259,10 @@ AnimateMon_CheckIfPokemon:
 	ret
 
 PokeAnim_InitAnim:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push bc
 	ld hl, wPokeAnimIdleFlag
 	ld bc, wPokeAnimStructEnd - wPokeAnimIdleFlag
@@ -277,7 +277,7 @@ PokeAnim_InitAnim:
 	call GetMonFramesPointer
 	call GetMonBitmaskPointer
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 PokeAnim_DoAnimScript:
@@ -713,16 +713,16 @@ PokeAnim_PlaceGraphic:
 	jmp ClearBox
 
 PokeAnim_SetVBank1:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hBGMapMode], a
 	call .SetFlag
 	farcall HDMATransferAttrMapToWRAMBank3
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .SetFlag:
@@ -777,10 +777,10 @@ PokeAnim_GetAttrMapCoord:
 	ret
 
 PokeAnim_GetFrontpicDims:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; This is no longer needed for the pic size, but do it just
 	; in case subsequent code expects base data available
@@ -791,7 +791,7 @@ PokeAnim_GetFrontpicDims:
 	call GetPicSize
 	ld c, a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 GetMonAnimDataIndex:
