@@ -274,12 +274,12 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 #	$Qsuperfamiconv tiles -R -i $@ -d $<
 
 %.2bpp: %.png
-	$Q$(RGBDS)rgbgfx $(rgbgfx) -o $@ $<
+	$Q$(RGBDS)rgbgfx -c dmg=e4 $(rgbgfx) -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -o $@ $@)
 
 %.1bpp: %.png
-	$(RGBDS)rgbgfx $(rgbgfx) -d1 -o $@ $<
+	$(RGBDS)rgbgfx -c dmg=e4 $(rgbgfx) -d1 -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -d1 -o $@ $@)
 
