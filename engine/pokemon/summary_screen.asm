@@ -215,7 +215,7 @@ SummaryScreenLoop:
 
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld b, PAD_DOWN | PAD_UP | PAD_LEFT | PAD_RIGHT | PAD_A | PAD_B
+	ld b, PAD_CTRL_PAD | PAD_A | PAD_B
 	jr z, .got_mask
 	ld b, PAD_DOWN | PAD_UP | PAD_B
 .got_mask

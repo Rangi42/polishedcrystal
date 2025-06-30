@@ -89,7 +89,7 @@ endr
 ; Now that we have the input, we can do stuff with it.
 
 ; For example, soft reset:
-	or ~(PAD_A | PAD_B | PAD_SELECT | PAD_START)
+	or ~PAD_BUTTONS
 	inc a
 	jmp z, SoftReset
 
