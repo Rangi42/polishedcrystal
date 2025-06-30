@@ -1881,7 +1881,7 @@ TownMapPals:
 ; Assign palettes based on tile ids
 	hlcoord 0, 0
 	decoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 .loop
 	ld a, [hli]
 	push hl
@@ -1954,7 +1954,7 @@ TownMapOrangeFlips:
 	decoord 0, 0, OrangeMap
 TownMapFlips:
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 .loop
 	; [de] == YXtttttt
 	ld a, [de]

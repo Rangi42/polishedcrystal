@@ -1383,7 +1383,7 @@ Intro_Scene16_AnimateSuicune:
 
 Intro_ColoredSuicuneFrameSwap:
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 .loop
 	ld a, [hl]
 	and a

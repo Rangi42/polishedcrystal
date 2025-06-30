@@ -223,7 +223,7 @@ AnimateHOFMonEntrance:
 	ld [wTempMonForm], a
 	ld [wCurForm], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, " "
 	rst ByteFill
 	ld de, vTiles2 tile $31
@@ -245,7 +245,7 @@ AnimateHOFMonEntrance:
 	call SetDefaultBGPAndOBP
 	call HOF_SlideBackpic
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, " "
 	rst ByteFill
 	hlcoord 6, 5
@@ -431,7 +431,7 @@ DisplayHOFMon:
 	ld a, "@"
 	ld [wStringBuffer2 + 10], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, " "
 	rst ByteFill
 	hlcoord 0, 0
@@ -504,7 +504,7 @@ DisplayHOFMon:
 HOF_AnimatePlayerPic:
 	call ClearBGPalettes
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, " "
 	rst ByteFill
 	farcall GetPlayerBackpic
@@ -528,7 +528,7 @@ HOF_AnimatePlayerPic:
 	xor a
 	ld [wBoxAlignment], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, " "
 	rst ByteFill
 	farcall HOF_LoadTrainerFrontpic

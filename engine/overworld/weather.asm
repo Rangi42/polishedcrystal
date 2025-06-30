@@ -33,9 +33,9 @@ DoOverworldWeather:
 	; if hUsedWeatherSpriteIndex >= the first object OAM index,
 	; then we need to set hUsedWeatherSpriteIndex the OAM index before the first object OAM index.
 	ldh a, [hUsedOAMIndex]
-	; a = (OBJ_SIZE * OAM_COUNT) - a
+	; a = OAM_SIZE - a
 	cpl
-	add OAM_COUNT * OBJ_SIZE + 1
+	add OAM_SIZE + 1
 	ld hl, hUsedWeatherSpriteIndex
 	cp [hl]
 	jr nc, .ok
@@ -411,9 +411,9 @@ ScanForEmptyOAM:
 	ld h, d
 	ld l, e
 	ldh a, [hUsedOAMIndex]
-	; a = (OBJ_SIZE * OAM_COUNT) - a
+	; a = OAM_SIZE - a
 	cpl
-	add OAM_COUNT * OBJ_SIZE + 1
+	add OAM_SIZE + 1
 	; a = a / 4
 	rrca
 	rrca

@@ -9,9 +9,9 @@ ClearSprites::
 ClearNormalSprites::
 	ldh a, [hUsedOAMIndex]
 	ld c, a
-	; a = (OAM_COUNT * OBJ_SIZE) - a
+	; a = OAM_SIZE - a
 	cpl
-	add OAM_COUNT * OBJ_SIZE + 1
+	add OAM_SIZE + 1
 	ld h, HIGH(wShadowOAM)
 	ld l, a
 	xor a

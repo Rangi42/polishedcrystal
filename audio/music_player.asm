@@ -92,7 +92,7 @@ MusicPlayer::
 ; Apply palettes
 	xor a
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	hlcoord 3, MP_HUD_TOP + 2, wAttrmap
 	ld [hl], $3
@@ -1493,7 +1493,7 @@ GetSongArtist2:
 SongSelector:
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	ld hl, rLCDC
 	res B_LCDC_OBJS, [hl]

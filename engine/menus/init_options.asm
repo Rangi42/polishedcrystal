@@ -14,12 +14,12 @@ SetInitialOptions:
 	call LoadFrame
 
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 
@@ -64,7 +64,7 @@ SetInitialOptions:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 
 	hlcoord 0, 0
@@ -683,7 +683,7 @@ InitialOptions_ReRender:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 
 	hlcoord 0, 0

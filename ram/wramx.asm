@@ -1478,7 +1478,7 @@ SECTION "Pic Animations RAM", WRAMX
 
 wTempTileMap::
 ; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 
 ; PokeAnim data
 wPokeAnimStruct::
@@ -1779,8 +1779,8 @@ SECTION "Scratch RAM", WRAMX
 UNION
 wDecompressScratch:: ds $100 tiles
 NEXTU
-wScratchTileMap:: ds TILEMAP_WIDTH * TILEMAP_HEIGHT
-wScratchAttrMap:: ds TILEMAP_WIDTH * TILEMAP_HEIGHT
+wScratchTileMap:: ds TILEMAP_AREA
+wScratchAttrMap:: ds TILEMAP_AREA
 NEXTU
 wAbilityTiles:: ds 22 tiles
 ; + 1 to include the "'s"

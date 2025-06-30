@@ -8182,7 +8182,7 @@ DisplayLinkRecord:
 	call CloseSRAM
 	hlcoord 0, 0, wAttrmap
 	xor a
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
 	ld a, CGB_PLAIN
@@ -8639,7 +8639,7 @@ InitBattleDisplay:
 	ldh [rWBK], a
 
 	ld hl, wScratchTileMap
-	ld bc, TILEMAP_WIDTH * TILEMAP_HEIGHT
+	ld bc, TILEMAP_AREA
 	ld a, " "
 	rst ByteFill
 

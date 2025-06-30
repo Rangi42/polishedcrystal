@@ -288,7 +288,7 @@ GetBGMapPlayerOffset::
 	ld hl, wBGMapAnchor + 1
 	ld a, [hld]
 	inc a ; move down 8 rows
-	and HIGH(vBGMap0 + TILEMAP_WIDTH * TILEMAP_HEIGHT - 1) ; wrap vertically
+	and HIGH(vBGMap0 + TILEMAP_AREA - 1) ; wrap vertically
 	ld l, [hl]
 	ld h, a
 	ld a, l

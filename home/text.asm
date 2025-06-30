@@ -23,7 +23,7 @@ FillBoxWithByte::
 ClearScreen::
 	ld a, PAL_BG_TEXT
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 ClearTileMap::
 ; Fill wTilemap with blank tiles.
@@ -42,7 +42,7 @@ BlackOutScreen::
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	ld a, "<BLACK>"
 	rst ByteFill
 	ld a, $1

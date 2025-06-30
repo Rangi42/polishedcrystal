@@ -250,7 +250,7 @@ _CGB_FinishBattleScreenLayout:
 .overlay_done
 	push bc
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, PAL_BATTLE_BG_ENEMY_HP
 	rst ByteFill
 
@@ -575,7 +575,7 @@ _CGB_NamingScreen:
 	; message area + Shift/Del/End
 	ld a, $1
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	; input characters
 	inc a
@@ -760,7 +760,7 @@ _CGB_Evolution:
 
 _CGB_MoveList:
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, $7
 	rst ByteFill
 
@@ -1125,7 +1125,7 @@ LoadFirstTwoTrainerCardPals:
 	push de
 	; border
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 

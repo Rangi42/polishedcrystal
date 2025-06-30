@@ -135,7 +135,7 @@ CheckCancelPrint:
 Printer_CopyTilemapToBuffer:
 	hlcoord 0, 0
 	ld de, wPrinterTilemapBuffer
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	jmp CopyBytes
 
 Printer_ResetJoypadRegisters:

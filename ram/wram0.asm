@@ -254,7 +254,7 @@ SECTION "Tilemap and Attrmap", WRAM0
 ; Some code depend on these being next to each other in memory.
 wTilemap::
 ; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wTilemapEnd::
 
 wAttrmap::
@@ -266,7 +266,7 @@ wAttrmap::
 ; bit 4: pal # (non-cgb)
 ; bit 3: vram bank (cgb only)
 ; bit 2-0: pal # (cgb only)
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wAttrmapEnd::
 
 
@@ -1092,7 +1092,7 @@ wPrinterSendByteOffset:: dw
 wPrinterSendByteCounter:: dw
 
 ; tilemap backup?
-wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterTilemapBuffer:: ds SCREEN_AREA
 wPrinterStatus:: db
 	ds 1
 ; High nibble is for margin before the image, low nibble is for after.

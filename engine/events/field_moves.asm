@@ -34,9 +34,9 @@ ShakeHeadbuttTree:
 	; shift all sprites left in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (OAM_COUNT * OBJ_SIZE - a
+	; a = OAM_SIZE - a
 	cpl
-	add OAM_COUNT * OBJ_SIZE + 1
+	add OAM_SIZE + 1
 	ld h, HIGH(wShadowOAM)
 	ld l, a
 	sub (4 * OBJ_SIZE)
@@ -84,9 +84,9 @@ ShakeHeadbuttTree:
 	; shift all sprites right in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (OAM_COUNT) * OBJ_SIZE - a - 1
+	; a = OAM_SIZE - a - 1
 	cpl
-	add OAM_COUNT * OBJ_SIZE
+	add OAM_SIZE
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 	ld de, wShadowOAMSprite39 + 3
@@ -163,9 +163,9 @@ OWCutAnimation:
 	; shift all sprites left in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (OAM_COUNT * OBJ_SIZE) - a
+	; a = OAM_SIZE - a
 	cpl
-	add OAM_COUNT * OBJ_SIZE + 1
+	add OAM_SIZE + 1
 	ld h, HIGH(wShadowOAM)
 	ld l, a
 	sub (4 * OBJ_SIZE)
@@ -199,9 +199,9 @@ OWCutAnimation:
 	; shift all sprites right in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (OAM_COUNT) * OBJ_SIZE - a - 1
+	; a = OAM_SIZE - a - 1
 	cpl
-	add OAM_COUNT * OBJ_SIZE
+	add OAM_SIZE
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 	ld de, wShadowOAMSprite39 + 3
