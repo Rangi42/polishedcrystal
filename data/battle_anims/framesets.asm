@@ -29,7 +29,7 @@ BattleAnimFrameData:
 	dw .Frameset_SmallRockStarHeart ; 1a
 	dw .Frameset_1b ; 1b
 	dw .Frameset_1c ; 1c
-	dw .Frameset_Acid                    ; BATTLEANIMFRAMESET_SWAGGERID
+	dw .Frameset_Acid                    ; BATTLEANIMFRAMESET_ACID
 	dw .Frameset_PoisonDroplet ; 1e
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20

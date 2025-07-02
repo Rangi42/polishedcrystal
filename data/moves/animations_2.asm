@@ -1374,8 +1374,8 @@ BattleAnim_MudShot:
 
 BattleAnim_MagicalLeaf:
 	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_AURORA
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW_FULL_SHIFT, $0, $2, $0
 	anim_1gfx ANIM_GFX_PLANT
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW_FULL_SHIFT, $0, $2, $0
 	anim_sound 0, 0, SFX_VINE_WHIP
 	anim_obj ANIM_OBJ_RAZOR_LEAF, 48, 80, $28
 	anim_obj ANIM_OBJ_RAZOR_LEAF, 48, 80, $5c

@@ -1,4 +1,4 @@
-if DEF(DEBUG)
+
 MoveTable:
 	; RBYGSC moves
 ;	dw POUND
@@ -465,9 +465,6 @@ DisplayUsedMoveText:
 	ret
 
 .no_animate_all_moves
-else
-DisplayUsedMoveText:
-endc
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
 	bit SUBSTATUS_IN_ABILITY, a
