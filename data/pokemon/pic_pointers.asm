@@ -1,9 +1,9 @@
 MACRO pics
-	dbas \1Frontpic, \1Backpic
+	dbas \1Frontpic, \1Backpic, \1Frames
 ENDM
 
 PokemonPicPointers::
-	table_width 5
+	table_width 7
 	pics Bulbasaur
 	pics Ivysaur
 	pics Venusaur
@@ -258,8 +258,8 @@ PokemonPicPointers::
 	pics Azurill
 	pics Wynaut
 	pics Ambipom
-	dbas EggPic, EggPic
-	dbas EggPic, EggPic ; $100
+	dbas EggPic, EggPic, EggFrames
+	dbas EggPic, EggPic, EggFrames ; $100
 	pics Mismagius
 	pics Honchkrow
 	pics Bonsly
