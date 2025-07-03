@@ -3,11 +3,11 @@ GetFrontpic:
 	ld [wCurSpecies], a
 	and a
 	ret z
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	call _GetFrontpic
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 PrepareFrontpic:
@@ -15,11 +15,11 @@ PrepareFrontpic:
 	ld [wCurSpecies], a
 	and a
 	ret z
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	call _PrepareFrontpic
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 FrontpicPredef:
@@ -27,7 +27,7 @@ FrontpicPredef:
 	ld [wCurSpecies], a
 	and a
 	ret z
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	xor a
 	ldh [hBGMapMode], a
@@ -38,7 +38,7 @@ FrontpicPredef:
 	xor a
 	ldh [rVBK], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 _GetFrontpic:
@@ -83,7 +83,7 @@ endr
 	pop bc
 
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call FarDecompressInB
 	; Save decompressed size
 	swap e
@@ -195,10 +195,10 @@ GetBackpic:
 	; b = form
 	ld a, [wCurForm]
 	ld b, a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push de
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
@@ -225,7 +225,7 @@ endr
 	ld c, 6 * 6
 	call Get2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 GetTrainerPic:
@@ -242,10 +242,10 @@ GetTrainerPic:
 	dec a
 	ld bc, 3
 	rst AddNTimes
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push de
 	ld a, BANK(TrainerPicPointers)
 	call GetFarByte
@@ -263,7 +263,7 @@ _Decompress7x7Pic:
 	ld b, a
 	call Get2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call ApplyTilemapInVBlank
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -278,10 +278,10 @@ GetPaintingPic:
 	ld a, [wTrainerClass]
 	ld bc, 2
 	rst AddNTimes
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push de
 	ld a, BANK(PaintingPicPointers)
 	call GetFarWord

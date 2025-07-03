@@ -215,11 +215,11 @@ ResetAbilityTilemap:
 ; Sets tilemap data depending on which overlays are active.
 	hlcoord 0, 8, wAttrmap
 	ld b, SLIDEOUT_START_TILE + SLIDEOUT_WIDTH * 2
-	bit OAM_TILE_BANK, [hl]
+	bit B_OAM_BANK1, [hl]
 	call nz, .SetTilemap
 	hlcoord 9, 3, wAttrmap
 	ld b, SLIDEOUT_START_TILE
-	bit OAM_TILE_BANK, [hl]
+	bit B_OAM_BANK1, [hl]
 	ret z
 .SetTilemap
 	push bc
@@ -268,13 +268,13 @@ SetAbilityOverlayAttributes:
 	inc a
 	jr z, .no_pal_change
 	ld a, [hl]
-	and ~PALETTE_MASK
+	and ~OAM_PALETTE
 	or b
 	ld [hl], b
 .no_pal_change
 	pop af
-	set OAM_TILE_BANK, [hl]
-	set OAM_PRIORITY, [hl]
+	set B_OAM_BANK1, [hl]
+	set B_OAM_PRIO, [hl]
 	inc hl
 	dec c
 	jr nz, .attrmap_loop
@@ -307,10 +307,10 @@ DismissAbilityOverlays:
 	push bc
 
 	; Revert tilemap and attributes
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wTempTileMap)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld b, PAL_BATTLE_BG_PLAYER
 	hlcoord 0, 8
 	call .reset_tilemap
@@ -324,7 +324,7 @@ DismissAbilityOverlays:
 	hlcoord 9, 4
 	call .reset_tilemap
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; Reload the graphics
 	ld b, 2
@@ -352,7 +352,7 @@ DismissAbilityOverlays:
 	ld c, SLIDEOUT_WIDTH
 .attr_loop
 	ld a, [hl]
-	and ~(PALETTE_MASK | VRAM_BANK_1 | PRIORITY)
+	and ~(OAM_PALETTE | OAM_BANK1 | OAM_PRIO)
 	or b
 	ld [hli], a
 	dec c

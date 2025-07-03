@@ -78,11 +78,11 @@ DoNextFrameForAllSprites_OW:
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 
-.ow_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - hUsedOAMIndex])
+.ow_clear_loop ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> [(OAM_COUNT - 1) * OBJ_SIZE - hUsedOAMIndex])
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH - a
+	; a = (OAM_COUNT - 1) * OBJ_SIZE - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH + 1
+	add (OAM_COUNT - 1) * OBJ_SIZE + 1
 	cp l
 	ret c
 	xor a
@@ -313,12 +313,12 @@ UpdateAnimFrame:
 	jr .attributes_done
 .skipOAMAttributes
 	ld a, [de]
-	and ~X_FLIP
+	and ~OAM_XFLIP
 	ld [de], a
 	jr .attributes_done
 .skipOAMAttributes_xflip
 	ld a, [de]
-	or X_FLIP
+	or OAM_XFLIP
 	ld [de], a
 .attributes_done
 	inc hl
@@ -458,7 +458,7 @@ GetSpriteAnimFrame:
 	push af
 	ld a, [hl]
 	push hl
-	and ~(Y_FLIP << 1 | X_FLIP << 1)
+	and ~(OAM_YFLIP << 1 | OAM_XFLIP << 1)
 	ld hl, SPRITEANIMSTRUCT_DURATIONOFFSET
 	add hl, bc
 	add [hl]
@@ -468,7 +468,7 @@ GetSpriteAnimFrame:
 	pop hl
 .okay
 	ld a, [hl]
-	and Y_FLIP << 1 | X_FLIP << 1 ; The << 1 is compensated in the "oamframe" macro
+	and OAM_YFLIP << 1 | OAM_XFLIP << 1 ; The << 1 is compensated in the "oamframe" macro
 	srl a
 	ld [wCurSpriteAddSubFlags], a
 	pop af

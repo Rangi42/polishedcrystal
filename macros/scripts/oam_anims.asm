@@ -3,7 +3,7 @@
 MACRO battleoamframe
 	dw \1 ; oam set
 	DEF x = \2
-	assert !(x & (1 << (OAM_X_FLIP + 1) | 1 << (OAM_Y_FLIP + 1))), \
+	assert !(x & (1 << (B_OAM_XFLIP + 1) | 1 << (B_OAM_YFLIP + 1))), \
 		"oamframe duration overflows into X/Y flip bits"
 	if _NARG > 2
 		rept _NARG - 2
@@ -40,7 +40,7 @@ ENDM
 MACRO oamframe
 	db \1 ; oam set
 	DEF x = \2
-	assert !(x & (1 << (OAM_X_FLIP + 1) | 1 << (OAM_Y_FLIP + 1))), \
+	assert !(x & (1 << (B_OAM_XFLIP + 1) | 1 << (B_OAM_YFLIP + 1))), \
 		"oamframe duration overflows into X/Y flip bits"
 	if _NARG > 2
 		rept _NARG - 2

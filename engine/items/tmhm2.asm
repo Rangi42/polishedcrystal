@@ -34,7 +34,7 @@ TMHM_PocketLoop:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, A_BUTTON | B_BUTTON | START | D_UP | D_DOWN | D_LEFT | D_RIGHT
+	ld a, PAD_A | PAD_B | PAD_START | PAD_CTRL_PAD
 	ld [wMenuJoypadFilter], a
 	ld a, [wTMHMPocketCursor]
 	and $7f
@@ -64,13 +64,13 @@ TMHM_JoypadLoop:
 	jmp nz, TMHM_ScrollPocket
 	ld a, b
 	ld [wMenuJoypad], a
-	bit START_F, a
+	bit B_PAD_START, a
 	jr nz, TMHM_SortMenu
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, TMHM_ChooseTMorHM
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, TMHM_ExitPack
-	and D_RIGHT | D_LEFT
+	and PAD_RIGHT | PAD_LEFT
 	ret nz
 TMHM_ShowTMMoveDescription:
 	call TMHM_GetCurrentTMHM

@@ -115,7 +115,7 @@ endr
 	push hl
 	call PrintNum
 	pop hl
-	ld de, BG_MAP_WIDTH
+	ld de, TILEMAP_WIDTH
 	add hl, de
 	ret
 

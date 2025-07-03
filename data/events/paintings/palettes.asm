@@ -1,5 +1,5 @@
 PaintingPalettes:
-	table_width PALETTE_SIZE
+	table_width PAL_SIZE
 INCLUDE "gfx/paintings/ho_oh_painting.pal"
 INCLUDE "gfx/paintings/lugia_painting.pal"
 INCLUDE "gfx/paintings/bell_tower_painting.pal"

@@ -4220,9 +4220,9 @@ BattleMenu:
 
 .autoinput_down_a
 	db NO_INPUT, $40
-	db D_DOWN,   $00
+	db PAD_DOWN, $00
 	db NO_INPUT, $40
-	db A_BUTTON, $00
+	db PAD_A,    $00
 	db NO_INPUT, $ff ; end
 
 BattleMenu_Fight:
@@ -4512,7 +4512,7 @@ BattleMenuPKMN_Loop:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .clear_carry
 
 .set_carry
@@ -4988,17 +4988,17 @@ MoveSelectionScreen:
 	ld c, $2c
 
 	ld a, [wMoveSelectionMenuType]
-	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON | START
+	ld b, PAD_DOWN | PAD_UP | PAD_A | PAD_B | PAD_START
 	and a
 	jr z, .check_link
 	dec a
 	jr z, .okay
-	ld b, D_DOWN | D_UP | A_BUTTON | START
+	ld b, PAD_DOWN | PAD_UP | PAD_A | PAD_START
 .check_link
 	ld a, [wLinkMode]
 	and a
 	jr nz, .okay
-	ld a, SELECT
+	ld a, PAD_SELECT
 	or b
 	ld b, a
 
@@ -5030,15 +5030,15 @@ MoveSelectionScreen:
 	ld a, $1
 	ldh [hBGMapMode], a
 	call DoMenuJoypadLoop
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jmp nz, .pressed_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jmp nz, .pressed_down
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jmp nz, .pressed_select
-	bit START_F, a
+	bit B_PAD_START, a
 	jmp nz, .pressed_start
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	; A button
 	push af
 
@@ -5475,7 +5475,7 @@ MoveInfoBox:
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	ld hl, TypeIconGFX
-	ld bc, 4 * LEN_1BPP_TILE
+	ld bc, 4 * TILE_1BPP_SIZE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
@@ -7891,7 +7891,7 @@ BattleIntro:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
-	res rLCDC_WINDOW_TILEMAP, [hl]
+	res B_LCDC_WIN_MAP, [hl]
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld a, [wBattleType]
@@ -7919,7 +7919,7 @@ BattleIntro:
 	pop bc
 .skip_ghost_reveal
 	ld hl, rLCDC
-	set rLCDC_WINDOW_TILEMAP, [hl]
+	set B_LCDC_WIN_MAP, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox
@@ -7952,10 +7952,10 @@ LoadTrainerOrWildMonPic:
 	ret
 
 BackUpBGMap2:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wDecompressScratch
 	ld bc, $40 tiles ; vBGMap3 - vBGMap2
 	ld a, $2
@@ -7971,7 +7971,7 @@ BackUpBGMap2:
 	pop af
 	ldh [rVBK], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 InitEnemy:
@@ -8182,7 +8182,7 @@ DisplayLinkRecord:
 	call CloseSRAM
 	hlcoord 0, 0, wAttrmap
 	xor a
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
 	ld a, CGB_PLAIN
@@ -8633,13 +8633,13 @@ InitBattleDisplay:
 	ret
 
 .BlankBGMap:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wScratchTileMap
-	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
+	ld bc, TILEMAP_AREA
 	ld a, " "
 	rst ByteFill
 
@@ -8649,7 +8649,7 @@ InitBattleDisplay:
 	call Request2bpp
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .InitBackPic:
@@ -8682,10 +8682,10 @@ GetTrainerBackpic:
 	jmp DecompressRequest2bpp
 
 CopyBackpic:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31
 	ldh a, [hROMBank]
@@ -8693,7 +8693,7 @@ CopyBackpic:
 	ld c, 7 * 7
 	call Get2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call .LoadTrainerBackpicAsOAM
 	ld a, $31
 	ldh [hGraphicStartTile], a

@@ -17,7 +17,7 @@ SwitchToMapScriptsBank::
 SECTION "rst08 Bankswitch", ROM0[$0008]
 Bankswitch::
 	ldh [hROMBank], a
-	ld [MBC3RomBank], a
+	ld [rROMB], a
 	ret
 
 _de_::
