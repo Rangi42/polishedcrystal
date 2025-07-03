@@ -138,11 +138,12 @@ MACRO tr_mon
 		shift ; since it's optional
 	endc
 
-	if STRIN("\2", "@") != 0
+	def _tr_sep = STRFIND("\2", " @ ")
+	if _tr_sep != -1
 		; Format "Species @ Item" was used, so add the item.
 		def _tr_flags |= TRAINERTYPE_ITEM
-		redef _tr_pk{d:p}_item EQUS STRSLICE("\2", STRFIND("\2", " @ ") + 3, STRLEN("\2"))
-		redef _tr_pk{d:p}_species EQUS STRSLICE("\2", 0, STRFIND("\2", " @ "))
+		redef _tr_pk{d:p}_species EQUS STRSLICE("\2", 0, _tr_sep)
+		redef _tr_pk{d:p}_item EQUS STRSLICE("\2", _tr_sep + STRLEN(" @ "))
 	else
 		; Just "Species", no held item.
 		redef _tr_pk{d:p}_species EQUS "\2"
