@@ -5,14 +5,15 @@
 Search all .asm files for N code lines in a row that match some conditions.
 """
 
+from __future__ import annotations
 from argparse import ArgumentParser
 from collections import namedtuple
-from glob import iglob
 from pathlib import Path
 from sys import stderr
 
 # Regular expressions are useful for text processing
 import re
+from typing import List, Tuple
 
 # Paired registers are also useful
 PAIRS = dict(sum([[(x, y), (y, x)] for (x, y) in {'af', 'bc', 'de', 'hl'}], []))
@@ -36,7 +37,6 @@ def isNotReallyHram(code):
 # - comment (if one exists)
 # - text (the whole line of text)
 # - context (the current label)
-Line = namedtuple('Line', ['num', 'code', 'comment', 'text', 'context'])
 
 # Suppress false positives with comments, like:
 #     ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
@@ -610,78 +610,102 @@ patterns = {
 ],
 }
 
-def optimize(filename):
+WHITESPACE_RE = re.compile(r'\s+')
+COMMENT_PREFIX = (SUPPRESS + ' ').lower()
+
+LineObj = namedtuple(
+	"LineObj",
+	("num", "code", "comment", "comment_lower", "text", "context")
+)
+
+def preprocess(source_lines: List[str]) -> List[LineObj]:
+	"""Return a list of fully–parsed/normalised LineObj (blank lines omitted)."""
+	processed: List[LineObj] = []
+	current_label: str = ""
+	for idx, raw in enumerate(source_lines, start=1):
+		text = raw.rstrip('\n')
+		code_part, _, comment_part = text.partition(';')
+		code_part = code_part.rstrip()
+		if not code_part:
+			continue
+
+		# A real label must begin in column 0 (no leading spaces or tabs).
+		if (code_part and (code_part[0].isalpha() or code_part[0] == '_')
+				and ':' in code_part and not code_part[0].isspace()):
+			current_label = code_part  # keep original indentation for later checks
+
+		code_norm = WHITESPACE_RE.sub(' ', code_part.lstrip())
+		comment = comment_part.strip()
+		processed.append(
+			LineObj(
+				num=idx,
+				code=code_norm,
+				comment=comment,
+				comment_lower=comment.lower(),
+				text=text,
+				context=current_label,
+			)
+		)
+	return processed
+
+def optimize(filename: Path) -> int:
 	# Count the total instances of patterns in this file
+	try:
+		source_lines = filename.read_text(encoding='utf-8', errors='strict').splitlines(True)
+	except UnicodeDecodeError as ex:
+		print(f'ERROR!!! {filename}: {ex}\n')
+		return 0
+	processed = preprocess(source_lines)
+	if not processed:
+		return 0
 	count = 0
 	printed = False
-	# Read file line by line
-	with filename.open() as f:
-		try:
-			lines = [text.rstrip() for text in f]
-			n = len(lines)
-		except UnicodeDecodeError as ex:
-			print('ERROR!!! %s: %s\n' % (filename, str(ex)))
-			return 0
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
-		printed_this = False
-		cur_label = None
-		prev_lines = []
+		prev_lines: List[LineObj] = []
 		state = 0
 		# Iterate over the lines
 		i = 0
-		while i < n:
-			text = lines[i]
-			# Remove comments
-			parts = text.split(';', 1)
-			code = parts[0].rstrip()
-			comment = parts[1].strip() if len(parts) > 1 else ''
-			# Skip blank lines:
-			if not code:
-				i += 1
-				continue
-			# Save the most recent label for context
-			if (code[0].isalpha() or code[0] == '_') and ':' in code:
-				cur_label = Line(i+1, code, comment, text, code)
-			# Remove indentation from code, if any
-			code = code.lstrip()
-			# Normalize whitespace
-			code = re.sub(r'\s+', ' ', code)
-			# Record the line's properties
-			context = cur_label.code if cur_label else ''
-			cur_line = Line(i+1, code, comment, text, context)
-			# Check the condition for the current state
+		cur_label: LineObj | None = None
+		printed_this = False
+		while i < len(processed):
+			line = processed[i]
+			# Same column-0 rule when tracking the label nearest a match
+			if (line.code and ':' in line.code
+					and (line.code[0].isalpha() or line.code[0] == '_')
+					and not line.text[0].isspace()):
+				cur_label = line
 			condition = conditions[state]
-			allow_rewind = type(condition) == tuple
+			allow_rewind = isinstance(condition, tuple)
 			if allow_rewind:
 				rewind_count, condition = condition
-			skip = comment.lower().startswith(SUPPRESS + ' ' + pattern_name.lower())
-			if condition(cur_line, prev_lines) and not skip:
-				# The condition was met; advance to the next state
-				prev_lines.append(cur_line)
+			skip = line.comment_lower.startswith(COMMENT_PREFIX + pattern_name.lower())
+			if not skip and condition(line, prev_lines):
+				prev_lines.append(line)
 				state += 1
 				if state == len(conditions):
 					# All the conditions were met; print the result and reset the state
 					count += 1
 					if not printed_this and len(patterns) > 1:
-						print('###', pattern_name, '###')
+						print(f'### {pattern_name} ###')
+						printed_this = True
 					if cur_label:
-						prev_lines.insert(0, cur_label)
+						print(f'{filename}:{cur_label.num}:{cur_label.text}')
 					for line in prev_lines:
-						print(filename, line.num, line.text, sep=':')
+						print(f'{filename}:{line.num}:{line.text}')
 					printed = True
-					printed_this = True
 					prev_lines = []
 					state = 0
-			elif allow_rewind and not skip:
-				# The condition was not met; go back to a previous condition
-				i -= 1
-				state -= rewind_count
 			else:
-				# The condition was not met; reset the state
-				i -= state
-				prev_lines = []
-				state = 0
+				if allow_rewind and not skip:
+					# The condition was not met; go back to a previous condition
+					i -= rewind_count
+					state -= rewind_count
+				else:
+					# The condition was not met; reset the state
+					i -= state
+					state = 0
+					prev_lines = []
 			i += 1
 	# Print a blank line between different files
 	if printed:
