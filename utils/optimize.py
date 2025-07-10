@@ -595,7 +595,7 @@ patterns = {
 	(lambda line1, prev: re.match(r'ld a, \[w', line1.code)),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
 	(lambda line3, prev: re.match(r'ld \[w.*?\], a', line3.code)
-		and line3.code.split(", ")[0].lstrip("ld ") == prev[0].code.split(", ")[-1]),
+		and line3.code.split(', ')[0].lstrip('ld ') == prev[0].code.split(', ')[-1]),
 ],
 'Trailing string space': [
 	# Bad: text "Hello! " (unless it's followed by a text command)
@@ -653,11 +653,11 @@ def optimize(filename):
 		lines = filename.read_text(encoding='utf-8', errors='strict').splitlines(True)
 	except UnicodeDecodeError as ex:
 		print(f'ERROR!!! {filename}: {ex}\n')
-		return count
+		return 0
 	# Preprocess the lines' properties
 	lines = preprocess_properties(lines)
 	if not lines:
-		return count
+		return 0
 	n = len(lines)
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
@@ -691,8 +691,8 @@ def optimize(filename):
 						printed_this = True
 					if cur_label:
 						print(f'{filename}:{cur_label.num}:{cur_label.text}')
-					for cur_line in prev_lines:
-						print(f'{filename}:{cur_line.num}:{cur_line.text}')
+					for line in prev_lines:
+						print(f'{filename}:{line.num}:{line.text}')
 					printed = True
 					prev_lines = []
 					state = 0
@@ -720,12 +720,12 @@ args = parser.parse_args()
 total_count = 0
 for path in args.path:
 	if not path.exists():
-		print("File not found:", path, file=stderr)
+		print('File not found:', path, file=stderr)
 		continue
 	if path.is_file():
 		total_count += optimize(path)
 	else:
-		for filename in path.rglob("*.asm"):
+		for filename in path.rglob('*.asm'):
 			total_count += optimize(filename)
 
 # Print the total count
