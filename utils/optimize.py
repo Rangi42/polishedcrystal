@@ -42,7 +42,7 @@ Line = namedtuple('Line', ['num', 'code', 'comment', 'comment_lower', 'text', 'c
 #     ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
 #     ld a, NUM_MOVES
 #     sub c
-SUPPRESS = 'no-optimize'
+SUPPRESS = 'no-optimize '
 
 # A set of named patterns of suboptimal code
 #
@@ -610,73 +610,78 @@ patterns = {
 ],
 }
 
+# Match any sequence of whitespace
 WHITESPACE_RE = re.compile(r'\s+')
-COMMENT_PREFIX = (SUPPRESS + ' ').lower()
 
-def preprocess(source_lines):
+def preprocess_properties(lines):
 	# Return a list of fully–parsed/normalized Lines (blank lines omitted)
 	processed = []
-	current_label = ""
-	for idx, raw in enumerate(source_lines, start=1):
+	cur_label = ''
+	for num, raw in enumerate(lines, start=1):
 		text = raw.rstrip('\n')
-		code_part, _, comment_part = text.partition(';')
-		code_part = code_part.rstrip()
-		if not code_part:
+		# Remove comments
+		code, _, comment = text.partition(';')
+		code = code.rstrip()
+		# Skip blank lines
+		if not code:
 			continue
-
-		# A real label must begin in column 0 (no leading spaces or tabs).
-		if (code_part and (code_part[0].isalpha() or code_part[0] == '_')
-				and ':' in code_part and not code_part[0].isspace()):
-			current_label = code_part  # keep original indentation for later checks
-
-		code_norm = WHITESPACE_RE.sub(' ', code_part.lstrip())
-		comment = comment_part.strip()
+		# Save the most recent label for context
+		if (code[0].isalpha() or code[0] == '_') and ':' in code:
+			cur_label = code
+		# Normalize whitespace, and remove indentation from code, if any
+		code = WHITESPACE_RE.sub(' ', code.lstrip())
+		comment = comment.strip()
+		# Record the line's properties
 		processed.append(
 			Line(
-				num=idx,
-				code=code_norm,
+				num=num,
+				code=code,
 				comment=comment,
 				comment_lower=comment.lower(),
 				text=text,
-				context=current_label,
+				context=cur_label,
 			)
 		)
 	return processed
 
 def optimize(filename):
 	# Count the total instances of patterns in this file
-	try:
-		source_lines = filename.read_text(encoding='utf-8', errors='strict').splitlines(True)
-	except UnicodeDecodeError as ex:
-		print(f'ERROR!!! {filename}: {ex}\n')
-		return 0
-	processed = preprocess(source_lines)
-	if not processed:
-		return 0
 	count = 0
 	printed = False
+	# Read file line by line
+	try:
+		lines = filename.read_text(encoding='utf-8', errors='strict').splitlines(True)
+	except UnicodeDecodeError as ex:
+		print(f'ERROR!!! {filename}: {ex}\n')
+		return count
+	# Preprocess the lines' properties
+	lines = preprocess_properties(lines)
+	if not lines:
+		return count
+	n = len(lines)
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
+		printed_this = False
+		cur_label = None
 		prev_lines = []
 		state = 0
 		# Iterate over the lines
 		i = 0
-		cur_label = None
-		printed_this = False
-		while i < len(processed):
-			line = processed[i]
-			# Same column-0 rule when tracking the label nearest a match
-			if (line.code and ':' in line.code
-					and (line.code[0].isalpha() or line.code[0] == '_')
-					and not line.text[0].isspace()):
-				cur_label = line
+		while i < n:
+			cur_line = lines[i]
+			# Save the most recent label for context
+			if (':' in cur_line.code and (cur_line.code[0].isalpha() or cur_line.code[0] == '_')
+					and not cur_line.text[0].isspace()):
+				cur_label = cur_line
+			# Check the condition for the current state
 			condition = conditions[state]
 			allow_rewind = isinstance(condition, tuple)
 			if allow_rewind:
 				rewind_count, condition = condition
-			skip = line.comment_lower.startswith(COMMENT_PREFIX + pattern_name.lower())
-			if not skip and condition(line, prev_lines):
-				prev_lines.append(line)
+			skip = cur_line.comment_lower.startswith(SUPPRESS + pattern_name.lower())
+			if not skip and condition(cur_line, prev_lines):
+				# The condition was met; advance to the next state
+				prev_lines.append(cur_line)
 				state += 1
 				if state == len(conditions):
 					# All the conditions were met; print the result and reset the state
@@ -686,21 +691,20 @@ def optimize(filename):
 						printed_this = True
 					if cur_label:
 						print(f'{filename}:{cur_label.num}:{cur_label.text}')
-					for line in prev_lines:
-						print(f'{filename}:{line.num}:{line.text}')
+					for cur_line in prev_lines:
+						print(f'{filename}:{cur_line.num}:{cur_line.text}')
 					printed = True
 					prev_lines = []
 					state = 0
+			elif allow_rewind and not skip:
+				# The condition was not met; go back to a previous condition
+				i -= rewind_count
+				state -= rewind_count
 			else:
-				if allow_rewind and not skip:
-					# The condition was not met; go back to a previous condition
-					i -= rewind_count
-					state -= rewind_count
-				else:
-					# The condition was not met; reset the state
-					i -= state
-					state = 0
-					prev_lines = []
+				# The condition was not met; reset the state
+				i -= state
+				prev_lines = []
+				state = 0
 			i += 1
 	# Print a blank line between different files
 	if printed:
