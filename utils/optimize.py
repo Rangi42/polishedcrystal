@@ -5,7 +5,6 @@
 Search all .asm files for N code lines in a row that match some conditions.
 """
 
-from __future__ import annotations
 from argparse import ArgumentParser
 from collections import namedtuple
 from pathlib import Path
@@ -13,7 +12,6 @@ from sys import stderr
 
 # Regular expressions are useful for text processing
 import re
-from typing import List, Tuple
 
 # Paired registers are also useful
 PAIRS = dict(sum([[(x, y), (y, x)] for (x, y) in {'af', 'bc', 'de', 'hl'}], []))
@@ -31,12 +29,14 @@ def isNotReallyHram(code):
 		'rROMB', 'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB', 'rRTCLATCH', 'rRTCREG'
 	})
 
-# Each line has five properties:
+# Each line has six properties:
 # - num (1, 2, 3, etc)
 # - code (no indent or comment)
 # - comment (if one exists)
+# - comment_lower (memoizing comment.lower())
 # - text (the whole line of text)
 # - context (the current label)
+Line = namedtuple('Line', ['num', 'code', 'comment', 'comment_lower', 'text', 'context'])
 
 # Suppress false positives with comments, like:
 #     ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
@@ -613,15 +613,10 @@ patterns = {
 WHITESPACE_RE = re.compile(r'\s+')
 COMMENT_PREFIX = (SUPPRESS + ' ').lower()
 
-LineObj = namedtuple(
-	"LineObj",
-	("num", "code", "comment", "comment_lower", "text", "context")
-)
-
-def preprocess(source_lines: List[str]) -> List[LineObj]:
-	"""Return a list of fully–parsed/normalised LineObj (blank lines omitted)."""
-	processed: List[LineObj] = []
-	current_label: str = ""
+def preprocess(source_lines):
+	# Return a list of fully–parsed/normalized Lines (blank lines omitted)
+	processed = []
+	current_label = ""
 	for idx, raw in enumerate(source_lines, start=1):
 		text = raw.rstrip('\n')
 		code_part, _, comment_part = text.partition(';')
@@ -637,7 +632,7 @@ def preprocess(source_lines: List[str]) -> List[LineObj]:
 		code_norm = WHITESPACE_RE.sub(' ', code_part.lstrip())
 		comment = comment_part.strip()
 		processed.append(
-			LineObj(
+			Line(
 				num=idx,
 				code=code_norm,
 				comment=comment,
@@ -648,7 +643,7 @@ def preprocess(source_lines: List[str]) -> List[LineObj]:
 		)
 	return processed
 
-def optimize(filename: Path) -> int:
+def optimize(filename):
 	# Count the total instances of patterns in this file
 	try:
 		source_lines = filename.read_text(encoding='utf-8', errors='strict').splitlines(True)
@@ -662,11 +657,11 @@ def optimize(filename: Path) -> int:
 	printed = False
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
-		prev_lines: List[LineObj] = []
+		prev_lines = []
 		state = 0
 		# Iterate over the lines
 		i = 0
-		cur_label: LineObj | None = None
+		cur_label = None
 		printed_this = False
 		while i < len(processed):
 			line = processed[i]
