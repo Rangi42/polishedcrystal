@@ -270,14 +270,14 @@ MoveTable:
 ;	dw BLOCK
 ;	dw DRAGON_CLAW
 ;	dw BULK_UP
-	dw BOUNCE
-	dw MUD_SHOT
-	dw MAGICAL_LEAF
+;	dw BOUNCE
+;	dw MUD_SHOT
+;	dw MAGICAL_LEAF
 ;	dw CALM_MIND
-	dw LEAF_BLADE
+;	dw LEAF_BLADE
 ;	dw DRAGON_DANCE
 ;	dw ROCK_BLAST
-	dw SHOCK_WAVE
+;	dw SHOCK_WAVE
 ;	dw WATER_PULSE
 
 ;- gen4 moves

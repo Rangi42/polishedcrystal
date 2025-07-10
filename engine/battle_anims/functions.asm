@@ -115,6 +115,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_RadialMoveIn
 	dw BattleAnimFunction_NightSlash
 	dw BattleAnimFunction_RadialMoveOut_Delay
+	dw BattleAnimFunction_RadialMoveOut_VeryFast_NoStop
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -4289,6 +4290,9 @@ BattleAnimFunction_RadialMoveOut:
 	lb de, 12, 80
 	jr BattleAnimFunc_DoRadialMoveOut
 
+BattleAnimFunction_RadialMoveOut_VeryFast_NoStop:
+	ld d, 30
+	jr BattleAnimFunc_DoRadialMoveOut_NoStop
 
 BattleAnimFunction_RadialMoveOut_Slow:
 	lb de, 3, 120
@@ -4341,6 +4345,53 @@ BattleAnimFunc_RadialStep:
 	pop bc
 	cp e ; final position
 	jmp nc, FarDeinitBattleAnimation
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld e, [hl]
+	push de
+	ld a, e
+	farcall Sine
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop de
+	ld a, e
+	farcall Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ret
+
+BattleAnimFunc_DoRadialMoveOut_NoStop:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw .init
+	dw .step
+
+.init
+	call BattleAnimFunc_RadialInit
+.step
+	; fallthrough
+BattleAnimFunc_RadialStep_NoStop:
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	push bc
+	push hl
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
+	ld h, d ; speed x 2
+	ld l, 0
+	srl h
+	rr l
+	add hl, bc
+	ld a, h
+	ld c, l
+	pop hl
+	ld [hli], a
+	ld [hl], c
+	ld d, b ; used for Sine/Cosine
+	pop bc
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld e, [hl]

@@ -329,7 +329,7 @@ endc
 	dba BattleAnim_MetalSound      ; METAL_SOUND
 	dba BattleAnim_Struggle        ; MIRROR_SHOT
 	dba BattleAnim_Struggle        ; MAGNET_BOMB
-	dba BattleAnim_Struggle        ; METAL_BURST
+	dba BattleAnim_MetalBurst      ; METAL_BURST
 	dba BattleAnim_Struggle        ; INFESTATION
 	dba BattleAnim_Struggle        ; STRUGGLE_BUG
 	dba BattleAnim_Struggle        ; QUIVER_DANCE
@@ -396,11 +396,11 @@ endc
 	dba BattleAnim_Struggle        ; FAIRY_WIND
 
 	dba BattleAnim_Mist            ; MIST
-	dba BattleAnim_Struggle        ; LUCKY_CHANT
-	dba BattleAnim_Struggle        ; BRINE
-	dba BattleAnim_Struggle        ; GASTRO_ACID
+	dba BattleAnim_LuckyChant      ; LUCKY_CHANT
+	dba BattleAnim_Brine           ; BRINE
+	dba BattleAnim_GastroAcid      ; GASTRO_ACID
 	dba BattleAnim_Struggle        ; SIMPLE_BEAM
-	dba BattleAnim_Struggle        ; WORRY_SEED
+	dba BattleAnim_WorrySeed       ; WORRY_SEED
 	dba BattleAnim_Recycle         ; RECYCLE
 	dba BattleAnim_Fissure         ; FISSURE
 	dba BattleAnim_Guillotine      ; GUILLOTINE
@@ -418,7 +418,7 @@ endc
 	dba BattleAnim_Struggle        ; MIND_READER
 	dba BattleAnim_Struggle        ; SOAK
 	dba BattleAnim_Struggle        ; BURN_UP
-	dba BattleAnim_Struggle        ; GRAVITY
+	dba BattleAnim_Gravity         ; GRAVITY
 	dba BattleAnim_Struggle        ; GRASS_KNOT
 	dba BattleAnim_Struggle        ; MIRROR_MOVE
 	dba BattleAnim_Struggle        ; INCINERATE

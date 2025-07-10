@@ -257,6 +257,9 @@ BattleAnimFrameData:
 	dw .Frameset_CutLongUpRight          ; BATTLEANIMFRAMESET_CUT_LONG_UP_RIGHT
 	dw .Frameset_CutLongUpLeft           ; BATTLEANIMFRAMESET_CUT_LONG_UP_LEFT
 	dw .Frameset_ShockWaveSparks         ; BATTLEANIMFRAMESET_SHOCK_WAVE_SPARKS
+	dw .Frameset_VerticalAgility         ; BATTLEANIMFRAMESET_VERTICAL_AGILITY
+	dw .Frameset_MetalBurst              ; BATTLEANIMFRAMESET_METAL_BURST
+	dw .Frameset_Depression              ; BATTLEANIMFRAMESET_DEPRESSION
 
 
 ; VAR3 animations start here -------
@@ -1847,4 +1850,18 @@ BattleAnimFrameData:
 
 .Frameset_ShockWaveSparks:
 	battleoamframe BATTLEANIMOAMSET_82,  8
+	battleoamend
+
+.Frameset_VerticalAgility:
+	battleoamframe BATTLEANIMOAMSET_VERTICLE_AGILITY,  8
+	battleoamend
+
+.Frameset_MetalBurst:
+	battleoamframe BATTLEANIMOAMSET_20, 60
+	battleoamdelete
+
+.Frameset_Depression:
+	battleoamframe BATTLEANIMOAMSET_1B,  6
+	battleoamframe BATTLEANIMOAMSET_21,  6
+	battleoamframe BATTLEANIMOAMSET_7F,  6
 	battleoamend

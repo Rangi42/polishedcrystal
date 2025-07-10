@@ -93,6 +93,7 @@ AnimObjGFX:
 	battleanimgfx 64, AnimObjRecycleGFX
 	battleanimgfx  5, AnimObjLavaRocksGFX
 	battleanimgfx  8, AnimObjWeatherBallGFX
+	battleanimgfx 12, AnimObjDepressionGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

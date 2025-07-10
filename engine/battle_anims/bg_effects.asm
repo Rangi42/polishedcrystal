@@ -107,6 +107,7 @@ DoBattleBGEffectFunction:
 	dw BattleBGEffect_ShakeScreenX
 	dw BattleBGEffect_ShakeScreenY
 	dw BattleBGEffect_Withdraw
+	dw BattleBGEffect_WithdrawAll
 	dw BattleBGEffect_BounceDown
 	dw BattleBGEffect_Dig
 	dw BattleBGEffect_Tackle
@@ -1235,6 +1236,53 @@ BattleBGEffect_Withdraw:
 	add [hl]
 	ld [hl], a
 	ret
+
+BattleBGEffect_WithdrawAll:
+	call BattleBGEffects_AnonJumptable
+.anon_dw
+	dw .zero
+	dw .one
+	dw .two
+
+.zero
+	call BattleBGEffects_IncrementJumptable
+	call BattleBGEffects_ClearLYOverrides
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	ld a, $42
+	ldh [hLCDCPointer], a
+	xor a
+	ldh [hLYOverrideStart], a
+	ld a, $60
+	ldh [hLYOverrideEnd], a
+	ret
+
+.one
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	and $3f
+	ld d, a
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	ld a, [hl]
+	cp d
+	ret nc
+	call BGEffect_DisplaceLYOverridesBackup
+	ld hl, BG_EFFECT_STRUCT_PARAM
+	add hl, bc
+	ld a, [hl]
+	rlca
+	rlca
+	and $3
+	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
+	add hl, bc
+	add [hl]
+	ld [hl], a
+	ret
+
+.two
+	jmp BattleAnim_ResetLCDStatCustom
 
 BattleBGEffect_Dig:
 	call BattleBGEffects_AnonJumptable

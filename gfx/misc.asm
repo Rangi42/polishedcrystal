@@ -198,6 +198,7 @@ AnimObjChopGFX::         INCBIN "gfx/battle_anims/chop.2bpp.lz"
 AnimObjRecycleGFX:       INCBIN "gfx/battle_anims/recycle.2bpp.lz"
 AnimObjLavaRocksGFX:     INCBIN "gfx/battle_anims/lavarocks.2bpp.lz"
 AnimObjWeatherBallGFX:   INCBIN "gfx/battle_anims/weatherball.2bpp.lz"
+AnimObjDepressionGFX:    INCBIN "gfx/battle_anims/depression.2bpp.lz"
 AnimObjPetalsGFX::       INCBIN "gfx/battle_anims/petals.2bpp.lz"
 AnimObjPokeBallBGGFX::   INCBIN "gfx/battle_balls/background.2bpp.lz"
 
