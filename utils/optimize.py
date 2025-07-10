@@ -7,7 +7,6 @@ Search all .asm files for N code lines in a row that match some conditions.
 
 from argparse import ArgumentParser
 from collections import namedtuple
-from glob import iglob
 from pathlib import Path
 from sys import stderr
 
@@ -30,19 +29,20 @@ def isNotReallyHram(code):
 		'rROMB', 'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB', 'rRTCLATCH', 'rRTCREG'
 	})
 
-# Each line has five properties:
+# Each line has six properties:
 # - num (1, 2, 3, etc)
 # - code (no indent or comment)
 # - comment (if one exists)
+# - comment_lower (memoizing comment.lower())
 # - text (the whole line of text)
 # - context (the current label)
-Line = namedtuple('Line', ['num', 'code', 'comment', 'text', 'context'])
+Line = namedtuple('Line', ['num', 'code', 'comment', 'comment_lower', 'text', 'context'])
 
 # Suppress false positives with comments, like:
 #     ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
 #     ld a, NUM_MOVES
 #     sub c
-SUPPRESS = 'no-optimize'
+SUPPRESS = 'no-optimize '
 
 # A set of named patterns of suboptimal code
 #
@@ -595,7 +595,7 @@ patterns = {
 	(lambda line1, prev: re.match(r'ld a, \[w', line1.code)),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
 	(lambda line3, prev: re.match(r'ld \[w.*?\], a', line3.code)
-		and line3.code.split(", ")[0].lstrip("ld ") == prev[0].code.split(", ")[-1]),
+		and line3.code.split(', ')[0].lstrip('ld ') == prev[0].code.split(', ')[-1]),
 ],
 'Trailing string space': [
 	# Bad: text "Hello! " (unless it's followed by a text command)
@@ -610,18 +610,55 @@ patterns = {
 ],
 }
 
+# Match any sequence of whitespace
+WHITESPACE_RE = re.compile(r'\s+')
+
+def preprocess_properties(lines):
+	# Return a list of fully–parsed/normalized Lines (blank lines omitted)
+	processed = []
+	cur_label = ''
+	for num, raw in enumerate(lines, start=1):
+		text = raw.rstrip('\n')
+		# Remove comments
+		code, _, comment = text.partition(';')
+		code = code.rstrip()
+		# Skip blank lines
+		if not code:
+			continue
+		# Save the most recent label for context
+		if (code[0].isalpha() or code[0] == '_') and ':' in code:
+			cur_label = code
+		# Normalize whitespace, and remove indentation from code, if any
+		code = WHITESPACE_RE.sub(' ', code.lstrip())
+		comment = comment.strip()
+		# Record the line's properties
+		processed.append(
+			Line(
+				num=num,
+				code=code,
+				comment=comment,
+				comment_lower=comment.lower(),
+				text=text,
+				context=cur_label,
+			)
+		)
+	return processed
+
 def optimize(filename):
 	# Count the total instances of patterns in this file
 	count = 0
 	printed = False
 	# Read file line by line
-	with filename.open() as f:
-		try:
-			lines = [text.rstrip() for text in f]
-			n = len(lines)
-		except UnicodeDecodeError as ex:
-			print('ERROR!!! %s: %s\n' % (filename, str(ex)))
-			return 0
+	try:
+		lines = filename.read_text(encoding='utf-8', errors='strict').splitlines(True)
+	except UnicodeDecodeError as ex:
+		print(f'ERROR!!! {filename}: {ex}\n')
+		return 0
+	# Preprocess the lines' properties
+	lines = preprocess_properties(lines)
+	if not lines:
+		return 0
+	n = len(lines)
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
 		printed_this = False
@@ -631,32 +668,18 @@ def optimize(filename):
 		# Iterate over the lines
 		i = 0
 		while i < n:
-			text = lines[i]
-			# Remove comments
-			parts = text.split(';', 1)
-			code = parts[0].rstrip()
-			comment = parts[1].strip() if len(parts) > 1 else ''
-			# Skip blank lines:
-			if not code:
-				i += 1
-				continue
+			cur_line = lines[i]
 			# Save the most recent label for context
-			if (code[0].isalpha() or code[0] == '_') and ':' in code:
-				cur_label = Line(i+1, code, comment, text, code)
-			# Remove indentation from code, if any
-			code = code.lstrip()
-			# Normalize whitespace
-			code = re.sub(r'\s+', ' ', code)
-			# Record the line's properties
-			context = cur_label.code if cur_label else ''
-			cur_line = Line(i+1, code, comment, text, context)
+			if (':' in cur_line.code and (cur_line.code[0].isalpha() or cur_line.code[0] == '_')
+					and not cur_line.text[0].isspace()):
+				cur_label = cur_line
 			# Check the condition for the current state
 			condition = conditions[state]
-			allow_rewind = type(condition) == tuple
+			allow_rewind = isinstance(condition, tuple)
 			if allow_rewind:
 				rewind_count, condition = condition
-			skip = comment.lower().startswith(SUPPRESS + ' ' + pattern_name.lower())
-			if condition(cur_line, prev_lines) and not skip:
+			skip = cur_line.comment_lower.startswith(SUPPRESS + pattern_name.lower())
+			if not skip and condition(cur_line, prev_lines):
 				# The condition was met; advance to the next state
 				prev_lines.append(cur_line)
 				state += 1
@@ -664,18 +687,18 @@ def optimize(filename):
 					# All the conditions were met; print the result and reset the state
 					count += 1
 					if not printed_this and len(patterns) > 1:
-						print('###', pattern_name, '###')
+						print(f'### {pattern_name} ###')
+						printed_this = True
 					if cur_label:
-						prev_lines.insert(0, cur_label)
+						print(f'{filename}:{cur_label.num}:{cur_label.text}')
 					for line in prev_lines:
-						print(filename, line.num, line.text, sep=':')
+						print(f'{filename}:{line.num}:{line.text}')
 					printed = True
-					printed_this = True
 					prev_lines = []
 					state = 0
 			elif allow_rewind and not skip:
 				# The condition was not met; go back to a previous condition
-				i -= 1
+				i -= rewind_count
 				state -= rewind_count
 			else:
 				# The condition was not met; reset the state
@@ -697,12 +720,12 @@ args = parser.parse_args()
 total_count = 0
 for path in args.path:
 	if not path.exists():
-		print("File not found:", path, file=stderr)
+		print('File not found:', path, file=stderr)
 		continue
 	if path.is_file():
 		total_count += optimize(path)
 	else:
-		for filename in path.rglob("*.asm"):
+		for filename in path.rglob('*.asm'):
 			total_count += optimize(filename)
 
 # Print the total count
