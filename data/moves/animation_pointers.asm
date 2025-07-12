@@ -299,10 +299,10 @@ endc
 	dba BattleAnim_MilkDrink       ; MILK_DRINK    
 	dba BattleAnim_FurySwipes      ; FURY_SWIPES   
 	dba BattleAnim_Struggle        ; MYSTICAL_FIRE 
-	dba BattleAnim_Struggle        ; FIRE_FANG     
-	dba BattleAnim_Struggle        ; ICE_FANG      
-	dba BattleAnim_Struggle        ; THUNDER_FANG  
-	dba BattleAnim_Struggle        ; POISON_FANG   
+	dba BattleAnim_FireFang        ; FIRE_FANG     
+	dba BattleAnim_IceFang         ; ICE_FANG      
+	dba BattleAnim_ThunderFang     ; THUNDER_FANG  
+	dba BattleAnim_PoisonFang      ; POISON_FANG   
 	dba BattleAnim_Struggle        ; PSYCHIC_FANGS 
 
 	dba BattleAnim_Struggle        ; INFERNO

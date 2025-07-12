@@ -3684,6 +3684,20 @@ BattleAnim_HyperVoice:
 	anim_wait 8
 	anim_ret
 
+BattleAnim_PoisonFang:
+	anim_3gfx ANIM_GFX_CUT, ANIM_GFX_HIT, ANIM_GFX_POISON
+	anim_obj ANIM_OBJ_BITE, 136, 56, $98
+	anim_obj ANIM_OBJ_BITE, 136, 56, $18
+	anim_wait 8
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_HIT_BIG, 136, 56, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_wait 8
+	anim_clearobjs
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_PURPLE
+	anim_jump BattleAnimSub_SludgeShort
+
+
 BattleAnim_Curse:
 	anim_jumpif $1, .Ghost
 	anim_1gfx ANIM_GFX_SPEED

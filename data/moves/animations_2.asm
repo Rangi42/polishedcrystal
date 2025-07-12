@@ -1816,6 +1816,65 @@ BattleAnim_VacuumWave:
 	anim_wait 32
 	anim_ret
 
+BattleAnim_ThunderFang:
+	anim_3gfx ANIM_GFX_CUT, ANIM_GFX_HIT, ANIM_GFX_LIGHTNING
+	anim_obj ANIM_OBJ_BITE, 136, 56, $98
+	anim_obj ANIM_OBJ_BITE, 136, 56, $18
+	anim_wait 8
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_HIT_BIG, 136, 56, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_wait 8
+	anim_clearobjs
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_sound 0, 1, SFX_THUNDER
+	anim_obj ANIM_OBJ_THUNDER_RIGHT, 152, 68, $0
+	anim_wait 32
+	anim_ret
+
+BattleAnim_IceFang:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_ICE
+	anim_3gfx ANIM_GFX_CUT, ANIM_GFX_HIT, ANIM_GFX_ICE
+	anim_obj ANIM_OBJ_BITE, 136, 56, $98
+	anim_obj ANIM_OBJ_BITE, 136, 56, $18
+	anim_wait 8
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_HIT_BIG, 136, 56, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_wait 8
+	anim_clearobjs
+	anim_call BattleAnim_IceBall_branch
+	anim_wait 32
+	anim_ret
+
+BattleAnim_FireFang:
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_3gfx ANIM_GFX_CUT, ANIM_GFX_HIT, ANIM_GFX_FIRE
+	anim_obj ANIM_OBJ_BITE, 136, 56, $98
+	anim_obj ANIM_OBJ_BITE, 136, 56, $18
+	anim_wait 8
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_HIT_BIG, 136, 56, $0
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_wait 8
+	anim_clearobjs
+	anim_wait 1
+	anim_sound 0, 0, SFX_BURN
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 48, $0
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $6
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $16
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $26
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $36
+	anim_wait 6
+	anim_sound 0, 0, SFX_BURN
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $e
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $1e
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $2e
+	anim_obj ANIM_OBJ_RADIAL_FLAME_SLOW, 136, 48, $3e
+	anim_wait 32
+	anim_ret
+
 BattleAnim_IceBall_branch:
 	anim_sound 0, 1, SFX_SHINE
 	anim_obj ANIM_OBJ_HIT_YFIX, 136, 48, $0
