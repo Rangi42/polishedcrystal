@@ -334,7 +334,7 @@ endc
 	dba BattleAnim_Struggle        ; STRUGGLE_BUG
 	dba BattleAnim_Struggle        ; QUIVER_DANCE
 	dba BattleAnim_RockTomb        ; ROCK_TOMB
-	dba BattleAnim_Struggle        ; ROCK_POLISH
+	dba BattleAnim_RockPolish      ; ROCK_POLISH
 	dba BattleAnim_Struggle        ; DRILL_RUN
 	dba BattleAnim_MudShot         ; MUD_SHOT
 	dba BattleAnim_SandAttack      ; SAND_ATTACK
@@ -368,7 +368,7 @@ endc
 	dba BattleAnim_SweetScent      ; SWEET_SCENT
 	dba BattleAnim_Block           ; BLOCK
 	dba BattleAnim_Revenge         ; REVENGE
-	dba BattleAnim_Struggle        ; VACUUM_WAVE
+	dba BattleAnim_VacuumWave      ; VACUUM_WAVE
 	dba BattleAnim_Struggle        ; CLEAR_SMOG
 	dba BattleAnim_Sludge          ; SLUDGE
 	dba BattleAnim_SandTomb        ; SAND_TOMB
