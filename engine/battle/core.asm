@@ -193,6 +193,14 @@ BattleTurn:
 	inc a
 	ldh [hBattleTurn], a
 	ld [wEnemyGoesFirst], a
+
+	; Display tightening focus in speed order
+	call .check_focus
+	call SwitchTurn
+	call .check_focus
+	call SwitchTurn
+
+	; Do moves in order
 	call .do_move
 	ret nz
 	ld a, [wEnemyGoesFirst]
@@ -221,6 +229,25 @@ BattleTurn:
 	call DeferredSwitch
 	ld a, [wBattleEnded]
 	and a
+	ret
+
+.check_focus
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVarAddr
+	ld bc, FOCUS_PUNCH
+	farcall CompareMove
+	ret nz
+
+	ld hl, FOCUS_ENERGY
+	call GetMoveIDFromIndex
+	ld b, a
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVarAddr
+	ld [hl], b
+	farcall LoadMoveAnim
+
+	ld hl, TighteningFocusText
+	call StdBattleTextbox
 	ret
 
 SafariBattleTurn:
@@ -332,7 +359,7 @@ DetermineMoveOrder:
 
 GetSpeed::
 ; Sets bc to speed after items and stat changes.
-; Fainted mons use raw speed (Tailwind and Pledge swamp isn't implemented).
+; Fainted mons use raw speed (Pledge swamp isn't implemented).
 	push hl
 	push de
 	ldh a, [hBattleTurn]
@@ -494,7 +521,7 @@ ParsePlayerAction:
 	jr nz, .locked_in
 	ld a, [wBattlePlayerAction]
 	cp $2
-	jr z, .reset_rage
+	jmp z, .reset_rage
 	and a
 	jr nz, .reset_bide
 	xor a
@@ -555,10 +582,17 @@ ParsePlayerAction:
 .locked_in
 	xor a
 	ld [wPlayerProtectCount], a
+	ld [wPlayerFuryCutterCount], a
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 
 .continue_protect
+	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
+	cp EFFECT_FURY_CUTTER
+	jr z, .continue_fury_cutter
+	xor a
+	ld [wPlayerFuryCutterCount], a
+.continue_fury_cutter
 	call ParseEnemyAction
 	xor a
 	ret
@@ -566,6 +600,7 @@ ParsePlayerAction:
 .reset_rage
 	xor a
 	ld [wPlayerProtectCount], a
+	ld [wPlayerFuryCutterCount], a
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 .lavender_ghost
@@ -624,6 +659,12 @@ EnemyCanFlee:
 	ret
 
 .not_ability_trapped
+	ld a, [wEnemySubStatus5]
+	bit SUBSTATUS_INGRAIN, a
+	jr z, .no_ingrain
+	or 1
+	ret
+.no_ingrain
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	ret nz
@@ -2983,10 +3024,12 @@ NewEnemyMonStatus:
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld [wEnemyDisableCount], a
 	ld [wEnemyEncoreCount], a
 	ld [wEnemyProtectCount], a
+	ld [wEnemyFuryCutterCount], a
 	ld [wEnemyToxicCount], a
 	ld [wEnemyPerishCount], a
 	ld [wPlayerWrapCount], a
@@ -3158,6 +3201,7 @@ NewBattleMonStatus:
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld hl, wPlayerUsedMoves
 rept NUM_MOVES - 1
@@ -3167,6 +3211,7 @@ endr
 	ld [wPlayerDisableCount], a
 	ld [wPlayerEncoreCount], a
 	ld [wPlayerProtectCount], a
+	ld [wPlayerFuryCutterCount], a
 	ld [wPlayerToxicCount], a
 	ld [wPlayerPerishCount], a
 	ld [wEnemyWrapCount], a
@@ -3332,7 +3377,10 @@ SpikesDamage_GotAbility:
 	push hl
 	call .Spikes
 	pop hl
-	jr .ToxicSpikes
+	push hl
+	call .ToxicSpikes
+	pop hl
+	jr .StickyWeb
 
 .Spikes:
 	ld a, b
@@ -3357,6 +3405,14 @@ SpikesDamage_GotAbility:
 
 	ld hl, BattleText_UserHurtBySpikes
 	jmp StdBattleTextbox
+
+.StickyWeb:
+	ld a, [hl]
+	and HAZARDS_STICKY_WEB
+	ret z
+
+	ld b, SPEED
+	farjp ForceLowerStat
 
 .ToxicSpikes:
 	ld a, [hl]
@@ -3427,7 +3483,7 @@ SpikesDamage_GotAbility:
 
 HandleAirBalloon:
 ; prints air balloon msg and returns z if we have air balloon
-	farcall GetUserItem
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_AIR_BALLOON
 	ret nz
@@ -4580,6 +4636,14 @@ endc
 	or 1
 	ret
 .check_other_trapped
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVar
+	bit SUBSTATUS_INGRAIN, a
+	jr z, .not_ingrained
+	ld hl, BattleText_PkmnCantBeRecalled
+	or 1
+	ret
+.not_ingrained
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerWrapCount]
@@ -4734,6 +4798,10 @@ CheckRunSpeed:
 	pop de
 	pop hl
 	jmp z, .can_escape
+
+	ld a, [wPlayerSubStatus5]
+	bit SUBSTATUS_INGRAIN, a
+	jr nz, .cant_escape
 
 	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
@@ -5567,6 +5635,9 @@ CheckUsableMove:
 	call nz, .CheckAssaultVest
 	call nz, .CheckEncored
 	call nz, .CheckChoiceAbility
+	call nz, .CheckTaunt
+	call nz, .CheckTorment
+	call nz, .CheckImprison
 
 	; All failure conditions return z, but this function returns nz upon
 	; failure.
@@ -5670,6 +5741,72 @@ CheckUsableMove:
 	or 1
 	ret
 
+.CheckTaunt:
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerTauntCount
+	jr z, .got_taunt_turn
+	ld hl, wEnemyTauntCount
+.got_taunt_turn
+	ld a, [hl]
+	and a, $F0
+	jr z, .RetNZ
+
+	ld hl, wBattleMonMoves
+	call GetUserMonAttr
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	push bc
+	call GetMoveFixedCategory
+	pop bc
+	cp STATUS
+	ld a, MOVE_UNUSABLE_TAUNT
+	ret
+
+.CheckTorment:
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVar
+	bit SUBSTATUS_TORMENTED, a
+	jr z, .RetNZ
+
+	ld hl, wBattleMonMoves
+	call GetUserMonAttr
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	call GetMoveIndexFromID
+	push bc
+	ld b, h
+	ld c, l
+	ld a, BATTLE_VARS_LAST_MOVE
+	call GetBattleVar
+	farcall CompareMove
+	pop bc
+	ld a, MOVE_UNUSABLE_TORMENT
+	ret
+
+.CheckImprison:
+	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IMPRISON, a
+	jr z, .RetNZ
+
+	ld hl, wBattleMonMoves
+	call GetUserMonAttr
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	push af
+	call SwitchTurn
+	ld hl, wBattleMonMoves
+	call GetUserMonAttr
+	pop af
+	farcall UserKnowsMove
+	call SwitchTurn
+	ld a, MOVE_UNUSABLE_IMPRISON
+	ret
+
 ParseEnemyAction:
 	; Clear weather icon
 	call ClearSprites
@@ -5728,7 +5865,7 @@ ParseEnemyAction:
 	cp BATTLEACTION_STRUGGLE
 	jr z, .struggle
 	cp BATTLEACTION_SWITCH1
-	jr nc, ResetVarsForSubstatusRage
+	jmp nc, ResetVarsForSubstatusRage
 	ld [wCurEnemyMoveNum], a
 	ld c, a
 	ld a, [wEnemySubStatus3]
@@ -5782,11 +5919,16 @@ ParseEnemyAction:
 .no_rage
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_PROTECT
-	ret z
+	jr z, .rage_done
 	cp EFFECT_ENDURE
-	ret z
+	jr z, .rage_done
 	xor a
 	ld [wEnemyProtectCount], a
+.rage_done
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_FURY_CUTTER
+	ret z
+	ld [wEnemyFuryCutterCount], a
 	ret
 
 .struggle
@@ -5797,6 +5939,7 @@ ParseEnemyAction:
 ResetVarsForSubstatusRage:
 	xor a
 	ld [wEnemyProtectCount], a
+	ld [wEnemyFuryCutterCount], a
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	ret
@@ -7862,6 +8005,8 @@ StartBattle:
 	ld a, [wPartyCount]
 	and a
 	ret z
+
+	farcall InitBattleEnvironment
 
 	ld a, [wTimeOfDayPal]
 	push af

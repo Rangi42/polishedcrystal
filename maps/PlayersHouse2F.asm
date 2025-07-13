@@ -216,9 +216,9 @@ endr
 	; move test
 	givepoke MISDREAVUS, PLAIN_FORM, 30, SITRUS_BERRY
 	givepokemove GRAVITY, wPartyMon1, 0
-	givepokemove SOAK, wPartyMon1, 1
-	givepokemove PLUCK, wPartyMon1, 2
-	givepokemove INCINERATE, wPartyMon1, 3
+	givepokemove PSYCHO_SHIFT, wPartyMon1, 1
+	givepokemove AGILITY, wPartyMon1, 2
+	givepokemove DRAGON_DANCE, wPartyMon1, 3
 	loadmem wPartyMon3PP+0, 99
 	loadmem wPartyMon3PP+1, 99
 	loadmem wPartyMon3PP+2, 99

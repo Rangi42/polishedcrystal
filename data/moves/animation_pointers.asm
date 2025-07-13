@@ -423,4 +423,33 @@ endc
 	dba BattleAnim_Struggle        ; MIRROR_MOVE
 	dba BattleAnim_Struggle        ; INCINERATE
 	dba BattleAnim_Struggle        ; PLUCK
+	dba BattleAnim_Struggle        ; STORED_POWER
+	dba BattleAnim_Struggle        ; COSMIC_POWER
+	dba BattleAnim_Struggle        ; PSYCHO_SHIFT
+	dba BattleAnim_Struggle        ; TRUMP_CARD
+	dba BattleAnim_Struggle        ; PAYBACK
+	dba BattleAnim_Struggle        ; AURORA_VEIL
+	dba BattleAnim_Struggle        ; STICKY_WEB
+	dba BattleAnim_Struggle        ; TAUNT
+	dba BattleAnim_Struggle        ; TORMENT
+	dba BattleAnim_Struggle        ; YAWN
+	dba BattleAnim_Struggle        ; MAGNET_RISE
+	dba BattleAnim_Struggle        ; THROAT_CHOP
+	dba BattleAnim_Struggle        ; EMBARGO
+	dba BattleAnim_Struggle        ; SNORE
+	dba BattleAnim_Struggle        ; SWITCHEROO
+	dba BattleAnim_Struggle        ; PSYWAVE
+	dba BattleAnim_Struggle        ; HEAVY_SLAM
+	dba BattleAnim_Struggle        ; ELECTRO_BALL
+	dba BattleAnim_Struggle        ; FURY_CUTTER
+	dba BattleAnim_Struggle        ; COPYCAT
+	dba BattleAnim_Struggle        ; CAMOUFLAGE
+	dba BattleAnim_Struggle        ; NATURE_POWER
+	dba BattleAnim_Struggle        ; DRAGON_TAIL
+	dba BattleAnim_Struggle        ; MEMENTO
+	dba BattleAnim_Struggle        ; FOCUS_PUNCH
+	dba BattleAnim_Struggle        ; SCALE_SHOT
+	dba BattleAnim_Struggle        ; NIGHTMARE
+	dba BattleAnim_Struggle        ; INGRAIN
+	dba BattleAnim_Struggle        ; IMPRISON
 	assert_table_length NUM_ATTACKS + 1

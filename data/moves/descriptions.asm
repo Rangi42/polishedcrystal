@@ -389,6 +389,35 @@ MoveDescriptions1:
 	dw MirrorMoveDescription
 	dw IncinerateDescription
 	dw PluckDescription
+	dw StoredPowerDescription
+	dw CosmicPowerDescription
+	dw PsychoShiftDescription
+	dw TrumpCardDescription
+	dw PaybackDescription
+	dw AuroraVeilDescription
+	dw StickWebDescription
+	dw TauntDescription
+	dw TormentDescription
+	dw YawnDescription
+	dw MagnetRiseDescription
+	dw ThroatChopDescription
+	dw EmbargoDescription
+	dw SnoreDescription
+	dw SwitcherooDescription
+	dw PsywaveDescription
+	dw HeavySlamDescription
+	dw ElectroBallDescription
+	dw FuryCutterDescription
+	dw CopycatDescription
+	dw CamouflageDescription
+	dw NaturePowerDescription
+	dw DragonTailDescription
+	dw MementoDescription
+	dw FocusPunchDescription
+	dw ScaleShotDescription
+	dw NightmareDescription
+	dw IngrainDescription
+	dw ImprisonDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -486,6 +515,11 @@ CometPunchDescription:
 BulletSeedDescription:
 	text "Fires seeds that"
 	next "strike 2-5 times."
+	done
+
+ScaleShotDescription:
+	text "Shoots scales that"
+	next "hit 2-5 times."
 	done
 
 TakeDownDescription:
@@ -878,6 +912,11 @@ QuiverDanceDescription:
 	next "Sp.Def, and Speed."
 	done
 
+CosmicPowerDescription:
+	text "Raises the user's"
+	next "Def and Sp.Def."
+	done
+
 GrowlDescription:
 	text "A move that lowers"
 	next "the foe's Attack."
@@ -956,6 +995,11 @@ ReflectDescription:
 LightScreenDescription:
 	text "Raises Sp.Def with"
 	next "a wall of light."
+	done
+
+AuroraVeilDescription:
+	text "Reduces all damage"
+	next "while hailing."
 	done
 
 RecoverDescription:
@@ -1136,6 +1180,11 @@ ToxicSpikesDescription:
 	next "they switch in."
 	done
 
+StickWebDescription:
+	text "Slows foes when"
+	next "they switch in."
+	done
+
 QuickAttackDescription:
 	text "Lets the user get"
 	next "in the first hit."
@@ -1268,6 +1317,11 @@ RoarDescription:
 
 WhirlwindDescription:
 	text "Blows away foes"
+	next "to end battle."
+	done
+
+DragonTailDescription:
+	text "Knocks foes away"
 	next "to end battle."
 	done
 
@@ -1615,6 +1669,7 @@ GyroBallDescription:
 	done
 
 TrickDescription:
+SwitcherooDescription:
 	text "Swaps held items"
 	next "with the foe."
 	done
@@ -1732,6 +1787,7 @@ GravityDescription:
 	done
 
 MirrorMoveDescription:
+CopycatDescription:
 	text "Counter the foe"
 	next "with its own move."
 	done
@@ -1739,4 +1795,114 @@ MirrorMoveDescription:
 IncinerateDescription:
 	text "Destroys the foe's"
 	next "held berries."
+	done
+
+StoredPowerDescription:
+	text "Damage increases"
+	next "with stat stages."
+	done
+
+PsychoShiftDescription:
+	text "The user transfers"
+	next "its status to foe."
+	done
+
+TrumpCardDescription:
+	text "The fewer PP left,"
+	next "the more power."
+	done
+
+PaybackDescription:
+	text "Damage doubles if"
+	next "foe goes first."
+	done
+
+TauntDescription:
+	text "Taunts foe into"
+	next "only attacking."
+	done
+
+TormentDescription:
+	text "Torments foe into"
+	next "not reusing moves."
+	done
+
+YawnDescription:
+	text "Drowses foe to"
+	next "sleep next turn."
+	done
+
+MagnetRiseDescription:
+	text "Uses electricity"
+	next "to float."
+	done
+
+ThroatChopDescription:
+	text "For 2 turns, stops"
+	next "foe's sound moves."
+	done
+
+EmbargoDescription:
+	text "Prevents foe from"
+	next "using items."
+	done
+
+SnoreDescription:
+	text "Can only be used"
+	next "while asleep."
+	done
+
+PsywaveDescription:
+	text "An attack with"
+	next "variable damage."
+	done
+
+HeavySlamDescription:
+	text "Damages based on"
+	next "relative weight."
+	done
+
+ElectroBallDescription:
+	text "Damages based on"
+	next "relative speed."
+	done
+
+FuryCutterDescription:
+	text "Successive hits"
+	next "increase power."
+	done
+
+CamouflageDescription:
+	text "Alters user's type"
+	next "based on location."
+	done
+
+NaturePowerDescription:
+	text "An attack that is"
+	next "based on location."
+	done
+
+MementoDescription:
+	text "User faints and"
+	next "foe is weakened."
+	done
+
+FocusPunchDescription:
+	text "User flinches if"
+	next "hit before attack."
+	done
+
+NightmareDescription:
+	text "Sleeping foes lose"
+	next "1/4 HP every turn."
+	done
+
+IngrainDescription:
+	text "Lays roots to heal"
+	next "every turn."
+	done
+
+ImprisonDescription:
+	text "Prevents foes from"
+	next "using known moves."
 	done

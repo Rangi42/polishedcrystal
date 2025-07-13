@@ -437,6 +437,8 @@ wPlayerSubStatus4::
 ; 1 unused
 ; 0 curled
 	db
+wPlayerSubStatus5::
+	db
 
 wEnemySubStatus1::
 ; see wPlayerSubStatus1
@@ -450,6 +452,9 @@ wEnemySubStatus3::
 wEnemySubStatus4::
 ; see wPlayerSubStatus4
 	db
+wEnemySubStatus5::
+; see wPlayerSubStatus5
+	db
 
 ; Some code (e.g. HandleRampage) depend on the order of these
 wPlayerAbility:: db
@@ -460,6 +465,7 @@ wPlayerDisableCount:: db
 wPlayerEncoreCount:: db ; also for choice-locking
 wPlayerPerishCount:: db
 wPlayerProtectCount:: db
+wPlayerFuryCutterCount:: db
 
 wEnemyAbility:: db
 wEnemyRolloutCount:: db
@@ -469,6 +475,30 @@ wEnemyDisableCount:: db
 wEnemyEncoreCount:: db
 wEnemyPerishCount:: db
 wEnemyProtectCount:: db
+wEnemyFuryCutterCount:: db
+
+wPlayerTauntCount::
+; bit 4-7 taunt
+; bit 0-3 unused
+	db
+wPlayerYawnMagnetRiseCount::
+; bit 4-7 yawn
+; bit 0-3 magnet rise
+	db
+wPlayerThroatChopEmbargoCount::
+; bit 4-7 throat chop
+; bit 0-3 embargo
+	db
+
+wEnemyTauntCount::
+; see wPlayerTauntCount
+	db
+wEnemyYawnMagnetRiseCount::
+; see wPlayerYawnMagnetRiseCount
+	db
+wEnemyThroatChopEmbargoCount::
+; see wPlayerThroatChopEmbargoCount
+	db
 
 wCriticalCount:: ds PARTY_LENGTH ; for g-Farfetch'd evolution
 wBattleSubStatusWRAMEnd::
@@ -589,7 +619,8 @@ wPlayerHazards::
 ; bit
 ; 6-7 toxic spikes
 ; 4-5 spikes
-; 0-3 unused
+; 3   sticky web
+; 0-2 unused
 	db
 
 wEnemyHazards::
@@ -614,7 +645,11 @@ wPlayerTeamEffects::
 ; 0-2 lucky chant
 	db
 
-	ds 1
+wPlayerVeils::
+; bit
+; 4-7 unused
+; 0-3 aurora veil
+	db
 
 wEnemyScreens::
 ; see wPlayerScreens
@@ -627,7 +662,9 @@ wEnemyTeamEffects::
 ; see wPlayerTeamEffects
 	db
 
-	ds 1
+wEnemyVeils::
+; see wPlayerVeils
+	db
 
 wBattleWeather::
 ; 00 normal
@@ -687,10 +724,15 @@ wBattleEnded:: db
 
 wAmuletCoin:: db
 
-	ds 1
 
 wDVAndPersonalityBuffer:: ds 5
+
+	ds 6 ; unused battle ram
+
 wBattleEnd::
+
+; Which ENVIRONMENT_* constant the battle is taking place in
+wBattleEnvironment:: db
 
 ; Pokédex data.
 
@@ -900,7 +942,7 @@ wFootprintQueue:: ds 3 * 2 + 1
 
 SECTION "Unused", WRAM0
 
-	ds 69 ; it's free real estate
+	ds 53 ; it's free real estate
 
 
 SECTION UNION "Misc 1326", WRAM0

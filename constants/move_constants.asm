@@ -395,6 +395,35 @@ endc
 	const MIRROR_MOVE   ; $17D
 	const INCINERATE    ; $17E
 	const PLUCK         ; $17F
+	const STORED_POWER  ; $180
+	const COSMIC_POWER  ; $181
+	const PSYCHO_SHIFT  ; $182
+	const TRUMP_CARD    ; $183
+	const PAYBACK       ; $184
+	const AURORA_VEIL   ; $185
+	const STICKY_WEB    ; $186
+	const TAUNT         ; $187
+	const TORMENT       ; $188
+	const YAWN          ; $189
+	const MAGNET_RISE   ; $18A
+	const THROAT_CHOP   ; $18B
+	const EMBARGO       ; $18C
+	const SNORE         ; $18D
+	const SWITCHEROO    ; $18E
+	const PSYWAVE       ; $18F
+	const HEAVY_SLAM    ; $190
+	const ELECTRO_BALL  ; $191
+	const FURY_CUTTER   ; $192
+	const COPYCAT       ; $193
+	const CAMOUFLAGE    ; $194
+	const NATURE_POWER  ; $195
+	const DRAGON_TAIL   ; $196
+	const MEMENTO       ; $197
+	const FOCUS_PUNCH   ; $198
+	const SCALE_SHOT    ; $199
+	const NIGHTMARE     ; $19A
+	const INGRAIN       ; $19B
+	const IMPRISON      ; $19C
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

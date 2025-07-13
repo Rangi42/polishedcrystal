@@ -26,6 +26,7 @@ AbnormalContactMoves:
 	dw ROCK_SLIDE
 	dw ROCK_THROW
 	dw SACRED_FIRE
+	dw SCALE_SHOT
 	dw SEED_BOMB
 	dw SELFDESTRUCT
 	dw SKY_ATTACK

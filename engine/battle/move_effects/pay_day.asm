@@ -1,5 +1,5 @@
 BattleCommand_payday:
-	call CheckSubstituteOpp
+	farcall CheckSubstituteOpp
 	ret nz
 
 	ldh a, [hBattleTurn]

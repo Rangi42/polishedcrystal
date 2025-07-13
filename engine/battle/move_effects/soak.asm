@@ -30,6 +30,3 @@ BattleCommand_soak:
 
 .failed
 	farjp ButItFailed
-
-
-
