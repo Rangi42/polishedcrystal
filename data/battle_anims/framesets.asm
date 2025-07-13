@@ -273,6 +273,8 @@ BattleAnimFrameData:
 	dw .Frameset_RockPolish45DegLYFlip   ; BATTLEANIMFRAMESET_ROCK_POLISH_45DEG_L_Y_FLIP
 	dw .Frameset_RockPolish85DegLYFlip   ; BATTLEANIMFRAMESET_ROCK_POLISH_85DEG_L_Y_FLIP
 	dw .Frameset_VacuumShrinking         ; BATTLEANIMFRAMESET_VACUUM_SHRINKING
+	dw .Frameset_ShadowSneak             ; BATTLEANIMFRAMESET_SHADOW_SNEAK
+	dw .Frameset_MudBomb                 ; BATTLEANIMFRAMESET_MUD_BOMB
 
 
 ; VAR3 animations start here -------
@@ -1963,3 +1965,12 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_DD, 1
 	battleoamframe BATTLEANIMOAMSET_DC, 1
 	battleoamdelete
+
+.Frameset_ShadowSneak:
+	battleoamwait 8
+	battleoamframe BATTLEANIMOAMSET_10E,10
+	battleoamframe BATTLEANIMOAMSET_10F,10
+	battleoamframe BATTLEANIMOAMSET_BC, 32
+	battleoamend
+
+

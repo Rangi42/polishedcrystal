@@ -372,14 +372,14 @@ endc
 	dba BattleAnim_Struggle        ; CLEAR_SMOG
 	dba BattleAnim_Sludge          ; SLUDGE
 	dba BattleAnim_SandTomb        ; SAND_TOMB
-	dba BattleAnim_Struggle        ; MUD_BOMB
+	dba BattleAnim_MudBomb         ; MUD_BOMB
 	dba BattleAnim_Struggle        ; HEAD_SMASH
 	dba BattleAnim_Twineedle       ; TWINEEDLE
 	dba BattleAnim_Struggle        ; FIRSTIMPRESS
 	dba BattleAnim_SilverWind      ; SILVER_WIND
 	dba BattleAnim_SignalBeam      ; SIGNAL_BEAM
 	dba BattleAnim_SpiderWeb       ; SPIDER_WEB
-	dba BattleAnim_Struggle        ; SHADOW_SNEAK
+	dba BattleAnim_ShadowSneak     ; SHADOW_SNEAK
 	dba BattleAnim_ShadowPunch     ; SHADOW_PUNCH
 	dba BattleAnim_Struggle        ; OMINOUS_WIND
 	dba BattleAnim_FlameWheel      ; FLAME_WHEEL
