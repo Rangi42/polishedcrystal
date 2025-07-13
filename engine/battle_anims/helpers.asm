@@ -116,6 +116,10 @@ GetBattleAnimOAMPointer:
 	add hl, de
 	ret
 
+GetBattleAnimOAMByte:
+	ld a, BANK(BattleAnimOAMData)
+	jp GetFarByte
+
 LoadBattleAnimGFX:
 	push hl
 	ld b, BANK("Battle Anim Graphics")

@@ -498,8 +498,11 @@ INCLUDE "engine/battle_anims/core.asm"
 INCLUDE "data/battle_anims/objects.asm"
 INCLUDE "engine/battle_anims/helpers.asm"
 INCLUDE "data/battle_anims/framesets.asm"
-INCLUDE "data/battle_anims/oam.asm"
 INCLUDE "data/battle_anims/object_gfx.asm"
+
+
+SECTION "Move Animations OAM", ROMX
+INCLUDE "data/battle_anims/oam.asm"
 
 
 SECTION "Move Animation Functions", ROMX

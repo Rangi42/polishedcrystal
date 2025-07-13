@@ -98,14 +98,20 @@ BattleAnimOAMUpdate:
 	push bc
 	call GetBattleAnimOAMPointer
 	ld a, [wBattleAnimTempTileID]
-	add [hl]
+	ld b, a
+	call GetBattleAnimOAMByte
+	add a, b
 	ld [wBattleAnimTempTileID], a
 	inc hl
-	ld a, [hli]
+	call GetBattleAnimOAMByte
+	inc hl
 	ld c, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetBattleAnimOAMByte
+	inc hl
+	ld b, a
+	call GetBattleAnimOAMByte
+	ld h, a
+	ld l, b
 	ld a, [wBattleAnimOAMPointerLo]
 	ld e, a
 	ld d, HIGH(wShadowOAM)
@@ -116,7 +122,7 @@ BattleAnimOAMUpdate:
 	add b
 	ld b, a
 	push hl
-	ld a, [hl]
+	call GetBattleAnimOAMByte
 	ld hl, wBattleAnimTempOAMFlags
 	bit OAM_Y_FLIP, [hl]
 	jr z, .no_yflip
@@ -136,7 +142,7 @@ BattleAnimOAMUpdate:
 	add b
 	ld b, a
 	push hl
-	ld a, [hl]
+	call GetBattleAnimOAMByte
 	ld hl, wBattleAnimTempOAMFlags
 	bit OAM_X_FLIP, [hl]
 	jr z, .no_xflip
@@ -150,19 +156,24 @@ BattleAnimOAMUpdate:
 	ld [de], a
 	inc hl
 	inc de
+	push bc
+	call GetBattleAnimOAMByte
+	ld b, a
 	ld a, [wBattleAnimTempTileID]
 	add BATTLEANIM_BASE_TILE
-	add [hl]
+	add b
+	pop bc
 	ld [de], a
 	inc hl
 	inc de
 	ld a, [wBattleAnimTempOAMFlags]
 	ld b, a
-	ld a, [hl]
+	call GetBattleAnimOAMByte
 	xor b
 	and $e0
 	ld b, a
-	ld a, [hli]
+	call GetBattleAnimOAMByte
+	inc hl
 	and $10
 	or b
 	ld b, a
