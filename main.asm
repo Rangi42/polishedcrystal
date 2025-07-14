@@ -502,6 +502,7 @@ INCLUDE "data/battle_anims/object_gfx.asm"
 
 
 SECTION "Move Animations OAM", ROMX
+INCLUDE "engine/battle_anims/anim_oam.asm"
 INCLUDE "data/battle_anims/oam.asm"
 
 

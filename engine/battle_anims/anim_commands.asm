@@ -1381,7 +1381,7 @@ BattleAnim_UpdateOAM_All:
 	push hl
 	push de
 	farcall DoBattleAnimFrame
-	call BattleAnimOAMUpdate
+	farcall BattleAnimOAMUpdate
 	pop de
 	pop hl
 	ret c
