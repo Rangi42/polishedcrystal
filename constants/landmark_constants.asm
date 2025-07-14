@@ -1,6 +1,9 @@
 ; Landmarks indexes (see data/maps/landmarks.asm)
 	const_def
 	const SPECIAL_MAP        ; 00
+	const HOLLOWPORT         ; 0a
+	const ROUTE_101			 ; 0b
+
 ; Johto landmarks
 	const NEW_BARK_TOWN      ; 01
 	const ROUTE_29           ; 02

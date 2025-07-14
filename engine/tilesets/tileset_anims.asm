@@ -334,6 +334,8 @@ TilesetPokemonMansionAnim::
 TilesetDecorAnim::
 TilesetMuseumAnim::
 TilesetHotelAnim::
+TilesetCaveLabAnim::
+TilesetOlsteetonAnim::
 TilesetBattleFactoryAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing

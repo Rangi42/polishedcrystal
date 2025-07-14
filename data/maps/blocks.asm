@@ -33,6 +33,9 @@ CinnabarPokeCenter1F_BlockData:
 KantoPokeCenter2F_BlockData:
 	INCBIN "maps/KantoPokeCenter2F.ablk.lz"
 
+; OlsteetonPokeCenter_BlockData:
+	; INCBIN "maps/OlsteetonPokeCenter.ablk.lz"
+
 CherrygroveMart_BlockData:
 VioletMart_BlockData:
 AzaleaMart_BlockData:
@@ -132,6 +135,7 @@ LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 CeladonOldManSpeechHouse_BlockData:
 CeladonDevelopmentSpeechHouse_BlockData:
+NeighborsHouse_BlockData:
 	INCBIN "maps/House2.ablk.lz"
 
 MahoganyRedGyaradosSpeechHouse_BlockData:
@@ -218,6 +222,33 @@ PlayersHouse1F_BlockData:
 SECTION "PlayersHouse2F_BlockData", ROMX
 PlayersHouse2F_BlockData:
 	INCBIN "maps/PlayersHouse2F.ablk.lz"
+
+SECTION "Hollowport_BlockData", ROMX
+Hollowport_BlockData:
+	INCBIN "maps/Hollowport.ablk.lz"
+
+SECTION "RivalHouse1F_BlockData", ROMX
+RivalHouse1F_BlockData:
+	INCBIN "maps/RivalHouse1F.ablk.lz"
+
+SECTION "RivalHouseB1F_BlockData", ROMX
+RivalHouseB1F_BlockData:
+	INCBIN "maps/RivalHouseB1F.ablk.lz"
+SECTION "FieldLab_BlockData", ROMX
+FieldLab_BlockData:
+	INCBIN "maps/FieldLab.ablk.lz"
+
+SECTION "FieldLab2F_BlockData", ROMX
+FieldLab2F_BlockData:
+	INCBIN "maps/FieldLab2F.ablk.lz"
+
+SECTION "EchoingCave_BlockData", ROMX
+EchoingCave_BlockData:
+	INCBIN "maps/EchoingCave.ablk.lz"
+
+SECTION "Route101_BlockData", ROMX
+Route101_BlockData:
+	INCBIN "maps/Route101.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:

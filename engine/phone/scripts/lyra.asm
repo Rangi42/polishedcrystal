@@ -83,6 +83,8 @@ LyraPhoneScript_GreetingsTable:
 LyraPhoneScript_JohtoLandmarksTable:
 	table_width 2
 	dw .Generic
+	dw .Hollowport
+	dw .Route101
 	dw .NewBarkTown
 	dw .Route29
 	dw .CherrygroveCity
@@ -152,6 +154,8 @@ LyraPhoneScript_JohtoLandmarksTable:
 	dw .MystriStage ; no calls
 	assert_table_length KANTO_LANDMARK
 .Generic:
+.Hollowport:
+.Route101:
 .NewBarkTown:
 .Route29:
 .CherrygroveCity:

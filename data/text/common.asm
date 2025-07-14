@@ -3136,55 +3136,63 @@ SECTION "_InitialOptionsText", ROMX
 _InitialOptionsText::
 	text "Please choose how"
 	line "you want to play"
-	cont "Polished Crystal."
+	cont "Pokelachia."
 	prompt
 
 SECTION "_ElmText1", ROMX
 _ElmText1::
-	text "Hello! Sorry to"
-	line "keep you waiting!"
+	text "Hey there!"
+	line "Sorry 'bout"
+	cont "the wait!"
 
 if !DEF(DEBUG)
 	para "Welcome to the"
 	line "world of #mon!"
 
-	para "My name is Elm."
+	para "My name is Pawpaw."
+	line "I'm very proud"
 
-	para "People call me the"
+	para "to be a"
 	line "#mon Prof."
 endc
 	prompt
 
 SECTION "_ElmText2", ROMX
 _ElmText2::
-	text "This world is in-"
-	line "habited by crea-"
-	cont "tures that we call"
+	text "We share our world"
+	line "with amazing"
+	cont "creatures called"
 	cont "#mon.@"
 	text_end
 
 SECTION "_ElmText4", ROMX
 _ElmText4::
-	text "People and #mon"
-	line "live together by"
+	text "For the most part,"
+	line "People & #mon"
 
-	para "supporting each"
-	line "other."
+	para "live in harmony"
+	line "together."
 
-	para "Some people play"
-	line "with #mon, some"
-	cont "battle with them."
+	para "Some people keep"
+	line "#mon as part of"
+
+	para "the family, or a"
+	line "work partner, and"
+
+	para "others train them"
+	line "to compete in"
+	cont "fierce battles."
 	prompt
 
 SECTION "_ElmText5", ROMX
 _ElmText5::
-	text "But we don't know"
-	line "everything about"
-	cont "#mon yet."
+	text "But o'course we"
+	line "don't know it all"
+	cont "just yet."
 
-	para "There are still"
-	line "many mysteries to"
-	cont "solve."
+	para "There're still"
+	line "#mon mysteries"
+	cont "to solve."
 
 	para "That's why I study"
 	line "#mon every day."
@@ -3192,33 +3200,35 @@ _ElmText5::
 
 SECTION "_ElmText6", ROMX
 _ElmText6::
-	text "Please tell me"
-	line "your name."
+	text "I'm sorry, I"
+	line "didn't catch"
+	cont "your name."
 	prompt
 
 SECTION "_ElmText7", ROMX
 _ElmText7::
-	text "<PLAYER>, are you"
-	line "ready?"
+	text "<PLAYER>, your"
+	line "time is now!"
 
 if !DEF(DEBUG)
-	para "Your very own"
-	line "#mon story is"
-	cont "about to unfold."
+	para "You are about"
+	line "to embark on"
 
-	para "You'll face fun"
-	line "times and tough"
-	cont "challenges."
+	para "your very own"
+	line "#mon journey"
 
-	para "A world of dreams"
-	line "and adventures"
+	para "Maybe you'll"
+	line "even surpass"
+	cont "me one day..."
 
-	para "with #mon"
-	line "awaits! Let's go!"
+	para "Hehehe"
+	line "Prolly not!"
+
+	para "Anywho,the #mon"
+	line "world awaits!"
 endc
 
-	para "I'll be seeing you"
-	line "later!"
+	para "See ya soon!"
 	done
 
 SECTION "_WarnVBAText", ROMX
@@ -3230,7 +3240,7 @@ if !DEF(DEBUG)
 	line "emulator has bugs"
 
 	para "that may crash"
-	line "Polished Crystal."
+	line "Pokelachia."
 
 	para "Please use a more"
 	line "accurate emulator,"

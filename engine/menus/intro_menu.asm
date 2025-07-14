@@ -625,10 +625,10 @@ if !DEF(DEBUG)
 	call FadeToWhite
 	call ClearTileMap
 
-	ld a, LOW(GLACEON)
+	ld a, LOW(PILOSWINE)
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	ld a, HIGH(GLACEON) << MON_EXTSPECIES_F
+	ld a, HIGH(PILOSWINE) << MON_EXTSPECIES_F
 	ld [wCurForm], a
 	ld [wTempMonForm], a
 	call GetBaseData
@@ -699,7 +699,7 @@ ElmText1:
 ElmText2:
 	text_far _ElmText2
 	text_asm
-	lp bc, GLACEON
+	lp bc, PILOSWINE
 	call PlayMonCry
 	ld hl, ElmText3
 	ret
@@ -966,7 +966,7 @@ NamePlayer:
 	jr z, .done
 	; PLAYER_ENBY
 	ld de, DefaultEnbyPlayerName
-.done:
+.done:    
 	jmp InitName
 
 INCLUDE "data/default_player_names.asm"
@@ -1047,7 +1047,7 @@ DrawIntroPlayerPic:
 	jr z, .ok
 	; PLAYER_ENBY
 	ld b, JACKY
-.ok
+ .ok
 	ld a, b
 	ld [wTrainerClass], a
 Intro_PrepTrainerPic:
