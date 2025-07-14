@@ -1973,4 +1973,8 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_BC, 32
 	battleoamend
 
+.Frameset_MudBomb:
+	battleoamframe BATTLEANIMOAMSET_MUD_BOMB,  1
+	battleoamend
+
 
