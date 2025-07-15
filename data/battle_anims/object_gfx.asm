@@ -98,6 +98,9 @@ AnimObjGFX:
 	battleanimgfx 13, AnimObjBigGlowGFX
 	battleanimgfx 13, AnimObjMeteorGFX
 	battleanimgfx  6, AnimObjLeafStormGFX
+	battleanimgfx  6, AnimObjSmallExplosionGFX
+	battleanimgfx 27, AnimObjGrassKnotGFX
+	battleanimgfx  9, AnimObjWoodHammerGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

@@ -328,7 +328,7 @@ endc
 	dba BattleAnim_IronDefense     ; IRON_DEFENSE
 	dba BattleAnim_MetalSound      ; METAL_SOUND
 	dba BattleAnim_MirrorShot      ; MIRROR_SHOT
-	dba BattleAnim_Struggle        ; MAGNET_BOMB
+	dba BattleAnim_MagnetBomb      ; MAGNET_BOMB
 	dba BattleAnim_MetalBurst      ; METAL_BURST
 	dba BattleAnim_Struggle        ; INFESTATION
 	dba BattleAnim_Struggle        ; STRUGGLE_BUG
@@ -373,7 +373,7 @@ endc
 	dba BattleAnim_Sludge          ; SLUDGE
 	dba BattleAnim_SandTomb        ; SAND_TOMB
 	dba BattleAnim_MudBomb         ; MUD_BOMB
-	dba BattleAnim_Struggle        ; HEAD_SMASH
+	dba BattleAnim_HeadSmash       ; HEAD_SMASH
 	dba BattleAnim_Twineedle       ; TWINEEDLE
 	dba BattleAnim_Struggle        ; FIRSTIMPRESS
 	dba BattleAnim_SilverWind      ; SILVER_WIND
@@ -381,13 +381,13 @@ endc
 	dba BattleAnim_SpiderWeb       ; SPIDER_WEB
 	dba BattleAnim_ShadowSneak     ; SHADOW_SNEAK
 	dba BattleAnim_ShadowPunch     ; SHADOW_PUNCH
-	dba BattleAnim_Struggle        ; OMINOUS_WIND
+	dba BattleAnim_OminousWind     ; OMINOUS_WIND
 	dba BattleAnim_FlameWheel      ; FLAME_WHEEL
 	dba BattleAnim_MagicalLeaf     ; MAGICAL_LEAF
 	dba BattleAnim_BulletSeed      ; BULLET_SEED
 	dba BattleAnim_Struggle        ; HORN_LEECH
 	dba BattleAnim_LeafBlade       ; LEAF_BLADE
-	dba BattleAnim_Struggle        ; WOOD_HAMMER
+	dba BattleAnim_WoodHammer      ; WOOD_HAMMER
 	dba BattleAnim_Struggle        ; SOLAR_BLADE
 	dba BattleAnim_Struggle        ; ELECTROWEB
 	dba BattleAnim_PowderSnow      ; POWDER_SNOW
@@ -419,7 +419,7 @@ endc
 	dba BattleAnim_Struggle        ; SOAK
 	dba BattleAnim_Struggle        ; BURN_UP
 	dba BattleAnim_Gravity         ; GRAVITY
-	dba BattleAnim_Struggle        ; GRASS_KNOT
+	dba BattleAnim_GrassKnot       ; GRASS_KNOT
 	dba BattleAnim_Struggle        ; MIRROR_MOVE
 	dba BattleAnim_Struggle        ; INCINERATE
 	dba BattleAnim_Struggle        ; PLUCK

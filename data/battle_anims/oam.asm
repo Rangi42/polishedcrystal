@@ -311,6 +311,7 @@ BattleAnimOAMData:
 	battleanimoam $09,  9, .OAMData_MudBomb          ; BATTLEANIMOAMSET_MUD_BOMB
 	battleanimoam $00, 36, .OAMData_110              ; BATTLEANIMOAMSET_110
 	battleanimoam $09, 16, .OAMData_00               ; BATTLEANIMOAMSET_111
+	battleanimoam $12,  9, .OAMData_c3               ; BATTLEANIMOAMSET_112
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:

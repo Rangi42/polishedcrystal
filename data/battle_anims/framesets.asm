@@ -281,6 +281,10 @@ BattleAnimFrameData:
 	dw .Frameset_MeteorSmall             ; BATTLEANIMFRAMESET_METEOR_SMALL
 	dw .Frameset_LeafStormBigLeaf        ; BATTLEANIMFRAMESET_LEAF_STORM_BIG_LEAF
 	dw .Frameset_LeafStormSmallLeaf      ; BATTLEANIMFRAMESET_LEAF_STORM_SMALL_LEAF
+	dw .Frameset_MagnetBomb              ; BATTLEANIMFRAMESET_MAGNET_BOMB
+	dw .Frameset_ExplosionSmall          ; BATTLEANIMFRAMESET_EXPLOSION_SMALL
+	dw .Frameset_Grassknot               ; BATTLEANIMFRAMESET_GRASS_KNOT
+	dw .Frameset_WoodHammer              ; BATTLEANIMFRAMESET_WOOD_HAMMER
 
 
 ; VAR3 animations start here -------
@@ -1979,9 +1983,9 @@ BattleAnimFrameData:
 
 .Frameset_ShadowSneak:
 	battleoamwait 8
-	battleoamframe BATTLEANIMOAMSET_10E,10
-	battleoamframe BATTLEANIMOAMSET_10F,10
-	battleoamframe BATTLEANIMOAMSET_BC, 32
+	battleoamframe BATTLEANIMOAMSET_10E, 10
+	battleoamframe BATTLEANIMOAMSET_10F, 10
+	battleoamframe BATTLEANIMOAMSET_BC,  32
 	battleoamend
 
 .Frameset_MudBomb:
@@ -2013,3 +2017,27 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_X_FLIP, OAM_Y_FLIP
 	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_Y_FLIP
 	battleoamrestart
+
+.Frameset_MagnetBomb:
+	battleoamwait 4
+	battleoamframe BATTLEANIMOAMSET_0F,  54
+	battleoamdelete
+
+.Frameset_Grassknot:
+	battleoamframe BATTLEANIMOAMSET_112, 22
+	battleoamframe BATTLEANIMOAMSET_CE,   2
+	battleoamframe BATTLEANIMOAMSET_CD,   2
+	battleoamend
+
+.Frameset_WoodHammer:
+	battleoamframe BATTLEANIMOAMSET_CD,  2
+	battleoamframe BATTLEANIMOAMSET_CD,  2, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_CD,  2, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_CD,  2, OAM_Y_FLIP
+	battleoamrestart
+
+.Frameset_ExplosionSmall:
+	battleoamframe BATTLEANIMOAMSET_55,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_53,  2
+	battleoamdelete
