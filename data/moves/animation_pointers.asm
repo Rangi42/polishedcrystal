@@ -315,19 +315,19 @@ endc
 	dba BattleAnim_Struggle        ; RAZOR_SHELL
 	dba BattleAnim_Dive            ; DIVE
 	dba BattleAnim_Withdraw        ; WITHDRAW
-	dba BattleAnim_Struggle        ; LEAF_STORM
+	dba BattleAnim_LeafStorm       ; LEAF_STORM
 	dba BattleAnim_Struggle        ; COTTON_SPORE
 	dba BattleAnim_ShockWave       ; SHOCK_WAVE
 	dba BattleAnim_Struggle        ; PSYSHOCK
-	dba BattleAnim_Struggle        ; PSYCHO_CUT
+	dba BattleAnim_PsychoCut       ; PSYCHO_CUT
 	dba BattleAnim_Meditate        ; MEDITATE
 	dba BattleAnim_IceBall         ; ICE_BALL
 	dba BattleAnim_Struggle        ; DUAL_CHOP
 	dba BattleAnim_Struggle        ; BREAK_SWIPE
-	dba BattleAnim_Struggle        ; DRACO_METEOR
+	dba BattleAnim_DracoMeteor     ; DRACO_METEOR
 	dba BattleAnim_IronDefense     ; IRON_DEFENSE
 	dba BattleAnim_MetalSound      ; METAL_SOUND
-	dba BattleAnim_Struggle        ; MIRROR_SHOT
+	dba BattleAnim_MirrorShot      ; MIRROR_SHOT
 	dba BattleAnim_Struggle        ; MAGNET_BOMB
 	dba BattleAnim_MetalBurst      ; METAL_BURST
 	dba BattleAnim_Struggle        ; INFESTATION
@@ -338,7 +338,7 @@ endc
 	dba BattleAnim_Struggle        ; DRILL_RUN
 	dba BattleAnim_MudShot         ; MUD_SHOT
 	dba BattleAnim_SandAttack      ; SAND_ATTACK
-	dba BattleAnim_Struggle        ; CROSS_POISON
+	dba BattleAnim_CrossPoison     ; CROSS_POISON
 	dba BattleAnim_PoisonGas       ; POISON_GAS
 	dba BattleAnim_AcidArmor       ; ACID_ARMOR
 	dba BattleAnim_Bounce          ; BOUNCE

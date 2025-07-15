@@ -214,7 +214,8 @@ BattleAnimFrameData:
 	dw .Frameset_BigWhip                 ; BATTLEANIMFRAMESET_BIG_WHIP
 	dw .Frameset_SwirlShort              ; d0
 	dw .Frameset_SmallGlow               ; d1
-	dw .Frameset_BigGlowClear            ; d2
+	dw .Frameset_BigGlow                 ; BATTLEANIMFRAMESET_BIG_GLOW
+	dw .Frameset_BigGlowClear            ; BATTLEANIMFRAMESET_BIG_GLOW_CLEAR
 	dw .Frameset_Berry                   ; d3
 	dw .Frameset_StatUp                  ; d4
 	dw .Frameset_StatDown                ; d5
@@ -275,6 +276,11 @@ BattleAnimFrameData:
 	dw .Frameset_VacuumShrinking         ; BATTLEANIMFRAMESET_VACUUM_SHRINKING
 	dw .Frameset_ShadowSneak             ; BATTLEANIMFRAMESET_SHADOW_SNEAK
 	dw .Frameset_MudBomb                 ; BATTLEANIMFRAMESET_MUD_BOMB
+	dw .Frameset_BigWhip_NE              ; BATTLEANIMFRAMESET_BIG_WHIP_NE
+	dw .Frameset_MeteorBig               ; BATTLEANIMFRAMESET_METEOR_BIG
+	dw .Frameset_MeteorSmall             ; BATTLEANIMFRAMESET_METEOR_SMALL
+	dw .Frameset_LeafStormBigLeaf        ; BATTLEANIMFRAMESET_LEAF_STORM_BIG_LEAF
+	dw .Frameset_LeafStormSmallLeaf      ; BATTLEANIMFRAMESET_LEAF_STORM_SMALL_LEAF
 
 
 ; VAR3 animations start here -------
@@ -1559,6 +1565,11 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_53,  1
 	battleoamrestart
 
+.Frameset_BigGlow:
+	battleoamframe BATTLEANIMOAMSET_110,  1
+	battleoamframe BATTLEANIMOAMSET_111,  1
+	battleoamrestart
+
 .Frameset_BigGlowClear:
 	battleoamframe BATTLEANIMOAMSET_DD, 1
 	battleoamframe BATTLEANIMOAMSET_DC, 1
@@ -1977,4 +1988,28 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_MUD_BOMB,  1
 	battleoamend
 
+.Frameset_BigWhip_NE:
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  8, OAM_Y_FLIP
+	battleoamend
 
+.Frameset_MeteorBig:
+	battleoamframe BATTLEANIMOAMSET_CD,  14
+	battleoamdelete
+
+.Frameset_MeteorSmall:
+	battleoamframe BATTLEANIMOAMSET_03,  30
+	battleoamdelete
+
+.Frameset_LeafStormBigLeaf:
+	battleoamframe BATTLEANIMOAMSET_1B,  1
+	battleoamframe BATTLEANIMOAMSET_1B,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_1B,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_1B,  1, OAM_Y_FLIP
+	battleoamrestart
+
+.Frameset_LeafStormSmallLeaf:
+	battleoamframe BATTLEANIMOAMSET_0F,  1
+	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_Y_FLIP
+	battleoamrestart
