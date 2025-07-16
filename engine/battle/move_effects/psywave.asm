@@ -8,7 +8,7 @@ BattleCommand_psywave:
 	ld c, a
 	ld a, 101
 	call BattleRandomRange
-	add a, 50
+	add 50 ; 50-150 inclusive
 	ld b, a
 	xor a
 	ldh [hMultiplicand], a

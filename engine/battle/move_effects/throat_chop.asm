@@ -10,7 +10,7 @@ BattleCommand_throatchop:
 	ld hl, wPlayerThroatChopEmbargoCount
 .got
 	ld a, [hl]
-	and a, $0F
-	or a, $20
+	and $0F
+	or $20
 	ld [hl], a
 	ret

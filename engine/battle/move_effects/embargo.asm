@@ -13,7 +13,7 @@ BattleCommand_embargo:
 	and $0F
 	jr nz, .failed
 	ld a, [hl]
-	or a, $05
+	or $05
 	ld [hl], a
 	ld hl, EmbargoEffectText
 	farcall AnimateCurrentMove

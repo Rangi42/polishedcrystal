@@ -18,7 +18,7 @@ BattleCommand_ohko:
 	ld b, a
 .got_levels
 	ld a, b
-	sub a, c
+	sub c
 	jr c, .failed
 
 	ld a, BATTLE_VARS_MOVE

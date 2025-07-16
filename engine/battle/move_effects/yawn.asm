@@ -15,10 +15,10 @@ BattleCommand_yawn:
 	ld hl, wPlayerYawnMagnetRiseCount
 .got
 	ld a, [hl]
-	and a, $F0
+	and $F0
 	jr nz, .failed
 	ld a, [hl]
-	or a, $20
+	or $20
 	ld [hl], a
 	ld hl, YawnEffectText
 	farcall AnimateCurrentMove

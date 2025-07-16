@@ -195,6 +195,8 @@ BattleTurn:
 	ld [wEnemyGoesFirst], a
 
 	; Display tightening focus in speed order
+	; In mainline, tightening focus is +6 and should happen after switches
+	; Not implemented here
 	call .check_focus
 	call SwitchTurn
 	call .check_focus
@@ -5749,7 +5751,7 @@ CheckUsableMove:
 	ld hl, wEnemyTauntCount
 .got_taunt_turn
 	ld a, [hl]
-	and a, $F0
+	and $F0
 	jr z, .RetNZ
 
 	ld hl, wBattleMonMoves

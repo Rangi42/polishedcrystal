@@ -20,7 +20,7 @@ BattleCommand_furycutter:
 .loop
 	dec b
 	jr z, .done
-	sla a
+	add a
 	jr nc, .loop
 	ld a, FURY_CUTTER_MAX_POWER
 .done

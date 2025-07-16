@@ -22,9 +22,9 @@ BattleCommand_toxicspikes:
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyHazards
-	jr z, .got_screens
+	jr z, .got_hazards
 	ld hl, wPlayerHazards
-.got_screens
+.got_hazards
 	ld a, [hl]
 	and HAZARDS_TOXIC_SPIKES
 	cp (HAZARDS_TOXIC_SPIKES / 3) * 2
@@ -42,9 +42,9 @@ BattleCommand_stickyweb:
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyHazards
-	jr z, .got_screens
+	jr z, .got_hazards
 	ld hl, wPlayerHazards
-.got_screens
+.got_hazards
 	ld a, [hl]
 	and HAZARDS_STICKY_WEB
 	jr nz, FailSpikes

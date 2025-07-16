@@ -1059,7 +1059,7 @@ HandleLuckyChant:
 	push af
 	ld b, a
 	ld a, [hl]
-	and a, ~(TEAM_LUCKY_CHANT)
+	and ~(TEAM_LUCKY_CHANT)
 	or b
 	ld [hl], a
 	pop af
@@ -1198,7 +1198,7 @@ HandleThroatChop:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_throat_chop
 	ld a, [hl]
-	sub a, $10
+	sub $10
 	ret c
 	ld [hl], a
 	ret
@@ -1216,7 +1216,7 @@ HandleEmbargo:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_embargo
 	ld a, [hl]
-	and a, $0F
+	and $0F
 	ret z
 	ld a, [hl]
 	dec a
@@ -1251,10 +1251,10 @@ HandleYawn:
 	ld hl, wEnemyYawnMagnetRiseCount
 .got_yawn
 	ld a, [hl]
-	sub a, $10
+	sub $10
 	ret c
 	ld [hl], a
-	sub a, $10
+	sub $10
 	ret nc
 	call SwitchTurn
 	farcall BattleCommand_sleep.SleepTarget

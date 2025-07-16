@@ -2252,7 +2252,7 @@ BattleCommand_checkhit:
 .got_levels
 	ld a, b
 	ld b, 0
-	sub a, c
+	sub c
 	jr c, .finish_accuracy
 	add d
 	ld b, a

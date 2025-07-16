@@ -13,7 +13,7 @@ BattleCommand_storedpower:
 	lb bc, 0, 7
 .loop
 	ld a, [hli]
-	sub a, BASE_STAT_LEVEL
+	sub BASE_STAT_LEVEL
 	; Only count stat boosts
 	jr c, .next
 	add b

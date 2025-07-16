@@ -9,7 +9,7 @@ BattleCommand_taunt:
 	ld a, [wEnemyGoesFirst]
 	jr z, .got
 	ld hl, wPlayerTauntCount
-	xor a, 1
+	xor 1
 .got
 	and a
 	; we went first
@@ -22,7 +22,7 @@ BattleCommand_taunt:
 	and $F0
 	jr nz, .failed
 	ld a, [hl]
-	or a, b
+	or b
 	ld [hl], a
 	ld hl, TauntEffectText
 	farcall AnimateCurrentMove
