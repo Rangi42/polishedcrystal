@@ -6,9 +6,9 @@ Hollowport_MapScriptHeader:
 
 	def_warp_events
 	warp_event 17,  5, PLAYERS_HOUSE_1F, 1
-	warp_event  5, 15, NEIGHBORS_HOUSE, 1
 	warp_event  5,  3, FIELD_LAB, 1
-	warp_event 13, 11, RIVAL_HOUSE_1F, 1
+	warp_event 13, 11, HOLLOWPORT_RIVAL_1F, 1
+	warp_event  5, 15, HOLLOWPORT_NEIGHBOR, 1
 	warp_event  1,  7, ECHOING_CAVE, 1
 
 
@@ -33,7 +33,7 @@ Hollowport_MapScriptHeader:
 	object_event 12, 15, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_Technologia, -1
 	object_event  6, 10, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_HollowportBirdFriend, -1
 	object_event 17, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_HollowportFisher, -1
-	pokemon_event  8, 12, MURKROW, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PURPLE, HollowportMurkrowText, -1
+	pokemon_event  8, 10, MURKROW, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PURPLE, HollowportMurkrowText, -1
 
 	object_const_def
 	; const HOLLOWPORT_RIVAL

@@ -1,23 +1,23 @@
-NeighborsHouse_MapScriptHeader:
+HollowportNeighbor_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event  2,  7, HOLLOWPORT, 2
-	warp_event  3,  7, HOLLOWPORT, 2
+	warp_event  2,  7, HOLLOWPORT, 4
+	warp_event  3,  7, HOLLOWPORT, 4
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  1, BGEVENT_READ,  NeighborsHouseRadio
+	bg_event  5,  1, BGEVENT_READ,  HollowportNeighborRadio
 
 	def_object_events
 	object_event  5,  3, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, NeighborText, -1
 	object_event  2,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, NeighborsDaughterText, -1
 	object_event  5,  4, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, 0, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, NeighborsHusbandText, -1
 
-NeighborsHouseRadio:
+HollowportNeighborRadio:
 	; checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	; iftruefwd .NormalRadio
 	; checkevent EVENT_LISTENED_TO_INITIAL_RADIO

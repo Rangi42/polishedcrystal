@@ -1,12 +1,12 @@
-RivalHouse1F_MapScriptHeader:
+HollowportRival1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  7, HOLLOWPORT, 4
-	warp_event  5,  7, HOLLOWPORT, 4
-	warp_event  5,  0, RIVAL_HOUSE_B1F, 1
+	warp_event  4,  7, HOLLOWPORT, 3
+	warp_event  5,  7, HOLLOWPORT, 3
+	warp_event  5,  0, HOLLOWPORT_RIVAL_2F, 1
 
 	def_coord_events
 

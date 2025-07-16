@@ -5,8 +5,8 @@ EchoingCave_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  5, 16, HOLLOWPORT, 5
-	warp_event  8,  3, FIELD_LAB_2F, 2
+	warp_event  5, 15, HOLLOWPORT, 5
+	warp_event  8,  3, FIELD_LAB_2F, 1
 	; warp_event  2,  0, ECHOING_CAVE_B1F, 3
 	; warp_event  9,  1, ECHOING_CAVE_B1F, 4
 

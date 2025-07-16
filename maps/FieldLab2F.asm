@@ -7,6 +7,7 @@ FieldLab2F_MapScriptHeader:
 	warp_event  2,  3, ECHOING_CAVE, 2
 	warp_event  8,  7, FIELD_LAB, 2
 
+
 	def_coord_events
 
 	def_bg_events
@@ -14,7 +15,8 @@ FieldLab2F_MapScriptHeader:
 	bg_event  3,  4, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE
 
 	def_object_events
-	; object_event  5,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, OBJECTTYPE_COMMAND, jumptextfaceplayer, FieldLabAideText, -1
+	object_event  5,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FieldLabAideText, -1
+
 
 FieldLabAideText:
 	text "I'm using LIDAR"

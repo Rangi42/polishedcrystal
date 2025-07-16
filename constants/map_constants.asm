@@ -710,9 +710,9 @@ ENDM
 	map_const ECHOING_CAVE,								   6,  9 ;  4
 	map_const PLAYERS_HOUSE_1F,                            6,  4 ;  5
 	map_const PLAYERS_HOUSE_2F,                            4,  3 ;  6
-	map_const RIVAL_HOUSE_1F,                              6,  4 ;  7
-	map_const RIVAL_HOUSE_B1F,                             4,  3 ;  8
-	map_const NEIGHBORS_HOUSE,                             4,  4 ;  9
+	map_const HOLLOWPORT_RIVAL_1F,                         6,  4 ;  7
+	map_const HOLLOWPORT_RIVAL_2F,                         4,  3 ;  8
+	map_const HOLLOWPORT_NEIGHBOR,                         4,  4 ;  9
 	map_const ROUTE_101,             				      18, 12 ;  10
 
 	; newgroup                                         			 ; 39

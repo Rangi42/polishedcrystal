@@ -131,7 +131,7 @@
 	tilecoll WALL, WALL, WATER, WALL ; 82
 	tilecoll WATER, WALL, WATER, WATER ; 83
 	tilecoll WALL, WATER, WALL, WATER ; 84
-	tilecoll TOP_WALL, TOP_WALL, BOTTOM_WALL, BOTTOM_WALL ; 85
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 85
 	tilecoll WATER, WALL, WATER, WALL ; 86
 	tilecoll WALL, WATER, WATER, WATER ; 87
 	tilecoll WATER, WALL, WATER, WALL ; 88
@@ -139,9 +139,9 @@
 	tilecoll WALL, WATERFALL, WALL, WATERFALL ; 8a
 	tilecoll WATERFALL, WALL, WATERFALL, WALL ; 8b
 	tilecoll TOP_WALL, FLOOR, FLOOR, FLOOR ; 8c
-	tilecoll FLOOR, TOP_WALL, FLOOR, FLOOR ; 8d
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 8d
 	tilecoll TOP_WALL, FLOOR, FLOOR, FLOOR ; 8e
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 8f
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; 8f
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 90
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 91
 	tilecoll TOP_WALL, FLOOR, TALL_GRASS, TALL_GRASS ; 92
@@ -150,9 +150,9 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 95
 	tilecoll LEFT_WALL, RIGHT_WALL, LEFT_WALL, RIGHT_WALL ; 96
 	tilecoll TALL_GRASS, TALL_GRASS, FLOOR, FLOOR ; 97
-	tilecoll WALL, WALL, WALL, WALL ; 98
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 98
 	tilecoll WALL, WALL, WALL, WALL ; 99
-	tilecoll WALL, WARP_CARPET_LEFT, WALL, WARP_CARPET_LEFT ; 9a
+	tilecoll WALL, WARP_CARPET_RIGHT, WALL, WARP_CARPET_RIGHT ; 9a
 	tilecoll WALL, WALL, WALL, CAVE ; 9b
 	tilecoll WALL, WALL, WALL, WALL ; 9c
 	tilecoll FLOOR, WALL, WALL, WALL ; 9d
@@ -171,9 +171,9 @@
 	tilecoll FLOOR, TOP_WALL, FLOOR, BOTTOM_WALL ; aa
 	tilecoll TOP_WALL, FLOOR, BOTTOM_WALL, FLOOR ; ab
 	tilecoll WALL, FLOOR, WALL, FLOOR ; ac
-	tilecoll FLOOR, WALL, FLOOR, WALL ; ad
-	tilecoll WALL, TOP_WALL, WALL, FLOOR ; ae
-	tilecoll TOP_WALL, WALL, FLOOR, WALL ; af
+	tilecoll FLOOR, TOP_WALL, FLOOR, BOTTOM_WALL ; ad
+	tilecoll WALL, FLOOR, WALL, FLOOR ; ae
+	tilecoll FLOOR, WALL, FLOOR, WALL ; af
 	tilecoll WALL, FLOOR, WALL, WALL ; b0
 	tilecoll FLOOR, WALL, WALL, WALL ; b1
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; b2
@@ -248,5 +248,5 @@
 	tilecoll WALL, FLOOR, WALL, FLOOR ; f7
 	tilecoll WALL, WALL, WALL, FLOOR ; f8
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; f9
-	tilecoll TOP_WALL, TOP_WALL, BOTTOM_WALL, BOTTOM_WALL ; fa
+	tilecoll TOP_WALL, FLOOR, BOTTOM_WALL, FLOOR ; fa
 	tilecoll WALL, FLOOR, WALL, FLOOR ; fb

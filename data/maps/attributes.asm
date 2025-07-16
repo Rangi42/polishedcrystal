@@ -442,9 +442,9 @@ ENDM
 	map_attributes EchoingCave, ECHOING_CAVE, $0, 0
 	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
 	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
-	map_attributes NeighborsHouse, NEIGHBORS_HOUSE, $0, 0
-	map_attributes RivalHouse1F, RIVAL_HOUSE_1F, $0, 0
-	map_attributes RivalHouseB1F, RIVAL_HOUSE_B1F, $0, 0
+	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
+	map_attributes HollowportRival1F, HOLLOWPORT_RIVAL_1F, $0, 0
+	map_attributes HollowportRival2F, HOLLOWPORT_RIVAL_2F, $0, 0
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_attributes SproutTower3F, SPROUT_TOWER_3F, $0, 0

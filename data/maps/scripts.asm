@@ -74,7 +74,7 @@ SECTION "Hollowport Scripts", ROMX
 INCLUDE "maps/Hollowport.asm"
 INCLUDE "maps/FieldLab.asm"
 INCLUDE "maps/FieldLab2F.asm"
-INCLUDE "maps/NeighborsHouse.asm"
+INCLUDE "maps/HollowportNeighbor.asm"
 INCLUDE "maps/EchoingCave.asm"
 INCLUDE "maps/Route101.asm"
 
@@ -82,8 +82,8 @@ SECTION "Hollowport Scripts 2", ROMX
 
 INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
-INCLUDE "maps/RivalHouse1F.asm"
-INCLUDE "maps/RivalHouseB1F.asm"
+INCLUDE "maps/HollowportRival1F.asm"
+INCLUDE "maps/HollowportRival2F.asm"
 
 ; SECTION "Olsteeton Scripts", ROMX
 

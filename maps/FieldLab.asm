@@ -13,7 +13,7 @@ FieldLab_MapScriptHeader:
 	; callback MAPCALLBACK_OBJECTS, FieldLabCallback_MovePawpaw
 
 	def_warp_events
-	warp_event  9,  8, HOLLOWPORT, 3
+	warp_event  9,  8, HOLLOWPORT, 2
 	warp_event 14,  0, FIELD_LAB_2F, 2
 
 	def_coord_events

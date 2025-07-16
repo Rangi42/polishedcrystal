@@ -135,7 +135,6 @@ LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 CeladonOldManSpeechHouse_BlockData:
 CeladonDevelopmentSpeechHouse_BlockData:
-NeighborsHouse_BlockData:
 	INCBIN "maps/House2.ablk.lz"
 
 MahoganyRedGyaradosSpeechHouse_BlockData:
@@ -156,6 +155,7 @@ Route28FamousSpeechHouse_BlockData:
 PlayersNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 ValenciaHouse_BlockData:
+HollowportNeighbor_BlockData:
 	INCBIN "maps/JohtoHouse4.ablk.lz"
 
 EcruteakLugiaSpeechHouse_BlockData:
@@ -227,13 +227,14 @@ SECTION "Hollowport_BlockData", ROMX
 Hollowport_BlockData:
 	INCBIN "maps/Hollowport.ablk.lz"
 
-SECTION "RivalHouse1F_BlockData", ROMX
-RivalHouse1F_BlockData:
-	INCBIN "maps/RivalHouse1F.ablk.lz"
+SECTION "HollowportRival1F_BlockData", ROMX
+HollowportRival1F_BlockData:
+	INCBIN "maps/HollowportRival1F.ablk.lz"
 
-SECTION "RivalHouseB1F_BlockData", ROMX
-RivalHouseB1F_BlockData:
-	INCBIN "maps/RivalHouseB1F.ablk.lz"
+SECTION "HollowportRival2F_BlockData", ROMX
+HollowportRival2F_BlockData:
+	INCBIN "maps/HollowportRival2F.ablk.lz"
+	
 SECTION "FieldLab_BlockData", ROMX
 FieldLab_BlockData:
 	INCBIN "maps/FieldLab.ablk.lz"
