@@ -1,3 +1,13 @@
+BattleCommand_checkasleep:
+	call ClearLastMove
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and SLP_MASK
+	ret nz
+	ld a, ATKFAIL_GENERIC
+	ld [wAttackMissed], a
+	ret
+
 BattleCommand_sleeptalk:
 	call ClearLastMove
 	ld a, BATTLE_VARS_STATUS

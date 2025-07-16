@@ -30,7 +30,7 @@ BattleCommand_gravity:
 
 BringUserDown:
 	call GetUserSemiInvuln
-	bit SEMI_INVULNERABLE_FLYING, a
+	bit SEMI_INVULNERABLE_FLYING_F, a
 	ret z
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr

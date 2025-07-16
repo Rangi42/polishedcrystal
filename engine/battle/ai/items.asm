@@ -208,6 +208,7 @@ AI_TryItem:
 	ld [wCurEnemyMove], a
 	ld [wLastEnemyCounterMove], a
 	ld [wEnemyProtectCount], a
+	ld [wEnemyFuryCutterCount], a
 
 	inc a
 	ld [wEnemyGoesFirst], a

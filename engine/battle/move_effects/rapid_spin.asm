@@ -30,11 +30,24 @@ BattleCommand_clearhazards:
 	ld a, [hl]
 	and HAZARDS_TOXIC_SPIKES
 	jr z, .no_toxic_spikes
-	xor a
+	cpl
+	and [hl]
 	ld [hl], a
+	push hl
 	ld hl, BlewToxicSpikesText
 	call StdBattleTextbox
+	pop hl
 .no_toxic_spikes
+	ld a, [hl]
+	and HAZARDS_STICKY_WEB
+	jr z, .no_sticky_web
+	xor a
+	ld [hl], a
+	push hl
+	ld hl, BlewStickyWebText
+	call StdBattleTextbox
+	pop hl
+.no_sticky_web
 	pop de
 	ld a, [de]
 	and a

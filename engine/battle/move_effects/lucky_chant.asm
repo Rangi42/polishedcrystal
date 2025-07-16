@@ -18,4 +18,4 @@ BattleCommand_luckychant:
 
 .failed
 	farcall AnimateFailedMove
-	jmp PrintButItFailed
+	farjp PrintButItFailed

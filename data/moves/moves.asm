@@ -471,4 +471,33 @@ endc
 	move EFFECT_MIRROR_MOVE,         0, FLYING,     -1, 20,   0, STATUS   ; MIRROR_MOVE
 	move EFFECT_INCINERATE,         60, FIRE,      100, 15,   0, SPECIAL  ; INCINERATE
 	move EFFECT_BUG_BITE,           60, FLYING,    100, 20,   0, PHYSICAL ; PLUCK
+	move EFFECT_STORED_POWER,       20, PSYCHIC,   100, 10,   0, SPECIAL  ; STORED_POWER
+	move EFFECT_COSMIC_POWER,        0, PSYCHIC,    -1, 20,   0, STATUS   ; COSMIC_POWER
+	move EFFECT_PSYCHO_SHIFT,        0, PSYCHIC,   100, 10,   0, STATUS   ; PSYCHO_SHIFT
+	move EFFECT_TRUMP_CARD,          1, NORMAL,     -1,  5,   0, PHYSICAL ; TRUMP_CARD
+	move EFFECT_CONDITIONAL_BOOST,  50, DARK,      100, 10,   0, PHYSICAL ; PAYBACK
+	move EFFECT_AURORA_VEIL,         0, ICE,        -1, 20,   0, STATUS   ; AURORA_VEIL
+	move EFFECT_STICKY_WEB,          0, BUG,        -1, 20,   0, STATUS   ; STICKY_WEB
+	move EFFECT_TAUNT,               0, DARK,      100, 20,   0, STATUS   ; TAUNT
+	move EFFECT_TORMENT,             0, DARK,      100, 15,   0, STATUS   ; TORMENT
+	move EFFECT_YAWN,                0, NORMAL,     -1, 10,   0, STATUS   ; YAWN
+	move EFFECT_MAGNET_RISE,         0, ELECTRIC,   -1, 99,   0, STATUS   ; MAGNET_RISE
+	move EFFECT_THROAT_CHOP,        80, DARK,      100, 15,   0, PHYSICAL ; THROAT_CHOP
+	move EFFECT_EMBARGO,             0, DARK,      100, 15,   0, STATUS   ; EMBARGO
+	move EFFECT_ASLEEP_HIT,         50, NORMAL,    100, 15,   0, SPECIAL  ; SNORE
+	move EFFECT_TRICK,               0, DARK,      100, 10,   0, STATUS   ; SWITCHEROO
+	move EFFECT_PSYWAVE,             1, PSYCHIC,   100, 15,   0, SPECIAL  ; PSYWAVE
+	move EFFECT_HEAVY_SLAM,          1, STEEL,     100, 10,   0, PHYSICAL ; HEAVY_SLAM
+	move EFFECT_ELECTRO_BALL,        1, ELECTRIC,  100, 10,   0, SPECIAL  ; ELECTRO_BALL
+	move EFFECT_FURY_CUTTER,        40, BUG,        95, 20,   0, PHYSICAL ; FURY_CUTTER
+	move EFFECT_MIRROR_MOVE,         0, NORMAL,     -1, 20,   0, STATUS   ; COPYCAT
+	move EFFECT_CAMOUFLAGE,          0, NORMAL,     -1, 20,   0, STATUS   ; CAMOUFLAGE
+	move EFFECT_NATURE_POWER,        0, NORMAL,     -1, 20,   0, STATUS   ; NATURE_POWER
+	move EFFECT_DRAGON_TAIL,        60, DRAGON,     90, 10,   0, PHYSICAL ; DRAGON_TAIL
+	move EFFECT_MEMENTO,             0, DARK,      100, 10,   0, STATUS   ; MEMENTO
+	move EFFECT_FOCUS_PUNCH,       150, FIGHTING,  100, 20,   0, PHYSICAL ; FOCUS_PUNCH
+	move EFFECT_SCALE_SHOT,         25, DRAGON,     90, 20,   0, PHYSICAL ; SCALE_SHOT
+	move EFFECT_NIGHTMARE,           0, GHOST,     100, 15,   0, STATUS   ; NIGHTMARE
+	move EFFECT_INGRAIN,             0, GRASS,      -1, 20,   0, STATUS   ; INGRAIN
+	move EFFECT_IMPRISON,            0, PSYCHIC,    -1, 10,   0, STATUS   ; IMPRISON
 .IndirectEnd::

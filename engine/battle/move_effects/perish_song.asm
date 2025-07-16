@@ -27,7 +27,7 @@ BattleCommand_perishsong:
 	; we shouldn't do that here too.
 	push de
 	push bc
-	call BattleCommand_checkpriority
+	farcall BattleCommand_checkpriority
 	pop bc
 	pop de
 
@@ -49,10 +49,9 @@ BattleCommand_perishsong:
 	dec b
 	jr z, .failed ; nobody was afflicted
 
-	call AnimateCurrentMove
+	farcall AnimateCurrentMove
 	ld hl, StartPerishSongText
 	jmp StdBattleTextbox
 
 .failed
-	call AnimateFailedMove
-	jmp PrintButItFailed
+	farjp ButItFailed

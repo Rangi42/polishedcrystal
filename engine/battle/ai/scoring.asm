@@ -1725,7 +1725,7 @@ AI_Smart_Earthquake:
 	bit SUBSTATUS_SEMI_INVULNERABLE, a
 	jr z, .could_dig
 	ld a, [wPlayerSemiInvulnerableType]
-	bit SEMI_INVULNERABLE_DIGGING, a
+	bit SEMI_INVULNERABLE_DIGGING_F, a
 	jr z, .could_dig
 
 	call AICompareSpeed
@@ -1971,7 +1971,7 @@ AI_Smart_Gust:
 	bit SUBSTATUS_SEMI_INVULNERABLE, a
 	jr z, .couldFly
 	ld a, [wPlayerSemiInvulnerableType]
-	bit SEMI_INVULNERABLE_FLYING, a
+	bit SEMI_INVULNERABLE_FLYING_F, a
 	jr z, .couldFly
 
 	call AICompareSpeed
@@ -2415,6 +2415,8 @@ AIDamageCalc:
 .do_it
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_MULTI_HIT
+	jr z, .multihit
+	cp EFFECT_SCALE_SHOT
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit

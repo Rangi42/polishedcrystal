@@ -1,4 +1,14 @@
+BattleCommand_dragontail:
+	xor a
+	jr ForceSwitch
+
 BattleCommand_roar:
+	scf
+	; fallthrough
+
+; c = print fail
+ForceSwitch:
+	push af
 	ld a, [wBattleType]
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_NEVER_SHINY, BATTLETYPE_LEGENDARY
 	jr nc, .but_it_failed
@@ -18,6 +28,10 @@ BattleCommand_roar:
 .but_it_failed
 	ld a, ATKFAIL_GENERIC
 .fail
+	ld b, a
+	pop af
+	ret nc
+	ld a, b
 	ld [wAttackMissed], a
 	call AnimateFailedMove
 	jmp FailText_CheckOpponentProtect
@@ -59,17 +73,23 @@ BattleCommand_roar:
 	inc a
 	ld [wBattleEnded], a
 	call SetBattleDraw
+	pop af
+	jr nc, .skip_wild_anim
 	ld a, $1
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
+.skip_wild_anim
 	ld c, 20
 	call DelayFrames
 	ld hl, FledInFearText
 	jmp StdBattleTextbox
 
 .trainer_success
+	pop af
+	jr nc, .skip_trainer_anim
 	call AnimateCurrentMove
 	ld c, 20
 	call DelayFrames
+.skip_trainer_anim
 	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_FORCED
 	jmp SetDeferredSwitch

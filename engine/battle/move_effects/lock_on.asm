@@ -11,4 +11,4 @@ BattleCommand_lockon:
 
 .failed
 	farcall AnimateFailedMove
-	jmp PrintButItFailed
+	farjp PrintButItFailed

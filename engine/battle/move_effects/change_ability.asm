@@ -2,7 +2,7 @@ AbilityChanges:
 	dwb SIMPLE_BEAM, SIMPLE
 	dwb WORRY_SEED,  INSOMNIA
 	dwb GASTRO_ACID, NO_ABILITY
-	dw -1,
+	dw -1
 
 BattleCommand_changeability:
 	ld a, BATTLE_VARS_MOVE

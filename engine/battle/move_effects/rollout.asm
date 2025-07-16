@@ -7,7 +7,7 @@ BattleCommand_rolloutpower:
 	ret nz
 
 	; returns user rollout count in de and substatus3 in hl
-	call CheckRampageStatusAndGetRolloutCount
+	farcall CheckRampageStatusAndGetRolloutCount
 
 	ld a, [wAttackMissed]
 	and a
