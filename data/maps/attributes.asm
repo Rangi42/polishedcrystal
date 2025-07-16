@@ -30,9 +30,10 @@ ENDM
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, Route41, ROUTE_41, 0
 
-	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
+	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST | EAST
 	connection north, Route35, ROUTE_35, 5
 	connection south, Route34, ROUTE_34, 7
+	connection west, GlobalTerminalOutside, GLOBAL_TERMINAL_OUTSIDE, 2
 	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST | EAST
@@ -423,6 +424,9 @@ ENDM
 
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
+
+	map_attributes GlobalTerminalOutside, GLOBAL_TERMINAL_OUTSIDE, $35, EAST
+	connection east, GoldenrodCity, GOLDENROD_CITY, -2
 
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -925,3 +929,4 @@ ENDM
 	map_attributes IvysHouse, IVYS_HOUSE, $0, 0
 	map_attributes ValenciaHouse, VALENCIA_HOUSE, $0, 0
 	map_attributes ValenciaPort, VALENCIA_PORT, $0, 0
+	map_attributes GlobalTerminal1F, GLOBAL_TERMINAL_1F, $0, 0

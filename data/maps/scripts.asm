@@ -1078,4 +1078,9 @@ SECTION "Routes 48-49 Scripts", ROMX
 INCLUDE "maps/Route48.asm"
 INCLUDE "maps/Route49.asm"
 
+SECTION "Map Scripts 25", ROMX
+
+INCLUDE "maps/GlobalTerminalOutside.asm"
+INCLUDE "maps/GlobalTerminal1F.asm"
+
 ENDSECTION
