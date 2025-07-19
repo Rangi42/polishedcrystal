@@ -1749,6 +1749,7 @@ DealDamageToOpponent:
 	jr z, .berserk
 	call SwitchTurn
 	call SubtractHPFromUser
+	call CheckEnigmaBerry
 	jmp SwitchTurn
 
 .berserk
@@ -1769,6 +1770,7 @@ DealDamageToOpponent:
 	pop bc
 	call SwitchTurn
 	call SubtractHPFromUser_SkipItems
+	call CheckEnigmaBerry ; takes priority over Berserk
 	call SwitchTurn
 
 	; deal with Berserk
@@ -1858,6 +1860,34 @@ _SubtractHPFromEnemy:
 	pop af
 	ldh [hBattleTurn], a
 	ret
+
+CheckEnigmaBerry:
+; Check if user's Enigma Berry applies. Needs a separate handler from other
+; berries due to Berserk quirks (Enigma > Berserk > other healing berries).
+	; Were we hit with a super-effective attack?
+	ld a, [wTypeModifier]
+	cp $11
+	ret c
+
+	; Are we actually holding Enigma Berry?
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_ENIGMA_BERRY
+	ret nz
+
+	; Can we be healed?
+	push bc
+	push hl
+	call CheckFullHP
+	pop hl
+	pop bc
+	ret z
+
+	; Treat as HP-restoring berry
+	ld b, HELD_BERRY
+	call _HeldHPHealingItem
+	ret nz
+	jmp UseBattleItem
 
 SubtractHP:
 	call _SubtractHP

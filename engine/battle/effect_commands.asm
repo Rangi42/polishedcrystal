@@ -3053,24 +3053,7 @@ BattleCommand_supereffectivetext:
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_WEAKNESS_POLICY
-	jr z, .weakness_policy
-	cp HELD_ENIGMA_BERRY
 	ret nz
-
-	push bc
-	push hl
-	farcall CheckFullHP
-	pop hl
-	pop bc
-	ret z
-
-	; treat as HP-restoring berry
-	ld b, HELD_BERRY
-	farcall _HeldHPHealingItem
-	ret nz
-	farjp UseBattleItem
-
-.weakness_policy
 	call SwitchTurn
 	ld b, 0
 	push bc
