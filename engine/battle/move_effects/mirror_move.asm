@@ -6,9 +6,21 @@ BattleCommand_mirrormove:
 	ld d, a
 
 	call GetMoveIndexFromID
-	cphl STRUGGLE
+	assert HIGH(STRUGGLE) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_struggle_mm
+	ld a, l
+	cp LOW(STRUGGLE)
+.cphl_struggle_mm
 	jr z, .failed
-	cphl MIRROR_MOVE
+	ld a, h
+	cp HIGH(MIRROR_MOVE)
+	jr c, .cphl_mirror_move
+	jr nz, .cphl_mirror_move
+	ld a, l
+	cp LOW(MIRROR_MOVE)
+.cphl_mirror_move
 	jr z, .failed
 
 	ld a, BATTLE_VARS_MOVE

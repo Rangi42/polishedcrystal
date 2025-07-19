@@ -20,15 +20,33 @@ CheckBattleAnimSubstitution:
 	ld b, a
 	ld a, [wFXAnimIDLo]
 	ld c, a
-	cpbc FRESH_SNACK
+	assert HIGH(FRESH_SNACK) == 0
+	ld a, b
+	and a
+	jr nz, .cpbc_fresh_snack
+	ld a, c
+	cp LOW(FRESH_SNACK)
+.cpbc_fresh_snack
 	ld de, ANIM_MILK_DRINK
 	ld hl, .MilkDrinkUsers
 	jr z, .check_species_list
-	cpbc FURY_STRIKES
+	assert HIGH(FURY_STRIKES) == 0
+	ld a, b
+	and a
+	jr nz, .cpbc_fury_strikes
+	ld a, c
+	cp LOW(FURY_STRIKES)
+.cpbc_fury_strikes
 	ld de, ANIM_FURY_ATTACK
 	ld hl, FuryAttackUsers
 	jr z, .check_species_list
-	cpbc DEFENSE_CURL
+	assert HIGH(DEFENSE_CURL) == 0
+	ld a, b
+	and a
+	jr nz, .cpbc_defense_curl
+	ld a, c
+	cp LOW(DEFENSE_CURL)
+.cpbc_defense_curl
 	ret nz
 
 	; Defense Curl has 3 variations

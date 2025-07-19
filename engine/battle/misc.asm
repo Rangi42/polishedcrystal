@@ -14,7 +14,13 @@ _CheckContactMove::
 	call GetBattleVar
 	ld b, a
 	call GetMoveIndexFromID
-	cphl STRUGGLE
+	assert HIGH(STRUGGLE) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_struggle_misc
+	ld a, l
+	cp LOW(STRUGGLE)
+.cphl_struggle_misc
 	ret nc
 	ld a, b
 	push af

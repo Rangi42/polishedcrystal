@@ -24,7 +24,13 @@ BattleCommand_ohko:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	call GetMoveIndexFromID
-	cphl SHEER_COLD
+	ld a, h
+	cp HIGH(SHEER_COLD)
+	jr c, .cphl_sheer_cold
+	jr nz, .cphl_sheer_cold
+	ld a, l
+	cp LOW(SHEER_COLD)
+.cphl_sheer_cold
 	jr nz, .ok
 	; Sheer Cold fails on ice types
 	ld a, ICE

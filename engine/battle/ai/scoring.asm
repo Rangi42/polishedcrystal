@@ -980,7 +980,13 @@ AI_Smart_SpeedDownHit:
 	ld a, [wEnemyMoveStruct + MOVE_ANIM]
 	push hl
 	call GetMoveIndexFromID
-	cphl ICY_WIND
+	assert HIGH(ICY_WIND) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_icy_wind
+	ld a, l
+	cp LOW(ICY_WIND)
+.cphl_icy_wind
 	pop hl
 	ret nz
 	call AICheckEnemyQuarterHP
@@ -1717,7 +1723,13 @@ AI_Smart_Earthquake:
 	ld a, [wPlayerSelectedMove]
 	push hl
 	call GetMoveIndexFromID
-	cphl DIG
+	assert HIGH(DIG) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_dig_ai
+	ld a, l
+	cp LOW(DIG)
+.cphl_dig_ai
 	pop hl
 	ret nz
 
@@ -1963,7 +1975,13 @@ AI_Smart_Gust:
 	ld a, [wPlayerSelectedMove]
 	push hl
 	call GetMoveIndexFromID
-	cphl FLY
+	assert HIGH(FLY) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_fly_ai
+	ld a, l
+	cp LOW(FLY)
+.cphl_fly_ai
 	pop hl
 	ret nz
 

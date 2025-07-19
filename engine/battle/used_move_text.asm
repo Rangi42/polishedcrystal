@@ -415,15 +415,45 @@ DisplayUsedMoveText:
 	ld [hl], a
 
 	call GetMoveIndexFromID
-	cphl SOLAR_BEAM
+	assert HIGH(SOLAR_BEAM) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_solar_beam
+	ld a, l
+	cp LOW(SOLAR_BEAM)
+.cphl_solar_beam
 	jr z, .chargeup_moves
-	cphl DIG
+	assert HIGH(DIG) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_dig
+	ld a, l
+	cp LOW(DIG)
+.cphl_dig
 	jr z, .chargeup_moves
-	cphl CURSE
+	assert HIGH(CURSE) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_curse
+	ld a, l
+	cp LOW(CURSE)
+.cphl_curse
 	jr z, .chargeup_moves
-	cphl FLY
+	assert HIGH(FLY) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_fly
+	ld a, l
+	cp LOW(FLY)
+.cphl_fly
 	jr z, .chargeup_moves
-	cphl SUBSTITUTE
+	assert HIGH(SUBSTITUTE) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_substitute
+	ld a, l
+	cp LOW(SUBSTITUTE)
+.cphl_substitute
 	jr nz, .done_special_handling
 
 	call .DoMoveAnim
