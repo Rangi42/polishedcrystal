@@ -161,9 +161,21 @@ MoveDeletion:
 	ld b, h
 	ld c, l
 	pop hl
-	cpbc FLY
+	assert HIGH(FLY) == 0
+	ld a, b
+	and a
+	jr nz, .cpbc_fly
+	ld a, c
+	cp LOW(FLY)
+.cpbc_fly
 	jr z, .reset_pikachu_form
-	cpbc SURF
+	assert HIGH(SURF) == 0
+	ld a, b
+	and a
+	jr nz, .cpbc_surf
+	ld a, c
+	cp LOW(SURF)
+.cpbc_surf
 	ret nz
 .reset_pikachu_form
 	ld a, [hl]

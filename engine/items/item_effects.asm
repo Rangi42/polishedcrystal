@@ -2700,7 +2700,13 @@ RestorePPEffect:
 	ld a, [hl]
 	push hl
 	call GetMoveIndexFromID
-	cphl SKETCH
+	assert HIGH(SKETCH) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_sketch_done
+	ld a, l
+	cp LOW(SKETCH)
+.cphl_sketch_done
 	pop hl
 	jr z, .CantUsePPUpOnSketch
 

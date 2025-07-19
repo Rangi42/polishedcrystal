@@ -437,11 +437,29 @@ ForewarnAbility:
 	ld a, b
 	call GetMoveIndexFromID
 	ld c, 120
-	cphl COUNTER
+	assert HIGH(COUNTER) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_counter
+	ld a, l
+	cp LOW(COUNTER)
+.cphl_counter
 	jr z, .compare_power
-	cphl MIRROR_COAT
+	assert HIGH(MIRROR_COAT) == 0
+	ld a, h
+	and a
+	jr nz, .cphl_mirror_coat
+	ld a, l
+	cp LOW(MIRROR_COAT)
+.cphl_mirror_coat
 	jr z, .compare_power
-	cphl METAL_BURST
+	ld a, h
+	cp HIGH(METAL_BURST)
+	jr c, .cphl_metal_burst
+	jr nz, .cphl_metal_burst
+	ld a, l
+	cp LOW(METAL_BURST)
+.cphl_metal_burst
 	jr z, .compare_power
 	ld c, 80
 	jr .compare_power
