@@ -207,6 +207,10 @@ AnimObjLeafStormGFX:      INCBIN "gfx/battle_anims/leafstorm.2bpp.lz"
 AnimObjSmallExplosionGFX: INCBIN "gfx/battle_anims/smallexplosion.2bpp.lz"
 AnimObjGrassKnotGFX:      INCBIN "gfx/battle_anims/grassknot.2bpp.lz"
 AnimObjWoodHammerGFX:     INCBIN "gfx/battle_anims/woodhammer.2bpp.lz"
+AnimObjObjects3GFX:       INCBIN "gfx/battle_anims/objects3.2bpp.lz"
+AnimObjDrillGFX:          INCBIN "gfx/battle_anims/drill.2bpp.lz"
+AnimObjHornLeechGFX:      INCBIN "gfx/battle_anims/horn_leech.2bpp.lz"
+AnimObjRazorShellGFX:     INCBIN "gfx/battle_anims/razorshell.2bpp.lz"
 AnimObjPokeBallBGGFX::    INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 

@@ -1063,7 +1063,7 @@ BattleAnim_Thunderpunch:
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_sound 0, 1, SFX_THUNDER
-	anim_obj ANIM_OBJ_THUNDER_RIGHT, -13, 0,   8, 4, $0
+	anim_obj ANIM_OBJ_THUNDER_CENTER, 136, 68, $0
 	anim_wait 64
 	anim_ret
 
@@ -3518,8 +3518,8 @@ BattleAnim_Disable:
 	anim_obj ANIM_OBJ_DISABLE, -16, 4,   7, 0, $0
 	anim_wait 16
 	anim_sound 0, 1, SFX_BIND
-	anim_obj ANIM_OBJ_PARALYZED,  13, 0,   7, 0, $42
-	anim_obj ANIM_OBJ_PARALYZED, -12, 0,   7, 0, $c2
+	anim_obj ANIM_OBJ_PARALYZED, 104, 52, $42
+	anim_obj ANIM_OBJ_PARALYZED, 160, 52, $c2
 	anim_wait 96
 	anim_ret
 
@@ -5408,19 +5408,6 @@ BattleAnim_HiddenPower:
 	anim_wait 32
 	anim_ret
 
-BattleAnim_CrossChop:
-	anim_1gfx ANIM_GFX_CUT
-	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CROSS_CHOP1, -13, 0,   5, 0, $0
-	anim_obj ANIM_OBJ_CROSS_CHOP2,  15, 0,   9, 0, $0
-	anim_wait 8
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $58, $2, $0
-	anim_wait 92
-	anim_sound 0, 1, SFX_VICEGRIP
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $10
-	anim_wait 16
-	anim_ret
-
 BattleAnim_AquaJet:
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BUBBLE
 	anim_4gfx ANIM_GFX_HIT_2, ANIM_GFX_AQUA_JET, ANIM_GFX_BUBBLE, ANIM_GFX_SPEED
@@ -6290,6 +6277,32 @@ BattleAnim_CometPunch:
 	anim_wait 8
 	anim_ret
 
+BattleAnim_LockOn:
+	anim_1gfx ANIM_GFX_MISC
+	anim_sound 0, 1, SFX_MIND_READER
+.loop
+	anim_obj ANIM_OBJ_LOCK_ON, 132, 48, $3
+	anim_obj ANIM_OBJ_LOCK_ON, 132, 48, $12
+	anim_obj ANIM_OBJ_LOCK_ON, 132, 48, $20
+	anim_obj ANIM_OBJ_LOCK_ON, 132, 48, $31
+	anim_wait 16
+	anim_loop 2, .loop
+	anim_wait 32
+	anim_ret
+
+BattleAnim_MindReader:
+	anim_1gfx ANIM_GFX_MISC
+	anim_sound 6, 1, SFX_MIND_READER
+.loop
+	anim_obj ANIM_OBJ_MIND_READER, 132, 48, $3
+	anim_obj ANIM_OBJ_MIND_READER, 132, 48, $12
+	anim_obj ANIM_OBJ_MIND_READER, 132, 48, $20
+	anim_obj ANIM_OBJ_MIND_READER, 132, 48, $31
+	anim_wait 16
+	anim_loop 2, .loop
+	anim_wait 32
+	anim_ret
+
 ; ================================
 ; unused animations below here
 ; ================================
@@ -6371,17 +6384,6 @@ BattleAnim_CometPunch:
 ;	anim_jumpuntil .loop
 ;	anim_ret
 
-;BattleAnim_CottonSpore: ; removed
-;	anim_obp0 $54
-;	anim_1gfx ANIM_GFX_MISC
-;	anim_sound 0, 1, SFX_POWDER
-;.loop
-;	anim_obj ANIM_OBJ_COTTON_SPORE, -16, 4,   4, 0, $0
-;	anim_wait 8
-;	anim_loop 5, .loop
-;	anim_wait 96
-;	anim_ret
-
 ;BattleAnim_BoneRush: ; removed
 ;	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_MISC
 ;	anim_sound 0, 1, SFX_BONE_CLUB
@@ -6438,19 +6440,6 @@ BattleAnim_CometPunch:
 ;	anim_wait 16
 ;	anim_loop 2, .loop
 ;	anim_wait 8
-;	anim_ret
-
-;BattleAnim_LockOn: ; removed
-;	anim_1gfx ANIM_GFX_MISC
-;	anim_sound 0, 1, SFX_MIND_READER
-;.loop
-;	anim_obj ANIM_OBJ_LOCK_ON, -16, 4,   6, 0, $3
-;	anim_obj ANIM_OBJ_LOCK_ON, -16, 4,   6, 0, $12
-;	anim_obj ANIM_OBJ_LOCK_ON, -16, 4,   6, 0, $20
-;	anim_obj ANIM_OBJ_LOCK_ON, -16, 4,   6, 0, $31
-;	anim_wait 16
-;	anim_loop 2, .loop
-;	anim_wait 32
 ;	anim_ret
 
 ;BattleAnim_MegaPunch: ; removed

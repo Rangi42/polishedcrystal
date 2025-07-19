@@ -229,7 +229,7 @@ MoveTable:
 ;	dw FUTURE_SIGHT
 ;	dw ROCK_SMASH
 ;	dw WHIRLPOOL
-
+;
 ;- gen3 moves
 ;	dw FAKE_OUT
 ;	dw HAIL
@@ -256,6 +256,7 @@ MoveTable:
 ;	dw ROCK_TOMB
 ;	dw SILVER_WIND
 ;	dw METAL_SOUND
+;	dw COSMIC_POWER              Missing pointer???
 ;	dw WATER_SPOUT
 ;	dw SIGNAL_BEAM
 ;	dw SHADOW_PUNCH
@@ -285,9 +286,13 @@ MoveTable:
 ;	dw GRAVITY
 ;	dw GYRO_BALL
 ;	dw BRINE
+;	dw PLUCK
 ;	dw METAL_BURST
 ;	dw U_TURN
 ;	dw CLOSE_COMBAT
+;	dw PAYBACK                   Missing pointer???
+;	dw PSYCHO_SHIFT              Missing pointer???
+;	dw TRUMP_CARD                Missing pointer???
 ;	dw GASTRO_ACID
 ;	dw LUCKY_CHANT
 ;	dw WORRY_SEED
