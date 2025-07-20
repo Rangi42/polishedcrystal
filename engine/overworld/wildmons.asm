@@ -1095,18 +1095,16 @@ RandomPhoneMon:
 	inc c
 	inc c
 .no_moves
-	; bc = size of mon struct
-	ld b, c
-	xor c
-
+	; bc == size of mon sub-struct
+	; b currently holds party size in bytes
+	ld a, b
+	add l
 	ld e, 0
 	push hl
 .count_mon
 	inc e
 	add hl, bc
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	cp $ff
+	cp l
 	jr nz, .count_mon
 	pop hl
 
