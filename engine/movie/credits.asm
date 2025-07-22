@@ -13,10 +13,10 @@ Credits::
 .okay
 	ld [wJumptableIndex], a
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressedCreditsGFX)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call ClearBGPalettes
 	call ClearTileMap
@@ -56,7 +56,7 @@ Credits::
 	rst ByteFill
 
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 
@@ -87,19 +87,19 @@ Credits::
 .exit_credits
 	call ClearBGPalettes
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ldh [hBGMapAddress], a
 	pop af
 	ldh [hVBlank], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 Credits_HandleAButton:
 	ldh a, [hJoypadDown]
-	and A_BUTTON
+	and PAD_A
 	ret z
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -107,7 +107,7 @@ Credits_HandleAButton:
 
 Credits_HandleBButton:
 	ldh a, [hJoypadDown]
-	and B_BUTTON
+	and PAD_B
 	ret z
 	ld a, [wJumptableIndex]
 	bit 6, a
@@ -391,7 +391,7 @@ ConstructCreditsTilemap:
 
 	ld a, $28
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	rst ByteFill
 
 	ld a, $7f
@@ -478,14 +478,14 @@ GetCreditsPalette:
 	call .GetPalAddress
 
 	push hl
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	call .UpdatePals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	pop hl
 	ret
 

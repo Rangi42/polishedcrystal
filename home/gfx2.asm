@@ -28,11 +28,11 @@ HBlankCopy2bpp::
 	pop de
 .waitNoHBlank
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK
+	and STAT_MODE
 	jr z, .waitNoHBlank
 .waitHBlank
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK
+	and STAT_MODE
 	jr nz, .waitHBlank
 ; preloads r us
 	ld a, c

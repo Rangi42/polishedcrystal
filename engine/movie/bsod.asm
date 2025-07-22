@@ -8,16 +8,16 @@ BSOD:
 
 	call ClearTileMap
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, BSODPalette
 	ld de, wBGPals2
 	ld bc, 1 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, 1
 	ldh [hCGBPalUpdate], a

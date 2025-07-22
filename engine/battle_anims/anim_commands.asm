@@ -2,16 +2,16 @@
 
 PlayBattleAnim:
 	farcall CheckBattleAnimSubstitution
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 
 	ld a, 5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call _PlayBattleAnim
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 _PlayBattleAnim:
@@ -23,7 +23,7 @@ _PlayBattleAnim:
 	call DelayFrame
 
 	ld c, 1
-	ldh a, [rKEY1]
+	ldh a, [rSPD]
 	bit 7, a
 	jr nz, .got_speed
 	ld c, 3
@@ -158,15 +158,15 @@ BattleAnimRestoreHUDs:
 	call DelayFrame
 	call WaitTop
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call UpdateBattleHuds
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -604,7 +604,7 @@ BattleAnimCmd_5GFX:
 	ld [wBattleAnimTemp0], a
 .loop
 	ld a, [wBattleAnimTemp0]
-	cp (vTiles1 - vTiles0) / LEN_2BPP_TILE - BATTLEANIM_BASE_TILE
+	cp (vTiles1 - vTiles0) / TILE_SIZE - BATTLEANIM_BASE_TILE
 	ret nc
 	call GetBattleAnimByte
 	ld [hli], a
@@ -825,10 +825,10 @@ BattleAnimCmd_CheckCriticalCapture:
 	ret
 
 BattleAnimCmd_Transform:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wCurPartySpecies]
 	push af
 
@@ -856,7 +856,7 @@ BattleAnimCmd_Transform:
 	pop af
 	ld [wCurPartySpecies], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 BattleAnimCmd_UpdateActorPic:
@@ -975,10 +975,10 @@ INCLUDE "gfx/battle_anims/custom.pal"
 	assert_table_length NUM_CUSTOM_BATTLE_PALETTES
 
 BattleAnimCmd_RaiseSub:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	call GetSRAMBank
 
@@ -998,14 +998,14 @@ BattleAnimCmd_RaiseSub:
 	call DecompressRequest2bpp
 	call CloseSRAM
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 BattleAnimCmd_DropSub:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, [wCurPartySpecies]
 	push af
@@ -1023,14 +1023,14 @@ BattleAnimCmd_DropSub:
 	pop af
 	ld [wCurPartySpecies], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 BattleAnimCmd_BeatUp:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wCurPartySpecies]
 	push af
 
@@ -1059,7 +1059,7 @@ BattleAnimCmd_BeatUp:
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 BattleAnimCmd_OAMOn:
@@ -1125,10 +1125,10 @@ rept 4
 	add hl, de
 endr
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ldh a, [hBattleTurn]
 	and a
@@ -1193,7 +1193,7 @@ endr
 
 .done
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .CryData:
@@ -1277,10 +1277,10 @@ BattleAnim_RevertPals:
 
 BattleAnim_SetBGPals:
 	ldh [rBGP], a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wBGPals2
 	ld de, wBGPals1
 	ldh a, [rBGP]
@@ -1294,17 +1294,17 @@ BattleAnim_SetBGPals:
 	ld c, 2
 	call CopyPals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ret
 
 BattleAnim_SetOBPals:
 	ldh [rOBP0], a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wOBPals2 palette PAL_BATTLE_OB_GRAY
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
 	ldh a, [rOBP0]
@@ -1312,7 +1312,7 @@ BattleAnim_SetOBPals:
 	ld c, $2
 	call CopyPals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret

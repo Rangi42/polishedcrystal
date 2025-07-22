@@ -28,7 +28,7 @@ MACRO subtractfromhl
 ENDM
 
 _LoadMapPart::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, [wOverworldMapAnchor]
 	ld e, a
@@ -47,7 +47,7 @@ _LoadMapPart::
 	or b
 	ld b, a
 	ld a, BANK(wDecompressedMetatiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push de
 	push bc
 	call _LoadMapPart_TileMap
@@ -56,10 +56,10 @@ _LoadMapPart::
 	ld a, c
 	ldh [hMapWidthPlus6], a
 	ld a, BANK(wDecompressedAttributes)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call _LoadMapPart_AttrMap
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 MACRO loadmappart_function_macro

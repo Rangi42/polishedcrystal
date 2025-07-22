@@ -14,12 +14,12 @@ SetInitialOptions:
 	call LoadFrame
 
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 
@@ -64,7 +64,7 @@ SetInitialOptions:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 
 	hlcoord 0, 0
@@ -103,9 +103,9 @@ SetInitialOptions:
 .joypad_loop
 	call JoyTextDelay
 	ldh a, [hJoyPressed]
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jr nz, .ShowDescription
-	and START | B_BUTTON
+	and PAD_START | PAD_B
 	jr nz, .ExitOptions
 	call InitialOptionsControl
 	jr c, .DPad
@@ -258,7 +258,7 @@ GetInitialOptionPointer:
 InitialOptions_Natures:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit NATURES_OPT, [hl]
 	jr z, .SetNo
@@ -282,7 +282,7 @@ InitialOptions_Natures:
 InitialOptions_Abilities:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit ABILITIES_OPT, [hl]
 	jr z, .SetNo
@@ -306,7 +306,7 @@ InitialOptions_Abilities:
 InitialOptions_PSS:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit PSS_OPT, [hl]
 	jr z, .SetNo
@@ -332,12 +332,12 @@ InitialOptions_EVs:
 	ld d, EV_OPTMASK
 	ldh a, [hJoyPressed]
 	ld e, a
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr z, .input_done
 	ld a, [hl]
 .redo
 	inc a
-	bit D_LEFT_F, e
+	bit B_PAD_LEFT, e
 	jr z, .finish_change
 	dec a
 	dec a
@@ -382,9 +382,9 @@ InitialOptions_ExpScaling:
 .got_value
 	; check input
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr z, .no_input
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .left_input
 	; input right or A
 	dec e
@@ -429,7 +429,7 @@ InitialOptions_ExpScaling:
 InitialOptions_AffectionBonus:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit AFFECTION_OPT, [hl]
 	jr z, .SetNo
@@ -453,7 +453,7 @@ InitialOptions_AffectionBonus:
 InitialOptions_EvolveInBattle:
 	ld hl, wInitialOptions2
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit EVOLVE_IN_BATTLE_OPT, [hl]
 	jr z, .SetNo
@@ -477,7 +477,7 @@ InitialOptions_EvolveInBattle:
 InitialOptions_ColorVariation:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit COLOR_VARY_OPT, [hl]
 	jr z, .SetNo
@@ -501,7 +501,7 @@ InitialOptions_ColorVariation:
 InitialOptions_PerfectIVs:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit PERFECT_IVS_OPT, [hl]
 	jr z, .SetNo
@@ -525,7 +525,7 @@ InitialOptions_PerfectIVs:
 InitialOptions_TradedMon:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetNo
@@ -549,7 +549,7 @@ InitialOptions_TradedMon:
 InitialOptions_RTC:
 	ld hl, wInitialOptions2
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
+	and PAD_LEFT | PAD_RIGHT | PAD_A
 	jr nz, .Toggle
 	bit RTC_OPT, [hl]
 	jr z, .SetNo
@@ -581,7 +581,7 @@ ModernString:
 
 InitialOptions_Next:
 	ldh a, [hJoyPressed]
-	and A_BUTTON | D_LEFT | D_RIGHT
+	and PAD_A | PAD_LEFT | PAD_RIGHT
 	jr z, .NonePressed
 	call InitialOptions_ReRender
 	ld de, InitialOptionsString2
@@ -598,7 +598,7 @@ InitialOptions_Next:
 
 InitialOptions_Previous:
 	ldh a, [hJoyPressed]
-	and A_BUTTON | D_LEFT | D_RIGHT
+	and PAD_A | PAD_LEFT | PAD_RIGHT
 	jr z, .NonePressed
 	call InitialOptions_ReRender
 	ld de, InitialOptionsString1
@@ -616,9 +616,9 @@ InitialOptions_Previous:
 InitialOptionsControl:
 	ld hl, wJumptableIndex
 	ldh a, [hJoyLast]
-	cp D_DOWN
+	cp PAD_DOWN
 	jr z, .DownPressed
-	cp D_UP
+	cp PAD_UP
 	jr z, .UpPressed
 	and a
 	ret
@@ -683,7 +683,7 @@ InitialOptions_ReRender:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 
 	hlcoord 0, 0

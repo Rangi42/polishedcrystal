@@ -54,13 +54,13 @@ Pokedex_SetTilemap:
 	rst CopyBytes
 	pop af
 	call z, SwapHLDE
-	ld c, BG_MAP_WIDTH - SCREEN_WIDTH
+	ld c, TILEMAP_WIDTH - SCREEN_WIDTH
 	add hl, bc
 	pop bc
 	dec c
 	jr nz, .loop
 	push bc
-	ld bc, BG_MAP_WIDTH
+	ld bc, TILEMAP_WIDTH
 	add hl, bc
 	pop bc
 	ret
@@ -152,10 +152,10 @@ StackDexGraphics:
 	ld [wPokedex_PendingLYC], a
 
 	; Set up tile graphics
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDex2bpp)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; The reason we copy like this is because we want to copy some of the tiles
 	; to a template to write out VWF dex numbers later.
@@ -235,7 +235,7 @@ StackDexGraphics:
 
 	; Set up a conversion table for Johto dex numbers.
 	ld a, BANK(wDexConversionTable)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld de, 0
 	ld bc, NUM_POKEMON + $100 ; "+ $100" simplifies loop iteration
 .conversion_loop
@@ -260,7 +260,7 @@ StackDexGraphics:
 	dec b
 	jr nz, .conversion_loop
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call Pokedex_InitData
 
@@ -304,8 +304,8 @@ StackDexGraphics:
 	jr .loop
 .done_update
 	ld hl, rIE
-	res LCD_STAT, [hl]
-	ld a, 1 << rSTAT_INT_DEFAULT
+	res B_IE_STAT, [hl]
+	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 	ld a, LOW(LCDGeneric)
 	ldh [hFunctionTargetLo], a
@@ -458,7 +458,7 @@ Pokedex_RefreshOAM:
 	; (A) button for ability display
 	ld b, 92
 	ld d, 2
-	lb hl, VRAM_BANK_1 | 1, $3d
+	lb hl, OAM_BANK1 | 1, $3d
 	jr Pokedex_WriteOAM
 
 .not_stats
@@ -478,7 +478,7 @@ Pokedex_RefreshOAM:
 	; Write (static) slowpoke frame.
 	ld c, 120
 	ld e, 15
-	lb hl, VRAM_BANK_1, $40
+	lb hl, OAM_BANK1, $40
 	ld a, 3
 .search_loop
 	ld b, 120
@@ -574,8 +574,8 @@ Pokedex_GetMainOAM:
 	ld e, a
 	xor a
 	ld [hli], a
-	; VRAM_BANK_1 + 8 - 1/2/3 == VRAM_BANK_1 | 7/6/5
-	ld a, VRAM_BANK_1 + 8
+	; OAM_BANK1 + 8 - 1/2/3 == OAM_BANK1 | 7/6/5
+	ld a, OAM_BANK1 + 8
 	sub c
 	ld [hli], a
 	dec d
@@ -664,7 +664,7 @@ PHB_WaitUntilLY_Mode0:
 	jr nz, .busyloop
 .busyloop2
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK ; wait until mode 0
+	and STAT_MODE ; wait until mode 0
 	jr nz, .busyloop2
 	ret
 
@@ -702,7 +702,7 @@ PHB_DoSwitchSCY:
 	push bc
 .loop
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK
+	and STAT_MODE
 	jr nz, .loop
 	ld a, h
 	ldh [rSCY], a
@@ -716,7 +716,7 @@ PHB_DescSwitchSCY:
 	push bc
 .busyloop
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK ; wait until mode 0
+	and STAT_MODE ; wait until mode 0
 	jr nz, .busyloop
 	ld a, 8
 	ldh [rSCY], a
@@ -822,10 +822,10 @@ PHB_MainResetLCDC:
 	call Pokedex_UnsafeSetHBlankFunction
 .loop
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK ; wait until mode 0
+	and STAT_MODE ; wait until mode 0
 	jr nz, .loop
 	ld hl, rLCDC
-	res rLCDC_TILE_DATA, [hl]
+	res B_LCDC_BLOCKS, [hl]
 	jmp PopBCDEHL
 
 PHB_LoadRow:
@@ -850,7 +850,7 @@ PHB_LoadRow:
 	ld a, 8
 	ldh [rSCY], a
 	ldh a, [rLCDC]
-	set rLCDC_TILE_DATA, a
+	set B_LCDC_BLOCKS, a
 	ldh [rLCDC], a
 
 	call .GetCaptureOffset
@@ -876,14 +876,14 @@ PHB_LoadRow:
 	; Pal col 1 (BG2).
 	pop hl
 	inc hl
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 2 color 1)
 	ld c, LOW(rBGPD)
 	ldh [rBGPI], a
 rept 6
 	ld a, [hli]
 	ldh [c], a
 endr
-	ld a, (1 << rOBPI_AUTO_INCREMENT) | (0 palette 5 color 1)
+	ld a, OBPI_AUTOINC | (0 palette 5 color 1)
 	ldh [rOBPI], a
 	pop de
 	push de
@@ -940,7 +940,7 @@ endr
 	ldh [c], a
 
 	; Prepare this for later.
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 3 color 1)
 	ldh [rBGPI], a
 	ld a, e
 	ret
@@ -992,12 +992,12 @@ PVB_UpdateDexMap::
 	ld a, [hl]
 	and a
 	ret z
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ldh a, [rVBK]
 	push af
 	ld a, BANK(wDexTilemap)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [hl]
 
 	; Update the tilemap last if several kinds are pending.
@@ -1012,11 +1012,11 @@ PVB_UpdateDexMap::
 	ldh [rVBK], a
 	ld de, wDexTilemap
 	ld bc, vBGMap0
-	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
+	ld a, ((TILEMAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
 	call GDMACopy
 	ld a, 1
 	ldh [rVBK], a
-	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
+	ld a, ((TILEMAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
 	call ContinueGDMACopy
 	ld [hl], 0
 	call ForcePushOAM
@@ -1075,13 +1075,13 @@ PVB_UpdateDexMap::
 	ld a, [wPokedex_MonInfoBank]
 	ldh [rVBK], a
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call GetPaddedFrontpicAddress
 	ld bc, vTiles2 tile $40
 	ld a, 7 * 7 - 1
 	call GDMACopy
 	ld a, BANK(wDex2bpp)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 .frontpic_done
 	bit DEXGFX_POKEINFO, [hl]
@@ -1149,7 +1149,7 @@ PVB_UpdateDexMap::
 	pop af
 	ldh [rVBK], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 DexDisplayOAMData:

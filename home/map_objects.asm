@@ -284,18 +284,18 @@ _GetMovementByte::
 	ret
 
 GetBGMapPlayerOffset::
-; returns hl = {wBGMapAnchor} + BG_MAP_WIDTH * 8 + 8 (player's top-left tile)
+; returns hl = {wBGMapAnchor} + TILEMAP_WIDTH * 8 + 8 (player's top-left tile)
 	ld hl, wBGMapAnchor + 1
 	ld a, [hld]
 	inc a ; move down 8 rows
-	and HIGH(vBGMap0 + BG_MAP_WIDTH * BG_MAP_HEIGHT - 1) ; wrap vertically
+	and HIGH(vBGMap0 + TILEMAP_AREA - 1) ; wrap vertically
 	ld l, [hl]
 	ld h, a
 	ld a, l
 	add 8 ; move right 8 rows
 	; restore "row" bits (upper 3)
 	xor l
-	and BG_MAP_WIDTH - 1
+	and TILEMAP_WIDTH - 1
 	xor l
 	ld l, a
 	ret

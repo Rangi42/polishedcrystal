@@ -26,7 +26,7 @@ Serial::
 
 	xor a
 	ldh [rSC], a
-	ld a, START_TRANSFER_EXTERNAL_CLOCK
+	ld a, SC_START | SC_EXTERNAL
 	ldh [rSC], a
 	jr .player2
 
@@ -55,7 +55,7 @@ Serial::
 
 	xor a
 	ldh [rSC], a
-	ld a, START_TRANSFER_EXTERNAL_CLOCK
+	ld a, SC_START | SC_EXTERNAL
 	ldh [rSC], a
 	jr .player2
 
@@ -106,7 +106,7 @@ LinkTransfer::
 	jr nz, .player_1
 	ld a, $1
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 
 .player_1
@@ -136,6 +136,6 @@ LinkDataReceived::
 	ret nz
 	ld a, $1
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 	ret

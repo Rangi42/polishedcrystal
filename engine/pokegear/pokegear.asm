@@ -137,10 +137,10 @@ Pokegear_LoadGFX:
 	cp MYSTRI_STAGE
 	jr z, .load_alt_sprite
 	farcall GetPlayerIcon
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push de
 	ld h, d
 	ld l, e
@@ -159,7 +159,7 @@ Pokegear_LoadGFX:
 	ld bc, 4 tiles
 	call FarCopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .load_alt_sprite
@@ -407,13 +407,13 @@ PokegearClock_Joypad:
 	call .UpdateClock
 	ld hl, hJoyLast
 	ld a, [hl]
-	and B_BUTTON | START | SELECT
+	and PAD_B | PAD_START | PAD_SELECT
 	jr nz, .quit
 	ldh a, [hJoyPressed]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .quit
 	ld a, [hl]
-	and D_RIGHT
+	and PAD_RIGHT
 	ret z
 	ld a, [wPokegearFlags]
 	bit POKEGEAR_MAP_CARD_F, a
@@ -538,16 +538,16 @@ PokegearMap_OrangeMap:
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .fly
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .cancel
 	ld a, [hl]
-	and D_RIGHT
+	and PAD_RIGHT
 	jr nz, .right
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	jr nz, .left
 	jr .DPad
 
@@ -588,10 +588,10 @@ PokegearMap_ContinueMap:
 .DPad:
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .up
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .down
 	ret
 
@@ -790,10 +790,10 @@ PokegearRadio_Init:
 PokegearRadio_Joypad:
 	ld hl, hJoyLast
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .cancel
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	jr nz, .left
 	ld hl, wPokegearRadioChannelAddr
 	ld a, [hli]
@@ -904,10 +904,10 @@ AnimateTuningKnob:
 .TuningKnob:
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .down
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .up
 	ret
 
@@ -1266,16 +1266,16 @@ _TownMap:
 	call JoyTextDelay
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	ret nz
 
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .pressed_up
 
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .pressed_down
 .loop2
 	push de
@@ -1410,7 +1410,7 @@ PlayRadio:
 .loop
 	call JoyTextDelay
 	ldh a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr nz, .stop
 	ld hl, wPokegearRadioChannelAddr
 	ld a, [hli]
@@ -1508,10 +1508,10 @@ _FlyMap:
 	call JoyTextDelay
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .pressedB
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .pressedA
 	call FlyMapScroll
 	call GetMapCursorCoordinates
@@ -1553,10 +1553,10 @@ FlyMapScroll:
 	ld d, a
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .ScrollNext
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .ScrollPrev
 	ret
 
@@ -1881,7 +1881,7 @@ TownMapPals:
 ; Assign palettes based on tile ids
 	hlcoord 0, 0
 	decoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 .loop
 	ld a, [hli]
 	push hl
@@ -1954,7 +1954,7 @@ TownMapOrangeFlips:
 	decoord 0, 0, OrangeMap
 TownMapFlips:
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 .loop
 	; [de] == YXtttttt
 	ld a, [de]

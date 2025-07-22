@@ -31,7 +31,7 @@ wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 wCurMusicByte:: db
 wCurChannel:: db
 wVolume::
-; corresponds to rNR50
+; corresponds to rAUDVOL
 ; Channel control / ON-OFF / Volume (R/W)
 ;   bit 7 - Vin->SO2 ON/OFF
 ;   bit 6-4 - SO2 output level (volume) (# 0-7)
@@ -39,12 +39,12 @@ wVolume::
 ;   bit 2-0 - SO1 output level (volume) (# 0-7)
 	db
 wSoundOutput::
-; corresponds to rNR51
+; corresponds to rAUDTERM
 ; bit 4-7: ch1-4 so2 on/off
 ; bit 0-3: ch1-4 so1 on/off
 	db
 wSoundInput::
-; corresponds to rNR52
+; corresponds to rAUDENA
 ; bit 7: global on/off
 ; bit 0: ch1 on/off
 ; bit 1: ch2 on/off
@@ -243,7 +243,7 @@ wSpriteAnimsEnd::
 SECTION "Sprites", WRAM0
 
 wShadowOAM::
-for n, NUM_SPRITE_OAM_STRUCTS
+for n, OAM_COUNT
 wShadowOAMSprite{02d:n}:: sprite_oam_struct wShadowOAMSprite{02d:n}
 endr
 wShadowOAMEnd::
@@ -254,7 +254,7 @@ SECTION "Tilemap and Attrmap", WRAM0
 ; Some code depend on these being next to each other in memory.
 wTilemap::
 ; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wTilemapEnd::
 
 wAttrmap::
@@ -266,7 +266,7 @@ wAttrmap::
 ; bit 4: pal # (non-cgb)
 ; bit 3: vram bank (cgb only)
 ; bit 2-0: pal # (cgb only)
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wAttrmapEnd::
 
 
@@ -686,13 +686,13 @@ NEXTU
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
-wPokedex_Row1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row1Pals:: ds COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
 wPokedex_Row2::
 wPokedex_Row2Tile: db
-wPokedex_Row2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row2Pals:: ds COLOR_SIZE * 3 * 5
 wPokedex_Row3::
 wPokedex_Row3Tile: db
-wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row3Pals:: ds COLOR_SIZE * 3 * 5
 wPokedex_PalsEnd::
 ENDU
 
@@ -983,7 +983,7 @@ wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 wSummaryScreenPals:: ds 8 palettes
 
 wSummaryScreenOAM::
-for n, NUM_SPRITE_OAM_STRUCTS
+for n, OAM_COUNT
 wSummaryScreenOAMSprite{02d:n}:: sprite_oam_struct wSummaryScreenOAMSprite{02d:n}
 endr
 wSummaryScreenTypes:: ds 6
@@ -1092,7 +1092,7 @@ wPrinterSendByteOffset:: dw
 wPrinterSendByteCounter:: dw
 
 ; tilemap backup?
-wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterTilemapBuffer:: ds SCREEN_AREA
 wPrinterStatus:: db
 	ds 1
 ; High nibble is for margin before the image, low nibble is for after.

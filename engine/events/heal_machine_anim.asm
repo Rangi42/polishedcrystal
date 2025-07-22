@@ -120,10 +120,10 @@ HealMachineAnim:
 	ret
 
 .FlashPalettes:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wOBPals2 palette 7
 	ld a, [hli]
@@ -155,7 +155,7 @@ HealMachineAnim:
 	ld [hl], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -190,11 +190,11 @@ HealMachineAnim:
 	dsprite   4, 0,   4, 2, $78, 7
 	dsprite   4, 0,   4, 6, $78, 7
 	dsprite   4, 6,   4, 0, $79, 7
-	dsprite   4, 6,   5, 0, $79, 7 | X_FLIP
+	dsprite   4, 6,   5, 0, $79, 7 | OAM_XFLIP
 	dsprite   5, 3,   4, 0, $79, 7
-	dsprite   5, 3,   5, 0, $79, 7 | X_FLIP
+	dsprite   5, 3,   5, 0, $79, 7 | OAM_XFLIP
 	dsprite   6, 0,   4, 0, $79, 7
-	dsprite   6, 0,   5, 0, $79, 7 | X_FLIP
+	dsprite   6, 0,   5, 0, $79, 7 | OAM_XFLIP
 
 .HOF_OAM:
 	dsprite   7, 4,  10, 1, $79, 7
