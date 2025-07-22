@@ -445,6 +445,11 @@ ENDM
 	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
 	map_attributes HollowportRival1F, HOLLOWPORT_RIVAL_1F, $0, 0
 	map_attributes HollowportRival2F, HOLLOWPORT_RIVAL_2F, $0, 0
+	map_attributes Route102, ROUTE_102, $0, 0
+	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
+	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
+
+	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_attributes SproutTower3F, SPROUT_TOWER_3F, $0, 0

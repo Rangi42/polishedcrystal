@@ -77,6 +77,9 @@ INCLUDE "maps/FieldLab2F.asm"
 INCLUDE "maps/HollowportNeighbor.asm"
 INCLUDE "maps/EchoingCave.asm"
 INCLUDE "maps/Route101.asm"
+INCLUDE "maps/Route102.asm"
+INCLUDE "maps/Route101102Gate.asm"
+INCLUDE "maps/Route102OlsteetonGate.asm"
 
 SECTION "Hollowport Scripts 2", ROMX
 

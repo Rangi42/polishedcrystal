@@ -85,6 +85,7 @@ LyraPhoneScript_JohtoLandmarksTable:
 	dw .Generic
 	dw .Hollowport
 	dw .Route101
+	dw .Route102
 	dw .NewBarkTown
 	dw .Route29
 	dw .CherrygroveCity
@@ -156,6 +157,7 @@ LyraPhoneScript_JohtoLandmarksTable:
 .Generic:
 .Hollowport:
 .Route101:
+.Route102:
 .NewBarkTown:
 .Route29:
 .CherrygroveCity:

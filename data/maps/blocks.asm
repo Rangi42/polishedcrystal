@@ -83,6 +83,9 @@ IlexForestAzaleaGate_BlockData:
 GoldenrodHarborGate_BlockData:
 Route38EcruteakGate_BlockData:
 Route42EcruteakGate_BlockData:
+Route101102Gate_BlockData:
+Route102OlsteetonGate_BlockData:
+
 	INCBIN "maps/EastWestGate.ablk.lz"
 
 Route7SaffronGate_BlockData:
@@ -250,6 +253,10 @@ EchoingCave_BlockData:
 SECTION "Route101_BlockData", ROMX
 Route101_BlockData:
 	INCBIN "maps/Route101.ablk.lz"
+
+SECTION "Route102_BlockData", ROMX
+Route102_BlockData:
+	INCBIN "maps/Route102.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:

@@ -714,11 +714,15 @@ ENDM
 	map_const HOLLOWPORT_RIVAL_2F,                         4,  3 ;  8
 	map_const HOLLOWPORT_NEIGHBOR,                         4,  4 ;  9
 	map_const ROUTE_101,             				      18, 12 ;  10
+	map_const ROUTE_102,								  16,  9 ;  11
+	map_const ROUTE_101_102_GATE,                          5,  4 ;  12
+	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  13
+
+
 
 	; newgroup                                         			 ; 39
 	; map_const OLSTEETON,                              	20, 18 ;  1
 	; map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  2
-	; map_const ROUTE_102,                                  10, 20 ;  3
 	; map_const OLSTEETON_GYM_1F,                       	 8,  4 ;  4
 	; map_const OLSTEETON_GYM_2F,                        	 8,  4 ;  5
 	; map_const RIVERFRONT_APT_1F,                           8,  4 ;  6

@@ -3,6 +3,7 @@
 	const SPECIAL_MAP        ; 00
 	const HOLLOWPORT         ; 0a
 	const ROUTE_101			 ; 0b
+	const ROUTE_102			 ; 0c
 
 ; Johto landmarks
 	const NEW_BARK_TOWN      ; 01

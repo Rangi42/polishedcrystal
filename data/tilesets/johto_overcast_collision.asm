@@ -180,7 +180,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; b3
 	tilecoll TOP_WALL, TOP_WALL, FLOOR, FLOOR ; b4
 	tilecoll FLOOR, FLOOR, WALL, WALL ; b5
-	tilecoll FLOOR, TOP_WALL, FLOOR, BOTTOM_WALL ; b6
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b6
 	tilecoll TOP_WALL, FLOOR, BOTTOM_WALL, FLOOR ; b7
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; b8
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; b9
