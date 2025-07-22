@@ -10,6 +10,7 @@ Landmarks:
 	landmark  1, 1, HollowportName
 	landmark  5, 5, Route101Name
 	landmark  10, 10, Route102Name
+	landmark  15, 15, OlsteetonName
 	landmark 140, 100, NewBarkTownName
 	landmark 120, 100, Route29Name
 	landmark 100, 100, CherrygroveCityName
@@ -301,8 +302,8 @@ FarawayIslandName:     rawchar "Faraway¯Island@"
 SinjohRuinsName:       rawchar "Sinjoh¯Ruins@"
 MystriStageName:       rawchar "Mystri¯Stage@"
 CinnabarLabName:       rawchar "Pokémon¯Lab@"
-HollowportName:        rawchar "Hollowport"
-Route101Name:          rawchar "Route 101"
-Route102Name:          rawchar "Route 102"
-
+HollowportName:        rawchar "Hollowport@"
+Route101Name:          rawchar "Route 101@"
+Route102Name:          rawchar "Route 102@"
+OlsteetonName: 		   rawchar "Olsteeton@"
 SpecialMapName:        rawchar "?@"

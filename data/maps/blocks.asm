@@ -258,6 +258,10 @@ SECTION "Route102_BlockData", ROMX
 Route102_BlockData:
 	INCBIN "maps/Route102.ablk.lz"
 
+SECTION "Olsteeton_BlockData", ROMX
+Olsteeton_BlockData:
+	INCBIN "maps/Olsteeton.ablk.lz"
+
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
 	INCBIN "maps/ElmsLab.ablk.lz"

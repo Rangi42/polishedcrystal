@@ -10,7 +10,7 @@ SpawnPoints:
 
 	spawn PLAYERS_HOUSE_2F,            2,  5
 	spawn HOLLOWPORT,				   7,  3
-
+	spawn OLSTEETON,				   7,  12
 	spawn PALLET_TOWN,                 5,  6
 	spawn VIRIDIAN_CITY,              23, 26
 	spawn PEWTER_CITY,                13, 26

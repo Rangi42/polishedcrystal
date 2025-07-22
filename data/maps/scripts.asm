@@ -88,9 +88,9 @@ INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/HollowportRival1F.asm"
 INCLUDE "maps/HollowportRival2F.asm"
 
-; SECTION "Olsteeton Scripts", ROMX
+SECTION "Olsteeton Scripts", ROMX
 
-; INCLUDE "maps/Olsteeton.asm"
+INCLUDE "maps/Olsteeton.asm"
 ; INCLUDE "maps/OlsteetonUni.asm"
 
 SECTION "New Bark Scripts", ROMX

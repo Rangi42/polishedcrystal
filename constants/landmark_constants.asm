@@ -4,6 +4,7 @@
 	const HOLLOWPORT         ; 0a
 	const ROUTE_101			 ; 0b
 	const ROUTE_102			 ; 0c
+	const OLSTEETON			 ; 0d
 
 ; Johto landmarks
 	const NEW_BARK_TOWN      ; 01

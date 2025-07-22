@@ -124,7 +124,7 @@ DEF NUM_FISHGROUPS EQU const_value
 
 ; appalachia
 	const SPAWN_HOLLOWPORT
-	; const SPAWN_OLSTEETON
+	const SPAWN_OLSTEETON
 	; const SPAWN_UNI_CAMPUS
 DEF NUM_SPAWNS EQU const_value
 
@@ -169,7 +169,8 @@ DEF SPAWN_N_A EQU -1
 	const FLY_NAVEL
 
 ; appalachia
-	; const FLY_OLSTEETON
+
 	; const FLY_UNI_CAMPUS
 	const FLY_HOLLOWPORT
+	const FLY_OLSTEETON
 DEF NUM_FLYPOINTS EQU const_value
