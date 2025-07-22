@@ -710,4 +710,8 @@ ENDM
 	map_const GLOBAL_TERMINAL_1F,					       9,  6 ;  2
 	endgroup
 
-DEF NUM_MAP_GROUPS EQU const_value ; 38
+	newgroup NATIONAL_FOREST									; 39
+	map_const NATIONAL_FOREST_1,							17, 15 ; 1
+	endgroup
+
+DEF NUM_MAP_GROUPS EQU const_value ; 39

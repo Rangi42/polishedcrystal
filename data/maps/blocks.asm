@@ -1927,4 +1927,8 @@ SECTION "BattleFactoryBattleRoom_BlockData", ROMX
 BattleFactoryBattleRoom_BlockData:
 	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"
 
+SECTION "NationalForest1_BlockData", ROMX
+NationalForest1_BlockData:
+	INCBIN "maps/NationalForest1.ablk.lz"
+	
 ENDSECTION
