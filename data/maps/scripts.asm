@@ -69,6 +69,29 @@ INCLUDE "maps/BattleFactory1F.asm"
 INCLUDE "maps/BattleFactoryHallway.asm"
 INCLUDE "maps/BattleFactoryBattleRoom.asm"
 
+SECTION "Hollowport Scripts", ROMX
+
+INCLUDE "maps/Hollowport.asm"
+INCLUDE "maps/FieldLab.asm"
+INCLUDE "maps/FieldLab2F.asm"
+INCLUDE "maps/HollowportNeighbor.asm"
+INCLUDE "maps/EchoingCave.asm"
+INCLUDE "maps/Route101.asm"
+INCLUDE "maps/Route102.asm"
+INCLUDE "maps/Route101102Gate.asm"
+INCLUDE "maps/Route102OlsteetonGate.asm"
+
+SECTION "Hollowport Scripts 2", ROMX
+
+INCLUDE "maps/PlayersHouse1F.asm"
+INCLUDE "maps/PlayersHouse2F.asm"
+INCLUDE "maps/HollowportRival1F.asm"
+INCLUDE "maps/HollowportRival2F.asm"
+
+SECTION "Olsteeton Scripts", ROMX
+
+INCLUDE "maps/Olsteeton.asm"
+; INCLUDE "maps/OlsteetonUni.asm"
 
 SECTION "New Bark Scripts", ROMX
 
@@ -79,9 +102,6 @@ INCLUDE "maps/PlayersNeighborsHouse.asm"
 
 
 SECTION "New Bark Scripts 2", ROMX
-
-INCLUDE "maps/PlayersHouse1F.asm"
-INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
 

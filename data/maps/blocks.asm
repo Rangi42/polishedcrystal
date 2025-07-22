@@ -33,6 +33,9 @@ CinnabarPokeCenter1F_BlockData:
 KantoPokeCenter2F_BlockData:
 	INCBIN "maps/KantoPokeCenter2F.ablk.lz"
 
+; OlsteetonPokeCenter_BlockData:
+	; INCBIN "maps/OlsteetonPokeCenter.ablk.lz"
+
 CherrygroveMart_BlockData:
 VioletMart_BlockData:
 AzaleaMart_BlockData:
@@ -80,6 +83,9 @@ IlexForestAzaleaGate_BlockData:
 GoldenrodHarborGate_BlockData:
 Route38EcruteakGate_BlockData:
 Route42EcruteakGate_BlockData:
+Route101102Gate_BlockData:
+Route102OlsteetonGate_BlockData:
+
 	INCBIN "maps/EastWestGate.ablk.lz"
 
 Route7SaffronGate_BlockData:
@@ -152,6 +158,7 @@ Route28FamousSpeechHouse_BlockData:
 PlayersNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 ValenciaHouse_BlockData:
+HollowportNeighbor_BlockData:
 	INCBIN "maps/JohtoHouse4.ablk.lz"
 
 EcruteakLugiaSpeechHouse_BlockData:
@@ -218,6 +225,42 @@ PlayersHouse1F_BlockData:
 SECTION "PlayersHouse2F_BlockData", ROMX
 PlayersHouse2F_BlockData:
 	INCBIN "maps/PlayersHouse2F.ablk.lz"
+
+SECTION "Hollowport_BlockData", ROMX
+Hollowport_BlockData:
+	INCBIN "maps/Hollowport.ablk.lz"
+
+SECTION "HollowportRival1F_BlockData", ROMX
+HollowportRival1F_BlockData:
+	INCBIN "maps/HollowportRival1F.ablk.lz"
+
+SECTION "HollowportRival2F_BlockData", ROMX
+HollowportRival2F_BlockData:
+	INCBIN "maps/HollowportRival2F.ablk.lz"
+	
+SECTION "FieldLab_BlockData", ROMX
+FieldLab_BlockData:
+	INCBIN "maps/FieldLab.ablk.lz"
+
+SECTION "FieldLab2F_BlockData", ROMX
+FieldLab2F_BlockData:
+	INCBIN "maps/FieldLab2F.ablk.lz"
+
+SECTION "EchoingCave_BlockData", ROMX
+EchoingCave_BlockData:
+	INCBIN "maps/EchoingCave.ablk.lz"
+
+SECTION "Route101_BlockData", ROMX
+Route101_BlockData:
+	INCBIN "maps/Route101.ablk.lz"
+
+SECTION "Route102_BlockData", ROMX
+Route102_BlockData:
+	INCBIN "maps/Route102.ablk.lz"
+
+SECTION "Olsteeton_BlockData", ROMX
+Olsteeton_BlockData:
+	INCBIN "maps/Olsteeton.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:

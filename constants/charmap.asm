@@ -2,8 +2,23 @@ MACRO ctxtmap
 	DEF x = \2
 	DEF ___huffman_data_{02X:x} EQU %\3
 	DEF ___huffman_length_{02X:x} EQU STRLEN("\3")
-	charmap \1, \2
+	DEF ___huffman_char_\3 EQUS "\1"
+	charmap \1, x
 ENDM
+
+; Huffman text compression (see data/text/compressed_text.asm and home/text.asm)
+; tree starts at parent node $00
+DEF ROOT_NODE_ID               EQU $00
+; characters $7f-$eb correspond to leaf nodes $7f-$eb
+DEF FIRST_LEAF_NODE_ID         EQU $7f
+DEF LAST_LEAF_NODE_ID          EQU $ff
+; characters $4d-$5c correspond to leaf nodes $ec-$fb
+DEF FIRST_SHIFTED_LEAF_CHAR_ID EQU $4d
+DEF LAST_SHIFTED_LEAF_CHAR_ID  EQU $5c
+DEF FIRST_SHIFTED_LEAF_NODE_ID EQU $ec
+DEF LAST_SHIFTED_LEAF_NODE_ID  EQU FIRST_SHIFTED_LEAF_NODE_ID + LAST_SHIFTED_LEAF_CHAR_ID - FIRST_SHIFTED_LEAF_CHAR_ID ; $fb
+assert LAST_SHIFTED_LEAF_NODE_ID <= LAST_LEAF_NODE_ID
+assert FIRST_SHIFTED_LEAF_CHAR_ID < LAST_SHIFTED_LEAF_CHAR_ID && LAST_SHIFTED_LEAF_CHAR_ID < FIRST_LEAF_NODE_ID
 
 	newcharmap no_ngrams
 
@@ -24,18 +39,18 @@ ENDM
 
 DEF SPECIALS_START EQU $52
 
-	ctxtmap "<DONE>",   $52, 001111
-	ctxtmap "@",        $53, 111101000
-	ctxtmap "<PROMPT>", $54, 1101000010
-	ctxtmap "<LNBRK>",  $55, 01011011000
-	ctxtmap "<NEXT>",   $56, 00111010
-	ctxtmap "<LINE>",   $57, 00101
-	ctxtmap "<CONT>",   $58, 0101100
-	ctxtmap "<PARA>",   $59, 100010
+	ctxtmap "<DONE>",   $52, 101100
+	ctxtmap "@",        $53, 001011010
+	ctxtmap "<PROMPT>", $54, 1101011001
+	ctxtmap "<LNBRK>",  $55, 100001100111
+	ctxtmap "<NEXT>",   $56, 1101011100
+	ctxtmap "<LINE>",   $57, 01011
+	ctxtmap "<CONT>",   $58, 1011100
+	ctxtmap "<PARA>",   $59, 101111
 
-	ctxtmap "<TARGET>", $5a, 0101101111010
-	ctxtmap "<USER>",   $5b, 010110111110
-	ctxtmap "<ENEMY>",  $5c, 010110111111001
+	ctxtmap "<TARGET>", $5a, 001101000110100
+	ctxtmap "<USER>",   $5b, 001101000011001
+	ctxtmap "<ENEMY>",  $5c, 0011010001101011
 
 	charmap "<CTXT>",   $5d
 
@@ -79,129 +94,129 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 ; typeface font:
 
-	ctxtmap "A",        $80, 101110
-	ctxtmap "B",        $81, 110101000
-	ctxtmap "C",        $82, 110100111
-	ctxtmap "D",        $83, 001000100
-	ctxtmap "E",        $84, 1101000011
-	ctxtmap "F",        $85, 1011000111
-	ctxtmap "G",        $86, 001000101
-	ctxtmap "H",        $87, 00100000
-	ctxtmap "I",        $88, 1101011
-	ctxtmap "J",        $89, 11010011000
-	ctxtmap "K",        $8a, 11110101110
-	ctxtmap "L",        $8b, 001110010
-	ctxtmap "M",        $8c, 101100010
-	ctxtmap "N",        $8d, 11110101111
-	ctxtmap "O",        $8e, 101100000
-	ctxtmap "P",        $8f, 001110011
-	ctxtmap "Q",        $90, 00100011100011
-	ctxtmap "R",        $91, 1101001101
-	ctxtmap "S",        $92, 00100001
-	ctxtmap "T",        $93, 11010101
-	ctxtmap "U",        $94, 00100011111
-	ctxtmap "V",        $95, 110100110010
-	ctxtmap "W",        $96, 111101010
-	ctxtmap "X",        $97, 11010100111001101
-	ctxtmap "Y",        $98, 111101001
-	ctxtmap "Z",        $99, 0010001111010
+	ctxtmap "A",        $80, 00101100
+	ctxtmap "B",        $81, 101110111
+	ctxtmap "C",        $82, 100001111
+	ctxtmap "D",        $83, 1011101100
+	ctxtmap "E",        $84, 0101000111
+	ctxtmap "F",        $85, 1000011000
+	ctxtmap "G",        $86, 1101011110
+	ctxtmap "H",        $87, 010100010
+	ctxtmap "I",        $88, 1100100
+	ctxtmap "J",        $89, 10000110010
+	ctxtmap "K",        $8a, 10111011011
+	ctxtmap "L",        $8b, 1101011101
+	ctxtmap "M",        $8c, 001011011
+	ctxtmap "N",        $8d, 11010100100
+	ctxtmap "O",        $8e, 1101010011
+	ctxtmap "P",        $8f, 001011100
+	ctxtmap "Q",        $90, 110101111100110
+	ctxtmap "R",        $91, 1000011011
+	ctxtmap "S",        $92, 110101101
+	ctxtmap "T",        $93, 00110110
+	ctxtmap "U",        $94, 100001110111
+	ctxtmap "V",        $95, 001101000111
+	ctxtmap "W",        $96, 001101110
+	ctxtmap "X",        $97, 0011010000110111
+	ctxtmap "Y",        $98, 001101001
+	ctxtmap "Z",        $99, 11010111110111
 
-	ctxtmap "(",        $9a, 010110110010
-	ctxtmap ")",        $9b, 010110110011
-	ctxtmap ".",        $9c, 010111
+	ctxtmap "(",        $9a, 001101000000
+	ctxtmap ")",        $9b, 001101000010
+	ctxtmap ".",        $9c, 100000
 	ctxtmap ",",        $9d, 0101001
-	ctxtmap "?",        $9e, 11010010
-	ctxtmap "!",        $9f, 1110000
+	ctxtmap "?",        $9e, 11010101
+	ctxtmap "!",        $9f, 1111011
 
 	ctxtmap "a",        $a0, 0100
-	ctxtmap "b",        $a1, 1110001
-	ctxtmap "c",        $a2, 100011
-	ctxtmap "d",        $a3, 111100
+	ctxtmap "b",        $a1, 1111010
+	ctxtmap "c",        $a2, 101101
+	ctxtmap "d",        $a3, 00100
 	ctxtmap "e",        $a4, 000
-	ctxtmap "f",        $a5, 001001
-	ctxtmap "g",        $a6, 101111
+	ctxtmap "f",        $a5, 001100
+	ctxtmap "g",        $a6, 110100
 	ctxtmap "h",        $a7, 11000
 	ctxtmap "i",        $a8, 11101
-	ctxtmap "j",        $a9, 0101101110
-	ctxtmap "k",        $aa, 1011001
-	ctxtmap "l",        $ab, 10000
-	ctxtmap "m",        $ac, 101101
+	ctxtmap "j",        $a9, 0101000110
+	ctxtmap "k",        $aa, 1100101
+	ctxtmap "l",        $ab, 10001
+	ctxtmap "m",        $ac, 110011
 	ctxtmap "n",        $ad, 11111
-	ctxtmap "o",        $ae, 1010
-	ctxtmap "p",        $af, 1111011
-	ctxtmap "q",        $b0, 00100011101
-	ctxtmap "r",        $b1, 11011
-	ctxtmap "s",        $b2, 11001
-	ctxtmap "t",        $b3, 1001
-	ctxtmap "u",        $b4, 00110
-	ctxtmap "v",        $b5, 0101000
+	ctxtmap "o",        $ae, 1001
+	ctxtmap "p",        $af, 001010
+	ctxtmap "q",        $b0, 00110100010
+	ctxtmap "r",        $b1, 11100
+	ctxtmap "s",        $b2, 11011
+	ctxtmap "t",        $b3, 1010
+	ctxtmap "u",        $b4, 00111
+	ctxtmap "v",        $b5, 1000010
 	ctxtmap "w",        $b6, 010101
-	ctxtmap "x",        $b7, 1011000011
-	ctxtmap "y",        $b8, 111001
-	ctxtmap "z",        $b9, 11010100110
+	ctxtmap "x",        $b7, 1101011000
+	ctxtmap "y",        $b8, 111100
+	ctxtmap "z",        $b9, 11010100101
 
-	ctxtmap "“",        $ba, 0010001111000
-	ctxtmap "”",        $bb, 0010001111001
-	ctxtmap "-",        $bc, 00111000
-	ctxtmap ":",        $bd, 001000110
-	ctxtmap "♂",        $be, 1101001100110100100
-	ctxtmap "♀",        $bf, 1101001100110100101
+	ctxtmap "“",        $ba, 11010111110101
+	ctxtmap "”",        $bb, 0011010001100
+	ctxtmap "-",        $bc, 00110101
+	ctxtmap ":",        $bd, 001011101
+	ctxtmap "♂",        $be, 001101000011011000
+	ctxtmap "♀",        $bf, 1000011101101000001
 
-	ctxtmap "'",        $c0, 0010001110000
-	ctxtmap "'d",       $c1, 010110111100
-	ctxtmap "'l",       $c2, 0101101101
-	ctxtmap "'m",       $c3, 1111010110
-	ctxtmap "'r",       $c4, 1011000010
-	ctxtmap "'s",       $c5, 00111011
-	ctxtmap "'t",       $c6, 110100000
-	ctxtmap "'v",       $c7, 10110001101
+	ctxtmap "'",        $c0, 0011010000111
+	ctxtmap "'d",       $c1, 100001100110
+	ctxtmap "'l",       $c2, 1000011010
+	ctxtmap "'m",       $c3, 1000011100
+	ctxtmap "'r",       $c4, 0011011111
+	ctxtmap "'s",       $c5, 00101111
+	ctxtmap "'t",       $c6, 110101000
+	ctxtmap "'v",       $c7, 10111011010
 
-	ctxtmap "é",        $c8, 1101010011100111
-	ctxtmap "É",        $c9, 1101001100110100110
-	ctxtmap "á",        $ca, 00100011110110010
-	ctxtmap "ê",        $cb, 1101001100110100111
-	ctxtmap "í",        $cc, 001000111101111011
-	ctxtmap "ó",        $cd, 110100110011010000
+	ctxtmap "é",        $c8, 001101000110110
+	ctxtmap "É",        $c9, 1000011101101000000
+	ctxtmap "á",        $ca, 00110100001101101
+	ctxtmap "ê",        $cb, 0011010001101010111
+	ctxtmap "í",        $cc, 100001110110100010
+	ctxtmap "ó",        $cd, 110101111100111000
 
-	ctxtmap "¿",        $ce, 110100110011010001
-	ctxtmap "¡",        $cf, 00100011110110011
+	ctxtmap "¿",        $ce, 100001110110100011
+	ctxtmap "¡",        $cf, 0011010001101010110
 
-	ctxtmap "<PO>",     $d0, 1101010011100100000
-	ctxtmap "<KE>",     $d1, 1101010011100100001
-	ctxtmap "<PK>",     $d2, 1101001100110101
-	ctxtmap "<MN>",     $d3, 1101001100110110
+	ctxtmap "<PO>",     $d0, 0011010001101010101
+	ctxtmap "<KE>",     $d1, 0011010001101010100
+	ctxtmap "<PK>",     $d2, 1000011101101111
+	ctxtmap "<MN>",     $d3, 1000011101101110
 
-	ctxtmap "<ID>",     $d4, 11010100111001001
-	ctxtmap "№",        $d5, 0010001111011000
-	ctxtmap "<LV>",     $d6, 11010100111001100
-	ctxtmap "<BOLDP>",  $d7, 00100011110111100
+	ctxtmap "<ID>",     $d4, 0011010000110110011
+	ctxtmap "№",        $d5, 100001110110100001
+	ctxtmap "<LV>",     $d6, 11010111110011101
+	ctxtmap "<BOLDP>",  $d7, 00110100011010100
 
-	ctxtmap "&",        $d8, 0010001111011111
+	ctxtmap "&",        $d8, 1000011101101010
 
-	ctxtmap "♪",        $d9, 00100011100010
-	ctxtmap "♥",        $da, 1101010011100101
+	ctxtmap "♪",        $d9, 100001110110110
+	ctxtmap "♥",        $da, 1101011111001111
 
-	ctxtmap "×",        $db, 1101001100110000
-	ctxtmap "/",        $dc, 001000111101110
-	ctxtmap "%",        $dd, 1101010011100100010
+	ctxtmap "×",        $db, 1000011101101011
+	ctxtmap "/",        $dc, 001101000110111
+	ctxtmap "%",        $dd, 110101111100111001
 
-	ctxtmap "+",        $de, 1101010011100100011
-	ctxtmap "<SHARP>",  $df, 001000111101111010
+	ctxtmap "+",        $de, 0011010000110100
+	ctxtmap "<SHARP>",  $df, 0011010000110110010
 
-	ctxtmap "0",        $e0, 110101001111
-	ctxtmap "1",        $e1, 001000111001
-	ctxtmap "2",        $e2, 1101010011101
-	ctxtmap "3",        $e3, 1101001100111
-	ctxtmap "4",        $e4, 0101101111011
-	ctxtmap "5",        $e5, 0101101111111
-	ctxtmap "6",        $e6, 01011011111101
-	ctxtmap "7",        $e7, 110100110011001
-	ctxtmap "8",        $e8, 1101001100110111
-	ctxtmap "9",        $e9, 010110111111000
+	ctxtmap "0",        $e0, 110101111110
+	ctxtmap "1",        $e1, 001101000001
+	ctxtmap "2",        $e2, 1101011111111
+	ctxtmap "3",        $e3, 1101011111110
+	ctxtmap "4",        $e4, 1000011101100
+	ctxtmap "5",        $e5, 1101011111000
+	ctxtmap "6",        $e6, 11010111110010
+	ctxtmap "7",        $e7, 110101111101000
+	ctxtmap "8",        $e8, 001101000011000
+	ctxtmap "9",        $e9, 110101111101001
 
-	ctxtmap "¥",        $ea, 11010100111000
+	ctxtmap "¥",        $ea, 11010111110110
 
-	ctxtmap "…",        $eb, 11010001
+	ctxtmap "…",        $eb, 10111010
 
 	charmap "★",        $ec
 
@@ -234,13 +249,13 @@ DEF NGRAMS_START EQU $0a
 
 	newcharmap compressing, no_ngrams
 
-	ctxtmap "#",        $4d, 10110001100
-	ctxtmap "#mon",     $4e, 01011010
+	ctxtmap "#",        $4d, 10000111010
+	ctxtmap "#mon",     $4e, 01010000
 DEF NGRAMS_VAR_START EQU $4f
 	; these below are implemented as n-grams whose string is stored in WRAM
-	ctxtmap "<PLAYER>", $4f, 1101010010
-	ctxtmap "<RIVAL>",  $50, 001000111101101
-	ctxtmap "<TRENDY>", $51, 1101001100110001
+	ctxtmap "<PLAYER>", $4f, 0011011110
+	ctxtmap "<RIVAL>",  $50, 1000011101101001
+	ctxtmap "<TRENDY>", $51, 0011010000110101
 
 	newcharmap default, compressing
 

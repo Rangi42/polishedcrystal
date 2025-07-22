@@ -18,9 +18,9 @@ DEF dedexcoord EQUS "dexcoord de,"
 MACRO dexcoord
 ; register, x, y[, origin]
 	if _NARG < 4
-		ld \1, (\3) * BG_MAP_WIDTH + (\2) + wDexTilemap
+		ld \1, (\3) * TILEMAP_WIDTH + (\2) + wDexTilemap
 	else
-		ld \1, (\3) * BG_MAP_WIDTH + (\2) + \4
+		ld \1, (\3) * TILEMAP_WIDTH + (\2) + \4
 	endc
 ENDM
 
@@ -31,9 +31,9 @@ DEF debgcoord EQUS "bgcoord de,"
 MACRO bgcoord
 ; register, x, y[, origin]
 	if _NARG < 4
-		ld \1, (\3) * BG_MAP_WIDTH + (\2) + vBGMap0
+		ld \1, (\3) * TILEMAP_WIDTH + (\2) + vBGMap0
 	else
-		ld \1, (\3) * BG_MAP_WIDTH + (\2) + \4
+		ld \1, (\3) * TILEMAP_WIDTH + (\2) + \4
 	endc
 ENDM
 

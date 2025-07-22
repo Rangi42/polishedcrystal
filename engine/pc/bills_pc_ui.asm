@@ -50,7 +50,7 @@ _BillsPC:
 	; Disable hblank before restoring blockdata, since blockdata and hblank pals
 	; overlap.
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	ld a, LOW(LCDGeneric)
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
@@ -219,7 +219,7 @@ UseBillsPC:
 	; Item name is in vbk1
 	hlcoord 10, 2, wAttrmap ; Cursor's item
 	ld bc, 10
-	ld a, VRAM_BANK_1
+	ld a, OAM_BANK1
 	push bc
 	rst ByteFill
 	pop bc
@@ -282,13 +282,13 @@ UseBillsPC:
 	; Party
 	hlcoord 1, 11
 	lb bc, 3, 2
-	lb de, $80, 2 | VRAM_BANK_1
+	lb de, $80, 2 | OAM_BANK1
 	call .WriteIconTilemap
 
 	; Storage
 	hlcoord 8, 7
 	lb bc, 5, 4
-	lb de, $98, 4 | VRAM_BANK_1
+	lb de, $98, 4 | OAM_BANK1
 	call .WriteIconTilemap
 
 	; Update attribute map data
@@ -307,7 +307,7 @@ UseBillsPC:
 	ld a, HIGH(wLCDBillsPC1)
 	ldh [hFunctionTargetHi], a
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 
 	; Display data about current Pokémon pointed to by cursor
 	call GetCursorMon
@@ -340,9 +340,9 @@ UseBillsPC:
 	db $31, $7f, $31 ; middle
 	db $33, $32, $33 ; bottom
 .BoxAttr:
-	db 1, 1, 1 | X_FLIP ; top
-	db 1, 2 | VRAM_BANK_1, 1 | X_FLIP ; middle
-	db 1 | Y_FLIP, 1 | Y_FLIP, 1 | X_FLIP | Y_FLIP ; bottom
+	db 1, 1, 1 | OAM_XFLIP ; top
+	db 1, 2 | OAM_BANK1, 1 | OAM_XFLIP ; middle
+	db 1 | OAM_YFLIP, 1 | OAM_YFLIP, 1 | OAM_XFLIP | OAM_YFLIP ; bottom
 
 .SpecialRow:
 ; Draws a nonstandard box outline
@@ -1021,7 +1021,7 @@ _GetCursorMon:
 	jr nc, .delay_loop
 
 	ld a, [wAttrmap]
-	and VRAM_BANK_1
+	and OAM_BANK1
 	pop hl
 	push af
 	ld a, 0 ; no-optimize a = 0
@@ -1029,15 +1029,15 @@ _GetCursorMon:
 	inc a
 	ldh [rVBK], a
 .dont_switch_vbk
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call GetPaddedFrontpicAddress
 	lb bc, BANK(_GetCursorMon), 7 * 7
 	call Get2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [rVBK], a
 	ld hl, wBillsPC_ItemVWF
@@ -1077,7 +1077,7 @@ _GetCursorMon:
 	pop af
 	ld a, 2
 	jr nz, .got_new_tile_bank
-	ld a, 2 | VRAM_BANK_1
+	ld a, 2 | OAM_BANK1
 .got_new_tile_bank
 	hlcoord 0, 0, wAttrmap
 	lb bc, 7, 7
@@ -1118,7 +1118,7 @@ _GetCursorMon:
 	ld [hli], a
 	ld a, $20
 	ld [hli], a
-	ld [hl], VRAM_BANK_1
+	ld [hl], OAM_BANK1
 .item_icon_done
 
 	ld b, 0
@@ -1633,17 +1633,17 @@ BillsPC_MoveIconData:
 ; Box -1 is a sentinel for held (slot 0) or quick (slot 1).
 ; TODO: can we make this code (.GetAddr especially) less messy?
 	; Copy palette data
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hBGMapMode], a
 
 	; Copy palette data
 	call .Copy
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, 1
 	ldh [rVBK], a
@@ -2130,7 +2130,7 @@ BillsPC_PrepareTransistion:
 
 	; Disable hblank interrupt.
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 
 	jmp ClearSprites
 
@@ -2326,7 +2326,7 @@ BillsPC_MoveItem:
 	ld [hli], a
 	ld a, $06
 	ld [hli], a
-	ld [hl], VRAM_BANK_1 | PAL_CURSOR_MODE2
+	ld [hl], OAM_BANK1 | PAL_CURSOR_MODE2
 
 	; Load held item name
 	ld hl, vTiles5 tile $3b
@@ -2959,7 +2959,7 @@ BillsPC_Theme:
 	call CloseWindow
 
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .refresh_theme ; revert back to what it used to be
 
 	ld a, [wScrollingMenuCursorPosition]
@@ -3042,7 +3042,7 @@ BillsPC_Change:
 	call CloseWindow
 
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	ret z
 
 	ld a, [wScrollingMenuCursorPosition]
@@ -3593,7 +3593,7 @@ BillsPC_RestoreUI:
 	ld a, 71
 	ldh [rLYC], a
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 
 	ld a, 1
 	ldh [hBGMapMode], a
@@ -3644,7 +3644,7 @@ LOAD UNION "Misc 1326", WRAM0
 wLCDBillsPC1::
 	; Write boxmon palettes
 	ldh a, [rSTAT]
-	bit rSTAT_LYC_CMP, a
+	bit B_STAT_LYCF, a
 	jr z, .donepc
 	push hl
 	push bc
@@ -3653,7 +3653,7 @@ wLCDBillsPC1::
 
 	; start of VRAM writes
 	; second box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 5 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 5 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3661,7 +3661,7 @@ rept 4
 endr
 
 	; third box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 6 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 6 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3669,7 +3669,7 @@ rept 4
 endr
 
 	; fourth box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 7 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 7 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3696,7 +3696,7 @@ wLCDBillsPC2::
 
 	; start of VRAM writes
 	; first party mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 2 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3704,7 +3704,7 @@ rept 4
 endr
 
 	; second party mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 3 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3712,7 +3712,7 @@ rept 4
 endr
 
 	; first box mon
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4 color 1)
+	ld a, BGPI_AUTOINC | (0 palette 4 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3769,10 +3769,10 @@ wLCDBillsPC3:
 	push hl
 	push bc
 	push de
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK("GBC Video")
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld c, LOW(rBGPD)
 	ldh a, [rLY]
@@ -3783,7 +3783,7 @@ wLCDBillsPC3:
 .got_pal
 
 	; start of VRAM writes
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 0)
+	ld a, BGPI_AUTOINC | (0 palette 3 color 0)
 	ldh [rBGPI], a
 rept 2
 	ld a, [hli]
@@ -3792,7 +3792,7 @@ endr
 	; end of VRAM writes
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, LOW(wLCDBillsPC1)
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)

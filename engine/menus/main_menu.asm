@@ -110,9 +110,9 @@ MainMenuJoypadLoop:
 	ld [w2DMenuFlags1], a
 	call ReadMenuJoypad
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .b_button
-	cp A_BUTTON
+	cp PAD_A
 	jr nz, .loop
 
 .a_button

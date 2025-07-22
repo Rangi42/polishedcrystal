@@ -443,7 +443,6 @@ HandleFutureSight:
 	xor a
 	ld [wAttackMissed], a
 	ld [wAlreadyDisobeyed], a
-	; Future Sight does typeless damage
 	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	farcall DoMove
@@ -799,6 +798,24 @@ EndturnEncoreDisable_End:
 	ld h, d
 	ld l, e
 	jmp StdBattleTextbox
+
+TickDisableAfterMove:
+; If we have 5 turns left of Disable, tick it down. This makes it so that
+; Disable covers 4 move uses.
+	call HasUserFainted
+	ret z
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerDisableCount
+	jr z, .got_disable_count
+	ld hl, wEnemyDisableCount
+.got_disable_count
+	ld a, [hl]
+	and $f
+	cp 5
+	ret nz
+	dec [hl]
+	ret
 
 HandleDisable:
 	call SetFastestTurn

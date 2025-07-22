@@ -28,7 +28,7 @@ if !DEF(MONOCHROME)
 	ld bc, 16 palettes
 	rst ByteFill
 else
-	ld a, 16 * NUM_PAL_COLORS
+	ld a, 16 * PAL_COLORS
 .loop
 	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl

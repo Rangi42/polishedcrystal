@@ -424,6 +424,29 @@ ENDM
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
 
+	map_attributes Hollowport, HOLLOWPORT, $5, NORTH
+	connection north, Route101, ROUTE_101, 2
+
+	map_attributes Route101, ROUTE_101, $5, SOUTH
+	connection south, Hollowport, HOLLOWPORT, -2
+
+
+	; map_attributes OlsteetonGym1F, OLSTEETON_GYM_1F, $0, 0
+	; map_attributes OlsteetonGym2F, OLSTEETON_GYM_2F, $0, 0
+	; map_attributes OlsteetonGym3F, OLSTEETON_GYM_3F, $0, 0
+	map_attributes FieldLab, FIELD_LAB, $0, 0
+	map_attributes FieldLab2F, FIELD_LAB_2F, $0, 0
+	map_attributes EchoingCave, ECHOING_CAVE, $0, 0
+	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
+	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
+	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
+	map_attributes HollowportRival1F, HOLLOWPORT_RIVAL_1F, $0, 0
+	map_attributes HollowportRival2F, HOLLOWPORT_RIVAL_2F, $0, 0
+	map_attributes Route102, ROUTE_102, $5, 0
+	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
+	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
+    map_attributes Olsteeton, OLSTEETON, $5, 0
+	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_attributes SproutTower3F, SPROUT_TOWER_3F, $0, 0
@@ -806,8 +829,6 @@ ENDM
 	map_attributes Route2Gate, ROUTE_2_GATE, $0, 0
 	map_attributes PokemonLeagueGate, POKEMON_LEAGUE_GATE, $0, 0
 	map_attributes ElmsLab, ELMS_LAB, $0, 0
-	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
-	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
 	map_attributes PlayersNeighborsHouse, PLAYERS_NEIGHBORS_HOUSE, $0, 0
 	map_attributes LyrasHouse1F, LYRAS_HOUSE_1F, $0, 0
 	map_attributes LyrasHouse2F, LYRAS_HOUSE_2F, $0, 0

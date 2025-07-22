@@ -177,9 +177,6 @@ TraceAbility:
 	pop af
 	ld [hl], a
 	jmp RunEntryAbilitiesInner
-.trace_failure
-	ld hl, TraceFailureText
-	jmp StdBattleTextbox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
@@ -269,9 +266,8 @@ IntimidateAbility:
 
 .continue
 	call EndAbility
-	farcall CheckStatHerbsAfterIntimidate
-	call SwitchTurn
-	farjp CheckMirrorHerb
+	farcall CheckMirrorHerb
+	farjp CheckStatHerbsAfterIntimidate
 
 INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
@@ -1180,8 +1176,10 @@ UserAccuracyAbilities:
 	dbw -1, -1
 
 TargetAccuracyAbilities:
+	; note that Wonder Skin needs to be checked separately, because
+	; by the time this callback runs, base accuracy has already been
+	; accounted for.
 	dbw TANGLED_FEET, TangledFeetAbility
-	dbw WONDER_SKIN, WonderSkinAbility
 	dbw SAND_VEIL, SandVeilAbility
 	dbw SNOW_CLOAK, SnowCloakAbility
 	dbw -1, -1
@@ -1206,13 +1204,15 @@ TangledFeetAbility:
 	jmp MultiplyAndDivide
 
 WonderSkinAbility:
-; Double evasion for status moves
+; Set move accuracy to 50% if it's a status move
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp STATUS
 	ret nz
-	ln a, 1, 2 ; x0.5
-	jmp MultiplyAndDivide
+	ld a, BATTLE_VARS_MOVE_ACCURACY
+	call GetBattleVarAddr
+	ld [hl], 50
+	ret
 
 SwiftSwimAbility:
 	ld b, WEATHER_RAIN
@@ -1365,8 +1365,8 @@ HarvestAbility:
 	cp WEATHER_SUN
 	jr z, .ok
 	call BattleRandom
-	and 1
-	ret z
+	add a
+	ret c
 
 .ok
 	; Don't do anything if we have an item already
