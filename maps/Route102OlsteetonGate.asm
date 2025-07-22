@@ -4,8 +4,8 @@ Route102OlsteetonGate_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  0,  4, ROUTE_102, 1
-	warp_event  0,  5, ROUTE_102, 2
+	warp_event  0,  4, ROUTE_102, 3
+	warp_event  0,  5, ROUTE_102, 4
 	; warp_event  0,  4, OLSTEETON, 1
 	; warp_event  0,  5, OLSTEETON, 2
 

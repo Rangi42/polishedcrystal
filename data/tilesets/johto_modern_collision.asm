@@ -219,10 +219,10 @@
 	tilecoll WALL, WALL, WALL, WALL ; da
 	tilecoll WALL, WALL, WALL, LEDGE_LEFT ; db
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; dc
-	tilecoll WALL, FLOOR, WALL, FLOOR ; dd
+	tilecoll WATER, WATER, WATER, WATER ; dd
 	tilecoll WALL, LEDGE_DOWN_LEFT, WALL, WALL ; de
 	tilecoll FLOOR, LEDGE_DOWN_RIGHT, FLOOR, WALL ; df
-	tilecoll WATER, WATER, TALL_GRASS, TALL_GRASS ; e0
+	tilecoll WATER, WATER, COAST_SAND, COAST_SAND ; e0
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; e1
 	tilecoll WATER, WATER, WATER, WATER ; e2
 	tilecoll FLOOR, FLOOR, WATER, WATER ; e3

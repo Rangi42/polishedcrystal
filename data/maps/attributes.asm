@@ -445,7 +445,7 @@ ENDM
 	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
 	map_attributes HollowportRival1F, HOLLOWPORT_RIVAL_1F, $0, 0
 	map_attributes HollowportRival2F, HOLLOWPORT_RIVAL_2F, $0, 0
-	map_attributes Route102, ROUTE_102, $0, 0
+	map_attributes Route102, ROUTE_102, $5, 0
 	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
 	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
 
