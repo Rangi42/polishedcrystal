@@ -843,6 +843,11 @@ CriticalHitText:
 	text "A critical hit!"
 	prompt
 
+ExtremelyEffectiveText:
+	text "It's extremely"
+	line "effective!"
+	prompt
+
 SuperEffectiveText:
 	text "It's super"
 	line "effective!"
@@ -851,6 +856,11 @@ SuperEffectiveText:
 NotVeryEffectiveText:
 	text "It's not very"
 	line "effective…"
+	prompt
+
+MostlyIneffectiveText:
+	text "It's mostly"
+	line "ineffective…"
 	prompt
 
 TookDownWithItText:
