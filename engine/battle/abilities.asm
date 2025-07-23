@@ -1731,7 +1731,7 @@ AnalyticAbility:
 TintedLensAbility:
 ; Doubles damage for not very effective moves (x0.5/x0.25)
 	ld a, [wTypeModifier]
-	cp $10
+	cp EFFECTIVE
 	ret nc
 	ln a, 2, 1 ; x2
 	jmp MultiplyAndDivide
@@ -1882,7 +1882,7 @@ EnemySolidRockAbility:
 EnemyFilterAbility:
 ; 75% damage for super effective moves
 	ld a, [wTypeModifier]
-	cp $11
+	cp EFFECTIVE + 1
 	ret c
 	ln a, 3, 4 ; x0.75
 	jmp MultiplyAndDivide

@@ -1215,7 +1215,7 @@ PlayHitSound:
 	and a
 	ret z
 
-	cp $10
+	cp EFFECTIVE
 	ld de, SFX_DAMAGE
 	jr z, .play
 

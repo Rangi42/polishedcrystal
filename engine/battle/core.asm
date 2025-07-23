@@ -1206,7 +1206,7 @@ endr
 	ld [hli], a
 	ld [hl], a
 
-	ld a, $10
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	ld bc, NUM_LEVEL_STATS
 	ldh a, [hBattleTurn]
@@ -1866,7 +1866,7 @@ CheckEnigmaBerry:
 ; berries due to Berserk quirks (Enigma > Berserk > other healing berries).
 	; Were we hit with a super-effective attack?
 	ld a, [wTypeModifier]
-	cp $11
+	cp EFFECTIVE + 1
 	ret c
 
 	; Are we actually holding Enigma Berry?
