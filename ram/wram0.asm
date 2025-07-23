@@ -375,9 +375,9 @@ wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 wCurOTMon:: db
 
 wTypeModifier::
-; >10: super effective
-;  10: normal
-; <10: not very effective
+; >$10: super effective
+;  $10: normal
+; <$10: not very effective
 ; bit 7: stab
 	db
 
