@@ -206,6 +206,12 @@ Route5CleanseTagSpeechHouse_BlockData:
 EusinesHouse_BlockData:
 	INCBIN "maps/KantoHouse4.ablk.lz"
 
+SECTION "Map Blocks 4", ROMX
+GlobalTerminalOutside_Blocks:
+	INCBIN "maps/GlobalTerminalOutside.ablk"
+GlobalTerminal1F_Blocks:
+	INCBIN "maps/GlobalTerminal1F.ablk"
+
 SECTION "TradeCenter_BlockData", ROMX
 TradeCenter_BlockData:
 	INCBIN "maps/TradeCenter.ablk.lz"
@@ -1964,4 +1970,8 @@ SECTION "BattleFactoryBattleRoom_BlockData", ROMX
 BattleFactoryBattleRoom_BlockData:
 	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"
 
+SECTION "NationalForest1_BlockData", ROMX
+NationalForest1_BlockData:
+	INCBIN "maps/NationalForest1.ablk.lz"
+	
 ENDSECTION

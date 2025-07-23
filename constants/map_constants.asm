@@ -722,6 +722,7 @@ ENDM
 
 	newgroup                                         			 ; 39
 	map_const OLSTEETON,                          	      20, 18 ;  1
+	map_const NATIONAL_FOREST_1,						  17, 15 ;  2
 	; map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  2
 	; map_const OLSTEETON_GYM_1F,                       	 8,  4 ;  4
 	; map_const OLSTEETON_GYM_2F,                        	 8,  4 ;  5
