@@ -4,7 +4,7 @@ NationalForest1_MapScriptHeader:
     def_callbacks
 
     def_warp_events
-	warp_event 21,  3, OLSTEETON_FOREST_GATE, 5
+	warp_event 21,  3, OLSTEETON_FOREST_GATE, 3
 
     def_coord_events
 

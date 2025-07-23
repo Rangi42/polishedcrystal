@@ -61,6 +61,7 @@ Route40BattleTowerGate_BlockData:
 YellowForestGate_BlockData:
 Route43Gate_BlockData:
 Route43MahoganyGate_BlockData:
+OlsteetonForestGate_BlockData:
 	INCBIN "maps/NorthSouthGate.ablk.lz"
 
 Route1ViridianGate_BlockData:

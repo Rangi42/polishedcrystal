@@ -33,7 +33,6 @@ ENDM
 	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST | EAST
 	connection north, Route35, ROUTE_35, 5
 	connection south, Route34, ROUTE_34, 7
-	connection west, GlobalTerminalOutside, GLOBAL_TERMINAL_OUTSIDE, 2
 	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST | EAST
@@ -447,6 +446,7 @@ ENDM
 	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
 	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
     map_attributes Olsteeton, OLSTEETON, $5, 0
+	map_attributes OlsteetonForestGate, OLSTEETON_FOREST_GATE, $0, 0
 	map_attributes NationalForest1, NATIONAL_FOREST_1, $5, 0
 
 	;johto maps

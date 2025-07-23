@@ -91,6 +91,10 @@ INCLUDE "maps/HollowportRival2F.asm"
 SECTION "Olsteeton Scripts", ROMX
 
 INCLUDE "maps/Olsteeton.asm"
+INCLUDE "maps/OlsteetonForestGate.asm"
+INCLUDE "maps/NationalForest1.asm"
+
+
 ; INCLUDE "maps/OlsteetonUni.asm"
 
 SECTION "New Bark Scripts", ROMX
