@@ -138,7 +138,7 @@ SwitchPartyMons:
 	call ApplyTilemapInVBlank
 	call DelayFrame
 
-	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld a, PAD_A | PAD_B | PAD_SELECT
 	ld [wMenuJoypadFilter], a
 
 	farcall PartyMenuSelect
@@ -1629,7 +1629,7 @@ MoveScreen_ListMovesFast:
 
 	pop af
 	ld hl, TypeIconGFX
-	ld bc, 4 * LEN_1BPP_TILE
+	ld bc, 4 * TILE_1BPP_SIZE
 	rst AddNTimes
 	ld d, h
 	ld e, l

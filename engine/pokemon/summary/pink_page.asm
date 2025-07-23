@@ -74,7 +74,7 @@ SummaryScreen_PinkPage:
 	ld [hli], a
 	
 	hlbgcoord 26, 3, wSummaryScreenWindowBuffer
-	ld [hl], X_FLIP | SUMMARY_PAL_SIDE_WINDOW
+	ld [hl], OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW
 
 	ld hl, .BallSprites
 	ld bc, 8
@@ -254,7 +254,7 @@ SummaryScreen_PinkPage:
 	RGB 31, 25, 02
 
 .BallSprites:
-	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, Y_FLIP
+	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, OAM_YFLIP
 	db 84, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, 0
 
 .StatusSprites:

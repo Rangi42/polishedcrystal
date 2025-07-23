@@ -814,14 +814,14 @@ FlyFunction:
 	ret
 
 .StopPalFading:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPalFadeDelayFrames)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ld [wPalFadeDelayFrames], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
 	ret

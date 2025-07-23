@@ -16,6 +16,12 @@ KrisBikeSpriteGFX:: INCBIN "gfx/sprites/kris_bike.2bpp.lz"
 SECTION "KrisSurfSpriteGFX", ROMX
 KrisSurfSpriteGFX:: INCBIN "gfx/sprites/kris_surf.2bpp.lz"
 
+; SECTION "OliverSpriteGFX", ROMX
+; OliverSpriteGFX:: INCBIN "gfx/sprites/oliver.2bpp.lz"
+
+; SECTION "GwenSpriteGFX", ROMX
+; GwenSpriteGFX:: INCBIN "gfx/sprites/gwen.2bpp.lz"
+
 SECTION "MomSpriteGFX", ROMX
 MomSpriteGFX:: INCBIN "gfx/sprites/mom.2bpp.lz"
 
@@ -105,6 +111,8 @@ OakSpriteGFX:: INCBIN "gfx/sprites/oak.2bpp.lz"
 
 SECTION "ElmSpriteGFX", ROMX
 ElmSpriteGFX:: INCBIN "gfx/sprites/elm.2bpp.lz"
+; SECTION "PawpawSpriteGFX", ROMX
+; PawpawSpriteGFX:: INCBIN "gfx/sprites/pawpaw.2bpp.lz"
 
 SECTION "IvySpriteGFX", ROMX
 IvySpriteGFX:: INCBIN "gfx/sprites/ivy.2bpp.lz"

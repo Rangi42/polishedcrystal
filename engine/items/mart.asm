@@ -720,7 +720,7 @@ BuyMenuLoop:
 	call DoMartScrollingMenu
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jmp z, MartMenuLoop_SetCarry
 	call MartAskPurchaseQuantity
 	jr c, .cancel
@@ -783,7 +783,7 @@ ExpCandyBuyMenuLoop:
 	call DoMartScrollingMenu
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jmp z, MartMenuLoop_SetCarry
 	call MartAskPurchaseQuantity
 	jr c, .cancel
@@ -832,7 +832,7 @@ BuyTMMenuLoop:
 	call DoMartScrollingMenu
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jmp z, MartMenuLoop_SetCarry
 	call TMMartAskPurchaseQuantity
 	jr c, .cancel
@@ -863,7 +863,7 @@ BlueCardBuyMenuLoop:
 	call DoMartScrollingMenu
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jmp z, MartMenuLoop_SetCarry
 	call MartConfirmPurchase
 	jr c, .cancel
@@ -893,7 +893,7 @@ BTBuyMenuLoop:
 	call DoMartScrollingMenu
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, MartMenuLoop_SetCarry
 	call BTMartAskPurchaseQuantity
 	jr c, .cancel

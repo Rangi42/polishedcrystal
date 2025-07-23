@@ -60,7 +60,7 @@ _LoadFontsBattleExtra::
 
 _LoadFrame::
 	ld a, [wTextboxFrame]
-	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
+	ld bc, TEXTBOX_FRAME_TILES * TILE_1BPP_SIZE
 	ld hl, Frames
 	rst AddNTimes
 	ld d, h

@@ -334,6 +334,8 @@ TilesetPokemonMansionAnim::
 TilesetDecorAnim::
 TilesetMuseumAnim::
 TilesetHotelAnim::
+TilesetCaveLabAnim::
+TilesetOlsteetonAnim::
 TilesetBattleFactoryAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -1192,12 +1194,12 @@ FlickeringCaveEntrancePalette:
 	cp DARKNESS_PALSET
 	ret nz
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4)
+	ld a, BGPI_AUTOINC | (0 palette 4)
 	ldh [rBGPI], a
 
 	ldh a, [hVBlankCounter]
@@ -1213,7 +1215,7 @@ FlickeringCaveEntrancePalette:
 	ldh [rBGPD], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 TowerPillarTilePointer1:  dw vTiles2 tile $2d, TowerPillarTile1

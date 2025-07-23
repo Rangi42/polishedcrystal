@@ -8,23 +8,23 @@ MapConnOWFadePalettesInit::
 	jmp z, UpdateTimePals
 	; fallthrough
 OWFadePalettesInit::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, 15
 	ld [wPalFadeDelayFrames], a
 	xor a
 	ld [wPalFadeDelay], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 CancelOWFadePalettes::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ld [wPalFadeDelayFrames], a
 	ld [wPalFadeDelay], a
@@ -32,14 +32,14 @@ CancelOWFadePalettes::
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 OWFadePalettesStep::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, [wPalFadeDelayFrames]
 	and a
@@ -79,7 +79,7 @@ OWFadePalettesStep::
 
 .end_early
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .end_early_and_reset_ob_dyn_pal:
@@ -94,14 +94,14 @@ _DoFadePalettes::
 ; b: Controls partial fading gradient
 ; c: Fade duration
 ; wPalFadeMode can be 0 (fade everything), 1 (fade BG), 2 (fade OBJ)
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	push hl
 	push de
 .restart_dofade
 	push bc
 	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call FadePalettesInit
 	jr c, .done
@@ -122,7 +122,7 @@ _DoFadePalettes::
 	pop de
 	pop hl
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .FadeDelay:

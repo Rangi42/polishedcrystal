@@ -6,9 +6,9 @@ Hollowport_MapScriptHeader:
 
 	def_warp_events
 	warp_event 17,  5, PLAYERS_HOUSE_1F, 1
-	warp_event  5, 15, NEIGHBORS_HOUSE, 1
 	warp_event  5,  3, FIELD_LAB, 1
-	warp_event 13, 11, RIVAL_HOUSE_1F, 1
+	warp_event 13, 11, HOLLOWPORT_RIVAL_1F, 1
+	warp_event  5, 15, HOLLOWPORT_NEIGHBOR, 1
 	warp_event  1,  7, ECHOING_CAVE, 1
 
 
@@ -26,14 +26,14 @@ Hollowport_MapScriptHeader:
 	; bg_event  2,  8, BGEVENT_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
 	def_object_events
-	object_event  0,  8, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, HollowportRivalScript, EVENT_HOLLOWPORT_THIEF
+	object_event  2,  8, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, HollowportRivalScript, EVENT_HOLLOWPORT_THIEF
 	; object_event  6,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_NEW_BARK_TOWN
 	object_event  8,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 1, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_HollowportRival, -1
 	object_event 14,  5, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, HollowportElderScript, -1
 	object_event 12, 15, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_Technologia, -1
 	object_event  6, 10, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_HollowportBirdFriend, -1
 	object_event 17, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_HollowportFisher, -1
-	pokemon_event  8, 12, MURKROW, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PURPLE, HollowportMurkrowText, -1
+	pokemon_event  8, 10, MURKROW, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PURPLE, HollowportMurkrowText, -1
 
 	object_const_def
 	; const HOLLOWPORT_RIVAL

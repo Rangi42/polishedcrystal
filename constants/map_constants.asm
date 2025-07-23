@@ -543,16 +543,14 @@ ENDM
 	map_const ROUTE_29,                                   30,  9 ;  3
 	map_const NEW_BARK_TOWN,                              10,  9 ;  4
 	map_const ELMS_LAB,                                    5,  6 ;  5
-	map_const PLAYERS_HOUSE_1F,                            6,  4 ;  6
-	map_const PLAYERS_HOUSE_2F,                            4,  3 ;  7
-	map_const PLAYERS_NEIGHBORS_HOUSE,                     4,  4 ;  8
-	map_const LYRAS_HOUSE_1F,                              6,  4 ;  9
-	map_const LYRAS_HOUSE_2F,                              4,  3 ; 10
-	map_const ELMS_HOUSE,                                  4,  4 ; 11
-	map_const ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 12
-	map_const ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 13
-	map_const ROUTE_27_REST_HOUSE,                         4,  4 ; 14
-	map_const ROUTE_29_46_GATE,                            5,  4 ; 15
+	map_const PLAYERS_NEIGHBORS_HOUSE,                     4,  4 ;  6
+	map_const LYRAS_HOUSE_1F,                              6,  4 ;  7
+	map_const LYRAS_HOUSE_2F,                              4,  3 ; 9
+	map_const ELMS_HOUSE,                                  4,  4 ; 10
+	map_const ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 11
+	map_const ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 12
+	map_const ROUTE_27_REST_HOUSE,                         4,  4 ; 13
+	map_const ROUTE_29_46_GATE,                            5,  4 ; 14
 
 	newgroup                                                     ; 25
 	map_const FIGHTING_DOJO,                               5,  6 ;  1
@@ -705,13 +703,38 @@ ENDM
 	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ;  1
 	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  2
 
-	newgroup GLOBAL_TERMINAL									 ; 38
-	map_const GLOBAL_TERMINAL_OUTSIDE,					  10, 13 ;  1
-	map_const GLOBAL_TERMINAL_1F,					       9,  6 ;  2
-	endgroup
+	newgroup                            						 ; 38
+	map_const HOLLOWPORT,                                 12,  9 ;  1
+	map_const FIELD_LAB,								   9,  5 ;  2
+	map_const FIELD_LAB_2F,								   9,  5 ;  3
+	map_const ECHOING_CAVE,								   6,  9 ;  4
+	map_const PLAYERS_HOUSE_1F,                            6,  4 ;  5
+	map_const PLAYERS_HOUSE_2F,                            4,  3 ;  6
+	map_const HOLLOWPORT_RIVAL_1F,                         6,  4 ;  7
+	map_const HOLLOWPORT_RIVAL_2F,                         4,  3 ;  8
+	map_const HOLLOWPORT_NEIGHBOR,                         4,  4 ;  9
+	map_const ROUTE_101,             				      18, 12 ;  10
+	map_const ROUTE_102,								  16,  9 ;  11
+	map_const ROUTE_101_102_GATE,                          5,  4 ;  12
+	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  13
 
-	newgroup NATIONAL_FOREST									; 39
-	map_const NATIONAL_FOREST_1,							17, 15 ; 1
-	endgroup
 
-DEF NUM_MAP_GROUPS EQU const_value ; 39
+
+	newgroup                                         			 ; 39
+	map_const OLSTEETON,                          	      20, 18 ;  1
+	map_const NATIONAL_FOREST_1,						  17, 15 ;  2
+	; map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  2
+	; map_const OLSTEETON_GYM_1F,                       	 8,  4 ;  4
+	; map_const OLSTEETON_GYM_2F,                        	 8,  4 ;  5
+	; map_const RIVERFRONT_APT_1F,                           8,  4 ;  6
+	; map_const OLSTEETON_MALL_1,                            8,  4 ;  7
+	; map_const OLSTEETON_MALL_2,                            4,  4 ;  8
+	; map_const OLSTEETON_MALL_3,                            6,  5 ;  9
+
+	; newgroup                                                   ; 40
+	; map_const OLSTEETON_UNI,	                            11,  8 ;  1
+	; map_const UNI_DORM,                                   11,  5 ;  2
+	; map_const UNI_LIBRARY,   	                             4,  4 ;  3
+	; map_const DINING_HALL,								 8,  4 ;  4
+	
+DEF NUM_MAP_GROUPS EQU const_value ; 38

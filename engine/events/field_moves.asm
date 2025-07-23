@@ -34,12 +34,12 @@ ShakeHeadbuttTree:
 	; shift all sprites left in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH - a
+	; a = OAM_SIZE - a
 	cpl
-	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
+	add OAM_SIZE + 1
 	ld h, HIGH(wShadowOAM)
 	ld l, a
-	sub (4 * SPRITEOAMSTRUCT_LENGTH)
+	sub (4 * OBJ_SIZE)
 	ld e, a
 	ld d, h
 	ld b, 0
@@ -84,13 +84,13 @@ ShakeHeadbuttTree:
 	; shift all sprites right in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS) * SPRITEOAMSTRUCT_LENGTH - a - 1
+	; a = OAM_SIZE - a - 1
 	cpl
-	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
+	add OAM_SIZE
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 	ld de, wShadowOAMSprite39 + 3
-	ld c, SPRITEOAMSTRUCT_LENGTH * 4
+	ld c, OBJ_SIZE * 4
 .copy_done_loop
 	ld a, [hld]
 	ld [de], a
@@ -99,13 +99,13 @@ ShakeHeadbuttTree:
 	jr nz, .copy_done_loop
 	ld h, HIGH(wShadowOAM)
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	; a = (OAM_COUNT - 4) * OBJ_SIZE - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+	add (OAM_COUNT - 4) * OBJ_SIZE + 1
 	ld l, a
 
 	ld c, 4
-	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld de, OBJ_SIZE
 	ld a, OAM_YCOORD_HIDDEN
 .hide_loop
 	ld [hl], a
@@ -163,12 +163,12 @@ OWCutAnimation:
 	; shift all sprites left in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH) - a
+	; a = OAM_SIZE - a
 	cpl
-	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
+	add OAM_SIZE + 1
 	ld h, HIGH(wShadowOAM)
 	ld l, a
-	sub (4 * SPRITEOAMSTRUCT_LENGTH)
+	sub (4 * OBJ_SIZE)
 	ld e, a
 	ld d, h
 	ld b, 0
@@ -199,13 +199,13 @@ OWCutAnimation:
 	; shift all sprites right in OAM by 4 slots
 	; hl = source, de = destination, bc = length
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS) * SPRITEOAMSTRUCT_LENGTH - a - 1
+	; a = OAM_SIZE - a - 1
 	cpl
-	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH
+	add OAM_SIZE
 	ld l, a
 	ld h, HIGH(wShadowOAM)
 	ld de, wShadowOAMSprite39 + 3
-	ld c, SPRITEOAMSTRUCT_LENGTH * 4
+	ld c, OBJ_SIZE * 4
 .copy_done_loop
 	ld a, [hld]
 	ld [de], a
@@ -215,12 +215,12 @@ OWCutAnimation:
 
 	ld h, HIGH(wShadowOAM)
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH - a
+	; a = (OAM_COUNT - 4) * OBJ_SIZE - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - 4) * SPRITEOAMSTRUCT_LENGTH + 1
+	add (OAM_COUNT - 4) * OBJ_SIZE + 1
 	ld l, a
 	ld c, 4
-	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld de, OBJ_SIZE
 	ld a, OAM_YCOORD_HIDDEN
 .hide_loop
 	ld [hl], a
@@ -375,7 +375,7 @@ Cut_Headbutt_GetPixelFacing:
 FlyFromAnim:
 	farcall CheckForUsedObjPals
 	ldh a, [hUsedOAMIndex]
-	cp (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS - 1) * SPRITEOAMSTRUCT_LENGTH
+	cp (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS - 1) * OBJ_SIZE
 	call nc, ClearNormalSprites ; not enough OAM slots, clear all sprites.
 	ld a, [wUsedObjectPals]
 	set 7, a ; slot 7 already reserved for leaves.
@@ -406,13 +406,13 @@ FlyFromAnim:
 	jr nz, .exit
 
 	ldh a, [hUsedOAMIndex]
-	cp (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS - 1) * SPRITEOAMSTRUCT_LENGTH
-	ld a, (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH
+	cp (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS - 1) * OBJ_SIZE
+	ld a, (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH - a
+	; a = (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
+	add (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE + 1
 .got_oam_addr
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites_OW
@@ -457,13 +457,13 @@ FlyToAnim:
 	jr nz, .exit
 
 	ldh a, [hUsedOAMIndex]
-	cp (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS - 1) * SPRITEOAMSTRUCT_LENGTH
-	ld a, (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH
+	cp (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS - 1) * OBJ_SIZE
+	ld a, (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH - a
+	; a = (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE - a
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
+	add (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE + 1
 .got_oam_addr
 
 	ld [wCurSpriteOAMAddr], a
@@ -478,13 +478,13 @@ FlyToAnim:
 	ld [wStateFlags], a
 
 	ld a, [wCurSpriteOAMAddr]
-	sub NUM_FLYTO_ANIM_OAMS * SPRITEOAMSTRUCT_LENGTH
+	sub NUM_FLYTO_ANIM_OAMS * OBJ_SIZE
 	cpl
 	add LOW(wShadowOAMEnd) + 1
 	ld b, a
 	ld h, HIGH(wShadowOAM)
 	ld a, [wCurSpriteOAMAddr]
-	sub NUM_FLYTO_ANIM_OAMS * SPRITEOAMSTRUCT_LENGTH
+	sub NUM_FLYTO_ANIM_OAMS * OBJ_SIZE
 	ld l, a
 	call HideSpritesInRange
 

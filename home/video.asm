@@ -11,12 +11,12 @@ ForcePushOAM:
 
 ContinueGDMACopy:
 	push hl
-	ld hl, rHDMA3
+	ld hl, rVDMA_DEST_HIGH
 	jr _GDMACopy
 GDMACopy:
 ; Copy a+1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
 	push hl
-	ld hl, rHDMA1
+	ld hl, rVDMA_SRC_HIGH
 	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e
@@ -25,7 +25,7 @@ _GDMACopy:
 	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
 	inc hl
 	ld [hl], c
-	ldh [rHDMA5], a
+	ldh [rVDMA_LEN], a
 	pop hl
 	ret
 
@@ -37,7 +37,7 @@ DMATransfer::
 	ret z
 
 ; Start transfer
-	ldh [rHDMA5], a
+	ldh [rVDMA_LEN], a
 
 ; Execution is halted until the transfer is complete.
 
@@ -231,7 +231,7 @@ UpdateBGMap::
 	jr z, .AttributeMapTop
 ; bottom row
 	coord sp, 0, 9, wAttrmap
-	ld de, HALF_HEIGHT * BG_MAP_WIDTH
+	ld de, HALF_HEIGHT * TILEMAP_WIDTH
 	add hl, de
 ; Next time: top half
 	xor a
@@ -255,7 +255,7 @@ UpdateBGMap::
 	jr z, .TileMapTop
 ; bottom row
 	coord sp, 0, 9
-	ld de, HALF_HEIGHT * BG_MAP_WIDTH
+	ld de, HALF_HEIGHT * TILEMAP_WIDTH
 	add hl, de
 ; Next time: top half
 	xor a
@@ -272,7 +272,7 @@ UpdateBGMap::
 	ld a, SCREEN_HEIGHT / 2
 .startCustomCopy
 ; Discrepancy between wTilemap and BGMap
-	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
+	ld bc, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
 ; Copy a row of 20 tiles
 rept (SCREEN_WIDTH / 2) - 1
@@ -443,7 +443,7 @@ AnimateTileset::
 ;	cp 151
 ;	ret nc
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 
 	ldh a, [rVBK]
@@ -451,7 +451,7 @@ AnimateTileset::
 	xor a
 	ldh [rVBK], a
 	inc a
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, BANK(_AnimateTileset)
 	rst Bankswitch
@@ -461,5 +461,5 @@ AnimateTileset::
 	pop af
 	ldh [rVBK], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret

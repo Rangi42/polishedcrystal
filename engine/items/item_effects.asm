@@ -1879,7 +1879,7 @@ WingCase_MonSelected:
 	pop af
 	ldh [hBGMapMode], a
 	ld a, [wMenuJoypad]
-	sub B_BUTTON
+	sub PAD_B
 	ret z
 
 	; Which wing was chosen? -1 is cancel
@@ -2115,7 +2115,7 @@ CandyJar_MonSelected:
 	pop af
 	ldh [hBGMapMode], a
 	ld a, [wMenuJoypad]
-	sub B_BUTTON
+	sub PAD_B
 	ret z
 
 	; Which candy was chosen? -1 is cancel

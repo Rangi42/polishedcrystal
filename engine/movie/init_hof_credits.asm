@@ -35,18 +35,18 @@ ClearDisplayForEndgame:
 	ld a, " "
 	rst ByteFill
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 	ret
 
 ResetDisplayBetweenHallOfFameMons:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wScratchTileMap
-	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
+	ld bc, TILEMAP_AREA
 	ld a, " "
 	rst ByteFill
 	hlbgcoord 0, 0
@@ -54,5 +54,5 @@ ResetDisplayBetweenHallOfFameMons:
 	lb bc, $0, $40
 	call Request2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret

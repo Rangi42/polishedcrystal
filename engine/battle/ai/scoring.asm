@@ -895,13 +895,11 @@ AI_Smart_SpDefenseUp2:
 
 AI_Smart_Fly:
 ; Fly, Dig
-
-; Greatly encourage this move if the player is
-; flying or underground, and slower than the enemy.
-
+	; Greatly encourage this move if the player is
+	; flying or underground, and slower than the enemy.
 	ld a, [wPlayerSubStatus3]
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	ret z
+	jr z, AI_Smart_AvoidIfProtect
 
 	call AICompareSpeed
 	ret nc
@@ -910,6 +908,26 @@ AI_Smart_Fly:
 	dec [hl]
 	dec [hl]
 	ret
+
+AI_Smart_AvoidIfProtect:
+; Greatly discourage if the player has Protect. Used for 2-turn moves.
+	; Power Herb makes this a 1-turn move.
+	push hl
+	predef GetUserItemAfterUnnerve
+	pop hl
+	ld a, b
+	cp HELD_POWER_HERB
+	ret z
+
+	ld b, EFFECT_PROTECT
+	call PlayerHasMoveEffect
+	jr c, .discourage
+	ld b, EFFECT_ENDURE
+	call PlayerHasMoveEffect
+	ret nc
+
+.discourage
+	jmp AIDiscourageMove
 
 AI_Smart_TrickRoom:
 ; Greatly encourage this move if it would make us outspeed, discourage otherwise
@@ -1946,7 +1964,7 @@ AI_Smart_SolarBeam:
 
 	ld b, EFFECT_SUNNY_DAY
 	call AIHasMoveEffect
-	ret nc
+	jmp nc, AI_Smart_AvoidIfProtect
 
 	inc [hl]
 	inc [hl]
@@ -2093,11 +2111,17 @@ AICheckPlayerQuarterHP:
 	pop hl
 	ret
 
+PlayerHasMoveEffect:
+; Return carry if the player has move effect b.
+	push hl
+	ld hl, wPlayerUsedMoves
+	jr AnyHasMoveEffect
 AIHasMoveEffect:
-; Return carry if the enemy has move b.
-
+; Return carry if the enemy has move effect b.
 	push hl
 	ld hl, wAIMoves
+	; fallthrough
+AnyHasMoveEffect:
 	ld c, NUM_MOVES
 
 .checkmove

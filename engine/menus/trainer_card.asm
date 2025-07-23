@@ -15,7 +15,7 @@ TrainerCard:
 	bit 7, a
 	jr nz, .quit
 	ldh a, [hJoyLast]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .quit
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
@@ -104,7 +104,7 @@ TrainerCard_Page1_Joypad:
 	call TrainerCard_Page1_PrintGameTime
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_RIGHT | A_BUTTON
+	and PAD_RIGHT | PAD_A
 	ret z
 
 ; pressed_right_or_a
@@ -144,13 +144,13 @@ TrainerCard_Page2_Joypad:
 	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_RIGHT
+	and PAD_RIGHT
 	jr nz, .pressed_right
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .pressed_a
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	ret z
 
 ; pressed_left
@@ -211,10 +211,10 @@ TrainerCard_Page3_Joypad:
 	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .quit
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	ret z
 
 ; pressed_left
@@ -598,10 +598,10 @@ endr
 	db -1
 
 .facing2
-	db 0, 0, 1, X_FLIP
-	db 0, 8, 0, X_FLIP
-	db 8, 0, 3, X_FLIP
-	db 8, 8, 2, X_FLIP
+	db 0, 0, 1, OAM_XFLIP
+	db 0, 8, 0, OAM_XFLIP
+	db 8, 0, 3, OAM_XFLIP
+	db 8, 8, 2, OAM_XFLIP
 	db -1
 
 TrainerCard_JohtoBadgesOAM:

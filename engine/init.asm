@@ -28,7 +28,7 @@ _Init::
 	ldh a, [hCGB]
 	and a
 	jr z, .no_double_speed
-	ld hl, rKEY1
+	ld hl, rSPD
 	bit 7, [hl]
 	jr nz, .no_double_speed
 	set 0, [hl]
@@ -71,19 +71,19 @@ _Init::
 
 	call ClearWRAM
 	ld a, 1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call ClearVRAM
 	call ClearSprites
 
 ; Initialize SRAM access count
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
 	ld a, BANK(sSRAMAccessCount)
-	ld [MBC3SRamBank], a
+	ld [rRAMB], a
 	ld a, -1
 	ld [sSRAMAccessCount], a
-	ld a, SRAM_DISABLE
-	ld [MBC3SRamEnable], a
+	ld a, RAMG_SRAM_DISABLE
+	ld [rRAMG], a
 
 ; Write checksum to WRAM for save state check
 	ld a, [RomHeaderChecksum]
@@ -109,7 +109,7 @@ _Init::
 	ldh [hSCY], a
 	ldh [rJOYP], a
 
-	ld a, 1 << rSTAT_INT_MODE_0
+	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 
 	ld a, $90
@@ -158,12 +158,12 @@ _Init::
 	farcall StartClock
 
 	xor a
-	ld [MBC3LatchClock], a
-	ld [MBC3SRamEnable], a
+	ld [rRTCLATCH], a
+	ld [rRAMG], a
 
 	xor a
 	ldh [rIF], a
-	ld a, 1 << VBLANK | 1 << SERIAL
+	ld a, IE_VBLANK | IE_SERIAL
 	ldh [rIE], a
 	ei
 
@@ -210,7 +210,7 @@ ClearWRAM::
 	ld a, 1
 .bank_loop
 	push af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ld hl, wRAM1Start
 	ld bc, $1000

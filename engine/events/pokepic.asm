@@ -44,7 +44,7 @@ ClearSpritesUnderPokePic:
 	ld de, wShadowOAMSprite00
 	ld h, d
 	ld l, e
-	ld c, NUM_SPRITE_OAM_STRUCTS
+	ld c, OAM_COUNT
 .loop
 	; Check if (5 * TILE_WIDTH + 1) ≤ YCoord < (15 * TILE_WIDTH)
 	ld a, [hli]
@@ -60,7 +60,7 @@ ClearSpritesUnderPokePic:
 	jr c, .clear_sprite
 ; fallthrough
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld e, l
 	dec c
