@@ -11,6 +11,7 @@ Landmarks:
 	landmark  5, 5, Route101Name
 	landmark  10, 10, Route102Name
 	landmark  15, 15, OlsteetonName
+	landmark  20, 20, NationalForest1Name
 	landmark 140, 100, NewBarkTownName
 	landmark 120, 100, Route29Name
 	landmark 100, 100, CherrygroveCityName
@@ -306,4 +307,5 @@ HollowportName:        rawchar "Hollowport@"
 Route101Name:          rawchar "Route 101@"
 Route102Name:          rawchar "Route 102@"
 OlsteetonName: 		   rawchar "Olsteeton@"
+NationalForest1Name:   rawchar "Jolly Sods@"
 SpecialMapName:        rawchar "?@"

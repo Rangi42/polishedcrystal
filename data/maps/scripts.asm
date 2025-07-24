@@ -1104,9 +1104,4 @@ INCLUDE "maps/Route49.asm"
 
 SECTION "Map Scripts 25", ROMX
 
-INCLUDE "maps/GlobalTerminalOutside.asm"
-INCLUDE "maps/GlobalTerminal1F.asm"
-
-INCLUDE "maps/NationalForest1.asm"
-
 ENDSECTION

@@ -87,6 +87,7 @@ LyraPhoneScript_JohtoLandmarksTable:
 	dw .Route101
 	dw .Route102
 	dw .Olsteeton
+	dw .NationalForest1
 	dw .NewBarkTown
 	dw .Route29
 	dw .CherrygroveCity
@@ -160,6 +161,7 @@ LyraPhoneScript_JohtoLandmarksTable:
 .Route101:
 .Route102:
 .Olsteeton:
+.NationalForest1:
 .NewBarkTown:
 .Route29:
 .CherrygroveCity:

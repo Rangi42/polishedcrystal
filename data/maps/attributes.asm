@@ -447,7 +447,7 @@ ENDM
 	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
     map_attributes Olsteeton, OLSTEETON, $5, 0
 	map_attributes OlsteetonForestGate, OLSTEETON_FOREST_GATE, $0, 0
-	map_attributes NationalForest1, NATIONAL_FOREST_1, $5, 0
+	map_attributes NationalForest1, NATIONAL_FOREST_1, $53, 0
 
 	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
@@ -949,4 +949,3 @@ ENDM
 	map_attributes IvysHouse, IVYS_HOUSE, $0, 0
 	map_attributes ValenciaHouse, VALENCIA_HOUSE, $0, 0
 	map_attributes ValenciaPort, VALENCIA_PORT, $0, 0
-	map_attributes GlobalTerminal1F, GLOBAL_TERMINAL_1F, $0, 0

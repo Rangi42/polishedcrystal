@@ -6,8 +6,8 @@ Olsteeton_MapScriptHeader:
 	def_warp_events
 	warp_event  2, 18, ROUTE_102_OLSTEETON_GATE, 3
 	warp_event  2, 19, ROUTE_102_OLSTEETON_GATE, 4
-	warp_event  29, 33, OLSTEETON_FOREST_GATE, 1
-	warp_event  29, 34, OLSTEETON_FOREST_GATE, 2
+	warp_event 19, 31, OLSTEETON_FOREST_GATE, 1
+	warp_event 20, 31, OLSTEETON_FOREST_GATE, 2
 	; warp_event 11, 11, OLSTEETON_MALL_1F, 1
 	; warp_event 14, 11, OLSTEETON_MALL_2F, 1
 	; warp_event 17, 11, OLSTEETON_MALL_3F, 1
