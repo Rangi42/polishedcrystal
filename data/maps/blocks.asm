@@ -170,6 +170,7 @@ VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
 VioletOutskirtsHouse_BlockData:
 ValeriesHouse_BlockData:
+Route101House_BlockData:
 	INCBIN "maps/TraditionalHouse.ablk.lz"
 
 
