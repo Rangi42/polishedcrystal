@@ -101,9 +101,19 @@ INCLUDE "maps/OlsteetonPokeCenter.asm"
 INCLUDE "maps/OlsteetonMall1.asm"
 INCLUDE "maps/OlsteetonMall2.asm"
 INCLUDE "maps/OlsteetonMall3.asm"
+INCLUDE "maps/OlsteetonMart.asm"
+
+
+SECTION "Olsteeton Scripts 2", ROMX
+
 INCLUDE "maps/RiverfrontApt1F.asm"
-
-
+INCLUDE "maps/OlsteetonArcade.asm"
+INCLUDE "maps/OlsteetonDiner.asm"
+INCLUDE "maps/OlsteetonTrainStation.asm"
+INCLUDE "maps/OlsteetonNameRater.asm"
+INCLUDE "maps/OlsteetonFisherHouse.asm"
+INCLUDE "maps/OlsteetonGymHouse.asm"
+INCLUDE "maps/OlsteetonQuickHouse.asm"
 
 ; INCLUDE "maps/OlsteetonUni.asm"
 

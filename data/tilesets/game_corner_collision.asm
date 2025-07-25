@@ -26,7 +26,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 19
 	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; 1a
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 1b
-	tilecoll WALL, WALL, FLOOR, FLOOR ; 1c
+	tilecoll WALL, WALL, FLOOR, WALL ; 1c
 	tilecoll WALL, WALL, FLOOR, TRASH_CAN ; 1d
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 1e
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 1f

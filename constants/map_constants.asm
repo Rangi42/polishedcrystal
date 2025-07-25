@@ -734,6 +734,15 @@ ENDM
 	map_const OLSTEETON_MALL_1,                            8,  4 ;  9
 	map_const OLSTEETON_MALL_2,                            4,  4 ;  10
 	map_const OLSTEETON_MALL_3,                            6,  5 ;  11
+	map_const OLSTEETON_MART,                              6,  4 ;  12
+	map_const OLSTEETON_ARCADE, 						  10,  7 ;  13
+	map_const OLSTEETON_DINER,                             8,  6 ;  14
+	map_const OLSTEETON_TRAIN_STATION,                    10,  9 ;  15
+	map_const OLSTEETON_NAME_RATER,                        4,  4 ;  16
+	map_const OLSTEETON_FISHER_HOUSE,                      4,  4 ;  17
+	map_const OLSTEETON_GYM_HOUSE,                         4,  4 ;  18
+	map_const OLSTEETON_QUICK_HOUSE,                       4,  4 ;  29
+
 
 	; newgroup                                                   ; 40
 	; map_const OLSTEETON_UNI,	                            11,  8 ;  1

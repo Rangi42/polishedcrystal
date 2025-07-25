@@ -49,6 +49,7 @@ VermilionMart_BlockData:
 LavenderMart_BlockData:
 SaffronMart_BlockData:
 FuchsiaMart_BlockData:
+OlsteetonMart_BlockData:
 GenericMart_BlockData:: ; used by tilesets/palettes.asm:LoadSpecialMapPalette
 	INCBIN "maps/Mart.ablk.lz"
 
@@ -123,6 +124,7 @@ ShamoutiHouse_BlockData:
 WarmBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
 IvysHouse_BlockData:
+OlsteetonGymHouse_BlockData:
 	INCBIN "maps/JohtoHouse1.ablk.lz"
 
 GoldenrodHappinessRater_BlockData:
@@ -139,6 +141,7 @@ LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 CeladonOldManSpeechHouse_BlockData:
 CeladonDevelopmentSpeechHouse_BlockData:
+OlsteetonFisherHouse_BlockData:
 	INCBIN "maps/House2.ablk.lz"
 
 MahoganyRedGyaradosSpeechHouse_BlockData:
@@ -151,6 +154,7 @@ GoldenrodBandHouse_BlockData:
 ManiasHouse_BlockData:
 CianwoodLugiaSpeechHouse_BlockData:
 MoveManiacsHouse_BlockData:
+OlsteetonNameRater_BlockData:
 	INCBIN "maps/JohtoHouse3.ablk.lz"
 
 Route39Farmhouse_BlockData:
@@ -195,6 +199,7 @@ LavenderNameRater_BlockData:
 SaffronHitmontopKidHouse_BlockData:
 SaffronOrreSpeechHouse_BlockData:
 Route19BeachHouse_BlockData:
+OlsteetonQuickHouse_BlockData:
 	INCBIN "maps/KantoHouse3.ablk.lz"
 
 SECTION "PewterNidoranSpeechHouse_BlockData", ROMX
@@ -291,6 +296,18 @@ OlsteetonMall3_BlockData:
 SECTION "RiverfrontApt1F_BlockData", ROMX
 RiverfrontApt1F_BlockData:
 	INCBIN "maps/RiverfrontApt1F.ablk.lz"
+
+SECTION "OlsteetonArcade_BlockData", ROMX
+OlsteetonArcade_BlockData:
+	INCBIN "maps/OlsteetonArcade.ablk.lz"
+
+SECTION "OlsteetonDiner_BlockData", ROMX
+OlsteetonDiner_BlockData:
+	INCBIN "maps/OlsteetonDiner.ablk.lz"
+	
+SECTION "OlsteetonTrainStation_BlockData", ROMX
+OlsteetonTrainStation_BlockData:
+	INCBIN "maps/OlsteetonTrainStation.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:

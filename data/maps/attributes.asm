@@ -453,8 +453,15 @@ ENDM
 	map_attributes OlsteetonMall1, OLSTEETON_MALL_1, $0, 0
 	map_attributes OlsteetonMall2, OLSTEETON_MALL_2, $0, 0
 	map_attributes OlsteetonMall3, OLSTEETON_MALL_3, $0, 0
-	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0
-
+	map_attributes OlsteetonMart, OLSTEETON_MART, $0, 0	
+	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0	
+	map_attributes OlsteetonDiner, OLSTEETON_DINER, $0, 0	
+	map_attributes OlsteetonArcade, OLSTEETON_ARCADE, $0, 0
+	map_attributes OlsteetonTrainStation, OLSTEETON_TRAIN_STATION, $0, 0
+	map_attributes OlsteetonNameRater, OLSTEETON_NAME_RATER, $0, 0
+	map_attributes OlsteetonFisherHouse, OLSTEETON_FISHER_HOUSE, $0, 0
+	map_attributes OlsteetonGymHouse, OLSTEETON_GYM_HOUSE, $0, 0
+	map_attributes OlsteetonQuickHouse, OLSTEETON_QUICK_HOUSE, $0, 0
 
 	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
