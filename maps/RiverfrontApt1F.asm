@@ -4,10 +4,10 @@ RiverfrontApt1F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  0,  4, OLSTEETON, 11
-	warp_event  0,  5, OLSTEETON, 12
-	warp_event  9,  4, OLSTEETON, 13
-	warp_event  9,  5, OLSTEETON, 14
+	warp_event  0,  4, OLSTEETON, 9
+	warp_event  0,  5, OLSTEETON, 10
+	warp_event  9,  4, OLSTEETON, 11
+	warp_event  9,  5, OLSTEETON, 12
 	; warp_event  6,  4, RIVERFRONT_APT_2F, 1
 	; warp_event  5,  0, GOLDENROD_DEPT_STORE_ELEVATOR, 1
 

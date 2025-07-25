@@ -11,57 +11,57 @@ OlsteetonArcade_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  2, 13, OLSTEETON, 16
-	warp_event  3, 13, OLSTEETON, 16
+	warp_event  4, 13, OLSTEETON, 14
+	warp_event  5, 13, OLSTEETON, 14
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  6,  6, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  6,  7, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  6,  8, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  6,  9, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  6, 10, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  6, 11, BGEVENT_RIGHT, OlsteetonArcadeSlotsMachineScript
-	bg_event  7,  6, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  7,  7, BGEVENT_READ, OlsteetonArcadeLuckySlotsMachineScript
-	bg_event  7,  8, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  7,  9, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  7, 10, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event  7, 11, BGEVENT_LEFT, OlsteetonArcadeSlotsMachineScript
-	bg_event 12,  6, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event 12,  7, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event 12,  8, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event 12,  9, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event 12, 10, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
-	bg_event 12, 11, BGEVENT_RIGHT, OlsteetonArcadeSlotsMachineScript
-	bg_event 13,  6, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 13,  7, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 13,  8, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 13,  9, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 13, 10, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 13, 11, BGEVENT_LEFT, OlsteetonArcadeCardFlipMachineScript
-	bg_event 18,  6, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 18,  7, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 18,  8, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 18,  9, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 18, 10, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
-	bg_event 18, 11, BGEVENT_RIGHT, OlsteetonArcadeCardFlipMachineScript
+	bg_event  1, 11, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  1,  8, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  9,  7, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event 10, 13, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event 10, 12, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  9,  9, BGEVENT_RIGHT, OlsteetonArcadeSlotsMachineScript
+	bg_event  1, 10, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  1,  7, BGEVENT_READ, OlsteetonArcadeLuckySlotsMachineScript
+	bg_event  1,  9, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  8,  9, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event 10, 11, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  8,  7, BGEVENT_LEFT, OlsteetonArcadeSlotsMachineScript
+	bg_event 16,  3, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event 16,  4, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  1,  6, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event 14, 11, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event 18, 11, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
+	bg_event  9,  8, BGEVENT_RIGHT, OlsteetonArcadeSlotsMachineScript
+	bg_event 19,  9, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 11, 13, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 15, 13, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 15, 12, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 15, 11, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 11, 11, BGEVENT_LEFT, OlsteetonArcadeCardFlipMachineScript
+	bg_event 17,  5, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 14, 13, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 17,  4, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 17,  3, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 18, 12, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 14, 12, BGEVENT_RIGHT, OlsteetonArcadeCardFlipMachineScript
 	bg_event 12,  1, BGEVENT_LEFT, OlsteetonArcadeLeftTheirDrinkScript
 
 	def_object_events
-	object_event  3,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
-	object_event 16,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeTMVendorScript, -1
-	object_event 18,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePrizeMonVendorScript, -1
-	object_event 10,  1, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeFisherScript, -1
-	object_event 10,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadeCooltrainerFText, -1
-	object_event 17,  6, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanFScript, -1
-	object_event  8,  7, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePharmacistScript, -1
-	object_event 14,  8, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeCooltrainerMScript, -1
-	object_event  5, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeGentlemanScript, -1
-	object_event 11, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM1Script, -1
-	object_event 17, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM3Script, -1
-	object_event  2,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadePokefanM2Text, EVENT_BEAT_WHITNEY
+	object_event  6,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
+	object_event  3,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeTMVendorScript, -1
+	object_event  2,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePrizeMonVendorScript, -1
+	object_event 16,  1, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeFisherScript, -1
+	object_event 11,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadeCooltrainerFText, -1
+	object_event 15,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanFScript, -1
+	object_event 19,  3, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePharmacistScript, -1
+	object_event 12, 12, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeCooltrainerMScript, -1
+	object_event 17, 13, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeGentlemanScript, -1
+	object_event  7,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM1Script, -1
+	object_event 15,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM3Script, -1
+	object_event  1,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadePokefanM2Text, EVENT_BEAT_WHITNEY
 
 OlsteetonArcadePokefanM3Script:
 	showtextfaceplayer OlsteetonArcadePokefanM3Text

@@ -87,12 +87,14 @@ Route38EcruteakGate_BlockData:
 Route42EcruteakGate_BlockData:
 Route101102Gate_BlockData:
 Route102OlsteetonGate_BlockData:
+OlsteetonUniGate_BlockData:
 
 	INCBIN "maps/EastWestGate.ablk.lz"
 
 Route7SaffronGate_BlockData:
 Route8SaffronGate_BlockData:
 Route16Gate_BlockData:
+OlsteetonRoute103Gate_BlockData:
 	INCBIN "maps/KantoEastWestGate.ablk.lz"
 
 Route11Gate_BlockData:
@@ -297,17 +299,25 @@ SECTION "RiverfrontApt1F_BlockData", ROMX
 RiverfrontApt1F_BlockData:
 	INCBIN "maps/RiverfrontApt1F.ablk.lz"
 
+SECTION "OlsteetonDiner_BlockData", ROMX
+OlsteetonDiner_BlockData:
+	INCBIN "maps/OlsteetonDiner.ablk.lz"
+
 SECTION "OlsteetonArcade_BlockData", ROMX
 OlsteetonArcade_BlockData:
 	INCBIN "maps/OlsteetonArcade.ablk.lz"
 
-SECTION "OlsteetonDiner_BlockData", ROMX
-OlsteetonDiner_BlockData:
-	INCBIN "maps/OlsteetonDiner.ablk.lz"
-	
 SECTION "OlsteetonTrainStation_BlockData", ROMX
 OlsteetonTrainStation_BlockData:
 	INCBIN "maps/OlsteetonTrainStation.ablk.lz"
+
+SECTION "NationalForest1_BlockData", ROMX
+NationalForest1_BlockData:
+	INCBIN "maps/NationalForest1.ablk.lz"
+
+SECTION "OlsteetonUni_BlockData", ROMX
+OlsteetonUni_BlockData:
+	INCBIN "maps/OlsteetonUni.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
@@ -2010,9 +2020,5 @@ BattleFactoryHallway_BlockData:
 SECTION "BattleFactoryBattleRoom_BlockData", ROMX
 BattleFactoryBattleRoom_BlockData:
 	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"
-
-SECTION "NationalForest1_BlockData", ROMX
-NationalForest1_BlockData:
-	INCBIN "maps/NationalForest1.ablk.lz"
 	
 ENDSECTION

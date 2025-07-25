@@ -4,8 +4,8 @@ OlsteetonPokeCenter_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  5,  7, OLSTEETON, 6
-	warp_event  6,  7, OLSTEETON, 6
+	warp_event  5,  7, OLSTEETON, 4
+	warp_event  6,  7, OLSTEETON, 4
 
 	def_coord_events
 

@@ -4,8 +4,8 @@ OlsteetonDiner_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  8,  9, OLSTEETON, 15
-	warp_event  9,  9, OLSTEETON, 15
+	warp_event  8,  9, OLSTEETON, 13
+	warp_event  9,  9, OLSTEETON, 13
 
 	def_coord_events
 

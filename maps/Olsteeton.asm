@@ -6,8 +6,6 @@ Olsteeton_MapScriptHeader:
 	def_warp_events
 	warp_event  2, 18, ROUTE_102_OLSTEETON_GATE, 3
 	warp_event  2, 19, ROUTE_102_OLSTEETON_GATE, 4
-	warp_event 19, 31, OLSTEETON_FOREST_GATE, 1
-	warp_event 20, 31, OLSTEETON_FOREST_GATE, 2
 	warp_event  4, 11, OLSTEETON_GYM_1F, 1
 	warp_event 13, 17, OLSTEETON_POKE_CENTER, 1
 	warp_event 11, 11, OLSTEETON_MALL_1, 1
@@ -19,12 +17,18 @@ Olsteeton_MapScriptHeader:
 	warp_event 34, 19, RIVERFRONT_APT_1F, 3
 	warp_event 34, 18, RIVERFRONT_APT_1F, 4
 	warp_event  7, 17, OLSTEETON_DINER, 1
-	warp_event 28, 11, OLSTEETON_ARCADE , 1
+	warp_event 28, 11, OLSTEETON_ARCADE, 1
 	warp_event  6, 23, OLSTEETON_TRAIN_STATION, 1
 	warp_event 27, 27, OLSTEETON_NAME_RATER, 1
-	warp_event 29, 33, OLSTEETON_QUICK_HOUSE, 1
 	warp_event  5, 27, OLSTEETON_FISHER_HOUSE, 1
+	warp_event 29, 33, OLSTEETON_QUICK_HOUSE, 1
 	warp_event 11, 33, OLSTEETON_GYM_HOUSE, 1
+	warp_event 19, 31, OLSTEETON_FOREST_GATE, 1
+	warp_event 20, 31, OLSTEETON_FOREST_GATE, 2
+	warp_event 37, 12, OLSTEETON_UNI_GATE, 1
+	warp_event 37, 13, OLSTEETON_UNI_GATE, 2
+	warp_event 35, 24, OLSTEETON_ROUTE_103_GATE, 1
+	warp_event 35, 25, OLSTEETON_ROUTE_103_GATE, 2
 
 	def_coord_events
 

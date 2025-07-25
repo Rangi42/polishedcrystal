@@ -4,8 +4,8 @@ OlsteetonGym1F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  8, 11, OLSTEETON, 5
-	warp_event  9, 11, OLSTEETON, 5
+	warp_event  8, 11, OLSTEETON, 3
+	warp_event  9, 11, OLSTEETON, 3
 	warp_event  0,  2, OLSTEETON_GYM_2F, 1
 
 	def_coord_events

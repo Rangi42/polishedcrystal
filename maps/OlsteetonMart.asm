@@ -4,8 +4,8 @@ OlsteetonMart_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  2,  7, OLSTEETON, 10
-	warp_event  3,  7, OLSTEETON, 10
+	warp_event  2,  7, OLSTEETON, 8
+	warp_event  3,  7, OLSTEETON, 8
 
 	def_coord_events
 

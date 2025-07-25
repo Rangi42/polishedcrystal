@@ -4,8 +4,8 @@ OlsteetonMall2_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  7, OLSTEETON, 8
-	warp_event  3,  7, OLSTEETON, 8
+	warp_event  4,  7, OLSTEETON, 6
+	warp_event  3,  7, OLSTEETON, 6
 	warp_event  0,  4, OLSTEETON_MALL_1, 3
 	warp_event  0,  5, OLSTEETON_MALL_1, 4
 	warp_event  7,  4, OLSTEETON_MALL_3, 3

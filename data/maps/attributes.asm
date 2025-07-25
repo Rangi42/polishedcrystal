@@ -444,8 +444,6 @@ ENDM
 	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
 	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
     map_attributes Olsteeton, OLSTEETON, $5, 0
-	map_attributes OlsteetonForestGate, OLSTEETON_FOREST_GATE, $0, 0
-	map_attributes NationalForest1, NATIONAL_FOREST_1, $53, 0
 	map_attributes OlsteetonGym1F, OLSTEETON_GYM_1F, $0, 0
 	map_attributes OlsteetonGym2F, OLSTEETON_GYM_2F, $0, 0
 	map_attributes OlsteetonGym3F, OLSTEETON_GYM_3F, $0, 0
@@ -460,8 +458,14 @@ ENDM
 	map_attributes OlsteetonTrainStation, OLSTEETON_TRAIN_STATION, $0, 0
 	map_attributes OlsteetonNameRater, OLSTEETON_NAME_RATER, $0, 0
 	map_attributes OlsteetonFisherHouse, OLSTEETON_FISHER_HOUSE, $0, 0
-	map_attributes OlsteetonGymHouse, OLSTEETON_GYM_HOUSE, $0, 0
 	map_attributes OlsteetonQuickHouse, OLSTEETON_QUICK_HOUSE, $0, 0
+	map_attributes OlsteetonGymHouse, OLSTEETON_GYM_HOUSE, $0, 0
+	map_attributes OlsteetonForestGate, OLSTEETON_FOREST_GATE, $0, 0
+	map_attributes NationalForest1, NATIONAL_FOREST_1, $53, 0
+	map_attributes OlsteetonUniGate, OLSTEETON_UNI_GATE, $0, 0
+	map_attributes OlsteetonRoute103Gate, OLSTEETON_ROUTE_103_GATE, $0, 0
+	map_attributes OlsteetonUni, OLSTEETON_UNI, $5, 0
+
 
 	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0

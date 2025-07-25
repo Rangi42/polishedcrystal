@@ -92,8 +92,6 @@ INCLUDE "maps/HollowportRival2F.asm"
 SECTION "Olsteeton Scripts", ROMX
 
 INCLUDE "maps/Olsteeton.asm"
-INCLUDE "maps/OlsteetonForestGate.asm"
-INCLUDE "maps/NationalForest1.asm"
 INCLUDE "maps/OlsteetonGym1F.asm"
 INCLUDE "maps/OlsteetonGym2F.asm"
 INCLUDE "maps/OlsteetonGym3F.asm"
@@ -102,21 +100,20 @@ INCLUDE "maps/OlsteetonMall1.asm"
 INCLUDE "maps/OlsteetonMall2.asm"
 INCLUDE "maps/OlsteetonMall3.asm"
 INCLUDE "maps/OlsteetonMart.asm"
-
-
-SECTION "Olsteeton Scripts 2", ROMX
-
 INCLUDE "maps/RiverfrontApt1F.asm"
-INCLUDE "maps/OlsteetonArcade.asm"
 INCLUDE "maps/OlsteetonDiner.asm"
+INCLUDE "maps/OlsteetonArcade.asm"
 INCLUDE "maps/OlsteetonTrainStation.asm"
 INCLUDE "maps/OlsteetonNameRater.asm"
 INCLUDE "maps/OlsteetonFisherHouse.asm"
-INCLUDE "maps/OlsteetonGymHouse.asm"
 INCLUDE "maps/OlsteetonQuickHouse.asm"
+INCLUDE "maps/OlsteetonGymHouse.asm"
+INCLUDE "maps/OlsteetonForestGate.asm"
+INCLUDE "maps/NationalForest1.asm"
 
-; INCLUDE "maps/OlsteetonUni.asm"
-
+INCLUDE "maps/OlsteetonUniGate.asm"
+INCLUDE "maps/OlsteetonRoute103Gate.asm"
+INCLUDE "maps/OlsteetonUni.asm"
 SECTION "New Bark Scripts", ROMX
 
 INCLUDE "maps/NewBarkTown.asm"

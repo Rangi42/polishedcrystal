@@ -724,30 +724,31 @@ ENDM
 
 	newgroup                                         			 ; 39
 	map_const OLSTEETON,                          	      20, 18 ;  1
-	map_const OLSTEETON_FOREST_GATE,                       5,  4 ;  2
-	map_const NATIONAL_FOREST_1,						  17, 15 ;  3
-	map_const OLSTEETON_GYM_1F,                       	   9,  6 ;  4
-	map_const OLSTEETON_GYM_2F,                            8,  5 ;  5
-	map_const OLSTEETON_GYM_3F,                        	   8,  4 ;  6
-	map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  7
-	map_const RIVERFRONT_APT_1F,                           8,  4 ;  8
-	map_const OLSTEETON_MALL_1,                            8,  4 ;  9
-	map_const OLSTEETON_MALL_2,                            4,  4 ;  10
-	map_const OLSTEETON_MALL_3,                            6,  5 ;  11
-	map_const OLSTEETON_MART,                              6,  4 ;  12
+	map_const OLSTEETON_GYM_1F,                       	   9,  6 ;  2
+	map_const OLSTEETON_GYM_2F,                            8,  5 ;  3
+	map_const OLSTEETON_GYM_3F,                        	   8,  4 ;  4
+	map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  5
+	map_const OLSTEETON_MALL_1,                            8,  5 ;  7
+	map_const OLSTEETON_MALL_2,                            4,  4 ;  8
+	map_const OLSTEETON_MALL_3,                            6,  5 ;  9
+	map_const OLSTEETON_MART,                              6,  4 ;  10
+	map_const RIVERFRONT_APT_1F,                           5,  4 ;  11
+	map_const OLSTEETON_DINER,                             8,  6 ;  12
 	map_const OLSTEETON_ARCADE, 						  10,  7 ;  13
-	map_const OLSTEETON_DINER,                             8,  6 ;  14
-	map_const OLSTEETON_TRAIN_STATION,                    10,  9 ;  15
-	map_const OLSTEETON_NAME_RATER,                        4,  4 ;  16
-	map_const OLSTEETON_FISHER_HOUSE,                      4,  4 ;  17
-	map_const OLSTEETON_GYM_HOUSE,                         4,  4 ;  18
-	map_const OLSTEETON_QUICK_HOUSE,                       4,  4 ;  29
+	map_const OLSTEETON_TRAIN_STATION,                    10,  9 ;  14
+	map_const OLSTEETON_NAME_RATER,                        4,  4 ;  15
+	map_const OLSTEETON_FISHER_HOUSE,                      4,  4 ;  16
+	map_const OLSTEETON_GYM_HOUSE,                         4,  4 ;  17
+	map_const OLSTEETON_QUICK_HOUSE,                       4,  4 ;  18
+	map_const OLSTEETON_FOREST_GATE,                       5,  4 ;  19
+	map_const NATIONAL_FOREST_1,						  17, 15 ;  20
+	map_const OLSTEETON_UNI_GATE,                          5,  4 ;  21
+	map_const OLSTEETON_ROUTE_103_GATE,                    5,  4 ;  22
 
-
-	; newgroup                                                   ; 40
-	; map_const OLSTEETON_UNI,	                            11,  8 ;  1
+	newgroup                                                     ; 40
+	map_const OLSTEETON_UNI,	                          18, 12 ;  1
 	; map_const UNI_DORM,                                   11,  5 ;  2
 	; map_const UNI_LIBRARY,   	                             4,  4 ;  3
 	; map_const DINING_HALL,								 8,  4 ;  4
 	
-DEF NUM_MAP_GROUPS EQU const_value ; 38
+DEF NUM_MAP_GROUPS EQU const_value ; 40
