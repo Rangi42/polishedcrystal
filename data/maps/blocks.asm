@@ -276,6 +276,22 @@ SECTION "OlsteetonGym3F_BlockData", ROMX
 OlsteetonGym3F_BlockData:
 	INCBIN "maps/OlsteetonGym3F.ablk.lz"
 
+SECTION "OlsteetonMall1_BlockData", ROMX
+OlsteetonMall1_BlockData:
+	INCBIN "maps/OlsteetonMall1.ablk.lz"
+
+SECTION "OlsteetonMall2_BlockData", ROMX
+OlsteetonMall2_BlockData:
+	INCBIN "maps/OlsteetonMall2.ablk.lz"
+
+SECTION "OlsteetonMall3_BlockData", ROMX
+OlsteetonMall3_BlockData:
+	INCBIN "maps/OlsteetonMall3.ablk.lz"
+
+SECTION "RiverfrontApt1F_BlockData", ROMX
+RiverfrontApt1F_BlockData:
+	INCBIN "maps/RiverfrontApt1F.ablk.lz"
+
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
 	INCBIN "maps/ElmsLab.ablk.lz"

@@ -9,17 +9,15 @@ Olsteeton_MapScriptHeader:
 	warp_event 19, 31, OLSTEETON_FOREST_GATE, 1
 	warp_event 20, 31, OLSTEETON_FOREST_GATE, 2
 	warp_event  4, 11, OLSTEETON_GYM_1F, 1
-	warp_event  7, 17, OLSTEETON_POKE_CENTER, 1
-	; warp_event 11, 11, OLSTEETON_MALL_1F, 1
-	; warp_event 14, 11, OLSTEETON_MALL_2F, 1
-	; warp_event 17, 11, OLSTEETON_MALL_3F, 1
-	; warp_event 27, 11, MART, 1
-	; warp_event 27, 18, RIVERFRONT_APT_1F, 1
-	; warp_event 27, 19, RIVERFRONT_APT_1F, 2
-	; warp_event 32, 19, RIVERFRONT_APT_1F, 3
-	; warp_event 32, 18, RIVERFRONT_APT_1F, 4
-	
-	
+	warp_event 13, 17, OLSTEETON_POKE_CENTER, 1
+	warp_event 11, 11, OLSTEETON_MALL_1, 1
+	warp_event 14, 11, OLSTEETON_MALL_2, 1
+	warp_event 17, 11, OLSTEETON_MALL_3, 1
+	; warp_event 27, 11, OLSTEETON_MART, 1
+	warp_event 29, 18, RIVERFRONT_APT_1F, 1
+	warp_event 29, 19, RIVERFRONT_APT_1F, 2
+	warp_event 34, 19, RIVERFRONT_APT_1F, 3
+	warp_event 34, 18, RIVERFRONT_APT_1F, 4
 	; warp_event 13, 17, OLSTEETON_RESTAURANT, 1
 	; warp_event 27, 27, , 1
 	; warp_event 21, 11, , 1
@@ -36,13 +34,13 @@ Olsteeton_MapScriptHeader:
 	bg_event  9, 29, BGEVENT_JUMPTEXT, OlsteetonFishingGuruSignText
 	bg_event 36, 11, BGEVENT_JUMPTEXT, OlsteetonUniversitySignText
 	bg_event 12, 11, BGEVENT_JUMPTEXT, OlsteetonDeptStoreSignText
-	bg_event 28, 11, BGEVENT_JUMPTEXT, OlsteetonMartSignText
-	bg_event  8, 17, BGEVENT_JUMPTEXT, OlsteetonPokeCenterSignText
-	bg_event 22, 11, BGEVENT_JUMPTEXT, OlsteetonHomeDecorStoreSignText
+	bg_event 22, 11, BGEVENT_JUMPTEXT, OlsteetonMartSignText
+	bg_event 14, 17, BGEVENT_JUMPTEXT, OlsteetonPokeCenterSignText
+	bg_event 16, 12, BGEVENT_JUMPTEXT, OlsteetonHomeDecorStoreSignText
 	bg_event 36,  2, BGEVENT_JUMPTEXT, OlsteetonBoatText
-	bg_event 16, 12, BGEVENT_JUMPTEXT, OlsteetonGameCornerSignText
+	bg_event 30, 10, BGEVENT_JUMPTEXT, OlsteetonGameCornerSignText
 	bg_event 17, 31, BGEVENT_JUMPTEXT, OlsteetonForestSignText
-	bg_event 11, 17, BGEVENT_JUMPTEXT, OlsteetonCafeSignText
+	bg_event 10, 17, BGEVENT_JUMPTEXT, OlsteetonCafeSignText
 	bg_event 29, 17, BGEVENT_JUMPTEXT, OlsteetonHotelSignText
 	bg_event  2, 16, BGEVENT_JUMPTEXT, OlsteetonRoute102Text
 	bg_event 37, 23, BGEVENT_JUMPTEXT, OlsteetonRoute103Text
@@ -57,7 +55,7 @@ Olsteeton_MapScriptHeader:
 	object_event  8, 27, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonGramps1Text, -1
 	object_event 25, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonGramps2Text, -1
 	object_event 33,  9, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonYoungster1Text, -1
-	object_event 10, 23, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonYoungster2Text, -1
+	object_event 10, 24, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonYoungster2Text, -1
 	object_event 31, 30, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonTeacher2Text, -1
 	object_event  8, 32, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonLassText_PCC, -1
 	object_event 21, 17, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonLassText, -1

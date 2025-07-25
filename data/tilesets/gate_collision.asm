@@ -3,7 +3,7 @@
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 02
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 03
 	tilecoll DOOR, DOOR, FLOOR, FLOOR ; 04
-	tilecoll WINDOW, WALL, FLOOR, FLOOR ; 05
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 05
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 06
 	tilecoll WALL, WINDOW, FLOOR, FLOOR ; 07
 	tilecoll COUNTER, COUNTER, COUNTER, FLOOR ; 08
@@ -126,3 +126,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7d
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7e
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7f
+	tilecoll WINDOW, WALL, FLOOR, FLOOR ; 80

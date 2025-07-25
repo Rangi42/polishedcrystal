@@ -98,6 +98,10 @@ INCLUDE "maps/OlsteetonGym1F.asm"
 INCLUDE "maps/OlsteetonGym2F.asm"
 INCLUDE "maps/OlsteetonGym3F.asm"
 INCLUDE "maps/OlsteetonPokeCenter.asm"
+INCLUDE "maps/OlsteetonMall1.asm"
+INCLUDE "maps/OlsteetonMall2.asm"
+INCLUDE "maps/OlsteetonMall3.asm"
+INCLUDE "maps/RiverfrontApt1F.asm"
 
 
 

@@ -450,6 +450,10 @@ ENDM
 	map_attributes OlsteetonGym2F, OLSTEETON_GYM_2F, $0, 0
 	map_attributes OlsteetonGym3F, OLSTEETON_GYM_3F, $0, 0
 	map_attributes OlsteetonPokeCenter, OLSTEETON_POKE_CENTER, $0, 0
+	map_attributes OlsteetonMall1, OLSTEETON_MALL_1, $0, 0
+	map_attributes OlsteetonMall2, OLSTEETON_MALL_2, $0, 0
+	map_attributes OlsteetonMall3, OLSTEETON_MALL_3, $0, 0
+	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0
 
 
 	;johto maps

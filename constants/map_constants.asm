@@ -730,10 +730,10 @@ ENDM
 	map_const OLSTEETON_GYM_2F,                            8,  5 ;  5
 	map_const OLSTEETON_GYM_3F,                        	   8,  4 ;  6
 	map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  7
-	; map_const RIVERFRONT_APT_1F,                           8,  4 ;  6
-	; map_const OLSTEETON_MALL_1,                            8,  4 ;  7
-	; map_const OLSTEETON_MALL_2,                            4,  4 ;  8
-	; map_const OLSTEETON_MALL_3,                            6,  5 ;  9
+	map_const RIVERFRONT_APT_1F,                           8,  4 ;  8
+	map_const OLSTEETON_MALL_1,                            8,  4 ;  9
+	map_const OLSTEETON_MALL_2,                            4,  4 ;  10
+	map_const OLSTEETON_MALL_3,                            6,  5 ;  11
 
 	; newgroup                                                   ; 40
 	; map_const OLSTEETON_UNI,	                            11,  8 ;  1
