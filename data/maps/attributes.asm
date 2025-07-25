@@ -431,9 +431,6 @@ ENDM
 	connection south, Hollowport, HOLLOWPORT, -2
 
 
-	; map_attributes OlsteetonGym1F, OLSTEETON_GYM_1F, $0, 0
-	; map_attributes OlsteetonGym2F, OLSTEETON_GYM_2F, $0, 0
-	; map_attributes OlsteetonGym3F, OLSTEETON_GYM_3F, $0, 0
 	map_attributes FieldLab, FIELD_LAB, $0, 0
 	map_attributes FieldLab2F, FIELD_LAB_2F, $0, 0
 	map_attributes EchoingCave, ECHOING_CAVE, $0, 0
@@ -449,6 +446,11 @@ ENDM
     map_attributes Olsteeton, OLSTEETON, $5, 0
 	map_attributes OlsteetonForestGate, OLSTEETON_FOREST_GATE, $0, 0
 	map_attributes NationalForest1, NATIONAL_FOREST_1, $53, 0
+	map_attributes OlsteetonGym1F, OLSTEETON_GYM_1F, $0, 0
+	map_attributes OlsteetonGym2F, OLSTEETON_GYM_2F, $0, 0
+	map_attributes OlsteetonGym3F, OLSTEETON_GYM_3F, $0, 0
+	map_attributes OlsteetonPokeCenter, OLSTEETON_POKE_CENTER, $0, 0
+
 
 	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0

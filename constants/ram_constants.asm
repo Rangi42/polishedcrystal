@@ -409,6 +409,7 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const KIYO_JOURNAL ; Viridian schoolhouse
 	const PALMER_JOURNAL ; Battle Tower
 	const THORTON_JOURNAL ; Battle Factory
+	; const RUSTY_JOURNAL       ; Olsteeton Pokémon Center
 DEF NUM_POKEMON_JOURNALS EQU const_value
 
 ; wUnlockedUnowns ::

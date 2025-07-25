@@ -726,10 +726,10 @@ ENDM
 	map_const OLSTEETON,                          	      20, 18 ;  1
 	map_const OLSTEETON_FOREST_GATE,                       5,  4 ;  2
 	map_const NATIONAL_FOREST_1,						  17, 15 ;  3
-
-	; map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  2
-	; map_const OLSTEETON_GYM_1F,                       	 8,  4 ;  4
-	; map_const OLSTEETON_GYM_2F,                        	 8,  4 ;  5
+	map_const OLSTEETON_GYM_1F,                       	   9,  6 ;  4
+	map_const OLSTEETON_GYM_2F,                            8,  5 ;  5
+	map_const OLSTEETON_GYM_3F,                        	   8,  4 ;  6
+	map_const OLSTEETON_POKE_CENTER,                       6,  4 ;  7
 	; map_const RIVERFRONT_APT_1F,                           8,  4 ;  6
 	; map_const OLSTEETON_MALL_1,                            8,  4 ;  7
 	; map_const OLSTEETON_MALL_2,                            4,  4 ;  8

@@ -33,8 +33,8 @@ CinnabarPokeCenter1F_BlockData:
 KantoPokeCenter2F_BlockData:
 	INCBIN "maps/KantoPokeCenter2F.ablk.lz"
 
-; OlsteetonPokeCenter_BlockData:
-	; INCBIN "maps/OlsteetonPokeCenter.ablk.lz"
+OlsteetonPokeCenter_BlockData:
+	INCBIN "maps/OlsteetonPokeCenter.ablk.lz"
 
 CherrygroveMart_BlockData:
 VioletMart_BlockData:
@@ -263,6 +263,18 @@ Route102_BlockData:
 SECTION "Olsteeton_BlockData", ROMX
 Olsteeton_BlockData:
 	INCBIN "maps/Olsteeton.ablk.lz"
+
+SECTION "OlsteetonGym1F_BlockData", ROMX
+OlsteetonGym1F_BlockData:
+	INCBIN "maps/OlsteetonGym1F.ablk.lz"
+
+SECTION "OlsteetonGym2F_BlockData", ROMX
+OlsteetonGym2F_BlockData:
+	INCBIN "maps/OlsteetonGym2F.ablk.lz"
+
+SECTION "OlsteetonGym3F_BlockData", ROMX
+OlsteetonGym3F_BlockData:
+	INCBIN "maps/OlsteetonGym3F.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:

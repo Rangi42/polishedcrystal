@@ -94,6 +94,11 @@ SECTION "Olsteeton Scripts", ROMX
 INCLUDE "maps/Olsteeton.asm"
 INCLUDE "maps/OlsteetonForestGate.asm"
 INCLUDE "maps/NationalForest1.asm"
+INCLUDE "maps/OlsteetonGym1F.asm"
+INCLUDE "maps/OlsteetonGym2F.asm"
+INCLUDE "maps/OlsteetonGym3F.asm"
+INCLUDE "maps/OlsteetonPokeCenter.asm"
+
 
 
 ; INCLUDE "maps/OlsteetonUni.asm"
