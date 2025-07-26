@@ -30,7 +30,6 @@ INCLUDE "engine/battle/move_effects/focus_energy.asm"
 INCLUDE "engine/battle/move_effects/foresight.asm"
 INCLUDE "engine/battle/move_effects/future_sight.asm"
 INCLUDE "engine/battle/move_effects/growth.asm"
-INCLUDE "engine/battle/move_effects/heal_bell.asm"
 INCLUDE "engine/battle/move_effects/healinglight.asm"
 INCLUDE "engine/battle/move_effects/hidden_power.asm"
 INCLUDE "engine/battle/move_effects/knock_off.asm"
@@ -5104,23 +5103,7 @@ BattleCommand_sleep:
 	call PlayOpponentBattleAnim
 	ld a, $1
 	ldh [hBGMapMode], a
-	; fallthrough
-.SleepTarget:
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-
-	; 1-3 turns of sleep, rnd(0-2) + 2 since Pokémon wake up once it ticks to 0.
-	push hl
-	ld a, 3
-	call BattleRandomRange
-	add 2
-	pop hl
-	ld [hl], a
-	call UpdateOpponentInParty
-	call UpdateBattleHuds
-	ld hl, FellAsleepText
-	call StdBattleTextbox
-	jr PostStatus
+	jr SleepTarget
 
 .failed_ineffective
 	call AnimateFailedMove
@@ -5138,6 +5121,23 @@ BattleCommand_sleep:
 	call AnimateFailedMove
 	call PrintDoesntAffect
 	farjp EndAbility
+
+SleepTarget:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+
+	; 1-3 turns of sleep, rnd(0-2) + 2 since Pokémon wake up once it ticks to 0.
+	push hl
+	ld a, 3
+	call BattleRandomRange
+	add 2
+	pop hl
+	ld [hl], a
+	call UpdateOpponentInParty
+	call UpdateBattleHuds
+	ld hl, FellAsleepText
+	call StdBattleTextbox
+	jr PostStatus
 
 CanPoisonTarget:
 	ld a, b

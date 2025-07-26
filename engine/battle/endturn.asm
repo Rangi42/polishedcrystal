@@ -1257,5 +1257,5 @@ HandleYawn:
 	sub $10
 	ret nc
 	call SwitchTurn
-	farcall BattleCommand_sleep.SleepTarget
+	farcall SleepTarget
 	jmp SwitchTurn

@@ -1409,6 +1409,22 @@ CuredDisableWithItem:
 	text "!"
 	prompt
 
+CuredTauntWithItem:
+	text "<USER>"
+	line "cured Taunt"
+	cont "with "
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
+CuredTormentWithItem:
+	text "<USER>"
+	line "cured Torment"
+	cont "with "
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
 StoleText:
 	text "<USER>"
 	line "stole "

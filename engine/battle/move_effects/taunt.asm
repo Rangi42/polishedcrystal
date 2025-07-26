@@ -6,12 +6,10 @@ BattleCommand_taunt:
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyTauntCount
-	ld a, [wEnemyGoesFirst]
 	jr z, .got
 	ld hl, wPlayerTauntCount
-	xor 1
 .got
-	and a
+	farcall CheckOpponentWentFirst
 	; we went first
 	ld b, $30
 	jr z, .order_done
@@ -26,7 +24,8 @@ BattleCommand_taunt:
 	ld [hl], a
 	ld hl, TauntEffectText
 	farcall AnimateCurrentMove
-	jmp StdBattleTextbox
+	call StdBattleTextbox
+	farjp CheckMentalHerb
 
 .failed
 	farjp ButItFailed

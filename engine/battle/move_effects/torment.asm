@@ -13,7 +13,8 @@ BattleCommand_torment:
 	
 	ld hl, TormentEffectText
 	farcall AnimateCurrentMove
-	jmp StdBattleTextbox
+	call StdBattleTextbox
+	farjp CheckMentalHerb
 
 .failed
 	farjp ButItFailed

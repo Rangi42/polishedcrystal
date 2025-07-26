@@ -3,9 +3,7 @@ BattleCommand_yawn:
 	and a
 	jr nz, .failed
 
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	and a
+	farcall CanSleepTarget
 	jr nz, .failed
 
 	ldh a, [hBattleTurn]
