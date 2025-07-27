@@ -25,10 +25,12 @@ BattleCommand_ohko:
 	call GetBattleVar
 	call GetMoveIndexFromID
 	ld a, h
+	assert HIGH(SHEER_COLD) != 0
 	cp HIGH(SHEER_COLD)
 	jr c, .cphl_sheer_cold
 	jr nz, .cphl_sheer_cold
 	ld a, l
+	assert LOW(SHEER_COLD) != 0
 	cp LOW(SHEER_COLD)
 .cphl_sheer_cold
 	jr nz, .ok

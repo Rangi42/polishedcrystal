@@ -415,43 +415,48 @@ DisplayUsedMoveText:
 	ld [hl], a
 
 	call GetMoveIndexFromID
-	assert HIGH(SOLAR_BEAM) == 0
 	ld a, h
+	assert HIGH(SOLAR_BEAM) == 0
 	and a
 	jr nz, .cphl_solar_beam
 	ld a, l
+	assert LOW(SOLAR_BEAM) != 0
 	cp LOW(SOLAR_BEAM)
 .cphl_solar_beam
 	jr z, .chargeup_moves
-	assert HIGH(DIG) == 0
 	ld a, h
+	assert HIGH(DIG) == 0
 	and a
 	jr nz, .cphl_dig
 	ld a, l
+	assert LOW(DIG) != 0
 	cp LOW(DIG)
 .cphl_dig
 	jr z, .chargeup_moves
-	assert HIGH(CURSE) == 0
 	ld a, h
+	assert HIGH(CURSE) == 0
 	and a
 	jr nz, .cphl_curse
 	ld a, l
+	assert LOW(CURSE) != 0
 	cp LOW(CURSE)
 .cphl_curse
 	jr z, .chargeup_moves
-	assert HIGH(FLY) == 0
 	ld a, h
+	assert HIGH(FLY) == 0
 	and a
 	jr nz, .cphl_fly
 	ld a, l
+	assert LOW(FLY) != 0
 	cp LOW(FLY)
 .cphl_fly
 	jr z, .chargeup_moves
-	assert HIGH(SUBSTITUTE) == 0
 	ld a, h
+	assert HIGH(SUBSTITUTE) == 0
 	and a
 	jr nz, .cphl_substitute
 	ld a, l
+	assert LOW(SUBSTITUTE) != 0
 	cp LOW(SUBSTITUTE)
 .cphl_substitute
 	jr nz, .done_special_handling

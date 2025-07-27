@@ -559,13 +559,14 @@ IncreaseMetronomeCount:
 	; Struggle doesn't update last move set but does reset count
 	push hl
 	call GetMoveIndexFromID
-	assert HIGH(STRUGGLE) == 0
 	ld a, h
+	assert HIGH(STRUGGLE) == 0
 	and a
-	jr nz, .cphl_struggle1
+	jr nz, .cphl_struggle
 	ld a, l
+	assert LOW(STRUGGLE) != 0
 	cp LOW(STRUGGLE)
-.cphl_struggle1
+.cphl_struggle
 	pop hl
 	jr z, .done_update_selected_move
 	dec a
@@ -1056,11 +1057,12 @@ IgnoreSleepOnly:
 	call GetBattleVar
 
 	call GetMoveIndexFromID
-	assert HIGH(SLEEP_TALK) == 0
 	ld a, h
+	assert HIGH(SLEEP_TALK) == 0
 	and a
 	jr nz, .cphl_sleep_talk
 	ld a, l
+	assert LOW(SLEEP_TALK) != 0
 	cp LOW(SLEEP_TALK)
 .cphl_sleep_talk
 	ret nz
@@ -1161,13 +1163,14 @@ BattleConsumePP:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(STRUGGLE) == 0
 	ld a, h
+	assert HIGH(STRUGGLE) == 0
 	and a
-	jr nz, .cphl_struggle2
+	jr nz, .cphl_struggle
 	ld a, l
+	assert LOW(STRUGGLE) != 0
 	cp LOW(STRUGGLE)
-.cphl_struggle2
+.cphl_struggle
 	jr z, .end
 
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1807,11 +1810,12 @@ BattleCommand_checkpowder:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(SING) == 0
 	ld a, h
+	assert HIGH(SING) == 0
 	and a
 	jr nz, .cphl_sing
 	ld a, l
+	assert LOW(SING) != 0
 	cp LOW(SING)
 .cphl_sing
 	jr nz, .not_sing
@@ -1823,27 +1827,30 @@ BattleCommand_checkpowder:
 	ret
 
 .not_sing
-	assert HIGH(THUNDER_WAVE) == 0
 	ld a, h
+	assert HIGH(THUNDER_WAVE) == 0
 	and a
 	jr nz, .cphl_thunder_wave
 	ld a, l
+	assert LOW(THUNDER_WAVE) != 0
 	cp LOW(THUNDER_WAVE)
 .cphl_thunder_wave
 	jr z, BattleCommand_resettypematchup
-	assert HIGH(TOXIC) == 0
 	ld a, h
+	assert HIGH(TOXIC) == 0
 	and a
 	jr nz, .cphl_toxic1
 	ld a, l
+	assert LOW(TOXIC) != 0
 	cp LOW(TOXIC)
 .cphl_toxic1
 	jr z, .check_corrosion
-	assert HIGH(POISONPOWDER) == 0
 	ld a, h
+	assert HIGH(POISONPOWDER) == 0
 	and a
 	jr nz, .cphl_poisonpowder
 	ld a, l
+	assert LOW(POISONPOWDER) != 0
 	cp LOW(POISONPOWDER)
 .cphl_poisonpowder
 	jr nz, .powder
@@ -1855,11 +1862,12 @@ BattleCommand_checkpowder:
 	ret z
 	ld a, b
 	call GetMoveIndexFromID
-	assert HIGH(TOXIC) == 0
 	ld a, h
+	assert HIGH(TOXIC) == 0
 	and a
 	jr nz, .cphl_toxic2
 	ld a, l
+	assert LOW(TOXIC) != 0
 	cp LOW(TOXIC)
 .cphl_toxic2
 	jr z, BattleCommand_resettypematchup
@@ -2010,13 +2018,14 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(STRUGGLE) == 0
 	ld a, h
+	assert HIGH(STRUGGLE) == 0
 	and a
-	jr nz, .cphl_struggle3
+	jr nz, .cphl_struggle
 	ld a, l
+	assert LOW(STRUGGLE) != 0
 	cp LOW(STRUGGLE)
-.cphl_struggle3
+.cphl_struggle
 	ret z
 
 	; Immunity might be set already from Prankster
@@ -2175,12 +2184,14 @@ BattleCommand_checkhit:
 	call GetBattleVar
 	call GetMoveIndexFromID
 	ld a, h
+	assert HIGH(SHEER_COLD) != 0
 	cp HIGH(SHEER_COLD)
-	jr c, .cphl_sheer_cold2
-	jr nz, .cphl_sheer_cold2
+	jr c, .cphl_sheer_cold
+	jr nz, .cphl_sheer_cold
 	ld a, l
+	assert LOW(SHEER_COLD) != 0
 	cp LOW(SHEER_COLD)
-.cphl_sheer_cold2
+.cphl_sheer_cold
 	ld d, 30
 	jr nz, .ok
 	; Sheer Cold has base 20% accuracy instead of 30% if used by non-Ice types
@@ -2248,11 +2259,12 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(SWAGGER) == 0
 	ld a, h
+	assert HIGH(SWAGGER) == 0
 	and a
 	jr nz, .cphl_swagger
 	ld a, l
+	assert LOW(SWAGGER) != 0
 	cp LOW(SWAGGER)
 .cphl_swagger
 	jr z, .blocked
@@ -2292,8 +2304,8 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(TOXIC) == 0
 	ld a, h
+	assert HIGH(TOXIC) == 0
 	and a
 	ret nz
 	ld a, l
@@ -2366,16 +2378,17 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
+	ld a, h
 	assert HIGH(THUNDER) == 0
-	ld a, h
 	and a
-	jr nz, .cphl_thunder2
+	jr nz, .cphl_thunder
 	ld a, l
+	assert LOW(THUNDER) != 0
 	cp LOW(THUNDER)
-.cphl_thunder2
+.cphl_thunder
 	ret z
-	assert HIGH(HURRICANE) == 0
 	ld a, h
+	assert HIGH(HURRICANE) == 0
 	and a
 	ret nz
 	ld a, l
@@ -2386,8 +2399,8 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(BLIZZARD) == 0
 	ld a, h
+	assert HIGH(BLIZZARD) == 0
 	and a
 	ret nz
 	ld a, l
@@ -2412,19 +2425,21 @@ BattleCommand_checkhit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(BODY_SLAM) == 0
 	ld a, h
+	assert HIGH(BODY_SLAM) == 0
 	and a
 	jr nz, .cphl_body_slam
 	ld a, l
+	assert LOW(BODY_SLAM) != 0
 	cp LOW(BODY_SLAM)
 .cphl_body_slam
 	ret z
-	assert HIGH(STOMP) == 0
 	ld a, h
+	assert HIGH(STOMP) == 0
 	and a
 	jr nz, .cphl_stomp
 	ld a, l
+	assert LOW(STOMP) != 0
 	cp LOW(STOMP)
 .cphl_stomp
 	ret z
@@ -5339,11 +5354,12 @@ SapHealth:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	call GetMoveIndexFromID
-	assert HIGH(DRAINING_KISS) == 0
 	ld a, h
+	assert HIGH(DRAINING_KISS) == 0
 	and a
 	jr nz, .cphl_draining_kiss
 	ld a, l
+	assert LOW(DRAINING_KISS) != 0
 	cp LOW(DRAINING_KISS)
 .cphl_draining_kiss
 	jr nz, .skip_draining_kiss
@@ -6115,10 +6131,12 @@ BattleCommand_charge:
 	call GetBattleVar
 	call GetMoveIndexFromID
 	ld a, h
+	assert HIGH(SKULL_BASH) != 0
 	cp HIGH(SKULL_BASH)
 	jr c, .cphl_skull_bash
 	jr nz, .cphl_skull_bash
 	ld a, l
+	assert LOW(SKULL_BASH) != 0
 	cp LOW(SKULL_BASH)
 .cphl_skull_bash
 	jr nz, .end
@@ -6280,13 +6298,14 @@ BattleCommand_recoil:
 	call GetBattleVar
 	ld b, a
 	call GetMoveIndexFromID
-	assert HIGH(STRUGGLE) == 0
 	ld a, h
+	assert HIGH(STRUGGLE) == 0
 	and a
-	jr nz, .cphl_struggle4
+	jr nz, .cphl_struggle
 	ld a, l
+	assert LOW(STRUGGLE) != 0
 	cp LOW(STRUGGLE)
-.cphl_struggle4
+.cphl_struggle
 	jr z, .StruggleRecoil
 
 	; For all other moves, potentially disable
@@ -6300,26 +6319,30 @@ BattleCommand_recoil:
 	ld a, b
 	call GetMoveIndexFromID
 	ld a, h
+	assert HIGH(HEAD_SMASH) != 0
 	cp HIGH(HEAD_SMASH)
 	jr c, .cphl_head_smash
 	jr nz, .cphl_head_smash
 	ld a, l
+	assert LOW(HEAD_SMASH) != 0
 	cp LOW(HEAD_SMASH)
 .cphl_head_smash
 	jr z, .OneHalfRecoil
-	assert HIGH(DOUBLE_EDGE) == 0
 	ld a, h
+	assert HIGH(DOUBLE_EDGE) == 0
 	and a
 	jr nz, .cphl_double_edge
 	ld a, l
+	assert LOW(DOUBLE_EDGE) != 0
 	cp LOW(DOUBLE_EDGE)
 .cphl_double_edge
 	jr z, .OneThirdRecoil
-	assert HIGH(FLARE_BLITZ) == 0
 	ld a, h
+	assert HIGH(FLARE_BLITZ) == 0
 	and a
 	jr nz, .cphl_flare_blitz
 	ld a, l
+	assert LOW(FLARE_BLITZ) != 0
 	cp LOW(FLARE_BLITZ)
 .cphl_flare_blitz
 	jr z, .OneThirdRecoil

@@ -20,31 +20,34 @@ CheckBattleAnimSubstitution:
 	ld b, a
 	ld a, [wFXAnimIDLo]
 	ld c, a
-	assert HIGH(FRESH_SNACK) == 0
 	ld a, b
+	assert HIGH(FRESH_SNACK) == 0
 	and a
 	jr nz, .cpbc_fresh_snack
 	ld a, c
+	assert LOW(FRESH_SNACK) != 0
 	cp LOW(FRESH_SNACK)
 .cpbc_fresh_snack
 	ld de, ANIM_MILK_DRINK
 	ld hl, .MilkDrinkUsers
 	jr z, .check_species_list
-	assert HIGH(FURY_STRIKES) == 0
 	ld a, b
+	assert HIGH(FURY_STRIKES) == 0
 	and a
 	jr nz, .cpbc_fury_strikes
 	ld a, c
+	assert LOW(FURY_STRIKES) != 0
 	cp LOW(FURY_STRIKES)
 .cpbc_fury_strikes
 	ld de, ANIM_FURY_ATTACK
 	ld hl, FuryAttackUsers
 	jr z, .check_species_list
-	assert HIGH(DEFENSE_CURL) == 0
 	ld a, b
+	assert HIGH(DEFENSE_CURL) == 0
 	and a
 	jr nz, .cpbc_defense_curl
 	ld a, c
+	assert LOW(DEFENSE_CURL) != 0
 	cp LOW(DEFENSE_CURL)
 .cpbc_defense_curl
 	ret nz

@@ -46,13 +46,14 @@ CheckUniqueWildMove:
 	jr z, .TeachMove ; assume this is a Lapras in UnionCaveB2F
 	ld a, b
 	call GetMoveIndexFromID
-	assert HIGH(SURF) == 0
 	ld a, h
+	assert HIGH(SURF) == 0
 	and a
-	jr nz, .cphl_surf_unique
+	jr nz, .cphl_surf
 	ld a, l
+	assert LOW(SURF) != 0
 	cp LOW(SURF)
-.cphl_surf_unique
+.cphl_surf
 	jr z, .TeachMove ; assume only Pikachu can learn Surf
 
 	call Random
@@ -78,13 +79,14 @@ CheckUniqueWildMove:
 
 	; assume only Pikachu can learn Fly
 	call GetMoveIndexFromID
-	assert HIGH(FLY) == 0
 	ld a, h
+	assert HIGH(FLY) == 0
 	and a
-	jr nz, .cphl_fly_unique
+	jr nz, .cphl_fly
 	ld a, l
+	assert LOW(FLY) != 0
 	cp LOW(FLY)
-.cphl_fly_unique
+.cphl_fly
 	jr z, .UseFlyingPikachu
 	ret
 
