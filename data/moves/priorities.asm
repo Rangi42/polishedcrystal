@@ -10,6 +10,7 @@ MovePriorities:
 	dwb FIRSTIMPRESS,  2
 	dwb AQUA_JET,      1
 	dwb BULLET_PUNCH,  1
+	dwb BABYDOLLEYES,  1
 	dwb ICE_SHARD,     1
 	dwb MACH_PUNCH,    1
 	dwb QUICK_ATTACK,  1

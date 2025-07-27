@@ -1078,6 +1078,13 @@ EvasionUp2:
 	forceraisestat $10 | EVASION
 	endmove
 
+DefenseUp3:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat $20 | DEFENSE
+	endmove
+
 BulkUp:
 	checkobedience
 	usedmovetext

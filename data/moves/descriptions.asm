@@ -418,6 +418,22 @@ MoveDescriptions1:
 	dw NightmareDescription
 	dw IngrainDescription
 	dw ImprisonDescription
+	dw BoneRushDescription
+	dw SubmissionDescription
+	dw SharpenDescription
+	dw BoneClubDescription
+	dw SmogDescription
+	dw MegaPunchDescription
+	dw SlamDescription
+	dw KinesisDescription
+	dw ViseGripDescription
+	dw MegaKickDescription
+	dw AromatherapyDescription
+	dw BabyDollEyesDescription
+	dw CottonGuardDescription
+	dw CovetDescription
+	dw HeatWaveDescription
+	dw HowlDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -522,6 +538,11 @@ ScaleShotDescription:
 	next "hit 2-5 times."
 	done
 
+BoneRushDescription:
+	text "Bone used to"
+	next "strike 2-5 times."
+	done
+
 TakeDownDescription:
 DoubleEdgeDescription:
 WoodHammerDescription:
@@ -541,6 +562,11 @@ HeadSmashDescription:
 	next "hurts the user."
 	done
 
+SubmissionDescription:
+	text "A body slam that"
+	next "hurts the user."
+	done
+
 StompDescription:
 HeadbuttDescription:
 BiteDescription:
@@ -556,6 +582,7 @@ AstonishDescription:
 IcicleCrashDescription:
 RollingKickDescription:
 TwisterDescription:
+BoneClubDescription:
 	text "An attack that may"
 	next "cause flinching."
 	done
@@ -566,6 +593,7 @@ PoisonJabDescription:
 GunkShotDescription:
 CrossPoisonDescription:
 SludgeDescription:
+SmogDescription:
 	text "An attack that may"
 	next "poison the foe."
 	done
@@ -577,6 +605,7 @@ SacredFireDescription:
 ScaldDescription:
 BlazeKickDescription:
 FlameWheelDescription:
+HeatWaveDescription:
 	text "An attack that may"
 	next "inflict a burn."
 	done
@@ -828,6 +857,8 @@ SweetKissDescription:
 	done
 
 MeditateDescription:
+SharpenDescription:
+HowlDescription:
 	text "Raises the user's"
 	next "Attack."
 	done
@@ -858,6 +889,11 @@ BarrierDescription:
 IronDefenseDescription:
 AcidArmorDescription:
 	text "Sharply raises the"
+	next "user's Defense."
+	done
+
+CottonGuardDescription:
+	text "Drastically raises"
 	next "user's Defense."
 	done
 
@@ -918,6 +954,7 @@ CosmicPowerDescription:
 	done
 
 GrowlDescription:
+BabyDollEyesDescription:
 	text "A move that lowers"
 	next "the foe's Attack."
 	done
@@ -1473,6 +1510,7 @@ SketchDescription:
 	done
 
 ThiefDescription:
+CovetDescription:
 	text "An attack that may"
 	next "steal a held item."
 	done
@@ -1578,6 +1616,7 @@ SleepTalkDescription:
 	done
 
 HealBellDescription:
+AromatherapyDescription:
 	text "Eliminates all"
 	next "status problems."
 	done
@@ -1905,4 +1944,29 @@ IngrainDescription:
 ImprisonDescription:
 	text "Prevents foes from"
 	next "using known moves."
+	done
+
+MegaPunchDescription:
+	text "A strong punch"
+	next "thrown very hard."
+	done
+
+MegaKickDescription:
+	text "A strong kick with"
+	next "intense force."
+	done
+
+SlamDescription:
+	text "Slams the foe with"
+	next "a tail, vine, etc."
+	done
+
+KinesisDescription:
+	text "Distracts foe to"
+	next "lower accuracy."
+	done
+
+ViseGripDescription:
+	text "Grips the foe with"
+	next "powerful pincers."
 	done

@@ -54,6 +54,7 @@ MoveEffectsPointers:
 	dw SpecialDefenseUp2
 	dw AccuracyUp2
 	dw EvasionUp2
+	dw DefenseUp3
 	dw BulkUp
 	dw CalmMind
 	dw Growth
