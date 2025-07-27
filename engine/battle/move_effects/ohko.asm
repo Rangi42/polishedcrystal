@@ -18,7 +18,7 @@ BattleCommand_ohko:
 	ld b, a
 .got_levels
 	ld a, b
-	sub a, c
+	sub c
 	jr c, .failed
 
 	ld a, BATTLE_VARS_MOVE
@@ -28,7 +28,7 @@ BattleCommand_ohko:
 	jr nz, .ok
 	; Sheer Cold fails on ice types
 	ld a, ICE
-	farcall CheckIfTargetIsSomeType
+	call CheckIfTargetIsSomeType
 	jr z, .no_effect
 .ok
 	ld a, -1

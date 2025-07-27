@@ -30,20 +30,15 @@ INCLUDE "engine/battle/move_effects/focus_energy.asm"
 INCLUDE "engine/battle/move_effects/foresight.asm"
 INCLUDE "engine/battle/move_effects/future_sight.asm"
 INCLUDE "engine/battle/move_effects/growth.asm"
-INCLUDE "engine/battle/move_effects/heal_bell.asm"
-INCLUDE "engine/battle/move_effects/healinglight.asm"
 INCLUDE "engine/battle/move_effects/hidden_power.asm"
 INCLUDE "engine/battle/move_effects/knock_off.asm"
 INCLUDE "engine/battle/move_effects/leech_seed.asm"
-INCLUDE "engine/battle/move_effects/low_kick.asm"
 INCLUDE "engine/battle/move_effects/magic_bounce.asm"
 INCLUDE "engine/battle/move_effects/mean_look.asm"
 INCLUDE "engine/battle/move_effects/metal_burst.asm"
 INCLUDE "engine/battle/move_effects/metronome.asm"
 INCLUDE "engine/battle/move_effects/minimize.asm"
 INCLUDE "engine/battle/move_effects/pain_split.asm"
-INCLUDE "engine/battle/move_effects/pay_day.asm"
-INCLUDE "engine/battle/move_effects/perish_song.asm"
 INCLUDE "engine/battle/move_effects/protect.asm"
 INCLUDE "engine/battle/move_effects/pursuit.asm"
 INCLUDE "engine/battle/move_effects/rage.asm"
@@ -51,13 +46,11 @@ INCLUDE "engine/battle/move_effects/rapid_spin.asm"
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
 INCLUDE "engine/battle/move_effects/return.asm"
 INCLUDE "engine/battle/move_effects/roar.asm"
-INCLUDE "engine/battle/move_effects/rollout.asm"
 INCLUDE "engine/battle/move_effects/roost.asm"
 INCLUDE "engine/battle/move_effects/safeguard.asm"
 INCLUDE "engine/battle/move_effects/sketch.asm"
 INCLUDE "engine/battle/move_effects/skill_swap.asm"
 INCLUDE "engine/battle/move_effects/sleep_talk.asm"
-INCLUDE "engine/battle/move_effects/spikes.asm"
 INCLUDE "engine/battle/move_effects/splash.asm"
 INCLUDE "engine/battle/move_effects/substitute.asm"
 INCLUDE "engine/battle/move_effects/sucker_punch.asm"
@@ -68,10 +61,8 @@ INCLUDE "engine/battle/move_effects/transform.asm"
 INCLUDE "engine/battle/move_effects/tri_attack.asm"
 INCLUDE "engine/battle/move_effects/trick.asm"
 INCLUDE "engine/battle/move_effects/trick_room.asm"
-INCLUDE "engine/battle/move_effects/triple_kick.asm"
 INCLUDE "engine/battle/move_effects/toxic.asm"
 INCLUDE "engine/battle/move_effects/weather.asm"
-INCLUDE "engine/battle/move_effects/weather_ball.asm"
 
 
 DoTurn:
@@ -214,6 +205,12 @@ BattleCommand_checkturn:
 	ld a, $10 ; 1.0
 	ld [wTypeModifier], a
 
+	; Paranoia nightmare clear check
+	call UpdateNightmare
+	call SwitchTurn
+	call UpdateNightmare
+	call SwitchTurn
+
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	bit SUBSTATUS_RECHARGE, [hl]
@@ -226,6 +223,18 @@ BattleCommand_checkturn:
 	jmp EndTurn
 
 .no_recharge
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_FOCUS_PUNCH
+	jr nz, .no_focus_punch
+	ld a, 1 << PHYSICAL | 1 << SPECIAL
+	farcall HasOpponentDamagedUs
+	jr z, .no_focus_punch
+
+	ld hl, LostFocusText
+	call StdBattleTextbox
+	jmp EndTurn
+.no_focus_punch
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	bit SUBSTATUS_FLINCHED, [hl]
@@ -283,6 +292,9 @@ BattleCommand_checkturn:
 	call StdBattleTextbox
 	; does nothing in case we never showed an ability activation
 	farcall EndAbility
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVarAddr
+	res SUBSTATUS_NIGHTMARE, [hl]
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy1
@@ -314,6 +326,7 @@ BattleCommand_checkturn:
 
 .sleep_bypass_moves
 	dw SLEEP_TALK
+	dw SNORE
 	dw -1
 
 .not_asleep
@@ -396,7 +409,7 @@ BattleCommand_checkturn:
 
 	call HitConfusion
 	call CantMove
-	jr EndTurn
+	jmp EndTurn
 
 .not_confused
 	ld a, BATTLE_VARS_SUBSTATUS1
@@ -419,13 +432,40 @@ BattleCommand_checkturn:
 	ld hl, InfatuationText
 	call StdBattleTextbox
 	call CantMove
-	jr EndTurn
+	jmp EndTurn
 
 .not_infatuated
-	; Are we using a disabled move?
-	call VerifyChosenMove
-	jr nz, .not_disabled
+	; Check sound moves if throat chopped
+	ld hl, wPlayerThroatChopEmbargoCount
+	jr z, .got_throat_chop
+	ld hl, wEnemyThroatChopEmbargoCount
+.got_throat_chop
+	ld a, [hl]
+	and $F0
+	jr z, .not_throat_chopped
 
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	ld hl, SoundMoves
+	ld de, 2
+	call IsInWordArray
+	jr nc, .not_throat_chopped
+
+	call PreventUsedMove
+	ld hl, ThroatChoppedText
+	call StdBattleTextbox
+	call CantMove
+	jmp EndTurn
+	
+.not_throat_chopped
+	; Should skip disable, and taunt
+	call VerifyChosenMove
+	jr nz, .not_taunted
+
+	; Are we using a disabled move?
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerDisableCount]
@@ -447,6 +487,51 @@ BattleCommand_checkturn:
 	jr EndTurn
 
 .not_disabled
+	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IMPRISON, a
+	jr z, .not_imprisoned
+
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	push af
+	call SwitchTurn
+	ld hl, wBattleMonMoves
+	call GetUserMonAttr
+	pop af
+	call UserKnowsMove
+	call SwitchTurn
+	jr nz, .not_imprisoned
+
+	call PreventUsedMove
+	ld hl, ImprisonedText
+	call StdBattleTextbox
+	call CantMove
+	jr EndTurn
+
+.not_imprisoned
+	; Are we taunted?
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp a, STATUS
+	jr nz, .not_taunted
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerTauntCount
+	jr z, .got_taunt
+	ld hl, wEnemyTauntCount
+.got_taunt
+	ld a, [hl]
+	and $F0
+	jr z, .not_taunted
+
+	call PreventUsedMove
+	ld hl, TauntedText
+	call StdBattleTextbox
+	call CantMove
+	jr EndTurn
+
+.not_taunted
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	bit PAR, [hl]
@@ -637,7 +722,7 @@ _ResetTurn:
 	call DoMove
 	jmp EndMoveEffect
 
-MoveDisabled:
+PreventUsedMove:
 	; Make sure any charged moves fail
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
@@ -646,8 +731,10 @@ MoveDisabled:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld [wNamedObjectIndex], a
-	call GetMoveName
+	jmp GetMoveName
 
+MoveDisabled:
+	call PreventUsedMove
 	ld hl, DisabledMoveText
 	jmp StdBattleTextbox
 
@@ -1052,6 +1139,8 @@ IgnoreSleepOnly:
 	call GetMoveIndexFromID
 	cphl SLEEP_TALK
 	ret nz
+	cphl SNORE
+	ret nz
 
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -1065,6 +1154,18 @@ IgnoreSleepOnly:
 	call EndMoveEffect
 
 	scf
+	ret
+
+; Resets nightmare if the user is not asleep
+UpdateNightmare:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	and SLP_MASK
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVarAddr
+	res SUBSTATUS_NIGHTMARE, [hl]
 	ret
 
 BattleCommand_usedmovetext:
@@ -1263,7 +1364,7 @@ BattleCommand_critical:
 
 .ScopeLens:
 	push bc
-	call GetUserItem
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_CRITICAL_UP ; Increased critical chance (Scope Lens and Razor Claw)
 	pop bc
@@ -1380,10 +1481,10 @@ ENDM
 	db -1
 
 CheckAirBalloon:
-; Returns z if the user is holding an Air Balloon
+; Returns z if the target is holding an Air Balloon
 	push bc
 	push hl
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	pop hl
 	ld a, b
 	pop bc
@@ -1501,7 +1602,7 @@ BattleCommand_stab:
 	farcall ApplyDamageAbilities_AfterTypeMatchup
 
 	; Expert Belt
-	call GetUserItem
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_EXPERT_BELT
 	jr nz, .no_expert_belt
@@ -1571,6 +1672,13 @@ CheckAirborne_GotAbility:
 	xor a
 	ret
 .no_gravity
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVar
+	bit SUBSTATUS_INGRAIN, a
+	jr z, .no_ingrain
+	xor a
+	ret
+.no_ingrain
 
 	; Check Iron Ball
 	push bc
@@ -1581,6 +1689,17 @@ CheckAirborne_GotAbility:
 	ld c, a
 	sub HELD_IRON_BALL
 	ret z
+
+	; Check Magnet Rise
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerYawnMagnetRiseCount
+	jr z, .got_magnet_rise
+	ld hl, wEnemyYawnMagnetRiseCount
+.got_magnet_rise
+	ld a, [hl]
+	and $0F
+	jr nz, .airborne
 
 	; d=1 (inverse matchup checks/ring target) skips hardcoded immunity check
 	ld a, d
@@ -2143,7 +2262,7 @@ BattleCommand_checkhit:
 .got_levels
 	ld a, b
 	ld b, 0
-	sub a, c
+	sub c
 	jr c, .finish_accuracy
 	add d
 	ld b, a
@@ -2212,7 +2331,7 @@ BattleCommand_checkhit:
 	ret z
 
 	call GetOpponentSemiInvuln
-	bit SEMI_INVULNERABLE_FLYING, a
+	bit SEMI_INVULNERABLE_FLYING_F, a
 	ld hl, .DigMoves
 	jr nz, .check_move_in_list
 	ld a, 1
@@ -2251,10 +2370,10 @@ BattleCommand_checkhit:
 	call GetOpponentSemiInvuln
 	ret z
 	ld hl, .FlyMoves
-	bit SEMI_INVULNERABLE_FLYING, a
+	bit SEMI_INVULNERABLE_FLYING_F, a
 	jr nz, .check_move_in_list
 	ld hl, .DigMoves
-	bit SEMI_INVULNERABLE_DIGGING, a
+	bit SEMI_INVULNERABLE_DIGGING_F, a
 	jr nz, .check_move_in_list
 	ld hl, .DiveMoves
 .check_move_in_list
@@ -2536,6 +2655,8 @@ BattleCommand_moveanimnosub:
 	jr z, .pursuit
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
+	cp EFFECT_SCALE_SHOT
+	jr z, .multihit
 	cp EFFECT_CONVERSION
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
@@ -2640,6 +2761,8 @@ BattleCommand_failuretext:
 
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
+	cp EFFECT_SCALE_SHOT
+	jr z, .multihit
 	cp EFFECT_TWINEEDLE
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
@@ -2688,7 +2811,7 @@ BattleCommand_applydamage:
 	jr c, .enduring
 
 .cont
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	ld a, b
 	ld b, $3
 	cp HELD_FOCUS_BAND
@@ -3426,7 +3549,7 @@ BattleCommand_posthiteffects:
 	cp STENCH
 	ld c, 10
 	jr z, .do_flinch_up
-	call GetUserItem
+	call GetUserItemAfterUnnerve
 	push bc
 	call GetCurItemName
 	pop bc
@@ -3887,7 +4010,7 @@ endc
 	ret nz
 
 	push bc
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_METAL_POWDER
 	pop bc
@@ -3915,7 +4038,7 @@ UnevolvedEviolite:
 	ret z
 
 	push bc
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	ld a, [hl]
 	cp EVIOLITE
 	pop bc
@@ -4042,7 +4165,8 @@ BattleCommand_damagestats:
 	ret
 
 GetOpponentActiveScreens:
-; Returns the opponent screens after Infiltrator, crits and Brick Break.
+; Returns the effective opponent screens after Infiltrator, crits and Brick Break.
+; Aurora veil is returned as both reflect and light screen in this routine
 	; Brick Break screen breaking is handled later, so that we can avoid it
 	; if the attack is ineffective. Thus, make it ignore screens here.
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -4066,11 +4190,23 @@ GetOpponentActiveScreens:
 	ret z
 	; fallthrough
 .GetScreen:
+	push hl
+	push de
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wEnemyScreens]
-	ret z
-	ld a, [wPlayerScreens]
+	ld a, [wEnemyVeils]
+	ld hl, wEnemyScreens
+	jr z, .got_screens
+	ld a, [wPlayerVeils]
+	ld hl, wPlayerScreens
+.got_screens
+	and VEILS_AURORA_VEIL
+	ld e, a
+	swap e
+	or e
+	or [hl]
+	pop de
+	pop hl
 	ret
 
 TruncateHL_BC:
@@ -4298,6 +4434,8 @@ BattleCommand_damagecalc:
 	; Variable-hit moves and Conversion can have a power of 0.
 	cp EFFECT_MULTI_HIT
 	jr z, .skip_zero_damage_check
+	cp EFFECT_SCALE_SHOT
+	jr z, .skip_zero_damage_check
 	cp EFFECT_CONVERSION
 	jr z, .skip_zero_damage_check
 
@@ -4389,7 +4527,7 @@ BattleCommand_damagecalc:
 
 .no_crit
 	; Item boosts. TODO: move species items here
-	call GetUserItem
+	call GetUserItemAfterUnnerve
 
 	ld a, b
 	cp HELD_TYPE_BOOST
@@ -4456,7 +4594,7 @@ BattleCommand_damagecalc:
 	call MultiplyAndDivide
 	; fallthrough
 .done_attacker_item
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 
 	ld a, b
 	cp HELD_ASSAULT_VEST
@@ -4870,6 +5008,8 @@ SelfInflictDamageToSubstitute:
 	call GetBattleVarAddr
 	cp EFFECT_MULTI_HIT
 	jr z, .ok
+	cp EFFECT_SCALE_SHOT
+	jr z, .ok
 	cp EFFECT_DOUBLE_HIT
 	jr z, .ok
 	cp EFFECT_TWINEEDLE
@@ -4974,21 +5114,7 @@ BattleCommand_sleep:
 	call PlayOpponentBattleAnim
 	ld a, $1
 	ldh [hBGMapMode], a
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-
-	; 1-3 turns of sleep, rnd(0-2) + 2 since Pokémon wake up once it ticks to 0.
-	push hl
-	ld a, 3
-	call BattleRandomRange
-	add 2
-	pop hl
-	ld [hl], a
-	call UpdateOpponentInParty
-	call UpdateBattleHuds
-	ld hl, FellAsleepText
-	call StdBattleTextbox
-	jr PostStatus
+	jr SleepTarget
 
 .failed_ineffective
 	call AnimateFailedMove
@@ -5006,6 +5132,23 @@ BattleCommand_sleep:
 	call AnimateFailedMove
 	call PrintDoesntAffect
 	farjp EndAbility
+
+SleepTarget:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+
+	; 1-3 turns of sleep, rnd(0-2) + 2 since Pokémon wake up once it ticks to 0.
+	push hl
+	ld a, 3
+	call BattleRandomRange
+	add 2
+	pop hl
+	ld [hl], a
+	call UpdateOpponentInParty
+	call UpdateBattleHuds
+	ld hl, FellAsleepText
+	call StdBattleTextbox
+	jr PostStatus
 
 CanPoisonTarget:
 	ld a, b
@@ -5989,7 +6132,6 @@ BattleCommand_charge:
 	inc hl
 	ld b, [hl]
 .got_semi_invuln_type
-	ld b, l
 	ld hl, wPlayerSemiInvulnerableType
 	ldh a, [hBattleTurn]
 	and a
@@ -6016,7 +6158,7 @@ BattleCommand_charge:
 	; ld a, STAT_SKIPTEXT | STAT_SILENT
 	xor a
 	ld b, $00 | DEFENSE
-	farcall _ForceRaiseStat
+	call _ForceRaiseStat
 .end
 	jmp EndMoveEffect
 
@@ -6120,7 +6262,7 @@ BattleCommand_traptarget:
 	push bc
 	push de
 	push hl
-	call GetUserItem
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_PROLONG_WRAP
 	pop hl
@@ -6234,7 +6376,7 @@ BattleCommand_recoil:
 	jr .recoil_floor
 
 BattleCommand_confusetarget:
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_PREVENT_CONFUSE
 	ret z
@@ -6258,7 +6400,7 @@ BattleCommand_confusetarget:
 	jr FinishConfusingTarget
 
 BattleCommand_confuse:
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_PREVENT_CONFUSE
 	jr nz, .no_item_protection
@@ -6467,7 +6609,7 @@ GetItemBoostedDuration:
 	push hl
 	ld c, a
 	push bc
-	call GetUserItem
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp c
@@ -6503,7 +6645,6 @@ ButItFailed:
 
 FailAttract:
 FailForesight:
-FailSpikes:
 PrintDidntAffect2:
 	call AnimateFailedMove
 	; fallthrough
@@ -6579,6 +6720,7 @@ BoostJumptable:
 	dw KNOCK_OFF,  DoKnockOff
 	dw PURSUIT,    DoPursuit
 	dw BRINE,      DoBrine
+	dw PAYBACK,    DoPayback
 	dw -1,
 
 BattleCommand_conditionalboost:
@@ -6648,19 +6790,34 @@ DoBrine:
 	jr z, DoubleDamage
 	ret
 
+DoPayback:
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wEnemyGoesFirst]
+	ld hl, wEnemyTurnsTaken
+	jr z, .got_turn
+	xor 1
+	ld hl, wPlayerTurnsTaken
+.got_turn
+	and a
+	ret z
+	ld a, [hl]
+	and a
+	jr DoubleDamageIfNZ
+
 BattleCommand_doubleflyingdamage:
 	call GetOpponentSemiInvuln
-	bit SEMI_INVULNERABLE_FLYING, a
+	bit SEMI_INVULNERABLE_FLYING_F, a
 	jr DoubleDamageIfNZ
 
 BattleCommand_doubleundergrounddamage:
 	call GetOpponentSemiInvuln
-	bit SEMI_INVULNERABLE_DIGGING, a
+	bit SEMI_INVULNERABLE_DIGGING_F, a
 	jr DoubleDamageIfNZ
 
 BattleCommand_doubledivingdamage:
 	call GetOpponentSemiInvuln
-	bit SEMI_INVULNERABLE_DIVING, a
+	bit SEMI_INVULNERABLE_DIVING_F, a
 	; fallthrough
 DoubleDamageIfNZ:
 	ret z
@@ -6803,6 +6960,16 @@ GetOpponentItemAfterUnnerve:
 GetUserItemAfterUnnerve::
 ; Returns the effect of the user's item in bc, and its id at hl,
 ; unless it's a Berry and Unnerve is in effect.
+	; Check embargo
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wPlayerThroatChopEmbargoCount]
+	jr z, .got_embargo
+	ld a, [wEnemyThroatChopEmbargoCount]
+.got_embargo
+	and $0F
+	jr nz, .item_disabled
+	; Check unnerve
 	call GetUserItem
 	call GetOpponentAbility
 	cp UNNERVE
@@ -6817,6 +6984,7 @@ GetUserItemAfterUnnerve::
 	pop de
 	pop bc
 	ret nc
+.item_disabled
 	ld hl, NoItem
 	ld b, HELD_NONE
 	ret
@@ -7025,3 +7193,29 @@ SemiInvulnerableMoves:
 	dw DIG
 	dw DIVE
 	dw -1
+
+; hl -> user's weight
+; clobbers a, bc, de
+GetUserWeight::
+	call StackCallOpponentTurn
+; hl -> opponents's weight
+; clobbers a, bc, de
+GetOpponentWeight::
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wEnemyMonSpecies
+	jr z, .got_opp_species
+	ld hl, wBattleMonSpecies
+.got_opp_species
+	ld c, [hl]
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
+	farcall GetSpeciesWeight
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LIGHT_METAL
+	ret nz
+	srl h
+	rr l
+	ret

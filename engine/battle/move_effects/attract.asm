@@ -146,6 +146,29 @@ CheckMentalHerb:
 	ld [hl], 0
 
 .disable_done
+	; Check Taunt
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerTauntCount
+	jr z, .got_taunt_vars
+	ld hl, wEnemyTauntCount
+.got_taunt_vars
+	ld a, [hl]
+	and $F0
+	jr z, .taunt_done
+	ld a, [hl]
+	and $0F
+	ld [hl], a
+	set 3, b
+.taunt_done
+	; Check torment
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVarAddr
+	bit SUBSTATUS_TORMENTED, [hl]
+	jr z, .torment_done
+	res SUBSTATUS_TORMENTED, [hl]
+	set 4, b
+.torment_done
 	ld a, b
 	and a
 	ret z
@@ -165,6 +188,12 @@ CheckMentalHerb:
 	call nz, .print
 	bit 2, b
 	ld hl, CuredDisableWithItem
+	call nz, .print
+	bit 3, b
+	ld hl, CuredTauntWithItem
+	call nz, .print
+	bit 4, b
+	ld hl, CuredTormentWithItem
 	call nz, .print
 
 	jmp ConsumeUserItem

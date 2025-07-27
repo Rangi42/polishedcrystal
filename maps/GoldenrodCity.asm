@@ -66,9 +66,20 @@ GoldenrodCity_MapScriptHeader:
 	object_event 20, 23, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityRocket3Text, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 33,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityRocket5Text, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 35, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityRocket6Text, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+if DEF(DEBUG)
+	object_event 16, 28, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, DebugGirl, EVENT_GOLDENROD_CITY_MOVE_TUTOR
+endc
 
 	object_const_def
 	const GOLDENRODCITY_POKEFAN_M2
+
+if DEF(DEBUG)
+DebugGirl:
+	givepokemove QUICK_ATTACK, wPartyMon1, 0
+	givepokemove IMPRISON, wPartyMon1, 1
+	givepokemove BITE, wPartyMon1, 2
+	givepokemove MAGICAL_LEAF, wPartyMon1, 3
+endc
 
 GoldenrodCityFlyPoint:
 	setflag ENGINE_FLYPOINT_GOLDENROD

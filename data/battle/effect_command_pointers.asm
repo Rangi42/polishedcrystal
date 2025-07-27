@@ -171,6 +171,29 @@ BattleCommandPointers:
 	command gravity
 	command mirrormove
 	command clearstats
+	command storedpower
+	command psychoshift
+	command trumpcard
+	command auroraveil
+	command stickyweb
+	command taunt
+	command torment
+	command yawn
+	command magnetrise
+	command throatchop
+	command embargo
+	command checkasleep
+	command psywave
+	command heavyslam
+	command electroball
+	command furycutter
+	command camouflage
+	command naturepower
+	command dragontail
+	command memento
+	command nightmare
+	command ingrain
+	command imprison
 
 	; The following commands have an argument
 	; Argument: check if possible (false) vs perform the action (true)

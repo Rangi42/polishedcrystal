@@ -8,7 +8,9 @@ SoundMoves::
 	dw SCREECH
 	dw SING
 	dw SNARL
+	dw SNORE
 	dw SUPERSONIC
 	dw HEAL_BELL
 	dw METAL_SOUND
+	dw YAWN
 	db -1
