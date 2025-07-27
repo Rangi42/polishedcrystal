@@ -231,9 +231,23 @@ ReadTrainerParty:
 	inc hl
 	ld [de], a
 	inc de
-	cpbc RETURN
+	ld a, b
+	assert HIGH(RETURN) == 0
+	and a
+	jr nz, .cpbc_return
+	ld a, c
+	assert LOW(RETURN) != 0
+	cp LOW(RETURN)
+.cpbc_return
 	jr z, .return ; will pop bc after this
-	cpbc GYRO_BALL
+	ld a, b
+	assert HIGH(GYRO_BALL) == 0
+	and a
+	jr nz, .cpbc_gyro_ball
+	ld a, c
+	assert LOW(GYRO_BALL) != 0
+	cp LOW(GYRO_BALL)
+.cpbc_gyro_ball
 	pop bc
 	jr nz, .done_special_moves
 
