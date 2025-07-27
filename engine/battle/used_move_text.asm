@@ -229,7 +229,7 @@ MoveTable:
 ;	dw FUTURE_SIGHT
 ;	dw ROCK_SMASH
 ;	dw WHIRLPOOL
-
+;
 ;- gen3 moves
 ;	dw FAKE_OUT
 ;	dw HAIL
@@ -256,6 +256,7 @@ MoveTable:
 ;	dw ROCK_TOMB
 ;	dw SILVER_WIND
 ;	dw METAL_SOUND
+;	dw COSMIC_POWER              Missing pointer???
 ;	dw WATER_SPOUT
 ;	dw SIGNAL_BEAM
 ;	dw SHADOW_PUNCH
@@ -285,9 +286,13 @@ MoveTable:
 ;	dw GRAVITY
 ;	dw GYRO_BALL
 ;	dw BRINE
+;	dw PLUCK
 ;	dw METAL_BURST
 ;	dw U_TURN
 ;	dw CLOSE_COMBAT
+;	dw PAYBACK                   Missing pointer???
+;	dw PSYCHO_SHIFT              Missing pointer???
+;	dw TRUMP_CARD                Missing pointer???
 ;	dw GASTRO_ACID
 ;	dw LUCKY_CHANT
 ;	dw WORRY_SEED
@@ -321,27 +326,27 @@ MoveTable:
 ;	dw THUNDER_FANG
 ;	dw ICE_FANG
 ;	dw FIRE_FANG
-	dw SHADOW_SNEAK
-	dw MUD_BOMB
-	dw PSYCHO_CUT
+;	dw SHADOW_SNEAK
+;	dw MUD_BOMB
+;	dw PSYCHO_CUT
 ;	dw ZEN_HEADBUTT
-	dw MIRROR_SHOT
+;	dw MIRROR_SHOT
 ;	dw FLASH_CANNON
 ;	dw TRICK_ROOM
-	dw DRACO_METEOR
-	dw LEAF_STORM
+;	dw DRACO_METEOR
+;	dw LEAF_STORM
 ;	dw POWER_WHIP
-	dw CROSS_POISON
+;	dw CROSS_POISON
 ;	dw GUNK_SHOT
 ;	dw IRON_HEAD
-	dw MAGNET_BOMB
+;	dw MAGNET_BOMB
 ;	dw STONE_EDGE
-	dw GRASS_KNOT
+;	dw GRASS_KNOT
 ;	dw BUG_BITE
-	dw WOOD_HAMMER
+;	dw WOOD_HAMMER
 ;	dw AQUA_JET
-	dw HEAD_SMASH
-	dw OMINOUS_WIND
+;	dw HEAD_SMASH
+;	dw OMINOUS_WIND
 
 ;- gen5 moves
 ;	dw HONE_CLAWS

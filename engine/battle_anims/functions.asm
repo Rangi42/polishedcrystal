@@ -116,6 +116,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_NightSlash
 	dw BattleAnimFunction_RadialMoveOut_Delay
 	dw BattleAnimFunction_RadialMoveOut_VeryFast_NoStop
+	dw BattleAnimFunction_RadialMoveOut_CrossChop
 	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
@@ -4408,6 +4409,81 @@ BattleAnimFunc_RadialStep_NoStop:
 	add hl, bc
 	ld [hl], a
 	ret
+
+BattleAnimFunction_RadialMoveOut_CrossChop:
+	call BattleAnim_AnonJumptable
+
+	dw .InitRadial
+	dw .Step
+	dw .Step_VerySlow ; for Cross Chop
+	dw .Step_Short ; for Cross Chop
+
+.InitRadial:
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	xor a
+	ld [hld], a
+	ld [hl], a ; initial position = 0
+	jmp BattleAnim_IncAnonJumptableIndex
+
+.Step:
+	call .Get_Rad_Pos
+	ld hl, 6.0 ; speed
+	call .Set_Rad_Pos
+	cp 80 ; final position
+	jr .Rad_Move
+
+.Step_VerySlow:
+	call .Get_Rad_Pos
+	ld hl, 0.5 ; speed
+	call .Set_Rad_Pos
+	cp 40 ; final position
+	jr .Rad_Move
+
+.Step_Short:
+	call .Get_Rad_Pos
+	ld hl, 6.0 ; speed
+	call .Set_Rad_Pos
+	cp 60 ; final position
+	jr .Rad_Move
+
+.Get_Rad_Pos:
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	ret 
+
+.Set_Rad_Pos:
+	add hl, de
+	ld a, h
+	ld e, l
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld [hli], a
+	ld [hl], e
+	ret
+
+.Rad_Move:
+	jmp nc, FarDeinitBattleAnimation
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld e, [hl]
+	push de
+	ld a, e
+	farcall Sine
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop de
+	ld a, e
+	farcall Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ret
+
 
 BattleAnimFunc_RadialInit:
 	ld hl, BATTLEANIMSTRUCT_PARAM

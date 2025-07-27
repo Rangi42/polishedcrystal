@@ -272,6 +272,21 @@ if !DEF(MONOCHROME)
 	RGB 26, 10, 29
 	RGB 10, 10, 21
 	RGB 05, 07, 13
+; heatBG
+	RGB 31, 24, 16
+	RGB 31, 24, 02
+	RGB 29, 03, 04
+	RGB 17, 01, 02
+; simplebeam
+	RGB 31, 31, 31
+	RGB 31, 19, 24
+	RGB 31, 31, 31
+	RGB 31, 26, 09
+; strugglebug
+	RGB 31, 31, 31
+	RGB 27, 31, 05
+	RGB 15, 31, 01
+	RGB 00, 12, 12
 else
 rept NUM_CUSTOM_BATTLE_PALETTES - 6
 	MONOCHROME_RGB_FOUR

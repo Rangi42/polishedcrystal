@@ -25,7 +25,7 @@ AnimObjGFX:
 	battleanimgfx 10 ; use AnimBallObjGFX
 	battleanimgfx 18, AnimObjPoisonGFX
 	battleanimgfx 14, AnimObjBubbleGFX
-	battleanimgfx 16, AnimObjNoiseGFX
+	battleanimgfx 18, AnimObjNoiseGFX
 	battleanimgfx  2, AnimObjPowderGFX
 	battleanimgfx 11, AnimObjBeamGFX
 	battleanimgfx  9, AnimObjSpeedGFX
@@ -95,6 +95,16 @@ AnimObjGFX:
 	battleanimgfx  8, AnimObjWeatherBallGFX
 	battleanimgfx 12, AnimObjDepressionGFX
 	battleanimgfx  6, AnimObjRockPolishGFX
+	battleanimgfx 13, AnimObjBigGlowGFX
+	battleanimgfx 13, AnimObjMeteorGFX
+	battleanimgfx  6, AnimObjLeafStormGFX
+	battleanimgfx  6, AnimObjSmallExplosionGFX
+	battleanimgfx 27, AnimObjGrassKnotGFX
+	battleanimgfx  9, AnimObjWoodHammerGFX
+	battleanimgfx 22, AnimObjObjects3GFX
+	battleanimgfx 18, AnimObjDrillGFX
+	battleanimgfx 16, AnimObjHornLeechGFX
+	battleanimgfx  2, AnimObjRazorShellGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

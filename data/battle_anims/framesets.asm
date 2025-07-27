@@ -33,15 +33,15 @@ BattleAnimFrameData:
 	dw .Frameset_PoisonDroplet ; 1e
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20
-	dw .Frameset_SmallBubble ; 21
+	dw .Frameset_SmallBubble             ; BATTLEANIMFRAMESET_SMALL_BUBBLE
 	dw .Frameset_22 ; 22
 	dw .Frameset_23 ; 23
 	dw .Frameset_24 ; 24
 	dw .Frameset_25 ; 25
 	dw .Frameset_26 ; 26
-	dw .Frameset_27 ; 27
-	dw .Frameset_28 ; 28
-	dw .Frameset_29 ; 29
+	dw .Frameset_WaterGun1               ; BATTLEANIMFRAMESET_WATER_GUN_1
+	dw .Frameset_WaterGun2               ; BATTLEANIMFRAMESET_WATER_GUN_2
+	dw .Frameset_WaterGun3               ; BATTLEANIMFRAMESET_WATER_GUN_3
 	dw .Frameset_2a ; 2a
 	dw .Frameset_Powder ; 2b
 	dw .Frameset_2c ; 2c
@@ -166,8 +166,8 @@ BattleAnimFrameData:
 	dw .Frameset_MorningSun              ; BATTLEANIMFRAMESET_MORNING_SUN
 	dw .Frameset_Glimmer                 ; BATTLEANIMFRAMESET_GLIMMER
 	dw .Frameset_a5 ; a5
-	dw .Frameset_a6 ; a6
-	dw .Frameset_a7 ; a7
+	dw .Frameset_CrossChop1              ; BATTLEANIMFRAMESET_CROSS_CHOP_1
+	dw .Frameset_CrossChop2              ; BATTLEANIMFRAMESET_CROSS_CHOP_2
 	dw .Frameset_a8 ; a8
 	dw .Frameset_a9 ; a9
 	dw .Frameset_aa ; aa
@@ -214,7 +214,8 @@ BattleAnimFrameData:
 	dw .Frameset_BigWhip                 ; BATTLEANIMFRAMESET_BIG_WHIP
 	dw .Frameset_SwirlShort              ; d0
 	dw .Frameset_SmallGlow               ; d1
-	dw .Frameset_BigGlowClear            ; d2
+	dw .Frameset_BigGlow                 ; BATTLEANIMFRAMESET_BIG_GLOW
+	dw .Frameset_BigGlowClear            ; BATTLEANIMFRAMESET_BIG_GLOW_CLEAR
 	dw .Frameset_Berry                   ; d3
 	dw .Frameset_StatUp                  ; d4
 	dw .Frameset_StatDown                ; d5
@@ -227,7 +228,6 @@ BattleAnimFrameData:
 	dw .Frameset_OctazookaSmoke          ; BATTLEANIMFRAMESET_OCTAZOOKA_SMOKE
 	dw .Frameset_InkSplash               ; BATTLEANIMFRAMESET_INK_SPLASH
 	dw .Frameset_SmokePuff               ; BATTLEANIMFRAMESET_SMOKE_PUFF
-	dw .Frameset_BubbleSplash            ; BATTLEANIMFRAMESET_BUBBLE_SPLASH
 	dw .Frameset_DropletR                ; BATTLEANIMFRAMESET_DROPLET_R
 	dw .Frameset_DropletL                ; BATTLEANIMFRAMESET_DROPLET_L
 	dw .Frameset_SmellingSalt_Surprised  ; BATTLEANIMFRAMESET_SMELLINGSALT_SURPRISED
@@ -275,6 +275,20 @@ BattleAnimFrameData:
 	dw .Frameset_VacuumShrinking         ; BATTLEANIMFRAMESET_VACUUM_SHRINKING
 	dw .Frameset_ShadowSneak             ; BATTLEANIMFRAMESET_SHADOW_SNEAK
 	dw .Frameset_MudBomb                 ; BATTLEANIMFRAMESET_MUD_BOMB
+	dw .Frameset_BigWhip_NE              ; BATTLEANIMFRAMESET_BIG_WHIP_NE
+	dw .Frameset_MeteorBig               ; BATTLEANIMFRAMESET_METEOR_BIG
+	dw .Frameset_MeteorSmall             ; BATTLEANIMFRAMESET_METEOR_SMALL
+	dw .Frameset_LeafStormBigLeaf        ; BATTLEANIMFRAMESET_LEAF_STORM_BIG_LEAF
+	dw .Frameset_LeafStormSmallLeaf      ; BATTLEANIMFRAMESET_LEAF_STORM_SMALL_LEAF
+	dw .Frameset_MagnetBomb              ; BATTLEANIMFRAMESET_MAGNET_BOMB
+	dw .Frameset_ExplosionSmall          ; BATTLEANIMFRAMESET_EXPLOSION_SMALL
+	dw .Frameset_Grassknot               ; BATTLEANIMFRAMESET_GRASS_KNOT
+	dw .Frameset_WoodHammer              ; BATTLEANIMFRAMESET_WOOD_HAMMER
+	dw .Frameset_ClearSmog               ; BATTLEANIMFRAMESET_CLEAR_SMOG
+	dw .Frameset_StruggleBug             ; BATTLEANIMFRAMESET_STRUGGLE_BUG
+	dw .Frameset_DrillRun                ; BATTLEANIMFRAMESET_DRILL_RUN
+	dw .Frameset_UproarNote              ; BATTLEANIMFRAMESET_UPROAR_NOTE
+	dw .Frameset_BigWhip2                ; BATTLEANIMFRAMESET_BIG_WHIP_2
 
 
 ; VAR3 animations start here -------
@@ -588,16 +602,16 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_24,  8
 	battleoamend
 
-.Frameset_27:
+.Frameset_WaterGun1:
 	battleoamframe BATTLEANIMOAMSET_25,  8
 	battleoamend
 
-.Frameset_28:
+.Frameset_WaterGun2:
 	battleoamframe BATTLEANIMOAMSET_26,  8
 	battleoamframe BATTLEANIMOAMSET_27,  8
 	battleoamend
 
-.Frameset_29:
+.Frameset_WaterGun3:
 	battleoamframe BATTLEANIMOAMSET_28,  8
 	battleoamframe BATTLEANIMOAMSET_29,  8
 	battleoamdelete
@@ -1249,41 +1263,13 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_C2, 32
 	battleoamdelete
 
-.Frameset_a6:
-	battleoamframe BATTLEANIMOAMSET_4B,  2
-	battleoamframe BATTLEANIMOAMSET_4C,  2
-	battleoamframe BATTLEANIMOAMSET_4D, 32
-	battleoamframe BATTLEANIMOAMSET_4D, 32
-	battleoamframe BATTLEANIMOAMSET_4D, 32
-	battleoamframe BATTLEANIMOAMSET_4F,  1
-	battleoamframe BATTLEANIMOAMSET_50,  1
-	battleoamframe BATTLEANIMOAMSET_51,  1
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2
-	battleoamdelete
+.Frameset_CrossChop1:
+	battleoamframe BATTLEANIMOAMSET_94, 8
+	battleoamend
 
-.Frameset_a7:
-	battleoamframe BATTLEANIMOAMSET_4B,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4C,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4D, 32, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4D, 32, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4D, 32, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_4F,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_50,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_51,  1, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamwait 2
-	battleoamframe BATTLEANIMOAMSET_52,  2, OAM_X_FLIP, OAM_Y_FLIP
-	battleoamdelete
+.Frameset_CrossChop2:
+	battleoamframe BATTLEANIMOAMSET_94, 8, OAM_X_FLIP
+	battleoamend
 
 .Frameset_a8:
 	battleoamframe BATTLEANIMOAMSET_C3,  1
@@ -1559,6 +1545,11 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_53,  1
 	battleoamrestart
 
+.Frameset_BigGlow:
+	battleoamframe BATTLEANIMOAMSET_110,  1
+	battleoamframe BATTLEANIMOAMSET_111,  1
+	battleoamrestart
+
 .Frameset_BigGlowClear:
 	battleoamframe BATTLEANIMOAMSET_DD, 1
 	battleoamframe BATTLEANIMOAMSET_DC, 1
@@ -1630,10 +1621,6 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_21,  2
 	battleoamframe BATTLEANIMOAMSET_1B,  2
 	battleoamdelete
-
-.Frameset_BubbleSplash:
-	battleoamframe BATTLEANIMOAMSET_20,  8
-	battleoamend
 
 .Frameset_DropletR:
 	battleoamframe BATTLEANIMOAMSET_E0,  16
@@ -1968,9 +1955,94 @@ BattleAnimFrameData:
 
 .Frameset_ShadowSneak:
 	battleoamwait 8
-	battleoamframe BATTLEANIMOAMSET_10E,10
-	battleoamframe BATTLEANIMOAMSET_10F,10
-	battleoamframe BATTLEANIMOAMSET_BC, 32
+	battleoamframe BATTLEANIMOAMSET_10E, 10
+	battleoamframe BATTLEANIMOAMSET_10F, 10
+	battleoamframe BATTLEANIMOAMSET_BC,  32
 	battleoamend
 
+.Frameset_MudBomb:
+	battleoamframe BATTLEANIMOAMSET_MUD_BOMB,  1
+	battleoamend
 
+.Frameset_BigWhip_NE:
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  8, OAM_Y_FLIP
+	battleoamend
+
+.Frameset_MeteorBig:
+	battleoamframe BATTLEANIMOAMSET_CD,  14
+	battleoamdelete
+
+.Frameset_MeteorSmall:
+	battleoamframe BATTLEANIMOAMSET_03,  30
+	battleoamdelete
+
+.Frameset_LeafStormBigLeaf:
+	battleoamframe BATTLEANIMOAMSET_1B,  1
+	battleoamframe BATTLEANIMOAMSET_1B,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_1B,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_1B,  1, OAM_Y_FLIP
+	battleoamrestart
+
+.Frameset_LeafStormSmallLeaf:
+	battleoamframe BATTLEANIMOAMSET_0F,  1
+	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_0F,  1, OAM_Y_FLIP
+	battleoamrestart
+
+.Frameset_MagnetBomb:
+	battleoamwait 4
+	battleoamframe BATTLEANIMOAMSET_0F,  54
+	battleoamdelete
+
+.Frameset_Grassknot:
+	battleoamframe BATTLEANIMOAMSET_112, 22
+	battleoamframe BATTLEANIMOAMSET_CE,   2
+	battleoamframe BATTLEANIMOAMSET_CD,   2
+	battleoamend
+
+.Frameset_WoodHammer:
+	battleoamframe BATTLEANIMOAMSET_CD,  2
+	battleoamframe BATTLEANIMOAMSET_CD,  2, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_CD,  2, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_CD,  2, OAM_Y_FLIP
+	battleoamrestart
+
+.Frameset_ExplosionSmall:
+	battleoamframe BATTLEANIMOAMSET_55,  2
+	battleoamframe BATTLEANIMOAMSET_54,  2
+	battleoamframe BATTLEANIMOAMSET_53,  2
+	battleoamdelete
+
+.Frameset_ClearSmog:
+	battleoamframe BATTLEANIMOAMSET_20,  2
+	battleoamframe BATTLEANIMOAMSET_21,  2
+	battleoamframe BATTLEANIMOAMSET_1B,  2
+	battleoamend
+
+.Frameset_StruggleBug:
+	battleoamframe BATTLEANIMOAMSET_20, 3
+	battleoamframe BATTLEANIMOAMSET_20, 3, OAM_Y_FLIP
+	battleoamrestart
+
+.Frameset_DrillRun:
+	battleoamframe BATTLEANIMOAMSET_113,  1
+	battleoamframe BATTLEANIMOAMSET_114,  1
+	battleoamframe BATTLEANIMOAMSET_115,  1
+	battleoamrestart
+
+.Frameset_UproarNote:
+	battleoamwait 6
+	battleoamframe BATTLEANIMOAMSET_116,  16
+	battleoamdelete
+
+.Frameset_BigWhip2:
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_X_FLIP, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_3,  1, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_Y_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_2,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_3,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_2,  1, OAM_X_FLIP
+	battleoamrestart

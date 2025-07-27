@@ -305,40 +305,40 @@ endc
 	dba BattleAnim_PoisonFang      ; POISON_FANG   
 	dba BattleAnim_Struggle        ; PSYCHIC_FANGS 
 
-	dba BattleAnim_Struggle        ; INFERNO
+	dba BattleAnim_Inferno         ; INFERNO
 	dba BattleAnim_Overheat        ; OVERHEAT
 	dba BattleAnim_BlazeKick       ; BLAZE_KICK
 	dba BattleAnim_Bubble          ; BUBBLE
 	dba BattleAnim_MuddyWater      ; MUDDY_WATER
 	dba BattleAnim_Clamp           ; CLAMP
 	dba BattleAnim_Struggle        ; FLIP_TURN
-	dba BattleAnim_Struggle        ; RAZOR_SHELL
+	dba BattleAnim_RazorShell      ; RAZOR_SHELL
 	dba BattleAnim_Dive            ; DIVE
 	dba BattleAnim_Withdraw        ; WITHDRAW
-	dba BattleAnim_Struggle        ; LEAF_STORM
-	dba BattleAnim_Struggle        ; COTTON_SPORE
+	dba BattleAnim_LeafStorm       ; LEAF_STORM
+	dba BattleAnim_CottonSpore     ; COTTON_SPORE
 	dba BattleAnim_ShockWave       ; SHOCK_WAVE
-	dba BattleAnim_Struggle        ; PSYSHOCK
-	dba BattleAnim_Struggle        ; PSYCHO_CUT
+	dba BattleAnim_Psyshock        ; PSYSHOCK
+	dba BattleAnim_PsychoCut       ; PSYCHO_CUT
 	dba BattleAnim_Meditate        ; MEDITATE
 	dba BattleAnim_IceBall         ; ICE_BALL
-	dba BattleAnim_Struggle        ; DUAL_CHOP
+	dba BattleAnim_DualChop        ; DUAL_CHOP
 	dba BattleAnim_Struggle        ; BREAK_SWIPE
-	dba BattleAnim_Struggle        ; DRACO_METEOR
+	dba BattleAnim_DracoMeteor     ; DRACO_METEOR
 	dba BattleAnim_IronDefense     ; IRON_DEFENSE
 	dba BattleAnim_MetalSound      ; METAL_SOUND
-	dba BattleAnim_Struggle        ; MIRROR_SHOT
-	dba BattleAnim_Struggle        ; MAGNET_BOMB
+	dba BattleAnim_MirrorShot      ; MIRROR_SHOT
+	dba BattleAnim_MagnetBomb      ; MAGNET_BOMB
 	dba BattleAnim_MetalBurst      ; METAL_BURST
 	dba BattleAnim_Struggle        ; INFESTATION
-	dba BattleAnim_Struggle        ; STRUGGLE_BUG
-	dba BattleAnim_Struggle        ; QUIVER_DANCE
+	dba BattleAnim_StruggleBug     ; STRUGGLE_BUG
+	dba BattleAnim_QuiverDance     ; QUIVER_DANCE
 	dba BattleAnim_RockTomb        ; ROCK_TOMB
 	dba BattleAnim_RockPolish      ; ROCK_POLISH
-	dba BattleAnim_Struggle        ; DRILL_RUN
+	dba BattleAnim_DrillRun        ; DRILL_RUN
 	dba BattleAnim_MudShot         ; MUD_SHOT
 	dba BattleAnim_SandAttack      ; SAND_ATTACK
-	dba BattleAnim_Struggle        ; CROSS_POISON
+	dba BattleAnim_CrossPoison     ; CROSS_POISON
 	dba BattleAnim_PoisonGas       ; POISON_GAS
 	dba BattleAnim_AcidArmor       ; ACID_ARMOR
 	dba BattleAnim_Bounce          ; BOUNCE
@@ -369,11 +369,11 @@ endc
 	dba BattleAnim_Block           ; BLOCK
 	dba BattleAnim_Revenge         ; REVENGE
 	dba BattleAnim_VacuumWave      ; VACUUM_WAVE
-	dba BattleAnim_Struggle        ; CLEAR_SMOG
+	dba BattleAnim_ClearSmog       ; CLEAR_SMOG
 	dba BattleAnim_Sludge          ; SLUDGE
 	dba BattleAnim_SandTomb        ; SAND_TOMB
 	dba BattleAnim_MudBomb         ; MUD_BOMB
-	dba BattleAnim_Struggle        ; HEAD_SMASH
+	dba BattleAnim_HeadSmash       ; HEAD_SMASH
 	dba BattleAnim_Twineedle       ; TWINEEDLE
 	dba BattleAnim_Struggle        ; FIRSTIMPRESS
 	dba BattleAnim_SilverWind      ; SILVER_WIND
@@ -381,25 +381,25 @@ endc
 	dba BattleAnim_SpiderWeb       ; SPIDER_WEB
 	dba BattleAnim_ShadowSneak     ; SHADOW_SNEAK
 	dba BattleAnim_ShadowPunch     ; SHADOW_PUNCH
-	dba BattleAnim_Struggle        ; OMINOUS_WIND
+	dba BattleAnim_OminousWind     ; OMINOUS_WIND
 	dba BattleAnim_FlameWheel      ; FLAME_WHEEL
 	dba BattleAnim_MagicalLeaf     ; MAGICAL_LEAF
 	dba BattleAnim_BulletSeed      ; BULLET_SEED
-	dba BattleAnim_Struggle        ; HORN_LEECH
+	dba BattleAnim_HornLeech       ; HORN_LEECH
 	dba BattleAnim_LeafBlade       ; LEAF_BLADE
-	dba BattleAnim_Struggle        ; WOOD_HAMMER
+	dba BattleAnim_WoodHammer      ; WOOD_HAMMER
 	dba BattleAnim_Struggle        ; SOLAR_BLADE
-	dba BattleAnim_Struggle        ; ELECTROWEB
+	dba BattleAnim_Electroweb      ; ELECTROWEB
 	dba BattleAnim_PowderSnow      ; POWDER_SNOW
 	dba BattleAnim_Twister         ; TWISTER
-	dba BattleAnim_Struggle        ; SNARL
+	dba BattleAnim_Snarl           ; SNARL
 	dba BattleAnim_Struggle        ; FAIRY_WIND
 
 	dba BattleAnim_Mist            ; MIST
 	dba BattleAnim_LuckyChant      ; LUCKY_CHANT
 	dba BattleAnim_Brine           ; BRINE
 	dba BattleAnim_GastroAcid      ; GASTRO_ACID
-	dba BattleAnim_Struggle        ; SIMPLE_BEAM
+	dba BattleAnim_SimpleBeam      ; SIMPLE_BEAM
 	dba BattleAnim_WorrySeed       ; WORRY_SEED
 	dba BattleAnim_Recycle         ; RECYCLE
 	dba BattleAnim_Fissure         ; FISSURE
@@ -414,15 +414,15 @@ endc
 	dba BattleAnim_SkyAttack       ; SKY_ATTACK
 	dba BattleAnim_RazorWind       ; RAZOR_WIND
 	dba BattleAnim_Endeavor        ; ENDEAVOR
-	dba BattleAnim_Struggle        ; LOCK_ON
-	dba BattleAnim_Struggle        ; MIND_READER
-	dba BattleAnim_Struggle        ; SOAK
+	dba BattleAnim_LockOn          ; LOCK_ON
+	dba BattleAnim_MindReader      ; MIND_READER
+	dba BattleAnim_Soak            ; SOAK
 	dba BattleAnim_Struggle        ; BURN_UP
 	dba BattleAnim_Gravity         ; GRAVITY
-	dba BattleAnim_Struggle        ; GRASS_KNOT
+	dba BattleAnim_GrassKnot       ; GRASS_KNOT
 	dba BattleAnim_Struggle        ; MIRROR_MOVE
 	dba BattleAnim_Struggle        ; INCINERATE
-	dba BattleAnim_Struggle        ; PLUCK
+	dba BattleAnim_Pluck           ; PLUCK
 	dba BattleAnim_Struggle        ; STORED_POWER
 	dba BattleAnim_Struggle        ; COSMIC_POWER
 	dba BattleAnim_Struggle        ; PSYCHO_SHIFT
