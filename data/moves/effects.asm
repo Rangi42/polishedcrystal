@@ -3023,7 +3023,6 @@ Memento:
 
 FocusPunch:
 	checkobedience
-	focuspunch
 	usedmovetext
 	doturn
 	hastarget

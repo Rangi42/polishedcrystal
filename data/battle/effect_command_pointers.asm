@@ -191,7 +191,6 @@ BattleCommandPointers:
 	command naturepower
 	command dragontail
 	command memento
-	command focuspunch
 	command nightmare
 	command ingrain
 	command imprison

@@ -30,7 +30,6 @@ INCLUDE "engine/battle/move_effects/focus_energy.asm"
 INCLUDE "engine/battle/move_effects/foresight.asm"
 INCLUDE "engine/battle/move_effects/future_sight.asm"
 INCLUDE "engine/battle/move_effects/growth.asm"
-INCLUDE "engine/battle/move_effects/healinglight.asm"
 INCLUDE "engine/battle/move_effects/hidden_power.asm"
 INCLUDE "engine/battle/move_effects/knock_off.asm"
 INCLUDE "engine/battle/move_effects/leech_seed.asm"
@@ -224,6 +223,18 @@ BattleCommand_checkturn:
 	jmp EndTurn
 
 .no_recharge
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_FOCUS_PUNCH
+	jr nz, .no_focus_punch
+	ld a, 1 << PHYSICAL | 1 << SPECIAL
+	farcall HasOpponentDamagedUs
+	jr z, .no_focus_punch
+
+	ld hl, LostFocusText
+	call StdBattleTextbox
+	jmp EndTurn
+.no_focus_punch
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	bit SUBSTATUS_FLINCHED, [hl]

@@ -32,7 +32,7 @@ BattleCommand_healweather:
 	ld a, $2
 .got_anim
 	ld [wBattleAnimParam], a
-	call AnimateCurrentMove
+	farcall AnimateCurrentMove
 
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
@@ -57,6 +57,6 @@ BattleCommand_healweather:
 	jmp StdBattleTextbox
 
 .full
-	call AnimateFailedMove
+	farcall AnimateFailedMove
 	ld hl, HPIsFullText
 	jmp StdBattleTextbox
