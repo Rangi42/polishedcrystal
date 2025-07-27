@@ -424,6 +424,22 @@ endc
 	const NIGHTMARE     ; $19A
 	const INGRAIN       ; $19B
 	const IMPRISON      ; $19C
+	const BONE_RUSH     ; $19D
+	const SUBMISSION    ; $19E
+	const SHARPEN       ; $19F
+	const BONE_CLUB     ; $1A0
+	const SMOG          ; $1A1
+	const MEGA_PUNCH    ; $1A2
+	const SLAM          ; $1A3
+	const KINESIS       ; $1A4
+	const VISE_GRIP     ; $1A5
+	const MEGA_KICK     ; $1A6
+	const AROMATHERAPY  ; $1A7
+	const BABYDOLLEYES  ; $1A8
+	const COTTON_GUARD  ; $1A9
+	const COVET         ; $1AA
+	const HEAT_WAVE     ; $1AB
+	const HOWL          ; $1AC
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

@@ -500,4 +500,20 @@ endc
 	move EFFECT_NIGHTMARE,           0, GHOST,     100, 15,   0, STATUS   ; NIGHTMARE
 	move EFFECT_INGRAIN,             0, GRASS,      -1, 20,   0, STATUS   ; INGRAIN
 	move EFFECT_IMPRISON,            0, PSYCHIC,    -1, 10,   0, STATUS   ; IMPRISON
+	move EFFECT_MULTI_HIT,          25, GROUND,     90, 10,   0, PHYSICAL ; BONE_RUSH
+	move EFFECT_RECOIL_HIT,         80, FIGHTING,   80, 20,   0, PHYSICAL ; SUBMISSION
+	move EFFECT_ATTACK_UP,           0, NORMAL,     -1, 30,   0, STATUS   ; SHARPEN
+	move EFFECT_FLINCH_HIT,         65, GROUND,     85, 20,  10, PHYSICAL ; BONE_CLUB
+	move EFFECT_POISON_HIT,         30, POISON,     70, 20,  40, SPECIAL  ; SMOG
+	move EFFECT_NORMAL_HIT,         80, NORMAL,     85, 20,   0, PHYSICAL ; MEGA_PUNCH
+	move EFFECT_NORMAL_HIT,         80, NORMAL,     75, 20,   0, PHYSICAL ; SLAM
+	move EFFECT_ACCURACY_DOWN,       0, PSYCHIC,    80, 15,   0, STATUS   ; KINESIS
+	move EFFECT_NORMAL_HIT,         55, NORMAL,    100, 30,   0, PHYSICAL ; VISE_GRIP
+	move EFFECT_NORMAL_HIT,        120, NORMAL,     75,  5,   0, PHYSICAL ; MEGA_KICK
+	move EFFECT_HEAL_BELL,           0, NORMAL,     -1,  5,   0, STATUS   ; AROMATHERAPY
+	move EFFECT_ATTACK_DOWN,         0, FAIRY,     100, 30,   0, STATUS   ; BABYDOLLEYES
+	move EFFECT_DEFENSE_UP_3,        0, GRASS,      -1, 10,   0, STATUS   ; COTTON_GUARD
+	move EFFECT_THIEF,              60, NORMAL,    100, 25,   0, PHYSICAL ; COVET
+	move EFFECT_BURN_HIT,           95, FIRE,       90, 10,  10, SPECIAL  ; HEAT_WAVE
+	move EFFECT_ATTACK_UP,           0, NORMAL,     -1, 40,   0, STATUS   ; HOWL
 .IndirectEnd::

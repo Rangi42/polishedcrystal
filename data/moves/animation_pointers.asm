@@ -452,4 +452,20 @@ endc
 	dba BattleAnim_Struggle        ; NIGHTMARE
 	dba BattleAnim_Struggle        ; INGRAIN
 	dba BattleAnim_Struggle        ; IMPRISON
+	dba BattleAnim_Struggle        ; BONE_RUSH
+	dba BattleAnim_Struggle        ; SUBMISSION
+	dba BattleAnim_Struggle        ; SHARPEN
+	dba BattleAnim_Struggle        ; BONE_CLUB
+	dba BattleAnim_Struggle        ; SMOG
+	dba BattleAnim_Struggle        ; MEGA_PUNCH
+	dba BattleAnim_Struggle        ; SLAM
+	dba BattleAnim_Struggle        ; KINESIS
+	dba BattleAnim_Struggle        ; VISE_GRIP
+	dba BattleAnim_Struggle        ; MEGA_KICK
+	dba BattleAnim_Struggle        ; AROMATHERAPY
+	dba BattleAnim_Struggle        ; BABYDOLLEYES
+	dba BattleAnim_Struggle        ; COTTON_GUARD
+	dba BattleAnim_Struggle        ; COVET
+	dba BattleAnim_Struggle        ; HEAT_WAVE
+	dba BattleAnim_Struggle        ; HOWL
 	assert_table_length NUM_ATTACKS + 1
