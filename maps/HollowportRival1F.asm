@@ -6,18 +6,18 @@ HollowportRival1F_MapScriptHeader:
 	def_warp_events
 	warp_event  4,  7, HOLLOWPORT, 3
 	warp_event  5,  7, HOLLOWPORT, 3
-	warp_event  5,  0, HOLLOWPORT_RIVAL_2F, 1
+	warp_event  1,  0, HOLLOWPORT_RIVAL_2F, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 10,  1, BGEVENT_UP, RivalsFridgeScript
-	bg_event  8,  1, BGEVENT_JUMPTEXT, RivalsSinkText
-	bg_event  9,  1, BGEVENT_JUMPTEXT, RivalsStoveText
-	bg_event  6,  1, BGEVENT_UP, RivalsTVScript
+	bg_event  6,  1, BGEVENT_UP, RivalsFridgeScript
+	bg_event  7,  1, BGEVENT_JUMPTEXT, RivalsSinkText
+	bg_event  8,  1, BGEVENT_JUMPTEXT, RivalsStoveText
+	bg_event  4,  1, BGEVENT_UP, RivalsTVScript
 
 	def_object_events
-	; object_event  2,  4, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, RivalsDadScript, -1
+	object_event 10,  2, SPRITE_DAD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RivalsDadHelpingText, -1
 
 ; RivalsDadScript:
 ; 	faceplayer

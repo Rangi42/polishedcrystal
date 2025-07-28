@@ -8,8 +8,8 @@ RiverfrontApt1F_MapScriptHeader:
 	warp_event  0,  5, OLSTEETON, 10
 	warp_event  9,  4, OLSTEETON, 11
 	warp_event  9,  5, OLSTEETON, 12
-	; warp_event  6,  4, RIVERFRONT_APT_2F, 1
-	; warp_event  5,  0, GOLDENROD_DEPT_STORE_ELEVATOR, 1
+	warp_event  9,  2, RIVERFRONT_APT_2F, 1
+	warp_event  5,  0, RIVERFRONT_APT_ELEVATOR, 1
 
 	def_coord_events
 
@@ -49,14 +49,14 @@ RiverfrontApt1FBugCatcherText:
 RiverfrontApt1FDirectoryText:
 	text "1F Lobby"
 
-	para "2F Marcus, Ann"
-	line "Isabelle, Tom"
+	para "2F Jacob, Zach"
+	line "Isabelle"
 
-	para "3F Jason, Alex"
-	line "James, VACANT"
+	para "3F James, Alex"
+	line "VACANT"
 
-	para "4F Sav, PRIVATE"
-	line "Julia, Rusty"
+	para "4F Rebecca,"
+	line "PRIVATE, Amanda"
 
 	para "5F Penthouse"
 

@@ -114,53 +114,22 @@ MotherEventScript:
 SisTrigger:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_SISTER, 15
+	sjumpfwd SisterScript
+
+SisterScript:
+	checkevent EVENT_PLAYERS_SISTER
+	iftruefwd SisScript
+	opentext
+	writetext SisterIntroText
+	closetext
+	end
+
+SisScript:
 	turnobject PLAYER, DOWN
 	showtext SisterTVText
 	applyonemovement PLAYER, step_left
 	special RestartMapMusic
 	end
-
-PlayerHouse1FFridgeText:
-	text "Let's see what's"
-	line "in the fridge…"
-
-	para "Sweet Tea and"
-	line "tasty Lemonade!"
-	done
-
-PlayerHouse1FSinkText:
-	text "Ugh, I hate"
-	line "washing dishes"
-	done
-
-PlayerHouse1FStoveText:
-	text "Mom's specialty!"
-
-	para "Combusken &"
-	line "Dumplins!"
-	done
-
-PlayerHouse1FTVScript:
-	jumpthistext
-
-	text "There's a show on"
-	line "TV: An armor clad"
-
-	para "knight rides a"
-	line "Charizard into bat-"
-
-	para "tle. I'd better go"
-	line "before I get"
-	cont "sucked in!"
-	done
-
-SisterTVText:
-	text "HEY!"
-
-	para "Move! I'm watching"
-	line "this!"
-	done
-
 
 MotherScript:
 	faceplayer
@@ -178,12 +147,7 @@ end
 	sjump MotherEventScript
 
 MotherIntroText:
-; if DEF(DEBUG)
-; 	text "Don't forget to use"
-; 	line "your debug radio!"
-; 	done
-; else
-	text "Oh, <PLAYER>!"
+	para "Oh, <PLAYER>!"
 	line "You're awake."
 
 	para "Your friend"
@@ -299,6 +263,54 @@ DadText:
 	para "I wonder what"
 	line "they're study-"
 	cont "ing here."
+	done
+
+	PlayerHouse1FFridgeText:
+	text "Let's see what's"
+	line "in the fridge…"
+
+	para "Sweet Tea and"
+	line "tasty Lemonade!"
+	done
+
+PlayerHouse1FSinkText:
+	text "Ugh, I hate"
+	line "washing dishes"
+	done
+
+PlayerHouse1FStoveText:
+	text "Mom's specialty!"
+
+	para "Combusken &"
+	line "Dumplins!"
+	done
+
+PlayerHouse1FTVScript:
+	jumpthistext
+
+	text "There's a show on"
+	line "TV: An armor clad"
+
+	para "knight rides a"
+	line "Charizard into bat-"
+
+	para "tle. I'd better go"
+	line "before I get"
+	cont "sucked in!"
+	done
+
+SisterTVText:
+	text "HEY!"
+
+	para "Move! I'm watching"
+	line "this!"
+	done
+
+SisterIntroText:
+	text "Leave me alone!"
+	line "I'm trying"
+
+	para "to watch TV!"
 	done
 
 	HomeMeowthText:

@@ -16,7 +16,7 @@ OlsteetonUniGate_MapScriptHeader:
 
 	def_object_events
 	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OlsteetonUniGateOfficerScript, -1
-	pokemon_event  4,  2, SCYTHER, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, OlsteetonUniGateScytherText, -1
+	pokemon_event  4,  2, SCYTHER, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GREEN, OlsteetonUniGateScytherText, -1
 
 OlsteetonUniGateOfficerScript:
 	faceplayer

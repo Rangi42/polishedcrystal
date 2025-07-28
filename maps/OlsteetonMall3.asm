@@ -6,8 +6,8 @@ OlsteetonMall3_MapScriptHeader:
 	def_warp_events
 	warp_event  6,  9, OLSTEETON, 7
 	warp_event  5,  9, OLSTEETON, 7
-	warp_event  0,  5, OLSTEETON_MALL_2, 5
-	warp_event  0,  4, OLSTEETON_MALL_2, 6
+	warp_event  0,  4, OLSTEETON_MALL_2, 5
+	warp_event  0,  5, OLSTEETON_MALL_2, 6
 
 	def_coord_events
 

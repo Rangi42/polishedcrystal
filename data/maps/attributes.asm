@@ -436,9 +436,9 @@ ENDM
 	map_attributes EchoingCave, ECHOING_CAVE, $0, 0
 	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
 	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
-	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
 	map_attributes HollowportRival1F, HOLLOWPORT_RIVAL_1F, $0, 0
 	map_attributes HollowportRival2F, HOLLOWPORT_RIVAL_2F, $0, 0
+	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
 	map_attributes Route101House, ROUTE_101_HOUSE, $0, 0
 	map_attributes Route102, ROUTE_102, $5, 0
 	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
@@ -452,7 +452,13 @@ ENDM
 	map_attributes OlsteetonMall2, OLSTEETON_MALL_2, $0, 0
 	map_attributes OlsteetonMall3, OLSTEETON_MALL_3, $0, 0
 	map_attributes OlsteetonMart, OLSTEETON_MART, $0, 0	
-	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0	
+	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0
+	map_attributes RiverfrontApt2F, RIVERFRONT_APT_2F, $0, 0
+	map_attributes RiverfrontApt3F, RIVERFRONT_APT_3F, $0, 0
+	map_attributes RiverfrontApt4F, RIVERFRONT_APT_4F, $0, 0
+	map_attributes RiverfrontApt5F, RIVERFRONT_APT_5F, $0, 0
+	map_attributes RiverfrontAptRoof, RIVERFRONT_APT_ROOF, $0, 0
+	map_attributes RiverfrontAptElevator, RIVERFRONT_APT_ELEVATOR, $0, 0
 	map_attributes OlsteetonDiner, OLSTEETON_DINER, $0, 0	
 	map_attributes OlsteetonArcade, OLSTEETON_ARCADE, $0, 0
 	map_attributes OlsteetonTrainStation, OLSTEETON_TRAIN_STATION, $0, 0

@@ -35,7 +35,7 @@ OlsteetonArcade_MapScriptHeader:
 	bg_event 14, 11, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
 	bg_event 18, 11, BGEVENT_READ, OlsteetonArcadeSlotsMachineScript
 	bg_event  9,  8, BGEVENT_RIGHT, OlsteetonArcadeSlotsMachineScript
-	bg_event 19,  9, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
+	bg_event 18, 13, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
 	bg_event 11, 13, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
 	bg_event 15, 13, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
 	bg_event 15, 12, BGEVENT_READ, OlsteetonArcadeCardFlipMachineScript
@@ -54,14 +54,14 @@ OlsteetonArcade_MapScriptHeader:
 	object_event  3,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeTMVendorScript, -1
 	object_event  2,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePrizeMonVendorScript, -1
 	object_event 16,  1, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeFisherScript, -1
-	object_event 11,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadeCooltrainerFText, -1
+	object_event 18,  9, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 2, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadeCooltrainerFText, -1
 	object_event 15,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanFScript, -1
-	object_event 19,  3, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePharmacistScript, -1
-	object_event 12, 12, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeCooltrainerMScript, -1
+	object_event 12, 13, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePharmacistScript, -1
+	object_event 18,  8, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeCooltrainerMScript, -1
 	object_event 17, 13, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadeGentlemanScript, -1
-	object_event  7,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM1Script, -1
-	object_event 15,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM3Script, -1
-	object_event  1,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadePokefanM2Text, EVENT_BEAT_WHITNEY
+	object_event  7,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM1Script, -1
+	object_event  2,  7, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonArcadePokefanM3Script, -1
+	object_event  1,  5, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonArcadePokefanM2Text, EVENT_BEAT_WHITNEY
 
 OlsteetonArcadePokefanM3Script:
 	showtextfaceplayer OlsteetonArcadePokefanM3Text
@@ -405,74 +405,73 @@ Text_OlsteetonArcadeTutorTaught:
 	done
 
 OlsteetonArcadePharmacistText:
-	text "I always play this"
-	line "slot machine. It"
-
-	para "pays out more than"
-	line "others, I think."
+	text "I've been playing"
+	line "this game since"
+	cont "I was a kid."
 	done
 
 OlsteetonArcadePokefanM1Text:
-	text "I just love this"
-	line "new slot machine."
+	text "#mon Pinball is"
+	line "my favorite, but"
 
-	para "It's more of a"
-	line "challenge than the"
-	cont "ones in Celadon."
+	para "I'm not very"
+	line "good at it."
 	done
 
 OlsteetonArcadeCooltrainerMText:
-	text "Life is a gamble."
-	line "I'm going to flip"
-	cont "cards till I drop!"
+	text "Go away, buddy."
+	line "I'm out on"
+	cont "a date with"
+	cont "my girlfriend!"
 	done
 
 OlsteetonArcadePokefanFText:
-	text "Card flip…"
+	text "I prefer trading"
+	line "cards over"
+	cont "playing pinball."
 
-	para "I prefer it over"
-	line "the slots because"
+	para "Look, I have"
+	line "a holographic"
+	line "Doozee card."
 
-	para "it's easier to"
-	line "figure the odds."
-
-	para "But the payout is"
-	line "much lower."
+	para "That's right,"
+	line "be jealous."
 	done
 
 OlsteetonArcadeCooltrainerFText:
-	text "I won't quit until"
-	line "I win!"
+	text "I won't stop until"
+	line "I get the"
+	cont "high score!"
 	done
 
 OlsteetonArcadeGentlemanText:
-	text "I taught Ice Beam"
-	line "to my #mon."
+	text "Now that I'm"
+	line "retired, I can"
 
-	para "It was hard to get"
-	line "enough coins for"
+	para "finally spend"
+	line "all my time"
 
-	para "it, but it was"
-	line "worth it."
+	para "gathering tickets"
+	line "to get a #mon."
 	done
 
 OlsteetonArcadePokefanM2Text:
-	text "I couldn't win at"
-	line "the slots, and I"
+	text "Okay so it's"
+	line "UP UP DOWN DOWN"
 
-	para "blew it on card"
-	line "flipping…"
+	para "LEFT RIGHT"
+	line "LEFT RIGHT"
+	cont "B then A..."
 
-	para "I got so furious,"
-	line "I tossed out my"
-
-	para "Coin Case in the"
-	line "Underground."
+	para "What? Ugh"
+	line "You made me lose"
+	cont "my concentration."
 	done
 
 OlsteetonArcadePokefanM3Text:
-	text "Wahahah! The coins"
-	line "keep rolling in!"
+	text "Mwahaha! I've"
+	line "got tickets"
+	cont "for days!"
 	done
 
 OlsteetonArcadeLeftTheirDrinkText:

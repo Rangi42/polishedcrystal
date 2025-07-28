@@ -27,8 +27,8 @@ OlsteetonDiner_MapScriptHeader:
 ChefText_Spaghetti:
 	text "Hi!"
 
-	para "We're holding a"
-	line "Spaghetti contest."
+	para "We're hosting a"
+	line "private party."
 
 	para "We can't serve you"
 	line "right now. Sorry."
@@ -36,56 +36,45 @@ ChefText_Spaghetti:
 
 OlsteetonDinerFatGuy1:
 	text "…Snarfle, chew…"
-	line "Don't talk to me!"
-
-	para "You'll break my"
-	line "concentration!"
+	line "Who even are you!"
 	done
 
 OlsteetonDinerFatGuy2:
 	text "…Gulp… Chew…"
-	line "I take quantity"
-	cont "over quality!"
-
-	para "I'm happy when I'm"
-	line "full!"
+	line "Who invited"
+	cont "the kid?"
 	done
 
 OlsteetonDinerFatGuy3:
 	text "Munch, munch…"
 	line "The food is good"
 
-	para "here, but Olste-"
-	line "eeton has the"
-	cont "best food"
-	cont "anywhere."
+	para "here, but the"
+	line "service leaves"
+	cont "something to be"
+	cont "desired..."
 	done
 
 OlsteetonDinerBeauty:
 	text "Crunch… Crunch…"
 	line "Crunch… Crunch…"
 
-	para "I can keep eating!"
-	line "More, Chef!"
+	para "More garlic"
+	line "bread, waiter!"
 	done
 
 OlsteetonDinerBakerText:
-	text "I'm working here"
-	line "'cause I get to"
-
-	para "eat any time I"
-	line "want. Simple."
+	text "I knew I should"
+	line "have called off"
+	cont "today."
 	done
 
 OlsteetonDinerPosterText:
-	text "Spaghetti Contest!"
-	line "No time limit!"
+	text "Olsteeton Diner!"
+	line "The very best"
 
-	para "A battle without"
-	line "end! The biggest"
-
-	para "muncher gets it"
-	line "all for free!"
+	para "spaghetti that"
+	line "money can buy!"
 	done
 
 OlsteetonDinerTrashCanText:

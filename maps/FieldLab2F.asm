@@ -11,6 +11,7 @@ FieldLab2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
+	bg_event  9,  5, BGEVENT_JUMPTEXT, FieldLab2FSignText
 	bg_event  7,  5, BGEVENT_ITEM + STAR_PIECE, EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE
 	bg_event  3,  4, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE
 
@@ -29,5 +30,10 @@ FieldLabAideText:
 	para "expand our under-"
 	line "standing of cave"
 	cont "dwelling #mon."
-
+	done
+FieldLab2FSignText:
+	text "DANGER:"
+	line "FLOOR UNSTABLE"
+	cont "PAST THIS"
+	cont "POINT!"
 	done

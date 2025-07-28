@@ -299,6 +299,26 @@ SECTION "RiverfrontApt1F_BlockData", ROMX
 RiverfrontApt1F_BlockData:
 	INCBIN "maps/RiverfrontApt1F.ablk.lz"
 
+SECTION "RiverfrontApt2F_BlockData", ROMX
+RiverfrontApt2F_BlockData:
+RiverfrontApt3F_BlockData:
+RiverfrontApt4F_BlockData:
+
+	INCBIN "maps/RiverfrontApt2F.ablk.lz"
+
+SECTION "RiverfrontApt5F_BlockData", ROMX
+RiverfrontApt5F_BlockData:
+
+	INCBIN "maps/RiverfrontApt5F.ablk.lz"
+
+SECTION "RiverfrontAptRoof_BlockData", ROMX
+RiverfrontAptRoof_BlockData:
+	INCBIN "maps/RiverfrontAptRoof.ablk.lz"
+
+SECTION "RiverfrontAptElevator_BlockData", ROMX
+RiverfrontAptElevator_BlockData:
+	INCBIN "maps/RiverfrontAptElevator.ablk.lz"
+
 SECTION "OlsteetonDiner_BlockData", ROMX
 OlsteetonDiner_BlockData:
 	INCBIN "maps/OlsteetonDiner.ablk.lz"

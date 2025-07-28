@@ -19,9 +19,10 @@ OlsteetonPokeCenter_MapScriptHeader:
 	object_event  0,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_PHARMACY, MART_CIANWOOD, -1
 	pokemon_event  2,  3, SMEARGLE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, OlsteetonSmeargleText, -1
 	pokemon_event  8,  1, SKARMORY, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GRAY, OlsteetonSkarmoryText, -1
-	object_event 11,  6, SPRITE_PI, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonPokeCenterBusinessText, -1
+	pokemon_event  6,  1, CHANSEY, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, OlsteetonChanseyText, -1
+	object_event 10,  6, SPRITE_PI, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonPokeCenterBusinessText, -1
 	object_event  3,  3, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonPokeCenterArtistText, -1
-	object_event  9,  0, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonPokeCenterEngineerText, -1
+	object_event  9,  1, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonPokeCenterEngineerText, -1
 
 	
 ; PokeCenterPharmacistScript:
@@ -80,7 +81,8 @@ OlsteetonPokeCenterArtistText:
 	line "to watch if"
 
 	para "they come across"
-	line "a Smeargle painting."
+	line "a Smeargle paint"
+	cont "-ing."
 
 	para "The Smeargle"
 	line "like it because"
@@ -92,4 +94,8 @@ OlsteetonPokeCenterArtistText:
 
 	OlsteetonSkarmoryText:
 	text "Skarmory: Scree!"
+	done
+
+	OlsteetonChanseyText:
+	text "Chansey: Seyy!"
 	done
