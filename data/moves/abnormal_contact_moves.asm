@@ -8,6 +8,8 @@ AbnormalContactMoves:
 	; Physical moves that don't make contact
 	dw BARRAGE
 	dw BONEMERANG
+	dw BONE_CLUB
+	dw BONE_RUSH
 	dw BULLDOZE
 	dw BULLET_SEED
 	dw EARTHQUAKE
@@ -26,6 +28,7 @@ AbnormalContactMoves:
 	dw ROCK_SLIDE
 	dw ROCK_THROW
 	dw SACRED_FIRE
+	dw SCALE_SHOT
 	dw SEED_BOMB
 	dw SELFDESTRUCT
 	dw SKY_ATTACK

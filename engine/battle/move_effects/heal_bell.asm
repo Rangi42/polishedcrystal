@@ -18,7 +18,7 @@ BattleCommand_healbell:
 	add hl, bc
 	dec d
 	jr nz, .loop
-	call AnimateCurrentMove
+	farcall AnimateCurrentMove
 
 	ld hl, BellChimedText
 	jmp StdBattleTextbox

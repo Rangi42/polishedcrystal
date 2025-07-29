@@ -78,7 +78,14 @@ DoEncoreDisable:
 	farcall ShowPotentialAbilityActivation
 
 	; Get move effect text and duration
-	cpbc DISABLE
+	ld a, b
+	assert HIGH(DISABLE) == 0
+	and a
+	jr nz, .cpbc_disable
+	ld a, c
+	assert LOW(DISABLE) != 0
+	cp LOW(DISABLE)
+.cpbc_disable
 	ld hl, WasDisabledText
 	ld a, 4
 	jr z, .got_text_and_duration

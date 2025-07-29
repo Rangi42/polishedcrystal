@@ -54,6 +54,7 @@ MoveEffectsPointers:
 	dw SpecialDefenseUp2
 	dw AccuracyUp2
 	dw EvasionUp2
+	dw DefenseUp3
 	dw BulkUp
 	dw CalmMind
 	dw Growth
@@ -187,4 +188,30 @@ MoveEffectsPointers:
 	dw Gravity
 	dw MirrorMove
 	dw Incinerate
+	dw StoredPower
+	dw CosmicPower
+	dw PsychoShift
+	dw TrumpCard
+	dw AuroraVeil
+	dw StickyWeb
+	dw Taunt
+	dw Torment
+	dw Yawn
+	dw MagnetRise
+	dw ThroatChop
+	dw Embargo
+	dw AsleepHit
+	dw Psywave
+	dw HeavySlam
+	dw ElectroBall
+	dw FuryCutter
+	dw Camouflage
+	dw NaturePower
+	dw DragonTail
+	dw Memento
+	dw FocusPunch
+	dw ScaleShot
+	dw Nightmare
+	dw Ingrain
+	dw Imprison
 	assert_table_length NUM_MOVE_EFECTS

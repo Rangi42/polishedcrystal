@@ -105,6 +105,12 @@ HurtByCurseText:
 	line "hurt by the curse!"
 	prompt
 
+HurtByNightmareText:
+	text "<USER> is"
+	line "locked in a"
+	cont "nightmare!"
+	prompt
+
 SandstormHitsText:
 	text "<USER> is"
 	line "buffeted by"
@@ -190,6 +196,12 @@ BrokeReflectText:
 	text "<USER>"
 	line "broke the target's"
 	cont "Reflect!"
+	prompt
+
+BrokeAuroraVeilText:
+	text "<USER>"
+	line "broke the target's"
+	cont "Aurora Veil!"
 	prompt
 
 BattleText_ItemLowered:
@@ -306,10 +318,34 @@ BattleText_ReflectFaded:
 	line "Reflect faded!"
 	prompt
 
+BattleText_AuroraVeilFaded:
+	text_ram wStringBuffer1
+	text " #mon's"
+	line "Aurora Veil faded!"
+	prompt
+
 BattleText_LuckyChantEnded:
 	text_ram wStringBuffer1
 	text " #mon's"
 	line "Lucky Chant faded!"
+	prompt
+
+BattleText_TauntEnded:
+	text "<USER>"
+	line "shook off the"
+	cont "taunt!"
+	prompt
+
+BattleText_TormentEnded:
+	text "<USER>"
+	line "is no longer"
+	cont "tormented!"
+	prompt
+
+BattleText_MagnetRiseEnded:
+	text "<USER>'s"
+	line "electromagnetism"
+	cont "wore off!"
 	prompt
 
 BattleText_AbilityAcquired:
@@ -744,6 +780,39 @@ DestinyKnotInfatuatedUser:
 	cont "infatuated"
 
 	para "<USER>!"
+	prompt
+
+TauntedText:
+	text "<USER>"
+	line "can't use "
+	cont ""
+	text_ram wStringBuffer1
+	cont "after the taunt!"
+	prompt
+
+ImprisonedText:
+	text "<USER>"
+	line "can't use "
+	cont ""
+	text_ram wStringBuffer1
+	cont "after imprison!"
+	prompt
+
+
+ThroatChoppedText:
+	text "<USER>"
+	line "can't use "
+	cont ""
+	text_ram wStringBuffer1
+	cont "after throat chop!"
+	prompt
+
+NaturePowerTurnedInto:
+	text "Nature Power"
+	line "turned into"
+	cont ""
+	text_ram wStringBuffer1
+	text "!"
 	prompt
 
 DisabledMoveText:
@@ -1213,6 +1282,53 @@ ReflectEffectText:
 	line "Defense rose!"
 	prompt
 
+AuroraVeilEffectText:
+	text "<USER>'s"
+	line "Defense and Sp.Def"
+	cont "rose!"
+	prompt
+
+TauntEffectText:
+	text "<TARGET>"
+	line "fell for the"
+	cont "taunt!"
+	prompt
+
+TormentEffectText:
+	text "<TARGET>"
+	line "was subjected to"
+	cont "torment!"
+	prompt
+
+YawnEffectText:
+	text "<TARGET>"
+	line "grew drowsy."
+	prompt
+
+MagnetRiseEffectText:
+	text "<USER>"
+	line "levitated with"
+	cont "electromagnetism!"
+	prompt
+
+EmbargoEffectText:
+	text "<TARGET>"
+	line "can't use items"
+	cont "anymore!"
+	prompt
+
+TighteningFocusText:
+	text "<USER> is"
+	line "tightening its"
+	cont "focus!"
+	prompt
+
+LostFocusText:
+	text "<USER>"
+	line "lost its focus and"
+	cont "coundn't move!"
+	prompt
+
 NothingHappenedText:
 	text "But nothing"
 	line "happened."
@@ -1293,6 +1409,22 @@ CuredDisableWithItem:
 	text "!"
 	prompt
 
+CuredTauntWithItem:
+	text "<USER>"
+	line "cured Taunt"
+	cont "with "
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
+CuredTormentWithItem:
+	text "<USER>"
+	line "cured Torment"
+	cont "with "
+	text_ram wStringBuffer1
+	text "!"
+	prompt
+
 StoleText:
 	text "<USER>"
 	line "stole "
@@ -1334,6 +1466,29 @@ PutACurseText:
 	line "<TARGET>!"
 	prompt
 
+FellIntoANightmareText:
+	text "<TARGET>"
+	line "fell into a"
+	cont "nightmare!"
+	prompt
+
+PlantedRootsText:
+	text "<USER>"
+	line "planted its roots!"
+	prompt
+
+AbsorbedNutrientsText:
+	text "<USER>"
+	line "absorbed nutrients"
+	cont "with its roots!"
+	prompt
+
+SealedMovesText:
+	text "<USER>"
+	line "sealed the"
+	cont "opponent's moves!"
+	prompt
+
 ProtectedItselfText:
 	text "<USER>"
 	line "protected itself!"
@@ -1353,6 +1508,12 @@ SpikesText:
 ToxicSpikesText:
 	text "Toxic spikes"
 	line "scattered around"
+	cont "<TARGET>!"
+	prompt
+
+StickyWebText:
+	text "A sticky web has"
+	line "been laid around"
 	cont "<TARGET>!"
 	prompt
 
@@ -1436,6 +1597,12 @@ BlewToxicSpikesText:
 	text "<USER>"
 	line "blew away Toxic"
 	cont "Spikes!"
+	prompt
+
+BlewStickyWebText:
+	text "<USER>"
+	line "blew away Sticky"
+	cont "Web!"
 	prompt
 
 DownpourText:
@@ -1634,6 +1801,11 @@ SoakedTargetText:
 BurnedOutText:
 	text "<USER>"
 	line "burned itself out!"
+	prompt
+
+CuredUserText:
+	text "<USER>'s"
+	line "status was cured!"
 	prompt
 
 FirePoweredUpText:

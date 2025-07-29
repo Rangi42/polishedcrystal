@@ -121,7 +121,15 @@ BattleAnimOAMUpdate:
 	ld a, [hli]
 	ld b, [hl]
 	ld c, a
-	cpbc FIRST_DYNAMIC_FRAMESET
+	ld a, b
+	assert HIGH(FIRST_DYNAMIC_FRAMESET) != 0
+	cp HIGH(FIRST_DYNAMIC_FRAMESET)
+	jr c, .cpbc_fdf
+	jr nz, .cpbc_fdf
+	ld a, c
+	assert LOW(FIRST_DYNAMIC_FRAMESET) != 0
+	cp LOW(FIRST_DYNAMIC_FRAMESET)
+.cpbc_fdf
 	pop bc
 	ret c
 

@@ -17,7 +17,7 @@ HandleBetweenTurnEffects:
 	call CheckFaint
 	ret c
 	; aqua ring
-	; ingrain
+	call HandleIngrain
 	call HandleLeechSeed
 	call CheckFaint
 	ret c
@@ -27,25 +27,28 @@ HandleBetweenTurnEffects:
 	call HandleBurn
 	call CheckFaint
 	ret c
-	; nightmare
+	call HandleNightmare
+	call CheckFaint
+	ret c
 	call HandleCurse
 	call CheckFaint
 	ret c
 	call HandleWrap
 	call CheckFaint
 	ret c
-	; taunt
+	call HandleTaunt
 	call HandleEncore
 	call HandleDisable
-	; magnet rise
+	call HandleMagnetRise
 	; telekinesis
 	; heal block
-	; embargo
-	; yawn
+	call HandleEmbargo
+	call HandleYawn
 	call HandlePerishSong
 	call CheckFaint
 	ret c
 	call HandleRoost
+	; emergency exit
 	call HandleReflect
 	call HandleLightScreen
 	call HandleSafeguard
@@ -55,6 +58,7 @@ HandleBetweenTurnEffects:
 	; rainbow dissipating (water+fire pledge)
 	; sea of fire dissipating (grass+fire pledge)
 	; swamp dissipating (water+grass pledge)
+	call HandleAuroraVeil
 	call HandleTrickRoom
 	; water sport
 	; mud sport
@@ -65,6 +69,8 @@ HandleBetweenTurnEffects:
 	call HandleEndturnBlockB
 	call CheckFaint
 	ret c
+	; emergency exit (again)
+	call HandleThroatChop ; TODO where does this actually go?
 	; Things below do not exist in 7gen -- it's here to avoid some quirks
 	call HandleLeppaBerry
 	call HandleHealingItems
@@ -470,7 +476,7 @@ HandleFutureSight:
 HandleLeftovers:
 	call HasUserFainted
 	ret z
-	farcall GetUserItem
+	farcall GetUserItemAfterUnnerve
 	call GetCurItemName
 	ld a, b
 	cp HELD_LEFTOVERS
@@ -500,6 +506,28 @@ PreventEndturnDamage:
 	cp MAGIC_GUARD
 	call nz, HasUserFainted
 	ret
+
+HandleIngrain:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVarAddr
+	bit SUBSTATUS_INGRAIN, [hl]
+	ret z
+
+	xor a
+	ld [wNumHits], a
+	ld de, INGRAIN
+	farcall PlayBattleAnimDE_OnlyIfVisible
+
+	ld hl, AbsorbedNutrientsText
+	call StdBattleTextbox
+	call GetSixteenthMaxHP
+	farcall HandleBigRoot
+	farjp RestoreHP
 
 HandleLeechSeed:
 	call SetFastestTurn
@@ -647,6 +675,27 @@ DoPoisonBurnDamageAnim:
 	ld [wNumHits], a
 	farcall PlayBattleAnimDE_OnlyIfVisible
 	jmp GetEighthMaxHP
+
+HandleNightmare:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	farcall UpdateNightmare
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVarAddr
+	bit SUBSTATUS_NIGHTMARE, [hl]
+	ret z
+
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_UNDER_CURSE
+	farcall PlayBattleAnimDE_OnlyIfVisible
+	call GetQuarterMaxHP
+	predef SubtractHPFromUser
+	ld hl, HurtByNightmareText
+	jmp StdBattleTextbox
 
 HandleCurse:
 	call SetFastestTurn
@@ -953,6 +1002,19 @@ HandleLightScreen:
 	ld de, BattleText_LightScreenFell
 	jr DecrementHighNibble
 
+HandleAuroraVeil:
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerVeils
+	jr z, .got_veils
+	ld hl, wEnemyVeils
+.got_veils
+	ld de, BattleText_AuroraVeilFaded
+	jr DecrementLowNibble
+
 HandleMist:
 	call SetFastestTurn
 	call .do_it
@@ -997,7 +1059,7 @@ HandleLuckyChant:
 	push af
 	ld b, a
 	ld a, [hl]
-	and a, ~(TEAM_LUCKY_CHANT)
+	and ~(TEAM_LUCKY_CHANT)
 	or b
 	ld [hl], a
 	pop af
@@ -1107,3 +1169,93 @@ HandleRoost:
 	ld [hld], a
 	ld [hl], a
 	ret
+
+
+HandleTaunt:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerTauntCount
+	jr z, .got_taunt
+	ld hl, wEnemyTauntCount
+.got_taunt
+	ld de, BattleText_TauntEnded
+	jmp DecrementHighNibble
+
+
+HandleThroatChop:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerThroatChopEmbargoCount
+	jr z, .got_throat_chop
+	ld hl, wEnemyThroatChopEmbargoCount
+.got_throat_chop
+	ld a, [hl]
+	sub $10
+	ret c
+	ld [hl], a
+	ret
+
+
+HandleEmbargo:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerThroatChopEmbargoCount
+	jr z, .got_embargo
+	ld hl, wEnemyThroatChopEmbargoCount
+.got_embargo
+	ld a, [hl]
+	and $0F
+	ret z
+	ld a, [hl]
+	dec a
+	ld [hl], a
+	ret
+
+
+HandleMagnetRise:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerYawnMagnetRiseCount
+	jr z, .got_rise
+	ld hl, wEnemyYawnMagnetRiseCount
+.got_rise
+	ld de, BattleText_MagnetRiseEnded
+	jmp DecrementLowNibble
+
+
+HandleYawn:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerYawnMagnetRiseCount
+	jr z, .got_yawn
+	ld hl, wEnemyYawnMagnetRiseCount
+.got_yawn
+	ld a, [hl]
+	sub $10
+	ret c
+	ld [hl], a
+	sub $10
+	ret nc
+	call SwitchTurn
+	farcall SleepTarget
+	jmp SwitchTurn

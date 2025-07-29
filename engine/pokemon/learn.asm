@@ -118,7 +118,14 @@ LearnMove:
 	ld b, PIKACHU_FLY_FORM
 	push hl
 	call GetMoveIndexFromID
-	cphl FLY
+	ld a, h
+	assert HIGH(FLY) == 0
+	and a
+	jr nz, .cphl_fly
+	ld a, l
+	assert LOW(FLY) != 0
+	cp LOW(FLY)
+.cphl_fly
 	pop hl
 	jr z, .got_form
 	assert PIKACHU_FLY_FORM + 1 == PIKACHU_SURF_FORM
@@ -126,7 +133,14 @@ LearnMove:
 	ld a, [wPutativeTMHMMove]
 	push hl
 	call GetMoveIndexFromID
-	cphl SURF
+	ld a, h
+	assert HIGH(SURF) == 0
+	and a
+	jr nz, .cphl_surf
+	ld a, l
+	assert LOW(SURF) != 0
+	cp LOW(SURF)
+.cphl_surf
 	pop hl
 	jr nz, .done_pikachu
 .got_form

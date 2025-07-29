@@ -1,6 +1,6 @@
 BattleCommand_checkburnup:
 	ld a, FIRE
-	farcall CheckIfUserIsSomeType
+	call CheckIfUserIsSomeType
 	ret z
 	ld a, ATKFAIL_GENERIC
 	ld [wAttackMissed], a

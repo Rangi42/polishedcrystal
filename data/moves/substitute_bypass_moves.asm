@@ -6,5 +6,6 @@ SubstituteBypassMoves::
 	dw ENCORE
 	dw FORESIGHT
 	dw SPIKES
+	dw TAUNT
 	dw TOXIC_SPIKES
 	dw -1
