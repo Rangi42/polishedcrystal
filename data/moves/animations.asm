@@ -5709,16 +5709,22 @@ BattleAnim_BrickBreak:
 	anim_ret
 
 BattleAnim_Whirlpool:
-	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_WATER
-	anim_1gfx ANIM_GFX_WIND
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_BUBBLE
+	anim_1gfx ANIM_GFX_BUBBLE
 	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_sound 0, 1, SFX_SURF
 	anim_wait 16
 .loop
-	anim_obj ANIM_OBJ_GUST, -16, 4,   9, 0, $0
-	anim_wait 6
-	anim_loop 9, .loop
-	anim_wait 64
+	anim_obj ANIM_OBJ_WHIRLPOOL, 132, 66, $30
+	anim_wait 4
+	anim_obj ANIM_OBJ_WHIRLPOOL, 132, 66, $20
+	anim_wait 4
+	anim_obj ANIM_OBJ_WHIRLPOOL, 136, 70, $10
+	anim_wait 4
+	anim_obj ANIM_OBJ_WHIRLPOOL, 128, 70, $0
+	anim_wait 4
+	anim_loop 3, .loop
+	anim_wait 48
 	anim_incbgeffect ANIM_BG_WHIRLPOOL
 	anim_wait 1
 	anim_ret

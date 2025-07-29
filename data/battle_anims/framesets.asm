@@ -34,8 +34,8 @@ BattleAnimFrameData:
 	dw .Frameset_1f ; 1f
 	dw .Frameset_20 ; 20
 	dw .Frameset_SmallBubble             ; BATTLEANIMFRAMESET_SMALL_BUBBLE
-	dw .Frameset_22 ; 22
-	dw .Frameset_23 ; 23
+	dw .Frameset_PulsingBubble           ; BATTLEANIMFRAMESET_PULSING_BUBBLE
+	dw .Frameset_Surf                    ; BATTLEANIMFRAMESET_SURF
 	dw .Frameset_24 ; 24
 	dw .Frameset_25 ; 25
 	dw .Frameset_26 ; 26
@@ -58,8 +58,8 @@ BattleAnimFrameData:
 	dw .Frameset_37 ; 37
 	dw .Frameset_38 ; 38
 	dw .Frameset_39 ; 39
-	dw .Frameset_3a ; 3a
-	dw .Frameset_3b ; 3b
+	dw .Frameset_Clamp1                  ; BATTLEANIMFRAMESET_CLAMP_1
+	dw .Frameset_Clamp2                  ; BATTLEANIMFRAMESET_CLAMP_2
 	dw .Frameset_3c ; 3c
 	dw .Frameset_3d ; 3d
 	dw .Frameset_CutDownLeft             ; BATTLEANIMFRAMESET_CUT_DOWN_LEFT
@@ -289,6 +289,7 @@ BattleAnimFrameData:
 	dw .Frameset_DrillRun                ; BATTLEANIMFRAMESET_DRILL_RUN
 	dw .Frameset_UproarNote              ; BATTLEANIMFRAMESET_UPROAR_NOTE
 	dw .Frameset_BigWhip2                ; BATTLEANIMFRAMESET_BIG_WHIP_2
+	dw .Frameset_GrowingBubble           ; BATTLE_ANIM_FRAMESET_GROWING_BUBBLE
 
 
 ; VAR3 animations start here -------
@@ -579,14 +580,20 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_20,  8
 	battleoamend
 
-.Frameset_22:
+.Frameset_PulsingBubble:
 	battleoamframe BATTLEANIMOAMSET_20,  8
 	battleoamframe BATTLEANIMOAMSET_21,  8
 	battleoamframe BATTLEANIMOAMSET_1B,  8
 	battleoamframe BATTLEANIMOAMSET_21,  8
 	battleoamrestart
 
-.Frameset_23:
+.Frameset_GrowingBubble
+	battleoamframe BATTLEANIMOAMSET_20, 16
+	battleoamframe BATTLEANIMOAMSET_21, 16
+	battleoamframe BATTLEANIMOAMSET_1B, 16
+	battleoamend
+
+.Frameset_Surf:
 	battleoamframe BATTLEANIMOAMSET_22,  8
 	battleoamend
 
@@ -723,12 +730,12 @@ BattleAnimFrameData:
 	battleoamwait 2
 	battleoamrestart
 
-.Frameset_3a:
-	battleoamframe BATTLEANIMOAMSET_48,  8
+.Frameset_Clamp1:
+	battleoamframe BATTLEANIMOAMSET_48,   8
 	battleoamend
 
-.Frameset_3b:
-	battleoamframe BATTLEANIMOAMSET_48,  8, OAM_X_FLIP
+.Frameset_Clamp2:
+	battleoamframe BATTLEANIMOAMSET_117,  8
 	battleoamend
 
 .Frameset_3c:

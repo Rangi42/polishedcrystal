@@ -211,16 +211,20 @@ BattleAnim_EggBomb:
 	anim_ret
 
 BattleAnim_Clamp:
-	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT
-	anim_obj ANIM_OBJ_CLAMP, 136, 56, $a0
-	anim_obj ANIM_OBJ_CLAMP, 136, 56, $20
-	anim_wait 16
+	anim_2gfx ANIM_GFX_REFLECT, ANIM_GFX_HIT
+	anim_sound 0, 0, SFX_VICEGRIP
+	anim_obj ANIM_OBJ_CLAMP, 109, 52, $0
+	anim_obj ANIM_OBJ_CLAMP_2, 172, 52, $20
+	anim_wait 20
+	anim_incobj 1
+	anim_incobj 2
+	anim_wait 4
 	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_HIT_YFIX, 144, 48, $18
-	anim_wait 32
+	anim_obj ANIM_OBJ_HIT_YFIX, 132, 44, $18
+	anim_wait 10
 	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_HIT_YFIX, 128, 64, $18
-	anim_wait 16
+	anim_obj ANIM_OBJ_HIT_YFIX, 132, 64, $18
+	anim_wait 24
 	anim_ret
 
 BattleAnim_SkullBash:
