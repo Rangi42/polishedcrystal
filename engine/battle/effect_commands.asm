@@ -1153,7 +1153,15 @@ IgnoreSleepOnly:
 	cp LOW(SLEEP_TALK)
 .cphl_sleep_talk
 	ret nz
-	cphl SNORE
+	ld a, h
+	assert HIGH(SNORE) != 0
+	cp HIGH(SNORE)
+	jr c, .cphl_snore
+	jr nz, .cphl_snore
+	ld a, l
+	assert LOW(SNORE) != 0
+	cp LOW(SNORE)
+.cphl_snore
 	ret nz
 
 	ld a, BATTLE_VARS_STATUS
