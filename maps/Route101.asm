@@ -7,7 +7,7 @@ Route101_MapScriptHeader:
 	warp_event 31, 10, ROUTE_101_102_GATE, 1
 	warp_event 31, 11, ROUTE_101_102_GATE, 2
 	warp_event 25,  5, ROUTE_101_HOUSE, 1
-
+	warp_event 16,  3, ROUTE_101_CAVE, 1
 
 
 	def_coord_events
@@ -20,7 +20,7 @@ Route101_MapScriptHeader:
 	; object_event 16, 21, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermFrench, -1
 	; object_event 11, 25, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainerfQuinn, -1
 	fruittree_event 22,  4, FRUITTREE_ROUTE_1, FIGY_BERRY, PAL_NPC_BROWN
-	fruittree_event 23,  4, FRUITTREE_ROUTE_2, LUM_BERRY, PAL_NPC_GREEN
+	fruittree_event  4,  2, FRUITTREE_ROUTE_2, LUM_BERRY, PAL_NPC_GREEN
 
 
 ; GenericTrainerSchoolboyDanny:

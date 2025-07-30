@@ -263,6 +263,10 @@ SECTION "Route101_BlockData", ROMX
 Route101_BlockData:
 	INCBIN "maps/Route101.ablk.lz"
 
+SECTION "Route101Cave_BlockData", ROMX
+Route101Cave_BlockData:
+	INCBIN "maps/Route101Cave.ablk.lz"
+
 SECTION "Route102_BlockData", ROMX
 Route102_BlockData:
 	INCBIN "maps/Route102.ablk.lz"

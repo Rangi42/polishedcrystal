@@ -715,6 +715,7 @@ ENDM
 	map_const HOLLOWPORT_NEIGHBOR,                         4,  4 ;  9
 	map_const ROUTE_101,             				      19, 12 ;  10
 	map_const ROUTE_101_HOUSE,             			       4,  4 ;  11
+	map_const ROUTE_101_CAVE,             			       6,  9 ;  11
 	map_const ROUTE_102,								  16,  9 ;  11
 	map_const ROUTE_101_102_GATE,                          5,  4 ;  12
 	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  13
