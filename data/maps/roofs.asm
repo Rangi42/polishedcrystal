@@ -42,4 +42,5 @@ MapGroupRoofs:
 	db ROOF_STATUE   ; 37 (Ecruteak Shrine)
 	db ROOF_VIOLET   ; 38
 	db ROOF_AZALEA   ; 39
+	db ROOF_OLIVINE  ; 40
 	assert_table_length NUM_MAP_GROUPS + 1
