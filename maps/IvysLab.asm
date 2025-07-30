@@ -115,7 +115,7 @@ ProfIvyScript:
 	line "<PLAYER>!"
 
 	para "Can I ask you to"
-	line "to do me a favor?"
+	line "do me a favor?"
 
 	para "This Nidorino"
 	line "is sick, and my"
