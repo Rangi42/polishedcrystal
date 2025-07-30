@@ -84,7 +84,7 @@ FalknerGroup:
 	def_trainer 1, "Falkner"
 	tr_mon 10, NATU
 		tr_evs 32 HP
-		tr_moves PECK, LEER, NIGHT_SHADE
+		tr_moves PECK, LEER, NIGHT_SHADE, MUD_SLAP
 	tr_mon 11, HOOTHOOT
 		tr_evs 32 HP
 		tr_moves TACKLE, HYPNOSIS, PECK, CONFUSION
