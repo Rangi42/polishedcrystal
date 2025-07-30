@@ -14,27 +14,28 @@ _InitSound::
 	push bc
 	push af
 	call MusicOff
+
 	ld hl, rAUDVOL ; channel control registers
 	xor a
-	ld [hli], a ; rAUDVOL ; volume/vin
+	ld [hli], a ; rAUDVOL  ; volume/vin
 	ld [hli], a ; rAUDTERM ; sfx channels
 	; all channels on
 	ld [hl], $80 ; rAUDENA ; music channels
 
-	ld hl, rAUD1SWEEP ; sound channel registers
+	ld hl, AUD1RAM ; sound channel registers
 	ld e, NUM_MUSIC_CHANS
 .clearsound
-;   sound channel   1      2      3      4
+	; channel     AUD1RAM,    AUD2RAM,   AUD3RAM,    AUD4RAM
 	xor a
-	ld [hli], a ; rAUD1SWEEP, N/A, rAUD3ENA, N/A ; sweep = 0
+	ld [hli], a ; rAUD1SWEEP, unused,    rAUD3ENA,   unused    ; sweep = 0
 
-	ld [hli], a ; rAUD1LEN, rAUD2LEN, rAUD3LEN, rAUD4LEN ; length/wavepattern = 0
+	ld [hli], a ; rAUD1LEN,   rAUD2LEN,  rAUD3LEN,   rAUD4LEN  ; length/wavepattern = 0
 	ld a, $8
-	ld [hli], a ; rAUD1ENV, rAUD2ENV, rAUD3LEVEL, rAUD4ENV ; envelope = 0
+	ld [hli], a ; rAUD1ENV,   rAUD2ENV,  rAUD3LEVEL, rAUD4ENV  ; envelope = 0
 	xor a
-	ld [hli], a ; rAUD1LOW, rAUD2LOW, rAUD3LOW, rAUD4POLY ; frequency lo = 0
+	ld [hli], a ; rAUD1LOW,   rAUD2LOW,  rAUD3LOW,   rAUD4POLY ; frequency lo = 0
 	ld a, $80
-	ld [hli], a ; rAUD1HIGH, rAUD2HIGH, rAUD3HIGH, rAUD4GO ; restart sound (freq hi = 0)
+	ld [hli], a ; rAUD1HIGH,  rAUD2HIGH, rAUD3HIGH,  rAUD4GO   ; restart sound (freq hi = 0)
 	dec e
 	jr nz, .clearsound
 
@@ -273,7 +274,7 @@ UpdateChannels:
 	ret
 
 .ch1_rest
-	ld hl, rAUD1SWEEP
+	ld hl, AUD1RAM
 	jmp ClearChannel
 
 .ch1_noise_sampling
@@ -322,7 +323,7 @@ UpdateChannels:
 	ret
 
 .ch2_rest
-	ld hl, rAUD2LEN - 1 ; there is no rNR20
+	ld hl, AUD2RAM
 	jmp ClearChannel
 
 .ch2_noise_sampling
@@ -355,7 +356,7 @@ UpdateChannels:
 	ret
 
 .ch3_rest
-	ld hl, rAUD3ENA
+	ld hl, AUD3RAM
 	jmp ClearChannel
 
 .ch3_noise_sampling
@@ -389,7 +390,7 @@ UpdateChannels:
 	ret
 
 .ch4_rest
-	ld hl, rAUD4LEN - 1 ; there is no rNR40
+	ld hl, AUD4RAM
 	jmp ClearChannel
 
 .ch4_noise_sampling
@@ -2211,7 +2212,7 @@ PlayStereoSFX::
 	bit SOUND_CHANNEL_ON, [hl] ; ch5 on?
 	jr z, .ch6
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rAUD1SWEEP
+	ld hl, AUD1RAM
 	call ClearChannel
 	xor a
 	ld [wSoundInput], a ; global sound off
@@ -2220,21 +2221,21 @@ PlayStereoSFX::
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, .ch7
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rAUD2LEN - 1 ; there is no rNR20
+	ld hl, AUD2RAM
 	call ClearChannel
 .ch7
 	ld hl, wChannel7Flags
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, .ch8
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rAUD3ENA
+	ld hl, AUD3RAM
 	call ClearChannel
 .ch8
 	ld hl, wChannel8Flags
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, .chscleared
 	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rAUD4LEN - 1 ; there is no rNR40
+	ld hl, AUD4RAM
 	call ClearChannel
 	xor a
 	ld [wNoiseSampleAddressLo], a
@@ -2405,20 +2406,20 @@ ChannelPointers:
 	assert_table_length NUM_CHANNELS
 
 ClearChannel:
-; input: hl = beginning hw sound register (rAUD1SWEEP, rAUD2LEN - 1, rAUD3ENA, rAUD4LEN - 1)
+; input: hl = beginning hw sound register (AUD1RAM, AUD2RAM, AUD3RAM, AUD4RAM)
 ; output: 00 00 80 00 80
 
-;   sound channel   1      2      3      4
+	; channel     AUD1RAM,    AUD2RAM,   AUD3RAM,    AUD4RAM
 	xor a
-	ld [hli], a ; rAUD1SWEEP, N/A, rAUD3ENA, N/A ; sweep = 0
+	ld [hli], a ; rAUD1SWEEP, unused,    rAUD3ENA,   unused    ; sweep = 0
 
-	ld [hli], a ; rAUD1LEN, rAUD2LEN, rAUD3LEN, rAUD4LEN ; length/wavepattern = 0
+	ld [hli], a ; rAUD1LEN,   rAUD2LEN,  rAUD3LEN,   rAUD4LEN  ; length/wavepattern = 0
 	ld a, $8
-	ld [hli], a ; rAUD1ENV, rAUD2ENV, rAUD3LEVEL, rAUD4ENV ; envelope = 0
+	ld [hli], a ; rAUD1ENV,   rAUD2ENV,  rAUD3LEVEL, rAUD4ENV  ; envelope = 0
 	xor a
-	ld [hli], a ; rAUD1LOW, rAUD2LOW, rAUD3LOW, rAUD4POLY ; frequency lo = 0
+	ld [hli], a ; rAUD1LOW,   rAUD2LOW,  rAUD3LOW,   rAUD4POLY ; frequency lo = 0
 	ld a, $80
-	ld [hli], a ; rAUD1HIGH, rAUD2HIGH, rAUD3HIGH, rAUD4GO ; restart sound (freq hi = 0)
+	ld [hli], a ; rAUD1HIGH,  rAUD2HIGH, rAUD3HIGH,  rAUD4GO   ; restart sound (freq hi = 0)
 	ret
 
 PlayTrainerEncounterMusic::

@@ -1011,7 +1011,7 @@ HandleStatusOrbs:
 	ret z
 
 	; bypass ineffectiveness checks to avoid residual results from last attack
-	ld a, $10
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 
 	farcall GetOpponentItemAfterUnnerve

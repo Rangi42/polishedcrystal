@@ -199,7 +199,7 @@ BattleCommand_checkturn:
 	ld [wAlreadyDisobeyed], a
 	ld [wAlreadyExecuted], a
 
-	ld a, $10 ; 1.0
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1753,7 +1753,7 @@ _CheckTypeMatchup:
 	ld a, [hli]
 	ld c, [hl]
 	ld b, a
-	ld a, $10 ; 1.0
+	ld a, EFFECTIVE
 	ld [wTypeMatchup], a
 	ld hl, InverseTypeMatchups
 	ld a, [wBattleType]
@@ -1873,7 +1873,7 @@ BattleCommand_resettypematchup:
 	call BattleCheckTypeMatchup
 	ld a, [wTypeMatchup]
 	and a
-	ld a, $10 ; 1.0
+	ld a, EFFECTIVE
 	jr nz, .reset
 	call ResetDamage
 	xor a
@@ -3026,21 +3026,29 @@ BattleCommand_supereffectivetext:
 
 .continue
 	ld a, [wTypeModifier]
-	cp $10 ; 1.0
+	cp EFFECTIVE
 	ret z
 	push af
-	ld a, [wInverseBattleScore]
-	ld hl, SuperEffectiveText
+	ld hl, wInverseBattleScore
 	jr nc, .super_effective
+	dec [hl]
+	dec [hl]
+	cp NOT_VERY_EFFECTIVE
 	ld hl, NotVeryEffectiveText
-	dec a
-	dec a
+	jr z, .got_msg
+	ld hl, MostlyIneffectiveText
+	jr .got_msg
 .super_effective
-	inc a
-	cp $80
-	jr z, .score_ok
-	ld [wInverseBattleScore], a
-.score_ok
+	inc [hl]
+	bit 7, [hl]
+	jr z, .no_inverse_overflow
+	dec [hl]
+.no_inverse_overflow
+	cp SUPER_EFFECTIVE
+	ld hl, SuperEffectiveText
+	jr z, .got_msg
+	ld hl, ExtremelyEffectiveText
+.got_msg
 	call StdBattleTextbox
 	pop af
 	ret c
@@ -3053,24 +3061,7 @@ BattleCommand_supereffectivetext:
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_WEAKNESS_POLICY
-	jr z, .weakness_policy
-	cp HELD_ENIGMA_BERRY
 	ret nz
-
-	push bc
-	push hl
-	farcall CheckFullHP
-	pop hl
-	pop bc
-	ret z
-
-	; treat as HP-restoring berry
-	ld b, HELD_BERRY
-	farcall _HeldHPHealingItem
-	ret nz
-	farjp UseBattleItem
-
-.weakness_policy
 	call SwitchTurn
 	ld b, 0
 	push bc
