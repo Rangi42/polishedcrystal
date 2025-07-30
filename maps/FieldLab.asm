@@ -813,24 +813,26 @@ PawpawJumpRightMovement:
 	step_end
 
 FieldLab_PawpawToDefaultPositionMovement:
+	step_up
 	step_right
 	step_right
 	turn_head_down
 	step_end
 
 AfterCyndaquilMovement:
+	step_down
 	step_left
 	turn_head_up
 	step_end
 
 AfterTotodileMovement:
-	step_left
+	step_down
 	step_left
 	turn_head_up
 	step_end
 
 AfterChikoritaMovement:
-	step_left
+	step_down
 	step_left
 	step_left
 	turn_head_up
@@ -859,7 +861,7 @@ PawpawText_Intro:
 
 	para "So!"
 
-	para "I'd like you both"
+	para "I'd like you"
 	line "to raise #mon"
 
 	para "that I recently"
@@ -962,19 +964,19 @@ PawpawWhereGoingText:
 
 TakeCyndaquilText:
 	text "Pawpaw: So it's"
-	line "Cyndaquil, the"
+	line "Fliklit, the"
 	cont "fire #mon?"
 	done
 
 TakeTotodileText:
 	text "Pawpaw: You want"
-	line "Totodile, the"
+	line "Gluttle, the"
 	cont "water #mon?"
 	done
 
 TakeChikoritaText:
 	text "Pawpaw: You like"
-	line "Chikorita, the"
+	line "Cupico, the"
 	cont "grass #mon?"
 	done
 
