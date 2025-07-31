@@ -237,7 +237,7 @@ BattleTurn:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	ld bc, FOCUS_PUNCH
-	farcall CompareMove
+	call CompareMove
 	ret nz
 
 	ld hl, FOCUS_ENERGY
@@ -523,7 +523,7 @@ ParsePlayerAction:
 	jr nz, .locked_in
 	ld a, [wBattlePlayerAction]
 	cp $2
-	jmp z, .reset_rage
+	jr z, .reset_rage
 	and a
 	jr nz, .reset_bide
 	xor a
@@ -5797,7 +5797,7 @@ CheckUsableMove:
 	ld c, l
 	ld a, BATTLE_VARS_LAST_MOVE
 	call GetBattleVar
-	farcall CompareMove
+	call CompareMove
 	pop bc
 	ld a, MOVE_UNUSABLE_TORMENT
 	ret

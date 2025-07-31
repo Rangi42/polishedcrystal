@@ -940,3 +940,35 @@ PushLYOverrides::
 	ld a, (wLYOverridesEnd - wLYOverrides) / 16
 	ldh [hLYOverrideStackCopyAmount], a
 	ret
+
+CompareMove:
+; a = move ID
+; bc = move index
+; returns z if moves are the same
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	cp b
+	ld a, l
+	pop hl
+	ret nz
+	cp c
+	ret
+
+CheckMoveInList:
+; a = move ID
+; hl = list of move indices
+; checks if the move ID in a belongs to a list of moves in hl
+; returns carry if found
+	push bc
+	push de
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	ld de, 2
+	call IsInWordArray
+	pop de
+	pop bc
+	ret
