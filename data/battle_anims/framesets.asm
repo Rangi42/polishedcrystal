@@ -290,6 +290,17 @@ BattleAnimFrameData:
 	dw .Frameset_UproarNote              ; BATTLEANIMFRAMESET_UPROAR_NOTE
 	dw .Frameset_BigWhip2                ; BATTLEANIMFRAMESET_BIG_WHIP_2
 	dw .Frameset_GrowingBubble           ; BATTLE_ANIM_FRAMESET_GROWING_BUBBLE
+	dw .Frameset_Torment                 ; BATTLEANIMFRAMESET_TORMENT
+	dw .Frameset_Taunt                   ; BATTLEANIMFRAMESET_TAUNT
+	dw .Frameset_RootR                   ; BATTLEANIMFRAMESET_ROOT_R
+	dw .Frameset_RootL                   ; BATTLEANIMFRAMESET_ROOT_L
+	dw .Frameset_EnergyOrbIngrain        ; BATTLEANIMFRAMESET_ENERGY_ORB_INGRAIN
+	dw .Frameset_Drowziness              ; BATTLEANIMFRAMESET_DROWZINESS
+	dw .Frameset_ImprisonRing            ; BATTLEANIMFRAMESET_IMPRISON_RING
+	dw .Frameset_CosmicPowerBG           ; BATTLEANIMFRAMESET_COSMIC_POWER_BG
+	dw .Frameset_BigGlowSpiked           ; BATTLEANIMFRAMESET_BIG_GLOW_SPIKED
+	dw .Frameset_MetalBurstGem           ; BATTLEANIMFRAMESET_METAL_BURST_GEM
+	dw .Frameset_MagnetRise              ; BATTLEANIMFRAMESET_MAGNET_RISE
 
 
 ; VAR3 animations start here -------
@@ -2053,3 +2064,57 @@ BattleAnimFrameData:
 	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_1,  1, OAM_X_FLIP
 	battleoamframe BATTLEANIMOAMSET_BIG_WHIP_2,  1, OAM_X_FLIP
 	battleoamrestart
+
+.Frameset_Torment:
+	battleoamframe BATTLEANIMOAMSET_TORMENT,  4
+	battleoamframe BATTLEANIMOAMSET_TORMENT,  4, OAM_X_FLIP
+	battleoamrestart
+
+.Frameset_Taunt:
+	battleoamframe BATTLEANIMOAMSET_1B,  20
+	battleoamframe BATTLEANIMOAMSET_21,  10
+	battleoamrestart
+
+.Frameset_RootR:
+	battleoamframe BATTLEANIMOAMSET_ROOTS_1,  8
+	battleoamframe BATTLEANIMOAMSET_ROOTS_2,  8
+	battleoamframe BATTLEANIMOAMSET_ROOTS_3,  8
+	battleoamend
+
+.Frameset_RootL:
+	battleoamframe BATTLEANIMOAMSET_ROOTS_1,  8, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_ROOTS_2,  8, OAM_X_FLIP
+	battleoamframe BATTLEANIMOAMSET_ROOTS_3,  8, OAM_X_FLIP
+	battleoamend
+
+.Frameset_EnergyOrbIngrain:
+	battleoamframe BATTLEANIMOAMSET_20,  8
+	battleoamframe BATTLEANIMOAMSET_1F,  8
+	battleoamframe BATTLEANIMOAMSET_1E,  8
+	battleoamdelete
+
+.Frameset_Drowziness:
+	battleoamframe BATTLEANIMOAMSET_10, 32
+	battleoamframe BATTLEANIMOAMSET_1E,  8
+	battleoamdelete
+
+.Frameset_ImprisonRing:
+	battleoamframe BATTLEANIMOAMSET_17,  8
+	battleoamend
+
+.Frameset_CosmicPowerBG:
+	battleoamframe BATTLEANIMOAMSET_CP_BG,  1
+	battleoamend
+
+.Frameset_BigGlowSpiked:
+	battleoamframe BATTLEANIMOAMSET_BIG_GLOW_SPIKED_1,  1
+	battleoamframe BATTLEANIMOAMSET_BIG_GLOW_SPIKED_2,  1
+	battleoamrestart
+
+.Frameset_MagnetRise:
+	battleoamframe BATTLEANIMOAMSET_MAGNET_RISE,  8
+	battleoamend
+
+.Frameset_MetalBurstGem:
+	battleoamframe BATTLEANIMOAMSET_20, 60
+	battleoamdelete

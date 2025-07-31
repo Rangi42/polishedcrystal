@@ -5,11 +5,13 @@ MoveTable:
 ;	dw KARATE_CHOP
 ;	dw DOUBLE_SLAP
 ;	dw COMET_PUNCH
+	dw MEGA_PUNCH
 ;	dw PAY_DAY
 ;	dw FIRE_PUNCH
 ;	dw ICE_PUNCH
 ;	dw THUNDERPUNCH
 ;	dw SCRATCH
+	dw VISE_GRIP
 ;	dw GUILLOTINE
 ;	dw RAZOR_WIND
 ;	dw SWORDS_DANCE
@@ -19,9 +21,11 @@ MoveTable:
 ;	dw WHIRLWIND
 ;	dw FLY
 ;	dw BIND
+	dw SLAM
 ;	dw VINE_WHIP
 ;	dw STOMP
 ;	dw DOUBLE_KICK
+	dw MEGA_KICK
 ;	dw JUMP_KICK
 ;	dw ROLLING_KICK
 ;	dw SAND_ATTACK
@@ -61,6 +65,7 @@ MoveTable:
 ;	dw HYPER_BEAM
 ;	dw PECK
 ;	dw DRILL_PECK
+	dw SUBMISSION
 ;	dw LOW_KICK
 ;	dw COUNTER
 ;	dw SEISMIC_TOSS
@@ -114,7 +119,9 @@ MoveTable:
 ;	dw SELFDESTRUCT
 ;	dw EGG_BOMB
 ;	dw LICK
+	dw SMOG
 ;	dw SLUDGE
+	dw BONE_CLUB
 ;	dw FIRE_BLAST
 ;	dw WATERFALL
 ;	dw CLAMP
@@ -123,6 +130,7 @@ MoveTable:
 ;	dw SPIKE_CANNON
 ;	dw CONSTRICT
 ;	dw AMNESIA
+	dw KINESIS
 ;	dw FRESH_SNACK                      ; NEEDS POINTER
 ;	dw HI_JUMP_KICK
 ;	dw GLARE
@@ -137,6 +145,7 @@ MoveTable:
 ;	dw DIZZY_PUNCH
 ;	dw SPORE
 ;	dw FLASH
+	dw PSYWAVE
 ;	dw SPLASH
 ;	dw ACID_ARMOR
 ;	dw CRABHAMMER
@@ -146,6 +155,7 @@ MoveTable:
 ;	dw REST
 ;	dw ROCK_SLIDE
 ;	dw HYPER_FANG
+	dw SHARPEN
 ;	dw CONVERSION
 ;	dw TRI_ATTACK
 ;	dw SUPER_FANG
@@ -158,7 +168,9 @@ MoveTable:
 ;	dw THIEF
 ;	dw SPIDER_WEB
 ;	dw MIND_READER
+	dw NIGHTMARE
 ;	dw FLAME_WHEEL
+	dw SNORE
 ;	dw CURSE
 ;	dw FLAIL
 ;	dw AEROBLAST
@@ -181,6 +193,7 @@ MoveTable:
 ;	dw PERISH_SONG
 ;	dw ICY_WIND
 ;	dw DETECT
+	dw BONE_RUSH
 ;	dw LOCK_ON
 ;	dw OUTRAGE
 ;	dw SANDSTORM
@@ -192,6 +205,7 @@ MoveTable:
 ;	dw SWAGGER
 ;	dw MILK_DRINK
 ;	dw SPARK
+	dw FURY_CUTTER
 ;	dw STEEL_WING
 ;	dw MEAN_LOOK
 ;	dw ATTRACT
@@ -232,31 +246,42 @@ MoveTable:
 ;
 ;- gen3 moves
 ;	dw FAKE_OUT
+	dw HEAT_WAVE
 ;	dw HAIL
+	dw TORMENT
 ;	dw WILL_O_WISP
+	dw MEMENTO
 ;	dw FACADE
+	dw FOCUS_PUNCH
+	dw NATURE_POWER
+	dw TAUNT
 ;	dw TRICK
+	dw INGRAIN
 ;	dw SUPERPOWER
 ;	dw MAGIC_COAT
 ;	dw RECYCLE
 ;	dw REVENGE
+	dw YAWN
 ;	dw KNOCK_OFF
 ;	dw ENDEAVOR
 ;	dw ERUPTION
 ;	dw SKILL_SWAP
+	dw IMPRISON
 ;	dw DIVE
+	dw CAMOUFLAGE
 ;	dw BLAZE_KICK
 ;	dw ICE_BALL
 ;	dw HYPER_VOICE
 ;	dw POISON_FANG
 ;	dw ASTONISH
 ;	dw WEATHER_BALL
+	dw AROMATHERAPY
 ;	dw AIR_CUTTER
 ;	dw OVERHEAT
 ;	dw ROCK_TOMB
 ;	dw SILVER_WIND
 ;	dw METAL_SOUND
-;	dw COSMIC_POWER              Missing pointer???
+	dw COSMIC_POWER
 ;	dw WATER_SPOUT
 ;	dw SIGNAL_BEAM
 ;	dw SHADOW_PUNCH
@@ -269,10 +294,12 @@ MoveTable:
 ;	dw ICICLE_SPEAR
 ;	dw IRON_DEFENSE
 ;	dw BLOCK
+	dw HOWL
 ;	dw DRAGON_CLAW
 ;	dw BULK_UP
 ;	dw BOUNCE
 ;	dw MUD_SHOT
+	dw COVET
 ;	dw MAGICAL_LEAF
 ;	dw CALM_MIND
 ;	dw LEAF_BLADE
@@ -290,14 +317,17 @@ MoveTable:
 ;	dw METAL_BURST
 ;	dw U_TURN
 ;	dw CLOSE_COMBAT
-;	dw PAYBACK                   Missing pointer???
-;	dw PSYCHO_SHIFT              Missing pointer???
-;	dw TRUMP_CARD                Missing pointer???
+	dw PAYBACK
+	dw EMBARGO
+	dw PSYCHO_SHIFT
+	dw TRUMP_CARD
 ;	dw GASTRO_ACID
 ;	dw LUCKY_CHANT
+	dw COPYCAT
 ;	dw WORRY_SEED
 ;	dw SUCKER_PUNCH
 ;	dw TOXIC_SPIKES
+	dw MAGNET_RISE
 ;	dw FLARE_BLITZ
 ;	dw AURA_SPHERE
 ;	dw ROCK_POLISH
@@ -317,6 +347,7 @@ MoveTable:
 ;	dw ENERGY_BALL
 ;	dw BRAVE_BIRD
 ;	dw EARTH_POWER
+	dw SWITCHEROO
 ;	dw GIGA_IMPACT
 ;	dw NASTY_PLOT
 ;	dw BULLET_PUNCH
@@ -350,39 +381,46 @@ MoveTable:
 
 ;- gen5 moves
 ;	dw HONE_CLAWS
-	dw PSYSHOCK
+;	dw PSYSHOCK
 ;	dw VENOSHOCK
-	dw QUIVER_DANCE
-	dw SOAK
+;	dw QUIVER_DANCE
+	dw HEAVY_SLAM
+	dw ELECTRO_BALL
+;	dw SOAK
 ;	dw FLAME_CHARGE
-	dw SIMPLE_BEAM
-	dw CLEAR_SMOG
+;	dw SIMPLE_BEAM
+;	dw CLEAR_SMOG
+	dw STORED_POWER
 ;	dw SCALD
 ;	dw SHELL_SMASH
 ;	dw HEX
 ;	dw ACROBATICS
-	dw INFERNO
+;	dw INFERNO
 ;	dw VOLT_SWITCH
-	dw STRUGGLE_BUG
+;	dw STRUGGLE_BUG
 ;	dw BULLDOZE
-	dw ELECTROWEB
+	dw DRAGON_TAIL
+;	dw ELECTROWEB
 ;	dw WILD_CHARGE
-	dw DRILL_RUN
-	dw DUAL_CHOP
-	dw HORN_LEECH
-	dw RAZOR_SHELL
+;	dw DRILL_RUN
+;	dw DUAL_CHOP
+;	dw HORN_LEECH
+;	dw RAZOR_SHELL
+	dw COTTON_GUARD
 ;	dw PSYSTRIKE
 ;	dw HURRICANE
-	dw SNARL
+;	dw SNARL
 ;	dw ICICLE_CRASH
 
 ;- gen6 moves
+	dw STICKY_WEB
 ;	dw DISARM_VOICE
 ;	dw DRAINING_KISS
 ;	dw PLAY_ROUGH
 	dw FAIRY_WIND
 ;	dw MOONBLAST
 ;	dw DAZZLINGLEAM
+	dw BABYDOLLEYES
 	dw NUZZLE
 	dw INFESTATION
 	dw POWERUPPUNCH
@@ -390,10 +428,13 @@ MoveTable:
 ;- gen7 moves
 	dw FIRSTIMPRESS
 	dw SOLAR_BLADE
+	dw THROAT_CHOP
 	dw BURN_UP
+	dw AURORA_VEIL
 
 ;- gen8 moves
 	dw BREAK_SWIPE
+	dw SCALE_SHOT
 	dw FLIP_TURN
 
 	dw NO_MOVE

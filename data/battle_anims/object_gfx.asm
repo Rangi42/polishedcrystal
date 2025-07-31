@@ -37,7 +37,7 @@ AnimObjGFX:
 	battleanimgfx 18, AnimObjRopeGFX
 	battleanimgfx 14, AnimObjPsychicGFX
 	battleanimgfx 26, AnimObjReflectGFX
-	battleanimgfx 27, AnimObjStatusGFX
+	battleanimgfx 31, AnimObjStatusGFX
 	battleanimgfx 12, AnimObjSandGFX
 	battleanimgfx 14, AnimObjWebGFX
 	battleanimgfx 16, AnimObjHazeGFX
@@ -62,7 +62,7 @@ AnimObjGFX:
 	battleanimgfx 13, AnimObjBigRingsGFX
 	battleanimgfx 55, AnimObjGyroBallGFX
 	battleanimgfx  5, AnimObjHeartsGFX
-	battleanimgfx  5, AnimObjStarsGFX
+	battleanimgfx  7, AnimObjStarsGFX
 	battleanimgfx 48, AnimObjBlurGFX
 	battleanimgfx  5, AnimObjMisc2GFX
 	battleanimgfx 10, AnimObjBeamAuroraGFX
@@ -105,6 +105,12 @@ AnimObjGFX:
 	battleanimgfx 18, AnimObjDrillGFX
 	battleanimgfx 16, AnimObjHornLeechGFX
 	battleanimgfx  2, AnimObjRazorShellGFX
+	battleanimgfx  8, AnimObjTauntGFX
+	battleanimgfx 16, AnimObjRootsGFX
+	battleanimgfx  5, AnimObjCosmicPowerGFX
+	battleanimgfx  6, AnimObjGlowSpikedGFX
+	battleanimgfx 10, AnimObjBigGlowSpikedGFX
+	battleanimgfx  4, AnimObjFlatterGFX
 	battleanimgfx  1 ; ANIM_GFX_PLAYERHEAD
 	battleanimgfx  1 ; ANIM_GFX_ENEMYFEET
 	battleanimgfx 10, AnimObjPokeBallBGGFX

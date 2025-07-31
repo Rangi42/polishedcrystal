@@ -211,6 +211,12 @@ AnimObjObjects3GFX:       INCBIN "gfx/battle_anims/objects3.2bpp.lz"
 AnimObjDrillGFX:          INCBIN "gfx/battle_anims/drill.2bpp.lz"
 AnimObjHornLeechGFX:      INCBIN "gfx/battle_anims/horn_leech.2bpp.lz"
 AnimObjRazorShellGFX:     INCBIN "gfx/battle_anims/razorshell.2bpp.lz"
+AnimObjTauntGFX:          INCBIN "gfx/battle_anims/taunt.2bpp.lz"
+AnimObjRootsGFX:          INCBIN "gfx/battle_anims/roots.2bpp.lz"
+AnimObjCosmicPowerGFX:    INCBIN "gfx/battle_anims/cosmicpower.2bpp.lz"
+AnimObjGlowSpikedGFX:     INCBIN "gfx/battle_anims/glowspiked.2bpp.lz"
+AnimObjBigGlowSpikedGFX:  INCBIN "gfx/battle_anims/bigglowspiked.2bpp.lz"
+AnimObjFlatterGFX:        INCBIN "gfx/battle_anims/flatter.2bpp.lz"
 AnimObjPokeBallBGGFX::    INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 

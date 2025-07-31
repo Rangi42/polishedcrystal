@@ -424,48 +424,48 @@ endc
 	dba BattleAnim_Struggle        ; INCINERATE
 	dba BattleAnim_Pluck           ; PLUCK
 	dba BattleAnim_Struggle        ; STORED_POWER
-	dba BattleAnim_Struggle        ; COSMIC_POWER
-	dba BattleAnim_Struggle        ; PSYCHO_SHIFT
-	dba BattleAnim_Struggle        ; TRUMP_CARD
-	dba BattleAnim_Struggle        ; PAYBACK
+	dba BattleAnim_CosmicPower     ; COSMIC_POWER
+	dba BattleAnim_PsychoShift     ; PSYCHO_SHIFT
+	dba BattleAnim_TrumpCard       ; TRUMP_CARD
+	dba BattleAnim_Payback         ; PAYBACK
 	dba BattleAnim_Struggle        ; AURORA_VEIL
 	dba BattleAnim_Struggle        ; STICKY_WEB
-	dba BattleAnim_Struggle        ; TAUNT
-	dba BattleAnim_Struggle        ; TORMENT
-	dba BattleAnim_Struggle        ; YAWN
-	dba BattleAnim_Struggle        ; MAGNET_RISE
+	dba BattleAnim_Taunt           ; TAUNT
+	dba BattleAnim_Torment         ; TORMENT
+	dba BattleAnim_Yawn            ; YAWN
+	dba BattleAnim_MagnetRise      ; MAGNET_RISE
 	dba BattleAnim_Struggle        ; THROAT_CHOP
-	dba BattleAnim_Struggle        ; EMBARGO
-	dba BattleAnim_Struggle        ; SNORE
-	dba BattleAnim_Struggle        ; SWITCHEROO
-	dba BattleAnim_Struggle        ; PSYWAVE
+	dba BattleAnim_Embargo         ; EMBARGO
+	dba BattleAnim_Snore           ; SNORE
+	dba BattleAnim_Switcheroo      ; SWITCHEROO
+	dba BattleAnim_Psywave         ; PSYWAVE
 	dba BattleAnim_Struggle        ; HEAVY_SLAM
 	dba BattleAnim_Struggle        ; ELECTRO_BALL
-	dba BattleAnim_Struggle        ; FURY_CUTTER
-	dba BattleAnim_Struggle        ; COPYCAT
-	dba BattleAnim_Struggle        ; CAMOUFLAGE
-	dba BattleAnim_Struggle        ; NATURE_POWER
+	dba BattleAnim_FuryCutter      ; FURY_CUTTER
+	dba BattleAnim_Copycat         ; COPYCAT
+	dba BattleAnim_Camouflage      ; CAMOUFLAGE
+	dba BattleAnim_0               ; NATURE_POWER             ; No animation needed
 	dba BattleAnim_Struggle        ; DRAGON_TAIL
-	dba BattleAnim_Struggle        ; MEMENTO
-	dba BattleAnim_Struggle        ; FOCUS_PUNCH
+	dba BattleAnim_Memento         ; MEMENTO
+	dba BattleAnim_FocusPunch      ; FOCUS_PUNCH
 	dba BattleAnim_Struggle        ; SCALE_SHOT
-	dba BattleAnim_Struggle        ; NIGHTMARE
-	dba BattleAnim_Struggle        ; INGRAIN
-	dba BattleAnim_Struggle        ; IMPRISON
-	dba BattleAnim_Struggle        ; BONE_RUSH
-	dba BattleAnim_Struggle        ; SUBMISSION
-	dba BattleAnim_Struggle        ; SHARPEN
-	dba BattleAnim_Struggle        ; BONE_CLUB
-	dba BattleAnim_Struggle        ; SMOG
-	dba BattleAnim_Struggle        ; MEGA_PUNCH
-	dba BattleAnim_Struggle        ; SLAM
-	dba BattleAnim_Struggle        ; KINESIS
-	dba BattleAnim_Struggle        ; VISE_GRIP
-	dba BattleAnim_Struggle        ; MEGA_KICK
-	dba BattleAnim_Struggle        ; AROMATHERAPY
+	dba BattleAnim_Nightmare       ; NIGHTMARE
+	dba BattleAnim_Ingrain         ; INGRAIN
+	dba BattleAnim_Imprison        ; IMPRISON
+	dba BattleAnim_BoneRush        ; BONE_RUSH
+	dba BattleAnim_Submission      ; SUBMISSION
+	dba BattleAnim_Sharpen         ; SHARPEN
+	dba BattleAnim_BoneClub        ; BONE_CLUB
+	dba BattleAnim_Smog            ; SMOG
+	dba BattleAnim_MegaPunch       ; MEGA_PUNCH
+	dba BattleAnim_Slam            ; SLAM
+	dba BattleAnim_Kinesis         ; KINESIS
+	dba BattleAnim_ViseGrip        ; VISE_GRIP
+	dba BattleAnim_MegaKick        ; MEGA_KICK
+	dba BattleAnim_Aromatherapy    ; AROMATHERAPY
 	dba BattleAnim_Struggle        ; BABYDOLLEYES
 	dba BattleAnim_Struggle        ; COTTON_GUARD
-	dba BattleAnim_Struggle        ; COVET
-	dba BattleAnim_Struggle        ; HEAT_WAVE
-	dba BattleAnim_Struggle        ; HOWL
+	dba BattleAnim_Covet           ; COVET
+	dba BattleAnim_HeatWave        ; HEAT_WAVE
+	dba BattleAnim_Howl            ; HOWL
 	assert_table_length NUM_ATTACKS + 1
