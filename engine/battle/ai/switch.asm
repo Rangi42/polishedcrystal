@@ -245,7 +245,7 @@ AICheckMatchupForEnemyMon:
 	ret
 
 .set_matchup
-	call CheckTypeMatchup
+	farcall CheckTypeMatchup
 	ld a, [wTypeMatchup]
 	and a
 	ret z ; no effect

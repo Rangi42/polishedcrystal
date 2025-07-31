@@ -1153,7 +1153,7 @@ AI_Smart_Encore:
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, EncoreMoves
-	call AI_CheckMoveInList
+	call CheckMoveInList
 	pop hl
 	jr nc, .discourage
 
@@ -1315,7 +1315,7 @@ AI_Smart_Disable:
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, UsefulMoves
-	call AI_CheckMoveInList
+	call CheckMoveInList
 
 	pop hl
 	jr nc, .notencourage
@@ -2266,7 +2266,7 @@ AI_Opportunist:
 	push de
 	push bc
 	ld hl, StallMoves
-	call AI_CheckMoveInList
+	call CheckMoveInList
 
 	pop bc
 	pop de
@@ -2548,7 +2548,7 @@ AI_Cautious:
 	push de
 	push bc
 	ld hl, ResidualMoves
-	call AI_CheckMoveInList
+	call CheckMoveInList
 
 	pop bc
 	pop de
@@ -2806,12 +2806,3 @@ AI_50_50:
 	call Random
 	cp 50 percent + 1
 	ret
-
-AI_CheckMoveInList:
-	push hl
-	call GetMoveIndexFromID
-	ld b, h
-	ld c, l
-	pop hl
-	ld de, 2
-	jp IsInWordArray
