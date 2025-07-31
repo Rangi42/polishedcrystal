@@ -106,7 +106,8 @@ OlsteetonFisherText:
 	para "accident when I"
 	line "was just a lad."
 
-	para "It's the bestest swimmer!"
+	para "It's the"
+	line "bestest swimmer!"
 	done
 
 OlsteetonPoliwrathText:

@@ -7,13 +7,14 @@ OlsteetonUni_MapScriptHeader:
 	def_warp_events
 	warp_event  2, 10, OLSTEETON_UNI_GATE, 3
 	warp_event  2, 11, OLSTEETON_UNI_GATE, 4
-	; warp_event  6,  7, UNI_LIBRARY, 1
-	; warp_event 23, 15, UNI_DORM_WEST, 1
-	; warp_event 23,  7, UNI_CLOCKTOWER, 1
-	; warp_event 17,  7, KURTS_HOUSE, 1
-	; warp_event 32,  5, UNI_GYM_DEPT, 1
-	; warp_event 31, 15, UNI_DORM_EAST, 1
-
+	; warp_event 23,  8, OLSTEETON_UNI_LIBRARY_1F, 3
+	; warp_event  7,  0, OLSTEETON_UNI_DINING_HALL, 1
+	; warp_event 13,  0, OLSTEETON_UNI_SCIENCE_CENTER, 1
+	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_1, 1
+	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_2, 1
+	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_3, 1
+	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_4, 1
+	; warp_event  7,  8, OLSTEETON_UNI_NURSE_DEPT, 1
 
 	def_coord_events
 
