@@ -496,7 +496,7 @@ BillsPC_SafeGet2bpp:
 BillsPC_PrintBoxName:
 ; Writes name of current Box to box name area in storage system
 	hlcoord 9, 5
-	ld a, " "
+	ld a, ' '
 	ld bc, 9
 	rst ByteFill
 
@@ -514,7 +514,7 @@ BillsPC_PrintBoxName:
 .loop
 	ld a, [hli]
 	inc b
-	cp "@"
+	cp '@'
 	jr nz, .loop
 	srl b
 	ld a, 5
@@ -920,7 +920,7 @@ BillsPC_SetBoxArrows:
 	jr c, .box_cursors
 
 	; Clear box switch arrows.
-	ld a, " "
+	ld a, ' '
 	hlcoord 8, 5
 	ld [hl], a
 	hlcoord 18, 5
@@ -930,9 +930,9 @@ BillsPC_SetBoxArrows:
 
 .box_cursors
 	hlcoord 8, 5
-	ld [hl], "◀"
+	ld [hl], '◀'
 	hlcoord 18, 5
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ret
 
 _GetCursorMon:
@@ -1000,7 +1000,7 @@ _GetCursorMon:
 	farcall PrepareFrontpic
 
 	push hl
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer2], a
 	call GetMonItemUnlessCursor
 	jr z, .delay_loop
@@ -1147,7 +1147,7 @@ _GetCursorMon:
 	ld a, [wTempMonForm]
 	ld [wNamedObjectIndex+1], a
 	hlcoord 8, 1
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	call GetPokemonName
 	ld de, wStringBuffer1
@@ -2686,7 +2686,7 @@ BillsPC_CanReleaseMon:
 
 	; Allow release of Bad Eggs.
 	ld a, [wTempMonNickname]
-	cp "B" ; Assume "Bad Egg" (since the only alternative is "Egg").
+	cp 'B' ; Assume "Bad Egg" (since the only alternative is "Egg").
 	ld a, RELEASE_EGG
 	ret nz
 
@@ -2720,7 +2720,7 @@ RemoveStorageBoxMon_MaybeRespawn:
 	inc de
 	inc hl
 	jr nz, .done
-	cp "@"
+	cp '@'
 	jr nz, .loop
 
 	; This is ours. Check which, if any, beast we should respawn.
@@ -2928,7 +2928,7 @@ BillsPC_Rename:
 	ld hl, wStringBuffer2
 
 	; Abort if no name was entered.
-	ld a, "@"
+	ld a, '@'
 	cp [hl]
 	jr z, .abort
 	ld de, wStringBuffer1

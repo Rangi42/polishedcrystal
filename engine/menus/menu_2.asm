@@ -4,7 +4,7 @@ PlaceMenuKeyItemName:
 	push de
 	dec de
 	dec de
-	ld a, " "
+	ld a, ' '
 	ld [de], a
 	ld a, [wMenuSelection]
 	push bc
@@ -14,19 +14,19 @@ PlaceMenuKeyItemName:
 	ld hl, wRegisteredItems
 	ld a, [hli]
 	cp b
-	ld c, "▲"
+	ld c, '▲'
 	jr z, .registered
 	ld a, [hli]
 	cp b
-	ld c, "◀"
+	ld c, '◀'
 	jr z, .registered
 	ld a, [hli]
 	cp b
-	ld c, "▶"
+	ld c, '▶'
 	jr z, .registered
 	ld a, [hli]
 	cp b
-	ld c, "▼"
+	ld c, '▼'
 	jr nz, .not_registered
 .registered
 	push bc
@@ -36,7 +36,7 @@ PlaceMenuKeyItemName:
 	pop bc
 	dec a
 	jr nz, .not_unique
-	ld c, "★"
+	ld c, '★'
 .not_unique
 	ld a, c
 	ld [de], a
@@ -102,7 +102,7 @@ PlaceMenuItemQuantity:
 _PlaceMenuQuantity:
 	ld de, SCREEN_WIDTH + 1
 	add hl, de
-	ld a, "×"
+	ld a, '×'
 	ld [hli], a
 	ld de, wMenuSelectionQuantity
 	lb bc, 1, 2

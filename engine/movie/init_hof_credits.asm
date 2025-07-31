@@ -32,7 +32,7 @@ ClearDisplayForEndgame:
 	call LoadFontsBattleExtra
 	hlbgcoord 0, 0
 	ld bc, vBGMap1 - vBGMap0
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
@@ -47,7 +47,7 @@ ResetDisplayBetweenHallOfFameMons:
 	ldh [rWBK], a
 	ld hl, wScratchTileMap
 	ld bc, TILEMAP_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlbgcoord 0, 0
 	ld de, wScratchTileMap

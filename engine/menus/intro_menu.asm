@@ -37,7 +37,7 @@ _MainMenu:
 NewGame_ClearTileMapEtc:
 	xor a
 	ldh [hMapAnims], a
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	call FillTileMap
 	call LoadFrame
 	call LoadStandardFont
@@ -589,7 +589,7 @@ Continue_DisplayGameTime:
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
@@ -763,7 +763,7 @@ InitGender:
 
 GenderMenu::
 	; erase previous cursors
-	ld a, " "
+	ld a, ' '
 	hlcoord 2, 3
 	ld [hli], a
 	ld [hl], a
@@ -905,7 +905,7 @@ InitGenderGraphics:
 
 ; Shift the "▼" character three pixels to the right across two tiles
 	farcall LoadStandardFontPointer
-	ld de, ("▼" - $80) * TILE_1BPP_SIZE
+	ld de, ('▼' - $80) * TILE_1BPP_SIZE
 	add hl, de
 	ld de, wOverworldMapBlocks
 	ld c, TILE_1BPP_SIZE

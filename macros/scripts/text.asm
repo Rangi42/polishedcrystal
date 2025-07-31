@@ -169,7 +169,7 @@ MACRO _dtxt
 ENDM
 
 MACRO _dchr
-	DEF _chr = \1
+	DEF _chr = CHARVAL(\1, 0)
 	if _might_compress_text && DEF(___huffman_data_{02X:_chr}) && DEF(___huffman_length_{02X:_chr})
 		; We might compress text, and this character has a Huffman code
 		if ___huffman_length_{02X:_chr} < 8
@@ -180,7 +180,7 @@ MACRO _dchr
 			DEF _ctxt_length = 0
 			DEF _raw_bytes = 0
 			DEF _compressed_bytes = 1
-			DEF _compressed_byte_0 = "<CTXT>"
+			DEF _compressed_byte_0 = '<CTXT>'
 			setcharmap compressing
 		endc
 	endc
@@ -200,7 +200,7 @@ MACRO _dchr
 	if !_compressing_text
 		; We're not compressing text; declare the raw character
 		db _chr
-		if _chr == "@" || _chr == "<DONE>" || _chr == "<PROMPT>"
+		if _chr == '@' || _chr == '<DONE>' || _chr == '<PROMPT>'
 			; We've reached the end of the text
 			DEF _might_compress_text = 0
 		endc
@@ -225,7 +225,7 @@ MACRO _dchr
 				DEF _ctxt_bits &= (1 << _ctxt_length) - 1
 			endc
 		endr
-		if _chr == "@" || _chr == "<DONE>" || _chr == "<PROMPT>"
+		if _chr == '@' || _chr == '<DONE>' || _chr == '<PROMPT>'
 			; We've reached the end of the text
 			if _ctxt_length > 0
 				; Append the compressed byte, padded with zero bits

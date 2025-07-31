@@ -48,10 +48,10 @@ RunBattleTowerTrainer:
 	; Display awarded BP for the battle (saved after conclusion)
 	call BT_GetCurTrainer
 	farcall BT_GetPointsForTrainer
-	add "0"
+	add '0'
 	ld hl, wStringBuffer1
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	call BT_IncrementCurTrainer
 	; fallthrough
 _RunBattleTowerTrainer:

@@ -355,7 +355,7 @@ AIDebug:
 	hlcoord 1, 13
 	push hl
 	ld c, 4
-	ld a, " "
+	ld a, ' '
 .clear_loop
 	ld b, 18
 .clear_row
@@ -374,7 +374,7 @@ AIDebug:
 .move_loop
 	push de
 	push bc
-	ld [hl], "-"
+	ld [hl], '-'
 	ld a, [de]
 	inc de
 	and a
@@ -418,9 +418,9 @@ AIDebug:
 	ld a, c
 	cp 10
 	jr c, .numeric
-	add "A" - "0" - 10
+	add 'A' - '0' - 10
 .numeric
-	add "0"
+	add '0'
 	ld [hl], a
 
 	call ApplyTilemap

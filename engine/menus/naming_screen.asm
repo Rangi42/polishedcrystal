@@ -3,8 +3,8 @@ DEF NAMINGSCREEN_MALE EQU $6b
 DEF NAMINGSCREEN_FEMALE EQU $6c
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
-DEF NAMINGSCREEN_MIDDLELINE EQU "′"
-DEF NAMINGSCREEN_UNDERLINE  EQU "″"
+DEF NAMINGSCREEN_MIDDLELINE EQU '′'
+DEF NAMINGSCREEN_UNDERLINE  EQU '″'
 
 _NamingScreen:
 	call DisableSpriteUpdates
@@ -79,7 +79,7 @@ NamingScreen:
 	hlcoord 5, 2
 	rst PlaceString
 	hlcoord 5, 4
-	ld [hl], "/"
+	ld [hl], '/'
 	farcall GetGender
 	jr c, .genderless
 	ld a, NAMINGSCREEN_MALE
@@ -92,7 +92,7 @@ NamingScreen:
 	farcall GetShininess
 	jr z, .not_shiny
 	hlcoord 1, 4
-	ld [hl], "★"
+	ld [hl], '★'
 .not_shiny
 	jmp .StoreMonIconParams
 
@@ -621,7 +621,7 @@ NamingScreen_TryAddCharacter:
 	inc [hl]
 	call NamingScreen_GetTextCursorPosition
 	ld a, [hl]
-	cp "@"
+	cp '@'
 	jr z, .end_of_string
 	ld [hl], NAMINGSCREEN_UNDERLINE
 	and a
@@ -675,7 +675,7 @@ NamingScreen_InitNameEntry:
 	ld [hli], a
 	dec c
 	jr nz, .loop
-	ld [hl], "@"
+	ld [hl], '@'
 	ret
 
 NamingScreen_StoreEntry:
@@ -692,7 +692,7 @@ NamingScreen_StoreEntry:
 	cp NAMINGSCREEN_UNDERLINE
 	jr nz, .not_terminator
 .terminator
-	ld [hl], "@"
+	ld [hl], '@'
 .not_terminator
 	inc hl
 	dec c
@@ -863,7 +863,7 @@ _ComposeMailMessage:
 	ld e, a
 	ld hl, $10
 	add hl, de
-	ld [hl], "<NEXT>"
+	ld [hl], '<NEXT>'
 	ret
 
 .MailIcon:
@@ -1008,7 +1008,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	call NamingScreen_GetTextCursorPosition
 	ld a, NAMINGSCREEN_UNDERLINE
 	ld [hld], a
-	ld [hl], "<NEXT>"
+	ld [hl], '<NEXT>'
 	ret
 
 .start
@@ -1034,7 +1034,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	call NamingScreen_GetTextCursorPosition
 	ld a, NAMINGSCREEN_UNDERLINE
 	ld [hli], a
-	ld [hl], "<NEXT>"
+	ld [hl], '<NEXT>'
 	ret
 
 .finished
@@ -1072,7 +1072,7 @@ NamingScreen_DrawBorders:
 	call .DrawBox
 
 	; input characters
-	ld a, " "
+	ld a, ' '
 	hlcoord 0, 6
 	ld bc, SCREEN_WIDTH * 9
 	rst ByteFill

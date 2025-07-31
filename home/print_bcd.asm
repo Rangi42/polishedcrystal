@@ -20,7 +20,7 @@ PrintBCDNumber::
 	jr z, .loop
 	bit 7, b
 	jr nz, .loop ; skip currency symbol
-	ld a, "¥"
+	ld a, '¥'
 	ld [hli], a
 .loop
 	ld a, [de]
@@ -40,10 +40,10 @@ PrintBCDNumber::
 .skipRightAlignmentAdjustment
 	bit 5, b
 	jr z, .skipCurrencySymbol
-	ld a, "¥"
+	ld a, '¥'
 	ld [hli], a
 .skipCurrencySymbol
-	ld [hl], "0"
+	ld [hl], '0'
 	call PrintLetterDelay
 	inc hl
 	ret
@@ -56,13 +56,13 @@ PrintBCDDigit::
 ; if bit 7 is set, then no numbers have been printed yet
 	bit 5, b ; print the currency symbol?
 	jr z, .skipCurrencySymbol
-	ld [hl], "¥" ; no-optimize *hl++|*hl-- = N
+	ld [hl], '¥' ; no-optimize *hl++|*hl-- = N
 	inc hl
 	res 5, b
 .skipCurrencySymbol
 	res 7, b ; unset 7 to indicate that a nonzero digit has been reached
 .outputDigit
-	add "0"
+	add '0'
 	ld [hli], a
 	jmp PrintLetterDelay
 
@@ -71,6 +71,6 @@ PrintBCDDigit::
 	jr z, .outputDigit ; if so, print a zero digit
 	bit 6, b ; left or right alignment?
 	ret nz
-	ld a, " "
+	ld a, ' '
 	ld [hli], a ; if right-aligned, "print" a space by advancing the pointer
 	ret

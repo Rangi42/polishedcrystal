@@ -3880,11 +3880,11 @@ DrawPlayerHUD:
 
 	; DrawPlayerHUDBorder
 	hlcoord 19, 11
-	ld [hl], "<XPEND>"
+	ld [hl], '<XPEND>'
 	hlcoord 10, 11
-	ld a, "<XP1>"
+	ld a, '<XP1>'
 	ld [hli], a
-	ld [hl], "<XP2>"
+	ld [hl], '<XP2>'
 
 	call PrintPlayerHUD
 
@@ -3950,7 +3950,7 @@ PrintPlayerHUD:
 	ld de, wBattleMonNickname
 	hlcoord 11, 7
 	ld a, [wBattleMonNickname + MON_NAME_LENGTH - 2]
-	cp "@"
+	cp '@'
 	jr z, .short_name
 	dec hl ; hlcoord 10, 7
 .short_name
@@ -3991,7 +3991,7 @@ endr
 	ld bc, wBattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, "<STAR>"
+	ld a, '<STAR>'
 	hlcoord 19, 8
 	ld [hl], a
 
@@ -3999,9 +3999,9 @@ endr
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender_char
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender_char
 	inc a ; "<FEMALE>"
 
@@ -4067,21 +4067,21 @@ endr
 	ld bc, wEnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, "<STAR>"
+	ld a, '<STAR>'
 	hlcoord 9, 1
 	ld [hl], a
 
 .not_shiny
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	ld a, " "
+	ld a, ' '
 	jr z, .got_gender
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender
 	inc a ; "<FEMALE>"
 
@@ -5054,7 +5054,7 @@ MoveSelectionScreen:
 	ld bc, SCREEN_WIDTH
 	dec a
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 
 .interpret_joypad
 	ld a, $1
@@ -5424,7 +5424,7 @@ MoveInfoBox:
 
 	hlcoord 0, 8
 	ld a, [hl]
-	cp "┌"
+	cp '┌'
 	push af
 	lb bc, 3, 9
 	call Textbox
@@ -5532,7 +5532,7 @@ MoveInfoBox:
 
 .PrintPP:
 	hlcoord 2, 11
-	ld a, "<BOLDP>"
+	ld a, '<BOLDP>'
 	ld [hli], a
 	ld [hli], a
 	inc hl
@@ -5543,7 +5543,7 @@ MoveInfoBox:
 	pop hl
 	inc hl
 	inc hl
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wNamedObjectIndex
 	lb bc, 1, 2
@@ -6252,7 +6252,7 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	ld a, d
 	cp 7 * 7
 	jr c, .ok
-	ld a, " "
+	ld a, ' '
 .ok
 	ld [hl], a
 	ld bc, SCREEN_WIDTH
@@ -7677,7 +7677,7 @@ PlaceExpBar:
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, "<FULLXP>"
+	ld a, '<FULLXP>'
 	ld [hli], a
 	dec c
 	ret z
@@ -7686,15 +7686,15 @@ PlaceExpBar:
 .next
 	add $8
 	jr z, .loop2
-	add "<NOXP>"
+	add '<NOXP>'
 	jr .skip
 
 .loop2
-	ld a, "<NOXP>"
+	ld a, '<NOXP>'
 
 .skip
 	ld [hli], a
-	ld a, "<NOXP>"
+	ld a, '<NOXP>'
 	dec c
 	jr nz, .loop2
 	ret
@@ -8246,7 +8246,7 @@ ReadAndPrintLinkBattleRecord:
 	ld de, wLinkBattleRecordName
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	inc de
 	ld bc, 6
@@ -8670,7 +8670,7 @@ InitBattleDisplay:
 
 	ld hl, wScratchTileMap
 	ld bc, TILEMAP_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 
 	ld de, wScratchTileMap

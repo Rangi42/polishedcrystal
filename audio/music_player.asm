@@ -297,7 +297,7 @@ MusicPlayerLoop:
 	xor a
 	ld [wChannelSelector], a
 	hlcoord 3, MP_HUD_TOP
-	ld [hl], "◀"
+	ld [hl], '◀'
 ; fallthrough
 
 SongEditor:
@@ -659,7 +659,7 @@ DrawPianoRollOverlay:
 	ld a, 2
 	ldh [hVBlank], a
 
-	ld a, " "
+	ld a, ' '
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * PIANO_ROLL_HEIGHT
 	rst ByteFill
@@ -686,7 +686,7 @@ DrawPitchTransposition:
 	and a
 	ret z
 .continue
-	ld [hl], "P" ; no-optimize *hl++|*hl-- = N
+	ld [hl], 'P' ; no-optimize *hl++|*hl-- = N
 	inc hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	ld de, wPitchTransposition
@@ -703,21 +703,21 @@ DrawTempoAdjustment:
 	and a
 	ret z
 .continue
-	ld [hl], "T" ; no-optimize *hl++|*hl-- = N
+	ld [hl], 'T' ; no-optimize *hl++|*hl-- = N
 	inc hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	ld de, wTempoAdjustment
 _PrintSignedNum:
 	bit 7, a
 	jr nz, .negative
-	ld a, "+"
+	ld a, '+'
 	jr .printnum
 .negative
 	cpl
 	inc a
 	ld de, wTmpValue
 	ld [de], a
-	ld a, "-"
+	ld a, '-'
 .printnum
 	ld [hli], a
 	jmp PrintNum
@@ -735,7 +735,7 @@ DrawChannelSelector:
 	cp MP_EDIT_TEMPO
 	jr z, .tempo
 	call _LocateChannelSelector
-	ld [hl], "◀"
+	ld [hl], '◀'
 	ret
 
 .pitch:
@@ -746,9 +746,9 @@ DrawChannelSelector:
 .draw
 	ld a, [wAdjustingTempo]
 	and a
-	ld a, "▶"
+	ld a, '▶'
 	jr z, .ok
-	ld a, "▷"
+	ld a, '▷'
 .ok
 	ld [hl], a
 	ret
@@ -770,7 +770,7 @@ ClearChannelSelector:
 .tempo:
 	hlcoord 14, 2
 .clear
-	ld [hl], " "
+	ld [hl], ' '
 	ret
 
 _LocateChannelSelector:
@@ -850,7 +850,7 @@ DrawChData:
 	; channel 4
 	hlcoord 19, MP_HUD_TOP + 1
 	ld a, [wMusicNoiseSampleSet]
-	add "0"
+	add '0'
 	ld [hl], a
 
 	hlcoord 17, MP_HUD_TOP + 2
@@ -862,7 +862,7 @@ DrawChData:
 	ld a, MP_METER8
 	jr nz, .got_hit
 .blank_hit
-	ld a, " "
+	ld a, ' '
 .got_hit
 	ld [hl], a
 	xor a
@@ -894,7 +894,7 @@ _DrawCh1_2_3:
 	push hl
 	call GetOctaveAddr
 	ld d, [hl]
-	ld a, "8"
+	ld a, '8'
 	sub d
 	pop hl
 	ld [hli], a
@@ -954,10 +954,10 @@ _DrawCh1_2_3:
 
 	ld a, [wChannel3Intensity]
 	and $f
-	add "0"
-	cp "9" + 1
+	add '0'
+	cp '9' + 1
 	jr c, .got_digit
-	sub "9" + 1 - "A"
+	sub '9' + 1 - 'A'
 .got_digit
 	hlcoord 14, MP_HUD_TOP + 1
 	ld [hl], a
@@ -1372,7 +1372,7 @@ GetSongInfo:
 	jr z, .found
 .loop2:
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr z, .nextline
 	jr .loop2
 .found
@@ -1431,7 +1431,7 @@ DrawSongInfo:
 	ret
 
 DrawSongID:
-	ld a, "<SHARP>"
+	ld a, '<SHARP>'
 	ld [hli], a
 	ld a, [wSongSelection]
 	cp 10
@@ -1445,7 +1445,7 @@ DrawSongID:
 	jmp PrintNum
 
 .print_digit
-	add "0"
+	add '0'
 	ld [hli], a
 	ret
 
@@ -1478,7 +1478,7 @@ GetSongArtist2:
 	call GetNthString
 	push hl
 	ld a, [hl]
-	cp "@"
+	cp '@'
 	jr z, .finish
 	ld de, .Arranger
 	hlcoord 0, 9
@@ -1492,7 +1492,7 @@ GetSongArtist2:
 
 SongSelector:
 	hlcoord 0, 0
-	ld a, " "
+	ld a, ' '
 	ld bc, SCREEN_AREA
 	rst ByteFill
 	ld hl, rLCDC
@@ -1504,7 +1504,7 @@ SongSelector:
 	call Textbox
 
 	hlcoord 0, MP_LIST_CURSOR_Y
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ld a, [wSongSelection]
 	ld [wSelectorTop], a ; backup, in case of B button
 	cp MP_LIST_CURSOR_Y
@@ -1648,7 +1648,7 @@ MPGetJoypad:
 
 MPLPlaceString:
 	push hl
-	ld a, " "
+	ld a, ' '
 	ld hl, wStringBuffer2
 	ld bc, 3
 	rst ByteFill
@@ -1658,27 +1658,27 @@ MPLPlaceString:
 	lb bc, 1, 3
 	call PrintNum
 	pop de
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	push hl
 	push de
 	rst PlaceString
 	ld h, b
 	ld l, c
-	ld [hl], "@"
+	ld [hl], '@'
 	pop de
 	pop hl
 .de_loop
 	ld a, [de]
 	inc de
-	cp "@"
+	cp '@'
 	jr nz, .de_loop
 	dec de
 	ld bc, 0
 .loop
 	inc c
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .loop
 	ld a, c
 	cp 16
@@ -1688,19 +1688,19 @@ MPLPlaceString:
 	sub c
 	jr z, .ok
 .loop2
-	ld [hl], " " ; no-optimize *hl++|*hl-- = N
+	ld [hl], ' ' ; no-optimize *hl++|*hl-- = N
 	inc hl
 	dec a
 	jr nz, .loop2
-	ld [hl], "@"
+	ld [hl], '@'
 	jr .ok
 .overflow
 	ld bc, 17
 	ld hl, wStringBuffer2
 	add hl, bc
-	ld a, "…"
+	ld a, '…'
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 .ok
 	pop hl
 	push de

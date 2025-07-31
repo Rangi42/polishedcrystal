@@ -21,7 +21,7 @@ SummaryScreen_PinkPage:
 	farcall CheckShininess
 	jr nc, .shinyDone
 	hlbgcoord 10, 0, wSummaryScreenWindowBuffer
-	ld [hl], "★"
+	ld [hl], '★'
 	hlbgcoord 16 + 10, 0, wSummaryScreenWindowBuffer
 	ld [hl], SUMMARY_PAL_SHINY_POKERUS
 .shinyDone
@@ -40,9 +40,9 @@ SummaryScreen_PinkPage:
 	ld d, b
 	ld e, c
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld a, "."
+	ld a, '.'
 	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNumFromReg ; sets de
@@ -53,7 +53,7 @@ SummaryScreen_PinkPage:
 	hlbgcoord 0, 1, wSummaryScreenWindowBuffer
 	rst PlaceString
 	hlbgcoord 1, 2, wSummaryScreenWindowBuffer
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	push hl
 	call GetPartyPokemonName
@@ -145,11 +145,11 @@ SummaryScreen_PinkPage:
 	ld de, wTempMonExp + 2
 	farcall FillInExpBar
 	hlcoord 1, 17
-	ld a, "<XP1>"
+	ld a, '<XP1>'
 	ld [hli], a
-	ld [hl], "<XP2>"
+	ld [hl], '<XP2>'
 	hlcoord 9, 17
-	ld [hl], "<XPEND>"
+	ld [hl], '<XPEND>'
 
 	ld hl, .PinkPalettes
 	ld bc, 1 palettes

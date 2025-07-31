@@ -29,7 +29,7 @@ _BufferAbility:
 	ld a, [hli]
 	ld [de], a
 	inc de
-	cp "@"
+	cp '@'
 	ret z
 	jr .loop
 

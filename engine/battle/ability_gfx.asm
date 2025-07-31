@@ -13,7 +13,7 @@ PerformAbilityGFX:
 	; Blank existing nickname
 	ld hl, wAbilityPkmn
 	ld bc, MON_NAME_LENGTH
-	ld a, "@"
+	ld a, '@'
 	rst ByteFill
 
 	; Get user nickname (post-processed with n-grams)
@@ -30,10 +30,10 @@ PerformAbilityGFX:
 	ld hl, wAbilityPkmn
 .name_loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .name_loop
 	ld [hld], a
-	ld [hl], "'s"
+	ld [hl], '\'s'
 
 	; Copy tile data to temporary WRAM
 	call .CopyTilesToWRAM

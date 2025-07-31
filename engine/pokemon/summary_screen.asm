@@ -448,7 +448,7 @@ SummaryScreen_InitLayout:
 	hlcoord 1, 12
 	ld a, SUMMARY_TILE_BOTTOM_WINDOW_INNER_CORNER
 	ld [hli], a
-	ld a, " "
+	ld a, ' '
 	ld c, 3
 	rst ByteFill
 	ld [hl], SUMMARY_TILE_BOTTOM_WINDOW_INNER_CORNER
@@ -614,7 +614,7 @@ SummaryScreen_LoadPage:
 	ld b, 0
 .loop
 	ld c, $10
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	ld c, $10
 	ld a, 3
@@ -688,7 +688,7 @@ SummaryScreen_LoadPage:
 	farcall GetGender
 	pop hl
 	ret c
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender
 	inc a ; "<FEMALE>"
 .got_gender

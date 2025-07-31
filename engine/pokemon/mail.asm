@@ -154,7 +154,7 @@ CheckPokeItem::
 	ld c, a
 	ld a, b
 	call GetFarByte
-	cp "@"
+	cp '@'
 	jr z, .done
 	cp c
 	ld a, FALSE ; no-optimize a = 0 (wrong mail)
@@ -325,7 +325,7 @@ MailboxPC_GetMailAuthor:
 	push de
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	call CloseSRAM
 	pop de

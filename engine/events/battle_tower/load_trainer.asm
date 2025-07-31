@@ -13,7 +13,7 @@ WriteBattleTowerTrainerName:
 	rst CopyBytes
 
 	; Add terminator
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 
 	; The 11th byte is actually trainer class, not a terminator.

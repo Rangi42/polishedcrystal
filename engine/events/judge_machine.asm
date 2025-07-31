@@ -209,9 +209,9 @@ JudgeSystem::
 	ld a, b
 	ld [de], a
 	hlcoord 1, 13
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld a, "."
+	ld a, '.'
 	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNum

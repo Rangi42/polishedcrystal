@@ -655,7 +655,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	push bc
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	pop bc
 	pop hl
@@ -690,7 +690,7 @@ EggHatch_AnimationSequence:
 	call DisableLCD
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	ld a, " "
+	ld a, ' '
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
 	rst ByteFill

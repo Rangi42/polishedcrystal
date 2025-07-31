@@ -269,7 +269,7 @@ BuySellToss_UpdateQuantityDisplay:
 	call MenuBoxCoord2Tile
 	ld de, SCREEN_WIDTH + 1
 	add hl, de
-	ld a, "×"
+	ld a, '×'
 	ld [hli], a
 	ld de, wItemQuantityChangeBuffer
 	pop bc

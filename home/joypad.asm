@@ -422,7 +422,7 @@ ButtonSound::
 .blink_cursor
 	ldh a, [hVBlankCounter]
 	and %00010000 ; bit 4, a
-	ld a, "▼"
+	ld a, '▼'
 	jr nz, .load_cursor_state
 	ld a, [wTilemap + 17 + 17 * SCREEN_WIDTH]
 .load_cursor_state
@@ -433,7 +433,7 @@ BlinkCursor::
 	push bc
 	ld a, [hl]
 	ld b, a
-	ld a, "▼"
+	ld a, '▼'
 	cp b
 	pop bc
 	jr nz, .place_arrow
@@ -445,7 +445,7 @@ BlinkCursor::
 	dec a
 	ldh [hObjectStructIndexBuffer], a
 	ret nz
-	ld [hl], "━"
+	ld [hl], '━'
 	ld a, -1
 	ldh [hMapObjectIndexBuffer], a
 	ld a, 6
@@ -467,5 +467,5 @@ BlinkCursor::
 	ret nz
 	ld a, 6
 	ldh [hObjectStructIndexBuffer], a
-	ld [hl], "▼"
+	ld [hl], '▼'
 	ret

@@ -36,7 +36,7 @@ RestartClock:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call LoadStandardMenuHeader
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	call FillTileMap
 	ld hl, .Text_SetWithControlPad
 	call PrintText
@@ -200,10 +200,10 @@ RestartClock:
 	decoord 11, 8
 	farcall PrintHoursMins
 	ld a, [wBuffer2]
-	lb de, " ", " "
+	lb de, ' ', ' '
 	call .PlaceChars
 	ld a, [wBuffer1]
-	lb de, "▲", "▼"
+	lb de, '▲', '▼'
 	call .PlaceChars
 	ld a, [wBuffer1]
 	ld [wBuffer2], a

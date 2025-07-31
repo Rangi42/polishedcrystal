@@ -293,7 +293,7 @@ ClearPCItemScreen:
 	call ClearSprites
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 0, 0
 	lb bc, 10, 18

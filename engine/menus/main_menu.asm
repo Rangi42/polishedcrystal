@@ -14,7 +14,7 @@ MainMenu:
 	call MainMenuJoypadLoop
 	call CloseWindow
 	ret c
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	call FillTileMap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
@@ -180,7 +180,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
