@@ -1765,7 +1765,9 @@ IronFistAbility:
 	jr MoveBoostAbility
 
 IsPunchingMove:
-; Returns z if the move is a punching move, otherwise nz|nc.
+; Returns z if the used move is a punching move, otherwise nz|nc.
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	ld hl, PunchingMoves
 	call IsInByteArray
 	sbc a
