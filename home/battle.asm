@@ -697,7 +697,7 @@ CheckMoveSpeed::
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp STATUS
-	jr nz, .quick_draw_done
+	jr z, .quick_draw_done
 
 	farcall BufferAbility
 	ld a, 100
