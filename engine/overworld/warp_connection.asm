@@ -334,7 +334,7 @@ LoadMapTimeOfDay:
 	rst ByteFill
 	pop af
 	ldh [rVBK], a
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
 	rst ByteFill

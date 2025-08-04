@@ -39,7 +39,7 @@ TrainerCard:
 	farcall GetCardPic
 
 	ld hl, CardBorderGFX
-	ld de, vTiles0 tile ("┌" - 4)
+	ld de, vTiles0 tile ('┌' - 4)
 	lb bc, BANK(CardBorderGFX), 12
 	call DecompressRequest2bpp
 
@@ -235,7 +235,7 @@ TrainerCard_LoadHeaderGFX:
 TrainerCard_PrintBorder:
 	hlcoord 0, 0
 
-	ld a, "┌"
+	ld a, '┌'
 	ld [hli], a
 	ld e, SCREEN_WIDTH - 2
 	inc a ; top border
@@ -336,11 +336,11 @@ TrainerCard_PrintTopHalfOfCard:
 	jmp PrintNum
 
 .Top_Headings:
-	db     "┌" - 4, "Name/<LNBRK>"
-	db     "┌" - 4, "<ID>№.<LNBRK>"
-	db     "┌" - 3
-	ds 11, "┌" - 2
-	db     "┌" - 1, "<LNBRK>"
+	db     '┌' - 4, "Name/<LNBRK>"
+	db     '┌' - 4, "<ID>№.<LNBRK>"
+	db     '┌' - 3
+	ds 11, '┌' - 2
+	db     '┌' - 1, "<LNBRK>"
 	db     "<LNBRK>"
 	db     " Money@"
 
@@ -355,7 +355,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	rst PlaceString
 
 	hlcoord 18, 16
-	ld [hl], "▶"
+	ld [hl], '▶'
 
 	ldh a, [hBGMapMode]
 	push af
@@ -427,10 +427,10 @@ TrainerCard_Page1_PrintGameTime:
 	ret nz
 	hlcoord 15, 12
 	ld a, [hl]
-	cp ":"
-	ld a, ":"
+	cp ':'
+	ld a, ':'
 	jr nz, .ok
-	ld a, " "
+	ld a, ' '
 .ok
 	ld [hl], a
 	ret

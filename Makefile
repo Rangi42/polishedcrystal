@@ -23,11 +23,11 @@ Q :=
 
 POCKET_LOGO = gfx/logo/pocket.bin
 
-RGBASM_FLAGS     = -E -Q8 -P includes.asm -Weverything -Wtruncation=1
+RGBASM_FLAGS     = -Weverything -Wtruncation=1 -E -Q8 -P includes.asm
 RGBASM_VC_FLAGS  = $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
-RGBLINK_FLAGS    = -M -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
-RGBLINK_VC_FLAGS = -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
-RGBFIX_FLAGS     = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC3+TIMER+RAM+BATTERY -r 3
+RGBLINK_FLAGS    = -Weverything -M -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
+RGBLINK_VC_FLAGS = -Weverything -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
+RGBFIX_FLAGS     = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC3+TIMER+RAM+BATTERY -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 MODIFIERS := $(MODIFIERS)-faithful
@@ -54,7 +54,7 @@ MODIFIERS :=
 NAME := pkpc
 EXTENSION := pocket
 RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
-RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
+RGBFIX_FLAGS = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
 endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
@@ -83,7 +83,7 @@ rom_obj := \
 	gfx/misc.o
 
 crystal_obj    := $(rom_obj:.o=.o)
-crystal_vc_obj :=$(rom_obj:.o=_vc.o)
+crystal_vc_obj := $(rom_obj:.o=_vc.o)
 
 .SUFFIXES:
 .PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman vc
@@ -165,6 +165,7 @@ $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
 %.bsp: $(wildcard bsp/*.txt)
 	$Qcd bsp; ../tools/bspcomp patch.txt ../$@; cd ..
 
+rgbgfx = -Weverything
 
 gfx/battle/lyra_back.2bpp: rgbgfx += -Z
 gfx/battle/substitute-back.2bpp: rgbgfx += -Z

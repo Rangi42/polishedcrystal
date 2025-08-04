@@ -140,7 +140,7 @@ ReadTrainerParty:
 	jr z, .not_nickname
 
 	call GetNextTrainerDataByte
-	cp "@"
+	cp '@'
 	jr z, .not_nickname
 
 	push de
@@ -151,7 +151,7 @@ ReadTrainerParty:
 	call GetNextTrainerDataByte
 	ld [de], a
 	inc de
-	cp "@"
+	cp '@'
 	jr nz, .copy
 	push hl
 	ld a, [wOTPartyCount]
@@ -411,7 +411,7 @@ SkipTrainerPartiesAndName:
 .skip_name
 	dec b
 	call GetNextTrainerDataByte
-	cp "@"
+	cp '@'
 	jr nz, .skip_name
 	ret
 

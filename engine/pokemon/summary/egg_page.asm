@@ -2,7 +2,7 @@ SummaryScreen_Egg:
 	ld a, SUMMARY_TILE_OAM_EGG_TITLE
 	call SummaryScreen_UpdateTabTitle
 
-	ld a, " "
+	ld a, ' '
 	hlcoord 11, 0
 	ld [hl], a
 	hlcoord 19, 0

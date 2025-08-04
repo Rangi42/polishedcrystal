@@ -207,9 +207,9 @@ StackDexGraphics:
 
 	; fill out the "No." part in the "*No.123" string.
 	ld hl, wDexNoStrNo
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld [hl], "."
+	ld [hl], '.'
 
 	; ensure that vTiles0 $7f is whitespace (for the benefit of area display)
 	pop hl
@@ -450,7 +450,7 @@ Pokedex_RefreshOAM:
 	ldh a, [hPokedexStatsCurAbil]
 	cp 2 ; 0/1/2 -> 1/2/H
 	jr z, .got_ability
-	add "1"
+	add '1'
 	ld l, a
 .got_ability
 	call Pokedex_WriteOAM

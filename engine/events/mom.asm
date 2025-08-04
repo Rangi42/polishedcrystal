@@ -454,7 +454,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ldh [hBGMapMode], a
 	hlcoord 11, 6
 	ld bc, 8
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 11, 6
 	ld de, wStringBuffer2
@@ -468,7 +468,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 
 .skip
 	call ApplyTilemapInVBlank

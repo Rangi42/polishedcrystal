@@ -224,7 +224,7 @@ AnimateHOFMonEntrance:
 	ld [wCurForm], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	ld de, vTiles2 tile $31
 	predef GetBackpic
@@ -246,7 +246,7 @@ AnimateHOFMonEntrance:
 	call HOF_SlideBackpic
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 6, 5
 	call PrepMonFrontpicFlipped
@@ -428,11 +428,11 @@ DisplayHOFMon:
 	ld de, wStringBuffer2
 	ld bc, MON_NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer2 + 10], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 0, 0
 	lb bc, 3, SCREEN_WIDTH - 2
@@ -460,9 +460,9 @@ DisplayHOFMon:
 	ld d, b
 	ld e, c
 	hlcoord 1, 13
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld a, "."
+	ld a, '.'
 	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNumFromReg
@@ -472,17 +472,17 @@ DisplayHOFMon:
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender
-	ld a, "♂"
+	ld a, '♂'
 	jr nz, .got_gender
-	ld a, "♀"
+	ld a, '♀'
 
 .got_gender
 	hlcoord 18, 13
 	ld [hli], a
 	hlcoord 8, 14
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wStringBuffer2
 	rst PlaceString
@@ -491,11 +491,11 @@ DisplayHOFMon:
 
 .print_id_no
 	hlcoord 7, 16
-	ld a, "<ID>"
+	ld a, '<ID>'
 	ld [hli], a
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld [hl], "."
+	ld [hl], '.'
 	hlcoord 10, 16
 	ld de, wTempMonID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
@@ -505,7 +505,7 @@ HOF_AnimatePlayerPic:
 	call ClearBGPalettes
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	farcall GetPlayerBackpic
 	ld a, $31
@@ -529,7 +529,7 @@ HOF_AnimatePlayerPic:
 	ld [wBoxAlignment], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	farcall HOF_LoadTrainerFrontpic
 	xor a
@@ -556,11 +556,11 @@ HOF_AnimatePlayerPic:
 	ld de, wPlayerName
 	rst PlaceString
 	hlcoord 1, 6
-	ld a, "<ID>"
+	ld a, '<ID>'
 	ld [hli], a
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld [hl], "."
+	ld [hl], '.'
 	hlcoord 4, 6
 	ld de, wPlayerID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
@@ -572,7 +572,7 @@ HOF_AnimatePlayerPic:
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

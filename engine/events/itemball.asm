@@ -95,7 +95,7 @@ FindTMHMInBallScript::
 	call GetMoveName
 
 	ld hl, wStringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	call CopyName2
 

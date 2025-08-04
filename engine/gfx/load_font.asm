@@ -3,7 +3,7 @@ INCLUDE "gfx/font.asm"
 _LoadStandardOpaqueFont::
 	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
-	ld hl, vTiles2 tile " "
+	ld hl, vTiles2 tile ' '
 	ld de, TextboxSpaceGFX
 	jmp GetOpaque1bppFontTile
 
@@ -14,14 +14,14 @@ _LoadStandardMaybeOpaqueFont:
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile "A"
+	ld hl, vTiles0 tile 'A'
 	lb bc, BANK(FontTiles), 114
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	push af
 	call GetMaybeOpaque1bpp
 	ld de, FontCommon
-	ld hl, vTiles0 tile "↑"
+	ld hl, vTiles0 tile '↑'
 	lb bc, BANK(FontCommon), 6
 	pop af
 	ldh [hRequestOpaque1bpp], a
@@ -65,10 +65,10 @@ _LoadFrame::
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile "┌"
+	ld hl, vTiles0 tile '┌'
 	lb bc, BANK(Frames), TEXTBOX_FRAME_TILES
 	call Get1bpp
-	ld hl, vTiles2 tile " "
+	ld hl, vTiles2 tile ' '
 	ld de, TextboxSpaceGFX
 	lb bc, BANK(TextboxSpaceGFX), 1
 	jmp Get1bpp

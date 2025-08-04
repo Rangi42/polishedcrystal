@@ -319,7 +319,7 @@ UpdateFrame:
 	ld e, a
 	ld d, 0
 	hlcoord 17, 7
-	ld a, " "
+	ld a, ' '
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
@@ -687,7 +687,7 @@ Options_UpdateCursorPosition:
 	ld de, SCREEN_WIDTH
 	ld c, SCREEN_HEIGHT - 2
 .loop
-	ld [hl], " "
+	ld [hl], ' '
 	add hl, de
 	dec c
 	jr nz, .loop
@@ -695,5 +695,5 @@ Options_UpdateCursorPosition:
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wJumptableIndex]
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ret

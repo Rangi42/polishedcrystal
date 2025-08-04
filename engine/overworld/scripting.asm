@@ -1734,7 +1734,7 @@ Script_getnum:
 ResetStringBuffer1:
 	ld hl, wStringBuffer1
 	ld bc, NAME_LENGTH
-	ld a, "@"
+	ld a, '@'
 	rst ByteFill
 	ret
 
@@ -2352,7 +2352,7 @@ ExitScriptSubroutine:
 	add hl, de
 	ld a, [hli]
 	ld b, a
-	and " "
+	and ' '
 	ldh [hScriptBank], a
 	ld a, [hli]
 	ld e, a
@@ -2494,7 +2494,7 @@ Script_gettmhmname:
 	call GetMoveName
 
 	ld hl, wStringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	jmp CopyName2
 
@@ -2710,10 +2710,10 @@ ShowBadgeIcon:
 	ld d, h
 	ld e, l
 	ld c, 4
-	ld hl, vTiles0 tile "↑"
+	ld hl, vTiles0 tile '↑'
 	call Request2bppInWRA6
 	farcall LoadSingleBadgePalette
-	ld a, "↑"
+	ld a, '↑'
 	hlcoord 17, 13
 	ld [hli], a
 	inc a
@@ -2745,19 +2745,19 @@ Pluralize:
 	ld a, [hl]
 	push hl
 	push af
-	ld a, "@"
+	ld a, '@'
 	ld [hli], a
 
 	; Track down the terminator.
 .terminator_loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .terminator_loop
 	ld b, h
 	ld c, l
 	dec bc
 	call TextCommand_PLURAL
-	ld a, "@"
+	ld a, '@'
 	ld [bc], a
 	pop af
 	pop hl

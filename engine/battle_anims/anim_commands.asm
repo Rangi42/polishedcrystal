@@ -206,7 +206,7 @@ ClearPlayerHUD:
 	hlcoord 11, 7
 	lb bc, 5, 9
 	call ClearBox
-	ld a, " "
+	ld a, ' '
 	hlcoord 10, 7
 	ld [hl], a
 	hlcoord 10, 11

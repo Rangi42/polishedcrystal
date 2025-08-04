@@ -135,7 +135,7 @@ GetRegisteredItem:
 	rst ByteFill
 
 	hlcoord 0, 0
-	ld a, " "
+	ld a, ' '
 	ld bc, SCREEN_WIDTH * 4
 	rst ByteFill
 

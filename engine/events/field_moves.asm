@@ -133,7 +133,7 @@ HideHeadbuttTree:
 	ld h, [hl]
 	ld l, a
 
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	ld [hld], a
 	ld bc, SCREEN_WIDTH

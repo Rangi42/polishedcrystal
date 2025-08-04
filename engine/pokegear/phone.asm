@@ -66,7 +66,7 @@ PokegearPhone_Joypad:
 	ld a, [wPokegearPhoneCursorPosition]
 	ld bc, 20 * 2
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	call PokegearPhoneContactSubmenu
 	jr c, .quit_submenu
 	ld hl, wJumptableIndex
@@ -198,7 +198,7 @@ PokegearPhone_GetDPad:
 PokegearPhone_UpdateDisplayList:
 	hlcoord 1, 3
 	ld b, 9
-	ld a, " "
+	ld a, ' '
 .row
 	ld c, 18
 .col
@@ -234,7 +234,7 @@ PokegearPhone_UpdateDisplayList:
 	jr c, .loop
 	; fallthrough
 PokegearPhone_UpdateCursor:
-	ld a, " "
+	ld a, ' '
 	hlcoord 1, 4
 	ld [hl], a
 	hlcoord 1, 6
@@ -247,7 +247,7 @@ PokegearPhone_UpdateCursor:
 	ld a, [wPokegearPhoneCursorPosition]
 	ld bc, 2 * SCREEN_WIDTH
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ret
 
 PokegearPhone_DeletePhoneNumber:
@@ -428,7 +428,7 @@ PokegearPhoneContactSubmenu:
 	ld a, [de]
 	ld c, a
 	push hl
-	ld a, " "
+	ld a, ' '
 	ld de, SCREEN_WIDTH * 2
 .clear_column
 	ld [hl], a
@@ -439,7 +439,7 @@ PokegearPhoneContactSubmenu:
 	ld a, [wPokegearPhoneSubmenuCursor]
 	ld bc, SCREEN_WIDTH  * 2
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 	pop de
 	ret
 

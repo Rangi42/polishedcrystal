@@ -201,7 +201,7 @@ InitPokegearTilemap:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	rst ByteFill
 	ld a, [wPokegearCard]
 	and $3
@@ -330,11 +330,11 @@ InitPokegearTilemap:
 Pokegear_FinishTilemap:
 	hlcoord 0, 0
 	ld bc, $8
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	rst ByteFill
 	hlcoord 0, 1
 	ld bc, $8
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	rst ByteFill
 	ld de, wPokegearFlags
 	ld a, [de]
@@ -732,14 +732,14 @@ _UpdateLandmarkName:
 	ld e, l
 .loop
 	ld a, [hl]
-	cp "@"
+	cp '@'
 	jr z, .end
-	cp "¯"
+	cp '¯'
 	jr z, .line_break
 	inc hl
 	jr .loop
 .line_break
-	ld [hl], "<LNBRK>"
+	ld [hl], '<LNBRK>'
 .end
 	pop hl
 	rst PlaceString
@@ -1443,13 +1443,13 @@ PlayRadio:
 	lb bc, 4, 18
 	call Textbox
 	hlcoord 1, 14
-	ld [hl], "“"
+	ld [hl], '“'
 	pop de
 	hlcoord 2, 14
 	rst PlaceString
 	ld h, b
 	ld l, c
-	ld [hl], "”"
+	ld [hl], '”'
 	jmp ApplyTilemapInVBlank
 
 PlayRadioStationPointers:
@@ -1602,7 +1602,7 @@ TownMapBubble:
 	ld [hli], a
 ; Top row
 	ld bc, 16
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 ; Top-right corner
 	ld [hl], $41
@@ -1610,7 +1610,7 @@ TownMapBubble:
 
 ; Middle row
 	ld bc, 18
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 
 ; Bottom-left corner
@@ -1619,7 +1619,7 @@ TownMapBubble:
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 ; Bottom-right corner
 	ld [hl], $43

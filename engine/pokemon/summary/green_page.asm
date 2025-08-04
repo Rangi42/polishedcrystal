@@ -52,7 +52,7 @@ SummaryScreen_GreenPage:
 	add hl, de
 	dec b
 	jr nz, .item_icon_loop
-	ld a, " "
+	ld a, ' '
 	hlcoord 1, 9
 	ld [hl], a
 	hlcoord 5, 9
@@ -103,7 +103,7 @@ SummaryScreen_GreenPage:
 	; Clear move names
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	ld de, 64 - 12
-	ld a, " "
+	ld a, ' '
 	ld bc, 12
 	rst ByteFill
 	ld c, 12

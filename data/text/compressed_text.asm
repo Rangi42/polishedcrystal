@@ -4,7 +4,7 @@ DEF node_prefix_{02X:num_parent_nodes} EQUS ""
 MACRO _branch_node
 	REDEF _branch_code EQUS "{node_prefix_{02X:parent_node_id}}\1"
 	if DEF(___huffman_char_{_branch_code})
-		DEF x = ___huffman_char_{_branch_code}
+		DEF x = CHARVAL(___huffman_char_{_branch_code}, 0)
 		DEF ___huffman_leaf_node_{02X:x} = 1
 		if FIRST_LEAF_NODE_ID <= x && x < FIRST_SHIFTED_LEAF_NODE_ID
 			; these characters directly correspond to the lower set of leaf node IDs

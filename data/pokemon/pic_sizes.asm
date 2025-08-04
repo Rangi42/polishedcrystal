@@ -9,7 +9,7 @@ ENDM
 
 ; Terrible hack because we can't read files into strings (yet!)
 	pushc main ; ASCII
-	assert "U" == $55 && "f" == $66 && "w" == $77
+	assert 'U' == $55 && 'f' == $66 && 'w' == $77
 	DEF U EQUS " size_nybble 5"
 	DEF f EQUS " size_nybble 6"
 	DEF w EQUS " size_nybble 7"

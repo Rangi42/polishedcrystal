@@ -205,7 +205,7 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wTempTMHM], a
-	ld a, "H"
+	ld a, 'H'
 	ld [hli], a
 	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
@@ -530,7 +530,7 @@ _GetTMHMName::
 	inc a
 
 ; Divide and mod by 10 to get the top and bottom digits respectively
-	ld b, "0"
+	ld b, '0'
 .mod10
 	sub 10
 	jr c, .done_mod
@@ -545,13 +545,13 @@ _GetTMHMName::
 	inc de
 	pop af
 
-	ld b, "0"
+	ld b, '0'
 	add b
 	ld [de], a
 
 ; End the string
 	inc de
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 
 	pop af

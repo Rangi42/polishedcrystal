@@ -227,7 +227,7 @@ ParseCredits:
 	ldh [hBGMapMode], a
 	hlcoord 0, 5
 	ld bc, 20 * 12
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 
 ; Then read the script.

@@ -4,7 +4,7 @@ DoBattleTransition:
 	call DelayFrame
 
 	ld de, .TrainerBattlePokeballTile
-	ld hl, vTiles0 tile "<PHONE>"
+	ld hl, vTiles0 tile '<PHONE>'
 	lb bc, BANK(.TrainerBattlePokeballTile), 1
 	call Request2bpp
 
@@ -601,7 +601,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr nc, .no_load
 
 	; poke ball tile; use PAL_BG_GRAY, bank 0, no flips or priority
-	ld [hl], "<PHONE>"
+	ld [hl], '<PHONE>'
 	push hl
 	push bc
 	ld bc, wAttrmap - wTilemap

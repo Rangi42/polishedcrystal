@@ -63,7 +63,7 @@ SetInitialOptions:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld a, " "
+	ld a, ' '
 	ld bc, SCREEN_AREA
 	rst ByteFill
 
@@ -664,7 +664,7 @@ InitialOptions_UpdateCursorPosition:
 	ld de, SCREEN_WIDTH
 	ld c, NUM_INITIAL_OPTIONS_PER_PAGE * 2
 .loop
-	ld [hl], " "
+	ld [hl], ' '
 	add hl, de
 	dec c
 	jr nz, .loop
@@ -675,14 +675,14 @@ InitialOptions_UpdateCursorPosition:
 	ld bc, SCREEN_WIDTH
 	rst AddNTimes
 	inc hl
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ret
 
 InitialOptions_ReRender:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld a, " "
+	ld a, ' '
 	ld bc, SCREEN_AREA
 	rst ByteFill
 

@@ -851,7 +851,7 @@ endc
 	call FastPrintNum
 	pop bc
 	inc de
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	ld a, DEXPOS_VWF_TILES
 	call Pokedex_GetPosData
@@ -1129,9 +1129,9 @@ _Pokedex_Description:
 	ld de, PokedexStr_Feet
 	rst PlaceString
 	hlcoord 18, 9
-	ld a, "l"
+	ld a, 'l'
 	ld [hli], a
-	ld [hl], "b"
+	ld [hl], 'b'
 
 .units_ok
 	; Check if we've captured the mon. If not, return "?????" as mon type.
@@ -1139,7 +1139,7 @@ _Pokedex_Description:
 	bit MON_CAUGHT_F, b
 	jr nz, .mon_caught
 	hlcoord 9, 5
-	ld a, "?"
+	ld a, '?'
 	ld bc, 5
 	rst ByteFill
 
@@ -1381,7 +1381,7 @@ endr
 	hldexcoord 2, 18
 	ld a, $16
 	ld [hli], a
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	ld b, 15
 .botmenu_loop
 	ld [hli], a
@@ -1659,13 +1659,13 @@ Pokedex_Bio:
 	jr nc, .simplify_loop
 	rlc b
 	rlca
-	add "0"
+	add '0'
 	hlcoord 8, 9
 	ld [hli], a
 	inc hl
 	inc hl
 	ld a, b
-	add "0"
+	add '0'
 	ld [hl], a
 	jr .base_exp
 
@@ -1724,7 +1724,7 @@ Pokedex_Bio:
 	push bc
 	call .GetEggGroupName
 	hlcoord 6, 12
-	ld a, "s"
+	ld a, 's'
 	ld [hli], a
 	inc hl
 	ld a, b
@@ -2122,7 +2122,7 @@ _Pokedex_Mode:
 	push af
 	ld bc, SCREEN_WIDTH * 2
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 
 	; explain menu option
 	pop af
@@ -2322,7 +2322,7 @@ _Pokedex_Search:
 	ld a, [wPokedex_MenuCursorY]
 	ld bc, SCREEN_WIDTH * 2
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 
 	; Fill fields based on current search data
 	hlcoord 7, 4
@@ -3200,7 +3200,7 @@ Pokedex_GetCursorMon:
 	rst ByteFill
 
 	; Clear existing data.
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer1], a
 	hlcoord 9, 2
 	ld a, $7f

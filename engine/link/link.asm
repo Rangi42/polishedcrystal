@@ -774,7 +774,7 @@ LinkTradeOTPartymonMenuLoop:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 	ld a, [wPartyCount]
@@ -847,7 +847,7 @@ LinkTradePartymonMenuLoop:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 	ld a, 1
@@ -867,7 +867,7 @@ LinkTradePartymonMenuLoop:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 	jmp LinkTradePartymonMenuCheckCancel
@@ -1043,7 +1043,7 @@ LinkTrade_TradeSummaryMenu:
 	call Link_WaitBGMap
 
 .joy_loop
-	ld a, " "
+	ld a, ' '
 	ldcoord_a 11, 16
 	ld a, PAD_A | PAD_B | PAD_RIGHT
 	ld [wMenuJoypadFilter], a
@@ -1075,7 +1075,7 @@ LinkTrade_TradeSummaryMenu:
 	jmp LinkTrade_PlayerPartyMenu
 
 .d_right
-	ld a, " "
+	ld a, ' '
 	ldcoord_a 1, 16
 	ld a, PAD_A | PAD_B | PAD_LEFT
 	ld [wMenuJoypadFilter], a
@@ -1131,7 +1131,7 @@ LinkTrade_TradeSummaryMenu:
 	hlcoord 6, 9
 	ld bc, SCREEN_WIDTH
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	ld c, 100
 	call DelayFrames
 	call ValidateOTTrademon
@@ -1259,12 +1259,12 @@ LinkTradeOTPartymonMenuCheckCancel:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 LinkTradePartymonMenuCheckCancel:
 .loop1
-	ld a, "▶"
+	ld a, '▶'
 	ldcoord_a 9, 17
 .loop2
 	call JoyTextDelay
@@ -1274,7 +1274,7 @@ LinkTradePartymonMenuCheckCancel:
 	bit B_PAD_A, a
 	jr nz, .a_button
 	push af
-	ld a, " "
+	ld a, ' '
 	ldcoord_a 9, 17
 	pop af
 	bit B_PAD_UP, a
@@ -1289,7 +1289,7 @@ LinkTradePartymonMenuCheckCancel:
 	jmp LinkTrade_PlayerPartyMenu
 
 .a_button
-	ld a, "▷"
+	ld a, '▷'
 	ldcoord_a 9, 17
 	ld a, $f
 	ld [wPlayerLinkAction], a
@@ -1719,7 +1719,7 @@ LinkTextbox::
 	push hl
 	ld a, $23
 	ld [hli], a
-	ld a, " "
+	ld a, ' '
 	call .fill_row
 	ld [hl], $24
 	pop hl

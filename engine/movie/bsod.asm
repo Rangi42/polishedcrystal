@@ -71,13 +71,13 @@ PrintNum_NoHRAM:
 	call .print_digit
 	ld b, 10
 	call .print_digit
-	add "0"
+	add '0'
 	ld [hl], a
 	pop af
 	ret
 
 .print_digit:
-	ld [hl], "0" - 1
+	ld [hl], '0' - 1
 .loop
 	inc [hl]
 	sub b

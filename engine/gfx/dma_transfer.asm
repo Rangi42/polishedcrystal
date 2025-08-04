@@ -176,7 +176,7 @@ DoHBlankHDMATransfer:
 	ret
 
 CutAndPasteTilemap:
-	ld c, " "
+	ld c, ' '
 	jr CutAndPasteMap
 
 CutAndPasteAttrMap:

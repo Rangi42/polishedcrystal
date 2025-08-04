@@ -525,7 +525,7 @@ WritePartyMenuTilemap:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
-	ld a, " "
+	ld a, ' '
 	rst ByteFill ; blank the tilemap
 	call GetPartyMenuTilemapPointers ; This reads from a pointer table???
 .loop
@@ -675,7 +675,7 @@ PlacePartyMenuHPDigits:
 	lb bc, 2, 3
 	call PrintNum
 	pop de
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	inc de
 	inc de
@@ -715,7 +715,7 @@ PlacePartyMonLevel:
 	ld a, [de]
 	cp 100 ; This is distinct from MAX_LEVEL.
 	jr nc, .ThreeDigits
-	ld a, "<LV>"
+	ld a, '<LV>'
 	ld [hli], a
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	; jr .okay
@@ -958,9 +958,9 @@ PlacePartyMonGender:
 	xor a
 	ld [wMonType], a
 	call GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender
 	inc a ; "<FEMALE>"
 
@@ -1173,7 +1173,7 @@ InitPartySwap:
 	ld a, [wSwitchMon]
 	dec a
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	ret
 
 InitPartyMenuNoCancel:
