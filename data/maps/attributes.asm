@@ -472,7 +472,11 @@ ENDM
 	map_attributes OlsteetonUniGate, OLSTEETON_UNI_GATE, $0, 0
 	map_attributes OlsteetonRoute103Gate, OLSTEETON_ROUTE_103_GATE, $0, 0
 	map_attributes OlsteetonUni, OLSTEETON_UNI, $5, 0
-
+	map_attributes OlsteetonUniLibrary1F, OLSTEETON_UNI_LIBRARY_1F, $0, 0
+	map_attributes OlsteetonUniLibrary2F, OLSTEETON_UNI_LIBRARY_2F, $0, 0
+	map_attributes OlsteetonUniScienceCenter, OLSTEETON_UNI_SCIENCE_CENTER, $0, 0
+	map_attributes OlsteetonUniNurseDept, OLSTEETON_UNI_NURSE_DEPT, $0, 0
+	map_attributes OlsteetonUniWaterLab, OLSTEETON_UNI_WATER_LAB, $0, 0
 
 	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0

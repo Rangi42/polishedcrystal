@@ -45,7 +45,7 @@ HollowportNeighborRadio:
 	endtext
 
 NeighborsDaughterText:
-	text "Glutglub only"
+	text "Gluttle only"
 	line "likes clean water"
 
 	para "I was amazed by"

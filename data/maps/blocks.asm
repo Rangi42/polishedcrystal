@@ -343,6 +343,25 @@ SECTION "OlsteetonUni_BlockData", ROMX
 OlsteetonUni_BlockData:
 	INCBIN "maps/OlsteetonUni.ablk.lz"
 
+SECTION "OlsteetonUniLibrary1F_BlockData", ROMX
+OlsteetonUniLibrary1F_BlockData:
+	INCBIN "maps/OlsteetonUniLibrary1F.ablk.lz"
+
+SECTION "OlsteetonUniLibrary2F_BlockData", ROMX
+OlsteetonUniLibrary2F_BlockData:
+	INCBIN "maps/OlsteetonUniLibrary2F.ablk.lz"
+
+SECTION "OlsteetonUniScienceCenter_BlockData", ROMX
+OlsteetonUniScienceCenter_BlockData:
+	INCBIN "maps/OlsteetonUniScienceCenter.ablk.lz"
+
+SECTION "OlsteetonUniNurseDept_BlockData", ROMX
+OlsteetonUniNurseDept_BlockData:
+	INCBIN "maps/OlsteetonUniNurseDept.ablk.lz"
+
+SECTION "OlsteetonUniWaterLab_BlockData", ROMX
+OlsteetonUniWaterLab_BlockData:
+	INCBIN "maps/OlsteetonUniWaterLab.ablk.lz"
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
 	INCBIN "maps/ElmsLab.ablk.lz"

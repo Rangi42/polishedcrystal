@@ -7,9 +7,9 @@ OlsteetonUni_MapScriptHeader:
 	def_warp_events
 	warp_event  2, 10, OLSTEETON_UNI_GATE, 3
 	warp_event  2, 11, OLSTEETON_UNI_GATE, 4
-	; warp_event 23,  8, OLSTEETON_UNI_LIBRARY_1F, 3
+	warp_event  6,  7, OLSTEETON_UNI_LIBRARY_1F, 2
+	warp_event 17,  7, OLSTEETON_UNI_SCIENCE_CENTER, 1
 	; warp_event  7,  0, OLSTEETON_UNI_DINING_HALL, 1
-	; warp_event 13,  0, OLSTEETON_UNI_SCIENCE_CENTER, 1
 	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_1, 1
 	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_2, 1
 	; warp_event 19,  8, OLSTEETON_UNI_CLASSROOM_3, 1

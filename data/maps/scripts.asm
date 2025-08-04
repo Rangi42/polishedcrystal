@@ -117,6 +117,11 @@ INCLUDE "maps/NationalForest1.asm"
 INCLUDE "maps/OlsteetonUniGate.asm"
 INCLUDE "maps/OlsteetonRoute103Gate.asm"
 INCLUDE "maps/OlsteetonUni.asm"
+INCLUDE "maps/OlsteetonUniLibrary1F.asm"
+INCLUDE "maps/OlsteetonUniLibrary2F.asm"
+INCLUDE "maps/OlsteetonUniScienceCenter.asm"
+INCLUDE "maps/OlsteetonUniNurseDept.asm"
+INCLUDE "maps/OlsteetonUniWaterLab.asm"
 
 SECTION "New Bark Scripts", ROMX
 

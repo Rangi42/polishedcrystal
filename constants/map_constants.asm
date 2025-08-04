@@ -715,10 +715,10 @@ ENDM
 	map_const HOLLOWPORT_NEIGHBOR,                         4,  4 ;  9
 	map_const ROUTE_101,             				      19, 12 ;  10
 	map_const ROUTE_101_HOUSE,             			       4,  4 ;  11
-	map_const ROUTE_101_CAVE,             			       6,  9 ;  11
-	map_const ROUTE_102,								  16,  9 ;  11
-	map_const ROUTE_101_102_GATE,                          5,  4 ;  12
-	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  13
+	map_const ROUTE_101_CAVE,             			       6,  19 ; 12
+	map_const ROUTE_102,								  16,  9 ;  13
+	map_const ROUTE_101_102_GATE,                          5,  4 ;  14
+	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  15
 
 	newgroup                                         			 ; 39
 	map_const OLSTEETON,                          	      21, 18 ;  1
@@ -751,8 +751,12 @@ ENDM
 
 	newgroup                                                     ; 40
 	map_const OLSTEETON_UNI,	                          18, 12 ;  1
-	; map_const UNI_DORM,                                   11,  5 ;  2
-	; map_const UNI_LIBRARY,   	                             4,  4 ;  3
+	map_const OLSTEETON_UNI_LIBRARY_1F,   	               7,  6 ;  2
+	map_const OLSTEETON_UNI_LIBRARY_2F,   	               9,  7 ;  3
+	map_const OLSTEETON_UNI_SCIENCE_CENTER,   	           6,  5 ;  3
+	map_const OLSTEETON_UNI_NURSE_DEPT,   	               6,  5 ;  3
+	map_const OLSTEETON_UNI_WATER_LAB,   	               8,  5 ;  3
+
 	; map_const DINING_HALL,								 8,  4 ;  4
 	
 DEF NUM_MAP_GROUPS EQU const_value ; 40

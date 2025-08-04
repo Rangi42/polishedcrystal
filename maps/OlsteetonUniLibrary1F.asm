@@ -1,42 +1,42 @@
-CeladonUniversityLibrary1F_MapScriptHeader:
+OlsteetonUniLibrary1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event  6, 11, CELADON_UNIVERSITY_1F, 4
-	warp_event  7, 11, CELADON_UNIVERSITY_1F, 4
-	warp_event  7,  0, CELADON_UNIVERSITY_LIBRARY_2F, 1
+	warp_event  7, 11, OLSTEETON_UNI, 3
+	warp_event  8, 11, OLSTEETON_UNI, 3
+	warp_event  9,  0, OLSTEETON_UNI_LIBRARY_2F, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  0, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
-	bg_event 10,  0, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
-	bg_event  0,  3, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf1Text
-	bg_event  1,  3, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf2Text
-	bg_event  2,  3, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf3Text
-	bg_event  3,  3, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf4Text
-	bg_event  4,  3, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf5Text
-	bg_event  5,  3, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf6Text
-	bg_event  0,  7, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf7Text
-	bg_event  1,  7, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf8Text
-	bg_event  2,  7, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf9Text
-	bg_event  3,  7, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf10Text
-	bg_event  4,  7, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf11Text
-	bg_event  5,  7, BGEVENT_JUMPTEXT, CeladonUniversityLibrary1FBookshelf12Text
+	bg_event  8,  0, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FSignpost1Text
+	bg_event 10,  1, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FSignpost2Text
+	bg_event  0,  9, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf1Text
+	bg_event  1,  9, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf2Text
+	bg_event  7,  1, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf3Text
+	bg_event  6,  1, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf4Text
+	bg_event  4,  1, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf5Text
+	bg_event  5,  1, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf6Text
+	bg_event  6,  5, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf7Text
+	bg_event  7,  5, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf8Text
+	bg_event  0,  5, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf9Text
+	bg_event  1,  5, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf10Text
+	bg_event  4,  9, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf11Text
+	bg_event  5,  9, BGEVENT_JUMPTEXT, OlsteetonUniLibrary1FBookshelf12Text
 
 	def_object_events
-	object_event  6,  3, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FLadyText, -1
-	object_event 11,  7, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FGentlemanText, -1
-	object_event  0,  5, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FCooltrainerfText, -1
-	object_event  9,  5, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGameboyKidScript, -1
-	object_event  3,  8, SPRITE_MATRON, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FPokefan_fText, -1
-	object_event 11,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainermScript, -1
-	object_event  2, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FTeacherText, -1
-	object_event 10,  7, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, CeladonUniversityLibrary1FBookText, -1
+	object_event  4,  5, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniLibrary1FLadyText, -1
+	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniLibrary1FGentlemanText, -1
+	object_event  0,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniLibrary1FCooltrainerfText, -1
+	object_event 12,  1, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlsteetonUniLibrary1FGameboyKidScript, -1
+	object_event  5,  2, SPRITE_MATRON, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniLibrary1FPokefan_fText, -1
+	object_event 10,  4, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, OlsteetonUniLibrary1FCooltrainermScript, -1
+	object_event 12, 10, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniLibrary1FTeacherText, -1
+	object_event 12,  5, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, OlsteetonUniLibrary1FBookText, -1
 
-CeladonUniversityLibrary1FLadyText:
+OlsteetonUniLibrary1FLadyText:
 	text "This library is on"
 	line "university"
 	cont "grounds, but it's"
@@ -47,12 +47,12 @@ CeladonUniversityLibrary1FLadyText:
 	para "Isn't that great?"
 	done
 
-CeladonUniversityLibrary1FGentlemanText:
+OlsteetonUniLibrary1FGentlemanText:
 	text "Shh! Can't you see"
 	line "I'm reading here?"
 	done
 
-CeladonUniversityLibrary1FCooltrainerfText:
+OlsteetonUniLibrary1FCooltrainerfText:
 	text "Prof.Oak used to"
 	line "teach here, so the"
 
@@ -64,7 +64,7 @@ CeladonUniversityLibrary1FCooltrainerfText:
 	line "cover to cover!"
 	done
 
-CeladonUniversityLibrary1FGameboyKidScript:
+OlsteetonUniLibrary1FGameboyKidScript:
 	showtextfaceplayer .Text
 	turnobject LAST_TALKED, DOWN
 	end
@@ -76,7 +76,7 @@ CeladonUniversityLibrary1FGameboyKidScript:
 	para "I'm playing Tetris!"
 	done
 
-CeladonUniversityLibrary1FPokefan_fText:
+OlsteetonUniLibrary1FPokefan_fText:
 	text "We have a mutual"
 	line "lending agreement"
 
@@ -84,7 +84,7 @@ CeladonUniversityLibrary1FPokefan_fText:
 	line "Library in Sinnoh."
 	done
 
-CeladonUniversityLibrary1FCooltrainermScript:
+OlsteetonUniLibrary1FCooltrainermScript:
 	checkevent EVENT_GOT_FOCUS_BAND_IN_UNIVERSITY
 	iftrue_jumptextfaceplayer .Text2
 	faceplayer
@@ -117,7 +117,7 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	cont "that Focus Band."
 	done
 
-CeladonUniversityLibrary1FTeacherText:
+OlsteetonUniLibrary1FTeacherText:
 	text "I'm the head"
 	line "librarian."
 
@@ -128,7 +128,7 @@ CeladonUniversityLibrary1FTeacherText:
 	line "This IS a library."
 	done
 
-CeladonUniversityLibrary1FBookText:
+OlsteetonUniLibrary1FBookText:
 	text "It's a book about"
 	line "flower arranging."
 
@@ -136,7 +136,7 @@ CeladonUniversityLibrary1FBookText:
 	line "the cover."
 	done
 
-CeladonUniversityLibrary1FSignpost1Text:
+OlsteetonUniLibrary1FSignpost1Text:
 	text "Please do not"
 	line "disturb students"
 
@@ -144,7 +144,7 @@ CeladonUniversityLibrary1FSignpost1Text:
 	line "library."
 	done
 
-CeladonUniversityLibrary1FSignpost2Text:
+OlsteetonUniLibrary1FSignpost2Text:
 	text "Please do not"
 	line "bring food or"
 
@@ -152,7 +152,7 @@ CeladonUniversityLibrary1FSignpost2Text:
 	line "the library."
 	done
 
-CeladonUniversityLibrary1FBookshelf1Text:
+OlsteetonUniLibrary1FBookshelf1Text:
 	text "Huh? Someone left"
 	line "an old photograph"
 	cont "in this book."
@@ -165,7 +165,7 @@ CeladonUniversityLibrary1FBookshelf1Text:
 	cont "an Oddish."
 	done
 
-CeladonUniversityLibrary1FBookshelf2Text:
+OlsteetonUniLibrary1FBookshelf2Text:
 	text "It's a photo album"
 	line "containing many"
 
@@ -177,7 +177,7 @@ CeladonUniversityLibrary1FBookshelf2Text:
 	cont "on the cover."
 	done
 
-CeladonUniversityLibrary1FBookshelf3Text:
+OlsteetonUniLibrary1FBookshelf3Text:
 	text "It's a book about"
 	line "a man who taught"
 
@@ -189,7 +189,7 @@ CeladonUniversityLibrary1FBookshelf3Text:
 	line "of friends."
 	done
 
-CeladonUniversityLibrary1FBookshelf4Text:
+OlsteetonUniLibrary1FBookshelf4Text:
 	text "It's a book about"
 	line "#mon palin-"
 	cont "dromes."
@@ -199,7 +199,7 @@ CeladonUniversityLibrary1FBookshelf4Text:
 	cont "on the cover."
 	done
 
-CeladonUniversityLibrary1FBookshelf5Text:
+OlsteetonUniLibrary1FBookshelf5Text:
 	text "This book is about"
 	line "Toy #mon that"
 
@@ -211,7 +211,7 @@ CeladonUniversityLibrary1FBookshelf5Text:
 	line "cute."
 	done
 
-CeladonUniversityLibrary1FBookshelf6Text:
+OlsteetonUniLibrary1FBookshelf6Text:
 	text "It's a book about"
 	line "a #mon puppet"
 	cont "that can't tell"
@@ -222,7 +222,7 @@ CeladonUniversityLibrary1FBookshelf6Text:
 	cont "cover."
 	done
 
-CeladonUniversityLibrary1FBookshelf7Text:
+OlsteetonUniLibrary1FBookshelf7Text:
 	text "It's a bo…"
 	line "wait…"
 
@@ -236,7 +236,7 @@ CeladonUniversityLibrary1FBookshelf7Text:
 	line "box art."
 	done
 
-CeladonUniversityLibrary1FBookshelf8Text:
+OlsteetonUniLibrary1FBookshelf8Text:
 	text "It's a book writ-"
 	line "ten by a fishing"
 	cont "guru providing"
@@ -249,7 +249,7 @@ CeladonUniversityLibrary1FBookshelf8Text:
 	cont "cover."
 	done
 
-CeladonUniversityLibrary1FBookshelf9Text:
+OlsteetonUniLibrary1FBookshelf9Text:
 	text "It's a manual"
 	line "explaining the"
 
@@ -257,7 +257,7 @@ CeladonUniversityLibrary1FBookshelf9Text:
 	line "Card game."
 	done
 
-CeladonUniversityLibrary1FBookshelf10Text:
+OlsteetonUniLibrary1FBookshelf10Text:
 	text "It's a cookbook"
 	line "full of #mon-"
 	cont "themed recipes!"
@@ -268,7 +268,7 @@ CeladonUniversityLibrary1FBookshelf10Text:
 	cont "Snacks…"
 	done
 
-CeladonUniversityLibrary1FBookshelf11Text:
+OlsteetonUniLibrary1FBookshelf11Text:
 	text "It's a guide to"
 	line "Poffin blending."
 
@@ -277,7 +277,7 @@ CeladonUniversityLibrary1FBookshelf11Text:
 	cont "cover."
 	done
 
-CeladonUniversityLibrary1FBookshelf12Text:
+OlsteetonUniLibrary1FBookshelf12Text:
 	text "“The Secret Life"
 	line "of Laughter” by"
 	cont "Joe King."
