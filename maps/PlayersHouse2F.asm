@@ -21,6 +21,18 @@ PlayersHouse2F_MapScriptHeader:
 	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_PLAYERS_HOUSE_2F_DOLL_1
 	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
 	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
+if DEF(TESTING)
+	object_event  3,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_GENERICTRAINER, 1, DebugTrainer, -1
+
+
+DebugTrainer:
+	generictrainer LASS, ROSE, EVENT_BEAT_LASS_ROSE, DebugTrainerSeenText, DebugTrainerBeatenText
+
+DebugTrainerSeenText:
+DebugTrainerBeatenText:
+	text "..."
+	done
+endc
 
 PlayersHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility

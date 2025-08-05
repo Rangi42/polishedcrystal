@@ -1527,6 +1527,11 @@ SECTION "16-bit WRAM tables", WRAMX, ALIGN[8]
 ; align this section to $100
 wram_conversion_table wMoveIndexTable, MOVE_TABLE
 
+if DEF(TESTING)
+SECTION "Test Party Buffer", WRAMX, ALIGN[8]
+wTestPartyAddr:: dw
+wTestPartyBuffer:: ds $80
+endc
 
 SECTION "Sprites Backup", WRAMX
 

@@ -440,7 +440,7 @@ MoveTable:
 	dw NO_MOVE
 
 DisplayUsedMoveText:
-;	jr .no_animate_all_moves ; comment this out for testing all move animations
+	jmp .no_animate_all_moves ; comment this out for testing all move animations
 	ld de, MoveTable
 .loop
 	ld a, BATTLE_VARS_MOVE

@@ -189,6 +189,11 @@ SECTION "Enemy Trainer Parties", ROMX
 
 INCLUDE "engine/battle/read_trainer_party.asm"
 
+if DEF(TESTING)
+SECTION "Debug Testing", ROMX
+INCLUDE "engine/battle/read_test_party.asm"
+endc
+
 
 SECTION "Psychic Inver", ROMX
 

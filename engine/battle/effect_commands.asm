@@ -1427,7 +1427,7 @@ BattleCommand_critical:
 .no_affection_boost
 	ld a, 24
 	call BattleRandomRange
-
+.got_critical_chance ; Marker
 	cp b
 	ret nc
 .guranteed_crit
@@ -1733,6 +1733,7 @@ endc
 	ld a, 16
 	call BattleRandomRange
 	add 85
+.got_multiplier ; Marker
 	ldh [hMultiplier], a
 	farcall Multiply
 

@@ -217,6 +217,7 @@ BattleTurn:
 	ret nz
 
 	farcall HandleBetweenTurnEffects
+.end_of_turn_over ; Marker
 	ld a, [wBattleEnded]
 	and a
 	ret nz
@@ -224,11 +225,13 @@ BattleTurn:
 
 .do_move
 	call PerformMove
+.move_over ; Marker
 	ld a, [wBattleEnded]
 	and a
 	ret nz
 
 	call DeferredSwitch
+.deferred_switch_over ; Marker
 	ld a, [wBattleEnded]
 	and a
 	ret
@@ -4996,6 +4999,14 @@ CheckAmuletCoin:
 	ret
 
 MoveSelectionScreen:
+if DEF(TESTING)
+	; Heaven guide my hand
+	ld a, b
+	ld [wCurMoveNum], a
+	call GetMoveIDFromIndex
+	ld [wCurPlayerMove], a
+	jmp .lock_in
+endc
 	; Maybe reset wPlayerSelectedMove if the move has disappeared
 	; (possible if we learned a new move and replaced the old)
 	ld a, [wMoveSelectionMenuType]
@@ -5176,6 +5187,7 @@ MoveSelectionScreen:
 	ld a, [hl]
 	ld [wCurPlayerMove], a
 
+.lock_in ; Marker
 	; Lock in the used move as last move
 	call SetPlayerTurn
 	call SetChoiceLock
@@ -8022,6 +8034,9 @@ GetFrontpic_DoAnim:
 	ret
 
 StartBattle:
+if DEF(TESTING)
+	farcall ReadPlayerTestParty
+endc
 ; This check prevents you from entering a battle without any Pokemon.
 ; Those using walk-through-walls to bypass getting a Pokemon experience
 ; the effects of this check.
@@ -8158,7 +8173,11 @@ InitEnemy:
 	xor a
 	ld [wTempEnemyMonSpecies], a
 	farcall GetTrainerAttributes
+if DEF(TESTING)
+	farcall ReadEnemyTestParty
+else
 	farcall ReadTrainerParty
+endc
 	farcall ComputeTrainerReward
 	ld de, vTiles2
 	farcall GetTrainerPic

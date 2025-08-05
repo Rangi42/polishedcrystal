@@ -54,6 +54,10 @@ EXTENSION := pocket
 RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
 RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3
 endif
+ifeq ($(filter testing,$(MAKECMDGOALS)),testing)
+MODIFIERS := $(MODIFIERS)-testing
+RGBASM_FLAGS += -DTESTING
+endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
 RGBASM_FLAGS += -DHUFFMAN
@@ -84,7 +88,7 @@ crystal_obj    := $(rom_obj:.o=.o)
 crystal_vc_obj :=$(rom_obj:.o=_vc.o)
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman vc
+.PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman vc testing
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
 .DEFAULT_GOAL: crystal
@@ -95,6 +99,7 @@ monochrome: crystal
 noir: crystal
 hgss: crystal
 debug: crystal
+testing: crystal
 pocket: crystal
 vc: $$(ROM_NAME).patch
 

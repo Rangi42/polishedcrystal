@@ -4,7 +4,12 @@ DefaultOptions3:
 
 DefaultOptions:
 ; wOptions1
+
+if DEF(TESTING)
+	db (1 << STEREO) | INST_TEXT
+else
 	db (1 << BATTLE_EFFECTS) | (1 << STEREO) | FAST_TEXT
+endc
 ; wSaveFileExists
 	db FALSE
 ; wTextboxFrame

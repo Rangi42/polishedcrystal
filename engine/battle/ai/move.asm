@@ -1,4 +1,12 @@
 AIChooseMove:
+if DEF(TESTING)
+	; Heaven guide my hand
+	ld a, b
+	ld [wCurEnemyMoveNum], a
+	call GetMoveIDFromIndex
+	ld [wCurEnemyMove], a
+	ret
+endc
 ; Wrapper around AI move choosing. Let the AI switch out if its desired move
 ; differs from one it is locked into with Choice or Encore.
 	; Linking is handled elsewhere
