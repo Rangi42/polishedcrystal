@@ -1,48 +1,47 @@
-CeladonUniversity1F_MapScriptHeader:
+OlsteetonUniOffice_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event 14, 19, CELADON_CITY, 13
-	warp_event 15, 19, CELADON_CITY, 13
-	warp_event 25, 12, CELADON_UNIVERSITY_2F, 1
-	warp_event 21, 12, CELADON_UNIVERSITY_LIBRARY_1F, 1
-	warp_event 15,  0, CELADON_UNIVERSITY_PRINCIPALS_OFFICE, 1
-	warp_event  3,  4, CELADON_UNIVERSITY_CLASSROOM_1, 1
-	warp_event  9,  4, CELADON_UNIVERSITY_CLASSROOM_2, 1
-	warp_event 21,  4, CELADON_UNIVERSITY_CLASSROOM_3, 1
-	warp_event 27,  4, CELADON_UNIVERSITY_CLASSROOM_4, 1
-	warp_event  3, 12, CELADON_UNIVERSITY_LOUNGE, 1
+	warp_event  0, 14, OLSTEETON_UNI, 5
+	warp_event  0, 15, OLSTEETON_UNI, 6
+	warp_event 21, 14, OLSTEETON_UNI, 7
+	warp_event 21, 15, OLSTEETON_UNI, 8
+	warp_event 10, 17, OLSTEETON_UNI, 9
+	warp_event 11, 17, OLSTEETON_UNI, 9
+	warp_event 11,  0, OLSTEETON_UNI_DEANS_OFFICE, 1
+	; warp_event 17, 15, OLSTEETON_UNI_BREAK_ROOM, 1
+	; warp_event  3,  4, OLSTEETON_UNI_PROF_1, 1
+	; warp_event 15,  4, OLSTEETON_UNI_PROF_2, 1
+	; warp_event 21,  4, OLSTEETON_UNI_PROF_3, 1
+	; warp_event 17, 12, OLSTEETON_UNI_PROF_4, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 14,  0, BGEVENT_JUMPTEXT, CeladonUniversity1FPrincipalsOfficeSignText
-	bg_event  2,  4, BGEVENT_JUMPTEXT, CeladonUniversity1FClassroom1SignText
-	bg_event  8,  4, BGEVENT_JUMPTEXT, CeladonUniversity1FClassroom2SignText
-	bg_event 20,  4, BGEVENT_JUMPTEXT, CeladonUniversity1FClassroom3SignText
-	bg_event 26,  4, BGEVENT_JUMPTEXT, CeladonUniversity1FClassroom4SignText
-	bg_event  2, 12, BGEVENT_JUMPTEXT, CeladonUniversity1FStudentLoungeSignText
-	bg_event 20, 12, BGEVENT_JUMPTEXT, CeladonUniversity1FLibrarySignText
-	bg_event 22,  5, BGEVENT_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	bg_event 23,  5, BGEVENT_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	bg_event  6, 13, BGEVENT_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	bg_event  7, 13, BGEVENT_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	bg_event 26, 13, BGEVENT_JUMPTEXT, CeladonUniversity1FBookshelfText
-	bg_event 27, 13, BGEVENT_JUMPTEXT, CeladonUniversity1FBookshelfText
+	bg_event 10,  0, BGEVENT_JUMPTEXT, OlsteetonUniOfficeDeansOfficeSignText
+	bg_event  2,  4, BGEVENT_JUMPTEXT, OlsteetonUniOfficeProf1SignText
+	bg_event 14,  4, BGEVENT_JUMPTEXT, OlsteetonUniOfficeProf2SignText
+	bg_event 20,  4, BGEVENT_JUMPTEXT, OlsteetonUniOfficeProf3SignText
+	bg_event 16, 12, BGEVENT_JUMPTEXT, OlsteetonUniOfficeProf4SignText
+	bg_event  4, 12, BGEVENT_JUMPTEXT, OlsteetonUniOfficeStudentLoungeSignText
+	bg_event 17, 15, BGEVENT_JUMPTEXT, OlsteetonUniOfficeLibrarySignText
+	bg_event  6,  5, BGEVENT_JUMPTEXT, OlsteetonUniOfficeTrophyCaseSignText
+	bg_event 20, 13, BGEVENT_JUMPTEXT, OlsteetonUniOfficeBookshelfText
+	bg_event 21, 13, BGEVENT_JUMPTEXT, OlsteetonUniOfficeBookshelfText
 
 	def_object_events
-	object_event  6,  5, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FSuperNerdText, -1
-	object_event 16,  4, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FLassText, -1
-	object_event 25,  5, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainermText, -1
-	object_event 13,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FYoungsterText, -1
-	object_event  4, 15, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, (1 << MORN) | (1 << DAY), PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FChildText, -1
-	object_event  6, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FPokefanmText, -1
-	object_event 14, 14, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FReceptionistText, -1
-	object_event 23, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainerfText, -1
+	object_event  0,  5, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeSuperNerdText, -1
+	object_event 12,  3, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeLassText, -1
+	object_event  9,  1, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeCooltrainermText, -1
+	object_event 10,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeYoungsterText, -1
+	object_event  6, 14, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, (1 << MORN) | (1 << DAY), PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeChildText, -1
+	object_event 16, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficePokefanmText, -1
+	object_event 10, 12, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeReceptionistText, -1
+	object_event 19, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniOfficeCooltrainerfText, -1
 
-CeladonUniversity1FSuperNerdText:
+OlsteetonUniOfficeSuperNerdText:
 	text "Some academics be-"
 	line "lieve there are"
 
@@ -60,7 +59,7 @@ CeladonUniversity1FSuperNerdText:
 	line "tragic!"
 	done
 
-CeladonUniversity1FLassText:
+OlsteetonUniOfficeLassText:
 	text "This place offers"
 	line "courses of study"
 
@@ -71,7 +70,7 @@ CeladonUniversity1FLassText:
 	line "psychology!"
 	done
 
-CeladonUniversity1FCooltrainermText:
+OlsteetonUniOfficeCooltrainermText:
 	text "Everyone at this"
 	line "university is a"
 	cont "#mon trainer."
@@ -84,7 +83,7 @@ CeladonUniversity1FCooltrainermText:
 	cont "battling tests."
 	done
 
-CeladonUniversity1FYoungsterText:
+OlsteetonUniOfficeYoungsterText:
 	text "Magikarp is the"
 	line "university's mascot"
 	cont "#mon."
@@ -94,25 +93,25 @@ CeladonUniversity1FYoungsterText:
 	cont "to greatness!"
 	done
 
-CeladonUniversity1FChildText:
+OlsteetonUniOfficeChildText:
 	text "Ugh! I can't find"
 	line "my next class…"
 
 	para "I'm gonna be late!"
 	done
 
-CeladonUniversity1FPokefanmText:
+OlsteetonUniOfficePokefanmText:
 	text "I'm the janitor!"
 
 	para "Be careful, the"
 	line "floor is wet!"
 	done
 
-CeladonUniversity1FReceptionistText:
+OlsteetonUniOfficeReceptionistText:
 	text "Welcome to Celadon"
 	line "University!"
 
-	para "Classrooms and the"
+	para "Profs and the"
 	line "principal's office"
 	cont "are down the hall."
 
@@ -129,7 +128,7 @@ CeladonUniversity1FReceptionistText:
 	line "stairs."
 	done
 
-CeladonUniversity1FCooltrainerfText:
+OlsteetonUniOfficeCooltrainerfText:
 	text "I'm studying to be"
 	line "a #mon nurse."
 
@@ -140,41 +139,41 @@ CeladonUniversity1FCooltrainerfText:
 	line "learning curve!"
 	done
 
-CeladonUniversity1FPrincipalsOfficeSignText:
+OlsteetonUniOfficeDeansOfficeSignText:
 	text "Principal's Office"
 	done
 
-CeladonUniversity1FClassroom1SignText:
+OlsteetonUniOfficeProf1SignText:
 	text "W2 Art"
 	done
 
-CeladonUniversity1FClassroom2SignText:
+OlsteetonUniOfficeProf2SignText:
 	text "W1 History"
 	done
 
-CeladonUniversity1FClassroom3SignText:
+OlsteetonUniOfficeProf3SignText:
 	text "E1 Science"
 	done
 
-CeladonUniversity1FClassroom4SignText:
+OlsteetonUniOfficeProf4SignText:
 	text "E2 Battling"
 	done
 
-CeladonUniversity1FStudentLoungeSignText:
+OlsteetonUniOfficeStudentLoungeSignText:
 	text "Student Lounge"
 	done
 
-CeladonUniversity1FLibrarySignText:
+OlsteetonUniOfficeLibrarySignText:
 	text "Library"
 	done
 
-CeladonUniversity1FTrophyCaseSignText:
+OlsteetonUniOfficeTrophyCaseSignText:
 	text "The case is full"
 	line "of trophies and"
 	cont "medals."
 	done
 
-CeladonUniversity1FBookshelfText:
+OlsteetonUniOfficeBookshelfText:
 	text "There are tons of"
 	line "yearbooks here."
 

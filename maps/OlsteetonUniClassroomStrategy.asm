@@ -1,34 +1,34 @@
-CeladonUniversityClassroom4_MapScriptHeader:
+OlsteetonUniClassroomStrategy_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event  2, 11, CELADON_UNIVERSITY_1F, 9
-	warp_event  3, 11, CELADON_UNIVERSITY_1F, 9
+	warp_event  5,  9, OLSTEETON_UNI_CLASSROOM_BLDG, 6
+	warp_event  6,  9, OLSTEETON_UNI_CLASSROOM_BLDG, 6
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  0, BGEVENT_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
-	bg_event  3,  0, BGEVENT_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
-	bg_event  4,  0, BGEVENT_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
-	bg_event  6,  1, BGEVENT_READ, CeladonUniversityClassroom4Bookshelf1
-	bg_event  7,  1, BGEVENT_JUMPTEXT, CeladonUniversityClassroom4Bookshelf2Text
+	bg_event  2,  0, BGEVENT_JUMPTEXT, OlsteetonUniClassroomStrategyBlackboardText
+	bg_event  3,  0, BGEVENT_JUMPTEXT, OlsteetonUniClassroomStrategyBlackboardText
+	bg_event  8,  0, BGEVENT_JUMPTEXT, OlsteetonUniClassroomStrategyBlackboardText
+	bg_event  0,  1, BGEVENT_READ, OlsteetonUniClassroomStrategyBookshelf1
+	bg_event  1,  1, BGEVENT_JUMPTEXT, OlsteetonUniClassroomStrategyBookshelf2Text
 
 	def_object_events
-	object_event  5,  2, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityClassroom4RaymondScript, -1
-	object_event  2,  1, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4CandelaText, -1
-	object_event  2,  1, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << EVE) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4TeacherText, -1
-	object_event  2,  5, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4Bug_catcherText, -1
-	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4FisherText, -1
-	object_event  5,  7, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4LadyText, -1
-	object_event  4,  9, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonUniversityClassroom4Rich_boyScript, -1
+	object_event  9,  1, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniClassroomStrategyRaymondScript, -1
+	object_event  6,  2, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomStrategyCandelaText, -1
+	object_event  3,  2, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << EVE) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomStrategyTeacherText, -1
+	object_event  2,  5, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomStrategyBug_catcherText, -1
+	object_event 10,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomStrategyFisherText, -1
+	object_event  8,  5, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomStrategyLadyText, -1
+	object_event  9,  9, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlsteetonUniClassroomStrategyRich_boyScript, -1
 
 	object_const_def
-	const CELADONUNIVERSITYCLASSROOM4_RAYMOND
+	const OlsteetonUniClassroomStrategy_RAYMOND
 
-CeladonUniversityClassroom4RaymondScript:
+OlsteetonUniClassroomStrategyRaymondScript:
 	faceplayer
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
 	iftruefwd .Beaten
@@ -46,7 +46,7 @@ CeladonUniversityClassroom4RaymondScript:
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
-	setlasttalked CELADONUNIVERSITYCLASSROOM4_RAYMOND
+	setlasttalked OlsteetonUniClassroomStrategy_RAYMOND
 	loadtrainer COOLTRAINERM, COOLTRAINERM_RAYMOND
 	startbattle
 	reloadmapafterbattle
@@ -148,7 +148,7 @@ CeladonUniversityClassroom4RaymondScript:
 	line "burden."
 	done
 
-CeladonUniversityClassroom4CandelaText:
+OlsteetonUniClassroomStrategyCandelaText:
 	text "Hi! I'm Candela."
 	line "I teach #mon"
 	cont "Battling!"
@@ -161,13 +161,13 @@ CeladonUniversityClassroom4CandelaText:
 	cont "suit of strength."
 	done
 
-CeladonUniversityClassroom4TeacherText:
+OlsteetonUniClassroomStrategyTeacherText:
 	text "Candela? She only"
 	line "teaches during the"
 	cont "day."
 	done
 
-CeladonUniversityClassroom4Bug_catcherText:
+OlsteetonUniClassroomStrategyBug_catcherText:
 	text "My lecturer said"
 	line "my #mon could"
 
@@ -179,7 +179,7 @@ CeladonUniversityClassroom4Bug_catcherText:
 	cont "ever seen!"
 	done
 
-CeladonUniversityClassroom4FisherText:
+OlsteetonUniClassroomStrategyFisherText:
 	text "The prof said my"
 	line "#mon was a"
 	cont "wonder!"
@@ -188,7 +188,7 @@ CeladonUniversityClassroom4FisherText:
 	line "taking #mon."
 	done
 
-CeladonUniversityClassroom4LadyText:
+OlsteetonUniClassroomStrategyLadyText:
 	text "The professor said"
 	line "my #mon simply"
 	cont "amazed her."
@@ -198,7 +198,7 @@ CeladonUniversityClassroom4LadyText:
 	cont "anything!"
 	done
 
-CeladonUniversityClassroom4Rich_boyScript:
+OlsteetonUniClassroomStrategyRich_boyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
@@ -243,7 +243,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	line "hidden ability!"
 	done
 
-CeladonUniversityClassroom4BlackboardText:
+OlsteetonUniClassroomStrategyBlackboardText:
 	text "Be aware of these"
 	line "factors in battle:"
 	cont "- Type chart"
@@ -259,7 +259,7 @@ CeladonUniversityClassroom4BlackboardText:
 	cont "- Others?"
 	done
 
-CeladonUniversityClassroom4Bookshelf1:
+OlsteetonUniClassroomStrategyBookshelf1:
 	checkevent EVENT_GOT_X_SP_ATK_IN_UNIVERSITY
 	iftrue_jumptext .Text2
 	opentext
@@ -285,7 +285,7 @@ CeladonUniversityClassroom4Bookshelf1:
 	line "all neat and tidy."
 	done
 
-CeladonUniversityClassroom4Bookshelf2Text:
+OlsteetonUniClassroomStrategyBookshelf2Text:
 	text "It's a #mon"
 	line "coloring book."
 

@@ -362,6 +362,61 @@ OlsteetonUniNurseDept_BlockData:
 SECTION "OlsteetonUniWaterLab_BlockData", ROMX
 OlsteetonUniWaterLab_BlockData:
 	INCBIN "maps/OlsteetonUniWaterLab.ablk.lz"
+
+SECTION "OlsteetonUniOffice_BlockData", ROMX
+OlsteetonUniOffice_BlockData:
+	INCBIN "maps/OlsteetonUniOffice.ablk.lz"
+
+SECTION "OlsteetonUniDeansOffice_BlockData", ROMX
+OlsteetonUniDeansOffice_BlockData:
+	INCBIN "maps/OlsteetonUniDeansOffice.ablk.lz"
+
+SECTION "OlsteetonUniClockTower1F_BlockData", ROMX
+OlsteetonUniClockTower1F_BlockData:
+	INCBIN "maps/OlsteetonUniClockTower1F.ablk.lz"
+
+SECTION "OlsteetonUniClockTower2F_BlockData", ROMX
+OlsteetonUniClockTower2F_BlockData:
+	INCBIN "maps/OlsteetonUniClockTower2F.ablk.lz"
+
+SECTION "OlsteetonUniClockTower3F_BlockData", ROMX
+OlsteetonUniClockTower3F_BlockData:
+	INCBIN "maps/OlsteetonUniClockTower3F.ablk.lz"
+
+
+SECTION "OlsteetonUniClassroomBldg_BlockData", ROMX
+OlsteetonUniClassroomBldg_BlockData:
+	INCBIN "maps/OlsteetonUniClassroomBldg.ablk.lz"
+
+SECTION "OlsteetonUniClassroom_BlockData", ROMX
+OlsteetonUniClassroomBiology_BlockData:
+OlsteetonUniClassroomArt_BlockData:
+OlsteetonUniClassroomStrategy_BlockData:
+OlsteetonUniClassroomHistory_BlockData:
+OlsteetonUniClassroomTheory_BlockData:
+
+OlsteetonUniClassroom_BlockData:
+	INCBIN "maps/OlsteetonUniClassroom.ablk.lz"
+
+SECTION "OlsteetonUniClassroomBusiness_BlockData", ROMX
+OlsteetonUniClassroomBusiness_BlockData:
+	INCBIN "maps/OlsteetonUniClassroomBusiness.ablk.lz"
+
+SECTION "OlsteetonUniDormWest1F_BlockData", ROMX
+OlsteetonUniDormWest1F_BlockData:
+	INCBIN "maps/OlsteetonUniDormWest1F.ablk.lz"
+
+SECTION "OlsteetonUniDiningHall_BlockData", ROMX
+OlsteetonUniDiningHall_BlockData:
+	INCBIN "maps/OlsteetonUniDiningHall.ablk.lz"
+
+SECTION "OlsteetonUniDormEast1F_BlockData", ROMX
+OlsteetonUniDormEast1F_BlockData:
+	INCBIN "maps/OlsteetonUniDormEast1F.ablk.lz"
+
+SECTION "OlsteetonUniGymDept_BlockData", ROMX
+OlsteetonUniGymDept_BlockData:
+	INCBIN "maps/OlsteetonUniGymDept.ablk.lz"
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
 	INCBIN "maps/ElmsLab.ablk.lz"

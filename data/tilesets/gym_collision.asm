@@ -82,3 +82,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 51
 	tilecoll WALL, FLOOR, FLOOR, WALL ; 52
 	tilecoll FLOOR, STAIRCASE, FLOOR, FLOOR ; 53
+	tilecoll ICE, ICE, ICE, ICE ; 54

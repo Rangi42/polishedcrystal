@@ -1,24 +1,26 @@
-CeladonUniversityPrincipalsOffice_MapScriptHeader:
+OlsteetonUniDeansOffice_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event  2,  7, CELADON_UNIVERSITY_1F, 5
-	warp_event  3,  7, CELADON_UNIVERSITY_1F, 5
+	warp_event  4,  7, OLSTEETON_UNI_OFFICE, 7
+	warp_event  5,  7, OLSTEETON_UNI_OFFICE, 7
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  0, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
-	bg_event  3,  0, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
-	bg_event  5,  4, BGEVENT_RIGHT, CeladonUniversityPrincipalsOfficeComputer
-	bg_event  1,  1, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
+	bg_event  2,  0, BGEVENT_JUMPTEXT, OlsteetonUniDeansOfficeSignpost1Text
+	bg_event  3,  0, BGEVENT_JUMPTEXT, OlsteetonUniDeansOfficeSignpost2Text
+	bg_event  6,  2, BGEVENT_RIGHT, OlsteetonUniDeansOfficeComputer
+	bg_event  1,  1, BGEVENT_JUMPTEXT, OlsteetonUniDeansOfficeBookshelfText
 
 	def_object_events
-	object_event  2,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
+	object_event  4,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDeansOfficeMatsumotoScript, -1
+	object_event  0,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, DeansOfficeReceptionistText, -1
 
-CeladonUniversityPrincipalsOfficeMatsumotoScript:
+
+OlsteetonUniDeansOfficeMatsumotoScript:
 	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
 	iftrue_jumptextfaceplayer .Text2
 	faceplayer
@@ -44,12 +46,12 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	text "Hello there,"
 	line "young trainer!"
 
-	para "I am Professor"
+	para "I am Dean"
 	line "Matsumoto."
 
 	para "I'm the principal"
-	line "of Celadon Uni-"
-	cont "versity."
+	line "of Bouffalant"
+	cont "Academy."
 
 	para "But you can call"
 	line "me your pal!"
@@ -59,13 +61,13 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	cont "desk stash."
 	done
 
-CeladonUniversityPrincipalsOfficeSignpost1Text:
+OlsteetonUniDeansOfficeSignpost1Text:
 	text "It's Prof.Matsu-"
 	line "moto's degree in"
 	cont "Education."
 	done
 
-CeladonUniversityPrincipalsOfficeSignpost2Text:
+OlsteetonUniDeansOfficeSignpost2Text:
 	text "It's a picture of"
 	line "Prof.Matsumoto in"
 
@@ -73,7 +75,7 @@ CeladonUniversityPrincipalsOfficeSignpost2Text:
 	line "uating class."
 	done
 
-CeladonUniversityPrincipalsOfficeComputer:
+OlsteetonUniDeansOfficeComputer:
 	jumpthistext
 
 	text "There's a draft"
@@ -83,10 +85,16 @@ CeladonUniversityPrincipalsOfficeComputer:
 	line "donations."
 	done
 
-CeladonUniversityPrincipalsOfficeBookshelfText:
+OlsteetonUniDeansOfficeBookshelfText:
 	text "It's a complete set"
 	line "of books of the"
 
 	para "Encyclopedia"
 	line "#monica."
+	done
+
+DeansOfficeReceptionistText:
+	text "Do you have"
+	line "an appoint-"
+	cont "ment?"
 	done

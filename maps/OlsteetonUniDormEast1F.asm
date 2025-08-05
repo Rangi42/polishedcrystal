@@ -1,36 +1,37 @@
-; OlsteetonUniDormWest1F_MapScriptHeader:
-; 	def_scene_scripts
+OlsteetonUniDormEast1F_MapScriptHeader:
 
-; 	def_callbacks
+	def_scene_scripts
 
-; 	def_warp_events
-; 	warp_event  5, 11, OLSTEETON_UNI, 10
-; 	warp_event  6, 11, OLSTEETON_UNI, 10
-; 	warp_event 11,  3, OLSTEETON_UNI_DORM_WEST_2F, 10
-; 	warp_event 11,  8, OLSTEETON_UNI_DINING_HALL, 10
-; 	warp_event 11,  9, OLSTEETON_UNI_DINING_HALL, 10
+	def_callbacks
+
+	def_warp_events
+	warp_event  7, 11, OLSTEETON_UNI, 15
+	warp_event  8, 11, OLSTEETON_UNI, 15
+	warp_event  0,  8, OLSTEETON_UNI_DINING_HALL, 4
+	warp_event  0,  9, OLSTEETON_UNI_DINING_HALL, 5
+; 	warp_event 11,  3, OLSTEETON_UNI_DORM_EAST_2F, 10
 
 
 
-; 	def_coord_events
+	def_coord_events
 
-; 	def_bg_events
-; 	bg_event 11,  1, BGEVENT_JUMPTEXT, OlsteetonUniDormWest1FBookshelf1Text
-; 	bg_event 10,  1, BGEVENT_READ, OlsteetonUniDormWest1FBookshelf2
-; 	bg_event  0,  9, BGEVENT_RIGHT, OlsteetonUniDormWest1FComputer
+	def_bg_events
+	bg_event 11,  6, BGEVENT_RIGHT, OlsteetonUniDormEast1FComputer
+	bg_event  2,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormEast1FSignText
+	bg_event 11,  8, BGEVENT_RIGHT, OlsteetonUniDormEast1FComputer
 
-; 	def_object_events
-; 	object_event 10,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDormWest1FNeeshaScript, -1
-; 	object_event  5,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FLassText, -1
-; 	object_event  4,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FRichBoyText, -1
-; 	object_event  1,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FCooltrainerfText, -1
-; 	object_event  2,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FSuper_nerd1Text, -1
-; 	object_event  5,  7, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FSuper_nerd2Text, -1
+	def_object_events
+; 	object_event 10,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDormEast1FNeeshaScript, -1
+; 	object_event  5,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FLassText, -1
+; 	object_event  4,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FRichBoyText, -1
+; 	object_event  1,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FCooltrainerfText, -1
+; 	object_event  2,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FSuper_nerd1Text, -1
+; 	object_event  5,  7, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FSuper_nerd2Text, -1
 
-; 	object_const_def
-; 	const OlsteetonUniDormWest1F_NEESHA
+	object_const_def
+; 	const OlsteetonUniDormEast1F_NEESHA
 
-; OlsteetonUniDormWest1FNeeshaScript:
+; OlsteetonUniDormEast1FNeeshaScript:
 ; 	faceplayer
 ; 	opentext
 ; 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
@@ -48,7 +49,7 @@
 ; 	waitbutton
 ; 	closetext
 ; 	winlosstext .BeatenText, 0
-; 	setlasttalked OlsteetonUniDormWest1F_NEESHA
+; 	setlasttalked OlsteetonUniDormEast1F_NEESHA
 ; 	loadtrainer COOLTRAINERF, NEESHA
 ; 	startbattle
 ; 	reloadmapafterbattle
@@ -149,7 +150,7 @@
 ; 	line "you, trainer!"
 ; 	done
 
-; OlsteetonUniDormWest1FLassText:
+; OlsteetonUniDormEast1FLassText:
 ; 	text "Next month we're"
 ; 	line "going on a trip"
 ; 	cont "to Mt.Moon."
@@ -158,29 +159,7 @@
 ; 	line "Clefairy!"
 ; 	done
 
-; OlsteetonUniDormWest1FRichBoyText:
-; 	text "Have you ever"
-; 	line "wondered why"
-
-; 	para "Ultra Balls have"
-; 	line "a yellow letter"
-; 	cont "H on the top?"
-
-; 	para "It's because they"
-; 	line "were first called"
-; 	cont "Hyper Balls!"
-; 	done
-
-; OlsteetonUniDormWest1FCooltrainerfText:
-; 	text "#mon with"
-; 	line "reduced physical"
-
-; 	para "strength instinct-"
-; 	line "ively attempt to"
-; 	cont "enter a # Ball."
-; 	done
-
-; OlsteetonUniDormWest1FSuper_nerd1Text:
+; OlsteetonUniDormEast1FSuper_nerd1Text:
 ; 	text "What do you get if"
 ; 	line "you cross a joke"
 
@@ -190,7 +169,7 @@
 ; 	para "………………………………"
 ; 	done
 
-; OlsteetonUniDormWest1FSuper_nerd2Text:
+; OlsteetonUniDormEast1FSuper_nerd2Text:
 ; 	text "I'm writing scripts"
 ; 	line "for a game."
 
@@ -198,46 +177,46 @@
 ; 	line "asm!"
 ; 	done
 
-; OlsteetonUniDormWest1FBookshelf1Text:
-; 	text "It's stuffed full"
-; 	line "of copies of"
-; 	cont "#mon manga!"
-; 	done
+OlsteetonUniDormEast1FSignText:
+	text "Beware:"
+	line "Students may"
+	cont "challenge you"
+	done
 
-; OlsteetonUniDormWest1FBookshelf2:
-; 	opentext
-; 	writetext .Text1
-; 	waitbutton
-; 	checkevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
-; 	iftruefwd .GotItem
-; 	verbosegiveitem PP_MAX
-; 	iffalsefwd .Done
-; 	setevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
-; .Done
-; 	endtext
+OlsteetonUniDormEast1FBookshelf2:
+	opentext
+	writetext .Text1
+	waitbutton
+	checkevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
+	iftruefwd .GotItem
+	verbosegiveitem PP_MAX
+	iffalsefwd .Done
+	setevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
+.Done
+	endtext
 
-; .GotItem
-; 	jumpopenedtext .Text2
+.GotItem
+	jumpopenedtext .Text2
 
-; .Text1:
-; 	text "This book has a"
-; 	line "secret compartment"
+.Text1:
+	text "This book has a"
+	line "secret compartment"
 
-; 	para "where the pages"
-; 	line "should be!"
-; 	done
+	para "where the pages"
+	line "should be!"
+	done
 
-; .Text2:
-; 	text "Too bad--it's"
-; 	line "empty."
-; 	done
+.Text2:
+	text "Too bad--it's"
+	line "empty."
+	done
 
-; OlsteetonUniDormWest1FComputer:
-; 	jumpthistext
+OlsteetonUniDormEast1FComputer:
+	jumpthistext
 
-; 	text "There's a player"
-; 	line "character running"
+	text "There's a player"
+	line "character running"
 
-; 	para "around a 2D"
-; 	line "Celadon City."
-; 	done
+	para "around a 2D"
+	line "Celadon City."
+	done

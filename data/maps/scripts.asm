@@ -116,12 +116,32 @@ INCLUDE "maps/OlsteetonForestGate.asm"
 INCLUDE "maps/NationalForest1.asm"
 INCLUDE "maps/OlsteetonUniGate.asm"
 INCLUDE "maps/OlsteetonRoute103Gate.asm"
+
+SECTION "Academy Scripts", ROMX
+
 INCLUDE "maps/OlsteetonUni.asm"
 INCLUDE "maps/OlsteetonUniLibrary1F.asm"
 INCLUDE "maps/OlsteetonUniLibrary2F.asm"
 INCLUDE "maps/OlsteetonUniScienceCenter.asm"
 INCLUDE "maps/OlsteetonUniNurseDept.asm"
 INCLUDE "maps/OlsteetonUniWaterLab.asm"
+INCLUDE "maps/OlsteetonUniOffice.asm"
+INCLUDE "maps/OlsteetonUniDeansOffice.asm"
+INCLUDE "maps/OlsteetonUniClockTower1F.asm"
+INCLUDE "maps/OlsteetonUniClockTower2F.asm"
+INCLUDE "maps/OlsteetonUniClockTower3F.asm"
+INCLUDE "maps/OlsteetonUniClassroomBldg.asm"
+INCLUDE "maps/OlsteetonUniClassroomBiology.asm"
+INCLUDE "maps/OlsteetonUniClassroomArt.asm"
+INCLUDE "maps/OlsteetonUniClassroomBusiness.asm"
+INCLUDE "maps/OlsteetonUniClassroomStrategy.asm"
+INCLUDE "maps/OlsteetonUniClassroomHistory.asm"
+INCLUDE "maps/OlsteetonUniClassroomTheory.asm"
+INCLUDE "maps/OlsteetonUniDormWest1F.asm"
+INCLUDE "maps/OlsteetonUniDiningHall.asm"
+INCLUDE "maps/OlsteetonUniDormEast1F.asm"
+INCLUDE "maps/OlsteetonUniGymDept.asm"
+
 
 SECTION "New Bark Scripts", ROMX
 
