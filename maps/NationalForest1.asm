@@ -11,7 +11,7 @@ NationalForest1_MapScriptHeader:
     def_bg_events
 	bg_event 25,  7, BGEVENT_JUMPTEXT, NationalForest1EntranceSignText
 	bg_event 30, 18, BGEVENT_JUMPTEXT, NationalForest1PondSignText
-	bg_event 27, 5, BGEVENT_ITEM + SUPER_POTION, EVENT_NATIONAL_FOREST1_HIDDEN_SUPER_POTION
+	bg_event 21, 17, BGEVENT_ITEM + SUPER_POTION, EVENT_NATIONAL_FOREST1_HIDDEN_SUPER_POTION
 
     def_object_events
 	object_event  7, 16, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ConcernedCitizenScript1, EVENT_TALKED_TO_CC
@@ -21,7 +21,7 @@ NationalForest1_MapScriptHeader:
 	object_event 30, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1Fisherman2Text, -1
 	object_event 13, 6, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1GirlText, -1
 	pokemon_event 15, 6, MEOWTH, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, NatForest1MeowthText, -1
-    ; object_event 29, 4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerGrannySue, -1
+    ; object_event 29, 4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerOld_TimerSue, -1
 	itemball_event 31, 27, ANTIDOTE, 1, EVENT_NATIONAL_FOREST1_ANTIDOTE
 
     object_const_def
@@ -153,12 +153,12 @@ NatForest1MeowthText:
     text "Meowth: MrrOOWW!"
     done
 
-GrannySueSeenText:
+Old_TimerSueSeenText:
     text "You're the nosy"
     line "sort, aren't ya'!"
     done
 
-GrannySueBeatenText:
+Old_TimerSueBeatenText:
     text "Well, since you"
     line "want to know so"
     cont "badly..."
@@ -191,7 +191,7 @@ NationalForest1PondSignText:
 
 ; ||Battles||
 
-GenericTrainerGrannySue:
-    generictrainer GRANNY, SUE, EVENT_BEAT_GRANNY_SUE, GrannySueSeenText, GrannySueBeatenText
+GenericTrainerOld_TimerSue:
+    generictrainer OLD_TIMER, SUE, EVENT_BEAT_OLD_TIMER_SUE, Old_TimerSueSeenText, Old_TimerSueBeatenText
 
     text 
