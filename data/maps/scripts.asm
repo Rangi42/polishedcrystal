@@ -74,28 +74,49 @@ SECTION "Hollowport Scripts", ROMX
 INCLUDE "maps/Hollowport.asm"
 INCLUDE "maps/FieldLab.asm"
 INCLUDE "maps/FieldLab2F.asm"
-INCLUDE "maps/HollowportNeighbor.asm"
-INCLUDE "maps/EchoingCave.asm"
-INCLUDE "maps/Route101.asm"
-INCLUDE "maps/Route102.asm"
-INCLUDE "maps/Route101102Gate.asm"
-INCLUDE "maps/Route102OlsteetonGate.asm"
-
-SECTION "Hollowport Scripts 2", ROMX
-
 INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/HollowportRival1F.asm"
 INCLUDE "maps/HollowportRival2F.asm"
+INCLUDE "maps/HollowportNeighbor.asm"
+INCLUDE "maps/EchoingCave.asm"
+INCLUDE "maps/Route101.asm"
+INCLUDE "maps/Route101House.asm"
+INCLUDE "maps/Route101Cave.asm"
+INCLUDE "maps/Route102.asm"
+INCLUDE "maps/Route101102Gate.asm"
+INCLUDE "maps/Route102OlsteetonGate.asm"
 
 SECTION "Olsteeton Scripts", ROMX
 
 INCLUDE "maps/Olsteeton.asm"
+INCLUDE "maps/OlsteetonGym1F.asm"
+INCLUDE "maps/OlsteetonGym2F.asm"
+INCLUDE "maps/OlsteetonGym3F.asm"
+INCLUDE "maps/OlsteetonPokeCenter.asm"
+INCLUDE "maps/OlsteetonMall1.asm"
+INCLUDE "maps/OlsteetonMall2.asm"
+INCLUDE "maps/OlsteetonMall3.asm"
+INCLUDE "maps/OlsteetonMart.asm"
+INCLUDE "maps/RiverfrontApt1F.asm"
+INCLUDE "maps/RiverfrontApt2F.asm"
+INCLUDE "maps/RiverfrontApt3F.asm"
+INCLUDE "maps/RiverfrontApt4F.asm"
+INCLUDE "maps/RiverfrontApt5F.asm"
+INCLUDE "maps/RiverfrontAptRoof.asm"
+INCLUDE "maps/RiverfrontAptElevator.asm"
+INCLUDE "maps/OlsteetonDiner.asm"
+INCLUDE "maps/OlsteetonArcade.asm"
+INCLUDE "maps/OlsteetonTrainStation.asm"
+INCLUDE "maps/OlsteetonNameRater.asm"
+INCLUDE "maps/OlsteetonFisherHouse.asm"
+INCLUDE "maps/OlsteetonQuickHouse.asm"
+INCLUDE "maps/OlsteetonGymHouse.asm"
 INCLUDE "maps/OlsteetonForestGate.asm"
 INCLUDE "maps/NationalForest1.asm"
-
-
-; INCLUDE "maps/OlsteetonUni.asm"
+INCLUDE "maps/OlsteetonUniGate.asm"
+INCLUDE "maps/OlsteetonRoute103Gate.asm"
+INCLUDE "maps/OlsteetonUni.asm"
 
 SECTION "New Bark Scripts", ROMX
 
@@ -1103,10 +1124,5 @@ INCLUDE "maps/Route48.asm"
 INCLUDE "maps/Route49.asm"
 
 SECTION "Map Scripts 25", ROMX
-
-INCLUDE "maps/GlobalTerminalOutside.asm"
-INCLUDE "maps/GlobalTerminal1F.asm"
-
-INCLUDE "maps/NationalForest1.asm"
 
 ENDSECTION

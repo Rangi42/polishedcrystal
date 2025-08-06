@@ -5,6 +5,8 @@
 	const ROUTE_101			 ; 0b
 	const ROUTE_102			 ; 0c
 	const OLSTEETON			 ; 0d
+	const NATIONAL_FOREST_1  ; 0e
+	const OLSTEETON_UNI      ; 0f
 
 ; Johto landmarks
 	const NEW_BARK_TOWN      ; 01

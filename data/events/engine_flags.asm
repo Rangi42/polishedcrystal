@@ -273,6 +273,9 @@ EngineFlags:
 	engine_flag wPokemonJournals, KIYO_JOURNAL
 	engine_flag wPokemonJournals, PALMER_JOURNAL
 	engine_flag wPokemonJournals, THORTON_JOURNAL
+	; engine_flag wPokemonJournals, RUSTY_JOURNAL
+
+
 
 	engine_flag wStatusFlags3, STATUSFLAGS3_JUDGE_MACHINE_F
 

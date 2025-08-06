@@ -33,8 +33,8 @@ CinnabarPokeCenter1F_BlockData:
 KantoPokeCenter2F_BlockData:
 	INCBIN "maps/KantoPokeCenter2F.ablk.lz"
 
-; OlsteetonPokeCenter_BlockData:
-	; INCBIN "maps/OlsteetonPokeCenter.ablk.lz"
+OlsteetonPokeCenter_BlockData:
+	INCBIN "maps/OlsteetonPokeCenter.ablk.lz"
 
 CherrygroveMart_BlockData:
 VioletMart_BlockData:
@@ -49,6 +49,7 @@ VermilionMart_BlockData:
 LavenderMart_BlockData:
 SaffronMart_BlockData:
 FuchsiaMart_BlockData:
+OlsteetonMart_BlockData:
 GenericMart_BlockData:: ; used by tilesets/palettes.asm:LoadSpecialMapPalette
 	INCBIN "maps/Mart.ablk.lz"
 
@@ -86,12 +87,14 @@ Route38EcruteakGate_BlockData:
 Route42EcruteakGate_BlockData:
 Route101102Gate_BlockData:
 Route102OlsteetonGate_BlockData:
+OlsteetonUniGate_BlockData:
 
 	INCBIN "maps/EastWestGate.ablk.lz"
 
 Route7SaffronGate_BlockData:
 Route8SaffronGate_BlockData:
 Route16Gate_BlockData:
+OlsteetonRoute103Gate_BlockData:
 	INCBIN "maps/KantoEastWestGate.ablk.lz"
 
 Route11Gate_BlockData:
@@ -123,6 +126,7 @@ ShamoutiHouse_BlockData:
 WarmBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
 IvysHouse_BlockData:
+OlsteetonGymHouse_BlockData:
 	INCBIN "maps/JohtoHouse1.ablk.lz"
 
 GoldenrodHappinessRater_BlockData:
@@ -139,6 +143,7 @@ LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 CeladonOldManSpeechHouse_BlockData:
 CeladonDevelopmentSpeechHouse_BlockData:
+OlsteetonFisherHouse_BlockData:
 	INCBIN "maps/House2.ablk.lz"
 
 MahoganyRedGyaradosSpeechHouse_BlockData:
@@ -151,6 +156,7 @@ GoldenrodBandHouse_BlockData:
 ManiasHouse_BlockData:
 CianwoodLugiaSpeechHouse_BlockData:
 MoveManiacsHouse_BlockData:
+OlsteetonNameRater_BlockData:
 	INCBIN "maps/JohtoHouse3.ablk.lz"
 
 Route39Farmhouse_BlockData:
@@ -170,6 +176,7 @@ VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
 VioletOutskirtsHouse_BlockData:
 ValeriesHouse_BlockData:
+Route101House_BlockData:
 	INCBIN "maps/TraditionalHouse.ablk.lz"
 
 
@@ -194,6 +201,7 @@ LavenderNameRater_BlockData:
 SaffronHitmontopKidHouse_BlockData:
 SaffronOrreSpeechHouse_BlockData:
 Route19BeachHouse_BlockData:
+OlsteetonQuickHouse_BlockData:
 	INCBIN "maps/KantoHouse3.ablk.lz"
 
 SECTION "PewterNidoranSpeechHouse_BlockData", ROMX
@@ -206,12 +214,6 @@ Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 EusinesHouse_BlockData:
 	INCBIN "maps/KantoHouse4.ablk.lz"
-
-SECTION "Map Blocks 4", ROMX
-GlobalTerminalOutside_Blocks:
-	INCBIN "maps/GlobalTerminalOutside.ablk"
-GlobalTerminal1F_Blocks:
-	INCBIN "maps/GlobalTerminal1F.ablk"
 
 SECTION "TradeCenter_BlockData", ROMX
 TradeCenter_BlockData:
@@ -261,6 +263,10 @@ SECTION "Route101_BlockData", ROMX
 Route101_BlockData:
 	INCBIN "maps/Route101.ablk.lz"
 
+SECTION "Route101Cave_BlockData", ROMX
+Route101Cave_BlockData:
+	INCBIN "maps/Route101Cave.ablk.lz"
+
 SECTION "Route102_BlockData", ROMX
 Route102_BlockData:
 	INCBIN "maps/Route102.ablk.lz"
@@ -268,6 +274,74 @@ Route102_BlockData:
 SECTION "Olsteeton_BlockData", ROMX
 Olsteeton_BlockData:
 	INCBIN "maps/Olsteeton.ablk.lz"
+
+SECTION "OlsteetonGym1F_BlockData", ROMX
+OlsteetonGym1F_BlockData:
+	INCBIN "maps/OlsteetonGym1F.ablk.lz"
+
+SECTION "OlsteetonGym2F_BlockData", ROMX
+OlsteetonGym2F_BlockData:
+	INCBIN "maps/OlsteetonGym2F.ablk.lz"
+
+SECTION "OlsteetonGym3F_BlockData", ROMX
+OlsteetonGym3F_BlockData:
+	INCBIN "maps/OlsteetonGym3F.ablk.lz"
+
+SECTION "OlsteetonMall1_BlockData", ROMX
+OlsteetonMall1_BlockData:
+	INCBIN "maps/OlsteetonMall1.ablk.lz"
+
+SECTION "OlsteetonMall2_BlockData", ROMX
+OlsteetonMall2_BlockData:
+	INCBIN "maps/OlsteetonMall2.ablk.lz"
+
+SECTION "OlsteetonMall3_BlockData", ROMX
+OlsteetonMall3_BlockData:
+	INCBIN "maps/OlsteetonMall3.ablk.lz"
+
+SECTION "RiverfrontApt1F_BlockData", ROMX
+RiverfrontApt1F_BlockData:
+	INCBIN "maps/RiverfrontApt1F.ablk.lz"
+
+SECTION "RiverfrontApt2F_BlockData", ROMX
+RiverfrontApt2F_BlockData:
+RiverfrontApt3F_BlockData:
+RiverfrontApt4F_BlockData:
+
+	INCBIN "maps/RiverfrontApt2F.ablk.lz"
+
+SECTION "RiverfrontApt5F_BlockData", ROMX
+RiverfrontApt5F_BlockData:
+
+	INCBIN "maps/RiverfrontApt5F.ablk.lz"
+
+SECTION "RiverfrontAptRoof_BlockData", ROMX
+RiverfrontAptRoof_BlockData:
+	INCBIN "maps/RiverfrontAptRoof.ablk.lz"
+
+SECTION "RiverfrontAptElevator_BlockData", ROMX
+RiverfrontAptElevator_BlockData:
+	INCBIN "maps/RiverfrontAptElevator.ablk.lz"
+
+SECTION "OlsteetonDiner_BlockData", ROMX
+OlsteetonDiner_BlockData:
+	INCBIN "maps/OlsteetonDiner.ablk.lz"
+
+SECTION "OlsteetonArcade_BlockData", ROMX
+OlsteetonArcade_BlockData:
+	INCBIN "maps/OlsteetonArcade.ablk.lz"
+
+SECTION "OlsteetonTrainStation_BlockData", ROMX
+OlsteetonTrainStation_BlockData:
+	INCBIN "maps/OlsteetonTrainStation.ablk.lz"
+
+SECTION "NationalForest1_BlockData", ROMX
+NationalForest1_BlockData:
+	INCBIN "maps/NationalForest1.ablk.lz"
+
+SECTION "OlsteetonUni_BlockData", ROMX
+OlsteetonUni_BlockData:
+	INCBIN "maps/OlsteetonUni.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
@@ -1970,9 +2044,5 @@ BattleFactoryHallway_BlockData:
 SECTION "BattleFactoryBattleRoom_BlockData", ROMX
 BattleFactoryBattleRoom_BlockData:
 	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"
-
-SECTION "NationalForest1_BlockData", ROMX
-NationalForest1_BlockData:
-	INCBIN "maps/NationalForest1.ablk.lz"
 	
 ENDSECTION

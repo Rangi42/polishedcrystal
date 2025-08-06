@@ -4,8 +4,11 @@ Route101_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 33,  8, ROUTE_101_102_GATE, 1
-	warp_event 33,  9, ROUTE_101_102_GATE, 2
+	warp_event 31, 10, ROUTE_101_102_GATE, 1
+	warp_event 31, 11, ROUTE_101_102_GATE, 2
+	warp_event 25,  5, ROUTE_101_HOUSE, 1
+	warp_event 16,  3, ROUTE_101_CAVE, 1
+
 
 	def_coord_events
 
@@ -16,7 +19,9 @@ Route101_MapScriptHeader:
 	; object_event 17, 14, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboySherman, -1
 	; object_event 16, 21, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermFrench, -1
 	; object_event 11, 25, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainerfQuinn, -1
-	fruittree_event 24,  4, FRUITTREE_ROUTE_1, FIGY_BERRY, PAL_NPC_BROWN
+	fruittree_event 22,  4, FRUITTREE_ROUTE_1, FIGY_BERRY, PAL_NPC_BROWN
+	fruittree_event  4,  2, FRUITTREE_ROUTE_2, LUM_BERRY, PAL_NPC_GREEN
+
 
 ; GenericTrainerSchoolboyDanny:
 ; 	generictrainer SCHOOLBOY, DANNY, EVENT_BEAT_SCHOOLBOY_DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText

@@ -103,7 +103,7 @@ GoonText2:
     line "company number"
     
     para "if you've got a"
-    line "complaint!
+    line "complaint!"
     done
 
 NatForest1BulbasaurText:
@@ -174,7 +174,7 @@ Old_TimerSueBeatenText:
 
 ; ||Object Text||
 
-NationalForest1NationalForest1EntranceSignText:
+NationalForest1EntranceSignText:
     text "Jolly Sods"
     line "Regional Park"
     done
