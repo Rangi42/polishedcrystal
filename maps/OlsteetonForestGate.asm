@@ -4,8 +4,8 @@ OlsteetonForestGate_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  0, OLSTEETON, 20
-	warp_event  5,  0, OLSTEETON, 21
+	warp_event  4,  0, OLSTEETON, 21
+	warp_event  5,  0, OLSTEETON, 22
 	warp_event  4,  7, NATIONAL_FOREST_1, 1
 	warp_event  5,  7, NATIONAL_FOREST_1, 1
 

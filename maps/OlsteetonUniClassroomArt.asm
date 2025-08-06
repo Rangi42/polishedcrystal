@@ -24,6 +24,8 @@ OlsteetonUniClassroomArt_MapScriptHeader:
 	object_event  8,  3, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomArtArtist1Text, -1
 	object_event  3,  7, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << MORN) | (1 << DAY), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomArtArtist2Text, -1
 	object_event  9,  9, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassroomArtArtist3Text, -1
+	pokemon_event  6,  3, SMEARGLE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, OlsteetonUniSmeargleText, -1
+
 
 	object_const_def
 	const OlsteetonUniClassroomArt_IMAKUNI
@@ -228,4 +230,8 @@ OlsteetonUniClassroomArtBookshelf2Text:
 
 	para "called Lilycove"
 	line "Museum."
+	done
+
+OlsteetonUniSmeargleText:
+	text "Smeargle: Smeer!"
 	done

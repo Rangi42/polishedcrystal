@@ -86,7 +86,6 @@ ProfPawpawScript:
  	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumpopenedtext PawpawDescribesMrPokemonText
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
-	opentext
 	writetext PawpawText_Intro
 FieldLab_RefuseLoop:
 	yesorno

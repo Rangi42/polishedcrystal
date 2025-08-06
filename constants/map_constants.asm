@@ -721,7 +721,7 @@ ENDM
 	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  15
 
 	newgroup                                         			 ; 39
-	map_const OLSTEETON,                          	      21, 18 ;  1
+	map_const OLSTEETON,                          	      23, 20 ;  1
 	map_const OLSTEETON_GYM_1F,                       	   9,  6 ;  2
 	map_const OLSTEETON_GYM_2F,                            8,  5 ;  3
 	map_const OLSTEETON_GYM_3F,                        	   8,  4 ;  4
@@ -750,7 +750,7 @@ ENDM
 	map_const OLSTEETON_ROUTE_103_GATE,                    5,  4 ;  28
 
 	newgroup                                                     ; 40
-	map_const OLSTEETON_UNI,	                          18, 12 ;  1
+	map_const OLSTEETON_UNI,	                          21, 14 ;  1
 	map_const OLSTEETON_UNI_LIBRARY_1F,   	               7,  6 ;  2
 	map_const OLSTEETON_UNI_LIBRARY_2F,   	               9,  7 ;  3
 	map_const OLSTEETON_UNI_SCIENCE_CENTER,   	           6,  5 ;  4
