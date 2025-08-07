@@ -5,7 +5,7 @@ OlsteetonTrainStation_MapScriptHeader:
 
 	def_warp_events
 	warp_event 17, 12, OLSTEETON, 15
-	warp_event 17, 13, OLSTEETON, 15
+	warp_event 17, 13, OLSTEETON, 16
 	; warp_event  6,  5, SAFFRON_TRAIN_STATION, 4
 	; warp_event 11,  5, SAFFRON_TRAIN_STATION, 3
 

@@ -715,13 +715,13 @@ ENDM
 	map_const HOLLOWPORT_NEIGHBOR,                         4,  4 ;  9
 	map_const ROUTE_101,             				      19, 12 ;  10
 	map_const ROUTE_101_HOUSE,             			       4,  4 ;  11
-	map_const ROUTE_101_CAVE,             			       6,  9 ;  11
-	map_const ROUTE_102,								  16,  9 ;  11
-	map_const ROUTE_101_102_GATE,                          5,  4 ;  12
-	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  13
+	map_const ROUTE_101_CAVE,             			       6,  19 ; 12
+	map_const ROUTE_102,								  16,  9 ;  13
+	map_const ROUTE_101_102_GATE,                          5,  4 ;  14
+	map_const ROUTE_102_OLSTEETON_GATE,                    5,  4 ;  15
 
 	newgroup                                         			 ; 39
-	map_const OLSTEETON,                          	      21, 18 ;  1
+	map_const OLSTEETON,                          	      23, 20 ;  1
 	map_const OLSTEETON_GYM_1F,                       	   9,  6 ;  2
 	map_const OLSTEETON_GYM_2F,                            8,  5 ;  3
 	map_const OLSTEETON_GYM_3F,                        	   8,  4 ;  4
@@ -750,9 +750,27 @@ ENDM
 	map_const OLSTEETON_ROUTE_103_GATE,                    5,  4 ;  28
 
 	newgroup                                                     ; 40
-	map_const OLSTEETON_UNI,	                          18, 12 ;  1
-	; map_const UNI_DORM,                                   11,  5 ;  2
-	; map_const UNI_LIBRARY,   	                             4,  4 ;  3
-	; map_const DINING_HALL,								 8,  4 ;  4
-	
+	map_const OLSTEETON_UNI,	                          21, 14 ;  1
+	map_const OLSTEETON_UNI_LIBRARY_1F,   	               7,  6 ;  2
+	map_const OLSTEETON_UNI_LIBRARY_2F,   	               9,  7 ;  3
+	map_const OLSTEETON_UNI_SCIENCE_CENTER,   	           6,  5 ;  4
+	map_const OLSTEETON_UNI_NURSE_DEPT,   	               6,  5 ;  5
+	map_const OLSTEETON_UNI_WATER_LAB,   	               8,  5 ;  6
+	map_const OLSTEETON_UNI_OFFICE, 			          11,  9 ;  7
+	map_const OLSTEETON_UNI_DEANS_OFFICE, 			       4,  4 ;  8
+	map_const OLSTEETON_UNI_CLOCK_TOWER_1F, 			   5,  4 ;  9
+	map_const OLSTEETON_UNI_CLOCK_TOWER_2F, 			   6,  4 ;  10
+	map_const OLSTEETON_UNI_CLOCK_TOWER_3F, 			   6,  6 ;  11
+ 	map_const OLSTEETON_UNI_CLASSROOM_BLDG,               13,  7 ;  12
+ 	map_const OLSTEETON_UNI_CLASSROOM_BIOLOGY,             6,  5 ;  13
+ 	map_const OLSTEETON_UNI_CLASSROOM_ART,                 6,  5 ;  14
+ 	map_const OLSTEETON_UNI_CLASSROOM_BUSINESS,            6,  5 ;  15
+ 	map_const OLSTEETON_UNI_CLASSROOM_STRATEGY,            6,  5 ;  16
+ 	map_const OLSTEETON_UNI_CLASSROOM_HISTORY,             6,  5 ;  17
+ 	map_const OLSTEETON_UNI_CLASSROOM_THEORY,              6,  5 ;  18
+ 	map_const OLSTEETON_UNI_DORM_WEST_1F,                  6,  6 ;  19
+	map_const OLSTEETON_UNI_DINING_HALL,				   8,  4 ;  20
+ 	map_const OLSTEETON_UNI_DORM_EAST_1F,                  6,  6 ;  21
+ 	map_const OLSTEETON_UNI_GYM_DEPT,                      8,  7 ;  22
+
 DEF NUM_MAP_GROUPS EQU const_value ; 40

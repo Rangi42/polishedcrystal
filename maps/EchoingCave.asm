@@ -6,9 +6,8 @@ EchoingCave_MapScriptHeader:
 
 	def_warp_events
 	warp_event  5, 15, HOLLOWPORT, 5
-	warp_event  8,  3, FIELD_LAB_2F, 1
-	; warp_event  2,  0, ECHOING_CAVE_B1F, 3
-	; warp_event  9,  1, ECHOING_CAVE_B1F, 4
+	warp_event 10,  3, FIELD_LAB_2F, 1
+	warp_event  0,  0, ROUTE_101_CAVE, 4
 
 	def_coord_events
 

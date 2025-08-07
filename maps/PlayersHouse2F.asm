@@ -362,9 +362,10 @@ PokemonJournalProfElmScript:
 	para "Special Feature:"
 	line "Prof.Cecil Pawpaw!"
 
-	para "Prof.Pawpaw was the"
-	line "first to study"
-	cont "#mon biomes."
+	para "Prof.Pawpaw was"
+	line "the first to"
+	cont "study #mon"
+	cont "biomes."
 
 	para "Often in the field"
 	line "instead of the lab,"
