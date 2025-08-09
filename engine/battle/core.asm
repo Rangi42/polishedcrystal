@@ -187,6 +187,12 @@ BattleTurn:
 	call CheckOpponentForfeit
 	ret c
 
+	; Update selected move.
+	ld a, [wCurPlayerMove]
+	ld [wPlayerSelectedMove], a
+	ld a, [wCurEnemyMove]
+	ld [wEnemySelectedMove], a
+
 	call DetermineMoveOrder
 	; a = carry ? 0 (player first) : 1 (enemy first)
 	sbc a
@@ -699,11 +705,17 @@ CompareMovePriority:
 	ret
 
 GetMovePriority:
-; Return the priority of move being used.
+; Return the priority of move being selected.
 	push bc
 	push de
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
+
+	; Note that we want to check priority of our SELECTED move, not used!
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wPlayerSelectedMove]
+	jr z, .got_selected_move
+	ld a, [wEnemySelectedMove]
+.got_selected_move
 	call GetMoveIndexFromID
 	ld b, h
 	ld c, l
