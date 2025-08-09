@@ -128,6 +128,6 @@ RalphHurryText:
 	line "over to fish for"
 	cont "Qwilfish?"
 
-	para "I'm on ROUTE 32,"
+	para "I'm on Route 32,"
 	line "so hurry up!"
 	done

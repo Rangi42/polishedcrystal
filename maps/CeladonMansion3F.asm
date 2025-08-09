@@ -152,7 +152,7 @@ GameFreakGraphicArtistPrintDiplomaText:
 	line "Arist."
 
 	para "Oh, you completed"
-	line "your #DEX?"
+	line "your #dex?"
 
 	para "Want me to print"
 	line "out your Diploma?"
@@ -183,7 +183,7 @@ GameFreakCharacterDesignerText:
 	done
 
 CeladonMansion3FDevRoomSignText:
-	text "GAME FREAK"
+	text "Game Freak"
 	line "Development Room"
 	done
 
