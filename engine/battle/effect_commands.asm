@@ -5118,7 +5118,7 @@ BattleCommand_toxictarget:
 	ld de, ANIM_PSN
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
- 
+
 	ld hl, WasPoisonedText
 	call StdBattleTextbox
 
@@ -5136,21 +5136,24 @@ BattleCommand_draintarget:
 	; fallthrough
 SapHealth:
 	; Don't do anything if HP is full unless opponent has Liquid Ooze
+	push hl
 	call GetOpponentAbilityAfterMoldBreaker
 	cp LIQUID_OOZE
 	jr z, .continue
-	push hl
 	farcall CheckFullHP
-	pop hl
-	ret z
+	jr z, .abort
 
 .continue
 	; get damage
-	push hl
 	ld hl, wCurDamage
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+	or c
+.abort
+	pop hl
+	ret z
+	push hl
 
 	; for Drain Kiss, we want 75% drain instead of 50%
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -5177,9 +5180,7 @@ SapHealth:
 	call GetHPAbsorption
 
 	; check for Liquid Ooze
-	push bc
 	call GetOpponentAbilityAfterMoldBreaker
-	pop bc
 	cp LIQUID_OOZE
 	jr z, .damage
 	farcall RestoreHP
