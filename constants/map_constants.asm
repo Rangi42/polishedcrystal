@@ -748,6 +748,9 @@ ENDM
 	map_const NATIONAL_FOREST_1,						  17, 15 ;  26
 	map_const OLSTEETON_UNI_GATE,                          5,  4 ;  27
 	map_const OLSTEETON_ROUTE_103_GATE,                    5,  4 ;  28
+	map_const OLSTEETON_ABANDONED_MILL_OUTSIDE,           12,  10 ;  29
+	map_const OLSTEETON_ABANDONED_MILL,                   10,  9 ;  30
+
 
 	newgroup                                                     ; 40
 	map_const OLSTEETON_UNI,	                          21, 14 ;  1

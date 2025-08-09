@@ -116,6 +116,8 @@ INCLUDE "maps/OlsteetonForestGate.asm"
 INCLUDE "maps/NationalForest1.asm"
 INCLUDE "maps/OlsteetonUniGate.asm"
 INCLUDE "maps/OlsteetonRoute103Gate.asm"
+INCLUDE "maps/OlsteetonAbandonedMillOutside.asm"
+INCLUDE "maps/OlsteetonAbandonedMill.asm"
 
 SECTION "Academy Scripts", ROMX
 

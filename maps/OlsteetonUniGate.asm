@@ -24,7 +24,7 @@ OlsteetonUniGateOfficerScript:
 	jumpopenedtext OlsteetonUniGateOfficerText1
 
 OlsteetonUniGateOfficerText1:
-	text "Oh, to be"
+	para "Oh, to be"
 	line "a new student"
 	cont "again..."
 

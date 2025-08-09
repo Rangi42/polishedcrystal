@@ -43,7 +43,7 @@ Olsteeton_MapScriptHeader:
 	bg_event 24, 13, BGEVENT_JUMPTEXT, OlsteetonMartSignText
 	bg_event 16, 19, BGEVENT_JUMPTEXT, OlsteetonPokeCenterSignText
 	bg_event 18, 14, BGEVENT_JUMPTEXT, OlsteetonHomeDecorStoreSignText
-	bg_event 38,  3, BGEVENT_JUMPTEXT, OlsteetonBoatText
+	bg_event 26,  2, BGEVENT_JUMPTEXT, OlsteetonBoatText
 	bg_event 32, 12, BGEVENT_JUMPTEXT, OlsteetonGameCornerSignText
 	bg_event 20, 32, BGEVENT_JUMPTEXT, OlsteetonForestSignText
 	bg_event 12, 19, BGEVENT_JUMPTEXT, OlsteetonCafeSignText
@@ -69,10 +69,38 @@ Olsteeton_MapScriptHeader:
 	object_event 24, 16, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 1, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonBandRocker2Text, -1
 	object_event 26, 16, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonBandRocker3Text, -1
 	object_event 26, 19, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonBandCooltrainerFText, -1
+	object_event 38,  3, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, OlsteetonSailboatScript, -1
+
 	; itemball_event 39,  7, MAX_ETHER, 1, EVENT_Olsteeton_CITY_MAX_ETHER
 	; cuttree_event 33, 34, EVENT_Olsteeton_CITY_CUT_TREE
 	; cuttree_event -5, 24, EVENT_ROUTE_16_CUT_TREE
 
+OlsteetonSailboatScript:
+	; checkevent EVENT_BOAT_PERMISSION
+	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	iftruefwd Olsteeton_BoatQuestion
+	jumptext OlsteetonSailboatText
+
+Olsteeton_BoatQuestion:
+	opentext
+	writetext BoatText_Ask
+	yesorno
+	iftruefwd Olsteeton_BoatRide
+	endtext
+
+Olsteeton_BoatRide:
+	warp OLSTEETON_ABANDONED_MILL_OUTSIDE, $7, $D
+	end
+BoatText_Ask:
+	text "Take the boat"
+	line "to the abandoned"
+	cont "steel mill?"
+	done
+
+OlsteetonSailboatText:
+	text "It's a sailboat"
+	line "named Magic Harp."
+	done
 OlsteetonFlyPoint:
 	setflag ENGINE_FLYPOINT_OLSTEETON
 	endcallback

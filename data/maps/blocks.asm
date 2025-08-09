@@ -417,6 +417,14 @@ OlsteetonUniDormEast1F_BlockData:
 SECTION "OlsteetonUniGymDept_BlockData", ROMX
 OlsteetonUniGymDept_BlockData:
 	INCBIN "maps/OlsteetonUniGymDept.ablk.lz"
+
+SECTION "OlsteetonAbandonedMillOutside_BlockData", ROMX
+OlsteetonAbandonedMillOutside_BlockData:
+	INCBIN "maps/OlsteetonAbandonedMillOutside.ablk.lz"
+
+SECTION "OlsteetonAbandonedMill_BlockData", ROMX
+OlsteetonAbandonedMill_BlockData:
+	INCBIN "maps/OlsteetonAbandonedMill.ablk.lz"
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
 	INCBIN "maps/ElmsLab.ablk.lz"

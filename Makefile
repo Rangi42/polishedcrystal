@@ -1,6 +1,6 @@
 NAME := pokelachia
 MODIFIERS :=
-VERSION := 0.1.5
+VERSION := 0.1.6
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc

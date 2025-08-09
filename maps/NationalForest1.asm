@@ -11,42 +11,42 @@ NationalForest1_MapScriptHeader:
     def_bg_events
 	bg_event 25,  7, BGEVENT_JUMPTEXT, NationalForest1EntranceSignText
 	bg_event 30, 18, BGEVENT_JUMPTEXT, NationalForest1PondSignText
-	bg_event 21, 17, BGEVENT_ITEM + SUPER_POTION, EVENT_NATIONAL_FOREST1_HIDDEN_SUPER_POTION
+	; bg_event 21, 17, BGEVENT_ITEM + SUPER_POTION, EVENT_NATIONAL_FOREST1_HIDDEN_SUPER_POTION
 
     def_object_events
-	object_event  7, 16, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ConcernedCitizenScript1, EVENT_TALKED_TO_CC
-	object_event  5, 16, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MegaCorpScript1, EVENT_TALKED_MEGACORP_GOON
+	; object_event  7, 16, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ConcernedCitizenScript1, EVENT_TALKED_TO_CC
+	; object_event  5, 16, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MegaCorpScript1, EVENT_TALKED_MEGACORP_GOON
 	pokemon_event  7, 15, BULBASAUR, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GREEN, NatForest1BulbasaurText, -1
 	object_event 29, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1FishermanText, -1
 	object_event 30, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1Fisherman2Text, -1
 	object_event 13, 6, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1GirlText, -1
 	pokemon_event 15, 6, MEOWTH, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, NatForest1MeowthText, -1
     ; object_event 29, 4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerOld_TimerSue, -1
-	itemball_event 31, 27, ANTIDOTE, 1, EVENT_NATIONAL_FOREST1_ANTIDOTE
+	; itemball_event 31, 27, ANTIDOTE, 1, EVENT_NATIONAL_FOREST1_ANTIDOTE
 
     object_const_def
-    const NATIONALFOREST1_SAGE
-    const NATIONALFOREST1_OFFICER
+    ; const NATIONALFOREST1_SAGE
+    ; const NATIONALFOREST1_OFFICER
 
 
 
 ; ||Scripts||
 
-ConcernedCitizenScript1:
-    checkevent EVENT_TALKED_TO_CC
-    iftrue_jumptextfaceplayer CCText2
-    setscene $0
-    jumptextfaceplayer CCText1
-    setevent EVENT_TALKED_TO_CC
-end
+; ConcernedCitizenScript1:
+;     checkevent EVENT_TALKED_TO_CC
+;     iftrue_jumptextfaceplayer CCText2
+;     setscene $0
+;     jumptextfaceplayer CCText1
+;     setevent EVENT_TALKED_TO_CC
+; end
 
-MegaCorpScript1:
-    checkevent EVENT_TALKED_MEGACORP_GOON
-    iftrue_jumptextfaceplayer GoonText2
-    setscene $0
-    jumptextfaceplayer GoonText1
-    setevent EVENT_TALKED_MEGACORP_GOON
-end
+; MegaCorpScript1:
+;     checkevent EVENT_TALKED_MEGACORP_GOON
+;     iftrue_jumptextfaceplayer GoonText2
+;     setscene $0
+;     jumptextfaceplayer GoonText1
+;     setevent EVENT_TALKED_MEGACORP_GOON
+; end
 
 
 
@@ -191,7 +191,7 @@ NationalForest1PondSignText:
 
 ; ||Battles||
 
-GenericTrainerOld_TimerSue:
-    generictrainer OLD_TIMER, SUE, EVENT_BEAT_OLD_TIMER_SUE, Old_TimerSueSeenText, Old_TimerSueBeatenText
+; GenericTrainerOld_TimerSue:
+;     generictrainer OLD_TIMER, SUE, EVENT_BEAT_OLD_TIMER_SUE, Old_TimerSueSeenText, Old_TimerSueBeatenText
 
-    text 
+;     text 
