@@ -5649,7 +5649,7 @@ HandleRampage_ConfuseUser:
 	; Safeguard doesn't protect against fatigue confusion in modern games.
 
 	set SUBSTATUS_CONFUSED, [hl]
-	inc de ; ConfuseCount
+	inc de ; ld de, wPlayerConfuseCount / wEnemyConfuseCount
 	call BattleRandom
 	and %11
 	inc a
