@@ -193,7 +193,7 @@ wSavedXCoord:: db
 wLinkOtherPlayerGameID:: db
 wLinkOtherPlayerVersion:: dw
 wLinkOtherPlayerMinTradeVersion:: dw
-wLinkOtherPlayerGender:: db
+; wLinkOtherPlayerGender:: db
 
 wPalFlags:: db
 
