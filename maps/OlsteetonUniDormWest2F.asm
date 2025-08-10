@@ -1,4 +1,4 @@
-RiverfrontApt2F_MapScriptHeader:
+OlsteetonUniDormWest2F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
@@ -14,27 +14,28 @@ RiverfrontApt2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 17,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FText
-	bg_event 12,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom1Text
-	bg_event  7,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom2Text
-	bg_event  2,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom3Text
+	bg_event 17,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest2FText
+	bg_event 12,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest2FRoom1Text
+	bg_event  7,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest2FRoom2Text
+	bg_event  2,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest2FRoom3Text
 
 	def_object_events
 
-RiverfrontApt2FText:
+OlsteetonUniDormWest2FText:
 	text "2nd Floor"
 	done
-RiverfrontApt2FRoom1Text:
-	text "Apt. 201"
-	line "Jacob"
+OlsteetonUniDormWest2FRoom1Text:
+	text "Room 201"
+	line "Resident Advisor"
+	cont "James"
 	done
 
-RiverfrontApt2FRoom2Text:
-	text "Apt. 202"
+OlsteetonUniDormWest2FRoom2Text:
+	text "Room 202"
 	line "Zach"
 	done
 
-RiverfrontApt2FRoom3Text:
-	text "Apt. 203"
+OlsteetonUniDormWest2FRoom3Text:
+	text "Room 203"
 	line "Isabelle"
 	done
