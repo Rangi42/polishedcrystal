@@ -361,10 +361,10 @@ SpriteAnimOAMData:
 
 .OAMData_BlueWalk:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $1
-	dsprite -1,  0,  0,  0, $01, $1
-	dsprite  0,  0, -1,  0, $02, $1
-	dsprite  0,  0,  0,  0, $03, $1
+	dsprite -1,  0, -1,  0, $00, $2
+	dsprite -1,  0,  0,  0, $01, $2
+	dsprite  0,  0, -1,  0, $02, $2
+	dsprite  0,  0,  0,  0, $03, $2
 
 .OAMData_IntroSuicune1:
 	db 36
@@ -809,7 +809,7 @@ SpriteAnimOAMData:
 
 .OAMData_GreenWalk:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $2
-	dsprite -1,  0,  0,  0, $01, $2
-	dsprite  0,  0, -1,  0, $02, $2
-	dsprite  0,  0,  0,  0, $03, $2
+	dsprite -1,  0, -1,  0, $00, $4
+	dsprite -1,  0,  0,  0, $01, $4
+	dsprite  0,  0, -1,  0, $02, $4
+	dsprite  0,  0,  0,  0, $03, $4

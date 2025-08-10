@@ -18,7 +18,7 @@ OlsteetonUniDormWest1F_MapScriptHeader:
 	; bg_event 10,  1, BGEVENT_READ, OlsteetonUniDormWest1FBookshelf2
 	bg_event  0,  9, BGEVENT_RIGHT, OlsteetonUniDormWest1FComputer
 
-; 	def_object_events
+	def_object_events
 ; 	object_event 10,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDormWest1FNeeshaScript, -1
 ; 	object_event  5,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FLassText, -1
 ; 	object_event  4,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FRichBoyText, -1
@@ -26,7 +26,7 @@ OlsteetonUniDormWest1F_MapScriptHeader:
 ; 	object_event  2,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FSuper_nerd1Text, -1
 ; 	object_event  5,  7, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FSuper_nerd2Text, -1
 
-; 	object_const_def
+	object_const_def
 ; 	const OlsteetonUniDormWest1F_NEESHA
 
 ; OlsteetonUniDormWest1FNeeshaScript:
@@ -157,19 +157,6 @@ OlsteetonUniDormWest1F_MapScriptHeader:
 ; 	line "Clefairy!"
 ; 	done
 
-; OlsteetonUniDormWest1FRichBoyText:
-; 	text "Have you ever"
-; 	line "wondered why"
-
-; 	para "Ultra Balls have"
-; 	line "a yellow letter"
-; 	cont "H on the top?"
-
-; 	para "It's because they"
-; 	line "were first called"
-; 	cont "Hyper Balls!"
-; 	done
-
 ; OlsteetonUniDormWest1FCooltrainerfText:
 ; 	text "#mon with"
 ; 	line "reduced physical"
@@ -238,5 +225,5 @@ OlsteetonUniDormWest1FComputer:
 	line "character running"
 
 	para "around a 2D"
-	line "Celadon City."
+	line "Olsteeton."
 	done

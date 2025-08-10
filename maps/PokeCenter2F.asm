@@ -198,7 +198,7 @@ endc
 PokeCenter2F_EnterRoom:
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
-	readmem wLinkOtherPlayerGender
+	; readmem wLinkOtherPlayerGender
 	scalltable .LinkTrainerTable
 	end
 
