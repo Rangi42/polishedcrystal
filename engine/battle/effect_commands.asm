@@ -5646,6 +5646,8 @@ HandleRampage_ConfuseUser:
 	cp OWN_TEMPO
 	ret z
 
+	; Safeguard doesn't protect against fatigue confusion in modern games.
+
 	set SUBSTATUS_CONFUSED, [hl]
 	inc de ; ConfuseCount
 	call BattleRandom
