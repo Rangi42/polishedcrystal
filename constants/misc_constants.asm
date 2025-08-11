@@ -49,6 +49,9 @@ DEF KIRK_SHUCKIE_ID EQU 00518
 ; initial best Magikarp length (in mm)
 DEF BEST_MAGIKARP_LENGTH EQU 1066
 
+; SGB command MLT_REQ can be used to detect SGB hardware
+DEF JOYP_SGB_MLT_REQ EQU %00000011
+
 ; crash error codes
 	const_def
 	const ERR_RST_0

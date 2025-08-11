@@ -35,7 +35,7 @@ _Init::
 	xor a
 	ldh [rIF], a
 	ldh [rIE], a
-	ld a, $30
+	ld a, JOYP_GET_NONE
 	ldh [rJOYP], a
 	stop ; rgbasm adds a nop after this instruction by default
 .no_double_speed
