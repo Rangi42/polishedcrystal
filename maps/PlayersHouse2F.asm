@@ -2,8 +2,8 @@ PlayersHouse2F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, PlayersHouse2FInitializeRoom
-	callback MAPCALLBACK_TILES, PlayersHouse2FSetSpawn
+	; callback MAPCALLBACK_NEWMAP, PlayersHouse2FInitializeRoom
+	; callback MAPCALLBACK_TILES, PlayersHouse2FSetSpawn
 
 	def_warp_events
 	warp_event  7,  0, PLAYERS_HOUSE_1F, 3
@@ -11,21 +11,21 @@ PlayersHouse2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  1, BGEVENT_UP, PlayersHousePC
-	bg_event  3,  1, BGEVENT_READ, PlayersHouseRadio
-	bg_event  5,  1, BGEVENT_READ, PokemonJournalProfElmScript
+	bg_event  4,  1, BGEVENT_UP, PlayersHousePC
+	bg_event  5,  1, BGEVENT_READ, PlayersHouseRadio
+	bg_event  3,  1, BGEVENT_READ, PokemonJournalProfElmScript
 	bg_event  6,  0, BGEVENT_IFSET, PlayersHousePoster
 
 	def_object_events
-	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_PLAYERS_HOUSE_2F_CONSOLE
-	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_PLAYERS_HOUSE_2F_DOLL_1
-	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
-	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
+	object_event  1,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_PLAYERS_HOUSE_2F_CONSOLE
+	object_event  3,  5, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_PLAYERS_HOUSE_2F_DOLL_1
+	object_event  4,  5, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
+	object_event  0,  3, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 
-PlayersHouse2FInitializeRoom:
-	special ToggleDecorationsVisibility
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
-	endcallback
+; PlayersHouse2FInitializeRoom:
+; 	special ToggleDecorationsVisibility
+; 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
+; 	endcallback
 
 PlayersHouse2FSetSpawn:
 	special ToggleMaptileDecorations
@@ -262,8 +262,8 @@ endr
 ;	; new bark events
 	addcellnum PHONE_MOM
 	setmapscene PLAYERS_HOUSE_1F, $1
-	setevent EVENT_PLAYERS_HOUSE_MOM_1
-	clearevent EVENT_PLAYERS_HOUSE_MOM_2
+	setevent EVENT_PLAYERS_HOUSE_MOTHER
+	clearevent EVENT_PLAYERS_HOUSE_MOTHER
 	addcellnum PHONE_ELM
 ;	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
 ;	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
@@ -360,15 +360,24 @@ PokemonJournalProfElmScript:
 	text "#mon Journal"
 
 	para "Special Feature:"
-	line "#mon Prof.Elm!"
+	line "Prof.Cecil Pawpaw!"
 
-	para "Prof.Elm was the"
-	line "top student of"
-	cont "Prof.Oak."
+	para "Prof.Pawpaw was"
+	line "the first to"
+	cont "study #mon"
+	cont "biomes."
 
-	para "They're said to"
-	line "often argue about"
-	cont "research."
+	para "Often in the field"
+	line "instead of the lab,"
+
+	para "When asked, Pawpaw"
+	line "stated 'Quality'"
+
+	para "'research begins'"
+ 	line "'with boots on'"
+
+	para "'the ground and'"
+	line "'hands in the mud!'"
 	done
 
 PlayersHousePC:
@@ -381,9 +390,9 @@ PlayersHousePC:
 	end
 
 PlayerRadioText1:
-	text "Prof.Oak's #mon"
-	line "Talk! Please tune"
-	cont "in next time!"
+	text "Prof.Poplar's"
+	line "#mon Talk!"
+	cont "Tune in next time!"
 	done
 
 PlayerRadioText2:
@@ -391,8 +400,9 @@ PlayerRadioText2:
 	done
 
 PlayerRadioText3:
-	text "This is DJ Mary,"
-	line "your co-host!"
+	text "I'm DJ Dunsparce,"
+	line "your main mon"
+	cont "for the next hour!"
 	done
 
 PlayerRadioText4:

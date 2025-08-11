@@ -8,6 +8,9 @@ DEF TRUE  EQU 1
 	const SET_FLAG
 	const CHECK_FLAG
 
+; input
+DEF NO_INPUT EQU %00000000
+
 ; save file corruption check values
 DEF SAVE_CHECK_VALUE_1     EQU 97
 DEF SAVE_CHECK_VALUE_2     EQU 127

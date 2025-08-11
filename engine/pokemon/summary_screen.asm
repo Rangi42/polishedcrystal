@@ -41,10 +41,10 @@ SummaryScreenInit:
 	call LoadFontsBattleExtra
 	call SummaryScreen_InitTiles
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wBGPals1
 	ld a, $ff
 	ld bc, 8 palettes
@@ -55,7 +55,7 @@ SummaryScreenInit:
 	rst CopyBytes
 	farcall ApplyOBPals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, 1
 	ldh [hCGBPalUpdate], a
@@ -85,7 +85,7 @@ SummaryScreenInit:
 	ld hl, rIE
 	ld a, [hl]
 	push af
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	; save old window position
 	ldh a, [hWX]
 	ld b, a
@@ -215,25 +215,25 @@ SummaryScreenLoop:
 
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld b, D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
+	ld b, PAD_CTRL_PAD | PAD_A | PAD_B
 	jr z, .got_mask
-	ld b, D_DOWN | D_UP | B_BUTTON
+	ld b, PAD_DOWN | PAD_UP | PAD_B
 .got_mask
 	call GetJoypad
 	ldh a, [hJoyPressed]
 	and b
 
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .quit
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .d_left
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr nz, .d_right
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .a_button
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr nz, .d_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	ret z
 	; fallthrough
 
@@ -329,10 +329,10 @@ SummaryScreen_InitMon:
 
 	; Disable window rendering
 	ldh a, [rLCDC]
-	res rLCDC_WINDOW_ENABLE, a
+	res B_LCDC_WINDOW, a
 	ldh [rLCDC], a
 	ldh a, [rIE]
-	res LCD_STAT, a
+	res B_IE_STAT, a
 	ldh [rIE], a
 
 	ld a, 255
@@ -402,12 +402,12 @@ SummaryScreen_InitLayout:
 
 	ld hl, .PageSprites
 	ld de, wSummaryScreenOAMSprite00
-	ld bc, 4 * SPRITEOAMSTRUCT_LENGTH
+	ld bc, 4 * OBJ_SIZE
 	rst CopyBytes
 
 	ld hl, .TabTitleSprites
 	ld de, wSummaryScreenOAMSprite36
-	ld bc, 4 * SPRITEOAMSTRUCT_LENGTH
+	ld bc, 4 * OBJ_SIZE
 	rst CopyBytes
 
 	; Right window
@@ -499,10 +499,10 @@ SummaryScreen_InitLayout:
 	jmp DelayFrame
 
 .ApplySummaryPalettes:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld bc, 0
 .objPalettes
 	ld d, 0
@@ -535,7 +535,7 @@ SummaryScreen_InitLayout:
 
 	farcall ApplyOBPals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .PageSprites:
@@ -577,10 +577,10 @@ SummaryScreen_InitAttrmap:
 	hlcoord 1, 11, wAttrmap
 	ld a, SUMMARY_PAL_SIDE_WINDOW
 	ld [hli], a
-	ld a, Y_FLIP | SUMMARY_PAL_LOWER_WINDOW
+	ld a, OAM_YFLIP | SUMMARY_PAL_LOWER_WINDOW
 	ld bc, 3
 	rst ByteFill
-	ld a, X_FLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
+	ld a, OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
 	ld [hl], a
 	hlcoord 5, 12, wAttrmap
 	ld [hl], a
@@ -622,7 +622,7 @@ SummaryScreen_LoadPage:
 	dec e
 	jr nz, .loop
 
-	ld c, 32 * SPRITEOAMSTRUCT_LENGTH
+	ld c, 32 * OBJ_SIZE
 	xor a
 	ld hl, wSummaryScreenOAMSprite04
 	rst ByteFill
@@ -645,10 +645,10 @@ SummaryScreen_LoadPage:
 	ld a, 16
 	ldh [hWY], a
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wSummaryScreenPals
 	ld de, wBGPals1
 	ld bc, 1 palettes
@@ -658,7 +658,7 @@ SummaryScreen_LoadPage:
 	ld bc, 6 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	;jmp SafeCopyTilemapAtOnce
 	ret
@@ -741,20 +741,20 @@ SummaryScreen_SwitchPage:
 	xor a
 	ldh [rVBK], a
 	ld a, HIGH(wSummaryScreenWindowBuffer)
-	ldh [rHDMA1], a
+	ldh [rVDMA_SRC_HIGH], a
 	ld a, LOW(wSummaryScreenWindowBuffer)
-	ldh [rHDMA2], a
+	ldh [rVDMA_SRC_LOW], a
 	ld a, HIGH(vBGMap1)
-	ldh [rHDMA3], a
+	ldh [rVDMA_DEST_HIGH], a
 	ld a, LOW(vBGMap1)
-	ldh [rHDMA4], a
+	ldh [rVDMA_DEST_LOW], a
 
 .lineWait
 	ldh a, [rLY]
 	cp 84
 	jr nz, .lineWait
 	ld a, $80 | 18
-	ldh [rHDMA5], a ; HDMA 19 blocks of tiles
+	ldh [rVDMA_LEN], a ; HDMA 19 blocks of tiles
 
 	ld a, SUMMARY_TILE_OAM_PAGE
 	ld hl, wSummaryScreenOAMSprite00TileID
@@ -780,23 +780,23 @@ SummaryScreen_SwitchPage:
 	rst CopyBytes
 
 .copyWait
-	ldh a, [rHDMA5]
+	ldh a, [rVDMA_LEN]
 	inc a
 	jr nz, .copyWait
 	inc a ; 1
 	ldh [rVBK], a
 	ld a, HIGH(wSummaryScreenWindowBuffer + $10)
-	ldh [rHDMA1], a
+	ldh [rVDMA_SRC_HIGH], a
 	ld a, LOW(wSummaryScreenWindowBuffer + $10)
-	ldh [rHDMA2], a
+	ldh [rVDMA_SRC_LOW], a
 	ld a, HIGH(vBGMap3)
-	ldh [rHDMA3], a
+	ldh [rVDMA_DEST_HIGH], a
 	ld a, LOW(vBGMap3)
-	ldh [rHDMA4], a
+	ldh [rVDMA_DEST_LOW], a
 
 	call .WaitUntilHBlank
 	ld a, $80 | 18
-	ldh [rHDMA5], a ; HDMA 19 blocks of attributes
+	ldh [rVDMA_LEN], a ; HDMA 19 blocks of attributes
 
 .l128
 	ldh a, [rLY]
@@ -813,10 +813,10 @@ SummaryScreen_SwitchPage:
 	ldh [hFunctionTargetHi], a
 
 	ldh a, [rLCDC]
-	set rLCDC_WINDOW_ENABLE, a
+	set B_LCDC_WINDOW, a
 	ldh [rLCDC], a
 	ldh a, [rIE]
-	set LCD_STAT, a
+	set B_IE_STAT, a
 	ldh [rIE], a
 
 	ld a, [wTempMonIsEgg]
@@ -845,7 +845,7 @@ SummaryScreen_SwitchPage:
 	ld c, 6 * 2
 	ld hl, wSummaryScreenPals + 2 palettes
 	call .WaitUntilHBlank
-	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2)
+	ld a, BGPI_AUTOINC | (0 palette 2)
 	ldh [rBGPI], a
 	call .CopyPalettes
 
@@ -857,7 +857,7 @@ SummaryScreen_SwitchPage:
 	ld c, 1 * 2
 	ld hl, wSummaryScreenPals
 	call .WaitUntilHBlank
-	ld a, 1 << rBGPI_AUTO_INCREMENT
+	ld a, BGPI_AUTOINC
 	ldh [rBGPI], a
 	assert @ == .CopyPalettes, "Can't fallthrough to .CopyPalettes" ; fallthrough
 
@@ -875,11 +875,11 @@ endr
 
 .WaitUntilHBlank:
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK ; wait until mode 1-3
+	and STAT_MODE ; wait until mode 1-3
 	jr z, .WaitUntilHBlank
 .mode0
 	ldh a, [rSTAT]
-	and rSTAT_MODE_MASK ; wait until mode 0
+	and STAT_MODE ; wait until mode 0
 	ret z
 	jr .mode0
 

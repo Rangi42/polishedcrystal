@@ -1,0 +1,39 @@
+FieldLab2F_MapScriptHeader:
+	def_scene_scripts
+
+	def_callbacks
+
+	def_warp_events
+	warp_event  2,  3, ECHOING_CAVE, 2
+	warp_event  8,  7, FIELD_LAB, 2
+
+
+	def_coord_events
+
+	def_bg_events
+	bg_event  9,  5, BGEVENT_JUMPTEXT, FieldLab2FSignText
+	bg_event  8,  5, BGEVENT_ITEM + STAR_PIECE, EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE
+	; itemball_event  3,  4, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
+
+	def_object_events
+	object_event  5,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FieldLabAideText, -1
+
+
+FieldLabAideText:
+	text "I'm using LIDAR"
+	line "to create a 3D"
+	cont "model of this"
+
+	para "cave system!"
+	line "It will help to"
+
+	para "expand our under-"
+	line "standing of cave"
+	cont "dwelling #mon."
+	done
+FieldLab2FSignText:
+	text "DANGER:"
+	line "FLOOR UNSTABLE"
+	cont "PAST THIS"
+	cont "POINT!"
+	done

@@ -17,11 +17,11 @@ DEF TREEMON_SLEEP_TURNS EQU 3
 ; default move priority
 DEF BASE_PRIORITY EQU 1
 
-; type effectiveness factors, baseline is $10 for better doubling/halving
-DEF SUPER_EFFECTIVE    EQU $20
-DEF EFFECTIVE          EQU $10
-DEF NOT_VERY_EFFECTIVE EQU $08
-DEF NO_EFFECT          EQU $00
+; type effectiveness factors, Q28.4 fixed-point for better doubling/halving
+DEF SUPER_EFFECTIVE    EQU 2.0q4 ; $20
+DEF EFFECTIVE          EQU 1.0q4 ; $10
+DEF NOT_VERY_EFFECTIVE EQU 0.5q4 ; $08
+DEF NO_EFFECT          EQU 0.0q4 ; $00
 
 ; enemy AI behavior
 DEF BASE_AI_SWITCH_SCORE EQU 10

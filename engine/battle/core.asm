@@ -699,6 +699,8 @@ PerformMove:
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
 
+	farcall TickDisableAfterMove
+
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_PROTECT, [hl]
@@ -858,6 +860,18 @@ ForceDeferredSwitch:
 	call SwitchTurn
 	call .consume_item
 	call SwitchTurn
+
+	; Suction Cups can prevent this item from activating.
+	call GetTrueUserAbility
+	cp SUCTION_CUPS
+	jr nz, .items_done
+
+	farcall BeginAbility
+	farcall ShowAbilityActivation
+	ld hl, UnaffectedText
+	call StdBattleTextbox
+	farcall EndAbility
+	jmp .all_done
 
 .items_done
 	; Figure out which side is switching
@@ -1192,7 +1206,7 @@ endr
 	ld [hli], a
 	ld [hl], a
 
-	ld a, $10
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	ld bc, NUM_LEVEL_STATS
 	ldh a, [hBattleTurn]
@@ -1730,6 +1744,15 @@ LeppaRestorePP:
 
 DealDamageToOpponent:
 ; ONLY runs from attacking damage.
+	call GetOpponentAbilityAfterMoldBreaker
+	cp BERSERK
+	jr z, .berserk
+	call SwitchTurn
+	call SubtractHPFromUser
+	call CheckEnigmaBerry
+	jmp SwitchTurn
+
+.berserk
 	; If user has more than 50%HP, set Berserk flag. Unset later if we still
 	; have more than 50%HP.
 	push bc
@@ -1745,15 +1768,10 @@ DealDamageToOpponent:
 
 .not_over_half
 	pop bc
-	push de
-	ld de, _SubtractHP
-	ldh a, [hBattleTurn]
-	and a
-	push af
-	call z, _SubtractHPFromEnemy
-	pop af
-	call nz, _SubtractHPFromPlayer
-	pop de
+	call SwitchTurn
+	call SubtractHPFromUser_SkipItems
+	call CheckEnigmaBerry ; takes priority over Berserk
+	call SwitchTurn
 
 	; deal with Berserk
 	push bc
@@ -1791,9 +1809,16 @@ SubtractHPFromUser_OverrideFaintOrder:
 .did_not_faint
 	jmp PopBCDEHL
 
+SubtractHPFromUser_SkipItems:
+; Self-damage from confusion should not trigger Berry consumption.
+	push de
+	ld de, _SubtractHP
+	jr DoSubtractHPFromUser
 SubtractHPFromUser:
 	push de
 	ld de, SubtractHP
+	; fallthrough
+DoSubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy
@@ -1835,6 +1860,34 @@ _SubtractHPFromEnemy:
 	pop af
 	ldh [hBattleTurn], a
 	ret
+
+CheckEnigmaBerry:
+; Check if user's Enigma Berry applies. Needs a separate handler from other
+; berries due to Berserk quirks (Enigma > Berserk > other healing berries).
+	; Were we hit with a super-effective attack?
+	ld a, [wTypeModifier]
+	cp EFFECTIVE + 1
+	ret c
+
+	; Are we actually holding Enigma Berry?
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_ENIGMA_BERRY
+	ret nz
+
+	; Can we be healed?
+	push bc
+	push hl
+	call CheckFullHP
+	pop hl
+	pop bc
+	ret z
+
+	; Treat as HP-restoring berry
+	ld b, HELD_BERRY
+	call _HeldHPHealingItem
+	ret nz
+	jmp UseBattleItem
 
 SubtractHP:
 	call _SubtractHP
@@ -3278,7 +3331,7 @@ SpikesDamage_GotAbility:
 	farcall CheckAirborne_GotAbility
 	pop bc
 	pop de
-	ret z
+	jmp nz, HandleAirBalloon
 
 	push bc
 	predef GetUserItemAfterUnnerve
@@ -4197,9 +4250,9 @@ BattleMenu:
 
 .autoinput_down_a
 	db NO_INPUT, $40
-	db D_DOWN,   $00
+	db PAD_DOWN, $00
 	db NO_INPUT, $40
-	db A_BUTTON, $00
+	db PAD_A,    $00
 	db NO_INPUT, $ff ; end
 
 BattleMenu_Fight:
@@ -4489,7 +4542,7 @@ BattleMenuPKMN_Loop:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .clear_carry
 
 .set_carry
@@ -4965,17 +5018,17 @@ MoveSelectionScreen:
 	ld c, $2c
 
 	ld a, [wMoveSelectionMenuType]
-	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON | START
+	ld b, PAD_DOWN | PAD_UP | PAD_A | PAD_B | PAD_START
 	and a
 	jr z, .check_link
 	dec a
 	jr z, .okay
-	ld b, D_DOWN | D_UP | A_BUTTON | START
+	ld b, PAD_DOWN | PAD_UP | PAD_A | PAD_START
 .check_link
 	ld a, [wLinkMode]
 	and a
 	jr nz, .okay
-	ld a, SELECT
+	ld a, PAD_SELECT
 	or b
 	ld b, a
 
@@ -5007,15 +5060,15 @@ MoveSelectionScreen:
 	ld a, $1
 	ldh [hBGMapMode], a
 	call DoMenuJoypadLoop
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jmp nz, .pressed_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jmp nz, .pressed_down
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jmp nz, .pressed_select
-	bit START_F, a
+	bit B_PAD_START, a
 	jmp nz, .pressed_start
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	; A button
 	push af
 
@@ -5452,7 +5505,7 @@ MoveInfoBox:
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	ld hl, TypeIconGFX
-	ld bc, 4 * LEN_1BPP_TILE
+	ld bc, 4 * TILE_1BPP_SIZE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
@@ -7868,7 +7921,7 @@ BattleIntro:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
-	res rLCDC_WINDOW_TILEMAP, [hl]
+	res B_LCDC_WIN_MAP, [hl]
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld a, [wBattleType]
@@ -7896,7 +7949,7 @@ BattleIntro:
 	pop bc
 .skip_ghost_reveal
 	ld hl, rLCDC
-	set rLCDC_WINDOW_TILEMAP, [hl]
+	set B_LCDC_WIN_MAP, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox
@@ -7929,10 +7982,10 @@ LoadTrainerOrWildMonPic:
 	ret
 
 BackUpBGMap2:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wDecompressScratch
 	ld bc, $40 tiles ; vBGMap3 - vBGMap2
 	ld a, $2
@@ -7948,7 +8001,7 @@ BackUpBGMap2:
 	pop af
 	ldh [rVBK], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 InitEnemy:
@@ -8159,7 +8212,7 @@ DisplayLinkRecord:
 	call CloseSRAM
 	hlcoord 0, 0, wAttrmap
 	xor a
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
 	ld a, CGB_PLAIN
@@ -8610,13 +8663,13 @@ InitBattleDisplay:
 	ret
 
 .BlankBGMap:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wScratchTileMap
-	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
+	ld bc, TILEMAP_AREA
 	ld a, " "
 	rst ByteFill
 
@@ -8626,7 +8679,7 @@ InitBattleDisplay:
 	call Request2bpp
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .InitBackPic:
@@ -8659,10 +8712,10 @@ GetTrainerBackpic:
 	jmp DecompressRequest2bpp
 
 CopyBackpic:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31
 	ldh a, [hROMBank]
@@ -8670,7 +8723,7 @@ CopyBackpic:
 	ld c, 7 * 7
 	call Get2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call .LoadTrainerBackpicAsOAM
 	ld a, $31
 	ldh [hGraphicStartTile], a

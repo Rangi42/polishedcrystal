@@ -14,10 +14,10 @@ Special_MagnetTrain:
 
 .continue
 	ld h, a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wMagnetTrain)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, h
 	ld [wMagnetTrainDirection], a
@@ -61,7 +61,7 @@ Special_MagnetTrain:
 	ldh [hVBlank], a
 	call ClearBGPalettes
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ldh [hLYOverrideStart], a
@@ -82,7 +82,7 @@ Special_MagnetTrain:
 	ldh [hBGMapMode], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 MagnetTrain_UpdateLYOverrides:
@@ -131,13 +131,13 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ldh [hSCY], a
 
 	; Load the player sprite's standing frames
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPlayerGender)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	farcall GetPlayerIcon
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, vTiles0
 	ld c, 4
 	push bc
@@ -172,7 +172,7 @@ DrawMagnetTrain:
 	xor a
 .loop
 	call .GetBGTiles
-	ld b, BG_MAP_WIDTH / 2
+	ld b, TILEMAP_WIDTH / 2
 	call .FillAlt
 	inc a
 	cp SCREEN_HEIGHT
@@ -239,7 +239,7 @@ MagnetTrain_InitLYOverrides:
 	ld a, [wMagnetTrainInitPosition]
 	rst ByteFill
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	ret
@@ -250,19 +250,19 @@ SetMagnetTrainPals:
 
 	; bushes
 	hlbgcoord 0, 0
-	ld bc, 4 * BG_MAP_WIDTH
+	ld bc, 4 * TILEMAP_WIDTH
 	ld a, PAL_BG_GREEN
 	rst ByteFill
 
 	; train
 	hlbgcoord 0, 4
-	ld bc, 10 * BG_MAP_WIDTH
+	ld bc, 10 * TILEMAP_WIDTH
 	xor a ; PAL_BG_GRAY
 	rst ByteFill
 
 	; more bushes
 	hlbgcoord 0, 14
-	ld bc, 4 * BG_MAP_WIDTH
+	ld bc, 4 * TILEMAP_WIDTH
 	ld a, PAL_BG_GREEN
 	rst ByteFill
 
@@ -378,10 +378,10 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	call PushLYOverrides
 	call DelayFrame
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wEnvironment)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wTimeOfDayPal]
 	push af
 	ld a, [wEnvironment]
@@ -408,7 +408,7 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	pop af
 	ld [wTimeOfDayPal], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 MagnetTrainTilemap:

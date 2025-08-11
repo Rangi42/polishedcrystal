@@ -54,6 +54,8 @@ Tilesets::
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
 	tileset TilesetSnowtopMountain
+	tileset TilesetOlsteeton
+	tileset TilesetCaveLab
 	assert_table_length NUM_TILESETS
 
 
@@ -63,6 +65,7 @@ TilesetJohto1GFX0::
 TilesetJohto2GFX0::
 TilesetJohto3GFX0::
 TilesetJohto4GFX0::
+TilesetOlsteetonGFX0::
 TilesetJohto5GFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lz"
 
 
@@ -801,6 +804,34 @@ TilesetSnowtopMountainMeta:: INCBIN "data/tilesets/snowtop_mountain_metatiles.bi
 TilesetSnowtopMountainAttr:: INCBIN "data/tilesets/snowtop_mountain_attributes.bin.lz"
 TilesetSnowtopMountainColl:: INCBIN "data/tilesets/snowtop_mountain_collision.bin.lz"
 
+SECTION "Tileset Graphics - olsteeton vram1", ROMX
+
+TilesetOlsteetonGFX1:: INCBIN "gfx/tilesets/olsteeton.johto_common.2bpp.vram0.lz"
+
+SECTION "Tileset Graphics - olsteeton vram2", ROMX
+
+TilesetOlsteetonGFX2:: INCBIN "gfx/tilesets/olsteeton.johto_common.2bpp.vram1.lz"
+SECTION "Tileset Data - olsteeton", ROMX
+
+TilesetOlsteetonMeta:: INCBIN "data/tilesets/olsteeton_metatiles.bin.lz"
+TilesetOlsteetonAttr:: INCBIN "data/tilesets/olsteeton_attributes.bin.lz"
+TilesetOlsteetonColl:: INCBIN "data/tilesets/olsteeton_collision.bin.lz"
+
+SECTION "Tileset Graphics - cave lab vram0", ROMX
+
+TilesetCaveLabGFX0:: INCBIN "gfx/tilesets/cave_lab.2bpp.vram0.lz"
+
+
+SECTION "Tileset Graphics - cave lab vram1", ROMX
+
+TilesetCaveLabGFX1:: INCBIN "gfx/tilesets/cave_lab.2bpp.vram1.lz"
+
+
+SECTION "Tileset Data - cave lab", ROMX
+
+TilesetCaveLabMeta:: INCBIN "data/tilesets/cave_lab_metatiles.bin.lz"
+TilesetCaveLabAttr:: INCBIN "data/tilesets/cave_lab_attributes.bin.lz"
+TilesetCaveLabColl:: INCBIN "data/tilesets/cave_lab_collision.bin.lz"
 
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
@@ -845,4 +876,6 @@ TilesetAlphGFX2::
 TilesetPokemonMansionGFX2::
 TilesetBattleFactoryGFX2::
 TilesetSnowtopMountainGFX2::
+TilesetCaveLabGFX2::
+
 	db $ff ; Compressed data is terminated with $ff.

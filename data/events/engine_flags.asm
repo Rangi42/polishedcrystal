@@ -81,6 +81,8 @@ EngineFlags:
 
 	; fly
 	engine_flag wVisitedSpawns, SPAWN_HOME
+	engine_flag wVisitedSpawns, SPAWN_HOLLOWPORT
+	engine_flag wVisitedSpawns, SPAWN_OLSTEETON
 	engine_flag wVisitedSpawns, SPAWN_PALLET
 	engine_flag wVisitedSpawns, SPAWN_VIRIDIAN
 	engine_flag wVisitedSpawns, SPAWN_PEWTER
@@ -271,6 +273,9 @@ EngineFlags:
 	engine_flag wPokemonJournals, KIYO_JOURNAL
 	engine_flag wPokemonJournals, PALMER_JOURNAL
 	engine_flag wPokemonJournals, THORTON_JOURNAL
+	; engine_flag wPokemonJournals, RUSTY_JOURNAL
+
+
 
 	engine_flag wStatusFlags3, STATUSFLAGS3_JUDGE_MACHINE_F
 

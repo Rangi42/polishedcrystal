@@ -1,6 +1,6 @@
-NAME := polishedcrystal
+NAME := pokelachia
 MODIFIERS :=
-VERSION := 3.2.0
+VERSION := 0.1.6
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc
@@ -20,6 +20,8 @@ endif
 Q :=
 
 .SECONDEXPANSION:
+
+POCKET_LOGO = gfx/logo/pocket.bin
 
 RGBASM_FLAGS     = -E -Q8 -P includes.asm -Weverything -Wtruncation=1
 RGBASM_VC_FLAGS  = $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
@@ -52,7 +54,7 @@ MODIFIERS :=
 NAME := pkpc
 EXTENSION := pocket
 RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
-RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3
+RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
 endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
@@ -272,12 +274,12 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 #	$Qsuperfamiconv tiles -R -i $@ -d $<
 
 %.2bpp: %.png
-	$Q$(RGBDS)rgbgfx $(rgbgfx) -o $@ $<
+	$Q$(RGBDS)rgbgfx -c dmg=e4 $(rgbgfx) -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -o $@ $@)
 
 %.1bpp: %.png
-	$(RGBDS)rgbgfx $(rgbgfx) -d1 -o $@ $<
+	$(RGBDS)rgbgfx -c dmg=e4 $(rgbgfx) -d1 -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -d1 -o $@ $@)
 

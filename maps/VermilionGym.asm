@@ -363,10 +363,10 @@ VermilionGymElectricFenceText:
 	done
 
 SampleVermilionGymTrashCans:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wVermilionGymTrashCan1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 .loop
 	call Random
 	ld e, a
@@ -378,7 +378,7 @@ SampleVermilionGymTrashCans:
 	call .GetSecondTrashCan
 	ld [wVermilionGymTrashCan2], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .GetSecondTrashCan:
@@ -414,10 +414,10 @@ SampleVermilionGymTrashCans:
 	db 13, 13,  9,  9 ; 14 ( 9,11)
 
 CheckVermilionGymTrashCan:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wVermilionGymTrashCan1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	eventflagcheck EVENT_VERMILION_GYM_SWITCH_1
 	jr z, .first
 	ld a, [wVermilionGymTrashCan2]
@@ -428,7 +428,7 @@ CheckVermilionGymTrashCan:
 .done
 	ldh [hScriptVar], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .first:

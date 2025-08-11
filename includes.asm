@@ -31,7 +31,6 @@ endc
 INCLUDE "constants/hardware_constants.asm"
 INCLUDE "constants/ram_constants.asm"
 INCLUDE "constants/misc_constants.asm"
-INCLUDE "constants/input_constants.asm"
 INCLUDE "constants/gfx_constants.asm"
 INCLUDE "constants/text_constants.asm"
 INCLUDE "constants/ability_constants.asm"

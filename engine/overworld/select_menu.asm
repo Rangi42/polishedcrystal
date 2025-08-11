@@ -130,7 +130,7 @@ GetRegisteredItem:
 	call FarCopyColorWRAM
 
 	hlcoord 0, 0, wAttrmap
-	ld a, PRIORITY | PAL_BG_TEXT
+	ld a, OAM_PRIO | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH * 4
 	rst ByteFill
 
@@ -189,19 +189,19 @@ GetRegisteredItem:
 	jr .joy_loop
 
 .got_input
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .first
-	and B_BUTTON | SELECT | START
+	and PAD_B | PAD_SELECT | PAD_START
 	jr nz, .cancel
 	ld de, wRegisteredItems
 	ld a, [hl]
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr nz, .got_item
 	inc de
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .got_item
 	inc de
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr nz, .got_item
 	inc de
 .got_item

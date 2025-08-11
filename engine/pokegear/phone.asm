@@ -18,17 +18,17 @@ PokegearPhone_Init:
 PokegearPhone_Joypad:
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .b
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .a
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	jr nz, .left
 	ld a, [hl]
-	and D_RIGHT
+	and PAD_RIGHT
 	jr nz, .right
 	jmp PokegearPhone_GetDPad
 
@@ -131,7 +131,7 @@ PokegearPhone_MakePhoneCall:
 
 PokegearPhone_FinishPhoneCall:
 	ldh a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	ret z
 	call HangUp
 	ld a, POKEGEARSTATE_PHONEJOYPAD
@@ -142,10 +142,10 @@ PokegearPhone_FinishPhoneCall:
 PokegearPhone_GetDPad:
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .up
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .down
 	ret
 
@@ -346,13 +346,13 @@ PokegearPhoneContactSubmenu:
 	pop de
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .d_up
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .d_down
 	ld a, [hl]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr nz, .a_b
 	call DelayFrame
 	jr .loop
@@ -385,7 +385,7 @@ PokegearPhoneContactSubmenu:
 	ldh [hBGMapMode], a
 	pop hl
 	ldh a, [hJoyPressed]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .Cancel
 	ld a, [wPokegearPhoneSubmenuCursor]
 	jmp JumpTable

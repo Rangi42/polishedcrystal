@@ -48,7 +48,7 @@ _TypeChart:
 	ld a, 8
 	call SkipMusic
 
-	ld a, (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << rLCDC_WINDOW_ENABLE) | (1 << rLCDC_SPRITE_SIZE) | (1 << rLCDC_SPRITES_ENABLE) | (1 << rLCDC_BG_PRIORITY)
+	ld a, LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_BLOCK21 | LCDC_BG_9800 | LCDC_OBJ_16 | LCDC_OBJ_ON | LCDC_PRIO_ON
 	ldh [rLCDC], a
 
 	xor a
@@ -75,7 +75,7 @@ _TypeChart:
 	call JoyTextDelay
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr nz, .done
 	call DelayFrame
 	jr .loop

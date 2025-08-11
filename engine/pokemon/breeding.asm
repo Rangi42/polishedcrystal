@@ -654,7 +654,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	push hl
 	push bc
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	ld a, " "
 	rst ByteFill
 	pop bc
@@ -845,15 +845,15 @@ Hatch_InitShellFragments:
 
 .SpriteData:
 ; Probably OAM.
-	dsprite 10, 4,  9, 0, $00, $4 | X_FLIP
+	dsprite 10, 4,  9, 0, $00, $4 | OAM_XFLIP
 	dsprite 11, 4,  9, 0, $01, $4
-	dsprite 10, 4, 10, 0, $00, $0 | X_FLIP
+	dsprite 10, 4, 10, 0, $00, $0 | OAM_XFLIP
 	dsprite 11, 4, 10, 0, $01, $0
-	dsprite 10, 4, 11, 0, $02, $4 | X_FLIP
+	dsprite 10, 4, 11, 0, $02, $4 | OAM_XFLIP
 	dsprite 11, 4, 11, 0, $03, $4
-	dsprite 10, 0,  9, 4, $00, $6 | X_FLIP
+	dsprite 10, 0,  9, 4, $00, $6 | OAM_XFLIP
 	dsprite 12, 0,  9, 4, $01, $2
-	dsprite 10, 0, 10, 4, $02, $2 | X_FLIP
+	dsprite 10, 0, 10, 4, $02, $2 | OAM_XFLIP
 	dsprite 12, 0, 10, 4, $03, $6
 	db -1
 

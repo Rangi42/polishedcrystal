@@ -20,10 +20,10 @@ endc
 	assert_list_length NUM_DEXAREAS
 
 Pokedex_Area:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	; default to current region and time of day
 	call RegionCheck
 	assert DEXAREA_REGION_MASK == %01110000
@@ -40,27 +40,27 @@ Pokedex_Area:
 	or e
 	ld e, a
 	ld a, BANK(wDexAreaLastMode)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, e
 	ldh [hPokedexAreaMode], a
 	ld [wDexAreaLastMode], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	; fallthrough
 Pokedex_Area_ResetLocationData:
 ; For when scrolling to a new species or form.
 	; Write palette data. Not redundant, because scrolling reloads
 	; BG7, i.e. type icon palettes.
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, DexAreaPals
 	ld de, wBGPals1 palette 3
 	ld bc, 5 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call Pokedex_ReloadValidLocations
 	; fallthrough
@@ -139,14 +139,14 @@ _Pokedex_Area:
 	jr c, .unknown
 	dec b
 	jr nz, _Pokedex_Area
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexAreaLastMode)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [hl]
 	ld [wDexAreaLastMode], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	jmp _Pokedex_Area
 
 .unknown
@@ -414,7 +414,7 @@ Pokedex_GetAreaOAM:
 ; Caution: runs in the wDex* WRAMX bank.
 	; Write Area Unknown
 	lb de, 9, 10
-	lb hl, VRAM_BANK_1 | 0, $34
+	lb hl, OAM_BANK1 | 0, $34
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
 	bit DEXAREA_UNKNOWN_F, a
@@ -429,7 +429,7 @@ Pokedex_GetAreaOAM:
 	ld b, [hl]
 	ld c, a
 	lb de, 1, 6
-	lb hl, VRAM_BANK_1 | 2, $3f
+	lb hl, OAM_BANK1 | 2, $3f
 	call Pokedex_WriteOAM
 
 	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
@@ -437,7 +437,7 @@ Pokedex_GetAreaOAM:
 	ld c, 0
 	lb de, 15, 10 ; the other 15 slots is dealt with as part of hblank
 	; e (OAM slot) is kept from previous writing
-	lb hl, VRAM_BANK_1 | 3, $3f
+	lb hl, OAM_BANK1 | 3, $3f
 	call Pokedex_WriteOAMSingleTile
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
@@ -480,7 +480,7 @@ Pokedex_GetAreaOAM:
 	dec a
 	jr z, .a_highlight_done
 	lb de, 2, 25
-	lb hl, VRAM_BANK_1 | 1, $3d
+	lb hl, OAM_BANK1 | 1, $3d
 	lb bc, 146, 30 ; x, y
 	call Pokedex_WriteOAM
 
@@ -565,7 +565,7 @@ Pokedex_GetMonLocations:
 	push de
 	push af
 	ld a, BANK(wRoamMon1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [hl]
 	ld de, wRoamMon1Form - wRoamMon1Species
 	add hl, de
@@ -584,7 +584,7 @@ Pokedex_GetMonLocations:
 	inc a
 	jr z, .next
 	ld a, BANK(wDexAreaMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	pop af
 	call Pokedex_SetWildLandmark_MaintainNoCarry
 	push af
@@ -817,15 +817,15 @@ PHB_AreaSwitchTileMode:
 
 	; Switch where we're reading tile data from.
 	ld hl, rLCDC
-	set rLCDC_TILE_DATA, [hl]
+	set B_LCDC_BLOCKS, [hl]
 
 	ld c, 172
 	call PHB_BusyLoop1
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexAreaModeCopy)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wDexAreaModeCopy]
 	bit DEXAREA_UNKNOWN_F, a
 	jr z, .not_unknown
@@ -844,7 +844,7 @@ PHB_AreaSwitchTileMode:
 
 .done_writing_nests
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld c, 77
 	call PHB_BusyLoop2
@@ -852,7 +852,7 @@ PHB_AreaSwitchTileMode:
 	ld hl, oamSprite39Attributes
 	ld c, 3
 	ld de, -3
-	ld a, VRAM_BANK_1 | 3
+	ld a, OAM_BANK1 | 3
 	ld b, $3f
 .loop
 rept 5
@@ -899,7 +899,7 @@ PHB_AreaSwitchTileMode2:
 	ld hl, rSTAT
 .busyloop
 	ld a, [hl]
-	and rSTAT_MODE_MASK ; wait until mode 0
+	and STAT_MODE ; wait until mode 0
 	jr nz, .busyloop
 
 	ld a, 4
@@ -910,22 +910,22 @@ PHB_AreaSwitchTileMode2:
 	call PHB_WaitUntilLY_Mode0
 
 	ld hl, rLCDC
-	res rLCDC_TILE_DATA, [hl]
+	res B_LCDC_BLOCKS, [hl]
 	ld a, 8
 	ldh [rSCY], a
 	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexAreaShadowOAM)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	lb bc, 41, LOW(rDMA)
 	ld a, HIGH(wDexAreaShadowOAM)
 	call hPushOAM
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	jmp PopBCDEHL
 
 PHB_WriteNestOAM_FirstRun:
@@ -934,10 +934,10 @@ PHB_WriteNestOAM_FirstRun:
 	push hl
 	push de
 	push bc
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexAreaMonOffset)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wDexAreaMonOffset
 	ld a, [hl]
@@ -951,10 +951,10 @@ PHB_WriteNestOAM:
 	push hl
 	push de
 	push bc
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexAreaMonOffset)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 _PHB_WriteNestOAM:
 	ld hl, wDexAreaMonOffset
 	ld a, [hli]
@@ -1072,7 +1072,7 @@ endr
 	ld de, PHB_AreaSwitchTileMode2
 	call c, Pokedex_UnsafeSetHBlankFunction
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	jmp PopBCDEHL
 
 .GetAreaMonsIndex:

@@ -5,26 +5,26 @@ BattleTowerOutside_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  8, 21, ROUTE_40_BATTLE_TOWER_GATE, 3
-	warp_event  9, 21, ROUTE_40_BATTLE_TOWER_GATE, 4
-	warp_event  8,  9, BATTLE_TOWER_1F, 1 ; hole
-	warp_event  9,  9, BATTLE_TOWER_1F, 2 ; hole
+	warp_event  7, 13, ROUTE_40_BATTLE_TOWER_GATE, 3
+	warp_event  8, 13, ROUTE_40_BATTLE_TOWER_GATE, 4
+	warp_event  8,  7, BATTLE_TOWER_1F, 1 ; hole
+	warp_event  9,  7, BATTLE_TOWER_1F, 2 ; hole
 
 	def_coord_events
-	coord_event  8,  9, 1, BattleTowerOutsidePanUpTrigger1
-	coord_event  9,  9, 1, BattleTowerOutsidePanUpTrigger2
+	coord_event  7,  7, 1, BattleTowerOutsidePanUpTrigger1
+	coord_event  9,  8, 1, BattleTowerOutsidePanUpTrigger2
 
 	def_bg_events
-	bg_event 10, 10, BGEVENT_JUMPTEXT, BattleTowerOutsideSignText
+	bg_event 10,  8, BGEVENT_JUMPTEXT, BattleTowerOutsideSignText
 
 	def_object_events
-	object_event 15,  7, SPRITE_ANABEL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideAnabelScript, EVENT_BATTLE_TOWER_OUTSIDE_ANABEL
-	object_event  6, 12, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
-	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
-	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED
-	object_event 12, 24, SPRITE_PICNICKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event  8,  9, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
-	object_event  9,  9, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
+	object_event 15,  5, SPRITE_ANABEL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideAnabelScript, EVENT_BATTLE_TOWER_OUTSIDE_ANABEL
+	object_event  6, 10, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
+	object_event 13,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
+	object_event 12, 13, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED
+	object_event 11, 13, SPRITE_PICNICKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  7,  8, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
+	object_event  8,  8, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
 
 	object_const_def
 	const BATTLETOWEROUTSIDE_ANABEL

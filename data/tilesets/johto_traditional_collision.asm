@@ -224,8 +224,8 @@
 	tilecoll WALL, WALL, FLOOR, FLOOR ; df
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; e0
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; e1
-	tilecoll FLOOR, FLOOR, WALL, FLOOR ; e2
-	tilecoll FLOOR, FLOOR, FLOOR, WALL ; e3
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; e2
+	tilecoll FLOOR, FLOOR, WALL, FLOOR ; e3
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; e4
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; e5
 	tilecoll WALL, HEADBUTT_TREE, WALL, HEADBUTT_TREE ; e6

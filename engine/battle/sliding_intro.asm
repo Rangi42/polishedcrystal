@@ -1,20 +1,20 @@
 BattleIntroSlidingPics:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wLYOverrides)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call .subfunction1
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	call .subfunction2
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .subfunction1
@@ -56,7 +56,7 @@ BattleIntroSlidingPics:
 	push de
 	ld hl, wShadowOAMSprite00XCoord
 	ld c, $12 ; 18
-	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld de, OBJ_SIZE
 .loop3
 	dec [hl]
 	dec [hl]

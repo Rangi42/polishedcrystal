@@ -30,7 +30,7 @@ ENDM
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, Route41, ROUTE_41, 0
 
-	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
+	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST | EAST
 	connection north, Route35, ROUTE_35, 5
 	connection south, Route34, ROUTE_34, 7
 	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0
@@ -424,6 +424,80 @@ ENDM
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
 
+	map_attributes Hollowport, HOLLOWPORT, $5, NORTH
+	connection north, Route101, ROUTE_101, 2
+
+	map_attributes Route101, ROUTE_101, $5, SOUTH
+	connection south, Hollowport, HOLLOWPORT, -2
+
+
+	map_attributes FieldLab, FIELD_LAB, $0, 0
+	map_attributes FieldLab2F, FIELD_LAB_2F, $0, 0
+	map_attributes EchoingCave, ECHOING_CAVE, $0, 0
+	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
+	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
+	map_attributes HollowportRival1F, HOLLOWPORT_RIVAL_1F, $0, 0
+	map_attributes HollowportRival2F, HOLLOWPORT_RIVAL_2F, $0, 0
+	map_attributes HollowportNeighbor, HOLLOWPORT_NEIGHBOR, $0, 0
+	map_attributes Route101House, ROUTE_101_HOUSE, $0, 0
+	map_attributes Route101Cave, ROUTE_101_CAVE, $0, 0
+	map_attributes Route102, ROUTE_102, $5, 0
+	map_attributes Route101102Gate, ROUTE_101_102_GATE, $0, 0
+	map_attributes Route102OlsteetonGate, ROUTE_102_OLSTEETON_GATE, $0, 0
+    map_attributes Olsteeton, OLSTEETON, $5, 0
+	map_attributes OlsteetonGym1F, OLSTEETON_GYM_1F, $0, 0
+	map_attributes OlsteetonGym2F, OLSTEETON_GYM_2F, $0, 0
+	map_attributes OlsteetonGym3F, OLSTEETON_GYM_3F, $0, 0
+	map_attributes OlsteetonPokeCenter, OLSTEETON_POKE_CENTER, $0, 0
+	map_attributes OlsteetonMall1, OLSTEETON_MALL_1, $0, 0
+	map_attributes OlsteetonMall2, OLSTEETON_MALL_2, $0, 0
+	map_attributes OlsteetonMall3, OLSTEETON_MALL_3, $0, 0
+	map_attributes OlsteetonMart, OLSTEETON_MART, $0, 0	
+	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0
+	map_attributes RiverfrontApt2F, RIVERFRONT_APT_2F, $0, 0
+	map_attributes RiverfrontApt3F, RIVERFRONT_APT_3F, $0, 0
+	map_attributes RiverfrontApt4F, RIVERFRONT_APT_4F, $0, 0
+	map_attributes RiverfrontApt5F, RIVERFRONT_APT_5F, $0, 0
+	map_attributes RiverfrontAptRoof, RIVERFRONT_APT_ROOF, $0, 0
+	map_attributes RiverfrontAptElevator, RIVERFRONT_APT_ELEVATOR, $0, 0
+	map_attributes OlsteetonDiner, OLSTEETON_DINER, $0, 0	
+	map_attributes OlsteetonArcade, OLSTEETON_ARCADE, $0, 0
+	map_attributes OlsteetonTrainStation, OLSTEETON_TRAIN_STATION, $0, 0
+	map_attributes OlsteetonNameRater, OLSTEETON_NAME_RATER, $0, 0
+	map_attributes OlsteetonFisherHouse, OLSTEETON_FISHER_HOUSE, $0, 0
+	map_attributes OlsteetonQuickHouse, OLSTEETON_QUICK_HOUSE, $0, 0
+	map_attributes OlsteetonGymHouse, OLSTEETON_GYM_HOUSE, $0, 0
+	map_attributes OlsteetonForestGate, OLSTEETON_FOREST_GATE, $0, 0
+	map_attributes NationalForest1, NATIONAL_FOREST_1, $53, 0
+	map_attributes OlsteetonUniGate, OLSTEETON_UNI_GATE, $0, 0
+	map_attributes OlsteetonRoute103Gate, OLSTEETON_ROUTE_103_GATE, $0, 0
+	map_attributes OlsteetonUni, OLSTEETON_UNI, $35, 0
+	map_attributes OlsteetonUniLibrary1F, OLSTEETON_UNI_LIBRARY_1F, $0, 0
+	map_attributes OlsteetonUniLibrary2F, OLSTEETON_UNI_LIBRARY_2F, $0, 0
+	map_attributes OlsteetonUniScienceCenter, OLSTEETON_UNI_SCIENCE_CENTER, $0, 0
+	map_attributes OlsteetonUniNurseDept, OLSTEETON_UNI_NURSE_DEPT, $0, 0
+	map_attributes OlsteetonUniWaterLab, OLSTEETON_UNI_WATER_LAB, $0, 0
+	map_attributes OlsteetonUniOffice, OLSTEETON_UNI_OFFICE, $0, 0
+	map_attributes OlsteetonUniDeansOffice, OLSTEETON_UNI_DEANS_OFFICE, $0, 0
+	map_attributes OlsteetonUniClockTower1F, OLSTEETON_UNI_CLOCK_TOWER_1F, $0, 0
+	map_attributes OlsteetonUniClockTower2F, OLSTEETON_UNI_CLOCK_TOWER_2F, $0, 0
+	map_attributes OlsteetonUniClockTower3F, OLSTEETON_UNI_CLOCK_TOWER_3F, $0, 0
+	map_attributes OlsteetonUniClassroomBldg, OLSTEETON_UNI_CLASSROOM_BLDG, $0, 0
+	map_attributes OlsteetonUniClassroomBiology, OLSTEETON_UNI_CLASSROOM_BIOLOGY, $0, 0
+	map_attributes OlsteetonUniClassroomArt, OLSTEETON_UNI_CLASSROOM_ART, $0, 0
+	map_attributes OlsteetonUniClassroomBusiness, OLSTEETON_UNI_CLASSROOM_BUSINESS, $0, 0
+	map_attributes OlsteetonUniClassroomStrategy, OLSTEETON_UNI_CLASSROOM_STRATEGY, $0, 0
+	map_attributes OlsteetonUniClassroomHistory, OLSTEETON_UNI_CLASSROOM_HISTORY, $0, 0
+	map_attributes OlsteetonUniClassroomTheory, OLSTEETON_UNI_CLASSROOM_THEORY, $0, 0
+	map_attributes OlsteetonUniDormWest1F, OLSTEETON_UNI_DORM_WEST_1F, $0, 0
+	map_attributes OlsteetonUniDiningHall, OLSTEETON_UNI_DINING_HALL, $0, 0
+	map_attributes OlsteetonUniDormEast1F, OLSTEETON_UNI_DORM_EAST_1F, $0, 0
+	map_attributes OlsteetonUniGymDept, OLSTEETON_UNI_GYM_DEPT, $0, 0
+	map_attributes OlsteetonAbandonedMill, OLSTEETON_ABANDONED_MILL, $0, 0
+	map_attributes OlsteetonAbandonedMillOutside, OLSTEETON_ABANDONED_MILL_OUTSIDE, $0F, 0
+
+
+	;johto maps
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_attributes SproutTower3F, SPROUT_TOWER_3F, $0, 0
@@ -806,8 +880,6 @@ ENDM
 	map_attributes Route2Gate, ROUTE_2_GATE, $0, 0
 	map_attributes PokemonLeagueGate, POKEMON_LEAGUE_GATE, $0, 0
 	map_attributes ElmsLab, ELMS_LAB, $0, 0
-	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
-	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
 	map_attributes PlayersNeighborsHouse, PLAYERS_NEIGHBORS_HOUSE, $0, 0
 	map_attributes LyrasHouse1F, LYRAS_HOUSE_1F, $0, 0
 	map_attributes LyrasHouse2F, LYRAS_HOUSE_2F, $0, 0

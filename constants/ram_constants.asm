@@ -409,6 +409,7 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const KIYO_JOURNAL ; Viridian schoolhouse
 	const PALMER_JOURNAL ; Battle Tower
 	const THORTON_JOURNAL ; Battle Factory
+	; const RUSTY_JOURNAL       ; Olsteeton Pokémon Center
 DEF NUM_POKEMON_JOURNALS EQU const_value
 
 ; wUnlockedUnowns ::
@@ -524,3 +525,9 @@ DEF NO_DYN_PAL_APPLY EQU (1 << NO_DYN_PAL_APPLY_ONCE_F) | (1 << NO_DYN_PAL_APPLY
 ; wMapSetupFlags
 	const_def
 	const MAPSETUP_CONNECTION_F ; 0
+
+; rRAMB::
+DEF NUM_SRAM_BANKS EQU 4
+
+; rLCDC::
+DEF LCDC_DEFAULT EQU LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_BLOCK21 | LCDC_BG_9800 | LCDC_OBJ_8 | LCDC_OBJ_ON | LCDC_PRIO_ON
