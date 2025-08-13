@@ -18,7 +18,7 @@ RiverfrontApt4F_MapScriptHeader:
 	bg_event 12,  0, BGEVENT_JUMPTEXT, RiverfrontApt4FRoom1Text
 	bg_event  7,  0, BGEVENT_JUMPTEXT, RiverfrontApt4FRoom2Text
 	bg_event  3,  0, BGEVENT_JUMPTEXT, RiverfrontApt4FRoom3Text
-	bg_event  6,  0, BGEVENT_JUMPTEXT, RiverfrontApt4FRoom2LockText
+	bg_event  6,  0, BGEVENT_JUMPTEXT, RiverfrontApt4FLockedText
 
 
 	def_object_events
@@ -36,7 +36,7 @@ RiverfrontApt4FRoom2Text:
 	line "PRIVATE"
 	done
 
-RiverfrontApt4FRoom2LockText:
+RiverfrontApt4FLockedText:
 	text "The door"
 	line "is locked."
 	done

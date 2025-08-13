@@ -16,10 +16,11 @@ Route101House_MapScriptHeader:
 
 Route101HouseHikerText:
 	text "Feel free to"
-	line "pick the berries  "
-	cont "on the tree outside"
+	line "pick the berries"
+	cont "on the trees"
+	cont "outside."
 
-	para "they grow back"
+	para "They grow back"
 	line "faster than I"
 	cont "can use them!"
 	done

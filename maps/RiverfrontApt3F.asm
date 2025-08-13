@@ -18,6 +18,8 @@ RiverfrontApt3F_MapScriptHeader:
 	bg_event 12,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FRoom1Text
 	bg_event  7,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FRoom2Text
 	bg_event  3,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FRoom3Text
+	bg_event 4,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FLockedText
+
 
 	def_object_events
 
@@ -37,4 +39,8 @@ RiverfrontApt3FRoom2Text:
 RiverfrontApt3FRoom3Text:
 	text "Apt. 303"
 	line "VACANT"
+	done
+
+RiverfrontApt3FLockedText:
+	text "The door is locked."
 	done

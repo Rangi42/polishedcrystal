@@ -18,6 +18,8 @@ RiverfrontApt2F_MapScriptHeader:
 	bg_event 12,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom1Text
 	bg_event  7,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom2Text
 	bg_event  3,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom3Text
+	bg_event 13,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FLockedText
+
 
 	def_object_events
 
@@ -37,4 +39,8 @@ RiverfrontApt2FRoom2Text:
 RiverfrontApt2FRoom3Text:
 	text "Apt. 203"
 	line "Isabelle"
+	done
+
+RiverfrontApt2FLockedText:
+	text "The door is locked."
 	done

@@ -62,7 +62,7 @@ Olsteeton_MapScriptHeader:
 	object_event 25, 18, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonGramps2Text, -1
 	object_event 23,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonYoungster1Text, -1
 	object_event  8, 35, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonYoungster2Text, -1
-	object_event 18, 21, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonTeacher2Text, -1
+	object_event 18, 21, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonPsyduckLadyScript, -1
 	object_event 23, 30, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonLassText_PCC, -1
 	object_event 23, 19, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonLassText, -1
 	object_event 22, 16, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonBandRocker1Text, -1
@@ -91,6 +91,16 @@ Olsteeton_BoatQuestion:
 Olsteeton_BoatRide:
 	warp OLSTEETON_ABANDONED_MILL_OUTSIDE, $7, $D
 	end
+
+OlsteetonPsyduckLadyScript:
+	faceplayer
+	opentext
+	jumpopenedtext OlsteetonPsyduckLadyText
+	yesorno
+	iftrue_jumptext OlsteetonPsyduckLadyAcceptedText
+	jumpopenedtext OlsteetonPsyduckLadyRejectedText
+	end
+
 BoatText_Ask:
 	text "Take the boat"
 	line "to the abandoned"
@@ -121,8 +131,17 @@ OlsteetonBandRocker3Text: ;Needs new dialogue
 	done
 
 OlsteetonBandCooltrainerFText:
-	text "write me some"
-	line "dialogue pls"
+	text "Olsteeton Mall"
+	line "has a wide"
+	cont "variety and"
+
+	para "best selection"
+	line "of merchandise"
+	cont "in the area!"
+
+	para "But nothing beats"
+	line "Sunset Mountain"
+	cont "Shopping Center"
 	done
 
 OlsteetonFisherText:
@@ -146,8 +165,9 @@ OlsteetonPoliwrathText:
 OlsteetonTeacher1Text:
 	text "I lost my"
 	line "high score on"
-	line "#mon Pinball"
-	cont "again…"
+
+	para "#mon Pinball"
+	line "again…"
 	done
 
 OlsteetonGramps1Text:
@@ -183,18 +203,36 @@ OlsteetonYoungster2Text:
 	cont "just alright."
 	done
 
-OlsteetonTeacher2Text:
-	text "Olsteeton Mall."
-	line "has a wide"
-	cont "variety and"
+OlsteetonPsyduckLadyText:
+	text "LUCY! HEEEEERE"
+	line "LUCELU—OH!"
 
-	para "best selection"
-	line "of merchandise"
-	cont "in the area!"
+	para "Er...you..."
+	line "I'm looking for"
+	cont "my lost Psyduck,"
+	cont "Lucy..."
+	
+	para "Have you seen"
+	line "a Psyduck around?"
+	done
+	; add event script for finding the psyduck and get reward
 
-	para "But nothing beats"
-	line "Sunset Mountain"
-	cont "Shopping Center"
+OlsteetonPsyduckLadyAcceptedText:
+	text "Oh, you will?"
+	line "Thank you!"
+
+	para "I'll be glad"
+	line "to reward you"
+	cont "if you find her!"
+	done
+
+OlsteetonPsyduckLadyRejectedText:
+	text "No? Oh, well"
+	line "if you’re not"
+
+	para "going to help,"
+	line "get lost."
+	cont "LUUUU—"
 	done
 
 OlsteetonLassText_PCC:
