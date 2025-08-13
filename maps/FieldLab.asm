@@ -83,7 +83,11 @@ FieldLab_MapScriptHeader:
 ; 	endcallback
 ProfPawpawScript:
 	faceplayer
- 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+ 	checkevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	iftrue_jumpopenedtext PawpawDescribesMrPokemonText
+ 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue_jumpopenedtext PawpawDescribesMrPokemonText
+ 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue_jumpopenedtext PawpawDescribesMrPokemonText
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
 	opentext
@@ -1087,9 +1091,10 @@ FieldLabHealingMachineText2:
 	done
 
 PawpawText_CallYou:
-	text "Pawpaw: <PLAYER>, I'll"
-	line "call you if any-"
-	cont "thing comes up."
+	text "Pawpaw: <PLAYER>,"
+	line "I'll call you"
+	cont "if anything"
+	cont "comes up."
 	done
 
 FieldLabTravelTip1Text:
@@ -1127,8 +1132,9 @@ FieldLabTravelTip4Text:
 FieldLabTrashcanText:
 	text "The wrapper from"
 	line "the snack"
-	line "Prof.Pawpaw"
-	cont "ate is in there…"
+
+	para "Prof.Pawpaw"
+	line "ate is in there…"
 	done
 
 FieldLabPCText:

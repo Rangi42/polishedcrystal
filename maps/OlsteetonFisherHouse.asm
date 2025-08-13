@@ -10,6 +10,9 @@ OlsteetonFisherHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
+	bg_event  0,  1, BGEVENT_JUMPTEXT, OlsteetonFisherFridgeText
+	bg_event  7,  1, BGEVENT_READ, OlsteetonFisherRadio
+
 
 	def_object_events
 	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GreatRodGuru, -1
@@ -29,6 +32,20 @@ GreatRodGuru:
 	waitbutton
 	closetext
 	setevent EVENT_GOT_GOOD_ROD
+	end
+
+OlsteetonFisherRadio:
+	playmusic MUSIC_POKEMON_TALK
+	opentext
+	writetext OlsteetonFisherRadioText1
+	pause 45
+	writetext OlsteetonFisherRadioText2
+	pause 45
+	cry FURRET
+	musicfadeout MUSIC_CANALAVE_CITY_DPPT, 16
+	writetext OlsteetonFisherRadioText3
+	pause 45
+	closetext
 	end
 
 OfferGreatRodText:
@@ -64,10 +81,45 @@ GaveGreatRodText:
 DontWantGreatRodText:
 	text "Whaaat? You don't"
 	line "like to fish?!"
-	cont "Incomprehensible!"
+	cont "Inconceivable!"
 	done
 
 HaveGreatRodText:
 	text "How are things?"
 	line "Land the big one?"
+	done
+
+OlsteetonFisherFridgeText:
+	text "The freezer is"
+	line "full of home-"
+	cont "made bait."
+	done
+
+OlsteetonFisherRadioText1:
+	text "Prof.PawPaw:..and"
+	line "that’s why you"
+
+	para "never chase"
+	line "Fliklits near"
+	cont "a gorge!"
+	done
+
+OlsteetonFisherRadioText2:
+	text "Prof.PawPaw: OK,"
+	line "I’m gonna hear"
+
+	cont "it from Pawsum"
+	line "here if I don't"
+	cont "end the show there"
+	done
+
+OlsteetonFisherRadioText3:
+	text "Tune in next"
+	line "time for our"
+
+	para "new segment:"
+	line "'Poisonous...or'"
+	cont "just Purple?'"
+
+	para "Eh-heh-hehhhh"
 	done

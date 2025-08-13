@@ -16,6 +16,7 @@ Route101102Gate_MapScriptHeader:
 	def_object_events
 	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route101102GateOfficerScript, -1
 	object_event  5,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route101102GateYoungsterText, -1
+	pokemon_event 4,  2, DROWZEE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_YELLOW, Route101102GateDrowzeeText, -1
 
 Route101102GateOfficerScript:
 	faceplayer
@@ -23,18 +24,30 @@ Route101102GateOfficerScript:
 	jumpopenedtext Route101102GateOfficerText1
 
 Route101102GateOfficerText1:
-	text "Gosh, I need"
-	line "some dialogue,"
+	text "It's nice"
+	line "they let us"
 
-	para "like really"
-	line "badly."
+	para "bring our"
+	line "#mon in to"
+	cont "work."
+
+	para "But I need to"
+	line "bring a different"
+	cont "#mon next time"
+
+	para "I'm getting"
+	line "sooooo sleeeepy!"
 	done
 
 Route101102GateYoungsterText:
 	text "Plants are living"
 	line "things too!"
 
-	para "Plants can't"
-	line "write dialogue"
-	cont "though!"
+	para "Some #mon"
+	line "are even"
+	cont "part plant!"
+	done
+
+Route101102GateDrowzeeText:
+	text "Drowzee: zee?"
 	done

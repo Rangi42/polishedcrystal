@@ -103,13 +103,11 @@ RiverfrontAptRoof_MapScriptHeader:
 ; 	db "Cancel@"
 
 RiverfrontAptRoofPokefanFText:
-	text "Whew, I'm tired."
-
-	para "I sometimes come"
+	text "I sometimes come"
 	line "up to the rooftop"
 
 	para "to take a break"
-	line "from shopping."
+	line "from everything."
 	done
 
 RiverfrontAptRoofGrannyText:
