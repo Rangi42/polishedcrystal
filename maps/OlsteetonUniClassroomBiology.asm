@@ -23,81 +23,86 @@ OlsteetonUniClassroomBiology_MapScriptHeader:
 
 
 OlsteetonUniClassroomBiologyTeacherText:
-	text "...So you see"
-	line "some #mon"
+	text "Okay class!"
+	line "Today we're gonna"
+	cont "talk about one"
+	cont "of #mon's big-"
+	cont "gest mysteries!"
 
-	para "have changed"
-	line "as a result of"
-	cont "living in diff-"
-	cont "erent habitats."
+	para "Regional Variants!"
 	done
 
 OlsteetonUniClassroomBiologyLassText:
-	text "My instructor said"
-	line "that Magneton is a"
+	text "Some #mon have"
+	line "different forms"
+	cont "even in the"
+	cont "same region!"
 
-	para "union of three"
-	line "Magnemite, but"
+	para "My mamaw has"
+	line "a Castorch to"
+	cont "help in her"
+	cont "kitchen."
 
-	para "Magneton is 10"
-	line "times heavier than"
-	cont "Magnemite."
-
-	para "How does that"
-	line "work?!"
+	para "But I hear that"
+	line "Rusty's is much"
+	cont "different!"
 	done
 
 OlsteetonUniClassroomBiologySuperNerdText:
-	text "Have you heard of"
-	line "the Electric-type"
-	cont "#mon Mareep?"
+	text "Do you know any-"
+	line "thing about"
+	cont "Meowth?"
 
-	para "Its name derives"
-	line "from the unit of"
+	para "It's evolved to"
+	line "have several"
+	cont "regional variants!"
 
-	para "electric current,"
-	line "the “ampere.”"
-
-	para "Rearrange the"
-	line "letters, and"
-	cont "you'll see!"
+	para "We even have our"
+	line "own!"
 	done
 
 OlsteetonUniClassroomBiologyBlackboardText:
-	text "'Phylogenetics'"
-	line "is on the board."
+	text "'Variation'"
+	line "is written on the"
+	cont "blackboard."
 
-	para "“…#mon can be"
-	line "divided into 14"
-	cont "“Egg groups”,"
-	cont "plus Ditto."
+	para "'... many things"
+	line "can lead to reg-"
+	cont "ional variation."
 
-	para "Baby #mon can-"
-	line "not breed."
-
-	para "Legendary #mon"
-	line "have not been"
-	cont "studied.”"
+	para "Certain #mon may"
+	line "adapt to new env-"
+	cont "ironments by"
+	cont "evolving in new"
+	cont "& unusual ways!'"
 	done
 
 OlsteetonUniClassroomBiologyBookshelf1Text:
-	text "It's a book of"
-	line "prototype designs"
+	text "There's a book!"
 
-	para "for technological"
-	line "devices."
+	para "It's called"
+	line ""The Proper Evolut-"
+	cont "ionary Biologist's"
+	cont "Compendium of Term-"
+	cont "inology & Historic"
+	cont "Data-Driven"
+	cont "Insights""
 
-	para "Hey! An early"
-	line "#gear diagram"
-	cont "is in here!"
+	text "..."
+
+	para "Okay, that one is"
+	line "a little over your"
+	cont "head..."
 	done
 
 OlsteetonUniClassroomBiologyBookshelf2Text:
 	text "It's a paper writ-"
 	line "ten by Prof."
-	cont "Silktree."
+	cont "Pawpaw."
 
-	para "“Ruins of Alph"
-	line "Investigation"
-	cont "Report”…"
+	para ""Biomes &"
+	line "Bouffalants:"
+	
+	para "A Study of BU's"
+	line "Head Honcho...""
 	done

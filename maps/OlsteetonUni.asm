@@ -49,15 +49,18 @@ OlsteetonUni_MapScriptHeader:
 
 AcademySignText:
 	text "Bouffalant"
-	line "Academy"
+	line "University"
+	
+	para "Home of the"
+	line "Headbutting Herd!"
 	done
 
 LibrarySignText:
-	text "Academy Library"
+	text "University Library"
 	done
 
 ScienceSignText:
-	text "Academy #mon"
+	text "University #mon"
 	line "Science Center"
 	done
 
@@ -71,12 +74,12 @@ ClassroomSignText:
 	done
 
 DormWestSignText:
-	text "Academy Dorm"
+	text "University Dorm"
 	line "Western Tower"
 	done
 
 DormEastSignText:
-	text "Academy Dorm"
+	text "University Dorm"
 	line "Eastern Tower"
 	done
 GymSignText:
@@ -85,9 +88,9 @@ GymSignText:
 	done
 
 OfficeSignText:
-	text "Academy Offices"
+	text "University Offices"
 	done
 LeavingSignText:
 	text "SOUTH: Route 103"
-	line "NORTH: Academy"
+	line "NORTH: University"
 	done
