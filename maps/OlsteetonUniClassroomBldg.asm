@@ -108,60 +108,74 @@ UniClassroomCooltrainerfScript:
 	done
 
 UniClassroomCooltrainermText:
-	text "The cafeteria gets"
-	line "pretty crowded,"
+	text "Sometimes during"
+	line "lunch I host"
+	cont "Wizardry: The"
+	cont "Convening games!"
 
-	para "so I prefer to eat"
-	line "in the hall."
+	para "It's lots of fun,"
+	line "but cards are so"
+	cont "expensive!"
 	done
 
 UniClassroomYoungster1Text:
 	text "I failed the"
-	line "Hyper Test again…"
+	line "Gym Certification"
+	cont "exam again..."
 
 	para "But I won't"
-	line "give up!"
+	line "give up yet!"
 	done
 
 UniClassroomCowgirlText:
-	text "My class is going"
-	line "on a field trip to"
-	cont "the Safari Zone!"
+	text "We're hatching"
+	line "#mon eggs in"
+	cont "Evolutionary"
+	cont "Biology today!"
+
+	para "I can't wait"
+	line "to see the"
+	cont "baby #mon!"
 	done
 
 UniClassroomBug_catcherText:
-	text "Prof.Willow sends"
-	line "his assistants to"
+	text "Earlier in the"
+	line "semester, I helped"
+	
+	para "Prof. Pawpaw exam-"
+	line "ine Bug types at"
+	cont "Jolly Sods!"
 
-	para "wander all over"
-	line "the city and study"
+	para "..."
 
-	para "the #mon that"
-	line "live here."
+	para "It's too bad we"
+	line "won't get to see"
+	cont "the end of that"
+	cont "experiment..."
 	done
 
 UniClassroomLassText:
-	text "In addition to"
-	line "being the Celadon"
-	cont "Gym Leader,"
+	text "Please excuse me!"
+	line "I'm trying to"
+	cont "study!"
 
-	para "Erika was top of"
-	line "her class here at"
-	cont "the university."
-
-	para "I wish I was as"
-	line "cool as her."
+	para "...I'm hoping to"
+	line "get to go abroad"
+	
+	para "to study with"
+	line "Prof. Oak if I"
+	cont "ace these exams!"
 	done
 
 UniClassroomYoungster2Text:
-	text "Prof.Westwood is a"
-	line "little eccentric."
+	text "Are you part of"
+	line "the Professorship"
+	cont "Program?"
 
-	para "Sometimes he apol-"
-	line "ogizes to his"
-
-	para "ancestors' por-"
-	line "traits."
+	para "This is my first"
+	line "year, and I'm"
+	cont "SUPER nervous for"
+	cont "exams!"
 	done
 
 UniClassroomHistorySignText:
@@ -189,12 +203,23 @@ UniClassroomBiologySignText:
 	done
 
 UniClassroomDoorSignText:
-	text "There is a"
-	line "note taped to"
-	cont "the door:"
+	text "There's a note"
+	line "on the door."
 
-	para "CLASS CANCELED"
-	line "Read Chapter 6."
+	para "'No class today."
+	line "Got sucker-punched"
+	cont "by my Gothitelle"
+
+	para "right in the"
+	line "psychic with more"
+	cont "future visions."
+
+	para "Cancelled class"
+	line "while I work out"
+	cont "the meaning of"
+	cont "my life..."
+
+	para "again!'"
 	done
 
 UniClassroomEthicsSignText:
