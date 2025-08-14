@@ -81,15 +81,15 @@ OlsteetonUniClassroomBiologyBookshelf1Text:
 	text "There's a book!"
 
 	para "It's called"
-	line ""The Proper Evolut-"
+	line "'The Proper Evolut-"
 	cont "ionary Biologist's"
 	cont "Compendium of Term-"
 	cont "inology & Historic"
 	cont "Data-Driven"
-	cont "Insights""
+	cont "Insights'"
 
-	text "..."
-
+	para "..."
+	
 	para "Okay, that one is"
 	line "a little over your"
 	cont "head..."
@@ -100,9 +100,9 @@ OlsteetonUniClassroomBiologyBookshelf2Text:
 	line "ten by Prof."
 	cont "Pawpaw."
 
-	para ""Biomes &"
+	para "'Biomes &"
 	line "Bouffalants:"
 	
 	para "A Study of BU's"
-	line "Head Honcho...""
+	line "Head Honcho...'"
 	done

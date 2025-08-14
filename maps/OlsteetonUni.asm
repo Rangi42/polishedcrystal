@@ -42,6 +42,9 @@ OlsteetonUni_MapScriptHeader:
 	bg_event 29, 21, BGEVENT_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
 	def_object_events
+	object_event  8, 22, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniMajorText, -1
+	object_event 18, 12, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassText, -1
+	object_event 18, 13, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniClassText, -1
 	fruittree_event 23,  7, FRUITTREE_AZALEA_TOWN, WHT_APRICORN, PAL_NPC_WHITE
 	object_event 20, 24, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniSnorelaxText, -1
 
@@ -102,3 +105,35 @@ OlsteetonUniSnorelaxText:
 	line "It's in a"
 	cont "deep sleep..."
 	done
+
+OlsteetonUniMajorText:
+	text "#biology?"
+	line "No...maybe"
+	cont "#business?"
+
+	para "Or maybe I"
+	line "should go for"
+
+	para "the Professorship"
+	line "track or the"
+	cont "#mon Nursing"
+	cont "track?"
+
+	para "I'm definitely not"
+	line "cut out for the"
+
+	para "Gym Leader"
+	line "Training Program."
+	cont "Ugghhhh"
+	done
+
+OlsteetonUniClassText:
+	text "......"
+	line "......."
+	cont "...."
+
+	; intro to #print identification
+	; Advanced #mon Egg Handling
+	; History of #mon Contests 
+	; Regional Legendary #mon & Associated Mythos
+	
