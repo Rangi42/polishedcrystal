@@ -140,7 +140,7 @@ OlsteetonUniOfficeCooltrainerfText:
 	done
 
 OlsteetonUniOfficeDeansOfficeSignText:
-	text "Principal's Office"
+	text "Dean's Office"
 	done
 
 OlsteetonUniOfficeProf1SignText:

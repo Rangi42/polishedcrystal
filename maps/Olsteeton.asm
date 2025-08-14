@@ -115,17 +115,17 @@ OlsteetonFlyPoint:
 	setflag ENGINE_FLYPOINT_OLSTEETON
 	endcallback
 
-OlsteetonBandRocker1Text: ;Needs new dialogue
+OlsteetonBandRocker1Text: ;possible folk song parody
 	text "I need"
 	line "dialogue."
 	done
 
-OlsteetonBandRocker2Text: ;Needs new dialogue
+OlsteetonBandRocker2Text:
 	text "I need"
 	line "dialogue."
 	done
 
-OlsteetonBandRocker3Text: ;Needs new dialogue
+OlsteetonBandRocker3Text:
 	text "I need"
 	line "dialogue."
 	done
@@ -228,7 +228,7 @@ OlsteetonPsyduckLadyAcceptedText:
 
 OlsteetonPsyduckLadyRejectedText:
 	text "No? Oh, well"
-	line "if you’re not"
+	line "if you're not"
 
 	para "going to help,"
 	line "get lost."

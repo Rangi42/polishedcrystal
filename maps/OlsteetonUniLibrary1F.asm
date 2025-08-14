@@ -37,7 +37,7 @@ OlsteetonUniLibrary1F_MapScriptHeader:
 	object_event 12,  5, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, OlsteetonUniLibrary1FBookText, -1
 
 OlsteetonUniLibrary1FLadyText:
-	text "This library is on"
+	para "This library is on"
 	line "university"
 	cont "grounds, but it's"
 

@@ -97,7 +97,7 @@ OlsteetonFisherFridgeText:
 
 OlsteetonFisherRadioText1:
 	text "Prof.PawPaw:..and"
-	line "that’s why you"
+	line "that's why you"
 
 	para "never chase"
 	line "Fliklits near"
@@ -106,7 +106,7 @@ OlsteetonFisherRadioText1:
 
 OlsteetonFisherRadioText2:
 	text "Prof.PawPaw: OK,"
-	line "I’m gonna hear"
+	line "I'm gonna hear"
 
 	cont "it from Pawsum"
 	line "here if I don't"
