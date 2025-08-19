@@ -4,12 +4,11 @@ RiverfrontApt3F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 14,  0, RIVERFRONT_APT_2F, 3
+	warp_event 14,  0, RIVERFRONT_APT_2F, 2
 	warp_event 16,  0, RIVERFRONT_APT_4F, 1
 	warp_event  9,  0, RIVERFRONT_APT_ELEVATOR, 1
-	; warp_event  4,  0, RIVERFRONT_APT_3F_ROOM_1, 1
-	; warp_event  8,  0, RIVERFRONT_APT_3F_ROOM_2, 1
-	; warp_event 12,  0, RIVERFRONT_APT_3F_ROOM_3, 1
+	warp_event 11,  0, RIVERFRONT_APT_3F_ROOM_1, 1
+	warp_event  6,  0, RIVERFRONT_APT_3F_ROOM_2, 1
 
 	def_coord_events
 
@@ -18,7 +17,7 @@ RiverfrontApt3F_MapScriptHeader:
 	bg_event 12,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FRoom1Text
 	bg_event  7,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FRoom2Text
 	bg_event  3,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FRoom3Text
-	bg_event 4,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FLockedText
+	bg_event  2,  0, BGEVENT_JUMPTEXT, RiverfrontApt3FLockedText
 
 
 	def_object_events

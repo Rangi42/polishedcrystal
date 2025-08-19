@@ -7,9 +7,9 @@ RiverfrontApt2F_MapScriptHeader:
 	warp_event 14,  0, RIVERFRONT_APT_1F, 5
 	warp_event 16,  0, RIVERFRONT_APT_3F, 1
 	warp_event  9,  0, RIVERFRONT_APT_ELEVATOR, 1
-	; warp_event 11,  0, RIVERFRONT_APT_2F_ROOM_1, 1
-	; warp_event  6,  0, RIVERFRONT_APT_2F_ROOM_2, 1
-	; warp_event  2,  0, RIVERFRONT_APT_2F_ROOM_3, 1
+	warp_event 11,  0, RIVERFRONT_APT_2F_ROOM_1, 1
+	warp_event  6,  0, RIVERFRONT_APT_2F_ROOM_2, 1
+	warp_event  2,  0, RIVERFRONT_APT_2F_ROOM_3, 1
 
 	def_coord_events
 
@@ -18,7 +18,7 @@ RiverfrontApt2F_MapScriptHeader:
 	bg_event 12,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom1Text
 	bg_event  7,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom2Text
 	bg_event  3,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FRoom3Text
-	bg_event 13,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FLockedText
+	; bg_event 13,  0, BGEVENT_JUMPTEXT, RiverfrontApt2FLockedText
 
 
 	def_object_events
@@ -41,6 +41,6 @@ RiverfrontApt2FRoom3Text:
 	line "Isabelle"
 	done
 
-RiverfrontApt2FLockedText:
-	text "The door is locked."
-	done
+; RiverfrontApt2FLockedText:
+; 	text "The door is locked."
+; 	done

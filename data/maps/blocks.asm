@@ -190,6 +190,13 @@ VermilionHouseFishingSpeechHouse_BlockData:
 VermilionPollutionSpeechHouse_BlockData:
 MrPsychicsHouse_BlockData:
 PsychicInversHouse_BlockData:
+RiverfrontApt2FRoom1_BlockData:
+RiverfrontApt2FRoom2_BlockData:
+RiverfrontApt2FRoom3_BlockData:
+RiverfrontApt3FRoom1_BlockData:
+RiverfrontApt3FRoom2_BlockData:
+RiverfrontApt4FRoom1_BlockData:
+RiverfrontApt4FRoom3_BlockData:
 	INCBIN "maps/KantoHouse1.ablk.lz"
 
 SECTION "Route26DayofWeekSiblingsHouse_BlockData", ROMX
@@ -201,7 +208,14 @@ LavenderNameRater_BlockData:
 SaffronHitmontopKidHouse_BlockData:
 SaffronOrreSpeechHouse_BlockData:
 Route19BeachHouse_BlockData:
-OlsteetonQuickHouse_BlockData:
+OlsteetonUniDormWest2FRoom2_BlockData:
+OlsteetonUniDormWest2FRoom3_BlockData:
+OlsteetonUniDormWest3FRoom1_BlockData:
+OlsteetonUniDormWest3FRoom3_BlockData:
+OlsteetonUniDormEast2FRoom1_BlockData:
+OlsteetonUniDormEast2FRoom3_BlockData:
+OlsteetonUniDormEast3FRoom2_BlockData:
+OlsteetonUniDormEast3FRoom3_BlockData:
 	INCBIN "maps/KantoHouse3.ablk.lz"
 
 SECTION "PewterNidoranSpeechHouse_BlockData", ROMX
@@ -213,6 +227,7 @@ Route2NuggetSpeechHouse_BlockData:
 Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 EusinesHouse_BlockData:
+OlsteetonQuickHouse_BlockData:
 	INCBIN "maps/KantoHouse4.ablk.lz"
 
 SECTION "TradeCenter_BlockData", ROMX
@@ -305,10 +320,13 @@ RiverfrontApt1F_BlockData:
 
 SECTION "RiverfrontApt2F_BlockData", ROMX
 RiverfrontApt2F_BlockData:
-RiverfrontApt3F_BlockData:
-RiverfrontApt4F_BlockData:
-
 	INCBIN "maps/RiverfrontApt2F.ablk.lz"
+SECTION "RiverfrontApt3F_BlockData", ROMX
+RiverfrontApt3F_BlockData:
+	INCBIN "maps/RiverfrontApt3F.ablk.lz"
+SECTION "RiverfrontApt4F_BlockData", ROMX
+RiverfrontApt4F_BlockData:
+	INCBIN "maps/RiverfrontApt4F.ablk.lz"
 
 SECTION "RiverfrontApt5F_BlockData", ROMX
 RiverfrontApt5F_BlockData:
@@ -406,6 +424,11 @@ SECTION "OlsteetonUniDormWest1F_BlockData", ROMX
 OlsteetonUniDormWest1F_BlockData:
 	INCBIN "maps/OlsteetonUniDormWest1F.ablk.lz"
 
+SECTION "OlsteetonUniDormWest2F_BlockData", ROMX
+OlsteetonUniDormWest2F_BlockData:
+OlsteetonUniDormWest3F_BlockData:
+	INCBIN "maps/OlsteetonUniDormWest2F.ablk.lz"
+
 SECTION "OlsteetonUniDiningHall_BlockData", ROMX
 OlsteetonUniDiningHall_BlockData:
 	INCBIN "maps/OlsteetonUniDiningHall.ablk.lz"
@@ -413,6 +436,11 @@ OlsteetonUniDiningHall_BlockData:
 SECTION "OlsteetonUniDormEast1F_BlockData", ROMX
 OlsteetonUniDormEast1F_BlockData:
 	INCBIN "maps/OlsteetonUniDormEast1F.ablk.lz"
+
+SECTION "OlsteetonUniDormEast2F_BlockData", ROMX
+OlsteetonUniDormEast2F_BlockData:
+OlsteetonUniDormEast3F_BlockData:
+	INCBIN "maps/OlsteetonUniDormEast2F.ablk.lz"
 
 SECTION "OlsteetonUniGymDept_BlockData", ROMX
 OlsteetonUniGymDept_BlockData:

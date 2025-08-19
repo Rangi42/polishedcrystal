@@ -455,8 +455,15 @@ ENDM
 	map_attributes OlsteetonMart, OLSTEETON_MART, $0, 0	
 	map_attributes RiverfrontApt1F, RIVERFRONT_APT_1F, $0, 0
 	map_attributes RiverfrontApt2F, RIVERFRONT_APT_2F, $0, 0
+	map_attributes RiverfrontApt2FRoom1, RIVERFRONT_APT_2F_ROOM_1, $0, 0
+	map_attributes RiverfrontApt2FRoom2, RIVERFRONT_APT_2F_ROOM_2, $0, 0
+	map_attributes RiverfrontApt2FRoom3, RIVERFRONT_APT_2F_ROOM_3, $0, 0
 	map_attributes RiverfrontApt3F, RIVERFRONT_APT_3F, $0, 0
+	map_attributes RiverfrontApt3FRoom1, RIVERFRONT_APT_3F_ROOM_1, $0, 0
+	map_attributes RiverfrontApt3FRoom2, RIVERFRONT_APT_3F_ROOM_2, $0, 0
 	map_attributes RiverfrontApt4F, RIVERFRONT_APT_4F, $0, 0
+	map_attributes RiverfrontApt4FRoom1, RIVERFRONT_APT_4F_ROOM_1, $0, 0
+	map_attributes RiverfrontApt4FRoom3, RIVERFRONT_APT_4F_ROOM_3, $0, 0
 	map_attributes RiverfrontApt5F, RIVERFRONT_APT_5F, $0, 0
 	map_attributes RiverfrontAptRoof, RIVERFRONT_APT_ROOF, $0, 0
 	map_attributes RiverfrontAptElevator, RIVERFRONT_APT_ELEVATOR, $0, 0
@@ -490,8 +497,20 @@ ENDM
 	map_attributes OlsteetonUniClassroomHistory, OLSTEETON_UNI_CLASSROOM_HISTORY, $0, 0
 	map_attributes OlsteetonUniClassroomTheory, OLSTEETON_UNI_CLASSROOM_THEORY, $0, 0
 	map_attributes OlsteetonUniDormWest1F, OLSTEETON_UNI_DORM_WEST_1F, $0, 0
+	map_attributes OlsteetonUniDormWest2F, OLSTEETON_UNI_DORM_WEST_2F, $0, 0
+	map_attributes OlsteetonUniDormWest2FRoom2, OLSTEETON_UNI_DORM_WEST_2F_ROOM_2, $0, 0
+	map_attributes OlsteetonUniDormWest2FRoom3, OLSTEETON_UNI_DORM_WEST_2F_ROOM_3, $0, 0
+	map_attributes OlsteetonUniDormWest3F, OLSTEETON_UNI_DORM_WEST_3F, $0, 0
+	map_attributes OlsteetonUniDormWest3FRoom1, OLSTEETON_UNI_DORM_WEST_3F_ROOM_1, $0, 0
+	map_attributes OlsteetonUniDormWest3FRoom3, OLSTEETON_UNI_DORM_WEST_3F_ROOM_3, $0, 0
 	map_attributes OlsteetonUniDiningHall, OLSTEETON_UNI_DINING_HALL, $0, 0
 	map_attributes OlsteetonUniDormEast1F, OLSTEETON_UNI_DORM_EAST_1F, $0, 0
+	map_attributes OlsteetonUniDormEast2F, OLSTEETON_UNI_DORM_EAST_2F, $0, 0
+	map_attributes OlsteetonUniDormEast2FRoom1, OLSTEETON_UNI_DORM_EAST_2F_ROOM_1, $0, 0
+	map_attributes OlsteetonUniDormEast2FRoom3, OLSTEETON_UNI_DORM_EAST_2F_ROOM_3, $0, 0
+	map_attributes OlsteetonUniDormEast3F, OLSTEETON_UNI_DORM_EAST_3F, $0, 0
+	map_attributes OlsteetonUniDormEast3FRoom2, OLSTEETON_UNI_DORM_EAST_3F_ROOM_2, $0, 0
+	map_attributes OlsteetonUniDormEast3FRoom3, OLSTEETON_UNI_DORM_EAST_3F_ROOM_3, $0, 0
 	map_attributes OlsteetonUniGymDept, OLSTEETON_UNI_GYM_DEPT, $0, 0
 	map_attributes OlsteetonAbandonedMill, OLSTEETON_ABANDONED_MILL, $0, 0
 	map_attributes OlsteetonAbandonedMillOutside, OLSTEETON_ABANDONED_MILL_OUTSIDE, $0F, 0
