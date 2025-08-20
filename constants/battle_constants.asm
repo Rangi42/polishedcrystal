@@ -66,6 +66,17 @@ DEF MOVE_LENGTH EQU _RS
 DEF NUM_STATS EQU const_value - 1
 DEF NUM_BATTLE_STATS EQU NUM_STATS - 1 ; don't count HP
 
+; stat abbreviations to be iterated over, for use with DV and EV spreads
+; (see data/trainers/macros.asm and engine/battle/read_trainer_party.asm)
+DEF STATS$0 EQUS "ALL"
+DEF STATS$1 EQUS "HP"
+DEF STATS$2 EQUS "ATK"
+DEF STATS$3 EQUS "DEF"
+DEF STATS$4 EQUS "SPE"
+DEF STATS$5 EQUS "SAT"
+DEF STATS$6 EQUS "SDF"
+DEF EACH_SPREAD_STAT EQU 7 ; `for x, 1, EACH_SPREAD_STAT ... use {STATS{x}}`
+
 ; stat formula constants
 DEF STAT_MIN_NORMAL EQU 5
 DEF STAT_MIN_HP EQU 10

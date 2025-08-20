@@ -49,22 +49,28 @@ endc
 
 MACRO dv_spread
 	def_dvs \#
-	if !DEF(DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
-		def DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_DV_SPREADS
-		with_each_stat "def DV_SPREAD_{d:NUM_DV_SPREADS}_? EQU EV_?"
+	REDEF DV_SPREAD_FOR EQUS "DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}"
+	if !DEF({DV_SPREAD_FOR})
+		def {DV_SPREAD_FOR} = NUM_DV_SPREADS
+		for x, 1, EACH_SPREAD_STAT
+			def DV_SPREAD_{d:NUM_DV_SPREADS}_{STATS{x}} EQU EV_{STATS{x}}
+		endr
 		redef NUM_DV_SPREADS += 1
 	endc
-	db DV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
+	db {DV_SPREAD_FOR}
 ENDM
 
 MACRO ev_spread
 	def_evs \#
-	if !DEF(EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
-		def EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_EV_SPREADS
-		with_each_stat "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
+	REDEF EV_SPREAD_FOR EQUS "EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}"
+	if !DEF({EV_SPREAD_FOR})
+		def {EV_SPREAD_FOR} = NUM_EV_SPREADS
+		for x, 1, EACH_SPREAD_STAT
+			def EV_SPREAD_{d:NUM_EV_SPREADS}_{STATS{x}} EQU EV_{STATS{x}}
+		endr
 		redef NUM_EV_SPREADS += 1
 	endc
-	db EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
+	db {EV_SPREAD_FOR}
 ENDM
 
 DEF _tr_class = 0

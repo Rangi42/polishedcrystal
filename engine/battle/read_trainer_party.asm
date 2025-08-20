@@ -485,9 +485,10 @@ DVSpreads:
 	for n, NUM_DV_SPREADS
 		; each DV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
 		; by `tr_dvs` (see data/trainers/parties.asm)
-		dn DV_SPREAD_{d:n}_HP, DV_SPREAD_{d:n}_ATK
-		dn DV_SPREAD_{d:n}_DEF, DV_SPREAD_{d:n}_SPE
-		dn DV_SPREAD_{d:n}_SAT, DV_SPREAD_{d:n}_SDF
+		for x, 1, EACH_SPREAD_STAT, 2
+			def y = x + 1
+			dn DV_SPREAD_{d:n}_{STATS{x}}, DV_SPREAD_{d:n}_{STATS{y}}
+		endr
 	endr
 	assert_table_length NUM_DV_SPREADS
 
@@ -496,7 +497,9 @@ EVSpreads:
 	for n, NUM_EV_SPREADS
 		; each EV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
 		; by `tr_evs` (see data/trainers/parties.asm)
-		with_each_stat "db EV_SPREAD_{d:n}_?"
+		for x, 1, EACH_SPREAD_STAT
+			db EV_SPREAD_{d:n}_{STATS{x}}
+		endr
 	endr
 	assert_table_length NUM_EV_SPREADS
 
