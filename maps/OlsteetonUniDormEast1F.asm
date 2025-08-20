@@ -9,7 +9,9 @@ OlsteetonUniDormEast1F_MapScriptHeader:
 	warp_event  8, 11, OLSTEETON_UNI, 15
 	warp_event  0,  8, OLSTEETON_UNI_DINING_HALL, 4
 	warp_event  0,  9, OLSTEETON_UNI_DINING_HALL, 5
-; 	warp_event 11,  3, OLSTEETON_UNI_DORM_EAST_2F, 10
+	warp_event  0,  3, OLSTEETON_UNI_DORM_EAST_2F, 1
+	warp_event  7,  0, OLSTEETON_UNI_DORM_EAST_ELEVATOR, 1
+
 
 
 
@@ -17,7 +19,7 @@ OlsteetonUniDormEast1F_MapScriptHeader:
 
 	def_bg_events
 	bg_event 11,  6, BGEVENT_RIGHT, OlsteetonUniDormEast1FComputer
-	bg_event  2,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormEast1FSignText
+	bg_event  2,  6, BGEVENT_JUMPTEXT, OlsteetonUniDormEast1FSignText
 	bg_event 11,  8, BGEVENT_RIGHT, OlsteetonUniDormEast1FComputer
 
 	def_object_events

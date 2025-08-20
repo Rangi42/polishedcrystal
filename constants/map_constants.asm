@@ -748,8 +748,15 @@ ENDM
 	map_const NATIONAL_FOREST_1,						  17, 15 ;  26
 	map_const OLSTEETON_UNI_GATE,                          5,  4 ;  27
 	map_const OLSTEETON_ROUTE_103_GATE,                    5,  4 ;  28
-	map_const OLSTEETON_ABANDONED_MILL_OUTSIDE,           12,  10 ;  29
+	map_const OLSTEETON_ABANDONED_MILL_OUTSIDE,           12,  10 ; 29
 	map_const OLSTEETON_ABANDONED_MILL,                   10,  9 ;  30
+	map_const RIVERFRONT_APT_2F_ROOM_1,                    4,  4 ;  31
+	map_const RIVERFRONT_APT_2F_ROOM_2,                    4,  4 ;  32
+	map_const RIVERFRONT_APT_2F_ROOM_3,                    4,  4 ;  33
+	map_const RIVERFRONT_APT_3F_ROOM_1,                    4,  4 ;  34
+	map_const RIVERFRONT_APT_3F_ROOM_2,                    4,  4 ;  35
+	map_const RIVERFRONT_APT_4F_ROOM_1,                    4,  4 ;  36
+	map_const RIVERFRONT_APT_4F_ROOM_3,                    4,  4 ;  37
 
 
 	newgroup                                                     ; 40
@@ -772,8 +779,22 @@ ENDM
  	map_const OLSTEETON_UNI_CLASSROOM_HISTORY,             6,  5 ;  17
  	map_const OLSTEETON_UNI_CLASSROOM_THEORY,              6,  5 ;  18
  	map_const OLSTEETON_UNI_DORM_WEST_1F,                  6,  6 ;  19
-	map_const OLSTEETON_UNI_DINING_HALL,				   8,  4 ;  20
- 	map_const OLSTEETON_UNI_DORM_EAST_1F,                  6,  6 ;  21
- 	map_const OLSTEETON_UNI_GYM_DEPT,                      8,  7 ;  22
+	map_const OLSTEETON_UNI_DORM_WEST_2F,                  9,  2 ;  20
+	map_const OLSTEETON_UNI_DORM_WEST_2F_ROOM_2,           4,  4 ;  21
+	map_const OLSTEETON_UNI_DORM_WEST_2F_ROOM_3,           4,  4 ;  21
+ 	map_const OLSTEETON_UNI_DORM_WEST_3F,                  9,  2 ;  22
+	map_const OLSTEETON_UNI_DORM_WEST_3F_ROOM_1,           4,  4 ;  23
+	map_const OLSTEETON_UNI_DORM_WEST_3F_ROOM_3,           4,  4 ;  24
+	map_const OLSTEETON_UNI_DORM_WEST_ELEVATOR,            2,  2 ;  25
+	map_const OLSTEETON_UNI_DINING_HALL,				   8,  4 ;  26
+ 	map_const OLSTEETON_UNI_DORM_EAST_1F,                  6,  6 ;  27
+ 	map_const OLSTEETON_UNI_DORM_EAST_2F,                  9,  2 ;  30
+	map_const OLSTEETON_UNI_DORM_EAST_2F_ROOM_1,           4,  4 ;  28
+	map_const OLSTEETON_UNI_DORM_EAST_2F_ROOM_3,           4,  4 ;  29
+ 	map_const OLSTEETON_UNI_DORM_EAST_3F,                  9,  2 ;  31
+	map_const OLSTEETON_UNI_DORM_EAST_3F_ROOM_2,           4,  4 ;  32
+	map_const OLSTEETON_UNI_DORM_EAST_3F_ROOM_3,           4,  4 ;  33
+	map_const OLSTEETON_UNI_DORM_EAST_ELEVATOR,            2,  2 ;  34
+ 	map_const OLSTEETON_UNI_GYM_DEPT,                      8,  7 ;  35
 
 DEF NUM_MAP_GROUPS EQU const_value ; 40

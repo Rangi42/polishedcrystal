@@ -5,7 +5,7 @@ RiverfrontApt5F_MapScriptHeader:
 
 	def_warp_events
 	warp_event 13,  2, RIVERFRONT_APT_4F, 2
-	warp_event 14,  4, RIVERFRONT_APT_ROOF, 1
+	warp_event 14,  3, RIVERFRONT_APT_ROOF, 1
 	warp_event  7,  1, RIVERFRONT_APT_ELEVATOR, 1
 
 	def_coord_events

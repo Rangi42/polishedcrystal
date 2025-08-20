@@ -1,23 +1,23 @@
-OlsteetonUniDormWest1F_MapScriptHeader:
+OlsteetonUniDormEast2F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
 
 	def_warp_events
-	warp_event  5, 11, OLSTEETON_UNI, 10
-	warp_event  6, 11, OLSTEETON_UNI, 10
-	warp_event 11,  3, OLSTEETON_UNI_DORM_WEST_2F, 10
-	warp_event 11,  8, OLSTEETON_UNI_DINING_HALL, 10
-	warp_event 11,  9, OLSTEETON_UNI_DINING_HALL, 10
-
-
+	warp_event  1,  0, OLSTEETON_UNI_DORM_EAST_1F, 5
+	warp_event  3,  0, OLSTEETON_UNI_DORM_EAST_3F, 1
+	warp_event  6,  0, OLSTEETON_UNI_DORM_EAST_2F_ROOM_1, 1
+	warp_event 14,  0, OLSTEETON_UNI_DORM_EAST_2F_ROOM_3, 1
+	warp_event  9,  0, OLSTEETON_UNI_DORM_EAST_ELEVATOR, 1
+	
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  1, BGEVENT_JUMPTEXT, OlsteetonUniDormWest1FBookshelf1Text
-	bg_event 10,  1, BGEVENT_READ, OlsteetonUniDormWest1FBookshelf2
-	bg_event  0,  9, BGEVENT_RIGHT, OlsteetonUniDormWest1FComputer
+	bg_event  8,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormEast2FText
+	bg_event  7,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormEast2FRoom1Text
+	bg_event 11,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormEast2FRoom2Text
+	bg_event 15,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormEast2FRoom3Text
 
 	def_object_events
 	object_event 10,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDormWest1FNeeshaScript, -1
