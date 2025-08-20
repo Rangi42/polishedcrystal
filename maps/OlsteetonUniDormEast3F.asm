@@ -14,23 +14,23 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 
 	def_coord_events
 
-; 	def_bg_events
-; 	bg_event 11,  1, BGEVENT_JUMPTEXT, OlsteetonUniDormWest1FBookshelf1Text
-; 	bg_event 10,  1, BGEVENT_READ, OlsteetonUniDormWest1FBookshelf2
-; 	bg_event  0,  9, BGEVENT_RIGHT, OlsteetonUniDormWest1FComputer
+	def_bg_events
+; 	bg_event 11,  1, BGEVENT_JUMPTEXT, OlsteetonUniDormEast1FBookshelf1Text
+; 	bg_event 10,  1, BGEVENT_READ, OlsteetonUniDormEast1FBookshelf2
+; 	bg_event  0,  9, BGEVENT_RIGHT, OlsteetonUniDormEast1FComputer
 
-; 	def_object_events
-; 	object_event 10,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDormWest1FNeeshaScript, -1
-; 	object_event  5,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FLassText, -1
-; 	object_event  4,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FRichBoyText, -1
-; 	object_event  1,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FCooltrainerfText, -1
-; 	object_event  2,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FSuper_nerd1Text, -1
-; 	object_event  5,  7, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormWest1FSuper_nerd2Text, -1
+	def_object_events
+; 	object_event 10,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlsteetonUniDormEast1FNeeshaScript, -1
+; 	object_event  5,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FLassText, -1
+; 	object_event  4,  1, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FRichBoyText, -1
+; 	object_event  1,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FCooltrainerfText, -1
+; 	object_event  2,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FSuper_nerd1Text, -1
+; 	object_event  5,  7, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonUniDormEast1FSuper_nerd2Text, -1
 
-; 	object_const_def
-; 	const OlsteetonUniDormWest1F_NEESHA
+	object_const_def
+; 	const OlsteetonUniDormEast1F_NEESHA
 
-; OlsteetonUniDormWest1FNeeshaScript:
+; OlsteetonUniDormEast1FNeeshaScript:
 ; 	faceplayer
 ; 	opentext
 ; 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
@@ -48,7 +48,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	waitbutton
 ; 	closetext
 ; 	winlosstext .BeatenText, 0
-; 	setlasttalked OlsteetonUniDormWest1F_NEESHA
+; 	setlasttalked OlsteetonUniDormEast1F_NEESHA
 ; 	loadtrainer COOLTRAINERF, NEESHA
 ; 	startbattle
 ; 	reloadmapafterbattle
@@ -149,7 +149,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	line "you, trainer!"
 ; 	done
 
-; OlsteetonUniDormWest1FLassText:
+; OlsteetonUniDormEast1FLassText:
 ; 	text "Next month we're"
 ; 	line "going on a trip"
 ; 	cont "to Mt.Moon."
@@ -158,7 +158,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	line "Clefairy!"
 ; 	done
 
-; OlsteetonUniDormWest1FRichBoyText:
+; OlsteetonUniDormEast1FRichBoyText:
 ; 	text "Have you ever"
 ; 	line "wondered why"
 
@@ -171,7 +171,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	cont "Hyper Balls!"
 ; 	done
 
-; OlsteetonUniDormWest1FCooltrainerfText:
+; OlsteetonUniDormEast1FCooltrainerfText:
 ; 	text "#mon with"
 ; 	line "reduced physical"
 
@@ -180,7 +180,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	cont "enter a # Ball."
 ; 	done
 
-; OlsteetonUniDormWest1FSuper_nerd1Text:
+; OlsteetonUniDormEast1FSuper_nerd1Text:
 ; 	text "What do you get if"
 ; 	line "you cross a joke"
 
@@ -190,7 +190,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	para "………………………………"
 ; 	done
 
-; OlsteetonUniDormWest1FSuper_nerd2Text:
+; OlsteetonUniDormEast1FSuper_nerd2Text:
 ; 	text "I'm writing scripts"
 ; 	line "for a game."
 
@@ -198,13 +198,13 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	line "asm!"
 ; 	done
 
-; OlsteetonUniDormWest1FBookshelf1Text:
+; OlsteetonUniDormEast1FBookshelf1Text:
 ; 	text "It's stuffed full"
 ; 	line "of copies of"
 ; 	cont "#mon manga!"
 ; 	done
 
-; OlsteetonUniDormWest1FBookshelf2:
+; OlsteetonUniDormEast1FBookshelf2:
 ; 	opentext
 ; 	writetext .Text1
 ; 	waitbutton
@@ -232,7 +232,7 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	line "empty."
 ; 	done
 
-; OlsteetonUniDormWest1FComputer:
+; OlsteetonUniDormEast1FComputer:
 ; 	jumpthistext
 
 ; 	text "There's a player"
@@ -241,3 +241,21 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	para "around a 2D"
 ; 	line "Celadon City."
 ; 	done
+OlsteetonUniDormEast3FText:
+	text "3rd Floor"
+	done
+OlsteetonUniDormEast3FRoom1Text:
+	text "Room 301"
+	line "Resident Advisor"
+	cont "David"
+	done
+
+OlsteetonUniDormEast3FRoom2Text:
+	text "Room 302"
+	line "Shane"
+	done
+
+OlsteetonUniDormEast3FRoom3Text:
+	text "Room 303"
+	line "Elijah"
+	done
