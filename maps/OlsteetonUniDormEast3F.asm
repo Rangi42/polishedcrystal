@@ -150,58 +150,79 @@
 ; 	done
 
 ; OlsteetonUniDormWest1FLassText:
-; 	text "Next month we're"
-; 	line "going on a trip"
-; 	cont "to Mt.Moon."
+; 	text "I heard there's"
+;   line "a new class on"
 
-; 	para "Maybe I'll see a"
-; 	line "Clefairy!"
+;   para "legendary #mon"
+;   line "this year!"
+
+;   para "I can't beli-"
+;   line "eve I didn't"
+;   cont "see it!"
 ; 	done
 
 ; OlsteetonUniDormWest1FRichBoyText:
-; 	text "Have you ever"
-; 	line "wondered why"
+; 	text "My roommate is"
+;   line "super into"
+;   cont "legendary #mon."
 
-; 	para "Ultra Balls have"
-; 	line "a yellow letter"
-; 	cont "H on the top?"
-
-; 	para "It's because they"
-; 	line "were first called"
-; 	cont "Hyper Balls!"
+;   para "For me, I just"
+;   line "think Fairy"
+;   cont "types are cool!"
 ; 	done
 
 ; OlsteetonUniDormWest1FCooltrainerfText:
-; 	text "#mon with"
-; 	line "reduced physical"
+; 	text "What's even the"
+;   line "point of my" 
 
-; 	para "strength instinct-"
-; 	line "ively attempt to"
-; 	cont "enter a # Ball."
+;   para "Native Bio-"
+;   line "logy degree?"
+
+;   para "I'm gonna have"
+;   line "to move clear"
+
+;   para "to Unova if I"
+;   line "want to find"
+;   cont "a job!"
+
+;   para "Stupid Mega-"
+;   line "Corp!"
 ; 	done
 
 ; OlsteetonUniDormWest1FSuper_nerd1Text:
-; 	text "What do you get if"
-; 	line "you cross a joke"
+; 	text "No one truly ap-"
+;   line "preciates Bug"
+;   cont "#mon like me."
 
-; 	para "with a rhetorical"
-; 	line "question?"
-
-; 	para "………………………………"
+;   para "And Ast. Asher,"
+;   line "I suppose..."
 ; 	done
 
 ; OlsteetonUniDormWest1FSuper_nerd2Text:
-; 	text "I'm writing scripts"
-; 	line "for a game."
+; 	text "Who cares about"
+;   line "Bug types?!"
 
-; 	para "Do not said use"
-; 	line "asm!"
+;   para "Where are all"
+;   line "the Dragons?!"
+
+;   para "We need more"
+;   line "research on"
+;   cont "them!"
 ; 	done
 
 ; OlsteetonUniDormWest1FBookshelf1Text:
-; 	text "It's stuffed full"
-; 	line "of copies of"
-; 	cont "#mon manga!"
+; 	text "A reccreational"
+;   line "bookshelf."
+
+;   para "'Not Yet Night,'"
+;   line "'Not-Old Moon,'"
+
+;   para "'Hidden Sun,' &"
+;   line "'Smashing Sunrise'"
+
+;   para "Some of these"
+;   line "sound semi"
+;   cont "familiar..."
 ; 	done
 
 ; OlsteetonUniDormWest1FBookshelf2:
@@ -235,9 +256,17 @@
 ; OlsteetonUniDormWest1FComputer:
 ; 	jumpthistext
 
-; 	text "There's a player"
-; 	line "character running"
+; 	text "Finally! A PC"
+;   line "where it looks"
 
-; 	para "around a 2D"
-; 	line "Celadon City."
+;   para "like someone is"
+;   line "actually studying!"
+
+;   para "..."
+
+;   para "No, wait."
+;   line "It's actually"
+
+;   para "Not-Giant"
+;   line "Fortress..."
 ; 	done

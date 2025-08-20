@@ -151,36 +151,45 @@ OlsteetonUniDormEast1F_MapScriptHeader:
 ; 	done
 
 ; OlsteetonUniDormEast1FLassText:
-; 	text "Next month we're"
-; 	line "going on a trip"
-; 	cont "to Mt.Moon."
+; 	text "Did you get to"
+;	line "see the musicians"
+;	cont "in town?"
 
-; 	para "Maybe I'll see a"
-; 	line "Clefairy!"
+;	para "I go to watch"
+;	line "them inbetween"
+;	cont "classes!"
 ; 	done
 
 ; OlsteetonUniDormEast1FSuper_nerd1Text:
-; 	text "What do you get if"
-; 	line "you cross a joke"
+; 	text "Trying to remember"
+;	line "all the type adv-"
+;	cont "antages is tough."
 
-; 	para "with a rhetorical"
-; 	line "question?"
-
-; 	para "………………………………"
+;	para "I dunno if I'm"
+;	line "gonna pass this"
+;	cont "semester!"
 ; 	done
 
 ; OlsteetonUniDormEast1FSuper_nerd2Text:
-; 	text "I'm writing scripts"
-; 	line "for a game."
+; 	text "I can't wait for"
+;	line "summer break!"
 
-; 	para "Do not said use"
-; 	line "asm!"
+;	para "If I survive"
+;	line "these exams..."
 ; 	done
 
 OlsteetonUniDormEast1FSignText:
-	text "Beware:"
-	line "Students may"
-	cont "challenge you"
+	text "Gym Trainees:"
+	line "Don't slack off"
+	
+	para "young Gym Leaders!"
+	line "Test your skills"
+
+	para "by battling your"
+	line "fellows! All the"
+
+	para "professionals do"
+	line "it!"
 	done
 
 OlsteetonUniDormEast1FBookshelf2:
@@ -214,9 +223,20 @@ OlsteetonUniDormEast1FBookshelf2:
 OlsteetonUniDormEast1FComputer:
 	jumpthistext
 
-	text "There's a player"
-	line "character running"
+	text "It's some new"
+	line "game where you"
+	cont "collect monsters."
 
-	para "around a 2D"
-	line "Celadon City."
+	para "Eh, there's a"
+	line "million of those"
+	cont "these days."
+
+	para "What you really"
+	line "want is one"
+
+	para "where you can"
+	line "actually pet your"
+	
+	para "monsters - they"
+	line "deserve love, too!"
 	done
