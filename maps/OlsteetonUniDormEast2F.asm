@@ -150,58 +150,80 @@ OlsteetonUniDormWest1FNeeshaScript:
 	done
 
 OlsteetonUniDormWest1FLassText:
-	text "Next month we're"
-	line "going on a trip"
-	cont "to Mt.Moon."
+	text "I can't study"
+	line "another minute or"
+	cont "I'mma lose it!"
 
-	para "Maybe I'll see a"
-	line "Clefairy!"
+	para "All I want to do"
+	line "is go back to my"
+
+	para "room and play"
+	line "Skydrop Ravine!"
+
+	para "I'm never gonna"
+	line "finish my farm"
+	cont "at this rate!"
 	done
 
 OlsteetonUniDormWest1FRichBoyText:
-	text "Have you ever"
-	line "wondered why"
+	text "Prof. Poplar is"
+	line "definitely the"
+	cont "coolest professor."
 
-	para "Ultra Balls have"
-	line "a yellow letter"
-	cont "H on the top?"
-
-	para "It's because they"
-	line "were first called"
-	cont "Hyper Balls!"
+	para "... even if she's"
+	line "kinda brutal"
+	cont "with homework."
 	done
 
 OlsteetonUniDormWest1FCooltrainerfText:
-	text "#mon with"
-	line "reduced physical"
+	text "Eeeuuuggghhh..."
 
-	para "strength instinct-"
-	line "ively attempt to"
-	cont "enter a # Ball."
+	para "..."
+
+	para "... can't talk"
+	line "must snooze be-"
+	cont "fore class."
 	done
 
 OlsteetonUniDormWest1FSuper_nerd1Text:
-	text "What do you get if"
-	line "you cross a joke"
+	text "Next year I might"
+	line "get a chance to"
+	
+	para "be one of the"
+	line "assistants!"
 
-	para "with a rhetorical"
-	line "question?"
+	para "Helping the Prof-"
+	line "fessors with"
 
-	para "………………………………"
+	para "research will be"
+	line "a dream come true!"
 	done
 
 OlsteetonUniDormWest1FSuper_nerd2Text:
-	text "I'm writing scripts"
-	line "for a game."
+	text "I have to write"
+	line "an essay on the"
 
-	para "Do not said use"
-	line "asm!"
+	para "historical ethics"
+	line "of #mon coll-"
+	cont "ecting..."
 	done
 
 OlsteetonUniDormWest1FBookshelf1Text:
-	text "It's stuffed full"
-	line "of copies of"
-	cont "#mon manga!"
+	text "A recreational"
+	line "bookshelf for"
+	cont "students."
+
+	para "Oh my!
+
+	para "You see the new-"
+	line "est edition of"
+
+	para "the 'Two Part'"
+	line "manga! The epic"
+
+	para "sailor adventure"
+	line "that's rocked"
+	cont "the world!"
 	done
 
 OlsteetonUniDormWest1FBookshelf2:
@@ -235,9 +257,17 @@ OlsteetonUniDormWest1FBookshelf2:
 OlsteetonUniDormWest1FComputer:
 	jumpthistext
 
-	text "There's a player"
-	line "character running"
+	text "This is meant"
+	line "to be a PC for"
+	
+	para "studying, but"
+	line "someone is clearly"
 
-	para "around a 2D"
-	line "Celadon City."
+	para "playing god with"
+	line "some pixelated"
+	cont "people."
+
+	para "What a cruel and"
+	line "indifferent god"
+	cont "they are..."
 	done
