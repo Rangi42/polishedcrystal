@@ -118,3 +118,5 @@
 	tilecoll WALL, WALL, BOOKSHELF, WALL ; 75
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 76
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 77
+	tilecoll WALL, DOOR, FLOOR, FLOOR ; 78
+	tilecoll FLOOR, FLOOR, LADDER, FLOOR ; 79

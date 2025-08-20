@@ -10,6 +10,8 @@ OlsteetonUniDormWest1F_MapScriptHeader:
 	warp_event 11,  8, OLSTEETON_UNI_DINING_HALL, 2
 	warp_event 11,  9, OLSTEETON_UNI_DINING_HALL, 3
 	warp_event 11,  3, OLSTEETON_UNI_DORM_WEST_2F, 1
+	warp_event  5,  0, OLSTEETON_UNI_DORM_WEST_ELEVATOR, 1
+
 
 	def_coord_events
 

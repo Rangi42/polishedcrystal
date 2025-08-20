@@ -442,6 +442,11 @@ OlsteetonUniDormEast2F_BlockData:
 OlsteetonUniDormEast3F_BlockData:
 	INCBIN "maps/OlsteetonUniDormEast2F.ablk.lz"
 
+SECTION "OlsteetonUniDormWestElevator_BlockData", ROMX
+OlsteetonUniDormWestElevator_BlockData:
+OlsteetonUniDormEastElevator_BlockData:
+	INCBIN "maps/OlsteetonUniDormWestElevator.ablk.lz"
+
 SECTION "OlsteetonUniGymDept_BlockData", ROMX
 OlsteetonUniGymDept_BlockData:
 	INCBIN "maps/OlsteetonUniGymDept.ablk.lz"
