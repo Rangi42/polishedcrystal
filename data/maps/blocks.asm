@@ -426,9 +426,11 @@ OlsteetonUniDormWest1F_BlockData:
 
 SECTION "OlsteetonUniDormWest2F_BlockData", ROMX
 OlsteetonUniDormWest2F_BlockData:
-OlsteetonUniDormWest3F_BlockData:
 	INCBIN "maps/OlsteetonUniDormWest2F.ablk.lz"
 
+SECTION "OlsteetonUniDormWest3F_BlockData", ROMX
+OlsteetonUniDormWest3F_BlockData:
+	INCBIN "maps/OlsteetonUniDormWest3F.ablk.lz"
 SECTION "OlsteetonUniDiningHall_BlockData", ROMX
 OlsteetonUniDiningHall_BlockData:
 	INCBIN "maps/OlsteetonUniDiningHall.ablk.lz"
@@ -439,8 +441,10 @@ OlsteetonUniDormEast1F_BlockData:
 
 SECTION "OlsteetonUniDormEast2F_BlockData", ROMX
 OlsteetonUniDormEast2F_BlockData:
-OlsteetonUniDormEast3F_BlockData:
 	INCBIN "maps/OlsteetonUniDormEast2F.ablk.lz"
+SECTION "OlsteetonUniDormEast3F_BlockData", ROMX
+OlsteetonUniDormEast3F_BlockData:
+	INCBIN "maps/OlsteetonUniDormEast3F.ablk.lz"
 
 SECTION "OlsteetonUniDormWestElevator_BlockData", ROMX
 OlsteetonUniDormWestElevator_BlockData:

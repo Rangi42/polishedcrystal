@@ -4,9 +4,9 @@ OlsteetonUniDormWest3F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  1,  0, OLSTEETON_UNI_DORM_WEST_2F, 2
-	warp_event  6,  0, OLSTEETON_UNI_DORM_WEST_3F_ROOM_1, 1
-	warp_event 14,  0, OLSTEETON_UNI_DORM_WEST_3F_ROOM_3, 1
+	warp_event 15,  0, OLSTEETON_UNI_DORM_WEST_2F, 2
+	warp_event 12,  0, OLSTEETON_UNI_DORM_WEST_3F_ROOM_1, 1
+	warp_event  2,  0, OLSTEETON_UNI_DORM_WEST_3F_ROOM_3, 1
 	warp_event  9,  0, OLSTEETON_UNI_DORM_WEST_ELEVATOR, 1
 	; warp_event 17,  3, OLSTEETON_UNI_DORM_WEST_ROOF, 1
 
@@ -16,9 +16,9 @@ OlsteetonUniDormWest3F_MapScriptHeader:
 
 	def_bg_events
 	bg_event  8,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FText
-	bg_event  7,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FRoom1Text
-	bg_event 11,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FRoom2Text
-	bg_event 15,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FRoom3Text
+	bg_event 13,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FRoom1Text
+	bg_event  7,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FRoom2Text
+	bg_event  3,  0, BGEVENT_JUMPTEXT, OlsteetonUniDormWest3FRoom3Text
 
 	def_object_events
 

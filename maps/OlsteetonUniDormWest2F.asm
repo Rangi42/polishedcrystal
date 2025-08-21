@@ -6,7 +6,7 @@ OlsteetonUniDormWest2F_MapScriptHeader:
 	def_warp_events
 	warp_event 15,  0, OLSTEETON_UNI_DORM_WEST_1F, 5
 	warp_event 17,  0, OLSTEETON_UNI_DORM_WEST_3F, 1
-	warp_event 12,  0, OLSTEETON_UNI_DORM_WEST_2F_ROOM_2, 1
+	warp_event  6,  0, OLSTEETON_UNI_DORM_WEST_2F_ROOM_2, 1
 	warp_event  2,  0, OLSTEETON_UNI_DORM_WEST_2F_ROOM_3, 1
 	warp_event  9,  0, OLSTEETON_UNI_DORM_WEST_ELEVATOR, 1
 
