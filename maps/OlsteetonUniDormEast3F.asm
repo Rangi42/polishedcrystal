@@ -30,181 +30,71 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 	object_const_def
 ; 	const OlsteetonUniDormEast1F_NEESHA
 
-; OlsteetonUniDormEast1FNeeshaScript:
-; 	faceplayer
-; 	opentext
-; 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
-; 	iftruefwd .Beaten
-; 	checkevent EVENT_INTRODUCED_CELADON_FOUR
-; 	iftruefwd .IntroducedCeladonFour1
-; 	writetext .IntroText1
-; 	sjumpfwd .AfterIntro
-; .IntroducedCeladonFour1
-; 	writetext .IntroText2
-; .AfterIntro
-; 	yesorno
-; 	iffalse_jumpopenedtext .NoBattleText
-; 	writetext .SeenText
-; 	waitbutton
-; 	closetext
-; 	winlosstext .BeatenText, 0
-; 	setlasttalked OlsteetonUniDormEast1F_NEESHA
-; 	loadtrainer COOLTRAINERF, NEESHA
-; 	startbattle
-; 	reloadmapafterbattle
-; 	setevent EVENT_BEAT_COOLTRAINERF_NEESHA
-; 	opentext
-; .Beaten
-; 	setevent EVENT_INTRODUCED_CELADON_FOUR
-; 	checkevent EVENT_BEAT_COOLTRAINERM_COREY
-; 	iffalse_jumpopenedtext .AfterText1
-; 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-; 	iffalse_jumpopenedtext .AfterText1
-; 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-; 	iffalse_jumpopenedtext .AfterText1
-; 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-; 	iftrue_jumpopenedtext .FinalText
-; 	writetext .AfterText2
-; 	promptbutton
-; 	verbosegiveitem CHOICE_BAND
-; 	iffalse_endtext
-; 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-; 	jumpopenedtext .FinalText
+; OlsteetonUniDormWest1FRichBoyText:
+; 	text "My roommate is"
+;   line "super into"
+;   cont "legendary #mon."
 
-; .IntroText1:
-; 	text "Hi! I'm Neesha!"
-; 	line "I'm one of top four"
-
-; 	para "trainers in Cela-"
-; 	line "don University."
-
-; 	para "We're known as the"
-; 	line "Celadon Four!"
-
-; 	para "Want me to show"
-; 	line "you why we're so"
-; 	cont "famous?"
-
-; 	para "Then let's battle!"
+;   para "For me, I just"
+;   line "think Fairy"
+;   cont "types are cool!"
 ; 	done
 
-; .IntroText2:
-; 	text "Hi! I'm Neesha!"
-; 	line "I'm one of the"
-; 	cont "Celadon Four!"
+; OlsteetonUniDormWest1FCooltrainerfText:
+; 	text "What's even the"
+;   line "point of my" 
 
-; 	para "It looks like"
-; 	line "you've heard of us."
+;   para "Native Bio-"
+;   line "logy degree?"
 
-; 	para "Then let's battle!"
+;   para "I'm gonna have"
+;   line "to move clear"
+
+;   para "to Unova if I"
+;   line "want to find"
+;   cont "a job!"
+
+;   para "Stupid Mega-"
+;   line "Corp!"
 ; 	done
 
-; .NoBattleText:
-; 	text "Not interested in"
-; 	line "a challenge?"
+; OlsteetonUniDormWest1FSuper_nerd1Text:
+; 	text "No one truly ap-"
+;   line "preciates Bug"
+;   cont "#mon like me."
+
+;   para "And Ast. Asher,"
+;   line "I suppose..."
 ; 	done
 
-; .SeenText:
-; 	text "We'll blow you"
-; 	line "away!"
+; OlsteetonUniDormWest1FSuper_nerd2Text:
+; 	text "Who cares about"
+;   line "Bug types?!"
+
+;   para "Where are all"
+;   line "the Dragons?!"
+
+;   para "We need more"
+;   line "research on"
+;   cont "them!"
 ; 	done
 
-; .BeatenText:
-; 	text "A painful loss…"
+; OlsteetonUniDormWest1FBookshelf1Text:
+; 	text "A reccreational"
+;   line "bookshelf."
+
+;   para "'Not Yet Night,'"
+;   line "'Not-Old Moon,'"
+
+;   para "'Hidden Sun,' &"
+;   line "'Smashing Sunrise'"
+
+;   para "Some of these"
+;   line "sound semi"
+;   cont "familiar..."
 ; 	done
 
-; .AfterText1:
-; 	text "You're a worthy"
-; 	line "opponent!"
-
-; 	para "But you haven't"
-; 	line "seen everything"
-
-; 	para "the Celadon Four"
-; 	line "can do."
-
-; 	para "Why don't you find"
-; 	line "the rest of us and"
-; 	cont "challenge them?"
-; 	done
-
-; .AfterText2:
-; 	text "So you beat all of"
-; 	line "the Celadon Four…"
-
-; 	para "That's so cool!"
-
-; 	para "Take this as a"
-; 	line "prize!"
-; 	done
-
-; .FinalText:
-; 	text "It's not often that"
-; 	line "someone gives us"
-
-; 	para "Celadon Four a"
-; 	line "real challenge."
-
-; 	para "I won't forget"
-; 	line "you, trainer!"
-; 	done
-
-; OlsteetonUniDormEast1FLassText:
-; 	text "Next month we're"
-; 	line "going on a trip"
-; 	cont "to Mt.Moon."
-
-; 	para "Maybe I'll see a"
-; 	line "Clefairy!"
-; 	done
-
-; OlsteetonUniDormEast1FRichBoyText:
-; 	text "Have you ever"
-; 	line "wondered why"
-
-; 	para "Ultra Balls have"
-; 	line "a yellow letter"
-; 	cont "H on the top?"
-
-; 	para "It's because they"
-; 	line "were first called"
-; 	cont "Hyper Balls!"
-; 	done
-
-; OlsteetonUniDormEast1FCooltrainerfText:
-; 	text "#mon with"
-; 	line "reduced physical"
-
-; 	para "strength instinct-"
-; 	line "ively attempt to"
-; 	cont "enter a # Ball."
-; 	done
-
-; OlsteetonUniDormEast1FSuper_nerd1Text:
-; 	text "What do you get if"
-; 	line "you cross a joke"
-
-; 	para "with a rhetorical"
-; 	line "question?"
-
-; 	para "………………………………"
-; 	done
-
-; OlsteetonUniDormEast1FSuper_nerd2Text:
-; 	text "I'm writing scripts"
-; 	line "for a game."
-
-; 	para "Do not said use"
-; 	line "asm!"
-; 	done
-
-; OlsteetonUniDormEast1FBookshelf1Text:
-; 	text "It's stuffed full"
-; 	line "of copies of"
-; 	cont "#mon manga!"
-; 	done
-
-; OlsteetonUniDormEast1FBookshelf2:
+; OlsteetonUniDormWest1FBookshelf2:
 ; 	opentext
 ; 	writetext .Text1
 ; 	waitbutton
@@ -232,14 +122,22 @@ OlsteetonUniDormEast3F_MapScriptHeader:
 ; 	line "empty."
 ; 	done
 
-; OlsteetonUniDormEast1FComputer:
+; OlsteetonUniDormWest1FComputer:
 ; 	jumpthistext
 
-; 	text "There's a player"
-; 	line "character running"
+; 	text "Finally! A PC"
+;   line "where it looks"
 
-; 	para "around a 2D"
-; 	line "Celadon City."
+;   para "like someone is"
+;   line "actually studying!"
+
+;   para "..."
+
+;   para "No, wait."
+;   line "It's actually"
+
+;   para "Not-Giant"
+;   line "Fortress..."
 ; 	done
 OlsteetonUniDormEast3FText:
 	text "3rd Floor"
