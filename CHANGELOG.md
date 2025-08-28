@@ -8,13 +8,79 @@
 
 ***Note: The following changelog may contain spoilers.***
 
+## v3.2.0
+
+This current stable release.
+
+### Additions
+- Added pluralize script command to auto-pluralize words as needed.
+- Added in-game tips specific to Polished Crystal.
+- Added new move tutors and associated event flags.
+- Added new Alolan Sandslash and A-Vulpix/Ninetales sprites by mauvesea.
+- Added icons for Pokédex and Pokégear, supports icons for special items.
+- Added egg page to summary screen.
+- Added ability blacklist routine for Trace + Skill Swap.
+- Added scaled base EXP exceptions (e.g., Happiny).
+- Added check for savestate loading affecting SRAM usage.
+- Added Earth Power to Ursaluna and Bloodmoon Ursaluna.
+
+#### Fixes
+- Fixed mail encoding (avoid ngrams).
+- Fixed battle text delay to minimum of 1s.
+- Fixed Rare Candy bug at level 100.
+- Fixed cries during trade animation.
+- Fixed Celadon University lag (sprite overlap).
+- Fixed Elm battle vs. Togepi request logic.
+- Fixed text speed options behavior.
+- Fixed ineligible switch textboxes on first turn.
+- Fixed nickname screen palette bug.
+- Fixed headbutt/cut trees visual glitch during lightning.
+- Fixed VermilionCity NPC disappearing from sprite limit.
+- Fixed hidden ability for Typhlosion-H.
+- Fixed object pop-in issues across various routes.
+- Fixed Ghost mon `<TARGET>` name override.
+- Fixed dev room tile collision (head in wall).
+- Fixed instant text skip on in-battle move description.
+- Fixed music and SFX bugs (e.g., PGO leader's room).
+- Fixed lucky island text input using proper `rawchar`.
+- Fixed Spiky-Eared Pichu crash when trading special Pokémon.
+- Fixed Jessie & James rematch logic and unused event flag.
+- Fixed evolution-during-battle edge cases.
+- Fixed ability activation bugs (Imposter, Neutralizing Gas, etc).
+- Fixed Ability label confusion for disabling animations.
+- Fixed Safari Zone bait/rock mechanics with abilities.
+- Fixed neutralizing gas handling.
+- Fixed ability icon display logic on rental mon trade.
+- Fixed miscellaneous visual and formatting bugs.
+
+#### Changes
+- Re-introduced trade evolutions.
+- Adjusted Magikarp record length (now 106.6 cm).
+- Updated "badge" capitalization in text to match vanilla.
+- Improved Neutralizing Gas + Skill Swap interaction logic.
+- Improved battle animations (summary, Ursaluna fix).
+- Improved AI damage calc (e.g., Parental Bond).
+- Adjusted move animations and fix order of status/inflict routines.
+- Updated Summary Screen (major visual/functional upgrade).
+- Rewrote loading for Pikachu's unique moves (Yellow Forest).
+- Adjusted Heracross palette (and reverted + reapplied fix).
+- Adjusted RockItems to total 256.
+- Renamed CryHeader/Cry/MonCry for clarity.
+- Renamed "items" to "held items" in base stats.
+- Merged interrupt enables into VBlankUpdateSound.
+
+#### Removals
+- Removed duplicate Sketch from Smeargle.
+- Removed unused unique move for Scizor.
+- Removed duplicate egg text.
+- Removed unreachable tree from Route 16 West.
+- Deleted redundant PNGs for Slowpoke sprites.
+
 ## v3.1.1
 
 This is a hotfix release that removes one bug that caused the overworld graphics to glitch out badly when hatching an egg.
 
 ## v3.1.0
-
-This is the newest stable version release which finished a number of branches that were under development and added them to v3.0.0, along with a few other small additions.
 
 ### Additions
 - Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp (though it will be a one-off encounter in future). There are now 289 species of Pokémon plus 46 variant forms and 56 cosmetic forms.
