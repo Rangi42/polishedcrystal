@@ -7433,12 +7433,17 @@ _GetNewBaseExp:
 	pop hl
 	inc hl
 	inc hl
+
+	; NO_FORM should be treated as a wildcard
+	and a ; cp NO_FORM
+	jr z, .any_form
 	cp b
 	jr nz, .evos_loop
+.any_form
 	ld a, d
 	cp c
 	jr nz, .evos_loop
-	
+
 .stage_1_or_nonevolver
 	ld a, 7 ; 1st stage or non-evolver: *7/20 -> *0.35
 .got_multiplier

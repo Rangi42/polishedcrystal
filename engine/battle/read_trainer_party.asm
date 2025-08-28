@@ -41,33 +41,11 @@ ReadTrainerParty:
 	ld c, a
 
 	call GetNextTrainerDataByte
-	ld [wCurForm], a
 	ld b, a
-
-; NPC trainers should appear to have Kantonian Arbok in Kanto,
-; so form 0 becomes 1 (Johto) or 2 (Kanto), non-zero forms remain unchanged
-	assert !HIGH(ARBOK)
-	and SPECIESFORM_MASK
-	jr nz, .not_arbok
-	ld a, c
-	cp LOW(ARBOK)
-	jr nz, .not_arbok
-
-	push bc
-	call RegionCheck
-	ld a, e
-	pop bc
-	and a
-	assert ARBOK_JOHTO_FORM == ARBOK_KANTO_FORM - 1
-	ld c, ARBOK_KANTO_FORM
-	jr nz, .got_arbok_form
-	dec c
-.got_arbok_form
+	call SetDynamicForm
 	ld a, b
-	or c
 	ld [wCurForm], a
 
-.not_arbok
 	ld a, OTPARTYMON
 	ld [wMonType], a
 
@@ -307,6 +285,39 @@ ReadTrainerParty:
 	pop hl
 .no_stat_recalc
 	jmp .loop2
+
+SetDynamicForm:
+; Adjust form of mon in bc dynamically based on context if no form is set.
+; If no dynamic setting applies, b is set to plain form.
+	ld a, b
+	and FORM_MASK
+	ret nz
+
+	; First, set b to base form in case no special case applies.
+	inc b ; ld b, PLAIN_FORM ; (don't overwrite other parts of b)
+
+	; Check for Arbok.
+	assert !HIGH(ARBOK)
+	bit MON_EXTSPECIES_F, b
+	ret nz
+	ld a, c
+	cp LOW(ARBOK)
+	ret nz
+
+	push bc
+	call RegionCheck
+	ld a, e
+	pop bc
+
+	and a
+	assert ARBOK_JOHTO_FORM == ARBOK_KANTO_FORM - 1
+	ld a, ARBOK_KANTO_FORM
+	jr nz, .got_arbok_form
+	dec a
+.got_arbok_form
+	or b
+	ld b, a
+	ret
 
 Battle_GetTrainerName::
 	ld a, [wInBattleTowerBattle]
