@@ -112,9 +112,9 @@ ENDM
 MACRO def_dvs
 ; each arg: 0-15 All/HP/Atk/Def/Spe/SAt/SDf (All sets all 6 stats).
 ; based on showdown importable syntax
-	def EV_ALL = 0
+	def VV_{STATS$0} = 0
 	for x, 1, EACH_SPREAD_STAT
-		def EV_{STATS{x}} = 15
+		def VV_{STATS{x}} = 15
 	endr
 	def_dvs_or_evs \#
 ENDM
@@ -123,37 +123,37 @@ MACRO def_evs
 ; each arg: 0-252 All/HP/Atk/Def/Spe/SAt/SDf (All sets all 6 stats).
 ; based on showdown importable syntax
 	for x, EACH_SPREAD_STAT
-		def EV_{STATS{x}} = 0
+		def VV_{STATS{x}} = 0
 	endr
 	def_dvs_or_evs \#
+	if VV_TOTAL > MODERN_EV_LIMIT
+		warn "too many EVs: {d:VV_TOTAL} > {d:MODERN_EV_LIMIT}"
+	endc
 ENDM
 
 MACRO def_dvs_or_evs
-	def EV_TOTAL = 0
+	def VV_TOTAL = 0
 	rept _NARG
-		def _got_ev = 0
+		def _got_vv = 0
 		for x, EACH_SPREAD_STAT
 			def y = STRRFIND(STRUPR("\1"), " {STATS{x}}")
-			if !_got_ev && y != -1
-				redef _EV_VALUE EQUS STRSLICE("\1", 0, y)
-				def EV_{STATS{x}} = {_EV_VALUE}
-				def EV_TOTAL += EV_{STATS{x}}
-				def _got_ev = 1
+			if !_got_vv && y != -1
+				redef _VV_VALUE EQUS STRSLICE("\1", 0, y)
+				def VV_{STATS{x}} = {_VV_VALUE}
+				def VV_TOTAL += VV_{STATS{x}}
+				def _got_vv = 1
 			endc
 		endr
-		if !_got_ev
-			fail "invalid EV \1"
+		if !_got_vv
+			fail "invalid DV/EV \1"
 		endc
-		if EV_ALL != 0
-			def EV_TOTAL = EV_ALL
+		if VV_ALL != 0
+			def VV_TOTAL = VV_ALL
 			for x, 1, EACH_SPREAD_STAT
-				def EV_{STATS{x}} = {EV_TOTAL}
+				def VV_{STATS{x}} = {VV_TOTAL}
 			endr
-			def EV_TOTAL *= 6
+			def VV_TOTAL *= 6
 		endc
 		shift
 	endr
-	if EV_TOTAL > MODERN_EV_LIMIT
-		warn "too many EVs: {d:EV_TOTAL} > {d:MODERN_EV_LIMIT}"
-	endc
 ENDM
