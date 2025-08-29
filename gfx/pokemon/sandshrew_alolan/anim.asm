@@ -1,13 +1,16 @@
-	setrepeat 1
-	frame 0, 10
-	frame 1, 16
-	frame 2, 8
-	frame 3, 8
-	frame 2, 8
-	frame 3, 8
-	frame 2, 8
-	frame 1, 8
-	frame 2, 8
-	frame 1, 8
-	dorepeat 5
+	frame 0, 20
+	frame 1, 4
+	frame 2, 4
+	frame 3, 4
+	frame 4, 4
+	frame 5, 4
+	frame 6, 4
+	frame 7, 4
+	frame 4, 4
+	frame 5, 4
+	frame 6, 4
+	frame 7, 4
+	frame 3, 4
+	frame 2, 4
+	frame 1, 4
 	endanim
