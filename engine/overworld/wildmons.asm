@@ -928,50 +928,66 @@ RandomPhoneRareWildMon:
 
 .GetGrassmon:
 	push hl
-	ld bc, 5 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
+	; Skip map ID (2 bytes) and encounter rates (3 bytes)
+	ld bc, 5
 	add hl, bc
+
+	; Get current time of day and skip to that section
 	call GetTimeOfDayNotEve
 	ld bc, NUM_GRASSMON * 3
 	rst AddNTimes
+
+	; Select one of the last 3 entries (rarest Pokémon)
 	ld a, 3
 	call RandomRange
 	ld c, a
-	ld b, $0
+	ld b, 0
+	ld de, 4 * 3 ; Skip first 4 entries to get to entries 4, 5, 6
+	add hl, de
+	add hl, bc ; Add random offset (0-2 entries)
 	add hl, bc
 	add hl, bc
-	add hl, bc
-; We now have the pointer to one of the last (rarest) three wild Pokemon found in that area.
+
+	; Skip level byte, read species and form
 	inc hl
-	ld a, [hli] ; Contains the species index of this rare Pokemon
+	ld a, [hli] ; Species
 	ld c, a
-	ld a, [hl] ; Contains the form (including extspecies)
+	ld a, [hl] ; Form
 	ld b, a
 	ld [wCurForm], a
 	pop hl
-	ld de, 5 + 0 * 3
+
+	; Check if this rare Pokémon appears in the first 4 common entries
+	ld de, 5 ; Skip map ID (2) + encounter rates (3)
 	add hl, de
-	inc hl ; Species index of the most common Pokemon on that route
-	ld d, 4
+	call GetTimeOfDayNotEve
+	ld bc, NUM_GRASSMON * 3
+	rst AddNTimes
+
+	ld d, 4 ; Check first 4 entries
 .loop2
-	ld a, [hli]
-	cp c ; Compare this Pokemon with the rare one stored in c.
-	ld a, [hli]
+	inc hl ; Skip level
+	ld a, [hli] ; Species
+	cp c
 	jr nz, .next
-	xor b ; Compare extspecies bit
+	ld a, [hl] ; Form
+	xor b
 	and EXTSPECIES_MASK
-	jr z, .done
+	jr z, .done ; Found match, not rare
 .next
-	inc hl
+	inc hl ; Skip form byte
 	dec d
 	jr nz, .loop2
-; This Pokemon truly is rare.
+
+	; This Pokémon truly is rare
 	push bc
 	dec c
 	ld a, c
 	call CheckSeenMon
 	pop bc
 	jr nz, .done
-; Since we haven't seen it, have the caller tell us about it.
+
+	; Haven't seen it, tell the player
 	ld de, wStringBuffer1
 	call CopyName1
 	ld hl, wNamedObjectIndex
@@ -1006,28 +1022,48 @@ RandomPhoneWildMon:
 	jr c, .ok
 	ld hl, KantoGrassWildMons
 	call LookUpWildmonsForMapDE
+	jr nc, .error
 
 .ok
-	ld bc, 5 + 0 * 3
+	; Skip map ID (2 bytes) and encounter rates (3 bytes)
+	ld bc, 5
 	add hl, bc
+
+	; Get current time of day and skip to that section
 	call GetTimeOfDayNotEve
 	ld bc, NUM_GRASSMON * 3
 	rst AddNTimes
 
+	; Select random entry from all 7 entries
 	call Random
-	and $3
+	and $7
+	cp 7
+	jr z, .error ; Shouldn't happen but safety check
 	ld c, a
-	add a
-	add c
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
+	ld b, 0
+	add hl, bc ; Add random offset
+	add hl, bc
+	add hl, bc
+
+	; Skip level byte, read species and form
 	inc hl
-	ld a, [hli]
+	ld a, [hli] ; Species
 	ld [wNamedObjectIndex], a
-	ld a, [hl]
+	ld a, [hl] ; Form
+	ld [wCurForm], a
+	ld [wNamedObjectIndex + 1], a
+	call GetPokemonName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer4
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+	ret
+
+.error
+	; Fallback to a safe default if something goes wrong
+	ld a, PIDGEY
+	ld [wNamedObjectIndex], a
+	xor a
 	ld [wCurForm], a
 	ld [wNamedObjectIndex + 1], a
 	call GetPokemonName
@@ -1098,17 +1134,26 @@ RandomPhoneMon:
 	; bc == size of mon sub-struct
 	ld b, 0
 
-	; b currently holds party size in bytes
-	ld a, b
-	add l
+	; Count the number of Pokémon in the party
 	ld e, 0
 	push hl
 .count_mon
+	ld a, [wTrainerGroupBank]
+	call GetFarByte
+	inc hl
+	and a
+	jr z, .done_counting ; End of party marker
 	inc e
+	dec hl
 	add hl, bc
-	cp l
-	jr nz, .count_mon
+	jr .count_mon
+.done_counting
 	pop hl
+
+	; Make sure we have at least 1 Pokémon
+	ld a, e
+	and a
+	jr z, .error
 
 .rand
 	call Random
@@ -1130,6 +1175,19 @@ RandomPhoneMon:
 	ld a, l
 	ld [wNamedObjectIndex], a
 	ld a, h
+	ld [wNamedObjectIndex+1], a
+	call GetPokemonName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer4
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+	ret
+
+.error
+	; Fallback to a safe default if something goes wrong
+	ld a, PIDGEY
+	ld [wNamedObjectIndex], a
+	xor a
 	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
