@@ -214,11 +214,11 @@ endr
 	setflag ENGINE_CREDITS_SKIP
 
 	; move test
-	givepoke CHANSEY, PLAIN_FORM, 30, FLAME_ORB
+	givepoke CHANSEY, PLAIN_FORM, 80, FLAME_ORB
 	givepokemove MAGIC_ROOM, wPartyMon1, 0
 	givepokemove WONDER_ROOM, wPartyMon1, 1
 	givepokemove PSYSTRIKE, wPartyMon1, 2
-	givepokemove MUD_SPORT, wPartyMon1, 3
+	givepokemove RECOVER, wPartyMon1, 3
 	loadmem wPartyMon3PP+0, 99
 	loadmem wPartyMon3PP+1, 99
 	loadmem wPartyMon3PP+2, 99
