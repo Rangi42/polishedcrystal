@@ -440,7 +440,7 @@ BattleCommand_checkturn:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_throat_chop
 	ld a, [hl]
-	and $F0
+	and THROAT_CHOP_MASK
 	jr z, .not_throat_chopped
 
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -1921,7 +1921,7 @@ BattleCommand_checkhit:
 	add $11
 	call MultiplyAndDivide
 
-	ld a, [wFieldEffects]
+	ld a, [wGravityTrickRoom]
 	and FIELD_GRAVITY
 	jr z, .no_gravity
 	ln a, 5, 3
@@ -3836,12 +3836,35 @@ BattleCommand_damagestats:
 	ld d, a
 	ret z
 
+	ld e, $00
+	ld a, [wMagicWonderRoom]
+	and FIELD_WONDER_ROOM
+	jr z, .which_attack
+	ld e, $ff
+
+.which_attack
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp SPECIAL
-	jr nc, .special
+	jr nc, .special_attack
+.physical_attack
+	ld b, SCREENS_REFLECT
+	xor a ; By default, $00 = physical
+	jr .which_defense
+.special_attack
+	ld b, SCREENS_LIGHT_SCREEN
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	ld a, $ff ; By default, $ff = special
+	jr nz, .which_defense
+	xor a ; If psystrike, instead default to $00 = physical
 
-.physical
+.which_defense
+	xor e
+	ld e, b ; We need b in the next segment, so move the record of phys/spec attack to e.
+	jr nz, .special_defense
+.physical_defense
 	ld hl, wBattleMonDefense
 	call GetOpponentMonAttr
 	ld a, [hli]
@@ -3852,26 +3875,8 @@ BattleCommand_damagestats:
 	call DittoMetalPowder
 	call UnevolvedEviolite
 
-	ld hl, wBattleMonAttack
-	call GetUserMonAttr
-	call GetFutureSightUser
-	jr z, .atk_ok
-	ld a, MON_ATK
-	call TrueUserPartyAttr
-.atk_ok
-	call GetOpponentActiveScreens
-	and SCREENS_REFLECT
-	jr z, .thickcluborlightball
-	sla c
-	rl b
-	jr .thickcluborlightball
-
-.special
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_PSYSTRIKE
-	jr z, .psystrike
-
+	jr .calculate_attack
+.special_defense
 	ld hl, wBattleMonSpDef
 	call GetOpponentMonAttr
 	ld a, [hli]
@@ -3881,47 +3886,69 @@ BattleCommand_damagestats:
 	call SandstormSpDefBoost
 	call UnevolvedEviolite
 
-	jr .lightscreen
-
-.psystrike
-	ld hl, wBattleMonDefense
-	call GetOpponentMonAttr
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
-	call HailDefenseBoost
-	call DittoMetalPowder
-	call UnevolvedEviolite
-
-.lightscreen
+.calculate_attack
+	ld a, e
+	and SCREENS_REFLECT
+	jr z, .get_special
+.get_physical
+	ld hl, wBattleMonAttack
+	call GetUserMonAttr
+	call GetFutureSightUser
+	jr z, .screens
+	ld a, MON_ATK
+	call TrueUserPartyAttr
+	jr .screens
+.get_special
 	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
 	call GetFutureSightUser
-	jr z, .sat_ok
+	jr z, .screens
 	ld a, MON_SAT
 	call TrueUserPartyAttr
-.sat_ok
+
+.screens
 	call GetOpponentActiveScreens
-	and SCREENS_LIGHT_SCREEN
-	jr z, .lightball
+	and e
+	jr z, .thickcluborlightball
 	sla c
 	rl b
-
-.lightball
-; Note: Returns player special attack at hl in hl.
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
-	call LightBallBoost
-	jr .done
+	jr .thickcluborlightball
 
 .thickcluborlightball
 ; Note: Returns player attack at hl in hl.
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
+	ld a, e
+	cp SCREENS_REFLECT
+	jr nz, .justlightball
 	call ThickClubOrLightBallBoost
+	jr .mudsports
+.justlightball
+	call LightBallBoost
+
+.mudsports 
+; Mud Sport multiplies bp of Electric moves by 0.33.
+	ld a, [wFieldSports]
+	and FIELD_MUD_SPORT
+	jr z, .watersports
+	ld a, BATTLE_VARS_MOVE_TYPE 
+	call GetBattleVar
+	cp ELECTRIC
+	jr z, .thirdbp
+.watersports 
+; Water Sport multiplies bp of Fire moves by 0.33.
+	ld a, [wFieldSports]
+	and FIELD_WATER_SPORT
+	jr z, .done
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE 
+	jr nz, .done
+.thirdbp
+	ld a, d
+	farcall DivideBy3
+	ld d, a
 
 .done
 	call TruncateHL_BC
@@ -6785,7 +6812,11 @@ GetUserItemAfterUnnerve::
 	jr z, .got_embargo
 	ld a, [wEnemyThroatChopEmbargoCount]
 .got_embargo
-	and $0F
+	and EMBARGO_MASK
+	jr nz, .item_disabled
+	ld a, [wMagicWonderRoom]
+	; Check magic room
+	and FIELD_MAGIC_ROOM
 	jr nz, .item_disabled
 	; Check unnerve
 	call GetUserItem
@@ -7003,4 +7034,32 @@ GetOpponentWeight::
 	ret nz
 	srl h
 	rr l
+	ret
+
+BattleCommand_wakeopponent:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld b, a
+	and SLP_MASK
+	ret z
+	ld a, b
+	and ~SLP_MASK
+	ld [hl], a
+	call RefreshBattleHuds
+	ld hl, WokeUpOpponentText
+	call StdBattleTextbox
+	ret
+
+BattleCommand_healparaopp:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld b, a
+	and (1 << PAR)
+	ret z
+	ld a, b
+	and ~(1 << PAR)
+	ld [hl], a
+	call RefreshBattleHuds
+	ld hl, HealParalysisOpponentText
+	call StdBattleTextbox
 	ret

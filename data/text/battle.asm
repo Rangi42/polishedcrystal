@@ -649,6 +649,11 @@ WokeUpText:
 	line "woke up!"
 	prompt
 
+WokeUpOpponentText:
+	text "<TARGET>"
+	line "woke up!"
+	prompt
+
 FrozenSolidText:
 	text "<USER>"
 	line "is frozen solid!"
@@ -1262,6 +1267,52 @@ TrickRoomEndedText:
 	line "normal!"
 	prompt
 
+MagicRoomText:
+	text "It created a"
+	line "bizarre area."
+
+	para "Held items lost"
+	line "their effects!"
+	prompt
+
+MagicRoomEndedText:
+	text "The effects of"
+	line "Magic Room faded."
+	prompt
+
+WonderRoomText:
+	text "It created a"
+	line "bizarre area."
+
+	para "Def and Sp.Def"
+	line "have been swapped!"
+	prompt
+
+WonderRoomEndedText:
+	text "The effects of"
+	line "Wonder Room faded."
+	prompt
+
+WaterSportText:
+	text "Fire's power"
+	line "was weakened!"
+	prompt
+
+WaterSportEndedText:
+	text "The effects of"
+	line "Water Sport ended."
+	prompt
+
+MudSportText:
+	text "Electric's power"
+	line "was weakened!"
+	prompt
+
+MudSportEndedText:
+	text "The effects of"
+	line "Mud Sport ended."
+	prompt
+
 IntenseGravityText:
 	text "Gravity"
 	line "intensified!"
@@ -1367,6 +1418,12 @@ FullyParalyzedText:
 AlreadyParalyzedText:
 	text "<TARGET> is"
 	line "already paralyzed!"
+	prompt
+
+HealParalysisOpponentText:
+	text "<TARGET>'s"
+	line "paralysis is"
+	cont "healed!"
 	prompt
 
 ProtectedByText:

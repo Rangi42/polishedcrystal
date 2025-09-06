@@ -1,5 +1,5 @@
 BattleCommand_checkgravity:
-	ld a, [wFieldEffects]
+	ld a, [wGravityTrickRoom]
 	and FIELD_GRAVITY
 	ret z
 
@@ -8,7 +8,7 @@ BattleCommand_checkgravity:
 	farjp EndMoveEffect
 
 BattleCommand_gravity:
-	ld hl, wFieldEffects
+	ld hl, wGravityTrickRoom
 	ld a, FIELD_GRAVITY
 	and [hl]
 	jr nz, .failed

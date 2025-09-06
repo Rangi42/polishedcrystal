@@ -602,17 +602,27 @@ wWhichMonFaintedFirst:: db
 wLastPlayerCounterMove:: db
 wLastEnemyCounterMove:: db
 
-wTrickRoom:: db
-
 wBattleLowHealthAlarm:: db
 
 wPlayerSemiInvulnerableType:: db
 wEnemySemiInvulnerableType:: db
 
-wFieldEffects::
+wFieldSports::
 ; bit
-; 3-7 unused
-; 0-2 gravity
+; 4-7 water
+; 0-3 mud
+	db
+
+wGravityTrickRoom::
+; bit
+; 4-7 trick room
+; 0-3 gravity
+	db
+
+wMagicWonderRoom::
+; bit
+; 4-7 wonder room
+; 0-3 magic room
 	db
 
 wPlayerHazards::
@@ -1058,7 +1068,7 @@ wSummaryMoveSwap:: db
 
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
-ds 13
+ds 12
 assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10

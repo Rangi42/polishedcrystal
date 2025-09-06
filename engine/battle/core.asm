@@ -3364,7 +3364,7 @@ SpikesDamage:
 	ld c, 1
 SpikesDamage_GotAbility:
 ; Input: b: ability, c: 0 if forced out, 1 otherwise
-	ld a, [wFieldEffects]
+	ld a, [wGravityTrickRoom]
 	and FIELD_GRAVITY
 	jr nz, .gravity
 
