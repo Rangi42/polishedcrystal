@@ -3839,10 +3839,10 @@ BattleCommand_damagestats:
 	ld e, $00
 	ld a, [wMagicWonderRoom]
 	and FIELD_WONDER_ROOM
-	jr z, .got_wonder_room
+	jr z, .get_move_category
 	dec e
 
-.got_wonder_room
+.get_move_category
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp SPECIAL
@@ -3861,11 +3861,11 @@ BattleCommand_damagestats:
 	cp EFFECT_PSYSTRIKE
 	; By default, set a to $ff = special
 	ld a, $ff 
-	jr nz, .which_defense
+	jr nz, .get_defense_or_spdef
 	; If psystrike, instead default to $00 = physical
 	xor a 
 
-.which_defense
+.get_defense_or_spdef
 	xor e
 	; We need b in the next segment, so move the record of phys/spec attack to e.
 	ld e, b 
