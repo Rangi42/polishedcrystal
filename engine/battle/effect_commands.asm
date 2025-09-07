@@ -440,7 +440,7 @@ BattleCommand_checkturn:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_throat_chop
 	ld a, [hl]
-	and THROAT_CHOP_MASK
+	and SUBSTATUS_THROAT_CHOP
 	jr z, .not_throat_chopped
 
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -6842,7 +6842,7 @@ GetUserItemAfterUnnerve::
 	jr z, .got_embargo
 	ld a, [wEnemyThroatChopEmbargoCount]
 .got_embargo
-	and EMBARGO_MASK
+	and SUBSTATUS_EMBARGO
 	jr nz, .item_disabled
 	ld a, [wMagicWonderRoom]
 	; Check magic room

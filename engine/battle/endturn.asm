@@ -1224,7 +1224,7 @@ HandleEmbargo:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_embargo
 	ld a, [hl]
-	and EMBARGO_MASK
+	and SUBSTATUS_EMBARGO
 	ret z
 	ld a, [hl]
 	dec a
