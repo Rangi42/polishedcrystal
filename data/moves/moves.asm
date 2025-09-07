@@ -523,4 +523,5 @@ endc
 	move EFFECT_MUD_SPORT,           0, GROUND,     -1, 15,   0, STATUS   ; MUD_SPORT
 	move EFFECT_MAGIC_ROOM,          0, PSYCHIC,    -1, 10,   0, STATUS   ; MAGIC_ROOM
 	move EFFECT_WONDER_ROOM,         0, PSYCHIC,    -1, 10,   0, STATUS   ; WONDER_ROOM
+	move EFFECT_BODY_PRESS,          0, FIGHTING,  100, 10,   0, PHYSICAL ; BODY_PRESS
 .IndirectEnd::

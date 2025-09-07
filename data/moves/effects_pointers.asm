@@ -220,4 +220,5 @@ MoveEffectsPointers:
 	dw MudSport
 	dw MagicRoom
 	dw WonderRoom
+	dw BodyPress
 	assert_table_length NUM_MOVE_EFFECTS

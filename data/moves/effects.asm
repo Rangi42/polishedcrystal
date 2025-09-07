@@ -3149,3 +3149,6 @@ WonderRoom:
 	doturn
 	wonderroom
 	endmove
+
+BodyPress:
+	jmp NormalHit
