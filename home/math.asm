@@ -1,5 +1,9 @@
+; Returns `a * c` in `a`
+; @input `a` = First value
+; @input `c` = Second value
+; @output `a` -> `a * c` 
+; @clobbers `a`
 SimpleMultiply::
-; Return a * c.
 	and a
 	ret z
 
@@ -13,8 +17,14 @@ SimpleMultiply::
 	pop bc
 	ret
 
+; Returns `a / c` in `b` and `a`.
+; If `c` is `0`, the game will crash.
+; @input `a` = First value
+; @input `c` = Second value
+; @output `a` -> `a % c`
+; @output `b` -> `a / c`
+; @clobbers `a`, `b`, `c`
 SimpleDivide::
-; Divide a by c. Return quotient b and remainder a.
 	inc c
 	dec c
 	jr z, .div0
@@ -30,9 +40,13 @@ SimpleDivide::
 	ld a, ERR_DIV_ZERO
 	jmp Crash
 
+; Multiplies and divides `hMultiplicand` by the nybbles in `a`
+; @input `hMultiplicand` = Value to modify
+; @input `a` = $xy multiply by x, divide by y
+; @output `hMultiplicand`/`hQuotient` -> Quotient
+; @output `hRemainder` -> Remainder
+; @clobbers `a`
 MultiplyAndDivide::
-; a = $xy: multiply multiplicands by x, then divide by y
-; Used for damage modifiers, catch rate modifiers, etc.
 	push bc
 	ld b, a
 

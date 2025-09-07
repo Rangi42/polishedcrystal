@@ -192,11 +192,17 @@ AnonBankPush::
 	pop af
 	ret
 
+; Calls the following code in ROM bank `b`.
+; Previous ROM bank is restored on `ret`
+; @input `a` = ROM bank to switch to
+; @clobbers `a`
 StackCallInBankB:
-; Call the following function in bank b. Clobbers a.
 	ld a, b
+; Calls the following code in ROM bank `a`.
+; Previous ROM bank is restored on `ret`
+; @input `a` = ROM bank to switch to
+; @clobbers `a`
 StackCallInBankA:
-; Call the following function in bank a. Clobbers a.
 	add sp, -3
 	push de
 	push hl
@@ -236,11 +242,16 @@ StackCallInBankA:
 	pop de
 	jmp Bankswitch
 
+; Calls the following code in `wDecompressScratch`'s WRAM bank.
+; Previous WRAM bank is restored on `ret`
+; @clobbers `a`
 RunFunctionInWRA6::
-; Call the following function in wDecompressScratch's WRAM bank. Clobbers a.
 	ld a, BANK(wDecompressScratch)
+; Calls the following code in WRAM bank `a`.
+; Previous WRAM bank is restored on `ret`
+; @input `a` = WRAM bank to switch to
+; @clobbers `a`
 StackCallInWRAMBankA::
-; Call the following function in WRAM bank a. Clobbers a.
 	add sp, -3
 	push de
 	push hl

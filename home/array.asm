@@ -1,14 +1,36 @@
-FarIsInByteArray:
+; Finds value `c` in array `a:hl` of width `1`
+; @input `c` = Value to search for
+; @input `a` = ROM bank of array
+; @input `hl` = Array to search
+; @output `b` -> Index of the found value
+; @output `hl` -> Address of found value
+; @flag `c` -> Set if found
+; @clobbers `a`, `hl`, `bc`, `de`
+FarIsInByteArray::
 ; Find value c in array a:hl.
 	call StackCallInBankA
 .Function:
 	ld a, c
-	; fallthrough
+	fallthrough IsInByteArray
+; Finds value `a` in array `hl` of width `1`
+; @input `a` = Value to search for
+; @input `hl` = Array to search
+; @output `b` -> Index of the found value
+; @output `hl` -> Address of found value
+; @flag `c` -> Set if found
+; @clobbers `a`, `hl`, `bc`, `de`
 IsInByteArray::
 	ld de, 1
+	fallthrough IsInArray
+; Finds value `a` in array `hl` of width `de`
+; @input `a` = Value to search for
+; @input `hl` = Array to search
+; @input `de` = Width of array
+; @output `b` -> Index of the found value
+; @output `hl` -> Address of found value
+; @flag `c` -> Set if found
+; @clobbers `a`, `hl`, `bc`
 IsInArray::
-; Find value a for every de bytes in array hl.
-; Return index in b, and carry if found.
 	ld b, 0
 	ld c, a
 .loop
@@ -22,16 +44,30 @@ IsInArray::
 	add hl, de
 	jr .loop
 
+; Finds value `bc` in array `a:hl` of width `de`
+; @input `bc` = Value to search for
+; @input `a` = ROM bank of array
+; @input `hl` = Array to search
+; @input `de` = Width of array
+; @output `hl` -> Address of found value
+; @flag `c` -> Set if found
+; @clobbers `a`, `hl`, `bc`
 FarIsInWordArray::
-; Find value bc in array a:hl.
 	call StackCallInBankA
 .Function:
 	jr IsInWordArray
 
 IsInWordArray_NextItem:
 	add hl, de
+	fallthrough IsInWordArray
+; Finds value `bc` in array `hl` of width `de`
+; @input `bc` = Value to search for
+; @input `hl` = Array to search
+; @input `de` = Width of array
+; @output `hl` -> Address of found value
+; @flag `c` -> Set if found
+; @clobbers `a`, `hl`, `bc`
 IsInWordArray::
-; Same as IsInArray, but for word values. The value is input in bc; index not returned.
 	ld a, [hli]
 	and [hl]
 	inc a
@@ -48,7 +84,7 @@ IsInWordArray::
 SkipNames::
 ; Skip a names.
 	ld bc, NAME_LENGTH
-	; fallthrough
+	fallthrough _AddNTimes
 _AddNTimes::
 ; Add bc * a to hl. Don't optimize this for space.
 	and a
