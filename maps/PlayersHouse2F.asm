@@ -223,6 +223,10 @@ endr
 	loadmem wPartyMon3PP+1, 99
 	loadmem wPartyMon3PP+2, 99
 	loadmem wPartyMon3PP+3, 99
+	loadmem wPartyMon1DVs+0, $ff
+	loadmem wPartyMon1DVs+1, $00
+	loadmem wPartyMon1DVs+2, $ff
+	loadmem wPartyMon1Nature, LONELY
 
 	; good party
 	givepoke MISDREAVUS, PLAIN_FORM, 100, BRIGHTPOWDER

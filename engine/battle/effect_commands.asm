@@ -3826,7 +3826,6 @@ SetDefenseBoost:
 
 BattleCommand_damagestats:
 ; Return move power d, player level e, enemy defense c and player attack b.
-
 	call ResetDamage
 
 ; No damage dealt with 0 power.
@@ -3836,6 +3835,7 @@ BattleCommand_damagestats:
 	ld d, a
 	ret z
 
+; Check for wonder room. If present, we store $ff in e to xor with later.
 	ld e, $00
 	ld a, [wMagicWonderRoom]
 	and FIELD_WONDER_ROOM
@@ -3848,15 +3848,17 @@ BattleCommand_damagestats:
 	cp SPECIAL
 	jr nc, .special_attack
 .physical_attack
+; If the attack is physical, we make a note of it in b by co-opting the reflect mask.
 	ld b, SCREENS_REFLECT
-	xor a ; By default, $00 = physical
+	xor a ; Default a to $00, which is the value signalling "physical defense" later.
 	jr .which_defense
 .special_attack
+; If the attack is special, we make a note of it in b by coopting the light screen mask
 	ld b, SCREENS_LIGHT_SCREEN
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_PSYSTRIKE
-	ld a, $ff ; By default, $ff = special
+	ld a, $ff ; By default, set a to $ff = special
 	jr nz, .which_defense
 	xor a ; If psystrike, instead default to $00 = physical
 
@@ -3874,7 +3876,6 @@ BattleCommand_damagestats:
 	call HailDefenseBoost
 	call DittoMetalPowder
 	call UnevolvedEviolite
-
 	jr .calculate_attack
 .special_defense
 	ld hl, wBattleMonSpDef
