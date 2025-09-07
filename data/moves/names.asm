@@ -442,5 +442,4 @@ endc
 	li "Mud Sport"
 	li "Magic Room"
 	li "Wonder Room"
-	li "Body Press"
 	assert_list_length NUM_ATTACKS

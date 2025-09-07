@@ -475,5 +475,4 @@ endc
 	dba BattleAnim_Struggle        ; MUD_SPORT
 	dba BattleAnim_Struggle        ; MAGIC_ROOM
 	dba BattleAnim_Struggle        ; WONDER_ROOM
-	dba BattleAnim_Struggle        ; BODY_PRESS
 	assert_table_length NUM_ATTACKS + 1

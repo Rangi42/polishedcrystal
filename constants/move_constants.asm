@@ -448,7 +448,6 @@ endc
 	const WATER_SPORT   ; $1B1
 	const MAGIC_ROOM    ; $1B2
 	const WONDER_ROOM   ; $1B3
-	const BODY_PRESS    ; $1B4
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

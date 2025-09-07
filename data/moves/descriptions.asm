@@ -441,7 +441,6 @@ MoveDescriptions1:
 	dw WaterSportDescription
 	dw MagicRoomDescription
 	dw WonderRoomDescription
-	dw BodyPressDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -2012,9 +2011,4 @@ MagicRoomDescription:
 WonderRoomDescription:
 	text "Temporarily swaps"
 	next "Def with Sp.Def."
-	done
-
-BodyPressDescription:
-	text "Inflicts damage"
-	next "based off defense."
 	done

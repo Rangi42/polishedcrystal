@@ -3901,24 +3901,16 @@ BattleCommand_damagestats:
 	call HailDefenseBoost
 	call DittoMetalPowder
 	call UnevolvedEviolite
-	jr .get_offensive_stat
+	jr .calculate_attack
 .spdef_boosts
 	call SandstormSpDefBoost
 	call UnevolvedEviolite
 
-.get_offensive_stat
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_BODY_PRESS
-	jr z, .not_body_press
-	ld hl, wBattleMonDefense
-	call GetUserMonAttr
-	jr .screens
-.not_body_press
+.calculate_attack
 	ld a, e
 	and SCREENS_REFLECT
-	jr z, .get_spatk
-.get_attack
+	jr z, .get_special
+.get_physical
 	ld hl, wBattleMonAttack
 	call GetUserMonAttr
 	call GetFutureSightUser
@@ -3926,7 +3918,7 @@ BattleCommand_damagestats:
 	ld a, MON_ATK
 	call TrueUserPartyAttr
 	jr .screens
-.get_spatk
+.get_special
 	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
 	call GetFutureSightUser
@@ -4167,10 +4159,6 @@ ApplyAttackBoosts:
 	ld hl, wPlayerAtkLevel
 	ld de, wEnemyAtkLevel
 	jr ApplyStatBoostDamageAfterUnaware
-ApplyDefenseDamageBoosts:
-	ld hl, wPlayerDefLevel
-	ld de, wEnemyDefLevel
-	jr ApplyStatBoostDamageAfterUnaware
 ApplySpecialAttackBoosts:
 	ld hl, wPlayerSAtkLevel
 	ld de, wEnemySAtkLevel
@@ -4180,6 +4168,7 @@ ApplyDefenseBoosts:
 	ld hl, wEnemyDefLevel
 	ld de, wPlayerDefLevel
 	jr ApplyDefStatBoostDamageAfterUnaware
+
 ApplySpecialDefenseBoosts:
 	ld hl, wEnemySDefLevel
 	ld de, wPlayerSDefLevel
@@ -4294,8 +4283,6 @@ BattleCommand_damagecalc:
 	call GetBattleVar
 	cp EFFECT_PSYSTRIKE
 	jr z, .psystrike_mod
-	cp EFFECT_BODY_PRESS
-	jr z, .body_press_mod
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp SPECIAL
@@ -4309,10 +4296,6 @@ BattleCommand_damagecalc:
 	jr .stat_boosts_done
 .psystrike_mod
 	call ApplySpecialAttackBoosts
-	call ApplyDefenseBoosts
-	jr .stat_boosts_done
-.body_press_mod
-	call ApplyDefenseDamageBoosts
 	call ApplyDefenseBoosts
 
 .stat_boosts_done
