@@ -214,17 +214,17 @@ endr
 	setflag ENGINE_CREDITS_SKIP
 
 	; move test
-	givepoke HITMONLEE, PLAIN_FORM, 80, LEFTOVERS
+	givepoke DITTO, PLAIN_FORM, 20, METAL_POWDER
 	givepokemove WONDER_ROOM, wPartyMon1, 0
 	givepokemove PSYCHIC, wPartyMon1, 1
-	givepokemove PSYSTRIKE, wPartyMon1, 2
+	givepokemove AMNESIA, wPartyMon1, 2
 	givepokemove RECOVER, wPartyMon1, 3
-	loadmem wPartyMon3PP+0, 99
-	loadmem wPartyMon3PP+1, 99
-	loadmem wPartyMon3PP+2, 99
-	loadmem wPartyMon3PP+3, 99
+	loadmem wPartyMon1PP+0, 99
+	loadmem wPartyMon1PP+1, 99
+	loadmem wPartyMon1PP+2, 99
+	loadmem wPartyMon1PP+3, 99
 	loadmem wPartyMon1DVs+0, $ff
-	loadmem wPartyMon1DVs+1, $00
+	loadmem wPartyMon1DVs+1, $ff
 	loadmem wPartyMon1DVs+2, $ff
 	loadmem wPartyMon1Nature, LONELY
 

@@ -649,11 +649,6 @@ WokeUpText:
 	line "woke up!"
 	prompt
 
-WokeUpOpponentText:
-	text "<TARGET>"
-	line "woke up!"
-	prompt
-
 FrozenSolidText:
 	text "<USER>"
 	line "is frozen solid!"

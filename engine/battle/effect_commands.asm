@@ -3834,6 +3834,8 @@ BattleCommand_damagestats:
 	and a
 	ld d, a
 	ret z
+	; We won't need base power for a while, so let's push it temporarily to make room.
+	push de
 
 ; Check for wonder room. If present, we store $ff in e to xor with later.
 	ld e, $00
@@ -3848,27 +3850,26 @@ BattleCommand_damagestats:
 	cp SPECIAL
 	jr nc, .special_attack
 .physical_attack
-; If the attack is physical, we make a note of it in b by co-opting the reflect mask.
-	ld b, SCREENS_REFLECT
-	; Default a to $00, which is the value signalling "physical defense" later.
+; If the attack is physical, we make a note of it in d by co-opting the reflect mask.
+	ld d, SCREENS_REFLECT
+	; Default a to 0, which is the value signalling "physical defense" later.
 	xor a 
-	jr .which_defense
+	jr .get_defense_or_spdef
 .special_attack
-; If the attack is special, we make a note of it in b by co-opting the light screen mask
-	ld b, SCREENS_LIGHT_SCREEN
+; If the attack is special, we make a note of it in d by co-opting the light screen mask
+	ld d, SCREENS_LIGHT_SCREEN
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_PSYSTRIKE
 	; By default, set a to $ff = special
-	ld a, $ff 
+	ld a, $ff
 	jr nz, .get_defense_or_spdef
 	; If psystrike, instead default to $00 = physical
 	xor a 
 
 .get_defense_or_spdef
-	xor e
-	; We need b in the next segment, so move the record of phys/spec attack to e.
-	ld e, b 
+	; XOR of e (wonder room) and a (targeted defense stat of move) determines which defense to use.
+	xor e 
 	jr nz, .special_defense
 .physical_defense
 	ld hl, wBattleMonDefense
@@ -3877,10 +3878,12 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
-	call HailDefenseBoost
-	call DittoMetalPowder
-	call UnevolvedEviolite
-	jr .calculate_attack
+	ld a, e
+	and a
+	; If 0, Wonder Room is up, so the move was originally targeting physical defense.
+	; Thus, we should be applying the boosts for SpDef, instead.
+	jr z, .spdef_boosts
+	jr .defense_boosts
 .special_defense
 	ld hl, wBattleMonSpDef
 	call GetOpponentMonAttr
@@ -3888,6 +3891,18 @@ BattleCommand_damagestats:
 	ld b, a
 	ld c, [hl]
 
+	ld a, e
+	and a
+	; If 0, Wonder Room is up, so the move was originally targeting special defense.
+	; Thus, if not zero, apply the boosts for SpDef, and if zero, apply for Defense.
+	jr nz, .spdef_boosts
+
+.defense_boosts
+	call HailDefenseBoost
+	call DittoMetalPowder
+	call UnevolvedEviolite
+	jr .calculate_attack
+.spdef_boosts
 	call SandstormSpDefBoost
 	call UnevolvedEviolite
 
@@ -3912,36 +3927,39 @@ BattleCommand_damagestats:
 	call TrueUserPartyAttr
 
 .screens
+; Double defense if screens are active.
 	call GetOpponentActiveScreens
 	and e
-	jr z, .thickcluborlightball
+	jr z, .thick_club_or_light_ball
 	sla c
 	rl b
-	jr .thickcluborlightball
+	jr .thick_club_or_light_ball
 
-.thickcluborlightball
+.thick_club_or_light_ball
 ; Note: Returns player attack at hl in hl.
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
 	ld a, e
 	cp SCREENS_REFLECT
-	jr nz, .justlightball
+	jr nz, .just_light_ball
 	call ThickClubOrLightBallBoost
-	jr .mudsports
-.justlightball
+	jr .mud_sports
+.just_light_ball
 	call LightBallBoost
 
-.mudsports 
+.mud_sports 
 ; Mud Sport multiplies bp of Electric moves by 0.33.
+	; As a reminder, d = base power, so we need to retrieve that now.
+	pop de
 	ld a, [wFieldSports]
 	and FIELD_MUD_SPORT
-	jr z, .watersports
+	jr z, .water_sports
 	ld a, BATTLE_VARS_MOVE_TYPE 
 	call GetBattleVar
 	cp ELECTRIC
 	jr z, .thirdbp
-.watersports 
+.water_sports
 ; Water Sport multiplies bp of Fire moves by 0.33.
 	ld a, [wFieldSports]
 	and FIELD_WATER_SPORT

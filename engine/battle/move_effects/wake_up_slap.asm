@@ -19,5 +19,7 @@ BattleCommand_wakeopponent:
 	and ~SLP_MASK
 	ld [hl], a
 	call RefreshBattleHuds
-	ld hl, WokeUpOpponentText
-	jmp StdBattleTextbox
+	call SwitchTurn
+	ld hl, WokeUpText
+	call StdBattleTextbox
+	jmp SwitchTurn
