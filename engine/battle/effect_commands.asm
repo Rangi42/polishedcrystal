@@ -4102,24 +4102,31 @@ BattleCommand_clearmissdamage:
 
 	jmp ResetDamage
 
+; e = level, b = def (or spdef if Wonder Room), c = atk, d = 40 (base power of self-hit)
 HitSelfInConfusion:
 	call ResetDamage
 	ld hl, wBattleMonLevel
 	call GetUserMonAttr
 	; e = Level
 	ld e, [hl]
-	ld bc, wBattleMonDefense + 1 - wBattleMonLevel
-	assert wBattleMonDefense - 2 == wBattleMonAttack
-	add hl, bc
-	; bc = Defense
-	ld a, [hld]
-	ld c, a
-	ld a, [hld]
+
+	ld hl, wBattleMonDefense
+	ld a, [wMagicWonderRoom]
+	and FIELD_WONDER_ROOM
+	jr z, .skip_wonder_room
+	ld hl, wBattleMonSpDef
+.skip_wonder_room
+	call GetUserMonAttr
+	ld a, [hli]
+	ld c, [hl]
 	ld b, a
-	; hl = Attack
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a
+
+	ld hl, wBattleMonAttack
+	call GetUserMonAttr
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+
 	call TruncateHL_BC
 	ld d, 40
 	ld e, a
@@ -4212,7 +4219,7 @@ ConfusedDamageCalc:
 	call DamagePass1
 	call DamagePass2
 	push bc
-	; This way we ignore Unnerve
+	; This way we ignore Unnerve <- (do they mean Unaware?)
 	ld hl, wPlayerAtkLevel
 	ld de, wEnemyAtkLevel
 	call ApplyStatBoostDamage
