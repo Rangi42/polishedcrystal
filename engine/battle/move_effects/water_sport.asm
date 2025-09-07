@@ -8,9 +8,7 @@ BattleCommand_watersport::
     ld [hl], a
     ld hl, WaterSportText
     jmp StdBattleTextbox
-    ret
 
 .failed
     farcall AnimateFailedMove
-	farcall TryPrintButItFailed
-	ret
+	jmp TryPrintButItFailed

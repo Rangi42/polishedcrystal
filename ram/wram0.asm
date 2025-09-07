@@ -609,8 +609,8 @@ wEnemySemiInvulnerableType:: db
 
 wFieldSports::
 ; bit
-; 4-7 water
-; 0-3 mud
+; 4-7 water sport
+; 0-3 mud sport
 	db
 
 wGravityTrickRoom::
@@ -737,7 +737,7 @@ wAmuletCoin:: db
 
 wDVAndPersonalityBuffer:: ds 5
 
-	ds 6 ; unused battle ram
+	ds 5 ; unused battle ram
 
 wBattleEnd::
 
@@ -1068,7 +1068,7 @@ wSummaryMoveSwap:: db
 
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
-ds 12
+ds 13
 assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10

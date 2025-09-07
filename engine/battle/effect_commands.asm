@@ -3839,10 +3839,10 @@ BattleCommand_damagestats:
 	ld e, $00
 	ld a, [wMagicWonderRoom]
 	and FIELD_WONDER_ROOM
-	jr z, .which_attack
-	ld e, $ff
+	jr z, .got_wonder_room
+	dec e
 
-.which_attack
+.got_wonder_room
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp SPECIAL
@@ -3850,21 +3850,25 @@ BattleCommand_damagestats:
 .physical_attack
 ; If the attack is physical, we make a note of it in b by co-opting the reflect mask.
 	ld b, SCREENS_REFLECT
-	xor a ; Default a to $00, which is the value signalling "physical defense" later.
+	; Default a to $00, which is the value signalling "physical defense" later.
+	xor a 
 	jr .which_defense
 .special_attack
-; If the attack is special, we make a note of it in b by coopting the light screen mask
+; If the attack is special, we make a note of it in b by co-opting the light screen mask
 	ld b, SCREENS_LIGHT_SCREEN
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_PSYSTRIKE
-	ld a, $ff ; By default, set a to $ff = special
+	; By default, set a to $ff = special
+	ld a, $ff 
 	jr nz, .which_defense
-	xor a ; If psystrike, instead default to $00 = physical
+	; If psystrike, instead default to $00 = physical
+	xor a 
 
 .which_defense
 	xor e
-	ld e, b ; We need b in the next segment, so move the record of phys/spec attack to e.
+	; We need b in the next segment, so move the record of phys/spec attack to e.
+	ld e, b 
 	jr nz, .special_defense
 .physical_defense
 	ld hl, wBattleMonDefense
@@ -4220,7 +4224,7 @@ ConfusedDamageCalc:
 	call DamagePass1
 	call DamagePass2
 	push bc
-	; This way we ignore Unnerve <- (do they mean Unaware?)
+	; This way we ignore Unaware
 	ld hl, wPlayerAtkLevel
 	ld de, wEnemyAtkLevel
 	call ApplyStatBoostDamage
@@ -7042,32 +7046,4 @@ GetOpponentWeight::
 	ret nz
 	srl h
 	rr l
-	ret
-
-BattleCommand_wakeopponent:
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld b, a
-	and SLP_MASK
-	ret z
-	ld a, b
-	and ~SLP_MASK
-	ld [hl], a
-	call RefreshBattleHuds
-	ld hl, WokeUpOpponentText
-	call StdBattleTextbox
-	ret
-
-BattleCommand_healparaopp:
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld b, a
-	and (1 << PAR)
-	ret z
-	ld a, b
-	and ~(1 << PAR)
-	ld [hl], a
-	call RefreshBattleHuds
-	ld hl, HealParalysisOpponentText
-	call StdBattleTextbox
 	ret

@@ -8,9 +8,7 @@ BattleCommand_mudsport::
     ld [hl], a
     ld hl, MudSportText
     jmp StdBattleTextbox
-    ret
 
 .failed
     farcall AnimateFailedMove
-	farcall TryPrintButItFailed
-	ret
+	jmp TryPrintButItFailed

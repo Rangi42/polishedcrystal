@@ -1421,9 +1421,9 @@ AlreadyParalyzedText:
 	prompt
 
 HealParalysisOpponentText:
-	text "<TARGET>'s"
-	line "paralysis is"
-	cont "healed!"
+	text "<TARGET>"
+	line "was cured of"
+	cont "paralysis!"
 	prompt
 
 ProtectedByText:

@@ -8,3 +8,16 @@ BattleCommand_wakeupslap:
     add a
     ld [hl], a
     ret
+
+BattleCommand_wakeopponent:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld b, a
+	and SLP_MASK
+	ret z
+	ld a, b
+	and ~SLP_MASK
+	ld [hl], a
+	call RefreshBattleHuds
+	ld hl, WokeUpOpponentText
+	jmp StdBattleTextbox
