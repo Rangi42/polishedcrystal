@@ -177,7 +177,7 @@ RocketHideoutB4FMeetLeadersScript:
 .CandelaIntro3Text:
 	text "Candela: Looks"
 	line "like this one has"
-	cont "has power!"
+	cont "power!"
 
 	para "Since you made it"
 	line "this far, let's"
