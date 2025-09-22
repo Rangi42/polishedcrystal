@@ -982,7 +982,7 @@ wStatusFlags2::
 	; bit 2: bug contest timer
 	; bit 3: seen shamouti island
 	; bit 4: bike shop call
-	; bit 5: can use sweet scent
+	; bit 5: using sweet honey
 	; bit 6: exorcised lav radio tower
 	; bit 7: rockets in mahogany
 	db
