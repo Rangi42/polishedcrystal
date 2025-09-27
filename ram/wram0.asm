@@ -602,17 +602,27 @@ wWhichMonFaintedFirst:: db
 wLastPlayerCounterMove:: db
 wLastEnemyCounterMove:: db
 
-wTrickRoom:: db
-
 wBattleLowHealthAlarm:: db
 
 wPlayerSemiInvulnerableType:: db
 wEnemySemiInvulnerableType:: db
 
-wFieldEffects::
+wFieldSports::
 ; bit
-; 3-7 unused
-; 0-2 gravity
+; 4-7 water sport
+; 0-3 mud sport
+	db
+
+wGravityTrickRoom::
+; bit
+; 4-7 trick room
+; 0-3 gravity
+	db
+
+wMagicWonderRoom::
+; bit
+; 4-7 wonder room
+; 0-3 magic room
 	db
 
 wPlayerHazards::
@@ -727,7 +737,7 @@ wAmuletCoin:: db
 
 wDVAndPersonalityBuffer:: ds 5
 
-	ds 6 ; unused battle ram
+	ds 5 ; unused battle ram
 
 wBattleEnd::
 

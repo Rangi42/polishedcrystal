@@ -3075,3 +3075,77 @@ Imprison:
 	checkpriority
 	imprison
 	endmove
+
+WakeUpSlap:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	wakeupslap
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	wakeopponent
+	posthiteffects
+	endmove
+
+SmellingSalt:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	checkpriority
+	critical
+	smellingsalt
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	postfainteffects
+	healparaopp
+	posthiteffects
+	endmove
+
+WaterSport:
+	checkobedience
+	usedmovetext
+	doturn
+	watersport
+	endmove
+
+MudSport:
+	checkobedience
+	usedmovetext
+	doturn
+	mudsport
+	endmove
+
+MagicRoom:
+	checkobedience
+	usedmovetext
+	doturn
+	magicroom
+	endmove
+
+WonderRoom:
+	checkobedience
+	usedmovetext
+	doturn
+	wonderroom
+	endmove

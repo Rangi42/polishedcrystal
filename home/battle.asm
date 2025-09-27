@@ -805,8 +805,8 @@ CheckSpeed::
 ; Compares speed stat, applying items (usually, see above) and
 ; stat changes. and see who ends up on top. Returns z if the player
 ; outspeeds, otherwise nz, randomly on tie (which also sets carry)
-	ld a, [wTrickRoom]
-	and a
+	ld a, [wGravityTrickRoom]
+	and FIELD_TRICK_ROOM
 	jr z, .CheckSpeed
 	call .CheckSpeed
 	ret c ; was random anyway, and we don't want to unset carry
