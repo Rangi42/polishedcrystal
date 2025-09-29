@@ -772,6 +772,7 @@ CheckSpeed::
 	jr z, .CheckSpeed
 	call .CheckSpeed
 	ret c ; was random anyway, and we don't want to unset carry
+	and 1
 	xor 1
 	ret
 
