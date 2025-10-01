@@ -24,12 +24,13 @@ INCLUDE "macros/scripts/trade_anims.asm"
 INCLUDE "macros/scripts/oam_anims.asm"
 INCLUDE "macros/scripts/pic_anims.asm"
 
+INCLUDE "constants/hardware_constants.asm"
+INCLUDE "constants/ram_constants.asm"
+
 if DEF(MONOCHROME)
 INCLUDE "macros/monochrome.asm"
 endc
 
-INCLUDE "constants/hardware_constants.asm"
-INCLUDE "constants/ram_constants.asm"
 INCLUDE "constants/misc_constants.asm"
 INCLUDE "constants/gfx_constants.asm"
 INCLUDE "constants/text_constants.asm"
