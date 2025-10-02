@@ -1,12 +1,19 @@
+; Gets the variable from `BATTLE_VARS_*` constant in `a`, depending on current turn.
+; @input `a` = `BATTLE_VARS_*` constant to get value for
+; @output `a` -> Requested variable
+; @clobbers `a`
 GetBattleVar::
 	push hl
 	call GetBattleVarAddr
 	pop hl
 	ret
 
+; Gets the variable from `BATTLE_VARS_*` constant in `a`, depending on current turn.
+; @input `a` = `BATTLE_VARS_*` constant to get value for
+; @output `a` -> Requested variable
+; @output `hl` -> Requested variable's address
+; @clobbers `a`, `hl`
 GetBattleVarAddr::
-; Get variable from pair a, depending on whose turn it is.
-; There are 22 variable pairs.
 	push bc
 
 	ld hl, BattleVarPairs
