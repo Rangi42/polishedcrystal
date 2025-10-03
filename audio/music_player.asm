@@ -1230,7 +1230,7 @@ SetVisualIntensity:
 	ld bc, 2
 	rst AddNTimes
 	ld a, d
-	ldi [hl], a
+	ld [hli], a
 	ld a, e
 	and $f
 	ld e, a
@@ -1282,7 +1282,7 @@ UpdateVisualIntensity:
 	ld [hl], a
 	ret nc
 	add 64
-	ldi [hl], a
+	ld [hli], a
 .update_channels:
 	inc hl
 	ld a, [hld]
