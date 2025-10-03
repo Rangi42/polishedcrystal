@@ -396,12 +396,10 @@ Special_DayCareManOutside:
 	text_end
 
 .AskGiveEgg:
-	eventflagcheck EVENT_BRED_AN_EGG
-	jr z, .not_bred_yet
 	; if user already bred an egg, use shorter monologue.
+	eventflagcheck EVENT_BRED_AN_EGG
 	ld hl, .IntroAgainText
-	jr .show_question
-.not_bred_yet
+	jr nz, .show_question
 	ld hl, .IntroText
 .show_question
 	call PrintText
