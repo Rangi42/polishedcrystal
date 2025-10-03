@@ -12,10 +12,14 @@ ROMVERSION := 0x32
 FILLER := 0xff
 
 ifneq ($(wildcard rgbds/.*),)
-RGBDS := rgbds/
+RGBDS ?= rgbds/
 else
-RGBDS :=
+RGBDS ?=
 endif
+RGBASM  ?= $(RGBDS)rgbasm
+RGBFIX  ?= $(RGBDS)rgbfix
+RGBGFX  ?= $(RGBDS)rgbgfx
+RGBLINK ?= $(RGBDS)rgblink
 
 Q :=
 
@@ -124,7 +128,7 @@ huffman: crystal
 
 
 rgbdscheck.o: rgbdscheck.asm
-	$Q$(RGBDS)rgbasm -o $@ $<
+	$Q$(RGBASM) -o $@ $<
 
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
@@ -134,12 +138,12 @@ preinclude_deps := includes.asm $(shell tools/scan_includes includes.asm)
 
 define DEP
 $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
-	$Q$$(RGBDS)rgbasm $$(RGBASM_FLAGS) -o $$@ $$<
+	$Q$$(RGBASM) $$(RGBASM_FLAGS) -o $$@ $$<
 endef
 
 define VCDEP
 $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
-	$Q$$(RGBDS)rgbasm $$(RGBASM_VC_FLAGS) -o $$@ $$<
+	$Q$$(RGBASM) $$(RGBASM_VC_FLAGS) -o $$@ $$<
 endef
 
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
@@ -152,13 +156,13 @@ $(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc.patch.template
 
 .$(EXTENSION): tools/bankends
 $(ROM_NAME).$(EXTENSION): $(crystal_obj) layout.link
-	$Q$(RGBDS)rgblink $(RGBLINK_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
-	$Q$(RGBDS)rgbfix $(RGBFIX_FLAGS) $@
+	$Q$(RGBLINK) $(RGBLINK_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
+	$Q$(RGBFIX) $(RGBFIX_FLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME).map >&2
 
 $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
-	$Q$(RGBDS)rgblink $(RGBLINK_VC_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
-	$Q$(RGBDS)rgbfix $(RGBFIX_FLAGS) $@
+	$Q$(RGBLINK) $(RGBLINK_VC_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
+	$Q$(RGBFIX) $(RGBFIX_FLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME)_vc.map >&2
 
 .bsp: tools/bspcomp
@@ -275,12 +279,12 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 #	$Qsuperfamiconv tiles -R -i $@ -d $<
 
 %.2bpp: %.png
-	$Q$(RGBDS)rgbgfx -c dmg=e4 $(rgbgfx) -o $@ $<
+	$Q$(RGBGFX) -c dmg=e4 $(rgbgfx) -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -o $@ $@)
 
 %.1bpp: %.png
-	$(RGBDS)rgbgfx -c dmg=e4 $(rgbgfx) -d1 -o $@ $<
+	$(RGBGFX) -c dmg=e4 $(rgbgfx) -d1 -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -d1 -o $@ $@)
 
@@ -312,4 +316,4 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 	$Qtools/png_dimensions $< $@
 
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
-	$QRGBDS=$(RGBDS) tools/collision_asm2bin.sh $< $@
+	$QRGBASM=$(RGBASM) RGBLINK=$(RGBLINK) tools/collision_asm2bin.sh $< $@
