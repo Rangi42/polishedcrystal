@@ -1634,6 +1634,16 @@ _NotYetText::
 	text "Not yet…"
 	done
 
+SECTION "_FoundAnEggAgainText", ROMX
+_FoundAnEggAgainText::
+	text "Ah, it's you!"
+
+	para "Your #mon had"
+	line "another Egg!"
+
+	para "You want it?"
+	done
+
 SECTION "_FoundAnEggText", ROMX
 _FoundAnEggText::
 	text "Ah, it's you!"
