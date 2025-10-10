@@ -70,10 +70,14 @@ _PrepareFrontpic:
 	ld a, [wCurForm]
 	ld b, a
 	call GetCosmeticSpeciesAndFormIndex
-	ld hl, PokemonPicPointers
-rept 5
+	ld h, b
+	ld l, c
+	add hl, hl
 	add hl, bc
-endr
+	add hl, hl
+	add hl, bc
+	ld bc, PokemonPicPointers
+	add hl, bc
 	ld a, BANK(PokemonPicPointers)
 	call GetFarByte
 	push af
@@ -202,10 +206,14 @@ GetBackpic:
 	push de
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	ld hl, PokemonPicPointers
-rept 5
+	ld h, b
+	ld l, c
+	add hl, hl
 	add hl, bc
-endr
+	add hl, hl
+	add hl, bc
+	ld bc, PokemonPicPointers
+	add hl, bc
 	ld a, BANK(PokemonPicPointers)
 	call GetFarByte
 	push af

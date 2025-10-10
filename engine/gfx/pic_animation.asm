@@ -826,26 +826,25 @@ GetMonAnimPointer:
 
 GetMonFramesPointer:
 	call GetMonAnimDataIndex
-	ld hl, FramesPointers
+	ld h, b
+	ld l, c
+	add hl, hl
 	add hl, bc
+	add hl, hl
 	add hl, bc
-	ld a, BANK(FramesPointers)
+	ld bc, PokemonPicPointers
+	add hl, bc
+	ld a, BANK(PokemonPicPointers)
+	call GetFarByte
+	ld [wPokeAnimFramesBank], a
+	ld bc, 5
+	add hl, bc
+	ld a, BANK(PokemonPicPointers)
 	call GetFarWord
 	ld a, l
 	ld [wPokeAnimFramesAddr], a
 	ld a, h
 	ld [wPokeAnimFramesAddr + 1], a
-	ld a, [wPokeAnimVariant]
-	and EXTSPECIES_MASK
-	jr nz, .johto_frames
-	ld a, [wPokeAnimSpecies]
-	cp CHIKORITA
-	; a = carry ? BANK(KantoFrames) : BANK(JohtoFrames)
-	assert BANK(KantoFrames) + 1 == BANK(JohtoFrames)
-.johto_frames
-	sbc a
-	add BANK(JohtoFrames)
-	ld [wPokeAnimFramesBank], a
 	ret
 
 GetMonBitmaskPointer:
