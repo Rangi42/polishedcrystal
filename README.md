@@ -63,6 +63,10 @@ If you have questions or comments, please check or post on any of these sites. (
 - [Nuzlocke Forums](http://s7.zetaboards.com/Nuzlocke_Forum/topic/11003710/)
 - [Pokémon Hackers Online](http://www.pokemonhackersonline.com/showthread.php?t=15811)
 
+Additional resource:
+
+- [PolishedDex](https://www.polisheddex.app/) — An online companion for Polished Crystal. PolishedDex provides a searchable Pokédex, move list, item list, locations, abilities, special events, and a team builder. It also includes a FAQ and links to the official ROM releases, making it a convenient reference while playing.
+
 ## Screenshots
 
 ![title-screen](screenshots/title-screen.png)

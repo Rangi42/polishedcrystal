@@ -13,6 +13,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 * [Which emulator should I use?](#which-emulator-should-i-use)
 * [What are the .sym files for?](#what-are-the-sym-files-for)
 * [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
+* [Is there an online companion or database I can use?](#is-there-an-online-companion-or-database-i-can-use)
 * [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
 * [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
 * [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)
@@ -91,6 +92,11 @@ A [wiki](https://github.com/Rangi42/polishedcrystal/wiki) is provided with vario
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
 
 You can also just use in-game features! The Pokédex has a lot more information, including base stats and detailed wild locations.
+
+
+### Is there an online companion or database I can use?
+
+Yes. PolishedDex (https://www.polisheddex.app/) is an unofficial online companion site for Polished Crystal. It provides a searchable Pokédex, move list, items, locations, abilities, special events, and a team builder. The site also links to official ROM releases and includes a FAQ and quick reference pages that many players find helpful while playing. If you prefer browsing an online reference instead of (or in addition to) the in-repo data and wiki, PolishedDex is a great resource.
 
 
 ### Why is shiny Gyarados gold? Is the red Gyarados shiny?
