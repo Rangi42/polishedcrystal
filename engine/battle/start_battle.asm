@@ -187,7 +187,7 @@ ClearBattleRAM:
 	ld [hl], a
 
 	ld [wMenuScrollPosition], a
-	ld [wCriticalHit], a
+	ld [wMoveHitState], a
 	ld [wBattleMonSpecies], a
 	ld [wCurBattleMon], a
 	ld [wTimeOfDayPal], a

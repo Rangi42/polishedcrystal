@@ -17,7 +17,6 @@ FarChangeStat:
 	jr z, .player
 	call HasOpponentFainted
 	ret z
-	jr z, .not_fainted
 .player
 	call HasUserFainted
 	ret z
@@ -291,7 +290,7 @@ UseStatItemText:
 
 GetStatName:
 	ld hl, StatNames
-	ld c, "@"
+	ld c, '@'
 .CheckName:
 	dec b
 	jr z, .Copy
@@ -443,6 +442,3 @@ PlayStatChangeAnim:
 	ld a, b
 	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
-
-StatPals: ; similar to X items
-INCLUDE "gfx/battle/stats.pal"

@@ -138,7 +138,7 @@ SwitchPartyMons:
 	call ApplyTilemapInVBlank
 	call DelayFrame
 
-	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld a, PAD_A | PAD_B | PAD_SELECT
 	ld [wMenuJoypadFilter], a
 
 	farcall PartyMenuSelect
@@ -390,7 +390,7 @@ SwapPartyItem:
 	ld a, [wSwitchMon]
 	dec a
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	call ApplyTilemapInVBlank
 	call SetDefaultBGPAndOBP
 	call DelayFrame
@@ -1558,14 +1558,14 @@ MoveScreen_ListMovesFast:
 .cursor_loop
 	inc a
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	cp d
 	jr nz, .not_selected_swap
-	ld [hl], "▷"
+	ld [hl], '▷'
 .not_selected_swap
 	cp e
 	jr nz, .not_selected
-	ld [hl], "▶"
+	ld [hl], '▶'
 .not_selected
 	cp NUM_MOVES
 	jr nz, .cursor_loop
@@ -1573,7 +1573,7 @@ MoveScreen_ListMovesFast:
 	and a
 	jr z, .skip_up
 	hlcoord 18, 2
-	ld [hl], "▲"
+	ld [hl], '▲'
 .skip_up
 	ld a, [wMoveScreenOffset]
 	ld b, a
@@ -1582,7 +1582,7 @@ MoveScreen_ListMovesFast:
 	sub 5
 	jr c, .skip_down
 	hlcoord 18, 10
-	ld [hl], "▼"
+	ld [hl], '▼'
 .skip_down
 	ld a, [wMoveSwapBuffer]
 	and a
@@ -1629,7 +1629,7 @@ MoveScreen_ListMovesFast:
 
 	pop af
 	ld hl, TypeIconGFX
-	ld bc, 4 * LEN_1BPP_TILE
+	ld bc, 4 * TILE_1BPP_SIZE
 	rst AddNTimes
 	ld d, h
 	ld e, l

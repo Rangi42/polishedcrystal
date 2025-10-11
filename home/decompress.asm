@@ -1,6 +1,3 @@
-FarDecompressWRA6::
-; Decompress LZ data from a:hl to 6:d000.
-	ld b, a
 FarDecompressWRA6InB::
 ; Decompress LZ data from b:hl to 6:d000.
 	call RunFunctionInWRA6

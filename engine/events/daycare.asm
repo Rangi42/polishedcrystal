@@ -396,7 +396,12 @@ Special_DayCareManOutside:
 	text_end
 
 .AskGiveEgg:
+	; if user already bred an egg, use shorter monologue.
+	eventflagcheck EVENT_BRED_AN_EGG
+	ld hl, .IntroAgainText
+	jr nz, .show_question
 	ld hl, .IntroText
+.show_question
 	call PrintText
 	call YesNoBox
 	jr c, .Declined
@@ -443,6 +448,11 @@ Special_DayCareManOutside:
 .IntroText:
 	; Ah, it's you! We were raising your #MON, and my goodness, were we surprised! Your #MON had an EGG! We don't know how it got there, but your #MON had it. You want it?
 	text_far _FoundAnEggText
+	text_end
+
+.IntroAgainText:
+	; Text you get after you already received your first egg.
+	text_far _FoundAnEggAgainText
 	text_end
 
 .GotEggText:

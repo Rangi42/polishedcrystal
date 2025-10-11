@@ -44,9 +44,9 @@ endc
 	lb bc, 2, 18
 	call Textbox
 	hlcoord 10, 7
-	ld [hl], "▲"
+	ld [hl], '▲'
 	hlcoord 10, 10
-	ld [hl], "▼"
+	ld [hl], '▼'
 	call DisplayHourOClock
 	ld c, 10
 	call DelayFrames
@@ -63,9 +63,9 @@ endc
 	lb bc, 2, 7
 	call Textbox
 	hlcoord 15, 7
-	ld [hl], "▲"
+	ld [hl], '▲'
 	hlcoord 15, 10
-	ld [hl], "▼"
+	ld [hl], '▼'
 	hlcoord 12, 9
 	call DisplayMinutesWithMinString
 	ld c, 10
@@ -95,15 +95,15 @@ endc
 
 SetHour:
 	ldh a, [hJoyPressed]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .Confirm
 
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .up
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .down
 	call DelayFrame
 	and a
@@ -132,7 +132,7 @@ SetHour:
 
 .okay
 	hlcoord 2, 9
-	ld a, " "
+	ld a, ' '
 	ld bc, 17
 	rst ByteFill
 	call DisplayHourOClock
@@ -146,8 +146,6 @@ SetHour:
 
 DisplayHourOClock:
 	hlcoord 1, 9
-	; fallthrough
-_DisplayHourOClock:
 	push hl
 	ld a, [wInitHourBuffer]
 	ld [wStringBuffer2 + 1], a
@@ -163,14 +161,14 @@ _DisplayHourOClock:
 
 SetMinutes:
 	ldh a, [hJoyPressed]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .a_button
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .d_up
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .d_down
 	call DelayFrame
 	and a
@@ -198,7 +196,7 @@ SetMinutes:
 	ld [hl], a
 .finish_dpad
 	hlcoord 12, 9
-	ld a, " "
+	ld a, ' '
 	ld bc, 7
 	rst ByteFill
 	hlcoord 12, 9
@@ -222,7 +220,7 @@ DisplayMinutesWithMinString:
 
 PrintTwoDigitNumberRightAlign:
 	push hl
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	ld [hl], a
 	pop hl
@@ -327,9 +325,9 @@ Special_SetDayOfWeek:
 	lb bc, 2, 9
 	call Textbox
 	hlcoord 14, 3
-	ld [hl], "▲"
+	ld [hl], '▲'
 	hlcoord 14, 6
-	ld [hl], "▼"
+	ld [hl], '▼'
 	hlcoord 10, 5
 	call .PlaceWeekdayString
 	call ApplyTilemap
@@ -355,7 +353,7 @@ Special_SetDayOfWeek:
 
 .GetJoypadAction:
 	ldh a, [hJoyPressed]
-	and A_BUTTON
+	and PAD_A
 	jr z, .not_A
 	scf
 	ret
@@ -363,10 +361,10 @@ Special_SetDayOfWeek:
 .not_A
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, .d_up
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, .d_down
 	call DelayFrame
 	and a
@@ -526,7 +524,7 @@ PrintHourColonMinute:
 	ld a, [wInitHourBuffer]
 	ld c, a
 	call PrintHour
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld de, wInitMinuteBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
@@ -551,6 +549,14 @@ GetTimeOfDayString:
 	ret c
 	ld de, NITE_String
 	ret
+
+TimeOfDayStrings:
+	table_width 1
+	dr MORN_String
+	dr DAY_String
+	dr NITE_String
+	dr EVE_String
+	assert_table_length NUM_DAYTIMES
 
 NITE_String: db "Night@"
 MORN_String: db "Morning@"
@@ -618,10 +624,10 @@ PrintHoursMins:
 	push hl
 	pop de
 	pop hl
-	ld [hl], " "
+	ld [hl], ' '
 	lb bc, 1, 2
 	call PrintNum
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld d, h
 	ld e, l

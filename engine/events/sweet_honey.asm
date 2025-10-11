@@ -6,16 +6,13 @@ _SweetHoney:
 	and a
 	jr z, .no_battle
 	ld hl, wStatusFlags2
+	set STATUSFLAGS2_USING_SWEET_HONEY_F, [hl]
 	; Items can't be used during the Bug-Catching Contest anyway
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	jr nz, .no_battle
 
-.disallow_roamer_loop
 	farcall ChooseWildEncounter
 	jr nz, .no_battle
-	ld a, [wBattleType]
-	cp BATTLETYPE_ROAMING
-	jr z, .disallow_roamer_loop
 
 	; This might do useless things due to improperly filled level data.
 	; This is harmless, because we only run this to deal with Magnet Pull,
@@ -34,6 +31,8 @@ _SweetHoney:
 .done
 	ldh [hScriptVar], a
 	ld [wFieldMoveSucceeded], a
+	ld hl, wStatusFlags2
+	res STATUSFLAGS2_USING_SWEET_HONEY_F, [hl]
 	ld hl, SweetHoneyScript
 	jmp QueueScript
 

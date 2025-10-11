@@ -36,8 +36,6 @@ CheckCellNum::
 	xor a
 	ret
 
-INCLUDE "data/phone/permanent_numbers.asm"
-
 CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 
@@ -366,11 +364,10 @@ RingTwice_StartCall:
 Phone_CallerTextboxWithName:
 	ld a, [wCurCaller]
 	ld b, a
-Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
-	ld a, "<PHONE>"
+	ld a, '<PHONE>'
 	ld [hli], a
 	inc hl
 	ld d, h
@@ -381,7 +378,6 @@ GetCallerClassAndName:
 	ld l, e
 	ld a, b
 	call GetCallerTrainerClass
-GetCallerName:
 	ld a, c
 	and a
 	jr z, .NotTrainer
@@ -394,7 +390,7 @@ GetCallerName:
 	push hl
 	push bc
 	rst PlaceString
-	ld a, ":"
+	ld a, ':'
 	ld [bc], a
 	pop bc
 	pop hl

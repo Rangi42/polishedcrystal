@@ -19,8 +19,8 @@ AzaleaGym_MapScriptHeader:
 	object_event  5,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherBenny, -1
 	object_event  8,  8, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherAl, -1
 	object_event  0,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherJosh, -1
-	object_event  4, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmay1, -1
-	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmay2, -1
+	object_event  4, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmimi1, -1
+	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmimi2, -1
 
 AzaleaGymStatue:
 	gettrainername BUGSY, 1, STRING_BUFFER_4
@@ -235,8 +235,8 @@ GenericTrainerBug_catcherJosh:
 	text "Urrgggh!"
 	done
 
-GenericTrainerTwinsAmyandmay1:
-	generictrainer TWINS, AMYANDMAY1, EVENT_BEAT_TWINS_AMY_AND_MAY, .SeenText, TrainerTwinsAmyandmayBeatenText
+GenericTrainerTwinsAmyandmimi1:
+	generictrainer TWINS, AMYANDMIMI1, EVENT_BEAT_TWINS_AMY_AND_MAY, .SeenText, TrainerTwinsAmyandmimiBeatenText
 
 	text "Amy: You're"
 	line "really strong!"
@@ -248,8 +248,8 @@ GenericTrainerTwinsAmyandmay1:
 	cont "Leader? No way!"
 	done
 
-GenericTrainerTwinsAmyandmay2:
-	generictrainer TWINS, AMYANDMAY2, EVENT_BEAT_TWINS_AMY_AND_MAY, .SeenText, TrainerTwinsAmyandmayBeatenText
+GenericTrainerTwinsAmyandmimi2:
+	generictrainer TWINS, AMYANDMIMI2, EVENT_BEAT_TWINS_AMY_AND_MAY, .SeenText, TrainerTwinsAmyandmimiBeatenText
 
 	text "Mimi: Our bug"
 	line "#mon lost!"
@@ -264,7 +264,7 @@ GenericTrainerTwinsAmyandmay2:
 	cont "We come first!"
 	done
 
-TrainerTwinsAmyandmayBeatenText:
+TrainerTwinsAmyandmimiBeatenText:
 	text "Amy & Mimi: Oh,"
 	line "double goodness!"
 	done

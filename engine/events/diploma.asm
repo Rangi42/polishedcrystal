@@ -45,7 +45,7 @@ PlaceDiplomaPage1OnScreen:
 
 PlaceDiplomaPage2OnScreen:
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, $7f
 	rst ByteFill
 
@@ -62,7 +62,7 @@ PlaceDiplomaPage2OnScreen:
 	ld de, wGameTimeHours
 	lb bc, 2, 4
 	call PrintNum
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

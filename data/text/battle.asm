@@ -639,14 +639,6 @@ BecameConfusedDueToFatigueText:
 	cont "due to fatigue!"
 	prompt
 
-BattleText_ItemHealedConfusion: ; ItemHealedConfusion
-	text "A "
-	text_ram wStringBuffer1
-	text " rid"
-	line "<USER>"
-	cont "of its confusion."
-	prompt
-
 AlreadyConfusedText:
 	text "<TARGET> is"
 	line "already confused!"
@@ -851,6 +843,11 @@ CriticalHitText:
 	text "A critical hit!"
 	prompt
 
+ExtremelyEffectiveText:
+	text "It's extremely"
+	line "effective!"
+	prompt
+
 SuperEffectiveText:
 	text "It's super"
 	line "effective!"
@@ -859,6 +856,11 @@ SuperEffectiveText:
 NotVeryEffectiveText:
 	text "It's not very"
 	line "effective…"
+	prompt
+
+MostlyIneffectiveText:
+	text "It's mostly"
+	line "ineffective…"
 	prompt
 
 TookDownWithItText:
@@ -963,19 +965,9 @@ WasBurnedText:
 	line "was burned!"
 	prompt
 
-DefrostedOpponentText:
-	text "<TARGET>"
-	line "was defrosted!"
-	prompt
-
 AlreadyBurnedText:
 	text "<TARGET> is"
 	line "already burned!"
-	prompt
-
-WasFrozenText:
-	text "<TARGET>"
-	line "was frozen solid!"
 	prompt
 
 WontRiseAnymoreText:
@@ -1050,16 +1042,12 @@ FledInFearText:
 	line "fled in fear!"
 	prompt
 
-Hit1TimeText:
-	text "Hit "
-	text_decimal wStringBuffer1, 1, 1
-	text " time!"
-	prompt
-
 HitNTimesText:
 	text "Hit "
-	text_decimal wStringBuffer1, 1, 1
-	text " times!"
+	text_decimal wItemQuantityChangeBuffer, 1, 2
+	text " time"
+	text_plural
+	text "!"
 	prompt
 
 MistText:
@@ -1192,10 +1180,6 @@ NothingHappenedText:
 
 ButItFailedText:
 	text "But it failed!"
-	prompt
-
-ItFailedText:
-	text "It failed!"
 	prompt
 
 DidntAffectText:
@@ -1509,12 +1493,6 @@ TraceActivationText:
 	cont ""
 	text_ram wStringBuffer1
 	text "!"
-	prompt
-
-TraceFailureText:
-	text "<USER>"
-	line "failed to trace"
-	cont "<TARGET>!"
 	prompt
 
 BattleText_IntimidateResisted:

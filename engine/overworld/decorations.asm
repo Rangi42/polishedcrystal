@@ -423,6 +423,10 @@ GetDecorationData:
 	rst AddNTimes
 	ret
 
+GetDecorationName_c_de:
+	ld a, c
+	ld h, d
+	ld l, e
 GetDecorationName:
 	push hl
 	call GetDecorationData
@@ -475,6 +479,8 @@ GetDecorationFlag:
 	ld e, a
 	ret
 
+DecorationFlagAction_c:
+	ld a, c
 DecorationFlagAction:
 	push bc
 	call GetDecorationFlag
@@ -908,39 +914,6 @@ DecoText_PutAwayAndSetUp:
 DecoText_AlreadySetUp:
 	text_far _AlreadySetUpText
 	text_end
-
-GetDecorationName_c_de:
-	ld a, c
-	ld h, d
-	ld l, e
-	jmp GetDecorationName
-
-DecorationFlagAction_c:
-	ld a, c
-	jmp DecorationFlagAction
-
-GetDecorationName_c:
-	ld a, c
-	call GetDecorationID
-	ld hl, wStringBuffer1
-	push hl
-	call GetDecorationName
-	pop de
-	ret
-
-GetDecorationID:
-	push hl
-	push de
-	ld e, a
-	ld d, 0
-	ld hl, DecorationIDs
-	add hl, de
-	ld a, [hl]
-	pop de
-	pop hl
-	ret
-
-INCLUDE "data/decorations/decorations.asm"
 
 DescribeDecoration::
 	ld a, b

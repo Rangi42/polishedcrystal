@@ -802,11 +802,11 @@ EncodeTempMon:
 	ld a, [hl]
 	; " " ($7f) -> $7a
 	ld c, $7a | ~%01111111
-	cp " "
+	cp ' '
 	jr z, .replace
 	; "@" ($53) -> $7b
 	inc c
-	cp "@"
+	cp '@'
 	jr z, .replace
 	; "<START>" ($00) -> $7c
 	inc c
@@ -904,10 +904,10 @@ DecodeTempMon:
 	ld a, [hl]
 	or $80
 	sub $fa
-	ld c, " "
+	ld c, ' '
 	jr z, .replace
 	dec a
-	ld c, "@"
+	ld c, '@'
 	jr z, .replace
 	dec a
 	jr z, .replace_a ; a is "<START>" ($00) iff the zero flag is set
@@ -929,7 +929,7 @@ DecodeTempMon:
 	lb bc, 2, PLAYER_NAME_LENGTH - 1
 
 .outer_loop
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	dec de
 .inner_loop
@@ -1106,7 +1106,7 @@ InitializeBoxes:
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
 	pop bc
-	ld [hl], "@"
+	ld [hl], '@'
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
 	add hl, bc
@@ -1202,7 +1202,7 @@ GetBoxName:
 
 	; Ensure that there's a terminator at the end. This isn't included as part
 	; of saved box name.
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer1 + BOX_NAME_LENGTH], a
 	ret
 

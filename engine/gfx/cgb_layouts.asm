@@ -4,9 +4,6 @@ LoadCGBLayout::
 	jr nz, .not_ram
 	ld a, [wMemCGBLayout]
 .not_ram
-	assert CGB_PARTY_MENU_HP_PALS == NUM_CGB_LAYOUTS - 1
-	cp CGB_PARTY_MENU_HP_PALS
-	jmp z, ApplyPartyMenuHPPals
 	cp CGB_MAPPALS
 	call nz, ResetBGPals
 	dec a
@@ -41,10 +38,11 @@ LoadCGBLayout::
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
 	dw _CGB_NamingScreen
-	dw _CGB_Mail
+	dw _CGB_WriteMail
+	dw _CGB_ReadMail
 	dw _CGB_FlyMap
 	dw _CGB_NewDiploma
-	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
+	assert_table_length NUM_CGB_LAYOUTS - 1 ; discount CGB_RAM
 
 _CGB_BattleGrayscale:
 	push bc
@@ -252,7 +250,7 @@ _CGB_FinishBattleScreenLayout:
 .overlay_done
 	push bc
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, PAL_BATTLE_BG_ENEMY_HP
 	rst ByteFill
 
@@ -523,10 +521,10 @@ _CGB_NamingScreen:
 .got_theme
 	call GetBillsPCThemePalette
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK("GBC Video")
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push hl
 	ld hl, GenderAndExpBarPals
@@ -548,7 +546,7 @@ _CGB_NamingScreen:
 	call LoadOneColor
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
@@ -577,7 +575,7 @@ _CGB_NamingScreen:
 	; message area + Shift/Del/End
 	ld a, $1
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	; input characters
 	inc a
@@ -593,15 +591,13 @@ _CGB_NamingScreen:
 
 	jmp ApplyAttrMap
 
-_CGB_Mail:
-	ld a, [wCurItem]
-	sub FIRST_MAIL
+_CGB_WriteMail:
 	call LoadMailPalettes
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wBGPals1
 	ld de, wBGPals1 palette 1
@@ -634,7 +630,7 @@ _CGB_Mail:
 	call LoadColorBytes
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; message area
 	ld a, $1
@@ -664,6 +660,29 @@ FillNamingScreenTextBoxes:
 	hlcoord 1, 1, wAttrmap
 	lb bc, 4, SCREEN_WIDTH - 2
 	jmp FillBoxWithByte
+
+_CGB_ReadMail:
+	call LoadMailPalettes
+	call ApplyPals
+	call WipeAttrMap
+	jmp ApplyAttrMap
+
+LoadMailPalettes:
+	ld a, [wCurItem]
+	sub FIRST_MAIL
+	add a
+	add a
+	add a
+	add LOW(MailPals)
+	ld l, a
+	adc HIGH(MailPals)
+	sub l
+	ld h, a
+	ld de, wBGPals1
+	jmp LoadOnePalette
+
+MailPals:
+INCLUDE "gfx/mail/mail.pal"
 
 _CGB_MapPals:
 	call LoadMapPals
@@ -741,7 +760,7 @@ _CGB_Evolution:
 
 _CGB_MoveList:
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	ld a, $7
 	rst ByteFill
 
@@ -1106,7 +1125,7 @@ LoadFirstTwoTrainerCardPals:
 	push de
 	; border
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 
@@ -1133,10 +1152,10 @@ _CGB_BillsPC:
 BillsPC_PreviewTheme:
 	call GetBillsPCThemePalette
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK("GBC Video")
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push hl
 	ld de, wBGPals1 + 2
@@ -1164,7 +1183,7 @@ BillsPC_PreviewTheme:
 	call LoadOneColor
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, [wBillsPC_ApplyThemePals]
 	and a
@@ -1212,7 +1231,7 @@ GetBillsPCThemePalette:
 	ret
 
 .ThemePals:
-	table_width PAL_COLOR_SIZE * 4
+	table_width COLOR_SIZE * 4
 INCLUDE "gfx/pc/themes.pal"
 	assert_table_length NUM_BILLS_PC_THEMES
 
@@ -1225,10 +1244,10 @@ _CGB_UnownPuzzle:
 	ld hl, .UnownPuzzlePalette
 	call LoadOnePalette
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wOBPals1
 if DEF(NOIR)
 	ld a, LOW(palred 9 + palgreen 9 + palblue 9)
@@ -1245,7 +1264,7 @@ else
 	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
 endc
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
@@ -1417,22 +1436,22 @@ _CGB_JudgeSystem:
 
 	; up/down arrows
 	hlcoord 0, 0, wAttrmap
-	ld a, 1 | VRAM_BANK_1
+	ld a, 1 | OAM_BANK1
 	ld [hli], a
 	; top row
 	ld bc, 17
 	ld a, 1
 	rst ByteFill
 	; gender icon
-	ld a, 6 | VRAM_BANK_1
+	ld a, 6 | OAM_BANK1
 	ld [hli], a
 	; shiny icon and second row
-	ld a, 1 | VRAM_BANK_1
+	ld a, 1 | OAM_BANK1
 	ld bc, 21
 	rst ByteFill
 	; left/right arrows
 	hlcoord 0, 2, wAttrmap
-	ld [hl], 0 | VRAM_BANK_1
+	ld [hl], 0 | OAM_BANK1
 	; frontpic
 	hlcoord 0, 6, wAttrmap
 	lb bc, 7, 7
@@ -1441,15 +1460,15 @@ _CGB_JudgeSystem:
 	; chart
 	hlcoord 9, 4, wAttrmap
 	lb bc, 12, 8
-	ld a, 5 | VRAM_BANK_1
+	ld a, 5 | OAM_BANK1
 	call FillBoxWithByte
 	hlcoord 8, 6, wAttrmap
 	lb bc, 8, 1
-	ld a, 5 | VRAM_BANK_1
+	ld a, 5 | OAM_BANK1
 	call FillBoxWithByte
 	hlcoord 17, 6, wAttrmap
 	lb bc, 8, 1
-	ld a, 5 | VRAM_BANK_1
+	ld a, 5 | OAM_BANK1
 	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
@@ -1472,7 +1491,7 @@ _CGB_JudgeSystem:
 	call .FillStat
 	; heading
 	hlcoord 0, 3, wAttrmap
-	ld a, 0 | VRAM_BANK_1
+	ld a, 0 | OAM_BANK1
 	ld bc, 11
 	rst ByteFill
 

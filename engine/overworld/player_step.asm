@@ -108,7 +108,7 @@ UpdateOverworldMap:
 
 .ScrollOverworldMapDown:
 	ld a, [wBGMapAnchor]
-	add 2 * BG_MAP_WIDTH
+	add 2 * TILEMAP_WIDTH
 	ld [wBGMapAnchor], a
 	jr nc, .not_overflowed
 	ld a, [wBGMapAnchor + 1]
@@ -134,7 +134,7 @@ UpdateOverworldMap:
 
 .ScrollOverworldMapUp:
 	ld a, [wBGMapAnchor]
-	sub 2 * BG_MAP_WIDTH
+	sub 2 * TILEMAP_WIDTH
 	ld [wBGMapAnchor], a
 	jr nc, .not_underflowed
 	ld a, [wBGMapAnchor + 1]
@@ -400,7 +400,7 @@ UpdateBGMapRow::
 	push de
 	call .iteration
 	pop de
-	ld a, BG_MAP_WIDTH
+	ld a, TILEMAP_WIDTH
 	add e
 	ld e, a
 	call .iteration
@@ -436,7 +436,7 @@ UpdateBGMapColumn::
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	ld a, BG_MAP_HEIGHT
+	ld a, TILEMAP_HEIGHT
 	add e
 	ld e, a
 	jr nc, .skip
@@ -486,7 +486,7 @@ ReloadWalkedTile:
 	ld [de], a
 	inc de
 
-	ld a, BG_MAP_WIDTH
+	ld a, TILEMAP_WIDTH
 	call .AddHLDecC
 	jr nz, .ptr_loop
 	ret

@@ -1275,8 +1275,8 @@ endc
 	learnset 41, EARTH_POWER ; Mud Bomb → similar move
 
 	evos_attacks Poliwhirl
+	evo_data EVOLVE_TRADE, KINGS_ROCK, POLITOED
 	evo_data EVOLVE_ITEM, WATER_STONE, POLIWRATH
-	evo_data EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME, POLITOED
 	learnset 1, SWEET_KISS ; event move
 	learnset 1, WATER_GUN ; Water Sport → Water Gun
 	learnset 5, HYPNOSIS ; Water Gun → Hypnosis
@@ -1306,7 +1306,7 @@ endc
 	learnset 1, TELEPORT
 
 	evos_attacks Kadabra
-	evo_data EVOLVE_ITEM, LINKING_CORD, ALAKAZAM
+	evo_data EVOLVE_TRADE, LINKING_CORD, ALAKAZAM
 	learnset 1, TELEPORT
 	learnset 1, FORESIGHT ; evolution move
 	learnset 16, CONFUSION
@@ -1362,7 +1362,7 @@ endc
 	learnset 45, DYNAMICPUNCH
 
 	evos_attacks Machoke
-	evo_data EVOLVE_ITEM, LINKING_CORD, MACHAMP
+	evo_data EVOLVE_TRADE, LINKING_CORD, MACHAMP
 	learnset 1, LOW_KICK
 	learnset 1, LEER
 	learnset 3, FOCUS_ENERGY
@@ -1502,7 +1502,7 @@ endc
 	learnset 42, STONE_EDGE
 
 	evos_attacks GravelerPlain
-	evo_data EVOLVE_ITEM, LINKING_CORD, GOLEM, PLAIN_FORM
+	evo_data EVOLVE_TRADE, LINKING_CORD, GOLEM, PLAIN_FORM
 	learnset 1, TACKLE
 	learnset 1, DEFENSE_CURL
 	learnset 4, MUD_SLAP ; Mud Sport → TM move
@@ -1559,7 +1559,7 @@ endc
 	learnset 42, STONE_EDGE
 
 	evos_attacks GravelerAlolan
-	evo_data EVOLVE_ITEM, LINKING_CORD, GOLEM, ALOLAN_FORM
+	evo_data EVOLVE_TRADE, LINKING_CORD, GOLEM, ALOLAN_FORM
 	learnset 1, TACKLE
 	learnset 1, DEFENSE_CURL
 	learnset 4, THUNDERSHOCK ; Charge → new move
@@ -1668,7 +1668,7 @@ endc
 	learnset 49, MOONBLAST ; Healing Wish → new move
 
 	evos_attacks SlowpokePlain
-	evo_data EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME, SLOWKING, PLAIN_FORM
+	evo_data EVOLVE_TRADE, KINGS_ROCK, SLOWKING, PLAIN_FORM
 	evo_data EVOLVE_LEVEL, 37, SLOWBRO, PLAIN_FORM
 	learnset 1, CURSE
 	learnset 1, TACKLE
@@ -1687,7 +1687,7 @@ endc
 	learnset 58, RECOVER ; Heal Pulse → similar move
 
 	evos_attacks SlowpokeGalarian
-	evo_data EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME, SLOWKING, GALARIAN_FORM
+	evo_data EVOLVE_TRADE, KINGS_ROCK, SLOWKING, GALARIAN_FORM
 	evo_data EVOLVE_LEVEL, 37, SLOWBRO, GALARIAN_FORM
 	learnset 1, CURSE
 	learnset 1, TACKLE
@@ -2037,7 +2037,7 @@ endc
 	learnset 47, PERISH_SONG ; Nightmare → new move
 
 	evos_attacks Haunter
-	evo_data EVOLVE_ITEM, LINKING_CORD, GENGAR
+	evo_data EVOLVE_TRADE, LINKING_CORD, GENGAR
 	learnset 1, SHADOW_CLAW ; Shadow Punch → TM move ; evolution move
 	learnset 1, HYPNOSIS
 	learnset 1, LICK
@@ -2074,7 +2074,7 @@ endc
 	learnset 61, PERISH_SONG ; Nightmare → new move
 
 	evos_attacks Onix
-	evo_data EVOLVE_HOLDING, METAL_COAT, TR_ANYTIME, STEELIX
+	evo_data EVOLVE_TRADE, METAL_COAT, STEELIX
 	learnset 1, TACKLE
 	learnset 1, DEFENSE_CURL ; Harden → similar move
 	learnset 1, WRAP ; Bind → similar move
@@ -2407,7 +2407,7 @@ endc
 	learnset 57, BELLY_DRUM ; Wring Out → egg move
 
 	evos_attacks Koffing
-	evo_data EVOLVE_HOLDING, CHARCOAL, TR_ANYTIME, WEEZING, GALARIAN_FORM
+	evo_data EVOLVE_TRADE, CHARCOAL, WEEZING, GALARIAN_FORM
 	evo_data EVOLVE_LEVEL, 35, WEEZING, PLAIN_FORM
 	learnset 1, TACKLE
 	learnset 4, ACID ; Smog → new move
@@ -2478,7 +2478,7 @@ endc
 	learnset 53, MEGAHORN ; Horn Drill → Megahorn
 
 	evos_attacks Rhydon
-	evo_data EVOLVE_HOLDING, PROTECTOR, TR_ANYTIME, RHYPERIOR
+	evo_data EVOLVE_TRADE, PROTECTOR, RHYPERIOR
 	learnset 1, OUTRAGE ; Hammer Arm → HGSS tutor move ; evolution move
 	learnset 1, TACKLE
 	learnset 1, MUD_SLAP ; Sand-Attack → similar move
@@ -2572,7 +2572,7 @@ endc
 	learnset 52, HYDRO_PUMP
 
 	evos_attacks Seadra
-	evo_data EVOLVE_HOLDING, DRAGON_SCALE, TR_ANYTIME, KINGDRA
+	evo_data EVOLVE_TRADE, DRAGON_SCALE, KINGDRA
 	learnset 1, WATER_GUN ; Bubble → similar move
 	learnset 5, SMOKESCREEN
 	learnset 9, LEER
@@ -2671,7 +2671,7 @@ endc
 	learnset 50, SAFEGUARD
 
 	evos_attacks Scyther
-	evo_data EVOLVE_HOLDING, METAL_COAT, TR_ANYTIME, SCIZOR
+	evo_data EVOLVE_TRADE, METAL_COAT, SCIZOR
 	evo_data EVOLVE_HOLDING, HARD_STONE, TR_ANYTIME, KLEAVOR
 	learnset 1, QUICK_ATTACK
 	learnset 1, LEER
@@ -2712,7 +2712,7 @@ endc
 	learnset 60, BLIZZARD
 
 	evos_attacks Electabuzz
-	evo_data EVOLVE_HOLDING, ELECTIRIZER, TR_ANYTIME, ELECTIVIRE
+	evo_data EVOLVE_TRADE, ELECTIRIZER, ELECTIVIRE
 	learnset 1, QUICK_ATTACK
 	learnset 1, LEER
 	learnset 5, THUNDERSHOCK
@@ -2729,7 +2729,7 @@ endc
 	learnset 55, THUNDER
 
 	evos_attacks Magmar
-	evo_data EVOLVE_HOLDING, MAGMARIZER, TR_ANYTIME, MAGMORTAR
+	evo_data EVOLVE_TRADE, MAGMARIZER, MAGMORTAR
 	learnset 1, HAZE ; Smog → new move
 	learnset 1, LEER
 	learnset 5, EMBER
@@ -2966,7 +2966,7 @@ endc
 	learnset 45, FLARE_BLITZ
 
 	evos_attacks Porygon
-	evo_data EVOLVE_HOLDING, UPGRADE, TR_ANYTIME, PORYGON2
+	evo_data EVOLVE_TRADE, UPGRADE, PORYGON2
 	learnset 1, TACKLE
 	learnset 1, CONVERSION
 	learnset 1, TELEPORT ; Sharpen → RBY TM move
@@ -4917,7 +4917,7 @@ endc
 	learnset 50, GIGA_IMPACT
 
 	evos_attacks Porygon2
-	evo_data EVOLVE_HOLDING, DUBIOUS_DISC, TR_ANYTIME, PORYGON_Z
+	evo_data EVOLVE_TRADE, DUBIOUS_DISC, PORYGON_Z
 	learnset 1, TACKLE
 	learnset 1, CONVERSION
 	learnset 1, DEFENSE_CURL

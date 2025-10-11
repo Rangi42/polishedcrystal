@@ -30,7 +30,7 @@ DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 	const STEREO         ; 6
 	const BATTLE_EFFECTS ; 7
 DEF TEXT_DELAY_MASK    EQU %00011
-; CheckAutoscroll relies on exact bit usage and order
+; JoyCheckTextAdvance relies on exact bit usage and order
 DEF AUTOSCROLL_MASK    EQU %01100
 DEF AUTOSCROLL_NONE    EQU %00000
 DEF AUTOSCROLL_START   EQU %00100
@@ -111,18 +111,18 @@ DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT
 DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_IVS_OPT) | (1 << PSS_OPT)
 
 ; wInitialOptions2::
-	const_def 3
+	const_def 2
+	const NO_EXP_OPT           ; 2
 	const RTC_OPT              ; 3
 	const EVOLVE_IN_BATTLE_OPT ; 4
 	const_skip 2
 	const RESET_INIT_OPTS      ; 7
-DEF EV_OPTMASK EQU %11
 
 	const_def
 	const EVS_OPT_DISABLED ; %00
 	const EVS_OPT_CLASSIC  ; %01
 	const EVS_OPT_MODERN   ; %10
-
+DEF EV_OPTMASK EQU %11
 
 ; wForgettingMove::
 	const_def 6
@@ -255,7 +255,7 @@ DEF SPAWN_LEAF  EQU 2
 	const STATUSFLAGS2_BUG_CONTEST_TIMER_F       ; 2
 	const STATUSFLAGS2_SEEN_SHAMOUTI_F           ; 3
 	const STATUSFLAGS2_BIKE_SHOP_CALL_F          ; 4
-	const STATUSFLAGS2_CAN_USE_SWEET_SCENT_F     ; 5
+	const STATUSFLAGS2_USING_SWEET_HONEY_F       ; 5
 	const STATUSFLAGS2_EXORCISED_LAV_RADIO_F     ; 6
 	const STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F     ; 7
 
@@ -524,3 +524,9 @@ DEF NO_DYN_PAL_APPLY EQU (1 << NO_DYN_PAL_APPLY_ONCE_F) | (1 << NO_DYN_PAL_APPLY
 ; wMapSetupFlags
 	const_def
 	const MAPSETUP_CONNECTION_F ; 0
+
+; rRAMB::
+DEF NUM_SRAM_BANKS EQU 4
+
+; rLCDC::
+DEF LCDC_DEFAULT EQU LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_BLOCK21 | LCDC_BG_9800 | LCDC_OBJ_8 | LCDC_OBJ_ON | LCDC_PRIO_ON

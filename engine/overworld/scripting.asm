@@ -53,7 +53,7 @@ RunScriptCommand:
 	call GetScriptByte
 	call StackJumpTable
 
-ScriptCommandTable:
+.Jumptable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
 	table_width 2
 	dw Script_scall                      ; 00
@@ -622,10 +622,7 @@ Script_verbosegiveitemvar:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	; a = carry ? TRUE : FALSE
-	sbc a
-	and TRUE
-	ldh [hScriptVar], a
+	call ScriptReturnCarry
 	call GetCurItemName
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
@@ -1031,7 +1028,7 @@ ApplyObjectFacing::
 	jr nz, .text_state
 	call LoadMapPart
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 .loop
 	res 7, [hl]
 	inc hl
@@ -1737,7 +1734,7 @@ Script_getnum:
 ResetStringBuffer1:
 	ld hl, wStringBuffer1
 	ld bc, NAME_LENGTH
-	ld a, "@"
+	ld a, '@'
 	rst ByteFill
 	ret
 
@@ -1780,7 +1777,7 @@ Script_giveitem:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	jr _ItemResult
+	jr ScriptReturnCarry
 
 Script_takeitem:
 	call GetScriptByte
@@ -1795,7 +1792,7 @@ Script_takeitem:
 	ld [wCurItemQuantity], a
 	ld hl, wNumItems
 	call TossItem
-	jr _ItemResult
+	jr ScriptReturnCarry
 
 Script_checkitem:
 	xor a
@@ -1804,12 +1801,65 @@ Script_checkitem:
 	ld [wCurItem], a
 	ld hl, wNumItems
 	call CheckItem
-_ItemResult:
+ScriptReturnCarry:
 	; a = carry ? TRUE : FALSE
 	sbc a
 	and TRUE
 	ldh [hScriptVar], a
 	ret
+
+Script_givekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call ReceiveKeyItem
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+Script_checkkeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call CheckKeyItem
+	jr ScriptReturnCarry
+
+Script_takekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call TossKeyItem
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+Script_verbosegivekeyitem:
+	call Script_givekeyitem
+	call GetCurKeyItemName
+	ld a, STRING_BUFFER_4
+	call CopyConvertedText
+	ld b, BANK(GiveKeyItemScript)
+	ld de, GiveKeyItemScript
+	jmp ScriptCall
+
+GiveKeyItemScript:
+	farwritetext _GainedItemText
+	special ShowKeyItemIcon
+	playsound SFX_KEY_ITEM
+	waitsfx
+	waitbutton
+	keyitemnotify
+	end
+
+Script_keyitemnotify:
+	call GetKeyItemPocketName
+	call GetCurKeyItemName
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
+	call MapTextbox
+	; The key item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_givemoney:
 	call GetMoneyAccount
@@ -2302,7 +2352,7 @@ ExitScriptSubroutine:
 	add hl, de
 	ld a, [hli]
 	ld b, a
-	and " "
+	and ' '
 	ldh [hScriptBank], a
 	ld a, [hli]
 	ld e, a
@@ -2444,7 +2494,7 @@ Script_gettmhmname:
 	call GetMoveName
 
 	ld hl, wStringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	jmp CopyName2
 
@@ -2557,63 +2607,6 @@ Script_paintingpic:
 	ld [wTrainerClass], a
 	farjp Paintingpic
 
-Script_givekeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call ReceiveKeyItem
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_checkkeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call CheckKeyItem
-	; a = carry ? TRUE : FALSE
-	sbc a
-	and TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_takekeyitem:
-	call GetScriptByte
-	ld [wCurKeyItem], a
-	ld [wItemQuantityChangeBuffer], a
-	call TossKeyItem
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-
-Script_verbosegivekeyitem:
-	call Script_givekeyitem
-	call GetCurKeyItemName
-	ld a, STRING_BUFFER_4
-	call CopyConvertedText
-	ld b, BANK(GiveKeyItemScript)
-	ld de, GiveKeyItemScript
-	jmp ScriptCall
-
-GiveKeyItemScript:
-	farwritetext _GainedItemText
-	special ShowKeyItemIcon
-	playsound SFX_KEY_ITEM
-	waitsfx
-	waitbutton
-	keyitemnotify
-	end
-
-Script_keyitemnotify:
-	call GetKeyItemPocketName
-	call GetCurKeyItemName
-	ld b, BANK(_PutItemInPocketText)
-	ld hl, _PutItemInPocketText
-	call MapTextbox
-	; The key item icon overwrites nine font tiles, including
-	; the "▶" needed by the right cursor arrow.
-	farjp LoadFonts_NoOAMUpdate
-
 Script_setmapobjectmovedata:
 	call GetScriptByte
 	cp LAST_TALKED
@@ -2717,10 +2710,10 @@ ShowBadgeIcon:
 	ld d, h
 	ld e, l
 	ld c, 4
-	ld hl, vTiles0 tile "↑"
+	ld hl, vTiles0 tile '↑'
 	call Request2bppInWRA6
 	farcall LoadSingleBadgePalette
-	ld a, "↑"
+	ld a, '↑'
 	hlcoord 17, 13
 	ld [hli], a
 	inc a
@@ -2752,19 +2745,19 @@ Pluralize:
 	ld a, [hl]
 	push hl
 	push af
-	ld a, "@"
+	ld a, '@'
 	ld [hli], a
 
 	; Track down the terminator.
 .terminator_loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .terminator_loop
 	ld b, h
 	ld c, l
 	dec bc
 	call TextCommand_PLURAL
-	ld a, "@"
+	ld a, '@'
 	ld [bc], a
 	pop af
 	pop hl

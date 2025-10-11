@@ -373,7 +373,7 @@ BT_DisplayMenu:
 	call PlaySFX
 	ldh a, [hJoyPressed]
 	and a ; clear carry
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	ret z
 	scf
 	ret
@@ -524,8 +524,8 @@ WritePartyMenuTilemap:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, " "
+	ld bc, SCREEN_AREA
+	ld a, ' '
 	rst ByteFill ; blank the tilemap
 	call GetPartyMenuTilemapPointers ; This reads from a pointer table???
 .loop
@@ -613,8 +613,7 @@ PlacePartyHPBar:
 	ld b, $0
 	add hl, bc
 	call SetHPPal
-	ld a, CGB_PARTY_MENU_HP_PALS
-	call GetCGBLayout
+	farcall ApplyPartyMenuHPPals
 .skip
 	ld hl, wHPPalIndex
 	inc [hl]
@@ -676,7 +675,7 @@ PlacePartyMenuHPDigits:
 	lb bc, 2, 3
 	call PrintNum
 	pop de
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	inc de
 	inc de
@@ -716,7 +715,7 @@ PlacePartyMonLevel:
 	ld a, [de]
 	cp 100 ; This is distinct from MAX_LEVEL.
 	jr nc, .ThreeDigits
-	ld a, "<LV>"
+	ld a, '<LV>'
 	ld [hli], a
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	; jr .okay
@@ -900,10 +899,16 @@ PlacePartyMonEvoStoneCompatibility:
 	ld b, a
 	ld de, .string_not_able
 .loop2
+	ld a, b
+	cp LINKING_CORD
+	ld c, EVOLVE_TRADE + 1 ; due to "inc a"
+	jr z, .got_evolve_type
+	ld c, EVOLVE_ITEM + 1
+.got_evolve_type
 	ld a, [hli]
-	cp -1
+	inc a
 	jr z, .done
-	cp EVOLVE_ITEM
+	cp c
 	ld a, [hli]
 	inc hl
 	inc hl
@@ -953,9 +958,9 @@ PlacePartyMonGender:
 	xor a
 	ld [wMonType], a
 	call GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender
 	inc a ; "<FEMALE>"
 
@@ -1148,7 +1153,7 @@ InitPartyMenuWithCancel:
 
 .done
 	ld [wMenuCursorY], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ret
 
@@ -1168,7 +1173,7 @@ InitPartySwap:
 	ld a, [wSwitchMon]
 	dec a
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	ret
 
 InitPartyMenuNoCancel:
@@ -1188,7 +1193,7 @@ InitPartyMenuNoCancel:
 	ld a, 1
 .done
 	ld [wMenuCursorY], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ret
 
@@ -1208,7 +1213,7 @@ PartyMenuAttributes:
 	db 0
 
 PartyMenuSelect:
-; sets carry if exitted menu.
+; sets carry if exited menu.
 	call DoMenuJoypadLoop
 	call PlaceHollowCursor
 	ld a, [wPartyCount]
@@ -1220,7 +1225,7 @@ PartyMenuSelect:
 	ld [wPartyMenuCursor], a
 	ldh a, [hJoyLast]
 	ld b, a
-	bit B_BUTTON_F, b
+	bit B_PAD_B, b
 	jr nz, .exitmenu ; B button
 	ld a, [wMenuCursorY]
 	dec a
@@ -1234,22 +1239,21 @@ PartyMenuSelect:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurForm], a
-
-	ld de, SFX_READ_TEXT_2
-	call PlaySFX
-	push bc
-	call SFXDelay2
-	pop bc
+	call .sfx_delay_2
 	and a
 	ret
 
 .exitmenu
+	call .sfx_delay_2
+	scf
+	ret
+
+.sfx_delay_2
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	push bc
 	call SFXDelay2
 	pop bc
-	scf
 	ret
 
 PlacePartyMenuText:

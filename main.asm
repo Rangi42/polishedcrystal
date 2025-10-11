@@ -235,7 +235,7 @@ SECTION "bank11", ROMX
 INCLUDE "engine/battle/ai/move.asm"
 INCLUDE "engine/pokemon/mail.asm"
 INCLUDE "engine/events/hidden_grottoes.asm"
-INCLUDE "engine/pokedex/pokedex_2.asm"
+INCLUDE "data/pokemon/dex_entry_pointers.asm"
 
 
 SECTION "Crystal Features 1", ROMX
@@ -512,21 +512,6 @@ SECTION "Pic Animations Bitmasks", ROMX
 
 INCLUDE "gfx/pokemon/bitmask_pointers.asm"
 INCLUDE "gfx/pokemon/bitmasks.asm"
-
-
-SECTION "Pic Animations Frames Pointers", ROMX
-
-INCLUDE "gfx/pokemon/frame_pointers.asm"
-
-
-SECTION "Pic Animations Frames 1", ROMX
-
-INCLUDE "gfx/pokemon/kanto_frames.asm"
-
-
-SECTION "Pic Animations Frames 2", ROMX
-
-INCLUDE "gfx/pokemon/johto_frames.asm"
 
 
 SECTION "bank38", ROMX

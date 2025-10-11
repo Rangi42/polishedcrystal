@@ -44,7 +44,7 @@ ClearSpritesUnderPokePic:
 	ld de, wShadowOAMSprite00
 	ld h, d
 	ld l, e
-	ld c, NUM_SPRITE_OAM_STRUCTS
+	ld c, OAM_COUNT
 .loop
 	; Check if (5 * TILE_WIDTH + 1) ≤ YCoord < (15 * TILE_WIDTH)
 	ld a, [hli]
@@ -60,7 +60,7 @@ ClearSpritesUnderPokePic:
 	jr c, .clear_sprite
 ; fallthrough
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld e, l
 	dec c
@@ -99,14 +99,14 @@ Paintingpic::
 	farcall LoadPaintingPalette
 	call UpdateTimePals
 	ld de, PaintingFrameGFX
-	ld hl, vTiles0 tile ("┌" - 3)
+	ld hl, vTiles0 tile ('┌' - 3)
 	lb bc, BANK(PaintingFrameGFX), 11
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuHeader
 	call MenuBox
 	hlcoord 9, 12
-	ld a, "┌" - 3
+	ld a, '┌' - 3
 	ld [hli], a
 	inc a
 	ld [hli], a

@@ -1048,13 +1048,6 @@ ChoseStarterText:
 	cont "#mon too!"
 	done
 
-ReceivedStarterText:
-	text "<PLAYER> received"
-	line ""
-	text_ram wStringBuffer3
-	text "!"
-	done
-
 ElmDirectionsText1:
 	text "Mr.#mon lives a"
 	line "little bit beyond"

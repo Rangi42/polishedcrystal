@@ -168,11 +168,6 @@ AI_Types:
 	ld a, [wTypeMatchup]
 	and a
 	jr z, .immune
-
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	call AI_IsFixedDamageMove
-	jr c, .checkmove
-	ld a, [wTypeMatchup]
 	cp EFFECTIVE
 	jr z, .checkmove
 	jr c, .noteffective
@@ -224,17 +219,6 @@ AI_Types:
 .immune
 	call AIDiscourageMove
 	jr .checkmove
-
-AI_IsFixedDamageMove:
-; Returns c if move effect a does fixed damage (or is Counter/Mirror Coat)
-	push hl
-	push de
-	push bc
-	ld hl, FixedDamageEffects
-	call IsInByteArray
-	jmp PopBCDEHL
-
-INCLUDE "data/battle/ai/fixed_damage_effects.asm"
 
 AI_Offensive:
 ; Greatly discourage non-damaging moves.
@@ -367,7 +351,6 @@ AI_Smart_EffectHandlers:
 	dbw EFFECT_SANDSTORM,         AI_Smart_Sandstorm
 	dbw EFFECT_HAIL,              AI_Smart_Hail
 	dbw EFFECT_BELLY_DRUM,        AI_Smart_BellyDrum
-	dbw EFFECT_MIRROR_COAT,       AI_Smart_MirrorCoat
 	dbw EFFECT_EARTHQUAKE,        AI_Smart_Earthquake
 	dbw EFFECT_FUTURE_SIGHT,      AI_Smart_FutureSight
 	dbw EFFECT_JUMP_KICK,         AI_Smart_JumpKick
@@ -912,13 +895,11 @@ AI_Smart_SpDefenseUp2:
 
 AI_Smart_Fly:
 ; Fly, Dig
-
-; Greatly encourage this move if the player is
-; flying or underground, and slower than the enemy.
-
+	; Greatly encourage this move if the player is
+	; flying or underground, and slower than the enemy.
 	ld a, [wPlayerSubStatus3]
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	ret z
+	jr z, AI_Smart_AvoidIfProtect
 
 	call AICompareSpeed
 	ret nc
@@ -927,6 +908,26 @@ AI_Smart_Fly:
 	dec [hl]
 	dec [hl]
 	ret
+
+AI_Smart_AvoidIfProtect:
+; Greatly discourage if the player has Protect. Used for 2-turn moves.
+	; Power Herb makes this a 1-turn move.
+	push hl
+	predef GetUserItemAfterUnnerve
+	pop hl
+	ld a, b
+	cp HELD_POWER_HERB
+	ret z
+
+	ld b, EFFECT_PROTECT
+	call PlayerHasMoveEffect
+	jr c, .discourage
+	ld b, EFFECT_ENDURE
+	call PlayerHasMoveEffect
+	ret nc
+
+.discourage
+	jmp AIDiscourageMove
 
 AI_Smart_TrickRoom:
 ; Greatly encourage this move if it would make us outspeed, discourage otherwise
@@ -1050,7 +1051,10 @@ AI_Smart_Rage:
 	ret
 
 AI_Smart_Counter:
+	push de
 	push hl
+	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
+	ld d, a
 	ld hl, wPlayerUsedMoves
 	lb bc, 0, NUM_MOVES
 
@@ -1066,8 +1070,8 @@ AI_Smart_Counter:
 	jr z, .skipmove
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
-	cp SPECIAL
-	jr nc, .skipmove
+	cp d
+	jr nz, .skipmove
 
 	inc b
 
@@ -1085,19 +1089,23 @@ AI_Smart_Counter:
 
 	ld a, [wPlayerSelectedMove]
 	and a
-	ret z
+	jr z, .done
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	ret z
+	jr z, .done
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
-	cp SPECIAL
-	ret nc
+	cp d
+	jr z, .encourage
+.done
+	pop de
+	ret
 
 .encourage
+	pop de
 	call Random
 	cp 39 percent + 1
 	ret c
@@ -1106,6 +1114,7 @@ AI_Smart_Counter:
 	ret
 
 .discourage
+	pop de
 	inc [hl]
 	ret
 
@@ -1130,7 +1139,7 @@ AI_Smart_Encore:
 
 	pop hl
 	ld a, [wTypeMatchup]
-	cp $a
+	cp EFFECTIVE
 	jr nc, .weakmove
 
 	and a
@@ -1866,66 +1875,6 @@ AI_Smart_BellyDrum:
 	ld [hl], a
 	ret
 
-AI_Smart_MirrorCoat:
-	push hl
-	ld hl, wPlayerUsedMoves
-	lb bc, 0, NUM_MOVES
-
-.playermoveloop
-	ld a, [hli]
-	and a
-	jr z, .skipmove
-
-	call AIGetEnemyMove
-
-	ld a, [wEnemyMoveStruct + MOVE_POWER]
-	and a
-	jr z, .skipmove
-
-	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
-	cp SPECIAL
-	jr c, .skipmove
-
-	inc b
-
-.skipmove
-	dec c
-	jr nz, .playermoveloop
-
-	pop hl
-	ld a, b
-	and a
-	jr z, .discourage
-
-	cp 3
-	jr nc, .encourage
-
-	ld a, [wPlayerSelectedMove]
-	and a
-	ret z
-
-	call AIGetEnemyMove
-
-	ld a, [wEnemyMoveStruct + MOVE_POWER]
-	and a
-	ret z
-
-	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
-	cp SPECIAL
-	ret c
-
-.encourage
-	call Random
-	cp 39 percent + 1
-	ret c
-
-	dec [hl]
-	ret
-
-.discourage
-	inc [hl]
-	ret
-
 AI_Smart_JumpKick:
 ; Greatly discourage this move if the player is semi-invulnerable and the enemy
 ; is faster and neither Pokémon has No Guard.
@@ -2015,7 +1964,7 @@ AI_Smart_SolarBeam:
 
 	ld b, EFFECT_SUNNY_DAY
 	call AIHasMoveEffect
-	ret nc
+	jmp nc, AI_Smart_AvoidIfProtect
 
 	inc [hl]
 	inc [hl]
@@ -2162,11 +2111,17 @@ AICheckPlayerQuarterHP:
 	pop hl
 	ret
 
+PlayerHasMoveEffect:
+; Return carry if the player has move effect b.
+	push hl
+	ld hl, wPlayerUsedMoves
+	jr AnyHasMoveEffect
 AIHasMoveEffect:
-; Return carry if the enemy has move b.
-
+; Return carry if the enemy has move effect b.
 	push hl
 	ld hl, wAIMoves
+	; fallthrough
+AnyHasMoveEffect:
 	ld c, NUM_MOVES
 
 .checkmove
@@ -2192,36 +2147,6 @@ AIHasMoveEffect:
 	pop hl
 	scf
 	ret
-
-AIHasMoveInArray:
-; Return carry if the enemy has a move in array hl.
-
-	push hl
-	push de
-	push bc
-
-.next
-	ld a, [hli]
-	cp -1
-	jr z, .done
-
-	ld b, a
-	ld c, NUM_MOVES + 1
-	ld de, wAIMoves
-
-.check
-	dec c
-	jr z, .next
-
-	ld a, [de]
-	inc de
-	cp b
-	jr nz, .check
-
-	scf
-
-.done
-	jmp PopBCDEHL
 
 INCLUDE "data/battle/ai/useful_moves.asm"
 
@@ -2304,8 +2229,6 @@ AI_Aggressive:
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_COUNTER
 	jr z, .nodamage
-	cp EFFECT_MIRROR_COAT
-	jr z, .nodamage
 	call AIDamageCalc
 	pop bc
 	pop de
@@ -2364,8 +2287,6 @@ AI_Aggressive:
 	; Ignore Counter and Mirror Coat
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_COUNTER
-	jr z, .checkmove2
-	cp EFFECT_MIRROR_COAT
 	jr z, .checkmove2
 
 	; This routine overrides the type matchup AI layer, since it's typically
