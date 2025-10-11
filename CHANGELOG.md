@@ -23,6 +23,11 @@ This current stable release.
 - Added scaled base EXP exceptions (e.g., Happiny).
 - Added check for savestate loading affecting SRAM usage.
 - Added Earth Power to Ursaluna and Bloodmoon Ursaluna.
+- Added an initial option to disable experience gain (no-exp mode).
+- Pokegear clock now shows the time-of-day indicator in the clock UI.
+- Support for overriding RGB programs individually and new Analogue Pocket logo asset added to the build assets.
+- Auto-generation and verification of Huffman code trees for compressed text (improved charmaps / compressed text tooling).
+- Updated and added multiple Pokémon sprites and palettes (notable: Magnezone, Magmortar, Sneasler, Typhlosion-Hisuian, Rapidash-Galarian, and others).
 
 #### Fixes
 - Fixed mail encoding (avoid ngrams).
@@ -52,6 +57,16 @@ This current stable release.
 - Fixed neutralizing gas handling.
 - Fixed ability icon display logic on rental mon trade.
 - Fixed miscellaneous visual and formatting bugs.
+- Fixed several battle engine and move interaction bugs since the last changelog update, including:
+    - Corrected Protect/Endure success probabilities and capped Protect chaining chance.
+    - Fixed various secondary-effect/timing bugs (including Rampage/Future Sight interaction and Move secondary effect ordering).
+    - Fixed Intimidate / Eject Pack / Neutralizing Gas interactions and related held-item/ability edge cases.
+    - Fixed Magic Bounce, Enigma Berry, Punching Glove, and other ability/item interaction bugs.
+    - Fixed double-switch order and Trick Room logic edge cases.
+- Fixed Disable turncount and Rest/Lum/Chesto trigger bugs.
+- Made Sweet Honey not allow battling roaming Pokémon (behaviour/overworld fix).
+- Fixed a number of text/encoding and daycare wording issues (shorter "want egg" prompt, mail encoding with ngrams avoided).
+- Numerous crash and stability fixes, optimizations, and unreferenced-code cleanups across battle, text, and overworld systems.
 
 #### Changes
 - Re-introduced trade evolutions.
@@ -68,6 +83,10 @@ This current stable release.
 - Renamed CryHeader/Cry/MonCry for clarity.
 - Renamed "items" to "held items" in base stats.
 - Merged interrupt enables into VBlankUpdateSound.
+- Made modern EV rules the default option to reduce bulk by default.
+- Pluralization improvements used in text now simplify duplicated battle text variants (e.g. "Hit N times" now uses pluralize tables).
+- Regenerated text compression / Huffman tables based on current charmaps; improved compressed text error messages and verification.
+- Updated various engine internals to use newer hardware constants and RGBDS features (minor layout and performance improvements).
 
 #### Removals
 - Removed duplicate Sketch from Smeargle.
@@ -75,6 +94,8 @@ This current stable release.
 - Removed duplicate egg text.
 - Removed unreachable tree from Route 16 West.
 - Deleted redundant PNGs for Slowpoke sprites.
+- Removed several committed build products and unreferenced/duplicate asset files (cleanup of .gbcpal and other generated files).
+- Removed a number of unreferenced labels/code/data as part of cleanup and optimization passes (battle-related and graphical unused assets).
 
 ## v3.1.1
 
