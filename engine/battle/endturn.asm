@@ -660,11 +660,16 @@ IncrementToxic:
 	call GetBattleVar
 	bit TOX, a
 	ret z
-	inc [hl]
-	ret nz
 
-	; avoid overflow
+	inc [hl]
+
+	; Cap toxic counter at 15.
+	ld a, [hl]
+	cp 15
+	jr nz, .no_overflow
 	dec [hl]
+.no_overflow
+	inc [hl]
 	ret
 
 DoPoisonBurnDamageAnim:

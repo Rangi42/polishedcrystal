@@ -3,7 +3,7 @@
 
 MACRO plural
 	for i, CHARLEN(\1)
-		db CHARSUB(\1, CHARLEN(\1) - i)
+		db STRCHAR(\1, CHARLEN(\1) - 1 - i)
 	endr
 	db "@", \2, "@"
 ENDM

@@ -173,9 +173,11 @@ GetName:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+
+	; Yes, setting wCurSpecies before adding b is intentional.
 	ld a, [wNamedObjectIndex]
-	add b
 	ld [wCurSpecies], a
+	add b
 	call GetNthString
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes

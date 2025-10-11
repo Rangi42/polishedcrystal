@@ -3398,11 +3398,11 @@ BattleCommand_posthiteffects:
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
+	call GetFutureSightUser
+	ret nz
 	call HandleRampage
 	farcall CheckSheerForceNegation
 	ret z
-	call GetFutureSightUser
-	ret nz
 	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
@@ -5461,7 +5461,7 @@ LowerOppStatHit:
 _LowerOppStatHit:
 	or STAT_TARGET | STAT_LOWER | STAT_CANMISS | STAT_SECONDARY | STAT_SILENT
 ChangeStat:
-; b contains stat to alter, or zero if it should be read from the move script
+; b contains stat to alter, or -1 if it should be read from the move script
 	farjp FarChangeStat
 
 ResetMiss:
@@ -5632,6 +5632,8 @@ HandleRampage:
 ; otherwise ends rampage if the attack missed for any reason
 	call HasUserFainted
 	ret z
+	call GetFutureSightUser
+	ret nc
 
 	call CheckRampageStatusAndGetRolloutCount
 	ret z
@@ -5786,14 +5788,11 @@ BattleCommand_endloop:
 	push de
 	farcall ResolveOpponentBerserk
 	pop de
-	ld hl, wStringBuffer1
+	ld hl, wItemQuantityChangeBuffer
 	ld a, [de]
 	swap a
 	and $f
 	ld [hl], a
-	dec a
-	ld hl, Hit1TimeText
-	jr z, .got_hit_n_times_text
 	ld hl, HitNTimesText
 .got_hit_n_times_text
 	jmp StdBattleTextbox
@@ -6370,7 +6369,10 @@ BattleCommand_heal:
 	call UpdateUserInParty
 	call RefreshBattleHuds
 	ld hl, RegainedHealthText
-	jmp StdBattleTextbox
+	call StdBattleTextbox
+	call SwitchTurn
+	call PostStatus
+	jmp SwitchTurn
 
 .ability_prevents_rest
 	farcall BeginAbility
