@@ -205,8 +205,6 @@ For the authoritative, per-species rules and the complete list of included Poké
 
 ### Moves
 
-### Moves
-
 * Attribute differences (per-move):
   - Absorb: pp: 20 -> 25
   - Blizzard: power: 120 -> 110
