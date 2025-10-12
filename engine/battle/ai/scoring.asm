@@ -170,11 +170,6 @@ AI_Types:
 	ld a, [wTypeMatchup]
 	and a
 	jr z, .immune
-
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	call AI_IsFixedDamageMove
-	jr c, .checkmove
-	ld a, [wTypeMatchup]
 	cp EFFECTIVE
 	jr z, .checkmove
 	jr c, .noteffective
@@ -226,17 +221,6 @@ AI_Types:
 .immune
 	call AIDiscourageMove
 	jr .checkmove
-
-AI_IsFixedDamageMove:
-; Returns c if move effect a does fixed damage (or is Counter/Mirror Coat)
-	push hl
-	push de
-	push bc
-	ld hl, FixedDamageEffects
-	call IsInByteArray
-	jmp PopBCDEHL
-
-INCLUDE "data/battle/ai/fixed_damage_effects.asm"
 
 AI_Offensive:
 ; Greatly discourage non-damaging moves.
