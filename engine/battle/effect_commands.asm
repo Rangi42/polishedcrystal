@@ -1844,8 +1844,6 @@ BattleCommand_checkhit:
 	ret z
 	cp EFFECT_COUNTER
 	ret z
-	cp EFFECT_MIRROR_COAT
-	ret z
 	cp EFFECT_OHKO
 	jmp z, .ohko_accuracy
 	ld a, BATTLE_VARS_MOVE_ANIM

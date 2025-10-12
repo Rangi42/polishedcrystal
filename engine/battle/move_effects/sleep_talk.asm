@@ -45,9 +45,7 @@ BattleCommand_sleeptalk:
 	push hl
 	push de
 	push bc
-	ld b, a
 	farcall GetMoveEffect
-	ld a, b
 	ld hl, SleepTalkExcepts
 	call IsInByteArray
 	pop bc

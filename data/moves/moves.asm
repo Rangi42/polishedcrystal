@@ -320,7 +320,7 @@ endc
 	move EFFECT_RAIN_DANCE,          0, WATER,      -1,  5,   0, STATUS   ; RAIN_DANCE
 	move EFFECT_SUNNY_DAY,           0, FIRE,       -1,  5,   0, STATUS   ; SUNNY_DAY
 	move EFFECT_DEFENSE_DOWN_HIT,   80, DARK,      100, 15,  20, PHYSICAL ; CRUNCH
-	move EFFECT_MIRROR_COAT,         1, PSYCHIC,    -1, 20,   0, SPECIAL  ; MIRROR_COAT
+	move EFFECT_COUNTER,             1, PSYCHIC,    -1, 20,   0, SPECIAL  ; MIRROR_COAT
 	move EFFECT_SP_ATK_UP_2,         0, DARK,       -1, 20,   0, STATUS   ; NASTY_PLOT
 	move EFFECT_PRIORITY_HIT,       80, NORMAL,    100,  5,   0, PHYSICAL ; EXTREMESPEED
 	move EFFECT_ALL_UP_HIT,         60, ROCK,      100,  5,  10, SPECIAL  ; ANCIENTPOWER

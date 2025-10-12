@@ -133,7 +133,6 @@ MoveEffectsPointers:
 	dw RainDance
 	dw SunnyDay
 	dw BellyDrum
-	dw MirrorCoat
 	dw Earthquake
 	dw FutureSight
 	dw Gust

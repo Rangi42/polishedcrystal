@@ -2274,21 +2274,6 @@ BellyDrum:
 	bellydrum
 	endmove
 
-MirrorCoat:
-	checkobedience
-	usedmovetext
-	doturn
-	hastarget
-	checkhit
-	checkpriority
-	counter
-	moveanim
-	failuretext
-	applydamage
-	postfainteffects
-	posthiteffects
-	endmove
-
 MetalBurst:
 	checkobedience
 	usedmovetext

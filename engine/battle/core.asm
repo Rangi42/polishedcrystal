@@ -761,11 +761,9 @@ GetMovePriority:
 INCLUDE "data/moves/priorities.asm"
 
 GetMoveEffect:
-	ld a, b
 	ld l, a
 	ld a, MOVE_EFFECT
 	call GetMoveAttribute
-	ld b, a
 	ret
 
 PerformMove:
