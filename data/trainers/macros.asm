@@ -272,7 +272,7 @@ MACRO end_trainer
 		def _tr_size += 1
 	endc
 	if _tr_flags & TRAINERTYPE_MOVES
-		def _tr_size += NUM_MOVES
+		def _tr_size += (NUM_MOVES * 2)
 	endc
 	def _tr_size *= _tr_mons
 
