@@ -157,3 +157,9 @@ MACRO def_dvs_or_evs
 		shift
 	endr
 ENDM
+
+MACRO species_battle_item
+	db \1
+	shift
+	dp \#
+ENDM

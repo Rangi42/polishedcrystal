@@ -478,12 +478,6 @@ UserValidBattleItem:
 .done
 	jmp PopBCDEHL
 
-MACRO species_battle_item
-	db \1
-	shift
-	dp \#
-ENDM
-
 .ValidBattleItemTable:
 	species_battle_item LIGHT_BALL, PIKACHU
 	species_battle_item LEEK, FARFETCH_D
