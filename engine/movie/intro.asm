@@ -1,8 +1,8 @@
 CrystalIntro:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ldh a, [hInMenu]
 	push af
 	ldh a, [hVBlank]
@@ -11,7 +11,7 @@ CrystalIntro:
 .loop
 	call JoyTextDelay
 	ldh a, [hJoyLast]
-	and BUTTONS
+	and PAD_BUTTONS
 	jr nz, .ShutOffMusic
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -41,7 +41,7 @@ CrystalIntro:
 	pop af
 	ldh [hInMenu], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .InitRAMAddrs:
@@ -115,10 +115,10 @@ IntroScene1:
 	ld hl, IntroTilemap002
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_365ad
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -128,7 +128,7 @@ IntroScene1:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -200,7 +200,7 @@ IntroScene5:
 	call ClearSprites
 	call ClearTileMap
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
@@ -220,10 +220,10 @@ IntroScene5:
 	ld hl, IntroTilemap006
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_365ad
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -233,7 +233,7 @@ IntroScene5:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -355,7 +355,7 @@ IntroScene8:
 IntroScene9:
 ; Set up the next scene (same bg).
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	call ClearSprites
@@ -421,7 +421,7 @@ IntroScene11:
 	call ClearSprites
 	call ClearTileMap
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
@@ -438,10 +438,10 @@ IntroScene11:
 	ld hl, IntroTilemap008
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_365ad
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -451,7 +451,7 @@ IntroScene11:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -633,10 +633,10 @@ IntroScene15:
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
 	call Intro_LoadTilemap
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_e77dd
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -646,7 +646,7 @@ IntroScene15:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ld a, $90
@@ -703,10 +703,10 @@ IntroScene17:
 	ld hl, IntroTilemap012
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_e6d6d
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -716,7 +716,7 @@ IntroScene17:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -773,10 +773,10 @@ IntroScene19:
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
 	call Intro_LoadTilemap
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_e77dd
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -786,7 +786,7 @@ IntroScene19:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ld a, $d8
@@ -915,10 +915,10 @@ IntroScene26:
 	ld hl, IntroTilemap017
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, Palette_e679d
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -928,7 +928,7 @@ IntroScene26:
 	ld bc, 16 palettes
 	rst CopyBytes
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -993,10 +993,10 @@ Intro_Scene24_ApplyPaletteFade:
 	ld d, 0
 	add hl, de
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld de, wBGPals2
 	ld b, 8 ; number of BG pals
 .loop1
@@ -1012,7 +1012,7 @@ Intro_Scene24_ApplyPaletteFade:
 	dec b
 	jr nz, .loop1
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1076,10 +1076,10 @@ CrystalIntro_UnownFade:
 .okay
 	ld c, a
 	ld b, $0
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push hl
 	push bc
@@ -1141,7 +1141,7 @@ endc
 	ld [hli], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1219,10 +1219,10 @@ Intro_Scene20_AppearUnown:
 	ld c, a
 	ld b, 0
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push bc
 	ld hl, wBGPals2
@@ -1233,7 +1233,7 @@ Intro_Scene20_AppearUnown:
 	call .copypal
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, $1
 	ldh [hCGBPalUpdate], a
@@ -1264,10 +1264,10 @@ Intro_FadeUnownWordPals:
 	ld c, a
 	ld b, $0
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push hl
 	ld hl, .FastFadePalettes
@@ -1294,7 +1294,7 @@ Intro_FadeUnownWordPals:
 	ld [hli], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1335,10 +1335,10 @@ endr
 endc
 
 Intro_LoadTilemap:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wScratchTileMap
 	decoord 0, 0
@@ -1351,14 +1351,14 @@ Intro_LoadTilemap:
 	inc de
 	dec c
 	jr nz, .col
-; "add hl, BG_MAP_WIDTH - SCREEN_WIDTH"
+; "add hl, TILEMAP_WIDTH - SCREEN_WIDTH"
 ; 6 bytes, 12 cycles
 	push de
-	ld de, BG_MAP_WIDTH - SCREEN_WIDTH
+	ld de, TILEMAP_WIDTH - SCREEN_WIDTH
 	add hl, de
 	pop de
 ;; 8 bytes, 8 cycles
-;	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+;	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
 ;	add l
 ;	ld l, a
 ;	ld a, 0
@@ -1368,7 +1368,7 @@ Intro_LoadTilemap:
 	jr nz, .row
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 Intro_Scene16_AnimateSuicune:
@@ -1383,7 +1383,7 @@ Intro_Scene16_AnimateSuicune:
 
 Intro_ColoredSuicuneFrameSwap:
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 .loop
 	ld a, [hl]
 	and a
@@ -1436,10 +1436,10 @@ Intro_SetCGBPalUpdate:
 	ret
 
 Intro_ClearBGPals:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; Fill wBGPals2 and wOBPals2 with $0000 (black)
 	ld hl, wBGPals2
@@ -1459,7 +1459,7 @@ else
 endc
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ld c, 64
@@ -1476,10 +1476,10 @@ Intro_DecompressRequest2bpp_128Tiles:
 Intro_DecompressRequest2bpp_255Tiles:
 	lb bc, 1, 255
 Intro_DecompressRequest2bpp:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push bc
 	push de
@@ -1492,14 +1492,14 @@ Intro_DecompressRequest2bpp:
 	call Request2bpp
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 Intro_ResetLYOverrides:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wLYOverrides
 	ld bc, wLYOverridesEnd - wLYOverrides
@@ -1507,18 +1507,18 @@ Intro_ResetLYOverrides:
 	rst ByteFill
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	ret
 
 Intro_PerspectiveScrollBG:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	; Scroll the grass every frame.
 	; Scroll the trees every other frame and at half speed.
 	; This creates an illusion of perspective.
@@ -1542,7 +1542,7 @@ Intro_PerspectiveScrollBG:
 	ld a, [wLYOverrides + 0]
 	ldh [hSCX], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 IntroSuicuneRunGFX:
@@ -1563,10 +1563,10 @@ Intro_SetupCommonScenery:
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, Palette_e5edd
 	ld de, wBGPals1
@@ -1579,7 +1579,7 @@ Intro_SetupCommonScenery:
 	rst CopyBytes
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	xor a
 	ldh [hSCX], a

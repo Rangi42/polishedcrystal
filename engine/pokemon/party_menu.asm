@@ -373,7 +373,7 @@ BT_DisplayMenu:
 	call PlaySFX
 	ldh a, [hJoyPressed]
 	and a ; clear carry
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	ret z
 	scf
 	ret
@@ -524,8 +524,8 @@ WritePartyMenuTilemap:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, " "
+	ld bc, SCREEN_AREA
+	ld a, ' '
 	rst ByteFill ; blank the tilemap
 	call GetPartyMenuTilemapPointers ; This reads from a pointer table???
 .loop
@@ -675,7 +675,7 @@ PlacePartyMenuHPDigits:
 	lb bc, 2, 3
 	call PrintNum
 	pop de
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	inc de
 	inc de
@@ -715,7 +715,7 @@ PlacePartyMonLevel:
 	ld a, [de]
 	cp 100 ; This is distinct from MAX_LEVEL.
 	jr nc, .ThreeDigits
-	ld a, "<LV>"
+	ld a, '<LV>'
 	ld [hli], a
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	; jr .okay
@@ -951,9 +951,9 @@ PlacePartyMonGender:
 	xor a
 	ld [wMonType], a
 	call GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender
 	inc a ; "<FEMALE>"
 
@@ -1146,7 +1146,7 @@ InitPartyMenuWithCancel:
 
 .done
 	ld [wMenuCursorY], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ret
 
@@ -1166,7 +1166,7 @@ InitPartySwap:
 	ld a, [wSwitchMon]
 	dec a
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	ret
 
 InitPartyMenuNoCancel:
@@ -1186,7 +1186,7 @@ InitPartyMenuNoCancel:
 	ld a, 1
 .done
 	ld [wMenuCursorY], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ret
 
@@ -1218,7 +1218,7 @@ PartyMenuSelect:
 	ld [wPartyMenuCursor], a
 	ldh a, [hJoyLast]
 	ld b, a
-	bit B_BUTTON_F, b
+	bit B_PAD_B, b
 	jr nz, .exitmenu ; B button
 	ld a, [wMenuCursorY]
 	dec a

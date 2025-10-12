@@ -31,7 +31,7 @@ ReadAnyMail:
 .loop
 	call GetJoypad
 	ldh a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr z, .loop
 	ret
 
@@ -619,7 +619,7 @@ MailGFX_PlaceMessage:
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
+	ld a, '@'
 	ld [wTempMailAuthor], a
 	ld [wMonOrItemNameBuffer + NAME_LENGTH - 1], a
 	ld de, wTempMailMessage

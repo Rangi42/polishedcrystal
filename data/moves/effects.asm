@@ -2217,11 +2217,11 @@ RapidSpin:
 	applydamage
 	criticaltext
 	supereffectivetext
-	clearhazards
 	postfainteffects
 	selfeffectchance
 	raisestathit SPEED
 	posthiteffects
+	clearhazards
 	endmove
 
 HealingLight:

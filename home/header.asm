@@ -17,7 +17,7 @@ SwitchToMapScriptsBank::
 SECTION "rst08 Bankswitch", ROM0[$0008]
 Bankswitch::
 	ldh [hROMBank], a
-	ld [MBC3RomBank], a
+	ld [rROMB], a
 	ret
 
 _de_::
@@ -165,14 +165,6 @@ SECTION "Header", ROM0[$0100]
 Start::
 	nop ; no-optimize nops
 	jr _Start
-
-if DEF(ANALOGUE_POCKET)
-	; Use specialized logo for Analogue Pocket compatibility.
-	ds $0104 - @, $00
-	db $01, $10, $ce, $ef, $00, $00, $44, $aa, $00, $74, $00, $18, $11, $95, $00, $34
-	db $00, $1a, $00, $d5, $00, $22, $00, $69, $6f, $f6, $f7, $73, $09, $90, $e1, $10
-	db $44, $40, $9a, $90, $d5, $d0, $44, $30, $a9, $21, $5d, $48, $22, $e0, $f8, $60
-endc
 
 	; The rest of the header is handled by rgbfix.
 	ds $014e - @, $00

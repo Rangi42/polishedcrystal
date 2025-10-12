@@ -1482,7 +1482,7 @@ ItemActionTextWaitButton:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	ld a, [wPartyMenuActionText]
 	call ItemActionText
@@ -1879,7 +1879,7 @@ WingCase_MonSelected:
 	pop af
 	ldh [hBGMapMode], a
 	ld a, [wMenuJoypad]
-	sub B_BUTTON
+	sub PAD_B
 	ret z
 
 	; Which wing was chosen? -1 is cancel
@@ -2036,7 +2036,7 @@ WingCase_MonSelected:
 	call SwapHLDE
 	ld bc, SCREEN_WIDTH
 	add hl, bc
-	ld a, "×"
+	ld a, '×'
 	ld [hli], a
 	lb bc, 2, 3
 	jmp PrintNum
@@ -2115,7 +2115,7 @@ CandyJar_MonSelected:
 	pop af
 	ldh [hBGMapMode], a
 	ld a, [wMenuJoypad]
-	sub B_BUTTON
+	sub PAD_B
 	ret z
 
 	; Which candy was chosen? -1 is cancel
@@ -2390,7 +2390,7 @@ CandyJar_MonSelected:
 	call SwapHLDE
 	ld bc, SCREEN_WIDTH - 3
 	add hl, bc
-	ld a, "×"
+	ld a, '×'
 	ld [hli], a
 	lb bc, 1, 2
 	jmp PrintNum

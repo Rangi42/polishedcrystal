@@ -898,14 +898,14 @@ TutorialPack:
 	ret
 
 .autoinput_right_right_a
-	db NO_INPUT, $40
-	db D_RIGHT,  $00
-	db NO_INPUT, $40
-	db D_RIGHT,  $00
-	db NO_INPUT, $40
+	db NO_INPUT,  $40
+	db PAD_RIGHT, $00
+	db NO_INPUT,  $40
+	db PAD_RIGHT, $00
+	db NO_INPUT,  $40
 .autoselect
-	db A_BUTTON, $00
-	db NO_INPUT, $ff ; end
+	db PAD_A,     $00
+	db NO_INPUT,  $ff ; end
 
 PackJumptable_QuitNoScript:
 	xor a ; FALSE
@@ -1085,10 +1085,10 @@ Pack_InterpretJoypad:
 
 .switching_item
 	ld a, [hl]
-	and A_BUTTON | SELECT
+	and PAD_A | PAD_SELECT
 	jr nz, .place_insert
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .end_switch
 	ret
 

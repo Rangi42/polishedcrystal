@@ -35,4 +35,4 @@ AbnormalContactMoves:
 	dw SPIKE_CANNON
 	dw STONE_EDGE
 	dw TWINEEDLE
-	dw STRUGGLE ; -1
+	dw -1 ; Struggle does make contact

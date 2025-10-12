@@ -33,7 +33,7 @@ GetNthString::
 	ld b, a
 .readChar
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .readChar
 	dec b
 	jr nz, .readChar
@@ -48,16 +48,16 @@ GetBasePokemonName::
 	ld hl, wStringBuffer1
 .loop
 	ld a, [hl]
-	cp "@"
+	cp '@'
 	jr z, .quit
-	cp "♂"
+	cp '♂'
 	jr z, .end
-	cp "♀"
+	cp '♀'
 	jr z, .end
 	inc hl
 	jr .loop
 .end
-	ld [hl], "@"
+	ld [hl], '@'
 .quit
 	pop hl
 	ret
@@ -98,7 +98,7 @@ GetPokemonName::
 	call FarCopyBytes
 	ld h, d
 	ld l, e
-	ld [hl], "@"
+	ld [hl], '@'
 	pop de
 	pop hl
 	ret

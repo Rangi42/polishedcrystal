@@ -3,15 +3,15 @@
 ; increment when the GameBoy is switched off, or in the no-RTC patch, runs
 ; at 6x speed while the game time remains real-time)
 GameTimer::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, 1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call UpdateGameTimer
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 UpdateGameTimer::

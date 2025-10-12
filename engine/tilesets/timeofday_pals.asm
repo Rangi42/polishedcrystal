@@ -39,14 +39,14 @@ _TimeOfDayPals::
 	ld hl, wBGPals1 palette 7
 
 ; save wram bank
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	ld b, a
 ; wram bank 5
 	ld a, 5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; push palette
-	ld c, 4 ; NUM_PAL_COLORS
+	ld c, 4 ; PAL_COLORS
 .push
 	ld a, [hli]
 	ld d, a
@@ -58,7 +58,7 @@ _TimeOfDayPals::
 
 ; restore wram bank
 	ld a, b
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; update cgb pals
 	ld a, CGB_MAPPALS
@@ -68,14 +68,14 @@ _TimeOfDayPals::
 	ld hl, wBGPals1 palette 7 + 1 palettes - 1 ; last byte in UnknBGPals
 
 ; save wram bank
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	ld d, a
 ; wram bank 5
 	ld a, 5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; pop palette
-	ld e, 4 ; NUM_PAL_COLORS
+	ld e, 4 ; PAL_COLORS
 .pop
 	pop bc
 	ld a, c
@@ -87,7 +87,7 @@ _TimeOfDayPals::
 
 ; restore wram bank
 	ld a, d
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 ; update palettes
 	farcall LoadMapPalettes

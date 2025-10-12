@@ -3,7 +3,7 @@ ClearSpeechBox::
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
 ClearBox::
 ; Fill a c*b box at hl with blank tiles.
-	ld a, " "
+	ld a, ' '
 FillBoxWithByte::
 .row
 	push bc
@@ -23,18 +23,18 @@ FillBoxWithByte::
 ClearScreen::
 	ld a, PAL_BG_TEXT
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 ClearTileMap::
 ; Fill wTilemap with blank tiles.
-	ld a, " "
+	ld a, ' '
 FillTileMap::
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
 	rst ByteFill
 	; Update the BG Map.
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a
+	bit B_LCDC_ENABLE, a
 	ret z
 	jr ApplyTilemapInVBlank
 
@@ -42,8 +42,8 @@ BlackOutScreen::
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	ld a, "<BLACK>"
+	ld bc, SCREEN_AREA
+	ld a, '<BLACK>'
 	rst ByteFill
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -175,7 +175,7 @@ _PlaceString::
 	jr PlaceNextChar
 
 SpaceChar::
-	ld a, " "
+	ld a, ' '
 _PlaceLiteralChar:
 	ld [hli], a
 	call PrintLetterDelay
@@ -260,7 +260,7 @@ HandleLineBreak:
 	bit USE_BG_MAP_WIDTH_F, a
 	ld bc, SCREEN_WIDTH
 	jr z, .got_screen_width
-	ld c, BG_MAP_WIDTH
+	ld c, TILEMAP_WIDTH
 
 .got_screen_width
 	bit NO_LINE_SPACING_F, a
@@ -432,7 +432,7 @@ TextCommand_PLURAL:
 	; into other data. Handle this separately. The reason for this is that
 	; otherwise, if the plural table is also at a terminator, we'll misalign the
 	; parser into reading output as input and vice versa.
-	cp "@"
+	cp '@'
 	jr nz, .not_at_start
 	cp [hl]
 	jr nz, .no_match
@@ -445,7 +445,7 @@ TextCommand_PLURAL:
 	jr z, .check_match_loop
 
 	; Did we hit the terminator?
-	cp "@"
+	cp '@'
 	jr nz, .no_match
 
 .match
@@ -464,7 +464,7 @@ TextCommand_PLURAL:
 	ld b, 2
 .no_match_loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .no_match_loop
 	dec b
 	jr nz, .no_match_loop
@@ -495,7 +495,7 @@ TextScroll::
 	dec a
 	jr nz, .col
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
-	ld a, " "
+	ld a, ' '
 	ld bc, TEXTBOX_INNERW
 	rst ByteFill
 	ld c, 5
@@ -514,7 +514,7 @@ Text_WaitBGMap::
 	ret
 
 LoadBlinkingCursor::
-	ld a, "▼"
+	ld a, '▼'
 	ldcoord_a 18, 17
 	ret
 
@@ -647,7 +647,7 @@ TextCommand_ASM::
 	jp hl
 
 .not_rom
-	ld [hl], "@"
+	ld [hl], '@'
 	ret
 
 TextCommand_DECIMAL::
@@ -681,7 +681,7 @@ TextCommand_PAUSE::
 	push bc
 	call GetJoypad
 	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr nz, .done
 	ld c, 30
 	call DelayFrames
@@ -757,7 +757,7 @@ DecompressString::
 	inc hl ; skip "<CTXT>"
 
 	; terminate buffer for printing each character
-	ld a, "@"
+	ld a, '@'
 	ldh [hCompressedTextBuffer+1], a
 
 	ld b, 1 ; start with no bits to read a byte right away
@@ -809,12 +809,12 @@ DecompressString::
 
 	; check for characters that signal end of compression
 	; (same ones that finish PlaceString)
-	sub "<DONE>"
+	sub '<DONE>'
 	jr z, .done
-	assert "<DONE>" + 1 == "@"
+	assert '<DONE>' + 1 == '@'
 	dec a
 	jr z, .end
-	assert "@" + 1 == "<PROMPT>"
+	assert '@' + 1 == '<PROMPT>'
 	dec a
 	jr nz, .character_loop
 
@@ -845,7 +845,7 @@ DecompressStringToRAM::
 ; input: hl = string, de = destination
 .outer_loop
 	ld a, [hl]
-	cp "<CTXT>"
+	cp '<CTXT>'
 	jr nz, .copy_loop
 
 	inc hl ; skip "<CTXT>"
@@ -869,7 +869,7 @@ DecompressStringToRAM::
 
 .copy_loop
 	ld a, [hli]
-	cp "<CTXT>"
+	cp '<CTXT>'
 	jr z, .do_decompression
 	call CheckTerminatorChar
 	jr z, .append_terminator
@@ -917,9 +917,9 @@ ReadHuffmanChar:
 
 CheckTerminatorChar:
 ; check for a character that terminates `_dchr` Huffman compression
-	cp "@"
+	cp '@'
 	ret z
-	cp "<DONE>"
+	cp '<DONE>'
 	ret z
-	cp "<PROMPT>"
+	cp '<PROMPT>'
 	ret

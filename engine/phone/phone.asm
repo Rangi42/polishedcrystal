@@ -367,7 +367,7 @@ Phone_CallerTextboxWithName:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
-	ld a, "<PHONE>"
+	ld a, '<PHONE>'
 	ld [hli], a
 	inc hl
 	ld d, h
@@ -390,7 +390,7 @@ GetCallerClassAndName:
 	push hl
 	push bc
 	rst PlaceString
-	ld a, ":"
+	ld a, ':'
 	ld [bc], a
 	pop bc
 	pop hl

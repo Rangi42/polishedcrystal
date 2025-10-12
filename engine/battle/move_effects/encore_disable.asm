@@ -87,7 +87,7 @@ DoEncoreDisable:
 	cp LOW(DISABLE)
 .cpbc_disable
 	ld hl, WasDisabledText
-	ld a, 4
+	ld a, 5
 	jr z, .got_text_and_duration
 	ld hl, GotAnEncoreText
 	dec a

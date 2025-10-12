@@ -1,7 +1,7 @@
 MACRO ev_yield
 	def_evs \#
-	db (EV_HP << 6) | (EV_ATK << 4) | (EV_DEF << 2) | EV_SPE
-	db (EV_SAT << 6) | (EV_SDF << 4)
+	db (VV_HP << 6) | (VV_ATK << 4) | (VV_DEF << 2) | VV_SPE
+	db (VV_SAT << 6) | (VV_SDF << 4)
 ENDM
 
 MACRO abilities_for

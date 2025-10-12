@@ -41,7 +41,7 @@ BattleAnimOAMUpdate:
 	push hl
 	ld a, [hl]
 	ld hl, wBattleAnimTempOAMFlags
-	bit OAM_Y_FLIP, [hl]
+	bit B_OAM_YFLIP, [hl]
 	jr z, .no_yflip
 	add $8
 	cpl
@@ -61,7 +61,7 @@ BattleAnimOAMUpdate:
 	push hl
 	ld a, [hl]
 	ld hl, wBattleAnimTempOAMFlags
-	bit OAM_X_FLIP, [hl]
+	bit B_OAM_XFLIP, [hl]
 	jr z, .no_xflip
 	add $8
 	cpl
@@ -153,7 +153,7 @@ BattleAnimOAMUpdate:
 	; First, set XY flip.
 	ld a, [hli]
 	jr z, .no_priority
-	or PRIORITY
+	or OAM_PRIO
 .no_priority
 	push hl
 	ld hl, wBattleAnimTempOAMFlags
@@ -169,21 +169,21 @@ BattleAnimOAMUpdate:
 	ret
 
 .tile_data
-	db X_FLIP, $00 ; W
-	db X_FLIP, $08 ; NW
-	db Y_FLIP, $04 ; N
+	db OAM_XFLIP, $00 ; W
+	db OAM_XFLIP, $08 ; NW
+	db OAM_YFLIP, $04 ; N
 	db 0, $08 ; NE
-	db Y_FLIP, $00 ; E
-	db Y_FLIP, $08 ; SE
-	db X_FLIP, $04 ; S
-	db X_FLIP | Y_FLIP, $08 ; SW
+	db OAM_YFLIP, $00 ; E
+	db OAM_YFLIP, $08 ; SE
+	db OAM_XFLIP, $04 ; S
+	db OAM_XFLIP | OAM_YFLIP, $08 ; SW
 
 InitBattleAnimBuffer:
 	ld hl, BATTLEANIMSTRUCT_OAMFLAGS
 	add hl, bc
 	ld a, [hl]
 
-	and PRIORITY
+	and OAM_PRIO
 	ld [wBattleAnimTempOAMFlags], a
 	xor a
 	ld [wBattleAnimTemp7], a

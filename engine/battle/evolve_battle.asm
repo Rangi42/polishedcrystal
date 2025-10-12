@@ -12,7 +12,7 @@ EvolveDuringBattle::
 
 	call LoadTileMapToTempTileMap
 	ld a, BANK("Sound Stack")
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wSoundEngineBackup
 	ld de, wSoundEngineBattleBackup
 	ld bc, wChannelsEnd - wMusic + 1
@@ -26,7 +26,7 @@ EvolveDuringBattle::
 	rst CopyBytes
 	ei
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	farcall TryToEvolve
 	jr c, .canceled
@@ -100,7 +100,7 @@ EvolveDuringBattle::
 
 	push af ; preserve carry flag from evolution result
 	ld a, BANK("Sound Stack")
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wBackupMapMusic]
 	ld [wMapMusic], a
 	di
@@ -114,7 +114,7 @@ EvolveDuringBattle::
 	ld bc, wChannelsEnd - wMusic + 1
 	rst CopyBytes
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call UpdatePlayerHPPal
 	call _LoadBattleFontsHPBar
 	call GetMonBackpic

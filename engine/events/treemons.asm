@@ -53,12 +53,12 @@ TreeItemEncounter:
 	push hl
 .find_terminator
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .find_terminator
 	dec hl
-	ld a, "s"
+	ld a, 's'
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	pop hl
 .no_plural
 	ld de, wStringBuffer4

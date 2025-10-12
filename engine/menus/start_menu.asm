@@ -98,9 +98,9 @@ StartMenu::
 .loop
 	call ReadMenuJoypad
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .b
-	cp A_BUTTON
+	cp PAD_A
 	jr nz, .loop
 .a
 	call PlayClickSFX
@@ -399,7 +399,7 @@ StartMenu_Pokemon:
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
 .menunoreload
-	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld a, PAD_A | PAD_B | PAD_SELECT
 	ld [wMenuJoypadFilter], a
 	farcall WritePartyMenuTilemap
 	farcall PlacePartyMenuText
@@ -409,7 +409,7 @@ StartMenu_Pokemon:
 	farcall PartyMenuSelect
 	jr c, .return ; if cancelled or pressed B
 	ldh a, [hJoyLast]
-	and SELECT
+	and PAD_SELECT
 	jr z, .not_switch
 	call SwitchPartyMons
 	jr .after_action
@@ -443,7 +443,7 @@ ClearSpritesUnderStartMenu:
 	ld de, wShadowOAMSprite00XCoord
 	ld h, d
 	ld l, e
-	ld c, NUM_SPRITE_OAM_STRUCTS
+	ld c, OAM_COUNT
 .loop
 	; Check if XCoord >= 10 * TILE_WIDTH,
 	; which is the starting x-coord of the start menu.
@@ -452,7 +452,7 @@ ClearSpritesUnderStartMenu:
 	jr nc, .clear_sprite
 ; fallthrough
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld e, l
 	dec c

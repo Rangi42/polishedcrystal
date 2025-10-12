@@ -17,6 +17,11 @@ BattleCommand_bounceback:
 	cp ATKFAIL_PROTECT
 	ret z
 
+	; Someone who is semi-invulnerable will not bounceback (ask GF why).
+	; Hazards were still affected in Gen V specifically, but not in VI+
+	call CheckHiddenOpponent
+	ret nz
+
 	push bc
 	; Some moves bypass Substitute
 	call GetMoveIndexFromID

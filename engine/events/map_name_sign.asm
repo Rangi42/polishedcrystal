@@ -101,7 +101,7 @@ InitMapNameSign::
 	ldh [rWY], a
 	ldh [hWY], a
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	ret
@@ -201,7 +201,7 @@ PlaceMapNameSign::
 	sub SCREEN_HEIGHT_PX
 	ret nz
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	ldh [hLCDCPointer], a
 	ld hl, wWeatherFlags
 	res OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
@@ -232,7 +232,7 @@ LoadMapNameSignGFX:
 	call GetOpaque1bppSpaceTile
 	pop de
 	pop hl
-	ld bc, LEN_2BPP_TILE
+	ld bc, TILE_SIZE
 	add hl, bc
 	dec e
 	jr nz, .clear_loop
@@ -246,7 +246,7 @@ LoadMapNameSignGFX:
 	ld hl, wStringBuffer1
 .length_loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr z, .got_length
 	inc c
 	jr .length_loop
@@ -270,7 +270,7 @@ LoadMapNameSignGFX:
 .loop
 	; a = tile offset into font graphic
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .continue
 
 	; copy sign palette for PAL_BG_TEXT
@@ -293,9 +293,9 @@ LoadMapNameSignGFX:
 	; save position in landmark name
 	push hl
 	; spaces are unique
-	cp "¯"
+	cp '¯'
 	jr z, .space
-	cp " "
+	cp ' '
 	jr nz, .not_space
 .space
 	ld hl, TextboxSpaceGFX
@@ -325,7 +325,7 @@ LoadMapNameSignGFX:
 	call GetOpaque1bppFontTile
 	pop hl
 	; increment position in vram
-	ld bc, LEN_2BPP_TILE
+	ld bc, TILE_SIZE
 	add hl, bc
 	; de = position in vram
 	ld d, h
@@ -345,23 +345,23 @@ InitMapNameFrame:
 	ld de, wAttrmap - wTilemap
 	add hl, de
 	; top row
-	ld a, PRIORITY | PAL_BG_TEXT
+	ld a, OAM_PRIO | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH - 1
 	rst ByteFill
-	or X_FLIP
+	or OAM_XFLIP
 	ld [hli], a
 	; middle row
-	and ~X_FLIP
+	and ~OAM_XFLIP
 	ld [hli], a
 	ld bc, SCREEN_WIDTH - 2
 	rst ByteFill
-	or X_FLIP
+	or OAM_XFLIP
 	ld [hli], a
 	; bottom row
-	and ~X_FLIP
+	and ~OAM_XFLIP
 	ld bc, SCREEN_WIDTH - 1
 	rst ByteFill
-	or X_FLIP
+	or OAM_XFLIP
 	ld [hl], a
 ; PlaceMapNameFrame
 	hlcoord 0, 0

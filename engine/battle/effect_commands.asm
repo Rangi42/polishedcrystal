@@ -160,6 +160,7 @@ DoMove:
 .endturn_herb
 	push af
 	call CheckEndMoveEffects
+	call CheckThroatSpray
 	call CheckPowerHerb
 	pop af
 	ret
@@ -196,7 +197,7 @@ BattleCommand_checkturn:
 	ld [wAlreadyDisobeyed], a
 	ld [wAlreadyExecuted], a
 
-	ld a, $10 ; 1.0
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 
 	; Paranoia nightmare clear check
@@ -1474,6 +1475,74 @@ CheckMoveHitState:
 	pop hl
 	ret
 
+OpponentCanLoseItem:
+	call StackCallOpponentTurn
+UserCanLoseItem:
+; Returns z if the item is considered "essential". This applies if:
+; - user doesn't have a held item
+; - user is holding Mail
+; - form-changing items and EITHER user or target is the species
+; Performs no other item loss-related checks, this function exists
+; to ban certain items from being lost/gained.
+; Note that form-changing items are covered even if the item applies
+; to the user's mon but the item is on the foe. This is for Trick, but
+; will also prevent Mewtwo from Knocking Off a non-Mewtwo's Armor Suit.
+; This is consistent with vanilla behaviour of these kinds of items.
+	push hl
+	push de
+	push bc
+	call GetUserItem
+	ld a, [hl]
+	and a
+	jr z, .match
+	ld d, a
+	call ItemIsMail
+	jr c, .match
+	ld hl, .EssentialItemTable - 1
+.loop
+	inc hl
+	ld a, [hli]
+	cp 1 ; no-optimize a == 1 (dec a can't set carry)
+	jr c, .done
+	cp d
+	ld a, [hli]
+	jr nz, .loop
+
+	; Found essential item. Check if user or opponent's species matches.
+	ld c, a
+	ld b, [hl]
+
+	call .CompareUserSpecies
+	jr z, .match
+	call SwitchTurn
+	call .CompareUserSpecies
+	call SwitchTurn
+	jr nz, .loop
+
+.match
+	xor a
+.done
+	jmp PopBCDEHL
+
+.CompareUserSpecies:
+	push hl
+	ld a, MON_SPECIES
+	call UserPartyAttr
+	cp c
+	pop hl
+	ret nz
+	push hl
+	ld a, MON_FORM
+	call UserPartyAttr
+	pop hl
+	ld b, a
+	ld a, [hl]
+	jmp CompareSpeciesForm
+
+.EssentialItemTable:
+	species_battle_item ARMOR_SUIT, MEWTWO, MEWTWO_ARMORED_FORM
+	db 0
+
 CheckAirBalloon:
 ; Returns z if the target is holding an Air Balloon
 	push bc
@@ -1719,7 +1788,7 @@ BattleCommand_resettypematchup:
 	farcall BattleCheckTypeMatchup
 	ld a, [wTypeMatchup]
 	and a
-	ld a, $10 ; 1.0
+	ld a, EFFECTIVE
 	jr nz, .reset
 	call ResetDamage
 	xor a
@@ -1944,6 +2013,13 @@ BattleCommand_checkhit:
 .max_acc_ok
 	add 13
 	ld b, a
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp WONDER_SKIN
+	jr nz, .not_wonder_skin
+	farcall WonderSkinAbility
+
+.not_wonder_skin
 	xor a
 	ldh [hMultiplicand + 0], a
 	ldh [hMultiplicand + 1], a
@@ -2985,21 +3061,29 @@ BattleCommand_supereffectivetext:
 
 .continue
 	ld a, [wTypeModifier]
-	cp $10 ; 1.0
+	cp EFFECTIVE
 	ret z
 	push af
-	ld a, [wInverseBattleScore]
-	ld hl, SuperEffectiveText
+	ld hl, wInverseBattleScore
 	jr nc, .super_effective
+	dec [hl]
+	dec [hl]
+	cp NOT_VERY_EFFECTIVE
 	ld hl, NotVeryEffectiveText
-	dec a
-	dec a
+	jr z, .got_msg
+	ld hl, MostlyIneffectiveText
+	jr .got_msg
 .super_effective
-	inc a
-	cp $80
-	jr z, .score_ok
-	ld [wInverseBattleScore], a
-.score_ok
+	inc [hl]
+	bit 7, [hl]
+	jr z, .no_inverse_overflow
+	dec [hl]
+.no_inverse_overflow
+	cp SUPER_EFFECTIVE
+	ld hl, SuperEffectiveText
+	jr z, .got_msg
+	ld hl, ExtremelyEffectiveText
+.got_msg
 	call StdBattleTextbox
 	pop af
 	ret c
@@ -3012,24 +3096,7 @@ BattleCommand_supereffectivetext:
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_WEAKNESS_POLICY
-	jr z, .weakness_policy
-	cp HELD_ENIGMA_BERRY
 	ret nz
-
-	push bc
-	push hl
-	farcall CheckFullHP
-	pop hl
-	pop bc
-	ret z
-
-	; treat as HP-restoring berry
-	ld b, HELD_BERRY
-	farcall _HeldHPHealingItem
-	ret nz
-	farjp UseBattleItem
-
-.weakness_policy
 	call SwitchTurn
 	ld b, 0
 	push bc
@@ -3338,7 +3405,7 @@ BattleCommand_posthiteffects:
 	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	jr z, .rocky_helmet_done
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser_OverrideFaintOrder
 	call GetOpponentItem
 	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
@@ -3432,6 +3499,35 @@ BattleCommand_posthiteffects:
 	call c, FlinchTarget
 	ret
 
+CheckStatHerbsAfterIntimidate:
+	ld hl, wDeferredSwitch
+	ld a, [hl]
+	push af
+	push hl
+	ld [hl], 0
+	call CheckStatHerbs
+	pop hl
+	push hl
+	ld a, [hl]
+	and a
+	jr z, .no_deferred_switch
+
+	; Awful hack: if Neutralizing Gas suppression is on-going, don't induce
+	; another switch...
+	call GetTrueUserAbility
+	inc a
+	jr z, .no_deferred_switch
+	call GetOpponentAbility
+	inc a
+	jr z, .no_deferred_switch
+	farcall DeferredSwitch
+
+.no_deferred_switch
+	pop hl
+	pop af
+	ld [hl], a
+	ret
+
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
 	call GetFutureSightUser
@@ -3439,7 +3535,6 @@ CheckEndMoveEffects:
 	call HandleRampage
 	call CheckSheerForceNegation
 	ret z
-	call CheckThroatSpray
 
 	; Only check white herb if we didn't do damage
 	ld a, [wDamageTaken]
@@ -3982,6 +4077,7 @@ GetOpponentActiveScreens:
 	; Set move anim param to notify that we are breaking screens.
 	call .GetScreen
 	ld [wBattleAnimParam], a
+.ret_z
 	xor a
 	ret
 
@@ -3991,7 +4087,7 @@ GetOpponentActiveScreens:
 	ret z
 
 	call CheckCrit
-	ret nz
+	jr nz, .ret_z
 	; fallthrough
 .GetScreen:
 	push hl
@@ -4718,7 +4814,7 @@ TakeOpponentDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser_SkipItems
 .did_no_damage
 	jmp RefreshBattleHuds
 
@@ -5212,7 +5308,7 @@ SapHealth:
 	pop hl
 	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser_OverrideFaintOrder
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
 	farjp EndAbility
@@ -6063,16 +6159,9 @@ BattleCommand_traptarget:
 	ret nz
 	call CheckSubstituteOpp
 	ret nz
-	push bc
-	push de
-	push hl
-	call GetUserItemAfterUnnerve
-	ld a, b
-	cp HELD_PROLONG_WRAP
-	pop hl
-	pop de
-	pop bc
-	jr z, .seven_turns
+	ld a, HELD_PROLONG_WRAP
+	call GetItemBoostedDuration
+	jr z, .got_count
 	call BattleRandom
 	and 1
 	add 4
@@ -6441,17 +6530,19 @@ ResetActorDisable:
 	ret
 
 GetItemBoostedDuration:
+; Returns actual count and z if held item matches, otherwise 5 and nz. 5 isn't
+; necessarily the regular duration, but is set by default since it usually is.
 	push bc
 	push hl
-	ld c, a
-	push bc
+	ld h, a
+	push hl
 	call GetUserItemAfterUnnerve
+	pop hl
 	ld a, b
-	pop bc
-	cp c
+	cp h
 	ld a, 5
 	jr nz, .got_duration
-	ld a, 8
+	ld a, c
 .got_duration
 	pop hl
 	pop bc

@@ -716,6 +716,10 @@ InitRoamMons:
 
 CheckEncounterRoamMon:
 	push hl
+; Don't trigger an encounter if we're using Sweet Honey.
+	ld hl, wStatusFlags2
+	bit STATUSFLAGS2_USING_SWEET_HONEY_F, [hl]
+	jr nz, .DontEncounterRoamMon
 ; Don't trigger an encounter if we're on water.
 	call CheckOnWater
 	jr z, .DontEncounterRoamMon

@@ -109,12 +109,13 @@ YoungsterTylerSeenText:
 	line "mon anywhere!"
 
 	para "In grass, in"
-	line "water, or up a"
-	cont "girl's skirt!"
+	line "water, in caves,"
+	cont "or up a tree!"
 	done
 
 YoungsterTylerBeatenText:
-	text "I'm sorry!"
+	text "I need to keep"
+	line "looking!"
 	done
 
 BeautyRachaelSeenText:

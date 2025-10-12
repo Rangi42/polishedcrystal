@@ -159,7 +159,6 @@ CheckUserMove:
 
 
 CheckAirborneAfterMoldBreaker:
-	push de
 	call SwitchTurn
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
@@ -167,7 +166,6 @@ CheckAirborneAfterMoldBreaker:
 	jr CheckAirborne_GotAbility
 
 CheckAirborne:
-	push de
 	call GetTrueUserAbility
 	ld b, a
 CheckAirborne_GotAbility:
@@ -194,6 +192,7 @@ CheckAirborne_GotAbility:
 .no_ingrain
 
 	; Check Iron Ball
+	push de
 	push bc
 	predef GetUserItemAfterUnnerve
 	ld a, b
@@ -337,7 +336,7 @@ _CheckTypeMatchup:
 	ld a, [hli]
 	ld c, [hl]
 	ld b, a
-	ld a, $10 ; 1.0
+	ld a, EFFECTIVE
 	ld [wTypeMatchup], a
 	ld hl, InverseTypeMatchups
 	ld a, [wBattleType]

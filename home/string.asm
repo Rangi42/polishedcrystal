@@ -7,9 +7,9 @@ InitName::
 	push bc
 .loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr z, .blank
-	cp " "
+	cp ' '
 	jr nz, .notblank
 	dec c
 	jr nz, .loop
@@ -50,7 +50,7 @@ FarCopyRadioText::
 	inc de
 .loop
 	call DecompressStringToRAM
-	cp "@"
+	cp '@'
 	jr z, .loop ; <DONE> terminates radio lines, not @
 	pop af
 	rst Bankswitch

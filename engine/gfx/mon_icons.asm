@@ -68,10 +68,10 @@ SetTradeMiniIconColor:
 	ld a, [wCurIconForm]
 	ld b, a
 	farcall GetMonPalInBCDE
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wOBPals1 palette 1 + 5
 	ld a, d
 	ld [hld], a
@@ -82,7 +82,7 @@ SetTradeMiniIconColor:
 	ld [hl], c
 	farcall ApplyOBPals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ld a, 1 ; OBJ 1
@@ -162,16 +162,16 @@ SetOWFlyMonColor:
 	farcall CopySpritePal
 	pop bc
 	ldh a, [hUsedOAMIndex]
-	cp (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS - 1) * SPRITEOAMSTRUCT_LENGTH
+	cp (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS - 1) * OBJ_SIZE
 	; if we didn't have enough OAM slots, we need to use the last NUM_FLYFROM_ANIM_OAMS slots
-	ld a, (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH
+	ld a, (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE
 	jr nc, .got_oam_addr
 	ldh a, [hUsedOAMIndex]
-	; a = (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
+	; a = (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE + 1
 	cpl
-	add (NUM_SPRITE_OAM_STRUCTS - NUM_FLYFROM_ANIM_OAMS) * SPRITEOAMSTRUCT_LENGTH + 1
+	add (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS) * OBJ_SIZE + 1
 .got_oam_addr
-	ld hl, wShadowOAM + SPRITEOAMSTRUCT_ATTRIBUTES
+	ld hl, wShadowOAM + OAMA_FLAGS
 	add l
 	ld l, a
 	ld a, c

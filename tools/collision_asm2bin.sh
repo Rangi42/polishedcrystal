@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-cat <<EOF | ${RGBDS}rgbasm -o - - | ${RGBDS}rgblink -x -o "$2" -
+cat <<EOF | ${RGBASM} -o - - | ${RGBLINK} -x -o "$2" -
 INCLUDE "constants/collision_constants.asm"
 INCLUDE "macros/collision.asm"
 SECTION "", ROM0[0]
