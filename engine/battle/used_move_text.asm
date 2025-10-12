@@ -5,13 +5,13 @@ MoveTable:
 ;	dw KARATE_CHOP
 ;	dw DOUBLE_SLAP
 ;	dw COMET_PUNCH
-	dw MEGA_PUNCH
+;	dw MEGA_PUNCH
 ;	dw PAY_DAY
 ;	dw FIRE_PUNCH
 ;	dw ICE_PUNCH
 ;	dw THUNDERPUNCH
 ;	dw SCRATCH
-	dw VISE_GRIP
+;	dw VISE_GRIP
 ;	dw GUILLOTINE
 ;	dw RAZOR_WIND
 ;	dw SWORDS_DANCE
@@ -21,11 +21,11 @@ MoveTable:
 ;	dw WHIRLWIND
 ;	dw FLY
 ;	dw BIND
-	dw SLAM
+;	dw SLAM
 ;	dw VINE_WHIP
 ;	dw STOMP
 ;	dw DOUBLE_KICK
-	dw MEGA_KICK
+;	dw MEGA_KICK
 ;	dw JUMP_KICK
 ;	dw ROLLING_KICK
 ;	dw SAND_ATTACK
@@ -440,7 +440,7 @@ MoveTable:
 	dw NO_MOVE
 
 DisplayUsedMoveText:
-;	jr .no_animate_all_moves ; comment this out for testing all move animations
+	jr .no_animate_all_moves ; comment this out for testing all move animations
 	ld de, MoveTable
 .loop
 	ld a, BATTLE_VARS_MOVE
