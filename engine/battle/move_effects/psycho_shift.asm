@@ -31,13 +31,14 @@ BattleCommand_psychoshift:
 	farcall CanPoisonTarget
 	; fallthrough
 .check
-	pop bc
 	jr z, .status
 	; otherwise immune
 .immune
 .failed
+	pop bc
 	farjp ButItFailed
 .status
+	pop bc
 	farcall AnimateCurrentMove
 	farcall StatusTarget
 	ld a, BATTLE_VARS_STATUS
