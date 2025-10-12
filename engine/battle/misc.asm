@@ -494,22 +494,3 @@ ENDM
 	species_battle_item THICK_CLUB, CUBONE
 	species_battle_item THICK_CLUB, MAROWAK
 	db -1
-
-
-CheckSheerForceNegation:
-; Check if a secondary effect was suppressed due to Sheer Force.
-; Most likely a bug introduced in Gen V, it is an established
-; mechanic at this point (VII) that if Sheer Force negates the
-; secondary effect of a move, various side effects don't trigger.
-; Returns z if an effect is negated.
-	call GetTrueUserAbility
-	cp SHEER_FORCE
-	ret nz
-	ld a, [wEffectFailed]
-	and a
-	jr z, .ret_nz
-	xor a
-	ret
-.ret_nz
-	or 1
-	ret

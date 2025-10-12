@@ -3439,7 +3439,7 @@ CheckEndMoveEffects:
 	call GetFutureSightUser
 	ret nz
 	call HandleRampage
-	farcall CheckSheerForceNegation
+	call CheckSheerForceNegation
 	ret z
 	call CheckThroatSpray
 
