@@ -313,6 +313,11 @@ DEF FIELD_GRAVITY    EQU %00000111
 	const MOVE_UNUSABLE_TORMENT
 	const MOVE_UNUSABLE_IMPRISON
 
+; wMoveHitState
+	const_def
+	const MOVEHIT_CRITICAL
+	const MOVEHIT_SUBSTITUTE
+
 ; wDeferredSwitch
 	const_def
 	const SWITCH_DEFERRED

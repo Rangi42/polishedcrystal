@@ -864,8 +864,8 @@ PoisonTouchAbility:
 	; Poison Touch is the same as an opposing Poison Point, and since
 	; abilities always run from the ability user's POV...
 	; Doesn't apply when opponent has a Substitute up...
-	ld b, 0
-	jr DoPoisonAbility
+	farcall CheckSubHit
+	ret nz
 PoisonPointAbility:
 	ld b, 1
 	; fallthrough
@@ -1801,9 +1801,8 @@ RivalryAbility:
 
 SheerForceAbility:
 ; 130% damage if a secondary effect is suppressed
-	ld a, [wEffectFailed]
-	and a
-	ret z
+	farcall CheckSheerForceNegation
+	ret nz
 	ln a, 13, 10 ; x1.3
 	jmp MultiplyAndDivide
 
