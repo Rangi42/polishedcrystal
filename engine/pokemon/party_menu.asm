@@ -892,10 +892,16 @@ PlacePartyMonEvoStoneCompatibility:
 	ld b, a
 	ld de, .string_not_able
 .loop2
+	ld a, b
+	cp LINKING_CORD
+	ld c, EVOLVE_TRADE + 1 ; due to "inc a"
+	jr z, .got_evolve_type
+	ld c, EVOLVE_ITEM + 1
+.got_evolve_type
 	farcall GetNextEvoAttackByte
-	cp -1
+	inc a
 	jr z, .done
-	cp EVOLVE_ITEM
+	cp c
 	farcall GetNextEvoAttackByte
 	inc hl
 	inc hl

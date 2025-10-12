@@ -2682,9 +2682,15 @@ BillsPC_CanReleaseMon:
 	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
+	jr z, .not_egg
+
+	; Allow release of Bad Eggs.
+	ld a, [wTempMonNickname]
+	cp "B" ; Assume "Bad Egg" (since the only alternative is "Egg").
 	ld a, RELEASE_EGG
 	ret nz
 
+.not_egg
 	xor a ; RELEASE_OK
 .done
 	and a
@@ -3647,7 +3653,7 @@ wLCDBillsPC1::
 
 	; start of VRAM writes
 	; second box mon
-	ld a, $80 | $2a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 5 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3655,7 +3661,7 @@ rept 4
 endr
 
 	; third box mon
-	ld a, $80 | $32
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 6 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3663,7 +3669,7 @@ rept 4
 endr
 
 	; fourth box mon
-	ld a, $80 | $3a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 7 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3690,7 +3696,7 @@ wLCDBillsPC2::
 
 	; start of VRAM writes
 	; first party mon
-	ld a, $80 | $12
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 2 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3698,7 +3704,7 @@ rept 4
 endr
 
 	; second party mon
-	ld a, $80 | $1a
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3706,7 +3712,7 @@ rept 4
 endr
 
 	; first box mon
-	ld a, $80 | $22
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 4 color 1)
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -3777,8 +3783,7 @@ wLCDBillsPC3:
 .got_pal
 
 	; start of VRAM writes
-	; BG3 color 0
-	ld a, $80 | $18
+	ld a, (1 << rBGPI_AUTO_INCREMENT) | (0 palette 3 color 0)
 	ldh [rBGPI], a
 rept 2
 	ld a, [hli]

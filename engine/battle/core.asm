@@ -1242,23 +1242,22 @@ GetUserSwitchTarget:
 
 SendInUserPkmn:
 ; sends in the new pokémon
-	; volatile statuses that baton pass doesn't preserve
+	; Reset all volatiles not preserved by Baton Pass.
 	call BreakAttractionAndResetMirrorHerb
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	res SUBSTATUS_ENDURE, [hl]
-	res SUBSTATUS_PROTECT, [hl]
-	inc hl
-	; substatus2
-	ld a, 1 << SUBSTATUS_LOCK_ON ; only flag here that should be preserved
+	ld a, 1 << SUBSTATUS_CURSE
 	and [hl]
+	ld [hli], a
+	; substatus2
+	xor a
 	ld [hli], a
 	; substatus3
 	ld a, 1 << SUBSTATUS_CONFUSED ; only flag here that should be preserved
 	and [hl]
 	ld [hli], a
 	; substatus4
-	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
+	ld a, 1 << SUBSTATUS_FOCUS_ENERGY | 1 << SUBSTATUS_SUBSTITUTE | 1 << SUBSTATUS_LEECH_SEED
 	and [hl]
 	ld [hl], a
 
@@ -6616,6 +6615,11 @@ GiveExperiencePoints:
 
 .participating
 	call GiveBattleEVs
+
+	; No experience if disabled
+	ld a, [wInitialOptions2]
+	bit NO_EXP_OPT, a
+	jmp nz, .next_mon
 
 	; No experience at level 100
 	ld hl, MON_LEVEL

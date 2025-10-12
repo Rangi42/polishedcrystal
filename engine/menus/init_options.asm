@@ -178,7 +178,7 @@ InitialOptionsString1:
 	next1 "            :"
 	next1 "EV gain"
 	next1 "            :"
-	next1 "Exp. scaling"
+	next1 "Experience gain"
 	next1 "            :"
 	next1 "Affection bonus"
 	next1 "            :"
@@ -329,31 +329,29 @@ InitialOptions_PSS:
 
 InitialOptions_EVs:
 	ld hl, wInitialOptions2
-	push bc
-	ld b, EV_OPTMASK
+	ld d, EV_OPTMASK
 	ldh a, [hJoyPressed]
-	ld c, a
+	ld e, a
 	and D_LEFT | D_RIGHT | A_BUTTON
 	jr z, .input_done
 	ld a, [hl]
 .redo
 	inc a
-	bit D_LEFT_F, c
+	bit D_LEFT_F, e
 	jr z, .finish_change
 	dec a
 	dec a
 .finish_change
-	and b
-	cp b
+	and d
+	cp d
 	jr z, .redo
-	ld c, a
+	ld e, a
 	ld a, [hl]
-	and b
+	and d
 	xor [hl]
-	or c
+	or e
 	ld [hl], a
 .input_done
-	pop bc
 	ld a, [hl]
 	ld de, AllString
 	rrca
@@ -369,28 +367,64 @@ InitialOptions_EVs:
 	ret
 
 InitialOptions_ExpScaling:
-	ld hl, wInitialOptions
+	; set e to a sequential value for exp
+	; 1 = old (unscaled), 2 = new (scaled), 3 = no
+	ld e, 3
+	ld hl, wInitialOptions2
+	bit NO_EXP_OPT, [hl]
+	dec hl
+	jr nz, .got_value
+	dec e ; 2
+	assert wInitialOptions2 - 1 == wInitialOptions
+	bit SCALED_EXP_OPT, [hl]
+	jr nz, .got_value
+	dec e ; 1
+.got_value
+	; check input
 	ldh a, [hJoyPressed]
 	and D_LEFT | D_RIGHT | A_BUTTON
-	jr nz, .Toggle
-	bit SCALED_EXP_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit SCALED_EXP_OPT, [hl]
-	jr z, .SetYes
+	jr z, .no_input
+	bit D_LEFT_F, a
+	jr nz, .left_input
+	; input right or A
+	dec e
+	jr z, .SetScaled ; from right, 1->2
+.left_input
+	dec e
+	jr z, .SetNo ; from left, 1->3; from right, 2->3
+.no_input
+	dec e
+	jr z, .SetUnscaled ; from none, is 1; from left, 2->1; from right, 3->1
+	dec e
+	jr z, .SetScaled ; from none, is 2; from left, 3->2
+	; fallthrough; from none, is 3
 .SetNo:
 	res SCALED_EXP_OPT, [hl]
+	inc hl
+	set NO_EXP_OPT, [hl]
 	ld de, NoString
 	jr .Display
-.SetYes:
+.SetUnscaled:
+	res SCALED_EXP_OPT, [hl]
+	inc hl
+	res NO_EXP_OPT, [hl]
+	ld de, .Old
+	jr .Display
+.SetScaled:
 	set SCALED_EXP_OPT, [hl]
-	ld de, YesString
+	inc hl
+	res NO_EXP_OPT, [hl]
+	ld de, .New
 .Display:
 	hlcoord 15, 10
 	rst PlaceString
 	and a
 	ret
+
+.Old:
+	db "Old@"
+.New:
+	db "New@"
 
 InitialOptions_AffectionBonus:
 	ld hl, wInitialOptions

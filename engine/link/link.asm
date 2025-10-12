@@ -650,7 +650,7 @@ Link_BuildIndexList:
 	dec b
 	jr nz, .move_loop
 	ld a, c
-	ld c, PARTYMON_STRUCT_LENGTH - MON_ID
+	ld c, PARTYMON_STRUCT_LENGTH - 4
 	add hl, bc
 	ld c, a
 	dec c
