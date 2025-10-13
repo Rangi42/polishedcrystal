@@ -53,12 +53,12 @@ TreeItemEncounter:
 	push hl
 .find_terminator
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .find_terminator
 	dec hl
-	ld a, "s"
+	ld a, 's'
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	pop hl
 .no_plural
 	ld de, wStringBuffer4
@@ -82,15 +82,6 @@ TreeItemEncounter:
 	ret c
 	ld a, [hl]
 	cp LOW(999)
-	ret
-
-GetWings:
-	ldh a, [hScriptVar]
-	add LOW(wWingAmounts - 2)
-	ld l, a
-	adc HIGH(wWingAmounts - 2)
-	sub l
-	ld h, a
 	ret
 
 RockItemEncounter:
@@ -370,11 +361,11 @@ GetTreeMon:
 	push hl
 	call GetTreeScore
 	pop hl
-	and a
+	and a ; 0?
 	jr z, .bad
-	cp 1
+	dec a ; 1?
 	jr z, .good
-	cp 2
+	dec a ; 2?
 	jr z, .rare
 	ret
 

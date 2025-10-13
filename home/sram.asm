@@ -9,23 +9,45 @@ GetSRAMBank::
 
 	; latch clock data
 	ld a, 1
-	ld [MBC3LatchClock], a
+	ld [rRTCLATCH], a
 
 	; enable sram/clock write
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+
+	; verify integrity of sram
+	; if wSRAMAccessCount != sSRAMAccessCount + 1,
+	; crash the game
+	ld a, BANK(sSRAMAccessCount)
+	ld [rRAMB], a
+	push hl
+	ld hl, sSRAMAccessCount
+	inc [hl]
+	ld a, [wSRAMAccessCount]
+	cp [hl]
+	pop hl
+	jr nz, .crash
+	inc a
+	ld [wSRAMAccessCount], a
 
 	; select sram bank
 	pop af
-	ld [MBC3SRamBank], a
+	ld [rRAMB], a
 	ret
+
+.crash
+	pop af
+	call CloseSRAM
+	ld a, ERR_CORRUPTED_SAVESTATE
+	di
+	jmp Crash
 
 CloseSRAM::
 	push af
-	ld a, SRAM_DISABLE
+	ld a, RAMG_SRAM_DISABLE
 ; reset clock latch for next time
-	ld [MBC3LatchClock], a
+	ld [rRTCLATCH], a
 ; disable sram/clock write
-	ld [MBC3SRamEnable], a
+	ld [rRAMG], a
 	pop af
 	ret

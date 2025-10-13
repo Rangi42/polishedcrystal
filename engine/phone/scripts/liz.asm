@@ -1,5 +1,5 @@
 LizPhoneScript1:
-	gettrainername PICNICKER, LIZ1, $0
+	gettrainername PICNICKER, LIZ1, STRING_BUFFER_3
 	checkflag ENGINE_LIZ_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Female
@@ -15,11 +15,11 @@ LizPhoneScript1:
 	farsjump LizHangUpScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_32, $2
+	getlandmarkname ROUTE_32, STRING_BUFFER_5
 	farsjump LizReminderScript
 
 LizPhoneScript2:
-	gettrainername PICNICKER, LIZ1, $0
+	gettrainername PICNICKER, LIZ1, STRING_BUFFER_3
 	farscall PhoneScript_Random4
 	ifequalfwd $0, LizWrongNumber
 	farscall PhoneScript_GreetPhone_Female
@@ -43,7 +43,7 @@ LizThursdayAfternoon:
 	setflag ENGINE_LIZ_THURSDAY_AFTERNOON
 
 LizWantsBattle:
-	getlandmarkname ROUTE_32, $2
+	getlandmarkname ROUTE_32, STRING_BUFFER_5
 	setflag ENGINE_LIZ_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
@@ -63,39 +63,39 @@ LizGossip:
 	ifequalfwd $8, .PokefanM
 
 .CoolTrainerM:
-	gettrainerclassname COOLTRAINERM, $1
+	gettrainerclassname COOLTRAINERM, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .Beauty:
-	gettrainerclassname BEAUTY, $1
+	gettrainerclassname BEAUTY, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .Grunt:
-	gettrainerclassname GRUNTM, $1
+	gettrainerclassname GRUNTM, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .Teacher:
-	gettrainerclassname TEACHER_F, $1
+	gettrainerclassname TEACHER_F, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .SwimmerF:
-	gettrainerclassname SWIMMERF, $1
+	gettrainerclassname SWIMMERF, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .KimonoGirl:
-	gettrainerclassname KIMONO_GIRL_1, $1
+	gettrainerclassname KIMONO_GIRL_1, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .Skier:
-	gettrainerclassname SKIER, $1
+	gettrainerclassname SKIER, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .Medium:
-	gettrainerclassname MEDIUM, $1
+	gettrainerclassname MEDIUM, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .PokefanM:
-	gettrainerclassname POKEFANM, $1
+	gettrainerclassname POKEFANM, STRING_BUFFER_4
 	; fallthrough
 
 LizGossipScript:

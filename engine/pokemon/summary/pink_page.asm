@@ -21,7 +21,7 @@ SummaryScreen_PinkPage:
 	farcall CheckShininess
 	jr nc, .shinyDone
 	hlbgcoord 10, 0, wSummaryScreenWindowBuffer
-	ld [hl], "★"
+	ld [hl], '★'
 	hlbgcoord 16 + 10, 0, wSummaryScreenWindowBuffer
 	ld [hl], SUMMARY_PAL_SHINY_POKERUS
 .shinyDone
@@ -40,9 +40,9 @@ SummaryScreen_PinkPage:
 	ld d, b
 	ld e, c
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld a, "."
+	ld a, '.'
 	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNumFromReg ; sets de
@@ -53,7 +53,7 @@ SummaryScreen_PinkPage:
 	hlbgcoord 0, 1, wSummaryScreenWindowBuffer
 	rst PlaceString
 	hlbgcoord 1, 2, wSummaryScreenWindowBuffer
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	push hl
 	call GetPartyPokemonName
@@ -74,7 +74,7 @@ SummaryScreen_PinkPage:
 	ld [hli], a
 	
 	hlbgcoord 26, 3, wSummaryScreenWindowBuffer
-	ld [hl], X_FLIP | SUMMARY_PAL_SIDE_WINDOW
+	ld [hl], OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW
 
 	ld hl, .BallSprites
 	ld bc, 8
@@ -109,8 +109,8 @@ SummaryScreen_PinkPage:
 	call SummaryScreen_PlaceTypeOBJ
 	debgcoord 4, 3, wSummaryScreenWindowBuffer
 	call SummaryScreen_PlaceTypeBG
+
 .doneTypes
-	
 	call .PlaceOTInfo
 	ld a, [wTextboxFlags]
 	res USE_BG_MAP_WIDTH_F, a
@@ -118,7 +118,7 @@ SummaryScreen_PinkPage:
 	hlcoord 9, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
-	
+
 	ld de, .ExpPointStr
 	hlcoord 1, 13
 	rst PlaceString
@@ -145,11 +145,11 @@ SummaryScreen_PinkPage:
 	ld de, wTempMonExp + 2
 	farcall FillInExpBar
 	hlcoord 1, 17
-	ld a, "<XP1>"
+	ld a, '<XP1>'
 	ld [hli], a
-	ld [hl], "<XP2>"
+	ld [hl], '<XP2>'
 	hlcoord 9, 17
-	ld [hl], "<XPEND>"
+	ld [hl], '<XPEND>'
 
 	ld hl, .PinkPalettes
 	ld bc, 1 palettes
@@ -215,15 +215,14 @@ SummaryScreen_PinkPage:
 .PlaceOTInfo:
 	; for rental mons, replace the whole thing with "Rental #mon"
 	farcall BT_InRentalMode
+	hlbgcoord 0, 4, wSummaryScreenWindowBuffer
 	jr nz, .not_rental_mon
-	hlcoord 0, 15
 	ld de, .Rental_OT
 	rst PlaceString
 	ret
 
 .not_rental_mon
 	ld de, .OTStr
-	hlbgcoord 0, 4, wSummaryScreenWindowBuffer
 	rst PlaceString
 	ld de, .IDStr
 	hlbgcoord 2, 5, wSummaryScreenWindowBuffer
@@ -255,7 +254,7 @@ SummaryScreen_PinkPage:
 	RGB 31, 25, 02
 
 .BallSprites:
-	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, Y_FLIP
+	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, OAM_YFLIP
 	db 84, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, 0
 
 .StatusSprites:

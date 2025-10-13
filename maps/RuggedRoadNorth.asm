@@ -26,7 +26,7 @@ RuggedRoadNorthFixBridgeCallback:
 .RuggedRoadSouthFixBridge:
 	ld hl, wPrevWarp
 	ld a, [hli]
-	cp 1
+	dec a ; warp 1?
 	jr nz, .not_coming_from_hidden_grotto
 	assert wPrevWarp + 1 == wPrevMapGroup
 	ld a, [hli]
@@ -42,7 +42,7 @@ RuggedRoadNorthFixBridgeCallback:
 .not_coming_from_hidden_grotto
 	ld hl, wPrevWarp
 	ld a, [hli]
-	cp 1
+	dec a ; warp 1?
 	ret nz
 	assert wPrevWarp + 1 == wPrevMapGroup
 	ld a, [hli]

@@ -8,7 +8,7 @@ BlankScreen:
 	call ClearSprites
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 0, 0, wAttrmap
 	ld bc, wAttrmapEnd - wAttrmap
@@ -74,7 +74,7 @@ PlayerObjectTemplate:
 ; Said bytes seem to be unused, but the game freezes when you first spawn
 ; in your room if this is not loaded.
 	def_object_events (no db)
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
+	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 FollowObjTemplate:
 	def_object_events (no db)
@@ -257,7 +257,8 @@ RefreshFollowingCoords::
 	ret
 
 CopyObjectStruct::
-	call CheckObjectMask
+	call GetObjectMask
+	ld a, [hl]
 	and a
 	ret nz ; masked
 
@@ -809,10 +810,10 @@ Special_SurfStartStep:
 	jmp StartAutoInput
 
 .movement_data
-	db D_DOWN,  0, -1
-	db D_UP,    0, -1
-	db D_LEFT,  0, -1
-	db D_RIGHT, 0, -1
+	db PAD_DOWN,  0, -1
+	db PAD_UP,    0, -1
+	db PAD_LEFT,  0, -1
+	db PAD_RIGHT, 0, -1
 
 MoveToObject:
 	push bc

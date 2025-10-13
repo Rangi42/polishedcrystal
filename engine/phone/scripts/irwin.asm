@@ -1,5 +1,5 @@
 IrwinPhoneScript1:
-	gettrainername JUGGLER, IRWIN1, $0
+	gettrainername JUGGLER, IRWIN1, STRING_BUFFER_3
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftruefwd .Rockets
@@ -9,7 +9,7 @@ IrwinPhoneScript1:
 	farsjump IrwinRocketRumorScript
 
 IrwinPhoneScript2:
-	gettrainername JUGGLER, IRWIN1, $0
+	gettrainername JUGGLER, IRWIN1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftruefwd .Rockets

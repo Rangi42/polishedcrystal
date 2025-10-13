@@ -14,7 +14,7 @@ ViridianForestPewterGate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianForestPewterGateOfficerText, -1
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianForestPewterGateOfficerText, -1
 
 ViridianForestPewterGateOfficerText:
 	text "Are you headed"

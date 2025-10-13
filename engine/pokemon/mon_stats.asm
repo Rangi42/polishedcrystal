@@ -64,7 +64,7 @@ DrawPlayerHP:
 	lb bc, 2, 3
 	call PrintNum
 
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 
 ; Print max HP
@@ -115,7 +115,7 @@ endr
 	push hl
 	call PrintNum
 	pop hl
-	ld de, BG_MAP_WIDTH
+	ld de, TILEMAP_WIDTH
 	add hl, de
 	ret
 
@@ -289,7 +289,7 @@ PrintStatDifferences:
 	inc hl
 	inc hl
 	inc hl
-	ld a, "+"
+	ld a, '+'
 	ld [hli], a
 
 	ld b, 2
@@ -460,13 +460,13 @@ ListMovePP:
 	ld a, [wBuffer1]
 	ld e, a
 	ld d, $0
-	ld a, "<BOLDP>"
+	ld a, '<BOLDP>'
 	call .load_loop
 	ld a, b
 	and a
 	jr z, .skip
 	ld c, a
-	ld a, "-"
+	ld a, '-'
 	call .load_loop
 
 .skip
@@ -514,7 +514,7 @@ ListMovePP:
 	ld de, wStringBuffer1 + 4
 	lb bc, 1, 2
 	call PrintNum
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wTextDecimalByte
 	lb bc, 1, 2
@@ -923,16 +923,6 @@ GetNatureStatMultiplier::
 GetStatusConditionIndex:
 ; de points to status, e.g. from a party_struct or battle_struct
 ; return the status condition index in a
-	push de
-	inc de
-	inc de
-	ld a, [de]
-	ld b, a
-	inc de
-	ld a, [de]
-	or b
-	pop de
-	jr z, .fnt
 	ld a, [de]
 	ld b, a
 	and SLP_MASK
@@ -1029,14 +1019,9 @@ ListMoves:
 	jr z, .no_more_moves
 	push de
 	push hl
-	push hl
-	ld [wCurSpecies], a
-	ld a, MOVE_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, wStringBuffer1
-	pop hl
 	push bc
+	ld [wNamedObjectIndex], a
+	call GetMoveName
 	rst PlaceString
 	pop bc
 	ld a, b
@@ -1059,7 +1044,7 @@ ListMoves:
 	ld a, b
 .nonmove_loop
 	push af
-	ld [hl], "-"
+	ld [hl], '-'
 	ld a, [wBuffer1]
 	ld c, a
 	ld b, 0

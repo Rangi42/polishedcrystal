@@ -122,7 +122,7 @@ Elevator_AskWhichFloor:
 	call ScrollingMenu
 	call CloseWindow
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .cancel
 	xor a
 	ld a, [wScrollingMenuCursorPosition]

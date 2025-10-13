@@ -52,15 +52,15 @@ CheckStickyHold:
 	jr nz, .no_sticky_hold
 
 	; Don't display anything if we're in Pickpocket
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, ItemCantBeStolenText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 	or 1
 	ret
 
@@ -77,11 +77,14 @@ CanStealItem:
 	and a
 	ret nz
 
-	; Sticky Hold prevents item theft
+	; Sticky Hold prevents item theft unless fainted
+	call HasOpponentFainted
+	jr z, .sticky_hold_done
 	call GetOpponentAbilityAfterMoldBreaker
 	cp STICKY_HOLD
 	jr z, .cant_ability
 
+.sticky_hold_done
 	call OpponentCanLoseItem
 	jr z, .cant
 

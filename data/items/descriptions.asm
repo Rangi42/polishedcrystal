@@ -214,7 +214,7 @@ ItemDescriptions:
 	dw PowerBandDesc
 	dw PowerAnkletDesc
 	dw DragonScaleDesc
-	dw UpGradeDesc
+	dw UpgradeDesc
 	dw DubiousDiscDesc
 	dw ProtectorDesc
 	dw ElectirizerDesc
@@ -1270,7 +1270,7 @@ DragonScaleDesc:
 	next "item."
 	done
 
-UpGradeDesc:
+UpgradeDesc:
 	text "A mysterious box"
 	next "made by Silph Co."
 	done
@@ -1459,11 +1459,6 @@ LaggingTailDesc:
 IronBallDesc:
 	text "Lowers Speed and"
 	next "grounds. (Hold)"
-	done
-
-RingTargetDesc:
-	text "Loses type immun-"
-	next "ities. (Hold)"
 	done
 
 RedCardDesc:
@@ -1717,5 +1712,5 @@ ExpCandyMDesc:
 ExpCandyLDesc:
 ExpCandyXLDesc:
 	text "A candy that"
-	next "gives Exp. Points."
+	next "gives Exp.Points."
 	done

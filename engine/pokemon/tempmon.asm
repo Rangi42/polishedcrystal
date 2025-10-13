@@ -1,24 +1,3 @@
-CopyPkmnOrEggToTempMon:
-	ld a, [wMonType]
-	ld hl, wPartyMon1IsEgg
-	ld bc, PARTYMON_STRUCT_LENGTH
-	and a
-	jr z, .got_addr
-	ld hl, wOTPartyMon1IsEgg
-	cp OTPARTYMON
-	jr z, .got_addr
-	ld a, ERR_OLDBOX
-	jmp Crash
-.got_addr
-	ld a, [wCurPartyMon]
-	rst AddNTimes
-	bit MON_IS_EGG_F, [hl]
-	jr z, CopyPkmnToTempMon
-	ld a, EGG
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	jr _CopyPkmnToTempMon ; [wCurForm] doesn't matter form WGG
-
 CopyPkmnToTempMon:
 ; gets the BaseData of a Pkmn
 ; and copys the PkmnStructure to wTempMon

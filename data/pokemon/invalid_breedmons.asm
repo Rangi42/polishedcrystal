@@ -1,4 +1,0 @@
-InvalidBreedmons:
-	dp MAGIKARP, GYARADOS_RED_FORM
-	dp PICHU, PICHU_SPIKY_EARED_FORM
-	db 0

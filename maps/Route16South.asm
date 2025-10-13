@@ -14,7 +14,7 @@ Route16South_MapScriptHeader:
 	bg_event 11,  9, BGEVENT_JUMPTEXT, CyclingRoadSignText
 
 	def_object_events
-	object_event 12, 11, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
+	object_event 12, 11, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 Route16SouthAlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE

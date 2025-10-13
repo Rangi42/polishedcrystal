@@ -10,12 +10,7 @@ SummaryScreen_GreenPage:
 	rst CopyBytes
 	call .PlaceItemText
 	hlcoord 2, 8
-	call .PlaceItemIcon
-	ld a, " "
-	hlcoord 1, 9
-	ld [hl], a
-	hlcoord 5, 9
-	ld [hl], a
+	call .ReplaceLevelGenderWithItemIcon
 
 	call .PrintMoves
 
@@ -37,11 +32,14 @@ SummaryScreen_GreenPage:
 	add b
 	ld b, a
 	inc c
-	cp 132 + 8 * SPRITEOAMSTRUCT_LENGTH
+	cp 132 + 8 * OBJ_SIZE
 	jr nz, .aInfoLoop
 	ret
 
-.PlaceItemIcon:
+.ReplaceLevelGenderWithItemIcon:
+	ld a, [wTempMonItem]
+	and a
+	ret z
 	ld de, 17
 	lb bc, 3, 3
 	ld a, SUMMARY_TILE_ITEM
@@ -54,6 +52,11 @@ SummaryScreen_GreenPage:
 	add hl, de
 	dec b
 	jr nz, .item_icon_loop
+	ld a, ' '
+	hlcoord 1, 9
+	ld [hl], a
+	hlcoord 5, 9
+	ld [hl], a
 	ret
 
 .PlaceItemText:
@@ -68,7 +71,7 @@ SummaryScreen_GreenPage:
 	call .PrintItemDescription
 
 .GetItemName:
-	ld de, .ThreeDashes
+	ld de, .NoHeldItemString
 	ld a, [wTempMonItem]
 	and a
 	ret z
@@ -87,20 +90,20 @@ SummaryScreen_GreenPage:
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 	RGB 00, 00, 00
-	
+
 	RGB 30, 31, 29
 	RGB 21, 31, 14
 	RGB 31, 31, 31
 	RGB 00, 00, 00
 
-.ThreeDashes:
-	db "---@"
+.NoHeldItemString:
+	db "No held item@"
 
 .PrintMoves
 	; Clear move names
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	ld de, 64 - 12
-	ld a, " "
+	ld a, ' '
 	ld bc, 12
 	rst ByteFill
 	ld c, 12
@@ -118,11 +121,11 @@ SummaryScreen_GreenPage:
 	ld bc, NUM_MOVES
 	rst CopyBytes
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
-	ld a, BG_MAP_WIDTH * 2
+	ld a, TILEMAP_WIDTH * 2
 	ld [wBuffer1], a
 	predef ListMoves
 	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
-	ld a, BG_MAP_WIDTH * 2
+	ld a, TILEMAP_WIDTH * 2
 	ld [wBuffer1], a
 	predef ListMovePP
 
@@ -133,7 +136,7 @@ for n, NUM_MOVES
 	ld a, [wSummaryScreenTypes + 2 + n]
 	ld d, (2 + n) | 8
 	lb bc, 72, 41 + n * 20
-	ld hl, wSummaryScreenOAMSprite04 + n * 4 * SPRITEOAMSTRUCT_LENGTH
+	ld hl, wSummaryScreenOAMSprite04 + n * 4 * OBJ_SIZE
 	call SummaryScreen_PlaceTypeOBJ
 	debgcoord 0, 1 + n * 2, wSummaryScreenWindowBuffer
 	call SummaryScreen_PlaceTypeBG
@@ -159,7 +162,7 @@ endr
 	ld c, a
 	ld b, 58
 	call SummaryScreen_PlaceSwapArrow
-.no_swap 
+.no_swap
 	pop af
 	push af
 	ld hl, 0
@@ -193,10 +196,10 @@ endr
 	ld hl, CategoryIconPals
 	add hl, bc
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld de, wBGPals1 color 1
 	farcall LoadOneColor
@@ -204,7 +207,7 @@ endr
 	call SetDefaultBGPAndOBP
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	pop af ; get category back
 	add SUMMARY_TILE_CATEGORY_START
@@ -275,15 +278,15 @@ SummaryScreen_MoveInfoJoypad:
 
 	call GetJoypad
 	ldh a, [hJoyPressed]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .b_button
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .a_button
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jr nz, .select
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr nz, .d_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	ret z
 .d_down
 	inc c
@@ -359,7 +362,7 @@ SummaryScreen_MoveInfoJoypad:
 	ld b, a
 
 	ld a, BANK(wTempMonMoves)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, [wSummaryScreenPage]
 	rrca
@@ -391,6 +394,9 @@ SummaryScreen_MoveInfoJoypad:
 	ld a, -1
 	ld [wSummaryMoveSwap], a
 	call SummaryScreen_ClearSwapArrow
+	call WaitSFX
+	ld de, SFX_SWITCH_POKEMON
+	call PlaySFX
 	jr SummaryScreen_UpdateGFX
 ; hl = address
 .swap_addresses:
@@ -420,7 +426,7 @@ SummaryScreen_MoveInfoJoypad:
 
 SummaryScreen_ClearSwapArrow:
 	ld hl, wSummaryScreenOAMSprite24
-	ld bc, 4 * SPRITEOAMSTRUCT_LENGTH
+	ld bc, 4 * OBJ_SIZE
 	rst ByteFill
 	ret
 

@@ -1,5 +1,5 @@
 ArniePhoneScript1:
-	gettrainername BUG_CATCHER, ARNIE1, $0
+	gettrainername BUG_CATCHER, ARNIE1, STRING_BUFFER_3
 	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -16,15 +16,15 @@ ArniePhoneScript1:
 	farsjump ArnieHangUpScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_35, $2
+	getlandmarkname ROUTE_35, STRING_BUFFER_5
 	farsjump ArnieReminderScript
 
 .AlreadySwarming:
-	getlandmarkname ROUTE_35, $2
+	getlandmarkname ROUTE_35, STRING_BUFFER_5
 	farsjump ArnieHurryScript
 
 ArniePhoneScript2:
-	gettrainername BUG_CATCHER, ARNIE1, $0
+	gettrainername BUG_CATCHER, ARNIE1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
 	iftruefwd .Swarm
@@ -44,7 +44,7 @@ ArnieTuesdayMorning:
 	setflag ENGINE_ARNIE_TUESDAY_MORNING
 
 ArnieWantsBattle:
-	getlandmarkname ROUTE_35, $2
+	getlandmarkname ROUTE_35, STRING_BUFFER_5
 	setflag ENGINE_ARNIE_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
@@ -52,9 +52,9 @@ ArnieYanmaSwarm: ; start swarm
 	checkflag ENGINE_YANMA_SWARM
 	iftruefwd ArnieYanmaAlreadySwarming
 	setflag ENGINE_YANMA_SWARM
-	getmonname YANMA, $1
+	getmonname YANMA, STRING_BUFFER_4
 	swarm SWARM_YANMA, ROUTE_35
-	getlandmarkname ROUTE_35, $2
+	getlandmarkname ROUTE_35, STRING_BUFFER_5
 	farsjump ArnieSwarmScript
 
 ArnieFoundRare:

@@ -370,7 +370,7 @@ CheckTileEvent:
 RenderShamoutiCoastSand:
 	call GetBGMapPlayerOffset
 	ld de, wFootprintQueue
-	ld bc, BG_MAP_WIDTH
+	ld bc, TILEMAP_WIDTH
 
 	; assume coast sand is tile $1:4f in TILESET_SHAMOUTI_ISLAND;
 	; footprint tiles must be in the same VRAM bank
@@ -550,7 +550,7 @@ OWPlayerInput:
 
 CheckAPressOW:
 	ldh a, [hJoyPressed]
-	and A_BUTTON
+	and PAD_A
 	ret z
 	call TryObjectEvent
 	ret c
@@ -593,7 +593,7 @@ TryObjectEvent:
 	ret nc
 
 	cp SILENT_OBJECT_TYPES
-	jr z, .skip_click_sfx
+	jr nc, .skip_click_sfx
 	push af
 	call PlayTalkObject
 	pop af
@@ -601,7 +601,7 @@ TryObjectEvent:
 
 	call StackJumpTable
 
-ObjectEventTypeArray:
+.Jumptable:
 	table_width 2
 	dw .script   ; OBJECTTYPE_SCRIPT
 	dw .itemball ; OBJECTTYPE_ITEMBALL
@@ -894,9 +894,9 @@ CheckMenuOW:
 	jr nz, .PanningAroundSnowtopMountain
 
 	ldh a, [hJoyPressed]
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jr nz, .Select
-	bit START_F, a
+	bit B_PAD_START, a
 	jr nz, .Start
 
 	xor a
@@ -918,7 +918,7 @@ CheckMenuOW:
 
 .PanningAroundSnowtopMountain:
 	ldh a, [hJoyPressed]
-	and B_BUTTON
+	and PAD_B
 	ret z
 	ld a, BANK(SnowtopMountainOutsideStopPanningScript)
 	ld hl, SnowtopMountainOutsideStopPanningScript

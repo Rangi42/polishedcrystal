@@ -15,13 +15,13 @@ RadioTower1F_MapScriptHeader:
 	bg_event 13,  0, BGEVENT_JUMPTEXT, RadioTower1FLuckyChannelSignText
 
 	def_object_events
-	object_event  8,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FLuckyNumberManScript, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 14,  6, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
-	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower1FReceptionistScript, -1
-	object_event 17,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower1FLassText, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower1FYoungsterText, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 12,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower1FRadioCardWomanScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  8,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FLuckyNumberManScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event 14,  6, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
+	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower1FReceptionistScript, -1
+	object_event 17,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower1FLassText, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower1FYoungsterText, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 12,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower1FRadioCardWomanScript, EVENT_GOLDENROD_CITY_CIVILIANS
 
 	object_const_def
 	const RADIOTOWER1F_FELICITY
@@ -74,56 +74,42 @@ RadioTower1FLuckyNumberManScript:
 	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
 
 .FirstPlace:
-	writetext WonFirstPlaceText
-	playsound SFX_1ST_PLACE
-	waitsfx
-	promptbutton
 	giveitem MASTER_BALL
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonFirstPlaceText
+	special ShowItemIcon
+	playsound SFX_1ST_PLACE
+	sjumpfwd .Finish
 
 .SecondPlace:
-	writetext WonSecondPlaceText
-	playsound SFX_2ND_PLACE
-	waitsfx
-	promptbutton
 	giveitem BOTTLE_CAP
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonSecondPlaceText
+	special ShowItemIcon
+	playsound SFX_2ND_PLACE
+	sjumpfwd .Finish
 
 .ThirdPlace:
-	writetext WonThirdPlaceText
-	playsound SFX_2ND_PLACE
-	waitsfx
-	promptbutton
 	giveitem PP_MAX
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonThirdPlaceText
+	special ShowItemIcon
+	playsound SFX_2ND_PLACE
+	sjumpfwd .Finish
 
 .FourthPlace:
-	writetext WonFourthPlaceText
-	playsound SFX_3RD_PLACE
-	waitsfx
-	promptbutton
 	giveitem PP_UP
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
-	itemnotify
-	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext WonFourthPlaceText
+	special ShowItemIcon
+	playsound SFX_3RD_PLACE
+	sjumpfwd .Finish
 
 .FifthPlace:
+	giveitem RARE_CANDY
 	writetext WonFifthPlaceText
+	special ShowItemIcon
 	playsound SFX_3RD_PLACE
+.Finish:
 	waitsfx
 	promptbutton
-	giveitem RARE_CANDY
-	iffalse_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
 	jumpthisopenedtext
@@ -169,8 +155,7 @@ RadioTower1FRadioCardWomanScript:
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
 	promptbutton
-	getstring .RadioCardText, $1
-	callstd receiveitem
+	givespecialitem RADIO_CARD
 	writetext RadioTower1FPokegearIsARadioText
 	promptbutton
 	setflag ENGINE_RADIO_CARD
@@ -186,9 +171,6 @@ RadioTower1FRadioCardWomanScript:
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
 	disappear RADIOTOWER1F_WHITNEY
 	end
-
-.RadioCardText:
-	db "Radio Card@"
 
 .WrongAnswer:
 	playsound SFX_WRONG
@@ -330,8 +312,9 @@ WonFourthPlaceText:
 	line "matched the last"
 	cont "two numbers."
 
-	para "You've won fourth"
-	line "prize, a PP Up."
+	para "You've won"
+	line "fourth prize,"
+	cont "a PP Up."
 	done
 
 WonFifthPlaceText:

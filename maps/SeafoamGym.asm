@@ -11,14 +11,14 @@ SeafoamGym_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 10, 20, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
-	object_event  7, 16, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLowell, -1
-	object_event 14, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistDennett, -1
-	object_event 19, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdCary, -1
-	object_event 12,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLinden, -1
-	object_event 10,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdWaldo, -1
-	object_event  6, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdMerle, -1
-	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SeafoamGymBlaineScript, -1
+	object_event 10, 20, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
+	object_event  7, 16, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLowell, -1
+	object_event 14, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistDennett, -1
+	object_event 19, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdCary, -1
+	object_event 12,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLinden, -1
+	object_event 10,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdWaldo, -1
+	object_event  6, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdMerle, -1
+	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, SeafoamGymBlaineScript, -1
 
 	object_const_def
 	const SEAFOAMGYM_GYM_GUY
@@ -92,25 +92,8 @@ SeafoamGymBlaineScript:
 	setevent EVENT_BEAT_SUPER_NERD_WALDO
 	setevent EVENT_BEAT_SUPER_NERD_MERLE
 	opentext
-	writetext ReceivedVolcanoBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_VOLCANOBADGE
-	readvar VAR_BADGES
-	ifequalfwd 9, .FirstBadge
-	ifequalfwd 10, .SecondBadge
-	ifequalfwd 12, .LyrasEgg
-	sjumpfwd .FightDone
-.FirstBadge:
-	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjumpfwd .FightDone
-.SecondBadge:
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftruefwd .FightDone
-	specialphonecall SPECIALCALL_SECONDBADGE
-	sjumpfwd .FightDone
-.LyrasEgg:
-	specialphonecall SPECIALCALL_LYRASEGG
+	givebadge VOLCANOBADGE, KANTO_REGION
+	callstd kantopostgymevents
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
 	iftrue_jumpopenedtext BlaineFightDoneText
@@ -268,11 +251,6 @@ BlaineWinLossText:
 
 	para "You've earned the"
 	line "Volcano Badge!"
-	done
-
-ReceivedVolcanoBadgeText:
-	text "<PLAYER> received"
-	line "the Volcano Badge."
 	done
 
 BlaineAfterBattleText:

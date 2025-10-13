@@ -1,5 +1,6 @@
 LCDGeneric::
-; At this point it's assumed we're in WRAM bank 5!
+; Unlike vanilla, it's *not* assume we're in BANK(wLYOverrides),
+; since interrupts can now occur during VBlank
 	ldh a, [rLY]
 	cp SCREEN_HEIGHT_PX
 	jr c, .continue
@@ -8,12 +9,18 @@ LCDGeneric::
 	push bc
 	ld c, a
 	ld b, HIGH(wLYOverrides)
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wLYOverrides)
+	ldh [rWBK], a
 	ld a, [bc]
 	ld b, a
 	ldh a, [hLCDCPointer]
 	ld c, a
 	ld a, b
 	ldh [c], a
+	pop af
+	ldh [rWBK], a
 	pop bc
 	pop af
 	reti
@@ -55,12 +62,9 @@ LCDMusicPlayer::
 	pop af
 	reti
 
-PUSHS
-SECTION "LCD Summary Screen", ROM0
-
 LCDSummaryScreenHideWindow::
 	ldh a, [rSTAT]
-	bit rSTAT_LYC_CMP, a
+	bit B_STAT_LYCF, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [rSTAT]
 	and 3
@@ -71,7 +75,7 @@ LCDSummaryScreenHideWindow::
 
 LCDSummaryScreenShowWindow::
 	ldh a, [rSTAT]
-	bit rSTAT_LYC_CMP, a
+	bit B_STAT_LYCF, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [hWX]
 	ldh [rWX], a
@@ -79,14 +83,13 @@ LCDSummaryScreenShowWindow::
 
 LCDSummaryScreenScrollBackground::
 	ldh a, [rSTAT]
-	bit rSTAT_LYC_CMP, a
+	bit B_STAT_LYCF, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [rSCY]
 	add 4
 	ldh [rSCY], a
-	jr LCDSummaryScreenProgress
+	; fallthrough
 
-LCDSummaryScreen::
 LCDSummaryScreenProgress::
 	push hl
 	push bc
@@ -137,15 +140,12 @@ LCDSummaryScreenDone::
 	pop af
 	reti
 
-POPS
-
-
 DisableLCD::
 ; Turn the LCD off
 
 ; Don't need to do anything if the LCD is already off
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a
+	bit B_LCDC_ENABLE, a
 	ret z
 
 	xor a
@@ -154,7 +154,7 @@ DisableLCD::
 	ld b, a
 
 ; Disable VBlank
-	res VBLANK, a
+	res B_IE_VBLANK, a
 	ldh [rIE], a
 
 .wait
@@ -166,7 +166,7 @@ DisableLCD::
 	jr z, .wait
 
 	ldh a, [rLCDC]
-	res rLCDC_ENABLE, a
+	res B_LCDC_ENABLE, a
 	ldh [rLCDC], a
 
 	xor a

@@ -17,7 +17,7 @@ LyrasHouse1F_MapScriptHeader:
 	bg_event  5,  1, BGEVENT_UP, LyrasTVScript
 
 	def_object_events
-	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LyrasDadScript, -1
+	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, LyrasDadScript, -1
 
 LyrasDadScript:
 	faceplayer
