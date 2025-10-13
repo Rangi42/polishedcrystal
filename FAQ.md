@@ -96,7 +96,11 @@ You can also just use in-game features! The Pokédex has a lot more information,
 
 ### Is there an online companion or database I can use?
 
-Yes. PolishedDex (https://www.polisheddex.app/) is an unofficial online companion site for Polished Crystal. It provides a searchable Pokédex, move list, items, locations, abilities, special events, and a team builder. The site also links to official ROM releases and includes a FAQ and quick reference pages that many players find helpful while playing. If you prefer browsing an online reference instead of (or in addition to) the in-repo data and wiki, PolishedDex is a great resource.
+Yes. [**PolishedDex**](https://www.polisheddex.app/) is an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
+It provides a searchable Pokédex, move list, items, locations, abilities, special events, and a team builder.  
+The site also links to official ROM releases and includes a FAQ and quick reference pages that many players find helpful while playing.  
+
+If you prefer browsing an online reference instead of (or in addition to) the in-repo data and wiki, PolishedDex is a great resource.
 
 
 ### Why is shiny Gyarados gold? Is the red Gyarados shiny?
