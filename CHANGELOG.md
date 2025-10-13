@@ -26,7 +26,6 @@ This current stable release.
 - Added an initial option to disable experience gain (no-exp mode).
 - Pokegear clock now shows the time-of-day indicator in the clock UI.
 - Support for overriding RGB programs individually and new Analogue Pocket logo asset added to the build assets.
-- Auto-generation and verification of Huffman code trees for compressed text (improved charmaps / compressed text tooling).
 - Updated and added multiple Pokémon sprites and palettes (notable: Magnezone, Magmortar, Sneasler, Typhlosion-Hisuian, Rapidash-Galarian, and others).
 
 #### Fixes
@@ -69,6 +68,7 @@ This current stable release.
 - Numerous crash and stability fixes, optimizations, and unreferenced-code cleanups across battle, text, and overworld systems.
 
 #### Changes
+- **Updated Summary Screen (major visual/functional upgrade).**
 - Re-introduced trade evolutions.
 - Adjusted Magikarp record length (now 106.6 cm).
 - Updated "badge" capitalization in text to match vanilla.
@@ -76,15 +76,11 @@ This current stable release.
 - Improved battle animations (summary, Ursaluna fix).
 - Improved AI damage calc (e.g., Parental Bond).
 - Adjusted move animations and fix order of status/inflict routines.
-- Updated Summary Screen (major visual/functional upgrade).
 - Rewrote loading for Pikachu's unique moves (Yellow Forest).
 - Adjusted Heracross palette (and reverted + reapplied fix).
 - Adjusted RockItems to total 256.
-- Renamed "items" to "held items" in base stats.
-- Merged interrupt enables into VBlankUpdateSound.
 - Made modern EV rules the default option to reduce bulk by default.
 - Pluralization improvements used in text now simplify duplicated battle text variants (e.g. "Hit N times" now uses pluralize tables).
-- Regenerated text compression / Huffman tables based on current charmaps; improved compressed text error messages and verification.
 - Updated various engine internals to use newer hardware constants and RGBDS features (minor layout and performance improvements).
 
 #### Removals
@@ -92,9 +88,6 @@ This current stable release.
 - Removed unused unique move for Scizor.
 - Removed duplicate egg text.
 - Removed unreachable tree from Route 16 West.
-- Deleted redundant PNGs for Slowpoke sprites.
-- Removed several committed build products and unreferenced/duplicate asset files (cleanup of .gbcpal and other generated files).
-- Removed a number of unreferenced labels/code/data as part of cleanup and optimization passes (battle-related and graphical unused assets).
 
 ## v3.1.1
 
