@@ -20,7 +20,7 @@ This current stable release.
 - Added icons for Pokédex and Pokégear, supports icons for special items.
 - Added egg page to summary screen.
 - Added ability blacklist routine for Trace + Skill Swap.
-- Added scaled base EXP exceptions (e.g., Happiny).
+- Added scaled base EXP exceptions (e.g. Happiny).
 - Added check for savestate loading affecting SRAM usage.
 - Added Earth Power to Ursaluna and Bloodmoon Ursaluna.
 - Added an initial option to disable experience gain (no-exp mode).
@@ -80,7 +80,6 @@ This current stable release.
 - Rewrote loading for Pikachu's unique moves (Yellow Forest).
 - Adjusted Heracross palette (and reverted + reapplied fix).
 - Adjusted RockItems to total 256.
-- Renamed CryHeader/Cry/MonCry for clarity.
 - Renamed "items" to "held items" in base stats.
 - Merged interrupt enables into VBlankUpdateSound.
 - Made modern EV rules the default option to reduce bulk by default.
