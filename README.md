@@ -12,15 +12,15 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The **current official release** is **v3.1.1** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
+The **current official release** is **v3.2.0** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
 
-- **[Download v3.1.1 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1)**
+- **[Download v3.2.0 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.2.0)**
 
-The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) (September 20, 2016). However, **v3.1.0** includes *significant* enhancements and is recommended for all players.
+The previous official version was [v3.1.1](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1) (February 1, 2025).
 
 *If you have any questions about playing or patching, [read the FAQ](FAQ.md)!*
 
-## What’s New in v3.1.1
+## What’s New in v3.2.0
 
 Below is a brief summary of the major changes and additions. A more detailed changelog will be released soon.
 
@@ -35,6 +35,7 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 - **Storage System Redesign:** The PC storage interface is more like modern Pokémon games. You can switch boxes, move Pokémon around, and manage your party with minimal saving hassles.
 - **HGSS-Inspired Pokédex:** The new Pokédex includes base stats, egg groups, and a more comprehensive encounter map showing *all* methods of obtaining Pokémon.
 - **Enhanced Overworld Weather:** Instead of just darkening the screen, you’ll now see proper rain, snow, or sandstorms in applicable areas.
+- **Revamped Summary Screen:** Replaces the vanilla stats screen. Shows nature, abilities, seen and caught data, and more.
 
 ## Features
 
@@ -61,6 +62,10 @@ If you have questions or comments, please check or post on any of these sites. (
 - [/r/PokemonROMHacks](https://www.reddit.com/r/PokemonROMhacks/comments/51kbcn/pok%C3%A9mon_polished_crystal_200/)
 - [Nuzlocke Forums](http://s7.zetaboards.com/Nuzlocke_Forum/topic/11003710/)
 - [Pokémon Hackers Online](http://www.pokemonhackersonline.com/showthread.php?t=15811)
+
+Additional resource:
+
+- [PolishedDex](https://www.polisheddex.app/) — An online companion for Polished Crystal. PolishedDex provides a searchable Pokédex, move list, item list, locations, abilities, special events, and a team builder. It also includes a FAQ and links to the official ROM releases, making it a convenient reference while playing.
 
 ## Screenshots
 
@@ -97,7 +102,7 @@ If you have questions or comments, please check or post on any of these sites. (
 ![ice-rock](screenshots/ice-rock.png)
 ![hex-maniac](screenshots/hex-maniac.png)
 ![route-45](screenshots/route-45.png)
-![stats](screenshots/stats.png)
+![summary](screenshots/summary.png)
 
 ![leppa-berry](screenshots/leppa-berry.png)
 ![regional-forms](screenshots/regional-forms.png)
