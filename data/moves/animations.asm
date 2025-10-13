@@ -2220,6 +2220,7 @@ BattleAnim_Hurricane:
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $90, $4, $10
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $4, $0
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $4, $0
+	anim_obj ANIM_OBJ_HURRICANE, 132, 56, $38
 	anim_call BattleAnimSub_AgilityMinor
 .loop
 	anim_sound 0, 1, SFX_THUNDER
