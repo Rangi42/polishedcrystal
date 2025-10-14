@@ -2078,10 +2078,10 @@ Special_TryQuickSave:
 	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
-	vc_hook Wireless_TryQuickSave_block_input_1
+	vc_hook Wireless_TQS_block_input_1
 	ld a, TRUE
 	jr nc, .return_result
-	vc_hook Wireless_TryQuickSave_block_input_2
+	vc_hook Wireless_TQS_block_input_2
 	xor a ; FALSE
 .return_result
 	ldh [hScriptVar], a
