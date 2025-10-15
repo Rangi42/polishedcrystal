@@ -215,9 +215,6 @@ MoveEffectsPointers:
 	dw Ingrain
 	dw Imprison
 	dw WakeUpSlap
-	dw SmellingSalt
-	dw WaterSport
-	dw MudSport
 	dw MagicRoom
 	dw WonderRoom
 	assert_table_length NUM_MOVE_EFFECTS

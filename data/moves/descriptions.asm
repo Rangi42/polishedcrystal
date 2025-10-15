@@ -435,10 +435,7 @@ MoveDescriptions1:
 	dw HeatWaveDescription
 	dw HowlDescription
 	dw WakeUpSlapDescription
-	dw SmellingSaltDescription
 	dw StrangeSteamDescription
-	dw MudSportDescription
-	dw WaterSportDescription
 	dw MagicRoomDescription
 	dw WonderRoomDescription
 .IndirectEnd::
@@ -1983,24 +1980,9 @@ WakeUpSlapDescription:
 	next "double damage."
 	done
 
-SmellingSaltDescription:
-	text "Heals paralysis"
-	next "for double damage."
-	done
-
 StrangeSteamDescription:
 	text "Steam that may"
 	next "confuse the foe."
-	done
-
-WaterSportDescription:
-	text "Cuts the power"
-	next "of Fire moves."
-	done
-
-MudSportDescription:
-	text "Cuts the power"
-	next "of Electric moves."
 	done
 
 MagicRoomDescription:

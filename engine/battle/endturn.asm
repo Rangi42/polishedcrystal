@@ -60,8 +60,6 @@ HandleBetweenTurnEffects:
 	; swamp dissipating (water+grass pledge)
 	call HandleAuroraVeil
 	call HandleTrickRoom
-	call HandleWaterSport
-	call HandleMudSport
 	call HandleWonderRoom
 	call HandleMagicRoom
 	call HandleGravity
@@ -907,18 +905,6 @@ HandleTrickRoom:
 	ld hl, wGravityTrickRoom
 	ld b, FIELD_TRICK_ROOM
 	ld de, TrickRoomEndedText
-	jmp DecrementCounter
-
-HandleWaterSport:
-	ld hl, wFieldSports
-	ld b, FIELD_WATER_SPORT
-	ld de, WaterSportEndedText
-	jmp DecrementCounter
-
-HandleMudSport:
-	ld hl, wFieldSports
-	ld b, FIELD_MUD_SPORT
-	ld de, MudSportEndedText
 	jmp DecrementCounter
 
 HandleWonderRoom:

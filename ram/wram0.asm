@@ -607,12 +607,6 @@ wBattleLowHealthAlarm:: db
 wPlayerSemiInvulnerableType:: db
 wEnemySemiInvulnerableType:: db
 
-wFieldSports::
-; bit
-; 4-7 water sport
-; 0-3 mud sport
-	db
-
 wGravityTrickRoom::
 ; bit
 ; 4-7 trick room
@@ -737,7 +731,7 @@ wAmuletCoin:: db
 
 wDVAndPersonalityBuffer:: ds 5
 
-	ds 5 ; unused battle ram
+	ds 6 ; unused battle ram
 
 wBattleEnd::
 

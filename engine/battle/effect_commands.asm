@@ -3944,36 +3944,12 @@ BattleCommand_damagestats:
 	cp SCREENS_REFLECT
 	jr nz, .just_light_ball
 	call ThickClubOrLightBallBoost
-	jr .mud_sports
+	jr .done
 .just_light_ball
 	call LightBallBoost
 
-.mud_sports 
-; Mud Sport multiplies bp of Electric moves by 0.33.
-	; As a reminder, d = base power, so we need to retrieve that now.
-	pop de
-	ld a, [wFieldSports]
-	and FIELD_MUD_SPORT
-	jr z, .water_sports
-	ld a, BATTLE_VARS_MOVE_TYPE 
-	call GetBattleVar
-	cp ELECTRIC
-	jr z, .thirdbp
-.water_sports
-; Water Sport multiplies bp of Fire moves by 0.33.
-	ld a, [wFieldSports]
-	and FIELD_WATER_SPORT
-	jr z, .done
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp FIRE 
-	jr nz, .done
-.thirdbp
-	ld a, d
-	farcall DivideBy3
-	ld d, a
-
 .done
+	pop de
 	call TruncateHL_BC
 
 	ld a, MON_LEVEL

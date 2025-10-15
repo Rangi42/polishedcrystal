@@ -469,10 +469,7 @@ endc
 	dba BattleAnim_HeatWave        ; HEAT_WAVE
 	dba BattleAnim_Howl            ; HOWL
 	dba BattleAnim_Struggle        ; WAKE_UP_SLAP
-	dba BattleAnim_Struggle        ; SMELLING_SALT
 	dba BattleAnim_Struggle        ; STRANGE_STEAM
-	dba BattleAnim_Struggle        ; WATER_SPORT
-	dba BattleAnim_Struggle        ; MUD_SPORT
 	dba BattleAnim_Struggle        ; MAGIC_ROOM
 	dba BattleAnim_Struggle        ; WONDER_ROOM
 	assert_table_length NUM_ATTACKS + 1

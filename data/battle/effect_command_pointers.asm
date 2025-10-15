@@ -196,10 +196,6 @@ BattleCommandPointers:
 	command imprison
 	command wakeupslap
 	command wakeopponent
-	command smellingsalt
-	command healparaopp
-	command watersport
-	command mudsport
 	command magicroom
 	command wonderroom
 

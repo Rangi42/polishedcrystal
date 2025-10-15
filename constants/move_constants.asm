@@ -442,10 +442,7 @@ endc
 	const HOWL          ; $1AC
 
 	const WAKE_UP_SLAP	; $1AD
-	const SMELLING_SALT ; $1AE
 	const STRANGE_STEAM ; $1AF
-	const MUD_SPORT     ; $1B0
-	const WATER_SPORT   ; $1B1
 	const MAGIC_ROOM    ; $1B2
 	const WONDER_ROOM   ; $1B3
 DEF NUM_ATTACKS EQU const_value - 1

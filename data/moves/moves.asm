@@ -517,10 +517,7 @@ endc
 	move EFFECT_BURN_HIT,           95, FIRE,       90, 10,  10, SPECIAL  ; HEAT_WAVE
 	move EFFECT_ATTACK_UP,           0, NORMAL,     -1, 40,   0, STATUS   ; HOWL
 	move EFFECT_WAKE_UP_SLAP,       70, FIGHTING,  100, 10,   0, PHYSICAL ; WAKE_UP_SLAP
-	move EFFECT_SMELLING_SALT,      70, NORMAL,    100, 10,   0, PHYSICAL ; SMELLING_SALT
 	move EFFECT_CONFUSE_HIT,        90, FAIRY,      95, 10,  20, SPECIAL  ; STRANGE_STEAM
-	move EFFECT_WATER_SPORT,         0, WATER,      -1, 15,   0, STATUS   ; WATER_SPORT
-	move EFFECT_MUD_SPORT,           0, GROUND,     -1, 15,   0, STATUS   ; MUD_SPORT
 	move EFFECT_MAGIC_ROOM,          0, PSYCHIC,    -1, 10,   0, STATUS   ; MAGIC_ROOM
 	move EFFECT_WONDER_ROOM,         0, PSYCHIC,    -1, 10,   0, STATUS   ; WONDER_ROOM
 .IndirectEnd::
