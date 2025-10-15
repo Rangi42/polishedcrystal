@@ -782,8 +782,12 @@ EncodeTempMon:
 	; Convert Move IDs to Move Indexes.
 	ld hl, wTempMonMoves
 	ld de, wEncodedTempMonMovesLow
-	lb bc, NUM_MOVES, 0
+	ld b, NUM_MOVES
+	xor a
 .moves_loop
+	rla
+	rla
+	ld c, a
 	ld a, [hli]
 	push hl
 	call GetMoveIndexFromID
@@ -794,13 +798,9 @@ EncodeTempMon:
 	pop hl
 	and %11 ; clamp to 2 bits (just in case)
 	or c
-	rla
-	rla
-	ld c, a
 	dec b
 	jr nz, .moves_loop
 	ld de, wEncodedTempMonMovesHigh
-	ld a, c
 	ld [de], a
 
 	; Move Extra bytes.
@@ -930,7 +930,6 @@ DecodeTempMon:
 	and %11
 	ld h, a
 	ld a, c
-	and %00111111
 	rra
 	rra
 	ld c, a
