@@ -3933,7 +3933,6 @@ BattleCommand_damagestats:
 	jr z, .thick_club_or_light_ball
 	sla c
 	rl b
-	jr .thick_club_or_light_ball
 
 .thick_club_or_light_ball
 ; Note: Returns player attack at hl in hl.
