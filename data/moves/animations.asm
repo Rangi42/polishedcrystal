@@ -277,9 +277,15 @@ BattleAnim_ThrowPokeBall:
 
 BattleAnim_SendOutMon:
 	anim_jumpif $1, .Shiny
-	anim_1gfx ANIM_GFX_SMOKE
+	anim_3gfx ANIM_GFX_POKE_BALL, ANIM_GFX_POKE_BALL_BG, ANIM_GFX_SMOKE
+	anim_obj ANIM_OBJ_POKE_BALL_SEND_OUT_BASE, 44, 112, $0
+	anim_obj ANIM_OBJ_POKE_BALL, 44, 112, $0
+	anim_setobj $2, $7
+	anim_obj ANIM_OBJ_POKE_BALL_BG, 44, 112, $0
+	anim_setobj $3, $7
+	anim_wait 16
 	anim_sound 0, 0, SFX_BALL_POOF
-	anim_obj ANIM_OBJ_BALL_POOF,   5, 4,  12, 0, $0
+	anim_obj ANIM_OBJ_BALL_POOF,   44, 96, $0
 	anim_wait 4
 	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_wait 32
