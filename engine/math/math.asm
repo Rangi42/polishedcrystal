@@ -234,24 +234,3 @@ Divide16::
 .division_by_zero
 	ld a, ERR_DIV_ZERO
 	jmp Crash
-
-DivideBy12::
-	srl a
-DivideBy6::
-	srl a
-; Divides a by 3 by multiplying by .0101011, or about 0.336.
-DivideBy3:: 
-	push bc
-	ld b, a
-	srl a
-	add b 
-	srl a
-	srl a
-	add b
-	srl a
-	srl a
-	add b
-	srl a
-	srl a
-	pop bc
-	ret
