@@ -2038,9 +2038,17 @@ ShowAbilityActivation::
 	call PerformAbilityGFX
 	jmp PopBCDEHL
 
+ShowPotentialSpecificAbilityActivation:
+; ShowPotentialAbilityActivation if user's ability matches ability in a.
+	push bc
+	ld b, a
+	call GetTrueUserAbility
+	cp b
+	pop bc
+	ret nz
 ShowPotentialAbilityActivation:
 ; This avoids duplicating checks to avoid text spam. This will run
-; ShowAbilityActivation if animations are disabled (something only abilities do)
+; ShowAbilityActivation if we're within an ability execution (see BeginAbility).
 	ld a, [wInAbility]
 	and a
 	ret z
