@@ -265,6 +265,7 @@ IntimidateAbility:
 	call z, StatUpAbility
 
 .continue
+	call SwitchTurn
 	call EndAbility
 	farcall CheckMirrorHerb
 	farjp CheckStatHerbsAfterIntimidate
