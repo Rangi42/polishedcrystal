@@ -5395,7 +5395,7 @@ ENDM
 StatusProblemTable:
 	status_problem 1 << TOX, ANIM_PSN, BadlyPoisonedText ; needs to be before PSN
 	status_problem 1 << PAR, ANIM_PAR, ParalyzedText
-	status_problem 1 << FRZ, ANIM_FRZ, FrozenSolidText
+	status_problem 1 << FRZ, ANIM_FRZ, WasFrozenText
 	status_problem 1 << BRN, ANIM_BRN, WasBurnedText
 	status_problem 1 << PSN, ANIM_PSN, WasPoisonedText
 	status_problem SLP_MASK, ANIM_SLP, FellAsleepText
