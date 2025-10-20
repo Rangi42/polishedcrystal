@@ -2162,33 +2162,9 @@ RunPostBattleAbilities::
 	call GetPartyParamLocationAndValue
 
 	; Are we holding an item currently?
-	ld a, [hl]
-	and a
-	jr z, .not_holding_item
-
-	; If we are already holding an item, check if we have room in the bag.
-	; If we don't, abort the ability activation.
-	push hl
-	push de
-	push bc
-	ld a, c
-	ld [wCurItem], a
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	ld hl, wNumItems
-	call ReceiveItem
-	pop bc
-	pop de
-	pop hl
+	farcall ReceiveBattleItem
 	ret nc
 	ld a, c
-	jr .gave_item
-
-.not_holding_item
-	ld a, c
-	ld [hl], a
-
-.gave_item
 	push de
 	push bc
 	ld [wNamedObjectIndex], a
