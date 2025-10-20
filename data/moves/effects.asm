@@ -1143,8 +1143,8 @@ Trap:
 	criticaltext
 	supereffectivetext
 	postfainteffects
-	traptarget
 	posthiteffects
+	traptarget
 	endmove
 
 Explosion:
