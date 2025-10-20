@@ -4147,7 +4147,6 @@ HitSelfInConfusion:
 	ld l, a
 	call TruncateHL_BC
 	ld d, 40
-	ld e, a
 	ret
 
 ApplyAttackBoosts:
