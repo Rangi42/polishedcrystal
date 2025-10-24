@@ -14,20 +14,21 @@ Hotfix release.
 
 ### Changes
 - Temporarily unable to trade pokemon holding mail in link trades to avoid mail corruption. Will be fixed in a future release.
+- Thief and Pickpocket can now put items into bag if one is already held.
 
 ### Fixes
 
 - Fixed hurricane move animation.
-- Fix corrupted dialogue Prof. Elm dialogue after Egg hatch, but the player forgot to bring it with them. 
+- Fix corrupted dialogue Prof. Elm dialogue after Egg hatch, but the player forgot to bring it with them.
 - Fix corrupted text in People & Places radio due to Psychic Inver
 - Fix 3DS Virtual Console patches (labels must be <32 chars)
 - More accurate sram/wram mismatch error message.
 - Fix intimidate triggering twice.
 - Fix Shed Skin and held Berry both activating for the same status condition.
-- Thief and Pickpocket can now put items into bag if one is already held.
 - Fix issues related to secondary effects when Pokémon faints
 - Fix freeze status text bug.
 - Fix confusion self-damage
+- Fix Toxic not incrementing properly
 - Temp hotfix for link + summary screen causing crash and corrupt mail.
 - Recalulate stats for party upon resuming a game.
 - Fixed bugged text in bug catching contest.
