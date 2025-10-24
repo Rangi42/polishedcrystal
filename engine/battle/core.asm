@@ -7898,6 +7898,8 @@ StartBattle:
 	call ExitBattle
 	farcall LoadWeatherGraphics
 	farcall LoadWeatherPal
+	xor a
+	ld [wTrainerPal], a
 	pop af
 	ld [wTimeOfDayPal], a
 	scf
