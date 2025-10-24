@@ -80,10 +80,10 @@ SeafoamGymBlaineScript:
 	winlosstext BlaineWinLossText, 0
 	loadtrainer BLAINE, 1
 	startbattle
+	reloadmapafterbattle
 	iftruefwd .ReturnAfterBattle
 	appear SEAFOAMGYM_GYM_GUY
 .ReturnAfterBattle:
-	reloadmapafterbattle
 	setevent EVENT_BEAT_BLAINE
 	setevent EVENT_BEAT_SCIENTIST_LOWELL
 	setevent EVENT_BEAT_SCIENTIST_DENNETT
