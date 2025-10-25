@@ -129,9 +129,9 @@ include the terminator. These are for the most part GSC character data without
 the 7th bit being part of the name. When interpreting the name here,
 set the most significant bit, and do the following conversions:
 
-* Treat 0xF0 as a space (0x7F)
-* Treat 0xF1 as a terminator (0x53)
-* Treat 0xF2 as a zero (0x00)
+* Treat 0xFA as a space (0x7F)
+* Treat 0xFB as a terminator (0x53)
+* Treat 0xFC as a zero (0x00)
 
 The most significant bit in 0x20-0x29 (nickname) and 0x2A-0x30 (OT name) stores
 a checksum. If this checksum is invalid, the game will decode the Pokémon into
