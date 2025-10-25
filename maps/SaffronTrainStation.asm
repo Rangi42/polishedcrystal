@@ -50,7 +50,12 @@ Script_ArriveFromGoldenrod:
 	applymovement SAFFRONTRAINSTATION_OFFICER, SaffronMagnetTrainStationOfficerApproachTrainDoorMovement
 	applymovement PLAYER, SaffronMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement
 	applymovement SAFFRONTRAINSTATION_OFFICER, SaffronMagnetTrainStationOfficerReturnToBoardingGateMovement
-	jumptext SaffronMagnetTrainStationOfficerArrivedInSaffronText
+	opentext
+	writetext SaffronMagnetTrainStationOfficerArrivedInSaffronText
+	waitbutton
+	closetext
+	applyonemovement PLAYER, turn_head_down
+	end
 
 SaffronMagnetTrainStationGymGuideScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
