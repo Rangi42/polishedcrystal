@@ -335,7 +335,7 @@ RocketHideoutB4FCandelaScript:
 	para "This is my contri-"
 	line "bution to our"
 	cont "project."
-	
+
 	para "Use it wisely."
 	done
 
@@ -431,6 +431,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	iftruefwd .AfterBattle
 	opentext
 	writetext .GreetingText
+	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
 	loadtrainer YOUNGSTER, ARDEN
@@ -607,7 +608,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 
 	para "Candela: The tree"
 	line "is ancient,"
-	
+
 	para "a sacred site for"
 	line "roosting."
 
