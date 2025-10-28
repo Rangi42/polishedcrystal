@@ -80,6 +80,7 @@ FastShipBed:
 	special HealParty
 	playmusic MUSIC_HEAL
 	pause 60
+	turnobject PLAYER, LEFT
 	special RestartMapMusic
 	special Special_FadeInQuickly
 	showtext FastShipBedText2
