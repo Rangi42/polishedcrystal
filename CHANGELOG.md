@@ -15,8 +15,8 @@ Hotfix release.
 ### Changes
 - Temporarily unable to trade pokemon holding mail in link trades to avoid mail corruption. Will be fixed in a future release.
 - Thief and Pickpocket can now put items into bag if one is already held.
-- Turn the player away from the bed in the Fast Ship after resting so they don't accidentally talk to the nurse immediately after healing.
-- Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialogue by standing in front of them.
+- Turn the player away from the bed in the Fast Ship after resting so they don't accidentally talk to the bed immediately after healing.
+- Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialogue.
 
 ### Fixes
 
