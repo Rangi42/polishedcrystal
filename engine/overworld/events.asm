@@ -618,6 +618,11 @@ TryObjectEvent:
 	add hl, bc
 	ld b, [hl]
 	ld c, a
+	push bc
+	push hl
+	call SetSeenMon
+	pop hl
+	pop bc
 	inc hl
 	ld de, wTempScriptBuffer
 	ld a, showcrytext_command
