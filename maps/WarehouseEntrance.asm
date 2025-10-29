@@ -418,7 +418,7 @@ GoldenrodUndergroundCandyManScript:
 
 .GiveCandyJarText2:
 	text "It's a Candy Jar."
-	
+
 	para "You'll need it to"
 	line "store my, uh,"
 	cont "special candy."
