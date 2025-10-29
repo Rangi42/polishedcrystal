@@ -17,6 +17,10 @@ Hotfix release.
 - Thief and Pickpocket can now put items into bag if one is already held.
 - Turn the player away from the bed in the Fast Ship after resting so they don't accidentally talk to the bed immediately after healing.
 - Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialogue.
+- Talking to an Pokemon in the overworld sets them seen in the pokedex.
+- Updated Piloswine and Skarmory's back sprites.
+- Updated Para's front animation sprite.
+- If a Pokemon knows a HM that you don't have, and that HM is Surf, Strength, or Whirlpool, you cannot forget the HM. This is to reduce chances of softlock.
 
 ### Fixes
 
@@ -37,6 +41,9 @@ Hotfix release.
 - Fixed pronouns for Blanche in RocketHideout.
 - Fix blaine text corruption when fading out of battle.
 - Removed arbitrary delay when loading a game.
+- Fixed extraneous visual artifact in Kingdra backsprite.
+- Fixed lift key re-appearing after pickup.
+- Fixed overworld weather animations when using brick break to smash an overworld rock.
 
 ## v3.2.0
 
