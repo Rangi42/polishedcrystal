@@ -3873,6 +3873,12 @@ _MoveForgotText::
 	para "And…"
 	prompt
 
+SECTION "_MoveCantForgetHMText", ROMX
+_MoveCantForgetHMText::
+	text "HM moves can't be"
+	line "forgotten now."
+	prompt
+
 SECTION "_CardFlipPlayWithThreeCoinsText", ROMX
 _CardFlipPlayWithThreeCoinsText::
 	text "Play with three"
