@@ -54,7 +54,7 @@ RocketHideoutB3FCoolDudeDaric:
 
 	para "Let's see if your"
 	line "focus is good."
-	
+
 	done
 
 .BeatenText:

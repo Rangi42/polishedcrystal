@@ -841,7 +841,7 @@ SummaryScreen_SwitchPage:
 
 	xor a
 	ldh [hCGBPalUpdate], a
-	
+
 	ld c, 6 * 2
 	ld hl, wSummaryScreenPals + 2 palettes
 	call .WaitUntilHBlank
@@ -853,7 +853,7 @@ SummaryScreen_SwitchPage:
 	ldh a, [rLY]
 	cp 62
 	jr nc, .l60
-	
+
 	ld c, 1 * 2
 	ld hl, wSummaryScreenPals
 	call .WaitUntilHBlank

@@ -221,7 +221,7 @@ CeladonGameCornerRichBoyTobin:
 	text "Fine! There's"
 	line "nothing here"
 	cont "anyway!"
-	
+
 	para "The poster? Ha!"
 	line "It's just decor!"
 	done

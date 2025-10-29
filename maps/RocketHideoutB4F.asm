@@ -508,7 +508,7 @@ RocketHideoutB4FTeacherSerena:
 .SeenText:
 	text "Let me see if you"
 	line "are smart enough"
-	
+
 	para "to take on the"
 	line "leaders!"
 	done
