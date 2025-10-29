@@ -1840,6 +1840,7 @@ BikeFunction:
 	jr .CannotUseBike
 
 .GetOnBike:
+	farcall _StowFollower
 	call PlayBikeMusic
 	ld hl, Script_GetOnBike
 	ld de, Script_GetOnBike_Register
@@ -1847,6 +1848,7 @@ BikeFunction:
 	jr .done
 
 .GetOffBike:
+	farcall _AppearFollowerOneStep
 	ld hl, wOWState
 	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .CantGetOffBike

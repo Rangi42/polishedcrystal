@@ -22,9 +22,15 @@ ExitMenu::
 	ret
 
 UpdateFollowPalette:
-	ld a, SPRITE_FOLLOWER
-	call GetSpritePalette
-	ld [wObject1Palette], a
+	lb de, 0, 0
+	ld a, LOW(PIKACHU)
+	ld [wCurIcon], a
+	ld hl, wCurIconPersonality
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+	farcall GetOverworldMonIconPalette
+	ld [wObject1PalIndex], a
 	ret
 
 GetTileBackupMenuBoxDims::

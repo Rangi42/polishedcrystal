@@ -261,6 +261,13 @@ GetMonSprite:
 	call GetFirstAliveMon
 ;	cp PIKACHU
 ;	jr nz, .not_pikachu
+	lb de, 0, 0
+	ld a, LOW(PIKACHU)
+	ld [wCurIcon], a
+	ld hl, wCurIconPersonality
+	ld a, d
+	ld [hli], a
+	ld [hl], e
 	ld a, BANK(FollowingSpritePointers)
 	ld hl, FollowingSpritePointers
 	call GetFarByte

@@ -897,6 +897,7 @@ endr
 
 .FollowNotExact:
 	call .MoveFollowNotExact
+	ld d, OBJECT_ACTION_STEP
 	jmp c, NormalStep
 	ret
 
@@ -2451,6 +2452,12 @@ GetFollowerNextMovementByte:
 
 SpawnPokeballOpening::
 	push bc
+	ld hl, AnimPokeBallSpriteGFX
+	lb bc, BANK(AnimPokeBallSpriteGFX), 12
+	ld de, vTiles0 tile $61
+	call DecompressRequest2bpp
+	pop bc
+	push bc
 	ld de, .PokeballOpeningObject
 	call CopyTempObjectData
 	call InitTempObject
@@ -2462,6 +2469,12 @@ SpawnPokeballOpening::
 	db $e1, PAL_OW_RED, SPRITEMOVEDATA_POKEBALL_OPENING
 
 SpawnPokeballClosing::
+	push bc
+	ld hl, AnimPokeBallSpriteGFX
+	lb bc, BANK(AnimPokeBallSpriteGFX), 12
+	ld de, vTiles0 tile $61
+	call DecompressRequest2bpp
+	pop bc
 	push bc
 	ld de, .PokeballClosingObject
 	call CopyTempObjectData
