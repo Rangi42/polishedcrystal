@@ -235,9 +235,14 @@ DoSnowFall:
 	jr c, .despawn
 .ok
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust
 	; double the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
+.skip_y_adjust
 	ld c, a
 
 	; get the sprite's y coord and subtract the player's doubled step vector
@@ -508,12 +513,17 @@ DoRainFall:
 	; raindrops have a 5% chance of splashing.
 	call Random
 	cp 5 percent
-	jr c, .splash
+	jmp c, .splash
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust_1
 	; quadruple the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
 	add a
+.skip_y_adjust_1
 
 	; get the sprite's y coord and subtract the player's quadrupled step vector
 	ld c, a
@@ -592,9 +602,14 @@ DoRainFall:
 	cp PAL_OW_WEATHER
 	jr nz, .next
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust_2
 	; double the player's step vector
 	ld a, [wPlayerStepVectorY]
 	add a
+.skip_y_adjust_2
 	ld c, a
 
 	; get the sprite's y coord and subtract the player's doubled step vector
@@ -667,10 +682,15 @@ DoSandFall:
 	cp 5 percent
 	jr c, .despawn
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust
 	; quadruple the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
 	add a
+.skip_y_adjust
 	ld c, a
 
 	; get the sprite's y coord and subtract the player's quadrupled step vector

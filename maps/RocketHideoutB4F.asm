@@ -56,11 +56,9 @@ RocketHideoutB4FDoorScript:
 
 RocketHideoutB4FLiftKeyScript:
 	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
-	iftruefwd .beat_rory
+	iftruefwd .beat_arden
 	disappear ROCKETHIDEOUTB4F_LIFT_KEY
-	endcallback
-.beat_rory
-	appear ROCKETHIDEOUTB4F_LIFT_KEY
+.beat_arden
 	endcallback
 
 RocketHideoutB4FMeetLeadersLeftScript:
@@ -335,7 +333,7 @@ RocketHideoutB4FCandelaScript:
 	para "This is my contri-"
 	line "bution to our"
 	cont "project."
-	
+
 	para "Use it wisely."
 	done
 
@@ -431,6 +429,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	iftruefwd .AfterBattle
 	opentext
 	writetext .GreetingText
+	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
 	loadtrainer YOUNGSTER, ARDEN
@@ -607,7 +606,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 
 	para "Candela: The tree"
 	line "is ancient,"
-	
+
 	para "a sacred site for"
 	line "roosting."
 

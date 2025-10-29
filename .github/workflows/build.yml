@@ -9,7 +9,7 @@ on:
 
 env:
   # PC_VERSION should match VERSION in Makefile
-  PC_VERSION: "3.2.0"
+  PC_VERSION: "3.2.1"
   RGBDS_VERSION: "v0.9.4"
 
 jobs:

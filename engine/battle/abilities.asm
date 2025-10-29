@@ -265,6 +265,7 @@ IntimidateAbility:
 	call z, StatUpAbility
 
 .continue
+	call SwitchTurn
 	call EndAbility
 	farcall CheckMirrorHerb
 	farjp CheckStatHerbsAfterIntimidate
@@ -2037,9 +2038,17 @@ ShowAbilityActivation::
 	call PerformAbilityGFX
 	jmp PopBCDEHL
 
+ShowPotentialSpecificAbilityActivation:
+; ShowPotentialAbilityActivation if user's ability matches ability in a.
+	push bc
+	ld b, a
+	call GetTrueUserAbility
+	cp b
+	pop bc
+	ret nz
 ShowPotentialAbilityActivation:
 ; This avoids duplicating checks to avoid text spam. This will run
-; ShowAbilityActivation if animations are disabled (something only abilities do)
+; ShowAbilityActivation if we're within an ability execution (see BeginAbility).
 	ld a, [wInAbility]
 	and a
 	ret z
@@ -2153,33 +2162,9 @@ RunPostBattleAbilities::
 	call GetPartyParamLocationAndValue
 
 	; Are we holding an item currently?
-	ld a, [hl]
-	and a
-	jr z, .not_holding_item
-
-	; If we are already holding an item, check if we have room in the bag.
-	; If we don't, abort the ability activation.
-	push hl
-	push de
-	push bc
-	ld a, c
-	ld [wCurItem], a
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	ld hl, wNumItems
-	call ReceiveItem
-	pop bc
-	pop de
-	pop hl
+	farcall ReceiveBattleItem
 	ret nc
 	ld a, c
-	jr .gave_item
-
-.not_holding_item
-	ld a, c
-	ld [hl], a
-
-.gave_item
 	push de
 	push bc
 	ld [wNamedObjectIndex], a

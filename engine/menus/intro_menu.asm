@@ -359,8 +359,7 @@ Continue:
 	call CloseWindow
 	call ClearTileMap
 	farcall ClearSavedObjPals
-	ld c, 20
-	call DelayFrames
+	farcall FixPlayerEVsAndStats
 	farcall JumpRoamMons
 	farcall ClockContinue ; time-related
 	ld a, [wSpawnAfterChampion]

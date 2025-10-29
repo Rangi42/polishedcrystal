@@ -2378,11 +2378,13 @@ BattleCommand_checkpriority:
 	jmp BattleCommand_failuretext
 
 BattleCommand_effectchance:
-; Doesn't work against Substitute or Shield Dust
+; Doesn't work against Substitute or Shield Dust or fainted foes.
 	push bc
 	push hl
 	xor a
 	ld [wEffectFailed], a
+	call HasOpponentFainted
+	jr z, EffectChanceFailed
 	call CheckSubHit
 	jr nz, EffectChanceFailed
 
@@ -3201,14 +3203,7 @@ BattleCommand_postfainteffects:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_IN_LOOP, a
-	jr z, .no_multi
-
-	call EndMultihit
-	call BattleCommand_supereffectivetext
-	call BattleCommand_endloop
-	call BattleCommand_raisesub
-
-.no_multi
+	call nz, EndMultihit
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVar
 	bit SUBSTATUS_DESTINY_BOND, a
@@ -3234,25 +3229,11 @@ BattleCommand_postfainteffects:
 
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .enemy_dbond
-	call UpdateBattleMonInParty
-	jr .finish
-.enemy_dbond
-	call UpdateEnemyMonInParty
-	jr .finish
+	jmp nz, UpdateEnemyMonInParty
+	jmp UpdateBattleMonInParty
 
 .no_dbond
-	farcall RunFaintAbilities
-	call BattleCommand_posthiteffects
-
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_SWITCH_HIT
-	jr nz, .finish
-	call HasUserFainted
-	call nz, BattleCommand_switchout
-.finish
-	jmp EndMoveEffect
+	farjp RunFaintAbilities
 
 BattleCommand_posthiteffects:
 ; This can run even if someone is fainted. Take this into account.
@@ -3733,7 +3714,6 @@ EndMoveDamageChecks:
 	call CanStealItem
 	jr nz, .no_pickpocket
 	farcall BeginAbility
-	farcall ShowAbilityActivation
 	call BattleCommand_thief
 	farcall EndAbility
 .no_pickpocket
@@ -4167,7 +4147,6 @@ HitSelfInConfusion:
 	ld l, a
 	call TruncateHL_BC
 	ld d, 40
-	ld e, a
 	ret
 
 ApplyAttackBoosts:
@@ -5415,7 +5394,7 @@ ENDM
 StatusProblemTable:
 	status_problem 1 << TOX, ANIM_PSN, BadlyPoisonedText ; needs to be before PSN
 	status_problem 1 << PAR, ANIM_PAR, ParalyzedText
-	status_problem 1 << FRZ, ANIM_FRZ, FrozenSolidText
+	status_problem 1 << FRZ, ANIM_FRZ, WasFrozenText
 	status_problem 1 << BRN, ANIM_BRN, WasBurnedText
 	status_problem 1 << PSN, ANIM_PSN, WasPoisonedText
 	status_problem SLP_MASK, ANIM_SLP, FellAsleepText
@@ -5859,6 +5838,8 @@ BattleCommand_charge:
 	text_end
 
 BattleCommand_traptarget:
+	call HasOpponentFainted
+	ret z
 	ld a, [wAttackMissed]
 	and a
 	ret nz

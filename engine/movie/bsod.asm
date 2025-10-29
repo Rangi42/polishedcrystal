@@ -126,7 +126,7 @@ BSODErrorStrings:
 	dr .OldBox           ; ERR_OLDBOX
 	dr .NewBox           ; ERR_NEWBOX
 	dr .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
-	dr .CorruptSavestate ; ERR_CORRUPT_SAVESTATE
+	dr .SRAMMismatch     ; ERR_SRAM_MISMATCH
 	dr .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
@@ -141,5 +141,5 @@ BSODErrorStrings:
 .OldBox:           text "Old PC Box storage@"
 .NewBox:           text "Fatal PC Box error@"
 .WinStackOverflow: text "Win.stack overflow@"
-.CorruptSavestate: text "Corrupt savestate@"
+.SRAMMismatch:     text "SRAM/WRAM mismatch@"
 .UnknownError:     text "Unknown error@"

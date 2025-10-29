@@ -2078,10 +2078,10 @@ Special_TryQuickSave:
 	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
-	vc_hook Wireless_TryQuickSave_block_input_1
+	vc_hook Wireless_TQS_block_input_1
 	ld a, TRUE
 	jr nc, .return_result
-	vc_hook Wireless_TryQuickSave_block_input_2
+	vc_hook Wireless_TQS_block_input_2
 	xor a ; FALSE
 .return_result
 	ldh [hScriptVar], a
@@ -2815,4 +2815,24 @@ endc
 	ld a, [wOtherPlayerLinkAction]
 	ld [wOtherPlayerLinkMode], a
 	vc_hook Wireless_WaitLinkTransfer_ret
+	ret
+
+CheckPartyForMail:
+	ld a, [wPartyCount]
+	ld c, a
+	ld hl, wPartyMon1Item
+	ld de, wPartyMon2Item - wPartyMon1Item
+.loop
+	ld a, [hl]
+	call ItemIsMail_a
+	jr c, .has_mail
+	add hl, de
+	dec c
+	jr nz, .loop
+	ldh [hScriptVar], a
+	ret
+
+.has_mail
+	ld a, TRUE
+	ldh [hScriptVar], a
 	ret

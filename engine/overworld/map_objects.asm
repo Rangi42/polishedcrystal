@@ -2102,6 +2102,8 @@ StepFunction_ScreenShake:
 	dw .Run
 
 .Init:
+	ld hl, wWeatherFlags
+	set OW_WEATHER_IGNORE_PLAYER_Y, [hl]
 	xor a
 	ld hl, OBJECT_1D
 	add hl, bc
@@ -2130,6 +2132,8 @@ StepFunction_ScreenShake:
 	ret
 
 .ok
+	ld hl, wWeatherFlags
+	res OW_WEATHER_IGNORE_PLAYER_Y, [hl]
 	jmp DeleteMapObject
 
 .GetSign:

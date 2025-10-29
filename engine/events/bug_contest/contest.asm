@@ -168,8 +168,9 @@ LoadContestantName:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; Copy the Trainer Class to [wNamedObjectIndex].
+; Copy the Trainer Class to [wNamedObjectIndex] and c.
 	ld a, [hli]
+	ld c, a
 	ld [wNamedObjectIndex], a
 ; Save hl and bc for later.
 	push hl
