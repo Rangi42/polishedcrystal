@@ -16,7 +16,7 @@ FollowerScript::
 .give_item
 	writetext .found_item
 	yesorno
-	iffalse .done
+	iffalsefwd .done
 	verbosegiveitem NUGGET
 .done
 	closetext

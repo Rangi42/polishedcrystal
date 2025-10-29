@@ -448,7 +448,7 @@ CheckFollowerInvisOneStep:
 	bit FOLLOWER_IN_POKEBALL_F, [hl]
 	push bc
 	ld bc, wObject1Struct
-	jmp nz, .spawn_pokeball
+	jr nz, .spawn_pokeball
 	res FOLLOWER_INVISIBLE_F, [hl]
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
@@ -1388,10 +1388,10 @@ StepFunction_PokeballOpening:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	dec [hl]
-	jmp nz, PokeballTracking
+	jr nz, PokeballTracking
 	ld [hl], 4
 	call IncrementObjectStructField1c
-	jmp PokeballTracking
+	jr PokeballTracking
 
 .Opening:
 	ld hl, OBJECT_DIRECTION
@@ -1400,10 +1400,10 @@ StepFunction_PokeballOpening:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	dec [hl]
-	jmp nz, PokeballTracking
+	jr nz, PokeballTracking
 	ld [hl], 4
 	call IncrementObjectStructField1c
-	jmp PokeballTracking
+	jr PokeballTracking
 
 .Open:
 	ld hl, OBJECT_DIRECTION
@@ -1412,7 +1412,7 @@ StepFunction_PokeballOpening:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	dec [hl]
-	jmp nz, PokeballTracking
+	jr nz, PokeballTracking
 	ld hl, OBJECT_1D
 	add hl, bc
 	ld e, [hl]
