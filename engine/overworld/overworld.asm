@@ -70,6 +70,9 @@ ReloadSpriteIndex::
 	ld a, [hl]
 	and a
 	jr z, .done
+	inc a
+	jr z, .done
+	dec a
 	bit 7, b
 	jr z, .continue
 	cp b
