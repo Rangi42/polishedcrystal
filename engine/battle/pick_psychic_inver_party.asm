@@ -23,13 +23,14 @@ PickPsychicInverParty:
 	ld h, a
 	ld e, [hl]
 	ld d, 0
-	; hl = de * 12
+	; hl = de * 10
 	ld h, d
 	ld l, e
-	add hl, de
-	add hl, de
-	add hl, hl
-	add hl, hl
+	add hl, hl ; x2
+	add hl, hl ; x4
+	add hl, hl ; x8
+	add hl, de ; x9
+	add hl, de ; x10
 	; de = PsychicInverGroup + INVER_PREFIX + hl
 	ld de, PsychicInverGroup + INVER_PREFIX
 	add hl, de
@@ -37,7 +38,7 @@ PickPsychicInverParty:
 	ld e, l
 	pop hl
 	; copy the next mon
-	ld b, 12
+	ld b, 10
 	call .CopyBytes
 	dec c
 	jr nz, .party_loop

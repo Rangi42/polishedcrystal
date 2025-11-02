@@ -905,7 +905,7 @@ wInverGroup::
 	ds 8 ; length + "Inver@" + flags
 	rept PARTY_LENGTH
 		ds 3 ; dbp <level>, <species>, <form>
-		ds 5 ; db <item>, <dv1>, <dv2>, <dv3>, <nat | abil>
+		ds 3 ; db <item>, <dvs>, <nat | abil>
 		ds NUM_MOVES ; moves
 	endr
 
