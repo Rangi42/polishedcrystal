@@ -772,7 +772,7 @@ FlyFunction:
 	ret
 
 .FlyScript:
-	silentstowfollower
+	stowfollower
 	refreshmap
 	callasm .StopPalFading
 	callasm ClearSavedObjPals

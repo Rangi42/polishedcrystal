@@ -205,9 +205,9 @@ _HandleStepType:
 	dw StepFunction_SkyfallTop      ; STEP_TYPE_SKYFALL_TOP
 	dw StepFunction_NPCStairs       ; STEP_TYPE_NPC_STAIRS
 	dw StepFunction_PlayerStairs    ; STEP_TYPE_PLAYER_STAIRS
-	dw StepFunction_PokeballOpening ; 1b
-	dw StepFunction_PokeballClosing ; 1a
-	dw StepFunction_NPCJumpInPlace  ; 1b
+	dw StepFunction_PokeballOpening ; STEP_TYPE_POKEBALL_OPENING
+	dw StepFunction_PokeballClosing ; STEP_TYPE_POKEBALL_CLOSING
+	dw StepFunction_NPCJumpInPlace  ; STEP_TYPE_NPC_JUMP_INPLACE
 	assert_table_length NUM_STEP_TYPES
 
 CopyNextCoordsTileToStandingCoordsTile:
