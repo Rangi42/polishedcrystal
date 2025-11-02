@@ -1195,7 +1195,10 @@ wEmotePal:: db
 wFollowerStateFlags:: db
 wFollowerState:: db
 
-	ds 62 ; unused
+; Directional spin state for follower (0 = not spinning; 1..4 = DOWN, UP, LEFT, RIGHT)
+wFollowerSpinning:: db
+
+	ds 61 ; unused
 
 wCandyAmounts::
 wExpCandyXSAmount:: db

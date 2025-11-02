@@ -828,6 +828,72 @@ endr
 	ret
 
 .follow_not_exact
+; Handle spinner tiles for the follower just like the player: start spinning
+; when stepping on a spin tile, keep spinning in that direction until a stop
+; tile is reached.
+	; Update follower spin state based on current tile collision under this object
+	ld hl, OBJECT_TILE_COLLISION
+	add hl, bc
+	ld a, [hl]
+	cp COLL_STOP_SPIN
+	jr nz, .chk_spin_tiles
+	; landed on a stop tile: clear follower spinning
+	xor a
+	ld [wFollowerSpinning], a
+	jr .maybe_spin
+
+.chk_spin_tiles
+	; Check if standing on a spin tile to (re)start spinning in that direction
+	cp COLL_SPIN_UP
+	jr z, .start_spin_up
+	cp COLL_SPIN_DOWN
+	jr z, .start_spin_down
+	cp COLL_SPIN_LEFT
+	jr z, .start_spin_left
+	cp COLL_SPIN_RIGHT
+	jr z, .start_spin_right
+.maybe_spin
+	; If currently spinning, force movement in the stored direction and spin action
+	ld a, [wFollowerSpinning]
+	and a
+	jr z, .do_follow
+	dec a          ; convert to 0..3 direction
+	and %00000011
+	ld e, a
+	ld a, STEP_WALK << 2
+	or e
+	ld d, OBJECT_ACTION_SPIN
+	jmp NormalStep
+
+.start_spin_up
+	ld a, UP + 1 ; store direction + 1 (to match player wSpinning convention)
+	ld [wFollowerSpinning], a
+	ld a, STEP_WALK << 2 | UP
+	ld d, OBJECT_ACTION_SPIN
+	jmp NormalStep
+
+.start_spin_down
+	ld a, DOWN + 1
+	ld [wFollowerSpinning], a
+	ld a, STEP_WALK << 2 | DOWN
+	ld d, OBJECT_ACTION_SPIN
+	jmp NormalStep
+
+.start_spin_left
+	ld a, LEFT + 1
+	ld [wFollowerSpinning], a
+	ld a, STEP_WALK << 2 | LEFT
+	ld d, OBJECT_ACTION_SPIN
+	jmp NormalStep
+
+.start_spin_right
+	ld a, RIGHT + 1
+	ld [wFollowerSpinning], a
+	ld a, STEP_WALK << 2 | RIGHT
+	ld d, OBJECT_ACTION_SPIN
+	jmp NormalStep
+
+.do_follow
 	call .MoveFollowNotExact
 	ret nc
 	push af
