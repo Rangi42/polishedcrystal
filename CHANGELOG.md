@@ -12,6 +12,9 @@
 
 Hotfix release.
 
+### Additions
+- Added Alolan Dugtrio backsprite
+
 ### Changes
 - Temporarily unable to trade pokemon holding mail in link trades to avoid mail corruption. Will be fixed in a future release.
 - Thief and Pickpocket can now put items into bag if one is already held.
@@ -44,6 +47,7 @@ Hotfix release.
 - Fixed extraneous visual artifact in Kingdra backsprite.
 - Fixed lift key re-appearing after pickup.
 - Fixed overworld weather animations when using brick break to smash an overworld rock.
+- Fixed Psychic Inver corrupt parties
 
 ## v3.2.0
 
