@@ -269,10 +269,10 @@ CherrygroveBayFisherText:
 
 	para "Oh! And I also saw"
 	line "some really big"
-	
+
 	para "birds the other"
 	line "day."
-	
+
 	para "I think they were"
 	line "headed to that big"
 	cont "ol' tree nearby?"

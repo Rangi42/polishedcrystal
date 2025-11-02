@@ -72,7 +72,7 @@ SummaryScreen_PinkPage:
 	hlbgcoord 25, 3, wSummaryScreenWindowBuffer
 	ld a, SUMMARY_PAL_POKEBALL
 	ld [hli], a
-	
+
 	hlbgcoord 26, 3, wSummaryScreenWindowBuffer
 	ld [hl], OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW
 

@@ -85,6 +85,8 @@ endc
 	writetext Text_TradeReceptionistIntro
 	yesorno
 	iffalse_endtext
+	callasm CheckPartyForMail
+	iftruefwd LinkReceptionistScript_HasMail
 	special Special_SetBitsForLinkTradeRequest
 	; fallthrough
 LinkReceptionistScript_DoTradeOrBattle:
@@ -164,6 +166,18 @@ LinkReceptionistScript_DoTradeOrBattle:
 	writetext Text_PleaseComeAgain
 .AbortLink:
 	special WaitForOtherPlayerToExit
+	endtext
+
+LinkReceptionistScript_HasMail:
+	writethistext
+		text "I am sorry, but"
+		line "we are unable to"
+
+		para "trade #mon"
+		line "carrying mail"
+		cont "at this time."
+		done
+	waitbutton
 	endtext
 
 Script_TradeCenterClosed:

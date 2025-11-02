@@ -78,7 +78,7 @@ TMHMMoves:
 	dw SWORDS_DANCE ; TM75 (Celadon Dept. Store)
 	assert_table_length NUM_TMS
 	dw CUT          ; HM01 (Ilex Forest)
-	dw FLY          ; HM02 (Cianwood City)
+	dw FLY          ; HM02 (Yellow Forest)
 	dw SURF         ; HM03 (Ecruteak City)
 	dw STRENGTH     ; HM04 (Cianwood City)
 	dw WHIRLPOOL    ; HM05 (Route 42)

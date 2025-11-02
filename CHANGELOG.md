@@ -8,9 +8,50 @@
 
 ***Note: The following changelog may contain spoilers.***
 
+## v3.2.1
+
+Hotfix release.
+
+### Additions
+- Added Alolan Dugtrio backsprite
+
+### Changes
+- Temporarily unable to trade pokemon holding mail in link trades to avoid mail corruption. Will be fixed in a future release.
+- Thief and Pickpocket can now put items into bag if one is already held.
+- Turn the player away from the bed in the Fast Ship after resting so they don't accidentally talk to the bed immediately after healing.
+- Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialogue.
+- Talking to an Pokemon in the overworld sets them seen in the pokedex.
+- Updated Piloswine and Skarmory's back sprites.
+- Updated Para's front animation sprite.
+- If a Pokemon knows a HM that you don't have, and that HM is Surf, Strength, or Whirlpool, you cannot forget the HM. This is to reduce chances of softlock.
+
+### Fixes
+
+- Fixed hurricane move animation.
+- Fix corrupted dialogue Prof. Elm dialogue after Egg hatch, but the player forgot to bring it with them.
+- Fix corrupted text in People & Places radio due to Psychic Inver
+- Fix 3DS Virtual Console patches (labels must be <32 chars)
+- More accurate sram/wram mismatch error message.
+- Fix intimidate triggering twice.
+- Fix Shed Skin and held Berry both activating for the same status condition.
+- Fix issues related to secondary effects when Pokémon faints
+- Fix freeze status text bug.
+- Fix confusion self-damage
+- Fix Toxic not incrementing properly
+- Temp hotfix for link + summary screen causing crash and corrupt mail.
+- Recalulate stats for party upon resuming a game.
+- Fixed bugged text in bug catching contest.
+- Fixed pronouns for Blanche in RocketHideout.
+- Fix blaine text corruption when fading out of battle.
+- Removed arbitrary delay when loading a game.
+- Fixed extraneous visual artifact in Kingdra backsprite.
+- Fixed lift key re-appearing after pickup.
+- Fixed overworld weather animations when using brick break to smash an overworld rock.
+- Fixed Psychic Inver corrupt parties
+
 ## v3.2.0
 
-This current stable release.
+The current stable release.
 
 ### Additions
 - Added pluralize script command to auto-pluralize words as needed.

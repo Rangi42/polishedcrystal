@@ -38,7 +38,7 @@ GetSRAMBank::
 .crash
 	pop af
 	call CloseSRAM
-	ld a, ERR_CORRUPTED_SAVESTATE
+	ld a, ERR_SRAM_MISMATCH
 	di
 	jmp Crash
 

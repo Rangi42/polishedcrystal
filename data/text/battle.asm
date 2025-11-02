@@ -649,6 +649,11 @@ WokeUpText:
 	line "woke up!"
 	prompt
 
+WasFrozenText:
+	text "<TARGET>"
+	line "was frozen solid!"
+	prompt
+
 FrozenSolidText:
 	text "<USER>"
 	line "is frozen solid!"
