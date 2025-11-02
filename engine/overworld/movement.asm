@@ -711,6 +711,12 @@ NormalStep:
 	pop de
 	ld [hl], d
 
+	ld hl, OBJECT_MAP_OBJECT_INDEX
+	add hl, bc
+	ld a, [hl]
+	cp FOLLOWER
+	jr z, SetWalkStepType
+
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE_F, [hl]
