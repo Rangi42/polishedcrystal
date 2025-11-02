@@ -925,7 +925,8 @@ wFollowMovementQueue:: ds 5
 
 wObjectStructs::
 wPlayerStruct::      object_struct wPlayer
-for n, 1, NUM_OBJECT_STRUCTS ; discount player
+wFollowerStruct::    object_struct wFollower
+for n, 2, NUM_OBJECT_STRUCTS ; discount player and follower
 wObject{d:n}Struct:: object_struct wObject{d:n}
 endr
 wObjectStructsEnd::
@@ -1191,7 +1192,7 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-wFollowerFlags:: db
+wFollowerStateFlags:: db
 wFollowerState:: db
 
 	ds 62 ; unused

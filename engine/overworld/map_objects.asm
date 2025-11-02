@@ -372,7 +372,7 @@ HideFollowerIfNPCBump:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_INVISIBLE_F, [hl]
 	set FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
 .return
@@ -410,7 +410,7 @@ UpdateFollowerSprite:
 	ret
 
 .land_tile
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	bit FOLLOWER_IN_POKEBALL_F, [hl]
 	ret z
 	call SpawnPokeballOpening
@@ -420,7 +420,7 @@ UpdateFollowerSprite:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_INVISIBLE_F, [hl]
 	set FOLLOWER_IN_POKEBALL_F, [hl]
 	call SpawnPokeballClosing
@@ -430,7 +430,7 @@ CheckFollowerInvisOneStep:
 	; Although the below could be optimized, it is currently easier to understand.
 	cp PLAYER
 	ret nz
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	bit FOLLOWER_INVISIBLE_F, [hl]
 	ret z
 	bit FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
@@ -438,7 +438,7 @@ CheckFollowerInvisOneStep:
 ;	push hl
 ;	push bc
 ;	push de
-;	ld bc, wObject1Struct
+;	ld bc, wFollowerStruct
 ;	call IsObjectStandingOnSomeoneElse
 ;	pop de
 ;	pop bc
@@ -447,7 +447,7 @@ CheckFollowerInvisOneStep:
 	res FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
 	bit FOLLOWER_IN_POKEBALL_F, [hl]
 	push bc
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	jr nz, .spawn_pokeball
 	res FOLLOWER_INVISIBLE_F, [hl]
 	ld hl, OBJECT_FLAGS1
@@ -819,7 +819,7 @@ endr
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	set LOW_PRIORITY_F, [hl]
-	ld a, [wFollowerFlags]
+	ld a, [wFollowerStateFlags]
 	bit FOLLOWER_FROZEN_F, a
 	jr z, .follow_not_exact
 	ld hl, OBJECT_ACTION
@@ -1126,7 +1126,7 @@ endr
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_POKEBALL_OPENING
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_EXITING_BALL_F, [hl]
 	ret
 
@@ -1141,7 +1141,7 @@ endr
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_POKEBALL_CLOSING
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_ENTERING_BALL_F, [hl]
 	ret
 
@@ -1422,7 +1422,7 @@ StepFunction_PokeballOpening:
 	ld hl, OBJECT_FLAGS1
 	add hl, de
 	res INVISIBLE_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	res FOLLOWER_INVISIBLE_F, [hl]
 	res FOLLOWER_IN_POKEBALL_F, [hl]
 	res FOLLOWER_EXITING_BALL_F, [hl]
@@ -1467,7 +1467,7 @@ StepFunction_PokeballClosing:
 	add hl, bc
 	dec [hl]
 	jmp nz, PokeballTracking
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_IN_POKEBALL_F, [hl]
 	res FOLLOWER_ENTERING_BALL_F, [hl]
 	jmp DeleteMapObject
@@ -3063,7 +3063,7 @@ FreezeAllObjects:
 	ret
 
 TryUnfreezeFollower:
-	ld a, [wFollowerFlags]
+	ld a, [wFollowerStateFlags]
 	bit FOLLOWER_FROZEN_F, a
 	ret nz
 	ld a, FOLLOWER
@@ -3100,24 +3100,24 @@ _UnfreezeFollowerObject::
 	ret
 
 _FreezeFollower::
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	call DoesObjectHaveASprite
 	ret z
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	set FROZEN_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_FROZEN_F, [hl]
 	ret
 
 _UnfreezeFollower::
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	call DoesObjectHaveASprite
 	ret z
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res FROZEN_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	res FOLLOWER_FROZEN_F, [hl]
 	ret
 
@@ -3125,13 +3125,13 @@ _StowFollower::
 	ld a, 20
 	ld [wScriptDelay], a
 _SilentStowFollower::
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	call DoesObjectHaveASprite
 	ret z
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_INVISIBLE_F, [hl]
 	set FOLLOWER_IN_POKEBALL_F, [hl]
 	ld a, [wScriptDelay] ; Silent check.
@@ -3143,11 +3143,11 @@ _AppearFollower::
 	ld b, FOLLOWER
 	farcall Script_appear_skipinput
 _AppearFollowerOneStep::
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_INVISIBLE_F, [hl]
 	set FOLLOWER_IN_POKEBALL_F, [hl]
 	call SpawnPokeballOpening
@@ -3156,7 +3156,7 @@ _AppearFollowerOneStep::
 	ret
 
 _SaveFollowerCoords::
-	ld hl, wObject1MapX
+	ld hl, wFollowerMapX
 	ld a, [hli]
 	ld c, [hl]
 	ld b, a
@@ -3581,7 +3581,8 @@ InitSprites:
 
 .ObjectStructPointers:
 	dw wPlayerStruct
-for n, 1, NUM_OBJECT_STRUCTS
+	dw wFollowerStruct
+for n, 2, NUM_OBJECT_STRUCTS
 	dw wObject{d:n}Struct
 endr
 

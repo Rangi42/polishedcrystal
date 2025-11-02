@@ -193,7 +193,7 @@ Script_GetFollowerDirectionFromPlayer::
 	ret
 
 GetFollowerDirectionFromPlayer::
-	ld a, [wObject1MapX]
+	ld a, [wFollowerMapX]
 	ld b, a
 	ld a, [wPlayerMapX]
 	cp b
@@ -204,7 +204,7 @@ GetFollowerDirectionFromPlayer::
 	ret
 
 .check_y
-	ld a, [wObject1MapY]
+	ld a, [wFollowerMapY]
 	ld b, a
 	ld a, [wPlayerMapY]
 	cp b
@@ -1509,11 +1509,11 @@ DoBikeStep::
 	ret
 
 _CheckActiveFollowerBallAnim::
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	bit FOLLOWER_ENTERING_BALL_F, [hl]
 	jr z, .not_entering
 	push bc
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	farcall SpawnPokeballClosing
 	pop bc
 	ret
@@ -1521,18 +1521,18 @@ _CheckActiveFollowerBallAnim::
 	bit FOLLOWER_EXITING_BALL_F, [hl]
 	ret z
 	push bc
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	farcall SpawnPokeballOpening
 	pop bc
 	ret
 
 FollowerInBall:
 	push bc
-	ld bc, wObject1Struct
+	ld bc, wFollowerStruct
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 	set FOLLOWER_INVISIBLE_F, [hl]
 	set FOLLOWER_IN_POKEBALL_F, [hl]
 	pop bc

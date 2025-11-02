@@ -51,7 +51,7 @@ SSAquaGranddaughterBefore:
 	appear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
 	turnobject PLAYER, UP
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, UP
-	loadmem wObject1Palette, 1
+	loadmem wObject2Palette, 1
 	callasm SetBlackObjectPals
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
 	callasm FadeInPalettes_EnableDynNoApply

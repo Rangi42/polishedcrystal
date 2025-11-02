@@ -89,7 +89,7 @@ POPS
 CheckFollowerLoaded:
 	xor a
 	ret
-	ld hl, wObjectStructs + 1
+	ld hl, wObjectStructs + OBJECT_MAP_OBJECT_INDEX
 	ld bc, MAPOBJECT_LENGTH
 	ld d, NUM_OBJECT_STRUCTS
 .loop
@@ -152,7 +152,7 @@ RefreshPlayerCoords:
 	ret
 
 MapPlayerCoordWarped:
-	ld hl, wFollowerFlags
+	ld hl, wFollowerStateFlags
 ;	set FOLLOWER_IN_POKEBALL_F, [hl]
 	set FOLLOWER_INVISIBLE_F, [hl]
 	set FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
@@ -262,7 +262,7 @@ CopyObjectStruct::
 	and a
 	ret nz ; masked
 
-; if follower object, force into wObject1Struct
+; if follower object, force into wFollowerStruct
 	ldh a, [hMapObjectIndexBuffer]
 	cp FOLLOWER
 	jr z, .follower
@@ -285,7 +285,7 @@ CopyObjectStruct::
 	ret ; overflow
 
 .follower
-	ld hl, wObject1Struct + OBJECT_MAP_OBJECT_INDEX
+	ld hl, wFollowerStruct + OBJECT_MAP_OBJECT_INDEX
 	ld a, FOLLOWER
 	ldh [hObjectStructIndexBuffer], a
 
@@ -709,7 +709,7 @@ endr
 	add hl, de
 	push bc
 	ld b, a
-	ld a, [wFollowerFlags]
+	ld a, [wFollowerStateFlags]
 	and FOLLOWER_INVISIBLE
 	or b
 	pop bc

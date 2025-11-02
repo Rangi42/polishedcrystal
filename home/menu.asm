@@ -30,7 +30,7 @@ UpdateFollowPalette:
 	ld [hli], a
 	ld [hl], e
 	farcall GetOverworldMonIconPalette
-	ld [wObject1PalIndex], a
+	ld [wFollowerPalIndex], a
 	ret
 
 GetTileBackupMenuBoxDims::
