@@ -835,39 +835,39 @@ SpriteAnimOAMData:
 .OAMData_MobileTradePing1:
 	db 4
 	dbsprite -1, -1,  0,  0, $00, 1
-	dbsprite  0, -1,  0,  0, $00, 1 | X_FLIP
-	dbsprite -1,  0,  0,  0, $00, 1 | Y_FLIP
-	dbsprite  0,  0,  0,  0, $00, 1 | X_FLIP | Y_FLIP
+	dbsprite  0, -1,  0,  0, $00, 1 | OAM_XFLIP
+	dbsprite -1,  0,  0,  0, $00, 1 | OAM_YFLIP
+	dbsprite  0,  0,  0,  0, $00, 1 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_MobileTradePing2:
 	db 8
 	dbsprite -2, -2,  4,  4, $00, 1
 	dbsprite -1, -2,  4,  4, $01, 1
-	dbsprite  0, -2,  4,  4, $00, 1 | X_FLIP
+	dbsprite  0, -2,  4,  4, $00, 1 | OAM_XFLIP
 	dbsprite -2, -1,  4,  4, $02, 1
-	dbsprite  0, -1,  4,  4, $02, 1 | X_FLIP
-	dbsprite -2,  0,  4,  4, $00, 1 | Y_FLIP
-	dbsprite -1,  0,  4,  4, $01, 1 | Y_FLIP
-	dbsprite  0,  0,  4,  4, $00, 1 | X_FLIP | Y_FLIP
+	dbsprite  0, -1,  4,  4, $02, 1 | OAM_XFLIP
+	dbsprite -2,  0,  4,  4, $00, 1 | OAM_YFLIP
+	dbsprite -1,  0,  4,  4, $01, 1 | OAM_YFLIP
+	dbsprite  0,  0,  4,  4, $00, 1 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_MobileTradePing3:
 	db 12
 	dbsprite -2, -2,  0,  0, $00, 1
 	dbsprite -1, -2,  0,  0, $01, 1
 	dbsprite -2, -1,  0,  0, $02, 1
-	dbsprite  0, -2,  0,  0, $01, 1 | X_FLIP
-	dbsprite  1, -2,  0,  0, $00, 1 | X_FLIP
-	dbsprite  1, -1,  0,  0, $02, 1 | X_FLIP
-	dbsprite -2,  0,  0,  0, $02, 1 | Y_FLIP
-	dbsprite -2,  1,  0,  0, $00, 1 | Y_FLIP
-	dbsprite -1,  1,  0,  0, $01, 1 | Y_FLIP
-	dbsprite  1,  0,  0,  0, $02, 1 | X_FLIP | Y_FLIP
-	dbsprite  0,  1,  0,  0, $01, 1 | X_FLIP | Y_FLIP
-	dbsprite  1,  1,  0,  0, $00, 1 | X_FLIP | Y_FLIP
+	dbsprite  0, -2,  0,  0, $01, 1 | OAM_XFLIP
+	dbsprite  1, -2,  0,  0, $00, 1 | OAM_XFLIP
+	dbsprite  1, -1,  0,  0, $02, 1 | OAM_XFLIP
+	dbsprite -2,  0,  0,  0, $02, 1 | OAM_YFLIP
+	dbsprite -2,  1,  0,  0, $00, 1 | OAM_YFLIP
+	dbsprite -1,  1,  0,  0, $01, 1 | OAM_YFLIP
+	dbsprite  1,  0,  0,  0, $02, 1 | OAM_XFLIP | OAM_YFLIP
+	dbsprite  0,  1,  0,  0, $01, 1 | OAM_XFLIP | OAM_YFLIP
+	dbsprite  1,  1,  0,  0, $00, 1 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_MobileTradeOTPulse:
 	db 4
-	dbsprite -1, -2,  4,  0, $03, 4 | Y_FLIP
-	dbsprite -1, -1,  4,  0, $02, 4 | Y_FLIP
-	dbsprite -1,  0,  4,  0, $01, 4 | Y_FLIP
-	dbsprite -1,  1,  4,  0, $00, 4 | Y_FLIP
+	dbsprite -1, -2,  4,  0, $03, 4 | OAM_YFLIP
+	dbsprite -1, -1,  4,  0, $02, 4 | OAM_YFLIP
+	dbsprite -1,  0,  4,  0, $01, 4 | OAM_YFLIP
+	dbsprite -1,  1,  4,  0, $00, 4 | OAM_YFLIP

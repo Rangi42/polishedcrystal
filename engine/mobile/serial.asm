@@ -25,12 +25,12 @@ Mobile_Init:
 	xor a
 	ldh [rTMA], a
 	; "65536" is actually 131072 in practice due to doublespeed...
-	ld a, (1 << rTAC_ON) | rTAC_65536_HZ
+	ld a, TAC_START | TAC_65KHZ
 	ldh [rTAC], a
 
 	; Set relevant interrupts in case they're disabled.
 	ldh a, [rIE]
-	or 1 << SERIAL | 1 << TIMER
+	or IE_SERIAL | IE_TIMER
 	ldh [rIE], a
 
 	; Let the adapter know we want to initialize. It may take up to around 25ms,
@@ -412,7 +412,7 @@ PingMobileAdapter:
 	; Just in case VBlank just issued a keep-alive byte, wait for it to finish.
 .sc_loop
 	ldh a, [rSC]
-	bit rSC_ON, a
+	bit B_SC_START, a
 	jr nz, .sc_loop
 
 	ld a, MOBILE_RECV_BYTE
@@ -702,7 +702,7 @@ Mobile_Abort:
 	xor a
 	ldh [hMobile], a
 	ldh a, [rIE]
-	and ~(1 << TIMER)
+	and ~IE_TIMER
 	ldh [rIE], a
 	ret
 

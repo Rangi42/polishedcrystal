@@ -1748,7 +1748,7 @@ LinkTrade:
 	call ClearScreen
 	farcall LoadMobileTradePalettes
 	farcall LoadMobileTradeScreenGFX
-	farcall InitTradeSpeciesList
+	call InitTradeSpeciesList
 	xor a
 	ld hl, wOtherPlayerLinkMode
 	ld [hli], a
@@ -2858,7 +2858,7 @@ Serial_PlaceWaitingTextAndSyncAndExchangeNybble::
 	jmp SafeLoadTempTileMapToTileMap
 
 .Mobile
-	farcall MobileTradeLinkTransfer
+	call MobileTradeLinkTransfer
 	jmp SafeLoadTempTileMapToTileMap
 
 PlaceWaitingText::

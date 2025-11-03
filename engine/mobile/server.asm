@@ -165,8 +165,8 @@ PO_Connect::
 
 	call ExitMenu
 	call ClearScreen
-	farcall LoadMobileTradePalettes
-	farcall LoadMobileTradeScreenGFX
+	call LoadMobileTradePalettes
+	call LoadMobileTradeScreenGFX
 	farcall InitTradeSpeciesList
 	xor a
 	ld hl, wOtherPlayerLinkMode
@@ -267,7 +267,7 @@ PO_Connect::
 	xor a
 	ldh [rIF], a
 	ldh a, [rIE]
-	set LCD_STAT, a
+	set B_IE_STAT, a
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
@@ -481,17 +481,17 @@ PO_UserListInput:
 	call JoyTextDelay
 	call DoMenuJoypadLoop
 	ldh a, [hJoyPressed]
-	and BUTTONS
+	and PAD_BUTTONS
 	ret z
 
-	and B_BUTTON
+	and PAD_B
 	scf
 	ret nz
 	or 1
 	ret
 
 PO_PrepareUserListMenu:
-	ld a, A_BUTTON | B_BUTTON | D_UP | D_DOWN
+	ld a, PAD_A | PAD_B | PAD_UP | PAD_DOWN
 	ld [wMenuJoypadFilter], a
 	; row amount are written to elsewhere
 	ld a, 1

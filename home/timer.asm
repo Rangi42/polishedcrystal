@@ -16,7 +16,7 @@ Timer::
 	; this one and disabling the timer, abort early and let the 2nd interrupt
 	; do the rest.
 	ld l, LOW(rIF)
-	bit TIMER, [hl]
+	bit B_IF_TIMER, [hl]
 	jr nz, .abort
 
 	; Tell mobile serial to pay attention to this byte unless we're in standby.
@@ -31,14 +31,14 @@ Timer::
 
 	; Request next byte
 	ld l, LOW(rSC)
-	ld [hl], (1 << rSC_ON) | (1 << rSC_CGB) | (1 << rSC_CLOCK)
+	ld [hl], SC_START | SC_FAST | SC_INTERNAL
 
 	; Set the timer up for the next interrupt.
 	ld a, $bd
 	ld l, LOW(rTIMA)
 	ld [hl], a
 	ld l, LOW(rTAC)
-	ld [hl], (1 << rTAC_ON) | rTAC_65536_HZ
+	ld [hl], TAC_START | TAC_65KHZ
 .abort
 	pop hl
 .dont_send

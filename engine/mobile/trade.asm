@@ -1081,13 +1081,13 @@ MobileTradeAnim_ClearBGMap:
 	ld a, $1
 	ldh [rVBK], a
 	hlbgcoord 0, 0
-	ld bc, 2 * BG_MAP_HEIGHT * BG_MAP_WIDTH
+	ld bc, 2 * TILEMAP_AREA
 	xor a
 	call ByteFill
 	xor a
 	ldh [rVBK], a
 	hlbgcoord 0, 0
-	ld bc, 2 * BG_MAP_HEIGHT * BG_MAP_WIDTH
+	ld bc, 2 * TILEMAP_AREA
 	ld a, $7f
 	rst ByteFill
 	ret
