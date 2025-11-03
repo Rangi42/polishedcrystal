@@ -134,7 +134,7 @@ DEF NUM_BGEVENTS EQU const_value
 DEF BGEVENT_ITEM EQU NUM_BGEVENTS
 
 ; object_event types
-; ObjectEventTypeArray indexes (see engine/overworld/events.asm)
+; TryObjectEvent.Jumptable indexes (see engine/overworld/events.asm)
 	const_def
 	const OBJECTTYPE_SCRIPT
 	const OBJECTTYPE_ITEMBALL
@@ -142,6 +142,9 @@ DEF BGEVENT_ITEM EQU NUM_BGEVENTS
 	const OBJECTTYPE_GENERICTRAINER
 	const OBJECTTYPE_POKEMON
 	const OBJECTTYPE_COMMAND
+DEF SILENT_OBJECT_TYPES EQU const_value ; types below do not call PlayTalkObject to play SFX_READ_TEXT_2
+	const OBJECTTYPE_SCRIPT_SILENT
+	const OBJECTTYPE_DONOTHING
 DEF NUM_OBJECT_TYPES EQU const_value
 
 ; elevfloor macro values

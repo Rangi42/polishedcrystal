@@ -45,12 +45,20 @@ VBlank::
 	ld a, [RomHeaderChecksum]
 	ld hl, wRomChecksum
 	cp [hl]
+if !DEF(DEBUG)
 	jr nz, .checksum_crash
+else
+	nop ; no-optimize nops
+	nop ; no-optimize nops
+endc
 	ld a, [RomHeaderChecksum + 1]
 	inc hl ; wRomChecksum + 1
 	cp [hl]
 if !DEF(DEBUG)
 	jr nz, .checksum_crash
+else
+	nop ; no-optimize nops
+	nop ; no-optimize nops
 endc
 
 .skip_crash
@@ -178,6 +186,13 @@ VBlank0::
 	ld hl, hVBlankCounter
 	inc [hl]
 
+	; Increment time since text printing.
+	ld hl, wTimeSinceText
+	inc [hl]
+	jr nz, .no_overflow
+	dec [hl]
+
+.no_overflow
 	; advance random variables
 	call UpdateDividerCounters
 	call AdvanceRNGState
@@ -194,6 +209,7 @@ VBlank0::
 VBlank2::
 VBlankUpdateSound::
 ; sound only
+	ei
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 	jmp _UpdateSound ; far-ok
@@ -278,15 +294,14 @@ VBlank4::
 	xor a
 	ldh [rIF], a
 	ldh a, [rIE]
-	and 1 << LCD_STAT
+	and IE_STAT
 	ldh [rIE], a
 
-	ei
 	call VBlankUpdateSound
 
 	; Ensure that we don't miss an interrupt in the tiny window between di+reti
 	ldh a, [rIE]
-	and 1 << LCD_STAT
+	and IE_STAT
 	jr z, .di
 	ldh a, [rLYC]
 	ld b, a
@@ -352,7 +367,6 @@ VBlank1::
 	xor a
 	ldh [rIF], a
 
-	ei
 	call VBlankUpdateSound
 	di
 
@@ -400,7 +414,6 @@ VBlank5::
 	ldh a, [rIE]
 	push af
 
-	ei
 	call VBlankUpdateSound
 	di
 

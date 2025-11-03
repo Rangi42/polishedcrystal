@@ -122,6 +122,7 @@ SpecialsPointers::
 	add_special LoadMapPalettes
 	add_special Special_InitialSetDSTFlag
 	add_special Special_InitialClearDSTFlag
+	add_special LoadFonts_NoOAMUpdate
 
 ; Mobile Communications
 	add_special Mobile_Init

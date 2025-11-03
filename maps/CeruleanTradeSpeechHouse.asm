@@ -12,10 +12,10 @@ CeruleanTradeSpeechHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanTradeSpeechHouseGrannyText, -1
-	object_event  3,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanTradeSpeechHouseGrampsText, -1
-	pokemon_event  6,  2, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, CeruleanTradeSpeechHouseRhydonText, -1
-	pokemon_event  5,  6, IVYSAUR, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_TEAL, CeruleanTradeSpeechHouseZubatText, -1
+	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanTradeSpeechHouseGrannyText, -1
+	object_event  3,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanTradeSpeechHouseGrampsText, -1
+	pokemon_event  6,  2, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, CeruleanTradeSpeechHouseRhydonText, -1
+	pokemon_event  5,  6, IVYSAUR, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_TEAL, CeruleanTradeSpeechHouseZubatText, -1
 
 CeruleanTradeSpeechHouseGrannyText:
 	text "My husband lives"

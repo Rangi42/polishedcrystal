@@ -162,7 +162,7 @@ RunTradeAnimSequence:
 	ldh [rVBK], a
 	hlbgcoord 0, 0
 	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vBGMap0
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	ld hl, TradeGameBoyLZ
 	ld de, vTiles2 tile $31
@@ -454,7 +454,7 @@ TradeAnim_TubeToPlayer8:
 	call ClearSpriteAnims
 	hlbgcoord 0, 0
 	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vBGMap0
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	xor a
 	ldh [hSCX], a
@@ -557,7 +557,7 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	call ClearTileMap
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH
-	ld a, "─"
+	ld a, '─'
 	rst ByteFill
 	hlcoord 0, 1
 	ld de, wLinkPlayer1Name
@@ -566,7 +566,7 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	ld de, 0
 .find_name_end_loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr z, .done
 	dec de
 	jr .find_name_end_loop
@@ -725,13 +725,13 @@ TradeAnim_ShowGivemonData:
 	call DmgToCgbBGPals
 	call TradeAnim_ShowGivemonFrontpic
 
+	ld c, 12
+	call DelayFrames
 	ld a, [wPlayerTrademonSpecies]
 	ld c, a
 	ld a, [wPlayerTrademonForm]
 	ld b, a
-	call _PlayCry
-.skip_cry
-
+	call PlayMonCry2
 	jmp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ShowGetmonData:
@@ -835,7 +835,10 @@ ShowPlayerTrademonStats:
 	ld de, wPlayerTrademonSpecies
 	jr nz, TrademonStats_Egg
 	call TrademonStats_MonTemplate
-	ld de, wPlayerTrademonSpecies
+	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonForm]
+	ld b, a
 	call TrademonStats_PrintSpeciesNumber
 	ld de, wPlayerTrademonSpeciesName
 	call TrademonStats_PrintSpeciesName
@@ -853,7 +856,10 @@ ShowOTTrademonStats:
 	ld de, wOTTrademonSpecies
 	jr nz, TrademonStats_Egg
 	call TrademonStats_MonTemplate
-	ld de, wOTTrademonSpecies
+	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	call TrademonStats_PrintSpeciesNumber
 	ld de, wOTTrademonSpeciesName
 	call TrademonStats_PrintSpeciesName
@@ -909,10 +915,17 @@ TrademonStats_EggData:
 	next "<ID>№.?????@"
 
 TrademonStats_PrintSpeciesNumber:
+	call GetPokedexNumber
+	ld de, wTextDecimalByte+1
+	ld a, c
+	ld [de], a
+	dec de
+	ld a, b
+	ld [de], a
 	hlcoord 10, 0
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNum
-	ld [hl], " "
+	ld [hl], ' '
 	ret
 
 TrademonStats_PrintSpeciesName:
@@ -951,7 +964,7 @@ TradeAnim_RockingBall:
 	ld a, SPRITE_ANIM_INDEX_TRADE_POKE_BALL
 	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
-	ld a, $20
+	ld a, 32
 	ld [wFrameCounter], a
 	ret
 
@@ -966,7 +979,7 @@ TradeAnim_DropBall:
 	add hl, bc
 	ld [hl], $dc
 	call TradeAnim_AdvanceScriptPointer
-	ld a, $38
+	ld a, 57
 	ld [wFrameCounter], a
 	ret
 
@@ -975,7 +988,7 @@ TradeAnim_Poof:
 	ld a, SPRITE_ANIM_INDEX_TRADE_POOF
 	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
-	ld a, $10
+	ld a, 16
 	ld [wFrameCounter], a
 	ld de, SFX_BALL_POOF
 	jmp PlaySFX
@@ -1136,7 +1149,7 @@ TradeAnim_TakeCareOfText:
 	call WaitTop
 	hlcoord 0, 10
 	ld bc, 8 * SCREEN_WIDTH
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	call ApplyTilemapInVBlank
 	ld hl, .Text_TakeGoodCareOfMon
@@ -1197,8 +1210,8 @@ TradeAnim_Wait80Frames:
 
 TradeAnim_BlankTileMap:
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, " "
+	ld bc, SCREEN_AREA
+	ld a, ' '
 	rst ByteFill
 	ret
 

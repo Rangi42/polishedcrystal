@@ -4,7 +4,7 @@
 	db WATER, WATER ; type
 	db 225 ; catch rate
 	db 111 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio
 
 	abilities_for GOLDEEN, SWIFT_SWIM, WATER_VEIL, LIGHTNING_ROD

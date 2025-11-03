@@ -272,6 +272,7 @@ DEF HIDDEN_ABILITY EQU %01100000
 ; gender values
 DEF MALE   EQU %00000000
 DEF FEMALE EQU %10000000
+DEF GENDERLESS EQU MALE ; for trainer party parsing
 
 ; caught data
 DEF CAUGHT_TIME_MASK   EQU %01100000
@@ -312,6 +313,7 @@ DEF NUM_HOF_TEAMS EQU 10
 	const EVOLVE_NONE ; only for Lyra's info
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
+	const EVOLVE_TRADE
 	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
 	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")

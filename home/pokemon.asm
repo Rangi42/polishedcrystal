@@ -7,7 +7,7 @@ DrawBattleHPBar::
 	push bc
 
 ; Place 'HP:'
-	ld a, "<HP1>"
+	ld a, '<HP1>'
 	ld [hli], a
 	inc a ; ld a, "<HP2>"
 	ld [hli], a
@@ -19,7 +19,7 @@ DrawBattleHPBar::
 	ld [hli], a
 	dec d
 	jr nz, .template
-	ld [hl], "<HPEND>" ; bar end cap
+	ld [hl], '<HPEND>' ; bar end cap
 	pop hl
 
 ; Safety check # pixels
@@ -38,7 +38,7 @@ DrawBattleHPBar::
 	jr c, .lastbar
 
 	ld e, a
-	ld a, "<FULLHP>"
+	ld a, '<FULLHP>'
 	ld [hli], a
 	ld a, e
 	and a
@@ -46,7 +46,7 @@ DrawBattleHPBar::
 	jr .fill
 
 .lastbar
-	ld a, "<NOHP>"
+	ld a, '<NOHP>'
 	add e
 	ld [hl], a
 
@@ -120,7 +120,7 @@ _PrepMonFrontpic:
 
 PrintLevel::
 ; Print wTempMonLevel at hl
-	ld a, "<LV>"
+	ld a, '<LV>'
 	ld [hli], a
 ; How many digits?
 	ld c, 2

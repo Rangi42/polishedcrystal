@@ -1,5 +1,5 @@
 GavenPhoneScript1:
-	gettrainername COOLTRAINERM, GAVEN1, $0
+	gettrainername COOLTRAINERM, GAVEN1, STRING_BUFFER_3
 	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -14,11 +14,11 @@ GavenPhoneScript1:
 	farsjump GavenHangUpNotThursdayScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_26, $2
+	getlandmarkname ROUTE_26, STRING_BUFFER_5
 	farsjump GavenReminderScript
 
 GavenPhoneScript2:
-	gettrainername COOLTRAINERM, GAVEN1, $0
+	gettrainername COOLTRAINERM, GAVEN1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
 	iftruefwd .WaitingForBattle
@@ -36,7 +36,7 @@ GavenThursdayMorningScript:
 	setflag ENGINE_GAVEN_THURSDAY_MORNING
 
 GavenWantsRematch:
-	getlandmarkname ROUTE_26, $2
+	getlandmarkname ROUTE_26, STRING_BUFFER_5
 	setflag ENGINE_GAVEN_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 

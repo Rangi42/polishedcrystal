@@ -14,4 +14,3 @@ TohjoFalls_MapScriptHeader:
 
 	def_object_events
 	itemball_event  2,  8, MOON_STONE, 1, EVENT_TOHJO_FALLS_MOON_STONE
-

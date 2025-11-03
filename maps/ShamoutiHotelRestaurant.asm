@@ -15,7 +15,7 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
+	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
 
 	object_const_def
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
@@ -33,12 +33,12 @@ ShamoutiHotelRestaurantChallengeScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalsefwd .NeverMind
-	checkmoney $0, 5000
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 5000
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	setflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
 	waitsfx
 	playsound SFX_TRANSACTION
-	takemoney $0, 5000
+	takemoney YOUR_MONEY, 5000
 	special PlaceMoneyTopRight
 	writetext ShamoutiHotelRestaurantReceptionistText
 	waitbutton

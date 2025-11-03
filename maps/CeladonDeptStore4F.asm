@@ -14,10 +14,10 @@ CeladonDeptStore4F_MapScriptHeader:
 	bg_event 14,  0, BGEVENT_JUMPTEXT, CeladonDeptStore4FDirectoryText
 
 	def_object_events
-	object_event 13,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_4F, -1
-	object_event  7,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonDeptStore4FSuperNerdText, -1
-	object_event  8,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonDeptStore4FYoungsterText, -1
-	object_event 15,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PosterClerkScript, -1
+	object_event 13,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_4F, -1
+	object_event  7,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonDeptStore4FSuperNerdText, -1
+	object_event  8,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonDeptStore4FYoungsterText, -1
+	object_event 15,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PosterClerkScript, -1
 
 PosterClerkScript:
 	faceplayer
@@ -34,11 +34,11 @@ PosterClerkScript:
 	endtext
 
 .MarillPoster:
-	checkmoney $0, 3200
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 3200
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_3
 	iftruefwd .AlreadyBought
-	takemoney $0, 3200
+	takemoney YOUR_MONEY, 3200
 	setevent EVENT_DECO_POSTER_3
 	writetext BoughtMarillPosterText
 	playsound SFX_TRANSACTION
@@ -49,11 +49,11 @@ PosterClerkScript:
 	sjump .Start
 
 .ClefairyPoster:
-	checkmoney $0, 4800
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 4800
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_2
 	iftruefwd .AlreadyBought
-	takemoney $0, 4800
+	takemoney YOUR_MONEY, 4800
 	setevent EVENT_DECO_POSTER_2
 	writetext BoughtClefairyPosterText
 	playsound SFX_TRANSACTION
@@ -64,11 +64,11 @@ PosterClerkScript:
 	sjump .Start
 
 .PikachuPoster:
-	checkmoney $0, 6400
-	ifequalfwd $2, .NotEnoughMoney
+	checkmoney YOUR_MONEY, 6400
+	ifequalfwd HAVE_LESS, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_1
 	iftruefwd .AlreadyBought
-	takemoney $0, 6400
+	takemoney YOUR_MONEY, 6400
 	setevent EVENT_DECO_POSTER_1
 	writetext BoughtPikachuPosterText
 	playsound SFX_TRANSACTION

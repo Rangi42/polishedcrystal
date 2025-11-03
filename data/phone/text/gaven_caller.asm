@@ -1,7 +1,6 @@
 GavenMonGreaterThanImaginedText:
 	text "My "
 	text_ram wStringBuffer4
-	text ""
 	line "might be greater"
 	cont "than I imagined."
 

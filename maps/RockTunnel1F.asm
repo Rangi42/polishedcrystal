@@ -20,7 +20,7 @@ RockTunnel1F_MapScriptHeader:
 	bg_event  4, 18, BGEVENT_ITEM + X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
 
 	def_object_events
-	object_event 23, 18, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerSeamus, -1
+	object_event 23, 18, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerSeamus, -1
 	itemball_event 21, 15, ELIXIR, 1, EVENT_ROCK_TUNNEL_1F_ELIXIR
 	itemball_event 10, 15, HP_UP, 1, EVENT_ROCK_TUNNEL_1F_HP_UP
 

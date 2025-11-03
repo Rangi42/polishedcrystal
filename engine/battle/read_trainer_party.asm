@@ -15,16 +15,23 @@ ReadTrainerParty:
 	rst ByteFill
 
 	call FindTrainerData
+	ld a, b
+	add l
+	ld b, a
+	push bc
 
 	call GetNextTrainerDataByte
 	ld [wOtherTrainerType], a
 
 .loop2
 ; level
-	call GetNextTrainerDataByte
-	cp $ff
+	pop bc
+	ld a, l
+	sub b
 	ret z
+	push bc
 
+	call GetNextTrainerDataByte
 	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 
@@ -34,33 +41,11 @@ ReadTrainerParty:
 	ld c, a
 
 	call GetNextTrainerDataByte
-	ld [wCurForm], a
 	ld b, a
-
-; NPC trainers should appear to have Kantonian Arbok in Kanto,
-; so form 0 becomes 1 (Johto) or 2 (Kanto), non-zero forms remain unchanged
-	assert !HIGH(ARBOK)
-	and SPECIESFORM_MASK
-	jr nz, .not_arbok
-	ld a, c
-	cp LOW(ARBOK)
-	jr nz, .not_arbok
-
-	push bc
-	call RegionCheck
-	ld a, e
-	pop bc
-	and a
-	assert ARBOK_JOHTO_FORM == ARBOK_KANTO_FORM - 1
-	ld c, ARBOK_KANTO_FORM
-	jr nz, .got_arbok_form
-	dec c
-.got_arbok_form
+	call SetDynamicForm
 	ld a, b
-	or c
 	ld [wCurForm], a
 
-.not_arbok
 	ld a, OTPARTYMON
 	ld [wMonType], a
 
@@ -102,28 +87,8 @@ ReadTrainerParty:
 	ld e, l
 	pop hl
 
-	; when reading DVs, $00 means $ff, since $ff is the end-of-trainer marker
 	call GetNextTrainerDataByte
-	and a
-	jr nz, .dv1_ok
-	ld a, $ff
-.dv1_ok
-	ld [de], a
-	inc de
-	call GetNextTrainerDataByte
-	and a
-	jr nz, .dv2_ok
-	ld a, $ff
-.dv2_ok
-	ld [de], a
-	inc de
-	call GetNextTrainerDataByte
-	and a
-	jr nz, .dv3_ok
-	ld a, $ff
-.dv3_ok
-	ld [de], a
-	inc de
+	farcall WriteTrainerDVs
 
 .not_dvs
 ; personality?
@@ -153,7 +118,7 @@ ReadTrainerParty:
 	jr z, .not_nickname
 
 	call GetNextTrainerDataByte
-	cp "@"
+	cp '@'
 	jr z, .not_nickname
 
 	push de
@@ -164,7 +129,7 @@ ReadTrainerParty:
 	call GetNextTrainerDataByte
 	ld [de], a
 	inc de
-	cp "@"
+	cp '@'
 	jr nz, .copy
 	push hl
 	ld a, [wOTPartyCount]
@@ -321,6 +286,39 @@ ReadTrainerParty:
 .no_stat_recalc
 	jmp .loop2
 
+SetDynamicForm:
+; Adjust form of mon in bc dynamically based on context if no form is set.
+; If no dynamic setting applies, b is set to plain form.
+	ld a, b
+	and FORM_MASK
+	ret nz
+
+	; First, set b to base form in case no special case applies.
+	inc b ; ld b, PLAIN_FORM ; (don't overwrite other parts of b)
+
+	; Check for Arbok.
+	assert !HIGH(ARBOK)
+	bit MON_EXTSPECIES_F, b
+	ret nz
+	ld a, c
+	cp LOW(ARBOK)
+	ret nz
+
+	push bc
+	call RegionCheck
+	ld a, e
+	pop bc
+
+	and a
+	assert ARBOK_JOHTO_FORM == ARBOK_KANTO_FORM - 1
+	ld a, ARBOK_KANTO_FORM
+	jr nz, .got_arbok_form
+	dec a
+.got_arbok_form
+	or b
+	ld b, a
+	ret
+
 Battle_GetTrainerName::
 	ld a, [wInBattleTowerBattle]
 	and a
@@ -348,16 +346,23 @@ GetTrainerName::
 	ld h, [hl]
 	ld l, a
 	pop bc
+	call SkipTrainerParties
+	jr CopyTrainerName
 
-.loop
-	dec b
-	jr z, CopyTrainerName
-
-.skip
+SkipTrainerParties:
+; Skips b-1 parties
+	; Size of the current party.
 	call GetNextTrainerDataByte
-	cp $ff
-	jr nz, .skip
-	jr .loop
+	dec b
+	ret z
+
+	; Skip all of it.
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	jr SkipTrainerParties
 
 CopyTrainerName:
 	ld de, wStringBuffer1
@@ -390,6 +395,7 @@ SetTrainerBattleLevel:
 	ret
 
 FindTrainerData:
+; Returns party size in bytes excluding trainer name in b.
 	farcall SetBadgeBaseLevel
 
 	ld a, [wOtherTrainerClass]
@@ -408,19 +414,15 @@ FindTrainerData:
 
 	ld a, [wOtherTrainerID]
 	ld b, a
-.skip_trainer
-	dec b
-	jr z, .got_trainer
-.loop1
-	call GetNextTrainerDataByte
-	cp $ff
-	jr nz, .loop1
-	jr .skip_trainer
-.got_trainer
+	; fallthrough
+SkipTrainerPartiesAndName:
+	call SkipTrainerParties
+	ld b, a
 
 .skip_name
+	dec b
 	call GetNextTrainerDataByte
-	cp "@"
+	cp '@'
 	jr nz, .skip_name
 	ret
 
@@ -435,7 +437,21 @@ GetNextTrainerDataByte:
 INCLUDE "data/trainers/parties.asm"
 
 
-SECTION "EV Spreads", ROMX
+SECTION "DV and EV Spreads", ROMX
+
+WriteTrainerDVs:
+; Writes DVs to de with the DV spread index in a.
+	push hl
+	push de
+	push bc
+
+	push de
+	ld hl, DVSpreads
+	ld bc, NUM_STATS / 2 ; 2 DVs per byte
+	rst AddNTimes
+	rst CopyBytes
+	pop hl
+	jmp PopBCDEHL
 
 WriteTrainerEVs:
 ; Writes EVs to de with the EV spread index in a.
@@ -475,12 +491,26 @@ WriteTrainerEVs:
 .done
 	jmp PopBCDEHL
 
+DVSpreads:
+	table_width NUM_STATS / 2
+	for n, NUM_DV_SPREADS
+		; each DV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
+		; by `tr_dvs` (see data/trainers/parties.asm)
+		for x, 1, EACH_SPREAD_STAT, 2
+			def y = x + 1
+			dn DV_SPREAD_{d:n}_{STATS{x}}, DV_SPREAD_{d:n}_{STATS{y}}
+		endr
+	endr
+	assert_table_length NUM_DV_SPREADS
+
 EVSpreads:
 	table_width NUM_STATS
 	for n, NUM_EV_SPREADS
 		; each EV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
-		; by `ev_spread` (see data/trainers/parties.asm)
-		with_each_stat "db EV_SPREAD_{d:n}_?"
+		; by `tr_evs` (see data/trainers/parties.asm)
+		for x, 1, EACH_SPREAD_STAT
+			db EV_SPREAD_{d:n}_{STATS{x}}
+		endr
 	endr
 	assert_table_length NUM_EV_SPREADS
 

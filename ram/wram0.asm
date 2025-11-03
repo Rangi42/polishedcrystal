@@ -31,7 +31,7 @@ wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 wCurMusicByte:: db
 wCurChannel:: db
 wVolume::
-; corresponds to rNR50
+; corresponds to rAUDVOL
 ; Channel control / ON-OFF / Volume (R/W)
 ;   bit 7 - Vin->SO2 ON/OFF
 ;   bit 6-4 - SO2 output level (volume) (# 0-7)
@@ -39,12 +39,12 @@ wVolume::
 ;   bit 2-0 - SO1 output level (volume) (# 0-7)
 	db
 wSoundOutput::
-; corresponds to rNR51
+; corresponds to rAUDTERM
 ; bit 4-7: ch1-4 so2 on/off
 ; bit 0-3: ch1-4 so1 on/off
 	db
 wSoundInput::
-; corresponds to rNR52
+; corresponds to rAUDENA
 ; bit 7: global on/off
 ; bit 0: ch1 on/off
 ; bit 1: ch2 on/off
@@ -114,7 +114,7 @@ wCurMove::
 wCreditsSpawn::
 	db
 
-wNamedObjectTypeBuffer:: db
+wTimeSinceText:: db
 
 wCurOptionsPage:: db
 
@@ -243,7 +243,7 @@ wSpriteAnimsEnd::
 SECTION "Sprites", WRAM0
 
 wShadowOAM::
-for n, NUM_SPRITE_OAM_STRUCTS
+for n, OAM_COUNT
 wShadowOAMSprite{02d:n}:: sprite_oam_struct wShadowOAMSprite{02d:n}
 endr
 wShadowOAMEnd::
@@ -254,7 +254,7 @@ SECTION "Tilemap and Attrmap", WRAM0
 ; Some code depend on these being next to each other in memory.
 wTilemap::
 ; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wTilemapEnd::
 
 wAttrmap::
@@ -266,7 +266,7 @@ wAttrmap::
 ; bit 4: pal # (non-cgb)
 ; bit 3: vram bank (cgb only)
 ; bit 2-0: pal # (cgb only)
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wAttrmapEnd::
 
 
@@ -375,16 +375,15 @@ wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 wCurOTMon:: db
 
 wTypeModifier::
-; >10: super effective
-;  10: normal
-; <10: not very effective
+; >$10: super effective
+;  $10: normal
+; <$10: not very effective
 ; bit 7: stab
 	db
 
-wCriticalHit::
-; 0 if not critical
-; 1 for a critical hit
-; 2 for a OHKO
+wMoveHitState::
+; bit 0: move was a critical hit
+; bit 1: move hit a substitute
 	db
 
 wAttackMissed::
@@ -665,7 +664,7 @@ wEnemyCharging:: db
 
 wGivingExperienceToExpShareHolders:: db
 
-wAnimationsDisabled:: db ; used to temporarily disable animations for abilities
+wInAbility:: db ; disables animations for abilities among other things
 
 wBattleEnded:: db
 
@@ -689,13 +688,13 @@ NEXTU
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
-wPokedex_Row1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row1Pals:: ds COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
 wPokedex_Row2::
 wPokedex_Row2Tile: db
-wPokedex_Row2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row2Pals:: ds COLOR_SIZE * 3 * 5
 wPokedex_Row3::
 wPokedex_Row3Tile: db
-wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row3Pals:: ds COLOR_SIZE * 3 * 5
 wPokedex_PalsEnd::
 ENDU
 
@@ -788,7 +787,9 @@ wNamingScreenKeyboardWidth:: db
 
 SECTION UNION "Misc 404", WRAM0
 ; pokegear
-	ds 172
+	ds 132
+
+wRadioCompressedText:: ds 2 * SCREEN_WIDTH
 
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
@@ -914,14 +915,12 @@ SECTION UNION "Misc 1326", WRAM0
 wInverIndexes:: ds NUM_INVER_MONS
 
 wInverGroup::
-	ds 7 ; db "Inver@"
-	db ; TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	ds 8 ; length + "Inver@" + flags
 	rept PARTY_LENGTH
 		ds 3 ; dbp <level>, <species>, <form>
-		ds 5 ; db <item>, <dv1>, <dv2>, <dv3>, <nat | abil>
+		ds 3 ; db <item>, <dvs>, <nat | abil>
 		ds NUM_MOVES ; moves
 	endr
-	db ; db -1 ; end
 
 
 SECTION UNION "Misc 1326", WRAM0
@@ -1073,6 +1072,25 @@ wBillsPC_QuickFrames:: db
 
 wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
+wSummaryScreenPals:: ds 8 palettes
+
+wSummaryScreenOAM::
+for n, OAM_COUNT
+wSummaryScreenOAMSprite{02d:n}:: sprite_oam_struct wSummaryScreenOAMSprite{02d:n}
+endr
+wSummaryScreenTypes:: ds 6
+wSummaryScreenStep:: db
+wSummaryScreenInterrupts:: ds 2 * 16
+wSummaryScreenPage:: db
+wSummaryScreenMoveCount:: db
+wSummaryMoveSwap:: db
+
+; Used to align window buffer for DMA copying
+; Feel free to use or move data, an assert will fail if the memory becomes misaligned
+ds 13
+assert @ % 16 == 0
+
+wSummaryScreenWindowBuffer:: ds 32 * 10
 
 SECTION UNION "Misc 1326", WRAM0
 ; raw link data
@@ -1167,7 +1185,7 @@ wPrinterSendByteOffset:: dw
 wPrinterSendByteCounter:: dw
 
 ; tilemap backup?
-wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterTilemapBuffer:: ds SCREEN_AREA
 wPrinterStatus:: db
 	ds 1
 ; High nibble is for margin before the image, low nibble is for after.
@@ -1199,6 +1217,7 @@ wMemCGBLayout:: db
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
+NEXTU
 wTrainerCardBadgePaletteAddr:: dw
 NEXTU
 wPlayerHPPal:: db
@@ -1295,8 +1314,8 @@ wBattleTransitionSineWaveOffset::
 wBattleTransitionSpinQuadrant:: db
 
 NEXTU
-; stats screen
-wStatsScreenFlags:: db
+; summary screen
+wSummaryScreenFlags:: db
 
 NEXTU
 ; miscellaneous
@@ -1517,15 +1536,16 @@ wInitialOptions::
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
 ; bit 5: affection bonuses off/on
-; bit 6: scaled exp on/off
+; bit 6: scaled exp on/off (cannot be set together with no exp)
 ; bit 7: physical-special split on/off
 	db
 
 wInitialOptions2::
-; bit 0: EVs disabled
-; bit 1: classic EVs (no 510 cap)
-; bit 2: modern EVs (510 cap)
-; (only one of bits 0-2 can be set)
+; bits 0-1: EVs (cannot be set to %11)
+; - %00: EVs disabled
+; - %01: classic EVs (no 510 cap)
+; - %10: modern EVs (510 cap)
+; bit 2: no exp on/off (cannot be set together with scaled exp)
 ; bit 3: use RTC
 ; bit 4: evolve in battle
 ; bits 5-6: unused
@@ -1541,6 +1561,13 @@ wDaysSince:: db
 
 ; Temporary backup for options
 wOptionsBuffer:: db
+
+SECTION "SRAM Access Count", WRAM0
+
+; Contains a count of the number of times SRAM has been opened in a
+; session. Protects against bugs from emulators that do not load SRAM
+; when loading a savestate.
+wSRAMAccessCount:: db
 
 SECTION "Rom Checksum", WRAM0
 

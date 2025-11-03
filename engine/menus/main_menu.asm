@@ -14,7 +14,7 @@ MainMenu:
 	call MainMenuJoypadLoop
 	call CloseWindow
 	ret c
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	call FillTileMap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
@@ -110,9 +110,9 @@ MainMenuJoypadLoop:
 	ld [w2DMenuFlags1], a
 	call ReadMenuJoypad
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .b_button
-	cp A_BUTTON
+	cp PAD_A
 	jr nz, .loop
 
 .a_button
@@ -180,7 +180,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
-	ld a, ":"
+	ld a, ':'
 	ld [hli], a
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

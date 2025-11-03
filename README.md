@@ -12,19 +12,19 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The **current official release** is **v3.1.0** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
+The **current official release** is **v3.2.1** (the “Polished Crystal” release). It's fully playable from start to finish and includes major overhauls to gameplay, mechanics, and quality of life. A more detailed changelog is forthcoming, but you can find the major highlights below.
 
-- **[Download v3.1.0 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.0)**
+- **[Download v3.2.1 here](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.2.1)**
 
-The previous official version was [v2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) (September 20, 2016). However, **v3.1.0** includes *significant* enhancements and is recommended for all players.
+The previous official version was [v3.1.1](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.1.1) (February 1, 2025).
 
 *If you have any questions about playing or patching, [read the FAQ](FAQ.md)!*
 
-## What’s New in v3.1.0
+## What’s New in v3.2.1
 
 Below is a brief summary of the major changes and additions. A more detailed changelog will be released soon.
 
-- **Customizable New Game Setup:** You can now toggle Natures on/off, choose how EVs work (classic no-limit, modern 510 limit, or disabled), and configure various other gameplay options before starting a new adventure.
+- **Customizable New Game Setup:** You can now toggle Natures and Abilities on/off, choose how EVs work (classic no-limit, modern 510 limit, or disabled), and configure various other gameplay options before starting a new adventure.
 - **DVs No Longer Determine Natures/Shininess/Gender/Unown Form:** DVs still affect color variation (slightly different hues for the same species), but everything else is now handled separately.
 - **Overhauled Battle Engine and HUD:**
   - Abilities are now supported.
@@ -35,13 +35,14 @@ Below is a brief summary of the major changes and additions. A more detailed cha
 - **Storage System Redesign:** The PC storage interface is more like modern Pokémon games. You can switch boxes, move Pokémon around, and manage your party with minimal saving hassles.
 - **HGSS-Inspired Pokédex:** The new Pokédex includes base stats, egg groups, and a more comprehensive encounter map showing *all* methods of obtaining Pokémon.
 - **Enhanced Overworld Weather:** Instead of just darkening the screen, you’ll now see proper rain, snow, or sandstorms in applicable areas.
+- **Revamped Summary Screen:** Replaces the vanilla stats screen. Shows nature, abilities, seen and caught data, and more.
 
 ## Features
 
 A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 
-- **253 Pokémon**, including some new evolutions.
-- **48 new moves**, **75 TMs**, and **31 move tutors**.
+- **289 Pokémon species**, including some new evolutions, plus **56 cosmetic forms** (e.g., Magikarp patterns, Pikachu Fly/Surf, Arbok patterns, Unown Forms) and **46 variants** (Alolan, Galarian, Hisuian, etc.)—for a total of **391 unique Pokémon**.
+- **73 new moves** (72 on faithful builds), **75 TMs**, and **31 move tutors**.
 - Modern mechanics, such as the **Fairy type**, **Physical/Special split**, **Natures**, **Abilities**, and more.
 - **Unlimited TMs** and quality-of-life features like **Running Shoes** and continuous **Repel**.
 - **New/Revamped Maps**: Some from R/B/Y, some devamped from HG/SS, plus original locations.
@@ -61,6 +62,10 @@ If you have questions or comments, please check or post on any of these sites. (
 - [/r/PokemonROMHacks](https://www.reddit.com/r/PokemonROMhacks/comments/51kbcn/pok%C3%A9mon_polished_crystal_200/)
 - [Nuzlocke Forums](http://s7.zetaboards.com/Nuzlocke_Forum/topic/11003710/)
 - [Pokémon Hackers Online](http://www.pokemonhackersonline.com/showthread.php?t=15811)
+
+Additional resource:
+
+- [PolishedDex](https://www.polisheddex.app/) — An online companion for Polished Crystal. PolishedDex provides a searchable Pokédex, move list, item list, locations, abilities, special events, and a team builder. It also includes a FAQ and links to the official ROM releases, making it a convenient reference while playing.
 
 ## Screenshots
 
@@ -97,7 +102,7 @@ If you have questions or comments, please check or post on any of these sites. (
 ![ice-rock](screenshots/ice-rock.png)
 ![hex-maniac](screenshots/hex-maniac.png)
 ![route-45](screenshots/route-45.png)
-![stats](screenshots/stats.png)
+![summary](screenshots/summary.png)
 
 ![leppa-berry](screenshots/leppa-berry.png)
 ![regional-forms](screenshots/regional-forms.png)

@@ -17,9 +17,9 @@ Route43Gate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RocketText_MakingABundle, EVENT_ROUTE_43_GATE_ROCKETS
-	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RocketText_MakingABundle, EVENT_ROUTE_43_GATE_ROCKETS
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OfficerScript_GuardWithSludgeBomb, EVENT_LAKE_OF_RAGE_CIVILIANS
+	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RocketText_MakingABundle, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RocketText_MakingABundle, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OfficerScript_GuardWithSludgeBomb, EVENT_LAKE_OF_RAGE_CIVILIANS
 
 	object_const_def
 	const ROUTE43GATE_ROCKET1
@@ -47,8 +47,8 @@ RocketScript_Southbound:
 	opentext
 	writetext RocketText_TollFee
 	promptbutton
-	checkmoney $0, ROUTE43GATE_TOLL - 1
-	ifequalfwd $0, RocketScript_TollSouth
+	checkmoney YOUR_MONEY, ROUTE43GATE_TOLL - 1
+	ifequalfwd HAVE_MORE, RocketScript_TollSouth
 	sjumpfwd RocketScript_YoureBrokeSouth
 
 RocketScript_TollSouth:
@@ -79,8 +79,8 @@ RocketScript_Northbound:
 	opentext
 	writetext RocketText_TollFee
 	promptbutton
-	checkmoney $0, ROUTE43GATE_TOLL - 1
-	ifequalfwd $0, RocketScript_TollNorth
+	checkmoney YOUR_MONEY, ROUTE43GATE_TOLL - 1
+	ifequalfwd HAVE_MORE, RocketScript_TollNorth
 	sjumpfwd RocketScript_YoureBrokeNorth
 
 RocketScript_TollNorth:
@@ -103,7 +103,7 @@ RocketScript_ShakeDownNorth:
 	end
 
 RocketScript_TakeToll:
-	takemoney $0, ROUTE43GATE_TOLL
+	takemoney YOUR_MONEY, ROUTE43GATE_TOLL
 	waitsfx
 	playsound SFX_TRANSACTION
 	end

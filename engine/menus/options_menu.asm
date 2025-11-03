@@ -25,7 +25,7 @@ OptionsMenu:
 .joypad_loop
 	call JoyTextDelay
 	ldh a, [hJoyPressed]
-	and START | B_BUTTON
+	and PAD_START | PAD_B
 	jr nz, .ExitOptions
 	call OptionsControl
 	jr c, .dpad
@@ -138,10 +138,10 @@ Options_TextSpeed:
 	ld c, a
 	ldh a, [hJoyPressed]
 	dec c
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .ok
 	inc c
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr z, .NonePressed
 	inc c
 .ok
@@ -167,24 +167,24 @@ Options_TextSpeed:
 	ret
 
 .Strings:
-	dw .Instant
-	dw .Fast
-	dw .Medium
 	dw .Slow
+	dw .Medium
+	dw .Fast
+	dw .Instant
 
-.Fast:
-	db "Fast   @"
-.Medium:
-	db "Medium @"
 .Slow:
 	db "Slow   @"
+.Medium:
+	db "Medium @"
+.Fast:
+	db "Fast   @"
 .Instant:
 	db "Instant@"
 
 Options_BattleEffects:
 	ld hl, wOptions1
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit BATTLE_EFFECTS, [hl]
 	jr z, .SetOff
@@ -208,9 +208,9 @@ Options_BattleEffects:
 Options_BattleStyle:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr nz, .RightPressed
 	bit BATTLE_SWITCH, [hl]
 	jr nz, .SetSwitch
@@ -260,7 +260,7 @@ Options_BattleStyle:
 Options_RunningShoes:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit RUNNING_SHOES, [hl]
 	jr z, .SetOff
@@ -289,9 +289,9 @@ OnString:
 Options_Frame:
 	ld hl, wTextboxFrame
 	ldh a, [hJoyPressed]
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr nz, .RightPressed
 	and a
 	ret
@@ -319,7 +319,7 @@ UpdateFrame:
 	ld e, a
 	ld d, 0
 	hlcoord 17, 7
-	ld a, " "
+	ld a, ' '
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
@@ -330,7 +330,7 @@ UpdateFrame:
 Options_Sound:
 	ld hl, wOptions1
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit STEREO, [hl]
 	jr z, .SetMono
@@ -359,7 +359,7 @@ Options_Sound:
 Options_ClockFormat:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit CLOCK_FORMAT, [hl]
 	jr z, .Set12Hour
@@ -388,7 +388,7 @@ Options_ClockFormat:
 Options_PokedexUnits:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit POKEDEX_UNITS, [hl]
 	jr z, .SetImperial
@@ -420,10 +420,10 @@ Options_TextAutoscroll:
 	ld a, [wOptions1]
 	and AUTOSCROLL_MASK
 	sub 4
-	bit D_LEFT_F, b
+	bit B_PAD_LEFT, b
 	jr nz, .ok
 	add 4
-	bit D_RIGHT_F, b
+	bit B_PAD_RIGHT, b
 	jr z, .not_changing
 	add 4
 .ok
@@ -452,21 +452,21 @@ Options_TextAutoscroll:
 .Strings:
 	dw .None
 	dw .Start
-	dw .AandB
+	dw .B
 	dw .AorB
 
 .None:
-	db "None   @"
+	db "None  @"
 .Start:
-	db "Start  @"
-.AandB:
-	db "A and B@"
+	db "Start @"
+.B:
+	db "B     @"
 .AorB:
-	db "A or B @"
+	db "A or B@"
 
 Options_TurningSpeed:
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	ld a, [wOptions1]
 	jr z, .not_changing
 	xor TURNING_SPEED_MASK
@@ -505,9 +505,9 @@ Options_Typeface:
 	ld c, a
 	ld b, 0
 	ldh a, [hJoyPressed]
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr z, .NonePressed
 	ld a, c ; right pressed
 	cp UNOWN_FONT
@@ -584,7 +584,7 @@ Options_Typeface:
 Options_Keyboard:
 	ld hl, wOptions3
 	ldh a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit QWERTY_KEYBOARD_F, [hl]
 	jr z, .SetABC
@@ -612,7 +612,7 @@ Options_Keyboard:
 
 Options_Next:
 	ldh a, [hJoyPressed]
-	and A_BUTTON | D_LEFT | D_RIGHT
+	and PAD_A | PAD_LEFT | PAD_RIGHT
 	jr z, _SwitchOptionsPage.NonePressed
 	ld hl, wCurOptionsPage
 	inc [hl]
@@ -621,7 +621,7 @@ Options_Next:
 
 Options_Previous:
 	ldh a, [hJoyPressed]
-	and A_BUTTON | D_LEFT | D_RIGHT
+	and PAD_A | PAD_LEFT | PAD_RIGHT
 	jr z, _SwitchOptionsPage.NonePressed
 	ld hl, wCurOptionsPage
 	dec [hl]
@@ -643,7 +643,7 @@ _SwitchOptionsPage:
 
 Options_Done:
 	ldh a, [hJoyPressed]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .Exit
 	and a
 	ret
@@ -655,9 +655,9 @@ Options_Done:
 OptionsControl:
 	ld hl, wJumptableIndex
 	ldh a, [hJoyLast]
-	cp D_DOWN
+	cp PAD_DOWN
 	jr z, .DownPressed
-	cp D_UP
+	cp PAD_UP
 	jr z, .UpPressed
 	and a
 	ret
@@ -687,7 +687,7 @@ Options_UpdateCursorPosition:
 	ld de, SCREEN_WIDTH
 	ld c, SCREEN_HEIGHT - 2
 .loop
-	ld [hl], " "
+	ld [hl], ' '
 	add hl, de
 	dec c
 	jr nz, .loop
@@ -695,5 +695,5 @@ Options_UpdateCursorPosition:
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wJumptableIndex]
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ret

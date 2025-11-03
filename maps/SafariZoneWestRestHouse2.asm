@@ -16,7 +16,7 @@ SafariZoneWestRestHouse2_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_READ, PokemonJournalKogaScript
 
 	def_object_events
-	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
+	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
 
 	object_const_def
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY

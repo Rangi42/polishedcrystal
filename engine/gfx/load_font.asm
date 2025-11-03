@@ -3,7 +3,7 @@ INCLUDE "gfx/font.asm"
 _LoadStandardOpaqueFont::
 	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
-	ld hl, vTiles2 tile " "
+	ld hl, vTiles2 tile ' '
 	ld de, TextboxSpaceGFX
 	jmp GetOpaque1bppFontTile
 
@@ -14,14 +14,14 @@ _LoadStandardMaybeOpaqueFont:
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile "A"
+	ld hl, vTiles0 tile 'A'
 	lb bc, BANK(FontTiles), 114
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	push af
 	call GetMaybeOpaque1bpp
 	ld de, FontCommon
-	ld hl, vTiles0 tile "↑"
+	ld hl, vTiles0 tile '↑'
 	lb bc, BANK(FontCommon), 6
 	pop af
 	ldh [hRequestOpaque1bpp], a
@@ -60,21 +60,39 @@ _LoadFontsBattleExtra::
 
 _LoadFrame::
 	ld a, [wTextboxFrame]
-	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
+	ld bc, TEXTBOX_FRAME_TILES * TILE_1BPP_SIZE
 	ld hl, Frames
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile "┌"
+	ld hl, vTiles0 tile '┌'
 	lb bc, BANK(Frames), TEXTBOX_FRAME_TILES
 	call Get1bpp
-	ld hl, vTiles2 tile " "
+	ld hl, vTiles2 tile ' '
 	ld de, TextboxSpaceGFX
 	lb bc, BANK(TextboxSpaceGFX), 1
 	jmp Get1bpp
 
 LoadBattleFontsHPBar:
 	call _LoadFontsBattleExtra
+
+LoadSummaryStatusIcon:
+	push de
+	xor a
+	ld de, wTempMonStatus
+	farcall GetStatusConditionIndex
+	ld hl, SummaryStatusIconGFX
+	ld bc, 2 tiles
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, vTiles0 tile SUMMARY_TILE_OAM_STATUS
+	lb bc, BANK(SummaryStatusIconGFX), 2
+	call Request2bpp
+	farcall LoadSummaryStatusIconPalette
+	farcall ApplyOBPals
+	pop de
+	ret
 
 LoadPlayerStatusIcon:
 	push de

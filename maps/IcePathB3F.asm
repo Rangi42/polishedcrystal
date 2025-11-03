@@ -13,7 +13,7 @@ IcePathB3F_MapScriptHeader:
 	bg_event 16,  3, BGEVENT_JUMPTEXT, Text_IcePathB3FIceRock
 
 	def_object_events
-	object_event 10,  3, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LoreleiScript, -1
+	object_event 10,  3, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, LoreleiScript, -1
 	itemball_event  5,  7, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
 	smashrock_event  6, 6
 
@@ -26,7 +26,7 @@ LoreleiScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftruefwd LoreleiRematchScript
 	checkevent EVENT_BEAT_LORELEI
-	iftrue_jumpopenedtext LoreleiAfterText
+	iftruefwd LoreleiAfterScript
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftruefwd LoreleiAfterIntroScript
 	writetext LoreleiIntroText
@@ -50,17 +50,19 @@ LoreleiAfterIntroScript:
 	promptbutton
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
+LoreleiAfterScript:
+	readvar VAR_BADGES
+	ifequalfwd NUM_JOHTO_BADGES, .AllEightBadges
+	writetext LoreleiOneMoreBadgeText
+	sjumpfwd .Finish
+
+.AllEightBadges:
+	writetext LoreleiAllBadgesText
+.Finish
+	promptbutton
 	jumpthisopenedtext
 
-LoreleiAfterText:
-	text "Go on ahead. You"
-	line "can challenge the"
-
-	para "#mon League"
-	line "with one more"
-	cont "Badge."
-
-	para "If you do beat"
+	text "If you do beat"
 	line "them, meet me here"
 	cont "for a rematch."
 	done
@@ -97,7 +99,7 @@ LoreleiRematchAfterText:
 	line "over, you know."
 
 	para "You can earn more"
-	line "badges in Kanto,"
+	line "Badges in Kanto,"
 
 	para "catch new species"
 	line "of #mon,"
@@ -207,4 +209,21 @@ LoreleiRematchSeenText:
 LoreleiRematchBeatenText:
 	text "As expected of"
 	line "the Champion!"
+	done
+
+LoreleiOneMoreBadgeText:
+	text "Go on ahead. You"
+	line "can challenge the"
+
+	para "#mon League"
+	line "with one more"
+	cont "Badge."
+	done
+
+LoreleiAllBadgesText:
+	text "Go on ahead. You"
+	line "have enough Badges"
+
+	para "to challenge the"
+	line "#mon League."
 	done

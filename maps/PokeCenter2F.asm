@@ -18,9 +18,9 @@ PokeCenter2F_MapScriptHeader:
 	bg_event  7,  3, BGEVENT_READ, PokeCenter2FLinkRecordSign
 
 	def_object_events
-	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Mobile, -1
+	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Mobile, -1
 
 	object_const_def
 	const POKECENTER2F_TRADE_RECEPTIONIST
@@ -160,6 +160,8 @@ endc
 	writetext Text_TradeReceptionistIntro
 	yesorno
 	iffalse_endtext
+	callasm CheckPartyForMail
+	iftruefwd LinkReceptionistScript_HasMail
 	special Special_SetBitsForLinkTradeRequest
 	; fallthrough
 LinkReceptionistScript_DoTradeOrBattle:
@@ -239,6 +241,18 @@ LinkReceptionistScript_DoTradeOrBattle:
 	writetext Text_PleaseComeAgain
 .AbortLink:
 	special WaitForOtherPlayerToExit
+	endtext
+
+LinkReceptionistScript_HasMail:
+	writethistext
+		text "I am sorry, but"
+		line "we are unable to"
+
+		para "trade #mon"
+		line "carrying mail"
+		cont "at this time."
+		done
+	waitbutton
 	endtext
 
 Script_TradeCenterClosed:

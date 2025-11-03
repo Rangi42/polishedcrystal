@@ -174,7 +174,7 @@ PrintHLNum:
 	ret nz
 
 	; print a space
-	ld a, " "
+	ld a, ' '
 	jr .got_value
 
 .check_money
@@ -182,14 +182,14 @@ PrintHLNum:
 	jr z, .got_number
 	res PRINTNUM_MONEY_F, b
 	push af
-	ld a, "¥"
+	ld a, '¥'
 	ld [hli], a
 	bit PRINTNUM_DELAY_F, b
 	call nz, .printnum_delay
 	pop af
 
 .got_number
-	add "0"
+	add '0'
 .got_value
 	ld [hli], a
 	bit PRINTNUM_DELAY_F, b
@@ -200,7 +200,7 @@ PrintHLNum:
 	dec a
 	ldh [hPrintNum + 4], a
 	ret nz
-	ld a, "."
+	ld a, '.'
 	ld [hli], a
 	ret
 .printnum_delay
@@ -214,7 +214,7 @@ _FastPrintNum:
 ; Prints 3 digits of 16bit number in hl with leading zeros + terminator.
 ; Assumes hl is between 000-999.
 	ld bc, -100
-	ld a, "0" - 1
+	ld a, '0' - 1
 .printloop1
 	inc a
 	add hl, bc
@@ -222,14 +222,14 @@ _FastPrintNum:
 	ld [de], a
 	inc de
 	ld bc, 10
-	ld a, "9" + 1
+	ld a, '9' + 1
 .printloop2
 	dec a
 	add hl, bc
 	jr nc, .printloop2
 	ld [de], a
 	inc de
-	ld a, "0"
+	ld a, '0'
 	add l
 	ld [de], a
 	ret

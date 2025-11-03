@@ -220,18 +220,6 @@ GetUserMonAttr::
 	pop bc
 	ret
 
-GetOpponentMonAttr_de::
-	call StackCallOpponentTurn
-GetUserMonAttr_de::
-	push hl
-	ld h, d
-	ld l, e
-	call GetUserMonAttr
-	ld d, h
-	ld e, l
-	pop hl
-	ret
-
 UpdateOpponentInParty::
 	call StackCallOpponentTurn
 UpdateUserInParty::
@@ -242,11 +230,8 @@ UpdateUserInParty::
 UpdateBattleMonInParty::
 ; Update level, status, current HP
 	ld a, [wCurBattleMon]
-	; fallthrough
-UpdateBattleMon::
 	ld hl, wPartyMon1Level
 	call GetPartyLocation
-
 	ld d, h
 	ld e, l
 	ld hl, wBattleMonLevel
@@ -335,35 +320,6 @@ ToggleBattleItems:
 	add hl, bc
 	pop bc
 	jr .loop
-
-OpponentCanLoseItem::
-	call StackCallOpponentTurn
-UserCanLoseItem::
-; Returns z if user can't lose its held item. This happens if:
-; - user doesn't have a held item
-; - user is holding Armor Suit
-; - user is holding Mail
-; Does not check Sticky Hold (we just want to know if we can
-; theoretically lose our item at any point)
-	push hl
-	push de
-	push bc
-	farcall GetUserItem
-	ld a, [hl]
-	and a
-	jr z, .cannot_lose
-	cp ARMOR_SUIT
-	jr z, .cannot_lose
-	ld d, a
-	call ItemIsMail
-	jr c, .cannot_lose
-	or 1
-	jr .done
-
-.cannot_lose
-	xor a
-.done
-	jmp PopBCDEHL
 
 GetOpponentUsedItemAddr::
 	call StackCallOpponentTurn
@@ -512,26 +468,40 @@ ApplySpecialAttackDamageMod::
 	ld b, SPECIAL
 	jr ApplyAttackDamageMod
 
-GetOpponentAbility::
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	ret z
-	push bc
-	ld b, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	ld a, b
-	pop bc
-	ret nz
+GetTrueUserAbility:
+; Get true user ability after Neutralizing Gas.
+; A "true" user might be external, if Future Sight is active.
+	farcall GetFutureSightUser
+	jr z, .not_external
+
+	; External users have no ability.
 	xor a
 	ret
 
-GetTrueUserAbility::
-; Get true user ability after Neutralizing Gas.
-; A "true" user might be external, if Future Sight is active.
-	farjp _GetTrueUserAbility
+.not_external
+	call StackCallOpponentTurn
+GetOpponentAbility::
+	; Get opponent ability.
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	push af
+
+	; Check if it's suppressed by Neutralizing Gas.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp NEUTRALIZING_GAS
+	jr nz, .not_suppressed
+	pop af
+	push hl
+	farcall AbilityCanBeSuppressed
+	pop hl
+	ret c
+	xor a
+	ret
+
+.not_suppressed
+	pop af
+	ret
 
 GetOpponentAbilityAfterMoldBreaker::
 ; Returns an opponent's ability unless Mold Breaker
@@ -541,9 +511,6 @@ GetOpponentAbilityAfterMoldBreaker::
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsIceType::
-	ld a, ICE
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsDarkType::
 	ld a, DARK
@@ -671,6 +638,7 @@ GetWeatherAfterUserUmbrella::
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [wBattleWeather] otherwise.
+; Only call this function directly if Utility Umbrella doesn't apply.
 	call CheckNeutralizingGas
 	jr z, .weather
 	ld a, [wPlayerAbility]
@@ -691,6 +659,110 @@ CheckNeutralizingGas::
 	cp NEUTRALIZING_GAS
 	ret
 
+CheckMoveSpeed::
+; Does speed checks, but includes Quick Claw and Lagging Tail, which are only
+; taken into account for moves.
+	; Quick Claw has a chance to override speed
+	ldh a, [hBattleTurn]
+	ld e, a
+	ld d, 0
+	push de
+	call SetFastestTurn
+	pop de
+	call .do_it
+	call SwitchTurn
+	call .do_it
+	ld a, e
+	ldh [hBattleTurn], a
+	ld a, d ; +1/+2: player, -1/-2: enemy, 0: both/neither
+	and a
+	jr z, CheckSpeed
+	dec a
+	ret z
+	dec a
+	ret
+
+.do_it
+	; Increases d if player is given priority, decreases if enemy is given it.
+	; d can be +2 or -2 if one is holding Quick Claw and the other Lagging Tail.
+	push de
+
+	; Quick Draw works like Quick Claw except 30% of the time
+	call GetTrueUserAbility
+	cp QUICK_DRAW
+	jr nz, .quick_draw_done
+	ld b, a ; for BufferAbility
+
+	; Quick Draw only works on attacking moves
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	jr z, .quick_draw_done
+
+	farcall BufferAbility
+	ld a, 100
+	call BattleRandomRange
+	cp 30
+	jr nc, .quick_draw_done
+
+	farcall BeginAbility
+	farcall ShowAbilityActivation
+	ld hl, BattleText_UserItemLetItMoveFirst
+	call StdBattleTextbox
+	farcall EndAbility
+	jr .go_first
+
+.quick_draw_done
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_QUICK_CLAW
+	jr z, .quick_claw
+	cp HELD_CUSTAP_BERRY
+	jr z, .custap_berry
+	cp HELD_LAGGING_TAIL
+	jr z, .go_last
+	pop de
+	ret
+
+.custap_berry
+	farcall QuarterPinchOrGluttony
+	pop de
+	ret nz
+	call .activate_item
+	push de
+	farcall ConsumeUserItem
+	pop de
+	ret
+
+.quick_claw
+	ld a, 100
+	call BattleRandomRange
+	cp c
+	pop de
+	ret nc
+.activate_item
+	push de
+	farcall ItemRecoveryAnim
+	predef GetUserItemAfterUnnerve
+	call GetCurItemName
+	ld hl, BattleText_UserItemLetItMoveFirst
+	call StdBattleTextbox
+.go_first
+	ldh a, [hBattleTurn]
+	jr .set_priority
+.go_last
+	ldh a, [hBattleTurn]
+	; Give the foe priority
+	xor 1
+.set_priority
+	pop de
+	inc d
+	and a
+	ret z
+	dec d
+	dec d
+	ret
+
 CheckSpeed::
 ; Compares speed stat, applying items (usually, see above) and
 ; stat changes. and see who ends up on top. Returns z if the player
@@ -700,6 +772,7 @@ CheckSpeed::
 	jr z, .CheckSpeed
 	call .CheckSpeed
 	ret c ; was random anyway, and we don't want to unset carry
+	and 1
 	xor 1
 	ret
 
@@ -755,8 +828,7 @@ EmptyBattleTextbox::
 	jr BattleTextbox
 
 StdBattleTextbox::
-; Open a textbox and print battle text at 20:hl.
-	anonbankpush BattleText
+	farjp _StdBattleTextbox
 
 BattleTextbox::
 ; Open a textbox and print text at hl.

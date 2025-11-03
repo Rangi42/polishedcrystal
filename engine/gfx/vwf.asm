@@ -1,5 +1,5 @@
-DEF FIRST_VWF_CHAR EQU " " ; first printable character
-DEF FAILSAFE_VWF_CHAR EQU "."
+DEF FIRST_VWF_CHAR EQU ' ' ; first printable character
+DEF FAILSAFE_VWF_CHAR EQU '.'
 
 _BuildAppendVFWTextFunction::
 ; Build a function to write pixels in hAppendVWFText.
@@ -34,7 +34,7 @@ _PlaceNextVWFChar::
 ; Returns z if the character is the string terminator.
 ; Preserves the value of b.
 	inc de
-	cp "@"
+	cp '@'
 	ret z
 
 	push bc
@@ -51,7 +51,7 @@ _PlaceNextVWFChar::
 	ld hl, VWFWidths
 	add hl, de
 	ld b, [hl] ; b = width in pixels
-	; get VWFCharacterGFX + a * LEN_1BPP_TILE
+	; get VWFCharacterGFX + a * TILE_1BPP_SIZE
 	ld h, d
 	ld l, e
 	add hl, hl ; * 2
@@ -130,7 +130,7 @@ _GetNextVWFLength::
 ; Returns length of character a (just read from [de]) in c.
 ; Advances de to the next character.
 	inc de
-	cp "@"
+	cp '@'
 	ret z
 
 	push hl

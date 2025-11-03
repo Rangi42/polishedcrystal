@@ -1,5 +1,5 @@
 AnthonyPhoneScript1:
-	gettrainername HIKER, ANTHONY1, $0
+	gettrainername HIKER, ANTHONY1, STRING_BUFFER_3
 	checkflag ENGINE_ANTHONY_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -16,15 +16,15 @@ AnthonyPhoneScript1:
 	farsjump AnthonyHangUpScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_33, $2
+	getlandmarkname ROUTE_33, STRING_BUFFER_5
 	farsjump AnthonyReminderScript
 
 .AlreadySwarming:
-	getlandmarkname ROUTE_33, $2
+	getlandmarkname ROUTE_33, STRING_BUFFER_5
 	farsjump AnthonyHurryScript
 
 AnthonyPhoneScript2:
-	gettrainername HIKER, ANTHONY1, $0
+	gettrainername HIKER, ANTHONY1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalsefwd .TriesSwarm
@@ -44,7 +44,7 @@ AnthonyFridayNight:
 	setflag ENGINE_ANTHONY_FRIDAY_NIGHT
 
 AnthonyWantsBattle:
-	getlandmarkname ROUTE_33, $2
+	getlandmarkname ROUTE_33, STRING_BUFFER_5
 	setflag ENGINE_ANTHONY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
@@ -52,9 +52,9 @@ AnthonyTriesDunsparceSwarm:
 	checkflag ENGINE_DUNSPARCE_SWARM
 	iftruefwd .Generic
 	setflag ENGINE_DUNSPARCE_SWARM
-	getmonname DUNSPARCE, $1
+	getmonname DUNSPARCE, STRING_BUFFER_4
 	swarm SWARM_DUNSPARCE, DARK_CAVE_VIOLET_ENTRANCE
-	getlandmarkname DARK_CAVE, $2
+	getlandmarkname DARK_CAVE, STRING_BUFFER_5
 	farsjump AnthonySwarmScript
 
 .Generic:
