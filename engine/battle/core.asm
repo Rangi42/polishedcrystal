@@ -2183,8 +2183,13 @@ SuppressUserAbilities:
 	jr z, .neutralizing_gas
 	cp UNNERVE
 	ret nz
+	ldh a, [hBattleTurn]
+	push af
 	farcall HandleLeppaBerry
-	farjp HandleHealingItems
+	farcall HandleHealingItems
+	pop af
+	ldh [hBattleTurn], a
+	ret
 
 .neutralizing_gas
 	; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should
