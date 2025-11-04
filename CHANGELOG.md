@@ -24,6 +24,7 @@ Hotfix release.
 - Updated Piloswine and Skarmory's back sprites.
 - Updated Para's front animation sprite.
 - If a Pokemon knows a HM that you don't have, and that HM is Surf, Strength, or Whirlpool, you cannot forget the HM. This is to reduce chances of softlock.
+- Made Dance Theater slightly larger to accomodate it's popularity (Resolves issue with sprite "pop in")
 
 ### Fixes
 
