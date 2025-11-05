@@ -50,6 +50,7 @@ Hotfix release.
 - Fixed overworld weather animations when using brick break to smash an overworld rock.
 - Fixed Psychic Inver corrupt parties
 - Fixed Unnerve ability prematurely switching the turn.
+- Fixed a crash when Trading and using the Summary Screen
 
 ## v3.2.0
 
