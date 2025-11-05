@@ -203,6 +203,8 @@ wPlayerCurrentOAMSlot:: db
 
 wMapSetupFlags:: db
 
+wPrinterConnectionOpen:: db
+
 wFollowerSpriteID:: db
 wFollowerPartyNum:: db
 
@@ -1106,7 +1108,6 @@ wPrinterExposureTime:: db
 wGameboyPrinterRAMEnd::
 
 wPrinterOpcode:: db
-wPrinterConnectionOpen:: db
 
 
 SECTION "Video", WRAM0
