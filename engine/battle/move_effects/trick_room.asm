@@ -19,7 +19,8 @@ BattleCommand_trickroom:
 	ld a, b
 	cp HELD_ROOM_SERVICE
 	ret nz
-
+	; fallthrough
+RoomServiceItem:
 	ld b, SPEED
 	ld a, STAT_SKIPTEXT
 	call _ForceLowerStat
