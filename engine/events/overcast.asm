@@ -7,6 +7,15 @@ GetOvercastIndex::
 	jr z, .lake_of_rage_route_43
 	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_MAGNET_TUNNEL_WEST, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
 	jr z, .stormy_beach_goldenrod_city_route_34
+	; Generic chance of overcast for other outdoor maps (excluding always snowy/sandstorm)
+	; Skip indoor/cave/gate/dungeon environments
+	ld a, [wEnvironment]
+	cp TOWN
+	jr z, .maybe_generic
+	cp ROUTE
+	jr z, .maybe_generic
+	cp ISOLATED
+	jr z, .maybe_generic
 .not_overcast:
 	xor a ; NOT_OVERCAST
 	ret
@@ -76,4 +85,57 @@ GetOvercastIndex::
 	jr nz, .not_overcast
 .overcast_stormy_beach
 	ld a, STORMY_BEACH_OVERCAST
+	ret
+
+.maybe_generic
+	ld a, GENERIC_OVERCAST
+	ret
+	; Exclude Snowtop Mountain (inside/outside) and Rugged Road (always snowy/sandstorm)
+	ld a, [wMapGroup]
+	cp GROUP_SNOWTOP_MOUNTAIN_OUTSIDE
+	jp z, .not_overcast
+	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
+	jp nz, .check_rugged_road_north
+	; in this group, only allow if not Snowtop/Rugged Road maps
+	ld a, [wMapNumber]
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	jp z, .not_overcast
+	cp MAP_RUGGED_ROAD_SOUTH
+	jp z, .not_overcast
+.check_rugged_road_north
+	cp GROUP_RUGGED_ROAD_NORTH
+	jp nz, .generic_by_weekday
+	ld a, [wMapNumber]
+	cp MAP_RUGGED_ROAD_NORTH
+	jp z, .not_overcast
+
+.generic_by_weekday
+	; Use map group parity to split days: odd -> M/W/F, even -> T/Th/Sa
+	call GetWeekday
+	ld b, a ; weekday in b
+	ld a, [wMapGroup]
+	and 1
+	jr z, .even_group_days
+	; odd group: MON/WED/FRI
+	ld a, b
+	cp MONDAY
+	jr z, .return_generic
+	cp WEDNESDAY
+	jr z, .return_generic
+	cp FRIDAY
+	jr z, .return_generic
+	jmp .not_overcast
+.even_group_days
+	ld a, b
+	cp TUESDAY
+	jr z, .return_generic
+	cp THURSDAY
+	jr z, .return_generic
+	cp SATURDAY
+	jr z, .return_generic
+	; Sunday not overcast by default for even groups
+	jmp .not_overcast
+
+.return_generic
+	ld a, GENERIC_OVERCAST
 	ret
