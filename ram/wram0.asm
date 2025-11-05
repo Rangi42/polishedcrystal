@@ -201,6 +201,7 @@ wPlayerCurrentOAMSlot:: db
 
 wMapSetupFlags:: db
 
+wPrinterConnectionOpen:: db
 
 SECTION "Sprite Animations", WRAM0
 
@@ -1195,7 +1196,6 @@ wPrinterExposureTime:: db
 wGameboyPrinterRAMEnd::
 
 wPrinterOpcode:: db
-wPrinterConnectionOpen:: db
 
 
 SECTION "Video", WRAM0
