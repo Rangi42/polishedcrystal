@@ -86,6 +86,7 @@ SummaryScreenInit:
 	ld a, [hl]
 	push af
 	set B_IE_STAT, [hl]
+	res B_IE_SERIAL, [hl]
 	; save old window position
 	ldh a, [hWX]
 	ld b, a
