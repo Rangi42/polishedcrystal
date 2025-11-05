@@ -88,8 +88,8 @@ GetOvercastIndex::
 	ret
 
 .maybe_generic
-	ld a, GENERIC_OVERCAST
-	ret
+;	ld a, GENERIC_OVERCAST
+;	ret
 	; Exclude Snowtop Mountain (inside/outside) and Rugged Road (always snowy/sandstorm)
 	ld a, [wMapGroup]
 	cp GROUP_SNOWTOP_MOUNTAIN_OUTSIDE

@@ -101,6 +101,7 @@ MapSetupScript_Connection:
 	mapsetup LoadMapObjects_Connection
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
+	mapsetup ClearSavedObjPals
 	mapsetup EnableDynPalUpdatesNoApply
 	mapsetup MapConnOWFadePalettesInit
 	mapsetup InitMapNameSign
