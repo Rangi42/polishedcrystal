@@ -1903,6 +1903,7 @@ HandleUserHealingItems:
 	push bc
 	call HandleHPHealingItem
 	call HandleStatBoostBerry
+	pop bc
 	ret
 
 _SubtractHP:
