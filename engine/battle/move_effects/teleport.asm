@@ -8,7 +8,7 @@ BattleCommand_teleport:
 	dec a
 	jr nz, .trainer_battle
 
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp RUN_AWAY
 	jr z, .run_away
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP

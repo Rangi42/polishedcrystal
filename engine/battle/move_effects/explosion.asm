@@ -1,5 +1,5 @@
 BattleCommand_selfdestruct:
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp DAMP
 	ret z ; nullification ability checks handle messages
 	ld hl, wWhichMonFaintedFirst

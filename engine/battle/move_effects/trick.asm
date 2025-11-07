@@ -6,7 +6,7 @@ BattleCommand_trick:
 	call CheckSubstituteOpp
 	jr nz, .failed
 
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp STICKY_HOLD
 	jr z, .ability_failed
 
