@@ -114,7 +114,7 @@ BugsyGroup:
 
 	def_trainer_class BUGSY
 	def_trainer 1, "Bugsy"
-	tr_mon 14, BUTTERFREE @ NO_ITEM, MALE ; NO_ITEM needed to match
+	tr_mon 14, BUTTERFREE, MALE
 		tr_evs 32 SAt, 32 Spe
 		tr_moves TACKLE, POISONPOWDER, SLEEP_POWDER, CONFUSION
 	tr_mon 14, BEEDRILL, MALE
