@@ -112,7 +112,7 @@ MACRO tr_mon
 ; Nickname (optional) is formatted as "TEXT". Terminator ("@") is implicit.
 ; SPECIES is the species.
 ; ITEM (optional) is the held item.
-; GENDER?FORM is the secondary species byte, used to define a mon's form and
+; GENDER+FORM is the secondary species byte, used to define a mon's form and
 ; gender. Note that if you specify a gender on one mon, you need to do so for
 ; the entire party for technical reasons. Otherwise, both gender and form is
 ; optional.
@@ -137,6 +137,7 @@ MACRO tr_mon
 	for i, 1, NUM_MOVES + 1
 		def _tr_pk{d:p}_move{d:i} = NO_MOVE
 	endr
+	redef _tr_pk{d:p}_himoves = 0
 
 	; Then actually define the data. Level is always required.
 	def _tr_pk{d:p}_level = \1
@@ -264,6 +265,7 @@ MACRO tr_moves
 		else
 			def _tr_pk{d:p}_move{d:i} = \<i>
 		endc
+		def _tr_pk{d:p}_himoves |= HIGH(_tr_pk{d:p}_move{d:i}) << (i-1) * 2
 	endr
 ENDM
 
@@ -285,7 +287,7 @@ MACRO end_trainer
 		def _tr_size += 1
 	endc
 	if _tr_flags & TRAINERTYPE_MOVES
-		def _tr_size += (NUM_MOVES * 2)
+		def _tr_size += (NUM_MOVES + 1)
 	endc
 	def _tr_size *= _tr_mons
 
@@ -344,8 +346,9 @@ MACRO end_trainer
 		endc
 
 		if _tr_flags & TRAINERTYPE_MOVES
+			db _tr_pk{d:p}_himoves
 			for i, 1, NUM_MOVES + 1
-				dw _tr_pk{d:p}_move{d:i}
+				db LOW(_tr_pk{d:p}_move{d:i})
 			endr
 		endc
 	endr

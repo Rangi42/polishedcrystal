@@ -179,16 +179,17 @@ ReadTrainerParty:
 	ld e, l
 	pop hl
 
+	call GetNextTrainerDataByte
+	ld c, a
 	ld b, NUM_MOVES
 .copy_moves
-	call GetNextTrainerDataByte
 	push bc
 	push hl
-	push af
 	call GetNextTrainerDataByte
-	ld h, a
-	pop af
 	ld l, a
+	ld a, c
+	and %11
+	ld h, a
 	ld b, h
 	ld c, l
 	call GetMoveIDFromIndex
@@ -257,6 +258,8 @@ ReadTrainerParty:
 	pop hl
 
 .done_special_moves
+	srl c
+	srl c
 	dec b
 	jr nz, .copy_moves
 

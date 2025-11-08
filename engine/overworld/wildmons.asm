@@ -1098,6 +1098,7 @@ RandomPhoneMon:
 	inc c
 	inc c
 	inc c
+	inc c
 .no_moves
 	; bc == size of mon sub-struct
 	ld b, 0
