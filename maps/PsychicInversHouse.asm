@@ -81,7 +81,7 @@ PsychicInverScript:
 
 PsychicInverGreetingText:
 	text "Oh. I wasn't ex-"
-	line "pecting a vistor"
+	line "pecting a visitor"
 	cont "here. Hmm…"
 
 	para "Shall we have a"
