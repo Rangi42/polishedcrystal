@@ -937,8 +937,8 @@ AI_Smart_TrickRoom:
 	jmp c, AIDiscourageMove
 
 	; Avoid obvious PP stall by only encouraging the move if setting TR up
-	ld a, [wTrickRoom]
-	and a
+	ld a, [wGravityTrickRoom]
+	and FIELD_TRICK_ROOM
 	ret nz
 
 	dec [hl]

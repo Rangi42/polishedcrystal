@@ -215,18 +215,22 @@ endr
 	setflag ENGINE_CREDITS_SKIP
 
 	; move test
-	givepoke MISDREAVUS, PLAIN_FORM, 30, SITRUS_BERRY
-	givepokemove GRAVITY, wPartyMon1, 0
-	givepokemove PSYCHO_SHIFT, wPartyMon1, 1
-	givepokemove AGILITY, wPartyMon1, 2
-	givepokemove DRAGON_DANCE, wPartyMon1, 3
-	loadmem wPartyMon3PP+0, 99
-	loadmem wPartyMon3PP+1, 99
-	loadmem wPartyMon3PP+2, 99
-	loadmem wPartyMon3PP+3, 99
+	givepoke DITTO, PLAIN_FORM, 20, METAL_POWDER
+	givepokemove WONDER_ROOM, wPartyMon1, 0
+	givepokemove PSYCHIC, wPartyMon1, 1
+	givepokemove AMNESIA, wPartyMon1, 2
+	givepokemove RECOVER, wPartyMon1, 3
+	loadmem wPartyMon1PP+0, 99
+	loadmem wPartyMon1PP+1, 99
+	loadmem wPartyMon1PP+2, 99
+	loadmem wPartyMon1PP+3, 99
+	loadmem wPartyMon1DVs+0, $ff
+	loadmem wPartyMon1DVs+1, $ff
+	loadmem wPartyMon1DVs+2, $ff
+	loadmem wPartyMon1Nature, LONELY
 
 	; good party
-	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
+	givepoke MISDREAVUS, PLAIN_FORM, 100, BRIGHTPOWDER
 	loadmem wPartyMon2EVs+0, 252
 	loadmem wPartyMon2EVs+1, 252
 	loadmem wPartyMon2EVs+2, 252

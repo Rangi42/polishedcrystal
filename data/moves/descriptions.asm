@@ -434,6 +434,10 @@ MoveDescriptions1:
 	dw CovetDescription
 	dw HeatWaveDescription
 	dw HowlDescription
+	dw WakeUpSlapDescription
+	dw StrangeSteamDescription
+	dw MagicRoomDescription
+	dw WonderRoomDescription
 .IndirectEnd::
 
 InvalidMoveDescription:
@@ -1969,4 +1973,24 @@ KinesisDescription:
 ViseGripDescription:
 	text "Grips the foe with"
 	next "powerful pincers."
+	done
+
+WakeUpSlapDescription:
+	text "Wakes up foes for"
+	next "double damage."
+	done
+
+StrangeSteamDescription:
+	text "Steam that may"
+	next "confuse the foe."
+	done
+
+MagicRoomDescription:
+	text "Negates held items"
+	next "for five turns."
+	done
+
+WonderRoomDescription:
+	text "Temporarily swaps"
+	next "Def with Sp.Def."
 	done
