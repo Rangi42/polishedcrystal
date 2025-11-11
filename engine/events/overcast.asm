@@ -1,5 +1,14 @@
 GetOvercastIndex::
 ; Some maps are overcast, depending on certain conditions
+	; we never overcast until after slowpokes appear in Azalea Town
+	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
+	jr nz, .not_overcast
+	; roll for generic overcast conditions
+	call CheckGenericOvercast
+	cp GENERIC_OVERCAST
+	ret z
+
+	; we may have extra overcast conditions for specific maps
 	ld a, [wMapGroup]
 	cp GROUP_AZALEA_TOWN ; GROUP_ROUTE_33
 	jr z, .azalea_route_33
@@ -7,15 +16,6 @@ GetOvercastIndex::
 	jr z, .lake_of_rage_route_43
 	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_MAGNET_TUNNEL_WEST, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
 	jr z, .stormy_beach_goldenrod_city_route_34
-	; Generic chance of overcast for other outdoor maps (excluding always snowy/sandstorm)
-	; Skip indoor/cave/gate/dungeon environments
-	ld a, [wEnvironment]
-	cp TOWN
-	jr z, .maybe_generic
-	cp ROUTE
-	jr z, .maybe_generic
-	cp ISOLATED
-	jr z, .maybe_generic
 .not_overcast:
 	xor a ; NOT_OVERCAST
 	ret
@@ -28,9 +28,6 @@ GetOvercastIndex::
 	cp MAP_ROUTE_33
 	jr nz, .not_overcast
 .azalea_town
-; Not overcast until Slowpokes appear (Team Rocket beaten)
-	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
-	jr nz, .not_overcast
 ; Overcast on Sunday, Tuesday, Thursday, and Saturday
 	call GetWeekday
 	cp MONDAY
@@ -87,55 +84,325 @@ GetOvercastIndex::
 	ld a, STORMY_BEACH_OVERCAST
 	ret
 
-.maybe_generic
-;	ld a, GENERIC_OVERCAST
-;	ret
-	; Exclude Snowtop Mountain (inside/outside) and Rugged Road (always snowy/sandstorm)
-	ld a, [wMapGroup]
-	cp GROUP_SNOWTOP_MOUNTAIN_OUTSIDE
-	jp z, .not_overcast
-	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
-	jp nz, .check_rugged_road_north
-	; in this group, only allow if not Snowtop/Rugged Road maps
-	ld a, [wMapNumber]
-	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
-	jp z, .not_overcast
-	cp MAP_RUGGED_ROAD_SOUTH
-	jp z, .not_overcast
-.check_rugged_road_north
-	cp GROUP_RUGGED_ROAD_NORTH
-	jp nz, .generic_by_weekday
-	ld a, [wMapNumber]
-	cp MAP_RUGGED_ROAD_NORTH
-	jp z, .not_overcast
+CheckGenericOvercast:
+	; Skip indoor/cave/gate/dungeon environments
+	ld a, [wEnvironment]
+	cp TOWN
+	jr z, .can_overcast
+	cp ROUTE
+	jr z, .can_overcast
+	cp ISOLATED
+	jr nz, .not_overcast
 
-.generic_by_weekday
-	; Use map group parity to split days: odd -> M/W/F, even -> T/Th/Sa
-	call GetWeekday
-	ld b, a ; weekday in b
-	ld a, [wMapGroup]
-	and 1
-	jr z, .even_group_days
-	; odd group: MON/WED/FRI
-	ld a, b
-	cp MONDAY
-	jr z, .return_generic
-	cp WEDNESDAY
-	jr z, .return_generic
-	cp FRIDAY
-	jr z, .return_generic
-	jmp .not_overcast
-.even_group_days
-	ld a, b
-	cp TUESDAY
-	jr z, .return_generic
-	cp THURSDAY
-	jr z, .return_generic
-	cp SATURDAY
-	jr z, .return_generic
-	; Sunday not overcast by default for even groups
-	jmp .not_overcast
+.can_overcast
+	ld a, [wOvercastRandomDay]
+	ld b, a
+	ld a, [wCurDay]
+	cp b
+	ld [wOvercastRandomDay], a
+	call nz, GenerateNewRandomOvercastMaps
 
-.return_generic
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+
+	ld d, 4
+	ld hl, wOvercastRandomMaps
+.loop_overcast_maps
+	ld a, [hli]
+	ld [wOvercastCurIntensity], a
+	ld a, [hli]
+	cp NUM_MAP_GROUPS + 1
+	jr nc, .aliased_group
+	; normal group
+	cp b
+	jr nz, .skip_map
+	ld a, [hli]
+	cp c
+	jr z, .overcast
+	dec d
+	jr nz, .loop_overcast_maps
+	jr .not_overcast
+
+.skip_map
+	inc hl
+	dec d
+	jr nz, .loop_overcast_maps
+	jr .not_overcast
+
+.aliased_group
+	push hl
+	call GetAliasedGroup
+	ld a, [hli]
+	cp b
+	jr nz, .not_overcast_pop_hl
+.check_next_alias_map
+	ld a, [hli]
+	cp -1
+	jr z, .not_overcast_pop_hl
+	cp c
+	jr nz, .check_next_alias_map
+	; found a match
+	pop hl
+	jr .overcast
+
+.not_overcast_pop_hl
+	pop hl
+.not_overcast
+	xor a
+	ret
+
+.overcast
 	ld a, GENERIC_OVERCAST
 	ret
+
+; @input: a = alias id
+; @output: hl = aliased group pointer
+GetAliasedGroup:
+	push bc
+	sub NUM_MAP_GROUPS + 1
+	ld b, a
+	ld hl, RandomAliasedOvercastMapGroups
+.outer_loop
+	ld a, b
+	and a
+	jr z, .found
+	; consume bytes until we are past the terminator
+.inner_loop
+	ld a, [hli]
+	inc a
+	jr nz, .inner_loop
+	dec b
+	jr .outer_loop
+
+.found
+	pop bc
+	ret
+
+GenerateNewRandomOvercastMaps:
+	ld a, NUM_JOHTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsJohto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupJohto1], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberJohto1], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityJohto1], a
+	ld a, NUM_JOHTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsJohto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupJohto2], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberJohto2], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityJohto2], a
+	ld a, NUM_KANTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsKanto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupKanto1], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberKanto1], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityKanto1], a
+	ld a, NUM_KANTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsKanto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupKanto2], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberKanto2], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityKanto2], a
+	ret
+
+GenerateRandomIntensity:
+	call Random
+	cp 50 percent
+	jr c, .low_intensity
+	cp (50 + 40) percent
+	jr c, .medium_intensity
+	ld a, OVERCAST_INTENSITY_THUNDERSTORM
+	ret
+.medium_intensity
+	ld a, OVERCAST_INTENSITY_RAIN
+	ret
+.low_intensity
+	ld a, OVERCAST_INTENSITY_OVERCAST
+	ret
+
+MACRO overcast_alias_group
+	assert const_value < $ff, "overcast_alias_group overflow"
+	const \1
+	db GROUP_\2
+	for x, 2, _NARG + 1
+		assert GROUP_\2 == GROUP_\<x>, "All maps in an overcast alias group must be in the same map group"
+		db MAP_\<x>
+	endr
+	db -1 ; terminator
+ENDM
+
+RandomAliasedOvercastMapGroups:
+	const_def NUM_MAP_GROUPS + 1 ; aliased groups start after normal groups
+	overcast_alias_group AZALEA_ROUTE_33_ALIAS, AZALEA_TOWN, ROUTE_33
+	overcast_alias_group NATIONAL_PARK_ALIAS, NATIONAL_PARK, NATIONAL_PARK_BUG_CONTEST
+
+MACRO overcast_map
+	const_skip
+	if !DEF(GROUP_\1)
+		db \1, 0
+	else
+		map_id \1
+	endc
+ENDM
+
+RandomOvercastMapsJohto:
+	const_def
+	overcast_map BATTLE_TOWER_OUTSIDE
+	overcast_map BELLCHIME_TRAIL
+	overcast_map BLACKTHORN_CITY
+	overcast_map CHERRYGROVE_BAY
+	overcast_map CHERRYGROVE_CITY
+	overcast_map CIANWOOD_CITY
+	overcast_map ECRUTEAK_CITY
+	overcast_map ECRUTEAK_SHRINE_OUTSIDE
+	overcast_map GOLDENROD_CITY
+	overcast_map GOLDENROD_HARBOR
+	overcast_map LAKE_OF_RAGE
+	overcast_map MAGNET_TUNNEL_EAST
+	overcast_map MAGNET_TUNNEL_WEST
+	overcast_map MAHOGANY_TOWN
+	overcast_map NEW_BARK_TOWN
+	overcast_map OLIVINE_CITY
+	overcast_map OLIVINE_CITY_ROUTE_35_COAST_DUAL
+	overcast_map OLIVINE_PORT
+	overcast_map ROUTE_29
+	overcast_map ROUTE_30
+	overcast_map ROUTE_31
+	overcast_map ROUTE_32
+	overcast_map ROUTE_32_COAST
+	overcast_map ROUTE_34
+	overcast_map ROUTE_34_COAST
+	overcast_map ROUTE_35
+	overcast_map ROUTE_35_COAST_NORTH
+	overcast_map ROUTE_35_COAST_SOUTH
+	overcast_map ROUTE_36
+	overcast_map ROUTE_37
+	overcast_map ROUTE_38
+	overcast_map ROUTE_39
+	overcast_map ROUTE_40
+	overcast_map ROUTE_41
+	overcast_map ROUTE_42
+	overcast_map ROUTE_43
+	overcast_map ROUTE_44
+	overcast_map ROUTE_45
+	overcast_map ROUTE_46
+	overcast_map ROUTE_47
+	overcast_map ROUTE_48
+	overcast_map RUINS_OF_ALPH_OUTSIDE
+	overcast_map SILVER_CAVE_OUTSIDE
+	overcast_map SINJOH_RUINS
+	overcast_map SNOWTOP_MOUNTAIN_INSIDE
+	overcast_map STORMY_BEACH
+	overcast_map VIOLET_CITY
+	overcast_map VIOLET_OUTSKIRTS
+	overcast_map YELLOW_FOREST
+	; aliases
+	overcast_map AZALEA_ROUTE_33_ALIAS
+	overcast_map NATIONAL_PARK_ALIAS
+	DEF NUM_JOHTO_OVERCAST_MAPS EQU const_value
+
+RandomOvercastMapsKanto:
+	const_def
+	overcast_map BEAUTIFUL_BEACH
+	overcast_map CELADON_CITY
+	overcast_map CERULEAN_CAPE
+	overcast_map CERULEAN_CITY
+	overcast_map CINNABAR_ISLAND
+	overcast_map FARAWAY_ISLAND
+	overcast_map FARAWAY_JUNGLE
+	overcast_map FIRE_ISLAND_ROOF
+	overcast_map FUCHSIA_CITY
+	overcast_map ICE_ISLAND_ROOF
+	overcast_map INDIGO_PLATEAU
+	overcast_map LAVENDER_TOWN
+	overcast_map LIGHTNING_ISLAND_ROOF
+	overcast_map LUCKY_ISLAND
+	overcast_map MOUNT_MOON_SQUARE
+	overcast_map NAVEL_ROCK_OUTSIDE
+	overcast_map PALLET_TOWN
+	overcast_map PEWTER_CITY
+	overcast_map ROCKY_BEACH
+	overcast_map ROUTE_1
+	overcast_map ROUTE_10_NORTH
+	overcast_map ROUTE_10_SOUTH
+	overcast_map ROUTE_11
+	overcast_map ROUTE_12_NORTH
+	overcast_map ROUTE_12_SOUTH
+	overcast_map ROUTE_13_EAST
+	overcast_map ROUTE_13_WEST
+	overcast_map ROUTE_14
+	overcast_map ROUTE_15
+	overcast_map ROUTE_16_NORTHEAST
+	overcast_map ROUTE_16_NORTHWEST
+	overcast_map ROUTE_16_SOUTH
+	overcast_map ROUTE_16_WEST
+	overcast_map ROUTE_17
+	overcast_map ROUTE_18_EAST
+	overcast_map ROUTE_18_WEST
+	overcast_map ROUTE_19
+	overcast_map ROUTE_20
+	overcast_map ROUTE_21
+	overcast_map ROUTE_22
+	overcast_map ROUTE_23
+	overcast_map ROUTE_24
+	overcast_map ROUTE_25
+	overcast_map ROUTE_26
+	overcast_map ROUTE_27
+	overcast_map ROUTE_28
+	overcast_map ROUTE_2_NORTH
+	overcast_map ROUTE_2_SOUTH
+	overcast_map ROUTE_3
+	overcast_map ROUTE_4
+	overcast_map ROUTE_49
+	overcast_map ROUTE_5
+	overcast_map ROUTE_6
+	overcast_map ROUTE_7
+	overcast_map ROUTE_8
+	overcast_map ROUTE_9
+	overcast_map SAFARI_ZONE_EAST
+	overcast_map SAFARI_ZONE_HUB
+	overcast_map SAFARI_ZONE_NORTH
+	overcast_map SAFARI_ZONE_WEST
+	overcast_map SAFFRON_CITY
+	overcast_map SHAMOUTI_COAST
+	overcast_map SHAMOUTI_ISLAND
+	overcast_map SHAMOUTI_SHRINE_RUINS
+	overcast_map URAGA_CHANNEL_EAST
+	overcast_map URAGA_CHANNEL_WEST
+	overcast_map VALENCIA_ISLAND
+	overcast_map VERMILION_CITY
+	overcast_map VERMILION_PORT
+	overcast_map VIRIDIAN_CITY
+	overcast_map VIRIDIAN_FOREST
+	overcast_map WARM_BEACH
+	DEF NUM_KANTO_OVERCAST_MAPS EQU const_value
