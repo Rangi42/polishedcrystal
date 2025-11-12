@@ -134,16 +134,22 @@ CheckGenericOvercast:
 .aliased_group
 	push hl
 	call GetAliasedGroup
-	ld a, [hli]
-	cp b
-	jr nz, .not_overcast_pop_hl
-.check_next_alias_map
+.alias_loop
 	ld a, [hli]
 	cp -1
 	jr z, .not_overcast_pop_hl
-	cp c
+	cp b
 	jr nz, .check_next_alias_map
-	; found a match
+	ld a, [hli]
+	cp c
+	jr z, .found_map_in_alias
+	jr .alias_loop
+
+.check_next_alias_map
+	inc hl
+	jr .alias_loop
+
+.found_map_in_alias
 	pop hl
 	jr .overcast
 
@@ -250,21 +256,34 @@ GenerateRandomIntensity:
 	ld a, OVERCAST_INTENSITY_OVERCAST
 	ret
 
-MACRO overcast_alias_group
-	assert const_value < $ff, "overcast_alias_group overflow"
+MACRO overcast_area
+	assert const_value < $ff, "overcast_area overflow"
 	const \1
-	db GROUP_\2
 	for x, 2, _NARG + 1
-		assert GROUP_\2 == GROUP_\<x>, "All maps in an overcast alias group must be in the same map group"
-		db MAP_\<x>
+		map_id \<x>
 	endr
 	db -1 ; terminator
 ENDM
 
 RandomAliasedOvercastMapGroups:
 	const_def NUM_MAP_GROUPS + 1 ; aliased groups start after normal groups
-	overcast_alias_group AZALEA_ROUTE_33_ALIAS, AZALEA_TOWN, ROUTE_33
-	overcast_alias_group NATIONAL_PARK_ALIAS, NATIONAL_PARK, NATIONAL_PARK_BUG_CONTEST
+	overcast_area AREA_ROUTE_32, ROUTE_32, MAGNET_TUNNEL_EAST
+	overcast_area AREA_AZALEA, AZALEA_TOWN, ROUTE_33
+	overcast_area AREA_ROUTE_34, ROUTE_34, ROUTE_34_COAST
+	overcast_area AREA_GOLDENROD, GOLDENROD_CITY, MAGNET_TUNNEL_WEST
+	overcast_area AREA_NATIONAL_PARK, NATIONAL_PARK, NATIONAL_PARK_BUG_CONTEST
+	overcast_area AREA_ECRUTEAK, ECRUTEAK_CITY, ECRUTEAK_SHRINE_OUTSIDE, BELLCHIME_TRAIL
+	overcast_area AREA_ROUTE_35_COAST, ROUTE_35_COAST_NORTH, ROUTE_35_COAST_SOUTH
+	overcast_area AREA_ROUTES_47_48, ROUTE_47, ROUTE_48
+	overcast_area AREA_ROUTE_42, ROUTE_42, VIOLET_OUTSKIRTS
+	overcast_area AREA_LAKE_OF_RAGE, ROUTE_43, LAKE_OF_RAGE
+	overcast_area AREA_ROUTE_2, ROUTE_2_NORTH, ROUTE_2_SOUTH
+	overcast_area AREA_ROUTE_10, ROUTE_10_NORTH, ROUTE_10_SOUTH
+	overcast_area AREA_ROUTE_12, ROUTE_12_NORTH, ROUTE_12_SOUTH
+	overcast_area AREA_ROUTE_13, ROUTE_13_EAST, ROUTE_13_WEST
+	overcast_area AREA_ROUTE_16, ROUTE_16_NORTHEAST, ROUTE_16_NORTHWEST, ROUTE_16_SOUTH, ROUTE_16_WEST
+	overcast_area AREA_ROUTE_18, ROUTE_18_EAST, ROUTE_18_WEST
+	overcast_area AREA_URAGA_CHANNEL, URAGA_CHANNEL_EAST, URAGA_CHANNEL_WEST
 
 MACRO overcast_map
 	const_skip
@@ -278,18 +297,11 @@ ENDM
 RandomOvercastMapsJohto:
 	const_def
 	overcast_map BATTLE_TOWER_OUTSIDE
-	overcast_map BELLCHIME_TRAIL
 	overcast_map BLACKTHORN_CITY
 	overcast_map CHERRYGROVE_BAY
 	overcast_map CHERRYGROVE_CITY
 	overcast_map CIANWOOD_CITY
-	overcast_map ECRUTEAK_CITY
-	overcast_map ECRUTEAK_SHRINE_OUTSIDE
-	overcast_map GOLDENROD_CITY
 	overcast_map GOLDENROD_HARBOR
-	overcast_map LAKE_OF_RAGE
-	overcast_map MAGNET_TUNNEL_EAST
-	overcast_map MAGNET_TUNNEL_WEST
 	overcast_map MAHOGANY_TOWN
 	overcast_map NEW_BARK_TOWN
 	overcast_map OLIVINE_CITY
@@ -298,37 +310,35 @@ RandomOvercastMapsJohto:
 	overcast_map ROUTE_29
 	overcast_map ROUTE_30
 	overcast_map ROUTE_31
-	overcast_map ROUTE_32
 	overcast_map ROUTE_32_COAST
-	overcast_map ROUTE_34
-	overcast_map ROUTE_34_COAST
 	overcast_map ROUTE_35
-	overcast_map ROUTE_35_COAST_NORTH
-	overcast_map ROUTE_35_COAST_SOUTH
 	overcast_map ROUTE_36
 	overcast_map ROUTE_37
 	overcast_map ROUTE_38
 	overcast_map ROUTE_39
 	overcast_map ROUTE_40
 	overcast_map ROUTE_41
-	overcast_map ROUTE_42
-	overcast_map ROUTE_43
 	overcast_map ROUTE_44
 	overcast_map ROUTE_45
 	overcast_map ROUTE_46
-	overcast_map ROUTE_47
-	overcast_map ROUTE_48
 	overcast_map RUINS_OF_ALPH_OUTSIDE
 	overcast_map SILVER_CAVE_OUTSIDE
 	overcast_map SINJOH_RUINS
 	overcast_map SNOWTOP_MOUNTAIN_INSIDE
 	overcast_map STORMY_BEACH
 	overcast_map VIOLET_CITY
-	overcast_map VIOLET_OUTSKIRTS
 	overcast_map YELLOW_FOREST
 	; aliases
-	overcast_map AZALEA_ROUTE_33_ALIAS
-	overcast_map NATIONAL_PARK_ALIAS
+	overcast_map AREA_ROUTE_32
+	overcast_map AREA_AZALEA
+	overcast_map AREA_ROUTE_34
+	overcast_map AREA_GOLDENROD
+	overcast_map AREA_NATIONAL_PARK
+	overcast_map AREA_ECRUTEAK
+	overcast_map AREA_ROUTE_35_COAST
+	overcast_map AREA_ROUTES_47_48
+	overcast_map AREA_ROUTE_42
+	overcast_map AREA_LAKE_OF_RAGE
 	DEF NUM_JOHTO_OVERCAST_MAPS EQU const_value
 
 RandomOvercastMapsKanto:
@@ -353,22 +363,10 @@ RandomOvercastMapsKanto:
 	overcast_map PEWTER_CITY
 	overcast_map ROCKY_BEACH
 	overcast_map ROUTE_1
-	overcast_map ROUTE_10_NORTH
-	overcast_map ROUTE_10_SOUTH
 	overcast_map ROUTE_11
-	overcast_map ROUTE_12_NORTH
-	overcast_map ROUTE_12_SOUTH
-	overcast_map ROUTE_13_EAST
-	overcast_map ROUTE_13_WEST
 	overcast_map ROUTE_14
 	overcast_map ROUTE_15
-	overcast_map ROUTE_16_NORTHEAST
-	overcast_map ROUTE_16_NORTHWEST
-	overcast_map ROUTE_16_SOUTH
-	overcast_map ROUTE_16_WEST
 	overcast_map ROUTE_17
-	overcast_map ROUTE_18_EAST
-	overcast_map ROUTE_18_WEST
 	overcast_map ROUTE_19
 	overcast_map ROUTE_20
 	overcast_map ROUTE_21
@@ -379,8 +377,6 @@ RandomOvercastMapsKanto:
 	overcast_map ROUTE_26
 	overcast_map ROUTE_27
 	overcast_map ROUTE_28
-	overcast_map ROUTE_2_NORTH
-	overcast_map ROUTE_2_SOUTH
 	overcast_map ROUTE_3
 	overcast_map ROUTE_4
 	overcast_map ROUTE_49
@@ -397,12 +393,18 @@ RandomOvercastMapsKanto:
 	overcast_map SHAMOUTI_COAST
 	overcast_map SHAMOUTI_ISLAND
 	overcast_map SHAMOUTI_SHRINE_RUINS
-	overcast_map URAGA_CHANNEL_EAST
-	overcast_map URAGA_CHANNEL_WEST
 	overcast_map VALENCIA_ISLAND
 	overcast_map VERMILION_CITY
 	overcast_map VERMILION_PORT
 	overcast_map VIRIDIAN_CITY
 	overcast_map VIRIDIAN_FOREST
 	overcast_map WARM_BEACH
+	; aliases
+	overcast_map AREA_ROUTE_2
+	overcast_map AREA_ROUTE_10
+	overcast_map AREA_ROUTE_12
+	overcast_map AREA_ROUTE_13
+	overcast_map AREA_ROUTE_16
+	overcast_map AREA_ROUTE_18
+	overcast_map AREA_URAGA_CHANNEL
 	DEF NUM_KANTO_OVERCAST_MAPS EQU const_value
