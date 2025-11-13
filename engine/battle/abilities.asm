@@ -994,7 +994,7 @@ RunEnemyNullificationAbilities:
 
 NullificationAbilities:
 	dbw DRY_SKIN, DrySkinAbility
-	dbw FLASH_FIRE, FlashFireAbility
+	dbw FLASH_FIRE, FlashFireNullificationAbility
 	dbw LIGHTNING_ROD, LightningRodAbility
 	dbw MOTOR_DRIVE, MotorDriveAbility
 	dbw SAP_SIPPER, SapSipperAbility
@@ -1124,7 +1124,7 @@ WeakArmorAbility:
 	call EndAbility
 	farjp CheckMirrorHerb
 
-FlashFireAbility:
+FlashFireNullificationAbility:
 	call BeginAbility
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS1
@@ -1669,6 +1669,7 @@ OffensiveDamageAbilities:
 	dbw SHEER_FORCE, SheerForceAbility
 	dbw ANALYTIC, AnalyticAbility
 	dbw SOLAR_POWER, SolarPowerAbility
+	dbw FLASH_FIRE, FlashFireDamageAbility
 	dbw IRON_FIST, IronFistAbility
 	dbw TOUGH_CLAWS, ToughClawsAbility
 	dbw MEGA_LAUNCHER, MegaLauncherAbility
@@ -1784,6 +1785,20 @@ SolarPowerAbility:
 	ret nz
 	ln a, 3, 2 ; x1.5
 	jmp ApplySpecialAttackDamageMod
+
+FlashFireDamageAbility:
+; 150% damage for fire-type moves when previously hit by a fire move
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
+	bit SUBSTATUS_FLASH_FIRE, a
+	ret z
+
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	ret nz
+	ln a, 3, 2 ; x1.5
+	jmp MultiplyAndDivide
 
 ToughClawsAbility:
 	call CheckContactMove

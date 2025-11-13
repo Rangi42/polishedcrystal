@@ -4374,23 +4374,6 @@ BattleCommand_damagecalc:
 	call nz, ApplyPhysicalAttackDamageMod
 
 .burn_done
-	; Flash Fire
-	call GetFutureSightUser
-	jr nz, .no_flash_fire
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVar
-	bit SUBSTATUS_FLASH_FIRE, a
-	jr z, .no_flash_fire
-	call GetOpponentAbility
-	cp NEUTRALIZING_GAS
-	jr z, .no_flash_fire
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp FIRE
-	ln a, 3, 2 ; x1.5
-	call z, MultiplyAndDivide
-
-.no_flash_fire
 	; Critical hits
 	call CheckCrit
 	jr z, .no_crit
