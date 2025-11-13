@@ -211,7 +211,7 @@ MACRO tr_extra
 
 	; All of these fields are optional.
 	for i, 1, _NARG + 1
-		if !STRCMP("\<i>", "SHINY")
+		if "\<i>" === "SHINY"
 			redef _tr_pk{d:p}_extra |= SHINY_MASK
 		elif DEF(NAT_\<i>)
 			redef _tr_pk{d:p}_extra |= NAT_\<i>
