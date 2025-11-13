@@ -238,9 +238,9 @@ MACRO tr_dvs
 ; WARNING: Unlike tr_evs, unmentioned DVs will be set to 15, not 0!
 	def _tr_flags |= TRAINERTYPE_DVS
 
-	; check if a constant was used
-	if STRFIND("\#", "_") != -1
-		redef _tr_pk{d:p}_dvs EQUS "{\#}"
+	; check if a constant was used, e.g. DVS_HP_*
+	if STRFIND("\#", "_") != -1 && STRFIND("\#", ",") == -1
+		redef _tr_pk{d:p}_dvs EQUS #\#
 	else
 		redef _tr_pk{d:p}_dvs EQUS "\#"
 	endc
