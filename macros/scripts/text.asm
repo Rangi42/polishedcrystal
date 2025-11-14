@@ -159,7 +159,7 @@ MACRO _dtxt
 				endc
 				DEF _sub EQUS STRCHAR(#_str, 0)
 				REDEF _str EQUS STRSLICE(#_str, STRLEN(#_sub))
-				_dchr "{_sub}"
+				_dchr #_sub
 				PURGE _sub
 			endr
 			PURGE _str
@@ -207,7 +207,7 @@ MACRO _dchr
 	else
 		; We're compressing text; count up the raw and compressed data
 		if DEF(HUFFMAN)
-			println "\1"
+			println STRFMT("\"%#s\"", \1)
 		endc
 		; Append the raw character
 		DEF _raw_byte_{d:_raw_bytes} = _chr
