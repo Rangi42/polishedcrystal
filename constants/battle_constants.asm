@@ -278,10 +278,10 @@ DEF GUARD_MIST      EQU %11110000
 
 ; wMoveState
 	const_def
-	const MOVESTATE_PHYSICAL_F
-	const MOVESTATE_SPECIAL_F
-	const MOVESTATE_IGNOREABIL_F
-	const MOVESTATE_ENDED_F
+	const MOVESTATE_PHYSICAL_F ; move is physical (needed for counter)
+	const MOVESTATE_SPECIAL_F ; move is special (needed for mirror coat)
+	const MOVESTATE_IGNOREABIL_F ; move ignores Abilities (Mold Breaker)
+	const MOVESTATE_ENDED_F ; CheckTurn failure flag
 	const MOVESTATE_OPP_PHYSICAL_F
 	const MOVESTATE_OPP_SPECIAL_F
 	const MOVESTATE_OPP_IGNOREABIL_F

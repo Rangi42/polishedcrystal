@@ -1985,7 +1985,8 @@ _GetTrueUserIgnorableAbility::
 	call GetTrueUserAbility
 	call StackCallOpponentTurn
 _GetIgnorableAbility:
-; Returns the user/target's ability unless the other side is ignoring Abilities.
+; Check if user's Mold Breaker ignores opponent's ability a.
+; Returns the opponent's ability unless the other side is ignoring Abilities.
 	push de
 	push bc
 	ld b, a

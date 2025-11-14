@@ -504,7 +504,7 @@ GetOpponentAbility::
 	ret
 
 GetTrueUserIgnorableAbility::
-; Returns an opponent's ability unless Mold Breaker
+; Returns an user's ability unless Mold Breaker
 ; will suppress it. Preserves bc/de/hl. Note that
 ; we can't use CallOpponentTurn, because TrueUser also
 ; checks for whether the attack is external.
