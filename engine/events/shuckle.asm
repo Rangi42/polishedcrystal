@@ -28,7 +28,7 @@ ReturnShuckie:
 	ld a, [de]
 	cp [hl]
 	jr nz, .DontReturn
-	cp "@"
+	cp '@'
 	jr z, .done
 	inc de
 	inc hl

@@ -164,7 +164,7 @@ DayCare_DepositPokemonText:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
 	jr PrintDayCareText
 
@@ -224,7 +224,7 @@ DayCare_TakeMoney_PlayCry:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	ld a, DAYCARETEXT_TOO_SOON
 	; fallthrough
 
@@ -396,7 +396,12 @@ Special_DayCareManOutside:
 	text_end
 
 .AskGiveEgg:
+	; if user already bred an egg, use shorter monologue.
+	eventflagcheck EVENT_BRED_AN_EGG
+	ld hl, .IntroAgainText
+	jr nz, .show_question
 	ld hl, .IntroText
+.show_question
 	call PrintText
 	call YesNoBox
 	jr c, .Declined
@@ -443,6 +448,11 @@ Special_DayCareManOutside:
 .IntroText:
 	; Ah, it's you! We were raising your #MON, and my goodness, were we surprised! Your #MON had an EGG! We don't know how it got there, but your #MON had it. You want it?
 	text_far _FoundAnEggText
+	text_end
+
+.IntroAgainText:
+	; Text you get after you already received your first egg.
+	text_far _FoundAnEggAgainText
 	text_end
 
 .GotEggText:
@@ -704,43 +714,55 @@ DayCare_GenerateEgg:
 	ld [wBreedMotherOrNonDitto], a
 	and a
 	ld a, [wBreedMon1Species]
-	ld c, a
 	jr z, .GotMother
 	ld a, [wBreedMon2Species]
-	ld c, a
 
 .GotMother:
-	ld [wCurPartySpecies], a
+	ld c, a
 	ld hl, wBreedMon1Form
 	call .inherit_mother_unless_samespecies ; this should preserve c!
 	and SPECIESFORM_MASK
-	ld b, a
 	ld d, a
+	push bc
 	farcall CheckInvalidVariants ; conveniently, forms we don't want to pass on are here
+	pop bc
 	ld a, d
 	jr nc, .parent_form_ok
 	assert PLAIN_FORM == 1
 	and EXTSPECIES_MASK
 	inc a ; or PLAIN_FORM
 .parent_form_ok
-	ld [wCurForm], a
-	ld d, a
-	farcall GetBaseEvolution ; presently preserves de
+	ld b, a
+	push bc
+	call GetSpeciesAndFormIndex
+	ld hl, EggSpeciesMovesPointers
+	add hl, bc
+	add hl, bc
+	pop bc
+	ld a, BANK(EggSpeciesMovesPointers)
+	call GetFarWord
+	ld a, BANK(EggSpeciesMoves)
+	call GetFarWord
+	ld a, l
+	inc a
+	jr nz, .found_preevo
+	ld h, b
+	ld l, c
+.found_preevo
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
 
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
+	ld a, h
+	ld [wCurForm], a
+	assert !HIGH(NIDORAN_F) && !HIGH(NIDORAN_M)
+	and EXTSPECIES_MASK
+	ld a, l
+	jr nz, .nidoran_check_done
 	cp NIDORAN_F
-	jr z, .may_be_nidoran
+	jr z, .random_nidoran
 	cp NIDORAN_M
 	jr nz, .nidoran_check_done
-.may_be_nidoran
-	assert !HIGH(NIDORAN_F) && !HIGH(NIDORAN_M)
-	ld a, [wCurForm]
-	and EXTSPECIES_MASK
-	jr nz, .nidoran_check_done
-
+.random_nidoran
 	; random Nidoran offspring
 	call Random
 	cp 1 + 50 percent
@@ -748,10 +770,10 @@ DayCare_GenerateEgg:
 	sbc a
 	and NIDORAN_F - NIDORAN_M
 	add NIDORAN_M
+.nidoran_check_done
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 
-.nidoran_check_done
 	; Clear tempmon struct
 	xor a
 	ld hl, wTempMon
@@ -762,9 +784,12 @@ DayCare_GenerateEgg:
 	ld [wTempMonSpecies], a
 
 	ld a, [wCurForm]
+	ld b, a
 	and FORM_MASK
 	jr nz, .form_ok
 	ld a, d
+	and FORM_MASK
+	or b
 	ld [wCurForm], a
 .form_ok
 	call GetBaseData

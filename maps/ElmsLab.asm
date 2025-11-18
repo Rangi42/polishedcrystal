@@ -149,18 +149,14 @@ ElmCheckOddSouvenir:
 	iftrue ElmCheckBattleScript
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue ElmGiveOddSouvenirScript
+	checkevent EVENT_ELM_WANTS_TO_BATTLE
+	iftrue ElmAskBattleScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
 	iffalsefwd ElmCheckTogepiEgg
-	setmonval TOGEPI
-	special Special_FindThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
-	setmonval TOGETIC
-	special Special_FindThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
-	setmonval TOGEKISS
-	special Special_FindThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
-	jumpopenedtext ElmThoughtEggHatchedText
+	scall ElmEggHatchedScript
+	; need to reopen text boxes since ElmCheckGotEggAgain's
+	; jumpopenedtext will close them.
+	jumptext ElmThoughtEggHatchedText
 
 ElmEggHatchedScript:
 	setmonval TOGEPI
@@ -430,6 +426,7 @@ ElmCheckBattleScript:
 	writetext ElmBeforeBattleText
 	waitbutton
 ElmAskBattleScript:
+	setevent EVENT_ELM_WANTS_TO_BATTLE
 	writetext ElmAskBattleText
 	yesorno
 	iffalse_jumpopenedtext ElmRefusedBattleText
@@ -454,6 +451,7 @@ ElmAskBattleScript:
 	loadtrainer PROF_ELM, 3
 .GotTeam:
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	clearevent EVENT_ELM_WANTS_TO_BATTLE
 	setevent EVENT_BATTLED_PROF_ELM
 	startbattle
 	reloadmap
@@ -1050,13 +1048,6 @@ ChoseStarterText:
 	text "Elm: I think"
 	line "that's a great"
 	cont "#mon too!"
-	done
-
-ReceivedStarterText:
-	text "<PLAYER> received"
-	line ""
-	text_ram wStringBuffer3
-	text "!"
 	done
 
 ElmDirectionsText1:

@@ -35,6 +35,7 @@ CheckItem::
 CheckTMHM::
 	ld a, [wCurTMHM]
 	ld e, a
+_CheckTMHM::
 	ld d, 0
 	ld b, CHECK_FLAG
 	ld hl, wTMsHMs

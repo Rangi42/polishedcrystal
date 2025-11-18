@@ -9,32 +9,36 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 
 ## Pokémon
 
-* The entire Pokédex of 253 Pokémon can be caught in one game. Some Pokémon, like Houndour, Murkrow, and Misdreavus, are available at sensible locations in Johto without having to wait for Kanto.
-* Added: Leafeon, Glaceon, Sylveon, Togekiss, Weavile, Honchkrow, Mismagius, Electivire, Magmortar, Magnezone, Tangrowth, Rhyperior, Porygon-Z, Yanmega, Gliscor, Mamoswine, and Munchlax.
-* Removed: Spearow, Fearow, Lickitung, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Shuckle, Aipom, Stantler, Cleffa, Igglybuff, Smoochum, and Delibird.
-* New evolution methods work, like Eevee evolving into Glaceon near Ice Rock, or Yanma evolving into Yanmega when knowing AncientPower.
-* Item trade evolutions (like Seadra holding a Dragon Scale) now evolve by leveling up while holding the item.
-* Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient stat exp in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is enough).
-* Magneton evolves into Magnezone near the Lodestone in Rock Tunnel.
+* The New Pokédex order used by the project currently contains 289 entries (see data/pokemon/dex_order_new.asm). Many Johto-appropriate Pokémon (for example, Houndour, Murkrow, and Misdreavus) are available in sensible Johto locations rather than being gated behind Kanto.
+* All later-generation Pokémon and forms related to the original Gen 1+2 ones have been added. Examples include Leafeon, Glaceon, Sylveon, Farigifaf, Dudunsparce, Alolan, Galarian, and Hisuian forms, and others (the full list is defined in constants/pokemon_constants.asm and the Pokédex order in data/pokemon/dex_order_new.asm).
+* Several Pokémon that were removed in older patches due to engine limitations were later re-included (for example: Spearow, Fearow, Lickitung, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Shuckle, Aipom, Stantler, Cleffa, Igglybuff, Smoochum, and Delibird) — see CHANGELOG.md and bsp/save_patches.txt for historical notes and index changes.
+* Evolution mechanics are implemented via the project's evolutions table (data/pokemon/evos_attacks.asm). Notable, concrete behaviours include:
+	- Eevee family: Leafeon can be obtained either with a Leaf Stone or by leveling in Ilex Forest; Glaceon either with an Ice Stone or by leveling in Ice Path; Sylveon via Shiny Stone (see the evo_data entries in data/pokemon/evos_attacks.asm).
+	- Magneton -> Magnezone: Magnezone can be obtained with a Thunder Stone or by leveling in specific locations (MAGNET_TUNNEL or DIM_CAVE) as defined in the evo table.
+	- Trade and item-based evolutions: some evolutions use a trade-with-item (EVOLVE_TRADE) rule — e.g., Seadra -> Kingdra via trade while holding a Dragon Scale — while others use holding-item + level (EVOLVE_HOLDING) or item-use rules. The exact method for each species is listed in data/pokemon/evos_attacks.asm.
+	- Porygon chain: Porygon -> Porygon2 via UPGRADE; Porygon2 -> Porygon-Z via trade with DUBIOUS_DISC (see evo_data entries).
+	- Move- or move-triggered evolutions: several later-gen evolutions are implemented via learning a specific move (for example, Tangrowth, Yanmega, and Mamoswine are implemented via ANCIENTPOWER as an evo trigger in the evo table).
+	- Generation II trade evolutions (Machoke, Graveler, Haunter, Kadabra) are implemented as trade evolutions (EVOLVE_TRADE / LINKING_CORD) in the current codebase — they are not implemented as a stat-exp evolution here.
+
+For the authoritative, per-species rules and the complete list of included Pokémon, consult data/pokemon/evos_attacks.asm, constants/pokemon_constants.asm, and data/pokemon/dex_order_new.asm.
 
 
 ## Moves
 
-* Added: Aerial Ace, Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Disarm Voice, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Energy Ball, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hail, Hex, Hone Claws, Hurricane, Hyper Voice, Ice Shard, Icicle Crash, Iron Head, Metal Sound, Moonblast, Nasty Plot, Night Slash, Play Rough, Poison Jab, Power Gem, Psystrike, Scald, Seed Bomb, Shadow Claw, Stone Edge, Water Pulse, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt.
-* Removed: Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Bubble, Clamp, Comet Punch, Constrict, Conversion2, Cotton Spore, Detect, Fissure, Frustration, Guillotine, Horn Drill, Jump Kick, Kinesis, Lovely Kiss, Meditate, Mega Kick, Mega Punch, Mimic, Mind Reader, Mirror Move, Poison Gas, Powder Snow, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Synthesis, Tail Whip, Twister, Vice Grip, and Withdraw.
+* Added: Acrobatics, Aerial Ace, Air Slash, Aqua Jet, Aqua Tail, Astonish, Aura Sphere, Avalanche, Brave Bird, Bubble Beam, Bug Bite, Bug Buzz, Bulk Up, Bulldoze, Bullet Punch, Calm Mind, Close Combat, Dark Pulse, Dazzlingleam, Disarm Voice, Double Slap, Dragon Claw, Dragon Dance, Dragon Pulse, Draining Kiss, Drain Punch, Earth Power, Energy Ball, Extrasensory, Facade, Feint Attack, Flame Charge, Flare Blitz, Flash Cannon, Focus Blast, Fresh Snack, Fury Strikes, Giga Impact, Gunk Shot, Gyro Ball, Hail, Healinglight, Hex, Hone Claws, Hurricane, Hyper Voice, Ice Shard, Icicle Crash, Icicle Spear, Iron Head, Knock Off, Moonblast, Nasty Plot, Night Slash, Play Rough, Poison Jab, Power Gem, Power Whip, Psystrike, Rock Blast, Roost, Scald, Seed Bomb, Shadow Claw, Shell Smash, Skill Swap, Solar Beam, Sonic Boom, Stone Edge, Sucker Punch, Toxic Spikes, Trick, Trick Room, U Turn, Venoshock, Volt Switch, Water Pulse, Wild Charge, Will O Wisp, X Scissor, Zen Headbutt.
+* Removed: Acid Armor, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Bubble, Bubblebeam, Clamp, Comet Punch, Constrict, Conversion2, Cotton Spore, Detect, Doubleslap, Egg Bomb, Faint Attack, Fissure, Flail, Flame Wheel, Frustration, Fury Attack, Fury Cutter, Fury Swipes, Guillotine, Harden, Horn Drill, Jump Kick, Kinesis, Lock On, Lovely Kiss, Meditate, Mega Kick, Mega Punch, Milk Drink, Mimic, Mind Reader, Mirror Move, Mist, Moonlight, Morning Sun, Nightmare, Poison Gas, Pound, Powder Snow, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sand Attack, Selfdestruct, Sharpen, Skull Bash, Sky Attack, Slam, Sludge, Smog, Snore, Softboiled, Solarbeam, Sonicboom, Spider Web, Spike Cannon, Spite, Submission, Sweet Scent, Synthesis, Tail Whip, Triple Kick, Twineedle, Twister, Vicegrip, Vital Throw, Whirlwind, Withdraw.
 * Learnsets have been updated close to Gen VI, with missing moves replaced by similar, egg, TM, or event-exclusive moves.
-
 
 ## Battle Mechanics
 
-* The Fairy type, with the Pink Bow as its type-enhancing item.
+* The Fairy type is implemented. Type-enhancing held items are present: Pink Bow boosts Fairy-type moves (HELD_TYPE_BOOST -> FAIRY), and Silk Scarf boosts Normal-type moves (HELD_TYPE_BOOST -> NORMAL).
 * Type chart, base stats, and move attributes all updated to Gen VI.
 * Physical/Special/Status split.
 * Natures (determined from DVs since personality values don't exist in Gen II) thanks to FredrIQ.
 * Gain experience from catching Pokémon.
 * Play low-pitched cries when a player or foe Pokémon faints.
-* Money loss formula from Gen V.
-* Shiny Pokémon now have an odd Attack DV, 2, 3, 7, or 11 Defense, 5 or 13 Speed, and a perfect 15 Special; so 1 in 1,024 Pokémon is shiny.
+* Money loss uses a Gen VI-style formula.
+* Shiny Pokémon are determined by the project's shiny flag; the base shiny chance is 1/4096 (SHINY_NUMERATOR = 16). The Shiny Charm and the Masuda method modify this chance in egg/capture logic. The Odd Egg is always shiny.
 * Type-enhancing items raise by 20%, not 10%.
 * Light Ball doubles Pikachu's Attack as well as Special Attack.
 * Critical hits do 150% damage, not 200%, but are more likely.
@@ -69,20 +73,32 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 
 * Hold B to use Running Shoes, or turn on the Option to always use them.
 * Unlimited-use TMs.
-* Continuous Repel system.
+* Continuous Repel system. (You will be prompted when one wears off.)
 * Cure poison when it reaches 1 HP outside a battle.
-* Eggs hatch at level 1.
+* Eggs hatch at level 1. Abilities or items like Flame Body and the Oval Charm make eggs hatch faster.
 * Trees randomly give 1, 2, or 3 Berries.
 * Surf at Bicycle/Running Shoes speed.
 * Maximum $9,999,999 money and 50,000 coins.
-* Maximum 30 items and 16 Balls in your bag pocket.
-* Bill calls to switch boxes when one is full.
+* Bag pocket sizes: Items 75, Medicine 37, Balls 25, Berries 31 (per-pocket capacities; item stacks up to 99).
+* Bill will call to warn you when the PC/storage is nearly or completely full. The storage system will automatically place new Pokémon into the next available box if the current box is full, and it reports if the entire PC is full (in which case you'd need to free space).
 
 
 ## Maps
 
-* Restored locations from R/B/Y and HG/SS: Viridian Forest, Pewter Museum, Celadon Hotel, Silph Co., Pokémon Mansion, Seafoam Islands, Cerulean Cave, Goldenrod PokéCom Center, and Bellchime Trail.
-* Original locations, including Cinnabar Volcano, a new floor of Rock Tunnel, Cherrygrove Bay, Goldenrod Harbor, Route 35 Coast, the Ecruteak Shrine from [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172), custom-designed PokéWalker routes, and others.
+* Restored locations from R/B/Y and HG/SS: Viridian Forest, Pewter Museum, Celadon Hotel, Silph Co., Pokémon Mansion, Seafoam Islands, Cerulean Cave, Goldenrod PokéCom Center, and Bellchime Trail, and more!
+* New / expanded main overworld locations and features included here (examples):
+	- Cinnabar Volcano (multi-floor), Cinnabar Island and related areas
+	- A new floor and expanded layout(s) in Rock Tunnel
+	- Cherrygrove Bay and expanded Cherrygrove town content
+	- Goldenrod Harbor (and Harbour Gate / dual-coast connections)
+	- Route 35 coast and several coast/harbour/dual-coast route variants
+	- Battle Tower and Battle Factory areas (rematches / postgame facilities)
+	- Magnet Tunnel (east/inside/west), Dim Cave (multiple floors), Seafoam Islands, Union Cave expansions, and many additional cave/dungeon floors
+	- Multiple islands and special locations: Whirl Island, Valencia Island, Elemental/Faraway/Lucky/Lightning/Ice Islands and associated roofs/inside maps
+	- Ruins of Alph (expanded chambers), Sinjoh Ruins, Dragon Shrine / Dragon's Den, Tin Tower expansions, Embedded Tower, and other late-game shrine/tower content
+	- Lake of Rage variants (flooded, Magikarp house, hidden power house) and Snowtop Mountain
+	- Olivine City additions and route connections (Route 35 coast dual mappings), Blackthorn City and nearby map content
+	- Numerous route extensions and gated route variants (many Route NN files for weather/gate/house variants across Johto & Kanto)
 * Decorative features added to cities and routes, often from HG/SS.
 * HG/SS-style Town Map.
 
@@ -90,10 +106,13 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 ## Events
 
 * Team Rocket has another plan to thwart.
+* The old Rocket Hideout is repurposed and — by night — is occupied by three leaders (Candela, Spark, and Blanche) who work as teachers by day and are involved in a mysterious project in the hideout.
 * Random Wonder Trades in the Goldenrod PokéCom Center, including random held items and original trainers.
+* Wonder Trade improvements: post-Elite Four behaviour and bug fixes, Eggs can be Wonder Traded, and a small chance for Wonder Traded Pokémon to have Pokérus.
 * Catching all 26 Unown is worthwhile…
 * Move Reminder in the same house as the Move Deleter. (Code borrowed from TPP Anniversary Crystal, thanks to its developers graciously making [their source code](https://github.com/TwitchPlaysPokemon/tppcrystal251pub/) public.)
-* 21 move tutors throughout Johto and Kanto.
+* Many move tutors throughout Johto and Kanto (about 48 locations).
+* Battle Tower and Battle Factory have dedicated events and NPCs (intros, open/closed state, and battle-room trainers such as Anabel, Riley, Buck, Cheryl, Marley, Mira, and others).
 * Falkner is in Dark Cave, encouraging you to beat Sprout Tower first.
 * Photographing your Pokémon at the Cianwood Photo Studio once a day now makes it happier, like haircuts or massages. (No more GameBoy Printer support.)
 * The Mystery Gift girl in Goldenrod Dept. Store gives you a random Berry once a day. (No more Mystery Gift support.)
@@ -107,7 +126,7 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 * Three of Prof. Oak's aides give you items as you complete the Pokédex.
 * Bill's grandpa gives you one of each evolutionary stone in Goldenrod City. Later they can be bought in Celadon Dept. Store.
 * Eusine shows you the legendary beasts in Celadon City in case you haven't found them roaming.
-* Respawn any fainted legendaries (except for Celebi) after beating the Elite Four. (Suicune roams instead of appearing in Bell Tower.) (Also respawns Sudowodo.)
+* Respawn any fainted legendaries (except for Celebi) after beating the Elite Four. (Suicune roams instead of appearing in Bell Tower.) (Also respawns Sudowoodo.)
 
 
 ## Trainers
@@ -126,12 +145,12 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 
 ## Items
 
-* Revised set of 65 TMs and 8 HMs.
+* Revised set of 75 TMs and 6 HMs (see `constants/tmhm_constants.asm`).
 * Four new Poké Balls from Devon Corp.
 * Dome Fossil, Helix Fossil, and Old Amber. Revive them in the now-open Pewter Museum of Science.
 * All of the decorations for your room are available in different places.
 * Earn a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them at higher levels.
-* Other items including Eviolite, Muscle Band, Wise Glasses, and X Spcl. Def.
+* Other items including Eviolite, Muscle Band, Wise Glasses, Life Orb, Choice Band/Scarf/Specs, Assault Vest, Leftovers, Silk Scarf, and X Spcl. Def.
 
 
 ## Bug Fixes
@@ -186,19 +205,32 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 
 ### Moves
 
-* Cut is Steel-type, and has 60 power and 100% accuracy.
-* Fly has 100% accuracy.
-* Strength has 90 power.
-* Rock Smash has 75 power.
-* Whirlpool and Fire Spin have 90% accuracy.
-* Hail boosts Defense of Ice-types by 50%.
-* Submission and Take Down have 90 power, 100% accuracy, and 15 PP to match Wild Charge.
-* Crabhammer and Octazooka have 95% accuracy.
-* Sing has 75% accuracy to match Lovely Kiss.
-* Supersonic has 65% accuracy and 20 PP.
-* Hidden Power is ???-type and has 70 power.
-* Metronome is ???-type.
-* Pain Split is Ghost-type.
+* Attribute differences (per-move):
+  - Absorb: pp: 20 -> 25
+  - Blizzard: power: 120 -> 110
+  - Cut: power: 50 -> 60; type: NORMAL -> STEEL; accuracy: 95 -> 100
+  - Dig: power: 60 -> 90
+  - Fire Spin: power: 15 -> 40; accuracy: 70 -> 90
+  - Flamethrower: power: 95 -> 90
+  - Fly: power: 70 -> 90; accuracy: 95 -> 100
+  - Glare: accuracy: 75 -> 100
+  - Hidden Power: power: 1 -> 70; type: NORMAL -> UNKNOWN_T
+  - Leech Life: power: 20 -> 80; pp: 15 -> 10
+  - Low Kick: power: 50 -> 1; accuracy: 90 -> 100
+  - Minimize: pp: 20 -> 10
+  - Rapid Spin: power: 20 -> 50; pp: 40 -> 20
+  - Recover: pp: 20 -> 5
+  - Rock Smash: power: 20 -> 40
+  - Sing: accuracy: 55 -> 75
+  - Struggle: type: NORMAL -> UNKNOWN_T
+  - Sunny Day: accuracy: 90 -> 100
+  - Surf: power: 95 -> 90
+  - Swagger: accuracy: 90 -> 85
+  - Tackle: power: 35 -> 40; accuracy: 95 -> 100
+  - Thrash: power: 90 -> 120; pp: 20 -> 10
+  - Thunder: power: 120 -> 110
+  - Thunderbolt: power: 95 -> 90
+  - Wrap: accuracy: 85 -> 90
 
 I know that not everyone likes this kind of change, so I've provided two ROM patches. The "Faithful" patch keeps the canon Pokémon stats and move attributes.
 
@@ -212,7 +244,7 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Revised some shiny palettes (Dragonite is blue like Dragonair, Nidoqueen is pink like Nidoking, Scizor is silver, Espeon is sky blue, Electabuzz is red, etc).
 * Unown isn't the only Pokémon with variant forms…
 * Color-coded starter Poké Balls.
-* Item balls for TMs are blue (inspired by Gen VI's yellow).
+* Item balls for TMs are yellow (inspired by Gen VI's yellow).
 * Surfing on Pikachu uses the minigame music from Yellow version.
 
 

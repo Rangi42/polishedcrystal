@@ -1,6 +1,6 @@
 BattleCommand_teleport:
 	ld a, [wBattleType]
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_NEVER_SHINY, BATTLETYPE_LEGENDARY
 	jr nc, .failed
 
 ; Switch, don't run, in trainer battles
@@ -37,7 +37,8 @@ BattleCommand_teleport:
 .trainer_battle
 	call CheckAnyOtherAliveMons
 	jr z, .failed
-	call AnimateCurrentMove
+	call BattleCommand_lowersub
+	call LoadMoveAnim
 	ld c, 20
 	call DelayFrames
 	ld a, 1 << SWITCH_DEFERRED

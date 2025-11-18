@@ -136,11 +136,6 @@ VioletOutskirtsHouseCaretakerThankYouText:
 	line "dear…"
 	done
 
-VioletOutskirtsHouseTheresAPresenceText:
-	text "There's a strong"
-	line "presence here…"
-	done
-
 VioletOutskirtsHouseStillAPresenceText:
 	text "The spirit is"
 	line "gone, but there's"
@@ -166,7 +161,7 @@ VioletOutskirtsHouseDustText:
 	done
 
 VioletOutskirtsHouseNotAloneText:
-	text "There is a sense"
+	text "You have a sense"
 	line "that something"
 	cont "is watching you…"
 	done

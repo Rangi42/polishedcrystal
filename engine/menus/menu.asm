@@ -7,7 +7,6 @@ _2DMenu_::
 	call UpdateSprites
 	call ApplyTilemap
 
-Get2DMenuSelection:
 	call Init2DMenuCursorPosition
 	call DoMenuJoypadLoop
 	call MenuClickSound
@@ -15,9 +14,9 @@ Get2DMenuSelection:
 	bit 1, a
 	jr z, .skip
 	call GetMenuJoypad
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jr nz, .select
-	bit START_F, a
+	bit B_PAD_START, a
 	jr nz, .start
 
 .skip
@@ -25,7 +24,7 @@ Get2DMenuSelection:
 	rra
 	jr c, .skip2
 	call GetMenuJoypad
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .quit
 
 .skip2
@@ -71,7 +70,6 @@ Draw2DMenu:
 	ldh [hBGMapMode], a
 	call MenuBox
 
-Place2DMenuItemStrings:
 	ld hl, wMenuData_2DMenuItemStringsAddr
 	ld a, [hli]
 	ld d, [hl]
@@ -188,18 +186,18 @@ Init2DMenuCursorPosition:
 
 .InitFlags_c:
 	ld hl, wMenuDataFlags
-	ld a, A_BUTTON
+	ld a, PAD_A
 	bit 0, [hl]
 	jr nz, .skip
-	or B_BUTTON
+	or PAD_B
 .skip
 	bit 1, [hl]
 	jr z, .skip2
-	or SELECT
+	or PAD_SELECT
 .skip2
 	bit 2, [hl]
 	jr z, .skip3
-	or START
+	or PAD_START
 .skip3
 	ld [wMenuJoypadFilter], a
 	ret
@@ -281,21 +279,21 @@ Menu_WasButtonPressed:
 
 _2DMenuInterpretJoypad:
 	call GetMenuJoypad
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jmp nz, .a_button
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jmp nz, .b_button
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jmp nz, .select_button
-	bit START_F, a
+	bit B_PAD_START, a
 	jmp nz, .start_button
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr nz, .d_right
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .d_left
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr nz, .d_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jr nz, .d_down
 	and a
 	ret
@@ -441,7 +439,7 @@ Move2DMenuCursor:
 	ld h, [hl]
 	ld l, a
 	ld a, [hl]
-	cp "▶"
+	cp '▶'
 	jr nz, Place2DMenuCursor
 	ld a, [wCursorOffCharacter]
 	ld [hl], a
@@ -487,10 +485,10 @@ Place2DMenuCursor:
 	ld c, a
 	add hl, bc
 	ld a, [hl]
-	cp "▶"
+	cp '▶'
 	jr z, .cursor_on
 	ld [wCursorOffCharacter], a
-	ld [hl], "▶"
+	ld [hl], '▶'
 
 .cursor_on
 	ld a, l
@@ -500,10 +498,10 @@ Place2DMenuCursor:
 	ret
 
 _PushWindow::
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $7
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wWindowStackPointer
 	ld a, [hli]
@@ -569,7 +567,7 @@ _PushWindow::
 	ld [hl], d
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wWindowStackSize
 	inc [hl]
 	ret
@@ -650,10 +648,10 @@ _ExitMenu::
 	xor a
 	ldh [hBGMapMode], a
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $7
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call GetWindowStackTop
 	ld a, l
@@ -678,7 +676,7 @@ _ExitMenu::
 	call nz, PopWindow
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wWindowStackSize
 	dec [hl]
 	ret
@@ -734,10 +732,10 @@ _InitVerticalMenuCursor::
 	ln a, 2, 0
 	ld [hli], a
 ; wMenuJoypadFilter
-	ld a, A_BUTTON
+	ld a, PAD_A
 	bit 0, b
 	jr nz, .skip_bit_1
-	add B_BUTTON
+	add PAD_B
 .skip_bit_1
 	ld [hli], a
 ; wMenuCursorY

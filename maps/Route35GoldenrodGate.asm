@@ -64,8 +64,10 @@ RandyScript:
 
 GiftSpearowMail:
 	db   FLOWER_MAIL
+	setcharmap no_ngrams
 	db   "Dark Cave leads"
 	next "to another road@"
+	setcharmap default
 
 GiftSpearowName:
 	rawchar "Kenya@"

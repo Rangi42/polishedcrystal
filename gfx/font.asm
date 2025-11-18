@@ -1,5 +1,5 @@
 FontTiles::
-	table_width 114 * LEN_1BPP_TILE
+	table_width 114 * TILE_1BPP_SIZE
 FontNormal:
 INCBIN "gfx/font/normal.1bpp"
 FontNarrow:
@@ -24,7 +24,7 @@ TextboxSpaceGFX::
 INCBIN "gfx/font/space.vwf.1bpp"
 
 Frames:
-	table_width TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
+	table_width TEXTBOX_FRAME_TILES * TILE_1BPP_SIZE
 INCBIN "gfx/frames/1.1bpp"
 INCBIN "gfx/frames/2.1bpp"
 INCBIN "gfx/frames/3.1bpp"
@@ -71,7 +71,7 @@ EnemyStatusIconGFX:
 INCBIN "gfx/battle/status-enemy.2bpp"
 
 TypeIconGFX:
-	table_width 4 * LEN_1BPP_TILE
+	table_width 4 * TILE_1BPP_SIZE
 INCBIN "gfx/battle/types.1bpp"
 	assert_table_length NUM_TYPES + 1
 

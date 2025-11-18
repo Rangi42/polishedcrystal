@@ -202,8 +202,8 @@ PlayMusic2::
 
 	jmp PopAFBCDEHL
 
-PlayCryHeader::
-; Play cry header de.
+PlayCry::
+; Play cry de.
 
 	push hl
 	push de
@@ -215,11 +215,11 @@ PlayCryHeader::
 
 	ld a, BANK(PokemonCries)
 	rst Bankswitch
-	call _LoadCryHeader
+	call _LoadCry
 
-	ld a, BANK(_PlayCryHeader)
+	ld a, BANK(_PlayCry)
 	rst Bankswitch
-	call _PlayCryHeader ; far-ok
+	call _PlayCry ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -450,11 +450,11 @@ TerminateExpBarSound::
 	xor a
 	ld [wChannel5Flags], a
 	ld [wSoundInput], a
-	ldh [rNR10], a
-	ldh [rNR11], a
-	ldh [rNR12], a
-	ldh [rNR13], a
-	ldh [rNR14], a
+	ldh [rAUD1SWEEP], a
+	ldh [rAUD1LEN], a
+	ldh [rAUD1ENV], a
+	ldh [rAUD1LOW], a
+	ldh [rAUD1HIGH], a
 	ret
 
 ChannelsOff::

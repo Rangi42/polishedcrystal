@@ -1461,11 +1461,6 @@ IronBallDesc:
 	next "grounds. (Hold)"
 	done
 
-RingTargetDesc:
-	text "Loses type immun-"
-	next "ities. (Hold)"
-	done
-
 RedCardDesc:
 	text "Switches out foe"
 	next "when hit. (Hold)"
@@ -1717,5 +1712,5 @@ ExpCandyMDesc:
 ExpCandyLDesc:
 ExpCandyXLDesc:
 	text "A candy that"
-	next "gives Exp. Points."
+	next "gives Exp.Points."
 	done

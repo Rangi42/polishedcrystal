@@ -247,7 +247,7 @@ SummaryScreen_DrawPlayerHP:
 	lb bc, 2, 3
 	call PrintNum
 
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 
 ; Print max HP

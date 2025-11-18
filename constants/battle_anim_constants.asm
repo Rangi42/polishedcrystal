@@ -1000,7 +1000,7 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_HURRICANE
 DEF NUM_BATTLEANIMOAMSETS EQU const_value
 
-; BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)
+; DoBattleBGEffectFunction.BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)
 	const_def 1
 	const ANIM_BG_FLASH_INVERTED
 	const ANIM_BG_FLASH_WHITE

@@ -217,7 +217,7 @@ GenericTrainerSwimmerfTara:
 	cont "Cherrygrove."
 
 	para "Some say rare bird"
-	line "#MON come from"
+	line "#mon come from"
 
 	para "far away to nest"
 	line "there."
@@ -253,7 +253,7 @@ GenericTrainerHikerTony:
 
 	para "just to see the"
 	line "legendary bird"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 .BeatenText:
@@ -269,10 +269,10 @@ CherrygroveBayFisherText:
 
 	para "Oh! And I also saw"
 	line "some really big"
-	
+
 	para "birds the other"
 	line "day."
-	
+
 	para "I think they were"
 	line "headed to that big"
 	cont "ol' tree nearby?"

@@ -33,13 +33,13 @@ DoOverworldWeather:
 	; if hUsedWeatherSpriteIndex >= the first object OAM index,
 	; then we need to set hUsedWeatherSpriteIndex the OAM index before the first object OAM index.
 	ldh a, [hUsedOAMIndex]
-	; a = (SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS) - a
+	; a = OAM_SIZE - a
 	cpl
-	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
+	add OAM_SIZE + 1
 	ld hl, hUsedWeatherSpriteIndex
 	cp [hl]
 	jr nc, .ok
-	add -SPRITEOAMSTRUCT_LENGTH
+	add -OBJ_SIZE
 	ldh [hUsedWeatherSpriteIndex], a
 .ok
 	; if cooldown is not 0, we don't want to spawn new weather sprites
@@ -214,16 +214,16 @@ DoSnowFall:
 	ld de, wShadowOAM
 	ld h, d
 	ld l, e
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ld b, OAM_COUNT
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
 	; if the sprite is hidden, skip it
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	ld a, [hl]
 	cp OAM_YCOORD_HIDDEN
 	jr z, .next
 
 	; if the sprite is not a snowflake, skip it
-	ld hl, SPRITEOAMSTRUCT_TILE_ID
+	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
 	cp SNOWFLAKE_TILE
@@ -243,13 +243,18 @@ DoSnowFall:
 	jr c, .despawn
 .ok
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust
 	; double the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
+.skip_y_adjust
 	ld c, a
 
 	; get the sprite's y coord and subtract the player's doubled step vector
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -263,7 +268,7 @@ DoSnowFall:
 	add 2
 
 	; if the sprite goes offscreen, despawn it, otherwise update its y coord
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
@@ -284,7 +289,7 @@ DoSnowFall:
 	ld c, a
 
 	; get the sprite's x coord and subtract the player's doubled step vector + wiggle
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -292,13 +297,13 @@ DoSnowFall:
 	; sprite can have 0 change in x coord (no wiggle or step vector)
 	; so we increment a before subtracting to check for despawn (offscreen)
 	inc a
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	sub 1 ; no-optimize a++|a-- (need to set carry)
 	ld [hl], a
 	jr c, .despawn
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld d, h
 	ld e, l
@@ -307,7 +312,7 @@ DoSnowFall:
 	ret
 
 .despawn
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
@@ -350,21 +355,21 @@ RainSplashCleanup:
 	ret nz
 
 	ld de, wShadowOAM
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ld b, OAM_COUNT
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
 	; if sprite tile is not a rain splash, skip it
-	ld hl, SPRITEOAMSTRUCT_TILE_ID
+	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
 	cp RAINSPLASH_TILE
 	jr nz, .next
 
 	; hide the rain splash
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld [hl], OAM_YCOORD_HIDDEN ; offscreen
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld d, h
 	ld e, l
@@ -419,9 +424,9 @@ ScanForEmptyOAM:
 	ld h, d
 	ld l, e
 	ldh a, [hUsedOAMIndex]
-	; a = (SPRITEOAMSTRUCT_LENGTH * NUM_SPRITE_OAM_STRUCTS) - a
+	; a = OAM_SIZE - a
 	cpl
-	add NUM_SPRITE_OAM_STRUCTS * SPRITEOAMSTRUCT_LENGTH + 1
+	add OAM_SIZE + 1
 	; a = a / 4
 	rrca
 	rrca
@@ -432,7 +437,7 @@ ScanForEmptyOAM:
 	cp OAM_YCOORD_HIDDEN
 	ret z
 	; next slot
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld d, h
 	ld e, l
@@ -489,16 +494,16 @@ DoRainFall:
 	ld de, wShadowOAM
 	ld h, d
 	ld l, e
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ld b, OAM_COUNT
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
 	; if the sprite is hidden, skip it
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	ld a, [hl]
 	cp OAM_YCOORD_HIDDEN
 	jr z, .next
 
 	; if the sprite is a splash, update splash.
-	ld hl, SPRITEOAMSTRUCT_TILE_ID
+	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
 	cp RAINSPLASH_TILE
@@ -516,16 +521,21 @@ DoRainFall:
 	; raindrops have a 5% chance of splashing.
 	call Random
 	cp 5 percent
-	jr c, .splash
+	jmp c, .splash
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust_1
 	; quadruple the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
 	add a
+.skip_y_adjust_1
 
 	; get the sprite's y coord and subtract the player's quadrupled step vector
 	ld c, a
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -540,7 +550,7 @@ DoRainFall:
 	add 8
 
 	; if the sprite goes offscreen, despawn it, otherwise update its y coord
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
@@ -553,7 +563,7 @@ DoRainFall:
 	ld c, a
 
 	; get the sprite's x coord and subtract the player's quadrupled step vector
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -570,12 +580,12 @@ DoRainFall:
 	sub 4
 
 	; if the sprite goes offscreen, despawn it, otherwise update its x coord
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	ld [hl], a
 	jr c, .despawn
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld d, h
 	ld e, l
@@ -584,7 +594,7 @@ DoRainFall:
 	ret
 
 .despawn
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
@@ -600,13 +610,18 @@ DoRainFall:
 	cp PAL_OW_WEATHER
 	jr nz, .next
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust_2
 	; double the player's step vector
 	ld a, [wPlayerStepVectorY]
 	add a
+.skip_y_adjust_2
 	ld c, a
 
 	; get the sprite's y coord and subtract the player's doubled step vector
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -629,7 +644,7 @@ DoRainFall:
 
 .splash
 	; convert raindrop to splash
-	ld hl, SPRITEOAMSTRUCT_TILE_ID
+	ld hl, OAMA_TILEID
 	add hl, de
 	ld [hl], RAINSPLASH_TILE
 	jr .next
@@ -650,16 +665,16 @@ DoSandFall:
 	ld de, wShadowOAM
 	ld h, d
 	ld l, e
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ld b, OAM_COUNT
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
 	; if the sprite is hidden, skip it
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	ld a, [hl]
 	cp OAM_YCOORD_HIDDEN
 	jr z, .next
 
 	; if the sprite is not a sand drop, skip it
-	ld hl, SPRITEOAMSTRUCT_TILE_ID
+	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
 	cp SANDSTORM_TILE
@@ -675,14 +690,19 @@ DoSandFall:
 	cp 5 percent
 	jr c, .despawn
 
+	xor a
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_IGNORE_PLAYER_Y, [hl]
+	jr nz, .skip_y_adjust
 	; quadruple the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
 	add a
+.skip_y_adjust
 	ld c, a
 
 	; get the sprite's y coord and subtract the player's quadrupled step vector
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -697,7 +717,7 @@ DoSandFall:
 	sub 4
 
 	; if the sprite goes offscreen, despawn it, otherwise update its y coord
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
@@ -710,7 +730,7 @@ DoSandFall:
 	ld c, a
 
 	; get the sprite's x coord and subtract the player's quadrupled step vector
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -727,12 +747,12 @@ DoSandFall:
 	sub 12
 
 	; if the sprite goes offscreen, despawn it, otherwise update its x coord
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	ld [hl], a
 	jr c, .despawn
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld d, h
 	ld e, l
@@ -741,7 +761,7 @@ DoSandFall:
 	ret
 
 .despawn
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
@@ -1006,10 +1026,10 @@ IsEvenSpriteIndex:
 	ret
 
 WeatherSpriteLimitCheck:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wWeatherScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 
 	; clear wWeatherScratch
@@ -1020,7 +1040,7 @@ WeatherSpriteLimitCheck:
 	ld hl, wShadowOAM
 	ld d, h
 	ld e, l
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ld b, OAM_COUNT
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
 	ld a, [hl]
 	; convert OAM y cord to screen y cord
@@ -1037,7 +1057,7 @@ rept TILE_WIDTH - 1
 endr
 	inc [hl]
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld e, l
 	dec b
@@ -1055,7 +1075,7 @@ endr
 	call c, SpriteLimitExceeded
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 SpriteLimitExceeded:
@@ -1068,9 +1088,9 @@ SpriteLimitExceeded:
 	; convert screen y cord to OAM y cord
 	add TILE_WIDTH * 2
 	ld c, a
-	ld hl, wShadowOAM + (NUM_SPRITE_OAM_STRUCTS - 1) * SPRITEOAMSTRUCT_LENGTH
+	ld hl, wShadowOAM + (OAM_COUNT - 1) * OBJ_SIZE
 	ld e, l ; d is still set to HIGH(wShadowOAM)
-rept NUM_SPRITE_OAM_STRUCTS
+rept OAM_COUNT
 	; check if OAM y cord is <= (scanline + 16)
 	ld a, [hl]
 	sub c ; get distance between OAM y cord and (scanline + 16)
@@ -1089,7 +1109,7 @@ rept NUM_SPRITE_OAM_STRUCTS
 	ld [wSpriteOverlapCount], a
 	call nc, .delete_sprite ; for all sprites after the 10th, delete them
 .next_\@
-	ld hl, -SPRITEOAMSTRUCT_LENGTH
+	ld hl, -OBJ_SIZE
 	add hl, de
 	ld e, l
 endr
@@ -1169,8 +1189,7 @@ LoadWeatherGraphics:
 	jmp Get2bpp
 
 
-RainGFX:   INCBIN "gfx/overworld/rain.2bpp"
-SplashGFX: INCBIN "gfx/overworld/rain_splash.2bpp"
-SnowGFX:   INCBIN "gfx/overworld/snow.2bpp"
-SandGFX:   INCBIN "gfx/overworld/sand.2bpp"
+RainGFX: INCBIN "gfx/overworld/rain_splash.2bpp"
+SnowGFX: INCBIN "gfx/overworld/snow.2bpp"
+SandGFX: INCBIN "gfx/overworld/sand.2bpp"
 CherryBlossomGFX: INCBIN "gfx/overworld/cherry_blossom.2bpp"

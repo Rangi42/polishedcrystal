@@ -307,7 +307,7 @@ LoadMapTimeOfDay:
 	ld [hli], a
 	dec c
 	jr nz, .column
-	ld bc, BG_MAP_WIDTH - SCREEN_WIDTH
+	ld bc, TILEMAP_WIDTH - SCREEN_WIDTH
 	add hl, bc
 	pop bc
 	dec b
@@ -334,7 +334,7 @@ LoadMapTimeOfDay:
 	rst ByteFill
 	pop af
 	ldh [rVBK], a
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
 	rst ByteFill

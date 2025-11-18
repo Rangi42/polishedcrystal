@@ -3,7 +3,7 @@ PlayStereoCry::
 	ld a, 1
 	ld [wStereoPanningMask], a
 	pop af
-	call _PlayCry
+	call _PlayMonCry
 	jmp WaitSFX
 
 PlayStereoCry2::
@@ -13,13 +13,13 @@ PlayStereoCry2::
 	ld a, 1
 	ld [wStereoPanningMask], a
 	pop af
-	jr _PlayCry
+	jr _PlayMonCry
 
-PlayCry::
-	call PlayCry2
+PlayMonCry::
+	call PlayMonCry2
 	jmp WaitSFX
 
-PlayCry2::
+PlayMonCry2::
 ; Don't wait for the cry to end.
 	push af
 	xor a
@@ -28,7 +28,7 @@ PlayCry2::
 	pop af
 	; fallthrough
 
-_PlayCry::
+_PlayMonCry::
 	push hl
 	push de
 	push bc
@@ -38,20 +38,20 @@ _PlayCry::
 
 	ld e, c
 	ld d, b
-	call PlayCryHeader
+	call PlayCry
 
 .done
 	jmp PopBCDEHL
 
-LoadCryHeader::
-; Load cry header bc.
+LoadCry::
+; Load cry bc.
 
 	call GetCryIndex
 	ret c
 
 	anonbankpush PokemonCries
 
-_LoadCryHeader:
+_LoadCry:
 	ld hl, PokemonCries
 rept 6
 	add hl, bc

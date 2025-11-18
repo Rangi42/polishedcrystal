@@ -1,6 +1,5 @@
 NgramStrings:
 	table_width 1
-	dr .e_
 	dr .ou
 	dr .th
 	dr .in
@@ -67,7 +66,7 @@ NgramStrings:
 	dr .ed_
 	dr .It#s_
 	dr .that_
-	dr ._you_
+	dr .e_
 	dr .Poke
 	dr .Pokemon
 	assert_table_length NGRAMS_VAR_START - NGRAMS_START

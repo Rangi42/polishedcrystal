@@ -4,7 +4,7 @@ DoBattleTransition:
 	call DelayFrame
 
 	ld de, .TrainerBattlePokeballTile
-	ld hl, vTiles0 tile "<PHONE>"
+	ld hl, vTiles0 tile '<PHONE>'
 	lb bc, BANK(.TrainerBattlePokeballTile), 1
 	call Request2bpp
 
@@ -46,10 +46,10 @@ DoBattleTransition:
 	bit 7, a
 	jr z, .loop
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wBGPals1
 if !DEF(MONOCHROME)
@@ -68,7 +68,7 @@ else
 endc
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld a, %11111111
 	ld [wBGP], a
@@ -76,7 +76,7 @@ endc
 	call DelayFrame
 
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 
 	xor a
 	ldh [hLCDCPointer], a
@@ -85,7 +85,7 @@ endc
 	ldh [hSCY], a
 
 	ld a, BANK(wEnemyMon)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	pop af
 	ldh [hVBlank], a
@@ -222,12 +222,12 @@ StartTrainerBattle_SetUpBGMap:
 StartTrainerBattle_SetUpForWavyOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	call StartTrainerBattle_NextScene
 
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	xor a
@@ -240,6 +240,10 @@ StartTrainerBattle_SetUpForWavyOutro:
 	ret
 
 StartTrainerBattle_SineWave:
+; Added to reduce speed when Doublepeed is active
+	call DelayFrame
+	call DelayFrame
+;------------------------------------------------
 	ld a, [wBattleTransitionCounter]
 	cp $60
 	jr c, .DoSineWave
@@ -277,7 +281,7 @@ StartTrainerBattle_SineWave:
 StartTrainerBattle_SetUpForSpinOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call StartTrainerBattle_NextScene
 	xor a
 	ld [wBattleTransitionCounter], a
@@ -389,7 +393,7 @@ endr
 	inc de
 .loop1
 	ld a, [hl]
-	and ~PALETTE_MASK
+	and ~OAM_PALETTE
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ld a, [wBattleTransitionSpinQuadrant]
@@ -445,7 +449,7 @@ endr
 StartTrainerBattle_SetUpForRandomScatterOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call StartTrainerBattle_NextScene
 	ld a, $10
 	ld [wBattleTransitionCounter], a
@@ -454,6 +458,10 @@ StartTrainerBattle_SetUpForRandomScatterOutro:
 	ret
 
 StartTrainerBattle_SpeckleToBlack:
+; Added to reduce speed when Doublepeed is active
+	call DelayFrame
+	call DelayFrame
+;------------------------------------------------
 	ld hl, wBattleTransitionCounter
 	ld a, [hl]
 	and a
@@ -506,11 +514,11 @@ StartTrainerBattle_SpeckleToBlack:
 ; If the tile has already been blacked out,
 ; sample a new tile
 	ld a, [hl]
-	and PALETTE_MASK
+	and OAM_PALETTE
 	cp PAL_BG_TEXT ; black
 	jr z, .y_loop
 	ld a, [hl]
-	and ~PALETTE_MASK
+	and ~OAM_PALETTE
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ret
@@ -539,16 +547,16 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	; wild battles just need PAL_BG_TEXT to be black, and do flash PAL_BG_GRAY
 	ld a, PALFADE_BG | PALFADE_FLASH
 	ldh [hBattlePalFadeMode], a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5 ; WRAM5 = palettes
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, .black_pals
 	call .timeofdaypal
 	ld de, wBGPals1 palette PAL_BG_TEXT ; black
 	call .copy
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	call DelayFrame
@@ -562,10 +570,10 @@ StartTrainerBattle_LoadPokeBallGraphics:
 
 	; use PAL_BG_RED for the whole flashing screen
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 .loop1
 	ld a, [hl]
-	and ~PALETTE_MASK
+	and ~OAM_PALETTE
 	or PAL_BG_RED ; flashing overworld
 	ld [hli], a
 	dec bc
@@ -601,7 +609,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr nc, .no_load
 
 	; poke ball tile; use PAL_BG_GRAY, bank 0, no flips or priority
-	ld [hl], "<PHONE>"
+	ld [hl], '<PHONE>'
 	push hl
 	push bc
 	ld bc, wAttrmap - wTilemap
@@ -643,13 +651,13 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld hl, .timepals
 	call .timeofdaypal
 .got_palette
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5 ; WRAM5 = palettes
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call .copypals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	farcall ClearSavedObjPals
 	farcall CheckForUsedObjPals
 	farcall _UpdateSprites
@@ -774,10 +782,10 @@ popo
 INCLUDE "data/trainers/team_rocket.asm"
 
 WipeLYOverrides:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wLYOverrides
 	call .wipe
@@ -785,7 +793,7 @@ WipeLYOverrides:
 	call .wipe
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .wipe
@@ -851,7 +859,7 @@ StartTrainerBattle_ZoomToBlack:
 	push hl
 .col
 	ld a, [hl]
-	and ~PALETTE_MASK
+	and ~OAM_PALETTE
 	or PAL_BG_TEXT ; black
 	ld [hli], a
 	dec c

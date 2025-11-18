@@ -154,7 +154,7 @@ CheckPokeItem::
 	ld c, a
 	ld a, b
 	call GetFarByte
-	cp "@"
+	cp '@'
 	jr z, .done
 	cp c
 	ld a, FALSE ; no-optimize a = 0 (wrong mail)
@@ -271,25 +271,6 @@ DeletePartyMonMail:
 	rst ByteFill
 	jmp CloseSRAM
 
-IsAnyMonHoldingMail:
-	ld a, [wPartyCount]
-	and a
-	jr z, .no_mons
-	ld e, a
-	ld hl, wPartyMon1Item
-.loop
-	ld d, [hl]
-	call ItemIsMail
-	ret c
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	dec e
-	jr nz, .loop
-
-.no_mons
-	and a
-	ret
-
 _PlayerMailBoxMenu:
 	call InitMail
 	jr z, .nomail
@@ -344,7 +325,7 @@ MailboxPC_GetMailAuthor:
 	push de
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	call CloseSRAM
 	pop de
@@ -383,7 +364,7 @@ MailboxPC:
 	ld [wCurMessageIndex], a
 
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .exit
 	call .Submenu
 	jr .loop
