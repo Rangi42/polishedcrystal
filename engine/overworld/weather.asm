@@ -819,13 +819,13 @@ DoOverworldCherryBlossoms:
 DoCherryBlossomFall:
 	ld de, wShadowOAM
 	ld hl, wShadowOAM
-	ld b, NUM_SPRITE_OAM_STRUCTS
+	ld b, OAM_COUNT
 .loop
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	ld a, [hl]
 	cp OAM_YCOORD_HIDDEN
 	jr z, .next
-	ld hl, SPRITEOAMSTRUCT_TILE_ID
+	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
 	cp SNOWFLAKE_TILE
@@ -841,7 +841,7 @@ DoCherryBlossomFall:
 	ld a, [wPlayerStepVectorY]
 	add a
 	ld c, a
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -849,7 +849,7 @@ DoCherryBlossomFall:
 	call IsEvenSpriteIndex
 	add c
 	add 2
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
@@ -865,18 +865,18 @@ DoCherryBlossomFall:
 	inc a
 .no_add_1
 	ld c, a
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	ld a, [hl]
 	sub c
 	inc a
-	ld hl, SPRITEOAMSTRUCT_XCOORD
+	ld hl, OAMA_X
 	add hl, de
 	sub 1 ; no-optimize a++|a-- (need to set carry)
 	ld [hl], a
 	jr c, .despawn
 .next
-	ld hl, SPRITEOAMSTRUCT_LENGTH
+	ld hl, OBJ_SIZE
 	add hl, de
 	ld d, h
 	ld e, l
@@ -885,7 +885,7 @@ DoCherryBlossomFall:
 	ret
 
 .despawn
-	ld hl, SPRITEOAMSTRUCT_YCOORD
+	ld hl, OAMA_Y
 	add hl, de
 	ld a, OAM_YCOORD_HIDDEN
 	ld [hli], a
