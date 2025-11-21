@@ -14,12 +14,25 @@ BattleCommand_trickroom:
 .new_trick_room
 	ld hl, TrickRoomText
 	call StdBattleTextbox
+	ldh a, [hBattleTurn]
+	push af
+	call HandleRoomService
+	pop af
+	ldh [hBattleTurn], a
+	ret
 
+HandleRoomService:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
 	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ROOM_SERVICE
 	ret nz
-
+	; fallthrough
+RoomServiceItem:
 	ld b, SPEED
 	ld a, STAT_SKIPTEXT
 	call _ForceLowerStat

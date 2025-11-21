@@ -8,13 +8,136 @@
 
 ***Note: The following changelog may contain spoilers.***
 
+## v3.2.1
+
+Hotfix release.
+
+### Additions
+- Added Alolan Dugtrio backsprite
+
+### Changes
+- Temporarily unable to trade pokemon holding mail in link trades to avoid mail corruption. Will be fixed in a future release.
+- Thief and Pickpocket can now put items into bag if one is already held.
+- Turn the player away from the bed in the Fast Ship after resting so they don't accidentally talk to the bed immediately after healing.
+- Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialogue.
+- Talking to an Pokemon in the overworld sets them seen in the pokedex.
+- Updated Piloswine and Skarmory's back sprites.
+- Updated Para's front animation sprite.
+- If a Pokemon knows a HM that you don't have, and that HM is Surf, Strength, or Whirlpool, you cannot forget the HM. This is to reduce chances of softlock.
+- Made Dance Theater slightly larger to accomodate it's popularity (Resolves issue with sprite "pop in")
+
+### Fixes
+
+- Fixed hurricane move animation.
+- Fix corrupted dialogue Prof. Elm dialogue after Egg hatch, but the player forgot to bring it with them.
+- Fix corrupted text in People & Places radio due to Psychic Inver
+- Fix 3DS Virtual Console patches (labels must be <32 chars)
+- More accurate sram/wram mismatch error message.
+- Fix intimidate triggering twice.
+- Fix Shed Skin and held Berry both activating for the same status condition.
+- Fix issues related to secondary effects when Pokémon faints
+- Fix freeze status text bug.
+- Fix confusion self-damage
+- Fix Toxic not incrementing properly
+- Temp hotfix for link + summary screen causing crash and corrupt mail.
+- Recalulate stats for party upon resuming a game.
+- Fixed bugged text in bug catching contest.
+- Fixed pronouns for Blanche in RocketHideout.
+- Fix blaine text corruption when fading out of battle.
+- Removed arbitrary delay when loading a game.
+- Fixed extraneous visual artifact in Kingdra backsprite.
+- Fixed lift key re-appearing after pickup.
+- Fixed overworld weather animations when using brick break to smash an overworld rock.
+- Fixed Psychic Inver corrupt parties
+- Fixed Unnerve ability prematurely switching the turn.
+- Fixed a crash when Trading and using the Summary Screen
+
+## v3.2.0
+
+The current stable release.
+
+### Additions
+- Added pluralize script command to auto-pluralize words as needed.
+- Added in-game tips specific to Polished Crystal.
+- Added new move tutors and associated event flags.
+- Added new Alolan Sandslash and A-Vulpix/Ninetales sprites by mauvesea.
+- Added icons for Pokédex and Pokégear, supports icons for special items.
+- Added egg page to summary screen.
+- Added ability blacklist routine for Trace + Skill Swap.
+- Added scaled base EXP exceptions (e.g. Happiny).
+- Added check for savestate loading affecting SRAM usage.
+- Added Earth Power to Ursaluna and Bloodmoon Ursaluna.
+- Added an initial option to disable experience gain (no-exp mode).
+- Pokegear clock now shows the time-of-day indicator in the clock UI.
+- Support for overriding RGB programs individually and new Analogue Pocket logo asset added to the build assets.
+- Updated and added multiple Pokémon sprites and palettes (notable: Magnezone, Magmortar, Sneasler, Typhlosion-Hisuian, Rapidash-Galarian, and others).
+
+#### Fixes
+- Fixed mail encoding (avoid ngrams).
+- Fixed battle text delay to minimum of 1s.
+- Fixed Rare Candy bug at level 100.
+- Fixed cries during trade animation.
+- Fixed Celadon University lag (sprite overlap).
+- Fixed Elm battle vs. Togepi request logic.
+- Fixed text speed options behavior.
+- Fixed ineligible switch textboxes on first turn.
+- Fixed nickname screen palette bug.
+- Fixed headbutt/cut trees visual glitch during lightning.
+- Fixed VermilionCity NPC disappearing from sprite limit.
+- Fixed hidden ability for Typhlosion-H.
+- Fixed object pop-in issues across various routes.
+- Fixed Ghost mon `<TARGET>` name override.
+- Fixed dev room tile collision (head in wall).
+- Fixed instant text skip on in-battle move description.
+- Fixed music and SFX bugs (e.g., PGO leader's room).
+- Fixed lucky island text input using proper `rawchar`.
+- Fixed Spiky-Eared Pichu crash when trading special Pokémon.
+- Fixed Jessie & James rematch logic and unused event flag.
+- Fixed evolution-during-battle edge cases.
+- Fixed ability activation bugs (Imposter, Neutralizing Gas, etc).
+- Fixed Ability label confusion for disabling animations.
+- Fixed Safari Zone bait/rock mechanics with abilities.
+- Fixed neutralizing gas handling.
+- Fixed ability icon display logic on rental mon trade.
+- Fixed miscellaneous visual and formatting bugs.
+- Fixed several battle engine and move interaction bugs since the last changelog update, including:
+    - Corrected Protect/Endure success probabilities and capped Protect chaining chance.
+    - Fixed various secondary-effect/timing bugs (including Rampage/Future Sight interaction and Move secondary effect ordering).
+    - Fixed Intimidate / Eject Pack / Neutralizing Gas interactions and related held-item/ability edge cases.
+    - Fixed Magic Bounce, Enigma Berry, Punching Glove, and other ability/item interaction bugs.
+    - Fixed double-switch order and Trick Room logic edge cases.
+- Fixed Disable turncount and Rest/Lum/Chesto trigger bugs.
+- Made Sweet Honey not allow battling roaming Pokémon (behaviour/overworld fix).
+- Fixed a number of text/encoding and daycare wording issues (shorter "want egg" prompt, mail encoding with ngrams avoided).
+- Numerous crash and stability fixes, optimizations, and unreferenced-code cleanups across battle, text, and overworld systems.
+
+#### Changes
+- **Updated Summary Screen (major visual/functional upgrade).**
+- Re-introduced trade evolutions.
+- Adjusted Magikarp record length (now 106.6 cm).
+- Updated "badge" capitalization in text to match vanilla.
+- Improved Neutralizing Gas + Skill Swap interaction logic.
+- Improved battle animations (summary, Ursaluna fix).
+- Improved AI damage calc (e.g., Parental Bond).
+- Adjusted move animations and fix order of status/inflict routines.
+- Rewrote loading for Pikachu's unique moves (Yellow Forest).
+- Adjusted Heracross palette (and reverted + reapplied fix).
+- Adjusted RockItems to total 256.
+- Made modern EV rules the default option to reduce bulk by default.
+- Pluralization improvements used in text now simplify duplicated battle text variants (e.g. "Hit N times" now uses pluralize tables).
+- Updated various engine internals to use newer hardware constants and RGBDS features (minor layout and performance improvements).
+
+#### Removals
+- Removed duplicate Sketch from Smeargle.
+- Removed unused unique move for Scizor.
+- Removed duplicate egg text.
+- Removed unreachable tree from Route 16 West.
+
 ## v3.1.1
 
 This is a hotfix release that removes one bug that caused the overworld graphics to glitch out badly when hatching an egg.
 
 ## v3.1.0
-
-This is the newest stable version release which finished a number of branches that were under development and added them to v3.0.0, along with a few other small additions.
 
 ### Additions
 - Bloodmoon Ursaluna, with its signature ability "Mind's Eye", is now available. It can be obtained by leveling up Ursaring in Murky Swamp (though it will be a one-off encounter in future). There are now 289 species of Pokémon plus 46 variant forms and 56 cosmetic forms.

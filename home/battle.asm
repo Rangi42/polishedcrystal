@@ -321,35 +321,6 @@ ToggleBattleItems:
 	pop bc
 	jr .loop
 
-OpponentCanLoseItem::
-	call StackCallOpponentTurn
-UserCanLoseItem::
-; Returns z if user can't lose its held item. This happens if:
-; - user doesn't have a held item
-; - user is holding Armor Suit
-; - user is holding Mail
-; Does not check Sticky Hold (we just want to know if we can
-; theoretically lose our item at any point)
-	push hl
-	push de
-	push bc
-	farcall GetUserItem
-	ld a, [hl]
-	and a
-	jr z, .cannot_lose
-	cp ARMOR_SUIT
-	jr z, .cannot_lose
-	ld d, a
-	call ItemIsMail
-	jr c, .cannot_lose
-	or 1
-	jr .done
-
-.cannot_lose
-	xor a
-.done
-	jmp PopBCDEHL
-
 GetOpponentUsedItemAddr::
 	call StackCallOpponentTurn
 GetUsedItemAddr::
@@ -726,7 +697,7 @@ CheckMoveSpeed::
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp STATUS
-	jr nz, .quick_draw_done
+	jr z, .quick_draw_done
 
 	farcall BufferAbility
 	ld a, 100
@@ -801,6 +772,7 @@ CheckSpeed::
 	jr z, .CheckSpeed
 	call .CheckSpeed
 	ret c ; was random anyway, and we don't want to unset carry
+	and 1
 	xor 1
 	ret
 

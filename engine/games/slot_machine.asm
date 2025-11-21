@@ -23,7 +23,7 @@ _SlotMachine:
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC
-	res rLCDC_SPRITE_SIZE, [hl]
+	res B_LCDC_OBJ_SIZE, [hl]
 	ret
 
 .InitGFX:
@@ -34,7 +34,7 @@ _SlotMachine:
 	call DisableLCD
 	hlbgcoord 0, 0
 	ld bc, vBGMap1 - vBGMap0
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	ld a, CGB_SLOT_MACHINE
 	call GetCGBLayout
@@ -77,7 +77,7 @@ _SlotMachine:
 	call Decompress
 
 	ld hl, rLCDC
-	set rLCDC_SPRITE_SIZE, [hl]
+	set B_LCDC_OBJ_SIZE, [hl]
 	call EnableLCD
 	ld hl, wSlots
 	ld bc, wSlotsEnd - wSlots
@@ -215,7 +215,7 @@ Slots_WaitStart:
 Slots_WaitReel1:
 	ld hl, hJoypadSum
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	ret z
 	call Slots_Next
 	call Slots_StopReel1
@@ -235,7 +235,7 @@ Slots_WaitStopReel1:
 Slots_WaitReel2:
 	ld hl, hJoypadSum
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	ret z
 	call Slots_Next
 	call Slots_StopReel2
@@ -255,7 +255,7 @@ Slots_WaitStopReel2:
 Slots_WaitReel3:
 	ld hl, hJoypadSum
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	ret z
 	call Slots_Next
 	call Slots_StopReel3
@@ -1606,7 +1606,7 @@ SlotPayoutText:
 	inc a
 	ldcoord_a 3, 14
 	hlcoord 18, 17
-	ld [hl], "▼"
+	ld [hl], '▼'
 	ld hl, .Text_LinedUpWonCoins
 rept 4
 	inc bc

@@ -587,10 +587,10 @@ ChangeMap::
 	ret
 
 DecompressConnectionMap:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push de
 	push bc
 	ld de, wDecompressScratch
@@ -598,7 +598,7 @@ DecompressConnectionMap:
 	pop bc
 	pop de
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 FillMapConnections::
@@ -704,10 +704,10 @@ FillEastOrWestConnectionStrip::
 	add 6
 	ldh [hConnectedMapWidth], a
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 .loop
 	push de
 
@@ -739,17 +739,17 @@ FillEastOrWestConnectionStrip::
 	dec b
 	jr nz, .loop
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 FillNorthOrSouthConnectionStrip::
 	ld a, [wMapWidth]
 	add 6
 	ldh [hMapWidthPlus6], a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld c, 3
 .y
@@ -782,7 +782,7 @@ FillNorthOrSouthConnectionStrip::
 	dec c
 	jr nz, .y
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 CallMapScript::
@@ -1011,12 +1011,12 @@ _LoadTilesetGFX2:
 	jr _DoLoadTilesetGFX
 
 _LoadTilesetGFX0:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	xor a
 	ldh [rVBK], a
 	inc a
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; Check roof tiles
 	ld a, [wMapTileset]
@@ -1032,7 +1032,7 @@ _LoadTilesetGFX0:
 	ld de, vTiles2
 	call _DoLoadTilesetGFX0
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 _LoadTilesetGFX1:
@@ -1641,7 +1641,7 @@ ReloadTilesetAndPalettes::
 
 EnableLCD::
 	ldh a, [rLCDC]
-	set rLCDC_ENABLE, a
+	set B_LCDC_ENABLE, a
 	ldh [rLCDC], a
 	ret
 

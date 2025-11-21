@@ -22,7 +22,7 @@ MACRO homecall ; bank, address
 	ldh a, [hROMBank]
 	push af
 	if _NARG == 2
-		if STRIN("\2", "[h") == 1 || STRIN("\2", "[r") == 1
+		if STRFIND("\2", "[h") == 0 || STRFIND("\2", "[r") == 0
 			ldh a, \2
 		else
 			ld a, \2

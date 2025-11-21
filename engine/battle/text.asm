@@ -53,7 +53,7 @@ _StdBattleTextbox:
 	; Returns length including terminator.
 	inc b
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .CountCharacters
 	ret
 

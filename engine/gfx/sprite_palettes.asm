@@ -16,20 +16,45 @@ LoadWeatherPal::
 	dec a
 	jr z, .rain ; thunderstorm
 	assert OW_WEATHER_SANDSTORM == 4
-	jr .sandstorm
+	; fallthrough
+
+	ld a, PAL_OW_SAND
+.use_pal_6
+	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal6], a
+	ld de, wOBPals1 palette 6
+	jr CopySpritePal
+
+.rain
+	ld a, PAL_OW_RAIN
+	jr .use_pal_6
+
 .snow
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	; we are not loading an official palette,
 	; so this tells dynamic pals to not associate this
 	; palette with a sprite.
 	ld a, NO_PAL_LOADED
 	ld [wLoadedObjPal7], a
 	ld hl, wOBPals1 palette 6
+if !DEF(MONOCHROME)
+	assert LOW(NO_PAL_LOADED) == $ff
 	ld bc, 1 palettes
 	rst ByteFill
+else
+	ld bc, PAL_MONOCHROME_WHITE
+	ld a, 4 colors
+.loop
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	dec a
+	jr nz, .loop
+endc
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
@@ -38,20 +63,8 @@ LoadWeatherPal::
 	ldh [hCGBPalUpdate], a
 .skip_apply
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
-
-.rain
-	ld a, PAL_OW_RAIN
-	jr .use_pal_6
-
-.sandstorm
-	ld a, PAL_OW_SAND
-.use_pal_6
-	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal6], a
-	ld de, wOBPals1 palette 6
-	jr CopySpritePal
 
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)

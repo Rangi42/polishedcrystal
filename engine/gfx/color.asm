@@ -22,7 +22,7 @@ InitPartyMenuPalettes:
 	; fallthrough
 WipeAttrMap:
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 	ret
@@ -154,18 +154,18 @@ LoadCategoryAndTypePals:
 	jmp FarCopyColorWRAM
 
 CategoryIconPals:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/battle/categories.pal"
 	assert_table_length NUM_CATEGORIES
 
 TypeIconPals:
-	table_width PAL_COLOR_SIZE
+	table_width COLOR_SIZE
 INCLUDE "gfx/battle/types.pal"
 	assert_table_length NUM_TYPES + 1
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
-	ld bc, KeyItemIconPalettes - PAL_COLOR_SIZE * 2
+	ld bc, KeyItemIconPalettes - COLOR_SIZE * 2
 	jr LoadIconPalette
 
 LoadExpCandyIconPalette:
@@ -222,32 +222,32 @@ LoadSpecialItemIconPalette:
 ItemIconPalettes:
 CaughtBallPals:
 ParkBallIconPalette:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/items/items.pal"
 	assert_table_length NUM_ITEMS + 1
 
 KeyItemIconPalettes:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/items/key_items.pal"
 	assert_table_length NUM_KEY_ITEMS
 
 TMHMTypeIconPals:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/items/tm_hm_types.pal"
 	assert_table_length NUM_TYPES
 
 ApricornIconPalettes:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/items/apricorns.pal"
 	assert_table_length NUM_APRICORNS
 
 WingIconPalettes:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/items/wings.pal"
 	assert_table_length NUM_WINGS
 
 SpecialItemIconPalettes:
-	table_width PAL_COLOR_SIZE * 2
+	table_width COLOR_SIZE * 2
 INCLUDE "gfx/items/special_items.pal"
 	assert_table_length NUM_SPECIAL_ITEMS + NUM_PLAYER_GENDERS - 1
 
@@ -267,10 +267,10 @@ LoadOnePalette:
 	; fallthrough
 LoadPalettes:
 ; Load c palette bytes from hl to de in GBC Video WRAMX
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK("GBC Video")
-	ldh [rSVBK], a
+	ldh [rWBK], a
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -278,14 +278,14 @@ LoadPalettes:
 	dec c
 	jr nz, .loop
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 LoadPalette_White_Col1_Col2_Black:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 if !DEF(MONOCHROME)
 	ld a, $ff ; RGB 31,31,31
@@ -326,7 +326,7 @@ else
 endc
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 ResetBGPals:
@@ -335,10 +335,10 @@ ResetBGPals:
 	push bc
 	push af
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wBGPals1
 	ld c, 8
@@ -370,7 +370,7 @@ endc
 	jr nz, .loop
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	jmp PopAFBCDEHL
 
@@ -420,7 +420,7 @@ ApplyPals:
 
 ApplyAttrMap:
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a
+	bit B_LCDC_ENABLE, a
 	jr nz, ApplyAttrMapVBank0
 	hlcoord 0, 0, wAttrmap
 	debgcoord 0, 0
@@ -435,7 +435,7 @@ ApplyAttrMap:
 	inc de
 	dec c
 	jr nz, .col
-	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
 	add e
 	ld e, a
 	adc d
@@ -613,7 +613,7 @@ GetTrainerPalettePointer:
 	ld h, 0
 	add hl, hl
 	add hl, hl
-	ld bc, TrainerPalettes - PAL_COLOR_SIZE * 2
+	ld bc, TrainerPalettes - COLOR_SIZE * 2
 	add hl, bc
 	ret
 
@@ -833,7 +833,7 @@ InitCGBPals::
 	rst ByteFill
 	xor a
 	ldh [rVBK], a
-	ld a, 1 << rBGPI_AUTO_INCREMENT
+	ld a, BGPI_AUTOINC
 	ldh [rBGPI], a
 	ld c, 4 * 8
 if !DEF(MONOCHROME)
@@ -851,7 +851,7 @@ else
 endc
 	dec c
 	jr nz, .bgpals_loop
-	ld a, 1 << rOBPI_AUTO_INCREMENT
+	ld a, OBPI_AUTOINC
 	ldh [rOBPI], a
 	ld c, 4 * 8
 if !DEF(MONOCHROME)
@@ -869,16 +869,16 @@ else
 endc
 	dec c
 	jr nz, .obpals_loop
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wBGPals1
 	call .LoadWhitePals
 	ld hl, wBGPals2
 	call .LoadWhitePals
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .LoadWhitePals:
@@ -925,10 +925,10 @@ LoadMapPals:
 	ld d, h
 
 	; Switch to palettes WRAM bank
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $5
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wBGPals1
 	ld b, 7
@@ -959,7 +959,7 @@ LoadMapPals:
 	jr nz, .outer_loop
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 .got_pals
 	ld hl, wPalFlags
@@ -1023,7 +1023,7 @@ INCLUDE "gfx/tilesets/bg_tiles.pal"
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
 
 RoofPals:
-	table_width PAL_COLOR_SIZE * 2 * 3
+	table_width COLOR_SIZE * 2 * 3
 INCLUDE "gfx/tilesets/roofs.pal"
 	assert_table_length NUM_MAP_GROUPS + 1
 

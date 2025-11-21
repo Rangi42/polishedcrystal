@@ -17,11 +17,11 @@ DEF TREEMON_SLEEP_TURNS EQU 3
 ; default move priority
 DEF BASE_PRIORITY EQU 1
 
-; type effectiveness factors, baseline is $10 for better doubling/halving
-DEF SUPER_EFFECTIVE    EQU $20
-DEF EFFECTIVE          EQU $10
-DEF NOT_VERY_EFFECTIVE EQU $08
-DEF NO_EFFECT          EQU $00
+; type effectiveness factors, Q28.4 fixed-point for better doubling/halving
+DEF SUPER_EFFECTIVE    EQU 2.0q4 ; $20
+DEF EFFECTIVE          EQU 1.0q4 ; $10
+DEF NOT_VERY_EFFECTIVE EQU 0.5q4 ; $08
+DEF NO_EFFECT          EQU 0.0q4 ; $00
 
 ; enemy AI behavior
 DEF BASE_AI_SWITCH_SCORE EQU 10
@@ -65,6 +65,17 @@ DEF MOVE_LENGTH EQU _RS
 	const STAT_SDEF
 DEF NUM_STATS EQU const_value - 1
 DEF NUM_BATTLE_STATS EQU NUM_STATS - 1 ; don't count HP
+
+; stat abbreviations to be iterated over, for use with DV and EV spreads
+; (see data/trainers/macros.asm and engine/battle/read_trainer_party.asm)
+DEF STATS$0 EQUS "ALL"
+DEF STATS$1 EQUS "HP"
+DEF STATS$2 EQUS "ATK"
+DEF STATS$3 EQUS "DEF"
+DEF STATS$4 EQUS "SPE"
+DEF STATS$5 EQUS "SAT"
+DEF STATS$6 EQUS "SDF"
+DEF EACH_SPREAD_STAT EQU 7 ; `for x, 1, EACH_SPREAD_STAT ... use {STATS{x}}`
 
 ; stat formula constants
 DEF STAT_MIN_NORMAL EQU 5
@@ -265,6 +276,11 @@ DEF GUARD_MIST      EQU %11110000
 	const ATKFAIL_ACCMISS   ; missed from accuracy
 	const ATKFAIL_CUSTOM    ; custom message
 
+; wMoveHitState
+	const_def
+	const MOVEHIT_CRITICAL
+	const MOVEHIT_SUBSTITUTE
+
 ; wDeferredSwitch
 	const_def
 	const SWITCH_DEFERRED
@@ -329,47 +345,3 @@ DEF NUM_LINK_BATTLE_RECORDS EQU 5
 
 ; used in data/trainers/dvs.asm
 DEF PERFECT_DVS EQUS "$ff, $ff, $ff"
-
-; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
-; ReadTrainerParty converts $00 to $ff when reading DVs
-; DV order: hp:atk, def:spe, sat:sdf
-DEF FAKE_PERFECT_DVS EQUS "$00, $00, $00"
-DEF DVS_TRICK_ROOM   EQUS "$00, $f0, $00"
-
-; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
-; Chosen for stat importance: Speed > * > Atk
-if DEF(FAITHFUL)
-DEF DVS_HP_FIGHTING EQUS "$00, $ee, $ee"
-DEF DVS_HP_FLYING   EQUS "$ee, $ef, $ee"
-DEF DVS_HP_POISON   EQUS "$00, $ef, $ee"
-DEF DVS_HP_GROUND   EQUS "$00, $00, $ee"
-DEF DVS_HP_ROCK     EQUS "$00, $ee, $fe"
-DEF DVS_HP_BUG      EQUS "$fe, $ef, $fe"
-DEF DVS_HP_GHOST    EQUS "$fe, $00, $fe"
-DEF DVS_HP_STEEL    EQUS "$00, $00, $fe"
-DEF DVS_HP_FIRE     EQUS "$fe, $fe, $ef"
-DEF DVS_HP_WATER    EQUS "$fe, $ef, $ef"
-DEF DVS_HP_GRASS    EQUS "$fe, $00, $ef"
-DEF DVS_HP_ELECTRIC EQUS "$00, $00, $ef"
-DEF DVS_HP_PSYCHIC  EQUS "$fe, $fe, $00"
-DEF DVS_HP_ICE      EQUS "$fe, $ef, $00"
-DEF DVS_HP_DRAGON   EQUS "$fe, $00, $00"
-DEF DVS_HP_DARK     EQUS "$00, $00, $00"
-else
-DEF DVS_HP_FIGHTING EQUS "$00, $ee, $ee"
-DEF DVS_HP_FLYING   EQUS "$00, $fe, $ee"
-DEF DVS_HP_POISON   EQUS "$00, $ef, $ee"
-DEF DVS_HP_GROUND   EQUS "$00, $00, $ee"
-DEF DVS_HP_ROCK     EQUS "$00, $ee, $fe"
-DEF DVS_HP_BUG      EQUS "$00, $fe, $fe"
-DEF DVS_HP_GHOST    EQUS "$00, $ef, $fe"
-DEF DVS_HP_STEEL    EQUS "$00, $00, $fe"
-DEF DVS_HP_FIRE     EQUS "$00, $ee, $ef"
-DEF DVS_HP_WATER    EQUS "$00, $fe, $ef"
-DEF DVS_HP_GRASS    EQUS "$00, $ef, $ef"
-DEF DVS_HP_ELECTRIC EQUS "$00, $00, $ef"
-DEF DVS_HP_PSYCHIC  EQUS "$00, $ee, $00"
-DEF DVS_HP_ICE      EQUS "$00, $fe, $00"
-DEF DVS_HP_DRAGON   EQUS "$00, $ef, $00"
-DEF DVS_HP_DARK     EQUS "$fe, $00, $00"
-endc

@@ -217,7 +217,7 @@ MurkySwampBloodmoonUrsaluna:
 BloodmoonUrsalunaText:
 	text "Wa-gaaah!"
 	done
-	
+
 GenericTrainerBug_catcherOscar:
 	generictrainer BUG_CATCHER, OSCAR, EVENT_BEAT_BUG_CATCHER_OSCAR, .SeenText, .BeatenText
 

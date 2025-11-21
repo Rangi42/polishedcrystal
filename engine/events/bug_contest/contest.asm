@@ -168,8 +168,9 @@ LoadContestantName:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; Copy the Trainer Class to [wNamedObjectIndex].
+; Copy the Trainer Class to [wNamedObjectIndex] and c.
 	ld a, [hli]
+	ld c, a
 	ld [wNamedObjectIndex], a
 ; Save hl and bc for later.
 	push hl
@@ -184,10 +185,10 @@ LoadContestantName:
 ; Delete the trailing terminator and replace it with a space.
 .next
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .next
 	dec hl
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	ld d, h
 	ld e, l

@@ -8,7 +8,7 @@ BlankScreen:
 	call ClearSprites
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 0, 0, wAttrmap
 	ld bc, wAttrmapEnd - wAttrmap

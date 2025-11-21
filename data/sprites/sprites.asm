@@ -83,6 +83,7 @@ SpriteHeaders:
 	overworld_sprite CandelaSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BlancheSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SparkSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
+	overworld_sprite MarySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BuenaSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite CaptainSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite MatsumotoSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE

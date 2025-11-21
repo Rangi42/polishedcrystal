@@ -133,7 +133,7 @@ MahoganyMart1FTutorAgilityScript:
 	text "Your foes will"
 	line "never know what"
 	cont "hit them."
-	done	
+	done
 
 MahoganyMart1FDragoniteTackleMovement:
 	fix_facing

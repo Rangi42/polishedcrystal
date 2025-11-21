@@ -651,11 +651,11 @@ CopyBottomLineToTopLine:
 ClearBottomLine:
 	hlcoord 1, 15
 	ld bc, SCREEN_WIDTH - 2
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	hlcoord 1, 16
 	ld bc, SCREEN_WIDTH - 2
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	ret
 
@@ -745,11 +745,11 @@ CopyDexEntryParts:
 	call FarCopyBytes
 	ld hl, wPokedexShowNextLine
 	push hl
-	ld [hl], "<LINE>"
+	ld [hl], '<LINE>'
 	ld d, BANK(@)
 	call .GetTerminator
 	dec hl
-	ld [hl], "<DONE>"
+	ld [hl], '<DONE>'
 	pop hl
 	call CopyRadioTextToRAM
 	pop hl
@@ -768,9 +768,9 @@ CopyDexEntryParts:
 	ld a, d
 	call GetFarByte
 	inc hl
-	cp "@"
+	cp '@'
 	ret z
-	cp "<NEXT>"
+	cp '<NEXT>'
 	ret z
 	jr .GetTerminator
 
@@ -937,7 +937,7 @@ LuckyNumberShow8:
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer1 + 5], a
 	ld hl, LC_Text8
 	ld a, LUCKY_NUMBER_SHOW_9
@@ -1562,7 +1562,7 @@ GetBuenasPassword:
 .read_loop
 	ld a, [de]
 	inc de
-	cp "@"
+	cp '@'
 	jr nz, .read_loop
 	dec c
 	jr nz, .read_loop
@@ -1573,7 +1573,7 @@ GetBuenasPassword:
 	ld a, [de]
 	inc de
 	ld [hli], a
-	cp "@"
+	cp '@'
 	jr nz, .copy_loop
 	ld de, wStringBuffer1
 	ret
@@ -1796,7 +1796,7 @@ BuenaOffTheAirText:
 
 CopyRadioTextToRAM:
 	ld a, [hl]
-	cp "<FAR>"
+	cp '<FAR>'
 	jmp z, FarCopyRadioText
 	ld de, wRadioCompressedText
 	ld bc, SCREEN_WIDTH * 2

@@ -133,7 +133,7 @@ PickApricornScript:
 	push af
 	call LoadApricornIconForOverworld
 	pop af
-	ld bc, ApricornIconPalettes - PAL_COLOR_SIZE * 2
+	ld bc, ApricornIconPalettes - COLOR_SIZE * 2
 	farcall LoadIconPalette
 	jmp PrintOverworldItemIcon
 

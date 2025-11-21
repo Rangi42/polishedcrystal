@@ -29,4 +29,5 @@ PnP_HiddenPeople_BeatKanto:
 	db CARRIE
 	db RED
 	db LEAF
+	db INVER ; Is not located in the same bank as the others
 	db -1

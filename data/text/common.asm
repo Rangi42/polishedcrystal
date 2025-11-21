@@ -1634,6 +1634,16 @@ _NotYetText::
 	text "Not yet…"
 	done
 
+SECTION "_FoundAnEggAgainText", ROMX
+_FoundAnEggAgainText::
+	text "Ah, it's you!"
+
+	para "Your #mon had"
+	line "another Egg!"
+
+	para "You want it?"
+	done
+
 SECTION "_FoundAnEggText", ROMX
 _FoundAnEggText::
 	text "Ah, it's you!"
@@ -1786,14 +1796,14 @@ Text_ABoostedStringBuffer2ExpPoints::
 	line "a boosted"
 	cont ""
 	text_decimal wStringBuffer2, 3, 6
-	text " Exp. Points!"
+	text " Exp.Points!"
 	prompt
 
 SECTION "Text_StringBuffer2ExpPoints", ROMX
 Text_StringBuffer2ExpPoints::
 	line ""
 	text_decimal wStringBuffer2, 3, 6
-	text " Exp. Points!"
+	text " Exp.Points!"
 	prompt
 
 SECTION "Text_GoPkmn", ROMX
@@ -3861,6 +3871,12 @@ _MoveForgotText::
 	text "."
 
 	para "And…"
+	prompt
+
+SECTION "_MoveCantForgetHMText", ROMX
+_MoveCantForgetHMText::
+	text "HM moves can't be"
+	line "forgotten now."
 	prompt
 
 SECTION "_CardFlipPlayWithThreeCoinsText", ROMX

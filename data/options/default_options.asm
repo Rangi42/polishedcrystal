@@ -16,4 +16,4 @@ DefaultOptions:
 ; wInitialOptions
 	db (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PSS_OPT) | (1 << COLOR_VARY_OPT)
 ; wInitialOptions2
-	db EVS_OPT_CLASSIC | (1 << RTC_OPT) | (1 << EVOLVE_IN_BATTLE_OPT)
+	db EVS_OPT_MODERN | (1 << RTC_OPT) | (1 << EVOLVE_IN_BATTLE_OPT)

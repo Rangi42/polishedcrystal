@@ -80,7 +80,7 @@ RocketHideoutB1FScientistSanders:
 	text "Leader Blanche ex-"
 	line "cels in strategy."
 
-	para "He decides where"
+	para "They decides where"
 	line "we are stationed."
 	done
 

@@ -56,7 +56,7 @@ _Pokedex_Unown:
 .not_caught
 	; Remove "UNOWN"
 	hlcoord 10, 3
-	ld a, " "
+	ld a, ' '
 	ld bc, 5
 	rst ByteFill
 
@@ -150,16 +150,16 @@ _Pokedex_Unown:
 
 Pokedex_GetPrintableUnownChar:
 ; Convert unown form in a to printable character.
-	add "A" - 1
+	add 'A' - 1
 
-	cp (UNOWN_Z_FORM + 1) + ("A" - 1)
+	cp (UNOWN_Z_FORM + 1) + ('A' - 1)
 	ret c
 
 	assert UNOWN_Z_FORM + 1 == UNOWN_EXCLAMATION_FORM
-	ld a, "!"
+	ld a, '!'
 	ret z
 
-	assert "!" - 1 == "?"
+	assert '!' - 1 == '?'
 	dec a
 	ret
 

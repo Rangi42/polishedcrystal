@@ -1712,5 +1712,5 @@ ExpCandyMDesc:
 ExpCandyLDesc:
 ExpCandyXLDesc:
 	text "A candy that"
-	next "gives Exp. Points."
+	next "gives Exp.Points."
 	done

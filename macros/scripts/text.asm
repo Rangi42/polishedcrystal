@@ -154,12 +154,12 @@ MACRO _dtxt
 		rept _NARG
 			DEF _str EQUS \1
 			rept $7fff_ffff
-				if !STRLEN("{_str}")
+				if !STRLEN(#_str)
 					break
 				endc
-				DEF _sub EQUS CHARSUB("{_str}", 1)
-				REDEF _str EQUS STRSUB("{_str}", STRLEN("{_sub}") + 1)
-				_dchr "{_sub}"
+				DEF _sub EQUS STRCHAR(#_str, 0)
+				REDEF _str EQUS STRSLICE(#_str, STRLEN(#_sub))
+				_dchr #_sub
 				PURGE _sub
 			endr
 			PURGE _str
@@ -169,7 +169,7 @@ MACRO _dtxt
 ENDM
 
 MACRO _dchr
-	DEF _chr = \1
+	DEF _chr = CHARVAL(\1, 0)
 	if _might_compress_text && DEF(___huffman_data_{02X:_chr}) && DEF(___huffman_length_{02X:_chr})
 		; We might compress text, and this character has a Huffman code
 		if ___huffman_length_{02X:_chr} < 8
@@ -180,7 +180,7 @@ MACRO _dchr
 			DEF _ctxt_length = 0
 			DEF _raw_bytes = 0
 			DEF _compressed_bytes = 1
-			DEF _compressed_byte_0 = "<CTXT>"
+			DEF _compressed_byte_0 = '<CTXT>'
 			setcharmap compressing
 		endc
 	endc
@@ -200,14 +200,14 @@ MACRO _dchr
 	if !_compressing_text
 		; We're not compressing text; declare the raw character
 		db _chr
-		if _chr == "@" || _chr == "<DONE>" || _chr == "<PROMPT>"
+		if _chr == '@' || _chr == '<DONE>' || _chr == '<PROMPT>'
 			; We've reached the end of the text
 			DEF _might_compress_text = 0
 		endc
 	else
 		; We're compressing text; count up the raw and compressed data
 		if DEF(HUFFMAN)
-			println "\1"
+			println STRFMT("\"%#s\"", \1)
 		endc
 		; Append the raw character
 		DEF _raw_byte_{d:_raw_bytes} = _chr
@@ -225,7 +225,7 @@ MACRO _dchr
 				DEF _ctxt_bits &= (1 << _ctxt_length) - 1
 			endc
 		endr
-		if _chr == "@" || _chr == "<DONE>" || _chr == "<PROMPT>"
+		if _chr == '@' || _chr == '<DONE>' || _chr == '<PROMPT>'
 			; We've reached the end of the text
 			if _ctxt_length > 0
 				; Append the compressed byte, padded with zero bits

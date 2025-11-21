@@ -312,10 +312,7 @@ CheckOpponentForfeit:
 	ret
 
 DetermineMoveOrder:
-	ld a, [wBattlePlayerAction]
-	and a
-	jr nz, .player_first
-
+	; Switching and using an item are NO_MOVE, which has a priority of +10
 	call CompareMovePriority
 	jr z, .equal_priority
 	jr c, .player_first
@@ -663,11 +660,8 @@ GetMovePriority:
 INCLUDE "data/moves/priorities.asm"
 
 GetMoveEffect:
-	ld a, b
 	ld hl, Moves + MOVE_EFFECT
-	call GetMoveProperty
-	ld b, a
-	ret
+	jmp GetMoveProperty
 
 PerformMove:
 	xor a
@@ -701,6 +695,8 @@ PerformMove:
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
+
+	farcall TickDisableAfterMove
 
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
@@ -862,6 +858,18 @@ ForceDeferredSwitch:
 	call .consume_item
 	call SwitchTurn
 
+	; Suction Cups can prevent this item from activating.
+	call GetTrueUserAbility
+	cp SUCTION_CUPS
+	jr nz, .items_done
+
+	farcall BeginAbility
+	farcall ShowAbilityActivation
+	ld hl, UnaffectedText
+	call StdBattleTextbox
+	farcall EndAbility
+	jmp .all_done
+
 .items_done
 	; Figure out which side is switching
 	bit SWITCH_TARGET, [hl]
@@ -922,7 +930,7 @@ ForceDeferredSwitch:
 	; Regenerator, Natural Cure, suppress Neutralizing Gas
 	push hl
 	farcall RunSwitchAbilities
-	call SuppressUserNeutralizingGas
+	call SuppressUserAbilities
 	call UpdateUserInParty
 	pop hl
 
@@ -1135,23 +1143,22 @@ GetUserSwitchTarget:
 
 SendInUserPkmn:
 ; sends in the new pokémon
-	; volatile statuses that baton pass doesn't preserve
+	; Reset all volatiles not preserved by Baton Pass.
 	call BreakAttractionAndResetMirrorHerb
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	res SUBSTATUS_ENDURE, [hl]
-	res SUBSTATUS_PROTECT, [hl]
-	inc hl
-	; substatus2
-	ld a, 1 << SUBSTATUS_LOCK_ON ; only flag here that should be preserved
+	ld a, 1 << SUBSTATUS_CURSE
 	and [hl]
+	ld [hli], a
+	; substatus2
+	xor a
 	ld [hli], a
 	; substatus3
 	ld a, 1 << SUBSTATUS_CONFUSED ; only flag here that should be preserved
 	and [hl]
 	ld [hli], a
 	; substatus4
-	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
+	ld a, 1 << SUBSTATUS_FOCUS_ENERGY | 1 << SUBSTATUS_SUBSTITUTE | 1 << SUBSTATUS_LEECH_SEED
 	and [hl]
 	ld [hl], a
 
@@ -1196,7 +1203,7 @@ endr
 	ld [hli], a
 	ld [hl], a
 
-	ld a, $10
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	ld bc, NUM_LEVEL_STATS
 	ldh a, [hBattleTurn]
@@ -1734,6 +1741,15 @@ LeppaRestorePP:
 
 DealDamageToOpponent:
 ; ONLY runs from attacking damage.
+	call GetOpponentAbilityAfterMoldBreaker
+	cp BERSERK
+	jr z, .berserk
+	call SwitchTurn
+	call SubtractHPFromUser
+	call CheckEnigmaBerry
+	jmp SwitchTurn
+
+.berserk
 	; If user has more than 50%HP, set Berserk flag. Unset later if we still
 	; have more than 50%HP.
 	push bc
@@ -1749,15 +1765,10 @@ DealDamageToOpponent:
 
 .not_over_half
 	pop bc
-	push de
-	ld de, _SubtractHP
-	ldh a, [hBattleTurn]
-	and a
-	push af
-	call z, _SubtractHPFromEnemy
-	pop af
-	call nz, _SubtractHPFromPlayer
-	pop de
+	call SwitchTurn
+	call SubtractHPFromUser_SkipItems
+	call CheckEnigmaBerry ; takes priority over Berserk
+	call SwitchTurn
 
 	; deal with Berserk
 	push bc
@@ -1780,9 +1791,31 @@ DealDamageToOpponent:
 	pop bc
 	jmp SwitchTurn
 
+SubtractHPFromUser_OverrideFaintOrder:
+; Subtract HP from user. If this results in a faint, the user is marked as
+; having fainted first, even if the opponent has already fainted.
+	call SubtractHPFromUser
+	push hl
+	push de
+	push bc
+	call HasUserFainted
+	jr nz, .did_not_faint
+	ldh a, [hBattleTurn]
+	inc a
+	ld [wWhichMonFaintedFirst], a
+.did_not_faint
+	jmp PopBCDEHL
+
+SubtractHPFromUser_SkipItems:
+; Self-damage from confusion should not trigger Berry consumption.
+	push de
+	ld de, _SubtractHP
+	jr DoSubtractHPFromUser
 SubtractHPFromUser:
 	push de
 	ld de, SubtractHP
+	; fallthrough
+DoSubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy
@@ -1825,21 +1858,51 @@ _SubtractHPFromEnemy:
 	ldh [hBattleTurn], a
 	ret
 
+CheckEnigmaBerry:
+; Check if user's Enigma Berry applies. Needs a separate handler from other
+; berries due to Berserk quirks (Enigma > Berserk > other healing berries).
+	; Were we hit with a super-effective attack?
+	ld a, [wTypeModifier]
+	cp EFFECTIVE + 1
+	ret c
+
+	; Are we actually holding Enigma Berry?
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_ENIGMA_BERRY
+	ret nz
+
+	; Can we be healed?
+	push bc
+	push hl
+	call CheckFullHP
+	pop hl
+	pop bc
+	ret z
+
+	; Treat as HP-restoring berry
+	ld b, HELD_BERRY
+	call _HeldHPHealingItem
+	ret nz
+	jmp UseBattleItem
+
 SubtractHP:
 	call _SubtractHP
 	; fallthrough
 HandleUserHealingItems:
 	call HasUserFainted
 	ret z
+	push bc
+	call UseHeldStatusHealingItem
+	call UseConfusionHealingItem
+	pop bc
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_PENDING_ITEMLOSS, a
 	ret nz
 	push bc
 	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry
-	call UseConfusionHealingItem
 	pop bc
 	ret
 
@@ -2113,14 +2176,26 @@ FaintUserPokemon:
 	call StdBattleTextbox
 	call LoadTileMapToTempTileMap
 
-SuppressUserNeutralizingGas:
-; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should
-; regain Neutralizing Gas in case it procs.
+SuppressUserAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVarAddr
 	ld a, [hl]
+	ld [hl], NO_ABILITY
 	cp NEUTRALIZING_GAS
+	jr z, .neutralizing_gas
+	cp UNNERVE
 	ret nz
+	ldh a, [hBattleTurn]
+	push af
+	farcall HandleLeppaBerry
+	farcall HandleHealingItems
+	pop af
+	ldh [hBattleTurn], a
+	ret
+
+.neutralizing_gas
+	; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should
+	; regain Neutralizing Gas in case it procs.
 	ld [hl], -1
 
 	; Unless opponent also has Neutralizing Gas or Unnerve, (re-)run its
@@ -3253,11 +3328,14 @@ SpikesDamage:
 	ld c, 1
 SpikesDamage_GotAbility:
 ; Input: b: ability, c: 0 if forced out, 1 otherwise
+	push de
 	push bc
 	call SetParticipant
-	call HandleAirBalloon
+	ld d, 0
+	farcall CheckAirborne_GotAbility
 	pop bc
-	ret z
+	pop de
+	jr nz, .end_hazards
 
 	push bc
 	predef GetUserItemAfterUnnerve
@@ -3265,20 +3343,7 @@ SpikesDamage_GotAbility:
 	cp HELD_HEAVY_BOOTS
 	pop bc
 	ret z
-	cp HELD_IRON_BALL
-	jr z, .iron_ball
 
-	ld a, b
-	cp LEVITATE
-	ret z
-
-	; Flying-types aren't affected by Spikes.
-	push bc
-	call CheckIfUserIsFlyingType
-	pop bc
-	ret z
-
-.iron_ball
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerHazards
@@ -3288,7 +3353,9 @@ SpikesDamage_GotAbility:
 	push hl
 	call .Spikes
 	pop hl
-	jr .ToxicSpikes
+	call .ToxicSpikes
+.end_hazards
+	jmp HandleEntryItems
 
 .Spikes:
 	ld a, b
@@ -3381,12 +3448,17 @@ SpikesDamage_GotAbility:
 .poststatus_done
 	jmp SwitchTurn
 
-HandleAirBalloon:
-; prints air balloon msg and returns z if we have air balloon
+HandleEntryItems:
+; Handles items at battle start or send-in.
 	farcall GetUserItem
 	ld a, b
 	cp HELD_AIR_BALLOON
+	jr z, .air_balloon
+	cp HELD_ROOM_SERVICE
 	ret nz
+	farjp RoomServiceItem
+
+.air_balloon
 	call GetCurItemName
 	ld hl, NotifyAirBalloonText
 	call StdBattleTextbox
@@ -3611,7 +3683,8 @@ _HeldHPHealingItem:
 .quarter_maxhp
 	call GetQuarterMaxHP
 .got_hp_to_restore
-	farcall ShowPotentialAbilityActivation
+	ld a, CUD_CHEW
+	farcall ShowPotentialSpecificAbilityActivation
 	call CurItemRecoveryAnim
 	call RestoreHP
 	xor a
@@ -3819,11 +3892,11 @@ DrawPlayerHUD:
 
 	; DrawPlayerHUDBorder
 	hlcoord 19, 11
-	ld [hl], "<XPEND>"
+	ld [hl], '<XPEND>'
 	hlcoord 10, 11
-	ld a, "<XP1>"
+	ld a, '<XP1>'
 	ld [hli], a
-	ld [hl], "<XP2>"
+	ld [hl], '<XP2>'
 
 	call PrintPlayerHUD
 
@@ -3889,7 +3962,7 @@ PrintPlayerHUD:
 	ld de, wBattleMonNickname
 	hlcoord 11, 7
 	ld a, [wBattleMonNickname + MON_NAME_LENGTH - 2]
-	cp "@"
+	cp '@'
 	jr z, .short_name
 	dec hl ; hlcoord 10, 7
 .short_name
@@ -3930,7 +4003,7 @@ endr
 	ld bc, wBattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, "<STAR>"
+	ld a, '<STAR>'
 	hlcoord 19, 8
 	ld [hl], a
 
@@ -3938,9 +4011,9 @@ endr
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender_char
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender_char
 	inc a ; "<FEMALE>"
 
@@ -4006,21 +4079,21 @@ endr
 	ld bc, wEnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, "<STAR>"
+	ld a, '<STAR>'
 	hlcoord 9, 1
 	ld [hl], a
 
 .not_shiny
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	ld a, " "
+	ld a, ' '
 	jr z, .got_gender
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
-	ld a, " "
+	ld a, ' '
 	jr c, .got_gender
-	ld a, "<MALE>"
+	ld a, '<MALE>'
 	jr nz, .got_gender
 	inc a ; "<FEMALE>"
 
@@ -4189,9 +4262,9 @@ BattleMenu:
 
 .autoinput_down_a
 	db NO_INPUT, $40
-	db D_DOWN,   $00
+	db PAD_DOWN, $00
 	db NO_INPUT, $40
-	db A_BUTTON, $00
+	db PAD_A,    $00
 	db NO_INPUT, $ff ; end
 
 BattleMenu_Fight:
@@ -4481,7 +4554,7 @@ BattleMenuPKMN_Loop:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .clear_carry
 
 .set_carry
@@ -4957,17 +5030,17 @@ MoveSelectionScreen:
 	ld c, $2c
 
 	ld a, [wMoveSelectionMenuType]
-	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON | START
+	ld b, PAD_DOWN | PAD_UP | PAD_A | PAD_B | PAD_START
 	and a
 	jr z, .check_link
 	dec a
 	jr z, .okay
-	ld b, D_DOWN | D_UP | A_BUTTON | START
+	ld b, PAD_DOWN | PAD_UP | PAD_A | PAD_START
 .check_link
 	ld a, [wLinkMode]
 	and a
 	jr nz, .okay
-	ld a, SELECT
+	ld a, PAD_SELECT
 	or b
 	ld b, a
 
@@ -4993,21 +5066,21 @@ MoveSelectionScreen:
 	ld bc, SCREEN_WIDTH
 	dec a
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 
 .interpret_joypad
 	ld a, $1
 	ldh [hBGMapMode], a
 	call DoMenuJoypadLoop
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jmp nz, .pressed_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jmp nz, .pressed_down
-	bit SELECT_F, a
+	bit B_PAD_SELECT, a
 	jmp nz, .pressed_select
-	bit START_F, a
+	bit B_PAD_START, a
 	jmp nz, .pressed_start
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	; A button
 	push af
 
@@ -5363,7 +5436,7 @@ MoveInfoBox:
 
 	hlcoord 0, 8
 	ld a, [hl]
-	cp "┌"
+	cp '┌'
 	push af
 	lb bc, 3, 9
 	call Textbox
@@ -5444,7 +5517,7 @@ MoveInfoBox:
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	ld hl, TypeIconGFX
-	ld bc, 4 * LEN_1BPP_TILE
+	ld bc, 4 * TILE_1BPP_SIZE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
@@ -5471,7 +5544,7 @@ MoveInfoBox:
 
 .PrintPP:
 	hlcoord 2, 11
-	ld a, "<BOLDP>"
+	ld a, '<BOLDP>'
 	ld [hli], a
 	ld [hli], a
 	inc hl
@@ -5482,7 +5555,7 @@ MoveInfoBox:
 	pop hl
 	inc hl
 	inc hl
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wNamedObjectIndex
 	lb bc, 1, 2
@@ -6191,7 +6264,7 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	ld a, d
 	cp 7 * 7
 	jr c, .ok
-	ld a, " "
+	ld a, ' '
 .ok
 	ld [hl], a
 	ld bc, SCREEN_WIDTH
@@ -6394,6 +6467,11 @@ GiveExperiencePoints:
 .participating
 	call GiveBattleEVs
 
+	; No experience if disabled
+	ld a, [wInitialOptions2]
+	bit NO_EXP_OPT, a
+	jmp nz, .next_mon
+
 	; No experience at level 100
 	ld hl, MON_LEVEL
 	add hl, bc
@@ -6494,18 +6572,16 @@ GiveExperiencePoints:
 	pop bc
 	ld hl, MON_EXP + 2
 	add hl, bc
-	ld d, [hl]
 	ldh a, [hQuotient + 2]
-	add d
+	add [hl]
 	ld [hld], a
-	ld d, [hl]
 	ldh a, [hQuotient + 1]
-	adc d
+	adc [hl]
+	ld [hld], a
+	ldh a, [hQuotient]
+	adc [hl]
 	ld [hl], a
 	jr nc, .skip2
-	dec hl
-	inc [hl]
-	jr nz, .skip2
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7092,8 +7168,10 @@ AnimateExpBar:
 	adc [hl]
 	ld [hld], a
 	jr nc, .NoOverflow
-	inc [hl]
-	jr nz, .NoOverflow
+	ld a, [wExperienceGained]
+	adc [hl]
+	ld [hl], a
+	jr nc, .NoOverflow
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7250,7 +7328,7 @@ GetNewBaseExp:
 ; basic stage mons: BST*0.2
 ; stage 1 or non-evolver: BST*0.35
 ; stage 2 or legendaries: BST*0.5
-; exceptions: Chansey, Blissey
+; exceptions: Happiny, Chansey, Blissey
 	ld a, MON_SPECIES
 	call OTPartyAttr
 	ld c, a
@@ -7259,6 +7337,10 @@ GetNewBaseExp:
 	and EXTSPECIES_MASK
 	ld b, a
 _GetNewBaseExp:
+	; Ensure that the most significant multiplicand isn't left with stray data.
+	; The rest is filled by this routine.
+	xor a
+	ldh [hMultiplicand], a
 	ld hl, NewBaseExpExceptions
 	ld de, 4
 	call IsInWordArray
@@ -7367,12 +7449,17 @@ _GetNewBaseExp:
 	pop hl
 	inc hl
 	inc hl
+
+	; NO_FORM should be treated as a wildcard
+	and a ; cp NO_FORM
+	jr z, .any_form
 	cp b
 	jr nz, .evos_loop
+.any_form
 	ld a, d
 	cp c
 	jr nz, .evos_loop
-	
+
 .stage_1_or_nonevolver
 	ld a, 7 ; 1st stage or non-evolver: *7/20 -> *0.35
 .got_multiplier
@@ -7611,7 +7698,7 @@ PlaceExpBar:
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, "<FULLXP>"
+	ld a, '<FULLXP>'
 	ld [hli], a
 	dec c
 	ret z
@@ -7620,15 +7707,15 @@ PlaceExpBar:
 .next
 	add $8
 	jr z, .loop2
-	add "<NOXP>"
+	add '<NOXP>'
 	jr .skip
 
 .loop2
-	ld a, "<NOXP>"
+	ld a, '<NOXP>'
 
 .skip
 	ld [hli], a
-	ld a, "<NOXP>"
+	ld a, '<NOXP>'
 	dec c
 	jr nz, .loop2
 	ret
@@ -7855,7 +7942,7 @@ BattleIntro:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
-	res rLCDC_WINDOW_TILEMAP, [hl]
+	res B_LCDC_WIN_MAP, [hl]
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld a, [wBattleType]
@@ -7883,7 +7970,7 @@ BattleIntro:
 	pop bc
 .skip_ghost_reveal
 	ld hl, rLCDC
-	set rLCDC_WINDOW_TILEMAP, [hl]
+	set B_LCDC_WIN_MAP, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox
@@ -7916,10 +8003,10 @@ LoadTrainerOrWildMonPic:
 	ret
 
 BackUpBGMap2:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wDecompressScratch
 	ld bc, $40 tiles ; vBGMap3 - vBGMap2
 	ld a, $2
@@ -7935,7 +8022,7 @@ BackUpBGMap2:
 	pop af
 	ldh [rVBK], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 InitEnemy:
@@ -8146,7 +8233,7 @@ DisplayLinkRecord:
 	call CloseSRAM
 	hlcoord 0, 0, wAttrmap
 	xor a
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld bc, SCREEN_AREA
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
 	ld a, CGB_PLAIN
@@ -8180,7 +8267,7 @@ ReadAndPrintLinkBattleRecord:
 	ld de, wLinkBattleRecordName
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	inc de
 	ld bc, 6
@@ -8597,14 +8684,14 @@ InitBattleDisplay:
 	ret
 
 .BlankBGMap:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	ld hl, wScratchTileMap
-	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
-	ld a, " "
+	ld bc, TILEMAP_AREA
+	ld a, ' '
 	rst ByteFill
 
 	ld de, wScratchTileMap
@@ -8613,7 +8700,7 @@ InitBattleDisplay:
 	call Request2bpp
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .InitBackPic:
@@ -8646,10 +8733,10 @@ GetTrainerBackpic:
 	jmp DecompressRequest2bpp
 
 CopyBackpic:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $6
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31
 	ldh a, [hROMBank]
@@ -8657,7 +8744,7 @@ CopyBackpic:
 	ld c, 7 * 7
 	call Get2bpp
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call .LoadTrainerBackpicAsOAM
 	ld a, $31
 	ldh [hGraphicStartTile], a
