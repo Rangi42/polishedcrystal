@@ -49,7 +49,7 @@ DEF NO_ROOF_TILESETS EQU const_value
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
-DEF TILESET_LENGTH EQU 15
+DEF TILESET_LENGTH EQU 18
 
 ; MapGroupRoofs values (see data/maps/roofs.asm)
 ; MapGroupRoofGFX indexes (see engine/tilesets/mapgroup_roofs.asm)

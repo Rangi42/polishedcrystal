@@ -220,8 +220,8 @@ DEF TRAINERPAL_CRYS EQU __trainer_class__
 	const ZANE
 
 	trainerclass TWINS ; 24
-	const AMYANDMAY1
-	const AMYANDMAY2
+	const AMYANDMIMI1
+	const AMYANDMIMI2
 	const ANNANDANNE1
 	const ANNANDANNE2
 	const JOANDZOE1
@@ -403,6 +403,7 @@ DEF TRAINERPAL_CRYS EQU __trainer_class__
 	const ISSAC
 	const DONALD
 	const ZACH
+	const ENZO
 	const MILLER
 	const AIDAN
 
@@ -452,6 +453,7 @@ DEF TRAINERPAL_CRYS EQU __trainer_class__
 	const ELLEN
 	const IRIS
 	const MIRIAM
+	const ABIGAIL
 	const LAYLA
 	const ROSE
 	const MEADOW

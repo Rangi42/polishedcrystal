@@ -1,6 +1,6 @@
 	frame 1, 06
-	frame 4, 07
-	frame 2, 50
+	frame 2, 40
+	frame 1, 07
 	setrepeat 3
 	frame 0, 09
 	frame 3, 09

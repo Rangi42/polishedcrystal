@@ -88,13 +88,7 @@ Route29TutorialScript:
 	writetext CatchingTutorialDebriefText
 Route29FinishTutorial:
 	promptbutton
-	giveitem POKE_BALL, 5
-	waitsfx
-	writetext CatchingTutorialPokeBallText
-	special ShowItemIcon
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
+	verbosegiveitem POKE_BALL, 5
 	writetext CatchingTutorialGoodbyeText
 	waitbutton
 	closetext
@@ -204,11 +198,6 @@ CatchingTutorialRefusedText:
 	para "Anyway, I'll give"
 	line "you these."
 	cont "Good luck!"
-	done
-
-CatchingTutorialPokeBallText:
-	text "<PLAYER> gained"
-	line "5 # Balls."
 	done
 
 CatchingTutorialGoodbyeText:

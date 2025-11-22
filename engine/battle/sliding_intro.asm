@@ -1,20 +1,20 @@
 BattleIntroSlidingPics:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wLYOverrides)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call .subfunction1
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	call .subfunction2
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .subfunction1
@@ -44,13 +44,8 @@ BattleIntroSlidingPics:
 	dec d
 	pop af
 	push af
-	cp $1
-	jr z, .skip1
-	push de
-	call .subfunction3
-	pop de
-
-.skip1
+	dec a
+	call nz, .subfunction3
 	call DelayFrame
 	pop af
 	dec a
@@ -58,15 +53,17 @@ BattleIntroSlidingPics:
 	ret
 
 .subfunction3
+	push de
 	ld hl, wShadowOAMSprite00XCoord
 	ld c, $12 ; 18
-	ld de, SPRITEOAMSTRUCT_LENGTH
+	ld de, OBJ_SIZE
 .loop3
 	dec [hl]
 	dec [hl]
 	add hl, de
 	dec c
 	jr nz, .loop3
+	pop de
 	ret
 
 .subfunction4

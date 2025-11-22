@@ -21,7 +21,7 @@ PokeAnims:
 .Slow:   pokeanim StereoCry, Setup2, Play
 .Normal: pokeanim StereoCry, Setup, Play
 .Menu:   pokeanim CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
-.Trade:  pokeanim Extra, Play2, Extra, Play, SetWait, Wait, Cry, Setup, Play
+.Trade:  pokeanim Extra, Play2, Extra, Play, SetWait, Wait, CryNoWait, Setup, Play
 .Evolve: pokeanim Extra, Play, SetWait, Wait, CryNoWait, Setup, Play
 .Hatch:  pokeanim Extra, Play, CryNoWait, Setup, Play, SetWait, Wait, Extra, Play
 .Egg1:   pokeanim Setup, Play
@@ -51,10 +51,10 @@ LoadMonAnimation:
 	ld c, a
 	pop hl
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	push bc
 	push de
@@ -96,14 +96,14 @@ LoadMonAnimation:
 	ld [wPokeAnimFrontpicHeight], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 SetUpPokeAnim:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	ld b, 0
@@ -118,7 +118,7 @@ SetUpPokeAnim:
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, c
 	and $80
 	ret z
@@ -140,7 +140,6 @@ PokeAnim_SetupCommands:
 	add_setup_command PokeAnim_Extra
 	add_setup_command PokeAnim_Play
 	add_setup_command PokeAnim_Play2
-	add_setup_command PokeAnim_Cry
 	add_setup_command PokeAnim_CryNoWait
 	add_setup_command PokeAnim_StereoCry
 
@@ -213,22 +212,12 @@ PokeAnim_Finish:
 	set 7, [hl]
 	ret
 
-PokeAnim_Cry:
-	ld a, [wPokeAnimSpecies]
-	ld c, a
-	ld a, [wPokeAnimVariant]
-	ld b, a
-	call _PlayCry
-	ld hl, wPokeAnimSceneIndex
-	inc [hl]
-	ret
-
 PokeAnim_CryNoWait:
 	ld a, [wPokeAnimSpecies]
 	ld c, a
 	ld a, [wPokeAnimVariant]
 	ld b, a
-	call PlayCry2
+	call PlayMonCry2
 	ld hl, wPokeAnimSceneIndex
 	inc [hl]
 	ret
@@ -246,16 +235,16 @@ PokeAnim_StereoCry:
 	ret
 
 PokeAnim_DeinitFrames:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call PokeAnim_PlaceGraphic
 	farcall HDMATransferTileMapToWRAMBank3
 	call PokeAnim_SetVBank0
 	farcall HDMATransferAttrMapToWRAMBank3
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 AnimateMon_CheckIfPokemon:
@@ -270,10 +259,10 @@ AnimateMon_CheckIfPokemon:
 	ret
 
 PokeAnim_InitAnim:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push bc
 	ld hl, wPokeAnimIdleFlag
 	ld bc, wPokeAnimStructEnd - wPokeAnimIdleFlag
@@ -288,7 +277,7 @@ PokeAnim_InitAnim:
 	call GetMonFramesPointer
 	call GetMonBitmaskPointer
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 PokeAnim_DoAnimScript:
@@ -724,16 +713,16 @@ PokeAnim_PlaceGraphic:
 	jmp ClearBox
 
 PokeAnim_SetVBank1:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $2
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ldh [hBGMapMode], a
 	call .SetFlag
 	farcall HDMATransferAttrMapToWRAMBank3
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .SetFlag:
@@ -788,10 +777,10 @@ PokeAnim_GetAttrMapCoord:
 	ret
 
 PokeAnim_GetFrontpicDims:
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, $1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; This is no longer needed for the pic size, but do it just
 	; in case subsequent code expects base data available
@@ -802,7 +791,7 @@ PokeAnim_GetFrontpicDims:
 	call GetPicSize
 	ld c, a
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 GetMonAnimDataIndex:
@@ -837,26 +826,25 @@ GetMonAnimPointer:
 
 GetMonFramesPointer:
 	call GetMonAnimDataIndex
-	ld hl, FramesPointers
+	ld h, b
+	ld l, c
+	add hl, hl
 	add hl, bc
+	add hl, hl
 	add hl, bc
-	ld a, BANK(FramesPointers)
+	ld bc, PokemonPicPointers
+	add hl, bc
+	ld a, BANK(PokemonPicPointers)
+	call GetFarByte
+	ld [wPokeAnimFramesBank], a
+	ld bc, 5
+	add hl, bc
+	ld a, BANK(PokemonPicPointers)
 	call GetFarWord
 	ld a, l
 	ld [wPokeAnimFramesAddr], a
 	ld a, h
 	ld [wPokeAnimFramesAddr + 1], a
-	ld a, [wPokeAnimVariant]
-	and EXTSPECIES_MASK
-	jr nz, .johto_frames
-	ld a, [wPokeAnimSpecies]
-	cp CHIKORITA
-	; a = carry ? BANK(KantoFrames) : BANK(JohtoFrames)
-	assert BANK(KantoFrames) + 1 == BANK(JohtoFrames)
-.johto_frames
-	sbc a
-	add BANK(JohtoFrames)
-	ld [wPokeAnimFramesBank], a
 	ret
 
 GetMonBitmaskPointer:

@@ -90,7 +90,7 @@ Mode = 2
 Address = {hex @}
 Type = 17
 
-[Wireless_TryQuickSave_block_input_1]
+[Wireless_TQS_block_input_1]
 Mode = 2
 Address = {hex @}
 Type = 18
@@ -100,7 +100,7 @@ Mode = 2
 Address = {hex @}
 Type = 20
 
-[Wireless_TryQuickSave_block_input_2]
+[Wireless_TQS_block_input_2]
 Mode = 2
 Address = {hex @}
 Type = 24

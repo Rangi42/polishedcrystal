@@ -72,7 +72,7 @@ Route35NationalParkGate_LeavingContestEarly:
 	opentext
 	readvar VAR_CONTESTMINUTES
 	addval $1
-	getnum STRING_BUFFER_3
+	setquantity
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
 	iffalsefwd Route35NationalParkGate_GoBackIn
@@ -394,8 +394,10 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 
 Route35NationalParkGateOfficer1WantToFinishText:
 	text "You still have "
-	text_ram wStringBuffer3
-	line "minute(s) left."
+	text_decimal wItemQuantityChangeBuffer, 1, 2
+	line "minute"
+	text_plural
+	text " left."
 
 	para "Do you want to"
 	line "finish now?"

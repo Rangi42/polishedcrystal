@@ -9,6 +9,11 @@ BattleCommand_bounceback:
 	cp ATKFAIL_PROTECT
 	ret z
 
+	; Someone who is semi-invulnerable will not bounceback (ask GF why).
+	; Hazards were still affected in Gen V specifically, but not in VI+
+	call CheckHiddenOpponent
+	ret nz
+
 	; Some moves bypass Substitute
 	ld hl, SubstituteBypassMoves
 	call IsInByteArray
@@ -40,7 +45,7 @@ BattleCommand_bounceback:
 	push af
 
 	push bc
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	pop bc
 	ld a, b
@@ -48,7 +53,7 @@ BattleCommand_bounceback:
 	call GetMoveName
 	ld hl, BouncedBackText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 
 	; Flag the bouncing
 	ld a, BATTLE_VARS_SUBSTATUS2

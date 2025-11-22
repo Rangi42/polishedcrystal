@@ -6,7 +6,7 @@
 ; - ItemAttributes (see data/items/attributes.asm)
 ; - ItemIconPointers (see data/items/icon_pointers.asm)
 ; - ItemIconPalettes (see gfx/items/items.pal)
-; - ItemEffects (see engine/items/item_effects.asm)
+; - _DoItemEffect.ItemEffects (see engine/items/item_effects.asm)
 	const_def
 	const NO_ITEM      ; 00
 DEF PARK_BALL EQU NO_ITEM
@@ -634,7 +634,7 @@ DEF NUM_CANDIES EQU const_value - 1
 ; - KeyItemAttributes (see data/items/attributes.asm)
 ; - KeyItemIconPointers (see data/items/icon_pointers.asm)
 ; - KeyItemIconPalettes (see gfx/items/key_items.pal)
-; - KeyItemEffects (see engine/items/item_effects.asm)
+; - DoKeyItemEffect.KeyItemEffects (see engine/items/item_effects.asm)
 	const_def 1
 	const BICYCLE      ; 01
 	const OLD_ROD      ; 02

@@ -10,14 +10,14 @@ MACRO RGB
 	endr
 ENDM
 
-DEF palred   EQUS "(1 << 0) *"
-DEF palgreen EQUS "(1 << 5) *"
-DEF palblue  EQUS "(1 << 10) *"
+DEF palred   EQUS "(1 << B_COLOR_RED) *"
+DEF palgreen EQUS "(1 << B_COLOR_GREEN) *"
+DEF palblue  EQUS "(1 << B_COLOR_BLUE) *"
 
 DEF palettes EQUS "* 8"
 DEF palette  EQUS "+ 8 *"
-DEF color    EQUS "+ PAL_COLOR_SIZE *"
-DEF colors   EQUS "* PAL_COLOR_SIZE"
+DEF color    EQUS "+ COLOR_SIZE *"
+DEF colors   EQUS "* COLOR_SIZE"
 
-DEF tiles EQUS "* LEN_2BPP_TILE"
-DEF tile  EQUS "+ LEN_2BPP_TILE *"
+DEF tiles EQUS "* TILE_SIZE"
+DEF tile  EQUS "+ TILE_SIZE *"

@@ -6,9 +6,11 @@ _SweetHoney:
 	and a
 	jr z, .no_battle
 	ld hl, wStatusFlags2
+	set STATUSFLAGS2_USING_SWEET_HONEY_F, [hl]
 	; Items can't be used during the Bug-Catching Contest anyway
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	jr nz, .no_battle
+
 	farcall ChooseWildEncounter
 	jr nz, .no_battle
 
@@ -29,6 +31,8 @@ _SweetHoney:
 .done
 	ldh [hScriptVar], a
 	ld [wFieldMoveSucceeded], a
+	ld hl, wStatusFlags2
+	res STATUSFLAGS2_USING_SWEET_HONEY_F, [hl]
 	ld hl, SweetHoneyScript
 	jmp QueueScript
 

@@ -57,8 +57,6 @@ CheckReceiveCallTimer:
 	scf
 	ret
 
-CheckLuckyNumberShowFlag:
-	ld hl, wLuckyNumberDayBuffer
 CheckDayDependentEventHL:
 	inc hl
 	push hl
@@ -297,11 +295,6 @@ CalcDaysSince:
 	xor a
 	jr _CalcDaysSince
 
-CalcHoursDaysSince:
-	inc hl
-	xor a
-	jr _CalcHoursDaysSince
-
 CalcMinsHoursDaysSince:
 	inc hl
 	inc hl
@@ -315,9 +308,9 @@ CalcSecsMinsHoursDaysSince:
 	ldh a, [hSeconds]
 	ld c, a
 	sub [hl]
-	jr nc, .skip
+	jr nc, .skip_seconds
 	add 60
-.skip
+.skip_seconds
 	ld [hl], c ; current seconds
 	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wSecondsSince], a ; seconds since
@@ -327,21 +320,20 @@ _CalcMinsHoursDaysSince:
 	ldh a, [hMinutes]
 	ld c, a
 	sbc [hl]
-	jr nc, .skip
+	jr nc, .skip_minutes
 	add 60
-.skip
+.skip_minutes
 	ld [hl], c ; current minutes
 	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wMinutesSince], a ; minutes since
-	; fallthrough
 
-_CalcHoursDaysSince:
+; calc hours+days since
 	ldh a, [hHours]
 	ld c, a
 	sbc [hl]
-	jr nc, .skip
+	jr nc, .skip_hours
 	add 24
-.skip
+.skip_hours
 	ld [hl], c ; current hours
 	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
 	ld [wHoursSince], a ; hours since
@@ -351,9 +343,9 @@ _CalcDaysSince:
 	ld a, [wCurDay]
 	ld c, a
 	sbc [hl]
-	jr nc, .skip
+	jr nc, .skip_days
 	add 20 * 7
-.skip
+.skip_days
 	ld [hl], c ; current days
 	ld [wDaysSince], a ; days since
 	ret

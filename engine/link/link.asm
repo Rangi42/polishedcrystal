@@ -70,7 +70,7 @@ Gen2ToGen2LinkComms:
 .not_trading
 	xor a
 	ldh [rIF], a
-	ld a, 1 << SERIAL | 1 << VBLANK
+	ld a, IE_SERIAL | IE_VBLANK
 	ldh [rIE], a
 	ld e, MUSIC_NONE
 	call PlayMusic
@@ -728,7 +728,7 @@ PlaceTradePartnerNamesAndParty:
 LinkTrade_OTPartyMenu:
 	ld a, OTPARTYMON
 	ld [wMonType], a
-	ld a, A_BUTTON | D_UP | D_DOWN
+	ld a, PAD_A | PAD_UP | PAD_DOWN
 	ld [wMenuJoypadFilter], a
 	ld a, [wOTPartyCount]
 	ld [w2DMenuNumRows], a
@@ -752,7 +752,7 @@ LinkTradeOTPartymonMenuLoop:
 	ld a, d
 	and a
 	jmp z, LinkTradePartiesMenuMasterLoop
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr z, .not_a_button
 	call LinkMonSummaryScreen
 	call InitLinkTradePalMap
@@ -760,7 +760,7 @@ LinkTradeOTPartymonMenuLoop:
 	jmp LinkTradePartiesMenuMasterLoop
 
 .not_a_button
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr z, .not_d_up
 	ld a, [wMenuCursorY]
 	ld b, a
@@ -774,7 +774,7 @@ LinkTradeOTPartymonMenuLoop:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 	ld a, [wPartyCount]
@@ -782,7 +782,7 @@ LinkTradeOTPartymonMenuLoop:
 	jr LinkTrade_PlayerPartyMenu
 
 .not_d_up
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jmp z, LinkTradePartiesMenuMasterLoop
 	jmp LinkTradeOTPartymonMenuCheckCancel
 
@@ -808,7 +808,7 @@ LinkTrade_PlayerPartyMenu:
 	call InitLinkTradePalMap
 	xor a
 	ld [wMonType], a
-	ld a, A_BUTTON | D_UP | D_DOWN
+	ld a, PAD_A | PAD_UP | PAD_DOWN
 	ld [wMenuJoypadFilter], a
 	ld a, [wPartyCount]
 	ld [w2DMenuNumRows], a
@@ -833,9 +833,9 @@ LinkTradePartymonMenuLoop:
 	ld a, d
 	and a
 	jr z, LinkTradePartiesMenuMasterLoop
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jmp nz, LinkTrade_TradeSummaryMenu
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jr z, .not_d_down
 	ld a, [wMenuCursorY]
 	dec a
@@ -847,7 +847,7 @@ LinkTradePartymonMenuLoop:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 	ld a, 1
@@ -855,7 +855,7 @@ LinkTradePartymonMenuLoop:
 	jmp LinkTrade_OTPartyMenu
 
 .not_d_down
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr z, LinkTradePartiesMenuMasterLoop
 	ld a, [wMenuCursorY]
 	ld b, a
@@ -867,7 +867,7 @@ LinkTradePartymonMenuLoop:
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 	jmp LinkTradePartymonMenuCheckCancel
@@ -890,10 +890,10 @@ LinkTradeMenu:
 	push bc
 	push af
 	ldh a, [hJoyLast]
-	and D_PAD
+	and PAD_CTRL_PAD
 	ld b, a
 	ldh a, [hJoyPressed]
-	and BUTTONS
+	and PAD_BUTTONS
 	or b
 	ld b, a
 	pop af
@@ -1043,9 +1043,9 @@ LinkTrade_TradeSummaryMenu:
 	call Link_WaitBGMap
 
 .joy_loop
-	ld a, " "
+	ld a, ' '
 	ldcoord_a 11, 16
-	ld a, A_BUTTON | B_BUTTON | D_RIGHT
+	ld a, PAD_A | PAD_B | PAD_RIGHT
 	ld [wMenuJoypadFilter], a
 	ld a, 1
 	ld [w2DMenuNumRows], a
@@ -1064,9 +1064,9 @@ LinkTrade_TradeSummaryMenu:
 	ld [w2DMenuFlags1], a
 	ld [w2DMenuFlags2], a
 	call DoMenuJoypadLoop
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jr nz, .d_right
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .show_summary
 .b_button
 	pop af
@@ -1075,9 +1075,9 @@ LinkTrade_TradeSummaryMenu:
 	jmp LinkTrade_PlayerPartyMenu
 
 .d_right
-	ld a, " "
+	ld a, ' '
 	ldcoord_a 1, 16
-	ld a, A_BUTTON | B_BUTTON | D_LEFT
+	ld a, PAD_A | PAD_B | PAD_LEFT
 	ld [wMenuJoypadFilter], a
 	ld a, 1
 	ld [w2DMenuNumRows], a
@@ -1096,9 +1096,9 @@ LinkTrade_TradeSummaryMenu:
 	ld [w2DMenuFlags1], a
 	ld [w2DMenuFlags2], a
 	call DoMenuJoypadLoop
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jr nz, .joy_loop
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .b_button
 	jr .try_trade
 
@@ -1131,7 +1131,7 @@ LinkTrade_TradeSummaryMenu:
 	hlcoord 6, 9
 	ld bc, SCREEN_WIDTH
 	rst AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	ld c, 100
 	call DelayFrames
 	call ValidateOTTrademon
@@ -1252,32 +1252,32 @@ CheckAnyOtherAliveMonsForTrade:
 
 LinkTradeOTPartymonMenuCheckCancel:
 	ld a, [wMenuCursorY]
-	cp 1
+	dec a
 	jmp nz, LinkTradePartiesMenuMasterLoop
 	call HideCursor
 	push hl
 	push bc
 	ld bc, NAME_LENGTH
 	add hl, bc
-	ld [hl], " "
+	ld [hl], ' '
 	pop bc
 	pop hl
 LinkTradePartymonMenuCheckCancel:
 .loop1
-	ld a, "▶"
+	ld a, '▶'
 	ldcoord_a 9, 17
 .loop2
 	call JoyTextDelay
 	ldh a, [hJoyLast]
 	and a
 	jr z, .loop2
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .a_button
 	push af
-	ld a, " "
+	ld a, ' '
 	ldcoord_a 9, 17
 	pop af
-	bit D_UP_F, a
+	bit B_PAD_UP, a
 	jr z, .d_up
 	ld a, [wOTPartyCount]
 	ld [wMenuCursorY], a
@@ -1289,7 +1289,7 @@ LinkTradePartymonMenuCheckCancel:
 	jmp LinkTrade_PlayerPartyMenu
 
 .a_button
-	ld a, "▷"
+	ld a, '▷'
 	ldcoord_a 9, 17
 	ld a, $f
 	ld [wPlayerLinkAction], a
@@ -1309,7 +1309,7 @@ ExitLinkCommunications:
 	ldh [hSerialSend], a
 	ld a, 1
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 	vc_hook ExitLinkCommunications_ret
 	ret
@@ -1384,7 +1384,7 @@ LinkTrade:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ld a, 1
 	ld [wMenuCursorY], a
@@ -1591,7 +1591,7 @@ LinkTrade:
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurOTTradePartyMon], a
-	ld a, TRUE
+	ld a, EVOLVE_TRADE
 	ld [wForceEvolution], a
 
 	ld c, 100
@@ -1719,7 +1719,7 @@ LinkTextbox::
 	push hl
 	ld a, $23
 	ld [hli], a
-	ld a, " "
+	ld a, ' '
 	call .fill_row
 	ld [hl], $24
 	pop hl
@@ -1808,7 +1808,7 @@ WaitForOtherPlayerToExit:
 	ldh [hSerialReceive], a
 	ld a, $1
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 	ld c, 3
 	call DelayFrames
@@ -1817,7 +1817,7 @@ WaitForOtherPlayerToExit:
 	ldh [hSerialReceive], a
 	xor a ; redundant?
 	ldh [rSC], a
-	ld a, START_TRANSFER_EXTERNAL_CLOCK
+	ld a, SC_START | SC_EXTERNAL
 	ldh [rSC], a
 	ld c, 3
 	call DelayFrames
@@ -1833,7 +1833,7 @@ WaitForOtherPlayerToExit:
 	push af
 	xor a
 	ldh [rIF], a
-	ld a, 1 << SERIAL | 1 << VBLANK
+	ld a, IE_SERIAL | IE_VBLANK
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
@@ -1868,7 +1868,7 @@ Special_WaitForLinkedFriend:
 	ldh [hSerialReceive], a
 	xor a ; redundant?
 	ldh [rSC], a
-	ld a, START_TRANSFER_EXTERNAL_CLOCK
+	ld a, SC_START | SC_EXTERNAL
 	vc_hook Link_fake_connection_status
 	vc_assert hSerialConnectionStatus == $ffcb, \
 		"hSerialConnectionStatus is no longer located at 00:ffcb."
@@ -1896,7 +1896,7 @@ Special_WaitForLinkedFriend:
 	ldh [hSerialReceive], a
 	xor a ; redundant?
 	ldh [rSC], a
-	ld a, START_TRANSFER_EXTERNAL_CLOCK
+	ld a, SC_START | SC_EXTERNAL
 	ldh [rSC], a
 	ld hl, wLinkTimeoutFrames
 	dec [hl]
@@ -1910,7 +1910,7 @@ Special_WaitForLinkedFriend:
 	ldh [rSB], a
 	ld a, $1
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 	call DelayFrame
 	jr .loop
@@ -2078,10 +2078,10 @@ Special_TryQuickSave:
 	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
-	vc_hook Wireless_TryQuickSave_block_input_1
+	vc_hook Wireless_TQS_block_input_1
 	ld a, TRUE
 	jr nc, .return_result
-	vc_hook Wireless_TryQuickSave_block_input_2
+	vc_hook Wireless_TQS_block_input_2
 	xor a ; FALSE
 .return_result
 	ldh [hScriptVar], a
@@ -2104,14 +2104,14 @@ PrepareForLinkTransfers:
 	ldh [hSerialSend], a
 	inc a
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 	call DelayFrame
 	xor a
 	ldh [hSerialSend], a
 	inc a
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 
 .player_1:
@@ -2127,7 +2127,7 @@ endc
 	call DelayFrames
 	xor a
 	ldh [rIF], a
-	ld a, 1 << SERIAL
+	ld a, IE_SERIAL
 	ldh [rIE], a
 	ret
 
@@ -2244,7 +2244,7 @@ PerformLinkChecks:
 	call Serial_ExchangeBytes
 	xor a
 	ldh [rIF], a
-	ld a, 1 << SERIAL | 1 << VBLANK
+	ld a, IE_SERIAL | IE_VBLANK
 	ldh [rIE], a
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
@@ -2476,165 +2476,6 @@ Special_CableClubCheckWhichChris:
 	ldh [hScriptVar], a
 	ret
 
-DetermineLinkBattleResult:
-	call UpdateEnemyMonInParty
-	ld hl, wPartyMon1HP
-	call .CountMonsRemaining
-	push bc
-	ld hl, wOTPartyMon1HP
-	call .CountMonsRemaining
-	ld a, c
-	pop bc
-	cp c
-	jr z, .even_number_of_mons_remaining
-	jr c, .defeat
-	jr .victory
-
-.even_number_of_mons_remaining
-	call .BothSides_CheckNumberMonsAtFullHealth
-	jr z, .drawn
-	ld a, e
-	cp $1
-	jr z, .victory
-	cp $2
-	jr z, .defeat
-	ld hl, wPartyMon1HP
-	call .CalcPercentHPRemaining
-	push de
-	ld hl, wOTPartyMon1HP
-	call .CalcPercentHPRemaining
-	pop hl
-	ld a, d
-	cp h
-	jr c, .victory
-	jr nz, .defeat
-	ld a, e
-	cp l
-	jr z, .drawn
-	jr nc, .defeat
-
-.victory
-	ld a, [wBattleResult]
-	and $f0
-	ld [wBattleResult], a
-	ret
-
-.defeat
-	ld a, [wBattleResult]
-	and $f0
-	inc a
-	ld [wBattleResult], a
-	ret
-
-.drawn
-	ld a, [wBattleResult]
-	and $f0
-	add $2
-	ld [wBattleResult], a
-	ret
-
-.CountMonsRemaining:
-	lb bc, 3, 0
-	ld de, PARTYMON_STRUCT_LENGTH - 1
-.loop
-	ld a, [hli]
-	or [hl]
-	jr nz, .not_fainted
-	inc c
-
-.not_fainted
-	add hl, de
-	dec b
-	jr nz, .loop
-	ret
-
-.CalcPercentHPRemaining:
-	ld de, 0
-	ld c, $3
-.loop2
-	ld a, [hli]
-	or [hl]
-	jr z, .next
-	dec hl
-	xor a
-	ldh [hDividend + 0], a
-	ld a, [hli]
-	ldh [hDividend + 1], a
-	ld a, [hli]
-	ldh [hDividend + 2], a
-	xor a
-	ldh [hDividend + 3], a
-	ld a, [hli]
-	ld b, a
-	ld a, [hld]
-	srl b
-	rra
-	srl b
-	rra
-	ldh [hDivisor], a
-	ld b, $4
-	farcall Divide
-	ldh a, [hQuotient + 2]
-	add e
-	ld e, a
-	ldh a, [hQuotient + 1]
-	adc d
-	ld d, a
-	dec hl
-
-.next
-	push de
-	ld de, $2f
-	add hl, de
-	pop de
-	dec c
-	jr nz, .loop2
-	ret
-
-.BothSides_CheckNumberMonsAtFullHealth:
-	ld hl, wPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	jr nz, .finish ; we have a pokemon that's neither fainted nor at full health
-	ld hl, wOTPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	ld e, $1
-	ret
-
-.finish
-	ld hl, wOTPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	ld e, $0
-	ret nz ; we both have pokemon that are neither fainted nor at full health
-	ld e, $2
-	ld a, $1
-	and a
-	ret
-
-.CheckFaintedOrFullHealth:
-	ld d, 3
-.loop3
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	or b
-	jr z, .fainted_or_full_health
-	ld a, [hli]
-	cp b
-	ret nz
-	ld a, [hld]
-	cp c
-	ret nz
-
-.fainted_or_full_health
-	push de
-	ld de, PARTYMON_STRUCT_LENGTH - 2
-	add hl, de
-	pop de
-	dec d
-	jr nz, .loop3
-	ret
-
 InitLinkTradePalMap:
 	hlcoord 0, 0, wAttrmap
 	lb bc, 16, 2
@@ -2747,7 +2588,7 @@ Serial_ExchangeByte::
 	jr nz, .loop
 	ld a, $1
 	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 
 .loop
@@ -2755,7 +2596,7 @@ Serial_ExchangeByte::
 	and a
 	jr nz, .ok
 	ldh a, [hSerialConnectionStatus]
-	cp $1
+	dec a
 	jr nz, .doNotIncrementTimeoutCounter
 	call CheckwLinkTimeoutFramesNonzero
 	jr z, .doNotIncrementTimeoutCounter
@@ -2775,8 +2616,8 @@ Serial_ExchangeByte::
 
 .doNotIncrementTimeoutCounter
 	ldh a, [rIE]
-	and 1 << SERIAL | 1 << TIMER | 1 << VBLANK
-	cp 1 << SERIAL
+	and IE_SERIAL | IE_TIMER | IE_VBLANK
+	cp IE_SERIAL
 	jr nz, .loop
 	ld a, [wLinkByteTimeout]
 	dec a ; no-optimize inefficient WRAM increment/decrement
@@ -2799,8 +2640,8 @@ Serial_ExchangeByte::
 	xor a
 	ldh [hSerialReceivedNewData], a
 	ldh a, [rIE]
-	and 1 << SERIAL | 1 << TIMER | 1 << VBLANK
-	sub 1 << SERIAL
+	and IE_SERIAL | IE_TIMER | IE_VBLANK
+	sub IE_SERIAL
 	jr nz, .skipReloadingTimeoutCounter2
 
 	;xor a
@@ -2830,8 +2671,8 @@ Serial_ExchangeByte::
 
 .done
 	ldh a, [rIE]
-	and 1 << SERIAL | 1 << TIMER | 1 << VBLANK
-	cp 1 << SERIAL
+	and IE_SERIAL | IE_TIMER | IE_VBLANK
+	cp IE_SERIAL
 	ld a, SERIAL_NO_DATA_BYTE
 	ret z
 	ld a, [hl]
@@ -2974,4 +2815,24 @@ endc
 	ld a, [wOtherPlayerLinkAction]
 	ld [wOtherPlayerLinkMode], a
 	vc_hook Wireless_WaitLinkTransfer_ret
+	ret
+
+CheckPartyForMail:
+	ld a, [wPartyCount]
+	ld c, a
+	ld hl, wPartyMon1Item
+	ld de, wPartyMon2Item - wPartyMon1Item
+.loop
+	ld a, [hl]
+	call ItemIsMail_a
+	jr c, .has_mail
+	add hl, de
+	dec c
+	jr nz, .loop
+	ldh [hScriptVar], a
+	ret
+
+.has_mail
+	ld a, TRUE
+	ldh [hScriptVar], a
 	ret
