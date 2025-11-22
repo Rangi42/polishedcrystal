@@ -898,90 +898,109 @@ DoCherryBlossomFall:
 
 SpawnCherryBlossom:
 	call Random
-	cp 8 percent
+	cp 10 percent
 	ret nc
-	push hl ; location to store the new sprite
-	; Pick random starting point to spread the cherry blossoms
-	ld a, SCREEN_WIDTH / 2
-	call RandomRange
-	ld d, a ; random starting x coord
-	ld a, SCREEN_HEIGHT / 2
-	call RandomRange
-	ld e, a ; random starting y coord
+	push hl ; preserve OAM slot pointer
+	ldh a, [rWBK]
+	push af
 
-	; load diagonal offset and apply it to X
+	; clear candidate buffer counter
+	ld a, BANK(wWeatherScratch)
+	ldh [rWBK], a
 	xor a
-	ld [wWeatherDiagonalOffset], a
-	add d
-	cp SCREEN_WIDTH / 2
-	jr c, .offset_applied
-	sub SCREEN_WIDTH / 2 ; wrap X offset if needed
-.offset_applied
-	ld d, a
+	ld [wWeatherScratch], a
 
-	; Set tile-count loop counter (width * height)
-	ld bc, (SCREEN_WIDTH / 2) * (SCREEN_HEIGHT / 2)
-
-.scan_loop
-	push bc
-
-	; Convert screen coords to map coords
+	; scan all on-screen collision cells for cherry leaves
+	ld a, BANK(wXCoord)
+	ldh [rWBK], a
+	ld b, SCREEN_HEIGHT / 2
+	xor a
+	ld e, a ; y offset
+.y_loop
+	ld c, SCREEN_WIDTH / 2
+	xor a
+	ld d, a ; x offset
+.x_loop
+	push de
 	ld a, [wXCoord]
 	add d
-	ld h, a ; map X
-
+	ld h, a
 	ld a, [wYCoord]
 	add e
-	ld l, a ; map Y
-
-	; Check collision at current coords
-	push de
+	ld l, a
 	ld d, h
 	ld e, l
+	push bc
 	call GetCoordTileCollision
+	pop bc
 	pop de
-
 	cp COLL_CHERRY_LEAVES
-	jr z, .found_leaf ; suitable tile found
+	jr nz, .next_tile
 
-	; Advance diagonally
-	inc d ; advance X
-	ld a, d
-	cp SCREEN_WIDTH / 2
-	jr nz, .x_ok
-	xor a
-	ld d, a
-.x_ok
-
-	inc e ; advance Y
-	ld a, e
-	cp SCREEN_HEIGHT / 2
-	jr nz, .y_ok
-	xor a
-	ld e, a
-
-	; Completed full diagonal pass? Increment offset
-	ld a, [wWeatherDiagonalOffset]
+	; store packed screen coords (X hi nibble | Y lo nibble)
+	push bc
+	push de
+	ld a, BANK(wWeatherScratch)
+	ldh [rWBK], a
+	ld hl, wWeatherScratch
+	ld a, [hl]
+	cp SCREEN_HEIGHT_PX - 1 ; don't overflow wWeatherScratch
+	jr nc, .skip_store
+	ld c, a
 	inc a
-	cp SCREEN_WIDTH / 2
-	jr nz, .update_offset
-	xor a ; reset offset if reached max
-.update_offset
-	ld [wWeatherDiagonalOffset], a
-.y_ok
-
+	ld [hl], a
+	ld hl, wWeatherScratch + 1
+	ld b, 0
+	ld a, c
+	add hl, bc
+	pop de
+	ld a, d
+	and $f
+	swap a
+	ld b, a
+	ld a, e
+	and $f
+	or b
+	ld [hl], a
+	jr .stored
+.skip_store
+	pop de
+.stored
+	ld a, BANK(wXCoord)
+	ldh [rWBK], a
 	pop bc
-	dec bc
-	ld a, b
-	or c
-	jr nz, .scan_loop
 
-	; No suitable tile found
-	pop hl
-	ret
+.next_tile
+	inc d
+	dec c
+	jr nz, .x_loop
+	inc e
+	dec b
+	jr nz, .y_loop
 
-.found_leaf
-	pop bc
+	; choose a random candidate
+	ld a, BANK(wWeatherScratch)
+	ldh [rWBK], a
+	ld a, [wWeatherScratch]
+	and a
+	jr z, .no_spawn
+	ld b, a
+	call RandomRange
+	ld c, a
+	ld hl, wWeatherScratch + 1
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld d, a
+	and $f
+	ld e, a ; y offset
+	ld a, d
+	swap a
+	and $f
+	ld d, a ; x offset
+
+	ld a, BANK(wXCoord)
+	ldh [rWBK], a
 
 	; convert screen coords to pixel coords
 	ld a, d
@@ -989,13 +1008,14 @@ SpawnCherryBlossom:
 	and $f0
 	add 16
 	ld d, a
-
 	ld a, e
 	swap a
 	and $f0
 	add 16
 	ld e, a
 
+	pop af
+	ld b, a ; stash original WRAM bank
 	pop hl
 	ld a, e
 	ld [hli], a ; Y coord
@@ -1007,12 +1027,17 @@ SpawnCherryBlossom:
 	ld [hli], a ; attributes
 	ldh a, [hUsedWeatherSpriteIndex]
 	cp l
-	ret nc
+	jr nc, .restore_bank
 	ld a, l
 	ldh [hUsedWeatherSpriteIndex], a
+.restore_bank
+	ld a, b
+	ldh [rWBK], a
 	ret
 
-.quit
+.no_spawn
+	pop af
+	ldh [rWBK], a
 	pop hl
 	ret
 

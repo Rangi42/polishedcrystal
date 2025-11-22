@@ -85,10 +85,9 @@ SetCurrentWeather::
 	jr nz, .no_weather
 	ld a, [wMapNumber]
 	cp MAP_CHERRYGROVE_CITY
-	jr nz, .no_weather
 	ld a, OW_WEATHER_CHERRY_BLOSSOMS
-	jmp .set_weather
-
+	jr z, .set_weather
+; fallthrough
 .no_weather
 	ld a, OW_WEATHER_NONE
 	jmp .set_weather
