@@ -275,6 +275,7 @@ RunScriptCommand:
 	dw Script_givebadge                  ; d8
 	dw Script_setquantity                ; d9
 	dw Script_pluralize                  ; da
+	dw Script_loadtrainerwithpal         ; db
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -1220,6 +1221,19 @@ Script_loadtrainer:
 	ld [wOtherTrainerClass], a
 	call GetScriptByte
 	ld [wOtherTrainerID], a
+	xor a
+	ld [wTrainerPal], a
+	ret
+
+Script_loadtrainerwithpal:
+	ld a, (1 << 7) | 1
+	ld [wBattleScriptFlags], a
+	call GetScriptByte
+	ld [wOtherTrainerClass], a
+	call GetScriptByte
+	ld [wOtherTrainerID], a
+	call GetScriptByte
+	ld [wTrainerPal], a
 	ret
 
 Script_startbattle:

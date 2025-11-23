@@ -396,7 +396,7 @@ KimonoGirlMinaScript:
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked DRAGONSDENB1F_KIMONO_GIRL
-	loadtrainer KIMONO_GIRL_8, 1
+	loadtrainerwithpal KIMONO_GIRL, MINA, TRAINERPAL_MINA
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIMONO_GIRL_MINA
