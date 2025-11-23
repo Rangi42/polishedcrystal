@@ -157,35 +157,3 @@ MACRO def_dvs_or_evs
 		shift
 	endr
 ENDM
-
-MACRO? def_flagarray
-; initializes a new flag array
-	DEF __flagcount__ = 0
-	DEF __cur_byte__  = 0
-ENDM
-
-MACRO? flag
-; Add a single flag bit (0 or 1), LSB-first within each byte
-	assert BITWIDTH(\1) <= 1, "flag value must fit in one bit"
-
-	; Determine which bit within the current byte to set
-	DEF __bit_index__ = __flagcount__ % 8
-
-	; Or the bit into the current byte at that position
-	DEF __cur_byte__ |= ((\1) << __bit_index__)
-
-	DEF __flagcount__ += 1
-
-	; If we just filled bit 7, emit the byte
-	if __bit_index__ == 7
-		db __cur_byte__
-		DEF __cur_byte__ = 0
-	endc
-ENDM
-
-MACRO? end_flagarray
-	; emit the final byte if it has any bits set
-	if __flagcount__ % 8
-		db __cur_byte__
-	endc
-ENDM
