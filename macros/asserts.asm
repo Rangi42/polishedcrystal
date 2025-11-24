@@ -111,3 +111,38 @@ MACRO? jmp
 		assert warn, (\<_NARG>) - @ > 127 || (\<_NARG>) - @ < -129, "jp can be jr"
 	endc
 ENDM
+
+MACRO? bit_array
+	DEF CURRENT_BIT_ARRAY_VALUE = 0
+	DEF CURRENT_BIT_ARRAY_LENGTH = 0
+	if _NARG == 1
+		REDEF CURRENT_BIT_ARRAY_START EQUS "\1"
+	ELSE
+		REDEF CURRENT_BIT_ARRAY_START EQUS "._bit_array\@"
+	{CURRENT_BIT_ARRAY_START}:
+	endc
+ENDM
+
+MACRO? dbit
+	assert (\1) == 0 || (\1) == 1, "bits must be 0 or 1"
+	DEF CURRENT_BIT_ARRAY_VALUE |= (\1) << (CURRENT_BIT_ARRAY_LENGTH % 8)
+	DEF CURRENT_BIT_ARRAY_LENGTH += 1
+	if CURRENT_BIT_ARRAY_LENGTH % 8 == 0
+		db CURRENT_BIT_ARRAY_VALUE
+		DEF CURRENT_BIT_ARRAY_VALUE = 0
+	endc
+ENDM
+
+MACRO? end_bit_array
+	if CURRENT_BIT_ARRAY_LENGTH % 8
+		db CURRENT_BIT_ARRAY_VALUE
+	endc
+	if _NARG == 1
+		DEF x = \1
+		assert x == CURRENT_BIT_ARRAY_LENGTH, \
+			"{CURRENT_BIT_ARRAY_START}: expected {d:x} bits, got {d:CURRENT_BIT_ARRAY_LENGTH}"
+		DEF x = (x + 7) / 8
+		assert x == @ - {CURRENT_BIT_ARRAY_START}, \
+			"{CURRENT_BIT_ARRAY_START}: expected {d:x} bytes"
+	endc
+ENDM

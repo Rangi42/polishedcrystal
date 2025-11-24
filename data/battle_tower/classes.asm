@@ -73,7 +73,7 @@ BattleTowerTrainers:
 	rawchar "James@@@@@", BOARDER
 	rawchar "Kubrick@@@", HEX_MANIAC
 	rawchar "Alisha@@@@", LASS
-	rawchar "Sunni@@@@@", KIMONO_GIRL_1
+	rawchar "Sunni@@@@@", KIMONO_GIRL
 	rawchar "Andre@@@@@", ROUGHNECK
 	rawchar "Hill@@@@@@", COOLTRAINERM
 	rawchar "Tara@@@@@@", SWIMMERF
@@ -90,7 +90,7 @@ BattleTowerTrainers:
 	rawchar "Valentine@", BEAUTY
 	rawchar "Uri@@@@@@@", PSYCHIC_T
 	rawchar "Wong@@@@@@", FIREBREATHER
-	rawchar "Chiyo@@@@@", KIMONO_GIRL_1
+	rawchar "Chiyo@@@@@", KIMONO_GIRL
 	rawchar "Sidney@@@@", BIKER
 	rawchar "Nerai@@@@@", HIKER
 	rawchar "Gwen@@@@@@", LADY
