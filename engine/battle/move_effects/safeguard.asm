@@ -28,7 +28,7 @@ SafeCheckSafeguard:
 .got_guard
 	and GUARD_SAFEGUARD
 	ret z
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp INFILTRATOR
 	ret
 

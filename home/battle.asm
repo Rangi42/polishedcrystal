@@ -503,10 +503,16 @@ GetOpponentAbility::
 	pop af
 	ret
 
-GetOpponentAbilityAfterMoldBreaker::
-; Returns an opponent's ability unless Mold Breaker
-; will suppress it. Preserves bc/de/hl.
-	farjp _GetOpponentAbilityAfterMoldBreaker
+GetTrueUserIgnorableAbility::
+; Returns an user's ability unless Mold Breaker
+; will suppress it. Preserves bc/de/hl. Note that
+; we can't use CallOpponentTurn, because TrueUser also
+; checks for whether the attack is external.
+	farjp _GetTrueUserIgnorableAbility
+GetOpponentIgnorableAbility::
+; Similar to above, except checking the opponent's Ability and
+; doesn't check for Future Sight.
+	farjp _GetOpponentIgnorableAbility
 
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
@@ -688,7 +694,7 @@ CheckMoveSpeed::
 	push de
 
 	; Quick Draw works like Quick Claw except 30% of the time
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp QUICK_DRAW
 	jr nz, .quick_draw_done
 	ld b, a ; for BufferAbility

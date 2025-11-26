@@ -11,7 +11,7 @@ BattleCommand_attract:
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_LOVE, [hl]
 	jr nz, .failed
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp OBLIVIOUS
 	jr nz, .no_ability_protection
 
@@ -49,7 +49,7 @@ BattleCommand_attract:
 	cp HELD_DESTINY_KNOT
 	jr nz, .destiny_knot_done
 
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp OBLIVIOUS
 	jr nz, .no_user_ability_protection
 
