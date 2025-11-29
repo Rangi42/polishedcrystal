@@ -326,8 +326,8 @@ CopyWhitePal:
 	; we are not loading an official palette,
 	; so this tells dynamic pals to not associate this
 	; palette with a sprite.
-	ld a, $ff
 if !DEF(MONOCHROME)
+	ld a, $ff
 	ld bc, 1 palettes
 	rst ByteFill
 else
