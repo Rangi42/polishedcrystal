@@ -2102,8 +2102,8 @@ TwinsGroup:
 	end_trainer
 
 	def_trainer AMYANDMIMI2, "Amy & Mimi"
-	tr_mon 10, LEDYBA
-	tr_mon 10, SPINARAK
+	tr_mon 13, LEDYBA
+	tr_mon 13, SPINARAK
 	end_trainer
 
 	def_trainer ANNANDANNE1, "Tori & Til"
