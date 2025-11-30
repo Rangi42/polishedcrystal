@@ -190,10 +190,10 @@ FadePalettesStep:
 	ld a, [wPalFadeMode]
 	and PALFADE_WHICH
 	ld hl, wBGPals2
-	ld d, PAL_COLORS * 16 ; colors * number of palettes
+	ld d, PAL_COLORS * 16 ; bg + ob pals
 	jr z, .got_count
 	dec a
-	ld d, PAL_COLORS * 8 ; colors * number of palettes
+	ld d, PAL_COLORS * 8 ; ; ob pals only
 	jr z, .got_count
 	ld hl, wOBPals2
 .got_count
@@ -301,9 +301,9 @@ FadeColorGetGreen:
 	rrca
 ; fallthrough
 FadeColorGetBlue:
+	and COLOR_BLUE
 	rrca
 	rrca
-	and COLOR_CH_MAX
 	ret
 
 FadeColorStep:
