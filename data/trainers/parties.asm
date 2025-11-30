@@ -1582,7 +1582,7 @@ Rival1Group:
 	tr_mon 20, ZUBAT, MALE
 		tr_extra INNER_FOCUS
 		tr_evs 104 Spe
-		tr_moves LEECH_LIFE, SUPERSONIC, BITE, CONFUSE_RAY
+		tr_moves ABSORB, SUPERSONIC, BITE, CONFUSE_RAY
 	tr_mon 22, BAYLEEF @ ORAN_BERRY, MALE
 		tr_extra OVERGROW
 		tr_evs 72 Atk, 32 SAt
@@ -1605,7 +1605,7 @@ Rival1Group:
 	tr_mon 20, ZUBAT, MALE
 		tr_extra INNER_FOCUS
 		tr_evs 104 Spe
-		tr_moves LEECH_LIFE, SUPERSONIC, BITE, CONFUSE_RAY
+		tr_moves ABSORB, SUPERSONIC, BITE, CONFUSE_RAY
 	tr_mon 22, QUILAVA @ ORAN_BERRY, MALE
 		tr_extra BLAZE
 		tr_evs 72 SAt, 32 Spe
@@ -1628,7 +1628,7 @@ Rival1Group:
 	tr_mon 20, ZUBAT, MALE
 		tr_extra INNER_FOCUS
 		tr_evs 104 Spe
-		tr_moves LEECH_LIFE, SUPERSONIC, BITE, CONFUSE_RAY
+		tr_moves ABSORB, SUPERSONIC, BITE, CONFUSE_RAY
 	tr_mon 22, CROCONAW @ ORAN_BERRY, MALE
 		tr_extra TORRENT
 		tr_evs 32 Atk, 72 Spe
@@ -2746,8 +2746,8 @@ TwinsGroup:
 	end_trainer
 
 	def_trainer AMYANDMIMI2, "Amy & Mimi"
-	tr_mon 10, LEDYBA
-	tr_mon 10, SPINARAK
+	tr_mon 13, LEDYBA
+	tr_mon 13, SPINARAK
 	end_trainer
 
 	def_trainer ANNANDANNE1, "Tori & Til"
