@@ -190,10 +190,10 @@ FadePalettesStep:
 	ld a, [wPalFadeMode]
 	and PALFADE_WHICH
 	ld hl, wBGPals2
-	ld d, 4 * 16 ; colors, palettes
+	ld d, PAL_COLORS * 16 ; colors * number of palettes
 	jr z, .got_count
 	dec a
-	ld d, 4 * 8
+	ld d, PAL_COLORS * 8 ; colors * number of palettes
 	jr z, .got_count
 	ld hl, wOBPals2
 .got_count
@@ -204,7 +204,7 @@ FadePalettesStep:
 	ld bc, 1 palettes
 	add hl, bc
 	ld a, d
-	sub 4
+	sub PAL_COLORS
 	ld d, a
 
 .inner_loop
@@ -236,48 +236,48 @@ FadePalettesStep:
 
 	; Red
 	ld a, c
-	and %00011111
+	and COLOR_RED
 	ld l, a
 	ld a, e
-	and %00011111
-	call FadePalettesStep.fadeColorStep
+	and COLOR_RED
+	call FadeColorStep
 	ld a, e
-	and %11100000
+	and ~COLOR_RED
 	or l
 	ld e, a
 
 	; Green
 	push bc
-	call FadePalettesStep.getGreen
+	call FadeColorGetGreen
 	ld l, a
 	ld b, d
 	ld c, e
-	call FadePalettesStep.getGreen
+	call FadeColorGetGreen
 	pop bc
-	call FadePalettesStep.fadeColorStep
+	call FadeColorStep
 	sla l
 	swap l
 	ld a, l
 	xor e
-	and %11100000
+	and COLOR_GREEN_LOW
 	xor e
 	ld e, a
 	ld a, l
 	xor d
-	and %00000011
+	and COLOR_GREEN_HIGH
 	xor d
 	ld d, a
 	; Blue
 	ld a, b
-	call FadePalettesStep.getBlue
+	call FadeColorGetBlue
 	ld l, a
 	ld a, d
-	call FadePalettesStep.getBlue
-	call FadePalettesStep.fadeColorStep
+	call FadeColorGetBlue
+	call FadeColorStep
 	sla l
 	sla l
 	ld a, d
-	and %00000011
+	and COLOR_GREEN_HIGH ; essentially ~COLOR_BLUE
 	or l
 	ld d, a
 
@@ -292,20 +292,21 @@ FadePalettesStep:
 	jr nz, .inner_loop
 	ret
 
-.getGreen:
+FadeColorGetGreen:
 	srl b
 	rr c
 	srl b
 	rr c
 	ld a, c
 	rrca
-.getBlue:
+; fallthrough
+FadeColorGetBlue:
 	rrca
 	rrca
-	and %00011111
+	and COLOR_CH_MAX
 	ret
 
-.fadeColorStep:
+FadeColorStep:
 ; Perform a single color fading step
 ; a: active color, l: color we're fading towards
 	cp l
@@ -432,7 +433,7 @@ CatchUpObjPaletteFade::
 
 FadeSinglePaletteStep:
 	ld de, 0
-	ld d, 4
+	ld d, PAL_COLORS
 
 .single_loop
 	push de
@@ -460,45 +461,45 @@ FadeSinglePaletteStep:
 .single_got_destination
 	push hl
 	ld a, c
-	and %00011111
+	and COLOR_RED
 	ld l, a
 	ld a, e
-	and %00011111
-	call FadePalettesStep.fadeColorStep
+	and COLOR_RED
+	call FadeColorStep
 	ld a, e
-	and %11100000
+	and ~COLOR_RED
 	or l
 	ld e, a
 	push bc
-	call FadePalettesStep.getGreen
+	call FadeColorGetGreen
 	ld l, a
 	ld b, d
 	ld c, e
-	call FadePalettesStep.getGreen
+	call FadeColorGetGreen
 	pop bc
-	call FadePalettesStep.fadeColorStep
+	call FadeColorStep
 	sla l
 	swap l
 	ld a, l
 	xor e
-	and %11100000
+	and COLOR_GREEN_LOW
 	xor e
 	ld e, a
 	ld a, l
 	xor d
-	and %00000011
+	and COLOR_GREEN_HIGH
 	xor d
 	ld d, a
 	ld a, b
-	call FadePalettesStep.getBlue
+	call FadeColorGetBlue
 	ld l, a
 	ld a, d
-	call FadePalettesStep.getBlue
-	call FadePalettesStep.fadeColorStep
+	call FadeColorGetBlue
+	call FadeColorStep
 	sla l
 	sla l
 	ld a, d
-	and %00000011
+	and COLOR_GREEN_HIGH ; essentially ~COLOR_BLUE
 	or l
 	ld d, a
 	pop hl
