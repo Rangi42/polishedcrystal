@@ -35,20 +35,11 @@ GetItemManiacPrice:
 
 INCLUDE "data/items/item_maniacs.asm"
 
-ItemManiac_PrintTextHowMany:
-	ld hl, .Text
-	jmp PrintText
-
-.Text:
-	; How many do you want to sell?
-	text_far _ItemManiacHowManyText
-	text_end
-
 ItemManiac_SelectQuantity:
 ; Returns carry if the player selects a quantity, or no carry if they press B.
 ; The selected quantity is stored in wItemQuantityChangeBuffer.
 	call GetItemQuantity
-	ret z ; Item not found in bag
+	jr z, .no_item ; Item not found in bag, return no carry
 	ld a, [wItemQuantityChangeBuffer]
 	ld [wItemQuantityBuffer], a
 	ld a, 1
@@ -73,11 +64,14 @@ ItemManiac_SelectQuantity:
 	pop bc
 	ld a, b
 	cp -1
-	jr z, .done
+	jr z, .no_item
 	scf
-
-.done
 	jmp CloseWindow
+
+.no_item
+	call CloseWindow
+	and a ; clear carry
+	ret
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -137,6 +131,7 @@ TakeItemFromMemWithQuantity:
 MultiplyMoneyByQuantity:
 ; Multiply hMoneyTemp by wItemQuantityChangeBuffer
 ; Result is stored in hMoneyTemp (3 bytes)
+; If overflow would occur, caps at 999999 (MAX_MONEY)
 	push bc
 	push de
 	push hl
@@ -172,6 +167,31 @@ MultiplyMoneyByQuantity:
 	adc e
 	ldh [hMoneyTemp], a
 	
+	; Check for overflow (if result >= 999999)
+	jr c, .overflow
+	ldh a, [hMoneyTemp]
+	cp HIGH(999999 >> 8)
+	jr c, .no_overflow
+	jr nz, .overflow
+	ldh a, [hMoneyTemp + 1]
+	cp LOW(HIGH(999999))
+	jr c, .no_overflow
+	jr nz, .overflow
+	ldh a, [hMoneyTemp + 2]
+	cp LOW(999999)
+	jr c, .no_overflow
+	
+.overflow
+	; Cap at 999999
+	ld a, HIGH(999999 >> 8)
+	ldh [hMoneyTemp], a
+	ld a, LOW(HIGH(999999))
+	ldh [hMoneyTemp + 1], a
+	ld a, LOW(999999)
+	ldh [hMoneyTemp + 2], a
+	jr .done
+	
+.no_overflow
 	dec b
 	jr .loop
 	
