@@ -405,7 +405,7 @@ KimonoGirlMinaScript:
 	writetext .AfterText
 	promptbutton
 	verbosegiveitem ABILITYPATCH
-	iffalse_endtext
+	iffalse_jumpopenedtext .BagFullText
 	setevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
 	jumpthisopenedtext
 
@@ -420,6 +420,11 @@ KimonoGirlMinaScript:
 	line "ideal place for me"
 	cont "to train."
 	done
+
+.BagFullText:
+	text "…That is, once you"
+	line "have freed up some"
+	cont "space in your Bag."
 
 .IntroText:
 	text "I am a Kimono"
