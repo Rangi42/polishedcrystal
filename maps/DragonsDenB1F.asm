@@ -425,6 +425,7 @@ KimonoGirlMinaScript:
 	text "…That is, once you"
 	line "have freed up some"
 	cont "space in your Bag."
+	done
 
 .IntroText:
 	text "I am a Kimono"
