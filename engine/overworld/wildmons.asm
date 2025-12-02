@@ -753,6 +753,11 @@ CheckEncounterRoamMon:
 	ld [wTempWildMonSpecies], a
 	ld a, [hl]
 	ld [wCurPartyLevel], a
+	; Load form from roaming mon data (Form is at offset +8 from Level)
+	ld bc, 8
+	add hl, bc
+	ld a, [hl]
+	ld [wWildMonForm], a
 	ld a, BATTLETYPE_ROAMING
 	ld [wBattleType], a
 
