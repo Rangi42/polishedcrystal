@@ -131,7 +131,7 @@ TakeItemFromMemWithQuantity:
 MultiplyMoneyByQuantity:
 ; Multiply hMoneyTemp by wItemQuantityChangeBuffer
 ; Result is stored in hMoneyTemp (3 bytes)
-; If overflow would occur, caps at 999999 (MAX_MONEY)
+; If overflow would occur, caps at MAX_MONEY
 	push bc
 	push de
 	push hl
@@ -167,27 +167,27 @@ MultiplyMoneyByQuantity:
 	adc e
 	ldh [hMoneyTemp], a
 	
-	; Check for overflow (if result >= 999999)
+	; Check for overflow (if result >= MAX_MONEY)
 	jr c, .overflow
 	ldh a, [hMoneyTemp]
-	cp HIGH(999999 >> 8)
+	cp HIGH(MAX_MONEY >> 8)
 	jr c, .no_overflow
 	jr nz, .overflow
 	ldh a, [hMoneyTemp + 1]
-	cp LOW(HIGH(999999))
+	cp LOW(HIGH(MAX_MONEY))
 	jr c, .no_overflow
 	jr nz, .overflow
 	ldh a, [hMoneyTemp + 2]
-	cp LOW(999999)
+	cp LOW(MAX_MONEY)
 	jr c, .no_overflow
 	
 .overflow
-	; Cap at 999999
-	ld a, HIGH(999999 >> 8)
+	; Cap at MAX_MONEY
+	ld a, HIGH(MAX_MONEY >> 8)
 	ldh [hMoneyTemp], a
-	ld a, LOW(HIGH(999999))
+	ld a, LOW(HIGH(MAX_MONEY))
 	ldh [hMoneyTemp + 1], a
-	ld a, LOW(999999)
+	ld a, LOW(MAX_MONEY)
 	ldh [hMoneyTemp + 2], a
 	jr .done
 	
