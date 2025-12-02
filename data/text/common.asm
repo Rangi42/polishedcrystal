@@ -4478,3 +4478,9 @@ CantChangeTradedMonBallTextData::
 	line "the Ball a traded"
 	cont "#mon is in."
 	prompt
+
+SECTION "_ItemManiacHowManyText", ROMX
+_ItemManiacHowManyText::
+	text "How many do you"
+	line "want to sell?"
+	done
