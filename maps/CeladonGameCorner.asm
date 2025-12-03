@@ -164,6 +164,29 @@ MapCeladonGameCornerSignpost16Script:
 	special Special_SlotMachine
 	endtext
 
+CeladonGameCornerVoltorbFlipScript:
+	opentext
+	checkitem COIN_CASE
+	iftruefwd .CeladonGameCornerWanttoPlayVoltorbFlip
+	writetext CeladonGameCornerNoCoinCaseText
+	waitbutton
+	closetext
+	end
+
+.CeladonGameCornerWanttoPlayVoltorbFlip
+	special Special_DisplayCoinCaseBalance
+	writetext CeladonGameCornerPlayVoltorbFlipText
+	yesorno
+	iftruefwd .PlayVoltorbFlip
+	closetext
+	end
+
+.PlayVoltorbFlip
+	reanchormap
+	special VoltorbFlip
+	closetext
+	end
+
 MapCeladonGameCornerSignpost11Script:
 	reanchormap
 	special Special_CardFlip
@@ -255,10 +278,21 @@ CeladonGameCornerReceptionistText:
 	line "next door."
 	done
 
+CeladonGameCornerNoCoinCaseText:
+	text "You don't have a"
+	line "COIN CASE."
+	done
+
+CeladonGameCornerPlayVoltorbFlipText:
+	text "Play VOLTORB FLIP?"
+	done
+
 CeladonGameCornerPokefanMText:
-	text "The slot machines"
-	line "are all state of"
-	cont "the art."
+	text "Seeing VOLTORB go"
+	line "boom…"
+
+	para "It's terrible, but"
+	line "thrilling!"
 	done
 
 CeladonGameCornerTeacherText:
