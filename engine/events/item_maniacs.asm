@@ -107,7 +107,16 @@ GetItemQuantity:
 	ld [wNamedObjectIndex], a
 	ld hl, wNumItems
 	call CountItem
+	; CountItem returns 16-bit value in wBuffer1 (low) and wBuffer2 (high)
+	ld a, [wBuffer2]
+	and a
+	jr nz, .max_quantity ; If high byte is non-zero, cap at 99
 	ld a, [wBuffer1]
+	cp 100
+	jr c, .store_quantity
+.max_quantity
+	ld a, 99
+.store_quantity
 	ld [wItemQuantityChangeBuffer], a
 	and a
 	pop hl
@@ -170,11 +179,11 @@ MultiplyMoneyByQuantity:
 	; Check for overflow (if result >= MAX_MONEY)
 	jr c, .overflow
 	ldh a, [hMoneyTemp]
-	cp HIGH(MAX_MONEY >> 8)
+	cp HIGH(MAX_MONEY >> 16)
 	jr c, .no_overflow
 	jr nz, .overflow
 	ldh a, [hMoneyTemp + 1]
-	cp LOW(HIGH(MAX_MONEY))
+	cp HIGH(MAX_MONEY >> 8)
 	jr c, .no_overflow
 	jr nz, .overflow
 	ldh a, [hMoneyTemp + 2]
@@ -183,9 +192,9 @@ MultiplyMoneyByQuantity:
 	
 .overflow
 	; Cap at MAX_MONEY
-	ld a, HIGH(MAX_MONEY >> 8)
+	ld a, HIGH(MAX_MONEY >> 16)
 	ldh [hMoneyTemp], a
-	ld a, LOW(HIGH(MAX_MONEY))
+	ld a, HIGH(MAX_MONEY >> 8)
 	ldh [hMoneyTemp + 1], a
 	ld a, LOW(MAX_MONEY)
 	ldh [hMoneyTemp + 2], a
@@ -196,7 +205,4 @@ MultiplyMoneyByQuantity:
 	jr .loop
 	
 .done
-	pop hl
-	pop de
-	pop bc
-	ret
+	jmp PopBCDEHL
