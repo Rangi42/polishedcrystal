@@ -65,6 +65,16 @@ ItemManiac_SelectQuantity:
 	ld a, b
 	cp -1
 	jr z, .no_item
+	
+	; Validate selected quantity doesn't exceed available
+	ld a, [wItemQuantityChangeBuffer]
+	ld b, a
+	ld a, [wItemQuantityBuffer]
+	cp b
+	jr nc, .valid_quantity
+	; Selected quantity exceeds available, cap it
+	ld [wItemQuantityChangeBuffer], a
+.valid_quantity
 	scf
 	jmp CloseWindow
 
