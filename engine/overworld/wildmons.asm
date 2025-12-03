@@ -695,6 +695,12 @@ InitRoamMons:
 	ld [wRoamMon1Level], a
 	ld [wRoamMon2Level], a
 
+; form
+	assert HIGH(RAIKOU) == 0 && HIGH(ENTEI) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon1Form], a
+	ld [wRoamMon2Form], a
+
 ; raikou starting map
 	ld a, GROUP_ROUTE_42
 	ld [wRoamMon1MapGroup], a
