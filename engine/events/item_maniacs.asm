@@ -117,11 +117,11 @@ GetItemQuantity:
 	ld [wNamedObjectIndex], a
 	ld hl, wNumItems
 	call CountItem
-	; CountItem returns 16-bit value in wBuffer1 (low) and wBuffer2 (high)
-	ld a, [wBuffer2]
+	; CountItem returns 16-bit value in wBuffer1 (high) and wBuffer2 (low)
+	ld a, [wBuffer1]
 	and a
 	jr nz, .max_quantity ; If high byte is non-zero, cap at 99
-	ld a, [wBuffer1]
+	ld a, [wBuffer2]
 	cp 100
 	jr c, .store_quantity
 .max_quantity
