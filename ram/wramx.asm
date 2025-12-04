@@ -160,6 +160,7 @@ wWinTextPointer:: dw
 wGenericTempTrainerHeaderEnd::
 wLossTextPointer:: dw
 wScriptAfterPointer:: dw
+wTrainerPal:: db
 wRunningTrainerBattleScript:: db
 wTempTrainerEnd::
 	ds 1

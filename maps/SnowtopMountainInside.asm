@@ -66,7 +66,7 @@ KimonoGirlAmiScript:
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked SNOWTOPMOUNTAININSIDE_KIMONO_GIRL
-	loadtrainer KIMONO_GIRL_7, 1
+	loadtrainerwithpal KIMONO_GIRL, AMI, TRAINERPAL_AMI
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIMONO_GIRL_AMI

@@ -111,6 +111,9 @@ LoadTrainer_continue::
 	ld a, [wMapScriptsBank]
 	ld [wSeenTrainerBank], a
 
+	xor a
+	ld [wTrainerPal], a
+
 	ldh a, [hLastTalked]
 	call GetMapObject
 

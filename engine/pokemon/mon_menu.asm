@@ -1080,7 +1080,7 @@ MoveScreenLoop:
 	rrca
 	jr c, .pressed_b
 	rrca
-	jr c, .pressed_select
+	jmp c, .pressed_select
 	rrca
 	jr c, .pressed_start
 	rrca
@@ -1126,6 +1126,11 @@ MoveScreenLoop:
 	; learn HMs naturally (notably Machamp with Strength).
 	ld a, [hl]
 
+	; Player flies somewhere, forgets Fly and gets stuck on the island.
+	cp FLY
+	ld e, HM_FLY
+	jr z, .checkhm
+
 	; Player surfs to a tiny island, forgets surf, can't re-surf.
 	cp SURF
 	ld e, HM_SURF
@@ -1150,7 +1155,7 @@ MoveScreenLoop:
 	pop de
 	ld hl, Text_CantForgetHM
 	call PrintTextNoBox
-	jr .outer_loop
+	jmp .outer_loop
 .ok
 	pop bc
 	pop de

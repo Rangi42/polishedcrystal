@@ -1892,15 +1892,17 @@ SubtractHP:
 HandleUserHealingItems:
 	call HasUserFainted
 	ret z
+	push bc
+	call UseHeldStatusHealingItem
+	call UseConfusionHealingItem
+	pop bc
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_PENDING_ITEMLOSS, a
 	ret nz
 	push bc
 	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry
-	call UseConfusionHealingItem
 	pop bc
 	ret
 
@@ -3333,7 +3335,7 @@ SpikesDamage_GotAbility:
 	farcall CheckAirborne_GotAbility
 	pop bc
 	pop de
-	jmp nz, HandleAirBalloon
+	jr nz, .end_hazards
 
 	push bc
 	predef GetUserItemAfterUnnerve
@@ -3351,7 +3353,9 @@ SpikesDamage_GotAbility:
 	push hl
 	call .Spikes
 	pop hl
-	jr .ToxicSpikes
+	call .ToxicSpikes
+.end_hazards
+	jmp HandleEntryItems
 
 .Spikes:
 	ld a, b
@@ -3444,12 +3448,17 @@ SpikesDamage_GotAbility:
 .poststatus_done
 	jmp SwitchTurn
 
-HandleAirBalloon:
-; prints air balloon msg and returns z if we have air balloon
+HandleEntryItems:
+; Handles items at battle start or send-in.
 	farcall GetUserItem
 	ld a, b
 	cp HELD_AIR_BALLOON
+	jr z, .air_balloon
+	cp HELD_ROOM_SERVICE
 	ret nz
+	farjp RoomServiceItem
+
+.air_balloon
 	call GetCurItemName
 	ld hl, NotifyAirBalloonText
 	call StdBattleTextbox
@@ -6631,18 +6640,16 @@ GiveExperiencePoints:
 	pop bc
 	ld hl, MON_EXP + 2
 	add hl, bc
-	ld d, [hl]
 	ldh a, [hQuotient + 2]
-	add d
+	add [hl]
 	ld [hld], a
-	ld d, [hl]
 	ldh a, [hQuotient + 1]
-	adc d
+	adc [hl]
+	ld [hld], a
+	ldh a, [hQuotient]
+	adc [hl]
 	ld [hl], a
 	jr nc, .skip2
-	dec hl
-	inc [hl]
-	jr nz, .skip2
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7229,8 +7236,10 @@ AnimateExpBar:
 	adc [hl]
 	ld [hld], a
 	jr nc, .NoOverflow
-	inc [hl]
-	jr nz, .NoOverflow
+	ld a, [wExperienceGained]
+	adc [hl]
+	ld [hl], a
+	jr nc, .NoOverflow
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7396,6 +7405,10 @@ GetNewBaseExp:
 	and EXTSPECIES_MASK
 	ld b, a
 _GetNewBaseExp:
+	; Ensure that the most significant multiplicand isn't left with stray data.
+	; The rest is filled by this routine.
+	xor a
+	ldh [hMultiplicand], a
 	ld hl, NewBaseExpExceptions
 	ld de, 4
 	call IsInWordArray
@@ -7971,6 +7984,8 @@ StartBattle:
 	call ExitBattle
 	farcall LoadWeatherGraphics
 	farcall LoadWeatherPal
+	xor a
+	ld [wTrainerPal], a
 	pop af
 	ld [wTimeOfDayPal], a
 	scf

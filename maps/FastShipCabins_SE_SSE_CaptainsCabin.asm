@@ -67,7 +67,7 @@ SSAquaGranddaughterBefore:
 	promptbutton
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	setmapscene FAST_SHIP_1F, $0
-	sjumpfwd SSAquaMetalCoatAndDocking
+	sjumpfwd SSAquaMachoBraceAndDocking
 
 SSAquaGrandpa:
 	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
@@ -82,11 +82,17 @@ SSAquaGrandpa:
 	setmapscene FAST_SHIP_1F, $0
 	end
 
-SSAquaMetalCoatAndDocking:
+SSAquaMachoBraceAndDocking:
 	writetext SSAquaGrandpaHaveThisText
 	promptbutton
 	verbosegiveitem MACHO_BRACE
+	iffalsefwd .FailedMachoBrace
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
+	sjumpfwd .ContinueDocking
+.FailedMachoBrace:
+	writetext .NoRoomForMachoBrace
+	waitbutton
+.ContinueDocking:
 	closetext
 	waitsfx
 	playsound SFX_ELEVATOR_END
@@ -97,6 +103,12 @@ SSAquaMetalCoatAndDocking:
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	setevent EVENT_FAST_SHIP_FOUND_GIRL
 	endtext
+
+.NoRoomForMachoBrace:
+	text "But you can't carry"
+	line "it! I'll keep it"
+	cont "for another trip."
+	done
 
 SSAquaFoundGranddaughter:
 	writetext SSAquaGrandpaHaveThisText

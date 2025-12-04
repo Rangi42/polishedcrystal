@@ -626,10 +626,11 @@ IncrementToxic:
 	bit TOX, a
 	ret z
 
-	; Cap toxic counter at 15.
+	; Cap toxic counter at 15. Do not return z.
 	inc [hl]
-	bit 4, [hl]
-	ret z
+	ld a, [hl]
+	cp 16
+	ret c
 	dec [hl]
 	ret
 

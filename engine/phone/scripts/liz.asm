@@ -83,7 +83,7 @@ LizGossip:
 	sjumpfwd LizGossipScript
 
 .KimonoGirl:
-	gettrainerclassname KIMONO_GIRL_1, STRING_BUFFER_4
+	gettrainerclassname KIMONO_GIRL, STRING_BUFFER_4
 	sjumpfwd LizGossipScript
 
 .Skier:

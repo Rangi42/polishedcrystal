@@ -30,7 +30,9 @@ ExitAllMenus::
 	call ExitMenu
 	call ReloadTilesetAndPalettes
 	call RestoreSprites
+	call EnableSpriteUpdates
 	call UpdateSprites
+	call DisableSpriteUpdates
 FinishExitMenu::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
