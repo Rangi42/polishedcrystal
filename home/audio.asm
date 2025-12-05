@@ -124,6 +124,14 @@ PlayBikeMusic:
 	call .get_bike_music
 	ld a, e
 	ld [wMapMusic], a
+	ld a, [wMusicFade]
+	and a
+	jr z, PlayMusic
+	; we are fading so set bike music to play after fade
+	ld a, e
+	ld [wMusicFadeIDLo], a
+	xor a ; music hi byte is always 0
+	ld [wMusicFadeIDHi], a
 	jr PlayMusic
 
 .get_bike_music

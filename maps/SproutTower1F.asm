@@ -122,7 +122,7 @@ KimonoGirlMakoScript:
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked SPROUTTOWER1F_KIMONO_GIRL
-	loadtrainer KIMONO_GIRL_6, 1
+	loadtrainerwithpal KIMONO_GIRL, MAKO, TRAINERPAL_MAKO
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIMONO_GIRL_MAKO

@@ -68,14 +68,7 @@ INCLUDE "gfx/trainers/psychic_t.pal"
 INCLUDE "gfx/trainers/hex_maniac.pal"
 INCLUDE "gfx/trainers/sage.pal"
 INCLUDE "gfx/trainers/medium.pal"
-INCLUDE "gfx/trainers/kimono_girl_1.pal"
-INCLUDE "gfx/trainers/kimono_girl_2.pal"
-INCLUDE "gfx/trainers/kimono_girl_3.pal"
-INCLUDE "gfx/trainers/kimono_girl_4.pal"
-INCLUDE "gfx/trainers/kimono_girl_5.pal"
-INCLUDE "gfx/trainers/kimono_girl_6.pal"
-INCLUDE "gfx/trainers/kimono_girl_7.pal"
-INCLUDE "gfx/trainers/kimono_girl_8.pal"
+INCLUDE "gfx/trainers/kimono_girl_naoko.pal"
 INCLUDE "gfx/trainers/elder.pal"
 INCLUDE "gfx/trainers/sr_and_jr.pal"
 INCLUDE "gfx/trainers/couple.pal"
@@ -179,3 +172,19 @@ endr
 endc
 
 	assert_table_length NUM_TRAINER_CLASS_PICS
+if !DEF(MONOCHROME)
+INCLUDE "gfx/trainers/kimono_girl_sayo.pal"
+INCLUDE "gfx/trainers/kimono_girl_zuki.pal"
+INCLUDE "gfx/trainers/kimono_girl_kuni.pal"
+INCLUDE "gfx/trainers/kimono_girl_miki.pal"
+INCLUDE "gfx/trainers/kimono_girl_mako.pal"
+INCLUDE "gfx/trainers/kimono_girl_ami.pal"
+INCLUDE "gfx/trainers/kimono_girl_mina.pal"
+
+else
+rept NUM_TRAINER_PALS - NUM_TRAINER_CLASS_PICS
+	MONOCHROME_RGB_TWO
+endr
+endc
+
+	assert_table_length NUM_TRAINER_PALS

@@ -134,7 +134,6 @@ BugsyGroup:
 	def_trainer_class BUGSY
 	def_trainer 1, "Bugsy"
 	tr_mon 14, BUTTERFREE, MALE
-		tr_extra COMPOUND_EYES
 		tr_evs 32 SAt, 32 Spe
 		tr_moves TACKLE, POISONPOWDER, SLEEP_POWDER, CONFUSION
 	tr_mon 14, BEEDRILL, MALE
@@ -4943,73 +4942,38 @@ MediumGroup:
 	end_trainer
 
 
-SECTION "KimonoGirl1Group", ROMX
-KimonoGirl1Group:
+SECTION "KimonoGirlGroup", ROMX
+KimonoGirlGroup:
 
-	def_trainer_class KIMONO_GIRL_1
+	def_trainer_class KIMONO_GIRL
 	def_trainer NAOKO, "Naoko"
 	tr_mon 20, FLAREON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl2Group", ROMX
-KimonoGirl2Group:
-
-	def_trainer_class KIMONO_GIRL_2
 	def_trainer SAYO, "Sayo"
 	tr_mon 20, ESPEON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl3Group", ROMX
-KimonoGirl3Group:
-
-	def_trainer_class KIMONO_GIRL_3
 	def_trainer ZUKI, "Zuki"
 	tr_mon 20, UMBREON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl4Group", ROMX
-KimonoGirl4Group:
-
-	def_trainer_class KIMONO_GIRL_4
 	def_trainer KUNI, "Kuni"
 	tr_mon 20, VAPOREON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl5Group", ROMX
-KimonoGirl5Group:
-
-	def_trainer_class KIMONO_GIRL_5
 	def_trainer MIKI, "Miki"
 	tr_mon 20, JOLTEON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl6Group", ROMX
-KimonoGirl6Group:
-
-	def_trainer_class KIMONO_GIRL_6
 	def_trainer MAKO, "Mako"
 	tr_mon LEVEL_FROM_BADGES + 10, LEAFEON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl7Group", ROMX
-KimonoGirl7Group:
-
-	def_trainer_class KIMONO_GIRL_7
 	def_trainer AMI, "Ami"
 	tr_mon LEVEL_FROM_BADGES + 10, GLACEON @ LUM_BERRY
 	end_trainer
 
-
-SECTION "KimonoGirl8roup", ROMX
-KimonoGirl8Group:
-
-	def_trainer_class KIMONO_GIRL_8
 	def_trainer MINA, "Mina"
 	tr_mon LEVEL_FROM_BADGES + 10, SYLVEON @ LUM_BERRY
 	end_trainer

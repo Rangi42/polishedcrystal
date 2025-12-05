@@ -8,6 +8,34 @@
 
 ***Note: The following changelog may contain spoilers.***
 
+## v3.2.2
+
+Hotfix release.
+
+This update changes the link version, meaning you cannot battle with game versions older than 3.2.2.
+
+### Additions
+- New Marowak sprite
+
+### Changes
+- Fly can no longer be forgotten if you don't carry the HM
+- Battle transistions are no longer too fast
+- Update Wooper's sprite
+- Shorten sound effect for crossing whirlpools
+
+### Fixes
+
+- Fixed room service not working as it should
+- Toxic should now be fully fixed
+- Fix some spelling mistakes
+- Fix Route 43 map during rain
+- Fix buggy experience gain above 65535
+- Fix rare NPC display bug while using Fly in the overworld
+- Nickname UI now displays proper gender and Shininess
+- Fix bike music sometimes not playing correctly
+- Amy & Mimi's party is now always level 13
+- You can no longer miss out on Macho Brace within SS Aqua
+
 ## v3.2.1
 
 Hotfix release.
