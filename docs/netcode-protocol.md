@@ -62,9 +62,10 @@ All info transfers mirror each other. Requests include `<chunk_id>` immediately 
 ## Battle / Trade flow quirks
 
 - Battle and trade invites share the same `Battle` object pool (`users[userid].battleid`). Trades merely flip `battle.is_trade`. A `battleid` of `-1` flags "busy trading" and blocks new invites.
-- Acceptance requires **both** sides to run `BATTLEUSER`/`TRADEUSER` *or* call `SETREPLY` with `PO_REPLY_ACCEPT`. Until both `host_accepted` and `client_accepted` are true, the server keeps returning `0` to invite commands.
+- Acceptance requires the challenger to mark themselves ready via `BATTLEUSER`/`TRADEUSER` (this sets `host_accepted=True`) **and** the invitee to explicitly call `SETREPLY PO_REPLY_ACCEPT` after seeing the ROM prompt. Until both `host_accepted` and `client_accepted` are true, the server keeps returning `0` to invite commands.
+- When the invitee next polls and receives `PO_SIGNAL_ASK*`, the ROM now opens an accept/decline prompt showing the challenger’s user ID/name. Choosing “Accept” issues `SETREPLY PO_REPLY_ACCEPT`; choosing “Decline” issues `SETREPLY PO_REPLY_REJECT`. Legacy ROMs that still mirror `BATTLEUSER` remain compatible.
 - The server will re-send asynchronous `PO_SIGNAL_ASK*` only when the invitee next issues `LISTUSERS`, `BATTLEUSER`, or `TRADEUSER`. There is no idle push.
-- `SETREPLY` with `PO_REPLY_REJECT` clears the caller’s `battleid` immediately, but does not notify the opponent beyond the next poll.
+- `SETREPLY` with `PO_REPLY_REJECT` now clears **both** users’ `battleid` fields immediately and deletes the shared `Battle`. The challenger learns about the decline via `PO_SIGNAL_ERROR (PO_ERROR_REJECTED)` on their next poll.
 - `BATTLETURN` high nibble stores the number of RNG bytes consumed that turn; low nibble stores the action. The first turn forces RNG bytes to zero. Logged RNG bytes are appended to `battle.log` so late responders can catch up.
 - `TRADETURN` reuses the same machinery but only exchanges a single action byte per turn (no RNG stream). When both users have submitted matching offsets, the server appends the action to the shared log and unlocks the next turn.
 
@@ -97,10 +98,10 @@ These notes should be mirrored in future implementations and regression fixtures
 
 ### Battle invite flow
 
-1. **Host issues `BATTLEUSER <target>`** – `battle.handle_battle_user` allocates a `Battle`, marks the host as accepted, and returns `0` until the opponent also engages.
+1. **Host issues `BATTLEUSER <target>`** – `battle.handle_battle_user` allocates a `Battle`, marks the host as accepted, and returns `0` until the opponent answers. The host keeps polling once per second by sending `SETREPLY PO_REPLY_WAIT` (see `PO_RequestBattle`).
 2. **Signal propagation** – the next time the opponent issues `LISTUSERS`, `BATTLEUSER`, or `TRADEUSER`, `maybe_pending_signal` sends `PO_SIGNAL_ASKBATTLE` with the host's user ID.
-3. **Opponent mirrors the request** – the client ROM immediately issues its own `BATTLEUSER <host>`, which marks `battle.client_accepted=True` while still returning `0` until replies arrive. This mirrors the legacy `testserver.py` behavior where both sides call `battleuser()`.
-4. **Replies** – each side calls `SETREPLY` with `PO_REPLY_ACCEPT`. Only after both replies succeed does the server return `[host_id, client_id]` to future `BATTLEUSER` calls, signalling readiness.
+3. **Invite prompt** – upon receiving the signal, the ROM shows the challenger’s ID/name and asks whether to accept. Declining immediately sends `SETREPLY PO_REPLY_REJECT`, clears both players’ `battleid`, and shows “Battle declined” before returning to the roster.
+4. **Acceptance** – if the invitee chooses “Accept”, the ROM issues `SETREPLY PO_REPLY_ACCEPT`. Mirroring `BATTLEUSER` is no longer required (though legacy ROMs that still do so stay compatible). When both sides have responded positively, subsequent `BATTLEUSER` polls return `[host_id, client_id]`, signalling readiness.
 5. **Data fetch** – both parties run `GETINFO`/`GETINFO_VER` to pull the opponent's profile.
 6. **Turn exchange** – once in-battle, every `BATTLETURN` call writes the action (low nibble) and RNG byte count (high nibble) into the shared log. Lagging players receive replayed bytes before fresh RNG is appended.
 
@@ -108,10 +109,10 @@ These notes should be mirrored in future implementations and regression fixtures
 
 Trades reuse the same structures with `battle.is_trade=True`:
 
-1. Challenger issues `TRADEUSER <target>` and receives `0` until both sides accept.
-2. Invitee polls `LISTUSERS`, receives `PO_SIGNAL_ASKTRADE`, and mirrors the request with `TRADEUSER <host>`.
-3. Each side follows with `SETREPLY PO_REPLY_ACCEPT`. Completed invites return `[host_id, client_id]` just like battles.
-4. `TRADETURN` exchanges single-byte actions; pending inputs replay earlier log bytes so both sides stay in sync when someone lags.
+1. Challenger issues `TRADEUSER <target>` and, like battles, loops by sending `SETREPLY PO_REPLY_WAIT` while awaiting the opponent.
+2. Invitee polls `LISTUSERS`, receives `PO_SIGNAL_ASKTRADE`, and sees the same accept/decline prompt with the challenger’s identity.
+3. Accepting sends `SETREPLY PO_REPLY_ACCEPT` (mirroring `TRADEUSER` is optional); declining sends `PO_REPLY_REJECT`, clears both `battleid`s, and displays “Trade declined.”
+4. When both users have accepted the invite, subsequent `TRADEUSER` polls return `[host_id, client_id]` and the ROM transitions into the link trade UI. `TRADETURN` exchanges single-byte actions; pending inputs replay earlier log bytes so both sides stay in sync when someone lags.
 
 ### Extending the protocol
 
@@ -127,31 +128,42 @@ When adding a new command (e.g., Wonder Trade, Spectator Mode):
 ## Battle / Trade lifecycle diagram
 
 ```
-	 +-------+    BATTLEUSER/TRADEUSER     +---------------------+
-	 | Idle  | ------------------------->  | Pending (host=set) |
-	 +-------+                             +---------------------+
-	      ^                                      |
-	      |  Opponent mirrors request            | signal via LIST/LIST
-	      |  (BATTLEUSER/TRADEUSER)              v
-	 +-------------------------+        +----------------------+
-	 | Pending (client=set)    |<------>| Awaiting replies     |
-	 +-------------------------+        +----------------------+
-		     |  both send SETREPLY ACCEPT          |
-		     v                                     |
-	     +-------------------+                        |
-	     | Active battle     |<------------------------+
-	     | (host/client IDs) |
-	     +-------------------+
-		     |
-		     | disconnect or SETREPLY REJECT
-		     v
-	     +-------------------+
-	     | Cleanup / Idle    |
-	     +-------------------+
+	 +-------+   BATTLEUSER/TRADEUSER   +----------------------+
+	 | Idle  | -----------------------> | Pending (host ready) |
+	 +-------+                          +----------------------+
+	      ^                                     |
+	      |   signal on LIST/BATTLE/TRADE       |
+	      |                                     v
+	      |                           +-------------------------+
+	      |                           | Invite prompt (client)  |
+	      |                           +-----------+-------------+
+	      |                                       |
+	      |                          decline -----+----> Cleanup/Idle
+	      |                                       |
+	      |                                       v
+	      |                           +-------------------------+
+	      |<--------------------------| Awaiting replies        |
+	      |   host polls SETREPLY     +-------------------------+
+	      |                                       |
+	      +---------------------------------------+
+	                      both accepted
+	                            |
+	                            v
+	                    +------------------+
+	                    | Active battle /  |
+	                    | trade            |
+	                    +------------------+
+	                            |
+	                            |
+	                            v
+	                    +------------------+
+	                    | Cleanup / Idle   |
+	                    +------------------+
 ```
 
-- **Signals**: while in `Pending` or `Awaiting replies`, the invitee only learns about the request when running `LISTUSERS`, `BATTLEUSER`, or `TRADEUSER`. At that moment the server injects `PO_SIGNAL_ASK*` before answering the command.
+- **Signals + prompt**: while in `Pending`, the invitee only hears about the request when running `LISTUSERS`, `BATTLEUSER`, or `TRADEUSER`. The server injects `PO_SIGNAL_ASK*`, after which the ROM shows the accept/decline prompt and records the challenger ID/name.
 - **Disconnects**: if either side disconnects at any stage, `ServerState.handle_disconnect` sets their `battle_id = -1`, clears their session, and releases the `Battle` object. The opponent is returned to `Idle` via the next poll without explicit notification.
-- **Rejections**: `SETREPLY PO_REPLY_REJECT` immediately clears both users' `battle_id` fields and causes the next poll to return an error signal. The challenger must issue a fresh invite afterward.
+- **Rejections**: `SETREPLY PO_REPLY_REJECT` from either user clears both users' `battle_id` fields immediately, deletes the `Battle`, and causes the challenger’s next poll to return `PO_SIGNAL_ERROR (PO_ERROR_REJECTED)`.
+- **Waiting loop**: challengers continue calling `SETREPLY PO_REPLY_WAIT` while the invite prompt is outstanding; once the invitee accepts, those polls begin returning the paired IDs and the ROM transitions into the link flow.
 
 This textual diagram is meant to mirror the state machine implemented across `netcode.handlers.battle`, `netcode.handlers.trade`, and the ROM routines in `engine/mobile/server.asm`. Keep it in sync whenever lifecycle logic changes.

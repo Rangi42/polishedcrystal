@@ -299,23 +299,53 @@ PO_Connect::
 	cp PO_SIGNAL_ASKBATTLE
 	jr z, .got_battle_request
 	cp PO_SIGNAL_ASKTRADE
-	jr nz, .disconnect
+	jr z, .got_trade_request
+	jr .disconnect
 
-	; Handle trade requests
-	; Just accept the invite automatically for now
+
+.got_trade_request
+	call PO_StorePendingInviteID
+	ld de, PO_TradeInviteHeader
+	call PO_DrawInviteScreen
+	call PO_PromptInviteDecision
+	and a
+	jr z, .declined_trade
 	ld a, PO_CMD_SETREPLY
 	ld b, PO_REPLY_ACCEPT
 	call PO_ServerCommand
 	jr c, .handle_signal
 	jp .init_trade
 
+.declined_trade
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_REJECT
+	call PO_ServerCommand
+	jr c, .handle_signal
+	ld de, PO_TradeInviteDeclined
+	call PO_ShowInviteDeclinedMessage
+	jp .get_user_list
+
 .got_battle_request
-	; Just accept the invite automatically for now
+	call PO_StorePendingInviteID
+	ld de, PO_BattleInviteHeader
+	call PO_DrawInviteScreen
+	call PO_PromptInviteDecision
+	and a
+	jr z, .declined_battle
 	ld a, PO_CMD_SETREPLY
 	ld b, PO_REPLY_ACCEPT
 	call PO_ServerCommand
 	jr c, .handle_signal
 	jp .init_battle
+
+.declined_battle
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_REJECT
+	call PO_ServerCommand
+	jr c, .handle_signal
+	ld de, PO_BattleInviteDeclined
+	call PO_ShowInviteDeclinedMessage
+	jp .get_user_list
 .server_closed
 	hlcoord 1, 3
 	ld de, .ServerClosed
@@ -384,6 +414,44 @@ PO_Connect::
 	db "Trade@"
 	db "Cancel@"
 
+PO_InviteFromLabel:
+	db "From ID:@"
+
+PO_InviteNameLabel:
+	db "Opponent:@"
+
+PO_InvitePromptText:
+	db    "Accept this"
+	next1 "request?"
+	done
+
+PO_InviteMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	db 11, 11 ; start coords
+	db 17, 17 ; end coords
+	dw PO_InviteMenuData
+	db 1 ; default option
+
+PO_InviteMenuData:
+	db $c0 ; flags
+	db 2 ; items
+	db "Accept@"
+	db "Decline@"
+
+PO_UnknownInviteName:
+	db "Unknown player@"
+
+PO_BattleInviteHeader:
+	db "Battle invite@"
+
+PO_TradeInviteHeader:
+	db "Trade invite@"
+
+PO_BattleInviteDeclined:
+	db "Battle declined.@"
+
+PO_TradeInviteDeclined:
+	db "Trade declined.@"
 PO_GetUserListOnTick:
 	ld hl, wPO_RequestTimer
 	dec [hl]
@@ -602,6 +670,104 @@ PO_ClearInterface:
 	push hl
 	call ClearBox
 	pop hl
+	ret
+
+PO_StorePendingInviteID:
+	ld a, [wPO_Content]
+	ld [wPO_PendingInviteServerID], a
+	xor a
+	ld [wPO_PendingInviteServerID + 1], a
+	ret
+
+PO_DrawInviteScreen:
+	push de
+	call PO_ClearInterface
+	hlcoord 1, 3
+	pop de
+	call PlaceString
+	hlcoord 1, 5
+	ld de, PO_InviteFromLabel
+	call PlaceString
+	hlcoord 11, 5
+	ld de, wPO_PendingInviteServerID
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
+	call PrintNum
+	hlcoord 1, 7
+	ld de, PO_InviteNameLabel
+	call PlaceString
+	call PO_FindInviteNamePointer
+	jr c, .unknown_name
+	push hl
+	pop de
+	jr .print_name
+.unknown_name
+	ld de, PO_UnknownInviteName
+.print_name
+	hlcoord 1, 8
+	call PlaceString
+	hlcoord 1, 10
+	ld de, PO_InvitePromptText
+	call PlaceString
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+	ret
+
+PO_PromptInviteDecision:
+	ld a, 1
+	ld [wMenuCursorY], a
+	ld hl, PO_InviteMenuHeader
+	call LoadMenuHeader
+	call ApplyTilemapInVBlank
+	call VerticalMenu
+	call CloseWindow
+	jr c, .declined
+	ld a, [wMenuCursorY]
+	dec a
+	jr z, .accepted
+.declined
+	xor a
+	ret
+.accepted
+	ld a, 1
+	ret
+
+PO_FindInviteNamePointer:
+	ld a, [wPO_UserCount]
+	ld c, a
+	ld hl, wPO_User1
+	ld a, [wPO_PendingInviteServerID]
+	ld b, a
+	ld de, wPO_User2 - wPO_User1
+.loop
+	ld a, c
+	and a
+	jr z, .not_found
+	ld a, [hl]
+	cp b
+	jr z, .found
+	add hl, de
+	dec c
+	jr .loop
+.found
+	inc hl
+	inc hl
+	inc hl
+	and a
+	ret
+.not_found
+	scf
+	ret
+
+PO_ShowInviteDeclinedMessage:
+	push de
+	call PO_ClearInterface
+	hlcoord 1, 3
+	pop de
+	call PlaceString
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+	ld c, 60
+	call DelayFrames
 	ret
 
 PO_ServerCommand:

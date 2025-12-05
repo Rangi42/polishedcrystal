@@ -937,7 +937,7 @@ SECTION UNION "Misc 1326", WRAM0
 wMobileLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wMobileLinkReceivedMailEnd:: db
 
-	ds 69 ; Giggidy
+	ds 67 ; Giggidy
 
 wMobilePacket::
 wMobilePacketCommand:: db
@@ -987,6 +987,9 @@ wPO_RequestTimer:: db
 
 ; target user data version from last GETINFO
 wPO_LastGetInfoVersion:: db
+
+; server id for the currently pending invite (if any)
+wPO_PendingInviteServerID:: dw
 
 ; an "is host" isn't enough, in case we're spectating
 wPO_BattlePlayer1ID:: db
