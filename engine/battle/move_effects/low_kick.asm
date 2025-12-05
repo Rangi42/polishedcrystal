@@ -15,7 +15,7 @@ BattleCommand_lowkick:
 	ld d, h
 	ld e, l
 
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp LIGHT_METAL
 	jr nz, .not_light_metal
 	srl d

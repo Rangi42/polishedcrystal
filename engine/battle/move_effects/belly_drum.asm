@@ -15,7 +15,7 @@ BattleCommand_bellydrum:
 	call GetHalfMaxHP
 	predef SubtractHPFromUser
 	call UpdateUserInParty
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp CONTRARY
 	ld hl, BellyDrumContraryText
 	jr z, .print
