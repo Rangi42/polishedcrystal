@@ -1,12 +1,12 @@
 # Netcode Migration Plan
 
-The refactored `netcode/` package now runs side-by-side with the legacy `testserver.py` script so we can switch gradually without disrupting the existing deployment.
+The migration is complete: `netcode.server` is now the sole Polished Online entrypoint and the legacy `testserver.py` script has been removed. Operators should launch the server with `python -m netcode serve` (or the equivalent module invocation in their process manager).
 
-## Phased rollout
+## Operational checklist
 
-1. **Shadow traffic** – deploy the refactor behind the legacy CLI: `python testserver.py --refactor`. This spins up the new `netcode.server` entrypoint but keeps the old script available (default behavior with no flags).
-2. **Parity verification** – run the existing ROM/client test suites against both `python testserver.py` (legacy) and `python testserver.py --refactor` to confirm the new stack is stable. The pytest integration suite (`netcode/tests/test_server_integration.py`) covers the most critical flows automatically.
-3. **Flip the default** – once parity is proven, update operational scripts/service units to call `python -m netcode serve` directly, leaving the legacy script only for emergency fallback.
+1. **Deploy the new entrypoint** – update service units/launch scripts to run `python -m netcode serve --host 0.0.0.0 --port 57409` (plus any desired flags). There is no longer a legacy code path.
+2. **Verify parity** – keep running the pytest integration suite (`netcode/tests/test_server_integration.py`) and the ROM smoke tests whenever protocol changes are made to guarantee ongoing compatibility with the handheld client.
+3. **Monitor persistence** – enable filesystem persistence (or a custom repository implementation) in staging before rolling to production so you can validate disk usage and backup flows.
 
 ## Persistence feature flag
 

@@ -1,6 +1,6 @@
 # Polished Online Link Protocol
 
-This document freezes the protocol spoken between the Polished Online TCP server and the Game Boy ROM as currently implemented in `testserver.py`. All byte counts remain wire-compatible with the legacy script.
+This document freezes the protocol spoken between the Polished Online TCP server and the Game Boy ROM as originally implemented in `testserver.py` (now superseded by `netcode.server`). All byte counts remain wire-compatible with that legacy script.
 
 ## Transport basics
 
@@ -122,7 +122,7 @@ When adding a new command (e.g., Wonder Trade, Spectator Mode):
 - Update `netcode.handlers` with a dedicated handler module when the logic is substantial (mirroring `battle.py`, `trade.py`, etc.).
 - Add regression tests that serialize exact bytes for the command, both for success and error paths. Use the integration harness in `test_server_integration.py` whenever the feature spans multiple sockets.
 - Remember to surface new lock order or persistence requirements in `docs/netcode-locking.md` or `docs/netcode-persistence.md` as needed.
-- Wire the feature into `testserver.py` behind a feature flag first, then flip the CLI entrypoint (`python -m netcode serve`) once parity tests pass. Keep staged rollouts scripted so we can revert quickly.
+- Wire the feature into the `netcode.server` entrypoint behind a feature flag or config gate, then roll it out through the CLI (`python -m netcode serve`). Keep staged rollouts scripted so we can revert quickly.
 
 ## Battle / Trade lifecycle diagram
 
