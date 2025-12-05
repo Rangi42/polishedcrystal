@@ -1,60 +1,66 @@
 #!/usr/bin/env python3
 
+from netcode import constants as net_constants
+from netcode.server import serve as serve_refactor
+
 # Server port
-PO_PORT            = 57409
+PO_PORT            = net_constants.DEFAULT_PORT
 
 # Commands sent by the client
-PO_CMD_DISCONNECT   = 0x00 # Disconnect from server
-PO_CMD_STATUS       = 0x01 # Server status
-PO_CMD_WONDERTRADE  = 0x02 # Get a series of random bytes
-PO_CMD_SETINFO      = 0x03 # Set info (player name, ID, party)
-PO_CMD_GETINFO      = 0x04 # Get info about someone else
-PO_CMD_LISTUSERS    = 0x05 # List connected users
-PO_CMD_BATTLEUSER   = 0x06 # Battle an user
-PO_CMD_TRADEUSER    = 0x07 # Trade with an user
-PO_CMD_GETBATTLE    = 0x08 # Watch someone else's battle
-PO_CMD_BATTLETURN   = 0x09 # Battle turn
-PO_CMD_TRADETURN    = 0x0A # Offer trade or check if other side did
-PO_CMD_SETREPLY     = 0x0B # View or change battle/trade request response
-PO_CMD_GETINFO_VER  = 0x0C # Get target user's info version
+PO_CMD_DISCONNECT   = net_constants.Command.DISCONNECT
+PO_CMD_STATUS       = net_constants.Command.STATUS
+PO_CMD_WONDERTRADE  = net_constants.Command.WONDERTRADE
+PO_CMD_SETINFO      = net_constants.Command.SETINFO
+PO_CMD_GETINFO      = net_constants.Command.GETINFO
+PO_CMD_LISTUSERS    = net_constants.Command.LISTUSERS
+PO_CMD_BATTLEUSER   = net_constants.Command.BATTLEUSER
+PO_CMD_TRADEUSER    = net_constants.Command.TRADEUSER
+PO_CMD_GETBATTLE    = net_constants.Command.GETBATTLE
+PO_CMD_BATTLETURN   = net_constants.Command.BATTLETURN
+PO_CMD_TRADETURN    = net_constants.Command.TRADETURN
+PO_CMD_SETREPLY     = net_constants.Command.SETREPLY
+PO_CMD_GETINFO_VER  = net_constants.Command.GETINFO_VER
 
 # Signals the client about an error, or if someone wants to battle/trade
-PO_SIGNAL_ERROR       = 0x81 # There was an error
-PO_SIGNAL_ASKBATTLE   = 0x86 # Someone asked to battle the user
-PO_SIGNAL_ASKTRADE    = 0x87 # Someone asked to trade with the user
+PO_SIGNAL_ERROR       = net_constants.Signal.ERROR
+PO_SIGNAL_ASKBATTLE   = net_constants.Signal.ASKBATTLE
+PO_SIGNAL_ASKTRADE    = net_constants.Signal.ASKTRADE
 
 # Status normally returns user ID, but has a special value if closed
 PO_STATUS_CLOSED      = 0x00 # Server closed
 
 # Reply variants
-PO_REPLY_ACCEPT       = 0x00 # Accept reply to battle/trade
-PO_REPLY_REJECT       = 0x01 # Reject, or abort invite to, battle/trade
-PO_REPLY_WAIT         = 0x02 # Checks if the request remains
+PO_REPLY_ACCEPT       = net_constants.Reply.ACCEPT
+PO_REPLY_REJECT       = net_constants.Reply.REJECT
+PO_REPLY_WAIT         = net_constants.Reply.WAIT
 
 # Error parameters
-PO_ERROR_OK           = 0x00 # no error (returned by some server functions)
-PO_ERROR_UNKNCMD      = 0x01 # Unknown command
-PO_ERROR_UNKNUSER     = 0x02 # Unknown or disconnected user
-PO_ERROR_BADINFO      = 0x03 # Illegitimate player information
-PO_ERROR_INCOMPATIBLE = 0x04 # The games between the users are incompatible
-PO_ERROR_UNAUTHORIZED = 0x05 # Action not permitted (e.g. battling yourself)
-PO_ERROR_WITHANOTHER  = 0x06 # User is battling/trading with someone else
-PO_ERROR_REJECTED     = 0x07 # User rejected battle/trade
-PO_ERROR_DESYNCED     = 0x08 # Desync detected
+PO_ERROR_OK           = net_constants.Error.OK
+PO_ERROR_UNKNCMD      = net_constants.Error.UNKNOWN_COMMAND
+PO_ERROR_UNKNUSER     = net_constants.Error.UNKNOWN_USER
+PO_ERROR_BADINFO      = net_constants.Error.BAD_INFO
+PO_ERROR_INCOMPATIBLE = net_constants.Error.INCOMPATIBLE
+PO_ERROR_UNAUTHORIZED = net_constants.Error.UNAUTHORIZED
+PO_ERROR_WITHANOTHER  = net_constants.Error.BUSY
+PO_ERROR_REJECTED     = net_constants.Error.REJECTED
+PO_ERROR_DESYNCED     = net_constants.Error.DESYNCED
 
 # pokecrystal constants
-MON_NAME_LENGTH = 11
-NAME_LENGTH = 11
-PARTY_LENGTH = 6
-BOXMON_STRUCT_LENGTH = 0x20
-PARTYMON_STRUCT_LENGTH = 0x30
-RNG_LENGTH = 15
-MAIL_STRUCT_LENGTH = 0x2f
+MON_NAME_LENGTH = net_constants.MON_NAME_LENGTH
+NAME_LENGTH = net_constants.NAME_LENGTH
+PARTY_LENGTH = net_constants.PARTY_LENGTH
+BOXMON_STRUCT_LENGTH = net_constants.BOXMON_STRUCT_LENGTH
+PARTYMON_STRUCT_LENGTH = net_constants.PARTYMON_STRUCT_LENGTH
+RNG_LENGTH = net_constants.RNG_LENGTH
+MAIL_STRUCT_LENGTH = net_constants.MAIL_STRUCT_LENGTH
 
 import socket
 import threading
 import secrets
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
+from netcode.models import Session
+from netcode.state import ServerState
 
 def uint16(bytes, offset = 0):
     return bytes[offset] << 8 | bytes[offset + 1]
@@ -78,12 +84,12 @@ class UserDisconnected(Exception):
 @dataclass
 class User:
     userid: int
-    name: bytearray(NAME_LENGTH)
-    mons: bytearray(PARTYMON_STRUCT_LENGTH * PARTY_LENGTH)
-    ot: bytearray(NAME_LENGTH * PARTY_LENGTH)
-    nicks: bytearray(MON_NAME_LENGTH * PARTY_LENGTH)
-    mail: bytearray(MAIL_STRUCT_LENGTH * PARTY_LENGTH)
-    lock: threading.RLock()
+    name: bytearray = field(default_factory=lambda: bytearray(NAME_LENGTH))
+    mons: bytearray = field(default_factory=lambda: bytearray(PARTYMON_STRUCT_LENGTH * PARTY_LENGTH))
+    ot: bytearray = field(default_factory=lambda: bytearray(NAME_LENGTH * PARTY_LENGTH))
+    nicks: bytearray = field(default_factory=lambda: bytearray(MON_NAME_LENGTH * PARTY_LENGTH))
+    mail: bytearray = field(default_factory=lambda: bytearray(MAIL_STRUCT_LENGTH * PARTY_LENGTH))
+    lock: threading.RLock = field(default_factory=threading.RLock, repr=False)
     partymons: int = 0
     gender: int = 0
     otid: int = 0
@@ -91,7 +97,7 @@ class User:
     battleid: int = 0
     infoversion: int = 0 # Used to detect changes in the info
 
-    def serialize(self) -> bytearray():
+    def serialize(self) -> bytearray:
         ret = bytearray()
         ret.append(self.otid >> 8)
         ret.append(self.otid & 0xFF)
@@ -132,9 +138,9 @@ class User:
 @dataclass
 class Battle:
     battleid: int
-    log: bytearray()
-    rng: bytearray(RNG_LENGTH)
-    lock: threading.RLock()
+    log: bytearray = field(default_factory=bytearray)
+    rng: bytearray = field(default_factory=lambda: bytearray(RNG_LENGTH))
+    lock: threading.RLock = field(default_factory=threading.RLock, repr=False)
     host: int = 0
     client: int = 0
     is_trade: bool = False
@@ -190,7 +196,7 @@ class Battle:
         prev_offset = self.get_offset(user)
         self.set_offset(user, offset + prev_offset)
 
-    def pending_input_trade(self, user) -> bytearray():
+    def pending_input_trade(self, user) -> bytearray:
         opp = self.otheruser(user)
         ret = bytearray()
         action = self.get_action(user) & 0xF
@@ -231,7 +237,7 @@ class Battle:
         return ret
 
     # Returns a bytearray of battle turn data to send
-    def pending_input(self, user) -> bytearray():
+    def pending_input(self, user) -> bytearray:
         opp = self.otheruser(user)
         ret = bytearray()
 
@@ -296,78 +302,80 @@ class Battle:
         # Otherwise, just send 0xFF
         ret.append(0xFF)
         return ret
+def _build_user(user_id: int) -> User:
+    return User(user_id)
+
+
+def _build_battle(battle_id: int, host_id: int, client_id: int, is_trade: bool = False) -> Battle:
+    battle = Battle(battle_id)
+    battle.host = host_id
+    battle.client = client_id
+    battle.is_trade = is_trade
+    battle.host_accepted = True
+    battle.client_accepted = False
+    return battle
+
+
+state = ServerState(user_factory=_build_user, battle_factory=_build_battle)
+users = state.users
+battles = state.battles
 
 #                ID   Name          Party                     Nicks+OT
-SERIALIZED_USER = 2 + NAME_LENGTH + (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH
-
-users = []
-ulock = threading.RLock()
-battles = []
-block = threading.RLock()
+SERIALIZED_USER = net_constants.SERIALIZED_USER
 
 def addbattle() -> int:
-    block.acquire()
-    battlecount = len(battles)
-    log = bytearray()
-    rng = bytearray(RNG_LENGTH)
-    lock = threading.RLock()
-    battles.append(Battle(battlecount, log, rng, lock))
-    ret = battlecount
-    block.release()
-    return ret
+    battle = state.add_battle(0, 0)
+    return battle.battleid
 
 def is_battler(battleid, userid) -> bool:
     # Is this a valid battle ID?
     if (battleid == 0):
         return False
 
+    battle = state.get_battle(battleid)
+    if battle is None:
+        return False
+
     # If so, check if given user is a battler
-    if battles[battleid].host == userid or battles[battleid].client == userid:
+    if battle.host == userid or battle.client == userid:
         return True
     return False
 
 def adduser() -> int:
-    ulock.acquire()
-    usercount = len(users)
-    name = bytearray(NAME_LENGTH)
-    mons = bytearray(PARTYMON_STRUCT_LENGTH * PARTY_LENGTH)
-    ot = bytearray(NAME_LENGTH * PARTY_LENGTH)
-    nicks = bytearray(MON_NAME_LENGTH * PARTY_LENGTH)
-    mail = bytearray(MAIL_STRUCT_LENGTH * PARTY_LENGTH)
-    lock = threading.RLock()
-    users.append(User(usercount, name, mons, ot, nicks, mail, lock))
-    ret = usercount
-    ulock.release()
-    return ret
+    user = state.add_user()
+    return user.userid
 
 def lock_users(*userlist) -> bool:
-    # First check that all user IDs are valid
-    for user in userlist:
-        if len(users) <= user:
+    resolved = []
+    for user_id in userlist:
+        user = state.get_user(user_id)
+        if user is None:
+            for locked in resolved:
+                locked.lock.release()
             return False
+        resolved.append(user)
 
     # Lock all user threads
-    for user in userlist:
-        users[user].lock.acquire()
+    for user in resolved:
+        user.lock.acquire()
 
     return True
 
 def release_users(*userlist) -> bool:
-    # First check that all user IDs are valid
-    for user in userlist:
-        if len(users) <= user:
-            return False
-
     # Release all user threads
-    for user in userlist:
-        users[user].lock.release()
+    for user_id in userlist:
+        user = state.get_user(user_id)
+        if user is None:
+            return False
+        user.lock.release()
 
     return True
 
 def connected(userid) -> bool:
-    if len(users) <= userid:
+    user = state.get_user(userid)
+    if user is None:
         return False
-    return users[userid].connected
+    return user.connected
 
 def may_battle(userid, target) -> int:
     if not lock_users(userid, target):
@@ -403,10 +411,6 @@ def may_battle(userid, target) -> int:
     finally:
         release_users(userid, target)
 
-# dummy entries so array index and id coincide
-adduser()
-users[0].connected = False
-addbattle()
 
 def requestdata(client, data, length = 1):
     prevlen = len(data)
@@ -421,16 +425,21 @@ def disconnect(client, userid, raiseException = True):
         client.csocket.close()
         users[userid].connected = False
         users[userid].battleid = -1
+        state.detach_session(userid)
         if raiseException:
             raise UserDisconnected
 
 class ClientThread(threading.Thread):
-    def __init__(self,clientAddress,clientsocket):
+    def __init__(self, clientAddress, clientsocket):
         threading.Thread.__init__(self)
         self.csocket = clientsocket
+        self.session = Session(sock=clientsocket)
+        self.client_address = clientAddress
     def run(self):
         userid = adduser()
-        print("New user", clientAddress, "connected:", userid)
+        self.session.user_id = userid
+        state.attach_session(self.session)
+        print("New user", self.client_address, "connected:", userid)
         try:
             while True:
                 data = bytearray()
@@ -519,6 +528,7 @@ class ClientThread(threading.Thread):
                         reqlen += MAIL_STRUCT_LENGTH # 1 mail message
                     requestdata(self, data, reqlen)
                     users[userid].unserialize(data)
+                    state.persist_user(users[userid])
                     release_users(userid)
 
                 elif data[0] == PO_CMD_GETINFO:
@@ -560,22 +570,27 @@ class ClientThread(threading.Thread):
                             response.extend(ret[data2reqlen:data3reqlen])
                         release_users(target)
 
+                elif data[0] == PO_CMD_WONDERTRADE:
+                    print(userid, ">>> Wonder trade")
+                    blob = secrets.token_bytes(32)
+                    state.enqueue_wonder_trade(blob)
+                    response.extend(blob)
+
                 elif data[0] == PO_CMD_LISTUSERS:
                     # stores user list
                     print(userid, ">>> List users")
                     response.append(0)
 
                     # don't allow messing with the user list meanwhile
-                    ulock.acquire()
-                    for user in users:
-                        if not user.connected:
-                            continue
-                        response[2] += 1
-                        response.append(user.userid)
-                        response.append(user.otid >> 8)
-                        response.append(user.otid & 0xFF)
-                        response.extend(user.name)
-                    ulock.release()
+                    with state.users_lock:
+                        for user in users.values():
+                            if not user.connected:
+                                continue
+                            response[2] += 1
+                            response.append(user.userid)
+                            response.append(user.otid >> 8)
+                            response.append(user.otid & 0xFF)
+                            response.extend(user.name)
 
                 elif data[0] == PO_CMD_TRADEUSER:
                     # who do we want to battle
@@ -583,7 +598,7 @@ class ClientThread(threading.Thread):
                     requestdata(self, data, 2)
                     target = data[1]
                     lock_users(userid, target)
-                    block.acquire()
+                    state.battles_lock.acquire()
                     errcode = may_battle(userid, target)
                     if errcode == PO_ERROR_OK:
                         if battleid > 0:
@@ -612,7 +627,7 @@ class ClientThread(threading.Thread):
                         response[1] = PO_SIGNAL_ERROR
                         response.append(errcode)
 
-                    block.release()
+                    state.battles_lock.release()
                     release_users(userid, target)
 
                 elif data[0] == PO_CMD_BATTLEUSER:
@@ -621,7 +636,7 @@ class ClientThread(threading.Thread):
                     requestdata(self, data, 2)
                     target = data[1]
                     lock_users(userid, target)
-                    block.acquire()
+                    state.battles_lock.acquire()
                     errcode = may_battle(userid, target)
                     if errcode == PO_ERROR_OK:
                         if battleid > 0:
@@ -647,7 +662,7 @@ class ClientThread(threading.Thread):
                         response[1] = PO_SIGNAL_ERROR
                         response.append(errcode)
 
-                    block.release()
+                    state.battles_lock.release()
                     release_users(userid, target)
 
                 elif data[0] == PO_CMD_BATTLETURN:
@@ -664,8 +679,11 @@ class ClientThread(threading.Thread):
                         user = users[userid]
                         opp = battle.otheruser(user)
                         battle.set_action(user, data[1])
-                        response.extend(battle.pending_input(user))
+                        payload = battle.pending_input(user)
+                        response.extend(payload)
                         battle.lock.release()
+                        if len(payload) > 0:
+                            state.record_battle_event(battleid, bytes(payload))
 
                 elif data[0] == PO_CMD_TRADETURN:
                     print(userid, ">>> Trade turn")
@@ -681,8 +699,11 @@ class ClientThread(threading.Thread):
                         user = users[userid]
                         opp = battle.otheruser(user)
                         battle.set_action(user, data[1])
-                        response.extend(battle.pending_input_trade(user))
+                        payload = battle.pending_input_trade(user)
+                        response.extend(payload)
                         battle.lock.release()
+                        if len(payload) > 0:
+                            state.record_trade_event(battleid, bytes(payload))
 
                 elif data[0] == PO_CMD_SETREPLY:
                     print(userid, ">>> Set invite reply")
@@ -745,15 +766,34 @@ class ClientThread(threading.Thread):
                 self.csocket.send(response)
 
         except UserDisconnected:
-            print("Client at", clientAddress, "disconnected.")
+            print("Client at", self.client_address, "disconnected.")
             disconnect(self, userid, False)
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server.bind(('0.0.0.0', PO_PORT))
-print("Server started")
-while True:
-    server.listen(1)
-    clientsock, clientAddress = server.accept()
-    newthread = ClientThread(clientAddress, clientsock)
-    newthread.start()
+def main(argv=None):
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Legacy Polished Online server")
+    parser.add_argument(
+        "--refactor",
+        action="store_true",
+        help="Run the refactored netcode.server entrypoint instead of the legacy script",
+    )
+    args = parser.parse_args(argv)
+
+    if args.refactor:
+        serve_refactor()
+        return
+
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.bind(('0.0.0.0', PO_PORT))
+    print("Legacy server started")
+    while True:
+        server.listen(1)
+        clientsock, clientAddress = server.accept()
+        newthread = ClientThread(clientAddress, clientsock)
+        newthread.start()
+
+
+if __name__ == "__main__":  # pragma: no cover
+    main()
