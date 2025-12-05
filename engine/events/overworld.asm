@@ -820,6 +820,8 @@ FlyFunction:
 	ldh [rWBK], a
 	xor a
 	ld [wPalFadeDelayFrames], a
+	ld [wPalFadeTotalSteps], a
+	ld [wPalFadeStepValue], a
 	pop af
 	ldh [rWBK], a
 	ld hl, wPalFlags
