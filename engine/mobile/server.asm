@@ -306,45 +306,19 @@ PO_Connect::
 .got_trade_request
 	call PO_StorePendingInviteID
 	ld de, PO_TradeInviteHeader
-	call PO_DrawInviteScreen
-	call PO_PromptInviteDecision
-	and a
-	jr z, .declined_trade
-	ld a, PO_CMD_SETREPLY
-	ld b, PO_REPLY_ACCEPT
-	call PO_ServerCommand
-	jr c, .handle_signal
-	jp .init_trade
-
-.declined_trade
-	ld a, PO_CMD_SETREPLY
-	ld b, PO_REPLY_REJECT
-	call PO_ServerCommand
-	jr c, .handle_signal
-	ld de, PO_TradeInviteDeclined
-	call PO_ShowInviteDeclinedMessage
+	ld hl, PO_TradeInviteDeclined
+	call PO_HandleIncomingInvite
+	jp c, .handle_signal
+	jmp nz, .init_trade
 	jp .get_user_list
 
 .got_battle_request
 	call PO_StorePendingInviteID
 	ld de, PO_BattleInviteHeader
-	call PO_DrawInviteScreen
-	call PO_PromptInviteDecision
-	and a
-	jr z, .declined_battle
-	ld a, PO_CMD_SETREPLY
-	ld b, PO_REPLY_ACCEPT
-	call PO_ServerCommand
-	jr c, .handle_signal
-	jp .init_battle
-
-.declined_battle
-	ld a, PO_CMD_SETREPLY
-	ld b, PO_REPLY_REJECT
-	call PO_ServerCommand
-	jr c, .handle_signal
-	ld de, PO_BattleInviteDeclined
-	call PO_ShowInviteDeclinedMessage
+	ld hl, PO_BattleInviteDeclined
+	call PO_HandleIncomingInvite
+	jp c, .handle_signal
+	jmp nz, .init_battle
 	jp .get_user_list
 .server_closed
 	hlcoord 1, 3
@@ -581,40 +555,8 @@ PO_PrepareUserListMenu:
 PO_RequestBattle:
 ; Request battle with user id b. Returns z if the request failed, c on signal
 	ld a, PO_CMD_BATTLEUSER
-	call PO_ServerCommand
-	jr c, .handle_signal
-
-	call PO_ClearInterface
-	hlcoord 1, 3
 	ld de, .AskingForBattle
-	call PlaceString
-	ld b, 0
-	call SafeCopyTilemapAtOnce
-
-.loop
-	; Check if a battle is to commence
-	ld a, [wPO_Content]
-	and a
-	jr z, .next_try
-	ret ; Commence battle
-.next_try
-	; There's no need to flood the server, wait 1s between requests
-	ld c, 60
-	call DelayFrames
-
-	; Wait for a reply
-	ld a, PO_CMD_SETREPLY
-	ld b, PO_REPLY_WAIT
-	call PO_ServerCommand
-	jr c, .handle_signal
-	jr .loop
-
-.handle_signal
-	ld a, b
-	cp PO_SIGNAL_ERROR ; cannot battle the user
-	ret z
-	scf
-	ret
+	jr PO_RequestLinkSession
 
 .AskingForBattle:
 	db    "Asking user to"
@@ -624,42 +566,42 @@ PO_RequestBattle:
 PO_RequestTrade:
 ; Request trade with user id b. Returns z if the request failed, c on signal
 	ld a, PO_CMD_TRADEUSER
-	call PO_ServerCommand
-	jr c, .handle_signal
+	ld de, PO_AskingForTrade
+	jr PO_RequestLinkSession
 
+PO_RequestLinkSession:
+	push de
+	call PO_ServerCommand
+	jr c, .handle_signal_initial
+	pop de
 	call PO_ClearInterface
 	hlcoord 1, 3
-	ld de, .AskingForTrade
 	call PlaceString
 	ld b, 0
 	call SafeCopyTilemapAtOnce
-
 .loop
-	; Check if a trade is to commence
 	ld a, [wPO_Content]
 	and a
 	jr z, .next_try
-	ret ; Commence trade
+	ret
 .next_try
-	; There's no need to flood the server, wait 1s between requests
 	ld c, 60
 	call DelayFrames
-
-	; Wait for a reply
 	ld a, PO_CMD_SETREPLY
 	ld b, PO_REPLY_WAIT
 	call PO_ServerCommand
-	jr c, .handle_signal
+	jr c, .handle_signal_runtime
 	jr .loop
-
-.handle_signal
+.handle_signal_initial
+	pop de
+.handle_signal_runtime
 	ld a, b
-	cp PO_SIGNAL_ERROR ; cannot trade the user
+	cp PO_SIGNAL_ERROR
 	ret z
 	scf
 	ret
 
-.AskingForTrade:
+PO_AskingForTrade:
 	db    "Asking user to"
 	next1 "trade…"
 	done
@@ -756,6 +698,42 @@ PO_FindInviteNamePointer:
 	ret
 .not_found
 	scf
+	ret
+
+PO_HandleIncomingInvite:
+; de = header string pointer, hl = decline string pointer
+	push hl
+	call PO_DrawInviteScreen
+	call PO_PromptInviteDecision
+	pop hl
+	and a
+	jr z, .declined
+.accepted
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_ACCEPT
+	call PO_ServerCommand
+	ret c
+.wait_for_ids
+	ld a, [wPO_Content]
+	and a
+	jr nz, .got_ids
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_WAIT
+	call PO_ServerCommand
+	ret c
+	jr .wait_for_ids
+.got_ids
+	ld a, 1
+	ret
+.declined
+	ld a, PO_CMD_SETREPLY
+	ld b, PO_REPLY_REJECT
+	call PO_ServerCommand
+	ret c
+	ld d, h
+	ld e, l
+	call PO_ShowInviteDeclinedMessage
+	xor a
 	ret
 
 PO_ShowInviteDeclinedMessage:

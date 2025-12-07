@@ -20,7 +20,7 @@ This document freezes the protocol spoken between the Polished Online TCP server
 | `04` | `PO_CMD_GETINFO` | `<target_id>, <chunk_id>` | `04, <chunk_bytes>` | Returns the exact bytes previously uploaded via `SETINFO`. Chunk selection matches uploads.
 | `05` | `PO_CMD_LISTUSERS` | none | `05, <count>, ...entries` | Each entry is `<user_id>, <ot_id_hi>, <ot_id_lo>, <NAME_LENGTH bytes player name>` for every connected user.
 | `06` | `PO_CMD_BATTLEUSER` | `<target_id>` | `06, 0` or `06, <host_id>, <client_id>` | Returns `0` until both sides accept. Errors return `PO_SIGNAL_ERROR, <err>`.
-| `07` | `PO_CMD_TRADEUSER` | `<target_id>` | `07, 0` or `07, <host_id>, <client_id>` | Identical flow to `BATTLEUSER`, but sets `battle.is_trade = True`.
+| `07` | `PO_CMD_TRADEUSER` | `<target_id>` | `07, 0` or `07, <host_id>, <client_id>` | Identical flow to `BATTLEUSER`, but marks the session `link_type=TRADE`.
 | `08` | `PO_CMD_GETBATTLE` | *not implemented* | *not implemented* | Placeholder only.
 | `09` | `PO_CMD_BATTLETURN` | `<action_byte>` | `09, <turn_byte>, <RNG stream?>` | Solicits or delivers battle RNG results. See "Battle/Trade flow".
 | `0A` | `PO_CMD_TRADETURN` | `<action_byte>` | `0A, <turn_byte>` | Mirrors battle turns but sends single trade action bytes.
@@ -61,7 +61,7 @@ All info transfers mirror each other. Requests include `<chunk_id>` immediately 
 
 ## Battle / Trade flow quirks
 
-- Battle and trade invites share the same `Battle` object pool (`users[userid].battleid`). Trades merely flip `battle.is_trade`. A `battleid` of `-1` flags "busy trading" and blocks new invites.
+- Battle and trade invites share the same `Battle` object pool (`users[userid].battleid`) but track their intent via `battle.link_type`. A `battleid` of `-1` still flags "busy trading" and blocks new invites.
 - Acceptance requires the challenger to mark themselves ready via `BATTLEUSER`/`TRADEUSER` (this sets `host_accepted=True`) **and** the invitee to explicitly call `SETREPLY PO_REPLY_ACCEPT` after seeing the ROM prompt. Until both `host_accepted` and `client_accepted` are true, the server keeps returning `0` to invite commands.
 - When the invitee next polls and receives `PO_SIGNAL_ASK*`, the ROM now opens an accept/decline prompt showing the challenger’s user ID/name. Choosing “Accept” issues `SETREPLY PO_REPLY_ACCEPT`; choosing “Decline” issues `SETREPLY PO_REPLY_REJECT`. Legacy ROMs that still mirror `BATTLEUSER` remain compatible.
 - The server will re-send asynchronous `PO_SIGNAL_ASK*` only when the invitee next issues `LISTUSERS`, `BATTLEUSER`, or `TRADEUSER`. There is no idle push.
@@ -107,7 +107,7 @@ These notes should be mirrored in future implementations and regression fixtures
 
 ### Trade invite flow
 
-Trades reuse the same structures with `battle.is_trade=True`:
+Trades reuse the same structures with `battle.link_type=LinkType.TRADE`:
 
 1. Challenger issues `TRADEUSER <target>` and, like battles, loops by sending `SETREPLY PO_REPLY_WAIT` while awaiting the opponent.
 2. Invitee polls `LISTUSERS`, receives `PO_SIGNAL_ASKTRADE`, and sees the same accept/decline prompt with the challenger’s identity.

@@ -5,7 +5,7 @@ from unittest.mock import patch
 import pytest
 
 from netcode import constants
-from netcode.models import Battle, User
+from netcode.models import Battle, LinkType, User
 
 
 def _fill(buffer: bytearray, start: int = 0) -> None:
@@ -72,7 +72,7 @@ def test_battle_pending_input_emits_turn_and_rng():
 
 
 def test_trade_pending_input_replays_log_entries():
-    battle = Battle(battle_id=3, host_id=5, client_id=6, is_trade=True)
+    battle = Battle(battle_id=3, host_id=5, client_id=6, link_type=LinkType.TRADE)
     battle.log = bytearray([0x11, 0x22, 0x33])
     battle.host_offset = 3
     battle.client_offset = 0

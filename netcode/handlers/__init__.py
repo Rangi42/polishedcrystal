@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Callable, Dict
 
 from .. import constants
-from . import battle, info, lists, trade
+from . import battle, info, link, lists, trade
 from .base import CommandContext
 from .common import error_response
 
@@ -23,7 +23,7 @@ COMMAND_HANDLERS: Dict[constants.Command, Handler] = {
     constants.Command.TRADEUSER: trade.handle_trade_user,
     constants.Command.BATTLETURN: battle.handle_battle_turn,
     constants.Command.TRADETURN: trade.handle_trade_turn,
-    constants.Command.SETREPLY: battle.handle_set_reply,
+    constants.Command.SETREPLY: link.handle_set_reply,
     constants.Command.GETINFO_VER: info.handle_getinfo_version,
 }
 
@@ -40,6 +40,7 @@ __all__ = [
     "dispatch",
     "battle",
     "info",
+    "link",
     "lists",
     "trade",
 ]

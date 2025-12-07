@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Sequence
 
 from . import constants
-from .handlers import battle as battle_handlers
+from .handlers import link as link_handlers
 from .handlers import dispatch as dispatch_command
 from .handlers.base import CommandContext
 from .handlers.common import error_response
@@ -120,7 +120,13 @@ class ClientWorker(threading.Thread):
         try:
             while True:
                 frame = bytearray()
-                ensure_length(self.session.sock, frame, 1, chunk_size=self.settings.recv_chunk)
+                try:
+                    ensure_length(self.session.sock, frame, 1, chunk_size=self.settings.recv_chunk)
+                except TimeoutError:
+                    # Idle clients (thinking between turns) can hit read timeouts; keep the session alive.
+                    self.metrics.incr("connections.timeout")
+                    self.logger.debug("Client read timed out; continuing")
+                    continue
                 command_value = frame[0]
                 try:
                     command = constants.Command(command_value)
@@ -138,7 +144,7 @@ class ClientWorker(threading.Thread):
 
                 ctx.log(logging.DEBUG, "command received", command=command)
                 self.metrics.incr("commands.received", command=command.name)
-                signal = battle_handlers.maybe_pending_signal(ctx, command, frame)
+                signal = link_handlers.maybe_pending_signal(ctx, command, frame)
                 if signal is not None:
                     ctx.log(logging.INFO, "sent pending signal", command=command)
                     self.metrics.incr("signals.sent", command=command.name)

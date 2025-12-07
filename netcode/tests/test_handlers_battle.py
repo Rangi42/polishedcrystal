@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from netcode import constants
-from netcode.handlers import battle
+from netcode.handlers import battle, link
 from netcode.handlers.base import CommandContext
 from netcode.models import Session
 from netcode.settings import Settings
@@ -33,7 +33,7 @@ def test_handle_set_reply_reject_clears_battle() -> None:
     host_id, client_id, battle_id = _setup_battle(state)
     ctx = _build_ctx(state, client_id)
 
-    response = battle.handle_set_reply(
+    response = link.handle_set_reply(
         ctx,
         bytearray([constants.Command.SETREPLY, constants.Reply.REJECT]),
     )
@@ -51,7 +51,7 @@ def test_handle_set_reply_host_rejects_clears_battle() -> None:
     host_id, client_id, battle_id = _setup_battle(state)
     ctx = _build_ctx(state, host_id)
 
-    response = battle.handle_set_reply(
+    response = link.handle_set_reply(
         ctx,
         bytearray([constants.Command.SETREPLY, constants.Reply.REJECT]),
     )
@@ -67,13 +67,13 @@ def test_handle_set_reply_wait_after_reject_returns_error() -> None:
     state = ServerState()
     host_id, client_id, _ = _setup_battle(state)
     reject_ctx = _build_ctx(state, client_id)
-    battle.handle_set_reply(
+    link.handle_set_reply(
         reject_ctx,
         bytearray([constants.Command.SETREPLY, constants.Reply.REJECT]),
     )
 
     wait_ctx = _build_ctx(state, host_id)
-    response = battle.handle_set_reply(
+    response = link.handle_set_reply(
         wait_ctx,
         bytearray([constants.Command.SETREPLY, constants.Reply.WAIT]),
     )

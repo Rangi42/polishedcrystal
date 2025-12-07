@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import secrets
 from dataclasses import dataclass, field
+from enum import Enum
 from threading import RLock
 from typing import ByteString, Optional
 
@@ -15,6 +16,12 @@ _OT_BLOCK_BYTES = constants.NAME_LENGTH * constants.PARTY_LENGTH
 _NICK_BLOCK_BYTES = constants.MON_NAME_LENGTH * constants.PARTY_LENGTH
 _MAIL_BLOCK_BYTES = constants.MAIL_STRUCT_LENGTH * constants.PARTY_LENGTH
 _MAIL_CHUNK_OFFSET = constants.MAIL_STRUCT_LENGTH * 5
+
+class LinkType(Enum):
+    """Different link session flavours supported by the protocol."""
+
+    BATTLE = "battle"
+    TRADE = "trade"
 
 
 @dataclass(slots=True)
@@ -151,7 +158,7 @@ class Battle:
     battle_id: int
     host_id: int
     client_id: int
-    is_trade: bool = False
+    link_type: LinkType = LinkType.BATTLE
     host_accepted: bool = False
     client_accepted: bool = False
     host_action: int = 0xFF
@@ -287,6 +294,14 @@ class Battle:
     def _ensure_participant(self, user_id: int) -> None:
         if user_id not in (self.host_id, self.client_id):
             raise ValueError(f"user {user_id} is not part of battle {self.battle_id}")
+
+    @property
+    def is_trade(self) -> bool:
+        return self.link_type is LinkType.TRADE
+
+    @is_trade.setter
+    def is_trade(self, value: bool) -> None:
+        self.link_type = LinkType.TRADE if value else LinkType.BATTLE
 
 
 @dataclass(slots=True)

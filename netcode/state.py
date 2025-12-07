@@ -6,11 +6,11 @@ from dataclasses import dataclass, field
 from threading import RLock
 from typing import Callable, Dict, Iterable, Optional
 
-from .models import Battle, Session, User
+from .models import Battle, LinkType, Session, User
 from .storage import BattleRepository, TradeRepository, UserRepository, WonderTradeQueue
 
 UserFactory = Callable[[int], User]
-BattleFactory = Callable[[int, int, int, bool], Battle]
+BattleFactory = Callable[[int, int, int, LinkType], Battle]
 
 
 @dataclass
@@ -68,14 +68,14 @@ class ServerState:
         host_id: int,
         client_id: int,
         *,
-        is_trade: bool = False,
+        link_type: LinkType = LinkType.BATTLE,
         factory: Optional[BattleFactory] = None,
     ) -> Battle:
-        creator = factory or self.battle_factory or (lambda bid, h, c, is_trade=False: Battle(bid, h, c, is_trade=is_trade))
+        creator = factory or self.battle_factory or (lambda bid, h, c, link_type=LinkType.BATTLE: Battle(bid, h, c, link_type=link_type))
         with self.lock:
             battle_id = self._next_battle_id
             self._next_battle_id += 1
-        battle = creator(battle_id, host_id, client_id, is_trade)
+        battle = creator(battle_id, host_id, client_id, link_type)
         with self.battles_lock:
             self.battles[battle_id] = battle
         if self.battle_repository is not None:

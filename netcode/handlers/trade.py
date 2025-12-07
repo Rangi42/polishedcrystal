@@ -7,21 +7,22 @@ import secrets
 
 from .. import constants
 from ..io import ResponseBuilder
-from . import battle
+from ..models import LinkType
+from . import link
 from .base import CommandContext
 from .common import error_response
 
 
 def handle_trade_user(ctx: CommandContext, data: bytearray) -> bytes:
     ctx.log(logging.DEBUG, "trade invite requested", command=constants.Command.TRADEUSER)
-    return battle.matchmaking_request(ctx, data, is_trade=True)
+    return link.matchmaking_request(ctx, data, link_type=LinkType.TRADE)
 
 
 def handle_trade_turn(ctx: CommandContext, data: bytearray) -> bytes:
     user = ctx.current_user()
     ctx.require(data, 2)
     action = data[1]
-    battle_obj = battle.get_active_battle(ctx, user.user_id)
+    battle_obj = link.get_active_session(ctx, user.user_id)
     if battle_obj is None:
         ctx.log(
             logging.WARNING,

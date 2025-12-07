@@ -123,6 +123,7 @@ class FilesystemBattleRepository(BattleRepository):
             "battle_id": battle.battle_id,
             "host_id": battle.host_id,
             "client_id": battle.client_id,
+            "link_type": battle.link_type.value,
             "is_trade": battle.is_trade,
         }
         self._meta_path(battle.battle_id).write_text(json.dumps(payload, indent=2))
