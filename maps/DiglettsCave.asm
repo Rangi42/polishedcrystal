@@ -36,12 +36,14 @@ DiglettsCaveFossilManiacScript:
 	iffalse_jumpopenedtext .NoItemText
 	special GetFossilManiacPrice
 	iffalse_jumpopenedtext .WrongItemText
+	special ItemManiac_SelectQuantity
+	iffalse_jumpopenedtext .NoItemText
+	special MultiplyMoneyByQuantity
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .NoItemText
-	readmem wCurItem
-	takeitem ITEM_FROM_MEM
+	special TakeItemFromMemWithQuantity
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
