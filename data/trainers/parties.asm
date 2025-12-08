@@ -8694,7 +8694,6 @@ SECTION "PiersGroup", ROMX
 PiersGroup:
 
 	def_trainer_class PIERS
-	
 	def_trainer 1, "Piers"
 	tr_mon 16, MURKROW, MALE
 		tr_extra SUPER_LUCK
