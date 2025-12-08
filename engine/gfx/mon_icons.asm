@@ -118,7 +118,7 @@ SetFlyMonColor:
 	ld hl, wPalFlags
 	push hl
 	set USE_DAYTIME_PAL_F, [hl]
-	farcall CopySpritePal
+	farcall CopySpritePalHandler
 	pop hl
 	res USE_DAYTIME_PAL_F, [hl]
 	ld a, 3 ; OBJ 3
@@ -159,7 +159,7 @@ SetOWFlyMonColor:
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	farcall CopySpritePal
+	farcall CopySpritePalHandler
 	pop bc
 	ldh a, [hUsedOAMIndex]
 	cp (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS - 1) * OBJ_SIZE
