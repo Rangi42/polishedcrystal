@@ -171,9 +171,8 @@ GetFishLocations:
 	ld d, 3 ; iterator
 	ld a, e
 	cp DEXAREA_OLD_ROD * 2
-	jr z, .got_iterator
+	jr z, .checktable_loop
 	inc d
-.got_iterator
 .checktable_loop
 	; Return carry if d==0 before decrement
 	ld a, d
