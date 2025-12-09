@@ -8090,7 +8090,7 @@ RileyGroup:
 		tr_extra GUTS, ATK_UP_SATK_DOWN
 		tr_evs 252 Atk, 252 HP, 4 Def
 		tr_moves CLOSE_COMBAT, STONE_EDGE, FACADE, MACH_PUNCH
-	tr_mon 74, DRAGONITE @ CHOICE_BAND
+	tr_mon 74, DRAGONITE @ CHOICE_BAND, MALE
 		tr_extra INNER_FOCUS, ATK_UP_SATK_DOWN
 		tr_evs 252 Atk, 252 Spe, 4 Def
 		tr_moves OUTRAGE, EARTHQUAKE, STONE_EDGE, EXTREMESPEED
@@ -8106,7 +8106,7 @@ RileyGroup:
 		tr_extra MOTOR_DRIVE, ATK_UP_SATK_DOWN
 		tr_evs 252 Atk, 252 Spe, 4 HP
 		tr_moves WILD_CHARGE, CLOSE_COMBAT, ICE_PUNCH, EARTHQUAKE
-	tr_mon 72, MAMOSWINE @ LOADED_DICE
+	tr_mon 72, MAMOSWINE @ LOADED_DICE, MALE
 		tr_extra THICK_FAT, SPE_UP_SATK_DOWN
 		tr_evs 252 Atk, 252 Spe, 4 HP
 		tr_moves ICICLE_SPEAR, ROCK_BLAST, EARTHQUAKE, ICE_SHARD
@@ -8118,27 +8118,61 @@ BuckGroup:
 
 	def_trainer_class BUCK
 	def_trainer 1, "Buck"
-	tr_mon 65, UMBREON
-		tr_evs 252 Def
-	tr_mon 64, GOLEM
-		tr_evs 252 Def
-	tr_mon 62, POLIWRATH
-		tr_evs 252 Def
-	tr_mon 63, FORRETRESS
-		tr_evs 252 Def
-	tr_mon 62, SKARMORY
-		tr_evs 252 Def
-	tr_mon 63, STEELIX
-		tr_evs 252 Def
+if DEF(FAITHFUL)
+	tr_mon 65, UMBREON @ LEFTOVERS, MALE
+		tr_extra SYNCHRONISE, DEF_UP_SATK_DOWN
+else
+		tr_extra MAGIC_GUARD, DEF_UP_SATK_DOWN
+endc
+		tr_evs 252 Def, 36 HP
+		tr_moves TOXIC, HEALINGLIGHT, CURSE, SUCKER_PUNCH
+	tr_mon 64, GOLEM @ ASSAULT_VEST, MALE | ALOLAN_FORM
+		tr_extra MAGNET_PULL, DEF_UP_SPE_DOWN
+		tr_evs 252 Def, 36 SDf
+		tr_moves THUNDER_PUNCH, ROCK_SLIDE, FIRE_PUNCH, GYRO_BALL
+	tr_mon 62, POLIWRATH @ DAMP_ROCK, MALE
+		tr_extra SWIFT_SWIM, SPE_UP_SATK_DOWN
+		tr_evs 252 Def, 36 Atk
+		tr_moves RAIN_DANCE, WATERFALL, BRICK_BREAK, ICE_PUNCH
+	tr_mon 63, FORRETRESS @ ROCKY_HELMET, MALE
+		tr_extra STURDY, SDEF_UP_SATK_DOWN
+		tr_evs 252 Def, 36 SDe
+		tr_moves GYRO_BALL, SPIKES, LIGHT_SCREEN, VOLT_SWITCH
+	tr_mon 62, SKARMORY @ RED_CARD, MALE
+		tr_extra STURDY, SDEF_UP_SATK_DOWN
+		tr_evs 252 Def, 36 HP
+		tr_moves SPIKES, DRILL_PECK, ROAR, ROOST
+	tr_mon 63, STEELIX @ BLUNDRPOLICY
+		tr_extra STURDY, SPE_UP_SATK_DOWN
+		tr_evs 252 Def, 36 Spe
+		tr_moves IRON_TAIL, BULLDOZE, STONE_EDGE, CRUNCH
 	end_trainer
 
 	def_trainer 2, "Buck"
-	tr_mon 75, GOLEM
-	tr_mon 72, POLIWRATH
-	tr_mon 73, FORRETRESS
-	tr_mon 72, SKARMORY
-	tr_mon 73, STEELIX
-	tr_mon 74, CLOYSTER
+	tr_mon 75, GOLEM @ CHOICE_BAND, MALE | ALOLAN_FORM
+		tr_extra GALVANIZE, DEF_UP_SATK_DOWN
+		tr_evs 252 Def, 252 Atk, 4 HP
+		tr_moves EXPLOSION, RETURN, STONE_EDGE, EARTHQUAKE
+	tr_mon 72, POLIWRATH @ SITRUS_BERRY, MALE
+		tr_extra SWIFT_SWIM, SPE_UP_SATK_DOWN
+		tr_evs 252 Def, 156 Atk, 100 Spe
+		tr_moves RAIN_DANCE, WATERFALL, CLOSE_COMBAT, AQUA_JET
+	tr_mon 73, FORRETRESS @ LIGHT_CLAY, MALE
+		tr_extra STURDY, SDEF_UP_SATK_DOWN
+		tr_evs 252 Def, 156 HP, 100 SDe
+		tr_moves GYRO_BALL, SPIKES, LIGHT_SCREEN, VOLT_SWITCH
+	tr_mon 72, SKARMORY @ RED_CARD, MALE
+		tr_extra STURDY, SDEF_UP_SATK_DOWN
+		tr_evs 252 Def, 252 HP, 4 SDe
+		tr_moves TOXIC, DRILL_PECK, ROAR, ROOST
+	tr_mon 73, STEELIX @ WEAKPOLICY, MALE
+		tr_extra STURDY, SDEF_UP_SATK_DOWN
+		tr_evs 252 Def, 252 SDe, 4 HP
+		tr_moves IRON_HEAD, EARTHQUAKE, ROCK_SLIDE, CURSE
+	tr_mon 74, CLOYSTER @ WHITE_HERB, MALE
+		tr_extra SHELL_ARMOR, SPE_UP_ATK_DOWN
+		tr_evs 252 Def, 252 SAtk, 4 Spe
+		tr_moves SHELL_SMASH, ICE_BEAM, HYDRO_PUMP, HP_GRASS
 	end_trainer
 
 
