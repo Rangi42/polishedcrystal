@@ -4823,6 +4823,9 @@ UpdateMoveData:
 	push af
 
 	; Write to move selection
+	; Support for duplicate moves: If wCur[Enemy]MoveNum already points to the
+	; current move, preserve it. This allows trainers to have multiple instances
+	; of the same move (e.g., Lance's Dragonite with two Hyper Beams).
 	ld c, a
 	ld hl, wBattleMonMoves
 	call GetUserMonAttr
