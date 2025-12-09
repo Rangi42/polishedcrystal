@@ -4832,7 +4832,6 @@ UpdateMoveData:
 
 	; Check if the current move number already points to the correct move
 	push hl
-	push bc
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wCurMoveNum
@@ -4840,20 +4839,19 @@ UpdateMoveData:
 	ld hl, wCurEnemyMoveNum
 .check_current_move_num
 	ld a, [hl]
-	ld b, a
-	pop bc
+	ld d, a
 	pop hl
 
 	; If current move num is valid (0-3) and points to the current move, keep it
-	ld a, b
+	ld a, d
 	cp NUM_MOVES
 	jr nc, .search_for_move
 
 	; Check if moves[current_move_num] == current_move
 	push hl
 	push bc
-	ld c, b
 	ld b, 0
+	ld c, d
 	add hl, bc
 	ld a, [hl]
 	pop bc
