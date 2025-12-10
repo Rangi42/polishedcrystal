@@ -22,7 +22,7 @@ FishGroups:
 	fishgroup 60 percent, (60 + 3) percent, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
 	fishgroup 60 percent, (60 + 3) percent, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
 	fishgroup 65 percent, (65 + 5) percent, .Hisuian_Qwilfish_Old, .Hisuian_Qwilfish_Good, .Hisuian_Qwilfish_Super
-	fishgroup 65 percent, (65 + 5) percent, .Staryu_Old,            .Staryu_Good,            .Staryu_Super
+	fishgroup 65 percent, (65 + 5) percent, .Staryu_Old,           .Staryu_Good,           .Staryu_Super
 	assert_table_length NUM_FISHGROUPS
 
 MACRO fishentry
