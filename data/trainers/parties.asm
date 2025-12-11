@@ -8114,7 +8114,7 @@ BuckGroup:
 	def_trainer 1, "Buck"
 	tr_mon 65, UMBREON @ LEFTOVERS, MALE
 if DEF(FAITHFUL)
-		tr_extra SYNCHRONISE, DEF_UP_SATK_DOWN
+		tr_extra SYNCHRONIZE, DEF_UP_SATK_DOWN
 else
 		tr_extra MAGIC_GUARD, DEF_UP_SATK_DOWN
 endc
