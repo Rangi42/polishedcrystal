@@ -972,9 +972,8 @@ LoadMapPals:
 	ld hl, wPalFlags
 	bit MAP_CONNECTION_PAL_F, [hl]
 	res MAP_CONNECTION_PAL_F, [hl]
-	jr nz, .skip_clearing_obj_pals
+	; Always clear saved object palettes to ensure they reload correctly
 	farcall ClearSavedObjPals
-.skip_clearing_obj_pals
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
