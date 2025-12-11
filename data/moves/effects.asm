@@ -2102,3 +2102,4 @@ FlareBlitz:
 	burntarget
 	posthiteffects
 	endmove
+	endmove
