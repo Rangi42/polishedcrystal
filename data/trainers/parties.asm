@@ -8114,7 +8114,7 @@ BuckGroup:
 	def_trainer 1, "Buck"
 	tr_mon 65, UMBREON @ LEFTOVERS, MALE
 if DEF(FAITHFUL)
-		tr_extra SYNCHRONISE, DEF_UP_SATK_DOWN
+		tr_extra SYNCHRONIZE, DEF_UP_SATK_DOWN
 else
 		tr_extra MAGIC_GUARD, DEF_UP_SATK_DOWN
 endc
@@ -8127,7 +8127,11 @@ endc
 	tr_mon 62, POLIWRATH @ DAMP_ROCK, MALE
 		tr_extra SWIFT_SWIM, SPE_UP_SATK_DOWN
 		tr_evs 252 Def, 36 Atk
+if DEF(FAITHFUL)
+		tr_moves RAIN_DANCE, WATERFALL, CROSS_CHOP, ICE_PUNCH
+else
 		tr_moves RAIN_DANCE, WATERFALL, BRICK_BREAK, ICE_PUNCH
+endc
 	tr_mon 63, FORRETRESS @ ROCKY_HELMET, MALE
 		tr_extra STURDY, SDEF_UP_SATK_DOWN
 		tr_evs 252 Def, 36 SDf
