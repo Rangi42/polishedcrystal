@@ -145,7 +145,7 @@ BugsyGroup:
 		tr_evs 64 Atk
 		tr_moves FORESIGHT, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
 	tr_mon 17, SCYTHER, FEMALE
-		tr_extra TECHNICIAN
+		tr_extra SWARM
 		tr_evs 64 Atk
 		tr_moves QUICK_ATTACK, LEER, PURSUIT, U_TURN
 	end_trainer
@@ -1446,16 +1446,7 @@ LeafGroup:
 		tr_extra WATER_ABSORB, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves ICE_BEAM, THUNDERBOLT, SURF, SHELL_SMASH
-	tr_mon 100, VENUSAUR @ MIRACLE_SEED, FEMALE
-if DEF(FAITHFUL)
-		tr_extra THICK_FAT, SPE_UP_ATK_DOWN
-		tr_evs 252 HP, 4 Def, 252 SAt
-		tr_moves GIGA_DRAIN, SLUDGE_BOMB, GROWTH, SLEEP_POWDER
-else
-		tr_extra CHLOROPHYLL, SPE_UP_ATK_DOWN
-		tr_evs 252 HP, 4 Def, 252 SAt
-		tr_moves GIGA_DRAIN, SLUDGE_BOMB, GROWTH, HP_FIRE
-endc
+	
 if DEF(FAITHFUL)
 	tr_mon 98, MOLTRES @ LIFE_ORB, FEMALE
 		tr_extra FLAME_BODY, SPE_UP_ATK_DOWN 
@@ -1467,6 +1458,16 @@ else
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves FIRE_BLAST, AIR_SLASH, SOLAR_BEAM, SUNNY_DAY
 endc
+	tr_mon 100, VENUSAUR @ MIRACLE_SEED, FEMALE
+if DEF(FAITHFUL)
+		tr_extra THICK_FAT, SPE_UP_ATK_DOWN
+		tr_evs 252 HP, 4 Def, 252 SAt
+		tr_moves GIGA_DRAIN, SLUDGE_BOMB, GROWTH, SLEEP_POWDER
+else
+		tr_extra CHLOROPHYLL, SPE_UP_ATK_DOWN
+		tr_evs 252 HP, 4 Def, 252 SAt
+		tr_moves GIGA_DRAIN, SLUDGE_BOMB, GROWTH, HP_FIRE
+endc
 	tr_mon 95, SYLVEON @ CHESTO_BERRY, FEMALE
 		tr_extra PIXILATE, DEF_UP_ATK_DOWN
 		tr_evs 252 HP, 4 SAt, 252 Def
@@ -1475,17 +1476,10 @@ endc
 		tr_extra ROCK_HEAD, SPE_UP_SATK_DOWN
 		tr_evs 252 Atk, 4 Def, 252 Spe
 		tr_moves ROCK_SLIDE, BRAVE_BIRD, EARTHQUAKE, HONE_CLAWS
-if DEF(FAITHFUL)
 	tr_mon 99, MEW @ LEFTOVERS, FEMALE 
 		tr_extra SPE_UP_ATK_DOWN
 		tr_evs 252 HP, 4 SAt, 252 Spe
 		tr_moves NASTY_PLOT, PSYCHIC_M, AURA_SPHERE, RECOVER
-else
-	tr_mon 99, MEW @ LEFTOVERS, FEMALE
-		tr_extra SPE_UP_ATK_DOWN
-		tr_evs 252 HP, 4 SAt, 252 Spe
-		tr_moves NASTY_PLOT, PSYCHIC_M, AURA_SPHERE, RECOVER
-endc
 end_trainer
 
 
