@@ -2102,3 +2102,6 @@ FlareBlitz:
 	burntarget
 	posthiteffects
 	endmove
+; TODO: Remove extra endmove below that was added as a hotfix
+; to fix Flare Blitz crashing the game when called by Metronome or Sleep Talk
+	endmove
