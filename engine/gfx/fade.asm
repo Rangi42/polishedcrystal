@@ -1,5 +1,10 @@
 MapConnOWFadePalettesInit::
 	farcall GetOvercastIndex
+	and a
+	jr z, .not_overcast
+	ld a, 1
+.not_overcast
+	inc a
 	ld b, a
 	ld a, [wPrevOvercastIndex]
 	cp b
