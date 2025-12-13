@@ -64,14 +64,7 @@ TrainerGroups:
 	dba HexManiacGroup
 	dba SageGroup
 	dba MediumGroup
-	dba KimonoGirl1Group
-	dba KimonoGirl2Group
-	dba KimonoGirl3Group
-	dba KimonoGirl4Group
-	dba KimonoGirl5Group
-	dba KimonoGirl6Group
-	dba KimonoGirl7Group
-	dba KimonoGirl8Group
+	dba KimonoGirlGroup
 	dba ElderGroup
 	dba SrAndJrGroup
 	dba CoupleGroup

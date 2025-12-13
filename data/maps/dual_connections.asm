@@ -11,22 +11,22 @@ MACRO dual_connection
 
 	map_id \2
 
-	if !STRCMP("\1", "north")
+	if "\1" === "north"
 		db UP
 		dw wXCoord
 		db \3
 		dw wNorthMapConnection
-	elif !STRCMP("\1", "south")
+	elif "\1" === "south"
 		db DOWN
 		dw wXCoord
 		db \3
 		dw wSouthMapConnection
-	elif !STRCMP("\1", "west")
+	elif "\1" === "west"
 		db LEFT
 		dw wYCoord
 		db \3
 		dw wWestMapConnection
-	elif !STRCMP("\1", "east")
+	elif "\1" === "east"
 		db RIGHT
 		dw wYCoord
 		db \3

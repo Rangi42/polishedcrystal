@@ -301,6 +301,11 @@ SummaryScreen_MoveInfoJoypad:
 	or b
 	ret nz
 	; TODO support battle swapping?
+
+	; Disallow move swapping if we can't update storage boxmon data.
+	farcall UpdateStorageBoxMonFromTemp
+	ret nz
+
 	ld a, [wSummaryMoveSwap]
 	inc a
 	jr nz, .swap_moves

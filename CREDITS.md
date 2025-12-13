@@ -33,7 +33,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * vulcandth for adding compatibility to build the virtual console patches.
 * VermilionCosmos for various bug fixes and improvements (including PC cursor adjustments, the TownMap_InitFlyPossible fix, making Throat Spray work for non-damaging moves, and palette fixes after swapping Pokémon).
 * Emi for the revamped summary screen.
-* Emily Rose Ploszaj for data and macro migrations (Evos/Attacks) and related improvements.
+* Emi for data and macro migrations (Evos/Attacks) and related improvements.
 * rofl0r for DayCare UX improvements and small bugfixes.
 * TAG1Kilo, walkawayy, Penndragyn37, Phoenix (DarkPhoenix911), Super (bmwalshy), The Chosen Lalafell (ddeeringwater), and other recent contributors for smaller fixes and text tweaks.
 

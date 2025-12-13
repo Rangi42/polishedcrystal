@@ -219,8 +219,27 @@ BattleTurn:
 	ret nz
 
 	call DeferredSwitch
+	call ResetAbilityIgnorance
+
 	ld a, [wBattleEnded]
 	and a
+	ret
+
+ResetAbilityIgnorance:
+; Resets the "ignoring foe's ability" flag.
+; When move sequence order is replicated, this dedicated routine will no longer
+; be necessary, because it will be an inherent part of the move sequence.
+	ldh a, [hBattleTurn]
+	and a
+	ld a, ~MOVESTATE_IGNOREABIL
+	jr z, .got_movestate
+	swap a
+.got_movestate
+	push hl
+	ld hl, wMoveState
+	and [hl]
+	ld [hl], a
+	pop hl
 	ret
 
 SafariBattleTurn:
@@ -267,7 +286,7 @@ HandleBerserkGene:
 	farcall ConsumeUserItem
 
 	; Own Tempo prevents confusion. Safeguard, however, doesn't.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp OWN_TEMPO
 	ret z
 
@@ -361,7 +380,7 @@ GetSpeed::
 	call GetBattleVar
 	bit PAR, a
 	jr z, .paralyze_done
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp QUICK_FEET
 	ln a, 1, 2 ; x0.5
 	call nz, MultiplyAndDivide
@@ -643,7 +662,7 @@ GetMovePriority:
 .got_priority
 	xor $80 ; treat it as a signed byte
 	ld b, a
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp PRANKSTER
 	jr nz, .no_priority
 	ld a, BATTLE_VARS_MOVE_CATEGORY
@@ -859,7 +878,7 @@ ForceDeferredSwitch:
 	call SwitchTurn
 
 	; Suction Cups can prevent this item from activating.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp SUCTION_CUPS
 	jr nz, .items_done
 
@@ -978,14 +997,7 @@ ForceDeferredSwitch:
 
 	call GetUserSwitchTarget
 	call SendInUserPkmn
-	ld a, [wDeferredSwitch]
-	cp 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_FORCED
-	jr nz, .regular_spikes
-	call SpikesDamage_CheckMoldBreaker
-	jr .done_spikes
-.regular_spikes
 	call SpikesDamage
-.done_spikes
 	call RunEntryAbilities
 
 .all_done
@@ -1741,7 +1753,7 @@ LeppaRestorePP:
 
 DealDamageToOpponent:
 ; ONLY runs from attacking damage.
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp BERSERK
 	jr z, .berserk
 	call SwitchTurn
@@ -1892,15 +1904,17 @@ SubtractHP:
 HandleUserHealingItems:
 	call HasUserFainted
 	ret z
+	push bc
+	call UseHeldStatusHealingItem
+	call UseConfusionHealingItem
+	pop bc
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_PENDING_ITEMLOSS, a
 	ret nz
 	push bc
 	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry
-	call UseConfusionHealingItem
 	pop bc
 	ret
 
@@ -2198,7 +2212,7 @@ SuppressUserAbilities:
 
 	; Unless opponent also has Neutralizing Gas or Unnerve, (re-)run its
 	; entry abilities. Yes, this means that it might run more than once.
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp NEUTRALIZING_GAS
 	ret z
 	cp UNNERVE
@@ -3266,10 +3280,10 @@ RunBothEntryAbilities:
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
 	; Only show Neutralizing Gas message once.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp NEUTRALIZING_GAS
 	jr nz, .no_double_gas
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp NEUTRALIZING_GAS
 	jr nz, .no_double_gas
 	ldh a, [hBattleTurn]
@@ -3302,7 +3316,7 @@ RunEntryAbilities:
 	call GetTrueUserAbility
 	cp TRACE
 	ret z ; trace failed, so don't check opponent trace
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp TRACE
 	ret nz
 	; invert whose turn it is to properly handle abilities.
@@ -3310,18 +3324,8 @@ RunEntryAbilities:
 	farcall RunEntryAbilitiesInner
 	jmp SwitchTurn
 
-SpikesDamage_CheckMoldBreaker:
-; Called when a Pokémon with Mold Breaker uses Roar/Whirlwind.
-; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
-; but can't be checked unconditionally since other kind of switches ignore MB as usual.
-	call SwitchTurn
-	call GetOpponentAbilityAfterMoldBreaker
-	ld b, a
-	call SwitchTurn
-	ld c, 0
-	jr SpikesDamage_GotAbility
 SpikesDamage:
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	ld b, a
 	ld c, 1
 SpikesDamage_GotAbility:
@@ -3330,10 +3334,10 @@ SpikesDamage_GotAbility:
 	push bc
 	call SetParticipant
 	ld d, 0
-	farcall CheckAirborne_GotAbility
+	farcall CheckAirborne
 	pop bc
 	pop de
-	jmp nz, HandleAirBalloon
+	jr nz, .end_hazards
 
 	push bc
 	predef GetUserItemAfterUnnerve
@@ -3351,7 +3355,9 @@ SpikesDamage_GotAbility:
 	push hl
 	call .Spikes
 	pop hl
-	jr .ToxicSpikes
+	call .ToxicSpikes
+.end_hazards
+	jmp HandleEntryItems
 
 .Spikes:
 	ld a, b
@@ -3444,12 +3450,17 @@ SpikesDamage_GotAbility:
 .poststatus_done
 	jmp SwitchTurn
 
-HandleAirBalloon:
-; prints air balloon msg and returns z if we have air balloon
+HandleEntryItems:
+; Handles items at battle start or send-in.
 	farcall GetUserItem
 	ld a, b
 	cp HELD_AIR_BALLOON
+	jr z, .air_balloon
+	cp HELD_ROOM_SERVICE
 	ret nz
+	farjp RoomServiceItem
+
+.air_balloon
 	call GetCurItemName
 	ld hl, NotifyAirBalloonText
 	call StdBattleTextbox
@@ -3466,7 +3477,17 @@ PursuitSwitch:
 	call GetBattleVar
 	cp EFFECT_PURSUIT
 	ret nz
+
+	; Pursuit should ignore any prior ability ignorance if present.
+	ld a, [wMoveState]
+	push af
+	call SwitchTurn
+	call ResetAbilityIgnorance
+	call SwitchTurn
 	call PerformMove
+	pop af
+	ld [wMoveState], a
+	call ResetAbilityIgnorance
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld [hl], 0
@@ -3515,7 +3536,7 @@ DoStealStatBoostBerry:
 QuarterPinchOrGluttony::
 ; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
 	call GetQuarterMaxHP
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp GLUTTONY
 	call z, GetHalfMaxHP
 	call CompareHP
@@ -4586,7 +4607,7 @@ UserCanSwitch:
 	cp HELD_SHED_SHELL
 	ret z
 if !DEF(FAITHFUL)
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp RUN_AWAY
 	ret z
 endc
@@ -4838,7 +4859,7 @@ endr
 	jr .print_inescapable_text
 
 .ability_prevents_escape
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	ld b, a
 	farcall BufferAbility
 	ld hl, BattleText_PkmnCantBeRecalledAbility
@@ -5670,7 +5691,7 @@ CheckUsableMove:
 
 .CheckChoiceAbility:
 	ld b, 6
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp GORILLA_TACTICS
 	ret nz
 	jr .CheckEncoreVar
@@ -6563,18 +6584,16 @@ GiveExperiencePoints:
 	pop bc
 	ld hl, MON_EXP + 2
 	add hl, bc
-	ld d, [hl]
 	ldh a, [hQuotient + 2]
-	add d
+	add [hl]
 	ld [hld], a
-	ld d, [hl]
 	ldh a, [hQuotient + 1]
-	adc d
+	adc [hl]
+	ld [hld], a
+	ldh a, [hQuotient]
+	adc [hl]
 	ld [hl], a
 	jr nc, .skip2
-	dec hl
-	inc [hl]
-	jr nz, .skip2
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7161,8 +7180,10 @@ AnimateExpBar:
 	adc [hl]
 	ld [hld], a
 	jr nc, .NoOverflow
-	inc [hl]
-	jr nz, .NoOverflow
+	ld a, [wExperienceGained]
+	adc [hl]
+	ld [hl], a
+	jr nc, .NoOverflow
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7328,6 +7349,10 @@ GetNewBaseExp:
 	and EXTSPECIES_MASK
 	ld b, a
 _GetNewBaseExp:
+	; Ensure that the most significant multiplicand isn't left with stray data.
+	; The rest is filled by this routine.
+	xor a
+	ldh [hMultiplicand], a
 	ld hl, NewBaseExpExceptions
 	ld de, 4
 	call IsInWordArray
@@ -7903,6 +7928,8 @@ StartBattle:
 	call ExitBattle
 	farcall LoadWeatherGraphics
 	farcall LoadWeatherPal
+	xor a
+	ld [wTrainerPal], a
 	pop af
 	ld [wTimeOfDayPal], a
 	scf

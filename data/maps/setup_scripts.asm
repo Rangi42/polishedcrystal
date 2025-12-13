@@ -86,6 +86,7 @@ MapSetupScript_BadWarp:
 	db -1 ; end
 
 MapSetupScript_Connection:
+	mapsetup SavePrevPalStates
 	mapsetup SuspendMapAnims
 	mapsetup EnterMapConnection
 	mapsetup LoadMapAttributes_Connection
