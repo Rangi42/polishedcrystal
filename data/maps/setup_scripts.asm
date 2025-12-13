@@ -102,9 +102,9 @@ MapSetupScript_Connection:
 	mapsetup LoadMapObjects_Connection
 	mapsetup FadeToMapMusic
 	mapsetup LoadMapPalettes
-	mapsetup MapConnOWFadePalettesInit
 	mapsetup ClearSavedObjPals
 	mapsetup EnableDynPalUpdatesNoApply
+	mapsetup MapConnOWFadePalettesInit
 	mapsetup InitMapNameSign
 	mapsetup LoadWildMonData
 	mapsetup UpdateRoamMons
