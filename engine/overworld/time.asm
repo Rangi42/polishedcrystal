@@ -18,14 +18,29 @@ NextCallReceiveDelay:
 .okay
 	ld e, a
 	ld d, 0
+	ld hl, .ReceiveCallDelays
+	add hl, de
+	ld b, [hl]
 	ld a, [wInitialOptions2]
 	and 1 << RTC_OPT
-	ld hl, .ReceiveCallDelays
-	jr nz, .using_rtc
-	ld hl, .ReceiveCallDelaysNoRTC
-.using_rtc
+	jr nz, .store_delay
+	ld a, [wOptions3]
+	and NO_RTC_SPEED_MASK
+	swap a
+	and %11
+	ld hl, NoRTCSpeedValues
+	ld e, a
+	ld d, 0
 	add hl, de
-	ld a, [hl]
+	ld c, [hl]
+	ld a, b
+	dec c
+	jr z, .store_delay
+.call_delay_loop
+	add b
+	dec c
+	jr nz, .call_delay_loop
+.store_delay
 	ld hl, wReceiveCallDelay_MinsRemaining
 	ld [hl], a
 	call UpdateTime
@@ -40,8 +55,6 @@ NextCallReceiveDelay:
 
 .ReceiveCallDelays:
 	db 20, 10, 5, 3
-.ReceiveCallDelaysNoRTC:
-	db 20 * NO_RTC_SPEEDUP, 10 * NO_RTC_SPEEDUP, 5 * NO_RTC_SPEEDUP, 3 * NO_RTC_SPEEDUP
 
 CheckReceiveCallTimer:
 	call CheckReceiveCallDelay ; check timer
@@ -182,10 +195,25 @@ Special_SampleKenjiBreakCountdown:
 StartBugContestTimer:
 	ld a, [wInitialOptions2]
 	and 1 << RTC_OPT
-	ld a, BUG_CONTEST_MINUTES
-	jr nz, .using_rtc
-	ld a, BUG_CONTEST_MINUTES * NO_RTC_SPEEDUP
-.using_rtc
+	ld b, BUG_CONTEST_MINUTES
+	jr nz, .store_bug_timer
+	ld a, [wOptions3]
+	and NO_RTC_SPEED_MASK
+	swap a
+	and %11
+	ld hl, NoRTCSpeedValues
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld c, [hl]
+	ld a, b
+	dec c
+	jr z, .store_bug_timer
+.bug_timer_loop
+	add b
+	dec c
+	jr nz, .bug_timer_loop
+.store_bug_timer
 	ld [wBugContestMinsRemaining], a
 	xor a ; BUG_CONTEST_SECONDS
 	ld [wBugContestSecsRemaining], a

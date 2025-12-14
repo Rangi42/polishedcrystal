@@ -32,7 +32,11 @@ FindFirstAliveMonAndStartBattle:
 	add hl, de
 	ld a, [hl]
 	ld [wBattleMonLevel], a
+	ld a, [wOptions3]
+	bit BATTLE_INTRO_ANIMS, a
+	jr nz, .skip_transition
 	farcall DoBattleTransition
+.skip_transition
 	farcall _LoadBattleFontsHPBar
 	ld a, 1
 	ldh [hBGMapMode], a

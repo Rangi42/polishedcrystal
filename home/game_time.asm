@@ -65,9 +65,19 @@ UpdateGameTimer::
 	ld a, [wInitialOptions2]
 	and 1 << RTC_OPT
 	jr nz, .using_rtc
-rept NO_RTC_SPEEDUP
+	ld a, [wOptions3]
+	and NO_RTC_SPEED_MASK
+	swap a
+	and %11
+	ld hl, NoRTCSpeedValues
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld c, [hl]
+.no_rtc_loop
 	call UpdateNoRTC
-endr
+	dec c
+	jr nz, .no_rtc_loop
 .using_rtc
 
 ; +1 second
@@ -166,3 +176,6 @@ UpdateNoRTC::
 ; RTC hardware limit of 512 days!
 	inc [hl]
 	ret
+
+NoRTCSpeedValues:
+	db 1, 2, 4, 6

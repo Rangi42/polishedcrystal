@@ -1,6 +1,6 @@
 DefaultOptions3:
 ; wOptions3
-	db 0
+	db $30
 
 DefaultOptions:
 ; wOptions1

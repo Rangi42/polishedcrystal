@@ -8680,7 +8680,11 @@ InitBattleDisplay:
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
+	ld a, [wOptions3]
+	bit BATTLE_INTRO_ANIMS, a
+	jr nz, .skip_sliding
 	farcall BattleIntroSlidingPics
+.skip_sliding
 	ld a, $1
 	ldh [hBGMapMode], a
 	ld a, $31

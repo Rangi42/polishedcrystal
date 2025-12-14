@@ -162,7 +162,6 @@ InitialOptionDescriptions:
 	line "or emulator does"
 	cont "not support RTC,"
 
-	assert NO_RTC_SPEEDUP == 6
 	para "disable this to"
 	line "make each in-game"
 	cont "day last 4 hours."
