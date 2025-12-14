@@ -1,6 +1,8 @@
+DEF DEFAULT_NO_RTC_SPEED EQU 3
+
 DefaultOptions3:
 ; wOptions3
-	db $30
+	db DEFAULT_NO_RTC_SPEED << NO_RTC_SPEED_0_F
 
 DefaultOptions:
 ; wOptions1

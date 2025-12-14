@@ -1,4 +1,8 @@
 DEF OPTIONS_PER_PAGE EQU 8
+DEF OPTIONS_PER_PAGE_MASK EQU OPTIONS_PER_PAGE - 1
+DEF OPTIONS_PAGE_MASK EQU OPTIONS_PER_PAGE_MASK >> 1 ; supports up to 4 pages
+DEF BATTLE_ANIMS_OPTION_MASK EQU %11
+DEF NO_RTC_SPEED_VALUE_MASK EQU %11
 DEF NUM_OPTIONS EQU 15
 
 OptionsMenu:
@@ -66,7 +70,7 @@ OptionsMenu_LoadOptions:
 	rst PlaceString
 	xor a
 	ld [wJumptableIndex], a
-	ld c, OPTIONS_PER_PAGE
+	call Options_GetPageCount
 .print_text_loop
 	push bc
 	call GetOptionPointer
@@ -198,30 +202,6 @@ Options_TextSpeed:
 	db "Fast   @"
 .Instant:
 	db "Instant@"
-
-Options_BattleEffects:
-	ld hl, wOptions1
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit BATTLE_EFFECTS, [hl]
-	jr z, .SetOff
-	jr .SetOn
-.Toggle
-	bit BATTLE_EFFECTS, [hl]
-	jr z, .SetOn
-.SetOff:
-	res BATTLE_EFFECTS, [hl]
-	ld de, OffString
-	jr .Display
-.SetOn:
-	set BATTLE_EFFECTS, [hl]
-	ld de, OnString
-.Display:
-	call Options_GetValueCoord
-	rst PlaceString
-	and a
-	ret
 
 Options_BattleStyle:
 	ld hl, wOptions2
@@ -402,7 +382,7 @@ Options_BattleAnimations:
 	inc e
 .wrap
 	ld a, e
-	and %11
+	and BATTLE_ANIMS_OPTION_MASK
 	ld e, a
 .apply
 	ld a, e
@@ -553,7 +533,7 @@ Options_NoRTCSpeed:
 	inc c
 .wrap
 	ld a, c
-	and %11
+	and NO_RTC_SPEED_VALUE_MASK
 	swap a
 	and NO_RTC_SPEED_MASK
 	ld b, a
@@ -565,7 +545,7 @@ Options_NoRTCSpeed:
 	ld a, [hl]
 	and NO_RTC_SPEED_MASK
 	swap a
-	and %11
+	and NO_RTC_SPEED_VALUE_MASK
 	ld hl, .Strings
 	ld d, 0
 	add a
@@ -813,37 +793,6 @@ Options_Keyboard:
 .QWERTY:
 	db "QWERTY@"
 
-Options_Next:
-	ldh a, [hJoyPressed]
-	and PAD_A | PAD_LEFT | PAD_RIGHT
-	jr z, _SwitchOptionsPage.NonePressed
-	ld hl, wCurOptionsPage
-	inc [hl]
-	ld de, StringOptions2
-	jr _SwitchOptionsPage
-
-Options_Previous:
-	ldh a, [hJoyPressed]
-	and PAD_A | PAD_LEFT | PAD_RIGHT
-	jr z, _SwitchOptionsPage.NonePressed
-	ld hl, wCurOptionsPage
-	dec [hl]
-	ld de, StringOptions1
-_SwitchOptionsPage:
-	push de
-	hlcoord 0, 0
-	lb bc, 16, 18
-	call Textbox
-	pop de
-	hlcoord 2, 2
-	rst PlaceString
-	call OptionsMenu_LoadOptions
-	ld a, NUM_OPTIONS - 1
-	ld [wJumptableIndex], a
-.NonePressed:
-	and a
-	ret
-
 Options_Done:
 	ldh a, [hJoyPressed]
 	and PAD_A
@@ -868,7 +817,7 @@ OptionsControl:
 	ld a, [wCurOptionsPage]
 	add a
 	add a
-	add a
+	add a ; page * 8
 	ld b, a
 	ld a, [wJumptableIndex]
 	add b
@@ -880,13 +829,13 @@ OptionsControl:
 	xor a
 .update
 	ld b, a
-	and %00000111
+	and OPTIONS_PER_PAGE_MASK
 	ld [wJumptableIndex], a
 	ld a, b
 	rrca
 	rrca
 	rrca
-	and %00000011
+	and OPTIONS_PAGE_MASK
 	ld c, a
 	ld a, [wCurOptionsPage]
 	cp c
@@ -894,6 +843,14 @@ OptionsControl:
 	ld [wCurOptionsPage], c
 	call OptionsMenu_LoadOptions
 .no_reload_down
+	call Options_GetPageCount
+	ld a, [wJumptableIndex]
+	cp c
+	jr c, .down_ok
+	ld a, c
+	dec a
+	ld [wJumptableIndex], a
+.down_ok
 	scf
 	ret
 
@@ -901,7 +858,7 @@ OptionsControl:
 	ld a, [wCurOptionsPage]
 	add a
 	add a
-	add a
+	add a ; page * 8
 	ld b, a
 	ld a, [wJumptableIndex]
 	add b
@@ -913,13 +870,13 @@ OptionsControl:
 	dec a
 .update_up
 	ld b, a
-	and %00000111
+	and OPTIONS_PER_PAGE_MASK
 	ld [wJumptableIndex], a
 	ld a, b
 	rrca
 	rrca
 	rrca
-	and %00000011
+	and OPTIONS_PAGE_MASK
 	ld c, a
 	ld a, [wCurOptionsPage]
 	cp c
@@ -927,6 +884,14 @@ OptionsControl:
 	ld [wCurOptionsPage], c
 	call OptionsMenu_LoadOptions
 .no_reload_up
+	call Options_GetPageCount
+	ld a, [wJumptableIndex]
+	cp c
+	jr c, .up_ok
+	ld a, c
+	dec a
+	ld [wJumptableIndex], a
+.up_ok
 	scf
 	ret
 
@@ -965,4 +930,20 @@ Options_GetFrameCoord:
 	call Options_GetBaseCoord
 	ld bc, SCREEN_WIDTH + 17
 	add hl, bc
+	ret
+
+Options_GetPageCount:
+	ld a, [wCurOptionsPage]
+	add a
+	add a
+	add a ; page * 8
+	ld e, a
+	ld a, NUM_OPTIONS + 1
+	sub e
+	ld c, a
+	ld a, OPTIONS_PER_PAGE
+	cp c
+	jr nc, .use_c
+	ld c, OPTIONS_PER_PAGE
+.use_c
 	ret

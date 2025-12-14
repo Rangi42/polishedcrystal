@@ -121,7 +121,9 @@ PlayBikeMusic:
 ; Play bike music unless we're in a map with special music handling.
 	ld a, [wOptions3]
 	bit BIKE_SURF_MUSIC_OFF_F, a
-	jmp nz, GetMapMusic
+	jr z, .do_bike_music
+	jmp GetMapMusic
+.do_bike_music
 	call CheckSpecialMapMusic
 	ret z
 	call .get_bike_music
@@ -375,6 +377,8 @@ PlayMapMusic::
 	jr z, .allow_play
 	cp b
 	jr nz, .allow_play
+	ld a, b
+	ld [wLastMusicLandmark], a
 	jmp PopAFBCDEHL
 .allow_play
 	ld a, [wMapMusic]
@@ -447,7 +451,9 @@ GetBugCatchingContestMusic:
 GetPlayerStateMusic:
 	ld a, [wOptions3]
 	bit BIKE_SURF_MUSIC_OFF_F, a
-	jmp nz, GetMapMusic
+	jr z, .check_state
+	jmp GetMapMusic
+.check_state
 	ld a, [wPlayerState]
 	cp PLAYER_SURF_PIKA
 	ld e, MUSIC_SURFING_PIKACHU

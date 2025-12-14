@@ -178,4 +178,5 @@ UpdateNoRTC::
 	ret
 
 NoRTCSpeedValues:
+	; UpdateNoRTC calls per in-game second for 1s/2s/4s/6s per minute
 	db 1, 2, 4, 6

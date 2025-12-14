@@ -54,6 +54,7 @@ NextCallReceiveDelay:
 	ret
 
 .ReceiveCallDelays:
+	; Base minutes between calls (20/10/5/3)
 	db 20, 10, 5, 3
 
 CheckReceiveCallTimer:
