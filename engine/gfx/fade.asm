@@ -2,9 +2,9 @@ MapConnOWFadePalettesInit::
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
-	ld a, 1
+	ld a, NOT_OVERCAST + 1
 .not_overcast
-	inc a
+	inc a ; wram inits to 0, so don't use 0 as valid index here.
 	ld b, a
 	ld a, [wPrevOvercastIndex]
 	cp b
