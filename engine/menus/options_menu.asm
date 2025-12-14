@@ -1,6 +1,4 @@
-DEF OPTIONS_PER_PAGE EQU 8
-DEF OPTIONS_PER_PAGE_MASK EQU OPTIONS_PER_PAGE - 1
-DEF OPTIONS_PAGE_MASK EQU OPTIONS_PER_PAGE_MASK >> 1 ; supports up to 4 pages
+DEF OPTIONS_PER_PAGE EQU 7
 DEF BATTLE_ANIMS_OPTION_MASK EQU %11
 DEF NO_RTC_SPEED_VALUE_MASK EQU %11
 DEF NUM_OPTIONS EQU 15
@@ -61,11 +59,16 @@ OptionsMenu_LoadOptions:
 	and a
 	ld de, StringOptions1
 	jr z, .got_string
+	cp 1
 	ld de, StringOptions2
+	jr z, .got_string
+	ld de, StringOptions3
 .got_string
+	push de
 	hlcoord 0, 0
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call Textbox
+	pop de
 	hlcoord 2, 2
 	rst PlaceString
 	xor a
@@ -103,12 +106,12 @@ StringOptions1:
 	next1 "        :"
 	next1 "Battle Anims"
 	next1 "        :"
-	next1 "Battle Style"
-	next1 "        :"
 	done
 
 StringOptions2:
-	text  "Running Shoes"
+	text  "Battle Style"
+	next1 "        :"
+	next1 "Running Shoes"
 	next1 "        :"
 	next1 "Turning Speed"
 	next1 "        :"
@@ -120,19 +123,17 @@ StringOptions2:
 	next1 "        :"
 	next1 "No RTC Speed"
 	next1 "        :"
-	next1 "Nickname Prompt"
+	done
+
+StringOptions3:
+	text  "Nickname Prompt"
 	next1 "        :"
 	next1 "Done"
 	next1 "        "
 	done
 
 GetOptionPointer:
-	ld a, [wCurOptionsPage]
-	and a
-	ld a, [wJumptableIndex]
-	jr z, .page1
-	add OPTIONS_PER_PAGE
-.page1
+	call Options_GetGlobalIndex
 	call StackJumpTable
 
 .Pointers:
@@ -819,33 +820,19 @@ OptionsControl:
 
 .DownPressed:
 	ld a, [wCurOptionsPage]
-	add a
-	add a
-	add a ; page * 8
-	ld b, a
-	ld a, [wJumptableIndex]
-	add b
-	cp NUM_OPTIONS + 1
+	ld d, a
+	call Options_GetGlobalIndex
+	cp NUM_OPTIONS
 	jr nc, .wrap_down
 	inc a
 	jr .update
 .wrap_down
 	xor a
 .update
-	ld b, a
-	and OPTIONS_PER_PAGE_MASK
-	ld [wJumptableIndex], a
-	ld a, b
-	rrca
-	rrca
-	rrca
-	and OPTIONS_PAGE_MASK
-	ld c, a
+	call Options_SetPageAndIndexFromGlobal
 	ld a, [wCurOptionsPage]
-	cp c
+	cp d
 	jr z, .no_reload_down
-	ld a, c
-	ld [wCurOptionsPage], a
 	call OptionsMenu_LoadOptions
 .no_reload_down
 	call Options_GetPageCount
@@ -861,12 +848,8 @@ OptionsControl:
 
 .UpPressed:
 	ld a, [wCurOptionsPage]
-	add a
-	add a
-	add a ; page * 8
-	ld b, a
-	ld a, [wJumptableIndex]
-	add b
+	ld d, a
+	call Options_GetGlobalIndex
 	and a
 	jr nz, .not_first
 	ld a, NUM_OPTIONS
@@ -874,20 +857,10 @@ OptionsControl:
 .not_first
 	dec a
 .update_up
-	ld b, a
-	and OPTIONS_PER_PAGE_MASK
-	ld [wJumptableIndex], a
-	ld a, b
-	rrca
-	rrca
-	rrca
-	and OPTIONS_PAGE_MASK
-	ld c, a
+	call Options_SetPageAndIndexFromGlobal
 	ld a, [wCurOptionsPage]
-	cp c
+	cp d
 	jr z, .no_reload_up
-	ld a, c
-	ld [wCurOptionsPage], a
 	call OptionsMenu_LoadOptions
 .no_reload_up
 	call Options_GetPageCount
@@ -917,6 +890,33 @@ Options_UpdateCursorPosition:
 	ld [hl], '▶'
 	ret
 
+Options_GetGlobalIndex:
+	ld a, [wCurOptionsPage]
+	ld b, a
+	add a
+	add a
+	add b
+	add b
+	add b ; page * 7
+	ld b, a
+	ld a, [wJumptableIndex]
+	add b
+	ret
+
+Options_SetPageAndIndexFromGlobal:
+	ld b, 0
+.loop
+	cp OPTIONS_PER_PAGE
+	jr c, .done
+	sub OPTIONS_PER_PAGE
+	inc b
+	jr .loop
+.done
+	ld [wJumptableIndex], a
+	ld a, b
+	ld [wCurOptionsPage], a
+	ret
+
 Options_GetBaseCoord:
 	hlcoord 0, 0
 	ld a, [wJumptableIndex]
@@ -940,9 +940,12 @@ Options_GetFrameCoord:
 
 Options_GetPageCount:
 	ld a, [wCurOptionsPage]
+	ld b, a
 	add a
 	add a
-	add a ; page * 8
+	add b
+	add b
+	add b ; page * 7
 	ld e, a
 	ld a, NUM_OPTIONS + 1
 	sub e
