@@ -29,7 +29,7 @@ RandomAliasedOvercastMapGroups:
 
 MACRO overcast_map
 	const_skip
-	if !DEF(GROUP_\1)
+	if !DEF(GROUP_\1) && STRFIND("\1", "AREA_") == 0
 		db \1, 0
 	else
 		map_id \1
