@@ -40,6 +40,9 @@ DEF MOBILE_SEND_BYTE                        EQU $d2
 DEF MOBILE_MAX_PACKET_SIZE                  EQU $fe
 DEF MOBILE_CONFIGURATION_SIZE               EQU $c0
 
+; Mobile rTMA setting.
+DEF MOBILE_TMA                              EQU $ee
+
 DEF MACFG_HEADER        EQU $00
 DEF MACFG_REGISTERED    EQU $02
 DEF MACFG_PRIMARY_DNS   EQU $04

@@ -18,14 +18,14 @@ Mobile_Init:
 	; The serial link speed itself is 64KiB/s, but we need to space the bytes
 	; out to give the adapter time to process every byte. This should be no
 	; faster than 0.5ms. The following settings will cause it to be slightly
-	; slower (0.503ms to be precise).
+	; slower: 4KHz timer, $ee "rTMA" (sort of, see below comment).
 	; We set rTMA to zero because we are handling the TMA's job in the timer
 	; interrupt instead. The reason is because we don't want other interrupts
 	; delaying a timer interrupt leading the next to fire too quickly.
 	xor a
 	ldh [rTMA], a
 	; "65536" is actually 131072 in practice due to doublespeed...
-	ld a, TAC_START | TAC_65KHZ
+	ld a, TAC_START | TAC_4KHZ
 	ldh [rTAC], a
 
 	; Set relevant interrupts in case they're disabled.

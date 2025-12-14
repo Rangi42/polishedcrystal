@@ -38,7 +38,7 @@ PolishedOnline_Addr:
 	asciistr "fiq.se"
 
 PolishedOnline_BackupIP:
-	db 127, 0, 0, 1
+	db 71, 19, 149, 30
 
 PO_Connect::
 ; Connects to Polished Online. Returns z if we're unable to connect.
@@ -840,7 +840,6 @@ PO_ServerCommand:
 	ld a, [wPO_Content]
 	ld [wOtherPlayerLinkAction], a
 	ret
-	
 
 .BattleTurn:
 	; Input action for battle turn. Returns z if waiting for other player.
