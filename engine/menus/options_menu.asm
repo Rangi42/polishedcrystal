@@ -406,7 +406,9 @@ Options_BattleAnimations:
 	ld d, 0
 	ld a, e
 	add a
-	add hl, a
+	ld c, a
+	ld b, 0
+	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -549,7 +551,9 @@ Options_NoRTCSpeed:
 	ld hl, .Strings
 	ld d, 0
 	add a
-	add hl, a
+	ld c, a
+	ld b, 0
+	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -840,7 +844,8 @@ OptionsControl:
 	ld a, [wCurOptionsPage]
 	cp c
 	jr z, .no_reload_down
-	ld [wCurOptionsPage], c
+	ld a, c
+	ld [wCurOptionsPage], a
 	call OptionsMenu_LoadOptions
 .no_reload_down
 	call Options_GetPageCount
@@ -881,7 +886,8 @@ OptionsControl:
 	ld a, [wCurOptionsPage]
 	cp c
 	jr z, .no_reload_up
-	ld [wCurOptionsPage], c
+	ld a, c
+	ld [wCurOptionsPage], a
 	call OptionsMenu_LoadOptions
 .no_reload_up
 	call Options_GetPageCount
