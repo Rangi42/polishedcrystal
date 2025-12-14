@@ -4823,39 +4823,27 @@ UpdateMoveData:
 	push af
 
 	; Write to move selection
-	; Support for duplicate moves: If wCur[Enemy]MoveNum already points to the
-	; current move, preserve it. This allows trainers to have multiple instances
-	; of the same move (e.g., Lance's Dragonite with two Hyper Beams).
 	ld c, a
 	ld hl, wBattleMonMoves
 	call GetUserMonAttr
 
 	; Check if the current move number already points to the correct move
-	push hl
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wCurMoveNum
+	ld a, [wCurMoveNum]
 	jr z, .check_current_move_num
-	ld hl, wCurEnemyMoveNum
+	ld a, [wCurEnemyMoveNum]
 .check_current_move_num
-	ld a, [hl]
-	ld d, a
-	pop hl
 
 	; If current move num is valid (0-3) and points to the current move, keep it
-	ld a, d
 	cp NUM_MOVES
 	jr nc, .search_for_move
 
 	; Check if moves[current_move_num] == current_move
-	push hl
-	push bc
-	ld b, 0
-	ld c, d
-	add hl, bc
+	ld e, a
+	ld d, 0
+	add hl, de
 	ld a, [hl]
-	pop bc
-	pop hl
 	cp c
 	jr z, .done ; Already pointing to the correct move, don't change it
 
