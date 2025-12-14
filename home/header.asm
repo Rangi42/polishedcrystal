@@ -133,7 +133,21 @@ GetCGBLayout::
 
 
 SECTION "timer", ROM0[$0050]
+	; We don't want this interrupt to mess with LCD interrupts. Thus,
+	; immediately re-allow interrupts. This will add one cycle of
+	; worst-case interrupt lag, which we will have to work with.
+	ei
+	nop
 	jmp Timer
+
+
+SECTION "serial", ROM0[$0058]
+	jmp Serial
+
+
+SECTION "High Home", ROM0[$005b]
+;SECTION "joypad", ROM0[$0060]
+; JOYPAD is never enabled
 
 PopAFBCDEHL::
 	pop af
@@ -142,16 +156,6 @@ PopBCDEHL::
 	pop de
 	pop hl
 	ret
-
-
-SECTION "serial", ROM0[$0058]
-	jmp Serial
-
-
-
-SECTION "High Home", ROM0[$005b]
-;SECTION "joypad", ROM0[$0060]
-; JOYPAD is never enabled
 
 INCLUDE "home/jumptable.asm"
 

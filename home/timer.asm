@@ -1,10 +1,5 @@
 Timer::
 ; The timer interrupt.
-	; We don't want this interrupt to mess with LCD interrupts. Thus,
-	; immediately re-allow interrupts. This will add one cycle of
-	; worst-case interrupt lag, which we will have to work with.
-	ei
-	nop
 
 	push af
 
