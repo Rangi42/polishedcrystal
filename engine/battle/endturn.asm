@@ -275,6 +275,11 @@ HandleWeather:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_HAIL
 	call z, .HandleHail
+
+	; Avoid chained weather damage. This can happen if the user faints from Hail
+	; and has Neutralizing Gas, triggering foe's Sand Stream after faint.
+	call HasUserFainted
+	ret z
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
