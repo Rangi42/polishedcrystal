@@ -386,7 +386,7 @@ MrPokemonText_SentToPC:
 	line "sent to "
 	text_ram wStringBuffer1
 	text "."
-	done
+	prompt
 
 MrPokemonText_PartyAndBoxFull:
 	text "You don't have any"
