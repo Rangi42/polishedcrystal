@@ -285,12 +285,12 @@ endc
 		tr_evs 4 HP, 252 SAt, 252 Spe
 		tr_moves SHADOW_BALL, THUNDERBOLT, DAZZLINGLEAM, NASTY_PLOT
 if DEF(FAITHFUL)
-	tr_mon 74, HAUNTER @ FOCUS_SASH, MALE 
+	tr_mon 74, HAUNTER @ FOCUS_SASH, MALE
 		tr_extra LEVITATE, SPE_UP_ATK_DOWN
 		tr_evs 4 HP, 252 SAt, 252 Spe
 		tr_moves DISABLE, SHADOW_BALL, DESTINY_BOND, PAIN_SPLIT
 else
-	tr_mon 74, NOCTOWL @ CHOICE_SPECS, MALE 
+	tr_mon 74, NOCTOWL @ CHOICE_SPECS, MALE
 		tr_extra TINTED_LENS, SATK_UP_ATK_DOWN
 		tr_evs 252 HP, 4 Def, 252 SAt
 		tr_moves MOONBLAST, AIR_SLASH, SHADOW_BALL, HURRICANE
@@ -447,7 +447,7 @@ PryceGroup:
 	end_trainer
 
 	def_trainer 2, "Pryce"
-	tr_mon 73, NINETALES @ ICY_ROCK, MALE | ALOLAN_FORM 
+	tr_mon 73, NINETALES @ ICY_ROCK, MALE | ALOLAN_FORM
 		tr_extra SNOW_WARNING, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves BLIZZARD, MOONBLAST, DARK_PULSE, NASTY_PLOT
@@ -856,7 +856,7 @@ endc
 	tr_mon 76, AERODACTYL @ CHOICE_BAND, MALE
 		tr_extra TOUGH_CLAWS, ATK_UP_SATK_DOWN
 		tr_evs 252 Atk, 4 Def, 252 Spe
-		tr_moves STONE_EDGE, BRAVE_BIRD, CRUNCH, EARTHQUAKE 
+		tr_moves STONE_EDGE, BRAVE_BIRD, CRUNCH, EARTHQUAKE
 if DEF(FAITHFUL)
 	tr_mon 75, CHARIZARD @ LEFTOVERS, MALE
 		tr_extra DROUGHT, SPE_UP_ATK_DOWN
@@ -1263,7 +1263,7 @@ SECTION "BlaineGroup", ROMX
 BlaineGroup:
 
 	def_trainer_class BLAINE
-	def_trainer 1, "Blaine" 
+	def_trainer 1, "Blaine"
 	tr_mon 65, NINETALES @ HEAT_ROCK, MALE
 		tr_extra DROUGHT
 		tr_evs 252 Spe, 228 SAt
@@ -1446,10 +1446,9 @@ LeafGroup:
 		tr_extra WATER_ABSORB, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves ICE_BEAM, THUNDERBOLT, SURF, SHELL_SMASH
-	
 if DEF(FAITHFUL)
 	tr_mon 98, MOLTRES @ LIFE_ORB, FEMALE
-		tr_extra FLAME_BODY, SPE_UP_ATK_DOWN 
+		tr_extra FLAME_BODY, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves FIRE_BLAST, AIR_SLASH, HP_ICE, ROOST
 else
@@ -1476,7 +1475,7 @@ endc
 		tr_extra ROCK_HEAD, SPE_UP_SATK_DOWN
 		tr_evs 252 Atk, 4 Def, 252 Spe
 		tr_moves ROCK_SLIDE, BRAVE_BIRD, EARTHQUAKE, HONE_CLAWS
-	tr_mon 99, MEW @ LEFTOVERS, FEMALE 
+	tr_mon 99, MEW @ LEFTOVERS, FEMALE
 		tr_extra SPE_UP_ATK_DOWN
 		tr_evs 252 HP, 4 SAt, 252 Spe
 		tr_moves NASTY_PLOT, PSYCHIC_M, AURA_SPHERE, RECOVER
@@ -1611,7 +1610,7 @@ Rival1Group:
 		tr_moves LEER, SMOKESCREEN, EMBER, QUICK_ATTACK
 	end_trainer
 
-	def_trainer RIVAL1_9, "<RIVAL>"	
+	def_trainer RIVAL1_9, "<RIVAL>"
 	tr_mon 20, HAUNTER, MALE
 		tr_extra LEVITATE
 		tr_evs 104 Spe
@@ -7348,7 +7347,7 @@ ArcherGroup:
 		tr_moves CRUNCH, SUPER_FANG, HYPER_FANG, DOUBLE_EDGE
 	tr_mon 41, GENGAR @ SPELL_TAG, MALE
 		tr_extra CURSED_BODY
-		tr_evs 124 SAt, 124 Spe 
+		tr_evs 124 SAt, 124 Spe
 		tr_moves HYPNOSIS, CONFUSE_RAY, PAIN_SPLIT, SHADOW_BALL
 	tr_mon 42, WEEZING @ BLACK_SLUDGE, MALE
 		tr_extra LEVITATE
@@ -7794,7 +7793,7 @@ AgathaGroup:
 		tr_evs 252 HP, 108 SAt
 		tr_moves SHADOW_BALL, DAZZLINGLEAM, FLAMETHROWER, POWER_GEM
 if DEF(FAITHFUL)
-		tr_mon 61, MUK @ BLACK_SLUDGE, FEMALE 
+		tr_mon 61, MUK @ BLACK_SLUDGE, FEMALE
 		tr_extra STENCH
 		tr_evs 252 HP, 108 Spe
 		tr_moves SHADOW_CLAW, GUNK_SHOT, SCREECH, MINIMIZE
@@ -7860,7 +7859,7 @@ if DEF(FAITHFUL)
 		tr_evs 252 HP, 164 SAt
 		tr_moves THUNDERBOLT, FLASH_CANNON, TRI_ATTACK, EXPLOSION
 else
-	tr_mon 58, BLASTOISE @ WISE_GLASSES, MALE 
+	tr_mon 58, BLASTOISE @ WISE_GLASSES, MALE
 		tr_extra TORRENT
 		tr_evs 252 HP, 164 SAt
 		tr_moves SURF, ICE_BEAM, FLASH_CANNON, AURA_SPHERE
@@ -7885,12 +7884,12 @@ endc
 		tr_evs 252 HP, 4 SDf, 252 Def
 		tr_moves SPIKES, ROOST, STEEL_WING, DRILL_PECK
 if DEF(FAITHFUL)
-	tr_mon 77, FORRETRESS @ LEFTOVERS, MALE 
+	tr_mon 77, FORRETRESS @ LEFTOVERS, MALE
 		tr_extra STURDY, DEF_UP_SATK_DOWN
 		tr_evs 252 HP, 4 SDf, 252 Def
 		tr_moves EARTHQUAKE, GYRO_BALL, BUG_BITE, TOXIC_SPIKES
 else
-	tr_mon 76, RHYPERIOR @ LEFTOVERS, MALE 
+	tr_mon 76, RHYPERIOR @ LEFTOVERS, MALE
 		tr_extra SOLID_ROCK, ATK_UP_SATK_DOWN
 		tr_evs 252 HP, 4 Def, 252 Atk
 		tr_moves EARTHQUAKE, STONE_EDGE, MEGAHORN, IRON_HEAD
@@ -8001,7 +8000,7 @@ CherylGroup:
 	tr_mon 59, NIDOQUEEN @ SOFT_SAND, FEMALE
 		tr_extra POISON_POINT, ATK_UP_SATK_DOWN
 		tr_evs 252 HP, 36 Atk
-		tr_moves BODY_SLAM, EARTHQUAKE, POISON_JAB, ROCK_SLIDE 
+		tr_moves BODY_SLAM, EARTHQUAKE, POISON_JAB, ROCK_SLIDE
 	tr_mon 56, CLEFABLE @ LIGHT_CLAY, FEMALE
 		tr_extra CUTE_CHARM, DEF_UP_ATK_DOWN
 		tr_evs 252 HP, 36 Def
@@ -8221,7 +8220,7 @@ MarleyGroup:
 	def_trainer 3, "Marley"
 	tr_mon 75, ARCANINE @ EJECT_PACK, FEMALE
 		tr_extra INTIMIDATE, SPE_UP_SATK_DOWN
-		tr_evs 252 Spe, 252 Atk, 4 HP 
+		tr_evs 252 Spe, 252 Atk, 4 HP
 		tr_moves FLARE_BLITZ, CLOSE_COMBAT, WILD_CHARGE, DRAGON_DANCE
 	tr_mon 74, PIDGEOT @ PETAYA_BERRY, FEMALE
 		tr_extra NO_GUARD, SPE_UP_ATK_DOWN
@@ -8254,7 +8253,7 @@ MiraGroup:
 	tr_mon 58, TOGEKISS @ LEFTOVERS, FEMALE
 		tr_extra SUPER_LUCK, SATK_UP_ATK_DOWN
 		tr_evs 252 SAt, 36 HP
-		tr_moves DAZZLINGLEAM, AURA_SPHERE, AIR_SLASH, FRESH_SNACK 
+		tr_moves DAZZLINGLEAM, AURA_SPHERE, AIR_SLASH, FRESH_SNACK
 	tr_mon 57, ALAKAZAM @ RED_CARD, FEMALE
 		tr_extra TRACE, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 36 Spe
