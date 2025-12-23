@@ -142,6 +142,7 @@ wPrevDexEntry:: db
 
 wPrevLandmark:: db
 wCurLandmark:: db
+wLastMusicLandmark:: db ; landmark whose map music is currently playing
 wLandmarkSignTimer:: dw
 wLinkMode::
 ; 0 not in link battle
@@ -1414,7 +1415,10 @@ SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bits 3-7: unused
+; bit 1: skip battle intro animations
+; bit 2: disable bike/surf music overrides
+; bit 3: disable nickname prompt
+; bits 4-5: no-RTC speed (00:1s,01:2s,10:4s,11:6s per minute)
 	db
 
 wOptions::
