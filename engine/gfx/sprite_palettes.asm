@@ -305,7 +305,9 @@ CalculateStates:
 .got_darkness
 	ld [hli], a
 	push hl
+	push de
 	farcall GetOvercastIndex
+	pop de
 	pop hl
 	ld [hli], a
 	ld a, [wTimeOfDayPal]
