@@ -226,15 +226,10 @@ BattleTurn:
 	ret
 
 ResetAbilityIgnorance:
-; Resets the "ignoring foe's ability" flag.
+; Resets the "ignoring foe's ability" flag for both sides.
 ; When move sequence order is replicated, this dedicated routine will no longer
 ; be necessary, because it will be an inherent part of the move sequence.
-	ldh a, [hBattleTurn]
-	and a
-	ld a, ~MOVESTATE_IGNOREABIL
-	jr z, .got_movestate
-	swap a
-.got_movestate
+	ld a, ~(MOVESTATE_IGNOREABIL | MOVESTATE_OPP_IGNOREABIL)
 	push hl
 	ld hl, wMoveState
 	and [hl]
@@ -1235,6 +1230,20 @@ endr
 	call NewEnemyMonStatus
 
 .volatile_done
+	; Starting with 8gen, ability ignorance no longer affects the move user,
+	; but does affect other Pokémon on the move user's side. This includes
+	; Pokémon switched into the same slot during move execution.
+	; Example: Mold Breaker U-turn that pivots into a Levitate mon should
+	; take Spikes damage. Ignoring abilities entirely, which is how 7gen
+	; behaved, causes problems if we were to add Sunsteel Strike/etc.
+	; ResetAbilityIgnorance will reset both sides' ignorance state.
+	ld a, [wMoveState]
+	ld d, a
+	and MOVESTATE_IGNOREABIL
+	swap a
+	or d
+	ld [wMoveState], a
+
 	; Switch active mon
 	ldh a, [hBattleTurn]
 	and a
