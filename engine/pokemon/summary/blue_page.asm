@@ -51,10 +51,10 @@ SummaryScreen_BluePage:
 
 	; Handle display one by one since Sp.Atk/Sp.Def/Speed is displayed in a
 	; different order.
-	hlcoord 0, 10
-	ld de, -4
+	hlbgcoord 11, 0, wSummaryScreenWindowBuffer
+	ld de, TILEMAP_WIDTH
 	call .CheckHyper ; HP
-	ld de, SCREEN_WIDTH * 2
+	add hl, de ; move past the HP bar
 	call .CheckHyper ; Attack
 	call .CheckHyper ; Defense
 	rlca ; skips the speed one for now
