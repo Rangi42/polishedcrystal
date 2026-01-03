@@ -46,6 +46,7 @@ _InitSound::
 
 	dec a
 	ld [wCh3LoadedWaveform], a ; initializes to -1 so title music can use sample 0
+	ldh [rAUD3ENA], a ; ch3 dac on
 	ld a, MAX_VOLUME
 	ld [wVolume], a
 	call MusicOn
@@ -266,8 +267,13 @@ UpdateChannels:
 	ret
 
 .ch1_rest
-	ld hl, AUD1RAM
-	jmp ClearChannel
+	xor a
+	ldh [rAUD1SWEEP], a
+	ld a, AUD1ENV_UP
+	ldh [rAUD1ENV], a
+	ld a, AUD1HIGH_RESTART
+	ldh [rAUD1HIGH], a
+	ret
 
 .ch1_noise_sampling
 	ld a, [wCurTrackDuty]
@@ -305,8 +311,11 @@ UpdateChannels:
 	ret
 
 .ch2_rest
-	ld hl, AUD2RAM
-	jmp ClearChannel
+	ld a, AUD2ENV_UP
+	ldh [rAUD2ENV], a
+	ld a, AUD2HIGH_RESTART
+	ldh [rAUD2HIGH], a
+	ret
 
 .ch2_noise_sampling
 	ld a, [wCurTrackDuty]
@@ -336,8 +345,10 @@ UpdateChannels:
 	ret
 
 .ch3_rest
-	ld hl, AUD3RAM
-	jmp ClearChannel
+	; mute ch3
+	xor a
+	ldh [rAUD3LEVEL], a
+	ret
 
 .ch3_noise_sampling
 	ld hl, wCh3LoadedWaveform
@@ -355,7 +366,6 @@ UpdateChannels:
 	ldh [rAUD3LOW], a
 	ld a, [wCurTrackFrequency + 1]
 	or $80
-	ldh [rAUD3ENA], a ; dac on, in case ReloadWaveform turned it off
 	ldh [rAUD3HIGH], a
 	ret
 
@@ -370,8 +380,11 @@ UpdateChannels:
 	ret
 
 .ch4_rest
-	ld hl, AUD4RAM
-	jmp ClearChannel
+	ld a, AUD4ENV_UP
+	ldh [rAUD4ENV], a
+	ld a, AUD4GO_RESTART
+	ldh [rAUD4GO], a
+	ret
 
 .ch4_noise_sampling
 	ld a, [wCurTrackIntensity]
@@ -1077,10 +1090,6 @@ ParseMusic:
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	res SOUND_CHANNEL_ON, [hl]
-	; note = rest
-	ld hl, wChannel1NoteFlags - wChannel1
-	add hl, bc
-	set NOTE_REST, [hl]
 	; clear music id & bank
 	ld hl, wChannel1MusicID - wChannel1
 	add hl, bc
@@ -1088,7 +1097,7 @@ ParseMusic:
 	ld [hli], a ; id hi
 	ld [hli], a ; id lo
 	ld [hli], a ; bank
-	ret
+	; fallthrough
 
 .rest
 ; note = rest
@@ -1182,10 +1191,10 @@ GetNoiseSample:
 	add hl, de
 	; get pitch
 	ld a, [wCurMusicByte]
-	swap a
 	; non-rest note?
-	and $f
+	and $f0
 	jr z, .rest
+	swap a
 	; use 'pitch' to seek noise sample set
 	ld e, a
 	ld d, 0
@@ -2187,34 +2196,26 @@ PlayStereoSFX::
 ; clear channels if they aren't already
 	call MusicOff
 	ld hl, wChannel5Flags
-	bit SOUND_CHANNEL_ON, [hl] ; ch5 on?
-	jr z, .ch6
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, AUD1RAM
-	call ClearChannel
-	xor a
-	ld [wSoundInput], a ; global sound off
-.ch6
+	bit SOUND_CHANNEL_ON, [hl]
+	res SOUND_CHANNEL_ON, [hl]
+	call nz, UpdateChannels.ch1_rest
+
 	ld hl, wChannel6Flags
 	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .ch7
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, AUD2RAM
-	call ClearChannel
-.ch7
+	res SOUND_CHANNEL_ON, [hl]
+	call nz, UpdateChannels.ch2_rest
+
 	ld hl, wChannel7Flags
 	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .ch8
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, AUD3RAM
-	call ClearChannel
-.ch8
+	res SOUND_CHANNEL_ON, [hl]
+	call nz, UpdateChannels.ch3_rest
+
 	ld hl, wChannel8Flags
 	bit SOUND_CHANNEL_ON, [hl]
+	res SOUND_CHANNEL_ON, [hl]
 	jr z, .chscleared
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, AUD4RAM
-	call ClearChannel
+	call UpdateChannels.ch4_rest
+
 	xor a
 	ld [wNoiseSampleAddressLo], a
 	ld [wNoiseSampleAddressHi], a
@@ -2348,7 +2349,10 @@ ReloadWaveform:
 	sub l
 	ld h, a
 	xor a
-	ldh [rAUD3ENA], a ; dac off
+	; Cycle the dac, this stops the channel so we can write to wave ram
+	ldh [rAUD3ENA], a
+	cpl
+	ldh [rAUD3ENA], a
 	; load wavepattern into AUD3WAVERAM
 for x, AUD3WAVE_SIZE
 	ld a, [hli]
@@ -2382,23 +2386,6 @@ ChannelPointers:
 	dw wChannel7
 	dw wChannel8
 	assert_table_length NUM_CHANNELS
-
-ClearChannel:
-; input: hl = beginning hw sound register (AUD1RAM, AUD2RAM, AUD3RAM, AUD4RAM)
-; output: 00 00 80 00 80
-
-	; channel     AUD1RAM,    AUD2RAM,   AUD3RAM,    AUD4RAM
-	xor a
-	ld [hli], a ; rAUD1SWEEP, unused,    rAUD3ENA,   unused    ; sweep = 0
-
-	ld [hli], a ; rAUD1LEN,   rAUD2LEN,  rAUD3LEN,   rAUD4LEN  ; length/wavepattern = 0
-	ld a, $8
-	ld [hli], a ; rAUD1ENV,   rAUD2ENV,  rAUD3LEVEL, rAUD4ENV  ; envelope = 0
-	xor a
-	ld [hli], a ; rAUD1LOW,   rAUD2LOW,  rAUD3LOW,   rAUD4POLY ; frequency lo = 0
-	ld a, $80
-	ld [hli], a ; rAUD1HIGH,  rAUD2HIGH, rAUD3HIGH,  rAUD4GO   ; restart sound (freq hi = 0)
-	ret
 
 PlayTrainerEncounterMusic::
 ; input: e = trainer type
