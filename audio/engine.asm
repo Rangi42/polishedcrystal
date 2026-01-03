@@ -255,19 +255,11 @@ UpdateChannels:
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rAUD1LEN]
-	and $3f ; sound length
-	or d
 	ldh [rAUD1LEN], a
 	ret
 
 .ch1_vibrato_override
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rAUD1LEN]
-	and $3f ; sound length
-	or d
 	ldh [rAUD1LEN], a
 	ld a, [wCurTrackFrequency]
 	ldh [rAUD1LOW], a
@@ -278,9 +270,7 @@ UpdateChannels:
 	jmp ClearChannel
 
 .ch1_noise_sampling
-	ld hl, wCurTrackDuty
-	ld a, $3f ; sound length
-	or [hl]
+	ld a, [wCurTrackDuty]
 	ldh [rAUD1LEN], a
 	ld a, [wCurTrackIntensity]
 	ldh [rAUD1ENV], a
@@ -304,19 +294,11 @@ UpdateChannels:
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rAUD2LEN]
-	and $3f ; sound length
-	or d
 	ldh [rAUD2LEN], a
 	ret
 
 .ch2_vibrato_override
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rAUD2LEN]
-	and $3f ; sound length
-	or d
 	ldh [rAUD2LEN], a
 	ld a, [wCurTrackFrequency]
 	ldh [rAUD2LOW], a
@@ -327,9 +309,7 @@ UpdateChannels:
 	jmp ClearChannel
 
 .ch2_noise_sampling
-	ld hl, wCurTrackDuty
-	ld a, $3f ; sound length
-	or [hl]
+	ld a, [wCurTrackDuty]
 	ldh [rAUD2LEN], a
 	ld a, [wCurTrackIntensity]
 	ldh [rAUD2ENV], a
@@ -394,8 +374,6 @@ UpdateChannels:
 	jmp ClearChannel
 
 .ch4_noise_sampling
-	ld a, $3f ; sound length
-	ldh [rAUD4LEN], a
 	ld a, [wCurTrackIntensity]
 	ldh [rAUD4ENV], a
 	ld a, [wCurTrackFrequency]
