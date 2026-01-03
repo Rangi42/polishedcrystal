@@ -1,5 +1,14 @@
 GetOvercastIndex::
 ; Some maps are overcast, depending on certain conditions
+	; we never overcast until after slowpokes appear in Azalea Town
+	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
+	jr nz, .not_overcast
+	; roll for generic overcast conditions
+	call CheckGenericOvercast
+	cp GENERIC_OVERCAST
+	ret z
+
+	; we may have extra overcast conditions for specific maps
 	ld a, [wMapGroup]
 	cp GROUP_AZALEA_TOWN ; GROUP_ROUTE_33
 	jr z, .azalea_route_33
@@ -19,9 +28,6 @@ GetOvercastIndex::
 	cp MAP_ROUTE_33
 	jr nz, .not_overcast
 .azalea_town
-; Not overcast until Slowpokes appear (Team Rocket beaten)
-	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
-	jr nz, .not_overcast
 ; Overcast on Sunday, Tuesday, Thursday, and Saturday
 	call GetWeekday
 	cp MONDAY
@@ -77,3 +83,181 @@ GetOvercastIndex::
 .overcast_stormy_beach
 	ld a, STORMY_BEACH_OVERCAST
 	ret
+
+CheckGenericOvercast:
+	; Skip indoor/cave/gate/dungeon environments
+	ld a, [wEnvironment]
+	cp TOWN
+	jr z, .can_overcast
+	cp ROUTE
+	jr z, .can_overcast
+	cp ISOLATED
+	jr nz, .not_overcast
+
+.can_overcast
+	ld a, [wOvercastRandomDay]
+	ld b, a
+	ld a, [wCurDay]
+	cp b
+	ld [wOvercastRandomDay], a
+	call nz, GenerateNewRandomOvercastMaps
+
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+
+	ld d, 4
+	ld hl, wOvercastRandomMaps
+.loop_overcast_maps
+	ld a, [hli]
+	ld [wOvercastCurIntensity], a
+	ld a, [hli]
+	cp NUM_MAP_GROUPS + 1
+	jr nc, .aliased_group
+	; normal group
+	cp b
+	jr nz, .skip_map
+	ld a, [hli]
+	cp c
+	jr z, .overcast
+	dec d
+	jr nz, .loop_overcast_maps
+	jr .not_overcast
+
+.skip_map
+	inc hl
+	dec d
+	jr nz, .loop_overcast_maps
+	jr .not_overcast
+
+.aliased_group
+	push hl
+	call GetAliasedGroup
+.alias_loop
+	ld a, [hli]
+	cp -1
+	jr z, .not_in_alias_group
+	cp b
+	jr nz, .check_next_alias_map
+	ld a, [hli]
+	cp c
+	jr z, .found_map_in_alias
+	jr .alias_loop
+
+.check_next_alias_map
+	inc hl
+	jr .alias_loop
+
+.found_map_in_alias
+	pop hl
+	jr .overcast
+
+.not_in_alias_group
+	pop hl
+	inc hl ; skip map id
+	dec d
+	jr nz, .loop_overcast_maps
+; fallthrough
+.not_overcast
+	xor a
+	ret
+
+.overcast
+	ld a, GENERIC_OVERCAST
+	ret
+
+; @input: a = alias id
+; @output: hl = aliased group pointer
+GetAliasedGroup:
+	push bc
+	sub NUM_MAP_GROUPS + 1
+	ld b, a
+	ld hl, RandomAliasedOvercastMapGroups
+.outer_loop
+	ld a, b
+	and a
+	jr z, .found
+	; consume bytes until we are past the terminator
+.inner_loop
+	ld a, [hli]
+	inc a
+	jr nz, .inner_loop
+	dec b
+	jr .outer_loop
+
+.found
+	pop bc
+	ret
+
+GenerateNewRandomOvercastMaps:
+	ld a, NUM_JOHTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsJohto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupJohto1], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberJohto1], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityJohto1], a
+	ld a, NUM_JOHTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsJohto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupJohto2], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberJohto2], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityJohto2], a
+	ld a, NUM_KANTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsKanto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupKanto1], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberKanto1], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityKanto1], a
+	ld a, NUM_KANTO_OVERCAST_MAPS
+	ld de, RandomOvercastMapsKanto
+	call RandomRange
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld [wOvercastRandomMapGroupKanto2], a
+	ld a, [hli]
+	ld [wOvercastRandomMapNumberKanto2], a
+	call GenerateRandomIntensity
+	ld [wOvercastRandomMapIntensityKanto2], a
+	ret
+
+GenerateRandomIntensity:
+	call Random
+	cp 50 percent
+	jr c, .low_intensity
+	cp (50 + 40) percent
+	jr c, .medium_intensity
+	ld a, OVERCAST_INTENSITY_THUNDERSTORM
+	ret
+.medium_intensity
+	ld a, OVERCAST_INTENSITY_RAIN
+	ret
+.low_intensity
+	ld a, OVERCAST_INTENSITY_OVERCAST
+	ret
+
+INCLUDE "data/maps/overcast_maps.asm"

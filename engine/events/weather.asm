@@ -1,13 +1,17 @@
 SetCurrentWeather::
 	farcall GetOvercastIndex
 	and a
-	jr z, .not_overcast
-	call Random
-	cp 25 percent
-	; a = carry ? OW_WEATHER_THUNDERSTORM : OW_WEATHER_RAIN
-	sbc a
-	and OW_WEATHER_THUNDERSTORM - OW_WEATHER_RAIN
-	add OW_WEATHER_RAIN
+	jr z, .not_raining
+	ld a, [wOvercastCurIntensity]
+	assert OVERCAST_INTENSITY_OVERCAST == 0
+	and a
+	jr z, .not_raining
+	ld b, a
+	ld a, OW_WEATHER_RAIN
+	assert OVERCAST_INTENSITY_RAIN == 1
+	dec b
+	jr z, .set_weather
+	ld a, OW_WEATHER_THUNDERSTORM
 .set_weather
 	ld b, a
 	ld a, [wWeatherFlags]
@@ -53,7 +57,7 @@ SetCurrentWeather::
 	ld [wOverworldWeatherCooldown], a
 	ret
 
-.not_overcast
+.not_raining
 	ld a, [wMapGroup]
 	cp GROUP_SNOWTOP_MOUNTAIN_OUTSIDE
 	jr nz, .not_snowing
