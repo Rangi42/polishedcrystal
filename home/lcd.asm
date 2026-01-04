@@ -44,11 +44,12 @@ LCDMusicPlayer::
 	add l
 	add a
 	ld l, a
-	assert wMPNotes & ((1 << 9) - 1) == 0
 	adc wMPNotes >> 9 ; HIGH(wMPNotes) >> 1
 	sub l
 	ld h, a
 	add hl, hl
+	assert HIGH(wMPNotes) & 1, "wMPNotes moved"
+	inc h ; current address is $c700, add the low bit of HIGH(wMPNotes)
 
 	ld a, [hli]
 	ld [oamSprite00XCoord], a
