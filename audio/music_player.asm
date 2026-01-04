@@ -120,7 +120,7 @@ MusicPlayer::
 
 	ld hl, vTiles0
 	ld de, wDecompressScratch tile $47
-	ld c, 1
+	ld c, 5
 	call Request2bppInWRA6
 
 	call DelayFrame
@@ -150,13 +150,13 @@ RenderMusicPlayer:
 	decoord 0, PIANO_ROLL_HEIGHT
 	rst CopyBytes
 
-	ld bc, 4 * 3
+	ld bc, 4 * 6
 	ld hl, NoteOAM
 	ld de, wShadowOAM
 	rst CopyBytes
 	call DelayFrame
 	xor a
-	ldh [hOAMUpdate], a ; we will manually do it in LCD interrupt
+	ldh [hOAMUpdate], a
 
 	call RedrawChannelLabels
 	call DelayFrame
@@ -1105,10 +1105,15 @@ DrawNewNote:
 	ld a, [hl]
 	add b
 	ld c, a
+	ld hl, .KeySprite
+	add hl, de
+	ld b, [hl]
 	jr WriteNotePitch
 
 .Pitchels:
-	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
+	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25
+.KeySprite:
+	db 1, 4, 2, 4, 3,  1,  4,  2,  4,  2,  4,  3
 
 DrawLongerNote:
 	ld a,[wTmpCh]
@@ -1137,8 +1142,15 @@ WriteNotePitch:
 	ld e, a
 	ld d, 0
 	add hl, de
+	ld [hl], c
+	ld hl, wShadowOAMSprite03XCoord
+	add a
+	add a
+	ld e, a
+	add hl, de
 	ld a, c
-	ld [hl], a
+	ld [hli], a
+	ld [hl], b
 	ret
 
 CheckForVolumeBarReset:
@@ -1699,6 +1711,10 @@ NoteOAM:
 	db 0, 0, $00, OAM_PRIO | 3 ; red
 	db 0, 0, $00, OAM_PRIO | 2 ; blue
 	db 0, 0, $00, OAM_PRIO | 1 ; green
+	; keys
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 3 ; red
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 2 ; blue
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 1 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"
