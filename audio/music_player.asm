@@ -1129,8 +1129,7 @@ DrawLongerNote:
 	; fallthrough
 
 _WriteBlankNote:
-	xor a
-	ld c, a
+	ld c, $f0
 
 WriteNotePitch:
 	ld hl, wPitchesTmp
