@@ -27,7 +27,7 @@ LCDGeneric::
 
 LCDMusicPlayer::
 	ldh a, [rLY]
-	cp PIANO_ROLL_HEIGHT_PX
+	cp PIANO_ROLL_HEIGHT_PX - 1
 	jr nc, .done
 
 	push hl
