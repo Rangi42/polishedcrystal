@@ -274,12 +274,14 @@ BattleCommand_checkturn:
 	jr .fast_asleep
 
 .woke_up
+if !DEF(FAITHFUL)
 	; if user has Early Bird, display ability activation
 	; a is still (user's ability - EARLY_BIRD)
 	and a
 	jr nz, .woke_up_no_early_bird
 	farcall BeginAbility
 	farcall ShowAbilityActivation
+endc
 .woke_up_no_early_bird
 	ld hl, WokeUpText
 	call StdBattleTextbox
