@@ -179,8 +179,7 @@ DoMove:
 .endturn_herb
 	call CheckEndMoveEffects
 	call CheckThroatSpray
-	call CheckPowerHerb
-	ret
+	jmp CheckPowerHerb
 
 ReadMoveScriptByte:
 	ld hl, wBattleScriptBufferLoc

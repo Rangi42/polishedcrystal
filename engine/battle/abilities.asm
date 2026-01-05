@@ -18,12 +18,11 @@ _RunEntryAbilitiesInner:
 	call EndAbility
 	call HasUserFainted
 	ret z
+	; These abilities cannot be ignored.
 	call HasOpponentFainted
 	ld hl, BattleEntryAbilities
-	jr z, .got_ability_table
+	jr z, UserAbilityJumptable
 	ld hl, BattleEntryAbilitiesNonfainted
-.got_ability_table
-	; These abilities cannot be ignored.
 	jr UserAbilityJumptable
 
 UserIgnorableAbilityJumptable:
