@@ -189,7 +189,7 @@ MusicPlayerLoop:
 	jrbutton PAD_A, .a
 	jrbutton PAD_B, .b
 	jrbutton PAD_START, .start
-	jrbutton PAD_SELECT, .select
+	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
 	ld a, 2
@@ -202,7 +202,7 @@ MusicPlayerLoop:
 	dec a
 	jr nz, _RedrawMusicPlayer
 	ld a, NUM_MUSIC_SONGS - 1
-	jr _RedrawMusicPlayer
+	jmp _RedrawMusicPlayer
 
 .right:
 ; next song
@@ -255,6 +255,7 @@ MusicPlayerLoop:
 ; exit music player
 	xor a
 	ldh [hMPState], a
+	ldh [hNextMPState], a
 	ldh [hVBlank], a
 	call ClearSprites
 	ld hl, rLCDC
@@ -272,6 +273,7 @@ MusicPlayerLoop:
 ; open song selector
 	xor a
 	ldh [hMPState], a
+	ldh [hNextMPState], a
 	call SongSelector
 	jmp RenderMusicPlayer
 
@@ -975,7 +977,10 @@ DrawNotes:
 
 	ldh a, [hMPState]
 	inc a
-	ldh [hMPState], a
+	ldh [hNextMPState], a
+	; add PIANO_ROLL_HEIGHT_PX - 2
+	; write one past the current head, leaves a one frame delay
+	; between the key press and the piano roll
 	add PIANO_ROLL_HEIGHT_PX - 1
 	; fallthrough
 

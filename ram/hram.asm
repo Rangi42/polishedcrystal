@@ -175,7 +175,7 @@ hDelayFrameLY:: db
 hClockResetTrigger:: db
 
 hMPState::  db
-	ds 1
+hNextMPState:: db
 
 hRequested2bpp::        db
 hRequested1bpp::        db

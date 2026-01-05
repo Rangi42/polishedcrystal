@@ -57,8 +57,13 @@ LCDMusicPlayer::
 
 	pop de
 	pop hl
-
+	pop af
+	reti
 .done
+	; this ideally runs once but there's no harm letting it run
+	; for the remaining blanks
+	ldh a, [hNextMPState]
+	ldh [hMPState], a
 	pop af
 	reti
 
