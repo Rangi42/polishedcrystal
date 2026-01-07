@@ -1107,9 +1107,7 @@ wPrinterOpcode:: db
 
 SECTION UNION "Misc 1326", WRAM0
 
-	ds 176
-	assert @ & $FF == 0, "wMPNotes must be 8-bit aligned"
-wMPNotes:: ds 4 * 256
+wMPNotes:: ds 3 * 256
 
 
 SECTION "Video", WRAM0

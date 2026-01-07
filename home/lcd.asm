@@ -31,6 +31,7 @@ LCDMusicPlayer::
 	jr nc, .done
 
 	push hl
+	push de
 
 	ld l, a
 	add SCREEN_HEIGHT - 1
@@ -39,17 +40,13 @@ LCDMusicPlayer::
 	ld [oamSprite02YCoord], a
 
 	ldh a, [hMPState]
-	inc a
-	assert PIANO_ROLL_HEIGHT_PX + 1 < $80
 	add l
-	add a
-	ld l, a
-	adc wMPNotes >> 9 ; HIGH(wMPNotes) >> 1
-	sub l
-	ld h, a
-	add hl, hl
-	assert HIGH(wMPNotes) & 1, "wMPNotes moved"
-	inc h ; current address is $c700, add the low bit of HIGH(wMPNotes)
+	ld e, a
+	ld d, 0
+	ld hl, wMPNotes
+	add hl, de
+	add hl, de
+	add hl, de
 
 	ld a, [hli]
 	ld [oamSprite00XCoord], a
@@ -57,6 +54,8 @@ LCDMusicPlayer::
 	ld [oamSprite01XCoord], a
 	ld a, [hl]
 	ld [oamSprite02XCoord], a
+
+	pop de
 	pop hl
 
 .done

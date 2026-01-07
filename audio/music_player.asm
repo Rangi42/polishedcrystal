@@ -980,7 +980,7 @@ DrawNotes:
 	; fallthrough
 
 .CopyNotes:
-	ld bc, 4
+	ld bc, 3
 	ld hl, wMPNotes
 	rst AddNTimes
 	ld d, h
