@@ -161,7 +161,8 @@ hChartLineCoord:: db
 NEXTU
 hPokedexAreaMode:: ; %xyyyzzzz, x: area unknown, y: region, z: location type
 hPokedexStatsCurAbil:: db
-	ds 2
+hPokedexROMBankBackup:: db
+	ds 1
 ENDU
 
 hCGBPalUpdate:: db
