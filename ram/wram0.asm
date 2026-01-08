@@ -1105,6 +1105,11 @@ wGameboyPrinterRAMEnd::
 wPrinterOpcode:: db
 
 
+SECTION UNION "Misc 1326", WRAM0
+
+wMPNotes:: ds 3 * 256
+
+
 SECTION "Video", WRAM0
 
 wBGMapBuffer:: ds 48

@@ -641,13 +641,13 @@ PHB_LCDCode:
 LOAD UNION "Misc 404", WRAM0
 wLCDPokedex::
 	ldh a, [hROMBank]
-	ldh [hROMBankBackup], a
+	ldh [hPokedexROMBankBackup], a
 	ld a, BANK(PHB_LCDCode)
 	rst Bankswitch
 	db $cd ; call
 wPokedex_HBlankFunction::
 	dw DoNothing ; replaced with the actual function
-	ldh a, [hROMBankBackup]
+	ldh a, [hPokedexROMBankBackup]
 	rst Bankswitch
 	pop af
 	reti

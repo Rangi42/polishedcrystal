@@ -1470,11 +1470,6 @@ wSoundEngineBattleBackup:: ds wChannelsEnd - wMusic
 wBattleBackupMapMusic:: db
 
 
-SECTION "Music Player RAM", WRAMX
-
-wMPNotes:: ds 4 * 256
-
-
 SECTION "Pic Animations RAM", WRAMX
 
 wTempTileMap::
