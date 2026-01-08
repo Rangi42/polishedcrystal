@@ -174,3 +174,4 @@ SpecialsPointers::
 	add_special FixPlayerEVsAndStats
 	add_special FadeInPalettes_EnableDynNoApply
 	add_special PrintDiploma
+	add_special VoltorbFlip
