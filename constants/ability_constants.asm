@@ -146,6 +146,7 @@
 	const SLUSH_RUSH
 	const GALVANIZE
 	const CORROSION
+	const FLUFFY
 	const TANGLING_HAIR
 	const SCREEN_CLEANER
 	const STEELY_SPIRIT
