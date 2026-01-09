@@ -421,7 +421,7 @@ ENDM
 	map_const SILVER_CAVE_POKECENTER_1F,                   6,  4 ;  3
 	map_const ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
 	map_const NAVEL_ROCK_OUTSIDE,                         13, 16 ;  5
-	map_const NAVEL_ROCK_INSIDE,                          20, 45 ;  6
+	map_const NAVEL_ROCK_INSIDE,                          27, 26 ;  6
 	map_const NAVEL_ROCK_ROOF,                             8, 11 ;  7
 	map_const FARAWAY_ISLAND,                             17, 23 ;  8
 	map_const FARAWAY_JUNGLE,                             14, 12 ;  9
