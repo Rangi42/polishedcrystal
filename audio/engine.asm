@@ -1013,9 +1013,9 @@ ParseMusic:
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	bit SOUND_SFX, [hl]
-	jmp nz, ParseSFXOrRest
-	bit SOUND_REST, [hl] ; rest
-	jmp nz, ParseSFXOrRest
+	jmp nz, ParseSFXOrCry
+	bit SOUND_CRY, [hl]
+	jmp nz, ParseSFXOrCry
 	bit SOUND_NOISE, [hl] ; noise sample
 	jmp nz, GetNoiseSample
 ; normal note
@@ -1084,7 +1084,7 @@ ParseMusic:
 .chan_5to8
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	bit SOUND_REST, [hl]
+	bit SOUND_CRY, [hl]
 	call nz, RestoreVolume
 	; end music
 	ld a, [wCurChannel]
@@ -1138,7 +1138,7 @@ RestoreVolume:
 	ld [wSFXPriority], a
 	ret
 
-ParseSFXOrRest:
+ParseSFXOrCry:
 	; turn noise sampling on
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -2139,7 +2139,7 @@ _PlayCry::
 
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	set SOUND_REST, [hl]
+	set SOUND_CRY, [hl]
 
 	inc hl ; Flags2
 	set SOUND_PITCH_OFFSET, [hl]
