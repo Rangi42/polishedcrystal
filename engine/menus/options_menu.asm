@@ -1,4 +1,7 @@
-DEF NUM_OPTIONS EQU 7
+DEF OPTIONS_PER_PAGE EQU 7
+DEF BATTLE_ANIMS_OPTION_MASK EQU %11
+DEF NO_RTC_SPEED_VALUE_MASK EQU %11
+DEF NUM_OPTIONS EQU 15
 
 OptionsMenu:
 	ld hl, hInMenu
@@ -47,20 +50,40 @@ OptionsMenu:
 	ret
 
 OptionsMenu_LoadOptions:
+	ld a, [wJumptableIndex]
+	push af
+	xor a
+	ldh [hJoyPressed], a
+	ldh [hJoyLast], a
+	ld a, [wCurOptionsPage]
+	and a
+	ld de, StringOptions1
+	jr z, .got_string
+	cp 1
+	ld de, StringOptions2
+	jr z, .got_string
+	ld de, StringOptions3
+.got_string
+	push de
+	hlcoord 0, 0
+	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
+	call Textbox
+	pop de
+	hlcoord 2, 2
+	rst PlaceString
 	xor a
 	ld [wJumptableIndex], a
-	ldh [hJoyPressed], a
-	ld c, NUM_OPTIONS - 1
-.print_text_loop ; this next will display the settings of each option when the menu is opened
+	call Options_GetPageCount
+.print_text_loop
 	push bc
-	xor a
-	ldh [hJoyLast], a
 	call GetOptionPointer
 	pop bc
 	ld hl, wJumptableIndex
 	inc [hl]
 	dec c
 	jr nz, .print_text_loop
+	pop af
+	ld [wJumptableIndex], a
 	ld a, [wCurOptionsPage]
 	and a
 	call z, UpdateFrame
@@ -81,15 +104,12 @@ StringOptions1:
 	next1 "        :"
 	next1 "Sound"
 	next1 "        :"
-	next1 "Next"
-	next1 "        " ; no-optimize trailing string space
-	next1 "Done"
+	next1 "Battle Anims"
+	next1 "        :"
 	done
 
 StringOptions2:
-	text  "Battle Effects"
-	next1 "        :"
-	next1 "Battle Style"
+	text  "Battle Style"
 	next1 "        :"
 	next1 "Running Shoes"
 	next1 "        :"
@@ -99,18 +119,21 @@ StringOptions2:
 	next1 "        :"
 	next1 "#dex Units"
 	next1 "        :"
-	next1 "Previous"
-	next1 "        " ; no-optimize trailing string space
+	next1 "Bike/Surf Music"
+	next1 "        :"
+	next1 "No RTC Speed"
+	next1 "        :"
+	done
+
+StringOptions3:
+	text  "Nickname Prompt"
+	next1 "        :"
 	next1 "Done"
+	next1 "        "
 	done
 
 GetOptionPointer:
-	ld a, [wCurOptionsPage]
-	and a
-	ld a, [wJumptableIndex]
-	jr z, .page1
-	add NUM_OPTIONS + 1
-.page1
+	call Options_GetGlobalIndex
 	call StackJumpTable
 
 .Pointers:
@@ -120,16 +143,16 @@ GetOptionPointer:
 	dw Options_Typeface
 	dw Options_Keyboard
 	dw Options_Sound
-	dw Options_Next
-	dw Options_Done
-
-	dw Options_BattleEffects
+	dw Options_BattleAnimations
 	dw Options_BattleStyle
+
 	dw Options_RunningShoes
 	dw Options_TurningSpeed
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_Previous
+	dw Options_BikeSurfMusic
+	dw Options_NoRTCSpeed
+	dw Options_NicknamePrompt
 	dw Options_Done
 
 Options_TextSpeed:
@@ -161,7 +184,7 @@ Options_TextSpeed:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 3
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -180,30 +203,6 @@ Options_TextSpeed:
 	db "Fast   @"
 .Instant:
 	db "Instant@"
-
-Options_BattleEffects:
-	ld hl, wOptions1
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit BATTLE_EFFECTS, [hl]
-	jr z, .SetOff
-	jr .SetOn
-.Toggle
-	bit BATTLE_EFFECTS, [hl]
-	jr z, .SetOn
-.SetOff:
-	res BATTLE_EFFECTS, [hl]
-	ld de, OffString
-	jr .Display
-.SetOn:
-	set BATTLE_EFFECTS, [hl]
-	ld de, OnString
-.Display:
-	hlcoord 11, 3
-	rst PlaceString
-	and a
-	ret
 
 Options_BattleStyle:
 	ld hl, wOptions2
@@ -245,7 +244,7 @@ Options_BattleStyle:
 	set BATTLE_PREDICT, [hl]
 	ld de, .Predict
 .Display:
-	hlcoord 11, 5
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -276,7 +275,7 @@ Options_RunningShoes:
 	set RUNNING_SHOES, [hl]
 	ld de, OnString
 .Display:
-	hlcoord 11, 7
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -318,7 +317,7 @@ UpdateFrame:
 	inc a
 	ld e, a
 	ld d, 0
-	hlcoord 17, 7
+	call Options_GetFrameCoord
 	ld a, ' '
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
@@ -346,7 +345,7 @@ Options_Sound:
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
-	hlcoord 11, 13
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -355,6 +354,84 @@ Options_Sound:
 	db "Mono  @"
 .Stereo:
 	db "Stereo@"
+
+Options_BattleAnimations:
+	ldh a, [hJoyPressed]
+	ld b, a
+	ld hl, wOptions1
+	ld a, [wOptions3]
+	ld c, a
+	ld e, 0
+	bit BATTLE_EFFECTS, [hl]
+	jr nz, .moves_on
+	inc e ; moves off
+.moves_on
+	bit BATTLE_INTRO_ANIMS, c
+	jr z, .got_index
+	ld a, e
+	add 2
+	ld e, a
+.got_index
+	ld a, b
+	and PAD_LEFT | PAD_RIGHT
+	jr z, .apply
+	bit B_PAD_LEFT, b
+	jr z, .right
+	dec e
+	jr .wrap
+.right
+	inc e
+.wrap
+	ld a, e
+	and BATTLE_ANIMS_OPTION_MASK
+	ld e, a
+.apply
+	ld a, e
+	and 1
+	jr nz, .disable_moves
+	set BATTLE_EFFECTS, [hl]
+	jr .intro_check
+.disable_moves
+	res BATTLE_EFFECTS, [hl]
+.intro_check
+	ld a, e
+	and 2
+	ld hl, wOptions3
+	jr z, .intro_on
+	set BATTLE_INTRO_ANIMS, [hl]
+	jr .display
+.intro_on
+	res BATTLE_INTRO_ANIMS, [hl]
+.display
+	ld hl, .Strings
+	ld d, 0
+	ld a, e
+	add a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	call Options_GetValueCoord
+	rst PlaceString
+	and a
+	ret
+
+.Strings:
+	dw .All
+	dw .IntroOnly
+	dw .MovesOnly
+	dw .None
+
+.All:
+	db "All  @"
+.IntroOnly:
+	db "Intro@"
+.MovesOnly:
+	db "Moves@"
+.None:
+	db "None @"
 
 Options_ClockFormat:
 	ld hl, wOptions2
@@ -375,7 +452,7 @@ Options_ClockFormat:
 	set CLOCK_FORMAT, [hl]
 	ld de, .TwentyFour
 .Display:
-	hlcoord 11, 11
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -404,7 +481,7 @@ Options_PokedexUnits:
 	set POKEDEX_UNITS, [hl]
 	ld de, .Metric
 .Display:
-	hlcoord 11, 13
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -413,6 +490,117 @@ Options_PokedexUnits:
 	db "Imperial@"
 .Metric:
 	db "Metric  @"
+
+Options_BikeSurfMusic:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit BIKE_SURF_MUSIC_OFF_F, [hl]
+	jr z, .SetOn
+	jr .SetOff
+.Toggle
+	bit BIKE_SURF_MUSIC_OFF_F, [hl]
+	jr z, .SetOff
+.SetOn:
+	res BIKE_SURF_MUSIC_OFF_F, [hl]
+	ld de, OnString
+	jr .Display
+.SetOff:
+	set BIKE_SURF_MUSIC_OFF_F, [hl]
+	ld de, OffString
+.Display:
+	call Options_GetValueCoord
+	rst PlaceString
+	and a
+	ret
+
+Options_NoRTCSpeed:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	ld b, a
+	and PAD_LEFT | PAD_RIGHT
+	jr z, .no_change
+	ld a, [hl]
+	and NO_RTC_SPEED_MASK
+	rrca
+	rrca
+	rrca
+	rrca
+	ld c, a
+	bit B_PAD_LEFT, b
+	jr z, .inc
+	dec c
+	jr .wrap
+.inc
+	inc c
+.wrap
+	ld a, c
+	and NO_RTC_SPEED_VALUE_MASK
+	swap a
+	and NO_RTC_SPEED_MASK
+	ld b, a
+	ld a, [hl]
+	and ~NO_RTC_SPEED_MASK
+	or b
+	ld [hl], a
+.no_change
+	ld a, [hl]
+	and NO_RTC_SPEED_MASK
+	swap a
+	and NO_RTC_SPEED_VALUE_MASK
+	ld hl, .Strings
+	ld d, 0
+	add a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	call Options_GetValueCoord
+	rst PlaceString
+	and a
+	ret
+
+.Strings:
+	dw .One
+	dw .Two
+	dw .Four
+	dw .Six
+
+.One:
+	db "1s/min@"
+.Two:
+	db "2s/min@"
+.Four:
+	db "4s/min@"
+.Six:
+	db "6s/min@"
+
+Options_NicknamePrompt:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit DISABLE_NICKNAME_PROMPT_F, [hl]
+	jr z, .SetOn
+	jr .SetOff
+.Toggle
+	bit DISABLE_NICKNAME_PROMPT_F, [hl]
+	jr z, .SetOff
+.SetOn:
+	res DISABLE_NICKNAME_PROMPT_F, [hl]
+	ld de, OnString
+	jr .Display
+.SetOff:
+	set DISABLE_NICKNAME_PROMPT_F, [hl]
+	ld de, OffString
+.Display:
+	call Options_GetValueCoord
+	rst PlaceString
+	and a
+	ret
 
 Options_TextAutoscroll:
 	ldh a, [hJoyPressed]
@@ -444,7 +632,7 @@ Options_TextAutoscroll:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 5
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -484,7 +672,7 @@ Options_TurningSpeed:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 9
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -549,7 +737,7 @@ Options_Typeface:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	hlcoord 11, 9
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -600,7 +788,7 @@ Options_Keyboard:
 	set QWERTY_KEYBOARD_F, [hl]
 	ld de, .QWERTY
 .Display:
-	hlcoord 11, 11
+	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
@@ -609,37 +797,6 @@ Options_Keyboard:
 	db "ABCDEF@"
 .QWERTY:
 	db "QWERTY@"
-
-Options_Next:
-	ldh a, [hJoyPressed]
-	and PAD_A | PAD_LEFT | PAD_RIGHT
-	jr z, _SwitchOptionsPage.NonePressed
-	ld hl, wCurOptionsPage
-	inc [hl]
-	ld de, StringOptions2
-	jr _SwitchOptionsPage
-
-Options_Previous:
-	ldh a, [hJoyPressed]
-	and PAD_A | PAD_LEFT | PAD_RIGHT
-	jr z, _SwitchOptionsPage.NonePressed
-	ld hl, wCurOptionsPage
-	dec [hl]
-	ld de, StringOptions1
-_SwitchOptionsPage:
-	push de
-	hlcoord 0, 0
-	lb bc, 16, 18
-	call Textbox
-	pop de
-	hlcoord 2, 2
-	rst PlaceString
-	call OptionsMenu_LoadOptions
-	ld a, NUM_OPTIONS - 1
-	ld [wJumptableIndex], a
-.NonePressed:
-	and a
-	ret
 
 Options_Done:
 	ldh a, [hJoyPressed]
@@ -653,7 +810,6 @@ Options_Done:
 	ret
 
 OptionsControl:
-	ld hl, wJumptableIndex
 	ldh a, [hJoyLast]
 	cp PAD_DOWN
 	jr z, .DownPressed
@@ -663,22 +819,58 @@ OptionsControl:
 	ret
 
 .DownPressed:
-	ld a, [hl] ; load the cursor position to a
+	ld a, [wCurOptionsPage]
+	ld d, a
+	call Options_GetGlobalIndex
 	cp NUM_OPTIONS
-	jr nz, .Increase
-	ld [hl], -1
-.Increase:
-	inc [hl]
+	jr nc, .wrap_down
+	inc a
+	jr .update
+.wrap_down
+	xor a
+.update
+	call Options_SetPageAndIndexFromGlobal
+	ld a, [wCurOptionsPage]
+	cp d
+	jr z, .no_reload_down
+	call OptionsMenu_LoadOptions
+.no_reload_down
+	call Options_GetPageCount
+	ld a, [wJumptableIndex]
+	cp c
+	jr c, .down_ok
+	ld a, c
+	dec a
+	ld [wJumptableIndex], a
+.down_ok
 	scf
 	ret
 
 .UpPressed:
-	ld a, [hl]
+	ld a, [wCurOptionsPage]
+	ld d, a
+	call Options_GetGlobalIndex
 	and a
-	jr nz, .Decrease
-	ld [hl], NUM_OPTIONS + 1
-.Decrease:
-	dec [hl]
+	jr nz, .not_first
+	ld a, NUM_OPTIONS
+	jr .update_up
+.not_first
+	dec a
+.update_up
+	call Options_SetPageAndIndexFromGlobal
+	ld a, [wCurOptionsPage]
+	cp d
+	jr z, .no_reload_up
+	call OptionsMenu_LoadOptions
+.no_reload_up
+	call Options_GetPageCount
+	ld a, [wJumptableIndex]
+	cp c
+	jr c, .up_ok
+	ld a, c
+	dec a
+	ld [wJumptableIndex], a
+.up_ok
 	scf
 	ret
 
@@ -696,4 +888,71 @@ Options_UpdateCursorPosition:
 	ld a, [wJumptableIndex]
 	rst AddNTimes
 	ld [hl], '▶'
+	ret
+
+Options_GetGlobalIndex:
+	ld a, [wCurOptionsPage]
+	ld b, a
+	add a
+	add a
+	add b
+	add b
+	add b ; page * 7
+	ld b, a
+	ld a, [wJumptableIndex]
+	add b
+	ret
+
+Options_SetPageAndIndexFromGlobal:
+	ld b, 0
+.loop
+	cp OPTIONS_PER_PAGE
+	jr c, .done
+	sub OPTIONS_PER_PAGE
+	inc b
+	jr .loop
+.done
+	ld [wJumptableIndex], a
+	ld a, b
+	ld [wCurOptionsPage], a
+	ret
+
+Options_GetBaseCoord:
+	hlcoord 0, 0
+	ld a, [wJumptableIndex]
+	add a
+	add 2
+	ld bc, SCREEN_WIDTH
+	rst AddNTimes
+	ret
+
+Options_GetValueCoord:
+	call Options_GetBaseCoord
+	ld bc, SCREEN_WIDTH + 11
+	add hl, bc
+	ret
+
+Options_GetFrameCoord:
+	call Options_GetBaseCoord
+	ld bc, SCREEN_WIDTH + 17
+	add hl, bc
+	ret
+
+Options_GetPageCount:
+	ld a, [wCurOptionsPage]
+	ld b, a
+	add a
+	add a
+	add b
+	add b
+	add b ; page * 7
+	ld e, a
+	ld a, NUM_OPTIONS + 1
+	sub e
+	ld c, a
+	ld a, OPTIONS_PER_PAGE
+	cp c
+	jr nc, .use_c
+	ld c, OPTIONS_PER_PAGE
+.use_c
 	ret
