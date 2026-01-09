@@ -1744,7 +1744,7 @@ CaveGrottoScript:
 	special FadeOutPalettes
 	pause 15
 	callasm _HiddenGrottoBackupMap
-	warpfacing UP, HIDDEN_CAVE_GROTTO, 35, 85
+	warpfacing UP, HIDDEN_CAVE_GROTTO, 5, 15
 	end
 
 _HiddenGrottoInitScript:

@@ -118,7 +118,7 @@ ENDM
 	map_const WHIRL_ISLAND_NW,                            17, 18 ; 56
 	map_const WHIRL_ISLAND_NE,                            10,  9 ; 57
 	map_const WHIRL_ISLAND_SW,                            10,  9 ; 58
-	map_const WHIRL_ISLAND_CAVE,                          20, 45 ; 59
+	map_const WHIRL_ISLAND_CAVE,                           5,  8 ; 59
 	map_const WHIRL_ISLAND_SE,                             5,  9 ; 60
 	map_const WHIRL_ISLAND_B1F,                           20, 18 ; 61
 	map_const WHIRL_ISLAND_B2F,                           10, 18 ; 62
@@ -129,7 +129,7 @@ ENDM
 	map_const SILVER_CAVE_ITEM_ROOMS,                     20, 18 ; 67
 	map_const DARK_CAVE_VIOLET_ENTRANCE,                  20, 18 ; 68
 	map_const DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 69
-	map_const DRAGONS_DEN_1F,                             20, 45 ; 70
+	map_const DRAGONS_DEN_1F,                             10,  4 ; 70
 	map_const DRAGONS_DEN_B1F,                            20, 18 ; 71
 	map_const DRAGON_SHRINE,                               5,  5 ; 72
 	map_const TOHJO_FALLS,                                15,  9 ; 73
@@ -434,7 +434,7 @@ ENDM
 	map_const TRADE_CENTER,                                5,  4 ;  2
 	map_const COLOSSEUM,                                   5,  4 ;  3
 	map_const HIDDEN_TREE_GROTTO,                          5,  9 ;  4
-	map_const HIDDEN_CAVE_GROTTO,                         20, 45 ;  5
+	map_const HIDDEN_CAVE_GROTTO,                          5,  9 ;  5
 	map_const YELLOW_FOREST_GATE,                          5,  4 ;  6
 	map_const YELLOW_FOREST,                              29, 26 ;  7
 
