@@ -390,11 +390,15 @@ ENDM
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0
 
-	map_attributes Route23, ROUTE_23, $2c, NORTH
+	map_attributes Route23North, ROUTE_23_NORTH, $2c, NORTH | SOUTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
+	connection south, Route23South, ROUTE_23_SOUTH, 0
+
+	map_attributes Route23South, ROUTE_23_SOUTH, $2c, NORTH
+	connection north, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
-	connection south, Route23, ROUTE_23, 0
+	connection south, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
 	connection north, RockyBeach, ROCKY_BEACH, 0

@@ -353,16 +353,17 @@ ENDM
 	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
 
 	newgroup                                                     ; 16
-	map_const ROUTE_23,                                   12, 70 ;  1
-	map_const INDIGO_PLATEAU,                             12, 13 ;  2
-	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  3
-	map_const WILLS_ROOM,                                  5,  9 ;  4
-	map_const KOGAS_ROOM,                                  5,  9 ;  5
-	map_const BRUNOS_ROOM,                                 5,  9 ;  6
-	map_const KARENS_ROOM,                                 5,  9 ;  7
-	map_const LANCES_ROOM,                                 7, 12 ;  8
-	map_const HALL_OF_FAME,                                5,  7 ;  9
-	map_const BELLCHIME_TRAIL,                            12,  7 ; 10
+	map_const ROUTE_23_NORTH,                             12, 38 ;  1
+	map_const ROUTE_23_SOUTH,                             12, 32 ;  2
+	map_const INDIGO_PLATEAU,                             12, 13 ;  3
+	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  4
+	map_const WILLS_ROOM,                                  5,  9 ;  5
+	map_const KOGAS_ROOM,                                  5,  9 ;  6
+	map_const BRUNOS_ROOM,                                 5,  9 ;  7
+	map_const KARENS_ROOM,                                 5,  9 ;  8
+	map_const LANCES_ROOM,                                 7, 12 ;  9
+	map_const HALL_OF_FAME,                                5,  7 ; 10
+	map_const BELLCHIME_TRAIL,                            12,  7 ; 11
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1

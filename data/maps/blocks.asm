@@ -1769,9 +1769,13 @@ SECTION "Route22Past_BlockData", ROMX
 Route22Past_BlockData:
 	INCBIN "maps/Route22Past.ablk.lz"
 
-SECTION "Route23_BlockData", ROMX
-Route23_BlockData:
-	INCBIN "maps/Route23.ablk.lz"
+SECTION "Route23North_BlockData", ROMX
+Route23North_BlockData:
+	INCBIN "maps/Route23North.ablk.lz"
+
+SECTION "Route23South_BlockData", ROMX
+Route23South_BlockData:
+	INCBIN "maps/Route23South.ablk.lz"
 
 SECTION "Route24_BlockData", ROMX
 Route24_BlockData:
