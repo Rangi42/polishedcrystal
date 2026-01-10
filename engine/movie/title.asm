@@ -332,6 +332,29 @@ InitializeCrystalSprites:
 	ld d, a
 	dec c
 	jr nz, .loop
+
+	; set palettes for crystal sprites besides #0
+	ld a, 0 | OAM_PRIO
+	ld [wShadowOAMSprite00Attributes], a
+	ld [wShadowOAMSprite01Attributes], a
+	ld [wShadowOAMSprite02Attributes], a
+	ld [wShadowOAMSprite06Attributes], a
+	ld [wShadowOAMSprite21Attributes], a
+	ld [wShadowOAMSprite24Attributes], a
+	ld [wShadowOAMSprite25Attributes], a
+	ld [wShadowOAMSprite26Attributes], a
+	ld a, 2 | OAM_PRIO
+	ld [wShadowOAMSprite07Attributes], a
+	ld [wShadowOAMSprite19Attributes], a
+	ld [wShadowOAMSprite20Attributes], a
+	inc a ; 3 | OAM_PRIO
+	ld [wShadowOAMSprite08Attributes], a
+
+	; create overlapping sprites
+	ld hl, .OverlappingSprites
+	ld de, wShadowOAMSprite30
+	ld bc, 6 * OBJ_SIZE
+	rst CopyBytes
 	ret
 
 .InitRow:
@@ -347,11 +370,19 @@ InitializeCrystalSprites:
 	ld [hli], a ; tile ID
 	inc e ; increment tile ID
 	inc e
-	ld a, 0 | OAM_PRIO
+	ld a, 1 | OAM_PRIO
 	ld [hli], a ; attribute
 	dec c
 	jr nz, .loop2
 	ret
+
+.OverlappingSprites:
+	db -$12, $40, $3c, 1 | OAM_PRIO
+	db -$12, $48, $3e, 4 | OAM_PRIO
+	db  $1e, $40, $40, 1 | OAM_PRIO
+	db  $1d, $48, $42, 1 | OAM_PRIO
+	db  $1e, $50, $44, 1 | OAM_PRIO
+	db  $0e, $60, $46, 0 | OAM_PRIO
 
 AnimateTitleCrystal:
 ; Move the title screen crystal downward until it's fully visible
@@ -363,8 +394,8 @@ AnimateTitleCrystal:
 	cp 6 + $10
 	ret z
 
-; Move all 30 parts of the crystal down by 2
-	ld c, 30
+; Move all 36 parts of the crystal down by 2
+	ld c, 36
 .loop
 	ld a, [hl]
 	add 2
