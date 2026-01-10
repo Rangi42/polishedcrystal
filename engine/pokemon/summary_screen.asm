@@ -137,46 +137,7 @@ SummaryScreenInit:
 	ret
 
 .SummaryScreenObjPalettes:
-; pink
-	RGB 31, 31, 31
-	RGB 31, 15, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; blue
-	RGB 31, 31, 31
-	RGB 17, 31, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; green
-	RGB 31, 31, 31
-	RGB 17, 31, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; orange
-	RGB 31, 31, 31
-	RGB 30, 22, 12
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; green info button
-	RGB 31, 31, 31
-	RGB 16, 24, 10
-	RGB 31, 31, 31
-	RGB 00, 00, 00 ; placeholder
-; unused
-	RGB 31, 31, 31
-	RGB 31, 31, 31 ; unused
-	RGB 31, 31, 31 ; unused
-	RGB 00, 00, 00 ; placeholder
-; arrow dark
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 10, 06
-	RGB 00, 00, 00 ; placeholder
-; arrow light
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 20, 20
-	RGB 00, 00, 00 ; placeholder
+INCLUDE "gfx/stats/summary_sprites.pal"
 
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
