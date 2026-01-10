@@ -150,7 +150,7 @@ endc
 	call LoadSuicuneFrame
 
 ; Initialize background crystal
-	call InitializeBackground
+	call InitializeCrystalSprites
 
 ; Save WRAM bank
 	ldh a, [rWBK]
@@ -319,36 +319,36 @@ DrawTitleGraphic:
 	jr nz, .bgrows
 	ret
 
-InitializeBackground:
+InitializeCrystalSprites:
 	ld hl, wShadowOAM
-	lb de, -$22, $0
-	ld c, 5
+	lb de, -$22, $00 ; initial top-left Y coord, top-left tile ID
+	ld c, 5 ; column height
 .loop
 	push bc
-	call .InitColumn
+	call .InitRow
 	pop bc
-	ld a, $10
+	ld a, $10 ; increment Y coord
 	add d
 	ld d, a
 	dec c
 	jr nz, .loop
 	ret
 
-.InitColumn:
-	lb bc, $40, $6
+.InitRow:
+	lb bc, $40, 6 ; left X coord, row width
 .loop2
 	ld a, d
-	ld [hli], a
+	ld [hli], a ; Y coord
 	ld a, b
-	ld [hli], a
-	add $8
+	ld [hli], a ; X coord
+	add 8 ; increment X coord
 	ld b, a
 	ld a, e
-	ld [hli], a
+	ld [hli], a ; tile ID
+	inc e ; increment tile ID
 	inc e
-	inc e
-	ld a, $80
-	ld [hli], a
+	ld a, 0 | OAM_PRIO
+	ld [hli], a ; attribute
 	dec c
 	jr nz, .loop2
 	ret
