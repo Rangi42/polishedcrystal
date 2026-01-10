@@ -5537,9 +5537,18 @@ MoveInfoBox:
 	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
 	ld hl, TypeIconGFX
 	ld bc, 4 * TILE_1BPP_SIZE
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
 	ld e, l

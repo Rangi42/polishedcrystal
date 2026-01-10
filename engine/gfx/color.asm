@@ -120,10 +120,19 @@ StatusIconPals:
 INCLUDE "gfx/battle/status.pal"
 
 LoadBattleCategoryAndTypePals:
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
+	ld c, a
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld b, a
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-	ld c, a
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT + 2
 LoadCategoryAndTypePals:
 	ld hl, CategoryIconPals
