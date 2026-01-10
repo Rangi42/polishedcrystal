@@ -722,7 +722,7 @@ HandleTrackVibrato:
 	add hl, bc
 	bit SOUND_PITCH_OFFSET, [hl]
 	jr z, .vibrato
-	ld hl, wChannel1CryPitch - wChannel1
+	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
@@ -1125,10 +1125,10 @@ RestoreVolume:
 	cp CHAN5
 	ret nz
 	xor a
-	ld hl, wChannel6CryPitch
+	ld hl, wChannel6PitchOffset
 	ld [hli], a
 	ld [hl], a
-	ld hl, wChannel8CryPitch
+	ld hl, wChannel8PitchOffset
 	ld [hli], a
 	ld [hl], a
 	ld a, [wLastVolume]
@@ -1521,7 +1521,7 @@ Music_Tone:
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_PITCH_OFFSET, [hl]
-	ld hl, wChannel1CryPitch - wChannel1
+	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
 	call GetMusicWord
 	ld a, e
@@ -1680,7 +1680,7 @@ Music_ForceOctave:
 ; this forces all notes up by the starting octave
 ; params: 1
 	call GetMusicByte
-	ld hl, wChannel1PitchOffset - wChannel1
+	ld hl, wChannel1Transposition - wChannel1
 	add hl, bc
 	ld [hl], a
 	ret
@@ -1888,7 +1888,7 @@ GetFrequency:
 	ld e, a
 .added
 	; get starting octave
-	ld hl, wChannel1PitchOffset - wChannel1
+	ld hl, wChannel1Transposition - wChannel1
 	add hl, bc
 	ld a, [hl]
 	swap a ; hi nybble
@@ -2144,7 +2144,7 @@ _PlayCry::
 	inc hl ; Flags2
 	set SOUND_PITCH_OFFSET, [hl]
 
-	ld hl, wChannel1CryPitch - wChannel1
+	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
 	ld a, [wCryPitch]
 	ld [hli], a
