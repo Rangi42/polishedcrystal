@@ -22,6 +22,9 @@ SummaryScreen_BluePage:
 	res NO_LINE_SPACING_F, a
 	ld [wTextboxFlags], a
 
+	ld a, [wInitialOptions]
+	and ABILITIES_OPTMASK
+	jr z, .no_ability
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
 	swap a
@@ -33,6 +36,7 @@ SummaryScreen_BluePage:
 	ld a, [hl]
 	hlcoord 18, 13
 	ld [hl], a
+.no_ability
 
 	ld hl, wTempMonPersonality
 	ld a, [wTempMonSpecies]
