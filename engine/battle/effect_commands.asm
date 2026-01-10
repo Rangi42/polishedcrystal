@@ -122,36 +122,10 @@ DoTurn:
 	call UpdateMoveData
 	; fallthrough
 DoMove:
-; Get the user's move effect.
-	; Abilities ignorance doesn't apply for future moves (even active users).
-	call GetFutureSightUser
-	jr nc, .mold_breaker_done
-
-	; Check if Mold Breaker applies.
-	call GetTrueUserIgnorableAbility
-	cp MOLD_BREAKER
-	jr nz, .mold_breaker_done
-
-	ldh a, [hBattleTurn]
-	and a
-	ld a, MOVESTATE_IGNOREABIL
-	jr z, .got_mb_side
-	swap a
-.got_mb_side
-	ld hl, wMoveState
-	or [hl]
-	ld [hl], a
-
-.mold_breaker_done
-	; Increase move usage counter if applicable
-	call IncreaseMetronomeCount
-	call GetMoveScript
-
-	ld a, l
-	ld [wBattleScriptBufferLoc], a
-	ld a, h
-	ld [wBattleScriptBufferLoc + 1], a
-
+	; InitializeMove was split off to handle moves that restart move execution,
+	; such as with items like Power Herb, or moves like Metronome.
+	; Otherwise, they would nest move execution, which caused problems.
+	call InitializeMove
 .ReadMoveEffectCommand:
 	call ReadMoveScriptByte
 
@@ -196,6 +170,38 @@ ReadMoveScriptByte:
 
 	ld a, BANK(MoveEffectsPointers)
 	jmp GetFarByte
+
+InitializeMove:
+; Get the user's move effect.
+	; Abilities ignorance doesn't apply for future moves (even active users).
+	call GetFutureSightUser
+	jr nc, .mold_breaker_done
+
+	; Check if Mold Breaker applies.
+	call GetTrueUserIgnorableAbility
+	cp MOLD_BREAKER
+	jr nz, .mold_breaker_done
+
+	ldh a, [hBattleTurn]
+	and a
+	ld a, MOVESTATE_IGNOREABIL
+	jr z, .got_mb_side
+	swap a
+.got_mb_side
+	ld hl, wMoveState
+	or [hl]
+	ld [hl], a
+
+.mold_breaker_done
+	; Increase move usage counter if applicable
+	call IncreaseMetronomeCount
+	call GetMoveScript
+
+	ld a, l
+	ld [wBattleScriptBufferLoc], a
+	ld a, h
+	ld [wBattleScriptBufferLoc + 1], a
+	ret
 
 CheckTurn:
 BattleCommand_checkturn:
@@ -621,7 +627,7 @@ _ResetTurn:
 	ld [hl], a
 	xor a
 	ld [wAlreadyDisobeyed], a
-	jmp DoMove
+	jmp InitializeMove
 
 MoveDisabled:
 	; Make sure any charged moves fail
