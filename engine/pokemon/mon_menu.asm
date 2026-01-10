@@ -1485,10 +1485,7 @@ SetUpMoveScreenBG:
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	call LoadFontsBattleExtra
-	ld hl, GFX_Summary ; needed for "PP" tiles
-	ld de, vTiles2 tile SUMMARY_TILE_START
-	lb bc, BANK(GFX_Summary), 21
-	call DecompressRequest2bpp
+	farcall LoadBoldPDoubled
 	call ClearSpriteAnims2
 	ld a, [wTempMonSpecies]
 	ld [wTempIconSpecies], a

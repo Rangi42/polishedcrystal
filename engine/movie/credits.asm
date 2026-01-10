@@ -23,7 +23,7 @@ Credits::
 	call ClearSprites
 
 	ld hl, wCreditsBlankFrame2bpp
-	ld c, $80
+	ld c, (16 tiles) / 2
 	lb de, %11111111, %00000000 ; solid light gray hue
 
 .load_loop

@@ -916,7 +916,7 @@ wInverGroup::
 SECTION UNION "Misc 1300", WRAM0
 ; credits image
 
-wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
+wCreditsBlankFrame2bpp:: ds 16 tiles
 
 
 SECTION UNION "Misc 1300", WRAM0
@@ -1002,6 +1002,8 @@ ds 13
 assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10
+
+wSummaryScreenPPTileBuffer:: ds 3 * TILE_1BPP_SIZE
 
 
 SECTION UNION "Misc 1300", WRAM0

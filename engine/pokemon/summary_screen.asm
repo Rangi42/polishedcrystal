@@ -181,8 +181,10 @@ SummaryScreenInit:
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
 	ld de, vTiles2 tile SUMMARY_TILE_START
-	lb bc, BANK(GFX_Summary), 21
+	lb bc, BANK(GFX_Summary), 18
 	call DecompressRequest2bpp
+
+	farcall LoadBoldPDoubled
 
 	ld a, 1
 	ldh [rVBK], a
