@@ -47,30 +47,15 @@ _TitleScreen:
 
 ; Apply logo gradient:
 
-; lines 3-4
+; lines 3-6
 	hlbgcoord 0, 3
-	ld bc, 2 * TILEMAP_WIDTH
+	ld bc, 4 * TILEMAP_WIDTH
 	ld a, 2
 	rst ByteFill
-; line 5
-	hlbgcoord 0, 5
-	ld bc, TILEMAP_WIDTH
-	ld a, 3
-	rst ByteFill
-; line 6
-	hlbgcoord 0, 6
-	ld bc, TILEMAP_WIDTH
-	ld a, 4
-	rst ByteFill
-; line 7
+; line 7-9
 	hlbgcoord 0, 7
-	ld bc, TILEMAP_WIDTH
-	ld a, 5
-	rst ByteFill
-; lines 8-9
-	hlbgcoord 0, 8
-	ld bc, 2 * TILEMAP_WIDTH
-	ld a, 6
+	ld bc, 3 * TILEMAP_WIDTH
+	ld a, 3
 	rst ByteFill
 
 ; 'CRYSTAL VERSION'
@@ -80,10 +65,22 @@ _TitleScreen:
 	rst ByteFill
 
 ; Suicune gfx
-	hlbgcoord 0, 12
-	ld bc, 6 * TILEMAP_WIDTH ; the rest of the screen
-	ld a, 8
-	rst ByteFill
+	hlbgcoord 6, 12
+	lb bc, 6, 8
+	ld a, 4 | BG_BANK1
+.row
+	push bc
+	push hl
+.col
+	ld [hli], a
+	dec c
+	jr nz, .col
+	pop hl
+	ld bc, TILEMAP_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .row
 
 ; Back to VRAM bank 0
 	xor a
@@ -116,6 +113,30 @@ _TitleScreen:
 	lb bc, 1, 13
 	lb de, $0c, 0
 	call DrawTitleGraphic
+
+; Draw Unowns
+	hlcoord 1, 11
+	lb bc, 2, 2
+	lb de, $1a, 2
+	call DrawTitleGraphic
+	hlcoord 2, 14
+	lb bc, 2, 2
+	lb de, $1e, 2
+	call DrawTitleGraphic
+	hlcoord 17, 11
+	lb bc, 3, 2
+	lb de, $22, 2
+	call DrawTitleGraphic
+	hlcoord 16, 14
+	lb bc, 2, 2
+	lb de, $28, 2
+	call DrawTitleGraphic
+	hlcoord 18, 14
+	ld [hl], $2c
+	hlcoord 5, 11
+	ld [hl], $2d
+	hlcoord 15, 11
+	ld [hl], $2e
 
 IF DEF(FAITHFUL)
 	hlbgcoord 17, 0, vBGMap1
@@ -360,7 +381,7 @@ TitleSuicuneGFX:
 INCBIN "gfx/title/suicune.2bpp.lz"
 
 TitleLogoGFX:
-INCBIN "gfx/title/logo_version.2bpp.lz"
+INCBIN "gfx/title/logo_bg.2bpp.lz"
 
 TitleCrystalGFX:
 INCBIN "gfx/title/crystal.2bpp.lz"
