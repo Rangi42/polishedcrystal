@@ -1,12 +1,12 @@
 BattleCommand_counter:
-	ld a, 1
-	ld [wAttackMissed], a
-
 	; Doesn't work if the target is immune to this move's type
 	call BattleCommand_resettypematchup
 	ld a, [wTypeMatchup]
 	and a
 	ret z
+
+	ld a, ATKFAIL_GENERIC
+	ld [wAttackMissed], a
 
 	; Only works if countering of the same move category
 	ld a, BATTLE_VARS_MOVE_CATEGORY

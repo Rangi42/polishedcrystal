@@ -1,7 +1,7 @@
 RunEntryAbilitiesInner:
 	; See if we are doing a Neutralizing Gas deactivation, which
 	; ignores some entry abilities.
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	inc a
 	jr nz, _RunEntryAbilitiesInner
 	; fallthrough
@@ -18,11 +18,16 @@ _RunEntryAbilitiesInner:
 	call EndAbility
 	call HasUserFainted
 	ret z
+	; These abilities cannot be ignored.
 	call HasOpponentFainted
 	ld hl, BattleEntryAbilities
 	jr z, UserAbilityJumptable
 	ld hl, BattleEntryAbilitiesNonfainted
 	jr UserAbilityJumptable
+
+UserIgnorableAbilityJumptable:
+	call GetTrueUserIgnorableAbility
+	jr AbilityJumptable
 
 RunEnemyStatusHealAbilities:
 	call StackCallOpponentTurn
@@ -90,6 +95,7 @@ NotificationAbilities:
 	call StdBattleTextbox
 	jmp EndAbility
 
+
 ImmunityAbility:
 PastelVeilAbility:
 	ld a, 1 << PSN
@@ -156,7 +162,7 @@ ObliviousAbility:
 	jmp EndAbility
 
 TraceAbility:
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	farcall AbilityCanBeTraced
 	ret c
 
@@ -231,7 +237,7 @@ WeatherAbility:
 
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	inc a
 	jr z, .intimidate_ok
 	dec a
@@ -259,7 +265,7 @@ IntimidateAbility:
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .continue
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp RATTLED
 	ld b, SPEED
 	call z, StatUpAbility
@@ -531,7 +537,7 @@ ScreenCleanerAbility:
 
 RunEnemySynchronizeAbility:
 	call SwitchTurn
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
 	jmp SwitchTurn
@@ -574,7 +580,7 @@ ResolveOpponentBerserk_CheckMultihit:
 	ret nz
 
 	; Check if user has Parental Bond
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp PARENTAL_BOND
 	ret z
 
@@ -586,7 +592,7 @@ ResolveOpponentBerserk:
 	ret z
 	res SUBSTATUS_IN_ABILITY, [hl]
 
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp BERSERK
 	ret nz
 
@@ -602,9 +608,9 @@ RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
 	farcall GetFutureSightUser
 	ret nz
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	call _RunFaintUserAbilities
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	push af
 	call SwitchTurn
 	pop af
@@ -617,7 +623,7 @@ _RunFaintOpponentAbilities:
 	; fallthrough
 AftermathAbility:
 	; Damp protects against this
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp DAMP
 	ret z
 	; Only contact moves proc Aftermath
@@ -646,7 +652,7 @@ RunHitAbilities:
 	call GetBattleVar
 	ld c, a
 	push bc
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	push af
 	call SwitchTurn
 	pop af
@@ -689,8 +695,8 @@ CursedBodyAbility:
 RunContactAbilities:
 ; turn perspective is from the attacker
 	ld hl, UserContactAbilities
-	call UserAbilityJumptable
-	call GetOpponentAbilityAfterMoldBreaker
+	call UserIgnorableAbilityJumptable
+	call GetOpponentIgnorableAbility
 	call SwitchTurn
 	ld hl, TargetContactAbilities
 	call AbilityJumptable
@@ -765,7 +771,7 @@ TanglingHairAbility:
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
 	ret z
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp OVERCOAT
 	ret z
 	farcall GetOpponentItemAfterUnnerve
@@ -809,7 +815,7 @@ _AfflictStatusAbility:
 	inc b
 	dec b
 	jr nz, .enemy_ability
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp SHIELD_DUST
 	ret z
 
@@ -865,7 +871,7 @@ CheckNullificationAbilities:
 ; an opponent's used attack (not Overcoat vs powder which is checked with Grass)
 	; Most abilities depends on types and can use a lookup table, but a few
 	; don't. Check these first.
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	ld b, a
 	cp DAMP
 	jr z, .damp
@@ -953,7 +959,7 @@ RunEnemyNullificationAbilities:
 	call StackCallOpponentTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
-	call UserAbilityJumptable
+	call UserIgnorableAbilityJumptable
 	ret nz
 
 	; For other abilities, don't do anything except print a message (for example Levitate)
@@ -995,7 +1001,7 @@ RunStatIncreaseAbilities:
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
 	ld hl, StatIncreaseAbilities
-	call UserAbilityJumptable
+	call UserIgnorableAbilityJumptable
 	jmp SwitchTurn
 
 StatIncreaseAbilities:
@@ -1064,7 +1070,7 @@ StatUpAbility:
 	jr z, .done
 
 ; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp LIGHTNING_ROD
 	jr z, .print_immunity
 	cp MOTOR_DRIVE
@@ -1136,7 +1142,7 @@ WaterAbsorbAbility:
 ApplySpeedAbilities:
 ; Passive speed boost abilities
 	ld hl, SpeedAbilities
-	jmp UserAbilityJumptable
+	jmp UserIgnorableAbilityJumptable
 
 SpeedAbilities:
 	dbw UNBURDEN, UnburdenAbility
@@ -1166,8 +1172,8 @@ QuickFeetAbility:
 
 ApplyAccuracyAbilities:
 	ld hl, UserAccuracyAbilities
-	call UserAbilityJumptable
-	call GetOpponentAbilityAfterMoldBreaker
+	call UserIgnorableAbilityJumptable
+	call GetOpponentIgnorableAbility
 	ld hl, TargetAccuracyAbilities
 	jmp AbilityJumptable
 
@@ -1248,7 +1254,7 @@ WeatherBoostAbility:
 
 RunWeatherAbilities:
 	ld hl, WeatherAbilities
-	jmp UserAbilityJumptable
+	jmp UserIgnorableAbilityJumptable
 
 WeatherAbilities:
 	dbw DRY_SKIN, DrySkinWeatherAbility
@@ -1286,7 +1292,7 @@ WeatherRecoveryAbility:
 	ret z
 	call BeginAbility
 	call ShowAbilityActivation
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
 	call GetSixteenthMaxHP
@@ -1312,9 +1318,9 @@ _EndturnAbilities:
 	call HasUserFainted
 	pop hl
 	ret z
-	call UserAbilityJumptable
+	call UserIgnorableAbilityJumptable
 	ld hl, StatusHealAbilities
-	jmp UserAbilityJumptable
+	jmp UserIgnorableAbilityJumptable
 
 EndturnAbilityTableA:
 	dbw SHED_SKIN, ShedSkinAbility
@@ -1596,8 +1602,8 @@ MoodyAbility:
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
-	call UserAbilityJumptable
-	call GetOpponentAbilityAfterMoldBreaker
+	call UserIgnorableAbilityJumptable
+	call GetOpponentIgnorableAbility
 	ld hl, DefensiveDamageAbilities_AfterTypeMatchup
 	jmp AbilityJumptable
 
@@ -1612,8 +1618,8 @@ DefensiveDamageAbilities_AfterTypeMatchup:
 
 ApplyDamageAbilities:
 	ld hl, OffensiveDamageAbilities
-	call UserAbilityJumptable
-	call GetOpponentAbilityAfterMoldBreaker
+	call UserIgnorableAbilityJumptable
+	call GetOpponentIgnorableAbility
 	ld hl, DefensiveDamageAbilities
 	jmp AbilityJumptable
 
@@ -1648,6 +1654,7 @@ DefensiveDamageAbilities:
 	dbw THICK_FAT, EnemyThickFatAbility
 	dbw DRY_SKIN, EnemyDrySkinAbility
 	dbw FUR_COAT, EnemyFurCoatAbility
+	dbw FLUFFY, EnemyFluffyAbility
 	dbw -1, -1
 
 TechnicianAbility:
@@ -1918,6 +1925,22 @@ EnemyFurCoatAbility:
 	ln a, 1, 2 ; 1/2 = 50%
 	jmp ApplyPhysicalDefenseDamageMod
 
+EnemyFluffyAbility:
+	; Weakness to Fire...
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr nz, .fire_done
+	ln a, 2, 1 ; x2
+	call MultiplyAndDivide
+
+.fire_done
+	; ...but resistant to contact (stacks with Fire weakness if applicable).
+	call CheckContactMove
+	ret c
+	ln a, 1, 2 ; 1/2 = 50%
+	jmp MultiplyAndDivide
+
 HydrationAbility:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_RAIN
@@ -1952,7 +1975,7 @@ AngerPointAbility:
 
 RunSwitchAbilities:
 ; abilities that activate when you switch out
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp NATURAL_CURE
 	jr z, NaturalCureAbility
 	cp REGENERATOR
@@ -1971,17 +1994,27 @@ RegeneratorAbility:
 	jmp z, UpdateBattleMonInParty
 	jmp UpdateEnemyMonInParty
 
-_GetOpponentAbilityAfterMoldBreaker::
-; Returns an opponent's ability unless Mold Breaker
-; will suppress it. Preserves bc/de/hl.
+_GetOpponentIgnorableAbility::
+	call GetOpponentAbility
+	jr _GetIgnorableAbility
+_GetTrueUserIgnorableAbility::
+	call GetTrueUserAbility
+	call StackCallOpponentTurn
+_GetIgnorableAbility:
+; Check if user's Mold Breaker ignores opponent's ability a.
+; Returns the opponent's ability unless the other side is ignoring Abilities.
 	push de
 	push bc
-	call GetOpponentAbility
 	ld b, a
-	call GetTrueUserAbility
-	cp MOLD_BREAKER
-	ld a, b
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wMoveState]
+	jr z, .got_movestate
+	swap a
+.got_movestate
+	and MOVESTATE_IGNOREABIL
 	jr nz, .done
+
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities

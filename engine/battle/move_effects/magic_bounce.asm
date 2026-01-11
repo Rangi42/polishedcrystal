@@ -1,6 +1,6 @@
 BattleCommand_bounceback:
 ; Possibly bounce back an attack with Magic Bounce
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp MAGIC_BOUNCE
 	ret nz
 
@@ -61,11 +61,7 @@ BattleCommand_bounceback:
 	set SUBSTATUS_IN_ABILITY, [hl]
 
 	; Invert who went first
-	ld a, [wEnemyGoesFirst]
-	xor 1
-	ld [wEnemyGoesFirst], a
-
-	call InvertDeferredSwitch
+	call InvertMoveUser
 
 	; Do the move
 	call UpdateMoveData
@@ -73,11 +69,7 @@ BattleCommand_bounceback:
 	call ResetTurn
 
 	; Restore old data
-	ld a, [wEnemyGoesFirst]
-	xor 1
-	ld [wEnemyGoesFirst], a
-
-	call InvertDeferredSwitch
+	call InvertMoveUser
 
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
@@ -89,5 +81,14 @@ BattleCommand_bounceback:
 	ld [hl], a
 	call UpdateMoveData
 	jmp SwitchTurn
+
+InvertMoveUser:
+	ld a, [wEnemyGoesFirst]
+	xor 1
+	ld [wEnemyGoesFirst], a
+
+	ld hl, wMoveState
+	swap [hl]
+	jmp InvertDeferredSwitch
 
 INCLUDE "data/moves/substitute_bypass_moves.asm"

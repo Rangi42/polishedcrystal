@@ -265,57 +265,8 @@ VBlank4::
 .noDelay2
 	call Joypad
 
-	; A variant of code in vblank1 for running the sound engine with LCD int
-	ldh a, [hROMBankBackup]
-	push af
-	ldh a, [rIE]
-	push af
-	ldh a, [rIF]
-	push af
-	xor a
-	ldh [rIF], a
-	ldh a, [rIE]
-	and IE_STAT
-	ldh [rIE], a
+	jr VBlankUpdateSound
 
-	call VBlankUpdateSound
-
-	; Ensure that we don't miss an interrupt in the tiny window between di+reti
-	ldh a, [rIE]
-	and IE_STAT
-	jr z, .di
-	ldh a, [rLYC]
-	ld b, a
-.busyloop
-	ldh a, [rLY]
-	sub b
-	jr z, .busyloop
-	inc a
-	jr z, .busyloop
-.di
-	di
-
-	; get requested ints
-	ldh a, [rIF]
-	ld b, a
-
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ldh [rIF], a
-
-	; enable ints besides joypad
-	pop af
-	ldh [rIE], a
-
-	; rerequest ints
-	ld a, b
-	ldh [rIF], a
-	pop af
-	ldh [hROMBankBackup], a
-	ret
 
 VBlank1::
 ; scx, scy
@@ -339,37 +290,8 @@ VBlank1::
 .done
 	call PushOAM
 
-	; get requested ints
-	ldh a, [rIE]
-	push af
-	ldh a, [rIF]
-	push af
+	jr VBlankUpdateSound
 
-	xor a
-	ldh [rIF], a
-
-	call VBlankUpdateSound
-	di
-
-	; get requested ints
-	ldh a, [rIF]
-	ld b, a
-
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ldh [rIF], a
-
-	; enable ints besides joypad
-	pop af
-	ldh [rIE], a
-
-	; rerequest ints
-	ld a, b
-	ldh [rIF], a
-	ret
 
 VBlank5::
 ; scx
@@ -390,21 +312,8 @@ VBlank5::
 .done
 	call Joypad
 
-	xor a
-	ldh [rIF], a
-	ldh a, [rIE]
-	push af
+	jmp VBlankUpdateSound
 
-	call VBlankUpdateSound
-	di
-
-	xor a
-	ldh [rIF], a
-
-	; enable usual interrupts
-	pop af
-	ldh [rIE], a
-	ret
 
 VBlank7::
 ; special vblank routine

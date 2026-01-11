@@ -396,7 +396,7 @@ KimonoGirlMinaScript:
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked DRAGONSDENB1F_KIMONO_GIRL
-	loadtrainer KIMONO_GIRL_8, 1
+	loadtrainerwithpal KIMONO_GIRL, MINA, TRAINERPAL_MINA
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIMONO_GIRL_MINA
@@ -405,7 +405,7 @@ KimonoGirlMinaScript:
 	writetext .AfterText
 	promptbutton
 	verbosegiveitem ABILITYPATCH
-	iffalse_endtext
+	iffalse_jumpopenedtext .BagFullText
 	setevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
 	jumpthisopenedtext
 
@@ -419,6 +419,12 @@ KimonoGirlMinaScript:
 	para "Dragon's Den is an"
 	line "ideal place for me"
 	cont "to train."
+	done
+
+.BagFullText:
+	text "…That is, once you"
+	line "have freed up some"
+	cont "space in your Bag."
 	done
 
 .IntroText:

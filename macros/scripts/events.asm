@@ -1399,4 +1399,12 @@ MACRO pluralize
 	dw \1 ; pointer
 ENDM
 
+	const loadtrainerwithpal_command
+MACRO loadtrainerwithpal
+	db loadtrainerwithpal_command
+	db \1 ; trainer_group
+	db \2 ; trainer_id
+	db \3 ; palette
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

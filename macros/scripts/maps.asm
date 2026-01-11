@@ -180,6 +180,11 @@ MACRO trainer
 	dw \3
 	db \1, \2
 	dw \4, \5, \6, \7
+	if _NARG == 8
+		db \8
+	else
+		db 0
+	endc
 ENDM
 
 MACRO generictrainer

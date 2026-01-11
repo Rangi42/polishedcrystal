@@ -3640,7 +3640,7 @@ BillsPC_CursorPosValid:
 	ret
 
 BillsPC_LCDCode:
-LOAD UNION "Misc 1326", WRAM0
+LOAD UNION "Misc 1300", WRAM0
 wLCDBillsPC1::
 	; Write boxmon palettes
 	ldh a, [rSTAT]

@@ -76,6 +76,8 @@ NewGame:
 _NewGame_FinishSetup:
 	call ResetWRAM
 	farcall ClearSavedObjPals
+	ld a, -1
+	ld [wOvercastRandomDay], a
 	call NewGame_ClearTileMapEtc
 	call WarnVBA
 	call SetInitialOptions

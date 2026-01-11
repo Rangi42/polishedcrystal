@@ -275,6 +275,7 @@ RunScriptCommand:
 	dw Script_givebadge                  ; d8
 	dw Script_setquantity                ; d9
 	dw Script_pluralize                  ; da
+	dw Script_loadtrainerwithpal         ; db
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -671,22 +672,16 @@ GetPocketName:
 INCLUDE "data/items/pocket_names.asm"
 
 GetKeyItemPocketName:
-	ld hl, KeyPocketName
+	ld hl, ItemPocketNames.Key
 	jr CopySpecialPocketName
 
-KeyPocketName:
-	db "Key Pocket@"
-
 GetTMHMPocketName:
-	ld hl, TMHMPocketName
+	ld hl, ItemPocketNames.TM
 CopySpecialPocketName:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer3
 	jmp CopyName2
-
-TMHMPocketName:
-	db "TM Pocket@"
 
 Script_pokemart:
 	call Script_faceplayer
@@ -1220,6 +1215,19 @@ Script_loadtrainer:
 	ld [wOtherTrainerClass], a
 	call GetScriptByte
 	ld [wOtherTrainerID], a
+	xor a
+	ld [wTrainerPal], a
+	ret
+
+Script_loadtrainerwithpal:
+	ld a, (1 << 7) | 1
+	ld [wBattleScriptFlags], a
+	call GetScriptByte
+	ld [wOtherTrainerClass], a
+	call GetScriptByte
+	ld [wOtherTrainerID], a
+	call GetScriptByte
+	ld [wTrainerPal], a
 	ret
 
 Script_startbattle:

@@ -526,6 +526,7 @@ WillOWispDescription:
 ThunderWaveDescription:
 	db   "A move that"
 	next "paralyzes the foe.@"
+	done
 
 StunSporeDescription:
 GlareDescription:

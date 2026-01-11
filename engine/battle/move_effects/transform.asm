@@ -22,7 +22,7 @@ BattleCommand_transform:
 	jmp z, BattleEffect_ButItFailed
 .not_armored_mewtwo
 
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp INFILTRATOR
 	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP

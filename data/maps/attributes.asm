@@ -390,11 +390,15 @@ ENDM
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0
 
-	map_attributes Route23, ROUTE_23, $2c, NORTH
+	map_attributes Route23North, ROUTE_23_NORTH, $2c, NORTH | SOUTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
+	connection south, Route23South, ROUTE_23_SOUTH, 0
+
+	map_attributes Route23South, ROUTE_23_SOUTH, $2c, NORTH
+	connection north, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
-	connection south, Route23, ROUTE_23, 0
+	connection south, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
 	connection north, RockyBeach, ROCKY_BEACH, 0
@@ -423,6 +427,10 @@ ENDM
 
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
+
+	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9, NORTH | SOUTH
+	connection north, NavelRockInside, NAVEL_ROCK_INSIDE, 11
+	connection south, NavelRockInside, NAVEL_ROCK_INSIDE, -11
 
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -882,7 +890,6 @@ ENDM
 	map_attributes SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
 	map_attributes SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
 	map_attributes NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35, 0
-	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
 	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0
 	map_attributes FarawayIsland, FARAWAY_ISLAND, $6, 0
 	map_attributes FarawayJungle, FARAWAY_JUNGLE, $17, 0
