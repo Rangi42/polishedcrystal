@@ -166,7 +166,7 @@ OverworldMonIconColors::
 	iconpal AZURE, TEAL ; FERALIGATR
 	iconpal BROWN, PURPLE ; SENTRET
 	iconpal BROWN, RED ; FURRET
-	iconpal BROWN, RED ; HOOTHOOT
+	iconpal BROWN, GRAY ; HOOTHOOT
 	iconpal BROWN, GREEN ; NOCTOWL
 	iconpal RED, PINK ; LEDYBA
 	iconpal RED, PINK ; LEDIAN
