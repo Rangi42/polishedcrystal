@@ -77,9 +77,9 @@ OverworldMonIconColors::
 	iconpal GREEN, BROWN ; VICTREEBEL
 	iconpal BLUE, AZURE ; TENTACOOL
 	iconpal BLUE, AZURE ; TENTACRUEL
-	iconpal BROWN, RED ; GEODUDE
-	iconpal BROWN, RED ; GRAVELER
-	iconpal BROWN, RED ; GOLEM
+	iconpal BROWN, ORANGE ; GEODUDE
+	iconpal BROWN, ORANGE ; GRAVELER
+	iconpal BROWN, ORANGE ; GOLEM
 	iconpal RED, BLUE ; PONYTA
 	iconpal RED, BLUE ; RAPIDASH
 	iconpal PINK, PURPLE ; SLOWPOKE
