@@ -113,7 +113,8 @@ RandomOvercastMapsKanto:
 	overcast_map ROUTE_20
 	overcast_map ROUTE_21
 	overcast_map ROUTE_22
-	overcast_map ROUTE_23
+	overcast_map ROUTE_23_NORTH
+	overcast_map ROUTE_23_SOUTH
 	overcast_map ROUTE_24
 	overcast_map ROUTE_25
 	overcast_map ROUTE_26
