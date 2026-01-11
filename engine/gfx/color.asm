@@ -993,7 +993,8 @@ LoadMapPals:
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
-	dec a
+	; Use map group to select an overcast roof palette (full table per group)
+	ld a, [wMapGroup]
 	ld hl, OvercastRoofPals
 	jr .get_roof_color
 
@@ -1044,7 +1045,9 @@ INCLUDE "gfx/tilesets/roofs.pal"
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
+	table_width COLOR_SIZE * 2 * 3
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
+	assert_table_length NUM_MAP_GROUPS + 1
 
 INCLUDE "data/pokemon/palettes.asm"
 

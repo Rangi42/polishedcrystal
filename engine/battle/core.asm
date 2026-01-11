@@ -8927,8 +8927,14 @@ AutomaticBattleWeather:
 	ld hl, SandstormBrewedText
 	jr z, .got_weather
 .not_rugged_road_or_snowtop_mountain
-	; Automatic rain on overcast maps
+	; Automatic rain when raining
+	; first check if its overcast conditions
 	farcall GetOvercastIndex
+	and a
+	ret z
+	; don't rain if we aren't actually raining
+	ld a, [wOvercastCurIntensity]
+	assert OVERCAST_INTENSITY_OVERCAST == 0
 	and a
 	ret z
 	lb de, WEATHER_RAIN, RAIN_DANCE
