@@ -24,10 +24,10 @@ _SwitchPartyMons:
 	rst ByteFill
 	pop af
 	ld hl, wShadowOAM
-	ld bc, $10
+	ld bc, 5 * 4
 	rst AddNTimes
 	ld de, $4
-	ld c, $4
+	ld c, 5
 .gfx_loop
 	ld [hl], OAM_YCOORD_HIDDEN
 	add hl, de

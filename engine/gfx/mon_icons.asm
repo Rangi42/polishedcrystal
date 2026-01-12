@@ -90,7 +90,7 @@ SetTradeMiniIconColor:
 _SetMonColor:
 	ld hl, wShadowOAM + 3
 _ShiftedSetMonColor:
-	ld c, 4
+	ld c, 5
 	ld de, 4
 .loop
 	ld [hl], a
@@ -202,9 +202,15 @@ SetPartyMenuMonMiniColors:
 .got_species
 	ld [wCurPartySpecies], a
 
-	ld hl, wShadowOAM + 3
+	; hl = wShadowOAM + OAMA_FLAGS + [wCurPartyMon] * 5 * 4
+	ld hl, wShadowOAM + OAMA_FLAGS
 	ld a, [wCurPartyMon]
-	swap a
+	add a
+	add a
+	ld e, a
+	add a
+	add a
+	add e
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -215,14 +221,12 @@ SetPartyMenuMonMiniColors:
 	inc a
 	ld de, 4
 	ld [hl], a
-	add hl, de
-	ld [hl], a
-	add hl, de
 	push hl
+rept 4
 	add hl, de
 	ld [hl], a
+endr
 	pop hl
-	ld [hl], a
 
 	; item and mail icons use palette 0
 	ld a, [wCurIconMonHasItemOrMail]
@@ -366,7 +370,7 @@ _LoadMonMini:
 	ld a, 1
 	ld hl, wShadowOAM + 3
 	ld de, 4
-rept 3
+rept 4
 	ld [hl], a
 	add hl, de
 endr
