@@ -157,3 +157,11 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_PUNCHING_GLOVE
 	const HELD_COVERT_CLOAK
 	const HELD_LOADED_DICE
+
+; held item icon types (see gfx/stats/held_items.png)
+	const_def
+	const HELDTYPE_ITEM       ; 0
+	const HELDTYPE_INERT_ITEM ; 1
+	const HELDTYPE_MAIL       ; 2
+	const HELDTYPE_BERRY      ; 3
+DEF NUM_HELD_ITEM_TYPES EQU const_value

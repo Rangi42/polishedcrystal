@@ -88,10 +88,10 @@ SetTradeMiniIconColor:
 	ld a, 1 ; OBJ 1
 	; fallthrough
 _SetMonColor:
-	ld hl, wShadowOAM + 3
+	ld hl, wShadowOAMSprite00Attributes
 _ShiftedSetMonColor:
-	ld c, 5
-	ld de, 4
+	ld c, MINI_OAM_COUNT
+	ld de, OBJ_SIZE
 .loop
 	ld [hl], a
 	add hl, de
@@ -202,15 +202,15 @@ SetPartyMenuMonMiniColors:
 .got_species
 	ld [wCurPartySpecies], a
 
-	; hl = wShadowOAM + OAMA_FLAGS + [wCurPartyMon] * 5 * 4
-	ld hl, wShadowOAM + OAMA_FLAGS
+	; hl = wShadowOAMSprite00Attributes + [wCurPartyMon] * MINI_OAM_COUNT * OAMA_FLAGS
+	ld hl, wShadowOAMSprite00Attributes
 	ld a, [wCurPartyMon]
-	add a
-	add a
+	add a ; * 2
+	add a ; * 4
 	ld e, a
-	add a
-	add a
-	add e
+	add a ; * 8
+	add a ; * 16
+	add e ; + a * 4
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -219,10 +219,10 @@ SetPartyMenuMonMiniColors:
 	ld a, [wCurPartyMon]
 	inc a
 	inc a
-	ld de, 4
+	ld de, OBJ_SIZE
 	ld [hl], a
 	push hl
-rept 4
+rept MINI_OAM_COUNT - 1
 	add hl, de
 	ld [hl], a
 endr
@@ -368,9 +368,9 @@ _LoadMonMini:
 	ld de, wOBPals1 palette 1 + 2
 	farcall LoadTempMonPalette
 	ld a, 1
-	ld hl, wShadowOAM + 3
-	ld de, 4
-rept 4
+	ld hl, wShadowOAMSprite00Attributes
+	ld de, OBJ_SIZE
+rept MINI_OAM_COUNT - 1
 	ld [hl], a
 	add hl, de
 endr
@@ -525,10 +525,10 @@ GetMiniGFX:
 	ld de, 8 tiles
 	add hl, de
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 4
+	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Request2bpp
 	ld a, [wCurIconTile]
-	add 12
+	add 8 + NUM_HELD_ITEM_TYPES
 	ld [wCurIconTile], a
 	ret
 
@@ -639,7 +639,7 @@ FreezeMonIcons:
 	pop hl
 
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
@@ -660,7 +660,7 @@ UnfreezeMonIcons:
 	ld [hl], SPRITE_ANIM_SEQ_PARTY_MON
 	pop hl
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
@@ -689,11 +689,13 @@ HoldSwitchmonIcon:
 	ld [hl], a
 	pop hl
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
 	ret
 
 HeldItemIcons:
+	table_width TILE_SIZE
 INCBIN "gfx/stats/held_items.2bpp"
+	assert_table_length NUM_HELD_ITEM_TYPES

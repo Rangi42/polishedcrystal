@@ -115,8 +115,10 @@ BillsPC_LoadUI:
 	; Held item icons
 	ld hl, vTiles3 tile $1c
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 4
+	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Get2bpp
+	assert $1c + NUM_HELD_ITEM_TYPES <= $20, \
+		"held item icons overlap tile $20 (ttem for mon cursor is hovering)"
 
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
@@ -1212,12 +1214,12 @@ BillsPC_GetItemIconOffset:
 ; output: de = offset in tiles
 	ld d, 0
 	call ItemIsMail_a ; preserves a
-	ld e, 2 tiles ; mail
+	ld e, HELDTYPE_MAIL tiles
 	ret c
 	cp FIRST_BERRY
 	jr c, .not_berry
 	cp FIRST_BERRY + NUM_BERRIES
-	ld e, 3 tiles ; berry
+	ld e, HELDTYPE_BERRY tiles
 	ret c
 .not_berry
 	ld c, a
@@ -1228,9 +1230,9 @@ BillsPC_GetItemIconOffset:
 	ld a, BANK(ItemAttributes)
 	call GetFarByte
 	and a
-	ld e, 1 tiles ; inert item
+	ld e, HELDTYPE_INERT_ITEM tiles
 	ret z
-	ld e, 0 tiles ; item
+	ld e, HELDTYPE_ITEM tiles
 	ret
 
 BillsPC_CheckBagDisplay:

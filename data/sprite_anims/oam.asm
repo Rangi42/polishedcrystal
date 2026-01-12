@@ -190,7 +190,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, $1
 
 .OAMData_PartyMon:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
@@ -205,7 +205,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, $0 | OAM_PRIO
 
 .OAMData_PartyMonWithItem1:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $08, $0
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
@@ -213,7 +213,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithItem2:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $08, $0
 	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
@@ -221,7 +221,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithInertItem1:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $09, $0
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
@@ -229,7 +229,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithInertItem2:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $09, $0
 	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
@@ -237,7 +237,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithMail1:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $0a, $0
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
@@ -245,7 +245,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithMail2:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $0a, $0
 	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
@@ -253,7 +253,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithBerry1:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $0b, $0
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
@@ -261,7 +261,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithBerry2:
-	db 5
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $0b, $0
 	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
