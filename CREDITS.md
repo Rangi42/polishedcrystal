@@ -87,6 +87,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
+* Sage Deoxys for Dudunsparce's sprites.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
