@@ -118,7 +118,7 @@ BillsPC_LoadUI:
 	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Get2bpp
 	assert $1c + NUM_HELD_ITEM_TYPES <= $20, \
-		"held item icons overlap tile $20 (ttem for mon cursor is hovering)"
+		"held item icons overlap tile $20 (item for mon cursor is hovering)"
 
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX

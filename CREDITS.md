@@ -88,6 +88,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
 * Sage Deoxys for Dudunsparce's sprites.
+* Egg3ggEgg for Wyrdeer's sprite.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
