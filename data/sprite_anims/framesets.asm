@@ -3,8 +3,10 @@ SpriteAnimFrameData:
 	table_width 2
 	dw .Frameset_00
 	dw .Frameset_PartyMon
-	dw .Frameset_PartyMonWithMail
 	dw .Frameset_PartyMonWithItem
+	dw .Frameset_PartyMonWithInertItem
+	dw .Frameset_PartyMonWithMail
+	dw .Frameset_PartyMonWithBerry
 	dw .Frameset_TextEntryCursor
 	dw .Frameset_TextEntryCursorBig
 	dw .Frameset_TextEntryCursorBlue
@@ -72,14 +74,24 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  8
 	oamrestart
 
+.Frameset_PartyMonWithItem:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2,  8
+	oamrestart
+
+.Frameset_PartyMonWithInertItem:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_2,  8
+	oamrestart
+
 .Frameset_PartyMonWithMail:
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  8
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithItem:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1,  8
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2,  8
+.Frameset_PartyMonWithBerry:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_2,  8
 	oamrestart
 
 .Frameset_RedWalk:

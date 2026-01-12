@@ -289,11 +289,31 @@ LoadPartyMenuMonMini:
 	and a
 	ret z
 	ld d, a
-	call ItemIsMail
-	; a = carry ? SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL : SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL + 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	sbc a
-	add SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	call ItemIsMail_a
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
+	jr c, .got_frameset
+	ld a, d
+	cp FIRST_BERRY
+	jr c, .not_berry
+	cp FIRST_BERRY + NUM_BERRIES
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_BERRY
+	jr c, .got_frameset
+.not_berry
+	push bc
+	ld hl, ItemAttributes + ITEMATTR_EFFECT
+	ld c, d
+	ld b, 0
+	ld a, ITEMATTR_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, BANK(ItemAttributes)
+	call GetFarByte
+	pop bc
+	and a
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_INERT_ITEM
+	jr z, .got_frameset
+	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_INERT_ITEM - 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	dec a
+.got_frameset
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -501,10 +521,10 @@ GetMiniGFX:
 	ld de, 8 tiles
 	add hl, de
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
+	lb bc, BANK(HeldItemIcons), 4
 	call Request2bpp
 	ld a, [wCurIconTile]
-	add 10
+	add 12
 	ld [wCurIconTile], a
 	ret
 
@@ -672,5 +692,4 @@ HoldSwitchmonIcon:
 	ret
 
 HeldItemIcons:
-INCBIN "gfx/stats/mail.2bpp"
-INCBIN "gfx/stats/item.2bpp"
+INCBIN "gfx/stats/held_items.2bpp"

@@ -54,6 +54,8 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const_def
 
 	const HELD_NONE
+	const HELD_OTHER ; only needed for non-inert party menu icon
+
 	const HELD_BERRY
 	const HELD_LEFTOVERS
 	const HELD_RESTORE_PP
