@@ -238,20 +238,7 @@ SummaryScreen_PinkPage:
 	ret
 
 .PinkPalettes:
-	RGB 31, 19, 31
-	RGB 31, 25, 02
-	RGB 04, 17, 31
-	RGB 00, 00, 00
-
-	RGB 31, 29, 31
-	RGB 31, 19, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 31, 29, 31
-	RGB 31, 19, 31
-	RGB 27, 11, 27
-	RGB 31, 25, 02
+INCLUDE "gfx/stats/pink_page.pal"
 
 .BallSprites:
 	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, OAM_YFLIP

@@ -22,6 +22,9 @@ SummaryScreen_BluePage:
 	res NO_LINE_SPACING_F, a
 	ld [wTextboxFlags], a
 
+	ld a, [wInitialOptions]
+	and ABILITIES_OPTMASK
+	jr z, .no_ability
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
 	swap a
@@ -33,6 +36,7 @@ SummaryScreen_BluePage:
 	ld a, [hl]
 	hlcoord 18, 13
 	ld [hl], a
+.no_ability
 
 	ld hl, wTempMonPersonality
 	ld a, [wTempMonSpecies]
@@ -51,10 +55,10 @@ SummaryScreen_BluePage:
 
 	; Handle display one by one since Sp.Atk/Sp.Def/Speed is displayed in a
 	; different order.
-	hlcoord 0, 10
-	ld de, -4
+	hlbgcoord 11, 0, wSummaryScreenWindowBuffer
+	ld de, TILEMAP_WIDTH
 	call .CheckHyper ; HP
-	ld de, SCREEN_WIDTH * 2
+	add hl, de ; move past the HP bar
 	call .CheckHyper ; Attack
 	call .CheckHyper ; Defense
 	rlca ; skips the speed one for now
@@ -104,41 +108,10 @@ SummaryScreen_BluePage:
 	ret
 
 .BluePalettes:
-	RGB 17, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 29, 31, 31
-	RGB 17, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 29, 31, 31
-	RGB 17, 31, 31
-	RGB 31, 31, 31
-	RGB 23, 07, 03
-
-	RGB 29, 31, 31
-	RGB 17, 31, 31
-	RGB 31, 31, 31
-	RGB 03, 15, 29
+INCLUDE "gfx/stats/blue_page.pal"
 
 .HPPalettes:
-	RGB 29, 31, 31
-	RGB 31, 25, 02
-	RGB 00, 23, 00
-	RGB 00, 00, 00
-
-	RGB 29, 31, 31
-	RGB 31, 25, 02
-	RGB 31, 21, 00
-	RGB 00, 00, 00
-
-	RGB 29, 31, 31
-	RGB 31, 25, 02
-	RGB 31, 00, 00
-	RGB 00, 00, 00
+INCLUDE "gfx/stats/blue_hp_bars.pal"
 
 .HPString:
 	db "HP@"

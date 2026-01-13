@@ -88,10 +88,10 @@ SetTradeMiniIconColor:
 	ld a, 1 ; OBJ 1
 	; fallthrough
 _SetMonColor:
-	ld hl, wShadowOAM + 3
+	ld hl, wShadowOAMSprite00Attributes
 _ShiftedSetMonColor:
-	ld c, 4
-	ld de, 4
+	ld c, MINI_OAM_COUNT
+	ld de, OBJ_SIZE
 .loop
 	ld [hl], a
 	add hl, de
@@ -202,9 +202,15 @@ SetPartyMenuMonMiniColors:
 .got_species
 	ld [wCurPartySpecies], a
 
-	ld hl, wShadowOAM + 3
+	; hl = wShadowOAMSprite00Attributes + [wCurPartyMon] * MINI_OAM_COUNT * OAMA_FLAGS
+	ld hl, wShadowOAMSprite00Attributes
 	ld a, [wCurPartyMon]
-	swap a
+	add a ; * 2
+	add a ; * 4
+	ld e, a
+	add a ; * 8
+	add a ; * 16
+	add e ; + a * 4
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -213,16 +219,14 @@ SetPartyMenuMonMiniColors:
 	ld a, [wCurPartyMon]
 	inc a
 	inc a
-	ld de, 4
+	ld de, OBJ_SIZE
 	ld [hl], a
-	add hl, de
-	ld [hl], a
-	add hl, de
 	push hl
+rept MINI_OAM_COUNT - 1
 	add hl, de
 	ld [hl], a
+endr
 	pop hl
-	ld [hl], a
 
 	; item and mail icons use palette 0
 	ld a, [wCurIconMonHasItemOrMail]
@@ -289,11 +293,31 @@ LoadPartyMenuMonMini:
 	and a
 	ret z
 	ld d, a
-	call ItemIsMail
-	; a = carry ? SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL : SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL + 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	sbc a
-	add SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	call ItemIsMail_a
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
+	jr c, .got_frameset
+	ld a, d
+	cp FIRST_BERRY
+	jr c, .not_berry
+	cp FIRST_BERRY + NUM_BERRIES
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_BERRY
+	jr c, .got_frameset
+.not_berry
+	push bc
+	ld hl, ItemAttributes + ITEMATTR_EFFECT
+	ld c, d
+	ld b, 0
+	ld a, ITEMATTR_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, BANK(ItemAttributes)
+	call GetFarByte
+	pop bc
+	and a
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_INERT_ITEM
+	jr z, .got_frameset
+	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_INERT_ITEM - 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	dec a
+.got_frameset
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -344,9 +368,9 @@ _LoadMonMini:
 	ld de, wOBPals1 palette 1 + 2
 	farcall LoadTempMonPalette
 	ld a, 1
-	ld hl, wShadowOAM + 3
-	ld de, 4
-rept 3
+	ld hl, wShadowOAMSprite00Attributes
+	ld de, OBJ_SIZE
+rept MINI_OAM_COUNT - 1
 	ld [hl], a
 	add hl, de
 endr
@@ -501,10 +525,10 @@ GetMiniGFX:
 	ld de, 8 tiles
 	add hl, de
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
+	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Request2bpp
 	ld a, [wCurIconTile]
-	add 10
+	add 8 + NUM_HELD_ITEM_TYPES
 	ld [wCurIconTile], a
 	ret
 
@@ -615,7 +639,7 @@ FreezeMonIcons:
 	pop hl
 
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
@@ -636,7 +660,7 @@ UnfreezeMonIcons:
 	ld [hl], SPRITE_ANIM_SEQ_PARTY_MON
 	pop hl
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
@@ -665,12 +689,13 @@ HoldSwitchmonIcon:
 	ld [hl], a
 	pop hl
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
 	ret
 
 HeldItemIcons:
-INCBIN "gfx/stats/mail.2bpp"
-INCBIN "gfx/stats/item.2bpp"
+	table_width TILE_SIZE
+INCBIN "gfx/stats/held_items.2bpp"
+	assert_table_length NUM_HELD_ITEM_TYPES

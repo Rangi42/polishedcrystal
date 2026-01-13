@@ -672,22 +672,16 @@ GetPocketName:
 INCLUDE "data/items/pocket_names.asm"
 
 GetKeyItemPocketName:
-	ld hl, KeyPocketName
+	ld hl, ItemPocketNames.Key
 	jr CopySpecialPocketName
 
-KeyPocketName:
-	db "Key Pocket@"
-
 GetTMHMPocketName:
-	ld hl, TMHMPocketName
+	ld hl, ItemPocketNames.TM
 CopySpecialPocketName:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer3
 	jmp CopyName2
-
-TMHMPocketName:
-	db "TM Pocket@"
 
 Script_pokemart:
 	call Script_faceplayer

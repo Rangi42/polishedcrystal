@@ -2608,6 +2608,7 @@ PrintAprValues:
 GBCSounds:
 	call FadeToMenu
 	farcall MusicPlayer
+	call ReturnToMapFromSubmenu
 	jr _FinishFullscreenItem
 
 TypeChart:

@@ -1879,8 +1879,8 @@ OverqwilFrames:   INCLUDE "gfx/pokemon/overqwil/frames.asm"
 SECTION "Dudunsparce Pics", ROMX
 DudunsparceTwoSegmentFrontpic:   INCBIN "gfx/pokemon/dudunsparce_two_segment/front.animated.2bpp.lz"
 DudunsparceThreeSegmentFrontpic: INCBIN "gfx/pokemon/dudunsparce_three_segment/front.animated.2bpp.lz"
-DudunsparceTwoSegmentBackpic:
-DudunsparceThreeSegmentBackpic:  INCBIN "gfx/pokemon/dudunsparce/back.2bpp.lz"
+DudunsparceTwoSegmentBackpic:    INCBIN "gfx/pokemon/dudunsparce_two_segment/back.2bpp.lz"
+DudunsparceThreeSegmentBackpic:  INCBIN "gfx/pokemon/dudunsparce_three_segment/back.2bpp.lz"
 DudunsparceTwoSegmentFrames:     INCLUDE "gfx/pokemon/dudunsparce_two_segment/frames.asm"
 DudunsparceThreeSegmentFrames:   INCLUDE "gfx/pokemon/dudunsparce_three_segment/frames.asm"
 

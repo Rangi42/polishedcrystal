@@ -1,6 +1,6 @@
 NAME := polishedcrystal
 MODIFIERS :=
-VERSION := 3.2.2
+VERSION := 3.2.3
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc
@@ -239,7 +239,8 @@ gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates -
 gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
-gfx/title/logo_version.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; $Qcat $^ > $@
+gfx/title/unowns.2bpp: tools/gfx += --trim-whitespace
+gfx/title/logo_bg.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp gfx/title/unowns.2bpp ; $Qcat $^ > $@
 
 gfx/town_map/town_map.2bpp: tools/gfx += --trim-whitespace
 

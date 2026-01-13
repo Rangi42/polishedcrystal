@@ -86,15 +86,7 @@ SummaryScreen_GreenPage:
 	farjp PrintItemDescription
 
 .GreenPalettes:
-	RGB 21, 31, 14
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 30, 31, 29
-	RGB 21, 31, 14
-	RGB 31, 31, 31
-	RGB 00, 00, 00
+INCLUDE "gfx/stats/green_page.pal"
 
 .NoHeldItemString:
 	db "No held item@"

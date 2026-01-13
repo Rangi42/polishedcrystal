@@ -226,15 +226,10 @@ BattleTurn:
 	ret
 
 ResetAbilityIgnorance:
-; Resets the "ignoring foe's ability" flag.
+; Resets the "ignoring foe's ability" flag for both sides.
 ; When move sequence order is replicated, this dedicated routine will no longer
 ; be necessary, because it will be an inherent part of the move sequence.
-	ldh a, [hBattleTurn]
-	and a
-	ld a, ~MOVESTATE_IGNOREABIL
-	jr z, .got_movestate
-	swap a
-.got_movestate
+	ld a, ~(MOVESTATE_IGNOREABIL | MOVESTATE_OPP_IGNOREABIL)
 	push hl
 	ld hl, wMoveState
 	and [hl]
@@ -1235,6 +1230,20 @@ endr
 	call NewEnemyMonStatus
 
 .volatile_done
+	; Starting with 8gen, ability ignorance no longer affects the move user,
+	; but does affect other Pokémon on the move user's side. This includes
+	; Pokémon switched into the same slot during move execution.
+	; Example: Mold Breaker U-turn that pivots into a Levitate mon should
+	; take Spikes damage. Ignoring abilities entirely, which is how 7gen
+	; behaved, causes problems if we were to add Sunsteel Strike/etc.
+	; ResetAbilityIgnorance will reset both sides' ignorance state.
+	ld a, [wMoveState]
+	ld d, a
+	and MOVESTATE_IGNOREABIL
+	swap a
+	or d
+	ld [wMoveState], a
+
 	; Switch active mon
 	ldh a, [hBattleTurn]
 	and a
@@ -5528,9 +5537,18 @@ MoveInfoBox:
 	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
 	ld hl, TypeIconGFX
 	ld bc, 4 * TILE_1BPP_SIZE
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
 	ld e, l
@@ -8909,8 +8927,14 @@ AutomaticBattleWeather:
 	ld hl, SandstormBrewedText
 	jr z, .got_weather
 .not_rugged_road_or_snowtop_mountain
-	; Automatic rain on overcast maps
+	; Automatic rain when raining
+	; first check if its overcast conditions
 	farcall GetOvercastIndex
+	and a
+	ret z
+	; don't rain if we aren't actually raining
+	ld a, [wOvercastCurIntensity]
+	assert OVERCAST_INTENSITY_OVERCAST == 0
 	and a
 	ret z
 	lb de, WEATHER_RAIN, RAIN_DANCE

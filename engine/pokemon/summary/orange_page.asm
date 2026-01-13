@@ -41,15 +41,7 @@ SummaryScreen_OrangePage:
 	ret
 
 .OrangePalettes:
-	RGB 30, 24, 16
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 31, 30, 29
-	RGB 30, 24, 16
-	RGB 31, 31, 31
-	RGB 00, 00, 00
+INCLUDE "gfx/stats/orange_page.pal"
 
 .NatureString:
 	db "Nature/@"

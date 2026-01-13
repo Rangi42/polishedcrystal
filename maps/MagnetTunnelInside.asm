@@ -61,12 +61,13 @@ MagnetTunnelInsideTileCallback:
 .NoMachine3
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
 	iffalsefwd .NoPit
+	changeblock 34, 8, $70
 	changeblock 34, 4, $68
 	endcallback
 .NoPit
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_4
 	iffalsefwd .NoMachine4
-	changeblock 34, 8, $6b
+	changeblock 34, 8, $36
 	changeblock 34, 6, $35
 .NoMachine4
 	endcallback
@@ -177,7 +178,7 @@ MagnetTunnelInsideMachine4:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 34, 8, $6b
+	changeblock 34, 8, $36
 	refreshmap
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
@@ -219,7 +220,7 @@ MagnetTunnelInsideMachine4:
 	writetext MagnetTunnelInsideMachineText6
 	waitbutton
 	closetext
-	changeblock 34, 8, $6a
+	changeblock 34, 8, $70
 	changeblock 34, 6, $34
 	refreshmap
 	moveobject MAGNETTUNNELINSIDE_STONE_4, 34, 7
