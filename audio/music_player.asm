@@ -140,7 +140,7 @@ MusicPlayer::
 ; Clear wMPNotes
 	xor a
 	ld hl, wMPNotes
-	ld bc, 4 * 256
+	ld bc, 3 * 256
 	rst ByteFill
 ; fallthrough
 
