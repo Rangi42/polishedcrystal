@@ -23,8 +23,8 @@ ShamoutiIsland_MapScriptHeader:
 	object_event 16,  8, SPRITE_ALOLAN_EXEGGUTOR, SPRITEMOVEDATA_ALOLAN_EXEGGUTOR, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandAlolanExeggutorScript, EVENT_SHAMOUTI_ISLAND_ALOLAN_EXEGGUTOR
 	object_event 16,  7, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_ISLAND_ALOLAN_EXEGGUTOR
 	fruittree_event 34, 13, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY, PAL_NPC_BROWN
-	object_event 24, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
-	pokemon_event 25, 14, MARILL, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, ShamoutiIslandPikabluText, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
+	object_event 24, 14, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandWilhomenaScript, EVENT_SHAMOUTI_ISLAND_WILHOMENA
+	pokemon_event 25, 14, MARILL, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, ShamoutiIslandPikabluText, EVENT_SHAMOUTI_ISLAND_WILHOMENA
 	object_event 20,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 	object_event 23,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 	object_event 12, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandGrampsScript, -1
@@ -79,15 +79,15 @@ ShamoutiIslandAlolanExeggutorScript:
 	done
 
 ShamoutiIslandGrampsScript:
-	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_WILHOMENA
 	iftruefwd .souvenir
 	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1
 
 .souvenir
 	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1_SOUVENIR
 
-ShamoutiIslandYoungsterScript:
-	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+ShamoutiIslandWilhomenaScript:
+	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_WILHOMENA
 	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
@@ -95,7 +95,7 @@ ShamoutiIslandYoungsterScript:
 	promptbutton
 	verbosegiveitem ODD_SOUVENIR
 	iffalse_endtext
-	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	setevent EVENT_GOT_ODD_SOUVENIR_FROM_WILHOMENA
 	jumpthisopenedtext
 
 .Text2:
