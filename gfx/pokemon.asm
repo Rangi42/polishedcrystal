@@ -1359,16 +1359,19 @@ PichuSpikyFrames:   INCLUDE "gfx/pokemon/pichu_spiky/frames.asm"
 SECTION "Arbok Pics", ROMX
 ArbokJohtoFrontpic:  INCBIN "gfx/pokemon/arbok_johto/front.animated.2bpp.lz"
 ArbokKantoFrontpic:  INCBIN "gfx/pokemon/arbok_kanto/front.animated.2bpp.lz"
+ArbokOrangeFrontpic: INCBIN "gfx/pokemon/arbok_orange/front.animated.2bpp.lz"
 ArbokKogaFrontpic:   INCBIN "gfx/pokemon/arbok_koga/front.animated.2bpp.lz"
 ArbokAgathaFrontpic: INCBIN "gfx/pokemon/arbok_agatha/front.animated.2bpp.lz"
 ArbokArianaFrontpic: INCBIN "gfx/pokemon/arbok_ariana/front.animated.2bpp.lz"
 ArbokJohtoBackpic:
 ArbokKantoBackpic:
+ArbokOrangeBackpic:
 ArbokKogaBackpic:
 ArbokAgathaBackpic:
 ArbokArianaBackpic:  INCBIN "gfx/pokemon/arbok/back.2bpp.lz"
 ArbokJohtoFrames:    INCLUDE "gfx/pokemon/arbok_johto/frames.asm"
 ArbokKantoFrames:    INCLUDE "gfx/pokemon/arbok_kanto/frames.asm"
+ArbokOrangeFrames:   INCLUDE "gfx/pokemon/arbok_orange/frames.asm"
 ArbokKogaFrames:     INCLUDE "gfx/pokemon/arbok_koga/frames.asm"
 ArbokAgathaFrames:   INCLUDE "gfx/pokemon/arbok_agatha/frames.asm"
 ArbokArianaFrames:   INCLUDE "gfx/pokemon/arbok_ariana/frames.asm"
