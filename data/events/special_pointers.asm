@@ -155,9 +155,6 @@ SpecialsPointers::
 	add_special GetOreManiacPrice
 	add_special GetFossilManiacPrice
 	add_special Give_hMoneyTemp
-	add_special ItemManiac_SelectQuantity
-	add_special MultiplyMoneyByQuantity
-	add_special TakeItemFromMemWithQuantity
 	add_special CheckForSurfingPikachu
 	add_special InitializeHiddenGrotto
 	add_special GetHiddenGrottoContents
@@ -177,3 +174,6 @@ SpecialsPointers::
 	add_special FixPlayerEVsAndStats
 	add_special FadeInPalettes_EnableDynNoApply
 	add_special PrintDiploma
+	add_special ItemManiac_SelectQuantity
+	add_special MultiplyMoneyByQuantity
+	add_special TakeItemFromMemWithQuantity
