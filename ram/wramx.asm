@@ -1632,7 +1632,7 @@ wDexAreaLastMode:: db
 
 	; Used to align wDexAreaMons. Feel free to add more data here, just don't
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
-	ds 4
+	ds 3
 
 ALIGN 8
 wDexAreaMons::
