@@ -169,64 +169,47 @@ MultiplyMoneyByQuantity:
 	push de
 	push hl
 	ld a, [wItemQuantityChangeBuffer]
-	ld b, a
-	ldh a, [hMoneyTemp + 2]
-	ld c, a
-	ldh a, [hMoneyTemp + 1]
-	ld d, a
+	ldh [hMultiplier], a
 	ldh a, [hMoneyTemp]
-	ld e, a
-	
-	; Clear result
-	xor a
-	ldh [hMoneyTemp], a
-	ldh [hMoneyTemp + 1], a
-	ldh [hMoneyTemp + 2], a
-	
-	; Add the original value b times
-.loop
-	ld a, b
+	ldh [hMultiplicand], a
+	ldh a, [hMoneyTemp + 1]
+	ldh [hMultiplicand + 1], a
+	ldh a, [hMoneyTemp + 2]
+	ldh [hMultiplicand + 2], a
+	farcall Multiply
+
+	; If hProduct doesn't fit in 24 bits, cap at MAX_MONEY.
+	ldh a, [hProduct]
 	and a
-	jr z, .done
-	
-	; Add CDE to hMoneyTemp
-	ldh a, [hMoneyTemp + 2]
-	add c
-	ldh [hMoneyTemp + 2], a
-	ldh a, [hMoneyTemp + 1]
-	adc d
-	ldh [hMoneyTemp + 1], a
-	ldh a, [hMoneyTemp]
-	adc e
-	ldh [hMoneyTemp], a
-	
-	; Check for overflow (if result >= MAX_MONEY)
-	jr c, .overflow
-	ldh a, [hMoneyTemp]
+	jr nz, .overflow
+	; Otherwise compare 24-bit hProduct[1..3] against MAX_MONEY.
+	ldh a, [hProduct + 1]
 	cp HIGH(MAX_MONEY >> 8)
-	jr c, .no_overflow
+	jr c, .copy
 	jr nz, .overflow
-	ldh a, [hMoneyTemp + 1]
+	ldh a, [hProduct + 2]
 	cp HIGH(MAX_MONEY)
-	jr c, .no_overflow
+	jr c, .copy
 	jr nz, .overflow
-	ldh a, [hMoneyTemp + 2]
+	ldh a, [hProduct + 3]
 	cp LOW(MAX_MONEY)
-	jr c, .no_overflow
-	
+	jr z, .copy
+	jr c, .copy
+
 .overflow
-	; Cap at MAX_MONEY
 	ld a, HIGH(MAX_MONEY >> 8)
 	ldh [hMoneyTemp], a
 	ld a, HIGH(MAX_MONEY)
 	ldh [hMoneyTemp + 1], a
 	ld a, LOW(MAX_MONEY)
 	ldh [hMoneyTemp + 2], a
-	jr .done
-	
-.no_overflow
-	dec b
-	jr .loop
-	
-.done
+	jmp PopBCDEHL
+
+.copy
+	ldh a, [hProduct + 1]
+	ldh [hMoneyTemp], a
+	ldh a, [hProduct + 2]
+	ldh [hMoneyTemp + 1], a
+	ldh a, [hProduct + 3]
+	ldh [hMoneyTemp + 2], a
 	jmp PopBCDEHL
