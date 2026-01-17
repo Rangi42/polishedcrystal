@@ -174,7 +174,7 @@ MACRO channel_struct
 \1FrequencyHi::       db
 \1Pitch::             db ; 0:rest 1-c:note
 \1Octave::            db ; 7-0 (0 is highest)
-\1PitchOffset::       db ; raises existing octaves (to repeat phrases)
+\1Transposition::     db ; raises existing octaves (to repeat phrases)
 \1NoteDuration::      db ; frames remaining for the current note
 \1Field0x16::         db
 \1LoopCount::         db
@@ -188,7 +188,7 @@ MACRO channel_struct
 \1PitchWheelAmount::  db
 \1PitchWheelAmountFraction:: db
 \1Field0x25::         db
-\1CryPitch::          dw
+\1PitchOffset::       dw
 \1NoteLength::        db ; frames per 16th note
 ENDM
 
