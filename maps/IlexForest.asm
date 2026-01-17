@@ -1014,17 +1014,16 @@ IlexForestTrainerTips:
 
 	para "As long as you"
 	line "have an HM in"
-	cont "your bag,"
+	cont "your Bag,"
 
-	para "and #mon in"
-	line "your party that"
+	para "and a #mon in"
+	line "your party that's"
 
-	para "are compatible"
-	line "with it,"
+	para "compatible with"
+	line "it, you can use"
 
-	para "you can use the"
-	line "move outside of" 
-	cont "battle."
+	para "the move outside"
+	line "of battle."
 
 	para "You don't even"
 	line "have to teach it!"
