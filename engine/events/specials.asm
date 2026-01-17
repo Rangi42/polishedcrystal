@@ -167,6 +167,13 @@ Special_SlotMachine:
 	ld hl, _SlotMachine
 	jr Special_StartGameCornerGame
 
+VoltorbFlip:
+	call Special_CheckCoins
+	ret c
+	ld a, BANK(_VoltorbFlip)
+	ld hl, _VoltorbFlip
+	jr Special_StartGameCornerGame
+
 Special_CardFlip:
 	call Special_CheckCoins
 	ret c

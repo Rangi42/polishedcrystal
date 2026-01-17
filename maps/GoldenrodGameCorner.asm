@@ -29,18 +29,18 @@ GoldenrodGameCorner_MapScriptHeader:
 	bg_event  7,  9, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
 	bg_event  7, 10, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
 	bg_event  7, 11, BGEVENT_LEFT, GoldenrodGameCornerSlotsMachineScript
-	bg_event 12,  6, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
-	bg_event 12,  7, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
-	bg_event 12,  8, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
-	bg_event 12,  9, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
-	bg_event 12, 10, BGEVENT_READ, GoldenrodGameCornerSlotsMachineScript
-	bg_event 12, 11, BGEVENT_RIGHT, GoldenrodGameCornerSlotsMachineScript
-	bg_event 13,  6, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
-	bg_event 13,  7, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
-	bg_event 13,  8, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
-	bg_event 13,  9, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
-	bg_event 13, 10, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
-	bg_event 13, 11, BGEVENT_LEFT, GoldenrodGameCornerCardFlipMachineScript
+	bg_event 12,  6, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 12,  7, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 12,  8, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 12,  9, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 12, 10, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 12, 11, BGEVENT_RIGHT, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 13,  6, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 13,  7, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 13,  8, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 13,  9, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 13, 10, BGEVENT_READ, GoldenrodGameCornerVoltorbFlipMachineScript
+	bg_event 13, 11, BGEVENT_LEFT, GoldenrodGameCornerVoltorbFlipMachineScript
 	bg_event 18,  6, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
 	bg_event 18,  7, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
 	bg_event 18,  8, BGEVENT_READ, GoldenrodGameCornerCardFlipMachineScript
@@ -310,6 +310,29 @@ GoldenrodGameCornerLuckySlotsMachineScript:
 	special Special_SlotMachine
 	endtext
 
+GoldenrodGameCornerVoltorbFlipMachineScript:
+	opentext
+	checkitem COIN_CASE
+	iftruefwd .GoldenrodGameCornerWanttoPlayVoltorbFlip
+	writetext GoldenrodGameCornerNoCoinCaseText
+	waitbutton
+	closetext
+	end
+
+.GoldenrodGameCornerWanttoPlayVoltorbFlip
+	special Special_DisplayCoinCaseBalance
+	writetext GoldenrodGameCornerPlayVoltorbFlipText
+	yesorno
+	iftruefwd .PlayVoltorbFlip
+	closetext
+	end
+
+.PlayVoltorbFlip
+	reanchormap
+	special VoltorbFlip
+	closetext
+	end
+
 GoldenrodGameCornerCardFlipMachineScript:
 	reanchormap
 	special Special_CardFlip
@@ -480,4 +503,13 @@ GoldenrodGameCornerLeftTheirDrinkText:
 	line "drink."
 
 	para "It smells sweet."
+	done
+
+GoldenrodGameCornerPlayVoltorbFlipText:
+	text "Play VOLTORB FLIP?"
+	done
+
+GoldenrodGameCornerNoCoinCaseText:
+	text "You don't have a"
+	line "COIN CASE."
 	done
