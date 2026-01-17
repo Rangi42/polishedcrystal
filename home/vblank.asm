@@ -310,6 +310,7 @@ VBlank5::
 	call Serve2bppRequest
 
 .done
+	call PushOAM
 	call Joypad
 
 	jmp VBlankUpdateSound
