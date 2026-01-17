@@ -40,6 +40,7 @@ ItemManiac_SelectQuantity:
 ; The selected quantity is stored in wItemQuantityChangeBuffer.
 	call GetItemQuantity
 	jr z, .no_item ; Item not found in bag, return no carry
+	call ItemManiac_PrintTextHowMany
 	ld a, [wItemQuantityChangeBuffer]
 	ld [wItemQuantityBuffer], a
 	ld a, 1
@@ -106,6 +107,15 @@ ItemManiac_SelectQuantity:
 	ld de, wItemQuantityChangeBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jmp PrintNum
+
+ItemManiac_PrintTextHowMany:
+	ld hl, .Text
+	jmp PrintText
+
+.Text:
+	; How many do you want to sell?
+	text_far _HowManyDoYouWantToSellText
+	text_end
 
 GetItemQuantity:
 ; Get the quantity of the item in wCurItem.
@@ -189,11 +199,11 @@ MultiplyMoneyByQuantity:
 	; Check for overflow (if result >= MAX_MONEY)
 	jr c, .overflow
 	ldh a, [hMoneyTemp]
-	cp HIGH(MAX_MONEY >> 16)
+	cp HIGH(MAX_MONEY >> 8)
 	jr c, .no_overflow
 	jr nz, .overflow
 	ldh a, [hMoneyTemp + 1]
-	cp HIGH(MAX_MONEY >> 8)
+	cp HIGH(MAX_MONEY)
 	jr c, .no_overflow
 	jr nz, .overflow
 	ldh a, [hMoneyTemp + 2]
@@ -202,9 +212,9 @@ MultiplyMoneyByQuantity:
 	
 .overflow
 	; Cap at MAX_MONEY
-	ld a, HIGH(MAX_MONEY >> 16)
-	ldh [hMoneyTemp], a
 	ld a, HIGH(MAX_MONEY >> 8)
+	ldh [hMoneyTemp], a
+	ld a, HIGH(MAX_MONEY)
 	ldh [hMoneyTemp + 1], a
 	ld a, LOW(MAX_MONEY)
 	ldh [hMoneyTemp + 2], a
