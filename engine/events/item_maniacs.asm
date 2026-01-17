@@ -38,6 +38,8 @@ INCLUDE "data/items/item_maniacs.asm"
 ItemManiac_SelectQuantity:
 ; Returns carry if the player selects a quantity, or no carry if they press B.
 ; The selected quantity is stored in wItemQuantityChangeBuffer.
+	xor a ; ld a, FALSE
+	ldh [hScriptVar], a
 	call GetItemQuantity
 	jr z, .no_item ; Item not found in bag, return no carry
 	call ItemManiac_PrintTextHowMany
@@ -76,6 +78,8 @@ ItemManiac_SelectQuantity:
 	; Selected quantity exceeds available, cap it
 	ld [wItemQuantityChangeBuffer], a
 .valid_quantity
+	ld a, TRUE
+	ldh [hScriptVar], a
 	scf
 	jmp CloseWindow
 
