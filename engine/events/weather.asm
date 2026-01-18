@@ -68,7 +68,7 @@ SetCurrentWeather::
 	jr nz, .not_snowing
 .snowing
 	ld a, OW_WEATHER_SNOW
-	jr .set_weather
+	jp .set_weather
 
 .not_snowing
 	ld a, [wMapGroup]
@@ -81,16 +81,20 @@ SetCurrentWeather::
 	jr nz, .no_sandstorm
 .sandstorm
 	ld a, OW_WEATHER_SANDSTORM
-	jr .set_weather
+	jp .set_weather
 
 .no_sandstorm
 	ld a, [wMapGroup]
 	cp GROUP_CHERRYGROVE_CITY
 	jr nz, .no_weather
 	ld a, [wMapNumber]
+	cp MAP_CHERRYGROVE_BAY
+	ld a, OW_WEATHER_CHERRY_BLOSSOMS
+	jp z, .set_weather
+	ld a, [wMapNumber]
 	cp MAP_CHERRYGROVE_CITY
 	ld a, OW_WEATHER_CHERRY_BLOSSOMS
-	jr z, .set_weather
+	jp z, .set_weather
 ; fallthrough
 .no_weather
 	ld a, OW_WEATHER_NONE
