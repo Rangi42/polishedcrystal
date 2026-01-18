@@ -904,6 +904,12 @@ SpawnCherryBlossom:
 	ldh a, [rWBK]
 	push af
 
+	; Rarely spawn from the screen edge (top/right), like snow,
+	; instead of only from cherry-leaf tiles.
+	call Random
+	cp 30 percent
+	jp c, .edge_spawn
+
 	; clear candidate buffer counter
 	ld a, BANK(wWeatherScratch)
 	ldh [rWBK], a
@@ -1033,6 +1039,45 @@ SpawnCherryBlossom:
 .restore_bank
 	ld a, b
 	ldh [rWBK], a
+	ret
+
+.edge_spawn
+	; 25% chance to spawn on the right side; otherwise spawn at the top.
+	call Random
+	and %11
+	jr z, .edge_spawn_on_right
+
+	; sprite coord is (0, RandomRange(0, SCREEN_WIDTH_PX + 7) + TILE_WIDTH)
+	xor a
+	ld [hli], a
+	ld a, SCREEN_WIDTH_PX + 7
+	call RandomRange
+	add TILE_WIDTH
+	ld [hli], a
+	jr .edge_finish
+
+.edge_spawn_on_right
+	; sprite coord is (RandomRange(0, OAM_YCOORD_HIDDEN), SCREEN_WIDTH_PX + TILE_WIDTH)
+	ld a, OAM_YCOORD_HIDDEN
+	call RandomRange
+	ld [hli], a
+	ld a, SCREEN_WIDTH_PX + TILE_WIDTH
+	ld [hli], a
+
+.edge_finish
+	ld a, WEATHER_TILE_1
+	ld [hli], a ; Tile ID
+	ld a, PAL_OW_WEATHER
+	ld [hli], a ; attributes
+	ldh a, [hUsedWeatherSpriteIndex]
+	cp l
+	jr nc, .edge_restore_bank
+	ld a, l
+	ldh [hUsedWeatherSpriteIndex], a
+.edge_restore_bank
+	pop af
+	ldh [rWBK], a
+	pop hl
 	ret
 
 .no_spawn
