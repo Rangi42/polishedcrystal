@@ -88,13 +88,28 @@ SetCurrentWeather::
 	cp GROUP_CHERRYGROVE_CITY
 	jr nz, .no_weather
 	ld a, [wMapNumber]
-	cp MAP_CHERRYGROVE_BAY
-	ld a, OW_WEATHER_CHERRY_BLOSSOMS
-	jp z, .set_weather
-	ld a, [wMapNumber]
 	cp MAP_CHERRYGROVE_CITY
+	jr z, .cherrygrove_city
+	cp MAP_CHERRYGROVE_BAY
+	jr z, .cherrygrove_bay
+	jr .no_weather
+
+.cherrygrove_city
+	; Guaranteed in Cherrygrove City until the Mystery Egg has been delivered to Elm.
+	eventflagcheck EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	jr nz, .cherrygrove_random
 	ld a, OW_WEATHER_CHERRY_BLOSSOMS
-	jp z, .set_weather
+	jp .set_weather
+
+.cherrygrove_bay
+	; After the initial arrival, cherry blossoms are only a 10% chance,
+	; and only when no other map weather is active (handled by control flow).
+.cherrygrove_random
+	call Random
+	cp 10 percent
+	jr nc, .no_weather
+	ld a, OW_WEATHER_CHERRY_BLOSSOMS
+	jp .set_weather
 ; fallthrough
 .no_weather
 	ld a, OW_WEATHER_NONE
