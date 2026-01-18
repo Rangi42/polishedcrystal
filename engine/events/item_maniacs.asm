@@ -15,7 +15,7 @@ GetItemManiacPrice:
 	ld b, a
 .loop
 	ld a, [hli]
-	cp -1
+	inc a
 	ret z
 	cp b
 	jr z, .found
@@ -66,9 +66,9 @@ ItemManiac_SelectQuantity:
 	call PlayClickSFX
 	pop bc
 	ld a, b
-	cp -1
+	inc a ; cp -1
 	jr z, .no_item
-	
+
 	; Validate selected quantity doesn't exceed available
 	ld a, [wItemQuantityChangeBuffer]
 	ld b, a
