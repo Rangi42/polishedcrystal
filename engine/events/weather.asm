@@ -68,7 +68,7 @@ SetCurrentWeather::
 	jr nz, .not_snowing
 .snowing
 	ld a, OW_WEATHER_SNOW
-	jp .set_weather
+	jr .set_weather
 
 .not_snowing
 	ld a, [wMapGroup]
@@ -81,7 +81,7 @@ SetCurrentWeather::
 	jr nz, .no_sandstorm
 .sandstorm
 	ld a, OW_WEATHER_SANDSTORM
-	jp .set_weather
+	jr .set_weather
 
 .no_sandstorm
 	ld a, [wMapGroup]
@@ -99,7 +99,7 @@ SetCurrentWeather::
 	eventflagcheck EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	jr nz, .cherrygrove_random
 	ld a, OW_WEATHER_CHERRY_BLOSSOMS
-	jp .set_weather
+	jmp .set_weather
 
 .cherrygrove_bay
 	; After the initial arrival, cherry blossoms are only a 10% chance,
@@ -109,7 +109,7 @@ SetCurrentWeather::
 	cp 10 percent
 	jr nc, .no_weather
 	ld a, OW_WEATHER_CHERRY_BLOSSOMS
-	jp .set_weather
+	jmp .set_weather
 ; fallthrough
 .no_weather
 	ld a, OW_WEATHER_NONE

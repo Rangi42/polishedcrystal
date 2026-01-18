@@ -832,7 +832,7 @@ DoCherryBlossomFall:
 	cp CHERRYLEAF_TILE
 	jr nz, .next
 	ld a, [hl]
-	cp 6 ; pallete 6
+	cp 6 ; palette 6
 	jr nz, .next
 
 	call Random
@@ -895,7 +895,6 @@ DoCherryBlossomFall:
 	ld [hli], a
 	ld [hl], a
 	jr .next
-	ret
 
 SpawnCherryBlossom:
 	call Random
@@ -909,7 +908,7 @@ SpawnCherryBlossom:
 	; instead of only from cherry-leaf tiles.
 	call Random
 	cp 30 percent
-	jp c, .edge_spawn
+	jmp c, .edge_spawn
 
 	; clear candidate buffer counter
 	ld a, BANK(wWeatherScratch)
