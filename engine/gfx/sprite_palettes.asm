@@ -16,9 +16,12 @@ LoadWeatherPal::
 	dec a
 	jr z, .rain ; thunderstorm
 	assert OW_WEATHER_SANDSTORM == 4
+	dec a
+	jr z, .sand
+	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
 	; fallthrough
 
-	ld a, PAL_OW_SAND
+	ld a, PAL_OW_PINK
 .use_pal_6
 	ld [wNeededPalIndex], a
 	ld [wLoadedObjPal6], a
@@ -65,6 +68,10 @@ endc
 	pop af
 	ldh [rWBK], a
 	ret
+
+.sand
+	ld a, PAL_OW_SAND
+	jr .use_pal_6
 
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)

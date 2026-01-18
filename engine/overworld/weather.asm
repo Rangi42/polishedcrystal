@@ -4,6 +4,7 @@ DEF RAINDROP_TILE   EQU WEATHER_TILE_1
 DEF RAINSPLASH_TILE EQU WEATHER_TILE_2
 DEF SNOWFLAKE_TILE  EQU WEATHER_TILE_1
 DEF SANDSTORM_TILE  EQU WEATHER_TILE_1
+DEF CHERRYLEAF_TILE EQU WEATHER_TILE_1
 DEF PAL_OW_WEATHER  EQU 6
 
 DoOverworldWeather:
@@ -66,6 +67,7 @@ DoOverworldWeather:
 	dw DoOverworldSnow
 	dw DoOverworldRain
 	dw DoOverworldSandstorm
+	dw DoOverworldCherryBlossoms
 	assert_table_length NUM_OW_WEATHERS + 1
 
 .on_cooldown
@@ -79,8 +81,12 @@ DoOverworldWeather:
 	dw .snow_cooldown
 	dw .rain_cooldown
 	dw .sand_cooldown
+	dw .cherry_blossoms_cooldown
 	assert_table_length NUM_OW_WEATHERS + 1
 
+.cherry_blossoms_cooldown
+	call DoCherryBlossomFall
+	jr .cooldown_cleanup
 .sand_cooldown
 	call DoSandFall
 	jr .cooldown_cleanup
@@ -119,7 +125,10 @@ SpawnRandomWeatherCoords::
 	assert OW_WEATHER_THUNDERSTORM == 3
 	dec a
 	jr z, .rain
+	dec a
+	ret nz
 	assert OW_WEATHER_SANDSTORM == 4
+	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
 .sand
 	call .find_oam_and_radomize
 	ret c
@@ -799,6 +808,284 @@ SpawnSandDrop:
 	ld [hli], a
 	jr .finish
 
+DoOverworldCherryBlossoms:
+	ld a, [wLoadedObjPal6]
+	cp PAL_OW_PINK
+	jr z, .continue
+	farcall LoadWeatherPal
+.continue
+	call ScanForEmptyOAM
+	call nc, SpawnCherryBlossom
+; fallthrough
+DoCherryBlossomFall:
+	ld de, wShadowOAM
+	ld hl, wShadowOAM
+	ld b, OAM_COUNT
+.loop
+	ld hl, OAMA_Y
+	ld a, [hl]
+	cp OAM_YCOORD_HIDDEN
+	jr z, .next
+	ld hl, OAMA_TILEID
+	add hl, de
+	ld a, [hli]
+	cp CHERRYLEAF_TILE
+	jr nz, .next
+	ld a, [hl]
+	cp 6 ; palette 6
+	jr nz, .next
+
+	call Random
+	cp 1 percent
+	jr c, .despawn
+
+	ld a, [wPlayerStepVectorY]
+	add a
+	ld c, a
+	ld hl, OAMA_Y
+	add hl, de
+	ld a, [hl]
+	sub c
+	ld c, a
+	call IsEvenSpriteIndex
+	add c
+	add 2
+	ld hl, OAMA_Y
+	add hl, de
+	cp OAM_YCOORD_HIDDEN
+	ld [hl], a
+	jr nc, .despawn
+
+	ld a, [wPlayerStepVectorX]
+	add a
+	ld c, a
+	call Random
+	and 1
+	ld a, c
+	jr nz, .no_add_1
+	inc a
+.no_add_1
+	ld c, a
+	ld hl, OAMA_X
+	add hl, de
+	ld a, [hl]
+	sub c
+	inc a
+	ld hl, OAMA_X
+	add hl, de
+	sub 1 ; no-optimize a++|a-- (need to set carry)
+	ld [hl], a
+	jr c, .despawn
+.next
+	ld hl, OBJ_SIZE
+	add hl, de
+	ld d, h
+	ld e, l
+	dec b
+	jr nz, .loop
+	ret
+
+.despawn
+	ld hl, OAMA_Y
+	add hl, de
+	ld a, OAM_YCOORD_HIDDEN
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	jr .next
+
+SpawnCherryBlossom:
+	call Random
+	cp 10 percent
+	ret nc
+	push hl ; preserve OAM slot pointer
+	ldh a, [rWBK]
+	push af
+
+	; Rarely spawn from the screen edge (top/right), like snow,
+	; instead of only from cherry-leaf tiles.
+	call Random
+	cp 30 percent
+	jmp c, .edge_spawn
+
+	; clear candidate buffer counter
+	ld a, BANK(wWeatherScratch)
+	ldh [rWBK], a
+	xor a
+	ld [wWeatherScratch], a
+
+	; scan all on-screen collision cells for cherry leaves
+	ld a, BANK(wXCoord)
+	ldh [rWBK], a
+	ld b, SCREEN_HEIGHT / 2
+	xor a
+	ld e, a ; y offset
+.y_loop
+	ld c, SCREEN_WIDTH / 2
+	xor a
+	ld d, a ; x offset
+.x_loop
+	push de
+	ld a, [wXCoord]
+	add d
+	ld h, a
+	ld a, [wYCoord]
+	add e
+	ld l, a
+	ld d, h
+	ld e, l
+	push bc
+	call GetCoordTileCollision
+	pop bc
+	pop de
+	cp COLL_CHERRY_LEAVES
+	jr nz, .next_tile
+
+	; store packed screen coords (X hi nibble | Y lo nibble)
+	push bc
+	push de
+	ld a, BANK(wWeatherScratch)
+	ldh [rWBK], a
+	ld hl, wWeatherScratch
+	ld a, [hl]
+	cp SCREEN_HEIGHT_PX - 1 ; don't overflow wWeatherScratch
+	jr nc, .skip_store
+	ld c, a
+	inc a
+	ld [hl], a
+	ld hl, wWeatherScratch + 1
+	ld b, 0
+	ld a, c
+	add hl, bc
+	pop de
+	ld a, d
+	and $f
+	swap a
+	ld b, a
+	ld a, e
+	and $f
+	or b
+	ld [hl], a
+	jr .stored
+.skip_store
+	pop de
+.stored
+	ld a, BANK(wXCoord)
+	ldh [rWBK], a
+	pop bc
+
+.next_tile
+	inc d
+	dec c
+	jr nz, .x_loop
+	inc e
+	dec b
+	jr nz, .y_loop
+
+	; choose a random candidate
+	ld a, BANK(wWeatherScratch)
+	ldh [rWBK], a
+	ld a, [wWeatherScratch]
+	and a
+	jr z, .no_spawn
+	ld b, a
+	call RandomRange
+	ld c, a
+	ld hl, wWeatherScratch + 1
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld d, a
+	and $f
+	ld e, a ; y offset
+	ld a, d
+	swap a
+	and $f
+	ld d, a ; x offset
+
+	ld a, BANK(wXCoord)
+	ldh [rWBK], a
+
+	; convert screen coords to pixel coords
+	ld a, d
+	swap a
+	and $f0
+	add 16
+	ld d, a
+	ld a, e
+	swap a
+	and $f0
+	add 16
+	ld e, a
+
+	pop af
+	ld b, a ; stash original WRAM bank
+	pop hl
+	ld a, e
+	ld [hli], a ; Y coord
+	ld a, d
+	ld [hli], a ; X coord
+	ld a, CHERRYLEAF_TILE
+	ld [hli], a ; Tile ID
+	ld a, PAL_OW_WEATHER
+	ld [hli], a ; attributes
+	ldh a, [hUsedWeatherSpriteIndex]
+	cp l
+	jr nc, .restore_bank
+	ld a, l
+	ldh [hUsedWeatherSpriteIndex], a
+.restore_bank
+	ld a, b
+	ldh [rWBK], a
+	ret
+
+.edge_spawn
+	; 25% chance to spawn on the right side; otherwise spawn at the top.
+	call Random
+	and %11
+	jr z, .edge_spawn_on_right
+
+	; sprite coord is (0, RandomRange(0, SCREEN_WIDTH_PX + 7) + TILE_WIDTH)
+	xor a
+	ld [hli], a
+	ld a, SCREEN_WIDTH_PX + 7
+	call RandomRange
+	add TILE_WIDTH
+	ld [hli], a
+	jr .edge_finish
+
+.edge_spawn_on_right
+	; sprite coord is (RandomRange(0, OAM_YCOORD_HIDDEN), SCREEN_WIDTH_PX + TILE_WIDTH)
+	ld a, OAM_YCOORD_HIDDEN
+	call RandomRange
+	ld [hli], a
+	ld a, SCREEN_WIDTH_PX + TILE_WIDTH
+	ld [hli], a
+
+.edge_finish
+	ld a, CHERRYLEAF_TILE
+	ld [hli], a ; Tile ID
+	ld a, PAL_OW_WEATHER
+	ld [hli], a ; attributes
+	ldh a, [hUsedWeatherSpriteIndex]
+	cp l
+	jr nc, .edge_restore_bank
+	ld a, l
+	ldh [hUsedWeatherSpriteIndex], a
+.edge_restore_bank
+	pop af
+	ldh [rWBK], a
+	pop hl
+	ret
+
+.no_spawn
+	pop af
+	ldh [rWBK], a
+	pop hl
+	ret
+
 IsEvenSpriteIndex:
 ; input: e = sprite index
 ; output: a = is_even(e / 4)
@@ -951,7 +1238,14 @@ LoadWeatherGraphics:
 	dec a
 	jr z, .rain
 	assert OW_WEATHER_SANDSTORM == 4
-; sandstorm
+	dec a
+	jr z, .sand
+	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
+; cherry blossoms
+	lb bc, BANK(CherryBlossomGFX), 1
+	ld de, CherryBlossomGFX
+	jr .continue
+.sand
 	lb bc, BANK(SandGFX), 1
 	ld de, SandGFX
 	jr .continue
@@ -970,3 +1264,4 @@ LoadWeatherGraphics:
 RainGFX: INCBIN "gfx/overworld/rain_splash.2bpp"
 SnowGFX: INCBIN "gfx/overworld/snow.2bpp"
 SandGFX: INCBIN "gfx/overworld/sand.2bpp"
+CherryBlossomGFX: INCBIN "gfx/overworld/cherry_blossom.2bpp"

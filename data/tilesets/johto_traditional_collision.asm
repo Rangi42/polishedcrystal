@@ -125,7 +125,7 @@
 	tilecoll WALL, WALL, WALL, DOOR ; 7c
 	tilecoll WALL, WALL, WALL, DOOR ; 7d
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7e
-	tilecoll WALL, WALL, WALL, WALL ; 7f
+	tilecoll CHERRY_LEAVES, CHERRY_LEAVES, WALL, WALL ; 7f
 	tilecoll WALL, WALL, WALL, WALL ; 80
 	tilecoll WARP_CARPET_LEFT, WALL, FLOOR, WALL ; 81
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 82
@@ -176,8 +176,8 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; af
 	tilecoll WATER, WATER, FLOOR, FLOOR ; b0
 	tilecoll FLOOR, FLOOR, WATER, WATER ; b1
-	tilecoll WALL, WALL, WALL, WALL ; b2
-	tilecoll WALL, WALL, WALL, WALL ; b3
+	tilecoll CHERRY_LEAVES, CHERRY_LEAVES, WALL, WALL ; b2
+	tilecoll CHERRY_LEAVES, CHERRY_LEAVES, WALL, WALL ; b3
 	tilecoll FLOOR, LEDGE_DOWN, HEADBUTT_TREE, WALL ; b4
 	tilecoll WALL, FLOOR, WALL, FLOOR ; b5
 	tilecoll FLOOR, WALL, FLOOR, WALL ; b6
@@ -244,10 +244,10 @@
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; f3
 	tilecoll WALL, FLOOR, WALL, WALL ; f4
 	tilecoll FLOOR, WALL, WALL, WALL ; f5
-	tilecoll WALL, WALL, WALL, WALL ; f6
-	tilecoll WALL, FLOOR, WALL, FLOOR ; f7
+	tilecoll WALL, CHERRY_LEAVES, CHERRY_LEAVES, CHERRY_LEAVES ; f6
+	tilecoll CHERRY_LEAVES, FLOOR, CHERRY_LEAVES, FLOOR ; f7
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f8
 	tilecoll FLOOR, TALL_GRASS, FLOOR, TALL_GRASS ; f9
-	tilecoll WALL, WALL, FLOOR, FLOOR ; fa
+	tilecoll WALL, CHERRY_LEAVES, FLOOR, FLOOR ; fa
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; fb
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
