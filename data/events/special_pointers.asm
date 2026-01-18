@@ -174,3 +174,6 @@ SpecialsPointers::
 	add_special FixPlayerEVsAndStats
 	add_special FadeInPalettes_EnableDynNoApply
 	add_special PrintDiploma
+	add_special ItemManiac_SelectQuantity
+	add_special MultiplyMoneyByQuantity
+	add_special TakeItemFromMemWithQuantity
