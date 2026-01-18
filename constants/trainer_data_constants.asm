@@ -41,7 +41,6 @@ DEF SWITCH_OFTEN       EQU 1 << SWITCH_OFTEN_F
 
 ; trainer types (see engine/battle/read_trainer_party.asm)
 	const_def
-	const TRNTYPE_NORMAL
 	const TRNTYPE_ITEM
 	const TRNTYPE_EVS
 	const TRNTYPE_DVS
@@ -50,7 +49,6 @@ DEF SWITCH_OFTEN       EQU 1 << SWITCH_OFTEN_F
 	const TRNTYPE_MOVES
 
 ; see data/trainers/parties.asm
-DEF TRAINERTYPE_NORMAL      EQU TRNTYPE_NORMAL
 DEF TRAINERTYPE_ITEM        EQU 1 << TRNTYPE_ITEM
 DEF TRAINERTYPE_EVS         EQU 1 << TRNTYPE_EVS
 DEF TRAINERTYPE_DVS         EQU 1 << TRNTYPE_DVS

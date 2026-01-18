@@ -22,6 +22,7 @@ FishGroups:
 	fishgroup 60 percent, (60 + 3) percent, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
 	fishgroup 60 percent, (60 + 3) percent, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
 	fishgroup 65 percent, (65 + 5) percent, .Hisuian_Qwilfish_Old, .Hisuian_Qwilfish_Good, .Hisuian_Qwilfish_Super
+	fishgroup 65 percent, (65 + 5) percent, .Staryu_Old,           .Staryu_Good,           .Staryu_Super
 	assert_table_length NUM_FISHGROUPS
 
 MACRO fishentry
@@ -44,10 +45,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     KRABBY,     20
 	fishentry  90 percent + 1, KRABBY,     20
-	fishentry 100 percent,     0,          20 ; corsola morn/day, staryu eve/night
+	fishentry 100 percent,     CORSOLA,    20
 .Shore_Super:
 	fishentry  40 percent,     KRABBY,     40
-	fishentry  70 percent,     0,          40 ; corsola morn/day, staryu eve/night
+	fishentry  70 percent,     CORSOLA,    40
 	fishentry  90 percent + 1, KRABBY,     40
 	fishentry 100 percent,     KINGLER,    40
 
@@ -241,3 +242,18 @@ ENDM
 	fishentry  70 percent,     SEADRA,     40
 	fishentry  90 percent + 1, QWILFISH,   HISUIAN_FORM,   40
 	fishentry 100 percent,     OVERQWIL,   40
+
+.Staryu_Old:
+	fishentry  70 percent + 1, MAGIKARP,   10
+	fishentry  85 percent + 1, MAGIKARP,   10
+	fishentry 100 percent,     KRABBY,     10
+.Staryu_Good:
+	fishentry  35 percent,     MAGIKARP,   20
+	fishentry  70 percent,     KRABBY,     20
+	fishentry  90 percent + 1, KRABBY,     20
+	fishentry 100 percent,     STARYU,     20
+.Staryu_Super:
+	fishentry  40 percent,     KRABBY,     40
+	fishentry  70 percent,     STARYU,     40
+	fishentry  90 percent + 1, KRABBY,     40
+	fishentry 100 percent,     KINGLER,    40

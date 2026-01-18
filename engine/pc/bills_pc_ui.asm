@@ -112,11 +112,13 @@ BillsPC_LoadUI:
 
 	call BillsPC_BlankCursorItem
 
-	; Held item icon
+	; Held item icons
 	ld hl, vTiles3 tile $1c
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
+	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Get2bpp
+	assert $1c + NUM_HELD_ITEM_TYPES <= $20, \
+		"held item icons overlap tile $20 (item for mon cursor is hovering)"
 
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
@@ -485,7 +487,7 @@ BillsPC_SafeRequest2bppInWRA6::
 	call RunFunctionInWRA6
 
 BillsPC_SafeGet2bpp:
-; Only copies graphics when doing so wont interfere with hblank palette usage.
+; Only copies graphics when doing so won't interfere with hblank palette usage.
 ; Otherwise, wait until next frame.
 	ldh a, [rLY]
 	cp $40
@@ -1060,13 +1062,13 @@ _GetCursorMon:
 	call Get2bpp
 	pop af
 	and a
-	ld de, vTiles3 tile $00
+	ld de, vTiles3 tile $00 ; no item
 	jr z, .got_item_tile
-	ld d, a
-	call ItemIsMail
-	ld de, vTiles3 tile $1c
-	jr c, .got_item_tile
-	ld de, vTiles3 tile $1d
+	call BillsPC_GetItemIconOffset
+	ld hl, vTiles3 tile $1c ; item icons
+	add hl, de
+	ld d, h
+	ld e, l
 .got_item_tile
 	ld hl, vTiles3 tile $20
 	ld c, 1
@@ -1205,6 +1207,32 @@ _GetCursorMon:
 	jr nz, .item_loop_begin
 .ret_nz
 	or 1
+	ret
+
+BillsPC_GetItemIconOffset:
+; input: a = item ID
+; output: de = offset in tiles
+	ld d, 0
+	call ItemIsMail_a ; preserves a
+	ld e, HELDTYPE_MAIL tiles
+	ret c
+	cp FIRST_BERRY
+	jr c, .not_berry
+	cp FIRST_BERRY + NUM_BERRIES
+	ld e, HELDTYPE_BERRY tiles
+	ret c
+.not_berry
+	ld c, a
+	ld b, 0
+	ld hl, ItemAttributes + ITEMATTR_EFFECT
+	ld a, ITEMATTR_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, BANK(ItemAttributes)
+	call GetFarByte
+	and a
+	ld e, HELDTYPE_INERT_ITEM tiles
+	ret z
+	ld e, HELDTYPE_ITEM tiles
 	ret
 
 BillsPC_CheckBagDisplay:
@@ -2349,16 +2377,14 @@ BillsPC_MoveItem:
 	ret
 
 BillsPC_LoadCursorItemIcon:
+	ld a, [wBillsPC_CursorItem]
+	call BillsPC_GetItemIconOffset
+	ld hl, HeldItemIcons
+	add hl, de
+	ld d, h
+	ld e, l
 	ld hl, vTiles3 tile $08
 	lb bc, BANK(HeldItemIcons), 1
-
-	ld a, [wBillsPC_CursorItem]
-	ld d, a
-	call ItemIsMail
-	ld de, HeldItemIcons ; mail icon
-	jr c, .got_item_tile
-	ld de, HeldItemIcons tile 1 ; regular item icon
-.got_item_tile
 	jmp BillsPC_SafeGet2bpp
 
 BillsPC_BagItem:

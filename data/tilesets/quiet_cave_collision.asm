@@ -248,3 +248,6 @@
 	tilecoll WALL, WALL, WALL, WALL ; f7
 	tilecoll FLOOR, WALL, FLOOR, WALL ; f8
 	tilecoll LEDGE_DOWN_LEFT, FLOOR, WALL, WALL ; f9
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fa
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fb
+	tilecoll WATER, WATER, WATER, WATER ; fc
