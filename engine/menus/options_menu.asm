@@ -226,6 +226,11 @@ OptionsMenu_SetValueCoordFromCursor:
 	ld [wOptionsMenuValueCoord], a
 	ld a, h
 	ld [wOptionsMenuValueCoord + 1], a
+	; Place ":" prefix immediately before the value.
+	push hl
+	dec hl
+	ld [hl], ':'
+	pop hl
 	ret
 
 OptionsMenu_CallOptionRoutine:
@@ -359,6 +364,11 @@ OptionsMenu_PlaceOptionValue:
 	ld [wOptionsMenuValueCoord], a
 	ld a, h
 	ld [wOptionsMenuValueCoord + 1], a
+	; Place ":" prefix immediately before the value.
+	push hl
+	dec hl
+	ld [hl], ':'
+	pop hl
 	ldh a, [hJoyPressed]
 	push af
 	xor a
