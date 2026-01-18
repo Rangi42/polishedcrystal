@@ -4,6 +4,7 @@ DEF RAINDROP_TILE   EQU WEATHER_TILE_1
 DEF RAINSPLASH_TILE EQU WEATHER_TILE_2
 DEF SNOWFLAKE_TILE  EQU WEATHER_TILE_1
 DEF SANDSTORM_TILE  EQU WEATHER_TILE_1
+DEF CHERRYLEAF_TILE EQU WEATHER_TILE_1
 DEF PAL_OW_WEATHER  EQU 6
 
 DoOverworldWeather:
@@ -828,7 +829,7 @@ DoCherryBlossomFall:
 	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
-	cp SNOWFLAKE_TILE
+	cp CHERRYLEAF_TILE
 	jr nz, .next
 	ld a, [hl]
 	cp 6 ; pallete 6
@@ -1027,7 +1028,7 @@ SpawnCherryBlossom:
 	ld [hli], a ; Y coord
 	ld a, d
 	ld [hli], a ; X coord
-	ld a, WEATHER_TILE_1
+	ld a, CHERRYLEAF_TILE
 	ld [hli], a ; Tile ID
 	ld a, PAL_OW_WEATHER
 	ld [hli], a ; attributes
@@ -1065,7 +1066,7 @@ SpawnCherryBlossom:
 	ld [hli], a
 
 .edge_finish
-	ld a, WEATHER_TILE_1
+	ld a, CHERRYLEAF_TILE
 	ld [hli], a ; Tile ID
 	ld a, PAL_OW_WEATHER
 	ld [hli], a ; attributes
