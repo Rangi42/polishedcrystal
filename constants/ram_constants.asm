@@ -21,6 +21,12 @@ DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 ; wOptions3::
 	const_def
 	const QWERTY_KEYBOARD_F  ; 0
+	const BATTLE_INTRO_ANIMS ; 1
+	const BIKE_SURF_MUSIC_OFF_F ; 2
+	const DISABLE_NICKNAME_PROMPT_F ; 3
+	const NO_RTC_SPEED_0_F ; 4
+	const NO_RTC_SPEED_1_F ; 5
+DEF NO_RTC_SPEED_MASK EQU (3 << NO_RTC_SPEED_0_F)
 
 ; wOptions1::
 	const_def 3
