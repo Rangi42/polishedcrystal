@@ -348,6 +348,11 @@ wMoveSwapBuffer:: db
 
 wMenuScrollPosition:: ds 4
 
+wOptionsMenuValueCoord:: dw
+wOptionsMenuCursor:: db
+wOptionsMenuScrollPosition:: db
+wOptionsMenuSavedBattleMenuFlags:: db
+
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
 

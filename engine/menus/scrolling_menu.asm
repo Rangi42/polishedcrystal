@@ -51,7 +51,34 @@ ScrollingMenuJoyAction:
 	and QUICK_PACK
 	jr nz, .a_button
 	call _DoMenuJoypadLoop
+	; Prefer edge-triggered Left/Right so they aren't lost to repeat gating.
+	ldh a, [hJoyPressed]
+	bit B_PAD_LEFT, a
+	jr z, .check_right_pressed
+	ld a, [wMenuDataFlags]
+	bit 3, a
+	jr z, .check_right_pressed
+	ld a, PAD_LEFT
+	scf
+	ret
+.check_right_pressed
+	ldh a, [hJoyPressed]
+	bit B_PAD_RIGHT, a
+	jr z, .check_regular_inputs
+	ld a, [wMenuDataFlags]
+	bit 2, a
+	jr z, .check_regular_inputs
+	ld a, PAD_RIGHT
+	scf
+	ret
+.check_regular_inputs
 	call GetMenuJoypad
+	; GetMenuJoypad uses hJoyLast for the D-pad (repeat-gated). For Left/Right,
+	; also consider the raw held state so presses aren't missed.
+	ld b, a
+	ldh a, [hJoyDown]
+	and PAD_LEFT | PAD_RIGHT
+	or b
 	rrca
 	jr c, .a_button
 	rrca
@@ -97,13 +124,13 @@ ScrollingMenuJoyAction:
 
 	; if Cancel is preselected, just fallback to regular bag function
 	call ScrollingMenu_GetMenuSelection
-	jr z, ScrollingMenuJoyAction
+	jp z, ScrollingMenuJoyAction
 
 	; same with unusable items
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
 	and a
-	jr z, ScrollingMenuJoyAction
+	jp z, ScrollingMenuJoyAction
 
 .not_quick_pack
 	call ScrollingMenu_GetMenuSelection
@@ -142,9 +169,6 @@ ScrollingMenuJoyAction:
 	ret
 
 .d_left
-	ld a, [w2DMenuFlags2]
-	bit 7, a
-	jr z, .unsetZeroFlag
 	ld a, [wMenuDataFlags]
 	bit 3, a
 	jr z, .unsetZeroFlag
@@ -153,9 +177,6 @@ ScrollingMenuJoyAction:
 	ret
 
 .d_right
-	ld a, [w2DMenuFlags2]
-	bit 7, a
-	jr z, .unsetZeroFlag
 	ld a, [wMenuDataFlags]
 	bit 2, a
 	jr z, .unsetZeroFlag
@@ -335,7 +356,9 @@ ScrollingMenu_InitFlags:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, PAD_A | PAD_B | PAD_UP | PAD_DOWN
+	; Always allow Left/Right to be read so _DoMenuJoypadLoop can exit on them.
+	; Whether Left/Right actually return PAD_LEFT/PAD_RIGHT is still gated by wMenuDataFlags.
+	ld a, PAD_A | PAD_B | PAD_UP | PAD_DOWN | PAD_LEFT | PAD_RIGHT
 	bit 7, c
 	jr z, .disallow_select
 	add PAD_SELECT
