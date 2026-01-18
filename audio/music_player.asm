@@ -138,18 +138,10 @@ MusicPlayer::
 	rst ByteFill
 
 ; Clear wMPNotes
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wMPNotes)
-	ldh [rWBK], a
-
 	xor a
 	ld hl, wMPNotes
 	ld bc, 4 * 256
 	rst ByteFill
-
-	pop af
-	ldh [rWBK], a
 ; fallthrough
 
 RenderMusicPlayer:
@@ -169,9 +161,6 @@ RenderMusicPlayer:
 	call RedrawChannelLabels
 	call DelayFrame
 
-	ldh a, [rWBK]
-	ldh [hMPBuffer], a
-
 	ld a, [wSongSelection]
 	; let's see if a song is currently selected
 	cp NUM_MUSIC_SONGS
@@ -190,9 +179,6 @@ _RedrawMusicPlayer:
 ; fallthrough
 
 MusicPlayerLoop:
-	ld a, BANK(wMPNotes)
-	ldh [rWBK], a
-
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
 	jrheldbutton PAD_UP, .up, 12
@@ -203,7 +189,7 @@ MusicPlayerLoop:
 	jrbutton PAD_A, .a
 	jrbutton PAD_B, .b
 	jrbutton PAD_START, .start
-	jpbutton PAD_SELECT, .select
+	jrbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
 	ld a, 2
@@ -214,9 +200,9 @@ MusicPlayerLoop:
 ; previous song
 	ld a, [wSongSelection]
 	dec a
-	jmp nz, _RedrawMusicPlayer
+	jr nz, _RedrawMusicPlayer
 	ld a, NUM_MUSIC_SONGS - 1
-	jmp _RedrawMusicPlayer
+	jr _RedrawMusicPlayer
 
 .right:
 ; next song
@@ -270,8 +256,6 @@ MusicPlayerLoop:
 	xor a
 	ldh [hMPState], a
 	ldh [hVBlank], a
-	ldh a, [hMPBuffer]
-	ldh [rWBK], a
 	call ClearSprites
 	ld hl, rLCDC
 	res B_LCDC_OBJ_SIZE, [hl]
@@ -288,8 +272,6 @@ MusicPlayerLoop:
 ; open song selector
 	xor a
 	ldh [hMPState], a
-	ldh a, [hMPBuffer]
-	ldh [rWBK], a
 	call SongSelector
 	jmp RenderMusicPlayer
 
@@ -991,30 +973,14 @@ DrawNotes:
 	call DrawNote
 	call CheckForVolumeBarReset
 
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wMPNotes)
-	ldh [rWBK], a
 	ldh a, [hMPState]
 	inc a
 	ldh [hMPState], a
-	cp PIANO_ROLL_HEIGHT_PX + 1 + 1
-	jr c, .skip
-	ld a, 1
-	ldh [hMPState], a
-.skip
-	dec a
-	push af
-	call .CopyNotes
-	pop af
-	add PIANO_ROLL_HEIGHT_PX
-	call nc, .CopyNotes
-	pop af
-	ldh [rWBK], a
-	ret
+	add PIANO_ROLL_HEIGHT_PX - 1
+	; fallthrough
 
 .CopyNotes:
-	ld bc, 4
+	ld bc, 3
 	ld hl, wMPNotes
 	rst AddNTimes
 	ld d, h

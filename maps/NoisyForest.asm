@@ -19,7 +19,7 @@ NoisyForest_MapScriptHeader:
 	bg_event  7, 29, BGEVENT_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
 
 	def_object_events
-	object_event 19, 36, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TOLD_ABOUT_PIKABLU
+	object_event 19, 36, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TOLD_ABOUT_PIKABLU
 	object_event 24, 31, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MARILL, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, NoisyForestPikabluScript, EVENT_NOISY_FOREST_PIKABLU
 	object_event 20, 19, SPRITE_KATY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KatyScript, -1
 	object_event 10, 15, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBird_keeperTrent, -1
@@ -37,8 +37,8 @@ NoisyForest_MapScriptHeader:
 	cuttree_event 12, 21, EVENT_NOISY_FOREST_CUT_TREE_2
 
 	object_const_def
-	const NOISYFOREST_YOUNGSTER
-	const NOISYFOREST_MARILL
+	const NOISYFOREST_WILHOMENA
+	const NOISYFOREST_PIKABLU
 	const NOISYFOREST_KATY
 
 GenericTrainerBug_maniacPierre:
@@ -177,24 +177,24 @@ NoisyForestChildText:
 
 NoisyForestPikabluScript:
 	showcrytext .PikabluText, MARILL
-	appear NOISYFOREST_YOUNGSTER
-	applymovement NOISYFOREST_YOUNGSTER, .WalkToYou
+	appear NOISYFOREST_WILHOMENA
+	applymovement NOISYFOREST_WILHOMENA, .WalkToYou
 	turnobject PLAYER, DOWN
 	showtext .OwnerText1
-	disappear NOISYFOREST_MARILL
+	disappear NOISYFOREST_PIKABLU
 	opentext
 	writetext .OwnerText2
 	promptbutton
 	verbosegiveitem ODD_SOUVENIR
 	iffalsefwd .NoItem
-	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	setevent EVENT_GOT_ODD_SOUVENIR_FROM_WILHOMENA
 	writetext .OwnerText3
 .Leave:
 	waitbutton
 	closetext
-	applymovement NOISYFOREST_YOUNGSTER, .WalkAway
-	disappear NOISYFOREST_YOUNGSTER
-	clearevent EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
+	applymovement NOISYFOREST_WILHOMENA, .WalkAway
+	disappear NOISYFOREST_WILHOMENA
+	clearevent EVENT_SHAMOUTI_ISLAND_WILHOMENA
 	end
 
 .NoItem:

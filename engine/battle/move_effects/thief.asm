@@ -83,7 +83,7 @@ CheckStickyHold:
 ; Returns nz if opponent Sticky Hold is in effect.
 	call HasOpponentFainted
 	ret z
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp STICKY_HOLD
 	jr nz, .no_sticky_hold
 
@@ -116,7 +116,7 @@ CanStealItem:
 	; Sticky Hold prevents item theft unless fainted
 	call HasOpponentFainted
 	jr z, .sticky_hold_done
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp STICKY_HOLD
 	jr z, .cant_ability
 

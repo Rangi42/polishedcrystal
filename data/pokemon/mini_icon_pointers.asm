@@ -326,6 +326,7 @@ MiniIconPointers:
 	mini_icon UnownQuestion
 
 	mini_icon Arbok ; Kanto
+	mini_icon Arbok ; Orange
 	mini_icon Arbok ; Koga
 	mini_icon Arbok ; Agatha
 	mini_icon Arbok ; Ariana

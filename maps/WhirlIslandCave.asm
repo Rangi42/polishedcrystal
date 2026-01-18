@@ -4,8 +4,8 @@ WhirlIslandCave_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 37, 43, WHIRL_ISLAND_B1F, 9
-	warp_event 33, 51, WHIRL_ISLAND_NW, 4
+	warp_event  7,  5, WHIRL_ISLAND_B1F, 9
+	warp_event  3, 13, WHIRL_ISLAND_NW, 4
 
 	def_coord_events
 

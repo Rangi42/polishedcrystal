@@ -472,6 +472,9 @@ RespawnRoamingRaikou:
 	ld [wRoamMon1Species], a
 	ld a, 50
 	ld [wRoamMon1Level], a
+	assert HIGH(RAIKOU) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon1Form], a
 	ld a, GROUP_ROUTE_42
 	ld [wRoamMon1MapGroup], a
 	ld a, MAP_ROUTE_42
@@ -485,6 +488,9 @@ RespawnRoamingEntei:
 	ld [wRoamMon2Species], a
 	ld a, 50
 	ld [wRoamMon2Level], a
+	assert HIGH(ENTEI) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon2Form], a
 	ld a, GROUP_ROUTE_37
 	ld [wRoamMon2MapGroup], a
 	ld a, MAP_ROUTE_37
@@ -498,6 +504,9 @@ RespawnRoamingSuicune:
 	ld [wRoamMon3Species], a
 	ld a, 50
 	ld [wRoamMon3Level], a
+	assert HIGH(SUICUNE) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon3Form], a
 	ld a, GROUP_ROUTE_38
 	ld [wRoamMon3MapGroup], a
 	ld a, MAP_ROUTE_38

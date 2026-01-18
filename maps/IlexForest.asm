@@ -1010,23 +1010,23 @@ IlexForestSignpost:
 	done
 
 IlexForestTrainerTips:
-	text "Trainer Tips!"
+	text "Trainer Tips"
 
 	para "As long as you"
-	line "have the HM in"
-	cont "your bag,"
+	line "have an HM in"
+	cont "your Bag,"
 
-	para "and #mon in"
-	line "your party that"
+	para "and a #mon in"
+	line "your party that's"
 
-	para "are compatible"
-	line "with that HM can"
+	para "compatible with"
+	line "it, you can use"
 
-	para "use the move out-"
-	line "of battle. You"
+	para "the move outside"
+	line "of battle."
 
-	para "don't even have to"
-	line "teach it!"
+	para "You don't even"
+	line "have to teach it!"
 	done
 
 Text_IlexForestShrine:

@@ -250,3 +250,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; f9
 	tilecoll TOP_WALL, TOP_WALL, BOTTOM_WALL, BOTTOM_WALL ; fa
 	tilecoll WALL, WALL, WALL, WALL ; fb
+	tilecoll WATER, WATER, WATER, WATER ; fc

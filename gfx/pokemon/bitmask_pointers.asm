@@ -322,6 +322,7 @@ BitmasksPointers:
 	dw UnownQuestionBitmasks
 
 	dw ArbokKantoBitmasks
+	dw ArbokOrangeBitmasks
 	dw ArbokKogaBitmasks
 	dw ArbokAgathaBitmasks
 	dw ArbokArianaBitmasks

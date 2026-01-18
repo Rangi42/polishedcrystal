@@ -8,6 +8,7 @@ MoldBreakerSuppressedAbilities:
 	db DRY_SKIN
 	db FILTER
 	db FLASH_FIRE
+	db FLUFFY
 	db FUR_COAT
 	db HYPER_CUTTER
 	db ILLUMINATE

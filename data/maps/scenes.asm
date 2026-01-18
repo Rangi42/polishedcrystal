@@ -66,7 +66,8 @@ MapScenes::
 	scene_var ROUTE_18_GATE,                          wAlways0SceneID
 	scene_var ROUTE_18_WEST,                          wAlways0SceneID
 	scene_var ROUTE_22_PAST,                          wAlways0SceneID
-	scene_var ROUTE_23,                               wRoute23SceneID
+	scene_var ROUTE_23_NORTH,                         wRoute23SceneID
+	scene_var ROUTE_23_SOUTH,                         wRoute23SceneID
 	scene_var ROUTE_24,                               wRoute24SceneID
 	scene_var ROUTE_27,                               wRoute27SceneID
 	scene_var ROUTE_29,                               wRoute29SceneID

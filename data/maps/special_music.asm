@@ -7,7 +7,8 @@ MACRO music_map
 ENDM
 
 SpecialMusicMaps:
-	music_map ROUTE_23,                    GetMapMusic
+	music_map ROUTE_23_NORTH,              GetMapMusic
+	music_map ROUTE_23_SOUTH,              GetMapMusic
 	music_map INDIGO_PLATEAU,              GetMapMusic
 	music_map QUIET_CAVE_1F,               GetMapMusic
 	music_map QUIET_CAVE_B1F,              GetMapMusic

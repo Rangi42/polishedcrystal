@@ -322,6 +322,7 @@ AnimationPointers:
 	dw UnownQuestionAnimation
 
 	dw ArbokKantoAnimation
+	dw ArbokOrangeAnimation
 	dw ArbokKogaAnimation
 	dw ArbokAgathaAnimation
 	dw ArbokArianaAnimation
