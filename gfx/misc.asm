@@ -14,6 +14,14 @@ HeadbuttTreeGFX::    INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
 HeadbuttTree2GFX::   INCBIN "gfx/overworld/headbutt_tree_2.2bpp.lz"
 
 
+SECTION "Overworld Weather Graphics", ROMX
+
+RainGFX::          INCBIN "gfx/overworld/rain_splash.2bpp"
+SnowGFX::          INCBIN "gfx/overworld/snow.2bpp"
+SandGFX::          INCBIN "gfx/overworld/sand.2bpp"
+CherryBlossomGFX:: INCBIN "gfx/overworld/cherry_blossom.2bpp"
+
+
 SECTION "Fishing Graphics", ROMX
 
 ChrisFishingGFX::     INCBIN "gfx/overworld/chris_fish.2bpp"

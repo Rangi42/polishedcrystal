@@ -32,6 +32,10 @@ LoadWeatherPal::
 	ld a, PAL_OW_RAIN
 	jr .use_pal_6
 
+.sand
+	ld a, PAL_OW_SAND
+	jr .use_pal_6
+
 .snow
 	ldh a, [rWBK]
 	push af
@@ -68,10 +72,6 @@ endc
 	pop af
 	ldh [rWBK], a
 	ret
-
-.sand
-	ld a, PAL_OW_SAND
-	jr .use_pal_6
 
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)

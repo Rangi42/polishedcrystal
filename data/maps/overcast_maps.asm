@@ -66,7 +66,6 @@ RandomOvercastMapsJohto:
 	overcast_map RUINS_OF_ALPH_OUTSIDE
 	overcast_map SILVER_CAVE_OUTSIDE
 	overcast_map SINJOH_RUINS
-	overcast_map SNOWTOP_MOUNTAIN_INSIDE
 	overcast_map STORMY_BEACH
 	overcast_map VIOLET_CITY
 	overcast_map YELLOW_FOREST

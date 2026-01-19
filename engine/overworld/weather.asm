@@ -125,10 +125,12 @@ SpawnRandomWeatherCoords::
 	assert OW_WEATHER_THUNDERSTORM == 3
 	dec a
 	jr z, .rain
-	dec a
-	ret nz
 	assert OW_WEATHER_SANDSTORM == 4
 	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
+	dec a
+	ret nz
+	; fallthrough
+
 .sand
 	call .find_oam_and_radomize
 	ret c
@@ -171,7 +173,6 @@ SpawnRandomWeatherCoords::
 	ccf
 	sbc a
 	add RAINSPLASH_TILE
-.got_tile
 	ld [hli], a
 	ld a, PAL_OW_WEATHER
 	ld [hld], a
@@ -201,6 +202,7 @@ SpawnRandomWeatherCoords::
 
 DoOverworldSnow:
 	ld a, [wLoadedObjPal6]
+	assert NO_PAL_LOADED == -1
 	inc a
 	jr z, .continue
 	farcall LoadWeatherPal
@@ -819,46 +821,65 @@ DoOverworldCherryBlossoms:
 ; fallthrough
 DoCherryBlossomFall:
 	ld de, wShadowOAM
-	ld hl, wShadowOAM
+	ld h, d
+	ld l, e
 	ld b, OAM_COUNT
-.loop
+.loop ; for (wShadowOAM -> wShadowOAMEnd)
+	; if the sprite is hidden, skip it
 	ld hl, OAMA_Y
 	ld a, [hl]
 	cp OAM_YCOORD_HIDDEN
 	jr z, .next
+
+	; if the sprite is not a cherry petal, skip it
 	ld hl, OAMA_TILEID
 	add hl, de
 	ld a, [hli]
 	cp CHERRYLEAF_TILE
 	jr nz, .next
+
+	; if the sprite doesn't use the weather palette, skip it
 	ld a, [hl]
-	cp 6 ; palette 6
+	cp PAL_OW_PINK
 	jr nz, .next
 
+	; the cherry petal has a 1% chance of despawning
 	call Random
 	cp 1 percent
 	jr c, .despawn
 
+	; double the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorY]
 	add a
 	ld c, a
+
+	; get the sprite's y coord and subtract the player's doubled step vector
 	ld hl, OAMA_Y
 	add hl, de
 	ld a, [hl]
 	sub c
 	ld c, a
+
+	; sprites with an even index move down 1 faster.
 	call IsEvenSpriteIndex
 	add c
+
+	; minimum fall speed is 2
 	add 2
+
+	; if the sprite goes offscreen, despawn it, otherwise update its y coord
 	ld hl, OAMA_Y
 	add hl, de
 	cp OAM_YCOORD_HIDDEN
 	ld [hl], a
 	jr nc, .despawn
 
+	; double the player's step vector (may be positive or negative)
 	ld a, [wPlayerStepVectorX]
 	add a
 	ld c, a
+
+	; sprite has a 50% chance to wiggle left 1.
 	call Random
 	and 1
 	ld a, c
@@ -866,10 +887,15 @@ DoCherryBlossomFall:
 	inc a
 .no_add_1
 	ld c, a
+
+	; get the sprite's x coord and subtract the player's doubled step vector + wiggle
 	ld hl, OAMA_X
 	add hl, de
 	ld a, [hl]
 	sub c
+
+	; sprite can have 0 change in x coord (no wiggle or step vector)
+	; so we increment a before subtracting to check for despawn (offscreen)
 	inc a
 	ld hl, OAMA_X
 	add hl, de
@@ -1228,40 +1254,19 @@ LoadWeatherGraphics:
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
-	assert OW_WEATHER_RAIN == 1
-	dec a
-	jr z, .rain
-	assert OW_WEATHER_SNOW == 2
-	dec a
-	jr z, .snow
-	assert OW_WEATHER_THUNDERSTORM == 3
-	dec a
-	jr z, .rain
-	assert OW_WEATHER_SANDSTORM == 4
-	dec a
-	jr z, .sand
-	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
-; cherry blossoms
-	lb bc, BANK(CherryBlossomGFX), 1
-	ld de, CherryBlossomGFX
-	jr .continue
-.sand
-	lb bc, BANK(SandGFX), 1
-	ld de, SandGFX
-	jr .continue
-.rain
-	lb bc, BANK(RainGFX), 2
-	ld de, RainGFX
-	jr .continue
-.snow
-	lb bc, BANK(SnowGFX), 1
-	ld de, SnowGFX
-.continue
+	ld hl, WeatherGraphics - 3
+	ld d, 0
+	ld e, a
+	add hl, de
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld b, BANK("Overworld Weather Graphics")
+	ld c, [hl]
 	ld hl, vTiles0 tile WEATHER_TILE_1
 	jmp Get2bpp
 
-
-RainGFX: INCBIN "gfx/overworld/rain_splash.2bpp"
-SnowGFX: INCBIN "gfx/overworld/snow.2bpp"
-SandGFX: INCBIN "gfx/overworld/sand.2bpp"
-CherryBlossomGFX: INCBIN "gfx/overworld/cherry_blossom.2bpp"
+INCLUDE "data/sprites/weather.asm"
