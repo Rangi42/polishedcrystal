@@ -145,26 +145,21 @@ OptionsMenu_SetSelectionFromCursor:
 	ld [wMenuSelection], a ; temporarily store index here
 
 	; Get items pointer and bank
+	ld hl, wMenuSelection
+	ld c, [hl]
+
 	ld hl, wMenuData_ItemsPointerAddr
 	ld a, [hli]
-	ld e, a
-	ld a, [hl]
-	ld d, a ; DE = items pointer
+	ld h, [hl]
+	ld l, a
 	ld a, [wMenuData_ItemsPointerBank]
-	ld hl, wMenuSelection
-	ld b, a ; B = bank
-	ld c, [hl] ; C = saved index
-	ld h, d
-	ld l, e ; HL = items pointer
+	ld b, a
 
 	; Get list size (first byte at items pointer)
-	ld a, b ; bank
-	push bc ; save bank and index
 	push hl ; save items pointer
 	call GetFarByte ; A = list size
 	ld d, a ; D = list size
 	pop hl ; restore items pointer
-	pop bc ; B = bank, C = index
 
 	; Check if index >= list size
 	ld a, c
@@ -187,14 +182,12 @@ OptionsMenu_SetSelectionFromCursor:
 	; A = stride, C = index
 	push bc ; save bank
 	ld b, 0
-	ld c, a ; BC = stride
-	pop af ; A = bank (was in B)
-	push af ; save bank again
+	ld c, a
 	ld a, [wMenuSelection] ; get index (we stored it there temporarily)
-	; Now A = index, BC = stride
+	; A = index, BC = stride
 	; HL += BC * A
 	rst AddNTimes
-	pop af ; A = bank
+	pop af ; A = bank (restored from push bc)
 	; HL now points to the item, A = bank
 	call GetFarByte
 	ld [wMenuSelection], a
