@@ -140,6 +140,7 @@ wPrevPartyLevel::
 wUnownPuzzleCornerTile::
 wKeepSevenBiasChance::
 wTempDayOfWeek::
+wSuicuneFrame::
 	db
 
 	ds 59

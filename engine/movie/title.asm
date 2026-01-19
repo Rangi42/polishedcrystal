@@ -219,7 +219,7 @@ endc
 	ldh [hBGMapMode], a
 
 	xor a
-	ld [wBGPals1 palette 0 + 2], a
+	ld [wSuicuneFrame], a
 
 ; Play starting sound effect
 	call SFXChannelsOff
@@ -227,7 +227,7 @@ endc
 	jmp PlaySFX
 
 SuicuneFrameIterator:
-	ld hl, wBGPals1 palette 0 + 2
+	ld hl, wSuicuneFrame
 	ld a, [hl]
 	ld c, a
 	inc [hl]
