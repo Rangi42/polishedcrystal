@@ -420,6 +420,7 @@ MACRO battle_bg_effect
 ENDM
 
 MACRO overcast_random_map
+wOvercastRandomMap\1::
 wOvercastRandomMapIntensity\1:: db
 wOvercastRandomMapGroup\1::     db
 wOvercastRandomMapNumber\1::    db

@@ -191,58 +191,47 @@ GetAliasedGroup:
 	ret
 
 GenerateNewRandomOvercastMaps:
+	ld bc, wOvercastRandomMaps
+
+	assert wOvercastRandomMaps + 0 == wOvercastRandomMapJohto1
 	ld a, NUM_JOHTO_OVERCAST_MAPS
 	ld de, RandomOvercastMapsJohto
-	call RandomRange
-	ld h, 0
-	ld l, a
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld [wOvercastRandomMapGroupJohto1], a
-	ld a, [hli]
-	ld [wOvercastRandomMapNumberJohto1], a
-	call GenerateRandomIntensity
-	ld [wOvercastRandomMapIntensityJohto1], a
+	call .GenerateNextOvercastMap
+
+	assert wOvercastRandomMaps + 3 == wOvercastRandomMapJohto2
 	ld a, NUM_JOHTO_OVERCAST_MAPS
 	ld de, RandomOvercastMapsJohto
-	call RandomRange
-	ld h, 0
-	ld l, a
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld [wOvercastRandomMapGroupJohto2], a
-	ld a, [hli]
-	ld [wOvercastRandomMapNumberJohto2], a
-	call GenerateRandomIntensity
-	ld [wOvercastRandomMapIntensityJohto2], a
+	call .GenerateNextOvercastMap
+
+	assert wOvercastRandomMaps + 6 == wOvercastRandomMapKanto1
 	ld a, NUM_KANTO_OVERCAST_MAPS
 	ld de, RandomOvercastMapsKanto
-	call RandomRange
-	ld h, 0
-	ld l, a
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld [wOvercastRandomMapGroupKanto1], a
-	ld a, [hli]
-	ld [wOvercastRandomMapNumberKanto1], a
-	call GenerateRandomIntensity
-	ld [wOvercastRandomMapIntensityKanto1], a
+	call .GenerateNextOvercastMap
+
+	assert wOvercastRandomMaps + 9 == wOvercastRandomMapKanto2
 	ld a, NUM_KANTO_OVERCAST_MAPS
 	ld de, RandomOvercastMapsKanto
+	; fallthrough
+
+.GenerateNextOvercastMap:
+	inc bc
 	call RandomRange
 	ld h, 0
 	ld l, a
 	add hl, hl
 	add hl, de
 	ld a, [hli]
-	ld [wOvercastRandomMapGroupKanto2], a
+	ld [bc], a ; map group
+	inc bc
 	ld a, [hli]
-	ld [wOvercastRandomMapNumberKanto2], a
+	ld [bc], a ; map number
+	dec bc
+	dec bc
 	call GenerateRandomIntensity
-	ld [wOvercastRandomMapIntensityKanto2], a
+	ld [bc], a ; intensity
+	inc bc
+	inc bc
+	inc bc
 	ret
 
 GenerateRandomIntensity:
