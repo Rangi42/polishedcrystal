@@ -6,27 +6,17 @@ LoadWeatherPal::
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
-	assert OW_WEATHER_RAIN == 1
 	dec a
-	jr z, .rain
-	assert OW_WEATHER_SNOW == 2
-	dec a
-	jr z, .snow
-	assert OW_WEATHER_THUNDERSTORM == 3
-	dec a
-	jr z, .rain ; thunderstorm
-	assert OW_WEATHER_SANDSTORM == 4
-	dec a
-	jr z, .sand
-	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
-	; fallthrough
+	call StackJumpTable
 
-	ld a, PAL_OW_PINK
-.use_pal_6
-	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal6], a
-	ld de, wOBPals1 palette 6
-	jr CopySpritePalHandler
+.Jumptable:
+	table_width 2
+	dw .rain
+	dw .snow
+	dw .rain ; thunderstorm
+	dw .sand
+	dw .cherry
+	assert_table_length NUM_OW_WEATHERS
 
 .rain
 	ld a, PAL_OW_RAIN
@@ -35,6 +25,15 @@ LoadWeatherPal::
 .sand
 	ld a, PAL_OW_SAND
 	jr .use_pal_6
+
+.cherry
+	ld a, PAL_OW_PINK
+	; fallthrough
+.use_pal_6
+	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal6], a
+	ld de, wOBPals1 palette 6
+	jr CopySpritePalHandler
 
 .snow
 	ldh a, [rWBK]

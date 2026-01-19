@@ -112,5 +112,6 @@ SetCurrentWeather::
 	jmp .set_weather
 ; fallthrough
 .no_weather
-	ld a, OW_WEATHER_NONE
+	assert OW_WEATHER_NONE == 0
+	xor a
 	jmp .set_weather
