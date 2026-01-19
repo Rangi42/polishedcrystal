@@ -1429,7 +1429,7 @@ SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bit 1: disable nickname prompt
+; bits 3-7: unused
 	db
 
 wOptions::

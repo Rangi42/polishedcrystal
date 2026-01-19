@@ -21,7 +21,6 @@ DEF JOYPAD_DISABLE_SGB_TRANSFER_F EQU 7
 ; wOptions3::
 	const_def
 	const QWERTY_KEYBOARD_F  ; 0
-	const DISABLE_NICKNAME_PROMPT_F ; 1
 
 ; wOptions1::
 	const_def 3

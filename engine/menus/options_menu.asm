@@ -1,4 +1,4 @@
-DEF NUM_OPTIONS EQU 13
+DEF NUM_OPTIONS EQU 12
 DEF OPTIONS_MENU_VALUE_OFFSET EQU 9
 
 OptionsMenu:
@@ -245,7 +245,6 @@ OptionsMenu_CallOptionRoutine:
 	dw Options_TurningSpeed
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_NicknamePrompt
 	dw Options_Done
 
 MenuDataHeader_Options:
@@ -268,7 +267,7 @@ MenuDataHeader_Options:
 OptionsMenuItems:
 	db NUM_OPTIONS
 	db 1, 2, 3, 4, 5, 6, 7, 8
-	db 9, 10, 11, 12, 13
+	db 9, 10, 11, 12
 	db -1 ; terminator (Done)
 
 OptionsMenu_PlaceOptionName:
@@ -309,7 +308,6 @@ OptionsMenu_PlaceOptionName:
 	dw .TurningSpeed
 	dw .ClockFormat
 	dw .PokedexUnits
-	dw .NicknamePrompt
 	dw .Done
 
 .TextSpeed:
@@ -336,8 +334,6 @@ OptionsMenu_PlaceOptionName:
 	db "Clock Format@"
 .PokedexUnits:
 	db "#dex Units@"
-.NicknamePrompt:
-	db "Nickname Prompt@"
 .Done:
 	db "Done@"
 
@@ -649,30 +645,6 @@ Options_PokedexUnits:
 	db "Imperial@"
 .Metric:
 	db "Metric  @"
-
-Options_NicknamePrompt:
-	ld hl, wOptions3
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit DISABLE_NICKNAME_PROMPT_F, [hl]
-	jr z, .SetOn
-	jr .SetOff
-.Toggle
-	bit DISABLE_NICKNAME_PROMPT_F, [hl]
-	jr z, .SetOff
-.SetOn:
-	res DISABLE_NICKNAME_PROMPT_F, [hl]
-	ld de, OnString
-	jr .Display
-.SetOff:
-	set DISABLE_NICKNAME_PROMPT_F, [hl]
-	ld de, OffString
-.Display:
-	call Options_GetValueCoord
-	rst PlaceString
-	and a
-	ret
 
 Options_TextAutoscroll:
 	ldh a, [hJoyPressed]

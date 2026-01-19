@@ -123,12 +123,6 @@ CheckPartyFullAfterContest:
 	ret
 
 GiveANickname_YesNo:
-	ld a, [wOptions3]
-	bit DISABLE_NICKNAME_PROMPT_F, a
-	jr z, .Ask
-	scf
-	ret
-.Ask
 	ld hl, TextJump_GiveANickname
 	call PrintText
 	jmp YesNoBox

@@ -370,11 +370,6 @@ HatchEggs:
 	ld hl, .Text_HatchEgg
 	call PrintText
 
-	call GetPartyPokemonName
-	ld a, [wOptions3]
-	bit DISABLE_NICKNAME_PROMPT_F, a
-	jr nz, .nonickname
-
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox

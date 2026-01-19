@@ -561,8 +561,6 @@ PokeBallEffect:
 .SkipPartyMonHealBall:
 
 	call GetPartyPokemonName
-	call CheckDisableNicknamePrompt
-	jmp c, .return_from_capture
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 	call YesNoBox
@@ -616,8 +614,6 @@ PokeBallEffect:
 .SkipBoxMonFriendBall:
 
 	call GetPartyPokemonName
-	call CheckDisableNicknamePrompt
-	jr c, .SkipBoxMonNickname
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 	call YesNoBox
@@ -808,16 +804,6 @@ Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
 	text_far _AskGiveNicknameText
 	text_end
-
-CheckDisableNicknamePrompt:
-	ld a, [wOptions3]
-	bit DISABLE_NICKNAME_PROMPT_F, a
-	jr z, .ok
-	scf
-	ret
-.ok
-	and a
-	ret
 
 ReturnToBattle_UseBall:
 	farjp _ReturnToBattle_UseBall
