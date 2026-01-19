@@ -348,11 +348,6 @@ wMoveSwapBuffer:: db
 
 wMenuScrollPosition:: ds 4
 
-wOptionsMenuValueCoord:: dw
-wOptionsMenuCursor:: db
-wOptionsMenuScrollPosition:: db
-wOptionsMenuSavedBattleMenuFlags:: db
-
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
 
@@ -513,7 +508,11 @@ wDexCacheOwn:: dw
 wDexPrevCursorPos:: db
 wDexPrevOffset:: db
 
-	ds 32 ; unused
+wOptionsMenuValueCoord:: dw
+wOptionsMenuCursor:: db
+wOptionsMenuScrollPosition:: db
+
+	ds 28 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db

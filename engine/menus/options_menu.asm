@@ -7,8 +7,6 @@ OptionsMenu:
 	ld a, $1
 	ldh [hInMenu], a
 
-	ld a, [wBattleMenuFlags]
-	ld [wOptionsMenuSavedBattleMenuFlags], a
 	xor a
 	ld [wBattleMenuFlags], a
 
@@ -131,8 +129,6 @@ OptionsMenu:
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
-	ld a, [wOptionsMenuSavedBattleMenuFlags]
-	ld [wBattleMenuFlags], a
 	pop af
 	ldh [hInMenu], a
 	ret
