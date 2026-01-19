@@ -835,7 +835,7 @@ DoCherryBlossomFall:
 
 	; if the sprite doesn't use the weather palette, skip it
 	ld a, [hl]
-	cp PAL_OW_PINK
+	cp PAL_OW_WEATHER
 	jr nz, .next
 
 	; the cherry petal has a 1% chance of despawning
