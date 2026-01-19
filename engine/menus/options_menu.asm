@@ -1,6 +1,4 @@
-DEF BATTLE_ANIMS_OPTION_MASK EQU %11
-DEF NO_RTC_SPEED_VALUE_MASK EQU %11
-DEF NUM_OPTIONS EQU 15
+DEF NUM_OPTIONS EQU 13
 DEF OPTIONS_MENU_VALUE_OFFSET EQU 9
 
 OptionsMenu:
@@ -245,14 +243,12 @@ OptionsMenu_CallOptionRoutine:
 	dw Options_Typeface
 	dw Options_Keyboard
 	dw Options_Sound
-	dw Options_BattleAnimations
+	dw Options_BattleEffects
 	dw Options_BattleStyle
 	dw Options_RunningShoes
 	dw Options_TurningSpeed
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_BikeSurfMusic
-	dw Options_NoRTCSpeed
 	dw Options_NicknamePrompt
 	dw Options_Done
 
@@ -276,7 +272,7 @@ MenuDataHeader_Options:
 OptionsMenuItems:
 	db NUM_OPTIONS
 	db 1, 2, 3, 4, 5, 6, 7, 8
-	db 9, 10, 11, 12, 13, 14, 15
+	db 9, 10, 11, 12, 13
 	db -1 ; terminator (Done)
 
 OptionsMenu_PlaceOptionName:
@@ -311,14 +307,12 @@ OptionsMenu_PlaceOptionName:
 	dw .Typeface
 	dw .Keyboard
 	dw .Sound
-	dw .BattleAnims
+	dw .BattleEffects
 	dw .BattleStyle
 	dw .RunningShoes
 	dw .TurningSpeed
 	dw .ClockFormat
 	dw .PokedexUnits
-	dw .BikeSurfMusic
-	dw .NoRTCSpeed
 	dw .NicknamePrompt
 	dw .Done
 
@@ -334,8 +328,8 @@ OptionsMenu_PlaceOptionName:
 	db "Keyboard@"
 .Sound:
 	db "Sound@"
-.BattleAnims:
-	db "Battle Anims@"
+.BattleEffects:
+	db "Battle Effects@"
 .BattleStyle:
 	db "Battle Style@"
 .RunningShoes:
@@ -346,16 +340,15 @@ OptionsMenu_PlaceOptionName:
 	db "Clock Format@"
 .PokedexUnits:
 	db "#dex Units@"
-.BikeSurfMusic:
-	db "Bike/Surf Music@"
-.NoRTCSpeed:
-	db "No RTC Speed@"
 .NicknamePrompt:
 	db "Nickname Prompt@"
 .Done:
 	db "Done@"
 
 OptionsMenu_PlaceOptionValue:
+	ld a, [wMenuSelection]
+	cp -1
+	ret z
 	push de
 	pop hl
 	ld de, SCREEN_WIDTH
@@ -579,83 +572,29 @@ Options_Sound:
 .Stereo:
 	db "Stereo@"
 
-Options_BattleAnimations:
-	ldh a, [hJoyPressed]
-	ld b, a
+Options_BattleEffects:
 	ld hl, wOptions1
-	ld a, [wOptions3]
-	ld c, a
-	ld e, 0
-	bit BATTLE_EFFECTS, [hl]
-	jr nz, .moves_on
-	inc e ; moves off
-.moves_on
-	bit BATTLE_INTRO_ANIMS, c
-	jr z, .got_index
-	ld a, e
-	add 2
-	ld e, a
-.got_index
-	ld a, b
+	ldh a, [hJoyPressed]
 	and PAD_LEFT | PAD_RIGHT
-	jr z, .apply
-	bit B_PAD_LEFT, b
-	jr z, .right
-	dec e
-	jr .wrap
-.right
-	inc e
-.wrap
-	ld a, e
-	and BATTLE_ANIMS_OPTION_MASK
-	ld e, a
-.apply
-	ld a, e
-	and 1
-	jr nz, .disable_moves
-	set BATTLE_EFFECTS, [hl]
-	jr .intro_check
-.disable_moves
+	jr nz, .Toggle
+	bit BATTLE_EFFECTS, [hl]
+	jr z, .SetOff
+	jr .SetOn
+.Toggle
+	bit BATTLE_EFFECTS, [hl]
+	jr z, .SetOn
+.SetOff:
 	res BATTLE_EFFECTS, [hl]
-.intro_check
-	ld a, e
-	and 2
-	ld hl, wOptions3
-	jr z, .intro_on
-	set BATTLE_INTRO_ANIMS, [hl]
-	jr .display
-.intro_on
-	res BATTLE_INTRO_ANIMS, [hl]
-.display
-	ld hl, .Strings
-	ld d, 0
-	ld a, e
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld de, OffString
+	jr .Display
+.SetOn:
+	set BATTLE_EFFECTS, [hl]
+	ld de, OnString
+.Display:
 	call Options_GetValueCoord
 	rst PlaceString
 	and a
 	ret
-
-.Strings:
-	dw .All
-	dw .IntroOnly
-	dw .MovesOnly
-	dw .None
-
-.All:
-	db "All  @"
-.IntroOnly:
-	db "Intro@"
-.MovesOnly:
-	db "Moves@"
-.None:
-	db "None @"
 
 Options_ClockFormat:
 	ld hl, wOptions2
@@ -714,93 +653,6 @@ Options_PokedexUnits:
 	db "Imperial@"
 .Metric:
 	db "Metric  @"
-
-Options_BikeSurfMusic:
-	ld hl, wOptions3
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit BIKE_SURF_MUSIC_OFF_F, [hl]
-	jr z, .SetOn
-	jr .SetOff
-.Toggle
-	bit BIKE_SURF_MUSIC_OFF_F, [hl]
-	jr z, .SetOff
-.SetOn:
-	res BIKE_SURF_MUSIC_OFF_F, [hl]
-	ld de, OnString
-	jr .Display
-.SetOff:
-	set BIKE_SURF_MUSIC_OFF_F, [hl]
-	ld de, OffString
-.Display:
-	call Options_GetValueCoord
-	rst PlaceString
-	and a
-	ret
-
-Options_NoRTCSpeed:
-	ld hl, wOptions3
-	ldh a, [hJoyPressed]
-	ld b, a
-	and PAD_LEFT | PAD_RIGHT
-	jr z, .no_change
-	ld a, [hl]
-	and NO_RTC_SPEED_MASK
-	rrca
-	rrca
-	rrca
-	rrca
-	ld c, a
-	bit B_PAD_LEFT, b
-	jr z, .inc
-	dec c
-	jr .wrap
-.inc
-	inc c
-.wrap
-	ld a, c
-	and NO_RTC_SPEED_VALUE_MASK
-	swap a
-	and NO_RTC_SPEED_MASK
-	ld b, a
-	ld a, [hl]
-	and ~NO_RTC_SPEED_MASK
-	or b
-	ld [hl], a
-.no_change
-	ld a, [hl]
-	and NO_RTC_SPEED_MASK
-	swap a
-	and NO_RTC_SPEED_VALUE_MASK
-	ld hl, .Strings
-	ld d, 0
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	call Options_GetValueCoord
-	rst PlaceString
-	and a
-	ret
-
-.Strings:
-	dw .One
-	dw .Two
-	dw .Four
-	dw .Six
-
-.One:
-	db "1s/min@"
-.Two:
-	db "2s/min@"
-.Four:
-	db "4s/min@"
-.Six:
-	db "6s/min@"
 
 Options_NicknamePrompt:
 	ld hl, wOptions3

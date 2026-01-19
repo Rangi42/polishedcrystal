@@ -1419,21 +1419,16 @@ wCurPalDarknessState:: db
 wCurPalOvercastIndexState:: db
 wCurPalTimeOfDayPalState:: db
 
-wLastMusicLandmark:: db ; landmark whose map music is currently playing
-
 SECTION "Unused 2", WRAM0
 
-	ds 280 ; it's free real estate
+	ds 281 ; it's free real estate
 
 
 SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
-; bit 1: skip battle intro animations
-; bit 2: disable bike/surf music overrides
-; bit 3: disable nickname prompt
-; bits 4-5: no-RTC speed (00:1s,01:2s,10:4s,11:6s per minute)
+	; bit 1: disable nickname prompt
 	db
 
 wOptions::
