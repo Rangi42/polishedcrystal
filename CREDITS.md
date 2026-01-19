@@ -26,7 +26,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
 * SadisticMystic, sinusoidal, TKOWL and Kate Dering for vanilla battle engine testing and documentation.
-* ax6 and NieDzejkob for developing and optimizing lzcomp.
+* ax6 and meithecatte for developing and optimizing lzcomp.
 * Kurausukun and earthoul for translating battle mechanics information from the Japanese Pokémon wiki.
 * vulcandth for implementing weather effects in the overworld, to include rain, lightning, snow, and sandstorm.
 * vulcandth for implementing the dynamic palettes for objects in the overworld.
