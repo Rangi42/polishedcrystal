@@ -1197,7 +1197,23 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 64 ; unused
+wOvercastRandomDay:: db
+wOvercastCurIntensity:: db
+wOvercastRandomMaps::
+wOvercastRandomMapIntensityJohto1:: db
+wOvercastRandomMapGroupJohto1:: db
+wOvercastRandomMapNumberJohto1:: db
+wOvercastRandomMapIntensityJohto2:: db
+wOvercastRandomMapGroupJohto2:: db
+wOvercastRandomMapNumberJohto2:: db
+wOvercastRandomMapIntensityKanto1:: db
+wOvercastRandomMapGroupKanto1:: db
+wOvercastRandomMapNumberKanto1:: db
+wOvercastRandomMapIntensityKanto2:: db
+wOvercastRandomMapGroupKanto2:: db
+wOvercastRandomMapNumberKanto2:: db
+
+	ds 50 ; unused
 
 wCandyAmounts::
 wExpCandyXSAmount:: db
@@ -1475,11 +1491,6 @@ wSoundEngineBattleBackup:: ds wChannelsEnd - wMusic
 wBattleBackupMapMusic:: db
 
 
-SECTION "Music Player RAM", WRAMX
-
-wMPNotes:: ds 4 * 256
-
-
 SECTION "Pic Animations RAM", WRAMX
 
 wTempTileMap::
@@ -1626,7 +1637,7 @@ wDexAreaLastMode:: db
 
 	; Used to align wDexAreaMons. Feel free to add more data here, just don't
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
-	ds 4
+	ds 3
 
 ALIGN 8
 wDexAreaMons::

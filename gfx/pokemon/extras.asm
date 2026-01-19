@@ -283,6 +283,7 @@ PikachuChuchuAnimationExtra: INCLUDE "gfx/pokemon/pikachu_chuchu/anim_idle.asm"
 
 ArbokJohtoAnimationExtra:  INCLUDE "gfx/pokemon/arbok_johto/anim_idle.asm"
 ArbokKantoAnimationExtra:  INCLUDE "gfx/pokemon/arbok_kanto/anim_idle.asm"
+ArbokOrangeAnimationExtra: INCLUDE "gfx/pokemon/arbok_orange/anim_idle.asm"
 ArbokKogaAnimationExtra:   INCLUDE "gfx/pokemon/arbok_koga/anim_idle.asm"
 ArbokAgathaAnimationExtra: INCLUDE "gfx/pokemon/arbok_agatha/anim_idle.asm"
 ArbokArianaAnimationExtra: INCLUDE "gfx/pokemon/arbok_ariana/anim_idle.asm"

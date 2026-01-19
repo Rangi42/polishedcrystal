@@ -452,23 +452,36 @@ GetGender:
 ListMovePP:
 	ld a, [wNumMoves]
 	inc a
-	ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
+	ld c, a ; no-optimize a = N - a (c gets used in .pp_loop and .dash_loop)
 	ld a, NUM_MOVES
 	sub c
 	ld b, a
 	push hl
 	ld a, [wBuffer1]
 	ld e, a
-	ld d, $0
-	ld a, '<BOLDP>'
-	call .load_loop
+	ld d, 0
+.pp_loop
+	ld a, SUMMARY_TILE_PP_START
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hld], a
+	dec hl
+	add hl, de
+	dec c
+	jr nz, .pp_loop
 	ld a, b
 	and a
 	jr z, .skip
 	ld c, a
 	ld a, '-'
-	call .load_loop
-
+.dash_loop
+	ld [hli], a
+	ld [hld], a
+	add hl, de
+	dec c
+	jr nz, .dash_loop
 .skip
 	pop hl
 	inc hl
@@ -532,14 +545,6 @@ ListMovePP:
 	ld a, b
 	cp NUM_MOVES
 	jr nz, .loop
-	ret
-
-.load_loop
-	ld [hli], a
-	ld [hld], a
-	add hl, de
-	dec c
-	jr nz, .load_loop
 	ret
 
 FixPlayerEVs:

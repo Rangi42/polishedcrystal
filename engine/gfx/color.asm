@@ -120,10 +120,19 @@ StatusIconPals:
 INCLUDE "gfx/battle/status.pal"
 
 LoadBattleCategoryAndTypePals:
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
+	ld c, a
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld b, a
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-	ld c, a
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT + 2
 LoadCategoryAndTypePals:
 	ld hl, CategoryIconPals
@@ -984,7 +993,8 @@ LoadMapPals:
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
-	dec a
+	; Use map group to select an overcast roof palette (full table per group)
+	ld a, [wMapGroup]
 	ld hl, OvercastRoofPals
 	jr .get_roof_color
 
@@ -1035,7 +1045,9 @@ INCLUDE "gfx/tilesets/roofs.pal"
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
+	table_width COLOR_SIZE * 2 * 3
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
+	assert_table_length NUM_MAP_GROUPS + 1
 
 INCLUDE "data/pokemon/palettes.asm"
 

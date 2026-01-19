@@ -105,6 +105,7 @@ wTempoAdjustment:: db
 ; audio engine output
 wNoiseHit:: db
 
+
 SECTION "WRAM 0", WRAM0
 
 wMonType:: db
@@ -203,6 +204,7 @@ wPlayerCurrentOAMSlot:: db
 wMapSetupFlags:: db
 
 wPrinterConnectionOpen:: db
+
 
 SECTION "Sprite Animations", WRAM0
 
@@ -339,6 +341,7 @@ SECTION UNION "Misc 404", WRAM0
 wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
+
 
 SECTION UNION "Misc 404", WRAM0
 ; polished link transfer buffer
@@ -886,16 +889,15 @@ SECTION "Unused", WRAM0
 	ds 69 ; it's free real estate
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; overworld map
 
-; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326
-; was originally only 1300 bytes
-wOverworldMapBlocks:: ds 1326
+; large enough for 32x27 Route41.ablk; (32+6)x(27+6) = 1254
+wOverworldMapBlocks:: ds 1300
 wOverworldMapBlocksEnd::
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; psychic inver party
 
 ; large enough for 4x4 KantoHouse1.asm in wOverworldMapBlocks
@@ -912,18 +914,18 @@ wInverGroup::
 	endr
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; credits image
 
-wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
+wCreditsBlankFrame2bpp:: ds 16 tiles
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; Bill's PC
 
 	; LCD hblank code block. Labels are defined as part of the code.
 	ds $cf
-	assert BillsPC_LCDCode.End - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
+	assert BillsPC_LCDCode.End - BillsPC_LCDCode == @ - STARTOF("Misc 1300")
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
@@ -1002,14 +1004,17 @@ assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10
 
-SECTION UNION "Misc 1326", WRAM0
+wSummaryScreenPPTileBuffer:: ds 3 * TILE_1BPP_SIZE
+
+
+SECTION UNION "Misc 1300", WRAM0
 ; raw link data
 
 wLinkData:: ds 1300
 wLinkDataEnd::
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; link data members
 
 wLinkPlayerName:: ds NAME_LENGTH
@@ -1042,7 +1047,7 @@ wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
 ENDU
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; link mail data
 	ds 500
 
@@ -1061,7 +1066,7 @@ wLinkOTMailEnd::
 	ds 10
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; received link mail data
 	ds 500
 
@@ -1069,7 +1074,7 @@ wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 
 ; GB Printer data
 wGameboyPrinterRAM::
@@ -1104,6 +1109,11 @@ wPrinterExposureTime:: db
 wGameboyPrinterRAMEnd::
 
 wPrinterOpcode:: db
+
+
+SECTION UNION "Misc 1300", WRAM0
+
+wMPNotes:: ds 3 * 256
 
 
 SECTION "Video", WRAM0
@@ -1411,6 +1421,11 @@ wCurPalOvercastIndexState:: db
 wCurPalTimeOfDayPalState:: db
 
 
+SECTION "Unused 2", WRAM0
+
+	ds 281 ; it's free real estate
+
+
 SECTION "Options", WRAM0
 
 wOptions3::
@@ -1489,6 +1504,7 @@ wDaysSince:: db
 ; Temporary backup for options
 wOptionsBuffer:: db
 
+
 SECTION "SRAM Access Count", WRAM0
 
 ; Contains a count of the number of times SRAM has been opened in a
@@ -1496,7 +1512,8 @@ SECTION "SRAM Access Count", WRAM0
 ; when loading a savestate.
 wSRAMAccessCount:: db
 
-SECTION "Rom Checksum", WRAM0
+
+SECTION "ROM Checksum", WRAM0
 
 ; Contains a copy of the rom checksum, read from the header. Used as
 ; protection against people trying to load a save state for a save in

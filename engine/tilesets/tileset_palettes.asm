@@ -178,3 +178,4 @@ CheckIfSpecialPaletteApplies:
 	ret
 
 INCLUDE "data/maps/palettes.asm"
+INCLUDE "data/maps/palettes_overcast.asm"

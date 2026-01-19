@@ -166,7 +166,7 @@ ValeriesHouse_BlockData:
 
 
 
-SECTION "CeruleanPoliceStation_BlockData", ROMX
+SECTION "KantoHouse1_BlockData", ROMX
 CeruleanPoliceStation_BlockData:
 CeruleanBerryPowderHouse_BlockData:
 CeruleanWaterShowSpeechHouse_BlockData:
@@ -177,7 +177,7 @@ MrPsychicsHouse_BlockData:
 PsychicInversHouse_BlockData:
 	INCBIN "maps/KantoHouse1.ablk.lz"
 
-SECTION "Route26DayofWeekSiblingsHouse_BlockData", ROMX
+SECTION "KantoHouse3_BlockData", ROMX
 Route26DayofWeekSiblingsHouse_BlockData:
 VermilionMagnetTrainSpeechHouse_BlockData:
 VermilionHouseDiglettsCaveSpeechHouse_BlockData:
@@ -188,7 +188,7 @@ SaffronOrreSpeechHouse_BlockData:
 Route19BeachHouse_BlockData:
 	INCBIN "maps/KantoHouse3.ablk.lz"
 
-SECTION "PewterNidoranSpeechHouse_BlockData", ROMX
+SECTION "KantoHouse4_BlockData", ROMX
 PewterNidoranSpeechHouse_BlockData:
 PewterSnoozeSpeechHouse_BlockData:
 Route12SuperRodHouse_BlockData:
@@ -210,6 +210,10 @@ Colosseum_BlockData:
 SECTION "HiddenTreeGrotto_BlockData", ROMX
 HiddenTreeGrotto_BlockData:
 	INCBIN "maps/HiddenTreeGrotto.ablk.lz"
+
+SECTION "HiddenCaveGrotto_BlockData", ROMX
+HiddenCaveGrotto_BlockData:
+	INCBIN "maps/HiddenCaveGrotto.ablk.lz"
 
 SECTION "PlayersHouse1F_BlockData", ROMX
 PlayersHouse1F_BlockData:
@@ -740,6 +744,10 @@ SECTION "WhirlIslandB2F_BlockData", ROMX
 WhirlIslandB2F_BlockData:
 	INCBIN "maps/WhirlIslandB2F.ablk.lz"
 
+SECTION "WhirlIslandCave_BlockData", ROMX
+WhirlIslandCave_BlockData:
+	INCBIN "maps/WhirlIslandCave.ablk.lz"
+
 SECTION "WhirlIslandLugiaChamber_BlockData", ROMX
 WhirlIslandLugiaChamber_BlockData:
 	INCBIN "maps/WhirlIslandLugiaChamber.ablk.lz"
@@ -868,6 +876,10 @@ BlackthornGym2F_BlockData:
 SECTION "BlackthornCity_BlockData", ROMX
 BlackthornCity_BlockData:
 	INCBIN "maps/BlackthornCity.ablk.lz"
+
+SECTION "DragonsDen1F_BlockData", ROMX
+DragonsDen1F_BlockData:
+	INCBIN "maps/DragonsDen1F.ablk.lz"
 
 SECTION "DragonsDenB1F_BlockData", ROMX
 DragonsDenB1F_BlockData:
@@ -1629,9 +1641,6 @@ NavelRockOutside_BlockData:
 
 SECTION "NavelRockInside_BlockData", ROMX
 NavelRockInside_BlockData:
-DragonsDen1F_BlockData:
-WhirlIslandCave_BlockData:
-HiddenCaveGrotto_BlockData:
 	INCBIN "maps/NavelRockInside.ablk.lz"
 
 SECTION "NavelRockRoof_BlockData", ROMX
@@ -1769,9 +1778,13 @@ SECTION "Route22Past_BlockData", ROMX
 Route22Past_BlockData:
 	INCBIN "maps/Route22Past.ablk.lz"
 
-SECTION "Route23_BlockData", ROMX
-Route23_BlockData:
-	INCBIN "maps/Route23.ablk.lz"
+SECTION "Route23North_BlockData", ROMX
+Route23North_BlockData:
+	INCBIN "maps/Route23North.ablk.lz"
+
+SECTION "Route23South_BlockData", ROMX
+Route23South_BlockData:
+	INCBIN "maps/Route23South.ablk.lz"
 
 SECTION "Route24_BlockData", ROMX
 Route24_BlockData:

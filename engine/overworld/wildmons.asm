@@ -1080,7 +1080,7 @@ RandomPhoneMon:
 	bit TRNTYPE_NICKNAME, a
 	jr nz, .got_mon
 
-	; TRAINERTYPE_NORMAL uses 3 bytes per mon (Level, Species, Form)
+	; All trainers use at least 3 bytes per mon (Level, Species, Form)
 	ld c, 3
 	; TRAINERTYPE_ITEM uses 1 more byte
 	bit TRNTYPE_ITEM, a

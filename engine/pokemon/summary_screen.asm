@@ -137,52 +137,15 @@ SummaryScreenInit:
 	ret
 
 .SummaryScreenObjPalettes:
-; pink
-	RGB 31, 31, 31
-	RGB 31, 15, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; blue
-	RGB 31, 31, 31
-	RGB 17, 31, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; green
-	RGB 31, 31, 31
-	RGB 17, 31, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; orange
-	RGB 31, 31, 31
-	RGB 30, 22, 12
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; green info button
-	RGB 31, 31, 31
-	RGB 16, 24, 10
-	RGB 31, 31, 31
-	RGB 00, 00, 00 ; placeholder
-; unused
-	RGB 31, 31, 31
-	RGB 31, 31, 31 ; unused
-	RGB 31, 31, 31 ; unused
-	RGB 00, 00, 00 ; placeholder
-; arrow dark
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 10, 06
-	RGB 00, 00, 00 ; placeholder
-; arrow light
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 20, 20
-	RGB 00, 00, 00 ; placeholder
+INCLUDE "gfx/stats/summary_sprites.pal"
 
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
 	ld de, vTiles2 tile SUMMARY_TILE_START
 	lb bc, BANK(GFX_Summary), 18
 	call DecompressRequest2bpp
+
+	farcall LoadBoldPDoubled
 
 	ld a, 1
 	ldh [rVBK], a
@@ -467,9 +430,23 @@ SummaryScreen_InitLayout:
 	ld a, [hl]
 	and a
 	jr z, .moveTypesEnd
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+
+	push hl
+	push bc
+	ld hl, wTempMonDVs
+	farcall GetHiddenPowerType
+	pop bc
+	pop hl
+	jr .got_type
+
+.not_hidden_power
 	ld [wCurMove], a
 	ld hl, Moves + MOVE_TYPE
 	call GetCurMoveProperty
+	; fallthrough
+.got_type
 	ld hl, wSummaryScreenTypes - 252 + 2
 	add hl, bc
 	ld [hl], a

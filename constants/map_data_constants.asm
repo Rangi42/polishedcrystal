@@ -65,6 +65,7 @@ DEF DARKNESS_PALSET EQU %00011011 ; brightlevel 0, 1, 2, 3
 	const FISHGROUP_QWILFISH
 	const FISHGROUP_REMORAID
 	const FISHGROUP_HISUIAN_QWILFISH
+	const FISHGROUP_STARYU
 DEF NUM_FISHGROUPS EQU const_value
 
 ; wMapConnections
@@ -81,6 +82,7 @@ DEF NUM_FISHGROUPS EQU const_value
 	const AZALEA_OVERCAST
 	const LAKE_OF_RAGE_OVERCAST
 	const STORMY_BEACH_OVERCAST
+	const GENERIC_OVERCAST
 
 ; SpawnPoints indexes (see data/maps/spawn_points.asm)
 	const_def

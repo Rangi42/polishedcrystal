@@ -3,14 +3,14 @@ DEF RGB_MONOCHROME_LIGHT EQUS "dw PAL_MONOCHROME_LIGHT"
 DEF RGB_MONOCHROME_DARK  EQUS "dw PAL_MONOCHROME_DARK"
 DEF RGB_MONOCHROME_BLACK EQUS "dw PAL_MONOCHROME_BLACK"
 
-DEF PAL_MONOCHROME_WHITE EQU (palred 15 + palgreen 16 + palblue 01)
-DEF PAL_MONOCHROME_LIGHT EQU (palred 10 + palgreen 15 + palblue 08)
-DEF PAL_MONOCHROME_DARK  EQU (palred 06 + palgreen 11 + palblue 09)
-DEF PAL_MONOCHROME_BLACK EQU (palred 05 + palgreen 08 + palblue 07)
-;PAL_MONOCHROME_WHITE EQU (palred 28 + palgreen 31 + palblue 26)
-;PAL_MONOCHROME_LIGHT EQU (palred 17 + palgreen 24 + palblue 14)
-;PAL_MONOCHROME_DARK  EQU (palred 06 + palgreen 13 + palblue 10)
-;PAL_MONOCHROME_BLACK EQU (palred 01 + palgreen 03 + palblue 04)
+;DEF PAL_MONOCHROME_WHITE EQU (palred 15 + palgreen 16 + palblue 01)
+;DEF PAL_MONOCHROME_LIGHT EQU (palred 10 + palgreen 15 + palblue 08)
+;DEF PAL_MONOCHROME_DARK  EQU (palred 06 + palgreen 11 + palblue 09)
+;DEF PAL_MONOCHROME_BLACK EQU (palred 05 + palgreen 08 + palblue 07)
+DEF PAL_MONOCHROME_WHITE EQU (palred 28 + palgreen 31 + palblue 26)
+DEF PAL_MONOCHROME_LIGHT EQU (palred 17 + palgreen 24 + palblue 14)
+DEF PAL_MONOCHROME_DARK  EQU (palred 06 + palgreen 13 + palblue 10)
+DEF PAL_MONOCHROME_BLACK EQU (palred 01 + palgreen 03 + palblue 04)
 
 
 MACRO RGB_MONOCHROME

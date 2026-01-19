@@ -122,6 +122,56 @@ DoTurn:
 	call UpdateMoveData
 	; fallthrough
 DoMove:
+	; InitializeMove was split off to handle moves that restart move execution,
+	; such as with items like Power Herb, or moves like Metronome.
+	; Otherwise, they would nest move execution, which caused problems.
+	call InitializeMove
+.ReadMoveEffectCommand:
+	call ReadMoveScriptByte
+
+	; endturn_command (-2) is used to terminate branches without ending the read cycle
+	cp endturn_command
+	jr nc, .endturn_herb
+
+	; The rest of the commands (fd and below) are read from BattleCommandPointers
+	push bc
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, BattleCommandPointers
+	add hl, bc
+	add hl, bc
+	pop bc
+
+	ld a, BANK(BattleCommandPointers)
+	call GetFarWord
+
+	call _hl_
+
+	jr .ReadMoveEffectCommand
+
+.endturn_herb
+	call CheckEndMoveEffects
+	call CheckThroatSpray
+	jmp CheckPowerHerb
+
+ReadMoveScriptByte:
+	ld hl, wBattleScriptBufferLoc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	inc hl
+	ld a, l
+	ld [wBattleScriptBufferLoc], a
+	ld a, h
+	ld [wBattleScriptBufferLoc + 1], a
+	dec hl
+
+	ld a, BANK(MoveEffectsPointers)
+	jmp GetFarByte
+
+InitializeMove:
 ; Get the user's move effect.
 	; Abilities ignorance doesn't apply for future moves (even active users).
 	call GetFutureSightUser
@@ -151,52 +201,7 @@ DoMove:
 	ld [wBattleScriptBufferLoc], a
 	ld a, h
 	ld [wBattleScriptBufferLoc + 1], a
-
-.ReadMoveEffectCommand:
-	call ReadMoveScriptByte
-
-	; endturn_command (-2) is used to terminate branches without ending the read cycle
-	cp endturn_command
-	jr nc, .endturn_herb
-
-	; The rest of the commands (fd and below) are read from BattleCommandPointers
-	push bc
-	dec a
-	ld c, a
-	ld b, 0
-	ld hl, BattleCommandPointers
-	add hl, bc
-	add hl, bc
-	pop bc
-
-	ld a, BANK(BattleCommandPointers)
-	call GetFarWord
-
-	call _hl_
-
-	jr .ReadMoveEffectCommand
-
-.endturn_herb
-	call CheckEndMoveEffects
-	call CheckThroatSpray
-	call CheckPowerHerb
 	ret
-
-ReadMoveScriptByte:
-	ld hl, wBattleScriptBufferLoc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	inc hl
-	ld a, l
-	ld [wBattleScriptBufferLoc], a
-	ld a, h
-	ld [wBattleScriptBufferLoc + 1], a
-	dec hl
-
-	ld a, BANK(MoveEffectsPointers)
-	jmp GetFarByte
 
 CheckTurn:
 BattleCommand_checkturn:
@@ -275,12 +280,14 @@ BattleCommand_checkturn:
 	jr .fast_asleep
 
 .woke_up
+if !DEF(FAITHFUL)
 	; if user has Early Bird, display ability activation
 	; a is still (user's ability - EARLY_BIRD)
 	and a
 	jr nz, .woke_up_no_early_bird
 	farcall BeginAbility
 	farcall ShowAbilityActivation
+endc
 .woke_up_no_early_bird
 	ld hl, WokeUpText
 	call StdBattleTextbox
@@ -603,8 +610,12 @@ CheckPowerHerb:
 .chargeup
 	call CheckUserIsCharging
 	ld a, 2
-	jr z, _ResetTurn
-	; fallthrough
+	jr z, .got_charging
+	dec a
+.got_charging
+	call _ResetTurn
+	jmp DoMove
+
 ResetTurn:
 	ld a, 1
 _ResetTurn:
@@ -620,7 +631,7 @@ _ResetTurn:
 	ld [hl], a
 	xor a
 	ld [wAlreadyDisobeyed], a
-	jmp DoMove
+	jmp InitializeMove
 
 MoveDisabled:
 	; Make sure any charged moves fail
@@ -1899,12 +1910,7 @@ INCLUDE "data/moves/powder_moves.asm"
 
 BattleCommand_damagevariation:
 ; Modify the damage spread between 85% and 100%.
-
-; Because of the method of division the probability distribution
-; is not consistent. This makes the highest damage multipliers
-; rarer than normal.
-
-; No point in reducing 1 or 0 damage.
+	; No point in reducing 1 or 0 damage.
 	ld hl, wCurDamage
 	ld a, [hli]
 	and a
@@ -4321,6 +4327,13 @@ BattleCommand_damagecalc:
 .check_burn
 	bit BRN, a
 	jr z, .burn_done
+
+	; Burn should not halve physical attack if using Facade, or with Guts.
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp FACADE
+	jr z, .burn_done
+
 	call GetTrueUserIgnorableAbility
 	cp GUTS
 	ln a, 1, 2 ; 1/2 = 50%

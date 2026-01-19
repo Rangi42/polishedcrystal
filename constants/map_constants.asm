@@ -118,7 +118,7 @@ ENDM
 	map_const WHIRL_ISLAND_NW,                            17, 18 ; 56
 	map_const WHIRL_ISLAND_NE,                            10,  9 ; 57
 	map_const WHIRL_ISLAND_SW,                            10,  9 ; 58
-	map_const WHIRL_ISLAND_CAVE,                          20, 45 ; 59
+	map_const WHIRL_ISLAND_CAVE,                           5,  8 ; 59
 	map_const WHIRL_ISLAND_SE,                             5,  9 ; 60
 	map_const WHIRL_ISLAND_B1F,                           20, 18 ; 61
 	map_const WHIRL_ISLAND_B2F,                           10, 18 ; 62
@@ -129,7 +129,7 @@ ENDM
 	map_const SILVER_CAVE_ITEM_ROOMS,                     20, 18 ; 67
 	map_const DARK_CAVE_VIOLET_ENTRANCE,                  20, 18 ; 68
 	map_const DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 69
-	map_const DRAGONS_DEN_1F,                             20, 45 ; 70
+	map_const DRAGONS_DEN_1F,                             10,  4 ; 70
 	map_const DRAGONS_DEN_B1F,                            20, 18 ; 71
 	map_const DRAGON_SHRINE,                               5,  5 ; 72
 	map_const TOHJO_FALLS,                                15,  9 ; 73
@@ -353,16 +353,17 @@ ENDM
 	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
 
 	newgroup                                                     ; 16
-	map_const ROUTE_23,                                   12, 70 ;  1
-	map_const INDIGO_PLATEAU,                             12, 13 ;  2
-	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  3
-	map_const WILLS_ROOM,                                  5,  9 ;  4
-	map_const KOGAS_ROOM,                                  5,  9 ;  5
-	map_const BRUNOS_ROOM,                                 5,  9 ;  6
-	map_const KARENS_ROOM,                                 5,  9 ;  7
-	map_const LANCES_ROOM,                                 7, 12 ;  8
-	map_const HALL_OF_FAME,                                5,  7 ;  9
-	map_const BELLCHIME_TRAIL,                            12,  7 ; 10
+	map_const ROUTE_23_NORTH,                             12, 38 ;  1
+	map_const ROUTE_23_SOUTH,                             12, 32 ;  2
+	map_const INDIGO_PLATEAU,                             12, 13 ;  3
+	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  4
+	map_const WILLS_ROOM,                                  5,  9 ;  5
+	map_const KOGAS_ROOM,                                  5,  9 ;  6
+	map_const BRUNOS_ROOM,                                 5,  9 ;  7
+	map_const KARENS_ROOM,                                 5,  9 ;  8
+	map_const LANCES_ROOM,                                 7, 12 ;  9
+	map_const HALL_OF_FAME,                                5,  7 ; 10
+	map_const BELLCHIME_TRAIL,                            12,  7 ; 11
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1
@@ -420,7 +421,7 @@ ENDM
 	map_const SILVER_CAVE_POKECENTER_1F,                   6,  4 ;  3
 	map_const ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
 	map_const NAVEL_ROCK_OUTSIDE,                         13, 16 ;  5
-	map_const NAVEL_ROCK_INSIDE,                          20, 45 ;  6
+	map_const NAVEL_ROCK_INSIDE,                          27, 26 ;  6
 	map_const NAVEL_ROCK_ROOF,                             8, 11 ;  7
 	map_const FARAWAY_ISLAND,                             17, 23 ;  8
 	map_const FARAWAY_JUNGLE,                             14, 12 ;  9
@@ -433,7 +434,7 @@ ENDM
 	map_const TRADE_CENTER,                                5,  4 ;  2
 	map_const COLOSSEUM,                                   5,  4 ;  3
 	map_const HIDDEN_TREE_GROTTO,                          5,  9 ;  4
-	map_const HIDDEN_CAVE_GROTTO,                         20, 45 ;  5
+	map_const HIDDEN_CAVE_GROTTO,                          5,  9 ;  5
 	map_const YELLOW_FOREST_GATE,                          5,  4 ;  6
 	map_const YELLOW_FOREST,                              29, 26 ;  7
 
