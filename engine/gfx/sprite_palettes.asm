@@ -20,19 +20,19 @@ LoadWeatherPal::
 
 .rain
 	ld a, PAL_OW_RAIN
-	jr .use_pal_6
+	jr .use_ow_weather_pal
 
 .sand
 	ld a, PAL_OW_SAND
-	jr .use_pal_6
+	jr .use_ow_weather_pal
 
 .cherry
 	ld a, PAL_OW_PINK
 	; fallthrough
-.use_pal_6
+.use_ow_weather_pal
 	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal6], a
-	ld de, wOBPals1 palette 6
+	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
+	ld de, wOBPals1 palette PAL_OW_WEATHER
 	jr CopySpritePalHandler
 
 .snow
@@ -45,7 +45,7 @@ LoadWeatherPal::
 	; palette with a sprite.
 	ld a, NO_PAL_LOADED
 	ld [wLoadedObjPal7], a
-	ld hl, wOBPals1 palette 6
+	ld hl, wOBPals1 palette PAL_OW_WEATHER
 if !DEF(MONOCHROME)
 	assert LOW(NO_PAL_LOADED) == $ff
 	ld bc, 1 palettes
@@ -251,8 +251,8 @@ CopySpritePal::
 	ret
 
 ApplyWeatherPal:
-	ld hl, wOBPals1 palette 6
-	ld de, wOBPals2 palette 6
+	ld hl, wOBPals1 palette PAL_OW_WEATHER
+	ld de, wOBPals2 palette PAL_OW_WEATHER
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 

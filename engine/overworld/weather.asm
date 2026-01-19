@@ -5,7 +5,6 @@ DEF RAINSPLASH_TILE EQU WEATHER_TILE_2
 DEF SNOWFLAKE_TILE  EQU WEATHER_TILE_1
 DEF SANDSTORM_TILE  EQU WEATHER_TILE_1
 DEF CHERRYLEAF_TILE EQU WEATHER_TILE_1
-DEF PAL_OW_WEATHER  EQU 6
 
 DoOverworldWeather:
 	push hl
@@ -197,7 +196,7 @@ SpawnRandomWeatherCoords::
 	ret
 
 DoOverworldSnow:
-	ld a, [wLoadedObjPal6]
+	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
 	assert NO_PAL_LOADED == -1
 	inc a
 	jr z, .continue
@@ -322,7 +321,7 @@ DoSnowFall:
 	jr .next
 
 DoOverworldRain:
-	ld a, [wLoadedObjPal6]
+	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
 	cp PAL_OW_RAIN
 	jr z, .continue
 	farcall LoadWeatherPal
@@ -649,7 +648,7 @@ DoRainFall:
 	jr .next
 
 DoOverworldSandstorm:
-	ld a, [wLoadedObjPal6]
+	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
 	cp PAL_OW_SAND
 	jr z, .continue
 	farcall LoadWeatherPal
@@ -807,7 +806,7 @@ SpawnSandDrop:
 	jr .finish
 
 DoOverworldCherryBlossoms:
-	ld a, [wLoadedObjPal6]
+	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
 	cp PAL_OW_PINK
 	jr z, .continue
 	farcall LoadWeatherPal
