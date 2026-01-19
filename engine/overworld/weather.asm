@@ -115,24 +115,20 @@ SpawnRandomWeatherCoords::
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
-	ld a, [wCurWeather]
-	assert OW_WEATHER_RAIN == 1
 	dec a
-	jr z, .rain
-	assert OW_WEATHER_SNOW == 2
-	dec a
-	jr z, .snow
-	assert OW_WEATHER_THUNDERSTORM == 3
-	dec a
-	jr z, .rain
-	assert OW_WEATHER_SANDSTORM == 4
-	assert OW_WEATHER_CHERRY_BLOSSOMS == 5
-	dec a
-	ret nz
-	; fallthrough
+	call StackJumpTable
+
+.Jumptable:
+	table_width 2
+	dw .rain
+	dw .snow
+	dw .rain
+	dw .sand
+	dw DoNothing ; cherry blossoms' starting positions are nonrandom
+	assert_table_length NUM_OW_WEATHERS
 
 .sand
-	call .find_oam_and_radomize
+	call .find_oam_and_randomize
 	ret c
 	ld a, SANDSTORM_TILE
 	ld [hli], a
@@ -148,7 +144,7 @@ SpawnRandomWeatherCoords::
 	jr .sand
 
 .snow
-	call .find_oam_and_radomize
+	call .find_oam_and_randomize
 	ret c
 	ld a, SNOWFLAKE_TILE
 	ld [hli], a
@@ -164,7 +160,7 @@ SpawnRandomWeatherCoords::
 	jr .snow
 
 .rain
-	call .find_oam_and_radomize
+	call .find_oam_and_randomize
 	ret c
 	call Random
 	cp 20 percent ; 20 percent splashes
@@ -185,7 +181,7 @@ SpawnRandomWeatherCoords::
 	ldh [hUsedWeatherSpriteIndex], a
 	jr .rain
 
-.find_oam_and_radomize
+.find_oam_and_randomize
 	push bc
 	call ScanForEmptyOAM
 	pop bc
