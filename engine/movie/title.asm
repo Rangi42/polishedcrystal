@@ -22,8 +22,11 @@ _TitleScreen:
 	ld a, 1
 	ldh [rVBK], a
 
-; Decompress running Suicune gfx
-	ld hl, TitleSuicuneGFX
+; Decompress running Suicune and floating Unown gfx
+	ld hl, TitleSuicuneUnownsGFX0
+	ld de, vTiles2
+	call Decompress
+	ld hl, TitleSuicuneUnownsGFX1
 	ld de, vTiles1
 	call Decompress
 
@@ -64,23 +67,17 @@ _TitleScreen:
 	ld a, 1
 	rst ByteFill
 
-; Suicune gfx
+; Suicune and Unown gfx
+	hlbgcoord 1, 11
+	lb bc, 7, 18
+	ld a, 0 | BG_BANK1
+	call DrawTitleBGBox
+
+; Suicune palette
 	hlbgcoord 6, 12
 	lb bc, 6, 8
 	ld a, 4 | BG_BANK1
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, TILEMAP_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
+	call DrawTitleBGBox
 
 ; Back to VRAM bank 0
 	xor a
@@ -114,40 +111,12 @@ _TitleScreen:
 	lb de, $0c, 0
 	call DrawTitleGraphic
 
-; Draw Unowns
-	hlcoord 1, 11
-	lb bc, 2, 2
-	lb de, $1a, 2
-	call DrawTitleGraphic
-	hlcoord 2, 14
-	lb bc, 2, 2
-	lb de, $1e, 2
-	call DrawTitleGraphic
-	hlcoord 17, 11
-	lb bc, 3, 2
-	lb de, $22, 2
-	call DrawTitleGraphic
-	hlcoord 16, 14
-	lb bc, 2, 2
-	lb de, $28, 2
-	call DrawTitleGraphic
-	hlcoord 18, 14
-	ld [hl], $2c
-	hlcoord 5, 11
-	ld [hl], $2d
-	hlcoord 15, 11
-	ld [hl], $2e
-
 IF DEF(FAITHFUL)
 	hlbgcoord 17, 0, vBGMap1
 	lb bc, 1, 1
 	lb de, $19, 0
 	call DrawTitleGraphic
 endc
-
-; Initialize running Suicune?
-	ld d, $0
-	call LoadSuicuneFrame
 
 ; Initialize background crystal
 	call InitializeCrystalSprites
@@ -240,54 +209,32 @@ SuicuneFrameIterator:
 	and 3 << 3
 	add a
 	swap a
-	ld e, a
-	ld d, 0
-	ld hl, .Frames
-	add hl, de
-	ld d, [hl]
+	ld hl, SuicuneUnownsTilemaps
+	ld bc, 18 * 7
+	rst AddNTimes
+
 	xor a
 	ldh [hBGMapMode], a
-	call LoadSuicuneFrame
+
+	decoord 1, 11
+	ld b, 7
+.bgrows
+	ld c, 18
+.col
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .col
+rept SCREEN_WIDTH - 18
+	inc de
+endr
+	dec b
+	jr nz, .bgrows
+
 	ld a, $1
 	ldh [hBGMapMode], a
 	ldh [hBGMapHalf], a
-	ret
-
-.Frames:
-	db $80 ; vTiles4 tile $00
-	db $88 ; vTiles4 tile $08
-	db $00 ; vTiles5 tile $00
-	db $08 ; vTiles5 tile $08
-
-LoadSuicuneFrame:
-	hlcoord 6, 12
-	ld b, 6
-.bgrows
-	ld c, 8
-.col
-	ld a, d
-	ld [hli], a
-	inc d
-	dec c
-	jr nz, .col
-; "add hl, SCREEN_WIDTH - 8"
-; 6 bytes, 12 cycles
-	push de
-	ld de, SCREEN_WIDTH - 8
-	add hl, de
-	pop de
-;; 8 bytes, 8 cycles
-;	ld a, SCREEN_WIDTH - 8
-;	add l
-;	ld l, a
-;	ld a, 0
-;	adc h
-;	ld h, a
-	ld a, 8
-	add d
-	ld d, a
-	dec b
-	jr nz, .bgrows
 	ret
 
 DrawTitleGraphic:
@@ -317,6 +264,27 @@ DrawTitleGraphic:
 	ld d, a
 	dec b
 	jr nz, .bgrows
+	ret
+
+DrawTitleBGBox:
+; input:
+;   hl: draw location
+;   b: height
+;   c: width
+;   a: tile or attribute value
+.row
+	push bc
+	push hl
+.col
+	ld [hli], a
+	dec c
+	jr nz, .col
+	pop hl
+	ld bc, TILEMAP_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .row
 	ret
 
 InitializeCrystalSprites:
@@ -408,8 +376,16 @@ AnimateTitleCrystal:
 
 	ret
 
-TitleSuicuneGFX:
-INCBIN "gfx/title/suicune.2bpp.lz"
+SuicuneUnownsTilemaps:
+	table_width 18 * 7
+INCBIN "gfx/title/suicune_unowns.tilemap"
+	assert_table_length 4
+
+TitleSuicuneUnownsGFX0:
+INCBIN "gfx/title/suicune_unowns.2bpp.vram0.lz"
+
+TitleSuicuneUnownsGFX1:
+INCBIN "gfx/title/suicune_unowns.2bpp.vram1.lz"
 
 TitleLogoGFX:
 INCBIN "gfx/title/logo_bg.2bpp.lz"
