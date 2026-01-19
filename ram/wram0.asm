@@ -143,7 +143,6 @@ wPrevDexEntry:: db
 
 wPrevLandmark:: db
 wCurLandmark:: db
-wLastMusicLandmark:: db ; landmark whose map music is currently playing
 wLandmarkSignTimer:: dw
 wLinkMode::
 ; 0 not in link battle
@@ -1420,10 +1419,11 @@ wCurPalDarknessState:: db
 wCurPalOvercastIndexState:: db
 wCurPalTimeOfDayPalState:: db
 
+wLastMusicLandmark:: db ; landmark whose map music is currently playing
 
 SECTION "Unused 2", WRAM0
 
-	ds 281 ; it's free real estate
+	ds 280 ; it's free real estate
 
 
 SECTION "Options", WRAM0

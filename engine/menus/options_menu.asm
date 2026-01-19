@@ -325,7 +325,7 @@ OptionsMenu_PlaceOptionName:
 .TextSpeed:
 	db "Text Speed@"
 .TextAutoscroll:
-	db "Autoscroll@"
+	db "Text Autoscroll@"
 .Frame:
 	db "Frame@"
 .Typeface:
