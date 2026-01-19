@@ -57,9 +57,8 @@ OptionsMenu:
 	cp PAD_RIGHT
 	jr z, .apply_right
 	cp PAD_A
-	jr z, .apply_a
-	jr .loop
-
+	jr nz, .loop
+	; fallthrough
 .apply_a
 	; PAD_A already selects the highlighted row inside ScrollingMenu.
 	call OptionsMenu_SetValueCoordFromCursor
@@ -80,19 +79,19 @@ OptionsMenu:
 	xor a
 	ldh [hJoyPressed], a
 	call OptionsMenu_WaitDPadRelease
-	jp .loop
+	jr .loop
 
 .apply_left
 	ldh a, [hJoyPressed]
 	and PAD_LEFT
-	jp z, .loop
+	jr z, .loop
 	ld a, PAD_LEFT
 	jr .apply
 
 .apply_right
 	ldh a, [hJoyPressed]
 	and PAD_RIGHT
-	jp z, .loop
+	jr z, .loop
 	ld a, PAD_RIGHT
 
 .apply
@@ -113,7 +112,7 @@ OptionsMenu:
 
 .apply_skip
 	pop af ; discard saved direction
-	jp .loop
+	jmp .loop
 
 .apply_continue
 	call OptionsMenu_CallOptionRoutine
@@ -123,7 +122,7 @@ OptionsMenu:
 	xor a
 	ldh [hJoyPressed], a
 	call OptionsMenu_WaitDPadRelease
-	jp .loop
+	jmp .loop
 
 .exit
 	ld de, SFX_TRANSACTION
@@ -525,9 +524,8 @@ Options_Frame:
 	bit B_PAD_LEFT, a
 	jr nz, .LeftPressed
 	bit B_PAD_RIGHT, a
-	jr nz, .RightPressed
-	jp UpdateFrame
-
+	jr z, UpdateFrame
+; fallthrough
 .RightPressed:
 	ld a, [hl]
 	inc a
@@ -867,10 +865,10 @@ OptionsMenu_WaitDPadRelease:
 	ret
 
 Options_GetValueCoord:
-	ld a, [wOptionsMenuValueCoord]
+	ld hl, wOptionsMenuValueCoord
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wOptionsMenuValueCoord + 1]
-	ld h, a
 	ret
 
 Options_GetFrameCoord:
