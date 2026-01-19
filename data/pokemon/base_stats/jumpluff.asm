@@ -11,8 +11,11 @@ endc
 	db 176 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-
+if DEF(FAITHFUL)
 	abilities_for JUMPLUFF, CHLOROPHYLL, LEAF_GUARD, INFILTRATOR
+else
+	abilities_for JUMPLUFF, CHLOROPHYLL, WIND_RIDER, INFILTRATOR
+endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_FAIRY, EGG_PLANT ; egg groups
 

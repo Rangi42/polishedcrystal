@@ -875,10 +875,12 @@ CheckNullificationAbilities:
 	ld b, a
 	cp DAMP
 	jr z, .damp
-	cp SOUNDPROOF
-	jr z, .soundproof
+	cp WIND_RIDER
+	jr z, .wind_rider
 	cp BULLETPROOF
 	jr z, .bulletproof
+	cp SOUNDPROOF
+	jr z, .soundproof
 	cp FLASH_FIRE
 	jr z, .flash_fire
 	cp LIGHTNING_ROD
@@ -915,6 +917,10 @@ CheckNullificationAbilities:
 	cp EFFECT_EXPLOSION
 	jr z, .ability_ok
 	ret
+
+.wind_rider
+	ld hl, WindMoves
+	jr z, .movelist_nullification
 
 .bulletproof
 	ld hl, BulletMoves
@@ -977,6 +983,7 @@ NullificationAbilities:
 	dbw LIGHTNING_ROD, LightningRodAbility
 	dbw MOTOR_DRIVE, MotorDriveAbility
 	dbw SAP_SIPPER, SapSipperAbility
+	dbw WIND_RIDER, WindRiderAbility
 	dbw VOLT_ABSORB, VoltAbsorbAbility
 	dbw WATER_ABSORB, WaterAbsorbAbility
 	dbw DAMP, CannotUseTextAbility
@@ -1038,6 +1045,7 @@ MoxieAbility:
 	ret z
 	; fallthrough
 SapSipperAbility:
+WindRiderAbility:
 AttackUpAbility:
 	ld b, ATTACK
 	jr StatUpAbility

@@ -155,6 +155,7 @@
 	const NEUTRALIZING_GAS
 	const PASTEL_VEIL
 	const QUICK_DRAW
+	const WIND_RIDER
 	const CUD_CHEW
 	const SHARPNESS
 	const ARMOR_TAIL
