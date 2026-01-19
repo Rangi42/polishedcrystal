@@ -39,7 +39,6 @@ NextCallReceiveDelay:
 	ret
 
 .ReceiveCallDelays:
-	; Base minutes between calls (20/10/5/3)
 	db 20, 10, 5, 3
 .ReceiveCallDelaysNoRTC:
 	db 20 * NO_RTC_SPEEDUP, 10 * NO_RTC_SPEEDUP, 5 * NO_RTC_SPEEDUP, 3 * NO_RTC_SPEEDUP

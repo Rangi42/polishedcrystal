@@ -65,9 +65,9 @@ UpdateGameTimer::
 	ld a, [wInitialOptions2]
 	and 1 << RTC_OPT
 	jr nz, .using_rtc
-	rept NO_RTC_SPEEDUP
+rept NO_RTC_SPEEDUP
 	call UpdateNoRTC
-	endr
+endr
 .using_rtc
 
 ; +1 second

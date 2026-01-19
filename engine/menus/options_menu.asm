@@ -422,6 +422,30 @@ Options_TextSpeed:
 .Instant:
 	db "Instant@"
 
+Options_BattleEffects:
+	ld hl, wOptions1
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit BATTLE_EFFECTS, [hl]
+	jr z, .SetOff
+	jr .SetOn
+.Toggle
+	bit BATTLE_EFFECTS, [hl]
+	jr z, .SetOn
+.SetOff:
+	res BATTLE_EFFECTS, [hl]
+	ld de, OffString
+	jr .Display
+.SetOn:
+	set BATTLE_EFFECTS, [hl]
+	ld de, OnString
+.Display:
+	call Options_GetValueCoord
+	rst PlaceString
+	and a
+	ret
+
 Options_BattleStyle:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
@@ -571,30 +595,6 @@ Options_Sound:
 	db "Mono  @"
 .Stereo:
 	db "Stereo@"
-
-Options_BattleEffects:
-	ld hl, wOptions1
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit BATTLE_EFFECTS, [hl]
-	jr z, .SetOff
-	jr .SetOn
-.Toggle
-	bit BATTLE_EFFECTS, [hl]
-	jr z, .SetOn
-.SetOff:
-	res BATTLE_EFFECTS, [hl]
-	ld de, OffString
-	jr .Display
-.SetOn:
-	set BATTLE_EFFECTS, [hl]
-	ld de, OnString
-.Display:
-	call Options_GetValueCoord
-	rst PlaceString
-	and a
-	ret
 
 Options_ClockFormat:
 	ld hl, wOptions2
@@ -909,4 +909,3 @@ Options_GetFrameCoord:
 	call Options_GetValueCoord
 	inc hl
 	ret
-
