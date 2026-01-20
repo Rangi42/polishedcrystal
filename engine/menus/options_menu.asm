@@ -1,4 +1,3 @@
-DEF NUM_OPTIONS EQU 12
 DEF OPTIONS_MENU_VALUE_OFFSET EQU 9
 
 OptionsMenu:
@@ -267,7 +266,7 @@ OptionsMenu_PlaceOptionName:
 	cp -1
 	jr nz, .not_cancel
 	push de
-	ld de, .Done
+	ld de, OptionNames.Done
 	pop hl
 	rst PlaceString
 	ret
@@ -278,7 +277,7 @@ OptionsMenu_PlaceOptionName:
 	add a
 	ld c, a
 	ld b, 0
-	ld hl, .Pointers
+	ld hl, OptionNames
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
@@ -287,47 +286,7 @@ OptionsMenu_PlaceOptionName:
 	rst PlaceString
 	ret
 
-.Pointers:
-	dw .TextSpeed
-	dw .TextAutoscroll
-	dw .Frame
-	dw .Typeface
-	dw .Keyboard
-	dw .Sound
-	dw .BattleEffects
-	dw .BattleStyle
-	dw .RunningShoes
-	dw .TurningSpeed
-	dw .ClockFormat
-	dw .PokedexUnits
-	dw .Done
-
-.TextSpeed:
-	db "Text Speed@"
-.TextAutoscroll:
-	db "Text Autoscroll@"
-.Frame:
-	db "Frame@"
-.Typeface:
-	db "Typeface@"
-.Keyboard:
-	db "Keyboard@"
-.Sound:
-	db "Sound@"
-.BattleEffects:
-	db "Battle Effects@"
-.BattleStyle:
-	db "Battle Style@"
-.RunningShoes:
-	db "Running Shoes@"
-.TurningSpeed:
-	db "Turning Speed@"
-.ClockFormat:
-	db "Clock Format@"
-.PokedexUnits:
-	db "#dex Units@"
-.Done:
-	db "Done@"
+INCLUDE "data/options/names.asm"
 
 OptionsMenu_PlaceOptionValue:
 	ld a, [wMenuSelection]
