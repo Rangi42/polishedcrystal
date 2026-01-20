@@ -678,7 +678,6 @@ DoBurn:
 	checkpriority
 	resettypematchup
 	bounceback
-	stab
 	checksafeguard
 	burn
 	endmove
