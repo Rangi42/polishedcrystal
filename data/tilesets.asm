@@ -620,6 +620,13 @@ SECTION "Tileset Graphics - cave vram1", ROMX
 TilesetCaveGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lz"
 
 
+SECTION "Tileset Data - cave", ROMX
+
+TilesetCaveMeta:: INCBIN "data/tilesets/cave_metatiles.bin.lz"
+TilesetCaveAttr:: INCBIN "data/tilesets/cave_attributes.bin.lz"
+TilesetCaveColl:: INCBIN "data/tilesets/cave_collision.bin.lz"
+
+
 SECTION "Tileset Graphics - quiet cave vram0", ROMX
 
 TilesetQuietCaveGFX0:: INCBIN "gfx/tilesets/quiet_cave.2bpp.vram0.lz"
@@ -630,14 +637,11 @@ SECTION "Tileset Graphics - quiet cave vram1", ROMX
 TilesetQuietCaveGFX1:: INCBIN "gfx/tilesets/quiet_cave.2bpp.vram1.lz"
 
 
-SECTION "Tileset Data - cave and quiet cave", ROMX
+SECTION "Tileset Data - quiet cave", ROMX
 
-TilesetCaveMeta::
-TilesetQuietCaveMeta:: INCBIN "data/tilesets/cave_metatiles.bin.lz"
-TilesetCaveAttr::
-TilesetQuietCaveAttr:: INCBIN "data/tilesets/cave_attributes.bin.lz"
-TilesetCaveColl::
-TilesetQuietCaveColl:: INCBIN "data/tilesets/cave_collision.bin.lz"
+TilesetQuietCaveMeta:: INCBIN "data/tilesets/quiet_cave_metatiles.bin.lz"
+TilesetQuietCaveAttr:: INCBIN "data/tilesets/quiet_cave_attributes.bin.lz"
+TilesetQuietCaveColl:: INCBIN "data/tilesets/quiet_cave_collision.bin.lz"
 
 
 SECTION "Tileset Graphics - ice path vram0", ROMX

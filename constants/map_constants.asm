@@ -599,7 +599,7 @@ ENDM
 	map_const QUIET_CAVE_1F,                              18, 18 ;  5
 	map_const QUIET_CAVE_B1F,                             18, 18 ;  6
 	map_const QUIET_CAVE_B2F,                             18, 18 ;  7
-	map_const QUIET_CAVE_B3F,                             18, 18 ;  8
+	map_const QUIET_CAVE_B3F,                             18, 19 ;  8
 
 	newgroup                                                     ; 28
 	map_const ROUTE_9,                                    26,  9 ;  1
