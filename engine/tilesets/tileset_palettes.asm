@@ -121,7 +121,13 @@ MartSpecialCase:
 	ret
 
 HiddenGrottoSpecialCase:
+	ld a, [wTimeOfDayPal]
+	and 3
+	cp NITE
 	ld hl, HiddenGrottoPalette
+	jr nz, .got_palette
+	ld hl, HiddenGrottoPalette + 8 palettes
+.got_palette
 	call LoadSevenBGPalettes
 	ld a, [wBackupMapGroup]
 	cp GROUP_BELLCHIME_TRAIL
