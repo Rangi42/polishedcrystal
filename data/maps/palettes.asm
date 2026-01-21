@@ -61,8 +61,6 @@ ENDM
 	special_bg_pal map,      NAVEL_ROCK_INSIDE,           PAL_SINGLE,    NavelRockPalette
 	special_bg_pal overcast, NAVEL_ROCK_ROOF,             PAL_TIMEOFDAY, NavelRockPalette_Overcast
 	special_bg_pal map,      NAVEL_ROCK_ROOF,             PAL_TIMEOFDAY, NavelRockPalette
-	special_bg_pal map,      HIDDEN_TREE_GROTTO,          PAL_SINGLE,    HiddenTreeGrottoPalette
-	special_bg_pal map,      HIDDEN_CAVE_GROTTO,          PAL_SINGLE,    HiddenCaveGrottoPalette
 	special_bg_pal overcast, YELLOW_FOREST,               PAL_TIMEOFDAY, YellowForestPalette_Overcast
 	special_bg_pal map,      YELLOW_FOREST,               PAL_TIMEOFDAY, YellowForestPalette
 	special_bg_pal overcast, CELADON_MANSION_ROOF,        PAL_TIMEOFDAY, CeladonMansionRoofPalette_Overcast
@@ -104,6 +102,7 @@ ENDM
 	special_bg_pal tileset,  TILESET_RUINS_OF_ALPH,       PAL_SINGLE,    RuinsPalette
 	special_bg_pal tileset,  TILESET_ALPH_WORD_ROOM,      PAL_SINGLE,    RuinsPalette
 	special_bg_pal tileset,  TILESET_SNOWTOP_MOUNTAIN,    PAL_TIMEOFDAY, SnowtopMountainPalette
+	special_bg_pal tileset,  TILESET_HIDDEN_GROTTO,       PAL_SINGLE,    HiddenGrottoPalette
 	special_bg_pal overcast, (unused),                    PAL_TIMEOFDAY, OvercastBGPalette
 	db 0 ; end
 
@@ -315,6 +314,19 @@ endr
 	RGB_MONOCHROME_BLACK
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+HiddenGrottoPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/hidden_grotto.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
@@ -1134,32 +1146,6 @@ endc
 MurkySwampPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/MurkySwamp.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
-HiddenTreeGrottoPalette:
-if !DEF(MONOCHROME)
-INCLUDE "maps/HiddenTreeGrotto.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
-HiddenCaveGrottoPalette:
-if !DEF(MONOCHROME)
-INCLUDE "maps/HiddenCaveGrotto.pal"
 else
 rept 7
 	MONOCHROME_RGB_FOUR_NIGHT

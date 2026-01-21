@@ -335,6 +335,7 @@ TilesetDecorAnim::
 TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
+TilesetHiddenGrottoAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing

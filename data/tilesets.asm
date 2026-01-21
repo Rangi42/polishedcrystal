@@ -54,6 +54,7 @@ Tilesets::
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
 	tileset TilesetSnowtopMountain
+	tileset TilesetHiddenGrotto
 	assert_table_length NUM_TILESETS
 
 
@@ -806,6 +807,23 @@ TilesetSnowtopMountainAttr:: INCBIN "data/tilesets/snowtop_mountain_attributes.b
 TilesetSnowtopMountainColl:: INCBIN "data/tilesets/snowtop_mountain_collision.bin.lz"
 
 
+SECTION "Tileset Graphics - hidden grotto vram0", ROMX
+
+TilesetHiddenGrottoGFX0:: INCBIN "gfx/tilesets/hidden_grotto.2bpp.vram0.lz"
+
+
+SECTION "Tileset Graphics - hidden grotto vram1", ROMX
+
+TilesetHiddenGrottoGFX1:: INCBIN "gfx/tilesets/hidden_grotto.2bpp.vram1.lz"
+
+
+SECTION "Tileset Data - hidden grotto", ROMX
+
+TilesetHiddenGrottoMeta:: INCBIN "data/tilesets/hidden_grotto_metatiles.bin.lz"
+TilesetHiddenGrottoAttr:: INCBIN "data/tilesets/hidden_grotto_attributes.bin.lz"
+TilesetHiddenGrottoColl:: INCBIN "data/tilesets/hidden_grotto_collision.bin.lz"
+
+
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
 TilesetJohto4GFX2::
@@ -849,4 +867,5 @@ TilesetAlphGFX2::
 TilesetPokemonMansionGFX2::
 TilesetBattleFactoryGFX2::
 TilesetSnowtopMountainGFX2::
+TilesetHiddenGrottoGFX2::
 	db $ff ; Compressed data is terminated with $ff.
