@@ -120,6 +120,27 @@ MartSpecialCase:
 	scf
 	ret
 
+HiddenGrottoSpecialCase:
+	ld hl, HiddenGrottoPalette
+	call LoadSevenBGPalettes
+	ld a, [wBackupMapGroup]
+	cp GROUP_BELLCHIME_TRAIL
+	jr nz, .not_bellchime_trail_grotto
+	ld a, [wBackupMapNumber]
+	cp MAP_BELLCHIME_TRAIL
+	jr nz, .not_bellchime_trail_grotto
+	ld hl, wBGPals1 palette PAL_BG_RED
+	ld de, wBGPals1 palette PAL_BG_GREEN
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	ld hl, wBGPals1 palette PAL_BG_RED color 1
+	ld de, wBGPals1 palette PAL_BG_ROOF color 1
+	ld bc, 3 colors
+	call FarCopyColorWRAM
+.not_bellchime_trail_grotto
+	scf
+	ret
+
 InitializeSpecialPaletteRegisters:
 	; b, c, d, e = [wMapGroup], [wMapNumber], landmark, [wMapTileset]
 	ld a, [wMapGroup]
