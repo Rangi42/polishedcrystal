@@ -382,10 +382,10 @@ INCBIN "gfx/title/suicune_unowns.tilemap"
 	assert_table_length 4
 
 TitleSuicuneUnownsGFX0:
-INCBIN "gfx/title/suicune_unowns.2bpp.vram0.lz"
+INCBIN "gfx/title/suicune_unowns.2bpp.vram0p.lz"
 
 TitleSuicuneUnownsGFX1:
-INCBIN "gfx/title/suicune_unowns.2bpp.vram1.lz"
+INCBIN "gfx/title/suicune_unowns.2bpp.vram1p.lz"
 
 TitleLogoGFX:
 INCBIN "gfx/title/logo_bg.2bpp.lz"

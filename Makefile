@@ -241,8 +241,8 @@ gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/logo_bg.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; $Qcat $^ > $@
 
-gfx/title/suicune_unowns.2bpp: RGBGFXFLAGS += --unique-tiles
-gfx/title/suicune_unowns.tilemap: RGBGFXFLAGS += --unique-tiles
+gfx/title/suicune_unowns.2bpp: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
+gfx/title/suicune_unowns.tilemap: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
 gfx/title/suicune_unowns.tilemap: gfx/title/suicune_unowns.png
 	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -t $@ $<
 
