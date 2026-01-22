@@ -378,7 +378,12 @@ ElmAfterTheftScript:
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
 	setscene $2
-	jumpopenedtext ElmAfterTheftText6
+	writetext ElmAfterTheftText6
+	promptbutton
+	closetext
+	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
+	showtext ElmAfterTheftText7
+	end
 
 ShowElmTogepiScript:
 	writetext ShowElmTogepiText1
@@ -1190,15 +1195,20 @@ ElmAfterTheftText6:
 	para "Before you leave,"
 	line "make sure that you"
 	cont "talk to your mom."
+	done
 
-	para "And give me a call"
+ElmAfterTheftText7:
+	text "And give me a call"
 	line "sometimes too."
 
-	para "I can tell you all"
-	line "about my research"
+	para "If you want to"
+	line "know how your"
 
-	para "on how #mon"
-	line "evolve!"
+	para "#mon might"
+	line "evolve, then"
+
+	para "my research will"
+	line "be invaluable!"
 	done
 
 ElmStudyingEggText:
