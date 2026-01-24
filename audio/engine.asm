@@ -1096,7 +1096,7 @@ ParseMusic:
 	xor a
 	ld [hli], a ; id hi
 	ld [hli], a ; id lo
-	ld [hli], a ; bank
+	ld [hl], a  ; bank
 	; fallthrough
 
 .rest
