@@ -1398,12 +1398,14 @@ wPalWhiteState:: db
 wPalStates::
 wPrevPalStates::
 wPrevPalWeatherState:: db
+wPrevPalWeatherArgState:: db
 wPrevPalDarknessState:: db
 wPrevPalOvercastIndexState:: db
 wPrevPalTimeOfDayPalState:: db
 
 wCurPalStates::
 wCurPalWeatherState:: db
+wCurPalWeatherArgState:: db
 wCurPalDarknessState:: db
 wCurPalOvercastIndexState:: db
 wCurPalTimeOfDayPalState:: db
@@ -1419,7 +1421,7 @@ wSpecialPalCount:: db
 
 SECTION "Unused", WRAM0
 
-	ds 316 ; it's free real estate
+	ds 314 ; it's free real estate
 
 
 SECTION "Options", WRAM0
