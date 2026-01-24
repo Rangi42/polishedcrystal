@@ -36,6 +36,8 @@ GetOvercastIndex::
 	jr z, .not_overcast
 	cp FRIDAY
 	jr z, .not_overcast
+	ld a, OVERCAST_INTENSITY_RAIN
+	ld [wOvercastCurIntensity], a
 	ld a, AZALEA_OVERCAST
 	ret
 
@@ -59,6 +61,8 @@ GetOvercastIndex::
 	cp FRIDAY
 	jr nz, .not_overcast
 .overcast_lake_of_rage
+	ld a, OVERCAST_INTENSITY_THUNDERSTORM
+	ld [wOvercastCurIntensity], a
 	ld a, LAKE_OF_RAGE_OVERCAST
 	ret
 
@@ -80,7 +84,14 @@ GetOvercastIndex::
 ; Only overcast while Team Rocket is present
 	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	jr nz, .not_overcast
+	ld a, OVERCAST_INTENSITY_RAIN
+	ld [wOvercastCurIntensity], a
+	ld a, STORMY_BEACH_OVERCAST
+	ret
+
 .overcast_stormy_beach
+	ld a, OVERCAST_INTENSITY_THUNDERSTORM
+	ld [wOvercastCurIntensity], a
 	ld a, STORMY_BEACH_OVERCAST
 	ret
 
