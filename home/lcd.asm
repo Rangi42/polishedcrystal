@@ -27,7 +27,7 @@ LCDGeneric::
 
 LCDMusicPlayer::
 	ldh a, [rLY]
-	cp PIANO_ROLL_HEIGHT_PX
+	cp PIANO_ROLL_HEIGHT_PX - 1
 	jr nc, .done
 
 	push hl
@@ -57,8 +57,13 @@ LCDMusicPlayer::
 
 	pop de
 	pop hl
-
+	pop af
+	reti
 .done
+	; this ideally runs once but there's no harm letting it run
+	; for the remaining blanks
+	ldh a, [hNextMPState]
+	ldh [hMPState], a
 	pop af
 	reti
 
