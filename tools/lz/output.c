@@ -66,12 +66,11 @@ void write_command_to_textfile (FILE * fp, struct command command, const unsigne
       rv = fprintf(fp, "\tlzzero %u\n", command.count);
       break;
     case 7:
-      if (command.value < 0) {
-        // lzfillff: fill $ff for N bytes.
-        if (command.count > 256) error_exit(2, "invalid command in output stream");
-        rv = fprintf(fp, "\tlzfillff %u\n", command.count);
+      if (command.value < -MAX_FILE_SIZE) {
+        rv = fprintf(fp, "\tlzpacklo0 %u\n", command.count);
+      } else if (command.value < 0) {
+        rv = fprintf(fp, "\tlzpackhi0 %u\n", command.count);
       } else {
-        // lzpack16: packed literals using 4-bit indices into pack16_table.
         rv = fprintf(fp, "\tlzpack16 %u\n", command.count);
       }
       break;
@@ -122,26 +121,48 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
 
   if (command.command == 7) {
     // Extended opcodes encoded with $fc-$fe.
-    // After the header, lzpack16 has ceil(count/2) payload bytes.
+    // After the header, packed-literal opcodes have ceil(count/2) payload bytes.
     unsigned original_count = command.count + minimum_count(command.command);
+    if (original_count > 256) error_exit(2, "invalid command in output stream");
+
     if (command.value < 0) {
-      // $fc <len-1>
-      if (original_count > 256) error_exit(2, "invalid command in output stream");
-      *(pos ++) = LZ_EXT_FILLFF;
+      unsigned payload = (original_count + 1) / 2;
+      if (command.value < -MAX_FILE_SIZE) {
+        // lzpacklo0: $fe <len-1> then ceil(len/2) packed low nibbles.
+        *(pos ++) = LZ_EXT_PACKLO0;
+        *(pos ++) = (unsigned char)(original_count - 1);
+        if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
+
+        unsigned offset = (unsigned)(-command.value - 1 - MAX_FILE_SIZE);
+        for (unsigned i = 0; i < payload; i++) {
+          unsigned char a = input_stream[offset + i * 2];
+          unsigned char b = (i * 2 + 1 < original_count) ? input_stream[offset + i * 2 + 1] : 0x00;
+          if ((a & 0xf0) || (b & 0xf0)) error_exit(2, "invalid command in output stream");
+          unsigned char packed = (unsigned char)((a << 4) | (b & LZ_PACK16_NIBBLE_MASK));
+          if (putc(packed, fp) == EOF) error_exit(1, "could not write command to compressed output");
+        }
+        return;
+      }
+
+      // lzpackhi0: $fc <len-1> then ceil(len/2) packed bytes.
+      *(pos ++) = LZ_EXT_PACKHI0;
       *(pos ++) = (unsigned char)(original_count - 1);
       if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
+
+      unsigned offset = (unsigned)(-command.value - 1);
+      for (unsigned i = 0; i < payload; i++) {
+        unsigned char a = input_stream[offset + i * 2];
+        unsigned char b = (i * 2 + 1 < original_count) ? input_stream[offset + i * 2 + 1] : 0x00;
+        if ((a & 0x0f) || (b & 0x0f)) error_exit(2, "invalid command in output stream");
+        unsigned char packed = (a & 0xf0) | (unsigned char)((b >> 4) & 0x0f);
+        if (putc(packed, fp) == EOF) error_exit(1, "could not write command to compressed output");
+      }
       return;
     }
 
-    // lzpack16: $fd <len-1> for 1..256, $fe <len-257> for 257..512
-    if (original_count <= 256) {
-      *(pos ++) = LZ_EXT_PACK16_SHORT;
-      *(pos ++) = (unsigned char)(original_count - 1);
-    } else {
-      if (original_count > MAX_COMMAND_COUNT) error_exit(2, "invalid command in output stream");
-      *(pos ++) = LZ_EXT_PACK16_LONG;
-      *(pos ++) = (unsigned char)(original_count - 257);
-    }
+    // lzpack16: $fd <len-1> for 1..256
+    *(pos ++) = LZ_EXT_PACK16_SHORT;
+    *(pos ++) = (unsigned char)(original_count - 1);
     if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
 
     // Build and write packed payload.

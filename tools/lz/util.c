@@ -56,10 +56,10 @@ short command_size (struct command command) {
   short header_size;
   if (command.command == 7) {
     // Extended commands encoded using $fc-$fe headers.
-    // - value < 0: lzfillff (2-byte header)
+    // - value in [-MAX_FILE_SIZE..-1]: lzpackhi0 (2-byte header + ceil(count/2) payload)
+    // - value < -MAX_FILE_SIZE: lzpacklo0 (2-byte header + ceil(count/2) payload)
     // - value >= 0: lzpack16 (2-byte header + ceil(count/2) payload)
     header_size = 2;
-    if (command.value < 0) return header_size;
     return header_size + (command.count + 1) / 2;
   }
 

@@ -93,15 +93,55 @@ void process_input(void) {
                 .count = count,
                 .value = current_byte,
             });
-
-            // lzfillff: extended opcode header $fc <len-1>, supports 1..256.
-            if (current_byte == 0xff && count > SHORT_COMMAND_COUNT && count <= 256)
-                consider(plen, (struct command) {
-                .command = 7,
-                .count = count,
-                .value = -1,
-            });
         } while (count < MAX_COMMAND_COUNT && count < plen && data[plen - (count + 1)] == current_byte);
+
+        // lzpackhi0: packed literals where every byte has low nibble 0.
+        // Consider runs ending at (plen - 1) where (byte & 0x0f) == 0.
+        unsigned packhi0 = 0;
+        while (packhi0 < MAX_COMMAND_COUNT && packhi0 < plen && (data[plen - (packhi0 + 1)] & 0x0f) == 0) packhi0++;
+        if (packhi0 >= 6) {
+            unsigned start = plen - packhi0;
+            // Only consider lengths >= 6; step by 2 to reduce candidate count.
+            for (unsigned prev = start; prev + 6 <= plen; prev += 2) {
+                consider(plen, (struct command) {
+                    .command = 7,
+                    .count = plen - prev,
+                    .value = -(int)prev - 1,
+                });
+            }
+            // If the maximum run length is odd, also consider the full odd length.
+            if ((packhi0 & 1) && packhi0 >= 7) {
+                consider(plen, (struct command) {
+                    .command = 7,
+                    .count = packhi0,
+                    .value = -(int)(plen - packhi0) - 1,
+                });
+            }
+        }
+
+        // lzpacklo0: packed literals where every byte has high nibble 0.
+        // Consider runs ending at (plen - 1) where (byte & 0xf0) == 0.
+        unsigned packlo0 = 0;
+        while (packlo0 < MAX_COMMAND_COUNT && packlo0 < plen && (data[plen - (packlo0 + 1)] & 0xf0) == 0) packlo0++;
+        if (packlo0 >= 6) {
+            unsigned start = plen - packlo0;
+            // Only consider lengths >= 6; step by 2 to reduce candidate count.
+            for (unsigned prev = start; prev + 6 <= plen; prev += 2) {
+                consider(plen, (struct command) {
+                    .command = 7,
+                    .count = plen - prev,
+                    .value = -(int)prev - 1 - MAX_FILE_SIZE,
+                });
+            }
+            // If the maximum run length is odd, also consider the full odd length.
+            if ((packlo0 & 1) && packlo0 >= 7) {
+                consider(plen, (struct command) {
+                    .command = 7,
+                    .count = packlo0,
+                    .value = -(int)(plen - packlo0) - 1 - MAX_FILE_SIZE,
+                });
+            }
+        }
 
         // lzpack16: packed literals using 4-bit indices into pack16_table.
         // Consider runs ending at (plen - 1) where every byte is in the table.

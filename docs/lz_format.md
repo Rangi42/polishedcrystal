@@ -122,9 +122,9 @@ This is the “AYYYYYYY ZZZZZZZZ with A=0” form in the LC_LZ3 doc.
 
 Polished Crystal defines additional commands using single-byte “extended opcode” headers:
 
-- `0xfc` (`LZ_EXT_FILLFF`)
+- `0xfc` (`LZ_EXT_PACKHI0`)
 - `0xfd` (`LZ_EXT_PACK16_SHORT`)
-- `0xfe` (`LZ_EXT_PACK16_LONG`)
+- `0xfe` (`LZ_EXT_PACKLO0`)
 
 These values are in the `0xe0..0xff` range, but are treated specially by the decompressor. (`0xff` remains the stream terminator.)
 
@@ -137,26 +137,38 @@ byte1: length code
 
 Where `ss` is the subtype:
 
-- `00`: `0xfc` (fill-`0xff`)
+- `00`: `0xfc` (packhi0)
 - `01`: `0xfd` (pack16 short)
-- `10`: `0xfe` (pack16 long)
+- `10`: `0xfe` (packlo0)
 
-### `0xfc` — `lzfillff`
+### `0xfc` — `lzpackhi0` packed high nibbles
 
-Fill the output with `0xff` for a given length.
+Emit literal bytes whose low nibble is always `0`, packed two bytes per payload byte.
 
 - Header: `0xfc <len-1>`
 - Output length: `len` in `1..256`
-- No further payload bytes.
 
-### `0xfd` / `0xfe` — `lzpack16` packed literals
+#### Payload
+
+After the 2-byte header, `ceil(len/2)` payload bytes follow.
+
+Each payload byte contains two 4-bit values:
+
+- high nibble: high nibble of the first output byte
+- low nibble: high nibble of the second output byte (absent if `len` is odd)
+
+The output bytes are reconstructed as:
+
+- first output byte = `(payload & 0xf0)`
+- second output byte = `((payload & 0x0f) << 4)`
+
+### `0xfd` — `lzpack16` packed literals
 
 Emit literal bytes, but packed as 4-bit indices into a fixed 16-entry table.
 
 #### Length
 
 - `0xfd <len-1>` emits `len` bytes, where `len` is in `1..256`.
-- `0xfe <len-257>` emits `len` bytes, where `len` is in `257..512`.
 
 #### Payload
 
@@ -178,12 +190,33 @@ value: 00   ff   01   02   03   05   80   07   c0   7f   04   0f   1f   3f   08 
 
 This choice is intentionally biased toward very common bytes in graphics/tile data.
 
+### `0xfe` — `lzpacklo0` packed low nibbles
+
+Emit literal bytes whose high nibble is always `0`, packed two bytes per payload byte.
+
+- Header: `0xfe <len-1>`
+- Output length: `len` in `1..256`
+
+#### Payload
+
+After the 2-byte header, `ceil(len/2)` payload bytes follow.
+
+Each payload byte contains two 4-bit values:
+
+- high nibble: low nibble of the first output byte
+- low nibble: low nibble of the second output byte (absent if `len` is odd)
+
+The output bytes are reconstructed as:
+
+- first output byte = `(payload >> 4)`
+- second output byte = `(payload & 0x0f)`
+
 ## Key differences vs the LC_LZ3 reference
 
 The LC_LZ3 document is a useful mental model for the *base* command set, but Polished Crystal differs in important ways:
 
 - Per-command minimum lengths: output length is **not always** `(L + 1)`.
-- New extended opcode bytes: `0xfc..0xfe` add `lzfillff` and `lzpack16`.
+- New extended opcode bytes: `0xfc..0xfe` add `lzpackhi0`, `lzpack16`, and `lzpacklo0`.
 - Practical maximum length: the current compressor/tooling bounds command output lengths to 512 bytes.
 
 ## Tooling notes

@@ -13,9 +13,11 @@
 // Extended opcode bytes ($fc-$fe)
 #define LZ_EXT_MASK             0xfc
 #define LZ_EXT_BASE             0xfc
-#define LZ_EXT_FILLFF           0xfc
+// $fc is reserved for an extended opcode; this project uses it for packhi0.
+#define LZ_EXT_PACKHI0          0xfc
 #define LZ_EXT_PACK16_SHORT     0xfd
-#define LZ_EXT_PACK16_LONG      0xfe
+// $fe is reserved for an extended opcode; this project uses it for packlo0.
+#define LZ_EXT_PACKLO0          0xfe
 #define LZ_EXT_SUBTYPE_MASK     0x03
 #define LZ_PACK16_NIBBLE_MASK   0x0f
 

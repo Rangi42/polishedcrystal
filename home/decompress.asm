@@ -74,11 +74,9 @@ DEF LZ_EXT_MASK          EQU %11111100
 DEF LZ_EXT_BASE          EQU $fc
 DEF LZ_EXT_SUBTYPE_MASK  EQU %00000011
 
-DEF LZ_EXT_FILLFF        EQU 0 ; $fc
+DEF LZ_EXT_PACKHI0       EQU 0 ; $fc
 DEF LZ_EXT_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
-DEF LZ_EXT_PACK16_LONG   EQU 2 ; $fe (len 257..512)
-
-DEF LZ_FILL_VALUE_FF     EQU $ff
+DEF LZ_EXT_PACKLO0       EQU 2 ; $fe (len 1..256)
 DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 
 ; In other words, the structure of the command becomes
@@ -325,32 +323,52 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	ld a, b
 	and LZ_EXT_MASK
 	cp LZ_EXT_BASE
-	jr nz, .long_normal
+	jp nz, .long_normal
 	ld a, b
 	and LZ_EXT_SUBTYPE_MASK
-	; subtype in a: LZ_EXT_FILLFF/LZ_EXT_PACK16_SHORT/LZ_EXT_PACK16_LONG
+	; subtype in a: LZ_EXT_PACKHI0/LZ_EXT_PACK16_SHORT/LZ_EXT_PACKLO0
 	push af
 	ld a, [de]
 	inc de
 	ld c, a
 	ld b, 0
 	pop af
-	cp LZ_EXT_PACK16_LONG
-	jr nz, .ext_len
-	inc b
-.ext_len
 	inc c
 	jr nz, .ext_have_len
 	inc b
 .ext_have_len
-	cp LZ_EXT_FILLFF
+	cp LZ_EXT_PACKHI0
 	jr nz, .ext_pack16
 
-.ext_fillff
-	ld a, LZ_FILL_VALUE_FF
-	jr .fill
+.ext_packhi0
+	; Decode packed literals where each output byte is (nibble << 4).
+	; Payload is ceil(count/2) bytes.
+.packhi0_loop
+	ld a, b
+	or c
+	jp z, .Main
+	ld a, [de]
+	inc de
+	push af
+	and $f0
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr z, .packhi0_done
+	pop af
+	and LZ_PACK16_NIBBLE_MASK
+	swap a
+	ld [hli], a
+	dec bc
+	jmp .packhi0_loop
+.packhi0_done
+	pop af
+	jmp .Main
 
 .ext_pack16
+	cp LZ_EXT_PACKLO0
+	jr z, .ext_packlo0
 	; Decode packed literals. Payload is ceil(count/2) bytes.
 	; Uses a small fixed table of 16 bytes.
 .pack_loop
@@ -373,10 +391,36 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	call .pack_lookup
 	ld [hli], a
 	dec bc
-	jr .pack_loop
+	jmp .pack_loop
 .pack_done
 	pop af
-	jr .Main
+	jmp .Main
+
+.ext_packlo0
+	; Decode packed literals where each output byte has high nibble 0.
+	; Payload is ceil(count/2) bytes.
+.packlo0_loop
+	ld a, b
+	or c
+	jp z, .Main
+	ld a, [de]
+	inc de
+	push af
+	swap a
+	and LZ_PACK16_NIBBLE_MASK
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr z, .packlo0_done
+	pop af
+	and LZ_PACK16_NIBBLE_MASK
+	ld [hli], a
+	dec bc
+	jmp .packlo0_loop
+.packlo0_done
+	pop af
+	jmp .Main
 
 .pack_lookup
 	; a = 0..15 -> a = pack16_table[a]

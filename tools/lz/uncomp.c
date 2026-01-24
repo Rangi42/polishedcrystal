@@ -12,27 +12,31 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
 
     // Extended opcode bytes: $fc-$fe
     if ((b0 & LZ_EXT_MASK) == LZ_EXT_BASE) {
-      unsigned char subtype = b0 & LZ_EXT_SUBTYPE_MASK;
-      // subtype==3 would be 0xff (terminator), which is handled above.
       if (!(remaining --)) goto error;
       unsigned char len_lo = *(rp ++);
-      unsigned out_count = (unsigned)len_lo + 1 + (subtype == (LZ_EXT_PACK16_LONG & LZ_EXT_SUBTYPE_MASK) ? 256 : 0);
+      unsigned out_count = (unsigned)len_lo + 1;
 
       current -> command = 7;
       current -> count = out_count;
 
-      if (subtype == 0) {
-        // lzfillff
-        current -> value = -1;
-      } else {
+      unsigned payload = (out_count + 1) / 2;
+      if (remaining < payload) goto error;
+
+      if (b0 == LZ_EXT_PACKHI0) {
+        // lzpackhi0
+        current -> value = -(int)(rp - data) - 1;
+      } else if (b0 == LZ_EXT_PACK16_SHORT) {
         // lzpack16
         current -> value = rp - data;
-        unsigned payload = (out_count + 1) / 2;
-        if (remaining < payload) goto error;
-        rp += payload;
-        remaining -= payload;
+      } else if (b0 == LZ_EXT_PACKLO0) {
+        // lzpacklo0
+        current -> value = -(int)(rp - data) - 1 - MAX_FILE_SIZE;
+      } else {
+        goto error;
       }
 
+      rp += payload;
+      remaining -= payload;
       current ++;
       continue;
     }
@@ -106,9 +110,34 @@ unsigned char * get_uncompressed_data (const struct command * commands, const un
         break;
       case 7:
         if (commands -> value < 0) {
-          memset(current, 0xff, commands -> count);
-          current += commands -> count;
+          unsigned remaining = commands -> count;
+          if (commands -> value < -MAX_FILE_SIZE) {
+            // lzpacklo0
+            const unsigned char * rp = compressed + (unsigned)(-commands -> value - 1 - MAX_FILE_SIZE);
+            while (remaining) {
+              unsigned char packed = *(rp ++);
+              *(current ++) = packed >> 4;
+              remaining--;
+              if (remaining) {
+                *(current ++) = packed & LZ_PACK16_NIBBLE_MASK;
+                remaining--;
+              }
+            }
+          } else {
+            // lzpackhi0
+            const unsigned char * rp = compressed + (unsigned)(-commands -> value - 1);
+            while (remaining) {
+              unsigned char packed = *(rp ++);
+              *(current ++) = packed & 0xf0;
+              remaining--;
+              if (remaining) {
+                *(current ++) = (unsigned char)((packed & LZ_PACK16_NIBBLE_MASK) << 4);
+                remaining--;
+              }
+            }
+          }
         } else {
+          // lzpack16
           const unsigned char * rp = compressed + commands -> value;
           unsigned remaining = commands -> count;
           while (remaining) {
