@@ -81,3 +81,6 @@ DEF NUM_OW_PALS EQU const_value
 
 ; used by wLoadedObjPal0-7 to mark that no palette is loaded
 DEF NO_PAL_LOADED EQU -1
+
+; fixed palette indexes
+DEF PAL_OW_WEATHER EQU 6

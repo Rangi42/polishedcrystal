@@ -16,6 +16,7 @@ RandomAliasedOvercastMapGroups:
 	overcast_area AREA_NATIONAL_PARK, NATIONAL_PARK, NATIONAL_PARK_BUG_CONTEST
 	overcast_area AREA_ECRUTEAK, ECRUTEAK_CITY, ECRUTEAK_SHRINE_OUTSIDE, BELLCHIME_TRAIL
 	overcast_area AREA_ROUTE_35_COAST, ROUTE_35_COAST_NORTH, ROUTE_35_COAST_SOUTH
+	overcast_area AREA_ROUTE_40, ROUTE_40, BATTLE_TOWER_OUTSIDE
 	overcast_area AREA_ROUTES_47_48, ROUTE_47, ROUTE_48
 	overcast_area AREA_ROUTE_42, ROUTE_42, VIOLET_OUTSKIRTS
 	overcast_area AREA_LAKE_OF_RAGE, ROUTE_43, LAKE_OF_RAGE
@@ -38,7 +39,6 @@ ENDM
 
 RandomOvercastMapsJohto:
 	const_def
-	overcast_map BATTLE_TOWER_OUTSIDE
 	overcast_map BLACKTHORN_CITY
 	overcast_map CHERRYGROVE_BAY
 	overcast_map CHERRYGROVE_CITY
@@ -58,7 +58,6 @@ RandomOvercastMapsJohto:
 	overcast_map ROUTE_37
 	overcast_map ROUTE_38
 	overcast_map ROUTE_39
-	overcast_map ROUTE_40
 	overcast_map ROUTE_41
 	overcast_map ROUTE_44
 	overcast_map ROUTE_45
@@ -66,7 +65,6 @@ RandomOvercastMapsJohto:
 	overcast_map RUINS_OF_ALPH_OUTSIDE
 	overcast_map SILVER_CAVE_OUTSIDE
 	overcast_map SINJOH_RUINS
-	overcast_map SNOWTOP_MOUNTAIN_INSIDE
 	overcast_map STORMY_BEACH
 	overcast_map VIOLET_CITY
 	overcast_map YELLOW_FOREST
@@ -78,6 +76,7 @@ RandomOvercastMapsJohto:
 	overcast_map AREA_NATIONAL_PARK
 	overcast_map AREA_ECRUTEAK
 	overcast_map AREA_ROUTE_35_COAST
+	overcast_map AREA_ROUTE_40
 	overcast_map AREA_ROUTES_47_48
 	overcast_map AREA_ROUTE_42
 	overcast_map AREA_LAKE_OF_RAGE
