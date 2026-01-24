@@ -1,4 +1,4 @@
-	db  50,  75,  35,  40,  70,  30 ; 300 BST
+	db 58, 79, 39, 44, 74, 36 ; 330 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db GRASS, POISON ; type

@@ -1,4 +1,4 @@
-	db  38,  41,  40,  65,  50,  65 ; 299 BST
+	db 46, 45, 46, 69, 54, 69 ; 329 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db FIRE, FIRE ; type

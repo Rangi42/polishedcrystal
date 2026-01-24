@@ -1,4 +1,4 @@
-	db  10,  55,  30,  90,  35,  45 ; 265 BST
+	db 18, 63, 36, 94, 35, 49 ; 295 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db GROUND, STEEL ; type

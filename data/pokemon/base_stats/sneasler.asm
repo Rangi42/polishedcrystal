@@ -1,4 +1,4 @@
-	db  80, 130,  60, 120,  40,  80 ; 510 BST
+	db  80, 115,  60, 115,  40,  80 ; 510 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db POISON, FIGHTING ; type

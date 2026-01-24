@@ -1,4 +1,4 @@
-	db 115,  45,  20,  20,  45,  25 ; 270 BST
+	db 123, 49, 26, 24, 49, 29 ; 300 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db NORMAL, FAIRY ; type

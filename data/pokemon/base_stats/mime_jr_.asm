@@ -1,4 +1,4 @@
-	db  20,  25,  45,  60,  70,  90 ; 310 BST
+	db 28, 25, 51, 64, 78, 94 ; 340 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, FAIRY ; type

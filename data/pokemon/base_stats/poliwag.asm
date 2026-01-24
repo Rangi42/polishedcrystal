@@ -1,4 +1,4 @@
-	db  40,  50,  40,  90,  40,  40 ; 300 BST
+	db 48, 54, 44, 94, 44, 46 ; 330 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db WATER, WATER ; type

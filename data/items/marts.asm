@@ -149,6 +149,26 @@ Celadon5FMart2:
 	db -1
 
 Goldenrod4FMart:
+	db 18 ;#items
+	db PROTEIN
+	db IRON
+	db CARBOS
+	db CALCIUM
+	db ZINC
+	db HP_UP
+	db POKE_DOLL
+	db FIRE_STONE
+	db WATER_STONE
+	db THUNDERSTONE
+	db LEAF_STONE
+	db ICE_STONE
+	db SHINY_STONE
+	db SUN_STONE
+	db DUSK_STONE
+	db MOON_STONE
+	db LINKING_CORD
+	db EXP_SHARE
+	db -1
 Celadon5FMart1:
 	db 6 ; # items
 	db PROTEIN
@@ -160,11 +180,17 @@ Celadon5FMart1:
 	db -1
 
 Goldenrod5FTMMart:
-	db 8 ; # items
+	db 14 ; # items
 	dbw TM_PROTECT,       10000
 	dbw TM_REFLECT,       10000
 	dbw TM_LIGHT_SCREEN,  10000
+	dbw TM_FLAMETHROWER,  20000
+	dbw TM_THUNDERBOLT,   20000
+	dbw TM_ICE_BEAM,      20000
+	dbw TM_SLUDGE_BOMB,   20000
+	dbw TM_PSYCHIC,     20000
 	dbw TM_SOLAR_BEAM,    25000
+	dbw TM_EARTHQUAKE,    30000
 	dbw TM_THUNDER,       30000
 	dbw TM_FIRE_BLAST,    30000
 	dbw TM_BLIZZARD,      30000

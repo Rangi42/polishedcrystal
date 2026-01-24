@@ -1,4 +1,4 @@
-	db  35,  70,  55,  25,  45,  55 ; 285 BST
+	db 43, 78, 59, 29, 45, 61 ; 315 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db BUG, GRASS ; type

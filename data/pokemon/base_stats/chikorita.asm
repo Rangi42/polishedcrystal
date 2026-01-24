@@ -1,4 +1,4 @@
-	db  45,  49,  65,  45,  49,  65 ; 318 BST
+	db 53, 53, 69, 49, 53, 71 ; 348 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db GRASS, GRASS ; type

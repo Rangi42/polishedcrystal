@@ -948,6 +948,15 @@ MartMenuLoop_SetCarry:
 StandardMartAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
+
+	; wMartItemID = position in list (1..n), not the item id
+    ld a, [wMartItemID]
+    ld e, a
+    ld d, 0
+    ld hl, wCurMart + 1
+    add hl, de          ; wCurMart + position = actual item id
+    ld a, [hl]
+    ld [wCurItem], a    ; now wCurItem is FIRE_STONE, etc.
 	farcall SelectQuantityToBuy
 	jmp ExitMenu
 

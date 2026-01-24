@@ -1,4 +1,4 @@
-	db  65, 130,  60,  65,  95, 110 ; 525 BST
+	db  65, 130,  60,  70,  95, 110 ; 525 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db FIRE, FIRE ; type

@@ -1,5 +1,5 @@
 if DEF(FAITHFUL)
-	db  55,  45,  50,  80,  45,  65 ; 340 BST
+	db 63, 49, 56, 84, 49, 69 ; 370 BST
 	;   hp  atk  def  spe  sat  sdf
 else
 	db  65,  45,  50,  80,  45,  65 ; 350 BST

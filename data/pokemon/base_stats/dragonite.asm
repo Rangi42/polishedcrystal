@@ -8,9 +8,9 @@
 	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)
-	abilities_for DRAGONITE, INNER_FOCUS, INNER_FOCUS, MULTISCALE
+	abilities_for DRAGONITE, INNER_FOCUS, INNER_FOCUS, INNER_FOCUS
 else
-	abilities_for DRAGONITE, INNER_FOCUS, MARVEL_SCALE, MULTISCALE
+	abilities_for DRAGONITE, INNER_FOCUS, MARVEL_SCALE, INNER_FOCUS
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_WATER_1, EGG_DRAGON ; egg groups

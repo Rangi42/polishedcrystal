@@ -1,4 +1,4 @@
-	db  40,  50,  45,  70,  70,  45 ; 320 BST
+	db 48, 50, 49, 74, 78, 51 ; 350 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, FLYING ; type

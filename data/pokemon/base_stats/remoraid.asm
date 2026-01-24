@@ -1,4 +1,4 @@
-	db  35,  65,  35,  65,  65,  35 ; 300 BST
+	db 43, 69, 39, 69, 69, 41 ; 330 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db WATER, WATER ; type

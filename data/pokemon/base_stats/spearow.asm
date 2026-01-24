@@ -1,4 +1,4 @@
-	db  40,  60,  30,  70,  31,  31 ; 262 BST
+	db 48, 68, 36, 74, 31, 35 ; 292 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db NORMAL, FLYING ; type

@@ -1,4 +1,4 @@
-	db  95,  65, 110,  65,  60, 130 ; 525 BST
+	db  95,  65, 105,  65,  65, 120 ; 525 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db DARK, DARK ; type

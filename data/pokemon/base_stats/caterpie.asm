@@ -1,4 +1,4 @@
-	db  45,  30,  35,  45,  20,  20 ; 195 BST
+	db 53, 34, 39, 49, 24, 26 ; 225 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db BUG, BUG ; type

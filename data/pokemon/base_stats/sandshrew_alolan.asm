@@ -1,4 +1,4 @@
-	db  50,  75,  90,  40,  10,  35 ; 300 BST
+	db 58, 83, 94, 44, 10, 41 ; 330 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db ICE, STEEL ; type

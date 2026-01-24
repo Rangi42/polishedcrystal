@@ -1,4 +1,4 @@
-	db  75,  95,  95,  85,  95,  95 ; 540 BST
+	db  75,  95,  95,  85,  90,  95 ; 540 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db WATER, DRAGON ; type

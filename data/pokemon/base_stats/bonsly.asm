@@ -1,4 +1,4 @@
-	db  50,  80,  95,  10,  10,  45 ; 290 BST
+	db 58, 88, 99, 14, 10, 51 ; 320 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db ROCK, ROCK ; type
