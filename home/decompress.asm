@@ -307,6 +307,84 @@ DEF LZ_LONG_HI       EQU %00000011
 	ret z ; LZ_END
 	ld b, c
 
+	; Extended opcodes: $fc-$fe
+	ld a, b
+	or ~LZ_LONG_CMD
+	inc a
+	jr nz, .long_normal
+	ld a, b
+	and 3
+	; subtype in a: 0=$fc fillff, 1=$fd pack16 short, 2=$fe pack16 long
+	push af
+	ld a, [de]
+	inc de
+	ld c, a
+	ld b, 0
+	pop af
+	cp 2
+	jr nz, .ext_len
+	inc b
+.ext_len
+	inc c
+	jr nz, .ext_have_len
+	inc b
+.ext_have_len
+	and a
+	jr nz, .ext_pack16
+
+.ext_fillff
+	ld a, $ff
+	jr .fill
+
+.ext_pack16
+	; Decode packed literals. Payload is ceil(count/2) bytes.
+	; Uses a small fixed table of 16 bytes.
+.pack_loop
+	ld a, b
+	or c
+	jr z, .Main
+	ld a, [de]
+	inc de
+	push af
+	swap a
+	and $0f
+	call .pack_lookup
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr z, .pack_done
+	pop af
+	and $0f
+	call .pack_lookup
+	ld [hli], a
+	dec bc
+	jr .pack_loop
+.pack_done
+	pop af
+	jr .Main
+
+.pack_lookup
+	; a = 0..15 -> a = pack16_table[a]
+	push de
+	ld e, a
+	ld d, HIGH(.pack16_table)
+	ld a, e
+	add LOW(.pack16_table)
+	ld e, a
+	adc d
+	sub e
+	ld d, a
+	ld a, [de]
+	pop de
+	ret
+
+.pack16_table
+	db $00, $ff, $01, $02, $03, $05, $80, $07
+	db $c0, $7f, $04, $0f, $1f, $3f, $08, $fc
+
+.long_normal
+
 	ld a, [de]
 	inc de
 	ld c, a
@@ -321,5 +399,5 @@ DEF LZ_LONG_HI       EQU %00000011
 	; a = ccc0000l
 	ld b, a
 	and LZ_CMD
-	jr nz, .cont
-	jr .lz_data
+	jp nz, .cont
+	jp .lz_data

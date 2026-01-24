@@ -7,15 +7,45 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
   const unsigned char * rp = data;
   while (1) {
     if (!(remaining --)) goto error;
-    current -> command = *rp >> 5;
-    current -> count = *(rp ++) & 31;
+    unsigned char b0 = *(rp ++);
+    if (b0 == 0xff) break;
+
+    // Extended opcodes: $fc-$fe
+    if ((b0 & 0xfc) == 0xfc) {
+      unsigned char subtype = b0 & 3;
+      if (subtype == 3) goto error; // 0xff is terminator, not a command
+      if (!(remaining --)) goto error;
+      unsigned char len_lo = *(rp ++);
+      unsigned out_count = (unsigned)len_lo + 1 + (subtype == 2 ? 256 : 0);
+
+      current -> command = 7;
+      current -> count = out_count - minimum_count(7);
+      current -> count += minimum_count(7);
+
+      if (subtype == 0) {
+        // lzfillff
+        current -> value = -1;
+      } else {
+        // lzpack16
+        current -> value = rp - data;
+        unsigned payload = (out_count + 1) / 2;
+        if (remaining < payload) goto error;
+        rp += payload;
+        remaining -= payload;
+      }
+
+      current ++;
+      continue;
+    }
+
+    current -> command = b0 >> 5;
+    current -> count = b0 & 31;
     if (current -> command == LZ_LONG) {
       current -> command = current -> count >> 2;
       current -> count = (current -> count & 3) << 8;
       if (current -> command == LZ_LONG) {
-        // long commands inside long commands are not allowed, but if the count is 0x300 here, it means that the original byte was 0xff
+        // If the count is 0x300 here, the original byte was 0xff (terminator).
         if (current -> count == 0x300) break;
-        goto error;
       }
       if (!(remaining --)) goto error;
       current -> count |= *(rp ++);
@@ -74,6 +104,26 @@ unsigned char * get_uncompressed_data (const struct command * commands, const un
       case LZ_ZERO:
         memset(current, 0, commands -> count);
         current += commands -> count;
+        break;
+      case 7:
+        if (commands -> value < 0) {
+          memset(current, 0xff, commands -> count);
+          current += commands -> count;
+        } else {
+          const unsigned char * rp = compressed + commands -> value;
+          unsigned remaining = commands -> count;
+          while (remaining) {
+            unsigned char packed = *(rp ++);
+            unsigned char hi = packed >> 4;
+            unsigned char lo = packed & 0x0f;
+            *(current ++) = pack16_table[hi];
+            remaining--;
+            if (remaining) {
+              *(current ++) = pack16_table[lo];
+              remaining--;
+            }
+          }
+        }
         break;
       default: {
         const unsigned char * ref = ((commands -> value < 0) ? current : result) + commands -> value;

@@ -41,6 +41,10 @@ struct options {
 extern const unsigned char bit_flipping_table[];
 extern char option_name_buffer[];
 
+// util.c (pack16)
+extern const unsigned char pack16_table[16];
+signed char pack16_index_of(unsigned char value);
+
 // main.c
 int main(int, char **);
 struct command * compress(const unsigned char *, unsigned short *);
