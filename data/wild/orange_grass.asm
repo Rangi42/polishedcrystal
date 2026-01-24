@@ -1,7 +1,7 @@
 ; Orange Pokémon in grass
 
 	def_grass_wildmons ROUTE_49
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, XATU
 	wildmon LEVEL_FROM_BADGES - 2, SUNFLORA
@@ -29,7 +29,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons BEAUTIFUL_BEACH
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
@@ -57,7 +57,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WARM_BEACH
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
@@ -85,7 +85,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROCKY_BEACH
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
@@ -113,7 +113,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SHAMOUTI_TUNNEL
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 1, RHYHORN
 	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
@@ -141,7 +141,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons NOISY_FOREST
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 1, FEAROW
 	wildmon LEVEL_FROM_BADGES - 1, BUTTERFREE
@@ -169,7 +169,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SHAMOUTI_SHRINE_RUINS
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
@@ -197,7 +197,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons FIRE_ISLAND
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, SLUGMA
 	wildmon LEVEL_FROM_BADGES - 1, SLUGMA
@@ -225,7 +225,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_ISLAND
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, SEEL
 	wildmon LEVEL_FROM_BADGES - 1, SEEL
@@ -253,7 +253,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons LIGHTNING_ISLAND
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 1, VOLTORB
@@ -281,7 +281,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons NAVEL_ROCK_INSIDE
-	db 1, 1, 1 ; encounter rates: morn/day/nite
+	db 1 ; encounter rate
 	; morn
 	wildmon 80, DRAGONAIR
 	wildmon 80, DRAGONAIR
