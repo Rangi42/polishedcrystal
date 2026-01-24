@@ -221,11 +221,11 @@ LoadMapNameSignGFX:
 	sub l
 	ld h, a
 	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	ld hl, vTiles0 tile POPUP_MAP_FRAME_START
+	ld h, [hl]
+	ld l, a
+	ld de, vTiles0 tile POPUP_MAP_FRAME_START
 	lb bc, BANK("Map Name Sign Graphics"), 8
-	call Get2bpp
+	call DecompressRequest2bpp
 	; clear landmark name area
 	ld hl, vTiles0 tile POPUP_MAP_NAME_START
 	ld e, POPUP_MAP_NAME_SIZE
