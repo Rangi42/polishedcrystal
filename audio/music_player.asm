@@ -83,7 +83,7 @@ MusicPlayer::
 
 	ld hl, MusicPlayerPals
 	ld de, wOBPals2
-	ld bc, 4 palettes
+	ld bc, 7 palettes
 	rst CopyBytes
 
 	pop af
@@ -1717,9 +1717,9 @@ NoteOAM:
 	db 0, 0, $00, OAM_PRIO | 2 ; blue
 	db 0, 0, $00, OAM_PRIO | 1 ; green
 	; keys
-	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 3 ; red
-	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 2 ; blue
-	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 1 ; green
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 6 ; red
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 5 ; blue
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 4 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"
