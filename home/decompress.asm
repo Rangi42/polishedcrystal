@@ -323,7 +323,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	ld a, b
 	and LZ_EXT_MASK
 	cp LZ_EXT_BASE
-	jp nz, .long_normal
+	jmp nz, .long_normal
 	ld a, b
 	and LZ_EXT_SUBTYPE_MASK
 	; subtype in a: LZ_EXT_PACKHI0/LZ_EXT_PACK16_SHORT/LZ_EXT_PACKLO0
@@ -346,7 +346,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 .packhi0_loop
 	ld a, b
 	or c
-	jp z, .Main
+	jmp z, .Main
 	ld a, [de]
 	inc de
 	push af
@@ -402,7 +402,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 .packlo0_loop
 	ld a, b
 	or c
-	jp z, .Main
+	jmp z, .Main
 	ld a, [de]
 	inc de
 	push af
