@@ -6,6 +6,8 @@ DEF SNOWFLAKE_TILE  EQU WEATHER_TILE_1
 DEF SANDSTORM_TILE  EQU WEATHER_TILE_1
 DEF CHERRYLEAF_TILE EQU WEATHER_TILE_1
 
+DEF HARSH_SUN_FADE_STEPS EQU 31
+
 DoOverworldWeather:
 	push hl
 	push de
@@ -29,6 +31,7 @@ DoOverworldWeather:
 	dec a
 	ld [wOverworldWeatherCooldown], a
 .no_cooldown
+	call DoHarshSunPaletteCycle
 
 	; if hUsedWeatherSpriteIndex >= the first object OAM index,
 	; then we need to set hUsedWeatherSpriteIndex the OAM index before the first object OAM index.
@@ -67,6 +70,7 @@ DoOverworldWeather:
 	dw DoOverworldRain
 	dw DoOverworldSandstorm
 	dw DoOverworldCherryBlossoms
+	dw DoNothing ; harsh sun has no particles
 	assert_table_length NUM_OW_WEATHERS + 1
 
 .on_cooldown
@@ -81,6 +85,7 @@ DoOverworldWeather:
 	dw .rain_cooldown
 	dw .sand_cooldown
 	dw .cherry_blossoms_cooldown
+	dw .cooldown_cleanup ; harsh sun
 	assert_table_length NUM_OW_WEATHERS + 1
 
 .cherry_blossoms_cooldown
@@ -104,6 +109,69 @@ DoOverworldWeather:
 	call LoadWeatherGraphics
 	jr .done
 
+DoHarshSunPaletteCycle:
+	ld a, [wCurWeather]
+	cp OW_WEATHER_HARSH_SUN
+	ret nz
+
+	; Don't start palette-cycle fades during scripted sequences
+	; (map connections, fly, warps, etc.).
+	ld a, [wScriptRunning]
+	and a
+	ret nz
+
+	; Fly animations do heavy overworld drawing; avoid cycling then too.
+	ld hl, wWeatherFlags
+	bit OW_WEATHER_DO_FLY_F, [hl]
+	ret nz
+
+	; Map connections are already doing time-critical BG updates.
+	; Avoid starting a new palette-cycle fade mid-connection.
+	ld hl, wPalFlags
+	bit MAP_CONNECTION_PAL_F, [hl]
+	ret nz
+
+	; Only start a new leg of the cycle when no overworld fade is running.
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rWBK], a
+	ld a, [wPalFadeDelayFrames]
+	ld b, a
+	pop af
+	ldh [rWBK], a
+	ld a, b
+	and a
+	ret nz
+
+	; Save previous pal states (includes PALSTATE_WEATHER_ARG).
+	farcall SavePrevPalStates
+
+	; Toggle weather arg: 0 = normal, 1 = saturated.
+	ld a, [wCurPalWeatherArgState]
+	xor 1
+	ld [wCurPalWeatherArgState], a
+
+	; Start the fade and load destination palettes.
+	farcall OWFadePalettesInit
+	; Make the harsh-sun cycle fade slower/longer than the default OW fade.
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rWBK], a
+	ld a, HARSH_SUN_FADE_STEPS
+	ld [wPalFadeDelayFrames], a
+	ld [wPalFadeTotalSteps], a
+	ld [wPalFadeStepValue], a
+	xor a
+	ld [wPalFadeDelay], a
+	pop af
+	ldh [rWBK], a
+	farcall LoadMapPalettes
+	farcall ClearSavedObjPals
+	farcall CheckForUsedObjPals
+	ret
+
 SpawnRandomWeatherFullScreen::
 	lb bc, SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX
 ; fallthrough
@@ -124,6 +192,7 @@ SpawnRandomWeatherCoords::
 	dw .rain
 	dw .sand
 	dw DoNothing ; cherry blossoms' starting positions are nonrandom
+	dw DoNothing ; harsh sun
 	assert_table_length NUM_OW_WEATHERS
 
 .sand
@@ -202,12 +271,12 @@ DoOverworldSnow:
 	jr z, .continue
 	farcall LoadWeatherPal
 .continue
-rept 2
-	; spawn two snowflakes
-	call ScanForEmptyOAM
-	call nc, SpawnSnowFlake
-endr
-; fallthrough
+	rept 2
+		; spawn two snowflakes
+		call ScanForEmptyOAM
+		call nc, SpawnSnowFlake
+	endr
+	; fallthrough
 DoSnowFall:
 	ld de, wShadowOAM
 	ld h, d

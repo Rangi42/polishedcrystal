@@ -114,4 +114,5 @@ SetCurrentWeather::
 .no_weather
 	assert OW_WEATHER_NONE == 0
 	xor a
+	ld a, OW_WEATHER_HARSH_SUN ; TODO: temp test
 	jmp .set_weather

@@ -987,7 +987,7 @@ LoadMapPals:
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
-	ret z
+	jr z, .done
 
 	; overcast maps have their own roof color table
 	farcall GetOvercastIndex
@@ -1005,7 +1005,7 @@ LoadMapPals:
 	cp ROUTE
 	jr z, .outside
 	cp ISOLATED
-	ret nz
+	jr nz, .done
 .outside
 	ld a, [wMapGroup]
 	ld hl, RoofPals
@@ -1030,7 +1030,135 @@ LoadMapPals:
 .morn_day
 	ld de, wBGPals1 palette PAL_BG_ROOF + 2
 	ld bc, 4
-	jmp FarCopyColorWRAM
+	call FarCopyColorWRAM
+	; fallthrough
+
+.done
+	call MaybeApplyHarshSunSaturationToMapBGPals
+	ret
+
+MaybeApplyHarshSunSaturationToMapBGPals:
+	ld a, [wCurWeather]
+	cp OW_WEATHER_HARSH_SUN
+	ret nz
+	ld a, [wCurPalWeatherArgState]
+	and a
+	ret z
+
+	ldh a, [rWBK]
+	push af
+	ld a, $5
+	ldh [rWBK], a
+
+	ld hl, wBGPals1
+	ld b, 7 * 4 ; 7 palettes, 4 colors each
+.loop
+	; load color (little endian)
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+
+	; red = e & $1f
+	ld a, e
+	and $1f
+	cp 8
+	jr c, .red_low
+	add 8
+	jr .red_clamp
+.red_low
+	add 4
+.red_clamp
+	cp 32
+	jr c, .red_ok
+	ld a, 31
+.red_ok
+	push af ; save red
+
+	; green = (e >> 5) | ((d & 3) << 3)
+	ld a, e
+	srl a
+	srl a
+	srl a
+	srl a
+	srl a
+	ld c, a
+	ld a, d
+	and $03
+	add a
+	add a
+	add a
+	or c
+	cp 8
+	jr c, .green_low
+	add 6
+	jr .green_clamp
+.green_low
+	add 3
+.green_clamp
+	cp 32
+	jr c, .green_ok
+	ld a, 31
+.green_ok
+	ld c, a ; c = green
+	pop af ; a = red
+
+	; low byte = red | ((green & 7) << 5)
+	push af
+	ld a, c
+	and $07
+	add a
+	add a
+	add a
+	add a
+	add a
+	ld e, a
+	pop af
+	or e
+	ld e, a
+
+	; blue = (d >> 2) & $1f
+	ld a, d
+	srl a
+	srl a
+	and $1f
+	cp 4
+	jr c, .blue_zero
+	sub 4
+	jr .blue_done
+.blue_zero
+	xor a
+.blue_done
+	ld d, a ; d = blue
+
+	; high byte = (blue << 2) | (green >> 3)
+	ld a, d
+	add a
+	add a
+	and $7c
+	ld d, a
+	ld a, c
+	srl a
+	srl a
+	srl a
+	and $03
+	or d
+	ld d, a
+
+	; write back
+	dec hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	inc hl
+	inc hl
+
+	dec b
+	jr nz, .loop
+
+	pop af
+	ldh [rWBK], a
+	ret
 
 INCLUDE "data/maps/environment_colors.asm"
 

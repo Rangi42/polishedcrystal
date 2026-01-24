@@ -11,4 +11,5 @@ WeatherGraphics:
 	weather_gfx RainGFX, 2
 	weather_gfx SandGFX, 1
 	weather_gfx CherryBlossomGFX, 1
+	weather_gfx RainGFX, 0 ; harsh sun: no weather particles
 	assert_table_length NUM_OW_WEATHERS
