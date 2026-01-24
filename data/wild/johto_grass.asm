@@ -1,7 +1,7 @@
 ; Johto Pokémon in grass
 
 	def_grass_wildmons SPROUT_TOWER_2F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 3, RATTATA
 	wildmon 4, RATTATA
@@ -29,7 +29,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SPROUT_TOWER_3F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 4, RATTATA
 	wildmon 5, RATTATA
@@ -57,7 +57,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_2F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -85,7 +85,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_3F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -113,7 +113,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_4F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -141,7 +141,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_5F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -169,7 +169,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_6F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -197,7 +197,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_7F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -225,7 +225,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_8F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -253,7 +253,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_9F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -281,7 +281,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons TIN_TOWER_10F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 20, RATTATA
 	wildmon 21, RATTATA
@@ -309,7 +309,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons BURNED_TOWER_1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 13, RATTATA
 	wildmon 14, KOFFING
@@ -337,7 +337,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons BURNED_TOWER_B1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 14, KOFFING
 	wildmon 14, RATTATA
@@ -365,7 +365,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons NATIONAL_PARK
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 12, NIDORAN_M
 	wildmon 13, NIDORAN_F
@@ -393,7 +393,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons RUINS_OF_ALPH_OUTSIDE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 20, NATU
 	wildmon 22, NATU
@@ -421,7 +421,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons RUINS_OF_ALPH_ENTRANCE_CHAMBER
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 6 percent ; encounter rate
 	; morn
 	wildmon 10, UNOWN
 	wildmon 5, UNOWN
@@ -449,7 +449,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons RUINS_OF_ALPH_INNER_CHAMBER
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 6 percent ; encounter rate
 	; morn
 	wildmon 10, UNOWN
 	wildmon 5, UNOWN
@@ -477,7 +477,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 8, GEODUDE
 	wildmon 8, SANDSHREW
@@ -505,7 +505,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_B1F_NORTH
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 8, GEODUDE
 	wildmon 6, ZUBAT
@@ -533,7 +533,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_B1F_SOUTH
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 21, ZUBAT
 	wildmon 21, GOLBAT
@@ -561,7 +561,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_B2F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 22, ZUBAT
 	wildmon 22, GOLBAT
@@ -589,7 +589,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SLOWPOKE_WELL_ENTRANCE
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 5, ZUBAT
 	wildmon 6, ZUBAT
@@ -617,7 +617,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SLOWPOKE_WELL_B1F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 5, ZUBAT
 	wildmon 6, ZUBAT
@@ -645,7 +645,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SLOWPOKE_WELL_B2F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 21, ZUBAT
 	wildmon 23, ZUBAT
@@ -673,7 +673,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ILEX_FOREST
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 9, CATERPIE
 	wildmon 9, WEEDLE
@@ -701,7 +701,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MOUNT_MORTAR_1F_OUTSIDE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 21, ZUBAT
 	wildmon 22, MACHOP
@@ -729,7 +729,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MOUNT_MORTAR_1F_INSIDE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 21, GEODUDE
 	wildmon 23, MACHOP
@@ -757,7 +757,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MOUNT_MORTAR_2F_INSIDE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 34, GRAVELER
 	wildmon 35, MACHOKE
@@ -785,7 +785,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MOUNT_MORTAR_B1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 15, ZUBAT
 	wildmon 16, MACHOP
@@ -813,7 +813,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_PATH_1F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 30, SWINUB
 	wildmon 32, ZUBAT
@@ -841,7 +841,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_PATH_B1F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 32, SWINUB
 	wildmon 33, ZUBAT
@@ -869,7 +869,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_PATH_B2F_MAHOGANY_SIDE
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 33, SWINUB
 	wildmon 34, ZUBAT
@@ -897,7 +897,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_PATH_B2F_BLACKTHORN_SIDE
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 33, SWINUB
 	wildmon 34, ZUBAT
@@ -925,7 +925,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_PATH_B3F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 34, SWINUB
 	wildmon 35, ZUBAT
@@ -953,7 +953,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_NW
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 32, KRABBY
 	wildmon 33, ZUBAT
@@ -981,7 +981,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_NE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 32, KRABBY
 	wildmon 33, ZUBAT
@@ -1009,7 +1009,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_SW
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 32, KRABBY
 	wildmon 33, ZUBAT
@@ -1037,7 +1037,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_CAVE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 32, KRABBY
 	wildmon 33, ZUBAT
@@ -1065,7 +1065,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_SE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 32, KRABBY
 	wildmon 33, ZUBAT
@@ -1093,7 +1093,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_B1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 33, KRABBY
 	wildmon 34, ZUBAT
@@ -1121,7 +1121,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_B2F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 34, KRABBY
 	wildmon 35, ZUBAT
@@ -1149,7 +1149,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_LUGIA_CHAMBER
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 35, KRABBY
 	wildmon 36, ZUBAT
@@ -1177,7 +1177,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_ROOM_1
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 6 percent ; encounter rate
 	; morn
 	wildmon 72, GRAVELER
 	wildmon 72, URSARING
@@ -1205,7 +1205,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_ROOM_2
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 6 percent ; encounter rate
 	; morn
 	wildmon 74, GOLBAT
 	wildmon 74, MACHOKE
@@ -1233,7 +1233,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_ROOM_3
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 6 percent ; encounter rate
 	; morn
 	wildmon 76, CROBAT
 	wildmon 76, ONIX
@@ -1261,7 +1261,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_ITEM_ROOMS
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 6 percent ; encounter rate
 	; morn
 	wildmon 72, GOLBAT
 	wildmon 72, GOLBAT
@@ -1289,7 +1289,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons DARK_CAVE_VIOLET_ENTRANCE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 3, GEODUDE
 	wildmon 2, ZUBAT
@@ -1317,7 +1317,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons DARK_CAVE_BLACKTHORN_ENTRANCE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 23, GEODUDE
 	wildmon 23, ZUBAT
@@ -1345,7 +1345,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_29
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 2, PIDGEY
 	wildmon 2, SENTRET
@@ -1373,7 +1373,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_30
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 3, LEDYBA
 	wildmon 3, CATERPIE
@@ -1401,7 +1401,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_31
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 4, LEDYBA
 	wildmon 4, CATERPIE
@@ -1429,7 +1429,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_32
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 5, EKANS, ARBOK_JOHTO_FORM
 	wildmon 6, RATTATA
@@ -1457,7 +1457,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_33
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 9, RATTATA
 	wildmon 9, SPEAROW
@@ -1485,7 +1485,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_34
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 12, SNUBBULL
 	wildmon 12, RATTATA, ALOLAN_FORM
@@ -1513,7 +1513,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_35
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 13, SNUBBULL
 	wildmon 14, PIDGEY
@@ -1541,7 +1541,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_36
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 5, LEDYBA
 	wildmon 5, PIDGEY
@@ -1569,7 +1569,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_37
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 13, LEDYBA
 	wildmon 14, PIDGEY
@@ -1597,7 +1597,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_38
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 16, RATTATA
 	wildmon 16, RATICATE
@@ -1625,7 +1625,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_39
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon 16, RATTATA
 	wildmon 16, RATICATE
@@ -1653,7 +1653,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_42
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 20, EKANS, ARBOK_JOHTO_FORM
 	wildmon 22, MANKEY
@@ -1681,7 +1681,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_43
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 25, PIDGEOTTO
 	wildmon 23, GIRAFARIG
@@ -1709,7 +1709,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_44
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 31, TANGELA
 	wildmon 29, LICKITUNG
@@ -1737,7 +1737,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_45
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 33, GEODUDE
 	wildmon 35, GRAVELER
@@ -1765,7 +1765,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_46
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 2, GEODUDE
 	wildmon 2, SPEAROW
@@ -1793,7 +1793,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_47
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES + 1, DITTO
 	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D, GALARIAN_FORM
@@ -1821,7 +1821,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_48
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES + 1, FARFETCH_D, GALARIAN_FORM
 	wildmon LEVEL_FROM_BADGES + 0, TAUROS
@@ -1849,7 +1849,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons CLIFF_CAVE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, GOLBAT
 	wildmon LEVEL_FROM_BADGES - 5, GEODUDE
@@ -1877,7 +1877,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_OUTSIDE
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 69, TANGELA
 	wildmon 70, PONYTA
@@ -1905,7 +1905,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons VIOLET_OUTSKIRTS
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, RATTATA
 	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
@@ -1933,7 +1933,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons CHERRYGROVE_BAY
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
 	wildmon LEVEL_FROM_BADGES - 1, SENTRET
@@ -1961,7 +1961,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_32_COAST
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
 	wildmon LEVEL_FROM_BADGES + 1, RATICATE
@@ -1989,7 +1989,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons YELLOW_FOREST
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, SENTRET
 	wildmon LEVEL_FROM_BADGES + 0, SNUBBULL
@@ -2017,7 +2017,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons QUIET_CAVE_1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 3, CUBONE
 	wildmon LEVEL_FROM_BADGES - 2, ZUBAT
@@ -2045,7 +2045,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons QUIET_CAVE_B1F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, CUBONE
 	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
@@ -2073,7 +2073,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons QUIET_CAVE_B2F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 1, CUBONE
 	wildmon LEVEL_FROM_BADGES + 0, ZUBAT
@@ -2101,7 +2101,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons QUIET_CAVE_B3F
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES + 0, CUBONE
 	wildmon LEVEL_FROM_BADGES + 1, ZUBAT
@@ -2129,7 +2129,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons STORMY_BEACH
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 1, WOOPER
 	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
@@ -2157,7 +2157,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MURKY_SWAMP
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	db 2 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, WOOPER, PALDEAN_FORM
 	wildmon LEVEL_FROM_BADGES + 1, CLODSIRE
@@ -2185,7 +2185,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MAGNET_TUNNEL_INSIDE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
@@ -2213,7 +2213,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons RUGGED_ROAD_SOUTH
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE
 	wildmon LEVEL_FROM_BADGES - 2, GROWLITHE, HISUIAN_FORM
@@ -2241,7 +2241,7 @@
 	end_grass_wildmons
 
 	def_grass_wildmons SNOWTOP_MOUNTAIN_INSIDE
-	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
+	db 8 percent ; encounter rate
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, SWINUB
 	wildmon LEVEL_FROM_BADGES + 1, SWINUB
