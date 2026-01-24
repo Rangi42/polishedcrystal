@@ -104,7 +104,7 @@ void write_commands_to_file (const char * file, const struct command * commands,
     write_command_to_file(fp, *commands, input_stream);
     length += command_size(*(commands ++));
   }
-  if (putc(-1, fp) == EOF) error_exit(1, "could not write terminator to compressed output");
+  if (putc(LZ_END, fp) == EOF) error_exit(1, "could not write terminator to compressed output");
   length = ~length & ((1 << alignment) - 1);
   while (length --) if (putc(0, fp) == EOF) error_exit(1, "could not write padding to compressed output");
   if (file) fclose(fp);
@@ -127,7 +127,7 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
     if (command.value < 0) {
       // $fc <len-1>
       if (original_count > 256) error_exit(2, "invalid command in output stream");
-      *(pos ++) = 0xfc;
+      *(pos ++) = LZ_EXT_FILLFF;
       *(pos ++) = (unsigned char)(original_count - 1);
       if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
       return;
@@ -135,11 +135,11 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
 
     // lzpack16: $fd <len-1> for 1..256, $fe <len-257> for 257..512
     if (original_count <= 256) {
-      *(pos ++) = 0xfd;
+      *(pos ++) = LZ_EXT_PACK16_SHORT;
       *(pos ++) = (unsigned char)(original_count - 1);
     } else {
       if (original_count > MAX_COMMAND_COUNT) error_exit(2, "invalid command in output stream");
-      *(pos ++) = 0xfe;
+      *(pos ++) = LZ_EXT_PACK16_LONG;
       *(pos ++) = (unsigned char)(original_count - 257);
     }
     if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");

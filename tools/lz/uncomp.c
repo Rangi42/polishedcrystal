@@ -8,19 +8,18 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
   while (1) {
     if (!(remaining --)) goto error;
     unsigned char b0 = *(rp ++);
-    if (b0 == 0xff) break;
+    if (b0 == LZ_END) break;
 
-    // Extended opcodes: $fc-$fe
-    if ((b0 & 0xfc) == 0xfc) {
-      unsigned char subtype = b0 & 3;
-      if (subtype == 3) goto error; // 0xff is terminator, not a command
+    // Extended opcode bytes: $fc-$fe
+    if ((b0 & LZ_EXT_MASK) == LZ_EXT_BASE) {
+      unsigned char subtype = b0 & LZ_EXT_SUBTYPE_MASK;
+      // subtype==3 would be 0xff (terminator), which is handled above.
       if (!(remaining --)) goto error;
       unsigned char len_lo = *(rp ++);
-      unsigned out_count = (unsigned)len_lo + 1 + (subtype == 2 ? 256 : 0);
+      unsigned out_count = (unsigned)len_lo + 1 + (subtype == (LZ_EXT_PACK16_LONG & LZ_EXT_SUBTYPE_MASK) ? 256 : 0);
 
       current -> command = 7;
-      current -> count = out_count - minimum_count(7);
-      current -> count += minimum_count(7);
+      current -> count = out_count;
 
       if (subtype == 0) {
         // lzfillff
@@ -115,7 +114,7 @@ unsigned char * get_uncompressed_data (const struct command * commands, const un
           while (remaining) {
             unsigned char packed = *(rp ++);
             unsigned char hi = packed >> 4;
-            unsigned char lo = packed & 0x0f;
+            unsigned char lo = packed & LZ_PACK16_NIBBLE_MASK;
             *(current ++) = pack16_table[hi];
             remaining--;
             if (remaining) {

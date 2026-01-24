@@ -1,0 +1,191 @@
+# Polished Crystal LZ format (Crystal / LC_LZ3-derived)
+
+This project uses a variant of Pokémon Crystal’s LZ compression format.
+
+It is broadly compatible with the command set described in the LC_LZ3 reference:
+https://github.com/bonimy/MushROMs/blob/master/doc/LC_LZ3%20Compression%20Format.md
+
+However, Polished Crystal has **intentional format differences** (documented below), including new extended opcode bytes.
+
+## Stream structure
+
+An LZ-compressed stream is a sequence of commands terminated by a single byte:
+
+- `0xff` (`LZ_END`) marks end-of-stream.
+- Optional padding bytes may follow the terminator (the build system may align blobs; padding is typically `0x00`).
+
+## Base command headers
+
+### Short header (1 byte)
+
+```
+bits: 76543210
+      CCCLLLLL
+
+CCC: command id (0..6)
+LLLLL: length field (0..31)
+```
+
+### Long header (2 bytes)
+
+```
+111CCCLL LLLLLLLL
+
+CCC: command id (0..6)
+LL LLLLLLLL: 10-bit length field
+```
+
+In other words, the first byte is in the range `0xe0..0xff`.
+
+### Output length computation (important customization)
+
+Unlike the LC_LZ3 document (which describes output length as `(L + 1)` for all commands), **this project uses per-command minimum lengths** and stores:
+
+- `encoded_length = output_length - minimum_length(command)`
+
+Minimum output lengths:
+
+- `LZ_DATA` (0): 1
+- `LZ_REPEAT` (1): 2
+- `LZ_ALTERNATE` (2): 3
+- `LZ_ZERO` (3): 1
+- `LZ_COPY_NORMAL` (4): 1
+- `LZ_COPY_FLIPPED` (5): 1
+- `LZ_COPY_REVERSED` (6): 1
+
+So, for example:
+
+- A 2-byte `LZ_REPEAT` is encoded with `encoded_length = 0`.
+- A 1-byte `LZ_DATA` is encoded with `encoded_length = 0`.
+
+The current toolchain constrains command output lengths to at most 512 bytes.
+
+## Base commands (0..6)
+
+Command ids match the LC_LZ3 description:
+
+- `%000` (`LZ_DATA`): literal bytes follow the header.
+- `%001` (`LZ_REPEAT`): one byte follows; output it repeatedly.
+- `%010` (`LZ_ALTERNATE`): two bytes follow; output them alternating (`ABAB…`).
+- `%011` (`LZ_ZERO`): output `0x00` repeatedly.
+- `%100` (`LZ_COPY_NORMAL`): copy bytes from prior output.
+- `%101` (`LZ_COPY_FLIPPED`): like copy, but bit-reverse each copied byte.
+- `%110` (`LZ_COPY_REVERSED`): like copy, but copy bytes in reverse order.
+
+### `LZ_DATA` payload
+
+After the header, `output_length` raw bytes follow and are copied directly to output.
+
+### `LZ_REPEAT` payload
+
+After the header, 1 byte follows (the repeated value).
+
+### `LZ_ALTERNATE` payload
+
+After the header, 2 bytes follow (`A`, then `B`). Output alternates `A`, `B`, `A`, `B`, …
+
+### Copy commands payload (offset encoding)
+
+Copy commands (`LZ_COPY_*`) are followed by either a 1-byte **relative** offset or a 2-byte **absolute** offset.
+
+#### Relative offset (1 byte)
+
+If the first offset byte has bit 7 set (`0x80..0xff`), it encodes a negative offset from the current output position.
+
+- Byte `0x80` means offset `-1`
+- Byte `0x81` means offset `-2`
+- …
+- Byte `0xff` means offset `-128`
+
+Equivalently: `offset = 127 - byte` (yielding `-1..-128`).
+
+This is the “AYYYYYYY with A=1” form in the LC_LZ3 doc.
+
+#### Absolute offset (2 bytes)
+
+If the first offset byte has bit 7 clear (`0x00..0x7f`), a second byte follows.
+
+The 15-bit value is an offset from the **start of the decompression output buffer** (not from the current output position):
+
+- `absolute = (high << 8) | low`
+- `source = output_start + absolute`
+
+This is the “AYYYYYYY ZZZZZZZZ with A=0” form in the LC_LZ3 doc.
+
+### Copy variants
+
+- `LZ_COPY_NORMAL`: copy bytes in forward order.
+- `LZ_COPY_REVERSED`: copy bytes in reverse order (the address points at the first byte to copy; it decrements each byte).
+- `LZ_COPY_FLIPPED`: like normal copy, then bit-reverse each byte (e.g. `0xaf` → `0xf5`).
+
+## Extended opcodes (`0xfc`–`0xfe`) (customization)
+
+Polished Crystal defines additional commands using single-byte “extended opcode” headers:
+
+- `0xfc` (`LZ_EXT_FILLFF`)
+- `0xfd` (`LZ_EXT_PACK16_SHORT`)
+- `0xfe` (`LZ_EXT_PACK16_LONG`)
+
+These values are in the `0xe0..0xff` range, but are treated specially by the decompressor. (`0xff` remains the stream terminator.)
+
+### Common extended header layout
+
+```
+byte0: 111111ss  (0xfc..0xfe)
+byte1: length code
+```
+
+Where `ss` is the subtype:
+
+- `00`: `0xfc` (fill-`0xff`)
+- `01`: `0xfd` (pack16 short)
+- `10`: `0xfe` (pack16 long)
+
+### `0xfc` — `lzfillff`
+
+Fill the output with `0xff` for a given length.
+
+- Header: `0xfc <len-1>`
+- Output length: `len` in `1..256`
+- No further payload bytes.
+
+### `0xfd` / `0xfe` — `lzpack16` packed literals
+
+Emit literal bytes, but packed as 4-bit indices into a fixed 16-entry table.
+
+#### Length
+
+- `0xfd <len-1>` emits `len` bytes, where `len` is in `1..256`.
+- `0xfe <len-257>` emits `len` bytes, where `len` is in `257..512`.
+
+#### Payload
+
+After the 2-byte header, `ceil(len/2)` payload bytes follow.
+
+Each payload byte contains two 4-bit indices:
+
+- high nibble: first output byte
+- low nibble: second output byte (absent if `len` is odd)
+
+#### Dictionary table
+
+The 16-entry dictionary is:
+
+```
+index:  0    1    2    3    4    5    6    7    8    9    A    B    C    D    E    F
+value: 00   ff   01   02   03   05   80   07   c0   7f   04   0f   1f   3f   08   fc
+```
+
+This choice is intentionally biased toward very common bytes in graphics/tile data.
+
+## Key differences vs the LC_LZ3 reference
+
+The LC_LZ3 document is a useful mental model for the *base* command set, but Polished Crystal differs in important ways:
+
+- Per-command minimum lengths: output length is **not always** `(L + 1)`.
+- New extended opcode bytes: `0xfc..0xfe` add `lzfillff` and `lzpack16`.
+- Practical maximum length: the current compressor/tooling bounds command output lengths to 512 bytes.
+
+## Tooling notes
+
+The `tools/lzcomp` sources use an internal pseudo-command id `7` to represent extended opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.

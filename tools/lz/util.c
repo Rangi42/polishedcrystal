@@ -42,9 +42,9 @@ unsigned minimum_count (unsigned command) {
         return 3;
     case LZ_REPEAT:
         return 2;
-    // Command id 7 is reserved in the on-disk format for the LZ_LONG prefix,
-    // but after decoding a long command, a subcommand id of 7 is valid and is
-    // used by this project as a long-only "fill $ff" command.
+    // Command id 7 is used internally by tools as a pseudo-command for
+    // extended opcodes ($fc-$fe). It always represents an opcode whose count
+    // is explicitly stored, so its minimum is 1.
     case 7:
         return 1;
     default:

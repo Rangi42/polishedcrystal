@@ -68,6 +68,19 @@ DEF LZ_LONG          EQU 7 << 5
 DEF LZ_LONG_CMD      EQU %00011100
 DEF LZ_LONG_HI       EQU %00000011
 
+; Extended opcode bytes ($fc-$fe)
+; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
+DEF LZ_EXT_MASK          EQU %11111100
+DEF LZ_EXT_BASE          EQU $fc
+DEF LZ_EXT_SUBTYPE_MASK  EQU %00000011
+
+DEF LZ_EXT_FILLFF        EQU 0 ; $fc
+DEF LZ_EXT_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
+DEF LZ_EXT_PACK16_LONG   EQU 2 ; $fe (len 257..512)
+
+DEF LZ_FILL_VALUE_FF     EQU $ff
+DEF LZ_PACK16_NIBBLE_MASK EQU $0f
+
 ; In other words, the structure of the command becomes
 ; 111xxxyy yyyyyyyy
 ; x: the new control command
@@ -307,21 +320,22 @@ DEF LZ_LONG_HI       EQU %00000011
 	ret z ; LZ_END
 	ld b, c
 
-	; Extended opcodes: $fc-$fe
+	; Extended opcodes: $fc-$fe.
+	; Detect by masking off the low two bits.
 	ld a, b
-	or ~LZ_LONG_CMD
-	inc a
+	and LZ_EXT_MASK
+	cp LZ_EXT_BASE
 	jr nz, .long_normal
 	ld a, b
-	and 3
-	; subtype in a: 0=$fc fillff, 1=$fd pack16 short, 2=$fe pack16 long
+	and LZ_EXT_SUBTYPE_MASK
+	; subtype in a: LZ_EXT_FILLFF/LZ_EXT_PACK16_SHORT/LZ_EXT_PACK16_LONG
 	push af
 	ld a, [de]
 	inc de
 	ld c, a
 	ld b, 0
 	pop af
-	cp 2
+	cp LZ_EXT_PACK16_LONG
 	jr nz, .ext_len
 	inc b
 .ext_len
@@ -329,11 +343,11 @@ DEF LZ_LONG_HI       EQU %00000011
 	jr nz, .ext_have_len
 	inc b
 .ext_have_len
-	and a
+	cp LZ_EXT_FILLFF
 	jr nz, .ext_pack16
 
 .ext_fillff
-	ld a, $ff
+	ld a, LZ_FILL_VALUE_FF
 	jr .fill
 
 .ext_pack16
@@ -347,7 +361,7 @@ DEF LZ_LONG_HI       EQU %00000011
 	inc de
 	push af
 	swap a
-	and $0f
+	and LZ_PACK16_NIBBLE_MASK
 	call .pack_lookup
 	ld [hli], a
 	dec bc
@@ -355,7 +369,7 @@ DEF LZ_LONG_HI       EQU %00000011
 	or c
 	jr z, .pack_done
 	pop af
-	and $0f
+	and LZ_PACK16_NIBBLE_MASK
 	call .pack_lookup
 	ld [hli], a
 	dec bc
@@ -399,5 +413,5 @@ DEF LZ_LONG_HI       EQU %00000011
 	; a = ccc0000l
 	ld b, a
 	and LZ_CMD
-	jp nz, .cont
-	jp .lz_data
+	jmp nz, .cont
+	jmp .lz_data

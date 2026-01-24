@@ -8,6 +8,17 @@
 #define MAX_COMMAND_COUNT          512
 #define LOOKBACK_LIMIT             128 /* highest negative valid count for a copy command */
 
+#define LZ_END                  0xff
+
+// Extended opcode bytes ($fc-$fe)
+#define LZ_EXT_MASK             0xfc
+#define LZ_EXT_BASE             0xfc
+#define LZ_EXT_FILLFF           0xfc
+#define LZ_EXT_PACK16_SHORT     0xfd
+#define LZ_EXT_PACK16_LONG      0xfe
+#define LZ_EXT_SUBTYPE_MASK     0x03
+#define LZ_PACK16_NIBBLE_MASK   0x0f
+
 #define LZ_DATA          0 /* Read literal data for n bytes.   */
 #define LZ_REPEAT        1 /* Write the same byte for n bytes. */
 #define LZ_ALTERNATE     2 /* Alternate two bytes for n bytes. */
@@ -25,7 +36,9 @@
 #endif
 
 struct command {
-  unsigned command: 3; // commands 0-6 as per compression spec; command 7 is used as a dummy placeholder
+  // commands 0-6 are as per the base compression spec.
+  // command 7 is used internally by tools as a pseudo-command for extended opcodes ($fc-$fe).
+  unsigned command: 3;
   unsigned count:  12; // always equals the uncompressed data length
   signed value:    17; // offset for commands 0 (into source) and 4-6 (into decompressed output); repeated bytes for commands 1-2
 };
