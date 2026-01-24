@@ -26,7 +26,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
 * SadisticMystic, sinusoidal, TKOWL and Kate Dering for vanilla battle engine testing and documentation.
-* ax6 and NieDzejkob for developing and optimizing lzcomp.
+* ax6 and meithecatte for developing and optimizing lzcomp.
 * Kurausukun and earthoul for translating battle mechanics information from the Japanese Pokémon wiki.
 * vulcandth for implementing weather effects in the overworld, to include rain, lightning, snow, and sandstorm.
 * vulcandth for implementing the dynamic palettes for objects in the overworld.
@@ -55,8 +55,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
-* metalflygon08 for the many Pokémon and trainer sprites.
-* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
+* metalflygon08 for many Pokémon and trainer sprites.
+* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, many overworld tiles, Prof. Ivy's overworld sprite, and map name sign borders.
 * bloodless (BloodlessNS) for sprites of Buck, Maylene, Veteran♂, Mismagius (with SoupPotato), Honchkrow, Bonsly, Mime Jr., Munchlax, some variant Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
 * Gmerc for sprites of Alolan Meowth, Persian, and Exeggutor.
@@ -87,6 +87,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
+* FrenchOrange for Boarder's overworld sprite.
+* Sage Deoxys for Dudunsparce's sprites.
+* Egg3ggEgg for Wyrdeer's sprite.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.

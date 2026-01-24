@@ -80,7 +80,7 @@ LoadSummaryStatusIcon:
 	push de
 	xor a
 	ld de, wTempMonStatus
-	farcall GetStatusConditionIndex
+	call GetStatusConditionIndex
 	ld hl, SummaryStatusIconGFX
 	ld bc, 2 tiles
 	rst AddNTimes
@@ -98,7 +98,7 @@ LoadPlayerStatusIcon:
 	push de
 	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus
-	farcall GetStatusConditionIndex
+	call GetStatusConditionIndex
 	ld hl, StatusIconGFX
 	ld bc, 2 tiles
 	rst AddNTimes
@@ -119,7 +119,7 @@ LoadEnemyStatusIcon:
 	push de
 	ld a, [wEnemySubStatus2]
 	ld de, wEnemyMonStatus
-	farcall GetStatusConditionIndex
+	call GetStatusConditionIndex
 	ld hl, EnemyStatusIconGFX
 	ld bc, 2 tiles
 	rst AddNTimes
@@ -131,3 +131,45 @@ LoadEnemyStatusIcon:
 	farcall LoadEnemyStatusIconPalette
 	pop de
 	ret
+
+LoadBoldPDoubled:
+	; point hl to the '<BOLDP>' 1bpp tile in ROM
+	call LoadStandardFontPointer
+	ld de, ('<BOLDP>' - $80) * TILE_1BPP_SIZE
+	add hl, de
+	; copy the bold P, with halves swapped, to the middle char of wSummaryScreenPPTileBuffer
+	ld de, wSummaryScreenPPTileBuffer + TILE_1BPP_SIZE
+	push de
+	ld c, TILE_1BPP_SIZE
+.loop
+	ld a, [hli]
+	swap a
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	pop hl
+	; copy the left and right halves to the two other chars of wSummaryScreenPPTileBuffer
+	ld c, TILE_1BPP_SIZE
+.loop2
+	push hl
+	ld a, [hl]
+	and $0f
+	ld de, -TILE_1BPP_SIZE
+	add hl, de
+	ld [hl], a
+	ld de, TILE_1BPP_SIZE
+	add hl, de
+	ld a, [hl]
+	and $f0
+	add hl, de
+	ld [hl], a
+	pop hl
+	inc hl
+	dec c
+	jr nz, .loop2
+	; copy the three tiles from wSummaryScreenPPTileBuffer to VRAM
+	ld hl, vTiles2 tile SUMMARY_TILE_PP_START
+	ld de, wSummaryScreenPPTileBuffer
+	lb bc, BANK(@), 3
+	jmp Get1bpp

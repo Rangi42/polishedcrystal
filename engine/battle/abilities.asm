@@ -1654,6 +1654,7 @@ DefensiveDamageAbilities:
 	dbw THICK_FAT, EnemyThickFatAbility
 	dbw DRY_SKIN, EnemyDrySkinAbility
 	dbw FUR_COAT, EnemyFurCoatAbility
+	dbw FLUFFY, EnemyFluffyAbility
 	dbw -1, -1
 
 TechnicianAbility:
@@ -1923,6 +1924,22 @@ EnemyFurCoatAbility:
 ; Doubles physical Defense
 	ln a, 1, 2 ; 1/2 = 50%
 	jmp ApplyPhysicalDefenseDamageMod
+
+EnemyFluffyAbility:
+	; Weakness to Fire...
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr nz, .fire_done
+	ln a, 2, 1 ; x2
+	call MultiplyAndDivide
+
+.fire_done
+	; ...but resistant to contact (stacks with Fire weakness if applicable).
+	call CheckContactMove
+	ret c
+	ln a, 1, 2 ; 1/2 = 50%
+	jmp MultiplyAndDivide
 
 HydrationAbility:
 	call GetWeatherAfterUserUmbrella

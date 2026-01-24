@@ -4,7 +4,7 @@ VictoryRoad1F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 11, 21, ROUTE_23, 3
+	warp_event 11, 21, ROUTE_23_NORTH, 1
 	warp_event  3,  3, VICTORY_ROAD_2F, 2
 
 	def_coord_events

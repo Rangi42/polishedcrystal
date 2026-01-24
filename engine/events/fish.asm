@@ -76,11 +76,7 @@ endr
 	inc hl
 	jr .loop
 .ok
-	; Species 0 is Corsola during morning/day
-	; and Staryu during evening/night.
 	ld a, [hli]
-	and a
-	call z, .TimeEncounter
 	ld c, a
 
 	ld a, [hli]
@@ -91,16 +87,6 @@ endr
 .no_bite
 	ld b, d ; d already = 0
 	ld c, d
-	ret
-
-.TimeEncounter:
-	ld a, [wTimeOfDay]
-	and 3
-	cp NITE
-	; a = carry ? CORSOLA : STARYU
-	sbc a
-	and CORSOLA - STARYU
-	add STARYU
 	ret
 
 GetFishLocations:
@@ -185,21 +171,8 @@ GetFishLocations:
 	ld d, 3 ; iterator
 	ld a, e
 	cp DEXAREA_OLD_ROD * 2
-	jr z, .got_iterator
+	jr z, .checktable_loop
 	inc d
-.got_iterator
-	; Figure out if Corsola or Starmie is the time of day encounter. We're not
-	; in WRAM1 so we need to use GetFarWRAM for time of day checking.
-	push hl
-	ld hl, wTimeOfDay
-	ld a, BANK(wTimeOfDay)
-	call GetFarWRAMByte
-	pop hl
-	and 3
-	cp NITE
-	ld e, CORSOLA
-	jr nz, .checktable_loop
-	ld e, STARYU
 .checktable_loop
 	; Return carry if d==0 before decrement
 	ld a, d
@@ -211,10 +184,6 @@ GetFishLocations:
 
 .continue
 	ld a, [hli]
-	and a
-	jr nz, .not_tod
-	ld a, e
-.not_tod
 	cp c
 	ld a, [hli]
 	inc hl ; skip level

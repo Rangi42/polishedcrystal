@@ -13,6 +13,7 @@ gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
 gfx/pokedex/*.bin
+gfx/title/suicune_unowns.tilemap
 
 # compiled tilesets
 data/tilesets/*_collision.bin

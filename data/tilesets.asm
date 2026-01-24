@@ -54,6 +54,7 @@ Tilesets::
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
 	tileset TilesetSnowtopMountain
+	tileset TilesetHiddenGrotto
 	assert_table_length NUM_TILESETS
 
 
@@ -620,6 +621,13 @@ SECTION "Tileset Graphics - cave vram1", ROMX
 TilesetCaveGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lz"
 
 
+SECTION "Tileset Data - cave", ROMX
+
+TilesetCaveMeta:: INCBIN "data/tilesets/cave_metatiles.bin.lz"
+TilesetCaveAttr:: INCBIN "data/tilesets/cave_attributes.bin.lz"
+TilesetCaveColl:: INCBIN "data/tilesets/cave_collision.bin.lz"
+
+
 SECTION "Tileset Graphics - quiet cave vram0", ROMX
 
 TilesetQuietCaveGFX0:: INCBIN "gfx/tilesets/quiet_cave.2bpp.vram0.lz"
@@ -630,14 +638,11 @@ SECTION "Tileset Graphics - quiet cave vram1", ROMX
 TilesetQuietCaveGFX1:: INCBIN "gfx/tilesets/quiet_cave.2bpp.vram1.lz"
 
 
-SECTION "Tileset Data - cave and quiet cave", ROMX
+SECTION "Tileset Data - quiet cave", ROMX
 
-TilesetCaveMeta::
-TilesetQuietCaveMeta:: INCBIN "data/tilesets/cave_metatiles.bin.lz"
-TilesetCaveAttr::
-TilesetQuietCaveAttr:: INCBIN "data/tilesets/cave_attributes.bin.lz"
-TilesetCaveColl::
-TilesetQuietCaveColl:: INCBIN "data/tilesets/cave_collision.bin.lz"
+TilesetQuietCaveMeta:: INCBIN "data/tilesets/quiet_cave_metatiles.bin.lz"
+TilesetQuietCaveAttr:: INCBIN "data/tilesets/quiet_cave_attributes.bin.lz"
+TilesetQuietCaveColl:: INCBIN "data/tilesets/quiet_cave_collision.bin.lz"
 
 
 SECTION "Tileset Graphics - ice path vram0", ROMX
@@ -802,6 +807,23 @@ TilesetSnowtopMountainAttr:: INCBIN "data/tilesets/snowtop_mountain_attributes.b
 TilesetSnowtopMountainColl:: INCBIN "data/tilesets/snowtop_mountain_collision.bin.lz"
 
 
+SECTION "Tileset Graphics - hidden grotto vram0", ROMX
+
+TilesetHiddenGrottoGFX0:: INCBIN "gfx/tilesets/hidden_grotto.2bpp.vram0.lz"
+
+
+SECTION "Tileset Graphics - hidden grotto vram1", ROMX
+
+TilesetHiddenGrottoGFX1:: INCBIN "gfx/tilesets/hidden_grotto.2bpp.vram1.lz"
+
+
+SECTION "Tileset Data - hidden grotto", ROMX
+
+TilesetHiddenGrottoMeta:: INCBIN "data/tilesets/hidden_grotto_metatiles.bin.lz"
+TilesetHiddenGrottoAttr:: INCBIN "data/tilesets/hidden_grotto_attributes.bin.lz"
+TilesetHiddenGrottoColl:: INCBIN "data/tilesets/hidden_grotto_collision.bin.lz"
+
+
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
 TilesetJohto4GFX2::
@@ -845,4 +867,5 @@ TilesetAlphGFX2::
 TilesetPokemonMansionGFX2::
 TilesetBattleFactoryGFX2::
 TilesetSnowtopMountainGFX2::
+TilesetHiddenGrottoGFX2::
 	db $ff ; Compressed data is terminated with $ff.

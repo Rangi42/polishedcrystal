@@ -6,28 +6,34 @@ LoadWeatherPal::
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
-	assert OW_WEATHER_RAIN == 1
 	dec a
-	jr z, .rain
-	assert OW_WEATHER_SNOW == 2
-	dec a
-	jr z, .snow
-	assert OW_WEATHER_THUNDERSTORM == 3
-	dec a
-	jr z, .rain ; thunderstorm
-	assert OW_WEATHER_SANDSTORM == 4
-	; fallthrough
+	call StackJumpTable
 
-	ld a, PAL_OW_SAND
-.use_pal_6
-	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal6], a
-	ld de, wOBPals1 palette 6
-	jr CopySpritePalHandler
+.Jumptable:
+	table_width 2
+	dw .rain
+	dw .snow
+	dw .rain ; thunderstorm
+	dw .sand
+	dw .cherry
+	assert_table_length NUM_OW_WEATHERS
 
 .rain
 	ld a, PAL_OW_RAIN
-	jr .use_pal_6
+	jr .use_ow_weather_pal
+
+.sand
+	ld a, PAL_OW_SAND
+	jr .use_ow_weather_pal
+
+.cherry
+	ld a, PAL_OW_PINK
+	; fallthrough
+.use_ow_weather_pal
+	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
+	ld de, wOBPals1 palette PAL_OW_WEATHER
+	jr CopySpritePalHandler
 
 .snow
 	ldh a, [rWBK]
@@ -39,7 +45,7 @@ LoadWeatherPal::
 	; palette with a sprite.
 	ld a, NO_PAL_LOADED
 	ld [wLoadedObjPal7], a
-	ld hl, wOBPals1 palette 6
+	ld hl, wOBPals1 palette PAL_OW_WEATHER
 if !DEF(MONOCHROME)
 	assert LOW(NO_PAL_LOADED) == $ff
 	ld bc, 1 palettes
@@ -90,7 +96,8 @@ CopySpritePalHandler::
 	pop af
 	ldh [rWBK], a
 	xor a
-	ld [wPalStateIndex], a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
 	ld a, [wPalFlags]
 	push af
 	and ~NO_DYN_PAL_APPLY
@@ -115,8 +122,8 @@ CopySpritePalHandler::
 	ld a, [wPalFlags]
 	or NO_DYN_PAL_APPLY
 	ld [wPalFlags], a
-	ld a, 1
-	ld [wPalStateIndex], a
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
 	call CalculateStates
 	call CopySpritePal
 	push de
@@ -142,9 +149,8 @@ CopySpritePalHandler::
 .not_fading
 	pop af
 	ldh [rWBK], a
-	; current pal state
-	ld a, 1
-	ld [wPalStateIndex], a
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
 	call CalculateStates
 ; fallthrough
 CopySpritePal::
@@ -245,8 +251,8 @@ CopySpritePal::
 	ret
 
 ApplyWeatherPal:
-	ld hl, wOBPals1 palette 6
-	ld de, wOBPals2 palette 6
+	ld hl, wOBPals1 palette PAL_OW_WEATHER
+	ld de, wOBPals2 palette PAL_OW_WEATHER
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
@@ -266,8 +272,9 @@ GetPalState:
 	adc HIGH(wPalStates)
 	sub l
 	ld h, a
-	ld a, [wPalStateIndex]
+	ld a, [wPalState]
 	and a ; prev
+	assert PREV_PALSTATE == 0
 	jr z, .got_state
 	ld de, PALSTATE_SIZE
 	add hl, de
@@ -305,7 +312,9 @@ CalculateStates:
 .got_darkness
 	ld [hli], a
 	push hl
+	push de
 	farcall GetOvercastIndex
+	pop de
 	pop hl
 	ld [hli], a
 	ld a, [wTimeOfDayPal]

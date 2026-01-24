@@ -122,36 +122,10 @@ DoTurn:
 	call UpdateMoveData
 	; fallthrough
 DoMove:
-; Get the user's move effect.
-	; Abilities ignorance doesn't apply for future moves (even active users).
-	call GetFutureSightUser
-	jr nc, .mold_breaker_done
-
-	; Check if Mold Breaker applies.
-	call GetTrueUserIgnorableAbility
-	cp MOLD_BREAKER
-	jr nz, .mold_breaker_done
-
-	ldh a, [hBattleTurn]
-	and a
-	ld a, MOVESTATE_IGNOREABIL
-	jr z, .got_mb_side
-	swap a
-.got_mb_side
-	ld hl, wMoveState
-	or [hl]
-	ld [hl], a
-
-.mold_breaker_done
-	; Increase move usage counter if applicable
-	call IncreaseMetronomeCount
-	call GetMoveScript
-
-	ld a, l
-	ld [wBattleScriptBufferLoc], a
-	ld a, h
-	ld [wBattleScriptBufferLoc + 1], a
-
+	; InitializeMove was split off to handle moves that restart move execution,
+	; such as with items like Power Herb, or moves like Metronome.
+	; Otherwise, they would nest move execution, which caused problems.
+	call InitializeMove
 .ReadMoveEffectCommand:
 	call ReadMoveScriptByte
 
@@ -196,6 +170,38 @@ ReadMoveScriptByte:
 
 	ld a, BANK(MoveEffectsPointers)
 	jmp GetFarByte
+
+InitializeMove:
+; Get the user's move effect.
+	; Abilities ignorance doesn't apply for future moves (even active users).
+	call GetFutureSightUser
+	jr nc, .mold_breaker_done
+
+	; Check if Mold Breaker applies.
+	call GetTrueUserIgnorableAbility
+	cp MOLD_BREAKER
+	jr nz, .mold_breaker_done
+
+	ldh a, [hBattleTurn]
+	and a
+	ld a, MOVESTATE_IGNOREABIL
+	jr z, .got_mb_side
+	swap a
+.got_mb_side
+	ld hl, wMoveState
+	or [hl]
+	ld [hl], a
+
+.mold_breaker_done
+	; Increase move usage counter if applicable
+	call IncreaseMetronomeCount
+	call GetMoveScript
+
+	ld a, l
+	ld [wBattleScriptBufferLoc], a
+	ld a, h
+	ld [wBattleScriptBufferLoc + 1], a
+	ret
 
 CheckTurn:
 BattleCommand_checkturn:
@@ -604,8 +610,12 @@ CheckPowerHerb:
 .chargeup
 	call CheckUserIsCharging
 	ld a, 2
-	jr z, _ResetTurn
-	; fallthrough
+	jr z, .got_charging
+	dec a
+.got_charging
+	call _ResetTurn
+	jmp DoMove
+
 ResetTurn:
 	ld a, 1
 _ResetTurn:
@@ -621,7 +631,7 @@ _ResetTurn:
 	ld [hl], a
 	xor a
 	ld [wAlreadyDisobeyed], a
-	jmp DoMove
+	jmp InitializeMove
 
 MoveDisabled:
 	; Make sure any charged moves fail
@@ -1280,10 +1290,10 @@ BattleCommand_critical:
 .guranteed_crit
 	; fallthrough
 SetCrit:
-	ld a, 1 << MOVEHIT_CRITICAL
+	ld a, MOVEHIT_CRITICAL
 	jr SetMoveHitState
 SetSubHit:
-	ld a, 1 << MOVEHIT_SUBSTITUTE
+	ld a, MOVEHIT_SUBSTITUTE
 SetMoveHitState:
 	push hl
 	ld hl, wMoveHitState
@@ -1293,10 +1303,10 @@ SetMoveHitState:
 	ret
 
 ResetCrit:
-	ld a, 1 << MOVEHIT_CRITICAL
+	ld a, MOVEHIT_CRITICAL
 	jr ResetMoveHitState
 ResetSubHit:
-	ld a, 1 << MOVEHIT_SUBSTITUTE
+	ld a, MOVEHIT_SUBSTITUTE
 ResetMoveHitState:
 	push hl
 	ld hl, wMoveHitState
@@ -1307,10 +1317,10 @@ ResetMoveHitState:
 	ret
 
 CheckCrit:
-	ld a, 1 << MOVEHIT_CRITICAL
+	ld a, MOVEHIT_CRITICAL
 	jr CheckMoveHitState
 CheckSubHit:
-	ld a, 1 << MOVEHIT_SUBSTITUTE
+	ld a, MOVEHIT_SUBSTITUTE
 CheckMoveHitState:
 	push hl
 	ld hl, wMoveHitState
@@ -1900,12 +1910,7 @@ INCLUDE "data/moves/powder_moves.asm"
 
 BattleCommand_damagevariation:
 ; Modify the damage spread between 85% and 100%.
-
-; Because of the method of division the probability distribution
-; is not consistent. This makes the highest damage multipliers
-; rarer than normal.
-
-; No point in reducing 1 or 0 damage.
+	; No point in reducing 1 or 0 damage.
 	ld hl, wCurDamage
 	ld a, [hli]
 	and a
@@ -4322,6 +4327,13 @@ BattleCommand_damagecalc:
 .check_burn
 	bit BRN, a
 	jr z, .burn_done
+
+	; Burn should not halve physical attack if using Facade, or with Guts.
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp FACADE
+	jr z, .burn_done
+
 	call GetTrueUserIgnorableAbility
 	cp GUTS
 	ln a, 1, 2 ; 1/2 = 50%

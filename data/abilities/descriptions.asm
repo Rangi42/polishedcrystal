@@ -143,6 +143,7 @@ AbilityDescriptions:
 	dw SlushRushDescription
 	dw GalvanizeDescription
 	dw CorrosionDescription
+	dw FluffyDescription
 	dw TanglingHairDescription
 	dw ScreenCleanerDescription
 	dw SteelySpiritDescription
@@ -859,6 +860,11 @@ GalvanizeDescription:
 CorrosionDescription:
 	text "Foes of any type"
 	next "can be poisoned."
+	done
+
+FluffyDescription:
+	text "Resists contact,"
+	next "but weak to Fire."
 	done
 
 TanglingHairDescription:

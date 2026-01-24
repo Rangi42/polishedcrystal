@@ -143,6 +143,7 @@ AbilityNames:
 	dw SlushRush
 	dw Galvanize
 	dw Corrosion
+	dw Fluffy
 	dw TanglingHair
 	dw ScreenCleaner
 	dw SteelySpirit
@@ -300,6 +301,7 @@ Berserk:         rawchar "Berserk@"
 SlushRush:       rawchar "Slush Rush@"
 Galvanize:       rawchar "Galvanize@"
 Corrosion:       rawchar "Corrosion@"
+Fluffy:          rawchar "Fluffy@"
 TanglingHair:    rawchar "Tangling Hair@"
 ScreenCleaner:   rawchar "Screen Cleaner@"
 SteelySpirit:    rawchar "Steely Spirit@"

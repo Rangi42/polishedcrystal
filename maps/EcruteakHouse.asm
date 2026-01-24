@@ -57,6 +57,7 @@ EcruteakHouse_XYTrigger1:
 	moveobject ECRUTEAKHOUSE_SAGE1, 4, 6
 	appear ECRUTEAKHOUSE_SAGE1
 	pause 5
+	callasm UpdateSprites
 	disappear ECRUTEAKHOUSE_SAGE2
 	end
 
@@ -67,6 +68,7 @@ EcruteakHouse_XYTrigger2:
 	moveobject ECRUTEAKHOUSE_SAGE2, 5, 6
 	appear ECRUTEAKHOUSE_SAGE2
 	pause 5
+	callasm UpdateSprites
 	disappear ECRUTEAKHOUSE_SAGE1
 	end
 

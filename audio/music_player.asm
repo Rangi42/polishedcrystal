@@ -1031,7 +1031,7 @@ CheckChannelOn:
 	ld a, [wTmpCh]
 	ld hl, wChannel1NoteFlags
 	rst AddNTimes
-	bit SOUND_REST, [hl]
+	bit NOTE_REST, [hl]
 	jr nz, _NoteEnded
 
 ; Do an IO check too if the note's envelope is 0

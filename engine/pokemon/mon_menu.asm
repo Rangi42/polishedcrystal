@@ -1485,6 +1485,7 @@ SetUpMoveScreenBG:
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	call LoadFontsBattleExtra
+	farcall LoadBoldPDoubled
 	call ClearSpriteAnims2
 	ld a, [wTempMonSpecies]
 	ld [wTempIconSpecies], a

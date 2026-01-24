@@ -6,17 +6,16 @@ HiddenTreeGrotto_MapScriptHeader:
 	callback MAPCALLBACK_TILES, HiddenTreeGrottoTileCallback
 
 	def_warp_events
-	warp_event  4, 15, HIDDEN_TREE_GROTTO, -1
-	warp_event  5, 15, HIDDEN_TREE_GROTTO, -1
+	warp_event  3,  9, HIDDEN_TREE_GROTTO, -1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  4, BGEVENT_GROTTOITEM, HiddenGrottoHiddenItemScript
+	bg_event  3,  3, BGEVENT_GROTTOITEM, HiddenGrottoHiddenItemScript
 
 	def_object_events
-	object_event  4,  4, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  4,  4, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  3,  3, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  3,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	object_const_def
 	const HIDDENTREEGROTTO_POKEMON
@@ -47,7 +46,7 @@ HiddenGrottoCallback:
 HiddenTreeGrottoTileCallback:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	iftruefwd .end
-	changeblock 4, 4, $a6
+	changeblock 2, 2, $24
 .end
 	endcallback
 

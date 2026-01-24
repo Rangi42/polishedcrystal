@@ -340,6 +340,7 @@ INCLUDE "gfx/pokemon/unown_exclamation/front.dimensions"
 INCLUDE "gfx/pokemon/unown_question/front.dimensions"
 
 INCLUDE "gfx/pokemon/arbok_kanto/front.dimensions"
+INCLUDE "gfx/pokemon/arbok_orange/front.dimensions"
 INCLUDE "gfx/pokemon/arbok_koga/front.dimensions"
 INCLUDE "gfx/pokemon/arbok_agatha/front.dimensions"
 INCLUDE "gfx/pokemon/arbok_ariana/front.dimensions"

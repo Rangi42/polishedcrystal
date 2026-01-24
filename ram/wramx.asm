@@ -140,6 +140,7 @@ wPrevPartyLevel::
 wUnownPuzzleCornerTile::
 wKeepSevenBiasChance::
 wTempDayOfWeek::
+wSuicuneFrame::
 	db
 
 	ds 59
@@ -508,7 +509,11 @@ wDexCacheOwn:: dw
 wDexPrevCursorPos:: db
 wDexPrevOffset:: db
 
-	ds 32 ; unused
+wOptionsMenuValueCoord:: dw
+wOptionsMenuCursor:: db
+wOptionsMenuScrollPosition:: db
+
+	ds 28 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -1192,7 +1197,15 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 64 ; unused
+wOvercastRandomDay:: db
+wOvercastCurIntensity:: db
+wOvercastRandomMaps::
+	overcast_random_map Johto1
+	overcast_random_map Johto2
+	overcast_random_map Kanto1
+	overcast_random_map Kanto2
+
+	ds 50 ; unused
 
 wCandyAmounts::
 wExpCandyXSAmount:: db
@@ -1616,7 +1629,7 @@ wDexAreaLastMode:: db
 
 	; Used to align wDexAreaMons. Feel free to add more data here, just don't
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
-	ds 4
+	ds 3
 
 ALIGN 8
 wDexAreaMons::

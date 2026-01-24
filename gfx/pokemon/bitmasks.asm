@@ -283,6 +283,7 @@ PikachuSparkBitmasks:  INCLUDE "gfx/pokemon/pikachu_spark/bitmask.asm"
 
 ArbokJohtoBitmasks:  INCLUDE "gfx/pokemon/arbok_johto/bitmask.asm"
 ArbokKantoBitmasks:  INCLUDE "gfx/pokemon/arbok_kanto/bitmask.asm"
+ArbokOrangeBitmasks: INCLUDE "gfx/pokemon/arbok_orange/bitmask.asm"
 ArbokKogaBitmasks:   INCLUDE "gfx/pokemon/arbok_koga/bitmask.asm"
 ArbokAgathaBitmasks: INCLUDE "gfx/pokemon/arbok_agatha/bitmask.asm"
 ArbokArianaBitmasks: INCLUDE "gfx/pokemon/arbok_ariana/bitmask.asm"

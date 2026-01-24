@@ -1,7 +1,6 @@
 DEF POPUP_MAP_NAME_START  EQU $e0
 DEF POPUP_MAP_NAME_SIZE   EQU 18
 DEF POPUP_MAP_FRAME_START EQU $f3
-DEF POPUP_MAP_FRAME_SIZE  EQU 8
 DEF POPUP_MAP_FRAME_SPACE EQU $fb
 
 ; wLandmarkSignTimer
@@ -214,15 +213,19 @@ LoadMapNameSignGFX:
 	ld hl, vTiles0 tile POPUP_MAP_FRAME_SPACE
 	call GetOpaque1bppSpaceTile
 	; load sign frame
-	ld hl, Signs
-	ld bc, POPUP_MAP_FRAME_SIZE tiles
 	ld a, [wSign]
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	ld hl, vTiles0 tile POPUP_MAP_FRAME_START
-	lb bc, BANK(Signs), POPUP_MAP_FRAME_SIZE
-	call Get2bpp
+	add a
+	add LOW(Signs)
+	ld l, a
+	adc HIGH(Signs)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, vTiles0 tile POPUP_MAP_FRAME_START
+	lb bc, BANK("Map Name Sign Graphics"), 8
+	call DecompressRequest2bpp
 	; clear landmark name area
 	ld hl, vTiles0 tile POPUP_MAP_NAME_START
 	ld e, POPUP_MAP_NAME_SIZE
@@ -334,10 +337,7 @@ LoadMapNameSignGFX:
 	pop hl
 	jr .loop
 
-SignPals:
-	table_width 1 palettes
-INCLUDE "gfx/signs/signs.pal"
-	assert_table_length NUM_SIGNS
+INCLUDE "data/maps/map_name_signs.asm"
 
 InitMapNameFrame:
 ; InitMapSignAttrMap

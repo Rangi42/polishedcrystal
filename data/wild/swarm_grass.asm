@@ -2,7 +2,7 @@
 
 ; Dunsparce swarm
 	def_grass_wildmons DARK_CAVE_VIOLET_ENTRANCE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 4 percent ; encounter rate
 	; morn
 	wildmon 3, GEODUDE
 	wildmon 3, DUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM
@@ -31,7 +31,7 @@
 
 ; Yanma swarm
 	def_grass_wildmons ROUTE_35
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 10 percent ; encounter rate
 	; morn
 	wildmon 12, NIDORAN_M
 	wildmon 12, NIDORAN_F

@@ -5537,9 +5537,18 @@ MoveInfoBox:
 	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
 	ld hl, TypeIconGFX
 	ld bc, 4 * TILE_1BPP_SIZE
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
 	ld e, l
@@ -8918,8 +8927,14 @@ AutomaticBattleWeather:
 	ld hl, SandstormBrewedText
 	jr z, .got_weather
 .not_rugged_road_or_snowtop_mountain
-	; Automatic rain on overcast maps
+	; Automatic rain when raining
+	; first check if its overcast conditions
 	farcall GetOvercastIndex
+	and a
+	ret z
+	; don't rain if we aren't actually raining
+	ld a, [wOvercastCurIntensity]
+	assert OVERCAST_INTENSITY_OVERCAST == 0
 	and a
 	ret z
 	lb de, WEATHER_RAIN, RAIN_DANCE

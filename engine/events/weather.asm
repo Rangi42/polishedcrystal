@@ -1,13 +1,17 @@
 SetCurrentWeather::
 	farcall GetOvercastIndex
 	and a
-	jr z, .not_overcast
-	call Random
-	cp 25 percent
-	; a = carry ? OW_WEATHER_THUNDERSTORM : OW_WEATHER_RAIN
-	sbc a
-	and OW_WEATHER_THUNDERSTORM - OW_WEATHER_RAIN
-	add OW_WEATHER_RAIN
+	jr z, .not_raining
+	ld a, [wOvercastCurIntensity]
+	assert OVERCAST_INTENSITY_OVERCAST == 0
+	and a
+	jr z, .not_raining
+	ld b, a
+	ld a, OW_WEATHER_RAIN
+	assert OVERCAST_INTENSITY_RAIN == 1
+	dec b
+	jr z, .set_weather
+	ld a, OW_WEATHER_THUNDERSTORM
 .set_weather
 	ld b, a
 	ld a, [wWeatherFlags]
@@ -53,7 +57,7 @@ SetCurrentWeather::
 	ld [wOverworldWeatherCooldown], a
 	ret
 
-.not_overcast
+.not_raining
 	ld a, [wMapGroup]
 	cp GROUP_SNOWTOP_MOUNTAIN_OUTSIDE
 	jr nz, .not_snowing
@@ -69,16 +73,45 @@ SetCurrentWeather::
 .not_snowing
 	ld a, [wMapGroup]
 	cp GROUP_RUGGED_ROAD_NORTH
-	jr nz, .no_weather
+	jr nz, .no_sandstorm
 	ld a, [wMapNumber]
 	cp MAP_RUGGED_ROAD_NORTH
 	jr z, .sandstorm
 	cp MAP_RUGGED_ROAD_SOUTH
-	jr nz, .no_weather
+	jr nz, .no_sandstorm
 .sandstorm
 	ld a, OW_WEATHER_SANDSTORM
 	jr .set_weather
 
+.no_sandstorm
+	ld a, [wMapGroup]
+	cp GROUP_CHERRYGROVE_CITY
+	jr nz, .no_weather
+	ld a, [wMapNumber]
+	cp MAP_CHERRYGROVE_CITY
+	jr z, .cherrygrove_city
+	cp MAP_CHERRYGROVE_BAY
+	jr z, .cherrygrove_bay
+	jr .no_weather
+
+.cherrygrove_city
+	; Guaranteed in Cherrygrove City until the Mystery Egg has been delivered to Elm.
+	eventflagcheck EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	jr nz, .cherrygrove_random
+	ld a, OW_WEATHER_CHERRY_BLOSSOMS
+	jmp .set_weather
+
+.cherrygrove_bay
+	; After the initial arrival, cherry blossoms are only a 10% chance,
+	; and only when no other map weather is active (handled by control flow).
+.cherrygrove_random
+	call Random
+	cp 10 percent
+	jr nc, .no_weather
+	ld a, OW_WEATHER_CHERRY_BLOSSOMS
+	jmp .set_weather
+; fallthrough
 .no_weather
-	ld a, OW_WEATHER_NONE
-	jr .set_weather
+	assert OW_WEATHER_NONE == 0
+	xor a
+	jmp .set_weather
