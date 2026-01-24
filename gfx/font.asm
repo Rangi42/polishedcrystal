@@ -47,17 +47,6 @@ INCBIN "gfx/frames/19.1bpp"
 INCBIN "gfx/frames/20.1bpp"
 	assert_table_length NUM_FRAMES
 
-Signs:
-	table_width 8 tiles
-INCBIN "gfx/signs/wood.2bpp"
-INCBIN "gfx/signs/city.2bpp"
-INCBIN "gfx/signs/forest.2bpp"
-INCBIN "gfx/signs/cave.2bpp"
-INCBIN "gfx/signs/route.2bpp"
-INCBIN "gfx/signs/water.2bpp"
-INCBIN "gfx/signs/building.2bpp"
-	assert_table_length NUM_SIGNS
-
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp.lz"
 
