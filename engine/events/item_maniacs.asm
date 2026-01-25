@@ -159,7 +159,7 @@ TakeItemFromMemWithQuantity:
 	ld a, [wItemQuantityChangeBuffer]
 	ld [wItemQuantityBuffer], a
 	ld hl, wNumItems
-	jp TossItem
+	jmp TossItem
 
 MultiplyMoneyByQuantity:
 ; Multiply hMoneyTemp by wItemQuantityChangeBuffer

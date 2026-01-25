@@ -66,10 +66,10 @@ GetWildLocations:
 	jr .got_vars
 
 .grass_vars
-	ld a, 6 - (NUM_GRASSMON * 3) ; 6 = first morning species (5=level)
+	ld a, 4 - NUM_GRASSMON * 3 ; 4 = first morning species (3=level)
 	inc e
 .loop
-	add (NUM_GRASSMON * 3)
+	add NUM_GRASSMON * 3
 	dec e
 	jr nz, .loop
 	ld e, a
@@ -261,17 +261,15 @@ _ChooseWildEncounter:
 	xor a ; BATTLETYPE_NORMAL
 	ld [wBattleType], a
 
-	inc hl
-	inc hl
-	inc hl
+	inc hl ; skip map group
+	inc hl ; skip map number
+	inc hl ; skip encounter chance
 	push bc
 	call CheckOnWater
 	pop bc
 	ld de, WaterMonProbTable
 	ld b, NUM_WATERMON
 	jr z, .got_table
-	inc hl
-	inc hl
 	call GetTimeOfDayNotEve
 	push bc
 	ld bc, NUM_GRASSMON * 3
@@ -943,7 +941,7 @@ RandomPhoneRareWildMon:
 
 .GetGrassmon:
 	push hl
-	ld bc, 5 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
+	ld bc, 2 + 1 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
 	add hl, bc
 	call GetTimeOfDayNotEve
 	ld bc, NUM_GRASSMON * 3
@@ -963,7 +961,7 @@ RandomPhoneRareWildMon:
 	ld b, a
 	ld [wCurForm], a
 	pop hl
-	ld de, 5 + 0 * 3
+	ld de, 2 + 1 + 0 * 3
 	add hl, de
 	inc hl ; Species index of the most common Pokemon on that route
 	ld d, 4
@@ -1023,7 +1021,7 @@ RandomPhoneWildMon:
 	call LookUpWildmonsForMapDE
 
 .ok
-	ld bc, 5 + 0 * 3
+	ld bc, 2 + 1 + 0 * 3
 	add hl, bc
 	call GetTimeOfDayNotEve
 	ld bc, NUM_GRASSMON * 3

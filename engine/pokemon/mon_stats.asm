@@ -946,8 +946,6 @@ GetStatusConditionIndex:
 	ret
 
 .tox
-	inc a ; 7
-.fnt
 	inc a ; 6
 .frz
 	inc a ; 5

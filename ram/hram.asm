@@ -174,8 +174,7 @@ hDelayFrameLY:: db
 
 hClockResetTrigger:: db
 
-hMPState::  db
-	ds 1
+	ds 2
 
 hRequested2bpp::        db
 hRequested1bpp::        db
@@ -184,13 +183,19 @@ hRequestedVTileSource:: dw
 hRequestOpaque1bpp::    db
 
 UNION
+; PrintMagikarpLength
 hTmpd:: db
 hTmpe:: db
 	ds 1
 NEXTU
+; Judge Machine
 hDX::  db
 hDY::  db
 hErr:: db
+NEXTU
+; Music Player
+hMPState::  db
+hNextMPState:: db
 ENDU
 
 hCrashCode:: db

@@ -292,8 +292,9 @@ INCLUDE "engine/pokemon/types.asm"
 INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
-INCLUDE "engine/gfx/load_pics.asm"
 INCLUDE "engine/pokemon/natures.asm"
+INCLUDE "engine/gfx/load_pics.asm"
+INCLUDE "engine/gfx/load_font.asm"
 
 
 SECTION "Base Data", ROMX
@@ -527,11 +528,6 @@ SECTION "bank39", ROMX
 INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/splash.asm"
 INCLUDE "engine/movie/intro.asm"
-
-
-SECTION "Typefaces", ROMX
-
-INCLUDE "engine/gfx/load_font.asm"
 
 
 SECTION "bank3E", ROMX
