@@ -154,6 +154,40 @@ TilesetQuietCaveAnim::
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
+TilesetPeaksAnim::
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  StandingTileFrame8
+	dw vTiles2 tile $25, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $25, ReadTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $26, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $26, ReadTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoneTileAnimation
+
 TilesetParkAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  DoNothing
