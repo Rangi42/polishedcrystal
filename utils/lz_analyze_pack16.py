@@ -30,14 +30,14 @@ from typing import Iterable, Iterator
 LZ_END = 0xFF
 
 # Base commands (ids 0..7; 7 is the long prefix)
-LZ_DATA = 0
-LZ_REPEAT = 1
-LZ_ALTERNATE = 2
-LZ_ZERO = 3
-LZ_COPY_NORMAL = 4
-LZ_COPY_FLIPPED = 5
+LZ_DATA          = 0
+LZ_REPEAT        = 1
+LZ_ALTERNATE     = 2
+LZ_ZERO          = 3
+LZ_COPY_NORMAL   = 4
+LZ_COPY_FLIPPED  = 5
 LZ_COPY_REVERSED = 6
-LZ_LONG = 7
+LZ_LONG          = 7
 
 # Extended opcode bytes ($fc-$fe)
 LZ_EXT_MASK = 0b11111100
