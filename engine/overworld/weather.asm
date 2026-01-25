@@ -1357,6 +1357,8 @@ LoadWeatherGraphics:
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
+	cp NUM_OW_WEATHER_GFX
+	ret nc
 	ld hl, WeatherGraphics - 3
 	ld d, 0
 	ld e, a
