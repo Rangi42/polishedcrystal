@@ -22,11 +22,10 @@ Default root is the repo root.
 from __future__ import annotations
 
 import argparse
-import os
-from collections import Counter, defaultdict
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Iterator, Tuple
+from typing import Iterable, Iterator
 
 LZ_END = 0xFF
 
@@ -41,37 +40,24 @@ LZ_COPY_REVERSED = 6
 LZ_LONG = 7
 
 # Extended opcode bytes ($fc-$fe)
-LZ_EXT_MASK = 0xFC
+LZ_EXT_MASK = 0b11111100
 LZ_EXT_BASE = 0xFC
-LZ_EXT_PACKHI0 = 0xFC
-LZ_EXT_PACK16_SHORT = 0xFD
-LZ_EXT_PACKLO0 = 0xFE
+LZ_EXT_PACKHI0 = LZ_EXT_BASE + 0  # 0xFC
+LZ_EXT_PACK16_SHORT = LZ_EXT_BASE + 1  # 0xFD
+LZ_EXT_PACKLO0 = LZ_EXT_BASE + 2  # 0xFE
 
 PACK16_TABLE = bytes(
     [
-        0x00,
-        0xFF,
-        0x01,
-        0x02,
-        0x03,
-        0xFE,
-        0x80,
-        0x07,
-        0xC0,
-        0x7F,
-        0x04,
-        0x0F,
-        0x1F,
-        0x3F,
-        0x08,
-        0xFC,
+        0x00, 0xFF, 0x01, 0x02, 0x03, 0xFE, 0x80, 0x07,
+        0xC0, 0x7F, 0x04, 0x0F, 0x1F, 0x3F, 0x08, 0xFC,
     ]
 )
+
+PACK16_SET = set(PACK16_TABLE)
 
 
 def _payload_len_packed(out_len: int) -> int:
     return (out_len + 1) // 2
-PACK16_SET = set(PACK16_TABLE)
 
 
 def min_count(cmd: int) -> int:
@@ -80,9 +66,6 @@ def min_count(cmd: int) -> int:
         return 3
     if cmd == LZ_REPEAT:
         return 2
-    if cmd == 7:
-        # internal pseudo-command in tools; never appears on disk as a base cmd
-        return 1
     return 1
 
 
@@ -146,18 +129,18 @@ def parse_stream(buf: bytes) -> Iterator[ParsedCommand]:
         cmd = (b0 >> 5) & 0x7
 
         if cmd == LZ_LONG:
-            # 111CCCLL LLLLLLLL
+            # Long header: 111CCCL0 LLLLLLLL (9-bit length; bit 1 is always 0)
             if i >= n:
                 return
             b1 = buf[i]
             i += 1
-            real_cmd = (b0 & 0x1C) >> 2
-            enc_len = ((b0 & 0x03) << 8) | b1
+            real_cmd = (b0 >> 2) & 0x7
+            enc_len = ((b0 & 0x1) << 8) | b1
             out_len = enc_len + min_count(real_cmd)
             cmd = real_cmd
             header_len = 2
         else:
-            enc_len = b0 & 0x1F
+            enc_len = b0 & 0b11111
             out_len = enc_len + min_count(cmd)
             header_len = 1
 

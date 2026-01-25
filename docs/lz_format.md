@@ -29,13 +29,15 @@ LLLLL: length field (0..31)
 ### Long header (2 bytes)
 
 ```
-111CCCLL LLLLLLLL
+111CCCL0 LLLLLLLL
 
 CCC: command id (0..6)
-LL LLLLLLLL: 10-bit length field
+L LLLLLLLL: 9-bit length field
 ```
 
 In other words, the first byte is in the range `0xe0..0xff`.
+
+Note: unlike the LC_LZ3 reference (10-bit long lengths), Polished Crystal’s long header stores only **one** high length bit (bit 0). Bit 1 is always `0`. This is an older optimization that trades a slightly smaller length range for faster decompression.
 
 ### Output length computation (important customization)
 
@@ -219,6 +221,7 @@ The output bytes are reconstructed as:
 The LC_LZ3 document is a useful mental model for the *base* command set, but Polished Crystal differs in important ways:
 
 - Per-command minimum lengths: output length is **not always** `(L + 1)`.
+- Long header length is **9-bit**, not 10-bit (`111CCCL0 LLLLLLLL`).
 - New extended opcode bytes: `0xfc..0xfe` add `lzpackhi0`, `lzpack16`, and `lzpacklo0`.
 - Practical maximum length: the current compressor/tooling bounds **base** command output lengths to 512 bytes (the extended pack opcodes are `1..256`).
 
