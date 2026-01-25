@@ -58,7 +58,10 @@ So, for example:
 - A 2-byte `LZ_REPEAT` is encoded with `encoded_length = 0`.
 - A 1-byte `LZ_DATA` is encoded with `encoded_length = 0`.
 
-The current toolchain constrains command output lengths to at most 512 bytes.
+The current toolchain constrains **base** command output lengths to at most 512 bytes.
+
+The extended pack opcodes (`0xfc..0xfe`) store an 8-bit `len-1` length code, so they are
+currently limited to output lengths in `1..256`.
 
 ## Base commands (0..6)
 
@@ -185,7 +188,7 @@ The 16-entry dictionary is:
 
 ```
 index:  0    1    2    3    4    5    6    7    8    9    A    B    C    D    E    F
-value: 00   ff   01   02   03   05   80   07   c0   7f   04   0f   1f   3f   08   fc
+value: 00   ff   01   02   03   fe   80   07   c0   7f   04   0f   1f   3f   08   fc
 ```
 
 This choice is intentionally biased toward very common bytes in graphics/tile data.
@@ -217,7 +220,7 @@ The LC_LZ3 document is a useful mental model for the *base* command set, but Pol
 
 - Per-command minimum lengths: output length is **not always** `(L + 1)`.
 - New extended opcode bytes: `0xfc..0xfe` add `lzpackhi0`, `lzpack16`, and `lzpacklo0`.
-- Practical maximum length: the current compressor/tooling bounds command output lengths to 512 bytes.
+- Practical maximum length: the current compressor/tooling bounds **base** command output lengths to 512 bytes (the extended pack opcodes are `1..256`).
 
 ## Tooling notes
 

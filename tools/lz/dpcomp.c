@@ -97,48 +97,48 @@ void process_input(void) {
 
         // lzpackhi0: packed literals where every byte has low nibble 0.
         // Consider runs ending at (plen - 1) where (byte & 0x0f) == 0.
+        // This is beneficial vs LZ_DATA for lengths >= 4.
         unsigned packhi0 = 0;
         while (packhi0 < MAX_COMMAND_COUNT && packhi0 < plen && (data[plen - (packhi0 + 1)] & 0x0f) == 0) packhi0++;
-        if (packhi0 >= 6) {
+        if (packhi0 >= 4) {
             unsigned start = plen - packhi0;
-            // Only consider lengths >= 6; step by 2 to reduce candidate count.
-            for (unsigned prev = start; prev + 6 <= plen; prev += 2) {
+            // Consider all lengths >= 4. We do two parity passes so we still step by 2.
+            for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
                     .command = 7,
                     .count = plen - prev,
                     .value = -(int)prev - 1,
                 });
             }
-            // If the maximum run length is odd, also consider the full odd length.
-            if ((packhi0 & 1) && packhi0 >= 7) {
+            for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
                     .command = 7,
-                    .count = packhi0,
-                    .value = -(int)(plen - packhi0) - 1,
+                    .count = plen - prev,
+                    .value = -(int)prev - 1,
                 });
             }
         }
 
         // lzpacklo0: packed literals where every byte has high nibble 0.
         // Consider runs ending at (plen - 1) where (byte & 0xf0) == 0.
+        // This is beneficial vs LZ_DATA for lengths >= 4.
         unsigned packlo0 = 0;
         while (packlo0 < MAX_COMMAND_COUNT && packlo0 < plen && (data[plen - (packlo0 + 1)] & 0xf0) == 0) packlo0++;
-        if (packlo0 >= 6) {
+        if (packlo0 >= 4) {
             unsigned start = plen - packlo0;
-            // Only consider lengths >= 6; step by 2 to reduce candidate count.
-            for (unsigned prev = start; prev + 6 <= plen; prev += 2) {
+            // Consider all lengths >= 4. We do two parity passes so we still step by 2.
+            for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
                     .command = 7,
                     .count = plen - prev,
                     .value = -(int)prev - 1 - MAX_FILE_SIZE,
                 });
             }
-            // If the maximum run length is odd, also consider the full odd length.
-            if ((packlo0 & 1) && packlo0 >= 7) {
+            for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
                     .command = 7,
-                    .count = packlo0,
-                    .value = -(int)(plen - packlo0) - 1 - MAX_FILE_SIZE,
+                    .count = plen - prev,
+                    .value = -(int)prev - 1 - MAX_FILE_SIZE,
                 });
             }
         }
@@ -149,7 +149,7 @@ void process_input(void) {
         while (pack < MAX_COMMAND_COUNT && pack < plen && pack_index[data[plen - (pack + 1)]] >= 0) pack++;
         if (pack >= 4) {
             unsigned start = plen - pack;
-            // Only consider lengths >= 4; step by 2 to reduce candidate count.
+            // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
                     .command = 7,
@@ -157,12 +157,11 @@ void process_input(void) {
                     .value = prev,
                 });
             }
-            // If the maximum run length is odd, also consider the full odd length.
-            if ((pack & 1) && pack >= 5) {
+            for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
                     .command = 7,
-                    .count = pack,
-                    .value = plen - pack,
+                    .count = plen - prev,
+                    .value = prev,
                 });
             }
         }

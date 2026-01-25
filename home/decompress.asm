@@ -438,7 +438,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	ret
 
 .pack16_table
-	db $00, $ff, $01, $02, $03, $05, $80, $07
+	db $00, $ff, $01, $02, $03, $fe, $80, $07
 	db $c0, $7f, $04, $0f, $1f, $3f, $08, $fc
 
 .long_normal

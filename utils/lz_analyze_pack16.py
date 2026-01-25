@@ -54,7 +54,7 @@ PACK16_TABLE = bytes(
         0x01,
         0x02,
         0x03,
-        0x05,
+        0xFE,
         0x80,
         0x07,
         0xC0,
