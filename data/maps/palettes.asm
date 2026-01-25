@@ -32,6 +32,7 @@ ENDM
 	special_bg_pal map,      BLACKTHORN_GYM_1F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      BLACKTHORN_GYM_2F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      CINNABAR_LAB,                PAL_SINGLE,    CinnabarLabPalette
+	special_bg_pal map,      PEWTER_GYM,                  PAL_SINGLE,    PewterGymPalette
 	special_bg_pal map,      CERULEAN_GYM,                PAL_SINGLE,    CeruleanGymPalette
 	special_bg_pal overcast, VIOLET_CITY,                 PAL_TIMEOFDAY, VioletEcruteakPalette_Overcast
 	special_bg_pal map,      VIOLET_CITY,                 PAL_TIMEOFDAY, VioletEcruteakPalette
@@ -590,6 +591,19 @@ endc
 LancesRoomPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/LancesRoom.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+PewterGymPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/PewterGym.pal"
 else
 rept 7
 	MONOCHROME_RGB_FOUR
