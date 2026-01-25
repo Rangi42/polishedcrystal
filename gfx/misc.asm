@@ -7,6 +7,17 @@ OlivineRoofGFX::   INCBIN "gfx/tilesets/roofs/olivine.2bpp.lz"
 StatueRoofGFX::    INCBIN "gfx/tilesets/roofs/statue.2bpp.lz"
 
 
+SECTION "Map Name Sign Graphics", ROMX
+
+WoodSignGFX::     INCBIN "gfx/signs/wood.2bpp.lz"
+CitySignGFX::     INCBIN "gfx/signs/city.2bpp.lz"
+ForestSignGFX::   INCBIN "gfx/signs/forest.2bpp.lz"
+CaveSignGFX::     INCBIN "gfx/signs/cave.2bpp.lz"
+RouteSignGFX::    INCBIN "gfx/signs/route.2bpp.lz"
+WaterSignGFX::    INCBIN "gfx/signs/water.2bpp.lz"
+BuildingSignGFX:: INCBIN "gfx/signs/building.2bpp.lz"
+
+
 SECTION "Overworld Effect Graphics", ROMX
 
 OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"

@@ -83,7 +83,7 @@ MusicPlayer::
 
 	ld hl, MusicPlayerPals
 	ld de, wOBPals2
-	ld bc, 4 palettes
+	ld bc, 7 palettes
 	rst CopyBytes
 
 	pop af
@@ -120,7 +120,7 @@ MusicPlayer::
 
 	ld hl, vTiles0
 	ld de, wDecompressScratch tile $47
-	ld c, 1
+	ld c, 5
 	call Request2bppInWRA6
 
 	call DelayFrame
@@ -140,7 +140,7 @@ MusicPlayer::
 ; Clear wMPNotes
 	xor a
 	ld hl, wMPNotes
-	ld bc, 4 * 256
+	ld bc, 3 * 256
 	rst ByteFill
 ; fallthrough
 
@@ -150,13 +150,13 @@ RenderMusicPlayer:
 	decoord 0, PIANO_ROLL_HEIGHT
 	rst CopyBytes
 
-	ld bc, 4 * 3
+	ld bc, 4 * 6
 	ld hl, NoteOAM
 	ld de, wShadowOAM
 	rst CopyBytes
 	call DelayFrame
 	xor a
-	ldh [hOAMUpdate], a ; we will manually do it in LCD interrupt
+	ldh [hOAMUpdate], a
 
 	call RedrawChannelLabels
 	call DelayFrame
@@ -189,7 +189,7 @@ MusicPlayerLoop:
 	jrbutton PAD_A, .a
 	jrbutton PAD_B, .b
 	jrbutton PAD_START, .start
-	jrbutton PAD_SELECT, .select
+	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
 	ld a, 2
@@ -202,7 +202,7 @@ MusicPlayerLoop:
 	dec a
 	jr nz, _RedrawMusicPlayer
 	ld a, NUM_MUSIC_SONGS - 1
-	jr _RedrawMusicPlayer
+	jmp _RedrawMusicPlayer
 
 .right:
 ; next song
@@ -255,6 +255,7 @@ MusicPlayerLoop:
 ; exit music player
 	xor a
 	ldh [hMPState], a
+	ldh [hNextMPState], a
 	ldh [hVBlank], a
 	call ClearSprites
 	ld hl, rLCDC
@@ -272,6 +273,7 @@ MusicPlayerLoop:
 ; open song selector
 	xor a
 	ldh [hMPState], a
+	ldh [hNextMPState], a
 	call SongSelector
 	jmp RenderMusicPlayer
 
@@ -975,7 +977,10 @@ DrawNotes:
 
 	ldh a, [hMPState]
 	inc a
-	ldh [hMPState], a
+	ldh [hNextMPState], a
+	; add PIANO_ROLL_HEIGHT_PX - 2
+	; write one past the current head, leaves a one frame delay
+	; between the key press and the piano roll
 	add PIANO_ROLL_HEIGHT_PX - 1
 	; fallthrough
 
@@ -1026,7 +1031,7 @@ CheckChannelOn:
 	ld a, [wTmpCh]
 	ld hl, wChannel1NoteFlags
 	rst AddNTimes
-	bit SOUND_REST, [hl]
+	bit NOTE_REST, [hl]
 	jr nz, _NoteEnded
 
 ; Do an IO check too if the note's envelope is 0
@@ -1105,10 +1110,15 @@ DrawNewNote:
 	ld a, [hl]
 	add b
 	ld c, a
+	ld hl, .KeySprite
+	add hl, de
+	ld b, [hl]
 	jr WriteNotePitch
 
 .Pitchels:
-	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
+	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25
+.KeySprite:
+	db 1, 4, 2, 4, 3,  1,  4,  2,  4,  2,  4,  3
 
 DrawLongerNote:
 	ld a,[wTmpCh]
@@ -1129,8 +1139,7 @@ DrawLongerNote:
 	; fallthrough
 
 _WriteBlankNote:
-	xor a
-	ld c, a
+	ld c, $f0
 
 WriteNotePitch:
 	ld hl, wPitchesTmp
@@ -1138,8 +1147,15 @@ WriteNotePitch:
 	ld e, a
 	ld d, 0
 	add hl, de
+	ld [hl], c
+	ld hl, wShadowOAMSprite03XCoord
+	add a
+	add a
+	ld e, a
+	add hl, de
 	ld a, c
-	ld [hl], a
+	ld [hli], a
+	ld [hl], b
 	ret
 
 CheckForVolumeBarReset:
@@ -1700,6 +1716,10 @@ NoteOAM:
 	db 0, 0, $00, OAM_PRIO | 3 ; red
 	db 0, 0, $00, OAM_PRIO | 2 ; blue
 	db 0, 0, $00, OAM_PRIO | 1 ; green
+	; keys
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 6 ; red
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 5 ; blue
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 4 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"
