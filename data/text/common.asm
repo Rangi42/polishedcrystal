@@ -3350,12 +3350,6 @@ _SaveFileCorruptedText::
 	line "corrupted!"
 	prompt
 
-SECTION "_WindowPoppingErrorText", ROMX
-_WindowPoppingErrorText::
-	text "No windows avail-"
-	line "able for popping."
-	done
-
 SECTION "_ObjectEventText", ROMX
 _ObjectEventText::
 	text "Object event"

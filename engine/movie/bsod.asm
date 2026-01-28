@@ -125,7 +125,8 @@ BSODErrorStrings:
 	dr .ChecksumMismatch ; ERR_CHECKSUM_MISMATCH
 	dr .OldBox           ; ERR_OLDBOX
 	dr .NewBox           ; ERR_NEWBOX
-	dr .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
+	dr .WindowOverflow   ; ERR_WINDOW_OVERFLOW
+	dr .WindowUnderflow  ; ERR_WINDOW_UNDERFLOW
 	dr .SRAMMismatch     ; ERR_SRAM_MISMATCH
 	dr .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
@@ -140,6 +141,7 @@ BSODErrorStrings:
 .ChecksumMismatch: text "Checksum mismatch@"
 .OldBox:           text "Old PC Box storage@"
 .NewBox:           text "Fatal PC Box error@"
-.WinStackOverflow: text "Win.stack overflow@"
+.WindowOverflow:   text "Window overflow@"
+.WindowUnderflow:  text "Window underflow@"
 .SRAMMismatch:     text "SRAM/WRAM mismatch@"
 .UnknownError:     text "Unknown error@"
