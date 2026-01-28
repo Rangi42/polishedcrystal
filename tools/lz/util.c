@@ -42,10 +42,10 @@ unsigned minimum_count (unsigned command) {
         return 3;
     case LZ_REPEAT:
         return 2;
-    // Command id 7 is used internally by tools as a pseudo-command for
+    // LZ_LONG is used internally by tools as a pseudo-command for
     // extended opcodes ($fc-$fe). It always represents an opcode whose count
     // is explicitly stored, so its minimum is 1.
-    case 7:
+    case LZ_LONG:
         return 1;
     default:
         return 1;
@@ -54,7 +54,7 @@ unsigned minimum_count (unsigned command) {
 
 short command_size (struct command command) {
   short header_size;
-  if (command.command == 7) {
+  if (command.command == LZ_LONG) {
     // Extended commands encoded using $fc-$fe headers.
     // - value in [-MAX_FILE_SIZE..-1]: lzpackhi0 (2-byte header + ceil(count/2) payload)
     // - value < -MAX_FILE_SIZE: lzpacklo0 (2-byte header + ceil(count/2) payload)

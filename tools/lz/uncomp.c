@@ -16,7 +16,7 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
       unsigned char len_lo = *(rp ++);
       unsigned out_count = (unsigned)len_lo + 1;
 
-      current -> command = 7;
+      current -> command = LZ_LONG;
       current -> count = out_count;
 
       unsigned payload = (out_count + 1) / 2;
@@ -108,7 +108,7 @@ unsigned char * get_uncompressed_data (const struct command * commands, const un
         memset(current, 0, commands -> count);
         current += commands -> count;
         break;
-      case 7:
+      case LZ_LONG:
         if (commands -> value < 0) {
           unsigned remaining = commands -> count;
           if (commands -> value < -MAX_FILE_SIZE) {
