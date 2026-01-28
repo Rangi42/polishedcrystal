@@ -105,14 +105,14 @@ void process_input(void) {
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_LONG,
+                    .command = LZ_EXT,
                     .count = plen - prev,
                     .value = -(int)prev - 1,
                 });
             }
             for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_LONG,
+                    .command = LZ_EXT,
                     .count = plen - prev,
                     .value = -(int)prev - 1,
                 });
@@ -129,14 +129,14 @@ void process_input(void) {
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_LONG,
+                    .command = LZ_EXT,
                     .count = plen - prev,
                     .value = -(int)prev - 1 - MAX_FILE_SIZE,
                 });
             }
             for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_LONG,
+                    .command = LZ_EXT,
                     .count = plen - prev,
                     .value = -(int)prev - 1 - MAX_FILE_SIZE,
                 });
@@ -152,14 +152,14 @@ void process_input(void) {
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_LONG,
+                    .command = LZ_EXT,
                     .count = plen - prev,
                     .value = prev,
                 });
             }
             for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_LONG,
+                    .command = LZ_EXT,
                     .count = plen - prev,
                     .value = prev,
                 });

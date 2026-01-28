@@ -65,7 +65,7 @@ void write_command_to_textfile (FILE * fp, struct command command, const unsigne
     case LZ_ZERO:
       rv = fprintf(fp, "\tlzzero %u\n", command.count);
       break;
-    case LZ_LONG:
+    case LZ_EXT:
       if (command.value < -MAX_FILE_SIZE) {
         rv = fprintf(fp, "\tlzpacklo0 %u\n", command.count);
       } else if (command.value < 0) {
@@ -119,7 +119,7 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
   /* Check for over and under sized commands */
   if (command.count > MAX_COMMAND_COUNT - 1) error_exit(2, "invalid command in output stream");
 
-  if (command.command == LZ_LONG) {
+  if (command.command == LZ_EXT) {
     // Extended opcodes encoded with $fc-$fe.
     // After the header, packed-literal opcodes have ceil(count/2) payload bytes.
     unsigned original_count = command.count + minimum_count(command.command);

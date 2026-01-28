@@ -28,7 +28,12 @@
 #define LZ_COPY_NORMAL   4 /* Repeat n bytes from the offset.  */
 #define LZ_COPY_FLIPPED  5 /* Repeat n bitflipped bytes.       */
 #define LZ_COPY_REVERSED 6 /* Repeat n bytes in reverse.       */
-#define LZ_LONG          7 /* Expand n to 9 bits               */
+#define LZ_LONG          7 /* Expand n to 9 bits (wire format) */
+
+// Internal pseudo-command for extended opcodes ($fc-$fe).
+// Uses the same numeric value as LZ_LONG since it falls in that byte range,
+// but represents a distinct concept in the tools' internal representation.
+#define LZ_EXT           7
 
 #if __STDC_VERSION__ >= 201112L
 	// <noreturn.h> forces "noreturn void", which is silly and redundant; this is simpler
@@ -39,7 +44,7 @@
 
 struct command {
   // commands 0-6 are as per the base compression spec.
-  // command 7 is used internally by tools as a pseudo-command for extended opcodes ($fc-$fe).
+  // LZ_EXT (7) is used internally as a pseudo-command for extended opcodes ($fc-$fe).
   unsigned command: 3;
   unsigned count:  12; // always equals the uncompressed data length
   signed value:    17; // offset for commands 0 (into source) and 4-6 (into decompressed output); repeated bytes for commands 1-2
