@@ -11,7 +11,7 @@ BattleCommand_sketch:
 .not_linked
 	; If the opponent has a substitute up, fail.
 	call CheckSubstituteOpp
-	jr nz, .fail
+	jmp nz, .fail
 
 	; If the user is transformed, fail.
 	ld a, BATTLE_VARS_SUBSTATUS2
