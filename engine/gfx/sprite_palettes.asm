@@ -166,7 +166,16 @@ CopySpritePal::
 	ld a, [wNeededPalIndex]
 	sub FIRST_COPY_BG_PAL
 	jr c, .not_copy_bg
+	; For copy-BG palettes: use the matching BG buffer for the current pal state.
+	; PREV_PALSTATE uses wBGPals2 (current display), CURR_PALSTATE uses wBGPals1 (destination).
+	push af
+	ld a, [wPalState]
+	and a ; PREV_PALSTATE == 0
+	ld hl, wBGPals2
+	jr z, .got_copy_bg_source
 	ld hl, wBGPals1
+.got_copy_bg_source
+	pop af
 	ld bc, 1 palettes
 	rst AddNTimes
 	jr .got_pal
@@ -234,7 +243,10 @@ CopySpritePal::
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	pop hl ; pop wOBPals1 palette *
-	call MaybeApplyHarshSunSaturationToPal
+	; Skip harsh sun saturation for copy-BG palettes (already applied to BG)
+	ld a, [wNeededPalIndex]
+	cp FIRST_COPY_BG_PAL
+	call c, MaybeApplyHarshSunSaturationToPal
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
