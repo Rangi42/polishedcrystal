@@ -2196,6 +2196,20 @@ FaintUserPokemon:
 .text
 	call StdBattleTextbox
 	call LoadTileMapToTempTileMap
+	call SuppressUserAbilities
+
+	; We can't use ResetAbilityIgnorance here, because it resets both sides'
+	; flags.
+	ld hl, wMoveState
+	ldh a, [hBattleTurn]
+	and a
+	ld a, ~MOVESTATE_IGNOREABIL
+	jr z, .got_mb_side
+	swap a
+.got_mb_side
+	and [hl]
+	ld [hl], a
+	ret
 
 SuppressUserAbilities:
 	ld a, BATTLE_VARS_ABILITY
