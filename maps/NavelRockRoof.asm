@@ -53,10 +53,10 @@ Leaf:
 	reanchormap
 	checktime 1 << NITE
 	iffalsefwd .Sun
-	changeblock 6, 0, $76
-	changeblock 8, 0, $77
-	changeblock 6, 2, $7a
-	changeblock 8, 2, $7b
+	changeblock 6, 0, $4a
+	changeblock 8, 0, $4b
+	changeblock 6, 2, $4e
+	changeblock 8, 2, $4f
 .Sun
 	readvar VAR_PLAYERGENDER
 	iffalsefwd .MaleEndingSequence

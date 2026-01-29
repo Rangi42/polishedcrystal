@@ -285,15 +285,15 @@ FacingCutTree:
 
 FacingApricorn:
 	db 1 ; #
-	db  0,  4, 0, $09
+	db  0,  4, 0, $05
 
 FacingBerry:
 	db 1 ; #
-	db 10,  3, 0, $08
+	db 10,  3, 0, $04
 
 FacingPickedFruit:
 	db 1 ; #
-	db  0,  0, 0, $0b
+	db  0,  0, 0, $07
 
 FacingBigGyarados1:
 	db 16 ; #

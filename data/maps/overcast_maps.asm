@@ -99,7 +99,6 @@ RandomOvercastMapsKanto:
 	overcast_map LIGHTNING_ISLAND_ROOF
 	overcast_map LUCKY_ISLAND
 	overcast_map MOUNT_MOON_SQUARE
-	overcast_map NAVEL_ROCK_OUTSIDE
 	overcast_map PALLET_TOWN
 	overcast_map PEWTER_CITY
 	overcast_map ROCKY_BEACH

@@ -1333,10 +1333,10 @@ BlueGroup:
 
 	def_trainer_class BLUE
 	def_trainer 1, "Blue"
-	tr_mon 68, EXEGGUTOR @ ROOM_SERVICE, MALE
-		tr_extra HARVEST
-		tr_evs 252 HP, 4 Def, 252 SAt
-		tr_moves PSYCHIC_M, SLUDGE_BOMB, TRICK_ROOM, GIGA_DRAIN
+	tr_mon 67, PIDGEOT @ FOCUS_SASH, MALE
+		tr_extra NO_GUARD, SPE_UP_ATK_DOWN
+		tr_evs 4 HP, 252 SAt, 252 Spe
+		tr_moves HURRICANE, FOCUS_BLAST, U_TURN, ROOST
 	tr_mon 69, UMBREON, MALE
 if DEF(FAITHFUL)
 		tr_extra SYNCHRONIZE
@@ -1345,14 +1345,14 @@ else
 endc
 		tr_evs 252 HP, 4 SDf, 252 Def
 		tr_moves HEALINGLIGHT, TOXIC, FEINT_ATTACK, PROTECT
-	tr_mon 66, MACHAMP @ BLACK_BELT, MALE
-		tr_extra NO_GUARD
-		tr_evs 252 HP, 4 Def, 252 Atk
-		tr_moves DYNAMICPUNCH, EARTHQUAKE, STONE_EDGE, THUNDERPUNCH
-	tr_mon 67, KABUTOPS @ HARD_STONE, MALE
-		tr_extra WEAK_ARMOR
-		tr_evs 252 Atk, 4 SAt, 252 Spe
-		tr_moves STONE_EDGE, SLASH, WATERFALL, GIGA_DRAIN
+	tr_mon 66, EXEGGUTOR @ ROOM_SERVICE, MALE
+		tr_extra HARVEST
+		tr_evs 252 HP, 4 Def, 252 SAt
+		tr_moves PSYCHIC_M, SLUDGE_BOMB, TRICK_ROOM, GIGA_DRAIN
+	tr_mon 68, RHYPERIOR @ ASSAULT_VEST, MALE
+		tr_extra SOLID_ROCK, ATK_UP_SATK_DOWN
+		tr_evs 252 HP, 4 SDf, 252 Atk
+		tr_moves STONE_EDGE, EARTHQUAKE, MEGAHORN, AVALANCHE
 	tr_mon 68, ARCANINE @ CHARCOAL, MALE
 		tr_extra INTIMIDATE
 		tr_evs 252 Atk, 4 SAt, 252 Spe
@@ -1368,6 +1368,10 @@ endc
 	end_trainer
 
 	def_trainer 2, "Blue"
+	tr_mon 73, PIDGEOT @ FOCUS_SASH, MALE
+		tr_extra NO_GUARD, SPE_UP_ATK_DOWN
+		tr_evs 4 HP, 252 SAt, 252 Spe
+		tr_moves HURRICANE, FOCUS_BLAST, U_TURN, ROOST
 	tr_mon 74, UMBREON @ LEFTOVERS, MALE
 if DEF(FAITHFUL)
 		tr_extra SYNCHRONIZE, DEF_UP_ATK_DOWN
@@ -1376,18 +1380,14 @@ else
 endc
 		tr_evs 252 HP, 4 SDf, 252 Def
 		tr_moves DARK_PULSE, TOXIC, HEALINGLIGHT, PROTECT
-	tr_mon 73, HERACROSS @ FLAME_ORB, MALE
-		tr_extra GUTS, SPE_UP_SATK_DOWN
-		tr_evs 252 Atk, 4 Def, 252 Spe
-		tr_moves MEGAHORN, CLOSE_COMBAT, STONE_EDGE, EARTHQUAKE
-	tr_mon 74, TYRANITAR @ ASSAULT_VEST, MALE
-		tr_extra SAND_STREAM, ATK_UP_SATK_DOWN
-		tr_evs 252 HP, 4 SDf, 252 Atk
-		tr_moves STONE_EDGE, CRUNCH, EARTHQUAKE, AVALANCHE
 	tr_mon 74, EXEGGUTOR @ CUSTAP_BERRY, MALE
 		tr_extra HARVEST, SATK_UP_SPE_DOWN
 		tr_evs 252 HP, 4 Atk, 252 SAt
 		tr_moves PSYCHIC_M, LOW_KICK, ENERGY_BALL, ENDURE
+	tr_mon 74, TYRANITAR @ ASSAULT_VEST, MALE
+		tr_extra SAND_STREAM, ATK_UP_SATK_DOWN
+		tr_evs 252 HP, 4 SDf, 252 Atk
+		tr_moves STONE_EDGE, CRUNCH, EARTHQUAKE, AVALANCHE
 	tr_mon 74, ARCANINE @ CHOICE_BAND, MALE
 		tr_extra INTIMIDATE, ATK_UP_SATK_DOWN
 		tr_evs 252 Atk, 4 Def, 252 Spe
@@ -1404,6 +1404,10 @@ RedGroup:
 
 	def_trainer_class RED
 	def_trainer 1, "Red"
+	tr_mon 86, LAPRAS @ WHITE_HERB, MALE
+		tr_extra WATER_ABSORB, SPE_UP_ATK_DOWN
+		tr_evs 252 SAt, 4 Def, 252 Spe
+		tr_moves ICE_BEAM, THUNDERBOLT, SURF, SHELL_SMASH
 	tr_mon 90, PIKACHU @ LIGHT_BALL, MALE | PIKACHU_RED_FORM
 		tr_extra LIGHTNING_ROD, SPE_UP_SDEF_DOWN
 		tr_evs 252 SAt, 4 Atk, 252 Spe
@@ -1412,19 +1416,15 @@ RedGroup:
 		tr_extra MAGIC_BOUNCE, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 4 SDf, 252 Spe
 		tr_moves PSYCHIC_M, HEALINGLIGHT, DAZZLINGLEAM, SHADOW_BALL
-	tr_mon 85, SNORLAX @ LEFTOVERS, MALE
+	tr_mon 85, MACHAMP @ ASSAULT_VEST, MALE
+		tr_extra NO_GUARD, ATK_UP_SATK_DOWN
+		tr_evs 252 HP, 4 SDf, 252 Atk
+		tr_moves DYNAMICPUNCH, EARTHQUAKE, STONE_EDGE, POISON_JAB
+	tr_mon 87, SNORLAX @ LEFTOVERS, MALE
 		tr_extra THICK_FAT, DEF_UP_SATK_DOWN
 		tr_evs 252 HP, 4 SDf, 252 Def
 		tr_moves BODY_SLAM, CRUNCH, CURSE, REST
-	tr_mon 87, OMASTAR @ WHITE_HERB, MALE
-		tr_extra SHELL_ARMOR, SPE_UP_ATK_DOWN
-		tr_evs 252 SAt, 4 Def, 252 Spe
-		tr_moves SURF, SHELL_SMASH, ICE_BEAM, EARTH_POWER
-	tr_mon 87, GYARADOS @ POWER_HERB, MALE
-		tr_extra MOXIE, SPE_UP_SATK_DOWN, SHINY
-		tr_evs 252 Atk, 4 Def, 252 Spe
-		tr_moves DRAGON_DANCE, WATERFALL, EARTHQUAKE, FLY
-	tr_mon 88, CHARIZARD @ CHARCOAL, MALE
+	tr_mon 88, CHARIZARD @ SAFE_GOGGLES, MALE
 if DEF(FAITHFUL)
 		tr_extra BLAZE, SPE_UP_SATK_DOWN
 		tr_evs 252 Atk, 4 Def, 252 Spe
@@ -1442,12 +1442,24 @@ LeafGroup:
 
 	def_trainer_class LEAF
 	def_trainer 1, "Green"
-	tr_mon 96, LAPRAS @ WHITE_HERB, FEMALE
-		tr_extra WATER_ABSORB, SPE_UP_ATK_DOWN
-		tr_evs 252 SAt, 4 Def, 252 Spe
-		tr_moves ICE_BEAM, THUNDERBOLT, SURF, SHELL_SMASH
+	tr_mon 96, GENGAR @ BLACK_SLUDGE, FEMALE
 if DEF(FAITHFUL)
-	tr_mon 98, MOLTRES @ LIFE_ORB, FEMALE
+		tr_extra CURSED_BODY, SPE_UP_ATK_DOWN
+else
+		tr_extra LEVITATE, SPE_UP_ATK_DOWN
+endc
+		tr_evs 252 SAt, 4 Def, 252 Spe
+		tr_moves SHADOW_BALL, SLUDGE_BOMB, THUNDERBOLT, WILL_O_WISP
+	tr_mon 97, KANGASKHAN @ ASSAULT_VEST, FEMALE
+if DEF(FAITHFUL)
+		tr_extra SCRAPPY, ATK_UP_SATK_DOWN
+else
+		tr_extra PARENTAL_BOND, ATK_UP_SATK_DOWN
+endc
+		tr_evs 252 Atk, 4 Def, 252 Spe
+		tr_moves BODY_SLAM, CRUNCH, EARTHQUAKE, ICE_PUNCH
+if DEF(FAITHFUL)
+	tr_mon 98, MOLTRES @ LIFE_ORB
 		tr_extra FLAME_BODY, SPE_UP_ATK_DOWN
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves FIRE_BLAST, AIR_SLASH, HP_ICE, ROOST
@@ -1471,10 +1483,6 @@ endc
 		tr_extra PIXILATE, DEF_UP_ATK_DOWN
 		tr_evs 252 HP, 4 SAt, 252 Def
 		tr_moves EARTH_POWER, REST, CALM_MIND, HYPER_VOICE
-	tr_mon 98, AERODACTYL @ FOCUS_SASH, FEMALE
-		tr_extra ROCK_HEAD, SPE_UP_SATK_DOWN
-		tr_evs 252 Atk, 4 Def, 252 Spe
-		tr_moves ROCK_SLIDE, BRAVE_BIRD, EARTHQUAKE, HONE_CLAWS
 	tr_mon 99, MEW @ LEFTOVERS, FEMALE
 		tr_extra SPE_UP_ATK_DOWN
 		tr_evs 252 HP, 4 SAt, 252 Spe

@@ -44,19 +44,19 @@ CeruleanCave1FTileScript:
 	endcallback
 
 CeruleanCave1F_OverheadBridgeAsm:
-	changebridgeblock 20, 2, $ea, CERULEAN_CAVE_1F
-	changebridgeblock 22, 2, $eb, CERULEAN_CAVE_1F
-	changebridgeblock 20, 4, $ee, CERULEAN_CAVE_1F
-	changebridgeblock 22, 4, $ef, CERULEAN_CAVE_1F
+	changebridgeblock 20, 2, $76, CERULEAN_CAVE_1F
+	changebridgeblock 22, 2, $77, CERULEAN_CAVE_1F
+	changebridgeblock 20, 4, $7a, CERULEAN_CAVE_1F
+	changebridgeblock 22, 4, $7b, CERULEAN_CAVE_1F
 	changebridgeblock 20, 6, $59, CERULEAN_CAVE_1F
 	changebridgeblock 22, 6, $5b, CERULEAN_CAVE_1F
 	jmp BufferScreen
 
 CeruleanCave1F_UnderfootBridgeAsm:
-	changebridgeblock 20, 2, $e8, CERULEAN_CAVE_1F
-	changebridgeblock 22, 2, $e9, CERULEAN_CAVE_1F
-	changebridgeblock 20, 4, $ec, CERULEAN_CAVE_1F
-	changebridgeblock 22, 4, $ed, CERULEAN_CAVE_1F
+	changebridgeblock 20, 2, $74, CERULEAN_CAVE_1F
+	changebridgeblock 22, 2, $75, CERULEAN_CAVE_1F
+	changebridgeblock 20, 4, $78, CERULEAN_CAVE_1F
+	changebridgeblock 22, 4, $79, CERULEAN_CAVE_1F
 	changebridgeblock 20, 6, $55, CERULEAN_CAVE_1F
 	changebridgeblock 22, 6, $57, CERULEAN_CAVE_1F
 	jmp BufferScreen

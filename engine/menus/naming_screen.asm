@@ -143,8 +143,8 @@ NamingScreen:
 
 .Box:
 	ld de, vTiles0 tile $00
-	ld hl, BallCutFruitSpriteGFX
-	lb bc, BANK(BallCutFruitSpriteGFX), 4
+	ld hl, BallCutTreeSpriteGFX
+	lb bc, BANK(BallCutTreeSpriteGFX), 4
 	call DecompressRequest2bpp
 	xor a
 	ld hl, wSpriteAnimDict
