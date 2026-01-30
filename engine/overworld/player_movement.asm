@@ -37,8 +37,6 @@ DoPlayerMovement::
 
 .TranslateIntoMovement:
 	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	jr z, .Normal
 	cp PLAYER_SURF
 	jr z, .Surf
 	cp PLAYER_SURF_PIKA
@@ -46,7 +44,7 @@ DoPlayerMovement::
 	cp PLAYER_SKATE
 	jr z, .Ice
 
-.Normal:
+; normal/bike
 	call .CheckForced
 	call .GetAction
 	call .CheckTile
@@ -232,10 +230,7 @@ DoPlayerMovement::
 	jr nz, .walk
 
 	call .CheckNPC
-	and a
-	jr z, .bump
-	cp 2
-	jr z, .bump
+	jr c, .bump
 
 	ld a, [wSpinning]
 	and a
@@ -245,13 +240,29 @@ DoPlayerMovement::
 	cp COLL_ICE
 	jr z, .ice
 
-	call .RunCheck
-	jr z, .run
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	jr z, .bike_or_skate
+	cp PLAYER_SKATE
+	jr z, .bike_or_skate
 
-; Downhill riding is slower when not moving down.
-	call .BikeCheck
+	call .RunCheck
 	jr nz, .walk
 
+; run
+	ld a, STEP_RUN
+	call .DoStep
+; Trainer faces player if they're running
+	push af
+	ld a, [wWalkingDirection]
+	cp STANDING
+	call nz, CheckTrainerRun
+	pop af
+	scf
+	ret
+
+.bike_or_skate
+; Downhill riding is slower when not moving down.
 	ld hl, wOWState
 	bit OWSTATE_BIKING_DOWNHILL, [hl]
 	jr z, .fast
@@ -283,18 +294,6 @@ DoPlayerMovement::
 	scf
 	ret
 
-.run
-	ld a, STEP_RUN
-	call .DoStep
-; Trainer faces player if they're running
-	push af
-	ld a, [wWalkingDirection]
-	cp STANDING
-	call nz, CheckTrainerRun
-	pop af
-	scf
-	ret
-
 .spin
 	ld de, SFX_SQUEAK
 	call PlaySFX
@@ -311,11 +310,7 @@ DoPlayerMovement::
 .TrySurf:
 
 	call .CheckNPC
-	and a
-	jr z, .surf_bump
-	cp 2
-	jr z, .surf_bump
-
+	jr c, .surf_bump
 	call .CheckSurfPerms
 	jr c, .surf_bump
 
@@ -331,7 +326,7 @@ DoPlayerMovement::
 	ret
 
 .ExitWater:
-	call .GetOutOfWater
+	call .StartWalking
 	call PlayMapMusic
 	ld a, STEP_WALK
 	call .DoStep
@@ -464,8 +459,8 @@ DoPlayerMovement::
 	jr nc, .not_warp
 
 	call .StandInPlace
-	scf
 	ld a, 1
+	scf
 	ret
 
 .not_warp
@@ -709,10 +704,7 @@ endc
 	dw wTileDown
 
 .CheckNPC:
-; Returns 0 if there is an NPC in front that you can't move
-; Returns 1 if there is no NPC in front
-; Returns 2 if there is a movable NPC in front. The game actually treats
-; this the same as an NPC in front (bump).
+; Returns carry if there is an NPC in front
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
@@ -728,58 +720,7 @@ endc
 	add e
 	ld e, a
 ; Find an object struct with coordinates equal to d,e
-	farcall IsNPCAtCoord
-	jr nc, .no_npc
-	call .CheckStrengthBoulder
-	jr c, .no_bump
-
-	xor a ; bump
-	ret
-
-.no_npc
-	ld a, 1
-	ret
-
-.no_bump
-	ld a, 2
-	ret
-
-.CheckStrengthBoulder:
-
-	ld hl, wOWState
-	bit OWSTATE_STRENGTH, [hl]
-	jr z, .not_boulder
-
-	ld hl, OBJECT_WALKING
-	add hl, bc
-	ld a, [hl]
-	cp STANDING
-	jr nz, .not_boulder
-
-	ld hl, OBJECT_PALETTE
-	add hl, bc
-	bit 6, [hl]
-	jr z, .not_boulder
-
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	set 2, [hl]
-
-	ld a, [wWalkingDirection]
-	ld d, a
-	ld hl, OBJECT_RANGE
-	add hl, bc
-	ld a, [hl]
-	and $fc
-	or d
-	ld [hl], a
-
-	scf
-	ret
-
-.not_boulder
-	xor a
-	ret
+	farjp IsNPCAtCoord ; returns carry if there is an NPC at the coord
 
 .CheckLandPerms:
 ; Return 0 if walking onto land and tile permissions allow it.
@@ -789,45 +730,31 @@ endc
 	ld d, a
 	ld a, [wFacingDirection]
 	and d
-	jr nz, .NotWalkable
+	scf
+	ret nz
 
 	ld a, [wWalkingTileCollision]
 	call .CheckWalkable
-	jr c, .NotWalkable
+	ret c
 
 	xor a
 	ret
 
-.NotWalkable:
-	scf
-	ret
-
 .CheckSurfPerms:
-; Return 0 if moving in water, or 1 if moving onto land.
-; Otherwise, return carry.
+; Return carry if bumping into something while moving in water
 
 	ld a, [wTilePermissions]
 	ld d, a
 	ld a, [wFacingDirection]
 	and d
-	jr nz, .NotSurfable
+	scf
+	ret nz
 
 	ld a, [wWalkingTileCollision]
 	call .CheckSurfable
-	jr c, .NotSurfable
+	ret c
 
 	and a
-	ret
-
-.NotSurfable:
-	scf
-	ret
-
-.BikeCheck:
-	ld a, [wPlayerState]
-	cp PLAYER_BIKE
-	ret z
-	cp PLAYER_SKATE
 	ret
 
 .RunCheck:
@@ -878,7 +805,7 @@ endc
 	ret
 
 .Land:
-	ld a, 1
+	ld a, TRUE
 	and a
 	ret
 
@@ -896,10 +823,10 @@ endc
 	ld de, SFX_BUMP
 	jmp PlaySFX
 
-.GetOutOfWater:
-	push bc
+.StartWalking:
 	xor a ; ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
+	push bc
 	call UpdatePlayerSprite ; UpdateSprites
 	pop bc
 	ret
