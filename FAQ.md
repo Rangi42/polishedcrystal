@@ -75,6 +75,7 @@ Conversely, the following emulators are known to have issues and **should not be
 #### Android:
 * MyOldBoy - while most of the game is playable, it is incompatible with the Real-Time Clock in Polished Crystal.
 * Nostalgia.GBC - the save file structure that this emulator produces is incompatible with Polished Crystal's save patcher, which means that updating your save to a newer version in the future will be impossible.
+* JohnGBC - is confirmed to cause rendering issues and possibly more.
 
 #### Other:
 * Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
