@@ -898,7 +898,7 @@ endc
 
 .GetOutOfWater:
 	push bc
-	ld a, PLAYER_NORMAL
+	xor a ; ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
 	call UpdatePlayerSprite ; UpdateSprites
 	pop bc

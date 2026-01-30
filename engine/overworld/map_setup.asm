@@ -357,7 +357,7 @@ CheckUpdatePlayerSprite:
 	cp PLAYER_BIKE
 	jr nz, .nope
 .surfing
-	ld a, PLAYER_NORMAL
+	xor a ; ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
 	scf
 	ret
