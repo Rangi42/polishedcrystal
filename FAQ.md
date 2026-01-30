@@ -11,9 +11,8 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 * [Which file do I need to play?](#which-file-do-i-need-to-play)
 * [Which emulator should I use?](#which-emulator-should-i-use)
-* [What are the .sym files for?](#what-are-the-sym-files-for)
+* [Are there cheat codes / What are the .sym files for?](#are-there-cheat-codes-/-what-are-the-sym-files-for)
 * [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
-* [Is there an online companion or database I can use?](#is-there-an-online-companion-or-database-i-can-use)
 * [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
 * [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
 * [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)
@@ -28,6 +27,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 * [What is the Judge Machine?](#what-is-the-judge-machine)
 * [What are the "door-shaped grooves" in the Ruins of Alph and Route 47?](#what-are-the-door-shaped-grooves-in-the-ruins-of-alph-and-route-47)
 * [I don't like non-canon Pokémon types!](#i-dont-like-non-canon-pokémon-types)
+* [How can I switch from the faithful to the non-faithful version of the game?](#how-can-i-switch-from-the-faithful-to-the-non-faithful-version-of-the-game)
 
 
 ### Which file do I need to play?
@@ -56,7 +56,7 @@ Not every emulator is compatible with Polished Crystal. With the exception of th
 * [BGB](https://bgb.bircd.org/) - Polished Crystal developers use this emulator, more accurate than mGBA, powerful debugger
 
 #### Android:
-* [RetroArch](https://www.retroarch.com/) - use SameBoy or Gambatte core, **do not use VBA-M core**
+* [RetroArch](https://www.retroarch.com/) - use SameBoy, mGBA or Gambatte core, **do not use VBA-M core**
 
 #### iOS:
 * [SameBoy](https://sameboy.github.io/) - see PC section
@@ -70,37 +70,38 @@ Conversely, the following emulators are known to have issues and **should not be
 #### iOS:
 * Delta - while we have had a higher incidence rate of issues with Delta, there is presently no evidence that the emulator itself has any issues. We do still strongly recommend using SameBoy on iOS, as we still are awaiting evidence of any unusual issues with this emulator and save states
 
+#### Android:
+* MyOldBoy - while most of the game is playable, it is incompatible with the Real-Time Clock in Polished Crystal.
+* Nostalgia.GBC - the save file structure that this emulator produces is incompatible with Polished Crystal's save patcher, which means that updating your save to a newer version in the future will be impossible.
+
 #### Other:
 * Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
 
 If you have a preferred emulator that isn't listed above, using it should be fine. Most modern emulators can indeed run Polished Crystal just fine. Be aware, though, that if you're consistently having an issue that isn't reproduced on either official hardware or the most accurate emulators, you will not be provided any support.
 
 
-### What are the .sym files for?
+### Are there Cheat Codes / What are the .sym files for?
 
-The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
+Cheat codes are *not* officially supported: new updates may change or break old codes. There is instead an **unofficial** community-made [Save Editor](https://polishededitor.vercel.app) that you can use to cheat, in a fashion similar to PkHex.
 
-Cheat codes are *not* officially supported: new updates may change or break old codes, disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes.
+As cheat codes are easily misused, please disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes.
+Should you wish to create your own cheats, you may refer to the .sym files. The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
 
 
 ### Is there documentation for all the {Pokémon, items, moves, etc}?
 
-A [wiki](https://github.com/Rangi42/polishedcrystal/wiki) is provided with various info. For things not present in the wiki, the game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
+
+Make good use of the in-game features! The updated Pokédex has a lot more information, including base stats, abilities, detailed wild locations etc. 
+
+Outside of the game, there exists a [wiki](https://github.com/Rangi42/polishedcrystal/wiki) that is provided with various info.
+Alternatively, you may consider [**PolishedDex**](https://www.polisheddex.app/), an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
+It provides a slew of searchable references, such as the Pokédex, move list, items, locations, abilities, wild encounters, special events and trainers, along with tools like a team builder, headbutt calculator, catch rate calculator and more. 
+
+Note that the in-game reference is typically the most accurate, and online resources may not always reflect the game accurately. For the most accurate reference, the game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
 * [Move attributes](data/moves/moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
-
-You can also just use in-game features! The Pokédex has a lot more information, including base stats and detailed wild locations.
-
-
-### Is there an online companion or database I can use?
-
-Yes. [**PolishedDex**](https://www.polisheddex.app/) is an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
-It provides a searchable Pokédex, move list, items, locations, abilities, special events, and a team builder.  
-The site also links to official ROM releases and includes a FAQ and quick reference pages that many players find helpful while playing.  
-
-If you prefer browsing an online reference instead of (or in addition to) the in-repo data and wiki, PolishedDex is a great resource.
 
 
 ### Why is shiny Gyarados gold? Is the red Gyarados shiny?
@@ -127,8 +128,11 @@ There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which ca
 * **Evolve in battle:** Allows your Pokémon to evolve in the middle of a battle if their evolution conditions are met.
 * **Color variation:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
 
-If you need to change these options after starting a game, press Left+B at the title screen to reset them.
+If you need to change these options after starting a game, press Left+B at the title screen (the screen of the running Suicune) to reset them.
 
+### How can I change the current time?
+
+Press Down+B at the title screen (the screen of the running Suicune) to reset the clock.
 
 ### What happened to Nuzlocke Mode?
 
@@ -234,3 +238,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 The regular version makes creative changes to Pokémon base stats and types, and to some move properties, mostly inspired by [Drayano's Sacred Gold and Storm Silver](https://gbatemp.net/threads/pokemon-sacred-gold-storm-silver.327567/). It also improves some translated terms that [Nob Ogasawara](https://twitter.com/dougdinsdale) [complained about](https://lparchive.org/Pokemon-Blue/code.html).
 
 The faithful version does not change those things, besides updating stats to the latest canon generation.
+
+### How can I switch from the faithful to the non-faithful version of the game?
+
+There is no need to reset your progress. The save file for one is compatible with the other. Download the other version of the game (the .gbc file), and replace your current game file with the alternative version. Ensure that both your save file and new game file have the same file name. This completes the switch - load up your game in your emulator and continue playing.
