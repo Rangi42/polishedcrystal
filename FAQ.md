@@ -118,7 +118,7 @@ Note that the in-game reference is typically the most accurate, and online resou
 * **Perfect stats:** All Pokémon stats, for you and the opponent, are calculated as if they had maximum IVs. The actual IVs are still random, so color variation and Hidden Power type are not affected. Note that this has no impact on EVs in any way.
 * **Traded PKMN obey:** All differences in traded Pokémon go away: they always obey you, don't gain boosted experience, and can be nicknamed.
 * **Evolve in battle:** Allows your Pokémon to evolve in the middle of a battle if their evolution conditions are met.
-* **Color variation:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
+* **Color variation:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). IVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
 
 If you need to change these options after starting a game, press Left+B at the title screen (the screen of the running Suicune) to reset them.
 
@@ -147,12 +147,12 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 * Ask Professor Elm!  Give him a call with the Pokemon you have a question about in the lead slot in your party!
 * Gen 1's trade evolutions now evolve by using the Linking Cord item.
-* Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
-* Yanma, Tangela, and Piloswine evolve while knowing AncientPower.
+* Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve when levelling up while holding the item.
+* Yanma, Tangela, and Piloswine evolve when levelling up while knowing AncientPower.
 * Eevee evolves into Leafeon either with a Leaf Stone or by leveling up in Ilex Forest, site of the Moss Rock.
 * Eevee evolves into Glaceon either with an Ice Stone or by leveling up in the Ice Path, site of the Ice Rock.
 * Eevee evolves into Sylveon with a Shiny Stone.
-* Magneton evolves into Magnezone in Magnet Tunnel or Rock Tunnel, sites of the Lodestone.
+* Magneton evolves into Magnezone when levelling up in Magnet Tunnel or Rock Tunnel, sites of the Lodestone.
 
 
 ### Where do I get the legendary Pokémon?
@@ -174,7 +174,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 * Helix Fossil and Dome Fossil are in Mt. Moon, or may appear from breakable rocks.
 * Old Amber is in Pewter City, or may appear from breakable rocks.
-* Razor Claw is in Quiet Cave, or held by some wild Sneasel.
+* Razor Claw is in Quiet Cave, or held by some wild Johto form Sneasel.
 * Razor Fang is in Victory Road, or held by some wild Gligar.
 * Electirizer is in Rock Tunnel, or held by some wild Electabuzz family.
 * Magmarizer is on Cinnabar Island, or held by some wild Magmar family.
@@ -182,7 +182,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Upgrade is given to you in Silph Co. after fixing the Power Plant generator.
 * Dubious Disc is in Celadon City.
 * King's Rock is in Slowpoke Well, or held by some wild Slowpoke family and Poliwhirl/Poliwrath/Politoed.
-* Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite family and Steelix.
+* Metal Coat is in the Goldenrod Dept. Store basement (in a part accessible after 7 badges), or held by some wild Magnemite family and Steelix.
 * Hard Stone is given by Arthur on Route 36 on Thursdays, found by breaking rocks via Brick Break (Rock Smash in faithful) or held by some wild Happiny, Kantonian Corsola and Onix.
 * Dragon Scale is in Mt. Mortar, or held by some wild Horsea family and Dratini family.
 * Dusk Stones are in Cerulean Cave, Dark Cave, Dim Cave, Mt. Moon, Quiet Cave, Scary Cave or Union Cave. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the evening.
