@@ -1,3 +1,4 @@
+
 # FAQ
 
 If you have a question about playing Polished Crystal, or think you've found a bug, please read this FAQ first.
@@ -11,16 +12,17 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 * [Which file do I need to play?](#which-file-do-i-need-to-play)
 * [Which emulator should I use?](#which-emulator-should-i-use)
-* [Are there cheat codes / What are the .sym files for?](#are-there-cheat-codes--what-are-the-sym-files-for)
+* [Are there cheat codes?](#are-there-cheat-codes)
 * [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
-* [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
-* [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
 * [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)
+* [How can I change the current time?](#how-can-i-change-the-current-time)
 * [What happened to Nuzlocke Mode?](#what-happened-to-nuzlocke-mode)
 * [I don't recognize this move, what is it?](#i-dont-recognize-this-move-what-is-it)
 * [How do I evolve my Pokémon?](#how-do-i-evolve-my-pokémon)
 * [Where do I get the legendary Pokémon?](#where-do-i-get-the-legendary-pokémon)
 * [Where do I get this item?](#where-do-i-get-this-item)
+* [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
+* [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
 * [Where do I get Silver/Gold Leaves?](#where-do-i-get-silvergold-leaves)
 * [Where do I get this TM/HM?](#where-do-i-get-this-tmhm)
 * [What do blessings and photographs do?](#what-do-blessings-and-photographs-do)
@@ -80,18 +82,17 @@ Conversely, the following emulators are known to have issues and **should not be
 If you have a preferred emulator that isn't listed above, using it should be fine. Most modern emulators can indeed run Polished Crystal just fine. Be aware, though, that if you're consistently having an issue that isn't reproduced on either official hardware or the most accurate emulators, you will not be provided any support.
 
 
-### Are there Cheat Codes / What are the .sym files for?
+### Are there cheat codes?
 
-Cheat codes are *not* officially supported: new updates may change or break old codes. There is instead an **unofficial** community-made [Save Editor](https://polishededitor.vercel.app) that you can use to cheat, in a fashion similar to PkHex.
+Cheat codes are *not* officially supported: new updates may change or break old codes, which can lead to irreversible save corruption. There is instead [**Polished Editor**](https://www.polishededitor.vercel.app/), an **unofficial** online save editor for *Pokémon Polished Crystal*, created and maintained by [Rev3lation (@rev3lation)](https://github.com/KohKaiSern).  
 
-As cheat codes are easily misused, please disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes.
-Should you wish to create your own cheats, you may refer to the .sym files. The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
+If you decide to use cheat codes anyway, note that cheat codes are easily misused - as such, **please disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes**. Should you wish to create your own cheats, you may refer to the .sym files. The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
 
 
 ### Is there documentation for all the {Pokémon, items, moves, etc}?
 
 
-Make good use of the in-game features! The updated Pokédex has a lot more information, including base stats, abilities, detailed wild locations etc. 
+Make good use of the in-game features! The updated Pokédex has a lot more information, including base stats, abilities, detailed wild locations etc. In addition, call Professor Elm to find out how your Pokémon evolves, and call Lyra to find out when your Pokémon learns their next move.
 
 Outside of the game, there exists a [wiki](https://github.com/Rangi42/polishedcrystal/wiki) that is provided with various info.
 Alternatively, you may consider [**PolishedDex**](https://www.polisheddex.app/), an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
@@ -102,16 +103,6 @@ Note that the in-game reference is typically the most accurate, and online resou
 * [Move attributes](data/moves/moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
-
-
-### Why is shiny Gyarados gold? Is the red Gyarados shiny?
-
-I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It's shiny locked, meaning it can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
-
-
-### My Pokémon is a different color, is it shiny?
-
-There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
 
 
 ### What are the options at the start of a new game?
@@ -151,9 +142,6 @@ There's only room for 255 moves, including Struggle. I wanted to fit in as many 
 
 Their animations in battle still depend on the Pokémon using them, e.g. Chansey's Fresh Snack looks like Softboiled, while Miltank's looks like Milk Drink. That's also the case for some moves that were consolidated: for example, Withdraw and Harden were removed, but Defense Curl has the animation of Withdraw for Squirtle, and of Harden for Geodude.
 
-[Here's a table](https://cdn.discordapp.com/attachments/332698009060114434/754778965410971729/moves.png) of all the moves available in the 3.0.0 beta.
-
-
 ### How do I evolve my Pokémon?
 
 * Ask Professor Elm!  Give him a call with the Pokemon you have a question about in the lead slot in your party!
@@ -169,7 +157,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 ### Where do I get the legendary Pokémon?
 
 * Articuno is in the Seafoam Islands.
-* Zapdos is above the Power Plant after you fix the generator.
+* Zapdos is on the roof of Rock Tunnel.
 * Moltres is inside Cinnabar Volcano.
 * Their Galarian counterparts can be found by summoning them to the great cherry tree in Cherrygrove Bay. In order to do this, you need Lures which you can obtain from battles in the old Rocket Hideout in Celadon City.
 * Raikou and Entei are roaming Johto after you awaken them.
@@ -201,12 +189,20 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Bill's grandpa lives in Goldenrod City and gives you one of each Evolution stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells several evolution stones and the Linking Cord.
 
 
+### My Pokémon is a different color, is it shiny?
+
+There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
+
+
+### Why is shiny Gyarados gold? Is the red Gyarados shiny?
+
+I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It's shiny locked, meaning it can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
+
 ### Where do I get Silver/Gold Leaves?
 
 Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish and Gloom have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
 Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout and Weepinbell have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
-
 
 ### Where do I get this TM/HM?
 
