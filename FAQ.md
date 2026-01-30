@@ -11,7 +11,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 * [Which file do I need to play?](#which-file-do-i-need-to-play)
 * [Which emulator should I use?](#which-emulator-should-i-use)
-* [Are there cheat codes / What are the .sym files for?](#are-there-cheat-codes-what-are-the-sym-files-for)
+* [Are there cheat codes / What are the .sym files for?](#are-there-cheat-codes--what-are-the-sym-files-for)
 * [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
 * [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
 * [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
