@@ -20,25 +20,12 @@ GetPlayerSprite:
 	ld hl, CrysStateSprites
 .go
 	ld a, [wPlayerState]
-	ld c, a
-.loop
-	ld a, [hli]
-	cp c
-	jr z, .good
-	inc hl
-	cp $ff
-	jr nz, .loop
-
-; Any player state not in the array defaults to Chris's sprite.
-	xor a ; ld a, PLAYER_NORMAL
-	ld [wPlayerState], a
-	ld a, SPRITE_CHRIS
-	jr .finish
-
-.good
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 	ld a, [hl]
-
-.finish
 	ld [wPlayerSprite], a
 	ld [wPlayerObjectSprite], a
 	ret
