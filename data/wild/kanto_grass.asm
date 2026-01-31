@@ -868,34 +868,6 @@
 	wildmon 55, MUK
 	end_grass_wildmons
 
-	def_grass_wildmons ROUTE_17
-	db 10 percent ; encounter rate
-	; morn
-	wildmon 51, FEAROW
-	wildmon 55, SLUGMA
-	wildmon 55, GRIMER
-	wildmon 53, FEAROW
-	wildmon 53, MAGCARGO
-	wildmon 54, MUK
-	wildmon 56, MUK
-	; day
-	wildmon 51, FEAROW
-	wildmon 55, SLUGMA
-	wildmon 55, GRIMER
-	wildmon 53, FEAROW
-	wildmon 53, MAGCARGO
-	wildmon 54, MUK
-	wildmon 56, MUK
-	; nite
-	wildmon 51, GRIMER
-	wildmon 55, GRIMER
-	wildmon 55, GRIMER
-	wildmon 53, MURKROW
-	wildmon 53, MURKROW
-	wildmon 54, MUK
-	wildmon 56, MUK
-	end_grass_wildmons
-
 	def_grass_wildmons ROUTE_18_EAST
 	db 10 percent ; encounter rate
 	; morn
