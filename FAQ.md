@@ -172,9 +172,13 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### Where do I get this item?
 
+* Exp Share is given by Elm's Aide in the Azalea Town/Ilex Forest gate house.
+* Linking Cord is given by Elm's Aide in the Ecruteak City west gate house. A second one in Johto can be found in the lower levels of Union Cave.
+* Macho Brace is given by Elm's Aide in Cliff Gate, accessible from Cianwood City.
+* Lucky Egg is given by Elm's Aide in Blackthorn City.
 * Helix Fossil and Dome Fossil are in Mt. Moon, or may appear from breakable rocks.
 * Old Amber is in Pewter City, or may appear from breakable rocks.
-* Razor Claw is in Quiet Cave, or held by some wild Johto form Sneasel.
+* Razor Claw is in Quiet Cave, or held by some wild Johto-form Sneasel.
 * Razor Fang is in Victory Road, or held by some wild Gligar.
 * Electirizer is in Rock Tunnel, or held by some wild Electabuzz family.
 * Magmarizer is on Cinnabar Island, or held by some wild Magmar family.
@@ -187,12 +191,13 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Dragon Scale is in Mt. Mortar, or held by some wild Horsea family and Dratini family.
 * Dusk Stones are in Cerulean Cave, Dark Cave, Dim Cave, Mt. Moon, Quiet Cave, Scary Cave or Union Cave. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the evening.
 * Shiny Stones are in Cherrygrove Bay, Mt. Moon or National Park. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the morning.
-* Bill's grandpa lives in Goldenrod City and gives you one of each Evolution stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells several evolution stones and the Linking Cord.
+* An Ice Stone is in Ice Path.
+* Bill's grandpa lives in Goldenrod City and gives you one of each evolution stone except for the Ice Stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. [Hidden Grottoes](https://github.com/Rangi42/polishedcrystal/blob/master/data/events/hidden_grottoes/grottoes.asm) often have an evolution stone as a rare item. The Celadon Dept. Store sells several evolution stones and the Linking Cord.
 
 
 ### My Pokémon is a different color, is it shiny?
 
-There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
+There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)).
 
 
 ### Why is shiny Gyarados gold? Is the red Gyarados shiny?
@@ -201,9 +206,9 @@ I like the anime explanation that red Gyarados was forced to rapidly evolve from
 
 ### Where do I get Silver/Gold Leaves?
 
-Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish and Gloom have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
+Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish and Gloom have a 55% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
-Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout and Weepinbell have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
+Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout and Weepinbell have a 55% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
 
 ### Where do I get this TM/HM?
 
