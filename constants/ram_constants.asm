@@ -331,10 +331,11 @@ DEF NUM_BADGES EQU NUM_JOHTO_BADGES + NUM_KANTO_BADGES
 ; wPlayerState::
 	const_def
 	const PLAYER_NORMAL    ; 0
-	const PLAYER_BIKE      ; 1
-	const PLAYER_SKATE     ; 2
-	const PLAYER_SURF      ; 3
-	const PLAYER_SURF_PIKA ; 4
+	const PLAYER_RUN       ; 1
+	const PLAYER_BIKE      ; 2
+	const PLAYER_SKATE     ; 3
+	const PLAYER_SURF      ; 4
+	const PLAYER_SURF_PIKA ; 5
 DEF NUM_PLAYER_STATES EQU const_value
 
 ; wPalFadeMode::

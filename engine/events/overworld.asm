@@ -1835,8 +1835,9 @@ BikeFunction:
 	call .CheckEnvironment
 	jr c, .CannotUseBike
 	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	jr z, .GetOnBike
+	assert PLAYER_NORMAL == 0 && PLAYER_RUN == 1
+	cp PLAYER_RUN + 1
+	jr c, .GetOnBike
 	cp PLAYER_BIKE
 	jr z, .GetOffBike
 	jr .CannotUseBike

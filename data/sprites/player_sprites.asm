@@ -1,6 +1,7 @@
 ChrisStateSprites:
 	table_width 1
 	db SPRITE_CHRIS           ; PLAYER_NORMAL
+	db SPRITE_CHRIS_RUN       ; PLAYER_RUN
 	db SPRITE_CHRIS_BIKE      ; PLAYER_BIKE
 	db SPRITE_CHRIS           ; PLAYER_SKATE
 	db SPRITE_CHRIS_SURF      ; PLAYER_SURF
@@ -10,6 +11,7 @@ ChrisStateSprites:
 KrisStateSprites:
 	table_width 1
 	db SPRITE_KRIS            ; PLAYER_NORMAL
+	db SPRITE_KRIS_RUN        ; PLAYER_RUN
 	db SPRITE_KRIS_BIKE       ; PLAYER_BIKE
 	db SPRITE_KRIS            ; PLAYER_SKATE
 	db SPRITE_KRIS_SURF       ; PLAYER_SURF
@@ -19,6 +21,7 @@ KrisStateSprites:
 CrysStateSprites:
 	table_width 1
 	db SPRITE_CRYS            ; PLAYER_NORMAL
+	db SPRITE_CRYS_RUN        ; PLAYER_RUN
 	db SPRITE_CRYS_BIKE       ; PLAYER_BIKE
 	db SPRITE_CRYS            ; PLAYER_SKATE
 	db SPRITE_CRYS_SURF       ; PLAYER_SURF
