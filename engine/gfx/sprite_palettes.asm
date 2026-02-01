@@ -229,6 +229,17 @@ CopySpritePal::
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	pop hl ; pop wOBPals1 palette *
+
+	; Check if we need to copy a light color from a secondary palette (for SPRITE_MON_ICON)
+	ld a, [wNeededMonPalLight]
+	cp NO_PAL_LOADED
+	jr z, .no_light_pal_copy
+	; Copy color 2 from the light palette into color 1 of the target palette
+	; hl = target palette (wOBPals1 palette *)
+	; a = light color palette index (PAL_MON_* which equals PAL_OW_*)
+	call CopyMonIconLightColor
+.no_light_pal_copy
+
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
@@ -248,6 +259,112 @@ CopySpritePal::
 	pop hl
 	pop bc
 	pop af
+	ret
+
+CopyMonIconLightColor:
+; Copy color 2 from the palette at index a into color 1 of the target palette at hl
+; Input: a = light color palette index, hl = target palette pointer
+; Color 0 is at offset 0, color 1 at offset 2, color 2 at offset 4, color 3 at offset 6
+	push hl
+	push de
+	push bc
+
+	; Calculate source palette address
+	; First, get the base palette based on time of day
+	push af
+	push hl
+
+	; Get the source palette address for the light color
+	; Same logic as the main palette lookup but for the light palette index
+	ld c, a ; save palette index
+
+	; Check USE_DAYTIME_PAL_F
+	ld a, [wPalFlags]
+	bit USE_DAYTIME_PAL_F, a
+	jr nz, .use_day_pal
+
+	; Check darkness
+	ld a, PALSTATE_DARKNESS
+	call GetPalState
+	and a
+	jr z, .not_darkness_light
+	ld a, c
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr nc, .not_darkness_light
+	ld hl, DarknessOBPalette
+	ld a, c
+	ld bc, 1 palettes
+	rst AddNTimes
+	jr .got_light_pal
+
+.not_darkness_light
+	; Check overcast
+	ld a, PALSTATE_OVERCAST_INDEX
+	call GetPalState
+	and a
+	jr z, .not_overcast_light
+	ld a, c
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr nc, .not_overcast_light
+	ld hl, OvercastOBPalette
+	ld a, c
+	ld bc, 1 palettes
+	rst AddNTimes
+	jr .apply_time_of_day
+
+.not_overcast_light
+	ld a, c
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr c, .time_of_day_light_pal
+	ld hl, SingleObjectPals - NUM_OW_TIME_OF_DAY_PALS palettes
+	ld bc, 1 palettes
+	rst AddNTimes
+	jr .got_light_pal
+
+.time_of_day_light_pal
+	ld hl, MapObjectPals
+	ld a, c
+	ld bc, 1 palettes
+	rst AddNTimes
+.apply_time_of_day
+	ld a, PALSTATE_TIME_OF_DAY
+	call GetPalState
+	jr .got_time_of_day
+
+.use_day_pal
+	ld hl, MapObjectPals
+	ld a, c
+	ld bc, 1 palettes
+	rst AddNTimes
+	ld a, DAY
+.got_time_of_day
+	maskbits NUM_DAYTIMES
+	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
+	rst AddNTimes
+
+.got_light_pal
+	; hl now points to the light color source palette
+	; Get color 2 (offset 4) from source
+	ld bc, 4 ; offset to color 2
+	add hl, bc
+	; hl = source color 2
+
+	pop de ; de = target palette pointer
+	push de
+	; Target color 1 is at offset 2
+	inc de
+	inc de
+	; de = target color 1
+
+	; Copy 2 bytes (1 color)
+	ld bc, 2
+	call FarCopyColorWRAM
+
+	pop hl
+	pop af
+	pop bc
+	pop de
+	pop hl
 	ret
 
 ApplyWeatherPal:

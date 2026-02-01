@@ -84,3 +84,35 @@ DEF NO_PAL_LOADED EQU -1
 
 ; fixed palette indexes
 DEF PAL_OW_WEATHER EQU 6
+
+MACRO ow_mon_pal_const
+	DEF _NYB_PAL_MON_{const_value} EQUS "\1"
+	const PAL_MON_\1
+ENDM
+
+	const_def
+	ow_mon_pal_const RED
+	ow_mon_pal_const BLUE
+	ow_mon_pal_const GREEN
+	ow_mon_pal_const BROWN
+	ow_mon_pal_const PURPLE
+	ow_mon_pal_const GRAY
+	ow_mon_pal_const PINK
+	ow_mon_pal_const TEAL
+	ow_mon_pal_const YELLOW
+	ow_mon_pal_const ORANGE
+	ow_mon_pal_const AZURE
+	ow_mon_pal_const WHITE
+	ow_mon_pal_const BLACK
+	ow_mon_pal_const TAN
+DEF NUM_OW_MON_PALS EQU const_value
+assert NUM_OW_MON_PALS <= 16
+
+for i, NUM_OW_MON_PALS - 1
+	for j, i + 1, NUM_OW_MON_PALS
+		REDEF nyb_1 EQUS "_NYB_PAL_MON_{i}"
+		REDEF nyb_2 EQUS "_NYB_PAL_MON_{j}"
+		DEF MON_PAL_{{nyb_1}}_{{nyb_2}} EQU ((i << 4) | j) + 1
+		DEF MON_PAL_{{nyb_2}}_{{nyb_1}} EQU ((j << 4) | i) + 1
+	endr
+endr

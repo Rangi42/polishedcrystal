@@ -89,10 +89,72 @@ ScanObjectStructPals:
 	and a
 	jr z, .skip
 
+	; Check if sprite is SPRITE_MON_ICON for two-nybble palette handling
+	ld c, a ; save sprite in c
+
 	; Look up the object's requested color palette
 	ld hl, OBJECT_PAL_INDEX
 	add hl, de
 	ld a, [hl]
+
+	; Default: no secondary light palette
+	ld hl, wNeededMonPalLight
+	ld [hl], NO_PAL_LOADED
+
+	; Check if this is SPRITE_MON_ICON with a two-nybble palette
+	push af
+	ld a, c
+	cp SPRITE_MON_ICON
+	jr nz, .not_mon_icon_pal
+	; For mon icons, interpret palette as two nybbles:
+	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
+	pop af
+	push af
+	ld c, a
+	swap a
+	and $f
+	; If high nybble is same as low nybble, treat as normal palette
+	ld [hl], a ; store light color palette in wNeededMonPalLight (high nybble)
+	ld a, c
+	and $f
+	cp [hl]
+	jr z, .same_nybbles
+	; Check if dark nybble (low) is TAN - if so, use light as main palette
+	; but still copy light's color 2 into color 1 (monochromatic)
+	cp PAL_MON_TAN
+	jr z, .tan_dark_color
+	; Check if light nybble is TAN - if so, keep original color 1
+	ld a, [hl]
+	cp PAL_MON_TAN
+	jr z, .tan_light_color
+	; Two different nybbles - use low nybble as the main (dark) palette
+	; wNeededMonPalLight already has the high nybble (light) palette
+	pop af
+	and $f
+	jr .store_pal_index
+.tan_dark_color
+	; TAN as dark means use the light color as the main palette
+	; wNeededMonPalLight already has the high nybble - keep it to copy color 2 into color 1
+	; Use high nybble (light) as the main palette
+	pop af
+	swap a
+	and $f
+	jr .store_pal_index
+.tan_light_color
+	; TAN as light means use the original color 1, so no secondary copy needed
+	ld a, NO_PAL_LOADED
+	ld [hl], a
+	; Still use low nybble as the main palette
+	pop af
+	and $f
+	jr .store_pal_index
+.same_nybbles
+	; Same nybble values, treat as normal single palette
+	ld a, NO_PAL_LOADED
+	ld [hl], a
+.not_mon_icon_pal
+	pop af
+.store_pal_index
 	ld [wNeededPalIndex], a
 
 	; Mark the palette in use and/or load the palette
