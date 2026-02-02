@@ -7,6 +7,9 @@ ChrisBikeSpriteGFX:: INCBIN "gfx/sprites/chris_bike.2bpp.lz"
 SECTION "ChrisSurfSpriteGFX", ROMX
 ChrisSurfSpriteGFX:: INCBIN "gfx/sprites/chris_surf.2bpp.lz"
 
+SECTION "ChrisRunSpriteGFX", ROMX
+ChrisRunSpriteGFX:: INCBIN "gfx/sprites/chris_run.2bpp.lz"
+
 SECTION "KrisSpriteGFX", ROMX
 KrisSpriteGFX:: INCBIN "gfx/sprites/kris.2bpp.lz"
 
@@ -15,6 +18,9 @@ KrisBikeSpriteGFX:: INCBIN "gfx/sprites/kris_bike.2bpp.lz"
 
 SECTION "KrisSurfSpriteGFX", ROMX
 KrisSurfSpriteGFX:: INCBIN "gfx/sprites/kris_surf.2bpp.lz"
+
+SECTION "KrisRunSpriteGFX", ROMX
+KrisRunSpriteGFX:: INCBIN "gfx/sprites/kris_run.2bpp.lz"
 
 SECTION "MomSpriteGFX", ROMX
 MomSpriteGFX:: INCBIN "gfx/sprites/mom.2bpp.lz"
@@ -598,6 +604,9 @@ CrysBikeSpriteGFX:: INCBIN "gfx/sprites/crys_bike.2bpp.lz"
 
 SECTION "CrysSurfSpriteGFX", ROMX
 CrysSurfSpriteGFX:: INCBIN "gfx/sprites/crys_surf.2bpp.lz"
+
+SECTION "CrysRunSpriteGFX", ROMX
+CrysRunSpriteGFX:: INCBIN "gfx/sprites/crys_run.2bpp.lz"
 
 SECTION "ThortonSpriteGFX", ROMX
 ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lz"

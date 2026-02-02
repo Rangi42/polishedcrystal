@@ -44,7 +44,7 @@ DoPlayerMovement::
 	cp PLAYER_SKATE
 	jr z, .Ice
 
-; normal/bike
+; normal/run/bike
 	call .CheckForced
 	call .GetAction
 	call .CheckTile
@@ -218,16 +218,16 @@ DoPlayerMovement::
 ; Surfing actually calls .TrySurf directly instead of passing through here.
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
-	jr z, .TrySurf
+	jmp z, .TrySurf
 	cp PLAYER_SURF_PIKA
-	jr z, .TrySurf
+	jmp z, .TrySurf
 
 	call .CheckLandPerms
 	jr c, .bump
 
 	ld a, [wPanningAroundTinyMap]
 	and a
-	jr nz, .walk
+	jr nz, .pan
 
 	call .CheckNPC
 	jr c, .bump
@@ -246,17 +246,22 @@ DoPlayerMovement::
 	cp PLAYER_SKATE
 	jr z, .bike_or_skate
 
+; At this point, [wPlayerState] is either PLAYER_NORMAL or PLAYER_RUN
+
+	ld a, [wWalkingDirection]
+	cp STANDING
+	jr z, .walk
+
 	call .RunCheck
 	jr nz, .walk
 
 ; run
+	call .StopWalking
 	ld a, STEP_RUN
 	call .DoStep
 ; Trainer faces player if they're running
 	push af
-	ld a, [wWalkingDirection]
-	cp STANDING
-	call nz, CheckTrainerRun
+	call CheckTrainerRun ; we know [wWalkingDirection] is not STANDING, so always call this
 	pop af
 	scf
 	ret
@@ -283,18 +288,22 @@ DoPlayerMovement::
 	ret
 
 .walk
+	call .StopRunning
+.pan
 	ld a, STEP_WALK
 	call .DoStep
 	scf
 	ret
 
 .ice
+	call .StopRunning
 	ld a, STEP_ICE
 	call .DoStep
 	scf
 	ret
 
 .spin
+	call .StopRunning
 	ld de, SFX_SQUEAK
 	call PlaySFX
 	ld a, STEP_SPIN
@@ -372,6 +381,7 @@ DoPlayerMovement::
 	call .CheckWalkable
 	jr c, .DontJump
 
+	call .StopRunning
 	ld de, SFX_JUMP_OVER_LEDGE
 	call PlaySFX
 	ld a, STEP_LEDGE
@@ -758,23 +768,18 @@ endc
 	ret
 
 .RunCheck:
-	; Check if we have regular movement active
-	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	ret nz
-
-	; If RUNNING_SHOES is active, invert B button effect.
-	push hl
-	ld hl, wOptions2
+	; Return z if Running Shoes are active
+	; - if [wOptions2] does not have the RUNNING_SHOES bit set, then B should be held down
+	; - if [wOptions2] has the RUNNING_SHOES bit set, then B should not be held down
+	; => Return z if [wOptions2]'s RUNNING_SHOES bit != [hJoypadDown]'s PAD_B bit
 	ldh a, [hJoypadDown]
 	and PAD_B
-
-	; We want to return z on success, not nz.
-	cpl
-
-	; PAD_B is bit 1, RUNNING_SHOES is bit 3
+rept RUNNING_SHOES - B_PAD_B ; 3 - 1 = 2
 	add a
-	add a
+endr
+	cpl ; we want to return z on success, not nz
+	push hl
+	ld hl, wOptions2
 	xor [hl]
 	pop hl
 	and 1 << RUNNING_SHOES
@@ -823,8 +828,22 @@ endc
 	ld de, SFX_BUMP
 	jmp PlaySFX
 
+.StopWalking:
+	ld a, [wPlayerState]
+	and a ; cp PLAYER_NORMAL
+	ret nz
+.StartRunning:
+	ld a, PLAYER_RUN
+	jr .UpdatePlayerState
+
+.StopRunning:
+	ld a, [wPlayerState]
+	assert PLAYER_RUN == 1
+	dec a
+	ret nz
 .StartWalking:
 	xor a ; ld a, PLAYER_NORMAL
+.UpdatePlayerState
 	ld [wPlayerState], a
 	push bc
 	call UpdatePlayerSprite ; UpdateSprites
