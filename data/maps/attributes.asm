@@ -514,7 +514,7 @@ ENDM
 	map_attributes WhirlIslandLugiaChamber, WHIRL_ISLAND_LUGIA_CHAMBER, $f, 0
 	map_attributes SilverCaveRoom1, SILVER_CAVE_ROOM_1, $9, 0
 	map_attributes SilverCaveRoom2, SILVER_CAVE_ROOM_2, $9, 0
-	map_attributes SilverCaveRoom3, SILVER_CAVE_ROOM_3, $0, 0
+	map_attributes SilverCaveRoom3, SILVER_CAVE_ROOM_3, $7b, 0
 	map_attributes SilverCaveItemRooms, SILVER_CAVE_ITEM_ROOMS, $9, 0
 	map_attributes DarkCaveVioletEntrance, DARK_CAVE_VIOLET_ENTRANCE, $9, 0
 	map_attributes DarkCaveBlackthornEntrance, DARK_CAVE_BLACKTHORN_ENTRANCE, $9, 0
@@ -890,7 +890,7 @@ ENDM
 	map_attributes SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
 	map_attributes SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
 	map_attributes NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35, 0
-	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0
+	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $51, 0
 	map_attributes FarawayIsland, FARAWAY_ISLAND, $6, 0
 	map_attributes FarawayJungle, FARAWAY_JUNGLE, $17, 0
 	map_attributes SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0, 0

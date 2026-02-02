@@ -125,7 +125,7 @@ ENDM
 	map_const WHIRL_ISLAND_LUGIA_CHAMBER,                 10,  9 ; 63
 	map_const SILVER_CAVE_ROOM_1,                         10, 18 ; 64
 	map_const SILVER_CAVE_ROOM_2,                         15, 17 ; 65
-	map_const SILVER_CAVE_ROOM_3,                         10, 17 ; 66
+	map_const SILVER_CAVE_ROOM_3,                          8, 16 ; 66
 	map_const SILVER_CAVE_ITEM_ROOMS,                     20, 18 ; 67
 	map_const DARK_CAVE_VIOLET_ENTRANCE,                  20, 18 ; 68
 	map_const DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 69

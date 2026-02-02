@@ -542,8 +542,8 @@ RattataBackSpriteGFX:: INCBIN "gfx/sprites/rattata_back.2bpp.lz"
 SECTION "WeirdTreeSpriteGFX", ROMX
 WeirdTreeSpriteGFX:: INCBIN "gfx/sprites/weird_tree.2bpp.lz"
 
-SECTION "BallCutFruitSpriteGFX", ROMX
-BallCutFruitSpriteGFX:: INCBIN "gfx/sprites/ball_cut_fruit.2bpp.lz"
+SECTION "BallCutTreeSpriteGFX", ROMX
+BallCutTreeSpriteGFX:: INCBIN "gfx/sprites/ball_cut_tree.2bpp.lz"
 
 SECTION "BoulderRockFossilSpriteGFX", ROMX
 BoulderRockFossilSpriteGFX:: INCBIN "gfx/sprites/boulder_rock_fossil.2bpp.lz"
@@ -610,3 +610,6 @@ CrysRunSpriteGFX:: INCBIN "gfx/sprites/crys_run.2bpp.lz"
 
 SECTION "ThortonSpriteGFX", ROMX
 ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lz"
+
+SECTION "BlankFruitSpriteGFX", ROMX
+BlankFruitSpriteGFX:: INCBIN "gfx/sprites/blank_fruit.2bpp.lz"
