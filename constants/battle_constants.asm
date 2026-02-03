@@ -26,6 +26,9 @@ DEF NO_EFFECT          EQU 0.0q4 ; $00
 ; enemy AI behavior
 DEF BASE_AI_SWITCH_SCORE EQU 10
 
+; affection levels (see data/battle/affection_thresholds.asm)
+DEF NUM_AFFECTION_LEVELS EQU 4
+
 ; wPlayerStatLevels and wEnemyStatLevels indexes (see wram.asm)
 ; GetStatName arguments (see data/battle/stat_names.asm)
 	const_def

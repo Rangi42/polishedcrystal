@@ -677,7 +677,7 @@ CheckAffection:
 	ld a, MON_HAPPINESS
 	call TrueUserPartyAttr
 
-	ld hl, .AffectionThresholds
+	ld hl, AffectionThresholds
 .loop
 	cp [hl]
 	jr nc, .done
@@ -691,11 +691,7 @@ CheckAffection:
 	pop hl
 	ret
 
-.AffectionThresholds:
-	db 255
-	db 220
-	db 180
-	db 0
+INCLUDE "data/battle/affection_thresholds.asm"
 
 OpponentAffectionText:
 	call StackCallOpponentTurn
