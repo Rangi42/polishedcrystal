@@ -192,7 +192,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; bf
 	tilecoll WALL, WALL, WALL, FLOOR ; c0
 	tilecoll WALL, WALL, FLOOR, FLOOR ; c1
-	tilecoll WALL, WALL, WALL, WALL ; c2
+	tilecoll WATER, WATER, WATER, WATER ; c2
 	tilecoll WALL, WALL, WALL, WALL ; c3
 	tilecoll WALL, FLOOR, WALL, FLOOR ; c4
 	tilecoll FLOOR, WALL, FLOOR, WALL ; c5
@@ -251,3 +251,4 @@
 	tilecoll WALL, CHERRY_LEAVES, FLOOR, FLOOR ; fa
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; fb
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
+	tilecoll WALL, WALL, WALL, WALL ; fd
