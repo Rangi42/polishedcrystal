@@ -715,6 +715,7 @@ endc
 
 .CheckNPC:
 ; Returns carry if there is an NPC in front
+; Updates object state if there is a Strength boulder in front
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
@@ -730,7 +731,36 @@ endc
 	add e
 	ld e, a
 ; Find an object struct with coordinates equal to d,e
-	farjp IsNPCAtCoord ; returns carry if there is an NPC at the coord
+	farcall IsNPCAtCoord ; returns carry if there is an NPC at the coord
+	ret nc
+; There is an object in front, so return carry, but update if it's a Strength boulder
+	ld hl, wOWState
+	bit OWSTATE_STRENGTH, [hl]
+	jr z, .not_boulder
+	ld hl, OBJECT_WALKING
+	add hl, bc
+	ld a, [hl]
+	cp STANDING
+	jr nz, .not_boulder
+	ld hl, OBJECT_PALETTE
+	add hl, bc
+	bit STRENGTH_BOULDER_F, [hl]
+	jr z, .not_boulder
+; Update state for the Strength boulder
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	set BOULDER_MOVING_F, [hl]
+	ld a, [wWalkingDirection]
+	ld d, a
+	ld hl, OBJECT_RANGE
+	add hl, bc
+	ld a, [hl]
+	and %11111100
+	or d
+	ld [hl], a
+.not_boulder
+	scf
+	ret
 
 .CheckLandPerms:
 ; Return 0 if walking onto land and tile permissions allow it.
