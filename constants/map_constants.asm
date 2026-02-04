@@ -611,7 +611,7 @@ ENDM
 	map_const DIM_CAVE_5F,                                17, 17 ;  7
 
 	newgroup                                                     ; 29
-	map_const GOLDENROD_HARBOR,                           24, 18 ;  1
+	map_const GOLDENROD_HARBOR,                           23, 18 ;  1
 	map_const GOLDENROD_HARBOR_GATE,                       5,  4 ;  2
 
 	newgroup                                                     ; 30
