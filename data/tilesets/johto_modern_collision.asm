@@ -250,3 +250,5 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; f9
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; fa
 	tilecoll BUOY, WATER, BUOY, WATER ; fb
+	tilecoll WALL, WALL, WALL, DOOR ; fc
+	tilecoll WALL, WALL, WALL, WALL ; fd
