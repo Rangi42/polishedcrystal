@@ -208,7 +208,7 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL ; cf
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; d0
 	tilecoll WALL, WALL, WALL, WALL ; d1
-	tilecoll VOID, VOID, VOID, VOID ; d2
+	tilecoll WALL, WALL, WALL, DOOR ; d2
 	tilecoll WALL, WALL, FLOOR, WALL ; d3
 	tilecoll FLOOR, FLOOR, CAVE, WALL ; d4
 	tilecoll FLOOR, WALL, FLOOR, WALL ; d5
@@ -250,4 +250,3 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; f9
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; fa
 	tilecoll WALL, WALL, WALL, WALL ; fb
-	tilecoll WALL, WALL, WALL, DOOR ; fc
