@@ -69,21 +69,15 @@ CopyMenuData2::
 	push de
 	push bc
 	push af
-	call .do_it
-	jmp PopAFBCDEHL
-
-.do_it
-	ld a, [wMenuDataBank]
-	call StackCallInBankA
-.Function:
 	ld hl, wMenuDataPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld de, wMenuDataFlags
 	ld bc, wMenuDataEnd - wMenuDataFlags
-	rst CopyBytes
-	ret
+	ld a, [wMenuDataBank]
+	call FarCopyBytes
+	jmp PopAFBCDEHL
 
 GetWindowStackTop::
 	ld hl, wWindowStackPointer
