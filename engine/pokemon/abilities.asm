@@ -48,6 +48,10 @@ PrintAbilityDescription:
 	rst PlaceString
 	ret
 
-INCLUDE "data/abilities/names.asm"
-
-INCLUDE "data/abilities/descriptions.asm"
+if DEF(_LOCALE_FR)
+	INCLUDE "locale/fr/data/abilities/names.asm"
+	INCLUDE "locale/fr/data/abilities/descriptions.asm"
+else
+	INCLUDE "data/abilities/names.asm"
+	INCLUDE "data/abilities/descriptions.asm"
+endc

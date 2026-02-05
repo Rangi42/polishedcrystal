@@ -69,6 +69,13 @@ CopyMenuData2::
 	push de
 	push bc
 	push af
+	call .do_it
+	jmp PopAFBCDEHL
+
+.do_it
+	ld a, [wMenuDataBank]
+	call StackCallInBankA
+.Function:
 	ld hl, wMenuDataPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -76,7 +83,7 @@ CopyMenuData2::
 	ld de, wMenuDataFlags
 	ld bc, wMenuDataEnd - wMenuDataFlags
 	rst CopyBytes
-	jmp PopAFBCDEHL
+	ret
 
 GetWindowStackTop::
 	ld hl, wWindowStackPointer
@@ -211,8 +218,24 @@ Coord2Absolute:
 	ret
 
 CopyMenuHeader::
+	; Check if the menu data (besides menu flags) are elsewhere.
 	ld de, wMenuHeader
-	ld bc, wMenuHeaderEnd - wMenuHeader
+	ld a, [hl]
+	and ~MENU_FAR
+	ld [de], a
+	inc de
+	xor [hl]
+	inc hl
+	jr z, .valid_bank
+	ld a, [hli]
+	push af
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop af
+	call StackCallInBankA
+.valid_bank
+	ld bc, (wMenuHeaderEnd - wMenuHeader) - 1
 	rst CopyBytes
 	ldh a, [hROMBank]
 	ld [wMenuDataBank], a
@@ -587,6 +610,9 @@ ContinueGettingMenuJoypad:
 	ret
 
 PlaceMenuStrings::
+	ld a, [wMenuDataBank]
+	call StackCallInBankA
+.Function:
 	push de
 	ld hl, wMenuDataPointerTableAddr
 	ld a, [hli]

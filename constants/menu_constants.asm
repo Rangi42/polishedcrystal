@@ -1,7 +1,7 @@
 ; MenuHeader flags
 	const_def
 	shift_const MENU_RESTORE_TILES ; Will be set if MENU_BACKUP_TILES(_2) is set.
-	shift_const MENU_UNUSED_1
+	shift_const MENU_FAR
 	shift_const MENU_UNUSED_2
 	shift_const MENU_NO_CLICK_SFX
 	shift_const MENU_SPRITE_ANIMS

@@ -244,6 +244,10 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "━",        $fe
 	charmap "┘",        $ff
 
+; temporary french character aliases
+	charmap "è", 'e'
+	charmap "Œ", 'O'
+	charmap "œ", 'o'
 
 DEF NGRAMS_START EQU $0a
 

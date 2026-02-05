@@ -21,26 +21,6 @@ MainMenu:
 	call JumpTable
 	jr MainMenu
 
-.MenuDataHeader:
-	db MENU_BACKUP_TILES
-	menu_coords 0, 0, 16, 7
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 0 ; items
-	dw MainMenuItems
-	dw PlaceMenuStrings
-	dw .Strings
-
-.Strings:
-	db "Continue@"
-	db "New Game@"
-	db "New Game+@"
-	db "Options@"
-	db "Music Player@"
-
 .Jumptable:
 	dw MainMenu_Continue
 	dw MainMenu_NewGame
@@ -54,6 +34,10 @@ MainMenu:
 	const MAINMENU_ITEM_NEW_GAME_PLUS ; 2
 	const MAINMENU_ITEM_OPTION        ; 3
 	const MAINMENU_ITEM_MUSIC_PLAYER  ; 4
+
+.MenuDataHeader:
+	db MENU_BACKUP_TILES | MENU_FAR
+	dba MainMenuDataHeader
 
 MainMenuItems:
 ; MAINMENU_MENU_NEW_GAME

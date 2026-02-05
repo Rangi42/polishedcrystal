@@ -34,6 +34,10 @@ RGBLINKVCFLAGS = -Weverything -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p 
 RGBFIXFLAGS    = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC3+TIMER+RAM+BATTERY -r 3
 RGBGFXFLAGS    = -Weverything
 
+ifeq ($(filter french,$(MAKECMDGOALS)),french)
+MODIFIERS := $(MODIFIERS)-french
+RGBASMFLAGS += -D_LOCALE_FR
+endif
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 MODIFIERS := $(MODIFIERS)-faithful
 RGBASMFLAGS += -DFAITHFUL
@@ -76,7 +80,6 @@ rom_obj := \
 	data/pokemon/egg_moves.o \
 	data/pokemon/evos_attacks.o \
 	data/maps/map_data.o \
-	data/text/common.o \
 	data/tilesets.o \
 	engine/movie/credits.o \
 	engine/overworld/events.o \
@@ -87,16 +90,23 @@ rom_obj := \
 	gfx/items.o \
 	gfx/misc.o
 
+ifeq ($(filter french,$(MAKECMDGOALS)),french)
+rom_obj := $(rom_obj) locale/fr/data/menus/common.o locale/fr/data/text/common.o
+else
+rom_obj := $(rom_obj) data/menus/common.o data/text/common.o
+endif
+
 crystal_obj    := $(rom_obj:.o=.o)
 crystal_vc_obj := $(rom_obj:.o=_vc.o)
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman vc
+.PHONY: clean tidy crystal french faithful pocket debug monochrome freespace tools bsp huffman vc
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
 .DEFAULT_GOAL: crystal
 
 crystal: $$(ROM_NAME).$$(EXTENSION)
+french: crystal
 faithful: crystal
 monochrome: crystal
 noir: crystal
