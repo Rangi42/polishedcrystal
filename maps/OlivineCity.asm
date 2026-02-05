@@ -46,6 +46,8 @@ OlivineCity_MapScriptHeader:
 	object_event  8, 21, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << MORN) | (1 << DAY) | (1 << EVE), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass2Text, -1
 	smashrock_event 52, 23
 	smashrock_event 55, 26
+	object_event 18, 32, SPRITE_BLANK_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_DONOTHING, 0, DoNothingScript, -1
+	object_event 19, 32, SPRITE_BLANK_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_DONOTHING, 0, DoNothingScript, -1
 
 	object_const_def
 	const OLIVINECITY_OLIVINE_RIVAL
