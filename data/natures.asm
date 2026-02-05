@@ -28,6 +28,34 @@ NatureNames:
 	dr .NoNature
 	assert_table_length NUM_NATURES + 1
 
+if DEF(_LOCALE_FR)
+.Hardy:    db "Hardi@"
+.Lonely:   db "Solo@"
+.Brave:    db "Brave@"
+.Adamant:  db "Rigide@"
+.Naughty:  db "Mauvais@"
+.Bold:     db "Assuré@"
+.Docile:   db "Docile@"
+.Relaxed:  db "Relax@"
+.Impish:   db "Malin@"
+.Lax:      db "Lâche@"
+.Timid:    db "Timide@"
+.Hasty:    db "Pressé@"
+.Serious:  db "Sérieux@"
+.Jolly:    db "Jovial@"
+.Naive:    db "Naïf@"
+.Modest:   db "Modeste@"
+.Mild:     db "Doux@"
+.Quiet:    db "Discret@"
+.Bashful:  db "Pudique@"
+.Rash:     db "Foufou@"
+.Calm:     db "Calme@"
+.Gentle:   db "Gentil@"
+.Sassy:    db "Malpoli@"
+.Careful:  db "Prudent@"
+.Quirky:   db "Bizarre@"
+.NoNature: db "---@"
+else
 .Hardy:    db "Hardy@"
 .Lonely:   db "Lonely@"
 .Brave:    db "Brave@"
@@ -54,6 +82,7 @@ NatureNames:
 .Careful:  db "Careful@"
 .Quirky:   db "Quirky@"
 .NoNature: db "---@"
+endc
 
 NatureIndicators:
 	table_width 1

@@ -47,7 +47,12 @@ INCLUDE "gfx/stats/orange_page.pal"
 	db "Nature/@"
 
 .CharacterString:
+if DEF(_LOCALE_FR)
+	db "Caractère/@" ; canon "Personnalité" does not fit.
+else
 	db "Character/@"
+endc
+
 
 .TN_PrintToD:
 	hlcoord 1, 14
@@ -205,4 +210,8 @@ INCLUDE "gfx/stats/orange_page.pal"
 	rst PlaceString
 	ret
 
+if DEF(_LOCALE_FR)
+INCLUDE "locale/fr/data/characteristics.asm"
+else
 INCLUDE "data/characteristics.asm"
+endc
