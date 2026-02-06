@@ -276,6 +276,7 @@ RunScriptCommand:
 	dw Script_setquantity                ; d9
 	dw Script_pluralize                  ; da
 	dw Script_loadtrainerwithpal         ; db
+	dw Script_nooryes                    ; dc
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -497,8 +498,13 @@ Script_promptbutton:
 	ldh [hOAMUpdate], a
 	ret
 
+Script_nooryes:
+	call NoYesBox
+	jr _FinishYesNoScript
+
 Script_yesorno:
 	call YesNoBox
+_FinishYesNoScript:
 	; a = carry (no) ? FALSE : TRUE
 	sbc a
 	inc a
