@@ -309,19 +309,20 @@ GenericTrainerScientistPiotr:
 	generictrainer SCIENTIST, PIOTR, EVENT_BEAT_SCIENTIST_PIOTR, .SeenText, .BeatenText
 
 	text "Algae grow here"
-	line "and release a red"
+	line "and release a"
 
-	para "pigment in the"
-	line "water."
+	para "cloudy pigment"
+	line "in the water."
 
-	para "It's not blood!"
-	line "…Right?"
+	para "It's nothing to"
+	line "be afraid of!"
+	cont "…Right?"
 	done
 
 .SeenText:
 	text "Do you know why"
 	line "the water here is"
-	cont "blood-red?"
+	cont "so dark?"
 	done
 
 .BeatenText:
