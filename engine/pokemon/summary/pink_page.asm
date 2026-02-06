@@ -139,7 +139,7 @@ SummaryScreen_PinkPage:
 	rst PlaceString
 	hlcoord 16, 17
 	call .PrintNextLevel
-	hlcoord 2, 17
+	hlcoord 3, 17
 	ld a, [wTempMonLevel]
 	ld b, a
 	ld de, wTempMonExp + 2
@@ -148,7 +148,7 @@ SummaryScreen_PinkPage:
 	ld a, '<XP1>'
 	ld [hli], a
 	ld [hl], '<XP2>'
-	hlcoord 9, 17
+	hlcoord 10, 17
 	ld [hl], '<XPEND>'
 
 	ld hl, .PinkPalettes
