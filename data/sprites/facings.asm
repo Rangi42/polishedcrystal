@@ -526,12 +526,12 @@ FacingBigLugia1:
 	db 16,  8, 0, $03
 	db 24,  8, 0, $05
 	db 24,  8, NEXT_PALETTE, $04
-	db  8, 24, OAM_XFLIP, $00
-	db  8, 16, OAM_XFLIP, $01
-	db 16, 24, OAM_XFLIP, $02
-	db 16, 16, OAM_XFLIP, $03
-	db 24, 16, OAM_XFLIP, $05
-	db 24, 16, NEXT_PALETTE | OAM_XFLIP, $04
+	db  8, 23, OAM_XFLIP, $00
+	db  8, 15, OAM_XFLIP, $01
+	db 16, 23, OAM_XFLIP, $02
+	db 16, 15, OAM_XFLIP, $03
+	db 24, 15, OAM_XFLIP, $05
+	db 24, 15, NEXT_PALETTE | OAM_XFLIP, $04
 
 FacingBigLugia2:
 	db 12 ; #
@@ -541,9 +541,9 @@ FacingBigLugia2:
 	db 24,  0, 0, $0a
 	db 24,  8, 0, $0b
 	db 24,  8, NEXT_PALETTE, $06
-	db  8, 16, OAM_XFLIP, $07
-	db 16, 24, OAM_XFLIP, $08
-	db 16, 16, OAM_XFLIP, $09
-	db 24, 24, OAM_XFLIP, $0a
-	db 24, 16, OAM_XFLIP, $0b
-	db 24, 16, NEXT_PALETTE | OAM_XFLIP, $06
+	db  8, 15, OAM_XFLIP, $07
+	db 16, 23, OAM_XFLIP, $08
+	db 16, 15, OAM_XFLIP, $09
+	db 24, 23, OAM_XFLIP, $0a
+	db 24, 15, OAM_XFLIP, $0b
+	db 24, 15, NEXT_PALETTE | OAM_XFLIP, $06
