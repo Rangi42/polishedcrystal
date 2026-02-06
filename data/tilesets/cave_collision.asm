@@ -237,4 +237,3 @@
 	tilecoll FLOOR, WALL, FLOOR, WALL ; ec
 	tilecoll LEDGE_DOWN_LEFT, FLOOR, WALL, WALL ; ed
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ee
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ef
