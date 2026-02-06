@@ -258,7 +258,6 @@ SetFacingFruit:
 
 SetFacingBigGyarados:
 	call AlternateStepFrame
-	and %00010000
 	ld a, FACING_BIG_GYARADOS_2
 	jmp nz, SetFixedFacing
 SetFacingFreezeBigGyarados:
