@@ -129,6 +129,7 @@ BSODErrorStrings:
 	dr .WindowOverflow   ; ERR_WINDOW_OVERFLOW
 	dr .WindowUnderflow  ; ERR_WINDOW_UNDERFLOW
 	dr .SRAMMismatch     ; ERR_SRAM_MISMATCH
+	dr .PEBKAC           ; ERR_PEBKAC
 	dr .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
@@ -146,4 +147,5 @@ BSODErrorStrings:
 .WindowOverflow:   text "Window overflow@"
 .WindowUnderflow:  text "Window underflow@"
 .SRAMMismatch:     text "SRAM/WRAM mismatch@"
+.PEBKAC:           text "PEBKAC@"
 .UnknownError:     text "Unknown@"
