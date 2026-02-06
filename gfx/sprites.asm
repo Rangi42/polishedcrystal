@@ -613,3 +613,9 @@ ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lz"
 
 SECTION "BlankFruitSpriteGFX", ROMX
 BlankFruitSpriteGFX:: INCBIN "gfx/sprites/blank_fruit.2bpp.lz"
+
+SECTION "BigHoOhSpriteGFX", ROMX
+BigHoOhSpriteGFX:: INCBIN "gfx/sprites/big_ho_oh.2bpp.lz"
+
+SECTION "BigLugiaSpriteGFX", ROMX
+BigLugiaSpriteGFX:: INCBIN "gfx/sprites/big_lugia.2bpp.lz"

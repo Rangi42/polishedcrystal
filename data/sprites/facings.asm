@@ -62,6 +62,10 @@ Facings:
 	dw FacingTinyWindows5     ; FACING_TINY_WINDOWS_5
 	dw FacingTinyWindows6     ; FACING_TINY_WINDOWS_6
 	dw FacingMicrophone       ; FACING_MICROPHONE
+	dw FacingBigHoOh1         ; FACING_BIG_HO_OH_1
+	dw FacingBigHoOh2         ; FACING_BIG_HO_OH_2
+	dw FacingBigLugia1        ; FACING_BIG_LUGIA_1
+	dw FacingBigLugia2        ; FACING_BIG_LUGIA_2
 	assert_table_length NUM_FACINGS
 	dw 0 ; end
 
@@ -475,3 +479,71 @@ FacingTinyWindows6:
 	db 20, -12, 0, $84
 	db 20,  -4, 0, $84
 	db 20,   4, 0, $84
+
+FacingBigHoOh1:
+	db 16 ; #
+	db  8,  0, 0, $00
+	db  8,  8, 0, $01
+	db 16,  0, 0, $02
+	db 16,  8, 0, $03
+	db 24,  0, 0, $04
+	db 24,  8, 0, $05
+	db  9,  4, NEXT_PALETTE, $06
+	db 17,  4, NEXT_PALETTE, $07
+	db  8, 24, OAM_XFLIP, $00
+	db  8, 16, OAM_XFLIP, $01
+	db 16, 24, OAM_XFLIP, $02
+	db 16, 16, OAM_XFLIP, $03
+	db 24, 24, OAM_XFLIP, $04
+	db 24, 16, OAM_XFLIP, $05
+	db  9, 20, NEXT_PALETTE | OAM_XFLIP, $06
+	db 17, 20, NEXT_PALETTE | OAM_XFLIP, $07
+
+FacingBigHoOh2:
+	db 16 ; #
+	db  8,  0, 0, $80
+	db  8,  8, 0, $81
+	db 16,  0, 0, $82
+	db 16,  8, 0, $83
+	db 24,  0, 0, $84
+	db 24,  8, 0, $85
+	db 16,  4, NEXT_PALETTE, $86
+	db 24,  4, NEXT_PALETTE, $87
+	db  8, 24, OAM_XFLIP, $80
+	db  8, 16, OAM_XFLIP, $81
+	db 16, 24, OAM_XFLIP, $82
+	db 16, 16, OAM_XFLIP, $83
+	db 24, 24, OAM_XFLIP, $84
+	db 24, 16, OAM_XFLIP, $85
+	db 16, 20, NEXT_PALETTE | OAM_XFLIP, $86
+	db 24, 20, NEXT_PALETTE | OAM_XFLIP, $87
+
+FacingBigLugia1:
+	db 12 ; #
+	db  8,  0, 0, $00
+	db  8,  8, 0, $01
+	db 16,  0, 0, $02
+	db 16,  8, 0, $03
+	db 24,  8, 0, $05
+	db 24,  8, NEXT_PALETTE, $04
+	db  8, 24, OAM_XFLIP, $00
+	db  8, 16, OAM_XFLIP, $01
+	db 16, 24, OAM_XFLIP, $02
+	db 16, 16, OAM_XFLIP, $03
+	db 24, 16, OAM_XFLIP, $05
+	db 24, 16, NEXT_PALETTE | OAM_XFLIP, $04
+
+FacingBigLugia2:
+	db 12 ; #
+	db  8,  8, 0, $07
+	db 16,  0, 0, $08
+	db 16,  8, 0, $09
+	db 24,  0, 0, $0a
+	db 24,  8, 0, $0b
+	db 24,  8, NEXT_PALETTE, $06
+	db  8, 16, OAM_XFLIP, $07
+	db 16, 24, OAM_XFLIP, $08
+	db 16, 16, OAM_XFLIP, $09
+	db 24, 24, OAM_XFLIP, $0a
+	db 24, 16, OAM_XFLIP, $0b
+	db 24, 16, NEXT_PALETTE | OAM_XFLIP, $06

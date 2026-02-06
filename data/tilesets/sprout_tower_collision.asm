@@ -162,3 +162,5 @@
 	tilecoll WALL, WALL, FLOOR, FLOOR ; a1
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; a2
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; a3
+	tilecoll FLOOR, FLOOR, LADDER, FLOOR ; a4
+	tilecoll FLOOR, FLOOR, LADDER, FLOOR ; a5

@@ -56,7 +56,7 @@ CheckForUsedObjPals::
 	xor a
 	ld [wUsedObjectPals], a
 
-	call CheckAlolanExeggutorPals
+	call CheckDualObjectPals
 
 	; Scan for active objects first and mark those pals still in use.
 	ld hl, wPalFlags
@@ -203,29 +203,41 @@ MarkUsedPal:
 .done
 	jmp PopBCDEHL
 
-CheckAlolanExeggutorPals:
+CheckDualObjectPals:
 	ld a, [wMapGroup]
-	cp GROUP_SHAMOUTI_ISLAND
-	ret nz
+	ld d, a
 	ld a, [wMapNumber]
-	cp MAP_SHAMOUTI_ISLAND
-	ret nz
+	ld e, a
+	ld hl, DualObjectPalettes
+.loop
+	ld a, [hli]
+	inc a
+	ret z
+	dec a
+	cp d
+	ld a, [hli]
+	jr nz, .next
+	cp e
+	jr z, .found
+.next
+	inc hl
+	inc hl
+	jr .loop
 
-; Only Shamouti Island uses SPRITEMOVEDATA_ALOLAN_EXEGGUTOR.
-; This sprite movement's facing uses NEXT_PALETTE, and assumes
-; that PAL_OW_BROWN exists right after PAL_OW_GREEN.
-
+.found
 	ld a, %00000110
 	ld [wUsedObjectPals], a
-
-	ld a, PAL_OW_GREEN
+	ld a, [hli]
 	ld [wLoadedObjPal1], a
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 1 palettes
+	ld a, [hl]
+	push af
 	call CopySpritePalHandler
-
-	ld a, PAL_OW_BROWN
+	pop af
 	ld [wLoadedObjPal2], a
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 2 palettes
 	jmp CopySpritePalHandler
+
+INCLUDE "data/maps/dual_obj_pals.asm"
