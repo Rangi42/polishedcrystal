@@ -250,7 +250,7 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "ï", 'i'
 	charmap "Œ", 'O'
 	charmap "œ", 'o'
-	charmap "’", '?'
+	charmap "’", '\''
 
 DEF NGRAMS_START EQU $0a
 
