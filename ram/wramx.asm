@@ -1208,19 +1208,23 @@ wOvercastRandomMaps::
 	ds 50 ; unused
 
 wCandyAmounts::
+	table_width 1
 wExpCandyXSAmount:: db
 wExpCandySAmount:: db
 wExpCandyMAmount:: db
 wExpCandyLAmount:: db
 wExpCandyXLAmount:: db
+	assert_table_length NUM_CANDIES
 
 wWingAmounts::
+	table_width 2
 wHealthWingAmount:: dw
 wMuscleWingAmount:: dw
 wResistWingAmount:: dw
 wSwiftWingAmount:: dw
 wGeniusWingAmount:: dw
 wCleverWingAmount:: dw
+	assert_table_length NUM_WINGS
 
 wCelebiEvent:: db
 
