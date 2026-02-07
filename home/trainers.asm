@@ -263,9 +263,9 @@ FacingPlayerDistance::
 .x_sorted:
 	; a = x_lo, d = x_hi
 	dec a ; precompute x_lo - 1 for fast >= check
-	ldh [hMathBuffer], a
+	ldh [hLineOfSightXLo], a
 	ld a, d
-	ldh [hMathBuffer + 1], a
+	ldh [hLineOfSightXHi], a
 
 	ld a, [wPlayerMapY]
 	cp e
@@ -277,13 +277,13 @@ FacingPlayerDistance::
 .y_sorted:
 	; a = y_lo, e = y_hi
 	dec a ; precompute y_lo - 1
-	ldh [hMathBuffer + 2], a
+	ldh [hLineOfSightYLo], a
 	ld a, e
-	ldh [hMathBuffer + 3], a
+	ldh [hLineOfSightYHi], a
 
 	; Save trainer struct low byte to skip self in the loop
 	ld a, c
-	ldh [hMathBuffer + 4], a
+	ldh [hTrainerSeeing], a
 
 	; Iterate through all non-player object structs
 	ld bc, wObject1Struct
@@ -301,38 +301,38 @@ FacingPlayerDistance::
 	jr nz, .next_obj
 
 	; Skip the trainer's own object struct
-	ldh a, [hMathBuffer + 4]
+	ldh a, [hTrainerSeeing]
 	cp c
 	jr z, .next_obj
 
 	; Get object map position
 	ld hl, OBJECT_MAP_X
 	add hl, bc
-	ld a, [hli] ; a = objX
-	ld e, [hl]  ; e = objY
+	ld a, [hli]
+	ld e, [hl] ; e = objY
+	ld h, a    ; h = objX
 
 	; Check if object is within the bounding box of the line of sight.
 	; On the shared axis, x_lo == x_hi (or y_lo == y_hi), so the
 	; inclusive range check acts as an equality check.
 
 	; Check objX >= x_lo  (using precomputed x_lo - 1)
-	ld h, a              ; h = objX
-	ldh a, [hMathBuffer] ; a = x_lo - 1
-	cp h                 ; (x_lo - 1) - objX
-	jr nc, .next_obj     ; objX < x_lo → skip
+	ldh a, [hLineOfSightXLo] ; a = x_lo - 1
+	cp h                     ; (x_lo - 1) - objX
+	jr nc, .next_obj         ; objX < x_lo → skip
 
 	; Check objX <= x_hi
-	ldh a, [hMathBuffer + 1] ; a = x_hi
+	ldh a, [hLineOfSightXHi] ; a = x_hi
 	cp h                     ; x_hi - objX
 	jr c, .next_obj          ; objX > x_hi → skip
 
 	; Check objY >= y_lo  (using precomputed y_lo - 1)
-	ldh a, [hMathBuffer + 2] ; a = y_lo - 1
+	ldh a, [hLineOfSightYLo] ; a = y_lo - 1
 	cp e                     ; (y_lo - 1) - objY
 	jr nc, .next_obj         ; objY < y_lo → skip
 
 	; Check objY <= y_hi
-	ldh a, [hMathBuffer + 3] ; a = y_hi
+	ldh a, [hLineOfSightYHi] ; a = y_hi
 	cp e                     ; y_hi - objY
 	jr c, .next_obj          ; objY > y_hi → skip
 
