@@ -237,15 +237,15 @@ FacingPlayerDistance::
 	; d = distance, e = direction.
 	; Check if any visible object blocks the line of sight.
 
-	push de                     ; save distance/direction
-	push bc                     ; save trainer struct pointer
+	push de ; save distance/direction
+	push bc ; save trainer struct pointer
 
 	; Get trainer position
 	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hli]
 	ld e, [hl] ; e = trainerY
-	ld d, a ; d = trainerX
+	ld d, a    ; d = trainerX
 
 
 	; Compute bounding box: [x_lo, x_hi] x [y_lo, y_hi]
@@ -262,7 +262,7 @@ FacingPlayerDistance::
 	ld a, b
 .x_sorted:
 	; a = x_lo, d = x_hi
-	dec a                       ; precompute x_lo - 1 for fast >= check
+	dec a ; precompute x_lo - 1 for fast >= check
 	ldh [hMathBuffer], a
 	ld a, d
 	ldh [hMathBuffer + 1], a
@@ -276,7 +276,7 @@ FacingPlayerDistance::
 	ld a, b
 .y_sorted:
 	; a = y_lo, e = y_hi
-	dec a                       ; precompute y_lo - 1
+	dec a ; precompute y_lo - 1
 	ldh [hMathBuffer + 2], a
 	ld a, e
 	ldh [hMathBuffer + 3], a
@@ -291,11 +291,10 @@ FacingPlayerDistance::
 
 .obj_loop:
 	; Skip inactive objects (no sprite)
-	ld a, [bc]                  ; OBJECT_SPRITE at offset 0
+	ld a, [bc] ; OBJECT_SPRITE at offset 0
 	and a
 	jr z, .next_obj
 
-	; Skip invisible objects
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE_F, [hl]
@@ -309,38 +308,38 @@ FacingPlayerDistance::
 	; Get object map position
 	ld hl, OBJECT_MAP_X
 	add hl, bc
-	ld a, [hli]                 ; a = objX
-	ld e, [hl]                  ; e = objY
+	ld a, [hli] ; a = objX
+	ld e, [hl]  ; e = objY
 
 	; Check if object is within the bounding box of the line of sight.
 	; On the shared axis, x_lo == x_hi (or y_lo == y_hi), so the
 	; inclusive range check acts as an equality check.
 
 	; Check objX >= x_lo  (using precomputed x_lo - 1)
-	ld h, a                     ; h = objX
-	ldh a, [hMathBuffer]        ; a = x_lo - 1
-	cp h                        ; (x_lo - 1) - objX
-	jr nc, .next_obj            ; objX < x_lo → skip
+	ld h, a              ; h = objX
+	ldh a, [hMathBuffer] ; a = x_lo - 1
+	cp h                 ; (x_lo - 1) - objX
+	jr nc, .next_obj     ; objX < x_lo → skip
 
 	; Check objX <= x_hi
-	ldh a, [hMathBuffer + 1]    ; a = x_hi
-	cp h                        ; x_hi - objX
-	jr c, .next_obj             ; objX > x_hi → skip
+	ldh a, [hMathBuffer + 1] ; a = x_hi
+	cp h                     ; x_hi - objX
+	jr c, .next_obj          ; objX > x_hi → skip
 
 	; Check objY >= y_lo  (using precomputed y_lo - 1)
-	ldh a, [hMathBuffer + 2]    ; a = y_lo - 1
-	cp e                        ; (y_lo - 1) - objY
-	jr nc, .next_obj            ; objY < y_lo → skip
+	ldh a, [hMathBuffer + 2] ; a = y_lo - 1
+	cp e                     ; (y_lo - 1) - objY
+	jr nc, .next_obj         ; objY < y_lo → skip
 
 	; Check objY <= y_hi
-	ldh a, [hMathBuffer + 3]    ; a = y_hi
-	cp e                        ; y_hi - objY
-	jr c, .next_obj             ; objY > y_hi → skip
+	ldh a, [hMathBuffer + 3] ; a = y_hi
+	cp e                     ; y_hi - objY
+	jr c, .next_obj          ; objY > y_hi → skip
 
 	; Found an object blocking the line of sight!
 	pop bc
 	pop de
-	and a                       ; clear carry
+	and a ; clear carry
 	ret
 
 .next_obj:
@@ -353,7 +352,7 @@ FacingPlayerDistance::
 
 	; No blocking object found
 	pop bc
-	pop de                      ; d = distance, e = direction
+	pop de ; d = distance, e = direction
 	scf
 	ret
 
