@@ -1,6 +1,5 @@
 TrainerClassNames::
 	list_start
-	li "?"                ; TRAINER_NONE
 	li "<PK><MN> Trainer" ; CARRIE
 	li "<PK><MN> Trainer" ; CAL
 	li "<PK><MN> Trainer" ; JACKY
@@ -62,14 +61,7 @@ TrainerClassNames::
 	li "Hex Maniac"       ; HEX_MANIAC
 	li "Sage"             ; SAGE
 	li "Medium"           ; MEDIUM
-	li "Kimono Girl"      ; KIMONO_GIRL_1
-	li "Kimono Girl"      ; KIMONO_GIRL_2
-	li "Kimono Girl"      ; KIMONO_GIRL_3
-	li "Kimono Girl"      ; KIMONO_GIRL_4
-	li "Kimono Girl"      ; KIMONO_GIRL_5
-	li "Kimono Girl"      ; KIMONO_GIRL_6
-	li "Kimono Girl"      ; KIMONO_GIRL_7
-	li "Kimono Girl"      ; KIMONO_GIRL_8
+	li "Kimono Girl"      ; KIMONO_GIRL
 	li "Elder"            ; ELDER
 	li "Sr.& Jr."         ; SR_AND_JR
 	li "Couple"           ; COUPLE
@@ -155,4 +147,4 @@ TrainerClassNames::
 	li "Student"          ; IMAKUNI
 	li "Collector"        ; LAWRENCE
 	li "Shrine"           ; REI
-	assert_list_length NUM_TRAINER_CLASSES + 1
+	assert_list_length NUM_TRAINER_CLASSES

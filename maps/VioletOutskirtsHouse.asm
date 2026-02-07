@@ -18,7 +18,7 @@ VioletOutskirtsHouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_JUMPTEXT, VioletOutskirtsHouseDustText
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETERY_CARETAKER
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GRAY, OBJECTTYPE_SCRIPT, 0, VioletOutskirtsHouseCaretakerScript, EVENT_VIOLET_CEMETERY_CARETAKER
 
 	object_const_def
 	const VIOLETOUTSKIRTSHOUSE_CARETAKER
@@ -136,11 +136,6 @@ VioletOutskirtsHouseCaretakerThankYouText:
 	line "dear…"
 	done
 
-VioletOutskirtsHouseTheresAPresenceText:
-	text "There's a strong"
-	line "presence here…"
-	done
-
 VioletOutskirtsHouseStillAPresenceText:
 	text "The spirit is"
 	line "gone, but there's"
@@ -166,7 +161,7 @@ VioletOutskirtsHouseDustText:
 	done
 
 VioletOutskirtsHouseNotAloneText:
-	text "There is a sense"
+	text "You have a sense"
 	line "that something"
 	cont "is watching you…"
 	done

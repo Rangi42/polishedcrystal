@@ -19,9 +19,9 @@ MrPokemonsHouse_MapScriptHeader:
 	bg_event  3,  1, BGEVENT_READ, MrPokemonsHouse_CabinetScript
 
 	def_object_events
-	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
-	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	object_event  4,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
+	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	object_event  4,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
 
 	object_const_def
 	const MRPOKEMONSHOUSE_GENTLEMAN
@@ -104,9 +104,7 @@ MrPokemonsHouse_OakScript:
 	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	pause 10
 	opentext
-	writetext MrPokemonsHouse_GetDexText
-	playsound SFX_ITEM
-	waitsfx
+	givespecialitem POKEDEX
 	setflag ENGINE_POKEDEX
 	writetext MrPokemonsHouse_OakText2
 	waitbutton
@@ -336,11 +334,6 @@ if !DEF(DEBUG)
 	para "It's a hi-tech"
 	line "encyclopedia!"
 endc
-	done
-
-MrPokemonsHouse_GetDexText:
-	text "<PLAYER> received"
-	line "#dex!"
 	done
 
 MrPokemonsHouse_OakText2:

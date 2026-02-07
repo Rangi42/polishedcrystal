@@ -17,7 +17,6 @@ FarChangeStat:
 	jr z, .player
 	call HasOpponentFainted
 	ret z
-	jr z, .not_fainted
 .player
 	call HasUserFainted
 	ret z
@@ -50,7 +49,7 @@ FarChangeStat:
 	; Do target-only checks
 	bit STAT_TARGET_F, b
 	jr nz, .is_target
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp CONTRARY
 	jmp nz, .perform_change
 	ld a, b
@@ -59,7 +58,7 @@ FarChangeStat:
 	jmp .perform_change
 
 .is_target
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp CONTRARY
 	jr nz, .no_target_contrary
 	ld a, b
@@ -93,7 +92,7 @@ FarChangeStat:
 	jr nz, .mist_or_item_fail
 
 .check_ability
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp CLEAR_BODY
 	jr z, .ability_immune
 	cp WHITE_SMOKE
@@ -122,12 +121,12 @@ FarChangeStat:
 	farcall CheckAlreadyExecuted
 	ret nz
 	farcall ShowPotentialAbilityActivation
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	farcall AnimateFailedMove
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
-	farjp EnableAnimations
+	farjp EndAbility
 
 .check_item
 	push bc
@@ -291,7 +290,7 @@ UseStatItemText:
 
 GetStatName:
 	ld hl, StatNames
-	ld c, "@"
+	ld c, '@'
 .CheckName:
 	dec b
 	jr z, .Copy
@@ -443,6 +442,3 @@ PlayStatChangeAnim:
 	ld a, b
 	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
-
-StatPals: ; similar to X items
-INCLUDE "gfx/battle/stats.pal"

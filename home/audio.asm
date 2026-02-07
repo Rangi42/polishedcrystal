@@ -124,6 +124,14 @@ PlayBikeMusic:
 	call .get_bike_music
 	ld a, e
 	ld [wMapMusic], a
+	ld a, [wMusicFade]
+	and a
+	jr z, PlayMusic
+	; we are fading so set bike music to play after fade
+	ld a, e
+	ld [wMusicFadeIDLo], a
+	xor a ; music hi byte is always 0
+	ld [wMusicFadeIDHi], a
 	jr PlayMusic
 
 .get_bike_music
@@ -202,8 +210,8 @@ PlayMusic2::
 
 	jmp PopAFBCDEHL
 
-PlayCryHeader::
-; Play cry header de.
+PlayCry::
+; Play cry de.
 
 	push hl
 	push de
@@ -215,11 +223,11 @@ PlayCryHeader::
 
 	ld a, BANK(PokemonCries)
 	rst Bankswitch
-	call _LoadCryHeader
+	call _LoadCry
 
-	ld a, BANK(_PlayCryHeader)
+	ld a, BANK(_PlayCry)
 	rst Bankswitch
-	call _PlayCryHeader ; far-ok
+	call _PlayCry ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -282,7 +290,7 @@ WaitSFX::
 	ret
 
 MaxVolume::
-	ld a, $77 ; max
+	ld a, MAX_VOLUME
 	ld [wVolume], a
 	ret
 
@@ -450,11 +458,11 @@ TerminateExpBarSound::
 	xor a
 	ld [wChannel5Flags], a
 	ld [wSoundInput], a
-	ldh [rNR10], a
-	ldh [rNR11], a
-	ldh [rNR12], a
-	ldh [rNR13], a
-	ldh [rNR14], a
+	ldh [rAUD1SWEEP], a
+	ldh [rAUD1LEN], a
+	ldh [rAUD1ENV], a
+	ldh [rAUD1LOW], a
+	ldh [rAUD1HIGH], a
 	ret
 
 ChannelsOff::

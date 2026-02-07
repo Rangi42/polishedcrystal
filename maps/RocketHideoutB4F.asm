@@ -20,16 +20,16 @@ RocketHideoutB4F_MapScriptHeader:
 	bg_event 17,  1, BGEVENT_ITEM + MAX_POTION, EVENT_ROCKET_HIDEOUT_B4F_HIDDEN_MAX_POTION
 
 	def_object_events
-	object_event 17,  3, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FCandelaScript, -1
-	object_event 16,  6, SPRITE_SPARK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FSparkScript, -1
-	object_event 19,  6, SPRITE_BLANCHE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FBlancheScript, -1
-	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FYoungsterArdenScript, -1
-	object_event 15, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FTeacherSerena, -1
-	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FSuperNerdNolan, -1
-	keyitemball_event 2,  2, LIFT_KEY, EVENT_PICKED_UP_LIFT_KEY_FROM_ROCKET_HIDEOUT_B4F
-	itemball_event 1,  4, X_SP_ATK,    1, EVENT_PICKED_UP_X_SP_ATK_FROM_ROCKET_HIDEOUT_B4F
-	itemball_event 2, 12, PP_UP,        1, EVENT_PICKED_UP_PP_UP_FROM_ROCKET_HIDEOUT_B4F
-	itemball_event 4, 20, DUBIOUS_DISC, 1, EVENT_PICKED_UP_DUBIOUS_DISC_FROM_ROCKET_HIDEOUT_B4F
+	object_event 17,  3, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FCandelaScript, -1
+	object_event 16,  6, SPRITE_SPARK, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FSparkScript, -1
+	object_event 19,  6, SPRITE_BLANCHE, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FBlancheScript, -1
+	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketHideoutB4FYoungsterArdenScript, -1
+	object_event 15, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FTeacherSerena, -1
+	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, RocketHideoutB4FSuperNerdNolan, -1
+	keyitemball_event 2,  2, LIFT_KEY, EVENT_ROCKET_HIDEOUT_B4F_LIFT_KEY
+	itemball_event 1,  4, X_SP_ATK,    1, EVENT_ROCKET_HIDEOUT_B4F_X_SP_ATK
+	itemball_event 2, 12, PP_UP,        1, EVENT_ROCKET_HIDEOUT_B4F_PP_UP
+	itemball_event 4, 20, DUBIOUS_DISC, 1, EVENT_ROCKET_HIDEOUT_B4F_DUBIOUS_DISC
 
 	object_const_def
 	const ROCKETHIDEOUTB4F_CANDELA
@@ -56,11 +56,9 @@ RocketHideoutB4FDoorScript:
 
 RocketHideoutB4FLiftKeyScript:
 	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
-	iftruefwd .beat_rory
+	iftruefwd .beat_arden
 	disappear ROCKETHIDEOUTB4F_LIFT_KEY
-	endcallback
-.beat_rory
-	appear ROCKETHIDEOUTB4F_LIFT_KEY
+.beat_arden
 	endcallback
 
 RocketHideoutB4FMeetLeadersLeftScript:
@@ -177,7 +175,7 @@ RocketHideoutB4FMeetLeadersScript:
 .CandelaIntro3Text:
 	text "Candela: Looks"
 	line "like this one has"
-	cont "has power!"
+	cont "power!"
 
 	para "Since you made it"
 	line "this far, let's"
@@ -335,7 +333,7 @@ RocketHideoutB4FCandelaScript:
 	para "This is my contri-"
 	line "bution to our"
 	cont "project."
-	
+
 	para "Use it wisely."
 	done
 
@@ -431,6 +429,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	iftruefwd .AfterBattle
 	opentext
 	writetext .GreetingText
+	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
 	loadtrainer YOUNGSTER, ARDEN
@@ -487,7 +486,10 @@ RocketHideoutB4FTeacherSerena:
 	checkjustbattled
 	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 .skip_open
 	jumptextfaceplayer .AfterText
@@ -506,7 +508,7 @@ RocketHideoutB4FTeacherSerena:
 .SeenText:
 	text "Let me see if you"
 	line "are smart enough"
-	
+
 	para "to take on the"
 	line "leaders!"
 	done
@@ -534,7 +536,10 @@ RocketHideoutB4FSuperNerdNolan:
 	checkjustbattled
 	iffalsefwd .skip_open
 	changeblock 16, 10, $0d
-	reloadmap
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	refreshmap
+	special RestartMapMusic
 	end
 .skip_open
 	jumptextfaceplayer .AfterText
@@ -581,7 +586,7 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 	para "Blanche: Each"
 	line "lure contains the"
 
-	para "essense of a"
+	para "essence of a"
 	line "legendary bird"
 	cont "#mon."
 
@@ -597,11 +602,11 @@ RocketHideoutB4FDefeatedAllLeadersScript:
 
 	para "That's why the"
 	line "Great Tree is"
-	line "important."
+	cont "important."
 
 	para "Candela: The tree"
 	line "is ancient,"
-	
+
 	para "a sacred site for"
 	line "roosting."
 

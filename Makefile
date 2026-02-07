@@ -1,62 +1,69 @@
 NAME := polishedcrystal
 MODIFIERS :=
-VERSION := 3.2.0-beta
+VERSION := 3.2.3
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc
 
 TITLE := PKPCRYSTAL
 MCODE := PKPC
-ROMVERSION := 0x30
+ROMVERSION := 0x32
 
 FILLER := 0xff
 
 ifneq ($(wildcard rgbds/.*),)
-RGBDS := rgbds/
+RGBDS ?= rgbds/
 else
-RGBDS :=
+RGBDS ?=
 endif
+RGBASM  ?= $(RGBDS)rgbasm
+RGBFIX  ?= $(RGBDS)rgbfix
+RGBGFX  ?= $(RGBDS)rgbgfx
+RGBLINK ?= $(RGBDS)rgblink
 
 Q :=
 
 .SECONDEXPANSION:
 
-RGBASM_FLAGS     = -E -Q8 -P includes.asm -Weverything -Wtruncation=1
-RGBASM_VC_FLAGS  = $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
-RGBLINK_FLAGS    = -M -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
-RGBLINK_VC_FLAGS = -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
-RGBFIX_FLAGS     = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC3+TIMER+RAM+BATTERY -r 3
+POCKET_LOGO = gfx/logo/pocket.bin
+
+RGBASMFLAGS    = -Weverything -Wtruncation=1 -E -Q8 -P includes.asm
+RGBASMVCFLAGS  = $(RGBASMFLAGS) -DVIRTUAL_CONSOLE
+RGBLINKFLAGS   = -Weverything -Wtruncation=1 -M -n $(ROM_NAME).sym -m $(ROM_NAME).map -p $(FILLER)
+RGBLINKVCFLAGS = -Weverything -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
+RGBFIXFLAGS    = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC3+TIMER+RAM+BATTERY -r 3
+RGBGFXFLAGS    = -Weverything
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 MODIFIERS := $(MODIFIERS)-faithful
-RGBASM_FLAGS += -DFAITHFUL
+RGBASMFLAGS += -DFAITHFUL
 endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 MODIFIERS := $(MODIFIERS)-monochrome
-RGBASM_FLAGS += -DMONOCHROME
+RGBASMFLAGS += -DMONOCHROME
 endif
 ifeq ($(filter noir,$(MAKECMDGOALS)),noir)
 MODIFIERS := $(MODIFIERS)-noir
-RGBASM_FLAGS += -DNOIR
+RGBASMFLAGS += -DNOIR
 endif
 ifeq ($(filter hgss,$(MAKECMDGOALS)),hgss)
 MODIFIERS := $(MODIFIERS)-hgss
-RGBASM_FLAGS += -DHGSS
+RGBASMFLAGS += -DHGSS
 endif
 ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
 MODIFIERS := $(MODIFIERS)-debug
-RGBASM_FLAGS += -DDEBUG
+RGBASMFLAGS += -DDEBUG
 endif
 ifeq ($(filter pocket,$(MAKECMDGOALS)),pocket)
 MODIFIERS :=
 NAME := pkpc
 EXTENSION := pocket
-RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
-RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3
+RGBASMFLAGS += -DANALOGUE_POCKET -DNO_RTC
+RGBFIXFLAGS = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
 endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
-RGBASM_FLAGS += -DHUFFMAN
+RGBASMFLAGS += -DHUFFMAN
 endif
 
 rom_obj := \
@@ -81,7 +88,7 @@ rom_obj := \
 	gfx/misc.o
 
 crystal_obj    := $(rom_obj:.o=.o)
-crystal_vc_obj :=$(rom_obj:.o=_vc.o)
+crystal_vc_obj := $(rom_obj:.o=_vc.o)
 
 .SUFFIXES:
 .PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman vc
@@ -122,7 +129,7 @@ huffman: crystal
 
 
 rgbdscheck.o: rgbdscheck.asm
-	$Q$(RGBDS)rgbasm -o $@ $<
+	$Q$(RGBASM) -o $@ $<
 
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
@@ -132,12 +139,12 @@ preinclude_deps := includes.asm $(shell tools/scan_includes includes.asm)
 
 define DEP
 $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
-	$Q$$(RGBDS)rgbasm $$(RGBASM_FLAGS) -o $$@ $$<
+	$Q$$(RGBASM) $$(RGBASMFLAGS) -o $$@ $$<
 endef
 
 define VCDEP
 $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
-	$Q$$(RGBDS)rgbasm $$(RGBASM_VC_FLAGS) -o $$@ $$<
+	$Q$$(RGBASM) $$(RGBASMVCFLAGS) -o $$@ $$<
 endef
 
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
@@ -150,24 +157,23 @@ $(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc.patch.template
 
 .$(EXTENSION): tools/bankends
 $(ROM_NAME).$(EXTENSION): $(crystal_obj) layout.link
-	$Q$(RGBDS)rgblink $(RGBLINK_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
-	$Q$(RGBDS)rgbfix $(RGBFIX_FLAGS) $@
+	$Q$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -o $@ $(filter %.o,$^)
+	$Q$(RGBFIX) $(RGBFIXFLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME).map >&2
 
 $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
-	$Q$(RGBDS)rgblink $(RGBLINK_VC_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
-	$Q$(RGBDS)rgbfix $(RGBFIX_FLAGS) $@
+	$Q$(RGBLINK) $(RGBLINKVCFLAGS) -l layout.link -o $@ $(filter %.o,$^)
+	$Q$(RGBFIX) $(RGBFIXFLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME)_vc.map >&2
 
 .bsp: tools/bspcomp
 %.bsp: $(wildcard bsp/*.txt)
 	$Qcd bsp; ../tools/bspcomp patch.txt ../$@; cd ..
 
-
-gfx/battle/lyra_back.2bpp: rgbgfx += -Z
-gfx/battle/substitute-back.2bpp: rgbgfx += -Z
-gfx/battle/substitute-front.2bpp: rgbgfx += -Z
-gfx/battle/ghost.2bpp: rgbgfx += -Z
+gfx/battle/lyra_back.2bpp: RGBGFXFLAGS += -Z
+gfx/battle/substitute-back.2bpp: RGBGFXFLAGS += -Z
+gfx/battle/substitute-front.2bpp: RGBGFXFLAGS += -Z
+gfx/battle/ghost.2bpp: RGBGFXFLAGS += -Z
 
 gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
 gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace
@@ -201,28 +207,28 @@ gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/music_player/bg.2bpp: tools/gfx += --trim-whitespace
 gfx/music_player/music_player.2bpp: gfx/music_player/bg.2bpp gfx/music_player/ob.2bpp ; $Qcat $^ > $@
 
-gfx/new_game/shrink1.2bpp: rgbgfx += -Z
-gfx/new_game/shrink2.2bpp: rgbgfx += -Z
+gfx/new_game/shrink1.2bpp: RGBGFXFLAGS += -Z
+gfx/new_game/shrink2.2bpp: RGBGFXFLAGS += -Z
 
 gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; $Qcat $^ > $@
 
 gfx/pack/pack_left.2bpp: tools/gfx += --trim-whitespace
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; $Qcat $^ > $@
 
-gfx/paintings/%.2bpp: rgbgfx += -Z
+gfx/paintings/%.2bpp: RGBGFXFLAGS += -Z
 
-gfx/player/chris_back.2bpp: rgbgfx += -Z
-gfx/player/kris_back.2bpp: rgbgfx += -Z
-gfx/player/crys_back.2bpp: rgbgfx += -Z
+gfx/player/chris_back.2bpp: RGBGFXFLAGS += -Z
+gfx/player/kris_back.2bpp: RGBGFXFLAGS += -Z
+gfx/player/crys_back.2bpp: RGBGFXFLAGS += -Z
 
 gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; $Qcat $^ > $@
 gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp gfx/pokedex/area.2bpp ; $Qcat $^ > $@
-gfx/pokedex/question_mark.2bpp: rgbgfx += -Z
+gfx/pokedex/question_mark.2bpp: RGBGFXFLAGS += -Z
 
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
-gfx/pokemon/%/back.2bpp: rgbgfx += -Z
+gfx/pokemon/%/back.2bpp: RGBGFXFLAGS += -Z
 
 gfx/pc/obj.2bpp: gfx/pc/modes.2bpp gfx/pc/bags.2bpp ; $Qcat $^ > $@
 
@@ -231,10 +237,14 @@ gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
 gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates --keep-whitespace --remove-xflip
 
 gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
-gfx/stats/stats_balls.2bpp: gfx/stats/stats.2bpp gfx/stats/balls.2bpp ; $Qcat $^ > $@
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
-gfx/title/logo_version.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; $Qcat $^ > $@
+gfx/title/logo_bg.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; $Qcat $^ > $@
+
+gfx/title/suicune_unowns.2bpp: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
+gfx/title/suicune_unowns.tilemap: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
+gfx/title/suicune_unowns.tilemap: gfx/title/suicune_unowns.png
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -t $@ $<
 
 gfx/town_map/town_map.2bpp: tools/gfx += --trim-whitespace
 
@@ -245,11 +255,11 @@ gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trad
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; $Qcat $^ > $@
 gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qcat $^ > $@
 
-gfx/trainer_card/chris_card.2bpp: rgbgfx += -Z
-gfx/trainer_card/kris_card.2bpp: rgbgfx += -Z
-gfx/trainer_card/crys_card.2bpp: rgbgfx += -Z
+gfx/trainer_card/chris_card.2bpp: RGBGFXFLAGS += -Z
+gfx/trainer_card/kris_card.2bpp: RGBGFXFLAGS += -Z
+gfx/trainer_card/crys_card.2bpp: RGBGFXFLAGS += -Z
 
-gfx/trainers/%.2bpp: rgbgfx += -Z
+gfx/trainers/%.2bpp: RGBGFXFLAGS += -Z
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
 gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1p gfx/type_chart/bg.2bpp.vram0p ; $Qcat $^ > $@
@@ -273,12 +283,12 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 #	$Qsuperfamiconv tiles -R -i $@ -d $<
 
 %.2bpp: %.png
-	$Q$(RGBDS)rgbgfx $(rgbgfx) -o $@ $<
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -o $@ $@)
 
 %.1bpp: %.png
-	$(RGBDS)rgbgfx $(rgbgfx) -d1 -o $@ $<
+	$(RGBGFX) -c dmg $(RGBGFXFLAGS) -d1 -o $@ $<
 	$(if $(tools/gfx),\
 		$Qtools/gfx $(tools/gfx) -d1 -o $@ $@)
 
@@ -310,4 +320,4 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 	$Qtools/png_dimensions $< $@
 
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
-	$QRGBDS=$(RGBDS) tools/collision_asm2bin.sh $< $@
+	$QRGBASM=$(RGBASM) RGBLINK=$(RGBLINK) tools/collision_asm2bin.sh $< $@

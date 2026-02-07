@@ -14,27 +14,28 @@ _InitSound::
 	push bc
 	push af
 	call MusicOff
-	ld hl, rNR50 ; channel control registers
-	xor a
-	ld [hli], a ; rNR50 ; volume/vin
-	ld [hli], a ; rNR51 ; sfx channels
-	; all channels on
-	ld [hl], $80 ; rNR52 ; music channels
 
-	ld hl, rNR10 ; sound channel registers
+	ld hl, rAUDVOL ; channel control registers
+	xor a
+	ld [hli], a ; rAUDVOL  ; volume/vin
+	ld [hli], a ; rAUDTERM ; sfx channels
+	; all channels on
+	ld [hl], $80 ; rAUDENA ; music channels
+
+	ld hl, AUD1RAM ; sound channel registers
 	ld e, NUM_MUSIC_CHANS
 .clearsound
-;   sound channel   1      2      3      4
+	; channel     AUD1RAM,    AUD2RAM,   AUD3RAM,    AUD4RAM
 	xor a
-	ld [hli], a ; rNR10, rNR20, rNR30, rNR40 ; sweep = 0
+	ld [hli], a ; rAUD1SWEEP, unused,    rAUD3ENA,   unused    ; sweep = 0
 
-	ld [hli], a ; rNR11, rNR21, rNR31, rNR41 ; length/wavepattern = 0
+	ld [hli], a ; rAUD1LEN,   rAUD2LEN,  rAUD3LEN,   rAUD4LEN  ; length/wavepattern = 0
 	ld a, $8
-	ld [hli], a ; rNR12, rNR22, rNR32, rNR42 ; envelope = 0
+	ld [hli], a ; rAUD1ENV,   rAUD2ENV,  rAUD3LEVEL, rAUD4ENV  ; envelope = 0
 	xor a
-	ld [hli], a ; rNR13, rNR23, rNR33, rNR43 ; frequency lo = 0
+	ld [hli], a ; rAUD1LOW,   rAUD2LOW,  rAUD3LOW,   rAUD4POLY ; frequency lo = 0
 	ld a, $80
-	ld [hli], a ; rNR14, rNR24, rNR34, rNR44 ; restart sound (freq hi = 0)
+	ld [hli], a ; rAUD1HIGH,  rAUD2HIGH, rAUD3HIGH,  rAUD4GO   ; restart sound (freq hi = 0)
 	dec e
 	jr nz, .clearsound
 
@@ -43,6 +44,9 @@ _InitSound::
 	xor a
 	rst ByteFill
 
+	dec a
+	ld [wCh3LoadedWaveform], a ; initializes to -1 so title music can use sample 0
+	ldh [rAUD3ENA], a ; ch3 dac on
 	ld a, MAX_VOLUME
 	ld [wVolume], a
 	call MusicOn
@@ -62,7 +66,7 @@ MusicFadeRestart:
 	ret
 
 MusicOn:
-	ld a, 1
+	ld a, TRUE
 	ld [wMusicPlaying], a
 	ret
 
@@ -183,7 +187,7 @@ _UpdateSound::
 	call FadeMusic
 	; write volume to hardware register
 	ld a, [wVolume]
-	ldh [rNR50], a
+	ldh [rAUDVOL], a
 	; write SO on/off to hardware register
 	ld hl, wSoundOutput
 	ld a, [wOptions1]
@@ -194,7 +198,7 @@ _UpdateSound::
 	swap a
 	or [hl]
 .stereo
-	ldh [rNR51], a
+	ldh [rAUDTERM], a
 	ret
 
 UpdateChannels:
@@ -231,7 +235,7 @@ UpdateChannels:
 	bit NOTE_PITCH_SWEEP, [hl]
 	jr z, .noPitchSweep
 	ld a, [wSoundInput]
-	ldh [rNR10], a
+	ldh [rAUD1SWEEP], a
 .noPitchSweep
 	bit NOTE_REST, [hl] ; rest
 	jr nz, .ch1_rest
@@ -245,47 +249,42 @@ UpdateChannels:
 
 .ch1_frequency_override
 	ld a, [wCurTrackFrequency]
-	ldh [rNR13], a
+	ldh [rAUD1LOW], a
 	ld a, [wCurTrackFrequency + 1]
-	ldh [rNR14], a
+	ldh [rAUD1HIGH], a
 .ch1_check_duty_override
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rNR11]
-	and $3f ; sound length
-	or d
-	ldh [rNR11], a
+	ldh [rAUD1LEN], a
 	ret
 
 .ch1_vibrato_override
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rNR11]
-	and $3f ; sound length
-	or d
-	ldh [rNR11], a
+	ldh [rAUD1LEN], a
 	ld a, [wCurTrackFrequency]
-	ldh [rNR13], a
+	ldh [rAUD1LOW], a
 	ret
 
 .ch1_rest
-	ld hl, rNR10
-	jmp ClearChannel
+	xor a
+	ldh [rAUD1SWEEP], a
+	ld a, AUD1ENV_UP
+	ldh [rAUD1ENV], a
+	ld a, AUD1HIGH_RESTART
+	ldh [rAUD1HIGH], a
+	ret
 
 .ch1_noise_sampling
-	ld hl, wCurTrackDuty
-	ld a, $3f ; sound length
-	or [hl]
-	ldh [rNR11], a
+	ld a, [wCurTrackDuty]
+	ldh [rAUD1LEN], a
 	ld a, [wCurTrackIntensity]
-	ldh [rNR12], a
+	ldh [rAUD1ENV], a
 	ld a, [wCurTrackFrequency]
-	ldh [rNR13], a
+	ldh [rAUD1LOW], a
 	ld a, [wCurTrackFrequency + 1]
 	or $80
-	ldh [rNR14], a
+	ldh [rAUD1HIGH], a
 	ret
 
 .Channel2:
@@ -301,40 +300,33 @@ UpdateChannels:
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rNR21]
-	and $3f ; sound length
-	or d
-	ldh [rNR21], a
+	ldh [rAUD2LEN], a
 	ret
 
 .ch2_vibrato_override
 	ld a, [wCurTrackDuty]
-	ld d, a
-	ldh a, [rNR21]
-	and $3f ; sound length
-	or d
-	ldh [rNR21], a
+	ldh [rAUD2LEN], a
 	ld a, [wCurTrackFrequency]
-	ldh [rNR23], a
+	ldh [rAUD2LOW], a
 	ret
 
 .ch2_rest
-	ld hl, rNR20
-	jmp ClearChannel
+	ld a, AUD2ENV_UP
+	ldh [rAUD2ENV], a
+	ld a, AUD2HIGH_RESTART
+	ldh [rAUD2HIGH], a
+	ret
 
 .ch2_noise_sampling
-	ld hl, wCurTrackDuty
-	ld a, $3f ; sound length
-	or [hl]
-	ldh [rNR21], a
+	ld a, [wCurTrackDuty]
+	ldh [rAUD2LEN], a
 	ld a, [wCurTrackIntensity]
-	ldh [rNR22], a
+	ldh [rAUD2ENV], a
 	ld a, [wCurTrackFrequency]
-	ldh [rNR23], a
+	ldh [rAUD2LOW], a
 	ld a, [wCurTrackFrequency + 1]
 	or $80 ; initial (restart)
-	ldh [rNR24], a
+	ldh [rAUD2HIGH], a
 	ret
 
 .Channel3:
@@ -349,12 +341,14 @@ UpdateChannels:
 	ret z
 
 	ld a, [wCurTrackFrequency]
-	ldh [rNR33], a
+	ldh [rAUD3LOW], a
 	ret
 
 .ch3_rest
-	ld hl, rNR30
-	jmp ClearChannel
+	; mute ch3
+	xor a
+	ldh [rAUD3LEVEL], a
+	ret
 
 .ch3_noise_sampling
 	ld hl, wCh3LoadedWaveform
@@ -367,13 +361,12 @@ UpdateChannels:
 
 	ld a, d
 	rlca
-	ldh [rNR32], a
+	ldh [rAUD3LEVEL], a
 	ld a, [wCurTrackFrequency]
-	ldh [rNR33], a
+	ldh [rAUD3LOW], a
 	ld a, [wCurTrackFrequency + 1]
 	or $80
-	ldh [rNR30], a ; dac on, in case ReloadWaveform turned it off
-	ldh [rNR34], a
+	ldh [rAUD3HIGH], a
 	ret
 
 .Channel4:
@@ -387,18 +380,19 @@ UpdateChannels:
 	ret
 
 .ch4_rest
-	ld hl, rNR40
-	jmp ClearChannel
+	ld a, AUD4ENV_UP
+	ldh [rAUD4ENV], a
+	ld a, AUD4GO_RESTART
+	ldh [rAUD4GO], a
+	ret
 
 .ch4_noise_sampling
-	ld a, $3f ; sound length
-	ldh [rNR41], a
 	ld a, [wCurTrackIntensity]
-	ldh [rNR42], a
+	ldh [rAUD4ENV], a
 	ld a, [wCurTrackFrequency]
-	ldh [rNR43], a
+	ldh [rAUD4POLY], a
 	ld a, $80
-	ldh [rNR44], a
+	ldh [rAUD4GO], a
 	ret
 
 PlayDanger:
@@ -422,15 +416,15 @@ PlayDanger:
 	ld hl, DangerSoundHigh
 .updatehw
 	xor a
-	ldh [rNR10], a ; sweep off
+	ldh [rAUD1SWEEP], a ; sweep off
 	ld a, [hli]
-	ldh [rNR11], a ; sound length / duty cycle
+	ldh [rAUD1LEN], a ; sound length / duty cycle
 	ld a, [hli]
-	ldh [rNR12], a ; ch1 volume envelope
+	ldh [rAUD1ENV], a ; ch1 volume envelope
 	ld a, [hli]
-	ldh [rNR13], a ; ch1 frequency lo
+	ldh [rAUD1LOW], a ; ch1 frequency lo
 	ld a, [hli]
-	ldh [rNR14], a ; ch1 frequency hi
+	ldh [rAUD1HIGH], a ; ch1 frequency hi
 .increment
 	ld a, d
 	and $e0
@@ -516,7 +510,7 @@ FadeMusic:
 	ld [wVolume], a
 	; did we just get on a bike?
 	ld a, [wPlayerState]
-	cp $1 ; bicycle
+	dec a ; bicycle = 1
 	jr z, .bicycle
 	push bc
 	; restart sound
@@ -719,7 +713,7 @@ HandleTrackVibrato:
 	add hl, bc
 	bit SOUND_PITCH_OFFSET, [hl]
 	jr z, .vibrato
-	ld hl, wChannel1CryPitch - wChannel1
+	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
@@ -1010,9 +1004,9 @@ ParseMusic:
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	bit SOUND_SFX, [hl]
-	jmp nz, ParseSFXOrRest
-	bit SOUND_REST, [hl] ; rest
-	jmp nz, ParseSFXOrRest
+	jmp nz, ParseSFXOrCry
+	bit SOUND_CRY, [hl]
+	jmp nz, ParseSFXOrCry
 	bit SOUND_NOISE, [hl] ; noise sample
 	jmp nz, GetNoiseSample
 ; normal note
@@ -1081,7 +1075,7 @@ ParseMusic:
 .chan_5to8
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	bit SOUND_REST, [hl]
+	bit SOUND_CRY, [hl]
 	call nz, RestoreVolume
 	; end music
 	ld a, [wCurChannel]
@@ -1089,25 +1083,21 @@ ParseMusic:
 	jr nz, .ok
 	; ????
 	xor a
-	ldh [rNR10], a ; sweep = 0
+	ldh [rAUD1SWEEP], a ; sweep = 0
 .ok
 ; stop playing
 	; turn channel off
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
 	res SOUND_CHANNEL_ON, [hl]
-	; note = rest
-	ld hl, wChannel1NoteFlags - wChannel1
-	add hl, bc
-	set NOTE_REST, [hl]
 	; clear music id & bank
 	ld hl, wChannel1MusicID - wChannel1
 	add hl, bc
 	xor a
 	ld [hli], a ; id hi
 	ld [hli], a ; id lo
-	ld [hli], a ; bank
-	ret
+	ld [hl], a  ; bank
+	; fallthrough
 
 .rest
 ; note = rest
@@ -1122,10 +1112,10 @@ RestoreVolume:
 	cp CHAN5
 	ret nz
 	xor a
-	ld hl, wChannel6CryPitch
+	ld hl, wChannel6PitchOffset
 	ld [hli], a
 	ld [hl], a
-	ld hl, wChannel8CryPitch
+	ld hl, wChannel8PitchOffset
 	ld [hli], a
 	ld [hl], a
 	ld a, [wLastVolume]
@@ -1135,7 +1125,7 @@ RestoreVolume:
 	ld [wSFXPriority], a
 	ret
 
-ParseSFXOrRest:
+ParseSFXOrCry:
 	; turn noise sampling on
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -1201,10 +1191,10 @@ GetNoiseSample:
 	add hl, de
 	; get pitch
 	ld a, [wCurMusicByte]
-	swap a
 	; non-rest note?
-	and $f
+	and $f0
 	jr z, .rest
+	swap a
 	; use 'pitch' to seek noise sample set
 	ld e, a
 	ld d, 0
@@ -1518,7 +1508,7 @@ Music_Tone:
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_PITCH_OFFSET, [hl]
-	ld hl, wChannel1CryPitch - wChannel1
+	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
 	call GetMusicWord
 	ld a, e
@@ -1677,7 +1667,7 @@ Music_ForceOctave:
 ; this forces all notes up by the starting octave
 ; params: 1
 	call GetMusicByte
-	ld hl, wChannel1PitchOffset - wChannel1
+	ld hl, wChannel1Transposition - wChannel1
 	add hl, bc
 	ld [hl], a
 	ret
@@ -1885,7 +1875,7 @@ GetFrequency:
 	ld e, a
 .added
 	; get starting octave
-	ld hl, wChannel1PitchOffset - wChannel1
+	ld hl, wChannel1Transposition - wChannel1
 	add hl, bc
 	ld a, [hl]
 	swap a ; hi nybble
@@ -2092,7 +2082,7 @@ _PlayMusic::
 	ld [wMusicNoiseSampleSet], a
 	jmp MusicOn
 
-_PlayCryHeader::
+_PlayCry::
 ; Play cry de using parameters:
 ;	wCryPitch
 ;	wCryLength
@@ -2102,7 +2092,7 @@ _PlayCryHeader::
 ; Initialize the pitch sweep
 	xor a
 	ld [wSoundInput], a
-	ldh [rNR10], a
+	ldh [rAUD1SWEEP], a
 
 ; Overload the music id with the cry id
 	ld hl, wMusicID
@@ -2136,12 +2126,12 @@ _PlayCryHeader::
 
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	set SOUND_REST, [hl]
+	set SOUND_CRY, [hl]
 
 	inc hl ; Flags2
 	set SOUND_PITCH_OFFSET, [hl]
 
-	ld hl, wChannel1CryPitch - wChannel1
+	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
 	ld a, [wCryPitch]
 	ld [hli], a
@@ -2206,34 +2196,26 @@ PlayStereoSFX::
 ; clear channels if they aren't already
 	call MusicOff
 	ld hl, wChannel5Flags
-	bit SOUND_CHANNEL_ON, [hl] ; ch5 on?
-	jr z, .ch6
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rNR10
-	call ClearChannel
-	xor a
-	ld [wSoundInput], a ; global sound off
-.ch6
+	bit SOUND_CHANNEL_ON, [hl]
+	res SOUND_CHANNEL_ON, [hl]
+	call nz, UpdateChannels.ch1_rest
+
 	ld hl, wChannel6Flags
 	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .ch7
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rNR20
-	call ClearChannel
-.ch7
+	res SOUND_CHANNEL_ON, [hl]
+	call nz, UpdateChannels.ch2_rest
+
 	ld hl, wChannel7Flags
 	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .ch8
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rNR30
-	call ClearChannel
-.ch8
+	res SOUND_CHANNEL_ON, [hl]
+	call nz, UpdateChannels.ch3_rest
+
 	ld hl, wChannel8Flags
 	bit SOUND_CHANNEL_ON, [hl]
+	res SOUND_CHANNEL_ON, [hl]
 	jr z, .chscleared
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	ld hl, rNR40
-	call ClearChannel
+	call UpdateChannels.ch4_rest
+
 	xor a
 	ld [wNoiseSampleAddressLo], a
 	ld [wNoiseSampleAddressHi], a
@@ -2367,11 +2349,14 @@ ReloadWaveform:
 	sub l
 	ld h, a
 	xor a
-	ldh [rNR30], a ; dac off
-	; load wavepattern into rWave_0-rWave_f
-for x, 16
+	; Cycle the dac, this stops the channel so we can write to wave ram
+	ldh [rAUD3ENA], a
+	cpl
+	ldh [rAUD3ENA], a
+	; load wavepattern into AUD3WAVERAM
+for x, AUD3WAVE_SIZE
 	ld a, [hli]
-	ldh [rWave_{x:x}], a
+	ldh [rAUD3WAVE_{X:x}], a
 endr
 	ret
 
@@ -2401,23 +2386,6 @@ ChannelPointers:
 	dw wChannel7
 	dw wChannel8
 	assert_table_length NUM_CHANNELS
-
-ClearChannel:
-; input: hl = beginning hw sound register (rNR10, rNR20, rNR30, rNR40)
-; output: 00 00 80 00 80
-
-;   sound channel   1      2      3      4
-	xor a
-	ld [hli], a ; rNR10, rNR20, rNR30, rNR40 ; sweep = 0
-
-	ld [hli], a ; rNR11, rNR21, rNR31, rNR41 ; length/wavepattern = 0
-	ld a, $8
-	ld [hli], a ; rNR12, rNR22, rNR32, rNR42 ; envelope = 0
-	xor a
-	ld [hli], a ; rNR13, rNR23, rNR33, rNR43 ; frequency lo = 0
-	ld a, $80
-	ld [hli], a ; rNR14, rNR24, rNR34, rNR44 ; restart sound (freq hi = 0)
-	ret
 
 PlayTrainerEncounterMusic::
 ; input: e = trainer type

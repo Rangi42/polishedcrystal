@@ -169,4 +169,3 @@ ContinueGivingPokerus:
 	or [hl]
 	ld [hl], a
 	ret
-

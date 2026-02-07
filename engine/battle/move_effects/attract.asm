@@ -11,24 +11,24 @@ BattleCommand_attract:
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_LOVE, [hl]
 	jr nz, .failed
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp OBLIVIOUS
 	jr nz, .no_ability_protection
 
 	; don't display anything in case we're in cute charm
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
-	farjp EnableAnimations
+	farjp EndAbility
 
 .failed
 	; don't display anything in case we're in cute charm
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 
@@ -49,7 +49,7 @@ BattleCommand_attract:
 	cp HELD_DESTINY_KNOT
 	jr nz, .destiny_knot_done
 
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp OBLIVIOUS
 	jr nz, .no_user_ability_protection
 

@@ -48,7 +48,6 @@ ItemFinder:
 	farjp ApplyObjectFacing
 
 .Script_FoundSomething:
-	refreshmap
 	special UpdateTimePals
 	callasm .ItemfinderEffect
 	iffalse_jumpopenedtext .UnderfootText
@@ -64,7 +63,6 @@ ItemFinder:
 	done
 
 .Script_FoundNothingNearby:
-	refreshmap
 	special UpdateTimePals
 	jumpthisopenedtext
 
@@ -73,7 +71,6 @@ ItemFinder:
 	done
 
 .Script_FoundNothingAtAll:
-	refreshmap
 	special UpdateTimePals
 	jumpthisopenedtext
 

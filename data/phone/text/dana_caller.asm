@@ -26,7 +26,6 @@ DanaLostAMonText:
 	text "You know what?"
 	line "A wild "
 	text_ram wStringBuffer4
-	text ""
 
 	para "got away from me"
 	line "again."

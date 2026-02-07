@@ -46,10 +46,12 @@ DEF NO_ROOF_TILESETS EQU const_value
 	const TILESET_POKEMON_MANSION      ; 2b
 	const TILESET_BATTLE_FACTORY       ; 2c
 	const TILESET_SNOWTOP_MOUNTAIN     ; 2d
+	const TILESET_HIDDEN_GROTTO        ; 2e
+	const TILESET_PEAKS                ; 2f
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
-DEF TILESET_LENGTH EQU 15
+DEF TILESET_LENGTH EQU 18
 
 ; MapGroupRoofs values (see data/maps/roofs.asm)
 ; MapGroupRoofGFX indexes (see engine/tilesets/mapgroup_roofs.asm)
@@ -58,7 +60,7 @@ DEF TILESET_LENGTH EQU 15
 	const ROOF_VIOLET    ; 1
 	const ROOF_AZALEA    ; 2
 	const ROOF_OLIVINE   ; 3
-	const ROOF_STATUE    ; 4
+	const ROOF_GOLDENROD ; 4
 DEF NUM_ROOFS EQU const_value
 
 ; roof length (see gfx/tilesets/roofs)

@@ -154,6 +154,40 @@ TilesetQuietCaveAnim::
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
+TilesetPeaksAnim::
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  StandingTileFrame8
+	dw vTiles2 tile $25, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $25, ReadTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $26, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $26, ReadTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoneTileAnimation
+
 TilesetParkAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  DoNothing
@@ -335,6 +369,7 @@ TilesetDecorAnim::
 TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
+TilesetHiddenGrottoAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -1192,12 +1227,12 @@ FlickeringCaveEntrancePalette:
 	cp DARKNESS_PALSET
 	ret nz
 
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
-	ld a, %10100000 ; auto-increment, index $20 (pal 4 color 0)
+	ld a, BGPI_AUTOINC | (0 palette 4)
 	ldh [rBGPI], a
 
 	ldh a, [hVBlankCounter]
@@ -1213,7 +1248,7 @@ FlickeringCaveEntrancePalette:
 	ldh [rBGPD], a
 
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 TowerPillarTilePointer1:  dw vTiles2 tile $2d, TowerPillarTile1

@@ -6,7 +6,7 @@
 ; - ItemAttributes (see data/items/attributes.asm)
 ; - ItemIconPointers (see data/items/icon_pointers.asm)
 ; - ItemIconPalettes (see gfx/items/items.pal)
-; - ItemEffects (see engine/items/item_effects.asm)
+; - _DoItemEffect.ItemEffects (see engine/items/item_effects.asm)
 	const_def
 	const NO_ITEM      ; 00
 DEF PARK_BALL EQU NO_ITEM
@@ -276,7 +276,7 @@ DEF NUM_STONES EQU const_value - FIRST_STONE
 	const POWER_ANKLET ; d5
 
 	const DRAGON_SCALE ; d6
-	const UP_GRADE     ; d7
+	const UPGRADE      ; d7
 	const DUBIOUS_DISC ; d8
 	const PROTECTOR    ; d9
 	const ELECTIRIZER  ; da
@@ -581,7 +581,7 @@ endc
 	const NAM_TOXIC_ORB
 	const NAM_TWISTEDSPOON
 	const NAM_ULTRA_BALL
-	const NAM_UP_GRADE
+	const NAM_UPGRADE
 	const NAM_WATER_STONE
 	const NAM_WEAK_POLICY
 	const NAM_WHITE_HERB
@@ -634,7 +634,7 @@ DEF NUM_CANDIES EQU const_value - 1
 ; - KeyItemAttributes (see data/items/attributes.asm)
 ; - KeyItemIconPointers (see data/items/icon_pointers.asm)
 ; - KeyItemIconPalettes (see gfx/items/key_items.pal)
-; - KeyItemEffects (see engine/items/item_effects.asm)
+; - DoKeyItemEffect.KeyItemEffects (see engine/items/item_effects.asm)
 	const_def 1
 	const BICYCLE      ; 01
 	const OLD_ROD      ; 02
@@ -719,3 +719,18 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_TYPE_CHART
 	const NAM_WING_CASE
 	assert const_value - 1 == NUM_KEY_ITEMS
+
+; special items ids
+; story items that have names and icons but do not go in the bag
+; Pokegear must be highest value due to special palette handling
+; indexes for:
+; - SpecialItemNames (see data/items/special_names.asm)
+; - SpecialItemIconPointers (see data/items/icon_pointers.asm)
+; - SpecialItemIconPalettes (see gfx/items/special_items.pal)
+	const_def
+	const POKEDEX
+	const MAP_CARD
+	const RADIO_CARD
+	const EXPN_CARD
+	const POKEGEAR
+DEF NUM_SPECIAL_ITEMS EQU const_value

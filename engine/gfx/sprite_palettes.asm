@@ -6,30 +6,61 @@ LoadWeatherPal::
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
-	assert OW_WEATHER_RAIN == 1
 	dec a
-	jr z, .rain
-	assert OW_WEATHER_SNOW == 2
-	dec a
-	jr z, .snow
-	assert OW_WEATHER_THUNDERSTORM == 3
-	dec a
-	jr z, .rain ; thunderstorm
-	assert OW_WEATHER_SANDSTORM == 4
-	jr .sandstorm
+	call StackJumpTable
+
+.Jumptable:
+	table_width 2
+	dw .rain
+	dw .snow
+	dw .rain ; thunderstorm
+	dw .sand
+	dw .cherry
+	assert_table_length NUM_OW_WEATHERS
+
+.rain
+	ld a, PAL_OW_RAIN
+	jr .use_ow_weather_pal
+
+.sand
+	ld a, PAL_OW_SAND
+	jr .use_ow_weather_pal
+
+.cherry
+	ld a, PAL_OW_PINK
+	; fallthrough
+.use_ow_weather_pal
+	ld [wNeededPalIndex], a
+	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
+	ld de, wOBPals1 palette PAL_OW_WEATHER
+	jr CopySpritePalHandler
+
 .snow
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	; we are not loading an official palette,
 	; so this tells dynamic pals to not associate this
 	; palette with a sprite.
 	ld a, NO_PAL_LOADED
 	ld [wLoadedObjPal7], a
-	ld hl, wOBPals1 palette 6
+	ld hl, wOBPals1 palette PAL_OW_WEATHER
+if !DEF(MONOCHROME)
+	assert LOW(NO_PAL_LOADED) == $ff
 	ld bc, 1 palettes
 	rst ByteFill
+else
+	ld bc, PAL_MONOCHROME_WHITE
+	ld a, 4 colors
+.loop
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	dec a
+	jr nz, .loop
+endc
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
@@ -38,20 +69,8 @@ LoadWeatherPal::
 	ldh [hCGBPalUpdate], a
 .skip_apply
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
-
-.rain
-	ld a, PAL_OW_RAIN
-	jr .use_pal_6
-
-.sandstorm
-	ld a, PAL_OW_SAND
-.use_pal_6
-	ld [wNeededPalIndex], a
-	ld [wLoadedObjPal6], a
-	ld de, wOBPals1 palette 6
-	jr CopySpritePal
 
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)
@@ -63,6 +82,77 @@ CopySpritePalToOBPal7:
 	ld [wLoadedObjPal7], a
 	ld de, wOBPals1 palette 7
 	; fallthrough
+CopySpritePalHandler::
+	; check if we are fading palettes
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rWBK], a
+	ld a, [wPalFadeDelayFrames]
+	and a
+	jr z, .not_fading
+	; we are fading, time for fancy stuff.
+	; assume we already already have previous pal states saved.
+	pop af
+	ldh [rWBK], a
+	xor a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
+	ld a, [wPalFlags]
+	push af
+	and ~NO_DYN_PAL_APPLY
+	ld [wPalFlags], a
+	push de
+	push hl
+	ld a, [wPalWhiteState]
+	and a
+	jr z, .copy_sprite_pal
+	; fading from white
+	ld hl, wOBPals2 - wOBPals1
+	add hl, de
+	ld d, h
+	ld e, l
+	call CopyWhitePal
+	jr .copied_pal
+.copy_sprite_pal
+	call CopySpritePal
+.copied_pal
+	pop hl
+	pop de
+	ld a, [wPalFlags]
+	or NO_DYN_PAL_APPLY
+	ld [wPalFlags], a
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	call CalculateStates
+	call CopySpritePal
+	push de
+	push bc
+	ld c, 1 palettes
+	ld a, e
+	sub LOW(wOBPals1)
+	call SimpleDivide
+	ld a, b
+	pop bc
+	pop de
+	push bc
+	push de
+	push hl
+	farcall CatchUpObjPaletteFade
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ld [wPalFlags], a
+	ret
+
+.not_fading
+	pop af
+	ldh [rWBK], a
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	call CalculateStates
+; fallthrough
 CopySpritePal::
 	push af
 	push bc
@@ -83,17 +173,10 @@ CopySpritePal::
 	jr nz, .not_overcast
 
 	; check darkness
-	push hl
-	push de
-	call GetMapTimeOfDay
-	pop de
-	pop hl
-	or ~IN_DARKNESS
-	inc a
-	jr nz, .not_darkness
-	ld a, [wStatusFlags]
-	bit 2, a ; Flash
-	jr nz, .not_darkness
+	ld a, PALSTATE_DARKNESS
+	call GetPalState
+	and a
+	jr z, .not_darkness
 	ld a, [wNeededPalIndex]
 	cp NUM_OW_TIME_OF_DAY_PALS
 	jr nc, .not_darkness
@@ -104,7 +187,8 @@ CopySpritePal::
 
 .not_darkness
 	; check overcast
-	farcall GetOvercastIndex
+	ld a, PALSTATE_OVERCAST_INDEX
+	call GetPalState
 	and a
 	jr z, .not_overcast
 	ld a, [wNeededPalIndex]
@@ -133,7 +217,8 @@ CopySpritePal::
 	bit USE_DAYTIME_PAL_F, a
 	ld a, DAY
 	jr nz, .daytime
-	ld a, [wTimeOfDayPal]
+	ld a, PALSTATE_TIME_OF_DAY
+	call GetPalState
 .daytime
 	maskbits NUM_DAYTIMES
 	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
@@ -166,8 +251,8 @@ CopySpritePal::
 	ret
 
 ApplyWeatherPal:
-	ld hl, wOBPals1 palette 6
-	ld de, wOBPals2 palette 6
+	ld hl, wOBPals1 palette PAL_OW_WEATHER
+	ld de, wOBPals2 palette PAL_OW_WEATHER
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
@@ -176,6 +261,100 @@ ApplyOBPals:
 	ld de, wOBPals2
 	ld bc, 8 palettes
 	jmp FarCopyColorWRAM
+
+GetPalState:
+; input: a = state index
+; output: a = state value
+	push hl
+	push de
+	add LOW(wPalStates)
+	ld l, a
+	adc HIGH(wPalStates)
+	sub l
+	ld h, a
+	ld a, [wPalState]
+	and a ; prev
+	assert PREV_PALSTATE == 0
+	jr z, .got_state
+	ld de, PALSTATE_SIZE
+	add hl, de
+.got_state
+	ld a, [hl]
+	pop de
+	pop hl
+	ret
+
+SavePrevPalStates:
+	xor a
+; fallthrough
+CalculateStates:
+; input: a = 0 (previous), 1 (current)
+	push hl
+	ld hl, wPrevPalStates
+	and a
+	jr z, .got_state
+	ld hl, wCurPalStates
+.got_state
+	ld a, [wCurWeather]
+	ld [hli], a
+	push de
+	call GetMapTimeOfDay
+	pop de
+	or ~IN_DARKNESS
+	inc a
+	jr nz, .not_darkness
+	ld a, [wStatusFlags]
+	bit 2, a ; Flash
+	ld a, 1
+	jr z, .got_darkness
+.not_darkness
+	xor a
+.got_darkness
+	ld [hli], a
+	push hl
+	push de
+	farcall GetOvercastIndex
+	pop de
+	pop hl
+	ld [hli], a
+	ld a, [wTimeOfDayPal]
+	ld [hl], a
+	pop hl
+	ret
+
+CopyWhitePal:
+; target palette in de
+	push hl
+	push bc
+	ld h, d
+	ld l, e
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rWBK], a
+	; we are not loading an official palette,
+	; so this tells dynamic pals to not associate this
+	; palette with a sprite.
+if !DEF(MONOCHROME)
+	ld a, $ff
+	ld bc, 1 palettes
+	rst ByteFill
+else
+	ld bc, PAL_MONOCHROME_WHITE
+	ld a, 4 colors
+.loop
+	ld [hl], c ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
+	inc hl
+	dec a
+	jr nz, .loop
+endc
+	pop af
+	ldh [rWBK], a
+	pop bc
+	pop hl
+	ret
 
 MapObjectPals:
 	table_width 1 palettes

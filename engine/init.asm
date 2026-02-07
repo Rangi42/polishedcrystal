@@ -24,13 +24,25 @@ _Init::
 	xor a
 	ldh [rLCDC], a
 
-; Place stack at its default location in HRAM for 'call nz, DoubleSpeed'
-	ld sp, $fffe
-
 ; Enable double speed now to speed up the rest of initialization
 	ldh a, [hCGB]
 	and a
-	call nz, DoubleSpeed
+	jr z, .no_double_speed
+	ld hl, rSPD
+	bit 7, [hl]
+	jr nz, .no_double_speed
+	set 0, [hl]
+	xor a
+	ldh [rIF], a
+	ldh [rIE], a
+	ld a, JOYP_GET_NONE
+	ldh [rJOYP], a
+	stop ; rgbasm adds a nop after this instruction by default
+.no_double_speed
+
+; Place stack at its default location in HRAM for 'rst ByteFill'
+; (which clears the WRAM0 that contains 'wStack')
+	ld sp, $fffe
 
 ; Clear WRAM bank 0
 	ld hl, wRAM0Start
@@ -59,11 +71,21 @@ _Init::
 
 	call ClearWRAM
 	ld a, 1
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	call ClearVRAM
 	call ClearSprites
 
-	; Write checksum to WRAM for save state check
+; Initialize SRAM access count
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+	ld a, BANK(sSRAMAccessCount)
+	ld [rRAMB], a
+	ld a, -1
+	ld [sSRAMAccessCount], a
+	ld a, RAMG_SRAM_DISABLE
+	ld [rRAMG], a
+
+; Write checksum to WRAM for save state check
 	ld a, [RomHeaderChecksum]
 	ld [wRomChecksum], a
 	ld a, [RomHeaderChecksum + 1]
@@ -71,13 +93,13 @@ _Init::
 
 ; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
 	ld hl, wRNGState
-	ld a, "R"
+	ld a, 'R'
 	ld [hli], a
-	ld a, "N"
+	ld a, 'N'
 	ld [hli], a
-	ld a, "G"
+	ld a, 'G'
 	ld [hli], a
-	ld [hl], "!"
+	ld [hl], '!'
 
 	call WriteOAMDMACodeToHRAM
 
@@ -87,7 +109,7 @@ _Init::
 	ldh [hSCY], a
 	ldh [rJOYP], a
 
-	ld a, 1 << rSTAT_INT_MODE_0
+	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 
 	ld a, $90
@@ -136,12 +158,12 @@ _Init::
 	farcall StartClock
 
 	xor a
-	ld [MBC3LatchClock], a
-	ld [MBC3SRamEnable], a
+	ld [rRTCLATCH], a
+	ld [rRAMG], a
 
 	xor a
 	ldh [rIF], a
-	ld a, 1 << VBLANK | 1 << SERIAL
+	ld a, IE_VBLANK | IE_SERIAL
 	ldh [rIE], a
 	ei
 
@@ -188,7 +210,7 @@ ClearWRAM::
 	ld a, 1
 .bank_loop
 	push af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ld hl, wRAM1Start
 	ld bc, $1000

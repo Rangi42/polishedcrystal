@@ -24,4 +24,4 @@ AbnormalContactMoves:
 	db SACRED_FIRE
 	db SEED_BOMB
 	db STONE_EDGE
-	db STRUGGLE ; -1
+	db -1 ; Terminator only, Struggle makes contact. Checked for directly.

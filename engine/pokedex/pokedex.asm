@@ -55,7 +55,7 @@ Pokedex_LoadTilemapWithPokepic:
 	ld c, 7
 .inner_loop
 	ld a, [hl]
-	xor VRAM_BANK_1
+	xor OAM_BANK1
 	ld [hli], a
 	dec c
 	jr nz, .inner_loop
@@ -67,7 +67,7 @@ Pokedex_LoadTilemapWithPokepic:
 
 Pokedex_LoadTilemapWithIconAndForm:
 	ld a, BANK(wDexTilemap)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld de, wDexTilemap
 	ld a, BANK(DexTilemaps)
 	call FarDecompressToDE
@@ -75,7 +75,7 @@ Pokedex_LoadTilemapWithIconAndForm:
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
 	ld a, BANK(wStringBuffer1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; Print species name
 	ld de, wStringBuffer1
@@ -736,13 +736,13 @@ Pokedex_UpdateRow:
 	ld a, DEXPOS_MONS
 	call Pokedex_GetPosData
 	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [hli]
 	and a
 	ld d, [hl]
 	push af
 	ld a, BANK(wDexMonTiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	pop af
 	jr nz, .got_species
 
@@ -851,7 +851,7 @@ endc
 	call FastPrintNum
 	pop bc
 	inc de
-	ld a, "@"
+	ld a, '@'
 	ld [de], a
 	ld a, DEXPOS_VWF_TILES
 	call Pokedex_GetPosData
@@ -929,13 +929,13 @@ endc
 	ld a, DEXPOS_MONS
 	call Pokedex_GetPosData
 	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push bc
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]
 	ld a, BANK(wDexMonTiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; If there's blank space here, we assume that the list is properly ordered.
 	; This is because the only point when we have non-contiguous dex numbers,
@@ -1129,9 +1129,9 @@ _Pokedex_Description:
 	ld de, PokedexStr_Feet
 	rst PlaceString
 	hlcoord 18, 9
-	ld a, "l"
+	ld a, 'l'
 	ld [hli], a
-	ld [hl], "b"
+	ld [hl], 'b'
 
 .units_ok
 	; Check if we've captured the mon. If not, return "?????" as mon type.
@@ -1139,7 +1139,7 @@ _Pokedex_Description:
 	bit MON_CAUGHT_F, b
 	jr nz, .mon_caught
 	hlcoord 9, 5
-	ld a, "?"
+	ld a, '?'
 	ld bc, 5
 	rst ByteFill
 
@@ -1320,7 +1320,7 @@ endr
 	and a
 	jr nz, .sel_shiny
 	hlcoord 18, 2, wAttrmap
-	ld b, VRAM_BANK_1
+	ld b, OAM_BANK1
 	ld a, [hl]
 	xor b
 	ld [hli], a
@@ -1328,7 +1328,7 @@ endr
 	xor b
 	ld [hli], a
 	hlcoord 9, 3, wAttrmap
-	assert VRAM_BANK_1 == 8
+	assert OAM_BANK1 == 8
 	ld c, b
 .attr_loop
 	ld a, [hl]
@@ -1362,7 +1362,7 @@ endr
 	inc b
 	ld de, wAttrmap - wTilemap
 	add hl, de
-	ld a, VRAM_BANK_1 | 0
+	ld a, OAM_BANK1 | 0
 	ld [hli], a
 	ld de, wTilemap - wAttrmap
 	add hl, de
@@ -1372,16 +1372,16 @@ endr
 
 .botmenu
 	; Bottom menu bar
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexTilemap)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld b, 0
 	call Pokedex_SetTilemap
 	hldexcoord 2, 18
 	ld a, $16
 	ld [hli], a
-	ld a, "<BLACK>"
+	ld a, '<BLACK>'
 	ld b, 15
 .botmenu_loop
 	ld [hli], a
@@ -1405,18 +1405,18 @@ endr
 	inc a
 	ld [hl], a
 	hldexcoord 15, 18, wDexAttrmap
-	set OAM_TILE_BANK, [hl]
+	set B_OAM_BANK1, [hl]
 	inc hl
-	set OAM_TILE_BANK, [hl]
+	set B_OAM_BANK1, [hl]
 	inc hl
-	set OAM_TILE_BANK, [hl]
+	set B_OAM_BANK1, [hl]
 	inc hl
-	set OAM_X_FLIP, [hl]
+	set B_OAM_XFLIP, [hl]
 
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 .botmenu_done
 	ld a, $57
@@ -1427,7 +1427,7 @@ endr
 	cp DEXDISP_NEWDESC
 	jr nz, .joypad_loop
 	call Pokedex_GetCursorSpecies
-	call PlayCry
+	call PlayMonCry
 
 .newdesc_joypad
 	call Pokedex_GetInput
@@ -1659,13 +1659,13 @@ Pokedex_Bio:
 	jr nc, .simplify_loop
 	rlc b
 	rlca
-	add "0"
+	add '0'
 	hlcoord 8, 9
 	ld [hli], a
 	inc hl
 	inc hl
 	ld a, b
-	add "0"
+	add '0'
 	ld [hl], a
 	jr .base_exp
 
@@ -1697,7 +1697,7 @@ Pokedex_Bio:
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
-	and EXTSPECIES_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	push bc
 	farcall _GetNewBaseExp
@@ -1724,7 +1724,7 @@ Pokedex_Bio:
 	push bc
 	call .GetEggGroupName
 	hlcoord 6, 12
-	ld a, "s"
+	ld a, 's'
 	ld [hli], a
 	inc hl
 	ld a, b
@@ -1826,7 +1826,7 @@ Pokedex_Bio:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	call PlayCry
+	call PlayMonCry
 	jr .joypad_loop
 
 .GetEggGroupName:
@@ -1922,18 +1922,15 @@ _Pokedex_Stats:
 	sub l
 	ld h, a
 	ld b, [hl]
-	push bc
 	hlcoord 1, 13
-	farcall PrintAbility
-	pop bc
-	farcall PrintAbilityDescription
+	call Pokedex_PrintAbilityWithDescription
 
 	; use correct vram bank for types and footprint
 	ld a, [wPokedex_MonInfoBank]
 	and a
 	jr nz, .vbank_1
 	hlcoord 18, 2, wAttrmap
-	ld b, VRAM_BANK_1
+	ld b, OAM_BANK1
 	ld a, [hl]
 	xor b
 	ld [hli], a
@@ -1941,7 +1938,7 @@ _Pokedex_Stats:
 	xor b
 	ld [hli], a
 	hlcoord 4, 3, wAttrmap
-	assert VRAM_BANK_1 == 8
+	assert OAM_BANK1 == 8
 	ld c, b
 .attr_loop
 	ld a, [hl]
@@ -2026,10 +2023,7 @@ _Pokedex_Stats:
 	ld h, a
 	ld b, [hl]
 	pop hl
-	push bc
-	farcall PrintAbility
-	pop bc
-	farcall PrintAbilityDescription
+	call Pokedex_PrintAbilityWithDescription
 	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
@@ -2038,6 +2032,19 @@ _Pokedex_Stats:
 	ret z
 	add $2c - 1 ; get corresponding EV tile
 	ld [hl], a
+	ret
+
+Pokedex_PrintAbilityWithDescription:
+	push bc
+	farcall PrintAbility
+	pop bc
+	ld a, [wTextboxFlags]
+	push af
+	set NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
+	farcall PrintAbilityDescription
+	pop af
+	ld [wTextboxFlags], a
 	ret
 
 Pokedex_SetModeSearchPals:
@@ -2115,7 +2122,7 @@ _Pokedex_Mode:
 	push af
 	ld bc, SCREEN_WIDTH * 2
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 
 	; explain menu option
 	pop af
@@ -2247,12 +2254,12 @@ _Pokedex_Search:
 
 	dec a
 	ld hl, Shapes
-	ld bc, 4 * LEN_1BPP_TILE
+	ld bc, 4 * TILE_1BPP_SIZE
 	rst AddNTimes
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexMonShapeTiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld de, wDexMonShapeTiles
 	lb bc, BANK(Shapes), 4
 	call Pokedex_Copy1bpp
@@ -2283,7 +2290,7 @@ _Pokedex_Search:
 	ld [hld], a
 	ld bc, wAttrmap - (wTilemap + SCREEN_WIDTH)
 	add hl, bc
-	ld a, VRAM_BANK_1 | 3
+	ld a, OAM_BANK1 | 3
 	ld [hli], a
 	ld [hld], a
 	ld bc, SCREEN_WIDTH
@@ -2295,7 +2302,7 @@ _Pokedex_Search:
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_ICONSHAPE, [hl]
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 .shape_done
 	; Update body shape pal.
@@ -2315,7 +2322,7 @@ _Pokedex_Search:
 	ld a, [wPokedex_MenuCursorY]
 	ld bc, SCREEN_WIDTH * 2
 	rst AddNTimes
-	ld [hl], "▶"
+	ld [hl], '▶'
 
 	; Fill fields based on current search data
 	hlcoord 7, 4
@@ -2550,16 +2557,16 @@ Pokedex_ResetDexMonsAndTemp:
 	rst ByteFill
 
 	; Wipe the current wDexMons data.
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	xor a
 	ld hl, wDexMons
 	ld bc, wDexMonsEnd - wDexMons
 	rst ByteFill
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 Pokedex_ConvertFinalEntryToRowCols:
@@ -2599,15 +2606,15 @@ Pokedex_GetSearchResults:
 	; If the first byte in wDexMons is blank, there was
 	; no search results found, otherwise it'd be 1-254,
 	; signifying a species.
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wDexMons]
 	and a
 	pop bc ; preserve flags
 	ld a, b
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .SpeciesCallback:
@@ -2714,10 +2721,10 @@ endr
 	scf
 
 .search_done
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 .check_finalentry
 	; First, get the last entry handled in wDexMons.
@@ -2757,7 +2764,7 @@ endr
 	ld [hl], b
 	pop hl
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 .next_dexmon
@@ -2848,7 +2855,7 @@ Pokedex_InitData:
 	ret z
 
 	; This is placed here because we want to preserve HandleSeenOwn flags.
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 
 	; Get dex number.
@@ -2868,7 +2875,7 @@ Pokedex_InitData:
 
 	; Append to wDexMons.
 	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wDexMons
 	add hl, bc
 	add hl, bc
@@ -2876,7 +2883,7 @@ Pokedex_InitData:
 	ld [hli], a
 	ld [hl], d
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ret
 
 Pokedex_CountSeenOwn:
@@ -3128,15 +3135,15 @@ Pokedex_GetInput:
 	ret nz
 
 	ldh a, [hJoyLast]
-	and D_PAD
+	and PAD_CTRL_PAD
 	ret
 
 Pokedex_LoadUndiscoveredPokepic:
 ; Always returns z.
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, 7
 	ld [wMonPicSize], a
 	ld hl, QuestionMarkLZ
@@ -3144,7 +3151,7 @@ Pokedex_LoadUndiscoveredPokepic:
 	ld a, BANK(QuestionMarkLZ)
 	call FarDecompressToDE
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
@@ -3169,15 +3176,9 @@ Pokedex_SwitchMonInfoBank:
 	ld [hl], a
 	ret
 
-Pokedex_GetCursorMonInVBK1:
-	ld a, 1
-	ld [wPokedex_MonInfoBank], a
-	jr _Pokedex_GetCursorMon
 Pokedex_GetCursorMon:
 ; Displays information about the mon the cursor is currently hovering.
 	call Pokedex_SwitchMonInfoBank
-	; fallthrough
-_Pokedex_GetCursorMon:
 	; Set up proper palettes and switch between vbk0 and vbk1 usage.
 	swap a
 	rrca
@@ -3185,7 +3186,7 @@ _Pokedex_GetCursorMon:
 	; Frontpic pal
 	hlcoord 1, 1, wAttrmap
 	lb bc, 7, 7
-	add $6 ; BG6, potentially with VRAM_BANK_1
+	add $6 ; BG6, potentially with OAM_BANK1
 	call FillBoxWithByte
 
 	hlcoord 18, 3, wAttrmap
@@ -3193,13 +3194,13 @@ _Pokedex_GetCursorMon:
 	call FillBoxWithByte
 
 	; Mon infobox pal
-	inc a ; BG7, potentially with VRAM_BANK_1
+	inc a ; BG7, potentially with OAM_BANK1
 	hlcoord 9, 4, wAttrmap
 	ld bc, 8
 	rst ByteFill
 
 	; Clear existing data.
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer1], a
 	hlcoord 9, 2
 	ld a, $7f
@@ -3208,16 +3209,16 @@ _Pokedex_GetCursorMon:
 	xor a
 	ld [wPokedexOAM_IsCaught], a
 	ld [wPokedexOAM_DexNoY], a
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexMonFootprintTiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wDexMonFootprintTiles
 	xor a
 	ld bc, 4 tiles
 	rst ByteFill
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wBGPals1 palette 7 + 2
 if !DEF(MONOCHROME)
 	ld a, -1 ; RGB 31, 31, 31
@@ -3232,7 +3233,7 @@ rept 3
 endr
 endc
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; Attributes are done. Now we can deal with the main data.
 	call Pokedex_GetCursorSpecies
@@ -3280,26 +3281,26 @@ endc
 
 	; Get dex number.
 	call Pokedex_GetDexNumber
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexNoStrNumber)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld de, wDexNoStrNumber
 	ld h, b
 	ld l, c
 	call FastPrintNum
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 
 	; Frontpic
 	call GetBaseData
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	ld a, BANK(wCurPartySpecies)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	farcall PrepareFrontpic
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
@@ -3326,7 +3327,7 @@ endc
 
 	; If we haven't caught the mon, clear type and footprint icons
 	pop af
-	ldh a, [rSVBK]
+	ldh a, [rWBK]
 	push af
 	lb bc, NUM_TYPES, NUM_TYPES
 	jr z, .got_types
@@ -3344,7 +3345,7 @@ endc
 	; First type pal+icon
 	push bc
 	ld b, 0
-	ld a, 4 * LEN_1BPP_TILE
+	ld a, 4 * TILE_1BPP_SIZE
 	ld hl, TypeIconGFX
 	rst AddNTimes
 	ld de, wBGPals1 palette 7 + 2
@@ -3352,7 +3353,7 @@ endc
 	pop bc
 	ld de, wDexMonType1Tiles
 	ld a, BANK(wDexMonType1Tiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	push bc
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
@@ -3360,7 +3361,7 @@ endc
 	; Second type pal+icon
 	ld c, b
 	ld b, 0
-	ld a, 4 * LEN_1BPP_TILE
+	ld a, 4 * TILE_1BPP_SIZE
 	ld hl, TypeIconGFX
 	rst AddNTimes
 	ld de, wBGPals1 palette 7 + 4
@@ -3385,9 +3386,9 @@ endc
 	ld de, wDexMonFootprintTiles
 	call FarDecompressToDE
 	; Expand 1bpp to 2bpp
-	ld hl, wDexMonFootprintTiles + 4 * LEN_1BPP_TILE - 1
+	ld hl, wDexMonFootprintTiles + 4 * TILE_1BPP_SIZE - 1
 	ld de, wDexMonFootprintTiles + 4 tiles - 1
-	ld c, 4 * LEN_1BPP_TILE
+	ld c, 4 * TILE_1BPP_SIZE
 .footprint_loop
 	ld a, [hld]
 	ld [de], a
@@ -3420,7 +3421,7 @@ endc
 	ld h, d
 	ld l, e
 	ld a, BANK(wDexMonIconTiles)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld de, wDexMonIconTiles
 	ld a, b
 	call FarDecompressToDE
@@ -3439,14 +3440,14 @@ endr
 	ld c, a
 	ld b, 0
 	ld hl, Shapes
-	ld a, 4 * LEN_1BPP_TILE
+	ld a, 4 * TILE_1BPP_SIZE
 	rst AddNTimes
 	ld de, wDexMonShapeTiles
 	lb bc, BANK(Shapes), 4
 	call Pokedex_Copy1bpp
 
 	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	pop af
 	and $f
 	add a
@@ -3465,7 +3466,7 @@ endr
 	set DEXGFX_ICONSHAPE, [hl]
 .done_2
 	pop af
-	ldh [rSVBK], a
+	ldh [rWBK], a
 .done
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_POKEINFO, [hl]
@@ -3494,12 +3495,12 @@ Pokedex_ScheduleScreenUpdateWithHBlank:
 	; Needs to be set up immediately during init.
 	call Pokedex_RefreshScreen
 
-	ld a, 1 << rSTAT_INT_LYC
+	ld a, STAT_LYC
 	ldh [rSTAT], a
 	ld hl, rIF
-	res LCD_STAT, [hl]
+	res B_IF_STAT, [hl]
 	ld hl, rIE
-	set LCD_STAT, [hl]
+	set B_IE_STAT, [hl]
 	ret
 
 Pokedex_CopyTypeIconPals:
@@ -3520,7 +3521,7 @@ INCLUDE "data/pokemon/dex_order_new.asm"
 NewPokedexEntry:
 	; Disable H-blank as invoked in battles.
 	ld hl, rIE
-	res LCD_STAT, [hl]
+	res B_IE_STAT, [hl]
 
 	call ClearPalettes
 	call DelayFrame

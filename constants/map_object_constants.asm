@@ -50,57 +50,37 @@ DEF OW_RIGHT EQU RIGHT << 2
 
 ; object_struct OBJECT_FLAGS1 bit flags
 	const_def
-	const INVISIBLE_F     ; 0
-	const WONT_DELETE_F   ; 1
-	const FIXED_FACING_F  ; 2
-	const SLIDING_F       ; 3
-	const NOCLIP_TILES_F  ; 4
-	const MOVE_ANYWHERE_F ; 5
-	const NOCLIP_OBJS_F   ; 6
-	const EMOTE_OBJECT_F  ; 7
-
-DEF INVISIBLE     EQU 1 << INVISIBLE_F
-DEF WONT_DELETE   EQU 1 << WONT_DELETE_F
-DEF FIXED_FACING  EQU 1 << FIXED_FACING_F
-DEF SLIDING       EQU 1 << SLIDING_F
-DEF NOCLIP_TILES  EQU 1 << NOCLIP_TILES_F
-DEF MOVE_ANYWHERE EQU 1 << MOVE_ANYWHERE_F
-DEF NOCLIP_OBJS   EQU 1 << NOCLIP_OBJS_F
-DEF EMOTE_OBJECT  EQU 1 << EMOTE_OBJECT_F
+	shift_const INVISIBLE     ; 0
+	shift_const WONT_DELETE   ; 1
+	shift_const FIXED_FACING  ; 2
+	shift_const SLIDING       ; 3
+	shift_const NOCLIP_TILES  ; 4
+	shift_const MOVE_ANYWHERE ; 5
+	shift_const NOCLIP_OBJS   ; 6
+	shift_const EMOTE_OBJECT  ; 7
 
 ; object_struct OBJECT_FLAGS2 bit flags
 	const_def
-	const LOW_PRIORITY_F  ; 0
-	const HIGH_PRIORITY_F ; 1
-	const OBJ_FLAGS2_2    ; 2
-	const OVERHEAD_F      ; 3
-	const_skip            ; 4
-	const FROZEN_F        ; 5
-	const OBJ_FLAGS2_6    ; 6
-	const OBJ_FLAGS2_7    ; 7
-
-DEF LOW_PRIORITY  EQU 1 << LOW_PRIORITY_F
-DEF HIGH_PRIORITY EQU 1 << HIGH_PRIORITY_F
-DEF OVERHEAD      EQU 1 << OVERHEAD_F
+	shift_const LOW_PRIORITY   ; 0
+	shift_const HIGH_PRIORITY  ; 1
+	shift_const BOULDER_MOVING ; 2
+	shift_const OVERHEAD       ; 3
+	shift_const USE_OBP1       ; 4
+	shift_const FROZEN         ; 5
+	shift_const OFF_SCREEN     ; 6
+	shift_const OBJ_FLAGS2_7   ; 7
 
 ; object_struct OBJECT_PALETTE bit flags
 	const_def 5
-	const SWIMMING_F         ; 5
-	const STRENGTH_BOULDER_F ; 6
-	const BIG_OBJECT_F       ; 7
-
-DEF SWIMMING         EQU 1 << SWIMMING_F
-DEF STRENGTH_BOULDER EQU 1 << STRENGTH_BOULDER_F
-DEF BIG_OBJECT       EQU 1 << BIG_OBJECT_F
+	shift_const SWIMMING         ; 5
+	shift_const STRENGTH_BOULDER ; 6
+	shift_const BIG_OBJECT       ; 7
 
 ; facing attribute bit flags
-DEF RELATIVE_ATTRIBUTES_F EQU 1
-DEF ABSOLUTE_TILE_ID_F    EQU 2
-DEF NEXT_PALETTE_F        EQU 3
-
-DEF RELATIVE_ATTRIBUTES EQU 1 << RELATIVE_ATTRIBUTES_F
-DEF ABSOLUTE_TILE_ID    EQU 1 << ABSOLUTE_TILE_ID_F
-DEF NEXT_PALETTE        EQU 1 << NEXT_PALETTE_F
+	const_def 1
+	shift_const RELATIVE_ATTRIBUTES ; 1
+	shift_const ABSOLUTE_TILE_ID    ; 2
+	shift_const NEXT_PALETTE        ; 3
 
 ; map_object struct members (see macros/ram.asm)
 rsreset
@@ -117,7 +97,7 @@ DEF MAPOBJECT_SIGHT_RANGE      rb ; 9
 DEF MAPOBJECT_SCRIPT_POINTER   rw ; a
 DEF MAPOBJECT_EVENT_FLAG       rw ; c
 DEF MAPOBJECT_LENGTH EQU _RS
-DEF NUM_OBJECTS EQU $15
+DEF NUM_OBJECTS EQU 21
 DEF PLAYER_OBJECT EQU 0
 
 ; map_object MAPOBJECT_OBJECT_STRUCT_ID values
@@ -186,6 +166,8 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
 	const SPRITEMOVEDATA_PLACEHOLDER_UP       ; 2e
 	const SPRITEMOVEDATA_MICROPHONE           ; 2f
+	const SPRITEMOVEDATA_BIG_HO_OH            ; 30
+	const SPRITEMOVEDATA_BIG_LUGIA            ; 31
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -223,9 +205,11 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
 	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
 	const SPRITEMOVEFN_MICROPHONE            ; 20
+	const SPRITEMOVEFN_BIG_HO_OH             ; 21
+	const SPRITEMOVEFN_BIG_LUGIA             ; 22
 DEF NUM_SPRITEMOVEFN EQU const_value
 
-; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
+; _HandleStepType.StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
 	const_def
 	const STEP_TYPE_RESET            ; 00
 	const STEP_TYPE_FROM_MOVEMENT    ; 01
@@ -285,6 +269,8 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 1b
 	const OBJECT_ACTION_TINY_WINDOWS     ; 1c
 	const OBJECT_ACTION_MICROPHONE       ; 1d
+	const OBJECT_ACTION_BIG_HO_OH        ; 1e
+	const OBJECT_ACTION_BIG_LUGIA        ; 1f
 DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
@@ -350,6 +336,10 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_TINY_WINDOWS_5     ; 3a
 	const FACING_TINY_WINDOWS_6     ; 3b
 	const FACING_MICROPHONE         ; 3c
+	const FACING_BIG_HO_OH_1        ; 3d
+	const FACING_BIG_HO_OH_2        ; 3e
+	const FACING_BIG_LUGIA_1        ; 3f
+	const FACING_BIG_LUGIA_2        ; 40
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

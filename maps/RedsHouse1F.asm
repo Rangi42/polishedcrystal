@@ -14,7 +14,7 @@ RedsHouse1F_MapScriptHeader:
 	bg_event  5,  1, BGEVENT_UP, RedsHouse1FTVScript
 
 	def_object_events
-	object_event  5,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsMom, -1
+	object_event  5,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsMom, -1
 
 RedsMom:
 	checkevent EVENT_MET_REDS_MOM

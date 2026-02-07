@@ -45,12 +45,20 @@ VBlank::
 	ld a, [RomHeaderChecksum]
 	ld hl, wRomChecksum
 	cp [hl]
+if !DEF(DEBUG)
 	jr nz, .checksum_crash
+else
+	nop ; no-optimize nops
+	nop ; no-optimize nops
+endc
 	ld a, [RomHeaderChecksum + 1]
 	inc hl ; wRomChecksum + 1
 	cp [hl]
 if !DEF(DEBUG)
 	jr nz, .checksum_crash
+else
+	nop ; no-optimize nops
+	nop ; no-optimize nops
 endc
 
 .skip_crash
@@ -159,6 +167,13 @@ VBlank0::
 	ld hl, hVBlankCounter
 	inc [hl]
 
+	; Increment time since text printing.
+	ld hl, wTimeSinceText
+	inc [hl]
+	jr nz, .no_overflow
+	dec [hl]
+
+.no_overflow
 	; advance random variables
 	call UpdateDividerCounters
 	call AdvanceRNGState
@@ -175,6 +190,7 @@ VBlank0::
 VBlank2::
 VBlankUpdateSound::
 ; sound only
+	ei
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 	jmp _UpdateSound ; far-ok
@@ -249,58 +265,8 @@ VBlank4::
 .noDelay2
 	call Joypad
 
-	; A variant of code in vblank1 for running the sound engine with LCD int
-	ldh a, [hROMBankBackup]
-	push af
-	ldh a, [rIE]
-	push af
-	ldh a, [rIF]
-	push af
-	xor a
-	ldh [rIF], a
-	ldh a, [rIE]
-	and 1 << LCD_STAT
-	ldh [rIE], a
+	jr VBlankUpdateSound
 
-	ei
-	call VBlankUpdateSound
-
-	; Ensure that we don't miss an interrupt in the tiny window between di+reti
-	ldh a, [rIE]
-	and 1 << LCD_STAT
-	jr z, .di
-	ldh a, [rLYC]
-	ld b, a
-.busyloop
-	ldh a, [rLY]
-	sub b
-	jr z, .busyloop
-	inc a
-	jr z, .busyloop
-.di
-	di
-
-	; get requested ints
-	ldh a, [rIF]
-	ld b, a
-
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ldh [rIF], a
-
-	; enable ints besides joypad
-	pop af
-	ldh [rIE], a
-
-	; rerequest ints
-	ld a, b
-	ldh [rIF], a
-	pop af
-	ldh [hROMBankBackup], a
-	ret
 
 VBlank1::
 ; scx, scy
@@ -324,38 +290,8 @@ VBlank1::
 .done
 	call PushOAM
 
-	; get requested ints
-	ldh a, [rIE]
-	push af
-	ldh a, [rIF]
-	push af
+	jr VBlankUpdateSound
 
-	xor a
-	ldh [rIF], a
-
-	ei
-	call VBlankUpdateSound
-	di
-
-	; get requested ints
-	ldh a, [rIF]
-	ld b, a
-
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ldh [rIF], a
-
-	; enable ints besides joypad
-	pop af
-	ldh [rIE], a
-
-	; rerequest ints
-	ld a, b
-	ldh [rIF], a
-	ret
 
 VBlank5::
 ; scx
@@ -374,24 +310,11 @@ VBlank5::
 	call Serve2bppRequest
 
 .done
+	call PushOAM
 	call Joypad
 
-	xor a
-	ldh [rIF], a
-	ldh a, [rIE]
-	push af
+	jmp VBlankUpdateSound
 
-	ei
-	call VBlankUpdateSound
-	di
-
-	xor a
-	ldh [rIF], a
-
-	; enable usual interrupts
-	pop af
-	ldh [rIE], a
-	ret
 
 VBlank7::
 ; special vblank routine

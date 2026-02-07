@@ -12,10 +12,10 @@ NavelRockRoof_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  8,  8, SPRITE_LEAF, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
-	object_event  8,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	object_event  8,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
-	object_event  8,  8, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CRYS_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_LEAF, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CRYS_IN_NAVEL_ROCK
 
 	object_const_def
 	const NAVELROCKROOF_GREEN
@@ -53,10 +53,10 @@ Leaf:
 	reanchormap
 	checktime 1 << NITE
 	iffalsefwd .Sun
-	changeblock 6, 0, $76
-	changeblock 8, 0, $77
-	changeblock 6, 2, $7a
-	changeblock 8, 2, $7b
+	changeblock 6, 0, $4a
+	changeblock 8, 0, $4b
+	changeblock 6, 2, $4e
+	changeblock 8, 2, $4f
 .Sun
 	readvar VAR_PLAYERGENDER
 	iffalsefwd .MaleEndingSequence

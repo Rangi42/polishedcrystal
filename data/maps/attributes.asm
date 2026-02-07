@@ -390,11 +390,15 @@ ENDM
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0
 
-	map_attributes Route23, ROUTE_23, $2c, NORTH
+	map_attributes Route23North, ROUTE_23_NORTH, $2c, NORTH | SOUTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
+	connection south, Route23South, ROUTE_23_SOUTH, 0
+
+	map_attributes Route23South, ROUTE_23_SOUTH, $2c, NORTH
+	connection north, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
-	connection south, Route23, ROUTE_23, 0
+	connection south, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
 	connection north, RockyBeach, ROCKY_BEACH, 0
@@ -423,6 +427,10 @@ ENDM
 
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
+
+	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9, NORTH | SOUTH
+	connection north, NavelRockInside, NAVEL_ROCK_INSIDE, 11
+	connection south, NavelRockInside, NAVEL_ROCK_INSIDE, -11
 
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -506,7 +514,7 @@ ENDM
 	map_attributes WhirlIslandLugiaChamber, WHIRL_ISLAND_LUGIA_CHAMBER, $f, 0
 	map_attributes SilverCaveRoom1, SILVER_CAVE_ROOM_1, $9, 0
 	map_attributes SilverCaveRoom2, SILVER_CAVE_ROOM_2, $9, 0
-	map_attributes SilverCaveRoom3, SILVER_CAVE_ROOM_3, $0, 0
+	map_attributes SilverCaveRoom3, SILVER_CAVE_ROOM_3, $7b, 0
 	map_attributes SilverCaveItemRooms, SILVER_CAVE_ITEM_ROOMS, $9, 0
 	map_attributes DarkCaveVioletEntrance, DARK_CAVE_VIOLET_ENTRANCE, $9, 0
 	map_attributes DarkCaveBlackthornEntrance, DARK_CAVE_BLACKTHORN_ENTRANCE, $9, 0
@@ -717,8 +725,8 @@ ENDM
 	map_attributes PokeCenter2F, POKECENTER_2F, $0, 0
 	map_attributes TradeCenter, TRADE_CENTER, $0, 0
 	map_attributes Colosseum, COLOSSEUM, $0, 0
-	map_attributes HiddenTreeGrotto, HIDDEN_TREE_GROTTO, $35, 0
-	map_attributes HiddenCaveGrotto, HIDDEN_CAVE_GROTTO, $9, 0
+	map_attributes HiddenTreeGrotto, HIDDEN_TREE_GROTTO, $0, 0
+	map_attributes HiddenCaveGrotto, HIDDEN_CAVE_GROTTO, $1, 0
 	map_attributes CeladonDeptStore1F, CELADON_DEPT_STORE_1F, $0, 0
 	map_attributes CeladonDeptStore2F, CELADON_DEPT_STORE_2F, $0, 0
 	map_attributes CeladonDeptStore3F, CELADON_DEPT_STORE_3F, $0, 0
@@ -882,8 +890,7 @@ ENDM
 	map_attributes SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
 	map_attributes SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
 	map_attributes NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35, 0
-	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
-	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0
+	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $51, 0
 	map_attributes FarawayIsland, FARAWAY_ISLAND, $6, 0
 	map_attributes FarawayJungle, FARAWAY_JUNGLE, $17, 0
 	map_attributes SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0, 0

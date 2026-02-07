@@ -66,10 +66,10 @@ GetWildLocations:
 	jr .got_vars
 
 .grass_vars
-	ld a, 6 - (NUM_GRASSMON * 3) ; 6 = first morning species (5=level)
+	ld a, 4 - NUM_GRASSMON * 3 ; 4 = first morning species (3=level)
 	inc e
 .loop
-	add (NUM_GRASSMON * 3)
+	add NUM_GRASSMON * 3
 	dec e
 	jr nz, .loop
 	ld e, a
@@ -261,17 +261,15 @@ _ChooseWildEncounter:
 	xor a ; BATTLETYPE_NORMAL
 	ld [wBattleType], a
 
-	inc hl
-	inc hl
-	inc hl
+	inc hl ; skip map group
+	inc hl ; skip map number
+	inc hl ; skip encounter chance
 	push bc
 	call CheckOnWater
 	pop bc
 	ld de, WaterMonProbTable
 	ld b, NUM_WATERMON
 	jr z, .got_table
-	inc hl
-	inc hl
 	call GetTimeOfDayNotEve
 	push bc
 	ld bc, NUM_GRASSMON * 3
@@ -517,7 +515,7 @@ ApplyAbilityEffectsOnEncounterMon:
 	rrca
 	ret c
 	ld a, c
-	cp 100
+	cp MAX_LEVEL
 	ret nc
 	inc c
 	ret
@@ -695,6 +693,12 @@ InitRoamMons:
 	ld [wRoamMon1Level], a
 	ld [wRoamMon2Level], a
 
+; form
+	assert HIGH(RAIKOU) == 0 && HIGH(ENTEI) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon1Form], a
+	ld [wRoamMon2Form], a
+
 ; raikou starting map
 	ld a, GROUP_ROUTE_42
 	ld [wRoamMon1MapGroup], a
@@ -716,6 +720,10 @@ InitRoamMons:
 
 CheckEncounterRoamMon:
 	push hl
+; Don't trigger an encounter if we're using Sweet Honey.
+	ld hl, wStatusFlags2
+	bit STATUSFLAGS2_USING_SWEET_HONEY_F, [hl]
+	jr nz, .DontEncounterRoamMon
 ; Don't trigger an encounter if we're on water.
 	call CheckOnWater
 	jr z, .DontEncounterRoamMon
@@ -749,6 +757,11 @@ CheckEncounterRoamMon:
 	ld [wTempWildMonSpecies], a
 	ld a, [hl]
 	ld [wCurPartyLevel], a
+	; Load form from roaming mon data
+	ld bc, wRoamMon1Form - wRoamMon1Level
+	add hl, bc
+	ld a, [hl]
+	ld [wWildMonForm], a
 	ld a, BATTLETYPE_ROAMING
 	ld [wBattleType], a
 
@@ -928,7 +941,7 @@ RandomPhoneRareWildMon:
 
 .GetGrassmon:
 	push hl
-	ld bc, 5 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
+	ld bc, 2 + 1 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
 	add hl, bc
 	call GetTimeOfDayNotEve
 	ld bc, NUM_GRASSMON * 3
@@ -948,7 +961,7 @@ RandomPhoneRareWildMon:
 	ld b, a
 	ld [wCurForm], a
 	pop hl
-	ld de, 5 + 0 * 3
+	ld de, 2 + 1 + 0 * 3
 	add hl, de
 	inc hl ; Species index of the most common Pokemon on that route
 	ld d, 4
@@ -1008,7 +1021,7 @@ RandomPhoneWildMon:
 	call LookUpWildmonsForMapDE
 
 .ok
-	ld bc, 5 + 0 * 3
+	ld bc, 2 + 1 + 0 * 3
 	add hl, bc
 	call GetTimeOfDayNotEve
 	ld bc, NUM_GRASSMON * 3
@@ -1054,61 +1067,41 @@ RandomPhoneMon:
 	ld [wTrainerGroupBank], a
 	ld a, BANK(TrainerGroups)
 	call GetFarWord
-
-.skip_trainer
-	dec e
-	jr z, .skipped
-.skip
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	inc hl
-	cp -1
-	jr nz, .skip
-	jr .skip_trainer
-.skipped
-
-.skip_name
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .skip_name
+	ld b, e
+	farcall SkipTrainerPartiesAndName
 
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
 	inc hl
 
-	; get trainer type
-	ld b, a
 	; nicknames have uneven length, so always use the first mon
-	bit TRNTYPE_NICKNAME, b
+	bit TRNTYPE_NICKNAME, a
 	jr nz, .got_mon
-	; TRAINERTYPE_NORMAL uses 2 bytes per mon
+
+	; All trainers use at least 3 bytes per mon (Level, Species, Form)
 	ld c, 3
 	; TRAINERTYPE_ITEM uses 1 more byte
-	bit TRNTYPE_ITEM, b
+	bit TRNTYPE_ITEM, a
 	jr z, .no_item
 	inc c
 .no_item
-	; TRAINERTYPE_DVS uses 3 more bytes
-	bit TRNTYPE_DVS, b
+	; TRAINERTYPE_DVS uses 1 more byte
+	bit TRNTYPE_DVS, a
 	jr z, .no_dvs
-	inc c
-	inc c
 	inc c
 .no_dvs
 	; TRAINERTYPE_PERSONALITY uses 1 more byte
-	bit TRNTYPE_PERSONALITY, b
+	bit TRNTYPE_PERSONALITY, a
 	jr z, .no_personality
 	inc c
 .no_personality
 	; TRAINERTYPE_EVs uses 1 more byte
-	bit TRNTYPE_EVS, b
+	bit TRNTYPE_EVS, a
 	jr z, .no_evs
 	inc c
 .no_evs
 	; TRAINERTYPE_MOVES uses 4 more bytes
-	bit TRNTYPE_MOVES, b
+	bit TRNTYPE_MOVES, a
 	jr z, .no_moves
 	inc c
 	inc c
@@ -1116,17 +1109,17 @@ RandomPhoneMon:
 	inc c
 .no_moves
 	; bc == size of mon sub-struct
-	xor a
-	ld b, a
+	ld b, 0
 
+	; c currently holds party size in bytes
+	ld a, c
+	add l
 	ld e, 0
 	push hl
 .count_mon
 	inc e
 	add hl, bc
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	cp -1
+	cp l
 	jr nz, .count_mon
 	pop hl
 

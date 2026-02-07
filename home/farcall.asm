@@ -252,7 +252,7 @@ StackCallInWRAMBankA::
 ; +2 saved de
 ; +0 saved hl
 
-	ld hl, rSVBK
+	ld hl, rWBK
 	ld e, [hl]
 	ld [hl], a
 
@@ -292,7 +292,7 @@ StackCallInWRAMBankA::
 ; +0 saved hl
 	ld hl, sp + 4
 	ld a, [hl]
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	pop af
 	pop hl
 	inc sp

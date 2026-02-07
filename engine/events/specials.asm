@@ -82,7 +82,7 @@ SpecialNameRival:
 	jmp InitName
 
 .DefaultRivalName:
-	db "Silver@"
+	rawchar "Silver@"
 
 SpecialTrendyPhrase:
 	ld b, $3 ; trendy phrase
@@ -94,7 +94,7 @@ SpecialTrendyPhrase:
 	jmp InitName
 
 .DefaultTrendyPhrase:
-	db "Nothing@"
+	rawchar "Nothing@"
 
 SpecialNameRater:
 	farjp NameRater
@@ -131,7 +131,7 @@ BugContestJudging:
 	jr .finish
 .firstplace
 	ld hl, .FirstPlacePrizes
-	call GetHourIntervalValue
+	call GetValueByTimeOfDay
 	jr .finish
 .secondplace
 	ld a, EVERSTONE
@@ -143,11 +143,10 @@ BugContestJudging:
 	ret
 
 .FirstPlacePrizes:
-	db MORN_HOUR, MOON_STONE
-	db DAY_HOUR,  SHINY_STONE
-	db EVE_HOUR,  SUN_STONE
-	db NITE_HOUR, DUSK_STONE
-	db -1,        MOON_STONE
+	db SHINY_STONE ; morn
+	db SUN_STONE   ; day
+	db DUSK_STONE  ; eve
+	db MOON_STONE  ; nite
 
 MapRadio:
 	ldh a, [hScriptVar]
@@ -238,15 +237,9 @@ Special_CheckLuckyNumberShowFlag:
 SpecialCheckPokerus:
 ; Check if a monster in your party has Pokerus
 	farcall CheckPokerus
-	; fallthrough
-
-ScriptReturnCarry:
-	jr c, .carry
-	xor a
-	ldh [hScriptVar], a
-	ret
-.carry
-	ld a, 1
+	; a = carry ? TRUE : FALSE
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	ret
 
@@ -297,7 +290,7 @@ PlayCurMonCry:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	jmp PlayCry
+	jmp PlayMonCry
 
 Special_FadeOutMusic:
 	xor a ; MUSIC_NONE
@@ -342,7 +335,7 @@ CheckIfTrendyPhraseIsLucky:
 	ret
 
 .KeyPhrase:
-	db "Lucky@"
+	rawchar "Lucky@"
 
 RespawnOneOffs:
 	eventflagreset EVENT_BEAT_FLANNERY
@@ -374,6 +367,12 @@ RespawnOneOffs:
 	jr nz, .CaughtSudowoodo
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
+
+	ld de, ENGINE_PLAYER_CAUGHT_BLOODMOON_URSALUNA
+	farcall EngineFlagAction
+	jr nz, .CaughtBloodmoonUrsaluna
+	eventflagreset EVENT_MURKY_SWAMP_BLOODMOON_URSALUNA
+.CaughtBloodmoonUrsaluna
 
 	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
 	farcall EngineFlagAction
@@ -473,6 +472,9 @@ RespawnRoamingRaikou:
 	ld [wRoamMon1Species], a
 	ld a, 50
 	ld [wRoamMon1Level], a
+	assert HIGH(RAIKOU) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon1Form], a
 	ld a, GROUP_ROUTE_42
 	ld [wRoamMon1MapGroup], a
 	ld a, MAP_ROUTE_42
@@ -486,6 +488,9 @@ RespawnRoamingEntei:
 	ld [wRoamMon2Species], a
 	ld a, 50
 	ld [wRoamMon2Level], a
+	assert HIGH(ENTEI) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon2Form], a
 	ld a, GROUP_ROUTE_37
 	ld [wRoamMon2MapGroup], a
 	ld a, MAP_ROUTE_37
@@ -499,6 +504,9 @@ RespawnRoamingSuicune:
 	ld [wRoamMon3Species], a
 	ld a, 50
 	ld [wRoamMon3Level], a
+	assert HIGH(SUICUNE) == 0
+	ld a, PLAIN_FORM
+	ld [wRoamMon3Form], a
 	ld a, GROUP_ROUTE_38
 	ld [wRoamMon3MapGroup], a
 	ld a, MAP_ROUTE_38

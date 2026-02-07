@@ -31,7 +31,7 @@ wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 wCurMusicByte:: db
 wCurChannel:: db
 wVolume::
-; corresponds to rNR50
+; corresponds to rAUDVOL
 ; Channel control / ON-OFF / Volume (R/W)
 ;   bit 7 - Vin->SO2 ON/OFF
 ;   bit 6-4 - SO2 output level (volume) (# 0-7)
@@ -39,12 +39,12 @@ wVolume::
 ;   bit 2-0 - SO1 output level (volume) (# 0-7)
 	db
 wSoundOutput::
-; corresponds to rNR51
+; corresponds to rAUDTERM
 ; bit 4-7: ch1-4 so2 on/off
 ; bit 0-3: ch1-4 so1 on/off
 	db
 wSoundInput::
-; corresponds to rNR52
+; corresponds to rAUDENA
 ; bit 7: global on/off
 ; bit 0: ch1 on/off
 ; bit 1: ch2 on/off
@@ -105,6 +105,7 @@ wTempoAdjustment:: db
 ; audio engine output
 wNoiseHit:: db
 
+
 SECTION "WRAM 0", WRAM0
 
 wMonType:: db
@@ -114,7 +115,7 @@ wCurMove::
 wCreditsSpawn::
 	db
 
-wNamedObjectTypeBuffer:: db
+wTimeSinceText:: db
 
 wCurOptionsPage:: db
 
@@ -201,6 +202,8 @@ wPlayerCurrentOAMSlot:: db
 
 wMapSetupFlags:: db
 
+wPrinterConnectionOpen:: db
+
 
 SECTION "Sprite Animations", WRAM0
 
@@ -243,7 +246,7 @@ wSpriteAnimsEnd::
 SECTION "Sprites", WRAM0
 
 wShadowOAM::
-for n, NUM_SPRITE_OAM_STRUCTS
+for n, OAM_COUNT
 wShadowOAMSprite{02d:n}:: sprite_oam_struct wShadowOAMSprite{02d:n}
 endr
 wShadowOAMEnd::
@@ -254,7 +257,7 @@ SECTION "Tilemap and Attrmap", WRAM0
 ; Some code depend on these being next to each other in memory.
 wTilemap::
 ; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wTilemapEnd::
 
 wAttrmap::
@@ -266,7 +269,7 @@ wAttrmap::
 ; bit 4: pal # (non-cgb)
 ; bit 3: vram bank (cgb only)
 ; bit 2-0: pal # (cgb only)
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 wAttrmapEnd::
 
 
@@ -338,6 +341,7 @@ wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
 
+
 SECTION UNION "Misc 404", WRAM0
 ; polished link transfer buffer
 
@@ -375,16 +379,15 @@ wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 wCurOTMon:: db
 
 wTypeModifier::
-; >10: super effective
-;  10: normal
-; <10: not very effective
+; >$10: super effective
+;  $10: normal
+; <$10: not very effective
 ; bit 7: stab
 	db
 
-wCriticalHit::
-; 0 if not critical
-; 1 for a critical hit
-; 2 for a OHKO
+wMoveHitState::
+; bit 0: move was a critical hit
+; bit 1: move hit a substitute
 	db
 
 wAttackMissed::
@@ -663,7 +666,7 @@ wEnemyCharging:: db
 
 wGivingExperienceToExpShareHolders:: db
 
-wAnimationsDisabled:: db ; used to temporarily disable animations for abilities
+wInAbility:: db ; disables animations for abilities among other things
 
 wBattleEnded:: db
 
@@ -687,13 +690,13 @@ NEXTU
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
-wPokedex_Row1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row1Pals:: ds COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
 wPokedex_Row2::
 wPokedex_Row2Tile: db
-wPokedex_Row2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row2Pals:: ds COLOR_SIZE * 3 * 5
 wPokedex_Row3::
 wPokedex_Row3Tile: db
-wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row3Pals:: ds COLOR_SIZE * 3 * 5
 wPokedex_PalsEnd::
 ENDU
 
@@ -786,7 +789,9 @@ wNamingScreenKeyboardWidth:: db
 
 SECTION UNION "Misc 404", WRAM0
 ; pokegear
-	ds 172
+	ds 132
+
+wRadioCompressedText:: ds 2 * SCREEN_WIDTH
 
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
@@ -883,16 +888,15 @@ SECTION "Unused", WRAM0
 	ds 69 ; it's free real estate
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; overworld map
 
-; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326
-; was originally only 1300 bytes
-wOverworldMapBlocks:: ds 1326
+; large enough for 32x27 Route41.ablk; (32+6)x(27+6) = 1254
+wOverworldMapBlocks:: ds 1300
 wOverworldMapBlocksEnd::
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; psychic inver party
 
 ; large enough for 4x4 KantoHouse1.asm in wOverworldMapBlocks
@@ -901,28 +905,26 @@ SECTION UNION "Misc 1326", WRAM0
 wInverIndexes:: ds NUM_INVER_MONS
 
 wInverGroup::
-	ds 7 ; db "Inver@"
-	db ; TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	ds 8 ; length + "Inver@" + flags
 	rept PARTY_LENGTH
 		ds 3 ; dbp <level>, <species>, <form>
-		ds 5 ; db <item>, <dv1>, <dv2>, <dv3>, <nat | abil>
+		ds 3 ; db <item>, <dvs>, <nat | abil>
 		ds NUM_MOVES ; moves
 	endr
-	db ; db -1 ; end
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; credits image
 
-wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
+wCreditsBlankFrame2bpp:: ds 16 tiles
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; Bill's PC
 
 	; LCD hblank code block. Labels are defined as part of the code.
 	ds $cf
-	assert BillsPC_LCDCode.End - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
+	assert BillsPC_LCDCode.End - BillsPC_LCDCode == @ - STARTOF("Misc 1300")
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
@@ -981,15 +983,37 @@ wBillsPC_QuickFrames:: db
 
 wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
+wSummaryScreenPals:: ds 8 palettes
 
-SECTION UNION "Misc 1326", WRAM0
+wSummaryScreenOAM::
+for n, OAM_COUNT
+wSummaryScreenOAMSprite{02d:n}:: sprite_oam_struct wSummaryScreenOAMSprite{02d:n}
+endr
+wSummaryScreenTypes:: ds 6
+wSummaryScreenStep:: db
+wSummaryScreenInterrupts:: ds 2 * 16
+wSummaryScreenPage:: db
+wSummaryScreenMoveCount:: db
+wSummaryMoveSwap:: db
+
+; Used to align window buffer for DMA copying
+; Feel free to use or move data, an assert will fail if the memory becomes misaligned
+ds 13
+assert @ % 16 == 0
+
+wSummaryScreenWindowBuffer:: ds 32 * 10
+
+wSummaryScreenPPTileBuffer:: ds 3 * TILE_1BPP_SIZE
+
+
+SECTION UNION "Misc 1300", WRAM0
 ; raw link data
 
 wLinkData:: ds 1300
 wLinkDataEnd::
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; link data members
 
 wLinkPlayerName:: ds NAME_LENGTH
@@ -1022,7 +1046,7 @@ wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
 ENDU
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; link mail data
 	ds 500
 
@@ -1041,7 +1065,7 @@ wLinkOTMailEnd::
 	ds 10
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 ; received link mail data
 	ds 500
 
@@ -1049,7 +1073,7 @@ wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
 
 
-SECTION UNION "Misc 1326", WRAM0
+SECTION UNION "Misc 1300", WRAM0
 
 ; GB Printer data
 wGameboyPrinterRAM::
@@ -1074,7 +1098,7 @@ wPrinterSendByteOffset:: dw
 wPrinterSendByteCounter:: dw
 
 ; tilemap backup?
-wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterTilemapBuffer:: ds SCREEN_AREA
 wPrinterStatus:: db
 	ds 1
 ; High nibble is for margin before the image, low nibble is for after.
@@ -1084,7 +1108,11 @@ wPrinterExposureTime:: db
 wGameboyPrinterRAMEnd::
 
 wPrinterOpcode:: db
-wPrinterConnectionOpen:: db
+
+
+SECTION UNION "Misc 1300", WRAM0
+
+wMPNotes:: ds 3 * 256
 
 
 SECTION "Video", WRAM0
@@ -1106,6 +1134,7 @@ wMemCGBLayout:: db
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
+NEXTU
 wTrainerCardBadgePaletteAddr:: dw
 NEXTU
 wPlayerHPPal:: db
@@ -1202,8 +1231,8 @@ wBattleTransitionSineWaveOffset::
 wBattleTransitionSpinQuadrant:: db
 
 NEXTU
-; stats screen
-wStatsScreenFlags:: db
+; summary screen
+wSummaryScreenFlags:: db
 
 NEXTU
 ; miscellaneous
@@ -1374,6 +1403,27 @@ wPrevWeather:: db
 wCurWeather:: db
 wPrevOvercastIndex:: db
 
+wPalState:: db
+wPalWhiteState:: db
+
+wPalStates::
+wPrevPalStates::
+wPrevPalWeatherState:: db
+wPrevPalDarknessState:: db
+wPrevPalOvercastIndexState:: db
+wPrevPalTimeOfDayPalState:: db
+
+wCurPalStates::
+wCurPalWeatherState:: db
+wCurPalDarknessState:: db
+wCurPalOvercastIndexState:: db
+wCurPalTimeOfDayPalState:: db
+
+
+SECTION "Unused 2", WRAM0
+
+	ds 281 ; it's free real estate
+
 
 SECTION "Options", WRAM0
 
@@ -1424,15 +1474,16 @@ wInitialOptions::
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
 ; bit 5: affection bonuses off/on
-; bit 6: scaled exp on/off
+; bit 6: scaled exp on/off (cannot be set together with no exp)
 ; bit 7: physical-special split on/off
 	db
 
 wInitialOptions2::
-; bit 0: EVs disabled
-; bit 1: classic EVs (no 510 cap)
-; bit 2: modern EVs (510 cap)
-; (only one of bits 0-2 can be set)
+; bits 0-1: EVs (cannot be set to %11)
+; - %00: EVs disabled
+; - %01: classic EVs (no 510 cap)
+; - %10: modern EVs (510 cap)
+; bit 2: no exp on/off (cannot be set together with scaled exp)
 ; bit 3: use RTC
 ; bit 4: evolve in battle
 ; bits 5-6: unused
@@ -1449,7 +1500,16 @@ wDaysSince:: db
 ; Temporary backup for options
 wOptionsBuffer:: db
 
-SECTION "Rom Checksum", WRAM0
+
+SECTION "SRAM Access Count", WRAM0
+
+; Contains a count of the number of times SRAM has been opened in a
+; session. Protects against bugs from emulators that do not load SRAM
+; when loading a savestate.
+wSRAMAccessCount:: db
+
+
+SECTION "ROM Checksum", WRAM0
 
 ; Contains a copy of the rom checksum, read from the header. Used as
 ; protection against people trying to load a save state for a save in

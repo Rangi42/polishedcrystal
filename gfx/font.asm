@@ -1,5 +1,5 @@
 FontTiles::
-	table_width 114 * LEN_1BPP_TILE
+	table_width 114 * TILE_1BPP_SIZE
 FontNormal:
 INCBIN "gfx/font/normal.1bpp"
 FontNarrow:
@@ -24,7 +24,7 @@ TextboxSpaceGFX::
 INCBIN "gfx/font/space.vwf.1bpp"
 
 Frames:
-	table_width TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
+	table_width TEXTBOX_FRAME_TILES * TILE_1BPP_SIZE
 INCBIN "gfx/frames/1.1bpp"
 INCBIN "gfx/frames/2.1bpp"
 INCBIN "gfx/frames/3.1bpp"
@@ -47,19 +47,11 @@ INCBIN "gfx/frames/19.1bpp"
 INCBIN "gfx/frames/20.1bpp"
 	assert_table_length NUM_FRAMES
 
-Signs:
-	table_width 8 tiles
-INCBIN "gfx/signs/wood.2bpp"
-INCBIN "gfx/signs/city.2bpp"
-INCBIN "gfx/signs/forest.2bpp"
-INCBIN "gfx/signs/cave.2bpp"
-INCBIN "gfx/signs/route.2bpp"
-INCBIN "gfx/signs/water.2bpp"
-INCBIN "gfx/signs/building.2bpp"
-	assert_table_length NUM_SIGNS
-
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp.lz"
+
+SummaryStatusIconGFX:
+INCBIN "gfx/stats/status.2bpp"
 
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
@@ -68,7 +60,7 @@ EnemyStatusIconGFX:
 INCBIN "gfx/battle/status-enemy.2bpp"
 
 TypeIconGFX:
-	table_width 4 * LEN_1BPP_TILE
+	table_width 4 * TILE_1BPP_SIZE
 INCBIN "gfx/battle/types.1bpp"
 	assert_table_length NUM_TYPES + 1
 

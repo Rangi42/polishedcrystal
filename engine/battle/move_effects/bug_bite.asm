@@ -3,7 +3,7 @@ BattleCommand_bugbite:
 	ld b, a
 
 	; these abilities prevent us from eating it
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp UNNERVE
 	ret z
 	push bc

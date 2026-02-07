@@ -2338,85 +2338,6 @@ Sfx_Fanfare2:
 	sound_ret
 
 
-UnknownSfx:
-	channel_count 4
-	channel 5, .Ch5
-	channel 6, .Ch6
-	channel 7, .Ch7
-	channel 8, .Ch8
-
-.Ch5:
-	toggle_sfx
-	tempo 124
-	volume 7, 7
-	vibrato 8, 2, 7
-	duty_cycle 2
-	note_type 12, 11, 1
-	octave 4
-	note F_, 2
-	note F_, 1
-	note F_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note E_, 2
-	note G_, 1
-	note G_, 1
-	note C_, 2
-	note E_, 1
-	note E_, 1
-	volume_envelope 10, 5
-	note F_, 16
-	sound_ret
-
-.Ch6:
-	toggle_sfx
-	vibrato 8, 2, 7
-	duty_cycle 2
-	note_type 12, 12, 1
-	octave 4
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note F_, 2
-	note F_, 1
-	note F_, 1
-	octave 5
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	octave 4
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	volume_envelope 11, 5
-	note A_, 16
-	sound_ret
-
-.Ch7:
-	toggle_sfx
-	note_type 12, 2, 5
-	octave 4
-	note F_, 8
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	note A#, 2
-	note A_, 4
-	volume_envelope 3, 5
-	note A_, 3
-	rest 9
-	sound_ret
-
-.Ch8:
-	toggle_sfx
-	sfx_toggle_noise 4
-	note_type 12
-	note C_, 16
-	rest 16
-	sound_ret
-
-
 Sfx_Fanfare:
 	channel_count 3
 	channel 5, .Ch5
@@ -5743,6 +5664,37 @@ Sfx_Gravity_Ch8:
 	noise_note 11, 14, -2, 106
 	noise_note 11, 14, -2, 107
 	noise_note 11, 14, 1, 108
+	sound_ret
+
+
+Sfx_OWWhirlpool:
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
+
+.Ch5:
+.branch5:
+	duty_cycle_pattern 0, 3, 2, 1
+	square_note 15, 15, 4, 1280
+	square_note 15, 12, 4, 1024
+	square_note 15, 14, 2, 1472
+	sound_ret
+
+.Ch6:
+.branch6:
+	duty_cycle_pattern 2, 0, 3, 1
+	square_note 7, 14, 4, 1072
+	square_note 15, 11, 4, 816
+	square_note 15, 10, 2, 1080
+	sound_ret
+
+.Ch8:
+.branch8:
+	noise_note 9, 15, 4, 68
+	noise_note 9, 15, 2, 67
+	noise_note 15, 15, 4, 66
+	noise_note 15, 15, 4, 65
 	sound_ret
 
 ENDSECTION

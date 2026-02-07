@@ -35,10 +35,14 @@ SpriteAnimOAMData:
 	spriteanimoam $00, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_1
 	spriteanimoam $04, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_2
 	spriteanimoam $00, .OAMData_RadioTuningKnob        ; SPRITE_ANIM_OAMSET_RADIO_TUNING_KNOB
-	spriteanimoam $00, .OAMData_PartyMonWithMail1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1
-	spriteanimoam $00, .OAMData_PartyMonWithMail2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2
 	spriteanimoam $00, .OAMData_PartyMonWithItem1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1
 	spriteanimoam $00, .OAMData_PartyMonWithItem2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2
+	spriteanimoam $00, .OAMData_PartyMonWithInertItem1 ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_1
+	spriteanimoam $00, .OAMData_PartyMonWithInertItem2 ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_2
+	spriteanimoam $00, .OAMData_PartyMonWithMail1      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1
+	spriteanimoam $00, .OAMData_PartyMonWithMail2      ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2
+	spriteanimoam $00, .OAMData_PartyMonWithBerry1     ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_1
+	spriteanimoam $00, .OAMData_PartyMonWithBerry2     ; SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_2
 	spriteanimoam $00, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_1
 	spriteanimoam $04, .OAMData_MagnetTrain            ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_2
 	spriteanimoam $00, .OAMData_Leaf                   ; SPRITE_ANIM_OAMSET_LEAF
@@ -113,30 +117,30 @@ SpriteAnimOAMData:
 
 .OAMData_TradePokeBall1:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
-	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | PRIORITY
-	dsprite  0,  0, -1,  0, $01, $0 | PRIORITY
-	dsprite  0,  0,  0,  0, $01, $0 | X_FLIP | PRIORITY
+	dsprite -1,  0, -1,  0, $00, $0 | OAM_PRIO
+	dsprite -1,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_PRIO
+	dsprite  0,  0, -1,  0, $01, $0 | OAM_PRIO
+	dsprite  0,  0,  0,  0, $01, $0 | OAM_XFLIP | OAM_PRIO
 
 .OAMData_IntroUnownF2_1:
 	db 4
 	dsprite -1,  0, -1,  0, $00, $0
-	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP
-	dsprite  0,  0, -1,  0, $00, $0 | Y_FLIP
-	dsprite  0,  0,  0,  0, $00, $0 | X_FLIP | Y_FLIP
+	dsprite -1,  0,  0,  0, $00, $0 | OAM_XFLIP
+	dsprite  0,  0, -1,  0, $00, $0 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_TradeTubeBulge:
 	db 4
 	dsprite -1,  0, -1,  0, $00, $7
-	dsprite -1,  0,  0,  0, $00, $7 | X_FLIP
-	dsprite  0,  0, -1,  0, $00, $7 | Y_FLIP
-	dsprite  0,  0,  0,  0, $00, $7 | X_FLIP | Y_FLIP
+	dsprite -1,  0,  0,  0, $00, $7 | OAM_XFLIP
+	dsprite  0,  0, -1,  0, $00, $7 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $00, $7 | OAM_XFLIP | OAM_YFLIP
 
 	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
-	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | PRIORITY
-	dsprite  0,  0, -1,  0, $00, $0 | Y_FLIP | PRIORITY
-	dsprite  0,  0,  0,  0, $00, $0 | X_FLIP | Y_FLIP | PRIORITY
+	dsprite -1,  0, -1,  0, $00, $0 | OAM_PRIO
+	dsprite -1,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_PRIO
+	dsprite  0,  0, -1,  0, $00, $0 | OAM_YFLIP | OAM_PRIO
+	dsprite  0,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP | OAM_PRIO
 
 .OAMData_TradePoofBubble:
 	db 16
@@ -144,18 +148,18 @@ SpriteAnimOAMData:
 	dsprite -2,  0, -1,  0, $01, $0
 	dsprite -1,  0, -2,  0, $02, $0
 	dsprite -1,  0, -1,  0, $03, $0
-	dsprite -2,  0,  0,  0, $01, $0 | X_FLIP
-	dsprite -2,  0,  1,  0, $00, $0 | X_FLIP
-	dsprite -1,  0,  0,  0, $03, $0 | X_FLIP
-	dsprite -1,  0,  1,  0, $02, $0 | X_FLIP
-	dsprite  0,  0, -2,  0, $02, $0 | Y_FLIP
-	dsprite  0,  0, -1,  0, $03, $0 | Y_FLIP
-	dsprite  1,  0, -2,  0, $00, $0 | Y_FLIP
-	dsprite  1,  0, -1,  0, $01, $0 | Y_FLIP
-	dsprite  0,  0,  0,  0, $03, $0 | X_FLIP | Y_FLIP
-	dsprite  0,  0,  1,  0, $02, $0 | X_FLIP | Y_FLIP
-	dsprite  1,  0,  0,  0, $01, $0 | X_FLIP | Y_FLIP
-	dsprite  1,  0,  1,  0, $00, $0 | X_FLIP | Y_FLIP
+	dsprite -2,  0,  0,  0, $01, $0 | OAM_XFLIP
+	dsprite -2,  0,  1,  0, $00, $0 | OAM_XFLIP
+	dsprite -1,  0,  0,  0, $03, $0 | OAM_XFLIP
+	dsprite -1,  0,  1,  0, $02, $0 | OAM_XFLIP
+	dsprite  0,  0, -2,  0, $02, $0 | OAM_YFLIP
+	dsprite  0,  0, -1,  0, $03, $0 | OAM_YFLIP
+	dsprite  1,  0, -2,  0, $00, $0 | OAM_YFLIP
+	dsprite  1,  0, -1,  0, $01, $0 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $03, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite  0,  0,  1,  0, $02, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite  1,  0,  0,  0, $01, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite  1,  0,  1,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_RedWalk:
 	db 4
@@ -186,7 +190,8 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, $1
 
 .OAMData_PartyMon:
-	db 4
+	db MINI_OAM_COUNT
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
@@ -194,37 +199,73 @@ SpriteAnimOAMData:
 
 .OAMData_MagnetTrain:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
-	dsprite -1,  0,  0,  0, $01, $0 | PRIORITY
-	dsprite  0,  0, -1,  0, $02, $0 | PRIORITY
-	dsprite  0,  0,  0,  0, $03, $0 | PRIORITY
-
-.OAMData_PartyMonWithMail1:
-	db 4
-	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
-	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
-	dsprite  0,  0, -1,  0, $08, $0
-	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
-
-.OAMData_PartyMonWithMail2:
-	db 4
-	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
-	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
-	dsprite  0,  0, -1,  0, $08, $0
-	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0, -1,  0, $00, $0 | OAM_PRIO
+	dsprite -1,  0,  0,  0, $01, $0 | OAM_PRIO
+	dsprite  0,  0, -1,  0, $02, $0 | OAM_PRIO
+	dsprite  0,  0,  0,  0, $03, $0 | OAM_PRIO
 
 .OAMData_PartyMonWithItem1:
-	db 4
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $08, $0
 	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
-	dsprite  0,  0, -1,  0, $09, $0
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithItem2:
-	db 4
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $08, $0
 	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $06, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
+
+.OAMData_PartyMonWithInertItem1:
+	db MINI_OAM_COUNT
 	dsprite  0,  0, -1,  0, $09, $0
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
+
+.OAMData_PartyMonWithInertItem2:
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $09, $0
+	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $06, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
+
+.OAMData_PartyMonWithMail1:
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $0a, $0
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
+
+.OAMData_PartyMonWithMail2:
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $0a, $0
+	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $06, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
+
+.OAMData_PartyMonWithBerry1:
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $0b, $0
+	dsprite -1,  0, -1,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
+
+.OAMData_PartyMonWithBerry2:
+	db MINI_OAM_COUNT
+	dsprite  0,  0, -1,  0, $0b, $0
+	dsprite -1,  0, -1,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite -1,  0,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
+	dsprite  0,  0, -1,  0, $06, SPRITEOAM_SKIP_PAL_APPLY
 	dsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_Leaf:
@@ -241,9 +282,9 @@ SpriteAnimOAMData:
 .OAMData_TextEntryCursor:
 	db 4
 	dsprite -1,  7, -1,  7, $00, $0
-	dsprite -1,  7,  0,  0, $00, $0 | X_FLIP
-	dsprite  0,  0, -1,  7, $00, $0 | Y_FLIP
-	dsprite  0,  0,  0,  0, $00, $0 | X_FLIP | Y_FLIP
+	dsprite -1,  7,  0,  0, $00, $0 | OAM_XFLIP
+	dsprite  0,  0, -1,  7, $00, $0 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_TextEntryCursorBig:
 	db 10
@@ -251,19 +292,19 @@ SpriteAnimOAMData:
 	dsprite -1,  7,  1,  0, $01, $0
 	dsprite -1,  7,  2,  0, $01, $0
 	dsprite -1,  7,  3,  0, $01, $0
-	dsprite -1,  7,  4,  0, $00, $0 | X_FLIP
-	dsprite  0,  0,  0,  0, $00, $0 | Y_FLIP
-	dsprite  0,  0,  1,  0, $01, $0 | Y_FLIP
-	dsprite  0,  0,  2,  0, $01, $0 | Y_FLIP
-	dsprite  0,  0,  3,  0, $01, $0 | Y_FLIP
-	dsprite  0,  0,  4,  0, $00, $0 | X_FLIP | Y_FLIP
+	dsprite -1,  7,  4,  0, $00, $0 | OAM_XFLIP
+	dsprite  0,  0,  0,  0, $00, $0 | OAM_YFLIP
+	dsprite  0,  0,  1,  0, $01, $0 | OAM_YFLIP
+	dsprite  0,  0,  2,  0, $01, $0 | OAM_YFLIP
+	dsprite  0,  0,  3,  0, $01, $0 | OAM_YFLIP
+	dsprite  0,  0,  4,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_TextEntryCursorBlue:
 	db 4
 	dsprite -1,  7, -1,  7, $00, $1
-	dsprite -1,  7,  0,  0, $00, $1 | X_FLIP
-	dsprite  0,  0, -1,  7, $00, $1 | Y_FLIP
-	dsprite  0,  0,  0,  0, $00, $1 | X_FLIP | Y_FLIP
+	dsprite -1,  7,  0,  0, $00, $1 | OAM_XFLIP
+	dsprite  0,  0, -1,  7, $00, $1 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $00, $1 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_TextEntryCursorBlueBig:
 	db 10
@@ -271,21 +312,21 @@ SpriteAnimOAMData:
 	dsprite -1,  7,  1,  0, $01, $1
 	dsprite -1,  7,  2,  0, $01, $1
 	dsprite -1,  7,  3,  0, $01, $1
-	dsprite -1,  7,  4,  0, $00, $1 | X_FLIP
-	dsprite  0,  0,  0,  0, $00, $1 | Y_FLIP
-	dsprite  0,  0,  1,  0, $01, $1 | Y_FLIP
-	dsprite  0,  0,  2,  0, $01, $1 | Y_FLIP
-	dsprite  0,  0,  3,  0, $01, $1 | Y_FLIP
-	dsprite  0,  0,  4,  0, $00, $1 | X_FLIP | Y_FLIP
+	dsprite -1,  7,  4,  0, $00, $1 | OAM_XFLIP
+	dsprite  0,  0,  0,  0, $00, $1 | OAM_YFLIP
+	dsprite  0,  0,  1,  0, $01, $1 | OAM_YFLIP
+	dsprite  0,  0,  2,  0, $01, $1 | OAM_YFLIP
+	dsprite  0,  0,  3,  0, $01, $1 | OAM_YFLIP
+	dsprite  0,  0,  4,  0, $00, $1 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_SlotsGolem:
 	db 6
 	dsprite -2,  4, -2,  4, $00, $5
 	dsprite -2,  4, -1,  4, $02, $5
-	dsprite -2,  4,  0,  4, $00, $5 | X_FLIP
+	dsprite -2,  4,  0,  4, $00, $5 | OAM_XFLIP
 	dsprite  0,  4, -2,  4, $04, $5
 	dsprite  0,  4, -1,  4, $06, $5
-	dsprite  0,  4,  0,  4, $04, $5 | X_FLIP
+	dsprite  0,  4,  0,  4, $04, $5 | OAM_XFLIP
 
 .OAMData_SlotsChansey1:
 	db 6
@@ -505,50 +546,50 @@ SpriteAnimOAMData:
 
 .OAMData_IntroPichu:
 	db 25
-	dsprite -3,  4, -3,  4, $00, $1 | VRAM_BANK_1
-	dsprite -3,  4, -2,  4, $01, $1 | VRAM_BANK_1
-	dsprite -3,  4, -1,  4, $02, $1 | VRAM_BANK_1
-	dsprite -3,  4,  0,  4, $03, $1 | VRAM_BANK_1
-	dsprite -3,  4,  1,  4, $04, $1 | VRAM_BANK_1
-	dsprite -2,  4, -3,  4, $10, $1 | VRAM_BANK_1
-	dsprite -2,  4, -2,  4, $11, $1 | VRAM_BANK_1
-	dsprite -2,  4, -1,  4, $12, $1 | VRAM_BANK_1
-	dsprite -2,  4,  0,  4, $13, $1 | VRAM_BANK_1
-	dsprite -2,  4,  1,  4, $14, $1 | VRAM_BANK_1
-	dsprite -1,  4, -3,  4, $20, $1 | VRAM_BANK_1
-	dsprite -1,  4, -2,  4, $21, $1 | VRAM_BANK_1
-	dsprite -1,  4, -1,  4, $22, $1 | VRAM_BANK_1
-	dsprite -1,  4,  0,  4, $23, $1 | VRAM_BANK_1
-	dsprite -1,  4,  1,  4, $24, $1 | VRAM_BANK_1
-	dsprite  0,  4, -3,  4, $30, $1 | VRAM_BANK_1
-	dsprite  0,  4, -2,  4, $31, $1 | VRAM_BANK_1
-	dsprite  0,  4, -1,  4, $32, $1 | VRAM_BANK_1
-	dsprite  0,  4,  0,  4, $33, $1 | VRAM_BANK_1
-	dsprite  0,  4,  1,  4, $34, $1 | VRAM_BANK_1
-	dsprite  1,  4, -3,  4, $40, $1 | VRAM_BANK_1
-	dsprite  1,  4, -2,  4, $41, $1 | VRAM_BANK_1
-	dsprite  1,  4, -1,  4, $42, $1 | VRAM_BANK_1
-	dsprite  1,  4,  0,  4, $43, $1 | VRAM_BANK_1
-	dsprite  1,  4,  1,  4, $44, $1 | VRAM_BANK_1
+	dsprite -3,  4, -3,  4, $00, $1 | OAM_BANK1
+	dsprite -3,  4, -2,  4, $01, $1 | OAM_BANK1
+	dsprite -3,  4, -1,  4, $02, $1 | OAM_BANK1
+	dsprite -3,  4,  0,  4, $03, $1 | OAM_BANK1
+	dsprite -3,  4,  1,  4, $04, $1 | OAM_BANK1
+	dsprite -2,  4, -3,  4, $10, $1 | OAM_BANK1
+	dsprite -2,  4, -2,  4, $11, $1 | OAM_BANK1
+	dsprite -2,  4, -1,  4, $12, $1 | OAM_BANK1
+	dsprite -2,  4,  0,  4, $13, $1 | OAM_BANK1
+	dsprite -2,  4,  1,  4, $14, $1 | OAM_BANK1
+	dsprite -1,  4, -3,  4, $20, $1 | OAM_BANK1
+	dsprite -1,  4, -2,  4, $21, $1 | OAM_BANK1
+	dsprite -1,  4, -1,  4, $22, $1 | OAM_BANK1
+	dsprite -1,  4,  0,  4, $23, $1 | OAM_BANK1
+	dsprite -1,  4,  1,  4, $24, $1 | OAM_BANK1
+	dsprite  0,  4, -3,  4, $30, $1 | OAM_BANK1
+	dsprite  0,  4, -2,  4, $31, $1 | OAM_BANK1
+	dsprite  0,  4, -1,  4, $32, $1 | OAM_BANK1
+	dsprite  0,  4,  0,  4, $33, $1 | OAM_BANK1
+	dsprite  0,  4,  1,  4, $34, $1 | OAM_BANK1
+	dsprite  1,  4, -3,  4, $40, $1 | OAM_BANK1
+	dsprite  1,  4, -2,  4, $41, $1 | OAM_BANK1
+	dsprite  1,  4, -1,  4, $42, $1 | OAM_BANK1
+	dsprite  1,  4,  0,  4, $43, $1 | OAM_BANK1
+	dsprite  1,  4,  1,  4, $44, $1 | OAM_BANK1
 
 .OAMData_IntroWooper:
 	db 16
-	dsprite -2,  0, -3,  4, $00, $2 | VRAM_BANK_1
-	dsprite -2,  0, -2,  4, $01, $2 | VRAM_BANK_1
-	dsprite -2,  0, -1,  4, $02, $2 | VRAM_BANK_1
-	dsprite -2,  0,  0,  4, $03, $2 | VRAM_BANK_1
-	dsprite -1,  0, -3,  4, $04, $2 | VRAM_BANK_1
-	dsprite -1,  0, -2,  4, $05, $2 | VRAM_BANK_1
-	dsprite -1,  0, -1,  4, $06, $2 | VRAM_BANK_1
-	dsprite -1,  0,  0,  4, $07, $2 | VRAM_BANK_1
-	dsprite  0,  0, -3,  4, $08, $2 | VRAM_BANK_1
-	dsprite  0,  0, -2,  4, $09, $2 | VRAM_BANK_1
-	dsprite  0,  0, -1,  4, $0a, $2 | VRAM_BANK_1
-	dsprite  0,  0,  0,  4, $0b, $2 | VRAM_BANK_1
-	dsprite  1,  0, -3,  4, $0c, $2 | VRAM_BANK_1
-	dsprite  1,  0, -2,  4, $0d, $2 | VRAM_BANK_1
-	dsprite  1,  0, -1,  4, $0e, $2 | VRAM_BANK_1
-	dsprite  1,  0,  0,  4, $0f, $2 | VRAM_BANK_1
+	dsprite -2,  0, -3,  4, $00, $2 | OAM_BANK1
+	dsprite -2,  0, -2,  4, $01, $2 | OAM_BANK1
+	dsprite -2,  0, -1,  4, $02, $2 | OAM_BANK1
+	dsprite -2,  0,  0,  4, $03, $2 | OAM_BANK1
+	dsprite -1,  0, -3,  4, $04, $2 | OAM_BANK1
+	dsprite -1,  0, -2,  4, $05, $2 | OAM_BANK1
+	dsprite -1,  0, -1,  4, $06, $2 | OAM_BANK1
+	dsprite -1,  0,  0,  4, $07, $2 | OAM_BANK1
+	dsprite  0,  0, -3,  4, $08, $2 | OAM_BANK1
+	dsprite  0,  0, -2,  4, $09, $2 | OAM_BANK1
+	dsprite  0,  0, -1,  4, $0a, $2 | OAM_BANK1
+	dsprite  0,  0,  0,  4, $0b, $2 | OAM_BANK1
+	dsprite  1,  0, -3,  4, $0c, $2 | OAM_BANK1
+	dsprite  1,  0, -2,  4, $0d, $2 | OAM_BANK1
+	dsprite  1,  0, -1,  4, $0e, $2 | OAM_BANK1
+	dsprite  1,  0,  0,  4, $0f, $2 | OAM_BANK1
 
 .OAMData_IntroUnown1:
 	db 1
@@ -574,27 +615,27 @@ SpriteAnimOAMData:
 	db 8
 	dsprite -1,  0, -2,  0, $00, $0
 	dsprite -1,  0, -1,  0, $01, $0
-	dsprite -1,  0,  0,  0, $01, $0 | X_FLIP
-	dsprite -1,  0,  1,  0, $00, $0 | X_FLIP
-	dsprite  0,  0, -2,  0, $00, $0 | Y_FLIP
-	dsprite  0,  0, -1,  0, $01, $0 | Y_FLIP
-	dsprite  0,  0,  0,  0, $01, $0 | X_FLIP | Y_FLIP
-	dsprite  0,  0,  1,  0, $00, $0 | X_FLIP | Y_FLIP
+	dsprite -1,  0,  0,  0, $01, $0 | OAM_XFLIP
+	dsprite -1,  0,  1,  0, $00, $0 | OAM_XFLIP
+	dsprite  0,  0, -2,  0, $00, $0 | OAM_YFLIP
+	dsprite  0,  0, -1,  0, $01, $0 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $01, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite  0,  0,  1,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_IntroUnownF2_3:
 	db 12
 	dsprite -3,  0, -1,  0, $00, $0
 	dsprite -2,  0, -1,  0, $01, $0
 	dsprite -1,  0, -1,  0, $02, $0
-	dsprite -3,  0,  0,  0, $00, $0 | X_FLIP
-	dsprite -2,  0,  0,  0, $01, $0 | X_FLIP
-	dsprite -1,  0,  0,  0, $02, $0 | X_FLIP
-	dsprite  0,  0, -1,  0, $02, $0 | Y_FLIP
-	dsprite  1,  0, -1,  0, $01, $0 | Y_FLIP
-	dsprite  2,  0, -1,  0, $00, $0 | Y_FLIP
-	dsprite  0,  0,  0,  0, $02, $0 | X_FLIP | Y_FLIP
-	dsprite  1,  0,  0,  0, $01, $0 | X_FLIP | Y_FLIP
-	dsprite  2,  0,  0,  0, $00, $0 | X_FLIP | Y_FLIP
+	dsprite -3,  0,  0,  0, $00, $0 | OAM_XFLIP
+	dsprite -2,  0,  0,  0, $01, $0 | OAM_XFLIP
+	dsprite -1,  0,  0,  0, $02, $0 | OAM_XFLIP
+	dsprite  0,  0, -1,  0, $02, $0 | OAM_YFLIP
+	dsprite  1,  0, -1,  0, $01, $0 | OAM_YFLIP
+	dsprite  2,  0, -1,  0, $00, $0 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $02, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite  1,  0,  0,  0, $01, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite  2,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_IntroUnownF2_4_5:
 	db 20
@@ -621,26 +662,26 @@ SpriteAnimOAMData:
 
 .OAMData_IntroSuicuneAway:
 	db 20
-	dsprite  0,  0,   1,  0, $00, $1 | PRIORITY
-	dsprite  1,  0,   2,  0, $00, $1 | PRIORITY
-	dsprite  2,  0,   3,  0, $00, $1 | PRIORITY
-	dsprite  3,  0,   4,  0, $00, $1 | PRIORITY
-	dsprite  4,  0,   5,  0, $00, $1 | PRIORITY
-	dsprite  3,  0,   6,  0, $00, $1 | PRIORITY
-	dsprite  2,  0,   7,  0, $00, $1 | PRIORITY
-	dsprite  1,  0,   8,  0, $00, $1 | PRIORITY
-	dsprite  0,  0,   9,  0, $00, $1 | PRIORITY
-	dsprite  1,  0,  10,  0, $00, $1 | PRIORITY
-	dsprite  2,  0,  11,  0, $00, $1 | PRIORITY
-	dsprite  3,  0,  12,  0, $00, $1 | PRIORITY
-	dsprite  4,  0,  13,  0, $00, $1 | PRIORITY
-	dsprite  3,  0,  14,  0, $00, $1 | PRIORITY
-	dsprite  2,  0,  15,  0, $00, $1 | PRIORITY
-	dsprite  1,  0,  16,  0, $00, $1 | PRIORITY
-	dsprite  0,  0, -15,  0, $00, $1 | PRIORITY
-	dsprite  1,  0, -14,  0, $00, $1 | PRIORITY
-	dsprite  2,  0, -13,  0, $00, $1 | PRIORITY
-	dsprite  3,  0, -12,  0, $00, $1 | PRIORITY
+	dsprite  0,  0,   1,  0, $00, $1 | OAM_PRIO
+	dsprite  1,  0,   2,  0, $00, $1 | OAM_PRIO
+	dsprite  2,  0,   3,  0, $00, $1 | OAM_PRIO
+	dsprite  3,  0,   4,  0, $00, $1 | OAM_PRIO
+	dsprite  4,  0,   5,  0, $00, $1 | OAM_PRIO
+	dsprite  3,  0,   6,  0, $00, $1 | OAM_PRIO
+	dsprite  2,  0,   7,  0, $00, $1 | OAM_PRIO
+	dsprite  1,  0,   8,  0, $00, $1 | OAM_PRIO
+	dsprite  0,  0,   9,  0, $00, $1 | OAM_PRIO
+	dsprite  1,  0,  10,  0, $00, $1 | OAM_PRIO
+	dsprite  2,  0,  11,  0, $00, $1 | OAM_PRIO
+	dsprite  3,  0,  12,  0, $00, $1 | OAM_PRIO
+	dsprite  4,  0,  13,  0, $00, $1 | OAM_PRIO
+	dsprite  3,  0,  14,  0, $00, $1 | OAM_PRIO
+	dsprite  2,  0,  15,  0, $00, $1 | OAM_PRIO
+	dsprite  1,  0,  16,  0, $00, $1 | OAM_PRIO
+	dsprite  0,  0, -15,  0, $00, $1 | OAM_PRIO
+	dsprite  1,  0, -14,  0, $00, $1 | OAM_PRIO
+	dsprite  2,  0, -13,  0, $00, $1 | OAM_PRIO
+	dsprite  3,  0, -12,  0, $00, $1 | OAM_PRIO
 
 .OAMData_Celebi:
 	db 4
@@ -690,74 +731,74 @@ SpriteAnimOAMData:
 
 .OAMData_MaxStatSparkle:
 	db 1
-	dsprite  2,  0,  2,  0, $00, $0 | VRAM_BANK_1
+	dsprite  2,  0,  2,  0, $00, $0 | OAM_BANK1
 
 .OAMData_HyperTrainedStat:
 	db 1
-	dsprite  2,  0,  2,  0, $01, $1 | VRAM_BANK_1
+	dsprite  2,  0,  2,  0, $01, $1 | OAM_BANK1
 
 .OAMData_PcCursor:
 	db 12
 	; Cursor
-	dsprite  0,  0,  0,  0, $04, $1 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $04, $2 | VRAM_BANK_1 | X_FLIP
-	dsprite  1,  0,  0,  0, $05, $1 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $05, $2 | VRAM_BANK_1 | X_FLIP
+	dsprite  0,  0,  0,  0, $04, $1 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $04, $2 | OAM_BANK1 | OAM_XFLIP
+	dsprite  1,  0,  0,  0, $05, $1 | OAM_BANK1
+	dsprite  1,  0,  1,  0, $05, $2 | OAM_BANK1 | OAM_XFLIP
 
 	; Mini
-	dsprite  1,  2,  0,  0, $08, $3 | VRAM_BANK_1
-	dsprite  1,  2,  1,  0, $09, $3 | VRAM_BANK_1
-	dsprite  2,  2,  0,  0, $0a, $3 | VRAM_BANK_1
-	dsprite  2,  2,  1,  0, $0b, $3 | VRAM_BANK_1
+	dsprite  1,  2,  0,  0, $08, $3 | OAM_BANK1
+	dsprite  1,  2,  1,  0, $09, $3 | OAM_BANK1
+	dsprite  2,  2,  0,  0, $0a, $3 | OAM_BANK1
+	dsprite  2,  2,  1,  0, $0b, $3 | OAM_BANK1
 
 	; Mini shadow
-	dsprite  1,  2,  0,  0, $0c, $6 | VRAM_BANK_1
-	dsprite  1,  2,  1,  0, $0d, $6 | VRAM_BANK_1
-	dsprite  2,  2,  0,  0, $0e, $6 | VRAM_BANK_1
-	dsprite  2,  2,  1,  0, $0f, $6 | VRAM_BANK_1
+	dsprite  1,  2,  0,  0, $0c, $6 | OAM_BANK1
+	dsprite  1,  2,  1,  0, $0d, $6 | OAM_BANK1
+	dsprite  2,  2,  0,  0, $0e, $6 | OAM_BANK1
+	dsprite  2,  2,  1,  0, $0f, $6 | OAM_BANK1
 
 .OAMData_PcCursorItem:
 	db 5
 	; Cursor
-	dsprite  0,  0,  0,  0, $04, $1 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $04, $2 | VRAM_BANK_1 | X_FLIP
-	dsprite  1,  0,  0,  0, $05, $1 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $05, $2 | VRAM_BANK_1 | X_FLIP
+	dsprite  0,  0,  0,  0, $04, $1 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $04, $2 | OAM_BANK1 | OAM_XFLIP
+	dsprite  1,  0,  0,  0, $05, $1 | OAM_BANK1
+	dsprite  1,  0,  1,  0, $05, $2 | OAM_BANK1 | OAM_XFLIP
 
 	; Item
-	dsprite  2,  0,  0,  4, $08, $0 | VRAM_BANK_1
+	dsprite  2,  0,  0,  4, $08, $0 | OAM_BANK1
 
 .OAMData_PcQuick:
 	db 8
 	; Mini or item (only uses 1 sprite with the rest blank)
-	dsprite  0,  0,  0,  0, $14, $5 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $15, $5 | VRAM_BANK_1
-	dsprite  1,  0,  0,  0, $16, $5 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $17, $5 | VRAM_BANK_1
+	dsprite  0,  0,  0,  0, $14, $5 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $15, $5 | OAM_BANK1
+	dsprite  1,  0,  0,  0, $16, $5 | OAM_BANK1
+	dsprite  1,  0,  1,  0, $17, $5 | OAM_BANK1
 
 	; Mini shadow if applicable
-	dsprite  0,  0,  0,  0, $18, $6 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $19, $6 | VRAM_BANK_1
-	dsprite  1,  0,  0,  0, $1a, $6 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $1b, $6 | VRAM_BANK_1
+	dsprite  0,  0,  0,  0, $18, $6 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $19, $6 | OAM_BANK1
+	dsprite  1,  0,  0,  0, $1a, $6 | OAM_BANK1
+	dsprite  1,  0,  1,  0, $1b, $6 | OAM_BANK1
 
 .OAMData_PcMode:
 	db 3
-	dsprite  0,  0,  2,  0, $26, $2 | VRAM_BANK_1
-	dsprite  0,  0,  3,  0, $27, $2 | VRAM_BANK_1
-	dsprite  0,  0,  4,  0, $28, $2 | VRAM_BANK_1
+	dsprite  0,  0,  2,  0, $26, $2 | OAM_BANK1
+	dsprite  0,  0,  3,  0, $27, $2 | OAM_BANK1
+	dsprite  0,  0,  4,  0, $28, $2 | OAM_BANK1
 
 .OAMData_PcMode2:
 	db 2
-	dsprite  0,  0,  0,  0, $24, $2 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $25, $2 | VRAM_BANK_1
+	dsprite  0,  0,  0,  0, $24, $2 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $25, $2 | OAM_BANK1
 
 .OAMData_PcPack:
 	db 4
-	dsprite  0,  0,  0,  0, $2f, $4 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $30, $4 | VRAM_BANK_1
-	dsprite  1,  0,  0,  0, $31, $4 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $32, $4 | VRAM_BANK_1
+	dsprite  0,  0,  0,  0, $2f, $4 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $30, $4 | OAM_BANK1
+	dsprite  1,  0,  0,  0, $31, $4 | OAM_BANK1
+	dsprite  1,  0,  1,  0, $32, $4 | OAM_BANK1
 
 .OAMData_DexCursor:
 	db 12
@@ -765,10 +806,10 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $01, $0
 	dsprite  0,  0,  1,  0, $02, $0
 	dsprite  0,  0,  2,  0, $02, $0
-	dsprite  0,  0,  3, -1, $01, $0 | X_FLIP
+	dsprite  0,  0,  3, -1, $01, $0 | OAM_XFLIP
 	; right
-	dsprite  1,  0,  3, -1, $03, $0 | X_FLIP
-	dsprite  2,  0,  3, -1, $03, $0 | X_FLIP
+	dsprite  1,  0,  3, -1, $03, $0 | OAM_XFLIP
+	dsprite  2,  0,  3, -1, $03, $0 | OAM_XFLIP
 	; bottom
 	dsprite  3,  0,  3, -1, $02, $0
 	dsprite  3,  0,  2,  0, $02, $0
@@ -781,24 +822,24 @@ SpriteAnimOAMData:
 .OAMData_DexUnownCursor:
 	db 4
 	dsprite -1,  7, -1,  7, $00, $2
-	dsprite -1,  7,  0,  0, $00, $2 | X_FLIP
-	dsprite  0,  0, -1,  7, $00, $2 | Y_FLIP
-	dsprite  0,  0,  0,  0, $00, $2 | X_FLIP | Y_FLIP
+	dsprite -1,  7,  0,  0, $00, $2 | OAM_XFLIP
+	dsprite  0,  0, -1,  7, $00, $2 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $00, $2 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_DexSlowpoke:
 	db 9
 	; top row
-	dsprite  0,  0,  0,  0, $00, $0 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $01, $0 | VRAM_BANK_1
-	dsprite  0,  0,  2,  0, $02, $0 | VRAM_BANK_1
+	dsprite  0,  0,  0,  0, $00, $0 | OAM_BANK1
+	dsprite  0,  0,  1,  0, $01, $0 | OAM_BANK1
+	dsprite  0,  0,  2,  0, $02, $0 | OAM_BANK1
 	; middle
-	dsprite  1,  0,  0,  0, $0f, $0 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $10, $0 | VRAM_BANK_1
-	dsprite  1,  0,  2,  0, $11, $0 | VRAM_BANK_1
+	dsprite  1,  0,  0,  0, $0f, $0 | OAM_BANK1
+	dsprite  1,  0,  1,  0, $10, $0 | OAM_BANK1
+	dsprite  1,  0,  2,  0, $11, $0 | OAM_BANK1
 	; bottom
-	dsprite  2,  0,  0,  0, $1e, $0 | VRAM_BANK_1
-	dsprite  2,  0,  1,  0, $1f, $0 | VRAM_BANK_1
-	dsprite  2,  0,  2,  0, $20, $0 | VRAM_BANK_1
+	dsprite  2,  0,  0,  0, $1e, $0 | OAM_BANK1
+	dsprite  2,  0,  1,  0, $1f, $0 | OAM_BANK1
+	dsprite  2,  0,  2,  0, $20, $0 | OAM_BANK1
 
 .OAMData_TownMapFly:
 	db 4

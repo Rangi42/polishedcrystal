@@ -13,7 +13,7 @@ BattleTowerElevator_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  1,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  1,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	object_const_def
 	const BATTLETOWERELEVATOR_RECEPTIONIST

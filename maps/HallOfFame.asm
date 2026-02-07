@@ -13,7 +13,7 @@ HallOfFame_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	object_const_def
 	const HALLOFFAME_LANCE

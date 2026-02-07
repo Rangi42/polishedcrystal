@@ -70,7 +70,6 @@ BrentGenericText:
 
 	para "Heh, my "
 	text_ram wStringBuffer4
-	text ""
 	line "is so tough, it"
 
 	para "doesn't need to go"

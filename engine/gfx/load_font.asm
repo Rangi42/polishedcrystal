@@ -3,7 +3,7 @@ INCLUDE "gfx/font.asm"
 _LoadStandardOpaqueFont::
 	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
-	ld hl, vTiles2 tile " "
+	ld hl, vTiles2 tile ' '
 	ld de, TextboxSpaceGFX
 	jmp GetOpaque1bppFontTile
 
@@ -14,14 +14,14 @@ _LoadStandardMaybeOpaqueFont:
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile "A"
+	ld hl, vTiles0 tile 'A'
 	lb bc, BANK(FontTiles), 114
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	push af
 	call GetMaybeOpaque1bpp
 	ld de, FontCommon
-	ld hl, vTiles0 tile "↑"
+	ld hl, vTiles0 tile '↑'
 	lb bc, BANK(FontCommon), 6
 	pop af
 	ldh [hRequestOpaque1bpp], a
@@ -60,15 +60,15 @@ _LoadFontsBattleExtra::
 
 _LoadFrame::
 	ld a, [wTextboxFrame]
-	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
+	ld bc, TEXTBOX_FRAME_TILES * TILE_1BPP_SIZE
 	ld hl, Frames
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, vTiles0 tile "┌"
+	ld hl, vTiles0 tile '┌'
 	lb bc, BANK(Frames), TEXTBOX_FRAME_TILES
 	call Get1bpp
-	ld hl, vTiles2 tile " "
+	ld hl, vTiles2 tile ' '
 	ld de, TextboxSpaceGFX
 	lb bc, BANK(TextboxSpaceGFX), 1
 	jmp Get1bpp
@@ -76,11 +76,29 @@ _LoadFrame::
 LoadBattleFontsHPBar:
 	call _LoadFontsBattleExtra
 
+LoadSummaryStatusIcon:
+	push de
+	xor a
+	ld de, wTempMonStatus
+	call GetStatusConditionIndex
+	ld hl, SummaryStatusIconGFX
+	ld bc, 2 tiles
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, vTiles0 tile SUMMARY_TILE_OAM_STATUS
+	lb bc, BANK(SummaryStatusIconGFX), 2
+	call Request2bpp
+	farcall LoadSummaryStatusIconPalette
+	farcall ApplyOBPals
+	pop de
+	ret
+
 LoadPlayerStatusIcon:
 	push de
 	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus
-	farcall GetStatusConditionIndex
+	call GetStatusConditionIndex
 	ld hl, StatusIconGFX
 	ld bc, 2 tiles
 	rst AddNTimes
@@ -101,7 +119,7 @@ LoadEnemyStatusIcon:
 	push de
 	ld a, [wEnemySubStatus2]
 	ld de, wEnemyMonStatus
-	farcall GetStatusConditionIndex
+	call GetStatusConditionIndex
 	ld hl, EnemyStatusIconGFX
 	ld bc, 2 tiles
 	rst AddNTimes
@@ -113,3 +131,45 @@ LoadEnemyStatusIcon:
 	farcall LoadEnemyStatusIconPalette
 	pop de
 	ret
+
+LoadBoldPDoubled:
+	; point hl to the '<BOLDP>' 1bpp tile in ROM
+	call LoadStandardFontPointer
+	ld de, ('<BOLDP>' - $80) * TILE_1BPP_SIZE
+	add hl, de
+	; copy the bold P, with halves swapped, to the middle char of wSummaryScreenPPTileBuffer
+	ld de, wSummaryScreenPPTileBuffer + TILE_1BPP_SIZE
+	push de
+	ld c, TILE_1BPP_SIZE
+.loop
+	ld a, [hli]
+	swap a
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	pop hl
+	; copy the left and right halves to the two other chars of wSummaryScreenPPTileBuffer
+	ld c, TILE_1BPP_SIZE
+.loop2
+	push hl
+	ld a, [hl]
+	and $0f
+	ld de, -TILE_1BPP_SIZE
+	add hl, de
+	ld [hl], a
+	ld de, TILE_1BPP_SIZE
+	add hl, de
+	ld a, [hl]
+	and $f0
+	add hl, de
+	ld [hl], a
+	pop hl
+	inc hl
+	dec c
+	jr nz, .loop2
+	; copy the three tiles from wSummaryScreenPPTileBuffer to VRAM
+	ld hl, vTiles2 tile SUMMARY_TILE_PP_START
+	ld de, wSummaryScreenPPTileBuffer
+	lb bc, BANK(@), 3
+	jmp Get1bpp

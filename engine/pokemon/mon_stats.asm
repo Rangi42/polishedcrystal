@@ -64,7 +64,7 @@ DrawPlayerHP:
 	lb bc, 2, 3
 	call PrintNum
 
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 
 ; Print max HP
@@ -99,8 +99,6 @@ endr
 	pop bc
 
 	add hl, bc
-	ld bc, SCREEN_WIDTH
-	add hl, bc
 	ld de, wTempMonAttack
 	lb bc, 2, 3
 	call .PrintStat
@@ -117,7 +115,7 @@ endr
 	push hl
 	call PrintNum
 	pop hl
-	ld de, SCREEN_WIDTH * 2
+	ld de, TILEMAP_WIDTH
 	add hl, de
 	ret
 
@@ -291,7 +289,7 @@ PrintStatDifferences:
 	inc hl
 	inc hl
 	inc hl
-	ld a, "+"
+	ld a, '+'
 	ld [hli], a
 
 	ld b, 2
@@ -332,7 +330,7 @@ GetShininess:
 ; 2: encountered oldbox code
 	dec a
 	jr nz, .other
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .other
@@ -387,7 +385,7 @@ GetGender:
 ; 2: encountered oldbox code
 	dec a
 	jr nz, .other
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .other
@@ -454,23 +452,36 @@ GetGender:
 ListMovePP:
 	ld a, [wNumMoves]
 	inc a
-	ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
+	ld c, a ; no-optimize a = N - a (c gets used in .pp_loop and .dash_loop)
 	ld a, NUM_MOVES
 	sub c
 	ld b, a
 	push hl
 	ld a, [wBuffer1]
 	ld e, a
-	ld d, $0
-	ld a, "<BOLDP>"
-	call .load_loop
+	ld d, 0
+.pp_loop
+	ld a, SUMMARY_TILE_PP_START
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hld], a
+	dec hl
+	add hl, de
+	dec c
+	jr nz, .pp_loop
 	ld a, b
 	and a
 	jr z, .skip
 	ld c, a
-	ld a, "-"
-	call .load_loop
-
+	ld a, '-'
+.dash_loop
+	ld [hli], a
+	ld [hld], a
+	add hl, de
+	dec c
+	jr nz, .dash_loop
 .skip
 	pop hl
 	inc hl
@@ -516,7 +527,7 @@ ListMovePP:
 	ld de, wStringBuffer1 + 4
 	lb bc, 1, 2
 	call PrintNum
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wTextDecimalByte
 	lb bc, 1, 2
@@ -534,14 +545,6 @@ ListMovePP:
 	ld a, b
 	cp NUM_MOVES
 	jr nz, .loop
-	ret
-
-.load_loop
-	ld [hli], a
-	ld [hld], a
-	add hl, de
-	dec c
-	jr nz, .load_loop
 	ret
 
 FixPlayerEVs:
@@ -925,16 +928,6 @@ GetNatureStatMultiplier::
 GetStatusConditionIndex:
 ; de points to status, e.g. from a party_struct or battle_struct
 ; return the status condition index in a
-	push de
-	inc de
-	inc de
-	ld a, [de]
-	ld b, a
-	inc de
-	ld a, [de]
-	or b
-	pop de
-	jr z, .fnt
 	ld a, [de]
 	ld b, a
 	and SLP_MASK
@@ -953,8 +946,6 @@ GetStatusConditionIndex:
 	ret
 
 .tox
-	inc a ; 7
-.fnt
 	inc a ; 6
 .frz
 	inc a ; 5
@@ -1031,14 +1022,9 @@ ListMoves:
 	jr z, .no_more_moves
 	push de
 	push hl
-	push hl
-	ld [wCurSpecies], a
-	ld a, MOVE_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, wStringBuffer1
-	pop hl
 	push bc
+	ld [wNamedObjectIndex], a
+	call GetMoveName
 	rst PlaceString
 	pop bc
 	ld a, b
@@ -1061,7 +1047,7 @@ ListMoves:
 	ld a, b
 .nonmove_loop
 	push af
-	ld [hl], "-"
+	ld [hl], '-'
 	ld a, [wBuffer1]
 	ld c, a
 	ld b, 0

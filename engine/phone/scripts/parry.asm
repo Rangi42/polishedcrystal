@@ -1,5 +1,5 @@
 ParryPhoneScript1:
-	gettrainername HIKER, PARRY1, $0
+	gettrainername HIKER, PARRY1, STRING_BUFFER_3
 	checkflag ENGINE_PARRY_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
@@ -14,11 +14,11 @@ ParryPhoneScript1:
 	farsjump ParryBattleWithMeScript
 
 .WantsBattle:
-	getlandmarkname ROUTE_45, $2
+	getlandmarkname ROUTE_45, STRING_BUFFER_5
 	farsjump ParryHaventYouGottenToScript
 
 ParryPhoneScript2:
-	gettrainername HIKER, PARRY1, $0
+	gettrainername HIKER, PARRY1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_PARRY_READY_FOR_REMATCH
 	iftruefwd .GenericCall
@@ -35,6 +35,6 @@ ParryFridayDay:
 	setflag ENGINE_PARRY_FRIDAY_AFTERNOON
 
 ParryWantsBattle:
-	getlandmarkname ROUTE_45, $2
+	getlandmarkname ROUTE_45, STRING_BUFFER_5
 	setflag ENGINE_PARRY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male

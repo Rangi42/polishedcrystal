@@ -12,7 +12,7 @@ Route32CoastHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GourmetManiacScript, -1
+	object_event  2,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GourmetManiacScript, -1
 
 GourmetManiacScript:
 	faceplayer
@@ -23,12 +23,14 @@ GourmetManiacScript:
 	iffalse_jumpopenedtext .NoItemText
 	special GetGourmetManiacPrice
 	iffalse_jumpopenedtext .WrongItemText
+	special ItemManiac_SelectQuantity
+	iffalse_jumpopenedtext .NoItemText
+	special MultiplyMoneyByQuantity
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .NoItemText
-	readmem wCurItem
-	takeitem ITEM_FROM_MEM
+	special TakeItemFromMemWithQuantity
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp

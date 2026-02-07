@@ -14,9 +14,15 @@ BattleCommand_thief:
 
 .ok
 	; Steal item
-	ld [hl], d
+	push bc
+	ld c, d
+	call ReceiveBattleItem
+	pop bc
+	ret nc
+
 	xor a
 	ld [bc], a
+	farcall ShowPotentialAbilityActivation
 	ld a, d
 	ld [wNamedObjectIndex], a
 	call GetItemName
@@ -43,24 +49,54 @@ BattleCommand_thief:
 	ld [hl], a
 	ret
 
+ReceiveBattleItem:
+; This will either give the current battler an item, or put it in our bag.
+; If we are already holding an item, and our bag is full, return noncarry.
+; Otherwise, return carry.
+; Inputs: [hl] is battler's item address, c is item to give.
+	; Are we holding an item currently?
+	ld a, [hl]
+	and a
+	ld a, c
+	jr nz, .holding_item
+	ld [hl], c
+	scf
+	ret
+
+.holding_item
+	; If we are already holding an item, check if we have room in the bag.
+	; If we don't, abort the ability activation.
+	push hl
+	push de
+	push bc
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumItems
+	call ReceiveItem
+	pop bc
+	pop de
+	pop hl
+	ret
+
 CheckStickyHold:
 ; Returns nz if opponent Sticky Hold is in effect.
 	call HasOpponentFainted
 	ret z
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp STICKY_HOLD
 	jr nz, .no_sticky_hold
 
 	; Don't display anything if we're in Pickpocket
-	ld a, [wAnimationsDisabled]
+	ld a, [wInAbility]
 	and a
 	ret nz
 
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	ld hl, ItemCantBeStolenText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 	or 1
 	ret
 
@@ -77,29 +113,48 @@ CanStealItem:
 	and a
 	ret nz
 
-	; Sticky Hold prevents item theft
-	call GetOpponentAbilityAfterMoldBreaker
+	; Sticky Hold prevents item theft unless fainted
+	call HasOpponentFainted
+	jr z, .sticky_hold_done
+	call GetOpponentIgnorableAbility
 	cp STICKY_HOLD
 	jr z, .cant_ability
 
+.sticky_hold_done
 	call OpponentCanLoseItem
 	jr z, .cant
 
+	; For wildmon battles, players can steal item even if they already hold
+	; one, while the wildmon can never steal items.
+	ld hl, wBattleMode
 	ldh a, [hBattleTurn]
 	and a
+	ld a, [hl]
 	ld hl, wBattleMonItem
 	ld bc, wEnemyMonItem
-	jr z, .got_target
+	jr nz, .foe
 
-	; Wildmons can't steal items
-	ld a, [wBattleMode]
+	; If we're battling a wildmon, the player can always steal items.
+	; A later check (ReceiveBattleItem) is done for a full bag.
+	dec a
+	ld a, [bc]
+	ld d, a
+	ret z
+
+	; Otherwise, check if we're already holding an item.
+	jr .got_target
+.foe
+	; A wildmon can never steal items.
 	dec a
 	jr z, .cant
 
-	ld hl, wEnemyMonItem
-	ld bc, wBattleMonItem
+	; Swap item source and target since the enemy is the one stealing an item.
+	push hl
+	ld h, b
+	ld l, c
+	pop bc
 .got_target
-	; Check if user is holding an item already
+	; Check if the user is holding an item already.
 	ld a, [bc]
 	ld d, a
 	ld a, [hl]

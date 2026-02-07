@@ -41,9 +41,9 @@ if !DEF(MONOCHROME)
 	RGB 31, 20, 29 ; FAIRY
 ; OB 0
 	RGB 31, 31, 31
-	RGB 22, 22, 24 ; notebook rings (gray)
-	RGB 20, 13, 06 ; notebook binding (brown)
-	RGB 07, 07, 07 ; notebook border (black)
+	RGB 27, 25, 16 ; notebook binding (light brown)
+	RGB 20, 13, 06 ; notebook binding (dark brown)
+	RGB 07, 07, 07 ; notebook binding (black)
 ; OB 1
 	RGB 31, 31, 31
 	RGB 23, 23, 25 ; STEEL

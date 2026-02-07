@@ -1,16 +1,16 @@
 MACRO special_pal_for
-	if !STRCMP("\1", "map")
+	if "\1" === "map"
 		db PAL_FOR_MAP
 		map_id \2 ; map id
-	elif !STRCMP("\1", "landmark")
+	elif "\1" === "landmark"
 		db PAL_FOR_LANDMARK
 		db \2 ; landmark
-	elif !STRCMP("\1", "tileset")
+	elif "\1" === "tileset"
 		db PAL_FOR_TILESET
 		db \2 ; tileset
-	elif !STRCMP("\1", "overcast")
+	elif "\1" === "overcast"
 		db PAL_FOR_OVERCAST
-	elif !STRCMP("\1", "darkness")
+	elif "\1" === "darkness"
 		db PAL_FOR_DARKNESS
 	endc
 ENDM
@@ -24,21 +24,26 @@ ENDM
 	special_bg_pal darkness, (unused),                    PAL_SINGLE,    DarknessBGPalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_1,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_2,          PAL_SINGLE,    SilverCavePalette
-	special_bg_pal map,      SILVER_CAVE_ROOM_3,          PAL_SINGLE,    SilverCavePalette
+	special_bg_pal map,      SILVER_CAVE_ROOM_3,          PAL_TIMEOFDAY, MountSilverPeakPalette
 	special_bg_pal map,      SILVER_CAVE_ITEM_ROOMS,      PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      DRAGON_SHRINE,               PAL_SINGLE,    DragonShrinePalette
+	special_bg_pal overcast, ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette_Overcast
 	special_bg_pal map,      ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette
 	special_bg_pal map,      BLACKTHORN_GYM_1F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      BLACKTHORN_GYM_2F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      CINNABAR_LAB,                PAL_SINGLE,    CinnabarLabPalette
+	special_bg_pal map,      PEWTER_GYM,                  PAL_SINGLE,    PewterGymPalette
 	special_bg_pal map,      CERULEAN_GYM,                PAL_SINGLE,    CeruleanGymPalette
+	special_bg_pal overcast, VIOLET_CITY,                 PAL_TIMEOFDAY, VioletEcruteakPalette_Overcast
 	special_bg_pal map,      VIOLET_CITY,                 PAL_TIMEOFDAY, VioletEcruteakPalette
 	special_bg_pal map,      MURKY_SWAMP,                 PAL_SINGLE,    MurkySwampPalette
+	special_bg_pal overcast, GOLDENROD_DEPT_STORE_ROOF,   PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette_Overcast
 	special_bg_pal map,      GOLDENROD_DEPT_STORE_ROOF,   PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette
 	special_bg_pal map,      GOLDENROD_MUSEUM_1F,         PAL_SINGLE,    GoldenrodMuseumPalette
 	special_bg_pal map,      GOLDENROD_MUSEUM_2F,         PAL_SINGLE,    GoldenrodMuseumPalette
 	special_bg_pal map,      MAGNET_TUNNEL_INSIDE,        PAL_SINGLE,    MagnetTunnelPalette
 	special_bg_pal map,      OAKS_LAB,                    PAL_SINGLE,    OaksLabPalette
+	special_bg_pal overcast, TIN_TOWER_ROOF,              PAL_TIMEOFDAY, TinTowerRoofPalette_Overcast
 	special_bg_pal map,      TIN_TOWER_ROOF,              PAL_TIMEOFDAY, TinTowerRoofPalette
 	special_bg_pal map,      WILLS_ROOM,                  PAL_SINGLE,    WillsRoomPalette
 	special_bg_pal map,      KOGAS_ROOM,                  PAL_SINGLE,    KogasRoomPalette
@@ -46,6 +51,7 @@ ENDM
 	special_bg_pal map,      KARENS_ROOM,                 PAL_SINGLE,    KarensRoomPalette
 	special_bg_pal map,      LANCES_ROOM,                 PAL_SINGLE,    LancesRoomPalette
 	special_bg_pal map,      HALL_OF_FAME,                PAL_SINGLE,    LancesRoomPalette
+	special_bg_pal overcast, BELLCHIME_TRAIL,             PAL_TIMEOFDAY, BellchimeTrailPalette_Overcast
 	special_bg_pal map,      BELLCHIME_TRAIL,             PAL_TIMEOFDAY, BellchimeTrailPalette
 	special_bg_pal map,      FUCHSIA_GYM,                 PAL_SINGLE,    FuchsiaGymPalette
 	special_bg_pal map,      HAUNTED_RADIO_TOWER_2F,      PAL_SINGLE,    HauntedRadioTowerPalette
@@ -55,17 +61,19 @@ ENDM
 	special_bg_pal map,      HAUNTED_RADIO_TOWER_6F,      PAL_SINGLE,    HauntedPokemonTowerPalette
 	special_bg_pal map,      NAVEL_ROCK_INSIDE,           PAL_SINGLE,    NavelRockPalette
 	special_bg_pal map,      NAVEL_ROCK_ROOF,             PAL_TIMEOFDAY, NavelRockPalette
-	special_bg_pal map,      HIDDEN_TREE_GROTTO,          PAL_SINGLE,    HiddenTreeGrottoPalette
-	special_bg_pal map,      HIDDEN_CAVE_GROTTO,          PAL_SINGLE,    HiddenCaveGrottoPalette
+	special_bg_pal overcast, YELLOW_FOREST,               PAL_TIMEOFDAY, YellowForestPalette_Overcast
 	special_bg_pal map,      YELLOW_FOREST,               PAL_TIMEOFDAY, YellowForestPalette
+	special_bg_pal overcast, CELADON_MANSION_ROOF,        PAL_TIMEOFDAY, CeladonMansionRoofPalette_Overcast
 	special_bg_pal map,      CELADON_MANSION_ROOF,        PAL_TIMEOFDAY, CeladonMansionRoofPalette
 	special_bg_pal map,      CELADON_HOME_DECOR_STORE_4F, PAL_SINGLE,    CeladonHomeDecorStore4FPalette
 	special_bg_pal map,      VIRIDIAN_GYM,                PAL_SINGLE,    ViridianGymPalette
 	special_bg_pal map,      SAFFRON_GYM,                 PAL_SINGLE,    SaffronGymPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            PAL_SINGLE,    LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    PAL_SINGLE,    IvysLabPalette
+	special_bg_pal overcast, RUGGED_ROAD_NORTH,           PAL_TIMEOFDAY, RuggedRoadNorthPalette_Overcast
 	special_bg_pal map,      RUGGED_ROAD_NORTH,           PAL_TIMEOFDAY, RuggedRoadNorthPalette
 	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     PAL_TIMEOFDAY, RuggedRoadNorthPalette
+	special_bg_pal overcast, SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette_Overcast
 	special_bg_pal map,      SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                PAL_SINGLE,    MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              PAL_SINGLE,    EmbeddedTowerPalette
@@ -94,6 +102,7 @@ ENDM
 	special_bg_pal tileset,  TILESET_RUINS_OF_ALPH,       PAL_SINGLE,    RuinsPalette
 	special_bg_pal tileset,  TILESET_ALPH_WORD_ROOM,      PAL_SINGLE,    RuinsPalette
 	special_bg_pal tileset,  TILESET_SNOWTOP_MOUNTAIN,    PAL_TIMEOFDAY, SnowtopMountainPalette
+	special_bg_pal tileset,  TILESET_HIDDEN_GROTTO,       PAL_SPECIAL,   HiddenGrottoSpecialCase ; *
 	special_bg_pal overcast, (unused),                    PAL_TIMEOFDAY, OvercastBGPalette
 	db 0 ; end
 
@@ -289,6 +298,32 @@ endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+HiddenGrottoPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/hidden_grotto.pal"
+else
 rept 7
 	MONOCHROME_RGB_FOUR
 endr
@@ -565,6 +600,19 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+PewterGymPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/PewterGym.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 CeruleanGymPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/CeruleanGym.pal"
@@ -710,7 +758,10 @@ if !DEF(MONOCHROME)
 INCLUDE "maps/MagnetTunnelInside.pal"
 else
 	MONOCHROME_RGB_FOUR_NIGHT
-	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_DARK
@@ -1131,32 +1182,6 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
-HiddenTreeGrottoPalette:
-if !DEF(MONOCHROME)
-INCLUDE "maps/HiddenTreeGrotto.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
-HiddenCaveGrottoPalette:
-if !DEF(MONOCHROME)
-INCLUDE "maps/HiddenCaveGrotto.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
 DimCavePalette:
 if !DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/dim_cave.pal"
@@ -1275,6 +1300,80 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+MountSilverPeakPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/SilverCaveRoom3.pal"
+else
+rept 2
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endr
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_EVE
+	MONOCHROME_RGB_FOUR_EVE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_EVE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 DarkCavePalette:
 if !DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/dark_cave.pal"
@@ -1305,37 +1404,63 @@ NavelRockPalette:
 if !DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/navel_rock.pal"
 else
+rept 2
 	MONOCHROME_RGB_FOUR
-	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 5
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 5
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR_NIGHT
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
-rept 5
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+rept 3
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endr
 	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 3
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_EVE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+rept 3
+	MONOCHROME_RGB_FOUR_EVE
 endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE

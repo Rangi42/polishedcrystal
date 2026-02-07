@@ -22,7 +22,7 @@ if !DEF(MONOCHROME)
 ; blue
 	RGB 31, 31, 31
 	RGB 08, 12, 31
-	RGB 01, 04, 31
+	RGB 03, 05, 21
 	RGB 00, 00, 00
 ; brown
 	RGB 31, 31, 31

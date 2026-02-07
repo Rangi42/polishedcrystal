@@ -20,14 +20,14 @@ _SwitchPartyMons:
 	ld bc, 2 * SCREEN_WIDTH
 	rst AddNTimes
 	ld bc, 2 * SCREEN_WIDTH
-	ld a, " "
+	ld a, ' '
 	rst ByteFill
 	pop af
 	ld hl, wShadowOAM
-	ld bc, $10
+	ld bc, MINI_OAM_COUNT * OBJ_SIZE
 	rst AddNTimes
-	ld de, $4
-	ld c, $4
+	ld de, OBJ_SIZE
+	ld c, MINI_OAM_COUNT
 .gfx_loop
 	ld [hl], OAM_YCOORD_HIDDEN
 	add hl, de

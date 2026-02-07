@@ -23,9 +23,11 @@ FruitTreeScript::
 PickBerryScript:
 	readmem wCurFruit
 	ifless NUM_APRICORNS+1, PickApricornScript
-	getitemname $0, $0
+	getitemname USE_SCRIPT_VAR, STRING_BUFFER_3
 	farwritetext _HeyItsFruitText
 	callasm GetFruitTreeCount
+	setquantity
+	pluralize wStringBuffer3
 	ifequalfwd $1, .try_one
 	ifequalfwd $2, .try_two
 	readmem wCurFruit
@@ -131,7 +133,7 @@ PickApricornScript:
 	push af
 	call LoadApricornIconForOverworld
 	pop af
-	ld bc, ApricornIconPalettes - PAL_COLOR_SIZE * 2
+	ld bc, ApricornIconPalettes - COLOR_SIZE * 2
 	farcall LoadIconPalette
 	jmp PrintOverworldItemIcon
 

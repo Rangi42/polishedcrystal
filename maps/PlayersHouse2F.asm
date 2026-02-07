@@ -17,10 +17,10 @@ PlayersHouse2F_MapScriptHeader:
 	bg_event  6,  0, BGEVENT_IFSET, PlayersHousePoster
 
 	def_object_events
-	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_PLAYERS_HOUSE_2F_CONSOLE
-	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_PLAYERS_HOUSE_2F_DOLL_1
-	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
-	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
+	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_PLAYERS_HOUSE_2F_CONSOLE
+	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_PLAYERS_HOUSE_2F_DOLL_1
+	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
+	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 
 PlayersHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
@@ -119,25 +119,33 @@ endr
 	giveitem MINT_LEAF, 99
 	giveitem BOTTLE_CAP, 99
 	giveitem BIG_NUGGET, 99
+	giveitem PORTRAITMAIL, 99
 	giveitem ARMOR_SUIT, 1
+for x, FIRST_BERRY, FIRST_BERRY + NUM_BERRIES
+	giveitem x, 99
+endr
 	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
 endr
 	; max money
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 1000000
-	givemoney $0, 999999
+	loadmem wMoney+0, 9_999_999 >> 16
+	loadmem wMoney+1, HIGH(9_999_999)
+	loadmem wMoney+2, LOW(9_999_999)
 	givecoins 50000
+	loadmem wBlueCardBalance, 99
 	loadmem wBattlePoints+0, 0
 	loadmem wBattlePoints+1, 250
+for x, NUM_CANDIES
+	loadmem wCandyAmounts + x, 99
+endr
+for x, NUM_WINGS
+	loadmem wWingAmounts + x * 2 + 0, HIGH(999)
+	loadmem wWingAmounts + x * 2 + 1, LOW(999)
+endr
+for x, NUM_APRICORNS
+	loadmem wApricorns + x, 99
+endr
 	; all badges
 	setflag ENGINE_ZEPHYRBADGE
 	setflag ENGINE_HIVEBADGE
@@ -175,6 +183,8 @@ endr
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	setevent EVENT_BATTLE_TOWER_OPEN
 	clearevent EVENT_BATTLE_TOWER_CLOSED
+	setevent EVENT_ENABLE_DIPLOMA_PRINTING
+;	clearevent EVENT_AZALEA_TOWN_SLOWPOKES ; enables random overcast weather
 	; fly anywhere
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
@@ -208,32 +218,22 @@ endr
 	setflag ENGINE_FLYPOINT_SHAMOUTI
 	setflag ENGINE_FLYPOINT_VALENCIA
 	setflag ENGINE_FLYPOINT_NAVEL
-	; magnet train works
-	setevent EVENT_RESTORED_POWER_TO_KANTO
+;	setevent EVENT_RESTORED_POWER_TO_KANTO ; magnet train works
 	; post-e4
 	setflag ENGINE_CREDITS_SKIP
 	; good party
 	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
-	loadmem wPartyMon1EVs+0, 252
-	loadmem wPartyMon1EVs+1, 252
-	loadmem wPartyMon1EVs+2, 252
-	loadmem wPartyMon1EVs+3, 252
-	loadmem wPartyMon1EVs+4, 252
-	loadmem wPartyMon1EVs+5, 252
-	loadmem wPartyMon1DVs+0, $ff
-	loadmem wPartyMon1DVs+1, $ff
-	loadmem wPartyMon1DVs+2, $ff
+for x, NUM_STATS
+	loadmem wPartyMon1EVs+x, 252
+endr
+for x, 3
+	loadmem wPartyMon1DVs+x, $ff
+endr
 	loadmem wPartyMon1Personality, ABILITY_2 | NAT_SATK_UP_ATK_DOWN
-	loadmem wPartyMon1Stats+0, HIGH(999)
-	loadmem wPartyMon1Stats+1, LOW(999)
-	loadmem wPartyMon1Stats+2, HIGH(999)
-	loadmem wPartyMon1Stats+3, LOW(999)
-	loadmem wPartyMon1Stats+4, HIGH(999)
-	loadmem wPartyMon1Stats+5, LOW(999)
-	loadmem wPartyMon1Stats+6, HIGH(999)
-	loadmem wPartyMon1Stats+7, LOW(999)
-	loadmem wPartyMon1Stats+8, HIGH(999)
-	loadmem wPartyMon1Stats+9, LOW(999)
+for x, NUM_BATTLE_STATS
+	loadmem wPartyMon1Stats + x * 2 + 0, HIGH(999)
+	loadmem wPartyMon1Stats + x * 2 + 1, LOW(999)
+endr
 	; hm slave
 	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
 	loadmem wPartyMon2Moves+0, FLY
@@ -244,17 +244,19 @@ endr
 	loadmem wPartyMon2PP+1, 15
 	loadmem wPartyMon2PP+2, 10
 	loadmem wPartyMon2PP+3, 10
+	loadmem wPartyMon2PokerusStatus, 1
 	; variant form test
 	givepoke TYPHLOSION, HISUIAN_FORM, 50
 	loadmem wPartyMon3Shiny, SHINY_MASK
+	loadmem wPartyMon3PokerusStatus, POKERUS_CURED
 	; ext species test
 	givepoke URSALUNA, URSALUNA_BLOODMOON_FORM, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; evolve during battle
 	givepoke PUPITAR, 54
-	loadmem wPartyMon6Exp+2, LOW(207967)
-	loadmem wPartyMon6Exp+1, HIGH(207967)
 	loadmem wPartyMon6Exp+0, 207967 >> 16
+	loadmem wPartyMon6Exp+1, HIGH(207967)
+	loadmem wPartyMon6Exp+2, LOW(207967)
 	; fill pokedex
 	callasm FillPokedex
 ;	; new bark events

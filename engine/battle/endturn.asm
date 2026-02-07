@@ -3,12 +3,6 @@ CheckFaint:
 
 HandleBetweenTurnEffects:
 ; Things handled at endturn. Things commented out are currently not in Polished.
-	ld hl, wTotalBattleTurns
-	inc [hl]
-	jr nz, .done_turn_increment
-	dec [hl]
-
-.done_turn_increment
 	call CheckFaint
 	ret c
 	call HandleWeather
@@ -281,6 +275,11 @@ HandleWeather:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_HAIL
 	call z, .HandleHail
+
+	; Avoid chained weather damage. This can happen if the user faints from Hail
+	; and has Neutralizing Gas, triggering foe's Sand Stream after faint.
+	call HasUserFainted
+	ret z
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
@@ -292,7 +291,7 @@ HandleWeather:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -333,7 +332,7 @@ HandleWeather:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -381,7 +380,7 @@ HandleAffectionSelfCure:
 
 .do_it
 	farcall CheckAffection
-	cp 2
+	cp AFFECTION_LEVEL_2
 	ret c
 
 	; 20% to heal a status problem.
@@ -449,10 +448,12 @@ HandleFutureSight:
 	xor a
 	ld [wAttackMissed], a
 	ld [wAlreadyDisobeyed], a
-	; Future Sight does typeless damage
 	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	farcall DoMove
+
+	; Future moves shouldn't trigger ability ignorance, but just in case.
+	farcall ResetAbilityIgnorance
 	xor a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
@@ -496,7 +497,7 @@ HandleLeftovers:
 
 PreventEndturnDamage:
 ; returns z if residual damage at endturn is prevented
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
 	call nz, HasUserFainted
 	ret
@@ -536,18 +537,18 @@ HandleLeechSeed:
 	farcall GetHPAbsorption
 	ld a, $1
 	ldh [hBGMapMode], a
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp LIQUID_OOZE
 	jr z, .hurt
 	farcall RestoreHP
 	jr .done
 .hurt
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
-	farcall EnableAnimations
+	farcall EndAbility
 .done
 	jmp SwitchTurn
 
@@ -563,7 +564,7 @@ HandlePoison:
 	ld hl, HurtByPoisonText
 	ld de, ANIM_PSN
 	ret z
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp POISON_HEAL
 	jr nz, DoPoisonBurnDamage
 
@@ -573,12 +574,12 @@ HandlePoison:
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowAbilityActivation
 	ld hl, RegainedHealthText
 	call DoPoisonBurnDamageAnim
 	farcall RestoreHP
-	farjp EnableAnimations
+	farjp EndAbility
 
 HandleBurn:
 	call SetFastestTurn
@@ -632,10 +633,12 @@ IncrementToxic:
 	call GetBattleVar
 	bit TOX, a
 	ret z
-	inc [hl]
-	ret nz
 
-	; avoid overflow
+	; Cap toxic counter at 15. Do not return z.
+	inc [hl]
+	ld a, [hl]
+	cp 16
+	ret c
 	dec [hl]
 	ret
 
@@ -800,6 +803,24 @@ EndturnEncoreDisable_End:
 	ld h, d
 	ld l, e
 	jmp StdBattleTextbox
+
+TickDisableAfterMove:
+; If we have 5 turns left of Disable, tick it down. This makes it so that
+; Disable covers 4 move uses.
+	call HasUserFainted
+	ret z
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerDisableCount
+	jr z, .got_disable_count
+	ld hl, wEnemyDisableCount
+.got_disable_count
+	ld a, [hl]
+	and $f
+	cp 5
+	ret nz
+	dec [hl]
+	ret
 
 HandleDisable:
 	call SetFastestTurn
@@ -995,7 +1016,7 @@ HandleStatusOrbs:
 	ret z
 
 	; bypass ineffectiveness checks to avoid residual results from last attack
-	ld a, $10
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 
 	farcall GetOpponentItemAfterUnnerve
@@ -1009,31 +1030,16 @@ HandleStatusOrbs:
 	push bc
 	ld b, 2
 	farcall CanPoisonTarget
-	pop bc
-	ret nz
-	ld de, ANIM_PSN
-	ld hl, BadlyPoisonedText
 	jr .do_status
 .burn
 	push bc
 	ld b, 2
 	farcall CanBurnTarget
+.do_status
 	pop bc
 	ret nz
-	ld de, ANIM_BRN
-	ld hl, WasBurnedText
 	; fallthrough
-.do_status
-	push hl
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld [hl], b
-	xor a
-	ld [wNumHits], a
-	farcall PlayOpponentBattleAnim
-	call RefreshBattleHuds
-	pop hl
-	jmp StdBattleTextbox
+	farjp StatusTarget
 
 HandleRoost:
 	call SetFastestTurn

@@ -257,7 +257,7 @@ DoNPCTrade:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall ComputeNPCTrademonStats
+	farcall ComputeNPCTrademonStatsAndEggSteps
 	pop af
 	ld [wCurPartyMon], a
 	jmp PopAFBCDEHL
@@ -365,7 +365,7 @@ GetTradeMonNames:
 	ld hl, wStringBuffer1
 .loop
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .loop
 
 	ld [hl], a ; "@"

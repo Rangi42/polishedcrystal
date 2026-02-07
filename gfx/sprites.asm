@@ -7,6 +7,9 @@ ChrisBikeSpriteGFX:: INCBIN "gfx/sprites/chris_bike.2bpp.lz"
 SECTION "ChrisSurfSpriteGFX", ROMX
 ChrisSurfSpriteGFX:: INCBIN "gfx/sprites/chris_surf.2bpp.lz"
 
+SECTION "ChrisRunSpriteGFX", ROMX
+ChrisRunSpriteGFX:: INCBIN "gfx/sprites/chris_run.2bpp.lz"
+
 SECTION "KrisSpriteGFX", ROMX
 KrisSpriteGFX:: INCBIN "gfx/sprites/kris.2bpp.lz"
 
@@ -15,6 +18,9 @@ KrisBikeSpriteGFX:: INCBIN "gfx/sprites/kris_bike.2bpp.lz"
 
 SECTION "KrisSurfSpriteGFX", ROMX
 KrisSurfSpriteGFX:: INCBIN "gfx/sprites/kris_surf.2bpp.lz"
+
+SECTION "KrisRunSpriteGFX", ROMX
+KrisRunSpriteGFX:: INCBIN "gfx/sprites/kris_run.2bpp.lz"
 
 SECTION "MomSpriteGFX", ROMX
 MomSpriteGFX:: INCBIN "gfx/sprites/mom.2bpp.lz"
@@ -225,6 +231,9 @@ BlancheSpriteGFX:: INCBIN "gfx/sprites/blanche.2bpp.lz"
 
 SECTION "SparkSpriteGFX", ROMX
 SparkSpriteGFX:: INCBIN "gfx/sprites/spark.2bpp.lz"
+
+SECTION "MarySpriteGFX", ROMX
+MarySpriteGFX:: INCBIN "gfx/sprites/mary.2bpp.lz"
 
 SECTION "BuenaSpriteGFX", ROMX
 BuenaSpriteGFX:: INCBIN "gfx/sprites/buena.2bpp.lz"
@@ -533,8 +542,8 @@ RattataBackSpriteGFX:: INCBIN "gfx/sprites/rattata_back.2bpp.lz"
 SECTION "WeirdTreeSpriteGFX", ROMX
 WeirdTreeSpriteGFX:: INCBIN "gfx/sprites/weird_tree.2bpp.lz"
 
-SECTION "BallCutFruitSpriteGFX", ROMX
-BallCutFruitSpriteGFX:: INCBIN "gfx/sprites/ball_cut_fruit.2bpp.lz"
+SECTION "BallCutTreeSpriteGFX", ROMX
+BallCutTreeSpriteGFX:: INCBIN "gfx/sprites/ball_cut_tree.2bpp.lz"
 
 SECTION "BoulderRockFossilSpriteGFX", ROMX
 BoulderRockFossilSpriteGFX:: INCBIN "gfx/sprites/boulder_rock_fossil.2bpp.lz"
@@ -596,5 +605,17 @@ CrysBikeSpriteGFX:: INCBIN "gfx/sprites/crys_bike.2bpp.lz"
 SECTION "CrysSurfSpriteGFX", ROMX
 CrysSurfSpriteGFX:: INCBIN "gfx/sprites/crys_surf.2bpp.lz"
 
+SECTION "CrysRunSpriteGFX", ROMX
+CrysRunSpriteGFX:: INCBIN "gfx/sprites/crys_run.2bpp.lz"
+
 SECTION "ThortonSpriteGFX", ROMX
 ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lz"
+
+SECTION "BlankFruitSpriteGFX", ROMX
+BlankFruitSpriteGFX:: INCBIN "gfx/sprites/blank_fruit.2bpp.lz"
+
+SECTION "BigHoOhSpriteGFX", ROMX
+BigHoOhSpriteGFX:: INCBIN "gfx/sprites/big_ho_oh.2bpp.lz"
+
+SECTION "BigLugiaSpriteGFX", ROMX
+BigLugiaSpriteGFX:: INCBIN "gfx/sprites/big_lugia.2bpp.lz"

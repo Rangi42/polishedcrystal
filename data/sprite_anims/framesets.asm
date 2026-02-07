@@ -3,11 +3,10 @@ SpriteAnimFrameData:
 	table_width 2
 	dw .Frameset_00
 	dw .Frameset_PartyMon
-	dw .Frameset_PartyMonWithMail
 	dw .Frameset_PartyMonWithItem
-	dw .Frameset_PartyMonFast
-	dw .Frameset_PartyMonWithMailFast
-	dw .Frameset_PartyMonWithItemFast
+	dw .Frameset_PartyMonWithInertItem
+	dw .Frameset_PartyMonWithMail
+	dw .Frameset_PartyMonWithBerry
 	dw .Frameset_TextEntryCursor
 	dw .Frameset_TextEntryCursorBig
 	dw .Frameset_TextEntryCursorBlue
@@ -75,50 +74,45 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithMail:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  8
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  8
-	oamrestart
-
 .Frameset_PartyMonWithItem:
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1,  8
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2,  8
 	oamrestart
 
-.Frameset_PartyMonFast:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_1,  4
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  4
+.Frameset_PartyMonWithInertItem:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithMailFast:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  4
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  4
+.Frameset_PartyMonWithMail:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithItemFast:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1,  4
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2,  4
+.Frameset_PartyMonWithBerry:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_2,  8
 	oamrestart
 
 .Frameset_RedWalk:
 	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1,  8
 	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  8
 	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1,  8
-	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  8, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_BlueWalk:
 	oamframe SPRITE_ANIM_OAMSET_BLUE_WALK_1,  8
 	oamframe SPRITE_ANIM_OAMSET_BLUE_WALK_2,  8
 	oamframe SPRITE_ANIM_OAMSET_BLUE_WALK_1,  8
-	oamframe SPRITE_ANIM_OAMSET_BLUE_WALK_2,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_BLUE_WALK_2,  8, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_GreenWalk:
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
-	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_TextEntryCursor:
@@ -162,8 +156,8 @@ SpriteAnimFrameData:
 .Frameset_SlotsGolem:
 	oamframe SPRITE_ANIM_OAMSET_SLOTS_GOLEM_1,  7
 	oamframe SPRITE_ANIM_OAMSET_SLOTS_GOLEM_2,  7
-	oamframe SPRITE_ANIM_OAMSET_SLOTS_GOLEM_1,  7, OAM_Y_FLIP
-	oamframe SPRITE_ANIM_OAMSET_SLOTS_GOLEM_2,  7, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_SLOTS_GOLEM_1,  7, B_OAM_YFLIP
+	oamframe SPRITE_ANIM_OAMSET_SLOTS_GOLEM_2,  7, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_SlotsChansey:
@@ -197,7 +191,7 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_1,  3
 	oamframe SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2,  3
 	oamframe SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_1,  3
-	oamframe SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2,  3, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_TRADE_POKE_BALL_2,  3, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_TradePoof:
@@ -234,7 +228,7 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_1,  8
 	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_2,  8
 	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_1,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_2,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_2,  8, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_Leaf:
@@ -259,15 +253,15 @@ SpriteAnimFrameData:
 	oamend
 
 .Frameset_EggHatch2:
-	oamframe SPRITE_ANIM_OAMSET_EGG_HATCH, 32, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_EGG_HATCH, 32, B_OAM_XFLIP
 	oamend
 
 .Frameset_EggHatch3:
-	oamframe SPRITE_ANIM_OAMSET_EGG_HATCH, 32, OAM_Y_FLIP
+	oamframe SPRITE_ANIM_OAMSET_EGG_HATCH, 32, B_OAM_YFLIP
 	oamend
 
 .Frameset_EggHatch4:
-	oamframe SPRITE_ANIM_OAMSET_EGG_HATCH, 32, OAM_X_FLIP, OAM_Y_FLIP
+	oamframe SPRITE_ANIM_OAMSET_EGG_HATCH, 32, B_OAM_XFLIP, B_OAM_YFLIP
 	oamend
 
 .Frameset_HeadbuttTree:
@@ -306,21 +300,21 @@ SpriteAnimFrameData:
 	oamdelete
 
 .Frameset_IntroUnown2:
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, OAM_X_FLIP
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, OAM_X_FLIP
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, B_OAM_XFLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, B_OAM_XFLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, B_OAM_XFLIP
 	oamdelete
 
 .Frameset_IntroUnown3:
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, OAM_Y_FLIP
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, OAM_Y_FLIP
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, OAM_Y_FLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, B_OAM_YFLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, B_OAM_YFLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, B_OAM_YFLIP
 	oamdelete
 
 .Frameset_IntroUnown4:
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, OAM_X_FLIP, OAM_Y_FLIP
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, OAM_X_FLIP, OAM_Y_FLIP
-	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, OAM_X_FLIP, OAM_Y_FLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, B_OAM_XFLIP, B_OAM_YFLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, B_OAM_XFLIP, B_OAM_YFLIP
+	oamframe SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, B_OAM_XFLIP, B_OAM_YFLIP
 	oamdelete
 
 .Frameset_IntroUnownF2:
@@ -345,8 +339,8 @@ SpriteAnimFrameData:
 	oamend
 
 .Frameset_CelebiRight:
-	oamframe SPRITE_ANIM_OAMSET_CELEBI_1,  8, OAM_X_FLIP
-	oamframe SPRITE_ANIM_OAMSET_CELEBI_2,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_CELEBI_1,  8, B_OAM_XFLIP
+	oamframe SPRITE_ANIM_OAMSET_CELEBI_2,  8, B_OAM_XFLIP
 	oamend
 
 .Frameset_MaxStatSparkle:
@@ -406,5 +400,5 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_FLY_MON_1,  8
 	oamframe SPRITE_ANIM_OAMSET_FLY_MON_2,  8
 	oamframe SPRITE_ANIM_OAMSET_FLY_MON_1,  8
-	oamframe SPRITE_ANIM_OAMSET_FLY_MON_3,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_FLY_MON_3,  8, B_OAM_XFLIP
 	oamrestart

@@ -10,12 +10,16 @@ INCLUDE "engine/pokemon/learn.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
-INCLUDE "engine/events/shiny_ditto.asm"
-INCLUDE "engine/events/shuckle.asm"
 INCLUDE "engine/events/bills_grandfather.asm"
 INCLUDE "engine/events/hidden_power_guru.asm"
-INCLUDE "engine/events/mint_tea.asm"
 INCLUDE "engine/events/haircut_etc.asm"
+
+
+SECTION "Special Events", ROMX
+
+INCLUDE "engine/events/shiny_ditto.asm"
+INCLUDE "engine/events/shuckle.asm"
+INCLUDE "engine/events/mint_tea.asm"
 
 
 SECTION "bank2", ROMX
@@ -235,7 +239,7 @@ SECTION "bank11", ROMX
 INCLUDE "engine/battle/ai/move.asm"
 INCLUDE "engine/pokemon/mail.asm"
 INCLUDE "engine/events/hidden_grottoes.asm"
-INCLUDE "engine/pokedex/pokedex_2.asm"
+INCLUDE "data/pokemon/dex_entry_pointers.asm"
 
 
 SECTION "Crystal Features 1", ROMX
@@ -269,7 +273,7 @@ INCLUDE "engine/events/pokerus/check_pokerus.asm"
 INCLUDE "engine/events/lucky_number.asm"
 INCLUDE "engine/pokemon/caught_data.asm"
 INCLUDE "engine/pokemon/search2.asm"
-INCLUDE "engine/pokemon/stats_screen.asm"
+INCLUDE "engine/pokemon/summary_screen.asm"
 INCLUDE "engine/events/catch_tutorial.asm"
 INCLUDE "engine/movie/evolution_animation.asm"
 INCLUDE "engine/movie/init_hof_credits.asm"
@@ -292,8 +296,9 @@ INCLUDE "engine/pokemon/types.asm"
 INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
-INCLUDE "engine/gfx/load_pics.asm"
 INCLUDE "engine/pokemon/natures.asm"
+INCLUDE "engine/gfx/load_pics.asm"
+INCLUDE "engine/gfx/load_font.asm"
 
 
 SECTION "Base Data", ROMX
@@ -328,6 +333,7 @@ INCLUDE "engine/overworld/variables.asm"
 INCLUDE "data/text/battle.asm"
 INCLUDE "engine/battle/final_text.asm"
 INCLUDE "engine/battle/abilities.asm"
+INCLUDE "engine/battle/text.asm"
 
 
 SECTION "bank21", ROMX
@@ -513,21 +519,6 @@ INCLUDE "gfx/pokemon/bitmask_pointers.asm"
 INCLUDE "gfx/pokemon/bitmasks.asm"
 
 
-SECTION "Pic Animations Frames Pointers", ROMX
-
-INCLUDE "gfx/pokemon/frame_pointers.asm"
-
-
-SECTION "Pic Animations Frames 1", ROMX
-
-INCLUDE "gfx/pokemon/kanto_frames.asm"
-
-
-SECTION "Pic Animations Frames 2", ROMX
-
-INCLUDE "gfx/pokemon/johto_frames.asm"
-
-
 SECTION "bank38", ROMX
 
 INCLUDE "engine/games/card_flip.asm"
@@ -541,11 +532,6 @@ SECTION "bank39", ROMX
 INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/splash.asm"
 INCLUDE "engine/movie/intro.asm"
-
-
-SECTION "Typefaces", ROMX
-
-INCLUDE "engine/gfx/load_font.asm"
 
 
 SECTION "bank3E", ROMX
@@ -677,6 +663,7 @@ SECTION "Item Text", ROMX
 
 INCLUDE "data/items/names.asm"
 INCLUDE "data/items/key_names.asm"
+INCLUDE "data/items/special_names.asm"
 INCLUDE "data/items/apricorn_names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 
@@ -689,6 +676,11 @@ INCLUDE "data/pokemon/body_data.asm"
 SECTION "Pokemon Names", ROMX
 
 INCLUDE "data/pokemon/names.asm"
+
+
+SECTION "Badge Names", ROMX
+
+INCLUDE "data/events/badge_names.asm"
 
 
 SECTION "Move Names", ROMX

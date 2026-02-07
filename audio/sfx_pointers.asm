@@ -216,4 +216,5 @@ SFX:
 	fardw Sfx_StatUp
 	fardw Sfx_StatDown
 	fardw Sfx_Gravity
+	fardw Sfx_OWWhirlpool
 	assert_table_length NUM_SFX

@@ -1,5 +1,5 @@
 DerekPhoneScript1:
-	gettrainername POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, STRING_BUFFER_3
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_DEREK_HAS_NUGGET
 	iftruefwd .Nugget
@@ -19,11 +19,11 @@ DerekPhoneScript1:
 	farsjump PhoneScript_BugCatchingContest
 
 .Nugget:
-	getlandmarkname ROUTE_39, $2
+	getlandmarkname ROUTE_39, STRING_BUFFER_5
 	farsjump DerekComePickUpScript
 
 DerekPhoneScript2:
-	gettrainername POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, STRING_BUFFER_3
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequalfwd $0, .NoContest
@@ -44,5 +44,5 @@ DerekPhoneScript2:
 
 .Nugget:
 	setflag ENGINE_DEREK_HAS_NUGGET
-	getlandmarkname ROUTE_39, $2
+	getlandmarkname ROUTE_39, STRING_BUFFER_5
 	farsjump PhoneScript_FoundItem_Male

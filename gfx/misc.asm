@@ -4,7 +4,18 @@ NewBarkRoofGFX::   INCBIN "gfx/tilesets/roofs/new_bark.2bpp.lz"
 VioletRoofGFX::    INCBIN "gfx/tilesets/roofs/violet.2bpp.lz"
 AzaleaRoofGFX::    INCBIN "gfx/tilesets/roofs/azalea.2bpp.lz"
 OlivineRoofGFX::   INCBIN "gfx/tilesets/roofs/olivine.2bpp.lz"
-StatueRoofGFX::    INCBIN "gfx/tilesets/roofs/statue.2bpp.lz"
+GoldenrodRoofGFX:: INCBIN "gfx/tilesets/roofs/goldenrod.2bpp.lz"
+
+
+SECTION "Map Name Sign Graphics", ROMX
+
+WoodSignGFX::     INCBIN "gfx/signs/wood.2bpp.lz"
+CitySignGFX::     INCBIN "gfx/signs/city.2bpp.lz"
+ForestSignGFX::   INCBIN "gfx/signs/forest.2bpp.lz"
+CaveSignGFX::     INCBIN "gfx/signs/cave.2bpp.lz"
+RouteSignGFX::    INCBIN "gfx/signs/route.2bpp.lz"
+WaterSignGFX::    INCBIN "gfx/signs/water.2bpp.lz"
+BuildingSignGFX:: INCBIN "gfx/signs/building.2bpp.lz"
 
 
 SECTION "Overworld Effect Graphics", ROMX
@@ -12,6 +23,14 @@ SECTION "Overworld Effect Graphics", ROMX
 OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"
 HeadbuttTreeGFX::    INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
 HeadbuttTree2GFX::   INCBIN "gfx/overworld/headbutt_tree_2.2bpp.lz"
+
+
+SECTION "Overworld Weather Graphics", ROMX
+
+RainGFX::          INCBIN "gfx/overworld/rain_splash.2bpp"
+SnowGFX::          INCBIN "gfx/overworld/snow.2bpp"
+SandGFX::          INCBIN "gfx/overworld/sand.2bpp"
+CherryBlossomGFX:: INCBIN "gfx/overworld/cherry_blossom.2bpp"
 
 
 SECTION "Fishing Graphics", ROMX
@@ -50,7 +69,9 @@ TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lz"
 
 SECTION "Stats Graphics", ROMX
 
-GFX_Stats:: INCBIN "gfx/stats/stats_balls.2bpp.lz"
+GFX_Summary:: INCBIN "gfx/stats/summary.2bpp.lz"
+GFX_Summary_Sprites:: INCBIN "gfx/stats/summary_sprites.2bpp.lz"
+GFX_Balls:: INCBIN "gfx/stats/balls.2bpp.lz"
 
 
 SECTION "Town Map Graphics", ROMX
@@ -170,7 +191,7 @@ AnimObjWaveGFX::         INCBIN "gfx/battle_anims/wave.2bpp.lz"
 AnimObjAeroblastGFX::    INCBIN "gfx/battle_anims/aeroblast.2bpp.lz"
 AnimObjUTurnGFX::        INCBIN "gfx/battle_anims/uturn.2bpp.lz"
 AnimObjMisc2GFX::        INCBIN "gfx/battle_anims/misc2.2bpp.lz"
-AnimObjBeamLightGFX::    INCBIN "gfx/battle_anims/beamlight.2bpp.lz"
+AnimObjBeamAuroraGFX::   INCBIN "gfx/battle_anims/beamaurora.2bpp.lz"
 AnimObjSmokePuffGFX::    INCBIN "gfx/battle_anims/smokepuff.2bpp.lz"
 AnimObjFocusBlastGFX::   INCBIN "gfx/battle_anims/focusblast.2bpp.lz"
 AnimObjEnergyBallGFX::   INCBIN "gfx/battle_anims/energyball.2bpp.lz"
@@ -190,6 +211,10 @@ AnimObjIcicleCrashGFX::  INCBIN "gfx/battle_anims/iciclecrash.2bpp.lz"
 AnimObjVoltSwitchGFX::   INCBIN "gfx/battle_anims/voltswitch.2bpp.lz"
 AnimObjPsystrikeGFX::    INCBIN "gfx/battle_anims/psystrike.2bpp.lz"
 AnimObjHurricaneGFX::    INCBIN "gfx/battle_anims/hurricane.2bpp.lz"
+AnimObjWaterBallGFX::    INCBIN "gfx/battle_anims/waterball.2bpp.lz"
+AnimObjBeamSolarGFX::    INCBIN "gfx/battle_anims/beamsolar.2bpp.lz"
+AnimObjGlowShadowGFX::   INCBIN "gfx/battle_anims/glow_shadow.2bpp.lz"
+AnimObjPetalsGFX::       INCBIN "gfx/battle_anims/petals.2bpp.lz"
 AnimObjPokeBallBGGFX::   INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 

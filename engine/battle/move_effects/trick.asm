@@ -6,7 +6,7 @@ BattleCommand_trick:
 	call CheckSubstituteOpp
 	jr nz, .failed
 
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp STICKY_HOLD
 	jr z, .ability_failed
 
@@ -69,10 +69,10 @@ BattleCommand_trick:
 	ret
 
 .ability_failed
-	farcall DisableAnimations
+	farcall BeginAbility
 	farcall ShowEnemyAbilityActivation
 	call PrintDoesntAffect
-	farjp EnableAnimations
+	farjp EndAbility
 .failed
 	call AnimateFailedMove
 	jmp PrintButItFailed

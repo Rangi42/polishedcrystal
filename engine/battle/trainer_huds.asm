@@ -135,7 +135,7 @@ DrawEnemyHUDBorder:
 	cp BATTLETYPE_GHOST
 	ret z
 	hlcoord 1, 1
-	ld [hl], "<BALL>"
+	ld [hl], '<BALL>'
 	ret
 
 PlaceHUDBorderTiles:
@@ -222,9 +222,9 @@ _ShowLinkBattleParticipants:
 	ld de, wOTPlayerName
 	rst PlaceString
 	hlcoord 9, 8
-	ld a, "V"
+	ld a, 'V'
 	ld [hli], a
-	ld [hl], "S"
+	ld [hl], 'S'
 	call LinkBattle_TrainerHuds
 	ld a, CGB_PLAIN
 	call GetCGBLayout

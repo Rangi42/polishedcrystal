@@ -15,10 +15,10 @@ Route48_MapScriptHeader:
 	bg_event 27, 11, BGEVENT_JUMPTEXT, Route48YellowForestSignText
 
 	def_object_events
-	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
-	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
-	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
-	object_event 11,  5, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_NURSE
+	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
+	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
+	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
+	object_event 11,  5, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_NURSE
 	itemball_event  4, 13, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
 	object_const_def
@@ -48,8 +48,6 @@ Route48JessieJamesScript1:
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
 	stopfollow
 	showtext Route48JessieJamesSeenText
-	setscene $1
-	setevent EVENT_BEAT_JESSIE_AND_JAMES
 	setevent EVENT_ROUTE_48_JESSIE
 	setevent EVENT_ROUTE_48_JAMES
 	winlosstext Route48JessieJamesBeatenText, 0
@@ -58,6 +56,7 @@ Route48JessieJamesScript1:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
+	setscene $1
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	showtext Route48JessieJamesAfterText

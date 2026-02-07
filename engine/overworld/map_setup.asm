@@ -339,25 +339,19 @@ CheckUpdatePlayerSprite:
 
 .ResetSurfingOrBikingState:
 	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	jr z, .nope
-	cp PLAYER_SKATE
-	jr z, .nope
 	cp PLAYER_SURF
-	jr z, .surfing
+	jr z, .reset
 	cp PLAYER_SURF_PIKA
-	jr z, .surfing
-	call GetMapEnvironment
-	cp INDOOR
-	jr z, .checkbiking
-	cp DUNGEON
-	jr nz, .nope
-.checkbiking
-	ld a, [wPlayerState]
+	jr z, .reset
 	cp PLAYER_BIKE
 	jr nz, .nope
-.surfing
-	ld a, PLAYER_NORMAL
+	call GetMapEnvironment
+	cp INDOOR
+	jr z, .reset
+	cp DUNGEON
+	jr nz, .nope
+.reset
+	xor a ; ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
 	scf
 	ret

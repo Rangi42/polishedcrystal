@@ -3013,7 +3013,7 @@ MeowthAlolanPokedexEntry::
 	next "famously difficult"
 	page "to handle. That's"
 	next "also a reason for"
-	next "it's popularity.@"
+	next "its popularity.@"
 
 SECTION "GrimerAlolanPokedexEntry", ROMX
 GrimerAlolanPokedexEntry::

@@ -140,6 +140,7 @@ wPrevPartyLevel::
 wUnownPuzzleCornerTile::
 wKeepSevenBiasChance::
 wTempDayOfWeek::
+wSuicuneFrame::
 	db
 
 	ds 59
@@ -160,6 +161,7 @@ wWinTextPointer:: dw
 wGenericTempTrainerHeaderEnd::
 wLossTextPointer:: dw
 wScriptAfterPointer:: dw
+wTrainerPal:: db
 wRunningTrainerBattleScript:: db
 wTempTrainerEnd::
 	ds 1
@@ -397,6 +399,10 @@ ENDU
 
 wCurIconMonHasItemOrMail:: db
 
+wCurBadge::
+wCurSpecialItem::
+wCurExpCandy::
+wCurApricorn::
 wCurKeyItem::
 wCurTMHM::
 wCurItem::
@@ -486,6 +492,11 @@ wTempMonHyperTraining:: db
 	ds 2 ; the other 2 extra bytes
 NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
+NEXTU
+wPokedexShowPointerAddr:: dw
+wPokedexShowPointerBank:: db
+NEXTU
+wPokedexShowNextLine:: ds SCREEN_WIDTH
 ENDU
 
 ; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
@@ -498,7 +509,11 @@ wDexCacheOwn:: dw
 wDexPrevCursorPos:: db
 wDexPrevOffset:: db
 
-	ds 32 ; unused
+wOptionsMenuValueCoord:: dw
+wOptionsMenuCursor:: db
+wOptionsMenuScrollPosition:: db
+
+	ds 28 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -532,16 +547,19 @@ wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
 wTilesetDataBank:: db
-wTilesetGFX0Address:: dw
-wTilesetGFX1Address:: dw
 wTilesetBlocksAddress:: dw
 wTilesetCollisionAddress:: dw
 wTilesetAttributesAddress:: dw
-wTilesetGFX2Address:: dw ; BANK("Tileset GFX2 Data")
+wTilesetGFX0Bank:: db
+wTilesetGFX0Address:: dw
+wTilesetGFX1Bank:: db
+wTilesetGFX1Address:: dw
+wTilesetGFX2Bank:: db
+wTilesetGFX2Address:: dw
 wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
 
-	ds 5 ; unused
+	ds 2 ; unused
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
@@ -734,8 +752,7 @@ wTrainerGroupBank:: db
 
 SECTION "Enemy Party", WRAMX
 
-wPokedexShowPointerAddr:: dw
-wPokedexShowPointerBank:: db
+	ds 2 ; unused
 
 wEnemyFleeing:: db
 wNumFleeAttempts:: db
@@ -971,7 +988,7 @@ wStatusFlags2::
 	; bit 2: bug contest timer
 	; bit 3: seen shamouti island
 	; bit 4: bike shop call
-	; bit 5: can use sweet scent
+	; bit 5: using sweet honey
 	; bit 6: exorcised lav radio tower
 	; bit 7: rockets in mahogany
 	db
@@ -1180,22 +1197,34 @@ wNeededPalIndex:: db
 
 wEmotePal:: db
 
-	ds 64 ; unused
+wOvercastRandomDay:: db
+wOvercastCurIntensity:: db
+wOvercastRandomMaps::
+	overcast_random_map Johto1
+	overcast_random_map Johto2
+	overcast_random_map Kanto1
+	overcast_random_map Kanto2
+
+	ds 50 ; unused
 
 wCandyAmounts::
+	table_width 1
 wExpCandyXSAmount:: db
 wExpCandySAmount:: db
 wExpCandyMAmount:: db
 wExpCandyLAmount:: db
 wExpCandyXLAmount:: db
+	assert_table_length NUM_CANDIES
 
 wWingAmounts::
+	table_width 2
 wHealthWingAmount:: dw
 wMuscleWingAmount:: dw
 wResistWingAmount:: dw
 wSwiftWingAmount:: dw
 wGeniusWingAmount:: dw
 wCleverWingAmount:: dw
+	assert_table_length NUM_WINGS
 
 wCelebiEvent:: db
 
@@ -1458,16 +1487,11 @@ wSoundEngineBattleBackup:: ds wChannelsEnd - wMusic
 wBattleBackupMapMusic:: db
 
 
-SECTION "Music Player RAM", WRAMX
-
-wMPNotes:: ds 4 * 256
-
-
 SECTION "Pic Animations RAM", WRAMX
 
 wTempTileMap::
 ; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+	ds SCREEN_AREA
 
 ; PokeAnim data
 wPokeAnimStruct::
@@ -1516,7 +1540,7 @@ SECTION "Sprites Backup", WRAMX
 
 wShadowOAMBackup::
 ; wShadowOAMSpriteBackup00 - wShadowOAMSpriteBackup39
-for n, NUM_SPRITE_OAM_STRUCTS
+for n, OAM_COUNT
 wShadowOAMSpriteBackup{02d:n}:: sprite_oam_struct wShadowOAMSpriteBackup{02d:n}
 endr
 wShadowOAMBackupEnd::
@@ -1535,8 +1559,8 @@ wDex2bpp:: ds $60 tiles
 NEXTU
 ; copied using hdma transfers (which is orders of magnitudes faster), so it uses
 ; 32x19 as opposed to only the 21x19 that we need.
-wDexTilemap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
-wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexTilemap:: ds TILEMAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexAttrmap:: ds TILEMAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexMapEnd::
 
 UNION
@@ -1562,11 +1586,11 @@ ENDU
 ; Copy of dex row tile info. H-Blank uses a copy in wram0.
 wDexPalCopy::
 wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
-wDexRow1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wDexRow1Pals:: ds COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
 wDexRow2Tile: db
-wDexRow2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wDexRow2Pals:: ds COLOR_SIZE * 3 * 5
 wDexRow3Tile: db
-wDexRow3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wDexRow3Pals:: ds COLOR_SIZE * 3 * 5
 wDexPalCopyEnd::
 
 wDexNoStr::
@@ -1609,7 +1633,7 @@ wDexAreaLastMode:: db
 
 	; Used to align wDexAreaMons. Feel free to add more data here, just don't
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
-	ds 4
+	ds 3
 
 ALIGN 8
 wDexAreaMons::
@@ -1657,7 +1681,7 @@ SECTION UNION "Attributes", WRAMX
 
 ; Array of Pokémon in the pokédex list.
 wDexMons::
-for n, 1, NUM_SPECIES + 1
+for n, 1, NUM_POKEMON_PADDED + 1
 wDexMon{d:n}::
 wDexMon{d:n}Species:: db
 wDexMon{d:n}Form:: db
@@ -1755,8 +1779,10 @@ wColorVaryShiny:: db
 
 wPalFadeDelayFrames:: db
 wPalFadeDelay:: db
+wPalFadeTotalSteps:: db
+wPalFadeStepValue:: db
 
-	ds 99 ; unused
+	ds 97 ; unused
 
 	align 8
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
@@ -1768,8 +1794,8 @@ SECTION "Scratch RAM", WRAMX
 UNION
 wDecompressScratch:: ds $100 tiles
 NEXTU
-wScratchTileMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
-wScratchAttrMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
+wScratchTileMap:: ds TILEMAP_AREA
+wScratchAttrMap:: ds TILEMAP_AREA
 NEXTU
 wAbilityTiles:: ds 22 tiles
 ; + 1 to include the "'s"

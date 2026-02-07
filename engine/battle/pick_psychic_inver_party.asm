@@ -1,11 +1,13 @@
+DEF INVER_PREFIX = 1 + STRLEN("Inver@") + 1 ; length + name + trainer flags
+
 PickPsychicInverParty:
 	ld hl, wInverIndexes
 	ld c, NUM_INVER_MONS
 	call ShuffleRange
 
 	ld hl, wInverGroup
-	ld de, .Prefix
-	ld b, .PrefixEnd - .Prefix
+	ld de, PsychicInverGroup
+	ld b, INVER_PREFIX
 	call .CopyBytes
 
 	ld c, PARTY_LENGTH
@@ -21,26 +23,25 @@ PickPsychicInverParty:
 	ld h, a
 	ld e, [hl]
 	ld d, 0
-	; hl = de * 12
+	; hl = de * 10
 	ld h, d
 	ld l, e
-	add hl, de
-	add hl, de
-	add hl, hl
-	add hl, hl
-	; de = PsychicInverMons + hl
-	ld de, PsychicInverMons
+	add hl, hl ; x2
+	add hl, hl ; x4
+	add hl, hl ; x8
+	add hl, de ; x9
+	add hl, de ; x10
+	; de = PsychicInverGroup + INVER_PREFIX + hl
+	ld de, PsychicInverGroup + INVER_PREFIX
 	add hl, de
 	ld d, h
 	ld e, l
 	pop hl
 	; copy the next mon
-	ld b, 12
+	ld b, 10
 	call .CopyBytes
 	dec c
 	jr nz, .party_loop
-
-	ld [hl], -1 ; end
 	ret
 
 .CopyBytes:
@@ -53,11 +54,6 @@ PickPsychicInverParty:
 	jr nz, .copy_loop
 	ret
 
-.Prefix:
-	rawchar "Inver@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
-.PrefixEnd
-
 ShuffleRange:
 ; Generates shuffled array from 0 to c-1 in hl.
 	push hl
@@ -69,9 +65,6 @@ ShuffleRange:
 	dec b
 	jr nz, .index_loop
 	pop hl
-	; fallthrough
-Shuffle:
-; Shuffles array in hl of length c.
 .shuffle_loop
 	dec c
 	ret z
@@ -96,5 +89,3 @@ Shuffle:
 	ld [de], a
 	pop hl
 	jr .shuffle_loop
-
-INCLUDE "data/trainers/psychic_inver.asm"

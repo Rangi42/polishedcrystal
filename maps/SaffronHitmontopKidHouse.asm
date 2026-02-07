@@ -12,8 +12,8 @@ SaffronHitmontopKidHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  4, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
-	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
+	object_event  5,  4, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
+	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
 
 	object_const_def
 	const SAFFRONHITMONTOPKIDHOUSE_CHILD

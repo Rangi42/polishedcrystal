@@ -48,10 +48,10 @@ RunBattleTowerTrainer:
 	; Display awarded BP for the battle (saved after conclusion)
 	call BT_GetCurTrainer
 	farcall BT_GetPointsForTrainer
-	add "0"
+	add '0'
 	ld hl, wStringBuffer1
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	call BT_IncrementCurTrainer
 	; fallthrough
 _RunBattleTowerTrainer:
@@ -265,8 +265,6 @@ Special_BattleTower_SetChallengeState:
 
 	; Otherwise, go ahead and write the challenge state
 	ldh a, [hScriptVar]
-	; fallthrough
-BT_SetChallengeState:
 	and BATTLETOWER_CHALLENGEMASK
 	ld c, a
 	call BT_GetTowerStatus
@@ -282,16 +280,9 @@ BT_SetTowerStatus:
 	jmp CloseSRAM
 
 Special_BattleTower_SetupRentalMode:
-	ld a, BATTLETOWER_RENTALMODE
-	; fallthrough
-BT_SetBattleMode:
-	and BATTLETOWER_MODEMASK
-	ld c, a
-	push bc
 	call BT_GetTowerStatus
-	pop bc
-	and ~BATTLETOWER_MODEMASK
-	or c
+	assert BATTLETOWER_MODEMASK == BATTLETOWER_RENTALMODE
+	or BATTLETOWER_RENTALMODE
 	jr BT_SetTowerStatus
 
 Special_BattleTower_GenerateNextOpponent:
@@ -519,7 +510,6 @@ Special_BattleTower_NextRentalBattle:
 	text "You can expect to"
 	line "see a "
 	text_ram wOTPartyMonNicknames
-	text ""
 	cont "with "
 	text_ram wStringBuffer1
 	text "."
