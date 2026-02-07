@@ -196,7 +196,7 @@ FacingPlayerDistance::
 .CheckY:
 	ld a, [wPlayerMapY]
 	sub e
-	jr z, .NotFacing
+	jmp z, .NotFacing
 	jr nc, .Above
 
 ; Below
@@ -214,7 +214,7 @@ FacingPlayerDistance::
 .CheckX:
 	ld a, [wPlayerMapX]
 	sub d
-	jr z, .NotFacing
+	jmp z, .NotFacing
 	jr nc, .Left
 
 ; Right
@@ -233,218 +233,133 @@ FacingPlayerDistance::
 	cp e
 	jr nz, .NotFacing
 
-	push de
-	ld hl, OBJECT_MAP_X ; x
+	; Trainer at bc is facing the player.
+	; d = distance, e = direction.
+	; Check if any visible object blocks the line of sight.
+
+	push de                     ; save distance/direction
+	push bc                     ; save trainer struct pointer
+
+	; Get trainer position
+	ld hl, OBJECT_MAP_X
 	add hl, bc
-	ld d, [hl]
+	ld a, [hli]
+	ld e, [hl] ; e = trainerY
+	ld d, a ; d = trainerX
 
-	ld hl, OBJECT_MAP_Y ; y
+
+	; Compute bounding box: [x_lo, x_hi] x [y_lo, y_hi]
+	; Since the line of sight is axis-aligned, one range is a point
+	; (min == max) and the other spans the gap between trainer and player.
+	; An object on the line of sight will be within this bounding box.
+
+	ld a, [wPlayerMapX]
+	cp d
+	jr c, .x_sorted
+	jr z, .x_sorted
+	ld b, d
+	ld d, a
+	ld a, b
+.x_sorted:
+	; a = x_lo, d = x_hi
+	dec a                       ; precompute x_lo - 1 for fast >= check
+	ldh [hMathBuffer], a
+	ld a, d
+	ldh [hMathBuffer + 1], a
+
+	ld a, [wPlayerMapY]
+	cp e
+	jr c, .y_sorted
+	jr z, .y_sorted
+	ld b, e
+	ld e, a
+	ld a, b
+.y_sorted:
+	; a = y_lo, e = y_hi
+	dec a                       ; precompute y_lo - 1
+	ldh [hMathBuffer + 2], a
+	ld a, e
+	ldh [hMathBuffer + 3], a
+
+	; Save trainer struct low byte to skip self in the loop
+	ld a, c
+	ldh [hMathBuffer + 4], a
+
+	; Iterate through all non-player object structs
+	ld bc, wObject1Struct
+	ld d, NUM_OBJECT_STRUCTS - 1
+
+.obj_loop:
+	; Skip inactive objects (no sprite)
+	ld a, [bc]                  ; OBJECT_SPRITE at offset 0
+	and a
+	jr z, .next_obj
+
+	; Skip invisible objects
+	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	ld e, [hl]
+	bit INVISIBLE_F, [hl]
+	jr nz, .next_obj
 
-	cp OW_LEFT
-	jr z, .check_boulder_left
-	cp OW_RIGHT
-	jr z, .check_boulder_right
-	cp OW_UP
-	jr z, .check_boulder_up
-	jmp .check_boulder_down
+	; Skip the trainer's own object struct
+	ldh a, [hMathBuffer + 4]
+	cp c
+	jr z, .next_obj
 
-.is_facing
+	; Get object map position
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld a, [hli]                 ; a = objX
+	ld e, [hl]                  ; e = objY
+
+	; Check if object is within the bounding box of the line of sight.
+	; On the shared axis, x_lo == x_hi (or y_lo == y_hi), so the
+	; inclusive range check acts as an equality check.
+
+	; Check objX >= x_lo  (using precomputed x_lo - 1)
+	ld h, a                     ; h = objX
+	ldh a, [hMathBuffer]        ; a = x_lo - 1
+	cp h                        ; (x_lo - 1) - objX
+	jr nc, .next_obj            ; objX < x_lo → skip
+
+	; Check objX <= x_hi
+	ldh a, [hMathBuffer + 1]    ; a = x_hi
+	cp h                        ; x_hi - objX
+	jr c, .next_obj             ; objX > x_hi → skip
+
+	; Check objY >= y_lo  (using precomputed y_lo - 1)
+	ldh a, [hMathBuffer + 2]    ; a = y_lo - 1
+	cp e                        ; (y_lo - 1) - objY
+	jr nc, .next_obj            ; objY < y_lo → skip
+
+	; Check objY <= y_hi
+	ldh a, [hMathBuffer + 3]    ; a = y_hi
+	cp e                        ; y_hi - objY
+	jr c, .next_obj             ; objY > y_hi → skip
+
+	; Found an object blocking the line of sight!
+	pop bc
+	pop de
+	and a                       ; clear carry
+	ret
+
+.next_obj:
+	ld hl, OBJECT_LENGTH
+	add hl, bc
+	ld b, h
+	ld c, l
+	dec d
+	jr nz, .obj_loop
+
+	; No blocking object found
+	pop bc
+	pop de                      ; d = distance, e = direction
 	scf
 	ret
 
 .NotFacing:
 	and a
 	ret
-
-.check_boulder_left
-	; trainer x = d, y = e
-	push bc
-	ld bc, wObject1Struct
-	ld hl, OBJECT_MAP_X
-	add hl, bc
-.check_boulder_left_loop
-	; boulder would need to be at the left of the trainer
-	ld a, [hl]
-	cp d
-	jr nc, .next_left_check
-	; boulder would need to be to the right of the player
-	ld hl, wPlayerMapX
-	cp [hl]
-	jr c, .next_left_check
-	; boulder would need to be at the same y as the trainer
-	ld hl, OBJECT_MAP_Y
-	add hl, bc
-	ld a, [hl]
-	cp e
-	jr nz, .next_left_check
-	; check for boulder sprite
-	ld hl, OBJECT_SPRITE
-	add hl, bc
-	ld a, [hl]
-	cp SPRITE_BOULDER_ROCK_FOSSIL
-	jr nz, .next_left_check
-	; found a boulder
-	pop bc
-	pop de
-	jr .NotFacing
-
-.next_left_check
-	ld hl, OBJECT_LENGTH + OBJECT_MAP_X
-	add hl, bc
-	ld b, h
-	ld c, l
-	ld a, b
-	cp HIGH(wObjectStructsEnd)
-	jr nz, .check_boulder_left_loop
-	ld a, c
-	cp LOW(wObjectStructsEnd)
-	jr nz, .check_boulder_left_loop
-	pop bc
-	pop de
-	jr .is_facing
-
-.check_boulder_right
-	; trainer x = d, y = e
-	push bc
-	ld bc, wObject1Struct
-	ld hl, OBJECT_MAP_X
-	add hl, bc
-.check_boulder_right_loop
-	; boulder would need to be at the right of the trainer
-	ld a, [hl]
-	cp d
-	jr c, .next_right_check
-	; boulder would need to be to the left of the player
-	ld hl, wPlayerMapX
-	cp [hl]
-	jr nc, .next_right_check
-	; boulder would need to be at the same y as the trainer
-	ld hl, OBJECT_MAP_Y
-	add hl, bc
-	ld a, [hl]
-	cp e
-	jr nz, .next_right_check
-	; check for boulder sprite
-	ld hl, OBJECT_SPRITE
-	add hl, bc
-	ld a, [hl]
-	cp SPRITE_BOULDER_ROCK_FOSSIL
-	jr nz, .next_right_check
-	; found a boulder
-	pop bc
-	pop de
-	jr .NotFacing
-
-.next_right_check
-	ld hl, OBJECT_LENGTH + OBJECT_MAP_X
-	add hl, bc
-	ld b, h
-	ld c, l
-	ld a, b
-	cp HIGH(wObjectStructsEnd)
-	jr nz, .check_boulder_right_loop
-	ld a, c
-	cp LOW(wObjectStructsEnd)
-	jr nz, .check_boulder_right_loop
-	pop bc
-	pop de
-	jr .is_facing
-
-.check_boulder_up
-	; trainer x = d, y = e
-	push bc
-	ld bc, wObject1Struct
-	ld hl, OBJECT_MAP_Y
-	add hl, bc
-.check_boulder_up_loop
-	; boulder would need to be above the trainer
-	ld a, [hl]
-	cp e
-	jr nc, .next_up_check
-	; boulder would need to be below the player
-	ld hl, wPlayerMapY
-	cp [hl]
-	jr c, .next_up_check
-	; boulder would need to be at the same x as the trainer
-	ld hl, OBJECT_MAP_X
-	add hl, bc
-	ld a, [hl]
-	cp d
-	jr nz, .next_up_check
-	; check for boulder sprite
-	ld hl, OBJECT_SPRITE
-	add hl, bc
-	ld a, [hl]
-	cp SPRITE_BOULDER_ROCK_FOSSIL
-	jr nz, .next_up_check
-	; found a boulder
-	pop bc
-	pop de
-	jmp .NotFacing
-
-.next_up_check
-	ld hl, OBJECT_LENGTH + OBJECT_MAP_Y
-	add hl, bc
-	ld b, h
-	ld c, l
-	ld a, b
-	cp HIGH(wObjectStructsEnd)
-	jr nz, .check_boulder_up_loop
-	ld a, c
-	cp LOW(wObjectStructsEnd)
-	jr nz, .check_boulder_up_loop
-	pop bc
-	pop de
-	jmp .is_facing
-
-.check_boulder_down
-	; trainer x = d, y = e
-	push bc
-	ld bc, wObject1Struct
-	ld hl, OBJECT_MAP_Y
-	add hl, bc
-.check_boulder_down_loop
-	; boulder would need to be below the trainer
-	ld a, [hl]
-	cp e
-	jr c, .next_down_check
-	; boulder would need to be above the player
-	ld hl, wPlayerMapY
-	cp [hl]
-	jr nc, .next_down_check
-	; boulder would need to be at the same x as the trainer
-	ld hl, OBJECT_MAP_X
-	add hl, bc
-	ld a, [hl]
-	cp d
-	jr nz, .next_down_check
-	; check for boulder sprite
-	ld hl, OBJECT_SPRITE
-	add hl, bc
-	ld a, [hl]
-	cp SPRITE_BOULDER_ROCK_FOSSIL
-	jr nz, .next_down_check
-	; found a boulder
-	pop bc
-	pop de
-	jmp .NotFacing
-
-.next_down_check
-	ld hl, OBJECT_LENGTH + OBJECT_MAP_Y
-	add hl, bc
-	ld b, h
-	ld c, l
-	ld a, b
-	cp HIGH(wObjectStructsEnd)
-	jr nz, .check_boulder_down_loop
-	ld a, c
-	cp LOW(wObjectStructsEnd)
-	jr nz, .check_boulder_down_loop
-	pop bc
-	pop de
-	jmp .is_facing
 
 PrintWinLossText::
 	ld a, [wBattleResult]
