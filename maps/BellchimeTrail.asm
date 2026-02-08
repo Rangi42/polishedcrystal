@@ -16,10 +16,6 @@ BellchimeTrail_MapScriptHeader:
 
 	def_bg_events
 	bg_event 22, 12, BGEVENT_JUMPTEXT, TinTowerSignText
-	bg_event  8,  3, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
-	bg_event  9,  3, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
-	bg_event  8,  6, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
-	bg_event  9,  6, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
 	bg_event 12,  3, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_BELLCHIME_TRAIL
 	bg_event 13,  3, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_BELLCHIME_TRAIL
 
@@ -88,11 +84,6 @@ TinTowerSignText:
 	para "A legendary #-"
 	line "mon is said to"
 	cont "roost here."
-	done
-
-BellchimeTrailWaterText:
-	text "The stream is too"
-	line "small for Surfing."
 	done
 
 BellchimeTrailValerieScript:

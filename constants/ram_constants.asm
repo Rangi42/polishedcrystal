@@ -329,11 +329,14 @@ DEF NUM_BADGES EQU NUM_JOHTO_BADGES + NUM_KANTO_BADGES
 	const OWSTATE_CUT             ; 8
 
 ; wPlayerState::
-DEF PLAYER_NORMAL    EQU 0
-DEF PLAYER_BIKE      EQU 1
-DEF PLAYER_SKATE     EQU 2
-DEF PLAYER_SURF      EQU 4
-DEF PLAYER_SURF_PIKA EQU 8
+	const_def
+	const PLAYER_NORMAL    ; 0
+	const PLAYER_RUN       ; 1
+	const PLAYER_BIKE      ; 2
+	const PLAYER_SKATE     ; 3
+	const PLAYER_SURF      ; 4
+	const PLAYER_SURF_PIKA ; 5
+DEF NUM_PLAYER_STATES EQU const_value
 
 ; wPalFadeMode::
 DEF PALFADE_WHICH        EQU %11

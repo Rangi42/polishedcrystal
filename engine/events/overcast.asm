@@ -16,6 +16,8 @@ GetOvercastIndex::
 	jr z, .lake_of_rage_route_43
 	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_MAGNET_TUNNEL_WEST, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
 	jr z, .stormy_beach_goldenrod_city_route_34
+	cp GROUP_ROUTE_10_NORTH ; GROUP_ROUTE_9
+	jr z, .route_10_north
 .not_overcast:
 	xor a ; NOT_OVERCAST
 	ret
@@ -93,6 +95,27 @@ GetOvercastIndex::
 	ld a, OVERCAST_INTENSITY_THUNDERSTORM
 	ld [wOvercastCurIntensity], a
 	ld a, STORMY_BEACH_OVERCAST
+	ret
+
+.route_10_north:
+; Only overcast while Zapdos is present
+	eventflagcheck EVENT_ROUTE_10_ZAPDOS
+	jmp nz, .not_overcast
+; Route 10 North, Route 9
+	ld a, [wMapNumber]
+	cp MAP_ROUTE_9
+	jr z, .overcast_route_9
+	cp MAP_ROUTE_10_NORTH
+	jmp nz, .not_overcast
+	ld a, OVERCAST_INTENSITY_THUNDERSTORM
+	ld [wOvercastCurIntensity], a
+	ld a, ROUTE_10_OVERCAST
+	ret
+
+.overcast_route_9
+	ld a, OVERCAST_INTENSITY_RAIN
+	ld [wOvercastCurIntensity], a
+	ld a, ROUTE_10_OVERCAST
 	ret
 
 CheckGenericOvercast:

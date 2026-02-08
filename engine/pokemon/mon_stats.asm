@@ -330,7 +330,7 @@ GetShininess:
 ; 2: encountered oldbox code
 	dec a
 	jr nz, .other
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .other
@@ -385,7 +385,7 @@ GetGender:
 ; 2: encountered oldbox code
 	dec a
 	jr nz, .other
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .other

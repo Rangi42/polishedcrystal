@@ -7,6 +7,9 @@ ChrisBikeSpriteGFX:: INCBIN "gfx/sprites/chris_bike.2bpp.lzp"
 SECTION "ChrisSurfSpriteGFX", ROMX
 ChrisSurfSpriteGFX:: INCBIN "gfx/sprites/chris_surf.2bpp.lzp"
 
+SECTION "ChrisRunSpriteGFX", ROMX
+ChrisRunSpriteGFX:: INCBIN "gfx/sprites/chris_run.2bpp.lzp"
+
 SECTION "KrisSpriteGFX", ROMX
 KrisSpriteGFX:: INCBIN "gfx/sprites/kris.2bpp.lzp"
 
@@ -15,6 +18,9 @@ KrisBikeSpriteGFX:: INCBIN "gfx/sprites/kris_bike.2bpp.lzp"
 
 SECTION "KrisSurfSpriteGFX", ROMX
 KrisSurfSpriteGFX:: INCBIN "gfx/sprites/kris_surf.2bpp.lzp"
+
+SECTION "KrisRunSpriteGFX", ROMX
+KrisRunSpriteGFX:: INCBIN "gfx/sprites/kris_run.2bpp.lzp"
 
 SECTION "MomSpriteGFX", ROMX
 MomSpriteGFX:: INCBIN "gfx/sprites/mom.2bpp.lzp"
@@ -536,8 +542,8 @@ RattataBackSpriteGFX:: INCBIN "gfx/sprites/rattata_back.2bpp.lzp"
 SECTION "WeirdTreeSpriteGFX", ROMX
 WeirdTreeSpriteGFX:: INCBIN "gfx/sprites/weird_tree.2bpp.lzp"
 
-SECTION "BallCutFruitSpriteGFX", ROMX
-BallCutFruitSpriteGFX:: INCBIN "gfx/sprites/ball_cut_fruit.2bpp.lzp"
+SECTION "BallCutTreeSpriteGFX", ROMX
+BallCutTreeSpriteGFX:: INCBIN "gfx/sprites/ball_cut_tree.2bpp.lzp"
 
 SECTION "BoulderRockFossilSpriteGFX", ROMX
 BoulderRockFossilSpriteGFX:: INCBIN "gfx/sprites/boulder_rock_fossil.2bpp.lzp"
@@ -599,5 +605,17 @@ CrysBikeSpriteGFX:: INCBIN "gfx/sprites/crys_bike.2bpp.lzp"
 SECTION "CrysSurfSpriteGFX", ROMX
 CrysSurfSpriteGFX:: INCBIN "gfx/sprites/crys_surf.2bpp.lzp"
 
+SECTION "CrysRunSpriteGFX", ROMX
+CrysRunSpriteGFX:: INCBIN "gfx/sprites/crys_run.2bpp.lzp"
+
 SECTION "ThortonSpriteGFX", ROMX
 ThortonSpriteGFX:: INCBIN "gfx/sprites/thorton.2bpp.lzp"
+
+SECTION "BlankFruitSpriteGFX", ROMX
+BlankFruitSpriteGFX:: INCBIN "gfx/sprites/blank_fruit.2bpp.lzp"
+
+SECTION "BigHoOhSpriteGFX", ROMX
+BigHoOhSpriteGFX:: INCBIN "gfx/sprites/big_ho_oh.2bpp.lzp"
+
+SECTION "BigLugiaSpriteGFX", ROMX
+BigLugiaSpriteGFX:: INCBIN "gfx/sprites/big_lugia.2bpp.lzp"

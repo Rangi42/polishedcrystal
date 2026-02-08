@@ -2196,6 +2196,20 @@ FaintUserPokemon:
 .text
 	call StdBattleTextbox
 	call LoadTileMapToTempTileMap
+	call SuppressUserAbilities
+
+	; We can't use ResetAbilityIgnorance here, because it resets both sides'
+	; flags.
+	ld hl, wMoveState
+	ldh a, [hBattleTurn]
+	and a
+	ld a, ~MOVESTATE_IGNOREABIL
+	jr z, .got_mb_side
+	swap a
+.got_mb_side
+	and [hl]
+	ld [hl], a
+	ret
 
 SuppressUserAbilities:
 	ld a, BATTLE_VARS_ABILITY
@@ -8916,17 +8930,26 @@ AutomaticBattleWeather:
 	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
 	jr nz, .not_rugged_road_or_snowtop_mountain
 	ld a, [wMapNumber]
-	; Automatic hail on Snowtop Mountain
-	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
-	lb de, WEATHER_HAIL, HAIL
-	ld hl, HailStartedText
-	jr z, .got_weather
 	; Automatic sandstorm on Rugged Road
 	cp MAP_RUGGED_ROAD_SOUTH
 	lb de, WEATHER_SANDSTORM, SANDSTORM
 	ld hl, SandstormBrewedText
 	jr z, .got_weather
+	; Automatic hail on Snowtop Mountain
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	jr .maybe_hail
 .not_rugged_road_or_snowtop_mountain
+	; Automatic hail on Mt. Silver peak
+	ld a, [wMapGroup]
+	cp GROUP_SILVER_CAVE_ROOM_3
+	jr nz, .not_mt_silver_peak
+	ld a, [wMapNumber]
+	cp MAP_SILVER_CAVE_ROOM_3
+.maybe_hail
+	lb de, WEATHER_HAIL, HAIL
+	ld hl, HailStartedText
+	jr z, .got_weather
+.not_mt_silver_peak
 	; Automatic rain when raining
 	; first check if its overcast conditions
 	farcall GetOvercastIndex

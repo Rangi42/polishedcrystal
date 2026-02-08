@@ -69,7 +69,17 @@ hQuotient::     ds 3
 hRemainder::    db
 ENDU
 
+UNION
 hMathBuffer:: ds 5
+
+NEXTU
+; FacingPlayerDistance scratch space
+hLineOfSightXLo:: db
+hLineOfSightXHi:: db
+hLineOfSightYLo:: db
+hLineOfSightYHi:: db
+hTrainerSeeing::  db
+ENDU
 
 NEXTU
 ; PrintNum scratch space

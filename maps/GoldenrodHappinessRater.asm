@@ -23,16 +23,34 @@ GoldenrodHappinessRaterTeacherScript:
 	special GetFirstPokemonHappiness
 	writetext GoldenrodHappinessRaterTeacherText
 	promptbutton
-	ifgreater $f9, .LovesYouALot
-	ifgreater $c7, .ReallyTrustsYou
-	ifgreater $95, .SortOfHappy
-	ifgreater $63, .QuiteCute
-	ifgreater $31, .NotUsedToYou
-	jumpthisopenedtext
+	ifequalfwd 255, .AdoresYou                            ; 255
+	ifgreater AFFECTION_THRESHOLD_2 - 1, .LovesYouALot    ; 220-254
+	ifgreater AFFECTION_THRESHOLD_1 - 1, .Affectionate    ; 180-219
+	ifgreater HAPPINESS_THRESHOLD_2 - 1, .ReallyTrustsYou ; 160-179
+		assert HAPPINESS_TO_EVOLVE == HAPPINESS_THRESHOLD_2
+		assert MAX_RETURN_HAPPINESS == HAPPINESS_THRESHOLD_2
+	ifgreater HAPPINESS_THRESHOLD_1 - 1, .SortOfHappy     ; 100-159
+		assert FRIEND_BALL_HAPPINESS >= HAPPINESS_THRESHOLD_1 && FRIEND_BALL_HAPPINESS < HAPPINESS_THRESHOLD_2
+		assert HATCHED_HAPPINESS >= HAPPINESS_THRESHOLD_1 && HATCHED_HAPPINESS < HAPPINESS_THRESHOLD_2
+	ifgreater 50 - 1, .QuiteCute                          ; 50-99
+		assert 50 < BASE_HAPPINESS
+	ifgreater 0, .NotUsedToYou                            ; 1-49
+	jumpthisopenedtext                                    ; 0
 
 	text "It doesn't seem to"
 	line "like you at all."
 	cont "It looks mean."
+	done
+
+.AdoresYou:
+	jumpthisopenedtext
+
+	text "It adores you!"
+	line "It can't possibly"
+	cont "love you any more."
+
+	para "I even feel happy"
+	line "seeing it! ♥"
 	done
 
 .LovesYouALot:
@@ -41,6 +59,17 @@ GoldenrodHappinessRaterTeacherScript:
 	text "It looks really"
 	line "happy! It must"
 	cont "love you a lot."
+	done
+
+.Affectionate:
+	jumpthisopenedtext
+
+	text "It's quite affect-"
+	line "ionate with you!"
+
+	para "It seems to want"
+	line "to be babied a"
+	cont "little."
 	done
 
 .ReallyTrustsYou:
@@ -62,7 +91,9 @@ GoldenrodHappinessRaterTeacherScript:
 .QuiteCute:
 	jumpthisopenedtext
 
-	text "It's quite cute."
+	text "It's warming up"
+	line "to you."
+	cont "It's quite cute."
 	done
 
 .NotUsedToYou:

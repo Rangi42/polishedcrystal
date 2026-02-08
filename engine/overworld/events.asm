@@ -248,6 +248,15 @@ PlayerEvents:
 	xor a
 	ld [wLandmarkSignTimer], a
 
+	ld a, [wPlayerState]
+	assert PLAYER_RUN == 1
+	dec a
+	jr nz, .ok2
+
+	assert PLAYER_NORMAL == 0 ; at this point, a is already 0
+	ld [wPlayerState], a
+	call UpdatePlayerSprite
+
 .ok2
 	scf
 	ret
