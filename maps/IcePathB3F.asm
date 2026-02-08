@@ -49,6 +49,7 @@ LoreleiAfterIntroScript:
 	writetext LoreleiRewardText
 	promptbutton
 	verbosegiveitem ICY_ROCK
+	iffalsefwd LoreleiAfterScript
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 LoreleiAfterScript:
 	readvar VAR_BADGES
@@ -69,7 +70,12 @@ LoreleiAfterScript:
 
 LoreleiRematchScript:
 	checkevent EVENT_BEAT_LORELEI_AGAIN
+	iffalsefwd .DoRematch
+	checkevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	iftrue_jumpopenedtext LoreleiRematchAfterText
+	opentext
+	sjumpfwd LoreleiGiveIcyRock
+.DoRematch:
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftruefwd LoreleiReintroductionScript
 	writetext LoreleiIntroText
@@ -88,9 +94,11 @@ LoreleiAfterRematchIntroScript:
 	opentext
 	checkevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	iftrue_jumpopenedtext LoreleiRematchAfterText
+LoreleiGiveIcyRock:
 	writetext LoreleiRewardText
 	promptbutton
 	verbosegiveitem ICY_ROCK
+	iffalse_jumpopenedtext LoreleiRematchAfterText
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	jumpthisopenedtext
 
