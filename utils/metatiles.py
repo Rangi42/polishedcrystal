@@ -345,14 +345,14 @@ def main():
 		sys.exit(1)
 
 	if tileset.endswith('.2bpp.lzp') and not os.path.exists(tileset):
-		tileset = tileset[:-3]
+		tileset = tileset.removesuffix('.lzp')
 
 	if not tileset.endswith('.png'):
 		os.system('python gfx.py png %s' % tileset)
 	if tileset.endswith('.2bpp'):
 		tileset = tileset[:-5] + '.png'
 	elif tileset.endswith('.2bpp.lzp'):
-		tileset = tileset[:-8] + '.png'
+		tileset = tileset.removesuffix('.2bpp.lzp') + '.png'
 
 	process(name, tileset, metatiles, attributes, map_blk)
 
