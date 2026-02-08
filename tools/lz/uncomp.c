@@ -42,7 +42,7 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
     }
 
     current -> command = b0 >> 5;
-    current -> count = b0 & 31;
+    current -> count = b0 & (SHORT_COMMAND_COUNT - 1);
     if (current -> command == LZ_LONG) {
       current -> command = current -> count >> 2;
       current -> count = (current -> count & 3) << 8;
@@ -72,8 +72,8 @@ struct command * get_commands_from_file (const unsigned char * data, unsigned sh
       } break;
       default:
         if (!(remaining --)) goto error;
-        if ((current -> value = *(rp ++)) & 128)
-          current -> value = 127 - current -> value;
+        if ((current -> value = *(rp ++)) & LOOKBACK_LIMIT)
+          current -> value = (LOOKBACK_LIMIT - 1) - current -> value;
         else {
           if (!(remaining --)) goto error;
           current -> value = (current -> value << 8) | *(rp ++);

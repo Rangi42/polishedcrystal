@@ -325,4 +325,4 @@ INCBIN "gfx/splash/logo1.1bpp"
 INCBIN "gfx/splash/logo2.1bpp"
 
 GameFreakDittoGFX:
-INCBIN "gfx/splash/ditto.2bpp.lz"
+INCBIN "gfx/splash/ditto.2bpp.lzp"

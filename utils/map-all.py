@@ -81,7 +81,7 @@ def read_map_block_data():
 			line = line.strip()
 			if line.endswith('_BlockData:'):
 				map_names.append(line[:-11])
-			elif line.startswith('INCBIN "maps/') and line.endswith('.ablk.lz"'):
+			elif line.startswith('INCBIN "maps/') and line.endswith('.ablk.lzp"'):
 				block_data_name = line[13:-9]
 				for map_name in map_names:
 					if map_name != block_data_name:

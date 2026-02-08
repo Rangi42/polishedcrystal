@@ -192,7 +192,7 @@ def compress_file(filein, fileout=None):
     lz = Compressed(image)
 
     if fileout == None:
-        fileout = filein + '.lz'
+        fileout = filein + '.lzp'
     to_file(fileout, lz.output)
 
 
@@ -801,7 +801,7 @@ def png_to_lz(filein):
 
     export_png_to_2bpp(filein)
     image = open(name+'.2bpp', 'rb').read()
-    to_file(name+'.2bpp'+'.lz', Compressed(image).output)
+    to_file(name+'.2bpp'+'.lzp', Compressed(image).output)
 
 
 def convert_2bpp_to_1bpp(data):
@@ -906,7 +906,7 @@ def compress(filenames=[]):
     for filename in filenames:
         data = open(filename, 'rb').read()
         lz_data = Compressed(data).output
-        to_file(filename + '.lz', lz_data)
+        to_file(filename + '.lzp', lz_data)
 
 def decompress(filenames=[]):
     for filename in filenames:
@@ -922,7 +922,7 @@ def try_decompress(filename):
     to convert lz-compressed graphics to png.
     """
     name, extension = os.path.splitext(filename)
-    if extension == '.lz':
+    if extension == '.lzp':
         decompress([filename])
         filename = name
         name, extension = os.path.splitext(filename)

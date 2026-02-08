@@ -6,6 +6,7 @@
 #define MAX_FILE_SIZE            32768
 #define SHORT_COMMAND_COUNT         32
 #define MAX_COMMAND_COUNT          512
+#define MAX_EXT_COUNT              256 /* max output count for an extended opcode (8-bit len-1) */
 #define LOOKBACK_LIMIT             128 /* highest negative valid count for a copy command */
 
 #define LZ_END                  0xff
@@ -20,6 +21,7 @@
 #define LZ_EXT_PACKLO0          0xfe
 #define LZ_EXT_SUBTYPE_MASK     0x03
 #define LZ_PACK16_NIBBLE_MASK   0x0f
+#define PACK16_TABLE_SIZE         16
 
 #define LZ_DATA          0 /* Read literal data for n bytes.   */
 #define LZ_REPEAT        1 /* Write the same byte for n bytes. */
@@ -62,7 +64,7 @@ extern const unsigned char bit_flipping_table[];
 extern char option_name_buffer[];
 
 // util.c (pack16)
-extern const unsigned char pack16_table[16];
+extern const unsigned char pack16_table[PACK16_TABLE_SIZE];
 signed char pack16_index_of(unsigned char value);
 
 // main.c

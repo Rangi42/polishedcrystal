@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Analyze Polished Crystal .lz assets for further compression opportunities.
+"""Analyze Polished Crystal .lzp assets for further compression opportunities.
 
 Focus:
 - Remaining literal payload bytes (LZ_DATA) after current compressor decisions
@@ -184,7 +184,7 @@ def find_lz_files(root: Path) -> Iterable[Path]:
     # Avoid build artifacts and git metadata.
     excluded = {".git", "build"}
 
-    for path in root.rglob("*.lz"):
+    for path in root.rglob("*.lzp"):
         # Skip dirs that include excluded components
         if any(part in excluded for part in path.parts):
             continue
@@ -259,7 +259,7 @@ def main() -> int:
         totals["stream_bytes"] += stream_comp + 1  # + terminator
         totals["stream_out_bytes"] += stream_out
 
-    print(".lz analysis")
+    print(".lzp analysis")
     print(f"  files: {file_count}  (read errors: {bad_files})")
     print(f"  total compressed bytes (file sizes): {totals['compressed_bytes']:,}")
     print(f"  total stream bytes (parsed, incl terminators): {totals['stream_bytes']:,}")

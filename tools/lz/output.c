@@ -123,7 +123,7 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
     // Extended opcodes encoded with $fc-$fe.
     // After the header, packed-literal opcodes have ceil(count/2) payload bytes.
     unsigned original_count = command.count + minimum_count(command.command);
-    if (original_count > 256) error_exit(2, "invalid command in output stream");
+    if (original_count > MAX_EXT_COUNT) error_exit(2, "invalid command in output stream");
 
     if (command.value < 0) {
       unsigned payload = (original_count + 1) / 2;
@@ -196,7 +196,7 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
     default:
       if ((command.value < -LOOKBACK_LIMIT) || (command.value >= MAX_FILE_SIZE)) error_exit(2, "invalid command in output stream");
       if (command.value < 0)
-        *(pos ++) = command.value ^ 127;
+        *(pos ++) = command.value ^ (LOOKBACK_LIMIT - 1);
       else {
         *(pos ++) = command.value >> 8;
         *(pos ++) = command.value;

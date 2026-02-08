@@ -106,7 +106,7 @@ def describe(filename):
 
 def main():
 	if len(sys.argv) < 2:
-		print('Usage: %s FILE.lz' % sys.argv[0])
+		print('Usage: %s FILE.lzp' % sys.argv[0])
 		print('       Describe the opcodes in an LZ file')
 		sys.exit(1)
 	filename = sys.argv[1]

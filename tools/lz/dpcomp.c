@@ -20,7 +20,7 @@ static int pack_index_init;
 static void init_pack_index(void) {
     if (pack_index_init) return;
     for (unsigned i = 0; i < 256; i++) pack_index[i] = -1;
-    for (unsigned i = 0; i < 16; i++) pack_index[pack16_table[i]] = (signed char)i;
+    for (unsigned i = 0; i < PACK16_TABLE_SIZE; i++) pack_index[pack16_table[i]] = (signed char)i;
     pack_index_init = 1;
 }
 
@@ -97,9 +97,10 @@ void process_input(void) {
 
         // lzpackhi0: packed literals where every byte has low nibble 0.
         // Consider runs ending at (plen - 1) where (byte & 0x0f) == 0.
-        // This is beneficial vs LZ_DATA for lengths >= 4.
+        // Minimum length 4: extended opcode (2-byte header + 2 payload) = 4 bytes,
+        // vs LZ_DATA (1-byte header + 4 literal) = 5 bytes. Saves 1 byte.
         unsigned packhi0 = 0;
-        while (packhi0 < MAX_COMMAND_COUNT && packhi0 < plen && (data[plen - (packhi0 + 1)] & 0x0f) == 0) packhi0++;
+        while (packhi0 < MAX_EXT_COUNT && packhi0 < plen && (data[plen - (packhi0 + 1)] & 0x0f) == 0) packhi0++;
         if (packhi0 >= 4) {
             unsigned start = plen - packhi0;
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
@@ -121,9 +122,10 @@ void process_input(void) {
 
         // lzpacklo0: packed literals where every byte has high nibble 0.
         // Consider runs ending at (plen - 1) where (byte & 0xf0) == 0.
-        // This is beneficial vs LZ_DATA for lengths >= 4.
+        // Minimum length 4: extended opcode (2-byte header + 2 payload) = 4 bytes,
+        // vs LZ_DATA (1-byte header + 4 literal) = 5 bytes. Saves 1 byte.
         unsigned packlo0 = 0;
-        while (packlo0 < MAX_COMMAND_COUNT && packlo0 < plen && (data[plen - (packlo0 + 1)] & 0xf0) == 0) packlo0++;
+        while (packlo0 < MAX_EXT_COUNT && packlo0 < plen && (data[plen - (packlo0 + 1)] & 0xf0) == 0) packlo0++;
         if (packlo0 >= 4) {
             unsigned start = plen - packlo0;
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
@@ -146,7 +148,7 @@ void process_input(void) {
         // lzpack16: packed literals using 4-bit indices into pack16_table.
         // Consider runs ending at (plen - 1) where every byte is in the table.
         unsigned pack = 0;
-        while (pack < MAX_COMMAND_COUNT && pack < plen && pack_index[data[plen - (pack + 1)]] >= 0) pack++;
+        while (pack < MAX_EXT_COUNT && pack < plen && pack_index[data[plen - (pack + 1)]] >= 0) pack++;
         if (pack >= 4) {
             unsigned start = plen - pack;
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
