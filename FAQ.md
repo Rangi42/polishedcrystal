@@ -145,7 +145,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### How do I evolve my Pokémon?
 
-* Ask Professor Elm! Give him a call with the Pokemon you have a question about in the lead slot in your party!
+* Ask Professor Elm! Give him a call with the Pokémon you have a question about in the lead slot in your party!
 * Gen 1's trade evolutions now evolve by using the Linking Cord item.
 * Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve when leveling up while holding the item.
 * Yanma, Tangela, and Piloswine evolve when leveling up while knowing AncientPower - a trip to the Move Relearner may prove useful here.
