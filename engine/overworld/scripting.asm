@@ -595,6 +595,7 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
+	writemem hScriptVar + 1
 	readmem wItemQuantityChangeBuffer
 	ifequalfwd 1, .OneItem
 	pluralize wStringBuffer4
@@ -605,6 +606,7 @@ GiveItemScript:
 	; fallthrough
 .FinishGiveItem:
 	special ShowItemIcon
+	readmem hScriptVar + 1
 	iffalsefwd .Full
 	specialsound
 	waitbutton
