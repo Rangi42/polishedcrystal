@@ -332,11 +332,11 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	inc de
 	ld c, a
 	ld b, 0
-	pop af
 	inc c
 	jr nz, .ext_have_len
 	inc b
 .ext_have_len
+	pop af
 	cp LZ_EXT_PACKHI0
 	jr nz, .ext_pack16
 
@@ -425,12 +425,9 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 .pack_lookup
 	; a = 0..15 -> a = pack16_table[a]
 	push de
-	ld e, a
-	ld d, HIGH(.pack16_table)
-	ld a, e
 	add LOW(.pack16_table)
 	ld e, a
-	adc d
+	adc HIGH(.pack16_table)
 	sub e
 	ld d, a
 	ld a, [de]

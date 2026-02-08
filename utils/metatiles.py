@@ -319,7 +319,7 @@ def main():
 	valid = False
 	if len(sys.argv) in [2, 3]:
 		name = sys.argv[1]
-		tileset = 'gfx/tilesets/%s.2bpp.lzp' % name
+		tileset = 'gfx/tilesets/%s.2bpp.lz' % name
 		metatiles = 'data/tilesets/%s_metatiles.bin' % name
 		attributes = 'data/tilesets/%s_attributes.bin' % name
 		map_blk = sys.argv[2] if len(sys.argv) == 3 else None
@@ -333,26 +333,26 @@ def main():
 		usage = '''Usage: %s tileset [metatiles.bin attributes.bin map.blk]
        Generate a .png of a metatileset for viewing
 
-       If tileset is gfx/tilesets/FOO.{2bpp.lzp,2bpp,png},
+       If tileset is gfx/tilesets/FOO.{2bpp.lz,2bpp,png},
        the other parameters will be inferred as
        data/tilesets/FOO_metatiles.bin and data/tilesets/FOO_attributes.bin.
 
        If tileset is FOO, it will first be inferred as
-       gfx/tilesets/FOO.2bpp.lzp.
+       gfx/tilesets/FOO.2bpp.lz.
 
        If a map is specified, its unique palette may be used.'''
 		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
 
-	if tileset.endswith('.2bpp.lzp') and not os.path.exists(tileset):
-		tileset = tileset.removesuffix('.lzp')
+	if tileset.endswith('.2bpp.lz') and not os.path.exists(tileset):
+		tileset = tileset[:-3]
 
 	if not tileset.endswith('.png'):
 		os.system('python gfx.py png %s' % tileset)
 	if tileset.endswith('.2bpp'):
 		tileset = tileset[:-5] + '.png'
-	elif tileset.endswith('.2bpp.lzp'):
-		tileset = tileset.removesuffix('.2bpp.lzp') + '.png'
+	elif tileset.endswith('.2bpp.lz'):
+		tileset = tileset[:-8] + '.png'
 
 	process(name, tileset, metatiles, attributes, map_blk)
 

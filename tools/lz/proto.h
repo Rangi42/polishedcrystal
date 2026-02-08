@@ -16,6 +16,7 @@
 #define LZ_EXT_BASE             0xfc
 // $fc is reserved for an extended opcode; this project uses it for packhi0.
 #define LZ_EXT_PACKHI0          0xfc
+// $fd is reserved for an extended opcode; this project uses it for pack16.
 #define LZ_EXT_PACK16_SHORT     0xfd
 // $fe is reserved for an extended opcode; this project uses it for packlo0.
 #define LZ_EXT_PACKLO0          0xfe

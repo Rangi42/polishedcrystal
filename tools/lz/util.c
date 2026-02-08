@@ -53,17 +53,15 @@ unsigned minimum_count (unsigned command) {
 }
 
 short command_size (struct command command) {
-  short header_size;
   if (command.command == LZ_EXT) {
     // Extended commands encoded using $fc-$fe headers.
     // - value in [-MAX_FILE_SIZE..-1]: lzpackhi0 (2-byte header + ceil(count/2) payload)
     // - value < -MAX_FILE_SIZE: lzpacklo0 (2-byte header + ceil(count/2) payload)
     // - value >= 0: lzpack16 (2-byte header + ceil(count/2) payload)
-    header_size = 2;
-    return header_size + (command.count + 1) / 2;
+    return 2 + (command.count + 1) / 2;
   }
 
-  header_size = 1 + (command.count - minimum_count(command.command) > SHORT_COMMAND_COUNT - 1);
+  short header_size = 1 + (command.count - minimum_count(command.command) > SHORT_COMMAND_COUNT - 1);
   if (command.command >= LZ_COPY_NORMAL && command.command <= LZ_COPY_REVERSED)
     return header_size + 1 + (command.value >= 0);
   // Payload sizes for non-copy base commands:
