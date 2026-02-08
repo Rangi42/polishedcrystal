@@ -1315,6 +1315,6 @@ INCBIN "gfx/trade/game_boy.tilemap"
 TradeLinkTubeTilemap: ; 12x3
 INCBIN "gfx/trade/link_cable.tilemap"
 
-TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lz"
+TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lzp"
 TradeBubbleGFX: INCBIN "gfx/trade/bubble.2bpp"
-TradeGameBoyLZ: INCBIN "gfx/trade/game_boy_cable.2bpp.lz"
+TradeGameBoyLZ: INCBIN "gfx/trade/game_boy_cable.2bpp.lzp"

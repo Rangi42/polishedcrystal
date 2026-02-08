@@ -10,7 +10,7 @@ DEF MP_WAVEFORM0 EQU $2d
 SECTION "Music Player Graphics", ROMX
 
 MusicPlayerGFX:
-INCBIN "gfx/music_player/music_player.2bpp.lz"
+INCBIN "gfx/music_player/music_player.2bpp.lzp"
 
 
 SECTION "Music Player", ROMX

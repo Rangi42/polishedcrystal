@@ -653,7 +653,7 @@ InitTradeSpeciesList:
 	ret
 
 .TradeScreenTilemap:
-INCBIN "gfx/trade/border.tilemap.lz"
+INCBIN "gfx/trade/border.tilemap.lzp"
 
 .Cancel:
 	text "Cancel"
