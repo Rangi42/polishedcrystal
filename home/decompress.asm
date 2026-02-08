@@ -346,7 +346,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 .packhi0_loop
 	ld a, b
 	or c
-	jmp z, .Main
+	jr z, .Main
 	ld a, [de]
 	inc de
 	push af
@@ -361,10 +361,10 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	swap a
 	ld [hli], a
 	dec bc
-	jmp .packhi0_loop
+	jr .packhi0_loop
 .packhi0_done
 	pop af
-	jmp .Main
+	jr .Main
 
 .ext_pack16
 	cp LZ_EXT_PACKLO0
@@ -391,7 +391,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	call .pack_lookup
 	ld [hli], a
 	dec bc
-	jmp .pack_loop
+	jr .pack_loop
 .pack_done
 	pop af
 	jmp .Main
@@ -417,7 +417,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	and LZ_PACK16_NIBBLE_MASK
 	ld [hli], a
 	dec bc
-	jmp .packlo0_loop
+	jr .packlo0_loop
 .packlo0_done
 	pop af
 	jmp .Main
