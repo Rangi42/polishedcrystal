@@ -104,21 +104,21 @@ TilesetJohto2Attr:: INCBIN "data/tilesets/johto_modern_attributes.bin.lz"
 TilesetJohto2Coll:: INCBIN "data/tilesets/johto_modern_collision.bin.lz"
 
 
-SECTION "Tileset Graphics - johto overcast vram1", ROMX
+SECTION "Tileset Graphics - johto outlands vram1", ROMX
 
-TilesetJohto3GFX1:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.vram0.lz"
-
-
-SECTION "Tileset Graphics - johto overcast vram2", ROMX
-
-TilesetJohto3GFX2:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.vram1.lz"
+TilesetJohto3GFX1:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram0.lz"
 
 
-SECTION "Tileset Data - johto overcast", ROMX
+SECTION "Tileset Graphics - johto outlands vram2", ROMX
 
-TilesetJohto3Meta:: INCBIN "data/tilesets/johto_overcast_metatiles.bin.lz"
-TilesetJohto3Attr:: INCBIN "data/tilesets/johto_overcast_attributes.bin.lz"
-TilesetJohto3Coll:: INCBIN "data/tilesets/johto_overcast_collision.bin.lz"
+TilesetJohto3GFX2:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram1.lz"
+
+
+SECTION "Tileset Data - johto outlands", ROMX
+
+TilesetJohto3Meta:: INCBIN "data/tilesets/johto_outlands_metatiles.bin.lz"
+TilesetJohto3Attr:: INCBIN "data/tilesets/johto_outlands_attributes.bin.lz"
+TilesetJohto3Coll:: INCBIN "data/tilesets/johto_outlands_collision.bin.lz"
 
 
 SECTION "Tileset Graphics - battle tower outside vram1", ROMX
