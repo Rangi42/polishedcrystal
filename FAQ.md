@@ -97,7 +97,7 @@ Make good use of the in-game features! The updated Pokédex has a lot more infor
 
 Outside of the game, there exists a [wiki](https://github.com/Rangi42/polishedcrystal/wiki) that is provided with various info.
 Alternatively, you may consider [**PolishedDex**](https://www.polisheddex.app/), an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
-It provides a slew of searchable references, such as the Pokédex, move list, items, locations, abilities, wild encounters, special events and trainers, along with tools like a team builder, headbutt calculator, catch rate calculator and more. 
+It provides a slew of searchable references, such as the Pokédex, move list, items, locations, abilities, wild encounters, special events and trainers, along with tools like a team builder, headbutt calculator, catch rate calculator and more.
 
 Note that the in-game reference is typically the most accurate, and online resources may not always reflect the game accurately. For the most accurate reference, the game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
