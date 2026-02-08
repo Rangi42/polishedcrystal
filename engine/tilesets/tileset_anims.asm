@@ -29,11 +29,11 @@ _AnimateTileset::
 ; Function address
 	jmp IndirectHL
 
-TilesetJohto1Anim::
-TilesetJohto2Anim::
-TilesetJohto3Anim::
-TilesetJohto4Anim::
-TilesetJohto5Anim::
+TilesetJohtoTraditionalAnim::
+TilesetJohtoModernAnim::
+TilesetJohtoOutlandsAnim::
+TilesetBattleTowerOutsideAnim::
+TilesetEcruteakShrineAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw vTiles2 tile $1c, AnimateRainPuddleTile
 	dw vTiles2 tile $1d, AnimateRainWaterTile
@@ -57,8 +57,8 @@ TilesetJohto5Anim::
 	dw vTiles2 tile $35, ReadTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
-TilesetKanto1Anim::
-TilesetKanto2Anim::
+TilesetKantoAnim::
+TilesetIndigoPlateauAnim::
 	dw vTiles2 tile $14, AnimateKantoWaterTile
 	dw vTiles2 tile $40, WriteTileToBuffer
 	dw wTileAnimBuffer, ScrollTileDown
@@ -91,7 +91,7 @@ TilesetPortAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetGym1Anim::
+TilesetGymAnim::
 	dw NULL,  LavaBubbleAnim2
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -239,7 +239,7 @@ TilesetForestAnim::
 	dw vTiles2 tile $40, ReadTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
-TilesetSafariAnim::
+TilesetSafariZoneAnim::
 	dw vTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -252,7 +252,7 @@ TilesetSafariAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetFarawayAnim::
+TilesetFarawayIslandAnim::
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  DoNothing
@@ -295,8 +295,8 @@ TilesetTunnelAnim::
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-TilesetShamoutiAnim::
-TilesetValenciaAnim::
+TilesetShamoutiIslandAnim::
+TilesetValenciaIslandAnim::
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  DoNothing
@@ -332,7 +332,7 @@ TilesetSnowtopMountainAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetWarehouseAnim::
+TilesetUndergroundAnim::
 	dw NULL,  SpinnerAnimation
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -346,8 +346,8 @@ TilesetWarehouseAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetHouse1Anim::
-TilesetHouse2Anim::
+TilesetJohtoHouseAnim::
+TilesetKantoHouseAnim::
 TilesetPokeCenterAnim::
 TilesetGateAnim::
 TilesetLabAnim::
@@ -355,15 +355,15 @@ TilesetFacilityAnim::
 TilesetMartAnim::
 TilesetMansionAnim::
 TilesetGameCornerAnim::
-TilesetHouse3Anim::
-TilesetGym2Anim::
-TilesetGym3Anim::
+TilesetTraditionalHouseAnim::
+TilesetMagnetTrainAnim::
+TilesetChampionsRoomAnim::
 TilesetLighthouseAnim::
-TilesetPokeComAnim::
-TilesetBattleTowerAnim::
-TilesetRuinsAnim::
+TilesetPokeComCenterAnim::
+TilesetBattleTowerInsideAnim::
+TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
-TilesetAlphAnim::
+TilesetAlphWordRoomAnim::
 TilesetPokemonMansionAnim::
 TilesetDecorAnim::
 TilesetMuseumAnim::
