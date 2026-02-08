@@ -1429,6 +1429,9 @@ SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
+; bit 1: nicknames always ("Yes")
+; bit 2: nicknames never ("No")
+; (bits 1 and 2 are never both set; both clear = "Ask")
 ; bits 3-7: unused
 	db
 
