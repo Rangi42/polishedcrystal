@@ -74,3 +74,7 @@ DEF PALSTATE_DARKNESS       rb
 DEF PALSTATE_OVERCAST_INDEX rb
 DEF PALSTATE_TIME_OF_DAY    rb
 DEF PALSTATE_SIZE EQU _RS
+
+; Heal machine ball palette HBlank swap scanlines
+DEF HEAL_BALL_PAL_SWAP_LINE    EQU 14 ; swap ball palettes a few HBlanks before first ball (scanline 22)
+DEF HEAL_BALL_PAL_RESTORE_LINE EQU 41 ; restore original palettes right after last ball pixel (scanline 39)

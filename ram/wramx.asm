@@ -1782,7 +1782,11 @@ wPalFadeDelay:: db
 wPalFadeTotalSteps:: db
 wPalFadeStepValue:: db
 
-	ds 97 ; unused
+; Heal machine ball palette HBlank swap buffers
+wHealBallPalBuffer:: ds 6 palettes ; 48 bytes: per-ball palettes for OBJ slots 0-5
+wHealOrigPalBuffer:: ds 6 palettes ; 48 bytes: backup of original OBJ palettes 0-5
+
+	ds 1 ; unused
 
 	align 8
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX

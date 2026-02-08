@@ -145,6 +145,118 @@ LCDSummaryScreenDone::
 	pop af
 	reti
 
+; Heal machine ball palette HBlank swap handlers
+; These swap OBJ palettes 0-5 mid-frame so the pokeballs can have
+; per-ball colors without conflicting with player/NPC palettes below.
+
+LCDHealMachineSwapPals::
+; Triggered by LYC before the ball area.
+; Writes ball palettes from wHealBallPalBuffer to OBJ palette HW regs 0-5.
+; Then sets LYC to the restore line.
+; First check if this is actually a LYC match, since Mode 0 STAT fires every HBlank.
+	ldh a, [rSTAT]
+	bit B_STAT_LYCF, a
+	jp z, LCDGeneric ; not a LYC match, do normal per-scanline behavior
+
+	push hl
+	push bc
+	push de
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wHealBallPalBuffer)
+	ldh [rWBK], a
+
+	; Set OCPS to auto-increment starting at palette 0
+	ld a, OBPI_AUTOINC
+	ldh [rOBPI], a
+	ld hl, wHealBallPalBuffer
+	ld c, LOW(rOBPD)
+	ld b, 6 ; 6 palettes to write
+.swap_loop:
+	; Wait for HBlank (mode 0) before writing each palette
+.swap_wait_hblank:
+	ldh a, [rSTAT]
+	and 3
+	jr nz, .swap_wait_hblank
+	; Write 1 palette = 8 bytes (safe in HBlank + Mode 2 of next line)
+rept 8
+	ld a, [hli]
+	ldh [c], a
+endr
+	dec b
+	jr nz, .swap_loop
+
+	; Set LYC to restore line and switch handler
+	ld a, HEAL_BALL_PAL_RESTORE_LINE
+	ldh [rLYC], a
+	ld a, LOW(LCDHealMachineRestorePals)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDHealMachineRestorePals)
+	ldh [hFunctionTargetHi], a
+
+	pop af
+	ldh [rWBK], a
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
+
+LCDHealMachineRestorePals::
+; Triggered by LYC after the ball area.
+; Restores original OBJ palettes 0-5 from wHealOrigPalBuffer.
+; Then sets LYC back to the swap line for the next frame.
+; First check if this is actually a LYC match.
+	ldh a, [rSTAT]
+	bit B_STAT_LYCF, a
+	jp z, LCDGeneric ; not a LYC match, do normal per-scanline behavior
+
+	push hl
+	push bc
+	push de
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wHealOrigPalBuffer)
+	ldh [rWBK], a
+
+	; Set OCPS to auto-increment starting at palette 0
+	ld a, OBPI_AUTOINC
+	ldh [rOBPI], a
+	ld hl, wHealOrigPalBuffer
+	ld c, LOW(rOBPD)
+	ld b, 6 ; 6 palettes to restore
+.restore_loop:
+	; Wait for HBlank (mode 0)
+.restore_wait_hblank:
+	ldh a, [rSTAT]
+	and 3
+	jr nz, .restore_wait_hblank
+	; Write 1 palette = 8 bytes
+rept 8
+	ld a, [hli]
+	ldh [c], a
+endr
+	dec b
+	jr nz, .restore_loop
+
+	; Set LYC back to swap line and switch handler
+	ld a, HEAL_BALL_PAL_SWAP_LINE
+	ldh [rLYC], a
+	ld a, LOW(LCDHealMachineSwapPals)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDHealMachineSwapPals)
+	ldh [hFunctionTargetHi], a
+
+	pop af
+	ldh [rWBK], a
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
+
 DisableLCD::
 ; Turn the LCD off
 
