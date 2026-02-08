@@ -109,11 +109,6 @@ SECTION "Tileset Graphics - johto outlands vram1", ROMX
 TilesetJohtoOutlandsGFX1:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram0.lz"
 
 
-SECTION "Tileset Graphics - johto outlands vram2", ROMX
-
-TilesetJohtoOutlandsGFX2:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram1.lz"
-
-
 SECTION "Tileset Data - johto outlands", ROMX
 
 TilesetJohtoOutlandsMeta:: INCBIN "data/tilesets/johto_outlands_metatiles.bin.lz"
@@ -844,6 +839,7 @@ TilesetPeaksColl:: INCBIN "data/tilesets/peaks_collision.bin.lz"
 
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
+TilesetJohtoOutlandsGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
 TilesetIndigoPlateauGFX2::
