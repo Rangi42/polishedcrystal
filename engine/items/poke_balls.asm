@@ -125,7 +125,7 @@ CheckCriticalCapture:
 	ld hl, hMultiplier
 	ld [hli], a
 	ld [hli], a
-	ld a, [wBuffer1]
+	ld a, [wFinalCatchRate]
 	ld [hl], a
 
 	farcall Pokedex_CountSeenOwn

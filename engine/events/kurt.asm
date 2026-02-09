@@ -86,7 +86,7 @@ Kurt_SelectApricorn:
 	db $10 ; flags
 	db 4, 7
 	db 1
-	dbw 0, wBuffer1
+	dbw 0, wKurtApricornCount
 	dba .Name
 	dba .Quantity
 	dba NULL
@@ -200,7 +200,7 @@ Kurt_GiveUpSelectedQuantityOfSelectedApricorn:
 
 Kurt_FindApricornsInBag:
 ; Checks the bag for Apricorns.
-	ld hl, wBuffer1
+	ld hl, wKurtApricornCount
 	xor a
 	ld [hli], a
 	dec a
@@ -217,7 +217,7 @@ Kurt_FindApricornsInBag:
 	ld a, b
 	cp NUM_APRICORNS + 1
 	jr c, .loop
-	ld a, [wBuffer1]
+	ld a, [wKurtApricornCount]
 	and a
 	ret nz
 	scf
@@ -225,7 +225,7 @@ Kurt_FindApricornsInBag:
 
 .addtobuffer
 	push hl
-	ld hl, wBuffer1
+	ld hl, wKurtApricornCount
 	inc [hl]
 	ld e, [hl]
 	ld d, 0

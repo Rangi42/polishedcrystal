@@ -129,7 +129,7 @@ SummaryScreen_PinkPage:
 	call .CalcExpToNextLevel
 	hlcoord 12, 15
 	lb bc, 3, 7
-	ld de, wBuffer1
+	ld de, wExpToNextLevel
 	call PrintNum
 	ld de, .LevelUpStr
 	hlcoord 1, 15
@@ -194,18 +194,18 @@ SummaryScreen_PinkPage:
 	ldh a, [hQuotient + 2]
 	sub [hl]
 	dec hl
-	ld [wBuffer3], a
+	ld [wExpToNextLevel + 2], a
 	ldh a, [hQuotient + 1]
 	sbc [hl]
 	dec hl
-	ld [wBuffer2], a
+	ld [wExpToNextLevel + 1], a
 	ldh a, [hQuotient]
 	sbc [hl]
-	ld [wBuffer1], a
+	ld [wExpToNextLevel], a
 	ret
 
 .AlreadyAtMaxLevel:
-	ld hl, wBuffer1
+	ld hl, wExpToNextLevel
 	xor a
 	ld [hli], a
 	ld [hli], a

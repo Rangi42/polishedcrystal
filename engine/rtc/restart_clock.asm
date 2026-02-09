@@ -18,13 +18,13 @@ endr
 	ret
 
 .WrapAroundTimes:
-	dw wBuffer4
+	dw wRestartClockDay
 	db 7, 4
 
-	dw wBuffer5
+	dw wRestartClockHour
 	db 24, 12
 
-	dw wBuffer6
+	dw wRestartClockMin
 	db 60, 15
 
 RestartClock:
@@ -60,17 +60,17 @@ RestartClock:
 
 .SetClock:
 	ld a, 1
-	ld [wBuffer1], a ; which digit
-	ld [wBuffer2], a
+	ld [wRestartClockCurDivision], a ; which digit
+	ld [wRestartClockPrevDivision], a
 	ld a, 8
-	ld [wBuffer3], a
+	ld [wRestartClockUpArrowYCoord], a
 	call UpdateTime
 	call GetWeekday
-	ld [wBuffer4], a
+	ld [wRestartClockDay], a
 	ldh a, [hHours]
-	ld [wBuffer5], a
+	ld [wRestartClockHour], a
 	ldh a, [hMinutes]
-	ld [wBuffer6], a
+	ld [wRestartClockMin], a
 
 .loop
 	call .joy_loop
@@ -82,11 +82,11 @@ RestartClock:
 	call PrintText
 	call YesNoBox
 	jr c, .cancel
-	ld a, [wBuffer4]
+	ld a, [wRestartClockDay]
 	ld [wStringBuffer2], a
-	ld a, [wBuffer5]
+	ld a, [wRestartClockHour]
 	ld [wStringBuffer2 + 1], a
-	ld a, [wBuffer6]
+	ld a, [wRestartClockMin]
 	ld [wStringBuffer2 + 2], a
 	xor a
 	ld [wStringBuffer2 + 3], a
@@ -143,7 +143,7 @@ RestartClock:
 	ret
 
 .pressed_up
-	ld a, [wBuffer1]
+	ld a, [wRestartClockCurDivision]
 	call ResetClock_GetWraparoundTime
 	ld a, [de]
 	inc a
@@ -155,7 +155,7 @@ RestartClock:
 	jr .done_scroll
 
 .pressed_down
-	ld a, [wBuffer1]
+	ld a, [wRestartClockCurDivision]
 	call ResetClock_GetWraparoundTime
 	ld a, [de]
 	dec a
@@ -168,14 +168,14 @@ RestartClock:
 	jr .done_scroll
 
 .pressed_left
-	ld hl, wBuffer1
+	ld hl, wRestartClockCurDivision
 	dec [hl]
 	jr nz, .done_scroll
 	ld [hl], $3
 	jr .done_scroll
 
 .pressed_right
-	ld hl, wBuffer1
+	ld hl, wRestartClockCurDivision
 	inc [hl]
 	ld a, [hl]
 	cp $4
@@ -191,28 +191,28 @@ RestartClock:
 	lb bc, 5, 18
 	call Textbox
 	bccoord 1, 8
-	ld a, [wBuffer4]
+	ld a, [wRestartClockDay]
 	call PrintDayOfWeek
-	ld a, [wBuffer5]
+	ld a, [wRestartClockHour]
 	ld b, a
-	ld a, [wBuffer6]
+	ld a, [wRestartClockMin]
 	ld c, a
 	decoord 11, 8
 	farcall PrintHoursMins
-	ld a, [wBuffer2]
+	ld a, [wRestartClockPrevDivision]
 	lb de, ' ', ' '
 	call .PlaceChars
-	ld a, [wBuffer1]
+	ld a, [wRestartClockCurDivision]
 	lb de, '▲', '▼'
 	call .PlaceChars
-	ld a, [wBuffer1]
-	ld [wBuffer2], a
+	ld a, [wRestartClockCurDivision]
+	ld [wRestartClockPrevDivision], a
 	ret
 
 .PlaceChars:
 	push de
 	call ResetClock_GetWraparoundTime
-	ld a, [wBuffer3]
+	ld a, [wRestartClockUpArrowYCoord]
 	dec a
 	ld b, a
 	call Coord2Tile
