@@ -7,8 +7,8 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, RuinsOfAlphResearchCenterScientistCallback
 
 	def_warp_events
-	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
-	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 6
+	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 7
+	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 7
 
 	def_coord_events
 
@@ -129,7 +129,7 @@ RuinsOfAlphResearchCenterScientist3Script:
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	pause 15
-	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, 19, 18
+	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, 19, 22
 	end
 
 RuinsofAlphResearchCenterScientistStepAsideMovementData:
