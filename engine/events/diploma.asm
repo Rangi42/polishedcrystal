@@ -77,10 +77,10 @@ PlaceDiplomaPage2OnScreen:
 	done
 
 DiplomaGFX:
-INCBIN "gfx/diploma/diploma.2bpp.lz"
+INCBIN "gfx/diploma/diploma.2bpp.lzp"
 
 DiplomaPage1Tilemap:
-INCBIN "gfx/diploma/page1.tilemap.lz"
+INCBIN "gfx/diploma/page1.tilemap.lzp"
 
 DiplomaPage2Tilemap:
-INCBIN "gfx/diploma/page2.tilemap.lz"
+INCBIN "gfx/diploma/page2.tilemap.lzp"

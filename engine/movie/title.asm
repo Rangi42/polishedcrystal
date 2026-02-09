@@ -382,16 +382,16 @@ INCBIN "gfx/title/suicune_unowns.tilemap"
 	assert_table_length 4
 
 TitleSuicuneUnownsGFX0:
-INCBIN "gfx/title/suicune_unowns.2bpp.vram0p.lz"
+INCBIN "gfx/title/suicune_unowns.2bpp.vram0p.lzp"
 
 TitleSuicuneUnownsGFX1:
-INCBIN "gfx/title/suicune_unowns.2bpp.vram1p.lz"
+INCBIN "gfx/title/suicune_unowns.2bpp.vram1p.lzp"
 
 TitleLogoGFX:
-INCBIN "gfx/title/logo_bg.2bpp.lz"
+INCBIN "gfx/title/logo_bg.2bpp.lzp"
 
 TitleCrystalGFX:
-INCBIN "gfx/title/crystal.2bpp.lz"
+INCBIN "gfx/title/crystal.2bpp.lzp"
 
 TitleScreenPalettes:
 INCLUDE "gfx/title/title.pal"

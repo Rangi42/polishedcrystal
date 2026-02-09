@@ -1431,7 +1431,7 @@ Text_MoveItemWhere:
 	text_end
 
 PackInterfaceGFX:
-INCBIN "gfx/pack/pack_top_left.2bpp.lz"
+INCBIN "gfx/pack/pack_top_left.2bpp.lzp"
 
 Special_ChooseItem::
 	call DisableSpriteUpdates

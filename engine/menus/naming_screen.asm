@@ -790,7 +790,7 @@ LoadNamingScreenGFX:
 	ret
 
 NamingScreenGFX_Border:
-INCBIN "gfx/naming_screen/naming_border.2bpp.lz"
+INCBIN "gfx/naming_screen/naming_border.2bpp.lzp"
 
 NamingScreenGFX_Cursor:
 INCBIN "gfx/naming_screen/naming_cursor.2bpp"
@@ -867,7 +867,7 @@ _ComposeMailMessage:
 	ret
 
 .MailIcon:
-INCBIN "gfx/naming_screen/mail.2bpp.lz"
+INCBIN "gfx/naming_screen/mail.2bpp.lzp"
 
 .initwNamingScreenMaxNameLength
 	ld a, MAIL_MSG_LENGTH + 1

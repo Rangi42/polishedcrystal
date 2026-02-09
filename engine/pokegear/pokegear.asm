@@ -168,10 +168,10 @@ Pokegear_LoadGFX:
 	jmp Decompress
 
 FastShipGFX:
-INCBIN "gfx/town_map/fast_ship.2bpp.lz"
+INCBIN "gfx/town_map/fast_ship.2bpp.lzp"
 
 SinjohRuinsArrowGFX:
-INCBIN "gfx/town_map/arrow.2bpp.lz"
+INCBIN "gfx/town_map/arrow.2bpp.lzp"
 
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
@@ -880,7 +880,7 @@ PokegearText_DeleteStoredNumber:
 	text_end
 
 PokegearSpritesGFX:
-INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lz"
+INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lzp"
 
 RadioTilemapRLE:
 INCBIN "gfx/pokegear/radio.tilemap.rle"
@@ -2058,4 +2058,4 @@ OrangeMap:
 INCBIN "gfx/town_map/orange.bin"
 
 PokegearGFX:
-INCBIN "gfx/pokegear/pokegear.2bpp.lz"
+INCBIN "gfx/pokegear/pokegear.2bpp.lzp"

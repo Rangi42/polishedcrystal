@@ -6,7 +6,23 @@
 #define MAX_FILE_SIZE            32768
 #define SHORT_COMMAND_COUNT         32
 #define MAX_COMMAND_COUNT          512
+#define MAX_EXT_COUNT              256 /* max output count for an extended opcode (8-bit len-1) */
 #define LOOKBACK_LIMIT             128 /* highest negative valid count for a copy command */
+
+#define LZ_END                  0xff
+
+// Extended opcode bytes ($fc-$fe)
+#define LZ_EXT_MASK             0xfc
+#define LZ_EXT_BASE             0xfc
+// $fc is reserved for an extended opcode; this project uses it for packhi0.
+#define LZ_EXT_PACKHI0          0xfc
+// $fd is reserved for an extended opcode; this project uses it for pack16.
+#define LZ_EXT_PACK16_SHORT     0xfd
+// $fe is reserved for an extended opcode; this project uses it for packlo0.
+#define LZ_EXT_PACKLO0          0xfe
+#define LZ_EXT_SUBTYPE_MASK     0x03
+#define LZ_PACK16_NIBBLE_MASK   0x0f
+#define PACK16_TABLE_SIZE         16
 
 #define LZ_DATA          0 /* Read literal data for n bytes.   */
 #define LZ_REPEAT        1 /* Write the same byte for n bytes. */
@@ -15,7 +31,12 @@
 #define LZ_COPY_NORMAL   4 /* Repeat n bytes from the offset.  */
 #define LZ_COPY_FLIPPED  5 /* Repeat n bitflipped bytes.       */
 #define LZ_COPY_REVERSED 6 /* Repeat n bytes in reverse.       */
-#define LZ_LONG          7 /* Expand n to 9 bits               */
+#define LZ_LONG          7 /* Expand n to 9 bits (wire format) */
+
+// Internal pseudo-command for extended opcodes ($fc-$fe).
+// Uses the same numeric value as LZ_LONG since it falls in that byte range,
+// but represents a distinct concept in the tools' internal representation.
+#define LZ_EXT           7
 
 #if __STDC_VERSION__ >= 201112L
 	// <noreturn.h> forces "noreturn void", which is silly and redundant; this is simpler
@@ -25,7 +46,9 @@
 #endif
 
 struct command {
-  unsigned command: 3; // commands 0-6 as per compression spec; command 7 is used as a dummy placeholder
+  // commands 0-6 are as per the base compression spec.
+  // LZ_EXT (7) is used internally as a pseudo-command for extended opcodes ($fc-$fe).
+  unsigned command: 3;
   unsigned count:  12; // always equals the uncompressed data length
   signed value:    17; // offset for commands 0 (into source) and 4-6 (into decompressed output); repeated bytes for commands 1-2
 };
@@ -40,6 +63,10 @@ struct options {
 // global.c
 extern const unsigned char bit_flipping_table[];
 extern char option_name_buffer[];
+
+// util.c (pack16)
+extern const unsigned char pack16_table[PACK16_TABLE_SIZE];
+signed char pack16_index_of(unsigned char value);
 
 // main.c
 int main(int, char **);

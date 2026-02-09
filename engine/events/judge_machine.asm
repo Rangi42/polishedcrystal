@@ -1087,7 +1087,7 @@ RightSlashAxesXCoords:
 	db 39, 41, 43, 45, 47, 48, 50, 52, 54, 55, 57, 59, 61, 63, 64, 66, 68, 70, 71, 73, 75, 77, 78
 
 JudgeSystemGFX:
-INCBIN "gfx/stats/judge.2bpp.lz"
+INCBIN "gfx/stats/judge.2bpp.lzp"
 
 EVChartPals:
 INCLUDE "gfx/stats/ev_chart.pal"

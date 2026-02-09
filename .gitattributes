@@ -16,7 +16,7 @@ Makefile text
 
 # hexdump binary files
 *.png  binary diff=hex
-*.lz   binary diff=hex
+*.lzp  binary diff=hex
 *.2bpp binary diff=hex
 *.1bpp binary diff=hex
 *.bin  binary diff=hex
