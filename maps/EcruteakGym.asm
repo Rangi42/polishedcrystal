@@ -1,6 +1,7 @@
 EcruteakGym_MapScriptHeader:
 	def_scene_scripts
-	scene_script EcruteakGymTrigger0
+	scene_script EcruteakGymForcedToLeaveScene, SCENE_ECRUTEAKGYM_FORCED_TO_LEAVE
+	scene_const SCENE_ECRUTEAKGYM_NOOP
 
 	def_callbacks
 
@@ -57,7 +58,7 @@ EcruteakGym_MapScriptHeader:
 	object_const_def
 	const ECRUTEAKGYM_GRAMPS
 
-EcruteakGymTrigger0:
+EcruteakGymForcedToLeaveScene:
 	sdefer EcruteakGymClosed
 	end
 
@@ -76,7 +77,7 @@ EcruteakGymMortyScript:
 	setevent EVENT_BEAT_MORTY
 	opentext
 	givebadge FOGBADGE, JOHTO_REGION
-	setmapscene ECRUTEAK_HOUSE, $1
+	setmapscene ECRUTEAK_HOUSE, SCENE_ECRUTEAKHOUSE_NOOP
 	setevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_RANG_CLEAR_BELL_2
 .FightDone:

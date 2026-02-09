@@ -1,5 +1,7 @@
 SproutTower3F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_SPROUTTOWER3F_RIVAL_ENCOUNTER
+	scene_const SCENE_SPROUTTOWER3F_NOOP
 
 	def_callbacks
 
@@ -7,7 +9,7 @@ SproutTower3F_MapScriptHeader:
 	warp_event  8, 14, SPROUT_TOWER_2F, 4
 
 	def_coord_events
-	coord_event  9,  9, 0, SproutTower3FRivalScene
+	coord_event  9,  9, SCENE_SPROUTTOWER3F_RIVAL_ENCOUNTER, SproutTower3FRivalScene
 
 	def_bg_events
 	bg_event  6,  1, BGEVENT_JUMPTEXT, SproutTower3FStatueText
@@ -58,7 +60,7 @@ SproutTower3FRivalScene:
 	disappear SPROUTTOWER3F_RIVAL
 	waitsfx
 	special Special_FadeInQuickly
-	setscene $1
+	setscene SCENE_SPROUTTOWER3F_NOOP
 	special RestartMapMusic
 	end
 

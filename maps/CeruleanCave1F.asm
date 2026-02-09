@@ -1,5 +1,7 @@
 CeruleanCave1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CERULEANCAVE1F_BRIDGE_UNDERFOOT
+	scene_const SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, CeruleanCave1FTileScript
@@ -15,12 +17,12 @@ CeruleanCave1F_MapScriptHeader:
 	warp_event  5, 15, CERULEAN_CAVE_2F, 6
 
 	def_coord_events
-	coord_event 20,  4, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 20,  5, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 23,  4, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 23,  5, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 21,  7, 0, CeruleanCave1FBridgeUnderfootTrigger
-	coord_event 22,  7, 0, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 20,  4, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 20,  5, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 23,  4, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 23,  5, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 21,  7, SCENE_CERULEANCAVE1F_BRIDGE_UNDERFOOT, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 22,  7, SCENE_CERULEANCAVE1F_BRIDGE_UNDERFOOT, CeruleanCave1FBridgeUnderfootTrigger
 
 	def_bg_events
 	bg_event 10, 13, BGEVENT_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL

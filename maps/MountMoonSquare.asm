@@ -1,5 +1,6 @@
 MountMoonSquare_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, MountMoonSquareDisappearMoonStoneCallback
@@ -10,7 +11,7 @@ MountMoonSquare_MapScriptHeader:
 	warp_event 13,  7, MOUNT_MOON_GIFT_SHOP, 1
 
 	def_coord_events
-	coord_event  7, 11, 0, ClefairyDance
+	coord_event  7, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, ClefairyDance
 
 	def_bg_events
 	bg_event  7,  7, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE

@@ -1,5 +1,7 @@
 Route36_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE36_NOOP
+	scene_const SCENE_ROUTE36_SUICUNE
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route36ArthurCallback
@@ -14,8 +16,8 @@ Route36_MapScriptHeader:
 	warp_event 30, 12, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event 24,  7, 1, Route36SuicuneScript
-	coord_event 26,  7, 1, Route36SuicuneScript
+	coord_event 24,  7, SCENE_ROUTE36_SUICUNE, Route36SuicuneScript
+	coord_event 26,  7, SCENE_ROUTE36_SUICUNE, Route36SuicuneScript
 
 	def_bg_events
 	bg_event 33,  1, BGEVENT_JUMPTEXT, Route36TrainerTips2Text
@@ -66,9 +68,9 @@ Route36SuicuneScript:
 	disappear ROUTE36_SUICUNE
 	turnobject PLAYER, DOWN
 	pause 10
-	setscene $0
+	setscene SCENE_ROUTE36_NOOP
 	clearevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	setmapscene CIANWOOD_CITY, $1
+	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE
 	end
 
 SudowoodoScript:

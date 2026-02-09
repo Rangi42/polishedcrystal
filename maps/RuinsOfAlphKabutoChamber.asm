@@ -1,6 +1,7 @@
 RuinsOfAlphKabutoChamber_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsofAlphKabutoChamberTrigger0
+	scene_script RuinsOfAlphKabutoChamberCheckWallScene, SCENE_RUINSOFALPHKABUTOCHAMBER_CHECK_WALL
+	scene_const SCENE_RUINSOFALPHKABUTOCHAMBER_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuinsofAlphKabutoChamberHiddenDoorsCallback
@@ -26,7 +27,7 @@ RuinsOfAlphKabutoChamber_MapScriptHeader:
 	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphKabutoChamberReceptionistText, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
 	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphKabutoChamberScientistScript, -1
 
-RuinsofAlphKabutoChamberTrigger0:
+RuinsOfAlphKabutoChamberCheckWallScene:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iffalsefwd .End
 	sdefer RuinsofAlphKabutoChamberWallOpenScript
@@ -56,7 +57,7 @@ RuinsofAlphKabutoChamberWallOpenScript:
 	changeblock 4, 0, $25
 	refreshmap
 	earthquake 50
-	setscene $1
+	setscene SCENE_RUINSOFALPHKABUTOCHAMBER_NOOP
 	endtext
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
@@ -72,7 +73,7 @@ MapRuinsofAlphKabutoChamberSignpost2Script:
 	setevent EVENT_SOLVED_KABUTO_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_A_TO_J
 	setevent EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
+	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, SCENE_RUINSOFALPHINNERCHAMBER_STRANGE_PRESENCE
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
 	changeblock 2, 2, $14

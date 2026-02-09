@@ -1,7 +1,7 @@
 OlivinePort_MapScriptHeader:
 	def_scene_scripts
-	scene_script OlivinePortTrigger0
-	scene_script OlivinePortTrigger1
+	scene_script OlivinePortAskEnterShipScene, SCENE_OLIVINEPORT_ASK_ENTER_SHIP
+	scene_script OlivinePortLeaveShipScene, SCENE_OLIVINEPORT_LEAVE_SHIP
 
 	def_callbacks
 
@@ -11,7 +11,7 @@ OlivinePort_MapScriptHeader:
 	warp_event  7, 15, FAST_SHIP_1F, 1
 
 	def_coord_events
-	coord_event  7,  7, 0, OlivinePortWalkUpToShipScript
+	coord_event  7,  7, SCENE_OLIVINEPORT_ASK_ENTER_SHIP, OlivinePortWalkUpToShipScript
 
 	def_bg_events
 	bg_event  1, 14, BGEVENT_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
@@ -30,15 +30,15 @@ OlivinePort_MapScriptHeader:
 	const OLIVINEPORT_SAILOR1
 	const OLIVINEPORT_SAILOR3
 
-OlivinePortTrigger1:
+OlivinePortLeaveShipScene:
 	sdefer OlivinePortLeaveShipScript
-OlivinePortTrigger0:
+OlivinePortAskEnterShipScene:
 	end
 
 OlivinePortLeaveShipScript:
 	applyonemovement PLAYER, step_up
 	appear OLIVINEPORT_SAILOR1
-	setscene $0
+	setscene SCENE_OLIVINEPORT_ASK_ENTER_SHIP
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	blackoutmod OLIVINE_CITY
 	end
@@ -77,7 +77,7 @@ OlivinePortSailorAtGangwayScript:
 .FirstTime:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
-	setmapscene FAST_SHIP_1F, $1
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_ENTER_SHIP
 	warp FAST_SHIP_1F, 25, 1
 	end
 

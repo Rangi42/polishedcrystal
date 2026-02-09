@@ -1,5 +1,7 @@
 WiseTriosRoom_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_WISETRIOSROOM_SAGE_BLOCKS
+	scene_const SCENE_WISETRIOSROOM_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, WiseTriosRoomCallback
@@ -10,7 +12,7 @@ WiseTriosRoom_MapScriptHeader:
 	warp_event  1,  4, ECRUTEAK_HOUSE, 5
 
 	def_coord_events
-	coord_event  7,  4, 0, WiseTriosRoom_CannotEnterTinTowerScript
+	coord_event  7,  4, SCENE_WISETRIOSROOM_SAGE_BLOCKS, WiseTriosRoom_CannotEnterTinTowerScript
 
 	def_bg_events
 
@@ -93,7 +95,7 @@ ElderKojiScript:
 	applymovement WISETRIOSROOM_ELDER6, WiseTriosRoomSageAllowsPassageMovement
 	turnobject WISETRIOSROOM_ELDER6, UP
 	setevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	setscene $1
+	setscene SCENE_WISETRIOSROOM_NOOP
 	end
 
 WiseTriosRoomSageBlocksPlayerMovement:

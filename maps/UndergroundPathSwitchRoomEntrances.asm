@@ -1,5 +1,7 @@
 UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL_BATTLE
+	scene_const SCENE_UNDERGROUNDPATHSWITCHROOMENTRANCES_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, UndergroundPathSwitchRoomEntrancesUpdateDoorPositions
@@ -19,8 +21,8 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	warp_event  5, 41, GOLDENROD_CITY, 22
 
 	def_coord_events
-	coord_event 19,  4, 0, UndergroundRivalTrigger1
-	coord_event 19,  5, 0, UndergroundRivalTrigger2
+	coord_event 19,  4, SCENE_UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL_BATTLE, UndergroundRivalTrigger1
+	coord_event 19,  5, SCENE_UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL_BATTLE, UndergroundRivalTrigger2
 
 	def_bg_events
 	bg_event 16,  1, BGEVENT_READ, Switch1Script
@@ -147,7 +149,7 @@ UndergroundRivalTrigger1:
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL, UndergroundRivalRetreatMovement1
 	playsound SFX_EXIT_BUILDING
 	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
-	setscene 1
+	setscene SCENE_UNDERGROUNDPATHSWITCHROOMENTRANCES_NOOP
 	waitsfx
 	playmapmusic
 	end
@@ -166,7 +168,7 @@ UndergroundRivalTrigger2:
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL, UndergroundRivalRetreatMovement2
 	playsound SFX_EXIT_BUILDING
 	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL
-	setscene 1
+	setscene SCENE_UNDERGROUNDPATHSWITCHROOMENTRANCES_NOOP
 	waitsfx
 	playmapmusic
 	end
@@ -175,7 +177,7 @@ UndergroundRivalBattleScript:
 	checkevent EVENT_RIVAL_BURNED_TOWER
 	iftruefwd .Continue
 	setevent EVENT_RIVAL_BURNED_TOWER
-	setmapscene BURNED_TOWER_1F, 1
+	setmapscene BURNED_TOWER_1F, SCENE_BURNEDTOWER1F_RIVAL_BATTLE
 .Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UndergroundRivalBeforeText

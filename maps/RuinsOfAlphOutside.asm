@@ -1,6 +1,7 @@
 RuinsOfAlphOutside_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsofAlphOutsideTrigger0
+	scene_script RuinsOfAlphOutsideNoopScene, SCENE_RUINSOFALPHOUTSIDE_NOOP
+	scene_const SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
@@ -22,8 +23,8 @@ RuinsOfAlphOutside_MapScriptHeader:
 	warp_event 11, 36, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
-	coord_event 13, 20, 1, RuinsOfAlphOutsideScientistScene1
-	coord_event 12, 21, 1, RuinsOfAlphOutsideScientistScene1
+	coord_event 13, 20, SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX, RuinsOfAlphOutsideScientistScene1
+	coord_event 12, 21, SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX, RuinsOfAlphOutsideScientistScene1
 
 	def_bg_events
 	bg_event 18, 14, BGEVENT_JUMPTEXT, RuinsOfAlphOutsideMysteryChamberSignText
@@ -53,7 +54,7 @@ RuinsOfAlphOutside_MapScriptHeader:
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 
-RuinsofAlphOutsideTrigger0:
+RuinsOfAlphOutsideNoopScene:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	iffalsefwd .End
 	showtext RuinsofAlphScientistClimax1Text
@@ -92,12 +93,12 @@ RuinsOfAlphOutsideScientistCallback:
 
 .YesScientist:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1
-	setscene $1
+	setscene SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX
 	endcallback
 
 .NoScientist:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
-	setscene $0
+	setscene SCENE_RUINSOFALPHOUTSIDE_NOOP
 	endcallback
 
 RuinsOfAlphOutsideScientistScene1:
@@ -111,7 +112,7 @@ RuinsOfAlphOutsideScientistScript:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	stopfollow
 	applyonemovement PLAYER, step_up
-	setmapscene RUINS_OF_ALPH_RESEARCH_CENTER, $1
+	setmapscene RUINS_OF_ALPH_RESEARCH_CENTER, SCENE_RUINSOFALPHRESEARCHCENTER_GET_UNOWN_DEX
 	warpcheck
 	end
 

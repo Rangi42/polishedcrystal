@@ -1,5 +1,6 @@
 Route39RuggedRoadGate_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK
 
 	def_callbacks
 
@@ -10,12 +11,12 @@ Route39RuggedRoadGate_MapScriptHeader:
 	warp_event  5,  7, ROUTE_39, 3
 
 	def_coord_events
-	coord_event  2,  4, 0, Route39RuggedRoadGateGoGogglesCheck
-	coord_event  3,  4, 0, Route39RuggedRoadGateGoGogglesCheck
-	coord_event  4,  4, 0, Route39RuggedRoadGateGoGogglesCheck
-	coord_event  5,  4, 0, Route39RuggedRoadGateStepLeftOneTrigger
-	coord_event  6,  4, 0, Route39RuggedRoadGateStepLeftTwoTrigger
-	coord_event  7,  4, 0, Route39RuggedRoadGateStepLeftThreeTrigger
+	coord_event  2,  4, SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK, Route39RuggedRoadGateGoGogglesCheck
+	coord_event  3,  4, SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK, Route39RuggedRoadGateGoGogglesCheck
+	coord_event  4,  4, SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK, Route39RuggedRoadGateGoGogglesCheck
+	coord_event  5,  4, SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK, Route39RuggedRoadGateStepLeftOneTrigger
+	coord_event  6,  4, SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK, Route39RuggedRoadGateStepLeftTwoTrigger
+	coord_event  7,  4, SCENE_ROUTE39RUGGEDROADGATE_BICYCLE_CHECK, Route39RuggedRoadGateStepLeftThreeTrigger
 
 	def_bg_events
 

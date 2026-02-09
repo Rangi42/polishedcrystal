@@ -1,6 +1,7 @@
 DragonShrine_MapScriptHeader:
 	def_scene_scripts
-	scene_script DragonShrineTrigger0
+	scene_script DragonShrineTakeTestScene, SCENE_DRAGONSHRINE_TAKE_TEST
+	scene_const SCENE_DRAGONSHRINE_NOOP
 
 	def_callbacks
 
@@ -22,7 +23,7 @@ DragonShrine_MapScriptHeader:
 	const DRAGONSHRINE_ELDER1
 	const DRAGONSHRINE_CLAIR
 
-DragonShrineTrigger0:
+DragonShrineTakeTestScene:
 	sdefer DragonShrineTestScript
 	end
 
@@ -148,8 +149,8 @@ DragonShrineTestScript:
 	givebadge RISINGBADGE, JOHTO_REGION
 	special RestartMapMusic
 	specialphonecall SPECIALCALL_MASTERBALL
-	setscene $1
-	setmapscene DRAGONS_DEN_B1F, $1
+	setscene SCENE_DRAGONSHRINE_NOOP
+	setmapscene DRAGONS_DEN_B1F, SCENE_DRAGONSDENB1F_CLAIR_GIVES_TM
 	writetext DragonShrineRisingBadgeExplanationText
 	waitbutton
 	closetext

@@ -1,5 +1,6 @@
 Route18West_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE18WEST_BICYCLE_CHECK
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
@@ -9,7 +10,7 @@ Route18West_MapScriptHeader:
 	warp_event 17,  7, ROUTE_18_GATE, 2
 
 	def_coord_events
-	coord_event 12,  0, 0, Route18WestBikeCheckScript
+	coord_event 12,  0, SCENE_ROUTE18WEST_BICYCLE_CHECK, Route18WestBikeCheckScript
 
 	def_bg_events
 	bg_event -1,  5, BGEVENT_JUMPTEXT, UragaChannelSignText

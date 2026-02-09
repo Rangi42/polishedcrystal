@@ -1,7 +1,8 @@
 FastShip1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script FastShip1FTrigger0
-	scene_script FastShip1FTrigger1
+	scene_script FastShip1FNoopScene, SCENE_FASTSHIP1F_NOOP
+	scene_script FastShip1FEnterShipScene, SCENE_FASTSHIP1F_ENTER_SHIP
+	scene_const SCENE_FASTSHIP1F_MEET_GRANDPA
 
 	def_callbacks
 
@@ -20,8 +21,8 @@ FastShip1F_MapScriptHeader:
 	warp_event 30, 14, FAST_SHIP_B1F, 2
 
 	def_coord_events
-	coord_event 24,  6, 2, WorriedGrandpaTriggerLeft
-	coord_event 25,  6, 2, WorriedGrandpaTriggerRight
+	coord_event 24,  6, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaTriggerLeft
+	coord_event 25,  6, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaTriggerRight
 
 	def_bg_events
 
@@ -35,9 +36,9 @@ FastShip1F_MapScriptHeader:
 	const FASTSHIP1F_SAILOR1
 	const FASTSHIP1F_GENTLEMAN
 
-FastShip1FTrigger1:
+FastShip1FEnterShipScene:
 	sdefer FastShip1FEnterFastShipScript
-FastShip1FTrigger0:
+FastShip1FNoopScene:
 	end
 
 FastShip1FEnterFastShipScript:
@@ -51,11 +52,11 @@ FastShip1FEnterFastShipScript:
 	clearevent EVENT_FAST_SHIP_HAS_ARRIVED
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftruefwd .SkipGrandpa
-	setscene $2
+	setscene SCENE_FASTSHIP1F_MEET_GRANDPA
 	end
 
 .SkipGrandpa:
-	setscene $0
+	setscene SCENE_FASTSHIP1F_NOOP
 	end
 
 FastShip1FSailor1Script:
@@ -87,7 +88,7 @@ FastShip1FSailor1Script:
 	special FadeOutPalettes
 	waitsfx
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	setmapscene VERMILION_PORT, $1
+	setmapscene VERMILION_PORT, SCENE_VERMILIONPORT_LEAVE_SHIP
 	warp VERMILION_PORT, 7, 17
 	end
 
@@ -100,7 +101,7 @@ FastShip1FSailor1Script:
 	special FadeOutPalettes
 	waitsfx
 	setevent EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	setmapscene OLIVINE_PORT, $1
+	setmapscene OLIVINE_PORT, SCENE_OLIVINEPORT_LEAVE_SHIP
 	warp OLIVINE_PORT, 7, 15
 	end
 
@@ -133,7 +134,7 @@ WorriedGrandpaTriggerLeft:
 	turnobject PLAYER, RIGHT
 	applymovement FASTSHIP1F_GENTLEMAN, FastShip1F_GrandpaRunsOutMovement
 	disappear FASTSHIP1F_GENTLEMAN
-	setscene $0
+	setscene SCENE_FASTSHIP1F_NOOP
 	end
 
 FastShip1F_SailorStepAsideMovement:

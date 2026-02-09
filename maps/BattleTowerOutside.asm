@@ -1,6 +1,7 @@
 BattleTowerOutside_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleTowerOutsideStepDownTrigger
+	scene_script BattleTowerOutsideStepDownScene, SCENE_BATTLETOWEROUTSIDE_STEP_DOWN
+	scene_const SCENE_BATTLETOWEROUTSIDE_NOOP
 
 	def_callbacks
 
@@ -11,8 +12,8 @@ BattleTowerOutside_MapScriptHeader:
 	warp_event  9,  9, BATTLE_TOWER_1F, 2 ; hole
 
 	def_coord_events
-	coord_event  8,  9, 1, BattleTowerOutsidePanUpTrigger1
-	coord_event  9,  9, 1, BattleTowerOutsidePanUpTrigger2
+	coord_event  8,  9, SCENE_BATTLETOWEROUTSIDE_NOOP, BattleTowerOutsidePanUpTrigger1
+	coord_event  9,  9, SCENE_BATTLETOWEROUTSIDE_NOOP, BattleTowerOutsidePanUpTrigger2
 
 	def_bg_events
 	bg_event 10, 10, BGEVENT_JUMPTEXT, BattleTowerOutsideSignText
@@ -29,7 +30,7 @@ BattleTowerOutside_MapScriptHeader:
 	object_const_def
 	const BATTLETOWEROUTSIDE_ANABEL
 
-BattleTowerOutsideStepDownTrigger:
+BattleTowerOutsideStepDownScene:
 	sdefer .Script
 	end
 
@@ -42,7 +43,7 @@ BattleTowerOutsideStepDownTrigger:
 .Down
 	applyonemovement PLAYER, step_down
 .Done
-	setscene $1
+	setscene SCENE_BATTLETOWEROUTSIDE_NOOP
 	end
 
 BattleTowerOutsidePanUpTrigger1:
@@ -65,7 +66,7 @@ BattleTowerOutsidePanUpHelperScript:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	setscene $0
+	setscene SCENE_BATTLETOWEROUTSIDE_STEP_DOWN
 	end
 
 .PanUpMovement:

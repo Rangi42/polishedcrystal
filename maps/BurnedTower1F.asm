@@ -1,6 +1,8 @@
 BurnedTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script BurnedTower1FTrigger0
+	scene_script BurnedTower1FMeetEusineScene, SCENE_BURNEDTOWER1F_MEET_EUSINE
+	scene_const SCENE_BURNEDTOWER1F_RIVAL_BATTLE
+	scene_const SCENE_BURNEDTOWER1F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
@@ -12,7 +14,7 @@ BurnedTower1F_MapScriptHeader:
 	warp_event  5, 15, BURNED_TOWER_B1F, 2
 
 	def_coord_events
-	coord_event  9,  9, 1, BurnedTowerRivalBattleScript
+	coord_event  9,  9, SCENE_BURNEDTOWER1F_RIVAL_BATTLE, BurnedTowerRivalBattleScript
 
 	def_bg_events
 	bg_event  6,  7, BGEVENT_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
@@ -31,7 +33,7 @@ BurnedTower1F_MapScriptHeader:
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_RIVAL
 
-BurnedTower1FTrigger0:
+BurnedTower1FMeetEusineScene:
 	sdefer BurnedTower1FEusineTriggerScript
 	end
 
@@ -52,7 +54,7 @@ BurnedTower1FEusineTriggerScript:
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
 	showtext BurnedTower1FEusineIntroText
 	moveobject BURNEDTOWER1F_EUSINE, 7, 14
-	setscene $1
+	setscene SCENE_BURNEDTOWER1F_RIVAL_BATTLE
 	end
 
 BurnedTowerRivalBattleScript:
@@ -99,7 +101,7 @@ BurnedTowerRivalBattleScript:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext BurnedTowerRival_AfterText1
-	setscene $2
+	setscene SCENE_BURNEDTOWER1F_NOOP
 	setevent EVENT_RIVAL_BURNED_TOWER
 	special Special_FadeOutMusic
 	pause 15

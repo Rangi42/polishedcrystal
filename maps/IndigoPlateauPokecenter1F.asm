@@ -1,5 +1,6 @@
 IndigoPlateauPokecenter1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_INDIGOPLATEAUPOKECENTER1F_RIVAL_BATTLE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
@@ -11,8 +12,8 @@ IndigoPlateauPokecenter1F_MapScriptHeader:
 	warp_event 12,  3, WILLS_ROOM, 1
 
 	def_coord_events
-	coord_event 14,  4, 0, PlateauRivalBattleTrigger1
-	coord_event 15,  4, 0, PlateauRivalBattleTrigger2
+	coord_event 14,  4, SCENE_INDIGOPLATEAUPOKECENTER1F_RIVAL_BATTLE, PlateauRivalBattleTrigger1
+	coord_event 15,  4, SCENE_INDIGOPLATEAUPOKECENTER1F_RIVAL_BATTLE, PlateauRivalBattleTrigger2
 
 	def_bg_events
 	bg_event 13,  7, BGEVENT_READ, PokemonJournalGiovanniScript
@@ -33,12 +34,12 @@ IndigoPlateauPokecenter1F_MapScriptHeader:
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW
 
 PrepareEliteFourCallback:
-	setmapscene WILLS_ROOM, $0
-	setmapscene KOGAS_ROOM, $0
-	setmapscene BRUNOS_ROOM, $0
-	setmapscene KARENS_ROOM, $0
-	setmapscene LANCES_ROOM, $0
-	setmapscene HALL_OF_FAME, $0
+	setmapscene WILLS_ROOM, SCENE_WILLSROOM_LOCK_DOOR
+	setmapscene KOGAS_ROOM, SCENE_KOGASROOM_LOCK_DOOR
+	setmapscene BRUNOS_ROOM, SCENE_BRUNOSROOM_LOCK_DOOR
+	setmapscene KARENS_ROOM, SCENE_KARENSROOM_LOCK_DOOR
+	setmapscene LANCES_ROOM, SCENE_LANCESROOM_LOCK_DOOR
+	setmapscene HALL_OF_FAME, SCENE_HALLOFFAME_ENTER
 	clearevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
 	clearevent EVENT_WILLS_ROOM_EXIT_OPEN
 	clearevent EVENT_KOGAS_ROOM_ENTRANCE_CLOSED
@@ -124,7 +125,7 @@ PlateauRivalBattleTrigger2:
 	turnobject PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_RIVAL, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_RIVAL
-	setscene $0
+	setscene SCENE_INDIGOPLATEAUPOKECENTER1F_RIVAL_BATTLE
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	end
@@ -187,7 +188,7 @@ PlateauRivalBattleTrigger2:
 	turnobject PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
-	setscene $0
+	setscene SCENE_INDIGOPLATEAUPOKECENTER1F_RIVAL_BATTLE
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
 	clearevent EVENT_FINAL_BATTLE_WITH_LYRA

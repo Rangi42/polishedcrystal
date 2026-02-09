@@ -1,6 +1,7 @@
 BattleTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleTower1FContinueChallenge
+	scene_script BattleTower1FContinueChallenge, SCENE_BATTLETOWER1F_CHECKSTATE
+	scene_const SCENE_BATTLETOWER1F_NOOP
 
 	def_callbacks
 
@@ -34,7 +35,7 @@ BattleTower1F_MapScriptHeader:
 BattleTower1FContinueChallenge:
 ; Triggers (usefully) if we're in an ongoing Battle Tower run.
 	; Only trigger this once.
-	setscene 1
+	setscene SCENE_BATTLETOWER1F_NOOP
 
 	; Check current battle status to see if we need to resume or reset winstreak
 	special Special_BattleTower_GetChallengeState
@@ -209,7 +210,7 @@ BattleTower1FReceptionistScript:
 	; fallthrough
 .BattleTowerMenu:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
-	setscene 1
+	setscene SCENE_BATTLETOWER1F_NOOP
 	writethistext
 		text "Want to go into a"
 		line "Battle Room?"
@@ -244,7 +245,7 @@ BattleTower1FReceptionistScript:
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
-	setscene 0
+	setscene SCENE_BATTLETOWER1F_CHECKSTATE
 	special Special_TryQuickSave
 	iffalse .BattleTowerMenu
 
@@ -253,7 +254,7 @@ BattleTower1FReceptionistScript:
 	; fallthrough
 Script_ReturnToBattleTowerChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
-	setscene 0
+	setscene SCENE_BATTLETOWER1F_CHECKSTATE
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 

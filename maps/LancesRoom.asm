@@ -1,6 +1,7 @@
 LancesRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script LancesRoomEntranceTrigger
+	scene_script LancesRoomLockDoorScene, SCENE_LANCESROOM_LOCK_DOOR
+	scene_const SCENE_LANCESROOM_APPROACH_LANCE
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, LancesRoomDoorCallback
@@ -12,8 +13,8 @@ LancesRoom_MapScriptHeader:
 	warp_event  7,  1, HALL_OF_FAME, 2
 
 	def_coord_events
-	coord_event  6,  5, 1, ApproachLanceFromLeftTrigger
-	coord_event  7,  5, 1, ApproachLanceFromRightTrigger
+	coord_event  6,  5, SCENE_LANCESROOM_APPROACH_LANCE, ApproachLanceFromLeftTrigger
+	coord_event  7,  5, SCENE_LANCESROOM_APPROACH_LANCE, ApproachLanceFromRightTrigger
 
 	def_bg_events
 
@@ -27,7 +28,7 @@ LancesRoom_MapScriptHeader:
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK
 
-LancesRoomEntranceTrigger:
+LancesRoomLockDoorScene:
 	sdefer .Script
 	end
 
@@ -39,7 +40,7 @@ LancesRoomEntranceTrigger:
 	changeblock 6, 22, $34
 	refreshmap
 	closetext
-	setscene $1
+	setscene SCENE_LANCESROOM_APPROACH_LANCE
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	end
 

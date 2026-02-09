@@ -1,6 +1,6 @@
 Route22Past_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route22PastTrigger0
+	scene_script Route22PastNoopScene, SCENE_ROUTE22PAST_NOOP
 
 	def_callbacks
 
@@ -22,7 +22,7 @@ Route22Past_MapScriptHeader:
 	const ROUTE22PAST_RIVAL
 	const ROUTE22PAST_GIOVANNI
 
-Route22PastTrigger0:
+Route22PastNoopScene:
 	sdefer Route22PastCelebiEventScript
 	end
 
@@ -97,7 +97,7 @@ Route22PastCelebiEventScript:
 	clearevent EVENT_GIOVANNIS_CAVE_CELEBI
 	clearevent EVENT_GIOVANNIS_CAVE_LYRA
 	clearevent EVENT_GIOVANNIS_CAVE_GIOVANNI
-	setmapscene GIOVANNIS_CAVE, $1
+	setmapscene GIOVANNIS_CAVE, SCENE_GIOVANNISCAVE_NOOP
 	warp GIOVANNIS_CAVE, 15, 5
 	end
 

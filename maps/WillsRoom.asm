@@ -1,6 +1,7 @@
 WillsRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script WillsRoomEntranceTrigger
+	scene_script WillsRoomLockDoorScene, SCENE_WILLSROOM_LOCK_DOOR
+	scene_const SCENE_WILLSROOM_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, WillsRoomDoorCallback
@@ -17,7 +18,7 @@ WillsRoom_MapScriptHeader:
 	def_object_events
 	object_event  5,  7, SPRITE_WILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, WillScript, -1
 
-WillsRoomEntranceTrigger:
+WillsRoomLockDoorScene:
 	sdefer .Script
 	end
 
@@ -29,7 +30,7 @@ WillsRoomEntranceTrigger:
 	changeblock 4, 14, $2a
 	refreshmap
 	closetext
-	setscene $1
+	setscene SCENE_WILLSROOM_NOOP
 	setevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
 	waitsfx
 	end

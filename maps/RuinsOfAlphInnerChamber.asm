@@ -1,7 +1,7 @@
 RuinsOfAlphInnerChamber_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsofAlphInnerChamberTrigger0
-	scene_script RuinsofAlphInnerChamberTrigger1
+	scene_script RuinsOfAlphInnerChamberNoopScene, SCENE_RUINSOFALPHINNERCHAMBER_NOOP
+	scene_script RuinsOfAlphInnerChamberStrangePresenceScene, SCENE_RUINSOFALPHINNERCHAMBER_STRANGE_PRESENCE
 
 	def_callbacks
 
@@ -54,14 +54,14 @@ RuinsOfAlphInnerChamber_MapScriptHeader:
 	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphInnerChamberGrampsText, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	object_event  7, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphInnerChamberScientistText, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
-RuinsofAlphInnerChamberTrigger1:
+RuinsOfAlphInnerChamberStrangePresenceScene:
 	sdefer RuinsOfAlphInnerChamberStrangePresenceScript
-RuinsofAlphInnerChamberTrigger0:
+RuinsOfAlphInnerChamberNoopScene:
 	end
 
 RuinsOfAlphInnerChamberStrangePresenceScript:
 	showtext RuinsOfAlphStrangePresenceText
-	setscene $0
+	setscene SCENE_RUINSOFALPHINNERCHAMBER_NOOP
 	setevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	end

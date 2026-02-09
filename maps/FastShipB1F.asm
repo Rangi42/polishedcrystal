@@ -1,5 +1,7 @@
 FastShipB1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_FASTSHIPB1F_SAILOR_BLOCKS
+	scene_const SCENE_FASTSHIPB1F_NOOP
 
 	def_callbacks
 
@@ -8,8 +10,8 @@ FastShipB1F_MapScriptHeader:
 	warp_event 27, 11, FAST_SHIP_1F, 12
 
 	def_coord_events
-	coord_event 26,  5, 0, FastShipB1FSailorBlocksLeft
-	coord_event 27,  5, 0, FastShipB1FSailorBlocksRight
+	coord_event 26,  5, SCENE_FASTSHIPB1F_SAILOR_BLOCKS, FastShipB1FSailorBlocksLeft
+	coord_event 27,  5, SCENE_FASTSHIPB1F_SAILOR_BLOCKS, FastShipB1FSailorBlocksRight
 
 	def_bg_events
 
