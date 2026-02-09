@@ -1,11 +1,11 @@
 GetPokeBallWobble:
 ; Returns whether a Poke Ball will wobble in the catch animation.
-	ld a, BANK(wBuffer2)
+	ld a, BANK(wThrownBallWobbleCount)
 	call StackCallInWRAMBankA
 .Function:
 ; Wobble up to 3 times.
 	; Check for critical capture flag
-	ld a, [wBuffer2]
+	ld a, [wThrownBallWobbleCount]
 	and $10
 	jr z, .no_critical
 
@@ -16,7 +16,7 @@ GetPokeBallWobble:
 
 .no_critical
 	ld hl, .WobbleProbabilities
-	ld a, [wBuffer1]
+	ld a, [wFinalCatchRate]
 
 	; If a is 255, always capture
 	inc a
@@ -46,10 +46,10 @@ GetPokeBallWobble:
 	; Check how many wobbles we've done so far. If this would've been our 4th,
 	; we've successfully caught the Pokémon.
 	ld c, 0 ; shake
-	ld a, [wBuffer2]
+	ld a, [wThrownBallWobbleCount]
 	inc a
 .critical_shake
-	ld [wBuffer2], a
+	ld [wThrownBallWobbleCount], a
 	cp 4
 	ret c
 

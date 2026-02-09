@@ -189,7 +189,7 @@ FloorBC::
 	ret
 
 GetMaxHP::
-; output: bc, wBuffer1-2
+; output: bc, wHPBuffer1-2
 	farcall GetFutureSightUser
 	jr z, .not_external
 	ld a, MON_MAXHP
@@ -200,11 +200,11 @@ GetMaxHP::
 	call GetUserMonAttr
 .got_maxhp
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld b, a
 
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	ld c, a
 	ret
 

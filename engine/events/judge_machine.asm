@@ -489,7 +489,7 @@ RenderEVChart:
 
 RenderIVChart:
 ; Read the IVs and scale them to 255 instead of 31
-	ld hl, wBuffer1
+	ld hl, wJudgeHyperTrainFlags
 	ld a, [wTempMonHyperTraining]
 	ld [hl], a
 ; HP

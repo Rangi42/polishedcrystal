@@ -457,7 +457,7 @@ ListMovePP:
 	sub c
 	ld b, a
 	push hl
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld e, a
 	ld d, 0
 .pp_loop
@@ -533,7 +533,7 @@ ListMovePP:
 	lb bc, 1, 2
 	call PrintNum
 	pop hl
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -1012,7 +1012,7 @@ FntString: rawchar "Fnt@"
 ToxString: rawchar "Tox@"
 
 ListMoves:
-; List moves at hl, spaced every [wBuffer1] tiles.
+; List moves at hl, spaced every [wListMovesLineSpacing] tiles.
 	ld de, wListMoves_MoveIndicesBuffer
 	ld b, $0
 .moves_loop
@@ -1032,7 +1032,7 @@ ListMoves:
 	inc b
 	pop hl
 	push bc
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -1048,7 +1048,7 @@ ListMoves:
 .nonmove_loop
 	push af
 	ld [hl], '-'
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld c, a
 	ld b, 0
 	add hl, bc

@@ -136,9 +136,9 @@ SelectQuantityToBuy:
 	farcall GetItemPrice
 RooftopSale_SelectQuantityToBuy:
 	ld a, d
-	ld [wBuffer1], a
+	ld [wBuySellPriceHi], a
 	ld a, e
-	ld [wBuffer2], a
+	ld [wBuySellPriceLo], a
 	call CalculateMaximumQuantity
 	ld hl, BuyItem_MenuDataHeader
 	call LoadMenuHeader
@@ -146,9 +146,9 @@ RooftopSale_SelectQuantityToBuy:
 
 BT_SelectQuantityToBuy:
 	xor a
-	ld [wBuffer1], a
+	ld [wBuySellPriceHi], a
 	ld a, c
-	ld [wBuffer2], a
+	ld [wBuySellPriceLo], a
 	call CalculateMaximumBTQuantity
 	ld hl, BTBuyItem_MenuDataHeader
 	call LoadMenuHeader
@@ -157,9 +157,9 @@ BT_SelectQuantityToBuy:
 SelectQuantityToSell:
 	farcall GetItemPrice
 	ld a, d
-	ld [wBuffer1], a
+	ld [wBuySellPriceHi], a
 	ld a, e
-	ld [wBuffer2], a
+	ld [wBuySellPriceLo], a
 	ld hl, SellItem_MenuDataHeader
 	call LoadMenuHeader
 	; fallthrough
@@ -312,9 +312,9 @@ BuySell_DisplaySubtotal:
 BuySell_MultiplyPrice:
 	xor a
 	ldh [hMultiplicand + 0], a
-	ld a, [wBuffer1]
+	ld a, [wBuySellPriceHi]
 	ldh [hMultiplicand + 1], a
-	ld a, [wBuffer2]
+	ld a, [wBuySellPriceLo]
 	ldh [hMultiplicand + 2], a
 	ld a, [wItemQuantityChangeBuffer]
 	ldh [hMultiplier], a

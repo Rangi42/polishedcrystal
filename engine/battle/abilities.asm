@@ -408,16 +408,16 @@ ForewarnAbility:
 	ld hl, wBattleMonMoves
 .got_move_ptr
 	ld a, NUM_MOVES + 1
-	ld [wBuffer1], a ; iterator
+	ld [wForewarnIterator], a ; iterator
 	xor a
-	ld [wBuffer2], a ; used when randomizing between equal-power moves
-	ld [wBuffer3], a ; highest power move index
-	ld [wBuffer4], a ; power of said move for comparing
+	ld [wForewarnEqualCount], a ; used when randomizing between equal-power moves
+	ld [wForewarnBestMove], a ; highest power move index
+	ld [wForewarnBestPower], a ; power of said move for comparing
 .loop
-	ld a, [wBuffer1]
+	ld a, [wForewarnIterator]
 	dec a
 	jr z, .done
-	ld [wBuffer1], a
+	ld [wForewarnIterator], a
 	; a mon can have less than 4 moves
 	ld a, [hli]
 	and a
@@ -443,35 +443,35 @@ ForewarnAbility:
 	jr z, .loop
 .compare_power
 	; b: current move ID, c: current move power
-	ld a, [wBuffer4]
+	ld a, [wForewarnBestPower]
 	cp c
 	jr z, .randomize
 	jr nc, .loop
 	; This move has higher BP, reset the random range
 	xor a
-	ld [wBuffer2], a
+	ld [wForewarnEqualCount], a
 	jr .replace
 .randomize
 	; Move power was equal: randomize. This is done as follows as to give even results:
 	; 2 moves share power: 2nd move replaces 1/2 of the time
 	; 3 moves share power: 3rd move replaces 1/3 of the time
 	; 4 moves share power: 4th move replaces 1/4 of the time
-	ld a, [wBuffer2]
+	ld a, [wForewarnEqualCount]
 	inc a ; no-optimize inefficient WRAM increment/decrement
-	ld [wBuffer2], a
+	ld [wForewarnEqualCount], a
 	inc a
 	call BattleRandomRange
 	and a
 	jr nz, .loop
 .replace
 	ld a, b
-	ld [wBuffer3], a
+	ld [wForewarnBestMove], a
 	ld a, c
-	ld [wBuffer4], a
+	ld [wForewarnBestPower], a
 	jr .loop
 .done
 	; Check if we have an attacking move in first place
-	ld a, [wBuffer3]
+	ld a, [wForewarnBestMove]
 	and a
 	ret z
 	push af

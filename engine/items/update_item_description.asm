@@ -12,7 +12,7 @@ UpdateItemDescriptionAndBagQuantity:
 	call GetQuantityInBag
 	hlcoord 5, 1
 	push hl
-	ld de, wBuffer1
+	ld de, wItemCountHi
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
@@ -53,7 +53,7 @@ UpdateExpCandyDescriptionAndBagQuantity:
 	call GetExpCandyQuantity
 	hlcoord 5, 1
 	push hl
-	ld de, wBuffer1
+	ld de, wItemCountHi
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
@@ -136,7 +136,7 @@ GetExpCandyQuantity:
 	ld e, a
 	add hl, de
 	xor a
-	ld [wBuffer1], a
+	ld [wItemCountHi], a
 	ld a, [hl]
-	ld [wBuffer2], a
+	ld [wItemCountLo], a
 	ret

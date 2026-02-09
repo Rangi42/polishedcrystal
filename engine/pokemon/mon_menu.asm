@@ -1528,7 +1528,7 @@ MoveScreen_ListMoves:
 	ld bc, NUM_MOVES
 	rst CopyBytes
 	ld a, SCREEN_WIDTH * 2 ; move list spacing
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	hlcoord 2, 3
 	predef ListMoves
 

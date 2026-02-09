@@ -50,9 +50,9 @@ CountItem::
 	push de
 	farcall _CountItem
 	ld a, b
-	ld [wBuffer1], a
+	ld [wItemCountHi], a
 	ld a, c
-	ld [wBuffer2], a
+	ld [wItemCountLo], a
 	jmp PopBCDEHL
 
 ReceiveKeyItem::
