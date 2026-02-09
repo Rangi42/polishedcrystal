@@ -1,6 +1,7 @@
 VermilionCity_MapScriptHeader:
 	def_scene_scripts
-	scene_script LawrenceIntroScript
+	scene_script LawrenceIntroScript, SCENE_VERMILIONCITY_LAWRENCE_INTRO
+	scene_const SCENE_VERMILIONCITY_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, VermilionCitySetupLawrenceCallback
@@ -98,7 +99,7 @@ LawrenceIntroScript:
 	showtext LawrenceIntroText
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAwayMovementData
 	disappear VERMILIONCITY_LAWRENCE
-	setscene $1
+	setscene SCENE_VERMILIONCITY_NOOP
 	setevent EVENT_TELEPORT_GUY
 	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic

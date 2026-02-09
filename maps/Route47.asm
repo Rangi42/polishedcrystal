@@ -1,5 +1,7 @@
 Route47_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE47_BRIDGE_UNDERFOOT
+	scene_const SCENE_ROUTE47_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, Route47TileScript
@@ -14,38 +16,38 @@ Route47_MapScriptHeader:
 	warp_event  8,  4, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
-	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger
-	coord_event 42, 25, 1, Route47Bridge1OverheadTrigger
-	coord_event 51, 24, 1, Route47Bridge1OverheadTrigger
-	coord_event 51, 25, 1, Route47Bridge1OverheadTrigger
-	coord_event 43, 24, 0, Route47Bridge1UnderfootTrigger
-	coord_event 43, 25, 0, Route47Bridge1UnderfootTrigger
-	coord_event 50, 24, 0, Route47Bridge1UnderfootTrigger
-	coord_event 50, 25, 0, Route47Bridge1UnderfootTrigger
-	coord_event 42, 18, 1, Route47Bridge2OverheadTrigger
-	coord_event 42, 19, 1, Route47Bridge2OverheadTrigger
-	coord_event 51, 18, 1, Route47Bridge2OverheadTrigger
-	coord_event 51, 19, 1, Route47Bridge2OverheadTrigger
-	coord_event 43, 18, 0, Route47Bridge2UnderfootTrigger
-	coord_event 43, 19, 0, Route47Bridge2UnderfootTrigger
-	coord_event 50, 18, 0, Route47Bridge2UnderfootTrigger
-	coord_event 50, 19, 0, Route47Bridge2UnderfootTrigger
-	coord_event 18, 24, 1, Route47Bridge3OverheadTrigger
-	coord_event 18, 25, 1, Route47Bridge3OverheadTrigger
-	coord_event 27, 24, 1, Route47Bridge3OverheadTrigger
-	coord_event 27, 25, 1, Route47Bridge3OverheadTrigger
-	coord_event 19, 24, 0, Route47Bridge3UnderfootTrigger
-	coord_event 19, 25, 0, Route47Bridge3UnderfootTrigger
-	coord_event 26, 24, 0, Route47Bridge3UnderfootTrigger
-	coord_event 26, 25, 0, Route47Bridge3UnderfootTrigger
-	coord_event 18, 16, 1, Route47Bridge4OverheadTrigger
-	coord_event 18, 17, 1, Route47Bridge4OverheadTrigger
-	coord_event 27, 16, 1, Route47Bridge4OverheadTrigger
-	coord_event 27, 17, 1, Route47Bridge4OverheadTrigger
-	coord_event 19, 16, 0, Route47Bridge4UnderfootTrigger
-	coord_event 19, 17, 0, Route47Bridge4UnderfootTrigger
-	coord_event 26, 16, 0, Route47Bridge4UnderfootTrigger
-	coord_event 26, 17, 0, Route47Bridge4UnderfootTrigger
+	coord_event 42, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 42, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 51, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 51, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 43, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 43, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 50, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 50, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 42, 18, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 42, 19, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 51, 18, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 51, 19, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 43, 18, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 43, 19, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 50, 18, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 50, 19, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 18, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 18, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 27, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 27, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 19, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 19, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 26, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 26, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 18, 16, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 18, 17, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 27, 16, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 27, 17, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 19, 16, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
+	coord_event 19, 17, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
+	coord_event 26, 16, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
+	coord_event 26, 17, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
 
 	def_bg_events
 	bg_event  8, 23, BGEVENT_IFNOTSET, Route47SealedCaveSign

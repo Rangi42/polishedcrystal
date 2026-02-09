@@ -1,5 +1,6 @@
 Route34IlexForestGate_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE34ILEXFORESTGATE_TEACHER_BLOCKS
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, .IsForestRestless
@@ -11,7 +12,7 @@ Route34IlexForestGate_MapScriptHeader:
 	warp_event  5,  7, ILEX_FOREST, 1
 
 	def_coord_events
-	coord_event  4,  7, 0, Route34IlexForestGateCelebiEvent
+	coord_event  4,  7, SCENE_ROUTE34ILEXFORESTGATE_TEACHER_BLOCKS, Route34IlexForestGateCelebiEvent
 
 	def_bg_events
 

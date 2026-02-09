@@ -1,5 +1,7 @@
 Route27_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE27_FIRST_STEP_INTO_KANTO
+	scene_const SCENE_ROUTE27_NOOP
 
 	def_callbacks
 
@@ -9,8 +11,8 @@ Route27_MapScriptHeader:
 	warp_event 36,  5, TOHJO_FALLS, 2
 
 	def_coord_events
-	coord_event 18, 10, 0, FirstStepIntoKantoLeftScene
-	coord_event 19, 10, 0, FirstStepIntoKantoRightScene
+	coord_event 18, 10, SCENE_ROUTE27_FIRST_STEP_INTO_KANTO, FirstStepIntoKantoLeftScene
+	coord_event 19, 10, SCENE_ROUTE27_FIRST_STEP_INTO_KANTO, FirstStepIntoKantoRightScene
 
 	def_bg_events
 	bg_event 25,  7, BGEVENT_JUMPTEXT, TohjoFallsSignText
@@ -51,7 +53,7 @@ FirstStepIntoKantoScene_Continue:
 	writetext Route27FisherText
 	waitbutton
 	closetext
-	setscene $1
+	setscene SCENE_ROUTE27_NOOP
 	end
 
 Route27VeteranfScript:

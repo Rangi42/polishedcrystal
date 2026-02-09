@@ -1,5 +1,7 @@
 YellowForest_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT
+	scene_const SCENE_YELLOWFOREST_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, YellowForestFlyPoint
@@ -11,14 +13,14 @@ YellowForest_MapScriptHeader:
 	warp_event 19, 12, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event 32, 16, 1, YellowForestBridgeOverheadTrigger
-	coord_event 32, 17, 1, YellowForestBridgeOverheadTrigger
-	coord_event 39, 16, 1, YellowForestBridgeOverheadTrigger
-	coord_event 39, 17, 1, YellowForestBridgeOverheadTrigger
-	coord_event 33, 16, 0, YellowForestBridgeUnderfootTrigger
-	coord_event 33, 17, 0, YellowForestBridgeUnderfootTrigger
-	coord_event 38, 16, 0, YellowForestBridgeUnderfootTrigger
-	coord_event 38, 17, 0, YellowForestBridgeUnderfootTrigger
+	coord_event 32, 16, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 32, 17, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 39, 16, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 39, 17, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 33, 16, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
+	coord_event 33, 17, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
+	coord_event 38, 16, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
+	coord_event 38, 17, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
 
 	def_bg_events
 	bg_event 39, 14, BGEVENT_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM

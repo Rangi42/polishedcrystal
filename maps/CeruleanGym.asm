@@ -1,7 +1,7 @@
 CeruleanGym_MapScriptHeader:
 	def_scene_scripts
-	scene_script CeruleanGymTrigger0
-	scene_script CeruleanGymTrigger1
+	scene_script CeruleanGymNoopScene, SCENE_CERULEANGYM_NOOP
+	scene_script CeruleanGymGruntRunsOutScene, SCENE_CERULEANGYM_GRUNT_RUNS_OUT
 
 	def_callbacks
 
@@ -29,9 +29,9 @@ CeruleanGym_MapScriptHeader:
 	object_const_def
 	const CERULEANGYM_ROCKET
 
-CeruleanGymTrigger1:
+CeruleanGymGruntRunsOutScene:
 	sdefer CeruleanGymGruntRunsOutScript
-CeruleanGymTrigger0:
+CeruleanGymNoopScene:
 	end
 
 CeruleanGymGruntRunsOutScript:
@@ -51,8 +51,8 @@ CeruleanGymGruntRunsOutScript:
 	setevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
 	clearevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	clearevent EVENT_ROUTE_24_ROCKET
-	setscene $0
-	setmapscene POWER_PLANT, $0
+	setscene SCENE_CERULEANGYM_NOOP
+	setmapscene POWER_PLANT, SCENE_POWERPLANT_NOOP
 	waitsfx
 	special RestartMapMusic
 	pause 15

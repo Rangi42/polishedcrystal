@@ -1,5 +1,6 @@
 TrainerHouseB1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_TRAINERHOUSEB1F_ASK_BATTLE
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, TrainerHouseB1FCallback
@@ -8,7 +9,7 @@ TrainerHouseB1F_MapScriptHeader:
 	warp_event  9,  4, TRAINER_HOUSE_1F, 3
 
 	def_coord_events
-	coord_event  7,  3, 0, TrainerHouseReceptionistScript
+	coord_event  7,  3, SCENE_TRAINERHOUSEB1F_ASK_BATTLE, TrainerHouseReceptionistScript
 
 	def_bg_events
 

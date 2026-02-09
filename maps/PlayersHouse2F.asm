@@ -261,7 +261,7 @@ endr
 	callasm FillPokedex
 ;	; new bark events
 	addcellnum PHONE_MOM
-	setmapscene PLAYERS_HOUSE_1F, $1
+	setmapscene PLAYERS_HOUSE_1F, SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	addcellnum PHONE_ELM
@@ -271,12 +271,12 @@ endr
 ;	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 ;	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 ;	setevent EVENT_LYRA_IN_ELMS_LAB
-;	setmapscene ELMS_LAB, $5
-;	setmapscene NEW_BARK_TOWN, $2
+;	setmapscene ELMS_LAB, SCENE_ELMSLAB_AIDE_GIVES_POTION
+;	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP
 	; cherrygrove events
 	setevent EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	setmapscene CHERRYGROVE_CITY, $2
+	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_NOOP
 	; route 31 events
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	setevent EVENT_INTRODUCED_ROUTE_LEADERS
@@ -286,7 +286,7 @@ endr
 	; goldenrod events
 	setevent EVENT_BEAT_CAMPER_TODD
 	addcellnum PHONE_LYRA
-	setmapscene DAYCARE, $1
+	setmapscene DAYCARE, SCENE_DAYCARE_NOOP
 	setevent EVENT_LYRA_DAYCARE
 	setevent EVENT_NURSE_SAW_TRAINER_STAR
 	setevent EVENT_INTRODUCED_TEALA
@@ -296,14 +296,14 @@ endr
 	; ecruteak events
 	setevent EVENT_RIVAL_BURNED_TOWER
 	setevent EVENT_HOLE_IN_BURNED_TOWER
-	setmapscene BURNED_TOWER_1F, $2
+	setmapscene BURNED_TOWER_1F, SCENE_BURNEDTOWER1F_NOOP
 	; olivine events
 	setevent EVENT_RIVAL_OLIVINE_CITY
-	setmapscene OLIVINE_CITY, $1
+	setmapscene OLIVINE_CITY, SCENE_OLIVINECITY_NOOP
 	; blackthorn events
 	setevent EVENT_BEAT_DRAGON_TAMER_DARIN
 	; vermilion events
-	setmapscene VERMILION_CITY, $1
+	setmapscene VERMILION_CITY, SCENE_VERMILIONCITY_NOOP
 	closetext
 	warpfacing DOWN, GOLDENROD_CITY, 13, 14
 	end

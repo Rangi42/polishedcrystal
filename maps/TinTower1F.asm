@@ -1,6 +1,7 @@
 TinTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script TinTower1FSuicuneBattleScene
+	scene_script TinTower1FSuicuneBattleScene, SCENE_TINTOWER1F_SUICUNE_BATTLE
+	scene_const SCENE_TINTOWER1F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, TinTower1FNPCsCallback
@@ -133,12 +134,12 @@ TinTower1FSuicuneBattleScript:
 	disappear TINTOWER1F_SUICUNE
 	setevent EVENT_FOUGHT_SUICUNE
 	setevent EVENT_SAW_SUICUNE_ON_ROUTE_42
-	setmapscene ROUTE_42, $0
+	setmapscene ROUTE_42, SCENE_ROUTE42_NOOP
 	setevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setmapscene ROUTE_36, $0
+	setmapscene ROUTE_36, SCENE_ROUTE36_NOOP
 	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	setmapscene CIANWOOD_CITY, $0
-	setscene $1
+	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_NOOP
+	setscene SCENE_TINTOWER1F_NOOP
 	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	reloadmapafterbattle
 	special CheckBattleCaughtResult

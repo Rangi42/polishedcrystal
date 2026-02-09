@@ -1,7 +1,7 @@
 VermilionPort_MapScriptHeader:
 	def_scene_scripts
-	scene_script VermilionPortTrigger0
-	scene_script VermilionPortTrigger1
+	scene_script VermilionPortAskEnterShipScene, SCENE_VERMILIONPORT_ASK_ENTER_SHIP
+	scene_script VermilionPortLeaveShipScene, SCENE_VERMILIONPORT_LEAVE_SHIP
 
 	def_callbacks
 
@@ -11,7 +11,7 @@ VermilionPort_MapScriptHeader:
 	warp_event  9,  4, VERMILION_CITY, 9
 
 	def_coord_events
-	coord_event  7, 11, 0, VermilionPortWalkUpToShipScript
+	coord_event  7, 11, SCENE_VERMILIONPORT_ASK_ENTER_SHIP, VermilionPortWalkUpToShipScript
 
 	def_bg_events
 	bg_event 27, 13, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
@@ -25,15 +25,15 @@ VermilionPort_MapScriptHeader:
 	const VERMILIONPORT_SAILOR1
 	const VERMILIONPORT_SAILOR2
 
-VermilionPortTrigger1:
+VermilionPortLeaveShipScene:
 	sdefer VermilionPortLeaveShipScript
-VermilionPortTrigger0:
+VermilionPortAskEnterShipScene:
 	end
 
 VermilionPortLeaveShipScript:
 	applyonemovement PLAYER, step_up
 	appear VERMILIONPORT_SAILOR1
-	setscene $0
+	setscene SCENE_VERMILIONPORT_ASK_ENTER_SHIP
 	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
 	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	setevent EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
@@ -74,7 +74,7 @@ VermilionPortSailorAtGangwayScript:
 	clearevent EVENT_BEAT_SCHOOLBOY_RICKY
 	setevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear VERMILIONPORT_SAILOR1
-	setmapscene FAST_SHIP_1F, $1
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_ENTER_SHIP
 	warp FAST_SHIP_1F, 25, 1
 	end
 

@@ -1,5 +1,7 @@
 EcruteakHouse_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS
+	scene_const SCENE_ECRUTEAKHOUSE_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
@@ -12,8 +14,8 @@ EcruteakHouse_MapScriptHeader:
 	warp_event 17,  3, WISE_TRIOS_ROOM, 3
 
 	def_coord_events
-	coord_event  4,  7, 0, EcruteakHouse_XYTrigger1
-	coord_event  5,  7, 0, EcruteakHouse_XYTrigger2
+	coord_event  4,  7, SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS, EcruteakHouse_XYTrigger1
+	coord_event  5,  7, SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS, EcruteakHouse_XYTrigger2
 
 	def_bg_events
 
@@ -42,7 +44,7 @@ EcruteakHouseInitializeSages:
 	setevent EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 	checkkeyitem CLEAR_BELL
 	iftruefwd .NoClearBell
-	setscene $0
+	setscene SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS
 .NoClearBell:
 	endcallback
 
@@ -97,7 +99,7 @@ EcruteakTinTowerEntranceSageScript:
 	writetext EcruteakTinTowerEntranceSageText_HearsClearBell
 	waitbutton
 	closetext
-	setscene $1
+	setscene SCENE_ECRUTEAKHOUSE_NOOP
 	setevent EVENT_RANG_CLEAR_BELL_2
 	clearevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1

@@ -46,7 +46,7 @@ MahoganyGymPryceScript:
 	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	specialphonecall SPECIALCALL_WEIRDBROADCAST
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
-	setmapscene MAHOGANY_TOWN, $1
+	setmapscene MAHOGANY_TOWN, SCENE_MAHOGANYTOWN_NOOP
 .FightDone:
 	checkevent EVENT_GOT_TM67_AVALANCHE
 	iftrue_jumpopenedtext PryceText_CherishYourPokemon

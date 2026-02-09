@@ -1,6 +1,7 @@
 MountMoon1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script MountMoon1FTrigger0
+	scene_script MountMoon1FRivalBattleScene, SCENE_MOUNTMOON1F_RIVAL_BATTLE
+	scene_const SCENE_MOUNTMOON1F_NOOP
 
 	def_callbacks
 
@@ -31,7 +32,7 @@ MountMoon1F_MapScriptHeader:
 	object_const_def
 	const MOUNTMOON1F_RIVAL
 
-MountMoon1FTrigger0:
+MountMoon1FRivalBattleScene:
 	sdefer .RivalBattle
 	end
 
@@ -82,7 +83,7 @@ MountMoon1FTrigger0:
 	disappear MOUNTMOON1F_RIVAL
 	playsound SFX_EXIT_BUILDING
 	waitsfx
-	setscene $1
+	setscene SCENE_MOUNTMOON1F_NOOP
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
 	end

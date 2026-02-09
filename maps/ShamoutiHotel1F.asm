@@ -23,7 +23,7 @@ ShamoutiHotel1F_MapScriptHeader:
 	object_event 14,  7, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FYoungsterText, -1
 
 ShamoutiHotel1FRestaurantTrigger:
-	setmapscene SHAMOUTI_HOTEL_RESTAURANT, $0
+	setmapscene SHAMOUTI_HOTEL_RESTAURANT, SCENE_SHAMOUTIHOTELRESTAURANT_MEET
 	endcallback
 
 ShamoutiHotel1FReceptionistText:

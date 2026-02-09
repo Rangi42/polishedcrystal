@@ -1,5 +1,7 @@
 VictoryRoad2F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_VICTORYROAD2F_RIVAL_BATTLE
+	scene_const SCENE_VICTORYROAD2F_NOOP
 
 	def_callbacks
 
@@ -11,7 +13,7 @@ VictoryRoad2F_MapScriptHeader:
 	warp_event 19,  9, VICTORY_ROAD_3F, 3
 
 	def_coord_events
-	coord_event 25,  9, 0, VictoryRoadRivalLeft
+	coord_event 25,  9, SCENE_VICTORYROAD2F_RIVAL_BATTLE, VictoryRoadRivalLeft
 
 	def_bg_events
 	bg_event  5,  5, BGEVENT_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
@@ -73,7 +75,7 @@ VictoryRoadRivalLeft:
 	showtext VictoryRoadRivalAfterText
 	applymovement VICTORYROAD2F_RIVAL, VictoryRoadRivalBattleExitMovement1
 	disappear VICTORYROAD2F_RIVAL
-	setscene $1
+	setscene SCENE_VICTORYROAD2F_NOOP
 	playmapmusic
 	end
 

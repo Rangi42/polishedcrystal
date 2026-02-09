@@ -1,8 +1,8 @@
 Route35NationalParkGate_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route35NationalParkGateTrigger0
-	scene_script Route35NationalParkGateTrigger1
-	scene_script Route35NationalParkGateTrigger2
+	scene_script Route35NationalParkGateNoopScene, SCENE_ROUTE35NATIONALPARKGATE_NOOP
+	scene_script Route35NationalParkGateUnusedScene, SCENE_ROUTE35NATIONALPARKGATE_UNUSED
+	scene_script Route35NationalParkGateLeaveContestEarlyScene, SCENE_ROUTE35NATIONALPARKGATE_LEAVE_CONTEST_EARLY
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route35NationalParkGate_CheckIfStillInContest
@@ -32,20 +32,20 @@ Route35NationalParkGate_MapScriptHeader:
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
 
-Route35NationalParkGateTrigger2:
+Route35NationalParkGateLeaveContestEarlyScene:
 	sdefer Route35NationalParkGate_LeavingContestEarly
-Route35NationalParkGateTrigger0:
-Route35NationalParkGateTrigger1:
+Route35NationalParkGateNoopScene:
+Route35NationalParkGateUnusedScene:
 	end
 
 Route35NationalParkGate_CheckIfStillInContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftruefwd Route35NationalParkGate_Yes
-	setscene $0
+	setscene SCENE_ROUTE35NATIONALPARKGATE_NOOP
 	endcallback
 
 Route35NationalParkGate_Yes:
-	setscene $2
+	setscene SCENE_ROUTE35NATIONALPARKGATE_LEAVE_CONTEST_EARLY
 	endcallback
 
 Route35NationalParkGate_CheckIfContestDay:

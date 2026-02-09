@@ -1,8 +1,8 @@
 PokeCenter2F_MapScriptHeader:
 	def_scene_scripts
-	scene_script PokeCenter2FDummyTrigger
-	scene_script PokeCenter2FLeftTradeCenterTrigger
-	scene_script PokeCenter2FLeftColosseumTrigger
+	scene_script PokeCenter2FNoopScene, SCENE_POKECENTER2F_NOOP
+	scene_script PokeCenter2FLeaveTradeCenterScene, SCENE_POKECENTER2F_LEAVE_TRADE_CENTER
+	scene_script PokeCenter2FLeaveColosseumScene, SCENE_POKECENTER2F_LEAVE_COLOSSEUM
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, PokeCenter2FTileCallback
@@ -26,12 +26,12 @@ PokeCenter2F_MapScriptHeader:
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 
-PokeCenter2FLeftTradeCenterTrigger:
+PokeCenter2FLeaveTradeCenterScene:
 	sdefer Script_LeftCableTradeCenter
-PokeCenter2FDummyTrigger:
+PokeCenter2FNoopScene:
 	end
 
-PokeCenter2FLeftColosseumTrigger:
+PokeCenter2FLeaveColosseumScene:
 	sdefer Script_LeftCableColosseum
 	end
 
@@ -57,8 +57,8 @@ Script_LeftCableTradeCenter:
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
-	setscene $0
-	setmapscene TRADE_CENTER, $0
+	setscene SCENE_POKECENTER2F_NOOP
+	setmapscene TRADE_CENTER, SCENE_TRADECENTER_INITIALIZE
 	end
 
 Script_LeftCableColosseum:
@@ -66,8 +66,8 @@ Script_LeftCableColosseum:
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
-	setscene $0
-	setmapscene COLOSSEUM, $0
+	setscene SCENE_POKECENTER2F_NOOP
+	setmapscene COLOSSEUM, SCENE_COLOSSEUM_INITIALIZE
 	end
 
 PokeCenter2FLinkRecordSign:

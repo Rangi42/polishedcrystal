@@ -1,7 +1,7 @@
 SeagallopFerryNavelGate_MapScriptHeader:
 	def_scene_scripts
-	scene_script SeagallopFerryNavelGateTrigger0
-	scene_script SeagallopFerryNavelGateTrigger1
+	scene_script SeagallopFerryNavelGateAskEnterScene, SCENE_SEAGALLOPFERRYNAVELGATE_ASK_ENTER
+	scene_script SeagallopFerryNavelGateLeaveScene, SCENE_SEAGALLOPFERRYNAVELGATE_LEAVE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, SeagallopFerryNavelGateVisited
@@ -19,9 +19,9 @@ SeagallopFerryNavelGate_MapScriptHeader:
 	object_const_def
 	const SEAGALLOPFERRYNAVELGATE_SAILOR
 
-SeagallopFerryNavelGateTrigger1:
+SeagallopFerryNavelGateLeaveScene:
 	sdefer SeagallopFerryNavelGate_PlayerArrives
-SeagallopFerryNavelGateTrigger0:
+SeagallopFerryNavelGateAskEnterScene:
 	end
 
 SeagallopFerryNavelGateVisited:
@@ -33,7 +33,7 @@ SeagallopFerryNavelGate_PlayerArrives:
 	applymovement PLAYER, SeagallopFerryNavelGatePlayerArriveMovementData
 	showtext SeagallopFerryNavelRockRefusedText
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive2MovementData
-	setscene $0
+	setscene SCENE_SEAGALLOPFERRYNAVELGATE_ASK_ENTER
 	end
 
 SeagallopFerryNavelGateSailorScript:
@@ -56,7 +56,7 @@ SeagallopFerryNavelGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYNAVELGATE_SAILOR
-	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1
+	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, SCENE_SEAGALLOPFERRYVERMILIONGATE_LEAVE
 	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 

@@ -1,7 +1,7 @@
 RuinsOfAlphResearchCenter_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsofAlphResearchCenterTrigger0
-	scene_script RuinsofAlphResearchCenterTrigger1
+	scene_script RuinsOfAlphResearchCenterNoopScene, SCENE_RUINSOFALPHRESEARCHCENTER_NOOP
+	scene_script RuinsOfAlphResearchCenterGetUnownDexScene, SCENE_RUINSOFALPHRESEARCHCENTER_GET_UNOWN_DEX
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, RuinsOfAlphResearchCenterScientistCallback
@@ -28,9 +28,9 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 
-RuinsofAlphResearchCenterTrigger1:
+RuinsOfAlphResearchCenterGetUnownDexScene:
 	sdefer RuinsOfAlphResearchCenterGetUnownDexScript
-RuinsofAlphResearchCenterTrigger0:
+RuinsOfAlphResearchCenterNoopScene:
 	end
 
 RuinsOfAlphResearchCenterScientistCallback:
@@ -65,7 +65,7 @@ RuinsOfAlphResearchCenterGetUnownDexScript:
 	waitbutton
 	closetext
 	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_up
-	setscene $0
+	setscene SCENE_RUINSOFALPHRESEARCHCENTER_NOOP
 	special RestartMapMusic
 	end
 

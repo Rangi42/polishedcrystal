@@ -1,5 +1,6 @@
 Route1617Gate_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE1617GATE_BICYCLE_CHECK
 
 	def_callbacks
 
@@ -11,11 +12,11 @@ Route1617Gate_MapScriptHeader:
 	warp_event  8,  8, ROUTE_16_17_GATE_2F, 1
 
 	def_coord_events
-	coord_event  5,  3, 0, Route16GateBicycleCheck
-	coord_event  5,  4, 0, Route16GateBicycleCheck
-	coord_event  5,  5, 0, Route1617GateStepUpOneTrigger
-	coord_event  5,  6, 0, Route1617GateStepUpTwoTrigger
-	coord_event  5,  7, 0, Route1617GateStepUpThreeTrigger
+	coord_event  5,  3, SCENE_ROUTE1617GATE_BICYCLE_CHECK, Route16GateBicycleCheck
+	coord_event  5,  4, SCENE_ROUTE1617GATE_BICYCLE_CHECK, Route16GateBicycleCheck
+	coord_event  5,  5, SCENE_ROUTE1617GATE_BICYCLE_CHECK, Route1617GateStepUpOneTrigger
+	coord_event  5,  6, SCENE_ROUTE1617GATE_BICYCLE_CHECK, Route1617GateStepUpTwoTrigger
+	coord_event  5,  7, SCENE_ROUTE1617GATE_BICYCLE_CHECK, Route1617GateStepUpThreeTrigger
 
 	def_bg_events
 

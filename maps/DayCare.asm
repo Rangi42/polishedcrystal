@@ -1,6 +1,7 @@
 DayCare_MapScriptHeader:
 	def_scene_scripts
-	scene_script DayCareTrigger0
+	scene_script DayCareMeetDayCareManScene, SCENE_DAYCARE_MEET_DAYCARE_MAN
+	scene_const SCENE_DAYCARE_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, DayCareEggCheckCallback
@@ -25,7 +26,7 @@ DayCare_MapScriptHeader:
 	const DAYCARE_GRANNY
 	const DAYCARE_LYRA
 
-DayCareTrigger0:
+DayCareMeetDayCareManScene:
 	sdefer DayCare_MeetGrandma
 	end
 
@@ -75,7 +76,7 @@ DayCare_MeetGrandma:
 	showtext DayCareLyraEmbarassedText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraLeaves
 	disappear DAYCARE_LYRA
-	setscene $1
+	setscene SCENE_DAYCARE_NOOP
 	end
 
 DayCareManScript_Inside:

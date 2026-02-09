@@ -1,6 +1,9 @@
 TeamRocketBaseB3F_MapScriptHeader:
 	def_scene_scripts
-	scene_script TeamRocketBaseB3FTrigger0
+	scene_script TeamRocketBaseB3FLanceGetsPasswordScene, SCENE_TEAMROCKETBASEB3F_LANCE_GETS_PASSWORD
+	scene_const SCENE_TEAMROCKETBASEB3F_RIVAL_ENCOUNTER
+	scene_const SCENE_TEAMROCKETBASEB3F_ROCKET_BOSS
+	scene_const SCENE_TEAMROCKETBASEB3F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, TeamRocketBaseB3FCheckGiovanniDoor
@@ -12,9 +15,9 @@ TeamRocketBaseB3F_MapScriptHeader:
 	warp_event 27, 14, TEAM_ROCKET_BASE_B2F, 5
 
 	def_coord_events
-	coord_event 10,  8, 2, RocketBaseBossLeft
-	coord_event 11,  8, 2, RocketBaseBossRight
-	coord_event  8, 10, 1, RocketBaseRival
+	coord_event 10,  8, SCENE_TEAMROCKETBASEB3F_ROCKET_BOSS, RocketBaseBossLeft
+	coord_event 11,  8, SCENE_TEAMROCKETBASEB3F_ROCKET_BOSS, RocketBaseBossRight
+	coord_event  8, 10, SCENE_TEAMROCKETBASEB3F_RIVAL_ENCOUNTER, RocketBaseRival
 
 	def_bg_events
 	bg_event 10,  9, BGEVENT_IFNOTSET, BossDoor
@@ -50,7 +53,7 @@ TeamRocketBaseB3F_MapScriptHeader:
 	const TEAMROCKETBASEB3F_MURKROW
 	const TEAMROCKETBASEB3F_RIVAL
 
-TeamRocketBaseB3FTrigger0:
+TeamRocketBaseB3FLanceGetsPasswordScene:
 	sdefer LanceGetPasswordScript
 	end
 
@@ -72,7 +75,7 @@ LanceGetPasswordScript:
 	showtext LanceGetPasswordText
 	applymovement TEAMROCKETBASEB3F_LANCE, RocketBaseLanceLeavesMovement
 	disappear TEAMROCKETBASEB3F_LANCE
-	setscene $1
+	setscene SCENE_TEAMROCKETBASEB3F_RIVAL_ENCOUNTER
 	end
 
 RocketBaseRival:
@@ -88,7 +91,7 @@ RocketBaseRival:
 	applymovement PLAYER, RocketBaseRivalShovesPlayerMovement
 	applymovement TEAMROCKETBASEB3F_RIVAL, RocketBaseRivalLeaveMovement
 	disappear TEAMROCKETBASEB3F_RIVAL
-	setscene $2
+	setscene SCENE_TEAMROCKETBASEB3F_ROCKET_BOSS
 	special RestartMapMusic
 	end
 
@@ -117,7 +120,7 @@ RocketBaseBoss:
 	playsound SFX_TACKLE
 	applymovement TEAMROCKETBASEB3F_PETREL, RocketBaseBossLeavesMovement
 	disappear TEAMROCKETBASEB3F_PETREL
-	setscene $3
+	setscene SCENE_TEAMROCKETBASEB3F_NOOP
 	end
 
 RocketBaseMurkrow:

@@ -1,5 +1,7 @@
 OlivineCity_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_OLIVINECITY_RIVAL_ENCOUNTER
+	scene_const SCENE_OLIVINECITY_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, OlivineCityFlyPoint
@@ -18,8 +20,8 @@ OlivineCity_MapScriptHeader:
 	warp_event 19, 31, OLIVINE_PORT, 2
 
 	def_coord_events
-	coord_event 10,  8, 0, OlivineCityRivalGymScript
-	coord_event 33, 23, 0, OlivineCityRivalLighthouseScript
+	coord_event 10,  8, SCENE_OLIVINECITY_RIVAL_ENCOUNTER, OlivineCityRivalGymScript
+	coord_event 33, 23, SCENE_OLIVINECITY_RIVAL_ENCOUNTER, OlivineCityRivalLighthouseScript
 
 	def_bg_events
 	bg_event 17,  7, BGEVENT_JUMPTEXT, OlivineCitySignText
@@ -80,7 +82,7 @@ OlivineCityRivalGymScript:
 	showtext OlivineCityRivalGymText
 	turnobject PLAYER, RIGHT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesGym
-	setscene $1
+	setscene SCENE_OLIVINECITY_NOOP
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	end
@@ -100,7 +102,7 @@ OlivineCityRivalLighthouseScript:
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown2
 	turnobject PLAYER, LEFT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesLighthouse
-	setscene $1
+	setscene SCENE_OLIVINECITY_NOOP
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	end

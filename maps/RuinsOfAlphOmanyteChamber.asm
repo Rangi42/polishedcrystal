@@ -1,6 +1,7 @@
 RuinsOfAlphOmanyteChamber_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsofAlphOmanyteChamberTrigger0
+	scene_script RuinsOfAlphOmanyteChamberCheckWallScene, SCENE_RUINSOFALPHOMANYTECHAMBER_CHECK_WALL
+	scene_const SCENE_RUINSOFALPHOMANYTECHAMBER_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuinsofAlphOmanyteChamberHiddenDoorsCallback
@@ -24,7 +25,7 @@ RuinsOfAlphOmanyteChamber_MapScriptHeader:
 
 	def_object_events
 
-RuinsofAlphOmanyteChamberTrigger0:
+RuinsOfAlphOmanyteChamberCheckWallScene:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iffalsefwd .End
@@ -55,7 +56,7 @@ RuinsOfAlphOmanyteChamberWallOpenScript:
 	changeblock 4, 0, $25
 	refreshmap
 	earthquake 50
-	setscene $1
+	setscene SCENE_RUINSOFALPHOMANYTECHAMBER_NOOP
 	endtext
 
 MapRuinsofAlphOmanyteChamberSignpost2Script:
@@ -70,7 +71,7 @@ MapRuinsofAlphOmanyteChamberSignpost2Script:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_OMANYTE_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_K_TO_Q
-	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
+	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, SCENE_RUINSOFALPHINNERCHAMBER_STRANGE_PRESENCE
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
 	changeblock 2, 2, $14

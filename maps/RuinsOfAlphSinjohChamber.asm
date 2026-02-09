@@ -81,7 +81,7 @@ RuinsofAlphSinjohChamberSignpost:
 	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_P
 	checkevent EVENT_LISTENED_TO_CYNTHIA_INTRO
 	iftruefwd .HeardIntro
-	setmapscene MYSTRI_STAGE, $1
+	setmapscene MYSTRI_STAGE, SCENE_MYSTRISTAGE_ARCEUS_EVENT
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
 .HeardIntro

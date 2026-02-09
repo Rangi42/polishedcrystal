@@ -1,5 +1,8 @@
 AzaleaTown_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_AZALEATOWN_NOOP
+	scene_const SCENE_AZALEATOWN_RIVAL_BATTLE
+	scene_const SCENE_AZALEATOWN_CELEBI_EVENT
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
@@ -16,9 +19,9 @@ AzaleaTown_MapScriptHeader:
 	warp_event  2, 11, ILEX_FOREST_AZALEA_GATE, 4
 
 	def_coord_events
-	coord_event  5, 10, 1, AzaleaTownRivalBattleTrigger1
-	coord_event  5, 11, 1, AzaleaTownRivalBattleTrigger2
-	coord_event  9,  6, 2, AzaleaTown_CelebiTrigger
+	coord_event  5, 10, SCENE_AZALEATOWN_RIVAL_BATTLE, AzaleaTownRivalBattleTrigger1
+	coord_event  5, 11, SCENE_AZALEATOWN_RIVAL_BATTLE, AzaleaTownRivalBattleTrigger2
+	coord_event  9,  6, SCENE_AZALEATOWN_CELEBI_EVENT, AzaleaTown_CelebiTrigger
 
 	def_bg_events
 	bg_event 19,  9, BGEVENT_JUMPTEXT, AzaleaTownSignText
@@ -116,8 +119,8 @@ AzaleaTownRivalBattleTrigger2:
 	applymovement AZALEATOWN_RIVAL, .ExitMovement
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_RIVAL
-	setmapscene ROUTE_34, $1
-	setscene $0
+	setmapscene ROUTE_34, SCENE_ROUTE34_LYRA_DAYCARE
+	setscene SCENE_AZALEATOWN_NOOP
 	waitsfx
 	playmapmusic
 	end
@@ -223,7 +226,7 @@ AzaleaTown_CelebiTrigger:
 	setflag ENGINE_HAVE_EXAMINED_GS_BALL
 	clearevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
-	setscene $0
+	setscene SCENE_AZALEATOWN_NOOP
 	endtext
 
 .WalkOutOfKurtsHouseMovement:

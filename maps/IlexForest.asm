@@ -1,7 +1,8 @@
 IlexForest_MapScriptHeader:
 	def_scene_scripts
-	scene_script IlexForestTrigger0
-	scene_script IlexForestTrigger1
+	scene_script IlexForestFarfetchdQuestScene, SCENE_ILEXFOREST_FARFETCHD_QUEST
+	scene_script IlexForestCutSceneScene, SCENE_ILEXFOREST_CUT_SCENE
+	scene_const SCENE_ILEXFOREST_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
@@ -13,7 +14,7 @@ IlexForest_MapScriptHeader:
 	warp_event 25, 24, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event  9, 31, 2, IlexForestApprenticeTrigger
+	coord_event  9, 31, SCENE_ILEXFOREST_NOOP, IlexForestApprenticeTrigger
 
 	def_bg_events
 	bg_event  5, 19, BGEVENT_JUMPTEXT, IlexForestSignpost
@@ -54,9 +55,9 @@ IlexForest_MapScriptHeader:
 	const ILEXFOREST_LYRA
 	const ILEXFOREST_YOUNGSTER
 
-IlexForestTrigger1:
+IlexForestCutSceneScene:
 	sdefer IlexForestFinishCelebiEventScript
-IlexForestTrigger0:
+IlexForestFarfetchdQuestScene:
 	end
 
 IlexForestFarfetchdCallback:
@@ -129,7 +130,7 @@ IlexForestFarfetchdCallback:
 IlexForestCharcoalApprenticeScript:
 	checkevent EVENT_HERDED_FARFETCHD
 	iftrue_jumptextfaceplayer IlexForestApprenticeAfterText
-	setscene $0
+	setscene SCENE_ILEXFOREST_FARFETCHD_QUEST
 	jumptextfaceplayer IlexForestApprenticeIntroText
 
 IlexForestFarfetchdScript:
@@ -302,7 +303,7 @@ IlexForestFarfetchdScript:
 IlexForestFinishCelebiEventScript:
 	setevent EVENT_TIME_TRAVEL_FINISHED
 	clearevent EVENT_TIME_TRAVELING
-	setscene $0
+	setscene SCENE_ILEXFOREST_FARFETCHD_QUEST
 	pause 30
 	showemote EMOTE_SHOCK, ILEXFOREST_LYRA, 15
 	applyonemovement ILEXFOREST_LYRA, slow_step_down

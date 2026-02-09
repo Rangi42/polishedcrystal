@@ -1,5 +1,9 @@
 Route32_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE32_COOLTRAINER_M_BLOCKS
+	scene_const SCENE_ROUTE32_LYRA_GROTTOES
+	scene_const SCENE_ROUTE32_OFFER_SLOWPOKETAIL
+	scene_const SCENE_ROUTE32_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route32FlyPoint
@@ -13,12 +17,12 @@ Route32_MapScriptHeader:
 	warp_event  4, 24, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event 18,  8, 0, Route32CooltrainerMStopsYou
-	coord_event 10, 24, 1, Route32LyraIntroducesHiddenGrottoes1
-	coord_event 11, 24, 1, Route32LyraIntroducesHiddenGrottoes2
-	coord_event 12, 24, 1, Route32LyraIntroducesHiddenGrottoes3
-	coord_event 13, 24, 1, Route32LyraIntroducesHiddenGrottoes4
-	coord_event  7, 71, 2, Route32WannaBuyASlowpokeTailScript
+	coord_event 18,  8, SCENE_ROUTE32_COOLTRAINER_M_BLOCKS, Route32CooltrainerMStopsYou
+	coord_event 10, 24, SCENE_ROUTE32_LYRA_GROTTOES, Route32LyraIntroducesHiddenGrottoes1
+	coord_event 11, 24, SCENE_ROUTE32_LYRA_GROTTOES, Route32LyraIntroducesHiddenGrottoes2
+	coord_event 12, 24, SCENE_ROUTE32_LYRA_GROTTOES, Route32LyraIntroducesHiddenGrottoes3
+	coord_event 13, 24, SCENE_ROUTE32_LYRA_GROTTOES, Route32LyraIntroducesHiddenGrottoes4
+	coord_event  7, 71, SCENE_ROUTE32_OFFER_SLOWPOKETAIL, Route32WannaBuyASlowpokeTailScript
 
 	def_bg_events
 	bg_event 13,  5, BGEVENT_JUMPTEXT, Route32SignText
@@ -361,7 +365,7 @@ Route32LyraIntroducesHiddenGrottoesOutroScript:
 	turnobject PLAYER, DOWN
 	applymovement ROUTE32_LYRA, .LeaveMovement2
 	disappear ROUTE32_LYRA
-	setscene $2
+	setscene SCENE_ROUTE32_OFFER_SLOWPOKETAIL
 	playmusic MUSIC_ROUTE_30
 	end
 
@@ -417,7 +421,7 @@ Route32WannaBuyASlowpokeTailScript:
 SlowpokeTailSalesmanScript:
 	faceplayer
 _OfferToSellSlowpokeTail:
-	setscene $3
+	setscene SCENE_ROUTE32_NOOP
 	opentext
 	writetext Text_MillionDollarSlowpokeTail
 	yesorno

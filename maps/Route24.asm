@@ -1,5 +1,7 @@
 Route24_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE24_BRIDGE_UNDERFOOT
+	scene_const SCENE_ROUTE24_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, Route24TileScript
@@ -7,24 +9,24 @@ Route24_MapScriptHeader:
 	def_warp_events
 
 	def_coord_events
-	coord_event 19, 15, 1, Route24BridgeOverheadTrigger
-	coord_event 20, 14, 1, Route24BridgeOverheadTrigger
-	coord_event 21, 14, 1, Route24BridgeOverheadTrigger
-	coord_event 22, 15, 1, Route24BridgeOverheadTrigger
-	coord_event 20, 15, 0, Route24BridgeUnderfootTrigger
-	coord_event 21, 15, 0, Route24BridgeUnderfootTrigger
-	coord_event 20, 39, 0, Route24BridgeUnderfootTrigger
-	coord_event 21, 39, 0, Route24BridgeUnderfootTrigger
-	coord_event 25, 13, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 15, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 16, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 17, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 18, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 19, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 20, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 21, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 22, 1, Route24BridgeOverheadTrigger
-	coord_event 25, 23, 1, Route24BridgeOverheadTrigger
+	coord_event 19, 15, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 20, 14, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 21, 14, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 22, 15, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 20, 15, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21, 15, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 20, 39, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21, 39, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 25, 13, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 15, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 16, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 17, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 18, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 19, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 20, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 21, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 22, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 23, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 15, 19, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_24_HIDDEN_MAX_POTION
@@ -109,7 +111,7 @@ Route24RocketScript:
 	disappear ROUTE24_ROCKET
 	setevent EVENT_LEARNED_ABOUT_MACHINE_PART
 	clearevent EVENT_CERULEAN_CAPE_BOYFRIEND
-	setmapscene CERULEAN_CAPE, $1
+	setmapscene CERULEAN_CAPE, SCENE_CERULEANCAPE_MISTYS_DATE
 	pause 25
 	special Special_FadeInQuickly
 	playmusic MUSIC_NUGGET_BRIDGE_HGSS

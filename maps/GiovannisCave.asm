@@ -1,7 +1,7 @@
 GiovannisCave_MapScriptHeader:
 	def_scene_scripts
-	scene_script GiovannisCaveTrigger0
-	scene_script GiovannisCaveTrigger1
+	scene_script GiovannisCaveGiovanniBattleScene, SCENE_GIOVANNISCAVE_GIOVANNI_BATTLE
+	scene_script GiovannisCaveNoopScene, SCENE_GIOVANNISCAVE_NOOP
 
 	def_callbacks
 
@@ -26,9 +26,9 @@ GiovannisCave_MapScriptHeader:
 	const GIOVANNISCAVE_LYRA
 	const GIOVANNISCAVE_GIOVANNI
 
-GiovannisCaveTrigger1:
+GiovannisCaveNoopScene:
 	sdefer GiovannisCaveCelebiEventScript
-GiovannisCaveTrigger0:
+GiovannisCaveGiovanniBattleScene:
 	end
 
 GiovannisCaveCelebiEventScript:
@@ -50,7 +50,7 @@ GiovannisCaveCelebiEventScript:
 	showtext GiovannisCaveBroadcastText
 	turnobject GIOVANNISCAVE_GIOVANNI, DOWN
 	showtext GiovannisCaveGiovanniIMustGoText
-	setmapscene GIOVANNIS_CAVE, $0
+	setmapscene GIOVANNIS_CAVE, SCENE_GIOVANNISCAVE_GIOVANNI_BATTLE
 	clearevent EVENT_TIME_TRAVELING
 	winlosstext GiovannisCaveGiovanniBeatenText, 0
 	setlasttalked GIOVANNISCAVE_GIOVANNI

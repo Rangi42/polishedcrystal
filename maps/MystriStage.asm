@@ -1,5 +1,7 @@
 MystriStage_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_MYSTRISTAGE_NOOP
+	scene_const SCENE_MYSTRISTAGE_ARCEUS_EVENT
 
 	def_callbacks
 
@@ -8,8 +10,8 @@ MystriStage_MapScriptHeader:
 	warp_event  7, 19, SINJOH_RUINS, 1
 
 	def_coord_events
-	coord_event  6, 11, 1, MystriStageTrigger1Script
-	coord_event  7, 11, 1, MystriStageTrigger2Script
+	coord_event  6, 11, SCENE_MYSTRISTAGE_ARCEUS_EVENT, MystriStageTrigger1Script
+	coord_event  7, 11, SCENE_MYSTRISTAGE_ARCEUS_EVENT, MystriStageTrigger2Script
 
 	def_bg_events
 
@@ -49,7 +51,7 @@ MystriStageCynthiaSafeguardScript:
 	disappear MYSTRISTAGE_CYNTHIA1
 	setlasttalked MYSTRISTAGE_CYNTHIA2
 	setevent EVENT_LISTENED_TO_CYNTHIA_INTRO
-	setscene $0
+	setscene SCENE_MYSTRISTAGE_NOOP
 	; fallthrough
 
 MystriStageCynthiaScript:

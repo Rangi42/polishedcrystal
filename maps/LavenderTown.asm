@@ -1,5 +1,7 @@
 LavenderTown_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_LAVENDERTOWN_EXPOSITION
+	scene_const SCENE_LAVENDERTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, LavenderTownFlyPoint
@@ -15,9 +17,9 @@ LavenderTown_MapScriptHeader:
 
 	def_coord_events
 ; TODO:
-;	coord_event  8,  5, 0, LavenderTownExpositionTrigger1
-;	coord_event  9,  5, 0, LavenderTownExpositionTrigger2
-;	coord_event 10,  5, 0, LavenderTownExpositionTrigger3
+;	coord_event  8,  5, SCENE_LAVENDERTOWN_EXPOSITION, LavenderTownExpositionTrigger1
+;	coord_event  9,  5, SCENE_LAVENDERTOWN_EXPOSITION, LavenderTownExpositionTrigger2
+;	coord_event 10,  5, SCENE_LAVENDERTOWN_EXPOSITION, LavenderTownExpositionTrigger3
 
 	def_bg_events
 	bg_event 11,  5, BGEVENT_JUMPTEXT, LavenderTownSignText
@@ -155,7 +157,7 @@ LavenderTownFinishExpositionScript:
 	setevent EVENT_ROUTE_8_PROTESTORS
 	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setflag ENGINE_FLYPOINT_LAVENDER
-	setscene $1
+	setscene SCENE_LAVENDERTOWN_NOOP
 	end
 
 .LeaveMovement:

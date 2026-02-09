@@ -1,7 +1,7 @@
 Route10North_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route10NorthTrigger0
-	scene_script Route10NorthTrigger1
+	scene_script Route10NorthSuicuneScene, SCENE_ROUTE10NORTH_SUICUNE
+	scene_script Route10NorthNoopScene, SCENE_ROUTE10NORTH_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
@@ -42,9 +42,9 @@ Route10North_MapScriptHeader:
 	const ROUTE10_KRIS
 	const ROUTE10_CRYS
 
-Route10NorthTrigger1:
+Route10NorthNoopScene:
 	sdefer Route10NorthLawrenceEncounter1Script
-Route10NorthTrigger0:
+Route10NorthSuicuneScene:
 	end
 
 Route10NorthFlyPoint:
@@ -99,7 +99,7 @@ Route10NorthLawrenceEncounter1Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	setscene $0
+	setscene SCENE_ROUTE10NORTH_SUICUNE
 	special RestartMapMusic
 	end
 
