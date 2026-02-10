@@ -376,7 +376,16 @@ ENDM
 	connection north, Route42, ROUTE_42, -5
 	connection south, VioletCity, VIOLET_CITY, 0
 
-	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, EAST
+	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, NORTH | EAST
+	; The fake connection is because the north gatehouse door needs to exist in RuinsOfAlphOutside,
+	; not in the connected Route36 map.
+	; Note that Route36 and Route32 have no transitive connections to RuinsOfAlphOutside!
+	DEF GROUP_FAKE_ROUTE_36  EQU GROUP_ROUTE_36
+	DEF MAP_FAKE_ROUTE_36    EQU MAP_ROUTE_36
+	DEF FAKE_ROUTE_36_WIDTH  EQU ROUTE_36_WIDTH
+	DEF FAKE_ROUTE_36_HEIGHT EQU ROUTE_36_HEIGHT - 1
+	connection north, FakeRoute36, FAKE_ROUTE_36, -20
+	PURGE GROUP_FAKE_ROUTE_36, MAP_FAKE_ROUTE_36, FAKE_ROUTE_36_WIDTH, FAKE_ROUTE_36_HEIGHT
 	connection east, Route32, ROUTE_32, 12
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST

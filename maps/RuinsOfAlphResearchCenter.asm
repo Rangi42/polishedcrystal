@@ -129,7 +129,7 @@ RuinsOfAlphResearchCenterScientist3Script:
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	pause 15
-	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, 19, 22
+	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, 19, 18
 	end
 
 RuinsofAlphResearchCenterScientistStepAsideMovementData:

@@ -615,7 +615,7 @@ ENDM
 	map_const GOLDENROD_HARBOR_GATE,                       5,  4 ;  2
 
 	newgroup                                                     ; 30
-	map_const RUINS_OF_ALPH_OUTSIDE,                      12, 21 ;  1
+	map_const RUINS_OF_ALPH_OUTSIDE,                      12, 19 ;  1
 	map_const RUINS_OF_ALPH_HO_OH_CHAMBER,                 4,  5 ;  2
 	map_const RUINS_OF_ALPH_KABUTO_CHAMBER,                4,  5 ;  3
 	map_const RUINS_OF_ALPH_OMANYTE_CHAMBER,               4,  5 ;  4
