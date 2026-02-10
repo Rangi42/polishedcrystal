@@ -376,7 +376,8 @@ ENDM
 	connection north, Route42, ROUTE_42, -5
 	connection south, VioletCity, VIOLET_CITY, 0
 
-	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, 0
+	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, EAST
+	connection east, Route32, ROUTE_32, 12
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
