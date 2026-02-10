@@ -114,9 +114,11 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 71
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 72
 	tilecoll BOTTOM_WALL, FLOOR, CAVE, WALL ; 73
-	tilecoll WALL, WALL, WALL, WALL ; 74
-	tilecoll WALL, WALL, WALL, WALL ; 75
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 74
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 75
 	tilecoll WATER, WATER, WATER, WATER ; 76
 	tilecoll WALL, FLOOR, WALL, WALL ; 77
-	tilecoll WALL, WALL, WALL, CAVE ; 78
-	tilecoll WALL, WALL, CAVE, WALL ; 79
+	tilecoll WALL, WALL, WALL, WALL ; 78
+	tilecoll WALL, WALL, WALL, WALL ; 79
+	tilecoll WALL, CAVE, WALL, FLOOR ; 7a
+	tilecoll CAVE, WALL, FLOOR, WALL ; 7b

@@ -854,6 +854,7 @@ TilesetPeaksColl:: INCBIN "data/tilesets/peaks_collision.bin.lzp"
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
 TilesetJohtoOutlandsGFX2::
+TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
 TilesetIndigoPlateauGFX2::
@@ -897,5 +898,4 @@ TilesetBattleFactoryGFX2::
 TilesetSnowtopMountainGFX2::
 TilesetHiddenGrottoGFX2::
 TilesetPeaksGFX2::
-TilesetJohtoAncientGFX2::
 	db $ff ; Compressed data is terminated with $ff.
