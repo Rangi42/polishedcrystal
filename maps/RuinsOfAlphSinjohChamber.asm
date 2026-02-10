@@ -85,6 +85,7 @@ RuinsofAlphSinjohChamberSignpost:
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
 .HeardIntro
+	digmod 1, SINJOH_RUINS
 	warp MYSTRI_STAGE, 6, 15
 	end
 
