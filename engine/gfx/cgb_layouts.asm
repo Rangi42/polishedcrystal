@@ -346,24 +346,22 @@ _CGB_FlyMap:
 
 _CGB_PokegearPals:
 	ld hl, PokegearPals
-	ld de, wBGPals1
-	ld c, 8 palettes
+	ld de, wBGPals1 palette 1
+	ld c, 7 palettes
 	call LoadPalettes
 
 	ld a, [wPlayerGender]
-	and a ; PLAYER_MALE
-	jr z, .done
-
-	dec a ; PLAYER_FEMALE
-	ld hl, FemalePokegearInterfacePalette
-	jr z, .got_interface_palette
-	; PLAYER_ENBY
-	ld hl, EnbyPokegearInterfacePalette
-.got_interface_palette
+	add a ; * 2
+	add a ; * 4
+	add a ; * 8
+	add LOW(PokegearInterfacePals)
+	ld l, a
+	adc HIGH(PokegearInterfacePals)
+	sub l
+	ld h, a
 	ld de, wBGPals1 palette 0
 	call LoadOnePalette
 
-.done
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
@@ -372,11 +370,7 @@ _CGB_PokegearPals:
 PokegearPals:
 INCLUDE "gfx/pokegear/pokegear.pal"
 
-FemalePokegearInterfacePalette:
-INCLUDE "gfx/pokegear/pokegear_f.pal"
-
-EnbyPokegearInterfacePalette:
-INCLUDE "gfx/pokegear/pokegear_x.pal"
+INCLUDE "data/player/pokegear_pals.asm"
 
 _CGB_StatsScreenHPPals:
 	ld de, wBGPals1 palette 1
@@ -838,18 +832,20 @@ INCLUDE "gfx/mart/battle_tower.pal"
 _CGB_PackPals:
 ; pack pals
 	ld a, [wBattleType]
-	ld hl, FemalePackPals
+	ld hl, PackPals + PLAYER_FEMALE * 8 palettes
 	cp BATTLETYPE_TUTORIAL
 	jr z, .got_gender
+
 	ld a, [wPlayerGender]
-	ld hl, MalePackPals
-	and a ; PLAYER_MALE
-	jr z, .got_gender
-	ld hl, FemalePackPals
-	dec a ; PLAYER_FEMALE
-	jr z, .got_gender
-	; PLAYER_ENBY
-	ld hl, EnbyPackPals
+	assert NUM_PLAYER_GENDERS <= 4 ; since `rrca :: rrca` only works for up to 2 bits
+	rrca ; * 128
+	rrca ; * 64 (8 palettes)
+	add LOW(PackPals)
+	ld l, a
+	adc HIGH(PackPals)
+	sub l
+	ld h, a
+
 .got_gender
 	ld de, wBGPals1
 	ld c, 8 palettes
@@ -895,14 +891,7 @@ endr
 
 	jmp _CGB_FinishLayout
 
-MalePackPals:
-INCLUDE "gfx/pack/pack.pal"
-
-FemalePackPals:
-INCLUDE "gfx/pack/pack_f.pal"
-
-EnbyPackPals:
-INCLUDE "gfx/pack/pack_x.pal"
+INCLUDE "data/player/pack_pals.asm"
 
 _CGB_TrainerCard:
 	call LoadFirstTwoTrainerCardPals
@@ -929,28 +918,22 @@ _CGB_TrainerCard:
 _CGB_TrainerCard2:
 	call LoadFirstTwoTrainerCardPals
 
-	ld a, FALKNER
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (FALKNER - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, BUGSY
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (BUGSY - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, WHITNEY
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (WHITNEY - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, MORTY
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (MORTY - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, JASMINE ; CHUCK
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (JASMINE - 1) * 2 colors ; also CHUCK
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, CLAIR ; PRYCE
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (CLAIR - 1) * 2 colors ; also PRYCE
 	call LoadPalette_White_Col1_Col2_Black
 
 	; Badges
@@ -1012,28 +995,22 @@ _CGB_TrainerCard2:
 _CGB_TrainerCard3:
 	call LoadFirstTwoTrainerCardPals
 
-	ld a, BROCK
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (BROCK - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, SABRINA ; BLAINE
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (SABRINA - 1) * 2 colors ; also BLAINE
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, ERIKA ; LT_SURGE
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (ERIKA - 1) * 2 colors ; also LT_SURGE
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, MISTY
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (MISTY - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, JANINE
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (JANINE - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, BLUE
-	call GetTrainerPalettePointer
+	ld hl, TrainerPalettes + (BLUE - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
 	; Badges
@@ -1108,17 +1085,11 @@ LoadFirstTwoTrainerCardPals:
 
 	; player sprite
 	ld a, [wPlayerGender]
-	ld b, CHRIS
-	and a ; PLAYER_MALE
-	jr z, .got_gender
-	assert CHRIS - 1 == KRIS
-	dec b
-	dec a ; PLAYER_FEMALE
-	jr z, .got_gender
-	; PLAYER_ENBY
-	ld b, CRYS
-.got_gender
-	ld a, b
+	assert PLAYER_MALE + 1 == CHRIS
+	assert PLAYER_FEMALE + 1 == KRIS
+	assert PLAYER_ENBY + 1 == CRYS
+	assert PLAYER_BETA + 1 == BETA
+	inc a
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -1336,13 +1307,15 @@ _CGB_IntroPals:
 
 _CGB_IntroGenderPals:
 	ld de, wBGPals1
-	ld hl, ChrisPalette
+	ld hl, TrainerPalettes + (CHRIS - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, IntroGradientPalette
 	call LoadOnePalette
-	ld hl, KrisPalette
+	ld hl, TrainerPalettes + (KRIS - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
-	ld hl, CrysPalette
+	ld hl, TrainerPalettes + (CRYS - 1) * 2 colors
+	call LoadPalette_White_Col1_Col2_Black
+	ld hl, TrainerPalettes + (BETA - 1) * 2 colors
 	call LoadPalette_White_Col1_Col2_Black
 
 	call WipeAttrMap
@@ -1352,14 +1325,21 @@ _CGB_IntroGenderPals:
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 7, 3, wAttrmap
+	hlcoord 5, 3, wAttrmap
 	lb bc, 8, 5
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 14, 3, wAttrmap
+	hlcoord 10, 3, wAttrmap
 	lb bc, 8, 5
 	ld a, $3
+	call FillBoxWithByte
+
+	ld a, $4
+	ldcoord_a 17, 3, wAttrmap
+	hlcoord 15, 4, wAttrmap
+	lb bc, 7, 5
+	ld a, $4 | BG_BANK1
 	call FillBoxWithByte
 
 	call ApplyAttrMap

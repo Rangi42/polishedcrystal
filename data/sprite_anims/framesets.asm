@@ -63,6 +63,7 @@ SpriteAnimFrameData:
 	dw .Frameset_TownMapFly
 	dw .Frameset_GreenWalk
 	dw .Frameset_FlyMon
+	dw .Frameset_PurpleWalk
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -113,6 +114,13 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8, B_OAM_XFLIP
+	oamrestart
+
+.Frameset_PurpleWalk:
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_2,  8
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_2,  8, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_TextEntryCursor:

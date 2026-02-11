@@ -107,25 +107,7 @@ SnowtopMountainOutsideStartPanningScript:
 	end
 
 .PreparePlayerSubstitute:
-	ld a, [wPlayerGender]
-	ld b, SPRITE_CHRIS
-	and a ; PLAYER_MALE
-	jr z, .got_gender
-	ld b, SPRITE_KRIS
-	dec a ; PLAYER_FEMALE
-	jr z, .got_gender
-	; PLAYER_ENBY
-	ld b, SPRITE_CRYS
-.got_gender
-	ld a, [wPlayerState]
-	cp PLAYER_BIKE
-	jr nz, .got_sprite
-	assert SPRITE_CHRIS + 1 == SPRITE_CHRIS_BIKE
-	assert SPRITE_KRIS + 1 == SPRITE_KRIS_BIKE
-	assert SPRITE_CRYS + 1 == SPRITE_CRYS_BIKE
-	inc b
-.got_sprite
-	ld a, b
+	farcall GetPlayerSpriteInA
 	farcall LoadSpriteAsMapObject1
 	ld a, [wXCoord]
 	ld [wSavedXCoord], a

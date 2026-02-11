@@ -16,12 +16,14 @@ NavelRockRoof_MapScriptHeader:
 	object_event  8,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	object_event  8,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 	object_event  8,  8, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CRYS_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_BETA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BETA_IN_NAVEL_ROCK
 
 	object_const_def
 	const NAVELROCKROOF_GREEN
 	const NAVELROCKROOF_CHRIS
 	const NAVELROCKROOF_KRIS
 	const NAVELROCKROOF_CRYS
+	const NAVELROCKROOF_BETA
 
 NavelRockRoofDailyLeafRematchCallback:
 	disappear NAVELROCKROOF_GREEN
@@ -59,8 +61,11 @@ Leaf:
 	changeblock 8, 2, $4f
 .Sun
 	readvar VAR_PLAYERGENDER
+	assert PLAYER_MALE == 0
 	iffalsefwd .MaleEndingSequence
 	ifequalfwd PLAYER_FEMALE, .FemaleEndingSequence
+	ifequalfwd PLAYER_BETA, .BetaEndingSequence
+; enby ending sequence
 	readvar VAR_FACING
 	ifequalfwd UP, .RightEnbyEndingSequence
 	turnobject PLAYER, UP
@@ -86,6 +91,19 @@ Leaf:
 	appear NAVELROCKROOF_CHRIS
 	sjumpfwd .EndingSequence
 
+.BetaEndingSequence:
+	readvar VAR_FACING
+	ifequalfwd UP, .RightBetaEndingSequence
+	turnobject PLAYER, UP
+	moveobject NAVELROCKROOF_BETA, 7, 8
+	appear NAVELROCKROOF_BETA
+	sjumpfwd .EndingSequence
+
+.RightBetaEndingSequence:
+	applyonemovement PLAYER, slow_step_up
+	appear NAVELROCKROOF_BETA
+	sjumpfwd .EndingSequence
+
 .FemaleEndingSequence:
 	readvar VAR_FACING
 	ifequalfwd UP, .RightFemaleEndingSequence
@@ -105,6 +123,7 @@ Leaf:
 	disappear NAVELROCKROOF_CHRIS
 	disappear NAVELROCKROOF_KRIS
 	disappear NAVELROCKROOF_CRYS
+	disappear NAVELROCKROOF_BETA
 	clearevent EVENT_BEAT_RED
 	setevent EVENT_BEAT_LEAF
 	credits

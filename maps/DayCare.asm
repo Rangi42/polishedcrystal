@@ -48,14 +48,10 @@ DayCare_MeetGrandma:
 	stopfollow
 	turnobject PLAYER, UP
 	turnobject DAYCARE_GRANNY, DOWN
-	opentext
-	writetext DayCareLyraHelloText
-	waitbutton
-	readvar VAR_PLAYERGENDER
-	scalltable DayCareGrandmaISeeTable
+	callasm .GetPlayerPronouns
+	showtext DayCareLyraHelloText
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
-	readvar VAR_PLAYERGENDER
-	scalltable DayCareLyraProtestTable
+	showtext DayCareLyraProtestText
 	turnobject DAYCARE_LYRA, DOWN
 	showtext DayCareLyraGoodbyeText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraStartsToLeave
@@ -78,6 +74,34 @@ DayCare_MeetGrandma:
 	disappear DAYCARE_LYRA
 	setscene SCENE_DAYCARE_NOOP
 	end
+
+.GetPlayerPronouns:
+	assert PLAYER_MALE & 1 == 0
+	assert PLAYER_FEMALE & 1 == 1
+	assert PLAYER_ENBY & 1 == 0
+	assert PLAYER_BETA & 1 == 1
+	ld a, [wPlayerGender]
+	and 1
+	jr nz, .female
+	ld de, .boy
+	ld hl, wStringBuffer3
+	call CopyName2
+	ld de, .he
+	ld hl, wStringBuffer4
+	jmp CopyName2
+
+.female
+	ld de, .girl
+	ld hl, wStringBuffer3
+	call CopyName2
+	ld de, .she
+	ld hl, wStringBuffer4
+	jmp CopyName2
+
+.boy:  db "boy@"
+.girl: db "girl@"
+.she:  db "s" ; fallthrough
+.he:   db "he@"
 
 DayCareManScript_Inside:
 	faceplayer
@@ -173,118 +197,38 @@ DayCareLyraHelloText:
 	line "my friend."
 
 	para "This is <PLAYER>!"
-	done
 
-DayCareGrandmaISeeTable:
-	dw .Male
-	dw .Female
-	dw .Enby
-
-.Male:
-	jumpthisopenedtext
-
-	text "Grandma: Ah ha."
+	para "Grandma: Ah ha."
 
 	para "This is your"
-	line "boy… friend."
+	line ""
+	text_ram wStringBuffer3
+	text "… friend."
 
 	para "I see. Hmm."
 	done
 
-.Female:
-	jumpthisopenedtext
-
-	text "Grandma: Ah ha."
-
-	para "This is your"
-	line "girl… friend."
-
-	para "I see. Hmm."
-	done
-
-.Enby:
-	jumpthisopenedtext
-
-	text "Grandma: Ah ha."
-
-	para "This is your"
-	line "close… friend."
-
-	para "I see. Hmm."
-	done
-
-DayCareLyraProtestTable:
-	dw .Male
-	dw .Female
-	dw .Enby
-
-.Male:
-	jumpthistext
-
+DayCareLyraProtestText:
 	text "Lyra: What?"
 	line "Grandma…!"
 
 	para "What are you"
 	line "talking about?"
 
-	para "He just lives"
-	line "nearby…"
+	para "<PLAYER> just"
+	line "lives nearby…"
 
 	para "Grandma: Hahaha."
 	line "I know, I know."
 
 	para "You must be sure"
-	line "he's talented."
+	line ""
+	text_ram wStringBuffer4
+	text "'s talented."
 
 	para "Right, <PLAYER>?"
 	line "Come and see us"
-	cont "anytime!"
-	done
-
-.Female:
-	jumpthistext
-
-	text "Lyra: What?"
-	line "Grandma…!"
-
-	para "What are you"
-	line "talking about?"
-
-	para "She just lives"
-	line "nearby…"
-
-	para "Grandma: Hahaha."
-	line "I know, I know."
-
-	para "You must be sure"
-	line "she's talented."
-
-	para "Right, <PLAYER>?"
-	line "Come and see us"
-	cont "anytime!"
-	done
-
-.Enby:
-	jumpthistext
-
-	text "Lyra: What?"
-	line "Grandma…!"
-
-	para "What are you"
-	line "talking about?"
-
-	para "They just live"
-	line "nearby…"
-
-	para "Grandma: Hahaha."
-	line "I know, I know."
-
-	para "You must be sure"
-	line "they're talented."
-
-	para "Right, <PLAYER>?"
-	line "Come and see us"
-	cont "anytime!"
+	cont "any time!"
 	done
 
 DayCareLyraGoodbyeText:

@@ -109,6 +109,8 @@ SpriteAnimOAMData:
 	spriteanimoam $00, .OAMData_FlyMon                 ; SPRITE_ANIM_OAMSET_FLY_MON_1
 	spriteanimoam $04, .OAMData_FlyMon                 ; SPRITE_ANIM_OAMSET_FLY_MON_2
 	spriteanimoam $04, .OAMData_FlyMon2                ; SPRITE_ANIM_OAMSET_FLY_MON_3
+	spriteanimoam $00, .OAMData_PurpleWalk             ; SPRITE_ANIM_OAMSET_PURPLE_WALK_1
+	spriteanimoam $04, .OAMData_PurpleWalk             ; SPRITE_ANIM_OAMSET_PURPLE_WALK_2
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -843,10 +845,10 @@ SpriteAnimOAMData:
 
 .OAMData_TownMapFly:
 	db 4
-	dsprite  0,  0,  0,  0, $00, $3
-	dsprite  0,  0,  1,  0, $01, $3
-	dsprite  0,  0,  2,  0, $02, $3
-	dsprite  0,  0,  3,  0, $03, $3
+	dsprite  0,  0,  0,  0, $00, NUM_PLAYER_GENDERS
+	dsprite  0,  0,  1,  0, $01, NUM_PLAYER_GENDERS
+	dsprite  0,  0,  2,  0, $02, NUM_PLAYER_GENDERS
+	dsprite  0,  0,  3,  0, $03, NUM_PLAYER_GENDERS
 
 .OAMData_GreenWalk:
 	db 4
@@ -854,3 +856,10 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $2
 	dsprite  0,  0, -1,  0, $02, $2
 	dsprite  0,  0,  0,  0, $03, $2
+
+.OAMData_PurpleWalk:
+	db 4
+	dsprite -1,  0, -1,  0, $00, $3
+	dsprite -1,  0,  0,  0, $01, $3
+	dsprite  0,  0, -1,  0, $02, $3
+	dsprite  0,  0,  0,  0, $03, $3

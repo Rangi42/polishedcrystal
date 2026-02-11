@@ -220,6 +220,7 @@ gfx/paintings/%.2bpp: RGBGFXFLAGS += -Z
 gfx/player/chris_back.2bpp: RGBGFXFLAGS += -Z
 gfx/player/kris_back.2bpp: RGBGFXFLAGS += -Z
 gfx/player/crys_back.2bpp: RGBGFXFLAGS += -Z
+gfx/player/beta_back.2bpp: RGBGFXFLAGS += -Z
 
 gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; $Qcat $^ > $@
 gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp gfx/pokedex/area.2bpp ; $Qcat $^ > $@
@@ -258,6 +259,7 @@ gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qca
 gfx/trainer_card/chris_card.2bpp: RGBGFXFLAGS += -Z
 gfx/trainer_card/kris_card.2bpp: RGBGFXFLAGS += -Z
 gfx/trainer_card/crys_card.2bpp: RGBGFXFLAGS += -Z
+gfx/trainer_card/beta_card.2bpp: RGBGFXFLAGS += -Z
 
 gfx/trainers/%.2bpp: RGBGFXFLAGS += -Z
 

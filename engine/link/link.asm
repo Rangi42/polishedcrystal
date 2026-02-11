@@ -226,22 +226,17 @@ Gen2ToGen2LinkComms:
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr nz, .ready_to_trade
+
 	ld a, [wLinkOtherPlayerGender]
-	ld b, CAL
-	and a ; PLAYER_MALE
-	jr z, .got_other_gender
-	assert CAL - 1 == CARRIE
-	dec b
-	dec a ; PLAYER_FEMALE
-	jr z, .got_other_gender
-	; PLAYER_ENBY
-	ld b, JACKY
-.got_other_gender
-	ld a, b
+	assert PLAYER_MALE + 1 == CAL
+	assert PLAYER_FEMALE + 1 == CARRIE
+	assert PLAYER_ENBY + 1 == JACKY
+	assert PLAYER_BETA + 1 == EUNA
+	inc a
 	ld [wOtherTrainerClass], a
+
 	call ClearScreen
 	call Link_WaitBGMap
-
 	ld hl, wOptions2
 	ld a, [hl]
 	push af
