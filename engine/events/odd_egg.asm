@@ -52,6 +52,14 @@ GiveSpecialEgg:
 	ld bc, 4
 	rst CopyBytes
 
+; Clear PP bytes
+	xor a
+	ld de, wTempMonPP
+rept NUM_MOVES
+	ld [de], a
+	inc de
+endr
+
 	ld hl, wTempMonEggCycles
 	ld a, 20
 	ld [hli], a
