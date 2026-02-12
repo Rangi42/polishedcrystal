@@ -234,6 +234,8 @@ Gen2ToGen2LinkComms:
 	assert PLAYER_BETA + 1 == EUNA
 	inc a
 	ld [wOtherTrainerClass], a
+	xor a
+	ld [wTrainerPal], a
 
 	call ClearScreen
 	call Link_WaitBGMap
