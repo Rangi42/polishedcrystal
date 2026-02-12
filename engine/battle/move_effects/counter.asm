@@ -19,30 +19,28 @@ BattleCommand_counter:
 	call HasOpponentDamagedUs
 	ret z
 
-	; TODO: is this necessary? if it is, then Avalanche is broken because it
-	; uses HasOpponentDamagedUs only (it can't check wCurDamage).
-	ld hl, wCurDamage
-	ld a, [hli]
-	or [hl]
-	ret z
-
 	; Don't double damage twice for Parental Bond
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
 	bit SUBSTATUS_IN_ABILITY, a
 	jr nz, .got_damage
 
+	ld hl, wCurDamage + 1
 	ld a, [hl]
 	add a
 	ld [hld], a
 	ld a, [hl]
 	adc a
-	ld [hl], a
-	jr nc, .got_damage
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
 
+	; Carry means overflow, deal $ff** damage.
+	ld [hl], $ff
+	jr c, .got_damage
+
+	; Ensure that we deal at least 1 damage.
+	ld [hli], a
+	or [hl]
+	jr nz, .got_damage
+	inc [hl] ; damage = 1
 .got_damage
 	xor a
 	ld [wAttackMissed], a
