@@ -75,7 +75,7 @@ if !DEF(MONOCHROME)
 ; lightscreen
 	RGB 31, 31, 31
 	RGB 19, 31, 31
-	RGB 00, 28, 15
+	RGB 06, 21, 19
 	RGB 00, 00, 00
 ; skillswap
 	RGB 31, 31, 31
@@ -217,6 +217,11 @@ if !DEF(MONOCHROME)
 	RGB 08, 01, 08
 	RGB 08, 00, 14
 	RGB 10, 00, 24
+; zap_cannon
+	RGB 31, 31, 31
+	RGB 31, 31, 07
+	RGB 31, 16, 01
+	RGB 07, 27, 27
 ; attack
 	RGB 31, 31, 31
 	RGB 31, 19, 08

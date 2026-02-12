@@ -375,7 +375,7 @@ BattleAnim_Sap:
 BattleAnim_Frz:
 	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_ICE
 	anim_1gfx ANIM_GFX_ICE
-	anim_obj ANIM_OBJ_FROZEN,   5, 4,  13, 6, $0
+	anim_obj ANIM_OBJ_FROZEN, 48, 112, $0
 	anim_sound 0, 0, SFX_SHINE
 	anim_wait 16
 	anim_sound 0, 0, SFX_SHINE
@@ -385,10 +385,10 @@ BattleAnim_Frz:
 BattleAnim_Par:
 	anim_1gfx ANIM_GFX_STATUS
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_sound 0, 0, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_PARALYZED,   2, 4,  11, 0, $42
-	anim_obj ANIM_OBJ_PARALYZED,   9, 4,  11, 0, $c2
-	anim_wait 96
+	anim_sound 0, 0, SFX_ZAP_CANNON
+	anim_obj ANIM_OBJ_PARALYZED, 20, 90, $42
+	anim_obj ANIM_OBJ_PARALYZED, 76, 90, $c2
+	anim_wait 32
 	anim_ret
 
 BattleAnim_InLove:
@@ -793,7 +793,7 @@ BattleAnim_IceBeam:
 	anim_obj ANIM_OBJ_ICE_BEAM, 64, 92, $4
 	anim_wait 4
 	anim_loop 5, .loop
-	anim_obj ANIM_OBJ_ICE_BUILDUP, 136, 72, $10
+	anim_obj ANIM_OBJ_ICE_BUILDUP, 132, 72, $10
 .loop2
 	anim_sound 6, 2, SFX_SHINE
 	anim_obj ANIM_OBJ_ICE_BEAM, 64, 92, $4
@@ -888,11 +888,11 @@ BattleAnim_WaterGun:
 	anim_1gfx ANIM_GFX_WATER
 	anim_call BattleAnim_UserObj_2Row
 	anim_sound 16, 2, SFX_WATER_GUN
-	anim_obj ANIM_OBJ_WATER_GUN,   8, 0,  11, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_WATER_GUN,   8, 0,   9, 4, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_WATER_GUN,   8, 0,  10, 2, $0
+	anim_obj ANIM_OBJ_WATER_GUN, 64, 84, $0
+	anim_wait 8                
+	anim_obj ANIM_OBJ_WATER_GUN, 64, 72, $0
+	anim_wait 8                
+	anim_obj ANIM_OBJ_WATER_GUN, 64, 78, $0
 	anim_wait 24
 	anim_bgeffect ANIM_BG_WATER, $1c, $0, $0
 	anim_wait 8
@@ -1081,14 +1081,14 @@ BattleAnim_Thundershock:
 BattleAnim_Thunderbolt:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, 132, 52, $2
 	anim_wait 16
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, -15, 0,   7, 0, $0
-	anim_wait 64
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_wait 64
+	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, 132, 52, $0
+.loop
+	anim_sound 0, 1, SFX_THUNDERBOLT
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $7, $6
+	anim_wait 66
+	anim_loop 2, .loop
 	anim_ret
 
 BattleAnim_ThunderWave:
@@ -1096,7 +1096,7 @@ BattleAnim_ThunderWave:
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
 	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_THUNDER_WAVE, -15, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_THUNDER_WAVE, 136, 52, $0
 	anim_wait 20
 	anim_bgp $1b
 	anim_incobj 1
@@ -3372,25 +3372,25 @@ BattleAnim_Waterfall:
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
 	anim_sound 0, 1, SFX_BUBBLE_BEAM
 	anim_wait 8
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 64, $0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 64, $d0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 64, $50
-	anim_wait 3
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 56, $d0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 56, $50
-	anim_wait 3
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 48, $0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 48, $d0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 48, $50
-	anim_wait 3
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 40, $0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 40, $d0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 40, $50
-	anim_wait 3
-	anim_obj ANIM_OBJ_HIT_YFIX, 136, 32, $0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 32, $d0
-	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 140, 32, $50
+	anim_obj ANIM_OBJ_HIT_YFIX, 134, 64, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 64, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 64, $10
+	anim_wait 3                 
+	anim_obj ANIM_OBJ_HIT_YFIX, 134, 56, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 56, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 56, $10
+	anim_wait 3                 
+	anim_obj ANIM_OBJ_HIT_YFIX, 134, 48, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 48, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 48, $10
+	anim_wait 3                 
+	anim_obj ANIM_OBJ_HIT_YFIX, 134, 40, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 40, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 40, $10
+	anim_wait 3                 
+	anim_obj ANIM_OBJ_HIT_YFIX, 134, 32, $0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 32, $d0
+	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 32, $10
 	anim_wait 8
 	anim_ret
 
@@ -3493,8 +3493,8 @@ BattleAnim_Disable:
 	anim_obj ANIM_OBJ_DISABLE, -16, 4,   7, 0, $0
 	anim_wait 16
 	anim_sound 0, 1, SFX_BIND
-	anim_obj ANIM_OBJ_PARALYZED,  13, 0,   7, 0, $42
-	anim_obj ANIM_OBJ_PARALYZED, -12, 0,   7, 0, $c2
+	anim_obj ANIM_OBJ_PARALYZED, 104, 52, $42
+	anim_obj ANIM_OBJ_PARALYZED, 160, 52, $c2
 	anim_wait 96
 	anim_ret
 
@@ -4141,17 +4141,19 @@ BattleAnim_ToxicSpikes:
 
 BattleAnim_ZapCannon:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_LIGHT_SCREEN
+	anim_setobjpal PAL_BATTLE_OB_YELLOW, PAL_BTLCUSTOM_ZAP_CANNON
 	anim_bgp $1b
-	anim_obp0 $30
 	anim_sound 6, 2, SFX_ZAP_CANNON
 	anim_obj ANIM_OBJ_ZAP_CANNON,   8, 0,  11, 4, $2
 	anim_wait 40
-	anim_obp0 $0
-	anim_sound 0, 1, SFX_THUNDERSHOCK
-	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, -15, 0,   7, 0, $2
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
+	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_sound 0, 1, SFX_THUNDERBOLT
+	anim_obj ANIM_OBJ_THUNDERBOLT_BALL, 132, 52, $2
 	anim_wait 16
-	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, -15, 0,   7, 0, $0
-	anim_wait 128
+	anim_obj ANIM_OBJ_SPARKS_CIRCLE_BIG, 132, 52, $0
+	anim_wait 80
 	anim_ret
 
 BattleAnim_FlashCannon:
