@@ -54,11 +54,11 @@ GiveSpecialEgg:
 
 ; Clear PP bytes
 	xor a
-	ld de, wTempMonPP
-rept NUM_MOVES
-	ld [de], a
-	inc de
+	ld hl, wTempMonPP
+rept NUM_MOVES - 1
+	ld [hli], a
 endr
+	ld [hl], a
 
 	ld hl, wTempMonEggCycles
 	ld a, 20
@@ -75,12 +75,15 @@ endr
 	assert EGG_LEVEL == 1
 	inc a
 	ld [hl], a
+
 	ld hl, wTempMonNickname
 	ld de, .EggName
 	call CopyName2
+
 	ld hl, wTempMonOT
 	ld de, .EggName
 	call CopyName2
+
 	ld hl, wTempMonExtra
 	xor a
 	ld [hli], a
