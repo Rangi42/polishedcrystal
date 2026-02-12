@@ -1,5 +1,15 @@
 # Polished Crystal LZ format (Crystal / LC_LZ3-derived)
 
+> **Morimoto:** What's more, there were the tools for compressing the Pokémon graphic code...
+>
+> **Iwata:** Ah yes, the compression tools.
+>
+> **Morimoto:** You were kind enough to create those tools.
+>
+> **Iwata:** Yes. *(laughs)* Well, I had heard from Ishihara-san that you'd been rather concerned about it.
+>
+> — Shigeki Morimoto and Satoru Iwata, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://iwataasks.nintendo.com/interviews/ds/pokemon/0/2/)"
+
 This project uses a variant of Pokémon Crystal's LZ compression format,
 sometimes referred to as "Polished LZ."
 

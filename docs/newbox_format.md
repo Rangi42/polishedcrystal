@@ -1,5 +1,12 @@
 # Newbox data format
 
+> **Morimoto:** *(laughs)* I was really taken aback that you could get to grips with such a complicated program in such a short space of time.
+>
+> **Ishihara:** I remember thinking that there just weren't that many people out there who would be able to read the entire Game Boy source code, which was by no means written in a highly-refined programming language, and grasp how everything connected with everything else.
+>
+> — Shigeki Morimoto and Tsunekazu Ishihara, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://iwataasks.nintendo.com/interviews/ds/pokemon/0/2/)"
+
+
 ## Save file address locations
 
 * 0x2d10-0x2f20: Gameplay newbox metadata (0x210 bytes)
