@@ -822,7 +822,7 @@ BattleAnim_Blizzard:
 	anim_loop 3, .loop
 	anim_bgeffect ANIM_BG_WHITE_HUES, $0, $8, $0
 	anim_wait 32
-	anim_obj ANIM_OBJ_ICE_BUILDUP, -15, 0,   9, 2, $10
+	anim_obj ANIM_OBJ_ICE_BUILDUP, 132, 72, $10
 	anim_wait 128
 	anim_sound 0, 1, SFX_SHINE
 	anim_wait 8
@@ -887,6 +887,7 @@ BattleAnim_WaterGun:
 	anim_bgeffect ANIM_BG_START_WATER, $0, $0, $0
 	anim_1gfx ANIM_GFX_WATER
 	anim_call BattleAnim_UserObj_2Row
+	anim_wait 1
 	anim_sound 16, 2, SFX_WATER_GUN
 	anim_obj ANIM_OBJ_WATER_GUN, 64, 84, $0
 	anim_wait 8                
