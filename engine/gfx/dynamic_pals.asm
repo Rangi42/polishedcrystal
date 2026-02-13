@@ -114,14 +114,9 @@ ScanObjectStructPals:
 	ld a, c
 	cp SPRITE_MON_ICON
 	jr nz, .not_mon_icon_pal
-	; Only interpret as two nybbles if the palette value is a MON_PAL_*_*
-	; encoding (>= NUM_OW_PALS after the system dec), not a normal PAL_OW_* value
-	pop af
-	push af
-	cp NUM_OW_PALS
-	jr c, .not_mon_icon_pal
-	; For mon icons, interpret palette as two nybbles:
+	; For mon icons, always interpret palette as two nybbles:
 	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
+	pop af
 	ld c, a
 	swap a
 	and $f
@@ -130,32 +125,32 @@ ScanObjectStructPals:
 	ld a, c
 	and $f
 	cp [hl]
-	jr z, .same_nybbles
-	; Two different nybbles - use low nybble as the main (dark) palette
-	; wNeededMonPalLight already has the high nybble (light) palette
-	pop af
-	and $f
-	jr .store_pal_index
-.same_nybbles
+	jr nz, .two_nybbles
 	; Same nybble values, treat as normal single palette
-	ld a, NO_PAL_LOADED
-	ld [hl], a
-	pop af
-	and $f
-	jr .store_pal_index
+	ld [hl], NO_PAL_LOADED
+.two_nybbles
+	; low nybble = main (dark) palette, wNeededMonPalLight has the high nybble (light) palette
+	jr .store_pal_index ;no-optimize stub jump
 .not_mon_icon_pal
 	pop af
 .store_pal_index
 	ld [wNeededPalIndex], a
 
-	; Determine palette type for slot matching
-	; wNeededMonPalLight != NO_PAL_LOADED means mon pal, else normal
+	; Determine palette type and build a unique slot ID for MarkUsedPal.
+	; Normal palettes: ID = palette index, type = 0
+	; Mon palettes: ID = (light << 4) | dark, type = 1
 	ld c, a
 	ld a, [wNeededMonPalLight]
 	cp NO_PAL_LOADED
-	ld a, 0
-	jr z, .set_pal_type
-	inc a ; a = 1 for mon pal
+	jr z, .normal_pal_type
+	; Mon palette: combine both nybbles for unique slot matching
+	swap a
+	or c
+	ld c, a ; c = combined ID
+	ld a, 1
+	jr .set_pal_type
+.normal_pal_type
+	xor a
 .set_pal_type
 	ld [wNeededPalType], a
 	ld a, c
@@ -266,7 +261,7 @@ MarkUsedPal:
 .type_set_shift
 	dec c
 	jr z, .type_set_done
-	rla
+	add a
 	jr .type_set_shift
 .type_set_done
 	ld e, a ; e = bit mask for slot c
@@ -307,7 +302,7 @@ MarkUsedPal:
 .used_loop
 	dec c
 	jr z, .found_used
-	rla
+	add a
 	jr .used_loop
 .found_used
 	or [hl]
