@@ -33,15 +33,16 @@ BattleCommand_trick:
 
 	ld a, [de]
 	ld b, [hl]
-	ld [hl], a
-	ld a, b
-	ld [de], a
-
-	; The above is a no-op if none holds an item, so checking
-	; for this after the swap is OK. We don't want to check
-	; before the swap since this clobbers a.
+	; If both items are empty, the move fails.
+	; We store a in c, since or-ing with b clobbers a.
+	; This is fine, since we intend to clobber a later anyway.
+	ld c, a
 	or b
 	jr z, .failed
+
+	ld [hl], c
+	ld a, b
+	ld [de], a
 
 	ld hl, SwappedItemsText
 	call StdBattleTextbox
