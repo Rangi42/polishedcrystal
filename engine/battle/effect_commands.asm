@@ -270,14 +270,7 @@ BattleCommand_checkturn:
 	jr z, .woke_up
 .no_early_bird
 	dec [hl]
-	jr z, .woke_up
-
-	; Still asleep.
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_SLP
-	call FarPlayBattleAnimation
-	jr .fast_asleep
+	jr nz, .fast_asleep
 
 .woke_up
 if !DEF(FAITHFUL)
@@ -311,6 +304,11 @@ endc
 .fast_asleep
 	ld hl, FastAsleepText
 	call StdBattleTextbox
+
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_SLP
+	call FarPlayBattleAnimation
 
 	; Sleep Talk bypasses sleep.
 	ld a, BATTLE_VARS_MOVE_ANIM
