@@ -7,9 +7,7 @@ ClearSavedObjPals::
 	xor a
 	ld [wUsedObjectPals], a
 	ld [wNeededPalType], a
-	ld hl, wLoadedObjPalType
-	ld bc, 8
-	rst ByteFill
+	ld [wLoadedObjPalType], a
 	ld hl, wLoadedObjPal0
 	ld bc, wNeededPalIndex - wLoadedObjPal0
 	ld a, NO_PAL_LOADED
@@ -199,15 +197,21 @@ MarkUsedPal:
 	jr nz, .not_loaded_here
 	; Palette index matches - also check type
 	push af
-	push hl
-	ld hl, wLoadedObjPalType
+	ld a, [wLoadedObjPalType]
 	push bc
-	ld b, 0
-	add hl, bc
-	pop bc
+	inc c
+	ld d, a
+.type_shift
+	dec c
+	jr z, .type_shifted
+	rrca
+	jr .type_shift
+.type_shifted
+	and 1 ; bit 0 = type of this slot
+	ld e, a
 	ld a, [wNeededPalType]
-	cp [hl]
-	pop hl
+	cp e
+	pop bc
 	jr nz, .type_mismatch
 	pop af
 	jr .mark_in_use
@@ -255,12 +259,32 @@ MarkUsedPal:
 	add hl, bc
 	ld [hl], a
 
-	; Store the palette type for this slot
-	ld hl, wLoadedObjPalType
-	add hl, bc
+	; Store the palette type for this slot (set/clear bit c in wLoadedObjPalType)
 	push af
+	push bc
+	ld a, 1
+	inc c
+.type_set_shift
+	dec c
+	jr z, .type_set_done
+	rla
+	jr .type_set_shift
+.type_set_done
+	ld e, a ; e = bit mask for slot c
 	ld a, [wNeededPalType]
-	ld [hl], a
+	and a
+	ld a, [wLoadedObjPalType]
+	jr z, .clear_type_bit
+	or e
+	jr .store_type
+.clear_type_bit
+	ld d, a
+	ld a, e
+	cpl
+	and d
+.store_type
+	ld [wLoadedObjPalType], a
+	pop bc
 	pop af
 
 	; Copy the needed pal
