@@ -200,7 +200,6 @@ MarkUsedPal:
 	ld a, [wLoadedObjPalType]
 	push bc
 	inc c
-	ld d, a
 .type_shift
 	dec c
 	jr z, .type_shifted
