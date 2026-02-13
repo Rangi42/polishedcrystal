@@ -364,7 +364,6 @@ TilesetPokeComCenterAnim::
 TilesetBattleTowerInsideAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
-TilesetAlphWordRoomAnim::
 TilesetPokemonMansionAnim::
 TilesetDecorAnim::
 TilesetMuseumAnim::

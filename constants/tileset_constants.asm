@@ -43,12 +43,11 @@ DEF NO_ROOF_TILESETS EQU const_value
 	const TILESET_PARK                 ; 28
 	const TILESET_SAFARI_ZONE          ; 29
 	const TILESET_RUINS_OF_ALPH        ; 2a
-	const TILESET_ALPH_WORD_ROOM       ; 2b
-	const TILESET_POKEMON_MANSION      ; 2c
-	const TILESET_BATTLE_FACTORY       ; 2d
-	const TILESET_SNOWTOP_MOUNTAIN     ; 2e
-	const TILESET_HIDDEN_GROTTO        ; 2f
-	const TILESET_PEAKS                ; 30
+	const TILESET_POKEMON_MANSION      ; 2b
+	const TILESET_BATTLE_FACTORY       ; 2c
+	const TILESET_SNOWTOP_MOUNTAIN     ; 2d
+	const TILESET_HIDDEN_GROTTO        ; 2e
+	const TILESET_PEAKS                ; 2f
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
