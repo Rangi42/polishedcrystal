@@ -97,27 +97,23 @@ ScanObjectStructPals:
 	and a
 	jr z, .skip
 
-	; Check if sprite is SPRITE_MON_ICON for two-nybble palette handling
-	ld c, a ; save sprite in c
+	; Check if SPRITE_MON_ICON while sprite is in a (Z flag preserved through loads below)
+	cp SPRITE_MON_ICON
 
 	; Look up the object's requested color palette
 	ld hl, OBJECT_PAL_INDEX
 	add hl, de
-	ld a, [hl]
+	ld c, [hl]
 
 	; Default: no secondary light palette
 	ld hl, wNeededMonPalLight
 	ld [hl], NO_PAL_LOADED
 
-	; Check if this is SPRITE_MON_ICON with a two-nybble palette
-	push af
-	ld a, c
-	cp SPRITE_MON_ICON
+	; Branch based on sprite check (Z flag preserved from cp above)
 	jr nz, .not_mon_icon_pal
 	; For mon icons, always interpret palette as two nybbles:
 	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
-	pop af
-	ld c, a
+	ld a, c
 	swap a
 	and $f
 	; If high nybble is same as low nybble, treat as normal palette
@@ -130,9 +126,10 @@ ScanObjectStructPals:
 	ld [hl], NO_PAL_LOADED
 .two_nybbles
 	; low nybble = main (dark) palette, wNeededMonPalLight has the high nybble (light) palette
-	jr .store_pal_index ;no-optimize stub jump
+	jr .store_pal_index
+
 .not_mon_icon_pal
-	pop af
+	ld a, c
 .store_pal_index
 	ld [wNeededPalIndex], a
 
