@@ -5,7 +5,6 @@ RuinsOfAlphSinjohChamber_MapScriptHeader:
 
 	def_warp_events
 	warp_event  5,  9, RUINS_OF_ALPH_OUTSIDE, 13
-	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 13
 
 	def_coord_events
 
