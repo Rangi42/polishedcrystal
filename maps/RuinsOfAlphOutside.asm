@@ -62,6 +62,11 @@ RuinsOfAlphOutside_MapScriptHeader:
 RuinsOfAlphOutsideOpenSinjohChamberScene:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	iffalsefwd .End
+	sdefer RuinsOfAlphOutsideOpenSinjohChamberScript
+.End
+	end
+
+RuinsOfAlphOutsideOpenSinjohChamberScript:
 	showtext RuinsofAlphScientistClimax1Text
 	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
@@ -74,7 +79,6 @@ RuinsOfAlphOutsideOpenSinjohChamberScene:
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
-.End
 	end
 
 RuinsofAlphOutsideTileScript:
