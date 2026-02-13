@@ -12,6 +12,7 @@ Tilesets::
 	tileset TilesetJohtoTraditional
 	tileset TilesetJohtoModern
 	tileset TilesetJohtoOutlands
+	tileset TilesetJohtoAncient
 	tileset TilesetBattleTowerOutside
 	tileset TilesetEcruteakShrine
 	tileset TilesetKanto
@@ -64,6 +65,7 @@ SECTION "Tileset Graphics - johto common vram0", ROMX
 TilesetJohtoTraditionalGFX0::
 TilesetJohtoModernGFX0::
 TilesetJohtoOutlandsGFX0::
+TilesetJohtoAncientGFX0::
 TilesetBattleTowerOutsideGFX0::
 TilesetEcruteakShrineGFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lzp"
 
@@ -114,6 +116,18 @@ SECTION "Tileset Data - johto outlands", ROMX
 TilesetJohtoOutlandsMeta:: INCBIN "data/tilesets/johto_outlands_metatiles.bin.lzp"
 TilesetJohtoOutlandsAttr:: INCBIN "data/tilesets/johto_outlands_attributes.bin.lzp"
 TilesetJohtoOutlandsColl:: INCBIN "data/tilesets/johto_outlands_collision.bin.lzp"
+
+
+SECTION "Tileset Graphics - johto ancient vram1", ROMX
+
+TilesetJohtoAncientGFX1:: INCBIN "gfx/tilesets/johto_ancient.johto_common.2bpp.vram0.lzp"
+
+
+SECTION "Tileset Data - johto ancient", ROMX
+
+TilesetJohtoAncientMeta:: INCBIN "data/tilesets/johto_ancient_metatiles.bin.lzp"
+TilesetJohtoAncientAttr:: INCBIN "data/tilesets/johto_ancient_attributes.bin.lzp"
+TilesetJohtoAncientColl:: INCBIN "data/tilesets/johto_ancient_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - battle tower outside vram1", ROMX
@@ -840,6 +854,7 @@ TilesetPeaksColl:: INCBIN "data/tilesets/peaks_collision.bin.lzp"
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
 TilesetJohtoOutlandsGFX2::
+TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
 TilesetIndigoPlateauGFX2::

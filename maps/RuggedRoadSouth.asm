@@ -38,18 +38,18 @@ RuggedRoadSouthTileScript:
 	endcallback
 
 RuggedRoadSouth_OverheadBridgeAsm:
-	changebridgeblock 14, 0, $e9, RUGGED_ROAD_SOUTH
+	changebridgeblock 14, 0, $d8, RUGGED_ROAD_SOUTH
 	changebridgeblock 16, 0, $95, RUGGED_ROAD_SOUTH
 	changebridgeblock 18, 0, $95, RUGGED_ROAD_SOUTH
 	changebridgeblock 20, 0, $95, RUGGED_ROAD_SOUTH
-	changebridgeblock 22, 0, $ea, RUGGED_ROAD_SOUTH
+	changebridgeblock 22, 0, $d9, RUGGED_ROAD_SOUTH
 	jmp BufferScreen
 
 RuggedRoadSouth_UnderfootBridgeAsm:
 	changebridgeblock 14, 0, $aa, RUGGED_ROAD_SOUTH
-	changebridgeblock 16, 0, $fa, RUGGED_ROAD_SOUTH
-	changebridgeblock 18, 0, $fa, RUGGED_ROAD_SOUTH
-	changebridgeblock 20, 0, $fa, RUGGED_ROAD_SOUTH
+	changebridgeblock 16, 0, $e4, RUGGED_ROAD_SOUTH
+	changebridgeblock 18, 0, $e4, RUGGED_ROAD_SOUTH
+	changebridgeblock 20, 0, $e4, RUGGED_ROAD_SOUTH
 	changebridgeblock 22, 0, $ab, RUGGED_ROAD_SOUTH
 	jmp BufferScreen
 

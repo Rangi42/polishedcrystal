@@ -1,6 +1,6 @@
 RuinsOfAlphOutside_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsOfAlphOutsideNoopScene, SCENE_RUINSOFALPHOUTSIDE_NOOP
+	scene_script RuinsOfAlphOutsideOpenSinjohChamberScene, SCENE_RUINSOFALPHOUTSIDE_OPEN_SINJOH_CHAMBER
 	scene_const SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX
 
 	def_callbacks
@@ -8,74 +8,83 @@ RuinsOfAlphOutside_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, RuinsOfAlphOutsideScientistCallback
 
 	def_warp_events
-	warp_event  4, 23, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
-	warp_event 16, 13, RUINS_OF_ALPH_KABUTO_CHAMBER, 1
-	warp_event  4, 35, RUINS_OF_ALPH_OMANYTE_CHAMBER, 1
-	warp_event 18, 39, RUINS_OF_ALPH_AERODACTYL_CHAMBER, 1
-	warp_event 12, 19, RUINS_OF_ALPH_ENTRANCE_CHAMBER, 1
+	warp_event  7, 17, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
+	warp_event 15,  5, RUINS_OF_ALPH_KABUTO_CHAMBER, 1
+	warp_event  7, 29, RUINS_OF_ALPH_OMANYTE_CHAMBER, 1
+	warp_event 15, 31, RUINS_OF_ALPH_AERODACTYL_CHAMBER, 1
+	warp_event 11, 18, RUINS_OF_ALPH_ENTRANCE_CHAMBER, 1
+	warp_event 12, 18, RUINS_OF_ALPH_ENTRANCE_CHAMBER, 2
 	warp_event 19, 17, RUINS_OF_ALPH_RESEARCH_CENTER, 1
-	warp_event  8, 25, UNION_CAVE_B1F_NORTH, 1
-	warp_event  8, 33, UNION_CAVE_B1F_NORTH, 2
-	warp_event  3,  5, ROUTE_36_RUINS_OF_ALPH_GATE, 3
-	warp_event 15, 26, ROUTE_32_RUINS_OF_ALPH_GATE, 1
-	warp_event 15, 27, ROUTE_32_RUINS_OF_ALPH_GATE, 2
-	warp_event 10,  9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
-	warp_event 11, 36, HIDDEN_CAVE_GROTTO, 1
+	warp_event  2, 17, UNION_CAVE_B1F_NORTH, 1
+	warp_event  2, 29, UNION_CAVE_B1F_NORTH, 2
+	warp_event 11,  1, ROUTE_36_RUINS_OF_ALPH_GATE, 3
+	warp_event 23, 22, ROUTE_32_RUINS_OF_ALPH_GATE, 1
+	warp_event 23, 23, ROUTE_32_RUINS_OF_ALPH_GATE, 2
+	warp_event  7, 11, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
+	warp_event 23, 36, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
-	coord_event 13, 20, SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX, RuinsOfAlphOutsideScientistScene1
-	coord_event 12, 21, SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX, RuinsOfAlphOutsideScientistScene1
+	coord_event 11, 20, SCENE_RUINSOFALPHOUTSIDE_GET_UNOWN_DEX, RuinsOfAlphOutsideScientistScene
 
 	def_bg_events
-	bg_event 18, 14, BGEVENT_JUMPTEXT, RuinsOfAlphOutsideMysteryChamberSignText
-	bg_event 14, 22, BGEVENT_JUMPTEXT, RuinsOfAlphSignText
-	bg_event 20, 18, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterSignText
-	bg_event  3,  9, BGEVENT_JUMPTEXT, RuinsOfAlphAdvancedTipsSignText
-	bg_event 10,  9, BGEVENT_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
-	bg_event  4, 13, BGEVENT_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
-	bg_event 11, 35, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_RUINS_OF_ALPH
+	bg_event 16, 12, BGEVENT_JUMPTEXT, RuinsOfAlphOutsideMysteryChamberSignText
+	bg_event 10, 19, BGEVENT_JUMPTEXT, RuinsOfAlphOutsideMysteriousHallSignText
+	bg_event  9,  5, BGEVENT_JUMPTEXT, RuinsOfAlphSignText
+	bg_event 21, 21, BGEVENT_JUMPTEXT, RuinsOfAlphSignText
+	bg_event 18, 18, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterSignText
+	bg_event 21, 11, BGEVENT_JUMPTEXT, RuinsOfAlphAdvancedTipsSignText
+	bg_event  7, 11, BGEVENT_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
+	bg_event  4,  3, BGEVENT_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
+	bg_event  5, 34, BGEVENT_ITEM + NUGGET, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_NUGGET
+	bg_event 15, 23, BGEVENT_ITEM + BIG_MUSHROOM, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_BIG_MUSHROOM
+	bg_event 23, 35, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_RUINS_OF_ALPH
 
 	def_object_events
-	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideScientistScript, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
-	object_event 18, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
-	object_event  6, 26, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNathan, -1
-	object_event  5, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSuperNerdStan, -1
-	object_event 15, 23, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideFisherScript, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
-	object_event 14, 14, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster2Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	object_event 16, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster1Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	smashrock_event  7, 10
-	smashrock_event  8, 10
-	smashrock_event  4, 12
-	smashrock_event  5, 13
-	smashrock_event  7, 13
-	smashrock_event  8, 15
+	object_event 12, 20, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideScientistScript, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
+	object_event 19, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
+	object_event  5, 18, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPsychicNathan, -1
+	object_event  5, 33, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSuperNerdStan, -1
+	object_event 10, 23, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideFisherScript, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
+	object_event 13, 10, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster2Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	object_event 15, 21, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster1Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	itemball_event  2,  9, HYPER_POTION, 1, EVENT_RUINS_OF_ALPH_OUTSIDE_HYPER_POTION
+	smashrock_event  0,  4
+	smashrock_event  0,  9
+	smashrock_event  1,  8
+	smashrock_event  5,  3
+	smashrock_event  6,  2
+	smashrock_event  8,  3
 
 	object_const_def
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 
-RuinsOfAlphOutsideNoopScene:
+RuinsOfAlphOutsideOpenSinjohChamberScene:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	iffalsefwd .End
+	sdefer RuinsOfAlphOutsideOpenSinjohChamberScript
+.End
+	end
+
+RuinsOfAlphOutsideOpenSinjohChamberScript:
 	showtext RuinsofAlphScientistClimax1Text
 	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
 	stopfollow
 	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
-	turnobject RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
+	turnobject RUINSOFALPHOUTSIDE_SCIENTIST2, RIGHT
 	showtext RuinsofAlphScientistClimax2Text
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
-.End
 	end
 
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalsefwd .locked
-	changeblock 10, 8, $9f
+	changeblock  6, 10, $2b
 .locked
 	endcallback
 
@@ -98,10 +107,10 @@ RuinsOfAlphOutsideScientistCallback:
 
 .NoScientist:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
-	setscene SCENE_RUINSOFALPHOUTSIDE_NOOP
+	setscene SCENE_RUINSOFALPHOUTSIDE_OPEN_SINJOH_CHAMBER
 	endcallback
 
-RuinsOfAlphOutsideScientistScene1:
+RuinsOfAlphOutsideScientistScene:
 RuinsOfAlphOutsideScientistScript:
 	faceobject RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
 	faceobject PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
@@ -139,7 +148,7 @@ RuinsOfAlphOutsideYoungster1Script:
 
 RuinsOfAlphOutsideYoungster2Script:
 	showtextfaceplayer RuinsOfAlphOutsideYoungster2Text
-	turnobject LAST_TALKED, UP
+	turnobject LAST_TALKED, RIGHT
 	end
 
 GenericTrainerPsychicNathan:
@@ -169,47 +178,33 @@ GenericTrainerSuperNerdStan:
 	done
 
 RuinsOfAlphOutsideScientistWalkToLabMovement:
+rept 7
 	step_right
-	step_right
-	step_right
-	step_right
+endr
+rept 3
 	step_up
-	step_up
-	step_right
-	step_right
-	step_up
-	step_up
+endr
 	step_end
 
 RuinsofAlphScientistClimaxApproachMovementData:
+	step_down
+rept 4
 	step_left
+endr
+rept 7
 	step_up
-	step_up
-	step_up
+endr
+rept 8
 	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_up
-	step_up
-	step_up
-	step_up
+endr
+	turn_head_up
 	step_end
 
 RuinsofAlphScientistClimaxLeaveMovementData:
+	step_up
+rept 7
 	step_right
-	step_down
-	step_down
-	step_down
-	step_down
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
+endr
 	step_end
 
 RuinsOfAlphOutsideScientistText:
@@ -267,6 +262,13 @@ PsychicNathanBeatenText: ; text > text
 RuinsOfAlphOutsideMysteryChamberSignText:
 	text "Mystery Stone"
 	line "Panel Chamber"
+	done
+
+RuinsOfAlphOutsideMysteriousHallSignText:
+	text "Mysterious Hall"
+
+	para "Please watch"
+	line "your step."
 	done
 
 RuinsOfAlphSignText:
@@ -357,11 +359,13 @@ RuinsofAlphScientistClimax2Text:
 	line "was quite a loud"
 	cont "earthquake."
 
-	para "Could there be"
-	line "more than one"
-	cont "hidden chamber?"
+	para "Could another"
+	line "chamber have"
 
-	para "Anyway, I'll go"
-	line "tell my colleagues"
-	cont "about this."
+	para "opened up far"
+	line "away from here?"
+
+	para "I must go tell"
+	line "my colleagues"
+	cont "about this!"
 	done

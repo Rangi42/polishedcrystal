@@ -1412,4 +1412,11 @@ MACRO nooryes
 	db nooryes_command
 ENDM
 
+	const digmod_command
+MACRO digmod
+	db digmod_command
+	db \1 ; warp_id
+	map_id \2 ; map
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

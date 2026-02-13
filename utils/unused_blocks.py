@@ -6,7 +6,8 @@ import sys
 tileset_maps = {
 'johto_traditional': 'BellchimeTrail CherrygroveBay CherrygroveCity DragonsDenB1F EcruteakCity MagnetTunnelEast MahoganyTown NewBarkTown Route26 Route27 Route28 Route29 Route30 Route31 Route32 Route32Coast Route35 Route36 Route37 Route42 Route44 SilverCaveOutside VioletCity VioletOutskirts'.split(),
 'johto_modern': 'CianwoodCity GoldenrodCity GoldenrodHarbor MagnetTunnelWest OlivineCity OlivineCityRoute35CoastDual Route34 Route34Coast Route35CoastNorth Route35CoastSouth Route38 Route39 Route40 Route41 StormyBeach'.split(),
-'johto_overcast': 'AzaleaTown AzaleaTownRaining BlackthornCity LakeOfRage LakeOfRageFlooded Route33 Route33Raining Route43 Route43Raining Route45 Route46 Route47 Route48 RuggedRoadNorth RuggedRoadSouth RuinsOfAlphOutside SinjohRuins SnowtopMountainInside'.split(),
+'johto_outlands': 'AzaleaTown AzaleaTownRaining BlackthornCity LakeOfRage LakeOfRageFlooded Route33 Route33Raining Route43 Route43Raining Route45 Route46 Route47 Route48 RuggedRoadNorth RuggedRoadSouth SinjohRuins SnowtopMountainInside'.split(),
+'johto_ancient': 'RuinsOfAlphOutside'.split(),
 'ecruteak_shrine': 'EcruteakShrineOutside'.split(),
 'battle_tower_outside': 'BattleTowerOutside'.split(),
 }
