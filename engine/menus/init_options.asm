@@ -167,7 +167,7 @@ SetInitialOptions:
 INCLUDE "gfx/new_game/init_bg.pal"
 
 .BGTiles:
-INCBIN "gfx/new_game/init_bg.2bpp.lz"
+INCBIN "gfx/new_game/init_bg.2bpp.lzp"
 
 InitialOptionsString1:
 	text  "Natures"

@@ -1852,9 +1852,9 @@ DoSubtractHPFromUser:
 _SubtractHPFromPlayer:
 	ld hl, wBattleMonMaxHP
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	ld hl, wBattleMonHP
 	ldh a, [hBattleTurn]
 	push af
@@ -1867,9 +1867,9 @@ _SubtractHPFromPlayer:
 _SubtractHPFromEnemy:
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	ld hl, wEnemyMonHP
 	ldh a, [hBattleTurn]
 	push af
@@ -1948,28 +1948,28 @@ _SubtractHP:
 .do_subtract
 	inc hl
 	ld a, [hl]
-	ld [wBuffer3], a
+	ld [wHPBuffer2], a
 	sub c
 	ld [hld], a
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	ld a, [hl]
-	ld [wBuffer4], a
+	ld [wHPBuffer2 + 1], a
 	sbc b
 	ld [hl], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 	ret nc
 
-	ld a, [wBuffer3]
+	ld a, [wHPBuffer2]
 	ld [wCurDamage+1], a
 	ld c, a
-	ld a, [wBuffer4]
+	ld a, [wHPBuffer2 + 1]
 	ld [wCurDamage], a
 	ld b, a
 	xor a
 	ld [hli], a
 	ld [hld], a
-	ld [wBuffer5], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3], a
+	ld [wHPBuffer3 + 1], a
 	ret
 
 RestoreHP:
@@ -1980,36 +1980,36 @@ RestoreHP:
 	ld hl, wEnemyMonMaxHP
 .ok
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hld]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	dec hl
 	ld a, [hl]
-	ld [wBuffer3], a
+	ld [wHPBuffer2], a
 	add c
 	ld [hld], a
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	ld a, [hl]
-	ld [wBuffer4], a
+	ld [wHPBuffer2 + 1], a
 	adc b
 	ld [hli], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 
-	ld a, [wBuffer1]
+	ld a, [wHPBuffer1]
 	ld c, a
 	ld a, [hld]
 	sub c
-	ld a, [wBuffer2]
+	ld a, [wHPBuffer1 + 1]
 	ld b, a
 	ld a, [hl]
 	sbc b
 	jr c, UpdateHPBarBattleHuds
 	ld a, b
 	ld [hli], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 	ld a, c
 	ld [hl], a
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	; fallthrough
 
 UpdateHPBarBattleHuds:
@@ -5039,7 +5039,7 @@ MoveSelectionScreen:
 	hlcoord 6, 17 - NUM_MOVES - 4
 .got_start_coord
 	ld a, SCREEN_WIDTH
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	predef ListMoves
 
 	ld a, [wMoveSelectionMenuType]
@@ -8930,17 +8930,26 @@ AutomaticBattleWeather:
 	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
 	jr nz, .not_rugged_road_or_snowtop_mountain
 	ld a, [wMapNumber]
-	; Automatic hail on Snowtop Mountain
-	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
-	lb de, WEATHER_HAIL, HAIL
-	ld hl, HailStartedText
-	jr z, .got_weather
 	; Automatic sandstorm on Rugged Road
 	cp MAP_RUGGED_ROAD_SOUTH
 	lb de, WEATHER_SANDSTORM, SANDSTORM
 	ld hl, SandstormBrewedText
 	jr z, .got_weather
+	; Automatic hail on Snowtop Mountain
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	jr .maybe_hail
 .not_rugged_road_or_snowtop_mountain
+	; Automatic hail on Mt. Silver peak
+	ld a, [wMapGroup]
+	cp GROUP_SILVER_CAVE_ROOM_3
+	jr nz, .not_mt_silver_peak
+	ld a, [wMapNumber]
+	cp MAP_SILVER_CAVE_ROOM_3
+.maybe_hail
+	lb de, WEATHER_HAIL, HAIL
+	ld hl, HailStartedText
+	jr z, .got_weather
+.not_mt_silver_peak
 	; Automatic rain when raining
 	; first check if its overcast conditions
 	farcall GetOvercastIndex

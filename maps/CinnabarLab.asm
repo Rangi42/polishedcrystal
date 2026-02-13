@@ -1,13 +1,14 @@
 CinnabarLab_MapScriptHeader:
 	def_scene_scripts
-	scene_script CinnabarLabTrigger0
+	scene_script CinnabarLabMeetScientistScene, SCENE_CINNABARLAB_MEET_SCIENTIST
+	scene_const SCENE_CINNABARLAB_CELEBI_EVENT
 
 	def_callbacks
 
 	def_warp_events
 
 	def_coord_events
-	coord_event  2,  6, 1, CinnabarLabCelebiEventScript
+	coord_event  2,  6, SCENE_CINNABARLAB_CELEBI_EVENT, CinnabarLabCelebiEventScript
 
 	def_bg_events
 	bg_event  8, 14, BGEVENT_JUMPTEXT, CinnabarLabRoom1SignText
@@ -43,7 +44,7 @@ CinnabarLab_MapScriptHeader:
 	const CINNABARLAB_KRIS
 	const CINNABARLAB_CRYS
 
-CinnabarLabTrigger0:
+CinnabarLabMeetScientistScene:
 	sdefer CinnabarLabStepDownScript
 	end
 
@@ -54,7 +55,7 @@ CinnabarLabStepDownScript:
 	ifnotequal $2, .Done
 	applyonemovement PLAYER, step_down
 .Done
-	setscene $1
+	setscene SCENE_CINNABARLAB_CELEBI_EVENT
 	end
 
 CinnabarLabCelebiEventScript:
@@ -68,7 +69,7 @@ CinnabarLabCelebiEventScript:
 	setevent EVENT_CINNABAR_LAB_CRYS
 	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
 	setevent EVENT_CINNABAR_LAB_SCIENTIST2
-	setscene $0
+	setscene SCENE_CINNABARLAB_MEET_SCIENTIST
 	warpfacing UP, CINNABAR_LAB, 15, 9
 	special Special_FadeOutMusic
 	pause 30
@@ -203,7 +204,7 @@ CinnabarLabCelebiEventScript:
 	pause 30
 	waitsfx
 	clearevent EVENT_ILEX_FOREST_LYRA
-	setmapscene ILEX_FOREST, $1
+	setmapscene ILEX_FOREST, SCENE_ILEXFOREST_CUT_SCENE
 	warp ILEX_FOREST, 10, 26
 	end
 

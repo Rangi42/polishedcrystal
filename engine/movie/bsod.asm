@@ -123,11 +123,13 @@ BSODErrorStrings:
 	dr .StackUnderflow   ; ERR_STACK_UNDERFLOW
 	dr .OldBTState       ; ERR_BT_STATE
 	dr .ChecksumMismatch ; ERR_CHECKSUM_MISMATCH
-	dr .OldBox           ; ERR_OLDBOX
-	dr .NewBox           ; ERR_NEWBOX
+	dr .PCBoxOld         ; ERR_PC_BOX_OLD
+	dr .PCBoxZero        ; ERR_PC_BOX_ZERO
+	dr .PCBoxCollision   ; ERR_PC_BOX_COLLISION
 	dr .WindowOverflow   ; ERR_WINDOW_OVERFLOW
 	dr .WindowUnderflow  ; ERR_WINDOW_UNDERFLOW
 	dr .SRAMMismatch     ; ERR_SRAM_MISMATCH
+	dr .PEBKAC           ; ERR_PEBKAC
 	dr .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
@@ -139,9 +141,11 @@ BSODErrorStrings:
 .StackUnderflow:   text "Stack underflow@"
 .OldBTState:       text "Old Battle Tower@"
 .ChecksumMismatch: text "Checksum mismatch@"
-.OldBox:           text "Old PC Box storage@"
-.NewBox:           text "Fatal PC Box error@"
+.PCBoxOld:         text "Old PC Box storage@"
+.PCBoxZero:        text "Accessed PC Box 0@"
+.PCBoxCollision:   text "PC Box collision@"
 .WindowOverflow:   text "Window overflow@"
 .WindowUnderflow:  text "Window underflow@"
 .SRAMMismatch:     text "SRAM/WRAM mismatch@"
-.UnknownError:     text "Unknown error@"
+.PEBKAC:           text "PEBKAC@"
+.UnknownError:     text "Unknown@"

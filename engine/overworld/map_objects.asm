@@ -578,7 +578,9 @@ endr
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
 	dw .MovementTinyWindows          ; SPRITEMOVEFN_TINY_WINDOWS
-	dw .MovementMicrophone          ; SPRITEMOVEFN_MICROPHONE
+	dw .MovementMicrophone           ; SPRITEMOVEFN_MICROPHONE
+	dw .MovementBigHoOh              ; SPRITEMOVEFN_BIG_HO_OH
+	dw .MovementBigLugia             ; SPRITEMOVEFN_BIG_LUGIA
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -798,6 +800,14 @@ endr
 
 .MovementMicrophone:
 	ld a, OBJECT_ACTION_MICROPHONE
+	jr ._ActionA_StepFunction_Standing
+
+.MovementBigHoOh:
+	ld a, OBJECT_ACTION_BIG_HO_OH
+	jr ._ActionA_StepFunction_Standing
+
+.MovementBigLugia:
+	ld a, OBJECT_ACTION_BIG_LUGIA
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:

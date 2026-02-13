@@ -1,5 +1,7 @@
 RuggedRoadSouth_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_RUGGEDROADSOUTH_BRIDGE_UNDERFOOT
+	scene_const SCENE_RUGGEDROADSOUTH_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuggedRoadSouthTileScript
@@ -9,9 +11,9 @@ RuggedRoadSouth_MapScriptHeader:
 	warp_event 16, 33, ROUTE_39_RUGGED_ROAD_GATE, 2
 
 	def_coord_events
-	coord_event 27,  3, 1, RuggedRoadSouthBridgeOverheadTrigger
-	coord_event 27,  1, 0, RuggedRoadSouthBridgeUnderfootTrigger
-	coord_event 25, 23, 1, RuggedRoadSouthBridgeOverheadTrigger
+	coord_event 27,  3, SCENE_RUGGEDROADSOUTH_BRIDGE_OVERHEAD, RuggedRoadSouthBridgeOverheadTrigger
+	coord_event 27,  1, SCENE_RUGGEDROADSOUTH_BRIDGE_UNDERFOOT, RuggedRoadSouthBridgeUnderfootTrigger
+	coord_event 25, 23, SCENE_RUGGEDROADSOUTH_BRIDGE_OVERHEAD, RuggedRoadSouthBridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 25, BGEVENT_JUMPTEXT, RuggedRoadSouthAdvancedTipsSignText

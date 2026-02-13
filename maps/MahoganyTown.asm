@@ -1,5 +1,7 @@
 MahoganyTown_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_MAHOGANYTOWN_TRY_RAGECANDYBAR
+	scene_const SCENE_MAHOGANYTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, MahoganyTownFlyPoint
@@ -12,8 +14,8 @@ MahoganyTown_MapScriptHeader:
 	warp_event  9,  1, ROUTE_43_MAHOGANY_GATE, 3
 
 	def_coord_events
-	coord_event 19,  8, 0, MahoganyTownTryARageCandyBarScript
-	coord_event 19,  9, 0, MahoganyTownTryARageCandyBarScript
+	coord_event 19,  8, SCENE_MAHOGANYTOWN_TRY_RAGECANDYBAR, MahoganyTownTryARageCandyBarScript
+	coord_event 19,  9, SCENE_MAHOGANYTOWN_TRY_RAGECANDYBAR, MahoganyTownTryARageCandyBarScript
 
 	def_bg_events
 	bg_event  1,  5, BGEVENT_JUMPTEXT, MahoganyTownSignText

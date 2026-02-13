@@ -1,5 +1,7 @@
 CeruleanCity_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CERULEANCITY_BRIDGE_UNDERFOOT
+	scene_const SCENE_CERULEANCITY_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
@@ -18,10 +20,10 @@ CeruleanCity_MapScriptHeader:
 	warp_event 29,  7, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
-	coord_event 20,  3, 0, Route24BridgeUnderfootTrigger
-	coord_event 21,  3, 0, Route24BridgeUnderfootTrigger
-	coord_event 20,  4, 1, Route24BridgeOverheadTrigger
-	coord_event 21,  4, 1, Route24BridgeOverheadTrigger
+	coord_event 20,  3, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21,  3, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 20,  4, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 21,  4, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
@@ -41,7 +43,7 @@ CeruleanCity_MapScriptHeader:
 	pokemon_event 20, 20, SLOWBRO, SPRITEMOVEDATA_STILL, -1, PAL_NPC_PINK, CeruleanCitySlowbroText, -1
 	object_event 13, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  2, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
-	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
+	cuttree_event 44, 16, EVENT_ROUTE_9_CUT_TREE
 
 	object_const_def
 	const CERULEANCITY_COOLTRAINER_F

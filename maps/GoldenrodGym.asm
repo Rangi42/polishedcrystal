@@ -1,5 +1,7 @@
 GoldenrodGym_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_GOLDENRODGYM_NOOP
+	scene_const SCENE_GOLDENRODGYM_WHITNEY_STOPS_CRYING
 
 	def_callbacks
 
@@ -8,7 +10,7 @@ GoldenrodGym_MapScriptHeader:
 	warp_event  3, 17, GOLDENROD_CITY, 1
 
 	def_coord_events
-	coord_event  8,  5, 1, WhitneyCriesScript
+	coord_event  8,  5, SCENE_GOLDENRODGYM_WHITNEY_STOPS_CRYING, WhitneyCriesScript
 
 	def_bg_events
 	bg_event  1, 15, BGEVENT_READ, GoldenrodGymStatue
@@ -37,7 +39,7 @@ GoldenrodGymWhitneyScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_WHITNEY
 	setevent EVENT_MADE_WHITNEY_CRY
-	setscene $1
+	setscene SCENE_GOLDENRODGYM_WHITNEY_STOPS_CRYING
 	setevent EVENT_BEAT_BEAUTY_VICTORIA
 	setevent EVENT_BEAT_BEAUTY_SAMANTHA
 	setevent EVENT_BEAT_LASS_CATHY
@@ -88,7 +90,7 @@ WhitneyCriesScript:
 	turnobject PLAYER, DOWN
 	showtext JoWhitneyCriesText
 	applymovement GOLDENRODGYM_LASS2, JoWalksAwayMovement
-	setscene $0
+	setscene SCENE_GOLDENRODGYM_NOOP
 	clearevent EVENT_MADE_WHITNEY_CRY
 	end
 

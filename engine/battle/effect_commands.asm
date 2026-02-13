@@ -671,13 +671,13 @@ CheckAffection:
 .cont
 	push hl
 	push bc
-	ld b, 3
+	ld b, NUM_AFFECTION_LEVELS - 1
 
 	; Convert current friendship value to Affection thresholds.
 	ld a, MON_HAPPINESS
 	call TrueUserPartyAttr
 
-	ld hl, .AffectionThresholds
+	ld hl, AffectionThresholds
 .loop
 	cp [hl]
 	jr nc, .done
@@ -691,11 +691,7 @@ CheckAffection:
 	pop hl
 	ret
 
-.AffectionThresholds:
-	db 255
-	db 220
-	db 180
-	db 0
+INCLUDE "data/battle/affection_thresholds.asm"
 
 OpponentAffectionText:
 	call StackCallOpponentTurn
@@ -1278,7 +1274,7 @@ BattleCommand_critical:
 
 	; Sufficient Affection doubles critrate, independently of stages.
 	call CheckAffection
-	cp 3
+	cp AFFECTION_LEVEL_3
 	jr c, .no_affection_boost
 	sla b
 .no_affection_boost
@@ -2018,7 +2014,7 @@ BattleCommand_checkhit:
 
 	; Affection-based evasion
 	call CheckOpponentAffection
-	cp 3
+	cp AFFECTION_LEVEL_3
 	jr c, .no_affection_evasion
 
 	ld a, 10
@@ -2908,7 +2904,7 @@ BattleCommand_criticaltext:
 	; Thus, if this applies, show the relevant msg 50% of the
 	; time in place of the regular one.
 	call CheckAffection
-	cp 3
+	cp AFFECTION_LEVEL_3
 	jr c, .no_affection_boost
 	call BattleRandom
 	add a

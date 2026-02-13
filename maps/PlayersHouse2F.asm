@@ -119,25 +119,33 @@ endr
 	giveitem MINT_LEAF, 99
 	giveitem BOTTLE_CAP, 99
 	giveitem BIG_NUGGET, 99
+	giveitem PORTRAITMAIL, 99
 	giveitem ARMOR_SUIT, 1
+for x, FIRST_BERRY, FIRST_BERRY + NUM_BERRIES
+	giveitem x, 99
+endr
 	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
 endr
 	; max money
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 1000000
-	givemoney YOUR_MONEY, 999999
+	loadmem wMoney+0, 9_999_999 >> 16
+	loadmem wMoney+1, HIGH(9_999_999)
+	loadmem wMoney+2, LOW(9_999_999)
 	givecoins 50000
+	loadmem wBlueCardBalance, 99
 	loadmem wBattlePoints+0, 0
 	loadmem wBattlePoints+1, 250
+for x, NUM_CANDIES
+	loadmem wCandyAmounts + x, 99
+endr
+for x, NUM_WINGS
+	loadmem wWingAmounts + x * 2 + 0, HIGH(999)
+	loadmem wWingAmounts + x * 2 + 1, LOW(999)
+endr
+for x, NUM_APRICORNS
+	loadmem wApricorns + x, 99
+endr
 	; all badges
 	setflag ENGINE_ZEPHYRBADGE
 	setflag ENGINE_HIVEBADGE
@@ -176,7 +184,7 @@ endr
 	setevent EVENT_BATTLE_TOWER_OPEN
 	clearevent EVENT_BATTLE_TOWER_CLOSED
 	setevent EVENT_ENABLE_DIPLOMA_PRINTING
-	clearevent EVENT_AZALEA_TOWN_SLOWPOKES
+;	clearevent EVENT_AZALEA_TOWN_SLOWPOKES ; enables random overcast weather
 	; fly anywhere
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
@@ -210,32 +218,22 @@ endr
 	setflag ENGINE_FLYPOINT_SHAMOUTI
 	setflag ENGINE_FLYPOINT_VALENCIA
 	setflag ENGINE_FLYPOINT_NAVEL
-	; magnet train works
-	setevent EVENT_RESTORED_POWER_TO_KANTO
+;	setevent EVENT_RESTORED_POWER_TO_KANTO ; magnet train works
 	; post-e4
 	setflag ENGINE_CREDITS_SKIP
 	; good party
 	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
-	loadmem wPartyMon1EVs+0, 252
-	loadmem wPartyMon1EVs+1, 252
-	loadmem wPartyMon1EVs+2, 252
-	loadmem wPartyMon1EVs+3, 252
-	loadmem wPartyMon1EVs+4, 252
-	loadmem wPartyMon1EVs+5, 252
-	loadmem wPartyMon1DVs+0, $ff
-	loadmem wPartyMon1DVs+1, $ff
-	loadmem wPartyMon1DVs+2, $ff
+for x, NUM_STATS
+	loadmem wPartyMon1EVs+x, 252
+endr
+for x, 3
+	loadmem wPartyMon1DVs+x, $ff
+endr
 	loadmem wPartyMon1Personality, ABILITY_2 | NAT_SATK_UP_ATK_DOWN
-	loadmem wPartyMon1Stats+0, HIGH(999)
-	loadmem wPartyMon1Stats+1, LOW(999)
-	loadmem wPartyMon1Stats+2, HIGH(999)
-	loadmem wPartyMon1Stats+3, LOW(999)
-	loadmem wPartyMon1Stats+4, HIGH(999)
-	loadmem wPartyMon1Stats+5, LOW(999)
-	loadmem wPartyMon1Stats+6, HIGH(999)
-	loadmem wPartyMon1Stats+7, LOW(999)
-	loadmem wPartyMon1Stats+8, HIGH(999)
-	loadmem wPartyMon1Stats+9, LOW(999)
+for x, NUM_BATTLE_STATS
+	loadmem wPartyMon1Stats + x * 2 + 0, HIGH(999)
+	loadmem wPartyMon1Stats + x * 2 + 1, LOW(999)
+endr
 	; hm slave
 	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
 	loadmem wPartyMon2Moves+0, FLY
@@ -256,14 +254,14 @@ endr
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; evolve during battle
 	givepoke PUPITAR, 54
-	loadmem wPartyMon6Exp+2, LOW(207967)
-	loadmem wPartyMon6Exp+1, HIGH(207967)
 	loadmem wPartyMon6Exp+0, 207967 >> 16
+	loadmem wPartyMon6Exp+1, HIGH(207967)
+	loadmem wPartyMon6Exp+2, LOW(207967)
 	; fill pokedex
 	callasm FillPokedex
 ;	; new bark events
 	addcellnum PHONE_MOM
-	setmapscene PLAYERS_HOUSE_1F, $1
+	setmapscene PLAYERS_HOUSE_1F, SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	addcellnum PHONE_ELM
@@ -273,12 +271,12 @@ endr
 ;	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 ;	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 ;	setevent EVENT_LYRA_IN_ELMS_LAB
-;	setmapscene ELMS_LAB, $5
-;	setmapscene NEW_BARK_TOWN, $2
+;	setmapscene ELMS_LAB, SCENE_ELMSLAB_AIDE_GIVES_POTION
+;	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP
 	; cherrygrove events
 	setevent EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	setmapscene CHERRYGROVE_CITY, $2
+	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_NOOP
 	; route 31 events
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	setevent EVENT_INTRODUCED_ROUTE_LEADERS
@@ -288,7 +286,7 @@ endr
 	; goldenrod events
 	setevent EVENT_BEAT_CAMPER_TODD
 	addcellnum PHONE_LYRA
-	setmapscene DAYCARE, $1
+	setmapscene DAYCARE, SCENE_DAYCARE_NOOP
 	setevent EVENT_LYRA_DAYCARE
 	setevent EVENT_NURSE_SAW_TRAINER_STAR
 	setevent EVENT_INTRODUCED_TEALA
@@ -298,14 +296,14 @@ endr
 	; ecruteak events
 	setevent EVENT_RIVAL_BURNED_TOWER
 	setevent EVENT_HOLE_IN_BURNED_TOWER
-	setmapscene BURNED_TOWER_1F, $2
+	setmapscene BURNED_TOWER_1F, SCENE_BURNEDTOWER1F_NOOP
 	; olivine events
 	setevent EVENT_RIVAL_OLIVINE_CITY
-	setmapscene OLIVINE_CITY, $1
+	setmapscene OLIVINE_CITY, SCENE_OLIVINECITY_NOOP
 	; blackthorn events
 	setevent EVENT_BEAT_DRAGON_TAMER_DARIN
 	; vermilion events
-	setmapscene VERMILION_CITY, $1
+	setmapscene VERMILION_CITY, SCENE_VERMILIONCITY_NOOP
 	closetext
 	warpfacing DOWN, GOLDENROD_CITY, 13, 14
 	end

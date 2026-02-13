@@ -41,7 +41,7 @@ Route43_MapScriptHeader:
 Route43CheckIfRocketsScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftruefwd Route43NoRocketsScript
-	setmapscene ROUTE_43_GATE, $0
+	setmapscene ROUTE_43_GATE, SCENE_ROUTE43GATE_ROCKET_SHAKEDOWN
 	endcallback
 
 Route43RainScript:
@@ -55,7 +55,7 @@ Route43RainScript:
 	endcallback
 
 Route43NoRocketsScript:
-	setmapscene ROUTE_43_GATE, $1
+	setmapscene ROUTE_43_GATE, SCENE_ROUTE43GATE_NOOP
 	endcallback
 
 Route43SightseerfScript:

@@ -47,7 +47,7 @@ GoldenrodDeptStore5FReceptionistScript:
 	special GetFirstPokemonHappiness
 	writetext GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText
 	promptbutton
-	ifgreater $95, .VeryHappy
+	ifgreater FRIEND_BALL_HAPPINESS - 1, .VeryHappy
 	jumpopenedtext GoldenrodDeptStore5FReceptionistItsAdorableText
 
 .VeryHappy:

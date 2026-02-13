@@ -7,10 +7,10 @@ CheckForHiddenItems:
 ; bit 4-5: Direction (00=down 01=up 10=left 11=right)
 ; bit 0-3: Distance to item (taxicab)
 	ld a, [wMapScriptsBank]
-	ld [wBuffer1], a
-	; Reset wBuffer4. This is used to figure out the closest item to the player.
+	ld [wCurMapScriptBank], a
+	; Reset wBottomRightXCoord. This is used to figure out the closest item to the player.
 	ld a, -1
-	ld [wBuffer4], a
+	ld [wBottomRightXCoord], a
 ; Get the pointer for the first signpost header in the map...
 	ld hl, wCurMapBGEventsPointer
 	ld a, [hli]
@@ -23,8 +23,8 @@ CheckForHiddenItems:
 
 ; For i = 1:wCurMapBGEventCount...
 .loop
-; Store the counter in wBuffer2, and store the signpost header pointer in the stack.
-	ld [wBuffer2], a
+; Store the counter in wRemainingBGEventCount, and store the signpost header pointer in the stack.
+	ld [wRemainingBGEventCount], a
 	push hl
 ; Get the Y coordinate of the signpost.
 	call ItemFinder_GetFarByte
@@ -36,7 +36,7 @@ CheckForHiddenItems:
 	jr c, .next_y
 	cp SCREEN_HEIGHT / 2
 	jr nc, .next_y
-	ld [wBuffer3], a
+	ld [wBottomRightYCoord], a
 ; Is the X coordinate of the signpost on the screen?  If not, go to the next signpost.
 	call ItemFinder_GetFarByte
 	ld d, a
@@ -48,29 +48,29 @@ CheckForHiddenItems:
 	jr nc, .next_x
 	swap a
 	ld d, a
-	ld a, [wBuffer3]
+	ld a, [wBottomRightYCoord]
 	or d
-	ld [wBuffer3], a
+	ld [wBottomRightYCoord], a
 ; Is this signpost a hidden item?  If not, go to the next signpost.
 	call IsHiddenItem
 	jr nz, .next
 
 	; If old buffer is -1, it's unused, so just write to it directly.
 	; Otherwise, compare and figure out which one is closest.
-	ld a, [wBuffer4]
+	ld a, [wBottomRightXCoord]
 	cp -2
 	jr nc, .current_is_closer
 	call CalculateItemDistance
 	and $f
 	ld c, a
-	ld a, [wBuffer3]
+	ld a, [wBottomRightYCoord]
 	call CalculateItemDistance
 	and $f
 	cp c
 	jr nc, .next
 .current_is_closer
-	ld a, [wBuffer3]
-	ld [wBuffer4], a
+	ld a, [wBottomRightYCoord]
+	ld [wBottomRightXCoord], a
 	jr .next
 
 .next_y
@@ -78,11 +78,11 @@ CheckForHiddenItems:
 .next_x
 	call IsHiddenItem
 	jr nz, .next
-	ld a, [wBuffer4]
+	ld a, [wBottomRightXCoord]
 	cp -2
 	jr c, .next
 	ld a, -2
-	ld [wBuffer4], a
+	ld [wBottomRightXCoord], a
 
 .next
 ; Restore the signpost header pointer and increment it by the length of a signpost header.
@@ -90,13 +90,13 @@ CheckForHiddenItems:
 	ld bc, 5
 	add hl, bc
 ; Restore the signpost counter and decrement it.  If it hits zero, there are no hidden items in range.
-	ld a, [wBuffer2]
+	ld a, [wRemainingBGEventCount]
 	dec a
 	jr nz, .loop
 
 	; Check if we found anything. Return carry if we did.
 .nosignpostitems
-	ld a, [wBuffer4]
+	ld a, [wBottomRightXCoord]
 	cp -2
 	ret nc
 	call CalculateItemDistance
@@ -124,7 +124,7 @@ IsHiddenItem:
 	jmp EventFlagAction
 
 ItemFinder_GetFarByte:
-	ld a, [wBuffer1]
+	ld a, [wCurMapScriptBank]
 	call GetFarByte
 	inc hl
 	ret

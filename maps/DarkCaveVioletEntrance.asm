@@ -1,5 +1,7 @@
 DarkCaveVioletEntrance_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_DARKCAVEVIOLETENTRANCE_FALKNER
+	scene_const SCENE_DARKCAVEVIOLETENTRANCE_NOOP
 
 	def_callbacks
 
@@ -9,7 +11,7 @@ DarkCaveVioletEntrance_MapScriptHeader:
 	warp_event 35, 33, ROUTE_46, 3
 
 	def_coord_events
-	coord_event  6,  2, 0, DarkCaveVioletEntranceFalknerTrigger
+	coord_event  6,  2, SCENE_DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceFalknerTrigger
 
 	def_bg_events
 	bg_event 26,  3, BGEVENT_ITEM + ELIXIR, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXIR
@@ -52,8 +54,8 @@ DarkCaveVioletEntranceFalknerTrigger:
 	disappear DARKCAVEVIOLETENTRANCE_FALKNER
 	pause 15
 	clearevent EVENT_VIOLET_GYM_FALKNER
-	setmapscene VIOLET_GYM, $1
-	setscene $1
+	setmapscene VIOLET_GYM, SCENE_VIOLETGYM_FALKNER_RETURNS
+	setscene SCENE_DARKCAVEVIOLETENTRANCE_NOOP
 	end
 
 .Darkness:

@@ -1,5 +1,7 @@
 YellowForest_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT
+	scene_const SCENE_YELLOWFOREST_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, YellowForestFlyPoint
@@ -11,14 +13,14 @@ YellowForest_MapScriptHeader:
 	warp_event 19, 12, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event 32, 16, 1, YellowForestBridgeOverheadTrigger
-	coord_event 32, 17, 1, YellowForestBridgeOverheadTrigger
-	coord_event 39, 16, 1, YellowForestBridgeOverheadTrigger
-	coord_event 39, 17, 1, YellowForestBridgeOverheadTrigger
-	coord_event 33, 16, 0, YellowForestBridgeUnderfootTrigger
-	coord_event 33, 17, 0, YellowForestBridgeUnderfootTrigger
-	coord_event 38, 16, 0, YellowForestBridgeUnderfootTrigger
-	coord_event 38, 17, 0, YellowForestBridgeUnderfootTrigger
+	coord_event 32, 16, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 32, 17, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 39, 16, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 39, 17, SCENE_YELLOWFOREST_BRIDGE_OVERHEAD, YellowForestBridgeOverheadTrigger
+	coord_event 33, 16, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
+	coord_event 33, 17, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
+	coord_event 38, 16, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
+	coord_event 38, 17, SCENE_YELLOWFOREST_BRIDGE_UNDERFOOT, YellowForestBridgeUnderfootTrigger
 
 	def_bg_events
 	bg_event 39, 14, BGEVENT_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
@@ -32,7 +34,7 @@ YellowForest_MapScriptHeader:
 	object_event  7, 24, SPRITE_WALKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
 	pokemon_event  8, 24, SKARMORY, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GRAY, ClearText, EVENT_YELLOW_FOREST_SKARMORY
 	object_event 47,  6, SPRITE_YELLOW, SPRITEMOVEDATA_WANDER, 1, 2, -1, 0, OBJECTTYPE_SCRIPT, 0, YellowForestYellowScript, -1
-	object_event 49, 26, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
+	object_event 49, 26, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
 	object_event 31,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
 	object_event 19, 41, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlSarah, -1
 	object_event 13, 34, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlIsabel, -1

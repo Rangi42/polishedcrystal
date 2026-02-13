@@ -1,5 +1,7 @@
 Route29_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE29_NOOP
+	scene_const SCENE_ROUTE29_CATCH_TUTORIAL
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route29Tuscany
@@ -8,8 +10,8 @@ Route29_MapScriptHeader:
 	warp_event 27,  1, ROUTE_29_46_GATE, 3
 
 	def_coord_events
-	coord_event 53,  8, 1, Route29Tutorial1
-	coord_event 53,  9, 1, Route29Tutorial2
+	coord_event 53,  8, SCENE_ROUTE29_CATCH_TUTORIAL, Route29Tutorial1
+	coord_event 53,  9, SCENE_ROUTE29_CATCH_TUTORIAL, Route29Tutorial2
 
 	def_bg_events
 	bg_event 51,  7, BGEVENT_JUMPTEXT, Route29Sign1Text
@@ -94,7 +96,7 @@ Route29FinishTutorial:
 	closetext
 	applymovement ROUTE29_LYRA, LyraMovementData3
 	disappear ROUTE29_LYRA
-	setscene $0
+	setscene SCENE_ROUTE29_NOOP
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	playmusic MUSIC_ROUTE_29
 	end

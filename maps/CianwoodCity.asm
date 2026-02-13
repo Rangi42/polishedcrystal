@@ -1,5 +1,7 @@
 CianwoodCity_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CIANWOODCITY_NOOP
+	scene_const SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CianwoodCityFlyPointAndSuicune
@@ -15,7 +17,7 @@ CianwoodCity_MapScriptHeader:
 	warp_event  4, 25, CLIFF_EDGE_GATE, 1
 
 	def_coord_events
-	coord_event 11, 16, 1, CianwoodCitySuicuneAndEusine
+	coord_event 11, 16, SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE, CianwoodCitySuicuneAndEusine
 
 	def_bg_events
 	bg_event 20, 34, BGEVENT_JUMPTEXT, CianwoodCitySignText
@@ -70,14 +72,14 @@ CianwoodCitySuicuneAndEusine:
 	applymovement CIANWOODCITY_SUICUNE, CianwoodCitySuicuneDepartMovement
 	disappear CIANWOODCITY_SUICUNE
 	pause 10
-	setscene $0
+	setscene SCENE_CIANWOODCITY_NOOP
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftruefwd .NoLyra
-	setmapscene ROUTE_42, $1
+	setmapscene ROUTE_42, SCENE_ROUTE42_LYRA
 	sjumpfwd .Continue
 .NoLyra
-	setmapscene ROUTE_42, $2
+	setmapscene ROUTE_42, SCENE_ROUTE42_SUICUNE
 .Continue
 	checkevent EVENT_BEAT_EUSINE
 	iftrue DoNothingScript

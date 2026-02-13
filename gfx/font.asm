@@ -48,7 +48,7 @@ INCBIN "gfx/frames/20.1bpp"
 	assert_table_length NUM_FRAMES
 
 BattleExtrasGFX:
-INCBIN "gfx/battle/hpexpbars.2bpp.lz"
+INCBIN "gfx/battle/hpexpbars.2bpp.lzp"
 
 SummaryStatusIconGFX:
 INCBIN "gfx/stats/status.2bpp"

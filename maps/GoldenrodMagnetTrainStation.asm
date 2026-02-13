@@ -1,5 +1,6 @@
 GoldenrodMagnetTrainStation_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_GOLDENRODMAGNETTRAINSTATION_ARRIVE_FROM_SAFFRON
 
 	def_callbacks
 
@@ -10,7 +11,7 @@ GoldenrodMagnetTrainStation_MapScriptHeader:
 	warp_event 11,  5, SAFFRON_TRAIN_STATION, 3
 
 	def_coord_events
-	coord_event 11,  6, 0, Script_ArriveFromSaffron
+	coord_event 11,  6, SCENE_GOLDENRODMAGNETTRAINSTATION_ARRIVE_FROM_SAFFRON, Script_ArriveFromSaffron
 
 	def_bg_events
 
@@ -45,7 +46,7 @@ GoldenrodMagnetTrainStationOfficerScript:
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
 	applyonemovement PLAYER, turn_head_down
-	wait 36
+	wait 2
 	end
 
 Script_ArriveFromSaffron:

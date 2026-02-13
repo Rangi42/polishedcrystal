@@ -1,5 +1,9 @@
 TeamRocketBaseB2F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_TEAMROCKETBASEB2F_LANCE_HEALS
+	scene_const SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS
+	scene_const SCENE_TEAMROCKETBASEB2F_ELECTRODES
+	scene_const SCENE_TEAMROCKETBASEB2F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, TransmitterDoorCallback
@@ -12,15 +16,15 @@ TeamRocketBaseB2F_MapScriptHeader:
 	warp_event 27, 14, TEAM_ROCKET_BASE_B3F, 4
 
 	def_coord_events
-	coord_event  5, 14, 0, LanceHealsScript
-	coord_event  4, 13, 0, LanceHealsScript
-	coord_event 14, 11, 1, RocketBaseBossFLeft
-	coord_event 15, 11, 1, RocketBaseBossFRight
-	coord_event 14, 12, 2, RocketBaseCantLeaveScript
-	coord_event 15, 12, 2, RocketBaseCantLeaveScript
-	coord_event 12,  3, 2, RocketBaseLancesSideScript
-	coord_event 12, 10, 2, RocketBaseLancesSideScript
-	coord_event 12, 11, 2, RocketBaseLancesSideScript
+	coord_event  5, 14, SCENE_TEAMROCKETBASEB2F_LANCE_HEALS, LanceHealsScript
+	coord_event  4, 13, SCENE_TEAMROCKETBASEB2F_LANCE_HEALS, LanceHealsScript
+	coord_event 14, 11, SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS, RocketBaseBossFLeft
+	coord_event 15, 11, SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS, RocketBaseBossFRight
+	coord_event 14, 12, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseCantLeaveScript
+	coord_event 15, 12, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseCantLeaveScript
+	coord_event 12,  3, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseLancesSideScript
+	coord_event 12, 10, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseLancesSideScript
+	coord_event 12, 11, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseLancesSideScript
 
 	def_bg_events
 	bg_event 14, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
@@ -144,7 +148,7 @@ RocketBaseBossFScript:
 	disappear TEAMROCKETBASEB2F_ROCKET3
 	pause 15
 	special Special_FadeInQuickly
-	setscene $2
+	setscene SCENE_TEAMROCKETBASEB2F_ELECTRODES
 	clearevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	turnobject TEAMROCKETBASEB2F_LANCE, DOWN
 	showtext RocketBaseLancePostBattleText
@@ -178,7 +182,7 @@ LanceHealsScript:
 	special HealParty
 	special FadeInPalettes_EnableDynNoApply
 	showtext LanceHealsText2
-	setscene $1
+	setscene SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
 	readvar VAR_FACING
 	ifequalfwd RIGHT, .FacingRight
@@ -311,7 +315,7 @@ RocketBaseElectrodeScript:
 	clearflag ENGINE_ROCKET_SIGNAL_ON_CH20
 	setevent EVENT_ROUTE_43_GATE_ROCKETS
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	setscene $3
+	setscene SCENE_TEAMROCKETBASEB2F_NOOP
 	clearevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	setevent EVENT_TURNED_OFF_SECURITY_CAMERAS
 	setevent EVENT_SECURITY_CAMERA_1

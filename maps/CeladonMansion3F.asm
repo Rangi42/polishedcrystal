@@ -79,7 +79,19 @@ MapCeladonMansion3FSignpost1Script:
 	jumptext CeladonMansion3FDrawingText
 
 MapCeladonMansion3FSignpost2Script:
-	jumptext CeladonMansion3FGameProgramText
+	opentext
+	writetext CeladonMansion3FGameProgramText
+	nooryes
+	iffalse_endtext
+	writetext CeladonMansion3FAreYouSureText
+	nooryes
+	iffalse_endtext
+	callasm .MessWithGameProgram
+	endtext
+
+.MessWithGameProgram:
+	ld a, ERR_PEBKAC
+	jmp Crash
 
 MapCeladonMansion3FSignpost3Script:
 	jumptext CeladonMansion3FReferenceMaterialText
@@ -199,6 +211,14 @@ CeladonMansion3FGameProgramText:
 
 	para "with it could put"
 	line "a bug in the game!"
+
+	para "Want to mess with"
+	line "it anyway?"
+	done
+
+CeladonMansion3FAreYouSureText:
+	text "Are you sure?"
+	line "It could crash!"
 	done
 
 CeladonMansion3FReferenceMaterialText:

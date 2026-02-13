@@ -1,5 +1,8 @@
 NewBarkTown_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU
+	scene_const SCENE_NEWBARKTOWN_LYRA_FINAL
+	scene_const SCENE_NEWBARKTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
@@ -12,13 +15,13 @@ NewBarkTown_MapScriptHeader:
 	warp_event 10,  2, ELMS_HOUSE, 2
 
 	def_coord_events
-	coord_event  1,  8, 0, NewBarkTown_TeacherStopsYouTrigger1
-	coord_event  1,  9, 0, NewBarkTown_TeacherStopsYouTrigger2
-	coord_event  6,  4, 0, NewBarkTown_LyraIntroTrigger
-	coord_event 17,  6, 1, NewBarkTown_LyraFinalTrigger1
-	coord_event 17,  7, 1, NewBarkTown_LyraFinalTrigger2
-	coord_event 17,  8, 1, NewBarkTown_LyraFinalTrigger3
-	coord_event 17,  9, 1, NewBarkTown_LyraFinalTrigger4
+	coord_event  1,  8, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouTrigger1
+	coord_event  1,  9, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouTrigger2
+	coord_event  6,  4, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_LyraIntroTrigger
+	coord_event 17,  6, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger1
+	coord_event 17,  7, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger2
+	coord_event 17,  8, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger3
+	coord_event 17,  9, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger4
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_JUMPTEXT, NewBarkTownSignText
@@ -90,7 +93,7 @@ NewBarkTown_LyraIntroTrigger:
 	applyonemovement NEWBARKTOWN_LYRA, step_up
 	playsound SFX_EXIT_BUILDING
 	disappear NEWBARKTOWN_LYRA
-	setscene $2
+	setscene SCENE_NEWBARKTOWN_NOOP
 	special FadeOutPalettes
 	pause 15
 	warpfacing UP, ELMS_LAB, 4, 11
@@ -144,7 +147,7 @@ NewBarkTown_LyraFinalTrigger:
 	showtext Text_LyraGoodbye2
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye3_NBT
 	disappear NEWBARKTOWN_LYRA
-	setscene $2
+	setscene SCENE_NEWBARKTOWN_NOOP
 	playmapmusic
 	end
 

@@ -1,6 +1,7 @@
 BattleTowerHallway_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleTowerHallwayFollowReceptionist
+	scene_script BattleTowerHallwayEnterScene, SCENE_BATTLETOWERHALLWAY_ENTER
+	scene_const SCENE_BATTLETOWERHALLWAY_NOOP
 
 	def_callbacks
 
@@ -22,7 +23,7 @@ BattleTowerHallway_MapScriptHeader:
 	object_const_def
 	const BATTLETOWERHALLWAY_RECEPTIONIST
 
-BattleTowerHallwayFollowReceptionist:
+BattleTowerHallwayEnterScene:
 	sdefer .ChooseBattleRoom
 	end
 

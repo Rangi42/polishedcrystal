@@ -460,6 +460,7 @@ PiersScript:
 	writetext PiersRewardText
 	promptbutton
 	verbosegiveitem THROAT_SPRAY
+	iffalse_jumpopenedtext PiersAfterText
 	setevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
 	jumpthisopenedtext
 
@@ -477,7 +478,12 @@ PiersAfterText:
 
 PiersRematchScript:
 	checkevent EVENT_BEAT_PIERS_AGAIN
+	iffalsefwd .DoRematch
+	checkevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
 	iftrue_jumpopenedtext PiersRematchAfterText
+	opentext
+	sjumpfwd .GiveThroatSpray
+.DoRematch:
 	checkevent EVENT_INTRODUCED_PIERS
 	iffalsefwd .Intro
 	writetext PiersRematchIntroAgainText
@@ -499,9 +505,11 @@ PiersRematchScript:
 	opentext
 	checkevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
 	iftrue_jumpopenedtext PiersRematchAfterText
+.GiveThroatSpray:
 	writetext PiersRewardText
 	promptbutton
 	verbosegiveitem THROAT_SPRAY
+	iffalse_jumpopenedtext PiersRematchAfterText
 	setevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
 	jumpthisopenedtext
 

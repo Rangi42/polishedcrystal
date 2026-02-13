@@ -1,5 +1,7 @@
 Route48_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE48_JESSIE_AND_JAMES
+	scene_const SCENE_ROUTE48_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
@@ -8,8 +10,8 @@ Route48_MapScriptHeader:
 	warp_event 11,  5, YELLOW_FOREST_GATE, 3
 
 	def_coord_events
-	coord_event 20, 12, 0, Route48JessieJamesScript1
-	coord_event 20, 13, 0, Route48JessieJamesScript2
+	coord_event 20, 12, SCENE_ROUTE48_JESSIE_AND_JAMES, Route48JessieJamesScript1
+	coord_event 20, 13, SCENE_ROUTE48_JESSIE_AND_JAMES, Route48JessieJamesScript2
 
 	def_bg_events
 	bg_event 27, 11, BGEVENT_JUMPTEXT, Route48YellowForestSignText
@@ -56,7 +58,7 @@ Route48JessieJamesScript1:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	setscene $1
+	setscene SCENE_ROUTE48_NOOP
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	showtext Route48JessieJamesAfterText

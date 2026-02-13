@@ -1296,7 +1296,7 @@ BattleAnimFunction_WaterGun:
 	ld hl, BATTLEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
-	cp $30
+	cp $2c
 	jr c, .run_down
 	ld a, $2
 	call BattleAnim_StepToTarget
@@ -1320,7 +1320,7 @@ BattleAnimFunction_WaterGun:
 	ld [hl], $0
 	ld hl, BATTLEANIMSTRUCT_YCOORD
 	add hl, bc
-	ld [hl], $30
+	ld [hl], $2c
 	ld hl, BATTLEANIMSTRUCT_OAMFLAGS
 	add hl, bc
 	ld a, [hl]

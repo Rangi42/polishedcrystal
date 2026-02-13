@@ -1,5 +1,8 @@
 RadioTower5F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_RADIOTOWER5F_FAKE_DIRECTOR
+	scene_const SCENE_RADIOTOWER5F_ROCKET_BOSS
+	scene_const SCENE_RADIOTOWER5F_NOOP
 
 	def_callbacks
 
@@ -8,8 +11,8 @@ RadioTower5F_MapScriptHeader:
 	warp_event 12,  0, RADIO_TOWER_4F, 3
 
 	def_coord_events
-	coord_event  0,  3, 0, FakeDirectorScript
-	coord_event 16,  5, 1, RadioTower5FRocketBossTrigger
+	coord_event  0,  3, SCENE_RADIOTOWER5F_FAKE_DIRECTOR, FakeDirectorScript
+	coord_event 16,  5, SCENE_RADIOTOWER5F_ROCKET_BOSS, RadioTower5FRocketBossTrigger
 
 	def_bg_events
 	bg_event  3,  0, BGEVENT_JUMPTEXT, SignpostRadioTower5FOffice
@@ -46,7 +49,7 @@ FakeDirectorScript:
 Petrel1Script:
 	checkevent EVENT_BEAT_PETREL_1
 	iftrue_jumptextfaceplayer FakeDirectorTextAfter
-	setscene $1
+	setscene SCENE_RADIOTOWER5F_ROCKET_BOSS
 	faceplayer
 	showtext FakeDirectorTextBefore3
 	winlosstext FakeDirectorWinText, 0
@@ -121,8 +124,8 @@ RadioTower5FRocketBossTrigger:
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton
 	closetext
-	setscene $2
-	setmapscene ECRUTEAK_HOUSE, $0
+	setscene SCENE_RADIOTOWER5F_NOOP
+	setmapscene ECRUTEAK_HOUSE, SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS
 	setevent EVENT_GOT_CLEAR_BELL
 	setevent EVENT_TEAM_ROCKET_DISBANDED
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksOut

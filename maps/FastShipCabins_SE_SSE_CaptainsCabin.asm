@@ -66,7 +66,7 @@ SSAquaGranddaughterBefore:
 	writetext SSAquaEntertainedGranddaughterText
 	promptbutton
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	setmapscene FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_NOOP
 	sjumpfwd SSAquaMachoBraceAndDocking
 
 SSAquaGrandpa:
@@ -79,7 +79,7 @@ SSAquaGrandpa:
 	writetext SSAquaCantFindGranddaughterText
 	waitbutton
 	closetext
-	setmapscene FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_NOOP
 	end
 
 SSAquaMachoBraceAndDocking:

@@ -7,11 +7,25 @@ DEF object_const_def EQUS "const_def 1"
 MACRO def_scene_scripts
 	REDEF _NUM_SCENE_SCRIPTS EQUS "_NUM_SCENE_SCRIPTS_\@"
 	db {_NUM_SCENE_SCRIPTS}
+	const_def
 	def {_NUM_SCENE_SCRIPTS} = 0
 ENDM
 
+MACRO scene_const
+;\1: scene id constant
+	const \1
+	EXPORT \1
+ENDM
+
 MACRO scene_script
-	dw \1 ; script
+;\1: script pointer
+;\2: scene id constant
+	dw \1
+	if _NARG == 2
+		scene_const \2
+	else
+		const_skip
+	endc
 	redef {_NUM_SCENE_SCRIPTS} += 1
 ENDM
 
@@ -117,28 +131,28 @@ MACRO object_event
 ENDM
 
 MACRO itemball_event
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_ITEMBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_ITEMBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
 ENDM
 
 MACRO keyitemball_event
 	assert _NARG == 4, "No quantity needed for keyitemball_event"
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
 ENDM
 
 MACRO tmhmball_event
 	assert _NARG == 4, "No quantity needed for tmhmball_event"
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_YELLOW, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_YELLOW, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
 ENDM
 
 MACRO cuttree_event
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, cuttree, \3
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, cuttree, \3
 ENDM
 
 MACRO fruittree_event
 	if _NARG == 5
-		object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, -1
+		object_event \1, \2, SPRITE_BLANK_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, -1
 	else
-		object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, (1 << \6), \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, \7
+		object_event \1, \2, SPRITE_BLANK_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, (1 << \6), \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, \7
 	endc
 ENDM
 

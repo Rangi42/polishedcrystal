@@ -1,6 +1,7 @@
 VioletGym_MapScriptHeader:
 	def_scene_scripts
-	scene_script VioletGymTrigger0
+	scene_script VioletGymNoopScene, SCENE_VIOLETGYM_NOOP
+	scene_const SCENE_VIOLETGYM_FALKNER_RETURNS
 
 	def_callbacks
 
@@ -24,7 +25,7 @@ VioletGym_MapScriptHeader:
 	object_const_def
 	const VIOLETGYM_GYM_GUY2
 
-VioletGymTrigger0:
+VioletGymNoopScene:
 	sdefer VioletGymFalknerAwayScript
 	end
 
@@ -58,7 +59,7 @@ VioletGymFalknerScript:
 	iftrue_jumpopenedtext FalknerFightDoneText
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
-	setmapscene ELMS_LAB, $2
+	setmapscene ELMS_LAB, SCENE_ELMSLAB_NOOP
 	specialphonecall SPECIALCALL_ASSISTANT
 	writetext FalknerZephyrBadgeText
 	promptbutton

@@ -578,7 +578,7 @@ MemoryGame_InterpretJoypad_AnimateCursor:
 	ret
 
 MemoryGameGFX:
-INCBIN "gfx/memory_game/memory_game.2bpp.lz"
+INCBIN "gfx/memory_game/memory_game.2bpp.lzp"
 
 MissingMemoryGameGFX:
 ; Graphics for an unused Game Corner

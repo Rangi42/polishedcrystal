@@ -1,3 +1,4 @@
+
 # FAQ
 
 If you have a question about playing Polished Crystal, or think you've found a bug, please read this FAQ first.
@@ -11,23 +12,24 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 * [Which file do I need to play?](#which-file-do-i-need-to-play)
 * [Which emulator should I use?](#which-emulator-should-i-use)
-* [What are the .sym files for?](#what-are-the-sym-files-for)
+* [Are there cheat codes?](#are-there-cheat-codes)
 * [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
-* [Is there an online companion or database I can use?](#is-there-an-online-companion-or-database-i-can-use)
-* [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
-* [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
 * [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)
+* [How can I change the current time?](#how-can-i-change-the-current-time)
 * [What happened to Nuzlocke Mode?](#what-happened-to-nuzlocke-mode)
 * [I don't recognize this move, what is it?](#i-dont-recognize-this-move-what-is-it)
 * [How do I evolve my Pokémon?](#how-do-i-evolve-my-pokémon)
 * [Where do I get the legendary Pokémon?](#where-do-i-get-the-legendary-pokémon)
 * [Where do I get this item?](#where-do-i-get-this-item)
+* [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
+* [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
 * [Where do I get Silver/Gold Leaves?](#where-do-i-get-silvergold-leaves)
 * [Where do I get this TM/HM?](#where-do-i-get-this-tmhm)
 * [What do blessings and photographs do?](#what-do-blessings-and-photographs-do)
 * [What is the Judge Machine?](#what-is-the-judge-machine)
 * [What are the "door-shaped grooves" in the Ruins of Alph and Route 47?](#what-are-the-door-shaped-grooves-in-the-ruins-of-alph-and-route-47)
 * [I don't like non-canon Pokémon types!](#i-dont-like-non-canon-pokémon-types)
+* [How can I switch from the faithful to the non-faithful version of the game?](#how-can-i-switch-from-the-faithful-to-the-non-faithful-version-of-the-game)
 
 
 ### Which file do I need to play?
@@ -56,7 +58,7 @@ Not every emulator is compatible with Polished Crystal. With the exception of th
 * [BGB](https://bgb.bircd.org/) - Polished Crystal developers use this emulator, more accurate than mGBA, powerful debugger
 
 #### Android:
-* [RetroArch](https://www.retroarch.com/) - use SameBoy or Gambatte core, **do not use VBA-M core**
+* [RetroArch](https://www.retroarch.com/) - use SameBoy, mGBA or Gambatte core, **do not use VBA-M core**
 
 #### iOS:
 * [SameBoy](https://sameboy.github.io/) - see PC section
@@ -70,47 +72,38 @@ Conversely, the following emulators are known to have issues and **should not be
 #### iOS:
 * Delta - while we have had a higher incidence rate of issues with Delta, there is presently no evidence that the emulator itself has any issues. We do still strongly recommend using SameBoy on iOS, as we still are awaiting evidence of any unusual issues with this emulator and save states
 
+#### Android:
+* MyOldBoy - while most of the game is playable, it is incompatible with the Real-Time Clock in Polished Crystal.
+* Nostalgia.GBC - the save file structure that this emulator produces is incompatible with Polished Crystal's save patcher, which means that updating your save to a newer version in the future will be impossible.
+* JohnGBC - is confirmed to cause rendering issues and possibly more.
+
 #### Other:
 * Goomba Color - used to play GB/C games from a GBA flashcart, this emulator can't even run vanilla Crystal
 
 If you have a preferred emulator that isn't listed above, using it should be fine. Most modern emulators can indeed run Polished Crystal just fine. Be aware, though, that if you're consistently having an issue that isn't reproduced on either official hardware or the most accurate emulators, you will not be provided any support.
 
 
-### What are the .sym files for?
+### Are there cheat codes?
 
-The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
+Cheat codes are *not* officially supported: new updates may change or break old codes, which can lead to irreversible save corruption. There is instead [**Polished Editor**](https://www.polishededitor.vercel.app/), an **unofficial** online save editor for *Pokémon Polished Crystal*, created and maintained by [Rev3lation (@rev3lation)](https://github.com/KohKaiSern).  
 
-Cheat codes are *not* officially supported: new updates may change or break old codes, disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes.
+If you decide to use cheat codes anyway, note that cheat codes are easily misused - as such, **please disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes**. Should you wish to create your own cheats, you may refer to the .sym files. The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
 
 
 ### Is there documentation for all the {Pokémon, items, moves, etc}?
 
-A [wiki](https://github.com/Rangi42/polishedcrystal/wiki) is provided with various info. For things not present in the wiki, the game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
+
+Make good use of the in-game features! The updated Pokédex has a lot more information, including base stats, abilities, detailed wild locations etc. In addition, call Professor Elm to find out how your Pokémon evolves, and call Lyra to find out when your Pokémon learns their next move.
+
+Outside of the game, there exists a [wiki](https://github.com/Rangi42/polishedcrystal/wiki) that is provided with various info.
+Alternatively, you may consider [**PolishedDex**](https://www.polisheddex.app/), an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
+It provides a slew of searchable references, such as the Pokédex, move list, items, locations, abilities, wild encounters, special events and trainers, along with tools like a team builder, headbutt calculator, catch rate calculator and more.
+
+Note that the in-game reference is typically the most accurate, and online resources may not always reflect the game accurately. For the most accurate reference, the game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
 * [Move attributes](data/moves/moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
-
-You can also just use in-game features! The Pokédex has a lot more information, including base stats and detailed wild locations.
-
-
-### Is there an online companion or database I can use?
-
-Yes. [**PolishedDex**](https://www.polisheddex.app/) is an **unofficial** online companion site for *Pokémon Polished Crystal*, created and maintained by [Cammy (@caomicc)](https://github.com/caomicc).  
-It provides a searchable Pokédex, move list, items, locations, abilities, special events, and a team builder.  
-The site also links to official ROM releases and includes a FAQ and quick reference pages that many players find helpful while playing.  
-
-If you prefer browsing an online reference instead of (or in addition to) the in-repo data and wiki, PolishedDex is a great resource.
-
-
-### Why is shiny Gyarados gold? Is the red Gyarados shiny?
-
-I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It's shiny locked, meaning it can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
-
-
-### My Pokémon is a different color, is it shiny?
-
-There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
 
 
 ### What are the options at the start of a new game?
@@ -125,10 +118,13 @@ There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which ca
 * **Perfect stats:** All Pokémon stats, for you and the opponent, are calculated as if they had maximum IVs. The actual IVs are still random, so color variation and Hidden Power type are not affected. Note that this has no impact on EVs in any way.
 * **Traded PKMN obey:** All differences in traded Pokémon go away: they always obey you, don't gain boosted experience, and can be nicknamed.
 * **Evolve in battle:** Allows your Pokémon to evolve in the middle of a battle if their evolution conditions are met.
-* **Color variation:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
+* **Color variation:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). IVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
 
-If you need to change these options after starting a game, press Left+B at the title screen to reset them.
+If you need to change these options after starting a game, press Left+B at the title screen (the screen of the running Suicune) to reset them.
 
+### How can I change the current time?
+
+Press Down+B at the title screen (the screen of the running Suicune) to reset the clock.
 
 ### What happened to Nuzlocke Mode?
 
@@ -147,25 +143,22 @@ There's only room for 255 moves, including Struggle. I wanted to fit in as many 
 
 Their animations in battle still depend on the Pokémon using them, e.g. Chansey's Fresh Snack looks like Softboiled, while Miltank's looks like Milk Drink. That's also the case for some moves that were consolidated: for example, Withdraw and Harden were removed, but Defense Curl has the animation of Withdraw for Squirtle, and of Harden for Geodude.
 
-[Here's a table](https://cdn.discordapp.com/attachments/332698009060114434/754778965410971729/moves.png) of all the moves available in the 3.0.0 beta.
-
-
 ### How do I evolve my Pokémon?
 
-* Ask Professor Elm!  Give him a call with the Pokemon you have a question about in the lead slot in your party!
+* Ask Professor Elm! Give him a call with the Pokémon you have a question about in the lead slot in your party!
 * Gen 1's trade evolutions now evolve by using the Linking Cord item.
-* Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
-* Yanma, Tangela, and Piloswine evolve while knowing AncientPower.
+* Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve when leveling up while holding the item.
+* Yanma, Tangela, and Piloswine evolve when leveling up while knowing AncientPower - a trip to the Move Relearner may prove useful here.
 * Eevee evolves into Leafeon either with a Leaf Stone or by leveling up in Ilex Forest, site of the Moss Rock.
 * Eevee evolves into Glaceon either with an Ice Stone or by leveling up in the Ice Path, site of the Ice Rock.
 * Eevee evolves into Sylveon with a Shiny Stone.
-* Magneton evolves into Magnezone in Magnet Tunnel or Rock Tunnel, sites of the Lodestone.
+* Magneton evolves into Magnezone when leveling up in Magnet Tunnel or Rock Tunnel, sites of the Lodestone.
 
 
 ### Where do I get the legendary Pokémon?
 
 * Articuno is in the Seafoam Islands.
-* Zapdos is above the Power Plant after you fix the generator.
+* Zapdos is on the roof of Rock Tunnel.
 * Moltres is inside Cinnabar Volcano.
 * Their Galarian counterparts can be found by summoning them to the great cherry tree in Cherrygrove Bay. In order to do this, you need Lures which you can obtain from battles in the old Rocket Hideout in Celadon City.
 * Raikou and Entei are roaming Johto after you awaken them.
@@ -179,9 +172,13 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### Where do I get this item?
 
+* Exp Share is given by Elm's Aide in the Azalea Town/Ilex Forest gate house.
+* Linking Cord is given by Elm's Aide in the Ecruteak City west gate house. A second one in Johto can be found in the lower levels of Union Cave.
+* Macho Brace is given by Elm's Aide in Cliff Gate, accessible from Cianwood City.
+* Lucky Egg is given by Elm's Aide in Blackthorn City.
 * Helix Fossil and Dome Fossil are in Mt. Moon, or may appear from breakable rocks.
 * Old Amber is in Pewter City, or may appear from breakable rocks.
-* Razor Claw is in Quiet Cave, or held by some wild Sneasel.
+* Razor Claw is in Quiet Cave, or held by some wild Johto-form Sneasel.
 * Razor Fang is in Victory Road, or held by some wild Gligar.
 * Electirizer is in Rock Tunnel, or held by some wild Electabuzz family.
 * Magmarizer is on Cinnabar Island, or held by some wild Magmar family.
@@ -189,20 +186,29 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Upgrade is given to you in Silph Co. after fixing the Power Plant generator.
 * Dubious Disc is in Celadon City.
 * King's Rock is in Slowpoke Well, or held by some wild Slowpoke family and Poliwhirl/Poliwrath/Politoed.
-* Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite family and Steelix.
+* Metal Coat is in the Goldenrod Dept. Store basement (in a part accessible after 7 badges), or held by some wild Magnemite family and Steelix.
 * Hard Stone is given by Arthur on Route 36 on Thursdays, found by breaking rocks via Brick Break (Rock Smash in faithful) or held by some wild Happiny, Kantonian Corsola and Onix.
 * Dragon Scale is in Mt. Mortar, or held by some wild Horsea family and Dratini family.
 * Dusk Stones are in Cerulean Cave, Dark Cave, Dim Cave, Mt. Moon, Quiet Cave, Scary Cave or Union Cave. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the evening.
 * Shiny Stones are in Cherrygrove Bay, Mt. Moon or National Park. Bill's grandpa also gives you one, and you can win one in Bug-Catching Contest in the morning.
-* Bill's grandpa lives in Goldenrod City and gives you one of each Evolution stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells several evolution stones and the Linking Cord.
+* An Ice Stone is in Ice Path.
+* Bill's grandpa lives in Goldenrod City and gives you one of each evolution stone except for the Ice Stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. [Hidden Grottoes](https://github.com/Rangi42/polishedcrystal/blob/master/data/events/hidden_grottoes/grottoes.asm) often have an evolution stone as a rare item. The Celadon Dept. Store sells several evolution stones and the Linking Cord.
 
+
+### My Pokémon is a different color, is it shiny?
+
+There's usually only a 1 in 4,096 chance to encounter a shiny Pokémon (which can be raised with the Shiny Charm or using the Masuda method), and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)).
+
+
+### Why is shiny Gyarados gold? Is the red Gyarados shiny?
+
+I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It's shiny locked, meaning it can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
 
 ### Where do I get Silver/Gold Leaves?
 
-Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish and Gloom have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
+Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish and Gloom have a 55% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
-Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout and Weepinbell have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
-
+Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout and Weepinbell have a 55% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
 
 ### Where do I get this TM/HM?
 
@@ -234,3 +240,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 The regular version makes creative changes to Pokémon base stats and types, and to some move properties, mostly inspired by [Drayano's Sacred Gold and Storm Silver](https://gbatemp.net/threads/pokemon-sacred-gold-storm-silver.327567/). It also improves some translated terms that [Nob Ogasawara](https://twitter.com/dougdinsdale) [complained about](https://lparchive.org/Pokemon-Blue/code.html).
 
 The faithful version does not change those things, besides updating stats to the latest canon generation.
+
+### How can I switch from the faithful to the non-faithful version of the game?
+
+There is no need to reset your progress. The save file for one is compatible with the other. Download the other version of the game (the .gbc file), and replace your current game file with the alternative version. Ensure that both your save file and new game file have the same file name. This completes the switch - load up your game in your emulator and continue playing.

@@ -45,7 +45,7 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUGSY
 	opentext
 	givebadge HIVEBADGE, JOHTO_REGION
-	setmapscene AZALEA_TOWN, $1
+	setmapscene AZALEA_TOWN, SCENE_AZALEATOWN_RIVAL_BATTLE
 	setevent EVENT_BEAT_TWINS_AMY_AND_MAY
 	setevent EVENT_BEAT_BUG_CATCHER_BENNY
 	setevent EVENT_BEAT_BUG_CATCHER_AL

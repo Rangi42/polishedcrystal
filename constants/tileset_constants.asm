@@ -2,7 +2,7 @@
 	const_def 1
 	const TILESET_JOHTO_TRADITIONAL    ; 01
 	const TILESET_JOHTO_MODERN         ; 02
-	const TILESET_JOHTO_OVERCAST       ; 03
+	const TILESET_JOHTO_OUTLANDS       ; 03
 	const TILESET_BATTLE_TOWER_OUTSIDE ; 04
 	const TILESET_ECRUTEAK_SHRINE      ; 05
 DEF NO_ROOF_TILESETS EQU const_value
@@ -47,6 +47,7 @@ DEF NO_ROOF_TILESETS EQU const_value
 	const TILESET_BATTLE_FACTORY       ; 2c
 	const TILESET_SNOWTOP_MOUNTAIN     ; 2d
 	const TILESET_HIDDEN_GROTTO        ; 2e
+	const TILESET_PEAKS                ; 2f
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
@@ -59,7 +60,7 @@ DEF TILESET_LENGTH EQU 18
 	const ROOF_VIOLET    ; 1
 	const ROOF_AZALEA    ; 2
 	const ROOF_OLIVINE   ; 3
-	const ROOF_STATUE    ; 4
+	const ROOF_GOLDENROD ; 4
 DEF NUM_ROOFS EQU const_value
 
 ; roof length (see gfx/tilesets/roofs)

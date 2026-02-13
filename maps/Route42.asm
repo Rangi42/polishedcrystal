@@ -1,5 +1,8 @@
 Route42_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE42_NOOP
+	scene_const SCENE_ROUTE42_LYRA
+	scene_const SCENE_ROUTE42_SUICUNE
 
 	def_callbacks
 
@@ -12,12 +15,12 @@ Route42_MapScriptHeader:
 	warp_event 22, 10, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
-	coord_event 12,  6, 1, Route42LyraScript1
-	coord_event 12,  7, 1, Route42LyraScript2
-	coord_event 12,  8, 1, Route42LyraScript3
-	coord_event 12,  9, 1, Route42LyraScript4
-	coord_event 10,  6, 1, Route42LyraScript5
-	coord_event 24, 14, 2, Route42SuicuneScript
+	coord_event 12,  6, SCENE_ROUTE42_LYRA, Route42LyraScript1
+	coord_event 12,  7, SCENE_ROUTE42_LYRA, Route42LyraScript2
+	coord_event 12,  8, SCENE_ROUTE42_LYRA, Route42LyraScript3
+	coord_event 12,  9, SCENE_ROUTE42_LYRA, Route42LyraScript4
+	coord_event 10,  6, SCENE_ROUTE42_LYRA, Route42LyraScript5
+	coord_event 24, 14, SCENE_ROUTE42_SUICUNE, Route42SuicuneScript
 
 	def_bg_events
 	bg_event  4, 10, BGEVENT_JUMPTEXT, Route42Sign1Text
@@ -134,10 +137,10 @@ Route42LyraScript:
 	disappear ROUTE42_LYRA
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	iftruefwd .NoSuicune
-	setscene $2
+	setscene SCENE_ROUTE42_SUICUNE
 	sjumpfwd .Finish
 .NoSuicune
-	setscene $0
+	setscene SCENE_ROUTE42_NOOP
 .Finish
 	playmapmusic
 	end
@@ -149,9 +152,9 @@ Route42SuicuneScript:
 	applymovement ROUTE42_SUICUNE, Route42SuicuneMovement
 	disappear ROUTE42_SUICUNE
 	pause 10
-	setscene $0
+	setscene SCENE_ROUTE42_NOOP
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setmapscene ROUTE_36, $1
+	setmapscene ROUTE_36, SCENE_ROUTE36_SUICUNE
 	end
 
 TrainerFisherTully1:
