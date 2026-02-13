@@ -1333,7 +1333,9 @@ wOvercastRandomMaps::
 	overcast_random_map Kanto2
 
 wNeededMonPalLight:: db ; for SPRITE_MON_ICON two-nybble palettes, stores the light color palette index
-	ds 49 ; unused
+wNeededPalType:: db ; 0 = normal palette, non-zero = mon two-nybble palette
+wLoadedObjPalType:: ds 8 ; palette type for each wLoadedObjPal slot (0 = normal, non-zero = mon)
+	ds 40 ; unused
 
 wCandyAmounts::
 	table_width 1

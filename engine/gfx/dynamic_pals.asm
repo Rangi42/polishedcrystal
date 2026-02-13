@@ -6,9 +6,14 @@ ClearSavedObjPals::
 
 	xor a
 	ld [wUsedObjectPals], a
+	ld [wNeededPalType], a
+	ld hl, wLoadedObjPalType
+	ld bc, 8
+	rst ByteFill
 	ld hl, wLoadedObjPal0
 	ld bc, wNeededPalIndex - wLoadedObjPal0
 	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
 	rst ByteFill
 
 	pop af
@@ -55,6 +60,11 @@ CheckForUsedObjPals::
 	; reset all wUsedObjectPals bits
 	xor a
 	ld [wUsedObjectPals], a
+
+	; Initialize transient palette state before dual pal check
+	ld [wNeededPalType], a ; a = 0 = normal
+	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
 
 	call CheckDualObjectPals
 
@@ -106,10 +116,14 @@ ScanObjectStructPals:
 	ld a, c
 	cp SPRITE_MON_ICON
 	jr nz, .not_mon_icon_pal
-	; For mon icons, interpret palette as two nybbles:
-	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
+	; Only interpret as two nybbles if the palette value is a MON_PAL_*_*
+	; encoding (>= NUM_OW_PALS after the system dec), not a normal PAL_OW_* value
 	pop af
 	push af
+	cp NUM_OW_PALS
+	jr c, .not_mon_icon_pal
+	; For mon icons, interpret palette as two nybbles:
+	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
 	ld c, a
 	swap a
 	and $f
@@ -119,32 +133,8 @@ ScanObjectStructPals:
 	and $f
 	cp [hl]
 	jr z, .same_nybbles
-	; Check if dark nybble (low) is TAN - if so, use light as main palette
-	; but still copy light's color 2 into color 1 (monochromatic)
-	cp PAL_MON_TAN
-	jr z, .tan_dark_color
-	; Check if light nybble is TAN - if so, keep original color 1
-	ld a, [hl]
-	cp PAL_MON_TAN
-	jr z, .tan_light_color
 	; Two different nybbles - use low nybble as the main (dark) palette
 	; wNeededMonPalLight already has the high nybble (light) palette
-	pop af
-	and $f
-	jr .store_pal_index
-.tan_dark_color
-	; TAN as dark means use the light color as the main palette
-	; wNeededMonPalLight already has the high nybble - keep it to copy color 2 into color 1
-	; Use high nybble (light) as the main palette
-	pop af
-	swap a
-	and $f
-	jr .store_pal_index
-.tan_light_color
-	; TAN as light means use the original color 1, so no secondary copy needed
-	ld a, NO_PAL_LOADED
-	ld [hl], a
-	; Still use low nybble as the main palette
 	pop af
 	and $f
 	jr .store_pal_index
@@ -152,10 +142,25 @@ ScanObjectStructPals:
 	; Same nybble values, treat as normal single palette
 	ld a, NO_PAL_LOADED
 	ld [hl], a
+	pop af
+	and $f
+	jr .store_pal_index
 .not_mon_icon_pal
 	pop af
 .store_pal_index
 	ld [wNeededPalIndex], a
+
+	; Determine palette type for slot matching
+	; wNeededMonPalLight != NO_PAL_LOADED means mon pal, else normal
+	ld c, a
+	ld a, [wNeededMonPalLight]
+	cp NO_PAL_LOADED
+	ld a, 0
+	jr z, .set_pal_type
+	inc a ; a = 1 for mon pal
+.set_pal_type
+	ld [wNeededPalType], a
+	ld a, c
 
 	; Mark the palette in use and/or load the palette
 	call MarkUsedPal
@@ -186,12 +191,29 @@ MarkUsedPal:
 	push de
 	push bc
 
-	; Check if pal is already loaded
+	; Check if pal is already loaded (must match both index and type)
 	lb bc, 8, 0
 	ld hl, wLoadedObjPal0
 .loaded_loop
 	cp [hl]
-	jr z, .mark_in_use
+	jr nz, .not_loaded_here
+	; Palette index matches - also check type
+	push af
+	push hl
+	ld hl, wLoadedObjPalType
+	push bc
+	ld b, 0
+	add hl, bc
+	pop bc
+	ld a, [wNeededPalType]
+	cp [hl]
+	pop hl
+	jr nz, .type_mismatch
+	pop af
+	jr .mark_in_use
+.type_mismatch
+	pop af
+.not_loaded_here
 	inc hl
 	inc c
 	dec b
@@ -232,6 +254,14 @@ MarkUsedPal:
 	ld hl, wLoadedObjPal0
 	add hl, bc
 	ld [hl], a
+
+	; Store the palette type for this slot
+	ld hl, wLoadedObjPalType
+	add hl, bc
+	push af
+	ld a, [wNeededPalType]
+	ld [hl], a
+	pop af
 
 	; Copy the needed pal
 	push bc
