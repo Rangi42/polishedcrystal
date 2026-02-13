@@ -386,7 +386,7 @@ ENDM
 	DEF FAKE_ROUTE_36_HEIGHT EQU ROUTE_36_HEIGHT - 1
 	connection north, FakeRoute36, FAKE_ROUTE_36, -20
 	PURGE GROUP_FAKE_ROUTE_36, MAP_FAKE_ROUTE_36, FAKE_ROUTE_36_WIDTH, FAKE_ROUTE_36_HEIGHT
-	connection east, Route32, ROUTE_32, 12
+	connection east, Route32, ROUTE_32, 10
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
