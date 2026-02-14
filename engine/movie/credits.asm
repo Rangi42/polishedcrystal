@@ -50,10 +50,16 @@ Credits::
 	xor a
 	ld [wCreditsLYOverride], a
 
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wLYOverrides)
+	ldh [rWBK], a
 	ld hl, wLYOverrides
 	ld bc, $100
 	xor a
 	rst ByteFill
+	pop af
+	ldh [rWBK], a
 
 	ld hl, rIE
 	set B_IE_STAT, [hl]
@@ -187,6 +193,10 @@ Credits_LYOverride:
 	ldh a, [rLY]
 	cp $30
 	jr c, Credits_LYOverride
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wLYOverrides)
+	ldh [rWBK], a
 	ld a, [wCreditsLYOverride]
 	dec a
 	dec a
@@ -195,6 +205,8 @@ Credits_LYOverride:
 	call .Fill
 	ld hl, wLYOverrides + $87
 	call .Fill
+	pop af
+	ldh [rWBK], a
 	jr Credits_Next
 
 .Fill:
