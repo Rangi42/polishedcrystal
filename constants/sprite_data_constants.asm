@@ -87,12 +87,14 @@ DEF NO_PAL_LOADED EQU -1
 DEF PAL_OW_WEATHER EQU 6
 
 MACRO ow_mon_pal_const
-	DEF _NYB_PAL_MON_{const_value} EQUS "\1"
-	const PAL_MON_\1
-	assert PAL_MON_\1 == PAL_OW_\1
+	DEF _const_value_low = const_value & 0x0f
+	DEF _NYB_PAL_MON_{_const_value_low} EQUS "\1"
+	const _PAL_MON_UNENCODED_\1
+	DEF PAL_MON_\1 EQU _PAL_MON_UNENCODED_\1 + 1
+	assert (_PAL_MON_UNENCODED_\1 & 0x0f) == PAL_OW_\1
 ENDM
 
-	const_def
+	const_def (PAL_OW_TAN << 4)
 	ow_mon_pal_const RED
 	ow_mon_pal_const BLUE
 	ow_mon_pal_const GREEN
@@ -107,14 +109,14 @@ ENDM
 	ow_mon_pal_const WHITE
 	ow_mon_pal_const BLACK
 	ow_mon_pal_const TAN
-DEF NUM_OW_MON_PALS EQU const_value
+DEF NUM_OW_MON_PALS EQU const_value & 0x0f
 assert NUM_OW_MON_PALS <= 16
 
 for i, NUM_OW_MON_PALS - 1
 	for j, i + 1, NUM_OW_MON_PALS
 		REDEF nyb_1 EQUS "_NYB_PAL_MON_{i}"
 		REDEF nyb_2 EQUS "_NYB_PAL_MON_{j}"
-		DEF MON_PAL_{{nyb_1}}_{{nyb_2}} EQU ((i << 4) | j) + 1
-		DEF MON_PAL_{{nyb_2}}_{{nyb_1}} EQU ((j << 4) | i) + 1
+		DEF PAL_MON_{{nyb_1}}_{{nyb_2}} EQU ((i << 4) | j) + 1
+		DEF PAL_MON_{{nyb_2}}_{{nyb_1}} EQU ((j << 4) | i) + 1
 	endr
 endr

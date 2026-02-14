@@ -1,5 +1,5 @@
 MACRO iconpal
-	db MON_PAL_\1, MON_PAL_\2
+	db PAL_MON_\1, PAL_MON_\2
 ENDM
 
 OverworldMonIconColors::

@@ -113,7 +113,7 @@ SetFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
-	; Decode MON_PAL_*_* value into dark/light palette indices
+	; Decode PAL_MON_*_* value into dark/light palette indices
 	call DecodeMonIconPal
 	ld de, wOBPals1 + 3 palettes
 	ld hl, wPalFlags
@@ -131,7 +131,7 @@ SetOWFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
-	; Decode MON_PAL_*_* value into dark/light palette indices
+	; Decode PAL_MON_*_* value into dark/light palette indices
 	call DecodeMonIconPal
 	; a = dark color index (wNeededPalIndex already set)
 	ld b, a
@@ -282,8 +282,8 @@ _GetMonIconPalette:
 	ld a, [hl] ; shiny = second byte
 	ret
 
-; Decode a MON_PAL_*_* value into wNeededPalIndex and wNeededMonPalLight.
-; Input: a = MON_PAL_*_* value
+; Decode a PAL_MON_*_* value into wNeededPalIndex and wNeededMonPalLight.
+; Input: a = PAL_MON_*_* value
 ; Output: a = dark color (PAL_OW_*), wNeededPalIndex = dark, wNeededMonPalLight = light (or NO_PAL_LOADED if same)
 DecodeMonIconPal:
 	dec a ; remove +1 encoding offset
