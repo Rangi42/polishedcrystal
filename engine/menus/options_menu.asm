@@ -54,6 +54,8 @@ OptionsMenu:
 	ld a, [wMenuJoypad]
 	cp PAD_B
 	jr z, .exit
+	cp PAD_SELECT
+	jr z, .show_description
 	cp PAD_LEFT
 	jr z, .apply_left
 	cp PAD_RIGHT
@@ -82,6 +84,12 @@ OptionsMenu:
 	xor a
 	ldh [hJoyPressed], a
 	call OptionsMenu_WaitDPadRelease
+	jr .loop
+
+.show_description
+	call OptionsMenu_ShowSelectionDescription
+	call InitScrollingMenu
+	call ApplyAttrAndTilemapInVBlank
 	jr .loop
 
 .apply_left
@@ -232,13 +240,13 @@ MenuDataHeader_Options:
 	db 0
 
 .MenuData2:
-	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS ; flags
+	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_SELECT ; flags
 	db 7, OPTIONS_MENU_VALUE_OFFSET ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
 	dba OptionsMenuItems ; text pointer
 	dba OptionsMenu_PlaceOptionName
 	dba OptionsMenu_PlaceOptionValue
-	dba NULL
+	dba OptionsMenu_PlaceOptionValue
 
 OptionsMenuItems:
 	db NUM_OPTIONS
@@ -784,3 +792,27 @@ Options_Done:
 .Exit:
 	scf
 	ret
+
+OptionsMenu_ShowSelectionDescription:
+	ld a, [wMenuSelection]
+	inc a ; -1? (Done)
+	jr z, .done_item
+	dec a
+	dec a ; 0-indexed (items are 1-based)
+	add a ; × 2 for pointer table
+	ld c, a
+	ld b, 0
+	ld hl, OptionsDescriptions
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call PrintText
+	ret
+
+.done_item
+	ld hl, OptionsDescriptions.Done
+	call PrintText
+	ret
+
+INCLUDE "data/options/option_descriptions.asm"

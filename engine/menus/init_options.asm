@@ -1,4 +1,5 @@
-DEF NUM_INITIAL_OPTIONS_PER_PAGE EQU 7
+DEF NUM_INITIAL_MENU_OPTIONS EQU 11
+DEF INITIAL_OPTIONS_VALUE_OFFSET EQU 9
 
 SetInitialOptions:
 	ld a, $10
@@ -13,6 +14,7 @@ SetInitialOptions:
 	call ClearBGPalettes
 	call LoadFrame
 
+	; Clear tilemap and attrmap
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 	xor a
@@ -23,6 +25,7 @@ SetInitialOptions:
 	xor a
 	rst ByteFill
 
+	; Use palette 1 for the SEL/HELP and START/DONE strip.
 	hlcoord 1, 16, wAttrmap
 	ld a, $01
 	ld c, 12
@@ -31,11 +34,13 @@ SetInitialOptions:
 	dec c
 	jr nz, .attr_loop
 
+	; Load custom BG palettes (blue theme)
 	ld hl, .BGPalettes
 	ld de, wBGPals1
 	ld bc, 2 palettes
 	call FarCopyColorWRAM
 
+	; Load custom BG tiles (edge borders)
 	ld hl, .BGTiles
 	ld de, vTiles2 tile $00
 	lb bc, BANK(.BGTiles), 15
@@ -49,77 +54,136 @@ SetInitialOptions:
 	ld hl, .InitialOptionsText
 	call PrintText
 
-	ld hl, hInMenu
-	ld a, [hl]
+	ldh a, [hInMenu]
 	push af
+	ld a, TRUE
+	ldh [hInMenu], a
+
 	xor a
-	ld [wJumptableIndex], a
-	inc a
-	ld [hl], a
+	ld [wBattleMenuFlags], a
 
-;	call ClearBGPalettes
-
-.rerender
+	ld hl, MenuDataHeader_InitialOptions
+	call CopyMenuHeader
 	xor a
 	ldh [hBGMapMode], a
-	hlcoord 0, 0
-	ld a, ' '
-	ld bc, SCREEN_AREA
-	rst ByteFill
+	call InitialOptions_DrawEdges
+	call InitialOptions_DrawBottomPrompts
 
-	hlcoord 0, 0
-	ld a, $01 ; left
-	ld bc, SCREEN_WIDTH - 2
-	ld d, SCREEN_HEIGHT
-.edge_loop
-	ld [hli], a
-	inc a ; right
-	add hl, bc
-	ld [hli], a
-	dec a ; left
-	dec d
-	jr nz, .edge_loop
-
-	hlcoord 2, 1
-	ld de, InitialOptionsString1
-	rst PlaceString
-
-	hlcoord 1, 16
-	ld a, $03
-	ld d, 12
-.select_start_loop
-	ld [hli], a
-	inc a
-	dec d
-	jr nz, .select_start_loop
-
-;	ld a, CGB_PLAIN
-;	call GetCGBLayout
-;	call SetDefaultBGPAndOBP
+	; initialize cursor position
 	xor a
-	ld [wCurOptionsPage], a
-	call InitialOptionsMenu_LoadOptions
+	ld [wOptionsMenuScrollPosition], a
+	ld a, 1
+	ld [wOptionsMenuCursor], a
 
-.joypad_loop
-	call JoyTextDelay
-	ldh a, [hJoyPressed]
-	bit B_PAD_SELECT, a
-	jr nz, .ShowDescription
-	and PAD_START | PAD_B
-	jr nz, .ExitOptions
-	call InitialOptionsControl
-	jr c, .DPad
-	call GetInitialOptionPointer
-	jr c, .ExitOptions
+.loop
+	ld hl, wMenuScrollPosition
+	ld a, [wOptionsMenuScrollPosition]
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	ld hl, wMenuCursorBuffer
+	ld a, [wOptionsMenuCursor]
+	ld [hli], a
+	xor a
+	ld [hl], a
+
+	call ScrollingMenu
+	ld a, TRUE
+	ldh [hInMenu], a
+
+	ld a, [wMenuScrollPosition]
+	ld [wOptionsMenuScrollPosition], a
+	ld a, [wMenuCursorY]
+	ld [wOptionsMenuCursor], a
+
+	ld a, [wMenuJoypad]
+	cp PAD_B
+	jp z, .exit
+	cp PAD_START
+	jp z, .exit
+	cp PAD_SELECT
+	jp z, .show_description
+	cp PAD_LEFT
+	jp z, .apply_left
+	cp PAD_RIGHT
+	jp z, .apply_right
+	cp PAD_A
+	jr nz, .loop
 	; fallthrough
 
-.DPad:
-	call InitialOptions_UpdateCursorPosition
-	ld c, 3
-	call DelayFrames
-	jr .joypad_loop
+; apply a
+	call InitialOptions_SetValueCoordFromCursor
+	ldh a, [hJoyPressed]
+	push af
+	ld a, PAD_RIGHT
+	ldh [hJoyPressed], a
+	ld a, [wMenuSelection]
+	and a ; 0?
+	jr z, .restore_a
+	inc a ; -1?
+	jr z, .restore_a
+	call InitialOptions_CallOptionRoutine
+	call ApplyTilemapInVBlank
+.restore_a
+	pop af
+	ldh [hJoyPressed], a
+	xor a
+	ldh [hJoyPressed], a
+	call InitialOptions_WaitDPadRelease
+	jmp .loop
 
-.ExitOptions:
+.show_description
+	call InitialOptions_ShowSelectionDescription
+	call InitialOptions_DrawEdges
+	call InitialOptions_DrawBottomPrompts
+	call ApplyAttrAndTilemapInVBlank
+	jmp .loop
+
+.apply_left
+	ldh a, [hJoyPressed]
+	and PAD_LEFT
+	jp z, .loop
+	ld a, PAD_LEFT
+	jr .apply_left_right
+
+.apply_right
+	ldh a, [hJoyPressed]
+	and PAD_RIGHT
+	jp z, .loop
+	ld a, PAD_RIGHT
+	; fallthrough
+
+.apply_left_right
+	push af ; save direction (PAD_LEFT or PAD_RIGHT)
+	call InitialOptions_SetValueCoordFromCursor
+	call InitialOptions_SetSelectionFromCursor
+	ld a, [wMenuSelection]
+	and a ; 0?
+	jr z, .skip_left_right
+	inc a ; -1?
+	jr z, .skip_left_right
+	pop bc ; restore direction into B
+	ldh a, [hJoyPressed]
+	push af
+	ld a, b
+	ldh [hJoyPressed], a
+	call InitialOptions_CallOptionRoutine
+	call ApplyTilemapInVBlank
+	pop af
+	ldh [hJoyPressed], a
+	xor a
+	ldh [hJoyPressed], a
+	call InitialOptions_WaitDPadRelease
+	jmp .loop
+
+.skip_left_right
+	pop af ; discard saved direction
+	jmp .loop
+
+.exit
 	ld hl, wInitialOptions2
 	res RESET_INIT_OPTS, [hl]
 	ld de, SFX_TRANSACTION
@@ -128,36 +192,6 @@ SetInitialOptions:
 	pop af
 	ldh [hInMenu], a
 	ret
-
-.ShowDescription:
-	ld hl, InitialOptionDescriptions
-	ld a, [wJumptableIndex]
-	ld d, a
-	ld a, [wCurOptionsPage]
-	and a
-	ld a, d
-	jr z, .page1
-	add NUM_INITIAL_OPTIONS_PER_PAGE
-.page1
-	add a
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call PrintText
-	call InitialOptions_ReRender
-	ld a, [wCurOptionsPage]
-	and a
-	ld de, InitialOptionsString1
-	jr z, .Display
-	ld de, InitialOptionsString2
-.Display
-	hlcoord 2, 1
-	rst PlaceString
-	call InitialOptionsMenu_LoadOptions
-	jr .joypad_loop
 
 .InitialOptionsText:
 	text_far _InitialOptionsText
@@ -169,73 +203,173 @@ INCLUDE "gfx/new_game/init_bg.pal"
 .BGTiles:
 INCBIN "gfx/new_game/init_bg.2bpp.lzp"
 
-InitialOptionsString1:
-	text  "Natures"
-	next1 "            :"
-	next1 "Abilities"
-	next1 "            :"
-	next1 "Phys/Spcl split"
-	next1 "            :"
-	next1 "EV gain"
-	next1 "            :"
-	next1 "Experience gain"
-	next1 "            :"
-	next1 "Affection bonus"
-	next1 "            :"
-	next1 "Next"
-	done
+InitialOptions_DrawEdges:
+	hlcoord 0, 0
+	ld a, $01 ; left edge tile
+	ld bc, SCREEN_WIDTH - 2
+	ld d, SCREEN_HEIGHT
+.edge_loop
+	ld [hli], a
+	inc a ; $02 = right edge tile
+	add hl, bc
+	ld [hli], a
+	dec a ; $01 = left edge tile
+	dec d
+	jr nz, .edge_loop
 
-InitialOptionsString2:
-	text  "Real-time clock"
-	next1 "            :"
-	next1 "Perfect stats"
-	next1 "            :"
-	next1 "Traded <PK><MN> obey"
-	next1 "            :"
-	next1 "Evolve in battle"
-	next1 "            :"
-	next1 "Color variation"
-	next1 "            :"
-	next1 "            " ; no-optimize trailing string space
-	next1 "            " ; no-optimize trailing string space
-	next1 "Previous"
-	done
+	; Restore edge attributes (palette 0) across the full screen.
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH - 2
+	ld d, SCREEN_HEIGHT
+	xor a
+.edge_attr_loop
+	ld [hli], a
+	inc a ; keep A non-zero while moving right edge
+	add hl, bc
+	xor a
+	ld [hli], a
+	dec d
+	jr nz, .edge_attr_loop
+	ret
 
-InitialOptionsMenu_LoadOptions:
-	ld a, [wJumptableIndex]
-	push af
-	xor a
-	ld [wJumptableIndex], a
-	ldh [hJoyPressed], a
-	ld c, NUM_INITIAL_OPTIONS_PER_PAGE
-.print_text_loop ; this next will display the settings of each option when the menu is opened
-	push bc
-	xor a
-	ldh [hJoyLast], a
-	call GetInitialOptionPointer
-	pop bc
-	ld hl, wJumptableIndex
-	inc [hl]
+InitialOptions_DrawBottomPrompts:
+	hlcoord 1, 16
+	ld a, $03
+	ld d, 12
+.bottom_loop
+	ld [hli], a
+	inc a
+	dec d
+	jr nz, .bottom_loop
+
+	; Clear anything to the right of the START/DONE graphic.
+	ld a, ' '
+	ld c, 6
+.bottom_clear_right_loop
+	ld [hli], a
 	dec c
-	jr nz, .print_text_loop
-	pop af
-	ld [wJumptableIndex], a
+	jr nz, .bottom_clear_right_loop
 
-	ld a, $1
-	ldh [hBGMapMode], a
-	jmp ApplyTilemapInVBlank
+	; Clear the bottom-most interior row to remove lingering textbox border tiles.
+	hlcoord 1, 17
+	ld a, ' '
+	ld c, 18
+.bottom_clear_last_row_loop
+	ld [hli], a
+	dec c
+	jr nz, .bottom_clear_last_row_loop
 
-GetInitialOptionPointer:
-	ld a, [wCurOptionsPage]
-	and a
-	ld a, [wJumptableIndex]
-	jr z, .page1
-	add NUM_INITIAL_OPTIONS_PER_PAGE
-.page1
+	hlcoord 1, 16, wAttrmap
+	ld a, $01
+	ld c, 12
+.bottom_attr_loop
+	ld [hli], a
+	dec c
+	jr nz, .bottom_attr_loop
+
+	; Restore default palette for the rest of row 16.
+	xor a
+	ld c, 6
+.bottom_attr_clear_right_loop
+	ld [hli], a
+	dec c
+	jr nz, .bottom_attr_clear_right_loop
+
+	; Restore default palette for row 17.
+	hlcoord 1, 17, wAttrmap
+	xor a
+	ld c, 18
+.bottom_attr_clear_last_row_loop
+	ld [hli], a
+	dec c
+	jr nz, .bottom_attr_clear_last_row_loop
+	ret
+
+InitialOptions_ShowSelectionDescription:
+	ld a, [wMenuSelection]
+	inc a ; -1? (Done)
+	jr z, .done_item
+	dec a
+	dec a ; 0-indexed (items are 1-based)
+	add a ; × 2 for pointer table
+	ld c, a
+	ld b, 0
+	ld hl, InitialOptionDescriptions
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call PrintText
+	ret
+
+.done_item
+	ld hl, InitialOptionDescriptions.Done
+	call PrintText
+	ret
+
+InitialOptions_SetSelectionFromCursor:
+	ld a, [wMenuCursorY]
+	dec a
+	ld b, a
+	ld a, [wMenuScrollPosition]
+	add b
+	ld [wMenuSelection], a
+	ld c, a
+	ld hl, wMenuData_ItemsPointerAddr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wMenuData_ItemsPointerBank]
+	ld b, a
+	call GetFarByte
+	ld d, a
+	ld a, c
+	cp d
+	jr c, .valid_index
+	ld a, -1
+	ld [wMenuSelection], a
+	ret
+
+.valid_index
+	inc hl ; skip count byte
+	ld a, [wMenuData_ScrollingMenuSpacing]
+	cp SCROLLINGMENU_ITEMS_QUANTITY
+	ld a, 1
+	jr nz, .got_stride
+	inc a ; 2
+.got_stride
+	push bc
+	ld b, 0
+	ld c, a
+	ld a, [wMenuSelection]
+	rst AddNTimes
+	pop af ; a = bank
+	call GetFarByte
+	ld [wMenuSelection], a
+	ret
+
+InitialOptions_SetValueCoordFromCursor:
+	call MenuBoxCoord2Tile
+	ld a, [wMenuFlags]
+	bit 7, a
+	ld bc, SCREEN_WIDTH + 1
+	jr z, .gotOffset
+	ld c, 1
+.gotOffset
+	add hl, bc
+	ld bc, 2 * SCREEN_WIDTH
+	ld a, [wMenuCursorY]
+	dec a
+	rst AddNTimes
+	ld bc, SCREEN_WIDTH + INITIAL_OPTIONS_VALUE_OFFSET
+	add hl, bc
+	jmp InitialOptions_StartValue
+
+InitialOptions_CallOptionRoutine:
+	ld a, [wMenuSelection]
+	dec a
 	call StackJumpTable
 
-; These are in the same order as InitialOptionDescriptions,
-; not the *_OPT bit order!
 .Pointers:
 	table_width 2
 	dw InitialOptions_Natures
@@ -244,21 +378,117 @@ GetInitialOptionPointer:
 	dw InitialOptions_EVs
 	dw InitialOptions_ExpScaling
 	dw InitialOptions_AffectionBonus
-	dw InitialOptions_Next
-
 	dw InitialOptions_RTC
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
 	dw InitialOptions_EvolveInBattle
 	dw InitialOptions_ColorVariation
-	dw DoNothing
-	dw InitialOptions_Previous
-	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
+	assert_table_length NUM_INITIAL_MENU_OPTIONS
+
+MenuDataHeader_InitialOptions:
+	db MENU_BACKUP_TILES
+	menu_coords 1, 0, 18, 15
+	dw .MenuData2
+	db 1 ; default option
+	db 0
+
+.MenuData2:
+	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_START | SCROLLINGMENU_ENABLE_SELECT ; flags
+	db 7, INITIAL_OPTIONS_VALUE_OFFSET ; rows, columns
+	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
+	dba InitialOptionsMenuItems ; text pointer
+	dba InitialOptions_PlaceOptionName
+	dba InitialOptions_PlaceOptionValue
+	dba InitialOptions_PlaceOptionValue
+
+InitialOptionsMenuItems:
+	db NUM_INITIAL_MENU_OPTIONS
+	db 1  ; Natures
+	db 2  ; Abilities
+	db 3  ; Phys/Spcl split
+	db 4  ; EV gain
+	db 5  ; Experience gain
+	db 6  ; Affection bonus
+	db 7  ; Real-time clock
+	db 8  ; Perfect stats
+	db 9  ; Traded PKMn obey
+	db 10 ; Evolve in battle
+	db 11 ; Color variation
+	db -1 ; Done
+
+InitialOptions_PlaceOptionName:
+	push de
+	ld de, InitialOptionNames.Done
+	ld a, [wMenuSelection]
+	inc a ; -1?
+	jr z, .got_name
+	add a
+	ld c, a
+	ld b, 0
+	ld hl, InitialOptionNames - 2 * 2
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+.got_name
+	pop hl
+	rst PlaceString
+	ret
+
+INCLUDE "data/options/initial_option_names.asm"
+
+InitialOptions_PlaceOptionValue:
+	ld a, [wMenuSelection]
+	inc a ; -1?
+	ret z
+	ld hl, SCREEN_WIDTH
+	add hl, de
+	call InitialOptions_StartValue
+	ldh a, [hJoyPressed]
+	push af
+	xor a
+	ldh [hJoyPressed], a
+	call InitialOptions_CallOptionRoutine
+	pop af
+	ldh [hJoyPressed], a
+	ret
+
+InitialOptions_StartValue:
+	ld a, l
+	ld [wOptionsMenuValueCoord], a
+	ld a, h
+	ld [wOptionsMenuValueCoord + 1], a
+	; Place ":" prefix immediately before the value.
+	dec hl
+	ld a, ':'
+	ld [hli], a
+	ret
+
+InitialOptions_WaitDPadRelease:
+.loop
+	call JoyTextDelay
+	ldh a, [hJoyDown]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .loop
+	ret
+
+InitialOptions_GetValueCoord:
+	ld hl, wOptionsMenuValueCoord
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+InitialOptions_PlaceStringAtValueCoord:
+	call InitialOptions_GetValueCoord
+	rst PlaceString
+	and a
+	ret
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit NATURES_OPT, [hl]
 	jr z, .SetNo
@@ -269,20 +499,16 @@ InitialOptions_Natures:
 .SetNo:
 	res NATURES_OPT, [hl]
 	ld de, NoString
-	jr .Display
+	jmp InitialOptions_PlaceStringAtValueCoord
 .SetYes:
 	set NATURES_OPT, [hl]
 	ld de, YesString
-.Display:
-	hlcoord 15, 2
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 InitialOptions_Abilities:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit ABILITIES_OPT, [hl]
 	jr z, .SetNo
@@ -293,20 +519,16 @@ InitialOptions_Abilities:
 .SetNo:
 	res ABILITIES_OPT, [hl]
 	ld de, NoString
-	jr .Display
+	jmp InitialOptions_PlaceStringAtValueCoord
 .SetYes:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
-.Display:
-	hlcoord 15, 4
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 InitialOptions_PSS:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit PSS_OPT, [hl]
 	jr z, .SetNo
@@ -317,22 +539,18 @@ InitialOptions_PSS:
 .SetNo:
 	res PSS_OPT, [hl]
 	ld de, NoString
-	jr .Display
+	jmp InitialOptions_PlaceStringAtValueCoord
 .SetYes:
 	set PSS_OPT, [hl]
 	ld de, YesString
-.Display:
-	hlcoord 15, 6
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 InitialOptions_EVs:
 	ld hl, wInitialOptions2
 	ld d, EV_OPTMASK
 	ldh a, [hJoyPressed]
 	ld e, a
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr z, .input_done
 	ld a, [hl]
 .redo
@@ -361,10 +579,7 @@ InitialOptions_EVs:
 	jr c, .Display
 	ld de, NoString
 .Display:
-	hlcoord 15, 8
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 InitialOptions_ExpScaling:
 	; set e to a sequential value for exp
@@ -382,11 +597,11 @@ InitialOptions_ExpScaling:
 .got_value
 	; check input
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr z, .no_input
 	bit B_PAD_LEFT, a
 	jr nz, .left_input
-	; input right or A
+	; input right
 	dec e
 	jr z, .SetScaled ; from right, 1->2
 .left_input
@@ -416,10 +631,7 @@ InitialOptions_ExpScaling:
 	res NO_EXP_OPT, [hl]
 	ld de, .New
 .Display:
-	hlcoord 15, 10
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 .Old:
 	db "Old@"
@@ -429,7 +641,7 @@ InitialOptions_ExpScaling:
 InitialOptions_AffectionBonus:
 	ld hl, wInitialOptions
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit AFFECTION_OPT, [hl]
 	jr z, .SetNo
@@ -440,116 +652,16 @@ InitialOptions_AffectionBonus:
 .SetNo:
 	res AFFECTION_OPT, [hl]
 	ld de, NoString
-	jr .Display
+	jmp InitialOptions_PlaceStringAtValueCoord
 .SetYes:
 	set AFFECTION_OPT, [hl]
 	ld de, YesString
-.Display:
-	hlcoord 15, 12
-	rst PlaceString
-	and a
-	ret
-
-InitialOptions_EvolveInBattle:
-	ld hl, wInitialOptions2
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
-	jr nz, .Toggle
-	bit EVOLVE_IN_BATTLE_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit EVOLVE_IN_BATTLE_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res EVOLVE_IN_BATTLE_OPT, [hl]
-	ld de, NoString
-	jr .Display
-.SetYes:
-	set EVOLVE_IN_BATTLE_OPT, [hl]
-	ld de, YesString
-.Display:
-	hlcoord 15, 8
-	rst PlaceString
-	and a
-	ret
-
-InitialOptions_ColorVariation:
-	ld hl, wInitialOptions
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
-	jr nz, .Toggle
-	bit COLOR_VARY_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit COLOR_VARY_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res COLOR_VARY_OPT, [hl]
-	ld de, NoString
-	jr .Display
-.SetYes:
-	set COLOR_VARY_OPT, [hl]
-	ld de, YesString
-.Display:
-	hlcoord 15, 10
-	rst PlaceString
-	and a
-	ret
-
-InitialOptions_PerfectIVs:
-	ld hl, wInitialOptions
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
-	jr nz, .Toggle
-	bit PERFECT_IVS_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit PERFECT_IVS_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res PERFECT_IVS_OPT, [hl]
-	ld de, NoString
-	jr .Display
-.SetYes:
-	set PERFECT_IVS_OPT, [hl]
-	ld de, YesString
-.Display:
-	hlcoord 15, 4
-	rst PlaceString
-	and a
-	ret
-
-InitialOptions_TradedMon:
-	ld hl, wInitialOptions
-	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
-	jr nz, .Toggle
-	bit TRADED_AS_OT_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit TRADED_AS_OT_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res TRADED_AS_OT_OPT, [hl]
-	ld de, NoString
-	jr .Display
-.SetYes:
-	set TRADED_AS_OT_OPT, [hl]
-	ld de, YesString
-.Display:
-	hlcoord 15, 6
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 InitialOptions_RTC:
 	ld hl, wInitialOptions2
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT | PAD_A
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .Toggle
 	bit RTC_OPT, [hl]
 	jr z, .SetNo
@@ -560,15 +672,91 @@ InitialOptions_RTC:
 .SetNo:
 	res RTC_OPT, [hl]
 	ld de, NoString
-	jr .Display
+	jmp InitialOptions_PlaceStringAtValueCoord
 .SetYes:
 	set RTC_OPT, [hl]
 	ld de, YesString
-.Display:
-	hlcoord 15, 2
-	rst PlaceString
-	and a
-	ret
+	jmp InitialOptions_PlaceStringAtValueCoord
+
+InitialOptions_PerfectIVs:
+	ld hl, wInitialOptions
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit PERFECT_IVS_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit PERFECT_IVS_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res PERFECT_IVS_OPT, [hl]
+	ld de, NoString
+	jmp InitialOptions_PlaceStringAtValueCoord
+.SetYes:
+	set PERFECT_IVS_OPT, [hl]
+	ld de, YesString
+	jmp InitialOptions_PlaceStringAtValueCoord
+
+InitialOptions_TradedMon:
+	ld hl, wInitialOptions
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit TRADED_AS_OT_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit TRADED_AS_OT_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res TRADED_AS_OT_OPT, [hl]
+	ld de, NoString
+	jmp InitialOptions_PlaceStringAtValueCoord
+.SetYes:
+	set TRADED_AS_OT_OPT, [hl]
+	ld de, YesString
+	jmp InitialOptions_PlaceStringAtValueCoord
+
+InitialOptions_EvolveInBattle:
+	ld hl, wInitialOptions2
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit EVOLVE_IN_BATTLE_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res EVOLVE_IN_BATTLE_OPT, [hl]
+	ld de, NoString
+	jmp InitialOptions_PlaceStringAtValueCoord
+.SetYes:
+	set EVOLVE_IN_BATTLE_OPT, [hl]
+	ld de, YesString
+	jmp InitialOptions_PlaceStringAtValueCoord
+
+InitialOptions_ColorVariation:
+	ld hl, wInitialOptions
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit COLOR_VARY_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit COLOR_VARY_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res COLOR_VARY_OPT, [hl]
+	ld de, NoString
+	jmp InitialOptions_PlaceStringAtValueCoord
+.SetYes:
+	set COLOR_VARY_OPT, [hl]
+	ld de, YesString
+	jmp InitialOptions_PlaceStringAtValueCoord
 
 NoString:
 	db "No @"
@@ -578,135 +766,5 @@ AllString:
 	db "All@"
 ModernString:
 	db "{-3d:MODERN_EV_LIMIT}@"
-
-InitialOptions_Next:
-	ldh a, [hJoyPressed]
-	and PAD_A | PAD_LEFT | PAD_RIGHT
-	jr z, .NonePressed
-	call InitialOptions_ReRender
-	ld de, InitialOptionsString2
-	hlcoord 2, 1
-	rst PlaceString
-	ld a, 1
-	ld [wCurOptionsPage], a
-	call InitialOptionsMenu_LoadOptions
-	ld a, NUM_INITIAL_OPTIONS_PER_PAGE - 1
-	ld [wJumptableIndex], a
-.NonePressed:
-	and a
-	ret
-
-InitialOptions_Previous:
-	ldh a, [hJoyPressed]
-	and PAD_A | PAD_LEFT | PAD_RIGHT
-	jr z, .NonePressed
-	call InitialOptions_ReRender
-	ld de, InitialOptionsString1
-	hlcoord 2, 1
-	rst PlaceString
-	xor a
-	ld [wCurOptionsPage], a
-	call InitialOptionsMenu_LoadOptions
-	ld a, NUM_INITIAL_OPTIONS_PER_PAGE - 1
-	ld [wJumptableIndex], a
-.NonePressed:
-	and a
-	ret
-
-InitialOptionsControl:
-	ld hl, wJumptableIndex
-	ldh a, [hJoyLast]
-	cp PAD_DOWN
-	jr z, .DownPressed
-	cp PAD_UP
-	jr z, .UpPressed
-	and a
-	ret
-
-.DownPressed:
-	ld a, [hl] ; load the cursor position to a
-	cp NUM_INITIAL_OPTIONS_PER_PAGE - 1
-	jr nz, .Increase
-	ld [hl], -1
-.Increase:
-	inc [hl]
-	call CheckSkipPage2Item5
-	jr nz, .no_skip_inc
-	inc [hl]
-.no_skip_inc
-	scf
-	ret
-
-.UpPressed:
-	ld a, [hl]
-	and a
-	jr nz, .Decrease
-	ld [hl], NUM_INITIAL_OPTIONS_PER_PAGE
-.Decrease:
-	dec [hl]
-	call CheckSkipPage2Item5
-	jr nz, .no_skip_dec
-	dec [hl]
-.no_skip_dec
-	scf
-	ret
-
-CheckSkipPage2Item5:
-	ld a, [wCurOptionsPage]
-	dec a
-	ret nz ; no skip
-	ld a, [hl] ; [wJumptableIndex]
-	cp 5
-	ret
-
-InitialOptions_UpdateCursorPosition:
-	hlcoord 1, 1
-	ld de, SCREEN_WIDTH
-	ld c, NUM_INITIAL_OPTIONS_PER_PAGE * 2
-.loop
-	ld [hl], ' '
-	add hl, de
-	dec c
-	jr nz, .loop
-	; hlcoord 1, [wJumptableIndex] * 2 + 1
-	ld a, [wJumptableIndex]
-	add a
-	hlcoord 0, 1
-	ld bc, SCREEN_WIDTH
-	rst AddNTimes
-	inc hl
-	ld [hl], '▶'
-	ret
-
-InitialOptions_ReRender:
-	xor a
-	ldh [hBGMapMode], a
-	hlcoord 0, 0
-	ld a, ' '
-	ld bc, SCREEN_AREA
-	rst ByteFill
-
-	hlcoord 0, 0
-	ld a, $01 ; left
-	ld bc, SCREEN_WIDTH - 2
-	ld d, SCREEN_HEIGHT
-.edge_loop
-	ld [hli], a
-	inc a ; right
-	add hl, bc
-	ld [hli], a
-	dec a ; left
-	dec d
-	jr nz, .edge_loop
-
-	hlcoord 1, 16
-	ld a, $03
-	ld d, 12
-.select_start_loop
-	ld [hli], a
-	inc a
-	dec d
-	jr nz, .select_start_loop
-	ret
 
 INCLUDE "data/options/descriptions.asm"
