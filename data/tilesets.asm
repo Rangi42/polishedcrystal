@@ -56,6 +56,7 @@ Tilesets::
 	tileset TilesetSnowtopMountain
 	tileset TilesetHiddenGrotto
 	tileset TilesetPeaks
+	tileset TilesetHideout
 	assert_table_length NUM_TILESETS
 
 
@@ -841,6 +842,23 @@ TilesetPeaksAttr:: INCBIN "data/tilesets/peaks_attributes.bin.lzp"
 TilesetPeaksColl:: INCBIN "data/tilesets/peaks_collision.bin.lzp"
 
 
+SECTION "Tileset Graphics - hideout vram0", ROMX
+
+TilesetHideoutGFX0:: INCBIN "gfx/tilesets/hideout.2bpp.vram0.lzp"
+
+
+SECTION "Tileset Graphics - hideout vram1", ROMX
+
+TilesetHideoutGFX1:: INCBIN "gfx/tilesets/hideout.2bpp.vram1.lzp"
+
+
+SECTION "Tileset Data - hideout", ROMX
+
+TilesetHideoutMeta:: INCBIN "data/tilesets/hideout_metatiles.bin.lzp"
+TilesetHideoutAttr:: INCBIN "data/tilesets/hideout_attributes.bin.lzp"
+TilesetHideoutColl:: INCBIN "data/tilesets/hideout_collision.bin.lzp"
+
+
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
 TilesetJohtoOutlandsGFX2::
@@ -887,4 +905,5 @@ TilesetBattleFactoryGFX2::
 TilesetSnowtopMountainGFX2::
 TilesetHiddenGrottoGFX2::
 TilesetPeaksGFX2::
+TilesetHideoutGFX2::
 	db $ff ; Compressed data is terminated with $ff.

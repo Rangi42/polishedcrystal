@@ -29,12 +29,10 @@ TeamRocketBaseB2F_MapScriptHeader:
 	def_bg_events
 	bg_event 14, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
 	bg_event 15, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
-	bg_event 17,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 16,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 15,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 14,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 13,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 12,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 16,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 15,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 14,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 13,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 12,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 12,  7, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 12,  6, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
@@ -88,7 +86,7 @@ TransmitterDoorCallback:
 	endcallback
 
 .Change:
-	changeblock 14, 12, $7
+	changeblock 14, 12, $0d
 	endcallback
 
 RocketBaseBossFLeft:
@@ -333,7 +331,7 @@ TeamRocketBaseB2FLockedDoor:
 	writetext RocketBaseDoorKnowPasswordText
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock 14, 12, $7
+	changeblock 14, 12, $0d
 	refreshmap
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER

@@ -28,7 +28,7 @@ RocketHideoutB1F_MapScriptHeader:
 RocketHideoutB1FDoorScript:
 	checkevent EVENT_BEAT_BLACKBELT_RYLAN
 	iftruefwd .DoorOpen
-	changeblock 16, 16, $13
+	changeblock 16, 16, $06
 .DoorOpen
 	endcallback
 

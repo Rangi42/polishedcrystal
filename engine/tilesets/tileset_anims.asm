@@ -370,6 +370,7 @@ TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
 TilesetHiddenGrottoAnim::
+TilesetHideoutAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing

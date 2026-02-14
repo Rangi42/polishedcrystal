@@ -63,7 +63,7 @@ TeamRocketBaseB3FCheckGiovanniDoor:
 	endcallback
 
 .OpenSesame:
-	changeblock 10, 8, $7
+	changeblock 10, 8, $0d
 	endcallback
 
 LanceGetPasswordScript:
@@ -192,7 +192,7 @@ BossDoor:
 	writetext TeamRocketBaseB3FLockedDoorOpenSesameText
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock 10, 8, $7
+	changeblock 10, 8, $0d
 	refreshmap
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
