@@ -87,11 +87,11 @@ DEF NO_PAL_LOADED EQU -1
 DEF PAL_OW_WEATHER EQU 6
 
 MACRO ow_mon_pal_const
-	DEF _const_value_low = const_value & 0x0f
+	DEF _const_value_low = const_value & $0f
 	DEF _NYB_PAL_MON_{_const_value_low} EQUS "\1"
 	const _PAL_MON_UNENCODED_\1
 	DEF PAL_MON_\1 EQU _PAL_MON_UNENCODED_\1 + 1
-	assert (_PAL_MON_UNENCODED_\1 & 0x0f) == PAL_OW_\1
+	assert (_PAL_MON_UNENCODED_\1 & $0f) == PAL_OW_\1
 ENDM
 
 	const_def (PAL_OW_TAN << 4)
