@@ -53,13 +53,15 @@ OptionsMenu:
 
 	ld a, [wMenuJoypad]
 	cp PAD_B
-	jr z, .exit
+	jp z, .exit
+	cp PAD_START
+	jp z, .exit
 	cp PAD_SELECT
-	jr z, .show_description
+	jp z, .show_description
 	cp PAD_LEFT
-	jr z, .apply_left
+	jp z, .apply_left
 	cp PAD_RIGHT
-	jr z, .apply_right
+	jp z, .apply_right
 	cp PAD_A
 	jr nz, .loop
 	; fallthrough
@@ -95,14 +97,14 @@ OptionsMenu:
 .apply_left
 	ldh a, [hJoyPressed]
 	and PAD_LEFT
-	jr z, .loop
+	jp z, .loop
 	ld a, PAD_LEFT
 	jr .apply_left_right
 
 .apply_right
 	ldh a, [hJoyPressed]
 	and PAD_RIGHT
-	jr z, .loop
+	jp z, .loop
 	ld a, PAD_RIGHT
 	; fallthrough
 
@@ -240,7 +242,7 @@ MenuDataHeader_Options:
 	db 0
 
 .MenuData2:
-	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_SELECT ; flags
+	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_START | SCROLLINGMENU_ENABLE_SELECT ; flags
 	db 7, OPTIONS_MENU_VALUE_OFFSET ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
 	dba OptionsMenuItems ; text pointer
