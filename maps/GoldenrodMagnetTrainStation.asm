@@ -28,7 +28,17 @@ GoldenrodMagnetTrainStationOfficerScript:
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .MagnetTrainToSaffron
-	jumpopenedtext GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText
+	jumpthisopenedtext
+
+	text "The train hasn't"
+	line "come in…"
+
+	para "I know! I'll carry"
+	line "the passengers on"
+	cont "my back!"
+
+	para "That won't work."
+	done
 
 .MagnetTrainToSaffron:
 	writetext GoldenrodMagnetTrainStationOfficerAreYouComingAboardText
@@ -60,10 +70,25 @@ Script_ArriveFromSaffron:
 GoldenrodMagnetTrainStationCooltrainerfScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .PowerRestored
-	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText1
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "is like, zoooom,"
+	cont "byun! Shuuu!"
+
+	para "At least when"
+	line "it's running…"
+	done
 
 .PowerRestored
-	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText2
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "is like, zoooom,"
+	cont "byun! Shuuu!"
+
+	para "It's so cool!"
+	done
 
 GoldenrodMagnetTrainStationOfficerApproachTrainDoorMovement:
 	step_up
@@ -99,16 +124,6 @@ GoldenrodMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement:
 	turn_head_up
 	step_end
 
-GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText:
-	text "The train hasn't"
-	line "come in…"
-
-	para "I know! I'll carry"
-	line "the passengers on"
-	cont "my back!"
-
-	para "That won't work."
-	done
 
 GoldenrodMagnetTrainStationOfficerAreYouComingAboardText:
 	text "We'll soon depart"
@@ -158,19 +173,4 @@ GoldenrodMagnetTrainStationGentlemanText:
 	cont "to Kanto."
 	done
 
-GoldenrodMagnetTrainStationCooltrainerfText1:
-	text "The Magnet Train"
-	line "is like, zoooom,"
-	cont "byun! Shuuu!"
 
-	para "At least when"
-	line "it's running…"
-	done
-
-GoldenrodMagnetTrainStationCooltrainerfText2:
-	text "The Magnet Train"
-	line "is like, zoooom,"
-	cont "byun! Shuuu!"
-
-	para "It's so cool!"
-	done

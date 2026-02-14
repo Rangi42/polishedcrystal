@@ -58,7 +58,22 @@ Script_ArriveFromGoldenrod:
 SaffronMagnetTrainStationGymGuideScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart
-	jumptextfaceplayer SaffronMagnetTrainStationGymGuideText
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "is a super modern"
+
+	para "rail liner that"
+	line "uses electricity"
+
+	para "and magnets to"
+	line "attain incredible"
+	cont "speed."
+
+	para "However, if there"
+	line "isn't any elec-"
+	cont "tricity…"
+	done
 
 SaffronMagnetTrainStationOfficerApproachTrainDoorMovement:
 	step_up
@@ -134,21 +149,6 @@ SaffronMagnetTrainStationOfficerArrivedInSaffronText:
 	line "again."
 	done
 
-SaffronMagnetTrainStationGymGuideText:
-	text "The Magnet Train"
-	line "is a super modern"
-
-	para "rail liner that"
-	line "uses electricity"
-
-	para "and magnets to"
-	line "attain incredible"
-	cont "speed."
-
-	para "However, if there"
-	line "isn't any elec-"
-	cont "tricity…"
-	done
 
 SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart:
 	text "Whew…"

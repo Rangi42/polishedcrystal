@@ -185,10 +185,18 @@ ENDM
 
 FightingDojoBlackBelt:
 	checkevent EVENT_BEAT_BLUE
-	iftruefwd .BlackBeltExplainsRematchesScript
-	jumptextfaceplayer FightingDojoBlackBeltText
-.BlackBeltExplainsRematchesScript
-	jumptextfaceplayer BlackBeltText_ExplainsRematches
+	iftrue_jumptextfaceplayer BlackBeltText_ExplainsRematches
+	jumpthistextfaceplayer
+
+	text "Hello!"
+
+	para "Karate King, the"
+	line "Fighting Dojo's"
+
+	para "master, is in a"
+	line "cave in Johto for"
+	cont "training."
+	done
 
 MapFightingDojoSignpost2Script:
 	opentext
@@ -240,9 +248,17 @@ MapFightingDojoSignpost2Script:
 .saturday
 	checkevent EVENT_BEAT_AGATHA
 	iftruefwd .saturday_agatha
-	jumpopenedtext FightingDojoScheduleSaturdayText
+	jumpthisopenedtext
+
+	text "Saturday: Whitney,"
+	line "Chuck, ???"
+	done
 .saturday_agatha
-	jumpopenedtext FightingDojoScheduleSaturdayAgathaText
+	jumpthisopenedtext
+
+	text "Saturday: Whitney,"
+	line "Chuck, Agatha"
+	done
 
 RematchRed0Script:
 	readvar VAR_WEEKDAY
@@ -258,7 +274,7 @@ RematchRed0Script:
 .Red0TuesdayNight
 	sjump RematchLoreleiScript
 .Red0Wednesday
-	sjump RematchMistyScript
+	sjumpfwd RematchMistyScript
 .Red0Friday
 	sjump RematchYellowScript
 .Red0Saturday
@@ -294,7 +310,7 @@ RematchBlue2Script:
 	checktime (1 << EVE) | (1 << NITE)
 	iftruefwd .Blue2MondayNight
 .Blue2MondayMorningDay
-	sjump RematchJanineScript
+	sjumpfwd RematchJanineScript
 .Blue2MondayNight
 	sjump RematchWalkerScript
 
@@ -323,16 +339,6 @@ RematchBrown2Script:
 .Brown2SaturdayNight
 	sjump RematchAgathaScript
 
-FightingDojoBlackBeltText:
-	text "Hello!"
-
-	para "Karate King, the"
-	line "Fighting Dojo's"
-
-	para "master, is in a"
-	line "cave in Johto for"
-	cont "training."
-	done
 
 BlackBeltText_ExplainsRematches:
 	text "Gym Leaders from"
@@ -873,12 +879,4 @@ FightingDojoScheduleFridayYellowText:
 	line "Yellow, Clair"
 	done
 
-FightingDojoScheduleSaturdayText:
-	text "Saturday: Whitney,"
-	line "Chuck, ???"
-	done
 
-FightingDojoScheduleSaturdayAgathaText:
-	text "Saturday: Whitney,"
-	line "Chuck, Agatha"
-	done

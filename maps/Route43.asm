@@ -446,7 +446,12 @@ PicnickerTiffany1Script:
 	sjumpfwd .PackFull
 
 .NoClefairy:
-	jumpopenedtext PicnickerTiffanyClefairyText
+	jumpthisopenedtext
+
+	text "Isn't my Clefairy"
+	line "just the most"
+	cont "adorable thing?"
+	done
 
 .AskNumber1:
 	jumpstd asknumber1f
@@ -568,11 +573,6 @@ PicnickerTiffanyWantsPicnicText:
 	para "Won't you join us?"
 	done
 
-PicnickerTiffanyClefairyText:
-	text "Isn't my Clefairy"
-	line "just the most"
-	cont "adorable thing?"
-	done
 
 BreederJodySeenText:
 	text "I bred my #mon"

@@ -59,12 +59,17 @@ SetupFairyBookScript:
 	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
 	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
 	readvar VAR_WEEKDAY
-	ifequalfwd MONDAY, .Monday
-	ifequalfwd TUESDAY, .Tuesday
-	ifequalfwd WEDNESDAY, .Wednesday
-	ifequalfwd THURSDAY, .Thursday
-	ifequalfwd FRIDAY, .Friday
-	ifequalfwd SATURDAY, .Saturday
+	scalltable .FairyBookTable
+
+.FairyBookTable
+	dw .Sunday
+	dw .Monday
+	dw .Tuesday
+	dw .Wednesday
+	dw .Thursday
+	dw .Friday
+	dw .Saturday
+
 .Sunday
 	appear VALERIESHOUSE_PINK_FAIRY_BOOK
 	endcallback

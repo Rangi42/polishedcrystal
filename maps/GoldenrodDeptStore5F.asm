@@ -48,7 +48,13 @@ GoldenrodDeptStore5FReceptionistScript:
 	writetext GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText
 	promptbutton
 	ifgreater FRIEND_BALL_HAPPINESS - 1, .VeryHappy
-	jumpopenedtext GoldenrodDeptStore5FReceptionistItsAdorableText
+	jumpthisopenedtext
+
+	text "It's adorable!"
+
+	para "You should teach"
+	line "it good TM moves."
+	done
 
 .VeryHappy:
 	writetext GoldenrodDeptStore5FReceptionistThisMoveShouldBePerfectText
@@ -102,12 +108,6 @@ GoldenrodDeptStore5FReceptionistThisMoveShouldBePerfectText:
 	cont "pair like you."
 	done
 
-GoldenrodDeptStore5FReceptionistItsAdorableText:
-	text "It's adorable!"
-
-	para "You should teach"
-	line "it good TM moves."
-	done
 
 GoldenrodDeptStore5FCarrieMysteryGiftRequiresGBCText:
 	text "Looking at the"

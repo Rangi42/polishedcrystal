@@ -148,11 +148,21 @@ SnowtopMountainInsideTutorIcyWindScript:
 	jumpopenedtext Text_SnowtopMountainInsideTutorRefused
 
 .NoSilverLeaf
-	jumpopenedtext Text_SnowtopMountainInsideTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Oh, but you don't"
+	line "have a Silver"
+	cont "Leaf."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_SnowtopMountainInsideTutorTaught
+	jumpthisopenedtext
+
+	text "OK! Now your"
+	line "#mon knows"
+	cont "Icy Wind!"
+	done
 
 SnowtopMountainInsideSkierText:
 	text "The wind and hail"
@@ -176,11 +186,6 @@ Text_SnowtopMountainInsideTutorIcyWind:
 	cont "Silver Leaf."
 	done
 
-Text_SnowtopMountainInsideTutorNoSilverLeaf:
-	text "Oh, but you don't"
-	line "have a Silver"
-	cont "Leaf."
-	done
 
 Text_SnowtopMountainInsideTutorQuestion:
 	text "Should I teach"
@@ -192,8 +197,3 @@ Text_SnowtopMountainInsideTutorRefused: ; text > text
 	text "Brr…"
 	done
 
-Text_SnowtopMountainInsideTutorTaught:
-	text "OK! Now your"
-	line "#mon knows"
-	cont "Icy Wind!"
-	done

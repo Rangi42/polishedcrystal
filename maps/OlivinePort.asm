@@ -82,7 +82,11 @@ OlivinePortSailorAtGangwayScript:
 	end
 
 OlivinePortAlreadyRodeScript:
-	jumpopenedtext OlivinePortCantBoardText
+	jumpthisopenedtext
+
+	text "Sorry. You can't"
+	line "board now."
+	done
 
 OlivinePortWalkUpToShipScript:
 	turnobject OLIVINEPORT_SAILOR3, RIGHT
@@ -259,10 +263,6 @@ OlivinePortSailorGetOnBoardText:
 	cont "on board."
 	done
 
-OlivinePortCantBoardText:
-	text "Sorry. You can't"
-	line "board now."
-	done
 
 OlivinePortAskBoardText:
 	text "Welcome to Fast"

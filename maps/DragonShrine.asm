@@ -176,7 +176,17 @@ DragonShrineElder1Script:
 	iffalsefwd .GiveDratini
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftrue_jumptextfaceplayer DragonShrineSilverIsInTrainingText
-	jumptextfaceplayer DragonShrineClairsGrandfatherText
+	jumpthistextfaceplayer
+
+	text "Clair appears to"
+	line "have learned an"
+
+	para "invaluable lesson"
+	line "from you."
+
+	para "I thank you as her"
+	line "grandfather."
+	done
 
 .GiveDratini:
 	faceplayer
@@ -455,16 +465,6 @@ DragonShrineSymbolicDragonText:
 	line "one."
 	done
 
-DragonShrineClairsGrandfatherText:
-	text "Clair appears to"
-	line "have learned an"
-
-	para "invaluable lesson"
-	line "from you."
-
-	para "I thank you as her"
-	line "grandfather."
-	done
 
 DragonShrineSilverIsInTrainingText:
 	text "A boy close to"

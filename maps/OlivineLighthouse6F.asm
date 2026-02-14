@@ -32,7 +32,12 @@ OlivineLighthouseJasmine:
 	promptbutton
 	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
 .ExplainedSickness:
-	jumpopenedtext JasmineGetSomeMedicineText
+	jumpthisopenedtext
+
+	text "…May I ask you to"
+	line "get some medicine"
+	cont "for me? Please?"
+	done
 
 .BroughtSecretpotion:
 	writetext JasmineCureAmphyText
@@ -87,7 +92,10 @@ OlivineLighthouseJasmine:
 	closetext
 	turnobject OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	jumptext JasmineAmphyHangOnText
+	jumpthistext
+
+	text "…Amphy, hang on!"
+	done
 
 OlivineLighthouseAmphy:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
@@ -98,7 +106,11 @@ OlivineLighthouseAmphy:
 	setmonval AMPHAROS
 	special PlaySlowCry
 	promptbutton
-	jumpopenedtext AmphyBreathingLaboredText
+	jumpthisopenedtext
+
+	text "Its breathing is"
+	line "terribly labored…"
+	done
 
 .HealthyNow:
 	showcrytext AmphyPaluPaluluText, AMPHAROS
@@ -165,11 +177,6 @@ JasmineCianwoodPharmacyText:
 	line "Amphy unattended…"
 	done
 
-JasmineGetSomeMedicineText:
-	text "…May I ask you to"
-	line "get some medicine"
-	cont "for me? Please?"
-	done
 
 JasmineCureAmphyText:
 	text "Jasmine: …Will"
@@ -218,19 +225,12 @@ JasmineISeeText:
 	text "Jasmine: …I see…"
 	done
 
-JasmineAmphyHangOnText:
-	text "…Amphy, hang on!"
-	done
 
 AmphyPalPalooText:
 	text "Amphy: …"
 	line "…Pa… paloo…"
 	done
 
-AmphyBreathingLaboredText:
-	text "Its breathing is"
-	line "terribly labored…"
-	done
 
 AmphyPaluPaluluText:
 	text "Amphy: Palu!"

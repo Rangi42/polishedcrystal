@@ -132,7 +132,32 @@ Route36FloriaScript:
 	iftrue_jumptextfaceplayer FloriaTextAfterSudowoodo
 	checkevent EVENT_GOT_SQUIRTBOTTLE
 	iftrue_jumptextfaceplayer FloriaTextAfterSquirtBottle
-	jumptextfaceplayer FloriaTextAfterPlainBadge
+	jumpthistextfaceplayer
+
+	text "I'm the Flower"
+	line "Shop's Floria!"
+
+	para "Listen, listen!"
+
+	para "When I sprinkled"
+	line "water on that"
+
+	para "wiggly tree, it"
+	line "jumped right up!"
+
+	para "It just has to be"
+	line "a #mon."
+
+	para "I bet it would be"
+	line "shocked out of its"
+
+	para "disguise if you"
+	line "soaked it!"
+
+	para "I know! I'll tell"
+	line "my sis and borrow"
+	cont "her water bottle!"
+	done
 
 Route36RockSmashGuyScript:
 	faceplayer
@@ -141,7 +166,19 @@ Route36RockSmashGuyScript:
 	iftruefwd .AlreadyGotRockSmash
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftruefwd .ClearedSudowoodo
-	jumpopenedtext RockSmashGuyText1
+	jumpthisopenedtext
+
+	text "Wa-hey!"
+
+	para "I was going to"
+	line "snap that tree"
+
+	para "with my straight-"
+	line "arm punch."
+
+	para "But I couldn't!"
+	line "I'm a failure!"
+	done
 
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
@@ -149,12 +186,45 @@ Route36RockSmashGuyScript:
 	verbosegivetmhm TM_ROCK_SMASH
 	setevent EVENT_GOT_TM50_ROCK_SMASH
 .AlreadyGotRockSmash:
-	jumpopenedtext RockSmashGuyText3
+	jumpthisopenedtext
+
+	text "That happens to be"
+if DEF(FAITHFUL)
+	line "Rock Smash."
+else
+	line "Brick Break."
+endc
+
+	para "You can shatter"
+	line "rocks with just a"
+
+	para "single well-aimed"
+	line "smack."
+
+	para "If any rocks are"
+	line "in your way, just"
+if DEF(FAITHFUL)
+	cont "smash 'em up!"
+else
+	cont "break 'em up!"
+endc
+	done
 
 Route36LassScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue_jumptextfaceplayer Route36LassText_ClearedSudowoodo
-	jumptextfaceplayer Route36LassText_OddTree
+	jumpthistextfaceplayer
+
+	text "An odd tree is"
+	line "blocking the way"
+	cont "to Goldenrod City."
+
+	para "I wanted to go see"
+	line "the huge #mon"
+
+	para "Center they just"
+	line "opened…"
+	done
 
 TrainerSchoolboyAlan1:
 	trainer SCHOOLBOY, ALAN1, EVENT_BEAT_SCHOOLBOY_ALAN, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
@@ -416,7 +486,17 @@ ArthurScript:
 	verbosegiveitem HARD_STONE
 	iffalsefwd .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
-	jumpopenedtext ArthurGaveGiftText
+	jumpthisopenedtext
+
+	text "Arthur: A #mon"
+	line "that uses Rock-"
+
+	para "type moves should"
+	line "hold on to that."
+
+	para "It pumps up Rock-"
+	line "type attacks."
+	done
 
 .AlreadyGotStone:
 	writetext ArthurThursdayText
@@ -425,7 +505,12 @@ ArthurScript:
 	endtext
 
 ArthurNotThursdayScript:
-	jumpopenedtext ArthurNotThursdayText
+	jumpthisopenedtext
+
+	text "Arthur: Today's"
+	line "not Thursday. How"
+	cont "disappointing."
+	done
 
 WeirdTreeMovement_Flee:
 	fast_jump_step_up
@@ -485,31 +570,6 @@ SudowoodoAttackedText:
 	line "attacked!"
 	done
 
-FloriaTextAfterPlainBadge:
-	text "I'm the Flower"
-	line "Shop's Floria!"
-
-	para "Listen, listen!"
-
-	para "When I sprinkled"
-	line "water on that"
-
-	para "wiggly tree, it"
-	line "jumped right up!"
-
-	para "It just has to be"
-	line "a #mon."
-
-	para "I bet it would be"
-	line "shocked out of its"
-
-	para "disguise if you"
-	line "soaked it!"
-
-	para "I know! I'll tell"
-	line "my sis and borrow"
-	cont "her water bottle!"
-	done
 
 FloriaTextAfterSquirtBottle:
 	text "I'm the Flower"
@@ -554,18 +614,6 @@ FloriaTextAfterSudowoodo:
 	para "Ta-ta!"
 	done
 
-RockSmashGuyText1:
-	text "Wa-hey!"
-
-	para "I was going to"
-	line "snap that tree"
-
-	para "with my straight-"
-	line "arm punch."
-
-	para "But I couldn't!"
-	line "I'm a failure!"
-	done
 
 RockSmashGuyText2:
 	text "Did you clear that"
@@ -576,40 +624,7 @@ RockSmashGuyText2:
 	cont "have this."
 	done
 
-RockSmashGuyText3:
-	text "That happens to be"
-if DEF(FAITHFUL)
-	line "Rock Smash."
-else
-	line "Brick Break."
-endc
 
-	para "You can shatter"
-	line "rocks with just a"
-
-	para "single well-aimed"
-	line "smack."
-
-	para "If any rocks are"
-	line "in your way, just"
-if DEF(FAITHFUL)
-	cont "smash 'em up!"
-else
-	cont "break 'em up!"
-endc
-	done
-
-Route36LassText_OddTree:
-	text "An odd tree is"
-	line "blocking the way"
-	cont "to Goldenrod City."
-
-	para "I wanted to go see"
-	line "the huge #mon"
-
-	para "Center they just"
-	line "opened…"
-	done
 
 Route36LassText_ClearedSudowoodo:
 	text "That odd tree dis-"
@@ -672,16 +687,6 @@ ArthurGivesGiftText:
 	line "this."
 	done
 
-ArthurGaveGiftText:
-	text "Arthur: A #mon"
-	line "that uses Rock-"
-
-	para "type moves should"
-	line "hold on to that."
-
-	para "It pumps up Rock-"
-	line "type attacks."
-	done
 
 ArthurThursdayText:
 	text "Arthur: I'm Arthur"
@@ -691,11 +696,6 @@ ArthurThursdayText:
 	line "of seven children."
 	done
 
-ArthurNotThursdayText:
-	text "Arthur: Today's"
-	line "not Thursday. How"
-	cont "disappointing."
-	done
 
 Route36SignText:
 	text "Route 36"

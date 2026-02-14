@@ -186,7 +186,13 @@ BossDoor:
 	sjumpfwd .OpenSesame
 
 .NeedsPassword:
-	jumpopenedtext TeamRocketBaseB3FLockedDoorNeedsPasswordText
+	jumpthisopenedtext
+
+	text "The door's closed…"
+
+	para "It needs two"
+	line "passwords to open."
+	done
 
 .OpenSesame:
 	writetext TeamRocketBaseB3FLockedDoorOpenSesameText
@@ -495,12 +501,6 @@ RocketScientistMitchBeatenText:
 	cont "battling."
 	done
 
-TeamRocketBaseB3FLockedDoorNeedsPasswordText:
-	text "The door's closed…"
-
-	para "It needs two"
-	line "passwords to open."
-	done
 
 TeamRocketBaseB3FLockedDoorOpenSesameText:
 	text "The door's closed…"

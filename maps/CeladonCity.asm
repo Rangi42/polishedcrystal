@@ -81,14 +81,27 @@ CeladonCityTutorSwaggerScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_CeladonCityTutorRefused
+	jumpthisopenedtext
+
+	text "Then goodbye!"
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_CeladonCityTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "…You have no"
+	line "Silver Leaf?"
+	cont "What a pity."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_CeladonCityTutorTaught
+	jumpthisopenedtext
+
+	text "Behold! Your #-"
+	line "mon has learned"
+	cont "to Swagger!"
+	done
 
 CeladonCityRichBoyText:
 	text "Is my suit not"
@@ -114,11 +127,6 @@ Text_CeladonCityTutorSwagger:
 	cont "Silver Leaf."
 	done
 
-Text_CeladonCityTutorNoSilverLeaf:
-	text "…You have no"
-	line "Silver Leaf?"
-	cont "What a pity."
-	done
 
 Text_CeladonCityTutorQuestion:
 	text "You wish me to"
@@ -126,15 +134,7 @@ Text_CeladonCityTutorQuestion:
 	cont "mon Swagger?"
 	done
 
-Text_CeladonCityTutorRefused:
-	text "Then goodbye!"
-	done
 
-Text_CeladonCityTutorTaught:
-	text "Behold! Your #-"
-	line "mon has learned"
-	cont "to Swagger!"
-	done
 
 CeladonCityFisherText:
 	text "This Poliwrath is"

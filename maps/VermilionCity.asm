@@ -140,7 +140,11 @@ VermilionSnorlax:
 	opentext
 	special SpecialSnorlaxAwake
 	iftruefwd .Awake
-	jumpopenedtext VermilionCitySnorlaxSleepingText
+	jumpthisopenedtext
+
+	text "Snorlax is snoring"
+	line "peacefully…"
+	done
 
 .Awake:
 	writetext VermilionCityRadioNearSnorlaxText
@@ -162,13 +166,43 @@ VermilionGymBadgeGuy:
 	ifequalfwd 16, .AllBadges
 	ifgreater 13, .MostBadges
 	ifgreater 9, .SomeBadges
-	jumptextfaceplayer VermilionCityBadgeGuyTrainerText
+	jumpthistextfaceplayer
+
+	text "Skilled trainers"
+	line "gather in Kanto."
+
+	para "Gym Leaders are"
+	line "especially strong."
+
+	para "They won't be easy"
+	line "to defeat."
+	done
 
 .SomeBadges:
-	jumptextfaceplayer VermilionCityBadgeGuySomeBadgesText
+	jumpthistextfaceplayer
+
+	text "You've started to"
+	line "collect Kanto Gym"
+	cont "Badges?"
+
+	para "Don't you agree"
+	line "that the trainers"
+	cont "here are tough?"
+	done
 
 .MostBadges:
-	jumptextfaceplayer VermilionCityBadgeGuyMostBadgesText
+	jumpthistextfaceplayer
+
+	text "I guess you'll be"
+	line "finished with your"
+
+	para "conquest of Kanto"
+	line "Gyms soon."
+
+	para "Let me know if"
+	line "you get all eight"
+	cont "Badges."
+	done
 
 .AllBadges:
 	faceplayer
@@ -350,10 +384,6 @@ VermilionCitySailorText:
 	line "good sea air!"
 	done
 
-VermilionCitySnorlaxSleepingText:
-	text "Snorlax is snoring"
-	line "peacefully…"
-	done
 
 VermilionCityRadioNearSnorlaxText:
 	text "The #gear was"
@@ -365,38 +395,8 @@ VermilionCityRadioNearSnorlaxText:
 	para "Snorlax woke up!"
 	done
 
-VermilionCityBadgeGuyTrainerText:
-	text "Skilled trainers"
-	line "gather in Kanto."
 
-	para "Gym Leaders are"
-	line "especially strong."
 
-	para "They won't be easy"
-	line "to defeat."
-	done
-
-VermilionCityBadgeGuySomeBadgesText:
-	text "You've started to"
-	line "collect Kanto Gym"
-	cont "Badges?"
-
-	para "Don't you agree"
-	line "that the trainers"
-	cont "here are tough?"
-	done
-
-VermilionCityBadgeGuyMostBadgesText:
-	text "I guess you'll be"
-	line "finished with your"
-
-	para "conquest of Kanto"
-	line "Gyms soon."
-
-	para "Let me know if"
-	line "you get all eight"
-	cont "Badges."
-	done
 
 VermilionCityBadgeGuyAllBadgesText:
 	text "Congratulations!"

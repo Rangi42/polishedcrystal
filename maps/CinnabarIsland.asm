@@ -41,7 +41,18 @@ CinnabarIslandBlue:
 	waitbutton
 	readvar VAR_BADGES
 	ifgreater 14, .Ready
-	jumpopenedtext CinnabarIslandBlueNotReadyText
+	jumpthisopenedtext
+
+	text "If you want to"
+	line "battle me, show me"
+
+	para "how many Kanto"
+	line "Badges you've got."
+
+	para "Less than seven…"
+	line "You're not ready"
+	cont "to battle me."
+	done
 
 .Ready
 	writetext CinnabarIslandBlueReadyText
@@ -127,17 +138,6 @@ CinnabarIslandBlueReadyText:
 	line "then."
 	done
 
-CinnabarIslandBlueNotReadyText:
-	text "If you want to"
-	line "battle me, show me"
-
-	para "how many Kanto"
-	line "Badges you've got."
-
-	para "Less than seven…"
-	line "You're not ready"
-	cont "to battle me."
-	done
 
 CinnabarIslandGymSignText:
 	text "There's a notice"

@@ -156,7 +156,14 @@ ElmCheckOddSouvenir:
 	scall ElmEggHatchedScript
 	; need to reopen text boxes since ElmCheckGotEggAgain's
 	; jumpopenedtext will close them.
-	jumptext ElmThoughtEggHatchedText
+	jumpthistext
+
+	text "<PLAYER>? I thought"
+	line "the Egg hatched."
+
+	para "Where is the"
+	line "#mon?"
+	done
 
 ElmEggHatchedScript:
 	setmonval TOGEPI
@@ -186,7 +193,12 @@ ElmCheckGotEggAgain:
 	iftrue ElmAfterTheftScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumpopenedtext ElmDescribesMrPokemonText
-	jumpopenedtext ElmText_LetYourMonBattleIt
+	jumpthisopenedtext
+
+	text "If a wild #mon"
+	line "appears, let your"
+	cont "#mon battle it!"
+	done
 
 LabTryToLeaveScript:
 	turnobject ELMSLAB_ELM, DOWN
@@ -335,7 +347,11 @@ ElmsLabHealingMachine:
 	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftruefwd .CanHeal
-	jumpopenedtext ElmsLabHealingMachineText1
+	jumpthisopenedtext
+
+	text "I wonder what this"
+	line "does?"
+	done
 
 .CanHeal:
 	writetext ElmsLabHealingMachineText2
@@ -461,7 +477,15 @@ ElmAskBattleScript:
 	startbattle
 	reloadmap
 	special HealParty
-	jumptextfaceplayer ElmAfterBattleText
+	jumpthistextfaceplayer
+
+	text "Elm: I'm proud"
+	line "of you, <PLAYER>."
+
+	para "I was right to"
+	line "trust you with"
+	cont "a #mon!"
+	done
 
 ElmGiveTicketScript:
 	writetext ElmGiveTicketText1
@@ -529,20 +553,24 @@ ElmGiveTicketScript:
 ElmJumpBackScript1:
 	closetext
 	readvar VAR_FACING
-	ifequalfwd DOWN, ElmJumpDownScript
-	ifequalfwd UP, ElmJumpUpScript
-	ifequalfwd LEFT, ElmJumpLeftScript
-	ifequalfwd RIGHT, ElmJumpRightScript
+	scalltable .JumpBackScript1Table
 	end
+.JumpBackScript1Table
+	dw ElmJumpDownScript
+	dw ElmJumpUpScript
+	dw ElmJumpLeftScript
+	dw ElmJumpRightScript
 
 ElmJumpBackScript2:
 	closetext
 	readvar VAR_FACING
-	ifequalfwd DOWN, ElmJumpUpScript
-	ifequalfwd UP, ElmJumpDownScript
-	ifequalfwd LEFT, ElmJumpRightScript
-	ifequalfwd RIGHT, ElmJumpLeftScript
+	scalltable .JumpBackScript2Table
 	end
+.JumpBackScript2Table
+	dw ElmJumpUpScript
+	dw ElmJumpDownScript
+	dw ElmJumpRightScript
+	dw ElmJumpLeftScript
 
 ElmJumpUpScript:
 	applymovement ELMSLAB_ELM, ElmJumpUpMovement
@@ -704,7 +732,11 @@ CopScript:
 ElmsLabLyraScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iffalse_jumptextfaceplayer ElmsLabLyraWhichPokemonText
-	jumptextfaceplayer ElmsLabLyraGoodChoiceText
+	jumpthistextfaceplayer
+
+	text "Your #mon"
+	line "looks cute too!"
+	done
 
 ElmsLabWindow:
 	checkflag ENGINE_FLYPOINT_VIOLET
@@ -714,7 +746,14 @@ ElmsLabWindow:
 	jumptext ElmsLabWindowText1
 
 ElmsLabPC:
-	jumptext ElmsLabPCText
+	jumpthistext
+
+	text "Observations On"
+	line "#mon Evolution"
+
+	para "…It says on the"
+	line "screen…"
+	done
 
 ElmsLab_WalkUpToElmMovement:
 	step_up
@@ -1012,11 +1051,6 @@ ElmText_ChooseAPokemon:
 	para "Go on. Pick one!"
 	done
 
-ElmText_LetYourMonBattleIt:
-	text "If a wild #mon"
-	line "appears, let your"
-	cont "#mon battle it!"
-	done
 
 LabWhereGoingText:
 	text "Elm: Wait! Where"
@@ -1112,10 +1146,6 @@ ElmPokeBallText:
 	cont "Prof.Elm."
 	done
 
-ElmsLabHealingMachineText1:
-	text "I wonder what this"
-	line "does?"
-	done
 
 ElmsLabHealingMachineText2:
 	text "Would you like to"
@@ -1240,13 +1270,6 @@ ElmWaitingEggHatchText:
 	line "Egg changed any?"
 	done
 
-ElmThoughtEggHatchedText:
-	text "<PLAYER>? I thought"
-	line "the Egg hatched."
-
-	para "Where is the"
-	line "#mon?"
-	done
 
 ShowElmTogepiText1:
 	text "Elm: <PLAYER>, you"
@@ -1537,14 +1560,6 @@ ElmRefusedBattleText:
 	line "machine here."
 	done
 
-ElmAfterBattleText:
-	text "Elm: I'm proud"
-	line "of you, <PLAYER>."
-
-	para "I was right to"
-	line "trust you with"
-	cont "a #mon!"
-	done
 
 AideText_GiveYouPotions:
 	text "<PLAYER>, I want"
@@ -1652,10 +1667,6 @@ LyraNicknamedTotodileText:
 	cont "name it Toto!"
 	done
 
-ElmsLabLyraGoodChoiceText:
-	text "Your #mon"
-	line "looks cute too!"
-	done
 
 ElmsLabLyraChallengeText:
 	text "Lyra: <PLAYER>!"
@@ -1781,10 +1792,3 @@ ElmsLabTrashcanText:
 	cont "ate is in there…"
 	done
 
-ElmsLabPCText:
-	text "Observations On"
-	line "#mon Evolution"
-
-	para "…It says on the"
-	line "screen…"
-	done

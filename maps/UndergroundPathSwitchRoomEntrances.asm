@@ -215,7 +215,42 @@ UndergroundRivalBattleScript:
 .FinishRivalBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	jumptext UndergroundRivalAfterText
+	jumpthistext
+
+	text "…I don't under-"
+	line "stand…"
+
+	para "Is what that Lance"
+	line "guy said true?"
+
+	para "That I don't treat"
+	line "#mon properly?"
+
+	para "Love…"
+
+	para "Trust…"
+
+	para "Are they really"
+	line "what I lack?"
+
+	para "Are they keeping"
+	line "me from winning?"
+
+	para "I… I just don't"
+	line "understand."
+
+	para "But it's not going"
+	line "to end here."
+
+	para "Not now. Not"
+	line "because of this."
+
+	para "I won't give up my"
+	line "dream of becoming"
+
+	para "the world's best"
+	line "#mon trainer!"
+	done
 
 GenericTrainerGruntM11:
 	generictrainer GRUNTM, 11, EVENT_BEAT_ROCKET_GRUNTM_11, GruntM11SeenText, GruntM11BeatenText
@@ -716,41 +751,6 @@ UndergroundRivalWinText:
 	para "So why do I lose?"
 	done
 
-UndergroundRivalAfterText:
-	text "…I don't under-"
-	line "stand…"
-
-	para "Is what that Lance"
-	line "guy said true?"
-
-	para "That I don't treat"
-	line "#mon properly?"
-
-	para "Love…"
-
-	para "Trust…"
-
-	para "Are they really"
-	line "what I lack?"
-
-	para "Are they keeping"
-	line "me from winning?"
-
-	para "I… I just don't"
-	line "understand."
-
-	para "But it's not going"
-	line "to end here."
-
-	para "Not now. Not"
-	line "because of this."
-
-	para "I won't give up my"
-	line "dream of becoming"
-
-	para "the world's best"
-	line "#mon trainer!"
-	done
 
 UndergroundRivalLossText:
 	text "Humph. This is my"
