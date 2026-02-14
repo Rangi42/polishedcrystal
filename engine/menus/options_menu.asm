@@ -68,7 +68,7 @@ OptionsMenu:
 
 ; apply a
 	; PAD_A already selects the highlighted row inside ScrollingMenu
-	call OptionsMenu_SetValueCoordFromCursor
+	call OptionsShared_SetValueCoordFromCursor
 	ldh a, [hJoyPressed]
 	push af
 	ld a, PAD_RIGHT
@@ -85,7 +85,7 @@ OptionsMenu:
 	ldh [hJoyPressed], a
 	xor a
 	ldh [hJoyPressed], a
-	call OptionsMenu_WaitDPadRelease
+	call OptionsShared_WaitDPadRelease
 	jr .loop
 
 .show_description
@@ -110,8 +110,8 @@ OptionsMenu:
 
 .apply_left_right
 	push af ; save direction (PAD_LEFT or PAD_RIGHT)
-	call OptionsMenu_SetValueCoordFromCursor
-	call OptionsMenu_SetSelectionFromCursor
+	call OptionsShared_SetValueCoordFromCursor
+	call OptionsShared_SetSelectionFromCursor
 	ld a, [wMenuSelection]
 	and a ; 0?
 	jr z, .skip_left_right
@@ -128,7 +128,7 @@ OptionsMenu:
 	ldh [hJoyPressed], a
 	xor a
 	ldh [hJoyPressed], a
-	call OptionsMenu_WaitDPadRelease
+	call OptionsShared_WaitDPadRelease
 	jmp .loop
 
 .skip_left_right
@@ -142,75 +142,6 @@ OptionsMenu:
 	pop af
 	ldh [hInMenu], a
 	ret
-
-OptionsMenu_SetSelectionFromCursor:
-; Set [wMenuSelection] based on current cursor/scroll position.
-; Calculate absolute list index ([wMenuScrollPosition] + [wMenuCursorY] - 1)
-	ld a, [wMenuCursorY]
-	dec a
-	ld b, a
-	ld a, [wMenuScrollPosition]
-	add b
-; [wMenuSelection] = absolute list index (for later use)
-	ld [wMenuSelection], a
-; c = absolute list index
-	ld c, a
-; hl = [wMenuData_ItemsPointerAddr]
-	ld hl, wMenuData_ItemsPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-; b = [wMenuData_ItemsPointerBank]
-	ld a, [wMenuData_ItemsPointerBank]
-	ld b, a
-; d = list size (first byte at items pointer)
-	call GetFarByte
-	ld d, a
-; Check if index >= list size
-	ld a, c
-	cp d
-	jr c, .valid_index
-	ld a, -1
-	ld [wMenuSelection], a
-	ret
-
-.valid_index
-	inc hl ; skip count byte, point to first item
-; Calculate offset: index * stride
-	ld a, [wMenuData_ScrollingMenuSpacing]
-	cp SCROLLINGMENU_ITEMS_QUANTITY
-	ld a, 1
-	jr nz, .got_stride
-	inc a ; 2
-.got_stride
-	push bc ; save [wMenuData_ItemsPointerBank] from b
-; hl += [wMenuSelection] * stride, so hl == (absolute list index)th item
-	ld b, 0
-	ld c, a
-	ld a, [wMenuSelection]
-	rst AddNTimes
-	pop af ; a = [wMenuData_ItemsPointerBank]
-; [wMenuSelection] = [(absolute list index)th item]
-	call GetFarByte
-	ld [wMenuSelection], a
-	ret
-
-OptionsMenu_SetValueCoordFromCursor:
-	call MenuBoxCoord2Tile
-	ld a, [wMenuFlags]
-	bit 7, a
-	ld bc, SCREEN_WIDTH + 1
-	jr z, .gotOffset
-	ld c, 1
-.gotOffset
-	add hl, bc
-	ld bc, 2 * SCREEN_WIDTH
-	ld a, [wMenuCursorY]
-	dec a
-	rst AddNTimes
-	ld bc, SCREEN_WIDTH + OPTIONS_MENU_VALUE_OFFSET
-	add hl, bc
-	jmp OptionsMenu_StartValue
 
 OptionsMenu_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -276,7 +207,7 @@ OptionsMenu_PlaceOptionName:
 	rst PlaceString
 	ret
 
-INCLUDE "data/options/names.asm"
+INCLUDE "data/options/option_names.asm"
 
 OptionsMenu_PlaceOptionValue:
 	ld a, [wMenuSelection]
@@ -284,7 +215,7 @@ OptionsMenu_PlaceOptionValue:
 	ret z
 	ld hl, SCREEN_WIDTH
 	add hl, de
-	call OptionsMenu_StartValue
+	call OptionsShared_StartValue
 	ldh a, [hJoyPressed]
 	push af
 	xor a
@@ -292,39 +223,6 @@ OptionsMenu_PlaceOptionValue:
 	call OptionsMenu_CallOptionRoutine
 	pop af
 	ldh [hJoyPressed], a
-	ret
-
-OptionsMenu_StartValue:
-	ld a, l
-	ld [wOptionsMenuValueCoord], a
-	ld a, h
-	ld [wOptionsMenuValueCoord + 1], a
-	; Place ":" prefix immediately before the value.
-	dec hl
-	ld a, ':'
-	ld [hli], a
-	ret
-
-OptionsMenu_WaitDPadRelease:
-; Prevent D-pad autorepeat from immediately applying the same option twice.
-.loop
-	call JoyTextDelay
-	ldh a, [hJoyDown]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .loop
-	ret
-
-OptionsMenu_GetValueCoord:
-	ld hl, wOptionsMenuValueCoord
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-OptionsMenu_PlaceStringAtValueCoord:
-	call OptionsMenu_GetValueCoord
-	rst PlaceString
-	and a
 	ret
 
 Options_TextSpeed:
@@ -355,7 +253,7 @@ Options_TextSpeed:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jr OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -389,12 +287,12 @@ Options_BattleEffects:
 .SetOff:
 	res BATTLE_EFFECTS, [hl]
 	ld de, OffString
-	jr OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .SetOn:
 	set BATTLE_EFFECTS, [hl]
 	ld de, OnString
-	jr OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 Options_BattleStyle:
 	ld hl, wOptions2
@@ -436,7 +334,7 @@ Options_BattleStyle:
 	set BATTLE_PREDICT, [hl]
 	ld de, .Predict
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Set:
 	db "Set    @"
@@ -466,7 +364,7 @@ Options_RunningShoes:
 	set RUNNING_SHOES, [hl]
 	ld de, OnString
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 OffString:
 	db "Off@"
@@ -501,7 +399,7 @@ Options_Frame:
 	inc a
 	ld e, a
 	ld d, 0
-	call OptionsMenu_GetValueCoord
+	call OptionsShared_GetValueCoord
 	inc hl
 	ld a, ' '
 	ld [hld], a
@@ -532,7 +430,7 @@ Options_Sound:
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Mono:
 	db "Mono  @"
@@ -560,7 +458,7 @@ Options_ClockFormat:
 	set CLOCK_FORMAT, [hl]
 	ld de, .TwentyFour
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Twelve:
 	db "12-hour@"
@@ -588,7 +486,7 @@ Options_PokedexUnits:
 	set POKEDEX_UNITS, [hl]
 	ld de, .Metric
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Imperial:
 	db "Imperial@"
@@ -626,7 +524,7 @@ endr
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -664,7 +562,7 @@ endr
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -725,7 +623,7 @@ Options_Typeface:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -777,7 +675,7 @@ Options_Keyboard:
 	set QWERTY_KEYBOARD_F, [hl]
 	ld de, .QWERTY
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .ABC:
 	db "ABCDEF@"
@@ -815,4 +713,4 @@ OptionsMenu_ShowSelectionDescription:
 	ld hl, OptionsDescriptions.Done
 	jmp PrintText
 
-INCLUDE "data/options/option_descriptions.asm"
+INCLUDE "data/options/options_descriptions.asm"

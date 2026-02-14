@@ -115,7 +115,7 @@ SetInitialOptions:
 	; fallthrough
 
 ; apply a
-	call InitialOptions_SetValueCoordFromCursor
+	call OptionsShared_SetValueCoordFromCursor
 	ldh a, [hJoyPressed]
 	push af
 	ld a, PAD_RIGHT
@@ -132,7 +132,7 @@ SetInitialOptions:
 	ldh [hJoyPressed], a
 	xor a
 	ldh [hJoyPressed], a
-	call InitialOptions_WaitDPadRelease
+	call OptionsShared_WaitDPadRelease
 	jmp .loop
 
 .show_description
@@ -158,8 +158,8 @@ SetInitialOptions:
 
 .apply_left_right
 	push af ; save direction (PAD_LEFT or PAD_RIGHT)
-	call InitialOptions_SetValueCoordFromCursor
-	call InitialOptions_SetSelectionFromCursor
+	call OptionsShared_SetValueCoordFromCursor
+	call OptionsShared_SetSelectionFromCursor
 	ld a, [wMenuSelection]
 	and a ; 0?
 	jr z, .skip_left_right
@@ -176,7 +176,7 @@ SetInitialOptions:
 	ldh [hJoyPressed], a
 	xor a
 	ldh [hJoyPressed], a
-	call InitialOptions_WaitDPadRelease
+	call OptionsShared_WaitDPadRelease
 	jmp .loop
 
 .skip_left_right
@@ -305,64 +305,6 @@ InitialOptions_ShowSelectionDescription:
 	ld hl, InitialOptionDescriptions.Done
 	jmp PrintText
 
-InitialOptions_SetSelectionFromCursor:
-	ld a, [wMenuCursorY]
-	dec a
-	ld b, a
-	ld a, [wMenuScrollPosition]
-	add b
-	ld [wMenuSelection], a
-	ld c, a
-	ld hl, wMenuData_ItemsPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wMenuData_ItemsPointerBank]
-	ld b, a
-	call GetFarByte
-	ld d, a
-	ld a, c
-	cp d
-	jr c, .valid_index
-	ld a, -1
-	ld [wMenuSelection], a
-	ret
-
-.valid_index
-	inc hl ; skip count byte
-	ld a, [wMenuData_ScrollingMenuSpacing]
-	cp SCROLLINGMENU_ITEMS_QUANTITY
-	ld a, 1
-	jr nz, .got_stride
-	inc a ; 2
-.got_stride
-	push bc
-	ld b, 0
-	ld c, a
-	ld a, [wMenuSelection]
-	rst AddNTimes
-	pop af ; a = bank
-	call GetFarByte
-	ld [wMenuSelection], a
-	ret
-
-InitialOptions_SetValueCoordFromCursor:
-	call MenuBoxCoord2Tile
-	ld a, [wMenuFlags]
-	bit 7, a
-	ld bc, SCREEN_WIDTH + 1
-	jr z, .gotOffset
-	ld c, 1
-.gotOffset
-	add hl, bc
-	ld bc, 2 * SCREEN_WIDTH
-	ld a, [wMenuCursorY]
-	dec a
-	rst AddNTimes
-	ld bc, SCREEN_WIDTH + INITIAL_OPTIONS_VALUE_OFFSET
-	add hl, bc
-	jmp InitialOptions_StartValue
-
 InitialOptions_CallOptionRoutine:
 	ld a, [wMenuSelection]
 	dec a
@@ -441,7 +383,7 @@ InitialOptions_PlaceOptionValue:
 	ret z
 	ld hl, SCREEN_WIDTH
 	add hl, de
-	call InitialOptions_StartValue
+	call OptionsShared_StartValue
 	ldh a, [hJoyPressed]
 	push af
 	xor a
@@ -449,38 +391,6 @@ InitialOptions_PlaceOptionValue:
 	call InitialOptions_CallOptionRoutine
 	pop af
 	ldh [hJoyPressed], a
-	ret
-
-InitialOptions_StartValue:
-	ld a, l
-	ld [wOptionsMenuValueCoord], a
-	ld a, h
-	ld [wOptionsMenuValueCoord + 1], a
-	; Place ":" prefix immediately before the value.
-	dec hl
-	ld a, ':'
-	ld [hli], a
-	ret
-
-InitialOptions_WaitDPadRelease:
-.loop
-	call JoyTextDelay
-	ldh a, [hJoyDown]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .loop
-	ret
-
-InitialOptions_GetValueCoord:
-	ld hl, wOptionsMenuValueCoord
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-InitialOptions_PlaceStringAtValueCoord:
-	call InitialOptions_GetValueCoord
-	rst PlaceString
-	and a
 	ret
 
 InitialOptions_Natures:
@@ -497,11 +407,11 @@ InitialOptions_Natures:
 .SetNo:
 	res NATURES_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set NATURES_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_Abilities:
 	ld hl, wInitialOptions
@@ -517,11 +427,11 @@ InitialOptions_Abilities:
 .SetNo:
 	res ABILITIES_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_PSS:
 	ld hl, wInitialOptions
@@ -537,11 +447,11 @@ InitialOptions_PSS:
 .SetNo:
 	res PSS_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set PSS_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_EVs:
 	ld hl, wInitialOptions2
@@ -577,7 +487,7 @@ InitialOptions_EVs:
 	jr c, .Display
 	ld de, NoString
 .Display:
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_ExpScaling:
 	; set e to a sequential value for exp
@@ -629,7 +539,7 @@ InitialOptions_ExpScaling:
 	res NO_EXP_OPT, [hl]
 	ld de, .New
 .Display:
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Old:
 	db "Old@"
@@ -650,11 +560,11 @@ InitialOptions_AffectionBonus:
 .SetNo:
 	res AFFECTION_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set AFFECTION_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_RTC:
 	ld hl, wInitialOptions2
@@ -670,11 +580,11 @@ InitialOptions_RTC:
 .SetNo:
 	res RTC_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set RTC_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_PerfectIVs:
 	ld hl, wInitialOptions
@@ -690,11 +600,11 @@ InitialOptions_PerfectIVs:
 .SetNo:
 	res PERFECT_IVS_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set PERFECT_IVS_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_TradedMon:
 	ld hl, wInitialOptions
@@ -710,11 +620,11 @@ InitialOptions_TradedMon:
 .SetNo:
 	res TRADED_AS_OT_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_EvolveInBattle:
 	ld hl, wInitialOptions2
@@ -730,11 +640,11 @@ InitialOptions_EvolveInBattle:
 .SetNo:
 	res EVOLVE_IN_BATTLE_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set EVOLVE_IN_BATTLE_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_ColorVariation:
 	ld hl, wInitialOptions
@@ -750,11 +660,11 @@ InitialOptions_ColorVariation:
 .SetNo:
 	res COLOR_VARY_OPT, [hl]
 	ld de, NoString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
-	jmp InitialOptions_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 NoString:
 	db "No @"
@@ -765,4 +675,4 @@ AllString:
 ModernString:
 	db "{-3d:MODERN_EV_LIMIT}@"
 
-INCLUDE "data/options/descriptions.asm"
+INCLUDE "data/options/initial_options_descriptions.asm"

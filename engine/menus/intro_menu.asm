@@ -80,7 +80,7 @@ _NewGame_FinishSetup:
 	ld [wOvercastRandomDay], a
 	call NewGame_ClearTileMapEtc
 	call WarnVBA
-	call SetInitialOptions
+	farcall SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
 	ld a, 1
@@ -436,7 +436,9 @@ Continue_CheckRTC_RestartClock:
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [wInitialOptions2]
 	bit RESET_INIT_OPTS, a
-	call nz, SetInitialOptions
+	jr z, .skip_reset_initial_options
+	farcall SetInitialOptions
+.skip_reset_initial_options
 	; fallthrough
 Continue_FinishReset:
 	xor a

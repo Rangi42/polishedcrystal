@@ -5,7 +5,6 @@ INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"
 INCLUDE "engine/overworld/init_map.asm"
-INCLUDE "engine/menus/init_options.asm"
 INCLUDE "engine/pokemon/learn.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
@@ -529,9 +528,15 @@ INCLUDE "engine/gfx/fade.asm"
 
 SECTION "bank39", ROMX
 
-INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/splash.asm"
 INCLUDE "engine/movie/intro.asm"
+
+
+SECTION "Options Menus", ROMX, BANK[$7d]
+
+INCLUDE "engine/menus/options_menu_shared.asm"
+INCLUDE "engine/menus/initial_options_menu.asm"
+INCLUDE "engine/menus/options_menu.asm"
 
 
 SECTION "bank3E", ROMX
