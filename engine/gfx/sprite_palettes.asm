@@ -30,6 +30,8 @@ LoadWeatherPal::
 	ld a, PAL_OW_PINK
 	; fallthrough
 .use_ow_weather_pal
+	ld hl, wNeededMonPalLight
+	ld [hl], NO_PAL_LOADED
 	ld [wNeededPalIndex], a
 	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
 	ld de, wOBPals1 palette PAL_OW_WEATHER
@@ -78,6 +80,8 @@ CopyBGGreenToOBPal7:
 	ld a, PAL_OW_COPY_BG_GREEN
 	; fallthrough
 CopySpritePalToOBPal7:
+	ld hl, wNeededMonPalLight
+	ld [hl], NO_PAL_LOADED
 	ld [wNeededPalIndex], a
 	ld [wLoadedObjPal7], a
 	ld de, wOBPals1 palette 7
@@ -199,6 +203,8 @@ CopySpritePal::
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
+	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
 	pop hl
 	pop bc
 	pop af
