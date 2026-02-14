@@ -16,9 +16,8 @@ InitialOptionDescriptions:
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 .Done:
-	text "Save your initial"
-	line "options and start"
-	cont "the game."
+	text "Save your choices"
+	line "and play the game!"
 	prompt
 
 .Natures:

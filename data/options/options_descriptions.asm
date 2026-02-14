@@ -17,81 +17,89 @@ OptionsDescriptions:
 .TextSpeed:
 	text "How fast text is"
 	line "displayed."
-
-	para "Slow, Medium,"
-	line "Fast, or Instant."
 	prompt
 
 .TextAutoscroll:
 	text "Auto-advance text"
-	line "with a button:"
-	cont "None/Start/B/A+B"
+	line "by holding down"
+	cont "some button(s)."
 	prompt
 
 .Frame:
-	text "Choose the border"
-	line "style for all"
-	cont "text boxes."
+	text "The frame around"
+	line "most text boxes."
 	prompt
 
 .Typeface:
-	text "Choose the font"
-	line "used for menu and"
-	cont "dialog text."
+	text "The font used for"
+	line "ordinary text."
 	prompt
 
 .Keyboard:
-	text "Set the naming"
-	line "keyboard layout:"
-	cont "ABCDEF or QWERTY"
+	text "The keyboard lay-"
+	line "out for entering"
+	cont "names and mail."
 	prompt
 
 .Sound:
-	text "Choose mono or"
-	line "stereo sound"
-	cont "output."
+	text "Audio output:"
+	line "mono (one channel)"
+
+	para "or stereo (two,"
+	line "left and right)."
 	prompt
 
 .BattleEffects:
-	text "Turn move"
-	line "animations in"
-	cont "battle on or off."
+	text "Move and status"
+	line "animations."
 	prompt
 
 .BattleStyle:
-	text "Set: no switch"
-	line "after KOs."
+	text "After you KO an"
+	line "opponent:"
 
-	para "Switch: switch."
-	line "Predict: see foe."
+	para "Set: just sends"
+	line "out the next foe."
+
+	para "Switch: lets you"
+	line "switch first."
+
+	para "Predict: tells"
+	line "you the next foe."
 	prompt
 
 .RunningShoes:
-	text "Set whether B"
-	line "runs or walks by"
-	cont "default."
+	text "Hold B to run if"
+	line "Running Shoes are"
+
+	para "Off, or to walk"
+	line "if they are On."
 	prompt
 
 .TurningSpeed:
-	text "Set your turning"
-	line "speed in the"
-	cont "overworld."
+	text "How fast you can"
+	line "change direction"
+	cont "in the overworld."
 	prompt
 
 .ClockFormat:
-	text "Choose the clock"
-	line "display format:"
-	cont "12-hour or 24-hour"
+	text "The clock display"
+	line "format:"
+	cont "12-hour has AM/PM."
 	prompt
 
 .PokedexUnits:
-	text "Choose Imperial"
-	line "or Metric units"
-	cont "for #dex data."
+	text "#dex height"
+	line "and weight units:"
+
+	para "Imperial: feet,"
+	line "inches and pounds."
+
+	para "Metric: meters"
+	line "and kilograms."
 	prompt
 
 .Done:
-	text "Save settings and"
-	line "return to the"
-	cont "previous menu."
+	text "Save options and"
+	line "exit the menu."
 	prompt

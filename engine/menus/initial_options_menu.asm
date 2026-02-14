@@ -133,14 +133,14 @@ SetInitialOptions:
 	xor a
 	ldh [hJoyPressed], a
 	call OptionsShared_WaitDPadRelease
-	jmp .loop
+	jr .loop
 
 .show_description
 	call InitialOptions_ShowSelectionDescription
 	call InitialOptions_DrawEdges
 	call InitialOptions_DrawBottomPrompts
 	call ApplyAttrAndTilemapInVBlank
-	jmp .loop
+	jr .loop
 
 .apply_left
 	ldh a, [hJoyPressed]

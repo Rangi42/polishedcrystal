@@ -1,8 +1,6 @@
-DefaultOptions3:
+DefaultOptions:
 ; wOptions3
 	db 0
-
-DefaultOptions:
 ; wOptions1
 	db (1 << BATTLE_EFFECTS) | (1 << STEREO) | FAST_TEXT
 ; wSaveFileExists

@@ -481,14 +481,13 @@ TryLoadSaveData:
 
 .corrupt
 	ld hl, DefaultOptions
-	ld de, wOptions
-	ld bc, wOptionsEnd - wOptions
+	assert wOptions3 < wOptions ; for legacy reasons
+	ld de, wOptions3
+	ld bc, wOptionsEnd - wOptions3
 	rst CopyBytes
-	ld a, [DefaultOptions3]
-	ld [wOptions3], a
 	jmp PanicResetClock
 
-INCLUDE "data/options/default_initial_options.asm"
+INCLUDE "data/options/default_options.asm"
 
 CheckPrimarySaveFile:
 	ld a, BANK(sCheckValue1)
