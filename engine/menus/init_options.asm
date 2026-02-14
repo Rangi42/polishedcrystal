@@ -299,13 +299,11 @@ InitialOptions_ShowSelectionDescription:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call PrintText
-	ret
+	jmp PrintText
 
 .done_item
 	ld hl, InitialOptionDescriptions.Done
-	call PrintText
-	ret
+	jmp PrintText
 
 InitialOptions_SetSelectionFromCursor:
 	ld a, [wMenuCursorY]

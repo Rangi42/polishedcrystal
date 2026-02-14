@@ -809,12 +809,10 @@ OptionsMenu_ShowSelectionDescription:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call PrintText
-	ret
+	jmp PrintText
 
 .done_item
 	ld hl, OptionsDescriptions.Done
-	call PrintText
-	ret
+	jmp PrintText
 
 INCLUDE "data/options/option_descriptions.asm"
