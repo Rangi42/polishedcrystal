@@ -5,8 +5,7 @@ OptionsShared_LoadEdgeTiles:
 	ld hl, .BGTiles
 	ld de, vTiles2 tile $00
 	lb bc, BANK(.BGTiles), 15
-	call DecompressRequest2bpp
-	ret
+	jmp DecompressRequest2bpp
 
 .BGTiles:
 	INCBIN "gfx/new_game/init_bg.2bpp.lzp"
@@ -70,16 +69,15 @@ OptionsShared_RunLoop:
 
 	ld a, [wMenuJoypad]
 	cp PAD_B
-	jp z, .exit
+	jmp z, .exit
 	cp PAD_START
-	jp z, .exit
+	jmp z, .exit
 	cp PAD_LEFT
-	jp z, .apply_left
+	jmp z, .apply_left
 	cp PAD_RIGHT
-	jp z, .apply_right
+	jmp z, .apply_right
 	cp PAD_A
-	jp z, .advance_description
-	jr .loop
+	jr nz, .loop
 
 .advance_description
 	call .DispatchAdvanceDesc
@@ -90,14 +88,14 @@ OptionsShared_RunLoop:
 .apply_left
 	ldh a, [hJoyPressed]
 	and PAD_LEFT
-	jp z, .loop
+	jmp z, .loop
 	ld a, PAD_LEFT
 	jr .apply_left_right
 
 .apply_right
 	ldh a, [hJoyPressed]
 	and PAD_RIGHT
-	jp z, .loop
+	jmp z, .loop
 	ld a, PAD_RIGHT
 	; fallthrough
 
@@ -144,14 +142,14 @@ OptionsShared_RunLoop:
 .DispatchAdvanceDesc:
 	ld a, [wOptionsMenuType]
 	and a
-	jp z, OptionsMenu_AdvanceSelectionDescription
-	jp OptionsShared_SimpleAdvanceDescription
+	jmp z, OptionsMenu_AdvanceSelectionDescription
+	jmp OptionsShared_SimpleAdvanceDescription
 
 OptionsShared_DispatchCallRoutine:
 	ld a, [wOptionsMenuType]
 	and a
-	jp z, OptionsMenu_CallOptionRoutine
-	jp InitialOptions_CallOptionRoutine
+	jmp z, OptionsMenu_CallOptionRoutine
+	jmp InitialOptions_CallOptionRoutine
 
 ; Dispatch to the correct description table based on menu type
 OptionsShared_DispatchLookupDescription:
@@ -417,7 +415,7 @@ OptionsShared_PlaceDescriptionText:
 
 	; If continuing from <CONT>, scroll existing line 2 up to line 1.
 	ld a, [wOptionsMenuDescriptionState]
-	cp 1
+	dec a
 	jr nz, .loadPointer
 	call Text_WaitBGMap
 	call TextScroll
@@ -445,7 +443,7 @@ OptionsShared_PlaceDescriptionText:
 	; - state 1 (<CONT>): keep box contents, print starting on line 2
 	; - otherwise: clear box and print from line 1
 	ld a, b
-	cp 1
+	dec a
 	jr nz, .placeFresh
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	call PlaceWholeStringInBoxAtOnce
@@ -459,8 +457,7 @@ OptionsShared_PlaceDescriptionText:
 	; After a <CONT>/<PARA> stop: HL = AT the stop char
 	; After terminal <PROMPT>/@: HL = past the terminator
 	; Check [hl] while bank 6 is still active
-	ld a, [hl]        ; read the byte at HL
-	inc hl            ; HL = resume position (past stop char)
+	ld a, [hli]       ; read byte at HL, HL = resume position (past stop char)
 	ld d, h           ; save resume position in DE
 	ld e, l
 	ld b, a           ; save stop char in B

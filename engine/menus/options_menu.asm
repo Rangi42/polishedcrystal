@@ -103,7 +103,7 @@ OptionsMenu_GetTextSpeedFlag:
 ; Text Speed option (wMenuSelection == 1) uses configured speed.
 	ld c, 0
 	ld a, [wMenuSelection]
-	cp 1
+	dec a
 	ret nz
 	inc c
 	ret
@@ -113,7 +113,7 @@ OptionsMenu_AdvanceSelectionDescription:
 	call OptionsMenu_GetTextSpeedFlag
 	ld a, c
 	and a
-	jp z, OptionsShared_SimpleAdvanceDescription
+	jmp z, OptionsShared_SimpleAdvanceDescription
 	; TextSpeed special case: redraw from start with configured speed
 	call OptionsShared_DispatchLookupDescription
 	xor a
