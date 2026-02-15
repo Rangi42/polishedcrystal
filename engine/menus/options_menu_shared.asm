@@ -107,11 +107,9 @@ OptionsShared_RunLoop:
 	jr .loop
 
 .exit
-	; Menu-specific exit hook
 	ld a, [wOptionsMenuIsInitial]
 	and a
 	jr z, .common_exit
-	; Initial Options: clear the reset flag
 	ld hl, wInitialOptions2
 	res RESET_INIT_OPTS, [hl]
 .common_exit
@@ -223,17 +221,14 @@ OptionsShared_ResetSelectionDescription:
 	cp [hl]
 	ret z
 	ld [hl], a
+
 	call OptionsShared_DispatchLookupDescription
 	call SetUpTextbox
-	; Get text speed flag based on menu type
 	ld a, [wOptionsMenuIsInitial]
 	and a
-	jr nz, .instant
-	; OptionsMenu: check if Text Speed option
+	jmp nz, OptionsShared_PlaceDescriptionTextInstantly
 	call OptionsMenu_GetTextSpeedFlag
 	jmp OptionsShared_PlaceDescriptionText
-.instant
-	jmp OptionsShared_PlaceDescriptionTextInstantly
 
 ; Simple advance description (for InitialOptions, and non-TextSpeed options)
 OptionsShared_SimpleAdvanceDescription:
@@ -337,21 +332,16 @@ OptionsShared_PlaceDescriptionText:
 ; Display the current description page non-blockingly.
 ; Text from wOptionsMenuDescriptionAddr is in wDecompressScratch (uncompressed).
 ; Input: C = 0 for instant text, C != 0 to use configured text speed
-	push bc ; save text speed flag
+	push bc
 
-	; Save wOptions1 and wTextboxFlags
 	ld a, [wOptions1]
 	push af
 	ld a, [wTextboxFlags]
 	push af
 
-	; Set NO_TEXT_PAUSE_F
 	ld hl, wTextboxFlags
 	set NO_TEXT_PAUSE_F, [hl]
 
-	; If C = 0, set NO_TEXT_SCROLL for instant text
-	; If C != 0, set bit 0 so PrintLetterDelay uses configured speed
-	;   and syncs tiles to VRAM per-character.
 	ld a, c
 	and a
 	jr nz, .useConfiguredSpeed
@@ -361,80 +351,65 @@ OptionsShared_PlaceDescriptionText:
 
 .useConfiguredSpeed
 	ld hl, wTextboxFlags
-	set 0, [hl]
+	set FAST_TEXT_DELAY_F, [hl]
 
 .placeText
-	; Remove any previous blinking cursor
 	call UnloadBlinkingCursor
 
 	; If continuing from <CONT>, scroll existing line 2 up to line 1.
 	ld a, [wOptionsMenuDescriptionState]
 	assert OPTDESCSTATE_SCROLL == 1
 	dec a
-	jr nz, .loadPointer
+	jr nz, .noScroll
 	call Text_WaitBGMap
 	call TextScroll
 	call TextScroll
+.noScroll
 
-.loadPointer
-	; Cache state for render path selection.
-	ld a, [wOptionsMenuDescriptionState]
-	ld b, a
-
-	; Load description pointer BEFORE switching bank
-	; (wOptionsMenuDescriptionAddr is in WRAMX bank 1)
 	ld hl, wOptionsMenuDescriptionAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
-	; Switch to WRAM bank 6 for wDecompressScratch access
+	ld a, [wOptionsMenuDescriptionState]
+	ld b, a
+
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDecompressScratch)
 	ldh [rWBK], a
 
-	; Place text from bank 6 buffer.
-	; - state 1 (<CONT>): keep box contents, print starting on line 2
-	; - otherwise: clear box and print from line 1
 	ld a, b
+	assert OPTDESCSTATE_SCROLL == 1
 	dec a
-	jr nz, .placeFresh
+	jr nz, .wholeBox
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	call PlaceWholeStringInBoxAtOnce
 	jr .placed
 
-.placeFresh
+.wholeBox
 	call PrintTextNoBox
 
 .placed
-
-	; After a <CONT>/<PARA> stop: HL = AT the stop char
-	; After terminal <PROMPT>/@: HL = past the terminator
-	; Check [hl] while bank 6 is still active
-	ld a, [hli]       ; read byte at HL, HL = resume position (past stop char)
-	ld d, h           ; save resume position in DE
+	ld a, [hli]
+	ld b, a ; b = stop char
+	ld d, h ; de = resume position
 	ld e, l
-	ld b, a           ; save stop char in B
 
-	; Restore WRAM bank (back to bank 1 for wOptionsMenuDescriptionAddr writes)
 	pop af
 	ldh [rWBK], a
 
-	; Check the stop char (saved in B)
 	ld a, b
 	cp '<PARA>'
 	jr z, .morePara
 	cp '<CONT>'
 	jr z, .moreCont
 
-	; Description ended
 	ld a, OPTDESCSTATE_DONE
 	ld [wOptionsMenuDescriptionState], a
 	jr .restore
 
 .morePara
-	; Save resume position, set state = page
 	ld a, e
 	ld [wOptionsMenuDescriptionAddr], a
 	ld a, d
@@ -444,26 +419,18 @@ OptionsShared_PlaceDescriptionText:
 	jr .showCursor
 
 .moreCont
-	; Save resume position, set state = scroll
 	ld a, e
 	ld [wOptionsMenuDescriptionAddr], a
 	ld a, d
 	ld [wOptionsMenuDescriptionAddr + 1], a
 	ld a, OPTDESCSTATE_SCROLL
 	ld [wOptionsMenuDescriptionState], a
-
 .showCursor
 	call LoadBlinkingCursor
-
 .restore
-	; Restore wTextboxFlags
 	pop af
 	ld [wTextboxFlags], a
-	; Restore wOptions1
 	pop af
 	ld [wOptions1], a
-
-	pop bc ; restore text speed flag
-
-	; Flush tilemap to VRAM
+	pop bc
 	jmp ApplyTilemap
