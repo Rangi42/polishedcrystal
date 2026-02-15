@@ -516,8 +516,10 @@ wOptionsMenuDescriptionAddr:: dw
 wOptionsMenuDescriptionState:: db
 ; 0 = more pages (stopped at <PARA>), 1 = needs scroll (stopped at <CONT>), 2 = ended
 wOptionsMenuLastSelection:: db
+wOptionsMenuType:: db
+; 0 = in-game options, 1 = initial options
 
-	ds 24 ; unused
+	ds 23 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db

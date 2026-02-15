@@ -1,5 +1,296 @@
 DEF OPTIONS_SHARED_VALUE_OFFSET EQU 9
 
+; Edge tile graphics shared by both menus
+OptionsShared_LoadEdgeTiles:
+	ld hl, .BGTiles
+	ld de, vTiles2 tile $00
+	lb bc, BANK(.BGTiles), 15
+	call DecompressRequest2bpp
+	ret
+
+.BGTiles:
+	INCBIN "gfx/new_game/init_bg.2bpp.lzp"
+
+; Draw left/right edge tiles and set palette attributes
+OptionsShared_DrawEdges:
+	hlcoord 0, 0
+	ld a, $01 ; left edge tile
+	ld bc, SCREEN_WIDTH - 2
+	ld d, TEXTBOX_Y
+.edge_loop
+	ld [hli], a
+	inc a ; $02 = right edge tile
+	add hl, bc
+	ld [hli], a
+	dec a ; $01 = left edge tile
+	dec d
+	jr nz, .edge_loop
+
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH - 2
+	ld d, TEXTBOX_Y
+	xor a
+.edge_attr_loop
+	ld [hli], a
+	inc a
+	add hl, bc
+	xor a
+	ld [hli], a
+	dec d
+	jr nz, .edge_attr_loop
+	ret
+
+; Shared main loop for both options menus.
+; Caller must set wOptionsMenuType, wOptionsMenuCursor, wOptionsMenuScrollPosition,
+; wOptionsMenuLastSelection, and call CopyMenuHeader before calling this.
+OptionsShared_RunLoop:
+.loop
+	ld hl, wMenuScrollPosition
+	ld a, [wOptionsMenuScrollPosition]
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	ld hl, wMenuCursorBuffer
+	ld a, [wOptionsMenuCursor]
+	ld [hli], a
+	xor a
+	ld [hl], a
+
+	call ScrollingMenu
+	ld a, TRUE
+	ldh [hInMenu], a
+
+	ld a, [wMenuScrollPosition]
+	ld [wOptionsMenuScrollPosition], a
+	ld a, [wMenuCursorY]
+	ld [wOptionsMenuCursor], a
+
+	ld a, [wMenuJoypad]
+	cp PAD_B
+	jp z, .exit
+	cp PAD_START
+	jp z, .exit
+	cp PAD_LEFT
+	jp z, .apply_left
+	cp PAD_RIGHT
+	jp z, .apply_right
+	cp PAD_A
+	jp z, .advance_description
+	jr .loop
+
+.advance_description
+	call .DispatchAdvanceDesc
+	call OptionsShared_DrawEdges
+	call ApplyAttrAndTilemapInVBlank
+	jr .loop
+
+.apply_left
+	ldh a, [hJoyPressed]
+	and PAD_LEFT
+	jp z, .loop
+	ld a, PAD_LEFT
+	jr .apply_left_right
+
+.apply_right
+	ldh a, [hJoyPressed]
+	and PAD_RIGHT
+	jp z, .loop
+	ld a, PAD_RIGHT
+	; fallthrough
+
+.apply_left_right
+	push af ; save direction (PAD_LEFT or PAD_RIGHT)
+	call OptionsShared_SetValueCoordFromCursor
+	call OptionsShared_SetSelectionFromCursor
+	ld a, [wMenuSelection]
+	and a ; 0?
+	jr z, .skip_left_right
+	inc a ; -1?
+	jr z, .skip_left_right
+	pop bc ; restore direction into B
+	ldh a, [hJoyPressed]
+	push af
+	ld a, b
+	ldh [hJoyPressed], a
+	call OptionsShared_DispatchCallRoutine
+	call ApplyTilemapInVBlank
+	pop af
+	ldh [hJoyPressed], a
+	xor a
+	ldh [hJoyPressed], a
+	call OptionsShared_WaitDPadRelease
+	jmp .loop
+
+.skip_left_right
+	pop af ; discard saved direction
+	jmp .loop
+
+.exit
+	; Menu-specific exit hook
+	ld a, [wOptionsMenuType]
+	and a
+	jr z, .common_exit
+	; Initial Options: clear the reset flag
+	ld hl, wInitialOptions2
+	res RESET_INIT_OPTS, [hl]
+.common_exit
+	ld de, SFX_TRANSACTION
+	call PlaySFX
+	jmp WaitSFX
+
+.DispatchAdvanceDesc:
+	ld a, [wOptionsMenuType]
+	and a
+	jp z, OptionsMenu_AdvanceSelectionDescription
+	jp OptionsShared_SimpleAdvanceDescription
+
+OptionsShared_DispatchCallRoutine:
+	ld a, [wOptionsMenuType]
+	and a
+	jp z, OptionsMenu_CallOptionRoutine
+	jp InitialOptions_CallOptionRoutine
+
+; Dispatch to the correct description table based on menu type
+OptionsShared_DispatchLookupDescription:
+	ld a, [wOptionsMenuType]
+	and a
+	jr nz, .initial
+	ld hl, OptionsDescriptions
+	ld de, OptionsDescriptions.Done
+	jr OptionsShared_LookupDescription
+.initial
+	ld hl, InitialOptionDescriptions
+	ld de, InitialOptionDescriptions.Done
+	; fallthrough
+
+; Decompress description text to wDecompressScratch.
+; HL = descriptions table, DE = .Done label
+OptionsShared_LookupDescription:
+	ld a, [wMenuSelection]
+	inc a ; -1? (Done)
+	jr z, .done_item
+	dec a
+	dec a ; 0-indexed (items are 1-based)
+	add a ; * 2 for pointer table
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jr .decompress
+
+.done_item
+	ld h, d
+	ld l, e
+
+.decompress
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rWBK], a
+	ld de, wDecompressScratch
+	call DecompressStringToRAM
+	pop af
+	ldh [rWBK], a
+	ld hl, wDecompressScratch
+	ld a, l
+	ld [wOptionsMenuDescriptionAddr], a
+	ld a, h
+	ld [wOptionsMenuDescriptionAddr + 1], a
+	ret
+
+; Shared PlaceOptionName callback for ScrollingMenu.
+; Dispatches on wOptionsMenuType to select the correct name table.
+OptionsShared_PlaceOptionName:
+	push de
+	ld a, [wOptionsMenuType]
+	and a
+	jr nz, .initial
+	ld de, OptionNames.Done
+	ld hl, OptionNames - 2 * 2
+	jr .lookup
+.initial
+	ld de, InitialOptionNames.Done
+	ld hl, InitialOptionNames - 2 * 2
+.lookup
+	ld a, [wMenuSelection]
+	inc a ; -1?
+	jr z, .got_name
+	add a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+.got_name
+	pop hl
+	rst PlaceString
+	ret
+
+; Shared PlaceOptionValue callback for ScrollingMenu.
+; Dispatches on wOptionsMenuType to call the correct option routine.
+OptionsShared_PlaceOptionValue:
+	ld a, [wMenuSelection]
+	inc a ; -1?
+	ret z
+	ld hl, SCREEN_WIDTH
+	add hl, de
+	call OptionsShared_StartValue
+	ldh a, [hJoyPressed]
+	push af
+	xor a
+	ldh [hJoyPressed], a
+	call OptionsShared_DispatchCallRoutine
+	pop af
+	ldh [hJoyPressed], a
+	ret
+
+; Shared ResetSelectionDescription callback for ScrollingMenu.
+; Called by function 3 on every ScrollingMenu init.
+; Skip if selection hasn't changed (avoids resetting description on A press).
+OptionsShared_ResetSelectionDescription:
+	ld a, [wMenuSelection]
+	ld hl, wOptionsMenuLastSelection
+	cp [hl]
+	ret z
+	ld [hl], a
+	call OptionsShared_DispatchLookupDescription
+	xor a
+	ld [wOptionsMenuDescriptionState], a
+	call SetUpTextbox
+	; Get text speed flag based on menu type
+	ld a, [wOptionsMenuType]
+	and a
+	jr nz, .instant
+	; OptionsMenu: check if Text Speed option
+	call OptionsMenu_GetTextSpeedFlag
+	jmp OptionsShared_PlaceDescriptionText
+.instant
+	ld c, 0 ; instant text
+	jmp OptionsShared_PlaceDescriptionText
+
+; Simple advance description (for InitialOptions, and non-TextSpeed options)
+OptionsShared_SimpleAdvanceDescription:
+	ld a, [wOptionsMenuDescriptionState]
+	cp 2 ; ended?
+	jr z, .wrap
+	; More text - advance (state is 0=para or 1=cont)
+	ld c, 0 ; instant text
+	jmp OptionsShared_PlaceDescriptionText
+
+.wrap
+	; Description ended - loop back to first page
+	call OptionsShared_DispatchLookupDescription
+	xor a
+	ld [wOptionsMenuDescriptionState], a
+	ld c, 0 ; instant text
+	jmp OptionsShared_PlaceDescriptionText
+
 OptionsShared_SetSelectionFromCursor:
 	ld a, [wMenuCursorY]
 	dec a

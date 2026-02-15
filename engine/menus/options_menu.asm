@@ -1,5 +1,3 @@
-DEF OPTIONS_MENU_VALUE_OFFSET EQU 9
-
 OptionsMenu:
 	ldh a, [hInMenu]
 	push af
@@ -22,7 +20,7 @@ OptionsMenu:
 
 	call SetDefaultBGPAndOBP
 	call LoadFrame
-	call OptionsMenu_LoadEdgeTiles
+	call OptionsShared_LoadEdgeTiles
 
 	ld a, [wOptionsMenuCursor]
 	and a
@@ -36,100 +34,16 @@ OptionsMenu:
 	xor a
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
-	call OptionsMenu_DrawEdges
+	call OptionsShared_DrawEdges
 
 	ld a, $ff
 	ld [wOptionsMenuLastSelection], a
 
-.loop
-	ld hl, wMenuScrollPosition
-	ld a, [wOptionsMenuScrollPosition]
-	ld [hli], a
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
+	xor a ; OPTIONS_MENU_TYPE_INGAME
+	ld [wOptionsMenuType], a
 
-	ld hl, wMenuCursorBuffer
-	ld a, [wOptionsMenuCursor]
-	ld [hli], a
-	xor a
-	ld [hl], a
+	call OptionsShared_RunLoop
 
-	call ScrollingMenu
-	ld a, TRUE
-	ldh [hInMenu], a
-
-	ld a, [wMenuScrollPosition]
-	ld [wOptionsMenuScrollPosition], a
-	ld a, [wMenuCursorY]
-	ld [wOptionsMenuCursor], a
-
-	ld a, [wMenuJoypad]
-	cp PAD_B
-	jp z, .exit
-	cp PAD_START
-	jp z, .exit
-	cp PAD_LEFT
-	jp z, .apply_left
-	cp PAD_RIGHT
-	jp z, .apply_right
-	cp PAD_A
-	jp z, .advance_description
-	jr .loop
-
-
-.advance_description
-	call OptionsMenu_AdvanceSelectionDescription
-	call OptionsMenu_DrawEdges
-	call ApplyAttrAndTilemapInVBlank
-	jr .loop
-
-.apply_left
-	ldh a, [hJoyPressed]
-	and PAD_LEFT
-	jp z, .loop
-	ld a, PAD_LEFT
-	jr .apply_left_right
-
-.apply_right
-	ldh a, [hJoyPressed]
-	and PAD_RIGHT
-	jp z, .loop
-	ld a, PAD_RIGHT
-	; fallthrough
-
-.apply_left_right
-	push af ; save direction (PAD_LEFT or PAD_RIGHT)
-	call OptionsShared_SetValueCoordFromCursor
-	call OptionsShared_SetSelectionFromCursor
-	ld a, [wMenuSelection]
-	and a ; 0?
-	jr z, .skip_left_right
-	inc a ; -1?
-	jr z, .skip_left_right
-	pop bc ; restore direction into B (we'll use it below)
-	ldh a, [hJoyPressed]
-	push af
-	ld a, b
-	ldh [hJoyPressed], a
-	call OptionsMenu_CallOptionRoutine
-	call ApplyTilemapInVBlank
-	pop af
-	ldh [hJoyPressed], a
-	xor a
-	ldh [hJoyPressed], a
-	call OptionsShared_WaitDPadRelease
-	jmp .loop
-
-.skip_left_right
-	pop af ; discard saved direction
-	jmp .loop
-
-.exit
-	ld de, SFX_TRANSACTION
-	call PlaySFX
-	call WaitSFX
 	pop af
 	ldh [hInMenu], a
 	ret
@@ -168,50 +82,12 @@ MenuDataHeader_Options:
 
 .MenuData2:
 	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_FUNCTION3 | SCROLLINGMENU_ENABLE_START ; flags
-	db 5, OPTIONS_MENU_VALUE_OFFSET ; rows, columns
+	db 5, OPTIONS_SHARED_VALUE_OFFSET ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
 	dba OptionsMenuItems ; text pointer
-	dba OptionsMenu_PlaceOptionName
-	dba OptionsMenu_PlaceOptionValue
-	dba OptionsMenu_ResetSelectionDescription
-
-OptionsMenu_LoadEdgeTiles:
-	ld hl, .BGTiles
-	ld de, vTiles2 tile $00
-	lb bc, BANK(.BGTiles), 15
-	call DecompressRequest2bpp
-	ret
-
-.BGTiles:
-	INCBIN "gfx/new_game/init_bg.2bpp.lzp"
-
-OptionsMenu_DrawEdges:
-	hlcoord 0, 0
-	ld a, $01 ; left edge tile
-	ld bc, SCREEN_WIDTH - 2
-	ld d, TEXTBOX_Y
-.edge_loop
-	ld [hli], a
-	inc a ; $02 = right edge tile
-	add hl, bc
-	ld [hli], a
-	dec a ; $01 = left edge tile
-	dec d
-	jr nz, .edge_loop
-
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH - 2
-	ld d, TEXTBOX_Y
-	xor a
-.edge_attr_loop
-	ld [hli], a
-	inc a
-	add hl, bc
-	xor a
-	ld [hli], a
-	dec d
-	jr nz, .edge_attr_loop
-	ret
+	dba OptionsShared_PlaceOptionName
+	dba OptionsShared_PlaceOptionValue
+	dba OptionsShared_ResetSelectionDescription
 
 OptionsMenuItems:
 	db NUM_OPTIONS
@@ -220,42 +96,31 @@ for n, NUM_OPTIONS
 endr
 	db -1 ; terminator ("Done")
 
-OptionsMenu_PlaceOptionName:
-	push de
-	ld de, OptionNames.Done
-	ld a, [wMenuSelection]
-	inc a ; -1?
-	jr z, .got_name
-	add a
-	ld c, a
-	ld b, 0
-	ld hl, OptionNames - 2 * 2 ; offset nstead of `dec a :: dec a`
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-.got_name
-	pop hl
-	rst PlaceString
-	ret
-
 INCLUDE "data/options/option_names.asm"
 
-OptionsMenu_PlaceOptionValue:
+OptionsMenu_GetTextSpeedFlag:
+; Returns C = 0 for instant text, C != 0 for configured text speed.
+; Text Speed option (wMenuSelection == 1) uses configured speed.
+	ld c, 0
 	ld a, [wMenuSelection]
-	inc a ; -1?
-	ret z
-	ld hl, SCREEN_WIDTH
-	add hl, de
-	call OptionsShared_StartValue
-	ldh a, [hJoyPressed]
-	push af
-	xor a
-	ldh [hJoyPressed], a
-	call OptionsMenu_CallOptionRoutine
-	pop af
-	ldh [hJoyPressed], a
+	cp 1
+	ret nz
+	inc c
 	ret
+
+OptionsMenu_AdvanceSelectionDescription:
+; Text Speed: always redraw from the start using current speed.
+	call OptionsMenu_GetTextSpeedFlag
+	ld a, c
+	and a
+	jp z, OptionsShared_SimpleAdvanceDescription
+	; TextSpeed special case: redraw from start with configured speed
+	call OptionsShared_DispatchLookupDescription
+	xor a
+	ld [wOptionsMenuDescriptionState], a
+	call SetUpTextbox
+	ld c, 1
+	jmp OptionsShared_PlaceDescriptionText
 
 Options_TextSpeed:
 	ld a, [wOptions1]
@@ -724,96 +589,5 @@ Options_Done:
 .Exit:
 	scf
 	ret
-
-OptionsMenu_LookupDescription:
-; Decompress description text to wDecompressScratch.
-; Set wOptionsMenuDescriptionAddr to start of buffer.
-	ld a, [wMenuSelection]
-	inc a ; -1? (Done)
-	jr z, .done_item
-	dec a
-	dec a ; 0-indexed (items are 1-based)
-	add a ; × 2 for pointer table
-	ld c, a
-	ld b, 0
-	ld hl, OptionsDescriptions
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jr .decompress
-
-.done_item
-	ld hl, OptionsDescriptions.Done
-
-.decompress
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wDecompressScratch)
-	ldh [rWBK], a
-	ld de, wDecompressScratch
-	call DecompressStringToRAM
-	pop af
-	ldh [rWBK], a
-	ld hl, wDecompressScratch
-	ld a, l
-	ld [wOptionsMenuDescriptionAddr], a
-	ld a, h
-	ld [wOptionsMenuDescriptionAddr + 1], a
-	ret
-
-OptionsMenu_GetTextSpeedFlag:
-; Returns C = 0 for instant text, C != 0 for configured text speed.
-; Text Speed option (wMenuSelection == 1) uses configured speed.
-	ld c, 0
-	ld a, [wMenuSelection]
-	cp 1
-	ret nz
-	inc c
-	ret
-
-OptionsMenu_ResetSelectionDescription:
-; Called by function 3 on every ScrollingMenu init.
-; Skip if selection hasn't changed (avoids resetting description on A press).
-	ld a, [wMenuSelection]
-	ld hl, wOptionsMenuLastSelection
-	cp [hl]
-	ret z
-	ld [hl], a
-	call OptionsMenu_LookupDescription
-	xor a
-	ld [wOptionsMenuDescriptionState], a
-	call SetUpTextbox
-	call OptionsMenu_GetTextSpeedFlag
-	jmp OptionsShared_PlaceDescriptionText
-
-OptionsMenu_AdvanceSelectionDescription:
-	; Text Speed: always redraw from the start using current speed.
-	call OptionsMenu_GetTextSpeedFlag
-	ld a, c
-	and a
-	jr z, .normal
-	call OptionsMenu_LookupDescription
-	xor a
-	ld [wOptionsMenuDescriptionState], a
-	call SetUpTextbox
-	ld c, 1
-	jmp OptionsShared_PlaceDescriptionText
-
-.normal
-	ld a, [wOptionsMenuDescriptionState]
-	cp 2 ; ended?
-	jr z, .wrap
-	; More text — advance (state is 0=para or 1=cont)
-	call OptionsMenu_GetTextSpeedFlag
-	jmp OptionsShared_PlaceDescriptionText
-
-.wrap
-	; Description ended — loop back to first page
-	call OptionsMenu_LookupDescription
-	xor a
-	ld [wOptionsMenuDescriptionState], a
-	call OptionsMenu_GetTextSpeedFlag
-	jmp OptionsShared_PlaceDescriptionText
 
 INCLUDE "data/options/options_descriptions.asm"
