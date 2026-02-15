@@ -7600,6 +7600,25 @@ MysticalmanGroup:
 		tr_moves REFLECT, LIGHT_SCREEN, HP_FIGHTING, PSYBEAM
 	end_trainer
 
+	def_trainer EUSINE_2, "Eusine"
+	tr_mon LEVEL_FROM_BADGES + 7, HYPNO @ EVIOLITE, MALE
+		tr_extra INSOMNIA
+		tr_evs 80 HP, 80 SDf
+		tr_moves DREAM_EATER, HYPNOSIS, NASTY_PLOT, PSYCHIC_M
+	tr_mon LEVEL_FROM_BADGES + 7, GENGAR @ SPELL_TAG, MALE
+		tr_extra LEVITATE
+		tr_evs 80 SAt, 80 Spe
+		tr_moves SHADOW_BALL, SLUDGE_BOMB, HYPNOSIS, DESTINY_BOND
+	tr_mon LEVEL_FROM_BADGES + 7, ELECTRODE @ MAGNET, MALE
+		tr_extra AFTERMATH, SHINY
+		tr_evs 80 SAt, 80 Spe
+		tr_moves THUNDERBOLT, BUG_BUZZ, LIGHT_SCREEN, VOLT_SWITCH
+	tr_mon LEVEL_FROM_BADGES + 7, ALAKAZAM @ TWISTEDSPOON, MALE
+		tr_extra MAGIC_GUARD
+		tr_evs 80 SAt, 80 Spe
+		tr_moves PSYCHIC_M, SHADOW_BALL, FOCUS_BLAST, RECOVER
+	end_trainer
+
 
 SECTION "KarateKingGroup", ROMX
 KarateKingGroup:

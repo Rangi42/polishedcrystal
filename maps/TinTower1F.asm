@@ -51,7 +51,11 @@ TinTower1FNPCsCallback:
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
 .GotRainbowWing:
+	checkevent EVENT_EUSINE_SAW_HO_OH
+	iftruefwd .Done
 	checkevent EVENT_FOUGHT_HO_OH
+	iffalsefwd .Done
+	checkevent EVENT_EUSINES_HOUSE_EUSINE
 	iffalsefwd .Done
 	appear TINTOWER1F_EUSINE
 .Done:
@@ -227,6 +231,8 @@ TinTower1FEusineAfterHoOhScript:
 	writetext TinTowerEusineHoOhText
 	waitbutton
 	closetext
+	setevent EVENT_EUSINE_SAW_HO_OH
+	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	readvar VAR_FACING
 	ifnotequal RIGHT, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement

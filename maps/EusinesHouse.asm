@@ -21,6 +21,8 @@ EusinesHouse_MapScriptHeader:
 CeladonEusine:
 	faceplayer
 	opentext
+	checkevent EVENT_EUSINE_SAW_HO_OH
+	iftruefwd .PostHoOh
 	writetext CeladonEusineText1
 	promptbutton
 	special SpecialBeastsCheck
@@ -63,6 +65,32 @@ CeladonEusine:
 .OwnSuicune
 	jumptext EusineQuestHintText
 
+.PostHoOh:
+	checkevent EVENT_BEAT_EUSINE_2
+	iftruefwd .AlreadyRematched
+	setmonval SUICUNE
+	special Special_FindThatSpecies
+	iftruefwd .RematchSuicune
+.AlreadyRematched:
+	jumpopenedtext EusinePostHoOhText
+
+.RematchSuicune:
+	writetext EusineRematchIntroText
+	yesorno
+	iffalsefwd .DeclineRematch
+	closetext
+	winlosstext EusineRematchWinText, EusineRematchLossText
+	setlasttalked EUSINESHOUSE_EUSINE
+	loadtrainer MYSTICALMAN, EUSINE_2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_EUSINE_2
+	opentext
+	jumpopenedtext EusineRematchAfterText
+
+.DeclineRematch:
+	jumpopenedtext EusineRematchDeclineText
+
 .HoOh:
 	writetext EusineLeavesCeladonText
 	waitbutton
@@ -90,15 +118,19 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
+	checkevent EVENT_EUSINE_SAW_HO_OH
+	iftruefwd .PostHoOhGramps
 	checkevent EVENT_EUSINES_HOUSE_EUSINE
 	iffalse_jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
 	checkevent EVENT_FOUGHT_SUICUNE
 	iffalse_jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
-	checkevent EVENT_DECO_ABRA_DOLL
-	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
-	checkevent EVENT_FOUGHT_HO_OH
-	iftruefwd .AfterHoOhFight
 	jumptextfaceplayer EusinesHouseGrampsEusineSearchingForHoOhText
+
+.PostHoOhGramps:
+	checkevent EVENT_DECO_ABRA_DOLL
+	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineHomeForGoodText
+	; EVENT_EUSINE_SAW_HO_OH is set, so the quest is complete.
+	; Always offer the Abra Doll regardless of Ho-Oh respawn state.
 
 .AfterHoOhFight:
 	faceplayer
@@ -194,6 +226,76 @@ EusineQuestHintText:
 	line "you, <PLAYER>!"
 	done
 
+EusinePostHoOhText:
+	text "Eusine: <PLAYER>!"
+
+	para "I'm still amazed"
+	line "by what happened"
+	cont "at Bell Tower."
+
+	para "Meeting Ho-Oh has"
+	line "given me so much"
+
+	para "more to study and"
+	line "think about."
+
+	para "I'm going to keep"
+	line "researching and"
+
+	para "become the best"
+	line "#Maniac ever!"
+	done
+
+EusineRematchIntroText:
+	text "Eusine: Oh! Is"
+	line "that Suicune?"
+
+	para "You actually"
+	line "brought it along!"
+
+	para "Seeing it makes"
+	line "my heart race!"
+
+	para "I know it's a lot"
+	line "to ask, but how"
+	cont "about a battle?"
+	done
+
+EusineRematchWinText:
+	text "Marvelous!"
+
+	para "You and Suicune"
+	line "truly are a great"
+	cont "team!"
+	done
+
+EusineRematchLossText:
+	text "What a battle!"
+
+	para "You and Suicune"
+	line "will only get"
+	cont "stronger!"
+	done
+
+EusineRematchAfterText:
+	text "Eusine: <PLAYER>,"
+	line "battling alongside"
+
+	para "legendary #mon"
+	line "is inspiring."
+
+	para "Thank you for"
+	line "showing me that!"
+	done
+
+EusineRematchDeclineText:
+	text "No worries!"
+
+	para "Come show me"
+	line "Suicune whenever"
+	cont "you feel like it!"
+	done
+
 EusinesHouseGrampsGrandsonHomeText:
 	text "My grandson came"
 	line "home!"
@@ -238,11 +340,14 @@ EusinesHouseGrampsThankYouGiftText:
 	cont "appreciation."
 	done
 
-EusinesHouseGrampsEusineTravelingWorldText:
-	text "Eusine is out"
-	line "traveling the"
-	cont "world."
+EusinesHouseGrampsEusineHomeForGoodText:
+	text "Eusine is home for"
+	line "good now!"
 
-	para "I'm so proud of"
-	line "him!"
+	para "He's so happy, and"
+	line "so am I!"
+
+	para "Thank you for"
+	line "everything,"
+	cont "<PLAYER>!"
 	done

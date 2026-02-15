@@ -1062,6 +1062,7 @@ DEF CRYS EQU __trainer_class__
 
 	trainerclass MYSTICALMAN ; 71
 	const EUSINE
+	const EUSINE_2
 
 	trainerclass KARATE_KING ; 72
 	const KIYO
