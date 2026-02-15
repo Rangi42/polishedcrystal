@@ -157,6 +157,8 @@ OptionsShared_DispatchLookupDescription:
 	ld [wOptionsMenuDescriptionAddr], a
 	ld a, h
 	ld [wOptionsMenuDescriptionAddr + 1], a
+	xor a ; OPTDESCSTATE_PAGE
+	ld [wOptionsMenuDescriptionState], a
 	ret
 
 ; Shared PlaceOptionName callback for ScrollingMenu.
@@ -222,8 +224,6 @@ OptionsShared_ResetSelectionDescription:
 	ret z
 	ld [hl], a
 	call OptionsShared_DispatchLookupDescription
-	xor a
-	ld [wOptionsMenuDescriptionState], a
 	call SetUpTextbox
 	; Get text speed flag based on menu type
 	ld a, [wOptionsMenuIsInitial]
@@ -233,25 +233,14 @@ OptionsShared_ResetSelectionDescription:
 	call OptionsMenu_GetTextSpeedFlag
 	jmp OptionsShared_PlaceDescriptionText
 .instant
-	ld c, 0 ; instant text
-	jmp OptionsShared_PlaceDescriptionText
+	jmp OptionsShared_PlaceDescriptionTextInstantly
 
 ; Simple advance description (for InitialOptions, and non-TextSpeed options)
 OptionsShared_SimpleAdvanceDescription:
 	ld a, [wOptionsMenuDescriptionState]
-	cp 2 ; ended?
-	jr z, .wrap
-	; More text - advance (state is 0=para or 1=cont)
-	ld c, 0 ; instant text
-	jmp OptionsShared_PlaceDescriptionText
-
-.wrap
-	; Description ended - loop back to first page
-	call OptionsShared_DispatchLookupDescription
-	xor a
-	ld [wOptionsMenuDescriptionState], a
-	ld c, 0 ; instant text
-	jmp OptionsShared_PlaceDescriptionText
+	cp OPTDESCSTATE_DONE
+	call z, OptionsShared_DispatchLookupDescription
+	jmp OptionsShared_PlaceDescriptionTextInstantly
 
 OptionsShared_SetSelectionFromCursor:
 	ld a, [wMenuCursorY]
@@ -342,11 +331,12 @@ OptionsShared_PlaceStringAtValueCoord:
 	and a
 	ret
 
+OptionsShared_PlaceDescriptionTextInstantly:
+	ld c, FALSE
 OptionsShared_PlaceDescriptionText:
 ; Display the current description page non-blockingly.
 ; Text from wOptionsMenuDescriptionAddr is in wDecompressScratch (uncompressed).
 ; Input: C = 0 for instant text, C != 0 to use configured text speed
-; Uses wOptionsMenuDescriptionState: 0=para, 1=cont, 2=ended.
 	push bc ; save text speed flag
 
 	; Save wOptions1 and wTextboxFlags
@@ -379,6 +369,7 @@ OptionsShared_PlaceDescriptionText:
 
 	; If continuing from <CONT>, scroll existing line 2 up to line 1.
 	ld a, [wOptionsMenuDescriptionState]
+	assert OPTDESCSTATE_SCROLL == 1
 	dec a
 	jr nz, .loadPointer
 	call Text_WaitBGMap
@@ -432,33 +423,33 @@ OptionsShared_PlaceDescriptionText:
 
 	; Check the stop char (saved in B)
 	ld a, b
-	cp CHARVAL("<PARA>")
+	cp '<PARA>'
 	jr z, .morePara
-	cp CHARVAL("<CONT>")
+	cp '<CONT>'
 	jr z, .moreCont
 
 	; Description ended
-	ld a, 2
+	ld a, OPTDESCSTATE_DONE
 	ld [wOptionsMenuDescriptionState], a
 	jr .restore
 
 .morePara
-	; Save resume position, set state = 0
+	; Save resume position, set state = page
 	ld a, e
 	ld [wOptionsMenuDescriptionAddr], a
 	ld a, d
 	ld [wOptionsMenuDescriptionAddr + 1], a
-	xor a ; state 0
+	xor a ; OPTDESCSTATE_PAGE
 	ld [wOptionsMenuDescriptionState], a
 	jr .showCursor
 
 .moreCont
-	; Save resume position, set state = 1
+	; Save resume position, set state = scroll
 	ld a, e
 	ld [wOptionsMenuDescriptionAddr], a
 	ld a, d
 	ld [wOptionsMenuDescriptionAddr + 1], a
-	ld a, 1
+	ld a, OPTDESCSTATE_SCROLL
 	ld [wOptionsMenuDescriptionState], a
 
 .showCursor

@@ -110,10 +110,8 @@ OptionsMenu_AdvanceSelectionDescription:
 	jmp z, OptionsShared_SimpleAdvanceDescription
 	; TextSpeed special case: redraw from start with configured speed
 	call OptionsShared_DispatchLookupDescription
-	xor a
-	ld [wOptionsMenuDescriptionState], a
 	call SetUpTextbox
-	ld c, 1
+	ld c, TRUE ; use text speed
 	jmp OptionsShared_PlaceDescriptionText
 
 Options_TextSpeed:

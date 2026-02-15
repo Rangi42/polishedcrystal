@@ -125,6 +125,12 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 	const EVS_OPT_MODERN   ; %10
 DEF EV_OPTMASK EQU %11
 
+; wOptionsMenuDescriptionState::
+	const_def
+	const OPTDESCSTATE_PAGE   ; 0 (stopped at '<PARA>')
+	const OPTDESCSTATE_SCROLL ; 1 (stopped at '<CONT>')
+	const OPTDESCSTATE_DONE   ; 2 (stopped at '<PROMPT>')
+
 ; wForgettingMove::
 	const_def 6
 	const LEARNING_TM_F     ; 6

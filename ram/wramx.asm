@@ -512,9 +512,8 @@ wDexPrevOffset:: db
 wOptionsMenuValueCoord:: dw
 wOptionsMenuDescriptionAddr:: dw
 wOptionsMenuDescriptionState:: db
-; 0 = more pages (stopped at <PARA>), 1 = needs scroll (stopped at <CONT>), 2 = ended
 wOptionsMenuLastSelection:: db
-wOptionsMenuIsInitial:: db ; 0 = in-game options, 1 = initial options
+wOptionsMenuIsInitial:: db
 
 	ds 25 ; unused
 
