@@ -99,7 +99,7 @@ OptionsDescriptions:
 	line "and kilograms."
 	prompt
 
-.Done:
+OptionsDoneDescription:
 	text "Save options and"
 	line "exit the menu."
 	prompt

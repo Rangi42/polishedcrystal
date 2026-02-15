@@ -8,40 +8,32 @@ OptionsMenu:
 	ld [wBattleMenuFlags], a
 
 	call ClearBGPalettes
+
 	ld a, CGB_PLAIN
 	call GetCGBLayout
 
-	; Override palette 0 with gray theme for edge borders
 	ld hl, .BGPalettes
 	ld de, wBGPals1
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
-	farcall ApplyPals
 
-	call SetDefaultBGPAndOBP
 	call LoadFrame
 	call OptionsShared_LoadEdgeTiles
 
-	ld a, [wOptionsMenuCursor]
-	and a
-	jr nz, .have_cursor
-	inc a ; 1
-	ld [wOptionsMenuCursor], a
-.have_cursor
+	farcall ApplyPals
+
+	call SetDefaultBGPAndOBP
 
 	ld hl, MenuDataHeader_Options
 	call CopyMenuHeader
+
 	xor a
 	ldh [hBGMapMode], a
+
 	call InitScrollingMenu
-	call OptionsShared_DrawEdges
 
-	ld a, $ff
-	ld [wOptionsMenuLastSelection], a
-
-	xor a ; OPTIONS_MENU_TYPE_INGAME
-	ld [wOptionsMenuType], a
-
+	xor a ; FALSE
+	ld [wOptionsMenuIsInitial], a
 	call OptionsShared_RunLoop
 
 	pop af
@@ -50,6 +42,8 @@ OptionsMenu:
 
 .BGPalettes:
 INCLUDE "gfx/options/options_bg.pal"
+
+DEF NUM_OPTIONS EQU 12
 
 OptionsMenu_CallOptionRoutine:
 	ld a, [wMenuSelection]

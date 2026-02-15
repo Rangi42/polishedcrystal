@@ -15,11 +15,6 @@ InitialOptionDescriptions:
 	dw .ColorVariation
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
-.Done:
-	text "Save your choices"
-	line "and play the game!"
-	prompt
-
 .Natures:
 	text "Natures raise one"
 	line "stat but lower"
@@ -167,4 +162,9 @@ InitialOptionDescriptions:
 
 	para "variation based"
 	line "on nicknames."
+	prompt
+
+InitialOptionsDoneDescription:
+	text "Save your choices"
+	line "and play the game!"
 	prompt

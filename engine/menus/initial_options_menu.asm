@@ -1,36 +1,37 @@
-DEF NUM_INITIAL_MENU_OPTIONS EQU 11
-
 SetInitialOptions:
 	ld a, $10
 	ld [wMusicFade], a
-
 	xor a ; MUSIC_NONE
 	ld [wMusicFadeIDLo], a
 	ld [wMusicFadeIDHi], a
 	ld c, 8
 	call DelayFrames
 
-	call ClearBGPalettes
-	call LoadFrame
+	ldh a, [hInMenu]
+	push af
+	ld a, TRUE
+	ldh [hInMenu], a
 
-	; Clear tilemap and attrmap
+	xor a
+	ld [wBattleMenuFlags], a
+
+	call ClearBGPalettes
+
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
-
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
 	xor a
 	rst ByteFill
 
-	; Load custom BG palettes (blue theme)
 	ld hl, .BGPalettes
 	ld de, wBGPals1
-	ld bc, 2 palettes
+	ld bc, 1 palettes
 	call FarCopyColorWRAM
 
-	; Load custom BG tiles (edge borders)
+	call LoadFrame
 	call OptionsShared_LoadEdgeTiles
 
 	farcall ApplyPals
@@ -41,32 +42,14 @@ SetInitialOptions:
 	ld hl, .InitialOptionsText
 	call PrintText
 
-	ldh a, [hInMenu]
-	push af
-	ld a, TRUE
-	ldh [hInMenu], a
-
-	xor a
-	ld [wBattleMenuFlags], a
-
 	ld hl, MenuDataHeader_InitialOptions
 	call CopyMenuHeader
+
 	xor a
 	ldh [hBGMapMode], a
-	call OptionsShared_DrawEdges
 
-	; initialize cursor position
-	xor a
-	ld [wOptionsMenuScrollPosition], a
-	ld a, 1
-	ld [wOptionsMenuCursor], a
-
-	ld a, $ff
-	ld [wOptionsMenuLastSelection], a
-
-	ld a, 1 ; OPTIONS_MENU_TYPE_INITIAL
-	ld [wOptionsMenuType], a
-
+	ld a, TRUE
+	ld [wOptionsMenuIsInitial], a
 	call OptionsShared_RunLoop
 
 	pop af
@@ -78,7 +61,9 @@ SetInitialOptions:
 	text_end
 
 .BGPalettes:
-INCLUDE "gfx/new_game/init_bg.pal"
+INCLUDE "gfx/options/initial_options_bg.pal"
+
+DEF NUM_INITIAL_MENU_OPTIONS EQU 11
 
 InitialOptions_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -118,18 +103,10 @@ MenuDataHeader_InitialOptions:
 
 InitialOptionsMenuItems:
 	db NUM_INITIAL_MENU_OPTIONS
-	db 1  ; Natures
-	db 2  ; Abilities
-	db 3  ; Phys/Spcl split
-	db 4  ; EV gain
-	db 5  ; Experience gain
-	db 6  ; Affection bonus
-	db 7  ; Real-time clock
-	db 8  ; Perfect stats
-	db 9  ; Traded PKMn obey
-	db 10 ; Evolve in battle
-	db 11 ; Color variation
-	db -1 ; Done
+for n, NUM_INITIAL_MENU_OPTIONS
+	db n + 1
+endr
+	db -1 ; terminator ("Done")
 
 INCLUDE "data/options/initial_option_names.asm"
 

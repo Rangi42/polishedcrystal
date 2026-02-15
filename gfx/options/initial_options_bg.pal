@@ -1,8 +1,8 @@
 if !DEF(MONOCHROME)
-; gray
+; blue
 	RGB 31, 31, 31
-	RGB 21, 23, 24
-	RGB 16, 19, 20
+	RGB 09, 30, 31
+	RGB 09, 25, 29
 	RGB 00, 00, 00
 else
 	MONOCHROME_RGB_FOUR

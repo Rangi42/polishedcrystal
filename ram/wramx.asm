@@ -510,16 +510,13 @@ wDexPrevCursorPos:: db
 wDexPrevOffset:: db
 
 wOptionsMenuValueCoord:: dw
-wOptionsMenuCursor:: db
-wOptionsMenuScrollPosition:: db
 wOptionsMenuDescriptionAddr:: dw
 wOptionsMenuDescriptionState:: db
 ; 0 = more pages (stopped at <PARA>), 1 = needs scroll (stopped at <CONT>), 2 = ended
 wOptionsMenuLastSelection:: db
-wOptionsMenuType:: db
-; 0 = in-game options, 1 = initial options
+wOptionsMenuIsInitial:: db ; 0 = in-game options, 1 = initial options
 
-	ds 23 ; unused
+	ds 25 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
