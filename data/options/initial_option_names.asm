@@ -13,8 +13,6 @@ InitialOptionNames:
 	dw .ColorVariation
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
-.Done:
-	db "Done@"
 .Natures:
 	db "Natures@"
 .Abilities:
