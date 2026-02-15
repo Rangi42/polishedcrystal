@@ -12,6 +12,14 @@ OptionsMenu:
 	call ClearBGPalettes
 	ld a, CGB_PLAIN
 	call GetCGBLayout
+
+	; Override palette 0 with gray theme for edge borders
+	ld hl, .BGPalettes
+	ld de, wBGPals1
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	farcall ApplyPals
+
 	call SetDefaultBGPAndOBP
 	call LoadFrame
 	call OptionsMenu_LoadEdgeTiles
@@ -125,6 +133,9 @@ OptionsMenu:
 	pop af
 	ldh [hInMenu], a
 	ret
+
+.BGPalettes:
+INCLUDE "gfx/options/options_bg.pal"
 
 OptionsMenu_CallOptionRoutine:
 	ld a, [wMenuSelection]
