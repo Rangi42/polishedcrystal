@@ -512,8 +512,12 @@ wDexPrevOffset:: db
 wOptionsMenuValueCoord:: dw
 wOptionsMenuCursor:: db
 wOptionsMenuScrollPosition:: db
+wOptionsMenuDescriptionAddr:: dw
+wOptionsMenuDescriptionState:: db
+; 0 = more pages (stopped at <PARA>), 1 = needs scroll (stopped at <CONT>), 2 = ended
+wOptionsMenuLastSelection:: db
 
-	ds 28 ; unused
+	ds 24 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db

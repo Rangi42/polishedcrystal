@@ -25,15 +25,6 @@ SetInitialOptions:
 	xor a
 	rst ByteFill
 
-	; Use palette 1 for the SEL/HELP and START/DONE strip.
-	hlcoord 1, 16, wAttrmap
-	ld a, $01
-	ld c, 12
-.attr_loop
-	ld [hli], a
-	dec c
-	jr nz, .attr_loop
-
 	; Load custom BG palettes (blue theme)
 	ld hl, .BGPalettes
 	ld de, wBGPals1
@@ -67,13 +58,15 @@ SetInitialOptions:
 	xor a
 	ldh [hBGMapMode], a
 	call InitialOptions_DrawEdges
-	call InitialOptions_DrawBottomPrompts
 
 	; initialize cursor position
 	xor a
 	ld [wOptionsMenuScrollPosition], a
 	ld a, 1
 	ld [wOptionsMenuCursor], a
+
+	ld a, $ff
+	ld [wOptionsMenuLastSelection], a
 
 .loop
 	ld hl, wMenuScrollPosition
@@ -104,41 +97,17 @@ SetInitialOptions:
 	jp z, .exit
 	cp PAD_START
 	jp z, .exit
-	cp PAD_SELECT
-	jp z, .show_description
 	cp PAD_LEFT
 	jp z, .apply_left
 	cp PAD_RIGHT
 	jp z, .apply_right
 	cp PAD_A
-	jr nz, .loop
-	; fallthrough
-
-; apply a
-	call OptionsShared_SetValueCoordFromCursor
-	ldh a, [hJoyPressed]
-	push af
-	ld a, PAD_RIGHT
-	ldh [hJoyPressed], a
-	ld a, [wMenuSelection]
-	and a ; 0?
-	jr z, .restore_a
-	inc a ; -1?
-	jr z, .restore_a
-	call InitialOptions_CallOptionRoutine
-	call ApplyTilemapInVBlank
-.restore_a
-	pop af
-	ldh [hJoyPressed], a
-	xor a
-	ldh [hJoyPressed], a
-	call OptionsShared_WaitDPadRelease
+	jp z, .advance_description
 	jr .loop
 
-.show_description
-	call InitialOptions_ShowSelectionDescription
+.advance_description
+	call InitialOptions_AdvanceSelectionDescription
 	call InitialOptions_DrawEdges
-	call InitialOptions_DrawBottomPrompts
 	call ApplyAttrAndTilemapInVBlank
 	jr .loop
 
@@ -207,7 +176,7 @@ InitialOptions_DrawEdges:
 	hlcoord 0, 0
 	ld a, $01 ; left edge tile
 	ld bc, SCREEN_WIDTH - 2
-	ld d, SCREEN_HEIGHT
+	ld d, TEXTBOX_Y
 .edge_loop
 	ld [hli], a
 	inc a ; $02 = right edge tile
@@ -220,7 +189,7 @@ InitialOptions_DrawEdges:
 	; Restore edge attributes (palette 0) across the full screen.
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH - 2
-	ld d, SCREEN_HEIGHT
+	ld d, TEXTBOX_Y
 	xor a
 .edge_attr_loop
 	ld [hli], a
@@ -232,60 +201,9 @@ InitialOptions_DrawEdges:
 	jr nz, .edge_attr_loop
 	ret
 
-InitialOptions_DrawBottomPrompts:
-	hlcoord 1, 16
-	ld a, $03
-	ld d, 12
-.bottom_loop
-	ld [hli], a
-	inc a
-	dec d
-	jr nz, .bottom_loop
-
-	; Clear anything to the right of the START/DONE graphic.
-	ld a, ' '
-	ld c, 6
-.bottom_clear_right_loop
-	ld [hli], a
-	dec c
-	jr nz, .bottom_clear_right_loop
-
-	; Clear the bottom-most interior row to remove lingering textbox border tiles.
-	hlcoord 1, 17
-	ld a, ' '
-	ld c, 18
-.bottom_clear_last_row_loop
-	ld [hli], a
-	dec c
-	jr nz, .bottom_clear_last_row_loop
-
-	hlcoord 1, 16, wAttrmap
-	ld a, $01
-	ld c, 12
-.bottom_attr_loop
-	ld [hli], a
-	dec c
-	jr nz, .bottom_attr_loop
-
-	; Restore default palette for the rest of row 16.
-	xor a
-	ld c, 6
-.bottom_attr_clear_right_loop
-	ld [hli], a
-	dec c
-	jr nz, .bottom_attr_clear_right_loop
-
-	; Restore default palette for row 17.
-	hlcoord 1, 17, wAttrmap
-	xor a
-	ld c, 18
-.bottom_attr_clear_last_row_loop
-	ld [hli], a
-	dec c
-	jr nz, .bottom_attr_clear_last_row_loop
-	ret
-
-InitialOptions_ShowSelectionDescription:
+InitialOptions_LookupDescription:
+; Decompress description text to wDecompressScratch.
+; Set wOptionsMenuDescriptionAddr to start of buffer.
 	ld a, [wMenuSelection]
 	inc a ; -1? (Done)
 	jr z, .done_item
@@ -299,11 +217,57 @@ InitialOptions_ShowSelectionDescription:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jmp PrintText
+	jr .decompress
 
 .done_item
 	ld hl, InitialOptionDescriptions.Done
-	jmp PrintText
+
+.decompress
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rWBK], a
+	ld de, wDecompressScratch
+	call DecompressStringToRAM
+	pop af
+	ldh [rWBK], a
+	ld hl, wDecompressScratch
+	ld a, l
+	ld [wOptionsMenuDescriptionAddr], a
+	ld a, h
+	ld [wOptionsMenuDescriptionAddr + 1], a
+	ret
+
+InitialOptions_ResetSelectionDescription:
+; Called by function 3 on every ScrollingMenu init.
+; Skip if selection hasn't changed (avoids resetting description on A press).
+	ld a, [wMenuSelection]
+	ld hl, wOptionsMenuLastSelection
+	cp [hl]
+	ret z
+	ld [hl], a
+	call InitialOptions_LookupDescription
+	xor a
+	ld [wOptionsMenuDescriptionState], a
+	call SetUpTextbox
+	ld c, 0 ; instant text
+	jmp OptionsShared_PlaceDescriptionText
+
+InitialOptions_AdvanceSelectionDescription:
+	ld a, [wOptionsMenuDescriptionState]
+	cp 2 ; ended?
+	jr z, .wrap
+	; More text — advance (state is 0=para or 1=cont)
+	ld c, 0 ; instant text
+	jmp OptionsShared_PlaceDescriptionText
+
+.wrap
+	; Description ended — loop back to first page
+	call InitialOptions_LookupDescription
+	xor a
+	ld [wOptionsMenuDescriptionState], a
+	ld c, 0 ; instant text
+	jmp OptionsShared_PlaceDescriptionText
 
 InitialOptions_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -327,19 +291,19 @@ InitialOptions_CallOptionRoutine:
 
 MenuDataHeader_InitialOptions:
 	db MENU_BACKUP_TILES
-	menu_coords 1, 0, 18, 15
+	menu_coords 1, 0, 18, 11
 	dw .MenuData2
 	db 1 ; default option
 	db 0
 
 .MenuData2:
-	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_START | SCROLLINGMENU_ENABLE_SELECT ; flags
-	db 7, INITIAL_OPTIONS_VALUE_OFFSET ; rows, columns
+	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_FUNCTION3 | SCROLLINGMENU_ENABLE_START ; flags
+	db 5, INITIAL_OPTIONS_VALUE_OFFSET ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
 	dba InitialOptionsMenuItems ; text pointer
 	dba InitialOptions_PlaceOptionName
 	dba InitialOptions_PlaceOptionValue
-	dba InitialOptions_PlaceOptionValue
+	dba InitialOptions_ResetSelectionDescription
 
 InitialOptionsMenuItems:
 	db NUM_INITIAL_MENU_OPTIONS
