@@ -153,7 +153,7 @@ ENDM
 	map_const ECRUTEAK_LUGIA_SPEECH_HOUSE,                 4,  4 ;  4
 	map_const DANCE_THEATRE,                               6,  8 ;  5
 	map_const ECRUTEAK_MART,                               6,  4 ;  6
-	map_const ECRUTEAK_GYM,                                5,  9 ;  7
+	map_const ECRUTEAK_GYM,                                5, 11 ;  7
 	map_const ECRUTEAK_ITEMFINDER_HOUSE,                   4,  4 ;  8
 	map_const ECRUTEAK_CITY,                              20, 18 ;  9
 	map_const ROUTE_35,                                   12, 18 ; 10
