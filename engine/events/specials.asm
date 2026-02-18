@@ -446,7 +446,6 @@ RespawnOneOffs:
 	jr nz, .CaughtHoOh
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
-	eventflagreset EVENT_EUSINES_HOUSE_EUSINE
 .CaughtHoOh
 
 	ld de, ENGINE_PLAYER_CAUGHT_GALARIAN_ARTICUNO
