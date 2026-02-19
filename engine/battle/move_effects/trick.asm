@@ -39,10 +39,6 @@ BattleCommand_trick:
 	ld a, b
 	ld [de], a
 
-	ld [hl], c
-	ld a, b
-	ld [de], a
-
 	ld hl, SwappedItemsText
 	call StdBattleTextbox
 
