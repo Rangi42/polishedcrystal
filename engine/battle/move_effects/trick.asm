@@ -33,12 +33,11 @@ BattleCommand_trick:
 
 	ld a, [de]
 	ld b, [hl]
-	; If both items are empty, the move fails.
-	; We store a in c, since or-ing with b clobbers a.
-	; This is fine, since we intend to clobber a later anyway.
-	ld c, a
-	or b
+	ld [hl], a
+	or b ; z if none of the participants hold items. We do this check here since we don't want to clobber a until this point.
 	jr z, .failed
+	ld a, b
+	ld [de], a
 
 	ld [hl], c
 	ld a, b
