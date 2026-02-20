@@ -34,14 +34,10 @@ BattleCommand_trick:
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
+	or b ; z if none of the participants hold items. We do this check here since we don't want to clobber a until this point.
+	jr z, .failed
 	ld a, b
 	ld [de], a
-
-	; The above is a no-op if none holds an item, so checking
-	; for this after the swap is OK. We don't want to check
-	; before the swap since this clobbers a.
-	or b
-	jr z, .failed
 
 	ld hl, SwappedItemsText
 	call StdBattleTextbox
