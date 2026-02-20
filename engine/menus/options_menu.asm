@@ -221,6 +221,7 @@ OptionsMenu_CallOptionRoutine:
 	dw Options_TurningSpeed
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
+	dw Options_Nicknames
 	dw Options_Done
 	assert_table_length NUM_OPTIONS + 1 ; include "Done"
 
@@ -773,6 +774,55 @@ Options_Keyboard:
 	db "ABCDEF@"
 .QWERTY:
 	db "QWERTY@"
+
+Options_Nicknames:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	bit B_PAD_LEFT, a
+	jr nz, .LeftPressed
+	bit B_PAD_RIGHT, a
+	jr nz, .RightPressed
+	bit NICKNAMES_ALWAYS, [hl]
+	jr nz, .SetYes
+	bit NICKNAMES_NEVER, [hl]
+	jr nz, .SetNo
+.SetAsk:
+	res NICKNAMES_ALWAYS, [hl]
+	res NICKNAMES_NEVER, [hl]
+	ld de, .Ask
+	jr .Display
+
+.LeftPressed:
+	bit NICKNAMES_ALWAYS, [hl]
+	jr nz, .SetAsk
+	bit NICKNAMES_NEVER, [hl]
+	jr nz, .SetYes
+	jr .SetNo
+
+.RightPressed:
+	bit NICKNAMES_ALWAYS, [hl]
+	jr nz, .SetNo
+	bit NICKNAMES_NEVER, [hl]
+	jr nz, .SetAsk
+.SetYes:
+	set NICKNAMES_ALWAYS, [hl]
+	res NICKNAMES_NEVER, [hl]
+	ld de, .Yes
+	jr .Display
+
+.SetNo:
+	res NICKNAMES_ALWAYS, [hl]
+	set NICKNAMES_NEVER, [hl]
+	ld de, .No
+.Display:
+	jmp OptionsMenu_PlaceStringAtValueCoord
+
+.Ask:
+	db "Ask@"
+.Yes:
+	db "Yes@"
+.No:
+	db "No @"
 
 Options_Done:
 	ldh a, [hJoyPressed]
