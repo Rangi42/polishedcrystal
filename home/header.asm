@@ -15,6 +15,8 @@ SwitchToMapScriptsBank::
 	; fallthrough
 
 SECTION "rst08 Bankswitch", ROM0[$0008]
+; Switches to the ROM bank in `a`
+; @input `a` = ROM bank to switch to
 Bankswitch::
 	ldh [hROMBank], a
 	ld [rROMB], a
@@ -44,6 +46,12 @@ FarCall::
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
+; Adds `bc * a` to `hl`
+; @input `hl` = Base value
+; @input `bc` = Increment to add
+; @input `a` = Amount of increment to add
+; @output `hl` -> `hl + (bc * a)`
+; @clobbers: `a`, `hl`
 AddNTimes::
 	jmp _AddNTimes
 
@@ -57,11 +65,20 @@ FarCopyWRAM::
 	; fallthrough
 
 SECTION "rst20 CopyBytes", ROM0[$0020]
+; Copies `bc` bytes from `hl` to `de`
+; @input `hl` = Source
+; @input `de` = Destination
+; @input `bc` = Amount to copy
+; @clobbers `a`, `hl`, `bc`, `de`
 CopyBytes::
 	jmp _CopyBytes
 
+; Retrieves a single byte from `a:hl`, and returns it in `a`
+; @input `a` = ROM Bank
+; @input `hl` = Address
+; @output `a` -> The value at `a:hl`
+; @clobbers `a`
 GetFarByte::
-; retrieve a single byte from a:hl, and return it in a.
 	call StackCallInBankA
 
 .Function:
@@ -70,9 +87,19 @@ GetFarByte::
 
 
 SECTION "rst28 ByteFill", ROM0[$0028]
+; Fills `bc` bytes with the value of `a`, starting at `hl`.
+; @input `hl` = Address to start filling from
+; @input `bc` = How many bytes to fill
+; @input `a` = Value to fill with
+; @clobbers `hl`, `bc`
 ByteFill::
 	jmp _ByteFill
 
+; Retrieves a single byte from `a:hl`, and returns it in `a`
+; @input `a` = WRAM Bank
+; @input `hl` = Address
+; @output `a` -> The value at `a:hl`
+; @clobbers `a`
 GetFarWRAMByte::
 	call StackCallInWRAMBankA
 
@@ -85,6 +112,12 @@ SECTION "rst30 PlaceString", ROM0[$0030]
 PlaceString::
 	jmp _PlaceString
 
+; Swaps the contents of `hl` and `de`
+; @input `hl` = Value to put in `de`
+; @input `de` = Value to put in `hl`
+; @output `hl` -> Input `de`
+; @output `de` -> Input `hl`
+; @clobbers `hl`, `de`
 SwapHLDE::
 	push de
 	ld d, h
@@ -137,8 +170,23 @@ SECTION "timer", ROM0[$0050]
 
 	reti ; just in case
 
+; Pops, in order, `af`, `bc`, `de`, and `hl` from the stack.
+; This should not be `call`ed, only jumped to.
+; Calling will push the return address to the stack.
+; @output `af` -> First item on the stack
+; @output `bc` -> Second item on the stack
+; @output `de` -> Third item on the stack
+; @output `hl` -> Fourth item on the stack
+; @clobbers `af`, `hl`, `bc`, `de`
 PopAFBCDEHL::
 	pop af
+; Pops, in order, `bc`, `de`, and `hl` from the stack.
+; This should not be `call`ed, only jumped to.
+; Calling will push the return address to the stack.
+; @output `bc` -> First item on the stack
+; @output `de` -> Second item on the stack
+; @output `hl` -> Third item on the stack
+; @clobbers `hl`, `bc`, `de`
 PopBCDEHL::
 	pop bc
 	pop de
