@@ -200,6 +200,7 @@ DEF PLAYERSPRITESETUP_RESET_ACTION_F    EQU 7
 	const PLAYER_MALE   ; 0
 	const PLAYER_FEMALE ; 1
 	const PLAYER_ENBY   ; 2
+	const PLAYER_BETA   ; 3
 DEF NUM_PLAYER_GENDERS EQU const_value
 
 ; wMapStatus::

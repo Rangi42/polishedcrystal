@@ -967,17 +967,20 @@ DrawPackGFX:
 	; place pack gfx
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	ld bc, FemalePackGFX
+	ld bc, PlayerPackGFX.Female
 	jr z, .got_pointers
+
 	ld a, [wPlayerGender]
-	ld bc, MalePackGFX
-	and a ; PLAYER_MALE
-	jr z, .got_pointers
-	ld bc, FemalePackGFX
-	dec a ; PLAYER_FEMALE
-	jr z, .got_pointers
-	; PLAYER_ENBY
-	ld bc, EnbyPackGFX
+	add a
+	add LOW(PlayerPackGFX)
+	ld l, a
+	adc HIGH(PlayerPackGFX)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+
 .got_pointers
 	pop af
 	ld l, a
@@ -991,32 +994,7 @@ DrawPackGFX:
 	lb bc, BANK("Pack Graphics"), 25
 	jmp DecompressRequest2bpp
 
-MalePackGFX:
-	farbank "Pack Graphics"
-	fardw PackM0GFX
-	fardw PackM1GFX
-	fardw PackM2GFX
-	fardw PackM3GFX
-	fardw PackM4GFX
-	fardw PackM5GFX
-
-FemalePackGFX:
-	farbank "Pack Graphics"
-	fardw PackF0GFX
-	fardw PackF1GFX
-	fardw PackF2GFX
-	fardw PackF3GFX
-	fardw PackF4GFX
-	fardw PackF5GFX
-
-EnbyPackGFX:
-	farbank "Pack Graphics"
-	fardw PackX0GFX
-	fardw PackX1GFX
-	fardw PackX2GFX
-	fardw PackX3GFX
-	fardw PackX4GFX
-	fardw PackX5GFX
+INCLUDE "data/player/pack_gfx.asm"
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad

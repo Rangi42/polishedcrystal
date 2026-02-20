@@ -46,9 +46,10 @@ FinalText_TeamRocket:
 
 FinalText_SinglePhrases:
 	table_width 2
-	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
+	dw CarrieFinalPkmnText
 	dw JackyFinalPkmnText
+	dw EunaFinalPkmnText
 	dw FalknerFinalPkmnText
 	dw BugsyFinalPkmnText
 	dw WhitneyFinalPkmnText

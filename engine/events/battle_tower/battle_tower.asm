@@ -33,6 +33,7 @@ RunBattleTowerTrainer:
 
 	xor a
 	ld [wLinkMode], a
+	ld [wTrainerPal], a
 	farcall HealParty
 	farcall PopulateBattleTowerTeam
 

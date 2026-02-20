@@ -619,3 +619,15 @@ BigHoOhSpriteGFX:: INCBIN "gfx/sprites/big_ho_oh.2bpp.lzp"
 
 SECTION "BigLugiaSpriteGFX", ROMX
 BigLugiaSpriteGFX:: INCBIN "gfx/sprites/big_lugia.2bpp.lzp"
+
+SECTION "BetaSpriteGFX", ROMX
+BetaSpriteGFX:: INCBIN "gfx/sprites/beta.2bpp.lzp"
+
+SECTION "BetaBikeSpriteGFX", ROMX
+BetaBikeSpriteGFX:: INCBIN "gfx/sprites/beta_bike.2bpp.lzp"
+
+SECTION "BetaSurfSpriteGFX", ROMX
+BetaSurfSpriteGFX:: INCBIN "gfx/sprites/beta_surf.2bpp.lzp"
+
+SECTION "BetaRunSpriteGFX", ROMX
+BetaRunSpriteGFX:: INCBIN "gfx/sprites/beta_run.2bpp.lzp"

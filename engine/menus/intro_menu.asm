@@ -765,67 +765,76 @@ InitGender:
 GenderMenu::
 	; erase previous cursors
 	ld a, ' '
-	hlcoord 2, 3
-	ld [hli], a
-	ld [hl], a
-	hlcoord 9, 3
-	ld [hli], a
-	ld [hl], a
-	hlcoord 16, 3
-	ld [hli], a
-	ld [hl], a
+	ldcoord_a  2, 3
+	ldcoord_a  7, 3
+	ldcoord_a 12, 3
+	ldcoord_a 17, 3
 
 	ld a, [wPlayerGender]
 	and a ; PLAYER_MALE
 	jr z, .male
 	dec a ; PLAYER_FEMALE
 	jr z, .female
+	dec a ; PLAYER_ENBY
+	jr z, .enby
 
-; PLAYER_ENBY
+; PLAYER_BETA
 	; place cursor
-	ld a, $69
-	hlcoord 16, 3
-	ld [hli], a
-	inc a
-	ld [hl], a
+	ld a, '▼'
+	ldcoord_a 17, 3
 	; load opaque palettes
 	call SetDefaultBGPAndOBP
 	; make other palettes transparent
-	ld hl, wBGPals2 palette 0 + 2
+	ld hl, wBGPals2 palette 0 + 2 ; male
 	call .MakeTransparent
-	ld hl, wBGPals2 palette 2 + 2
+	ld hl, wBGPals2 palette 2 + 2 ; female
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 3 + 2 ; enby
 	call .MakeTransparent
 	jr .ready
 
 .male
 	; place cursor
-	ld a, $69
-	hlcoord 2, 3
-	ld [hli], a
-	inc a
-	ld [hl], a
+	ld a, '▼'
+	ldcoord_a 2, 3
 	; load opaque palettes
 	call SetDefaultBGPAndOBP
 	; make other palettes transparent
-	ld hl, wBGPals2 palette 2 + 2
+	ld hl, wBGPals2 palette 2 + 2 ; female
 	call .MakeTransparent
-	ld hl, wBGPals2 palette 3 + 2
+	ld hl, wBGPals2 palette 3 + 2 ; enby
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 4 + 2 ; beta
 	call .MakeTransparent
 	jr .ready
 
 .female
 	; place cursor
-	ld a, $69
-	hlcoord 9, 3
-	ld [hli], a
-	inc a
-	ld [hl], a
+	ld a, '▼'
+	ldcoord_a 7, 3
 	; load opaque palettes
 	call SetDefaultBGPAndOBP
 	; make other paletees transparent
-	ld hl, wBGPals2 palette 0 + 2
+	ld hl, wBGPals2 palette 0 + 2 ; male
 	call .MakeTransparent
-	ld hl, wBGPals2 palette 3 + 2
+	ld hl, wBGPals2 palette 3 + 2 ; enby
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 4 + 2 ; beta
+	call .MakeTransparent
+	jr .ready
+
+.enby
+	; place cursor
+	ld a, '▼'
+	ldcoord_a 12, 3
+	; load opaque palettes
+	call SetDefaultBGPAndOBP
+	; make other palettes transparent
+	ld hl, wBGPals2 palette 0 + 2 ; male
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 2 + 2 ; female
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 4 + 2 ; beta
 	call .MakeTransparent
 	; fallthrough
 
@@ -848,16 +857,16 @@ GenderMenu::
 	jr z, .loop
 
 	ld a, [wPlayerGender]
-	and a ; PLAYER_MALE
+	and a ; first gender
 	jr z, .got_gender
-	dec a ; female->male, enby->female
+	dec a
 	jr .got_gender
 
 .d_right
 	ld a, [wPlayerGender]
-	cp PLAYER_ENBY
+	cp NUM_PLAYER_GENDERS - 1 ; last gender
 	jr z, .got_gender
-	inc a ; male->female, female->enby
+	inc a
 .got_gender
 	ld [wPlayerGender], a
 	jmp GenderMenu
@@ -903,39 +912,14 @@ InitGenderGraphics:
 	ld de, vTiles2 tile $46
 	lb bc, BANK(CrysCardPic), 5 * 7
 	call DecompressRequest2bpp
-
-; Shift the "▼" character three pixels to the right across two tiles
-	farcall LoadStandardFontPointer
-	ld de, ('▼' - $80) * TILE_1BPP_SIZE
-	add hl, de
-	ld de, wOverworldMapBlocks
-	ld c, TILE_1BPP_SIZE
-.loop
-	ld a, BANK(FontTiles)
-	call GetFarByte
-	ld b, 0
-rept 3
-	srl a
-	rr b
-endr
-	ld [de], a
-	push hl
-	ld hl, TILE_SIZE
-	add hl, de
-	ld [hl], b ; no-optimize *hl++|*hl-- = b|c|d|e
-	inc hl
-	ld [hl], b
-	pop hl
-	inc hl
-	inc de
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop
-	ld hl, vTiles2 tile $69
-	ld de, wOverworldMapBlocks
-	ld c, 2
-	call Request2bppInWRA6
+	ld a, 1
+	ldh [rVBK], a
+	ld hl, BetaCardPic
+	ld de, vTiles5 tile $00
+	lb bc, BANK(BetaCardPic), 5 * 7
+	call DecompressRequest2bpp
+	xor a
+	ldh [rVBK], a
 
 	xor a
 	ldh [hGraphicStartTile], a
@@ -944,12 +928,17 @@ endr
 	predef PlaceGraphic
 	ld a, $23
 	ldh [hGraphicStartTile], a
-	hlcoord 7, 4
+	hlcoord 5, 4
 	lb bc, 5, 7
 	predef PlaceGraphic
 	ld a, $46
 	ldh [hGraphicStartTile], a
-	hlcoord 14, 4
+	hlcoord 10, 4
+	lb bc, 5, 7
+	predef PlaceGraphic
+	xor a
+	ldh [hGraphicStartTile], a
+	hlcoord 15, 4
 	lb bc, 5, 7
 	predef_jump PlaceGraphic
 
@@ -957,20 +946,24 @@ NamePlayer:
 	ld b, $1 ; player
 	ld de, wPlayerName
 	farcall NamingScreen
-	ld hl, wPlayerName
 	ld a, [wPlayerGender]
-	ld de, DefaultMalePlayerName
-	and a ; PLAYER_MALE
-	jr z, .done
-	ld de, DefaultFemalePlayerName
-	dec a ; PLAYER_FEMALE
-	jr z, .done
-	; PLAYER_ENBY
-	ld de, DefaultEnbyPlayerName
-.done:
+	assert NAME_LENGTH == 11
+	ld d, a
+	add a ; * 2
+	ld e, a
+	add a ; * 4
+	add a ; * 8
+	add e ; * 10
+	add d ; * 11
+	add LOW(DefaultPlayerNames)
+	ld e, a
+	adc HIGH(DefaultPlayerNames)
+	sub e
+	ld d, a
+	ld hl, wPlayerName
 	jmp InitName
 
-INCLUDE "data/default_player_names.asm"
+INCLUDE "data/player/default_names.asm"
 
 ShrinkPlayer:
 	ld a, 0 << 7 | 32 ; fade out
@@ -1039,17 +1032,11 @@ DrawIntroPlayerPic:
 	xor a
 	ld [wCurPartySpecies], a
 	ld a, [wPlayerGender]
-	ld b, CAL
-	and a ; PLAYER_MALE
-	jr z, .ok
-	assert CAL - 1 == CARRIE
-	dec b
-	dec a ; PLAYER_FEMALE
-	jr z, .ok
-	; PLAYER_ENBY
-	ld b, JACKY
-.ok
-	ld a, b
+	assert PLAYER_MALE + 1 == CAL
+	assert PLAYER_FEMALE + 1 == CARRIE
+	assert PLAYER_ENBY + 1 == JACKY
+	assert PLAYER_BETA + 1 == EUNA
+	inc a
 	ld [wTrainerClass], a
 Intro_PrepTrainerPic:
 	ld de, vTiles2

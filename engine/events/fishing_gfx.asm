@@ -44,14 +44,4 @@ LoadFishingGFX:
 	ld e, l
 	ret
 
-FishingGFXTable:
-	farbank "Fishing Graphics"
-	fardw ChrisFishingGFX
-	fardw KrisFishingGFX
-	fardw CrysFishingGFX
-
-SurfFishingGFXTable:
-	farbank "Fishing Graphics"
-	fardw ChrisSurfFishingGFX
-	fardw KrisSurfFishingGFX
-	fardw CrysSurfFishingGFX
+INCLUDE "data/player/fishing_gfx.asm"
