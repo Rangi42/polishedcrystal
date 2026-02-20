@@ -1,43 +1,37 @@
 PlayerPackGFX:
 	table_width 2
-	dw .Male   ; PLAYER_MALE
-	dw .Female ; PLAYER_FEMALE
-	dw .Enby   ; PLAYER_ENBY
-	dw .Beta   ; PLAYER_BETA
-	assert_table_length NUM_PLAYER_GENDERS
-
-.Male:
 	farbank "Pack Graphics"
-	fardw PackM0GFX
-	fardw PackM1GFX
-	fardw PackM2GFX
-	fardw PackM3GFX
-	fardw PackM4GFX
-	fardw PackM5GFX
 
-.Female:
-	farbank "Pack Graphics"
-	fardw PackF0GFX
-	fardw PackF1GFX
-	fardw PackF2GFX
-	fardw PackF3GFX
-	fardw PackF4GFX
-	fardw PackF5GFX
+; PLAYER_MALE
+	fardw PackM0GFX ; ITEM
+	fardw PackM1GFX ; MEDICINE
+	fardw PackM2GFX ; BALL
+	fardw PackM3GFX ; TM_HM
+	fardw PackM4GFX ; BERRIES
+	fardw PackM5GFX ; KEY_ITEM
 
-.Enby:
-	farbank "Pack Graphics"
-	fardw PackX0GFX
-	fardw PackX1GFX
-	fardw PackX2GFX
-	fardw PackX3GFX
-	fardw PackX4GFX
-	fardw PackX5GFX
+; PLAYER_FEMALE
+	fardw PackF0GFX ; ITEM
+	fardw PackF1GFX ; MEDICINE
+	fardw PackF2GFX ; BALL
+	fardw PackF3GFX ; TM_HM
+	fardw PackF4GFX ; BERRIES
+	fardw PackF5GFX ; KEY_ITEM
 
-.Beta:
-	farbank "Pack Graphics"
-	fardw PackB0GFX
-	fardw PackB1GFX
-	fardw PackB2GFX
-	fardw PackB3GFX
-	fardw PackB4GFX
-	fardw PackB5GFX
+; PLAYER_ENBY
+	fardw PackX0GFX ; ITEM
+	fardw PackX1GFX ; MEDICINE
+	fardw PackX2GFX ; BALL
+	fardw PackX3GFX ; TM_HM
+	fardw PackX4GFX ; BERRIES
+	fardw PackX5GFX ; KEY_ITEM
+
+; PLAYER_BETA
+	fardw PackB0GFX ; ITEM
+	fardw PackB1GFX ; MEDICINE
+	fardw PackB2GFX ; BALL
+	fardw PackB3GFX ; TM_HM
+	fardw PackB4GFX ; BERRIES
+	fardw PackB5GFX ; KEY_ITEM
+
+	assert_table_length NUM_PLAYER_GENDERS * NUM_POCKETS

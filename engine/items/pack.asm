@@ -967,19 +967,21 @@ DrawPackGFX:
 	; place pack gfx
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	ld bc, PlayerPackGFX.Female
+	ld bc, PlayerPackGFX + PLAYER_FEMALE * NUM_POCKETS * 2
 	jr z, .got_pointers
 
+	assert NUM_POCKETS * 2 == 12
 	ld a, [wPlayerGender]
-	add a
+	add a ; * 2
+	add a ; * 4
+	ld b, a
+	add a ; * 8
+	add b ; * 12
 	add LOW(PlayerPackGFX)
-	ld l, a
-	adc HIGH(PlayerPackGFX)
-	sub l
-	ld h, a
-	ld a, [hli]
-	ld b, [hl]
 	ld c, a
+	adc HIGH(PlayerPackGFX)
+	sub c
+	ld b, a
 
 .got_pointers
 	pop af
