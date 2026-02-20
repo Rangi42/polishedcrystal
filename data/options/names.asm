@@ -8,11 +8,11 @@ OptionNames:
 	dw .Sound
 	dw .BattleEffects
 	dw .BattleStyle
+	dw .Nicknames
 	dw .RunningShoes
 	dw .TurningSpeed
 	dw .ClockFormat
 	dw .PokedexUnits
-	dw .Nicknames
 	dw .Done
 	assert_table_length NUM_OPTIONS + 1 ; include "Done"
 
@@ -32,6 +32,8 @@ OptionNames:
 	db "Battle Effects@"
 .BattleStyle:
 	db "Battle Style@"
+.Nicknames:
+	db "Nicknames@"
 .RunningShoes:
 	db "Running Shoes@"
 .TurningSpeed:
@@ -40,7 +42,5 @@ OptionNames:
 	db "Clock Format@"
 .PokedexUnits:
 	db "#dex Units@"
-.Nicknames:
-	db "Nicknames@"
 .Done:
 	db "Done@"
