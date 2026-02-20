@@ -101,7 +101,11 @@ CeladonPrizeRoom_alreadyhavetm:
 	sjump CeladonPrizeRoom_tmcounterloop
 
 CeladonPrizeRoom_notenoughcoins:
-	jumpopenedtext CeladonPrizeRoom_NotEnoughCoinsText
+	jumpthisopenedtext
+
+	text "You don't have"
+	line "enough coins."
+	done
 
 CeladonPrizeRoom_TMMenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -253,10 +257,6 @@ CeladonPrizeRoom_AlreadyHaveTMText:
 	line "that TM."
 	done
 
-CeladonPrizeRoom_NotEnoughCoinsText:
-	text "You don't have"
-	line "enough coins."
-	done
 
 CeladonPrizeRoom_NotEnoughRoomText:
 	text "Wait, no, you have"

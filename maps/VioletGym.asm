@@ -65,7 +65,25 @@ VioletGymFalknerScript:
 	promptbutton
 	verbosegivetmhm TM_ROOST
 	setevent EVENT_GOT_TM31_ROOST
-	jumpopenedtext FalknerTMMudSlapText
+	jumpthisopenedtext
+
+	text "By using a TM, a"
+	line "#mon will"
+
+	para "instantly learn a"
+	line "new move."
+
+	para "A TM can be used"
+	line "as many times as"
+	cont "you want."
+
+	para "TM51 contains"
+	line "Roost."
+
+	para "It lands on the"
+	line "ground to restore"
+	cont "half the max HP."
+	done
 
 GenericTrainerBird_keeperRod:
 	generictrainer BIRD_KEEPER, ROD, EVENT_BEAT_BIRD_KEEPER_ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText
@@ -89,7 +107,27 @@ GenericTrainerBird_keeperAbe:
 VioletGymGuyScript:
 	checkevent EVENT_BEAT_FALKNER
 	iftrue_jumptextfaceplayer VioletGymGuyWinText
-	jumptextfaceplayer VioletGymGuyText
+	jumpthistextfaceplayer
+
+	text "Hey! I'm no train-"
+	line "er but I can give"
+	cont "some advice!"
+
+	para "Believe me!"
+	line "If you believe, a"
+
+	para "championship dream"
+	line "can come true."
+
+	para "You believe?"
+	line "Then listen."
+
+	para "The Grass-type is"
+	line "weak against the"
+
+	para "Flying-type. Keep"
+	line "this in mind."
+	done
 
 VioletGymStatue:
 	gettrainername FALKNER, 1, STRING_BUFFER_4
@@ -151,24 +189,6 @@ FalknerZephyrBadgeText:
 	line "too."
 	done
 
-FalknerTMMudSlapText:
-	text "By using a TM, a"
-	line "#mon will"
-
-	para "instantly learn a"
-	line "new move."
-
-	para "A TM can be used"
-	line "as many times as"
-	cont "you want."
-
-	para "TM51 contains"
-	line "Roost."
-
-	para "It lands on the"
-	line "ground to restore"
-	cont "half the max HP."
-	done
 
 FalknerFightDoneText:
 	text "There are #mon"
@@ -214,26 +234,6 @@ Bird_keeperAbeBeatenText:
 	line "true!"
 	done
 
-VioletGymGuyText:
-	text "Hey! I'm no train-"
-	line "er but I can give"
-	cont "some advice!"
-
-	para "Believe me!"
-	line "If you believe, a"
-
-	para "championship dream"
-	line "can come true."
-
-	para "You believe?"
-	line "Then listen."
-
-	para "The Grass-type is"
-	line "weak against the"
-
-	para "Flying-type. Keep"
-	line "this in mind."
-	done
 
 VioletGymGuyWinText:
 	text "Nice battle! Keep"

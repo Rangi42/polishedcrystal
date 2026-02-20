@@ -22,12 +22,8 @@ Route36VioletGateOfficerScript:
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftruefwd .ClearedSudowoodo
-	jumpopenedtext Route36VioletGateOfficerText1
+	jumpthisopenedtext
 
-.ClearedSudowoodo
-	jumpopenedtext Route36VioletGateOfficerText2
-
-Route36VioletGateOfficerText1:
 	text "Lately, I don't"
 	line "see people coming"
 
@@ -35,7 +31,9 @@ Route36VioletGateOfficerText1:
 	line "City."
 	done
 
-Route36VioletGateOfficerText2:
+.ClearedSudowoodo
+	jumpthisopenedtext
+
 	text "Things are busy"
 	line "lately, because"
 
@@ -45,6 +43,8 @@ Route36VioletGateOfficerText2:
 	para "Goldenrod and"
 	line "Ecruteak!"
 	done
+
+
 
 Route36VioletGateYoungsterText:
 	text "Plants are living"

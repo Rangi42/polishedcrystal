@@ -15,19 +15,17 @@ Route12Gate2F_MapScriptHeader:
 	def_object_events
 
 Route12Gate2FBinoculars1:
-	jumptext Route12Gate2FBinoculars1Text
+	jumpthistext
 
-Route12Gate2FBinoculars2:
-	jumptext Route12Gate2FBinoculars2Text
-
-Route12Gate2FBinoculars1Text:
 	text "Looked into the"
 	line "binoculars."
 
 	para "A man fishing!"
 	done
 
-Route12Gate2FBinoculars2Text:
+Route12Gate2FBinoculars2:
+	jumpthistext
+
 	text "Looked into the"
 	line "binoculars."
 

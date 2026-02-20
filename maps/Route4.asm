@@ -100,14 +100,23 @@ Route4TutorIronHeadScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_Route4Tutor1Refused
+	jumpthisopenedtext
+
+	text "But it's better"
+	line "than Aqua Tail!"
+	done
 
 .NoSilverLeaf
 	jumpopenedtext Text_Route4TutorsNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_Route4Tutor1Taught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Iron Head!"
+	done
 
 Route4SuperNerd2Script:
 	faceplayer
@@ -130,14 +139,23 @@ Route4TutorAquaTailScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_Route4Tutor2Refused
+	jumpthisopenedtext
+
+	text "But it's better"
+	line "than Iron Head!"
+	done
 
 .NoSilverLeaf
 	jumpopenedtext Text_Route4TutorsNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_Route4Tutor2Taught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Aqua Tail!"
+	done
 
 Route4EngineerScript:
 	showtext Route4EngineerText1
@@ -254,27 +272,9 @@ Text_Route4Tutor2Question:
 	cont "Aqua Tail?"
 	done
 
-Text_Route4Tutor1Refused:
-	text "But it's better"
-	line "than Aqua Tail!"
-	done
 
-Text_Route4Tutor2Refused:
-	text "But it's better"
-	line "than Iron Head!"
-	done
 
-Text_Route4Tutor1Taught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Iron Head!"
-	done
 
-Text_Route4Tutor2Taught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Aqua Tail!"
-	done
 
 Route4EngineerText1:
 	text "Get those bolts"

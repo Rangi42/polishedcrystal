@@ -56,7 +56,21 @@ CeruleanCityFlyPoint:
 CeruleanCityCooltrainerMScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer CeruleanCityCooltrainerMText2
-	jumptextfaceplayer CeruleanCityCooltrainerMText1
+	jumpthistextfaceplayer
+
+	text "Kanto's Power"
+	line "Plant?"
+
+	para "It's near the end"
+	line "of Route 9, the"
+
+	para "road that heads"
+	line "east from here."
+
+	para "I think there was"
+	line "an accident of"
+	cont "some sort there."
+	done
 
 CeruleanCityCooltrainerFScript:
 	faceplayer
@@ -104,22 +118,14 @@ CeruleanCityYoungsterScript:
 	waitsfx
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	turnobject CERULEANCITY_YOUNGSTER, LEFT
-	jumptext CeruleanCityYoungsterText2
+	jumpthistext
 
-CeruleanCityCooltrainerMText1:
-	text "Kanto's Power"
-	line "Plant?"
+	text "Ayuh?"
 
-	para "It's near the end"
-	line "of Route 9, the"
-
-	para "road that heads"
-	line "east from here."
-
-	para "I think there was"
-	line "an accident of"
-	cont "some sort there."
+	para "My Itemfinder is"
+	line "responding…"
 	done
+
 
 CeruleanCityCooltrainerMText2:
 	text "You're collecting"
@@ -177,12 +183,6 @@ CeruleanCityYoungsterText1:
 	cont "in it."
 	done
 
-CeruleanCityYoungsterText2:
-	text "Ayuh?"
-
-	para "My Itemfinder is"
-	line "responding…"
-	done
 
 CeruleanCityYoungsterText:
 	text "My Itemfinder"

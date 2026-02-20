@@ -143,8 +143,14 @@ RuinsOfAlphOutsideFisherText2:
 	done
 
 RuinsOfAlphOutsideYoungster1Script:
-	faceplayer
-	jumptext RuinsOfAlphOutsideYoungster1Text
+	jumpthistextfaceplayer
+
+	text "There are many"
+	line "kinds of Unown, so"
+
+	para "we use them for"
+	line "our secret codes."
+	done
 
 RuinsOfAlphOutsideYoungster2Script:
 	showtextfaceplayer RuinsOfAlphOutsideYoungster2Text
@@ -321,13 +327,6 @@ RuinsOfAlphOutsideFisherText1:
 	line "careful too."
 	done
 
-RuinsOfAlphOutsideYoungster1Text:
-	text "There are many"
-	line "kinds of Unown, so"
-
-	para "we use them for"
-	line "our secret codes."
-	done
 
 RuinsOfAlphOutsideYoungster2Text:
 	text "A… H… E… A… D…"

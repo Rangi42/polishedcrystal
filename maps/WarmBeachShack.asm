@@ -42,7 +42,11 @@ WarmBeachShackTutorBodySlamScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_WarmBeachShackBodySlamTutorTaught
+	jumpthisopenedtext
+
+	text "Come again!"
+	line "Boioing!"
+	done
 
 WarmBeachShackBodySlamFisherText:
 	text "Ready?"
@@ -66,10 +70,6 @@ Text_WarmBeachShackBodySlamTutorBodySlamQuestion:
 	line "for a Silver Leaf?"
 	done
 
-Text_WarmBeachShackBodySlamTutorTaught:
-	text "Come again!"
-	line "Boioing!"
-	done
 
 WarmBeachShackEndureFisherScript:
 	faceplayer
@@ -98,7 +98,11 @@ WarmBeachShackTutorEndureScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_WarmBeachShackEndureTutorTaught
+	jumpthisopenedtext
+
+	text "Come again!"
+	line "Nnnh!"
+	done
 
 WarmBeachShackEndureFisherText:
 	text "Ready?"
@@ -122,10 +126,6 @@ Text_WarmBeachShackEndureTutorEndureQuestion:
 	line "a Silver Leaf?"
 	done
 
-Text_WarmBeachShackEndureTutorTaught:
-	text "Come again!"
-	line "Nnnh!"
-	done
 
 Text_WarmBeachShackTutorsNoSilverLeaf:
 	text "Huh? You don't"

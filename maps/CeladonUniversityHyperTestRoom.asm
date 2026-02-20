@@ -141,7 +141,15 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 .WrongAnswer:
 	waitsfx
 	playsound SFX_WRONG
-	jumpopenedtext .WrongAnswerText
+	jumpthisopenedtext
+
+	text "I'm sorry, that's"
+	line "incorrect!"
+
+	para "You may try and"
+	line "retake the Hyper"
+	cont "Test tomorrow."
+	done
 
 .GreetingText:
 	text "Prof.Westwood?"
@@ -290,14 +298,6 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	line "it tomorrow."
 	done
 
-.WrongAnswerText:
-	text "I'm sorry, that's"
-	line "incorrect!"
-
-	para "You may try and"
-	line "retake the Hyper"
-	cont "Test tomorrow."
-	done
 
 .Question1MenuData:
 	db MENU_BACKUP_TILES

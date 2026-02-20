@@ -36,7 +36,15 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 SSAquaCaptain:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue_jumptextfaceplayer SSAquaCaptainHowDoYouLikeText
-	jumptextfaceplayer SSAquaCaptainExhaustingText
+	jumpthistextfaceplayer
+
+	text "Whew! Thanks for"
+	line "coming along."
+
+	para "Keeping that lit-"
+	line "tle girl amused"
+	cont "was exhausting."
+	done
 
 SSAquaGranddaughterBefore:
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
@@ -192,14 +200,6 @@ SSAquaGranddaughterEntersCabinMovement:
 	turn_head_left
 	step_end
 
-SSAquaCaptainExhaustingText:
-	text "Whew! Thanks for"
-	line "coming along."
-
-	para "Keeping that lit-"
-	line "tle girl amused"
-	cont "was exhausting."
-	done
 
 SSAquaCaptainHowDoYouLikeText:
 	text "How do you like"

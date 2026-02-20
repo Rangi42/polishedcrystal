@@ -179,29 +179,58 @@ MoveTutor:
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Special_DisplayCoinCaseBalance
-	jumpopenedtext GoldenrodCityMoveTutorFarewellKidText
+	jumpthisopenedtext
+
+	text "Wahahah!"
+	line "Good day, kid!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext GoldenrodCityMoveTutorYouDontHaveEnoughCoinsText
+	jumpthisopenedtext
+
+	text "…You don't have"
+	line "enough coins here…"
+	done
 
 GoldenrodCityCooltrainerF1Script:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue_jumptextfaceplayer GoldenrodCityCooltrainerF1Text_ClearedRadioTower
-	jumptextfaceplayer GoldenrodCityCooltrainerF1Text
+	jumpthistextfaceplayer
+
+	text "Is that man in"
+	line "black dressed up"
+
+	para "like a Team Rocket"
+	line "member? How silly!"
+	done
 
 GoldenrodCityCooltrainerF2Script:
 	checkflag ENGINE_RADIO_CARD
 	iffalse_jumptextfaceplayer GoldenrodCityCooltrainerF2Text
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse_jumptextfaceplayer GoldenrodCityCooltrainerFOlivineText
-	jumptextfaceplayer GoldenrodCityCooltrainerF2Text_GotRadioCard
+	jumpthistextfaceplayer
+
+	text "I came here on the"
+	line "Magnet Train."
+
+	para "Time to do some"
+	line "shopping!"
+	done
 
 GoldenrodCityYoungster2Script:
 	faceplayer
 	opentext
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue_jumpopenedtext GoldenrodCityYoungster2Text
-	jumpopenedtext GoldenrodCityYoungsterDayText
+	jumpthisopenedtext
+
+	text "Have you been to"
+	line "the Museum?"
+
+	para "It's full of cool"
+	line "exhibits!"
+	done
 
 GoldenrodCityRocketScoutScript:
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -251,13 +280,6 @@ GoldenrodCityYoungster1Text:
 	line "anywhere."
 	done
 
-GoldenrodCityCooltrainerF1Text:
-	text "Is that man in"
-	line "black dressed up"
-
-	para "like a Team Rocket"
-	line "member? How silly!"
-	done
 
 GoldenrodCityCooltrainerF1Text_ClearedRadioTower:
 	text "Was that man in"
@@ -292,21 +314,7 @@ GoldenrodCityCooltrainerFOlivineText:
 	cont "but more scenic."
 	done
 
-GoldenrodCityCooltrainerF2Text_GotRadioCard:
-	text "I came here on the"
-	line "Magnet Train."
 
-	para "Time to do some"
-	line "shopping!"
-	done
-
-GoldenrodCityYoungsterDayText:
-	text "Have you been to"
-	line "the Museum?"
-
-	para "It's full of cool"
-	line "exhibits!"
-	done
 
 GoldenrodCityYoungster2Text:
 	text "E-he-he-he…"
@@ -523,16 +531,8 @@ GoldenrodCityMoveTutorIfYouUnderstandYouveMadeItText:
 	cont "a trainer."
 	done
 
-GoldenrodCityMoveTutorFarewellKidText:
-	text "Wahahah!"
-	line "Good day, kid!"
-	done
 
 GoldenrodCityMoveTutorBButText:
 	text "B-but…"
 	done
 
-GoldenrodCityMoveTutorYouDontHaveEnoughCoinsText:
-	text "…You don't have"
-	line "enough coins here…"
-	done

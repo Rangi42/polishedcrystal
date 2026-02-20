@@ -66,7 +66,20 @@ FastShipB1FSailorScript:
 	iftrue_jumpopenedtext FastShipB1FOnDutySailorRefusedText
 	setevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	clearevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	jumpopenedtext FastShipB1FOnDutySailorText
+	jumpthisopenedtext
+
+	text "Hey, kid. Could I"
+	line "get you to look"
+	cont "for my buddy?"
+
+	para "He's goofing off"
+	line "somewhere, that"
+	cont "lazy bum!"
+
+	para "I want to go find"
+	line "him, but I'm on"
+	cont "duty right now."
+	done
 
 .LazySailor:
 	writetext FastShipB1FOnDutySailorThanksText
@@ -76,7 +89,13 @@ FastShipB1FSailorScript:
 
 .NotFoundGirl:
 	promptbutton
-	jumpopenedtext FastShipB1FOnDutySailorSawLittleGirlText
+	jumpthisopenedtext
+
+	text "A little girl?"
+
+	para "I may have seen"
+	line "her go by here."
+	done
 
 GenericTrainerSailorJeff:
 	generictrainer SAILOR, JEFF, EVENT_BEAT_SAILOR_JEFF, SailorJeffSeenText, SailorJeffBeatenText
@@ -199,19 +218,6 @@ FastShipB1FSailorBlocksLeftMovement:
 	turn_head_down
 	step_end
 
-FastShipB1FOnDutySailorText:
-	text "Hey, kid. Could I"
-	line "get you to look"
-	cont "for my buddy?"
-
-	para "He's goofing off"
-	line "somewhere, that"
-	cont "lazy bum!"
-
-	para "I want to go find"
-	line "him, but I'm on"
-	cont "duty right now."
-	done
 
 FastShipB1FOnDutySailorRefusedText:
 	text "Oh, gee…"
@@ -228,12 +234,6 @@ FastShipB1FOnDutySailorThanksText:
 	line "slacking off!"
 	done
 
-FastShipB1FOnDutySailorSawLittleGirlText:
-	text "A little girl?"
-
-	para "I may have seen"
-	line "her go by here."
-	done
 
 FastShipB1FOnDutySailorDirectionsText:
 	text "The dining room is"

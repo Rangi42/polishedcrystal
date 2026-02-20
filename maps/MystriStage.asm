@@ -42,10 +42,7 @@ MystriStageCynthiaSafeguardScript:
 	turnobject PLAYER, RIGHT
 	showtext MystriStageCynthiaSpeechText
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
-	opentext
-	writetext MystriStageCynthiaLeadText2
-	waitbutton
-	closetext
+	showtext MystriStageCynthiaLeadText2
 	pause 10
 	appear MYSTRISTAGE_CYNTHIA2
 	disappear MYSTRISTAGE_CYNTHIA1
@@ -120,7 +117,21 @@ MystriStageBeatCynthiaScript:
 	pause 20
 	turnobject MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
-	jumptextfaceplayer MystriStageCynthiaEggText
+	jumpthistextfaceplayer
+
+	text "Cynthia: Could it"
+	line "be… an Egg?"
+
+	para "Did we just"
+	line "witness the very"
+
+	para "moment an Egg was"
+	line "brought to this"
+	cont "world?"
+
+	para "A moment no one"
+	line "has ever seen?"
+	done
 
 MystriStageEggScript:
 	special GiveMystriEgg
@@ -286,20 +297,6 @@ MystriStageCynthiaAfterText:
 	cont "the Mystri Stage?"
 	done
 
-MystriStageCynthiaEggText:
-	text "Cynthia: Could it"
-	line "be… an Egg?"
-
-	para "Did we just"
-	line "witness the very"
-
-	para "moment an Egg was"
-	line "brought to this"
-	cont "world?"
-
-	para "A moment no one"
-	line "has ever seen?"
-	done
 
 MystriStageCynthiaFinalText:
 	text "Cynthia: An Egg"

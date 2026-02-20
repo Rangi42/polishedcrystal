@@ -42,13 +42,33 @@ RandyScript:
 	givepokemail GiftSpearowMail
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
-	jumpopenedtext Route35GoldenrodGateRandyWeirdTreeBlockingRoadText
+	jumpthisopenedtext
+
+	text "You can read it,"
+	line "but don't lose it!"
+	cont "Route 31!"
+
+	para "Oh, yeah. There"
+	line "was a weird tree"
+	cont "blocking the road."
+
+	para "I wonder if it's"
+	line "been cleared?"
+	done
 
 .partyfull
-	jumpopenedtext Route35GoldenrodGateRandyCantCarryAnotherMonText
+	jumpthisopenedtext
+
+	text "You can't carry"
+	line "another #mon…"
+	done
 
 .refused
-	jumpopenedtext Route35GoldenrodGateRandyOhNeverMindThenText
+	jumpthisopenedtext
+
+	text "Oh… Never mind,"
+	line "then…"
+	done
 
 .questcomplete
 	writetext Route35GoldenrodGateRandySomethingForYourTroubleText
@@ -80,10 +100,28 @@ Route35GoldenrodGatePokefanFScript:
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftruefwd .aftersudowoodo
-	jumpopenedtext Route35GoldenrodGatePokefanFText
+	jumpthisopenedtext
+
+	text "A strange tree is"
+	line "blocking the road."
+
+	para "It wriggles around"
+	line "if you talk to it."
+
+	para "I heard it became"
+	line "wild when someone"
+
+	para "watered it with a"
+	line "SquirtBottle."
+	done
 
 .aftersudowoodo
-	jumpopenedtext Route35GoldenrodGatePokefanFText_FoughtSudowoodo
+	jumpthisopenedtext
+
+	text "I like the #mon"
+	line "Lullaby they play"
+	cont "on the radio."
+	done
 
 Route35GoldenrodGateRandyAskTakeThisMonToMyFriendText:
 	text "Excuse me, kid!"
@@ -114,28 +152,8 @@ Route35GoldenrodGatePlayerReceivedAMonWithMailText:
 	line "#mon with Mail."
 	done
 
-Route35GoldenrodGateRandyWeirdTreeBlockingRoadText:
-	text "You can read it,"
-	line "but don't lose it!"
-	cont "Route 31!"
 
-	para "Oh, yeah. There"
-	line "was a weird tree"
-	cont "blocking the road."
 
-	para "I wonder if it's"
-	line "been cleared?"
-	done
-
-Route35GoldenrodGateRandyCantCarryAnotherMonText:
-	text "You can't carry"
-	line "another #mon…"
-	done
-
-Route35GoldenrodGateRandyOhNeverMindThenText:
-	text "Oh… Never mind,"
-	line "then…"
-	done
 
 Route35GoldenrodGateRandySomethingForYourTroubleText:
 	text "Thanks, kid! You"
@@ -152,25 +170,7 @@ Route35GoldenrodGateRandyMyPalWasSnoozingRightText:
 	cont "what'd I say?"
 	done
 
-Route35GoldenrodGatePokefanFText:
-	text "A strange tree is"
-	line "blocking the road."
 
-	para "It wriggles around"
-	line "if you talk to it."
-
-	para "I heard it became"
-	line "wild when someone"
-
-	para "watered it with a"
-	line "SquirtBottle."
-	done
-
-Route35GoldenrodGatePokefanFText_FoughtSudowoodo:
-	text "I like the #mon"
-	line "Lullaby they play"
-	cont "on the radio."
-	done
 
 Route35GoldenrodGateFisherText:
 	text "I wonder how many"

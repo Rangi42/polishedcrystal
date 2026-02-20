@@ -218,7 +218,14 @@ TrainerBug_catcherArnie1:
 	end
 
 .YanmaSwarming:
-	jumpopenedtext BugCatcherArnieYanmaText
+	jumpthisopenedtext
+
+	text "Wow… Look at all"
+	line "those Yanma!"
+
+	para "I'm so blown away,"
+	line "I can't move."
+	done
 
 GenericTrainerFirebreatherWalt:
 	generictrainer FIREBREATHER, WALT, EVENT_BEAT_FIREBREATHER_WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText
@@ -248,10 +255,25 @@ TrainerOfficerDirk:
 	endtext
 
 .AfterBattle:
-	jumpopenedtext OfficerDirkAfterBattleText
+	jumpthisopenedtext
+
+	text "You know, night-"
+	line "time is fun in its"
+	cont "own ways."
+
+	para "But don't overdo"
+	line "it, OK?"
+	done
 
 .NotNight:
-	jumpopenedtext OfficerDirkPrettyToughText
+	jumpthisopenedtext
+
+	text "Your #mon look"
+	line "pretty tough."
+
+	para "You could go any-"
+	line "where safely."
+	done
 
 CamperIvanSeenText:
 	text "I've been getting"
@@ -345,13 +367,6 @@ BugCatcherArnieAfterBattleText:
 	line "National Park."
 	done
 
-BugCatcherArnieYanmaText:
-	text "Wow… Look at all"
-	line "those Yanma!"
-
-	para "I'm so blown away,"
-	line "I can't move."
-	done
 
 FirebreatherWaltSeenText:
 	text "I'm practicing my"
@@ -372,22 +387,7 @@ OfficerDirkBeatenText:
 	text "Whoops!"
 	done
 
-OfficerDirkAfterBattleText:
-	text "You know, night-"
-	line "time is fun in its"
-	cont "own ways."
 
-	para "But don't overdo"
-	line "it, OK?"
-	done
-
-OfficerDirkPrettyToughText:
-	text "Your #mon look"
-	line "pretty tough."
-
-	para "You could go any-"
-	line "where safely."
-	done
 
 Route35SignText:
 	text "Route 35"

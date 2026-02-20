@@ -38,10 +38,26 @@ ProfOaksAide1Script:
 	iffalsefwd .NoRoom
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
-	jumpopenedtext ProfOaksAide1ExplainText
+	jumpthisopenedtext
+
+	text "That Exp.Share"
+	line "helps a #mon"
+
+	para "gain experience"
+	line "without even"
+	cont "battling."
+
+	para "Use it to com-"
+	line "plete the #dex!"
+	done
 
 .NoRoom
-	jumpopenedtext ProfOaksAide1NoRoomText
+	jumpthisopenedtext
+
+	text "Oh! I see you"
+	line "don't have any"
+	cont "room for this."
+	done
 
 IlexForestAzaleaGateOfficerText:
 	text "Ilex Forest is"
@@ -102,20 +118,4 @@ ProfOaksAide1HereYouGoText:
 	line "Here you go!"
 	done
 
-ProfOaksAide1NoRoomText:
-	text "Oh! I see you"
-	line "don't have any"
-	cont "room for this."
-	done
 
-ProfOaksAide1ExplainText:
-	text "That Exp.Share"
-	line "helps a #mon"
-
-	para "gain experience"
-	line "without even"
-	cont "battling."
-
-	para "Use it to com-"
-	line "plete the #dex!"
-	done

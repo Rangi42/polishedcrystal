@@ -55,7 +55,11 @@ VioletCityEarlScript:
 	writetext Text_EarlAsksIfYouBeatFalkner
 	yesorno
 	iffalsefwd .FollowEarl
-	jumpopenedtext Text_VeryNiceIndeed
+	jumpthisopenedtext
+
+	text "Ooh, la la!"
+	line "Very indeed nice!"
+	done
 
 .FollowEarl:
 	writetext Text_FollowEarl
@@ -166,10 +170,6 @@ Text_EarlAsksIfYouBeatFalkner:
 	line "win you did?"
 	done
 
-Text_VeryNiceIndeed:
-	text "Ooh, la la!"
-	line "Very indeed nice!"
-	done
 
 Text_FollowEarl:
 	text "Is that so? Then"

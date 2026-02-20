@@ -150,7 +150,17 @@ Bird_keeperTheoScript:
 	endifjustbattled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
-	jumptextfaceplayer BirdKeeperTheoAfterBattleText
+	jumpthistextfaceplayer
+
+	text "How the heck do"
+	line "you go up?"
+
+	para "I want to visit"
+	line "the sick #mon,"
+
+	para "but I can't get up"
+	line "there…"
+	done
 
 GenericTrainerGentlemanPreston:
 	generictrainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText
@@ -185,17 +195,6 @@ Bird_keeperTheoSeenText:
 Bird_keeperTheoBeatenText:
 	text "You really are"
 	line "concerned…"
-	done
-
-BirdKeeperTheoAfterBattleText:
-	text "How the heck do"
-	line "you go up?"
-
-	para "I want to visit"
-	line "the sick #mon,"
-
-	para "but I can't get up"
-	line "there…"
 	done
 
 Bird_keeperTheoFinalText:

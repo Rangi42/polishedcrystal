@@ -44,7 +44,11 @@ Museum1FFossilScientistScript:
 	iftruefwd .own_dome
 	checkitem OLD_AMBER
 	iftruefwd .ask_old_amber
-	jumpopenedtext NoFossilsText
+	jumpthisopenedtext
+
+	text "Hey! You don't"
+	line "have any fossils."
+	done
 
 .own_helix
 	checkitem DOME_FOSSIL
@@ -53,7 +57,7 @@ Museum1FFossilScientistScript:
 	iftruefwd .ask_helix_amber
 	writetext AskHelixFossilText
 	yesorno
-	iftruefwd ResurrectHelixFossil
+	iftrue ResurrectHelixFossil
 	sjumpfwd .maybe_later
 
 .own_dome
@@ -61,7 +65,7 @@ Museum1FFossilScientistScript:
 	iftruefwd .ask_dome_amber
 	writetext AskDomeFossilText
 	yesorno
-	iftruefwd ResurrectDomeFossil
+	iftrue ResurrectDomeFossil
 	sjumpfwd .maybe_later
 
 .own_helix_and_dome
@@ -104,7 +108,12 @@ Museum1FFossilScientistScript:
 	ifequalfwd $2, ResurrectDomeFossil
 	ifequalfwd $3, ResurrectOldAmber
 .maybe_later:
-	jumpopenedtext MaybeLaterText
+	jumpthisopenedtext
+
+	text "Just talk to me"
+	line "if you change"
+	cont "your mind."
+	done
 
 HelixDomeMenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -177,7 +186,11 @@ ResurrectOldAmber:
 	givepoke AERODACTYL, 20
 FinishResurrect:
 	iffalse_jumpopenedtext NoRoomForFossilPokemonText
-	jumpopenedtext TakeGoodCareOfItText
+	jumpthisopenedtext
+
+	text "Take good care"
+	line "of it!"
+	done
 
 ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
@@ -342,16 +355,7 @@ AskOldAmberText:
 	cont "Old Amber?"
 	done
 
-NoFossilsText:
-	text "Hey! You don't"
-	line "have any fossils."
-	done
 
-MaybeLaterText:
-	text "Just talk to me"
-	line "if you change"
-	cont "your mind."
-	done
 
 ResurrectingPokemonText:
 	text "OK! I'll resurrect"
@@ -365,7 +369,3 @@ NoRoomForFossilPokemonText:
 	cont "Box is full, too!"
 	done
 
-TakeGoodCareOfItText:
-	text "Take good care"
-	line "of it!"
-	done

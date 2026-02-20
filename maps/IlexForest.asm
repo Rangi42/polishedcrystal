@@ -131,7 +131,25 @@ IlexForestCharcoalApprenticeScript:
 	checkevent EVENT_HERDED_FARFETCHD
 	iftrue_jumptextfaceplayer IlexForestApprenticeAfterText
 	setscene SCENE_ILEXFOREST_FARFETCHD_QUEST
-	jumptextfaceplayer IlexForestApprenticeIntroText
+	jumpthistextfaceplayer
+
+	text "Oh, man… My boss"
+	line "is going to be"
+	cont "steaming…"
+
+	para "The Farfetch'd"
+	line "that Cuts trees"
+
+	para "for charcoal took"
+	line "off on me."
+
+	para "I can't go looking"
+	line "for it here in the"
+	cont "Ilex Forest."
+
+	para "It's too big, dark"
+	line "and scary for me…"
+	done
 
 IlexForestFarfetchdScript:
 	faceplayer
@@ -393,14 +411,34 @@ IlexForestTutorHeadbuttScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_IlexForestTutorRefused
+	jumpthisopenedtext
+
+	text "Alright then."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_IlexForestTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Oh, but you don't"
+	line "have any Silver"
+	cont "Leaves."
+
+	para "Sometimes you can"
+	line "find them on wild"
+
+	para "Oddish, or lying"
+	line "on the ground."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_IlexForestTutorTaught
+	jumpthisopenedtext
+
+	text "Rattle trees with"
+	line "Headbutt. Some-"
+	cont "times, sleeping"
+	cont "#mon fall out."
+	done
 
 GenericTrainerBugCatcherWayne:
 	generictrainer BUG_CATCHER, WAYNE, EVENT_BEAT_BUG_CATCHER_WAYNE, BugCatcherWayneSeenText, BugCatcherWayneBeatenText
@@ -816,24 +854,6 @@ MovementData_IlexForestLyraLeaves:
 	slow_step_left
 	step_end
 
-IlexForestApprenticeIntroText:
-	text "Oh, man… My boss"
-	line "is going to be"
-	cont "steaming…"
-
-	para "The Farfetch'd"
-	line "that Cuts trees"
-
-	para "for charcoal took"
-	line "off on me."
-
-	para "I can't go looking"
-	line "for it here in the"
-	cont "Ilex Forest."
-
-	para "It's too big, dark"
-	line "and scary for me…"
-	done
 
 IlexForestApprenticeAfterText:
 	text "Wow! Thanks a"
@@ -955,17 +975,6 @@ Text_IlexForestTutorHeadbutt:
 	cont "Silver Leaf."
 	done
 
-Text_IlexForestTutorNoSilverLeaf:
-	text "Oh, but you don't"
-	line "have any Silver"
-	cont "Leaves."
-
-	para "Sometimes you can"
-	line "find them on wild"
-
-	para "Oddish, or lying"
-	line "on the ground."
-	done
 
 Text_IlexForestTutorQuestion:
 	text "Should I teach"
@@ -973,16 +982,7 @@ Text_IlexForestTutorQuestion:
 	cont "Headbutt?"
 	done
 
-Text_IlexForestTutorRefused:
-	text "Alright then."
-	done
 
-Text_IlexForestTutorTaught:
-	text "Rattle trees with"
-	line "Headbutt. Some-"
-	cont "times, sleeping"
-	cont "#mon fall out."
-	done
 
 Text_IlexForestLass:
 	text "Did something"

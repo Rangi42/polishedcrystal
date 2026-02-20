@@ -132,7 +132,12 @@ DanceTheaterSurfGuy:
 	done
 
 MapDanceTheatreSignpost1Script:
-	jumptext DanceTheatreFancyPanelText
+	jumpthistext
+
+	text "It's a fancy panel"
+	line "that's decorated"
+	cont "with flowers."
+	done
 
 Kimono_girlNaokoSeenText:
 	text "You have lovely"
@@ -280,8 +285,3 @@ DanceTheatreLadyText:
 	line "somewhere else?"
 	done
 
-DanceTheatreFancyPanelText:
-	text "It's a fancy panel"
-	line "that's decorated"
-	cont "with flowers."
-	done

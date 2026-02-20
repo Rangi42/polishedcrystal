@@ -26,7 +26,18 @@ GentlemanAlfredScript:
 	endifjustbattled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer GentlemanAlfredFinalText
-	jumptextfaceplayer GentlemanAlfredAfterBattleText
+	jumpthistextfaceplayer
+
+	text "Up top is a #-"
+	line "mon that keeps the"
+	cont "Lighthouse lit."
+
+	para "But I hear that"
+	line "it's sick now and"
+
+	para "can't be cured by"
+	line "ordinary medicine."
+	done
 
 TrainerSailorHuey1:
 	trainer SAILOR, HUEY1, EVENT_BEAT_SAILOR_HUEY, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script
@@ -171,18 +182,6 @@ GentlemanAlfredSeenText:
 GentlemanAlfredBeatenText:
 	text "Ah! I can see that"
 	line "you're serious."
-	done
-
-GentlemanAlfredAfterBattleText:
-	text "Up top is a #-"
-	line "mon that keeps the"
-	cont "Lighthouse lit."
-
-	para "But I hear that"
-	line "it's sick now and"
-
-	para "can't be cured by"
-	line "ordinary medicine."
 	done
 
 GentlemanAlfredFinalText:

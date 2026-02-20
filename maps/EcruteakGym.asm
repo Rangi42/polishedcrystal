@@ -107,7 +107,17 @@ EcruteakGymMortyScript:
 	promptbutton
 	verbosegivetmhm TM_SHADOW_BALL
 	setevent EVENT_GOT_TM30_SHADOW_BALL
-	jumpopenedtext MortyText_ShadowBallSpeech
+	jumpthisopenedtext
+
+	text "It's Shadow Ball."
+	line "It causes damage"
+
+	para "and may reduce"
+	line "Special Defense."
+
+	para "Use it if it"
+	line "appeals to you."
+	done
 
 EcruteakGymClosed:
 	applyonemovement PLAYER, step_up
@@ -162,7 +172,18 @@ GenericTrainerMediumGrace:
 EcruteakGymGuyScript:
 	checkevent EVENT_BEAT_MORTY
 	iftrue_jumptextfaceplayer EcruteakGymGuyWinText
-	jumptextfaceplayer EcruteakGymGuyText
+	jumpthistextfaceplayer
+
+	text "The trainers here"
+	line "have secret mo-"
+	cont "tives."
+
+	para "If you win, they"
+	line "may tell you some"
+
+	para "deep secrets about"
+	line "Ecruteak."
+	done
 
 EcruteakGymStatue:
 	gettrainername MORTY, 1, STRING_BUFFER_4
@@ -248,16 +269,6 @@ MortyText_FogBadgeSpeech:
 	line "this too."
 	done
 
-MortyText_ShadowBallSpeech:
-	text "It's Shadow Ball."
-	line "It causes damage"
-
-	para "and may reduce"
-	line "Special Defense."
-
-	para "Use it if it"
-	line "appeals to you."
-	done
 
 MortyFightDoneText:
 	text "I see…"
@@ -323,17 +334,6 @@ MediumGraceBeatenText:
 	text "Wha-what?"
 	done
 
-EcruteakGymGuyText:
-	text "The trainers here"
-	line "have secret mo-"
-	cont "tives."
-
-	para "If you win, they"
-	line "may tell you some"
-
-	para "deep secrets about"
-	line "Ecruteak."
-	done
 
 EcruteakGymGuyWinText:
 	text "Whew, <PLAYER>."

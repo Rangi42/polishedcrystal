@@ -428,10 +428,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	faceplayer
 	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
 	iftruefwd .AfterBattle
-	opentext
-	writetext .GreetingText
-	waitbutton
-	closetext
+	showtext .GreetingText
 	winlosstext .BeatenText, 0
 	loadtrainer YOUNGSTER, ARDEN
 	startbattle

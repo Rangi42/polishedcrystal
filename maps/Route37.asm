@@ -81,7 +81,29 @@ SunnyScript:
 	verbosegiveitem MAGNET
 	iffalsefwd SunnyDoneScript
 	setevent EVENT_GOT_MAGNET_FROM_SUNNY
-	jumpopenedtext SunnyGaveGiftText
+	jumpthisopenedtext
+
+	text "Sunny: That thing…"
+
+	para "Um…"
+
+	para "…What was it now…"
+
+	para "…"
+
+	para "Oh! I remember"
+	line "now!"
+
+	para "A #mon that"
+	line "knows Electric"
+
+	para "moves should hold"
+	line "it."
+
+	para "My sis Monica said"
+	line "it powers up"
+	cont "Electric moves!"
+	done
 
 SunnySundayScript:
 	writetext SunnySundayText
@@ -90,7 +112,12 @@ SunnyDoneScript:
 	endtext
 
 SunnyNotSundayScript:
-	jumpopenedtext SunnyNotSundayText
+	jumpthisopenedtext
+
+	text "Sunny: Isn't today"
+	line "Sunday?"
+	cont "Um… I forgot!"
+	done
 
 GenericTrainerBeautyCallie:
 	generictrainer BEAUTY, CALLIE, EVENT_BEAT_BEAUTY_CALLIE, BeautyCallieSeenText, BeautyCallieBeatenText
@@ -155,28 +182,6 @@ SunnyGivesGiftText:
 	cont "you!"
 	done
 
-SunnyGaveGiftText:
-	text "Sunny: That thing…"
-
-	para "Um…"
-
-	para "…What was it now…"
-
-	para "…"
-
-	para "Oh! I remember"
-	line "now!"
-
-	para "A #mon that"
-	line "knows Electric"
-
-	para "moves should hold"
-	line "it."
-
-	para "My sis Monica said"
-	line "it powers up"
-	cont "Electric moves!"
-	done
 
 SunnySundayText:
 	text "Sunny: My sisters"
@@ -189,11 +194,6 @@ SunnySundayText:
 	line "than me!"
 	done
 
-SunnyNotSundayText:
-	text "Sunny: Isn't today"
-	line "Sunday?"
-	cont "Um… I forgot!"
-	done
 
 BeautyCallieSeenText:
 	text "Oh, you're a cute"
