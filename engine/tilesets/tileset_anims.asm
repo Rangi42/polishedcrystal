@@ -371,6 +371,7 @@ TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
 TilesetHiddenGrottoAnim::
+TilesetKantoGymAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
