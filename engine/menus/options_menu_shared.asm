@@ -29,8 +29,9 @@ OptionsShared_DrawEdges:
 ; Shared main loop for both options menus.
 ; Caller must set wOptionsMenuIsInitial and call CopyMenuHeader before calling this.
 OptionsShared_RunLoop:
-	ld a, $ff
+	xor a
 	ld [wOptionsMenuLastSelection], a
+	ld [wMenuScrollPosition], a
 
 	call OptionsShared_DrawEdges
 
@@ -61,9 +62,16 @@ OptionsShared_RunLoop:
 	jr nz, .loop
 
 .advance_description
+	; Restore filled cursor to prevent brief hollow cursor flash
+	ld hl, wCursorCurrentTile
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld [hl], '▶'
+	call PlayClickSFX
 	call .DispatchAdvanceDesc
 	call OptionsShared_DrawEdges
-	call ApplyAttrAndTilemapInVBlank
+	call ApplyTilemapInVBlank
 	jr .loop
 
 .apply_left

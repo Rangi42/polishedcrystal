@@ -86,7 +86,7 @@ InitialOptions_CallOptionRoutine:
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 MenuDataHeader_InitialOptions:
-	db MENU_BACKUP_TILES
+	db MENU_BACKUP_TILES | MENU_NO_CLICK_SFX
 	menu_coords 1, 0, 18, 11
 	dw .MenuData2
 	db 1 ; default option

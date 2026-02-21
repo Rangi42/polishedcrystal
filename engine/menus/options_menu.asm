@@ -20,10 +20,6 @@ OptionsMenu:
 	call LoadFrame
 	call OptionsShared_LoadEdgeTiles
 
-	farcall ApplyPals
-
-	call SetDefaultBGPAndOBP
-
 	ld hl, MenuDataHeader_Options
 	call CopyMenuHeader
 
@@ -68,7 +64,7 @@ OptionsMenu_CallOptionRoutine:
 	assert_table_length NUM_OPTIONS + 1 ; include "Done"
 
 MenuDataHeader_Options:
-	db MENU_BACKUP_TILES
+	db MENU_BACKUP_TILES | MENU_NO_CLICK_SFX
 	menu_coords 1, 0, 18, 11
 	dw .MenuData2
 	db 1 ; default option
