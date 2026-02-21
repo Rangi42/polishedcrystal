@@ -334,6 +334,10 @@ CheckDualObjectPals:
 .found
 	ld a, %00000110
 	ld [wUsedObjectPals], a
+	; Clear type bits for slots 1 and 2 (these are normal palettes, not mon palettes)
+	ld a, [wLoadedObjPalType]
+	and ~%00000110
+	ld [wLoadedObjPalType], a
 	ld a, [hli]
 	ld [wLoadedObjPal1], a
 	ld [wNeededPalIndex], a

@@ -184,7 +184,7 @@ CopySpritePal::
 	ld a, [wNeededMonPalLight]
 	cp NO_PAL_LOADED
 	; hl = target palette (wOBPals1 palette *)
-	; a = light color palette index (PAL_MON_* which equals PAL_OW_*)
+	; a = light color OW palette index (0–15, raw PAL_OW_* value for LookupOBPalette / CopyMonIconLightColor)
 	call nz, CopyMonIconLightColor
 
 	ld a, [wPalFlags]
