@@ -175,7 +175,7 @@ CheckAirborne_GotAbility:
 ; ATKFAIL_ABILITY for Levitate.
 
 	; Check Gravity
-	ld a, [wFieldEffects]
+	ld a, [wGravityTrickRoom]
 	and FIELD_GRAVITY
 	jr z, .no_gravity
 	; All pokemon are grounded during Gravity

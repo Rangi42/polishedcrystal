@@ -435,4 +435,8 @@ endc
 	li "Covet"
 	li "Heat Wave"
 	li "Howl"
+	li "Wake-Up Slap"
+	li "StrangeSteam"
+	li "Magic Room"
+	li "Wonder Room"
 	assert_list_length NUM_ATTACKS

@@ -193,6 +193,10 @@ BattleCommandPointers:
 	command nightmare
 	command ingrain
 	command imprison
+	command wakeupslap
+	command wakeopponent
+	command magicroom
+	command wonderroom
 
 	; The following commands have an argument
 	; Argument: check if possible (false) vs perform the action (true)

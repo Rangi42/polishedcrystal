@@ -436,7 +436,7 @@ BattleCommand_checkturn:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_throat_chop
 	ld a, [hl]
-	and $F0
+	and SUBSTATUS_THROAT_CHOP
 	jr z, .not_throat_chopped
 
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -2034,7 +2034,7 @@ BattleCommand_checkhit:
 	add $11
 	call MultiplyAndDivide
 
-	ld a, [wFieldEffects]
+	ld a, [wGravityTrickRoom]
 	and FIELD_GRAVITY
 	jr z, .no_gravity
 	ln a, 5, 3
@@ -3937,7 +3937,6 @@ SetDefenseBoost:
 
 BattleCommand_damagestats:
 ; Return move power d, player level e, enemy defense c and player attack b.
-
 	call ResetDamage
 
 ; No damage dealt with 0 power.
@@ -3946,95 +3945,121 @@ BattleCommand_damagestats:
 	and a
 	ld d, a
 	ret z
+	; We won't need base power for a while, so let's push it temporarily to make room.
+	push de
 
+; Check for wonder room. If present, we store $ff in e to xor with later.
+	ld e, $00
+	ld a, [wMagicWonderRoom]
+	and FIELD_WONDER_ROOM
+	jr z, .get_move_category
+	dec e
+
+.get_move_category
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp SPECIAL
-	jr nc, .special
+	jr nc, .special_attack
+.physical_attack
+; If the attack is physical, we make a note of it in d by co-opting the reflect mask.
+	ld d, SCREENS_REFLECT
+	; Default a to 0, which is the value signalling "physical defense" later.
+	xor a 
+	jr .get_defense_or_spdef
+.special_attack
+; If the attack is special, we make a note of it in d by co-opting the light screen mask
+	ld d, SCREENS_LIGHT_SCREEN
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	; By default, set a to $ff = special
+	ld a, $ff
+	jr nz, .get_defense_or_spdef
+	; If psystrike, instead default to $00 = physical
+	xor a 
 
-.physical
+.get_defense_or_spdef
+	; XOR of e (wonder room) and a (targeted defense stat of move) determines which defense to use.
+	xor e 
+	jr nz, .special_defense
+.physical_defense
 	ld hl, wBattleMonDefense
 	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
 
-	call HailDefenseBoost
-	call DittoMetalPowder
-	call UnevolvedEviolite
-
-	ld hl, wBattleMonAttack
-	call GetUserMonAttr
-	call GetFutureSightUser
-	jr z, .atk_ok
-	ld a, MON_ATK
-	call TrueUserPartyAttr
-.atk_ok
-	call GetOpponentActiveScreens
-	and SCREENS_REFLECT
-	jr z, .thickcluborlightball
-	sla c
-	rl b
-	jr .thickcluborlightball
-
-.special
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_PSYSTRIKE
-	jr z, .psystrike
-
+	ld a, e
+	and a
+	; If 0, Wonder Room is up, so the move was originally targeting physical defense.
+	; Thus, we should be applying the boosts for SpDef, instead.
+	jr z, .spdef_boosts
+	jr .defense_boosts
+.special_defense
 	ld hl, wBattleMonSpDef
 	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
 
-	call SandstormSpDefBoost
-	call UnevolvedEviolite
+	ld a, e
+	and a
+	; If 0, Wonder Room is up, so the move was originally targeting special defense.
+	; Thus, if not zero, apply the boosts for SpDef, and if zero, apply for Defense.
+	jr nz, .spdef_boosts
 
-	jr .lightscreen
-
-.psystrike
-	ld hl, wBattleMonDefense
-	call GetOpponentMonAttr
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
+.defense_boosts
 	call HailDefenseBoost
 	call DittoMetalPowder
 	call UnevolvedEviolite
+	jr .calculate_attack
+.spdef_boosts
+	call SandstormSpDefBoost
+	call UnevolvedEviolite
 
-.lightscreen
+.calculate_attack
+	ld a, e
+	and SCREENS_REFLECT
+	jr z, .get_special
+.get_physical
+	ld hl, wBattleMonAttack
+	call GetUserMonAttr
+	call GetFutureSightUser
+	jr z, .screens
+	ld a, MON_ATK
+	call TrueUserPartyAttr
+	jr .screens
+.get_special
 	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
 	call GetFutureSightUser
-	jr z, .sat_ok
+	jr z, .screens
 	ld a, MON_SAT
 	call TrueUserPartyAttr
-.sat_ok
+
+.screens
+; Double defense if screens are active.
 	call GetOpponentActiveScreens
-	and SCREENS_LIGHT_SCREEN
-	jr z, .lightball
+	and e
+	jr z, .thick_club_or_light_ball
 	sla c
 	rl b
 
-.lightball
-; Note: Returns player special attack at hl in hl.
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
-	call LightBallBoost
-	jr .done
-
-.thickcluborlightball
+.thick_club_or_light_ball
 ; Note: Returns player attack at hl in hl.
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
+	ld a, e
+	cp SCREENS_REFLECT
+	jr nz, .just_light_ball
 	call ThickClubOrLightBallBoost
+	jr .done
+.just_light_ball
+	call LightBallBoost
 
 .done
+	pop de
 	call TruncateHL_BC
 
 	ld a, MON_LEVEL
@@ -4186,24 +4211,31 @@ BattleCommand_clearmissdamage:
 
 	jmp ResetDamage
 
+; e = level, b = def (or spdef if Wonder Room), c = atk, d = 40 (base power of self-hit)
 HitSelfInConfusion:
 	call ResetDamage
 	ld hl, wBattleMonLevel
 	call GetUserMonAttr
 	; e = Level
 	ld e, [hl]
-	ld bc, wBattleMonDefense + 1 - wBattleMonLevel
-	assert wBattleMonDefense - 2 == wBattleMonAttack
-	add hl, bc
-	; bc = Defense
-	ld a, [hld]
-	ld c, a
-	ld a, [hld]
+
+	ld hl, wBattleMonDefense
+	ld a, [wMagicWonderRoom]
+	and FIELD_WONDER_ROOM
+	jr z, .skip_wonder_room
+	ld hl, wBattleMonSpDef
+.skip_wonder_room
+	call GetUserMonAttr
+	ld a, [hli]
+	ld c, [hl]
 	ld b, a
-	; hl = Attack
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a
+
+	ld hl, wBattleMonAttack
+	call GetUserMonAttr
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+
 	call TruncateHL_BC
 	ld d, 40
 	ret
@@ -4293,7 +4325,7 @@ ConfusedDamageCalc:
 	call DamagePass1
 	call DamagePass2
 	push bc
-	; This way we ignore Unnerve
+	; This way we ignore Unaware
 	ld hl, wPlayerAtkLevel
 	ld de, wEnemyAtkLevel
 	call ApplyStatBoostDamage
@@ -6857,7 +6889,11 @@ GetUserItemAfterUnnerve::
 	jr z, .got_embargo
 	ld a, [wEnemyThroatChopEmbargoCount]
 .got_embargo
-	and $0F
+	and SUBSTATUS_EMBARGO
+	jr nz, .item_disabled
+	ld a, [wMagicWonderRoom]
+	; Check magic room
+	and FIELD_MAGIC_ROOM
 	jr nz, .item_disabled
 	; Check unnerve
 	call GetUserItem

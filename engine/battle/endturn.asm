@@ -60,10 +60,8 @@ HandleBetweenTurnEffects:
 	; swamp dissipating (water+grass pledge)
 	call HandleAuroraVeil
 	call HandleTrickRoom
-	; water sport
-	; mud sport
-	; wonder room
-	; magic room
+	call HandleWonderRoom
+	call HandleMagicRoom
 	call HandleGravity
 	; terrain (dissipating, grass terrain recovery is elsewhere)
 	call HandleEndturnBlockB
@@ -922,32 +920,28 @@ HandlePerishSong:
 	predef_jump SubtractHPFromUser
 
 HandleTrickRoom:
-	ld hl, wTrickRoom
-	ld a, [hl]
-	and a
-	ret z
-	dec [hl]
-	ret nz
-	ld hl, TrickRoomEndedText
-	jmp StdBattleTextbox
+	ld hl, wGravityTrickRoom
+	ld b, FIELD_TRICK_ROOM
+	ld de, TrickRoomEndedText
+	jmp DecrementCounter
+
+HandleWonderRoom:
+	ld hl, wMagicWonderRoom
+	ld b, FIELD_WONDER_ROOM
+	ld de, WonderRoomEndedText
+	jmp DecrementCounter
+
+HandleMagicRoom:
+	ld hl, wMagicWonderRoom
+	ld b, FIELD_MAGIC_ROOM
+	ld de, MagicRoomEndedText
+	jmp DecrementCounter
 
 HandleGravity:
-	ld hl, wFieldEffects
-	ld a, [hl]
-	and FIELD_GRAVITY
-	ret z
-	ld b, a
-	xor [hl]
-	ld [hl], a
-	ld a, b
-	dec a
-	jr nz, .not_done
-	ld hl, GravityEndedText
-	call StdBattleTextbox
-.not_done
-	or [hl]
-	ld [hl], a
-	ret
+	ld hl, wGravityTrickRoom
+	ld b, FIELD_GRAVITY
+	ld de, GravityEndedText
+	jmp DecrementCounter
 
 HandleLeppaBerry:
 	call SetFastestTurn
@@ -1234,7 +1228,7 @@ HandleEmbargo:
 	ld hl, wEnemyThroatChopEmbargoCount
 .got_embargo
 	ld a, [hl]
-	and $0F
+	and SUBSTATUS_EMBARGO
 	ret z
 	ld a, [hl]
 	dec a
@@ -1277,3 +1271,22 @@ HandleYawn:
 	call SwitchTurn
 	farcall SleepTarget
 	jmp SwitchTurn
+
+; Input: address from hl, mask in b. message to output if [hl] hits 0 in de.
+; Registers used: all except for c.
+; (Assumption: mask is either $f0 or $0f.)
+DecrementCounter:
+	ld a, [hl]
+	and b
+	ret z
+	ld a, $11
+	and b
+	ld b, a
+	ld a, [hl]
+	sub b
+	ld [hl], a
+	cp b
+	ret nc
+	ld h, d
+	ld l, e
+	jmp StdBattleTextbox
