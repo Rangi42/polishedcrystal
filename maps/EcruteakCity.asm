@@ -59,12 +59,32 @@ EcruteakCityFlyPoint:
 EcruteakCityLass2Script:
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue_jumptextfaceplayer EcruteakCityLass2Text_ReleasedBeasts
-	jumptextfaceplayer EcruteakCityLass2Text
+	jumpthistextfaceplayer
+
+	text "The tower that"
+	line "used to be here…"
+
+	para "My grandma told me"
+	line "it used to be much"
+	cont "taller."
+	done
 
 EcruteakCityFisherScript:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer EcruteakCityFisherText_JasmineReturned
-	jumptextfaceplayer EcruteakCityFisherText
+	jumpthistextfaceplayer
+
+	text "I heard a rumor"
+	line "about Olivine"
+	cont "Lighthouse."
+
+	para "The #mon that"
+	line "serves as the"
+
+	para "beacon fell ill."
+	line "Sounds like they"
+	cont "are in trouble."
+	done
 
 EcruteakCityGramps1Text:
 	text "Ecruteak used to"
@@ -116,14 +136,6 @@ EcruteakCitySmeargleText:
 	text "Smeargle: Smeer!"
 	done
 
-EcruteakCityLass2Text:
-	text "The tower that"
-	line "used to be here…"
-
-	para "My grandma told me"
-	line "it used to be much"
-	cont "taller."
-	done
 
 EcruteakCityLass2Text_ReleasedBeasts:
 	text "Three big #mon"
@@ -132,18 +144,6 @@ EcruteakCityLass2Text_ReleasedBeasts:
 	cont "What were they?"
 	done
 
-EcruteakCityFisherText:
-	text "I heard a rumor"
-	line "about Olivine"
-	cont "Lighthouse."
-
-	para "The #mon that"
-	line "serves as the"
-
-	para "beacon fell ill."
-	line "Sounds like they"
-	cont "are in trouble."
-	done
 
 EcruteakCityFisherText_JasmineReturned:
 	text "The #mon at"

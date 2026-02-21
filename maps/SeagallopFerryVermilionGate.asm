@@ -49,7 +49,11 @@ SeagallopFerryVermilionGateSailorScript:
 	iftruefwd .have_mysticticket_no_orangeticket
 	checkkeyitem OLD_SEA_MAP
 	iftruefwd .use_old_sea_map
-	jumpopenedtext SeagallopFerryClosedText
+	jumpthisopenedtext
+
+	text "I'm sorry, you don't"
+	line "have a ticket."
+	done
 
 .have_orangeticket
 	checkkeyitem MYSTICTICKET
@@ -233,10 +237,6 @@ SeagallopFerryGiveOrangeTicketText:
 	line "You can have it."
 	done
 
-SeagallopFerryClosedText:
-	text "I'm sorry, you don't"
-	line "have a ticket."
-	done
 
 SeagallopFerryOrangeTicketQuestionText:
 	text "That OrangeTicket"

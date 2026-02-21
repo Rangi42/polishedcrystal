@@ -28,7 +28,13 @@ YellowForestGateNurseScript:
 	pause 60
 	special Special_FadeInQuickly
 	special RestartMapMusic
-	jumptext YellowForestGateNurseHealedText
+	jumpthistext
+
+	text "All done!"
+
+	para "Your #mon"
+	line "are fully healed."
+	done
 
 YellowForestGateOfficerText:
 	text "There are rare"
@@ -50,12 +56,6 @@ YellowForestGateNurseText:
 	line "for you."
 	done
 
-YellowForestGateNurseHealedText:
-	text "All done!"
-
-	para "Your #mon"
-	line "are fully healed."
-	done
 
 YellowForestGateChanseyText:
 	text "Chansey: Sii!"

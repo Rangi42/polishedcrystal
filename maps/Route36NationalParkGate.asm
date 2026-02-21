@@ -251,52 +251,106 @@ Route36NationalParkGateOfficerScript:
 BugCatchingContestant1BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant1BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant1BText
+	jumpthistextfaceplayer
+
+	text "Don: Wow, you beat"
+	line "me. You're pretty"
+	cont "good."
+	done
 
 BugCatchingContestant2BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant2BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant2BText
+	jumpthistextfaceplayer
+
+	text "Lou: I envy you."
+	line "I just couldn't"
+	cont "do it this time."
+	done
 
 BugCatchingContestant3BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant3BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant3BText
+	jumpthistextfaceplayer
+
+	text "Nick: Well done!"
+	line "I'm going to raise"
+	cont "my #mon better."
+	done
 
 BugCatchingContestant4BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant4BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant4BText
+	jumpthistextfaceplayer
+
+	text "William: You're"
+	line "the winner? What"
+	cont "did you catch?"
+	done
 
 BugCatchingContestant5BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant5BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant5BText
+	jumpthistextfaceplayer
+
+	text "Benny: Congrats!"
+	line "You have earned my"
+	cont "respect!"
+	done
 
 BugCatchingContestant6BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant6BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant6BText
+	jumpthistextfaceplayer
+
+	text "Barry: That #-"
+	line "mon you caught…"
+	cont "it's awesome!"
+	done
 
 BugCatchingContestant7BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant7BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant7BText
+	jumpthistextfaceplayer
+
+	text "Cindy: You won?"
+	line "That's great!"
+
+	para "Do you feel like"
+	line "looking for bug"
+	cont "#mon with me?"
+	done
 
 BugCatchingContestant8BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant8BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant8BText
+	jumpthistextfaceplayer
+
+	text "Josh: I… I can't"
+	line "believe I lost at"
+	cont "bug-catching…"
+	done
 
 BugCatchingContestant9BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant9BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant9BText
+	jumpthistextfaceplayer
+
+	text "Johnny: Next time,"
+	line "I'm going to win."
+	done
 
 BugCatchingContestant10BScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer BugCatchingContestant10BStillCompetingText
-	jumptextfaceplayer BugCatchingContestant10BText
+	jumpthistextfaceplayer
+
+	text "Kipp: Could you"
+	line "give me some tips?"
+
+	para "I want to study"
+	line "your style."
+	done
 
 Route36NationalParkGatePlayerWaitWithContestantsMovement:
 	run_step_down
@@ -318,11 +372,6 @@ Route36NationalParkGateOfficer1SomeMonOnlySeenInParkText:
 	cont "the Park."
 	done
 
-BugCatchingContestant1BText:
-	text "Don: Wow, you beat"
-	line "me. You're pretty"
-	cont "good."
-	done
 
 BugCatchingContestant1BStillCompetingText:
 	text "Don: Luck plays a"
@@ -333,22 +382,12 @@ BugCatchingContestant1BStillCompetingText:
 	cont "appear."
 	done
 
-BugCatchingContestant2BText:
-	text "Lou: I envy you."
-	line "I just couldn't"
-	cont "do it this time."
-	done
 
 BugCatchingContestant2BStillCompetingText:
 	text "Lou: Maybe you win"
 	line "with big #mon?"
 	done
 
-BugCatchingContestant3BText:
-	text "Nick: Well done!"
-	line "I'm going to raise"
-	cont "my #mon better."
-	done
 
 BugCatchingContestant3BStillCompetingText:
 	text "Nick: Maybe you"
@@ -358,11 +397,6 @@ BugCatchingContestant3BStillCompetingText:
 	line "an unusual color."
 	done
 
-BugCatchingContestant4BText:
-	text "William: You're"
-	line "the winner? What"
-	cont "did you catch?"
-	done
 
 BugCatchingContestant4BStillCompetingText:
 	text "William: Well, I'm"
@@ -372,11 +406,6 @@ BugCatchingContestant4BStillCompetingText:
 	line "that I wanted."
 	done
 
-BugCatchingContestant5BText:
-	text "Benny: Congrats!"
-	line "You have earned my"
-	cont "respect!"
-	done
 
 BugCatchingContestant5BStillCompetingText:
 	text "Benny: I caught a"
@@ -384,11 +413,6 @@ BugCatchingContestant5BStillCompetingText:
 	cont "but I didn't win."
 	done
 
-BugCatchingContestant6BText:
-	text "Barry: That #-"
-	line "mon you caught…"
-	cont "it's awesome!"
-	done
 
 BugCatchingContestant6BStillCompetingText:
 	text "Barry: It's easier"
@@ -402,25 +426,12 @@ BugCatchingContestant6BStillCompetingText:
 	cont "other points."
 	done
 
-BugCatchingContestant7BText:
-	text "Cindy: You won?"
-	line "That's great!"
-
-	para "Do you feel like"
-	line "looking for bug"
-	cont "#mon with me?"
-	done
 
 BugCatchingContestant7BStillCompetingText:
 	text "Cindy: I really"
 	line "love bug #mon!"
 	done
 
-BugCatchingContestant8BText:
-	text "Josh: I… I can't"
-	line "believe I lost at"
-	cont "bug-catching…"
-	done
 
 BugCatchingContestant8BStillCompetingText:
 	text "Josh: I heard that"
@@ -428,10 +439,6 @@ BugCatchingContestant8BStillCompetingText:
 	cont "a Caterpie!"
 	done
 
-BugCatchingContestant9BText:
-	text "Johnny: Next time,"
-	line "I'm going to win."
-	done
 
 BugCatchingContestant9BStillCompetingText:
 	text "Johnny: Darn."
@@ -439,13 +446,6 @@ BugCatchingContestant9BStillCompetingText:
 	cont "score higher…"
 	done
 
-BugCatchingContestant10BText:
-	text "Kipp: Could you"
-	line "give me some tips?"
-
-	para "I want to study"
-	line "your style."
-	done
 
 BugCatchingContestant10BStillCompetingText:
 	text "Kipp: I study a"

@@ -359,7 +359,14 @@ KurtsGranddaughter1:
 	iftrue_jumptext KurtsGranddaughterSlowpokeBackText
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	iftrue_jumptext KurtsGranddaughterLonelyText
-	jumptext KurtsGranddaughterSlowpokeGoneText
+	jumpthistext
+
+	text "The Slowpoke are"
+	line "gone… Were they"
+
+	para "taken away by bad"
+	line "people?"
+	done
 
 KurtsGranddaughter2:
 	faceplayer
@@ -601,13 +608,6 @@ KurtsHouseKurtThisBallStartedToShakeText:
 	line "something to this!"
 	done
 
-KurtsGranddaughterSlowpokeGoneText:
-	text "The Slowpoke are"
-	line "gone… Were they"
-
-	para "taken away by bad"
-	line "people?"
-	done
 
 KurtsGranddaughterLonelyText:
 	text "Grandpa's gone…"

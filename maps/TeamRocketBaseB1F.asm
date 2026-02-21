@@ -575,7 +575,14 @@ GenericTrainerGruntM16:
 	done
 
 TeamRocketBaseB1FSecurityCamera:
-	jumptext SecurityCameraText
+	jumpthistext
+
+	text "It's a Persian"
+	line "statue…"
+
+	para "Its eyes are oddly"
+	line "shiny."
+	done
 
 TeamRocketBaseB1FSecretSwitch:
 	opentext
@@ -594,7 +601,11 @@ TeamRocketBaseB1FSecretSwitch:
 	end
 
 .SecretSwitchOff:
-	jumpopenedtext TeamRocketBaseB1FSwitchOffText
+	jumpthisopenedtext
+
+	text "The switch is"
+	line "turned off."
+	done
 
 SecurityCameraMovement1:
 	run_step_right
@@ -736,20 +747,9 @@ GruntM16BeatenText:
 	text "Kaboom!"
 	done
 
-SecurityCameraText:
-	text "It's a Persian"
-	line "statue…"
-
-	para "Its eyes are oddly"
-	line "shiny."
-	done
 
 TeamRocketBaseB1FSecretSwitchText:
 	text "A secret switch!"
 	line "Better press it."
 	done
 
-TeamRocketBaseB1FSwitchOffText:
-	text "The switch is"
-	line "turned off."
-	done

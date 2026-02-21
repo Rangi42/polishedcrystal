@@ -234,14 +234,27 @@ YellowForestTutorSeedBombScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_YellowForestTutorRefused
+	jumpthisopenedtext
+
+	text "Talk to me if you"
+	line "change your mind!"
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_YellowForestTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Aw, you don't have"
+	line "a Silver Leaf."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_YellowForestTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Seed Bomb!"
+	done
 
 YellowForestSurfPikachuDoll:
 	disappear YELLOWFOREST_POKE_BALL5
@@ -251,7 +264,11 @@ YellowForestSurfPikachuDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	jumpopenedtext YellowForestSurfPikachuDollSentText
+	jumpthisopenedtext
+
+	text "Surf Pikachu Doll"
+	line "was sent home."
+	done
 
 SchoolgirlSarahSeenText:
 	text "Ooh, a trainer!"
@@ -461,10 +478,6 @@ Text_YellowForestTutorSeedBomb:
 	line "for a Silver Leaf."
 	done
 
-Text_YellowForestTutorNoSilverLeaf:
-	text "Aw, you don't have"
-	line "a Silver Leaf."
-	done
 
 Text_YellowForestTutorQuestion:
 	text "Should I teach"
@@ -472,16 +485,7 @@ Text_YellowForestTutorQuestion:
 	cont "Seed Bomb?"
 	done
 
-Text_YellowForestTutorRefused:
-	text "Talk to me if you"
-	line "change your mind!"
-	done
 
-Text_YellowForestTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Seed Bomb!"
-	done
 
 YellowForestSuperNerdText:
 	text "There's a protein"
@@ -500,7 +504,3 @@ YellowForestSurfPikachuDollText:
 	line "Surf Pikachu Doll."
 	done
 
-YellowForestSurfPikachuDollSentText:
-	text "Surf Pikachu Doll"
-	line "was sent home."
-	done

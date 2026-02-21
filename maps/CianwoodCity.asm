@@ -108,7 +108,20 @@ CianwoodCitySuicuneAndEusine:
 CianwoodCityChucksWife:
 	checkevent EVENT_BEAT_CHUCK
 	iftrue_jumptextfaceplayer ChucksWifeChubbyText
-	jumptextfaceplayer ChucksWifeEasierToFlyText
+	jumpthistextfaceplayer
+
+	text "You crossed the"
+	line "sea to get here?"
+
+	para "That must have"
+	line "been hard."
+
+	para "It would be much"
+	line "easier if your"
+
+	para "#mon knew how"
+	line "to Fly…"
+	done
 
 CianwoodCitySuicuneApproachMovement:
 	fix_facing
@@ -139,19 +152,6 @@ CianwoodCityEusineDepartMovement:
 	step_down
 	step_end
 
-ChucksWifeEasierToFlyText:
-	text "You crossed the"
-	line "sea to get here?"
-
-	para "That must have"
-	line "been hard."
-
-	para "It would be much"
-	line "easier if your"
-
-	para "#mon knew how"
-	line "to Fly…"
-	done
 
 ChucksWifeChubbyText:
 	text "That's Cianwood's"

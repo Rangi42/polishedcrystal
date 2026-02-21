@@ -24,7 +24,15 @@ Route26HealHouseTeacherScript:
 	pause 60
 	special Special_FadeInQuickly
 	special RestartMapMusic
-	jumptext Route26HealHouseKeepAtItText
+	jumpthistext
+
+	text "There!"
+
+	para "Your #mon are"
+	line "looking good!"
+
+	para "Keep at it!"
+	done
 
 Route26HealHouseRestAWhileText:
 	text "Your #mon look"
@@ -34,11 +42,3 @@ Route26HealHouseRestAWhileText:
 	line "them a while."
 	done
 
-Route26HealHouseKeepAtItText:
-	text "There!"
-
-	para "Your #mon are"
-	line "looking good!"
-
-	para "Keep at it!"
-	done

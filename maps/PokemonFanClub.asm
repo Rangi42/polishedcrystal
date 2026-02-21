@@ -43,7 +43,18 @@ PokemonFanClubChairmanScript:
 	verbosegiveitem RARE_CANDY
 	iffalse_endtext
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	jumpopenedtext PokemonFanClubChairmanItsARareCandyText
+	jumpthisopenedtext
+
+	text "It's a Rare Candy"
+	line "that makes #mon"
+	cont "stronger."
+
+	para "I prefer making my"
+	line "#mon stronger"
+
+	para "by battling, so"
+	line "you can have it."
+	done
 
 PokemonFanClubClefairyGuyScript:
 	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
@@ -144,17 +155,6 @@ PokemonFanClubChairmanIWantYouToHaveThisText:
 	cont "to have this!"
 	done
 
-PokemonFanClubChairmanItsARareCandyText:
-	text "It's a Rare Candy"
-	line "that makes #mon"
-	cont "stronger."
-
-	para "I prefer making my"
-	line "#mon stronger"
-
-	para "by battling, so"
-	line "you can have it."
-	done
 
 PokemonFanClubChairmanMoreTalesToTellText:
 	text "Hello, <PLAYER>!"

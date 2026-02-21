@@ -46,14 +46,27 @@ Route46TutorRoute46Script:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_Route46TutorRefused
+	jumpthisopenedtext
+
+	text "Suit yourself."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_Route46TutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Ah well, you don't"
+	line "have a Silver"
+	cont "Leaf."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_Route46TutorTaught
+	jumpthisopenedtext
+
+	text "All done! Your"
+	line "#mon learned"
+	cont "to use Rollout!"
+	done
 
 GenericTrainerCamperTed:
 	generictrainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText
@@ -209,11 +222,6 @@ Text_Route46TutorRollout:
 	line "a Silver Leaf."
 	done
 
-Text_Route46TutorNoSilverLeaf:
-	text "Ah well, you don't"
-	line "have a Silver"
-	cont "Leaf."
-	done
 
 Text_Route46TutorQuestion:
 	text "Should I teach"
@@ -221,15 +229,7 @@ Text_Route46TutorQuestion:
 	cont "Rollout?"
 	done
 
-Text_Route46TutorRefused:
-	text "Suit yourself."
-	done
 
-Text_Route46TutorTaught:
-	text "All done! Your"
-	line "#mon learned"
-	cont "to use Rollout!"
-	done
 
 HikerBaileySeenText:
 	text "Awright! I'll show"

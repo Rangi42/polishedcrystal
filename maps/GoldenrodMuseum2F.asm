@@ -233,14 +233,26 @@ GoldenrodMuseum2FTutorBatonPassScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext GoldenrodMuseum2FTutorRefused
+	jumpthisopenedtext
+
+	text "If you say so."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext GoldenrodMuseum2FTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf!"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext GoldenrodMuseum2FTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Baton Pass!"
+	done
 
 GoldenrodMuseum2FTutorIntroText:
 	text "Before the con-"
@@ -278,10 +290,6 @@ GoldenrodMuseum2FTutorBatonPassText:
 	line "Silver Leaf."
 	done
 
-GoldenrodMuseum2FTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf!"
-	done
 
 GoldenrodMuseum2FTutorQuestion:
 	text "Should I teach"
@@ -289,12 +297,4 @@ GoldenrodMuseum2FTutorQuestion:
 	cont "Baton Pass?"
 	done
 
-GoldenrodMuseum2FTutorRefused:
-	text "If you say so."
-	done
 
-GoldenrodMuseum2FTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Baton Pass!"
-	done

@@ -32,6 +32,7 @@ _AnimateTileset::
 TilesetJohtoTraditionalAnim::
 TilesetJohtoModernAnim::
 TilesetJohtoOutlandsAnim::
+TilesetJohtoAncientAnim::
 TilesetBattleTowerOutsideAnim::
 TilesetEcruteakShrineAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
@@ -332,7 +333,7 @@ TilesetSnowtopMountainAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetUndergroundAnim::
+TilesetHideoutAnim::
 	dw NULL,  SpinnerAnimation
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -359,11 +360,11 @@ TilesetTraditionalHouseAnim::
 TilesetMagnetTrainAnim::
 TilesetChampionsRoomAnim::
 TilesetLighthouseAnim::
+TilesetUndergroundAnim::
 TilesetPokeComCenterAnim::
 TilesetBattleTowerInsideAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
-TilesetAlphWordRoomAnim::
 TilesetPokemonMansionAnim::
 TilesetDecorAnim::
 TilesetMuseumAnim::
@@ -678,7 +679,7 @@ SpinnerAnimation:
 	ld h, a
 
 	ld sp, hl
-	ld hl, vTiles2 tile $50
+	ld hl, vTiles2 tile $08
 	jmp WriteTile
 
 .SpinnerTileFrames:

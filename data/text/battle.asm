@@ -1644,9 +1644,10 @@ GetOutText:
 	line "Get out…"
 	prompt
 
-CarrieFinalPkmnText:
 CalFinalPkmnText:
+CarrieFinalPkmnText:
 JackyFinalPkmnText:
+EunaFinalPkmnText:
 	text "I still have one"
 	line "#mon!"
 	prompt

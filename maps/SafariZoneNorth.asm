@@ -84,14 +84,28 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_SafariZoneNorthTutorRefused
+	jumpthisopenedtext
+
+	text "Oh well."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_SafariZoneNorthTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have any"
+	line "Silver Leaves…"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_SafariZoneNorthTutorTaught
+	jumpthisopenedtext
+
+	text "There!"
+	line "Now your #mon"
+
+	para "knows how to use"
+	cont "Double-Edge!"
+	done
 
 BattleGirlPadmaSeenText:
 	text "I spar with my"
@@ -152,10 +166,6 @@ Text_SafariZoneNorthTutorDoubleEdge:
 	line "for a Silver Leaf."
 	done
 
-Text_SafariZoneNorthTutorNoSilverLeaf:
-	text "You don't have any"
-	line "Silver Leaves…"
-	done
 
 Text_SafariZoneNorthTutorQuestion:
 	text "Should I teach"
@@ -163,17 +173,7 @@ Text_SafariZoneNorthTutorQuestion:
 	cont "Double-Edge?"
 	done
 
-Text_SafariZoneNorthTutorRefused:
-	text "Oh well."
-	done
 
-Text_SafariZoneNorthTutorTaught:
-	text "There!"
-	line "Now your #mon"
-
-	para "knows how to use"
-	cont "Double-Edge!"
-	done
 
 SafariZoneNorthAreaSignText:
 	text "Safari Zone"

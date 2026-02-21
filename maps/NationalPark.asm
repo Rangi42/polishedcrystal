@@ -261,7 +261,17 @@ PokefanfBeverly1Script:
 	sjumpfwd .PackFull
 
 .NoMarill:
-	jumpopenedtext PokefanFBeverlyMarillFriendText
+	jumpthisopenedtext
+
+	text "My friend keeps a"
+	line "Marill!"
+
+	para "I find them very"
+	line "endearing."
+
+	para "Oh, I wish for a"
+	line "Marill of my own…"
+	done
 
 .AskNumber1:
 	jumpstd asknumber1f
@@ -446,16 +456,6 @@ PokefanmWilliamBeatenText:
 	text "M-my #mon!"
 	done
 
-PokefanFBeverlyMarillFriendText:
-	text "My friend keeps a"
-	line "Marill!"
-
-	para "I find them very"
-	line "endearing."
-
-	para "Oh, I wish for a"
-	line "Marill of my own…"
-	done
 
 LassKriseSeenText:
 	text "Hello? Why are you"

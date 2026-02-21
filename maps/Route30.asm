@@ -206,7 +206,12 @@ GenericTrainerBug_catcherDon:
 Route30YoungsterScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumptextfaceplayer Route30YoungsterText_EveryoneIsBattling
-	jumptextfaceplayer Route30YoungsterText_DirectionsToMrPokemonsHouse
+	jumpthistextfaceplayer
+
+	text "Mr.#mon's"
+	line "house? It's a bit"
+	cont "farther ahead."
+	done
 
 Route30_JoeysRattataAttacksMovement:
 	run_step_up
@@ -281,11 +286,6 @@ Bug_catcherDonBeatenText:
 	line "strong!"
 	done
 
-Route30YoungsterText_DirectionsToMrPokemonsHouse:
-	text "Mr.#mon's"
-	line "house? It's a bit"
-	cont "farther ahead."
-	done
 
 Route30YoungsterText_EveryoneIsBattling:
 	text "Everyone's having"

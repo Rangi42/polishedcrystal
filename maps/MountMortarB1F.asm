@@ -43,14 +43,28 @@ MountMortarB1FTutorDefenseCurlScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_MountMortarB1FTutorRefused
+	jumpthisopenedtext
+
+	text "I'll be right here"
+	line "waiting."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_MountMortarB1FTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Shucks, you don't"
+	line "have a Silver"
+	cont "Leaf."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_MountMortarB1FTutorTaught
+	jumpthisopenedtext
+
+	text "There! Now your"
+	line "#mon can use"
+	cont "Defense Curl!"
+	done
 
 MountMortarB1FKiyoScript:
 	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
@@ -112,11 +126,6 @@ Text_MountMortarB1FTutorDefenseCurl:
 	line "one Silver Leaf."
 	done
 
-Text_MountMortarB1FTutorNoSilverLeaf:
-	text "Shucks, you don't"
-	line "have a Silver"
-	cont "Leaf."
-	done
 
 Text_MountMortarB1FTutorQuestion:
 	text "Should I teach"
@@ -124,16 +133,7 @@ Text_MountMortarB1FTutorQuestion:
 	cont "Defense Curl?"
 	done
 
-Text_MountMortarB1FTutorRefused:
-	text "I'll be right here"
-	line "waiting."
-	done
 
-Text_MountMortarB1FTutorTaught:
-	text "There! Now your"
-	line "#mon can use"
-	cont "Defense Curl!"
-	done
 
 MountMortarB1FKiyoIntroText:
 	text "Hey!"

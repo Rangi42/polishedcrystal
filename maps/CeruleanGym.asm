@@ -88,7 +88,14 @@ CeruleanGymMistyScript:
 	promptbutton
 	verbosegivetmhm TM_WATER_PULSE
 	setevent EVENT_GOT_TM63_WATER_PULSE
-	jumpopenedtext MistyOutroText
+	jumpthisopenedtext
+
+	text "It contains the"
+	line "move Water Pulse."
+
+	para "It can sometimes"
+	line "confuse your foe."
+	done
 
 GenericTrainerSwimmerfDiana:
 	generictrainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText
@@ -144,7 +151,17 @@ GenericTrainerSailorEddie:
 CeruleanGymGuyScript:
 	checkevent EVENT_BEAT_MISTY
 	iftrue_jumptextfaceplayer CeruleanGymGuyWinText
-	jumptextfaceplayer CeruleanGymGuyText
+	jumpthistextfaceplayer
+
+	text "Yo! Champ in"
+	line "making!"
+
+	para "Since Misty was"
+	line "away, I went out"
+
+	para "for some fun too."
+	line "He-he-he."
+	done
 
 CeruleanGymHiddenMachinePart:
 	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
@@ -164,12 +181,22 @@ CeruleanGymHiddenMachinePart:
 CeruleanGymStatue1:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	iffalsefwd CeruleanGymStatue
-	jumptext CeruleanGymNote1
+	jumpthistext
+
+	text "Sorry, I'll be out"
+	line "for a while."
+	cont "Misty, Gym Leader"
+	done
 
 CeruleanGymStatue2:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	iffalsefwd CeruleanGymStatue
-	jumptext CeruleanGymNote2
+	jumpthistext
+
+	text "Since Misty's out,"
+	line "we'll be away too."
+	cont "Gym Trainers"
+	done
 
 CeruleanGymStatue:
 	gettrainername MISTY, 1, STRING_BUFFER_4
@@ -240,17 +267,7 @@ CeruleanGymGruntByeText:
 	para "Bye-bye a go-go!"
 	done
 
-CeruleanGymNote1:
-	text "Sorry, I'll be out"
-	line "for a while."
-	cont "Misty, Gym Leader"
-	done
 
-CeruleanGymNote2:
-	text "Since Misty's out,"
-	line "we'll be away too."
-	cont "Gym Trainers"
-	done
 
 MistyIntroText:
 	text "Misty: I was ex-"
@@ -287,13 +304,6 @@ MistyGiveTMText:
 	line "Take it!"
 	done
 
-MistyOutroText:
-	text "It contains the"
-	line "move Water Pulse."
-
-	para "It can sometimes"
-	line "confuse your foe."
-	done
 
 MistyFightDoneText:
 	text "Misty: Are there"
@@ -364,16 +374,6 @@ SailorEddieBeatenText:
 	line "strength alone."
 	done
 
-CeruleanGymGuyText:
-	text "Yo! Champ in"
-	line "making!"
-
-	para "Since Misty was"
-	line "away, I went out"
-
-	para "for some fun too."
-	line "He-he-he."
-	done
 
 CeruleanGymGuyWinText:
 	text "Hoo, you showed me"

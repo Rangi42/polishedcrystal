@@ -79,7 +79,11 @@ VermilionPortSailorAtGangwayScript:
 	end
 
 VermilionPortAlreadyRodeScript:
-	jumpopenedtext VermilionPortCantBoardText
+	jumpthisopenedtext
+
+	text "Sorry. You can't"
+	line "board now."
+	done
 
 VermilionPortWalkUpToShipScript:
 	turnobject VERMILIONPORT_SAILOR2, RIGHT
@@ -206,10 +210,6 @@ VermilionPortDepartingText:
 	cont "on board."
 	done
 
-VermilionPortCantBoardText:
-	text "Sorry. You can't"
-	line "board now."
-	done
 
 VermilionPortAskBoardingText:
 	text "Welcome to Fast"

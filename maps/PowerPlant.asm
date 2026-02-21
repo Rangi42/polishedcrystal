@@ -52,27 +52,76 @@ PowerPlantOfficerScript:
 	iftrue_jumptextfaceplayer PowerPlantOfficer1HaveToBeefUpSecurityText
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	iftrue_jumptextfaceplayer PowerPlantOfficer1CouldIAskForYourCooperationText
-	jumptextfaceplayer PowerPlantOfficer1AThiefBrokeInText
+	jumpthistextfaceplayer
+
+	text "A thief broke into"
+	line "the Power Plant…"
+
+	para "What is the world"
+	line "coming to?"
+	done
 
 PowerPlantGymGuide1Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantGymGuide1GeneratorUpAndRunningText
-	jumptextfaceplayer PowerPlantGymGuide1SomeoneStoleAPartText
+	jumpthistextfaceplayer
+
+	text "Someone made off"
+	line "with a part that's"
+
+	para "essential for the"
+	line "generator."
+
+	para "Without it, the"
+	line "new generator's"
+	cont "useless!"
+	done
 
 PowerPlantGymGuide2Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantGymGuide2GeneratorIsRunningAgainText
-	jumptextfaceplayer PowerPlantGymGuide2PowerPlantUpAndRunningText
+	jumpthistextfaceplayer
+
+	text "This Power Plant"
+	line "had been abandoned"
+	cont "in the past."
+
+	para "We got it back up"
+	line "and running to"
+
+	para "provide power to"
+	line "the Magnet Train."
+	done
 
 PowerPlantOfficer2Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantOfficer2ManagerHasBeenCheerfulText
-	jumptextfaceplayer PowerPlantOfficer2ManagerHasBeenSadAndFuriousText
+	jumpthistextfaceplayer
+
+	text "The Power Plant's"
+	line "Manager is up"
+	cont "ahead."
+
+	para "But since someone"
+	line "wrecked the gener-"
+	cont "ator, he's been"
+	cont "both sad and"
+	cont "furious…"
+	done
 
 PowerPlantGymGuide4Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantGymGuide4WeCanGetMagnetTrainRunningText
-	jumptextfaceplayer PowerPlantGymGuide4MagnetTrainConsumesElectricityText
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "consumes a lot of"
+	cont "electricity."
+
+	para "It can't move if"
+	line "the new generator"
+	cont "isn't operating."
+	done
 
 PowerPlantManager:
 	faceplayer
@@ -118,14 +167,28 @@ PowerPlantTutorZapCannonScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_PowerPlantTutorRefused
+	jumpthisopenedtext
+
+	text "Have it your way."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_PowerPlantTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Sorry, but I can't"
+	line "teach Zap Cannon"
+	cont "without that Leaf!"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_PowerPlantTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows Zap Cannon!"
+
+	para "Wahahah!"
+	done
 
 PowerPlantOfficer1ApproachGymGuide2Movement:
 	step_right
@@ -142,13 +205,6 @@ PowerPlantOfficer1ReturnToPostMovement:
 	turn_head_down
 	step_end
 
-PowerPlantOfficer1AThiefBrokeInText:
-	text "A thief broke into"
-	line "the Power Plant…"
-
-	para "What is the world"
-	line "coming to?"
-	done
 
 PowerPlantOfficer1CeruleanShadyCharacterText:
 	text "I just got word"
@@ -172,17 +228,6 @@ PowerPlantOfficer1HaveToBeefUpSecurityText:
 	cont "presence."
 	done
 
-PowerPlantGymGuide1SomeoneStoleAPartText:
-	text "Someone made off"
-	line "with a part that's"
-
-	para "essential for the"
-	line "generator."
-
-	para "Without it, the"
-	line "new generator's"
-	cont "useless!"
-	done
 
 PowerPlantGymGuide1GeneratorUpAndRunningText:
 	text "The generator's up"
@@ -192,34 +237,12 @@ PowerPlantGymGuide1GeneratorUpAndRunningText:
 	line "to spare."
 	done
 
-PowerPlantGymGuide2PowerPlantUpAndRunningText:
-	text "This Power Plant"
-	line "had been abandoned"
-	cont "in the past."
-
-	para "We got it back up"
-	line "and running to"
-
-	para "provide power to"
-	line "the Magnet Train."
-	done
 
 PowerPlantGymGuide2GeneratorIsRunningAgainText:
 	text "The generator's"
 	line "running again!"
 	done
 
-PowerPlantOfficer2ManagerHasBeenSadAndFuriousText:
-	text "The Power Plant's"
-	line "Manager is up"
-	cont "ahead."
-
-	para "But since someone"
-	line "wrecked the gener-"
-	cont "ator, he's been"
-	cont "both sad and"
-	cont "furious…"
-	done
 
 PowerPlantOfficer2ManagerHasBeenCheerfulText:
 	text "Since the gener-"
@@ -229,15 +252,6 @@ PowerPlantOfficer2ManagerHasBeenCheerfulText:
 	line "been cheerful."
 	done
 
-PowerPlantGymGuide4MagnetTrainConsumesElectricityText:
-	text "The Magnet Train"
-	line "consumes a lot of"
-	cont "electricity."
-
-	para "It can't move if"
-	line "the new generator"
-	cont "isn't operating."
-	done
 
 PowerPlantGymGuide4WeCanGetMagnetTrainRunningText:
 	text "All right! We can"
@@ -310,11 +324,6 @@ Text_PowerPlantTutorZapCannon:
 	line "Silver Leaf."
 	done
 
-Text_PowerPlantTutorNoSilverLeaf:
-	text "Sorry, but I can't"
-	line "teach Zap Cannon"
-	cont "without that Leaf!"
-	done
 
 Text_PowerPlantTutorQuestion:
 	text "Should I teach"
@@ -322,16 +331,7 @@ Text_PowerPlantTutorQuestion:
 	cont "Zap Cannon?"
 	done
 
-Text_PowerPlantTutorRefused:
-	text "Have it your way."
-	done
 
-Text_PowerPlantTutorTaught:
-	text "Now your #mon"
-	line "knows Zap Cannon!"
-
-	para "Wahahah!"
-	done
 
 PowerPlantForestText:
 	text "Magneton behaves"

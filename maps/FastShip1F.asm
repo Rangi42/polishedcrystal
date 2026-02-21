@@ -120,7 +120,17 @@ FastShip1FSailor1Script:
 FastShip1FSailor2Script:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue_jumptextfaceplayer FastShip1FSailor2Text
-	jumptextfaceplayer FastShip1FSailor2Text_FirstTime
+	jumpthistextfaceplayer
+
+	text "Here's your cabin."
+
+	para "If your #mon"
+	line "are hurt, take a"
+	cont "nap in the bed."
+
+	para "That will heal"
+	line "them."
+	done
 
 WorriedGrandpaTriggerRight:
 	moveobject FASTSHIP1F_GENTLEMAN, 20, 6
@@ -204,16 +214,6 @@ FastShip1FSailor1Text_ToOlivine:
 	cont "we arrive."
 	done
 
-FastShip1FSailor2Text_FirstTime:
-	text "Here's your cabin."
-
-	para "If your #mon"
-	line "are hurt, take a"
-	cont "nap in the bed."
-
-	para "That will heal"
-	line "them."
-	done
 
 FastShip1FSailor2Text:
 	text "Here's your cabin."

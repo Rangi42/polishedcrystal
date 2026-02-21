@@ -182,10 +182,33 @@ TinTower1FSuicuneBattleScript:
 TinTower1FSage4Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftruefwd .FoughtHoOh
-	jumptextfaceplayer TinTower1FSage4Text1
+	jumpthistextfaceplayer
+
+	text "Ho-Oh appears to"
+	line "have descended"
+
+	para "upon this, the"
+	line "Bell Tower!"
+	done
 
 .FoughtHoOh:
-	jumptextfaceplayer TinTower1FSage4Text2
+	jumpthistextfaceplayer
+
+	text "The legendary"
+	line "#mon are said"
+
+	para "to embody three"
+	line "powers…"
+
+	para "The lightning that"
+	line "struck the tower."
+
+	para "The fire that"
+	line "burned the tower."
+
+	para "And the rain that"
+	line "put out the fire…"
+	done
 
 TinTower1FSage5Script:
 	faceplayer
@@ -208,25 +231,72 @@ TinTower1FSage5Script:
 	closetext
 	opentext
 .GotRainbowWing:
-	jumpopenedtext TinTower1FSage5Text2
+	jumpthisopenedtext
+
+	text "Now, go."
+	done
 
 .FoughtHoOh:
-	jumpopenedtext TinTower1FSage5Text3
+	jumpthisopenedtext
+
+	text "When the legendary"
+	line "#mon appeared…"
+
+	para "They struck terror"
+	line "in those who saw"
+	cont "their rise."
+
+	para "And…"
+
+	para "Some even took to"
+	line "futile attacks."
+
+	para "The legendary"
+	line "#mon, knowing"
+
+	para "their own power,"
+	line "fled, ignoring the"
+	cont "frightened people."
+	done
 
 TinTower1FSage6Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftruefwd .FoughtHoOh
-	jumptextfaceplayer TinTower1FSage6Text1
+	jumpthistextfaceplayer
+
+	text "I believe you are"
+	line "being tested."
+
+	para "Free your mind"
+	line "from uncertainty,"
+	cont "and advance."
+	done
 
 .FoughtHoOh:
-	jumptextfaceplayer TinTower1FSage6Text2
+	jumpthistextfaceplayer
+
+	text "Of the legendary"
+	line "#mon, Suicune"
+
+	para "is said to be the"
+	line "closest to Ho-Oh."
+
+	para "I hear there may"
+	line "also be a link to"
+
+	para "#mon known as"
+	line "Unown."
+
+	para "The #mon Unown"
+	line "must be sharing a"
+
+	para "cooperative bond"
+	line "with Suicune."
+	done
 
 TinTower1FEusineAfterHoOhScript:
 	faceplayer
-	opentext
-	writetext TinTowerEusineHoOhText
-	waitbutton
-	closetext
+	showtext TinTowerEusineHoOhText
 	readvar VAR_FACING
 	ifnotequal RIGHT, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
@@ -436,31 +506,13 @@ TinTower1FSage3Text:
 	line "important today."
 	done
 
-TinTower1FSage4Text1:
-	text "Ho-Oh appears to"
-	line "have descended"
-
-	para "upon this, the"
-	line "Bell Tower!"
-	done
 
 TinTower1FSage5Text1:
 	text "This will protect"
 	line "you. Take it."
 	done
 
-TinTower1FSage5Text2:
-	text "Now, go."
-	done
 
-TinTower1FSage6Text1:
-	text "I believe you are"
-	line "being tested."
-
-	para "Free your mind"
-	line "from uncertainty,"
-	cont "and advance."
-	done
 
 TinTowerEusineHoOhText:
 	text "I knew it."
@@ -496,60 +548,5 @@ TinTowerEusineHoOhText:
 	para "Later, <PLAYER>!"
 	done
 
-TinTower1FSage4Text2:
-	text "The legendary"
-	line "#mon are said"
 
-	para "to embody three"
-	line "powers…"
 
-	para "The lightning that"
-	line "struck the tower."
-
-	para "The fire that"
-	line "burned the tower."
-
-	para "And the rain that"
-	line "put out the fire…"
-	done
-
-TinTower1FSage5Text3:
-	text "When the legendary"
-	line "#mon appeared…"
-
-	para "They struck terror"
-	line "in those who saw"
-	cont "their rise."
-
-	para "And…"
-
-	para "Some even took to"
-	line "futile attacks."
-
-	para "The legendary"
-	line "#mon, knowing"
-
-	para "their own power,"
-	line "fled, ignoring the"
-	cont "frightened people."
-	done
-
-TinTower1FSage6Text2:
-	text "Of the legendary"
-	line "#mon, Suicune"
-
-	para "is said to be the"
-	line "closest to Ho-Oh."
-
-	para "I hear there may"
-	line "also be a link to"
-
-	para "#mon known as"
-	line "Unown."
-
-	para "The #mon Unown"
-	line "must be sharing a"
-
-	para "cooperative bond"
-	line "with Suicune."
-	done

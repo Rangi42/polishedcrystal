@@ -82,7 +82,11 @@ TrainerPokefanmDerek1:
 	sjumpfwd .PackFull
 
 .WantsPikachu:
-	jumpopenedtext PokefanMDerekPikachuIsItText
+	jumpthisopenedtext
+
+	text "Pikachu is it!"
+	line "Don't you agree?"
+	done
 
 .AskNumber1:
 	jumpstd asknumber1m
@@ -284,10 +288,31 @@ TrainerPokefanfJaime:
 	endtext
 
 .Beaten:
-	jumpopenedtext PokefanfJaimeAfterBattleText
+	jumpthisopenedtext
+
+	text "I met my Meowth at"
+	line "night, right here"
+	cont "on Route 39."
+
+	para "I'm not sure why,"
+	line "but it seems to"
+
+	para "like it when I"
+	line "train here."
+
+	para "It seems to become"
+	line "friendlier by"
+
+	para "training here than"
+	line "anywhere else."
+	done
 
 .NotNight:
-	jumpopenedtext PokefanfJaimeHopeItGetsDarkText
+	jumpthisopenedtext
+
+	text "Ufufufu… I hope it"
+	line "gets dark soon."
+	done
 
 Route39MiltankText:
 	text "Miltank: Mooo!"
@@ -341,10 +366,6 @@ PokefanfRuthBeatenText:
 	line "losing."
 	done
 
-PokefanMDerekPikachuIsItText:
-	text "Pikachu is it!"
-	line "Don't you agree?"
-	done
 
 PsychicNormanSeenText:
 	text "Let me see what"
@@ -357,10 +378,6 @@ PsychicNormanBeatenText:
 	line "have potential."
 	done
 
-PokefanfJaimeHopeItGetsDarkText:
-	text "Ufufufu… I hope it"
-	line "gets dark soon."
-	done
 
 PokefanfJaimeSeenText:
 	text "You came at just"
@@ -374,23 +391,6 @@ PokefanfJaimeBeatenText:
 	line "pointing…"
 	done
 
-PokefanfJaimeAfterBattleText:
-	text "I met my Meowth at"
-	line "night, right here"
-	cont "on Route 39."
-
-	para "I'm not sure why,"
-	line "but it seems to"
-
-	para "like it when I"
-	line "train here."
-
-	para "It seems to become"
-	line "friendlier by"
-
-	para "training here than"
-	line "anywhere else."
-	done
 
 Route39BeautyText:
 	text "Which is taller:"

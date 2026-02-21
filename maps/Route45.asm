@@ -198,10 +198,25 @@ BlackbeltKenji1Script:
 	sjumpfwd Route45NumberAcceptedM
 
 .Morning:
-	jumpopenedtext BlackbeltKenjiMorningText
+	jumpthisopenedtext
+
+	text "I'm going to train"
+	line "a bit more before"
+	cont "I break for lunch."
+	done
 
 .Night:
-	jumpopenedtext BlackbeltKenjiNightText
+	jumpthisopenedtext
+
+	text "We had plenty of"
+	line "rest at lunch, so"
+
+	para "now we're all"
+	line "ready to go again!"
+
+	para "We're going to"
+	line "train again!"
+	done
 
 .NoRoom:
 	sjumpfwd Route45PackFullM
@@ -499,22 +514,7 @@ BlackbeltKenjiAfterBattleText:
 	cont "solitude."
 	done
 
-BlackbeltKenjiMorningText:
-	text "I'm going to train"
-	line "a bit more before"
-	cont "I break for lunch."
-	done
 
-BlackbeltKenjiNightText:
-	text "We had plenty of"
-	line "rest at lunch, so"
-
-	para "now we're all"
-	line "ready to go again!"
-
-	para "We're going to"
-	line "train again!"
-	done
 
 CooltrainermRyanSeenText:
 	text "What are your"

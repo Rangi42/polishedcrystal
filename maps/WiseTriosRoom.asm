@@ -20,8 +20,8 @@ WiseTriosRoom_MapScriptHeader:
 	object_event  6,  2, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, WiseTriosRoomSage1Text, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	object_event  6,  7, SPRITE_ELDER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, WiseTriosRoomSage2Text, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	object_event  7,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, WiseTriosRoomSage3Text, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
-	object_event  4,  2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerElderGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	object_event  4,  6, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	object_event  4,  2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, TrainerElderGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	object_event  4,  6, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 	object_event  6,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerElderKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 
 	object_const_def
@@ -67,16 +67,83 @@ WiseTriosRoom_CannotEnterTinTowerScript:
 	end
 
 TrainerElderGaku:
-	trainer ELDER, GAKU, EVENT_BEAT_ELDER_GAKU, ElderGakuSeenText, ElderGakuBeatenText, 0, ElderGakuScript
+	generictrainer ELDER, GAKU, EVENT_BEAT_ELDER_GAKU, ElderGakuSeenText, ElderGakuBeatenText
 
-ElderGakuScript:
-	jumptext SageGakuAfterBattleText
+SageGakuAfterBattleText:
+	text "Ah, so it is you"
+	line "who claim to have"
+
+	para "seen Suicune,"
+	line "Entei and Raikou"
+	cont "while they slept?"
+
+	para "Unbelievable!"
+
+	para "Legend has it that"
+	line "they can't be seen"
+	cont "while they sleep…"
+	done
 
 TrainerElderMasa:
-	trainer ELDER, MASA, EVENT_BEAT_ELDER_MASA, ElderMasaSeenText, ElderMasaBeatenText, 0, ElderMasaScript
+	generictrainer ELDER, MASA, EVENT_BEAT_ELDER_MASA, ElderMasaSeenText, ElderMasaBeatenText
 
-ElderMasaScript:
-	jumptext SageMasaAfterBattleText
+SageMasaAfterBattleText:
+	text "In the past, there"
+	line "were two nine-tier"
+	cont "towers here."
+
+if DEF(FAITHFUL)
+	para "The Brass Tower,"
+else
+	para "The Gong Tower,"
+endc
+	line "which was said to"
+
+	para "waken #mon, and"
+	line "the Bell Tower,"
+
+	para "where #mon were"
+	line "said to rest."
+
+	para "The view from the"
+	line "tops of the towers"
+
+	para "must have been"
+	line "magnificent."
+
+	para "At the time, an"
+	line "immense, silver-"
+
+	para "colored #mon"
+	line "was said to make"
+
+	para "its roost atop the"
+if DEF(FAITHFUL)
+	line "Brass Tower."
+else
+	line "Gong Tower."
+endc
+
+	para "However…"
+
+	para "About 150 years"
+	line "ago, a lightning"
+
+	para "bolt struck one of"
+	line "the towers."
+
+	para "It was engulfed in"
+	line "flames that raged"
+	cont "for three days."
+
+	para "A sudden downpour"
+	line "finally put out"
+	cont "the blaze."
+
+	para "And that is how"
+	line "the Burned Tower"
+	cont "came to be."
+	done
 
 TrainerElderKoji:
 	trainer ELDER, KOJI, EVENT_BEAT_ELDER_KOJI, ElderKojiSeenText, ElderKojiBeatenText, 0, ElderKojiScript
@@ -198,21 +265,6 @@ ElderGakuBeatenText:
 	line "thought? Perhaps…"
 	done
 
-SageGakuAfterBattleText:
-	text "Ah, so it is you"
-	line "who claim to have"
-
-	para "seen Suicune,"
-	line "Entei and Raikou"
-	cont "while they slept?"
-
-	para "Unbelievable!"
-
-	para "Legend has it that"
-	line "they can't be seen"
-	cont "while they sleep…"
-	done
-
 ElderMasaSeenText:
 	text "Can you be trusted"
 	line "with the truth?"
@@ -224,64 +276,6 @@ ElderMasaSeenText:
 ElderMasaBeatenText:
 	text "…I will tell you"
 	line "the truth…"
-	done
-
-SageMasaAfterBattleText:
-	text "In the past, there"
-	line "were two nine-tier"
-	cont "towers here."
-
-if DEF(FAITHFUL)
-	para "The Brass Tower,"
-else
-	para "The Gong Tower,"
-endc
-	line "which was said to"
-
-	para "waken #mon, and"
-	line "the Bell Tower,"
-
-	para "where #mon were"
-	line "said to rest."
-
-	para "The view from the"
-	line "tops of the towers"
-
-	para "must have been"
-	line "magnificent."
-
-	para "At the time, an"
-	line "immense, silver-"
-
-	para "colored #mon"
-	line "was said to make"
-
-	para "its roost atop the"
-if DEF(FAITHFUL)
-	line "Brass Tower."
-else
-	line "Gong Tower."
-endc
-
-	para "However…"
-
-	para "About 150 years"
-	line "ago, a lightning"
-
-	para "bolt struck one of"
-	line "the towers."
-
-	para "It was engulfed in"
-	line "flames that raged"
-	cont "for three days."
-
-	para "A sudden downpour"
-	line "finally put out"
-	cont "the blaze."
-
-	para "And that is how"
-	line "the Burned Tower"
-	cont "came to be."
 	done
 
 ElderKojiSeenText:

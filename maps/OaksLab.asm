@@ -124,7 +124,12 @@ Oak:
 	writetext OakLabShinyCharmText
 	waitbutton
 .NoShinyCharm
-	jumpopenedtext OakLabGoodbyeText
+	jumpthisopenedtext
+
+	text "If you're in the"
+	line "area, I hope you"
+	cont "come visit again."
+	done
 
 .BattleOak:
 	checkevent EVENT_LISTENED_TO_OAK_INTRO
@@ -185,7 +190,12 @@ EeveeDollScript:
 	waitbutton
 	writetext EeveeDollSentText
 	waitbutton
-	jumpopenedtext ProfOakAfterTradeText
+	jumpthisopenedtext
+
+	text "Prof.Oak: Set it"
+	line "somewhere you can"
+	cont "appreciate it!"
+	done
 
 OakWelcomeKantoText:
 	text "Oak: Ah, <PLAYER>!"
@@ -315,11 +325,6 @@ OakLabShinyCharmText:
 	cont "#mon!"
 	done
 
-OakLabGoodbyeText:
-	text "If you're in the"
-	line "area, I hope you"
-	cont "come visit again."
-	done
 
 OakMightBeReadyText:
 	text "Oak: Incredible,"
@@ -564,11 +569,6 @@ EeveeDollSentText:
 	line "was sent home."
 	done
 
-ProfOakAfterTradeText:
-	text "Prof.Oak: Set it"
-	line "somewhere you can"
-	cont "appreciate it!"
-	done
 
 OaksLabPokedexText:
 	text "It's Prof.Oak's"

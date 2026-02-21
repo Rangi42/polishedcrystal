@@ -44,12 +44,12 @@ RocketHideoutB4F_MapScriptHeader:
 RocketHideoutB4FDoorScript:
 	checkevent EVENT_BEAT_TEACHER_SERENA
 	iftruefwd .beat_serena
-	changeblock 16, 10, $69
+	changeblock 16, 10, $07
 	endcallback
 .beat_serena
 	checkevent EVENT_BEAT_SUPER_NERD_NOLAN
 	iftruefwd .beat_theo
-	changeblock 16, 10, $69
+	changeblock 16, 10, $07
 	endcallback
 .beat_theo
 	changeblock 16, 10, $0d
@@ -428,10 +428,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	faceplayer
 	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
 	iftruefwd .AfterBattle
-	opentext
-	writetext .GreetingText
-	waitbutton
-	closetext
+	showtext .GreetingText
 	winlosstext .BeatenText, 0
 	loadtrainer YOUNGSTER, ARDEN
 	startbattle

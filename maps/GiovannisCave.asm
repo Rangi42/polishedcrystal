@@ -93,12 +93,9 @@ GiovannisCaveCelebiEventScript:
 
 GiovannisCaveRadioScript:
 	checkevent EVENT_TIME_TRAVEL_FINISHED
-	iftruefwd .AfterTimeTravel
-	jumptext GiovannisCaveRadioText
-.AfterTimeTravel
-	jumptext GiovannisCaveRadioAfterTimeTravelText
+	iftrue_jumptext GiovannisCaveRadioAfterTimeTravelText
+	jumpthistext
 
-GiovannisCaveRadioText:
 	text "There is a radio"
 	line "that no longer"
 	cont "works…"

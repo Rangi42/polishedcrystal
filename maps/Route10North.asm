@@ -27,6 +27,7 @@ Route10North_MapScriptHeader:
 	object_event 12, 52, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CRYS_IN_NAVEL_ROCK
+	object_event 12, 52, SPRITE_BETA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BETA_IN_NAVEL_ROCK
 	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
 	cuttree_event 11, 21, EVENT_ROUTE_10_CUT_TREE_1
 	cuttree_event 14, 21, EVENT_ROUTE_10_CUT_TREE_2
@@ -41,6 +42,7 @@ Route10North_MapScriptHeader:
 	const ROUTE10_CHRIS
 	const ROUTE10_KRIS
 	const ROUTE10_CRYS
+	const ROUTE10_BETA
 
 Route10NorthNoopScene:
 	sdefer Route10NorthLawrenceEncounter1Script
@@ -104,9 +106,12 @@ Route10NorthLawrenceEncounter1Script:
 	end
 
 Route10NorthPanTable:
+	table_width 2
 	dw .Male
 	dw .Female
 	dw .Enby
+	dw .Beta
+	assert_table_length NUM_PLAYER_GENDERS
 
 .Male:
 	appear ROUTE10_CHRIS
@@ -124,6 +129,12 @@ Route10NorthPanTable:
 	appear ROUTE10_CRYS
 	scall .PanUpAndDown
 	disappear ROUTE10_CRYS
+	end
+
+.Beta:
+	appear ROUTE10_BETA
+	scall .PanUpAndDown
+	disappear ROUTE10_BETA
 	end
 
 .PanUpAndDown:

@@ -271,19 +271,32 @@ OlderHaircutBrotherScript:
 	writetext GoldenrodUndergroundOlderHaircutBrotherAllDoneText
 	waitbutton
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftruefwd EitherHaircutBrotherScript_SlightlyHappier
+	iftrue EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftruefwd EitherHaircutBrotherScript_Happier
-	sjumpfwd EitherHaircutBrotherScript_MuchHappier
+	iftrue EitherHaircutBrotherScript_Happier
+	sjump EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
-	jumpopenedtext GoldenrodUndergroundOlderHaircutBrotherThatsAShameText
+	jumpthisopenedtext
+
+	text "Is that right?"
+	line "That's a shame!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext GoldenrodUndergroundOlderHaircutBrotherYoullNeedMoreMoneyText
+	jumpthisopenedtext
+
+	text "You'll need more"
+	line "money than that."
+	done
 
 .AlreadyGotHaircut:
-	jumpopenedtext GoldenrodUndergroundOlderHaircutBrotherOneHaircutADayText
+	jumpthisopenedtext
+
+	text "I do only one"
+	line "haircut a day. I'm"
+	cont "done for today."
+	done
 
 YoungerHaircutBrotherScript:
 	readvar VAR_WEEKDAY
@@ -350,13 +363,28 @@ YoungerHaircutBrotherScript:
 	sjumpfwd EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
-	jumpopenedtext GoldenrodUndergroundYoungerHaircutBrotherHowDisappointingText
+	jumpthisopenedtext
+
+	text "No?"
+	line "How disappointing!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext GoldenrodUndergroundYoungerHaircutBrotherShortOnFundsText
+	jumpthisopenedtext
+
+	text "You're a little"
+	line "short on funds."
+	done
 
 .AlreadyGotHaircut:
-	jumpopenedtext GoldenrodUndergroundYoungerHaircutBrotherOneHaircutADayText
+	jumpthisopenedtext
+
+	text "I can do only one"
+	line "haircut a day."
+
+	para "Sorry, but I'm all"
+	line "done for today."
+	done
 
 EitherHaircutBrotherScript_SlightlyHappier:
 	writetext HaircutBrosText_SlightlyHappier
@@ -742,21 +770,8 @@ GoldenrodUndergroundOlderHaircutBrotherAllDoneText:
 	text "There! All done!"
 	done
 
-GoldenrodUndergroundOlderHaircutBrotherThatsAShameText:
-	text "Is that right?"
-	line "That's a shame!"
-	done
 
-GoldenrodUndergroundOlderHaircutBrotherYoullNeedMoreMoneyText:
-	text "You'll need more"
-	line "money than that."
-	done
 
-GoldenrodUndergroundOlderHaircutBrotherOneHaircutADayText:
-	text "I do only one"
-	line "haircut a day. I'm"
-	cont "done for today."
-	done
 
 GoldenrodUndergroundYoungerHaircutBrotherOfferHaircutText:
 	text "Welcome to the"
@@ -789,23 +804,8 @@ GoldenrodUndergroundYoungerHaircutBrotherAllDoneText:
 	line "All done!"
 	done
 
-GoldenrodUndergroundYoungerHaircutBrotherHowDisappointingText:
-	text "No?"
-	line "How disappointing!"
-	done
 
-GoldenrodUndergroundYoungerHaircutBrotherShortOnFundsText:
-	text "You're a little"
-	line "short on funds."
-	done
 
-GoldenrodUndergroundYoungerHaircutBrotherOneHaircutADayText:
-	text "I can do only one"
-	line "haircut a day."
-
-	para "Sorry, but I'm all"
-	line "done for today."
-	done
 
 HaircutBrosText_SlightlyHappier:
 	text_ram wStringBuffer3

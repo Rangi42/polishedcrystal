@@ -48,7 +48,15 @@ GoldenrodGymWhitneyScript:
 	opentext
 	checkevent EVENT_MADE_WHITNEY_CRY
 	iffalsefwd .StoppedCrying
-	jumpopenedtext WhitneyYouMeanieText
+	jumpthisopenedtext
+
+	text "Waaaaah!"
+
+	para "Waaaaah!"
+
+	para "…Snivel, hic…"
+	line "…You meanie!"
+	done
 
 .StoppedCrying:
 	checkevent EVENT_GOT_TM45_ATTRACT
@@ -209,14 +217,6 @@ WhitneyShouldntBeSoSeriousText:
 	cont "you child, you!"
 	done
 
-WhitneyYouMeanieText:
-	text "Waaaaah!"
-
-	para "Waaaaah!"
-
-	para "…Snivel, hic…"
-	line "…You meanie!"
-	done
 
 WhitneyWhatDoYouWantText:
 	text "…Sniff…"

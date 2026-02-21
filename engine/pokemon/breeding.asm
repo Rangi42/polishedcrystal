@@ -370,10 +370,16 @@ HatchEggs:
 	ld hl, .Text_HatchEgg
 	call PrintText
 
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jr nz, .nonickname
+	bit NICKNAMES_ALWAYS, a
+	jr nz, .skip_nickname_ask
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox
 	jr c, .nonickname
+.skip_nickname_ask
 
 	; de = the relevant entry in wPartyMonNicknames.
 	pop de

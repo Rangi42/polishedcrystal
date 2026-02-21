@@ -4,8 +4,7 @@ RuinsOfAlphSinjohChamber_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  5,  9, RUINS_OF_ALPH_OUTSIDE, 12
-	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 12
+	warp_event  5,  9, RUINS_OF_ALPH_OUTSIDE, 13
 
 	def_coord_events
 
@@ -85,6 +84,7 @@ RuinsofAlphSinjohChamberSignpost:
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
 .HeardIntro
+	digmod 1, SINJOH_RUINS
 	warp MYSTRI_STAGE, 6, 15
 	end
 

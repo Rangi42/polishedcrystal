@@ -50,7 +50,18 @@ MahoganyMart1FPharmacistScript:
 MahoganyMart1FBlackBeltScript:
 	checkevent EVENT_DECIDED_TO_HELP_LANCE
 	iftrue_jumptextfaceplayer MahoganyMart1FBlackBeltText_LanceEntered
-	jumptextfaceplayer MahoganyMart1FBlackBeltText
+	jumpthistextfaceplayer
+
+	text "Heheh! The experi-"
+	line "ment worked like a"
+	cont "charm."
+
+	para "Magikarp are just"
+	line "worthless, but"
+
+	para "Gyarados are big"
+	line "moneymakers."
+	done
 
 MahoganyMart1FLanceUncoversStaircaseScript:
 	turnobject MAHOGANYMART1F_BLACK_BELT, RIGHT
@@ -183,17 +194,6 @@ MahoganyMart1FPharmacistText_LanceEntered:
 	cont "way…"
 	done
 
-MahoganyMart1FBlackBeltText:
-	text "Heheh! The experi-"
-	line "ment worked like a"
-	cont "charm."
-
-	para "Magikarp are just"
-	line "worthless, but"
-
-	para "Gyarados are big"
-	line "moneymakers."
-	done
 
 MahoganyMart1FBlackBeltText_LanceEntered:
 	text "Urrgh…"

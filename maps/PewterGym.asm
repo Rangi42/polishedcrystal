@@ -74,7 +74,23 @@ GenericTrainerHikerEdwin:
 PewterGymGuyScript:
 	checkevent EVENT_BEAT_BROCK
 	iftrue_jumptextfaceplayer PewterGymGuyWinText
-	jumptextfaceplayer PewterGymGuyText
+	jumpthistextfaceplayer
+
+	text "Yo! Champ in"
+	line "making! You're"
+
+	para "really rocking."
+	line "Are you battling"
+
+	para "the Gym Leaders of"
+	line "Kanto?"
+
+	para "They're strong and"
+	line "dedicated people,"
+
+	para "just like Johto's"
+	line "Gym Leaders."
+	done
 
 PewterGymStatue:
 	gettrainername BROCK, 1, STRING_BUFFER_4
@@ -176,22 +192,6 @@ HikerEdwinBeatenText: ; text > text
 	text "BOOM!"
 	done
 
-PewterGymGuyText:
-	text "Yo! Champ in"
-	line "making! You're"
-
-	para "really rocking."
-	line "Are you battling"
-
-	para "the Gym Leaders of"
-	line "Kanto?"
-
-	para "They're strong and"
-	line "dedicated people,"
-
-	para "just like Johto's"
-	line "Gym Leaders."
-	done
 
 PewterGymGuyWinText:
 	text "Yo! Champ in"

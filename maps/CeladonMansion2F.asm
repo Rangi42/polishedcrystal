@@ -19,7 +19,11 @@ CeladonMansion2F_MapScriptHeader:
 	def_object_events
 
 CeladonMansion2FSign:
-	jumptext CeladonMansion2FSignText
+	jumpthistext
+
+	text "Game Freak"
+	line "Meeting Room"
+	done
 
 CeladonMansion2FComputerText:
 	text "<PLAYER> turned on"
@@ -51,7 +55,3 @@ CeladonMansion2FComputerText:
 	para "…"
 	done
 
-CeladonMansion2FSignText:
-	text "Game Freak"
-	line "Meeting Room"
-	done

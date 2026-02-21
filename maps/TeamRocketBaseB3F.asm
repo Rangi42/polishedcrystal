@@ -63,7 +63,7 @@ TeamRocketBaseB3FCheckGiovanniDoor:
 	endcallback
 
 .OpenSesame:
-	changeblock 10, 8, $7
+	changeblock 10, 8, $0d
 	endcallback
 
 LanceGetPasswordScript:
@@ -186,13 +186,19 @@ BossDoor:
 	sjumpfwd .OpenSesame
 
 .NeedsPassword:
-	jumpopenedtext TeamRocketBaseB3FLockedDoorNeedsPasswordText
+	jumpthisopenedtext
+
+	text "The door's closed…"
+
+	para "It needs two"
+	line "passwords to open."
+	done
 
 .OpenSesame:
 	writetext TeamRocketBaseB3FLockedDoorOpenSesameText
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock 10, 8, $7
+	changeblock 10, 8, $0d
 	refreshmap
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
@@ -495,12 +501,6 @@ RocketScientistMitchBeatenText:
 	cont "battling."
 	done
 
-TeamRocketBaseB3FLockedDoorNeedsPasswordText:
-	text "The door's closed…"
-
-	para "It needs two"
-	line "passwords to open."
-	done
 
 TeamRocketBaseB3FLockedDoorOpenSesameText:
 	text "The door's closed…"

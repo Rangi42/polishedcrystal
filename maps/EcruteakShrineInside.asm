@@ -83,13 +83,26 @@ EcruteakShrineInsideReiScript:
 	; fallthrough
 
 .ReiDone
-	jumpopenedtext EcruteakShrineInsideReiComeAgainText
+	jumpthisopenedtext
+
+	text "Rei: Please come"
+	line "again tomorrow."
+	done
 
 .ReiCancel
-	jumpopenedtext EcruteakShrineInsideReiCancelText
+	jumpthisopenedtext
+
+	text "Rei: Please come"
+	line "back if you change"
+	cont "your mind."
+	done
 
 .EggBlessing
-	jumpopenedtext EcruteakShrineInsideReiBlessEggText
+	jumpthisopenedtext
+
+	text "Rei: I can't"
+	line "bless an Egg."
+	done
 
 .ReiMenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -135,10 +148,6 @@ EcruteakShrineInsideHappinessText:
 	line "content."
 	done
 
-EcruteakShrineInsideReiBlessEggText:
-	text "Rei: I can't"
-	line "bless an Egg."
-	done
 
 EcruteakShrineInsideReiBattleText:
 	text "Rei: Very well."
@@ -150,16 +159,7 @@ EcruteakShrineInsideReiBeatenText:
 	text "I admit defeat!"
 	done
 
-EcruteakShrineInsideReiComeAgainText:
-	text "Rei: Please come"
-	line "again tomorrow."
-	done
 
-EcruteakShrineInsideReiCancelText:
-	text "Rei: Please come"
-	line "back if you change"
-	cont "your mind."
-	done
 
 EcruteakShrineInsideGrampsText:
 	text "The shrine maiden"

@@ -153,7 +153,7 @@ ENDM
 	map_const ECRUTEAK_LUGIA_SPEECH_HOUSE,                 4,  4 ;  4
 	map_const DANCE_THEATRE,                               6,  8 ;  5
 	map_const ECRUTEAK_MART,                               6,  4 ;  6
-	map_const ECRUTEAK_GYM,                                5,  9 ;  7
+	map_const ECRUTEAK_GYM,                                5, 11 ;  7
 	map_const ECRUTEAK_ITEMFINDER_HOUSE,                   4,  4 ;  8
 	map_const ECRUTEAK_CITY,                              20, 18 ;  9
 	map_const ROUTE_35,                                   12, 18 ; 10
@@ -256,7 +256,7 @@ ENDM
 	map_const ROUTE_32_RUINS_OF_ALPH_GATE,                 5,  4 ; 10
 	map_const ROUTE_32_POKECENTER_1F,                      6,  4 ; 11
 	map_const ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
-	map_const MAGNET_TUNNEL_EAST,                         10, 11 ; 13
+	map_const MAGNET_TUNNEL_EAST,                         10, 10 ; 13
 	map_const VIOLET_OUTSKIRTS,                           20, 10 ; 14
 	map_const VIOLET_OUTSKIRTS_HOUSE,                      4,  4 ; 15
 
@@ -294,7 +294,7 @@ ENDM
 	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 31
 	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32
 	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 33
-	map_const MAGNET_TUNNEL_WEST,                          9, 18 ; 34
+	map_const MAGNET_TUNNEL_WEST,                          9, 17 ; 34
 	map_const MAGNET_TUNNEL_INSIDE,                       23, 18 ; 35
 
 	newgroup                                                     ; 12
@@ -615,7 +615,7 @@ ENDM
 	map_const GOLDENROD_HARBOR_GATE,                       5,  4 ;  2
 
 	newgroup                                                     ; 30
-	map_const RUINS_OF_ALPH_OUTSIDE,                      11, 21 ;  1
+	map_const RUINS_OF_ALPH_OUTSIDE,                      12, 19 ;  1
 	map_const RUINS_OF_ALPH_HO_OH_CHAMBER,                 4,  5 ;  2
 	map_const RUINS_OF_ALPH_KABUTO_CHAMBER,                4,  5 ;  3
 	map_const RUINS_OF_ALPH_OMANYTE_CHAMBER,               4,  5 ;  4

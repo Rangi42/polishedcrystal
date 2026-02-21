@@ -86,7 +86,14 @@ VermilionGymSurgeScript:
 	promptbutton
 	verbosegivetmhm TM_WILD_CHARGE
 	setevent EVENT_GOT_TM57_WILD_CHARGE
-	jumpopenedtext SurgeOutroText
+	jumpthisopenedtext
+
+	text "That TM contains"
+	line "Wild Charge. Use"
+
+	para "it to go like"
+	line "lightning!"
+	done
 
 GenericTrainerGentlemanGregory:
 	generictrainer GENTLEMAN, GREGORY, EVENT_BEAT_GENTLEMAN_GREGORY, GentlemanGregorySeenText, GentlemanGregoryBeatenText
@@ -132,7 +139,25 @@ GenericTrainerGuitaristfJanet:
 VermilionGymGuyScript:
 	checkevent EVENT_BEAT_LTSURGE
 	iftrue_jumptextfaceplayer VermilionGymGuyWinText
-	jumptextfaceplayer VermilionGymGuyText
+	jumpthistextfaceplayer
+
+	text "Yo! Champ in"
+	line "making!"
+
+	para "Lt.Surge is very"
+	line "cautious. He has"
+
+	para "traps set all over"
+	line "the Gym."
+
+	para "But you're good at"
+	line "Gym puzzles by"
+	cont "now, aren't you?"
+
+	para "You'll have no"
+	line "problem getting to"
+	cont "Lt.Surge."
+	done
 
 VermilionGymTrashCanScript:
 	checkevent EVENT_VERMILION_GYM_SWITCH_2
@@ -232,13 +257,6 @@ LtSurgeThunderBadgeText:
 	line "TM for you!"
 	done
 
-SurgeOutroText:
-	text "That TM contains"
-	line "Wild Charge. Use"
-
-	para "it to go like"
-	line "lightning!"
-	done
 
 LtSurgeFightDoneText:
 	text "Surge: Hey, kid!"
@@ -299,24 +317,6 @@ GuitaristfJanetBeatenText:
 	text "Fried!"
 	done
 
-VermilionGymGuyText:
-	text "Yo! Champ in"
-	line "making!"
-
-	para "Lt.Surge is very"
-	line "cautious. He has"
-
-	para "traps set all over"
-	line "the Gym."
-
-	para "But you're good at"
-	line "Gym puzzles by"
-	cont "now, aren't you?"
-
-	para "You'll have no"
-	line "problem getting to"
-	cont "Lt.Surge."
-	done
 
 VermilionGymGuyWinText:
 	text "Whew! That was an"

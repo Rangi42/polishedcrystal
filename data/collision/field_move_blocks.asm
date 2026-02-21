@@ -3,6 +3,7 @@ CutGrassBlockPointers:
 	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
 	dbw TILESET_JOHTO_MODERN, .johto_modern
 	dbw TILESET_JOHTO_OUTLANDS, .johto_outlands
+	dbw TILESET_JOHTO_ANCIENT, .johto_ancient
 	dbw TILESET_KANTO, .kanto
 	dbw TILESET_INDIGO_PLATEAU, .indigo_plateau
 	dbw TILESET_PARK, .park
@@ -20,6 +21,7 @@ CutGrassBlockPointers:
 .johto_traditional
 .johto_modern
 .johto_outlands
+.johto_ancient
 .valencia_island
 	db $03, $02
 	db -1

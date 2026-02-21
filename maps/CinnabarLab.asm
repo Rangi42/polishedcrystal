@@ -31,6 +31,7 @@ CinnabarLab_MapScriptHeader:
 	object_event 15,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
 	object_event 15,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
 	object_event 15,  8, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CRYS
+	object_event 15,  8, SPRITE_BETA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_BETA
 
 	object_const_def
 	const CINNABARLAB_GIOVANNI
@@ -43,6 +44,7 @@ CinnabarLab_MapScriptHeader:
 	const CINNABARLAB_CHRIS
 	const CINNABARLAB_KRIS
 	const CINNABARLAB_CRYS
+	const CINNABARLAB_BETA
 
 CinnabarLabMeetScientistScene:
 	sdefer CinnabarLabStepDownScript
@@ -67,6 +69,7 @@ CinnabarLabCelebiEventScript:
 	setevent EVENT_CINNABAR_LAB_CHRIS
 	setevent EVENT_CINNABAR_LAB_KRIS
 	setevent EVENT_CINNABAR_LAB_CRYS
+	setevent EVENT_CINNABAR_LAB_BETA
 	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
 	setevent EVENT_CINNABAR_LAB_SCIENTIST2
 	setscene SCENE_CINNABARLAB_MEET_SCIENTIST
@@ -213,10 +216,14 @@ CinnabarLabHidePlayer:
 	scalltable .Appear
 	applyonemovement PLAYER, hide_object
 	end
+
 .Appear:
+	table_width 2
 	dw .Male
 	dw .Female
 	dw .Enby
+	dw .Beta
+	assert_table_length NUM_PLAYER_GENDERS
 .Male:
 	appear CINNABARLAB_CHRIS
 	end
@@ -226,12 +233,16 @@ CinnabarLabHidePlayer:
 .Enby:
 	appear CINNABARLAB_CRYS
 	end
+.Beta:
+	appear CINNABARLAB_BETA
+	end
 
 CinnabarLabShowPlayer:
 	applyonemovement PLAYER, show_object
 	disappear CINNABARLAB_CHRIS
 	disappear CINNABARLAB_KRIS
 	disappear CINNABARLAB_CRYS
+	disappear CINNABARLAB_BETA
 	end
 
 CinnabarLabGiovanniStepAsideMovementData:
