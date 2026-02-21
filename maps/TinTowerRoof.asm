@@ -40,6 +40,7 @@ TinTowerHoOh:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_HO_OH
+	specialphonecall SPECIALCALL_EUSINE_HOOH
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	loadwildmon HO_OH, 75
 	startbattle

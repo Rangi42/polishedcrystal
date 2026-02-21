@@ -8,6 +8,7 @@ NonTrainerCallerNames:
 	dw .elm
 	dw .lyra
 	dw .buena
+	dw .eusine
 	assert_table_length NUM_NONTRAINER_PHONECONTACTS + 1
 
 .mom:
@@ -31,4 +32,8 @@ NonTrainerCallerNames:
 .buena:
 	text  "Buena:"
 	next1 "   Disc Jockey"
+	done
+.eusine:
+	text  "Eusine:"
+	next1 "   #Maniac"
 	done

@@ -322,6 +322,7 @@ INCLUDE "data/phone/text/wilton_caller.asm"
 INCLUDE "data/phone/text/kenji_caller.asm"
 INCLUDE "data/phone/text/parry_caller.asm"
 INCLUDE "data/phone/text/erin_caller.asm"
+INCLUDE "data/phone/text/eusine.asm"
 INCLUDE "data/phone/text/lyra.asm"
 
 
@@ -459,6 +460,7 @@ INCLUDE "engine/phone/scripts/wilton.asm"
 INCLUDE "engine/phone/scripts/kenji.asm"
 INCLUDE "engine/phone/scripts/parry.asm"
 INCLUDE "engine/phone/scripts/erin.asm"
+INCLUDE "engine/phone/scripts/eusine.asm"
 INCLUDE "engine/phone/scripts/generic_callee.asm"
 
 

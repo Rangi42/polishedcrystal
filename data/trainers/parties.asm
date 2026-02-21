@@ -7601,7 +7601,7 @@ MysticalmanGroup:
 	end_trainer
 
 	def_trainer EUSINE_2, "Eusine"
-	tr_mon LEVEL_FROM_BADGES + 7, HYPNO @ EVIOLITE, MALE
+	tr_mon LEVEL_FROM_BADGES + 7, HYPNO @ LEFTOVERS, MALE
 		tr_extra INSOMNIA
 		tr_evs 80 HP, 80 SDf
 		tr_moves DREAM_EATER, HYPNOSIS, NASTY_PLOT, PSYCHIC_M

@@ -20,4 +20,5 @@ SpecialPhoneCallList:
 	specialcall SpecialCallOnlyWhenOutside, PHONE_LYRA, LyraPhoneScript2          ; SPECIALCALL_FIRSTBADGE
 	specialcall SpecialCallOnlyWhenOutside, PHONE_BILL, BillPhoneScript2          ; SPECIALCALL_SECONDBADGE
 	specialcall SpecialCallOnlyWhenOutside, PHONE_LYRA, LyraPhoneScript2          ; SPECIALCALL_LYRASEGG
+	specialcall SpecialCallEusineHoOh,     PHONE_EUSINE, EusinePhoneScript2       ; SPECIALCALL_EUSINE_HOOH
 	assert_table_length NUM_SPECIALCALLS

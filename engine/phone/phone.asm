@@ -227,6 +227,19 @@ SpecialCallWhereverYouAre:
 	scf
 	ret
 
+SpecialCallEusineHoOh:
+; Only fire if EVENT_EUSINE_SAW_HO_OH is not set and player is outside
+	eventflagcheck EVENT_EUSINE_SAW_HO_OH
+	jr nz, .NoCall
+	ld a, [wEnvironment]
+	cp TOWN
+	jr z, SpecialCallWhereverYouAre
+	cp ROUTE
+	jr z, SpecialCallWhereverYouAre
+.NoCall:
+	xor a
+	ret
+
 MakePhoneCallFromPokegear:
 	; Don't do the call if you're in a link communication
 	ld a, [wLinkMode]
@@ -485,6 +498,8 @@ CheckCanDeletePhoneNumber:
 	cp PHONECONTACT_ELM
 	ret z
 	cp PHONECONTACT_LYRA
+	ret z
+	cp PHONECONTACT_EUSINE
 	ret z
 	ld c, $1
 	ret

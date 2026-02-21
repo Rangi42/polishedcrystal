@@ -55,8 +55,6 @@ TinTower1FNPCsCallback:
 	iftruefwd .Done
 	checkevent EVENT_FOUGHT_HO_OH
 	iffalsefwd .Done
-	checkevent EVENT_EUSINES_HOUSE_EUSINE
-	iffalsefwd .Done
 	appear TINTOWER1F_EUSINE
 .Done:
 	endcallback
@@ -178,6 +176,13 @@ TinTower1FSuicuneBattleScript:
 	playsound SFX_EXIT_BUILDING
 	disappear TINTOWER1F_EUSINE
 	waitsfx
+	addcellnum PHONE_EUSINE
+	opentext
+	writetext EusineRegisteredNumberText
+	playsound SFX_REGISTER_PHONE_NUMBER
+	waitsfx
+	waitbutton
+	closetext
 	special Special_FadeOutMusic
 	pause 20
 	playmapmusic
@@ -233,6 +238,7 @@ TinTower1FEusineAfterHoOhScript:
 	closetext
 	setevent EVENT_EUSINE_SAW_HO_OH
 	clearevent EVENT_EUSINES_HOUSE_EUSINE
+	loadvar VAR_SPECIALPHONECALL, SPECIALCALL_NONE
 	readvar VAR_FACING
 	ifnotequal RIGHT, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
@@ -367,6 +373,12 @@ TinTowerEusineSuicuneText:
 	cont "battle."
 
 	para "Later, <PLAYER>!"
+	done
+
+EusineRegisteredNumberText:
+	text "Eusine registered"
+	line "<PLAYER>'s #gear"
+	cont "number."
 	done
 
 TinTower1FSage1Text:
