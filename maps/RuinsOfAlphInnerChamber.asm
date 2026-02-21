@@ -64,6 +64,7 @@ RuinsOfAlphInnerChamberStrangePresenceScript:
 	setscene SCENE_RUINSOFALPHINNERCHAMBER_NOOP
 	setevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
+	digmod 5, RUINS_OF_ALPH_OUTSIDE
 	end
 
 RuinsOfAlphStrangePresenceText:

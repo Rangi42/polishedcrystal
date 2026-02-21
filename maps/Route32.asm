@@ -426,10 +426,19 @@ _OfferToSellSlowpokeTail:
 	writetext Text_MillionDollarSlowpokeTail
 	yesorno
 	iffalsefwd .refused
-	jumpopenedtext Text_ThoughtKidsWereLoaded
+	jumpthisopenedtext
+
+	text "Tch! I thought"
+	line "kids these days"
+	cont "were loaded…"
+	done
 
 .refused
-	jumpopenedtext Text_RefusedToBuySlowpokeTail
+	jumpthisopenedtext
+
+	text "You don't want it?"
+	line "Then scram. Shoo!"
+	done
 
 Route32RoarTMGuyScript:
 	faceplayer
@@ -552,7 +561,17 @@ TrainerFisherRalph1:
 	end
 
 .Swarm:
-	jumpopenedtext FisherRalphSwarmText
+	jumpthisopenedtext
+
+	text "One, two, three…"
+	line "Muahahaha, what a"
+
+	para "great haul!"
+	line "I'm done! Go ahead"
+
+	para "and catch as many"
+	line "as you can, kid!"
+	done
 
 .NumberAccepted:
 	jumpstd numberacceptedm
@@ -715,10 +734,30 @@ FriedaScript:
 	verbosegiveitem POISON_BARB
 	iffalse_endtext
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
-	jumpopenedtext FriedaGaveGiftText
+	jumpthisopenedtext
+
+	text "Frieda: Give it to"
+	line "a #mon that has"
+	cont "Poison-type moves."
+
+	para "Oh!"
+
+	para "It's wicked!"
+
+	para "You'll be shocked"
+	line "how good it makes"
+	cont "Poison moves!"
+	done
 
 .NotFriday:
-	jumptextfaceplayer FriedaNotFridayText
+	jumpthistextfaceplayer
+
+	text "Frieda: Isn't it"
+	line "Friday today?"
+
+	para "It's so boring"
+	line "when it's not!"
+	done
 
 Movement_Route32CooltrainerMPushesYouBackToViolet:
 	step_up
@@ -775,16 +814,7 @@ Text_MillionDollarSlowpokeTail:
 	para "You'll want this!"
 	done
 
-Text_ThoughtKidsWereLoaded:
-	text "Tch! I thought"
-	line "kids these days"
-	cont "were loaded…"
-	done
 
-Text_RefusedToBuySlowpokeTail:
-	text "You don't want it?"
-	line "Then scram. Shoo!"
-	done
 
 FisherJustinSeenText:
 	text "Whoa!"
@@ -819,16 +849,6 @@ FisherRalphAfterText:
 	line "long friends!"
 	done
 
-FisherRalphSwarmText:
-	text "One, two, three…"
-	line "Muahahaha, what a"
-
-	para "great haul!"
-	line "I'm done! Go ahead"
-
-	para "and catch as many"
-	line "as you can, kid!"
-	done
 
 FisherHenrySeenText:
 	text "My #mon?"
@@ -942,19 +962,6 @@ FriedaGivesGiftText:
 	line "Barb for you!"
 	done
 
-FriedaGaveGiftText:
-	text "Frieda: Give it to"
-	line "a #mon that has"
-	cont "Poison-type moves."
-
-	para "Oh!"
-
-	para "It's wicked!"
-
-	para "You'll be shocked"
-	line "how good it makes"
-	cont "Poison moves!"
-	done
 
 FriedaFridayText:
 	text "Frieda: Hiya! What"
@@ -967,13 +974,6 @@ FriedaFridayText:
 	line "it's great too?"
 	done
 
-FriedaNotFridayText:
-	text "Frieda: Isn't it"
-	line "Friday today?"
-
-	para "It's so boring"
-	line "when it's not!"
-	done
 
 Route32SignText:
 	text "Route 32"

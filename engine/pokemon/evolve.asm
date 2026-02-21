@@ -151,13 +151,11 @@ CheckHowToEvolve:
 	jr .stat_cmp_done
 
 .trade
-	; In modern vanilla, Kadabra evolves anyway. While this is cute, it can
-	; cause problems if a player want to keep the Kadabra upon trade. So don't
-	; let Kadabra bypass Everstone (Maybe in Faithful?)
 	call IsMonHoldingEverstone
 	jmp z, .dont_evolve_2
 
-	; Linking Cord isn't held, it's used as an evo stone.
+	; Linking Cord isn't held, it's used like an evolution stone.
+	; It's stored in the "trade held item" data slot to avoid having two `evo_data` entries.
 	ld a, [hli]
 	ld b, a
 	cp LINKING_CORD

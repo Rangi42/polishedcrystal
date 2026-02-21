@@ -79,7 +79,12 @@ RageCandyBarMerchantScript:
 MahoganyTownGrampsScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue_jumptextfaceplayer MahoganyTownGrampsText_ClearedRocketHideout
-	jumptextfaceplayer MahoganyTownGrampsText
+	jumpthistextfaceplayer
+
+	text "Are you off to see"
+	line "the Gyarados ram-"
+	cont "page at the lake?"
+	done
 
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS
@@ -145,11 +150,6 @@ endc
 	cont "kiddo."
 	done
 
-MahoganyTownGrampsText:
-	text "Are you off to see"
-	line "the Gyarados ram-"
-	cont "page at the lake?"
-	done
 
 MahoganyTownGrampsText_ClearedRocketHideout:
 	text "Magikarp have"

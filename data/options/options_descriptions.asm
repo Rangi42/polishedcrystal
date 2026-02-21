@@ -8,6 +8,7 @@ OptionsDescriptions:
 	dw .Sound
 	dw .BattleEffects
 	dw .BattleStyle
+	dw .Nicknames
 	dw .RunningShoes
 	dw .TurningSpeed
 	dw .ClockFormat
@@ -66,6 +67,12 @@ OptionsDescriptions:
 
 	para "Predict: tells"
 	line "you the next foe."
+	prompt
+
+.Nicknames:
+	text "Whether to give"
+	line "nicknames to new"
+	cont "#mon."
 	prompt
 
 .RunningShoes:

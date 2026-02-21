@@ -2026,21 +2026,25 @@ TownMapPlayerIcon:
 InitializePokegearPlayerIcon:
 	depixel 0, 0
 	ld a, [wPlayerGender]
-	ld b, SPRITE_ANIM_INDEX_RED_WALK
-	and a ; PLAYER_MALE
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-	dec a ; PLAYER_FEMALE
-	jr z, .got_gender
-	; PLAYER_ENBY
-	ld b, SPRITE_ANIM_INDEX_GREEN_WALK
-.got_gender
-	ld a, b
+	add LOW(.PlayerSpriteAnims)
+	ld l, a
+	adc HIGH(.PlayerSpriteAnims)
+	sub l
+	ld h, a
+	ld a, [hl]
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10
 	ret
+
+.PlayerSpriteAnims:
+	table_width 1
+	db SPRITE_ANIM_INDEX_RED_WALK    ; PLAYER_MALE
+	db SPRITE_ANIM_INDEX_BLUE_WALK   ; PLAYER_FEMALE
+	db SPRITE_ANIM_INDEX_GREEN_WALK  ; PLAYER_ENBY
+	db SPRITE_ANIM_INDEX_PURPLE_WALK ; PLAYER_BETA
+	assert_table_length NUM_PLAYER_GENDERS
 
 LoadTownMapGFX:
 	ld de, vTiles2

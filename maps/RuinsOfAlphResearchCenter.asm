@@ -7,8 +7,8 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, RuinsOfAlphResearchCenterScientistCallback
 
 	def_warp_events
-	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
-	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 6
+	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 7
+	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 7
 
 	def_coord_events
 
@@ -79,7 +79,18 @@ RuinsOfAlphResearchCenterScientist3Script:
 	jumpopenedtext RuinsOfAlphResearchCenterScientist3Text
 
 .Conclusion:
-	jumpopenedtext RuinsofAlphResearchCenterScientistConclusionText
+	jumpthisopenedtext
+
+	text "We're going to"
+	line "gradually study"
+
+	para "the chamber that"
+	line "opened up."
+
+	para "We have to take"
+	line "care not to"
+	cont "disturb the site."
+	done
 
 .PrinterAvailable:
 	writetext RuinsOfAlphResearchCenterScientist3_PrinterAvailable
@@ -151,13 +162,37 @@ RuinsOfAlphResearchCenterScientist1Script:
 	iftruefwd .GotUnownDex
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftruefwd .UnownAppeared
-	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text
+	jumpthisopenedtext
+
+	text "The ruins are"
+	line "about 1,500 years"
+	cont "old."
+
+	para "But it's not known"
+	line "why they were"
+	cont "built--or by whom."
+	done
 
 .UnownAppeared:
-	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text_UnownAppeared
+	jumpthisopenedtext
+
+	text "#mon appeared"
+	line "in the ruins?"
+
+	para "That's incredible"
+	line "news!"
+
+	para "We'll need to"
+	line "investigate this."
+	done
 
 .GotUnownDex:
-	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text_GotUnownDex
+	jumpthisopenedtext
+
+	text "I wonder how many"
+	line "kinds of #mon"
+	cont "are in the ruins?"
+	done
 
 .GotAllUnown:
 	writetext RuinsOfAlphResearchCenterScientist1Text_GotAllUnown
@@ -173,17 +208,56 @@ RuinsOfAlphResearchCenterScientist2Script:
 	ifgreater 3, .GotAllUnown
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftruefwd .UnownAppeared
-	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text
+	jumpthisopenedtext
+
+	text "There are odd pat-"
+	line "terns drawn on the"
+
+	para "walls of the"
+	line "ruins."
+
+	para "They must be the"
+	line "keys for unravel-"
+	cont "ing the mystery"
+	cont "of the ruins."
+	done
 
 .UnownAppeared:
-	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_UnownAppeared
+	jumpthisopenedtext
+
+	text "The strange #-"
+	line "mon you saw in the"
+	cont "ruins?"
+
+	para "They appear to be"
+	line "very much like the"
+
+	para "drawings on the"
+	line "walls there."
+
+	para "Hmm…"
+
+	para "That must mean"
+	line "there are many"
+	cont "kinds of them…"
+	done
 
 .GotAllUnown:
 	readvar VAR_UNOWNCOUNT
 	ifequalfwd NUM_UNOWN, .ResearchComplete
 	readvar VAR_UNOWNCOUNT
 	ifgreater 10, .ResearchOngoing
-	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_GotAllUnown
+	jumpthisopenedtext
+
+	text "Why did those"
+	line "ancient patterns"
+
+	para "appear on the wall"
+	line "now?"
+
+	para "The mystery"
+	line "deepens…"
+	done
 
 .ResearchComplete:
 	writetext RuinsOfAlphResearchCenterScientist2Text_RadioWaves
@@ -193,7 +267,17 @@ RuinsOfAlphResearchCenterScientist2Script:
 	end
 
 .ResearchOngoing:
-	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_FocusedOurStudies
+	jumpthisopenedtext
+
+	text "We think something"
+	line "caused the cryptic"
+
+	para "patterns to appear"
+	line "in the ruins."
+
+	para "We've focused our"
+	line "studies on that."
+	done
 
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
@@ -201,7 +285,13 @@ MapRuinsofAlphResearchCenterSignpost1Script:
 	iffalsefwd .SkipChecking
 	checkevent EVENT_DECO_UNOWN_DOLL
 	iftruefwd .SkipChecking
-	jumpopenedtext RuinsOfAlphResearchCenterComputerText
+	jumpthisopenedtext
+
+	text "Ruins of Alph"
+
+	para "Exploration"
+	line "Year 10"
+	done
 
 .SkipChecking:
 	readvar VAR_UNOWNCOUNT
@@ -290,44 +380,9 @@ RuinsofAlphResearchCenterScientistShockedText:
 	text "What was THAT?!"
 	done
 
-RuinsofAlphResearchCenterScientistConclusionText:
-	text "We're going to"
-	line "gradually study"
 
-	para "the chamber that"
-	line "opened up."
 
-	para "We have to take"
-	line "care not to"
-	cont "disturb the site."
-	done
 
-RuinsOfAlphResearchCenterScientist1Text:
-	text "The ruins are"
-	line "about 1,500 years"
-	cont "old."
-
-	para "But it's not known"
-	line "why they were"
-	cont "built--or by whom."
-	done
-
-RuinsOfAlphResearchCenterScientist1Text_GotUnownDex:
-	text "I wonder how many"
-	line "kinds of #mon"
-	cont "are in the ruins?"
-	done
-
-RuinsOfAlphResearchCenterScientist1Text_UnownAppeared:
-	text "#mon appeared"
-	line "in the ruins?"
-
-	para "That's incredible"
-	line "news!"
-
-	para "We'll need to"
-	line "investigate this."
-	done
 
 RuinsOfAlphResearchCenterScientist1Text_GotAllUnown:
 	text "Our investigation,"
@@ -343,47 +398,8 @@ RuinsOfAlphResearchCenterScientist1Text_GotAllUnown:
 	line "#mon."
 	done
 
-RuinsOfAlphResearchCenterScientist2Text:
-	text "There are odd pat-"
-	line "terns drawn on the"
 
-	para "walls of the"
-	line "ruins."
 
-	para "They must be the"
-	line "keys for unravel-"
-	cont "ing the mystery"
-	cont "of the ruins."
-	done
-
-RuinsOfAlphResearchCenterScientist2Text_UnownAppeared:
-	text "The strange #-"
-	line "mon you saw in the"
-	cont "ruins?"
-
-	para "They appear to be"
-	line "very much like the"
-
-	para "drawings on the"
-	line "walls there."
-
-	para "Hmm…"
-
-	para "That must mean"
-	line "there are many"
-	cont "kinds of them…"
-	done
-
-RuinsOfAlphResearchCenterScientist2Text_FocusedOurStudies:
-	text "We think something"
-	line "caused the cryptic"
-
-	para "patterns to appear"
-	line "in the ruins."
-
-	para "We've focused our"
-	line "studies on that."
-	done
 
 RuinsOfAlphResearchCenterScientist2Text_RadioWaves:
 	text "According to my"
@@ -402,23 +418,7 @@ RuinsOfAlphResearchCenterScientist2Text_RadioWaves:
 	line "link…"
 	done
 
-RuinsOfAlphResearchCenterScientist2Text_GotAllUnown:
-	text "Why did those"
-	line "ancient patterns"
 
-	para "appear on the wall"
-	line "now?"
-
-	para "The mystery"
-	line "deepens…"
-	done
-
-RuinsOfAlphResearchCenterComputerText:
-	text "Ruins of Alph"
-
-	para "Exploration"
-	line "Year 10"
-	done
 
 RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 	text "Mystery #mon"

@@ -216,10 +216,13 @@ PokeCenter2F_EnterRoom:
 	scalltable .LinkTrainerTable
 	end
 
-.LinkTrainerTable
+.LinkTrainerTable:
+	table_width 2
 	dw .Male
 	dw .Female
 	dw .Enby
+	dw .Beta
+	assert_table_length NUM_PLAYER_GENDERS
 .Male:
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_CHRIS
 	end
@@ -228,6 +231,9 @@ PokeCenter2F_EnterRoom:
 	end
 .Enby:
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_CRYS
+	end
+.Beta:
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_BETA
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:

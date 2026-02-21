@@ -42,7 +42,12 @@ AgathaScript:
 	verbosegivetmhm TM_SHADOW_CLAW
 	setevent EVENT_GOT_TM65_SHADOW_CLAW_FROM_AGATHA
 AgathaAfterScript:
-	jumpopenedtext AgathaAfterText
+	jumpthisopenedtext
+
+	text "I expect great"
+	line "things from you,"
+	cont "if you will them."
+	done
 
 MrFujiScript:
 	faceplayer
@@ -192,8 +197,3 @@ AgathaRewardText:
 	line "TM!"
 	done
 
-AgathaAfterText:
-	text "I expect great"
-	line "things from you,"
-	cont "if you will them."
-	done

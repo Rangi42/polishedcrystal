@@ -39,7 +39,11 @@ Route39RuggedRoadGateSwimmerScript:
 	verbosegiveitem RARE_CANDY
 	iffalse_jumpopenedtext .NoRoom
 	setevent EVENT_GOT_RARE_CANDY_FROM_RUGGED_ROAD_GATE
-	jumpopenedtext .ThanksAgain
+	jumpthisopenedtext
+
+	text "Keep the goggles."
+	line "Thanks again!"
+	done
 
 .LovelyDay:
 	text "Lovely day today,"
@@ -80,10 +84,6 @@ Route39RuggedRoadGateSwimmerScript:
 	line "looks rather full…"
 	done
 
-.ThanksAgain:
-	text "Keep the goggles."
-	line "Thanks again!"
-	done
 
 Route39RuggedRoadGateStepLeftThreeTrigger:
 	checkkeyitem GO_GOGGLES

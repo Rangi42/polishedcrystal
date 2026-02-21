@@ -61,10 +61,24 @@ Route1617Gate2FTutorTrickRoomScript:
 	done
 
 Route1617Gate2FBinoculars1:
-	jumptext Route1617Gate2FBinoculars1Text
+	jumpthistext
+
+	text "Looked into the"
+	line "binoculars."
+
+	para "It's Celadon Dept."
+	line "Store!"
+	done
 
 Route1617Gate2FBinoculars2:
-	jumptext Route1617Gate2FBinoculars2Text
+	jumpthistext
+
+	text "Looked into the"
+	line "binoculars."
+
+	para "There's a long"
+	line "path over water!"
+	done
 
 Route1617Gate2FPsychicText:
 	text "There's a Psychic"
@@ -98,20 +112,4 @@ Text_Route1617Gate2FTutorTrickRoom:
 Text_Route1617Gate2FTutorQuestion:
 	text "Is a Silver Leaf"
 	line "a fair price?"
-	done
-
-Route1617Gate2FBinoculars1Text:
-	text "Looked into the"
-	line "binoculars."
-
-	para "It's Celadon Dept."
-	line "Store!"
-	done
-
-Route1617Gate2FBinoculars2Text:
-	text "Looked into the"
-	line "binoculars."
-
-	para "There's a long"
-	line "path over water!"
 	done

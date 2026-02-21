@@ -76,12 +76,29 @@ GenericTrainerSwimmermRandall:
 Route40PokefanMScript:
 	checkevent EVENT_BATTLE_TOWER_OPEN
 	iftrue_jumptextfaceplayer Route40PokefanMText2
-	jumptextfaceplayer Route40PokefanMText
+	jumpthistextfaceplayer
+
+	text "Hm! There's a big"
+	line "building up ahead!"
+
+	para "What is it?"
+	done
 
 Route40BeachGuyScript:
 	checkevent EVENT_BATTLE_TOWER_OPEN
 	iftrue_jumptextfaceplayer Route40BeachGuyText2
-	jumptextfaceplayer Route40BeachGuyText
+	jumpthistextfaceplayer
+
+	text "The Battle Tower"
+	line "is almost ready!"
+
+	para "Trainers are head-"
+	line "ing to Olivine"
+
+	para "from all over the"
+	line "world to test"
+	cont "their strength."
+	done
 
 Route40FisherScript:
 	faceplayer
@@ -174,10 +191,26 @@ MonicaScript:
 	verbosegiveitem SHARP_BEAK
 	iffalsefwd MonicaDoneScript
 	setevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
-	jumpopenedtext MonicaGaveGiftText
+	jumpthisopenedtext
+
+	text "Monica: It's an"
+	line "item that raises"
+
+	para "the power of Fly-"
+	line "ing-type moves."
+
+	para "You should equip a"
+	line "bird #mon with"
+	cont "that item."
+	done
 
 MonicaNotMondayScript:
-	jumptextfaceplayer MonicaNotMondayText
+	jumpthistextfaceplayer
+
+	text "Monica: I don't"
+	line "think today is"
+	cont "Monday. How sad…"
+	done
 
 MonicaDoneScript:
 	end
@@ -239,12 +272,6 @@ Route40BeachGirlText:
 	line "before swimming."
 	done
 
-Route40PokefanMText:
-	text "Hm! There's a big"
-	line "building up ahead!"
-
-	para "What is it?"
-	done
 
 Route40PokefanMText2:
 	text "Hm! Look at all"
@@ -267,17 +294,6 @@ Route40PicnickerText:
 	cont "from a big city."
 	done
 
-Route40BeachGuyText:
-	text "The Battle Tower"
-	line "is almost ready!"
-
-	para "Trainers are head-"
-	line "ing to Olivine"
-
-	para "from all over the"
-	line "world to test"
-	cont "their strength."
-	done
 
 Route40BeachGuyText2:
 	text "Have you gone to"
@@ -309,17 +325,6 @@ MonicaGivesGiftText:
 	cont "a gift for you!"
 	done
 
-MonicaGaveGiftText:
-	text "Monica: It's an"
-	line "item that raises"
-
-	para "the power of Fly-"
-	line "ing-type moves."
-
-	para "You should equip a"
-	line "bird #mon with"
-	cont "that item."
-	done
 
 MonicaMondayText:
 	text "Monica: My broth-"
@@ -332,11 +337,6 @@ MonicaMondayText:
 	line "find them all!"
 	done
 
-MonicaNotMondayText:
-	text "Monica: I don't"
-	line "think today is"
-	cont "Monday. How sad…"
-	done
 
 Route40SignText:
 	text "Route 40"

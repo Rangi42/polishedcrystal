@@ -86,7 +86,7 @@ ENDM
 	map_attributes Route32, ROUTE_32, $5, NORTH | SOUTH | WEST | EAST
 	connection north, VioletCity, VIOLET_CITY, 0
 	connection south, Route33, ROUTE_33, 0
-	connection west, MagnetTunnelEast, MAGNET_TUNNEL_EAST, 9
+	connection west, MagnetTunnelEast, MAGNET_TUNNEL_EAST, 10
 	connection east, CherrygroveBay, CHERRYGROVE_BAY, 12
 
 	map_attributes Route33, ROUTE_33, $5, NORTH | WEST
@@ -376,16 +376,24 @@ ENDM
 	connection north, Route42, ROUTE_42, -5
 	connection south, VioletCity, VIOLET_CITY, 0
 
-	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, SOUTH
-	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2
+	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, NORTH | EAST
+	; The fake connection is because the north gatehouse door needs to exist in RuinsOfAlphOutside,
+	; not in the connected Route36 map.
+	; Note that Route36 and Route32 have no transitive connections to RuinsOfAlphOutside!
+	DEF GROUP_FAKE_ROUTE_36  EQU GROUP_ROUTE_36
+	DEF MAP_FAKE_ROUTE_36    EQU MAP_ROUTE_36
+	DEF FAKE_ROUTE_36_WIDTH  EQU ROUTE_36_WIDTH
+	DEF FAKE_ROUTE_36_HEIGHT EQU ROUTE_36_HEIGHT - 1
+	connection north, FakeRoute36, FAKE_ROUTE_36, -20
+	PURGE GROUP_FAKE_ROUTE_36, MAP_FAKE_ROUTE_36, FAKE_ROUTE_36_WIDTH, FAKE_ROUTE_36_HEIGHT
+	connection east, Route32, ROUTE_32, 10
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 	connection west, Route41, ROUTE_41, -3
 
-	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST
-	connection north, RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, 2
-	connection east, Route32, ROUTE_32, -9
+	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, EAST
+	connection east, Route32, ROUTE_32, -10
 
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0

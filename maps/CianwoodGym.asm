@@ -64,7 +64,17 @@ CianwoodGymChuckScript:
 	promptbutton
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
-	jumpopenedtext ChuckExplainTMText
+	jumpthisopenedtext
+
+	text "That is Dynamic-"
+	line "Punch."
+
+	para "It doesn't always"
+	line "hit, but when it"
+
+	para "does, it causes"
+	line "confusion!"
+	done
 
 GenericTrainerBlackbeltYoshi:
 	generictrainer BLACKBELT_T, YOSHI, EVENT_BEAT_BLACKBELT_YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText
@@ -175,16 +185,6 @@ ChuckExplainBadgeText:
 	line "too!"
 	done
 
-ChuckExplainTMText:
-	text "That is Dynamic-"
-	line "Punch."
-
-	para "It doesn't always"
-	line "hit, but when it"
-
-	para "does, it causes"
-	line "confusion!"
-	done
 
 ChuckAfterText:
 	text "WAHAHAH! I enjoyed"

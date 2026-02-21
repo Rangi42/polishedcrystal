@@ -152,6 +152,7 @@ AbilityDescriptions:
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
 	dw QuickDrawDescription
+	dw WindRiderDescription
 	dw CudChewDescription
 	dw SharpnessDescription
 	dw ArmorTailDescription
@@ -885,6 +886,11 @@ NeutralizingGasDescription:
 QuickDrawDescription:
 	text "Moves first"
 	next "occasionally."
+	done
+
+WindRiderDescription:
+	text "Gives immunity to"
+	next "wind-based moves."
 	done
 
 SteelySpiritDescription:

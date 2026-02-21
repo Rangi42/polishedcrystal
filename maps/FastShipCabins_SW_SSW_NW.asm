@@ -68,10 +68,26 @@ GuitaristmClydeScript:
 	opentext
 	checkbp 0
 	iffalsefwd .BattleTower
-	jumpopenedtext GuitaristClydeAfterBattleText
+	jumpthisopenedtext
+
+	text "Speaking of the"
+	line "Radio Station,"
+
+	para "what's this week's"
+	line "lucky number?"
+	done
 
 .BattleTower:
-	jumpopenedtext GuitaristClydeAfterBattleMobileText
+	jumpthisopenedtext
+
+	text "I was going to"
+	line "make my debut at"
+	cont "the Battle Tower…"
+
+	para "I should go back"
+	line "to Vermilion and"
+	cont "redo my training…"
+	done
 
 FastShipBed:
 	showtext FastShipBedText1
@@ -166,23 +182,7 @@ GuitaristmClydeBeatenText:
 	line "Total distortion!"
 	done
 
-GuitaristClydeAfterBattleText:
-	text "Speaking of the"
-	line "Radio Station,"
 
-	para "what's this week's"
-	line "lucky number?"
-	done
-
-GuitaristClydeAfterBattleMobileText:
-	text "I was going to"
-	line "make my debut at"
-	cont "the Battle Tower…"
-
-	para "I should go back"
-	line "to Vermilion and"
-	cont "redo my training…"
-	done
 
 FastShipBedText1:
 	text "A comfy bed!"

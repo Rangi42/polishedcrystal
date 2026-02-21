@@ -359,6 +359,7 @@ DEF NUM_PAINTINGS EQU const_value
 	const OPP_CAL
 	const OPP_CARRIE
 	const OPP_JACKY
+	const OPP_EUNA
 	const OPP_EN
 	const OPP_MADOKA
 DEF NUM_TRAINER_HOUSE_OPPONENTS EQU const_value - 1

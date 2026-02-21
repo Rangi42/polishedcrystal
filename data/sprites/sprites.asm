@@ -215,4 +215,8 @@ SpriteHeaders:
 	overworld_sprite BlankFruitSpriteGFX, STANDING_SPRITE, PAL_OW_COPY_BG_ROOF
 	overworld_sprite BigHoOhSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BigLugiaSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
+	overworld_sprite BetaSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
+	overworld_sprite BetaBikeSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
+	overworld_sprite BetaSurfSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
+	overworld_sprite BetaRunSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	assert_table_length NUM_OVERWORLD_SPRITES

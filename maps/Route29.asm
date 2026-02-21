@@ -109,7 +109,15 @@ Route29RefusedTutorial:
 Route29CooltrainerMScript:
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue_jumptextfaceplayer Text_WaitingForMorning
-	jumptextfaceplayer Text_WaitingForNight
+	jumpthistextfaceplayer
+
+	text "I'm waiting for"
+	line "#mon that"
+
+	para "appear only in"
+	line "the evening or"
+	cont "at night."
+	done
 
 TuscanyScript:
 	checkevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
@@ -129,10 +137,26 @@ TuscanyScript:
 	verbosegiveitem SILK_SCARF
 	iffalse_endtext
 	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
-	jumpopenedtext TuscanyGaveGiftText
+	jumpthisopenedtext
+
+	text "Tuscany: Wouldn't"
+	line "you agree that it"
+	cont "is most elegant?"
+
+	para "It strengthens"
+	line "Normal-type moves."
+
+	para "I am certain it"
+	line "will be of use."
+	done
 
 TuscanyNotTuesdayScript:
-	jumpopenedtext TuscanyNotTuesdayText
+	jumpthisopenedtext
+
+	text "Tuscany: Today is"
+	line "not Tuesday. That"
+	cont "is unfortunate…"
+	done
 
 LyraMovementData1a:
 	step_up
@@ -237,14 +261,6 @@ Route29FisherText:
 	line "progress."
 	done
 
-Text_WaitingForNight:
-	text "I'm waiting for"
-	line "#mon that"
-
-	para "appear only in"
-	line "the evening or"
-	cont "at night."
-	done
 
 Text_WaitingForMorning:
 	text "I'm waiting for"
@@ -276,17 +292,6 @@ TuscanyGivesGiftText:
 	line "a Silk Scarf."
 	done
 
-TuscanyGaveGiftText:
-	text "Tuscany: Wouldn't"
-	line "you agree that it"
-	cont "is most elegant?"
-
-	para "It strengthens"
-	line "Normal-type moves."
-
-	para "I am certain it"
-	line "will be of use."
-	done
 
 TuscanyTuesdayText:
 	text "Tuscany: Have you"
@@ -300,11 +305,6 @@ TuscanyTuesdayText:
 	line "seven children."
 	done
 
-TuscanyNotTuesdayText:
-	text "Tuscany: Today is"
-	line "not Tuesday. That"
-	cont "is unfortunate…"
-	done
 
 Route29Sign1Text:
 	text "Route 29"

@@ -41,7 +41,27 @@ AcademyEarl:
 	writetext AcademyEarlTeachMoreText
 	yesorno
 	iffalse_jumpopenedtext AcademyEarlNoMoreToTeachText
-	jumpopenedtext AcademyEarlTeachHowToRaiseWellText
+	jumpthisopenedtext
+
+	text "Fine! Teach you,"
+	line "I will!"
+
+	para "If #mon come"
+	line "out in battle even"
+
+	para "briefly, some Exp."
+	line "Points it gets."
+
+	para "At top of list put"
+	line "weak #mon."
+
+	para "Switch in battle"
+	line "quick!"
+
+	para "This way, weak"
+	line "#mon strong"
+	cont "become!"
+	done
 
 EarlsPokemonAcademyGameboyKid1Script:
 	showtextfaceplayer EarlsPokemonAcademyGameboyKid1Text
@@ -199,26 +219,6 @@ AcademyEarlTeachMoreText:
 	cont "#mon well?"
 	done
 
-AcademyEarlTeachHowToRaiseWellText:
-	text "Fine! Teach you,"
-	line "I will!"
-
-	para "If #mon come"
-	line "out in battle even"
-
-	para "briefly, some Exp."
-	line "Points it gets."
-
-	para "At top of list put"
-	line "weak #mon."
-
-	para "Switch in battle"
-	line "quick!"
-
-	para "This way, weak"
-	line "#mon strong"
-	cont "become!"
-	done
 
 AcademyEarlNoMoreToTeachText:
 	text "Oh! Smart student"

@@ -31,8 +31,8 @@ ENDM
 	ow_npc_pal_const RED               ; 00
 	ow_npc_pal_const BLUE              ; 01
 	ow_npc_pal_const GREEN             ; 02
-	ow_npc_pal_const BROWN             ; 03
-	ow_npc_pal_const PURPLE            ; 04
+	ow_npc_pal_const PURPLE            ; 03
+	ow_npc_pal_const BROWN             ; 04
 	ow_npc_pal_const GRAY              ; 05
 	ow_npc_pal_const PINK              ; 06
 	ow_npc_pal_const TEAL              ; 07

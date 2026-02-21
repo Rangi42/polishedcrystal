@@ -69,13 +69,25 @@ FarmerMScript_SellMilk:
 	endtext
 
 .Cancel:
-	jumpopenedtext FarmerMText_NoSale
+	jumpthisopenedtext
+
+	text "You don't want it?"
+	line "Come again, hear?"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext FarmerMText_NoMoney
+	jumpthisopenedtext
+
+	text "Sorry, there."
+	line "No cash, no sale!"
+	done
 
 .BagFull:
-	jumpopenedtext FarmerMText_NoRoom
+	jumpthisopenedtext
+
+	text "I reckon yer"
+	line "Bag's full."
+	done
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -91,7 +103,11 @@ FarmerMScript_SellMilk:
 	db "Cancel@"
 
 .Milking:
-	jumpopenedtext FarmerMText_Milking
+	jumpthisopenedtext
+
+	text "I best go do my"
+	line "milkin'."
+	done
 
 PokefanF_AcrobaticsFarmer:
 	faceplayer
@@ -100,7 +116,17 @@ PokefanF_AcrobaticsFarmer:
 	iftruefwd .GotAcrobatics
 	checkevent EVENT_HEALED_MOOMOO
 	iftruefwd .GiveAcrobatics
-	jumpopenedtext FarmerFText_InTrouble
+	jumpthisopenedtext
+
+	text "Our milk even goes"
+	line "out to Kanto."
+
+	para "So if our own"
+	line "Miltank won't give"
+
+	para "us any milk, we're"
+	line "in trouble."
+	done
 
 .GiveAcrobatics:
 	writetext FarmerFText_HealedMiltank
@@ -108,7 +134,21 @@ PokefanF_AcrobaticsFarmer:
 	verbosegivetmhm TM_ACROBATICS
 	setevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
 .GotAcrobatics:
-	jumpopenedtext FarmerFText_AcrobaticsSpeech
+	jumpthisopenedtext
+
+	text "That there's"
+	line "Acrobatics."
+
+	para "It's a move that"
+	line "hurts more if'n"
+
+	para "your #mon ain't"
+	line "holdin' an item."
+
+	para "You best think how"
+	line "you ought to use"
+	cont "it, hon."
+	done
 
 FarmerMText_SickCow:
 	text "My Miltank ain't"
@@ -147,36 +187,10 @@ FarmerMText_GotMilk:
 	line "Drink up'n enjoy!"
 	done
 
-FarmerMText_NoMoney:
-	text "Sorry, there."
-	line "No cash, no sale!"
-	done
 
-FarmerMText_NoRoom:
-	text "I reckon yer"
-	line "Bag's full."
-	done
 
-FarmerMText_NoSale:
-	text "You don't want it?"
-	line "Come again, hear?"
-	done
 
-FarmerMText_Milking:
-	text "I best go do my"
-	line "milkin'."
-	done
 
-FarmerFText_InTrouble:
-	text "Our milk even goes"
-	line "out to Kanto."
-
-	para "So if our own"
-	line "Miltank won't give"
-
-	para "us any milk, we're"
-	line "in trouble."
-	done
 
 FarmerFText_HealedMiltank:
 	text "You fixed our"
@@ -189,17 +203,3 @@ FarmerFText_HealedMiltank:
 	line "fer your trouble."
 	done
 
-FarmerFText_AcrobaticsSpeech:
-	text "That there's"
-	line "Acrobatics."
-
-	para "It's a move that"
-	line "hurts more if'n"
-
-	para "your #mon ain't"
-	line "holdin' an item."
-
-	para "You best think how"
-	line "you ought to use"
-	cont "it, hon."
-	done

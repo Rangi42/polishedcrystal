@@ -8,6 +8,7 @@ OptionNames:
 	dw .Sound
 	dw .BattleEffects
 	dw .BattleStyle
+	dw .Nicknames
 	dw .RunningShoes
 	dw .TurningSpeed
 	dw .ClockFormat
@@ -30,6 +31,8 @@ OptionNames:
 	db "Battle Effects@"
 .BattleStyle:
 	db "Battle Style@"
+.Nicknames:
+	db "Nicknames@"
 .RunningShoes:
 	db "Running Shoes@"
 .TurningSpeed:

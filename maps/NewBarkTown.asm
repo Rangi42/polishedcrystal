@@ -158,7 +158,12 @@ NewBarkTownTeacherScript:
 	iftrue_jumptextfaceplayer Text_TellMomIfLeaving
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumptextfaceplayer Text_YourMonIsAdorable
-	jumptextfaceplayer Text_RefreshingBreeze
+	jumpthistextfaceplayer
+
+	text "There's always"
+	line "such a refreshing"
+	cont "breeze here."
+	done
 
 NewBarkTownRivalScript:
 	showtext NewBarkTownRivalText1
@@ -246,11 +251,6 @@ Text_GearIsImpressive:
 	line "it for you?"
 	done
 
-Text_RefreshingBreeze:
-	text "There's always"
-	line "such a refreshing"
-	cont "breeze here."
-	done
 
 Text_WaitPlayer:
 	text "Wait, <PLAYER>!"

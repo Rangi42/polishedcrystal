@@ -39,7 +39,7 @@ OptionsMenu:
 .BGPalettes:
 INCLUDE "gfx/options/options_bg.pal"
 
-DEF NUM_OPTIONS EQU 12
+DEF NUM_OPTIONS EQU 13
 
 OptionsMenu_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -56,6 +56,7 @@ OptionsMenu_CallOptionRoutine:
 	dw Options_Sound
 	dw Options_BattleEffects
 	dw Options_BattleStyle
+	dw Options_Nicknames
 	dw Options_RunningShoes
 	dw Options_TurningSpeed
 	dw Options_ClockFormat
@@ -227,6 +228,55 @@ Options_BattleStyle:
 	db "Switch @"
 .Predict:
 	db "Predict@"
+
+Options_Nicknames:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	bit B_PAD_LEFT, a
+	jr nz, .LeftPressed
+	bit B_PAD_RIGHT, a
+	jr nz, .RightPressed
+	bit NICKNAMES_ALWAYS, [hl]
+	jr nz, .SetAlways
+	bit NICKNAMES_NEVER, [hl]
+	jr nz, .SetNever
+.SetAsk:
+	res NICKNAMES_ALWAYS, [hl]
+	res NICKNAMES_NEVER, [hl]
+	ld de, .Ask
+	jr .Display
+
+.LeftPressed:
+	bit NICKNAMES_ALWAYS, [hl]
+	jr nz, .SetAsk
+	bit NICKNAMES_NEVER, [hl]
+	jr nz, .SetAlways
+	jr .SetNever
+
+.RightPressed:
+	bit NICKNAMES_ALWAYS, [hl]
+	jr nz, .SetNever
+	bit NICKNAMES_NEVER, [hl]
+	jr nz, .SetAsk
+.SetAlways:
+	set NICKNAMES_ALWAYS, [hl]
+	res NICKNAMES_NEVER, [hl]
+	ld de, .Always
+	jr .Display
+
+.SetNever:
+	res NICKNAMES_ALWAYS, [hl]
+	set NICKNAMES_NEVER, [hl]
+	ld de, .Never
+.Display:
+	jmp OptionsShared_PlaceStringAtValueCoord
+
+.Ask:
+	db "Ask   @"
+.Always:
+	db "Always@"
+.Never:
+	db "Never @"
 
 Options_RunningShoes:
 	ld hl, wOptions2

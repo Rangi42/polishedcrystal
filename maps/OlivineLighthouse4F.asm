@@ -46,7 +46,14 @@ SailorKentScript:
 	endifjustbattled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer SailorKentFinalText
-	jumptextfaceplayer SailorKentAfterBattleText
+	jumpthistextfaceplayer
+
+	text "Speaking of sick,"
+	line "I've heard there's"
+
+	para "a good Pharmacy in"
+	line "Cianwood."
+	done
 
 SailorKentSeenText:
 	text "Jasmine must be"
@@ -60,14 +67,6 @@ SailorKentSeenText:
 SailorKentBeatenText:
 	text "I can't manage a"
 	line "smile either…"
-	done
-
-SailorKentAfterBattleText:
-	text "Speaking of sick,"
-	line "I've heard there's"
-
-	para "a good Pharmacy in"
-	line "Cianwood."
 	done
 
 SailorKentFinalText:

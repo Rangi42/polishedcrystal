@@ -34,7 +34,12 @@ GoldenrodMuseum1FLodestoneSignpostScript:
 	trainerpic METEORITE
 	waitbutton
 	closepokepic
-	jumptext GoldenrodMuseum1FLodestoneSignpostText
+	jumpthistext
+
+	text "Lodestone from the"
+	line "construction of"
+	cont "Magnet Tunnel."
+	done
 
 GoldenrodMuseum1FRocketScoutScript:
 	opentext
@@ -76,11 +81,6 @@ GoldenrodMuseumOfficerText:
 	line "on everyone…"
 	done
 
-GoldenrodMuseum1FLodestoneSignpostText:
-	text "Lodestone from the"
-	line "construction of"
-	cont "Magnet Tunnel."
-	done
 
 GoldenrodMuseum1FDrillText:
 	text "It's a large drill"

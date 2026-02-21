@@ -202,7 +202,11 @@ WonderTradeReceptionistScript:
 	writetext WonderTradeForGSBallPichuText2
 	waitbutton
 .done
-	jumpopenedtext WonderTradeGoodbyeText
+	jumpthisopenedtext
+
+	text "We hope to see you"
+	line "again."
+	done
 
 WonderTradeIntroText:
 	text "Hello! Welcome to"
@@ -229,10 +233,6 @@ WonderTradeCompleteText:
 	line "of it with love."
 	done
 
-WonderTradeGoodbyeText:
-	text "We hope to see you"
-	line "again."
-	done
 
 WonderTradeForGSBallPichuText:
 	text "…But what's this?"
