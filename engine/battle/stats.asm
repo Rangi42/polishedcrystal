@@ -452,22 +452,22 @@ PlayStatChangeAnim:
 	jmp PopBCDEHL
 
 ApplySimpleBoost:
-	push bc
-	ld a, [wChangedStat]
-	ld b, a
-	and $F
-	ld c, a
-	ld a, b
-	and $F0
-	swap a
-	sla a
-	inc a
-	cp a, 12
-	jr c, .constrained
-	ld a, 11
-.constrained
-	swap a
-	or c
-	ld [wChangedStat], a
-	pop bc
+; Doubles the stat change. This is done as x*2 + 1 in $xy in wChangedStat.
+; x is the amount of stages to change - 1 (so $1y means "change by 2 stages").
+	push hl
+	ld hl, wChangedStat
+	ld a, [hl]
+
+	; We don't want to double the lower nibble.
+	and $f0
+	add [hl]
+	jr nc, .no_overflow
+
+	; Bit 4 can never be set after doubling the high nibble, so this will
+	; always become $ex, where x is the stat to raise, $fx after the add $10.
+	or $e0
+.no_overflow
+	add $10
+	ld [hl], a
+	pop hl
 	ret
