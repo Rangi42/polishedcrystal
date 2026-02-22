@@ -50,10 +50,12 @@ FarChangeStat:
 	bit STAT_TARGET_F, b
 	jr nz, .is_target
 	call GetTrueUserAbility
+	cp CONTRARY
+	jr z, .contrary
 	cp SIMPLE
 	call z, ApplySimpleBoost
-	cp CONTRARY
-	jmp nz, .perform_change
+	jmp .perform_change
+.contrary
 	ld a, b
 	xor STAT_LOWER
 	ld b, a
