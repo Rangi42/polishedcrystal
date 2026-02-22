@@ -118,12 +118,12 @@ Options_TextSpeed:
 	ldh a, [hJoyPressed]
 	dec c
 	bit B_PAD_LEFT, a
-	jr nz, .ok
+	jr nz, .LeftPressed
 	inc c
 	bit B_PAD_RIGHT, a
 	jr z, .NonePressed
 	inc c
-.ok
+.LeftPressed:
 	ld a, c
 	and TEXT_DELAY_MASK
 	ld c, a
@@ -167,7 +167,7 @@ Options_BattleEffects:
 	jr z, .SetOff
 	jr .SetOn
 
-.Toggle
+.Toggle:
 	bit BATTLE_EFFECTS, [hl]
 	jr z, .SetOn
 .SetOff:
@@ -287,7 +287,7 @@ Options_RunningShoes:
 	jr z, .SetOff
 	jr .SetOn
 
-.Toggle
+.Toggle:
 	bit RUNNING_SHOES, [hl]
 	jr z, .SetOn
 .SetOff:
@@ -353,7 +353,7 @@ Options_Sound:
 	jr z, .SetMono
 	jr .SetStereo
 
-.Toggle
+.Toggle:
 	bit STEREO, [hl]
 	jr z, .SetStereo
 .SetMono:
@@ -381,7 +381,7 @@ Options_ClockFormat:
 	jr z, .Set12Hour
 	jr .Set24Hour
 
-.Toggle
+.Toggle:
 	bit CLOCK_FORMAT, [hl]
 	jr z, .Set24Hour
 .Set12Hour:
@@ -409,7 +409,7 @@ Options_PokedexUnits:
 	jr z, .SetImperial
 	jr .SetMetric
 
-.Toggle
+.Toggle:
 	bit POKEDEX_UNITS, [hl]
 	jr z, .SetMetric
 .SetImperial:
@@ -435,12 +435,12 @@ Options_TextAutoscroll:
 	and AUTOSCROLL_MASK
 	sub 4
 	bit B_PAD_LEFT, b
-	jr nz, .ok
+	jr nz, .LeftPressed
 	add 4
 	bit B_PAD_RIGHT, b
-	jr z, .not_changing
+	jr z, .NonePressed
 	add 4
-.ok
+.LeftPressed:
 	and AUTOSCROLL_MASK
 	ld c, a
 	ld a, [wOptions1]
@@ -448,7 +448,7 @@ Options_TextAutoscroll:
 	or c
 	ld [wOptions1], a
 	ld a, c
-.not_changing
+.NonePressed:
 rept TZCOUNT(AUTOSCROLL_MASK) - 1
 	rrca
 endr
@@ -482,10 +482,10 @@ Options_TurningSpeed:
 	ldh a, [hJoyPressed]
 	and PAD_LEFT | PAD_RIGHT
 	ld a, [wOptions1]
-	jr z, .not_changing
+	jr z, .NonePressed
 	xor TURNING_SPEED_MASK
 	ld [wOptions1], a
-.not_changing
+.NonePressed:
 	and TURNING_SPEED_MASK
 rept TZCOUNT(TURNING_SPEED_MASK) - 1
 	rrca
@@ -598,7 +598,7 @@ Options_Keyboard:
 	jr z, .SetABC
 	jr .SetQWERTY
 
-.Toggle
+.Toggle:
 	bit QWERTY_KEYBOARD_F, [hl]
 	jr z, .SetQWERTY
 .SetABC:

@@ -107,7 +107,11 @@ OptionsShared_RunLoop:
 	ldh [hJoyPressed], a
 	xor a
 	ldh [hJoyPressed], a
-	call OptionsShared_WaitDPadRelease
+.wait_dpad_release
+	call JoyTextDelay
+	ldh a, [hJoyDown]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .wait_dpad_release
 	jr .loop
 
 .skip_left_right
@@ -311,14 +315,6 @@ OptionsShared_StartValue:
 	dec hl
 	ld a, ':'
 	ld [hli], a
-	ret
-
-OptionsShared_WaitDPadRelease:
-.loop
-	call JoyTextDelay
-	ldh a, [hJoyDown]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .loop
 	ret
 
 OptionsShared_GetValueCoord:

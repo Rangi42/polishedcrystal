@@ -35,7 +35,6 @@ SetInitialOptions:
 	call OptionsShared_LoadEdgeTiles
 
 	farcall ApplyPals
-
 	call ApplyAttrAndTilemapInVBlank
 	call SetDefaultBGPAndOBP
 
@@ -48,7 +47,7 @@ SetInitialOptions:
 	xor a
 	ldh [hBGMapMode], a
 
-	ld a, TRUE
+	inc a ; TRUE
 	ld [wOptionsMenuIsInitial], a
 	call OptionsShared_RunLoop
 
@@ -118,7 +117,7 @@ InitialOptions_Natures:
 	bit NATURES_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit NATURES_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -138,7 +137,7 @@ InitialOptions_Abilities:
 	bit ABILITIES_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit ABILITIES_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -158,7 +157,7 @@ InitialOptions_PSS:
 	bit PSS_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit PSS_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -196,15 +195,20 @@ InitialOptions_EVs:
 	ld [hl], a
 .input_done
 	ld a, [hl]
-	ld de, AllString
+	ld de, .AllString
 	rrca
 	jr c, .Display
 	rrca
-	ld de, ModernString
+	ld de, .ModernString
 	jr c, .Display
 	ld de, NoString
 .Display:
 	jmp OptionsShared_PlaceStringAtValueCoord
+
+.AllString:
+	db "All@"
+.ModernString:
+	db "{-3d:MODERN_EV_LIMIT}@"
 
 InitialOptions_ExpScaling:
 	; set e to a sequential value for exp
@@ -223,16 +227,16 @@ InitialOptions_ExpScaling:
 	; check input
 	ldh a, [hJoyPressed]
 	and PAD_LEFT | PAD_RIGHT
-	jr z, .no_input
+	jr z, .NonePressed
 	bit B_PAD_LEFT, a
-	jr nz, .left_input
+	jr nz, .LeftPressed
 	; input right
 	dec e
 	jr z, .SetScaled ; from right, 1->2
-.left_input
+.LeftPressed:
 	dec e
 	jr z, .SetNo ; from left, 1->3; from right, 2->3
-.no_input
+.NonePressed:
 	dec e
 	jr z, .SetUnscaled ; from none, is 1; from left, 2->1; from right, 3->1
 	dec e
@@ -271,7 +275,7 @@ InitialOptions_AffectionBonus:
 	bit AFFECTION_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit AFFECTION_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -291,7 +295,7 @@ InitialOptions_RTC:
 	bit RTC_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit RTC_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -311,7 +315,7 @@ InitialOptions_PerfectIVs:
 	bit PERFECT_IVS_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit PERFECT_IVS_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -331,7 +335,7 @@ InitialOptions_TradedMon:
 	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -351,7 +355,7 @@ InitialOptions_EvolveInBattle:
 	bit EVOLVE_IN_BATTLE_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit EVOLVE_IN_BATTLE_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -371,7 +375,7 @@ InitialOptions_ColorVariation:
 	bit COLOR_VARY_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
-.Toggle
+.Toggle:
 	bit COLOR_VARY_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
@@ -382,14 +386,5 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 	jmp OptionsShared_PlaceStringAtValueCoord
-
-NoString:
-	db "No @"
-YesString:
-	db "Yes@"
-AllString:
-	db "All@"
-ModernString:
-	db "{-3d:MODERN_EV_LIMIT}@"
 
 INCLUDE "data/options/initial_options_descriptions.asm"
