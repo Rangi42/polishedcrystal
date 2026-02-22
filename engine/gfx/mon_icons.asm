@@ -113,8 +113,9 @@ SetFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
+	; Decode PAL_MON_*_* value into dark/light palette indices
+	call DecodeMonIconPal
 	ld de, wOBPals1 + 3 palettes
-	ld [wNeededPalIndex], a
 	ld hl, wPalFlags
 	push hl
 	set USE_DAYTIME_PAL_F, [hl]
@@ -130,7 +131,9 @@ SetOWFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
-	ld [wNeededPalIndex], a
+	; Decode PAL_MON_*_* value into dark/light palette indices
+	call DecodeMonIconPal
+	; a = dark color index (wNeededPalIndex already set)
 	ld b, a
 	push bc
 	ld b, 0
@@ -240,7 +243,9 @@ endr
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
 	ld hl, wCurIconShiny
-	jr _GetMonIconPalette
+	call _GetMonIconPalette
+	dec a ; remove +1 encoding so OBJECT_PAL_INDEX gets the raw nybble pair
+	ret
 
 GetMonIconPalette:
 	ld a, [wCurPartySpecies]
@@ -261,16 +266,45 @@ _GetMonIconPalette:
 
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
+	; bc *= 2 for 2-byte table
+	sla c
+	rl b
 	ld hl, OverworldMonIconColors
 	add hl, bc
-	ld c, [hl]
 
 	pop af
 	jr nz, .shiny
-	swap c
+	ld a, [hl] ; normal = first byte
+	ret
+
 .shiny
-	ld a, c
+	inc hl
+	ld a, [hl] ; shiny = second byte
+	ret
+
+; Decode a PAL_MON_*_* value into wNeededPalIndex and wNeededMonPalLight.
+; Input: a = PAL_MON_*_* value
+; Output: a = dark color (PAL_OW_*), wNeededPalIndex = dark, wNeededMonPalLight = light (or NO_PAL_LOADED if same)
+DecodeMonIconPal:
+	dec a ; remove +1 encoding offset
+	ld c, a
 	and $f
+	ld [wNeededPalIndex], a ; low nybble = dark color
+	ld b, a ; save dark color
+	ld a, c
+	swap a
+	and $f ; high nybble = light color
+	cp b
+	jr nz, .two_colors
+	; Same nybbles: single-color palette
+	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
+	ld a, b
+	ret
+
+.two_colors
+	ld [wNeededMonPalLight], a
+	ld a, b
 	ret
 
 LoadPartyMenuMonMini:

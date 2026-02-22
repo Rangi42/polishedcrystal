@@ -6,9 +6,12 @@ ClearSavedObjPals::
 
 	xor a
 	ld [wUsedObjectPals], a
+	ld [wNeededPalType], a
+	ld [wLoadedObjPalType], a
 	ld hl, wLoadedObjPal0
 	ld bc, wNeededPalIndex - wLoadedObjPal0
 	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
 	rst ByteFill
 
 	pop af
@@ -56,6 +59,11 @@ CheckForUsedObjPals::
 	xor a
 	ld [wUsedObjectPals], a
 
+	; Initialize transient palette state before dual pal check
+	ld [wNeededPalType], a ; a = 0 = normal
+	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
+
 	call CheckDualObjectPals
 
 	; Scan for active objects first and mark those pals still in use.
@@ -89,11 +97,60 @@ ScanObjectStructPals:
 	and a
 	jr z, .skip
 
+	; Check if SPRITE_MON_ICON while sprite is in a (Z flag preserved through loads below)
+	cp SPRITE_MON_ICON
+
 	; Look up the object's requested color palette
 	ld hl, OBJECT_PAL_INDEX
 	add hl, de
-	ld a, [hl]
+	ld c, [hl]
+
+	; Default: no secondary light palette
+	ld hl, wNeededMonPalLight
+	ld [hl], NO_PAL_LOADED
+
+	; Branch based on sprite check (Z flag preserved from cp above)
+	jr nz, .not_mon_icon_pal
+	; For mon icons, always interpret palette as two nybbles:
+	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
+	ld a, c
+	swap a
+	and $f
+	; If high nybble is same as low nybble, treat as normal palette
+	ld [hl], a ; store light color palette in wNeededMonPalLight (high nybble)
+	ld a, c
+	and $f
+	cp [hl]
+	jr nz, .two_nybbles
+	; Same nybble values, treat as normal single palette
+	ld [hl], NO_PAL_LOADED
+.two_nybbles
+	; low nybble = main (dark) palette, wNeededMonPalLight has the high nybble (light) palette
+	jr .store_pal_index
+
+.not_mon_icon_pal
+	ld a, c
+.store_pal_index
 	ld [wNeededPalIndex], a
+
+	; Determine palette type and build a unique slot ID for MarkUsedPal.
+	; Normal palettes: ID = palette index, type = 0
+	; Mon palettes: ID = (light << 4) | dark, type = 1
+	ld c, a
+	ld a, [wNeededMonPalLight]
+	cp NO_PAL_LOADED
+	jr z, .normal_pal_type
+	; Mon palette: combine both nybbles for unique slot matching
+	swap a
+	or c
+	ld c, a ; c = combined ID
+	ld a, 1
+	jr .set_pal_type
+.normal_pal_type
+	xor a
+.set_pal_type
+	ld [wNeededPalType], a
+	ld a, c
 
 	; Mark the palette in use and/or load the palette
 	call MarkUsedPal
@@ -124,12 +181,34 @@ MarkUsedPal:
 	push de
 	push bc
 
-	; Check if pal is already loaded
+	; Check if pal is already loaded (must match both index and type)
 	lb bc, 8, 0
 	ld hl, wLoadedObjPal0
 .loaded_loop
 	cp [hl]
-	jr z, .mark_in_use
+	jr nz, .not_loaded_here
+	; Palette index matches - also check type
+	push af
+	ld a, [wLoadedObjPalType]
+	push bc
+	inc c
+.type_shift
+	dec c
+	jr z, .type_shifted
+	rrca
+	jr .type_shift
+.type_shifted
+	and 1 ; bit 0 = type of this slot
+	ld e, a
+	ld a, [wNeededPalType]
+	cp e
+	pop bc
+	jr nz, .type_mismatch
+	pop af
+	jr .mark_in_use
+.type_mismatch
+	pop af
+.not_loaded_here
 	inc hl
 	inc c
 	dec b
@@ -171,6 +250,34 @@ MarkUsedPal:
 	add hl, bc
 	ld [hl], a
 
+	; Store the palette type for this slot (set/clear bit c in wLoadedObjPalType)
+	push af
+	push bc
+	ld a, 1
+	inc c
+.type_set_shift
+	dec c
+	jr z, .type_set_done
+	add a
+	jr .type_set_shift
+.type_set_done
+	ld e, a ; e = bit mask for slot c
+	ld a, [wNeededPalType]
+	and a
+	ld a, [wLoadedObjPalType]
+	jr z, .clear_type_bit
+	or e
+	jr .store_type
+.clear_type_bit
+	ld d, a
+	ld a, e
+	cpl
+	and d
+.store_type
+	ld [wLoadedObjPalType], a
+	pop bc
+	pop af
+
 	; Copy the needed pal
 	push bc
 	ld a, c
@@ -192,7 +299,7 @@ MarkUsedPal:
 .used_loop
 	dec c
 	jr z, .found_used
-	rla
+	add a
 	jr .used_loop
 .found_used
 	or [hl]
@@ -227,6 +334,10 @@ CheckDualObjectPals:
 .found
 	ld a, %00000110
 	ld [wUsedObjectPals], a
+	; Clear type bits for slots 1 and 2 (these are normal palettes, not mon palettes)
+	ld a, [wLoadedObjPalType]
+	and ~%00000110
+	ld [wLoadedObjPalType], a
 	ld a, [hli]
 	ld [wLoadedObjPal1], a
 	ld [wNeededPalIndex], a

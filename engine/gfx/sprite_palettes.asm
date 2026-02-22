@@ -30,6 +30,8 @@ LoadWeatherPal::
 	ld a, PAL_OW_PINK
 	; fallthrough
 .use_ow_weather_pal
+	ld hl, wNeededMonPalLight
+	ld [hl], NO_PAL_LOADED
 	ld [wNeededPalIndex], a
 	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
 	ld de, wOBPals1 palette PAL_OW_WEATHER
@@ -78,6 +80,8 @@ CopyBGGreenToOBPal7:
 	ld a, PAL_OW_COPY_BG_GREEN
 	; fallthrough
 CopySpritePalToOBPal7:
+	ld hl, wNeededMonPalLight
+	ld [hl], NO_PAL_LOADED
 	ld [wNeededPalIndex], a
 	ld [wLoadedObjPal7], a
 	ld de, wOBPals1 palette 7
@@ -167,68 +171,22 @@ CopySpritePal::
 	jr .got_pal
 
 .not_copy_bg
-	; skip darkness/overcast if USE_DAYTIME_PAL_F
-	ld a, [wPalFlags]
-	bit USE_DAYTIME_PAL_F, a
-	jr nz, .not_overcast
-
-	; check darkness
-	ld a, PALSTATE_DARKNESS
-	call GetPalState
-	and a
-	jr z, .not_darkness
 	ld a, [wNeededPalIndex]
-	cp NUM_OW_TIME_OF_DAY_PALS
-	jr nc, .not_darkness
-	ld hl, DarknessOBPalette
-	ld bc, 1 palettes
-	rst AddNTimes
-	jr .got_pal
-
-.not_darkness
-	; check overcast
-	ld a, PALSTATE_OVERCAST_INDEX
-	call GetPalState
-	and a
-	jr z, .not_overcast
-	ld a, [wNeededPalIndex]
-	cp NUM_OW_TIME_OF_DAY_PALS
-	jr nc, .not_overcast
-	ld hl, OvercastOBPalette
-	ld bc, 1 palettes
-	rst AddNTimes
-	jr .check_daytimes
-
-.not_overcast
-	ld a, [wNeededPalIndex]
-	cp NUM_OW_TIME_OF_DAY_PALS
-	jr c, .time_of_day_pal
-	ld hl, SingleObjectPals - NUM_OW_TIME_OF_DAY_PALS palettes
-	ld bc, 1 palettes
-	rst AddNTimes
-	jr .got_pal
-
-.time_of_day_pal
-	ld hl, MapObjectPals
-	ld bc, 1 palettes
-	rst AddNTimes
-.check_daytimes
-	ld a, [wPalFlags]
-	bit USE_DAYTIME_PAL_F, a
-	ld a, DAY
-	jr nz, .daytime
-	ld a, PALSTATE_TIME_OF_DAY
-	call GetPalState
-.daytime
-	maskbits NUM_DAYTIMES
-	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
-	rst AddNTimes
+	call LookupOBPalette
 .got_pal
 	pop de
 	push de ; push wOBPals1 palette *
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	pop hl ; pop wOBPals1 palette *
+
+	; Check if we need to copy a light color from a secondary palette (for SPRITE_MON_ICON)
+	ld a, [wNeededMonPalLight]
+	cp NO_PAL_LOADED
+	; hl = target palette (wOBPals1 palette *)
+	; a = light color OW palette index (0–15, raw PAL_OW_* value for LookupOBPalette / CopyMonIconLightColor)
+	call nz, CopyMonIconLightColor
+
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
@@ -245,9 +203,97 @@ CopySpritePal::
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
+	ld a, NO_PAL_LOADED
+	ld [wNeededMonPalLight], a
 	pop hl
 	pop bc
 	pop af
+	ret
+
+CopyMonIconLightColor:
+; Copy color 2 from the palette at index a into color 1 of the target palette at hl
+; Input: a = light color palette index, hl = target palette pointer
+	push hl
+	push de
+	push bc
+	; Save target palette pointer in de
+	ld d, h
+	ld e, l
+	; Look up source palette
+	call LookupOBPalette
+	; Get color 2 (offset 2 colors) from source
+	ld bc, 2 colors
+	add hl, bc
+	; Target color 1 is at offset 1 colors
+	inc de
+	inc de
+	; Copy 1 color
+	ld bc, 1 colors
+	call FarCopyColorWRAM
+	jmp PopBCDEHL
+
+LookupOBPalette:
+; Look up a sprite palette by index, accounting for darkness/overcast/time-of-day.
+; Input: a = palette index (< FIRST_COPY_BG_PAL)
+; Output: hl = pointer to palette data
+; Clobbers: a, bc
+	ld c, a
+	; skip darkness/overcast if USE_DAYTIME_PAL_F
+	ld a, [wPalFlags]
+	bit USE_DAYTIME_PAL_F, a
+	jr nz, .not_overcast
+
+	; check darkness
+	ld a, PALSTATE_DARKNESS
+	call GetPalState
+	and a
+	jr z, .not_darkness
+	ld a, c
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr nc, .not_darkness
+	ld hl, DarknessOBPalette
+	ld bc, 1 palettes
+	rst AddNTimes
+	ret
+
+.not_darkness
+	; check overcast
+	ld a, PALSTATE_OVERCAST_INDEX
+	call GetPalState
+	and a
+	jr z, .not_overcast
+	ld a, c
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr nc, .not_overcast
+	ld hl, OvercastOBPalette
+	ld bc, 1 palettes
+	rst AddNTimes
+	jr .check_daytimes
+
+.not_overcast
+	ld a, c
+	cp NUM_OW_TIME_OF_DAY_PALS
+	jr c, .time_of_day_pal
+	ld hl, SingleObjectPals - NUM_OW_TIME_OF_DAY_PALS palettes
+	ld bc, 1 palettes
+	rst AddNTimes
+	ret
+
+.time_of_day_pal
+	ld hl, MapObjectPals
+	ld bc, 1 palettes
+	rst AddNTimes
+.check_daytimes
+	ld a, [wPalFlags]
+	bit USE_DAYTIME_PAL_F, a
+	ld a, DAY
+	jr nz, .daytime
+	ld a, PALSTATE_TIME_OF_DAY
+	call GetPalState
+.daytime
+	maskbits NUM_DAYTIMES
+	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
+	rst AddNTimes
 	ret
 
 ApplyWeatherPal:
