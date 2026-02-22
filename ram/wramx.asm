@@ -510,10 +510,12 @@ wDexPrevCursorPos:: db
 wDexPrevOffset:: db
 
 wOptionsMenuValueCoord:: dw
-wOptionsMenuCursor:: db
-wOptionsMenuScrollPosition:: db
+wOptionsMenuDescriptionAddr:: dw
+wOptionsMenuDescriptionState:: db
+wOptionsMenuLastSelection:: db
+wOptionsMenuIsInitial:: db
 
-	ds 28 ; unused
+	ds 25 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db

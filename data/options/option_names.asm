@@ -13,8 +13,7 @@ OptionNames:
 	dw .TurningSpeed
 	dw .ClockFormat
 	dw .PokedexUnits
-	dw .Done
-	assert_table_length NUM_OPTIONS + 1 ; include "Done"
+	assert_table_length NUM_OPTIONS
 
 .TextSpeed:
 	db "Text Speed@"
@@ -42,5 +41,3 @@ OptionNames:
 	db "Clock Format@"
 .PokedexUnits:
 	db "#dex Units@"
-.Done:
-	db "Done@"

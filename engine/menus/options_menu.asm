@@ -1,5 +1,3 @@
-DEF OPTIONS_MENU_VALUE_OFFSET EQU 9
-
 OptionsMenu:
 	ldh a, [hInMenu]
 	push af
@@ -10,197 +8,38 @@ OptionsMenu:
 	ld [wBattleMenuFlags], a
 
 	call ClearBGPalettes
+
 	ld a, CGB_PLAIN
 	call GetCGBLayout
-	call SetDefaultBGPAndOBP
 
-	ld a, [wOptionsMenuCursor]
-	and a
-	jr nz, .have_cursor
-	inc a ; 1
-	ld [wOptionsMenuCursor], a
-.have_cursor
+	ld hl, .BGPalettes
+	ld de, wBGPals1
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+
+	call LoadFrame
+	call OptionsShared_LoadEdgeTiles
 
 	ld hl, MenuDataHeader_Options
 	call CopyMenuHeader
+
 	xor a
 	ldh [hBGMapMode], a
+
 	call InitScrollingMenu
 
-.loop
-	ld hl, wMenuScrollPosition
-	ld a, [wOptionsMenuScrollPosition]
-	ld [hli], a
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
+	xor a ; FALSE
+	ld [wOptionsMenuIsInitial], a
+	call OptionsShared_RunLoop
 
-	ld hl, wMenuCursorBuffer
-	ld a, [wOptionsMenuCursor]
-	ld [hli], a
-	xor a
-	ld [hl], a
-
-	call ScrollingMenu
-	ld a, TRUE
-	ldh [hInMenu], a
-
-	ld a, [wMenuScrollPosition]
-	ld [wOptionsMenuScrollPosition], a
-	ld a, [wMenuCursorY]
-	ld [wOptionsMenuCursor], a
-
-	ld a, [wMenuJoypad]
-	cp PAD_B
-	jr z, .exit
-	cp PAD_LEFT
-	jr z, .apply_left
-	cp PAD_RIGHT
-	jr z, .apply_right
-	cp PAD_A
-	jr nz, .loop
-	; fallthrough
-
-; apply a
-	; PAD_A already selects the highlighted row inside ScrollingMenu
-	call OptionsMenu_SetValueCoordFromCursor
-	ldh a, [hJoyPressed]
-	push af
-	ld a, PAD_RIGHT
-	ldh [hJoyPressed], a
-	ld a, [wMenuSelection]
-	and a ; 0?
-	jr z, .restore_a
-	inc a ; -1?
-	jr z, .restore_a
-	call OptionsMenu_CallOptionRoutine
-	call ApplyTilemapInVBlank
-.restore_a
-	pop af
-	ldh [hJoyPressed], a
-	xor a
-	ldh [hJoyPressed], a
-	call OptionsMenu_WaitDPadRelease
-	jr .loop
-
-.apply_left
-	ldh a, [hJoyPressed]
-	and PAD_LEFT
-	jr z, .loop
-	ld a, PAD_LEFT
-	jr .apply_left_right
-
-.apply_right
-	ldh a, [hJoyPressed]
-	and PAD_RIGHT
-	jr z, .loop
-	ld a, PAD_RIGHT
-	; fallthrough
-
-.apply_left_right
-	push af ; save direction (PAD_LEFT or PAD_RIGHT)
-	call OptionsMenu_SetValueCoordFromCursor
-	call OptionsMenu_SetSelectionFromCursor
-	ld a, [wMenuSelection]
-	and a ; 0?
-	jr z, .skip_left_right
-	inc a ; -1?
-	jr z, .skip_left_right
-	pop bc ; restore direction into B (we'll use it below)
-	ldh a, [hJoyPressed]
-	push af
-	ld a, b
-	ldh [hJoyPressed], a
-	call OptionsMenu_CallOptionRoutine
-	call ApplyTilemapInVBlank
-	pop af
-	ldh [hJoyPressed], a
-	xor a
-	ldh [hJoyPressed], a
-	call OptionsMenu_WaitDPadRelease
-	jmp .loop
-
-.skip_left_right
-	pop af ; discard saved direction
-	jmp .loop
-
-.exit
-	ld de, SFX_TRANSACTION
-	call PlaySFX
-	call WaitSFX
 	pop af
 	ldh [hInMenu], a
 	ret
 
-OptionsMenu_SetSelectionFromCursor:
-; Set [wMenuSelection] based on current cursor/scroll position.
-; Calculate absolute list index ([wMenuScrollPosition] + [wMenuCursorY] - 1)
-	ld a, [wMenuCursorY]
-	dec a
-	ld b, a
-	ld a, [wMenuScrollPosition]
-	add b
-; [wMenuSelection] = absolute list index (for later use)
-	ld [wMenuSelection], a
-; c = absolute list index
-	ld c, a
-; hl = [wMenuData_ItemsPointerAddr]
-	ld hl, wMenuData_ItemsPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-; b = [wMenuData_ItemsPointerBank]
-	ld a, [wMenuData_ItemsPointerBank]
-	ld b, a
-; d = list size (first byte at items pointer)
-	call GetFarByte
-	ld d, a
-; Check if index >= list size
-	ld a, c
-	cp d
-	jr c, .valid_index
-	ld a, -1
-	ld [wMenuSelection], a
-	ret
+.BGPalettes:
+INCLUDE "gfx/options/options_bg.pal"
 
-.valid_index
-	inc hl ; skip count byte, point to first item
-; Calculate offset: index * stride
-	ld a, [wMenuData_ScrollingMenuSpacing]
-	cp SCROLLINGMENU_ITEMS_QUANTITY
-	ld a, 1
-	jr nz, .got_stride
-	inc a ; 2
-.got_stride
-	push bc ; save [wMenuData_ItemsPointerBank] from b
-; hl += [wMenuSelection] * stride, so hl == (absolute list index)th item
-	ld b, 0
-	ld c, a
-	ld a, [wMenuSelection]
-	rst AddNTimes
-	pop af ; a = [wMenuData_ItemsPointerBank]
-; [wMenuSelection] = [(absolute list index)th item]
-	call GetFarByte
-	ld [wMenuSelection], a
-	ret
-
-OptionsMenu_SetValueCoordFromCursor:
-	call MenuBoxCoord2Tile
-	ld a, [wMenuFlags]
-	bit 7, a
-	ld bc, SCREEN_WIDTH + 1
-	jr z, .gotOffset
-	ld c, 1
-.gotOffset
-	add hl, bc
-	ld bc, 2 * SCREEN_WIDTH
-	ld a, [wMenuCursorY]
-	dec a
-	rst AddNTimes
-	ld bc, SCREEN_WIDTH + OPTIONS_MENU_VALUE_OFFSET
-	add hl, bc
-	jmp OptionsMenu_StartValue
+DEF NUM_OPTIONS EQU 13
 
 OptionsMenu_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -226,20 +65,20 @@ OptionsMenu_CallOptionRoutine:
 	assert_table_length NUM_OPTIONS + 1 ; include "Done"
 
 MenuDataHeader_Options:
-	db MENU_BACKUP_TILES
-	menu_coords 1, 1, 18, 16
+	db MENU_BACKUP_TILES | MENU_NO_CLICK_SFX
+	menu_coords 1, 0, 18, 11
 	dw .MenuData2
 	db 1 ; default option
 	db 0
 
 .MenuData2:
-	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS ; flags
-	db 7, OPTIONS_MENU_VALUE_OFFSET ; rows, columns
+	db SCROLLINGMENU_CALL_FUNCTION1_CANCEL | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_FUNCTION3 | SCROLLINGMENU_ENABLE_START ; flags
+	db 5, OPTIONS_SHARED_VALUE_OFFSET ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
 	dba OptionsMenuItems ; text pointer
-	dba OptionsMenu_PlaceOptionName
-	dba OptionsMenu_PlaceOptionValue
-	dba NULL
+	dba OptionsShared_PlaceOptionName
+	dba OptionsShared_PlaceOptionValue
+	dba OptionsShared_ResetSelectionDescription
 
 OptionsMenuItems:
 	db NUM_OPTIONS
@@ -248,75 +87,29 @@ for n, NUM_OPTIONS
 endr
 	db -1 ; terminator ("Done")
 
-OptionsMenu_PlaceOptionName:
-	push de
-	ld de, OptionNames.Done
+INCLUDE "data/options/option_names.asm"
+
+OptionsMenu_GetTextSpeedFlag:
+; Returns C = 0 for instant text, C != 0 for configured text speed.
+; Text Speed option (wMenuSelection == 1) uses configured speed.
+	ld c, 0
 	ld a, [wMenuSelection]
-	inc a ; -1?
-	jr z, .got_name
-	add a
-	ld c, a
-	ld b, 0
-	ld hl, OptionNames - 2 * 2 ; offset nstead of `dec a :: dec a`
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-.got_name
-	pop hl
-	rst PlaceString
+	dec a
+	ret nz
+	inc c
 	ret
 
-INCLUDE "data/options/names.asm"
-
-OptionsMenu_PlaceOptionValue:
-	ld a, [wMenuSelection]
-	inc a ; -1?
-	ret z
-	ld hl, SCREEN_WIDTH
-	add hl, de
-	call OptionsMenu_StartValue
-	ldh a, [hJoyPressed]
-	push af
-	xor a
-	ldh [hJoyPressed], a
-	call OptionsMenu_CallOptionRoutine
-	pop af
-	ldh [hJoyPressed], a
-	ret
-
-OptionsMenu_StartValue:
-	ld a, l
-	ld [wOptionsMenuValueCoord], a
-	ld a, h
-	ld [wOptionsMenuValueCoord + 1], a
-	; Place ":" prefix immediately before the value.
-	dec hl
-	ld a, ':'
-	ld [hli], a
-	ret
-
-OptionsMenu_WaitDPadRelease:
-; Prevent D-pad autorepeat from immediately applying the same option twice.
-.loop
-	call JoyTextDelay
-	ldh a, [hJoyDown]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .loop
-	ret
-
-OptionsMenu_GetValueCoord:
-	ld hl, wOptionsMenuValueCoord
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-OptionsMenu_PlaceStringAtValueCoord:
-	call OptionsMenu_GetValueCoord
-	rst PlaceString
+OptionsMenu_AdvanceSelectionDescription:
+; Text Speed: always redraw from the start using current speed.
+	call OptionsMenu_GetTextSpeedFlag
+	ld a, c
 	and a
-	ret
+	jmp z, OptionsShared_SimpleAdvanceDescription
+	; TextSpeed special case: redraw from start with configured speed
+	call OptionsShared_DispatchLookupDescription
+	call SetUpTextbox
+	ld c, TRUE ; use text speed
+	jmp OptionsShared_PlaceDescriptionText
 
 Options_TextSpeed:
 	ld a, [wOptions1]
@@ -346,7 +139,7 @@ Options_TextSpeed:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jr OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -380,12 +173,12 @@ Options_BattleEffects:
 .SetOff:
 	res BATTLE_EFFECTS, [hl]
 	ld de, OffString
-	jr OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .SetOn:
 	set BATTLE_EFFECTS, [hl]
 	ld de, OnString
-	jr OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 Options_BattleStyle:
 	ld hl, wOptions2
@@ -427,7 +220,7 @@ Options_BattleStyle:
 	set BATTLE_PREDICT, [hl]
 	ld de, .Predict
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Set:
 	db "Set    @"
@@ -476,7 +269,7 @@ Options_Nicknames:
 	set NICKNAMES_NEVER, [hl]
 	ld de, .Never
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Ask:
 	db "Ask   @"
@@ -506,7 +299,7 @@ Options_RunningShoes:
 	set RUNNING_SHOES, [hl]
 	ld de, OnString
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 OffString:
 	db "Off@"
@@ -541,7 +334,7 @@ Options_Frame:
 	inc a
 	ld e, a
 	ld d, 0
-	call OptionsMenu_GetValueCoord
+	call OptionsShared_GetValueCoord
 	inc hl
 	ld a, ' '
 	ld [hld], a
@@ -572,7 +365,7 @@ Options_Sound:
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Mono:
 	db "Mono  @"
@@ -600,7 +393,7 @@ Options_ClockFormat:
 	set CLOCK_FORMAT, [hl]
 	ld de, .TwentyFour
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Twelve:
 	db "12-hour@"
@@ -628,7 +421,7 @@ Options_PokedexUnits:
 	set POKEDEX_UNITS, [hl]
 	ld de, .Metric
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Imperial:
 	db "Imperial@"
@@ -666,7 +459,7 @@ endr
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -704,7 +497,7 @@ endr
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -765,7 +558,7 @@ Options_Typeface:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
 	table_width 2
@@ -817,7 +610,7 @@ Options_Keyboard:
 	set QWERTY_KEYBOARD_F, [hl]
 	ld de, .QWERTY
 .Display:
-	jmp OptionsMenu_PlaceStringAtValueCoord
+	jmp OptionsShared_PlaceStringAtValueCoord
 
 .ABC:
 	db "ABCDEF@"
@@ -834,3 +627,5 @@ Options_Done:
 .Exit:
 	scf
 	ret
+
+INCLUDE "data/options/options_descriptions.asm"

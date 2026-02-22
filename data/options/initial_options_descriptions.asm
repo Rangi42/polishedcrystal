@@ -1,25 +1,21 @@
-; These are in the same order as GetInitialOptionPointer.Pointers,
-; not the *_OPT bit order!
+; These are in the same order as InitialOptions_CallOptionRoutine.Pointers,
+; not the *_OPT bit order.
 InitialOptionDescriptions:
 	table_width 2
-	dw .InitialOptionDesc_Natures
-	dw .InitialOptionDesc_Abilities
-	dw .InitialOptionDesc_PSS
-	dw .InitialOptionDesc_EVs
-	dw .InitialOptionDesc_Experience
-	dw .InitialOptionDesc_AffectionBonus
-	dw .InitialOptionDesc_NextPage
+	dw .Natures
+	dw .Abilities
+	dw .PSS
+	dw .EVs
+	dw .Experience
+	dw .AffectionBonus
+	dw .RTC
+	dw .PerfectIVs
+	dw .TradedMon
+	dw .EvolveInBattle
+	dw .ColorVariation
+	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
-	dw .InitialOptionDesc_RTC
-	dw .InitialOptionDesc_PerfectIVs
-	dw .InitialOptionDesc_TradedMon
-	dw .InitialOptionDesc_EvolveInBattle
-	dw .InitialOptionDesc_ColorVariation
-	dw EmptyString
-	dw .InitialOptionDesc_PrevPage
-	assert_table_length NUM_INITIAL_OPTIONS_PER_PAGE * 2
-
-.InitialOptionDesc_Natures:
+.Natures:
 	text "Natures raise one"
 	line "stat but lower"
 	cont "another by 10%."
@@ -28,7 +24,7 @@ InitialOptionDescriptions:
 	line "Gen 3."
 	prompt
 
-.InitialOptionDesc_Abilities:
+.Abilities:
 	text "Abilities may have"
 	line "effects inside"
 
@@ -39,7 +35,7 @@ InitialOptionDescriptions:
 	line "Gen 3."
 	prompt
 
-.InitialOptionDesc_PSS:
+.PSS:
 	text "Moves are physical"
 	line "or special inde-"
 	cont "pendently of type."
@@ -48,7 +44,7 @@ InitialOptionDescriptions:
 	line "Gen 4."
 	prompt
 
-.InitialOptionDesc_EVs:
+.EVs:
 	text "EVs boost stats by"
 	line STRFMT("up to %d points,", MODERN_MAX_EV / 4)
 	cont "one per 4 EVs."
@@ -66,7 +62,7 @@ InitialOptionDescriptions:
 	line "erience in Gen 3."
 	prompt
 
-.InitialOptionDesc_Experience:
+.Experience:
 	text "The old experience"
 	line "gain formula, in"
 
@@ -93,7 +89,7 @@ InitialOptionDescriptions:
 	cont "work if you do so."
 	prompt
 
-.InitialOptionDesc_AffectionBonus:
+.AffectionBonus:
 	text "Your #mon will"
 	line "gain benefits in"
 	cont "battle when they"
@@ -105,7 +101,40 @@ InitialOptionDescriptions:
 	line "Gen 6."
 	prompt
 
-.InitialOptionDesc_EvolveInBattle:
+.RTC:
+	text "Use the Real-Time"
+	line "Clock function to"
+	cont "track the time."
+
+	para "If your cartridge"
+	line "or emulator does"
+	cont "not support RTC,"
+
+	assert NO_RTC_SPEEDUP == 6
+	para "disable this to"
+	line "make each in-game"
+	cont "day last 4 hours."
+	prompt
+
+.PerfectIVs:
+	text "Stats are calcu-"
+	line "lated as if IVs"
+
+	para "were perfect 15s,"
+	line "for your #mon"
+	cont "and opponents'."
+	prompt
+
+.TradedMon:
+	text "Traded #mon"
+	line "will obey you and"
+	cont "can be nicknamed,"
+
+	para "but Exp.Points"
+	line "won't be boosted."
+	prompt
+
+.EvolveInBattle:
 	text "Your #mon can"
 	line "evolve during"
 	cont "trainer battles."
@@ -114,7 +143,7 @@ InitialOptionDescriptions:
 	line "battles."
 	prompt
 
-.InitialOptionDesc_ColorVariation:
+.ColorVariation:
 	text "Individual #-"
 	line "mon, both regular"
 	cont "and shiny, will"
@@ -135,45 +164,7 @@ InitialOptionDescriptions:
 	line "on nicknames."
 	prompt
 
-.InitialOptionDesc_PerfectIVs:
-	text "Stats are calcu-"
-	line "lated as if IVs"
-
-	para "were perfect 15s,"
-	line "for your #mon"
-	cont "and opponents'."
-	prompt
-
-.InitialOptionDesc_TradedMon:
-	text "Traded #mon"
-	line "will obey you and"
-	cont "can be nicknamed,"
-
-	para "but Exp.Points"
-	line "won't be boosted."
-	prompt
-
-.InitialOptionDesc_RTC:
-	text "Use the Real-Time"
-	line "Clock function to"
-	cont "track the time."
-
-	para "If your cartridge"
-	line "or emulator does"
-	cont "not support RTC,"
-
-	assert NO_RTC_SPEEDUP == 6
-	para "disable this to"
-	line "make each in-game"
-	cont "day last 4 hours."
-	prompt
-
-.InitialOptionDesc_NextPage:
-	text "View the next"
-	line "page of options."
-	prompt
-
-.InitialOptionDesc_PrevPage:
-	text "View the previous"
-	line "page of options."
+InitialOptionsDoneDescription:
+	text "Save your choices"
+	line "and play the game!"
 	prompt
