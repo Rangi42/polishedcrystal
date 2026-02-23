@@ -115,3 +115,7 @@ MACRO jmp
 		assert warn, (\<_NARG>) - @ > 127 || (\<_NARG>) - @ < -129, "jp can be jr"
 	endc
 ENDM
+
+MACRO fallthrough
+	assert BANK(@) == BANK(\1) && @ == \1, "Address does not fallthrough to \1"
+ENDM
