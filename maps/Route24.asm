@@ -50,33 +50,33 @@ Route24TileScript:
 	endcallback
 
 Route24_OverheadBridgeAsm:
-	changebridgeblock 20, 16, $ee, ROUTE_24
-	changebridgeblock 20, 18, $ec, ROUTE_24
-	changebridgeblock 20, 20, $ec, ROUTE_24
-	changebridgeblock 20, 22, $ec, ROUTE_24
-	changebridgeblock 20, 24, $ec, ROUTE_24
-	changebridgeblock 20, 26, $ec, ROUTE_24
-	changebridgeblock 20, 28, $ec, ROUTE_24
-	changebridgeblock 20, 30, $ec, ROUTE_24
-	changebridgeblock 20, 32, $ec, ROUTE_24
-	changebridgeblock 20, 34, $ec, ROUTE_24
-	changebridgeblock 20, 36, $ec, ROUTE_24
-	changebridgeblock 20, 38, $ed, ROUTE_24
+	changebridgeblock 20, 16, $39, ROUTE_24
+	changebridgeblock 20, 18, $38, ROUTE_24
+	changebridgeblock 20, 20, $38, ROUTE_24
+	changebridgeblock 20, 22, $38, ROUTE_24
+	changebridgeblock 20, 24, $38, ROUTE_24
+	changebridgeblock 20, 26, $38, ROUTE_24
+	changebridgeblock 20, 28, $38, ROUTE_24
+	changebridgeblock 20, 30, $38, ROUTE_24
+	changebridgeblock 20, 32, $38, ROUTE_24
+	changebridgeblock 20, 34, $38, ROUTE_24
+	changebridgeblock 20, 36, $38, ROUTE_24
+	changebridgeblock 20, 38, $49, ROUTE_24
 	jmp BufferScreen
 
 Route24_UnderfootBridgeAsm:
-	changebridgeblock 20, 16, $d2, ROUTE_24
-	changebridgeblock 20, 18, $d2, ROUTE_24
-	changebridgeblock 20, 20, $d2, ROUTE_24
-	changebridgeblock 20, 22, $d2, ROUTE_24
-	changebridgeblock 20, 24, $d2, ROUTE_24
-	changebridgeblock 20, 26, $d2, ROUTE_24
-	changebridgeblock 20, 28, $d2, ROUTE_24
-	changebridgeblock 20, 30, $d2, ROUTE_24
-	changebridgeblock 20, 32, $d2, ROUTE_24
-	changebridgeblock 20, 34, $d2, ROUTE_24
-	changebridgeblock 20, 36, $d2, ROUTE_24
-	changebridgeblock 20, 38, $b1, ROUTE_24
+	changebridgeblock 20, 16, $34, ROUTE_24
+	changebridgeblock 20, 18, $34, ROUTE_24
+	changebridgeblock 20, 20, $34, ROUTE_24
+	changebridgeblock 20, 22, $34, ROUTE_24
+	changebridgeblock 20, 24, $34, ROUTE_24
+	changebridgeblock 20, 26, $34, ROUTE_24
+	changebridgeblock 20, 28, $34, ROUTE_24
+	changebridgeblock 20, 30, $34, ROUTE_24
+	changebridgeblock 20, 32, $34, ROUTE_24
+	changebridgeblock 20, 34, $34, ROUTE_24
+	changebridgeblock 20, 36, $34, ROUTE_24
+	changebridgeblock 20, 38, $4a, ROUTE_24
 	jmp BufferScreen
 
 Route24BridgeOverheadTrigger:

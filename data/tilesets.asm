@@ -16,6 +16,7 @@ Tilesets::
 	tileset TilesetBattleTowerOutside
 	tileset TilesetEcruteakShrine
 	tileset TilesetKanto
+	tileset TilesetKantoNorth
 	tileset TilesetIndigoPlateau
 	tileset TilesetShamoutiIsland
 	tileset TilesetValenciaIsland
@@ -153,12 +154,14 @@ TilesetEcruteakShrineColl:: INCBIN "data/tilesets/ecruteak_shrine_collision.bin.
 SECTION "Tileset Graphics - kanto common vram0", ROMX
 
 TilesetKantoGFX0::
+TilesetKantoNorthGFX0::
 TilesetIndigoPlateauGFX0:: INCBIN "gfx/tilesets/kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Graphics - kanto vram1", ROMX
 
-TilesetKantoGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
+TilesetKantoGFX1::
+TilesetKantoNorthGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Data - kanto", ROMX
@@ -166,6 +169,13 @@ SECTION "Tileset Data - kanto", ROMX
 TilesetKantoMeta:: INCBIN "data/tilesets/kanto_metatiles.bin.lzp"
 TilesetKantoAttr:: INCBIN "data/tilesets/kanto_attributes.bin.lzp"
 TilesetKantoColl:: INCBIN "data/tilesets/kanto_collision.bin.lzp"
+
+
+SECTION "Tileset Data - kanto north", ROMX
+
+TilesetKantoNorthMeta:: INCBIN "data/tilesets/kanto_north_metatiles.bin.lzp"
+TilesetKantoNorthAttr:: INCBIN "data/tilesets/kanto_north_attributes.bin.lzp"
+TilesetKantoNorthColl:: INCBIN "data/tilesets/kanto_north_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - indigo plateau vram1", ROMX
@@ -883,6 +893,7 @@ TilesetJohtoOutlandsGFX2::
 TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
+TilesetKantoNorthGFX2::
 TilesetIndigoPlateauGFX2::
 TilesetShamoutiIslandGFX2::
 TilesetValenciaIslandGFX2::

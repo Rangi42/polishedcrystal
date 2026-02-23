@@ -5,6 +5,7 @@ CutGrassBlockPointers:
 	dbw TILESET_JOHTO_OUTLANDS, .johto_outlands
 	dbw TILESET_JOHTO_ANCIENT, .johto_ancient
 	dbw TILESET_KANTO, .kanto
+	dbw TILESET_KANTO_NORTH, .kanto_north
 	dbw TILESET_INDIGO_PLATEAU, .indigo_plateau
 	dbw TILESET_SHAMOUTI_ISLAND, .shamouti_island
 	dbw TILESET_VALENCIA_ISLAND, .valencia_island
@@ -33,8 +34,9 @@ CutGrassBlockPointers:
 	db -1
 
 .kanto
-	db $0b, $0a
 	db $87, $94
+.kanto_north
+	db $0b, $0a
 	db -1
 
 .indigo_plateau

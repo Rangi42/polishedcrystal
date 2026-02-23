@@ -59,6 +59,7 @@ TilesetEcruteakShrineAnim::
 	dw NULL,  DoneTileAnimation
 
 TilesetKantoAnim::
+TilesetKantoNorthAnim::
 TilesetIndigoPlateauAnim::
 	dw vTiles2 tile $14, AnimateKantoWaterTile
 	dw vTiles2 tile $40, WriteTileToBuffer
