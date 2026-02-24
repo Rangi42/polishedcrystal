@@ -249,3 +249,4 @@
 	tilecoll WARP_CARPET_LEFT, FLOOR, WARP_CARPET_LEFT, FLOOR ; f8
 	tilecoll WALL, FLOOR, WALL, FLOOR ; f9
 	tilecoll WATER, WATER, FLOOR, FLOOR ; fa
+	tilecoll WALL, WALL, FLOOR, FLOOR ; fb

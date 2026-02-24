@@ -5,10 +5,10 @@ Route1617Gate_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  0,  5, ROUTE_16_SOUTH, 1
-	warp_event  0,  6, ROUTE_16_SOUTH, 2
-	warp_event  9,  5, ROUTE_16_NORTHEAST, 1
-	warp_event  9,  6, ROUTE_16_NORTHEAST, 2
+	warp_event  0,  5, ROUTE_17_NORTH, 1
+	warp_event  0,  6, ROUTE_17_NORTH, 2
+	warp_event  9,  5, ROUTE_16_EAST, 1
+	warp_event  9,  6, ROUTE_16_EAST, 2
 	warp_event  8,  8, ROUTE_16_17_GATE_2F, 1
 
 	def_coord_events

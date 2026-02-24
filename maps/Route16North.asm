@@ -1,4 +1,4 @@
-Route16Northwest_MapScriptHeader:
+Route16North_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
@@ -11,11 +11,7 @@ Route16Northwest_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  2, BGEVENT_JUMPTEXT, Route16SignpostText
 
 	def_object_events
+	cuttree_event  5,  3, EVENT_ROUTE_16_NORTH_CUT_TREE
 	cuttree_event -5,  2, EVENT_ROUTE_16_WEST_CUT_TREE
-
-Route16SignpostText:
-	text "Route 16"
-	done

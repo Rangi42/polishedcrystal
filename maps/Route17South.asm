@@ -1,20 +1,20 @@
-Route17_MapScriptHeader:
+Route17South_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, Route17AlwaysOnBikeCallback
+	callback MAPCALLBACK_NEWMAP, Route17SouthAlwaysOnBikeCallback
 
 	def_warp_events
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 11, 71, BGEVENT_ITEM + MAX_ETHER, EVENT_ROUTE_17_HIDDEN_MAX_ETHER
-	bg_event 10, 123, BGEVENT_ITEM + MAX_ELIXIR, EVENT_ROUTE_17_HIDDEN_MAX_ELIXIR
-	bg_event  9, 64, BGEVENT_JUMPTEXT, Route17Notice1Text
-	bg_event  9, 71, BGEVENT_JUMPTEXT, Route17TrainerTips1Text
-	bg_event  9, 94, BGEVENT_JUMPTEXT, Route17TrainerTips2Text
-	bg_event  9, 101, BGEVENT_JUMPTEXT, Route17Notice2Text
+	bg_event 11, 71, BGEVENT_ITEM + MAX_ETHER, EVENT_ROUTE_17_SOUTH_HIDDEN_MAX_ETHER
+	bg_event 10, 123, BGEVENT_ITEM + MAX_ELIXIR, EVENT_ROUTE_17_SOUTH_HIDDEN_MAX_ELIXIR
+	bg_event  9, 64, BGEVENT_JUMPTEXT, Route17SouthNotice1Text
+	bg_event  9, 71, BGEVENT_JUMPTEXT, Route17SouthTrainerTips1Text
+	bg_event  9, 94, BGEVENT_JUMPTEXT, Route17SouthTrainerTips2Text
+	bg_event  9, 101, BGEVENT_JUMPTEXT, Route17SouthNotice2Text
 
 	def_object_events
 	object_event 12,  9, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBikerDale, -1
@@ -30,7 +30,7 @@ Route17_MapScriptHeader:
 	object_event  6, 42, SPRITE_ROUGHNECK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerRoughneckTheron, -1
 	object_event  4, 91, SPRITE_ROUGHNECK, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerRoughneckMarkey, -1
 
-Route17AlwaysOnBikeCallback:
+Route17SouthAlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE
 	setflag ENGINE_DOWNHILL
 	endcallback
@@ -251,14 +251,14 @@ RoughneckMarkeyBeatenText:
 	text "All right, thanks!"
 	done
 
-Route17Notice1Text:
+Route17SouthNotice1Text:
 	text "It's a notice."
 
 	para "Watch out for"
 	line "discarded items!"
 	done
 
-Route17TrainerTips1Text:
+Route17SouthTrainerTips1Text:
 	text "Trainer Tips"
 
 	para "All #mon are"
@@ -272,7 +272,7 @@ Route17TrainerTips1Text:
 	line "grow differently."
 	done
 
-Route17TrainerTips2Text:
+Route17SouthTrainerTips2Text:
 	text "Trainer Tips"
 
 	para "Open the Start"
@@ -281,7 +281,7 @@ Route17TrainerTips2Text:
 	cont "slope."
 	done
 
-Route17Notice2Text:
+Route17SouthNotice2Text:
 	text "It's a notice."
 
 	para "Don't throw the"

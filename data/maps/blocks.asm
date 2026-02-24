@@ -1740,19 +1740,22 @@ SECTION "Route15_BlockData", ROMX
 Route15_BlockData:
 	INCBIN "maps/Route15.ablk.lzp"
 
-SECTION "Route16Northeast_BlockData", ROMX
-Route16Northeast_BlockData:
-Route16Northwest_BlockData:
-Route16South_BlockData:
-	INCBIN "maps/Route16.ablk.lzp"
+SECTION "Route16East_BlockData", ROMX
+Route16East_BlockData:
+Route16North_BlockData:
+	INCBIN "maps/Route16East.ablk.lzp"
 
 SECTION "Route16West_BlockData", ROMX
 Route16West_BlockData:
 	INCBIN "maps/Route16West.ablk.lzp"
 
-SECTION "Route17_BlockData", ROMX
-Route17_BlockData:
-	INCBIN "maps/Route17.ablk.lzp"
+SECTION "Route17North_BlockData", ROMX
+Route17North_BlockData:
+	INCBIN "maps/Route17North.ablk.lzp"
+
+SECTION "Route17South_BlockData", ROMX
+Route17South_BlockData:
+	INCBIN "maps/Route17South.ablk.lzp"
 
 SECTION "Route18East_BlockData", ROMX
 Route18East_BlockData:

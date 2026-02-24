@@ -840,7 +840,7 @@
 	wildmon 55, MUK
 	end_grass_wildmons
 
-	def_grass_wildmons ROUTE_16_NORTHWEST
+	def_grass_wildmons ROUTE_16_NORTH
 	db 10 percent ; encounter rate
 	; morn
 	wildmon 53, GRIMER
