@@ -1,12 +1,12 @@
-UndergroundWarehouse_MapScriptHeader:
+GoldenrodUndergroundWarehouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, UndergroundWarehouseResetSwitches
+	callback MAPCALLBACK_NEWMAP, GoldenrodUndergroundWarehouseResetSwitches
 
 	def_warp_events
-	warp_event  2, 12, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 2
-	warp_event  3, 12, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 3
+	warp_event  2, 12, GOLDENROD_UNDERGROUND_SWITCH_ROOM, 2
+	warp_event  3, 12, GOLDENROD_UNDERGROUND_SWITCH_ROOM, 3
 	warp_event 17,  2, GOLDENROD_DEPT_STORE_B1F, 1
 
 	def_coord_events
@@ -18,26 +18,26 @@ UndergroundWarehouse_MapScriptHeader:
 	object_event  8, 15, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM14, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 14,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGruntM15, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 12,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundWarehouseDirectorScript, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	itemball_event 18, 15, MAX_ETHER, 1, EVENT_UNDERGROUND_WAREHOUSE_MAX_ETHER
-	tmhmball_event 13,  9, TM_X_SCISSOR, EVENT_UNDERGROUND_WAREHOUSE_TM_X_SCISSOR
-	itemball_event  2,  1, ULTRA_BALL, 1, EVENT_UNDERGROUND_WAREHOUSE_ULTRA_BALL
+	itemball_event 18, 15, MAX_ETHER, 1, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_MAX_ETHER
+	tmhmball_event 13,  9, TM_X_SCISSOR, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_TM_X_SCISSOR
+	itemball_event  2,  1, ULTRA_BALL, 1, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_ULTRA_BALL
 
-UndergroundWarehouseResetSwitches:
+GoldenrodUndergroundWarehouseResetSwitches:
 	clearevent EVENT_SWITCH_1
 	clearevent EVENT_SWITCH_2
 	clearevent EVENT_SWITCH_3
 	clearevent EVENT_EMERGENCY_SWITCH
-	clearevent EVENT_SWITCH_4
-	clearevent EVENT_SWITCH_5
-	clearevent EVENT_SWITCH_6
-	clearevent EVENT_SWITCH_7
-	clearevent EVENT_SWITCH_8
-	clearevent EVENT_SWITCH_9
-	clearevent EVENT_SWITCH_10
-	clearevent EVENT_SWITCH_11
-	clearevent EVENT_SWITCH_12
-	clearevent EVENT_SWITCH_13
-	clearevent EVENT_SWITCH_14
+	clearevent EVENT_DOOR_1_OPEN
+	clearevent EVENT_DOOR_2_OPEN
+	clearevent EVENT_DOOR_3_OPEN
+	clearevent EVENT_DOOR_4_OPEN
+	clearevent EVENT_DOOR_5_OPEN
+	clearevent EVENT_DOOR_6_OPEN
+	clearevent EVENT_DOOR_7_OPEN
+	clearevent EVENT_DOOR_8_OPEN
+	clearevent EVENT_DOOR_9_OPEN
+	clearevent EVENT_DOOR_10_OPEN
+	clearevent EVENT_DOOR_11_OPEN
 	setval $0
 	writemem wUndergroundSwitchPositions
 	endcallback
@@ -80,9 +80,9 @@ GoldenrodUndergroundWarehouseDirectorScript:
 	promptbutton
 	verbosegivekeyitem CARD_KEY
 	setevent EVENT_RECEIVED_CARD_KEY
-	setevent EVENT_WAREHOUSE_LAYOUT_1
-	clearevent EVENT_WAREHOUSE_LAYOUT_2
-	clearevent EVENT_WAREHOUSE_LAYOUT_3
+	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
+	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
+	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3
 	writetext DirectorCardKeyText
 	promptbutton
 	jumpopenedtext DirectorAfterText

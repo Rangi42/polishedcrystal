@@ -20,8 +20,8 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 18, 21, GOLDENROD_GAME_CORNER, 1
 	warp_event  9, 15, RADIO_TOWER_1F, 1 ; hole
 	warp_event 23,  1, ROUTE_35_GOLDENROD_GATE, 3
-	warp_event 13,  5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 8
-	warp_event 13, 29, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 5
+	warp_event 13,  5, GOLDENROD_UNDERGROUND_ENTRANCES, 5
+	warp_event 13, 29, GOLDENROD_UNDERGROUND_ENTRANCES, 2
 	warp_event 18, 27, GOLDENROD_POKECOM_CENTER_1F, 2
 	warp_event  4, 16, GOLDENROD_HARBOR_GATE, 3
 	warp_event  4, 17, GOLDENROD_HARBOR_GATE, 4
@@ -29,7 +29,7 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 37, 19, GOLDENROD_NET_BALL_HOUSE, 1
 	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
 	warp_event 13, 21, GOLDENROD_HONEY_HOUSE, 1
-	warp_event 39, 27, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 11
+	warp_event 39, 27, GOLDENROD_UNDERGROUND_ENTRANCES, 8
 
 	def_coord_events
 	coord_event  9, 15, SCENE_GOLDENRODCITY_NOOP, GoldenrodCityPanUpScript

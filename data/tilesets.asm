@@ -57,6 +57,7 @@ Tilesets::
 	tileset TilesetHiddenGrotto
 	tileset TilesetPeaks
 	tileset TilesetHideout
+	tileset TilesetKantoGym
 	assert_table_length NUM_TILESETS
 
 
@@ -859,6 +860,23 @@ TilesetHideoutAttr:: INCBIN "data/tilesets/hideout_attributes.bin.lzp"
 TilesetHideoutColl:: INCBIN "data/tilesets/hideout_collision.bin.lzp"
 
 
+SECTION "Tileset Graphics - kanto gym vram0", ROMX
+
+TilesetKantoGymGFX0:: INCBIN "gfx/tilesets/kanto_gym.2bpp.vram0.lzp"
+
+
+SECTION "Tileset Graphics - kanto gym vram1", ROMX
+
+TilesetKantoGymGFX1:: INCBIN "gfx/tilesets/kanto_gym.2bpp.vram1.lzp"
+
+
+SECTION "Tileset Data - kanto gym", ROMX
+
+TilesetKantoGymMeta:: INCBIN "data/tilesets/kanto_gym_metatiles.bin.lzp"
+TilesetKantoGymAttr:: INCBIN "data/tilesets/kanto_gym_attributes.bin.lzp"
+TilesetKantoGymColl:: INCBIN "data/tilesets/kanto_gym_collision.bin.lzp"
+
+
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
 TilesetJohtoOutlandsGFX2::
@@ -906,4 +924,5 @@ TilesetSnowtopMountainGFX2::
 TilesetHiddenGrottoGFX2::
 TilesetPeaksGFX2::
 TilesetHideoutGFX2::
+TilesetKantoGymGFX2::
 	db $ff ; Compressed data is terminated with $ff.

@@ -49,6 +49,7 @@ DEF NO_ROOF_TILESETS EQU const_value
 	const TILESET_HIDDEN_GROTTO        ; 2e
 	const TILESET_PEAKS                ; 2f
 	const TILESET_HIDEOUT              ; 30
+	const TILESET_KANTO_GYM            ; 31
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size

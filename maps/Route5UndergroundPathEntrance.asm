@@ -1,4 +1,4 @@
-Route5UndergroundEntrance_MapScriptHeader:
+Route5UndergroundPathEntrance_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
@@ -6,7 +6,7 @@ Route5UndergroundEntrance_MapScriptHeader:
 	def_warp_events
 	warp_event  3,  7, ROUTE_5, 1
 	warp_event  4,  7, ROUTE_5, 1
-	warp_event  4,  4, UNDERGROUND, 1
+	warp_event  4,  4, UNDERGROUND_PATH, 1
 
 	def_coord_events
 

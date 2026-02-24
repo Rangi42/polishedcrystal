@@ -499,10 +499,11 @@ ENDM
 	map_attributes IlexForest, ILEX_FOREST, $35, 0
 	map_attributes MurkySwamp, MURKY_SWAMP, $35, 0
 	map_attributes MagnetTunnelInside, MAGNET_TUNNEL_INSIDE, $9, 0
-	map_attributes WarehouseEntrance, WAREHOUSE_ENTRANCE, $0, 0
-	map_attributes UndergroundPathSwitchRoomEntrances, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, $0, 0
+	map_attributes GoldenrodUnderground, GOLDENROD_UNDERGROUND, $0, 0
+	map_attributes GoldenrodUndergroundSwitchRoom, GOLDENROD_UNDERGROUND_SWITCH_ROOM, $0, 0
+	map_attributes GoldenrodUndergroundEntrances, GOLDENROD_UNDERGROUND_ENTRANCES, $0, 0
 	map_attributes GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $0, 0
-	map_attributes UndergroundWarehouse, UNDERGROUND_WAREHOUSE, $0, 0
+	map_attributes GoldenrodUndergroundWarehouse, GOLDENROD_UNDERGROUND_WAREHOUSE, $0, 0
 	map_attributes MountMortar1FOutside, MOUNT_MORTAR_1F_OUTSIDE, $9, 0
 	map_attributes MountMortar1FInside, MOUNT_MORTAR_1F_INSIDE, $9, 0
 	map_attributes MountMortar2FInside, MOUNT_MORTAR_2F_INSIDE, $9, 0
@@ -549,7 +550,7 @@ ENDM
 	map_attributes MountMoon1F, MOUNT_MOON_1F, $9, 0
 	map_attributes MountMoonB1F, MOUNT_MOON_B1F, $9, 0
 	map_attributes MountMoonB2F, MOUNT_MOON_B2F, $9, 0
-	map_attributes Underground, UNDERGROUND, $0, 0
+	map_attributes UndergroundPath, UNDERGROUND_PATH, $0, 0
 	map_attributes RockTunnel1F, ROCK_TUNNEL_1F, $9, 0
 	map_attributes RockTunnelB1F, ROCK_TUNNEL_B1F, $9, 0
 	map_attributes RockTunnel2F, ROCK_TUNNEL_2F, $9, 0
@@ -662,7 +663,7 @@ ENDM
 	map_attributes VermilionHouseDiglettsCaveSpeechHouse, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE, $0, 0
 	map_attributes VermilionGym, VERMILION_GYM, $0, 0
 	map_attributes Route6SaffronGate, ROUTE_6_SAFFRON_GATE, $0, 0
-	map_attributes Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
+	map_attributes Route6UndergroundPathEntrance, ROUTE_6_UNDERGROUND_PATH_ENTRANCE, $0, 0
 	map_attributes Route11Gate, ROUTE_11_GATE, $0, 0
 	map_attributes Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
 	map_attributes VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
@@ -843,7 +844,7 @@ ENDM
 	map_attributes SilphCo3F, SILPH_CO_3F, $0, 0
 	map_attributes CopycatsHouse1F, COPYCATS_HOUSE_1F, $0, 0
 	map_attributes CopycatsHouse2F, COPYCATS_HOUSE_2F, $0, 0
-	map_attributes Route5UndergroundEntrance, ROUTE_5_UNDERGROUND_ENTRANCE, $0, 0
+	map_attributes Route5UndergroundPathEntrance, ROUTE_5_UNDERGROUND_PATH_ENTRANCE, $0, 0
 	map_attributes Route5SaffronCityGate, ROUTE_5_SAFFRON_CITY_GATE, $0, 0
 	map_attributes Route5CleanseTagSpeechHouse, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE, $0, 0
 	map_attributes PokemonTrainerFanClub, POKEMON_TRAINER_FAN_CLUB, $0, 0

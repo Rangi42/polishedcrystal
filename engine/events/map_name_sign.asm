@@ -123,7 +123,7 @@ InitMapNameSign::
 	ret z
 	cp LAV_RADIO_TOWER
 	ret z
-	cp UNDERGROUND
+	cp UNDERGROUND_PATH
 	ret z
 	cp POWER_PLANT
 	ret z

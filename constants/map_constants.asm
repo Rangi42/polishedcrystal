@@ -102,49 +102,50 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B2F,                       15,  9 ; 40
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
-	map_const WAREHOUSE_ENTRANCE,                         16, 20 ; 43
-	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 21 ; 44
-	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 45
-	map_const UNDERGROUND_WAREHOUSE,                      10,  9 ; 46
-	map_const MOUNT_MORTAR_1F_OUTSIDE,                    20, 18 ; 47
-	map_const MOUNT_MORTAR_1F_INSIDE,                     20, 25 ; 48
-	map_const MOUNT_MORTAR_2F_INSIDE,                     20, 18 ; 49
-	map_const MOUNT_MORTAR_B1F,                           20, 18 ; 50
-	map_const ICE_PATH_1F,                                20, 15 ; 51
-	map_const ICE_PATH_B1F,                               10, 18 ; 52
-	map_const ICE_PATH_B2F_MAHOGANY_SIDE,                 10,  9 ; 53
-	map_const ICE_PATH_B2F_BLACKTHORN_SIDE,                5,  9 ; 54
-	map_const ICE_PATH_B3F,                               10,  5 ; 55
-	map_const WHIRL_ISLAND_NW,                            17, 18 ; 56
-	map_const WHIRL_ISLAND_NE,                            10,  9 ; 57
-	map_const WHIRL_ISLAND_SW,                            10,  9 ; 58
-	map_const WHIRL_ISLAND_CAVE,                           5,  8 ; 59
-	map_const WHIRL_ISLAND_SE,                             5,  9 ; 60
-	map_const WHIRL_ISLAND_B1F,                           20, 18 ; 61
-	map_const WHIRL_ISLAND_B2F,                           10, 18 ; 62
-	map_const WHIRL_ISLAND_LUGIA_CHAMBER,                 10,  9 ; 63
-	map_const SILVER_CAVE_ROOM_1,                         10, 18 ; 64
-	map_const SILVER_CAVE_ROOM_2,                         15, 17 ; 65
-	map_const SILVER_CAVE_ROOM_3,                          8, 16 ; 66
-	map_const SILVER_CAVE_ITEM_ROOMS,                     20, 18 ; 67
-	map_const DARK_CAVE_VIOLET_ENTRANCE,                  20, 18 ; 68
-	map_const DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 69
-	map_const DRAGONS_DEN_1F,                             10,  4 ; 70
-	map_const DRAGONS_DEN_B1F,                            20, 18 ; 71
-	map_const DRAGON_SHRINE,                               5,  5 ; 72
-	map_const TOHJO_FALLS,                                15,  9 ; 73
-	map_const GIOVANNIS_CAVE,                             10, 24 ; 74
-	map_const DIGLETTS_CAVE,                              21, 19 ; 75
-	map_const MOUNT_MOON_1F,                              15, 13 ; 76
-	map_const MOUNT_MOON_B1F,                             16, 14 ; 77
-	map_const MOUNT_MOON_B2F,                             16, 17 ; 78
-	map_const UNDERGROUND,                                 3, 18 ; 79
-	map_const ROCK_TUNNEL_1F,                             15, 14 ; 80
-	map_const ROCK_TUNNEL_B1F,                            15, 14 ; 81
-	map_const ROCK_TUNNEL_2F,                             15, 14 ; 82
-	map_const VICTORY_ROAD_1F,                            12, 13 ; 83
-	map_const VICTORY_ROAD_2F,                            14, 11 ; 84
-	map_const VICTORY_ROAD_3F,                            12,  9 ; 85
+	map_const GOLDENROD_UNDERGROUND,                      16, 20 ; 43
+	map_const GOLDENROD_UNDERGROUND_SWITCH_ROOM,          14,  7 ; 44
+	map_const GOLDENROD_UNDERGROUND_ENTRANCES,             5, 19 ; 45
+	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 46
+	map_const GOLDENROD_UNDERGROUND_WAREHOUSE,            10,  9 ; 47
+	map_const MOUNT_MORTAR_1F_OUTSIDE,                    20, 18 ; 48
+	map_const MOUNT_MORTAR_1F_INSIDE,                     20, 25 ; 49
+	map_const MOUNT_MORTAR_2F_INSIDE,                     20, 18 ; 50
+	map_const MOUNT_MORTAR_B1F,                           20, 18 ; 51
+	map_const ICE_PATH_1F,                                20, 15 ; 52
+	map_const ICE_PATH_B1F,                               10, 18 ; 53
+	map_const ICE_PATH_B2F_MAHOGANY_SIDE,                 10,  9 ; 54
+	map_const ICE_PATH_B2F_BLACKTHORN_SIDE,                5,  9 ; 55
+	map_const ICE_PATH_B3F,                               10,  5 ; 56
+	map_const WHIRL_ISLAND_NW,                            17, 18 ; 57
+	map_const WHIRL_ISLAND_NE,                            10,  9 ; 58
+	map_const WHIRL_ISLAND_SW,                            10,  9 ; 59
+	map_const WHIRL_ISLAND_CAVE,                           5,  8 ; 60
+	map_const WHIRL_ISLAND_SE,                             5,  9 ; 61
+	map_const WHIRL_ISLAND_B1F,                           20, 18 ; 62
+	map_const WHIRL_ISLAND_B2F,                           10, 18 ; 63
+	map_const WHIRL_ISLAND_LUGIA_CHAMBER,                 10,  9 ; 64
+	map_const SILVER_CAVE_ROOM_1,                         10, 18 ; 65
+	map_const SILVER_CAVE_ROOM_2,                         15, 17 ; 66
+	map_const SILVER_CAVE_ROOM_3,                          8, 16 ; 67
+	map_const SILVER_CAVE_ITEM_ROOMS,                     20, 18 ; 68
+	map_const DARK_CAVE_VIOLET_ENTRANCE,                  20, 18 ; 69
+	map_const DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 70
+	map_const DRAGONS_DEN_1F,                             10,  4 ; 71
+	map_const DRAGONS_DEN_B1F,                            20, 18 ; 72
+	map_const DRAGON_SHRINE,                               5,  5 ; 73
+	map_const TOHJO_FALLS,                                15,  9 ; 74
+	map_const GIOVANNIS_CAVE,                             10, 24 ; 75
+	map_const DIGLETTS_CAVE,                              21, 19 ; 76
+	map_const MOUNT_MOON_1F,                              15, 13 ; 77
+	map_const MOUNT_MOON_B1F,                             16, 14 ; 78
+	map_const MOUNT_MOON_B2F,                             16, 17 ; 79
+	map_const UNDERGROUND_PATH,                            3, 18 ; 80
+	map_const ROCK_TUNNEL_1F,                             15, 14 ; 81
+	map_const ROCK_TUNNEL_B1F,                            15, 14 ; 82
+	map_const ROCK_TUNNEL_2F,                             15, 14 ; 83
+	map_const VICTORY_ROAD_1F,                            12, 13 ; 84
+	map_const VICTORY_ROAD_2F,                            14, 11 ; 85
+	map_const VICTORY_ROAD_3F,                            12,  9 ; 86
 
 	newgroup                                                     ;  4
 	map_const ECRUTEAK_HOUSE,                             10,  9 ;  1
@@ -309,7 +310,7 @@ ENDM
 	map_const VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE,  4,  4 ;  9
 	map_const VERMILION_GYM,                               5,  9 ; 10
 	map_const ROUTE_6_SAFFRON_GATE,                        5,  4 ; 11
-	map_const ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 12
+	map_const ROUTE_6_UNDERGROUND_PATH_ENTRANCE,           4,  4 ; 12
 	map_const ROUTE_11_GATE,                               5,  5 ; 13
 	map_const ROUTE_11_GATE_2F,                            4,  4 ; 14
 	map_const VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
@@ -568,7 +569,7 @@ ENDM
 	map_const COPYCATS_HOUSE_1F,                           4,  4 ; 10
 	map_const COPYCATS_HOUSE_2F,                           4,  3 ; 11
 	map_const ROUTE_5,                                    10, 17 ; 12
-	map_const ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
+	map_const ROUTE_5_UNDERGROUND_PATH_ENTRANCE,           4,  4 ; 13
 	map_const ROUTE_5_SAFFRON_CITY_GATE,                   5,  4 ; 14
 	map_const ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
 	map_const POKEMON_TRAINER_FAN_CLUB,                    6,  9 ; 16

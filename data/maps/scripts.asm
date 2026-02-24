@@ -254,11 +254,12 @@ INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 
 
-SECTION "Underground Warehouse Scripts", ROMX
+SECTION "Goldenrod Underground Scripts", ROMX
 
-INCLUDE "maps/UndergroundWarehouse.asm"
-INCLUDE "maps/UndergroundPathSwitchRoomEntrances.asm"
-INCLUDE "maps/WarehouseEntrance.asm"
+INCLUDE "maps/GoldenrodUndergroundWarehouse.asm"
+INCLUDE "maps/GoldenrodUndergroundSwitchRoom.asm"
+INCLUDE "maps/GoldenrodUndergroundEntrances.asm"
+INCLUDE "maps/GoldenrodUnderground.asm"
 
 
 SECTION "Magnet Tunnel Scripts", ROMX
@@ -741,7 +742,7 @@ INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CopycatsHouse1F.asm"
 INCLUDE "maps/CopycatsHouse2F.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
-INCLUDE "maps/Underground.asm"
+INCLUDE "maps/UndergroundPath.asm"
 
 
 SECTION "Silph Co Scripts", ROMX
@@ -928,10 +929,10 @@ SECTION "Routes 5-8 Scripts", ROMX
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route5CleanseTagSpeechHouse.asm"
 INCLUDE "maps/Route5SaffronCityGate.asm"
-INCLUDE "maps/Route5UndergroundEntrance.asm"
+INCLUDE "maps/Route5UndergroundPathEntrance.asm"
 INCLUDE "maps/Route6.asm"
 INCLUDE "maps/Route6SaffronGate.asm"
-INCLUDE "maps/Route6UndergroundEntrance.asm"
+INCLUDE "maps/Route6UndergroundPathEntrance.asm"
 INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route8.asm"

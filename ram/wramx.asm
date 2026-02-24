@@ -1272,7 +1272,7 @@ wTeamRocketBaseB2FSceneID:: db
 wTeamRocketBaseB3FSceneID:: db
 wTinTower1FSceneID:: db
 wTradeCenterSceneID:: db
-wUndergroundPathSwitchRoomEntrancesSceneID:: db
+wGoldenrodUndergroundSwitchRoomSceneID:: db
 wVermilionCitySceneID:: db
 wVermilionPortSceneID:: db
 wVictoryRoad2FSceneID:: db
@@ -1334,7 +1334,11 @@ wOvercastRandomMaps::
 	overcast_random_map Kanto1
 	overcast_random_map Kanto2
 
-	ds 50 ; unused
+wNeededMonPalLight:: db ; for SPRITE_MON_ICON two-nybble palettes, stores the light color palette index
+wNeededPalType:: db ; 0 = normal palette, non-zero = mon two-nybble palette
+wLoadedObjPalType:: db ; bitmask: bit N set = slot N is a mon palette, clear = normal palette
+
+	ds 47 ; unused
 
 wCandyAmounts::
 	table_width 1
