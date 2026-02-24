@@ -43,7 +43,7 @@ StartMenu::
 
 .Reopen:
 	call RestoreSprites
-	call LoadWeatherPal
+	farcall LoadWeatherPal
 	call ClearSpritesUnderStartMenu
 	call UpdateSprites
 	call UpdateTimePals
@@ -129,9 +129,8 @@ StartMenu::
 	jr .ReturnEnd2
 
 .ReturnRedraw:
-	assert BANK("Dynamic Pals System") == BANK(@)
-	call ClearSavedObjPals
-	call DisableDynPalUpdates
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
