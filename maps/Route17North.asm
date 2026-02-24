@@ -14,7 +14,7 @@ Route17North_MapScriptHeader:
 	bg_event 13,  3, BGEVENT_JUMPTEXT, CyclingRoadSignText
 
 	def_object_events
-	object_event 10,  8, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
+	object_event  9,  6, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 Route17NorthAlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE

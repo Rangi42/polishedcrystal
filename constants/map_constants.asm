@@ -442,7 +442,7 @@ ENDM
 	newgroup                                                     ; 21
 	map_const ROUTE_7,                                    10,  9 ;  1
 	map_const ROUTE_16_EAST,                              14,  7 ;  2
-	map_const ROUTE_17_NORTH,                             14,  9 ;  3
+	map_const ROUTE_17_NORTH,                             12, 10 ;  3
 	map_const ROUTE_17_SOUTH,                             10, 63 ;  4
 	map_const ROUTE_18_WEST,                              12,  9 ;  5
 	map_const URAGA_CHANNEL_EAST,                         23,  9 ;  6

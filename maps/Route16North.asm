@@ -14,4 +14,4 @@ Route16North_MapScriptHeader:
 
 	def_object_events
 	cuttree_event  5,  3, EVENT_ROUTE_16_NORTH_CUT_TREE
-	cuttree_event -5,  2, EVENT_ROUTE_16_WEST_CUT_TREE
+	cuttree_event -5,  4, EVENT_ROUTE_16_WEST_CUT_TREE
