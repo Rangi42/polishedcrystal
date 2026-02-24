@@ -16,7 +16,6 @@ BattleCommand_furycutter:
 	ld b, [hl]
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVarAddr
-	ld a, [hl]
 .loop
 	dec b
 	jr z, .done

@@ -1,10 +1,9 @@
 BattleCommand_trickroom:
 	call AnimateCurrentMove
 
-	ld hl, wTrickRoom
+	ld hl, wGravityTrickRoom
 	ld a, [hl]
-	and a
-	ld [hl], 5
+	and FIELD_TRICK_ROOM
 	jr z, .new_trick_room
 	ld [hl], 0
 
@@ -12,6 +11,9 @@ BattleCommand_trickroom:
 	jmp StdBattleTextbox
 
 .new_trick_room
+	ld a, [hl]
+	add 5
+	ld [hl], a
 	ld hl, TrickRoomText
 	call StdBattleTextbox
 

@@ -440,6 +440,11 @@ endc
 	const COVET         ; $1AA
 	const HEAT_WAVE     ; $1AB
 	const HOWL          ; $1AC
+
+	const WAKE_UP_SLAP	; $1AD
+	const STRANGE_STEAM ; $1AF
+	const MAGIC_ROOM    ; $1B2
+	const WONDER_ROOM   ; $1B3
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; assert NUM_ATTACKS is less than 10-bits wide

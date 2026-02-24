@@ -1268,6 +1268,32 @@ TrickRoomEndedText:
 	line "normal!"
 	prompt
 
+MagicRoomText:
+	text "It created a"
+	line "bizarre area."
+
+	para "Held items lost"
+	line "their effects!"
+	prompt
+
+MagicRoomEndedText:
+	text "The effects of"
+	line "Magic Room faded."
+	prompt
+
+WonderRoomText:
+	text "It created a"
+	line "bizarre area."
+
+	para "Def and Sp.Def"
+	line "have been swapped!"
+	prompt
+
+WonderRoomEndedText:
+	text "The effects of"
+	line "Wonder Room faded."
+	prompt
+
 IntenseGravityText:
 	text "Gravity"
 	line "intensified!"

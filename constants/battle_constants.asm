@@ -287,11 +287,20 @@ DEF TEAM_LUCKY_CHANT EQU %00000111
 DEF TEAM_TAILWIND    EQU %00111000
 DEF TEAM_WISH        EQU %11000000
 
+; wPlayerThroatChopEmbargoCount or wEnemyThroatChopEmbargoCount bit masks
+DEF SUBSTATUS_EMBARGO     EQU %00001111
+DEF SUBSTATUS_THROAT_CHOP EQU %11110000
+
 ; wPlayerScreens or wEnemyScreens bit masks (stackable)
 DEF VEILS_AURORA_VEIL EQU %00001111
 
-; wFieldEffects bit masks
-DEF FIELD_GRAVITY    EQU %00000111
+; wGravityTrickRoom bit masks
+DEF FIELD_GRAVITY    EQU %00001111
+DEF FIELD_TRICK_ROOM EQU %11110000
+
+; wMagicWonderRoom bit masks
+DEF FIELD_MAGIC_ROOM  EQU %00001111
+DEF FIELD_WONDER_ROOM EQU %11110000
 
 ; values in wBattleWeather
 	const_def
