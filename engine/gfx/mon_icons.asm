@@ -275,7 +275,6 @@ _GetMonIconPalette:
 	pop af
 	jr z, .not_shiny
 	inc hl
-
 .not_shiny
 	ld a, [hl]
 	ret
@@ -296,12 +295,9 @@ DecodeMonIconPal:
 	jr nz, .two_colors
 	; Same nybbles: single-color palette
 	ld a, NO_PAL_LOADED
-	ld [wNeededMonPalLight], a
-	jr .return_dark
-
+; fallthrough
 .two_colors
 	ld [wNeededMonPalLight], a
-
 .return_dark
 	ld a, b
 	ret

@@ -61,7 +61,8 @@ CheckForUsedObjPals::
 
 	; Initialize transient palette state before dual pal check
 	ld [wNeededPalType], a ; a = 0 = normal
-	ld a, NO_PAL_LOADED
+	assert NO_PAL_LOADED == -1
+	dec a
 	ld [wNeededMonPalLight], a
 
 	call CheckDualObjectPals
