@@ -282,7 +282,7 @@ LineChar::
 ContText::
 	ld a, [wTextboxFlags]
 	bit NO_TEXT_PAUSE_F, a
-	jr nz, .stopHere
+	jr nz, Text_StopAtNonblockingPause
 	ld a, [wLinkMode]
 	or a
 	call z, LoadBlinkingCursor
@@ -298,9 +298,8 @@ ContText::
 	pop de
 	jmp NextChar
 
-.stopHere
-	; Non-blocking: stop at this continuation point
-	ld a, 1
+Text_StopAtNonblockingPause::
+	ld a, TRUE
 	ldh [hStopPrintingString], a
 	pop hl
 	dec de
@@ -309,7 +308,7 @@ ContText::
 Paragraph::
 	ld a, [wTextboxFlags]
 	bit NO_TEXT_PAUSE_F, a
-	jr nz, .stopHere
+	jr nz, Text_StopAtNonblockingPause
 	push de
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -338,14 +337,6 @@ Paragraph::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	pop de
 	jmp NextChar
-
-.stopHere
-	; Non-blocking: stop at this paragraph break
-	ld a, 1
-	ldh [hStopPrintingString], a
-	pop hl
-	dec de
-	ret
 
 PromptText::
 	ld a, [wTextboxFlags]

@@ -46,6 +46,7 @@ ROMX $03
 
 ROMX $04
 	"bank4"
+	"Dynamic Pals System" ; can float
 
 ROMX $05
 	"bank5"

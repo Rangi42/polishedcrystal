@@ -247,7 +247,7 @@ OptionsShared_SimpleAdvanceDescription:
 	ld a, [wOptionsMenuDescriptionState]
 	cp OPTDESCSTATE_DONE
 	call z, OptionsShared_DispatchLookupDescription
-	jmp OptionsShared_PlaceDescriptionTextInstantly
+	jr OptionsShared_PlaceDescriptionTextInstantly
 
 OptionsShared_SetSelectionFromCursor:
 	ld a, [wMenuCursorY]

@@ -532,7 +532,7 @@ INCLUDE "engine/movie/splash.asm"
 INCLUDE "engine/movie/intro.asm"
 
 
-SECTION "Options Menus", ROMX, BANK[$7d]
+SECTION "Options Menus", ROMX
 
 INCLUDE "engine/menus/options_menu_shared.asm"
 INCLUDE "engine/menus/initial_options_menu.asm"
