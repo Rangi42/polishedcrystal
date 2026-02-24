@@ -138,16 +138,15 @@ ScanObjectStructPals:
 	; Mon palettes: ID = (light << 4) | dark, type = 1
 	ld c, a
 	ld a, [wNeededMonPalLight]
-	cp NO_PAL_LOADED
-	jr z, .normal_pal_type
+	assert NO_PAL_LOADED == -1
+	inc a
+	jr z, .set_pal_type
+	dec a
 	; Mon palette: combine both nybbles for unique slot matching
 	swap a
 	or c
 	ld c, a ; c = combined ID
 	ld a, 1
-	jr .set_pal_type
-.normal_pal_type
-	xor a
 .set_pal_type
 	ld [wNeededPalType], a
 	ld a, c

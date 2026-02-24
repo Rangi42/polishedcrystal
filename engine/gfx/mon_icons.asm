@@ -273,13 +273,11 @@ _GetMonIconPalette:
 	add hl, bc
 
 	pop af
-	jr nz, .shiny
-	ld a, [hl] ; normal = first byte
-	ret
-
-.shiny
+	jr z, .not_shiny
 	inc hl
-	ld a, [hl] ; shiny = second byte
+
+.not_shiny
+	ld a, [hl]
 	ret
 
 ; Decode a PAL_MON_*_* value into wNeededPalIndex and wNeededMonPalLight.
@@ -299,11 +297,12 @@ DecodeMonIconPal:
 	; Same nybbles: single-color palette
 	ld a, NO_PAL_LOADED
 	ld [wNeededMonPalLight], a
-	ld a, b
-	ret
+	jr .return_dark
 
 .two_colors
 	ld [wNeededMonPalLight], a
+
+.return_dark
 	ld a, b
 	ret
 
