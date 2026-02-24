@@ -10,7 +10,8 @@ ClearSavedObjPals::
 	ld [wLoadedObjPalType], a
 	ld hl, wLoadedObjPal0
 	ld bc, wNeededPalIndex - wLoadedObjPal0
-	ld a, NO_PAL_LOADED
+	assert NO_PAL_LOADED == -1
+	dec a
 	ld [wNeededMonPalLight], a
 	rst ByteFill
 
@@ -122,12 +123,9 @@ ScanObjectStructPals:
 	ld a, c
 	and $f
 	cp [hl]
-	jr nz, .two_nybbles
+	jr nz, .store_pal_index
 	; Same nybble values, treat as normal single palette
 	ld [hl], NO_PAL_LOADED
-.two_nybbles
-	; low nybble = main (dark) palette, wNeededMonPalLight has the high nybble (light) palette
-	jr .store_pal_index
 
 .not_mon_icon_pal
 	ld a, c
