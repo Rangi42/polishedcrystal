@@ -343,21 +343,24 @@ _ChooseWildEncounter:
 	ld a, [hli]
 	ld b, a
 
-	; Mons encountered while surfing sometimes get a minor level boost.
-	push bc
-	call CheckOnWater
-	pop bc
-	jr nz, .ok
+	; #1382 Removed CheckOnWater call. This ensures that
+	; walking encounters will also get the encounter
+	; level variance.
 	call Random
+	; 35% chance to use level as-is
 	cp 35 percent
 	jr c, .ok
 	inc b
+	; 30% chance +1 level
 	cp 65 percent
 	jr c, .ok
 	inc b
+	; 20% chance +2 levels
 	cp 85 percent
 	jr c, .ok
 	inc b
+	; 10% chance +3 levels
+	;  5% chance +4 levels
 	cp 95 percent
 	jr c, .ok
 	inc b
