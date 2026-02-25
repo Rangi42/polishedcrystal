@@ -858,7 +858,7 @@ ENDM
 	map_attributes Route30BerrySpeechHouse, ROUTE_30_BERRY_SPEECH_HOUSE, $0, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $0, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $0, 0
-	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $5, 0
+	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $0, 0
 	map_attributes PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_attributes PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
 	map_attributes ViridianForest, VIRIDIAN_FOREST, $45, 0

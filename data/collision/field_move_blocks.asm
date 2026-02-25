@@ -18,7 +18,7 @@ CutGrassBlockPointers:
 ; Which meta tile are we facing, and which should we replace it with?
 
 .johto_traditional
-	db $f9, $02
+	db $c1, $02
 .johto_modern
 .johto_ancient
 .valencia_island
