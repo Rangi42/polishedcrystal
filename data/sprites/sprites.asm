@@ -73,7 +73,7 @@ SpriteHeaders:
 	overworld_sprite AnabelSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite FlannerySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite MayleneSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite MarlonSpriteGFX, WALKING_SPRITE, PAL_OW_MARLON
+	overworld_sprite MarlonSpriteGFX, WALKING_SPRITE, PAL_OW_DARK_BLUE
 	overworld_sprite ValerieSpriteGFX, WALKING_SPRITE, PAL_OW_PINK
 	overworld_sprite KukuiSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CaitlinSpriteGFX, WALKING_SPRITE, PAL_OW_PINK
@@ -193,8 +193,8 @@ SpriteHeaders:
 	overworld_sprite N64SpriteGFX, STANDING_SPRITE, PAL_OW_GRAY
 	overworld_sprite GameCubeSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite WiiSpriteGFX, STANDING_SPRITE, PAL_OW_AZURE
-	overworld_sprite SilverTrophySpriteGFX, STANDING_SPRITE, PAL_OW_WHITE
-	overworld_sprite GoldTrophySpriteGFX, STANDING_SPRITE, PAL_OW_YELLOW
+	overworld_sprite SilverTrophySpriteGFX, STANDING_SPRITE, PAL_OW_ENV_WHITE
+	overworld_sprite GoldTrophySpriteGFX, STANDING_SPRITE, PAL_OW_ENV_YELLOW
 	overworld_sprite ElectricFenceLeftSpriteGFX, STANDING_SPRITE, PAL_OW_ELECTRIC_FENCE
 	overworld_sprite ElectricFenceRightSpriteGFX, STANDING_SPRITE, PAL_OW_ELECTRIC_FENCE
 	overworld_sprite SailboatSpriteGFX, STANDING_SPRITE, PAL_OW_SAILBOAT
