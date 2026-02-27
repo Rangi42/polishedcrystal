@@ -1,32 +1,12 @@
 ; Johto Pokémon in grass
 
-	def_grass_wildmons SPROUT_TOWER_2F
+	def_wildmons SPROUT_TOWER_2F
 	db 2 percent ; encounter rate
-	; morn
-	wildmon 3, RATTATA
-	wildmon 4, RATTATA
-	wildmon 5, RATTATA
-	wildmon 3, BELLSPROUT
-	wildmon 6, RATTATA
-	wildmon 5, BELLSPROUT
-	wildmon 6, BELLSPROUT
-	; day
-	wildmon 3, RATTATA
-	wildmon 4, RATTATA
-	wildmon 5, RATTATA
-	wildmon 3, BELLSPROUT
-	wildmon 6, RATTATA
-	wildmon 5, BELLSPROUT
-	wildmon 6, BELLSPROUT
-	; nite
-	wildmon 3, RATTATA
-	wildmon 4, RATTATA
-	wildmon 5, GASTLY
-	wildmon 3, BELLSPROUT
-	wildmon 6, GASTLY
-	wildmon 5, BELLSPROUT
-	wildmon 6, BELLSPROUT
-	end_grass_wildmons
+	;       morn%, min, max, day%, min, max, nite%, min, max, species
+	wildmon    85,   3,   6,   85,   3,   6,    65,   3,   4, RATTATA
+	wildmon    15,   3,   6,   15,   3,   6,    15,   3,   6, BELLSPROUT
+	wildmon    -1,   3,   6,   -1,   3,   6,    20,   4,   6, GASTLY
+	end_wildmons
 
 	def_grass_wildmons SPROUT_TOWER_3F
 	db 2 percent ; encounter rate
