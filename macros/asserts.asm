@@ -71,38 +71,30 @@ MACRO? assert_list_length
 		"{CURRENT_LIST_START}: expected {d:x} entries, got {d:list_index}"
 ENDM
 
-MACRO? def_grass_wildmons
+; TODO: re/un/define labels used in def_wildmons macros, remove values
+; specific to grass vs water encounters, define these new labels, etc.
+MACRO? def_wildmons
 ;\1: map id
-	REDEF CURRENT_GRASS_WILDMONS_MAP EQUS "\1"
-	REDEF CURRENT_GRASS_WILDMONS_LABEL EQUS "._def_grass_wildmons_\1"
-{CURRENT_GRASS_WILDMONS_LABEL}:
+	REDEF CURRENT_WILDMONS_MAP EQUS "\1"
+	REDEF CURRENT_WILDMONS_LABEL EQUS "._def_wildmons_\1"
+{CURRENT_WILDMONS_LABEL}:
 	map_id \1
 ENDM
 
-MACRO? end_grass_wildmons
-	def x = @ - {CURRENT_GRASS_WILDMONS_LABEL}
-	assert GRASS_WILDDATA_LENGTH == x, \
-		"def_grass_wildmons {CURRENT_GRASS_WILDMONS_MAP}: expected {d:GRASS_WILDDATA_LENGTH} bytes, got {d:x}"
-ENDM
-
-MACRO? def_water_wildmons
-;\1: map id
-	REDEF CURRENT_WATER_WILDMONS_MAP EQUS "\1"
-	REDEF CURRENT_WATER_WILDMONS_LABEL EQUS "._def_water_wildmons_\1"
-{CURRENT_WATER_WILDMONS_LABEL}:
-	map_id \1
-ENDM
-
-MACRO? end_water_wildmons
-	def x = @ - {CURRENT_WATER_WILDMONS_LABEL}
-	assert WATER_WILDDATA_LENGTH == x, \
-		"def_water_wildmons {CURRENT_WATER_WILDMONS_MAP}: expected {d:WATER_WILDDATA_LENGTH} bytes, got {d:x}"
+MACRO? end_wildmons
+	def x = @ - {CURRENT_WILDMONS_LABEL}
+	assert WILDDATA_LENGTH == x, \
+		"def_wildmons {CURRENT_WILDMONS_MAP}: expected {d:WILDDATA_LENGTH} bytes, got {d:x}"
 ENDM
 
 MACRO? wildmon
-	db (\1)
-	shift
-	dp \#
+	db \1
+	db \2, \3
+	db \4
+	db \5, \6
+	db \7
+	db \8, \9
+	dp \10
 ENDM
 
 MACRO? jmp
