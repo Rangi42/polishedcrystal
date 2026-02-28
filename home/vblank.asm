@@ -140,9 +140,7 @@ VBlank0::
 	ldh a, [hWX]
 	ldh [rWX], a
 
-	; Run VRAM operations without carry-skip chain.
-	; At CGB double speed we have ~2280 M-cycles in VBlank,
-	; enough for multiple operations per frame.
+	; At CGB double speed we have ~2280 M-cycles in VBlank
 
 	; 9 [skip] / 51 + 75x(N/2) [fire] M cycles
 	; walk down N = $18, thus 951 M-cycles worst case
