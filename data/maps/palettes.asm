@@ -29,6 +29,7 @@ ENDM
 	special_bg_pal map,      DRAGON_SHRINE,               PAL_SINGLE,    DragonShrinePalette
 	special_bg_pal overcast, ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette_Overcast
 	special_bg_pal map,      ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette
+	special_bg_pal map,      MAHOGANY_GYM,                PAL_SINGLE,    MahoganyGymPalette
 	special_bg_pal map,      BLACKTHORN_GYM_1F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      BLACKTHORN_GYM_2F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      CINNABAR_LAB,                PAL_SINGLE,    CinnabarLabPalette
@@ -1139,6 +1140,19 @@ endr
 	RGB_MONOCHROME_BLACK
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+MahoganyGymPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/MahoganyGym.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
