@@ -162,9 +162,7 @@ VBlank0::
 	; At cp 149: skips when ≥1140 M-cycles elapsed (buffer updates).
 	ldh a, [rLY]
 	cp 149
-	jr nc, .skipBGMap
-	call UpdateBGMap
-.skipBGMap:
+	call c, UpdateBGMap
 
 	; Tile data transfers (have their own LY checks).
 	call Serve2bppRequest
