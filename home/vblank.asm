@@ -140,26 +140,32 @@ VBlank0::
 	ldh a, [hWX]
 	ldh [rWX], a
 
-	; There's only time to call one of these in one vblank.
-	; Calls are in order of priority.
+	; Run VRAM operations without carry-skip chain.
+	; At CGB double speed we have ~2280 M-cycles in VBlank,
+	; enough for multiple operations per frame.
 
 	call UpdateBGMapBuffer
-	jr c, .done
 	call UpdateCGBPals
-	jr c, .done
 	call DMATransfer
-	jr c, .done
-	call UpdateBGMap
 
-	; These have their own timing checks.
-
-	call Serve2bppRequest
-	call Serve1bppRequest
+	; Cheap operations that need consistent execution:
 	call AnimateTileset
 	call PlaceFootprints
 
-.done
-	call UpdateCGBPalsLYTimed
+	; Heavy BG map copy (~909 M-cycles). Gate on LY to avoid
+	; overrunning VBlank when earlier operations consumed time.
+	; At cp 149: skips when ≥1140 M-cycles elapsed (buffer updates).
+	ldh a, [rLY]
+	cp 149
+	jr nc, .skipBGMap
+	call UpdateBGMap
+.skipBGMap:
+
+	; Tile data transfers (have their own LY checks).
+	call Serve2bppRequest
+	call Serve1bppRequest
+
+	; OAM DMA — must complete within VBlank.
 	call PushOAM
 	; vblank-sensitive operations are done
 
