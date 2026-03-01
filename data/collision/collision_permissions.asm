@@ -97,7 +97,7 @@ CollisionPermissionTable::
 	db LAND_TILE  ; 5e
 	db LAND_TILE  ; 5f
 	db LAND_TILE  ; COLL_HOLE
-	db LAND_TILE  ; 61
+	db LAND_TILE  ; COLL_STONE_WARP
 	db LAND_TILE  ; 62
 	db LAND_TILE  ; 63
 	db LAND_TILE  ; 64

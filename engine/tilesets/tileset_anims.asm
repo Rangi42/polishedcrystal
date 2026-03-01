@@ -93,12 +93,16 @@ TilesetPortAnim::
 	dw NULL,  DoneTileAnimation
 
 TilesetGymAnim::
+	dw vTiles2 tile $28, AnimateWaterTile
+	dw vTiles2 tile $58, WriteTileToBuffer
 	dw vTiles2 tile $38, AnimateLavaBubbleTile2
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  DoNothing
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
+	dw wTileAnimBuffer, ScrollTileDown
 	dw vTiles2 tile $5b, AnimateLavaBubbleTile1
-	dw NULL,  DoNothing
+	dw vTiles2 tile $58, ReadTileFromBuffer
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
