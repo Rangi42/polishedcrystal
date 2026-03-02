@@ -1,6 +1,10 @@
 DEF _abilflag_count = 0
+DEF _abilflag_error = 0
 MACRO abilflag
-	assert \1 == _abilflag_count, "Ability ID mismatch: \1"
+	if !_abilflag_error
+		def _abilflag_error |= \1 != _abilflag_count
+		assert !_abilflag_error, "Ability ID mismatch: \1"
+	endc
 	def _abilflag_count += 1
 	def _abilflag_flags = 0
 	for i, 2, _NARG + 1
