@@ -639,10 +639,10 @@
 
 ; More Johto story events
 	const EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	const EVENT_SWITCH_1
-	const EVENT_SWITCH_2
-	const EVENT_SWITCH_3
-	const EVENT_EMERGENCY_SWITCH
+	const_skip ; EVENT_SWITCH_1
+	const_skip ; EVENT_SWITCH_2
+	const_skip ; EVENT_SWITCH_3
+	const_skip ; EVENT_EMERGENCY_SWITCH
 	const EVENT_DOOR_1_OPEN
 	const EVENT_DOOR_2_OPEN
 	const EVENT_DOOR_3_OPEN

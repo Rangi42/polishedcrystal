@@ -103,7 +103,7 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
 	map_const GOLDENROD_UNDERGROUND,                      11, 20 ; 43
-	map_const GOLDENROD_UNDERGROUND_SWITCH_ROOM,          14,  7 ; 44
+	map_const GOLDENROD_UNDERGROUND_SWITCH_ROOM,          16,  7 ; 44
 	map_const GOLDENROD_UNDERGROUND_ENTRANCES,             5, 19 ; 45
 	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 46
 	map_const GOLDENROD_UNDERGROUND_WAREHOUSE,            10,  9 ; 47
