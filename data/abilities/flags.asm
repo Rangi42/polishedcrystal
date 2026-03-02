@@ -11,6 +11,7 @@ ENDM
 
 AbilityFlags:
 ; When adding abilities, keep Polished's additional flags in mind.
+	table_width 1
 	abilflag NO_ABILITY, NO_COPY, NO_TRACE, NO_SWAP
 	abilflag STENCH
 	abilflag DRIZZLE
@@ -169,3 +170,4 @@ AbilityFlags:
 	abilflag SHARPNESS
 	abilflag ARMOR_TAIL
 	abilflag MINDS_EYE, IGNORABLE
+	assert_table_length NUM_ABILITIES
