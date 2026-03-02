@@ -105,6 +105,7 @@ AbilityNames:
 	dw HoneyGather
 	dw Frisk
 	dw Reckless
+	dw BadDreams
 	dw Pickpocket
 	dw SheerForce
 	dw Contrary
@@ -264,6 +265,7 @@ SnowWarning:     rawchar "Snow Warning@"
 HoneyGather:     rawchar "Honey Gather@"
 Frisk:           rawchar "Frisk@"
 Reckless:        rawchar "Reckless@"
+BadDreams:       rawchar "Bad Dreams@"
 Pickpocket:      rawchar "Pickpocket@"
 SheerForce:      rawchar "Sheer Force@"
 Contrary:        rawchar "Contrary@"

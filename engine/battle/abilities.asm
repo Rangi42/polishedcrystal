@@ -1331,12 +1331,12 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
-	; If Bad Dreams is implemented, remember to add CheckFaint in endturn.asm
 	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
+	dbw BAD_DREAMS, BadDreamsAbility
 	dbw -1, -1
 
 CudChewAbility:
@@ -1602,6 +1602,22 @@ MoodyAbility:
 .lower_done
 	call EndAbility
 	farjp CheckMirrorHerb
+
+BadDreamsAbility:
+; Inflict 1/8th of Max HP damage to sleeping foes.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and SLP_MASK
+	ret z
+	call BeginAbility
+	call ShowAbilityActivation
+	call SwitchTurn
+	call GetEighthMaxHP
+	predef SubtractHPFromUser
+	call SwitchTurn
+	ld hl, IsTormentedText
+	call StdBattleTextbox
+	jmp EndAbility
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
