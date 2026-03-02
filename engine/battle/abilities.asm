@@ -240,12 +240,14 @@ WeatherAbility:
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
 	call GetOpponentIgnorableAbility
+	ld b, a
 	inc a
 	jr z, .intimidate_ok
 	dec a
 	call GetAbilityFlags
 	and ABILFLAG_NO_INTIMIDATE
 	jr z, .intimidate_ok
+	farcall BufferAbility
 	call BeginAbility
 	call ShowAbilityActivation
 	call ShowEnemyAbilityActivation
@@ -2020,7 +2022,7 @@ _GetOpponentAbility:
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .not_transformed
 	ld a, b
-	call GetAbilityFlags
+	call _GetAbilityFlags
 	and ABILFLAG_NO_TRANSFORM
 	jr nz, .remove_ability
 
@@ -2045,7 +2047,7 @@ _GetOpponentAbility:
 
 	ld a, b
 	call AbilityCanBeSuppressed
-	jr z, .not_suppressed
+	jr nz, .not_suppressed
 .remove_ability
 	ld b, 0
 .not_suppressed
