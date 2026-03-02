@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Pokémon Polished Crystal is a ROM hack of Pokémon Crystal built on the [pret/pokecrystal](https://github.com/pret/pokecrystal) disassembly. The entire codebase is **Game Boy Z80 assembly** (GBZ80), assembled with [RGBDS](https://rgbds.gbdev.io/). Supporting tools are written in **C** and **Python 3**. The target output is a `.gbc` ROM file.
+Pokémon Polished Crystal is a ROM hack of Pokémon Crystal built on the [pret/pokecrystal](https://github.com/pret/pokecrystal) disassembly. The entire codebase is **Game Boy assembly** (SM83), assembled with [RGBDS](https://rgbds.gbdev.io/). Supporting tools are written in **C** and **Python 3**. The target output is a `.gbc` ROM file.
 
 Last Released version: **3.2.3**. RGBDS version required: **1.0.1**.
 
@@ -10,7 +10,7 @@ Last Released version: **3.2.3**. RGBDS version required: **1.0.1**.
 
 ### Prerequisites
 
-- **RGBDS 1.0.1** (`rgbasm`, `rgblink`, `rgbfix`, `rgbgfx`) — install system-wide or place binaries in a `rgbds/` directory at the repo root.
+- **RGBDS** (`rgbasm`, `rgblink`, `rgbfix`, `rgbgfx`) — install system-wide or place binaries in a `rgbds/` directory at the repo root.
 - **GCC**, **make**, **bison**, **git**, **libpng-dev** (for building C tools in `tools/`).
 - **Python 3** (for utility scripts in `utils/`).
 
@@ -94,7 +94,7 @@ The GitHub Actions CI (`.github/workflows/build.yml`) builds on Ubuntu and produ
 
 ### General Style
 
-- The codebase uses **GBZ80 assembly** syntax for RGBDS (rgbasm).
+- The codebase uses **SM83 assembly** syntax for RGBDS (rgbasm).
 - Use **tabs** for indentation, **spaces** for alignment. When tabs interfere with alignment, use spaces instead.
 - **80-character soft line limit.** Not strictly enforced, but try to keep lines within it.
 - Labels start at column 0; instructions are indented one tab.
