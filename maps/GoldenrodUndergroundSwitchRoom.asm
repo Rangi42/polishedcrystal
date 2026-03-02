@@ -7,32 +7,33 @@ GoldenrodUndergroundSwitchRoom_MapScriptHeader:
 	callback MAPCALLBACK_TILES, GoldenrodUndergroundSwitchRoomUpdateDoorPositions
 
 	def_warp_events
-	warp_event 25,  2, GOLDENROD_UNDERGROUND, 6
-	warp_event 24,  9, GOLDENROD_UNDERGROUND_WAREHOUSE, 1
-	warp_event 25,  9, GOLDENROD_UNDERGROUND_WAREHOUSE, 2
+	warp_event 28,  2, GOLDENROD_UNDERGROUND, 6
+	warp_event 27,  8, GOLDENROD_UNDERGROUND_WAREHOUSE, 1
+	warp_event 28,  8, GOLDENROD_UNDERGROUND_WAREHOUSE, 2
 
 	def_coord_events
-	coord_event 21,  3, SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL_BATTLE, UndergroundRivalTrigger1
-	coord_event 21,  4, SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL_BATTLE, UndergroundRivalTrigger2
+	coord_event 23,  1, SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL_BATTLE, UndergroundRivalTrigger1
+	coord_event 23,  2, SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL_BATTLE, UndergroundRivalTrigger2
+	coord_event 23,  3, SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL_BATTLE, UndergroundRivalTrigger3
 
 	def_bg_events
-	bg_event 18,  0, BGEVENT_READ, Switch1Script
-	bg_event 12,  0, BGEVENT_READ, Switch2Script
-	bg_event  4,  0, BGEVENT_READ, Switch3Script
-	bg_event 22,  9, BGEVENT_READ, EmergencySwitchScript
-	bg_event 10,  8, BGEVENT_ITEM + MAX_POTION, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_HIDDEN_MAX_POTION
-	bg_event  3,  7, BGEVENT_ITEM + REVIVE, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_HIDDEN_REVIVE
+	bg_event 11,  4, BGEVENT_READ, RedSwitchScript
+	bg_event 10,  4, BGEVENT_READ, GreenSwitchScript
+	bg_event  9,  4, BGEVENT_READ, BlueSwitchScript
+	bg_event 25,  8, BGEVENT_READ, EmergencySwitchScript
+	bg_event 16,  6, BGEVENT_ITEM + MAX_POTION, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_HIDDEN_MAX_POTION
+	bg_event  3,  2, BGEVENT_ITEM + REVIVE, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_HIDDEN_REVIVE
 
 	def_object_events
-	object_event 25,  2, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_GOLDENROD_UNDERGROUND
-	object_event 11, 11, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  6,  7, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 19,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 13,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM11, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  5,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 21, 10, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerGruntF3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	itemball_event  3, 11, SMOKE_BALL, 1, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_SMOKE_BALL
-	itemball_event 16,  8, FULL_HEAL, 1, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_FULL_HEAL
+	object_event 28,  2, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_GOLDENROD_UNDERGROUND
+	object_event  9, 10, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  3,  6, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 20,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 18,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerGruntM11, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  5,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 24,  9, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerGruntF3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	itemball_event  4, 10, SMOKE_BALL, 1, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_SMOKE_BALL
+	itemball_event 10,  2, FULL_HEAL, 1, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_FULL_HEAL
 
 	object_const_def
 	const GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
@@ -40,34 +41,36 @@ GoldenrodUndergroundSwitchRoom_MapScriptHeader:
 DEF ugdoor_n = 0
 
 MACRO ugdoor_def
-;\1: x coord
-;\2: y coord
-;\3: closed block id
-;\4: open block id
+;\1: colors
+;\2: x coord
+;\3: y coord
+;\4: closed block id
+;\5: open block id
 ;...
 	DEF ugdoor_n += 1
-	DEF UGDOOR_{d:ugdoor_n}_SIZE EQU _NARG / 4
+	DEF UGDOOR_{d:ugdoor_n}_COLORS EQUS " \1 "
+	DEF UGDOOR_{d:ugdoor_n}_SIZE EQU (_NARG - 1) / 4
 	for i, UGDOOR_{d:ugdoor_n}_SIZE
-		DEF UGDOOR_{d:ugdoor_n}_X_{d:i}      EQU \1
-		DEF UGDOOR_{d:ugdoor_n}_Y_{d:i}      EQU \2
-		DEF UGDOOR_{d:ugdoor_n}_CLOSED_{d:i} EQU \3
-		DEF UGDOOR_{d:ugdoor_n}_OPEN_{d:i}   EQU \4
+		DEF UGDOOR_{d:ugdoor_n}_X_{d:i}      EQU \2
+		DEF UGDOOR_{d:ugdoor_n}_Y_{d:i}      EQU \3
+		DEF UGDOOR_{d:ugdoor_n}_CLOSED_{d:i} EQU \4
+		DEF UGDOOR_{d:ugdoor_n}_OPEN_{d:i}   EQU \5
 		shift 4
 	endr
 ENDM
 
-	;           x,  y, closed, open,  x,  y, closed, open ; id
-	ugdoor_def 18,  4,    $31,  $0d, 18,  6,    $4a,  $0d ;  1
-	ugdoor_def 12,  4,    $31,  $0d, 12,  6,    $4a,  $0d ;  2
-	ugdoor_def  4,  4,    $31,  $0d,  4,  6,    $4a,  $0d ;  3
-	ugdoor_def  4,  8,    $31,  $0d,  4, 10,    $4a,  $0d ;  4
-	ugdoor_def 12,  8,    $31,  $0d, 12, 10,    $4a,  $0d ;  5
-	ugdoor_def 18,  8,    $31,  $0d, 18, 10,    $4a,  $0d ;  6
-	ugdoor_def 14,  4,    $41,  $34, 14,  6,    $40,  $4a ;  7
-	ugdoor_def  8,  4,    $42,  $11,  8,  6,    $40,  $4a ;  8
-	ugdoor_def 14,  8,    $43,  $35, 14, 10,    $40,  $4a ;  9
-	ugdoor_def  8,  8,    $44,  $37,  8, 10,    $40,  $4a ; 10
-	ugdoor_def 20,  8,    $45,  $3c, 20, 10,    $40,  $4a ; 11
+	;          color(s),    x,  y, closed, open,  x,  y, closed, open ; id
+	ugdoor_def RED,        16,  4,    $51,  $62                       ;  1
+	ugdoor_def GREEN,       4,  4,    $41,  $60                       ;  2
+	ugdoor_def BLUE GREEN,  4,  8,    $49,  $61                       ;  3
+	ugdoor_def BLUE RED,   10,  8,    $51,  $62                       ;  4
+	ugdoor_def GREEN RED,  16,  8,    $41,  $60                       ;  5
+	ugdoor_def BLUE RED,   12,  4,    $5a,  $5b, 12,  6,    $4e,  $4f ;  6
+	ugdoor_def BLUE GREEN,  6,  4,    $42,  $43,  6,  6,    $46,  $47 ;  7
+	ugdoor_def GREEN,      18,  8,    $42,  $43, 18, 10,    $46,  $47 ;  8
+	ugdoor_def GREEN RED,  12,  8,    $52,  $53, 12, 10,    $56,  $57 ;  9
+	ugdoor_def BLUE RED,    6,  8,    $4a,  $4b,  6, 10,    $4e,  $4f ; 10
+	ugdoor_def EMERGENCY,  20,  8,    $5c,  $64, 22,  8,    $5d,  $18 ; 11
 
 MACRO changeugdoor
 ;\1: ugdoor id
@@ -75,6 +78,15 @@ MACRO changeugdoor
 	DEF n = \1
 	for i, UGDOOR_{d:n}_SIZE
 		changeblock UGDOOR_{d:n}_X_{d:i}, UGDOOR_{d:n}_Y_{d:i}, UGDOOR_{d:n}_\2_{d:i}
+	endr
+ENDM
+
+MACRO toggleugdoors
+;\1: color
+	for n, 1, ugdoor_n + 1
+		if STRFIND(#UGDOOR_{d:n}_COLORS, " \1 ") != -1
+			toggleevent EVENT_DOOR_{d:n}_OPEN
+		endc
 	endr
 ENDM
 
@@ -88,36 +100,22 @@ endr
 	endcallback
 
 UndergroundRivalTrigger1:
-	turnobject PLAYER, RIGHT
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	playsound SFX_EXIT_BUILDING
-	appear GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
-	waitsfx
-	applymovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, UndergroundRivalApproachMovement1
-	turnobject PLAYER, RIGHT
-	scall UndergroundRivalBattleScript
-	applymovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, UndergroundRivalRetreatMovement1
-	playsound SFX_EXIT_BUILDING
-	disappear GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
-	setscene SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_NOOP
-	waitsfx
-	playmapmusic
-	end
+	scall UndergroundRivalAppearScript
+	scall UndergroundRivalBattleScript1
+	sjumpfwd UndergroundRivalDisappear1Script
 
 UndergroundRivalTrigger2:
-	turnobject PLAYER, RIGHT
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	playsound SFX_EXIT_BUILDING
-	appear GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
-	waitsfx
-	applymovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, UndergroundRivalApproachMovement2
-	turnobject PLAYER, RIGHT
-	scall UndergroundRivalBattleScript
-	applymovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, UndergroundRivalRetreatMovement2
+	scall UndergroundRivalAppearScript
+	scall UndergroundRivalBattleScript2
+	sjumpfwd UndergroundRivalDisappear2Script
+
+UndergroundRivalTrigger3:
+	scall UndergroundRivalAppearScript
+	scall UndergroundRivalBattleScript1
+UndergroundRivalDisappear1Script:
+	applyonemovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, step_right
+UndergroundRivalDisappear2Script:
+	applymovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, UndergroundRivalRetreatMovement
 	playsound SFX_EXIT_BUILDING
 	disappear GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
 	setscene SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_NOOP
@@ -125,7 +123,23 @@ UndergroundRivalTrigger2:
 	playmapmusic
 	end
 
-UndergroundRivalBattleScript:
+UndergroundRivalAppearScript:
+	turnobject PLAYER, RIGHT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	playsound SFX_EXIT_BUILDING
+	appear GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
+	waitsfx
+	applymovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, UndergroundRivalApproachMovement
+	end
+
+UndergroundRivalBattleScript1:
+	applyonemovement GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL, step_left
+UndergroundRivalBattleScript2:
+	faceobject PLAYER, GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
+	setlasttalked GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
+	faceplayer
 	checkevent EVENT_RIVAL_BURNED_TOWER
 	iftruefwd .Continue
 	setevent EVENT_RIVAL_BURNED_TOWER
@@ -139,7 +153,6 @@ UndergroundRivalBattleScript:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftruefwd .Chikorita
 	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
-	setlasttalked GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL
 	loadtrainer RIVAL1, RIVAL1_12
 	startbattle
 	dontrestartmapmusic
@@ -208,10 +221,10 @@ GenericTrainerGruntM11:
 	generictrainer GRUNTM, 11, EVENT_BEAT_ROCKET_GRUNTM_11, GruntM11SeenText, GruntM11BeatenText
 
 	text "I'm confused too…"
-	line "The switch on the"
+	line "The green switch"
 
-	para "end is the one to"
-	line "press first, but…"
+	para "is the one to"
+	line "press last, but…"
 	done
 
 GenericTrainerGruntM25:
@@ -219,12 +232,13 @@ GenericTrainerGruntM25:
 
 	text "All right. A hint!"
 
-	para "Change the order"
-	line "of switching."
+	para "You push a color"
+	line "switch, and the"
 
-	para "That'll change the"
-	line "ways the shutters"
-	cont "open and close."
+	para "shutters around"
+	line "that color will"
+	cont "open or close."
+	done
 	done
 
 GenericTrainerBurglarDuncan:
@@ -264,272 +278,62 @@ GenericTrainerGruntF3:
 	cont "See if I care!"
 	done
 
-Switch1Script:
+RedSwitchScript:
 	opentext
-	writetext SwitchRoomText_Switch1
-	promptbutton
-	checkevent EVENT_SWITCH_1
-	iftruefwd .On
-	writetext SwitchRoomText_OffTurnOn
+	writetext SwitchRoomText_RedSwitch
 	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	readmem wUndergroundSwitchPositions
-	addval 1
-	writemem wUndergroundSwitchPositions
-	setevent EVENT_SWITCH_1
+	iffalse_endtext
+	toggleugdoors RED
 	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
 
-.On:
-	writetext SwitchRoomText_OnTurnOff
-	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	readmem wUndergroundSwitchPositions
-	addval -1
-	writemem wUndergroundSwitchPositions
-	clearevent EVENT_SWITCH_1
-	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
-
-Switch2Script:
+GreenSwitchScript:
 	opentext
-	writetext SwitchRoomText_Switch2
-	promptbutton
-	checkevent EVENT_SWITCH_2
-	iftruefwd .On
-	writetext SwitchRoomText_OffTurnOn
+	writetext SwitchRoomText_GreenSwitch
 	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	readmem wUndergroundSwitchPositions
-	addval 2
-	writemem wUndergroundSwitchPositions
-	setevent EVENT_SWITCH_2
+	iffalse_endtext
+	toggleugdoors GREEN
 	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
 
-.On:
-	writetext SwitchRoomText_OnTurnOff
-	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	readmem wUndergroundSwitchPositions
-	addval -2
-	writemem wUndergroundSwitchPositions
-	clearevent EVENT_SWITCH_2
-	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
-
-Switch3Script:
+BlueSwitchScript:
 	opentext
-	writetext SwitchRoomText_Switch3
-	promptbutton
-	checkevent EVENT_SWITCH_3
-	iftruefwd .On
-	writetext SwitchRoomText_OffTurnOn
+	writetext SwitchRoomText_BlueSwitch
 	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	readmem wUndergroundSwitchPositions
-	addval 3
-	writemem wUndergroundSwitchPositions
-	setevent EVENT_SWITCH_3
-	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
-
-.On:
-	writetext SwitchRoomText_OnTurnOff
-	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	readmem wUndergroundSwitchPositions
-	addval -3
-	writemem wUndergroundSwitchPositions
-	clearevent EVENT_SWITCH_3
+	iffalse_endtext
+	toggleugdoors BLUE
 	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
 
 EmergencySwitchScript:
 	opentext
-	writetext SwitchRoomText_Emergency
-	promptbutton
-	checkevent EVENT_EMERGENCY_SWITCH
-	iftruefwd .On
-	writetext SwitchRoomText_OffTurnOn
+	writetext SwitchRoomText_EmergencySwitch
 	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	setval 7
-	writemem wUndergroundSwitchPositions
-	setevent EVENT_EMERGENCY_SWITCH
-	setevent EVENT_SWITCH_1
-	setevent EVENT_SWITCH_2
-	setevent EVENT_SWITCH_3
-	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
-
-.On:
-	writetext SwitchRoomText_OnTurnOff
-	yesorno
-	iffalsefwd GoldenrodUndergroundSwitchRoom_DontToggle
-	setval 0
-	writemem wUndergroundSwitchPositions
-	clearevent EVENT_EMERGENCY_SWITCH
-	clearevent EVENT_SWITCH_1
-	clearevent EVENT_SWITCH_2
-	clearevent EVENT_SWITCH_3
-	sjumpfwd GoldenrodUndergroundSwitchRoom_UpdateDoors
-
-GoldenrodUndergroundSwitchRoom_DontToggle:
-	endtext
-
+	iffalse_endtext
+	toggleugdoors EMERGENCY
 GoldenrodUndergroundSwitchRoom_UpdateDoors:
-	readmem wUndergroundSwitchPositions
-	ifequalfwd 0, .Position0
-	ifequalfwd 1, .Position1
-	ifequalfwd 2, .Position2
-	ifequalfwd 3, .Position3
-	ifequalfwd 4, .Position4
-	ifequalfwd 5, .Position5
-	ifequalfwd 6, .Position6
-	ifequalfwd 7, .EmergencyPosition
-.Position0:
 	playsound SFX_ENTER_DOOR
-	scall .CloseDoor1
-	scall .CloseDoor2
-	scall .CloseDoor3
-	scall .CloseDoor4
-	scall .CloseDoor5
-	scall .CloseDoor6
-	scall .CloseDoor7
-	scall .CloseDoor8
-	scall .CloseDoor9
-	scall .CloseDoor10
-	scall .CloseDoor11
-	refreshmap
-	endtext
-
-.Position1:
-	playsound SFX_ENTER_DOOR
-	scall .OpenDoor1
-	scall .OpenDoor7
-	scall .OpenDoor10
-	scall .CloseDoor6
-	scall .CloseDoor8
-	scall .CloseDoor9
-	scall .CloseDoor11
-	refreshmap
-	endtext
-
-.Position2:
-	playsound SFX_ENTER_DOOR
-	scall .OpenDoor2
-	scall .OpenDoor8
-	scall .OpenDoor9
-	scall .CloseDoor5
-	scall .CloseDoor7
-	scall .CloseDoor10
-	scall .CloseDoor11
-	refreshmap
-	endtext
-
-.Position3:
-	playsound SFX_ENTER_DOOR
-	scall .OpenDoor3
-	scall .OpenDoor7
-	scall .OpenDoor10
-	scall .CloseDoor4
-	scall .CloseDoor8
-	scall .CloseDoor9
-	scall .CloseDoor11
-	refreshmap
-	endtext
-
-.Position4:
-	playsound SFX_ENTER_DOOR
-	scall .OpenDoor4
-	scall .OpenDoor8
-	scall .OpenDoor9
-	scall .CloseDoor3
-	scall .CloseDoor7
-	scall .CloseDoor10
-	scall .CloseDoor11
-	refreshmap
-	endtext
-
-.Position5:
-	playsound SFX_ENTER_DOOR
-	scall .OpenDoor5
-	scall .OpenDoor7
-	scall .OpenDoor10
-	scall .CloseDoor2
-	scall .CloseDoor8
-	scall .CloseDoor9
-	scall .CloseDoor11
-	refreshmap
-	endtext
-
-.Position6:
-	playsound SFX_ENTER_DOOR
-	scall .OpenDoor6
-	scall .OpenDoor8
-	scall .OpenDoor9
-	scall .OpenDoor11
-	scall .CloseDoor1
-	scall .CloseDoor7
-	scall .CloseDoor10
-	refreshmap
-	endtext
-
-.EmergencyPosition:
-	playsound SFX_ENTER_DOOR
-	scall .CloseDoor1
-	scall .CloseDoor2
-	scall .OpenDoor3
-	scall .CloseDoor4
-	scall .OpenDoor5
-	scall .OpenDoor6
-	scall .CloseDoor7
-	scall .OpenDoor8
-	scall .OpenDoor9
-	scall .CloseDoor10
-	scall .OpenDoor11
-	refreshmap
-	closetext
-	setval 6
-	writemem wUndergroundSwitchPositions
-	end
-
 for n, 1, ugdoor_n + 1
-.OpenDoor{d:n}:
+	checkevent EVENT_DOOR_{d:n}_OPEN
+	iffalsefwd .door_{d:n}_closed
 	changeugdoor n, OPEN
-	setevent EVENT_DOOR_{d:n}_OPEN
-	end
-endr
-
-for n, 1, ugdoor_n + 1
-.CloseDoor{d:n}:
+	sjumpfwd .door_{d:n}_done
+.door_{d:n}_closed
 	changeugdoor n, CLOSED
-	clearevent EVENT_DOOR_{d:n}_OPEN
-	end
+.door_{d:n}_done
 endr
+	refreshmap
+	endtext
 
-UndergroundRivalApproachMovement1:
-	step_down
+UndergroundRivalApproachMovement:
+	step_left
 	step_left
 	step_left
 	step_left
 	step_end
 
-UndergroundRivalApproachMovement2:
-	step_down
-	step_down
-	step_left
-	step_left
-	step_left
-	step_end
-
-UndergroundRivalRetreatMovement1:
+UndergroundRivalRetreatMovement:
 	step_right
 	step_right
 	step_right
-	step_up
-	step_end
-
-UndergroundRivalRetreatMovement2:
 	step_right
-	step_right
-	step_right
-	step_up
-	step_up
 	step_end
 
 UndergroundRivalBeforeText:
@@ -645,11 +449,6 @@ GruntM13BeatenText:
 	line "you're cool, huh?"
 	done
 
-SwitchRoomText_Switch1:
-	text "It's labeled"
-	line "Switch 1."
-	done
-
 GruntF3SeenText:
 	text "Are you lost? No,"
 	line "you can't be."
@@ -666,27 +465,22 @@ GruntF3BeatenText:
 	text "How could you?"
 	done
 
-SwitchRoomText_OffTurnOn:
-	text "It's off."
-	line "Turn it on?"
+SwitchRoomText_RedSwitch:
+	text "Press the red"
+	line "switch?"
 	done
 
-SwitchRoomText_OnTurnOff:
-	text "It's on."
-	line "Turn it off?"
+SwitchRoomText_GreenSwitch:
+	text "Press the green"
+	line "switch?"
 	done
 
-SwitchRoomText_Switch2:
-	text "It's labeled"
-	line "Switch 2."
+SwitchRoomText_BlueSwitch:
+	text "Press the blue"
+	line "switch?"
 	done
 
-SwitchRoomText_Switch3:
-	text "It's labeled"
-	line "Switch 3."
-	done
-
-SwitchRoomText_Emergency:
-	text "It's labeled"
-	line "Emergency."
+SwitchRoomText_EmergencySwitch:
+	text "Press the emer-"
+	line "gency switch?"
 	done

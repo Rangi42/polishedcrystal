@@ -1186,7 +1186,9 @@ wHallOfFameCount:: dw
 wTradeFlags:: flag_array PARTY_LENGTH
 
 wMooMooBerries:: db
-wUndergroundSwitchPositions:: db
+
+	ds 1 ; unused
+
 wFarfetchdPosition:: db
 
 ; map triggers
