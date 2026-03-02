@@ -2027,11 +2027,20 @@ _GetOpponentAbility:
 .not_transformed
 	; Unless the ability is Neutralizing Gas, check if it's suppressed by it.
 	ld a, b
-	cp NEUTRALIZING_GAS
+	ld c, NEUTRALIZING_GAS
+	cp c
 	jr z, .not_suppressed
 
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp c
+	jr nz, .not_suppressed
+
+	; We know that the user has either Neutralizing Gas, or nothing.
+	; Thus, this doesn't cause an infinite loop. The reason this check
+	; exists at all is to verify that the Neutralizing Gas is active.
 	call GetUserAbility
-	cp NEUTRALIZING_GAS
+	cp c
 	jr nz, .not_suppressed
 
 	ld a, b
