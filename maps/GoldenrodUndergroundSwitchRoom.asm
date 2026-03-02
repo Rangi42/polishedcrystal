@@ -48,7 +48,7 @@ MACRO ugdoor_def
 ;\5: open block id
 ;...
 	DEF ugdoor_n += 1
-	DEF UGDOOR_{d:ugdoor_n}_COLORS EQUS "& \1"
+	DEF UGDOOR_{d:ugdoor_n}_COLORS EQUS " \1 "
 	DEF UGDOOR_{d:ugdoor_n}_SIZE EQU (_NARG - 1) / 4
 	for i, UGDOOR_{d:ugdoor_n}_SIZE
 		DEF UGDOOR_{d:ugdoor_n}_X_{d:i}      EQU \2
@@ -59,18 +59,18 @@ MACRO ugdoor_def
 	endr
 ENDM
 
-	;          color(s),      x,  y, closed, open,  x,  y, closed, open ; id
-	ugdoor_def RED,          16,  4,    $51,  $62                       ;  1
-	ugdoor_def GREEN,         4,  4,    $41,  $60                       ;  2
-	ugdoor_def BLUE & GREEN,  4,  8,    $49,  $61                       ;  3
-	ugdoor_def BLUE & RED,   10,  8,    $51,  $62                       ;  4
-	ugdoor_def GREEN & RED,  16,  8,    $41,  $60                       ;  5
-	ugdoor_def BLUE & RED,   12,  4,    $5a,  $5b, 12,  6,    $4e,  $4f ;  6
-	ugdoor_def BLUE & GREEN,  6,  4,    $42,  $43,  6,  6,    $46,  $47 ;  7
-	ugdoor_def GREEN,        18,  8,    $42,  $43, 18, 10,    $46,  $47 ;  8
-	ugdoor_def GREEN & RED,  12,  8,    $52,  $53, 12, 10,    $56,  $57 ;  9
-	ugdoor_def BLUE & RED,    6,  8,    $4a,  $4b,  6, 10,    $4e,  $4f ; 10
-	ugdoor_def EMERGENCY,    20,  8,    $5c,  $64, 22,  8,    $5d,  $18 ; 11
+	;          color(s),    x,  y, closed, open,  x,  y, closed, open ; id
+	ugdoor_def RED,        16,  4,    $51,  $62                       ;  1
+	ugdoor_def GREEN,       4,  4,    $41,  $60                       ;  2
+	ugdoor_def BLUE GREEN,  4,  8,    $49,  $61                       ;  3
+	ugdoor_def BLUE RED,   10,  8,    $51,  $62                       ;  4
+	ugdoor_def GREEN RED,  16,  8,    $41,  $60                       ;  5
+	ugdoor_def BLUE RED,   12,  4,    $5a,  $5b, 12,  6,    $4e,  $4f ;  6
+	ugdoor_def BLUE GREEN,  6,  4,    $42,  $43,  6,  6,    $46,  $47 ;  7
+	ugdoor_def GREEN,      18,  8,    $42,  $43, 18, 10,    $46,  $47 ;  8
+	ugdoor_def GREEN RED,  12,  8,    $52,  $53, 12, 10,    $56,  $57 ;  9
+	ugdoor_def BLUE RED,    6,  8,    $4a,  $4b,  6, 10,    $4e,  $4f ; 10
+	ugdoor_def EMERGENCY,  20,  8,    $5c,  $64, 22,  8,    $5d,  $18 ; 11
 
 MACRO changeugdoor
 ;\1: ugdoor id
@@ -83,10 +83,8 @@ ENDM
 
 MACRO toggleugdoors
 ;\1: color
-	println "toggleugdoors \1:"
 	for n, 1, ugdoor_n + 1
-		if STRFIND(#UGDOOR_{d:n}_COLORS, "& \1") != -1
-			println "toggleevent EVENT_DOOR_{d:n}_OPEN"
+		if STRFIND(#UGDOOR_{d:n}_COLORS, " \1 ") != -1
 			toggleevent EVENT_DOOR_{d:n}_OPEN
 		endc
 	endr
