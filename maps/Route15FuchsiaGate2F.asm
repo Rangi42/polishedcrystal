@@ -15,7 +15,14 @@ Route15FuchsiaGate2F_MapScriptHeader:
 	def_object_events
 
 Route15FuchsiaGate2FBinoculars1:
-	jumptext Route15FuchsiaGate2FBinoculars1Text
+	jumpthistext
+
+	text "Looked into the"
+	line "binoculars."
+
+	para "The Safari Zone"
+	line "looks verdant!"
+	done
 
 Route15FuchsiaGate2FBinoculars2:
 	jumpthistext
@@ -26,5 +33,3 @@ Route15FuchsiaGate2FBinoculars2:
 	para "It looks like a"
 	line "small island!"
 	done
-
-Route15FuchsiaGate2FBinoculars1Text:
