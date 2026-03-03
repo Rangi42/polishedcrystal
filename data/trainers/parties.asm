@@ -7319,10 +7319,10 @@ PetrelGroup:
 
 	def_trainer_class PETREL
 	def_trainer PETREL1, "Petrel"
-	tr_mon 39, KOFFING @ EVIOLITE, MALE
-		tr_extra LEVITATE
-		tr_evs 252 Atk
-		tr_moves TACKLE, EXPLOSION, VENOSHOCK, SMOKESCREEN
+	tr_mon 39, DITTO @ CHOICE_SCARF, MALE
+		tr_extra IMPOSTER
+		tr_evs 252 HP
+		tr_moves TRANSFORM
 	tr_mon 39, GOLBAT @ EVIOLITE, MALE
 		tr_extra INNER_FOCUS
 		tr_evs 252 Spe
