@@ -295,4 +295,5 @@ NewPokedexOrder:
 	dp POLTEAGEIST
 	dp DEBRITE
 	dp CASTORCH
+	dp CUPICO
 	assert_table_length NUM_POKEMON

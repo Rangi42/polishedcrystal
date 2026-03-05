@@ -299,6 +299,7 @@ OverworldMonIconColors::
 	iconpal BROWN, GREEN ; POLTEAGEIST
 	iconpal YELLOW, GRAY ; DEBRITE
 	iconpal ORANGE, BLACK ; CASTORCH 
+	iconpal BROWN, GREEN ; CUPICO
 	assert_table_length NUM_SPECIES
 
 rept NUM_UNOWN - 1

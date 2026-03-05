@@ -243,6 +243,7 @@ SinisteaBitmasks:   INCLUDE "gfx/pokemon/sinistea/bitmask.asm"
 PolteageistBitmasks: INCLUDE "gfx/pokemon/polteageist/bitmask.asm"
 DebriteBitmasks:    INCLUDE "gfx/pokemon/debrite/bitmask.asm"
 CastorchBitmasks:   INCLUDE "gfx/pokemon/castorch/bitmask.asm"
+CupicoBitmasks:     INCLUDE "gfx/pokemon/cupico/bitmask.asm"
 
 EggBitmasks:        INCLUDE "gfx/pokemon/egg/bitmask.asm"
 

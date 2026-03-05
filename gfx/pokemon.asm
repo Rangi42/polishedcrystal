@@ -1572,3 +1572,7 @@ DebriteBackpic:     INCBIN "gfx/pokemon/debrite/back.2bpp.lz"
 SECTION "Castorch Pics", ROMX
 CastorchFrontpic:       INCBIN "gfx/pokemon/castorch/front.animated.2bpp.lz"
 CastorchBackpic:        INCBIN "gfx/pokemon/castorch/back.2bpp.lz"
+
+SECTION "Cupico Pics", ROMX
+CupicoFrontpic: INCBIN "gfx/pokemon/Cupico/front.animated.2bpp.lz"
+CupicoBackpic:  INCBIN "gfx/pokemon/Cupico/back.2bpp.lz"

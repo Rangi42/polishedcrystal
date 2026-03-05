@@ -295,6 +295,7 @@ EggSpeciesMovesPointers::
 	dw PolteageistEggSpeciesMoves		; Polteageist
 	dw DebriteEggSpeciesMoves			; Debrite
 	dw CastorchEggSpeciesMoves			; Castorch
+	dw CupicoEggSpeciesMoves			; Cupico
 	assert_table_length NUM_SPECIES
 
 	dw MagikarpEggSpeciesMoves          ; Gyarados (Red Form)

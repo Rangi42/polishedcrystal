@@ -5991,6 +5991,23 @@ endc
 	learnset 52, FLAMETHROWER
 	learnset 60, FIRE_BLAST
 
+evos_attacks Cupico
+	evo_data EVOLVE_LEVEL, 15, Prickupi
+	learnset 1, TACKLE
+	learnset 3, GROWL
+	learnset 7, LEECH_SEED
+	learnset 9, VINE_WHIP
+	learnset 13, POISONPOWDER
+	learnset 13, SLEEP_POWDER
+	learnset 15, MUD_SLAP ; Take Down → GSC TM move
+	learnset 19, RAZOR_LEAF
+	learnset 21, TAKE_DOWN ; Sweet Scent → Take Down
+	learnset 25, GROWTH
+	learnset 27, DOUBLE_EDGE
+	learnset 31, ANCIENTPOWER ; Worry Seed → event move
+	learnset 33, HEALINGLIGHT ; Synthesis → similar move
+	learnset 37, SEED_BOMB
+	learnset 43, SLUDGE_BOMB ; TM move
 
 	; Also terminates previous mon's learnset
 	EggEvosAttacks:

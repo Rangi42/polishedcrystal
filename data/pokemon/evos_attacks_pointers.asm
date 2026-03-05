@@ -299,6 +299,7 @@ EvosAttacksPointers::
 	dw PolteageistEvosAttacks
 	dw DebriteEvosAttacks
 	dw CastorchEvosAttacks
+	dw CupicoEvosAttacks
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosEvosAttacks

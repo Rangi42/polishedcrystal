@@ -295,6 +295,7 @@ FramesPointers:
 	dw PolteageistFrames
 	dw DebriteFrames
 	dw CastorchFrames
+	dw CupicoFrames
 	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames

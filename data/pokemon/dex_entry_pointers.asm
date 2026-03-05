@@ -296,6 +296,7 @@ PokedexDataPointerTable:
 	dba PolteageistPokedexEntry
 	dba DebritePokedexEntry
 	dba CastorchPokedexEntry
+	dba CupicoPokedexEntry
 	assert_table_length NUM_SPECIES
 
 	dba GyaradosRedPokedexEntry

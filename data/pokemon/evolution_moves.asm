@@ -299,6 +299,7 @@ endc
 	db NO_MOVE		; POLTEAGEIST
 	db NO_MOVE		; DEBRITE
 	db NO_MOVE		; CASTORCH
+	db NO_MOVE		; CUPICO
 	assert_table_length NUM_SPECIES
 
 	db BITE         ; GYARADOS, GYARADOS_RED_FORM

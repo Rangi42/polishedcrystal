@@ -1836,3 +1836,8 @@ SECTION "Castorch Mini Icon", ROMX
 CastorchMini::      INCBIN "gfx/minis/castorch.2bpp.lz"
 CastorchMiniMask::  INCBIN "gfx/minis/castorch_mask.1bpp.lz"
 CastorchIcon::      INCBIN "gfx/icons/castorch.2bpp.lz"
+
+SECTION "Cupico Mini Icon", ROMX
+CupicoMini::       INCBIN "gfx/minis/Cupico.2bpp.lz"
+CupicoMiniMask::   INCBIN "gfx/minis/Cupico_mask.1bpp.lz"
+CupicoIcon::       INCBIN "gfx/icons/Cupico.2bpp.lz"

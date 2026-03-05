@@ -3386,3 +3386,13 @@ CastorchPokedexEntry::
 	page "or makes, attach-"
 	next "ing them to it's"
 	next "chains underneath.@"
+	
+SECTION "CupicoPokedexEntry", ROMX
+CupicoPokedexEntry::
+	db "Pinecone@"
+	db   "It hides itself"
+	next "using the scales"
+	next "on its head."
+	page "Found primarily in"
+	next "the tree tops of"
+	next "pine forests.@"

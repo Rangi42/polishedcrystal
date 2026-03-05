@@ -1250,3 +1250,7 @@ DebriteEggSpeciesMoves:
 CastorchEggSpeciesMoves:
 	dp CASTORCH, PLAIN_FORM
 	db $ff
+
+CupicoEggSpeciesMoves:
+	dp Cupico, PLAIN_FORM
+	db $ff 

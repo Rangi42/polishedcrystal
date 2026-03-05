@@ -243,6 +243,7 @@ SinisteaAnimation:   INCLUDE "gfx/pokemon/sinistea/anim.asm"
 PolteageistAnimation: INCLUDE "gfx/pokemon/polteageist/anim.asm"
 DebriteAnimation:    INCLUDE "gfx/pokemon/debrite/anim.asm"
 CastorchAnimation:   INCLUDE "gfx/pokemon/castorch/anim.asm"
+CupicoAnimation: INCLUDE "gfx/pokemon/polteageist/anim.asm"
 
 EggAnimation:        INCLUDE "gfx/pokemon/egg/anim.asm"
 
