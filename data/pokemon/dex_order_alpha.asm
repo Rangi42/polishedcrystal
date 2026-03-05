@@ -24,6 +24,7 @@ AlphabeticalPokedexOrder:
 	dp BONSLY
 	dp BULBASAUR
 	dp BUTTERFREE
+	dp CASTORCH
 	dp CATERPIE
 	dp CELEBI
 	dp CHANSEY
@@ -44,6 +45,7 @@ AlphabeticalPokedexOrder:
 	dp CUPICO
 	dp CURSOLA
 	dp CYNDAQUIL
+	dp DEBRITE
 	dp DELIBIRD
 	dp DEWGONG
 	dp DIGLETT

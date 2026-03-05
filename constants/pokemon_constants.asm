@@ -316,6 +316,9 @@
 	const CLODSIRE   ; 122
 	const ANNIHILAPE ; 123
 	const SINISTEA   ; 124
+	const POLTEAGEIST ; 125
+	const DEBRITE	 ; 126
+	const CASTORCH	 ; 127
 	const CUPICO     ; 125
 	const PRICKUPI   ; 126
 	const CONIFURY   ; 127

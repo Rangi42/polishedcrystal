@@ -297,6 +297,8 @@ PokemonPicPointers::
 	pics Annihilape
 	pics Sinistea
 	pics Polteageist
+	pics Debrite
+	pics Castorch
 	pics Cupico
 	assert_table_length NUM_SPECIES
 

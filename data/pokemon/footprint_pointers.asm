@@ -293,6 +293,8 @@ FootprintPointers::
 	dw AnnihilapeFootprint
 	dw SinisteaFootprint
 	dw PolteageistFootprint
+	dw DebriteFootprint
+	dw CastorchFootprint
 	dw CupicoFootprint
 	assert_table_length NUM_SPECIES
 

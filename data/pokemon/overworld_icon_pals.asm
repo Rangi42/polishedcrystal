@@ -55,7 +55,7 @@ OverworldMonIconColors::
 	iconpal PURPLE, BLUE ; VENOMOTH
 	iconpal BROWN, GRAY ; DIGLETT
 	iconpal BROWN, GRAY ; DUGTRIO
-	iconpal BROWN, RED ; MEOWTH
+	iconpal GRAY, BLUE ; MEOWTH
 	iconpal BROWN, RED ; PERSIAN
 	iconpal BROWN, AZURE ; PSYDUCK
 	iconpal BLUE, AZURE ; GOLDUCK
@@ -297,6 +297,8 @@ OverworldMonIconColors::
 	iconpal GRAY, PURPLE ; ANNIHILAPE
 	iconpal BROWN, GREEN ; SINISTEA
 	iconpal BROWN, GREEN ; POLTEAGEIST
+	iconpal YELLOW, GRAY ; DEBRITE
+	iconpal ORANGE, BLACK ; CASTORCH 
 	iconpal BROWN, GREEN ; CUPICO
 	assert_table_length NUM_SPECIES
 

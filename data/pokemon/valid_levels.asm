@@ -298,5 +298,7 @@ endc
 	db  56, 100 ; Annihilape
 	db   1,  39 ; Sinistea
 	db	20, 100 ; Polteageist
+	db   1,  39 ; Debrite
+	db	20, 100 ; Castorch
 	db  1,  15  ; Cupico
 	assert_table_length NUM_SPECIES

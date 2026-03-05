@@ -1,13 +1,13 @@
-	db  40,  45,  35,  90,  40,  40 ; 290 BST
+	db  45,  70,  35,  100,  50,  45 ; 345 BST
 	;   hp  atk  def  spe  sat  sdf
 
-	db NORMAL, NORMAL ; type
+	db NORMAL, DARK ; type
 	db 255 ; catch rate
 	db 69 ; base exp
 	db NO_ITEM, AMULET_COIN ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for MEOWTH, PICKUP, TECHNICIAN, UNNERVE
+	abilities_for MEOWTH, STEELY_SPIRIT, TECHNICIAN, UNNERVE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

@@ -1024,7 +1024,7 @@ endc
 	learnset 53, NIGHT_SLASH ; Fissure → Night Slash
 
 	evos_attacks MeowthPlain
-	evo_data EVOLVE_LEVEL, 28, PERSIAN, PLAIN_FORM
+	; evo_data EVOLVE_LEVEL, 28, WAMPURR, PLAIN_FORM
 	learnset 1, SCRATCH
 	learnset 1, GROWL
 	learnset 6, BITE
@@ -1037,8 +1037,9 @@ endc
 	learnset 33, SLASH
 	learnset 38, NASTY_PLOT
 	learnset 41, THIEF ; Assurance → TM move
-	learnset 46, CHARM ; Captivate → egg move
+	learnset 46, CRUNCH
 	learnset 49, NIGHT_SLASH
+	learnset 55, DARK_PULSE
 
 	evos_attacks MeowthAlolan
 	evo_data EVOLVE_LEVEL, 28, PERSIAN, ALOLAN_FORM
@@ -5943,7 +5944,7 @@ endc
 	learnset 54, NIGHT_SHADE
 	learnset 60, ICE_BEAM
 
-	evos_attacks PolteageistEvosAttacks
+	evos_attacks Polteageist
 	learnset 1, ASTONISH
 	learnset 1, DEFENSE_CURL
 	learnset 1, MEGA_DRAIN
@@ -5959,6 +5960,36 @@ endc
 	learnset 54, DESTINY_BOND
 	learnset 60, ICE_BEAM
 	learnset 66, CURSE
+
+	evos_attacks Debrite
+	evo_data EVOLVE_LEVEL, 30, CASTORCH; would like to later change to place or item
+	learnset 1, LEER
+	learnset 1, DEFENSE_CURL
+	learnset 4, EMBER
+	learnset 8, METAL_CLAW
+	learnset 12, IRON_HEAD
+	learnset 21, WILL_O_WISP
+	learnset 30, SCREECH
+	learnset 36, BARRIER
+	learnset 40, CRUNCH
+	learnset 52, FLASH_CANNON
+	learnset 60, FIRE_BLAST
+
+
+	evos_attacks Castorch
+	learnset 1, DEFENSE_CURL
+	learnset 1, EMBER
+	learnset 1, METAL_CLAW
+	learnset 4, IRON_HEAD 
+	learnset 8, WILL_O_WISP
+	learnset 12, SCREECH
+	learnset 21, BARRIER
+	learnset 25, FLASH_CANNON
+	learnset 30, GYRO_BALL
+	learnset 36, CRUNCH
+	learnset 40, BODY_SLAM
+	learnset 52, FLAMETHROWER
+	learnset 60, FIRE_BLAST
 
 evos_attacks Cupico
 	evo_data EVOLVE_LEVEL, 15, Prickupi

@@ -293,6 +293,8 @@ EggSpeciesMovesPointers::
 	dw MankeyEggSpeciesMoves            ; Annihilape
 	dw SinisteaEggSpeciesMoves          ; Sinistea
 	dw PolteageistEggSpeciesMoves		; Polteageist
+	dw DebriteEggSpeciesMoves			; Debrite
+	dw CastorchEggSpeciesMoves			; Castorch
 	dw CupicoEggSpeciesMoves			; Cupico
 	assert_table_length NUM_SPECIES
 

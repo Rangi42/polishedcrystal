@@ -327,6 +327,9 @@ INCLUDE "data/pokemon/base_stats/farigiraf.asm"
 INCLUDE "data/pokemon/base_stats/clodsire.asm"
 INCLUDE "data/pokemon/base_stats/annihilape.asm"
 INCLUDE "data/pokemon/base_stats/sinistea.asm"
+INCLUDE "data/pokemon/base_stats/polteageist.asm"
+INCLUDE "data/pokemon/base_stats/debrite.asm"
+INCLUDE "data/pokemon/base_stats/castorch.asm"
 INCLUDE "data/pokemon/base_stats/cupico.asm"
 	assert_table_length NUM_SPECIES
 

@@ -1,0 +1,18 @@
+	db  85,  80, 100,  50,  111, 66 ; 492 BST
+	;   hp  atk  def  spe  sat  sdf
+
+	db FIRE, STEEL ; type
+	db 30 ; catch rate
+	db 100 ; base exp
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
+
+	abilities_for CASTORCH, FLAME_BODY, LEVITATE, PICKPOCKET
+	db GROWTH_MEDIUM_FAST ; growth rate
+	dn EGG_INDETERMINATE, EGG_MINERAL ; egg groups
+
+	ev_yield 2 SAT
+
+	; tm/hm learnset
+	tmhm PROTECT, FACADE, FLAME_CHARGE, ENDURE, SUNNY_DAY, DIG, SLEEP_TALK, REST, FLASH_CANNON, DARK_PULSE, IRON_HEAD, SUBSTITUTE, WILL_O_WISP, DRAGON_PULSE, FLAMETHROWER, EARTH_POWER, FIRE_BLAST, STONE_EDGE, GIGA_IMPACT, HYPER_BEAM, SOLAR_BEAM, IRON_TAIL, GYRO_BALL 
+	; end

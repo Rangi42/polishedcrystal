@@ -82,6 +82,9 @@ WeepinbellFootprint::
 WeezingFootprint::
 ZubatFootprint:: 
 SinisteaFootprint:: 
+PolteageistFootprint::
+DebriteFootprint::
+CastorchFootprint:: INCBIN "gfx/footprints/blank.1bpp.lz"
 PolteageistFootprint:: 
 CupicoFootprint:: INCBIN "gfx/footprints/blank.1bpp.lz"
 

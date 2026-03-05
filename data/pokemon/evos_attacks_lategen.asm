@@ -286,6 +286,8 @@ EvosAttacksPointersLateGen::
 	dw DudunsparceEvosAttacks
 	dw SinisteaEvosAttacks
 	dw PolteageistEvosAttacks
+	dw DebriteEvosAttacks
+	dw CastorchEvosAttacks
 	dw CupicoEvosAttacks
 .IndirectEnd::
 	
@@ -5122,8 +5124,39 @@ endc
 	learnset 60, ICE_BEAM
 	learnset 66, CURSE
 
+	evos_attacks DebriteEvosAttacks
+	evo_data EVOLVE_LEVEL 30, CASTORCH; would like to later change to place or item
+	learnset 1, LEER
+	learnset 1, DEFENSE_CURL
+	learnset 4, EMBER
+	learnset 8, METAL_CLAW
+	learnset 12, IRON_HEAD
+	learnset 21, WILL_O_WISP
+	learnset 30, SCREECH
+	learnset 36, BARRIER
+	learnset 40, CRUNCH
+	learnset 52, FLASH_CANNON
+	learnset 60, FLAME_WHEEL
+
+
+	evos_attacks CastorchEvosAttacks
+	learnset 1, DEFENSE_CURL
+	learnset 1, EMBER
+	learnset 1, METAL_CLAW
+	learnset 4, IRON_HEAD 
+	learnset 8, WILL_O_WISP
+	learnset 12, SCREECH
+	learnset 21, BARRIER
+	learnset 25, FLASH_CANNON
+	learnset 30, HEAVY_SLAM
+	learnset 36, CRUNCH
+	learnset 40, BODY_SLAM
+	learnset 52, FLAME_WHEEL
+	learnset 60, FLAMETHROWER
+	learnset 66, OVERHEAT
+
 	evos_attacks Cupico
-	evo_data EVOLVE_LEVEL, 15, Prickupi
+	; evo_data EVOLVE_LEVEL, 15, Prickupi
 	learnset 1, TACKLE
 	learnset 3, GROWL
 	learnset 7, LEECH_SEED

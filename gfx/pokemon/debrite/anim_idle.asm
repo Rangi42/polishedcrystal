@@ -1,0 +1,6 @@
+setrepeat 3
+frame 0, 08
+frame 3, 10
+frame 1, 10
+frame 0, 08
+endanim

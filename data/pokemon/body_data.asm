@@ -58,7 +58,7 @@ PokemonBodyData:
 	body_data  15,  125, MULTIWINGS,   PURPLE ; VENOMOTH
 	body_data   2,    8, HEAD_BASE,    BROWN  ; DIGLETT
 	body_data   7,  333, MULTIBODY,    BROWN  ; DUGTRIO
-	body_data   4,   42, QUADRUPED,    YELLOW ; MEOWTH
+	body_data   4,   42, QUADRUPED,    GRAY ; MEOWTH
 	body_data  10,  320, QUADRUPED,    YELLOW ; PERSIAN
 	body_data   8,  196, BIPEDAL_TAIL, YELLOW ; PSYDUCK
 	body_data  17,  766, BIPEDAL_TAIL, BLUE   ; GOLDUCK
@@ -300,6 +300,8 @@ PokemonBodyData:
 	body_data  12,  560, BIPEDAL_TAIL, GRAY   ; ANNIHILAPE
 	body_data   3,   22, HEAD,         BROWN  ; SINISTEA
 	body_data   1,   11, HEAD, 		   BROWN  ; POLTEAGEIST
+	body_data	3,	 10, HEAD,		   YELLOW ; DEBRITE
+	body_data  12, 1200, HEAD_ARMS,	   YELLOW ; CASTORCH
 	body_data   7,   69, BIPEDAL,      GREEN  ; CUPICO
 	assert_table_length NUM_SPECIES
 
