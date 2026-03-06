@@ -774,7 +774,7 @@ DrawLowRadarLine:
 	jr z, DrawHorizontalRadarLine ; c == e, so y is constant
 	inc a ; $0d ; dec c
 .y_sorted
-	ldh [hSingleOpcode], a
+	ldh [hSingleFunction.Opcode], a
 
 ; D = 2 * dy - dx
 	ldh a, [hDX]
@@ -794,7 +794,7 @@ DrawLowRadarLine:
 	ldh a, [hErr]
 	cp $80 ; high bit means negative
 	jr nc, .not_positive
-	call hSingleOperation
+	call hSingleFunction
 	ldh a, [hDX]
 	ld l, a
 	ldh a, [hErr]
@@ -837,7 +837,7 @@ DrawHighRadarLine:
 	jr z, DrawVerticalRadarLine ; b == d, so x is constant
 	inc a ; $05 ; dec b
 .x_sorted
-	ldh [hSingleOpcode], a
+	ldh [hSingleFunction.Opcode], a
 
 ; D = 2 * dx - dy
 	ldh a, [hDY]
@@ -857,7 +857,7 @@ DrawHighRadarLine:
 	ldh a, [hErr]
 	cp $80
 	jr nc, .not_positive
-	call hSingleOperation
+	call hSingleFunction
 	ldh a, [hDY]
 	ld l, a
 	ldh a, [hErr]
@@ -1047,8 +1047,8 @@ DrawRadarPointBC:
 	add a
 	and $7 << 3
 	xor $c6 ^ ($7 << 3) ; this is 'xor $fe', so 'cpl / dec a' would also work
-	ldh [hBitwiseOpcode], a
-	jmp hBitwiseOperation
+	ldh [hBitwiseFunction.Opcode], a
+	jmp hBitwiseFunction
 
 ForwardSlashAxisYCoords:
 	db 70, 69, 68, 68, 67, 67, 66, 66, 65, 64, 64, 63, 63, 62, 62, 61, 60, 60, 59, 59

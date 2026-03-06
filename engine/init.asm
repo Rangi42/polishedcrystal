@@ -139,10 +139,10 @@ _Init::
 	ldh [hSerialConnectionStatus], a
 
 	ld a, $cb ; prefix
-	ldh [hBitwisePrefix], a
+	ldh [hBitwiseFunction.Prefix], a
 	ld a, $c9 ; ret
-	ldh [hBitwiseRet], a
-	ldh [hSingleRet], a
+	ldh [hBitwiseFunction.Ret], a
+	ldh [hSingleFunction.Ret], a
 	ld a, $c3 ; jp
 	ldh [hLCDInterruptFunction.Jump], a
 	ld a, LOW(LCDGeneric)

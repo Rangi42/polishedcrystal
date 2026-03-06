@@ -231,11 +231,11 @@ hLCDInterruptFunction::
 .TargetLo:: db ; LOW(target)
 .TargetHi:: db ; HIGH(target)
 
-hBitwiseOperation::
-hBitwisePrefix:: db ; $cb prefix
-hBitwiseOpcode:: db ; opcode
-hBitwiseRet::    db ; $c9 ret
-
-hSingleOperation::
-hSingleOpcode:: db ; opcode
-hSingleRet::    db ; $c9 ret
+; functions used by Judge Machine
+hBitwiseFunction::
+.Prefix:: db ; $cb prefix
+.Opcode:: db ; opcode
+.Ret::    db ; $c9 ret
+hSingleFunction::
+.Opcode:: db ; opcode
+.Ret::    db ; $c9 ret
