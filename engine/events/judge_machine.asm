@@ -605,9 +605,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarDown)
-	ldh [hJumpFunction.TargetLo], a
+	ldh [hJumpFunctionTargetLo], a
 	ld a, HIGH(FillRadarDown)
-	ldh [hJumpFunction.TargetHi], a
+	ldh [hJumpFunctionTargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = Def point
@@ -631,9 +631,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarLeft)
-	ldh [hJumpFunction.TargetLo], a
+	ldh [hJumpFunctionTargetLo], a
 	ld a, HIGH(FillRadarLeft)
-	ldh [hJumpFunction.TargetHi], a
+	ldh [hJumpFunctionTargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = Spe point
@@ -651,9 +651,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarUp)
-	ldh [hJumpFunction.TargetLo], a
+	ldh [hJumpFunctionTargetLo], a
 	ld a, HIGH(FillRadarUp)
-	ldh [hJumpFunction.TargetHi], a
+	ldh [hJumpFunctionTargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = SDf point
@@ -677,7 +677,7 @@ OutlineRadarChart:
 ; Draw a line from Spe to SDf
 	pop bc
 	push de
-	; hJumpFunction.Target is already FillRadarUp
+	; hJumpFunctionTarget is already FillRadarUp
 	call DrawAndFillRadarEdge
 
 ; de = SAt point
@@ -702,18 +702,18 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarRight)
-	ldh [hJumpFunction.TargetLo], a
+	ldh [hJumpFunctionTargetLo], a
 	ld a, HIGH(FillRadarRight)
-	ldh [hJumpFunction.TargetHi], a
+	ldh [hJumpFunctionTargetHi], a
 	call DrawAndFillRadarEdge
 
 ; Draw a line from SAt to HP, closing the polygon
 	pop bc
 	pop de
 	ld a, LOW(FillRadarDown)
-	ldh [hJumpFunction.TargetLo], a
+	ldh [hJumpFunctionTargetLo], a
 	ld a, HIGH(FillRadarDown)
-	ldh [hJumpFunction.TargetHi], a
+	ldh [hJumpFunctionTargetHi], a
 	; fallthrough
 
 DrawAndFillRadarEdge:
@@ -767,7 +767,7 @@ DrawLowRadarLine:
 	jr z, DrawHorizontalRadarLine ; c == e, so y is constant
 	inc a ; $0d ; dec c
 .y_sorted
-	ldh [hSingleFunction.Opcode], a
+	ldh [hSingleFunctionOpcode], a
 
 ; D = 2 * dy - dx
 	ldh a, [hDX]
@@ -830,7 +830,7 @@ DrawHighRadarLine:
 	jr z, DrawVerticalRadarLine ; b == d, so x is constant
 	inc a ; $05 ; dec b
 .x_sorted
-	ldh [hSingleFunction.Opcode], a
+	ldh [hSingleFunctionOpcode], a
 
 ; D = 2 * dx - dy
 	ldh a, [hDY]
@@ -1040,7 +1040,7 @@ DrawRadarPointBC:
 	add a
 	and $7 << 3
 	xor $c6 ^ ($7 << 3) ; this is 'xor $fe', so 'cpl / dec a' would also work
-	ldh [hBitwiseFunction.Opcode], a
+	ldh [hBitwiseFunctionOpcode], a
 	jmp hBitwiseFunction
 
 ForwardSlashAxisYCoords:

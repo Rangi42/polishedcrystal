@@ -224,23 +224,26 @@ hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
 hLCDInterruptFunction::
-.Jump::     db ; $c3 jp
-.Target::
-.TargetLo:: db ; LOW(target)
-.TargetHi:: db ; HIGH(target)
+hLCDInterruptFunctionJump::     db ; $c3 jp
+hLCDInterruptFunctionTarget::
+hLCDInterruptFunctionTargetLo:: db ; LOW(target)
+hLCDInterruptFunctionTargetHi:: db ; HIGH(target)
 
 	ds 4 ; unused
 
 ; functions used by Judge Machine
+
 hBitwiseFunction::
-.Prefix:: db ; $cb prefix
-.Opcode:: db ; opcode
-.Ret::    db ; $c9 ret
+hBitwiseFunctionPrefix:: db ; $cb prefix
+hBitwiseFunctionOpcode:: db ; opcode
+hBitwiseFunctionRet::    db ; $c9 ret
+
 hSingleFunction::
-.Opcode:: db ; opcode
-.Ret::    db ; $c9 ret
+hSingleFunctionOpcode:: db ; opcode
+hSingleFunctionRet::    db ; $c9 ret
+
 hJumpFunction::
-.Jump::     db ; $c3 jp
-.Target::
-.TargetLo:: db ; LOW(target)
-.TargetHi:: db ; HIGH(target)
+hJumpFunctionJump::     db ; $c3 jp
+hJumpFunctionTarget::
+hJumpFunctionTargetLo:: db ; LOW(target)
+hJumpFunctionTargetHi:: db ; HIGH(target)

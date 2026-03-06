@@ -131,9 +131,9 @@ LCDSummaryScreenProgress::
 	; fallthrough
 .setupNext
 	ld a, l
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, h
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	; procede to next step
 	ld hl, wSummaryScreenStep

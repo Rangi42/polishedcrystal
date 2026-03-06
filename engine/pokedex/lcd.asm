@@ -278,9 +278,9 @@ StackDexGraphics:
 	ld bc, PHB_LCDCode.End - PHB_LCDCode
 	rst CopyBytes
 	ld a, LOW(wLCDPokedex)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDPokedex)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	ld a, CGB_POKEDEX
 	call GetCGBLayout
@@ -308,9 +308,9 @@ StackDexGraphics:
 	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 	ld a, LOW(LCDGeneric)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	pop af
 	pop bc

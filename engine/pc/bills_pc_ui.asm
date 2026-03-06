@@ -52,9 +52,9 @@ _BillsPC:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ld a, LOW(LCDGeneric)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	call ReturnToMapFromSubmenu
 	pop af
@@ -305,9 +305,9 @@ UseBillsPC:
 
 	; Set up for HBlank palette switching
 	ld a, LOW(wLCDBillsPC1)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	ld hl, rIE
 	set B_IE_STAT, [hl]
 
@@ -3705,9 +3705,9 @@ endr
 
 	; prepare for partymon write
 	ld a, LOW(wLCDBillsPC2)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC2)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop bc
 	pop hl
 .donepc
@@ -3781,9 +3781,9 @@ endr
 	dec c
 	jr nz, .busyloop
 	ld a, LOW(wLCDBillsPC3)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC3)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl
@@ -3820,9 +3820,9 @@ endr
 	pop af
 	ldh [rWBK], a
 	ld a, LOW(wLCDBillsPC1)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl
