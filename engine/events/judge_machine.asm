@@ -40,13 +40,6 @@ JudgeMachine:
 	call FadeToMenu
 	call JudgeSystem
 	call ExitAllMenus
-; hLCDInterruptFunction gets overridden for drawing the radar chart.
-; (It is not called as such because the LCD interrupt is disabled.)
-; This restores it to the LCDGeneric function.
-	ld a, LOW(LCDGeneric)
-	ldh [hLCDInterruptFunction.TargetLo], a
-	ld a, HIGH(LCDGeneric)
-	ldh [hLCDInterruptFunction.TargetHi], a
 	ld hl, NewsMachineContinueText
 	jr .continue
 
@@ -612,9 +605,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarDown)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hJumpFunction.TargetLo], a
 	ld a, HIGH(FillRadarDown)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hJumpFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = Def point
@@ -638,9 +631,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarLeft)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hJumpFunction.TargetLo], a
 	ld a, HIGH(FillRadarLeft)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hJumpFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = Spe point
@@ -658,9 +651,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarUp)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hJumpFunction.TargetLo], a
 	ld a, HIGH(FillRadarUp)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hJumpFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = SDf point
@@ -684,7 +677,7 @@ OutlineRadarChart:
 ; Draw a line from Spe to SDf
 	pop bc
 	push de
-	; hLCDInterruptFunction.Target is already FillRadarUp
+	; hJumpFunction.Target is already FillRadarUp
 	call DrawAndFillRadarEdge
 
 ; de = SAt point
@@ -709,22 +702,22 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarRight)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hJumpFunction.TargetLo], a
 	ld a, HIGH(FillRadarRight)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hJumpFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; Draw a line from SAt to HP, closing the polygon
 	pop bc
 	pop de
 	ld a, LOW(FillRadarDown)
-	ldh [hLCDInterruptFunction.TargetLo], a
+	ldh [hJumpFunction.TargetLo], a
 	ld a, HIGH(FillRadarDown)
-	ldh [hLCDInterruptFunction.TargetHi], a
+	ldh [hJumpFunction.TargetHi], a
 	; fallthrough
 
 DrawAndFillRadarEdge:
-; Draw a line from (b, c) to (d, e) and fill it in with hLCDInterruptFunction
+; Draw a line from (b, c) to (d, e) and fill it in by calling hJumpFunction
 
 ; Calculate |x1 - x0|
 	ld a, d
@@ -788,7 +781,7 @@ DrawLowRadarLine:
 	ld a, d
 	ldh [hChartLineCoord], a
 .loop
-	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
+	call hJumpFunction ; FillRadarUp/Down/Left/Right
 
 ; Update D and y
 	ldh a, [hErr]
@@ -851,7 +844,7 @@ DrawHighRadarLine:
 	ld a, e
 	ldh [hChartLineCoord], a
 .loop
-	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
+	call hJumpFunction ; FillRadarUp/Down/Left/Right
 
 ; Update D and x
 	ldh a, [hErr]
@@ -891,7 +884,7 @@ DrawHorizontalRadarLine:
 	ld a, d
 	ldh [hChartLineCoord], a
 .loop
-	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
+	call hJumpFunction ; FillRadarUp/Down/Left/Right
 	inc b
 	ldh a, [hChartLineCoord]
 	cp b
@@ -913,7 +906,7 @@ DrawVerticalRadarLine:
 	ld a, e
 	ldh [hChartLineCoord], a
 .loop
-	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
+	call hJumpFunction ; FillRadarUp/Down/Left/Right
 	inc c
 	ldh a, [hChartLineCoord]
 	cp c

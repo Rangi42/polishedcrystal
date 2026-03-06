@@ -223,13 +223,13 @@ hScriptPos:: dw
 hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
-	ds 7 ; unused
-
 hLCDInterruptFunction::
 .Jump::     db ; $c3 jp
 .Target::
 .TargetLo:: db ; LOW(target)
 .TargetHi:: db ; HIGH(target)
+
+	ds 4 ; unused
 
 ; functions used by Judge Machine
 hBitwiseFunction::
@@ -239,3 +239,8 @@ hBitwiseFunction::
 hSingleFunction::
 .Opcode:: db ; opcode
 .Ret::    db ; $c9 ret
+hJumpFunction::
+.Jump::     db ; $c3 jp
+.Target::
+.TargetLo:: db ; LOW(target)
+.TargetHi:: db ; HIGH(target)

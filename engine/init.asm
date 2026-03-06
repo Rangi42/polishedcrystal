@@ -145,6 +145,7 @@ _Init::
 	ldh [hSingleFunction.Ret], a
 	ld a, $c3 ; jp
 	ldh [hLCDInterruptFunction.Jump], a
+	ldh [hJumpFunction.Jump], a
 	ld a, LOW(LCDGeneric)
 	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(LCDGeneric)
