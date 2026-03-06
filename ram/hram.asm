@@ -4,6 +4,7 @@ hScriptVar:: dw
 
 hROMBank:: db
 hROMBankBackup:: db
+
 	ds 1 ; unused
 
 hHours:: db
@@ -47,9 +48,7 @@ hPrinter:: db
 
 	ds 2 ; unused
 
-UNION
 ; math-related values
-
 UNION
 ; inputs to Multiply
 	ds 1
@@ -67,11 +66,13 @@ NEXTU
 	ds 1
 hQuotient::     ds 3
 hRemainder::    db
+NEXTU
+; PrintNum scratch space
+hPrintNum:: ds 5
 ENDU
 
 UNION
 hMathBuffer:: ds 5
-
 NEXTU
 ; FacingPlayerDistance scratch space
 hLineOfSightXLo:: db
@@ -79,11 +80,6 @@ hLineOfSightXHi:: db
 hLineOfSightYLo:: db
 hLineOfSightYHi:: db
 hTrainerSeeing::  db
-ENDU
-
-NEXTU
-; PrintNum scratch space
-hPrintNum:: ds 5
 ENDU
 
 UNION
@@ -184,7 +180,7 @@ hDelayFrameLY:: db
 
 hClockResetTrigger:: db
 
-	ds 2
+	ds 2 ; unused
 
 hRequested2bpp::        db
 hRequested1bpp::        db
