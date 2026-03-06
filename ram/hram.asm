@@ -230,10 +230,10 @@ hUsedOAMIndex:: db
 	ds 7 ; unused
 
 hLCDInterruptFunction::
-hFunctionJump::     db ; $c3 jp
-hFunctionTarget::
-hFunctionTargetLo:: db ; LOW(target)
-hFunctionTargetHi:: db ; HIGH(target)
+.Jump::     db ; $c3 jp
+.Target::
+.TargetLo:: db ; LOW(target)
+.TargetHi:: db ; HIGH(target)
 
 hBitwiseOperation::
 hBitwisePrefix:: db ; $cb prefix

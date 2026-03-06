@@ -75,7 +75,7 @@ SummaryScreenInit:
 	rst ByteFill
 	; Set up for HBlank
 
-	ld hl, hFunctionTarget
+	ld hl, hLCDInterruptFunction.Target
 	ld b, [hl]
 	ld a, LOW(LCDSummaryScreenHideWindow)
 	ld [hli], a
@@ -120,7 +120,7 @@ SummaryScreenInit:
 	ldh [rIE], a
 
 	pop bc
-	ld hl, hFunctionTarget
+	ld hl, hLCDInterruptFunction.Target
 	ld a, b
 	ld [hli], a
 	ld [hl], c
@@ -786,9 +786,9 @@ SummaryScreen_SwitchPage:
 	ld a, 2
 	ld [wSummaryScreenStep], a
 	ld a, LOW(LCDSummaryScreenShowWindow)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(LCDSummaryScreenShowWindow)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 
 	ldh a, [rLCDC]
 	set B_LCDC_WINDOW, a

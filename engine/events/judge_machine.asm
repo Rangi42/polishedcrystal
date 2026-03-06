@@ -44,9 +44,9 @@ JudgeMachine:
 ; (It is not called as such because the LCD interrupt is disabled.)
 ; This restores it to the LCDGeneric function.
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	ld hl, NewsMachineContinueText
 	jr .continue
 
@@ -612,9 +612,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarDown)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(FillRadarDown)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = Def point
@@ -638,9 +638,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarLeft)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(FillRadarLeft)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = Spe point
@@ -658,9 +658,9 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarUp)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(FillRadarUp)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; de = SDf point
@@ -684,7 +684,7 @@ OutlineRadarChart:
 ; Draw a line from Spe to SDf
 	pop bc
 	push de
-	; hFunctionTarget is already FillRadarUp
+	; hLCDInterruptFunction.Target is already FillRadarUp
 	call DrawAndFillRadarEdge
 
 ; de = SAt point
@@ -709,22 +709,22 @@ OutlineRadarChart:
 	pop bc
 	push de
 	ld a, LOW(FillRadarRight)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(FillRadarRight)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	call DrawAndFillRadarEdge
 
 ; Draw a line from SAt to HP, closing the polygon
 	pop bc
 	pop de
 	ld a, LOW(FillRadarDown)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(FillRadarDown)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	; fallthrough
 
 DrawAndFillRadarEdge:
-; Draw a line from (b, c) to (d, e) and fill it in with hFunction
+; Draw a line from (b, c) to (d, e) and fill it in with hLCDInterruptFunction
 
 ; Calculate |x1 - x0|
 	ld a, d

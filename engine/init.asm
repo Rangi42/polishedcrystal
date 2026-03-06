@@ -144,11 +144,11 @@ _Init::
 	ldh [hBitwiseRet], a
 	ldh [hSingleRet], a
 	ld a, $c3 ; jp
-	ldh [hFunctionJump], a
+	ldh [hLCDInterruptFunction.Jump], a
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a

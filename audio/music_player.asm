@@ -64,9 +64,9 @@ MusicPlayer::
 	call ClearTileMap
 
 	ld a, LOW(LCDMusicPlayer)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(LCDMusicPlayer)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 
 ; Load palette
 	ld hl, rIE
@@ -264,9 +264,9 @@ MusicPlayerLoop:
 	res B_IE_STAT, [hl]
 
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunction.TargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunction.TargetHi], a
 	ret
 
 .start:
