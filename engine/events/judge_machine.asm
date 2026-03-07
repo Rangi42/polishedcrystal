@@ -1,14 +1,3 @@
-DEF JUDGE_UP_DOWN_TILE    EQU $00
-DEF JUDGE_UNDERLINE_TILE  EQU $01
-DEF JUDGE_LINE_END_TILE   EQU $02
-DEF JUDGE_MALE_TILE       EQU $07
-DEF JUDGE_FEMALE_TILE     EQU $08
-DEF JUDGE_STAR_TILE       EQU $09
-DEF JUDGE_LEFT_RIGHT_TILE EQU $0a
-DEF JUDGE_BORDER_TILE     EQU $0b
-DEF JUDGE_WHITE_TILE      EQU $64
-DEF JUDGE_BLANK_TILE      EQU $65
-
 JudgeMachine:
 ; Check that the machine is activated
 	ld hl, wStatusFlags3
@@ -118,17 +107,24 @@ JudgeSystem::
 	ld de, vTiles2
 	predef GetFrontpic
 
+; Load the stat name graphics
+; TODO: use runtime VWF rendering
+	ld hl, JudgeSystemStatGFX
+	ld de, vTiles2 tile $40
+	lb bc, BANK(JudgeSystemStatGFX), 21
+	call DecompressRequest2bpp
+
 	ld a, $1
 	ldh [rVBK], a
 
 ; Load the blank chart graphics
 	ld hl, JudgeSystemGFX
 	ld de, vTiles5
-	lb bc, BANK(JudgeSystemGFX), 10 * 12 - 3
+	lb bc, BANK(JudgeSystemGFX), 120
 	call DecompressRequest2bpp
 
 ; Load the max stat sparkle and hyper trained bottle cap graphics
-	ld hl, vTiles5 tile $12
+	ld hl, vTiles5 tile $64
 	ld de, vTiles3
 	ld bc, 2 tiles
 	rst CopyBytes
@@ -136,54 +132,19 @@ JudgeSystem::
 	xor a
 	ldh [rVBK], a
 
-; Place the up/down arrows and nickname
+; Decompress the tilemap and attrmap
+	ld hl, JudgeSystemTilemap
+	ld de, wTilemap
+	call Decompress
+
+; Place the nickname
 	ld hl, wPartyMonNicknames
 	ld a, [wCurPartyMon]
 	call SkipNames
 	ld d, h
 	ld e, l
-	hlcoord 0, 0
-	ld a, JUDGE_UP_DOWN_TILE
-	ld [hli], a
+	hlcoord 1, 0
 	rst PlaceString
-
-; Place the level
-	hlcoord 14, 0
-	call PrintLevel
-
-; Place the gender icon
-	farcall GetGender
-	ld a, JUDGE_WHITE_TILE
-	jr c, .got_gender
-	ld a, JUDGE_MALE_TILE
-	jr nz, .got_gender
-	ld a, JUDGE_FEMALE_TILE
-.got_gender
-	hlcoord 18, 0
-	ld [hli], a
-
-; Place the shiny icon
-	ld bc, wTempMonShiny
-	farcall CheckShininess
-	; a = carry ? JUDGE_STAR_TILE : JUDGE_WHITE_TILE
-	sbc a
-	and JUDGE_STAR_TILE - JUDGE_WHITE_TILE
-	add JUDGE_WHITE_TILE
-	ld [hli], a
-
-; Place the top border
-	ld bc, SCREEN_WIDTH
-	ld a, JUDGE_BORDER_TILE
-	rst ByteFill
-
-; Place the heading underline
-	hlcoord 0, 2
-	ld [hl], JUDGE_LEFT_RIGHT_TILE
-	hlcoord 0, 3
-	ld bc, 10
-	ld a, JUDGE_UNDERLINE_TILE
-	rst ByteFill
-	ld [hl], JUDGE_LINE_END_TILE
 
 ; Place the frontpic graphics
 	hlcoord 0, 6
@@ -201,81 +162,60 @@ JudgeSystem::
 	dec de
 	ld a, b
 	ld [de], a
-	hlcoord 1, 13
-	ld a, '№'
-	ld [hli], a
-	ld a, '.'
-	ld [hli], a
+	hlcoord 3, 14
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNum
 
-; Place the chart
-	hlcoord 8, 4
-	ld de, SCREEN_WIDTH
-	xor a
-	ld b, 12
-.chart_row
-	ld c, 10
-	push hl
-.chart_col
-	ld [hli], a
-	inc a
-	dec c
-	jr nz, .chart_col
-	pop hl
-	add hl, de
-	dec b
-	jr nz, .chart_row
+; Place the level
+	hlcoord 1, 16
+	call PrintLevel
 
-; Clear some non-chart tiles
-	ld a, JUDGE_BLANK_TILE
-	hlcoord 9, 4
+; Place the gender icon
+	farcall GetGender
+	ld a, ' '
+	jr c, .got_gender
+	ld a, $07 ; male
+	jr nz, .got_gender
+	inc a ; $08 == female
+.got_gender
+	hlcoord 5, 16
 	ld [hli], a
-	ld [hl], a
-	hlcoord 15, 4
+
+; Place the shiny icon
+	ld bc, wTempMonShiny
+	farcall CheckShininess
+	; a = carry ? $09 (star) : ' '
+	sbc a
+	and $09 - ' '
+	add ' '
 	ld [hli], a
-	ld [hl], a
-	hlcoord 9, 15
-	ld [hli], a
-	ld [hl], a
-	hlcoord 15, 15
-	ld [hli], a
-	ld [hl], a
-	ldcoord_a 9, 5
-	ldcoord_a 16, 5
-	assert JUDGE_BLANK_TILE == $65 ; no need to clear (9, 14)
-	ldcoord_a 16, 14
 
 ; Place the stat names and values
-	hlcoord 12, 2
-	ld de, .HP
-	ld bc, wTempMonMaxHP
-	call .PrintTopStat
-	hlcoord 17, 4
-	ld de, .Atk
-	ld bc, wTempMonAttack
-	call .PrintTopStat
-	hlcoord 17, 15
-	ld de, .Def
-	ld bc, wTempMonDefense
-	call .PrintBottomStat
-	hlcoord 12, 17
-	ld de, .Spe
-	ld bc, wTempMonSpeed
-	call .PrintBottomStat
-	hlcoord 6, 15
-	ld de, .SDf
-	ld bc, wTempMonSpDef
-	call .PrintBottomStat
-	hlcoord 6, 4
-	ld de, .SAt
-	ld bc, wTempMonSpAtk
-	call .PrintTopStat
+	hlcoord 12, 3
+	ld de, wTempMonMaxHP
+	call .PrintStat
+	hlcoord 17, 5
+	ld de, wTempMonAttack
+	call .PrintStat
+	hlcoord 17, 14
+	ld de, wTempMonDefense
+	call .PrintStat
+	hlcoord 12, 16
+	ld de, wTempMonSpeed
+	call .PrintStat
+	hlcoord 8, 14
+	ld de, wTempMonSpDef
+	call .PrintStat
+	hlcoord 8, 5
+	ld de, wTempMonSpAtk
+	call .PrintStat
+
+; Apply the palettes
+	ld a, CGB_JUDGE_SYSTEM
+	call GetCGBLayout
 
 ; Show the screen
 	call EnableLCD
-	ld a, CGB_JUDGE_SYSTEM
-	call GetCGBLayout
 
 .render
 	call ClearSpriteAnims
@@ -300,7 +240,7 @@ JudgeSystem::
 	ldh [rVBK], a
 	ld hl, vTiles5
 	ld de, wDecompressScratch
-	ld c, 10 * 12
+	ld c, 120 ; # tiles
 	call Request2bppInWRA6
 	xor a
 	ldh [rVBK], a
@@ -372,31 +312,10 @@ JudgeSystem::
 .IVHeading:
 	db "Potential@"
 
-
-.PrintTopStat:
-; hl = coords, de = string, bc = stat
-	push bc
-	rst PlaceString
-	ld de, SCREEN_WIDTH
-	jr ._FinishPrintStat
-
-.PrintBottomStat:
-; hl = coords, de = string, bc = stat
-	push bc
-	rst PlaceString
-	ld de, -SCREEN_WIDTH
-._FinishPrintStat:
-	add hl, de
-	pop de
+.PrintStat:
+; hl = coords, de = stat
 	lb bc, 2, 3
 	jmp PrintNum
-
-.HP:  db "HP@"
-.Atk: db "Atk@"
-.Def: db "Def@"
-.Spe: db "Spe@"
-.SDf: db "SDf@"
-.SAt: db "SAt@"
 
 .PrepareChart:
 ; hl = palettes, de = title string, bc = chart function
@@ -404,12 +323,20 @@ JudgeSystem::
 	push de
 ; Load the palettes
 	ld de, wBGPals1
-	ld bc, 6 palettes
+	ld bc, 7 palettes
 	call FarCopyColorWRAM
 ; Place the title
 	pop de
 	hlcoord 1, 2
 	rst PlaceString
+; Place the page indicators
+	hlcoord 16, 0
+	ldh a, [hChartScreen] ; $00 for EVs, $ff for IVs
+	inc a ; $01 (selected) for EVs, $00 for IVs
+	ld [hli], a
+	inc hl
+	xor 1 ; $00 for EVs, $01 (selected) for IVs
+	ld [hl], a
 ; Render the chart when this returns (bc is on the stack)
 	ld b, 2
 	jmp SafeCopyTilemapAtOnce
@@ -470,13 +397,13 @@ RenderEVChart:
 	ld a, [wTempMonSatEV]
 	or %11
 	ldh [hChartSat], a
-	depixel 4, 6
+	depixel 4, 8
 	call SparkleMaxStat
 ; SDf
 	ld a, [wTempMonSdfEV]
 	or %11
 	ldh [hChartSdf], a
-	depixel 15, 6
+	depixel 15, 8
 	call SparkleMaxStat
 	jr RenderChart
 
@@ -528,7 +455,7 @@ RenderIVChart:
 	swap a
 	or b
 	ldh [hChartSat], a
-	depixel 4, 6
+	depixel 4, 8
 	call SparkleMaxStatOrShowBottleCap
 ; SDf
 	ld a, [wTempMonSatSdfDV]
@@ -537,7 +464,7 @@ RenderIVChart:
 	swap a
 	or b
 	ldh [hChartSdf], a
-	depixel 15, 6
+	depixel 15, 8
 	call SparkleMaxStatOrShowBottleCap
 	; fallthrough
 
@@ -1081,6 +1008,12 @@ RightSlashAxesXCoords:
 
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lzp"
+
+JudgeSystemStatGFX:
+INCBIN "gfx/stats/judge_stats.2bpp.lzp"
+
+JudgeSystemTilemap:
+INCBIN "gfx/stats/judge.bin.lzp"
 
 EVChartPals:
 INCLUDE "gfx/stats/ev_chart.pal"
