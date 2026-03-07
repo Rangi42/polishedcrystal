@@ -161,7 +161,7 @@ hBattleTurn:: db
 hBattlePalFadeMode:: db
 hTimeOfDayPalOffset:: db
 NEXTU
-hChartScreen:: db
+hChartScreen:: db ; $00 = EVs, $FF = IVs
 hChartFillCoord:: db
 hChartLineCoord:: db
 NEXTU

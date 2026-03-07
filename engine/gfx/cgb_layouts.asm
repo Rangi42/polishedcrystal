@@ -1395,14 +1395,11 @@ _CGB_TrainerOrMonFrontpicPals:
 	jmp ApplyPals
 
 _CGB_JudgeSystem:
-	; gender icon
-	ld de, wBGPals1 palette 6
-	ld hl, GenderAndExpBarPals
-	call LoadPalette_White_Col1_Col2_Black
 	; frontpic
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
 	call GetFrontpicPalettePointer
+	ld de, wBGPals1 palette 7
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, wBGPals1 palette 7 + 2
 	call VaryBGPalByTempMonDVs
@@ -1412,44 +1409,6 @@ _CGB_JudgeSystem:
 	ld c, 2 palettes
 	call LoadPalettes
 
-	call WipeAttrMap
-
-	; up/down arrows
-	hlcoord 0, 0, wAttrmap
-	ld a, 1 | OAM_BANK1
-	ld [hli], a
-	; top row
-	ld bc, 17
-	ld a, 1
-	rst ByteFill
-	; gender icon
-	ld a, 6 | OAM_BANK1
-	ld [hli], a
-	; shiny icon and second row
-	ld a, 1 | OAM_BANK1
-	ld bc, 21
-	rst ByteFill
-	; left/right arrows
-	hlcoord 0, 2, wAttrmap
-	ld [hl], 0 | OAM_BANK1
-	; frontpic
-	hlcoord 0, 6, wAttrmap
-	lb bc, 7, 7
-	ld a, 7
-	call FillBoxWithByte
-	; chart
-	hlcoord 9, 4, wAttrmap
-	lb bc, 12, 8
-	ld a, 5 | OAM_BANK1
-	call FillBoxWithByte
-	hlcoord 8, 6, wAttrmap
-	lb bc, 8, 1
-	ld a, 5 | OAM_BANK1
-	call FillBoxWithByte
-	hlcoord 17, 6, wAttrmap
-	lb bc, 8, 1
-	ld a, 5 | OAM_BANK1
-	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
 	hlcoord 12, 3, wAttrmap
@@ -1464,33 +1423,26 @@ _CGB_JudgeSystem:
 	hlcoord 12, 16, wAttrmap
 	call .FillStat
 	ld c, STAT_SDEF
-	hlcoord 6, 14, wAttrmap
+	hlcoord 8, 14, wAttrmap
 	call .FillStat
 	ld c, STAT_SATK
-	hlcoord 6, 5, wAttrmap
+	hlcoord 8, 5, wAttrmap
 	call .FillStat
-	; heading
-	hlcoord 0, 3, wAttrmap
-	ld a, 0 | OAM_BANK1
-	ld bc, 11
-	rst ByteFill
 
 	jr _CGB_FinishLayout
 
 .FillStat:
-; Use palette 2 for normal, 3 for lowered, 4 for raised
+; Use palette 3 for lowered, 4 for raised, unchanged (2) for normal
 	ld a, [wTempMonNature]
 	push hl
 	farcall GetNatureStatMultiplier
 	pop hl
 	cp 10 ; 10 is normal
+	ret z
 	ld a, 4
-	jr c, .lowered_stat ; 9 is lowered
-	jr nz, .raised_stat ; 11 is raised
-	dec a ; 2
-.lowered_stat
-	dec a ; 3
-.raised_stat
+	jr nc, .got_stat_pal
+	dec a
+.got_stat_pal
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
