@@ -968,6 +968,7 @@ RadioChannels:
 	dbw 32, .LuckyChannel
 	dbw 40, .BuenasPassword
 	dbw 52, .RuinsOfAlphRadio
+	dbw 56, .WeatherChannel
 	dbw 64, .PlacesAndPeople
 	dbw 72, .LetsAllSing
 	dbw 78, .PokeFluteRadio
@@ -979,7 +980,7 @@ RadioChannels:
 
 ; Oak's Pokémon Talk in the afternoon and evening
 	call .InJohto
-	jr nc, NoRadioStation
+	jmp nc, NoRadioStation
 	ld a, [wTimeOfDay]
 	and a
 	jmp z, LoadStation_PokedexShow
@@ -1044,6 +1045,10 @@ RadioChannels:
 	jr nz, NoRadioStation
 .ok
 	jmp LoadStation_EvolutionRadio
+
+.WeatherChannel:
+; Available everywhere
+	jmp LoadStation_WeatherChannel
 
 .InJohto:
 ; if in Johto or on the S.S. Aqua, set carry
@@ -1142,6 +1147,11 @@ LoadStation_EvolutionRadio:
 	ld de, UnknownStationName
 	jr LoadRadioStation
 
+LoadStation_WeatherChannel:
+	ld a, WEATHER_CHANNEL
+	ld de, WeatherChannelName
+	jr LoadRadioStation
+
 RadioMusicRestart:
 	push de
 	ld a, e
@@ -1189,6 +1199,7 @@ UnknownStationName:   db "?????@"
 PlacesAndPeopleName:  db "Places & People@"
 LetsAllSingName:      db "Let's All Sing!@"
 PokeFluteStationName: db "# Flute@"
+WeatherChannelName:   db "Weather Channel@"
 
 _TownMap:
 	ld hl, wOptions1
