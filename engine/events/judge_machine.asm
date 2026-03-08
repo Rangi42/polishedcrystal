@@ -341,6 +341,24 @@ JudgeSystem::
 	ld b, 2
 	jmp SafeCopyTilemapAtOnce
 
+SparkleMaxEVs:
+; Show a still sparkle sprite next to the "Effort" heading if modern EVs are maxed out.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ret nz
+	push hl
+	farcall GetEVTotal ; hl == $ffff if EV total is maxed out
+	ld d, h
+	inc l
+	pop hl
+	ret nz
+	inc d
+	ret nz
+	depixel 2, 7
+	ld a, SPRITE_ANIM_INDEX_MAX_EVS
+	jr InitSpriteAnimStruct_PreserveHL
+
 SparkleMaxStat:
 ; Show a sparkle sprite at (d, e) if a is 255
 ; Returns carry if the sprite is shown
@@ -405,6 +423,8 @@ RenderEVChart:
 	ldh [hChartSdf], a
 	depixel 15, 8
 	call SparkleMaxStat
+; Max
+	call SparkleMaxEVs
 	jr RenderChart
 
 RenderIVChart:

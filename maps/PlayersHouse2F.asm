@@ -257,6 +257,12 @@ endr
 	loadmem wPartyMon6Exp+0, 207967 >> 16
 	loadmem wPartyMon6Exp+1, HIGH(207967)
 	loadmem wPartyMon6Exp+2, LOW(207967)
+	; max modern evs
+	loadmem wPartyMon6HPEV, MODERN_MAX_EV
+	loadmem wPartyMon6AtkEV, MODERN_MAX_EV
+	loadmem wPartyMon6SpeEV, MODERN_EV_LIMIT - MODERN_MAX_EV * 2
+	; hyper training
+	loadmem wPartyMon6HyperTraining, %01000000
 	; fill pokedex
 	callasm FillPokedex
 ;	; new bark events
