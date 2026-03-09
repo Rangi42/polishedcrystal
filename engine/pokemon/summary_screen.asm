@@ -142,7 +142,7 @@ INCLUDE "gfx/stats/summary_sprites.pal"
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
 	ld de, vTiles2 tile SUMMARY_TILE_START
-	lb bc, BANK(GFX_Summary), 17
+	lb bc, BANK(GFX_Summary), 16
 	call DecompressRequest2bpp
 
 	farcall LoadBoldPDoubled

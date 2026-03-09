@@ -117,7 +117,7 @@ INCLUDE "gfx/stats/blue_hp_bars.pal"
 	db "HP@"
 
 .AbilityTiles:
-	db SUMMARY_TILE_HIDDEN_H, "1", "2", SUMMARY_TILE_HIDDEN_H
+	db '<BOLDH>', '1', '2', '<BOLDH>'
 
 SummaryScreen_ColorNatures:
 	ld c, STAT_ATK

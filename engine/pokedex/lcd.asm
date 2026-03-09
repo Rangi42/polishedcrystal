@@ -224,7 +224,7 @@ StackDexGraphics:
 
 	ld hl, PokedexObjLZ
 	ld de, vTiles0
-	lb bc, BANK(PokedexObjLZ), 31
+	lb bc, BANK(PokedexObjLZ), 30
 	call DecompressRequest2bpp
 
 	; Gender symbols
@@ -447,7 +447,7 @@ Pokedex_RefreshOAM:
 	; Ability display
 	lb bc, 76, 100
 	lb de, 1, 15
-	lb hl, 0, $1d
+	lb hl, 0, '<BOLDH>'
 
 	ldh a, [hPokedexStatsCurAbil]
 	cp 2 ; 0/1/2 -> 1/2/H

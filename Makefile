@@ -224,6 +224,7 @@ gfx/player/crys_back.2bpp: RGBGFXFLAGS += -Z
 gfx/player/beta_back.2bpp: RGBGFXFLAGS += -Z
 
 gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; $Qcat $^ > $@
+gfx/pokedex/oam.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp gfx/pokedex/area.2bpp ; $Qcat $^ > $@
 gfx/pokedex/question_mark.2bpp: RGBGFXFLAGS += -Z
 
