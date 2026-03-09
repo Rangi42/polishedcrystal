@@ -31,10 +31,10 @@ LoadStandardFontPointer::
 	ld hl, .FontPointers
 	ld a, [wOptions2]
 	and FONT_MASK
-	ld d, 0
-	ld e, a
-	add hl, de
-	add hl, de
+	ld b, 0
+	ld c, a
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -53,10 +53,17 @@ LoadStandardFontPointer::
 	assert_table_length NUM_FONTS
 
 _LoadFontsBattleExtra::
+	ld de, wColoredMaleFemaleShinyTiles
+	call CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile BATTLEEXTRA_GFX_START
+	ld de, wColoredMaleFemaleShinyTiles
+	lb bc, BANK(@), 3
+	call Get2bpp
 	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile BATTLEEXTRA_GFX_START
-	lb bc, BANK(BattleExtrasGFX), 32
+	ld de, vTiles2 tile (BATTLEEXTRA_GFX_START + 3)
+	lb bc, BANK(BattleExtrasGFX), 29
 	call DecompressRequest2bpp
+	; fallthrough
 
 _LoadFrame::
 	ld a, [wTextboxFrame]
@@ -75,6 +82,7 @@ _LoadFrame::
 
 LoadBattleFontsHPBar:
 	call _LoadFontsBattleExtra
+	; fallthrough
 
 LoadSummaryStatusIcon:
 	push de
@@ -173,3 +181,47 @@ LoadBoldPDoubled:
 	ld de, wSummaryScreenPPTileBuffer
 	lb bc, BANK(@), 3
 	jmp Get1bpp
+
+CopyColoredMaleFemaleShinyTiles:
+; Copy dark '♂', light '♀', and light '★' to de.
+; Must be in VRAM bank 0.
+	call LoadStandardFontPointer
+	push hl
+	ld bc, ('♂' - $80) * TILE_1BPP_SIZE
+	add hl, bc
+	call Copy1bppTileAsDark
+	assert '♂' + 1 == '♀'
+	call Copy1bppTileAsLight
+	pop hl
+	ld bc, ('★' - $80) * TILE_1BPP_SIZE
+	add hl, bc
+	; fallthrough
+
+Copy1bppTileAsLight:
+; Copy one 1bpp tile from hl to de, with the
+; high 2bpp bytes set to $00 to convert black to light.
+	ld a, [hli]
+	ld [de], a
+	inc de
+_Copy1bppTileAsColor:
+rept 7
+	xor a
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+endr
+	xor a
+	ld [de], a
+	inc de
+	ret
+
+Copy1bppTileAsDark:
+; Copy one 1bpp tile from hl to de, with the
+; low 2bpp bytes set to $00 to convert black to dark.
+	call _Copy1bppTileAsColor
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ret

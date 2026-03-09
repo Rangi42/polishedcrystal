@@ -158,10 +158,12 @@ BillsPC_LoadUI:
 	dec [hl]
 
 	; Gender symbols and shiny star
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $42
-	lb bc, BANK(BattleExtrasGFX), 3
-	call DecompressRequest2bpp
+	ld de, wBillsPC_ItemVWF
+	farcall CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile $42
+	ld de, wBillsPC_ItemVWF
+	lb bc, BANK(@), 3
+	call Get2bpp
 
 	; Box frame tiles and Pokérus symbols
 	ld hl, BillsPC_TileGFX

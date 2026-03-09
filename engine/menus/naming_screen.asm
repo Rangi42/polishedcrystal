@@ -1,6 +1,7 @@
 DEF NAMINGSCREEN_BORDER EQU $60
-DEF NAMINGSCREEN_MALE EQU $6b
+DEF NAMINGSCREEN_MALE   EQU $6b
 DEF NAMINGSCREEN_FEMALE EQU $6c
+DEF NAMINGSCREEN_SHINY  EQU $6d
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
 DEF NAMINGSCREEN_MIDDLELINE EQU '′'
@@ -761,11 +762,9 @@ LoadNamingScreenGFX:
 	ld de, vTiles2 tile NAMINGSCREEN_BORDER
 	call Decompress
 
-	; Gender symbols
-	ld hl, BattleExtrasGFX
+	; Gender symbols and shiny star
 	ld de, vTiles2 tile NAMINGSCREEN_MALE
-	lb bc, BANK(BattleExtrasGFX), 2
-	call DecompressRequest2bpp
+	farcall CopyColoredMaleFemaleShinyTiles
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
 	ld hl, NamingScreenGFX_Cursor
