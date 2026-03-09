@@ -3,7 +3,7 @@ if !DEF(MONOCHROME)
 	RGB 31,31,31, 29,20,31, 20,13,26, 00,00,00 ; main bg with white
 	RGB 31,31,31, 29,20,31, 31,29,19, 00,00,00 ; top-right page icons
 	RGB 29,20,31, 31,00,31, 31,00,31, 03,15,29 ; lowered stat
-	RGB 29,20,31, 31,00,31, 31,25,02, 23,07,03 ; raised stat, and shiny star
+	RGB 29,20,31, 31,25,02, 31,00,31, 23,07,03 ; raised stat, and shiny star
 	RGB 18,27,29, 29,20,31, 02,10,20, 20,13,26 ; chart
 	RGB 29,20,31, 31,12,06, 04,17,31, 02,06,13 ; stat values, and gender icons
 else
@@ -29,8 +29,8 @@ else
 	RGB_MONOCHROME_DARK
 ; raised stat, and shiny star
 	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
 ; chart
 	RGB_MONOCHROME_WHITE

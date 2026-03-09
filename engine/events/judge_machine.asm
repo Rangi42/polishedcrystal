@@ -1,3 +1,7 @@
+DEF JUDGE_MALE_TILE   EQU $75
+DEF JUDGE_FEMALE_TILE EQU $76
+DEF JUDGE_SHINY_TILE  EQU $77
+
 JudgeMachine:
 ; Check that the machine is activated
 	ld hl, wStatusFlags3
@@ -120,7 +124,13 @@ JudgeSystem::
 ; Load the blank chart graphics
 	ld hl, JudgeSystemGFX
 	ld de, vTiles5
-	lb bc, BANK(JudgeSystemGFX), 120
+	lb bc, BANK(JudgeSystemGFX), 117
+	call DecompressRequest2bpp
+
+; Load the gender symbols and shiny star
+	ld hl, BattleExtrasGFX
+	ld de, vTiles5 tile JUDGE_MALE_TILE
+	lb bc, BANK(BattleExtrasGFX), 3
 	call DecompressRequest2bpp
 
 ; Load the max stat sparkle and hyper trained bottle cap graphics
@@ -174,9 +184,10 @@ JudgeSystem::
 	farcall GetGender
 	ld a, ' '
 	jr c, .got_gender
-	ld a, $07 ; male
+	ld a, JUDGE_MALE_TILE
 	jr nz, .got_gender
-	inc a ; $08 == female
+	assert JUDGE_MALE_TILE + 1 == JUDGE_FEMALE_TILE
+	inc a
 .got_gender
 	hlcoord 5, 16
 	ld [hli], a
@@ -184,9 +195,9 @@ JudgeSystem::
 ; Place the shiny icon
 	ld bc, wTempMonShiny
 	farcall CheckShininess
-	; a = carry ? $09 (star) : ' '
+	; a = carry ? JUDGE_SHINY_TILE : ' '
 	sbc a
-	and $09 - ' '
+	and JUDGE_SHINY_TILE - ' '
 	add ' '
 	ld [hli], a
 
@@ -240,7 +251,7 @@ JudgeSystem::
 	ldh [rVBK], a
 	ld hl, vTiles5
 	ld de, wDecompressScratch
-	ld c, 120 ; # tiles
+	ld c, 117 ; # tiles
 	call Request2bppInWRA6
 	xor a
 	ldh [rVBK], a
