@@ -174,6 +174,7 @@ gfx/battle/lyra_back.2bpp: RGBGFXFLAGS += -Z
 gfx/battle/substitute-back.2bpp: RGBGFXFLAGS += -Z
 gfx/battle/substitute-front.2bpp: RGBGFXFLAGS += -Z
 gfx/battle/ghost.2bpp: RGBGFXFLAGS += -Z
+gfx/battle/hpexpbar.2bpp: tools/gfx += --trim-whitespace
 
 gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
 gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace

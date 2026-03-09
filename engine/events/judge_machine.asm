@@ -118,6 +118,11 @@ JudgeSystem::
 	lb bc, BANK(JudgeSystemStatGFX), 21
 	call DecompressRequest2bpp
 
+; Prepare the gender symbols and shiny star while in VRAM bank 0
+	assert JUDGE_MALE_TILE + 1 == JUDGE_FEMALE_TILE && JUDGE_FEMALE_TILE + 1 == JUDGE_SHINY_TILE
+	ld de, wStringBuffer1
+	farcall CopyColoredMaleFemaleShinyTiles
+
 	ld a, $1
 	ldh [rVBK], a
 
@@ -128,10 +133,10 @@ JudgeSystem::
 	call DecompressRequest2bpp
 
 ; Load the gender symbols and shiny star
-	ld hl, BattleExtrasGFX
+	ld hl, wStringBuffer1
 	ld de, vTiles5 tile JUDGE_MALE_TILE
-	lb bc, BANK(BattleExtrasGFX), 3
-	call DecompressRequest2bpp
+	ld bc, 3 tiles
+	rst CopyBytes
 
 ; Load the max stat sparkle and hyper trained bottle cap graphics
 	ld hl, vTiles5 tile $64

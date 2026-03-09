@@ -228,10 +228,12 @@ StackDexGraphics:
 	call DecompressRequest2bpp
 
 	; Gender symbols
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $7d
-	lb bc, BANK(BattleExtrasGFX), 2
-	call DecompressRequest2bpp
+	ld de, wDex2bpp
+	farcall CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile $7d
+	ld de, wDex2bpp
+	lb bc, BANK(@), 2
+	call Get2bpp
 
 	; Set up a conversion table for Johto dex numbers.
 	ld a, BANK(wDexConversionTable)
