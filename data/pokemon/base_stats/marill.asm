@@ -1,5 +1,5 @@
-	db  70,  20,  50,  40,  20,  50 ; 250 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 250,  70,  20,  50,  20,  50,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db WATER, FAIRY ; type
 	db 190 ; catch rate

@@ -1,5 +1,5 @@
-	db  45,  30,  15,  65,  85,  65 ; 305 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 305,  45,  30,  15,  85,  65,  65
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ICE, PSYCHIC ; type
 	db 45 ; catch rate

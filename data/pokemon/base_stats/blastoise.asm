@@ -1,5 +1,5 @@
-	db  79,  83, 100,  78,  85, 105 ; 530 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 530,  79,  83, 100,  85, 105,  78
+	;   bst   hp  atk  def  sat  sdf  spe
 
 if DEF(FAITHFUL)
 	db WATER, WATER ; type

@@ -1,5 +1,5 @@
-	db  85,  73,  70,  67,  73, 115 ; 483 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 483,  85,  73,  70,  73, 115,  67
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db PSYCHIC, PSYCHIC ; type
 	db 75 ; catch rate

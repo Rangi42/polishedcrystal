@@ -1,5 +1,5 @@
-	db  70, 120,  65, 125,  45,  85 ; 510 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 510,  70, 120,  65,  45,  85, 125
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db DARK, ICE ; type
 	db 45 ; catch rate

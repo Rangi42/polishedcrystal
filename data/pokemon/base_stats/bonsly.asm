@@ -1,5 +1,5 @@
-	db  50,  80,  95,  10,  10,  45 ; 290 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 290,  50,  80,  95,  10,  45,  10
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ROCK, ROCK ; type
 	db 255 ; catch rate

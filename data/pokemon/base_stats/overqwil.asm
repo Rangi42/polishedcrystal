@@ -1,5 +1,5 @@
-	db  85, 115,  95,  85,  65,  65 ; 510 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 510,  85, 115,  95,  65,  65,  85
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db DARK, POISON ; type
 	db 30 ; catch rate

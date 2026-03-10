@@ -1,5 +1,5 @@
-	db  35,  35,  40,  50,  35,  55 ; 250 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 250,  35,  35,  40,  35,  55,  50
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GRASS, FLYING ; type
 	db 255 ; catch rate

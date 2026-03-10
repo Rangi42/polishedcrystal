@@ -1,5 +1,5 @@
-	db  90,  85,  75, 115, 115, 100 ; 580 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 580,  90,  85,  75, 115, 100, 115
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ELECTRIC, ELECTRIC ; type
 	db 3 ; catch rate

@@ -1,5 +1,5 @@
-	db  50,  65,  65,  40,  40,  40 ; 290 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 300,  50,  65,  65,  40,  40,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db STEEL, STEEL ; type
 	db 255 ; catch rate

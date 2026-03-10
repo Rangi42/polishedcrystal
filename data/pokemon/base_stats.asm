@@ -1,3 +1,9 @@
+MACRO bst
+; total, hp, atk, def, spe, sat, sdf
+	assert \1 == \2 + \3 + \4 + \5 + \6 + \7
+	db \2, \3, \4, \7, \5, \6
+ENDM
+
 MACRO ev_yield
 	def_evs \#
 	db (VV_HP << 6) | (VV_ATK << 4) | (VV_DEF << 2) | VV_SPE
