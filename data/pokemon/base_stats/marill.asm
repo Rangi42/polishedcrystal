@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	bst 250,  70,  20,  50,  20,  50,  40
 	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 270,  70,  20,  50,  40,  50,  40
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db WATER, FAIRY ; type
 	db 190 ; catch rate

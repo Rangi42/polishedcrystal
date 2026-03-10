@@ -121,6 +121,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShockSlayer for Eusine's losing text.
 * Hello for correcting composers in the music player.
 * Salamandar for Battle Tower sets.
+* Drayano and AphexCubed for many non-Faithful adjusted base stat distributions.
 
 
 ## Special Thanks

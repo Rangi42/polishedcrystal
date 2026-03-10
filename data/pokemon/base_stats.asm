@@ -1,6 +1,7 @@
-MACRO bst
+MACRO? bst
 ; total, hp, atk, def, spe, sat, sdf
-	assert \1 == \2 + \3 + \4 + \5 + \6 + \7
+	def n = \2 + \3 + \4 + \5 + \6 + \7
+	assert \1 == n, "Should BST be \1 or {d:n}?"
 	db \2, \3, \4, \7, \5, \6
 ENDM
 

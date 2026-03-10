@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	bst 525,  65, 130,  60,  95, 110,  65
 	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 525,  65, 130,  60,  65, 110,  95
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db FIRE, FIRE ; type
 	db 45 ; catch rate

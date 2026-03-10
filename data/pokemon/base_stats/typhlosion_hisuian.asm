@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	bst 534,  73,  84,  78, 119,  85,  95
 	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 535,  73,  84,  78, 120,  85,  95
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db FIRE, GHOST ; type
 	db 45 ; catch rate

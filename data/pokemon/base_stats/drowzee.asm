@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	bst 328,  60,  48,  45,  43,  90,  42
 	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 340,  70,  48,  45,  45,  90,  42
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db PSYCHIC, PSYCHIC ; type
 	db 190 ; catch rate
@@ -7,7 +12,7 @@
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-if def(FAITHFUL)
+if DEF(FAITHFUL)
 	abilities_for DROWZEE, INSOMNIA, FOREWARN, INNER_FOCUS
 else
 	abilities_for DROWZEE, INSOMNIA, BAD_DREAMS, INNER_FOCUS
