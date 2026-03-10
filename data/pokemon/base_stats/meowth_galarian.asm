@@ -1,4 +1,4 @@
-	bst 300,  50,  65,  65,  40,  40,  40
+	bst 290,  50,  65,  55,  40,  40,  40
 	;   bst   hp  atk  def  sat  sdf  spe
 
 	db STEEL, STEEL ; type
