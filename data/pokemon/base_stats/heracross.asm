@@ -7,7 +7,12 @@
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
+	abilities_for HERACROSS, SWARM, GUTS, MOXIE
+else
 	abilities_for HERACROSS, MOXIE, GUTS, SKILL_LINK
+endc
+
 	db GROWTH_SLOW ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups
 
