@@ -437,7 +437,9 @@ BillsPC_BlankTiles:
 
 BillsPC_SetCursorMode:
 	call _BillsPC_SetCursorMode
-	jmp BillsPC_SetPals
+BillsPC_SetPals:
+	call BillsPC_ApplyPals
+	jmp SetDefaultBGPAndOBP
 
 _BillsPC_SetCursorMode:
 ; Switches cursor mode and updates the cursor palette. Doesn't write palettes,
@@ -3532,10 +3534,6 @@ BillsPC_PlaceHeldMon:
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
 	ret
-
-BillsPC_SetPals:
-	call BillsPC_ApplyPals
-	jmp SetDefaultBGPAndOBP
 
 BillsPC_ApplyPals:
 ; Sets palettes. This writes palette data for HBlank row1 mons/etc into

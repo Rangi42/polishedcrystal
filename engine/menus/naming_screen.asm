@@ -95,7 +95,9 @@ NamingScreen:
 	hlcoord 1, 4
 	ld [hl], '★'
 .not_shiny
-	jmp .StoreMonIconParams
+	ld a, MON_NAME_LENGTH - 1
+	hlcoord 7, 4
+	jmp .StoreParams
 
 .Player:
 	farcall _GetPlayerIcon
@@ -109,45 +111,26 @@ NamingScreen:
 	ld c, [hl]
 	pop hl
 	call .LoadSprite
-	hlcoord 5, 2
 	ld de, .PlayerNameString
-	rst PlaceString
-	jmp .StoreSpriteIconParams
-
-.PlayerSpriteAnims:
-	table_width 1
-	db SPRITE_ANIM_INDEX_RED_WALK    ; PLAYER_MALE
-	db SPRITE_ANIM_INDEX_BLUE_WALK   ; PLAYER_FEMALE
-	db SPRITE_ANIM_INDEX_GREEN_WALK  ; PLAYER_ENBY
-	db SPRITE_ANIM_INDEX_PURPLE_WALK ; PLAYER_BETA
-	assert_table_length NUM_PLAYER_GENDERS
-
-.PlayerNameString:
-	db "Your name?@"
+	jmp .PlaceNameAndStoreSpriteIconParams
 
 .Rival:
 	ld hl, RivalSpriteGFX
 	lb bc, BANK(RivalSpriteGFX), SPRITE_ANIM_INDEX_RED_WALK
 	call .LoadSprite
-	hlcoord 5, 2
 	ld de, .RivalNameString
-	rst PlaceString
-	jmp .StoreSpriteIconParams
-
-.RivalNameString:
-	db "Rival's name?@"
+	jmp .PlaceNameAndStoreSpriteIconParams
 
 .TrendyPhrase:
 	ld hl, ArtistSpriteGFX
 	lb bc, BANK(ArtistSpriteGFX), SPRITE_ANIM_INDEX_BLUE_WALK
 	call .LoadSprite
-	hlcoord 5, 2
 	ld de, .TrendyPhraseString
+.PlaceNameAndStoreSpriteIconParams:
+	hlcoord 5, 2
 	rst PlaceString
-	jr .StoreSpriteIconParams
-
-.TrendyPhraseString:
-	db "What's trendy?@"
+	ld a, PLAYER_NAME_LENGTH - 1
+	jr .StoreParamsForShortName
 
 .Box:
 	ld de, vTiles0 tile $00
@@ -169,9 +152,6 @@ NamingScreen:
 	rst PlaceString
 	jr .StoreBoxIconParams
 
-.BoxNameString:
-	db "Box name?@"
-
 .LoadSprite:
 	push bc
 	ld de, vTiles0 tile $00
@@ -190,21 +170,11 @@ NamingScreen:
 	depixel 4, 4, 4, 0
 	jmp InitSpriteAnimStruct
 
-.StoreMonIconParams:
-	ld a, MON_NAME_LENGTH - 1
-	hlcoord 7, 4
-	jr .StoreParams
-
-.StoreSpriteIconParams:
-	ld a, PLAYER_NAME_LENGTH - 1
-	hlcoord 5, 4
-	jr .StoreParams
-
 .StoreBoxIconParams:
 	; the terminator isn't saved, so no "- 1" is needed.
 	ld a, BOX_NAME_LENGTH
+.StoreParamsForShortName:
 	hlcoord 5, 4
-
 .StoreParams:
 	ld [wNamingScreenMaxNameLength], a
 	ld a, l
@@ -212,6 +182,21 @@ NamingScreen:
 	ld a, h
 	ld [wNamingScreenStringEntryCoord + 1], a
 	ret
+
+.PlayerSpriteAnims:
+INCLUDE "data/player/sprite_anims.asm"
+
+.PlayerNameString:
+	db "Your name?@"
+
+.RivalNameString:
+	db "Rival's name?@"
+
+.TrendyPhraseString:
+	db "What's trendy?@"
+
+.BoxNameString:
+	db "Box name?@"
 
 NamingScreen_InitText:
 	call WaitTop
