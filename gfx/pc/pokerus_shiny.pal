@@ -1,6 +1,6 @@
 if !DEF(MONOCHROME)
-	RGB 31, 25, 00
-	RGB 31, 10, 26
+	RGB 31, 25, 00 ; shiny
+	RGB 29, 07, 22 ; pokerus
 else
 	MONOCHROME_RGB_TWO
 endc
