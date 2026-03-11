@@ -1,7 +1,6 @@
 DEF NAMINGSCREEN_BORDER EQU $60
 DEF NAMINGSCREEN_MALE   EQU $6b
 DEF NAMINGSCREEN_FEMALE EQU $6c
-DEF NAMINGSCREEN_SHINY  EQU $6d
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
 DEF NAMINGSCREEN_MIDDLELINE EQU '′'
@@ -93,7 +92,7 @@ NamingScreen:
 	farcall GetShininess
 	jr z, .not_shiny
 	hlcoord 1, 4
-	ld [hl], NAMINGSCREEN_SHINY
+	ld [hl], '★'
 .not_shiny
 	ld a, MON_NAME_LENGTH - 1
 	hlcoord 7, 4
