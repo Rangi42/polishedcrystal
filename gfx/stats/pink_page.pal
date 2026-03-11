@@ -10,9 +10,9 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 
 	RGB 31, 29, 31
-	RGB 31, 19, 31
-	RGB 29, 07, 22 ; pokerus
 	RGB 31, 25, 02 ; shiny
+	RGB 29, 07, 22 ; pokerus
+	RGB 00, 00, 00
 else
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_LIGHT
