@@ -14,7 +14,6 @@ LoadCGBLayout::
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
-	dw _CGB_StatsScreenHPPals
 	dw _CGB_Pokedex
 	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_SlotMachine
@@ -371,38 +370,6 @@ PokegearPals:
 INCLUDE "gfx/pokegear/pokegear.pal"
 
 INCLUDE "data/player/pokegear_pals.asm"
-
-_CGB_StatsScreenHPPals:
-	ld de, wBGPals1 palette 1
-	ld a, [wCurPartySpecies]
-	ld b, a
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	jr z, .done
-	ld b, EGG
-.done
-	ld a, b
-	ld bc, wTempMonPersonality
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	push de
-	call VaryBGPal1ByTempMonDVs
-	pop de
-
-	ld hl, ItemIconPalettes
-	ld bc, 2 colors
-	ld a, [wTempMonItem]
-	rst AddNTimes
-	ld de, wSummaryScreenPals palette 2
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld hl, GenderAndExpBarPals
-	ld de, wSummaryScreenPals palette 6
-	call LoadPalette_White_Col1_Col2_Black
-
-	farcall SummaryScreen_InitAttrmap
-
-	jmp _CGB_FinishLayout
 
 _CGB_Pokedex:
 	call _CGB_Pokedex_PrepareOnly
@@ -1429,7 +1396,7 @@ _CGB_JudgeSystem:
 	hlcoord 8, 5, wAttrmap
 	call .FillStat
 
-	jr _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 .FillStat:
 ; Use palette 3 for lowered, 4 for raised, unchanged (2) for normal
@@ -1450,6 +1417,85 @@ _CGB_JudgeSystem:
 
 .SparkleAndBottleCapPalette:
 INCLUDE "gfx/stats/judge_ob.pal"
+
+SummaryScreen_ApplyHPPals:
+	ld de, wBGPals1 palette 1
+
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
+	ld a, [wCurPartySpecies]
+.got_species
+	ld bc, wTempMonPersonality
+	call GetPlayerOrMonPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	push de
+	call VaryBGPal1ByTempMonDVs
+	pop de
+
+	ld hl, ItemIconPalettes
+	ld bc, 2 colors
+	ld a, [wTempMonItem]
+	rst AddNTimes
+	ld de, wSummaryScreenPals palette 2
+	call LoadPalette_White_Col1_Col2_Black
+
+	ld hl, GenderAndExpBarPals
+	ld de, wSummaryScreenPals palette 6
+	call LoadPalette_White_Col1_Col2_Black
+
+	call WipeAttrMap
+
+	hlcoord 0, 0, wAttrmap
+	lb bc, 12, 8
+	ld a, SUMMARY_PAL_POKEMON
+	call FillBoxWithByte
+
+	hlcoord 8, 0, wAttrmap
+	lb bc, 1, 14
+	; a == SUMMARY_PAL_POKEMON
+	call FillBoxWithByte
+
+	hlcoord 0, 12, wAttrmap
+	lb bc, 1, 20
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	call FillBoxWithByte
+
+	hlcoord 2, 12, wAttrmap
+	lb bc, 1, 3
+	xor a
+	assert SUMMARY_PAL_LOWER_WINDOW == 0
+	call FillBoxWithByte
+
+	hlcoord 1, 11, wAttrmap
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	ld [hli], a
+	ld a, OAM_YFLIP | SUMMARY_PAL_LOWER_WINDOW
+	ld bc, 3
+	rst ByteFill
+	ld a, OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
+	ld [hl], a
+	hlcoord 5, 12, wAttrmap
+	ld [hl], a
+
+	hlcoord 7, 1, wAttrmap
+	lb bc, 11, 13
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	call FillBoxWithByte
+
+	hlcoord 5, 9, wAttrmap
+	ld [hl], SUMMARY_PAL_GENDER_MARKER
+
+	hlcoord 19, 0, wAttrmap
+	ld [hl], SUMMARY_PAL_POKEMON | BG_XFLIP
+
+	hlcoord 2, 8, wAttrmap
+	lb bc, 3, 3
+	ld a, SUMMARY_PAL_ITEM
+	call FillBoxWithByte
+
+	; fallthrough
 
 _CGB_FinishLayout:
 	call ApplyAttrMap

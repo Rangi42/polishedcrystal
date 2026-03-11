@@ -356,7 +356,9 @@ SummaryScreen_InitMon:
 	farcall LoadSummaryStatusIcon
 	ld a, [wTempMonItem]
 	farcall LoadItemIconForSummaryScreen
-	farcall _CGB_StatsScreenHPPals
+
+	farcall SummaryScreen_ApplyHPPals
+
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	ret
@@ -526,57 +528,6 @@ SummaryScreen_InitLayout:
 	db 108, 28, SUMMARY_TILE_OAM_TITLES + 1, $0
 	db 108, 36, SUMMARY_TILE_OAM_TITLES + 2, $0
 	db 108, 44, SUMMARY_TILE_OAM_TITLES + 3, $0
-
-SummaryScreen_InitAttrmap:
-	farcall WipeAttrMap
-
-	hlcoord 0, 0, wAttrmap
-	lb bc, 12, 8
-	ld a, SUMMARY_PAL_POKEMON
-	call FillBoxWithByte
-
-	hlcoord 8, 0, wAttrmap
-	lb bc, 1, 14
-	; a == SUMMARY_PAL_POKEMON
-	call FillBoxWithByte
-
-	hlcoord 0, 12, wAttrmap
-	lb bc, 1, 20
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	call FillBoxWithByte
-
-	hlcoord 2, 12, wAttrmap
-	lb bc, 1, 3
-	xor a
-	assert SUMMARY_PAL_LOWER_WINDOW == 0
-	call FillBoxWithByte
-
-	hlcoord 1, 11, wAttrmap
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	ld [hli], a
-	ld a, OAM_YFLIP | SUMMARY_PAL_LOWER_WINDOW
-	ld bc, 3
-	rst ByteFill
-	ld a, OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
-	ld [hl], a
-	hlcoord 5, 12, wAttrmap
-	ld [hl], a
-
-	hlcoord 7, 1, wAttrmap
-	lb bc, 11, 13
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	call FillBoxWithByte
-
-	hlcoord 5, 9, wAttrmap
-	ld [hl], SUMMARY_PAL_GENDER_MARKER
-
-	hlcoord 19, 0, wAttrmap
-	ld [hl], SUMMARY_PAL_POKEMON | BG_XFLIP
-
-	hlcoord 2, 8, wAttrmap
-	lb bc, 3, 3
-	ld a, SUMMARY_PAL_ITEM
-	jmp FillBoxWithByte
 
 SummaryScreen_LoadPage:
 	ld a, [wCurPartySpecies]
