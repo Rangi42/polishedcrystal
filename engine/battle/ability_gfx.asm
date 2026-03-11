@@ -403,8 +403,6 @@ AbilityVWF:
 	ld [wAbilityFlags], a
 	xor a
 	ld [wAbilityDisplaySpeed], a
-	jr _AbilityVWF
-
 _AbilityVWF:
 ; Write variable-width names into ability graphics
 	; First, try to center the combined string with some overlap.

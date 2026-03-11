@@ -111,14 +111,14 @@ NamingScreen:
 	pop hl
 	call .LoadSprite
 	ld de, .PlayerNameString
-	jmp .PlaceNameAndStoreSpriteIconParams
+	jr .PlaceNameAndStoreSpriteIconParams
 
 .Rival:
 	ld hl, RivalSpriteGFX
 	lb bc, BANK(RivalSpriteGFX), SPRITE_ANIM_INDEX_RED_WALK
 	call .LoadSprite
 	ld de, .RivalNameString
-	jmp .PlaceNameAndStoreSpriteIconParams
+	jr .PlaceNameAndStoreSpriteIconParams
 
 .TrendyPhrase:
 	ld hl, ArtistSpriteGFX

@@ -97,7 +97,6 @@ NotificationAbilities:
 	call StdBattleTextbox
 	jmp EndAbility
 
-
 ImmunityAbility:
 PastelVeilAbility:
 	ld a, 1 << PSN
@@ -2091,10 +2090,9 @@ _GetIgnorableAbility:
 _GetAbilityFlags:
 ; return flags for ability in a.
 	push hl
-	ld hl, AbilityFlags
-	add l
+	add LOW(AbilityFlags)
 	ld l, a
-	adc h
+	adc HIGH(AbilityFlags)
 	sub l
 	ld h, a
 	ld a, [hl]
@@ -2113,7 +2111,16 @@ DisplayAbilitySwap:
 	call ShowAbilityReplacement
 	ld hl, SwappedAbilitiesText
 	call StdBattleTextbox
-	jr EndAbility
+	; fallthrough
+
+EndAbility:
+	ld a, [wInAbility]
+	and a
+	ret z
+	call DismissAbilityOverlays
+	xor a
+	ld [wInAbility], a
+	ret
 
 BeginAbility:
 	ld a, [wInAbility]
@@ -2127,15 +2134,6 @@ BeginAbility:
 	pop de
 	pop hl
 	ld a, 1
-	ld [wInAbility], a
-	ret
-
-EndAbility:
-	ld a, [wInAbility]
-	and a
-	ret z
-	call DismissAbilityOverlays
-	xor a
 	ld [wInAbility], a
 	ret
 

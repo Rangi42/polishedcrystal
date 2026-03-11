@@ -1379,10 +1379,9 @@ _CGB_JudgeSystem:
 	pop hl
 	cp 10 ; 10 is normal
 	ret z
-	ld a, 4
-	jr nc, .got_stat_pal
-	dec a
-.got_stat_pal
+	; a = carry ? 3 : 4
+	sbc a
+	add 4
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
