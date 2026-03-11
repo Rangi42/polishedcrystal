@@ -500,18 +500,25 @@ _CGB_NamingScreen:
 	ld hl, WhiteColor
 	ld de, wBGPals1 palette 1 color 3
 	call LoadOneColor
-
 	ld hl, wBGPals1 palette 1 color 0
-	ld de, wBGPals1 palette 2 color 0
+	; de == wBGPals1 palette 2 color 0
 	call LoadOneColor
-
-	pop af
-	ldh [rWBK], a
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
 	ld c, 8 palettes
 	call LoadPalettes
+
+	ld a, [wNamingScreenType]
+	cp $4 ; box?
+	jr nz, .not_poke_ball
+	ld hl, WhiteColor
+	ld de, wOBPals1 palette 0 color 1
+	call LoadOneColor
+.not_poke_ball
+
+	pop af
+	ldh [rWBK], a
 
 	ld a, [wNamingScreenType]
 	and a
