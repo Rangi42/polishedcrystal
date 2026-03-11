@@ -14,8 +14,8 @@ DEF palred   EQUS "(1 << B_COLOR_RED) *"
 DEF palgreen EQUS "(1 << B_COLOR_GREEN) *"
 DEF palblue  EQUS "(1 << B_COLOR_BLUE) *"
 
-DEF palettes EQUS "* 8"
-DEF palette  EQUS "+ 8 *"
+DEF palettes EQUS "* PAL_SIZE"
+DEF palette  EQUS "+ PAL_SIZE *"
 DEF color    EQUS "+ COLOR_SIZE *"
 DEF colors   EQUS "* COLOR_SIZE"
 

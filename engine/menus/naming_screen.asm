@@ -93,7 +93,7 @@ NamingScreen:
 	farcall GetShininess
 	jr z, .not_shiny
 	hlcoord 1, 4
-	ld [hl], '★'
+	ld [hl], NAMINGSCREEN_SHINY
 .not_shiny
 	ld a, MON_NAME_LENGTH - 1
 	hlcoord 7, 4

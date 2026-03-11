@@ -21,7 +21,6 @@ LoadCGBLayout::
 	dw _CGB_MapPals
 	dw _CGB_PartyMenu
 	dw _CGB_Evolution
-	dw _CGB_MoveList
 	dw _CGB_BuyMenu
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
@@ -487,23 +486,26 @@ _CGB_NamingScreen:
 	ld a, BANK("GBC Video")
 	ldh [rWBK], a
 
-	push hl
+	ld de, wBGPals1 palette 0 color 3
+	call LoadOnePalette
+
+	ld hl, ShinyAndPokerusPals
+	ld de, wBGPals1 palette 0 color 1
+	call LoadOneColor ; shiny color is first
 	ld hl, GenderAndExpBarPals
-	ld de, wBGPals1 + 2
-	ld c, 2 * 2
+	; de == wBGPals1 palette 0 color 2
+	ld c, 2 colors
 	call LoadColorBytes
-	pop hl
-	ld c, 4 * 2
-	call LoadColorBytes
+
 	ld hl, WhiteColor
-	ld de, wBGPals1 palette 1 + 6
+	ld de, wBGPals1 palette 1 color 3
 	call LoadOneColor
 
-	ld hl, wBGPals1 palette 1
-	ld de, wBGPals1 palette 2
+	ld hl, wBGPals1 palette 1 color 0
+	ld de, wBGPals1 palette 2 color 0
 	call LoadOneColor
-	ld hl, wBGPals1 + 6
-	ld de, wBGPals1 palette 2 + 6
+	ld hl, wBGPals1 palette 0 color 3
+	ld de, wBGPals1 palette 2 color 2
 	call LoadOneColor
 
 	pop af
@@ -518,7 +520,7 @@ _CGB_NamingScreen:
 	and a
 	jr nz, .not_pokemon
 	; mon minis use palette [wCurPartyMon]+2
-	ld hl, wOBPals1 palette 2 + 2
+	ld hl, wOBPals1 palette 2 color 1
 	ld bc, 1 palettes
 	ld a, [wCurPartyMon]
 	rst AddNTimes
@@ -549,6 +551,8 @@ _CGB_NamingScreen:
 	; gender icon
 	xor a
 	ldcoord_a 1, 2, wAttrmap
+	; shiny icon
+	ldcoord_a 1, 4, wAttrmap
 
 	jmp ApplyAttrMap
 
@@ -717,41 +721,6 @@ _CGB_Evolution:
 
 .got_palette
 	call WipeAttrMap
-	jmp _CGB_FinishLayout
-
-_CGB_MoveList:
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_AREA
-	ld a, $7
-	rst ByteFill
-
-	hlcoord 1, 12, wAttrmap
-	ld bc, 6
-	xor a
-	rst ByteFill
-
-	call GetCurMoveFixedCategory
-	add a
-	add a
-	ld hl, CategoryIconPals
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld de, wBGPals1 palette 0 + 2
-	ld c, 4
-	call LoadPalettes
-
-	ld hl, Moves + MOVE_TYPE
-	call GetCurMoveProperty
-	ld hl, TypeIconPals
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld de, wBGPals1 palette 0 + 6
-	ld c, 2
-	call LoadPalettes
-
 	jmp _CGB_FinishLayout
 
 _CGB_BuyMenu:
@@ -1101,7 +1070,7 @@ BillsPC_PreviewTheme:
 	ld c, 2 * 2
 	call LoadColorBytes
 	push de
-	ld hl, .PokerusAndShinyPals
+	ld hl, ShinyAndPokerusPals
 	ld de, wBillsPC_PokerusShinyPal
 	ld c, 2 * 2
 	call LoadColorBytes
@@ -1134,27 +1103,27 @@ BillsPC_PreviewTheme:
 	ld c, 8 palettes
 	call LoadPalettes
 	ld de, wOBPals1 palette 1
-	ld hl, .CursorPal
+	ld hl, .BillsPC_CursorPal
 	push hl
 	call LoadOnePalette
 	pop hl
 	call LoadOnePalette
-	ld hl, .PackPal
+	ld hl, .BillsPC_PackPal
 	ld de, wOBPals1 palette 4
 	call LoadOnePalette
 	ld hl, WhitePalette
 	ld de, wOBPals1 palette 6
 	jmp LoadOnePalette
 
-.PokerusAndShinyPals:
-INCLUDE "gfx/pc/pokerus_shiny.pal"
-
-.CursorPal:
+.BillsPC_CursorPal:
 ; Coloring is fixed up later.
 INCLUDE "gfx/pc/cursor_default.pal"
 
-.PackPal:
+.BillsPC_PackPal:
 INCLUDE "gfx/pc/pack.pal"
+
+ShinyAndPokerusPals:
+INCLUDE "gfx/pc/pokerus_shiny.pal"
 
 GetBillsPCThemePalette:
 	; hl = .ThemePals + a * 4 * 2
