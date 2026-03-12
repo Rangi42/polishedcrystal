@@ -69,6 +69,13 @@ SECTION "Trade Graphics", ROMX
 TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lzp"
 
 
+SECTION "Evolution Graphics", ROMX
+
+EvoSpotlightGFX:: INCBIN "gfx/evo/spotlight.2bpp.lzp"
+EvoBubbleGFX::    INCBIN "gfx/evo/bubble.2bpp"
+EggHatchGFX::     INCBIN "gfx/evo/egg_hatch.2bpp"
+
+
 SECTION "Stats Graphics", ROMX
 
 GFX_Summary:: INCBIN "gfx/stats/summary.2bpp.lzp"
@@ -308,5 +315,4 @@ DexTilemap_Orange::      INCBIN "gfx/pokedex/orange.bin.lzp"
 
 SECTION "SGB Border Graphics", ROMX
 
-SGBBorderGFX::
-INCBIN "gfx/sgb/sgb_border.4bpp.lzp"
+SGBBorderGFX:: INCBIN "gfx/sgb/sgb_border.4bpp.lzp"
