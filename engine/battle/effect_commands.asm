@@ -4832,6 +4832,28 @@ UpdateMoveData:
 	ld c, a
 	ld hl, wBattleMonMoves
 	call GetUserMonAttr
+
+	; Check if the current move number already points to the correct move
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wCurMoveNum]
+	jr z, .check_current_move_num
+	ld a, [wCurEnemyMoveNum]
+.check_current_move_num
+
+	; If current move num is valid (0-3) and points to the current move, keep it
+	cp NUM_MOVES
+	jr nc, .search_for_move
+
+	; Check if moves[current_move_num] == current_move
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hl]
+	cp c
+	jr z, .done ; Already pointing to the correct move, don't change it
+
+.search_for_move
 	ld a, c
 	call UserKnowsMove
 	jr nz, .done
