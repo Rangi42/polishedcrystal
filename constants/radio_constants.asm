@@ -15,6 +15,7 @@
 	const POKE_FLUTE_RADIO       ; 08
 	const UNOWN_RADIO            ; 09
 	const EVOLUTION_RADIO        ; 0a
+	const WEATHER_CHANNEL        ; 0b
 DEF NUM_RADIO_CHANNELS EQU const_value
 ; internal indexes for channel segments
 	const OAKS_POKEMON_TALK_2    ; 0b
@@ -90,10 +91,24 @@ DEF NUM_RADIO_CHANNELS EQU const_value
 	const BUENAS_PASSWORD_19     ; 51
 	const BUENAS_PASSWORD_20     ; 52
 	const BUENAS_PASSWORD_21     ; 53
-	const RADIO_SCROLL           ; 54
-	const POKEDEX_SHOW_6         ; 55
-	const POKEDEX_SHOW_7         ; 56
-	const POKEDEX_SHOW_8         ; 57
+	const RADIO_SCROLL           ; 55
+	const POKEDEX_SHOW_6         ; 56
+	const POKEDEX_SHOW_7         ; 57
+	const POKEDEX_SHOW_8         ; 58
+	const WEATHER_CHANNEL_2      ; 59
+	const WEATHER_CHANNEL_3      ; 5a
+	const WEATHER_CHANNEL_4      ; 5b
+	const WEATHER_CHANNEL_5      ; 5c
+	const WEATHER_CHANNEL_6      ; 5d
+	const WEATHER_CHANNEL_7      ; 5e
+	const WEATHER_CHANNEL_8      ; 5f
+	const WEATHER_CHANNEL_9      ; 60
+	const WEATHER_CHANNEL_10     ; 61
+	const WEATHER_CHANNEL_11     ; 62
+	const WEATHER_CHANNEL_12     ; 63
+	const WEATHER_CHANNEL_13     ; 64
+	const WEATHER_CHANNEL_14     ; 65
+	const WEATHER_CHANNEL_15     ; 66
 DEF NUM_RADIO_SEGMENTS EQU const_value
 
 ; PlayRadioStationPointers indexes (see engine/pokegear/pokegear.asm)
