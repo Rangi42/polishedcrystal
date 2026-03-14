@@ -534,8 +534,8 @@ ClearWeather:
 
 	ld h, d
 	ld l, e
-	ld [hl], OAM_YCOORD_HIDDEN
-	inc hl
+	ld a, OAM_YCOORD_HIDDEN
+	ld [hli], a
 	xor a
 	ld [hli], a
 	ld [hli], a
