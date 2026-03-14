@@ -95,6 +95,7 @@ EngineFlags:
 	engine_flag wVisitedSpawns, SPAWN_FUCHSIA
 	engine_flag wVisitedSpawns, SPAWN_CINNABAR
 	engine_flag wVisitedSpawns, SPAWN_INDIGO
+	engine_flag wVisitedSpawns, SPAWN_POKEMON_LEAGUE
 	engine_flag wVisitedSpawns, SPAWN_NEW_BARK
 	engine_flag wVisitedSpawns, SPAWN_CHERRYGROVE
 	engine_flag wVisitedSpawns, SPAWN_VIOLET
