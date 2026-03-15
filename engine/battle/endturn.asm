@@ -380,7 +380,7 @@ HandleAffectionSelfCure:
 
 .do_it
 	farcall CheckAffection
-	cp 2
+	cp AFFECTION_LEVEL_2
 	ret c
 
 	; 20% to heal a status problem.

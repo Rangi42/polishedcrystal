@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  75,  55,  70, 110,  55,  95 ; 460 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 460,  75,  55,  70,  55,  95, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  95,  55,  70, 110,  55,  95 ; 480 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 480,  75,  55,  70,  75,  95, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db GRASS, FLYING ; type
@@ -11,8 +11,11 @@ endc
 	db 176 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-
+if DEF(FAITHFUL)
 	abilities_for JUMPLUFF, CHLOROPHYLL, LEAF_GUARD, INFILTRATOR
+else
+	abilities_for JUMPLUFF, CHLOROPHYLL, WIND_RIDER, INFILTRATOR
+endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_FAIRY, EGG_PLANT ; egg groups
 

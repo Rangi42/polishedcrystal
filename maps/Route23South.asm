@@ -1,5 +1,11 @@
 Route23South_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE23SOUTH_BADGE_CHECK_0
+	scene_const SCENE_ROUTE23SOUTH_BADGE_CHECK_1
+	scene_const SCENE_ROUTE23SOUTH_BADGE_CHECK_2
+	scene_const SCENE_ROUTE23SOUTH_BADGE_CHECK_3
+	scene_const SCENE_ROUTE23SOUTH_BADGE_CHECK_4
+	scene_const SCENE_ROUTE23SOUTH_NOOP
 
 	def_callbacks
 
@@ -8,21 +14,21 @@ Route23South_MapScriptHeader:
 	warp_event 10, 59, POKEMON_LEAGUE_GATE, 6
 
 	def_coord_events
-	coord_event 16, 55, 0, Route23SouthZephyrBadgeTriggerScript
-	coord_event 11, 47, 1, Route23SouthHiveBadgeTriggerScript
-	coord_event 12, 31, 2, Route23SouthPlainBadgeTriggerScript
-	coord_event 14, 31, 2, Route23SouthPlainBadgeTriggerScript
-	coord_event 15, 31, 2, Route23SouthPlainBadgeTriggerScript
-	coord_event 16, 31, 2, Route23SouthPlainBadgeTriggerScript
-	coord_event 17, 31, 2, Route23SouthPlainBadgeTriggerScript
-	coord_event 10, 22, 3, Route23SouthFogBadgeTriggerScript
-	coord_event 11, 22, 3, Route23SouthFogBadgeTriggerScript
-	coord_event 13, 22, 3, Route23SouthFogBadgeTriggerScript
-	coord_event 14, 22, 3, Route23SouthFogBadgeTriggerScript
-	coord_event 15, 22, 3, Route23SouthFogBadgeTriggerScript
-	coord_event  6,  7, 4, Route23SouthStormBadgeTriggerScript
-	coord_event  8,  7, 4, Route23SouthStormBadgeTriggerScript
-	coord_event  9,  7, 4, Route23SouthStormBadgeTriggerScript
+	coord_event 16, 55, SCENE_ROUTE23SOUTH_BADGE_CHECK_0, Route23SouthZephyrBadgeTriggerScript
+	coord_event 11, 47, SCENE_ROUTE23SOUTH_BADGE_CHECK_1, Route23SouthHiveBadgeTriggerScript
+	coord_event 12, 31, SCENE_ROUTE23SOUTH_BADGE_CHECK_2, Route23SouthPlainBadgeTriggerScript
+	coord_event 14, 31, SCENE_ROUTE23SOUTH_BADGE_CHECK_2, Route23SouthPlainBadgeTriggerScript
+	coord_event 15, 31, SCENE_ROUTE23SOUTH_BADGE_CHECK_2, Route23SouthPlainBadgeTriggerScript
+	coord_event 16, 31, SCENE_ROUTE23SOUTH_BADGE_CHECK_2, Route23SouthPlainBadgeTriggerScript
+	coord_event 17, 31, SCENE_ROUTE23SOUTH_BADGE_CHECK_2, Route23SouthPlainBadgeTriggerScript
+	coord_event 10, 22, SCENE_ROUTE23SOUTH_BADGE_CHECK_3, Route23SouthFogBadgeTriggerScript
+	coord_event 11, 22, SCENE_ROUTE23SOUTH_BADGE_CHECK_3, Route23SouthFogBadgeTriggerScript
+	coord_event 13, 22, SCENE_ROUTE23SOUTH_BADGE_CHECK_3, Route23SouthFogBadgeTriggerScript
+	coord_event 14, 22, SCENE_ROUTE23SOUTH_BADGE_CHECK_3, Route23SouthFogBadgeTriggerScript
+	coord_event 15, 22, SCENE_ROUTE23SOUTH_BADGE_CHECK_3, Route23SouthFogBadgeTriggerScript
+	coord_event  6,  7, SCENE_ROUTE23SOUTH_BADGE_CHECK_4, Route23SouthStormBadgeTriggerScript
+	coord_event  8,  7, SCENE_ROUTE23SOUTH_BADGE_CHECK_4, Route23SouthStormBadgeTriggerScript
+	coord_event  9,  7, SCENE_ROUTE23SOUTH_BADGE_CHECK_4, Route23SouthStormBadgeTriggerScript
 
 	def_bg_events
 
@@ -52,7 +58,7 @@ Route23SouthZephyrBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $0, Route23OfficerHaveBadgeScript
-	setscene $1
+	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_1
 	sjump Route23OfficerHaveBadgeScript
 
 .ZephyrBadgeText:
@@ -70,7 +76,7 @@ Route23SouthHiveBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $1, Route23OfficerHaveBadgeScript
-	setscene $2
+	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_2
 	sjump Route23OfficerHaveBadgeScript
 
 .HiveBadgeText:
@@ -88,7 +94,7 @@ Route23SouthPlainBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $2, Route23OfficerHaveBadgeScript
-	setscene $3
+	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_3
 	sjump Route23OfficerHaveBadgeScript
 
 .PlainBadgeText:
@@ -106,7 +112,7 @@ Route23SouthFogBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $3, Route23OfficerHaveBadgeScript
-	setscene $4
+	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_4
 	sjump Route23OfficerHaveBadgeScript
 
 .FogBadgeText:
@@ -124,7 +130,7 @@ Route23SouthStormBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $4, Route23OfficerHaveBadgeScript
-	setscene $5
+	setscene SCENE_ROUTE23SOUTH_NOOP
 	sjump Route23OfficerHaveBadgeScript
 
 .StormBadgeText:

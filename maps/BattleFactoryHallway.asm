@@ -1,6 +1,7 @@
 BattleFactoryHallway_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleFactoryHallwayFollowReceptionist
+	scene_script BattleFactoryHallwayEnterScene, SCENE_BATTLEFACTORYHALLWAY_ENTER
+	scene_const SCENE_BATTLEFACTORYHALLWAY_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, .SetScientistPosition
@@ -33,7 +34,7 @@ BattleFactoryHallway_MapScriptHeader:
 	appear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	end
 
-BattleFactoryHallwayFollowReceptionist:
+BattleFactoryHallwayEnterScene:
 	readvar VAR_YCOORD
 	ifequalfwd 13, .arrived_from_lobby
 	sdefer .WonBattle

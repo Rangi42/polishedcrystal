@@ -49,7 +49,11 @@ Route7Snorlax:
 	opentext
 	special SpecialSnorlaxAwake
 	iftruefwd .Awake
-	jumpopenedtext .AsleepText
+	jumpthisopenedtext
+
+	text "Snorlax is snoring"
+	line "peacefully…"
+	done
 
 .Awake:
 	writetext .AwakeText
@@ -64,10 +68,6 @@ Route7Snorlax:
 	reloadmapafterbattle
 	end
 
-.AsleepText:
-	text "Snorlax is snoring"
-	line "peacefully…"
-	done
 
 .AwakeText:
 	text "The #gear was"

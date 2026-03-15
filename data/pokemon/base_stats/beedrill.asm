@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  65,  90,  40,  75,  45,  80 ; 395 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 395,  65,  90,  40,  45,  80,  75
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  65, 100,  40, 115,  45,  90 ; 455 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 450,  65, 105,  50,  55,  90,  85
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db BUG, POISON ; type

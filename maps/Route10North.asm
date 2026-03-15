@@ -1,7 +1,7 @@
 Route10North_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route10NorthTrigger0
-	scene_script Route10NorthTrigger1
+	scene_script Route10NorthSuicuneScene, SCENE_ROUTE10NORTH_SUICUNE
+	scene_script Route10NorthNoopScene, SCENE_ROUTE10NORTH_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
@@ -21,12 +21,13 @@ Route10North_MapScriptHeader:
 	bg_event  7, 35, BGEVENT_JUMPTEXT, RockTunnelSignText
 
 	def_object_events
-	object_event 13, 44, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, PLAIN_FORM, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
+	object_event 13, 44, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, PAL_MON_YELLOW_BROWN, OBJECTTYPE_SCRIPT, PLAIN_FORM, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
 	object_event  6, 52, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
-	object_event 14, 52, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, PLAIN_FORM, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
+	object_event 14, 52, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, PAL_MON_YELLOW_BROWN, OBJECTTYPE_SCRIPT, PLAIN_FORM, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	object_event 12, 52, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CRYS_IN_NAVEL_ROCK
+	object_event 12, 52, SPRITE_BETA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BETA_IN_NAVEL_ROCK
 	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
 	cuttree_event 11, 21, EVENT_ROUTE_10_CUT_TREE_1
 	cuttree_event 14, 21, EVENT_ROUTE_10_CUT_TREE_2
@@ -41,10 +42,11 @@ Route10North_MapScriptHeader:
 	const ROUTE10_CHRIS
 	const ROUTE10_KRIS
 	const ROUTE10_CRYS
+	const ROUTE10_BETA
 
-Route10NorthTrigger1:
+Route10NorthNoopScene:
 	sdefer Route10NorthLawrenceEncounter1Script
-Route10NorthTrigger0:
+Route10NorthSuicuneScene:
 	end
 
 Route10NorthFlyPoint:
@@ -99,14 +101,17 @@ Route10NorthLawrenceEncounter1Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	setscene $0
+	setscene SCENE_ROUTE10NORTH_SUICUNE
 	special RestartMapMusic
 	end
 
 Route10NorthPanTable:
+	table_width 2
 	dw .Male
 	dw .Female
 	dw .Enby
+	dw .Beta
+	assert_table_length NUM_PLAYER_GENDERS
 
 .Male:
 	appear ROUTE10_CHRIS
@@ -124,6 +129,12 @@ Route10NorthPanTable:
 	appear ROUTE10_CRYS
 	scall .PanUpAndDown
 	disappear ROUTE10_CRYS
+	end
+
+.Beta:
+	appear ROUTE10_BETA
+	scall .PanUpAndDown
+	disappear ROUTE10_BETA
 	end
 
 .PanUpAndDown:

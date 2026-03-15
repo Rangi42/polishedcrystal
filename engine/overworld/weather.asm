@@ -552,10 +552,73 @@ SpawnRainDrop:
 	jr .finish
 
 ClearWeather:
-	; doing this will cause _UpdateSprites to hide all weather sprites.
+	push hl
+	push de
+	push bc
+	call .HideWeatherSprites
 	xor a
 	ldh [hUsedWeatherSpriteIndex], a
+	pop bc
+	pop de
+	pop hl
 	ret
+
+.HideWeatherSprites
+; hide all visible weather-owned OAM entries
+	ldh a, [hUsedWeatherSpriteIndex]
+	ld c, a
+
+	; if objects fill the entire OAM, there are no weather-owned slots to scan.
+	ld b, LOW(wShadowOAMEnd)
+	ldh a, [hUsedOAMIndex]
+	cp b
+	ret nc
+
+	; objects are at the end of OAM, so clamp the weather scan limit to the
+	; slot immediately before the first object slot.
+	cpl
+	add (OAM_COUNT - 1) * OBJ_SIZE + 1
+	cp c
+	jr nc, .got_last_weather_slot
+	ld c, a
+.got_last_weather_slot
+	ld de, wShadowOAM
+.loop
+	ld h, d
+	ld l, e
+	ld a, [hl]
+	cp OAM_YCOORD_HIDDEN
+	jr z, .next
+	inc hl
+	inc hl
+	ld a, [hli]
+	cp WEATHER_TILE_1
+	jr z, .check_attr
+	cp WEATHER_TILE_2
+	jr nz, .next
+.check_attr
+	ld a, [hl]
+	cp PAL_OW_WEATHER
+	jr nz, .next
+
+	ld h, d
+	ld l, e
+	ld a, OAM_YCOORD_HIDDEN
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+.next
+	ld a, e
+	cp c
+	ret z
+	ld hl, OBJ_SIZE
+	add hl, de
+	ld d, h
+	ld e, l
+	jr .loop
 
 DoRainFall:
 	ld de, wShadowOAM

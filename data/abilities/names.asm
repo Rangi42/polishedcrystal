@@ -105,6 +105,7 @@ AbilityNames:
 	dw HoneyGather
 	dw Frisk
 	dw Reckless
+	dw BadDreams
 	dw Pickpocket
 	dw SheerForce
 	dw Contrary
@@ -152,6 +153,7 @@ AbilityNames:
 	dw NeutralizingGas
 	dw PastelVeil
 	dw QuickDraw
+	dw WindRider
 	dw CudChew
 	dw Sharpness
 	dw ArmorTail
@@ -263,6 +265,7 @@ SnowWarning:     rawchar "Snow Warning@"
 HoneyGather:     rawchar "Honey Gather@"
 Frisk:           rawchar "Frisk@"
 Reckless:        rawchar "Reckless@"
+BadDreams:       rawchar "Bad Dreams@"
 Pickpocket:      rawchar "Pickpocket@"
 SheerForce:      rawchar "Sheer Force@"
 Contrary:        rawchar "Contrary@"
@@ -310,6 +313,7 @@ GorillaTactics:  rawchar "Gorilla Tactics@"
 NeutralizingGas: rawchar "Neutralizing Gas@"
 PastelVeil:      rawchar "Pastel Veil@"
 QuickDraw:       rawchar "Quick Draw@"
+WindRider:       rawchar "Wind Rider@"
 CudChew:         rawchar "Cud Chew@"
 Sharpness:       rawchar "Sharpness@"
 ArmorTail:       rawchar "Armor Tail@"

@@ -223,10 +223,10 @@ DoWonderTrade:
 	call CopyTradeName
 
 	call Random
-	ld [wBuffer1], a
+	ld [wWonderTradeScratch], a
 	call Random
-	ld [wBuffer1 + 1], a
-	ld hl, wBuffer1
+	ld [wWonderTradeScratch + 1], a
+	ld hl, wWonderTradeScratch
 	ld de, wOTTrademonID
 	call Trade_CopyTwoBytes
 
@@ -272,12 +272,12 @@ DoWonderTrade:
 
 	; Random DVs
 	call Random
-	ld [wBuffer1], a
+	ld [wWonderTradeScratch], a
 	call Random
-	ld [wBuffer1 + 1], a
+	ld [wWonderTradeScratch + 1], a
 	call Random
-	ld [wBuffer1 + 2], a
-	ld hl, wBuffer1
+	ld [wWonderTradeScratch + 2], a
+	ld hl, wWonderTradeScratch
 	ld de, wOTTrademonDVs
 	call Trade_CopyThreeBytes
 
@@ -312,7 +312,7 @@ endr
 	ld b, a
 .not_shiny
 	ld a, b
-	ld [wBuffer1], a
+	ld [wWonderTradeScratch], a
 	; Random gender (50-50)
 	call Random
 	and GENDER_MASK
@@ -337,8 +337,8 @@ endr
 	; Form
 	ld a, [wCurForm]
 	add b
-	ld [wBuffer1 + 1], a
-	ld hl, wBuffer1
+	ld [wWonderTradeScratch + 1], a
+	ld hl, wWonderTradeScratch
 	ld de, wOTTrademonPersonality
 	call Trade_CopyTwoBytes
 

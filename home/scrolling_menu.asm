@@ -33,13 +33,19 @@ SetDefaultBGPAndOBP::
 
 InitScrollingMenu::
 	ld a, [wMenuBorderTopCoord]
+	and a
+	jr z, .top_at_min
 	dec a
+.top_at_min
 	ld b, a
 	ld a, [wMenuBorderBottomCoord]
 	sub b
 	ld d, a
 	ld a, [wMenuBorderLeftCoord]
+	and a
+	jr z, .left_at_min
 	dec a
+.left_at_min
 	ld c, a
 	ld a, [wMenuBorderRightCoord]
 	sub c

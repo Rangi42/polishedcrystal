@@ -114,11 +114,11 @@ INCLUDE "gfx/stats/green_page.pal"
 	rst CopyBytes
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	ld a, TILEMAP_WIDTH * 2
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	predef ListMoves
 	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
 	ld a, TILEMAP_WIDTH * 2
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	predef ListMovePP
 
 for n, NUM_MOVES

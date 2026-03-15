@@ -194,10 +194,7 @@ MagnetTunnelInsideMachine4:
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	scall MagnetTunnelAlarmSounds
 	showemote EMOTE_QUESTION, PLAYER, 15
-	opentext
-	writetext MagnetTunnelInsideMachineText4
-	waitbutton
-	closetext
+	showtext MagnetTunnelInsideMachineText4
 	end
 
 .StoneMovement1:

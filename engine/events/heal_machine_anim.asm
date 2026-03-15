@@ -8,18 +8,18 @@ HealMachineAnim:
 	; 1: Left (Elm's Lab)
 	; 2: Up (Hall of Fame)
 	ldh a, [hScriptVar]
-	ld [wBuffer1], a
+	ld [wHealMachineAnimType], a
 	ldh a, [rOBP1]
-	ld [wBuffer2], a
+	ld [wHealMachineTempOBP1], a
 	call .DoJumptableFunctions
-	ld a, [wBuffer2]
+	ld a, [wHealMachineTempOBP1]
 	jmp DmgToCgbObjPal1
 
 .DoJumptableFunctions:
 	xor a
-	ld [wBuffer3], a
+	ld [wHealMachineAnimState], a
 .jumptable_loop
-	ld a, [wBuffer1]
+	ld a, [wHealMachineAnimType]
 	ld e, a
 	ld d, 0
 	ld hl, .Pointers
@@ -28,10 +28,10 @@ HealMachineAnim:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wBuffer3]
+	ld a, [wHealMachineAnimState]
 	ld e, a
 	inc a
-	ld [wBuffer3], a
+	ld [wHealMachineAnimState], a
 	add hl, de
 	ld a, [hl]
 	cp 5
@@ -162,7 +162,7 @@ HealMachineAnim:
 
 .PlaceHealingMachineTile:
 	push bc
-	ld a, [wBuffer1]
+	ld a, [wHealMachineAnimType]
 	bcpixel 2, 4
 	dec a ; ElmsLab = 1
 	jr z, .okay

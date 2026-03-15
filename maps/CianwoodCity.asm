@@ -1,5 +1,7 @@
 CianwoodCity_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CIANWOODCITY_NOOP
+	scene_const SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CianwoodCityFlyPointAndSuicune
@@ -15,7 +17,7 @@ CianwoodCity_MapScriptHeader:
 	warp_event  4, 25, CLIFF_EDGE_GATE, 1
 
 	def_coord_events
-	coord_event 11, 16, 1, CianwoodCitySuicuneAndEusine
+	coord_event 11, 16, SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE, CianwoodCitySuicuneAndEusine
 
 	def_bg_events
 	bg_event 20, 34, BGEVENT_JUMPTEXT, CianwoodCitySignText
@@ -30,7 +32,7 @@ CianwoodCity_MapScriptHeader:
 
 	def_object_events
 	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
-	pokemon_event 10, 14, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, ClearText, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
+	pokemon_event 10, 14, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, ClearText, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	object_event 21, 37, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityYoungsterText, -1
 	object_event 16, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityPokefanMText, -1
 	object_event 14, 42, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityLassText, -1
@@ -70,14 +72,14 @@ CianwoodCitySuicuneAndEusine:
 	applymovement CIANWOODCITY_SUICUNE, CianwoodCitySuicuneDepartMovement
 	disappear CIANWOODCITY_SUICUNE
 	pause 10
-	setscene $0
+	setscene SCENE_CIANWOODCITY_NOOP
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftruefwd .NoLyra
-	setmapscene ROUTE_42, $1
+	setmapscene ROUTE_42, SCENE_ROUTE42_LYRA
 	sjumpfwd .Continue
 .NoLyra
-	setmapscene ROUTE_42, $2
+	setmapscene ROUTE_42, SCENE_ROUTE42_SUICUNE
 .Continue
 	checkevent EVENT_BEAT_EUSINE
 	iftrue DoNothingScript
@@ -106,7 +108,20 @@ CianwoodCitySuicuneAndEusine:
 CianwoodCityChucksWife:
 	checkevent EVENT_BEAT_CHUCK
 	iftrue_jumptextfaceplayer ChucksWifeChubbyText
-	jumptextfaceplayer ChucksWifeEasierToFlyText
+	jumpthistextfaceplayer
+
+	text "You crossed the"
+	line "sea to get here?"
+
+	para "That must have"
+	line "been hard."
+
+	para "It would be much"
+	line "easier if your"
+
+	para "#mon knew how"
+	line "to Fly…"
+	done
 
 CianwoodCitySuicuneApproachMovement:
 	fix_facing
@@ -137,19 +152,6 @@ CianwoodCityEusineDepartMovement:
 	step_down
 	step_end
 
-ChucksWifeEasierToFlyText:
-	text "You crossed the"
-	line "sea to get here?"
-
-	para "That must have"
-	line "been hard."
-
-	para "It would be much"
-	line "easier if your"
-
-	para "#mon knew how"
-	line "to Fly…"
-	done
 
 ChucksWifeChubbyText:
 	text "That's Cianwood's"

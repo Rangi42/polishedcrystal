@@ -457,7 +457,7 @@ GetStorageBoxPointer:
 	; Ensure that we're dealing with an actual box and not a partymon.
 	ld a, b
 	and a
-	ld a, ERR_NEWBOX
+	ld a, ERR_PC_BOX_ZERO
 	jmp z, Crash
 
 	ld a, BANK(sNewBox1)
@@ -679,7 +679,7 @@ AddStorageMon:
 
 	; Allocate the entry. Return a fatal error if the entry was already set.
 	call AllocateStorageFlag
-	ld a, ERR_NEWBOX
+	ld a, ERR_PC_BOX_COLLISION
 	jmp nz, Crash
 	push hl
 	push de

@@ -168,10 +168,10 @@ Pokegear_LoadGFX:
 	jmp Decompress
 
 FastShipGFX:
-INCBIN "gfx/town_map/fast_ship.2bpp.lz"
+INCBIN "gfx/town_map/fast_ship.2bpp.lzp"
 
 SinjohRuinsArrowGFX:
-INCBIN "gfx/town_map/arrow.2bpp.lz"
+INCBIN "gfx/town_map/arrow.2bpp.lzp"
 
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
@@ -880,7 +880,7 @@ PokegearText_DeleteStoredNumber:
 	text_end
 
 PokegearSpritesGFX:
-INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lz"
+INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lzp"
 
 RadioTilemapRLE:
 INCBIN "gfx/pokegear/radio.tilemap.rle"
@@ -2026,21 +2026,20 @@ TownMapPlayerIcon:
 InitializePokegearPlayerIcon:
 	depixel 0, 0
 	ld a, [wPlayerGender]
-	ld b, SPRITE_ANIM_INDEX_RED_WALK
-	and a ; PLAYER_MALE
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-	dec a ; PLAYER_FEMALE
-	jr z, .got_gender
-	; PLAYER_ENBY
-	ld b, SPRITE_ANIM_INDEX_GREEN_WALK
-.got_gender
-	ld a, b
+	add LOW(.PlayerSpriteAnims)
+	ld l, a
+	adc HIGH(.PlayerSpriteAnims)
+	sub l
+	ld h, a
+	ld a, [hl]
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10
 	ret
+
+.PlayerSpriteAnims:
+INCLUDE "data/player/sprite_anims.asm"
 
 LoadTownMapGFX:
 	ld de, vTiles2
@@ -2058,4 +2057,4 @@ OrangeMap:
 INCBIN "gfx/town_map/orange.bin"
 
 PokegearGFX:
-INCBIN "gfx/pokegear/pokegear.2bpp.lz"
+INCBIN "gfx/pokegear/pokegear.2bpp.lzp"

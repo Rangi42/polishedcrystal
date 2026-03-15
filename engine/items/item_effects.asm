@@ -149,7 +149,7 @@ _DoItemEffect::
 	dw IsntTheTimeMessage ; NEVERMELTICE
 	dw IsntTheTimeMessage ; DRAGON_FANG
 	dw IsntTheTimeMessage ; BLACKGLASSES
-	dw IsntTheTimeMessage ; PINK_BOW
+	dw IsntTheTimeMessage ; FAIRYFEATHER
 	dw IsntTheTimeMessage ; BERSERK_GENE
 	dw IsntTheTimeMessage ; BRIGHTPOWDER
 	dw IsntTheTimeMessage ; QUICK_CLAW
@@ -383,7 +383,7 @@ PokeBallEffect:
 	ld [wWildMon], a
 
 	farcall GetModifiedCaptureRate
-	ld [wBuffer1], a
+	ld [wFinalCatchRate], a
 	ld a, [wTempEnemyMonSpecies]
 	ld [wWildMon], a
 
@@ -391,7 +391,7 @@ PokeBallEffect:
 	farcall CheckCriticalCapture
 	sbc a   ; if c (critical) then $ff else 0
 	and $10 ; if c (critical) then $10 else 0
-	ld [wBuffer2], a
+	ld [wThrownBallWobbleCount], a
 
 	ld c, 20
 	call DelayFrames
@@ -409,7 +409,7 @@ PokeBallEffect:
 	ld [wNumHits], a
 	predef PlayBattleAnim
 
-	ld a, [wBuffer2] ; amount of shakes
+	ld a, [wThrownBallWobbleCount] ; amount of shakes
 	and a
 	ld hl, Text_NoShake
 	jmp z, .shake_and_break_free
@@ -561,10 +561,16 @@ PokeBallEffect:
 .SkipPartyMonHealBall:
 
 	call GetPartyPokemonName
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jmp nz, .return_from_capture
+	bit NICKNAMES_ALWAYS, a
+	jr nz, .party_skip_ask
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 	call YesNoBox
 	jmp c, .return_from_capture
+.party_skip_ask
 
 	ld a, [wPartyCount]
 	dec a
@@ -614,10 +620,16 @@ PokeBallEffect:
 .SkipBoxMonFriendBall:
 
 	call GetPartyPokemonName
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jr nz, .SkipBoxMonNickname
+	bit NICKNAMES_ALWAYS, a
+	jr nz, .box_skip_ask
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 	call YesNoBox
 	jr c, .SkipBoxMonNickname
+.box_skip_ask
 
 	xor a
 	ld [wCurPartyMon], a
@@ -1587,23 +1599,23 @@ IsMonAtFullHealth:
 LoadCurHPIntoBuffer5:
 	call UseItem_GetHPParameter
 	ld a, [hli]
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 	ld a, [hl]
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	ret
 
 LoadCurHPToBuffer3:
 	call UseItem_GetHPParameter
 	ld a, [hli]
-	ld [wBuffer4], a
+	ld [wHPBuffer2 + 1], a
 	ld a, [hl]
-	ld [wBuffer3], a
+	ld [wHPBuffer2], a
 	ret
 
 LoadHPFromBuffer3:
-	ld a, [wBuffer4]
+	ld a, [wHPBuffer2 + 1]
 	ld d, a
-	ld a, [wBuffer3]
+	ld a, [wHPBuffer2]
 	ld e, a
 	ret
 
@@ -1611,16 +1623,16 @@ LoadMaxHPToBuffer1:
 	push hl
 	call UseItem_GetMaxHPParameter
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	pop hl
 	ret
 
 LoadHPFromBuffer1:
-	ld a, [wBuffer2]
+	ld a, [wHPBuffer1 + 1]
 	ld d, a
-	ld a, [wBuffer1]
+	ld a, [wHPBuffer1]
 	ld e, a
 	ret
 
@@ -3138,12 +3150,12 @@ ApplyPPUp:
 	ld a, MON_MOVES
 	call GetPartyParamLocationAndValue
 	push hl
-	ld de, wBuffer1
+	ld de, wPPUpPPBuffer
 	predef FillPP
 	pop hl
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
-	ld de, wBuffer1
+	ld de, wPPUpPPBuffer
 	ld b, 0
 .loop
 	inc b

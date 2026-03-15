@@ -109,7 +109,7 @@ tools:
 	$(MAKE) -C tools/
 
 clean: tidy
-	find gfx maps data/tilesets -name '*.lz' -delete
+	find gfx maps data/tilesets -name '*.lzp' -delete
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
 		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
@@ -174,6 +174,7 @@ gfx/battle/lyra_back.2bpp: RGBGFXFLAGS += -Z
 gfx/battle/substitute-back.2bpp: RGBGFXFLAGS += -Z
 gfx/battle/substitute-front.2bpp: RGBGFXFLAGS += -Z
 gfx/battle/ghost.2bpp: RGBGFXFLAGS += -Z
+gfx/battle/hpexpbar.2bpp: tools/gfx += --trim-whitespace
 
 gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
 gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace
@@ -194,6 +195,8 @@ gfx/battle_anims/status.2bpp: tools/gfx += --remove-whitespace
 
 gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
 gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
+
+gfx/evo/bubble.2bpp: tools/gfx += --trim-whitespace
 
 gfx/font/%.1bpp: tools/gfx += --trim-whitespace
 gfx/font/space.2bpp: tools/gfx =
@@ -220,8 +223,10 @@ gfx/paintings/%.2bpp: RGBGFXFLAGS += -Z
 gfx/player/chris_back.2bpp: RGBGFXFLAGS += -Z
 gfx/player/kris_back.2bpp: RGBGFXFLAGS += -Z
 gfx/player/crys_back.2bpp: RGBGFXFLAGS += -Z
+gfx/player/beta_back.2bpp: RGBGFXFLAGS += -Z
 
 gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; $Qcat $^ > $@
+gfx/pokedex/oam.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp gfx/pokedex/area.2bpp ; $Qcat $^ > $@
 gfx/pokedex/question_mark.2bpp: RGBGFXFLAGS += -Z
 
@@ -236,6 +241,7 @@ gfx/slots/slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
 gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates --keep-whitespace --remove-xflip
 
+gfx/stats/%.bin: gfx/stats/%.tilemap gfx/stats/%.attrmap ; $Qcat $^ > $@
 gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
@@ -258,6 +264,7 @@ gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qca
 gfx/trainer_card/chris_card.2bpp: RGBGFXFLAGS += -Z
 gfx/trainer_card/kris_card.2bpp: RGBGFXFLAGS += -Z
 gfx/trainer_card/crys_card.2bpp: RGBGFXFLAGS += -Z
+gfx/trainer_card/beta_card.2bpp: RGBGFXFLAGS += -Z
 
 gfx/trainers/%.2bpp: RGBGFXFLAGS += -Z
 
@@ -276,7 +283,8 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 	$Qtools/pokemon_animation -f $^ > $@
 
 
-%.lz: %
+
+%.lzp: %
 	$Qtools/lzcomp -- $< $@
 
 #%.4bpp: %.png

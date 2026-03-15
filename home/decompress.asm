@@ -68,6 +68,17 @@ DEF LZ_LONG          EQU 7 << 5
 DEF LZ_LONG_CMD      EQU %00011100
 DEF LZ_LONG_HI       EQU %00000011
 
+; Extended opcode bytes ($fc-$fe)
+; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
+DEF LZ_EXT_MASK          EQU %11111100
+DEF LZ_EXT_BASE          EQU $fc
+DEF LZ_EXT_SUBTYPE_MASK  EQU %00000011
+
+DEF LZ_EXT_PACKHI0       EQU 0 ; $fc
+DEF LZ_EXT_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
+DEF LZ_EXT_PACKLO0       EQU 2 ; $fe (len 1..256)
+DEF LZ_PACK16_NIBBLE_MASK EQU $0f
+
 ; In other words, the structure of the command becomes
 ; 111xxxyy yyyyyyyy
 ; x: the new control command
@@ -307,6 +318,128 @@ DEF LZ_LONG_HI       EQU %00000011
 	ret z ; LZ_END
 	ld b, c
 
+	; Extended opcodes: $fc-$fe.
+	; Detect by masking off the low two bits.
+	ld a, b
+	and LZ_EXT_MASK
+	cp LZ_EXT_BASE
+	jmp nz, .long_normal
+	ld a, b
+	and LZ_EXT_SUBTYPE_MASK
+	; subtype in a: LZ_EXT_PACKHI0/LZ_EXT_PACK16_SHORT/LZ_EXT_PACKLO0
+	push af
+	ld a, [de]
+	inc de
+	ld c, a
+	ld b, 0
+	inc c
+	jr nz, .ext_have_len
+	inc b
+.ext_have_len
+	pop af
+	cp LZ_EXT_PACKHI0
+	jr nz, .ext_pack16
+
+.ext_packhi0
+	; Decode packed literals where each output byte is (nibble << 4).
+	; Payload is ceil(count/2) bytes.
+.packhi0_loop
+	ld a, b
+	or c
+	jr z, .Main
+	ld a, [de]
+	inc de
+	push af
+	and $f0
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr z, .packhi0_done
+	pop af
+	and LZ_PACK16_NIBBLE_MASK
+	swap a
+	ld [hli], a
+	dec bc
+	jr .packhi0_loop
+.packhi0_done
+	pop af
+	jr .Main
+
+.ext_pack16
+	cp LZ_EXT_PACKLO0
+	jr z, .ext_packlo0
+	; Decode packed literals. Payload is ceil(count/2) bytes.
+	; Uses a small fixed table of 16 bytes.
+.pack_loop
+	ld a, b
+	or c
+	jr z, .Main
+	ld a, [de]
+	inc de
+	push af
+	swap a
+	and LZ_PACK16_NIBBLE_MASK
+	call .pack_lookup
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr z, .pack_done
+	pop af
+	and LZ_PACK16_NIBBLE_MASK
+	call .pack_lookup
+	ld [hli], a
+	dec bc
+	jr .pack_loop
+.pack_done
+	pop af
+	jmp .Main
+
+.ext_packlo0
+	; Decode packed literals where each output byte has high nibble 0.
+	; Payload is ceil(count/2) bytes.
+.packlo0_loop
+	ld a, b
+	or c
+	jmp z, .Main
+	ld a, [de]
+	inc de
+	push af
+	swap a
+	and LZ_PACK16_NIBBLE_MASK
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr z, .packlo0_done
+	pop af
+	and LZ_PACK16_NIBBLE_MASK
+	ld [hli], a
+	dec bc
+	jr .packlo0_loop
+.packlo0_done
+	pop af
+	jmp .Main
+
+.pack_lookup
+	; a = 0..15 -> a = pack16_table[a]
+	push de
+	add LOW(.pack16_table)
+	ld e, a
+	adc HIGH(.pack16_table)
+	sub e
+	ld d, a
+	ld a, [de]
+	pop de
+	ret
+
+.pack16_table
+	db $00, $ff, $01, $02, $03, $fe, $80, $07
+	db $c0, $7f, $04, $0f, $1f, $3f, $08, $fc
+
+.long_normal
+
 	ld a, [de]
 	inc de
 	ld c, a
@@ -321,5 +454,5 @@ DEF LZ_LONG_HI       EQU %00000011
 	; a = ccc0000l
 	ld b, a
 	and LZ_CMD
-	jr nz, .cont
-	jr .lz_data
+	jmp nz, .cont
+	jmp .lz_data

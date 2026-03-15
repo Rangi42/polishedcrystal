@@ -26,24 +26,8 @@ LyrasDadScript:
 	iffalsefwd .LyraInside
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftruefwd .LyraTraining
-	jumpopenedtext LyrasDadHelpingText
+	jumpthisopenedtext
 
-.LyraInside
-	jumpopenedtext LyrasDadInsideText
-
-.LyraTraining
-	jumpopenedtext LyrasDadTrainingText
-
-LyrasDadInsideText:
-	text "Hi, <PLAYER>!"
-	line "Lyra is upstairs."
-
-	para "She's playing"
-	line "with her #mon"
-	cont "as usual."
-	done
-
-LyrasDadHelpingText:
 	text "Hi, <PLAYER>!"
 	line "Lyra isn't here."
 
@@ -52,7 +36,20 @@ LyrasDadHelpingText:
 	cont "essor."
 	done
 
-LyrasDadTrainingText:
+.LyraInside
+	jumpthisopenedtext
+
+	text "Hi, <PLAYER>!"
+	line "Lyra is upstairs."
+
+	para "She's playing"
+	line "with her #mon"
+	cont "as usual."
+	done
+
+.LyraTraining
+	jumpthisopenedtext
+
 	text "Hi, <PLAYER>!"
 	line "Lyra isn't here."
 
@@ -60,6 +57,9 @@ LyrasDadTrainingText:
 	line "Badges all over"
 	cont "Johto!"
 	done
+
+
+
 
 LyrasFridgeScript:
 	jumpthistext

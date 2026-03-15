@@ -1,5 +1,7 @@
 DragonsDenB1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_DRAGONSDENB1F_NOOP
+	scene_const SCENE_DRAGONSDENB1F_CLAIR_GIVES_TM
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, DragonsDenB1FRivalCallback
@@ -9,7 +11,7 @@ DragonsDenB1F_MapScriptHeader:
 	warp_event 19, 29, DRAGON_SHRINE, 1
 
 	def_coord_events
-	coord_event 19, 30, 1, DragonsDenB1FClairTrigger
+	coord_event 19, 30, SCENE_DRAGONSDENB1F_CLAIR_GIVES_TM, DragonsDenB1FClairTrigger
 
 	def_bg_events
 	bg_event 18, 24, BGEVENT_JUMPTEXT, DragonsDenShrineSignText
@@ -81,8 +83,8 @@ DragonsDenB1FClairTrigger:
 	pause 30
 	special RestartMapMusic
 	disappear DRAGONSDENB1F_CLAIR
-	setscene $0
-	setmapscene NEW_BARK_TOWN, $1
+	setscene SCENE_DRAGONSDENB1F_NOOP
+	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_LYRA_FINAL
 	clearevent EVENT_LYRA_IN_HER_ROOM
 	end
 
@@ -163,7 +165,7 @@ DragonsDenB1FRivalScript:
 	closetext
 	setevent EVENT_GOT_RIVALS_EGG
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	setmapscene ELMS_LAB, $7
+	setmapscene ELMS_LAB, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 	special RestartMapMusic
 	end
 

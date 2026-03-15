@@ -34,18 +34,8 @@ SilphCoOfficerScript:
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .OfficerScriptAfterPowerRestored
-	jumpopenedtext SilphCoOfficerText
+	jumpthisopenedtext
 
-.OfficerScriptAfterPowerRestored
-	jumpopenedtext SilphCoOfficerText_GotUpgrade
-
-SilphCoReceptionistText:
-	text "Welcome. This is"
-	line "Silph Co.'s Head"
-	cont "Office Building."
-	done
-
-SilphCoOfficerText:
 	text "Only employees are"
 	line "permitted to go"
 	cont "upstairs."
@@ -64,7 +54,9 @@ SilphCoOfficerText:
 	cont "three years ago."
 	done
 
-SilphCoOfficerText_GotUpgrade:
+.OfficerScriptAfterPowerRestored
+	jumpthisopenedtext
+
 	text "You're responsible"
 	line "for restoring the"
 	cont "power supply?"
@@ -75,6 +67,14 @@ SilphCoOfficerText_GotUpgrade:
 	para "Feel free to take"
 	line "a tour upstairs."
 	done
+
+SilphCoReceptionistText:
+	text "Welcome. This is"
+	line "Silph Co.'s Head"
+	cont "Office Building."
+	done
+
+
 
 SilphCo1FGentlemanText:
 	text "I have an appoint-"

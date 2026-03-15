@@ -1,5 +1,5 @@
 DEF NAMINGSCREEN_BORDER EQU $60
-DEF NAMINGSCREEN_MALE EQU $6b
+DEF NAMINGSCREEN_MALE   EQU $6b
 DEF NAMINGSCREEN_FEMALE EQU $6c
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
@@ -94,57 +94,47 @@ NamingScreen:
 	hlcoord 1, 4
 	ld [hl], '★'
 .not_shiny
-	jmp .StoreMonIconParams
+	ld a, MON_NAME_LENGTH - 1
+	hlcoord 7, 4
+	jmp .StoreParams
 
 .Player:
 	farcall _GetPlayerIcon
+	push hl
 	ld a, [wPlayerGender]
-	ld c, SPRITE_ANIM_INDEX_RED_WALK
-	and a ; PLAYER_MALE
-	jr z, .got_player_walk
-	ld c, SPRITE_ANIM_INDEX_BLUE_WALK
-	dec a ; PLAYER_FEMALE
-	jr z, .got_player_walk
-	; PLAYER_ENBY
-	ld c, SPRITE_ANIM_INDEX_GREEN_WALK
-.got_player_walk
+	add LOW(.PlayerSpriteAnims)
+	ld l, a
+	adc HIGH(.PlayerSpriteAnims)
+	sub l
+	ld h, a
+	ld c, [hl]
+	pop hl
 	call .LoadSprite
-	hlcoord 5, 2
 	ld de, .PlayerNameString
-	rst PlaceString
-	jmp .StoreSpriteIconParams
-
-.PlayerNameString:
-	db "Your name?@"
+	jr .PlaceNameAndStoreSpriteIconParams
 
 .Rival:
 	ld hl, RivalSpriteGFX
 	lb bc, BANK(RivalSpriteGFX), SPRITE_ANIM_INDEX_RED_WALK
 	call .LoadSprite
-	hlcoord 5, 2
 	ld de, .RivalNameString
-	rst PlaceString
-	jmp .StoreSpriteIconParams
-
-.RivalNameString:
-	db "Rival's name?@"
+	jr .PlaceNameAndStoreSpriteIconParams
 
 .TrendyPhrase:
 	ld hl, ArtistSpriteGFX
 	lb bc, BANK(ArtistSpriteGFX), SPRITE_ANIM_INDEX_BLUE_WALK
 	call .LoadSprite
-	hlcoord 5, 2
 	ld de, .TrendyPhraseString
+.PlaceNameAndStoreSpriteIconParams:
+	hlcoord 5, 2
 	rst PlaceString
-	jr .StoreSpriteIconParams
-
-.TrendyPhraseString:
-	db "What's trendy?@"
+	ld a, PLAYER_NAME_LENGTH - 1
+	jr .StoreParamsForShortName
 
 .Box:
 	ld de, vTiles0 tile $00
-	ld hl, BallCutFruitSpriteGFX
-	lb bc, BANK(BallCutFruitSpriteGFX), 4
+	ld hl, BallCutTreeSpriteGFX
+	lb bc, BANK(BallCutTreeSpriteGFX), 4
 	call DecompressRequest2bpp
 	xor a
 	ld hl, wSpriteAnimDict
@@ -160,9 +150,6 @@ NamingScreen:
 	ld de, .BoxNameString
 	rst PlaceString
 	jr .StoreBoxIconParams
-
-.BoxNameString:
-	db "Box name?@"
 
 .LoadSprite:
 	push bc
@@ -182,21 +169,11 @@ NamingScreen:
 	depixel 4, 4, 4, 0
 	jmp InitSpriteAnimStruct
 
-.StoreMonIconParams:
-	ld a, MON_NAME_LENGTH - 1
-	hlcoord 7, 4
-	jr .StoreParams
-
-.StoreSpriteIconParams:
-	ld a, PLAYER_NAME_LENGTH - 1
-	hlcoord 5, 4
-	jr .StoreParams
-
 .StoreBoxIconParams:
 	; the terminator isn't saved, so no "- 1" is needed.
 	ld a, BOX_NAME_LENGTH
+.StoreParamsForShortName:
 	hlcoord 5, 4
-
 .StoreParams:
 	ld [wNamingScreenMaxNameLength], a
 	ld a, l
@@ -204,6 +181,21 @@ NamingScreen:
 	ld a, h
 	ld [wNamingScreenStringEntryCoord + 1], a
 	ret
+
+.PlayerSpriteAnims:
+INCLUDE "data/player/sprite_anims.asm"
+
+.PlayerNameString:
+	db "Your name?@"
+
+.RivalNameString:
+	db "Rival's name?@"
+
+.TrendyPhraseString:
+	db "What's trendy?@"
+
+.BoxNameString:
+	db "Box name?@"
 
 NamingScreen_InitText:
 	call WaitTop
@@ -754,11 +746,9 @@ LoadNamingScreenGFX:
 	ld de, vTiles2 tile NAMINGSCREEN_BORDER
 	call Decompress
 
-	; Gender symbols
-	ld hl, BattleExtrasGFX
+	; Gender symbols and shiny star
 	ld de, vTiles2 tile NAMINGSCREEN_MALE
-	lb bc, BANK(BattleExtrasGFX), 2
-	call DecompressRequest2bpp
+	farcall CopyColoredMaleFemaleShinyTiles
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
 	ld hl, NamingScreenGFX_Cursor
@@ -790,7 +780,7 @@ LoadNamingScreenGFX:
 	ret
 
 NamingScreenGFX_Border:
-INCBIN "gfx/naming_screen/naming_border.2bpp.lz"
+INCBIN "gfx/naming_screen/naming_border.2bpp.lzp"
 
 NamingScreenGFX_Cursor:
 INCBIN "gfx/naming_screen/naming_cursor.2bpp"
@@ -867,7 +857,7 @@ _ComposeMailMessage:
 	ret
 
 .MailIcon:
-INCBIN "gfx/naming_screen/mail.2bpp.lz"
+INCBIN "gfx/naming_screen/mail.2bpp.lzp"
 
 .initwNamingScreenMaxNameLength
 	ld a, MAIL_MSG_LENGTH + 1

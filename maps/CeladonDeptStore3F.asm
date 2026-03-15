@@ -49,17 +49,32 @@ CeladonDeptStore3FTutorCounterScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_CeladonDeptStore3FTutorRefused
+	jumpthisopenedtext
+
+	text "Never mind."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_CeladonDeptStore3FTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf…"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_CeladonDeptStore3FTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows Counter."
+	done
 
 VideoGameClerkNoMoneyScript:
-	jumpopenedtext VideoGameClerkNoMoneyText
+	jumpthisopenedtext
+
+	text "Clerk: You can't"
+	line "afford it!"
+	done
 
 CeladonDeptStore3FSnesScript:
 	checkevent EVENT_DECO_SNES
@@ -77,7 +92,11 @@ CeladonDeptStore3FSnesScript:
 	playsound SFX_TRANSACTION
 	special PlaceMoneyTopRight
 	waitbutton
-	jumpopenedtext SnesSentText
+	jumpthisopenedtext
+
+	text "Super NES"
+	line "was sent home."
+	done
 
 CeladonDeptStore3FN64Script:
 	checkevent EVENT_DECO_N64
@@ -95,7 +114,11 @@ CeladonDeptStore3FN64Script:
 	playsound SFX_TRANSACTION
 	special PlaceMoneyTopRight
 	waitbutton
-	jumpopenedtext N64SentText
+	jumpthisopenedtext
+
+	text "Nintendo 64"
+	line "was sent home."
+	done
 
 CeladonDeptStore3FGameCubeScript:
 	checkevent EVENT_DECO_GAMECUBE
@@ -113,7 +136,11 @@ CeladonDeptStore3FGameCubeScript:
 	playsound SFX_TRANSACTION
 	special PlaceMoneyTopRight
 	waitbutton
-	jumpopenedtext GameCubeSentText
+	jumpthisopenedtext
+
+	text "GameCube"
+	line "was sent home."
+	done
 
 CeladonDeptStore3FWiiScript:
 	checkevent EVENT_DECO_WII
@@ -131,7 +158,11 @@ CeladonDeptStore3FWiiScript:
 	playsound SFX_TRANSACTION
 	special PlaceMoneyTopRight
 	waitbutton
-	jumpopenedtext WiiSentText
+	jumpthisopenedtext
+
+	text "Wii"
+	line "was sent home."
+	done
 
 CeladonDeptStore3FClerk2Text:
 	text "There's a neat move"
@@ -150,10 +181,6 @@ Text_CeladonDeptStore3FTutorCounter:
 	line "me a Silver Leaf."
 	done
 
-Text_CeladonDeptStore3FTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf…"
-	done
 
 Text_CeladonDeptStore3FTutorQuestion:
 	text "Should I teach"
@@ -161,14 +188,7 @@ Text_CeladonDeptStore3FTutorQuestion:
 	cont "Counter?"
 	done
 
-Text_CeladonDeptStore3FTutorRefused:
-	text "Never mind."
-	done
 
-Text_CeladonDeptStore3FTutorTaught:
-	text "Now your #mon"
-	line "knows Counter."
-	done
 
 VideoGameClerkText:
 	text "We sell brand-new"
@@ -184,10 +204,6 @@ VideoGameClerkNoSaleText:
 	line "you say so."
 	done
 
-VideoGameClerkNoMoneyText:
-	text "Clerk: You can't"
-	line "afford it!"
-	done
 
 VideoGameClerkSellSnesText:
 	text "Clerk: That SNES"
@@ -226,40 +242,24 @@ BoughtSnesText:
 	line "Super NES."
 	done
 
-SnesSentText:
-	text "Super NES"
-	line "was sent home."
-	done
 
 BoughtN64Text:
 	text "<PLAYER> bought"
 	line "Nintendo 64."
 	done
 
-N64SentText:
-	text "Nintendo 64"
-	line "was sent home."
-	done
 
 BoughtGameCubeText:
 	text "<PLAYER> bought"
 	line "GameCube."
 	done
 
-GameCubeSentText:
-	text "GameCube"
-	line "was sent home."
-	done
 
 BoughtWiiText:
 	text "<PLAYER> bought"
 	line "Wii."
 	done
 
-WiiSentText:
-	text "Wii"
-	line "was sent home."
-	done
 
 CeladonDeptStore3FYoungsterText:
 	text "I can't decide"

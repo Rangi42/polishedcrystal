@@ -68,7 +68,7 @@ Proton2Script:
 	turnobject PLAYER, RIGHT
 	showtext KurtLeaveSlowpokeWellText
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
-	setmapscene ILEX_FOREST, $2
+	setmapscene ILEX_FOREST, SCENE_ILEXFOREST_NOOP
 	clearevent EVENT_ILEX_FOREST_APPRENTICE
 	clearevent EVENT_ILEX_FOREST_FARFETCHD
 	setevent EVENT_CHARCOAL_KILN_FARFETCH_D

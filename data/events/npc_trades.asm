@@ -29,7 +29,7 @@ NPCTrades:
 	dp JYNX, NO_FORM    ; wants
 	dp MR__MIME, FEMALE ; gives
 	rawchar "Doris@@@@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPE_UP_ATK_DOWN,   LOVE_BALL,    PINK_BOW
+	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPE_UP_ATK_DOWN,   LOVE_BALL,    FAIRYFEATHER
 	dw 00283
 	rawchar "Emy@@@@@", $00
 ; NPC_TRADE_CHRIS in Pewter City

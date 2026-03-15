@@ -1,5 +1,6 @@
 GoldenrodMagnetTrainStation_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_GOLDENRODMAGNETTRAINSTATION_ARRIVE_FROM_SAFFRON
 
 	def_callbacks
 
@@ -10,7 +11,7 @@ GoldenrodMagnetTrainStation_MapScriptHeader:
 	warp_event 11,  5, SAFFRON_TRAIN_STATION, 3
 
 	def_coord_events
-	coord_event 11,  6, 0, Script_ArriveFromSaffron
+	coord_event 11,  6, SCENE_GOLDENRODMAGNETTRAINSTATION_ARRIVE_FROM_SAFFRON, Script_ArriveFromSaffron
 
 	def_bg_events
 
@@ -27,7 +28,17 @@ GoldenrodMagnetTrainStationOfficerScript:
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .MagnetTrainToSaffron
-	jumpopenedtext GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText
+	jumpthisopenedtext
+
+	text "The train hasn't"
+	line "come in…"
+
+	para "I know! I'll carry"
+	line "the passengers on"
+	cont "my back!"
+
+	para "That won't work."
+	done
 
 .MagnetTrainToSaffron:
 	writetext GoldenrodMagnetTrainStationOfficerAreYouComingAboardText
@@ -45,7 +56,7 @@ GoldenrodMagnetTrainStationOfficerScript:
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
 	applyonemovement PLAYER, turn_head_down
-	wait 36
+	wait 2
 	end
 
 Script_ArriveFromSaffron:
@@ -59,10 +70,25 @@ Script_ArriveFromSaffron:
 GoldenrodMagnetTrainStationCooltrainerfScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .PowerRestored
-	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText1
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "is like, zoooom,"
+	cont "byun! Shuuu!"
+
+	para "At least when"
+	line "it's running…"
+	done
 
 .PowerRestored
-	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText2
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "is like, zoooom,"
+	cont "byun! Shuuu!"
+
+	para "It's so cool!"
+	done
 
 GoldenrodMagnetTrainStationOfficerApproachTrainDoorMovement:
 	step_up
@@ -98,16 +124,6 @@ GoldenrodMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement:
 	turn_head_up
 	step_end
 
-GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText:
-	text "The train hasn't"
-	line "come in…"
-
-	para "I know! I'll carry"
-	line "the passengers on"
-	cont "my back!"
-
-	para "That won't work."
-	done
 
 GoldenrodMagnetTrainStationOfficerAreYouComingAboardText:
 	text "We'll soon depart"
@@ -157,19 +173,4 @@ GoldenrodMagnetTrainStationGentlemanText:
 	cont "to Kanto."
 	done
 
-GoldenrodMagnetTrainStationCooltrainerfText1:
-	text "The Magnet Train"
-	line "is like, zoooom,"
-	cont "byun! Shuuu!"
 
-	para "At least when"
-	line "it's running…"
-	done
-
-GoldenrodMagnetTrainStationCooltrainerfText2:
-	text "The Magnet Train"
-	line "is like, zoooom,"
-	cont "byun! Shuuu!"
-
-	para "It's so cool!"
-	done

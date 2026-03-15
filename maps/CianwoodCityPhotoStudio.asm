@@ -54,10 +54,18 @@ CianwoodPhotoStudioFishingGuruScript:
 	done
 
 .NoPicture:
-	jumpopenedtext PhotoStudioNoPictureText
+	jumpthisopenedtext
+
+	text "Oh, no picture?"
+	line "Come again, OK?"
+	done
 
 .EggPicture:
-	jumpopenedtext PhotoStudioEggPictureText
+	jumpthisopenedtext
+
+	text "An Egg? My talent"
+	line "is worth more…"
+	done
 
 PhotoStudioGreetingText:
 	text "I am Cameron"
@@ -109,12 +117,4 @@ PhotoStudioRefusedText:
 	line "memento…"
 	done
 
-PhotoStudioNoPictureText:
-	text "Oh, no picture?"
-	line "Come again, OK?"
-	done
 
-PhotoStudioEggPictureText:
-	text "An Egg? My talent"
-	line "is worth more…"
-	done

@@ -5,14 +5,14 @@ TinTowerRoof_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, TinTowerRoofHoOh
 
 	def_warp_events
-	warp_event  7, 13, TIN_TOWER_10F, 2
+	warp_event  6, 13, TIN_TOWER_10F, 2
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, HO_OH, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
+	object_event  6,  2, SPRITE_BIG_HO_OH, SPRITEMOVEDATA_BIG_HO_OH, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
 
 	object_const_def
 	const TINTOWERROOF_HO_OH

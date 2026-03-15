@@ -36,7 +36,15 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 SSAquaCaptain:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue_jumptextfaceplayer SSAquaCaptainHowDoYouLikeText
-	jumptextfaceplayer SSAquaCaptainExhaustingText
+	jumpthistextfaceplayer
+
+	text "Whew! Thanks for"
+	line "coming along."
+
+	para "Keeping that lit-"
+	line "tle girl amused"
+	cont "was exhausting."
+	done
 
 SSAquaGranddaughterBefore:
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
@@ -66,7 +74,7 @@ SSAquaGranddaughterBefore:
 	writetext SSAquaEntertainedGranddaughterText
 	promptbutton
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	setmapscene FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_NOOP
 	sjumpfwd SSAquaMachoBraceAndDocking
 
 SSAquaGrandpa:
@@ -79,7 +87,7 @@ SSAquaGrandpa:
 	writetext SSAquaCantFindGranddaughterText
 	waitbutton
 	closetext
-	setmapscene FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_NOOP
 	end
 
 SSAquaMachoBraceAndDocking:
@@ -192,14 +200,6 @@ SSAquaGranddaughterEntersCabinMovement:
 	turn_head_left
 	step_end
 
-SSAquaCaptainExhaustingText:
-	text "Whew! Thanks for"
-	line "coming along."
-
-	para "Keeping that lit-"
-	line "tle girl amused"
-	cont "was exhausting."
-	done
 
 SSAquaCaptainHowDoYouLikeText:
 	text "How do you like"

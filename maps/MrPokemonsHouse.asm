@@ -1,6 +1,7 @@
 MrPokemonsHouse_MapScriptHeader:
 	def_scene_scripts
-	scene_script MrPokemonsHouseTrigger0
+	scene_script MrPokemonsHouseMeetMrPokemonScene, SCENE_MRPOKEMONSHOUSE_MEET_MR_POKEMON
+	scene_const SCENE_MRPOKEMONSHOUSE_NOOP
 
 	def_callbacks
 
@@ -28,7 +29,7 @@ MrPokemonsHouse_MapScriptHeader:
 	const MRPOKEMONSHOUSE_OAK
 	const MRPOKEMONSHOUSE_POKEDEX
 
-MrPokemonsHouseTrigger0:
+MrPokemonsHouseMeetMrPokemonScene:
 	sdefer .MrPokemonEvent
 	end
 
@@ -129,9 +130,9 @@ MrPokemonsHouse_OakScript:
 	setevent EVENT_RIVAL_NEW_BARK_TOWN
 	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
-	setscene $1
-	setmapscene CHERRYGROVE_CITY, $1
-	setmapscene ELMS_LAB, $3
+	setscene SCENE_MRPOKEMONSHOUSE_NOOP
+	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_MEET_RIVAL
+	setmapscene ELMS_LAB, SCENE_ELMSLAB_MEET_OFFICER
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM

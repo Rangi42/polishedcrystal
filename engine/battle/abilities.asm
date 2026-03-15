@@ -9,8 +9,10 @@ RunEntryAbilitiesInner_SkillSwap:
 ; Runs on Skill Swap or pending Neutralizing Gas deactivation.
 	; Some abilities do nothing in this case.
 	call GetTrueUserAbility
-	farcall NoSkillSwapEntry
-	ret c
+	cp IMPOSTER
+	ret z
+	cp CLOUD_NINE
+	ret z
 	; fallthrough
 _RunEntryAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
@@ -95,7 +97,6 @@ NotificationAbilities:
 	call StdBattleTextbox
 	jmp EndAbility
 
-
 ImmunityAbility:
 PastelVeilAbility:
 	ld a, 1 << PSN
@@ -163,17 +164,17 @@ ObliviousAbility:
 
 TraceAbility:
 	call GetOpponentIgnorableAbility
-	farcall AbilityCanBeTraced
-	ret c
-
+	call AbilityCanBeTraced
+	ret nz
 	push af
-	ld b, a
 	farcall BufferAbility
 
-	; TODO: fancier graphics?
 	call BeginAbility
 	call ShowAbilityActivation
 	call ShowEnemyAbilityActivation
+	pop af
+	push af
+	call ShowAbilityReplacement
 	ld hl, TraceActivationText
 	call StdBattleTextbox
 	call EndAbility
@@ -238,16 +239,14 @@ WeatherAbility:
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
 	call GetOpponentIgnorableAbility
+	ld b, a
 	inc a
 	jr z, .intimidate_ok
 	dec a
-	ld b, a
-	push af
+	call GetAbilityFlags
+	and ABILFLAG_NO_INTIMIDATE
+	jr z, .intimidate_ok
 	farcall BufferAbility
-	pop af
-	ld hl, NoIntimidateAbilities
-	call IsInByteArray
-	jr nc, .intimidate_ok
 	call BeginAbility
 	call ShowAbilityActivation
 	call ShowEnemyAbilityActivation
@@ -275,8 +274,6 @@ IntimidateAbility:
 	call EndAbility
 	farcall CheckMirrorHerb
 	farjp CheckStatHerbsAfterIntimidate
-
-INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
@@ -408,16 +405,16 @@ ForewarnAbility:
 	ld hl, wBattleMonMoves
 .got_move_ptr
 	ld a, NUM_MOVES + 1
-	ld [wBuffer1], a ; iterator
+	ld [wForewarnIterator], a ; iterator
 	xor a
-	ld [wBuffer2], a ; used when randomizing between equal-power moves
-	ld [wBuffer3], a ; highest power move index
-	ld [wBuffer4], a ; power of said move for comparing
+	ld [wForewarnEqualCount], a ; used when randomizing between equal-power moves
+	ld [wForewarnBestMove], a ; highest power move index
+	ld [wForewarnBestPower], a ; power of said move for comparing
 .loop
-	ld a, [wBuffer1]
+	ld a, [wForewarnIterator]
 	dec a
 	jr z, .done
-	ld [wBuffer1], a
+	ld [wForewarnIterator], a
 	; a mon can have less than 4 moves
 	ld a, [hli]
 	and a
@@ -443,35 +440,35 @@ ForewarnAbility:
 	jr z, .loop
 .compare_power
 	; b: current move ID, c: current move power
-	ld a, [wBuffer4]
+	ld a, [wForewarnBestPower]
 	cp c
 	jr z, .randomize
 	jr nc, .loop
 	; This move has higher BP, reset the random range
 	xor a
-	ld [wBuffer2], a
+	ld [wForewarnEqualCount], a
 	jr .replace
 .randomize
 	; Move power was equal: randomize. This is done as follows as to give even results:
 	; 2 moves share power: 2nd move replaces 1/2 of the time
 	; 3 moves share power: 3rd move replaces 1/3 of the time
 	; 4 moves share power: 4th move replaces 1/4 of the time
-	ld a, [wBuffer2]
+	ld a, [wForewarnEqualCount]
 	inc a ; no-optimize inefficient WRAM increment/decrement
-	ld [wBuffer2], a
+	ld [wForewarnEqualCount], a
 	inc a
 	call BattleRandomRange
 	and a
 	jr nz, .loop
 .replace
 	ld a, b
-	ld [wBuffer3], a
+	ld [wForewarnBestMove], a
 	ld a, c
-	ld [wBuffer4], a
+	ld [wForewarnBestPower], a
 	jr .loop
 .done
 	; Check if we have an attacking move in first place
-	ld a, [wBuffer3]
+	ld a, [wForewarnBestMove]
 	and a
 	ret z
 	push af
@@ -644,6 +641,11 @@ RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	call CheckContactMove
 	call nc, RunContactAbilities
+	call HasOpponentFainted
+	ld hl, EnemyHitAbilities
+	jr z, .got_enemy_abilities
+	ld hl, EnemyHitAbilitiesNonfainted
+.got_enemy_abilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
@@ -651,38 +653,26 @@ RunHitAbilities:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld c, a
-	push bc
 	call GetOpponentIgnorableAbility
-	push af
 	call SwitchTurn
-	pop af
-	pop bc
-	call .do_enemy_abilities
+	call AbilityJumptable
 	jmp SwitchTurn
 
-.do_enemy_abilities
-	cp CURSED_BODY
-	jr z, CursedBodyAbility
-	push bc
-	push af
-	call HasUserFainted
-	pop bc
-	ld a, b
-	pop bc
-	ret z
-	cp JUSTIFIED
-	jmp z, JustifiedAbility
-	cp RATTLED
-	jmp z, RattledAbility
-	cp WEAK_ARMOR
-	jmp z, WeakArmorAbility
-	ret
+EnemyHitAbilitiesNonfainted:
+	dbw JUSTIFIED, JustifiedAbility
+	dbw RATTLED, RattledAbility
+	dbw WEAK_ARMOR, WeakArmorAbility
+EnemyHitAbilities:
+	dbw CURSED_BODY, CursedBodyAbility
+	dbw -1, -1
 
 CursedBodyAbility:
 	call SwitchTurn
 	farcall GetFutureSightUser
 	call SwitchTurn
 	ret nc
+	farcall CheckSubHit
+	ret nz
 	ld a, 10
 	call BattleRandomRange
 	cp 3
@@ -875,10 +865,12 @@ CheckNullificationAbilities:
 	ld b, a
 	cp DAMP
 	jr z, .damp
-	cp SOUNDPROOF
-	jr z, .soundproof
+	cp WIND_RIDER
+	jr z, .wind_rider
 	cp BULLETPROOF
 	jr z, .bulletproof
+	cp SOUNDPROOF
+	jr z, .soundproof
 	cp FLASH_FIRE
 	jr z, .flash_fire
 	cp LIGHTNING_ROD
@@ -915,6 +907,10 @@ CheckNullificationAbilities:
 	cp EFFECT_EXPLOSION
 	jr z, .ability_ok
 	ret
+
+.wind_rider
+	ld hl, WindMoves
+	jr z, .movelist_nullification
 
 .bulletproof
 	ld hl, BulletMoves
@@ -977,6 +973,7 @@ NullificationAbilities:
 	dbw LIGHTNING_ROD, LightningRodAbility
 	dbw MOTOR_DRIVE, MotorDriveAbility
 	dbw SAP_SIPPER, SapSipperAbility
+	dbw WIND_RIDER, WindRiderAbility
 	dbw VOLT_ABSORB, VoltAbsorbAbility
 	dbw WATER_ABSORB, WaterAbsorbAbility
 	dbw DAMP, CannotUseTextAbility
@@ -1038,6 +1035,7 @@ MoxieAbility:
 	ret z
 	; fallthrough
 SapSipperAbility:
+WindRiderAbility:
 AttackUpAbility:
 	ld b, ATTACK
 	jr StatUpAbility
@@ -1328,12 +1326,12 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
-	; If Bad Dreams is implemented, remember to add CheckFaint in endturn.asm
 	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
+	dbw BAD_DREAMS, BadDreamsAbility
 	dbw -1, -1
 
 CudChewAbility:
@@ -1599,6 +1597,22 @@ MoodyAbility:
 .lower_done
 	call EndAbility
 	farjp CheckMirrorHerb
+
+BadDreamsAbility:
+; Inflict 1/8th of Max HP damage to sleeping foes.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and SLP_MASK
+	ret z
+	call BeginAbility
+	call ShowAbilityActivation
+	call SwitchTurn
+	call GetEighthMaxHP
+	predef SubtractHPFromUser
+	call SwitchTurn
+	ld hl, IsTormentedText
+	call StdBattleTextbox
+	jmp EndAbility
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
@@ -1994,6 +2008,53 @@ RegeneratorAbility:
 	jmp z, UpdateBattleMonInParty
 	jmp UpdateEnemyMonInParty
 
+_GetOpponentAbility:
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	push bc
+	push af
+	ld b, a
+
+	; If we're transformed, verify that it's allowed when transformed.
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVar
+	bit SUBSTATUS_TRANSFORMED, a
+	jr z, .not_transformed
+	ld a, b
+	call _GetAbilityFlags
+	and ABILFLAG_NO_TRANSFORM
+	jr nz, .remove_ability
+
+.not_transformed
+	; Unless the ability is Neutralizing Gas, check if it's suppressed by it.
+	ld a, b
+	ld c, NEUTRALIZING_GAS
+	cp c
+	jr z, .not_suppressed
+
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp c
+	jr nz, .not_suppressed
+
+	; We know that the user has either Neutralizing Gas, or nothing.
+	; Thus, this doesn't cause an infinite loop. The reason this check
+	; exists at all is to verify that the Neutralizing Gas is active.
+	call GetUserAbility
+	cp c
+	jr nz, .not_suppressed
+
+	ld a, b
+	call AbilityCanBeSuppressed
+	jr nz, .not_suppressed
+.remove_ability
+	ld b, 0
+.not_suppressed
+	ld a, b
+	pop af
+	pop bc
+	ret
+
 _GetOpponentIgnorableAbility::
 	call GetOpponentAbility
 	jr _GetIgnorableAbility
@@ -2013,24 +2074,53 @@ _GetIgnorableAbility:
 	swap a
 .got_movestate
 	and MOVESTATE_IGNOREABIL
-	jr nz, .done
+	jr z, .done
 
-	push hl
-	push bc
-	ld hl, MoldBreakerSuppressedAbilities
-	call IsInByteArray
-	pop bc
-	pop hl
-	; a = carry ? NO_ABILITY (0) : b
-	ccf
-	sbc a
-	and b
+	ld a, b
+	call _GetAbilityFlags
+	and ABILFLAG_IGNORABLE
+	jr z, .done
+	ld b, 0
 .done
+	ld a, b
 	pop bc
 	pop de
 	ret
 
-INCLUDE "data/abilities/mold_breaker_suppressed_abilities.asm"
+_GetAbilityFlags:
+; return flags for ability in a.
+	push hl
+	add LOW(AbilityFlags)
+	ld l, a
+	adc HIGH(AbilityFlags)
+	sub l
+	ld h, a
+	ld a, [hl]
+	pop hl
+	ret
+
+INCLUDE "data/abilities/flags.asm"
+
+DisplayAbilitySwap:
+	call BeginAbility
+	call ShowAbilityActivation
+	call ShowEnemyAbilityActivation
+	call GetTrueUserAbility
+	call ShowEnemyAbilityReplacement
+	call GetOpponentAbility
+	call ShowAbilityReplacement
+	ld hl, SwappedAbilitiesText
+	call StdBattleTextbox
+	; fallthrough
+
+EndAbility:
+	ld a, [wInAbility]
+	and a
+	ret z
+	call DismissAbilityOverlays
+	xor a
+	ld [wInAbility], a
+	ret
 
 BeginAbility:
 	ld a, [wInAbility]
@@ -2047,14 +2137,18 @@ BeginAbility:
 	ld [wInAbility], a
 	ret
 
-EndAbility:
-	ld a, [wInAbility]
-	and a
-	ret z
-	call DismissAbilityOverlays
-	xor a
-	ld [wInAbility], a
-	ret
+ShowEnemyAbilityReplacement:
+	call StackCallOpponentTurn
+ShowAbilityReplacement:
+	push hl
+	push de
+	push bc
+	ld c, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+	call PerformAbilityReplacementGFX
+	jmp PopBCDEHL
 
 ShowEnemyAbilityActivation::
 	call StackCallOpponentTurn

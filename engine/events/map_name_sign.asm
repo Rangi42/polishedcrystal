@@ -123,7 +123,7 @@ InitMapNameSign::
 	ret z
 	cp LAV_RADIO_TOWER
 	ret z
-	cp UNDERGROUND
+	cp UNDERGROUND_PATH
 	ret z
 	cp POWER_PLANT
 	ret z
@@ -316,9 +316,9 @@ LoadMapNameSignGFX:
 	ld c, l
 	pop hl
 	; hl = start of font tile graphic
-	push de
+	push bc
 	farcall LoadStandardFontPointer
-	pop de
+	pop bc
 	add hl, bc
 .got_tile
 	; swap hl and de, so de = font tile graphic, and hl = vram

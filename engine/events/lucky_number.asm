@@ -26,11 +26,11 @@ Special_CheckForLuckyNumberWinners:
 	jr nz, .next
 	ld de, wTempMonID
 	push bc
-	ld hl, wBuffer1
+	ld hl, wMonIDDigitsBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	ld hl, wStringBuffer1 + 4
-	ld de, wBuffer1 + 4
+	ld de, wMonIDDigitsBuffer + 4
 	ld b, 0
 .compare_loop
 	ld a, [de]

@@ -448,7 +448,7 @@ BattleAnimFrameData:
 	battleoamdelete
 
 .Frameset_14:
-	battleoamframe BATTLEANIMOAMSET_13, 20
+	battleoamframe BATTLEANIMOAMSET_13, 15
 	battleoamdelete
 
 .Frameset_15:

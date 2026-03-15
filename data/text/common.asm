@@ -2137,7 +2137,9 @@ _RodBiteText::
 SECTION "_RodNothingText", ROMX
 _RodNothingText::
 	text "Not even a nibble!"
-	prompt
+
+	para "Keep fishing?"
+	done
 
 SECTION "_CantGetOffBikeText", ROMX
 _CantGetOffBikeText::
@@ -3349,17 +3351,6 @@ _SaveFileCorruptedText::
 	text "The save file is"
 	line "corrupted!"
 	prompt
-
-SECTION "_WindowPoppingErrorText", ROMX
-_WindowPoppingErrorText::
-	text "No windows avail-"
-	line "able for popping."
-	done
-
-SECTION "_ObjectEventText", ROMX
-_ObjectEventText::
-	text "Object event"
-	done
 
 SECTION "_GainedItemText", ROMX
 _GainedItemText::

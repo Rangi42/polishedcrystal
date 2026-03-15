@@ -276,6 +276,9 @@ RunScriptCommand:
 	dw Script_setquantity                ; d9
 	dw Script_pluralize                  ; da
 	dw Script_loadtrainerwithpal         ; db
+	dw Script_nooryes                    ; dc
+	dw Script_digmod                     ; dd
+	dw Script_toggleevent                ; de
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -497,8 +500,13 @@ Script_promptbutton:
 	ldh [hOAMUpdate], a
 	ret
 
+Script_nooryes:
+	call NoYesBox
+	jr _FinishYesNoScript
+
 Script_yesorno:
 	call YesNoBox
+_FinishYesNoScript:
 	; a = carry (no) ? FALSE : TRUE
 	sbc a
 	inc a
@@ -589,6 +597,7 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
+	writemem hScriptVar + 1
 	readmem wItemQuantityChangeBuffer
 	ifequalfwd 1, .OneItem
 	pluralize wStringBuffer4
@@ -599,6 +608,7 @@ GiveItemScript:
 	; fallthrough
 .FinishGiveItem:
 	special ShowItemIcon
+	readmem hScriptVar + 1
 	iffalsefwd .Full
 	specialsound
 	waitbutton
@@ -2128,6 +2138,25 @@ Script_checkevent:
 	ldh [hScriptVar], a
 	ret
 
+Script_toggleevent:
+	call GetScriptWordDE
+	ld b, CHECK_FLAG
+	push de
+	call EventFlagAction
+	pop de
+	jr z, .false
+	ld b, RESET_FLAG
+	call EventFlagAction
+	xor a
+	jr .done
+.false
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld a, TRUE
+.done
+	ldh [hScriptVar], a
+	ret
+
 Script_setflag:
 	call GetScriptWordDE
 	ld b, SET_FLAG
@@ -2210,6 +2239,15 @@ Script_warpmod:
 	ld [wBackupMapGroup], a
 	call GetScriptByte
 	ld [wBackupMapNumber], a
+	ret
+
+Script_digmod:
+	call GetScriptByte
+	ld [wDigWarpNumber], a
+	call GetScriptByte
+	ld [wDigMapGroup], a
+	call GetScriptByte
+	ld [wDigMapNumber], a
 	ret
 
 Script_blackoutmod:

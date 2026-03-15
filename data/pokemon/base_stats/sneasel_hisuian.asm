@@ -1,5 +1,5 @@
-	db  55,  95,  55, 115,  35,  75 ; 430 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 430,  55,  95,  55,  35,  75, 115
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db POISON, FIGHTING ; type
 	db 60 ; catch rate

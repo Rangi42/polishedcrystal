@@ -1,5 +1,7 @@
 CeruleanCape_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CERULEANCAPE_NOOP
+	scene_const SCENE_CERULEANCAPE_MISTYS_DATE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCapeFlyPoint
@@ -9,9 +11,9 @@ CeruleanCape_MapScriptHeader:
 	warp_event 38, 29, DIM_CAVE_2F, 1
 
 	def_coord_events
-	coord_event  4,  6, 1, CeruleanCapeDateInterruptedTrigger1
-	coord_event  4,  7, 1, CeruleanCapeDateInterruptedTrigger2
-	coord_event  9, 12, 1, CeruleanCapeDateInterruptedTrigger3
+	coord_event  4,  6, SCENE_CERULEANCAPE_MISTYS_DATE, CeruleanCapeDateInterruptedTrigger1
+	coord_event  4,  7, SCENE_CERULEANCAPE_MISTYS_DATE, CeruleanCapeDateInterruptedTrigger2
+	coord_event  9, 12, SCENE_CERULEANCAPE_MISTYS_DATE, CeruleanCapeDateInterruptedTrigger3
 
 	def_bg_events
 	bg_event  7,  5, BGEVENT_JUMPTEXT, BillsHouseSignText
@@ -80,7 +82,7 @@ CeruleanCapeDateFinishScript:
 	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesMovement
 	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	setscene $0
+	setscene SCENE_CERULEANCAPE_NOOP
 	special RestartMapMusic
 	end
 
@@ -103,7 +105,7 @@ CeruleanCapeDateInterruptedTrigger3:
 	applymovement CERULEANCAPE_MISTY, .LeaveMovement
 	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	setscene $0
+	setscene SCENE_CERULEANCAPE_NOOP
 	special RestartMapMusic
 	end
 

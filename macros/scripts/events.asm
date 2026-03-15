@@ -1407,4 +1407,22 @@ MACRO loadtrainerwithpal
 	db \3 ; palette
 ENDM
 
+	const nooryes_command
+MACRO nooryes
+	db nooryes_command
+ENDM
+
+	const digmod_command
+MACRO digmod
+	db digmod_command
+	db \1 ; warp_id
+	map_id \2 ; map
+ENDM
+
+	const toggleevent_command
+MACRO toggleevent
+	db toggleevent_command
+	dw \1 ; event_flag
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

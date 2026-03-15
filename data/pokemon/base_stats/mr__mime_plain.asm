@@ -1,5 +1,10 @@
-	db  40,  45,  65,  90, 100, 120 ; 460 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 460,  40,  45,  65, 100, 120,  90
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 465,  40,  35,  65, 110, 120,  95
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db PSYCHIC, FAIRY ; type
 	db 45 ; catch rate

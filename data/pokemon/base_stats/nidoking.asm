@@ -1,5 +1,5 @@
-	db  81, 102,  77,  85,  85,  75 ; 505 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 505,  81, 102,  77,  85,  75,  85
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db POISON, GROUND ; type
 	db 45 ; catch rate

@@ -1,7 +1,7 @@
 FarawayIsland_MapScriptHeader:
 	def_scene_scripts
-	scene_script FarawayIslandTrigger0
-	scene_script FarawayIslandTrigger1
+	scene_script FarawayIslandMewBattleScene, SCENE_FARAWAYISLAND_MEW_BATTLE
+	scene_script FarawayIslandNoopScene, SCENE_FARAWAYISLAND_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, FarawayIslandVisited
@@ -24,9 +24,9 @@ FarawayIsland_MapScriptHeader:
 	const FARAWAYISLAND_SAILOR
 	const FARAWAYISLAND_LAWRENCE
 
-FarawayIslandTrigger1:
+FarawayIslandNoopScene:
 	sdefer FarawayIsland_PlayerArrives
-FarawayIslandTrigger0:
+FarawayIslandMewBattleScene:
 	end
 
 FarawayIslandVisited:
@@ -48,7 +48,7 @@ FarawayIsland_PlayerArrives:
 	applymovement PLAYER, FarawayIslandPlayerArriveMovementData
 	showtext SeagallopFerryFarawayIslandRefusedText
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive2MovementData
-	setscene $0
+	setscene SCENE_FARAWAYISLAND_MEW_BATTLE
 	end
 
 FarawayIslandSailorScript:
@@ -71,7 +71,7 @@ FarawayIslandSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear FARAWAYISLAND_SAILOR
-	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1
+	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, SCENE_SEAGALLOPFERRYVERMILIONGATE_LEAVE
 	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 

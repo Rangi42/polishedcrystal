@@ -140,27 +140,36 @@ VBlank0::
 	ldh a, [hWX]
 	ldh [rWX], a
 
-	; There's only time to call one of these in one vblank.
-	; Calls are in order of priority.
+	; At CGB double speed we have ~2280 M-cycles in VBlank
 
+	; 9 [skip] / 51 + 75x(N/2) [fire] M cycles
+	; walk down N = $18, thus 951 M-cycles worst case
 	call UpdateBGMapBuffer
-	jr c, .done
-	call UpdateCGBPals
-	jr c, .done
+
+	call UpdateCGBPals ; 9 [skip] / 594 [fire] M-cycles worst case
+
+	 ; 9 [skip] / ~576 [fire] M-cycles worst case
+	 ; only fires during HDMATransferToWRAMBank3 inside StackCallInSafeGFXMode, 
+	 ; which zeroes hBGMapMode and hMapAnims.
 	call DMATransfer
-	jr c, .done
-	call UpdateBGMap
 
-	; These have their own timing checks.
+	; Cheap operations that need consistent execution:
+	call AnimateTileset ; 9 [skip] / 249 [fire AnimateTowerPillarTile] M-cycles worst case
+	call PlaceFootprints ; 11 [empty] / 53 [2 footprints] M-cycles worst case
 
+	; Heavy BG map copy (~909 M-cycles). Gate on LY to avoid
+	; overrunning VBlank when earlier operations consumed time.
+	; At cp 149: skips when ≥1140 M-cycles elapsed (buffer updates).
+	ldh a, [rLY]
+	cp 149
+	call c, UpdateBGMap
+
+	; Tile data transfers (have their own LY checks).
 	call Serve2bppRequest
 	call Serve1bppRequest
-	call AnimateTileset
-	call PlaceFootprints
 
-.done
-	call UpdateCGBPalsLYTimed
-	call PushOAM
+	; OAM DMA — must complete within VBlank.
+	call PushOAM ; 9 [skip] / 185 [fire]
 	; vblank-sensitive operations are done
 
 	; inc frame counter

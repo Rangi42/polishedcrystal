@@ -21,7 +21,7 @@ ValeriesHouse_MapScriptHeader:
 	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseBrownFairyBookText, EVENT_BROWN_FAIRY_BOOK
 	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseVioletFairyBookText, EVENT_VIOLET_FAIRY_BOOK
 	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PINK, OBJECTTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_YELLOW, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_YELLOW, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
 
 	object_const_def
 	const VALERIESHOUSE_VALERIE
@@ -59,12 +59,17 @@ SetupFairyBookScript:
 	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
 	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
 	readvar VAR_WEEKDAY
-	ifequalfwd MONDAY, .Monday
-	ifequalfwd TUESDAY, .Tuesday
-	ifequalfwd WEDNESDAY, .Wednesday
-	ifequalfwd THURSDAY, .Thursday
-	ifequalfwd FRIDAY, .Friday
-	ifequalfwd SATURDAY, .Saturday
+	scalltable .FairyBookTable
+
+.FairyBookTable
+	dw .Sunday
+	dw .Monday
+	dw .Tuesday
+	dw .Wednesday
+	dw .Thursday
+	dw .Friday
+	dw .Saturday
+
 .Sunday
 	appear VALERIESHOUSE_PINK_FAIRY_BOOK
 	endcallback

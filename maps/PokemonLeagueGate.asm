@@ -1,5 +1,7 @@
 PokemonLeagueGate_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_POKEMONLEAGUEGATE_BADGE_CHECK
+	scene_const SCENE_POKEMONLEAGUEGATE_NOOP
 
 	def_callbacks
 
@@ -14,8 +16,8 @@ PokemonLeagueGate_MapScriptHeader:
 	warp_event  2,  7, ROUTE_28, 2
 
 	def_coord_events
-	coord_event 10, 10, 0, PokemonLeagueGateXYTriggerScript1
-	coord_event 11, 10, 0, PokemonLeagueGateXYTriggerScript2
+	coord_event 10, 10, SCENE_POKEMONLEAGUEGATE_BADGE_CHECK, PokemonLeagueGateXYTriggerScript1
+	coord_event 11, 10, SCENE_POKEMONLEAGUEGATE_BADGE_CHECK, PokemonLeagueGateXYTriggerScript2
 
 	def_bg_events
 
@@ -34,7 +36,7 @@ VictoryRoadGateOfficerScript:
 	faceplayer
 VictoryRoadGateBadgeCheckScript:
 	showtext VictoryRoadGateOfficerText
-	setscene $1
+	setscene SCENE_POKEMONLEAGUEGATE_NOOP
 	end
 
 VictoryRoadGateOfficerText:

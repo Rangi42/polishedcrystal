@@ -50,12 +50,73 @@ ViridianGymBlueScript:
 	promptbutton
 	verbosegivetmhm TM_STONE_EDGE
 	setevent EVENT_GOT_TM71_STONE_EDGE
-	jumpopenedtext BlueOutroText
+	jumpthisopenedtext
+
+	text "It contains Stone"
+	line "Edge. It's not only"
+
+	para "for Rock-type"
+	line "#mon, got it?"
+
+	para "…"
+
+	para "All right, I was"
+	line "wrong. You're the"
+
+	para "real deal. You are"
+	line "a good trainer."
+
+	para "With eight Badges"
+	line "from Kanto, you"
+
+	para "can challenge the"
+	line "Elite Four again."
+
+	para "They won't go easy"
+	line "on a trainer who"
+	cont "beat two regions."
+
+	para "You can practice"
+	line "with me at the"
+
+	para "Fighting Dojo in"
+	line "Saffron City on"
+	cont "Mondays."
+
+	para "All of the Gym"
+	line "Leaders show up"
+	cont "there to train."
+
+	para "I'm going to beat"
+	line "you someday."
+
+	para "Don't you forget"
+	line "it!"
+	done
 
 ViridianGymGuyScript:
 	checkevent EVENT_BEAT_BLUE
 	iftrue_jumptextfaceplayer ViridianGymGuyWinText
-	jumptextfaceplayer ViridianGymGuyText
+	jumpthistextfaceplayer
+
+	text "Yo, Champ in"
+	line "making!"
+
+	para "How's it going?"
+	line "Looks like you're"
+	cont "on a roll."
+
+	para "The Gym Leader is"
+	line "a guy who battled"
+
+	para "the Champion three"
+	line "years ago."
+
+	para "He's no pushover."
+
+	para "Give it everything"
+	line "you've got!"
+	done
 
 GenericTrainerAceDuoAraandbela1:
 	generictrainer ACE_DUO, ARAANDBELA1, EVENT_BEAT_ACE_DUO_ARA_AND_BELA, AceDuoAraandbela1SeenText, AceDuoAraandbela1BeatenText
@@ -171,48 +232,6 @@ LeaderBlueAfterText:
 	line "this as well!"
 	done
 
-BlueOutroText:
-	text "It contains Stone"
-	line "Edge. It's not only"
-
-	para "for Rock-type"
-	line "#mon, got it?"
-
-	para "…"
-
-	para "All right, I was"
-	line "wrong. You're the"
-
-	para "real deal. You are"
-	line "a good trainer."
-
-	para "With eight Badges"
-	line "from Kanto, you"
-
-	para "can challenge the"
-	line "Elite Four again."
-
-	para "They won't go easy"
-	line "on a trainer who"
-	cont "beat two regions."
-
-	para "You can practice"
-	line "with me at the"
-
-	para "Fighting Dojo in"
-	line "Saffron City on"
-	cont "Mondays."
-
-	para "All of the Gym"
-	line "Leaders show up"
-	cont "there to train."
-
-	para "I'm going to beat"
-	line "you someday."
-
-	para "Don't you forget"
-	line "it!"
-	done
 
 LeaderBlueEpilogueText:
 	text "Blue: Listen, you."
@@ -222,25 +241,6 @@ LeaderBlueEpilogueText:
 	cont "you. Got it?"
 	done
 
-ViridianGymGuyText:
-	text "Yo, Champ in"
-	line "making!"
-
-	para "How's it going?"
-	line "Looks like you're"
-	cont "on a roll."
-
-	para "The Gym Leader is"
-	line "a guy who battled"
-
-	para "the Champion three"
-	line "years ago."
-
-	para "He's no pushover."
-
-	para "Give it everything"
-	line "you've got!"
-	done
 
 ViridianGymGuyWinText:
 	text "Man, you are truly"

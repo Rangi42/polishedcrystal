@@ -187,12 +187,8 @@ PokefanmJoshuaBeatenText:
 Route13EastGrampsScript:
 	special CheckIfTrendyPhraseIsLucky
 	iftruefwd .lucky
-	jumptextfaceplayer Route13EastGrampsText1
+	jumpthistextfaceplayer
 
-.lucky
-	jumptextfaceplayer Route13EastGrampsText2
-
-Route13EastGrampsText1:
 	text "I can't see Lucky"
 	line "Island today…"
 
@@ -200,11 +196,15 @@ Route13EastGrampsText1:
 	line "appeared before!"
 	done
 
-Route13EastGrampsText2:
+.lucky
+	jumpthistextfaceplayer
+
 	text "I can see Lucky"
 	line "Island today!"
 	cont "What a spectacle!"
 	done
+
+
 
 Route13TrainerTips1Text:
 	text "Trainer Tips"

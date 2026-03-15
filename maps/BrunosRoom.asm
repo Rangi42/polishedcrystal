@@ -1,6 +1,7 @@
 BrunosRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script BrunosRoomEntranceTrigger
+	scene_script BrunosRoomLockDoorScene, SCENE_BRUNOSROOM_LOCK_DOOR
+	scene_const SCENE_BRUNOSROOM_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, BrunosRoomDoorCallback
@@ -18,7 +19,7 @@ BrunosRoom_MapScriptHeader:
 	def_object_events
 	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, BrunoScript, -1
 
-BrunosRoomEntranceTrigger:
+BrunosRoomLockDoorScene:
 	sdefer .Script
 	end
 
@@ -30,7 +31,7 @@ BrunosRoomEntranceTrigger:
 	changeblock 4, 14, $2a
 	refreshmap
 	closetext
-	setscene $1
+	setscene SCENE_BRUNOSROOM_NOOP
 	setevent EVENT_BRUNOS_ROOM_ENTRANCE_CLOSED
 	waitsfx
 	end

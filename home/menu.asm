@@ -377,11 +377,13 @@ YesNoMenuDataHeader::
 	dw .MenuData2
 	db 1 ; default option
 
-.MenuData2
-	db $c0 ; flags
+.MenuData2:
+	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2
+YesString::
 	db "Yes@"
-	db "No@"
+NoString::
+	db "No @"
 
 NoYesMenuDataHeader::
 	db MENU_BACKUP_TILES
@@ -389,8 +391,8 @@ NoYesMenuDataHeader::
 	dw .MenuData2
 	db 1 ; default option
 
-.MenuData2
-	db $c0 ; flags
+.MenuData2:
+	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2
 	db "No@"
 	db "Yes@"

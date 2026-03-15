@@ -37,7 +37,7 @@ ValenciaPortSailorScript:
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
-	setmapscene SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
+	setmapscene SEAGALLOP_FERRY_SHAMOUTI_GATE, SCENE_SEAGALLOPFERRYSHAMOUTIGATE_LEAVE
 	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, 6, 5
 	end
 

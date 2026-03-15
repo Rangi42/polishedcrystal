@@ -55,7 +55,12 @@ PewterCityYoungsterScript:
 	waitbutton
 	checkflag ENGINE_BOULDERBADGE
 	iffalse_endtext
-	jumpopenedtext PewterCityYoungsterText2
+	jumpthisopenedtext
+
+	text "You beat the Gym?"
+	line "Then you're tough"
+	cont "as rock too!"
+	done
 
 PewterCityPokefanMScript:
 	faceplayer
@@ -191,11 +196,6 @@ PewterCityYoungsterText1:
 	line "there."
 	done
 
-PewterCityYoungsterText2:
-	text "You beat the Gym?"
-	line "Then you're tough"
-	cont "as rock too!"
-	done
 
 PewterCitySignText:
 	text "Pewter City"

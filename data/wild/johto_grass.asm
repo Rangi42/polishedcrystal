@@ -1179,84 +1179,84 @@
 	def_grass_wildmons SILVER_CAVE_ROOM_1
 	db 6 percent ; encounter rate
 	; morn
+	wildmon 70, GOLBAT
 	wildmon 72, GRAVELER
-	wildmon 72, URSARING
-	wildmon 70, ONIX
-	wildmon 74, MAGMAR
-	wildmon 74, GOLBAT
-	wildmon 75, PUPITAR
-	wildmon 75, PUPITAR
+	wildmon 72, ONIX
+	wildmon 74, URSARING
+	wildmon 74, DONPHAN
+	wildmon 75, MAGMAR
+	wildmon 70, LARVITAR
 	; day
+	wildmon 70, GOLBAT
 	wildmon 72, GRAVELER
-	wildmon 72, URSARING
-	wildmon 70, ONIX
-	wildmon 74, MAGMAR
-	wildmon 74, GOLBAT
-	wildmon 75, PUPITAR
-	wildmon 75, PUPITAR
+	wildmon 72, ONIX
+	wildmon 74, DONPHAN
+	wildmon 74, URSARING
+	wildmon 75, MAGMAR
+	wildmon 70, LARVITAR
 	; nite
+	wildmon 70, GOLBAT
 	wildmon 72, GRAVELER
-	wildmon 72, GOLBAT
-	wildmon 70, ONIX
+	wildmon 72, ONIX
+	wildmon 75, GOLDUCK
 	wildmon 74, GOLBAT
-	wildmon 74, GOLDUCK
-	wildmon 75, GOLBAT
-	wildmon 75, GOLBAT
+	wildmon 74, GOLBAT
+	wildmon 70, LARVITAR
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_ROOM_2
 	db 6 percent ; encounter rate
 	; morn
-	wildmon 74, GOLBAT
-	wildmon 74, MACHOKE
-	wildmon 72, URSARING
-	wildmon 76, PARASECT
-	wildmon 76, PARASECT
-	wildmon 77, STEELIX
+	wildmon 72, GOLBAT
+	wildmon 74, PARASECT
+	wildmon 74, QUAGSIRE
+	wildmon 76, URSARING
+	wildmon 76, DONPHAN
+	wildmon 77, MACHOKE
 	wildmon 77, PUPITAR
 	; day
-	wildmon 74, GOLBAT
-	wildmon 74, MACHOKE
-	wildmon 72, URSARING
-	wildmon 76, PARASECT
-	wildmon 76, PARASECT
-	wildmon 77, STEELIX
+	wildmon 72, GOLBAT
+	wildmon 74, PARASECT
+	wildmon 74, QUAGSIRE
+	wildmon 76, DONPHAN
+	wildmon 76, URSARING
+	wildmon 77, MACHOKE
 	wildmon 77, PUPITAR
 	; nite
-	wildmon 74, GOLBAT
-	wildmon 74, GOLDUCK
 	wildmon 72, GOLBAT
-	wildmon 76, PARASECT
-	wildmon 76, PARASECT
-	wildmon 77, MISDREAVUS
-	wildmon 77, MISDREAVUS
+	wildmon 74, PARASECT
+	wildmon 74, QUAGSIRE
+	wildmon 76, MISDREAVUS
+	wildmon 76, MISDREAVUS
+	wildmon 77, GOLDUCK
+	wildmon 77, PUPITAR
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_ROOM_3
-	db 6 percent ; encounter rate
+	db 3 percent ; encounter rate
 	; morn
-	wildmon 76, CROBAT
-	wildmon 76, ONIX
-	wildmon 74, GOLEM
+	wildmon 74, CROBAT
+	wildmon 76, GOLEM
+	wildmon 76, STEELIX
+	wildmon 79, SNEASEL
 	wildmon 78, URSARING
-	wildmon 78, STEELIX
-	wildmon 79, PUPITAR
+	wildmon 78, DONPHAN
 	wildmon 80, TYRANITAR
 	; day
-	wildmon 76, CROBAT
-	wildmon 76, ONIX
-	wildmon 74, GOLEM
+	wildmon 74, CROBAT
+	wildmon 76, GOLEM
+	wildmon 76, STEELIX
+	wildmon 79, SNEASEL
+	wildmon 78, DONPHAN
 	wildmon 78, URSARING
-	wildmon 78, STEELIX
-	wildmon 79, PUPITAR
 	wildmon 80, TYRANITAR
 	; nite
-	wildmon 76, CROBAT
-	wildmon 76, MISDREAVUS
-	wildmon 74, GOLEM
-	wildmon 78, CROBAT
-	wildmon 78, STEELIX
+	wildmon 74, CROBAT
+	wildmon 76, GOLEM
+	wildmon 76, STEELIX
 	wildmon 79, GOLDUCK
+	wildmon 78, SNEASEL
+	wildmon 78, SNEASEL
 	wildmon 80, TYRANITAR
 	end_grass_wildmons
 
@@ -1264,28 +1264,28 @@
 	db 6 percent ; encounter rate
 	; morn
 	wildmon 72, GOLBAT
-	wildmon 72, GOLBAT
-	wildmon 74, CROBAT
-	wildmon 76, PARASECT
-	wildmon 76, GRAVELER
-	wildmon 77, GRAVELER
-	wildmon 77, PARASECT
+	wildmon 74, PARASECT
+	wildmon 74, QUAGSIRE
+	wildmon 76, URSARING
+	wildmon 76, DONPHAN
+	wildmon 77, STEELIX
+	wildmon 77, PUPITAR
 	; day
 	wildmon 72, GOLBAT
-	wildmon 72, GOLBAT
-	wildmon 74, CROBAT
-	wildmon 76, PARASECT
-	wildmon 76, GRAVELER
-	wildmon 77, GRAVELER
-	wildmon 77, PARASECT
+	wildmon 74, PARASECT
+	wildmon 74, QUAGSIRE
+	wildmon 76, DONPHAN
+	wildmon 76, URSARING
+	wildmon 77, STEELIX
+	wildmon 77, PUPITAR
 	; nite
-	wildmon 75, MISDREAVUS
 	wildmon 72, GOLBAT
-	wildmon 74, CROBAT
-	wildmon 76, PARASECT
-	wildmon 76, GRAVELER
-	wildmon 77, GRAVELER
-	wildmon 77, PARASECT
+	wildmon 74, PARASECT
+	wildmon 74, QUAGSIRE
+	wildmon 76, MISDREAVUS
+	wildmon 76, MISDREAVUS
+	wildmon 77, GOLDUCK
+	wildmon 77, PUPITAR
 	end_grass_wildmons
 
 	def_grass_wildmons DARK_CAVE_VIOLET_ENTRANCE

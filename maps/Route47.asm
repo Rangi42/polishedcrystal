@@ -1,5 +1,7 @@
 Route47_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE47_BRIDGE_UNDERFOOT
+	scene_const SCENE_ROUTE47_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, Route47TileScript
@@ -14,38 +16,38 @@ Route47_MapScriptHeader:
 	warp_event  8,  4, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
-	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger
-	coord_event 42, 25, 1, Route47Bridge1OverheadTrigger
-	coord_event 51, 24, 1, Route47Bridge1OverheadTrigger
-	coord_event 51, 25, 1, Route47Bridge1OverheadTrigger
-	coord_event 43, 24, 0, Route47Bridge1UnderfootTrigger
-	coord_event 43, 25, 0, Route47Bridge1UnderfootTrigger
-	coord_event 50, 24, 0, Route47Bridge1UnderfootTrigger
-	coord_event 50, 25, 0, Route47Bridge1UnderfootTrigger
-	coord_event 42, 18, 1, Route47Bridge2OverheadTrigger
-	coord_event 42, 19, 1, Route47Bridge2OverheadTrigger
-	coord_event 51, 18, 1, Route47Bridge2OverheadTrigger
-	coord_event 51, 19, 1, Route47Bridge2OverheadTrigger
-	coord_event 43, 18, 0, Route47Bridge2UnderfootTrigger
-	coord_event 43, 19, 0, Route47Bridge2UnderfootTrigger
-	coord_event 50, 18, 0, Route47Bridge2UnderfootTrigger
-	coord_event 50, 19, 0, Route47Bridge2UnderfootTrigger
-	coord_event 18, 24, 1, Route47Bridge3OverheadTrigger
-	coord_event 18, 25, 1, Route47Bridge3OverheadTrigger
-	coord_event 27, 24, 1, Route47Bridge3OverheadTrigger
-	coord_event 27, 25, 1, Route47Bridge3OverheadTrigger
-	coord_event 19, 24, 0, Route47Bridge3UnderfootTrigger
-	coord_event 19, 25, 0, Route47Bridge3UnderfootTrigger
-	coord_event 26, 24, 0, Route47Bridge3UnderfootTrigger
-	coord_event 26, 25, 0, Route47Bridge3UnderfootTrigger
-	coord_event 18, 16, 1, Route47Bridge4OverheadTrigger
-	coord_event 18, 17, 1, Route47Bridge4OverheadTrigger
-	coord_event 27, 16, 1, Route47Bridge4OverheadTrigger
-	coord_event 27, 17, 1, Route47Bridge4OverheadTrigger
-	coord_event 19, 16, 0, Route47Bridge4UnderfootTrigger
-	coord_event 19, 17, 0, Route47Bridge4UnderfootTrigger
-	coord_event 26, 16, 0, Route47Bridge4UnderfootTrigger
-	coord_event 26, 17, 0, Route47Bridge4UnderfootTrigger
+	coord_event 42, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 42, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 51, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 51, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge1OverheadTrigger
+	coord_event 43, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 43, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 50, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 50, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge1UnderfootTrigger
+	coord_event 42, 18, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 42, 19, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 51, 18, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 51, 19, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge2OverheadTrigger
+	coord_event 43, 18, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 43, 19, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 50, 18, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 50, 19, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge2UnderfootTrigger
+	coord_event 18, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 18, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 27, 24, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 27, 25, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge3OverheadTrigger
+	coord_event 19, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 19, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 26, 24, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 26, 25, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge3UnderfootTrigger
+	coord_event 18, 16, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 18, 17, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 27, 16, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 27, 17, SCENE_ROUTE47_BRIDGE_OVERHEAD, Route47Bridge4OverheadTrigger
+	coord_event 19, 16, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
+	coord_event 19, 17, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
+	coord_event 26, 16, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
+	coord_event 26, 17, SCENE_ROUTE47_BRIDGE_UNDERFOOT, Route47Bridge4UnderfootTrigger
 
 	def_bg_events
 	bg_event  8, 23, BGEVENT_IFNOTSET, Route47SealedCaveSign
@@ -75,7 +77,7 @@ Route47_MapScriptHeader:
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalsefwd .locked
-	changeblock 8, 22, $9b
+	changeblock 8, 22, $99
 .locked
 	checkscene
 	iftruefwd .underfoot
@@ -88,11 +90,11 @@ Route47TileScript:
 
 .overhead_asm:
 	; bridge 1
-	changebridgeblock 42, 24, $e9, ROUTE_47
+	changebridgeblock 42, 24, $d8, ROUTE_47
 	changebridgeblock 44, 24, $e7, ROUTE_47
 	changebridgeblock 46, 24, $e7, ROUTE_47
 	changebridgeblock 48, 24, $e7, ROUTE_47
-	changebridgeblock 50, 24, $ea, ROUTE_47
+	changebridgeblock 50, 24, $d9, ROUTE_47
 	; bridge 2
 	changebridgeblock 44, 18, $e8, ROUTE_47
 	changebridgeblock 46, 18, $e8, ROUTE_47
@@ -102,51 +104,51 @@ Route47TileScript:
 	changebridgeblock 22, 24, $e8, ROUTE_47
 	changebridgeblock 24, 24, $e8, ROUTE_47
 	; bridge 4
-	changebridgeblock 18, 16, $e9, ROUTE_47
+	changebridgeblock 18, 16, $d8, ROUTE_47
 	changebridgeblock 20, 16, $e7, ROUTE_47
 	changebridgeblock 22, 16, $e7, ROUTE_47
 	changebridgeblock 24, 16, $e7, ROUTE_47
-	changebridgeblock 26, 16, $eb, ROUTE_47
+	changebridgeblock 26, 16, $e5, ROUTE_47
 	jmp BufferScreen
 
 .underfoot_asm:
 	; bridge 1
 	changebridgeblock 42, 24, $aa, ROUTE_47
-	changebridgeblock 44, 24, $fa, ROUTE_47
-	changebridgeblock 46, 24, $fa, ROUTE_47
-	changebridgeblock 48, 24, $fa, ROUTE_47
+	changebridgeblock 44, 24, $e4, ROUTE_47
+	changebridgeblock 46, 24, $e4, ROUTE_47
+	changebridgeblock 48, 24, $e4, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
 	; bridge 2
-	changebridgeblock 44, 18, $fa, ROUTE_47
-	changebridgeblock 46, 18, $fa, ROUTE_47
-	changebridgeblock 48, 18, $fa, ROUTE_47
+	changebridgeblock 44, 18, $e4, ROUTE_47
+	changebridgeblock 46, 18, $e4, ROUTE_47
+	changebridgeblock 48, 18, $e4, ROUTE_47
 	; bridge 3
-	changebridgeblock 20, 24, $fa, ROUTE_47
-	changebridgeblock 22, 24, $fa, ROUTE_47
-	changebridgeblock 24, 24, $fa, ROUTE_47
+	changebridgeblock 20, 24, $e4, ROUTE_47
+	changebridgeblock 22, 24, $e4, ROUTE_47
+	changebridgeblock 24, 24, $e4, ROUTE_47
 	; bridge 4
 	changebridgeblock 18, 16, $aa, ROUTE_47
-	changebridgeblock 20, 16, $fa, ROUTE_47
-	changebridgeblock 22, 16, $fa, ROUTE_47
-	changebridgeblock 24, 16, $fa, ROUTE_47
+	changebridgeblock 20, 16, $e4, ROUTE_47
+	changebridgeblock 22, 16, $e4, ROUTE_47
+	changebridgeblock 24, 16, $e4, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jmp BufferScreen
 
 Route47Bridge1OverheadTrigger:
 	callthisasm
-	changebridgeblock 42, 24, $e9, ROUTE_47
+	changebridgeblock 42, 24, $d8, ROUTE_47
 	changebridgeblock 44, 24, $e7, ROUTE_47
 	changebridgeblock 46, 24, $e7, ROUTE_47
 	changebridgeblock 48, 24, $e7, ROUTE_47
-	changebridgeblock 50, 24, $ea, ROUTE_47
+	changebridgeblock 50, 24, $d9, ROUTE_47
 	jr Route47_FinishOverheadBridge
 
 Route47Bridge1UnderfootTrigger:
 	callthisasm
 	changebridgeblock 42, 24, $aa, ROUTE_47
-	changebridgeblock 44, 24, $fa, ROUTE_47
-	changebridgeblock 46, 24, $fa, ROUTE_47
-	changebridgeblock 48, 24, $fa, ROUTE_47
+	changebridgeblock 44, 24, $e4, ROUTE_47
+	changebridgeblock 46, 24, $e4, ROUTE_47
+	changebridgeblock 48, 24, $e4, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
@@ -163,9 +165,9 @@ Route47_FinishOverheadBridge:
 
 Route47Bridge2UnderfootTrigger:
 	callthisasm
-	changebridgeblock 44, 18, $fa, ROUTE_47
-	changebridgeblock 46, 18, $fa, ROUTE_47
-	changebridgeblock 48, 18, $fa, ROUTE_47
+	changebridgeblock 44, 18, $e4, ROUTE_47
+	changebridgeblock 46, 18, $e4, ROUTE_47
+	changebridgeblock 48, 18, $e4, ROUTE_47
 	; fallthrough
 
 Route47_FinishUnderfootBridge:
@@ -184,26 +186,26 @@ Route47Bridge3OverheadTrigger:
 
 Route47Bridge3UnderfootTrigger:
 	callthisasm
-	changebridgeblock 20, 24, $fa, ROUTE_47
-	changebridgeblock 22, 24, $fa, ROUTE_47
-	changebridgeblock 24, 24, $fa, ROUTE_47
+	changebridgeblock 20, 24, $e4, ROUTE_47
+	changebridgeblock 22, 24, $e4, ROUTE_47
+	changebridgeblock 24, 24, $e4, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
 	callthisasm
-	changebridgeblock 18, 16, $e9, ROUTE_47
+	changebridgeblock 18, 16, $d8, ROUTE_47
 	changebridgeblock 20, 16, $e7, ROUTE_47
 	changebridgeblock 22, 16, $e7, ROUTE_47
 	changebridgeblock 24, 16, $e7, ROUTE_47
-	changebridgeblock 26, 16, $eb, ROUTE_47
+	changebridgeblock 26, 16, $e5, ROUTE_47
 	jr Route47_FinishOverheadBridge
 
 Route47Bridge4UnderfootTrigger:
 	callthisasm
 	changebridgeblock 18, 16, $aa, ROUTE_47
-	changebridgeblock 20, 16, $fa, ROUTE_47
-	changebridgeblock 22, 16, $fa, ROUTE_47
-	changebridgeblock 24, 16, $fa, ROUTE_47
+	changebridgeblock 20, 16, $e4, ROUTE_47
+	changebridgeblock 22, 16, $e4, ROUTE_47
+	changebridgeblock 24, 16, $e4, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jr Route47_FinishUnderfootBridge
 

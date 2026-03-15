@@ -1,5 +1,5 @@
-	db  55,  70,  55,  80,  40,  55 ; 355 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 355,  55,  70,  55,  40,  55,  80
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db NORMAL, NORMAL ; type
 	db 45 ; catch rate

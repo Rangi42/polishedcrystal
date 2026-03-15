@@ -1,5 +1,7 @@
 CeruleanCity_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CERULEANCITY_BRIDGE_UNDERFOOT
+	scene_const SCENE_CERULEANCITY_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
@@ -18,10 +20,10 @@ CeruleanCity_MapScriptHeader:
 	warp_event 29,  7, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
-	coord_event 20,  3, 0, Route24BridgeUnderfootTrigger
-	coord_event 21,  3, 0, Route24BridgeUnderfootTrigger
-	coord_event 20,  4, 1, Route24BridgeOverheadTrigger
-	coord_event 21,  4, 1, Route24BridgeOverheadTrigger
+	coord_event 20,  3, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21,  3, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 20,  4, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 21,  4, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
@@ -38,10 +40,10 @@ CeruleanCity_MapScriptHeader:
 	object_event  6,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
 	object_event 30, 22, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
 	object_event 23, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCitySuperNerdText, -1
-	pokemon_event 20, 20, SLOWBRO, SPRITEMOVEDATA_STILL, -1, PAL_NPC_PINK, CeruleanCitySlowbroText, -1
+	pokemon_event 20, 20, SLOWBRO, SPRITEMOVEDATA_STILL, -1, PAL_MON_PINK, CeruleanCitySlowbroText, -1
 	object_event 13, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  2, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
-	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
+	cuttree_event 44, 16, EVENT_ROUTE_9_CUT_TREE
 
 	object_const_def
 	const CERULEANCITY_COOLTRAINER_F
@@ -54,7 +56,21 @@ CeruleanCityFlyPoint:
 CeruleanCityCooltrainerMScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer CeruleanCityCooltrainerMText2
-	jumptextfaceplayer CeruleanCityCooltrainerMText1
+	jumpthistextfaceplayer
+
+	text "Kanto's Power"
+	line "Plant?"
+
+	para "It's near the end"
+	line "of Route 9, the"
+
+	para "road that heads"
+	line "east from here."
+
+	para "I think there was"
+	line "an accident of"
+	cont "some sort there."
+	done
 
 CeruleanCityCooltrainerFScript:
 	faceplayer
@@ -102,22 +118,14 @@ CeruleanCityYoungsterScript:
 	waitsfx
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	turnobject CERULEANCITY_YOUNGSTER, LEFT
-	jumptext CeruleanCityYoungsterText2
+	jumpthistext
 
-CeruleanCityCooltrainerMText1:
-	text "Kanto's Power"
-	line "Plant?"
+	text "Ayuh?"
 
-	para "It's near the end"
-	line "of Route 9, the"
-
-	para "road that heads"
-	line "east from here."
-
-	para "I think there was"
-	line "an accident of"
-	cont "some sort there."
+	para "My Itemfinder is"
+	line "responding…"
 	done
+
 
 CeruleanCityCooltrainerMText2:
 	text "You're collecting"
@@ -175,12 +183,6 @@ CeruleanCityYoungsterText1:
 	cont "in it."
 	done
 
-CeruleanCityYoungsterText2:
-	text "Ayuh?"
-
-	para "My Itemfinder is"
-	line "responding…"
-	done
 
 CeruleanCityYoungsterText:
 	text "My Itemfinder"

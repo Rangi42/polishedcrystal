@@ -378,7 +378,7 @@ CeladonGameCornerPosterScript:
 	playsound SFX_PUSH_BUTTON
 	playsound SFX_ENTER_DOOR
 	setevent EVENT_PUSHED_GAME_CORNER_SWITCH
-	changeblock 16, 0, $4d
+	changeblock 16, 0, $30
 	end
 
 .AlreadyPushed

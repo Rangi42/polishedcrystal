@@ -1,5 +1,5 @@
-	db  50,  50,  40,  50,  30,  30 ; 250 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 250,  50,  50,  40,  30,  30,  50
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ICE, GROUND ; type
 	db 225 ; catch rate

@@ -1,5 +1,5 @@
-	db  25,  35,  70,  45,  95,  55 ; 325 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 325,  25,  35,  70,  95,  55,  45
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ELECTRIC, STEEL ; type
 	db 190 ; catch rate

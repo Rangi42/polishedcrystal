@@ -1,6 +1,7 @@
 TinTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script TinTower1FSuicuneBattleScene
+	scene_script TinTower1FSuicuneBattleScene, SCENE_TINTOWER1F_SUICUNE_BATTLE
+	scene_const SCENE_TINTOWER1F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, TinTower1FNPCsCallback
@@ -16,9 +17,9 @@ TinTower1F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	pokemon_event  7,  9, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, ClearText, EVENT_TIN_TOWER_1F_SUICUNE
-	pokemon_event  5,  9, RAIKOU, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, ClearText, EVENT_TIN_TOWER_1F_RAIKOU
-	pokemon_event 10,  9, ENTEI, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_RED, ClearText, EVENT_TIN_TOWER_1F_ENTEI
+	pokemon_event  7,  9, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, ClearText, EVENT_TIN_TOWER_1F_SUICUNE
+	pokemon_event  5,  9, RAIKOU, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, ClearText, EVENT_TIN_TOWER_1F_RAIKOU
+	pokemon_event 10,  9, ENTEI, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_RED, ClearText, EVENT_TIN_TOWER_1F_ENTEI
 	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FEusineAfterHoOhScript, EVENT_TIN_TOWER_1F_EUSINE
 	object_event  3,  9, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage1Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event  9, 11, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage2Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
@@ -133,12 +134,12 @@ TinTower1FSuicuneBattleScript:
 	disappear TINTOWER1F_SUICUNE
 	setevent EVENT_FOUGHT_SUICUNE
 	setevent EVENT_SAW_SUICUNE_ON_ROUTE_42
-	setmapscene ROUTE_42, $0
+	setmapscene ROUTE_42, SCENE_ROUTE42_NOOP
 	setevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setmapscene ROUTE_36, $0
+	setmapscene ROUTE_36, SCENE_ROUTE36_NOOP
 	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	setmapscene CIANWOOD_CITY, $0
-	setscene $1
+	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_NOOP
+	setscene SCENE_TINTOWER1F_NOOP
 	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
@@ -181,10 +182,33 @@ TinTower1FSuicuneBattleScript:
 TinTower1FSage4Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftruefwd .FoughtHoOh
-	jumptextfaceplayer TinTower1FSage4Text1
+	jumpthistextfaceplayer
+
+	text "Ho-Oh appears to"
+	line "have descended"
+
+	para "upon this, the"
+	line "Bell Tower!"
+	done
 
 .FoughtHoOh:
-	jumptextfaceplayer TinTower1FSage4Text2
+	jumpthistextfaceplayer
+
+	text "The legendary"
+	line "#mon are said"
+
+	para "to embody three"
+	line "powers…"
+
+	para "The lightning that"
+	line "struck the tower."
+
+	para "The fire that"
+	line "burned the tower."
+
+	para "And the rain that"
+	line "put out the fire…"
+	done
 
 TinTower1FSage5Script:
 	faceplayer
@@ -207,25 +231,72 @@ TinTower1FSage5Script:
 	closetext
 	opentext
 .GotRainbowWing:
-	jumpopenedtext TinTower1FSage5Text2
+	jumpthisopenedtext
+
+	text "Now, go."
+	done
 
 .FoughtHoOh:
-	jumpopenedtext TinTower1FSage5Text3
+	jumpthisopenedtext
+
+	text "When the legendary"
+	line "#mon appeared…"
+
+	para "They struck terror"
+	line "in those who saw"
+	cont "their rise."
+
+	para "And…"
+
+	para "Some even took to"
+	line "futile attacks."
+
+	para "The legendary"
+	line "#mon, knowing"
+
+	para "their own power,"
+	line "fled, ignoring the"
+	cont "frightened people."
+	done
 
 TinTower1FSage6Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftruefwd .FoughtHoOh
-	jumptextfaceplayer TinTower1FSage6Text1
+	jumpthistextfaceplayer
+
+	text "I believe you are"
+	line "being tested."
+
+	para "Free your mind"
+	line "from uncertainty,"
+	cont "and advance."
+	done
 
 .FoughtHoOh:
-	jumptextfaceplayer TinTower1FSage6Text2
+	jumpthistextfaceplayer
+
+	text "Of the legendary"
+	line "#mon, Suicune"
+
+	para "is said to be the"
+	line "closest to Ho-Oh."
+
+	para "I hear there may"
+	line "also be a link to"
+
+	para "#mon known as"
+	line "Unown."
+
+	para "The #mon Unown"
+	line "must be sharing a"
+
+	para "cooperative bond"
+	line "with Suicune."
+	done
 
 TinTower1FEusineAfterHoOhScript:
 	faceplayer
-	opentext
-	writetext TinTowerEusineHoOhText
-	waitbutton
-	closetext
+	showtext TinTowerEusineHoOhText
 	readvar VAR_FACING
 	ifnotequal RIGHT, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
@@ -435,31 +506,13 @@ TinTower1FSage3Text:
 	line "important today."
 	done
 
-TinTower1FSage4Text1:
-	text "Ho-Oh appears to"
-	line "have descended"
-
-	para "upon this, the"
-	line "Bell Tower!"
-	done
 
 TinTower1FSage5Text1:
 	text "This will protect"
 	line "you. Take it."
 	done
 
-TinTower1FSage5Text2:
-	text "Now, go."
-	done
 
-TinTower1FSage6Text1:
-	text "I believe you are"
-	line "being tested."
-
-	para "Free your mind"
-	line "from uncertainty,"
-	cont "and advance."
-	done
 
 TinTowerEusineHoOhText:
 	text "I knew it."
@@ -495,60 +548,5 @@ TinTowerEusineHoOhText:
 	para "Later, <PLAYER>!"
 	done
 
-TinTower1FSage4Text2:
-	text "The legendary"
-	line "#mon are said"
 
-	para "to embody three"
-	line "powers…"
 
-	para "The lightning that"
-	line "struck the tower."
-
-	para "The fire that"
-	line "burned the tower."
-
-	para "And the rain that"
-	line "put out the fire…"
-	done
-
-TinTower1FSage5Text3:
-	text "When the legendary"
-	line "#mon appeared…"
-
-	para "They struck terror"
-	line "in those who saw"
-	cont "their rise."
-
-	para "And…"
-
-	para "Some even took to"
-	line "futile attacks."
-
-	para "The legendary"
-	line "#mon, knowing"
-
-	para "their own power,"
-	line "fled, ignoring the"
-	cont "frightened people."
-	done
-
-TinTower1FSage6Text2:
-	text "Of the legendary"
-	line "#mon, Suicune"
-
-	para "is said to be the"
-	line "closest to Ho-Oh."
-
-	para "I hear there may"
-	line "also be a link to"
-
-	para "#mon known as"
-	line "Unown."
-
-	para "The #mon Unown"
-	line "must be sharing a"
-
-	para "cooperative bond"
-	line "with Suicune."
-	done

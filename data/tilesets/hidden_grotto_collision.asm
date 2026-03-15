@@ -13,9 +13,9 @@
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 0c
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 0d
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 0e
-	tilecoll WALL, TALL_GRASS, WALL, WARP_CARPET_DOWN ; 0f
+	tilecoll WALL, FLOOR, WALL, WARP_CARPET_DOWN ; 0f
 	tilecoll WALL, WALL, WALL, WALL ; 10
-	tilecoll WALL, TALL_GRASS, WALL, TALL_GRASS ; 11
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 11
 	tilecoll WALL, WALL, WALL, WALL ; 12
 	tilecoll WALL, WALL, WALL, WALL ; 13
 	tilecoll WALL, WALL, WALL, FLOOR ; 14

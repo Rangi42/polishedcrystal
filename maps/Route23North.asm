@@ -1,5 +1,14 @@
 Route23North_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE23NORTH_UNUSED_0
+	scene_const SCENE_ROUTE23NORTH_UNUSED_1
+	scene_const SCENE_ROUTE23NORTH_UNUSED_2
+	scene_const SCENE_ROUTE23NORTH_UNUSED_3
+	scene_const SCENE_ROUTE23NORTH_UNUSED_4
+	scene_const SCENE_ROUTE23NORTH_BADGE_CHECK_5
+	scene_const SCENE_ROUTE23NORTH_BADGE_CHECK_6
+	scene_const SCENE_ROUTE23NORTH_BADGE_CHECK_7
+	scene_const SCENE_ROUTE23NORTH_NOOP
 
 	def_callbacks
 
@@ -8,14 +17,14 @@ Route23North_MapScriptHeader:
 	warp_event 16, 31, VICTORY_ROAD_2F, 1
 
 	def_coord_events
-	coord_event 10, 70, 5, Route23NorthMineralBadgeTriggerScript
-	coord_event 11, 70, 5, Route23NorthMineralBadgeTriggerScript
-	coord_event 12, 70, 5, Route23NorthMineralBadgeTriggerScript
-	coord_event 14, 70, 5, Route23NorthMineralBadgeTriggerScript
-	coord_event 15, 70, 5, Route23NorthMineralBadgeTriggerScript
-	coord_event 14, 55, 6, Route23NorthGlacierBadgeTriggerScript
-	coord_event  8, 47, 7, Route23NorthRisingBadgeTriggerScript
-	coord_event  9, 47, 7, Route23NorthRisingBadgeTriggerScript
+	coord_event 10, 70, SCENE_ROUTE23NORTH_BADGE_CHECK_5, Route23NorthMineralBadgeTriggerScript
+	coord_event 11, 70, SCENE_ROUTE23NORTH_BADGE_CHECK_5, Route23NorthMineralBadgeTriggerScript
+	coord_event 12, 70, SCENE_ROUTE23NORTH_BADGE_CHECK_5, Route23NorthMineralBadgeTriggerScript
+	coord_event 14, 70, SCENE_ROUTE23NORTH_BADGE_CHECK_5, Route23NorthMineralBadgeTriggerScript
+	coord_event 15, 70, SCENE_ROUTE23NORTH_BADGE_CHECK_5, Route23NorthMineralBadgeTriggerScript
+	coord_event 14, 55, SCENE_ROUTE23NORTH_BADGE_CHECK_6, Route23NorthGlacierBadgeTriggerScript
+	coord_event  8, 47, SCENE_ROUTE23NORTH_BADGE_CHECK_7, Route23NorthRisingBadgeTriggerScript
+	coord_event  9, 47, SCENE_ROUTE23NORTH_BADGE_CHECK_7, Route23NorthRisingBadgeTriggerScript
 
 	def_bg_events
 	bg_event  5, 32, BGEVENT_JUMPTEXT, VictoryRoadSignText
@@ -77,7 +86,7 @@ Route23NorthMineralBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $5, Route23OfficerHaveBadgeScript
-	setscene $6
+	setscene SCENE_ROUTE23NORTH_BADGE_CHECK_6
 	sjumpfwd Route23OfficerHaveBadgeScript
 
 .MineralBadgeText:
@@ -95,7 +104,7 @@ Route23NorthGlacierBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $6, Route23OfficerHaveBadgeScript
-	setscene $7
+	setscene SCENE_ROUTE23NORTH_BADGE_CHECK_7
 	sjumpfwd Route23OfficerHaveBadgeScript
 
 .GlacierBadgeText:
@@ -113,7 +122,7 @@ Route23NorthRisingBadgeTriggerScript:
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
 	checkscene
 	ifgreater $7, Route23OfficerHaveBadgeScript
-	setscene $8
+	setscene SCENE_ROUTE23NORTH_NOOP
 	sjumpfwd Route23OfficerHaveBadgeScript
 
 .RisingBadgeText:

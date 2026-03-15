@@ -1,5 +1,5 @@
-	db  95,  23,  48,  23,  23,  48 ; 260 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 260,  95,  23,  48,  23,  48,  23
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db PSYCHIC, PSYCHIC ; type
 	db 125 ; catch rate

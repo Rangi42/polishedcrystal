@@ -115,7 +115,7 @@ FastShipLazySailorScript:
 	setevent EVENT_BEAT_SAILOR_STANLY
 	showtext SailorStanlyAfterBattleText
 	setevent EVENT_FAST_SHIP_LAZY_SAILOR
-	setmapscene FAST_SHIP_B1F, $1
+	setmapscene FAST_SHIP_B1F, SCENE_FASTSHIPB1F_NOOP
 	readvar VAR_FACING
 	ifequalfwd $3, .Movement2
 	applymovement FASTSHIPCABINS_NNW_NNE_NE_SAILOR, FastShipLazySailorLeavesMovement1

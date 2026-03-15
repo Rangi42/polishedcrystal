@@ -60,7 +60,14 @@ SetCurrentWeather::
 .not_raining
 	ld a, [wMapGroup]
 	cp GROUP_SNOWTOP_MOUNTAIN_OUTSIDE
+	jr z, .snowtop_mountain
+	cp GROUP_SILVER_CAVE_ROOM_3
 	jr nz, .not_snowing
+	ld a, [wMapNumber]
+	cp MAP_SILVER_CAVE_ROOM_3
+	jr nz, .not_snowing
+	jr .snowing
+.snowtop_mountain
 	ld a, [wMapNumber]
 	cp MAP_SNOWTOP_MOUNTAIN_OUTSIDE
 	jr z, .snowing

@@ -30,10 +30,9 @@ CheckFirstMonIsEgg:
 	assert MON_IS_EGG == MON_FORM
 	ld [wNamedObjectIndex+1], a
 	bit MON_IS_EGG_F, a
-	ld a, $1
+	ld a, TRUE
 	jr nz, .egg
 	xor a
-
 .egg
 	ldh [hScriptVar], a
 	call GetPokemonName
@@ -75,7 +74,7 @@ ChangeHappiness:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	cp $64 ; why not $80?
+	cp $80
 	pop de
 
 	ld a, [de]
@@ -191,7 +190,7 @@ DayCareStep::
 
 .check_egg
 	ld hl, wDayCareMan
-	bit 5, [hl] ; egg
+	bit DAYCAREMAN_MONS_COMPATIBLE_F, [hl] ; egg
 	ret z
 	ld hl, wStepsToEgg
 	dec [hl]
@@ -225,8 +224,8 @@ DayCareStep::
 	cp b
 	ret nc
 	ld hl, wDayCareMan
-	res 5, [hl]
-	set 6, [hl]
+	res DAYCAREMAN_MONS_COMPATIBLE_F, [hl]
+	set DAYCAREMAN_HAS_EGG_F, [hl]
 	ret
 
 .daycare_exp
@@ -241,7 +240,7 @@ DayCareStep::
 	ret nz
 	dec hl
 	ld a, [hl]
-	cp (MAX_DAY_CARE_EXP / $10000) - 1
+	cp (MAX_DAY_CARE_EXP >> 16) - 1
 	ret nc
 	inc [hl]
 	ret

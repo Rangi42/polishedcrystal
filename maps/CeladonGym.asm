@@ -50,7 +50,20 @@ CeladonGymErikaScript:
 	promptbutton
 	verbosegivetmhm TM_GIGA_DRAIN
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
-	jumpopenedtext ErikaOutroText
+	jumpthisopenedtext
+
+	text "It is Giga Drain."
+
+	para "It is a wonderful"
+	line "move that drains"
+
+	para "half the damage it"
+	line "inflicts to heal"
+	cont "your #mon."
+
+	para "Please use it if"
+	line "it pleases you…"
+	done
 
 GenericTrainerLassMichelle:
 	generictrainer LASS, MICHELLE, EVENT_BEAT_LASS_MICHELLE, LassMichelleSeenText, LassMichelleBeatenText
@@ -160,19 +173,6 @@ ErikaExplainTMText:
 	cont "to have this TM."
 	done
 
-ErikaOutroText:
-	text "It is Giga Drain."
-
-	para "It is a wonderful"
-	line "move that drains"
-
-	para "half the damage it"
-	line "inflicts to heal"
-	cont "your #mon."
-
-	para "Please use it if"
-	line "it pleases you…"
-	done
 
 ErikaAfterBattleText:
 	text "Erika: Losing"

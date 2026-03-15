@@ -2,9 +2,10 @@ TrainerEncounterMusic:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
 	table_width 1
 	db MUSIC_HIKER_ENCOUNTER
-	db MUSIC_BEAUTY_ENCOUNTER ; carrie
 	db MUSIC_HIKER_ENCOUNTER ; cal
-	db MUSIC_BEAUTY_ENCOUNTER ; jacky
+	db MUSIC_BEAUTY_ENCOUNTER ; carrie
+	db MUSIC_HIKER_ENCOUNTER ; jacky
+	db MUSIC_BEAUTY_ENCOUNTER ; euna
 	db MUSIC_YOUNGSTER_ENCOUNTER ; falkner
 	db MUSIC_YOUNGSTER_ENCOUNTER ; bugsy
 	db MUSIC_OFFICER_ENCOUNTER ; morty

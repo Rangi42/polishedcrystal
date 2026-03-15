@@ -46,7 +46,7 @@ MahoganyGymPryceScript:
 	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	specialphonecall SPECIALCALL_WEIRDBROADCAST
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
-	setmapscene MAHOGANY_TOWN, $1
+	setmapscene MAHOGANY_TOWN, SCENE_MAHOGANYTOWN_NOOP
 .FightDone:
 	checkevent EVENT_GOT_TM67_AVALANCHE
 	iftrue_jumpopenedtext PryceText_CherishYourPokemon
@@ -125,7 +125,26 @@ GenericTrainerBoarderDouglas:
 MahoganyGymGuyScript:
 	checkevent EVENT_BEAT_PRYCE
 	iftrue_jumptextfaceplayer MahoganyGymGuyWinText
-	jumptextfaceplayer MahoganyGymGuyText
+	jumpthistextfaceplayer
+
+	text "Pryce is a veteran"
+	line "who has trained"
+
+	para "#mon for some"
+	line "50 years."
+
+	para "He's said to be"
+	line "good at freezing"
+
+	para "opponents with"
+	line "ice-type moves."
+
+	para "That means you"
+	line "should melt him"
+
+	para "with your burning"
+	line "ambition!"
+	done
 
 MahoganyGymStatue:
 	gettrainername PRYCE, 1, STRING_BUFFER_4
@@ -271,25 +290,6 @@ SkierClarissaBeatenText:
 	line "wipe out!"
 	done
 
-MahoganyGymGuyText:
-	text "Pryce is a veteran"
-	line "who has trained"
-
-	para "#mon for some"
-	line "50 years."
-
-	para "He's said to be"
-	line "good at freezing"
-
-	para "opponents with"
-	line "ice-type moves."
-
-	para "That means you"
-	line "should melt him"
-
-	para "with your burning"
-	line "ambition!"
-	done
 
 MahoganyGymGuyWinText:
 	text "Pryce is some-"

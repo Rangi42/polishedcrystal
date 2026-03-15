@@ -37,8 +37,6 @@ DoPlayerMovement::
 
 .TranslateIntoMovement:
 	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	jr z, .Normal
 	cp PLAYER_SURF
 	jr z, .Surf
 	cp PLAYER_SURF_PIKA
@@ -46,7 +44,7 @@ DoPlayerMovement::
 	cp PLAYER_SKATE
 	jr z, .Ice
 
-.Normal:
+; normal/run/bike
 	call .CheckForced
 	call .GetAction
 	call .CheckTile
@@ -220,22 +218,19 @@ DoPlayerMovement::
 ; Surfing actually calls .TrySurf directly instead of passing through here.
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
-	jr z, .TrySurf
+	jmp z, .TrySurf
 	cp PLAYER_SURF_PIKA
-	jr z, .TrySurf
+	jmp z, .TrySurf
 
 	call .CheckLandPerms
 	jr c, .bump
 
 	ld a, [wPanningAroundTinyMap]
 	and a
-	jr nz, .walk
+	jr nz, .pan
 
 	call .CheckNPC
-	and a
-	jr z, .bump
-	cp 2
-	jr z, .bump
+	jr c, .bump
 
 	ld a, [wSpinning]
 	and a
@@ -245,13 +240,34 @@ DoPlayerMovement::
 	cp COLL_ICE
 	jr z, .ice
 
-	call .RunCheck
-	jr z, .run
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	jr z, .bike_or_skate
+	cp PLAYER_SKATE
+	jr z, .bike_or_skate
 
-; Downhill riding is slower when not moving down.
-	call .BikeCheck
+; At this point, [wPlayerState] is either PLAYER_NORMAL or PLAYER_RUN
+
+	ld a, [wWalkingDirection]
+	cp STANDING
+	jr z, .walk
+
+	call .RunCheck
 	jr nz, .walk
 
+; run
+	call .StopWalking
+	ld a, STEP_RUN
+	call .DoStep
+; Trainer faces player if they're running
+	push af
+	call CheckTrainerRun ; we know [wWalkingDirection] is not STANDING, so always call this
+	pop af
+	scf
+	ret
+
+.bike_or_skate
+; Downhill riding is slower when not moving down.
 	ld hl, wOWState
 	bit OWSTATE_BIKING_DOWNHILL, [hl]
 	jr z, .fast
@@ -272,30 +288,22 @@ DoPlayerMovement::
 	ret
 
 .walk
+	call .StopRunning
+.pan
 	ld a, STEP_WALK
 	call .DoStep
 	scf
 	ret
 
 .ice
+	call .StopRunning
 	ld a, STEP_ICE
 	call .DoStep
 	scf
 	ret
 
-.run
-	ld a, STEP_RUN
-	call .DoStep
-; Trainer faces player if they're running
-	push af
-	ld a, [wWalkingDirection]
-	cp STANDING
-	call nz, CheckTrainerRun
-	pop af
-	scf
-	ret
-
 .spin
+	call .StopRunning
 	ld de, SFX_SQUEAK
 	call PlaySFX
 	ld a, STEP_SPIN
@@ -311,11 +319,7 @@ DoPlayerMovement::
 .TrySurf:
 
 	call .CheckNPC
-	and a
-	jr z, .surf_bump
-	cp 2
-	jr z, .surf_bump
-
+	jr c, .surf_bump
 	call .CheckSurfPerms
 	jr c, .surf_bump
 
@@ -331,7 +335,7 @@ DoPlayerMovement::
 	ret
 
 .ExitWater:
-	call .GetOutOfWater
+	call .StartWalking
 	call PlayMapMusic
 	ld a, STEP_WALK
 	call .DoStep
@@ -377,6 +381,7 @@ DoPlayerMovement::
 	call .CheckWalkable
 	jr c, .DontJump
 
+	call .StopRunning
 	ld de, SFX_JUMP_OVER_LEDGE
 	call PlaySFX
 	ld a, STEP_LEDGE
@@ -464,8 +469,8 @@ DoPlayerMovement::
 	jr nc, .not_warp
 
 	call .StandInPlace
-	scf
 	ld a, 1
+	scf
 	ret
 
 .not_warp
@@ -709,10 +714,8 @@ endc
 	dw wTileDown
 
 .CheckNPC:
-; Returns 0 if there is an NPC in front that you can't move
-; Returns 1 if there is no NPC in front
-; Returns 2 if there is a movable NPC in front. The game actually treats
-; this the same as an NPC in front (bump).
+; Returns carry if there is an NPC in front
+; Updates object state if there is a Strength boulder in front
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
@@ -728,57 +731,35 @@ endc
 	add e
 	ld e, a
 ; Find an object struct with coordinates equal to d,e
-	farcall IsNPCAtCoord
-	jr nc, .no_npc
-	call .CheckStrengthBoulder
-	jr c, .no_bump
-
-	xor a ; bump
-	ret
-
-.no_npc
-	ld a, 1
-	ret
-
-.no_bump
-	ld a, 2
-	ret
-
-.CheckStrengthBoulder:
-
+	farcall IsNPCAtCoord ; returns carry if there is an NPC at the coord
+	ret nc
+; There is an object in front, so return carry, but update if it's a Strength boulder
 	ld hl, wOWState
 	bit OWSTATE_STRENGTH, [hl]
 	jr z, .not_boulder
-
 	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
 	cp STANDING
 	jr nz, .not_boulder
-
 	ld hl, OBJECT_PALETTE
 	add hl, bc
-	bit 6, [hl]
+	bit STRENGTH_BOULDER_F, [hl]
 	jr z, .not_boulder
-
+; Update state for the Strength boulder
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	set 2, [hl]
-
+	set BOULDER_MOVING_F, [hl]
 	ld a, [wWalkingDirection]
 	ld d, a
 	ld hl, OBJECT_RANGE
 	add hl, bc
 	ld a, [hl]
-	and $fc
+	and %11111100
 	or d
 	ld [hl], a
-
-	scf
-	ret
-
 .not_boulder
-	xor a
+	scf
 	ret
 
 .CheckLandPerms:
@@ -789,65 +770,46 @@ endc
 	ld d, a
 	ld a, [wFacingDirection]
 	and d
-	jr nz, .NotWalkable
+	scf
+	ret nz
 
 	ld a, [wWalkingTileCollision]
 	call .CheckWalkable
-	jr c, .NotWalkable
+	ret c
 
 	xor a
 	ret
 
-.NotWalkable:
-	scf
-	ret
-
 .CheckSurfPerms:
-; Return 0 if moving in water, or 1 if moving onto land.
-; Otherwise, return carry.
+; Return carry if bumping into something while moving in water
 
 	ld a, [wTilePermissions]
 	ld d, a
 	ld a, [wFacingDirection]
 	and d
-	jr nz, .NotSurfable
+	scf
+	ret nz
 
 	ld a, [wWalkingTileCollision]
 	call .CheckSurfable
-	jr c, .NotSurfable
+	ret c
 
 	and a
 	ret
 
-.NotSurfable:
-	scf
-	ret
-
-.BikeCheck:
-	ld a, [wPlayerState]
-	cp PLAYER_BIKE
-	ret z
-	cp PLAYER_SKATE
-	ret
-
 .RunCheck:
-	; Check if we have regular movement active
-	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	ret nz
-
-	; If RUNNING_SHOES is active, invert B button effect.
-	push hl
-	ld hl, wOptions2
+	; Return z if Running Shoes are active
+	; - if [wOptions2] does not have the RUNNING_SHOES bit set, then B should be held down
+	; - if [wOptions2] has the RUNNING_SHOES bit set, then B should not be held down
+	; => Return z if [wOptions2]'s RUNNING_SHOES bit != [hJoypadDown]'s PAD_B bit
 	ldh a, [hJoypadDown]
 	and PAD_B
-
-	; We want to return z on success, not nz.
-	cpl
-
-	; PAD_B is bit 1, RUNNING_SHOES is bit 3
+rept RUNNING_SHOES - B_PAD_B ; 3 - 1 = 2
 	add a
-	add a
+endr
+	cpl ; we want to return z on success, not nz
+	push hl
+	ld hl, wOptions2
 	xor [hl]
 	pop hl
 	and 1 << RUNNING_SHOES
@@ -878,7 +840,7 @@ endc
 	ret
 
 .Land:
-	ld a, 1
+	ld a, TRUE
 	and a
 	ret
 
@@ -896,10 +858,24 @@ endc
 	ld de, SFX_BUMP
 	jmp PlaySFX
 
-.GetOutOfWater:
-	push bc
-	ld a, PLAYER_NORMAL
+.StopWalking:
+	ld a, [wPlayerState]
+	and a ; cp PLAYER_NORMAL
+	ret nz
+.StartRunning:
+	ld a, PLAYER_RUN
+	jr .UpdatePlayerState
+
+.StopRunning:
+	ld a, [wPlayerState]
+	assert PLAYER_RUN == 1
+	dec a
+	ret nz
+.StartWalking:
+	xor a ; ld a, PLAYER_NORMAL
+.UpdatePlayerState
 	ld [wPlayerState], a
+	push bc
 	call UpdatePlayerSprite ; UpdateSprites
 	pop bc
 	ret

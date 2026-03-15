@@ -2,51 +2,55 @@
 	const_def 1
 	const TILESET_JOHTO_TRADITIONAL    ; 01
 	const TILESET_JOHTO_MODERN         ; 02
-	const TILESET_JOHTO_OVERCAST       ; 03
-	const TILESET_BATTLE_TOWER_OUTSIDE ; 04
-	const TILESET_ECRUTEAK_SHRINE      ; 05
+	const TILESET_JOHTO_OUTLANDS       ; 03
+	const TILESET_JOHTO_ANCIENT        ; 04
+	const TILESET_BATTLE_TOWER_OUTSIDE ; 05
+	const TILESET_ECRUTEAK_SHRINE      ; 06
 DEF NO_ROOF_TILESETS EQU const_value
-	const TILESET_KANTO                ; 06
-	const TILESET_INDIGO_PLATEAU       ; 07
-	const TILESET_SHAMOUTI_ISLAND      ; 08
-	const TILESET_VALENCIA_ISLAND      ; 09
-	const TILESET_FARAWAY_ISLAND       ; 0a
-	const TILESET_JOHTO_HOUSE          ; 0b
-	const TILESET_KANTO_HOUSE          ; 0c
-	const TILESET_TRADITIONAL_HOUSE    ; 0d
-	const TILESET_POKECENTER           ; 0e
-	const TILESET_POKECOM_CENTER       ; 0f
-	const TILESET_MART                 ; 10
-	const TILESET_GATE                 ; 11
-	const TILESET_GYM                  ; 12
-	const TILESET_MAGNET_TRAIN         ; 13
-	const TILESET_CHAMPIONS_ROOM       ; 14
-	const TILESET_PORT                 ; 15
-	const TILESET_LAB                  ; 16
-	const TILESET_FACILITY             ; 17
-	const TILESET_CELADON_MANSION      ; 18
-	const TILESET_GAME_CORNER          ; 19
-	const TILESET_HOME_DECOR_STORE     ; 1a
-	const TILESET_MUSEUM               ; 1b
-	const TILESET_HOTEL                ; 1c
-	const TILESET_SPROUT_TOWER         ; 1d
-	const TILESET_BATTLE_TOWER_INSIDE  ; 1e
-	const TILESET_RADIO_TOWER          ; 1f
-	const TILESET_LIGHTHOUSE           ; 20
-	const TILESET_UNDERGROUND          ; 21
-	const TILESET_CAVE                 ; 22
-	const TILESET_QUIET_CAVE           ; 23
-	const TILESET_ICE_PATH             ; 24
-	const TILESET_TUNNEL               ; 25
-	const TILESET_FOREST               ; 26
-	const TILESET_PARK                 ; 27
-	const TILESET_SAFARI_ZONE          ; 28
-	const TILESET_RUINS_OF_ALPH        ; 29
-	const TILESET_ALPH_WORD_ROOM       ; 2a
-	const TILESET_POKEMON_MANSION      ; 2b
-	const TILESET_BATTLE_FACTORY       ; 2c
-	const TILESET_SNOWTOP_MOUNTAIN     ; 2d
-	const TILESET_HIDDEN_GROTTO        ; 2e
+	const TILESET_KANTO                ; 07
+	const TILESET_KANTO_NORTH          ; 08
+	const TILESET_INDIGO_PLATEAU       ; 09
+	const TILESET_SHAMOUTI_ISLAND      ; 0a
+	const TILESET_VALENCIA_ISLAND      ; 0b
+	const TILESET_FARAWAY_ISLAND       ; 0c
+	const TILESET_JOHTO_HOUSE          ; 0d
+	const TILESET_KANTO_HOUSE          ; 0e
+	const TILESET_TRADITIONAL_HOUSE    ; 0f
+	const TILESET_POKECENTER           ; 10
+	const TILESET_POKECOM_CENTER       ; 11
+	const TILESET_MART                 ; 12
+	const TILESET_GATE                 ; 13
+	const TILESET_GYM                  ; 14
+	const TILESET_MAGNET_TRAIN         ; 15
+	const TILESET_CHAMPIONS_ROOM       ; 16
+	const TILESET_PORT                 ; 17
+	const TILESET_LAB                  ; 18
+	const TILESET_FACILITY             ; 19
+	const TILESET_CELADON_MANSION      ; 1a
+	const TILESET_GAME_CORNER          ; 1b
+	const TILESET_HOME_DECOR_STORE     ; 1c
+	const TILESET_MUSEUM               ; 1d
+	const TILESET_HOTEL                ; 1e
+	const TILESET_SPROUT_TOWER         ; 1f
+	const TILESET_BATTLE_TOWER_INSIDE  ; 20
+	const TILESET_RADIO_TOWER          ; 21
+	const TILESET_LIGHTHOUSE           ; 22
+	const TILESET_UNDERGROUND          ; 23
+	const TILESET_CAVE                 ; 24
+	const TILESET_QUIET_CAVE           ; 25
+	const TILESET_ICE_PATH             ; 26
+	const TILESET_TUNNEL               ; 27
+	const TILESET_FOREST               ; 28
+	const TILESET_PARK                 ; 29
+	const TILESET_SAFARI_ZONE          ; 2a
+	const TILESET_RUINS_OF_ALPH        ; 2b
+	const TILESET_POKEMON_MANSION      ; 2c
+	const TILESET_BATTLE_FACTORY       ; 2d
+	const TILESET_SNOWTOP_MOUNTAIN     ; 2e
+	const TILESET_HIDDEN_GROTTO        ; 2f
+	const TILESET_PEAKS                ; 30
+	const TILESET_HIDEOUT              ; 31
+	const TILESET_KANTO_GYM            ; 32
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
@@ -59,7 +63,7 @@ DEF TILESET_LENGTH EQU 18
 	const ROOF_VIOLET    ; 1
 	const ROOF_AZALEA    ; 2
 	const ROOF_OLIVINE   ; 3
-	const ROOF_STATUE    ; 4
+	const ROOF_GOLDENROD ; 4
 DEF NUM_ROOFS EQU const_value
 
 ; roof length (see gfx/tilesets/roofs)

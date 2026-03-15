@@ -1,5 +1,7 @@
 PlayersHouse1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_PLAYERSHOUSE1F_MEET_MOM
+	scene_const SCENE_PLAYERSHOUSE1F_NOOP
 
 	def_callbacks
 
@@ -9,10 +11,10 @@ PlayersHouse1F_MapScriptHeader:
 	warp_event 11,  0, PLAYERS_HOUSE_2F, 1
 
 	def_coord_events
-	coord_event 10,  4, 0, MomTrigger1
-	coord_event 11,  4, 0, MomTrigger2
-	coord_event  9,  1, 0, MomTrigger3
-	coord_event  9,  2, 0, MomTrigger4
+	coord_event 10,  4, SCENE_PLAYERSHOUSE1F_MEET_MOM, MomTrigger1
+	coord_event 11,  4, SCENE_PLAYERSHOUSE1F_MEET_MOM, MomTrigger2
+	coord_event  9,  1, SCENE_PLAYERSHOUSE1F_MEET_MOM, MomTrigger3
+	coord_event  9,  2, SCENE_PLAYERSHOUSE1F_MEET_MOM, MomTrigger4
 
 	def_bg_events
 	bg_event  1,  1, BGEVENT_JUMPTEXT, PlayersHouse1FFridgeText
@@ -70,7 +72,7 @@ MomEventScript:
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
-	setscene $1
+	setscene SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	writetext MomPokegearText

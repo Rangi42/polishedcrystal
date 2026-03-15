@@ -3,9 +3,10 @@ TrainerClassDVsAndPersonality:
 	table_width 5
 	;  EVs  HP   Def  SAt
 	;  *    Atk  Spe  SDf  Gender
-	db 252, PERFECT_DVS,   FEMALE ; carrie
 	db 252, PERFECT_DVS,   MALE   ; cal
+	db 252, PERFECT_DVS,   FEMALE ; carrie
 	db 252, PERFECT_DVS,   MALE   ; jacky
+	db 252, PERFECT_DVS,   FEMALE ; euna
 	db 252, $BB, $BB, $BB, MALE   ; falkner
 	db 252, $BB, $BB, $BB, MALE   ; bugsy
 	db 252, $CC, $CC, $CC, FEMALE ; whitney

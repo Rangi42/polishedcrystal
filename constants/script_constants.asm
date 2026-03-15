@@ -112,6 +112,10 @@ DEF COORD_EVENT_SIZE  EQU  5 ; coord_event
 DEF BG_EVENT_SIZE     EQU  5 ; bg_event
 DEF OBJECT_EVENT_SIZE EQU 13 ; object_event
 
+; A coord_event for scene -1 will always activate,
+; regardless of the map's scene variable value.
+DEF SCENE_ALWAYS EQU -1
+
 ; bg_event types
 ; TryBGEvent arguments (see engine/overworld/events.asm)
 	const_def
@@ -355,6 +359,7 @@ DEF NUM_PAINTINGS EQU const_value
 	const OPP_CAL
 	const OPP_CARRIE
 	const OPP_JACKY
+	const OPP_EUNA
 	const OPP_EN
 	const OPP_MADOKA
 DEF NUM_TRAINER_HOUSE_OPPONENTS EQU const_value - 1

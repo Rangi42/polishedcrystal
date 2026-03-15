@@ -346,7 +346,7 @@ Special_SetDayOfWeek:
 	ld a, [wTempDayOfWeek]
 	ld [wStringBuffer2], a
 	call SetDayOfWeek
-	call LoadStandardFont
+	farcall LoadFonts_NoOAMUpdate
 	pop af
 	ldh [hInMenu], a
 	ret

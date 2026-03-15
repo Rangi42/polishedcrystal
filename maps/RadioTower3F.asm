@@ -38,7 +38,18 @@ CardKeyShutterCallback:
 RadioTower3FGymGuideScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower3FGymGuideText
-	jumptextfaceplayer RadioTower3FGymGuideText_Rockets
+	jumpthistextfaceplayer
+
+	text "To trainers, #-"
+	line "mon are their"
+	cont "beloved partners."
+
+	para "It's terrible how"
+	line "Team Rocket is"
+
+	para "trying to control"
+	line "#mon."
+	done
 
 RadioTower3FCooltrainerFScript:
 	checkevent EVENT_GOT_GBC_SOUNDS_FROM_RADIO_TOWER
@@ -149,17 +160,6 @@ RadioTower3FSuperNerdText:
 	line "200 kinds."
 	done
 
-RadioTower3FGymGuideText_Rockets:
-	text "To trainers, #-"
-	line "mon are their"
-	cont "beloved partners."
-
-	para "It's terrible how"
-	line "Team Rocket is"
-
-	para "trying to control"
-	line "#mon."
-	done
 
 RadioTower3FGymGuideText:
 	text "We run 24 hours a"

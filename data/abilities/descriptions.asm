@@ -105,6 +105,7 @@ AbilityDescriptions:
 	dw HoneyGatherDescription
 	dw FriskDescription
 	dw RecklessDescription
+	dw BadDreamsDescription
 	dw PickpocketDescription
 	dw SheerForceDescription
 	dw ContraryDescription
@@ -152,6 +153,7 @@ AbilityDescriptions:
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
 	dw QuickDrawDescription
+	dw WindRiderDescription
 	dw CudChewDescription
 	dw SharpnessDescription
 	dw ArmorTailDescription
@@ -672,6 +674,11 @@ RecklessDescription:
 	next "that recoil."
 	done
 
+BadDreamsDescription:
+	text "Reduces a sleeping"
+	next "foe's HP."
+	done
+
 PickpocketDescription:
 	text "Steals foe's item"
 	next "when contacted."
@@ -885,6 +892,11 @@ NeutralizingGasDescription:
 QuickDrawDescription:
 	text "Moves first"
 	next "occasionally."
+	done
+
+WindRiderDescription:
+	text "Gives immunity to"
+	next "wind-based moves."
 	done
 
 SteelySpiritDescription:

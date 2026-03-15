@@ -287,7 +287,24 @@ BillsGrandpa:
 BillsMom:
 	checkevent EVENT_NEVER_MET_BILL
 	iffalse_jumptextfaceplayer BillsMomText_AfterEcruteak
-	jumptextfaceplayer BillsMomText_BeforeEcruteak
+	jumpthistextfaceplayer
+
+	text "Oh, you collect"
+	line "#mon? My son"
+	cont "Bill is an expert."
+
+	para "He just got called"
+	line "to the #mon"
+
+	para "Center in Ecruteak"
+	line "City."
+
+	para "My husband went"
+	line "off to the Game"
+
+	para "Corner without"
+	line "being called…"
+	done
 
 BillsSister:
 	faceplayer
@@ -305,7 +322,14 @@ BillsSister:
 	waitsfx
 	promptbutton
 .GotBillsNumber:
-	jumpopenedtext BillsSisterStorageSystemText
+	jumpthisopenedtext
+
+	text "My big brother"
+	line "Bill made the PC"
+
+	para "#mon storage"
+	line "system."
+	done
 
 .NoRoom:
 	writetext BillsSisterPhoneFullText
@@ -491,23 +515,6 @@ BillsGrandpaPichuText:
 	line "evolves."
 	done
 
-BillsMomText_BeforeEcruteak:
-	text "Oh, you collect"
-	line "#mon? My son"
-	cont "Bill is an expert."
-
-	para "He just got called"
-	line "to the #mon"
-
-	para "Center in Ecruteak"
-	line "City."
-
-	para "My husband went"
-	line "off to the Game"
-
-	para "Corner without"
-	line "being called…"
-	done
 
 BillsMomText_AfterEcruteak:
 	text "My husband was"
@@ -544,10 +551,3 @@ BillsSisterPhoneFullText:
 	line "any more numbers."
 	done
 
-BillsSisterStorageSystemText:
-	text "My big brother"
-	line "Bill made the PC"
-
-	para "#mon storage"
-	line "system."
-	done

@@ -556,11 +556,9 @@ _PushWindow::
 	; Check if a window stack overflow happened.
 	ld a, d
 	cp $d0
-	jr nc, .no_overflow
-	ld a, ERR_WINSTACK_OVERFLOW
-	jmp Crash
+	ld a, ERR_WINDOW_OVERFLOW
+	jmp c, Crash
 
-.no_overflow
 	ld hl, wWindowStackPointer
 	ld a, e
 	ld [hli], a
@@ -652,11 +650,15 @@ _ExitMenu::
 	push af
 	ld a, $7
 	ldh [rWBK], a
-
 	call GetWindowStackTop
+
+	; Check if a window stack underflow happened.
+	; (Formerly the "No windows available for popping." freeze)
 	ld a, l
 	or h
-	jr z, Error_Cant_ExitMenu
+	ld a, ERR_WINDOW_UNDERFLOW
+	jmp z, Crash
+
 	ld a, l
 	ld [wWindowStackPointer], a
 	ld a, h
@@ -680,17 +682,6 @@ _ExitMenu::
 	ld hl, wWindowStackSize
 	dec [hl]
 	ret
-
-Error_Cant_ExitMenu:
-	ld hl, .Text_NoWindowsAvailableForPopping
-	call PrintText
-	call ApplyTilemapInVBlank
-.infinite_loop
-	jr .infinite_loop ; no-optimize stub jump
-
-.Text_NoWindowsAvailableForPopping:
-	text_far _WindowPoppingErrorText
-	text_end
 
 _InitVerticalMenuCursor::
 	ld a, [wMenuDataFlags]

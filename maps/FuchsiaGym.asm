@@ -174,7 +174,21 @@ CamperBarryScript:
 FuchsiaGymGuyScript:
 	checkevent EVENT_BEAT_JANINE
 	iftrue_jumptextfaceplayer FuchsiaGymGuyWinText
-	jumptextfaceplayer FuchsiaGymGuyText
+	jumpthistextfaceplayer
+
+	text "Yo, Champ in"
+	line "making!"
+
+	para "Whoops! Take a"
+	line "good look around"
+
+	para "you. The trainers"
+	line "all look like the"
+	cont "Leader, Janine."
+
+	para "Which of them is"
+	line "the real Janine?"
+	done
 
 FuchsiaGymStatue:
 	gettrainername JANINE, 1, STRING_BUFFER_4
@@ -317,20 +331,6 @@ CamperBarryAfterText:
 	cont "what, huh?"
 	done
 
-FuchsiaGymGuyText:
-	text "Yo, Champ in"
-	line "making!"
-
-	para "Whoops! Take a"
-	line "good look around"
-
-	para "you. The trainers"
-	line "all look like the"
-	cont "Leader, Janine."
-
-	para "Which of them is"
-	line "the real Janine?"
-	done
 
 FuchsiaGymGuyWinText:
 	text "That was a great"

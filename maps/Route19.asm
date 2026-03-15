@@ -112,12 +112,23 @@ GenericTrainerCosplayerBrooke:
 Route19Fisher1Script:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iffalse_jumptextfaceplayer Route19Fisher1Text
-	jumptextfaceplayer Route19Fisher1Text_RocksCleared
+	jumpthistextfaceplayer
+
+	text "I'm all sweaty."
+	line "Time for a swim!"
+	done
 
 Route19Fisher2Script:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iffalse_jumptextfaceplayer Route19EngineerText1
-	jumptextfaceplayer Route19EngineerText2
+	jumpthistextfaceplayer
+
+	text "The roadwork is"
+	line "finally finished."
+
+	para "Now I can go"
+	line "fishing again."
+	done
 
 SwimmerfDawnSeenText:
 	text "I'm disgusted by"
@@ -188,10 +199,6 @@ Route19Fisher1Text:
 	line "from Pallet Town."
 	done
 
-Route19Fisher1Text_RocksCleared:
-	text "I'm all sweaty."
-	line "Time for a swim!"
-	done
 
 Route19EngineerText1:
 	text "Who knows how long"
@@ -199,13 +206,6 @@ Route19EngineerText1:
 	cont "move this boulder…"
 	done
 
-Route19EngineerText2:
-	text "The roadwork is"
-	line "finally finished."
-
-	para "Now I can go"
-	line "fishing again."
-	done
 
 Route19SignText:
 	text "Route 19"

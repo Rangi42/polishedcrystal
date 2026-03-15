@@ -50,21 +50,38 @@ Museum2FTutorSeismicTossScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_Museum2FTutorRefused
+	jumpthisopenedtext
+
+	text "If you say so."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_Museum2FTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf!"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_Museum2FTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Seismic Toss!"
+	done
 
 Museum2FMoonStoneSignpostScript:
 	reanchormap
 	trainerpic METEORITE
 	waitbutton
 	closepokepic
-	jumptext Museum2FMoonStoneSignpostText
+	jumpthistext
+
+	text "Meteorite that"
+	line "fell on Mt.Moon."
+	cont "(Moon Stone)"
+	done
 
 Museum2FScientistText:
 	text "Meteorites struck"
@@ -150,10 +167,6 @@ Text_Museum2FTutorSeismicToss:
 	line "one Silver Leaf."
 	done
 
-Text_Museum2FTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf!"
-	done
 
 Text_Museum2FTutorQuestion:
 	text "Should I teach"
@@ -161,21 +174,8 @@ Text_Museum2FTutorQuestion:
 	cont "Seismic Toss?"
 	done
 
-Text_Museum2FTutorRefused:
-	text "If you say so."
-	done
 
-Text_Museum2FTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Seismic Toss!"
-	done
 
-Museum2FMoonStoneSignpostText:
-	text "Meteorite that"
-	line "fell on Mt.Moon."
-	cont "(Moon Stone)"
-	done
 
 Museum2FSpaceShuttleSignpostText:
 	text "Space Shuttle"

@@ -224,14 +224,16 @@ StackDexGraphics:
 
 	ld hl, PokedexObjLZ
 	ld de, vTiles0
-	lb bc, BANK(PokedexObjLZ), 31
+	lb bc, BANK(PokedexObjLZ), 30
 	call DecompressRequest2bpp
 
 	; Gender symbols
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $7d
-	lb bc, BANK(BattleExtrasGFX), 2
-	call DecompressRequest2bpp
+	ld de, wDex2bpp
+	farcall CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile $7d
+	ld de, wDex2bpp
+	lb bc, BANK(@), 2
+	call Get2bpp
 
 	; Set up a conversion table for Johto dex numbers.
 	ld a, BANK(wDexConversionTable)
@@ -278,9 +280,9 @@ StackDexGraphics:
 	ld bc, PHB_LCDCode.End - PHB_LCDCode
 	rst CopyBytes
 	ld a, LOW(wLCDPokedex)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDPokedex)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	ld a, CGB_POKEDEX
 	call GetCGBLayout
@@ -308,9 +310,9 @@ StackDexGraphics:
 	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	pop af
 	pop bc
@@ -445,7 +447,7 @@ Pokedex_RefreshOAM:
 	; Ability display
 	lb bc, 76, 100
 	lb de, 1, 15
-	lb hl, 0, $1d
+	lb hl, 0, '<BOLDH>'
 
 	ldh a, [hPokedexStatsCurAbil]
 	cp 2 ; 0/1/2 -> 1/2/H

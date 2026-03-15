@@ -166,6 +166,8 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
 	const SPRITEMOVEDATA_PLACEHOLDER_UP       ; 2e
 	const SPRITEMOVEDATA_MICROPHONE           ; 2f
+	const SPRITEMOVEDATA_BIG_HO_OH            ; 30
+	const SPRITEMOVEDATA_BIG_LUGIA            ; 31
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -203,6 +205,8 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
 	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
 	const SPRITEMOVEFN_MICROPHONE            ; 20
+	const SPRITEMOVEFN_BIG_HO_OH             ; 21
+	const SPRITEMOVEFN_BIG_LUGIA             ; 22
 DEF NUM_SPRITEMOVEFN EQU const_value
 
 ; _HandleStepType.StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
@@ -265,6 +269,8 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 1b
 	const OBJECT_ACTION_TINY_WINDOWS     ; 1c
 	const OBJECT_ACTION_MICROPHONE       ; 1d
+	const OBJECT_ACTION_BIG_HO_OH        ; 1e
+	const OBJECT_ACTION_BIG_LUGIA        ; 1f
 DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
@@ -330,6 +336,10 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_TINY_WINDOWS_5     ; 3a
 	const FACING_TINY_WINDOWS_6     ; 3b
 	const FACING_MICROPHONE         ; 3c
+	const FACING_BIG_HO_OH_1        ; 3d
+	const FACING_BIG_HO_OH_2        ; 3e
+	const FACING_BIG_LUGIA_1        ; 3f
+	const FACING_BIG_LUGIA_2        ; 40
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

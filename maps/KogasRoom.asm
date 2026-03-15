@@ -1,6 +1,7 @@
 KogasRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script KogasRoomEntranceTrigger
+	scene_script KogasRoomLockDoorScene, SCENE_KOGASROOM_LOCK_DOOR
+	scene_const SCENE_KOGASROOM_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, KogasRoomDoorCallback
@@ -18,7 +19,7 @@ KogasRoom_MapScriptHeader:
 	def_object_events
 	object_event  5,  7, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KogaScript, -1
 
-KogasRoomEntranceTrigger:
+KogasRoomLockDoorScene:
 	sdefer .Script
 	end
 
@@ -30,7 +31,7 @@ KogasRoomEntranceTrigger:
 	changeblock 4, 14, $2a
 	refreshmap
 	closetext
-	setscene $1
+	setscene SCENE_KOGASROOM_NOOP
 	setevent EVENT_KOGAS_ROOM_ENTRANCE_CLOSED
 	waitsfx
 	end

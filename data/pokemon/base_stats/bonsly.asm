@@ -1,5 +1,10 @@
-	db  50,  80,  95,  10,  10,  45 ; 290 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 290,  50,  80,  95,  10,  45,  10
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 325,  60,  85, 100,  10,  60,  10
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db ROCK, ROCK ; type
 	db 255 ; catch rate

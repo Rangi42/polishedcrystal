@@ -1,6 +1,7 @@
 BellchimeTrail_MapScriptHeader:
 	def_scene_scripts
-	scene_script BellchimeTrailStepDownTrigger
+	scene_script BellchimeTrailStepDownScene, SCENE_BELLCHIMETRAIL_STEP_DOWN
+	scene_const SCENE_BELLCHIMETRAIL_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
@@ -12,14 +13,10 @@ BellchimeTrail_MapScriptHeader:
 	warp_event 12,  4, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event 21,  9, 1, BellchimeTrailPanUpTrigger
+	coord_event 21,  9, SCENE_BELLCHIMETRAIL_NOOP, BellchimeTrailPanUpTrigger
 
 	def_bg_events
 	bg_event 22, 12, BGEVENT_JUMPTEXT, TinTowerSignText
-	bg_event  8,  3, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
-	bg_event  9,  3, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
-	bg_event  8,  6, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
-	bg_event  9,  6, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
 	bg_event 12,  3, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_BELLCHIME_TRAIL
 	bg_event 13,  3, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_BELLCHIME_TRAIL
 
@@ -29,7 +26,7 @@ BellchimeTrail_MapScriptHeader:
 	object_const_def
 	const BELLCHIMETRAIL_VALERIE
 
-BellchimeTrailStepDownTrigger:
+BellchimeTrailStepDownScene:
 	sdefer .Script
 	end
 
@@ -40,7 +37,7 @@ BellchimeTrailStepDownTrigger:
 	ifnotequal $15, .Done
 	applyonemovement PLAYER, step_down
 .Done
-	setscene $1
+	setscene SCENE_BELLCHIMETRAIL_NOOP
 	end
 
 SetupValerieMorningWalkCallback:
@@ -70,7 +67,7 @@ BellchimeTrailPanUpTrigger:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	setscene $0
+	setscene SCENE_BELLCHIMETRAIL_STEP_DOWN
 	warpfacing UP, TIN_TOWER_1F, 7, 15
 	end
 
@@ -88,11 +85,6 @@ TinTowerSignText:
 	para "A legendary #-"
 	line "mon is said to"
 	cont "roost here."
-	done
-
-BellchimeTrailWaterText:
-	text "The stream is too"
-	line "small for Surfing."
 	done
 
 BellchimeTrailValerieScript:

@@ -1,5 +1,7 @@
 Route34_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE34_NOOP
+	scene_const SCENE_ROUTE34_LYRA_DAYCARE
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route34EggCheckCallback
@@ -12,9 +14,9 @@ Route34_MapScriptHeader:
 	warp_event 13, 15, DAYCARE, 3
 
 	def_coord_events
-	coord_event  8, 17, 1, Route34LyraTrigger1
-	coord_event  9, 17, 1, Route34LyraTrigger2
-	coord_event 10, 17, 1, Route34LyraTrigger3
+	coord_event  8, 17, SCENE_ROUTE34_LYRA_DAYCARE, Route34LyraTrigger1
+	coord_event  9, 17, SCENE_ROUTE34_LYRA_DAYCARE, Route34LyraTrigger2
+	coord_event 10, 17, SCENE_ROUTE34_LYRA_DAYCARE, Route34LyraTrigger3
 
 	def_bg_events
 	bg_event 12,  6, BGEVENT_JUMPTEXT, Route34SignText
@@ -152,7 +154,7 @@ Route34LyraTrigger2:
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_LYRA
 	applyonemovement PLAYER, step_right
-	setscene $0
+	setscene SCENE_ROUTE34_NOOP
 	pause 15
 	warpcheck
 	warpsound

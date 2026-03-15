@@ -1673,7 +1673,7 @@ Pokedex_Bio:
 	hlcoord 12, 9
 	ld [hl], $7d
 .all_f
-	ld de, .AllString
+	ld de, .100PercentString
 	jr .print
 
 .unknown
@@ -1845,7 +1845,7 @@ Pokedex_Bio:
 	ld e, l
 	ret
 
-.AllString:
+.100PercentString:
 	db "100%@"
 
 INCLUDE "data/pokedex_bio.asm"

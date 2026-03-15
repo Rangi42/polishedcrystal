@@ -1,5 +1,8 @@
 Route42_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE42_NOOP
+	scene_const SCENE_ROUTE42_LYRA
+	scene_const SCENE_ROUTE42_SUICUNE
 
 	def_callbacks
 
@@ -12,12 +15,12 @@ Route42_MapScriptHeader:
 	warp_event 22, 10, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
-	coord_event 12,  6, 1, Route42LyraScript1
-	coord_event 12,  7, 1, Route42LyraScript2
-	coord_event 12,  8, 1, Route42LyraScript3
-	coord_event 12,  9, 1, Route42LyraScript4
-	coord_event 10,  6, 1, Route42LyraScript5
-	coord_event 24, 14, 2, Route42SuicuneScript
+	coord_event 12,  6, SCENE_ROUTE42_LYRA, Route42LyraScript1
+	coord_event 12,  7, SCENE_ROUTE42_LYRA, Route42LyraScript2
+	coord_event 12,  8, SCENE_ROUTE42_LYRA, Route42LyraScript3
+	coord_event 12,  9, SCENE_ROUTE42_LYRA, Route42LyraScript4
+	coord_event 10,  6, SCENE_ROUTE42_LYRA, Route42LyraScript5
+	coord_event 24, 14, SCENE_ROUTE42_SUICUNE, Route42SuicuneScript
 
 	def_bg_events
 	bg_event  4, 10, BGEVENT_JUMPTEXT, Route42Sign1Text
@@ -28,7 +31,7 @@ Route42_MapScriptHeader:
 	bg_event 22,  9, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_42
 
 	def_object_events
-	pokemon_event 26, 16, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, ClearText, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	pokemon_event 26, 16, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, ClearText, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	object_event 10,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	object_event 51,  9, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerBenjamin, -1
@@ -38,7 +41,7 @@ Route42_MapScriptHeader:
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN, PAL_NPC_PINK
 	fruittree_event 28, 16, FRUITTREE_ROUTE_42_2, GRN_APRICORN, PAL_NPC_GREEN
-	fruittree_event 29, 16, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_YELLOW
+	fruittree_event 29, 16, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_ENV_YELLOW
 	itemball_event  6,  4, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	itemball_event 33,  8, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
 
@@ -134,10 +137,10 @@ Route42LyraScript:
 	disappear ROUTE42_LYRA
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	iftruefwd .NoSuicune
-	setscene $2
+	setscene SCENE_ROUTE42_SUICUNE
 	sjumpfwd .Finish
 .NoSuicune
-	setscene $0
+	setscene SCENE_ROUTE42_NOOP
 .Finish
 	playmapmusic
 	end
@@ -149,9 +152,9 @@ Route42SuicuneScript:
 	applymovement ROUTE42_SUICUNE, Route42SuicuneMovement
 	disappear ROUTE42_SUICUNE
 	pause 10
-	setscene $0
+	setscene SCENE_ROUTE42_NOOP
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setmapscene ROUTE_36, $1
+	setmapscene ROUTE_36, SCENE_ROUTE36_SUICUNE
 	end
 
 TrainerFisherTully1:

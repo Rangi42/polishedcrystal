@@ -29,7 +29,7 @@ GoldenrodMuseum2F_MapScriptHeader:
 
 	def_object_events
 	object_event  4,  2, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FSightseerMScript, -1
-	pokemon_event 5,  2, SMEARGLE, SPRITEMOVEDATA_POKEMON, (1 << EVE) | (1 << NITE), PAL_NPC_BROWN, GoldenrodMuseum2FSmeargleText, -1
+	pokemon_event 5,  2, SMEARGLE, SPRITEMOVEDATA_POKEMON, (1 << EVE) | (1 << NITE), PAL_MON_BROWN, GoldenrodMuseum2FSmeargleText, -1
 	object_event  3,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FScientistScript, -1
 	object_event 11,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FTeacherScript, -1
 
@@ -233,14 +233,26 @@ GoldenrodMuseum2FTutorBatonPassScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext GoldenrodMuseum2FTutorRefused
+	jumpthisopenedtext
+
+	text "If you say so."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext GoldenrodMuseum2FTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf!"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext GoldenrodMuseum2FTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Baton Pass!"
+	done
 
 GoldenrodMuseum2FTutorIntroText:
 	text "Before the con-"
@@ -278,10 +290,6 @@ GoldenrodMuseum2FTutorBatonPassText:
 	line "Silver Leaf."
 	done
 
-GoldenrodMuseum2FTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf!"
-	done
 
 GoldenrodMuseum2FTutorQuestion:
 	text "Should I teach"
@@ -289,12 +297,4 @@ GoldenrodMuseum2FTutorQuestion:
 	cont "Baton Pass?"
 	done
 
-GoldenrodMuseum2FTutorRefused:
-	text "If you say so."
-	done
 
-GoldenrodMuseum2FTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Baton Pass!"
-	done

@@ -134,12 +134,17 @@ LakeOfRageLanceScript:
 	disappear LAKEOFRAGE_LANCE
 	clearevent EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	setevent EVENT_DECIDED_TO_HELP_LANCE
-	setmapscene MAHOGANY_MART_1F, $1
+	setmapscene MAHOGANY_MART_1F, SCENE_MAHOGANYMART1F_LANCE_UNCOVERS_STAIRS
 	end
 
 .Refused:
 	setevent EVENT_REFUSED_TO_HELP_LANCE_AT_LAKE_OF_RAGE
-	jumpopenedtext .Notext
+	jumpthisopenedtext
+
+	text "Oh… Well, if you"
+	line "change your mind,"
+	cont "please help me."
+	done
 
 .AskForHelpAgain:
 	faceplayer
@@ -206,11 +211,6 @@ LakeOfRageLanceScript:
 	line "for you, <PLAYER>."
 	done
 
-.Notext:
-	text "Oh… Well, if you"
-	line "change your mind,"
-	cont "please help me."
-	done
 
 .QuestionText:
 	text "Lance: Hm? Are you"

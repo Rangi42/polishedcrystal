@@ -1,5 +1,5 @@
-	db  20,  10, 230,  05,  10, 230 ; 505 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 505,  20,  10, 230,  10, 230,  05
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db BUG, ROCK ; type
 	db 190 ; catch rate

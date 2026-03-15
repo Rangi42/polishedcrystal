@@ -1,14 +1,17 @@
 PowerPlant_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_POWERPLANT_NOOP
+	scene_const SCENE_POWERPLANT_GUARD_GETS_PHONE_CALL
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, PowerPlantTurbinesCallback
 
 	def_warp_events
 	warp_event  2, 17, ROUTE_10_NORTH, 2
 	warp_event  3, 17, ROUTE_10_NORTH, 2
 
 	def_coord_events
-	coord_event  5, 12, 1, PowerPlantGuardPhoneScript
+	coord_event  5, 12, SCENE_POWERPLANT_GUARD_GETS_PHONE_CALL, PowerPlantGuardPhoneScript
 
 	def_bg_events
 	bg_event  0,  1, BGEVENT_JUMPSTD, difficultbookshelf
@@ -28,6 +31,16 @@ PowerPlant_MapScriptHeader:
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2
 
+PowerPlantTurbinesCallback:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalsefwd .Done
+	changeblock 12, 6, $12
+	changeblock 14, 6, $47
+	changeblock 12, 12, $16
+	changeblock 12, 14, $16
+.Done:
+	endcallback
+
 PowerPlantGuardPhoneScript:
 	playsound SFX_CALL
 	showemote EMOTE_SHOCK, POWERPLANT_OFFICER1, 15
@@ -42,7 +55,7 @@ PowerPlantGuardPhoneScript:
 	showtext PowerPlantOfficer1CouldIAskForYourCooperationText
 	turnobject PLAYER, DOWN
 	applymovement POWERPLANT_OFFICER1, PowerPlantOfficer1ReturnToPostMovement
-	setscene $0
+	setscene SCENE_POWERPLANT_NOOP
 	end
 
 PowerPlantOfficerScript:
@@ -50,27 +63,76 @@ PowerPlantOfficerScript:
 	iftrue_jumptextfaceplayer PowerPlantOfficer1HaveToBeefUpSecurityText
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	iftrue_jumptextfaceplayer PowerPlantOfficer1CouldIAskForYourCooperationText
-	jumptextfaceplayer PowerPlantOfficer1AThiefBrokeInText
+	jumpthistextfaceplayer
+
+	text "A thief broke into"
+	line "the Power Plant…"
+
+	para "What is the world"
+	line "coming to?"
+	done
 
 PowerPlantGymGuide1Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantGymGuide1GeneratorUpAndRunningText
-	jumptextfaceplayer PowerPlantGymGuide1SomeoneStoleAPartText
+	jumpthistextfaceplayer
+
+	text "Someone made off"
+	line "with a part that's"
+
+	para "essential for the"
+	line "generator."
+
+	para "Without it, the"
+	line "new generator's"
+	cont "useless!"
+	done
 
 PowerPlantGymGuide2Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantGymGuide2GeneratorIsRunningAgainText
-	jumptextfaceplayer PowerPlantGymGuide2PowerPlantUpAndRunningText
+	jumpthistextfaceplayer
+
+	text "This Power Plant"
+	line "had been abandoned"
+	cont "in the past."
+
+	para "We got it back up"
+	line "and running to"
+
+	para "provide power to"
+	line "the Magnet Train."
+	done
 
 PowerPlantOfficer2Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantOfficer2ManagerHasBeenCheerfulText
-	jumptextfaceplayer PowerPlantOfficer2ManagerHasBeenSadAndFuriousText
+	jumpthistextfaceplayer
+
+	text "The Power Plant's"
+	line "Manager is up"
+	cont "ahead."
+
+	para "But since someone"
+	line "wrecked the gener-"
+	cont "ator, he's been"
+	cont "both sad and"
+	cont "furious…"
+	done
 
 PowerPlantGymGuide4Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer PowerPlantGymGuide4WeCanGetMagnetTrainRunningText
-	jumptextfaceplayer PowerPlantGymGuide4MagnetTrainConsumesElectricityText
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "consumes a lot of"
+	cont "electricity."
+
+	para "It can't move if"
+	line "the new generator"
+	cont "isn't operating."
+	done
 
 PowerPlantManager:
 	faceplayer
@@ -86,22 +148,35 @@ PowerPlantManager:
 	closetext
 	setevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	clearevent EVENT_CERULEAN_GYM_ROCKET
-	setmapscene CERULEAN_GYM, $1
-	setscene $1
+	setmapscene CERULEAN_GYM, SCENE_CERULEANGYM_GRUNT_RUNS_OUT
+	setscene SCENE_POWERPLANT_GUARD_GETS_PHONE_CALL
 	end
 
 .FoundMachinePart:
 	writetext PowerPlantManagerThatsThePartText
-	promptbutton
+	waitbutton
+	closetext
 	takekeyitem MACHINE_PART
 	clearevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	setevent EVENT_ROUTE_24_ROCKET
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-	setmapscene ROUTE_10_NORTH, $1
+	setmapscene ROUTE_10_NORTH, SCENE_ROUTE10NORTH_NOOP
 	clearevent EVENT_LAWRENCE_ROUTE_10
-	writetext PowerPlantManagerTakeThisTMText
+	playsound SFX_SLOT_MACHINE_START
+	special FadeOutPalettes
+	special LoadMapPalettes
+	pause 10
+	special FadeInPalettes_EnableDynNoApply
+	changeblock 12, 6, $12
+	changeblock 14, 6, $47
+	changeblock 12, 12, $16
+	changeblock 12, 14, $16
+	refreshmap
+	pause 30
+	opentext
+	writetext PowerPlantManagerYouDeserveARewardText
 	waitbutton
 PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorZapCannon
@@ -116,14 +191,28 @@ PowerPlantTutorZapCannonScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_PowerPlantTutorRefused
+	jumpthisopenedtext
+
+	text "Have it your way."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_PowerPlantTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Sorry, but I can't"
+	line "teach Zap Cannon"
+	cont "without that Leaf!"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_PowerPlantTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows Zap Cannon!"
+
+	para "Wahahah!"
+	done
 
 PowerPlantOfficer1ApproachGymGuide2Movement:
 	step_right
@@ -140,13 +229,6 @@ PowerPlantOfficer1ReturnToPostMovement:
 	turn_head_down
 	step_end
 
-PowerPlantOfficer1AThiefBrokeInText:
-	text "A thief broke into"
-	line "the Power Plant…"
-
-	para "What is the world"
-	line "coming to?"
-	done
 
 PowerPlantOfficer1CeruleanShadyCharacterText:
 	text "I just got word"
@@ -170,17 +252,6 @@ PowerPlantOfficer1HaveToBeefUpSecurityText:
 	cont "presence."
 	done
 
-PowerPlantGymGuide1SomeoneStoleAPartText:
-	text "Someone made off"
-	line "with a part that's"
-
-	para "essential for the"
-	line "generator."
-
-	para "Without it, the"
-	line "new generator's"
-	cont "useless!"
-	done
 
 PowerPlantGymGuide1GeneratorUpAndRunningText:
 	text "The generator's up"
@@ -190,34 +261,12 @@ PowerPlantGymGuide1GeneratorUpAndRunningText:
 	line "to spare."
 	done
 
-PowerPlantGymGuide2PowerPlantUpAndRunningText:
-	text "This Power Plant"
-	line "had been abandoned"
-	cont "in the past."
-
-	para "We got it back up"
-	line "and running to"
-
-	para "provide power to"
-	line "the Magnet Train."
-	done
 
 PowerPlantGymGuide2GeneratorIsRunningAgainText:
 	text "The generator's"
 	line "running again!"
 	done
 
-PowerPlantOfficer2ManagerHasBeenSadAndFuriousText:
-	text "The Power Plant's"
-	line "Manager is up"
-	cont "ahead."
-
-	para "But since someone"
-	line "wrecked the gener-"
-	cont "ator, he's been"
-	cont "both sad and"
-	cont "furious…"
-	done
 
 PowerPlantOfficer2ManagerHasBeenCheerfulText:
 	text "Since the gener-"
@@ -227,15 +276,6 @@ PowerPlantOfficer2ManagerHasBeenCheerfulText:
 	line "been cheerful."
 	done
 
-PowerPlantGymGuide4MagnetTrainConsumesElectricityText:
-	text "The Magnet Train"
-	line "consumes a lot of"
-	cont "electricity."
-
-	para "It can't move if"
-	line "the new generator"
-	cont "isn't operating."
-	done
 
 PowerPlantGymGuide4WeCanGetMagnetTrainRunningText:
 	text "All right! We can"
@@ -282,13 +322,18 @@ PowerPlantManagerThatsThePartText:
 	para "That's the missing"
 	line "part from my be-"
 	cont "loved generator!"
-	cont "You found it?"
+
+	para "You found it?"
+	line "Wahah! Thanks!"
+
+	para "Let's get my"
+	line "generator up and"
+	cont "running!"
 	done
 
-PowerPlantManagerTakeThisTMText:
-	text "Wahah! Thanks!"
-	line "You deserve a"
-	cont "reward!"
+PowerPlantManagerYouDeserveARewardText:
+	text "You deserve a"
+	line "reward!"
 	done
 
 Text_PowerPlantTutorZapCannon:
@@ -308,11 +353,6 @@ Text_PowerPlantTutorZapCannon:
 	line "Silver Leaf."
 	done
 
-Text_PowerPlantTutorNoSilverLeaf:
-	text "Sorry, but I can't"
-	line "teach Zap Cannon"
-	cont "without that Leaf!"
-	done
 
 Text_PowerPlantTutorQuestion:
 	text "Should I teach"
@@ -320,16 +360,7 @@ Text_PowerPlantTutorQuestion:
 	cont "Zap Cannon?"
 	done
 
-Text_PowerPlantTutorRefused:
-	text "Have it your way."
-	done
 
-Text_PowerPlantTutorTaught:
-	text "Now your #mon"
-	line "knows Zap Cannon!"
-
-	para "Wahahah!"
-	done
 
 PowerPlantForestText:
 	text "Magneton behaves"
