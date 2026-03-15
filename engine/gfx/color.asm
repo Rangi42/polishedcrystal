@@ -991,7 +991,7 @@ LoadMapPals:
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
-	ret z
+	jr z, .done
 
 	; overcast maps have their own roof color table
 	farcall GetOvercastIndex
@@ -1009,7 +1009,7 @@ LoadMapPals:
 	cp ROUTE
 	jr z, .outside
 	cp ISOLATED
-	ret nz
+	jr nz, .done
 .outside
 	ld a, [wMapGroup]
 	ld hl, RoofPals
@@ -1034,7 +1034,33 @@ LoadMapPals:
 .morn_day
 	ld de, wBGPals1 palette PAL_BG_ROOF + 2
 	ld bc, 4
-	jmp FarCopyColorWRAM
+	call FarCopyColorWRAM
+	; fallthrough
+
+.done
+	call MaybeApplyHarshSunSaturationToMapBGPals
+	ret
+
+MaybeApplyHarshSunSaturationToMapBGPals:
+	ld a, [wCurWeather]
+	cp OW_WEATHER_HARSH_SUN
+	ret nz
+	ld a, [wCurPalWeatherArgState]
+	and a
+	ret z
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rWBK], a
+
+	ld hl, wBGPals1
+	ld b, 7 * PAL_COLORS
+	farcall ApplyHarshSunSaturationToPalette
+
+	pop af
+	ldh [rWBK], a
+	ret
 
 INCLUDE "data/maps/environment_colors.asm"
 

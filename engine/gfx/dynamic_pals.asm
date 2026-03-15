@@ -367,4 +367,90 @@ CheckDualObjectPals:
 	ld de, wOBPals1 + 2 palettes
 	jmp CopySpritePalHandler
 
+RefreshLoadedObjPals::
+; Re-copy every currently loaded OBJ palette (0-7) into wOBPals1.
+; Useful when palette states (weather/time/etc) change but palette indices don't.
+	push af
+	push bc
+	push de
+	push hl
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wUsedObjectPals)
+	ldh [rWBK], a
+
+	ld hl, wLoadedObjPal0
+	xor a
+	ld c, a ; c = palette slot index (0..7)
+.loop
+	ld a, [hl]
+	cp NO_PAL_LOADED
+	jr z, .next
+	push af
+	xor a
+	ld [wNeededPalType], a
+	assert NO_PAL_LOADED == -1
+	dec a
+	ld [wNeededMonPalLight], a
+	ld a, [wLoadedObjPalType]
+	ld b, c
+	inc b
+.type_shift
+	dec b
+	jr z, .type_shifted
+	rrca
+	jr .type_shift
+.type_shifted
+	and 1
+	jr z, .normal_pal
+	ld a, 1
+	ld [wNeededPalType], a
+	pop af
+	ld b, a
+	and $f
+	ld [wNeededPalIndex], a
+	ld a, b
+	swap a
+	and $f
+	ld b, a
+	ld a, [wNeededPalIndex]
+	cp b
+	jr z, .got_needed_pal
+	ld a, b
+	ld [wNeededMonPalLight], a
+	jr .got_needed_pal
+
+.normal_pal
+	pop af
+	ld [wNeededPalIndex], a
+
+.got_needed_pal
+	push bc
+	push hl
+	ld a, c
+	ld bc, 1 palettes
+	ld hl, wOBPals1
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+	call CopySpritePalHandler
+	pop bc
+
+.next
+	inc hl
+	inc c
+	ld a, c
+	cp 8
+	jr nz, .loop
+
+	pop af
+	ldh [rWBK], a
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret
+
 INCLUDE "data/maps/dual_obj_pals.asm"

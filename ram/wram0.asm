@@ -1412,12 +1412,14 @@ wPalWhiteState:: db
 wPalStates::
 wPrevPalStates::
 wPrevPalWeatherState:: db
+wPrevPalWeatherArgState:: db
 wPrevPalDarknessState:: db
 wPrevPalOvercastIndexState:: db
 wPrevPalTimeOfDayPalState:: db
 
 wCurPalStates::
 wCurPalWeatherState:: db
+wCurPalWeatherArgState:: db
 wCurPalDarknessState:: db
 wCurPalOvercastIndexState:: db
 wCurPalTimeOfDayPalState:: db
@@ -1425,7 +1427,7 @@ wCurPalTimeOfDayPalState:: db
 
 SECTION "Unused 2", WRAM0
 
-	ds 281 ; it's free real estate
+	ds 279 ; it's free real estate
 
 
 SECTION "Options", WRAM0
