@@ -123,7 +123,7 @@ GetRegisteredItem:
 	farcall ReanchorBGMap_NoOAMUpdate
 	call SafeUpdateSprites
 	call BGMapAnchorTopLeft
-	call LoadStandardOpaqueFont
+	call LoadStandardOpaqueFontSafely
 	ld hl, InvertedTextPalette
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld bc, 1 palettes
@@ -240,6 +240,26 @@ endr
 	db "◀ -<LNBRK>"
 	db "▶ -<LNBRK>"
 	db "▼ -@"
+
+LoadStandardOpaqueFontSafely:
+	ldh a, [hBGMapMode]
+	push af
+	ldh a, [hMapAnims]
+	push af
+	ldh a, [rVBK]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
+	ldh [rVBK], a
+	call LoadStandardOpaqueFont
+	pop af
+	ldh [rVBK], a
+	pop af
+	ldh [hMapAnims], a
+	pop af
+	ldh [hBGMapMode], a
+	ret
 
 InvertedTextPalette:
 INCLUDE "gfx/overworld/register_item.pal"

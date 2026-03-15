@@ -207,6 +207,26 @@ PlaceMapNameSign::
 	ret
 
 LoadMapNameSignGFX:
+	ldh a, [hBGMapMode]
+	push af
+	ldh a, [hMapAnims]
+	push af
+	ldh a, [rVBK]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
+	ldh [rVBK], a
+	call .LoadGFX
+	pop af
+	ldh [rVBK], a
+	pop af
+	ldh [hMapAnims], a
+	pop af
+	ldh [hBGMapMode], a
+	ret
+
+.LoadGFX
 	ld hl, wWeatherFlags
 	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	; load opaque space
@@ -264,7 +284,7 @@ LoadMapNameSignGFX:
 	ld c, a
 	ld b, 0
 	; de = start of vram buffer
-	ld hl, vTiles3 tile POPUP_MAP_NAME_START
+	ld hl, vTiles0 tile POPUP_MAP_NAME_START
 	add hl, bc
 	ld d, h
 	ld e, l
