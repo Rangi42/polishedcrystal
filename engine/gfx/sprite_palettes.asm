@@ -388,6 +388,116 @@ CalculateStates:
 	pop hl
 	ret
 
+ApplyHarshSunSaturationToPalette::
+; input: hl = color buffer, b = number of colors
+;        the correct WRAM bank for hl must already be selected
+.color_loop
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	push bc
+	call ApplyHarshSunSaturationToColor
+	pop bc
+	dec hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	inc hl
+	inc hl
+	dec b
+	jr nz, .color_loop
+	ret
+
+ApplyHarshSunSaturationToColor:
+; input: de = little-endian CGB color
+; output: de = harsh-sun-saturated CGB color
+; clobbers: a, c
+	; red = e & COLOR_RED
+	ld a, e
+	and COLOR_RED
+	cp 8
+	jr c, .red_low
+	add 8
+	jr .red_clamp
+.red_low
+	add 4
+.red_clamp
+	cp COLOR_CH_MAX + 1
+	jr c, .red_ok
+	ld a, COLOR_CH_MAX
+.red_ok
+	push af ; save red
+
+	; green = (e >> B_COLOR_GREEN) | ((d & COLOR_GREEN_HIGH) << (COLOR_CH_WIDTH - 2))
+	ld a, e
+rept B_COLOR_GREEN
+	srl a
+endr
+	ld c, a
+	ld a, d
+	and COLOR_GREEN_HIGH
+rept COLOR_CH_WIDTH - 2
+	add a
+endr
+	or c
+	cp 8
+	jr c, .green_low
+	add 6
+	jr .green_clamp
+.green_low
+	add 3
+.green_clamp
+	cp COLOR_CH_MAX + 1
+	jr c, .green_ok
+	ld a, COLOR_CH_MAX
+.green_ok
+	ld c, a ; c = green
+	pop af ; a = red
+
+	; low byte = red | ((green << B_COLOR_GREEN) & COLOR_GREEN_LOW)
+	push af
+	ld a, c
+rept B_COLOR_GREEN
+	add a
+endr
+	and COLOR_GREEN_LOW
+	ld e, a
+	pop af
+	or e
+	ld e, a
+
+	; blue = (d >> (B_COLOR_BLUE - 8)) & COLOR_CH_MAX
+	ld a, d
+rept B_COLOR_BLUE - 8
+	srl a
+endr
+	and COLOR_CH_MAX
+	cp 4
+	jr c, .blue_zero
+	sub 4
+	jr .blue_done
+.blue_zero
+	xor a
+.blue_done
+	ld d, a ; d = blue
+
+	; high byte = ((blue << (B_COLOR_BLUE - 8)) & COLOR_BLUE) | ((green >> (COLOR_CH_WIDTH - 2)) & COLOR_GREEN_HIGH)
+	ld a, d
+rept B_COLOR_BLUE - 8
+	add a
+endr
+	and COLOR_BLUE
+	ld d, a
+	ld a, c
+rept COLOR_CH_WIDTH - 2
+	srl a
+endr
+	and COLOR_GREEN_HIGH
+	or d
+	ld d, a
+	ret
+
 MaybeApplyHarshSunSaturationToPal:
 ; input: hl = palette data in wOBPals1 (1 palettes)
 	push af
@@ -409,110 +519,8 @@ MaybeApplyHarshSunSaturationToPal:
 	ld a, BANK(wOBPals1)
 	ldh [rWBK], a
 
-	ld b, 4 ; PAL_COLORS
-.color_loop
-	; load color (little endian)
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-
-	; red = e & $1f
-	ld a, e
-	and $1f
-	cp 8
-	jr c, .red_low
-	add 8
-	jr .red_clamp
-.red_low
-	add 4
-.red_clamp
-	cp 32
-	jr c, .red_ok
-	ld a, 31
-.red_ok
-	push af ; save red
-
-	; green = (e >> 5) | ((d & 3) << 3)
-	ld a, e
-	srl a
-	srl a
-	srl a
-	srl a
-	srl a
-	ld c, a
-	ld a, d
-	and $03
-	add a
-	add a
-	add a
-	or c
-	cp 8
-	jr c, .green_low
-	add 6
-	jr .green_clamp
-.green_low
-	add 3
-.green_clamp
-	cp 32
-	jr c, .green_ok
-	ld a, 31
-.green_ok
-	ld c, a ; c = green
-	pop af ; a = red
-
-	; low byte = red | ((green & 7) << 5)
-	push af
-	ld a, c
-	and $07
-	add a
-	add a
-	add a
-	add a
-	add a
-	ld e, a
-	pop af
-	or e
-	ld e, a
-
-	; blue = (d >> 2) & $1f
-	ld a, d
-	srl a
-	srl a
-	and $1f
-	cp 4
-	jr c, .blue_zero
-	sub 4
-	jr .blue_done
-.blue_zero
-	xor a
-.blue_done
-	ld d, a ; d = blue
-
-	; high byte = (blue << 2) | (green >> 3)
-	ld a, d
-	add a
-	add a
-	and $7c
-	ld d, a
-	ld a, c
-	srl a
-	srl a
-	srl a
-	and $03
-	or d
-	ld d, a
-
-	; write back (step hl back 2)
-	dec hl
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	inc hl
-	inc hl
-
-	dec b
-	jr nz, .color_loop
+	ld b, PAL_COLORS
+	call ApplyHarshSunSaturationToPalette
 
 	pop af
 	ldh [rWBK], a
