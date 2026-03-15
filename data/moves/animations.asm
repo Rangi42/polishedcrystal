@@ -1727,6 +1727,7 @@ BattleAnim_BulletPunch:
 	anim_ret
 
 BattleAnim_Wrap:
+	anim_jumpif $1, .ongoing
 	anim_1gfx ANIM_GFX_ROPE
 	anim_sound 0, 1, SFX_BIND
 	anim_obj ANIM_OBJ_BIND1, -16, 4,   8, 0, $0
@@ -1740,6 +1741,22 @@ BattleAnim_Wrap:
 	anim_incobj 2
 	anim_incobj 3
 	anim_wait 96
+	anim_ret
+
+.ongoing
+	anim_1gfx ANIM_GFX_ROPE
+	anim_sound 0, 1, SFX_BIND
+	anim_obj ANIM_OBJ_BIND1, -16, 4,   8, 0, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_BIND1, -16, 4,   7, 0, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_BIND1, -16, 4,   6, 0, $0
+	anim_wait 24
+	anim_sound 0, 1, SFX_BIND
+	anim_incobj 1
+	anim_incobj 2
+	anim_incobj 3
+	anim_wait 32
 	anim_ret
 
 BattleAnim_Confusion:

@@ -714,6 +714,8 @@ HandleWrap:
 	xor a
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
+	inc a
+	ld [wBattleAnimParam], a
 	predef PlayBattleAnim
 	call SwitchTurn
 
