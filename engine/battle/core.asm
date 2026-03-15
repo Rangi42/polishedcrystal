@@ -3877,7 +3877,8 @@ _HeldConfusionHealingItem:
 	jr nz, .ret_z
 	call DoHeldConfusionHealingItem
 	ret z
-	farcall ShowPotentialAbilityActivation
+	ld a, CUD_CHEW
+	farcall ShowPotentialSpecificAbilityActivation
 	call CurItemRecoveryAnim
 	or 1
 	ret
