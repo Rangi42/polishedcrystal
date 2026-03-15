@@ -505,6 +505,12 @@ MaybeApplyHarshSunSaturationToPal:
 	push de
 	push hl
 
+	; Some UI sprites (e.g. the Fly map icon) force a stable daytime palette.
+	; Don't layer harsh-sun saturation on top of that override.
+	ld a, [wPalFlags]
+	bit USE_DAYTIME_PAL_F, a
+	jp nz, .done
+
 	ld a, PALSTATE_WEATHER
 	call GetPalState
 	cp OW_WEATHER_HARSH_SUN
