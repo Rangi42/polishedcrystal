@@ -8914,6 +8914,15 @@ AutomaticBattleWeather:
 	and a
 	ret nz
 
+	ld a, [wCurWeather]
+	cp OW_WEATHER_HARSH_SUN
+	jr nz, .not_harsh_sun
+	lb de, WEATHER_SUN, SUNNY_DAY
+	ld hl, SunGotBrightText
+	jr .got_weather
+
+.not_harsh_sun
+
 	ld a, [wMapGroup]
 	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
 	jr nz, .not_rugged_road_or_snowtop_mountain
