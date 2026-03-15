@@ -78,6 +78,7 @@ _NewGame_FinishSetup:
 	farcall ClearSavedObjPals
 	ld a, -1
 	ld [wOvercastRandomDay], a
+	ld [wHarshSunRandomDay], a
 	call NewGame_ClearTileMapEtc
 	call WarnVBA
 	farcall SetInitialOptions
