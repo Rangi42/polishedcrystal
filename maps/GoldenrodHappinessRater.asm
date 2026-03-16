@@ -20,7 +20,17 @@ GoldenrodHappinessRater_MapScriptHeader:
 GoldenrodHappinessRaterTeacherScript:
 	faceplayer
 	opentext
-	special GetFirstPokemonHappiness
+
+	writetext GoldenrodHappinessRaterAskCheckText
+	yesorno
+	iffalse .NoCheckText ; if player doesn't want to check, skip check
+
+	special SelectMonForHappinessStatus
+	ifequal 0, .NoCheckText ; if player canceled selection, skip check
+	ifequal 1, .EggSelectedText ; if player selected an Egg, skip check
+
+	special GetSelectedPokemonHappiness
+
 	writetext GoldenrodHappinessRaterTeacherText
 	promptbutton
 	ifequalfwd 255, .AdoresYou                            ; 255
@@ -104,17 +114,38 @@ GoldenrodHappinessRaterTeacherScript:
 	cont "not used to you."
 	done
 
+.EggSelectedText:
+	jumpthisopenedtext
+
+	text "That's an EGG."
+	line "I can't judge"
+	cont "its happiness yet."
+	done
+
+.NoCheckText:
+	jumpthisopenedtext
+
+	text "Come back if you"
+	line "change your mind."
+	done
+
 GoldenrodHappinessRaterTeacherText:
+	text "Oh? Let me see"
+	line "your "
+	text_ram wStringBuffer3
+	text "…"
+	done
+
+GoldenrodHappinessRaterAskCheckText:
 	text "If you treat your"
 	line "#mon nicely,"
 
 	para "they will love you"
 	line "in return."
 
-	para "Oh? Let me see"
-	line "your "
-	text_ram wStringBuffer3
-	text "…"
+	para "Want me to check"
+	line "your #mon's"
+	cont "happiness?"
 	done
 
 GoldenrodHappinessRaterPokefanMText:
