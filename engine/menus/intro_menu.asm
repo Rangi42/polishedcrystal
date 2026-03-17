@@ -902,24 +902,24 @@ SoThisIsYouText:
 	text_end
 
 InitGenderGraphics:
-	ld hl, ChrisCardPic
+	ld hl, CalPic
 	ld de, vTiles2 tile $00
-	lb bc, BANK(ChrisCardPic), 5 * 7
-	call DecompressRequest2bpp
-	ld hl, KrisCardPic
+	ld b, BANK(CalPic)
+	call .DecompressRequestPicSlice
+	ld hl, CarriePic
 	ld de, vTiles2 tile $23
-	lb bc, BANK(KrisCardPic), 5 * 7
-	call DecompressRequest2bpp
-	ld hl, CrysCardPic
+	ld b, BANK(CarriePic)
+	call .DecompressRequestPicSlice
+	ld hl, JackyPic
 	ld de, vTiles2 tile $46
-	lb bc, BANK(CrysCardPic), 5 * 7
-	call DecompressRequest2bpp
+	ld b, BANK(JackyPic)
+	call .DecompressRequestPicSlice
 	ld a, 1
 	ldh [rVBK], a
-	ld hl, BetaCardPic
+	ld hl, EunaPic
 	ld de, vTiles5 tile $00
-	lb bc, BANK(BetaCardPic), 5 * 7
-	call DecompressRequest2bpp
+	ld b, BANK(EunaPic)
+	call .DecompressRequestPicSlice
 	xor a
 	ldh [rVBK], a
 
@@ -943,6 +943,14 @@ InitGenderGraphics:
 	hlcoord 15, 4
 	lb bc, 5, 7
 	predef_jump PlaceGraphic
+
+.DecompressRequestPicSlice:
+	push de
+	call FarDecompressWRA6InB
+	pop hl
+	ld de, wDecompressScratch tile $07
+	ld c, 5 * 7
+	jmp Request2bppInWRA6
 
 NamePlayer:
 	ld b, $1 ; player
