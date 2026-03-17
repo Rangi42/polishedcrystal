@@ -1209,6 +1209,7 @@ endr
 SpriteLimitExceeded:
 	push hl
 	push de
+
 	; initialize wSpriteOverlapCount to 0.
 	xor a
 	ld [wSpriteOverlapCount], a
@@ -1218,35 +1219,27 @@ SpriteLimitExceeded:
 	ld c, a
 	ld hl, wShadowOAM + (OAM_COUNT - 1) * OBJ_SIZE
 	ld e, l ; d is still set to HIGH(wShadowOAM)
-rept OAM_COUNT
+
+	ld b, OAM_COUNT
+.loop
 	; check if OAM y coord is <= (scanline + 16)
 	ld a, [hl]
 	sub c ; get distance between OAM y coord and (scanline + 16)
-	jr z, .continue_\@ ; Sprite starts on the scanline; continue
-	jr nc, .next_\@ ; OAM's y coord is below the scanline; skip sprite
-.continue_\@
+	jr z, .continue ; Sprite starts on the scanline; continue
+	jr nc, .next ; OAM's y coord is below the scanline; skip sprite
+.continue
 	; use two's complement to make a positive number
 	cpl
 	inc a
 	; check if distance <= TILE_WIDTH
 	cp TILE_WIDTH
-	jr nc, .next_\@ ; distance is greater than TILE_WIDTH; skip sprite
+	jr nc, .next ; distance is greater than TILE_WIDTH; skip sprite
 	ld a, [wSpriteOverlapCount]
 	inc a
-	cp 11 ; horizontal sprite limit + 1
 	ld [wSpriteOverlapCount], a
-	call nc, .delete_sprite ; for all sprites after the 10th, delete them
-.next_\@
-	ld hl, -OBJ_SIZE
-	add hl, de
-	ld e, l
-endr
-	pop de
-	pop hl
-	ret
-
-.delete_sprite
-	; hl = sprite to delete
+	cp 11 ; horizontal sprite limit + 1
+	jr c, .next
+	; for all sprites after the 10th, delete them
 	ld a, [hl]
 	ld [hl], OAM_YCOORD_HIDDEN
 	; convert OAM y coord to screen y coord
@@ -1259,6 +1252,15 @@ rept TILE_WIDTH - 1
 	inc l
 endr
 	dec [hl]
+.next
+	ld hl, -OBJ_SIZE
+	add hl, de
+	ld e, l
+	dec b
+	jr nz, .loop
+
+	pop de
+	pop hl
 	ret
 
 Lightning:
