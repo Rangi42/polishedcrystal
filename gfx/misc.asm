@@ -308,3 +308,4 @@ DexTilemap_Orange::      INCBIN "gfx/pokedex/orange.bin.lzp"
 SECTION "SGB Border Graphics", ROMX
 
 SGBBorderGFX:: INCBIN "gfx/sgb/sgb_border.4bpp.lzp"
+SGBBorderMap:: INCBIN "gfx/sgb/sgb_border.bin.lzp"
