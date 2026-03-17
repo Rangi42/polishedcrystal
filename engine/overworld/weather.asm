@@ -94,7 +94,6 @@ DoOverworldWeather:
 	jr .cooldown_cleanup
 .rain_cooldown
 	call DoRainFall
-	call RainSplashCleanup
 .cooldown_cleanup
 	; decrement the weather cooldown until it is 0
 	ld a, [wOverworldWeatherCooldown]
@@ -106,7 +105,7 @@ DoOverworldWeather:
 
 SpawnRandomWeatherFullScreen::
 	lb bc, SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX
-; fallthrough
+	; fallthrough
 SpawnRandomWeatherCoords::
 ; This is used to randomize the weather's starting positions on the screen from
 ; randomize weather sprite x/y coords from (0,0) to (b,c)
@@ -207,7 +206,7 @@ rept 2
 	call ScanForEmptyOAM
 	call nc, SpawnSnowFlake
 endr
-; fallthrough
+	; fallthrough
 DoSnowFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -319,61 +318,6 @@ DoSnowFall:
 	ld [hli], a
 	ld [hl], a
 	jr .next
-
-DoOverworldRain:
-	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
-	cp PAL_OW_RAIN
-	jr z, .continue
-	farcall LoadWeatherPal
-.continue
-	ld a, [wCurWeather]
-	cp OW_WEATHER_THUNDERSTORM
-	jr nz, .no_lightning
-
-	; 0.5% chance of lightning
-	call Random
-	cp 1 percent
-	jr nc, .no_lightning
-	call Random
-	cp 50 percent
-	call c, Lightning
-.no_lightning
-rept 3
-	; spawn three raindrops
-	call ScanForEmptyOAM
-	call nc, SpawnRainDrop
-endr
-	call DoRainFall
-; fallthrough
-RainSplashCleanup:
-	; we leave rain splashs on screen for approx 3.75fps.
-	; we have to ignore the LSB as we only run weather every odd frame.
-	ld a, [wOverworldWeatherTimer]
-	and %1110
-	ret nz
-
-	ld de, wShadowOAM
-	ld b, OAM_COUNT
-.loop ; for (wShadowOAM -> wShadowOAMEnd)
-	; if sprite tile is not a rain splash, skip it
-	ld hl, OAMA_TILEID
-	add hl, de
-	ld a, [hli]
-	cp RAINSPLASH_TILE
-	jr nz, .next
-
-	; hide the rain splash
-	ld hl, OAMA_Y
-	add hl, de
-	ld [hl], OAM_YCOORD_HIDDEN ; offscreen
-.next
-	ld hl, OBJ_SIZE
-	add hl, de
-	ld d, h
-	ld e, l
-	dec b
-	jr nz, .loop
-	ret
 
 SpawnSnowFlake:
 	; 40% chance of spawning a snowflake.
@@ -551,6 +495,30 @@ ClearWeather:
 	ld e, l
 	jr .loop
 
+DoOverworldRain:
+	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
+	cp PAL_OW_RAIN
+	jr z, .continue
+	farcall LoadWeatherPal
+.continue
+	ld a, [wCurWeather]
+	cp OW_WEATHER_THUNDERSTORM
+	jr nz, .no_lightning
+
+	; 0.5% chance of lightning
+	call Random
+	cp 1 percent
+	jr nc, .no_lightning
+	call Random
+	cp 50 percent
+	call c, Lightning
+.no_lightning
+rept 3
+	; spawn three raindrops
+	call ScanForEmptyOAM
+	call nc, SpawnRainDrop
+endr
+	; fallthrough
 DoRainFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -568,7 +536,7 @@ DoRainFall:
 	add hl, de
 	ld a, [hli]
 	cp RAINSPLASH_TILE
-	jr z, .update_splash
+	jmp z, .update_splash
 
 	; if the sprite is not a raindrop, skip it
 	cp RAINDROP_TILE
@@ -652,6 +620,34 @@ DoRainFall:
 	ld e, l
 	dec b
 	jr nz, .loop
+
+	; we leave rain splashs on screen for approx 3.75fps.
+	; we have to ignore the LSB as we only run weather every odd frame.
+	ld a, [wOverworldWeatherTimer]
+	and %1110
+	ret nz
+
+	ld de, wShadowOAM
+	ld b, OAM_COUNT
+.splash_loop ; for (wShadowOAM -> wShadowOAMEnd)
+	; if sprite tile is not a rain splash, skip it
+	ld hl, OAMA_TILEID
+	add hl, de
+	ld a, [hli]
+	cp RAINSPLASH_TILE
+	jr nz, .splash_next
+
+	; hide the rain splash
+	ld hl, OAMA_Y
+	add hl, de
+	ld [hl], OAM_YCOORD_HIDDEN ; offscreen
+.splash_next
+	ld hl, OBJ_SIZE
+	add hl, de
+	ld d, h
+	ld e, l
+	dec b
+	jr nz, .splash_loop
 	ret
 
 .despawn
@@ -721,7 +717,7 @@ rept 3
 	call ScanForEmptyOAM
 	call nc, SpawnSandDrop
 endr
-; fallthrough
+	; fallthrough
 DoSandFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -876,7 +872,7 @@ DoOverworldCherryBlossoms:
 .continue
 	call ScanForEmptyOAM
 	call nc, SpawnCherryBlossom
-; fallthrough
+	; fallthrough
 DoCherryBlossomFall:
 	ld de, wShadowOAM
 	ld h, d
