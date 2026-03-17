@@ -1225,7 +1225,6 @@ endr
 SpriteLimitExceeded:
 	push hl
 	push de
-	push bc
 	push af
 	; initliaze wSpriteOverlapCount to 0.
 	xor a
@@ -1259,7 +1258,10 @@ rept OAM_COUNT
 	add hl, de
 	ld e, l
 endr
-	jmp PopAFBCDEHL
+	pop af
+	pop de
+	pop hl
+	ret
 
 .delete_sprite
 	; hl = sprite to delete
