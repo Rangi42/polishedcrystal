@@ -1184,56 +1184,48 @@ WeatherSpriteLimitCheck:
 	push af
 	ld a, BANK(wWeatherScratch)
 	ldh [rWBK], a
-	xor a
 
-	; clear wWeatherScratch
+	; Write (sprite limit + 1) to wWeatherScratch.
+	; Call SpriteLimitExceeded if the sprite overlap count reaches zero.
+	ld a, 11
 	ld hl, wWeatherScratch
 	ld bc, SCREEN_HEIGHT_PX
+	push hl
 	rst ByteFill
+	pop hl
 
-	ld hl, wShadowOAM
-	ld d, h
-	ld e, l
-	ld b, OAM_COUNT
+	ld de, wShadowOAM
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
-	ld a, [hl]
+	ld a, [de]
+
 	; convert OAM y cord to screen y cord
-	sub TILE_WIDTH * 2
-	jr c, .next ; OAM is above the screen
+	sub TILE_WIDTH * 2 ; underflows if OAM is above the screen
 	cp SCREEN_HEIGHT_PX + 1
-	jr nc, .next ; OAM is below the screen
+	jr nc, .next ; OAM is below the screen, or above after underflow
+
 	; incerement bytes in wWeatherScratch associated with this sprite
-	ld h, HIGH(wWeatherScratch)
 	ld l, a
 rept TILE_WIDTH - 1
-	inc [hl]
+	dec [hl]
+	call z, SpriteLimitExceeded
 	inc l
 endr
-	inc [hl]
+	dec [hl]
+	call z, SpriteLimitExceeded
 .next
-	ld hl, OBJ_SIZE
-	add hl, de
-	ld e, l
-	dec b
+	ld a, OBJ_SIZE
+	add e
+	ld e, a
+	cp LOW(wShadowOAMEnd)
 	jr nz, .loop
-
-	; scan wWeatherScratch for scanlines with more than 10 sprites
-	ld hl, wWeatherScratch
-	ld a, 10 ; horizontal sprite limit
-rept SCREEN_HEIGHT_PX - 1
-	cp [hl]
-	call c, SpriteLimitExceeded
-	inc hl
-endr
-	cp [hl]
-	call c, SpriteLimitExceeded
-
 	pop af
 	ldh [rWBK], a
 	ret
 
 SpriteLimitExceeded:
 	push hl
+	push de
+	push bc
 	push af
 	; initliaze wSpriteOverlapCount to 0.
 	xor a
@@ -1267,9 +1259,7 @@ rept OAM_COUNT
 	add hl, de
 	ld e, l
 endr
-	pop af
-	pop hl
-	ret
+	jmp PopAFBCDEHL
 
 .delete_sprite
 	; hl = sprite to delete
