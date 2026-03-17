@@ -1225,7 +1225,6 @@ endr
 SpriteLimitExceeded:
 	push hl
 	push de
-	push af
 	; initialize wSpriteOverlapCount to 0.
 	xor a
 	ld [wSpriteOverlapCount], a
@@ -1258,7 +1257,6 @@ rept OAM_COUNT
 	add hl, de
 	ld e, l
 endr
-	pop af
 	pop de
 	pop hl
 	ret
