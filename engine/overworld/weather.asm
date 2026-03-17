@@ -49,7 +49,7 @@ DoOverworldWeather:
 	jr nz, .on_cooldown
 
 	ld a, [wCurWeather]
-	ld hl, .DoWeather_Jumptable
+	ld hl, .DoOverworldWeather_Jumptable
 	call JumpTable
 .done
 	; we are done, increment the weather delay rolling counter (0->255->0)
@@ -59,7 +59,7 @@ DoOverworldWeather:
 	call WeatherSpriteLimitCheck
 	jmp PopBCDEHL
 
-.DoWeather_Jumptable:
+.DoOverworldWeather_Jumptable:
 	table_width 2
 	dw DoNothing
 	dw DoOverworldRain
@@ -71,30 +71,8 @@ DoOverworldWeather:
 
 .on_cooldown
 	ld a, [wPrevWeather]
-	call StackJumpTable
-
-.Cooldown_Jumptable:
-	table_width 2
-	dw .cooldown_cleanup
-	dw .rain_cooldown
-	dw .snow_cooldown
-	dw .rain_cooldown
-	dw .sand_cooldown
-	dw .cherry_blossoms_cooldown
-	assert_table_length NUM_OW_WEATHERS + 1
-
-.cherry_blossoms_cooldown
-	call DoCherryBlossomFall
-	jr .cooldown_cleanup
-.sand_cooldown
-	call DoSandFall
-	jr .cooldown_cleanup
-.snow_cooldown
-	call DoSnowFall
-	jr .cooldown_cleanup
-.rain_cooldown
-	call DoRainFall
-.cooldown_cleanup
+	ld hl, .DoWeather_Jumptable
+	call JumpTable
 	; decrement the weather cooldown until it is 0
 	ld a, [wOverworldWeatherCooldown]
 	dec a
@@ -102,6 +80,16 @@ DoOverworldWeather:
 	call ClearWeather
 	call LoadWeatherGraphics
 	jr .done
+
+.DoWeather_Jumptable:
+	table_width 2
+	dw DoNothing
+	dw DoRainFall
+	dw DoSnowFall
+	dw DoRainFall
+	dw DoSandFall
+	dw DoCherryBlossomFall
+	assert_table_length NUM_OW_WEATHERS + 1
 
 SpawnRandomWeatherFullScreen::
 	lb bc, SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX
