@@ -50,8 +50,8 @@ DEF MAIL_MSG_LENGTH    EQU $20
 DEF MAILBOX_CAPACITY   EQU 10
 DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 
-; used item effects
-; ItemEffects indexes (see data/items/effects.asm)
+; used item effects (see data/items/effects.asm)
+; _DoItemEffect.ItemEffectRoutines values (see engine/items/item_effects.asm)
 	const_def
 	const ITEMEFFECT_NONE
 	const ITEMEFFECT_BALL
@@ -81,8 +81,8 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const ITEMEFFECT_ABILITY_PATCH
 DEF NUM_ITEM_EFFECTS EQU const_value
 
-; key item effects
-; KeyItemEffects indexes (see data/items/key_effects.asm)
+; key item effects (see data/items/key_effects.asm)
+; DoKeyItemEffect.KeyItemEffectRoutines values (see engine/items/item_effects.asm)
 	const_def
 	const KEYITEMEFFECT_NONE
 	const KEYITEMEFFECT_BICYCLE
@@ -102,7 +102,7 @@ DEF NUM_ITEM_EFFECTS EQU const_value
 	const KEYITEMEFFECT_BASEMENT_KEY
 DEF NUM_KEY_ITEM_EFFECTS EQU const_value
 
-; held item effects
+; held item effects (see data/items/attributes.asm)
 	const_def
 
 	const HELD_NONE
