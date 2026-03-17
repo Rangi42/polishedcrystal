@@ -1198,12 +1198,12 @@ WeatherSpriteLimitCheck:
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
 	ld a, [de]
 
-	; convert OAM y cord to screen y cord
+	; convert OAM y coord to screen y coord
 	sub TILE_WIDTH * 2 ; underflows if OAM is above the screen
 	cp SCREEN_HEIGHT_PX + 1
 	jr nc, .next ; OAM is below the screen, or above after underflow
 
-	; incerement bytes in wWeatherScratch associated with this sprite
+	; increment bytes in wWeatherScratch associated with this sprite
 	ld l, a
 rept TILE_WIDTH - 1
 	dec [hl]
@@ -1226,21 +1226,21 @@ SpriteLimitExceeded:
 	push hl
 	push de
 	push af
-	; initliaze wSpriteOverlapCount to 0.
+	; initialize wSpriteOverlapCount to 0.
 	xor a
 	ld [wSpriteOverlapCount], a
 	ld a, l
-	; convert screen y cord to OAM y cord
+	; convert screen y coord to OAM y coord
 	add TILE_WIDTH * 2
 	ld c, a
 	ld hl, wShadowOAM + (OAM_COUNT - 1) * OBJ_SIZE
 	ld e, l ; d is still set to HIGH(wShadowOAM)
 rept OAM_COUNT
-	; check if OAM y cord is <= (scanline + 16)
+	; check if OAM y coord is <= (scanline + 16)
 	ld a, [hl]
-	sub c ; get distance between OAM y cord and (scanline + 16)
+	sub c ; get distance between OAM y coord and (scanline + 16)
 	jr z, .continue_\@ ; Sprite starts on the scanline; continue
-	jr nc, .next_\@ ; OAM's y cord is below the scanline; skip sprite
+	jr nc, .next_\@ ; OAM's y coord is below the scanline; skip sprite
 .continue_\@
 	; use two's complement to make a positive number
 	cpl
@@ -1267,9 +1267,9 @@ endr
 	; hl = sprite to delete
 	ld a, [hl]
 	ld [hl], OAM_YCOORD_HIDDEN
-	; convert OAM y cord to screen y cord
+	; convert OAM y coord to screen y coord
 	sub TILE_WIDTH * 2
-	; decerement bytes in wWeatherScratch associated with this sprite
+	; decrement bytes in wWeatherScratch associated with this sprite
 	ld h, HIGH(wWeatherScratch)
 	ld l, a
 rept TILE_WIDTH - 1
