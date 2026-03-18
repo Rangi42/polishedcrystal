@@ -2,6 +2,7 @@ CutGrassBlockPointers:
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
 	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_COAST, .johto_coast
 	dbw TILESET_JOHTO_OUTLANDS, .johto_outlands
 	dbw TILESET_JOHTO_ANCIENT, .johto_ancient
 	dbw TILESET_KANTO, .kanto
@@ -20,6 +21,7 @@ CutGrassBlockPointers:
 .johto_traditional
 	db $c1, $02
 .johto_modern
+.johto_coast
 .johto_ancient
 .valencia_island
 	db $03, $02

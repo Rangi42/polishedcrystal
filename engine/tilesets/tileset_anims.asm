@@ -33,6 +33,7 @@ _AnimateTileset::
 
 TilesetJohtoTraditionalAnim::
 TilesetJohtoModernAnim::
+TilesetJohtoCoastAnim::
 TilesetJohtoOutlandsAnim::
 TilesetJohtoAncientAnim::
 TilesetBattleTowerOutsideAnim::
