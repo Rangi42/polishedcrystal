@@ -46,7 +46,7 @@ TilesetEcruteakShrineAnim::
 	dw vTiles2 tile $1c, AnimateRainTiles
 	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
-	dw vTiles2 tile $35, WriteTileToBuffer
+	dw vTiles2 tile $34, WriteTileToBuffer
 	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  DoNothing
@@ -54,7 +54,7 @@ TilesetEcruteakShrineAnim::
 	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  DoNothing
-	dw vTiles2 tile $35, ReadTileFromBuffer
+	dw vTiles2 tile $34, ReadTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 TilesetKantoAnim::
