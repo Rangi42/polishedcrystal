@@ -76,6 +76,7 @@ TilesetIndigoPlateauAnim::
 	dw vTiles2 tile $11, ScrollTileDown
 	dw vTiles2 tile $12, ScrollTileLeft
 	dw vTiles2 tile $13, ScrollTileRight
+	dw vTiles2 tile $6b, AnimateFountainTile
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
