@@ -749,7 +749,7 @@ TowerPillarTilePointer10: dw vTiles2 tile $5f, TowerPillarTileFrames + 5 * 9 til
 
 TowerPillarTileFrames:
 INCBIN "gfx/tilesets/animations/tower_pillar.2bpp"
-	
+
 AnimateWhirlpoolTiles:
 	ld hl, sp + 0
 	ld b, h
