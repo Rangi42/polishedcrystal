@@ -2748,9 +2748,11 @@ BattleCommand_applydamage:
 
 .enduring_with_item
 	push af
+	call SwitchTurn
+	farcall ItemRecoveryAnim
+	call SwitchTurn
 	call GetOpponentItem
 	call GetCurItemName
-
 	ld hl, HungOnText
 	call StdBattleTextbox
 	pop af
