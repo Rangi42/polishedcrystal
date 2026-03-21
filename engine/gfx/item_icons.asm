@@ -61,24 +61,14 @@ LoadItemIconForOverworld::
 _LoadItemOrKeyItemIconForOverworld:
 	call _SetupLoadItemOrKeyItemIcon
 DecompressItemIconForOverworld::
-	push bc
-	call FarDecompressWRA6InB
-	call WhiteOutDecompressedItemIconCorners
-	pop bc
-	ld hl, vTiles0 tile '▲'
-	ld de, wDecompressScratch
-	jmp Request2bppInWRA6
+	ld de, vTiles0 tile '▲'
+	jmp DecompressRequest2bpp
 
 LoadItemIconForSummaryScreen::
 	ld hl, ItemIconPointers
 	call _SetupLoadItemOrKeyItemIcon
-	push bc
-	call FarDecompressWRA6InB
-	call WhiteOutDecompressedItemIconCorners
-	pop bc
-	ld hl, vTiles2 tile SUMMARY_TILE_ITEM
-	ld de, wDecompressScratch
-	jmp Request2bppInWRA6
+	ld de, vTiles2 tile SUMMARY_TILE_ITEM
+	jmp DecompressRequest2bpp
 
 LoadTMHMIcon::
 	ld hl, TMHMIcon
@@ -93,8 +83,13 @@ ClearTMHMIcon::
 _LoadItemOrKeyItemIcon:
 	call _SetupLoadItemOrKeyItemIcon
 _LoadItemIcon:
-	ld de, vTiles2 tile $1e
-	jmp DecompressRequest2bpp
+	push bc
+	call FarDecompressWRA6InB
+	call BlackOutDecompressedItemIconCorners
+	pop bc
+	ld hl, vTiles2 tile $1e
+	ld de, wDecompressScratch
+	jmp Request2bppInWRA6
 
 _SetupLoadItemOrKeyItemIcon:
 	ld c, a
@@ -113,13 +108,13 @@ _SetupLoadItemOrKeyItemIcon:
 WhiteOutDecompressedItemIconCorners:
 	call RunFunctionInWRA6
 .Function:
-	lb bc, %01111111, %11111110
-	ld hl, wDecompressScratch tile 0
-	ld a, [hl]
-	and b
-	ld [hli], a
-	ld a, [hl]
-	and b
+	lb bc, %01111111, %11111110 ; one mask in b, one in c
+	ld hl, wDecompressScratch tile 0 ; load the top left corner
+	ld a, [hl] ; top left corner in a
+	and b ; if b is defined (the mask). does this mask it?
+	ld [hli], a ; something about increasing hl? Not sure
+	ld a, [hl] ; then put the increased hl back in a
+	and b ; and mask it again?
 	ld [hl], a
 	ld hl, wDecompressScratch tile 2
 	ld a, [hl]
@@ -141,6 +136,40 @@ WhiteOutDecompressedItemIconCorners:
 	ld [hli], a
 	ld a, [hl]
 	and c
+	ld [hl], a
+	ret
+
+BlackOutDecompressedItemIconCorners:
+	call RunFunctionInWRA6
+.Function:
+	lb bc, %10000000, %00000001 
+	ld hl, wDecompressScratch tile 0 
+	ld a, [hl]
+	or b 
+	ld [hli], a
+	ld a, [hl]
+	or b 
+	ld [hl], a
+		ld hl, wDecompressScratch tile 2
+	ld a, [hl]
+	or c
+	ld [hli], a
+	ld a, [hl]
+	or c
+	ld [hl], a
+	ld hl, wDecompressScratch tile 6 + 7 * 2
+	ld a, [hl]
+	or b
+	ld [hli], a
+	ld a, [hl]
+	or b
+	ld [hl], a
+	ld hl, wDecompressScratch tile 8 + 7 * 2
+	ld a, [hl]
+	or c
+	ld [hli], a
+	ld a, [hl]
+	or c
 	ld [hl], a
 	ret
 
