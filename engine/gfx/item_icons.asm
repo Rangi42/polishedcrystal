@@ -105,40 +105,6 @@ _SetupLoadItemOrKeyItemIcon:
 	ld c, 9
 	ret
 
-WhiteOutDecompressedItemIconCorners:
-	call RunFunctionInWRA6
-.Function:
-	lb bc, %01111111, %11111110 ; one mask in b, one in c
-	ld hl, wDecompressScratch tile 0 ; load the top left corner
-	ld a, [hl] ; top left corner in a
-	and b ; if b is defined (the mask). does this mask it?
-	ld [hli], a ; something about increasing hl? Not sure
-	ld a, [hl] ; then put the increased hl back in a
-	and b ; and mask it again?
-	ld [hl], a
-	ld hl, wDecompressScratch tile 2
-	ld a, [hl]
-	and c
-	ld [hli], a
-	ld a, [hl]
-	and c
-	ld [hl], a
-	ld hl, wDecompressScratch tile 6 + 7 * 2
-	ld a, [hl]
-	and b
-	ld [hli], a
-	ld a, [hl]
-	and b
-	ld [hl], a
-	ld hl, wDecompressScratch tile 8 + 7 * 2
-	ld a, [hl]
-	and c
-	ld [hli], a
-	ld a, [hl]
-	and c
-	ld [hl], a
-	ret
-
 BlackOutDecompressedItemIconCorners:
 	call RunFunctionInWRA6
 .Function:
