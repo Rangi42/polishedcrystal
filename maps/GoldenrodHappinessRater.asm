@@ -26,7 +26,7 @@ GoldenrodHappinessRaterTeacherScript:
 	iffalse .NoCheckText ; if player doesn't want to check, skip check
 
 	special SelectMonForHappinessStatus
-	ifequal 0, .NoCheckText ; if player canceled selection, skip check
+	iffalse, .NoCheckText ; if player canceled selection, skip check
 	ifequal 1, .EggSelectedText ; if player selected an Egg, skip check
 
 	special GetSelectedPokemonHappiness
