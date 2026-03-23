@@ -109,14 +109,14 @@ BlackOutDecompressedItemIconCorners:
 	call RunFunctionInWRA6
 .Function:
 	lb bc, %10000000, %00000001 
-	ld hl, wDecompressScratch tile 0 
+	ld hl, wDecompressScratch tile 0
 	ld a, [hl]
 	or b 
 	ld [hli], a
 	ld a, [hl]
 	or b 
 	ld [hl], a
-		ld hl, wDecompressScratch tile 2
+	ld hl, wDecompressScratch tile 2
 	ld a, [hl]
 	or c
 	ld [hli], a
