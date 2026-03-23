@@ -689,8 +689,9 @@ INCLUDE "gfx/stats/hp_bars.pal"
 _CGB_Evolution:
 	ld de, wBGPals1
 	ld a, c
-	and a
-	jr z, .pokemon
+	push af
+	dec a
+	jr nz, .pokemon
 	ld hl, DarkGrayPalette
 	call LoadOnePalette
 	jr .got_palette
@@ -725,7 +726,46 @@ _CGB_Evolution:
 
 .got_palette
 	call WipeAttrMap
+
+	pop af
+	cp 2 ; egg hatch
+	jmp z, _CGB_FinishLayout
+
+	ld hl, SpotlightPalette
+	ld de, wBGPals1 palette 1
+	call LoadOnePalette
+
+	hlcoord 0, 0, wAttrmap
+	lb bc, 12, 20
+	ld a, $1
+	call FillBoxWithByte
+
+	hlcoord 7, 2, wAttrmap
+	lb bc, 7, 7
+	xor a
+	call FillBoxWithByte
+
+	ld a, $1 | BG_XFLIP
+	ldcoord_a 13, 0, wAttrmap
+	ldcoord_a 13, 1, wAttrmap
+	ldcoord_a 14, 2, wAttrmap
+	ldcoord_a 14, 3, wAttrmap
+	ldcoord_a 14, 4, wAttrmap
+	ldcoord_a 14, 5, wAttrmap
+	ldcoord_a 15, 6, wAttrmap
+	ldcoord_a 15, 7, wAttrmap
+	ldcoord_a 15, 8, wAttrmap
+	ldcoord_a 14, 8, wAttrmap
+	ldcoord_a 11, 9, wAttrmap
+	ldcoord_a 12, 9, wAttrmap
+	ldcoord_a 13, 9, wAttrmap
+	ldcoord_a 14, 9, wAttrmap
+	ldcoord_a 15, 9, wAttrmap
+
 	jmp _CGB_FinishLayout
+
+SpotlightPalette:
+INCLUDE "gfx/evo/spotlight.pal"
 
 _CGB_BuyMenu:
 	ld a, [wMartType]

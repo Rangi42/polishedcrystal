@@ -25,7 +25,7 @@ CeladonCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  9, 18, BGEVENT_JUMPTEXT, CeladonCitySignText
+	bg_event 11, 18, BGEVENT_JUMPTEXT, CeladonCitySignText
 	bg_event 15, 31, BGEVENT_JUMPTEXT, CeladonGymSignText
 	bg_event  3, 31, BGEVENT_JUMPTEXT, CeladonUniversitySignText
 	bg_event 10,  9, BGEVENT_JUMPTEXT, CeladonCityDeptStoreSignText
@@ -40,7 +40,7 @@ CeladonCity_MapScriptHeader:
 	bg_event 41, 21, BGEVENT_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
 	def_object_events
-	object_event  5, 16, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityScript, -1
+	object_event  4, 15, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityScript, -1
 	object_event 30, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityFisherText, -1
 	pokemon_event 31, 11, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, CeladonCityPoliwrathText, -1
 	object_event 24, 24, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityTeacher1Text, -1

@@ -149,7 +149,7 @@ VBlank0::
 	call UpdateCGBPals ; 9 [skip] / 594 [fire] M-cycles worst case
 
 	 ; 9 [skip] / ~576 [fire] M-cycles worst case
-	 ; only fires during HDMATransferToWRAMBank3 inside StackCallInSafeGFXMode, 
+	 ; only fires during HDMATransferToWRAMBank3 inside StackCallInSafeGFXMode,
 	 ; which zeroes hBGMapMode and hMapAnims.
 	call DMATransfer
 

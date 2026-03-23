@@ -106,103 +106,16 @@ wTempoAdjustment:: db
 wNoiseHit:: db
 
 
-SECTION "WRAM 0", WRAM0
+SECTION "Video", WRAM0
 
-wMonType:: db
+wBGMapBuffer:: ds 48
+wBGMapBufferEnd::
+wBGMapPalBuffer:: ds 48
+wBGMapPalBufferEnd::
+wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
-wCurSpecies::
-wCurMove::
-wCreditsSpawn::
-	db
-
-wTimeSinceText:: db
-
-wCurOptionsPage:: db
-
-wBattleTowerBattleEnded::
-	db
-
-wCurForm:: db
-
-wRNGState:: ds 4
-wRNGCumulativeDividerPlus:: dw
-wRNGCumulativeDividerMinus:: db
-
-wBoxAlignment:: db
-wInputType:: db
-wAutoInputAddress:: dw
-wAutoInputBank:: db
-wAutoInputLength:: db
-
-wMonStatusFlags:: db
-wGameLogicPaused:: db
-wSpriteUpdatesEnabled:: db
-wMapTimeOfDay:: db
-
-wPrevDexEntry:: db
-
-wPrevLandmark:: db
-wCurLandmark:: db
-wLandmarkSignTimer:: dw
-wLinkMode::
-; 0 not in link battle
-; 1 link battle
-; 4 mobile battle
-	db
-
-wPlayerNextMovement:: db
-wPlayerMovement:: db
-
-wMovementObject:: db
-wMovementDataPointer:: ds 3 ; dba
-
-wMovementByteWasControlSwitch:: db
-
-UNION
-wObjectPriorities:: ds NUM_OBJECT_STRUCTS
-NEXTU
-wMovementPointer:: dw
-	ds 2
-wTempObjectCopyMapObjectIndex:: db
-wTempObjectCopySprite:: db
-wTempObjectCopySpriteVTile:: db
-wTempObjectCopyPalette:: db
-wTempObjectCopyMovement:: db
-wTempObjectCopyRange:: db
-wTempObjectCopyX:: db
-wTempObjectCopyY:: db
-wTempObjectCopyRadius:: db
-ENDU
-
-wTileDown:: db
-wTileUp:: db
-wTileLeft:: db
-wTileRight:: db
-
-wTilePermissions::
-; set if tile behavior prevents
-; you from walking in that direction
-; bit 3: down
-; bit 2: up
-; bit 1: left
-; bit 0: right
-	db
-
-wPanningAroundTinyMap:: db
-wSavedXCoord:: db
-
-wLinkOtherPlayerGameID:: db
-wLinkOtherPlayerVersion:: dw
-wLinkOtherPlayerMinTradeVersion:: dw
-wLinkOtherPlayerGender:: db
-
-wPalFlags:: db
-
-wPlayerCurrentOAMSlot:: db
-
-wMapSetupFlags:: db
-
-wPrinterConnectionOpen:: db
+wTileAnimBuffer:: ds 1 tiles
+wTileAnimationTimer:: db
 
 
 SECTION "Sprite Animations", WRAM0
@@ -877,17 +790,6 @@ wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
 
-SECTION "Footprint Queue", WRAM0
-; volatile footprints in sand
-
-wFootprintQueue:: ds 3 * 2 + 1
-
-
-SECTION "Unused", WRAM0
-
-	ds 69 ; it's free real estate
-
-
 SECTION UNION "Misc 1300", WRAM0
 ; overworld map
 
@@ -998,7 +900,7 @@ wSummaryMoveSwap:: db
 
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
-ds 13
+ds 9
 assert @ % 16 == 0
 
 UNION
@@ -1118,19 +1020,102 @@ SECTION UNION "Misc 1300", WRAM0
 wMPNotes:: ds 3 * 256
 
 
-SECTION "Video", WRAM0
+SECTION "WRAM 0", WRAM0
 
-wBGMapBuffer:: ds 48
-wBGMapBufferEnd::
-wBGMapPalBuffer:: ds 48
-wBGMapPalBufferEnd::
-wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
+wMonType:: db
 
-wTileAnimBuffer:: ds 1 tiles
-wTileAnimationTimer:: db
+wCurSpecies::
+wCurMove::
+wCreditsSpawn::
+	db
 
+wTimeSinceText:: db
 
-SECTION "More WRAM 0", WRAM0
+wCurOptionsPage:: db
+
+wBattleTowerBattleEnded:: db
+
+wCurForm:: db
+
+wRNGState:: ds 4
+wRNGCumulativeDividerPlus:: dw
+wRNGCumulativeDividerMinus:: db
+
+wBoxAlignment:: db
+wInputType:: db
+wAutoInputAddress:: dw
+wAutoInputBank:: db
+wAutoInputLength:: db
+
+wMonStatusFlags:: db
+wGameLogicPaused:: db
+wSpriteUpdatesEnabled:: db
+wMapTimeOfDay:: db
+
+wPrevDexEntry:: db
+
+wPrevLandmark:: db
+wCurLandmark:: db
+wLandmarkSignTimer:: dw
+wLinkMode::
+; 0 not in link battle
+; 1 link battle
+; 4 mobile battle
+	db
+
+wPlayerNextMovement:: db
+wPlayerMovement:: db
+
+wMovementObject:: db
+wMovementDataPointer:: ds 3 ; dba
+
+wMovementByteWasControlSwitch:: db
+
+UNION
+wObjectPriorities:: ds NUM_OBJECT_STRUCTS
+NEXTU
+wMovementPointer:: dw
+	ds 2
+wTempObjectCopyMapObjectIndex:: db
+wTempObjectCopySprite:: db
+wTempObjectCopySpriteVTile:: db
+wTempObjectCopyPalette:: db
+wTempObjectCopyMovement:: db
+wTempObjectCopyRange:: db
+wTempObjectCopyX:: db
+wTempObjectCopyY:: db
+wTempObjectCopyRadius:: db
+ENDU
+
+wTileDown:: db
+wTileUp:: db
+wTileLeft:: db
+wTileRight:: db
+
+wTilePermissions::
+; set if tile behavior prevents
+; you from walking in that direction
+; bit 3: down
+; bit 2: up
+; bit 1: left
+; bit 0: right
+	db
+
+wPanningAroundTinyMap:: db
+wSavedXCoord:: db
+
+wLinkOtherPlayerGameID:: db
+wLinkOtherPlayerVersion:: dw
+wLinkOtherPlayerMinTradeVersion:: dw
+wLinkOtherPlayerGender:: db
+
+wPalFlags:: db
+
+wPlayerCurrentOAMSlot:: db
+
+wMapSetupFlags:: db
+
+wPrinterConnectionOpen:: db
 
 wMemCGBLayout:: db
 
@@ -1422,10 +1407,13 @@ wCurPalDarknessState:: db
 wCurPalOvercastIndexState:: db
 wCurPalTimeOfDayPalState:: db
 
+; volatile footprints in sand
+wFootprintQueue:: ds 3 * 2 + 1
 
-SECTION "Unused 2", WRAM0
 
-	ds 281 ; it's free real estate
+SECTION "Unused", WRAM0
+
+	ds 350 ; it's free real estate
 
 
 SECTION "Options", WRAM0

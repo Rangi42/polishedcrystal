@@ -196,6 +196,8 @@ gfx/battle_anims/status.2bpp: tools/gfx += --remove-whitespace
 gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
 gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
 
+gfx/evo/bubble.2bpp: tools/gfx += --trim-whitespace
+
 gfx/font/%.1bpp: tools/gfx += --trim-whitespace
 gfx/font/space.2bpp: tools/gfx =
 

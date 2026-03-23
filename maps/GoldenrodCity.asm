@@ -42,7 +42,7 @@ GoldenrodCity_MapScriptHeader:
 	bg_event 26, 18, BGEVENT_JUMPTEXT, GoldenrodCitySignText
 	bg_event 32, 30, BGEVENT_JUMPTEXT, GoldenrodCityBikeShopSignText
 	bg_event 20, 22, BGEVENT_JUMPTEXT, GoldenrodCityGameCornerSignText
-	bg_event 16,  7, BGEVENT_JUMPTEXT, GoldenrodCityNameRaterSignText
+	bg_event 17,  7, BGEVENT_JUMPTEXT, GoldenrodCityNameRaterSignText
 	bg_event 12,  6, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
 	bg_event 14, 30, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
 	bg_event 40, 28, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText

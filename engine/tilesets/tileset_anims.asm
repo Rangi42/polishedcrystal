@@ -33,39 +33,26 @@ _AnimateTileset::
 
 TilesetJohtoTraditionalAnim::
 TilesetJohtoModernAnim::
+TilesetJohtoCoastAnim::
 TilesetJohtoOutlandsAnim::
 TilesetJohtoAncientAnim::
 TilesetBattleTowerOutsideAnim::
 TilesetEcruteakShrineAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw vTiles2 tile $1c, AnimateRainTiles
+	dw vTiles2 tile $30, AnimateWhirlpoolTiles
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw vTiles2 tile $03, AnimateFlowerTile
-	dw vTiles2 tile $30, AnimateWhirlpoolTiles
 	dw vTiles2 tile $1c, AnimateRainTiles
-	dw NULL,  DoNothing
+	dw vTiles2 tile $34, AnimateWaterfallTiles
 	dw NULL,  StandingTileFrame8
-	dw vTiles2 tile $35, WriteTileToBuffer
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw vTiles2 tile $35, ReadTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 TilesetKantoAnim::
 TilesetKantoNorthAnim::
 TilesetIndigoPlateauAnim::
 	dw vTiles2 tile $14, AnimateKantoWaterTile
-	dw vTiles2 tile $40, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $40, ReadTileFromBuffer
 	dw vTiles2 tile $10, ScrollTileUp
 	dw vTiles2 tile $11, ScrollTileDown
 	dw vTiles2 tile $12, ScrollTileLeft
@@ -75,6 +62,8 @@ TilesetIndigoPlateauAnim::
 	dw vTiles2 tile $11, ScrollTileDown
 	dw vTiles2 tile $12, ScrollTileLeft
 	dw vTiles2 tile $13, ScrollTileRight
+	dw vTiles2 tile $6b, AnimateWaterfallTiles
+	dw vTiles2 tile $40, AnimateFountainTile
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
@@ -87,22 +76,18 @@ TilesetPortAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 TilesetGymAnim::
 	dw vTiles2 tile $28, AnimateWaterTile
-	dw vTiles2 tile $58, WriteTileToBuffer
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw vTiles2 tile $38, AnimateLavaBubbleTile2
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
 	dw vTiles2 tile $5b, AnimateLavaBubbleTile1
-	dw vTiles2 tile $58, ReadTileFromBuffer
+	dw NULL,  DoNothing
+	dw vTiles2 tile $58, AnimateWaterfallTiles
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
@@ -118,86 +103,42 @@ TilesetTowerAnim::
 	dw TowerPillarTilePointer1,  AnimateTowerPillarTile
 	dw TowerPillarTilePointer2,  AnimateTowerPillarTile
 	dw NULL,  StandingTileFrame
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  DoneTileAnimation
 
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
-	dw vTiles2 tile $3c, AnimateLavaBubbleTile2
-	dw NULL,  DoNothing
-	dw vTiles2 tile $3d, AnimateLavaBubbleTile1
-	dw NULL,  DoNothing
-	dw NULL,  StandingTileFrame8
 	dw vTiles2 tile $25, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw NULL,  FlickeringCaveEntrancePalette
 	dw vTiles2 tile $4e, ScrollTileUp
 	dw vTiles2 tile $4f, ScrollTileDown
 	dw vTiles2 tile $5e, ScrollTileLeft
 	dw vTiles2 tile $5f, ScrollTileRight
-	dw NULL,  FlickeringCaveEntrancePalette
 	dw vTiles2 tile $25, ReadTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  DoNothing
+	dw vTiles2 tile $26, AnimateWaterfallTiles
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $26, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $4e, ScrollTileUp
-	dw vTiles2 tile $4f, ScrollTileDown
-	dw vTiles2 tile $5e, ScrollTileLeft
-	dw vTiles2 tile $5f, ScrollTileRight
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $26, ReadTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $3c, AnimateLavaBubbleTile2
+	dw vTiles2 tile $3d, AnimateLavaBubbleTile1
 	dw NULL,  DoneTileAnimation
 
 TilesetPeaksAnim::
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  StandingTileFrame8
 	dw vTiles2 tile $25, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $26, AnimateWaterfallTiles
+	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoNothing
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw vTiles2 tile $25, ReadTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  DoNothing
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $26, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $26, ReadTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
 TilesetParkAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  DoNothing
 	dw vTiles2 tile $15, AnimateFountainTile
-	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw vTiles2 tile $03, AnimateFlowerTile
@@ -211,39 +152,28 @@ TilesetIcePathAnim::
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $10, ReadTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $10, ReadTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
 TilesetForestAnim::
-	dw vTiles2 tile $50, AnimateForestTreeTiles
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw vTiles2 tile $03, AnimateFlowerTile
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
+	dw vTiles2 tile $50, AnimateForestTreeTiles
 	dw vTiles2 tile $50, AnimateForestTreeTiles
 	dw NULL,  DoNothing
+	dw vTiles2 tile $03, AnimateFlowerTile
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
+	dw vTiles2 tile $42, AnimateWaterfallTiles
 	dw NULL,  StandingTileFrame8
-	dw vTiles2 tile $40, WriteTileToBuffer
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
-	dw vTiles2 tile $40, ReadTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 TilesetSafariZoneAnim::
 	dw vTiles2 tile $14, AnimateKantoWaterTile
-	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -263,7 +193,6 @@ TilesetFarawayIslandAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
@@ -272,37 +201,21 @@ TilesetTraditionalHouseAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 TilesetTunnelAnim::
 	dw vTiles2 tile $26, WriteTileToBuffer
-	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $5e, AnimateLCDTile
 	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoNothing
+	dw NULL,  FlickeringCaveEntrancePalette
 	dw vTiles2 tile $26, ReadTileFromBuffer
-	dw NULL,  DoNothing
-	dw vTiles2 tile $5e, AnimateLCDTile
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
-	dw vTiles2 tile $30, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $30, ReadTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  DoNothing
-	dw vTiles2 tile $5e, AnimateLCDTile
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $31, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $31, ReadTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
 TilesetShamoutiIslandAnim::
@@ -312,12 +225,7 @@ TilesetValenciaIslandAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw vTiles2 tile $03, AnimateFlowerTile
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
@@ -325,10 +233,6 @@ TilesetValenciaIslandAnim::
 
 TilesetSnowtopMountainAnim::
 	dw vTiles2 tile $0a, AnimateTinyWaterTiles
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -375,9 +279,6 @@ TilesetHotelAnim::
 TilesetBattleFactoryAnim::
 TilesetHiddenGrottoAnim::
 TilesetKantoGymAnim::
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoneTileAnimation
 
@@ -848,7 +749,7 @@ TowerPillarTilePointer10: dw vTiles2 tile $5f, TowerPillarTileFrames + 5 * 9 til
 
 TowerPillarTileFrames:
 INCBIN "gfx/tilesets/animations/tower_pillar.2bpp"
-	
+
 AnimateWhirlpoolTiles:
 	ld hl, sp + 0
 	ld b, h
@@ -918,6 +819,28 @@ AnimateLCDTile:
 
 .LCDTileFrames:
 INCBIN "gfx/tilesets/animations/lcd.2bpp"
+
+AnimateWaterfallTiles:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, offset to 2 tiles (32 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4
+	swap a
+	add a
+
+	add LOW(.WaterfallTileFrames)
+	ld l, a
+	adc HIGH(.WaterfallTileFrames)
+	sub l
+	ld h, a
+
+	jmp WriteTwoTilesHLToDE
+
+.WaterfallTileFrames:
+INCBIN "gfx/tilesets/animations/waterfall.2bpp"
 
 AnimateFireTiles:
 	ld hl, sp + 0

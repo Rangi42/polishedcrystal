@@ -63,8 +63,8 @@ OlivineCityLighthouseCallback:
 	iffalsefwd .done
 	checktime 1 << NITE
 	iffalsefwd .done
-	changeblock 32, 10, $92
-	changeblock 34, 10, $93
+	changeblock 32, 10, $9a
+	changeblock 34, 10, $9b
 .done
 	endcallback
 

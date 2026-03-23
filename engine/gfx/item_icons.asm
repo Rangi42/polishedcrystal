@@ -39,7 +39,6 @@ UpdateExpCandyIconAndDescriptionAndBagQuantity::
 	call _LoadItemOrKeyItemIcon
 	farcall LoadExpCandyIconPalette
 	jmp SetDefaultBGPAndOBP
-	ret
 
 UpdateKeyItemIconAndDescription::
 	farcall UpdateKeyItemDescription
@@ -53,8 +52,7 @@ _UpdateKeyItemIcon:
 LoadApricornIconForOverworld:
 	ld hl, ApricornIcon
 	lb bc, BANK(ApricornIcon), 9
-	ld de, vTiles0 tile '▲'
-	jmp DecompressRequest2bpp
+	jr DecompressItemIconForOverworld
 
 LoadItemIconForOverworld::
 	ld hl, ItemIconPointers

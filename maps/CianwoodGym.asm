@@ -20,7 +20,7 @@ CianwoodGym_MapScriptHeader:
 	def_object_events
 	object_event 12, 11, SPRITE_CHUCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodGymChuckScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
 	object_event 12, 11, SPRITE_BIG_HO_OH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptext, CianwoodGymChuckTrainingText, EVENT_BOULDERS_IN_CIANWOOD_GYM
-	strengthboulder_event 13, 11
+	object_event 13, 11, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, CianwoodGymChucksBoulderText, -1
 	strengthboulder_event  9,  4, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	strengthboulder_event 16,  4, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	object_event 12,  4, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, CianwoodGymBoulderText, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
@@ -217,11 +217,13 @@ CianwoodGymStatue:
 	jumpstd gymstatue3
 
 CianwoodGymMovement_ChuckChucksBoulder:
+	fix_facing
 	set_sliding
 	run_step_left
 	run_step_up
 	fast_jump_step_right
 	remove_sliding
+	remove_fixed_facing
 	step_end
 
 ChuckIntroText1:
@@ -361,4 +363,9 @@ CianwoodGymBoulderText:
 	text "The boulder is"
 	line "blocking the"
 	cont "waterfall."
+	done
+
+CianwoodGymChucksBoulderText:
+	text "The boulder is"
+	line "too heavy to move."
 	done

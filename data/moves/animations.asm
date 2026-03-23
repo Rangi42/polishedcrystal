@@ -890,9 +890,9 @@ BattleAnim_WaterGun:
 	anim_wait 1
 	anim_sound 16, 2, SFX_WATER_GUN
 	anim_obj ANIM_OBJ_WATER_GUN, 64, 84, $0
-	anim_wait 8                
+	anim_wait 8
 	anim_obj ANIM_OBJ_WATER_GUN, 64, 72, $0
-	anim_wait 8                
+	anim_wait 8
 	anim_obj ANIM_OBJ_WATER_GUN, 64, 78, $0
 	anim_wait 24
 	anim_bgeffect ANIM_BG_WATER, $1c, $0, $0
@@ -1728,18 +1728,18 @@ BattleAnim_BulletPunch:
 
 BattleAnim_Wrap:
 	anim_1gfx ANIM_GFX_ROPE
-	anim_sound 0, 1, SFX_BIND
-	anim_obj ANIM_OBJ_BIND1, -16, 4,   8, 0, $0
+	anim_sound 6, 2, SFX_MENU
+	anim_obj ANIM_OBJ_BIND1, 132, 64, $0
 	anim_wait 8
-	anim_obj ANIM_OBJ_BIND1, -16, 4,   7, 0, $0
+	anim_sound 6, 2, SFX_MENU
+	anim_obj ANIM_OBJ_BIND1, 132, 56, $0
 	anim_wait 8
-	anim_obj ANIM_OBJ_BIND1, -16, 4,   6, 0, $0
-	anim_wait 64
 	anim_sound 0, 1, SFX_BIND
+	anim_obj ANIM_OBJ_BIND1, 132, 48, $0
 	anim_incobj 1
 	anim_incobj 2
 	anim_incobj 3
-	anim_wait 96
+	anim_wait 64
 	anim_ret
 
 BattleAnim_Confusion:
@@ -3376,19 +3376,19 @@ BattleAnim_Waterfall:
 	anim_obj ANIM_OBJ_HIT_YFIX, 134, 64, $0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 64, $d0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 64, $10
-	anim_wait 3                 
+	anim_wait 3
 	anim_obj ANIM_OBJ_HIT_YFIX, 134, 56, $0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 56, $d0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 56, $10
-	anim_wait 3                 
+	anim_wait 3
 	anim_obj ANIM_OBJ_HIT_YFIX, 134, 48, $0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 48, $d0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 48, $10
-	anim_wait 3                 
+	anim_wait 3
 	anim_obj ANIM_OBJ_HIT_YFIX, 134, 40, $0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 40, $d0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 40, $10
-	anim_wait 3                 
+	anim_wait 3
 	anim_obj ANIM_OBJ_HIT_YFIX, 134, 32, $0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 138, 32, $d0
 	anim_obj ANIM_OBJ_BUBBLE_SPLASH, 130, 32, $10

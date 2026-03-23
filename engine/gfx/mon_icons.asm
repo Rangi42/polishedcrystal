@@ -395,7 +395,17 @@ _LoadMonMini:
 
 	; for move menu, mon minis use palette 1
 	ld de, wOBPals1 palette 1 + 2
+
+	ld a, [wMonType]
+	cp TEMPMON
+	jr z, .use_temp
+	; not temp -> use party palette
+	farcall LoadPartyMonPalette
+	jr .palette_done
+.use_temp
 	farcall LoadTempMonPalette
+
+.palette_done
 	ld a, 1
 	ld hl, wShadowOAMSprite00Attributes
 	ld de, OBJ_SIZE
