@@ -40,7 +40,7 @@ SelectMonForHappinessStatus:
 	jr .done
 
 .cancel
-	ld a, 0
+	xor a
 	jr .done
 
 .egg
