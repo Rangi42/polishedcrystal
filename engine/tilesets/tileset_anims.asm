@@ -299,16 +299,13 @@ AnimateSpinnerTile:
 	add a
 
 .ok
-	add LOW(.SpinnerTileFrames)
+	add LOW(vTiles2 tile $08)
 	ld l, a
-	adc HIGH(.SpinnerTileFrames)
+	adc HIGH(vTiles2 tile $08)
 	sub l
 	ld h, a
 
 	jmp WriteTileHLToDE
-
-.SpinnerTileFrames:
-INCBIN "gfx/tilesets/animations/spinner.2bpp"
 
 AnimateTurbineTiles:
 	ld hl, sp + 0

@@ -237,7 +237,7 @@ TilesetSnowtopMountainAnim::
 	tileframe DoneTileAnimation
 
 TilesetHideoutAnim::
-	tileframe AnimateSpinnerTile,       $0:08
+	tileframe AnimateSpinnerTile,       $0:07
 TilesetFacilityAnim::
 	tileframe AnimateTurbineTiles,      $0:6c
 	tileframe StandingTileFrame8
