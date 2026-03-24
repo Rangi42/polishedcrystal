@@ -92,16 +92,14 @@ TilesetGymAnim::
 	dw NULL,  DoneTileAnimation
 
 TilesetTowerAnim::
-	dw TowerPillarTilePointer9,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer10, AnimateTowerPillarTile
-	dw TowerPillarTilePointer7,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer8,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer5,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer6,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer3,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer4,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer1,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer2,  AnimateTowerPillarTile
+	dw vTiles5 tile $26, AnimateTowerPillarTiles1
+	dw vTiles5 tile $2a, AnimateTowerPillarTiles2
+	dw vTiles5 tile $2c, AnimateTowerPillarTiles3
+	dw vTiles5 tile $2f, AnimateTowerPillarTiles4
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame
 	dw NULL,  DoneTileAnimation
 
@@ -693,62 +691,141 @@ _FinishAnimateLavaBubbleTile:
 .LavaBubbleFrames:
 INCBIN "gfx/tilesets/animations/lava.2bpp"
 
-AnimateTowerPillarTile:
+AnimateTowerPillarTiles1:
 	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
-	; period 8, offset to index table (1 byte)
+	; period 8, offset to pointer table (2 bytes)
 	ld a, [wTileAnimationTimer]
 	maskbits 8
+	add a
 
-	add LOW(.TowerPillarTileFrameIndexes)
+	add LOW(.TowerPillarTiles1Pointers)
 	ld l, a
-	adc HIGH(.TowerPillarTileFrameIndexes)
-	sub l
-	ld h, a
-	ld a, [hl]
-
-	ld l, e
-	ld h, d
-	ld e, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
-	inc hl
-	ld d, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
-	inc hl
-
-	add [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	adc h
+	adc HIGH(.TowerPillarTiles1Pointers)
 	sub l
 	ld h, a
 
-	jmp WriteTileHLToDE
+	ld sp, hl
+	pop hl
 
-.TowerPillarTileFrameIndexes:
-	db 0 tiles ; 0
-	db 1 tiles ; 1
-	db 2 tiles ; 2
-	db 3 tiles ; 3
-	db 4 tiles ; 4
-	db 3 tiles ; 5
-	db 2 tiles ; 6
-	db 1 tiles ; 7
+	ld a, 1
+	ldh [rVBK], a
 
-TowerPillarTilePointer1:  dw vTiles2 tile $2d, TowerPillarTileFrames + 5 * 0 tiles
-TowerPillarTilePointer2:  dw vTiles2 tile $2f, TowerPillarTileFrames + 5 * 1 tiles
-TowerPillarTilePointer3:  dw vTiles2 tile $3d, TowerPillarTileFrames + 5 * 2 tiles
-TowerPillarTilePointer4:  dw vTiles2 tile $3f, TowerPillarTileFrames + 5 * 3 tiles
-TowerPillarTilePointer5:  dw vTiles2 tile $3c, TowerPillarTileFrames + 5 * 4 tiles
-TowerPillarTilePointer6:  dw vTiles2 tile $2c, TowerPillarTileFrames + 5 * 5 tiles
-TowerPillarTilePointer7:  dw vTiles2 tile $4d, TowerPillarTileFrames + 5 * 6 tiles
-TowerPillarTilePointer8:  dw vTiles2 tile $4f, TowerPillarTileFrames + 5 * 7 tiles
-TowerPillarTilePointer9:  dw vTiles2 tile $5d, TowerPillarTileFrames + 5 * 8 tiles
-TowerPillarTilePointer10: dw vTiles2 tile $5f, TowerPillarTileFrames + 5 * 9 tiles
+	jmp WriteFourTilesHLToDE
 
-TowerPillarTileFrames:
-INCBIN "gfx/tilesets/animations/tower_pillar.2bpp"
+.TowerPillarTiles1Pointers:
+	dw vTiles5 tile $32 + 4 * 0 tiles ; 0
+	dw vTiles5 tile $32 + 4 * 1 tiles ; 1
+	dw vTiles5 tile $32 + 4 * 2 tiles ; 2
+	dw vTiles5 tile $32 + 4 * 3 tiles ; 3
+	dw vTiles5 tile $32 + 4 * 4 tiles ; 4
+	dw vTiles5 tile $32 + 4 * 3 tiles ; 5
+	dw vTiles5 tile $32 + 4 * 2 tiles ; 6
+	dw vTiles5 tile $32 + 4 * 1 tiles ; 7
+
+AnimateTowerPillarTiles2:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 8, offset to pointer table (2 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 8
+	add a
+
+	add LOW(.TowerPillarTiles2Pointers)
+	ld l, a
+	adc HIGH(.TowerPillarTiles2Pointers)
+	sub l
+	ld h, a
+
+	ld sp, hl
+	pop hl
+
+	ld a, 1
+	ldh [rVBK], a
+
+	jmp WriteTwoTilesHLToDE
+
+.TowerPillarTiles2Pointers:
+	dw vTiles5 tile $46 + 2 * 0 tiles ; 0
+	dw vTiles5 tile $46 + 2 * 1 tiles ; 1
+	dw vTiles5 tile $46 + 2 * 2 tiles ; 2
+	dw vTiles5 tile $46 + 2 * 3 tiles ; 3
+	dw vTiles5 tile $46 + 2 * 4 tiles ; 4
+	dw vTiles5 tile $46 + 2 * 3 tiles ; 5
+	dw vTiles5 tile $46 + 2 * 2 tiles ; 6
+	dw vTiles5 tile $46 + 2 * 1 tiles ; 7
+
+AnimateTowerPillarTiles3:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 8, offset to pointer table (2 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 8
+	add a
+
+	add LOW(.TowerPillarTiles3Pointers)
+	ld l, a
+	adc HIGH(.TowerPillarTiles3Pointers)
+	sub l
+	ld h, a
+
+	ld sp, hl
+	pop hl
+
+	ld a, 1
+	ldh [rVBK], a
+
+	jmp WriteThreeTilesHLToDE
+
+.TowerPillarTiles3Pointers:
+	dw vTiles5 tile $50 + 3 * 0 tiles ; 0
+	dw vTiles5 tile $50 + 3 * 1 tiles ; 1
+	dw vTiles5 tile $50 + 3 * 2 tiles ; 2
+	dw vTiles5 tile $50 + 3 * 3 tiles ; 3
+	dw vTiles5 tile $50 + 3 * 4 tiles ; 4
+	dw vTiles5 tile $50 + 3 * 3 tiles ; 5
+	dw vTiles5 tile $50 + 3 * 2 tiles ; 6
+	dw vTiles5 tile $50 + 3 * 1 tiles ; 7
+
+AnimateTowerPillarTiles4:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 8, offset to pointer table (2 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 8
+	add a
+
+	add LOW(.TowerPillarTiles4Pointers)
+	ld l, a
+	adc HIGH(.TowerPillarTiles4Pointers)
+	sub l
+	ld h, a
+
+	ld sp, hl
+	pop hl
+
+	ld a, 1
+	ldh [rVBK], a
+
+	jmp WriteThreeTilesHLToDE
+
+.TowerPillarTiles4Pointers:
+	dw vTiles5 tile $60 + 3 * 0 tiles ; 0
+	dw vTiles5 tile $60 + 3 * 1 tiles ; 1
+	dw vTiles5 tile $60 + 3 * 2 tiles ; 2
+	dw vTiles5 tile $60 + 3 * 3 tiles ; 3
+	dw vTiles5 tile $60 + 3 * 4 tiles ; 4
+	dw vTiles5 tile $60 + 3 * 3 tiles ; 5
+	dw vTiles5 tile $60 + 3 * 2 tiles ; 6
+	dw vTiles5 tile $60 + 3 * 1 tiles ; 7
 
 AnimateWhirlpoolTiles:
 	ld hl, sp + 0
