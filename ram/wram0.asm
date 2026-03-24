@@ -114,7 +114,6 @@ wBGMapPalBuffer:: ds 48
 wBGMapPalBufferEnd::
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
-wTileAnimBuffer:: ds 1 tiles
 wTileAnimationTimer:: db
 
 
@@ -1413,7 +1412,7 @@ wFootprintQueue:: ds 3 * 2 + 1
 
 SECTION "Unused", WRAM0
 
-	ds 350 ; it's free real estate
+	ds 366 ; it's free real estate
 
 
 SECTION "Options", WRAM0

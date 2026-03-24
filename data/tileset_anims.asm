@@ -81,15 +81,13 @@ TilesetTowerAnim::
 
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
-	tileframe WriteTileToBuffer,        vTiles2 tile $25
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      wTileAnimBuffer
+	tileframe ScrollTileRightLeft,      vTiles2 tile $25
 	tileframe FlickeringCaveEntrancePalette
 	tileframe ScrollTileUp,             vTiles2 tile $4e
 	tileframe ScrollTileDown,           vTiles2 tile $4f
 	tileframe ScrollTileLeft,           vTiles2 tile $5e
 	tileframe ScrollTileRight,          vTiles2 tile $5f
-	tileframe ReadTileFromBuffer,       vTiles2 tile $25
 	tileframe FlickeringCaveEntrancePalette
 	tileframe AnimateWaterfallTiles,    vTiles2 tile $26
 	tileframe FlickeringCaveEntrancePalette
@@ -98,15 +96,18 @@ TilesetQuietCaveAnim::
 	tileframe DoneTileAnimation
 
 TilesetPeaksAnim::
-	tileframe WriteTileToBuffer,        vTiles2 tile $25
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      wTileAnimBuffer
+	tileframe ScrollTileRightLeft,      vTiles2 tile $25
+	tileframe FlickeringCaveEntrancePalette
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
 	tileframe AnimateWaterfallTiles,    vTiles2 tile $26
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
-	tileframe FlickeringCaveEntrancePalette
-	tileframe ReadTileFromBuffer,       vTiles2 tile $25
+	tileframe DoNothing
 	tileframe DoneTileAnimation
 
 TilesetParkAnim::
@@ -122,16 +123,18 @@ TilesetParkAnim::
 	tileframe DoneTileAnimation
 
 TilesetIcePathAnim::
-	tileframe WriteTileToBuffer,        vTiles2 tile $10
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      wTileAnimBuffer
+	tileframe ScrollTileRightLeft,      vTiles2 tile $10
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
+	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ReadTileFromBuffer,       vTiles2 tile $10
+	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe DoneTileAnimation
 
 TilesetForestAnim::
@@ -179,17 +182,18 @@ TilesetTraditionalHouseAnim::
 	tileframe DoneTileAnimation
 
 TilesetTunnelAnim::
-	tileframe WriteTileToBuffer,        vTiles2 tile $26
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      wTileAnimBuffer
+	tileframe ScrollTileRightLeft,      vTiles2 tile $26
 	tileframe FlickeringCaveEntrancePalette
 	tileframe AnimateLCDTile,           vTiles2 tile $5e
 	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ReadTileFromBuffer,       vTiles2 tile $26
-	tileframe StandingTileFrame8
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe DoneTileAnimation
 
 TilesetShamoutiIslandAnim::

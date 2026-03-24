@@ -759,26 +759,6 @@ endr
 
 	jr _FinishWritingOneTile
 
-WriteTileToBuffer:
-	ld hl, sp + 0
-	ld b, h
-	ld c, l
-
-	ld h, d
-	ld l, e
-	ld sp, hl
-
-	ld hl, wTileAnimBuffer
-	jr WriteTile
-
-ReadTileFromBuffer:
-	ld hl, sp + 0
-	ld b, h
-	ld c, l
-
-	ld hl, wTileAnimBuffer
-	; fallthrough
-
 WriteTileHLToDE:
 	ld sp, hl
 	ld l, e
