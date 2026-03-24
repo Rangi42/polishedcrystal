@@ -994,18 +994,20 @@ PVB_UpdateDexMap::
 	ld a, [hl]
 	and a
 	ret z
+
+	ldh a, [rVBK]
+	rra ; stores VRAM bank in carry flag to be pushed
 	ldh a, [rWBK]
 	push af
-	ldh a, [rVBK]
-	push af
+
 	ld a, BANK(wDexTilemap)
 	ldh [rWBK], a
-	ld a, [hl]
 
 	; Update the tilemap last if several kinds are pending.
 	; The reason this is checked here instead of later is because
 	; this just barely makes it in time before leaving VBlank, so.
 	; checking it last in a sequence causes us to run out of time.
+	ld a, [hl]
 	res DEXGFX_DEFERRED, a
 	cp 1 << DEXGFX_TILEMAP
 	jr nz, .no_tilemap
@@ -1149,9 +1151,9 @@ PVB_UpdateDexMap::
 
 .done
 	pop af
-	ldh [rVBK], a
-	pop af
 	ldh [rWBK], a
+	rla ; retrieves VRAM bank from popped carry flag
+	ldh [rVBK], a
 	ret
 
 DexDisplayOAMData:

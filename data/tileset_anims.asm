@@ -1,4 +1,6 @@
 MACRO? tileframe
+;\1: function pointer
+;\2: "$b:xx" VRAM bank and address (optional parameter to function)
 	if _NARG == 2
 		assert STRLEN("\2") == STRLEN("$b:xx") && \
 			STRSLICE("\2", 0, 1) === "$" && STRSLICE("\2", 2, 3) === ":", \

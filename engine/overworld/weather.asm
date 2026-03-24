@@ -1235,7 +1235,7 @@ SpriteLimitExceeded:
 	cp TILE_WIDTH
 	jr nc, .next ; distance is greater than TILE_WIDTH; skip sprite
 	ld a, [wSpriteOverlapCount]
-	inc a
+	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wSpriteOverlapCount], a
 	cp 11 ; horizontal sprite limit + 1
 	jr c, .next
