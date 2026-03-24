@@ -194,5 +194,4 @@ Music:
 	dba Music_TrainerBattlePrism
 	dba Music_GymLeaderBattlePrism
 	dba Music_PaletteBattlePrism
-	dba Music_Megalovania
 	assert_table_length NUM_MUSIC_SONGS

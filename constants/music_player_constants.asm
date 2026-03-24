@@ -23,25 +23,24 @@ DEF NUM_MP_EDIT_FIELDS EQU const_value
 
 ; SongOrigins indexes (see data/music_player/song_origins.asm)
 	const_def
-	const ORIGIN_RB        ; 00
-	const ORIGIN_Y         ; 01
-	const ORIGIN_GS        ; 02
-	const ORIGIN_C         ; 03
-	const ORIGIN_RSE       ; 04
-	const ORIGIN_FRLG      ; 05
-	const ORIGIN_DPPT      ; 06
-	const ORIGIN_HGSS      ; 07
-	const ORIGIN_BW        ; 08
-	const ORIGIN_B2W2      ; 09
-	const ORIGIN_XY        ; 0a
-	const ORIGIN_ORAS      ; 0b
-	const ORIGIN_SM        ; 0c
-	const ORIGIN_SWSH      ; 0d
-	const ORIGIN_STADIUM   ; 0e
-	const ORIGIN_GO        ; 0f
-	const ORIGIN_M02       ; 10
-	const ORIGIN_PRISM     ; 11
-	const ORIGIN_UNDERTALE ; 12
+	const ORIGIN_RB      ; 00
+	const ORIGIN_Y       ; 01
+	const ORIGIN_GS      ; 02
+	const ORIGIN_C       ; 03
+	const ORIGIN_RSE     ; 04
+	const ORIGIN_FRLG    ; 05
+	const ORIGIN_DPPT    ; 06
+	const ORIGIN_HGSS    ; 07
+	const ORIGIN_BW      ; 08
+	const ORIGIN_B2W2    ; 09
+	const ORIGIN_XY      ; 0a
+	const ORIGIN_ORAS    ; 0b
+	const ORIGIN_SM      ; 0c
+	const ORIGIN_SWSH    ; 0d
+	const ORIGIN_STADIUM ; 0e
+	const ORIGIN_GO      ; 0f
+	const ORIGIN_M02     ; 10
+	const ORIGIN_PRISM   ; 11
 DEF NUM_SONG_ORIGINS EQU const_value
 
 ; SongArtists indexes (see data/music_player/song_artists.asm)
@@ -72,6 +71,5 @@ DEF NUM_SONG_ORIGINS EQU const_value
 	const COMPOSER_GRONNOC                       ; 17
 	const COMPOSER_CAT333POKEMON                 ; 18
 	const COMPOSER_NOTFROGGESTSPIRIT             ; 19
-	const COMPOSER_TOBY_FOX                      ; 1a
-	const COMPOSER_SHINKONETCAVY_SHOCKSLAYER     ; 1b
+	const COMPOSER_SHINKONETCAVY_SHOCKSLAYER     ; 1a
 DEF NUM_SONG_ARTISTS EQU const_value
