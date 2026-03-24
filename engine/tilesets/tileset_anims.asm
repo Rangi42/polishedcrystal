@@ -23,8 +23,7 @@ _AnimateTileset::
 
 ; 2-byte VRAM address parameter, with VRAM bank in low bit
 	ld a, [hl]
-	and 1
-	ldh [rVBK], a
+	ldh [rVBK], a ; high bits are ignored
 ; Functions that take input do so in de
 	ld a, [hli]
 	and ~1
