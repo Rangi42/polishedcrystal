@@ -349,16 +349,13 @@ AnimateForestTreeTiles:
 	add a
 	add a
 
-	add LOW(.ForestTreeTileFrames)
+	add LOW(vTiles5 tile $44)
 	ld l, a
-	adc HIGH(.ForestTreeTileFrames)
+	adc HIGH(vTiles5 tile $44)
 	sub l
 	ld h, a
 
 	jmp WriteFourTilesHLToDE
-
-.ForestTreeTileFrames:
-INCBIN "gfx/tilesets/animations/forest_tree.2bpp"
 
 AnimateFlowerTile:
 	ld hl, sp + 0
@@ -607,30 +604,23 @@ AnimateWhirlpoolTiles:
 INCBIN "gfx/tilesets/animations/whirlpool.2bpp"
 
 AnimateTinyWaterTiles:
-	; period 2, every 2 frames, offset to 3 tiles (48 bytes)
+	; period 2, every 2 frames, offset to 4 tiles (64 bytes)
 	ld a, [wTileAnimationTimer]
 	maskbits 2, 1
+	swap a
 	add a
-	add a
-	add a
-	ld b, a
-	add a
-	add b
 
 	ld hl, sp + 0
 	ld b, h
 	ld c, l
 
-	add LOW(.TinyWaterTileFrames)
+	add LOW(vTiles5 tile $5c)
 	ld l, a
-	adc HIGH(.TinyWaterTileFrames)
+	adc HIGH(vTiles5 tile $5c)
 	sub l
 	ld h, a
 
-	jmp WriteThreeTilesHLToDE
-
-.TinyWaterTileFrames:
-INCBIN "gfx/tilesets/animations/tiny_water.2bpp"
+	jmp WriteFourTilesHLToDE
 
 AnimateLCDTile:
 	ld hl, sp + 0
@@ -642,16 +632,13 @@ AnimateLCDTile:
 	maskbits 8
 	swap a
 
-	add LOW(.LCDTileFrames)
+	add LOW(vTiles5 tile $20)
 	ld l, a
-	adc HIGH(.LCDTileFrames)
+	adc HIGH(vTiles5 tile $20)
 	sub l
 	ld h, a
 
 	jmp WriteTileHLToDE
-
-.LCDTileFrames:
-INCBIN "gfx/tilesets/animations/lcd.2bpp"
 
 AnimateWaterfallTiles:
 	ld hl, sp + 0
@@ -686,16 +673,13 @@ AnimateFireTiles:
 	swap a
 	add a
 
-	add LOW(.FireTileFrames)
+	add LOW(vTiles2 tile $77)
 	ld l, a
-	adc HIGH(.FireTileFrames)
+	adc HIGH(vTiles2 tile $77)
 	sub l
 	ld h, a
 
-	jmp WriteTwoTilesHLToDE
-
-.FireTileFrames:
-INCBIN "gfx/tilesets/animations/fire.2bpp"
+	jr WriteTwoTilesHLToDE
 
 WriteFourTilesHLToDE:
 	ld sp, hl

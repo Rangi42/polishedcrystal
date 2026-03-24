@@ -155,8 +155,8 @@ TilesetIcePathAnim::
 TilesetForestAnim::
 	tileframe AnimateWaterTile,         $0:14
 	tileframe DoNothing
-	tileframe AnimateForestTreeTiles,   $0:50
-	tileframe AnimateForestTreeTiles,   $0:50
+	tileframe AnimateForestTreeTiles,   $1:1c
+	tileframe DoNothing
 	tileframe DoNothing
 	tileframe AnimateFlowerTile,        $0:03
 	tileframe DoNothing
@@ -200,7 +200,7 @@ TilesetTunnelAnim::
 	tileframe FlickeringCaveEntrancePalette
 	tileframe ScrollTileRightLeft,      $0:26
 	tileframe FlickeringCaveEntrancePalette
-	tileframe AnimateLCDTile,           $0:5e
+	tileframe AnimateLCDTile,           $1:1e
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -225,7 +225,7 @@ TilesetValenciaIslandAnim::
 	tileframe DoneTileAnimation
 
 TilesetSnowtopMountainAnim::
-	tileframe AnimateTinyWaterTiles,    $0:0a
+	tileframe AnimateTinyWaterTiles,    $1:30
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
