@@ -3,12 +3,13 @@ SECTION "Tileset Headers", ROMX
 MACRO tileset
 	dbas \1Meta, \1Coll, \1Attr
 	dba \1GFX0, \1GFX1, \1GFX2
-	dw \1Anim ; BANK(_AnimateTileset)
+	fardw \1Anim
 ENDM
 
 Tilesets::
 ; entries correspond to TILESET_* constants (see constants/tileset_constants.asm)
 	table_width TILESET_LENGTH
+	farbank _AnimateTileset
 	tileset TilesetJohtoTraditional
 	tileset TilesetJohtoModern
 	tileset TilesetJohtoCoast
