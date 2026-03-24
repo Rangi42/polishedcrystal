@@ -21,9 +21,13 @@ _AnimateTileset::
 	add hl, hl
 	add hl, de
 
-; 2-byte parameter
-; All functions take input de.
+; 2-byte VRAM address parameter, with VRAM bank in low bit
+	ld a, [hl]
+	and 1
+	ldh [rVBK], a
+; Functions that take input do so in de
 	ld a, [hli]
+	and ~1
 	ld e, a
 	ld a, [hli]
 	ld d, a

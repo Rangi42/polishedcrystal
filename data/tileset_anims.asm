@@ -1,6 +1,19 @@
-MACRO tileframe
+MACRO? tileframe
 	if _NARG == 2
-		dw \2 ; argument
+		assert STRLEN("\2") == STRLEN("$b:xx") && \
+			STRSLICE("\2", 0, 1) === "$" && STRSLICE("\2", 2, 3) === ":", \
+			"\2 is not a valid VRAM $bank:id"
+		REDEF tileframe_bank EQUS STRSLICE("\2", 1, 2)
+		REDEF tileframe_id EQUS STRSLICE("\2", 3, 5)
+		DEF tile_bank = ${tileframe_bank}
+		assert tile_bank == 0 || tile_bank == 1, "${x:tile_bank} is not a valid VRAM bank"
+		DEF tile_id = ${tileframe_id}
+		assert $00 <= tile_id && tile_id <= $ff, "${02x:tile_id} is not a valid tile ID"
+		if tile_id < $80
+			dw (vTiles2 tile tile_id) | tile_bank
+		else
+			dw (vTiles1 tile (tile_id - $80)) | tile_bank
+		endc
 	else
 		dw 0
 	endc
@@ -14,37 +27,37 @@ TilesetJohtoOutlandsAnim::
 TilesetJohtoAncientAnim::
 TilesetBattleTowerOutsideAnim::
 TilesetEcruteakShrineAnim::
-	tileframe AnimateWaterTile,         vTiles2 tile $14
-	tileframe AnimateRainTiles,         vTiles2 tile $1c
-	tileframe AnimateWhirlpoolTiles,    vTiles2 tile $30
+	tileframe AnimateWaterTile,         $0:14
+	tileframe AnimateRainTiles,         $0:1c
+	tileframe AnimateWhirlpoolTiles,    $0:30
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateFlowerTile,        vTiles2 tile $03
-	tileframe AnimateRainTiles,         vTiles2 tile $1c
-	tileframe AnimateWaterfallTiles,    vTiles2 tile $34
+	tileframe AnimateFlowerTile,        $0:03
+	tileframe AnimateRainTiles,         $0:1c
+	tileframe AnimateWaterfallTiles,    $0:34
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetKantoAnim::
 TilesetKantoNorthAnim::
 TilesetIndigoPlateauAnim::
-	tileframe AnimateKantoWaterTile,    vTiles2 tile $14
-	tileframe ScrollTileUp,             vTiles2 tile $10
-	tileframe ScrollTileDown,           vTiles2 tile $11
-	tileframe ScrollTileLeft,           vTiles2 tile $12
-	tileframe ScrollTileRight,          vTiles2 tile $13
-	tileframe AnimateKantoFlowerTile,   vTiles2 tile $03
-	tileframe ScrollTileUp,             vTiles2 tile $10
-	tileframe ScrollTileDown,           vTiles2 tile $11
-	tileframe ScrollTileLeft,           vTiles2 tile $12
-	tileframe ScrollTileRight,          vTiles2 tile $13
-	tileframe AnimateWaterfallTiles,    vTiles2 tile $6b
-	tileframe AnimateFountainTile,      vTiles2 tile $40
+	tileframe AnimateKantoWaterTile,    $0:14
+	tileframe ScrollTileUp,             $0:10
+	tileframe ScrollTileDown,           $0:11
+	tileframe ScrollTileLeft,           $0:12
+	tileframe ScrollTileRight,          $0:13
+	tileframe AnimateKantoFlowerTile,   $0:03
+	tileframe ScrollTileUp,             $0:10
+	tileframe ScrollTileDown,           $0:11
+	tileframe ScrollTileLeft,           $0:12
+	tileframe ScrollTileRight,          $0:13
+	tileframe AnimateWaterfallTiles,    $0:6b
+	tileframe AnimateFountainTile,      $0:40
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetPortAnim::
-	tileframe AnimateWaterTile,         vTiles2 tile $14
+	tileframe AnimateWaterTile,         $0:14
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -56,22 +69,22 @@ TilesetPortAnim::
 	tileframe DoneTileAnimation
 
 TilesetGymAnim::
-	tileframe AnimateWaterTile,         vTiles2 tile $28
+	tileframe AnimateWaterTile,         $0:28
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateLavaBubbleTile2,   vTiles2 tile $38
-	tileframe AnimateLavaBubbleTile1,   vTiles2 tile $5b
+	tileframe AnimateLavaBubbleTile2,   $0:38
+	tileframe AnimateLavaBubbleTile1,   $0:5b
 	tileframe DoNothing
-	tileframe AnimateWaterfallTiles,    vTiles2 tile $58
+	tileframe AnimateWaterfallTiles,    $0:58
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetTowerAnim::
-	tileframe AnimateTowerPillarTiles1, vTiles5 tile $26
-	tileframe AnimateTowerPillarTiles2, vTiles5 tile $2a
-	tileframe AnimateTowerPillarTiles3, vTiles5 tile $2c
-	tileframe AnimateTowerPillarTiles4, vTiles5 tile $2f
+	tileframe AnimateTowerPillarTiles1, $1:26
+	tileframe AnimateTowerPillarTiles2, $1:2a
+	tileframe AnimateTowerPillarTiles3, $1:2c
+	tileframe AnimateTowerPillarTiles4, $1:2f
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -82,41 +95,41 @@ TilesetTowerAnim::
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      vTiles2 tile $25
+	tileframe ScrollTileRightLeft,      $0:25
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileUp,             vTiles2 tile $4e
-	tileframe ScrollTileDown,           vTiles2 tile $4f
-	tileframe ScrollTileLeft,           vTiles2 tile $5e
-	tileframe ScrollTileRight,          vTiles2 tile $5f
+	tileframe ScrollTileUp,             $0:4e
+	tileframe ScrollTileDown,           $0:4f
+	tileframe ScrollTileLeft,           $0:5e
+	tileframe ScrollTileRight,          $0:5f
 	tileframe FlickeringCaveEntrancePalette
-	tileframe AnimateWaterfallTiles,    vTiles2 tile $26
+	tileframe AnimateWaterfallTiles,    $0:26
 	tileframe FlickeringCaveEntrancePalette
-	tileframe AnimateLavaBubbleTile2,   vTiles2 tile $3c
-	tileframe AnimateLavaBubbleTile1,   vTiles2 tile $3d
+	tileframe AnimateLavaBubbleTile2,   $0:3c
+	tileframe AnimateLavaBubbleTile1,   $0:3d
 	tileframe DoneTileAnimation
 
 TilesetPeaksAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      vTiles2 tile $25
+	tileframe ScrollTileRightLeft,      $0:25
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
-	tileframe AnimateWaterfallTiles,    vTiles2 tile $26
+	tileframe AnimateWaterfallTiles,    $0:26
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoneTileAnimation
 
 TilesetParkAnim::
-	tileframe AnimateWaterTile,         vTiles2 tile $14
+	tileframe AnimateWaterTile,         $0:14
 	tileframe DoNothing
-	tileframe AnimateFountainTile,      vTiles2 tile $15
+	tileframe AnimateFountainTile,      $0:15
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateFlowerTile,        vTiles2 tile $03
+	tileframe AnimateFlowerTile,        $0:03
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe StandingTileFrame8
@@ -124,7 +137,7 @@ TilesetParkAnim::
 
 TilesetIcePathAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      vTiles2 tile $10
+	tileframe ScrollTileRightLeft,      $0:10
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe DoNothing
@@ -138,31 +151,31 @@ TilesetIcePathAnim::
 	tileframe DoneTileAnimation
 
 TilesetForestAnim::
-	tileframe AnimateWaterTile,         vTiles2 tile $14
+	tileframe AnimateWaterTile,         $0:14
 	tileframe DoNothing
-	tileframe AnimateForestTreeTiles,   vTiles2 tile $50
-	tileframe AnimateForestTreeTiles,   vTiles2 tile $50
+	tileframe AnimateForestTreeTiles,   $0:50
+	tileframe AnimateForestTreeTiles,   $0:50
 	tileframe DoNothing
-	tileframe AnimateFlowerTile,        vTiles2 tile $03
+	tileframe AnimateFlowerTile,        $0:03
 	tileframe DoNothing
-	tileframe AnimateWaterfallTiles,    vTiles2 tile $42
+	tileframe AnimateWaterfallTiles,    $0:42
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetSafariZoneAnim::
-	tileframe AnimateKantoWaterTile,    vTiles2 tile $14
+	tileframe AnimateKantoWaterTile,    $0:14
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateKantoFlowerTile,   vTiles2 tile $03
+	tileframe AnimateKantoFlowerTile,   $0:03
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetFarawayIslandAnim::
-	tileframe AnimateFarawayWaterTiles, vTiles2 tile $14
+	tileframe AnimateFarawayWaterTiles, $0:14
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -174,7 +187,7 @@ TilesetFarawayIslandAnim::
 	tileframe DoneTileAnimation
 
 TilesetTraditionalHouseAnim::
-	tileframe AnimateFireTiles,         vTiles2 tile $6d
+	tileframe AnimateFireTiles,         $0:6d
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -183,9 +196,9 @@ TilesetTraditionalHouseAnim::
 
 TilesetTunnelAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,      vTiles2 tile $26
+	tileframe ScrollTileRightLeft,      $0:26
 	tileframe FlickeringCaveEntrancePalette
-	tileframe AnimateLCDTile,           vTiles2 tile $5e
+	tileframe AnimateLCDTile,           $0:5e
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -198,19 +211,19 @@ TilesetTunnelAnim::
 
 TilesetShamoutiIslandAnim::
 TilesetValenciaIslandAnim::
-	tileframe AnimateFarawayWaterTiles, vTiles2 tile $14
+	tileframe AnimateFarawayWaterTiles, $0:14
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateFlowerTile,        vTiles2 tile $03
+	tileframe AnimateFlowerTile,        $0:03
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetSnowtopMountainAnim::
-	tileframe AnimateTinyWaterTiles,    vTiles2 tile $0a
+	tileframe AnimateTinyWaterTiles,    $0:0a
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -222,15 +235,15 @@ TilesetSnowtopMountainAnim::
 	tileframe DoneTileAnimation
 
 TilesetHideoutAnim::
-	tileframe AnimateSpinnerTile,       vTiles2 tile $08
+	tileframe AnimateSpinnerTile,       $0:08
 TilesetFacilityAnim::
-	tileframe AnimateTurbineTiles,      vTiles2 tile $6c
+	tileframe AnimateTurbineTiles,      $0:6c
 	tileframe StandingTileFrame8
 	tileframe DoNothing
-	tileframe AnimateTurbineTiles,      vTiles2 tile $6c
+	tileframe AnimateTurbineTiles,      $0:6c
 	tileframe StandingTileFrame8
 	tileframe DoNothing
-	tileframe AnimateTurbineTiles,      vTiles2 tile $6c
+	tileframe AnimateTurbineTiles,      $0:6c
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
