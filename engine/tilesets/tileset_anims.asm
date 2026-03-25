@@ -446,10 +446,9 @@ AnimateTowerPillarTiles1:
 	ld b, h
 	ld c, l
 
-	; period 8, offset to pointer table (2 bytes)
+	; period 8, every 2 frames, offset to pointer table (2 bytes)
 	ld a, [wTileAnimationTimer]
-	maskbits 8
-	add a
+	maskbits 8, 1
 
 	add LOW(.TowerPillarTiles1Pointers)
 	ld l, a
@@ -480,10 +479,9 @@ AnimateTowerPillarTiles2:
 	ld b, h
 	ld c, l
 
-	; period 8, offset to pointer table (2 bytes)
+	; period 8, every 2 frames, offset to pointer table (2 bytes)
 	ld a, [wTileAnimationTimer]
-	maskbits 8
-	add a
+	maskbits 8, 1
 
 	add LOW(.TowerPillarTiles2Pointers)
 	ld l, a
@@ -514,10 +512,9 @@ AnimateTowerPillarTiles3:
 	ld b, h
 	ld c, l
 
-	; period 8, offset to pointer table (2 bytes)
+	; period 8, every 2 frames, offset to pointer table (2 bytes)
 	ld a, [wTileAnimationTimer]
-	maskbits 8
-	add a
+	maskbits 8, 1
 
 	add LOW(.TowerPillarTiles3Pointers)
 	ld l, a
@@ -548,10 +545,9 @@ AnimateTowerPillarTiles4:
 	ld b, h
 	ld c, l
 
-	; period 8, offset to pointer table (2 bytes)
+	; period 8, every 2 frames, offset to pointer table (2 bytes)
 	ld a, [wTileAnimationTimer]
-	maskbits 8
-	add a
+	maskbits 8, 1
 
 	add LOW(.TowerPillarTiles4Pointers)
 	ld l, a
