@@ -263,7 +263,7 @@ endr
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_NEVER_SHINY
-	jr z, .not_shiny
+	jr z, .shiny
 	cp BATTLETYPE_GROTTO
 	jr z, .not_shiny
 
