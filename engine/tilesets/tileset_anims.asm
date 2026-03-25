@@ -466,14 +466,14 @@ AnimateTowerPillarTiles1:
 	jmp WriteFourTilesHLToDE
 
 .TowerPillarTiles1Pointers:
-	dw vTiles5 tile $32 + 4 * 0 tiles ; 0
-	dw vTiles5 tile $32 + 4 * 1 tiles ; 1
-	dw vTiles5 tile $32 + 4 * 2 tiles ; 2
-	dw vTiles5 tile $32 + 4 * 3 tiles ; 3
-	dw vTiles5 tile $32 + 4 * 4 tiles ; 4
-	dw vTiles5 tile $32 + 4 * 3 tiles ; 5
-	dw vTiles5 tile $32 + 4 * 2 tiles ; 6
-	dw vTiles5 tile $32 + 4 * 1 tiles ; 7
+	dw vTiles5 tile $2c + 4 * 0 tiles ; 0
+	dw vTiles5 tile $2c + 4 * 1 tiles ; 1
+	dw vTiles5 tile $2c + 4 * 2 tiles ; 2
+	dw vTiles5 tile $2c + 4 * 3 tiles ; 3
+	dw vTiles5 tile $2c + 4 * 4 tiles ; 4
+	dw vTiles5 tile $2c + 4 * 3 tiles ; 5
+	dw vTiles5 tile $2c + 4 * 2 tiles ; 6
+	dw vTiles5 tile $2c + 4 * 1 tiles ; 7
 
 AnimateTowerPillarTiles2:
 	ld hl, sp + 0
@@ -497,17 +497,17 @@ AnimateTowerPillarTiles2:
 	ld a, 1
 	ldh [rVBK], a
 
-	jmp WriteTwoTilesHLToDE
+	jmp WriteThreeTilesHLToDE
 
 .TowerPillarTiles2Pointers:
-	dw vTiles5 tile $46 + 2 * 0 tiles ; 0
-	dw vTiles5 tile $46 + 2 * 1 tiles ; 1
-	dw vTiles5 tile $46 + 2 * 2 tiles ; 2
-	dw vTiles5 tile $46 + 2 * 3 tiles ; 3
-	dw vTiles5 tile $46 + 2 * 4 tiles ; 4
-	dw vTiles5 tile $46 + 2 * 3 tiles ; 5
-	dw vTiles5 tile $46 + 2 * 2 tiles ; 6
-	dw vTiles5 tile $46 + 2 * 1 tiles ; 7
+	dw vTiles5 tile $41 + 3 * 0 tiles ; 0
+	dw vTiles5 tile $41 + 3 * 1 tiles ; 1
+	dw vTiles5 tile $41 + 3 * 2 tiles ; 2
+	dw vTiles5 tile $41 + 3 * 3 tiles ; 3
+	dw vTiles5 tile $41 + 3 * 4 tiles ; 4
+	dw vTiles5 tile $41 + 3 * 3 tiles ; 5
+	dw vTiles5 tile $41 + 3 * 2 tiles ; 6
+	dw vTiles5 tile $41 + 3 * 1 tiles ; 7
 
 AnimateTowerPillarTiles3:
 	ld hl, sp + 0
@@ -534,14 +534,14 @@ AnimateTowerPillarTiles3:
 	jmp WriteThreeTilesHLToDE
 
 .TowerPillarTiles3Pointers:
-	dw vTiles5 tile $50 + 3 * 0 tiles ; 0
-	dw vTiles5 tile $50 + 3 * 1 tiles ; 1
-	dw vTiles5 tile $50 + 3 * 2 tiles ; 2
-	dw vTiles5 tile $50 + 3 * 3 tiles ; 3
-	dw vTiles5 tile $50 + 3 * 4 tiles ; 4
-	dw vTiles5 tile $50 + 3 * 3 tiles ; 5
-	dw vTiles5 tile $50 + 3 * 2 tiles ; 6
-	dw vTiles5 tile $50 + 3 * 1 tiles ; 7
+	dw vTiles5 tile $51 + 3 * 0 tiles ; 0
+	dw vTiles5 tile $51 + 3 * 1 tiles ; 1
+	dw vTiles5 tile $51 + 3 * 2 tiles ; 2
+	dw vTiles5 tile $51 + 3 * 3 tiles ; 3
+	dw vTiles5 tile $51 + 3 * 4 tiles ; 4
+	dw vTiles5 tile $51 + 3 * 3 tiles ; 5
+	dw vTiles5 tile $51 + 3 * 2 tiles ; 6
+	dw vTiles5 tile $51 + 3 * 1 tiles ; 7
 
 AnimateTowerPillarTiles4:
 	ld hl, sp + 0
@@ -568,14 +568,14 @@ AnimateTowerPillarTiles4:
 	jmp WriteThreeTilesHLToDE
 
 .TowerPillarTiles4Pointers:
-	dw vTiles5 tile $60 + 3 * 0 tiles ; 0
-	dw vTiles5 tile $60 + 3 * 1 tiles ; 1
-	dw vTiles5 tile $60 + 3 * 2 tiles ; 2
-	dw vTiles5 tile $60 + 3 * 3 tiles ; 3
-	dw vTiles5 tile $60 + 3 * 4 tiles ; 4
-	dw vTiles5 tile $60 + 3 * 3 tiles ; 5
-	dw vTiles5 tile $60 + 3 * 2 tiles ; 6
-	dw vTiles5 tile $60 + 3 * 1 tiles ; 7
+	dw vTiles5 tile $61 + 3 * 0 tiles ; 0
+	dw vTiles5 tile $61 + 3 * 1 tiles ; 1
+	dw vTiles5 tile $61 + 3 * 2 tiles ; 2
+	dw vTiles5 tile $61 + 3 * 3 tiles ; 3
+	dw vTiles5 tile $61 + 3 * 4 tiles ; 4
+	dw vTiles5 tile $61 + 3 * 3 tiles ; 5
+	dw vTiles5 tile $61 + 3 * 2 tiles ; 6
+	dw vTiles5 tile $61 + 3 * 1 tiles ; 7
 
 AnimateWhirlpoolTiles:
 	ld hl, sp + 0

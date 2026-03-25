@@ -83,10 +83,10 @@ TilesetGymAnim::
 	tileframe DoneTileAnimation
 
 TilesetTowerAnim::
-	tileframe AnimateTowerPillarTiles1, $1:26
-	tileframe AnimateTowerPillarTiles2, $1:2a
-	tileframe AnimateTowerPillarTiles3, $1:2c
-	tileframe AnimateTowerPillarTiles4, $1:2f
+	tileframe AnimateTowerPillarTiles1, $1:70
+	tileframe AnimateTowerPillarTiles2, $1:74
+	tileframe AnimateTowerPillarTiles3, $1:26
+	tileframe AnimateTowerPillarTiles4, $1:29
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
