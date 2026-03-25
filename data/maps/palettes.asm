@@ -82,6 +82,7 @@ ENDM
 	special_bg_pal map,      SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                PAL_SINGLE,    MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              PAL_SINGLE,    EmbeddedTowerPalette
+	special_bg_pal landmark, SPROUT_TOWER,                PAL_SINGLE,    SproutTowerPalette
 	special_bg_pal landmark, WHIRL_ISLANDS,               PAL_SINGLE,    WhirlIslandsPalette
 	special_bg_pal landmark, MT_MORTAR,                   PAL_SINGLE,    DarkCavePalette
 	special_bg_pal landmark, DARK_CAVE,                   PAL_SINGLE,    DarkCavePalette
@@ -856,6 +857,19 @@ endr
 	RGB_MONOCHROME_BLACK
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+SproutTowerPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/sprout_tower.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
