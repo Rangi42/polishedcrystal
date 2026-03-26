@@ -36,7 +36,7 @@ MapGroupRoofs:
 	db -1             ; 31
 	db -1             ; 32
 	db -1             ; 33
-	db ROOF_AZALEA    ; 34 (Sinjoh Ruins)
+	db ROOF_SINJOH    ; 34 (Sinjoh Ruins)
 	db -1             ; 35
 	db ROOF_VIOLET    ; 36 (Rugged Road)
 	db -1             ; 37
