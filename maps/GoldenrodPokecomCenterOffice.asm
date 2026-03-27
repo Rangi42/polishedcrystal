@@ -179,13 +179,24 @@ VulcanComputerScript:
 	done
 
 AdminSourText:
-	text "Sour: TODO"
+	text "Sour: How do you"
+	line "like the move"
+
+	para "animations in"
+	line "battles?"
+
+	para "I really like to"
+	line "make every move"
+	cont "a joy to use!"
 	done
 
 SourComputerScript:
 	jumpthistext
 
-	text "TODO"
+	text "There's a goofy"
+	line "image of an egg-"
+	cont "shaped man with"
+	cont "a moustache."
 	done
 
 AdminEldredScript:
@@ -195,7 +206,7 @@ AdminEldredScript:
 	promptbutton
 	jumpthisopenedtext
 
-	text "A mischevious"
+	text "A mischievous"
 	line "Meowth is pawing"
 	cont "at the keyboard."
 	done
