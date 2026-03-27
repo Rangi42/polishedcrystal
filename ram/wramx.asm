@@ -282,7 +282,6 @@ wBattleKeyItemsPocketScrollPosition:: db
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
-UNION
 wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
 wStringBuffer2:: ds STRING_BUFFER_LENGTH
 wStringBuffer3:: ds STRING_BUFFER_LENGTH
@@ -317,7 +316,6 @@ wTempPocketCursor:: ds NUM_POCKETS
 NEXTU
 wCandyMaxLevelExp:: ds 3
 wCandyPrevLevel:: db
-ENDU
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -1186,7 +1184,9 @@ wHallOfFameCount:: dw
 wTradeFlags:: flag_array PARTY_LENGTH
 
 wMooMooBerries:: db
-wUndergroundSwitchPositions:: db
+
+	ds 1 ; unused
+
 wFarfetchdPosition:: db
 
 ; map triggers

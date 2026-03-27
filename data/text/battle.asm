@@ -823,6 +823,11 @@ IsHurtText:
 	line "is hurt!"
 	prompt
 
+IsTormentedText:
+	text "<USER>"
+	line "is tormented!"
+	prompt
+
 AttackMissedText:
 	text "<USER>'s"
 	line "attack missed!"

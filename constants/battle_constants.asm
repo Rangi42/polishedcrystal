@@ -26,6 +26,30 @@ DEF NO_EFFECT          EQU 0.0q4 ; $00
 ; enemy AI behavior
 DEF BASE_AI_SWITCH_SCORE EQU 10
 
+; ability flags
+; Source: https://docs.google.com/spreadsheets/d/e/2PACX-1vRmcfT9SNSGFGbx7-HAg9xdiTwI7x-DRTJ4AZbkmhYaSTRlqOX5F7cUBM7CT4p-oLe5RFQxfp5Xiu5t/pubhtml
+; NO_COPY is a merge of no role play/receiver/entrain in the above
+; table, because they are always identical.
+	const_def
+	const ABILFLAG_NO_COPY_F ; see above
+	const ABILFLAG_NO_TRACE_F ; prevents Trace
+	const ABILFLAG_NO_SWAP_F ; prevents Skill Swap and Wandering Spirit
+	const ABILFLAG_NO_SUPPRESS_F ; prevents Gastro Acid, Mummy, NGas and Simple Beam
+	const ABILFLAG_IGNORABLE_F ; ignored by Mold Breaker
+	const ABILFLAG_NO_TRANSFORM_F ; unusable if transformed
+	const ABILFLAG_NO_INTIMIDATE_F ; unaffected by Intimidate, Polished only
+	; note that Neutralizing Gas cannot suppress Neutralizing Gas, but can be
+	; suppressed otherwise. This is implemented as a 9th flag in mainline, but
+	; since it only concerns a single ability, is special cased instead.
+
+def ABILFLAG_NO_COPY       EQU 1 << ABILFLAG_NO_COPY_F
+def ABILFLAG_NO_TRACE      EQU 1 << ABILFLAG_NO_TRACE_F
+def ABILFLAG_NO_SWAP       EQU 1 << ABILFLAG_NO_SWAP_F
+def ABILFLAG_NO_SUPPRESS   EQU 1 << ABILFLAG_NO_SUPPRESS_F
+def ABILFLAG_IGNORABLE     EQU 1 << ABILFLAG_IGNORABLE_F
+def ABILFLAG_NO_TRANSFORM  EQU 1 << ABILFLAG_NO_TRANSFORM_F
+def ABILFLAG_NO_INTIMIDATE EQU 1 << ABILFLAG_NO_INTIMIDATE_F
+
 ; affection levels (see data/battle/affection_thresholds.asm)
 	const_def
 	const AFFECTION_LEVEL_0 ; no bonuses

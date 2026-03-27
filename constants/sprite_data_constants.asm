@@ -41,42 +41,47 @@ ENDM
 	ow_npc_pal_const AZURE             ; 0a
 	ow_npc_pal_const WHITE             ; 0b
 	ow_npc_pal_const BLACK             ; 0c
-	ow_npc_pal_const TAN               ; 0d
-	ow_npc_pal_const POKE_BALL         ; 0e (red)
-	ow_npc_pal_const DECO_ITEM         ; 0f (blue)
-	ow_npc_pal_const KEY_ITEM          ; 10 (green)
-	ow_npc_pal_const MARLON            ; 11
-	ow_npc_pal_const SAILBOAT          ; 12
-	ow_npc_pal_const RAIN              ; 13
-	ow_npc_pal_const SAND              ; 14
+	ow_npc_pal_const TAN               ; 0d (necessary for mon pal nybbles)
+	ow_npc_pal_const DARK_RED          ; 0e
+	ow_npc_pal_const DARK_BLUE         ; 0f
+	ow_npc_pal_const DARK_GREEN        ; 10
+	ow_npc_pal_const DARK_PURPLE       ; 11
+	ow_npc_pal_const ENV_RED           ; 12 (for item balls)
+	ow_npc_pal_const ENV_BLUE          ; 13 (for decoration balls)
+	ow_npc_pal_const ENV_GREEN         ; 14 (for key item balls)
+	ow_npc_pal_const ENV_YELLOW        ; 15 (for tm/hm balls)
+	ow_npc_pal_const ENV_WHITE         ; 16
+	ow_npc_pal_const SAILBOAT          ; 17
+	ow_npc_pal_const RAIN              ; 18
+	ow_npc_pal_const SAND              ; 19
 DEF NUM_OW_TIME_OF_DAY_PALS EQU const_value
 ; SingleObjectPals indexes (see gfx/overworld/npc_single_object.pal)
-	ow_npc_pal_const EMOTE_GRAY        ; 15
-	ow_npc_pal_const EMOTE_BLACK       ; 16
-	ow_npc_pal_const EMOTE_GREEN       ; 17
-	ow_npc_pal_const EMOTE_PURPLE      ; 18
-	ow_npc_pal_const EMOTE_RED         ; 19
-	ow_npc_pal_const EMOTE_ORANGE      ; 1a
-	ow_npc_pal_const EMOTE_BLUE        ; 1b
-	ow_npc_pal_const ELECTRIC_FENCE    ; 1c
-	ow_npc_pal_const LIGHTNING_CRYSTAL ; 1d
-	ow_npc_pal_const ROCK_CRYSTAL      ; 1e
-	ow_npc_pal_const N64               ; 1f
-	ow_npc_pal_const POKECOM_SIGN      ; 20
-	ow_npc_pal_const RANGI             ; 21
-	ow_npc_pal_const DRILL             ; 22
-	ow_npc_pal_const PEARL             ; 23
-	ow_npc_pal_const TINY_WINDOW       ; 24
+	ow_npc_pal_const EMOTE_GRAY        ; 1a
+	ow_npc_pal_const EMOTE_BLACK       ; 1b
+	ow_npc_pal_const EMOTE_GREEN       ; 1c
+	ow_npc_pal_const EMOTE_PURPLE      ; 1d
+	ow_npc_pal_const EMOTE_RED         ; 1e
+	ow_npc_pal_const EMOTE_ORANGE      ; 1f
+	ow_npc_pal_const EMOTE_BLUE        ; 20
+	ow_npc_pal_const ELECTRIC_FENCE    ; 21
+	ow_npc_pal_const LIGHTNING_CRYSTAL ; 22
+	ow_npc_pal_const ROCK_CRYSTAL      ; 23
+	ow_npc_pal_const N64               ; 24
+	ow_npc_pal_const POKECOM_SIGN      ; 25
+	ow_npc_pal_const RANGI             ; 26
+	ow_npc_pal_const DRILL             ; 27
+	ow_npc_pal_const PEARL             ; 28
+	ow_npc_pal_const TINY_WINDOW       ; 29
 DEF NUM_OW_INDIVIDUAL_PALS EQU const_value - NUM_OW_TIME_OF_DAY_PALS
 DEF FIRST_COPY_BG_PAL EQU const_value
-	ow_npc_pal_const COPY_BG_GRAY      ; 25
-	ow_npc_pal_const COPY_BG_RED       ; 26
-	ow_npc_pal_const COPY_BG_GREEN     ; 27
-	ow_npc_pal_const COPY_BG_WATER     ; 28
-	ow_npc_pal_const COPY_BG_YELLOW    ; 29
-	ow_npc_pal_const COPY_BG_BROWN     ; 2a
-	ow_npc_pal_const COPY_BG_ROOF      ; 2b
-	ow_npc_pal_const COPY_BG_TEXT      ; 2c
+	ow_npc_pal_const COPY_BG_GRAY      ; 2a
+	ow_npc_pal_const COPY_BG_RED       ; 2b
+	ow_npc_pal_const COPY_BG_GREEN     ; 2c
+	ow_npc_pal_const COPY_BG_WATER     ; 2d
+	ow_npc_pal_const COPY_BG_YELLOW    ; 2e
+	ow_npc_pal_const COPY_BG_BROWN     ; 2f
+	ow_npc_pal_const COPY_BG_ROOF      ; 30
+	ow_npc_pal_const COPY_BG_TEXT      ; 31
 DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value
 
@@ -109,7 +114,7 @@ ENDM
 	ow_mon_pal_const WHITE
 	ow_mon_pal_const BLACK
 	ow_mon_pal_const TAN
-DEF NUM_OW_MON_PALS EQU const_value & 0x0f
+DEF NUM_OW_MON_PALS EQU const_value & $0f
 assert NUM_OW_MON_PALS <= 16
 
 for i, NUM_OW_MON_PALS - 1
@@ -120,3 +125,5 @@ for i, NUM_OW_MON_PALS - 1
 		DEF PAL_MON_{{nyb_2}}_{{nyb_1}} EQU ((j << 4) | i) + 1
 	endr
 endr
+
+PURGE PAL_OW_YELLOW, PAL_OW_WHITE

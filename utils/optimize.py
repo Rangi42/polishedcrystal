@@ -597,6 +597,16 @@ patterns = {
 	(lambda line3, prev: re.match(r'ld \[w.*?\], a', line3.code)
 		and line3.code.split(', ')[0].lstrip('ld ') == prev[0].code.split(', ')[-1]),
 ],
+'Save+restore VBK and WBK': [
+	# Bad: ldh a, [rVBK] / push af / ldh a, [rWBK] / push af / ... /
+	#      pop af / ldh [rWBK], a / pop af / ldh [rVBK], a
+	# Good: ldh a, [rVBK] / rra / ldh a, [rWBK] / push af / ... /
+	#       pop af / ldh [rWBK], a / rla / ldh [rVBK], a
+	(lambda line1, prev: re.match(r'ldh? a, \[r([VW]|SV)BK\]', line1.code)),
+	(lambda line2, prev: line2.code == 'push af'),
+	(lambda line3, prev: re.match(r'ldh? a, \[r([VW]|SV)BK\]', line3.code)),
+	(lambda line4, prev: line4.code == 'push af'),
+],
 'Trailing string space': [
 	# Bad: text "Hello! " (unless it's followed by a text command)
 	# Good: text "Hello!"

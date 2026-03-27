@@ -562,7 +562,4 @@ INCLUDE "audio/music/stadium/mewtwobattle.asm"
 SECTION "Song - m02/lugiassong", ROMX
 INCLUDE "audio/music/m02/lugiassong.asm"
 
-SECTION "Song - undertale/megalovania", ROMX
-INCLUDE "audio/music/undertale/megalovania.asm"
-
 ENDSECTION

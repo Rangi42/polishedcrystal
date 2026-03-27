@@ -4,6 +4,7 @@ PowerPlant_MapScriptHeader:
 	scene_const SCENE_POWERPLANT_GUARD_GETS_PHONE_CALL
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, PowerPlantTurbinesCallback
 
 	def_warp_events
 	warp_event  2, 17, ROUTE_10_NORTH, 2
@@ -29,6 +30,16 @@ PowerPlant_MapScriptHeader:
 	const POWERPLANT_OFFICER1
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2
+
+PowerPlantTurbinesCallback:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalsefwd .Done
+	changeblock 12, 6, $12
+	changeblock 14, 6, $47
+	changeblock 12, 12, $16
+	changeblock 12, 14, $16
+.Done:
+	endcallback
 
 PowerPlantGuardPhoneScript:
 	playsound SFX_CALL
@@ -143,7 +154,8 @@ PowerPlantManager:
 
 .FoundMachinePart:
 	writetext PowerPlantManagerThatsThePartText
-	promptbutton
+	waitbutton
+	closetext
 	takekeyitem MACHINE_PART
 	clearevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
@@ -152,7 +164,19 @@ PowerPlantManager:
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	setmapscene ROUTE_10_NORTH, SCENE_ROUTE10NORTH_NOOP
 	clearevent EVENT_LAWRENCE_ROUTE_10
-	writetext PowerPlantManagerTakeThisTMText
+	playsound SFX_SLOT_MACHINE_START
+	special FadeOutPalettes
+	special LoadMapPalettes
+	pause 10
+	special FadeInPalettes_EnableDynNoApply
+	changeblock 12, 6, $12
+	changeblock 14, 6, $47
+	changeblock 12, 12, $16
+	changeblock 12, 14, $16
+	refreshmap
+	pause 30
+	opentext
+	writetext PowerPlantManagerYouDeserveARewardText
 	waitbutton
 PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorZapCannon
@@ -298,13 +322,18 @@ PowerPlantManagerThatsThePartText:
 	para "That's the missing"
 	line "part from my be-"
 	cont "loved generator!"
-	cont "You found it?"
+
+	para "You found it?"
+	line "Wahah! Thanks!"
+
+	para "Let's get my"
+	line "generator up and"
+	cont "running!"
 	done
 
-PowerPlantManagerTakeThisTMText:
-	text "Wahah! Thanks!"
-	line "You deserve a"
-	cont "reward!"
+PowerPlantManagerYouDeserveARewardText:
+	text "You deserve a"
+	line "reward!"
 	done
 
 Text_PowerPlantTutorZapCannon:

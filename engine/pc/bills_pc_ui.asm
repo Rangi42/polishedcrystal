@@ -52,9 +52,9 @@ _BillsPC:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	call ReturnToMapFromSubmenu
 	pop af
@@ -123,7 +123,7 @@ BillsPC_LoadUI:
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
 	ld de, vTiles3 tile $24
-	lb bc, BANK(BillsPC_ObjGFX), 23
+	lb bc, BANK(BillsPC_ObjGFX), 27
 	call DecompressRequest2bpp
 
 	xor a
@@ -158,10 +158,12 @@ BillsPC_LoadUI:
 	dec [hl]
 
 	; Gender symbols and shiny star
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $42
-	lb bc, BANK(BattleExtrasGFX), 3
-	call DecompressRequest2bpp
+	ld de, wBillsPC_ItemVWF
+	farcall CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile $42
+	ld de, wBillsPC_ItemVWF
+	lb bc, BANK(@), 3
+	call Get2bpp
 
 	; Box frame tiles and Pokérus symbols
 	ld hl, BillsPC_TileGFX
@@ -305,9 +307,9 @@ UseBillsPC:
 
 	; Set up for HBlank palette switching
 	ld a, LOW(wLCDBillsPC1)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	ld hl, rIE
 	set B_IE_STAT, [hl]
 
@@ -435,7 +437,9 @@ BillsPC_BlankTiles:
 
 BillsPC_SetCursorMode:
 	call _BillsPC_SetCursorMode
-	jmp BillsPC_SetPals
+BillsPC_SetPals:
+	call BillsPC_ApplyPals
+	jmp SetDefaultBGPAndOBP
 
 _BillsPC_SetCursorMode:
 ; Switches cursor mode and updates the cursor palette. Doesn't write palettes,
@@ -3531,10 +3535,6 @@ BillsPC_PlaceHeldMon:
 	ld [wBillsPC_CursorHeldSlot], a
 	ret
 
-BillsPC_SetPals:
-	call BillsPC_ApplyPals
-	jmp SetDefaultBGPAndOBP
-
 BillsPC_ApplyPals:
 ; Sets palettes. This writes palette data for HBlank row1 mons/etc into
 ; wBGPals1. This avoids wrong palette flickering for a single frame.
@@ -3705,9 +3705,9 @@ endr
 
 	; prepare for partymon write
 	ld a, LOW(wLCDBillsPC2)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC2)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop bc
 	pop hl
 .donepc
@@ -3781,9 +3781,9 @@ endr
 	dec c
 	jr nz, .busyloop
 	ld a, LOW(wLCDBillsPC3)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC3)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl
@@ -3820,9 +3820,9 @@ endr
 	pop af
 	ldh [rWBK], a
 	ld a, LOW(wLCDBillsPC1)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl

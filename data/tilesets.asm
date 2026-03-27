@@ -3,14 +3,16 @@ SECTION "Tileset Headers", ROMX
 MACRO tileset
 	dbas \1Meta, \1Coll, \1Attr
 	dba \1GFX0, \1GFX1, \1GFX2
-	dw \1Anim ; BANK(_AnimateTileset)
+	fardw \1Anim
 ENDM
 
 Tilesets::
 ; entries correspond to TILESET_* constants (see constants/tileset_constants.asm)
 	table_width TILESET_LENGTH
+	farbank _AnimateTileset
 	tileset TilesetJohtoTraditional
 	tileset TilesetJohtoModern
+	tileset TilesetJohtoCoast
 	tileset TilesetJohtoOutlands
 	tileset TilesetJohtoAncient
 	tileset TilesetBattleTowerOutside
@@ -66,6 +68,7 @@ SECTION "Tileset Graphics - johto common vram0", ROMX
 
 TilesetJohtoTraditionalGFX0::
 TilesetJohtoModernGFX0::
+TilesetJohtoCoastGFX0::
 TilesetJohtoOutlandsGFX0::
 TilesetJohtoAncientGFX0::
 TilesetBattleTowerOutsideGFX0::
@@ -93,12 +96,14 @@ TilesetJohtoTraditionalColl:: INCBIN "data/tilesets/johto_traditional_collision.
 
 SECTION "Tileset Graphics - johto modern vram1", ROMX
 
-TilesetJohtoModernGFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lzp"
+TilesetJohtoModernGFX1::
+TilesetJohtoCoastGFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - johto modern vram2", ROMX
 
-TilesetJohtoModernGFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lzp"
+TilesetJohtoModernGFX2::
+TilesetJohtoCoastGFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - johto modern", ROMX
@@ -106,6 +111,13 @@ SECTION "Tileset Data - johto modern", ROMX
 TilesetJohtoModernMeta:: INCBIN "data/tilesets/johto_modern_metatiles.bin.lzp"
 TilesetJohtoModernAttr:: INCBIN "data/tilesets/johto_modern_attributes.bin.lzp"
 TilesetJohtoModernColl:: INCBIN "data/tilesets/johto_modern_collision.bin.lzp"
+
+
+SECTION "Tileset Data - johto coast", ROMX
+
+TilesetJohtoCoastMeta:: INCBIN "data/tilesets/johto_coast_metatiles.bin.lzp"
+TilesetJohtoCoastAttr:: INCBIN "data/tilesets/johto_coast_attributes.bin.lzp"
+TilesetJohtoCoastColl:: INCBIN "data/tilesets/johto_coast_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - johto outlands vram1", ROMX

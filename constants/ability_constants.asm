@@ -108,6 +108,7 @@
 	const HONEY_GATHER
 	const FRISK
 	const RECKLESS
+	const BAD_DREAMS
 	const PICKPOCKET
 	const SHEER_FORCE
 	const CONTRARY

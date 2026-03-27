@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  75,  55,  70, 110,  55,  95 ; 460 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 460,  75,  55,  70,  55,  95, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  95,  55,  70, 110,  55,  95 ; 480 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 480,  75,  55,  70,  75,  95, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db GRASS, FLYING ; type

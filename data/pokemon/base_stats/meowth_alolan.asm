@@ -1,5 +1,10 @@
-	db  40,  35,  35,  90,  50,  40 ; 290 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 290,  40,  35,  35,  50,  40,  90
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 300,  40,  35,  35,  60,  40,  90
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db DARK, DARK ; type
 	db 255 ; catch rate

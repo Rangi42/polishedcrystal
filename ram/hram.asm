@@ -4,6 +4,7 @@ hScriptVar:: dw
 
 hROMBank:: db
 hROMBankBackup:: db
+
 	ds 1 ; unused
 
 hHours:: db
@@ -47,9 +48,7 @@ hPrinter:: db
 
 	ds 2 ; unused
 
-UNION
 ; math-related values
-
 UNION
 ; inputs to Multiply
 	ds 1
@@ -67,11 +66,13 @@ NEXTU
 	ds 1
 hQuotient::     ds 3
 hRemainder::    db
+NEXTU
+; PrintNum scratch space
+hPrintNum:: ds 5
 ENDU
 
 UNION
 hMathBuffer:: ds 5
-
 NEXTU
 ; FacingPlayerDistance scratch space
 hLineOfSightXLo:: db
@@ -79,11 +80,6 @@ hLineOfSightXHi:: db
 hLineOfSightYLo:: db
 hLineOfSightYHi:: db
 hTrainerSeeing::  db
-ENDU
-
-NEXTU
-; PrintNum scratch space
-hPrintNum:: ds 5
 ENDU
 
 UNION
@@ -165,7 +161,7 @@ hBattleTurn:: db
 hBattlePalFadeMode:: db
 hTimeOfDayPalOffset:: db
 NEXTU
-hChartScreen:: db
+hChartScreen:: db ; $00 = EVs, $FF = IVs
 hChartFillCoord:: db
 hChartLineCoord:: db
 NEXTU
@@ -184,7 +180,7 @@ hDelayFrameLY:: db
 
 hClockResetTrigger:: db
 
-	ds 2
+	ds 2 ; unused
 
 hRequested2bpp::        db
 hRequested1bpp::        db
@@ -227,19 +223,27 @@ hScriptPos:: dw
 hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
-	ds 7 ; unused
-
 hLCDInterruptFunction::
-hFunctionJump::     db ; $c3 jp
-hFunctionTarget::
-hFunctionTargetLo:: db ; LOW(target)
-hFunctionTargetHi:: db ; HIGH(target)
+hLCDInterruptFunctionJump::     db ; $c3 jp
+hLCDInterruptFunctionTarget::
+hLCDInterruptFunctionTargetLo:: db ; LOW(target)
+hLCDInterruptFunctionTargetHi:: db ; HIGH(target)
 
-hBitwiseOperation::
-hBitwisePrefix:: db ; $cb prefix
-hBitwiseOpcode:: db ; opcode
-hBitwiseRet::    db ; $c9 ret
+	ds 4 ; unused
 
-hSingleOperation::
-hSingleOpcode:: db ; opcode
-hSingleRet::    db ; $c9 ret
+; functions used by Judge Machine
+
+hBitwiseFunction::
+hBitwiseFunctionPrefix:: db ; $cb prefix
+hBitwiseFunctionOpcode:: db ; opcode
+hBitwiseFunctionRet::    db ; $c9 ret
+
+hSingleFunction::
+hSingleFunctionOpcode:: db ; opcode
+hSingleFunctionRet::    db ; $c9 ret
+
+hJumpFunction::
+hJumpFunctionJump::     db ; $c3 jp
+hJumpFunctionTarget::
+hJumpFunctionTargetLo:: db ; LOW(target)
+hJumpFunctionTargetHi:: db ; HIGH(target)

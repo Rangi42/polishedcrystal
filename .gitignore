@@ -14,6 +14,7 @@ gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
 gfx/pokedex/*.bin
+gfx/stats/*.bin
 gfx/title/suicune_unowns.tilemap
 
 # compiled tilesets

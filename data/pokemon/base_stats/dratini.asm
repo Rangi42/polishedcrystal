@@ -1,5 +1,5 @@
-	db  41,  64,  45,  50,  50,  50 ; 300 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 300,  41,  64,  45,  50,  50,  50
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db DRAGON, DRAGON ; type
 	db 45 ; catch rate

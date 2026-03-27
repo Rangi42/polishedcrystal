@@ -1632,50 +1632,16 @@ FishFunction:
 
 .goodtofish
 	ld d, a
-	ld a, [wFishingRodUsed]
-	ld e, a
-
-	; Suction Cups and Sticky Hold boost bite rate. This is done
-	; by having these abilities result in 2 attempts being made
-	; for getting an encounter.
-	call GetLeadAbility
-	cp SUCTION_CUPS
-	jr z, .fish_attempt1
-	cp STICKY_HOLD
-	jr nz, .fish_attempt2
-.fish_attempt1
-	push bc
-	push de
-	farcall Fish
-	ld a, d
+	call TryFishEncounter
 	and a
-	pop de
-	jr nz, .gotabite1
-	pop bc
-.fish_attempt2
-	farcall Fish
-	ld a, d
-	and a
-	jr nz, .gotabite2
-	ld a, b
-	or c
 	jr z, .nonibble
-.gotanitem
-	ld a, c
-	ld [wCurItem], a
+	dec a
+	jr z, .gotabite
+	; got item
 	ld a, $5
 	ret
 
-.gotabite1
-	pop de ; we no longer care about d
-.gotabite2
-	ld [wCurPartyLevel], a
-	ld a, c
-	ld [wTempWildMonSpecies], a
-	ld a, b
-	ld [wWildMonForm], a
-	ld a, BATTLETYPE_FISH
-	ld [wBattleType], a
+.gotabite
 	ld a, $2
 	ret
 
@@ -1722,6 +1688,18 @@ FishFunction:
 Script_NotEvenANibble:
 	scall Script_FishCastRod
 	farwritetext _RodNothingText
+	yesorno
+	iffalsefwd .StopFishing
+	callasm RetryFishing
+	ifequalfwd 1, .GotABite
+	ifequalfwd 2, .GotAnItem
+	; no nibble: loop back
+	sjump Script_NotEvenANibble
+.GotABite:
+	sjumpfwd Script_GotABite
+.GotAnItem:
+	sjumpfwd Script_GotAnItem
+.StopFishing:
 	closetext
 	callasm PutTheRodAway
 	end
@@ -1823,6 +1801,73 @@ PutTheRodAway:
 CurItemToScriptVar:
 	ld a, [wCurItem]
 	ldh [hScriptVar], a
+	ret
+
+RetryFishing:
+; Retry fishing with the same rod. Sets hScriptVar to:
+; 0 = no nibble, 1 = got a bite, 2 = got an item
+	farcall GetFishingGroup
+	jr nc, .no_nibble
+	ld d, a
+	call TryFishEncounter
+	ldh [hScriptVar], a
+	ret
+.no_nibble
+	xor a
+	ldh [hScriptVar], a
+	ret
+
+TryFishEncounter:
+; Try to get a fishing encounter.
+; Input: d = fishing group
+; Output: a = 0 (no nibble), 1 (got a bite), 2 (got an item)
+; Side effects: sets up battle data for bites, wCurItem for items
+	ld a, [wFishingRodUsed]
+	ld e, a
+	; Suction Cups and Sticky Hold boost bite rate. This is done
+	; by having these abilities result in 2 attempts being made
+	; for getting an encounter.
+	call GetLeadAbility
+	cp SUCTION_CUPS
+	jr z, .attempt1
+	cp STICKY_HOLD
+	jr nz, .attempt2
+.attempt1
+	push bc
+	push de
+	farcall Fish
+	ld a, d
+	and a
+	pop de
+	jr nz, .got_bite_pop
+	pop bc
+.attempt2
+	farcall Fish
+	ld a, d
+	and a
+	jr nz, .got_bite
+	ld a, b
+	or c
+	jr z, .no_nibble
+	; got an item
+	ld a, c
+	ld [wCurItem], a
+	ld a, 2
+	ret
+.got_bite_pop
+	pop bc ; discard saved bc
+.got_bite
+	ld [wCurPartyLevel], a
+	ld a, c
+	ld [wTempWildMonSpecies], a
+	ld a, b
+	ld [wWildMonForm], a
+	ld a, BATTLETYPE_FISH
+	ld [wBattleType], a
+	ld a, 1
+	ret
+.no_nibble
+	xor a
 	ret
 
 BikeFunction:

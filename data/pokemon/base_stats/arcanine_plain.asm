@@ -1,5 +1,5 @@
-	db  90, 110,  80,  95, 100,  80 ; 555 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 555,  90, 110,  80, 100,  80,  95
+	;   bst   hp  atk  def  sat  sdf  spe
 
 if DEF(FAITHFUL)
 	db FIRE, FIRE ; type

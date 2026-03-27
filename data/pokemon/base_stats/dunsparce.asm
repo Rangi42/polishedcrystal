@@ -1,5 +1,5 @@
-	db 100,  70,  70,  45,  65,  65 ; 415 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 415, 100,  70,  70,  65,  65,  45
+	;   bst   hp  atk  def  sat  sdf  spe
 
 if DEF(FAITHFUL)
 	db NORMAL, NORMAL ; type

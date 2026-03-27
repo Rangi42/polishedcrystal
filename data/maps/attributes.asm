@@ -606,7 +606,7 @@ ENDM
 	map_attributes LakeOfRageMagikarpHouse, LAKE_OF_RAGE_MAGIKARP_HOUSE, $0, 0
 	map_attributes Route43MahoganyGate, ROUTE_43_MAHOGANY_GATE, $0, 0
 	map_attributes Route43Gate, ROUTE_43_GATE, $0, 0
-	map_attributes SinjohRuins, SINJOH_RUINS, $d5, 0
+	map_attributes SinjohRuins, SINJOH_RUINS, $8c, 0
 	map_attributes SinjohRuinsHouse, SINJOH_RUINS_HOUSE, $0, 0
 	map_attributes MystriStage, MYSTRI_STAGE, $0, 0
 	map_attributes EmbeddedTower, EMBEDDED_TOWER, $0, 0
@@ -858,7 +858,7 @@ ENDM
 	map_attributes Route30BerrySpeechHouse, ROUTE_30_BERRY_SPEECH_HOUSE, $0, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $0, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $0, 0
-	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $5, 0
+	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $0, 0
 	map_attributes PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_attributes PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
 	map_attributes ViridianForest, VIRIDIAN_FOREST, $45, 0

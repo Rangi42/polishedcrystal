@@ -16,9 +16,10 @@ HandleContinueMap:
 ResetOWMapState:
 ; reset flash if out of cave
 	ld a, [wEnvironment]
-	cp ROUTE
+	sub TOWN
 	jr z, .reset_flash
-	cp TOWN
+	assert TOWN + 1 == ROUTE
+	dec a ; cp ROUTE
 	jr nz, .keep_flash
 .reset_flash
 	ld hl, wStatusFlags

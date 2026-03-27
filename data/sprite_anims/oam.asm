@@ -95,7 +95,7 @@ SpriteAnimOAMData:
 	spriteanimoam $00, .OAMData_PcMode2                ; SPRITE_ANIM_OAMSET_PC_MODE2
 	spriteanimoam $00, .OAMData_PcPack                 ; SPRITE_ANIM_OAMSET_PC_PACK
 	spriteanimoam $00, .OAMData_DexCursor              ; SPRITE_ANIM_OAMSET_DEX_CURSOR
-	spriteanimoam $1e, .OAMData_DexUnownCursor         ; SPRITE_ANIM_OAMSET_DEX_UNOWN_CURSOR
+	spriteanimoam $1d, .OAMData_DexUnownCursor         ; SPRITE_ANIM_OAMSET_DEX_UNOWN_CURSOR
 	spriteanimoam $40, .OAMData_DexSlowpoke            ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_1
 	spriteanimoam $43, .OAMData_DexSlowpoke            ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_2
 	spriteanimoam $46, .OAMData_DexSlowpoke            ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_3

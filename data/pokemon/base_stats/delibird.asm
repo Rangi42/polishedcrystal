@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  45,  55,  45,  75,  65,  45 ; 330 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 330,  45,  55,  45,  65,  45,  75
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  55,  85,  55, 105,  95,  55 ; 450 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 440,  55,  85,  65,  85,  65,  85
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db ICE, FLYING ; type

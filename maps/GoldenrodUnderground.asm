@@ -10,9 +10,9 @@ GoldenrodUnderground_MapScriptHeader:
 	warp_event  1,  2, GOLDENROD_UNDERGROUND_ENTRANCES, 4
 	warp_event  1, 38, GOLDENROD_UNDERGROUND_ENTRANCES, 1
 	warp_event 16,  6, GOLDENROD_UNDERGROUND, 4
-	warp_event 27, 23, GOLDENROD_UNDERGROUND, 3
-	warp_event 28, 23, GOLDENROD_UNDERGROUND, 3
-	warp_event 28, 19, GOLDENROD_UNDERGROUND_SWITCH_ROOM, 1
+	warp_event 17, 23, GOLDENROD_UNDERGROUND, 3
+	warp_event 18, 23, GOLDENROD_UNDERGROUND, 3
+	warp_event 18, 19, GOLDENROD_UNDERGROUND_SWITCH_ROOM, 1
 	warp_event 19, 36, GOLDENROD_UNDERGROUND_ENTRANCES, 7
 
 	def_coord_events
@@ -48,23 +48,17 @@ GoldenrodUnderground_MapScriptHeader:
 	const GOLDENRODUNDERGROUND_PIERS
 
 GoldenrodUndergroundResetSwitches:
-	clearevent EVENT_SWITCH_1
-	clearevent EVENT_SWITCH_2
-	clearevent EVENT_SWITCH_3
-	clearevent EVENT_EMERGENCY_SWITCH
-	clearevent EVENT_DOOR_1_OPEN
-	clearevent EVENT_DOOR_2_OPEN
-	clearevent EVENT_DOOR_3_OPEN
-	clearevent EVENT_DOOR_4_OPEN
-	clearevent EVENT_DOOR_5_OPEN
-	clearevent EVENT_DOOR_6_OPEN
+	setevent EVENT_DOOR_1_OPEN
+	setevent EVENT_DOOR_2_OPEN
+	setevent EVENT_DOOR_3_OPEN
+	setevent EVENT_DOOR_4_OPEN
+	setevent EVENT_DOOR_5_OPEN
+	setevent EVENT_DOOR_6_OPEN
 	clearevent EVENT_DOOR_7_OPEN
 	clearevent EVENT_DOOR_8_OPEN
-	clearevent EVENT_DOOR_9_OPEN
-	clearevent EVENT_DOOR_10_OPEN
+	setevent EVENT_DOOR_9_OPEN
+	setevent EVENT_DOOR_10_OPEN
 	clearevent EVENT_DOOR_11_OPEN
-	setval $0
-	writemem wUndergroundSwitchPositions
 	endcallback
 
 GoldenrodUndergroundCheckBasementKey:
@@ -770,9 +764,6 @@ GoldenrodUndergroundOlderHaircutBrotherAllDoneText:
 	text "There! All done!"
 	done
 
-
-
-
 GoldenrodUndergroundYoungerHaircutBrotherOfferHaircutText:
 	text "Welcome to the"
 	line "#mon Salon!"
@@ -803,9 +794,6 @@ GoldenrodUndergroundYoungerHaircutBrotherAllDoneText:
 	text "There we go!"
 	line "All done!"
 	done
-
-
-
 
 HaircutBrosText_SlightlyHappier:
 	text_ram wStringBuffer3

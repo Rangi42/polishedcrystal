@@ -1,5 +1,10 @@
-	db  75, 110, 105, 100,  30,  70 ; 490 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 490,  75, 110, 105,  30,  70, 100
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 500,  75, 110, 105,  40,  70, 100
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db FIGHTING, WATER ; type
 	db 45 ; catch rate

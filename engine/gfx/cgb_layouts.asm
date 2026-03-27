@@ -14,7 +14,6 @@ LoadCGBLayout::
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
-	dw _CGB_StatsScreenHPPals
 	dw _CGB_Pokedex
 	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_SlotMachine
@@ -22,7 +21,6 @@ LoadCGBLayout::
 	dw _CGB_MapPals
 	dw _CGB_PartyMenu
 	dw _CGB_Evolution
-	dw _CGB_MoveList
 	dw _CGB_BuyMenu
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
@@ -372,38 +370,6 @@ INCLUDE "gfx/pokegear/pokegear.pal"
 
 INCLUDE "data/player/pokegear_pals.asm"
 
-_CGB_StatsScreenHPPals:
-	ld de, wBGPals1 palette 1
-	ld a, [wCurPartySpecies]
-	ld b, a
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	jr z, .done
-	ld b, EGG
-.done
-	ld a, b
-	ld bc, wTempMonPersonality
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	push de
-	call VaryBGPal1ByTempMonDVs
-	pop de
-
-	ld hl, ItemIconPalettes
-	ld bc, 2 colors
-	ld a, [wTempMonItem]
-	rst AddNTimes
-	ld de, wSummaryScreenPals palette 2
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld hl, GenderAndExpBarPals
-	ld de, wSummaryScreenPals palette 6
-	call LoadPalette_White_Col1_Col2_Black
-
-	farcall SummaryScreen_InitAttrmap
-
-	jmp _CGB_FinishLayout
-
 _CGB_Pokedex:
 	call _CGB_Pokedex_PrepareOnly
 	jmp _CGB_FinishLayout
@@ -520,27 +486,23 @@ _CGB_NamingScreen:
 	ld a, BANK("GBC Video")
 	ldh [rWBK], a
 
-	push hl
+	ld de, wBGPals1 palette 0 color 3
+	call LoadOnePalette
+
 	ld hl, GenderAndExpBarPals
-	ld de, wBGPals1 + 2
-	ld c, 2 * 2
+	ld de, wBGPals1 palette 0 color 1
+	ld c, 2 colors
 	call LoadColorBytes
-	pop hl
-	ld c, 4 * 2
-	call LoadColorBytes
+	ld hl, ShinyAndPokerusPals
+	; de == wBGPals1 palette 0 color 3
+	call LoadOneColor ; shiny color is first
+
 	ld hl, WhiteColor
-	ld de, wBGPals1 palette 1 + 6
+	ld de, wBGPals1 palette 1 color 3
 	call LoadOneColor
-
-	ld hl, wBGPals1 palette 1
-	ld de, wBGPals1 palette 2
+	ld hl, wBGPals1 palette 1 color 0
+	; de == wBGPals1 palette 2 color 0
 	call LoadOneColor
-	ld hl, wBGPals1 + 6
-	ld de, wBGPals1 palette 2 + 6
-	call LoadOneColor
-
-	pop af
-	ldh [rWBK], a
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
@@ -548,10 +510,21 @@ _CGB_NamingScreen:
 	call LoadPalettes
 
 	ld a, [wNamingScreenType]
+	cp $4 ; box?
+	jr nz, .not_poke_ball
+	ld hl, WhiteColor
+	ld de, wOBPals1 palette 0 color 1
+	call LoadOneColor
+.not_poke_ball
+
+	pop af
+	ldh [rWBK], a
+
+	ld a, [wNamingScreenType]
 	and a
 	jr nz, .not_pokemon
 	; mon minis use palette [wCurPartyMon]+2
-	ld hl, wOBPals1 palette 2 + 2
+	ld hl, wOBPals1 palette 2 color 1
 	ld bc, 1 palettes
 	ld a, [wCurPartyMon]
 	rst AddNTimes
@@ -582,6 +555,8 @@ _CGB_NamingScreen:
 	; gender icon
 	xor a
 	ldcoord_a 1, 2, wAttrmap
+	; shiny icon
+	ldcoord_a 1, 4, wAttrmap
 
 	jmp ApplyAttrMap
 
@@ -714,8 +689,9 @@ INCLUDE "gfx/stats/hp_bars.pal"
 _CGB_Evolution:
 	ld de, wBGPals1
 	ld a, c
-	and a
-	jr z, .pokemon
+	push af
+	dec a
+	jr nz, .pokemon
 	ld hl, DarkGrayPalette
 	call LoadOnePalette
 	jr .got_palette
@@ -750,42 +726,46 @@ _CGB_Evolution:
 
 .got_palette
 	call WipeAttrMap
-	jmp _CGB_FinishLayout
 
-_CGB_MoveList:
+	pop af
+	cp 2 ; egg hatch
+	jmp z, _CGB_FinishLayout
+
+	ld hl, SpotlightPalette
+	ld de, wBGPals1 palette 1
+	call LoadOnePalette
+
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_AREA
-	ld a, $7
-	rst ByteFill
+	lb bc, 12, 20
+	ld a, $1
+	call FillBoxWithByte
 
-	hlcoord 1, 12, wAttrmap
-	ld bc, 6
+	hlcoord 7, 2, wAttrmap
+	lb bc, 7, 7
 	xor a
-	rst ByteFill
+	call FillBoxWithByte
 
-	call GetCurMoveFixedCategory
-	add a
-	add a
-	ld hl, CategoryIconPals
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld de, wBGPals1 palette 0 + 2
-	ld c, 4
-	call LoadPalettes
-
-	ld hl, Moves + MOVE_TYPE
-	call GetCurMoveProperty
-	ld hl, TypeIconPals
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld de, wBGPals1 palette 0 + 6
-	ld c, 2
-	call LoadPalettes
+	ld a, $1 | BG_XFLIP
+	ldcoord_a 13, 0, wAttrmap
+	ldcoord_a 13, 1, wAttrmap
+	ldcoord_a 14, 2, wAttrmap
+	ldcoord_a 14, 3, wAttrmap
+	ldcoord_a 14, 4, wAttrmap
+	ldcoord_a 14, 5, wAttrmap
+	ldcoord_a 15, 6, wAttrmap
+	ldcoord_a 15, 7, wAttrmap
+	ldcoord_a 15, 8, wAttrmap
+	ldcoord_a 14, 8, wAttrmap
+	ldcoord_a 11, 9, wAttrmap
+	ldcoord_a 12, 9, wAttrmap
+	ldcoord_a 13, 9, wAttrmap
+	ldcoord_a 14, 9, wAttrmap
+	ldcoord_a 15, 9, wAttrmap
 
 	jmp _CGB_FinishLayout
+
+SpotlightPalette:
+INCLUDE "gfx/evo/spotlight.pal"
 
 _CGB_BuyMenu:
 	ld a, [wMartType]
@@ -1134,7 +1114,7 @@ BillsPC_PreviewTheme:
 	ld c, 2 * 2
 	call LoadColorBytes
 	push de
-	ld hl, .PokerusAndShinyPals
+	ld hl, ShinyAndPokerusPals
 	ld de, wBillsPC_PokerusShinyPal
 	ld c, 2 * 2
 	call LoadColorBytes
@@ -1167,27 +1147,27 @@ BillsPC_PreviewTheme:
 	ld c, 8 palettes
 	call LoadPalettes
 	ld de, wOBPals1 palette 1
-	ld hl, .CursorPal
+	ld hl, .BillsPC_CursorPal
 	push hl
 	call LoadOnePalette
 	pop hl
 	call LoadOnePalette
-	ld hl, .PackPal
+	ld hl, .BillsPC_PackPal
 	ld de, wOBPals1 palette 4
 	call LoadOnePalette
 	ld hl, WhitePalette
 	ld de, wOBPals1 palette 6
 	jmp LoadOnePalette
 
-.PokerusAndShinyPals:
-INCLUDE "gfx/pc/pokerus_shiny.pal"
-
-.CursorPal:
+.BillsPC_CursorPal:
 ; Coloring is fixed up later.
 INCLUDE "gfx/pc/cursor_default.pal"
 
-.PackPal:
+.BillsPC_PackPal:
 INCLUDE "gfx/pc/pack.pal"
+
+ShinyAndPokerusPals:
+INCLUDE "gfx/pc/pokerus_shiny.pal"
 
 GetBillsPCThemePalette:
 	; hl = .ThemePals + a * 4 * 2
@@ -1395,14 +1375,11 @@ _CGB_TrainerOrMonFrontpicPals:
 	jmp ApplyPals
 
 _CGB_JudgeSystem:
-	; gender icon
-	ld de, wBGPals1 palette 6
-	ld hl, GenderAndExpBarPals
-	call LoadPalette_White_Col1_Col2_Black
 	; frontpic
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
 	call GetFrontpicPalettePointer
+	ld de, wBGPals1 palette 7
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, wBGPals1 palette 7 + 2
 	call VaryBGPalByTempMonDVs
@@ -1412,44 +1389,6 @@ _CGB_JudgeSystem:
 	ld c, 2 palettes
 	call LoadPalettes
 
-	call WipeAttrMap
-
-	; up/down arrows
-	hlcoord 0, 0, wAttrmap
-	ld a, 1 | OAM_BANK1
-	ld [hli], a
-	; top row
-	ld bc, 17
-	ld a, 1
-	rst ByteFill
-	; gender icon
-	ld a, 6 | OAM_BANK1
-	ld [hli], a
-	; shiny icon and second row
-	ld a, 1 | OAM_BANK1
-	ld bc, 21
-	rst ByteFill
-	; left/right arrows
-	hlcoord 0, 2, wAttrmap
-	ld [hl], 0 | OAM_BANK1
-	; frontpic
-	hlcoord 0, 6, wAttrmap
-	lb bc, 7, 7
-	ld a, 7
-	call FillBoxWithByte
-	; chart
-	hlcoord 9, 4, wAttrmap
-	lb bc, 12, 8
-	ld a, 5 | OAM_BANK1
-	call FillBoxWithByte
-	hlcoord 8, 6, wAttrmap
-	lb bc, 8, 1
-	ld a, 5 | OAM_BANK1
-	call FillBoxWithByte
-	hlcoord 17, 6, wAttrmap
-	lb bc, 8, 1
-	ld a, 5 | OAM_BANK1
-	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
 	hlcoord 12, 3, wAttrmap
@@ -1464,33 +1403,25 @@ _CGB_JudgeSystem:
 	hlcoord 12, 16, wAttrmap
 	call .FillStat
 	ld c, STAT_SDEF
-	hlcoord 6, 14, wAttrmap
+	hlcoord 8, 14, wAttrmap
 	call .FillStat
 	ld c, STAT_SATK
-	hlcoord 6, 5, wAttrmap
+	hlcoord 8, 5, wAttrmap
 	call .FillStat
-	; heading
-	hlcoord 0, 3, wAttrmap
-	ld a, 0 | OAM_BANK1
-	ld bc, 11
-	rst ByteFill
 
-	jr _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 .FillStat:
-; Use palette 2 for normal, 3 for lowered, 4 for raised
+; Use palette 3 for lowered, 4 for raised, unchanged (2) for normal
 	ld a, [wTempMonNature]
 	push hl
 	farcall GetNatureStatMultiplier
 	pop hl
 	cp 10 ; 10 is normal
-	ld a, 4
-	jr c, .lowered_stat ; 9 is lowered
-	jr nz, .raised_stat ; 11 is raised
-	dec a ; 2
-.lowered_stat
-	dec a ; 3
-.raised_stat
+	ret z
+	; a = carry ? 3 : 4
+	sbc a
+	add 4
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -1498,6 +1429,85 @@ _CGB_JudgeSystem:
 
 .SparkleAndBottleCapPalette:
 INCLUDE "gfx/stats/judge_ob.pal"
+
+SummaryScreen_ApplyHPPals:
+	ld de, wBGPals1 palette 1
+
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
+	ld a, [wCurPartySpecies]
+.got_species
+	ld bc, wTempMonPersonality
+	call GetPlayerOrMonPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	push de
+	call VaryBGPal1ByTempMonDVs
+	pop de
+
+	ld hl, ItemIconPalettes
+	ld bc, 2 colors
+	ld a, [wTempMonItem]
+	rst AddNTimes
+	ld de, wSummaryScreenPals palette 2
+	call LoadPalette_White_Col1_Col2_Black
+
+	ld hl, GenderAndExpBarPals
+	ld de, wSummaryScreenPals palette 6
+	call LoadPalette_White_Col1_Col2_Black
+
+	call WipeAttrMap
+
+	hlcoord 0, 0, wAttrmap
+	lb bc, 12, 8
+	ld a, SUMMARY_PAL_POKEMON
+	call FillBoxWithByte
+
+	hlcoord 8, 0, wAttrmap
+	lb bc, 1, 14
+	; a == SUMMARY_PAL_POKEMON
+	call FillBoxWithByte
+
+	hlcoord 0, 12, wAttrmap
+	lb bc, 1, 20
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	call FillBoxWithByte
+
+	hlcoord 2, 12, wAttrmap
+	lb bc, 1, 3
+	xor a
+	assert SUMMARY_PAL_LOWER_WINDOW == 0
+	call FillBoxWithByte
+
+	hlcoord 1, 11, wAttrmap
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	ld [hli], a
+	ld a, OAM_YFLIP | SUMMARY_PAL_LOWER_WINDOW
+	ld bc, 3
+	rst ByteFill
+	ld a, OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
+	ld [hl], a
+	hlcoord 5, 12, wAttrmap
+	ld [hl], a
+
+	hlcoord 7, 1, wAttrmap
+	lb bc, 11, 13
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	call FillBoxWithByte
+
+	hlcoord 5, 9, wAttrmap
+	ld [hl], SUMMARY_PAL_GENDER_MARKER
+
+	hlcoord 19, 0, wAttrmap
+	ld [hl], SUMMARY_PAL_POKEMON | BG_XFLIP
+
+	hlcoord 2, 8, wAttrmap
+	lb bc, 3, 3
+	ld a, SUMMARY_PAL_ITEM
+	call FillBoxWithByte
+
+	; fallthrough
 
 _CGB_FinishLayout:
 	call ApplyAttrMap

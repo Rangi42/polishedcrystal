@@ -4,15 +4,17 @@ SafariZoneWardensHome_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  2,  7, FUCHSIA_CITY, 5
-	warp_event  3,  7, FUCHSIA_CITY, 5
+	warp_event  4,  7, FUCHSIA_CITY, 5
+	warp_event  5,  7, FUCHSIA_CITY, 5
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  0,  1, BGEVENT_JUMPSTD, picturebookshelf
-	bg_event  7,  0, BGEVENT_JUMPTEXT, WardenPhotoText
-	bg_event  9,  0, BGEVENT_JUMPTEXT, SafariZonePhotoText
+	bg_event  5,  0, BGEVENT_JUMPTEXT, WardenPhotoText
+	bg_event  7,  0, BGEVENT_JUMPTEXT, SafariZonePhotoText
+	bg_event  8,  1, BGEVENT_JUMPTEXT, WardensHouseCuriosText
+	bg_event  9,  1, BGEVENT_JUMPTEXT, WardensHouseCuriosText
 
 	def_object_events
 	object_event  2,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, WardensGranddaughter, -1
@@ -71,4 +73,13 @@ SafariZonePhotoText:
 
 	para "with rare #mon"
 	line "frolicking in it."
+	done
+
+WardensHouseCuriosText:
+	text "It's a curio"
+	line "cabinet full of"
+
+	para "fossils and old"
+	line "#mon merchan-"
+	cont "dise."
 	done

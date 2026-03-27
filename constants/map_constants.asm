@@ -102,8 +102,8 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B2F,                       15,  9 ; 40
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
-	map_const GOLDENROD_UNDERGROUND,                      16, 20 ; 43
-	map_const GOLDENROD_UNDERGROUND_SWITCH_ROOM,          14,  7 ; 44
+	map_const GOLDENROD_UNDERGROUND,                      11, 20 ; 43
+	map_const GOLDENROD_UNDERGROUND_SWITCH_ROOM,          16,  7 ; 44
 	map_const GOLDENROD_UNDERGROUND_ENTRANCES,             5, 19 ; 45
 	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 46
 	map_const GOLDENROD_UNDERGROUND_WAREHOUSE,            10,  9 ; 47
@@ -286,7 +286,7 @@ ENDM
 	map_const GOLDENROD_DEPT_STORE_ROOF,                   8,  6 ; 22
 	map_const GOLDENROD_GAME_CORNER,                      10,  7 ; 23
 	map_const GOLDENROD_POKECOM_CENTER_1F,                16,  8 ; 24
-	map_const GOLDENROD_POKECOM_CENTER_OFFICE,             6,  5 ; 25
+	map_const GOLDENROD_POKECOM_CENTER_OFFICE,             8,  5 ; 25
 	map_const ILEX_FOREST_AZALEA_GATE,                     5,  4 ; 26
 	map_const ROUTE_34_ILEX_FOREST_GATE,                   5,  4 ; 27
 	map_const ROUTE_35_GOLDENROD_GATE,                     5,  4 ; 28
@@ -512,7 +512,7 @@ ENDM
 	map_const ROUTE_41,                                   32, 27 ;  1
 	map_const CIANWOOD_CITY,                              15, 27 ;  2
 	map_const MANIAS_HOUSE,                                4,  4 ;  3
-	map_const CIANWOOD_GYM,                                5,  9 ;  4
+	map_const CIANWOOD_GYM,                               14,  9 ;  4
 	map_const CIANWOOD_POKECENTER_1F,                      6,  4 ;  5
 	map_const CIANWOOD_PHARMACY,                           4,  4 ;  6
 	map_const CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  7
@@ -612,7 +612,7 @@ ENDM
 	map_const DIM_CAVE_5F,                                17, 17 ;  7
 
 	newgroup                                                     ; 29
-	map_const GOLDENROD_HARBOR,                           23, 18 ;  1
+	map_const GOLDENROD_HARBOR,                           22, 18 ;  1
 	map_const GOLDENROD_HARBOR_GATE,                       5,  4 ;  2
 
 	newgroup                                                     ; 30
@@ -686,7 +686,7 @@ ENDM
 	map_const VALENCIA_PORT,                              11,  9 ;  6
 
 	newgroup                                                     ; 34
-	map_const SINJOH_RUINS,                                9, 13 ;  1
+	map_const SINJOH_RUINS,                                9, 11 ;  1
 	map_const SINJOH_RUINS_HOUSE,                          4,  4 ;  2
 	map_const MYSTRI_STAGE,                                7, 10 ;  3
 	map_const EMBEDDED_TOWER,                              7, 12 ;  4

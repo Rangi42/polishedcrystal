@@ -29,6 +29,8 @@ ENDM
 	special_bg_pal map,      DRAGON_SHRINE,               PAL_SINGLE,    DragonShrinePalette
 	special_bg_pal overcast, ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette_Overcast
 	special_bg_pal map,      ECRUTEAK_CITY,               PAL_TIMEOFDAY, VioletEcruteakPalette
+	special_bg_pal map,      ECRUTEAK_GYM,                PAL_SINGLE,    EcruteakGymPalette
+	special_bg_pal map,      MAHOGANY_GYM,                PAL_SINGLE,    MahoganyGymPalette
 	special_bg_pal map,      BLACKTHORN_GYM_1F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      BLACKTHORN_GYM_2F,           PAL_SINGLE,    BlackthornGym1FPalette
 	special_bg_pal map,      CINNABAR_LAB,                PAL_SINGLE,    CinnabarLabPalette
@@ -80,6 +82,7 @@ ENDM
 	special_bg_pal map,      SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                PAL_SINGLE,    MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              PAL_SINGLE,    EmbeddedTowerPalette
+	special_bg_pal landmark, SPROUT_TOWER,                PAL_SINGLE,    SproutTowerPalette
 	special_bg_pal landmark, WHIRL_ISLANDS,               PAL_SINGLE,    WhirlIslandsPalette
 	special_bg_pal landmark, MT_MORTAR,                   PAL_SINGLE,    DarkCavePalette
 	special_bg_pal landmark, DARK_CAVE,                   PAL_SINGLE,    DarkCavePalette
@@ -860,6 +863,19 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+SproutTowerPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/sprout_tower.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 TinTowerRoofPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/TinTowerRoof.pal"
@@ -1139,6 +1155,32 @@ endr
 	RGB_MONOCHROME_BLACK
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+EcruteakGymPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/EcruteakGym.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+MahoganyGymPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/MahoganyGym.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK

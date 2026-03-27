@@ -84,6 +84,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Maddalena for sprites of Imakuni and the Ghost.
 * Nuuk for the sprite and animation of Farigiraf.
 * Dave.K for Bloodmoon Ursaluna sprites and animation.
+* timkun55 for the animated charcoal kiln fire tiles and Cianwood Gym sluice tiles.
 * Cesare_CBass for the Pokegear icon.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
@@ -120,6 +121,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShockSlayer for Eusine's losing text.
 * Hello for correcting composers in the music player.
 * Salamandar for Battle Tower sets.
+* Drayano and AphexCubed for many non-Faithful adjusted base stat distributions.
 
 
 ## Special Thanks

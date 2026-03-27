@@ -1,9 +1,18 @@
-	db  60,  55,  50,  45,  40,  55 ; 305 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 305,  60,  55,  50,  40,  55,  45
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 330,  65,  55,  55,  50,  60,  45
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db BUG, POISON ; type
 	db 190 ; catch rate
+if DEF(FAITHFUL)
 	db 75 ; base exp
+else
+	db 80 ; base exp
+endc
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 

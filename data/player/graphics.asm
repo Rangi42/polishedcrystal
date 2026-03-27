@@ -7,12 +7,11 @@ PlayerSpritePointers:
 	assert_table_length NUM_PLAYER_GENDERS
 
 PlayerCardPicPointers:
-	table_width 2
-	farbank "Trainer Card Pics"
-	fardw ChrisCardPic ; PLAYER_MALE
-	fardw KrisCardPic  ; PLAYER_FEMALE
-	fardw CrysCardPic  ; PLAYER_ENBY
-	fardw BetaCardPic  ; PLAYER_BETA
+	table_width 3
+	dba CalPic    ; PLAYER_MALE
+	dba CarriePic ; PLAYER_FEMALE
+	dba JackyPic  ; PLAYER_ENBY
+	dba EunaPic   ; PLAYER_BETA
 	assert_table_length NUM_PLAYER_GENDERS
 
 PlayerBackpicPointers:

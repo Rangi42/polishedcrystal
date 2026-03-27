@@ -443,7 +443,8 @@ TryToEvolve:
 	ld c, 40
 	call DelayFrames
 
-	call ClearTileMap
+	call ClearScreen
+	call ApplyAttrAndTilemapInVBlank
 	call UpdateSpeciesNameIfNotNicknamed
 	call GetBaseData
 

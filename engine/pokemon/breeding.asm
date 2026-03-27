@@ -779,7 +779,7 @@ EggHatch_AnimationSequence:
 
 Hatch_LoadFrontpicPal:
 	ld [wPlayerHPPal], a
-	ld c, FALSE
+	ld c, 2
 	ld a, CGB_EVOLUTION
 	jmp GetCGBLayout
 
@@ -803,9 +803,6 @@ EggHatch_CrackShell:
 	ld [hl], $0
 	ld de, SFX_EGG_CRACK
 	jmp PlaySFX
-
-EggHatchGFX:
-INCBIN "gfx/evo/egg_hatch.2bpp"
 
 Hatch_InitShellFragments:
 	call ClearSpriteAnims

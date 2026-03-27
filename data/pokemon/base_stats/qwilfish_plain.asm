@@ -1,5 +1,5 @@
-	db  65,  95,  85,  85,  55,  55 ; 440 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 440,  65,  95,  85,  55,  55,  85
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db WATER, POISON ; type
 	db 45 ; catch rate

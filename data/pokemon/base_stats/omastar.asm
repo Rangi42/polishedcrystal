@@ -1,5 +1,5 @@
-	db  70,  60, 125,  55, 115,  70 ; 495 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 495,  70,  60, 125, 115,  70,  55
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ROCK, WATER ; type
 	db 45 ; catch rate

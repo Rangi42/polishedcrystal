@@ -1,5 +1,5 @@
-	db 125, 100,  80,  55,  85,  75 ; 520 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 520, 125, 100,  80,  85,  75,  55
+	;   bst   hp  atk  def  sat  sdf  spe
 
 if DEF(FAITHFUL)
 	db NORMAL, NORMAL ; type
@@ -11,7 +11,11 @@ endc
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for DUDUNSPARCE, SERENE_GRACE, RUN_AWAY, RATTLED
+else
+	abilities_for DUDUNSPARCE, SERENE_GRACE, RUN_AWAY, SAND_STREAM
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

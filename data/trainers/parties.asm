@@ -154,6 +154,10 @@ BugsyGroup:
 
 	def_trainer_class BUGSY
 	def_trainer 1, "Bugsy"
+	tr_mon 17, SCYTHER, FEMALE
+		tr_extra SWARM
+		tr_evs 64 Atk
+		tr_moves QUICK_ATTACK, LEER, PURSUIT, U_TURN
 	tr_mon 14, BUTTERFREE, MALE
 		tr_evs 32 SAt, 32 Spe
 		tr_moves TACKLE, POISONPOWDER, SLEEP_POWDER, CONFUSION
@@ -165,10 +169,6 @@ BugsyGroup:
 		tr_extra SPEED_BOOST
 		tr_evs 64 Atk
 		tr_moves FORESIGHT, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
-	tr_mon 17, SCYTHER, FEMALE
-		tr_extra SWARM
-		tr_evs 64 Atk
-		tr_moves QUICK_ATTACK, LEER, PURSUIT, U_TURN
 	end_trainer
 
 	def_trainer 2, "Bugsy"
@@ -7319,10 +7319,10 @@ PetrelGroup:
 
 	def_trainer_class PETREL
 	def_trainer PETREL1, "Petrel"
-	tr_mon 39, KOFFING @ EVIOLITE, MALE
-		tr_extra LEVITATE
-		tr_evs 252 Atk
-		tr_moves TACKLE, EXPLOSION, VENOSHOCK, SMOKESCREEN
+	tr_mon 39, DITTO @ CHOICE_SCARF, MALE
+		tr_extra IMPOSTER
+		tr_evs 252 HP
+		tr_moves TRANSFORM
 	tr_mon 39, GOLBAT @ EVIOLITE, MALE
 		tr_extra INNER_FOCUS
 		tr_evs 252 Spe

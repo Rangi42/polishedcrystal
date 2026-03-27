@@ -1419,4 +1419,10 @@ MACRO digmod
 	map_id \2 ; map
 ENDM
 
+	const toggleevent_command
+MACRO toggleevent
+	db toggleevent_command
+	dw \1 ; event_flag
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

@@ -443,23 +443,20 @@ AnimateTileset::
 ;	cp 151
 ;	ret nc
 
+	ldh a, [rVBK]
+	rra ; stores VRAM bank in carry flag to be pushed
 	ldh a, [rWBK]
 	push af
 
-	ldh a, [rVBK]
-	push af
-	xor a
-	ldh [rVBK], a
-	inc a
+	ld a, BANK(wTilesetAnim)
 	ldh [rWBK], a
 
 	ld a, BANK(_AnimateTileset)
 	rst Bankswitch
-
 	call _AnimateTileset ; far-ok
 
 	pop af
-	ldh [rVBK], a
-	pop af
 	ldh [rWBK], a
+	rla ; retrieves VRAM bank from popped carry flag
+	ldh [rVBK], a
 	ret

@@ -1088,7 +1088,6 @@ VermilionPort_BlockData:
 
 SECTION "PokemonFanClub_BlockData", ROMX
 PokemonFanClub_BlockData:
-SafariZoneWardensHome_BlockData:
 	INCBIN "maps/PokemonFanClub.ablk.lzp"
 
 SECTION "DiglettsCave_BlockData", ROMX
@@ -1438,6 +1437,10 @@ LuckyIsland_BlockData:
 SECTION "LuckyIslandHidden_BlockData", ROMX
 LuckyIslandHidden_BlockData:
 	INCBIN "maps/LuckyIslandHidden.ablk.lzp"
+
+SECTION "SafariZoneWardensHome_BlockData", ROMX
+SafariZoneWardensHome_BlockData:
+	INCBIN "maps/SafariZoneWardensHome.ablk.lzp"
 
 SECTION "SafariZoneHub_BlockData", ROMX
 SafariZoneHub_BlockData:

@@ -99,9 +99,6 @@ ScanObjectStructPals:
 	and a
 	jr z, .skip
 
-	; Check if SPRITE_MON_ICON while sprite is in a (Z flag preserved through loads below)
-	cp SPRITE_MON_ICON
-
 	; Look up the object's requested color palette
 	ld hl, OBJECT_PAL_INDEX
 	add hl, de
@@ -111,10 +108,31 @@ ScanObjectStructPals:
 	ld hl, wNeededMonPalLight
 	ld [hl], NO_PAL_LOADED
 
-	; Branch based on sprite check (Z flag preserved from cp above)
-	jr nz, .not_mon_icon_pal
-	; For mon icons, always interpret palette as two nybbles:
+	; Resolve variable sprites to their current sprite IDs first.
+.resolve_variable_sprite
+	cp SPRITE_VARS
+	jr c, .check_mon_sprite_range
+	sub SPRITE_VARS
+	push de
+	push hl
+	ld e, a
+	ld d, 0
+	ld hl, wVariableSprites
+	add hl, de
+	ld a, [hl]
+	pop hl
+	pop de
+	and a
+	jr z, .not_mon_icon_pal
+	jr .resolve_variable_sprite
+
+.check_mon_sprite_range
+	; For SPRITE_POKEMON..(SPRITE_VARS - 1), interpret palette as two nybbles:
 	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
+	cp SPRITE_POKEMON
+	jr c, .not_mon_icon_pal
+
+.mon_icon_pal
 	ld a, c
 	swap a
 	and $f

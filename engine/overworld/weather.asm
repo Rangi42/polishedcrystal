@@ -49,7 +49,7 @@ DoOverworldWeather:
 	jr nz, .on_cooldown
 
 	ld a, [wCurWeather]
-	ld hl, .DoWeather_Jumptable
+	ld hl, .DoOverworldWeather_Jumptable
 	call JumpTable
 .done
 	; we are done, increment the weather delay rolling counter (0->255->0)
@@ -59,7 +59,7 @@ DoOverworldWeather:
 	call WeatherSpriteLimitCheck
 	jmp PopBCDEHL
 
-.DoWeather_Jumptable:
+.DoOverworldWeather_Jumptable:
 	table_width 2
 	dw DoNothing
 	dw DoOverworldRain
@@ -71,31 +71,8 @@ DoOverworldWeather:
 
 .on_cooldown
 	ld a, [wPrevWeather]
-	call StackJumpTable
-
-.Cooldown_Jumptable:
-	table_width 2
-	dw .cooldown_cleanup
-	dw .rain_cooldown
-	dw .snow_cooldown
-	dw .rain_cooldown
-	dw .sand_cooldown
-	dw .cherry_blossoms_cooldown
-	assert_table_length NUM_OW_WEATHERS + 1
-
-.cherry_blossoms_cooldown
-	call DoCherryBlossomFall
-	jr .cooldown_cleanup
-.sand_cooldown
-	call DoSandFall
-	jr .cooldown_cleanup
-.snow_cooldown
-	call DoSnowFall
-	jr .cooldown_cleanup
-.rain_cooldown
-	call DoRainFall
-	call RainSplashCleanup
-.cooldown_cleanup
+	ld hl, .DoWeather_Jumptable
+	call JumpTable
 	; decrement the weather cooldown until it is 0
 	ld a, [wOverworldWeatherCooldown]
 	dec a
@@ -104,9 +81,19 @@ DoOverworldWeather:
 	call LoadWeatherGraphics
 	jr .done
 
+.DoWeather_Jumptable:
+	table_width 2
+	dw DoNothing
+	dw DoRainFall
+	dw DoSnowFall
+	dw DoRainFall
+	dw DoSandFall
+	dw DoCherryBlossomFall
+	assert_table_length NUM_OW_WEATHERS + 1
+
 SpawnRandomWeatherFullScreen::
 	lb bc, SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX
-; fallthrough
+	; fallthrough
 SpawnRandomWeatherCoords::
 ; This is used to randomize the weather's starting positions on the screen from
 ; randomize weather sprite x/y coords from (0,0) to (b,c)
@@ -207,7 +194,7 @@ rept 2
 	call ScanForEmptyOAM
 	call nc, SpawnSnowFlake
 endr
-; fallthrough
+	; fallthrough
 DoSnowFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -320,61 +307,6 @@ DoSnowFall:
 	ld [hl], a
 	jr .next
 
-DoOverworldRain:
-	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
-	cp PAL_OW_RAIN
-	jr z, .continue
-	farcall LoadWeatherPal
-.continue
-	ld a, [wCurWeather]
-	cp OW_WEATHER_THUNDERSTORM
-	jr nz, .no_lightning
-
-	; 0.5% chance of lightning
-	call Random
-	cp 1 percent
-	jr nc, .no_lightning
-	call Random
-	cp 50 percent
-	call c, Lightning
-.no_lightning
-rept 3
-	; spawn three raindrops
-	call ScanForEmptyOAM
-	call nc, SpawnRainDrop
-endr
-	call DoRainFall
-; fallthrough
-RainSplashCleanup:
-	; we leave rain splashs on screen for approx 3.75fps.
-	; we have to ignore the LSB as we only run weather every odd frame.
-	ld a, [wOverworldWeatherTimer]
-	and %1110
-	ret nz
-
-	ld de, wShadowOAM
-	ld b, OAM_COUNT
-.loop ; for (wShadowOAM -> wShadowOAMEnd)
-	; if sprite tile is not a rain splash, skip it
-	ld hl, OAMA_TILEID
-	add hl, de
-	ld a, [hli]
-	cp RAINSPLASH_TILE
-	jr nz, .next
-
-	; hide the rain splash
-	ld hl, OAMA_Y
-	add hl, de
-	ld [hl], OAM_YCOORD_HIDDEN ; offscreen
-.next
-	ld hl, OBJ_SIZE
-	add hl, de
-	ld d, h
-	ld e, l
-	dec b
-	jr nz, .loop
-	ret
-
 SpawnSnowFlake:
 	; 40% chance of spawning a snowflake.
 	call Random
@@ -483,11 +415,98 @@ SpawnRainDrop:
 	jr .finish
 
 ClearWeather:
-	; doing this will cause _UpdateSprites to hide all weather sprites.
+	push hl
+	push de
+	push bc
+	call .HideWeatherSprites
 	xor a
 	ldh [hUsedWeatherSpriteIndex], a
+	pop bc
+	pop de
+	pop hl
 	ret
 
+.HideWeatherSprites
+; hide all visible weather-owned OAM entries
+	ldh a, [hUsedWeatherSpriteIndex]
+	ld c, a
+
+	; if objects fill the entire OAM, there are no weather-owned slots to scan.
+	ld b, LOW(wShadowOAMEnd)
+	ldh a, [hUsedOAMIndex]
+	cp b
+	ret nc
+
+	; objects are at the end of OAM, so clamp the weather scan limit to the
+	; slot immediately before the first object slot.
+	cpl
+	add (OAM_COUNT - 1) * OBJ_SIZE + 1
+	cp c
+	jr nc, .got_last_weather_slot
+	ld c, a
+.got_last_weather_slot
+	ld de, wShadowOAM
+.loop
+	ld h, d
+	ld l, e
+	ld a, [hl]
+	cp OAM_YCOORD_HIDDEN
+	jr z, .next
+	inc hl
+	inc hl
+	ld a, [hli]
+	cp WEATHER_TILE_1
+	jr z, .check_attr
+	cp WEATHER_TILE_2
+	jr nz, .next
+.check_attr
+	ld a, [hl]
+	cp PAL_OW_WEATHER
+	jr nz, .next
+
+	ld h, d
+	ld l, e
+	ld a, OAM_YCOORD_HIDDEN
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+.next
+	ld a, e
+	cp c
+	ret z
+	ld hl, OBJ_SIZE
+	add hl, de
+	ld d, h
+	ld e, l
+	jr .loop
+
+DoOverworldRain:
+	ld a, [wLoadedObjPal{d:PAL_OW_WEATHER}]
+	cp PAL_OW_RAIN
+	jr z, .continue
+	farcall LoadWeatherPal
+.continue
+	ld a, [wCurWeather]
+	cp OW_WEATHER_THUNDERSTORM
+	jr nz, .no_lightning
+
+	; 0.5% chance of lightning
+	call Random
+	cp 1 percent
+	jr nc, .no_lightning
+	call Random
+	cp 50 percent
+	call c, Lightning
+.no_lightning
+rept 3
+	; spawn three raindrops
+	call ScanForEmptyOAM
+	call nc, SpawnRainDrop
+endr
+	; fallthrough
 DoRainFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -505,7 +524,7 @@ DoRainFall:
 	add hl, de
 	ld a, [hli]
 	cp RAINSPLASH_TILE
-	jr z, .update_splash
+	jmp z, .update_splash
 
 	; if the sprite is not a raindrop, skip it
 	cp RAINDROP_TILE
@@ -589,6 +608,34 @@ DoRainFall:
 	ld e, l
 	dec b
 	jr nz, .loop
+
+	; we leave rain splashs on screen for approx 3.75fps.
+	; we have to ignore the LSB as we only run weather every odd frame.
+	ld a, [wOverworldWeatherTimer]
+	and %1110
+	ret nz
+
+	ld de, wShadowOAM
+	ld b, OAM_COUNT
+.splash_loop ; for (wShadowOAM -> wShadowOAMEnd)
+	; if sprite tile is not a rain splash, skip it
+	ld hl, OAMA_TILEID
+	add hl, de
+	ld a, [hli]
+	cp RAINSPLASH_TILE
+	jr nz, .splash_next
+
+	; hide the rain splash
+	ld hl, OAMA_Y
+	add hl, de
+	ld [hl], OAM_YCOORD_HIDDEN ; offscreen
+.splash_next
+	ld hl, OBJ_SIZE
+	add hl, de
+	ld d, h
+	ld e, l
+	dec b
+	jr nz, .splash_loop
 	ret
 
 .despawn
@@ -658,7 +705,7 @@ rept 3
 	call ScanForEmptyOAM
 	call nc, SpawnSandDrop
 endr
-; fallthrough
+	; fallthrough
 DoSandFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -813,7 +860,7 @@ DoOverworldCherryBlossoms:
 .continue
 	call ScanForEmptyOAM
 	call nc, SpawnCherryBlossom
-; fallthrough
+	; fallthrough
 DoCherryBlossomFall:
 	ld de, wShadowOAM
 	ld h, d
@@ -1121,100 +1168,83 @@ WeatherSpriteLimitCheck:
 	push af
 	ld a, BANK(wWeatherScratch)
 	ldh [rWBK], a
-	xor a
 
-	; clear wWeatherScratch
+	; Write (sprite limit + 1) to wWeatherScratch.
+	; Call SpriteLimitExceeded if the sprite overlap count reaches zero.
+	ld a, 11
 	ld hl, wWeatherScratch
 	ld bc, SCREEN_HEIGHT_PX
+	push hl
 	rst ByteFill
+	pop hl
 
-	ld hl, wShadowOAM
-	ld d, h
-	ld e, l
-	ld b, OAM_COUNT
+	ld de, wShadowOAM
 .loop ; for (wShadowOAM -> wShadowOAMEnd)
-	ld a, [hl]
-	; convert OAM y cord to screen y cord
-	sub TILE_WIDTH * 2
-	jr c, .next ; OAM is above the screen
+	ld a, [de]
+
+	; convert OAM y coord to screen y coord
+	sub TILE_WIDTH * 2 ; underflows if OAM is above the screen
 	cp SCREEN_HEIGHT_PX + 1
-	jr nc, .next ; OAM is below the screen
-	; incerement bytes in wWeatherScratch associated with this sprite
-	ld h, HIGH(wWeatherScratch)
+	jr nc, .next ; OAM is below the screen, or above after underflow
+
+	; increment bytes in wWeatherScratch associated with this sprite
 	ld l, a
 rept TILE_WIDTH - 1
-	inc [hl]
+	dec [hl]
+	call z, SpriteLimitExceeded
 	inc l
 endr
-	inc [hl]
+	dec [hl]
+	call z, SpriteLimitExceeded
 .next
-	ld hl, OBJ_SIZE
-	add hl, de
-	ld e, l
-	dec b
+	ld a, OBJ_SIZE
+	add e
+	ld e, a
+	cp LOW(wShadowOAMEnd)
 	jr nz, .loop
-
-	; scan wWeatherScratch for scanlines with more than 10 sprites
-	ld hl, wWeatherScratch
-	ld a, 10 ; horizontal sprite limit
-rept SCREEN_HEIGHT_PX - 1
-	cp [hl]
-	call c, SpriteLimitExceeded
-	inc hl
-endr
-	cp [hl]
-	call c, SpriteLimitExceeded
-
 	pop af
 	ldh [rWBK], a
 	ret
 
 SpriteLimitExceeded:
 	push hl
-	push af
-	; initliaze wSpriteOverlapCount to 0.
+	push de
+
+	; initialize wSpriteOverlapCount to 0.
 	xor a
 	ld [wSpriteOverlapCount], a
 	ld a, l
-	; convert screen y cord to OAM y cord
+	; convert screen y coord to OAM y coord
 	add TILE_WIDTH * 2
 	ld c, a
 	ld hl, wShadowOAM + (OAM_COUNT - 1) * OBJ_SIZE
 	ld e, l ; d is still set to HIGH(wShadowOAM)
-rept OAM_COUNT
-	; check if OAM y cord is <= (scanline + 16)
+
+	ld b, OAM_COUNT
+.loop
+	; check if OAM y coord is <= (scanline + 16)
 	ld a, [hl]
-	sub c ; get distance between OAM y cord and (scanline + 16)
-	jr z, .continue_\@ ; Sprite starts on the scanline; continue
-	jr nc, .next_\@ ; OAM's y cord is below the scanline; skip sprite
-.continue_\@
+	sub c ; get distance between OAM y coord and (scanline + 16)
+	jr z, .continue ; Sprite starts on the scanline; continue
+	jr nc, .next ; OAM's y coord is below the scanline; skip sprite
+.continue
 	; use two's complement to make a positive number
 	cpl
 	inc a
 	; check if distance <= TILE_WIDTH
 	cp TILE_WIDTH
-	jr nc, .next_\@ ; distance is greater than TILE_WIDTH; skip sprite
+	jr nc, .next ; distance is greater than TILE_WIDTH; skip sprite
 	ld a, [wSpriteOverlapCount]
-	inc a
-	cp 11 ; horizontal sprite limit + 1
+	inc a ; no-optimize inefficient WRAM increment/decrement
 	ld [wSpriteOverlapCount], a
-	call nc, .delete_sprite ; for all sprites after the 10th, delete them
-.next_\@
-	ld hl, -OBJ_SIZE
-	add hl, de
-	ld e, l
-endr
-	pop af
-	pop hl
-	ret
-
-.delete_sprite
-	; hl = sprite to delete
+	cp 11 ; horizontal sprite limit + 1
+	jr c, .next
+	; for all sprites after the 10th, delete them
 	ld a, [hl]
 	ld [hl], OAM_YCOORD_HIDDEN
-	; convert OAM y cord to screen y cord
+	; convert OAM y coord to screen y coord
 	sub TILE_WIDTH * 2
-	; decerement bytes in wWeatherScratch associated with this sprite
+	; decrement bytes in wWeatherScratch associated with this sprite
 	ld h, HIGH(wWeatherScratch)
 	ld l, a
 rept TILE_WIDTH - 1
@@ -1222,6 +1252,15 @@ rept TILE_WIDTH - 1
 	inc l
 endr
 	dec [hl]
+.next
+	ld hl, -OBJ_SIZE
+	add hl, de
+	ld e, l
+	dec b
+	jr nz, .loop
+
+	pop de
+	pop hl
 	ret
 
 Lightning:
