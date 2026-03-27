@@ -387,13 +387,7 @@ BattleTower2FAnabelScript:
 	closetext
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_ANABEL
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftruefwd .Team2
-	loadtrainer ANABEL, 1
-	sjumpfwd .StartBattle
-.Team2
 	loadtrainer ANABEL, 2
-.StartBattle
 	startbattle
 	reloadmapafterbattle
 	jumpthistext
