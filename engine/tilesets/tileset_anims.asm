@@ -466,14 +466,14 @@ AnimateTowerPillarTiles1:
 	jmp WriteFourTilesHLToDE
 
 .TowerPillarTiles1Pointers:
-	dw vTiles5 tile $2c + 4 * 0 tiles ; 0
-	dw vTiles5 tile $2c + 4 * 1 tiles ; 1
-	dw vTiles5 tile $2c + 4 * 2 tiles ; 2
-	dw vTiles5 tile $2c + 4 * 3 tiles ; 3
-	dw vTiles5 tile $2c + 4 * 4 tiles ; 4
-	dw vTiles5 tile $2c + 4 * 3 tiles ; 5
-	dw vTiles5 tile $2c + 4 * 2 tiles ; 6
-	dw vTiles5 tile $2c + 4 * 1 tiles ; 7
+	dw vTiles5 tile $2d + 4 * 0 tiles ; 0
+	dw vTiles5 tile $2d + 4 * 1 tiles ; 1
+	dw vTiles5 tile $2d + 4 * 2 tiles ; 2
+	dw vTiles5 tile $2d + 4 * 3 tiles ; 3
+	dw vTiles5 tile $2d + 4 * 4 tiles ; 4
+	dw vTiles5 tile $2d + 4 * 3 tiles ; 5
+	dw vTiles5 tile $2d + 4 * 2 tiles ; 6
+	dw vTiles5 tile $2d + 4 * 1 tiles ; 7
 
 AnimateTowerPillarTiles2:
 	ld hl, sp + 0
