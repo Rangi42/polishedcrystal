@@ -154,6 +154,10 @@ BugsyGroup:
 
 	def_trainer_class BUGSY
 	def_trainer 1, "Bugsy"
+	tr_mon 17, SCYTHER, FEMALE
+		tr_extra SWARM
+		tr_evs 64 Atk
+		tr_moves QUICK_ATTACK, LEER, PURSUIT, U_TURN
 	tr_mon 14, BUTTERFREE, MALE
 		tr_evs 32 SAt, 32 Spe
 		tr_moves TACKLE, POISONPOWDER, SLEEP_POWDER, CONFUSION
@@ -165,10 +169,6 @@ BugsyGroup:
 		tr_extra SPEED_BOOST
 		tr_evs 64 Atk
 		tr_moves FORESIGHT, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
-	tr_mon 17, SCYTHER, FEMALE
-		tr_extra SWARM
-		tr_evs 64 Atk
-		tr_moves QUICK_ATTACK, LEER, PURSUIT, U_TURN
 	end_trainer
 
 	def_trainer 2, "Bugsy"
