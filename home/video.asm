@@ -455,9 +455,6 @@ AnimateTileset::
 	rst Bankswitch
 	call _AnimateTileset ; far-ok
 
-	ldh a, [hROMBankBackup]
-	rst Bankswitch
-
 	pop af
 	ldh [rWBK], a
 	rla ; retrieves VRAM bank from popped carry flag

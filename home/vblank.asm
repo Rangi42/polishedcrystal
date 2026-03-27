@@ -164,6 +164,10 @@ VBlank0::
 	cp 149
 	call c, UpdateBGMap
 
+	; Ensure we're loading graphics from the correct bank.
+	ldh a, [hROMBankBackup]
+	rst Bankswitch
+
 	; Tile data transfers (have their own LY checks).
 	call Serve2bppRequest
 	call Serve1bppRequest
