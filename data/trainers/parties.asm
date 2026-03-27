@@ -6851,7 +6851,7 @@ CooltrainerMGroup:
 	end_trainer
 
 	def_trainer FERGUS, "Fergus"
-	tr_mon 63, GYARADOS @ BRIGHTPOWDER
+	tr_mon 63, GYARADOS @ KINGS_ROCK
 		tr_evs 132 SAt, 252 Spe
 	tr_mon 62, GOLDUCK @ TWISTEDSPOON
 		tr_evs 132 HP, 252 SAt
