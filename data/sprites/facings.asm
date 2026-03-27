@@ -66,6 +66,7 @@ Facings:
 	dw FacingBigHoOh2         ; FACING_BIG_HO_OH_2
 	dw FacingBigLugia1        ; FACING_BIG_LUGIA_1
 	dw FacingBigLugia2        ; FACING_BIG_LUGIA_2
+	dw FacingAdminMeowth      ; FACING_ADMIN_MEOWTH
 	assert_table_length NUM_FACINGS
 	dw 0 ; end
 
@@ -547,3 +548,10 @@ FacingBigLugia2:
 	db 24, 23, OAM_XFLIP, $0a
 	db 24, 15, OAM_XFLIP, $0b
 	db 24, 15, NEXT_PALETTE | OAM_XFLIP, $06
+
+FacingAdminMeowth:
+	db 4 ; #
+	db  4,  0, 0, $00
+	db  4,  8, 0, $01
+	db 12,  0, RELATIVE_ATTRIBUTES, $02
+	db 12,  8, RELATIVE_ATTRIBUTES, $03

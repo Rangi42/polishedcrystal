@@ -34,6 +34,7 @@ ObjectActionPairPointers:
 	dw SetFacingMicrophone,            SetFacingMicrophone        ; OBJECT_ACTION_MICROPHONE
 	dw SetFacingBigHoOh,               SetFacingFreezeBigHoOh     ; OBJECT_ACTION_BIG_HO_OH
 	dw SetFacingBigLugia,              SetFacingFreezeBigLugia    ; OBJECT_ACTION_BIG_LUGIA
+	dw SetFacingAdminMeowth,           SetFacingFreezeAdminMeowth ; OBJECT_ACTION_ADMIN_MEOWTH
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
@@ -278,6 +279,14 @@ SetFacingBigLugia:
 	jmp nz, SetFixedFacing
 SetFacingFreezeBigLugia:
 	ld a, FACING_BIG_LUGIA_1
+	jmp SetFixedFacing
+
+SetFacingAdminMeowth:
+	call AlternateStepFrame
+	ld a, FACING_CUT_TREE
+	jmp nz, SetFixedFacing
+SetFacingFreezeAdminMeowth:
+	ld a, FACING_ADMIN_MEOWTH
 	jmp SetFixedFacing
 
 SetFacingShakeExeggutor:

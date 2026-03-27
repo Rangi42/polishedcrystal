@@ -57,4 +57,5 @@ SpriteMovementData::
 	sprite_movement_data SPRITEMOVEFN_MICROPHONE,            LEFT,   OBJECT_ACTION_MICROPHONE,       $0c,    LOW_PRIORITY,    %0000 ; SPRITEMOVEDATA_MICROPHONE
 	sprite_movement_data SPRITEMOVEFN_BIG_HO_OH,             DOWN,   OBJECT_ACTION_BIG_HO_OH,        $2e,    $01,    %1100 ; SPRITEMOVEDATA_BIG_HO_OH
 	sprite_movement_data SPRITEMOVEFN_BIG_LUGIA,             DOWN,   OBJECT_ACTION_BIG_LUGIA,        $2e,    $01,    %1100 ; SPRITEMOVEDATA_BIG_LUGIA
+	sprite_movement_data SPRITEMOVEFN_ADMIN_MEOWTH,          DOWN,   OBJECT_ACTION_ADMIN_MEOWTH,     $2e,    $00,    %0000 ; SPRITEMOVEDATA_ADMIN_MEOWTH
 	assert_table_length NUM_SPRITEMOVEDATA

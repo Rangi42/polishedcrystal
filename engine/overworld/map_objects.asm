@@ -581,6 +581,7 @@ endr
 	dw .MovementMicrophone           ; SPRITEMOVEFN_MICROPHONE
 	dw .MovementBigHoOh              ; SPRITEMOVEFN_BIG_HO_OH
 	dw .MovementBigLugia             ; SPRITEMOVEFN_BIG_LUGIA
+	dw .MovementAdminMeowth          ; SPRITEMOVEFN_ADMIN_MEOWTH
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -808,6 +809,10 @@ endr
 
 .MovementBigLugia:
 	ld a, OBJECT_ACTION_BIG_LUGIA
+	jr ._ActionA_StepFunction_Standing
+
+.MovementAdminMeowth:
+	ld a, OBJECT_ACTION_ADMIN_MEOWTH
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:
