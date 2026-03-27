@@ -11,13 +11,13 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 
 	def_bg_events
 	bg_event  4,  2, BGEVENT_READ, AdminEldredScript
-	bg_event  3,  2, BGEVENT_JUMPTEXT, RangiComputerText
-	bg_event  6,  2, BGEVENT_JUMPTEXT, LunaComputerText
-	bg_event  9,  2, BGEVENT_JUMPTEXT, FredrikComputerText
-	bg_event 12,  2, BGEVENT_JUMPTEXT, EmiComputerText
-	bg_event  6,  5, BGEVENT_JUMPTEXT, AizawaComputerText
-	bg_event  9,  5, BGEVENT_JUMPTEXT, VulcanComputerText
-	bg_event 12,  5, BGEVENT_JUMPTEXT, SourComputerText
+	bg_event  3,  2, BGEVENT_UP, RangiComputerScript
+	bg_event  6,  2, BGEVENT_UP, LunaComputerScript
+	bg_event  9,  2, BGEVENT_UP, FredrikComputerScript
+	bg_event 12,  2, BGEVENT_UP, EmiComputerScript
+	bg_event  6,  5, BGEVENT_UP, AizawaComputerScript
+	bg_event  9,  5, BGEVENT_UP, VulcanComputerScript
+	bg_event 12,  5, BGEVENT_UP, SourComputerScript
 
 	def_object_events
 	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, PAL_NPC_RANGI, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
@@ -45,7 +45,9 @@ AdminRangiText:
 	cont "for my sprite!"
 	done
 
-RangiComputerText:
+RangiComputerScript:
+	jumpthistext
+
 	text "“Optimizing…” is"
 	line "blinking on the"
 	cont "screen."
@@ -70,7 +72,9 @@ AdminLunaText:
 	cont "here in Goldenrod!"
 	done
 
-LunaComputerText:
+LunaComputerScript:
+	jumpthistext
+
 	text "Network traffic"
 	line "from Wonder Trades"
 
@@ -90,7 +94,9 @@ AdminFredrikText:
 	line "his database!"
 	done
 
-FredrikComputerText:
+FredrikComputerScript:
+	jumpthistext
+
 	text "A dozen windows"
 	line "are open at once,"
 
@@ -114,7 +120,9 @@ AdminEmiText:
 	cont "Amethyst Town!"
 	done
 
-EmiComputerText:
+EmiComputerScript:
+	jumpthistext
+
 	text "Lots of code is"
 	line "covered up by a"
 	cont "game of Solitaire."
@@ -133,7 +141,9 @@ AdminAizawaText:
 	line "company for this!"
 	done
 
-AizawaComputerText:
+AizawaComputerScript:
+	jumpthistext
+
 	text "A program called"
 	line "Polished Map++ is"
 	cont "displaying a"
@@ -157,7 +167,9 @@ AdminVulcanText:
 	line "wrong!"
 	done
 
-VulcanComputerText:
+VulcanComputerScript:
+	jumpthistext
+
 	text "A weather map"
 	line "is displayed on"
 	cont "the screen."
@@ -170,7 +182,9 @@ AdminSourText:
 	text "Sour: TODO"
 	done
 
-SourComputerText:
+SourComputerScript:
+	jumpthistext
+
 	text "TODO"
 	done
 
