@@ -181,9 +181,9 @@ AdminEldredScript:
 	promptbutton
 	jumpthisopenedtext
 
-	text "The Meowth is"
-	line "pawing at the"
-	cont "keyboard."
+	text "A mischevious"
+	line "Meowth is pawing"
+	cont "at the keyboard."
 	done
 
 AdminMeowthText:
