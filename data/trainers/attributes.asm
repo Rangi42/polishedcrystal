@@ -279,7 +279,7 @@ TrainerClassAttributes:
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Nurse
-	db 0, 0 ; items
+	db FULL_HEAL, 0 ; items
 	db 16 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
@@ -297,7 +297,7 @@ TrainerClassAttributes:
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Super Nerd
-	db DIRE_HIT, 0 ; items
+	db X_ATTACK, 0 ; items
 	db 13 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
@@ -405,19 +405,19 @@ TrainerClassAttributes:
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Rich Boy
-	db MAX_POTION, 0 ; items
+	db FULL_RESTORE, 0 ; items
 	db 50 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Lady
-	db MAX_POTION, 0 ; items
+	db FULL_RESTORE, 0 ; items
 	db 50 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Breeder
-	db SUPER_POTION, 0 ; items
+	db 0, 0 ; items
 	db 16 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_RARELY
@@ -465,13 +465,13 @@ TrainerClassAttributes:
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Scientist
-	db FULL_RESTORE, 0 ; items
+	db X_SP_DEF, 0 ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Rocket Scientist
-	db FULL_RESTORE, 0 ; items
+	db X_SP_ATK, 0 ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
@@ -507,7 +507,7 @@ TrainerClassAttributes:
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Engineer
-	db 0, 0 ; items
+	db DIRE_HIT, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
