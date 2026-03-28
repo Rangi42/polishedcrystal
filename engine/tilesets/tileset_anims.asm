@@ -441,6 +441,100 @@ _FinishAnimateLavaBubbleTile:
 .LavaBubbleFrames:
 INCBIN "gfx/tilesets/animations/lava.2bpp"
 
+AnimateBigStarTile1:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+	srl a
+	inc a
+	inc a
+	maskbits 4
+	swap a
+
+	jr _FinishAnimateBigStarTile
+
+AnimateBigStarTile2:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, phase shift 2, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+	add a
+	add a
+	add a
+
+_FinishAnimateBigStarTile:
+	add LOW(vTiles5 tile $46)
+	ld l, a
+	adc HIGH(vTiles5 tile $46)
+	sub l
+	ld h, a
+
+	jmp WriteTileHLToDE
+
+AnimateSmallStarsTile1:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+	srl a
+	inc a
+	inc a
+	maskbits 4
+	swap a
+
+	jr _FinishAnimateSmallStarsTile
+
+AnimateSmallStarsTile2:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, phase shift 2, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+	add a
+	add a
+	add a
+
+_FinishAnimateSmallStarsTile:
+	add LOW(vTiles5 tile $4c)
+	ld l, a
+	adc HIGH(vTiles5 tile $4c)
+	sub l
+	ld h, a
+
+	jmp WriteTileHLToDE
+
+AnimateDoubleStarTile:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 2, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 2, 1
+	add a
+	add a
+	add a
+
+	add LOW(vTiles5 tile $51)
+	ld l, a
+	adc HIGH(vTiles5 tile $51)
+	sub l
+	ld h, a
+
+	jmp WriteTileHLToDE
+
 AnimateTowerPillarTiles1:
 	ld hl, sp + 0
 	ld b, h
