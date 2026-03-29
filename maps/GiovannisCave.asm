@@ -1,34 +1,34 @@
 GiovannisCave_MapScriptHeader:
 	def_scene_scripts
-	scene_script GiovannisCaveTrigger0
-	scene_script GiovannisCaveTrigger1
+	scene_script GiovannisCaveGiovanniBattleScene, SCENE_GIOVANNISCAVE_GIOVANNI_BATTLE
+	scene_script GiovannisCaveNoopScene, SCENE_GIOVANNISCAVE_NOOP
 
 	def_callbacks
 
 	def_warp_events
-	warp_event 15,  7, TOHJO_FALLS, 3
+	warp_event  5,  7, TOHJO_FALLS, 3
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 15,  2, BGEVENT_READ, GiovannisCaveRadioScript
-	bg_event 12,  6, BGEVENT_ITEM + BERSERK_GENE, EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
+	bg_event  5,  2, BGEVENT_READ, GiovannisCaveRadioScript
+	bg_event  2,  6, BGEVENT_ITEM + BERSERK_GENE, EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
 
 	def_object_events
-	object_event 15,  6, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
-	object_event 14,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
-	object_event 15,  3, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
-	smashrock_event 13, 6
-	smashrock_event 16, 2
+	object_event  5,  6, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
+	object_event  4,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
+	object_event  5,  3, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
+	smashrock_event  3,  6
+	smashrock_event  6,  2
 
 	object_const_def
 	const GIOVANNISCAVE_CELEBI
 	const GIOVANNISCAVE_LYRA
 	const GIOVANNISCAVE_GIOVANNI
 
-GiovannisCaveTrigger1:
+GiovannisCaveNoopScene:
 	sdefer GiovannisCaveCelebiEventScript
-GiovannisCaveTrigger0:
+GiovannisCaveGiovanniBattleScene:
 	end
 
 GiovannisCaveCelebiEventScript:
@@ -50,7 +50,7 @@ GiovannisCaveCelebiEventScript:
 	showtext GiovannisCaveBroadcastText
 	turnobject GIOVANNISCAVE_GIOVANNI, DOWN
 	showtext GiovannisCaveGiovanniIMustGoText
-	setmapscene GIOVANNIS_CAVE, $0
+	setmapscene GIOVANNIS_CAVE, SCENE_GIOVANNISCAVE_GIOVANNI_BATTLE
 	clearevent EVENT_TIME_TRAVELING
 	winlosstext GiovannisCaveGiovanniBeatenText, 0
 	setlasttalked GIOVANNISCAVE_GIOVANNI
@@ -93,12 +93,9 @@ GiovannisCaveCelebiEventScript:
 
 GiovannisCaveRadioScript:
 	checkevent EVENT_TIME_TRAVEL_FINISHED
-	iftruefwd .AfterTimeTravel
-	jumptext GiovannisCaveRadioText
-.AfterTimeTravel
-	jumptext GiovannisCaveRadioAfterTimeTravelText
+	iftrue_jumptext GiovannisCaveRadioAfterTimeTravelText
+	jumpthistext
 
-GiovannisCaveRadioText:
 	text "There is a radio"
 	line "that no longer"
 	cont "works…"

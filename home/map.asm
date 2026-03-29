@@ -977,11 +977,7 @@ GetScriptWord::
 	pop bc
 	ret
 
-
 ObjectEvent::
-	faceplayer
-	farjumptext _ObjectEventText
-
 DoNothingScript::
 	end
 

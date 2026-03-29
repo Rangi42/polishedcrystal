@@ -1,5 +1,7 @@
 MystriStage_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_MYSTRISTAGE_NOOP
+	scene_const SCENE_MYSTRISTAGE_ARCEUS_EVENT
 
 	def_callbacks
 
@@ -8,15 +10,15 @@ MystriStage_MapScriptHeader:
 	warp_event  7, 19, SINJOH_RUINS, 1
 
 	def_coord_events
-	coord_event  6, 11, 1, MystriStageTrigger1Script
-	coord_event  7, 11, 1, MystriStageTrigger2Script
+	coord_event  6, 11, SCENE_MYSTRISTAGE_ARCEUS_EVENT, MystriStageTrigger1Script
+	coord_event  7, 11, SCENE_MYSTRISTAGE_ARCEUS_EVENT, MystriStageTrigger2Script
 
 	def_bg_events
 
 	def_object_events
 	object_event  6, 10, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
 	object_event  7,  7, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
-	object_event  6,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, EGG, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
+	object_event  6,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, EGG, -1, PAL_MON_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
 
 	object_const_def
 	const MYSTRISTAGE_CYNTHIA1
@@ -40,16 +42,13 @@ MystriStageCynthiaSafeguardScript:
 	turnobject PLAYER, RIGHT
 	showtext MystriStageCynthiaSpeechText
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
-	opentext
-	writetext MystriStageCynthiaLeadText2
-	waitbutton
-	closetext
+	showtext MystriStageCynthiaLeadText2
 	pause 10
 	appear MYSTRISTAGE_CYNTHIA2
 	disappear MYSTRISTAGE_CYNTHIA1
 	setlasttalked MYSTRISTAGE_CYNTHIA2
 	setevent EVENT_LISTENED_TO_CYNTHIA_INTRO
-	setscene $0
+	setscene SCENE_MYSTRISTAGE_NOOP
 	; fallthrough
 
 MystriStageCynthiaScript:
@@ -118,7 +117,21 @@ MystriStageBeatCynthiaScript:
 	pause 20
 	turnobject MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
-	jumptextfaceplayer MystriStageCynthiaEggText
+	jumpthistextfaceplayer
+
+	text "Cynthia: Could it"
+	line "be… an Egg?"
+
+	para "Did we just"
+	line "witness the very"
+
+	para "moment an Egg was"
+	line "brought to this"
+	cont "world?"
+
+	para "A moment no one"
+	line "has ever seen?"
+	done
 
 MystriStageEggScript:
 	special GiveMystriEgg
@@ -284,20 +297,6 @@ MystriStageCynthiaAfterText:
 	cont "the Mystri Stage?"
 	done
 
-MystriStageCynthiaEggText:
-	text "Cynthia: Could it"
-	line "be… an Egg?"
-
-	para "Did we just"
-	line "witness the very"
-
-	para "moment an Egg was"
-	line "brought to this"
-	cont "world?"
-
-	para "A moment no one"
-	line "has ever seen?"
-	done
 
 MystriStageCynthiaFinalText:
 	text "Cynthia: An Egg"

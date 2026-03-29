@@ -50,7 +50,15 @@ GameFreakGameDesignerScript:
 	writetext GameFreakGameDesignerDiplomaSentText
 	waitbutton
 	setevent EVENT_ENABLE_DIPLOMA_PRINTING
-	jumpopenedtext GameFreakGameDesignerAfterDiplomaText
+	jumpthisopenedtext
+
+	text "The Graphic Artist"
+	line "will print out a"
+	cont "Diploma for you."
+
+	para "You should go show"
+	line "that off!"
+	done
 
 GameFreakGraphicArtistScript:
 	faceplayer
@@ -73,16 +81,43 @@ GameFreakGraphicArtistScript:
 	waitendtext
 
 MapCeladonMansion3FSignpost0Script:
-	jumptext CeladonMansion3FDevRoomSignText
+	jumpthistext
+
+	text "Game Freak"
+	line "Development Room"
+	done
 
 MapCeladonMansion3FSignpost1Script:
-	jumptext CeladonMansion3FDrawingText
+	jumpthistext
+
+	text "It's a detailed"
+	line "drawing of a"
+	cont "pretty girl."
+	done
 
 MapCeladonMansion3FSignpost2Script:
-	jumptext CeladonMansion3FGameProgramText
+	opentext
+	writetext CeladonMansion3FGameProgramText
+	nooryes
+	iffalse_endtext
+	writetext CeladonMansion3FAreYouSureText
+	nooryes
+	iffalse_endtext
+	callasm .MessWithGameProgram
+	endtext
+
+.MessWithGameProgram:
+	ld a, ERR_PEBKAC
+	jmp Crash
 
 MapCeladonMansion3FSignpost3Script:
-	jumptext CeladonMansion3FReferenceMaterialText
+	jumpthistext
+
+	text "It's crammed with"
+	line "reference materi-"
+	cont "als. There's even"
+	cont "a # Doll."
+	done
 
 GameFreakGameDesignerText:
 	text "Is that right?"
@@ -122,14 +157,6 @@ GameFreakGameDesignerDiplomaSentText:
 	line "was sent home."
 	done
 
-GameFreakGameDesignerAfterDiplomaText:
-	text "The Graphic Artist"
-	line "will print out a"
-	cont "Diploma for you."
-
-	para "You should go show"
-	line "that off!"
-	done
 
 GameFreakDesignerGaveDiplomaText:
 	text "Congratulations"
@@ -182,16 +209,7 @@ GameFreakCharacterDesignerText:
 	para "Oh, I love them!"
 	done
 
-CeladonMansion3FDevRoomSignText:
-	text "Game Freak"
-	line "Development Room"
-	done
 
-CeladonMansion3FDrawingText:
-	text "It's a detailed"
-	line "drawing of a"
-	cont "pretty girl."
-	done
 
 CeladonMansion3FGameProgramText:
 	text "It's the game"
@@ -199,11 +217,13 @@ CeladonMansion3FGameProgramText:
 
 	para "with it could put"
 	line "a bug in the game!"
+
+	para "Want to mess with"
+	line "it anyway?"
 	done
 
-CeladonMansion3FReferenceMaterialText:
-	text "It's crammed with"
-	line "reference materi-"
-	cont "als. There's even"
-	cont "a # Doll."
+CeladonMansion3FAreYouSureText:
+	text "Are you sure?"
+	line "It could crash!"
 	done
+

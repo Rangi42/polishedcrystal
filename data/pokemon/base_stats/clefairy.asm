@@ -1,5 +1,5 @@
-	db  70,  45,  48,  35,  60,  65 ; 323 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 323,  70,  45,  48,  60,  65,  35
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db FAIRY, FAIRY ; type
 	db 150 ; catch rate

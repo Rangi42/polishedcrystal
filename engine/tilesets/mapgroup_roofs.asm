@@ -26,7 +26,8 @@ MapGroupRoofGFX:
 	fardw VioletRoofGFX
 	fardw AzaleaRoofGFX
 	fardw OlivineRoofGFX
-	fardw StatueRoofGFX
+	fardw GoldenrodRoofGFX
+	fardw SinjohRoofGFX
 	assert_table_length NUM_ROOFS
 
 INCLUDE "data/maps/roofs.asm"

@@ -1,5 +1,6 @@
 Route34IlexForestGate_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE34ILEXFORESTGATE_TEACHER_BLOCKS
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, .IsForestRestless
@@ -11,14 +12,14 @@ Route34IlexForestGate_MapScriptHeader:
 	warp_event  5,  7, ILEX_FOREST, 1
 
 	def_coord_events
-	coord_event  4,  7, 0, Route34IlexForestGateCelebiEvent
+	coord_event  4,  7, SCENE_ROUTE34ILEXFORESTGATE_TEACHER_BLOCKS, Route34IlexForestGateCelebiEvent
 
 	def_bg_events
 
 	def_object_events
 	object_event  9,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
 	object_event  5,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
-	pokemon_event  9,  4, HERACROSS, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, Route34IlexForestGateHeracrossText, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
+	pokemon_event  9,  4, HERACROSS, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, Route34IlexForestGateHeracrossText, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
 	object_event  3,  4, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route34IlexForestGateLassText, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 
 	object_const_def

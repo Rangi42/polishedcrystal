@@ -1,7 +1,7 @@
 SeagallopFerryShamoutiGate_MapScriptHeader:
 	def_scene_scripts
-	scene_script SeagallopFerryShamoutiGateTrigger0
-	scene_script SeagallopFerryShamoutiGateTrigger1
+	scene_script SeagallopFerryShamoutiGateAskEnterScene, SCENE_SEAGALLOPFERRYSHAMOUTIGATE_ASK_ENTER
+	scene_script SeagallopFerryShamoutiGateLeaveScene, SCENE_SEAGALLOPFERRYSHAMOUTIGATE_LEAVE
 
 	def_callbacks
 
@@ -19,9 +19,9 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 	object_const_def
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 
-SeagallopFerryShamoutiGateTrigger1:
+SeagallopFerryShamoutiGateLeaveScene:
 	sdefer SeagallopFerryShamoutiGate_PlayerArrives
-SeagallopFerryShamoutiGateTrigger0:
+SeagallopFerryShamoutiGateAskEnterScene:
 	end
 
 SeagallopFerryShamoutiGate_PlayerArrives:
@@ -30,7 +30,7 @@ SeagallopFerryShamoutiGate_PlayerArrives:
 	applymovement PLAYER, SeagallopFerryShamoutiGatePlayerArriveMovementData
 	showtext SeagallopFerryShamoutiIslandRefusedText
 	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorArrive2MovementData
-	setscene $0
+	setscene SCENE_SEAGALLOPFERRYSHAMOUTIGATE_ASK_ENTER
 	end
 
 SeagallopFerryShamoutiGateSailorScript:
@@ -52,7 +52,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	iffalsefwd .RefuseFerry
 .ToVermilion
 	scall SeagallopFerryShamoutiDepartureScript
-	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1
+	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, SCENE_SEAGALLOPFERRYVERMILIONGATE_LEAVE
 	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 

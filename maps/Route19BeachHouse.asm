@@ -44,7 +44,18 @@ Route19BeachHouseVictorScript:
 	jumpopenedtext .AfterText
 
 .NoPikachu:
-	jumpopenedtext .NoPikachuText
+	jumpthisopenedtext
+
+	text "You can do it,"
+	line "too!"
+
+	para "Go out there and"
+	line "find a Surfing"
+	cont "Pikachu!"
+
+	para "Show me that you"
+	line "love Surfing too!"
+	done
 
 .NoBattle:
 	jumpopenedtext .NoBattleText
@@ -103,17 +114,6 @@ Route19BeachHouseVictorScript:
 	line "since then."
 	done
 
-.NoPikachuText:
-	text "You can do it,"
-	line "too!"
-
-	para "Go out there and"
-	line "find a Surfing"
-	cont "Pikachu!"
-
-	para "Show me that you"
-	line "love Surfing too!"
-	done
 
 .NoBattleText:
 	text "Shucks. Come Surf"

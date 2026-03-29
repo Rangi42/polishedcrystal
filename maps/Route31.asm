@@ -296,7 +296,23 @@ Route31MailRecipientScript:
 	iftruefwd .TutorSleepTalk
 	checkevent EVENT_GOT_KENYA
 	iftruefwd .TryGiveKenya
-	jumpopenedtext Text_Route31SleepyMan
+	jumpthisopenedtext
+
+	text "…Hnuurg… Huh?"
+
+	para "I walked too far"
+	line "today looking for"
+	cont "#mon."
+
+	para "My feet hurt and"
+	line "I'm sleepy…"
+
+	para "If I were a wild"
+	line "#mon, I'd be"
+	cont "easy to catch…"
+
+	para "…Zzzz…"
+	done
 
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
@@ -324,26 +340,61 @@ Route31MailRecipientScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_Route31TutorRefused
+	jumpthisopenedtext
+
+	text "OK then…"
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_Route31TutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf,"
+	cont "though…"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_Route31TutorTaught
+	jumpthisopenedtext
+
+	text "There! Now your"
+	line "#mon knows"
+	cont "Sleep Talk!"
+	done
 
 .WrongMail:
-	jumpopenedtext Text_Route31WrongMail
+	jumpthisopenedtext
+
+	text "This Mail isn't"
+	line "for me."
+	done
 
 .NoMail:
-	jumpopenedtext Text_Route31MissingMail
+	jumpthisopenedtext
+
+	text "Why is this #-"
+	line "mon so special?"
+
+	para "It doesn't have"
+	line "any Mail."
+	done
 
 .Refused:
-	jumpopenedtext Text_Route31DeclinedToHandOverMail
+	jumpthisopenedtext
+
+	text "What? You don't"
+	line "want anything?"
+	done
 
 .LastMon:
-	jumpopenedtext Text_Route31CantTakeLastMon
+	jumpthisopenedtext
+
+	text "If I take that"
+	line "#mon from you,"
+
+	para "what are you going"
+	line "to use in battle?"
+	done
 
 ReceivedSpearowMailText:
 	setcharmap no_ngrams
@@ -373,22 +424,6 @@ Bug_catcherWade1AfterText:
 	cont "Box automatically."
 	done
 
-Text_Route31SleepyMan:
-	text "…Hnuurg… Huh?"
-
-	para "I walked too far"
-	line "today looking for"
-	cont "#mon."
-
-	para "My feet hurt and"
-	line "I'm sleepy…"
-
-	para "If I were a wild"
-	line "#mon, I'd be"
-	cont "easy to catch…"
-
-	para "…Zzzz…"
-	done
 
 Text_Route31SleepyManGotMail:
 	text "…Zzzz… Huh?"
@@ -433,11 +468,6 @@ Text_Route31TutorSleepTalk:
 	cont "in their sleep!"
 	done
 
-Text_Route31TutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf,"
-	cont "though…"
-	done
 
 Text_Route31TutorQuestion:
 	text "Should I teach"
@@ -445,41 +475,11 @@ Text_Route31TutorQuestion:
 	cont "Sleep Talk?"
 	done
 
-Text_Route31TutorRefused:
-	text "OK then…"
-	done
 
-Text_Route31TutorTaught:
-	text "There! Now your"
-	line "#mon knows"
-	cont "Sleep Talk!"
-	done
 
-Text_Route31WrongMail:
-	text "This Mail isn't"
-	line "for me."
-	done
 
-Text_Route31MissingMail:
-	text "Why is this #-"
-	line "mon so special?"
 
-	para "It doesn't have"
-	line "any Mail."
-	done
 
-Text_Route31DeclinedToHandOverMail:
-	text "What? You don't"
-	line "want anything?"
-	done
-
-Text_Route31CantTakeLastMon:
-	text "If I take that"
-	line "#mon from you,"
-
-	para "what are you going"
-	line "to use in battle?"
-	done
 
 Route31YoungsterText:
 	text "I found a good"

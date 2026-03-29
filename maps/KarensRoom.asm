@@ -1,6 +1,7 @@
 KarensRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script KarensRoomEntranceTrigger
+	scene_script KarensRoomLockDoorScene, SCENE_KARENSROOM_LOCK_DOOR
+	scene_const SCENE_KARENSROOM_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, KarensRoomDoorCallback
@@ -18,7 +19,7 @@ KarensRoom_MapScriptHeader:
 	def_object_events
 	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KarenScript, -1
 
-KarensRoomEntranceTrigger:
+KarensRoomLockDoorScene:
 	sdefer .Script
 	end
 
@@ -30,7 +31,7 @@ KarensRoomEntranceTrigger:
 	changeblock 4, 14, $2a
 	refreshmap
 	closetext
-	setscene $1
+	setscene SCENE_KARENSROOM_NOOP
 	setevent EVENT_KARENS_ROOM_ENTRANCE_CLOSED
 	waitsfx
 	end

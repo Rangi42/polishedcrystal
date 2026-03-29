@@ -3,11 +3,10 @@ SpriteAnimFrameData:
 	table_width 2
 	dw .Frameset_00
 	dw .Frameset_PartyMon
-	dw .Frameset_PartyMonWithMail
 	dw .Frameset_PartyMonWithItem
-	dw .Frameset_PartyMonFast
-	dw .Frameset_PartyMonWithMailFast
-	dw .Frameset_PartyMonWithItemFast
+	dw .Frameset_PartyMonWithInertItem
+	dw .Frameset_PartyMonWithMail
+	dw .Frameset_PartyMonWithBerry
 	dw .Frameset_TextEntryCursor
 	dw .Frameset_TextEntryCursorBig
 	dw .Frameset_TextEntryCursorBlue
@@ -64,6 +63,7 @@ SpriteAnimFrameData:
 	dw .Frameset_TownMapFly
 	dw .Frameset_GreenWalk
 	dw .Frameset_FlyMon
+	dw .Frameset_PurpleWalk
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -75,29 +75,24 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithMail:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  8
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  8
-	oamrestart
-
 .Frameset_PartyMonWithItem:
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1,  8
 	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2,  8
 	oamrestart
 
-.Frameset_PartyMonFast:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_1,  4
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  4
+.Frameset_PartyMonWithInertItem:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_INERT_ITEM_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithMailFast:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  4
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  4
+.Frameset_PartyMonWithMail:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_MAIL_2,  8
 	oamrestart
 
-.Frameset_PartyMonWithItemFast:
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_1,  4
-	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2,  4
+.Frameset_PartyMonWithBerry:
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_WITH_BERRY_2,  8
 	oamrestart
 
 .Frameset_RedWalk:
@@ -119,6 +114,13 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8, B_OAM_XFLIP
+	oamrestart
+
+.Frameset_PurpleWalk:
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_2,  8
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PURPLE_WALK_2,  8, B_OAM_XFLIP
 	oamrestart
 
 .Frameset_TextEntryCursor:

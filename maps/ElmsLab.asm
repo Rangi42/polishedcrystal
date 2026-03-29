@@ -1,13 +1,13 @@
 ElmsLab_MapScriptHeader:
 	def_scene_scripts
-	scene_script ElmsLabTrigger0
-	scene_script ElmsLabTrigger1
-	scene_script ElmsLabTrigger2
-	scene_script ElmsLabTrigger3
-	scene_script ElmsLabTrigger4
-	scene_script ElmsLabTrigger5
-	scene_script ElmsLabTrigger6
-	scene_script ElmsLabTrigger7
+	scene_script ElmsLabMeetElmScene, SCENE_ELMSLAB_MEET_ELM
+	scene_script ElmsLabCantLeaveScene, SCENE_ELMSLAB_CANT_LEAVE
+	scene_script ElmsLabNoopScene, SCENE_ELMSLAB_NOOP
+	scene_script ElmsLabMeetOfficerScene, SCENE_ELMSLAB_MEET_OFFICER
+	scene_script ElmsLabUnusedScene, SCENE_ELMSLAB_UNUSED
+	scene_script ElmsLabAideGivesPotionScene, SCENE_ELMSLAB_AIDE_GIVES_POTION
+	scene_script ElmsLabLyraBattleScene, SCENE_ELMSLAB_LYRA_BATTLE
+	scene_script ElmsLabAideGivesPokeBallsScene, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, ElmsLabCallback_MoveElm
@@ -17,13 +17,13 @@ ElmsLab_MapScriptHeader:
 	warp_event  5, 11, NEW_BARK_TOWN, 1
 
 	def_coord_events
-	coord_event  4,  6, 1, LabTryToLeaveScript
-	coord_event  5,  6, 1, LabTryToLeaveScript
-	coord_event  4,  5, 3, MeetCopScript
-	coord_event  5,  5, 3, MeetCopScript2
-	coord_event  4,  8, 5, AideScript_WalkPotions1
-	coord_event  5,  8, 5, AideScript_WalkPotions2
-	coord_event  4,  6, 6, LyraBattleScript
+	coord_event  4,  6, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
+	coord_event  5,  6, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
+	coord_event  4,  5, SCENE_ELMSLAB_MEET_OFFICER, MeetCopScript
+	coord_event  5,  5, SCENE_ELMSLAB_MEET_OFFICER, MeetCopScript2
+	coord_event  4,  8, SCENE_ELMSLAB_AIDE_GIVES_POTION, AideScript_WalkPotions1
+	coord_event  5,  8, SCENE_ELMSLAB_AIDE_GIVES_POTION, AideScript_WalkPotions2
+	coord_event  4,  6, SCENE_ELMSLAB_LYRA_BATTLE, LyraBattleScript
 
 	def_bg_events
 	bg_event  2,  1, BGEVENT_READ, ElmsLabHealingMachine
@@ -46,9 +46,9 @@ ElmsLab_MapScriptHeader:
 	def_object_events
 	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
 	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  7,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  6,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_RED, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	object_event  7,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_BLUE, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	object_event  8,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_GREEN, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
 	object_event  5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
 
@@ -61,17 +61,17 @@ ElmsLab_MapScriptHeader:
 	const ELMSLAB_OFFICER
 	const ELMSLAB_LYRA
 
-ElmsLabTrigger0:
+ElmsLabMeetElmScene:
 	sdefer ElmsLab_AutowalkUpToElm
-ElmsLabTrigger1:
-ElmsLabTrigger2:
-ElmsLabTrigger3:
-ElmsLabTrigger4:
-ElmsLabTrigger5:
-ElmsLabTrigger6:
+ElmsLabCantLeaveScene:
+ElmsLabNoopScene:
+ElmsLabMeetOfficerScene:
+ElmsLabUnusedScene:
+ElmsLabAideGivesPotionScene:
+ElmsLabLyraBattleScene:
 	end
 
-ElmsLabTrigger7:
+ElmsLabAideGivesPokeBallsScene:
 	sdefer ElmsLab_AutoAideSpeech
 	end
 
@@ -119,7 +119,7 @@ endc
 	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement
 	turnobject PLAYER, RIGHT
 	showtext ElmText_ChooseAPokemon
-	setscene $1
+	setscene SCENE_ELMSLAB_CANT_LEAVE
 	end
 
 ElmsLab_AutoAideSpeech:
@@ -129,7 +129,7 @@ ElmsLab_AutoAideSpeech:
 	showtext AideText_ThiefReturnedMon
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksBackMovement
 	turnobject ELMSLAB_ELMS_AIDE, DOWN
-	setscene $2
+	setscene SCENE_ELMSLAB_NOOP
 	end
 
 ProfElmScript:
@@ -156,7 +156,14 @@ ElmCheckOddSouvenir:
 	scall ElmEggHatchedScript
 	; need to reopen text boxes since ElmCheckGotEggAgain's
 	; jumpopenedtext will close them.
-	jumptext ElmThoughtEggHatchedText
+	jumpthistext
+
+	text "<PLAYER>? I thought"
+	line "the Egg hatched."
+
+	para "Where is the"
+	line "#mon?"
+	done
 
 ElmEggHatchedScript:
 	setmonval TOGEPI
@@ -186,7 +193,12 @@ ElmCheckGotEggAgain:
 	iftrue ElmAfterTheftScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumpopenedtext ElmDescribesMrPokemonText
-	jumpopenedtext ElmText_LetYourMonBattleIt
+	jumpthisopenedtext
+
+	text "If a wild #mon"
+	line "appears, let your"
+	cont "#mon battle it!"
+	done
 
 LabTryToLeaveScript:
 	turnobject ELMSLAB_ELM, DOWN
@@ -328,14 +340,18 @@ endc
 	showtext ElmDirectionsText3
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	setscene $6
+	setscene SCENE_ELMSLAB_LYRA_BATTLE
 	end
 
 ElmsLabHealingMachine:
 	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftruefwd .CanHeal
-	jumpopenedtext ElmsLabHealingMachineText1
+	jumpthisopenedtext
+
+	text "I wonder what this"
+	line "does?"
+	done
 
 .CanHeal:
 	writetext ElmsLabHealingMachineText2
@@ -374,11 +390,16 @@ ElmAfterTheftScript:
 	promptbutton
 	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	clearevent EVENT_LYRA_ROUTE_29
-	setmapscene ROUTE_29, $1
+	setmapscene ROUTE_29, SCENE_ROUTE29_CATCH_TUTORIAL
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
-	setscene $2
-	jumpopenedtext ElmAfterTheftText6
+	setscene SCENE_ELMSLAB_NOOP
+	writetext ElmAfterTheftText6
+	promptbutton
+	closetext
+	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
+	showtext ElmAfterTheftText7
+	end
 
 ShowElmTogepiScript:
 	writetext ShowElmTogepiText1
@@ -456,7 +477,15 @@ ElmAskBattleScript:
 	startbattle
 	reloadmap
 	special HealParty
-	jumptextfaceplayer ElmAfterBattleText
+	jumpthistextfaceplayer
+
+	text "Elm: I'm proud"
+	line "of you, <PLAYER>."
+
+	para "I was right to"
+	line "trust you with"
+	cont "a #mon!"
+	done
 
 ElmGiveTicketScript:
 	writetext ElmGiveTicketText1
@@ -524,20 +553,24 @@ ElmGiveTicketScript:
 ElmJumpBackScript1:
 	closetext
 	readvar VAR_FACING
-	ifequalfwd DOWN, ElmJumpDownScript
-	ifequalfwd UP, ElmJumpUpScript
-	ifequalfwd LEFT, ElmJumpLeftScript
-	ifequalfwd RIGHT, ElmJumpRightScript
+	scalltable .JumpBackScript1Table
 	end
+.JumpBackScript1Table
+	dw ElmJumpDownScript
+	dw ElmJumpUpScript
+	dw ElmJumpLeftScript
+	dw ElmJumpRightScript
 
 ElmJumpBackScript2:
 	closetext
 	readvar VAR_FACING
-	ifequalfwd DOWN, ElmJumpUpScript
-	ifequalfwd UP, ElmJumpDownScript
-	ifequalfwd LEFT, ElmJumpRightScript
-	ifequalfwd RIGHT, ElmJumpLeftScript
+	scalltable .JumpBackScript2Table
 	end
+.JumpBackScript2Table
+	dw ElmJumpUpScript
+	dw ElmJumpDownScript
+	dw ElmJumpRightScript
+	dw ElmJumpLeftScript
 
 ElmJumpUpScript:
 	applymovement ELMSLAB_ELM, ElmJumpUpMovement
@@ -622,7 +655,7 @@ LyraBattleScript:
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement
 	disappear ELMSLAB_LYRA
 	special HealParty
-	setscene $5
+	setscene SCENE_ELMSLAB_AIDE_GIVES_POTION
 	playmapmusic
 	end
 
@@ -645,7 +678,7 @@ AideScript_GivePotions:
 	writetext AideText_GiveYouPotions
 	promptbutton
 	verbosegiveitem POTION
-	setscene $2
+	setscene SCENE_ELMSLAB_NOOP
 	jumpopenedtext AideText_AlwaysBusy
 
 ElmsAideScript:
@@ -690,7 +723,7 @@ CopScript:
 	showtext ElmsLabLyraTheftGoodbyeText
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement
 	disappear ELMSLAB_LYRA
-	setscene $2
+	setscene SCENE_ELMSLAB_NOOP
 	pause 10
 	applymovement PLAYER, MeetCopScript_GiveEgg
 	opentext
@@ -699,7 +732,11 @@ CopScript:
 ElmsLabLyraScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iffalse_jumptextfaceplayer ElmsLabLyraWhichPokemonText
-	jumptextfaceplayer ElmsLabLyraGoodChoiceText
+	jumpthistextfaceplayer
+
+	text "Your #mon"
+	line "looks cute too!"
+	done
 
 ElmsLabWindow:
 	checkflag ENGINE_FLYPOINT_VIOLET
@@ -709,7 +746,14 @@ ElmsLabWindow:
 	jumptext ElmsLabWindowText1
 
 ElmsLabPC:
-	jumptext ElmsLabPCText
+	jumpthistext
+
+	text "Observations On"
+	line "#mon Evolution"
+
+	para "…It says on the"
+	line "screen…"
+	done
 
 ElmsLab_WalkUpToElmMovement:
 	step_up
@@ -1007,11 +1051,6 @@ ElmText_ChooseAPokemon:
 	para "Go on. Pick one!"
 	done
 
-ElmText_LetYourMonBattleIt:
-	text "If a wild #mon"
-	line "appears, let your"
-	cont "#mon battle it!"
-	done
 
 LabWhereGoingText:
 	text "Elm: Wait! Where"
@@ -1107,10 +1146,6 @@ ElmPokeBallText:
 	cont "Prof.Elm."
 	done
 
-ElmsLabHealingMachineText1:
-	text "I wonder what this"
-	line "does?"
-	done
 
 ElmsLabHealingMachineText2:
 	text "Would you like to"
@@ -1190,15 +1225,20 @@ ElmAfterTheftText6:
 	para "Before you leave,"
 	line "make sure that you"
 	cont "talk to your mom."
+	done
 
-	para "And give me a call"
+ElmAfterTheftText7:
+	text "And give me a call"
 	line "sometimes too."
 
-	para "I can tell you all"
-	line "about my research"
+	para "If you want to"
+	line "know how your"
 
-	para "on how #mon"
-	line "evolve!"
+	para "#mon might"
+	line "evolve, then"
+
+	para "my research will"
+	line "be invaluable!"
 	done
 
 ElmStudyingEggText:
@@ -1230,13 +1270,6 @@ ElmWaitingEggHatchText:
 	line "Egg changed any?"
 	done
 
-ElmThoughtEggHatchedText:
-	text "<PLAYER>? I thought"
-	line "the Egg hatched."
-
-	para "Where is the"
-	line "#mon?"
-	done
 
 ShowElmTogepiText1:
 	text "Elm: <PLAYER>, you"
@@ -1527,14 +1560,6 @@ ElmRefusedBattleText:
 	line "machine here."
 	done
 
-ElmAfterBattleText:
-	text "Elm: I'm proud"
-	line "of you, <PLAYER>."
-
-	para "I was right to"
-	line "trust you with"
-	cont "a #mon!"
-	done
 
 AideText_GiveYouPotions:
 	text "<PLAYER>, I want"
@@ -1642,10 +1667,6 @@ LyraNicknamedTotodileText:
 	cont "name it Toto!"
 	done
 
-ElmsLabLyraGoodChoiceText:
-	text "Your #mon"
-	line "looks cute too!"
-	done
 
 ElmsLabLyraChallengeText:
 	text "Lyra: <PLAYER>!"
@@ -1771,10 +1792,3 @@ ElmsLabTrashcanText:
 	cont "ate is in there…"
 	done
 
-ElmsLabPCText:
-	text "Observations On"
-	line "#mon Evolution"
-
-	para "…It says on the"
-	line "screen…"
-	done

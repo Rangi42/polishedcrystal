@@ -1,6 +1,7 @@
 RuinsOfAlphAerodactylChamber_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsofAlphAerodactylChamberTrigger0
+	scene_script RuinsOfAlphAerodactylChamberCheckWallScene, SCENE_RUINSOFALPHAERODACTYLCHAMBER_CHECK_WALL
+	scene_const SCENE_RUINSOFALPHAERODACTYLCHAMBER_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuinsOfAlphAerodactylChamberHiddenDoorsCallback
@@ -24,7 +25,7 @@ RuinsOfAlphAerodactylChamber_MapScriptHeader:
 
 	def_object_events
 
-RuinsofAlphAerodactylChamberTrigger0:
+RuinsOfAlphAerodactylChamberCheckWallScene:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iffalsefwd .End
 	sdefer RuinsOfAlphAerodactylChamberWallOpenScript
@@ -54,7 +55,7 @@ RuinsOfAlphAerodactylChamberWallOpenScript:
 	changeblock 4, 0, $25
 	refreshmap
 	earthquake 50
-	setscene $1
+	setscene SCENE_RUINSOFALPHAERODACTYLCHAMBER_NOOP
 	endtext
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
@@ -69,7 +70,7 @@ MapRuinsofAlphAerodactylChamberSignpost2Script:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_R_TO_W
-	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
+	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, SCENE_RUINSOFALPHINNERCHAMBER_STRANGE_PRESENCE
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
 	changeblock 2, 2, $14

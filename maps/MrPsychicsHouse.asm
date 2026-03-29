@@ -36,14 +36,26 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_MrPsychicsHouseTutorRefused
+	jumpthisopenedtext
+
+	text "…I was wrong?"
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_MrPsychicsHouseTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf…"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_MrPsychicsHouseTutorTaught
+	jumpthisopenedtext
+
+	text "Your #mon now"
+	line "knows how to use"
+	cont "Zen Headbutt."
+	done
 
 MrPsychicText:
 	text "…"
@@ -66,10 +78,6 @@ Text_MrPsychicsHouseTutorZenHeadbutt:
 	line "Silver Leaf."
 	done
 
-Text_MrPsychicsHouseTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf…"
-	done
 
 Text_MrPsychicsHouseTutorQuestion:
 	text "Should I teach"
@@ -77,12 +85,4 @@ Text_MrPsychicsHouseTutorQuestion:
 	cont "Zen Headbutt?"
 	done
 
-Text_MrPsychicsHouseTutorRefused:
-	text "…I was wrong?"
-	done
 
-Text_MrPsychicsHouseTutorTaught:
-	text "Your #mon now"
-	line "knows how to use"
-	cont "Zen Headbutt."
-	done

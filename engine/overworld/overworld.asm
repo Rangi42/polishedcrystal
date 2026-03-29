@@ -8,42 +8,31 @@ _UpdatePlayerSprite::
 	res 5, [hl]
 	jmp GetUsedSprite
 
-GetPlayerSprite:
+GetPlayerSpriteInA:
 	ld a, [wPlayerGender]
-	ld hl, ChrisStateSprites
-	and a ; PLAYER_MALE
-	jr z, .go
-	ld hl, KrisStateSprites
-	dec a ; PLAYER_FEMALE
-	jr z, .go
-	; PLAYER_ENBY
-	ld hl, CrysStateSprites
-.go
+	assert NUM_PLAYER_STATES == 6
+	ld h, a
+	add a ; * 2
+	add h ; * 3
+	add a ; * 6
+	ld h, a
 	ld a, [wPlayerState]
-	ld c, a
-.loop
-	ld a, [hli]
-	cp c
-	jr z, .good
-	inc hl
-	cp $ff
-	jr nz, .loop
-
-; Any player state not in the array defaults to Chris's sprite.
-	xor a ; ld a, PLAYER_NORMAL
-	ld [wPlayerState], a
-	ld a, SPRITE_CHRIS
-	jr .finish
-
-.good
+	add h
+	add LOW(PlayerStateSprites)
+	ld l, a
+	adc HIGH(PlayerStateSprites)
+	sub l
+	ld h, a
 	ld a, [hl]
+	ret
 
-.finish
+GetPlayerSprite:
+	call GetPlayerSpriteInA
 	ld [wPlayerSprite], a
 	ld [wPlayerObjectSprite], a
 	ret
 
-INCLUDE "data/sprites/player_sprites.asm"
+INCLUDE "data/player/state_sprites.asm"
 
 RefreshSprites::
 	push hl

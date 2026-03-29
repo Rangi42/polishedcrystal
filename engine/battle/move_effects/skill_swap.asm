@@ -5,22 +5,25 @@ BattleCommand_skillswap:
 
 	ld a, [wPlayerAbility]
 	ld b, a
-	call AbilityCanBeSkillSwapped
-	jr c, .failed
+	call AbilityCanBeSwapped
+	jr nz, .failed
 	ld a, [wEnemyAbility]
 	ld c, a
-	call AbilityCanBeSkillSwapped
-	jr c, .failed
+	call AbilityCanBeSwapped
+	jr nz, .failed
 
+	push bc
+	call AnimateCurrentMove
+
+	; Show the abilities being swapped.
+	farcall DisplayAbilitySwap
+
+	; Perform the actual ability swap.
+	pop bc
 	ld a, b
 	ld [wEnemyAbility], a
 	ld a, c
 	ld [wPlayerAbility], a
-
-	call AnimateCurrentMove
-
-	ld hl, SwappedAbilitiesText
-	call StdBattleTextbox
 
 	; Reset variables related to abilities
 	ld hl, wPlayerSubStatus1
@@ -43,50 +46,3 @@ BattleCommand_skillswap:
 .failed
 	call AnimateFailedMove
 	jmp PrintButItFailed
-
-NoSkillSwapEntry:
-	ld hl, NoSkillSwapEntryAbilities
-	jr AbilityChangeCheck_IsInByteArray
-
-AbilityCanBeSuppressed:
-	ld hl, AbilitySuppressionExcepts
-	jr AbilityChangeCheck_IsInByteArray
-
-AbilityCanBeTraced:
-	ld hl, TraceExcepts
-	jr AbilityChangeCheck_IsInByteArray
-
-AbilityCanBeSkillSwapped:
-	ld hl, SkillSwapExcepts
-	; fallthrough
-AbilityChangeCheck_IsInByteArray:
-; Returns carry if ability is part of a blacklist in hl.
-	; Handle Neutralizing Gas sentinel (-1).
-	add 1 ; no-optimize a++|a-- (sets carry)
-	dec a ; doesn't mess with carry
-	ret c
-
-	; Otherwise, check the relevant array. Preserve non-flag registers.
-	push hl
-	push de
-	push bc
-	push af
-	call IsInByteArray
-	pop bc
-	ld a, b
-	jmp PopBCDEHL
-
-TraceExcepts:
-	db IMPOSTER
-	db TRACE
-	; fallthrough
-SkillSwapExcepts:
-	db NO_ABILITY
-AbilitySuppressionExcepts:
-	db NEUTRALIZING_GAS
-	db -1
-
-NoSkillSwapEntryAbilities:
-	db IMPOSTER
-	db CLOUD_NINE
-	db -1

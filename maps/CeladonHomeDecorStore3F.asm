@@ -120,7 +120,11 @@ CeladonHomeDecorStore3FClerk2Script:
 	waitbutton
 	writetext BlueCarpetSentText
 	waitbutton
-	jumpopenedtext CeladonHomeDecorStore3FClerk2YesText
+	jumpthisopenedtext
+
+	text "Thank you!"
+	line "Have a nice day!"
+	done
 
 .NotEnoughMoney:
 	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText
@@ -147,10 +151,6 @@ CeladonHomeDecorStore3FClerk2SaleText:
 	line "buy one?"
 	done
 
-CeladonHomeDecorStore3FClerk2YesText:
-	text "Thank you!"
-	line "Have a nice day!"
-	done
 
 CeladonHomeDecorStore3FClerk2NoText:
 	text "Have a nice day!"

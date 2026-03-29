@@ -11,7 +11,7 @@ BattleCommand_sketch:
 .not_linked
 	; If the opponent has a substitute up, fail.
 	call CheckSubstituteOpp
-	jr nz, .fail
+	jmp nz, .fail
 
 	; If the user is transformed, fail.
 	ld a, BATTLE_VARS_SUBSTATUS2
@@ -38,14 +38,16 @@ BattleCommand_sketch:
 	jr z, .fail
 
 	; Fail if user already knows that move (which will always include Sketch)
-	ld c, NUM_MOVES
 	push hl
-.does_user_already_know_move
-	ld a, [hli]
-	cp b
-	jr z, .pop_hl_and_fail
-	dec c
-	jr nz, .does_user_already_know_move
+	call .UserKnowsMove
+	jr nc, .pop_hl_and_fail
+
+	; Also check move within party (pointless now, but causes problems when
+	; Mimic is reintroduced)
+	ld a, MON_MOVES
+	call UserPartyAttr
+	call .UserKnowsMove
+	jr nc, .pop_hl_and_fail
 
 	; We now have the move in b ready to be written. Get move PP into c.
 	push bc
@@ -115,3 +117,15 @@ BattleCommand_sketch:
 .fail
 	call AnimateFailedMove
 	jmp PrintDidntAffect
+
+.UserKnowsMove:
+; Returns carry if user doesn't know the move.
+	ld c, NUM_MOVES
+.knowsmove_loop
+	ld a, [hli]
+	cp b
+	ret z
+	dec c
+	jr nz, .knowsmove_loop
+	scf
+	ret

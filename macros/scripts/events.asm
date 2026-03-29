@@ -1399,6 +1399,32 @@ MACRO pluralize
 	dw \1 ; pointer
 ENDM
 
+	const loadtrainerwithpal_command
+MACRO loadtrainerwithpal
+	db loadtrainerwithpal_command
+	db \1 ; trainer_group
+	db \2 ; trainer_id
+	db \3 ; palette
+ENDM
+
+	const nooryes_command
+MACRO nooryes
+	db nooryes_command
+ENDM
+
+	const digmod_command
+MACRO digmod
+	db digmod_command
+	db \1 ; warp_id
+	map_id \2 ; map
+ENDM
+
+	const toggleevent_command
+MACRO toggleevent
+	db toggleevent_command
+	dw \1 ; event_flag
+ENDM
+
 	const freezefollower_command
 MACRO freezefollower
 	db freezefollower_command

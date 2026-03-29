@@ -61,19 +61,8 @@ SaffronCityFlyPoint:
 SaffronCityLass1Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer SaffronCityLass1Text_ReturnedMachinePart
-	jumptextfaceplayer SaffronCityLass1Text
+	jumpthistextfaceplayer
 
-SaffronCityPokefanMScript:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue_jumptextfaceplayer SaffronCityPokefanMText_ReturnedMachinePart
-	jumptextfaceplayer SaffronCityPokefanMText
-
-SaffronCityFisherScript:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue_jumptextfaceplayer SaffronCityFisherText_ReturnedMachinePart
-	jumptextfaceplayer SaffronCityFisherText
-
-SaffronCityLass1Text:
 	text "A little girl who"
 	line "is an expert at"
 
@@ -87,6 +76,34 @@ SaffronCityLass1Text:
 	line "It's confusing."
 	done
 
+SaffronCityPokefanMScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer SaffronCityPokefanMText_ReturnedMachinePart
+	jumpthistextfaceplayer
+
+	text "You came out from"
+	line "Johto?"
+
+	para "You can zip back"
+	line "home if the Magnet"
+	cont "Train's running."
+	done
+
+SaffronCityFisherScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer SaffronCityFisherText_ReturnedMachinePart
+	jumpthistextfaceplayer
+
+	text "Chew… Chew…"
+
+	para "I hear there's big"
+	line "trouble brewing at"
+	cont "the Power Plant."
+
+	para "Chew… Chew…"
+	done
+
+
 SaffronCityLass1Text_ReturnedMachinePart:
 	text "The Copycat girl"
 	line "looked unhappy."
@@ -96,14 +113,6 @@ SaffronCityLass1Text_ReturnedMachinePart:
 	cont "Doll--Clefairy."
 	done
 
-SaffronCityPokefanMText:
-	text "You came out from"
-	line "Johto?"
-
-	para "You can zip back"
-	line "home if the Magnet"
-	cont "Train's running."
-	done
 
 SaffronCityPokefanMText_ReturnedMachinePart:
 	text "You came out from"
@@ -141,15 +150,6 @@ SaffronCityCooltrainerFText:
 	line "that."
 	done
 
-SaffronCityFisherText:
-	text "Chew… Chew…"
-
-	para "I hear there's big"
-	line "trouble brewing at"
-	cont "the Power Plant."
-
-	para "Chew… Chew…"
-	done
 
 SaffronCityFisherText_ReturnedMachinePart:
 	text "Chew… Chew…"

@@ -189,7 +189,7 @@ FloorBC::
 	ret
 
 GetMaxHP::
-; output: bc, wBuffer1-2
+; output: bc, wHPBuffer1-2
 	farcall GetFutureSightUser
 	jr z, .not_external
 	ld a, MON_MAXHP
@@ -200,11 +200,11 @@ GetMaxHP::
 	call GetUserMonAttr
 .got_maxhp
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld b, a
 
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	ld c, a
 	ret
 
@@ -472,41 +472,65 @@ GetTrueUserAbility:
 ; Get true user ability after Neutralizing Gas.
 ; A "true" user might be external, if Future Sight is active.
 	farcall GetFutureSightUser
-	jr z, .not_external
+	jr z, GetUserAbility
 
 	; External users have no ability.
 	xor a
 	ret
 
-.not_external
+GetUserAbility:
 	call StackCallOpponentTurn
 GetOpponentAbility::
 	; Get opponent ability.
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	push af
+	farjp _GetOpponentAbility
 
-	; Check if it's suppressed by Neutralizing Gas.
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp NEUTRALIZING_GAS
-	jr nz, .not_suppressed
-	pop af
-	push hl
-	farcall AbilityCanBeSuppressed
-	pop hl
-	ret c
-	xor a
+; These return z if they can be copied/traced/etc.
+AbilityCanBeCopied:
+	push bc
+	ld c, ABILFLAG_NO_COPY
+	jr CheckAbilityFlag
+AbilityCanBeTraced:
+	push bc
+	ld c, ABILFLAG_NO_TRACE
+	jr CheckAbilityFlag
+AbilityCanBeSwapped:
+	push bc
+	ld c, ABILFLAG_NO_SWAP
+	jr CheckAbilityFlag
+AbilityCanBeSuppressed:
+	push bc
+	ld c, ABILFLAG_NO_SUPPRESS
+	; fallthrough
+CheckAbilityFlag:
+	ld b, a
+	call GetAbilityFlags
+	and c
+	ld a, b
+	pop bc
+	ret
+AbilityCanBeIgnored:
+	push bc
+	ld b, a
+	call GetAbilityFlags
+	and ABILFLAG_IGNORABLE
+	xor ABILFLAG_IGNORABLE
+	ld a, b
+	pop bc
 	ret
 
-.not_suppressed
-	pop af
-	ret
-
-GetOpponentAbilityAfterMoldBreaker::
-; Returns an opponent's ability unless Mold Breaker
-; will suppress it. Preserves bc/de/hl.
-	farjp _GetOpponentAbilityAfterMoldBreaker
+GetTrueUserIgnorableAbility::
+; Returns an user's ability unless Mold Breaker
+; will suppress it. Preserves bc/de/hl. Note that
+; we can't use CallOpponentTurn, because TrueUser also
+; checks for whether the attack is external.
+	farjp _GetTrueUserIgnorableAbility
+GetOpponentIgnorableAbility::
+; Similar to above, except checking the opponent's Ability and
+; doesn't check for Future Sight.
+	farjp _GetOpponentIgnorableAbility
+GetAbilityFlags:
+; return flags for ability in a.
+	farjp _GetAbilityFlags
 
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
@@ -688,7 +712,7 @@ CheckMoveSpeed::
 	push de
 
 	; Quick Draw works like Quick Claw except 30% of the time
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp QUICK_DRAW
 	jr nz, .quick_draw_done
 	ld b, a ; for BufferAbility

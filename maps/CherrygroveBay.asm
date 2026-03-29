@@ -26,7 +26,7 @@ CherrygroveBay_MapScriptHeader:
 	fruittree_event  7, 11, FRUITTREE_CHERRYGROVE_BAY_2, KELPSY_BERRY, PAL_NPC_BLUE
 	fruittree_event  8, 13, FRUITTREE_CHERRYGROVE_BAY_3, QUALOT_BERRY, PAL_NPC_PINK
 	fruittree_event 14,  9, FRUITTREE_CHERRYGROVE_BAY_4, HONDEW_BERRY, PAL_NPC_GREEN
-	fruittree_event 15, 11, FRUITTREE_CHERRYGROVE_BAY_5, GREPA_BERRY, PAL_NPC_YELLOW
+	fruittree_event 15, 11, FRUITTREE_CHERRYGROVE_BAY_5, GREPA_BERRY, PAL_NPC_ENV_YELLOW
 	fruittree_event 14, 13, FRUITTREE_CHERRYGROVE_BAY_6, TAMATO_BERRY, PAL_NPC_RED
 
 CherrygroveBayGalarianBirdsScript:
@@ -161,14 +161,26 @@ CherrygroveBayTutorEarthPowerScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_CherrygroveBayTutorRefused
+	jumpthisopenedtext
+
+	text "Oh well."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_CherrygroveBayTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have any"
+	line "Silver Leaves…"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_CherrygroveBayTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Earth Power."
+	done
 
 GenericTrainerSwimmermThomas:
 	generictrainer SWIMMERM, THOMAS, EVENT_BEAT_SWIMMERM_THOMAS, .SeenText, .BeatenText
@@ -298,10 +310,6 @@ Text_CherrygroveBayTutorEarthPower:
 	line "for a Silver Leaf."
 	done
 
-Text_CherrygroveBayTutorNoSilverLeaf:
-	text "You don't have any"
-	line "Silver Leaves…"
-	done
 
 Text_CherrygroveBayTutorQuestion:
 	text "Should I teach"
@@ -309,12 +317,4 @@ Text_CherrygroveBayTutorQuestion:
 	cont "Earth Power?"
 	done
 
-Text_CherrygroveBayTutorRefused:
-	text "Oh well."
-	done
 
-Text_CherrygroveBayTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Earth Power."
-	done

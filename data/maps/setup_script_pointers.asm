@@ -61,5 +61,7 @@ MapSetupCommands:
 	add_mapsetup LoadMapObjects_Connection ; 36
 	add_mapsetup GrottoUpdatePlayerTallGrassFlags ; 37
 	add_mapsetup LoadMapAttributes_Connection ; 38
-	add_mapsetup MapPlayerCoordWarped ; 39
-	add_mapsetup MapPlayerCoordConnected ; 3a
+	add_mapsetup SavePrevPalStates ; 39
+	add_mapsetup ClearSavedObjPals ; 3a
+	add_mapsetup MapPlayerCoordWarped ; 3b
+	add_mapsetup MapPlayerCoordConnected ; 3c

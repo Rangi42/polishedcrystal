@@ -129,6 +129,5 @@ PokedexFlagAction::
 	pop af
 	ld b, a
 	call FlagAction
-	ld a, c
 	and a
 	ret

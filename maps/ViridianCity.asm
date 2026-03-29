@@ -43,12 +43,30 @@ ViridianCityCoffeeGramps:
 	writetext ViridianCityCoffeeGrampsQuestionText
 	yesorno
 	iffalse_jumpopenedtext ViridianCityCoffeeGrampsDoubtedText
-	jumpopenedtext ViridianCityCoffeeGrampsBelievedText
+	jumpthisopenedtext
+
+	text "Good, good. Yes, I"
+	line "was something out"
+
+	para "of the ordinary,"
+	line "let me tell you!"
+	done
 
 ViridianCityGrampsNearGym:
 	checkevent EVENT_BLUE_IN_CINNABAR
 	iftrue_jumptextfaceplayer ViridianCityGrampsNearGymBlueReturnedText
-	jumptextfaceplayer ViridianCityGrampsNearGymText
+	jumpthistextfaceplayer
+
+	text "This Gym didn't"
+	line "have a Leader"
+	cont "until recently."
+
+	para "A young man from"
+	line "Pallet became the"
+
+	para "Leader, but he's"
+	line "often away."
+	done
 
 ViridianCityDreamEaterFisher:
 	faceplayer
@@ -74,11 +92,22 @@ ViridianCityTutorDreamEaterScript:
 	jumpopenedtext Text_ViridianCityTutorRefused
 
 .NoSilverLeaf
-	jumpopenedtext Text_ViridianCityTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have any"
+	line "Silver Leaves…"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_ViridianCityTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Dream Eater…"
+
+	para "…Zzzzz…"
+	done
 
 ViridianCityCoffeeGrampsQuestionText:
 	text "Hey, kid! I just"
@@ -100,13 +129,6 @@ ViridianCityCoffeeGrampsQuestionText:
 	para "Do you believe me?"
 	done
 
-ViridianCityCoffeeGrampsBelievedText:
-	text "Good, good. Yes, I"
-	line "was something out"
-
-	para "of the ordinary,"
-	line "let me tell you!"
-	done
 
 ViridianCityCoffeeGrampsDoubtedText:
 	text "What? You little"
@@ -119,17 +141,6 @@ ViridianCityCoffeeGrampsDoubtedText:
 	line "or two. Humph!"
 	done
 
-ViridianCityGrampsNearGymText:
-	text "This Gym didn't"
-	line "have a Leader"
-	cont "until recently."
-
-	para "A young man from"
-	line "Pallet became the"
-
-	para "Leader, but he's"
-	line "often away."
-	done
 
 ViridianCityGrampsNearGymBlueReturnedText:
 	text "Are you going to"
@@ -169,10 +180,6 @@ Text_ViridianCityTutorDreamEater:
 	cont "exchange."
 	done
 
-Text_ViridianCityTutorNoSilverLeaf:
-	text "You don't have any"
-	line "Silver Leaves…"
-	done
 
 Text_ViridianCityTutorQuestion:
 	text "Should I teach"
@@ -184,13 +191,6 @@ Text_ViridianCityTutorRefused: ; text > text
 	text "OK…"
 	done
 
-Text_ViridianCityTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Dream Eater…"
-
-	para "…Zzzzz…"
-	done
 
 ViridianCityYoungsterText:
 	text "I heard that there"

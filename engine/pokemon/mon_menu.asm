@@ -1077,7 +1077,7 @@ MoveScreenLoop:
 	rrca
 	jr c, .pressed_b
 	rrca
-	jr c, .pressed_select
+	jmp c, .pressed_select
 	rrca
 	jr c, .pressed_start
 	rrca
@@ -1123,6 +1123,11 @@ MoveScreenLoop:
 	; learn HMs naturally (notably Machamp with Strength).
 	ld a, [hl]
 
+	; Player flies somewhere, forgets Fly and gets stuck on the island.
+	cp FLY
+	ld e, HM_FLY
+	jr z, .checkhm
+
 	; Player surfs to a tiny island, forgets surf, can't re-surf.
 	cp SURF
 	ld e, HM_SURF
@@ -1147,7 +1152,7 @@ MoveScreenLoop:
 	pop de
 	ld hl, Text_CantForgetHM
 	call PrintTextNoBox
-	jr .outer_loop
+	jmp .outer_loop
 .ok
 	pop bc
 	pop de
@@ -1480,6 +1485,7 @@ SetUpMoveScreenBG:
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	call LoadFontsBattleExtra
+	farcall LoadBoldPDoubled
 	call ClearSpriteAnims2
 	ld a, [wTempMonSpecies]
 	ld [wTempIconSpecies], a
@@ -1522,7 +1528,7 @@ MoveScreen_ListMoves:
 	ld bc, NUM_MOVES
 	rst CopyBytes
 	ld a, SCREEN_WIDTH * 2 ; move list spacing
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	hlcoord 2, 3
 	predef ListMoves
 

@@ -48,7 +48,7 @@ EcruteakCity_MapScriptHeader:
 	object_event  3, 10, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityGramps3Text, EVENT_ECRUTEAK_CITY_GRAMPS
 	object_event 11, 11, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityHexManiacText, -1
 	object_event 11, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
-	pokemon_event 12, 11, SMEARGLE, SPRITEMOVEDATA_POKEMON, (1 << MORN) | (1 << DAY), PAL_NPC_BROWN, EcruteakCitySmeargleText, -1
+	pokemon_event 12, 11, SMEARGLE, SPRITEMOVEDATA_POKEMON, (1 << MORN) | (1 << DAY), PAL_MON_BROWN, EcruteakCitySmeargleText, -1
 	object_event 16,  9, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_ARCH_TREE_LEFT, 0, 0, -1, PAL_NPC_COPY_BG_GREEN, OBJECTTYPE_COMMAND, end, NULL, -1
 	object_event 19,  9, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_ARCH_TREE_RIGHT, 0, 0, -1, PAL_NPC_COPY_BG_GREEN, OBJECTTYPE_COMMAND, end, NULL, -1
 
@@ -59,12 +59,32 @@ EcruteakCityFlyPoint:
 EcruteakCityLass2Script:
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue_jumptextfaceplayer EcruteakCityLass2Text_ReleasedBeasts
-	jumptextfaceplayer EcruteakCityLass2Text
+	jumpthistextfaceplayer
+
+	text "The tower that"
+	line "used to be here…"
+
+	para "My grandma told me"
+	line "it used to be much"
+	cont "taller."
+	done
 
 EcruteakCityFisherScript:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer EcruteakCityFisherText_JasmineReturned
-	jumptextfaceplayer EcruteakCityFisherText
+	jumpthistextfaceplayer
+
+	text "I heard a rumor"
+	line "about Olivine"
+	cont "Lighthouse."
+
+	para "The #mon that"
+	line "serves as the"
+
+	para "beacon fell ill."
+	line "Sounds like they"
+	cont "are in trouble."
+	done
 
 EcruteakCityGramps1Text:
 	text "Ecruteak used to"
@@ -116,14 +136,6 @@ EcruteakCitySmeargleText:
 	text "Smeargle: Smeer!"
 	done
 
-EcruteakCityLass2Text:
-	text "The tower that"
-	line "used to be here…"
-
-	para "My grandma told me"
-	line "it used to be much"
-	cont "taller."
-	done
 
 EcruteakCityLass2Text_ReleasedBeasts:
 	text "Three big #mon"
@@ -132,18 +144,6 @@ EcruteakCityLass2Text_ReleasedBeasts:
 	cont "What were they?"
 	done
 
-EcruteakCityFisherText:
-	text "I heard a rumor"
-	line "about Olivine"
-	cont "Lighthouse."
-
-	para "The #mon that"
-	line "serves as the"
-
-	para "beacon fell ill."
-	line "Sounds like they"
-	cont "are in trouble."
-	done
 
 EcruteakCityFisherText_JasmineReturned:
 	text "The #mon at"

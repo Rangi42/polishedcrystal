@@ -6,267 +6,45 @@ _DoItemEffect::
 	ld a, 1
 	ld [wItemEffectSucceeded], a
 	ld a, [wCurItem]
+	add LOW(ItemEffects)
+	ld l, a
+	adc HIGH(ItemEffects)
+	sub l
+	ld h, a
+	ld a, [hl]
 	call StackJumpTable
 
-.ItemEffects:
-; entries correspond to item ids (see constants/item_constants.asm)
+.ItemEffectRoutines:
 	table_width 2
-	dw PokeBallEffect     ; PARK_BALL
-	dw PokeBallEffect     ; POKE_BALL
-	dw PokeBallEffect     ; GREAT_BALL
-	dw PokeBallEffect     ; ULTRA_BALL
-	dw PokeBallEffect     ; MASTER_BALL
-	dw PokeBallEffect     ; SAFARI_BALL
-	dw PokeBallEffect     ; LEVEL_BALL
-	dw PokeBallEffect     ; LURE_BALL
-	dw PokeBallEffect     ; MOON_BALL
-	dw PokeBallEffect     ; FRIEND_BALL
-	dw PokeBallEffect     ; FAST_BALL
-	dw PokeBallEffect     ; HEAVY_BALL
-	dw PokeBallEffect     ; LOVE_BALL
-	dw PokeBallEffect     ; REPEAT_BALL
-	dw PokeBallEffect     ; TIMER_BALL
-	dw PokeBallEffect     ; NEST_BALL
-	dw PokeBallEffect     ; NET_BALL
-	dw PokeBallEffect     ; DIVE_BALL
-	dw PokeBallEffect     ; LUXURY_BALL
-	dw PokeBallEffect     ; HEAL_BALL
-	dw PokeBallEffect     ; QUICK_BALL
-	dw PokeBallEffect     ; DUSK_BALL
-	dw PokeBallEffect     ; DREAM_BALL
-	dw PokeBallEffect     ; PREMIER_BALL
-	dw PokeBallEffect     ; CHERISH_BALL
-	dw RestoreHPEffect    ; POTION
-	dw RestoreHPEffect    ; SUPER_POTION
-	dw RestoreHPEffect    ; HYPER_POTION
-	dw RestoreHPEffect    ; MAX_POTION
-	dw HealStatusEffect   ; ANTIDOTE
-	dw HealStatusEffect   ; BURN_HEAL
-	dw HealStatusEffect   ; PARALYZEHEAL
-	dw HealStatusEffect   ; AWAKENING
-	dw HealStatusEffect   ; ICE_HEAL
-	dw HealStatusEffect   ; FULL_HEAL
-	dw FullRestore        ; FULL_RESTORE
-	dw ReviveEffect       ; REVIVE
-	dw ReviveEffect       ; MAX_REVIVE
-	dw RestorePPEffect    ; ETHER
-	dw RestorePPEffect    ; MAX_ETHER
-	dw RestorePPEffect    ; ELIXIR
-	dw RestorePPEffect    ; MAX_ELIXIR
-	dw VitaminEffect      ; HP_UP
-	dw VitaminEffect      ; PROTEIN
-	dw VitaminEffect      ; IRON
-	dw VitaminEffect      ; CARBOS
-	dw VitaminEffect      ; CALCIUM
-	dw VitaminEffect      ; ZINC
-	dw RareCandy          ; RARE_CANDY
-	dw RestorePPEffect    ; PP_UP
-	dw RestorePPEffect    ; PP_MAX
-	dw RestoreHPEffect    ; FRESH_WATER
-	dw RestoreHPEffect    ; SODA_POP
-	dw RestoreHPEffect    ; LEMONADE
-	dw RestoreHPEffect    ; MOOMOO_MILK
-	dw HealStatusEffect   ; RAGECANDYBAR
-	dw HealStatusEffect   ; PEWTERCRUNCH
-	dw EnergyPowder       ; ENERGYPOWDER
-	dw EnergyRoot         ; ENERGY_ROOT
-	dw HealPowder         ; HEAL_POWDER
-	dw RevivalHerb        ; REVIVAL_HERB
-	dw SacredAsh          ; SACRED_ASH
-	dw HealStatusEffect   ; CHERI_BERRY
-	dw HealStatusEffect   ; CHESTO_BERRY
-	dw HealStatusEffect   ; PECHA_BERRY
-	dw HealStatusEffect   ; RAWST_BERRY
-	dw HealStatusEffect   ; ASPEAR_BERRY
-	dw RestorePPEffect    ; LEPPA_BERRY
-	dw RestoreHPEffect    ; ORAN_BERRY
-	dw PersimBerry        ; PERSIM_BERRY
-	dw HealStatusEffect   ; LUM_BERRY
-	dw RestoreHPEffect    ; SITRUS_BERRY
-	dw RestoreHPEffect    ; FIGY_BERRY
-	dw LowerEVBerry       ; POMEG_BERRY
-	dw LowerEVBerry       ; KELPSY_BERRY
-	dw LowerEVBerry       ; QUALOT_BERRY
-	dw LowerEVBerry       ; HONDEW_BERRY
-	dw LowerEVBerry       ; GREPA_BERRY
-	dw LowerEVBerry       ; TAMATO_BERRY
-	dw IsntTheTimeMessage ; LIECHI_BERRY
-	dw IsntTheTimeMessage ; GANLON_BERRY
-	dw IsntTheTimeMessage ; SALAC_BERRY
-	dw IsntTheTimeMessage ; PETAYA_BERRY
-	dw IsntTheTimeMessage ; APICOT_BERRY
-	dw IsntTheTimeMessage ; LANSAT_BERRY
-	dw IsntTheTimeMessage ; STARF_BERRY
-	dw IsntTheTimeMessage ; ENIGMA_BERRY
-	dw IsntTheTimeMessage ; CUSTAP_BERRY
-	dw IsntTheTimeMessage ; JABOCA_BERRY
-	dw IsntTheTimeMessage ; ROWAP_BERRY
-	dw IsntTheTimeMessage ; KEE_BERRY
-	dw IsntTheTimeMessage ; MARANGABERRY
-	dw RestoreHPEffect    ; BERRY_JUICE
-	dw RepelEffect        ; REPEL
-	dw RepelEffect        ; SUPER_REPEL
-	dw RepelEffect        ; MAX_REPEL
-	dw EscapeRope         ; ESCAPE_ROPE
-	dw PokeDoll           ; POKE_DOLL
-	dw IsntTheTimeMessage ; MULCH
-	dw SweetHoney         ; SWEET_HONEY
-	dw XItemEffect        ; X_ATTACK
-	dw XItemEffect        ; X_DEFEND
-	dw XItemEffect        ; X_SPEED
-	dw XItemEffect        ; X_SP_ATK
-	dw XItemEffect        ; X_SP_DEF
-	dw XItemEffect        ; X_ACCURACY
-	dw DireHit            ; DIRE_HIT
-	dw GuardSpec          ; GUARD_SPEC
-	dw AbilityCap         ; ABILITY_CAP
-	dw AbilityPatch       ; ABILITYPATCH
-	dw EvoStoneEffect     ; LEAF_STONE
-	dw EvoStoneEffect     ; FIRE_STONE
-	dw EvoStoneEffect     ; WATER_STONE
-	dw EvoStoneEffect     ; THUNDERSTONE
-	dw EvoStoneEffect     ; ICE_STONE
-	dw EvoStoneEffect     ; MOON_STONE
-	dw EvoStoneEffect     ; SUN_STONE
-	dw EvoStoneEffect     ; DUSK_STONE
-	dw EvoStoneEffect     ; SHINY_STONE
-	dw IsntTheTimeMessage ; EVERSTONE
-	dw IsntTheTimeMessage ; EXP_SHARE
-	dw IsntTheTimeMessage ; SILK_SCARF
-	dw IsntTheTimeMessage ; BLACK_BELT
-	dw IsntTheTimeMessage ; SHARP_BEAK
-	dw IsntTheTimeMessage ; POISON_BARB
-	dw IsntTheTimeMessage ; SOFT_SAND
-	dw IsntTheTimeMessage ; HARD_STONE
-	dw IsntTheTimeMessage ; SILVERPOWDER
-	dw IsntTheTimeMessage ; SPELL_TAG
-	dw IsntTheTimeMessage ; METAL_COAT
-	dw IsntTheTimeMessage ; CHARCOAL
-	dw IsntTheTimeMessage ; MYSTIC_WATER
-	dw IsntTheTimeMessage ; MIRACLE_SEED
-	dw IsntTheTimeMessage ; MAGNET
-	dw IsntTheTimeMessage ; TWISTEDSPOON
-	dw IsntTheTimeMessage ; NEVERMELTICE
-	dw IsntTheTimeMessage ; DRAGON_FANG
-	dw IsntTheTimeMessage ; BLACKGLASSES
-	dw IsntTheTimeMessage ; PINK_BOW
-	dw IsntTheTimeMessage ; BERSERK_GENE
-	dw IsntTheTimeMessage ; BRIGHTPOWDER
-	dw IsntTheTimeMessage ; QUICK_CLAW
-	dw IsntTheTimeMessage ; KINGS_ROCK
-	dw IsntTheTimeMessage ; AMULET_COIN
-	dw IsntTheTimeMessage ; CLEANSE_TAG
-	dw IsntTheTimeMessage ; SMOKE_BALL
-	dw IsntTheTimeMessage ; FOCUS_BAND
-	dw IsntTheTimeMessage ; LUCKY_EGG
-	dw IsntTheTimeMessage ; LEFTOVERS
-	dw IsntTheTimeMessage ; SOOTHE_BELL
-	dw IsntTheTimeMessage ; SHELL_BELL
-	dw IsntTheTimeMessage ; MUSCLE_BAND
-	dw IsntTheTimeMessage ; WISE_GLASSES
-	dw IsntTheTimeMessage ; EXPERT_BELT
-	dw IsntTheTimeMessage ; LIGHT_CLAY
-	dw IsntTheTimeMessage ; LIFE_ORB
-	dw IsntTheTimeMessage ; FOCUS_SASH
-	dw IsntTheTimeMessage ; METRONOME_I
-	dw IsntTheTimeMessage ; IRON_BALL
-	dw IsntTheTimeMessage ; LAGGING_TAIL
-	dw IsntTheTimeMessage ; DESTINY_KNOT
-	dw IsntTheTimeMessage ; GRIP_CLAW
-	dw IsntTheTimeMessage ; SHED_SHELL
-	dw IsntTheTimeMessage ; BIG_ROOT
-	dw IsntTheTimeMessage ; EVIOLITE
-	dw IsntTheTimeMessage ; ROCKY_HELMET
-	dw IsntTheTimeMessage ; AIR_BALLOON
-	dw IsntTheTimeMessage ; RED_CARD
-	dw IsntTheTimeMessage ; BINDING_BAND
-	dw IsntTheTimeMessage ; EJECT_BUTTON
-	dw IsntTheTimeMessage ; WEAK_POLICY
-	dw IsntTheTimeMessage ; ASSAULT_VEST
-	dw IsntTheTimeMessage ; SAFE_GOGGLES
-	dw IsntTheTimeMessage ; PROTECT_PADS
-	dw IsntTheTimeMessage ; THROAT_SPRAY
-	dw IsntTheTimeMessage ; EJECT_PACK
-	dw IsntTheTimeMessage ; HEAVY_BOOTS
-	dw IsntTheTimeMessage ; BLUNDRPOLICY
-	dw IsntTheTimeMessage ; ROOM_SERVICE
-	dw IsntTheTimeMessage ; CLEAR_AMULET
-	dw IsntTheTimeMessage ; MIRROR_HERB
-	dw IsntTheTimeMessage ; PUNCHINGLOVE
-	dw IsntTheTimeMessage ; COVERT_CLOAK
-	dw IsntTheTimeMessage ; LOADED_DICE
-	dw IsntTheTimeMessage ; LIGHT_BALL
-	dw IsntTheTimeMessage ; LEEK
-	dw IsntTheTimeMessage ; THICK_CLUB
-	dw IsntTheTimeMessage ; LUCKY_PUNCH
-	dw IsntTheTimeMessage ; METAL_POWDER
-	dw IsntTheTimeMessage ; QUICK_POWDER
-	dw IsntTheTimeMessage ; ARMOR_SUIT
-	dw IsntTheTimeMessage ; SCOPE_LENS
-	dw IsntTheTimeMessage ; WIDE_LENS
-	dw IsntTheTimeMessage ; ZOOM_LENS
-	dw IsntTheTimeMessage ; MENTAL_HERB
-	dw IsntTheTimeMessage ; POWER_HERB
-	dw IsntTheTimeMessage ; WHITE_HERB
-	dw IsntTheTimeMessage ; DAMP_ROCK
-	dw IsntTheTimeMessage ; HEAT_ROCK
-	dw IsntTheTimeMessage ; SMOOTH_ROCK
-	dw IsntTheTimeMessage ; ICY_ROCK
-	dw IsntTheTimeMessage ; CHOICE_BAND
-	dw IsntTheTimeMessage ; CHOICE_SCARF
-	dw IsntTheTimeMessage ; CHOICE_SPECS
-	dw IsntTheTimeMessage ; FLAME_ORB
-	dw IsntTheTimeMessage ; TOXIC_ORB
-	dw IsntTheTimeMessage ; BLACK_SLUDGE
-	dw IsntTheTimeMessage ; MACHO_BRACE
-	dw IsntTheTimeMessage ; POWER_WEIGHT
-	dw IsntTheTimeMessage ; POWER_BRACER
-	dw IsntTheTimeMessage ; POWER_BELT
-	dw IsntTheTimeMessage ; POWER_LENS
-	dw IsntTheTimeMessage ; POWER_BAND
-	dw IsntTheTimeMessage ; POWER_ANKLET
-	dw IsntTheTimeMessage ; DRAGON_SCALE
-	dw IsntTheTimeMessage ; UPGRADE
-	dw IsntTheTimeMessage ; DUBIOUS_DISC
-	dw IsntTheTimeMessage ; PROTECTOR
-	dw IsntTheTimeMessage ; ELECTIRIZER
-	dw IsntTheTimeMessage ; MAGMARIZER
-	dw IsntTheTimeMessage ; RAZOR_FANG
-	dw IsntTheTimeMessage ; RAZOR_CLAW
-	dw IsntTheTimeMessage ; OVAL_STONE
-	dw EvoStoneEffect     ; ODD_SOUVENIR
-	dw EvoStoneEffect     ; LINKING_CORD
-	dw IsntTheTimeMessage ; SILVER_LEAF
-	dw IsntTheTimeMessage ; GOLD_LEAF
-	dw IsntTheTimeMessage ; MINT_LEAF
-	dw IsntTheTimeMessage ; BOTTLE_CAP
-	dw IsntTheTimeMessage ; NUGGET
-	dw IsntTheTimeMessage ; BIG_NUGGET
-	dw IsntTheTimeMessage ; TINYMUSHROOM
-	dw IsntTheTimeMessage ; BIG_MUSHROOM
-	dw IsntTheTimeMessage ; BALMMUSHROOM
-	dw IsntTheTimeMessage ; PEARL
-	dw IsntTheTimeMessage ; BIG_PEARL
-	dw IsntTheTimeMessage ; PEARL_STRING
-	dw IsntTheTimeMessage ; STARDUST
-	dw IsntTheTimeMessage ; STAR_PIECE
-	dw IsntTheTimeMessage ; BRICK_PIECE
-	dw IsntTheTimeMessage ; RARE_BONE
-	dw IsntTheTimeMessage ; SLOWPOKETAIL
-	dw IsntTheTimeMessage ; HELIX_FOSSIL
-	dw IsntTheTimeMessage ; DOME_FOSSIL
-	dw IsntTheTimeMessage ; OLD_AMBER
-	dw IsntTheTimeMessage ; FLOWER_MAIL
-	dw IsntTheTimeMessage ; SURF_MAIL
-	dw IsntTheTimeMessage ; LITEBLUEMAIL
-	dw IsntTheTimeMessage ; PORTRAITMAIL
-	dw IsntTheTimeMessage ; LOVELY_MAIL
-	dw IsntTheTimeMessage ; EON_MAIL
-	dw IsntTheTimeMessage ; MORPH_MAIL
-	dw IsntTheTimeMessage ; BLUESKY_MAIL
-	dw IsntTheTimeMessage ; MUSIC_MAIL
-	dw IsntTheTimeMessage ; MIRAGE_MAIL
-	assert_table_length NUM_ITEMS + 1 ; count PARK_BALL
+	dw IsntTheTimeMessage ; ITEMEFFECT_NONE
+	dw PokeBallEffect     ; ITEMEFFECT_BALL
+	dw RestoreHPEffect    ; ITEMEFFECT_HEAL_HP
+	dw RestorePPEffect    ; ITEMEFFECT_HEAL_PP
+	dw HealStatusEffect   ; ITEMEFFECT_HEAL_STATUS
+	dw FullRestore        ; ITEMEFFECT_FULL_RESTORE
+	dw ReviveEffect       ; ITEMEFFECT_REVIVE
+	dw VitaminEffect      ; ITEMEFFECT_VITAMIN
+	dw RareCandy          ; ITEMEFFECT_RARE_CANDY
+	dw EvoStoneEffect     ; ITEMEFFECT_EVO_STONE
+	dw RepelEffect        ; ITEMEFFECT_REPEL
+	dw EscapeRope         ; ITEMEFFECT_ESCAPE_ROPE
+	dw PokeDoll           ; ITEMEFFECT_POKE_DOLL
+	dw XItemEffect        ; ITEMEFFECT_X_ITEM
+	dw DireHit            ; ITEMEFFECT_DIRE_HIT
+	dw GuardSpec          ; ITEMEFFECT_GUARD_SPEC
+	dw EnergyPowder       ; ITEMEFFECT_ENERGY_POWDER
+	dw EnergyRoot         ; ITEMEFFECT_ENERGY_ROOT
+	dw HealPowder         ; ITEMEFFECT_HEAL_POWDER
+	dw RevivalHerb        ; ITEMEFFECT_REVIVAL_HERB
+	dw SacredAsh          ; ITEMEFFECT_SACRED_ASH
+	dw PersimBerry        ; ITEMEFFECT_PERSIM_BERRY
+	dw LowerEVBerry       ; ITEMEFFECT_LOWER_EV_BERRY
+	dw SweetHoney         ; ITEMEFFECT_SWEET_HONEY
+	dw AbilityCap         ; ITEMEFFECT_ABILITY_CAP
+	dw AbilityPatch       ; ITEMEFFECT_ABILITY_PATCH
+	assert_table_length NUM_ITEM_EFFECTS
+
+INCLUDE "data/items/effects.asm"
 
 DoKeyItemEffect::
 	ld a, [wCurKeyItem]
@@ -277,50 +55,36 @@ DoKeyItemEffect::
 	ld [wItemEffectSucceeded], a
 	ld a, [wCurKeyItem]
 	dec a
+	add LOW(KeyItemEffects)
+	ld l, a
+	adc HIGH(KeyItemEffects)
+	sub l
+	ld h, a
+	ld a, [hl]
 	call StackJumpTable
 
-.KeyItemEffects:
+.KeyItemEffectRoutines:
 ; entries correspond to key item ids (see constants/item_constants.asm)
 	table_width 2
-	dw BikeFunction       ; BICYCLE
-	dw OldRod             ; OLD_ROD
-	dw GoodRod            ; GOOD_ROD
-	dw SuperRod           ; SUPER_ROD
-	dw Itemfinder         ; ITEMFINDER
-	dw CoinCase           ; COIN_CASE
-	dw ApricornBox        ; APRICORN_BOX
-	dw WingCase           ; WING_CASE
-	dw CandyJar           ; CANDY_JAR
-	dw TypeChart          ; TYPE_CHART
-	dw GBCSounds          ; GBC_SOUNDS
-	dw BlueCard           ; BLUE_CARD
-	dw SquirtBottle       ; SQUIRTBOTTLE
-	dw IsntTheTimeMessage ; SILPHSCOPE2
-	dw IsntTheTimeMessage ; MYSTERY_EGG
-	dw IsntTheTimeMessage ; SECRETPOTION
-	dw IsntTheTimeMessage ; GO_GOGGLES
-	dw IsntTheTimeMessage ; RED_SCALE
-	dw CardKey            ; CARD_KEY
-	dw BasementKey        ; BASEMENT_KEY
-	dw IsntTheTimeMessage ; LOST_ITEM
-	dw IsntTheTimeMessage ; MACHINE_PART
-	dw IsntTheTimeMessage ; RAINBOW_WING
-	dw IsntTheTimeMessage ; SILVER_WING
-	dw IsntTheTimeMessage ; CLEAR_BELL
-	dw IsntTheTimeMessage ; GS_BALL
-	dw IsntTheTimeMessage ; S_S_TICKET
-	dw IsntTheTimeMessage ; PASS
-	dw IsntTheTimeMessage ; ORANGETICKET
-	dw IsntTheTimeMessage ; MYSTICTICKET
-	dw IsntTheTimeMessage ; OLD_SEA_MAP
-	dw IsntTheTimeMessage ; LIFT_KEY
-	dw IsntTheTimeMessage ; HARSH_LURE
-	dw IsntTheTimeMessage ; POTENT_LURE
-	dw IsntTheTimeMessage ; MALIGN_LURE
-	dw IsntTheTimeMessage ; SHINY_CHARM
-	dw IsntTheTimeMessage ; OVAL_CHARM
-	dw IsntTheTimeMessage ; CATCH_CHARM
-	assert_table_length NUM_KEY_ITEMS
+	dw IsntTheTimeMessage ; KEYITEMEFFECT_NONE
+	dw BikeFunction       ; KEYITEMEFFECT_BICYCLE
+	dw OldRod             ; KEYITEMEFFECT_OLD_ROD
+	dw GoodRod            ; KEYITEMEFFECT_GOOD_ROD
+	dw SuperRod           ; KEYITEMEFFECT_SUPER_ROD
+	dw Itemfinder         ; KEYITEMEFFECT_ITEMFINDER
+	dw CoinCase           ; KEYITEMEFFECT_COIN_CASE
+	dw ApricornBox        ; KEYITEMEFFECT_APRICORN_BOX
+	dw WingCase           ; KEYITEMEFFECT_WING_CASE
+	dw CandyJar           ; KEYITEMEFFECT_CANDY_JAR
+	dw TypeChart          ; KEYITEMEFFECT_TYPE_CHART
+	dw GBCSounds          ; KEYITEMEFFECT_GBC_SOUNDS
+	dw BlueCard           ; KEYITEMEFFECT_BLUE_CARD
+	dw SquirtBottle       ; KEYITEMEFFECT_SQUIRTBOTTLE
+	dw CardKey            ; KEYITEMEFFECT_CARD_KEY
+	dw BasementKey        ; KEYITEMEFFECT_BASEMENT_KEY
+	assert_table_length NUM_KEY_ITEM_EFFECTS
+
+INCLUDE "data/items/key_effects.asm"
 
 PokeBallEffect:
 	; Replacing caught balls
@@ -383,7 +147,7 @@ PokeBallEffect:
 	ld [wWildMon], a
 
 	farcall GetModifiedCaptureRate
-	ld [wBuffer1], a
+	ld [wFinalCatchRate], a
 	ld a, [wTempEnemyMonSpecies]
 	ld [wWildMon], a
 
@@ -391,7 +155,7 @@ PokeBallEffect:
 	farcall CheckCriticalCapture
 	sbc a   ; if c (critical) then $ff else 0
 	and $10 ; if c (critical) then $10 else 0
-	ld [wBuffer2], a
+	ld [wThrownBallWobbleCount], a
 
 	ld c, 20
 	call DelayFrames
@@ -409,7 +173,7 @@ PokeBallEffect:
 	ld [wNumHits], a
 	predef PlayBattleAnim
 
-	ld a, [wBuffer2] ; amount of shakes
+	ld a, [wThrownBallWobbleCount] ; amount of shakes
 	and a
 	ld hl, Text_NoShake
 	jmp z, .shake_and_break_free
@@ -561,10 +325,16 @@ PokeBallEffect:
 .SkipPartyMonHealBall:
 
 	call GetPartyPokemonName
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jmp nz, .return_from_capture
+	bit NICKNAMES_ALWAYS, a
+	jr nz, .party_skip_ask
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 	call YesNoBox
 	jmp c, .return_from_capture
+.party_skip_ask
 
 	ld a, [wPartyCount]
 	dec a
@@ -614,10 +384,16 @@ PokeBallEffect:
 .SkipBoxMonFriendBall:
 
 	call GetPartyPokemonName
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jr nz, .SkipBoxMonNickname
+	bit NICKNAMES_ALWAYS, a
+	jr nz, .box_skip_ask
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 	call YesNoBox
 	jr c, .SkipBoxMonNickname
+.box_skip_ask
 
 	xor a
 	ld [wCurPartyMon], a
@@ -1587,23 +1363,23 @@ IsMonAtFullHealth:
 LoadCurHPIntoBuffer5:
 	call UseItem_GetHPParameter
 	ld a, [hli]
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 	ld a, [hl]
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	ret
 
 LoadCurHPToBuffer3:
 	call UseItem_GetHPParameter
 	ld a, [hli]
-	ld [wBuffer4], a
+	ld [wHPBuffer2 + 1], a
 	ld a, [hl]
-	ld [wBuffer3], a
+	ld [wHPBuffer2], a
 	ret
 
 LoadHPFromBuffer3:
-	ld a, [wBuffer4]
+	ld a, [wHPBuffer2 + 1]
 	ld d, a
-	ld a, [wBuffer3]
+	ld a, [wHPBuffer2]
 	ld e, a
 	ret
 
@@ -1611,16 +1387,16 @@ LoadMaxHPToBuffer1:
 	push hl
 	call UseItem_GetMaxHPParameter
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	pop hl
 	ret
 
 LoadHPFromBuffer1:
-	ld a, [wBuffer2]
+	ld a, [wHPBuffer1 + 1]
 	ld d, a
-	ld a, [wBuffer1]
+	ld a, [wHPBuffer1]
 	ld e, a
 	ret
 
@@ -2608,6 +2384,7 @@ PrintAprValues:
 GBCSounds:
 	call FadeToMenu
 	farcall MusicPlayer
+	call ReturnToMapFromSubmenu
 	jr _FinishFullscreenItem
 
 TypeChart:
@@ -3137,12 +2914,12 @@ ApplyPPUp:
 	ld a, MON_MOVES
 	call GetPartyParamLocationAndValue
 	push hl
-	ld de, wBuffer1
+	ld de, wPPUpPPBuffer
 	predef FillPP
 	pop hl
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
-	ld de, wBuffer1
+	ld de, wPPUpPPBuffer
 	ld b, 0
 .loop
 	inc b

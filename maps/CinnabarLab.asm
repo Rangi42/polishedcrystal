@@ -1,13 +1,14 @@
 CinnabarLab_MapScriptHeader:
 	def_scene_scripts
-	scene_script CinnabarLabTrigger0
+	scene_script CinnabarLabMeetScientistScene, SCENE_CINNABARLAB_MEET_SCIENTIST
+	scene_const SCENE_CINNABARLAB_CELEBI_EVENT
 
 	def_callbacks
 
 	def_warp_events
 
 	def_coord_events
-	coord_event  2,  6, 1, CinnabarLabCelebiEventScript
+	coord_event  2,  6, SCENE_CINNABARLAB_CELEBI_EVENT, CinnabarLabCelebiEventScript
 
 	def_bg_events
 	bg_event  8, 14, BGEVENT_JUMPTEXT, CinnabarLabRoom1SignText
@@ -25,11 +26,12 @@ CinnabarLab_MapScriptHeader:
 	object_event 11,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event 20,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
 	object_event 11,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
-	pokemon_event 15,  7, MEWTWO, SPRITEMOVEDATA_STILL, -1, PAL_NPC_PURPLE, ClearText, EVENT_CINNABAR_LAB_MEWTWO
+	pokemon_event 15,  7, MEWTWO, SPRITEMOVEDATA_STILL, -1, PAL_MON_PURPLE, ClearText, EVENT_CINNABAR_LAB_MEWTWO
 	object_event 14,  8, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
 	object_event 15,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
 	object_event 15,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
 	object_event 15,  8, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CRYS
+	object_event 15,  8, SPRITE_BETA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_BETA
 
 	object_const_def
 	const CINNABARLAB_GIOVANNI
@@ -42,8 +44,9 @@ CinnabarLab_MapScriptHeader:
 	const CINNABARLAB_CHRIS
 	const CINNABARLAB_KRIS
 	const CINNABARLAB_CRYS
+	const CINNABARLAB_BETA
 
-CinnabarLabTrigger0:
+CinnabarLabMeetScientistScene:
 	sdefer CinnabarLabStepDownScript
 	end
 
@@ -54,7 +57,7 @@ CinnabarLabStepDownScript:
 	ifnotequal $2, .Done
 	applyonemovement PLAYER, step_down
 .Done
-	setscene $1
+	setscene SCENE_CINNABARLAB_CELEBI_EVENT
 	end
 
 CinnabarLabCelebiEventScript:
@@ -66,9 +69,10 @@ CinnabarLabCelebiEventScript:
 	setevent EVENT_CINNABAR_LAB_CHRIS
 	setevent EVENT_CINNABAR_LAB_KRIS
 	setevent EVENT_CINNABAR_LAB_CRYS
+	setevent EVENT_CINNABAR_LAB_BETA
 	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
 	setevent EVENT_CINNABAR_LAB_SCIENTIST2
-	setscene $0
+	setscene SCENE_CINNABARLAB_MEET_SCIENTIST
 	warpfacing UP, CINNABAR_LAB, 15, 9
 	special Special_FadeOutMusic
 	pause 30
@@ -203,7 +207,7 @@ CinnabarLabCelebiEventScript:
 	pause 30
 	waitsfx
 	clearevent EVENT_ILEX_FOREST_LYRA
-	setmapscene ILEX_FOREST, $1
+	setmapscene ILEX_FOREST, SCENE_ILEXFOREST_CUT_SCENE
 	warp ILEX_FOREST, 10, 26
 	end
 
@@ -212,10 +216,14 @@ CinnabarLabHidePlayer:
 	scalltable .Appear
 	applyonemovement PLAYER, hide_object
 	end
+
 .Appear:
+	table_width 2
 	dw .Male
 	dw .Female
 	dw .Enby
+	dw .Beta
+	assert_table_length NUM_PLAYER_GENDERS
 .Male:
 	appear CINNABARLAB_CHRIS
 	end
@@ -225,12 +233,16 @@ CinnabarLabHidePlayer:
 .Enby:
 	appear CINNABARLAB_CRYS
 	end
+.Beta:
+	appear CINNABARLAB_BETA
+	end
 
 CinnabarLabShowPlayer:
 	applyonemovement PLAYER, show_object
 	disappear CINNABARLAB_CHRIS
 	disappear CINNABARLAB_KRIS
 	disappear CINNABARLAB_CRYS
+	disappear CINNABARLAB_BETA
 	end
 
 CinnabarLabGiovanniStepAsideMovementData:

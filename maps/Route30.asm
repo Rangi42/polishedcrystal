@@ -20,7 +20,7 @@ Route30_MapScriptHeader:
 
 	def_object_events
 	object_event  5, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
-	pokemon_event 5, 24, PIDGEY, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, ClearText, EVENT_ROUTE_30_BATTLE
+	pokemon_event 5, 24, PIDGEY, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, ClearText, EVENT_ROUTE_30_BATTLE
 	object_event  5, 25, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	object_event  2, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
 	object_event  5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerYoungsterMikey, -1
@@ -206,7 +206,12 @@ GenericTrainerBug_catcherDon:
 Route30YoungsterScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumptextfaceplayer Route30YoungsterText_EveryoneIsBattling
-	jumptextfaceplayer Route30YoungsterText_DirectionsToMrPokemonsHouse
+	jumpthistextfaceplayer
+
+	text "Mr.#mon's"
+	line "house? It's a bit"
+	cont "farther ahead."
+	done
 
 Route30_JoeysRattataAttacksMovement:
 	run_step_up
@@ -281,11 +286,6 @@ Bug_catcherDonBeatenText:
 	line "strong!"
 	done
 
-Route30YoungsterText_DirectionsToMrPokemonsHouse:
-	text "Mr.#mon's"
-	line "house? It's a bit"
-	cont "farther ahead."
-	done
 
 Route30YoungsterText_EveryoneIsBattling:
 	text "Everyone's having"

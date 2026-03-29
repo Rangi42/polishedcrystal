@@ -1,14 +1,14 @@
 FieldMoveJumptableReset:
 	xor a
-	ld hl, wBuffer1
+	ld hl, wFieldMoveJumptableIndex
 	ld bc, 7
 	rst ByteFill
 	ret
 
 FieldMoveJumptable:
-	ld a, [wBuffer1]
+	ld a, [wFieldMoveJumptableIndex]
 	call JumpTable
-	ld [wBuffer1], a
+	ld [wFieldMoveJumptableIndex], a
 	bit 7, a
 	jr nz, .okay
 	and a
@@ -252,23 +252,23 @@ CheckMapForSomethingToCut:
 	call CheckOverworldTileArrays
 	pop hl
 	jr nc, .fail
-	; Back up the wOverworldMapBlocks address to wBuffer3
+	; Back up the wOverworldMapBlocks address to wCutWhirlpoolOverworldBlockAddr
 	ld a, l
-	ld [wBuffer3], a
+	ld [wCutWhirlpoolOverworldBlockAddr], a
 	ld a, h
-	ld [wBuffer4], a
-	; Back up the replacement tile to wBuffer5
+	ld [wCutWhirlpoolOverworldBlockAddr + 1], a
+	; Back up the replacement tile to wCutWhirlpoolReplacementBlock
 	ld a, b
-	ld [wBuffer5], a
-	; Back up the animation index to wBuffer6
+	ld [wCutWhirlpoolReplacementBlock], a
+	; Back up the animation index to wCutWhirlpoolAnimationType
 	ld a, $1
-	ld [wBuffer6], a
+	ld [wCutWhirlpoolAnimationType], a
 	xor a
 	ret
 
 .tree
 	xor a
-	ld [wBuffer6], a
+	ld [wCutWhirlpoolAnimationType], a
 	ret
 
 .fail
@@ -278,7 +278,7 @@ CheckMapForSomethingToCut:
 Script_CutFromMenu:
 	refreshmap
 	special UpdateTimePals
-	callasm GetBuffer6
+	callasm GetCutWhirlpoolAnimationType
 	ifequal $0, Script_CutTree
 ;Script_CutGrass:
 	callasm PrepareOverworldMove
@@ -288,8 +288,8 @@ Script_CutFromMenu:
 	callasm CutDownGrass
 	endtext
 
-GetBuffer6:
-	ld a, [wBuffer6]
+GetCutWhirlpoolAnimationType:
+	ld a, [wCutWhirlpoolAnimationType]
 	ldh [hScriptVar], a
 	ret
 
@@ -298,11 +298,11 @@ CutDownGrass:
 	set OW_WEATHER_LIGHTNING_DISABLED_F, [hl]
 	farcall CancelOWFadePalettes
 	farcall CopyBGGreenToOBPal7
-	ld hl, wBuffer3 ; OverworldMapTile
+	ld hl, wCutWhirlpoolOverworldBlockAddr ; OverworldMapTile
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wBuffer5] ; ReplacementTile
+	ld a, [wCutWhirlpoolReplacementBlock] ; ReplacementTile
 	ld [hl], a
 	xor a
 	ldh [hBGMapMode], a
@@ -514,7 +514,7 @@ SurfFunction:
 
 .DoSurf:
 	call GetSurfType
-	ld [wBuffer2], a
+	ld [wSurfingPlayerState], a
 	call GetPartyNickname
 	ld hl, SurfFromMenuScript
 	call QueueScript
@@ -546,7 +546,7 @@ UsedSurfScript:
 	scall FieldMovePokepicScript
 
 AutoSurfScript:
-	readmem wBuffer2
+	readmem wSurfingPlayerState
 	writevar VAR_MOVEMENT
 
 	special UpdatePlayerSprite
@@ -646,7 +646,7 @@ TrySurfOW::
 	jr nz, .quit
 
 	call GetSurfType
-	ld [wBuffer2], a
+	ld [wSurfingPlayerState], a
 	call GetPartyNickname
 
 	ld a, BANK(AskSurfScript)
@@ -820,6 +820,8 @@ FlyFunction:
 	ldh [rWBK], a
 	xor a
 	ld [wPalFadeDelayFrames], a
+	ld [wPalFadeTotalSteps], a
+	ld [wPalFadeStepValue], a
 	pop af
 	ldh [rWBK], a
 	ld hl, wPalFlags
@@ -945,7 +947,7 @@ DigFunction:
 	ld a, $2
 
 EscapeRopeOrDig:
-	ld [wBuffer2], a
+	ld [wEscapeRopeOrDigType], a
 .loop
 	ld hl, .DigTable
 	call FieldMoveJumptable
@@ -988,7 +990,7 @@ EscapeRopeOrDig:
 	ld de, wNextWarp
 	ld bc, 3
 	rst CopyBytes
-	ld a, [wBuffer2]
+	ld a, [wEscapeRopeOrDigType]
 	cp $2
 	jr nz, .escaperope
 	call GetPartyNickname
@@ -1005,7 +1007,7 @@ EscapeRopeOrDig:
 	ret
 
 .FailDig:
-	ld a, [wBuffer2]
+	ld a, [wEscapeRopeOrDigType]
 	cp $2
 	jr nz, .failescaperope
 	ld hl, .Text_CantUseHere
@@ -1164,7 +1166,7 @@ PrepareOverworldMove:
 	; ld hl, wPartySpecies
 	; add hl, de
 	; ld a, [hl]
-	; ld [wBuffer6], a
+	; ld [wFishingResult], a
 	jmp GetPartyNickname
 
 Script_StrengthFromMenu:
@@ -1284,13 +1286,13 @@ TryWhirlpoolMenu:
 	pop hl
 	jr nc, .failed
 	ld a, l
-	ld [wBuffer3], a
+	ld [wCutWhirlpoolOverworldBlockAddr], a
 	ld a, h
-	ld [wBuffer4], a
+	ld [wCutWhirlpoolOverworldBlockAddr + 1], a
 	ld a, b
-	ld [wBuffer5], a
+	ld [wCutWhirlpoolReplacementBlock], a
 	xor a
-	ld [wBuffer6], a
+	ld [wCutWhirlpoolAnimationType], a
 	ret
 
 .failed
@@ -1310,7 +1312,7 @@ Script_UsedWhirlpool:
 	waitsfx
 
 Script_AutoWhirlpool:
-	playsound SFX_SURF
+	playsound SFX_OW_WHIRLPOOL
 	readvar VAR_FACING
 	ifequalfwd UP, .Up
 	ifequalfwd DOWN, .Down
@@ -1591,7 +1593,7 @@ FishFunction:
 	push af
 	call FieldMoveJumptableReset
 	pop af
-	ld [wBuffer2], a
+	ld [wFishingRodUsed], a
 .loop
 	ld hl, .FishTable
 	call FieldMoveJumptable
@@ -1630,50 +1632,16 @@ FishFunction:
 
 .goodtofish
 	ld d, a
-	ld a, [wBuffer2]
-	ld e, a
-
-	; Suction Cups and Sticky Hold boost bite rate. This is done
-	; by having these abilities result in 2 attempts being made
-	; for getting an encounter.
-	call GetLeadAbility
-	cp SUCTION_CUPS
-	jr z, .fish_attempt1
-	cp STICKY_HOLD
-	jr nz, .fish_attempt2
-.fish_attempt1
-	push bc
-	push de
-	farcall Fish
-	ld a, d
+	call TryFishEncounter
 	and a
-	pop de
-	jr nz, .gotabite1
-	pop bc
-.fish_attempt2
-	farcall Fish
-	ld a, d
-	and a
-	jr nz, .gotabite2
-	ld a, b
-	or c
 	jr z, .nonibble
-.gotanitem
-	ld a, c
-	ld [wCurItem], a
+	dec a
+	jr z, .gotabite
+	; got item
 	ld a, $5
 	ret
 
-.gotabite1
-	pop de ; we no longer care about d
-.gotabite2
-	ld [wCurPartyLevel], a
-	ld a, c
-	ld [wTempWildMonSpecies], a
-	ld a, b
-	ld [wWildMonForm], a
-	ld a, BATTLETYPE_FISH
-	ld [wBattleType], a
+.gotabite
 	ld a, $2
 	ret
 
@@ -1687,7 +1655,7 @@ FishFunction:
 
 .FishGotSomething:
 	ld a, $1
-	ld [wBuffer6], a
+	ld [wFishingResult], a
 	ld hl, Script_GotABite
 	call QueueScript
 	ld a, $81
@@ -1695,7 +1663,7 @@ FishFunction:
 
 .FishNoBite:
 	ld a, $2
-	ld [wBuffer6], a
+	ld [wFishingResult], a
 	ld hl, Script_NotEvenANibble
 	call QueueScript
 	ld a, $81
@@ -1703,7 +1671,7 @@ FishFunction:
 
 .FishNoFish:
 	xor a
-	ld [wBuffer6], a
+	ld [wFishingResult], a
 	ld hl, Script_NotEvenANibble
 	call QueueScript
 	ld a, $81
@@ -1711,7 +1679,7 @@ FishFunction:
 
 .FishGotItem:
 	ld a, $1
-	ld [wBuffer6], a
+	ld [wFishingResult], a
 	ld hl, Script_GotAnItem
 	call QueueScript
 	ld a, $81
@@ -1720,6 +1688,18 @@ FishFunction:
 Script_NotEvenANibble:
 	scall Script_FishCastRod
 	farwritetext _RodNothingText
+	yesorno
+	iffalsefwd .StopFishing
+	callasm RetryFishing
+	ifequalfwd 1, .GotABite
+	ifequalfwd 2, .GotAnItem
+	; no nibble: loop back
+	sjump Script_NotEvenANibble
+.GotABite:
+	sjumpfwd Script_GotABite
+.GotAnItem:
+	sjumpfwd Script_GotAnItem
+.StopFishing:
 	closetext
 	callasm PutTheRodAway
 	end
@@ -1823,6 +1803,73 @@ CurItemToScriptVar:
 	ldh [hScriptVar], a
 	ret
 
+RetryFishing:
+; Retry fishing with the same rod. Sets hScriptVar to:
+; 0 = no nibble, 1 = got a bite, 2 = got an item
+	farcall GetFishingGroup
+	jr nc, .no_nibble
+	ld d, a
+	call TryFishEncounter
+	ldh [hScriptVar], a
+	ret
+.no_nibble
+	xor a
+	ldh [hScriptVar], a
+	ret
+
+TryFishEncounter:
+; Try to get a fishing encounter.
+; Input: d = fishing group
+; Output: a = 0 (no nibble), 1 (got a bite), 2 (got an item)
+; Side effects: sets up battle data for bites, wCurItem for items
+	ld a, [wFishingRodUsed]
+	ld e, a
+	; Suction Cups and Sticky Hold boost bite rate. This is done
+	; by having these abilities result in 2 attempts being made
+	; for getting an encounter.
+	call GetLeadAbility
+	cp SUCTION_CUPS
+	jr z, .attempt1
+	cp STICKY_HOLD
+	jr nz, .attempt2
+.attempt1
+	push bc
+	push de
+	farcall Fish
+	ld a, d
+	and a
+	pop de
+	jr nz, .got_bite_pop
+	pop bc
+.attempt2
+	farcall Fish
+	ld a, d
+	and a
+	jr nz, .got_bite
+	ld a, b
+	or c
+	jr z, .no_nibble
+	; got an item
+	ld a, c
+	ld [wCurItem], a
+	ld a, 2
+	ret
+.got_bite_pop
+	pop bc ; discard saved bc
+.got_bite
+	ld [wCurPartyLevel], a
+	ld a, c
+	ld [wTempWildMonSpecies], a
+	ld a, b
+	ld [wWildMonForm], a
+	ld a, BATTLETYPE_FISH
+	ld [wBattleType], a
+	ld a, 1
+	ret
+.no_nibble
+	xor a
+	ret
+
 BikeFunction:
 	call .TryBike
 	and $7f
@@ -1833,8 +1880,9 @@ BikeFunction:
 	call .CheckEnvironment
 	jr c, .CannotUseBike
 	ld a, [wPlayerState]
-	and a ; cp PLAYER_NORMAL
-	jr z, .GetOnBike
+	assert PLAYER_NORMAL == 0 && PLAYER_RUN == 1
+	cp PLAYER_RUN + 1
+	jr c, .GetOnBike
 	cp PLAYER_BIKE
 	jr z, .GetOffBike
 	jr .CannotUseBike

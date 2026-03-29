@@ -178,10 +178,10 @@
 	const SPRITE_BIG_ONIX ; ae
 	const SPRITE_BIG_GYARADOS ; af
 	const SPRITE_PIDGEOTTO_SIDE ; b0
-	const SPRITE_RATTATA_BACK ; b1 (blank side frame)
+	const SPRITE_RATTATA_BACK ; b1
 	const SPRITE_SLOWPOKETAIL ; b2
 	const SPRITE_WEIRD_TREE ; b3
-	const SPRITE_BALL_CUT_FRUIT ; b4
+	const SPRITE_BALL_CUT_TREE ; b4
 	const SPRITE_BOULDER_ROCK_FOSSIL ; b5
 	const SPRITE_BOOK_PAPER_POKEDEX ; b6
 	const SPRITE_SNES ; b7
@@ -204,8 +204,18 @@
 	const SPRITE_CRYS_BIKE ; c8
 	const SPRITE_CRYS_SURF ; c9
 	const SPRITE_THORTON ; ca
-	const SPRITE_FOLLOWER ; cb
+	const SPRITE_CHRIS_RUN ; cb
+	const SPRITE_KRIS_RUN ; cc
+	const SPRITE_CRYS_RUN ; cd
+	const SPRITE_BLANK_FRUIT ; ce
+	const SPRITE_BIG_HO_OH ; cf
+	const SPRITE_BIG_LUGIA ; d0
+	const SPRITE_BETA ; d1
+	const SPRITE_BETA_BIKE ; d2
+	const SPRITE_BETA_SURF ; d3
+	const SPRITE_BETA_RUN ; d4
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
+	const SPRITE_FOLLOWER ; d5
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)
 	const_next $ef

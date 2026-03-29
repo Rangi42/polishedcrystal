@@ -1,5 +1,5 @@
-	frame 0, 14 ; 300 ms
-	frame 8, 08
-	frame 0, 14 ; 300 ms
-	frame 8, 08
+	frame 0, 14
+	frame 6, 08
+	frame 0, 14
+	frame 6, 08
 	endanim

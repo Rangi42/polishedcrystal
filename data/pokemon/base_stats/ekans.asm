@@ -1,5 +1,5 @@
-	db  35,  60,  44,  55,  40,  54 ; 288 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 288,  35,  60,  44,  40,  54,  55
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db POISON, POISON ; type
 	db 255 ; catch rate

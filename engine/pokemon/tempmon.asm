@@ -16,7 +16,7 @@ _CopyPkmnToTempMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	cp OTPARTYMON
 	jr z, .copywholestruct
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .copywholestruct
@@ -55,7 +55,7 @@ GetPkmnSpecies:
 	ret
 
 .boxmon
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .breedmon
@@ -92,7 +92,7 @@ GetPkmnForm:
 	ret
 
 .boxmon
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .breedmon

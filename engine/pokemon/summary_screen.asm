@@ -75,7 +75,7 @@ SummaryScreenInit:
 	rst ByteFill
 	; Set up for HBlank
 
-	ld hl, hFunctionTarget
+	ld hl, hLCDInterruptFunctionTarget
 	ld b, [hl]
 	ld a, LOW(LCDSummaryScreenHideWindow)
 	ld [hli], a
@@ -120,7 +120,7 @@ SummaryScreenInit:
 	ldh [rIE], a
 
 	pop bc
-	ld hl, hFunctionTarget
+	ld hl, hLCDInterruptFunctionTarget
 	ld a, b
 	ld [hli], a
 	ld [hl], c
@@ -137,52 +137,15 @@ SummaryScreenInit:
 	ret
 
 .SummaryScreenObjPalettes:
-; pink
-	RGB 31, 31, 31
-	RGB 31, 15, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; blue
-	RGB 31, 31, 31
-	RGB 17, 31, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; green
-	RGB 31, 31, 31
-	RGB 17, 31, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; orange
-	RGB 31, 31, 31
-	RGB 30, 22, 12
-	RGB 00, 00, 00
-	RGB 00, 00, 00 ; placeholder
-; green info button
-	RGB 31, 31, 31
-	RGB 16, 24, 10
-	RGB 31, 31, 31
-	RGB 00, 00, 00 ; placeholder
-; unused
-	RGB 31, 31, 31
-	RGB 31, 31, 31 ; unused
-	RGB 31, 31, 31 ; unused
-	RGB 00, 00, 00 ; placeholder
-; arrow dark
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 10, 06
-	RGB 00, 00, 00 ; placeholder
-; arrow light
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 20, 20
-	RGB 00, 00, 00 ; placeholder
+INCLUDE "gfx/stats/summary_sprites.pal"
 
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
 	ld de, vTiles2 tile SUMMARY_TILE_START
-	lb bc, BANK(GFX_Summary), 18
+	lb bc, BANK(GFX_Summary), 16
 	call DecompressRequest2bpp
+
+	farcall LoadBoldPDoubled
 
 	ld a, 1
 	ldh [rVBK], a
@@ -393,7 +356,9 @@ SummaryScreen_InitMon:
 	farcall LoadSummaryStatusIcon
 	ld a, [wTempMonItem]
 	farcall LoadItemIconForSummaryScreen
-	farcall _CGB_StatsScreenHPPals
+
+	farcall SummaryScreen_ApplyHPPals
+
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	ret
@@ -467,9 +432,23 @@ SummaryScreen_InitLayout:
 	ld a, [hl]
 	and a
 	jr z, .moveTypesEnd
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+
+	push hl
+	push bc
+	ld hl, wTempMonDVs
+	farcall GetHiddenPowerType
+	pop bc
+	pop hl
+	jr .got_type
+
+.not_hidden_power
 	ld [wCurMove], a
 	ld hl, Moves + MOVE_TYPE
 	call GetCurMoveProperty
+	; fallthrough
+.got_type
 	ld hl, wSummaryScreenTypes - 252 + 2
 	add hl, bc
 	ld [hl], a
@@ -479,10 +458,9 @@ SummaryScreen_InitLayout:
 
 	call .ApplySummaryPalettes
 
-	hlcoord 19 - NUM_SUMMARY_PAGES * 2, 0
-	ld [hl], SUMMARY_TILE_LEFT_ARROW
-	hlcoord 19, 0
-	ld [hl], SUMMARY_TILE_RIGHT_ARROW
+	ld a, SUMMARY_TILE_ARROW
+	ldcoord_a 19 - NUM_SUMMARY_PAGES * 2, 0
+	ldcoord_a 19, 0
 	ret
 
 .PlaceHPBar:
@@ -550,54 +528,6 @@ SummaryScreen_InitLayout:
 	db 108, 28, SUMMARY_TILE_OAM_TITLES + 1, $0
 	db 108, 36, SUMMARY_TILE_OAM_TITLES + 2, $0
 	db 108, 44, SUMMARY_TILE_OAM_TITLES + 3, $0
-
-SummaryScreen_InitAttrmap:
-	farcall WipeAttrMap
-
-	hlcoord 0, 0, wAttrmap
-	lb bc, 12, 8
-	ld a, SUMMARY_PAL_POKEMON
-	call FillBoxWithByte
-
-	hlcoord 8, 0, wAttrmap
-	lb bc, 1, 14
-	; a == SUMMARY_PAL_POKEMON
-	call FillBoxWithByte
-
-	hlcoord 0, 12, wAttrmap
-	lb bc, 1, 20
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	call FillBoxWithByte
-
-	hlcoord 2, 12, wAttrmap
-	lb bc, 1, 3
-	xor a
-	assert SUMMARY_PAL_LOWER_WINDOW == 0
-	call FillBoxWithByte
-
-	hlcoord 1, 11, wAttrmap
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	ld [hli], a
-	ld a, OAM_YFLIP | SUMMARY_PAL_LOWER_WINDOW
-	ld bc, 3
-	rst ByteFill
-	ld a, OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
-	ld [hl], a
-	hlcoord 5, 12, wAttrmap
-	ld [hl], a
-
-	hlcoord 7, 1, wAttrmap
-	lb bc, 11, 13
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	call FillBoxWithByte
-
-	hlcoord 5, 9, wAttrmap
-	ld [hl], SUMMARY_PAL_GENDER_MARKER
-
-	hlcoord 2, 8, wAttrmap
-	lb bc, 3, 3
-	ld a, SUMMARY_PAL_ITEM
-	jmp FillBoxWithByte
 
 SummaryScreen_LoadPage:
 	ld a, [wCurPartySpecies]
@@ -809,9 +739,9 @@ SummaryScreen_SwitchPage:
 	ld a, 2
 	ld [wSummaryScreenStep], a
 	ld a, LOW(LCDSummaryScreenShowWindow)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDSummaryScreenShowWindow)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	ldh a, [rLCDC]
 	set B_LCDC_WINDOW, a

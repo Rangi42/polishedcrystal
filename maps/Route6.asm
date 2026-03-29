@@ -4,7 +4,7 @@ Route6_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 21,  9, ROUTE_6_UNDERGROUND_ENTRANCE, 1
+	warp_event 21,  9, ROUTE_6_UNDERGROUND_PATH_ENTRANCE, 1
 	warp_event 10,  1, ROUTE_6_SAFFRON_GATE, 3
 
 	def_coord_events

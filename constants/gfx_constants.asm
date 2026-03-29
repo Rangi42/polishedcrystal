@@ -62,3 +62,15 @@ DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 
 DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
 DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
+
+; wPalState types (see engine/gfx/sprite_palettes.asm)
+	const_def
+	const PREV_PALSTATE ; 0
+	const CURR_PALSTATE ; 1
+
+rsreset
+DEF PALSTATE_WEATHER        rb
+DEF PALSTATE_DARKNESS       rb
+DEF PALSTATE_OVERCAST_INDEX rb
+DEF PALSTATE_TIME_OF_DAY    rb
+DEF PALSTATE_SIZE EQU _RS

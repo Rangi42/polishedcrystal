@@ -120,10 +120,19 @@ StatusIconPals:
 INCLUDE "gfx/battle/status.pal"
 
 LoadBattleCategoryAndTypePals:
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
+	ld c, a
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld b, a
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-	ld c, a
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT + 2
 LoadCategoryAndTypePals:
 	ld hl, CategoryIconPals
@@ -549,11 +558,11 @@ InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
-	ld bc, 3 palettes
+	ld bc, NUM_PLAYER_GENDERS palettes
 	call FarCopyColorWRAM
 
 	ld hl, PokegearFlyPalette
-	ld de, wOBPals1 palette 3
+	ld de, wOBPals1 palette NUM_PLAYER_GENDERS
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
@@ -587,25 +596,32 @@ GetPlayerOrMonPalettePointer:
 	and a
 	jr nz, GetMonNormalOrShinyPalettePointer
 
-	ld hl, Lyra1Palette
+	ld hl, TrainerPalettes + (LYRA1 - 1) * 2 colors
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	ret z
 
+	; hl = TrainerPalettes + [wPlayerGender] * 2 colors
 	ld a, [wPlayerGender]
-	ld hl, ChrisPalette
-	and a ; PLAYER_MALE
-	ret z
-	ld hl, KrisPalette
-	dec a ; PLAYER_FEMALE
-	ret z
-	; PLAYER_ENBY
-	ld hl, CrysPalette
+	assert PLAYER_MALE == CHRIS - 1
+	assert PLAYER_FEMALE == KRIS - 1
+	assert PLAYER_ENBY == CRYS - 1
+	assert PLAYER_BETA == BETA - 1
+	add a ; * 2
+	add a ; * 4 (2 colors)
+	add LOW(TrainerPalettes)
+	ld l, a
+	adc HIGH(TrainerPalettes)
+	sub l
+	ld h, a
 	ret
 
 GetFrontpicPalettePointer:
 	and a
 	jr nz, GetMonNormalOrShinyPalettePointer
+	ld a, [wTrainerPal]
+	and a
+	jr nz, GetTrainerPalettePointer
 	ld a, [wTrainerClass]
 
 GetTrainerPalettePointer:
@@ -613,7 +629,7 @@ GetTrainerPalettePointer:
 	ld h, 0
 	add hl, hl
 	add hl, hl
-	ld bc, TrainerPalettes - COLOR_SIZE * 2
+	ld bc, TrainerPalettes - 2 colors
 	add hl, bc
 	ret
 
@@ -748,8 +764,12 @@ LoadTempMonPalette:
 	jr _FinishLoadNicknamedMonPalette
 
 LoadTrainerPalette:
+	ld a, [wTrainerPal]
+	and a
+	jr nz, .use_custom_pal
 	; a = class
 	ld a, [wTrainerClass]
+.use_custom_pal
 	; hl = palette
 	call GetTrainerPalettePointer
 	; load palette in BG 7
@@ -977,7 +997,8 @@ LoadMapPals:
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
-	dec a
+	; Use map group to select an overcast roof palette (full table per group)
+	ld a, [wMapGroup]
 	ld hl, OvercastRoofPals
 	jr .get_roof_color
 
@@ -1028,7 +1049,9 @@ INCLUDE "gfx/tilesets/roofs.pal"
 	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
+	table_width COLOR_SIZE * 2 * 3
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
+	assert_table_length NUM_MAP_GROUPS + 1
 
 INCLUDE "data/pokemon/palettes.asm"
 

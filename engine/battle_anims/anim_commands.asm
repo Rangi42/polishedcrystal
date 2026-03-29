@@ -817,8 +817,8 @@ BattleAnimCmd_CheckPokeball:
 	ret
 
 BattleAnimCmd_CheckCriticalCapture:
-	ld hl, wBuffer2
-	ld a, BANK(wBuffer2)
+	ld hl, wThrownBallWobbleCount
+	ld a, BANK(wThrownBallWobbleCount)
 	call GetFarWRAMByte
 	and $10
 	ld [wBattleAnimVar], a

@@ -1,7 +1,8 @@
 IlexForest_MapScriptHeader:
 	def_scene_scripts
-	scene_script IlexForestTrigger0
-	scene_script IlexForestTrigger1
+	scene_script IlexForestFarfetchdQuestScene, SCENE_ILEXFOREST_FARFETCHD_QUEST
+	scene_script IlexForestCutSceneScene, SCENE_ILEXFOREST_CUT_SCENE
+	scene_const SCENE_ILEXFOREST_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
@@ -13,7 +14,7 @@ IlexForest_MapScriptHeader:
 	warp_event 25, 24, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
-	coord_event  9, 31, 2, IlexForestApprenticeTrigger
+	coord_event  9, 31, SCENE_ILEXFOREST_NOOP, IlexForestApprenticeTrigger
 
 	def_bg_events
 	bg_event  5, 19, BGEVENT_JUMPTEXT, IlexForestSignpost
@@ -54,9 +55,9 @@ IlexForest_MapScriptHeader:
 	const ILEXFOREST_LYRA
 	const ILEXFOREST_YOUNGSTER
 
-IlexForestTrigger1:
+IlexForestCutSceneScene:
 	sdefer IlexForestFinishCelebiEventScript
-IlexForestTrigger0:
+IlexForestFarfetchdQuestScene:
 	end
 
 IlexForestFarfetchdCallback:
@@ -129,8 +130,26 @@ IlexForestFarfetchdCallback:
 IlexForestCharcoalApprenticeScript:
 	checkevent EVENT_HERDED_FARFETCHD
 	iftrue_jumptextfaceplayer IlexForestApprenticeAfterText
-	setscene $0
-	jumptextfaceplayer IlexForestApprenticeIntroText
+	setscene SCENE_ILEXFOREST_FARFETCHD_QUEST
+	jumpthistextfaceplayer
+
+	text "Oh, man… My boss"
+	line "is going to be"
+	cont "steaming…"
+
+	para "The Farfetch'd"
+	line "that Cuts trees"
+
+	para "for charcoal took"
+	line "off on me."
+
+	para "I can't go looking"
+	line "for it here in the"
+	cont "Ilex Forest."
+
+	para "It's too big, dark"
+	line "and scary for me…"
+	done
 
 IlexForestFarfetchdScript:
 	faceplayer
@@ -302,7 +321,7 @@ IlexForestFarfetchdScript:
 IlexForestFinishCelebiEventScript:
 	setevent EVENT_TIME_TRAVEL_FINISHED
 	clearevent EVENT_TIME_TRAVELING
-	setscene $0
+	setscene SCENE_ILEXFOREST_FARFETCHD_QUEST
 	pause 30
 	showemote EMOTE_SHOCK, ILEXFOREST_LYRA, 15
 	applyonemovement ILEXFOREST_LYRA, slow_step_down
@@ -392,14 +411,34 @@ IlexForestTutorHeadbuttScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_IlexForestTutorRefused
+	jumpthisopenedtext
+
+	text "Alright then."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_IlexForestTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "Oh, but you don't"
+	line "have any Silver"
+	cont "Leaves."
+
+	para "Sometimes you can"
+	line "find them on wild"
+
+	para "Oddish, or lying"
+	line "on the ground."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_IlexForestTutorTaught
+	jumpthisopenedtext
+
+	text "Rattle trees with"
+	line "Headbutt. Some-"
+	cont "times, sleeping"
+	cont "#mon fall out."
+	done
 
 GenericTrainerBugCatcherWayne:
 	generictrainer BUG_CATCHER, WAYNE, EVENT_BEAT_BUG_CATCHER_WAYNE, BugCatcherWayneSeenText, BugCatcherWayneBeatenText
@@ -815,24 +854,6 @@ MovementData_IlexForestLyraLeaves:
 	slow_step_left
 	step_end
 
-IlexForestApprenticeIntroText:
-	text "Oh, man… My boss"
-	line "is going to be"
-	cont "steaming…"
-
-	para "The Farfetch'd"
-	line "that Cuts trees"
-
-	para "for charcoal took"
-	line "off on me."
-
-	para "I can't go looking"
-	line "for it here in the"
-	cont "Ilex Forest."
-
-	para "It's too big, dark"
-	line "and scary for me…"
-	done
 
 IlexForestApprenticeAfterText:
 	text "Wow! Thanks a"
@@ -954,17 +975,6 @@ Text_IlexForestTutorHeadbutt:
 	cont "Silver Leaf."
 	done
 
-Text_IlexForestTutorNoSilverLeaf:
-	text "Oh, but you don't"
-	line "have any Silver"
-	cont "Leaves."
-
-	para "Sometimes you can"
-	line "find them on wild"
-
-	para "Oddish, or lying"
-	line "on the ground."
-	done
 
 Text_IlexForestTutorQuestion:
 	text "Should I teach"
@@ -972,16 +982,7 @@ Text_IlexForestTutorQuestion:
 	cont "Headbutt?"
 	done
 
-Text_IlexForestTutorRefused:
-	text "Alright then."
-	done
 
-Text_IlexForestTutorTaught:
-	text "Rattle trees with"
-	line "Headbutt. Some-"
-	cont "times, sleeping"
-	cont "#mon fall out."
-	done
 
 Text_IlexForestLass:
 	text "Did something"
@@ -1010,23 +1011,23 @@ IlexForestSignpost:
 	done
 
 IlexForestTrainerTips:
-	text "Trainer Tips!"
+	text "Trainer Tips"
 
 	para "As long as you"
-	line "have the HM in"
-	cont "your bag,"
+	line "have an HM in"
+	cont "your Bag,"
 
-	para "and #mon in"
-	line "your party that"
+	para "and a #mon in"
+	line "your party that's"
 
-	para "are compatible"
-	line "with that HM can"
+	para "compatible with"
+	line "it, you can use"
 
-	para "use the move out-"
-	line "of battle. You"
+	para "the move outside"
+	line "of battle."
 
-	para "don't even have to"
-	line "teach it!"
+	para "You don't even"
+	line "have to teach it!"
 	done
 
 Text_IlexForestShrine:

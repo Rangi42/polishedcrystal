@@ -61,7 +61,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	writetext .AfterText2
 	promptbutton
 	verbosegiveitem CHOICE_BAND
-	iffalse_endtext
+	iffalse_jumpopenedtext CeladonUni_NoRoomText
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
 	jumpthisopenedtext
 
@@ -144,6 +144,10 @@ CeladonUniversityCafeteriaCoreyScript:
 	line "memento!"
 	done
 
+CeladonUni_NoRoomText:
+	text "You can't carry it."
+	done
+
 CeladonUniversityCafeteriaCooltrainerfText:
 	text "This place makes"
 	line "the best Cinnabar-"
@@ -190,7 +194,7 @@ CeladonUniversityCafeteriaYoungster2Script:
 	writetext .Text1
 	promptbutton
 	verbosegiveitem LEMONADE
-	iffalse_endtext
+	iffalse_jumpopenedtext CeladonUni_NoRoomText
 	setevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
 	jumpopenedtext .Text2
 

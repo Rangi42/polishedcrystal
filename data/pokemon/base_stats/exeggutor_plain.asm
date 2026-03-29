@@ -1,5 +1,5 @@
-	db  95,  95,  85,  55, 125,  75 ; 530 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 530,  95,  95,  85, 125,  75,  55
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GRASS, PSYCHIC ; type
 	db 45 ; catch rate

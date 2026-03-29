@@ -1,7 +1,11 @@
-	db  55,  70,  45,  60,  70,  50 ; 350 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 350,  55,  70,  45,  70,  50,  60
+	;   bst   hp  atk  def  sat  sdf  spe
 
+if DEF(FAITHFUL)
 	db FIRE, FIRE ; type
+else
+	db FIRE, NORMAL ; type
+endc
 	db 190 ; catch rate
 	db 91 ; base exp
 	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items

@@ -27,10 +27,11 @@ LCDGeneric::
 
 LCDMusicPlayer::
 	ldh a, [rLY]
-	cp PIANO_ROLL_HEIGHT_PX
+	cp PIANO_ROLL_HEIGHT_PX - 1
 	jr nc, .done
 
 	push hl
+	push de
 
 	ld l, a
 	add SCREEN_HEIGHT - 1
@@ -39,16 +40,13 @@ LCDMusicPlayer::
 	ld [oamSprite02YCoord], a
 
 	ldh a, [hMPState]
-	inc a
-	assert PIANO_ROLL_HEIGHT_PX + 1 < $80
 	add l
-	add a
-	ld l, a
-	assert wMPNotes & ((1 << 9) - 1) == 0
-	adc wMPNotes >> 9 ; HIGH(wMPNotes) >> 1
-	sub l
-	ld h, a
-	add hl, hl
+	ld e, a
+	ld d, 0
+	ld hl, wMPNotes
+	add hl, de
+	add hl, de
+	add hl, de
 
 	ld a, [hli]
 	ld [oamSprite00XCoord], a
@@ -56,9 +54,16 @@ LCDMusicPlayer::
 	ld [oamSprite01XCoord], a
 	ld a, [hl]
 	ld [oamSprite02XCoord], a
-	pop hl
 
+	pop de
+	pop hl
+	pop af
+	reti
 .done
+	; this ideally runs once but there's no harm letting it run
+	; for the remaining blanks
+	ldh a, [hNextMPState]
+	ldh [hMPState], a
 	pop af
 	reti
 
@@ -112,23 +117,20 @@ LCDSummaryScreenProgress::
 	ld a, [hl]
 	assert SUMMARY_LCD_SHOW_WINDOW == 1
 	dec a
-	jr z, .show
+	ld hl, LCDSummaryScreenShowWindow
+	jr z, .setupNext
 	assert SUMMARY_LCD_SCROLL_BACKGROUND == 2
 	dec a
-	jr z, .nudge
-	ld hl, LCDSummaryScreenHideWindow
-	jr .setupNext
-.show
-	ld hl, LCDSummaryScreenShowWindow
-	jr .setupNext
-.nudge
-	ld hl, LCDSummaryScreenScrollBackground
-	; fallthrough
+	assert HIGH(LCDSummaryScreenShowWindow) == HIGH(LCDSummaryScreenScrollBackground)
+	ld l, LOW(LCDSummaryScreenScrollBackground)
+	jr z, .setupNext
+	assert HIGH(LCDSummaryScreenShowWindow) == HIGH(LCDSummaryScreenHideWindow)
+	ld l, LOW(LCDSummaryScreenHideWindow)
 .setupNext
 	ld a, l
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, h
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	; procede to next step
 	ld hl, wSummaryScreenStep

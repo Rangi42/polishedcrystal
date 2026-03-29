@@ -14,7 +14,7 @@ OlivineLighthouse6F_MapScriptHeader:
 
 	def_object_events
 	object_event  8,  8, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseJasmine, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	object_event  9,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, AMPHAROS, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, OlivineLighthouseAmphy, -1
+	object_event  9,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, AMPHAROS, -1, PAL_MON_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, OlivineLighthouseAmphy, -1
 	itemball_event  3,  4, WIDE_LENS, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_WIDE_LENS
 
 	object_const_def
@@ -32,7 +32,12 @@ OlivineLighthouseJasmine:
 	promptbutton
 	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
 .ExplainedSickness:
-	jumpopenedtext JasmineGetSomeMedicineText
+	jumpthisopenedtext
+
+	text "…May I ask you to"
+	line "get some medicine"
+	cont "for me? Please?"
+	done
 
 .BroughtSecretpotion:
 	writetext JasmineCureAmphyText
@@ -87,7 +92,10 @@ OlivineLighthouseJasmine:
 	closetext
 	turnobject OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	jumptext JasmineAmphyHangOnText
+	jumpthistext
+
+	text "…Amphy, hang on!"
+	done
 
 OlivineLighthouseAmphy:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
@@ -98,7 +106,11 @@ OlivineLighthouseAmphy:
 	setmonval AMPHAROS
 	special PlaySlowCry
 	promptbutton
-	jumpopenedtext AmphyBreathingLaboredText
+	jumpthisopenedtext
+
+	text "Its breathing is"
+	line "terribly labored…"
+	done
 
 .HealthyNow:
 	showcrytext AmphyPaluPaluluText, AMPHAROS
@@ -165,11 +177,6 @@ JasmineCianwoodPharmacyText:
 	line "Amphy unattended…"
 	done
 
-JasmineGetSomeMedicineText:
-	text "…May I ask you to"
-	line "get some medicine"
-	cont "for me? Please?"
-	done
 
 JasmineCureAmphyText:
 	text "Jasmine: …Will"
@@ -218,19 +225,12 @@ JasmineISeeText:
 	text "Jasmine: …I see…"
 	done
 
-JasmineAmphyHangOnText:
-	text "…Amphy, hang on!"
-	done
 
 AmphyPalPalooText:
 	text "Amphy: …"
 	line "…Pa… paloo…"
 	done
 
-AmphyBreathingLaboredText:
-	text "Its breathing is"
-	line "terribly labored…"
-	done
 
 AmphyPaluPaluluText:
 	text "Amphy: Palu!"

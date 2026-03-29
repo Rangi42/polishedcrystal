@@ -219,8 +219,22 @@ BattleTurn:
 	ret nz
 
 	call DeferredSwitch
+	call ResetAbilityIgnorance
+
 	ld a, [wBattleEnded]
 	and a
+	ret
+
+ResetAbilityIgnorance:
+; Resets the "ignoring foe's ability" flag for both sides.
+; When move sequence order is replicated, this dedicated routine will no longer
+; be necessary, because it will be an inherent part of the move sequence.
+	ld a, ~(MOVESTATE_IGNOREABIL | MOVESTATE_OPP_IGNOREABIL)
+	push hl
+	ld hl, wMoveState
+	and [hl]
+	ld [hl], a
+	pop hl
 	ret
 
 SafariBattleTurn:
@@ -267,7 +281,7 @@ HandleBerserkGene:
 	farcall ConsumeUserItem
 
 	; Own Tempo prevents confusion. Safeguard, however, doesn't.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp OWN_TEMPO
 	ret z
 
@@ -361,7 +375,7 @@ GetSpeed::
 	call GetBattleVar
 	bit PAR, a
 	jr z, .paralyze_done
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp QUICK_FEET
 	ln a, 1, 2 ; x0.5
 	call nz, MultiplyAndDivide
@@ -643,7 +657,7 @@ GetMovePriority:
 .got_priority
 	xor $80 ; treat it as a signed byte
 	ld b, a
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp PRANKSTER
 	jr nz, .no_priority
 	ld a, BATTLE_VARS_MOVE_CATEGORY
@@ -859,7 +873,7 @@ ForceDeferredSwitch:
 	call SwitchTurn
 
 	; Suction Cups can prevent this item from activating.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp SUCTION_CUPS
 	jr nz, .items_done
 
@@ -978,14 +992,7 @@ ForceDeferredSwitch:
 
 	call GetUserSwitchTarget
 	call SendInUserPkmn
-	ld a, [wDeferredSwitch]
-	cp 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_FORCED
-	jr nz, .regular_spikes
-	call SpikesDamage_CheckMoldBreaker
-	jr .done_spikes
-.regular_spikes
 	call SpikesDamage
-.done_spikes
 	call RunEntryAbilities
 
 .all_done
@@ -1223,6 +1230,20 @@ endr
 	call NewEnemyMonStatus
 
 .volatile_done
+	; Starting with 8gen, ability ignorance no longer affects the move user,
+	; but does affect other Pokémon on the move user's side. This includes
+	; Pokémon switched into the same slot during move execution.
+	; Example: Mold Breaker U-turn that pivots into a Levitate mon should
+	; take Spikes damage. Ignoring abilities entirely, which is how 7gen
+	; behaved, causes problems if we were to add Sunsteel Strike/etc.
+	; ResetAbilityIgnorance will reset both sides' ignorance state.
+	ld a, [wMoveState]
+	ld d, a
+	and MOVESTATE_IGNOREABIL
+	swap a
+	or d
+	ld [wMoveState], a
+
 	; Switch active mon
 	ldh a, [hBattleTurn]
 	and a
@@ -1741,7 +1762,7 @@ LeppaRestorePP:
 
 DealDamageToOpponent:
 ; ONLY runs from attacking damage.
-	call GetOpponentAbilityAfterMoldBreaker
+	call GetOpponentIgnorableAbility
 	cp BERSERK
 	jr z, .berserk
 	call SwitchTurn
@@ -1831,9 +1852,9 @@ DoSubtractHPFromUser:
 _SubtractHPFromPlayer:
 	ld hl, wBattleMonMaxHP
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	ld hl, wBattleMonHP
 	ldh a, [hBattleTurn]
 	push af
@@ -1846,9 +1867,9 @@ _SubtractHPFromPlayer:
 _SubtractHPFromEnemy:
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hl]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	ld hl, wEnemyMonHP
 	ldh a, [hBattleTurn]
 	push af
@@ -1892,15 +1913,17 @@ SubtractHP:
 HandleUserHealingItems:
 	call HasUserFainted
 	ret z
+	push bc
+	call UseHeldStatusHealingItem
+	call UseConfusionHealingItem
+	pop bc
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_PENDING_ITEMLOSS, a
 	ret nz
 	push bc
 	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry
-	call UseConfusionHealingItem
 	pop bc
 	ret
 
@@ -1925,28 +1948,28 @@ _SubtractHP:
 .do_subtract
 	inc hl
 	ld a, [hl]
-	ld [wBuffer3], a
+	ld [wHPBuffer2], a
 	sub c
 	ld [hld], a
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	ld a, [hl]
-	ld [wBuffer4], a
+	ld [wHPBuffer2 + 1], a
 	sbc b
 	ld [hl], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 	ret nc
 
-	ld a, [wBuffer3]
+	ld a, [wHPBuffer2]
 	ld [wCurDamage+1], a
 	ld c, a
-	ld a, [wBuffer4]
+	ld a, [wHPBuffer2 + 1]
 	ld [wCurDamage], a
 	ld b, a
 	xor a
 	ld [hli], a
 	ld [hld], a
-	ld [wBuffer5], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3], a
+	ld [wHPBuffer3 + 1], a
 	ret
 
 RestoreHP:
@@ -1957,36 +1980,36 @@ RestoreHP:
 	ld hl, wEnemyMonMaxHP
 .ok
 	ld a, [hli]
-	ld [wBuffer2], a
+	ld [wHPBuffer1 + 1], a
 	ld a, [hld]
-	ld [wBuffer1], a
+	ld [wHPBuffer1], a
 	dec hl
 	ld a, [hl]
-	ld [wBuffer3], a
+	ld [wHPBuffer2], a
 	add c
 	ld [hld], a
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	ld a, [hl]
-	ld [wBuffer4], a
+	ld [wHPBuffer2 + 1], a
 	adc b
 	ld [hli], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 
-	ld a, [wBuffer1]
+	ld a, [wHPBuffer1]
 	ld c, a
 	ld a, [hld]
 	sub c
-	ld a, [wBuffer2]
+	ld a, [wHPBuffer1 + 1]
 	ld b, a
 	ld a, [hl]
 	sbc b
 	jr c, UpdateHPBarBattleHuds
 	ld a, b
 	ld [hli], a
-	ld [wBuffer6], a
+	ld [wHPBuffer3 + 1], a
 	ld a, c
 	ld [hl], a
-	ld [wBuffer5], a
+	ld [wHPBuffer3], a
 	; fallthrough
 
 UpdateHPBarBattleHuds:
@@ -2173,6 +2196,20 @@ FaintUserPokemon:
 .text
 	call StdBattleTextbox
 	call LoadTileMapToTempTileMap
+	call SuppressUserAbilities
+
+	; We can't use ResetAbilityIgnorance here, because it resets both sides'
+	; flags.
+	ld hl, wMoveState
+	ldh a, [hBattleTurn]
+	and a
+	ld a, ~MOVESTATE_IGNOREABIL
+	jr z, .got_mb_side
+	swap a
+.got_mb_side
+	and [hl]
+	ld [hl], a
+	ret
 
 SuppressUserAbilities:
 	ld a, BATTLE_VARS_ABILITY
@@ -2198,7 +2235,7 @@ SuppressUserAbilities:
 
 	; Unless opponent also has Neutralizing Gas or Unnerve, (re-)run its
 	; entry abilities. Yes, this means that it might run more than once.
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp NEUTRALIZING_GAS
 	ret z
 	cp UNNERVE
@@ -3266,10 +3303,10 @@ RunBothEntryAbilities:
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
 	; Only show Neutralizing Gas message once.
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp NEUTRALIZING_GAS
 	jr nz, .no_double_gas
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp NEUTRALIZING_GAS
 	jr nz, .no_double_gas
 	ldh a, [hBattleTurn]
@@ -3302,7 +3339,7 @@ RunEntryAbilities:
 	call GetTrueUserAbility
 	cp TRACE
 	ret z ; trace failed, so don't check opponent trace
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp TRACE
 	ret nz
 	; invert whose turn it is to properly handle abilities.
@@ -3310,18 +3347,8 @@ RunEntryAbilities:
 	farcall RunEntryAbilitiesInner
 	jmp SwitchTurn
 
-SpikesDamage_CheckMoldBreaker:
-; Called when a Pokémon with Mold Breaker uses Roar/Whirlwind.
-; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
-; but can't be checked unconditionally since other kind of switches ignore MB as usual.
-	call SwitchTurn
-	call GetOpponentAbilityAfterMoldBreaker
-	ld b, a
-	call SwitchTurn
-	ld c, 0
-	jr SpikesDamage_GotAbility
 SpikesDamage:
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	ld b, a
 	ld c, 1
 SpikesDamage_GotAbility:
@@ -3330,10 +3357,10 @@ SpikesDamage_GotAbility:
 	push bc
 	call SetParticipant
 	ld d, 0
-	farcall CheckAirborne_GotAbility
+	farcall CheckAirborne
 	pop bc
 	pop de
-	jmp nz, HandleAirBalloon
+	jr nz, .end_hazards
 
 	push bc
 	predef GetUserItemAfterUnnerve
@@ -3351,7 +3378,9 @@ SpikesDamage_GotAbility:
 	push hl
 	call .Spikes
 	pop hl
-	jr .ToxicSpikes
+	call .ToxicSpikes
+.end_hazards
+	jmp HandleEntryItems
 
 .Spikes:
 	ld a, b
@@ -3444,12 +3473,17 @@ SpikesDamage_GotAbility:
 .poststatus_done
 	jmp SwitchTurn
 
-HandleAirBalloon:
-; prints air balloon msg and returns z if we have air balloon
+HandleEntryItems:
+; Handles items at battle start or send-in.
 	farcall GetUserItem
 	ld a, b
 	cp HELD_AIR_BALLOON
+	jr z, .air_balloon
+	cp HELD_ROOM_SERVICE
 	ret nz
+	farjp RoomServiceItem
+
+.air_balloon
 	call GetCurItemName
 	ld hl, NotifyAirBalloonText
 	call StdBattleTextbox
@@ -3466,7 +3500,17 @@ PursuitSwitch:
 	call GetBattleVar
 	cp EFFECT_PURSUIT
 	ret nz
+
+	; Pursuit should ignore any prior ability ignorance if present.
+	ld a, [wMoveState]
+	push af
+	call SwitchTurn
+	call ResetAbilityIgnorance
+	call SwitchTurn
 	call PerformMove
+	pop af
+	ld [wMoveState], a
+	call ResetAbilityIgnorance
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld [hl], 0
@@ -3515,7 +3559,7 @@ DoStealStatBoostBerry:
 QuarterPinchOrGluttony::
 ; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
 	call GetQuarterMaxHP
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp GLUTTONY
 	call z, GetHalfMaxHP
 	call CompareHP
@@ -3833,7 +3877,8 @@ _HeldConfusionHealingItem:
 	jr nz, .ret_z
 	call DoHeldConfusionHealingItem
 	ret z
-	farcall ShowPotentialAbilityActivation
+	ld a, CUD_CHEW
+	farcall ShowPotentialSpecificAbilityActivation
 	call CurItemRecoveryAnim
 	or 1
 	ret
@@ -4586,7 +4631,7 @@ UserCanSwitch:
 	cp HELD_SHED_SHELL
 	ret z
 if !DEF(FAITHFUL)
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp RUN_AWAY
 	ret z
 endc
@@ -4838,7 +4883,7 @@ endr
 	jr .print_inescapable_text
 
 .ability_prevents_escape
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	ld b, a
 	farcall BufferAbility
 	ld hl, BattleText_PkmnCantBeRecalledAbility
@@ -4995,7 +5040,7 @@ MoveSelectionScreen:
 	hlcoord 6, 17 - NUM_MOVES - 4
 .got_start_coord
 	ld a, SCREEN_WIDTH
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	predef ListMoves
 
 	ld a, [wMoveSelectionMenuType]
@@ -5507,9 +5552,18 @@ MoveInfoBox:
 	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farcall GetHiddenPowerType
+	jr .got_type
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+.got_type
 	ld hl, TypeIconGFX
 	ld bc, 4 * TILE_1BPP_SIZE
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	rst AddNTimes
 	ld d, h
 	ld e, l
@@ -5670,7 +5724,7 @@ CheckUsableMove:
 
 .CheckChoiceAbility:
 	ld b, 6
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp GORILLA_TACTICS
 	ret nz
 	jr .CheckEncoreVar
@@ -6563,18 +6617,16 @@ GiveExperiencePoints:
 	pop bc
 	ld hl, MON_EXP + 2
 	add hl, bc
-	ld d, [hl]
 	ldh a, [hQuotient + 2]
-	add d
+	add [hl]
 	ld [hld], a
-	ld d, [hl]
 	ldh a, [hQuotient + 1]
-	adc d
+	adc [hl]
+	ld [hld], a
+	ldh a, [hQuotient]
+	adc [hl]
 	ld [hl], a
 	jr nc, .skip2
-	dec hl
-	inc [hl]
-	jr nz, .skip2
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7161,8 +7213,10 @@ AnimateExpBar:
 	adc [hl]
 	ld [hld], a
 	jr nc, .NoOverflow
-	inc [hl]
-	jr nz, .NoOverflow
+	ld a, [wExperienceGained]
+	adc [hl]
+	ld [hl], a
+	jr nc, .NoOverflow
 	ld a, $ff
 	ld [hli], a
 	ld [hli], a
@@ -7328,6 +7382,10 @@ GetNewBaseExp:
 	and EXTSPECIES_MASK
 	ld b, a
 _GetNewBaseExp:
+	; Ensure that the most significant multiplicand isn't left with stray data.
+	; The rest is filled by this routine.
+	xor a
+	ldh [hMultiplicand], a
 	ld hl, NewBaseExpExceptions
 	ld de, 4
 	call IsInWordArray
@@ -7903,6 +7961,8 @@ StartBattle:
 	call ExitBattle
 	farcall LoadWeatherGraphics
 	farcall LoadWeatherPal
+	xor a
+	ld [wTrainerPal], a
 	pop af
 	ld [wTimeOfDayPal], a
 	scf
@@ -8696,25 +8756,13 @@ InitBattleDisplay:
 
 GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
-
-; Special exception for Lyra.
-	ld hl, LyraBackpic
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .Decompress
+	jr z, .Lyra
+	farjp GetPlayerBackpic
 
-; What gender are we?
-	ld a, [wPlayerGender]
-	ld hl, ChrisBackpic
-	and a ; PLAYER_MALE
-	jr z, .Decompress
-	ld hl, KrisBackpic
-	dec a ; PLAYER_FEMALE
-	jr z, .Decompress
-	; PLAYER_ENBY
-	ld hl, CrysBackpic
-
-.Decompress:
+.Lyra:
+	ld hl, LyraBackpic
 	ld de, vTiles2 tile $31
 	lb bc, BANK("Trainer Backpics"), 6 * 6
 	jmp DecompressRequest2bpp
@@ -8871,19 +8919,34 @@ AutomaticBattleWeather:
 	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
 	jr nz, .not_rugged_road_or_snowtop_mountain
 	ld a, [wMapNumber]
-	; Automatic hail on Snowtop Mountain
-	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
-	lb de, WEATHER_HAIL, HAIL
-	ld hl, HailStartedText
-	jr z, .got_weather
 	; Automatic sandstorm on Rugged Road
 	cp MAP_RUGGED_ROAD_SOUTH
 	lb de, WEATHER_SANDSTORM, SANDSTORM
 	ld hl, SandstormBrewedText
 	jr z, .got_weather
+	; Automatic hail on Snowtop Mountain
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	jr .maybe_hail
 .not_rugged_road_or_snowtop_mountain
-	; Automatic rain on overcast maps
+	; Automatic hail on Mt. Silver peak
+	ld a, [wMapGroup]
+	cp GROUP_SILVER_CAVE_ROOM_3
+	jr nz, .not_mt_silver_peak
+	ld a, [wMapNumber]
+	cp MAP_SILVER_CAVE_ROOM_3
+.maybe_hail
+	lb de, WEATHER_HAIL, HAIL
+	ld hl, HailStartedText
+	jr z, .got_weather
+.not_mt_silver_peak
+	; Automatic rain when raining
+	; first check if its overcast conditions
 	farcall GetOvercastIndex
+	and a
+	ret z
+	; don't rain if we aren't actually raining
+	ld a, [wOvercastCurIntensity]
+	assert OVERCAST_INTENSITY_OVERCAST == 0
 	and a
 	ret z
 	lb de, WEATHER_RAIN, RAIN_DANCE

@@ -140,27 +140,40 @@ VBlank0::
 	ldh a, [hWX]
 	ldh [rWX], a
 
-	; There's only time to call one of these in one vblank.
-	; Calls are in order of priority.
+	; At CGB double speed we have ~2280 M-cycles in VBlank
 
+	; 9 [skip] / 51 + 75x(N/2) [fire] M cycles
+	; walk down N = $18, thus 951 M-cycles worst case
 	call UpdateBGMapBuffer
-	jr c, .done
-	call UpdateCGBPals
-	jr c, .done
+
+	call UpdateCGBPals ; 9 [skip] / 594 [fire] M-cycles worst case
+
+	 ; 9 [skip] / ~576 [fire] M-cycles worst case
+	 ; only fires during HDMATransferToWRAMBank3 inside StackCallInSafeGFXMode,
+	 ; which zeroes hBGMapMode and hMapAnims.
 	call DMATransfer
-	jr c, .done
-	call UpdateBGMap
 
-	; These have their own timing checks.
+	; Cheap operations that need consistent execution:
+	call AnimateTileset ; 9 [skip] / 249 [fire AnimateTowerPillarTile] M-cycles worst case
+	call PlaceFootprints ; 11 [empty] / 53 [2 footprints] M-cycles worst case
 
+	; Heavy BG map copy (~909 M-cycles). Gate on LY to avoid
+	; overrunning VBlank when earlier operations consumed time.
+	; At cp 149: skips when ≥1140 M-cycles elapsed (buffer updates).
+	ldh a, [rLY]
+	cp 149
+	call c, UpdateBGMap
+
+	; Ensure we're loading graphics from the correct bank.
+	ldh a, [hROMBankBackup]
+	rst Bankswitch
+
+	; Tile data transfers (have their own LY checks).
 	call Serve2bppRequest
 	call Serve1bppRequest
-	call AnimateTileset
-	call PlaceFootprints
 
-.done
-	call UpdateCGBPalsLYTimed
-	call PushOAM
+	; OAM DMA — must complete within VBlank.
+	call PushOAM ; 9 [skip] / 185 [fire]
 	; vblank-sensitive operations are done
 
 	; inc frame counter
@@ -265,57 +278,8 @@ VBlank4::
 .noDelay2
 	call Joypad
 
-	; A variant of code in vblank1 for running the sound engine with LCD int
-	ldh a, [hROMBankBackup]
-	push af
-	ldh a, [rIE]
-	push af
-	ldh a, [rIF]
-	push af
-	xor a
-	ldh [rIF], a
-	ldh a, [rIE]
-	and IE_STAT
-	ldh [rIE], a
+	jr VBlankUpdateSound
 
-	call VBlankUpdateSound
-
-	; Ensure that we don't miss an interrupt in the tiny window between di+reti
-	ldh a, [rIE]
-	and IE_STAT
-	jr z, .di
-	ldh a, [rLYC]
-	ld b, a
-.busyloop
-	ldh a, [rLY]
-	sub b
-	jr z, .busyloop
-	inc a
-	jr z, .busyloop
-.di
-	di
-
-	; get requested ints
-	ldh a, [rIF]
-	ld b, a
-
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ldh [rIF], a
-
-	; enable ints besides joypad
-	pop af
-	ldh [rIE], a
-
-	; rerequest ints
-	ld a, b
-	ldh [rIF], a
-	pop af
-	ldh [hROMBankBackup], a
-	ret
 
 VBlank1::
 ; scx, scy
@@ -339,37 +303,8 @@ VBlank1::
 .done
 	call PushOAM
 
-	; get requested ints
-	ldh a, [rIE]
-	push af
-	ldh a, [rIF]
-	push af
+	jr VBlankUpdateSound
 
-	xor a
-	ldh [rIF], a
-
-	call VBlankUpdateSound
-	di
-
-	; get requested ints
-	ldh a, [rIF]
-	ld b, a
-
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ldh [rIF], a
-
-	; enable ints besides joypad
-	pop af
-	ldh [rIE], a
-
-	; rerequest ints
-	ld a, b
-	ldh [rIF], a
-	ret
 
 VBlank5::
 ; scx
@@ -388,23 +323,11 @@ VBlank5::
 	call Serve2bppRequest
 
 .done
+	call PushOAM
 	call Joypad
 
-	xor a
-	ldh [rIF], a
-	ldh a, [rIE]
-	push af
+	jmp VBlankUpdateSound
 
-	call VBlankUpdateSound
-	di
-
-	xor a
-	ldh [rIF], a
-
-	; enable usual interrupts
-	pop af
-	ldh [rIE], a
-	ret
 
 VBlank7::
 ; special vblank routine

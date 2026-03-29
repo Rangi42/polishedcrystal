@@ -26,14 +26,14 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
 * SadisticMystic, sinusoidal, TKOWL and Kate Dering for vanilla battle engine testing and documentation.
-* ax6 and NieDzejkob for developing and optimizing lzcomp.
+* ax6 and meithecatte for developing and optimizing lzcomp.
 * Kurausukun and earthoul for translating battle mechanics information from the Japanese Pokémon wiki.
 * vulcandth for implementing weather effects in the overworld, to include rain, lightning, snow, and sandstorm.
 * vulcandth for implementing the dynamic palettes for objects in the overworld.
 * vulcandth for adding compatibility to build the virtual console patches.
 * VermilionCosmos for various bug fixes and improvements (including PC cursor adjustments, the TownMap_InitFlyPossible fix, making Throat Spray work for non-damaging moves, and palette fixes after swapping Pokémon).
 * Emi for the revamped summary screen.
-* Emily Rose Ploszaj for data and macro migrations (Evos/Attacks) and related improvements.
+* Emi for data and macro migrations (Evos/Attacks) and related improvements.
 * rofl0r for DayCare UX improvements and small bugfixes.
 * TAG1Kilo, walkawayy, Penndragyn37, Phoenix (DarkPhoenix911), Super (bmwalshy), The Chosen Lalafell (ddeeringwater), and other recent contributors for smaller fixes and text tweaks.
 
@@ -55,8 +55,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
-* metalflygon08 for the many Pokémon and trainer sprites.
-* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
+* metalflygon08 for many Pokémon and trainer sprites.
+* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, many overworld tiles, Prof. Ivy's overworld sprite, and map name sign borders.
 * bloodless (BloodlessNS) for sprites of Buck, Maylene, Veteran♂, Mismagius (with SoupPotato), Honchkrow, Bonsly, Mime Jr., Munchlax, some variant Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
 * Gmerc for sprites of Alolan Meowth, Persian, and Exeggutor.
@@ -78,15 +78,19 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * mauvesea for sprites and animations including Hisuian Arcanine, Hisuian Growlithe (animation and back sprite), Alolan Raticate (back), Alolan Rattata (back), Alolan Sandshrew (front, back, animation), Paldean Wooper (back), the Pokédex icon and overworld sprite, Crys's fishing sprites and DJ Mary's overworld sprite.
 * ShadowOne333 for Hitmonchan's and Gengar's front sprite and animations, and back sprites of Hitmonchan, Gengar, Suicune, and Alolan Grimer.
 * ShadowOne333 and mauvesea for Annihilape's and Alolan Sandslash's front and back sprites.
+* FrenchOrange for Ruins of Alph tiles and Boarder's overworld sprite.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
 * Nuuk for the sprite and animation of Farigiraf.
 * Dave.K for Bloodmoon Ursaluna sprites and animation.
+* timkun55 for the animated charcoal kiln fire tiles and Cianwood Gym sluice tiles.
 * Cesare_CBass for the Pokegear icon.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
+* Sage Deoxys for Dudunsparce's sprites.
+* Egg3ggEgg for Wyrdeer's sprite.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
@@ -117,6 +121,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShockSlayer for Eusine's losing text.
 * Hello for correcting composers in the music player.
 * Salamandar for Battle Tower sets.
+* Drayano and AphexCubed for many non-Faithful adjusted base stat distributions.
 
 
 ## Special Thanks

@@ -370,10 +370,16 @@ HatchEggs:
 	ld hl, .Text_HatchEgg
 	call PrintText
 
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jr nz, .nonickname
+	bit NICKNAMES_ALWAYS, a
+	jr nz, .skip_nickname_ask
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox
 	jr c, .nonickname
+.skip_nickname_ask
 
 	; de = the relevant entry in wPartyMonNicknames.
 	pop de
@@ -773,7 +779,7 @@ EggHatch_AnimationSequence:
 
 Hatch_LoadFrontpicPal:
 	ld [wPlayerHPPal], a
-	ld c, FALSE
+	ld c, 2
 	ld a, CGB_EVOLUTION
 	jmp GetCGBLayout
 
@@ -797,9 +803,6 @@ EggHatch_CrackShell:
 	ld [hl], $0
 	ld de, SFX_EGG_CRACK
 	jmp PlaySFX
-
-EggHatchGFX:
-INCBIN "gfx/evo/egg_hatch.2bpp"
 
 Hatch_InitShellFragments:
 	call ClearSpriteAnims

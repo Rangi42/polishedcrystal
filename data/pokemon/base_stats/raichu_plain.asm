@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  60,  90,  55, 110,  90,  80 ; 485 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 485,  60,  90,  55,  90,  80, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  60, 100,  55, 121, 100,  80 ; 516 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 515,  60, 100,  55, 100,  80, 120
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db ELECTRIC, ELECTRIC ; type

@@ -263,7 +263,7 @@ endr
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_NEVER_SHINY
-	jr z, .not_shiny
+	jr z, .shiny
 	cp BATTLETYPE_GROTTO
 	jr z, .not_shiny
 
@@ -1131,10 +1131,10 @@ GivePoke::
 	jr nc, .added
 	call .SetUpBoxMon ; d = BOXMON if nc
 	ld a, TEMPMON
-	ld [wMonType], a
 	jmp c, .FailedToGiveMon
 
 .added
+	ld [wMonType], a
 	push de
 	call GetPartyPokemonName
 	ld a, [wTempMonForm]

@@ -105,6 +105,7 @@ AbilityDescriptions:
 	dw HoneyGatherDescription
 	dw FriskDescription
 	dw RecklessDescription
+	dw BadDreamsDescription
 	dw PickpocketDescription
 	dw SheerForceDescription
 	dw ContraryDescription
@@ -143,6 +144,7 @@ AbilityDescriptions:
 	dw SlushRushDescription
 	dw GalvanizeDescription
 	dw CorrosionDescription
+	dw FluffyDescription
 	dw TanglingHairDescription
 	dw ScreenCleanerDescription
 	dw SteelySpiritDescription
@@ -151,6 +153,7 @@ AbilityDescriptions:
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
 	dw QuickDrawDescription
+	dw WindRiderDescription
 	dw CudChewDescription
 	dw SharpnessDescription
 	dw ArmorTailDescription
@@ -671,6 +674,11 @@ RecklessDescription:
 	next "that recoil."
 	done
 
+BadDreamsDescription:
+	text "Reduces a sleeping"
+	next "foe's HP."
+	done
+
 PickpocketDescription:
 	text "Steals foe's item"
 	next "when contacted."
@@ -861,6 +869,11 @@ CorrosionDescription:
 	next "can be poisoned."
 	done
 
+FluffyDescription:
+	text "Resists contact,"
+	next "but weak to Fire."
+	done
+
 TanglingHairDescription:
 	text "Contact may lower"
 	next "the foe's Speed."
@@ -879,6 +892,11 @@ NeutralizingGasDescription:
 QuickDrawDescription:
 	text "Moves first"
 	next "occasionally."
+	done
+
+WindRiderDescription:
+	text "Gives immunity to"
+	next "wind-based moves."
 	done
 
 SteelySpiritDescription:

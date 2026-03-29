@@ -283,6 +283,7 @@ PikachuSparkAnimation:  INCLUDE "gfx/pokemon/pikachu_spark/anim.asm"
 
 ArbokJohtoAnimation:  INCLUDE "gfx/pokemon/arbok_johto/anim.asm"
 ArbokKantoAnimation:  INCLUDE "gfx/pokemon/arbok_kanto/anim.asm"
+ArbokOrangeAnimation: INCLUDE "gfx/pokemon/arbok_orange/anim.asm"
 ArbokKogaAnimation:   INCLUDE "gfx/pokemon/arbok_koga/anim.asm"
 ArbokAgathaAnimation: INCLUDE "gfx/pokemon/arbok_agatha/anim.asm"
 ArbokArianaAnimation: INCLUDE "gfx/pokemon/arbok_ariana/anim.asm"

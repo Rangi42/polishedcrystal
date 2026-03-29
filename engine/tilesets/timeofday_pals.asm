@@ -32,6 +32,10 @@ _TimeOfDayPals::
 	cp [hl]
 	jr z, .dontchange
 
+	push af
+	farcall SavePrevPalStates
+	pop af
+
 ; update palette id
 	ld [wTimeOfDayPal], a
 

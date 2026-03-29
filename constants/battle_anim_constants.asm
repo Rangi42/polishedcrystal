@@ -1238,13 +1238,14 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BTLCUSTOM_OUTRAGE          ; 2e
 	const PAL_BTLCUSTOM_ABSORB           ; 2f
 	const PAL_BTLCUSTOM_SHADOW_BALL      ; 30
-	const PAL_BTLCUSTOM_ATTACK           ; 31
-	const PAL_BTLCUSTOM_DEFENSE          ; 32
-	const PAL_BTLCUSTOM_SP_ATTACK        ; 33
-	const PAL_BTLCUSTOM_SP_DEFENSE       ; 34
-	const PAL_BTLCUSTOM_SPEED            ; 35
-	const PAL_BTLCUSTOM_ACCURACY         ; 36
-	const PAL_BTLCUSTOM_EVASION          ; 37
+	const PAL_BTLCUSTOM_ZAP_CANNON       ; 31
+	const PAL_BTLCUSTOM_ATTACK           ; 32
+	const PAL_BTLCUSTOM_DEFENSE          ; 33
+	const PAL_BTLCUSTOM_SP_ATTACK        ; 34
+	const PAL_BTLCUSTOM_SP_DEFENSE       ; 35
+	const PAL_BTLCUSTOM_SPEED            ; 36
+	const PAL_BTLCUSTOM_ACCURACY         ; 37
+	const PAL_BTLCUSTOM_EVASION          ; 38
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1

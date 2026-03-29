@@ -86,7 +86,7 @@ ENDM
 	map_attributes Route32, ROUTE_32, $5, NORTH | SOUTH | WEST | EAST
 	connection north, VioletCity, VIOLET_CITY, 0
 	connection south, Route33, ROUTE_33, 0
-	connection west, MagnetTunnelEast, MAGNET_TUNNEL_EAST, 9
+	connection west, MagnetTunnelEast, MAGNET_TUNNEL_EAST, 10
 	connection east, CherrygroveBay, CHERRYGROVE_BAY, 12
 
 	map_attributes Route33, ROUTE_33, $5, NORTH | WEST
@@ -222,7 +222,7 @@ ENDM
 	connection east, FuchsiaCity, FUCHSIA_CITY, -7
 
 	map_attributes Route18West, ROUTE_18_WEST, $43, NORTH | WEST | EAST
-	connection north, Route17, ROUTE_17, 0
+	connection north, Route17South, ROUTE_17_SOUTH, 0
 	connection west, UragaChannelEast, URAGA_CHANNEL_EAST, 0
 	connection east, Route18East, ROUTE_18_EAST, 0
 
@@ -234,27 +234,25 @@ ENDM
 	connection west, Route21, ROUTE_21, -19
 	connection east, UragaChannelEast, URAGA_CHANNEL_EAST, 0
 
-	map_attributes Route17, ROUTE_17, $43, NORTH | SOUTH
-	connection north, Route16South, ROUTE_16_SOUTH, -3
+	map_attributes Route17South, ROUTE_17_SOUTH, $43, NORTH | SOUTH
+	connection north, Route17North, ROUTE_17_NORTH, -3
 	connection south, Route18West, ROUTE_18_WEST, 0
 
-	map_attributes Route16South, ROUTE_16_SOUTH, $f, SOUTH
-	connection south, Route17, ROUTE_17, 3
+	map_attributes Route17North, ROUTE_17_NORTH, $f, SOUTH
+	connection south, Route17South, ROUTE_17_SOUTH, 3
 
-	map_attributes Route16Northeast, ROUTE_16_NORTHEAST, $f, WEST | EAST
-	connection west, Route16West, ROUTE_16_WEST, -1
-	connection east, CeladonCity, CELADON_CITY, -10
+	map_attributes Route16East, ROUTE_16_EAST, $f, EAST
+	connection east, CeladonCity, CELADON_CITY, -9
 
-	map_attributes Route16Northwest, ROUTE_16_NORTHWEST, $f, WEST | EAST
-	connection west, Route16West, ROUTE_16_WEST, -1
-	connection east, CeladonCity, CELADON_CITY, -10
+	map_attributes Route16North, ROUTE_16_NORTH, $f, WEST
+	connection west, Route16West, ROUTE_16_WEST, 0
 
 	map_attributes Route16West, ROUTE_16_WEST, $f, WEST | EAST
 	connection west, Route2South, ROUTE_2_SOUTH, -7
-	connection east, Route16Northwest, ROUTE_16_NORTHWEST, 1
+	connection east, Route16North, ROUTE_16_NORTH, 0
 
 	map_attributes CeladonCity, CELADON_CITY, $f, WEST | EAST
-	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10
+	connection west, Route16East, ROUTE_16_EAST, 9
 	connection east, Route7, ROUTE_7, 5
 
 	map_attributes Route7, ROUTE_7, $f, WEST | EAST
@@ -376,25 +374,37 @@ ENDM
 	connection north, Route42, ROUTE_42, -5
 	connection south, VioletCity, VIOLET_CITY, 0
 
-	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, SOUTH
-	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2
+	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, NORTH | EAST
+	; The fake connection is because the north gatehouse door needs to exist in RuinsOfAlphOutside,
+	; not in the connected Route36 map.
+	; Note that Route36 and Route32 have no transitive connections to RuinsOfAlphOutside!
+	DEF GROUP_FAKE_ROUTE_36  EQU GROUP_ROUTE_36
+	DEF MAP_FAKE_ROUTE_36    EQU MAP_ROUTE_36
+	DEF FAKE_ROUTE_36_WIDTH  EQU ROUTE_36_WIDTH
+	DEF FAKE_ROUTE_36_HEIGHT EQU ROUTE_36_HEIGHT - 1
+	connection north, FakeRoute36, FAKE_ROUTE_36, -20
+	PURGE GROUP_FAKE_ROUTE_36, MAP_FAKE_ROUTE_36, FAKE_ROUTE_36_WIDTH, FAKE_ROUTE_36_HEIGHT
+	connection east, Route32, ROUTE_32, 10
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 	connection west, Route41, ROUTE_41, -3
 
-	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST
-	connection north, RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, 2
-	connection east, Route32, ROUTE_32, -9
+	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, EAST
+	connection east, Route32, ROUTE_32, -10
 
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0
 
-	map_attributes Route23, ROUTE_23, $2c, NORTH
+	map_attributes Route23North, ROUTE_23_NORTH, $2c, NORTH | SOUTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
+	connection south, Route23South, ROUTE_23_SOUTH, 0
+
+	map_attributes Route23South, ROUTE_23_SOUTH, $2c, NORTH
+	connection north, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
-	connection south, Route23, ROUTE_23, 0
+	connection south, Route23North, ROUTE_23_NORTH, 0
 
 	map_attributes ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
 	connection north, RockyBeach, ROCKY_BEACH, 0
@@ -423,6 +433,10 @@ ENDM
 
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
+
+	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9, NORTH | SOUTH
+	connection north, NavelRockInside, NAVEL_ROCK_INSIDE, 11
+	connection south, NavelRockInside, NAVEL_ROCK_INSIDE, -11
 
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -483,10 +497,11 @@ ENDM
 	map_attributes IlexForest, ILEX_FOREST, $35, 0
 	map_attributes MurkySwamp, MURKY_SWAMP, $35, 0
 	map_attributes MagnetTunnelInside, MAGNET_TUNNEL_INSIDE, $9, 0
-	map_attributes WarehouseEntrance, WAREHOUSE_ENTRANCE, $0, 0
-	map_attributes UndergroundPathSwitchRoomEntrances, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, $0, 0
+	map_attributes GoldenrodUnderground, GOLDENROD_UNDERGROUND, $0, 0
+	map_attributes GoldenrodUndergroundSwitchRoom, GOLDENROD_UNDERGROUND_SWITCH_ROOM, $0, 0
+	map_attributes GoldenrodUndergroundEntrances, GOLDENROD_UNDERGROUND_ENTRANCES, $0, 0
 	map_attributes GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $0, 0
-	map_attributes UndergroundWarehouse, UNDERGROUND_WAREHOUSE, $0, 0
+	map_attributes GoldenrodUndergroundWarehouse, GOLDENROD_UNDERGROUND_WAREHOUSE, $0, 0
 	map_attributes MountMortar1FOutside, MOUNT_MORTAR_1F_OUTSIDE, $9, 0
 	map_attributes MountMortar1FInside, MOUNT_MORTAR_1F_INSIDE, $9, 0
 	map_attributes MountMortar2FInside, MOUNT_MORTAR_2F_INSIDE, $9, 0
@@ -506,7 +521,7 @@ ENDM
 	map_attributes WhirlIslandLugiaChamber, WHIRL_ISLAND_LUGIA_CHAMBER, $f, 0
 	map_attributes SilverCaveRoom1, SILVER_CAVE_ROOM_1, $9, 0
 	map_attributes SilverCaveRoom2, SILVER_CAVE_ROOM_2, $9, 0
-	map_attributes SilverCaveRoom3, SILVER_CAVE_ROOM_3, $0, 0
+	map_attributes SilverCaveRoom3, SILVER_CAVE_ROOM_3, $7b, 0
 	map_attributes SilverCaveItemRooms, SILVER_CAVE_ITEM_ROOMS, $9, 0
 	map_attributes DarkCaveVioletEntrance, DARK_CAVE_VIOLET_ENTRANCE, $9, 0
 	map_attributes DarkCaveBlackthornEntrance, DARK_CAVE_BLACKTHORN_ENTRANCE, $9, 0
@@ -533,7 +548,7 @@ ENDM
 	map_attributes MountMoon1F, MOUNT_MOON_1F, $9, 0
 	map_attributes MountMoonB1F, MOUNT_MOON_B1F, $9, 0
 	map_attributes MountMoonB2F, MOUNT_MOON_B2F, $9, 0
-	map_attributes Underground, UNDERGROUND, $0, 0
+	map_attributes UndergroundPath, UNDERGROUND_PATH, $0, 0
 	map_attributes RockTunnel1F, ROCK_TUNNEL_1F, $9, 0
 	map_attributes RockTunnelB1F, ROCK_TUNNEL_B1F, $9, 0
 	map_attributes RockTunnel2F, ROCK_TUNNEL_2F, $9, 0
@@ -591,7 +606,7 @@ ENDM
 	map_attributes LakeOfRageMagikarpHouse, LAKE_OF_RAGE_MAGIKARP_HOUSE, $0, 0
 	map_attributes Route43MahoganyGate, ROUTE_43_MAHOGANY_GATE, $0, 0
 	map_attributes Route43Gate, ROUTE_43_GATE, $0, 0
-	map_attributes SinjohRuins, SINJOH_RUINS, $d5, 0
+	map_attributes SinjohRuins, SINJOH_RUINS, $8c, 0
 	map_attributes SinjohRuinsHouse, SINJOH_RUINS_HOUSE, $0, 0
 	map_attributes MystriStage, MYSTRI_STAGE, $0, 0
 	map_attributes EmbeddedTower, EMBEDDED_TOWER, $0, 0
@@ -646,7 +661,7 @@ ENDM
 	map_attributes VermilionHouseDiglettsCaveSpeechHouse, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE, $0, 0
 	map_attributes VermilionGym, VERMILION_GYM, $0, 0
 	map_attributes Route6SaffronGate, ROUTE_6_SAFFRON_GATE, $0, 0
-	map_attributes Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
+	map_attributes Route6UndergroundPathEntrance, ROUTE_6_UNDERGROUND_PATH_ENTRANCE, $0, 0
 	map_attributes Route11Gate, ROUTE_11_GATE, $0, 0
 	map_attributes Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
 	map_attributes VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
@@ -717,8 +732,8 @@ ENDM
 	map_attributes PokeCenter2F, POKECENTER_2F, $0, 0
 	map_attributes TradeCenter, TRADE_CENTER, $0, 0
 	map_attributes Colosseum, COLOSSEUM, $0, 0
-	map_attributes HiddenTreeGrotto, HIDDEN_TREE_GROTTO, $35, 0
-	map_attributes HiddenCaveGrotto, HIDDEN_CAVE_GROTTO, $9, 0
+	map_attributes HiddenTreeGrotto, HIDDEN_TREE_GROTTO, $0, 0
+	map_attributes HiddenCaveGrotto, HIDDEN_CAVE_GROTTO, $1, 0
 	map_attributes CeladonDeptStore1F, CELADON_DEPT_STORE_1F, $0, 0
 	map_attributes CeladonDeptStore2F, CELADON_DEPT_STORE_2F, $0, 0
 	map_attributes CeladonDeptStore3F, CELADON_DEPT_STORE_3F, $0, 0
@@ -827,7 +842,7 @@ ENDM
 	map_attributes SilphCo3F, SILPH_CO_3F, $0, 0
 	map_attributes CopycatsHouse1F, COPYCATS_HOUSE_1F, $0, 0
 	map_attributes CopycatsHouse2F, COPYCATS_HOUSE_2F, $0, 0
-	map_attributes Route5UndergroundEntrance, ROUTE_5_UNDERGROUND_ENTRANCE, $0, 0
+	map_attributes Route5UndergroundPathEntrance, ROUTE_5_UNDERGROUND_PATH_ENTRANCE, $0, 0
 	map_attributes Route5SaffronCityGate, ROUTE_5_SAFFRON_CITY_GATE, $0, 0
 	map_attributes Route5CleanseTagSpeechHouse, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE, $0, 0
 	map_attributes PokemonTrainerFanClub, POKEMON_TRAINER_FAN_CLUB, $0, 0
@@ -843,7 +858,7 @@ ENDM
 	map_attributes Route30BerrySpeechHouse, ROUTE_30_BERRY_SPEECH_HOUSE, $0, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $0, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $0, 0
-	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $5, 0
+	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $0, 0
 	map_attributes PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_attributes PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
 	map_attributes ViridianForest, VIRIDIAN_FOREST, $45, 0
@@ -882,8 +897,7 @@ ENDM
 	map_attributes SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
 	map_attributes SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
 	map_attributes NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35, 0
-	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
-	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0
+	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $51, 0
 	map_attributes FarawayIsland, FARAWAY_ISLAND, $6, 0
 	map_attributes FarawayJungle, FARAWAY_JUNGLE, $17, 0
 	map_attributes SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0, 0

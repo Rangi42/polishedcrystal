@@ -695,9 +695,12 @@ endr
 	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
 	dw .MovementTinyWindows          ; SPRITEMOVEFN_TINY_WINDOWS
 	dw .MovementMicrophone           ; SPRITEMOVEFN_MICROPHONE
-	dw .MovementFollowerObj          ; 1c
-	dw .MovementPokeballOpening      ; 1d
-	dw .MovementPokeballClosing      ; 1e
+	dw .MovementBigHoOh              ; SPRITEMOVEFN_BIG_HO_OH
+	dw .MovementBigLugia             ; SPRITEMOVEFN_BIG_LUGIA
+	dw .MovementAdminMeowth          ; SPRITEMOVEFN_ADMIN_MEOWTH
+	dw .MovementFollowerObj          ; SPRITEMOVEFN_FOLLOWER_OBJ
+	dw .MovementPokeballOpening      ; SPRITEMOVEFN_POKEBALL_OPENING
+	dw .MovementPokeballClosing      ; SPRITEMOVEFN_POKEBALL_CLOSING
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -1071,6 +1074,18 @@ endr
 
 .MovementMicrophone:
 	ld a, OBJECT_ACTION_MICROPHONE
+	jr ._ActionA_StepFunction_Standing
+
+.MovementBigHoOh:
+	ld a, OBJECT_ACTION_BIG_HO_OH
+	jr ._ActionA_StepFunction_Standing
+
+.MovementBigLugia:
+	ld a, OBJECT_ACTION_BIG_LUGIA
+	jr ._ActionA_StepFunction_Standing
+
+.MovementAdminMeowth:
+	ld a, OBJECT_ACTION_ADMIN_MEOWTH
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:

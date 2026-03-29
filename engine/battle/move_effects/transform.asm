@@ -22,7 +22,7 @@ BattleCommand_transform:
 	jmp z, BattleEffect_ButItFailed
 .not_armored_mewtwo
 
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp INFILTRATOR
 	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
@@ -137,10 +137,6 @@ BattleCommand_transform:
 	call BattleSideCopy
 	call _CheckBattleEffects
 	jr c, .mimic_anims
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVar
-	bit SUBSTATUS_MINIMIZED, a
-	jr nz, .mimic_anims
 	; Animation is done "raw" to allow Imposter
 	; to use the correct animation
 	ld de, TRANSFORM

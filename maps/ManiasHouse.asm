@@ -54,7 +54,12 @@ ManiaScript:
 	jumpopenedtext ManiaText_TakeCareOfShuckie
 
 .refusetotakeshuckie
-	jumpopenedtext ManiaText_IfHeComesBack
+	jumpthisopenedtext
+
+	text "Oh, no… What'll"
+	line "I do if he comes"
+	cont "back?"
+	done
 
 .returnshuckie
 	writetext ManiaText_CanIHaveMyMonBack
@@ -72,7 +77,12 @@ ManiaScript:
 	end
 
 .wrong
-	jumpopenedtext ManiaText_ShuckieNotThere
+	jumpthisopenedtext
+
+	text "Hey, you don't"
+	line "have my #mon"
+	cont "with you."
+	done
 
 .superhappy
 	writetext ManiaText_ShuckieLikesYou
@@ -82,13 +92,32 @@ ManiaScript:
 	end
 
 .refused
-	jumpopenedtext ManiaText_SameAsBeingRobbed
+	jumpthisopenedtext
+
+	text "Oh, no, no… That's"
+	line "the same as being"
+	cont "robbed."
+	done
 
 .nothingleft
-	jumpopenedtext ManiaText_ShuckieIsYourLastMon
+	jumpthisopenedtext
+
+	text "If I take my #-"
+	line "mon back, what are"
+
+	para "you going to use"
+	line "in battle?"
+	done
 
 .default_postevent
-	jumpopenedtext ManiaText_HappinessSpeech
+	jumpthisopenedtext
+
+	text "For #mon, hap-"
+	line "piness is being"
+
+	para "with a person who"
+	line "treats them well."
+	done
 
 ShuckieName:
 	rawchar "Shuckie@"
@@ -144,11 +173,6 @@ ManiaText_PartyAndBoxFull:
 	line "and Box are full."
 	done
 
-ManiaText_IfHeComesBack:
-	text "Oh, no… What'll"
-	line "I do if he comes"
-	cont "back?"
-	done
 
 ManiaText_CanIHaveMyMonBack:
 	text "Hi! How's my #-"
@@ -163,11 +187,6 @@ ManiaText_ThankYou:
 	text "Thank you!"
 	done
 
-ManiaText_ShuckieNotThere:
-	text "Hey, you don't"
-	line "have my #mon"
-	cont "with you."
-	done
 
 ManiaText_ShuckieLikesYou:
 	text "My #mon has"
@@ -180,24 +199,5 @@ ManiaText_ShuckieLikesYou:
 	line "be good to it!"
 	done
 
-ManiaText_SameAsBeingRobbed:
-	text "Oh, no, no… That's"
-	line "the same as being"
-	cont "robbed."
-	done
 
-ManiaText_HappinessSpeech:
-	text "For #mon, hap-"
-	line "piness is being"
 
-	para "with a person who"
-	line "treats them well."
-	done
-
-ManiaText_ShuckieIsYourLastMon:
-	text "If I take my #-"
-	line "mon back, what are"
-
-	para "you going to use"
-	line "in battle?"
-	done

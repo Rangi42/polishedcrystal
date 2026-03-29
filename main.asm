@@ -5,7 +5,6 @@ INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"
 INCLUDE "engine/overworld/init_map.asm"
-INCLUDE "engine/menus/init_options.asm"
 INCLUDE "engine/pokemon/learn.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
@@ -14,36 +13,20 @@ INCLUDE "engine/overworld/npc_movement.asm"
 SECTION "event happiness egg", ROMX
 
 INCLUDE "engine/events/happiness_egg.asm"
-
-
-SECTION "event shiny ditto", ROMX
-
-INCLUDE "engine/events/shiny_ditto.asm"
-
-
-SECTION "event shuckle", ROMX
-
-INCLUDE "engine/events/shuckle.asm"
-
-
-SECTION "event bills grandfather", ROMX
-
 INCLUDE "engine/events/bills_grandfather.asm"
 
 
 SECTION "event hidden power guru", ROMX
 
 INCLUDE "engine/events/hidden_power_guru.asm"
-
-
-SECTION "event mint tea", ROMX
-
-INCLUDE "engine/events/mint_tea.asm"
-
-
-SECTION "event haircut etc", ROMX
-
 INCLUDE "engine/events/haircut_etc.asm"
+
+
+SECTION "Special Events", ROMX
+
+INCLUDE "engine/events/shiny_ditto.asm"
+INCLUDE "engine/events/shuckle.asm"
+INCLUDE "engine/events/mint_tea.asm"
 
 
 SECTION "bank2", ROMX
@@ -320,8 +303,9 @@ INCLUDE "engine/pokemon/types.asm"
 INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
-INCLUDE "engine/gfx/load_pics.asm"
 INCLUDE "engine/pokemon/natures.asm"
+INCLUDE "engine/gfx/load_pics.asm"
+INCLUDE "engine/gfx/load_font.asm"
 
 
 SECTION "Base Data", ROMX
@@ -552,14 +536,15 @@ INCLUDE "engine/gfx/fade.asm"
 
 SECTION "bank39", ROMX
 
-INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/splash.asm"
 INCLUDE "engine/movie/intro.asm"
 
 
-SECTION "Typefaces", ROMX
+SECTION "Options Menus", ROMX
 
-INCLUDE "engine/gfx/load_font.asm"
+INCLUDE "engine/menus/options_menu_shared.asm"
+INCLUDE "engine/menus/initial_options_menu.asm"
+INCLUDE "engine/menus/options_menu.asm"
 
 
 SECTION "bank3E", ROMX

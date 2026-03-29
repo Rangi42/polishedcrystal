@@ -275,15 +275,19 @@ RunScriptCommand:
 	dw Script_givebadge                  ; d8
 	dw Script_setquantity                ; d9
 	dw Script_pluralize                  ; da
-	dw Script_freezefollower             ; db
-	dw Script_unfreezefollower           ; dc
-	dw Script_getfollowerdirection       ; dd
-	dw Script_followcry                  ; de
-	dw Script_stowfollower               ; df
-	dw Script_appearfollower             ; e0
-	dw Script_appearfolloweronestep      ; e1
-	dw Script_savefollowercoords         ; e2
-	dw Script_silentstowfollower         ; e3
+	dw Script_loadtrainerwithpal         ; db
+	dw Script_nooryes                    ; dc
+	dw Script_digmod                     ; dd
+	dw Script_toggleevent                ; de
+	dw Script_freezefollower             ; df
+	dw Script_unfreezefollower           ; e0
+	dw Script_getfollowerdirection       ; e1
+	dw Script_followcry                  ; e2
+	dw Script_stowfollower               ; e3
+	dw Script_appearfollower             ; e4
+	dw Script_appearfolloweronestep      ; e5
+	dw Script_savefollowercoords         ; e6
+	dw Script_silentstowfollower         ; e7
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -505,8 +509,13 @@ Script_promptbutton:
 	ldh [hOAMUpdate], a
 	ret
 
+Script_nooryes:
+	call NoYesBox
+	jr _FinishYesNoScript
+
 Script_yesorno:
 	call YesNoBox
+_FinishYesNoScript:
 	; a = carry (no) ? FALSE : TRUE
 	sbc a
 	inc a
@@ -597,6 +606,7 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
+	writemem hScriptVar + 1
 	readmem wItemQuantityChangeBuffer
 	ifequalfwd 1, .OneItem
 	pluralize wStringBuffer4
@@ -607,6 +617,7 @@ GiveItemScript:
 	; fallthrough
 .FinishGiveItem:
 	special ShowItemIcon
+	readmem hScriptVar + 1
 	iffalsefwd .Full
 	specialsound
 	waitbutton
@@ -680,22 +691,16 @@ GetPocketName:
 INCLUDE "data/items/pocket_names.asm"
 
 GetKeyItemPocketName:
-	ld hl, KeyPocketName
+	ld hl, ItemPocketNames.Key
 	jr CopySpecialPocketName
 
-KeyPocketName:
-	db "Key Pocket@"
-
 GetTMHMPocketName:
-	ld hl, TMHMPocketName
+	ld hl, ItemPocketNames.TM
 CopySpecialPocketName:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer3
 	jmp CopyName2
-
-TMHMPocketName:
-	db "TM Pocket@"
 
 Script_pokemart:
 	call Script_faceplayer
@@ -1232,6 +1237,19 @@ Script_loadtrainer:
 	ld [wOtherTrainerClass], a
 	call GetScriptByte
 	ld [wOtherTrainerID], a
+	xor a
+	ld [wTrainerPal], a
+	ret
+
+Script_loadtrainerwithpal:
+	ld a, (1 << 7) | 1
+	ld [wBattleScriptFlags], a
+	call GetScriptByte
+	ld [wOtherTrainerClass], a
+	call GetScriptByte
+	ld [wOtherTrainerID], a
+	call GetScriptByte
+	ld [wTrainerPal], a
 	ret
 
 Script_startbattle:
@@ -2133,6 +2151,25 @@ Script_checkevent:
 	ldh [hScriptVar], a
 	ret
 
+Script_toggleevent:
+	call GetScriptWordDE
+	ld b, CHECK_FLAG
+	push de
+	call EventFlagAction
+	pop de
+	jr z, .false
+	ld b, RESET_FLAG
+	call EventFlagAction
+	xor a
+	jr .done
+.false
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld a, TRUE
+.done
+	ldh [hScriptVar], a
+	ret
+
 Script_setflag:
 	call GetScriptWordDE
 	ld b, SET_FLAG
@@ -2215,6 +2252,15 @@ Script_warpmod:
 	ld [wBackupMapGroup], a
 	call GetScriptByte
 	ld [wBackupMapNumber], a
+	ret
+
+Script_digmod:
+	call GetScriptByte
+	ld [wDigWarpNumber], a
+	call GetScriptByte
+	ld [wDigMapGroup], a
+	call GetScriptByte
+	ld [wDigMapNumber], a
 	ret
 
 Script_blackoutmod:

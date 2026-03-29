@@ -12,7 +12,7 @@ DimCave2F_MapScriptHeader:
 	warp_event 30,  2, DIM_CAVE_1F, 1
 	warp_event  5, 17, DIM_CAVE_1F, 2
 	warp_event 28, 18, DIM_CAVE_1F, 3
-	warp_event 26, 32, DIM_CAVE_1F, 4
+	warp_event  2, 28, DIM_CAVE_1F, 4
 
 	def_coord_events
 
@@ -27,7 +27,7 @@ DimCave2F_MapScriptHeader:
 	itemball_event 28, 12, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
 	itemball_event  2, 15, IRON, 1, EVENT_DIM_CAVE_2F_IRON
 	itemball_event 24, 18, LIGHT_CLAY, 1, EVENT_DIM_CAVE_2F_LIGHT_CLAY
-	tmhmball_event 31, 33, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
+	tmhmball_event  7, 29, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
 
 DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F

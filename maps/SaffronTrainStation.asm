@@ -1,5 +1,6 @@
 SaffronTrainStation_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_SAFFRONTRAINSTATION_ARRIVE_FROM_GOLDENROD
 
 	def_callbacks
 
@@ -10,7 +11,7 @@ SaffronTrainStation_MapScriptHeader:
 	warp_event 11,  5, GOLDENROD_MAGNET_TRAIN_STATION, 3
 
 	def_coord_events
-	coord_event 11,  6, 0, Script_ArriveFromGoldenrod
+	coord_event 11,  6, SCENE_SAFFRONTRAINSTATION_ARRIVE_FROM_GOLDENROD, Script_ArriveFromGoldenrod
 
 	def_bg_events
 
@@ -43,7 +44,7 @@ SaffronMagnetTrainStationOfficerScript:
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
 	applyonemovement PLAYER, turn_head_down
-	wait 36
+	wait 2
 	end
 
 Script_ArriveFromGoldenrod:
@@ -57,7 +58,22 @@ Script_ArriveFromGoldenrod:
 SaffronMagnetTrainStationGymGuideScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart
-	jumptextfaceplayer SaffronMagnetTrainStationGymGuideText
+	jumpthistextfaceplayer
+
+	text "The Magnet Train"
+	line "is a super modern"
+
+	para "rail liner that"
+	line "uses electricity"
+
+	para "and magnets to"
+	line "attain incredible"
+	cont "speed."
+
+	para "However, if there"
+	line "isn't any elec-"
+	cont "tricity…"
+	done
 
 SaffronMagnetTrainStationOfficerApproachTrainDoorMovement:
 	step_up
@@ -133,21 +149,6 @@ SaffronMagnetTrainStationOfficerArrivedInSaffronText:
 	line "again."
 	done
 
-SaffronMagnetTrainStationGymGuideText:
-	text "The Magnet Train"
-	line "is a super modern"
-
-	para "rail liner that"
-	line "uses electricity"
-
-	para "and magnets to"
-	line "attain incredible"
-	cont "speed."
-
-	para "However, if there"
-	line "isn't any elec-"
-	cont "tricity…"
-	done
 
 SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart:
 	text "Whew…"

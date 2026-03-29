@@ -1,6 +1,7 @@
 LancesRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script LancesRoomEntranceTrigger
+	scene_script LancesRoomLockDoorScene, SCENE_LANCESROOM_LOCK_DOOR
+	scene_const SCENE_LANCESROOM_APPROACH_LANCE
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, LancesRoomDoorCallback
@@ -12,8 +13,8 @@ LancesRoom_MapScriptHeader:
 	warp_event  7,  1, HALL_OF_FAME, 2
 
 	def_coord_events
-	coord_event  6,  5, 1, ApproachLanceFromLeftTrigger
-	coord_event  7,  5, 1, ApproachLanceFromRightTrigger
+	coord_event  6,  5, SCENE_LANCESROOM_APPROACH_LANCE, ApproachLanceFromLeftTrigger
+	coord_event  7,  5, SCENE_LANCESROOM_APPROACH_LANCE, ApproachLanceFromRightTrigger
 
 	def_bg_events
 
@@ -27,7 +28,7 @@ LancesRoom_MapScriptHeader:
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK
 
-LancesRoomEntranceTrigger:
+LancesRoomLockDoorScene:
 	sdefer .Script
 	end
 
@@ -36,10 +37,10 @@ LancesRoomEntranceTrigger:
 	reanchormap
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock 6, 22, $34
+	changeblock 6, 22, $26
 	refreshmap
 	closetext
-	setscene $1
+	setscene SCENE_LANCESROOM_APPROACH_LANCE
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	end
 
@@ -53,11 +54,11 @@ WalkIntoEliteFourRoomMovement:
 LancesRoomDoorCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	iffalsefwd .LanceEntranceOpen
-	changeblock 6, 22, $34
+	changeblock 6, 22, $26
 .LanceEntranceOpen:
 	checkevent EVENT_LANCES_ROOM_EXIT_OPEN
 	iffalsefwd .LanceExitClosed
-	changeblock 6, 0, $b
+	changeblock 6, 0, $13
 .LanceExitClosed:
 	endcallback
 
@@ -95,7 +96,7 @@ LanceScript:
 .EndBattle:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	playsound SFX_ENTER_DOOR
-	changeblock 6, 0, $b
+	changeblock 6, 0, $13
 	refreshmap
 	closetext
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED

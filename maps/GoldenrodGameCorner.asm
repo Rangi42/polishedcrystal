@@ -87,15 +87,31 @@ GoldenrodGameCornerTutorPayDayScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_GoldenrodGameCornerTutorRefused
+	jumpthisopenedtext
+
+	text "Never mind then."
+	done
 
 .NoSilverLeaf
 	waitbutton
-	jumpopenedtext Text_GoldenrodGameCornerTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf?"
+	cont "Never mind then."
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_GoldenrodGameCornerTutorTaught
+	jumpthisopenedtext
+
+	text "Pay Day nets you"
+	line "more money after a"
+	cont "battle."
+
+	para "Keep using it and"
+	line "you'll be rich!"
+	done
 
 GoldenrodGameCornerTMVendorScript:
 	faceplayer
@@ -169,7 +185,11 @@ GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript:
 	sjump GoldenrodGameCornerTMVendor_LoopScript
 
 GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
-	jumpopenedtext GoldenrodGameCornerPrizeVendorNeedMoreCoinsText
+	jumpthisopenedtext
+
+	text "Sorry! You need"
+	line "more coins."
+	done
 
 GoldenrodGameCornerTMVendorMenuData:
 	db MENU_BACKUP_TILES
@@ -294,7 +314,13 @@ GoldenrodGameCornerGentlemanScript:
 	end
 
 GoldenrodGameCornerLeftTheirDrinkScript:
-	jumptext GoldenrodGameCornerLeftTheirDrinkText
+	jumpthistext
+
+	text "Someone left their"
+	line "drink."
+
+	para "It smells sweet."
+	done
 
 GoldenrodGameCornerSlotsMachineScript:
 	random 6
@@ -343,10 +369,6 @@ GoldenrodGameCornerPrizeVendorAlreadyHaveTMText:
 	line "have that TM!"
 	done
 
-GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
-	text "Sorry! You need"
-	line "more coins."
-	done
 
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	text "Oh, no. You can't"
@@ -385,24 +407,8 @@ Text_GoldenrodGameCornerTutorPayDayQuestion:
 	line "your #mon."
 	done
 
-Text_GoldenrodGameCornerTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf?"
-	cont "Never mind then."
-	done
 
-Text_GoldenrodGameCornerTutorRefused:
-	text "Never mind then."
-	done
 
-Text_GoldenrodGameCornerTutorTaught:
-	text "Pay Day nets you"
-	line "more money after a"
-	cont "battle."
-
-	para "Keep using it and"
-	line "you'll be rich!"
-	done
 
 GoldenrodGameCornerPharmacistText:
 	text "I always play this"
@@ -475,9 +481,3 @@ GoldenrodGameCornerPokefanM3Text:
 	line "keep rolling in!"
 	done
 
-GoldenrodGameCornerLeftTheirDrinkText:
-	text "Someone left their"
-	line "drink."
-
-	para "It smells sweet."
-	done

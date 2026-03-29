@@ -1,5 +1,7 @@
 EcruteakHouse_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS
+	scene_const SCENE_ECRUTEAKHOUSE_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
@@ -12,8 +14,8 @@ EcruteakHouse_MapScriptHeader:
 	warp_event 17,  3, WISE_TRIOS_ROOM, 3
 
 	def_coord_events
-	coord_event  4,  7, 0, EcruteakHouse_XYTrigger1
-	coord_event  5,  7, 0, EcruteakHouse_XYTrigger2
+	coord_event  4,  7, SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS, EcruteakHouse_XYTrigger1
+	coord_event  5,  7, SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS, EcruteakHouse_XYTrigger2
 
 	def_bg_events
 
@@ -42,7 +44,7 @@ EcruteakHouseInitializeSages:
 	setevent EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 	checkkeyitem CLEAR_BELL
 	iftruefwd .NoClearBell
-	setscene $0
+	setscene SCENE_ECRUTEAKHOUSE_SAGE_BLOCKS
 .NoClearBell:
 	endcallback
 
@@ -57,6 +59,7 @@ EcruteakHouse_XYTrigger1:
 	moveobject ECRUTEAKHOUSE_SAGE1, 4, 6
 	appear ECRUTEAKHOUSE_SAGE1
 	pause 5
+	callasm UpdateSprites
 	disappear ECRUTEAKHOUSE_SAGE2
 	end
 
@@ -67,6 +70,7 @@ EcruteakHouse_XYTrigger2:
 	moveobject ECRUTEAKHOUSE_SAGE2, 5, 6
 	appear ECRUTEAKHOUSE_SAGE2
 	pause 5
+	callasm UpdateSprites
 	disappear ECRUTEAKHOUSE_SAGE1
 	end
 
@@ -80,47 +84,8 @@ EcruteakTinTowerEntranceSageScript:
 	iftruefwd .CheckForClearBell
 	checkflag ENGINE_FOGBADGE
 	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_GotFogBadge
-	jumpopenedtext EcruteakTinTowerEntranceSageText
+	jumpthisopenedtext
 
-.CheckForClearBell:
-	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_PleaseDoGoOn
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_HeardClearBell
-	checkkeyitem CLEAR_BELL
-	iftruefwd .RingClearBell
-	jumpopenedtext EcruteakTinTowerEntranceSageText_NoClearBell
-
-.RingClearBell:
-	writetext EcruteakTinTowerEntranceSageText_HearsClearBell
-	waitbutton
-	closetext
-	setscene $1
-	setevent EVENT_RANG_CLEAR_BELL_2
-	clearevent EVENT_RANG_CLEAR_BELL_1
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	end
-
-EcruteakTinTowerEntranceWanderingSageScript:
-	checkevent EVENT_GOT_CLEAR_BELL
-	iftrue_jumptextfaceplayer EcruteakTinTowerEntranceWanderingSageText_GotClearBell
-	jumptextfaceplayer EcruteakTinTowerEntranceWanderingSageText
-
-EcruteakTinTowerEntranceSageBlocksLeftMovement:
-	fix_facing
-	run_step_left
-	remove_fixed_facing
-	turn_head_down
-	step_end
-
-EcruteakTinTowerEntranceSageBlocksRightMovement:
-	fix_facing
-	run_step_right
-	remove_fixed_facing
-	turn_head_down
-	step_end
-
-EcruteakTinTowerEntranceSageText:
 	text "Bell Tower is off"
 	line "limits to anyone"
 
@@ -131,21 +96,15 @@ EcruteakTinTowerEntranceSageText:
 	line "have to leave."
 	done
 
-EcruteakTinTowerEntranceSageText_GotFogBadge:
-	text "Bell Tower is off"
-	line "limits to anyone"
+.CheckForClearBell:
+	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
+	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_PleaseDoGoOn
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_HeardClearBell
+	checkkeyitem CLEAR_BELL
+	iftruefwd .RingClearBell
+	jumpthisopenedtext
 
-	para "without Ecruteak"
-	line "Gym's Badge."
-
-	para "Ah!"
-
-	para "Ecruteak's Gym"
-	line "Badge! Please, go"
-	cont "right through."
-	done
-
-EcruteakTinTowerEntranceSageText_NoClearBell:
 	text "A momentous event"
 	line "has occurred."
 
@@ -162,6 +121,62 @@ EcruteakTinTowerEntranceSageText_NoClearBell:
 	para "very difficult to"
 	line "understand…"
 	done
+
+.RingClearBell:
+	writetext EcruteakTinTowerEntranceSageText_HearsClearBell
+	waitbutton
+	closetext
+	setscene SCENE_ECRUTEAKHOUSE_NOOP
+	setevent EVENT_RANG_CLEAR_BELL_2
+	clearevent EVENT_RANG_CLEAR_BELL_1
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	end
+
+EcruteakTinTowerEntranceWanderingSageScript:
+	checkevent EVENT_GOT_CLEAR_BELL
+	iftrue_jumptextfaceplayer EcruteakTinTowerEntranceWanderingSageText_GotClearBell
+	jumpthistextfaceplayer
+
+	text "The Bell Tower"
+	line "ahead is a nine-"
+
+	para "tier tower of"
+	line "divine beauty."
+
+	para "It soothes the"
+	line "soul of all who"
+	cont "see it."
+	done
+
+EcruteakTinTowerEntranceSageBlocksLeftMovement:
+	fix_facing
+	run_step_left
+	remove_fixed_facing
+	turn_head_down
+	step_end
+
+EcruteakTinTowerEntranceSageBlocksRightMovement:
+	fix_facing
+	run_step_right
+	remove_fixed_facing
+	turn_head_down
+	step_end
+
+
+EcruteakTinTowerEntranceSageText_GotFogBadge:
+	text "Bell Tower is off"
+	line "limits to anyone"
+
+	para "without Ecruteak"
+	line "Gym's Badge."
+
+	para "Ah!"
+
+	para "Ecruteak's Gym"
+	line "Badge! Please, go"
+	cont "right through."
+	done
+
 
 EcruteakTinTowerEntranceSageText_HearsClearBell:
 	text "A momentous event"
@@ -215,17 +230,6 @@ EcruteakTinTowerEntranceSageText_HeardClearBell:
 	para "Please, do go on."
 	done
 
-EcruteakTinTowerEntranceWanderingSageText:
-	text "The Bell Tower"
-	line "ahead is a nine-"
-
-	para "tier tower of"
-	line "divine beauty."
-
-	para "It soothes the"
-	line "soul of all who"
-	cont "see it."
-	done
 
 EcruteakTinTowerEntranceWanderingSageText_GotClearBell:
 	text "The Bell Tower"

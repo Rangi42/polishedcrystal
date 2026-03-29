@@ -1,9 +1,4 @@
 if !DEF(MONOCHROME)
-; male interface and text
-	RGB 31, 31, 31
-	RGB 31, 15, 00
-	RGB 15, 07, 00
-	RGB 00, 00, 00
 ; border and Mt. Silver
 	RGB 24, 18, 07
 	RGB 21, 21, 21
@@ -40,8 +35,6 @@ if !DEF(MONOCHROME)
 	RGB 24, 18, 07
 	RGB 04, 04, 04
 else
-	MONOCHROME_RGB_FOUR
-
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK

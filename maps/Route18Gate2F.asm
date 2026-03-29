@@ -15,12 +15,8 @@ Route18Gate2F_MapScriptHeader:
 	def_object_events
 
 Route18Gate2FBinoculars1:
-	jumptext Route18Gate2FBinoculars1Text
+	jumpthistext
 
-Route18Gate2FBinoculars2:
-	jumptext Route18Gate2FBinoculars2Text
-
-Route18Gate2FBinoculars1Text:
 	text "Looked into the"
 	line "binoculars."
 
@@ -28,7 +24,9 @@ Route18Gate2FBinoculars1Text:
 	line "the west!"
 	done
 
-Route18Gate2FBinoculars2Text:
+Route18Gate2FBinoculars2:
+	jumpthistext
+
 	text "Looked into the"
 	line "binoculars."
 

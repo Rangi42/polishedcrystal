@@ -307,7 +307,6 @@ PCScript:
 	endtext
 
 ElevatorButtonScript:
-	playsound SFX_READ_TEXT_2
 	pause 15
 	playsound SFX_ELEVATOR_END
 	end
@@ -437,7 +436,7 @@ BugContestResultsScript:
 .CleanUp
 	closetext
 	setscene $0
-	setmapscene ROUTE_35_NATIONAL_PARK_GATE, $0
+	setmapscene ROUTE_35_NATIONAL_PARK_GATE, SCENE_ROUTE35NATIONALPARKGATE_NOOP
 	setevent EVENT_BUG_CATCHING_CONTESTANT_1A
 	setevent EVENT_BUG_CATCHING_CONTESTANT_2A
 	setevent EVENT_BUG_CATCHING_CONTESTANT_3A
@@ -1746,7 +1745,7 @@ TreeGrottoScript:
 	special FadeOutPalettes
 	pause 15
 	callasm _HiddenGrottoBackupMap
-	warpfacing UP, HIDDEN_TREE_GROTTO, 4, 15
+	warpfacing UP, HIDDEN_TREE_GROTTO, 3, 9
 	end
 
 CaveGrottoScript:
@@ -1757,7 +1756,7 @@ CaveGrottoScript:
 	special FadeOutPalettes
 	pause 15
 	callasm _HiddenGrottoBackupMap
-	warpfacing UP, HIDDEN_CAVE_GROTTO, 35, 85
+	warpfacing UP, HIDDEN_CAVE_GROTTO, 3, 9
 	end
 
 _HiddenGrottoInitScript:

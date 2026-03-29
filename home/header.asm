@@ -40,7 +40,8 @@ FarCall::
 ; +0 return bank
 	jmp _ReturnFarCall
 
-	ds 1 ; unused
+ClearText::
+	done
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
@@ -145,8 +146,8 @@ PopBCDEHL::
 	pop hl
 	ret
 
-ClearText::
-	done
+ContChar:
+	db "<CONT>@"
 
 
 SECTION "serial", ROM0[$0058]
@@ -158,6 +159,7 @@ SECTION "High Home", ROM0[$005b]
 ; JOYPAD is never enabled
 
 INCLUDE "home/jumptable.asm"
+INCLUDE "home/pokedex_flags.asm"
 
 
 SECTION "Header", ROM0[$0100]

@@ -18,7 +18,7 @@ EcruteakShrineInside_MapScriptHeader:
 	object_event  3,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
 	object_event 10,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
 	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
-	pokemon_event 10,  3, FURRET, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, ClearText, -1
+	pokemon_event 10,  3, FURRET, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, ClearText, -1
 
 	object_const_def
 	const ECRUTEAKSHRINEINSIDE_REI
@@ -83,13 +83,26 @@ EcruteakShrineInsideReiScript:
 	; fallthrough
 
 .ReiDone
-	jumpopenedtext EcruteakShrineInsideReiComeAgainText
+	jumpthisopenedtext
+
+	text "Rei: Please come"
+	line "again tomorrow."
+	done
 
 .ReiCancel
-	jumpopenedtext EcruteakShrineInsideReiCancelText
+	jumpthisopenedtext
+
+	text "Rei: Please come"
+	line "back if you change"
+	cont "your mind."
+	done
 
 .EggBlessing
-	jumpopenedtext EcruteakShrineInsideReiBlessEggText
+	jumpthisopenedtext
+
+	text "Rei: I can't"
+	line "bless an Egg."
+	done
 
 .ReiMenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -135,10 +148,6 @@ EcruteakShrineInsideHappinessText:
 	line "content."
 	done
 
-EcruteakShrineInsideReiBlessEggText:
-	text "Rei: I can't"
-	line "bless an Egg."
-	done
 
 EcruteakShrineInsideReiBattleText:
 	text "Rei: Very well."
@@ -150,16 +159,7 @@ EcruteakShrineInsideReiBeatenText:
 	text "I admit defeat!"
 	done
 
-EcruteakShrineInsideReiComeAgainText:
-	text "Rei: Please come"
-	line "again tomorrow."
-	done
 
-EcruteakShrineInsideReiCancelText:
-	text "Rei: Please come"
-	line "back if you change"
-	cont "your mind."
-	done
 
 EcruteakShrineInsideGrampsText:
 	text "The shrine maiden"

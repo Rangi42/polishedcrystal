@@ -1,5 +1,5 @@
-	db  73,  67,  75, 109,  81, 100 ; 505 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 505,  73,  67,  75,  81, 100, 109
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ICE, FAIRY ; type
 	db 75 ; catch rate

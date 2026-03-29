@@ -21,7 +21,7 @@ GoldenrodHarbor_MapScriptHeader:
 	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	object_event 27, 15, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
 	object_event 22, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
-	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MAGIKARP, -1, PAL_NPC_ORANGE, OBJECTTYPE_SCRIPT, PLAIN_FORM, GoldenrodHarborMagikarpScript, -1
+	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MAGIKARP, -1, PAL_MON_ORANGE, OBJECTTYPE_SCRIPT, PLAIN_FORM, GoldenrodHarborMagikarpScript, -1
 	object_event 16, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
 	object_event 16, 20, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, trade, NPC_TRADE_JACQUES, -1
 	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
@@ -52,14 +52,26 @@ GoldenrodHarborTutorHyperVoiceScript:
 	special Special_MoveTutor
 	ifequalfwd $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_GoldenrodHarborTutorRefused
+	jumpthisopenedtext
+
+	text "OK then."
+	done
 
 .NoSilverLeaf
-	jumpopenedtext Text_GoldenrodHarborTutorNoSilverLeaf
+	jumpthisopenedtext
+
+	text "You don't have a"
+	line "Silver Leaf!"
+	done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_GoldenrodHarborTutorTaught
+	jumpthisopenedtext
+
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Hyper Voice!"
+	done
 
 GenericTrainerFisherPaton:
 	generictrainer FISHER, PATON, EVENT_BEAT_FISHER_PATON, FisherPatonSeenText, FisherPatonBeatenText
@@ -273,7 +285,11 @@ GoldenrodHarborSailboatScript:
 .show_text
 	playsound SFX_READ_TEXT_2
 	waitsfx
-	jumptext GoldenrodHarborSailboatText
+	jumpthistext
+
+	text "It's a sailboat"
+	line "named SeaKing."
+	done
 
 GoldenrodHarborFisherText:
 	text "If you're fishing,"
@@ -297,10 +313,6 @@ Text_GoldenrodHarborTutorHyperVoice:
 	line "for a Silver Leaf."
 	done
 
-Text_GoldenrodHarborTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf!"
-	done
 
 Text_GoldenrodHarborTutorQuestion:
 	text "Should I teach"
@@ -308,15 +320,7 @@ Text_GoldenrodHarborTutorQuestion:
 	cont "Hyper Voice?"
 	done
 
-Text_GoldenrodHarborTutorRefused:
-	text "OK then."
-	done
 
-Text_GoldenrodHarborTutorTaught:
-	text "Now your #mon"
-	line "knows how to use"
-	cont "Hyper Voice!"
-	done
 
 FisherPatonSeenText:
 	text "The fish I caught"
@@ -466,7 +470,3 @@ GoldenrodHarborCrateSignText:
 	line "rare items!"
 	done
 
-GoldenrodHarborSailboatText:
-	text "It's a sailboat"
-	line "named SeaKing."
-	done

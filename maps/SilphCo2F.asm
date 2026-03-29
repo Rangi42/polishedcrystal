@@ -10,38 +10,36 @@ SilphCo2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  2, BGEVENT_JUMPTEXT, SilphCo2FDeptSignText
-	bg_event  9,  2, BGEVENT_JUMPTEXT, SilphCo2FDeptSignText
-	bg_event  5,  0, BGEVENT_JUMPTEXT, SilphCo2FElevatorText
-	bg_event  0,  3, BGEVENT_JUMPSTD, difficultbookshelf
-	bg_event  6,  3, BGEVENT_JUMPSTD, difficultbookshelf
-	bg_event  7,  3, BGEVENT_JUMPSTD, difficultbookshelf
-	bg_event 12,  3, BGEVENT_JUMPSTD, difficultbookshelf
-	bg_event 13,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  0, BGEVENT_JUMPTEXT, SilphCoElevatorText
+	bg_event  2,  3, BGEVENT_JUMPTEXT, SilphCo2FDeptSignText
+	bg_event  9,  3, BGEVENT_JUMPTEXT, SilphCo2FDeptSignText
+	bg_event  1,  1, BGEVENT_JUMPTEXT, SilphCo2FPrinterText
+	bg_event 14,  5, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event 15,  5, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
-	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
-	object_event  8,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
-	object_event  2,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
+	object_event  6,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist1Text, -1
+	object_event 12,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
+	object_event  3,  6, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, SilphCo2FEmployee1Script, -1
+	object_event 12,  9, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
 
-SilphCo2FScientist1Script:
+SilphCo2FEmployee1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_UPGRADE
-	iftruefwd SilphCo2FScientist1GaveUpgradeScript
-	writetext SilphCo2FScientist1Text1
+	iftruefwd .GaveUpgrade
+	writetext .Text1
 	promptbutton
 	verbosegiveitem UPGRADE
-	iffalsefwd SilphCo2FScientist1NoRoomForUpgradeScript
+	iffalsefwd .NoRoomForUpgrade
 	setevent EVENT_GOT_UPGRADE
-SilphCo2FScientist1GaveUpgradeScript:
-	writetext SilphCo2FScientist1Text2
+.GaveUpgrade:
+	writetext .Text2
 	waitbutton
-SilphCo2FScientist1NoRoomForUpgradeScript:
+.NoRoomForUpgrade:
 	endtext
 
-SilphCo2FScientist1Text1:
+.Text1:
 	text "You traveled here"
 	line "from Johto?"
 
@@ -52,7 +50,7 @@ SilphCo2FScientist1Text1:
 	line "little souvenir."
 	done
 
-SilphCo2FScientist1Text2:
+.Text2:
 	text "It's Silph Co.'s"
 	line "latest product."
 
@@ -60,13 +58,7 @@ SilphCo2FScientist1Text2:
 	line "anywhere yet."
 	done
 
-SilphCo2FScientist2Text:
-	text "I'm coding! Don't"
-	line "break my concen-"
-	cont "tration!"
-	done
-
-SilphCo2FSilphEmployee1Text:
+SilphCo2FSilphEmployee2Text:
 	text "We used to use"
 	line "teleporters to get"
 
@@ -77,7 +69,7 @@ SilphCo2FSilphEmployee1Text:
 	line "the second floor!"
 	done
 
-SilphCo2FSilphEmployee2Text:
+SilphCo2FScientist1Text:
 	text "We're always work-"
 	line "ing on new TMs."
 
@@ -88,7 +80,13 @@ SilphCo2FSilphEmployee2Text:
 	line "ular that they"
 
 	para "haven't changed in"
-	line "over 20 years!"
+	line "over 30 years!"
+	done
+
+SilphCo2FScientist2Text:
+	text "I'm coding! Don't"
+	line "break my concen-"
+	cont "tration!"
 	done
 
 SilphCo2FDeptSignText:
@@ -96,6 +94,6 @@ SilphCo2FDeptSignText:
 	line "Software Dev."
 	done
 
-SilphCo2FElevatorText:
-	text "Out Of Order"
+SilphCo2FPrinterText:
+	text "It's a printer."
 	done

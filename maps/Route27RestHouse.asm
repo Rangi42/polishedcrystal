@@ -28,7 +28,7 @@ Route27RestHouseGranny:
 .Continue
 	promptbutton
 	special GetFirstPokemonHappiness
-	ifgreater $95, .Loyal
+	ifgreater FRIEND_BALL_HAPPINESS - 1, .Loyal
 	jumpthisopenedtext
 
 	text "If it doesn't come"

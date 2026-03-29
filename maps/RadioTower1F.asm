@@ -30,7 +30,10 @@ RadioTower1F_MapScriptHeader:
 RadioTower1FReceptionistScript:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower1FReceptionistNoToursText
-	jumptextfaceplayer RadioTower1FReceptionistWelcomeText
+	jumpthistextfaceplayer
+
+	text "Welcome!"
+	done
 
 RadioTower1FLuckyNumberManScript:
 	faceplayer
@@ -71,7 +74,11 @@ RadioTower1FLuckyNumberManScript:
 	ifequalfwd 3, .ThirdPlace
 	ifequalfwd 2, .FourthPlace
 	ifequalfwd 1, .FifthPlace
-	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
+	jumpthisopenedtext
+
+	text "Nope, none of your"
+	line "ID numbers match."
+	done
 
 .FirstPlace:
 	giveitem MASTER_BALL
@@ -227,9 +234,6 @@ RadioTower1FWhitneyLeaves2MovementData:
 	step_left
 	step_end
 
-RadioTower1FReceptionistWelcomeText:
-	text "Welcome!"
-	done
 
 RadioTower1FReceptionistNoToursText:
 	text "Hello. I'm sorry,"
@@ -327,10 +331,6 @@ WonFifthPlaceText:
 	cont "Rare Candy."
 	done
 
-RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:
-	text "Nope, none of your"
-	line "ID numbers match."
-	done
 
 RadioTower1FLuckyNumberManNoRoomForYourPrizeText:
 	text "You've got no room"

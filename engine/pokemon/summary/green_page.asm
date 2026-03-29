@@ -86,15 +86,7 @@ SummaryScreen_GreenPage:
 	farjp PrintItemDescription
 
 .GreenPalettes:
-	RGB 21, 31, 14
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 30, 31, 29
-	RGB 21, 31, 14
-	RGB 31, 31, 31
-	RGB 00, 00, 00
+INCLUDE "gfx/stats/green_page.pal"
 
 .NoHeldItemString:
 	db "No held item@"
@@ -122,11 +114,11 @@ SummaryScreen_GreenPage:
 	rst CopyBytes
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	ld a, TILEMAP_WIDTH * 2
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	predef ListMoves
 	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
 	ld a, TILEMAP_WIDTH * 2
-	ld [wBuffer1], a
+	ld [wListMovesLineSpacing], a
 	predef ListMovePP
 
 for n, NUM_MOVES
@@ -301,6 +293,11 @@ SummaryScreen_MoveInfoJoypad:
 	or b
 	ret nz
 	; TODO support battle swapping?
+
+	; Disallow move swapping if we can't update storage boxmon data.
+	farcall UpdateStorageBoxMonFromTemp
+	ret nz
+
 	ld a, [wSummaryMoveSwap]
 	inc a
 	jr nz, .swap_moves

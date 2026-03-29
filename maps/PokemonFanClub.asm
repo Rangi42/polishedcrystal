@@ -4,8 +4,8 @@ PokemonFanClub_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  2,  7, VERMILION_CITY, 3
-	warp_event  3,  7, VERMILION_CITY, 3
+	warp_event  4,  7, VERMILION_CITY, 3
+	warp_event  5,  7, VERMILION_CITY, 3
 
 	def_coord_events
 
@@ -15,12 +15,12 @@ PokemonFanClub_MapScriptHeader:
 	bg_event  0,  1, BGEVENT_READ, PokemonJournalGreenScript
 
 	def_object_events
-	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, NO_FORM, ClefairyDollScript, EVENT_VERMILION_FAN_CLUB_DOLL
-	object_event  5,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, PokemonFanClubChairmanScript, -1
+	object_event  2,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, PAL_MON_PINK, OBJECTTYPE_SCRIPT, NO_FORM, ClefairyDollScript, EVENT_VERMILION_FAN_CLUB_DOLL
+	object_event  4,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, PokemonFanClubChairmanScript, -1
 	object_event  6,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, PokemonFanClubReceptionistText, -1
-	object_event  3,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, PokemonFanClubClefairyGuyScript, -1
+	object_event  2,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, PokemonFanClubClefairyGuyScript, -1
 	object_event  7,  2, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PokemonFanClubTeacherText, -1
-	pokemon_event  7,  3, ODDISH, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GREEN, FanClubOddishText, -1
+	pokemon_event  7,  3, ODDISH, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_GREEN, FanClubOddishText, -1
 
 	object_const_def
 	const POKEMONFANCLUB_CLEFAIRY_DOLL
@@ -43,7 +43,18 @@ PokemonFanClubChairmanScript:
 	verbosegiveitem RARE_CANDY
 	iffalse_endtext
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	jumpopenedtext PokemonFanClubChairmanItsARareCandyText
+	jumpthisopenedtext
+
+	text "It's a Rare Candy"
+	line "that makes #mon"
+	cont "stronger."
+
+	para "I prefer making my"
+	line "#mon stronger"
+
+	para "by battling, so"
+	line "you can have it."
+	done
 
 PokemonFanClubClefairyGuyScript:
 	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
@@ -144,17 +155,6 @@ PokemonFanClubChairmanIWantYouToHaveThisText:
 	cont "to have this!"
 	done
 
-PokemonFanClubChairmanItsARareCandyText:
-	text "It's a Rare Candy"
-	line "that makes #mon"
-	cont "stronger."
-
-	para "I prefer making my"
-	line "#mon stronger"
-
-	para "by battling, so"
-	line "you can have it."
-	done
 
 PokemonFanClubChairmanMoreTalesToTellText:
 	text "Hello, <PLAYER>!"

@@ -52,7 +52,7 @@
 	tilecoll WALL, WALL, WALL, LADDER ; 33
 	tilecoll TOP_WALL, TOP_WALL, WALL, WALL ; 34
 	tilecoll TOP_WALL, TOP_WALL, WALL, WALL ; 35
-	tilecoll ICE, ICE, ICE, ICE ; 36
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 36
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 37
 	tilecoll WATER, WATER, WATER, WATER ; 38
 	tilecoll WATER, WATER, WATER, WATER ; 39
@@ -110,3 +110,4 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 6d
 	tilecoll WALL, WALL, WALL, WALL ; 6e
 	tilecoll WALL, WALL, WALL, WALL ; 6f
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 70

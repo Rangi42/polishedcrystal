@@ -275,6 +275,11 @@ HandleWeather:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_HAIL
 	call z, .HandleHail
+
+	; Avoid chained weather damage. This can happen if the user faints from Hail
+	; and has Neutralizing Gas, triggering foe's Sand Stream after faint.
+	call HasUserFainted
+	ret z
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
@@ -286,7 +291,7 @@ HandleWeather:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -327,7 +332,7 @@ HandleWeather:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -375,7 +380,7 @@ HandleAffectionSelfCure:
 
 .do_it
 	farcall CheckAffection
-	cp 2
+	cp AFFECTION_LEVEL_2
 	ret c
 
 	; 20% to heal a status problem.
@@ -446,6 +451,9 @@ HandleFutureSight:
 	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	farcall DoMove
+
+	; Future moves shouldn't trigger ability ignorance, but just in case.
+	farcall ResetAbilityIgnorance
 	xor a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
@@ -489,7 +497,7 @@ HandleLeftovers:
 
 PreventEndturnDamage:
 ; returns z if residual damage at endturn is prevented
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
 	call nz, HasUserFainted
 	ret
@@ -529,7 +537,7 @@ HandleLeechSeed:
 	farcall GetHPAbsorption
 	ld a, $1
 	ldh [hBGMapMode], a
-	call GetOpponentAbility
+	call GetOpponentIgnorableAbility
 	cp LIQUID_OOZE
 	jr z, .hurt
 	farcall RestoreHP
@@ -556,7 +564,7 @@ HandlePoison:
 	ld hl, HurtByPoisonText
 	ld de, ANIM_PSN
 	ret z
-	call GetTrueUserAbility
+	call GetTrueUserIgnorableAbility
 	cp POISON_HEAL
 	jr nz, DoPoisonBurnDamage
 
@@ -626,10 +634,11 @@ IncrementToxic:
 	bit TOX, a
 	ret z
 
-	; Cap toxic counter at 15.
+	; Cap toxic counter at 15. Do not return z.
 	inc [hl]
-	bit 4, [hl]
-	ret z
+	ld a, [hl]
+	cp 16
+	ret c
 	dec [hl]
 	ret
 

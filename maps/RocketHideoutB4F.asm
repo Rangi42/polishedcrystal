@@ -1,7 +1,8 @@
 RocketHideoutB4F_MapScriptHeader:
 	def_scene_scripts
-	scene_script RocketHideoutB4FMeetLeadersScene
-	scene_script RocketHideoutB4FMetLeadersScene
+	scene_script RocketHideoutB4FMeetLeadersScene, SCENE_ROCKETHIDEOUTB4F_MEET_LEADERS
+	scene_script RocketHideoutB4FMetLeadersScene, SCENE_ROCKETHIDEOUTB4F_MET_LEADERS
+	scene_const SCENE_ROCKETHIDEOUTB4F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, RocketHideoutB4FLiftKeyScript
@@ -13,8 +14,8 @@ RocketHideoutB4F_MapScriptHeader:
 	warp_event 17, 15, ROCKET_HIDEOUT_ELEVATOR, 1
 
 	def_coord_events
-	coord_event 16, 11, 0, RocketHideoutB4FMeetLeadersLeftScript
-	coord_event 17, 11, 0, RocketHideoutB4FMeetLeadersRightScript
+	coord_event 16, 11, SCENE_ROCKETHIDEOUTB4F_MEET_LEADERS, RocketHideoutB4FMeetLeadersLeftScript
+	coord_event 17, 11, SCENE_ROCKETHIDEOUTB4F_MEET_LEADERS, RocketHideoutB4FMeetLeadersRightScript
 
 	def_bg_events
 	bg_event 17,  1, BGEVENT_ITEM + MAX_POTION, EVENT_ROCKET_HIDEOUT_B4F_HIDDEN_MAX_POTION
@@ -43,12 +44,12 @@ RocketHideoutB4F_MapScriptHeader:
 RocketHideoutB4FDoorScript:
 	checkevent EVENT_BEAT_TEACHER_SERENA
 	iftruefwd .beat_serena
-	changeblock 16, 10, $69
+	changeblock 16, 10, $07
 	endcallback
 .beat_serena
 	checkevent EVENT_BEAT_SUPER_NERD_NOLAN
 	iftruefwd .beat_theo
-	changeblock 16, 10, $69
+	changeblock 16, 10, $07
 	endcallback
 .beat_theo
 	changeblock 16, 10, $0d
@@ -90,7 +91,7 @@ RocketHideoutB4FMeetLeadersRightScript:
 	step_end
 
 RocketHideoutB4FMeetLeadersScript:
-	setscene $1
+	setscene SCENE_ROCKETHIDEOUTB4F_MET_LEADERS
 	showtext .CandelaIntro1Text
 	turnobject ROCKETHIDEOUTB4F_SPARK, RIGHT
 	showtext .BlancheIntro1Text
@@ -427,10 +428,7 @@ RocketHideoutB4FYoungsterArdenScript:
 	faceplayer
 	checkevent EVENT_BEAT_YOUNGSTER_ARDEN
 	iftruefwd .AfterBattle
-	opentext
-	writetext .GreetingText
-	waitbutton
-	closetext
+	showtext .GreetingText
 	winlosstext .BeatenText, 0
 	loadtrainer YOUNGSTER, ARDEN
 	startbattle

@@ -52,9 +52,9 @@ _BillsPC:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	call ReturnToMapFromSubmenu
 	pop af
@@ -112,16 +112,18 @@ BillsPC_LoadUI:
 
 	call BillsPC_BlankCursorItem
 
-	; Held item icon
+	; Held item icons
 	ld hl, vTiles3 tile $1c
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
+	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Get2bpp
+	assert $1c + NUM_HELD_ITEM_TYPES <= $20, \
+		"held item icons overlap tile $20 (item for mon cursor is hovering)"
 
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
 	ld de, vTiles3 tile $24
-	lb bc, BANK(BillsPC_ObjGFX), 23
+	lb bc, BANK(BillsPC_ObjGFX), 27
 	call DecompressRequest2bpp
 
 	xor a
@@ -156,10 +158,12 @@ BillsPC_LoadUI:
 	dec [hl]
 
 	; Gender symbols and shiny star
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $42
-	lb bc, BANK(BattleExtrasGFX), 3
-	call DecompressRequest2bpp
+	ld de, wBillsPC_ItemVWF
+	farcall CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile $42
+	ld de, wBillsPC_ItemVWF
+	lb bc, BANK(@), 3
+	call Get2bpp
 
 	; Box frame tiles and Pokérus symbols
 	ld hl, BillsPC_TileGFX
@@ -303,9 +307,9 @@ UseBillsPC:
 
 	; Set up for HBlank palette switching
 	ld a, LOW(wLCDBillsPC1)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	ld hl, rIE
 	set B_IE_STAT, [hl]
 
@@ -433,7 +437,9 @@ BillsPC_BlankTiles:
 
 BillsPC_SetCursorMode:
 	call _BillsPC_SetCursorMode
-	jmp BillsPC_SetPals
+BillsPC_SetPals:
+	call BillsPC_ApplyPals
+	jmp SetDefaultBGPAndOBP
 
 _BillsPC_SetCursorMode:
 ; Switches cursor mode and updates the cursor palette. Doesn't write palettes,
@@ -485,7 +491,7 @@ BillsPC_SafeRequest2bppInWRA6::
 	call RunFunctionInWRA6
 
 BillsPC_SafeGet2bpp:
-; Only copies graphics when doing so wont interfere with hblank palette usage.
+; Only copies graphics when doing so won't interfere with hblank palette usage.
 ; Otherwise, wait until next frame.
 	ldh a, [rLY]
 	cp $40
@@ -1060,13 +1066,13 @@ _GetCursorMon:
 	call Get2bpp
 	pop af
 	and a
-	ld de, vTiles3 tile $00
+	ld de, vTiles3 tile $00 ; no item
 	jr z, .got_item_tile
-	ld d, a
-	call ItemIsMail
-	ld de, vTiles3 tile $1c
-	jr c, .got_item_tile
-	ld de, vTiles3 tile $1d
+	call BillsPC_GetItemIconOffset
+	ld hl, vTiles3 tile $1c ; item icons
+	add hl, de
+	ld d, h
+	ld e, l
 .got_item_tile
 	ld hl, vTiles3 tile $20
 	ld c, 1
@@ -1205,6 +1211,32 @@ _GetCursorMon:
 	jr nz, .item_loop_begin
 .ret_nz
 	or 1
+	ret
+
+BillsPC_GetItemIconOffset:
+; input: a = item ID
+; output: de = offset in tiles
+	ld d, 0
+	call ItemIsMail_a ; preserves a
+	ld e, HELDTYPE_MAIL tiles
+	ret c
+	cp FIRST_BERRY
+	jr c, .not_berry
+	cp FIRST_BERRY + NUM_BERRIES
+	ld e, HELDTYPE_BERRY tiles
+	ret c
+.not_berry
+	ld c, a
+	ld b, 0
+	ld hl, ItemAttributes + ITEMATTR_EFFECT
+	ld a, ITEMATTR_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, BANK(ItemAttributes)
+	call GetFarByte
+	and a
+	ld e, HELDTYPE_INERT_ITEM tiles
+	ret z
+	ld e, HELDTYPE_ITEM tiles
 	ret
 
 BillsPC_CheckBagDisplay:
@@ -2349,16 +2381,14 @@ BillsPC_MoveItem:
 	ret
 
 BillsPC_LoadCursorItemIcon:
+	ld a, [wBillsPC_CursorItem]
+	call BillsPC_GetItemIconOffset
+	ld hl, HeldItemIcons
+	add hl, de
+	ld d, h
+	ld e, l
 	ld hl, vTiles3 tile $08
 	lb bc, BANK(HeldItemIcons), 1
-
-	ld a, [wBillsPC_CursorItem]
-	ld d, a
-	call ItemIsMail
-	ld de, HeldItemIcons ; mail icon
-	jr c, .got_item_tile
-	ld de, HeldItemIcons tile 1 ; regular item icon
-.got_item_tile
 	jmp BillsPC_SafeGet2bpp
 
 BillsPC_BagItem:
@@ -3505,10 +3535,6 @@ BillsPC_PlaceHeldMon:
 	ld [wBillsPC_CursorHeldSlot], a
 	ret
 
-BillsPC_SetPals:
-	call BillsPC_ApplyPals
-	jmp SetDefaultBGPAndOBP
-
 BillsPC_ApplyPals:
 ; Sets palettes. This writes palette data for HBlank row1 mons/etc into
 ; wBGPals1. This avoids wrong palette flickering for a single frame.
@@ -3640,7 +3666,7 @@ BillsPC_CursorPosValid:
 	ret
 
 BillsPC_LCDCode:
-LOAD UNION "Misc 1326", WRAM0
+LOAD UNION "Misc 1300", WRAM0
 wLCDBillsPC1::
 	; Write boxmon palettes
 	ldh a, [rSTAT]
@@ -3679,9 +3705,9 @@ endr
 
 	; prepare for partymon write
 	ld a, LOW(wLCDBillsPC2)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC2)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop bc
 	pop hl
 .donepc
@@ -3755,9 +3781,9 @@ endr
 	dec c
 	jr nz, .busyloop
 	ld a, LOW(wLCDBillsPC3)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC3)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl
@@ -3794,9 +3820,9 @@ endr
 	pop af
 	ldh [rWBK], a
 	ld a, LOW(wLCDBillsPC1)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDBillsPC1)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl

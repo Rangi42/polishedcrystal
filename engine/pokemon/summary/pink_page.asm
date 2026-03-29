@@ -21,7 +21,7 @@ SummaryScreen_PinkPage:
 	farcall CheckShininess
 	jr nc, .shinyDone
 	hlbgcoord 10, 0, wSummaryScreenWindowBuffer
-	ld [hl], '★'
+	ld [hl], '<STAR>'
 	hlbgcoord 16 + 10, 0, wSummaryScreenWindowBuffer
 	ld [hl], SUMMARY_PAL_SHINY_POKERUS
 .shinyDone
@@ -129,7 +129,7 @@ SummaryScreen_PinkPage:
 	call .CalcExpToNextLevel
 	hlcoord 12, 15
 	lb bc, 3, 7
-	ld de, wBuffer1
+	ld de, wExpToNextLevel
 	call PrintNum
 	ld de, .LevelUpStr
 	hlcoord 1, 15
@@ -139,7 +139,7 @@ SummaryScreen_PinkPage:
 	rst PlaceString
 	hlcoord 16, 17
 	call .PrintNextLevel
-	hlcoord 2, 17
+	hlcoord 3, 17
 	ld a, [wTempMonLevel]
 	ld b, a
 	ld de, wTempMonExp + 2
@@ -148,7 +148,7 @@ SummaryScreen_PinkPage:
 	ld a, '<XP1>'
 	ld [hli], a
 	ld [hl], '<XP2>'
-	hlcoord 9, 17
+	hlcoord 10, 17
 	ld [hl], '<XPEND>'
 
 	ld hl, .PinkPalettes
@@ -194,18 +194,18 @@ SummaryScreen_PinkPage:
 	ldh a, [hQuotient + 2]
 	sub [hl]
 	dec hl
-	ld [wBuffer3], a
+	ld [wExpToNextLevel + 2], a
 	ldh a, [hQuotient + 1]
 	sbc [hl]
 	dec hl
-	ld [wBuffer2], a
+	ld [wExpToNextLevel + 1], a
 	ldh a, [hQuotient]
 	sbc [hl]
-	ld [wBuffer1], a
+	ld [wExpToNextLevel], a
 	ret
 
 .AlreadyAtMaxLevel:
-	ld hl, wBuffer1
+	ld hl, wExpToNextLevel
 	xor a
 	ld [hli], a
 	ld [hli], a
@@ -238,20 +238,7 @@ SummaryScreen_PinkPage:
 	ret
 
 .PinkPalettes:
-	RGB 31, 19, 31
-	RGB 31, 25, 02
-	RGB 04, 17, 31
-	RGB 00, 00, 00
-
-	RGB 31, 29, 31
-	RGB 31, 19, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 31, 29, 31
-	RGB 31, 19, 31
-	RGB 27, 11, 27
-	RGB 31, 25, 02
+INCLUDE "gfx/stats/pink_page.pal"
 
 .BallSprites:
 	db 68, 144, SUMMARY_TILE_OAM_BALL_TOP_BORDER, OAM_YFLIP

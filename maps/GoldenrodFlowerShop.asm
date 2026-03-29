@@ -61,7 +61,10 @@ FlowerShopTeacherScript:
 	closewindow
 	ifequalfwd $1, .Buy1
 	ifequalfwd $2, .Buy10
-	jumpopenedtext DontBuyMulchText
+	jumpthisopenedtext
+
+	text "Please come again!"
+	done
 
 .Buy1:
 	checkmoney YOUR_MONEY, 200
@@ -83,10 +86,19 @@ FlowerShopTeacherScript:
 	waitsfx
 	playsound SFX_TRANSACTION
 	itemnotify
-	jumpopenedtext BoughtMulchText
+	jumpthisopenedtext
+
+	text "Thank you!"
+	line "Please come again!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext NotEnoughMulchMoneyText
+	jumpthisopenedtext
+
+	text "Well… Excuse me,"
+	line "but you're short"
+	cont "of money."
+	done
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -222,20 +234,8 @@ WoukdYouLikeMulchText:
 	line "grow faster!"
 	done
 
-BoughtMulchText:
-	text "Thank you!"
-	line "Please come again!"
-	done
 
-DontBuyMulchText:
-	text "Please come again!"
-	done
 
-NotEnoughMulchMoneyText:
-	text "Well… Excuse me,"
-	line "but you're short"
-	cont "of money."
-	done
 
 NoRoomForMulchText:
 	text "Oh no, your Bag"

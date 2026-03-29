@@ -61,7 +61,15 @@ CeladonEusine:
 	setmonval SUICUNE
 	special SpecialSeenMon
 .OwnSuicune
-	jumptext EusineQuestHintText
+	jumpthistext
+
+	text "If you catch even"
+	line "one, I hope that"
+	cont "you'll inform me."
+
+	para "I'm counting on"
+	line "you, <PLAYER>!"
+	done
 
 .HoOh:
 	writetext EusineLeavesCeladonText
@@ -98,7 +106,16 @@ EusinesHouseGrampsScript:
 	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
 	checkevent EVENT_FOUGHT_HO_OH
 	iftruefwd .AfterHoOhFight
-	jumptextfaceplayer EusinesHouseGrampsEusineSearchingForHoOhText
+	jumpthistextfaceplayer
+
+	text "My grandson Eusine"
+	line "is on another"
+	cont "adventure."
+
+	para "He left to visit"
+	line "Bell Tower in"
+	cont "Ecruteak City."
+	done
 
 .AfterHoOhFight:
 	faceplayer
@@ -185,14 +202,6 @@ EusineShowsSuicuneText:
 	line "is Suicune:"
 	done
 
-EusineQuestHintText:
-	text "If you catch even"
-	line "one, I hope that"
-	cont "you'll inform me."
-
-	para "I'm counting on"
-	line "you, <PLAYER>!"
-	done
 
 EusinesHouseGrampsGrandsonHomeText:
 	text "My grandson came"
@@ -212,15 +221,6 @@ EusinesHouseGrampsEusineSearchingForSuicuneText:
 	cont "ary #mon!"
 	done
 
-EusinesHouseGrampsEusineSearchingForHoOhText:
-	text "My grandson Eusine"
-	line "is on another"
-	cont "adventure."
-
-	para "He left to visit"
-	line "Bell Tower in"
-	cont "Ecruteak City."
-	done
 
 EusinesHouseGrampsThankYouGiftText:
 	text "My grandson Eusine"

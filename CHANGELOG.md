@@ -8,6 +8,44 @@
 
 ***Note: The following changelog may contain spoilers.***
 
+## v3.2.3
+
+Critical hotfix release.
+
+This update addresses a battle engine game crash.
+
+### Fixes
+- Fix Flare Blitz crashing the game when called by Metronome or Sleep Talk
+
+
+## v3.2.2
+
+Hotfix release.
+
+This update changes the link version, meaning you cannot battle with game versions older than 3.2.2.
+
+### Additions
+- New Marowak sprite
+
+### Changes
+- Fly can no longer be forgotten if you don't carry the HM
+- Battle transistions are no longer too fast
+- Update Wooper's sprite
+- Shorten sound effect for crossing whirlpools
+
+### Fixes
+
+- Fixed room service not working as it should
+- Toxic should now be fully fixed
+- Fix some spelling mistakes
+- Fix Route 43 map during rain
+- Fix buggy experience gain above 65535
+- Fix rare NPC display bug while using Fly in the overworld
+- Nickname UI now displays proper gender and Shininess
+- Fix bike music sometimes not playing correctly
+- Amy & Mimi's party is now always level 13
+- You can no longer miss out on Macho Brace within SS Aqua
+
 ## v3.2.1
 
 Hotfix release.
@@ -244,7 +282,7 @@ _Items And Rewards:_
 - Added GBC Sound key item.
 - The Pokedex UI is overhauled, and is extensive in use and function. This includes a New Unown mode UI, and it plays cries in the new Dex entry mode.
 - Sound effect for new Premier Ball.
-- Added Go-Goggles key item. 
+- Added Go-Goggles key item.
 
 _Overworld And NPCs:_
 - Field moves can be used without teaching TMs/HMs, so long as a member of the party can learn the move (as Headbutt and Teleport are not TMs/HMs, this does not apply). This includes Flash which can be used by pressing A in the dark, but excludes Dig which has no shortcut to use. Fly can be used through the Pokegear Map.
@@ -284,7 +322,7 @@ _Overworld And NPCs:_
 - Plays a sound when the Rocket member takes a gate toll.
 - Toned down poison screen effect for accessibility.
 - Vulcandth added to the NPCs in the dev room.
-- Added sand footprints. 
+- Added sand footprints.
 - Imported some text stuff from Prism.
 - Changed the abbreviation of Speed to Spe instead of Spd as it was ambiguous.
 - Remove roam mon anti-oscillation feature. (In Gen II, and ONLY in Gen II, if you return to the map you previously visited, roamers are forbidden from jumping there.)
@@ -420,7 +458,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Fixed Sheer Force affecting Thief.
 - Fix Tyrogue evolution in EV disable mode.
 - Fixed surfing behind the lighthouse.
-- Many many improvements to the Battle Engine. 
+- Many many improvements to the Battle Engine.
 - Figy Berry fix.
 - Fixed stat change bug.
 - Stat lowering actions fixes.
@@ -506,7 +544,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Correct background palette for 10 character enemy mon names.
 - Fix Route 16 being full of ghosts! (Near Halloween, no less!)
 - Modernize Illuminate.
-- Quick Draw now only works on attacking moves, and fixed the slideout.   
+- Quick Draw now only works on attacking moves, and fixed the slideout.
 - Fixed bugs with initial and in-game options.
 - Use the originally intended roof colors for Cianwood and Mahogany.
 - Update Battle Tower Picnicker to use the same palette as the one on Route 40.

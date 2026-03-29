@@ -218,16 +218,19 @@ WRAM0
 	"Stack"
 	align 8
 	"Sprites"
+	"Sprite Animations"
+	"Video"
+	"Audio RAM"
 	"Tilemap and Attrmap"
 	"Misc 404"
-	"Footprint Queue"
+	"Misc 1300"
+	"WRAM 0"
 	"Unused"
-	"Misc 1326"
 	org $cff0
 	"Options"
 	org $cffd
 	"SRAM Access Count"
-	"Rom Checksum"
+	"ROM Checksum"
 
 WRAMX $1
 	org $d000
@@ -238,7 +241,6 @@ WRAMX $1
 
 WRAMX $2
 	org $d000
-	"Music Player RAM"
 	align 8
 	"Sound Stack"
 	"Pic Animations RAM"

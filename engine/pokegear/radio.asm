@@ -219,9 +219,8 @@ OaksPkmnTalk4:
 	jr .loop
 
 .done
-rept 4
-	inc hl
-endr
+	inc hl ; skip map number
+	inc hl ; skip encounter rate
 	; Generate a number, either 0, 1, or 2, to choose a time of day.
 	; (Disallows EVE.)
 .loop2

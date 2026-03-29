@@ -24,7 +24,7 @@ KurtsHouse_MapScriptHeader:
 	object_event  5,  3, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
 	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt2, EVENT_KURTS_HOUSE_KURT_2
 	object_event 11,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	pokemon_event  6,  3, SLOWPOKE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_PINK, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
+	pokemon_event  6,  3, SLOWPOKE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_PINK, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
 	object_const_def
 	const KURTSHOUSE_KURT1
@@ -314,7 +314,7 @@ endr
 	clearevent EVENT_AZALEA_TOWN_KURT
 	waitsfx
 	special RestartMapMusic
-	setmapscene AZALEA_TOWN, $2
+	setmapscene AZALEA_TOWN, SCENE_AZALEATOWN_CELEBI_EVENT
 	end
 
 Kurt2:
@@ -359,7 +359,14 @@ KurtsGranddaughter1:
 	iftrue_jumptext KurtsGranddaughterSlowpokeBackText
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	iftrue_jumptext KurtsGranddaughterLonelyText
-	jumptext KurtsGranddaughterSlowpokeGoneText
+	jumpthistext
+
+	text "The Slowpoke are"
+	line "gone… Were they"
+
+	para "taken away by bad"
+	line "people?"
+	done
 
 KurtsGranddaughter2:
 	faceplayer
@@ -601,13 +608,6 @@ KurtsHouseKurtThisBallStartedToShakeText:
 	line "something to this!"
 	done
 
-KurtsGranddaughterSlowpokeGoneText:
-	text "The Slowpoke are"
-	line "gone… Were they"
-
-	para "taken away by bad"
-	line "people?"
-	done
 
 KurtsGranddaughterLonelyText:
 	text "Grandpa's gone…"

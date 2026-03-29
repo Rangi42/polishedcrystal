@@ -10,22 +10,24 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  2, BGEVENT_JUMPTEXT, RangiComputerText
-	bg_event  6,  2, BGEVENT_JUMPTEXT, LunaComputerText
-	bg_event  9,  2, BGEVENT_JUMPTEXT, FredrikComputerText
-	bg_event  9,  5, BGEVENT_JUMPTEXT, VulcanComputerText
-	bg_event  6,  5, BGEVENT_JUMPTEXT, AizawaComputerText
-	bg_event  4,  2, BGEVENT_READ, RangiKeyboardScript
+	bg_event  4,  2, BGEVENT_READ, AdminEldredScript
+	bg_event  3,  2, BGEVENT_UP, RangiComputerScript
+	bg_event  6,  2, BGEVENT_UP, LunaComputerScript
+	bg_event  9,  2, BGEVENT_UP, FredrikComputerScript
+	bg_event 12,  2, BGEVENT_UP, EmiComputerScript
+	bg_event  6,  5, BGEVENT_UP, AizawaComputerScript
+	bg_event  9,  5, BGEVENT_UP, VulcanComputerScript
+	bg_event 12,  5, BGEVENT_UP, SourComputerScript
 
 	def_object_events
-	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_RANGI, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
+	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, PAL_NPC_RANGI, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
 	object_event  7,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
 	object_event 10,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminFredrikText, -1
+	object_event 13,  3, SPRITE_DAISY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_EMI, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminEmiText, -1
 	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 	object_event 10,  6, SPRITE_PI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_AZURE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminVulcanText, -1
-
-	object_const_def
-	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
+	object_event 13,  6, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminSourText, -1
+	object_event  4,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_ADMIN_MEOWTH, 0, MEOWTH, -1, PAL_MON_BROWN, OBJECTTYPE_POKEMON, NO_FORM, AdminMeowthText, -1
 
 AdminRangiText:
 	text "Rangi: I hope"
@@ -41,6 +43,17 @@ AdminRangiText:
 	para "There was barely"
 	line "even enough room"
 	cont "for my sprite!"
+	done
+
+RangiComputerScript:
+	jumpthistext
+
+	text "“Optimizing…” is"
+	line "blinking on the"
+	cont "screen."
+
+	para "It seems to be"
+	line "taking a while."
 	done
 
 AdminLunaText:
@@ -59,6 +72,16 @@ AdminLunaText:
 	cont "here in Goldenrod!"
 	done
 
+LunaComputerScript:
+	jumpthistext
+
+	text "Network traffic"
+	line "from Wonder Trades"
+
+	para "is streaming by"
+	line "on the screen."
+	done
+
 AdminFredrikText:
 	text "Fredrik: Bill's PC"
 	line "Storage System"
@@ -71,6 +94,40 @@ AdminFredrikText:
 	line "his database!"
 	done
 
+FredrikComputerScript:
+	jumpthistext
+
+	text "A dozen windows"
+	line "are open at once,"
+
+	para "each related to"
+	line "its own feature."
+	done
+
+AdminEmiText:
+	text "Emi: Have you"
+	line "seen the Summary"
+	cont "of your #mon?"
+
+	para "I'm visiting from"
+	line "the Beria region"
+
+	para "to bring UI like"
+	line "that to Johto!"
+
+	para "Come say hello if"
+	line "you're ever in"
+	cont "Amethyst Town!"
+	done
+
+EmiComputerScript:
+	jumpthistext
+
+	text "Lots of code is"
+	line "covered up by a"
+	cont "game of Solitaire."
+	done
+
 AdminAizawaText:
 	text "Aizawa: Dialog,"
 	line "map designs,"
@@ -81,7 +138,18 @@ AdminAizawaText:
 	line "in Kanto is lucky"
 
 	para "to have a whole"
-	line "team for this!"
+	line "company for this!"
+	done
+
+AizawaComputerScript:
+	jumpthistext
+
+	text "A program called"
+	line "Polished Map++ is"
+	cont "displaying a"
+
+	para "half-drawn trop-"
+	line "ical island."
 	done
 
 AdminVulcanText:
@@ -99,7 +167,9 @@ AdminVulcanText:
 	line "wrong!"
 	done
 
-VulcanComputerText:
+VulcanComputerScript:
+	jumpthistext
+
 	text "A weather map"
 	line "is displayed on"
 	cont "the screen."
@@ -108,47 +178,39 @@ VulcanComputerText:
 	line "rain in Johto."
 	done
 
-RangiComputerText:
-	text "“Optimizing…” is"
-	line "blinking on the"
-	cont "screen."
+AdminSourText:
+	text "Sour: How do you"
+	line "like the move"
 
-	para "It seems to be"
-	line "taking a while."
+	para "animations in"
+	line "battles?"
+
+	para "I really like to"
+	line "make every move"
+	cont "a joy to use!"
 	done
 
-LunaComputerText:
-	text "Network traffic"
-	line "from Wonder Trades"
-
-	para "is streaming by"
-	line "on the screen."
-	done
-
-FredrikComputerText:
-	text "A dozen windows"
-	line "are open at once,"
-
-	para "each related to"
-	line "its own feature."
-	done
-
-AizawaComputerText:
-	text "A program called"
-	line "Polished Map is"
-	cont "displaying a"
-
-	para "half-drawn trop-"
-	line "ical island."
-	done
-
-RangiKeyboardScript:
-	turnobject GOLDENRODPOKECOMCENTEROFFICE_RANGI, UP
-	showemote EMOTE_SHOCK, GOLDENRODPOKECOMCENTEROFFICE_RANGI, 10
+SourComputerScript:
 	jumpthistext
 
-	text "Rangi: Hey! If you"
-	line "want to hack the"
-	cont "game, use your"
-	cont "own computer!"
+	text "There's a goofy"
+	line "image of an egg-"
+	cont "shaped man with"
+	cont "a moustache."
+	done
+
+AdminEldredScript:
+	opentext
+	writetext AdminMeowthText
+	cry MEOWTH
+	promptbutton
+	jumpthisopenedtext
+
+	text "A mischievous"
+	line "Meowth is pawing"
+	cont "at the keyboard."
+	done
+
+AdminMeowthText:
+	text "Eldred: Miaou!"
 	done

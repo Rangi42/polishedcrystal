@@ -1,5 +1,10 @@
-	db  35,  35,  40,  50,  35,  55 ; 250 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 250,  35,  35,  40,  35,  55,  50
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 280,  35,  35,  40,  45,  55,  70
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db GRASS, FLYING ; type
 	db 255 ; catch rate
@@ -7,7 +12,11 @@
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for HOPPIP, CHLOROPHYLL, LEAF_GUARD, INFILTRATOR
+else
+	abilities_for HOPPIP, CHLOROPHYLL, WIND_RIDER, INFILTRATOR
+endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_FAIRY, EGG_PLANT ; egg groups
 

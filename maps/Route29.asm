@@ -1,5 +1,7 @@
 Route29_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE29_NOOP
+	scene_const SCENE_ROUTE29_CATCH_TUTORIAL
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route29Tuscany
@@ -8,8 +10,8 @@ Route29_MapScriptHeader:
 	warp_event 27,  1, ROUTE_29_46_GATE, 3
 
 	def_coord_events
-	coord_event 53,  8, 1, Route29Tutorial1
-	coord_event 53,  9, 1, Route29Tutorial2
+	coord_event 53,  8, SCENE_ROUTE29_CATCH_TUTORIAL, Route29Tutorial1
+	coord_event 53,  9, SCENE_ROUTE29_CATCH_TUTORIAL, Route29Tutorial2
 
 	def_bg_events
 	bg_event 51,  7, BGEVENT_JUMPTEXT, Route29Sign1Text
@@ -94,7 +96,7 @@ Route29FinishTutorial:
 	closetext
 	applymovement ROUTE29_LYRA, LyraMovementData3
 	disappear ROUTE29_LYRA
-	setscene $0
+	setscene SCENE_ROUTE29_NOOP
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	playmusic MUSIC_ROUTE_29
 	end
@@ -107,7 +109,15 @@ Route29RefusedTutorial:
 Route29CooltrainerMScript:
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue_jumptextfaceplayer Text_WaitingForMorning
-	jumptextfaceplayer Text_WaitingForNight
+	jumpthistextfaceplayer
+
+	text "I'm waiting for"
+	line "#mon that"
+
+	para "appear only in"
+	line "the evening or"
+	cont "at night."
+	done
 
 TuscanyScript:
 	checkevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
@@ -127,10 +137,26 @@ TuscanyScript:
 	verbosegiveitem SILK_SCARF
 	iffalse_endtext
 	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
-	jumpopenedtext TuscanyGaveGiftText
+	jumpthisopenedtext
+
+	text "Tuscany: Wouldn't"
+	line "you agree that it"
+	cont "is most elegant?"
+
+	para "It strengthens"
+	line "Normal-type moves."
+
+	para "I am certain it"
+	line "will be of use."
+	done
 
 TuscanyNotTuesdayScript:
-	jumpopenedtext TuscanyNotTuesdayText
+	jumpthisopenedtext
+
+	text "Tuscany: Today is"
+	line "not Tuesday. That"
+	cont "is unfortunate…"
+	done
 
 LyraMovementData1a:
 	step_up
@@ -235,14 +261,6 @@ Route29FisherText:
 	line "progress."
 	done
 
-Text_WaitingForNight:
-	text "I'm waiting for"
-	line "#mon that"
-
-	para "appear only in"
-	line "the evening or"
-	cont "at night."
-	done
 
 Text_WaitingForMorning:
 	text "I'm waiting for"
@@ -274,17 +292,6 @@ TuscanyGivesGiftText:
 	line "a Silk Scarf."
 	done
 
-TuscanyGaveGiftText:
-	text "Tuscany: Wouldn't"
-	line "you agree that it"
-	cont "is most elegant?"
-
-	para "It strengthens"
-	line "Normal-type moves."
-
-	para "I am certain it"
-	line "will be of use."
-	done
 
 TuscanyTuesdayText:
 	text "Tuscany: Have you"
@@ -298,11 +305,6 @@ TuscanyTuesdayText:
 	line "seven children."
 	done
 
-TuscanyNotTuesdayText:
-	text "Tuscany: Today is"
-	line "not Tuesday. That"
-	cont "is unfortunate…"
-	done
 
 Route29Sign1Text:
 	text "Route 29"

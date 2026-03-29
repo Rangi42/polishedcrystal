@@ -88,12 +88,12 @@ endc
 HurtByPoisonText:
 	text "<USER> is"
 	line "hurt by poison!"
-	prompt
+	done
 
 HurtByBurnText:
 	text "<USER> is"
 	line "hurt by its burn!"
-	prompt
+	done
 
 LeechSeedSapsText:
 	text "Leech Seed saps"
@@ -586,7 +586,7 @@ BattleText_ThrewBait:
 FastAsleepText:
 	text "<USER>"
 	line "is fast asleep!"
-	prompt
+	done
 
 WokeUpText:
 	text "<USER>"
@@ -601,7 +601,7 @@ WasFrozenText:
 FrozenSolidText:
 	text "<USER>"
 	line "is frozen solid!"
-	prompt
+	done
 
 FlinchedText:
 	text "<USER>"
@@ -821,6 +821,11 @@ RegainedHealthText:
 IsHurtText:
 	text "<USER>"
 	line "is hurt!"
+	prompt
+
+IsTormentedText:
+	text "<USER>"
+	line "is tormented!"
 	prompt
 
 AttackMissedText:
@@ -1211,7 +1216,7 @@ ParalyzedText:
 FullyParalyzedText:
 	text "<USER> is"
 	line "fully paralyzed!"
-	prompt
+	done
 
 AlreadyParalyzedText:
 	text "<TARGET> is"
@@ -1644,9 +1649,10 @@ GetOutText:
 	line "Get out…"
 	prompt
 
-CarrieFinalPkmnText:
 CalFinalPkmnText:
+CarrieFinalPkmnText:
 JackyFinalPkmnText:
+EunaFinalPkmnText:
 	text "I still have one"
 	line "#mon!"
 	prompt

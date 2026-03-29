@@ -326,6 +326,7 @@ PokemonPicPointers::
 	pics UnownQuestion
 
 	pics ArbokKanto
+	pics ArbokOrange
 	pics ArbokKoga
 	pics ArbokAgatha
 	pics ArbokAriana

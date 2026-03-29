@@ -1,6 +1,7 @@
 BattleFactoryBattleRoom_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleFactoryBattleRoomEnterBattleRoom
+	scene_script BattleFactoryBattleRoomEnterScene, SCENE_BATTLEFACTORYBATTLEROOM_ENTER
+	scene_const SCENE_BATTLEFACTORYBATTLEROOM_NOOP
 
 	def_callbacks
 
@@ -20,7 +21,7 @@ BattleFactoryBattleRoom_MapScriptHeader:
 	const BATTLEFACTORYBATTLEROOM_OPPONENT
 	const BATTLEFACTORYBATTLEROOM_RECEPTIONIST
 
-BattleFactoryBattleRoomEnterBattleRoom:
+BattleFactoryBattleRoomEnterScene:
 	disappear BATTLEFACTORYBATTLEROOM_OPPONENT
 	sdefer Script_BattleFloor
 	end

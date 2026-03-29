@@ -15,23 +15,11 @@ ValeriesHouse_MapScriptHeader:
 
 	def_object_events
 	object_event  2,  3, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ValeriesHouseValerieText, EVENT_VALERIE_ECRUTEAK_CITY
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseRedFairyBookText, EVENT_RED_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseBlueFairyBookText, EVENT_BLUE_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseGreenFairyBookText, EVENT_GREEN_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseBrownFairyBookText, EVENT_BROWN_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseVioletFairyBookText, EVENT_VIOLET_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PINK, OBJECTTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_YELLOW, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ValeriesHouseFairyBookScript, -1
 
 	object_const_def
 	const VALERIESHOUSE_VALERIE
-	const VALERIESHOUSE_RED_FAIRY_BOOK
-	const VALERIESHOUSE_BLUE_FAIRY_BOOK
-	const VALERIESHOUSE_GREEN_FAIRY_BOOK
-	const VALERIESHOUSE_BROWN_FAIRY_BOOK
-	const VALERIESHOUSE_VIOLET_FAIRY_BOOK
-	const VALERIESHOUSE_PINK_FAIRY_BOOK
-	const VALERIESHOUSE_YELLOW_FAIRY_BOOK
+	const VALERIESHOUSE_FAIRY_BOOK
 
 SetupValerieAfterMorningWalkScript:
 	checkevent EVENT_FOUGHT_SUICUNE
@@ -51,14 +39,8 @@ SetupValerieAfterMorningWalkScript:
 	; fallthrough
 
 SetupFairyBookScript:
-	disappear VALERIESHOUSE_RED_FAIRY_BOOK
-	disappear VALERIESHOUSE_BLUE_FAIRY_BOOK
-	disappear VALERIESHOUSE_GREEN_FAIRY_BOOK
-	disappear VALERIESHOUSE_BROWN_FAIRY_BOOK
-	disappear VALERIESHOUSE_VIOLET_FAIRY_BOOK
-	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
-	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
 	readvar VAR_WEEKDAY
+	ifequalfwd SUNDAY, .Sunday
 	ifequalfwd MONDAY, .Monday
 	ifequalfwd TUESDAY, .Tuesday
 	ifequalfwd WEDNESDAY, .Wednesday
@@ -66,25 +48,25 @@ SetupFairyBookScript:
 	ifequalfwd FRIDAY, .Friday
 	ifequalfwd SATURDAY, .Saturday
 .Sunday
-	appear VALERIESHOUSE_PINK_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_PINK
 	endcallback
 .Monday
-	appear VALERIESHOUSE_BROWN_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_BROWN
 	endcallback
 .Tuesday
-	appear VALERIESHOUSE_RED_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_RED
 	endcallback
 .Wednesday
-	appear VALERIESHOUSE_BLUE_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_BLUE
 	endcallback
 .Thursday
-	appear VALERIESHOUSE_GREEN_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_GREEN
 	endcallback
 .Friday
-	appear VALERIESHOUSE_YELLOW_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_ENV_YELLOW
 	endcallback
 .Saturday
-	appear VALERIESHOUSE_VIOLET_FAIRY_BOOK
+	setmapobjectpal VALERIESHOUSE_FAIRY_BOOK, PAL_NPC_PURPLE
 	endcallback
 
 ValeriesHouseValerieText:
@@ -120,65 +102,75 @@ ValeriesHouseValerieText:
 	line "is…"
 	done
 
-ValeriesHouseRedFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
+ValeriesHouseFairyBookScript:
+	opentext
+	writetext ValeriesHouseFairyBookText
+	waitbutton
+	readvar VAR_WEEKDAY
+	ifequalfwd SUNDAY, .Sunday
+	ifequalfwd MONDAY, .Monday
+	ifequalfwd TUESDAY, .Tuesday
+	ifequalfwd WEDNESDAY, .Wednesday
+	ifequalfwd THURSDAY, .Thursday
+	ifequalfwd FRIDAY, .Friday
+	ifequalfwd SATURDAY, .Saturday
+.Sunday
+	jumpthisopenedtext
 
-	para "A girl with very"
-	line "long hair is lock-"
-	cont "ed in a tower…"
-	done
-
-ValeriesHouseBlueFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
-
-	para "A beautiful girl"
-	line "is talking to a"
-	cont "horse's head…"
-	done
-
-ValeriesHouseGreenFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
-
-	para "A talking fish"
-	line "claims that it can"
-	cont "grant wishes…"
-	done
-
-ValeriesHouseBrownFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
-
-	para "A peasant's house"
-	line "has become a fine"
-	cont "palace overnight…"
-	done
-
-ValeriesHouseVioletFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
-
-	para "A dog digs in the"
-	line "garden and finds"
-	cont "golden treasure…"
-	done
-
-ValeriesHousePinkFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
-
-	para "A man is being"
+	text "A man is being"
 	line "led by a turtle"
 	cont "under the sea…"
 	done
 
-ValeriesHouseYellowFairyBookText:
-	text "It's a book of"
-	line "fairy tales."
+.Monday
+	jumpthisopenedtext
 
-	para "A golden apple"
+	text "A peasant's house"
+	line "has become a fine"
+	cont "palace overnight…"
+	done
+
+.Tuesday
+	jumpthisopenedtext
+
+	text "A girl with very"
+	line "long hair is lock-"
+	cont "ed in a tower…"
+	done
+
+.Wednesday
+	jumpthisopenedtext
+
+	text "A beautiful girl"
+	line "is talking to a"
+	cont "horse's head…"
+	done
+
+.Thursday
+	jumpthisopenedtext
+
+	text "A talking fish"
+	line "claims that it can"
+	cont "grant wishes…"
+	done
+
+.Friday
+	jumpthisopenedtext
+
+	text "A golden apple"
 	line "tree stands atop"
 	cont "a glass mountain…"
+	done
+
+.Saturday
+	jumpthisopenedtext
+
+	text "A dog digs in the"
+	line "garden and finds"
+	cont "golden treasure…"
+	done
+
+ValeriesHouseFairyBookText:
+	text "It's a book of"
+	line "fairy tales."
 	done

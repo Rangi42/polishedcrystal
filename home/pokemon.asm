@@ -14,7 +14,7 @@ DrawBattleHPBar::
 
 ; Draw a template
 	push hl
-	inc a ; ld a, "<NOHP>" ; empty bar
+	inc a ; ld a, '<NOHP>' ; empty bar
 .template
 	ld [hli], a
 	dec d

@@ -79,13 +79,45 @@ GoldenrodDeptStoreRoofSuperNerdScript:
 	end
 
 Binoculars1:
-	jumptext Binoculars1Text
+	jumpthistext
+
+	text "These binoculars"
+	line "let me see far"
+
+	para "away. Maybe I can"
+	line "see my own house."
+
+	para "Is it the one with"
+	line "the green roof?"
+	done
 
 Binoculars2:
-	jumptext Binoculars2Text
+	jumpthistext
+
+	text "Hey! Some trainers"
+	line "are battling on"
+	cont "the road!"
+
+	para "A #mon fired a"
+	line "flurry of leaves!"
+
+	para "That makes me feel"
+	line "like battling"
+	cont "right now!"
+	done
 
 Binoculars3:
-	jumptext Binoculars3Text
+	jumpthistext
+
+	text "A Fisher caught a"
+	line "lot of Magikarp…"
+
+	para "They're Splashing"
+	line "at the same time!"
+
+	para "Look at the water"
+	line "going everywhere!"
+	done
 
 PokeDollVendingMachine:
 	opentext
@@ -261,40 +293,8 @@ GoldenrodDeptStoreRoofBugCatcherText:
 	line "there's any left?"
 	done
 
-Binoculars1Text:
-	text "These binoculars"
-	line "let me see far"
 
-	para "away. Maybe I can"
-	line "see my own house."
 
-	para "Is it the one with"
-	line "the green roof?"
-	done
-
-Binoculars2Text:
-	text "Hey! Some trainers"
-	line "are battling on"
-	cont "the road!"
-
-	para "A #mon fired a"
-	line "flurry of leaves!"
-
-	para "That makes me feel"
-	line "like battling"
-	cont "right now!"
-	done
-
-Binoculars3Text:
-	text "A Fisher caught a"
-	line "lot of Magikarp…"
-
-	para "They're Splashing"
-	line "at the same time!"
-
-	para "Look at the water"
-	line "going everywhere!"
-	done
 
 PokeDollVendingMachineText:
 	text "A vending machine"

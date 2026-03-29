@@ -32,6 +32,9 @@ ObjectActionPairPointers:
 	dw SetFacingShakeExeggutor,        SetFacingAlolanExeggutor   ; OBJECT_ACTION_SHAKE_EXEGGUTOR
 	dw SetFacingTinyWindows,           SetFacingTinyWindows       ; OBJECT_ACTION_TINY_WINDOWS
 	dw SetFacingMicrophone,            SetFacingMicrophone        ; OBJECT_ACTION_MICROPHONE
+	dw SetFacingBigHoOh,               SetFacingFreezeBigHoOh     ; OBJECT_ACTION_BIG_HO_OH
+	dw SetFacingBigLugia,              SetFacingFreezeBigLugia    ; OBJECT_ACTION_BIG_LUGIA
+	dw SetFacingAdminMeowth,           SetFacingFreezeAdminMeowth ; OBJECT_ACTION_ADMIN_MEOWTH
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
@@ -212,7 +215,7 @@ CounterclockwiseSpinAction:
 .Directions
 	db OW_DOWN, OW_RIGHT, OW_UP, OW_LEFT
 
-SetFacingBounce:
+AlternateStepFrame:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld a, [hl]
@@ -220,6 +223,10 @@ SetFacingBounce:
 	and %00011111
 	ld [hl], a
 	and %00010000
+	ret
+
+SetFacingBounce:
+	call AlternateStepFrame
 	ld a, FACING_STEP_UP_0
 	jmp nz, SetFixedFacing
 SetFacingFreezeBounce:
@@ -251,17 +258,35 @@ SetFacingFruit:
 	jmp SetFixedFacing
 
 SetFacingBigGyarados:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	ld a, [hl]
-	inc a
-	and %00011111
-	ld [hl], a
-	and %00010000
+	call AlternateStepFrame
 	ld a, FACING_BIG_GYARADOS_2
 	jmp nz, SetFixedFacing
 SetFacingFreezeBigGyarados:
 	ld a, FACING_BIG_GYARADOS_1
+	jmp SetFixedFacing
+
+SetFacingBigHoOh:
+	call AlternateStepFrame
+	ld a, FACING_BIG_HO_OH_2
+	jmp nz, SetFixedFacing
+SetFacingFreezeBigHoOh:
+	ld a, FACING_BIG_HO_OH_1
+	jmp SetFixedFacing
+
+SetFacingBigLugia:
+	call AlternateStepFrame
+	ld a, FACING_BIG_LUGIA_2
+	jmp nz, SetFixedFacing
+SetFacingFreezeBigLugia:
+	ld a, FACING_BIG_LUGIA_1
+	jmp SetFixedFacing
+
+SetFacingAdminMeowth:
+	call AlternateStepFrame
+	ld a, FACING_CUT_TREE
+	jmp nz, SetFixedFacing
+SetFacingFreezeAdminMeowth:
+	ld a, FACING_ADMIN_MEOWTH
 	jmp SetFixedFacing
 
 SetFacingShakeExeggutor:

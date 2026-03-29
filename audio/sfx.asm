@@ -1457,33 +1457,41 @@ Sfx_Charge:
 
 Sfx_Thundershock:
 	channel_count 3
-	channel 5, .Ch5
-	channel 6, .Ch6
-	channel 8, .Ch8
+	channel 5, Sfx_Thundershock_Ch5
+	channel 6, Sfx_Thundershock_Ch6
+	channel 8, Sfx_Thundershock_Ch8
 
-.Ch5:
-.branch5:
+Sfx_Thunderbolt_Ch5:
+	pitch_offset 32
+Sfx_Thundershock_Ch5:
 	duty_cycle_pattern 0, 2, 2, 3
 	square_note 3, 15, 1, 2032
 	square_note 4, 15, 2, 512
-	sound_loop 8, .branch5
+	sound_loop 8, Sfx_Thundershock_Ch5
 	sound_ret
 
-.Ch6:
-.branch6:
+Sfx_Thunderbolt_Ch6:
+	pitch_offset 32
+Sfx_Thundershock_Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 4, 14, 2, 514
 	square_note 4, 14, 1, 2018
-	sound_loop 9, .branch6
+	sound_loop 9, Sfx_Thundershock_Ch6
 	sound_ret
 
-.Ch8:
-.branch8:
+Sfx_Thunderbolt_Ch8:
+	pitch_offset 32
+Sfx_Thundershock_Ch8:
 	noise_note 4, 15, -7, 67
 	noise_note 4, 15, 2, 68
-	sound_loop 9, .branch8
+	sound_loop 9, Sfx_Thundershock_Ch8
 	sound_ret
 
+Sfx_Thunderbolt:
+	channel_count 3
+	channel 5, Sfx_Thunderbolt_Ch5
+	channel 6, Sfx_Thunderbolt_Ch6
+	channel 8, Sfx_Thunderbolt_Ch8
 
 Sfx_Psychic:
 	channel_count 3
@@ -5664,6 +5672,37 @@ Sfx_Gravity_Ch8:
 	noise_note 11, 14, -2, 106
 	noise_note 11, 14, -2, 107
 	noise_note 11, 14, 1, 108
+	sound_ret
+
+
+Sfx_OWWhirlpool:
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
+
+.Ch5:
+.branch5:
+	duty_cycle_pattern 0, 3, 2, 1
+	square_note 15, 15, 4, 1280
+	square_note 15, 12, 4, 1024
+	square_note 15, 14, 2, 1472
+	sound_ret
+
+.Ch6:
+.branch6:
+	duty_cycle_pattern 2, 0, 3, 1
+	square_note 7, 14, 4, 1072
+	square_note 15, 11, 4, 816
+	square_note 15, 10, 2, 1080
+	sound_ret
+
+.Ch8:
+.branch8:
+	noise_note 9, 15, 4, 68
+	noise_note 9, 15, 2, 67
+	noise_note 15, 15, 4, 66
+	noise_note 15, 15, 4, 65
 	sound_ret
 
 ENDSECTION

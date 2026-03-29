@@ -1,13 +1,13 @@
 if !DEF(MONOCHROME)
 ; red (item and mail)
 	RGB 31, 31, 31
-	RGB 31, 19, 10
-	RGB 31, 07, 01
+	RGB 31, 25, 02
+	RGB 28, 06, 03
 	RGB 00, 00, 00
-; blue (kris)
+; unused
 	RGB 31, 31, 31
-	RGB 31, 19, 10
-	RGB 10, 09, 31
+	RGB 20, 00, 20
+	RGB 10, 00, 10
 	RGB 00, 00, 00
 ; minis
 rept 6

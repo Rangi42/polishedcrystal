@@ -50,10 +50,64 @@ DEF MAIL_MSG_LENGTH    EQU $20
 DEF MAILBOX_CAPACITY   EQU 10
 DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 
-; held item effects
+; used item effects (see data/items/effects.asm)
+; _DoItemEffect.ItemEffectRoutines values (see engine/items/item_effects.asm)
+	const_def
+	const ITEMEFFECT_NONE
+	const ITEMEFFECT_BALL
+	const ITEMEFFECT_HEAL_HP
+	const ITEMEFFECT_HEAL_PP
+	const ITEMEFFECT_HEAL_STATUS
+	const ITEMEFFECT_FULL_RESTORE
+	const ITEMEFFECT_REVIVE
+	const ITEMEFFECT_VITAMIN
+	const ITEMEFFECT_RARE_CANDY
+	const ITEMEFFECT_EVO_STONE
+	const ITEMEFFECT_REPEL
+	const ITEMEFFECT_ESCAPE_ROPE
+	const ITEMEFFECT_POKE_DOLL
+	const ITEMEFFECT_X_ITEM
+	const ITEMEFFECT_DIRE_HIT
+	const ITEMEFFECT_GUARD_SPEC
+	const ITEMEFFECT_ENERGY_POWDER
+	const ITEMEFFECT_ENERGY_ROOT
+	const ITEMEFFECT_HEAL_POWDER
+	const ITEMEFFECT_REVIVAL_HERB
+	const ITEMEFFECT_SACRED_ASH
+	const ITEMEFFECT_PERSIM_BERRY
+	const ITEMEFFECT_LOWER_EV_BERRY
+	const ITEMEFFECT_SWEET_HONEY
+	const ITEMEFFECT_ABILITY_CAP
+	const ITEMEFFECT_ABILITY_PATCH
+DEF NUM_ITEM_EFFECTS EQU const_value
+
+; key item effects (see data/items/key_effects.asm)
+; DoKeyItemEffect.KeyItemEffectRoutines values (see engine/items/item_effects.asm)
+	const_def
+	const KEYITEMEFFECT_NONE
+	const KEYITEMEFFECT_BICYCLE
+	const KEYITEMEFFECT_OLD_ROD
+	const KEYITEMEFFECT_GOOD_ROD
+	const KEYITEMEFFECT_SUPER_ROD
+	const KEYITEMEFFECT_ITEMFINDER
+	const KEYITEMEFFECT_COIN_CASE
+	const KEYITEMEFFECT_APRICORN_BOX
+	const KEYITEMEFFECT_WING_CASE
+	const KEYITEMEFFECT_CANDY_JAR
+	const KEYITEMEFFECT_TYPE_CHART
+	const KEYITEMEFFECT_GBC_SOUNDS
+	const KEYITEMEFFECT_BLUE_CARD
+	const KEYITEMEFFECT_SQUIRTBOTTLE
+	const KEYITEMEFFECT_CARD_KEY
+	const KEYITEMEFFECT_BASEMENT_KEY
+DEF NUM_KEY_ITEM_EFFECTS EQU const_value
+
+; held item effects (see data/items/attributes.asm)
 	const_def
 
 	const HELD_NONE
+	const HELD_OTHER ; only needed for non-inert party menu icon
+
 	const HELD_BERRY
 	const HELD_LEFTOVERS
 	const HELD_RESTORE_PP
@@ -155,3 +209,11 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_PUNCHING_GLOVE
 	const HELD_COVERT_CLOAK
 	const HELD_LOADED_DICE
+
+; held item icon types (see gfx/stats/held_items.png)
+	const_def
+	const HELDTYPE_ITEM       ; 0
+	const HELDTYPE_INERT_ITEM ; 1
+	const HELDTYPE_MAIL       ; 2
+	const HELDTYPE_BERRY      ; 3
+DEF NUM_HELD_ITEM_TYPES EQU const_value

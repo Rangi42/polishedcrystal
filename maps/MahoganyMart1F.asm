@@ -1,7 +1,7 @@
 MahoganyMart1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script MahoganyMart1FTrigger0
-	scene_script MahoganyMart1FTrigger1
+	scene_script MahoganyMart1FNoopScene, SCENE_MAHOGANYMART1F_NOOP
+	scene_script MahoganyMart1FLanceUncoversStairsScene, SCENE_MAHOGANYMART1F_LANCE_UNCOVERS_STAIRS
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, MahoganyMart1FStaircaseCallback
@@ -30,9 +30,9 @@ MahoganyMart1F_MapScriptHeader:
 	const MAHOGANYMART1F_LANCE
 	const MAHOGANYMART1F_DRAGONITE
 
-MahoganyMart1FTrigger1:
+MahoganyMart1FLanceUncoversStairsScene:
 	sdefer MahoganyMart1FLanceUncoversStaircaseScript
-MahoganyMart1FTrigger0:
+MahoganyMart1FNoopScene:
 	end
 
 MahoganyMart1FStaircaseCallback:
@@ -50,7 +50,18 @@ MahoganyMart1FPharmacistScript:
 MahoganyMart1FBlackBeltScript:
 	checkevent EVENT_DECIDED_TO_HELP_LANCE
 	iftrue_jumptextfaceplayer MahoganyMart1FBlackBeltText_LanceEntered
-	jumptextfaceplayer MahoganyMart1FBlackBeltText
+	jumpthistextfaceplayer
+
+	text "Heheh! The experi-"
+	line "ment worked like a"
+	cont "charm."
+
+	para "Magikarp are just"
+	line "worthless, but"
+
+	para "Gyarados are big"
+	line "moneymakers."
+	done
 
 MahoganyMart1FLanceUncoversStaircaseScript:
 	turnobject MAHOGANYMART1F_BLACK_BELT, RIGHT
@@ -86,7 +97,7 @@ MahoganyMart1FLanceUncoversStaircaseScript:
 	applyonemovement MAHOGANYMART1F_LANCE, slow_step_right
 	playsound SFX_EXIT_BUILDING
 	disappear MAHOGANYMART1F_LANCE
-	setscene $0
+	setscene SCENE_MAHOGANYMART1F_NOOP
 	waitsfx
 	end
 
@@ -183,17 +194,6 @@ MahoganyMart1FPharmacistText_LanceEntered:
 	cont "way…"
 	done
 
-MahoganyMart1FBlackBeltText:
-	text "Heheh! The experi-"
-	line "ment worked like a"
-	cont "charm."
-
-	para "Magikarp are just"
-	line "worthless, but"
-
-	para "Gyarados are big"
-	line "moneymakers."
-	done
 
 MahoganyMart1FBlackBeltText_LanceEntered:
 	text "Urrgh…"

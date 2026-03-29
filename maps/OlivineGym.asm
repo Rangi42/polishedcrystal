@@ -35,7 +35,7 @@ OlivineGymJasmineScript:
 	opentext
 	givebadge MINERALBADGE, JOHTO_REGION
 	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
-	setmapscene ROUTE_42, $1
+	setmapscene ROUTE_42, SCENE_ROUTE42_LYRA
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
 	iftrue_jumpopenedtext Jasmine_GoodLuck

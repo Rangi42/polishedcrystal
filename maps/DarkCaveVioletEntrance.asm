@@ -1,5 +1,7 @@
 DarkCaveVioletEntrance_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_DARKCAVEVIOLETENTRANCE_FALKNER
+	scene_const SCENE_DARKCAVEVIOLETENTRANCE_NOOP
 
 	def_callbacks
 
@@ -9,13 +11,13 @@ DarkCaveVioletEntrance_MapScriptHeader:
 	warp_event 35, 33, ROUTE_46, 3
 
 	def_coord_events
-	coord_event  6,  2, 0, DarkCaveVioletEntranceFalknerTrigger
+	coord_event  6,  2, SCENE_DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceFalknerTrigger
 
 	def_bg_events
 	bg_event 26,  3, BGEVENT_ITEM + ELIXIR, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXIR
 
 	def_object_events
-	pokemon_event 10, 2, URSARING, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, ClearText, EVENT_DARK_CAVE_URSARING
+	pokemon_event 10, 2, URSARING, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, ClearText, EVENT_DARK_CAVE_URSARING
 	object_event  9,  2, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
 	object_event  8,  2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
 	itemball_event  6,  8, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
@@ -52,8 +54,8 @@ DarkCaveVioletEntranceFalknerTrigger:
 	disappear DARKCAVEVIOLETENTRANCE_FALKNER
 	pause 15
 	clearevent EVENT_VIOLET_GYM_FALKNER
-	setmapscene VIOLET_GYM, $1
-	setscene $1
+	setmapscene VIOLET_GYM, SCENE_VIOLETGYM_FALKNER_RETURNS
+	setscene SCENE_DARKCAVEVIOLETENTRANCE_NOOP
 	end
 
 .Darkness:

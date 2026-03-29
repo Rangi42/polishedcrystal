@@ -41,15 +41,7 @@ SummaryScreen_OrangePage:
 	ret
 
 .OrangePalettes:
-	RGB 30, 24, 16
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 31, 30, 29
-	RGB 30, 24, 16
-	RGB 31, 31, 31
-	RGB 00, 00, 00
+INCLUDE "gfx/stats/orange_page.pal"
 
 .NatureString:
 	db "Nature/@"
@@ -97,13 +89,13 @@ SummaryScreen_OrangePage:
 	jr z, .hatched
 	dec a
 	jr z, .traded
-	ld [wBuffer2], a
+	ld [wSummaryCaughtLevel], a
 	ld de, .str_level
 	rst PlaceString
 	ld h, b
 	ld l, c
 ;	hlcoord = 15, 9
-	ld de, wBuffer2
+	ld de, wSummaryCaughtLevel
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	jmp PrintNum
 .hatched

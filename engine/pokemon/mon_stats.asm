@@ -330,7 +330,7 @@ GetShininess:
 ; 2: encountered oldbox code
 	dec a
 	jr nz, .other
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .other
@@ -385,7 +385,7 @@ GetGender:
 ; 2: encountered oldbox code
 	dec a
 	jr nz, .other
-	ld a, ERR_OLDBOX
+	ld a, ERR_PC_BOX_OLD
 	jmp Crash
 
 .other
@@ -452,23 +452,36 @@ GetGender:
 ListMovePP:
 	ld a, [wNumMoves]
 	inc a
-	ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
+	ld c, a ; no-optimize a = N - a (c gets used in .pp_loop and .dash_loop)
 	ld a, NUM_MOVES
 	sub c
 	ld b, a
 	push hl
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld e, a
-	ld d, $0
-	ld a, '<BOLDP>'
-	call .load_loop
+	ld d, 0
+.pp_loop
+	ld a, SUMMARY_TILE_PP_START
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hld], a
+	dec hl
+	add hl, de
+	dec c
+	jr nz, .pp_loop
 	ld a, b
 	and a
 	jr z, .skip
 	ld c, a
 	ld a, '-'
-	call .load_loop
-
+.dash_loop
+	ld [hli], a
+	ld [hld], a
+	add hl, de
+	dec c
+	jr nz, .dash_loop
 .skip
 	pop hl
 	inc hl
@@ -520,7 +533,7 @@ ListMovePP:
 	lb bc, 1, 2
 	call PrintNum
 	pop hl
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -532,14 +545,6 @@ ListMovePP:
 	ld a, b
 	cp NUM_MOVES
 	jr nz, .loop
-	ret
-
-.load_loop
-	ld [hli], a
-	ld [hld], a
-	add hl, de
-	dec c
-	jr nz, .load_loop
 	ret
 
 FixPlayerEVs:
@@ -941,8 +946,6 @@ GetStatusConditionIndex:
 	ret
 
 .tox
-	inc a ; 7
-.fnt
 	inc a ; 6
 .frz
 	inc a ; 5
@@ -1009,7 +1012,7 @@ FntString: rawchar "Fnt@"
 ToxString: rawchar "Tox@"
 
 ListMoves:
-; List moves at hl, spaced every [wBuffer1] tiles.
+; List moves at hl, spaced every [wListMovesLineSpacing] tiles.
 	ld de, wListMoves_MoveIndicesBuffer
 	ld b, $0
 .moves_loop
@@ -1029,7 +1032,7 @@ ListMoves:
 	inc b
 	pop hl
 	push bc
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -1045,7 +1048,7 @@ ListMoves:
 .nonmove_loop
 	push af
 	ld [hl], '-'
-	ld a, [wBuffer1]
+	ld a, [wListMovesLineSpacing]
 	ld c, a
 	ld b, 0
 	add hl, bc

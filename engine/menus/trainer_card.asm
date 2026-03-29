@@ -702,12 +702,12 @@ TrainerCard_KantoBadgesOAM:
 	db $1c, $20, $24, $20 | $80
 	db $1c | $80, $20, $24, $20 | $80
 
-CardBorderGFX:  INCBIN "gfx/trainer_card/border.2bpp.lz"
+CardBorderGFX:  INCBIN "gfx/trainer_card/border.2bpp.lzp"
 CardDividerGFX: INCBIN "gfx/trainer_card/divider.2bpp"
 CardStatusGFX:  INCBIN "gfx/trainer_card/status.2bpp" ; must come after CardDividerGFX
 CardBadgesGFX:  INCBIN "gfx/trainer_card/badges.2bpp"
 
-LeaderGFX:  INCBIN "gfx/trainer_card/johto_leaders.2bpp.lz"
-LeaderGFX2: INCBIN "gfx/trainer_card/kanto_leaders.2bpp.lz"
-BadgeGFX:   INCBIN "gfx/trainer_card/johto_badges.2bpp.lz"
-BadgeGFX2:  INCBIN "gfx/trainer_card/kanto_badges.2bpp.lz"
+LeaderGFX:  INCBIN "gfx/trainer_card/johto_leaders.2bpp.lzp"
+LeaderGFX2: INCBIN "gfx/trainer_card/kanto_leaders.2bpp.lzp"
+BadgeGFX:   INCBIN "gfx/trainer_card/johto_badges.2bpp.lzp"
+BadgeGFX2:  INCBIN "gfx/trainer_card/kanto_badges.2bpp.lzp"

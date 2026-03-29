@@ -211,7 +211,7 @@ MACRO tr_extra
 
 	; All of these fields are optional.
 	for i, 1, _NARG + 1
-		if !STRCMP("\<i>", "SHINY")
+		if "\<i>" === "SHINY"
 			redef _tr_pk{d:p}_extra |= SHINY_MASK
 		elif DEF(NAT_\<i>)
 			redef _tr_pk{d:p}_extra |= NAT_\<i>
@@ -238,9 +238,9 @@ MACRO tr_dvs
 ; WARNING: Unlike tr_evs, unmentioned DVs will be set to 15, not 0!
 	def _tr_flags |= TRAINERTYPE_DVS
 
-	; check if a constant was used
-	if STRFIND("\#", "_") != -1
-		redef _tr_pk{d:p}_dvs EQUS "{\#}"
+	; check if a constant was used, e.g. DVS_HP_*
+	if STRFIND("\#", "_") != -1 && STRFIND("\#", ",") == -1
+		redef _tr_pk{d:p}_dvs EQUS #\#
 	else
 		redef _tr_pk{d:p}_dvs EQUS "\#"
 	endc

@@ -133,7 +133,7 @@
 	tilecoll WATER, CURRENT_LEFT, WATER, CURRENT_UP ; 84
 	tilecoll CURRENT_LEFT, CURRENT_LEFT, CURRENT_UP, CURRENT_UP ; 85
 	tilecoll WALL, WALL, WATER, WATER ; 86
-	tilecoll WALL, WALL, WATER, WALL ; 87
+	tilecoll WALL, WALL, WALL, WALL ; 87
 	tilecoll WALL, WALL, WALL, WALL ; 88
 	tilecoll WALL, WALL, WALL, WALL ; 89
 	tilecoll WALL, WALL, WALL, WALL ; 8a
@@ -247,3 +247,6 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL ; f6
 	tilecoll WALL, WALL, WALL, WALL ; f7
 	tilecoll WARP_CARPET_LEFT, FLOOR, WARP_CARPET_LEFT, FLOOR ; f8
+	tilecoll WALL, FLOOR, WALL, FLOOR ; f9
+	tilecoll WATER, WATER, FLOOR, FLOOR ; fa
+	tilecoll WALL, WALL, FLOOR, FLOOR ; fb

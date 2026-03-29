@@ -254,11 +254,12 @@ INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 
 
-SECTION "Underground Warehouse Scripts", ROMX
+SECTION "Goldenrod Underground Scripts", ROMX
 
-INCLUDE "maps/UndergroundWarehouse.asm"
-INCLUDE "maps/UndergroundPathSwitchRoomEntrances.asm"
-INCLUDE "maps/WarehouseEntrance.asm"
+INCLUDE "maps/GoldenrodUndergroundWarehouse.asm"
+INCLUDE "maps/GoldenrodUndergroundSwitchRoom.asm"
+INCLUDE "maps/GoldenrodUndergroundEntrances.asm"
+INCLUDE "maps/GoldenrodUnderground.asm"
 
 
 SECTION "Magnet Tunnel Scripts", ROMX
@@ -741,7 +742,7 @@ INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CopycatsHouse1F.asm"
 INCLUDE "maps/CopycatsHouse2F.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
-INCLUDE "maps/Underground.asm"
+INCLUDE "maps/UndergroundPath.asm"
 
 
 SECTION "Silph Co Scripts", ROMX
@@ -928,10 +929,10 @@ SECTION "Routes 5-8 Scripts", ROMX
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route5CleanseTagSpeechHouse.asm"
 INCLUDE "maps/Route5SaffronCityGate.asm"
-INCLUDE "maps/Route5UndergroundEntrance.asm"
+INCLUDE "maps/Route5UndergroundPathEntrance.asm"
 INCLUDE "maps/Route6.asm"
 INCLUDE "maps/Route6SaffronGate.asm"
-INCLUDE "maps/Route6UndergroundEntrance.asm"
+INCLUDE "maps/Route6UndergroundPathEntrance.asm"
 INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route8.asm"
@@ -969,11 +970,11 @@ INCLUDE "maps/Route16FuchsiaSpeechHouse.asm"
 INCLUDE "maps/Route16Gate.asm"
 INCLUDE "maps/Route1617Gate.asm"
 INCLUDE "maps/Route1617Gate2F.asm"
-INCLUDE "maps/Route16Northeast.asm"
-INCLUDE "maps/Route16Northwest.asm"
-INCLUDE "maps/Route16South.asm"
+INCLUDE "maps/Route16East.asm"
+INCLUDE "maps/Route16North.asm"
 INCLUDE "maps/Route16West.asm"
-INCLUDE "maps/Route17.asm"
+INCLUDE "maps/Route17North.asm"
+INCLUDE "maps/Route17South.asm"
 
 
 SECTION "Routes 18-20 Scripts", ROMX
@@ -992,7 +993,8 @@ SECTION "Routes 21-23 Scripts", ROMX
 INCLUDE "maps/Route21.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/Route22Past.asm"
-INCLUDE "maps/Route23.asm"
+INCLUDE "maps/Route23North.asm"
+INCLUDE "maps/Route23South.asm"
 
 
 SECTION "Routes 24-26 Scripts", ROMX

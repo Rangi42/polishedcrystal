@@ -1,5 +1,9 @@
 TeamRocketBaseB2F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_TEAMROCKETBASEB2F_LANCE_HEALS
+	scene_const SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS
+	scene_const SCENE_TEAMROCKETBASEB2F_ELECTRODES
+	scene_const SCENE_TEAMROCKETBASEB2F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, TransmitterDoorCallback
@@ -12,25 +16,23 @@ TeamRocketBaseB2F_MapScriptHeader:
 	warp_event 27, 14, TEAM_ROCKET_BASE_B3F, 4
 
 	def_coord_events
-	coord_event  5, 14, 0, LanceHealsScript
-	coord_event  4, 13, 0, LanceHealsScript
-	coord_event 14, 11, 1, RocketBaseBossFLeft
-	coord_event 15, 11, 1, RocketBaseBossFRight
-	coord_event 14, 12, 2, RocketBaseCantLeaveScript
-	coord_event 15, 12, 2, RocketBaseCantLeaveScript
-	coord_event 12,  3, 2, RocketBaseLancesSideScript
-	coord_event 12, 10, 2, RocketBaseLancesSideScript
-	coord_event 12, 11, 2, RocketBaseLancesSideScript
+	coord_event  5, 14, SCENE_TEAMROCKETBASEB2F_LANCE_HEALS, LanceHealsScript
+	coord_event  4, 13, SCENE_TEAMROCKETBASEB2F_LANCE_HEALS, LanceHealsScript
+	coord_event 14, 11, SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS, RocketBaseBossFLeft
+	coord_event 15, 11, SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS, RocketBaseBossFRight
+	coord_event 14, 12, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseCantLeaveScript
+	coord_event 15, 12, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseCantLeaveScript
+	coord_event 12,  3, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseLancesSideScript
+	coord_event 12, 10, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseLancesSideScript
+	coord_event 12, 11, SCENE_TEAMROCKETBASEB2F_ELECTRODES, RocketBaseLancesSideScript
 
 	def_bg_events
 	bg_event 14, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
 	bg_event 15, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
-	bg_event 17,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 16,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 15,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 14,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 13,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
-	bg_event 12,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 16,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 15,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 14,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 13,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 12,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 12,  7, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 12,  6, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
@@ -52,12 +54,12 @@ TeamRocketBaseB2F_MapScriptHeader:
 	object_event 20, 16, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ARIANA
 	object_event  5, 13, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	object_event  9, 13, SPRITE_DRAGONITE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_DRAGONITE
-	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode1, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	object_event  7,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode2, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	object_event  7,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode3, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	pokemon_event 22,  5, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_RED, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	pokemon_event 22,  7, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_RED, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	pokemon_event 22,  9, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_RED, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
+	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, PAL_MON_RED, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode1, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
+	object_event  7,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, PAL_MON_RED, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode2, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
+	object_event  7,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, PAL_MON_RED, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode3, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
+	pokemon_event 22,  5, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_RED, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
+	pokemon_event 22,  7, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_RED, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
+	pokemon_event 22,  9, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_RED, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
 	object_event 25, 13, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM17, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerGruntM18, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event 21, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGruntM19, EVENT_TEAM_ROCKET_BASE_POPULATION
@@ -84,7 +86,7 @@ TransmitterDoorCallback:
 	endcallback
 
 .Change:
-	changeblock 14, 12, $7
+	changeblock 14, 12, $0d
 	endcallback
 
 RocketBaseBossFLeft:
@@ -144,7 +146,7 @@ RocketBaseBossFScript:
 	disappear TEAMROCKETBASEB2F_ROCKET3
 	pause 15
 	special Special_FadeInQuickly
-	setscene $2
+	setscene SCENE_TEAMROCKETBASEB2F_ELECTRODES
 	clearevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	turnobject TEAMROCKETBASEB2F_LANCE, DOWN
 	showtext RocketBaseLancePostBattleText
@@ -178,7 +180,7 @@ LanceHealsScript:
 	special HealParty
 	special FadeInPalettes_EnableDynNoApply
 	showtext LanceHealsText2
-	setscene $1
+	setscene SCENE_TEAMROCKETBASEB2F_ROCKET_BOSS
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
 	readvar VAR_FACING
 	ifequalfwd RIGHT, .FacingRight
@@ -311,7 +313,7 @@ RocketBaseElectrodeScript:
 	clearflag ENGINE_ROCKET_SIGNAL_ON_CH20
 	setevent EVENT_ROUTE_43_GATE_ROCKETS
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	setscene $3
+	setscene SCENE_TEAMROCKETBASEB2F_NOOP
 	clearevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	setevent EVENT_TURNED_OFF_SECURITY_CAMERAS
 	setevent EVENT_SECURITY_CAMERA_1
@@ -329,7 +331,7 @@ TeamRocketBaseB2FLockedDoor:
 	writetext RocketBaseDoorKnowPasswordText
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock 14, 12, $7
+	changeblock 14, 12, $0d
 	refreshmap
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER

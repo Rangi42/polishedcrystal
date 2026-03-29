@@ -1,5 +1,7 @@
 CeruleanCave1F_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_CERULEANCAVE1F_BRIDGE_UNDERFOOT
+	scene_const SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, CeruleanCave1FTileScript
@@ -15,12 +17,12 @@ CeruleanCave1F_MapScriptHeader:
 	warp_event  5, 15, CERULEAN_CAVE_2F, 6
 
 	def_coord_events
-	coord_event 20,  4, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 20,  5, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 23,  4, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 23,  5, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 21,  7, 0, CeruleanCave1FBridgeUnderfootTrigger
-	coord_event 22,  7, 0, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 20,  4, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 20,  5, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 23,  4, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 23,  5, SCENE_CERULEANCAVE1F_BRIDGE_OVERHEAD, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 21,  7, SCENE_CERULEANCAVE1F_BRIDGE_UNDERFOOT, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 22,  7, SCENE_CERULEANCAVE1F_BRIDGE_UNDERFOOT, CeruleanCave1FBridgeUnderfootTrigger
 
 	def_bg_events
 	bg_event 10, 13, BGEVENT_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL
@@ -44,19 +46,19 @@ CeruleanCave1FTileScript:
 	endcallback
 
 CeruleanCave1F_OverheadBridgeAsm:
-	changebridgeblock 20, 2, $ea, CERULEAN_CAVE_1F
-	changebridgeblock 22, 2, $eb, CERULEAN_CAVE_1F
-	changebridgeblock 20, 4, $ee, CERULEAN_CAVE_1F
-	changebridgeblock 22, 4, $ef, CERULEAN_CAVE_1F
+	changebridgeblock 20, 2, $76, CERULEAN_CAVE_1F
+	changebridgeblock 22, 2, $77, CERULEAN_CAVE_1F
+	changebridgeblock 20, 4, $7a, CERULEAN_CAVE_1F
+	changebridgeblock 22, 4, $7b, CERULEAN_CAVE_1F
 	changebridgeblock 20, 6, $59, CERULEAN_CAVE_1F
 	changebridgeblock 22, 6, $5b, CERULEAN_CAVE_1F
 	jmp BufferScreen
 
 CeruleanCave1F_UnderfootBridgeAsm:
-	changebridgeblock 20, 2, $e8, CERULEAN_CAVE_1F
-	changebridgeblock 22, 2, $e9, CERULEAN_CAVE_1F
-	changebridgeblock 20, 4, $ec, CERULEAN_CAVE_1F
-	changebridgeblock 22, 4, $ed, CERULEAN_CAVE_1F
+	changebridgeblock 20, 2, $74, CERULEAN_CAVE_1F
+	changebridgeblock 22, 2, $75, CERULEAN_CAVE_1F
+	changebridgeblock 20, 4, $78, CERULEAN_CAVE_1F
+	changebridgeblock 22, 4, $79, CERULEAN_CAVE_1F
 	changebridgeblock 20, 6, $55, CERULEAN_CAVE_1F
 	changebridgeblock 22, 6, $57, CERULEAN_CAVE_1F
 	jmp BufferScreen

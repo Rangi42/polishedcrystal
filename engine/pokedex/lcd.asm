@@ -224,14 +224,16 @@ StackDexGraphics:
 
 	ld hl, PokedexObjLZ
 	ld de, vTiles0
-	lb bc, BANK(PokedexObjLZ), 31
+	lb bc, BANK(PokedexObjLZ), 30
 	call DecompressRequest2bpp
 
 	; Gender symbols
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $7d
-	lb bc, BANK(BattleExtrasGFX), 2
-	call DecompressRequest2bpp
+	ld de, wDex2bpp
+	farcall CopyColoredMaleFemaleShinyTiles
+	ld hl, vTiles2 tile $7d
+	ld de, wDex2bpp
+	lb bc, BANK(@), 2
+	call Get2bpp
 
 	; Set up a conversion table for Johto dex numbers.
 	ld a, BANK(wDexConversionTable)
@@ -278,9 +280,9 @@ StackDexGraphics:
 	ld bc, PHB_LCDCode.End - PHB_LCDCode
 	rst CopyBytes
 	ld a, LOW(wLCDPokedex)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(wLCDPokedex)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	ld a, CGB_POKEDEX
 	call GetCGBLayout
@@ -308,9 +310,9 @@ StackDexGraphics:
 	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	pop af
 	pop bc
@@ -445,7 +447,7 @@ Pokedex_RefreshOAM:
 	; Ability display
 	lb bc, 76, 100
 	lb de, 1, 15
-	lb hl, 0, $1d
+	lb hl, 0, '<BOLDH>'
 
 	ldh a, [hPokedexStatsCurAbil]
 	cp 2 ; 0/1/2 -> 1/2/H
@@ -641,13 +643,13 @@ PHB_LCDCode:
 LOAD UNION "Misc 404", WRAM0
 wLCDPokedex::
 	ldh a, [hROMBank]
-	ldh [hROMBankBackup], a
+	ldh [hPokedexROMBankBackup], a
 	ld a, BANK(PHB_LCDCode)
 	rst Bankswitch
 	db $cd ; call
 wPokedex_HBlankFunction::
 	dw DoNothing ; replaced with the actual function
-	ldh a, [hROMBankBackup]
+	ldh a, [hPokedexROMBankBackup]
 	rst Bankswitch
 	pop af
 	reti
@@ -992,18 +994,20 @@ PVB_UpdateDexMap::
 	ld a, [hl]
 	and a
 	ret z
+
+	ldh a, [rVBK]
+	rra ; stores VRAM bank in carry flag to be pushed
 	ldh a, [rWBK]
 	push af
-	ldh a, [rVBK]
-	push af
+
 	ld a, BANK(wDexTilemap)
 	ldh [rWBK], a
-	ld a, [hl]
 
 	; Update the tilemap last if several kinds are pending.
 	; The reason this is checked here instead of later is because
 	; this just barely makes it in time before leaving VBlank, so.
 	; checking it last in a sequence causes us to run out of time.
+	ld a, [hl]
 	res DEXGFX_DEFERRED, a
 	cp 1 << DEXGFX_TILEMAP
 	jr nz, .no_tilemap
@@ -1147,9 +1151,9 @@ PVB_UpdateDexMap::
 
 .done
 	pop af
-	ldh [rVBK], a
-	pop af
 	ldh [rWBK], a
+	rla ; retrieves VRAM bank from popped carry flag
+	ldh [rVBK], a
 	ret
 
 DexDisplayOAMData:

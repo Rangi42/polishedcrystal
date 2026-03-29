@@ -10,7 +10,7 @@ DEF MP_WAVEFORM0 EQU $2d
 SECTION "Music Player Graphics", ROMX
 
 MusicPlayerGFX:
-INCBIN "gfx/music_player/music_player.2bpp.lz"
+INCBIN "gfx/music_player/music_player.2bpp.lzp"
 
 
 SECTION "Music Player", ROMX
@@ -64,9 +64,9 @@ MusicPlayer::
 	call ClearTileMap
 
 	ld a, LOW(LCDMusicPlayer)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDMusicPlayer)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 ; Load palette
 	ld hl, rIE
@@ -83,7 +83,7 @@ MusicPlayer::
 
 	ld hl, MusicPlayerPals
 	ld de, wOBPals2
-	ld bc, 4 palettes
+	ld bc, 7 palettes
 	rst CopyBytes
 
 	pop af
@@ -120,7 +120,7 @@ MusicPlayer::
 
 	ld hl, vTiles0
 	ld de, wDecompressScratch tile $47
-	ld c, 1
+	ld c, 5
 	call Request2bppInWRA6
 
 	call DelayFrame
@@ -138,18 +138,10 @@ MusicPlayer::
 	rst ByteFill
 
 ; Clear wMPNotes
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wMPNotes)
-	ldh [rWBK], a
-
 	xor a
 	ld hl, wMPNotes
-	ld bc, 4 * 256
+	ld bc, 3 * 256
 	rst ByteFill
-
-	pop af
-	ldh [rWBK], a
 ; fallthrough
 
 RenderMusicPlayer:
@@ -158,19 +150,16 @@ RenderMusicPlayer:
 	decoord 0, PIANO_ROLL_HEIGHT
 	rst CopyBytes
 
-	ld bc, 4 * 3
+	ld bc, 4 * 6
 	ld hl, NoteOAM
 	ld de, wShadowOAM
 	rst CopyBytes
 	call DelayFrame
 	xor a
-	ldh [hOAMUpdate], a ; we will manually do it in LCD interrupt
+	ldh [hOAMUpdate], a
 
 	call RedrawChannelLabels
 	call DelayFrame
-
-	ldh a, [rWBK]
-	ldh [hMPBuffer], a
 
 	ld a, [wSongSelection]
 	; let's see if a song is currently selected
@@ -190,9 +179,6 @@ _RedrawMusicPlayer:
 ; fallthrough
 
 MusicPlayerLoop:
-	ld a, BANK(wMPNotes)
-	ldh [rWBK], a
-
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
 	jrheldbutton PAD_UP, .up, 12
@@ -214,7 +200,7 @@ MusicPlayerLoop:
 ; previous song
 	ld a, [wSongSelection]
 	dec a
-	jmp nz, _RedrawMusicPlayer
+	jr nz, _RedrawMusicPlayer
 	ld a, NUM_MUSIC_SONGS - 1
 	jmp _RedrawMusicPlayer
 
@@ -269,9 +255,8 @@ MusicPlayerLoop:
 ; exit music player
 	xor a
 	ldh [hMPState], a
+	ldh [hNextMPState], a
 	ldh [hVBlank], a
-	ldh a, [hMPBuffer]
-	ldh [rWBK], a
 	call ClearSprites
 	ld hl, rLCDC
 	res B_LCDC_OBJ_SIZE, [hl]
@@ -279,17 +264,16 @@ MusicPlayerLoop:
 	res B_IE_STAT, [hl]
 
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	ret
 
 .start:
 ; open song selector
 	xor a
 	ldh [hMPState], a
-	ldh a, [hMPBuffer]
-	ldh [rWBK], a
+	ldh [hNextMPState], a
 	call SongSelector
 	jmp RenderMusicPlayer
 
@@ -991,30 +975,17 @@ DrawNotes:
 	call DrawNote
 	call CheckForVolumeBarReset
 
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wMPNotes)
-	ldh [rWBK], a
 	ldh a, [hMPState]
 	inc a
-	ldh [hMPState], a
-	cp PIANO_ROLL_HEIGHT_PX + 1 + 1
-	jr c, .skip
-	ld a, 1
-	ldh [hMPState], a
-.skip
-	dec a
-	push af
-	call .CopyNotes
-	pop af
-	add PIANO_ROLL_HEIGHT_PX
-	call nc, .CopyNotes
-	pop af
-	ldh [rWBK], a
-	ret
+	ldh [hNextMPState], a
+	; add PIANO_ROLL_HEIGHT_PX - 2
+	; write one past the current head, leaves a one frame delay
+	; between the key press and the piano roll
+	add PIANO_ROLL_HEIGHT_PX - 1
+	; fallthrough
 
 .CopyNotes:
-	ld bc, 4
+	ld bc, 3
 	ld hl, wMPNotes
 	rst AddNTimes
 	ld d, h
@@ -1060,7 +1031,7 @@ CheckChannelOn:
 	ld a, [wTmpCh]
 	ld hl, wChannel1NoteFlags
 	rst AddNTimes
-	bit SOUND_REST, [hl]
+	bit NOTE_REST, [hl]
 	jr nz, _NoteEnded
 
 ; Do an IO check too if the note's envelope is 0
@@ -1139,10 +1110,15 @@ DrawNewNote:
 	ld a, [hl]
 	add b
 	ld c, a
+	ld hl, .KeySprite
+	add hl, de
+	ld b, [hl]
 	jr WriteNotePitch
 
 .Pitchels:
-	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
+	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25
+.KeySprite:
+	db 1, 4, 2, 4, 3,  1,  4,  2,  4,  2,  4,  3
 
 DrawLongerNote:
 	ld a,[wTmpCh]
@@ -1163,8 +1139,7 @@ DrawLongerNote:
 	; fallthrough
 
 _WriteBlankNote:
-	xor a
-	ld c, a
+	ld c, $f0
 
 WriteNotePitch:
 	ld hl, wPitchesTmp
@@ -1172,8 +1147,15 @@ WriteNotePitch:
 	ld e, a
 	ld d, 0
 	add hl, de
+	ld [hl], c
+	ld hl, wShadowOAMSprite03XCoord
+	add a
+	add a
+	ld e, a
+	add hl, de
 	ld a, c
-	ld [hl], a
+	ld [hli], a
+	ld [hl], b
 	ret
 
 CheckForVolumeBarReset:
@@ -1734,6 +1716,10 @@ NoteOAM:
 	db 0, 0, $00, OAM_PRIO | 3 ; red
 	db 0, 0, $00, OAM_PRIO | 2 ; blue
 	db 0, 0, $00, OAM_PRIO | 1 ; green
+	; keys
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 6 ; red
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 5 ; blue
+	db PIANO_ROLL_HEIGHT_PX + 16, 240, $00, 4 ; green
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"

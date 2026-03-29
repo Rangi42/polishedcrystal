@@ -32,64 +32,32 @@ NationalParkBugContest_MapScriptHeader:
 	tmhmball_event  3, 43, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
 
 BugCatchingContestant1AScript:
-	faceplayer
-	jumptext BugCatchingContestant1AText
+	jumpthistextfaceplayer
 
-BugCatchingContestant2AScript:
-	faceplayer
-	jumptext BugCatchingContestant2AText
-
-BugCatchingContestant3AScript:
-	faceplayer
-	jumptext BugCatchingContestant3AText
-
-BugCatchingContestant4AScript:
-	faceplayer
-	jumptext BugCatchingContestant4AText
-
-BugCatchingContestant5AScript:
-	faceplayer
-	jumptext BugCatchingContestant5AText
-
-BugCatchingContestant6AScript:
-	faceplayer
-	jumptext BugCatchingContestant6AText
-
-BugCatchingContestant7AScript:
-	faceplayer
-	jumptext BugCatchingContestant7AText
-
-BugCatchingContestant8AScript:
-	faceplayer
-	jumptext BugCatchingContestant8AText
-
-BugCatchingContestant9AScript:
-	faceplayer
-	jumptext BugCatchingContestant9AText
-
-BugCatchingContestant10AScript:
-	faceplayer
-	jumptext BugCatchingContestant10AText
-
-BugCatchingContestant1AText:
 	text "Don: I'm going to"
 	line "win! Don't bother"
 	cont "me."
 	done
 
-BugCatchingContestant2AText:
+BugCatchingContestant2AScript:
+	jumpthistextfaceplayer
+
 	text "Lou: My Parasect"
 	line "puts #mon to"
 	cont "sleep with Spore."
 	done
 
-BugCatchingContestant3AText:
+BugCatchingContestant3AScript:
+	jumpthistextfaceplayer
+
 	text "Nick: I'm raising"
 	line "fast #mon for"
 	cont "battles."
 	done
 
-BugCatchingContestant4AText:
+BugCatchingContestant4AScript:
+	jumpthistextfaceplayer
+
 	text "William: I'm not"
 	line "concerned about"
 	cont "winning."
@@ -98,7 +66,9 @@ BugCatchingContestant4AText:
 	line "for rare #mon."
 	done
 
-BugCatchingContestant5AText:
+BugCatchingContestant5AScript:
+	jumpthistextfaceplayer
+
 	text "Benny: Ssh! You'll"
 	line "scare off Scyther."
 
@@ -106,7 +76,9 @@ BugCatchingContestant5AText:
 	line "later."
 	done
 
-BugCatchingContestant6AText:
+BugCatchingContestant6AScript:
+	jumpthistextfaceplayer
+
 	text "Barry: You should"
 	line "weaken Bug #mon"
 
@@ -114,7 +86,9 @@ BugCatchingContestant6AText:
 	line "a Ball."
 	done
 
-BugCatchingContestant7AText:
+BugCatchingContestant7AScript:
+	jumpthistextfaceplayer
+
 	text "Cindy: I love Bug"
 	line "#mon."
 
@@ -122,7 +96,9 @@ BugCatchingContestant7AText:
 	line "like them too."
 	done
 
-BugCatchingContestant8AText:
+BugCatchingContestant8AScript:
+	jumpthistextfaceplayer
+
 	text "Josh: I've been"
 	line "collecting Bug"
 
@@ -133,7 +109,9 @@ BugCatchingContestant8AText:
 	line "going to lose!"
 	done
 
-BugCatchingContestant9AText:
+BugCatchingContestant9AScript:
+	jumpthistextfaceplayer
+
 	text "Johnny: If you've"
 	line "got the time to"
 
@@ -141,7 +119,9 @@ BugCatchingContestant9AText:
 	line "Bug #mon."
 	done
 
-BugCatchingContestant10AText:
+BugCatchingContestant10AScript:
+	jumpthistextfaceplayer
+
 	text "Kipp: I've studied"
 	line "about Bug #mon"
 	cont "a lot."
@@ -149,3 +129,13 @@ BugCatchingContestant10AText:
 	para "I'm going to win"
 	line "for sure."
 	done
+
+
+
+
+
+
+
+
+
+

@@ -28,7 +28,7 @@ OaksLab_MapScriptHeader:
 
 	def_object_events
 	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Oak, -1
-	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, EEVEE, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
+	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, EEVEE, -1, PAL_MON_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
 	object_event  1,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
 	object_event  8,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
 	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
@@ -124,7 +124,12 @@ Oak:
 	writetext OakLabShinyCharmText
 	waitbutton
 .NoShinyCharm
-	jumpopenedtext OakLabGoodbyeText
+	jumpthisopenedtext
+
+	text "If you're in the"
+	line "area, I hope you"
+	cont "come visit again."
+	done
 
 .BattleOak:
 	checkevent EVENT_LISTENED_TO_OAK_INTRO
@@ -185,7 +190,12 @@ EeveeDollScript:
 	waitbutton
 	writetext EeveeDollSentText
 	waitbutton
-	jumpopenedtext ProfOakAfterTradeText
+	jumpthisopenedtext
+
+	text "Prof.Oak: Set it"
+	line "somewhere you can"
+	cont "appreciate it!"
+	done
 
 OakWelcomeKantoText:
 	text "Oak: Ah, <PLAYER>!"
@@ -315,11 +325,6 @@ OakLabShinyCharmText:
 	cont "#mon!"
 	done
 
-OakLabGoodbyeText:
-	text "If you're in the"
-	line "area, I hope you"
-	cont "come visit again."
-	done
 
 OakMightBeReadyText:
 	text "Oak: Incredible,"
@@ -564,11 +569,6 @@ EeveeDollSentText:
 	line "was sent home."
 	done
 
-ProfOakAfterTradeText:
-	text "Prof.Oak: Set it"
-	line "somewhere you can"
-	cont "appreciate it!"
-	done
 
 OaksLabPokedexText:
 	text "It's Prof.Oak's"

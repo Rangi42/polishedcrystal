@@ -17,8 +17,7 @@ DEF NUM_MAPSETUP_SCRIPTS EQU const_value - $f1
 
 ; callback types
 	const_def 1
+	const MAPCALLBACK_NEWMAP
 	const MAPCALLBACK_TILES
 	const MAPCALLBACK_OBJECTS
 	const MAPCALLBACK_STONETABLE
-	const_skip ; unused
-	const MAPCALLBACK_NEWMAP

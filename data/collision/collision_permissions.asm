@@ -97,7 +97,7 @@ CollisionPermissionTable::
 	db LAND_TILE  ; 5e
 	db LAND_TILE  ; 5f
 	db LAND_TILE  ; COLL_HOLE
-	db LAND_TILE  ; 61
+	db LAND_TILE  ; COLL_STONE_WARP
 	db LAND_TILE  ; 62
 	db LAND_TILE  ; 63
 	db LAND_TILE  ; 64
@@ -208,7 +208,7 @@ CollisionPermissionTable::
 	db WATER_TILE ; cd
 	db WATER_TILE ; ce
 	db WATER_TILE ; cf
-	db LAND_TILE  ; d0
+	db WALL_TILE  ; COLL_CHERRY_LEAVES
 	db WALL_TILE  ; COLL_ELEVATOR_BUTTON
 	db LAND_TILE  ; d2
 	db LAND_TILE  ; d3

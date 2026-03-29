@@ -50,7 +50,7 @@ StageBallTilesData:
 	assert wPartyMon1Status - wPartyCount == wOTPartyMon1Status - wOTPartyCount
 	ld de, wPartyMon1Status - wPartyCount
 	add hl, de
-	ld de, wBuffer1
+	ld de, wBattleHUDTiles
 .loop
 	push bc
 	ld a, b
@@ -179,7 +179,7 @@ LinkBattle_TrainerHuds:
 	; fallthrough
 
 LoadTrainerHudOAM:
-	ld de, wBuffer1
+	ld de, wBattleHUDTiles
 	ld c, PARTY_LENGTH
 .loop
 	ld a, [wPlaceBallsY]

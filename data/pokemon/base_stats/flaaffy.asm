@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  70,  55,  55,  45,  80,  60 ; 365 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 365,  70,  55,  55,  80,  60,  45
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  70,  60,  60,  50,  85,  65 ; 390 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 390,  75,  55,  60,  85,  65,  50
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db ELECTRIC, ELECTRIC ; type
@@ -20,7 +20,7 @@ endc
 if DEF(FAITHFUL)
 	abilities_for FLAAFFY, STATIC, STATIC, STATIC
 else
-	abilities_for FLAAFFY, STATIC, STATIC, MOTOR_DRIVE
+	abilities_for FLAAFFY, STATIC, FLUFFY, MOTOR_DRIVE
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_GROUND ; egg groups

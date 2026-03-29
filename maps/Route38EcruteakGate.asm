@@ -37,10 +37,28 @@ ProfOaksAide2Script:
 	iffalsefwd .NoRoom
 	setevent EVENT_GOT_LINKING_CORD_FROM_PROF_OAKS_AIDE
 .Explain
-	jumpopenedtext ProfOaksAide2ExplainText
+	jumpthisopenedtext
+
+	text "That Linking Cord"
+	line "gives certain"
+
+	para "#mon a sense"
+	line "of connection"
+
+	para "that may help"
+	line "them evolve."
+
+	para "Use it to com-"
+	line "plete the #dex!"
+	done
 
 .NoRoom
-	jumpopenedtext ProfOaksAide2NoRoomText
+	jumpthisopenedtext
+
+	text "Oh! I see you"
+	line "don't have any"
+	cont "room for this."
+	done
 
 Route38EcruteakGateOfficerText:
 	text "Where did you say"
@@ -99,22 +117,4 @@ ProfOaksAide2HereYouGoText:
 	line "Here you go!"
 	done
 
-ProfOaksAide2NoRoomText:
-	text "Oh! I see you"
-	line "don't have any"
-	cont "room for this."
-	done
 
-ProfOaksAide2ExplainText:
-	text "That Linking Cord"
-	line "gives certain"
-
-	para "#mon a sense"
-	line "of connection"
-
-	para "that may help"
-	line "them evolve."
-
-	para "Use it to com-"
-	line "plete the #dex!"
-	done

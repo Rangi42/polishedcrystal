@@ -36,7 +36,15 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 SSAquaCaptain:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue_jumptextfaceplayer SSAquaCaptainHowDoYouLikeText
-	jumptextfaceplayer SSAquaCaptainExhaustingText
+	jumpthistextfaceplayer
+
+	text "Whew! Thanks for"
+	line "coming along."
+
+	para "Keeping that lit-"
+	line "tle girl amused"
+	cont "was exhausting."
+	done
 
 SSAquaGranddaughterBefore:
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
@@ -66,8 +74,8 @@ SSAquaGranddaughterBefore:
 	writetext SSAquaEntertainedGranddaughterText
 	promptbutton
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	setmapscene FAST_SHIP_1F, $0
-	sjumpfwd SSAquaMetalCoatAndDocking
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_NOOP
+	sjumpfwd SSAquaMachoBraceAndDocking
 
 SSAquaGrandpa:
 	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
@@ -79,14 +87,20 @@ SSAquaGrandpa:
 	writetext SSAquaCantFindGranddaughterText
 	waitbutton
 	closetext
-	setmapscene FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_NOOP
 	end
 
-SSAquaMetalCoatAndDocking:
+SSAquaMachoBraceAndDocking:
 	writetext SSAquaGrandpaHaveThisText
 	promptbutton
 	verbosegiveitem MACHO_BRACE
+	iffalsefwd .FailedMachoBrace
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
+	sjumpfwd .ContinueDocking
+.FailedMachoBrace:
+	writetext .NoRoomForMachoBrace
+	waitbutton
+.ContinueDocking:
 	closetext
 	waitsfx
 	playsound SFX_ELEVATOR_END
@@ -97,6 +111,12 @@ SSAquaMetalCoatAndDocking:
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	setevent EVENT_FAST_SHIP_FOUND_GIRL
 	endtext
+
+.NoRoomForMachoBrace:
+	text "But you can't carry"
+	line "it! I'll keep it"
+	cont "for another trip."
+	done
 
 SSAquaFoundGranddaughter:
 	writetext SSAquaGrandpaHaveThisText
@@ -180,14 +200,6 @@ SSAquaGranddaughterEntersCabinMovement:
 	turn_head_left
 	step_end
 
-SSAquaCaptainExhaustingText:
-	text "Whew! Thanks for"
-	line "coming along."
-
-	para "Keeping that lit-"
-	line "tle girl amused"
-	cont "was exhausting."
-	done
 
 SSAquaCaptainHowDoYouLikeText:
 	text "How do you like"

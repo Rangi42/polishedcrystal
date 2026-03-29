@@ -1,5 +1,10 @@
-	db  55,  40,  40,  35,  65,  45 ; 280 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 280,  55,  40,  40,  65,  45,  35
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 285,  55,  40,  45,  65,  45,  35
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db ELECTRIC, ELECTRIC ; type
 	db 235 ; catch rate
@@ -10,7 +15,7 @@
 if DEF(FAITHFUL)
 	abilities_for MAREEP, STATIC, STATIC, STATIC
 else
-	abilities_for MAREEP, STATIC, STATIC, MOTOR_DRIVE
+	abilities_for MAREEP, STATIC, FLUFFY, MOTOR_DRIVE
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_GROUND ; egg groups

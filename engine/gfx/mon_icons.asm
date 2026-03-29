@@ -88,10 +88,10 @@ SetTradeMiniIconColor:
 	ld a, 1 ; OBJ 1
 	; fallthrough
 _SetMonColor:
-	ld hl, wShadowOAM + 3
+	ld hl, wShadowOAMSprite00Attributes
 _ShiftedSetMonColor:
-	ld c, 4
-	ld de, 4
+	ld c, MINI_OAM_COUNT
+	ld de, OBJ_SIZE
 .loop
 	ld [hl], a
 	add hl, de
@@ -113,12 +113,13 @@ SetFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
+	; Decode PAL_MON_*_* value into dark/light palette indices
+	call DecodeMonIconPal
 	ld de, wOBPals1 + 3 palettes
-	ld [wNeededPalIndex], a
 	ld hl, wPalFlags
 	push hl
 	set USE_DAYTIME_PAL_F, [hl]
-	farcall CopySpritePal
+	farcall CopySpritePalHandler
 	pop hl
 	res USE_DAYTIME_PAL_F, [hl]
 	ld a, 3 ; OBJ 3
@@ -130,7 +131,9 @@ SetOWFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
-	ld [wNeededPalIndex], a
+	; Decode PAL_MON_*_* value into dark/light palette indices
+	call DecodeMonIconPal
+	; a = dark color index (wNeededPalIndex already set)
 	ld b, a
 	push bc
 	ld b, 0
@@ -159,7 +162,7 @@ SetOWFlyMonColor:
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	farcall CopySpritePal
+	farcall CopySpritePalHandler
 	pop bc
 	ldh a, [hUsedOAMIndex]
 	cp (OAM_COUNT - NUM_FLYFROM_ANIM_OAMS - 1) * OBJ_SIZE
@@ -202,9 +205,15 @@ SetPartyMenuMonMiniColors:
 .got_species
 	ld [wCurPartySpecies], a
 
-	ld hl, wShadowOAM + 3
+	; hl = wShadowOAMSprite00Attributes + [wCurPartyMon] * MINI_OAM_COUNT * OAMA_FLAGS
+	ld hl, wShadowOAMSprite00Attributes
 	ld a, [wCurPartyMon]
-	swap a
+	add a ; * 2
+	add a ; * 4
+	ld e, a
+	add a ; * 8
+	add a ; * 16
+	add e ; + a * 4
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -213,16 +222,14 @@ SetPartyMenuMonMiniColors:
 	ld a, [wCurPartyMon]
 	inc a
 	inc a
-	ld de, 4
+	ld de, OBJ_SIZE
 	ld [hl], a
-	add hl, de
-	ld [hl], a
-	add hl, de
 	push hl
+rept MINI_OAM_COUNT - 1
 	add hl, de
 	ld [hl], a
+endr
 	pop hl
-	ld [hl], a
 
 	; item and mail icons use palette 0
 	ld a, [wCurIconMonHasItemOrMail]
@@ -236,7 +243,9 @@ SetPartyMenuMonMiniColors:
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
 	ld hl, wCurIconShiny
-	jr _GetMonIconPalette
+	call _GetMonIconPalette
+	dec a ; remove +1 encoding so OBJECT_PAL_INDEX gets the raw nybble pair
+	ret
 
 GetMonIconPalette:
 	ld a, [wCurPartySpecies]
@@ -257,16 +266,40 @@ _GetMonIconPalette:
 
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
+	; bc *= 2 for 2-byte table
+	sla c
+	rl b
 	ld hl, OverworldMonIconColors
 	add hl, bc
-	ld c, [hl]
 
 	pop af
-	jr nz, .shiny
-	swap c
-.shiny
-	ld a, c
+	jr z, .not_shiny
+	inc hl
+.not_shiny
+	ld a, [hl]
+	ret
+
+; Decode a PAL_MON_*_* value into wNeededPalIndex and wNeededMonPalLight.
+; Input: a = PAL_MON_*_* value
+; Output: a = dark color (PAL_OW_*), wNeededPalIndex = dark, wNeededMonPalLight = light (or NO_PAL_LOADED if same)
+DecodeMonIconPal:
+	dec a ; remove +1 encoding offset
+	ld c, a
 	and $f
+	ld [wNeededPalIndex], a ; low nybble = dark color
+	ld b, a ; save dark color
+	ld a, c
+	swap a
+	and $f ; high nybble = light color
+	cp b
+	jr nz, .two_colors
+	; Same nybbles: single-color palette
+	ld a, NO_PAL_LOADED
+; fallthrough
+.two_colors
+	ld [wNeededMonPalLight], a
+.return_dark
+	ld a, b
 	ret
 
 LoadPartyMenuMonMini:
@@ -289,11 +322,31 @@ LoadPartyMenuMonMini:
 	and a
 	ret z
 	ld d, a
-	call ItemIsMail
-	; a = carry ? SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL : SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL + 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	sbc a
-	add SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	call ItemIsMail_a
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
+	jr c, .got_frameset
+	ld a, d
+	cp FIRST_BERRY
+	jr c, .not_berry
+	cp FIRST_BERRY + NUM_BERRIES
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_BERRY
+	jr c, .got_frameset
+.not_berry
+	push bc
+	ld hl, ItemAttributes + ITEMATTR_EFFECT
+	ld c, d
+	ld b, 0
+	ld a, ITEMATTR_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, BANK(ItemAttributes)
+	call GetFarByte
+	pop bc
+	and a
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_INERT_ITEM
+	jr z, .got_frameset
+	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_INERT_ITEM - 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	dec a
+.got_frameset
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -342,11 +395,21 @@ _LoadMonMini:
 
 	; for move menu, mon minis use palette 1
 	ld de, wOBPals1 palette 1 + 2
+
+	ld a, [wMonType]
+	cp TEMPMON
+	jr z, .use_temp
+	; not temp -> use party palette
+	farcall LoadPartyMonPalette
+	jr .palette_done
+.use_temp
 	farcall LoadTempMonPalette
+
+.palette_done
 	ld a, 1
-	ld hl, wShadowOAM + 3
-	ld de, 4
-rept 3
+	ld hl, wShadowOAMSprite00Attributes
+	ld de, OBJ_SIZE
+rept MINI_OAM_COUNT - 1
 	ld [hl], a
 	add hl, de
 endr
@@ -501,10 +564,10 @@ GetMiniGFX:
 	ld de, 8 tiles
 	add hl, de
 	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
+	lb bc, BANK(HeldItemIcons), NUM_HELD_ITEM_TYPES
 	call Request2bpp
 	ld a, [wCurIconTile]
-	add 10
+	add 8 + NUM_HELD_ITEM_TYPES
 	ld [wCurIconTile], a
 	ret
 
@@ -615,7 +678,7 @@ FreezeMonIcons:
 	pop hl
 
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
@@ -636,7 +699,7 @@ UnfreezeMonIcons:
 	ld [hl], SPRITE_ANIM_SEQ_PARTY_MON
 	pop hl
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
@@ -665,12 +728,13 @@ HoldSwitchmonIcon:
 	ld [hl], a
 	pop hl
 .next
-	ld bc, $10
+	ld bc, SPRITEANIMSTRUCT_LENGTH
 	add hl, bc
 	dec e
 	jr nz, .loop
 	ret
 
 HeldItemIcons:
-INCBIN "gfx/stats/mail.2bpp"
-INCBIN "gfx/stats/item.2bpp"
+	table_width TILE_SIZE
+INCBIN "gfx/stats/held_items.2bpp"
+	assert_table_length NUM_HELD_ITEM_TYPES

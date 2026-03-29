@@ -159,7 +159,25 @@ GenericTrainerMediumRebecca:
 SaffronGymGuyScript:
 	checkevent EVENT_BEAT_SABRINA
 	iftrue_jumptextfaceplayer SaffronGymGuyWinText
-	jumptextfaceplayer SaffronGymGuyText
+	jumpthistextfaceplayer
+
+	text "Yo, Champ in"
+	line "making!"
+
+	para "A trainer as"
+	line "skilled as you"
+
+	para "doesn't need to be"
+	line "told how to deal"
+
+	para "with Psychic-type"
+	line "#mon, right?"
+
+	para "I expect great"
+	line "things from you!"
+
+	para "Good luck!"
+	done
 
 SaffronGymStatue:
 	gettrainername SABRINA, 1, STRING_BUFFER_4
@@ -318,24 +336,6 @@ MediumRebeccaBeatenText:
 	line "Far too strong…"
 	done
 
-SaffronGymGuyText:
-	text "Yo, Champ in"
-	line "making!"
-
-	para "A trainer as"
-	line "skilled as you"
-
-	para "doesn't need to be"
-	line "told how to deal"
-
-	para "with Psychic-type"
-	line "#mon, right?"
-
-	para "I expect great"
-	line "things from you!"
-
-	para "Good luck!"
-	done
 
 SaffronGymGuyWinText:
 	text "That was another"

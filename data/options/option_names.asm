@@ -1,0 +1,43 @@
+OptionNames:
+	table_width 2
+	dw .TextSpeed
+	dw .TextAutoscroll
+	dw .Frame
+	dw .Typeface
+	dw .Keyboard
+	dw .Sound
+	dw .BattleEffects
+	dw .BattleStyle
+	dw .Nicknames
+	dw .RunningShoes
+	dw .TurningSpeed
+	dw .ClockFormat
+	dw .PokedexUnits
+	assert_table_length NUM_OPTIONS
+
+.TextSpeed:
+	db "Text Speed@"
+.TextAutoscroll:
+	db "Text Autoscroll@"
+.Frame:
+	db "Frame@"
+.Typeface:
+	db "Typeface@"
+.Keyboard:
+	db "Keyboard@"
+.Sound:
+	db "Sound@"
+.BattleEffects:
+	db "Battle Effects@"
+.BattleStyle:
+	db "Battle Style@"
+.Nicknames:
+	db "Nicknames@"
+.RunningShoes:
+	db "Running Shoes@"
+.TurningSpeed:
+	db "Turning Speed@"
+.ClockFormat:
+	db "Clock Format@"
+.PokedexUnits:
+	db "#dex Units@"
