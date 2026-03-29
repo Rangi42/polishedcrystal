@@ -5,19 +5,20 @@ SilphCo1F_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, .SilphCo1FMoveOfficerCallback
 
 	def_warp_events
-	warp_event  2,  7, SAFFRON_CITY, 7
-	warp_event  3,  7, SAFFRON_CITY, 7
+	warp_event  2,  9, SAFFRON_CITY, 7
+	warp_event  3,  9, SAFFRON_CITY, 7
 	warp_event 13,  0, SILPH_CO_2F, 1
 
 	def_coord_events
 
 	def_bg_events
+	bg_event  8,  0, BGEVENT_JUMPTEXT, SilphCoElevatorText
 
 	def_object_events
 	object_event 13,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SilphCoOfficerScript, -1
 	object_event  4,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCoReceptionistText, -1
-	object_event 11,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
-	object_event  8,  2, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
+	object_event 11,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
+	object_event  8,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
 
 	object_const_def
 	const SILPHCO1F_OFFICER
@@ -75,7 +76,6 @@ SilphCoReceptionistText:
 	done
 
 
-
 SilphCo1FGentlemanText:
 	text "I have an appoint-"
 	line "ment with the"
@@ -95,4 +95,8 @@ SilphCo1FCooltrainerfText:
 	para "Just as soon as"
 	line "she's done on the"
 	cont "phone…"
+	done
+
+SilphCoElevatorText:
+	text "Out Of Order"
 	done

@@ -563,9 +563,9 @@ ENDM
 	map_const SAFFRON_POKECENTER_1F,                       6,  4 ;  4
 	map_const MR_PSYCHICS_HOUSE,                           4,  4 ;  5
 	map_const SAFFRON_TRAIN_STATION,                      10,  9 ;  6
-	map_const SILPH_CO_1F,                                 8,  4 ;  7
-	map_const SILPH_CO_2F,                                 8,  4 ;  8
-	map_const SILPH_CO_3F,                                 8,  4 ;  9
+	map_const SILPH_CO_1F,                                 8,  5 ;  7
+	map_const SILPH_CO_2F,                                 8,  5 ;  8
+	map_const SILPH_CO_3F,                                 8,  5 ;  9
 	map_const COPYCATS_HOUSE_1F,                           4,  4 ; 10
 	map_const COPYCATS_HOUSE_2F,                           4,  3 ; 11
 	map_const ROUTE_5,                                    10, 17 ; 12

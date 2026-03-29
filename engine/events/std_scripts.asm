@@ -294,7 +294,6 @@ PCScript:
 	endtext
 
 ElevatorButtonScript:
-	playsound SFX_READ_TEXT_2
 	pause 15
 	playsound SFX_ELEVATOR_END
 	end
