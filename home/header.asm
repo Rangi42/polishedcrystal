@@ -40,7 +40,8 @@ FarCall::
 ; +0 return bank
 	jmp _ReturnFarCall
 
-	ds 1 ; unused
+ClearText::
+	done
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
@@ -145,10 +146,8 @@ PopBCDEHL::
 	pop hl
 	ret
 
-ClearText::
-	done
-
-	ds 1 ; unused
+ContChar:
+	db "<CONT>@"
 
 
 SECTION "serial", ROM0[$0058]

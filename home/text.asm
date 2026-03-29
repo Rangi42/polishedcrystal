@@ -423,9 +423,6 @@ PlaceCommandCharacter::
 	pop de
 	jmp NextChar
 
-ContChar:
-	db "<CONT>@"
-
 TextCommand_PLURAL:
 ; Pluralize the last word. Might perform edits on it (Candy -> Candies).
 	; If wItemQuantityBuffer is 1, do nothing.
