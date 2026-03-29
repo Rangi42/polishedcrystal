@@ -148,6 +148,8 @@ PopBCDEHL::
 ClearText::
 	done
 
+	ds 1 ; unused
+
 
 SECTION "serial", ROM0[$0058]
 	jmp Serial
@@ -158,6 +160,7 @@ SECTION "High Home", ROM0[$005b]
 ; JOYPAD is never enabled
 
 INCLUDE "home/jumptable.asm"
+INCLUDE "home/pokedex_flags.asm"
 
 
 SECTION "Header", ROM0[$0100]
