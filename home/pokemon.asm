@@ -197,15 +197,13 @@ GetNature::
 ; returns nature in b
 	ld a, [wInitialOptions]
 	bit NATURES_OPT, a
+	ld a, NO_NATURE
 	jr z, .no_nature
 	ld a, b
 	and NATURE_MASK
 	; assume nature is 0-24
-	ld b, a
-	ret
-
 .no_nature:
-	ld b, NO_NATURE
+	ld b, a
 	ret
 
 GetLeadAbility::

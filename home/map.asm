@@ -9,11 +9,9 @@ CheckScenes::
 	ld l, a
 	or h
 	ld a, [hl]
-	jr nz, .scene_exists
-	ld a, -1
-
-.scene_exists
 	pop hl
+	ret nz
+	ld a, -1
 	ret
 
 GetCurrentMapSceneID::
