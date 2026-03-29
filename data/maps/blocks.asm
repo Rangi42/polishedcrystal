@@ -261,7 +261,6 @@ Route32Coast_BlockData:
 
 SECTION "DarkCaveVioletEntrance_BlockData", ROMX
 DarkCaveVioletEntrance_BlockData:
-SilverCaveItemRooms_BlockData:
 	INCBIN "maps/DarkCaveVioletEntrance.ablk.lzp"
 
 SECTION "DarkCaveBlackthornEntrance_BlockData", ROMX
@@ -360,7 +359,6 @@ SinjohRuinsHouse_BlockData:
 
 SECTION "UnionCave1F_BlockData", ROMX
 UnionCave1F_BlockData:
-GiovannisCave_BlockData:
 	INCBIN "maps/UnionCave1F.ablk.lzp"
 
 SECTION "UnionCaveB1FNorth_BlockData", ROMX
@@ -732,6 +730,10 @@ SECTION "WhirlIslandNE_BlockData", ROMX
 WhirlIslandNE_BlockData:
 	INCBIN "maps/WhirlIslandNE.ablk.lzp"
 
+SECTION "WhirlIslandNW_BlockData", ROMX
+WhirlIslandNW_BlockData:
+	INCBIN "maps/WhirlIslandNW.ablk.lzp"
+
 SECTION "WhirlIslandSE_BlockData", ROMX
 WhirlIslandSE_BlockData:
 	INCBIN "maps/WhirlIslandSE.ablk.lzp"
@@ -908,6 +910,10 @@ VictoryRoad3F_BlockData:
 SECTION "TohjoFalls_BlockData", ROMX
 TohjoFalls_BlockData:
 	INCBIN "maps/TohjoFalls.ablk.lzp"
+
+SECTION "GiovannisCave_BlockData", ROMX
+GiovannisCave_BlockData:
+	INCBIN "maps/GiovannisCave.ablk.lzp"
 
 SECTION "IndigoPlateau_BlockData", ROMX
 IndigoPlateau_BlockData:
@@ -1112,12 +1118,10 @@ PowerPlant_BlockData:
 
 SECTION "DimCave1F_BlockData", ROMX
 DimCave1F_BlockData:
-SeafoamIslands1F_BlockData:
 	INCBIN "maps/DimCave1F.ablk.lzp"
 
 SECTION "DimCave2F_BlockData", ROMX
 DimCave2F_BlockData:
-WhirlIslandNW_BlockData:
 	INCBIN "maps/DimCave2F.ablk.lzp"
 
 SECTION "DimCave3F_BlockData", ROMX
@@ -1518,6 +1522,10 @@ SECTION "SeafoamGym_BlockData", ROMX
 SeafoamGym_BlockData:
 	INCBIN "maps/SeafoamGym.ablk.lzp"
 
+SECTION "SeafoamIslands1F_BlockData", ROMX
+SeafoamIslands1F_BlockData:
+	INCBIN "maps/SeafoamIslands1F.ablk.lzp"
+
 SECTION "SeafoamIslandsB1F_BlockData", ROMX
 SeafoamIslandsB1F_BlockData:
 	INCBIN "maps/SeafoamIslandsB1F.ablk.lzp"
@@ -1549,6 +1557,10 @@ SilverCaveRoom2_BlockData:
 SECTION "SilverCaveRoom3_BlockData", ROMX
 SilverCaveRoom3_BlockData:
 	INCBIN "maps/SilverCaveRoom3.ablk.lzp"
+
+SECTION "SilverCaveItemRooms_BlockData", ROMX
+SilverCaveItemRooms_BlockData:
+	INCBIN "maps/SilverCaveItemRooms.ablk.lzp"
 
 SECTION "SeagallopFerryVermilionGate_BlockData", ROMX
 SeagallopFerryVermilionGate_BlockData:

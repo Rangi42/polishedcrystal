@@ -98,7 +98,7 @@ Route22PastCelebiEventScript:
 	clearevent EVENT_GIOVANNIS_CAVE_LYRA
 	clearevent EVENT_GIOVANNIS_CAVE_GIOVANNI
 	setmapscene GIOVANNIS_CAVE, SCENE_GIOVANNISCAVE_NOOP
-	warp GIOVANNIS_CAVE, 15, 5
+	warp GIOVANNIS_CAVE, 5, 5
 	end
 
 Route22Past_PlayerLooksAroundMovementData:
