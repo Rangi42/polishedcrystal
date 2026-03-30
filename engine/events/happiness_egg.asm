@@ -23,6 +23,21 @@ GetFirstPokemonHappiness:
 	call GetPokemonName
 	jmp CopyPokemonName_Buffer1_Buffer3
 
+
+GetSelectedPokemonHappiness:
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Happiness
+	call GetPartyLocation
+	ld a, [hl]
+	ldh [hScriptVar], a
+
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	ld a, [wCurForm]
+	ld [wNamedObjectIndex+1], a
+	call GetPokemonName
+	jmp CopyPokemonName_Buffer1_Buffer3
+
 CheckFirstMonIsEgg:
 	ld a, [wPartyMon1Species]
 	ld [wNamedObjectIndex], a
