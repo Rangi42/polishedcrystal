@@ -49,6 +49,8 @@ ROMX $04
 
 ROMX $05
 	"bank5"
+	; this can float; just change three `call`s to `farcall`s in `OverworldHatchEgg`
+	"Dynamic Pals System"
 
 ROMX $06
 	"Evolution"
