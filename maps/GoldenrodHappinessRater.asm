@@ -22,7 +22,7 @@ GoldenrodHappinessRaterTeacherScript:
 	opentext
 	writetext GoldenrodHappinessRaterAskCheckText
 	yesorno
-	iffalse .NoCheckText
+	iffalse_jumpopenedtext .RefusedText
 	special Special_MintTeaPickMon
 	iffalse_jumpopenedtext .RefusedText
 	ifequalfwd 1, .Egg
