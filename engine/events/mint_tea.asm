@@ -1,10 +1,12 @@
 Special_MintTeaPickMon:
 	farcall SelectMonFromParty
-	jr c, .cancel
+	ld a, 0 ; no-optimize a = 0
+	jr c, .done
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
-	jr nz, .egg
+	ld a, 1
+	jr nz, .done
 	call GetPartyPokemonName
 	ld a, [wCurPartyMon]
 	ld [wMintTeaPartyMon], a
@@ -12,14 +14,6 @@ Special_MintTeaPickMon:
 .done
 	ldh [hScriptVar], a
 	ret
-
-.cancel
-	xor a
-	jr .done
-
-.egg
-	ld a, 1
-	jr .done
 
 Special_MintTeaChangeNature:
 	; new nature = (liked - 1) * 5 + (disliked - 1)
