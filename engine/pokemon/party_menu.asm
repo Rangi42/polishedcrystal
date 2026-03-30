@@ -211,11 +211,11 @@ BT_PartySelect:
 	call BT_CheckEnterState
 	ld a, [wMenuCursorY]
 	adc 0
-	dec a ; Enter
+	dec a
 	jr z, .Enter
-	dec a ; Stats
+	dec a
 	jr z, .Stats
-	jr .loop ; Cancel
+	jr .loop
 
 .return
 	jmp ReturnToMapWithSpeechTextbox
@@ -513,46 +513,60 @@ InitPartyMenuLayout:
 
 LoadPartyMenuGFX:
 	call LoadFontsBattleExtra
-	farcall InitPartyMenuPalettes ; engine/color.asm
+	farcall InitPartyMenuPalettes
 	jmp ClearSpriteAnims2
 
 WritePartyMenuTilemap:
 	ld hl, wOptions1
 	ld a, [hl]
 	push af
-	set NO_TEXT_SCROLL, [hl] ; Disable text delay
+	set NO_TEXT_SCROLL, [hl]
+
 	xor a
 	ldh [hBGMapMode], a
+
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 	ld a, ' '
-	rst ByteFill ; blank the tilemap
-	call GetPartyMenuTilemapPointers ; This reads from a pointer table???
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .end ; 0x5007a $8
-	push hl
-	ld hl, .Jumptable
-	call JumpTable
-	pop hl
-	jr .loop ; 0x50082 $f3
-.end
+	rst ByteFill
+
+	call PlacePartyNicknames
+
+	ld a, [wPartyMenuActionText]
+	and $f0
+	ld hl, PartyMenuActionQualities
+	jr nz, .default
+	ld a, [wPartyMenuActionText]
+	and $f
+	add a
+	ld c, a
+	ld b, 0
+	add hl, bc
+.default
+	call IndirectHL
+
+	call PlacePartyMonLevel
+	call PlacePartyMonGender
+	call PlacePartyMonStatus
+
 	pop af
 	ld [wOptions1], a
 	ret
 
-.Jumptable:
-	dw PlacePartyNicknames
-	dw PlacePartyHPBar
-	dw PlacePartyMenuHPDigits
-	dw PlacePartyMonLevel
-	dw PlacePartyMonStatus
-	dw PlacePartyMonTMHMCompatibility
-	dw PlacePartyMonEvoStoneCompatibility
-	dw PlacePartyMonGender
-	dw PlacePartyMonRemindable
-	dw PlacePartyMonBattleTower
+PartyMenuActionQualities:
+; entries correspond to PARTYMENUACTION_* constants
+	table_width 2
+	dw PlacePartyHPBar                    ; PARTYMENUACTION_CHOOSE_POKEMON
+	dw PlacePartyHPBar                    ; PARTYMENUACTION_HEALING_ITEM
+	dw PlacePartyHPBar                    ; PARTYMENUACTION_SWITCH
+	dw PlacePartyMonTMHMCompatibility     ; PARTYMENUACTION_TEACH_TMHM
+	dw PlacePartyHPBar                    ; PARTYMENUACTION_MOVE
+	dw PlacePartyMonEvoStoneCompatibility ; PARTYMENUACTION_EVO_STONE
+	dw PlacePartyHPBar                    ; PARTYMENUACTION_GIVE_MON
+	dw PlacePartyHPBar                    ; PARTYMENUACTION_GIVE_ITEM
+	dw PlacePartyMonRemindable            ; PARTYMENUACTION_MOVE_RELEARNER
+	dw PlacePartyMonBattleTower           ; PARTYMENUACTION_BATTLE_TOWER
+	assert_table_length NUM_PARTYMENUACTIONS
 
 PlacePartyNicknames:
 	hlcoord 3, 1
@@ -560,7 +574,7 @@ PlacePartyNicknames:
 	and a
 	jr z, .end
 	ld c, a
-	ld b, $0
+	ld b, 0
 .loop
 	push bc
 	push hl
@@ -589,14 +603,15 @@ PlacePartyNicknames:
 	db "Cancel@"
 
 PlacePartyHPBar:
-	xor a
-	ld [wHPPalIndex], a
 	ld a, [wPartyCount]
 	and a
 	ret z
 	ld c, a
-	ld b, $0
+	ld b, 0
+	push bc
 	hlcoord 11, 2
+	xor a
+	ld [wHPPalIndex], a
 .loop
 	push bc
 	push hl
@@ -605,15 +620,15 @@ PlacePartyHPBar:
 	push hl
 	call PlacePartymonHPBar
 	pop hl
-	ld d, $6
+	ld d, 6
 	call DrawBattleHPBar
 	ld hl, wHPPals
 	ld a, [wHPPalIndex]
 	ld c, a
-	ld b, $0
+	ld b, 0
 	add hl, bc
 	call SetHPPal
-	farcall ApplyPartyMenuHPPals
+	farcall ApplyPartyMenuHPPals ; updates wHPPalIndex
 .skip
 	ld hl, wHPPalIndex
 	inc [hl]
@@ -624,6 +639,41 @@ PlacePartyHPBar:
 	inc b
 	dec c
 	jr nz, .loop
+
+; print digits
+	pop bc
+	hlcoord 13, 1
+.loop2
+	push bc
+	push hl
+	call PartyMenuCheckEgg
+	jr nz, .skip2
+	push hl
+	ld a, b
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld hl, wPartyMon1HP
+	rst AddNTimes
+	ld e, l
+	ld d, h
+	pop hl
+	push de
+	lb bc, 2, 3
+	call PrintNum
+	pop de
+	ld a, '/'
+	ld [hli], a
+	inc de
+	inc de
+	lb bc, 2, 3
+	call PrintNum
+.skip2
+	pop hl
+	ld de, 2 * SCREEN_WIDTH
+	add hl, de
+	pop bc
+	inc b
+	dec c
+	jr nz, .loop2
 	ret
 
 PlacePartymonHPBar:
@@ -650,47 +700,6 @@ PlacePartymonHPBar:
 	ld a, [hli]
 	ld e, a
 	farjp ComputeHPBarPixels
-
-PlacePartyMenuHPDigits:
-	ld a, [wPartyCount]
-	and a
-	ret z
-	ld c, a
-	ld b, $0
-	hlcoord 13, 1
-.loop
-	push bc
-	push hl
-	call PartyMenuCheckEgg
-	jr nz, .next
-	push hl
-	ld a, b
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1HP
-	rst AddNTimes
-	ld e, l
-	ld d, h
-	pop hl
-	push de
-	lb bc, 2, 3
-	call PrintNum
-	pop de
-	ld a, '/'
-	ld [hli], a
-	inc de
-	inc de
-	lb bc, 2, 3
-	call PrintNum
-
-.next
-	pop hl
-	ld de, 2 * SCREEN_WIDTH
-	add hl, de
-	pop bc
-	inc b
-	dec c
-	jr nz, .loop
-	ret
 
 PlacePartyMonLevel:
 	ld a, [wPartyCount]
@@ -1092,26 +1101,6 @@ PartyMenuCheckEgg:
 	pop hl
 	ret
 
-GetPartyMenuTilemapPointers:
-	ld a, [wPartyMenuActionText]
-	and $f0
-	jr nz, .skip
-	ld a, [wPartyMenuActionText]
-	and $f
-	ld e, a
-	ld d, 0
-	ld hl, PartyMenuQualityPointers
-	add hl, de
-	ld e, [hl]
-	add hl, de
-	ret
-
-.skip
-	ld hl, PartyMenuQualityPointers.Default
-	ret
-
-INCLUDE "data/party_menu_qualities.asm"
-
 InitPartyMenuGFX:
 	ld a, [wPartyCount]
 	and a
@@ -1134,11 +1123,10 @@ InitPartyMenuWithCancel:
 ; with cancel
 	xor a
 	ld [wSwitchMon], a
-	ld de, PartyMenuAttributes
-	call SetMenuAttributes
+	call SetPartyMenuAttributes
 	ld a, [wPartyCount]
 	inc a
-	ld [w2DMenuNumRows], a ; list length
+	ld [w2DMenuNumRows], a
 	dec a
 	ld b, a
 	ld a, [wPartyMenuCursor]
@@ -1178,10 +1166,9 @@ InitPartySwap:
 
 InitPartyMenuNoCancel:
 ; no cancel
-	ld de, PartyMenuAttributes
-	call SetMenuAttributes
+	call SetPartyMenuAttributes
 	ld a, [wPartyCount]
-	ld [w2DMenuNumRows], a ; list length
+	ld [w2DMenuNumRows], a
 	ld b, a
 	ld a, [wPartyMenuCursor]
 	and a
@@ -1197,20 +1184,25 @@ InitPartyMenuNoCancel:
 	ld [wMenuJoypadFilter], a
 	ret
 
+SetPartyMenuAttributes:
+	push hl
+	ld de, PartyMenuAttributes
+	ld hl, w2DMenuData
+	call CopyName2
+	pop hl
+	ret
+
 PartyMenuAttributes:
-; cursor y
-; cursor x
-; num rows
-; num cols
-; bit 6: animate sprites  bit 5: wrap around
-; ?
-; distance between items (hi: y, lo: x)
-; allowed buttons (mask)
-	db 1, 0
-	db 0, 1
-	db $60, $00
-	dn 2, 0
-	db 0
+	db 1, 0 ; w2DMenuCursorInitY and w2DMenuCursorInitX
+	db 0, 1 ; w2DMenuNumRows and w2DMenuNumCols
+	db (1 << 6) | (1 << 5) ; w2DMenuFlags1 (animate sprites, wrap around)
+	db 0    ; w2DMenuFlags2
+	dn 2, 0 ; w2DMenuCursorOffsets (y, x)
+	db 0    ; wMenuJoypadFilter
+	db 1, 1 ; wMenuCursorY and wMenuCursorX
+	db 0    ; wCursorOffCharacter
+	dw 0    ; wCursorCurrentTile
+	db '@'  ; end for CopyName2
 
 PartyMenuSelect:
 ; sets carry if exited menu.
@@ -1219,14 +1211,14 @@ PartyMenuSelect:
 	ld a, [wPartyCount]
 	inc a
 	ld b, a
-	ld a, [wMenuCursorY] ; menu selection?
+	ld a, [wMenuCursorY]
 	cp b
-	jr z, .exitmenu ; CANCEL
+	jr z, .exitmenu
 	ld [wPartyMenuCursor], a
 	ldh a, [hJoyLast]
 	ld b, a
 	bit B_PAD_B, b
-	jr nz, .exitmenu ; B button
+	jr nz, .exitmenu
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
@@ -1267,10 +1259,10 @@ PlacePartyMenuText:
 	jr .gotstring
 .haspokemon
 	ld a, [wPartyMenuActionText]
-	and $f ; drop high nibble
+	and $f
 	ld hl, PartyMenuStrings
 	ld e, a
-	ld d, $0
+	ld d, 0
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -1279,27 +1271,27 @@ PlacePartyMenuText:
 .gotstring
 	ld a, [wOptions1]
 	push af
-	set NO_TEXT_SCROLL, a ; disable text delay
+	set NO_TEXT_SCROLL, a
 	ld [wOptions1], a
-	hlcoord 1, 16 ; Coord
+	hlcoord 1, 16
 	rst PlaceString
 	pop af
 	ld [wOptions1], a
 	ret
 
 PartyMenuStrings:
-; needs to match PartyMenuQualityPointers
-	dw ChooseAMonString
-	dw UseOnWhichPKMNString
-	dw WhichPKMNString
-	dw TeachWhichPKMNString
-	dw MoveToWhereString
-	dw UseOnWhichPKMNString
-	dw ChooseAMonString ; Probably used to be ChooseAFemalePKMNString
-	dw ChooseAMonString ; Probably used to be ChooseAMalePKMNString
-	dw ToWhichPKMNString
-	dw TutorWhichPKMNString
-	dw Choose3MonString
+	table_width 2
+	dw ChooseAMonString     ; PARTYMENUACTION_CHOOSE_POKEMON
+	dw UseOnWhichPKMNString ; PARTYMENUACTION_HEALING_ITEM
+	dw WhichPKMNString      ; PARTYMENUACTION_SWITCH
+	dw TeachWhichPKMNString ; PARTYMENUACTION_TEACH_TMHM
+	dw MoveToWhereString    ; PARTYMENUACTION_MOVE
+	dw UseOnWhichPKMNString ; PARTYMENUACTION_EVO_STONE
+	dw ChooseAMonString     ; PARTYMENUACTION_GIVE_MON
+	dw ToWhichPKMNString    ; PARTYMENUACTION_GIVE_ITEM
+	dw TutorWhichPKMNString ; PARTYMENUACTION_MOVE_RELEARNER
+	dw Choose3MonString     ; PARTYMENUACTION_BATTLE_TOWER
+	assert_table_length NUM_PARTYMENUACTIONS
 
 ChooseAMonString:
 	db "Choose a #mon.@"
@@ -1346,16 +1338,18 @@ PrintPartyMenuActionText:
 	ret
 
 .MenuActionTexts:
-	dw .Text_CuredOfPoison
-	dw .Text_BurnWasHealed
-	dw .Text_Defrosted
-	dw .Text_WokeUp
-	dw .Text_RidOfParalysis
-	dw .Text_RecoveredSomeHP
-	dw .Text_HealthReturned
-	dw .Text_Revitalized
-	dw .Text_GrewToLevel
-	dw .Text_CameToItsSenses
+	table_width 2
+	dw .Text_CuredOfPoison   ; PARTYMENUTEXT_HEAL_PSN
+	dw .Text_BurnWasHealed   ; PARTYMENUTEXT_HEAL_BRN
+	dw .Text_Defrosted       ; PARTYMENUTEXT_HEAL_FRZ
+	dw .Text_WokeUp          ; PARTYMENUTEXT_HEAL_SLP
+	dw .Text_RidOfParalysis  ; PARTYMENUTEXT_HEAL_PAR
+	dw .Text_RecoveredSomeHP ; PARTYMENUTEXT_HEAL_HP
+	dw .Text_HealthReturned  ; PARTYMENUTEXT_HEAL_ALL
+	dw .Text_Revitalized     ; PARTYMENUTEXT_REVIVE
+	dw .Text_GrewToLevel     ; PARTYMENUTEXT_LEVEL_UP
+	dw .Text_CameToItsSenses ; PARTYMENUTEXT_HEAL_CONFUSION
+	assert_table_length NUM_PARTYMENUTEXTS
 
 .Text_RecoveredSomeHP:
 	; recovered @ HP!

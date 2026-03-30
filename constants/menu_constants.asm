@@ -73,7 +73,8 @@ DEF NUM_MONMENU_ITEMS EQU 8
 DEF HMENURETURN_SCRIPT EQU %10000000
 DEF HMENURETURN_ASM    EQU %11111111
 
-; PartyMenuQualityPointers indexes (see data/party_menu_qualities.asm)
+; PartyMenuActionQualities indexes (see engine/pokemon/party_menu.asm)
+; PartyMenuStrings indexes (see engine/pokemon/party_menu.asm)
 	const_def
 	const PARTYMENUACTION_CHOOSE_POKEMON
 	const PARTYMENUACTION_HEALING_ITEM
@@ -82,7 +83,6 @@ DEF HMENURETURN_ASM    EQU %11111111
 	const PARTYMENUACTION_MOVE
 	const PARTYMENUACTION_EVO_STONE
 	const PARTYMENUACTION_GIVE_MON
-	const PARTYMENUACTION_GIVE_MON_FEMALE ; unused
 	const PARTYMENUACTION_GIVE_ITEM
 	const PARTYMENUACTION_MOVE_RELEARNER
 	const PARTYMENUACTION_BATTLE_TOWER
@@ -99,6 +99,7 @@ DEF NUM_PARTYMENUACTIONS EQU const_value
 	const PARTYMENUTEXT_REVIVE
 	const PARTYMENUTEXT_LEVEL_UP
 	const PARTYMENUTEXT_HEAL_CONFUSION
+DEF NUM_PARTYMENUTEXTS EQU const_value - $f0
 
 ; Naming types (see engine/menus/naming_screen.asm)
 	const_def

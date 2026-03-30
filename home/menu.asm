@@ -701,28 +701,6 @@ _2DMenu::
 	ld a, [wMenuCursorBuffer]
 	ret
 
-SetMenuAttributes::
-	push hl
-	push bc
-	ld hl, w2DMenuCursorInitY
-	ld b, $8
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ld a, $1
-	ld [hli], a
-	ld [hli], a
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	pop bc
-	pop hl
-	ret
-
 DoMenuJoypadLoop::
 	farcall _DoMenuJoypadLoop
 
