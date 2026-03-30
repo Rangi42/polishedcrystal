@@ -580,7 +580,7 @@ CheckPowerHerb:
 	jr z, .chargeup
 
 .no_solar_beam
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_POWER_HERB
 	jr z, .has_power_herb
@@ -1206,7 +1206,7 @@ BattleCommand_critical:
 	ld c, 0
 	jr nz, .Ability
 
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld c, 0
 	ld a, [hl]
 	cp LUCKY_PUNCH
@@ -1638,7 +1638,7 @@ CheckAirborne:
 	; Check Iron Ball
 	push de
 	push bc
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	pop de
@@ -1699,7 +1699,7 @@ CheckTypeMatchup:
 
 	; Ring Target or Inverse battles bypass the type matchup check.
 	push bc
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_RING_TARGET
@@ -2113,7 +2113,7 @@ BattleCommand_checkhit:
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ACCURACY_BOOST
 	jr z, .accuracy_boost_item
@@ -2863,7 +2863,7 @@ FailText_CheckOpponentProtect:
 	ld hl, AttackMissedText
 	call StdBattleTextbox
 .cont_atkmiss
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
 	ret nz
@@ -2989,7 +2989,7 @@ BattleCommand_startloop:
 	ld a, 5
 	jr z, .got_count
 	push hl
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
@@ -3514,7 +3514,7 @@ CheckThroatSpray:
 	call HasUserFainted
 	ret z
 
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
@@ -3543,7 +3543,7 @@ CheckWhiteHerbEjectPack:
 
 .do_it
 	push bc
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_WHITE_HERB
@@ -3572,7 +3572,7 @@ CheckWhiteHerbEjectPack:
 	push bc
 	push de
 	push hl
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop hl
 	pop de
@@ -3670,7 +3670,7 @@ CheckMirrorHerb:
 	push bc
 	push hl
 	push de
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_MIRROR_HERB
 	jr nz, .stat_raise_failed
@@ -3739,7 +3739,7 @@ EndMoveDamageChecks:
 	; life orb, shell bell
 	call HasUserFainted
 	ret z
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	push bc
 	call GetCurItemName
 	pop bc
@@ -5172,7 +5172,7 @@ GetHPAbsorption:
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)
 	push bc
-	farcall GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_BIG_ROOT

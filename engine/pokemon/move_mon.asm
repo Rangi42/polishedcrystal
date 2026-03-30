@@ -359,7 +359,7 @@ endr
 	push de
 	inc hl
 	inc hl
-	farcall FillPP
+	call FillPP
 	pop de
 	pop hl
 rept NUM_MOVES
@@ -844,7 +844,7 @@ _DepositBreedmon:
 	rst CopyBytes
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	farjp RemoveMonFromParty
+	jr RemoveMonFromParty
 
 SentPkmnIntoBox:
 ; Sents the Pkmn into one of Bills Boxes
@@ -1059,7 +1059,7 @@ GivePoke::
 	inc a
 	ld [wMonType], a
 	ld [wBattleMode], a
-	farcall TryAddMonToParty
+	call TryAddMonToParty
 	lb bc, $81, 1
 	farcall CopyBetweenPartyAndTemp
 

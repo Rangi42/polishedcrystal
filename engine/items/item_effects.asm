@@ -1089,7 +1089,7 @@ HealHP_SFX_GFX:
 	rst AddNTimes
 	ld a, $2
 	ld [wWhichHPBar], a
-	farjp AnimateHPBar
+	jmp AnimateHPBar
 
 UseItem_SelectMon2:
 ; Used on something already: don't reload the graphics
@@ -2915,7 +2915,7 @@ ApplyPPUp:
 	call GetPartyParamLocationAndValue
 	push hl
 	ld de, wPPUpPPBuffer
-	farcall FillPP
+	call FillPP
 	pop hl
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc

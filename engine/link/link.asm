@@ -1600,7 +1600,7 @@ LinkTrade:
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_2
-	farcall TradeAnimation
+	call TradeAnimation
 	jr .done_animation
 .player_2
 	call TradeAnimationPlayer2

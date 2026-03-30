@@ -158,7 +158,7 @@ StepHappiness::
 	dec a
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_STEP
-	farcall ChangeHappiness
+	call ChangeHappiness
 	ld a, [wCurPartyMon]
 	jr .loop
 

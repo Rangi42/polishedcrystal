@@ -3400,7 +3400,7 @@ SpikesDamage_GotAbility:
 	ld hl, GetQuarterMaxHP
 .got_hp
 	call _hl_
-	farcall SubtractHPFromUser
+	call SubtractHPFromUser
 	call UpdateUserInParty
 
 	ld hl, BattleText_UserHurtBySpikes
