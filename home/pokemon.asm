@@ -1,3 +1,11 @@
+IsAPokemon::
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
+	inc a
+	cp 2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
+	ret
+
 DrawBattleHPBar::
 ; Draw an HP bar d tiles long at hl
 ; Fill it up to e pixels
@@ -92,6 +100,7 @@ PrepMonFrontpicFlipped::
 
 PrepMonFrontpic::
 	ld a, $1
+	; fallthrough
 
 _PrepMonFrontpic:
 	ld [wBoxAlignment], a

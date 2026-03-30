@@ -2,7 +2,7 @@ ROM0
 	org $0000
 	"NULL"
 	org $0000
-	"rst00 EntryPoint"
+	"rst00 CrashRst0"
 	org $0008
 	"rst08 Bankswitch"
 	org $0010
@@ -16,7 +16,7 @@ ROM0
 	org $0030
 	"rst30 PlaceString"
 	org $0038
-	"rst38 unused"
+	"rst38 CrashRst38"
 	org $0040
 	"vblank"
 	org $0048

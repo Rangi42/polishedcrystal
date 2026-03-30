@@ -55,6 +55,7 @@ DEF JOYP_SGB_MLT_REQ EQU %00000011
 ; crash error codes
 	const_def
 	const ERR_RST_0
+	const ERR_RST_38
 	const ERR_DIV_ZERO
 	const ERR_EGG_SPECIES
 	const ERR_EXECUTING_RAM

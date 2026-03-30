@@ -973,10 +973,6 @@ GetScriptWord::
 	pop bc
 	ret
 
-ObjectEvent::
-DoNothingScript::
-	end
-
 GetObjectMask::
 	ldh a, [hMapObjectIndexBuffer]
 	ld e, a

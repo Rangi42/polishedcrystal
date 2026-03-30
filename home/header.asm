@@ -3,8 +3,8 @@
 
 ; rst vectors
 
-SECTION "rst00 EntryPoint", ROM0[$0000]
-EntryPoint::
+SECTION "rst00 CrashRst0", ROM0[$0000]
+CrashRst0::
 	di
 	xor a ; ld a, ERR_RST_0
 	jmp Crash
@@ -94,17 +94,17 @@ SwapHLDE::
 	ret
 
 
-SECTION "rst38 unused", ROM0[$0038]
+SECTION "rst38 CrashRst38", ROM0[$0038]
+CrashRst38::
+	di
+	ld a, ERR_RST_38
+	jmp Crash
 
-	ds 3 ; unused
+ObjectEvent::
+DoNothingScript::
+	end
 
-IsAPokemon::
-; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
-; Returns carry if species a is not a Pokemon (including $ff)
-	inc a
-	cp 2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
-	dec a
-	ret
+	ds 1 ; unused
 
 
 ; Game Boy hardware interrupts
