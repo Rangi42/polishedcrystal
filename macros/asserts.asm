@@ -28,8 +28,8 @@ MACRO? _redef_current_label
 	if DEF(\1)
 		PURGE \1
 	endc
-	if _NARG == 3 + (\3)
-		DEF \1 EQUS "\<_NARG>"
+	if _NARG > 2
+		DEF \1 EQUS "\3"
 	elif STRLEN(#__SCOPE__)
 		if {{__SCOPE__}} - @ == 0
 			DEF \1 EQUS #{__SCOPE__}
@@ -43,7 +43,8 @@ ENDM
 
 MACRO? table_width
 	def CURRENT_TABLE_WIDTH = \1
-	_redef_current_label CURRENT_TABLE_START, "._table_width\@", 2, \#
+	shift
+	_redef_current_label CURRENT_TABLE_START, "._table_width\@", \#
 ENDM
 
 MACRO? assert_table_length
@@ -56,7 +57,7 @@ ENDM
 
 MACRO? list_start
 	def list_index = 0
-	_redef_current_label CURRENT_LIST_START, "._list_start\@", 1, \#
+	_redef_current_label CURRENT_LIST_START, "._list_start\@", \#
 ENDM
 
 MACRO? li
@@ -115,12 +116,7 @@ ENDM
 MACRO? bit_array
 	DEF CURRENT_BIT_ARRAY_VALUE = 0
 	DEF CURRENT_BIT_ARRAY_LENGTH = 0
-	if _NARG == 1
-		REDEF CURRENT_BIT_ARRAY_START EQUS "\1"
-	ELSE
-		REDEF CURRENT_BIT_ARRAY_START EQUS "._bit_array\@"
-	{CURRENT_BIT_ARRAY_START}:
-	endc
+	_redef_current_label CURRENT_BIT_ARRAY_START, "._bit_array\@", \#
 ENDM
 
 MACRO? dbit
