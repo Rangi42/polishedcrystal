@@ -36,7 +36,7 @@ DrawPlayerHP:
 	ld c, e
 
 .not_boxmon
-	predef ComputeHPBarPixels
+	farcall ComputeHPBarPixels
 	ld a, 6
 	ld d, a
 	ld c, a

@@ -927,22 +927,22 @@ InitGenderGraphics:
 	ldh [hGraphicStartTile], a
 	hlcoord 0, 4
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $23
 	ldh [hGraphicStartTile], a
 	hlcoord 5, 4
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $46
 	ldh [hGraphicStartTile], a
 	hlcoord 10, 4
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	xor a
 	ldh [hGraphicStartTile], a
 	hlcoord 15, 4
 	lb bc, 5, 7
-	predef_jump PlaceGraphic
+	farjp PlaceGraphic
 
 .DecompressRequestPicSlice:
 	push de
@@ -1062,7 +1062,7 @@ FinishPrepIntroPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 4
 	lb bc, 7, 7
-	predef_jump PlaceGraphic
+	farjp PlaceGraphic
 
 Intro_PlacePlayerSprite:
 	farcall GetPlayerIcon

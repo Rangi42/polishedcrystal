@@ -16,7 +16,7 @@ ROM0
 	org $0030
 	"rst30 PlaceString"
 	org $0038
-	"rst38 Predef"
+	"rst38 unused"
 	org $0040
 	"vblank"
 	org $0048

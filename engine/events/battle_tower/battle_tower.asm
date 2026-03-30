@@ -37,7 +37,7 @@ RunBattleTowerTrainer:
 	farcall HealParty
 	farcall PopulateBattleTowerTeam
 
-	predef StartBattle
+	farcall StartBattle
 
 	farcall LoadPokemonData
 	farcall HealParty

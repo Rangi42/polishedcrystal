@@ -1055,7 +1055,7 @@ DayCare_GenerateEgg:
 	rst CopyBytes
 	ld hl, wTempMonMoves
 	ld de, wTempMonPP
-	predef FillPP
+	farcall FillPP
 	ld hl, wMonOrItemNameBuffer
 	ld de, wStringBuffer1
 	ld bc, NAME_LENGTH

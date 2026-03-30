@@ -1271,7 +1271,7 @@ SolarPowerWeatherAbility:
 	call BeginAbility
 	call ShowAbilityActivation
 	call GetEighthMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, IsHurtText
 	call StdBattleTextbox
 	jmp EndAbility
@@ -1608,7 +1608,7 @@ BadDreamsAbility:
 	call ShowAbilityActivation
 	call SwitchTurn
 	call GetEighthMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	call SwitchTurn
 	ld hl, IsTormentedText
 	call StdBattleTextbox

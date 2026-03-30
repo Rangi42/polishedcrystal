@@ -339,7 +339,7 @@ PlayerWithdrawItemMenu:
 	ld [wCurItemQuantity], a
 	ld hl, wNumPCItems
 	call TossItem
-	predef PartyMonItemName
+	farcall PartyMonItemName
 	ld hl, .WithdrewText
 	call MenuTextbox
 	xor a
@@ -490,7 +490,7 @@ PlayerDepositItemMenu:
 	ld [wCurItemQuantity], a
 	ld hl, wNumItems
 	call TossItem
-	predef PartyMonItemName
+	farcall PartyMonItemName
 	ld hl, .DepositText
 	jmp PrintText
 

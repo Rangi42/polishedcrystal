@@ -76,7 +76,7 @@ UseRegisteredItem:
 
 .Current:
 	call OpenText
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	call CloseText
 	and a
 	ret
@@ -84,7 +84,7 @@ UseRegisteredItem:
 .Party:
 	call ReanchorMap
 	call FadeToMenu
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	call CloseSubmenu
 	call CloseText
 	and a
@@ -94,7 +94,7 @@ UseRegisteredItem:
 	call ReanchorMap
 	ld a, 1
 	ld [wUsingItemWithSelect], a
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	xor a
 	ld [wUsingItemWithSelect], a
 	ld a, [wItemEffectSucceeded]

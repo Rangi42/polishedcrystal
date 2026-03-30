@@ -51,7 +51,7 @@ CheckCanLearnMoveTutorMove:
 	and a
 	jr z, .reminder
 
-	predef CanLearnTMHMMove
+	farcall CanLearnTMHMMove
 	ld a, c
 	and a
 	jr nz, .can_learn
@@ -68,14 +68,14 @@ CheckCanLearnMoveTutorMove:
 	farcall KnowsMove
 	jr c, .didnt_learn
 
-	predef LearnMove
+	farcall LearnMove
 .perform_move_learn
 	ld a, b
 	and a
 	jr z, .didnt_learn
 
 	ld c, HAPPINESS_LEARNMOVE
-	predef ChangeHappiness
+	farcall ChangeHappiness
 	jr .learned
 
 .reminder
@@ -97,7 +97,7 @@ CheckCanLearnMoveTutorMove:
 	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyName1
-	predef LearnMove
+	farcall LearnMove
 	xor a
 	ld [wPutativeTMHMMove], a
 	jr .perform_move_learn

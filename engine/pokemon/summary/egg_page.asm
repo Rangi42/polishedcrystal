@@ -132,11 +132,11 @@ INCLUDE "gfx/stats/egg_page.pal"
 	ld [wBoxAlignment], a
 	call SummaryScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00
-	predef FrontpicPredef
+	farcall FrontpicPredef
 	pop de
 	hlcoord 0, 1
 	ld d, $0
-	predef LoadMonAnimation
+	farcall LoadMonAnimation
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret

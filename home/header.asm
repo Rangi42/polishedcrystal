@@ -94,9 +94,9 @@ SwapHLDE::
 	ret
 
 
-SECTION "rst38 Predef", ROM0[$0038]
-Predef::
-	jmp _Predef
+SECTION "rst38 unused", ROM0[$0038]
+
+	ds 3 ; unused
 
 IsAPokemon::
 ; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)

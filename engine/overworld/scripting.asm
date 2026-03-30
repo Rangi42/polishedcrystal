@@ -1242,7 +1242,7 @@ Script_loadtrainerwithpal:
 
 Script_startbattle:
 	call BufferScreen
-	predef StartBattle
+	farcall StartBattle
 	ld a, [wBattleResult]
 	and ~BATTLERESULT_BITMASK
 	ldh [hScriptVar], a
@@ -2494,7 +2494,7 @@ Script_verbosegivetmhm:
 	; off by one error?
 	ld hl, wTempTMHM
 	inc [hl]
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld b, BANK(GiveTMHMScript)
 	ld de, GiveTMHMScript
 	jmp ScriptCall
@@ -2534,7 +2534,7 @@ Script_gettmhmname:
 	inc a
 	ld [wTempTMHM], a
 
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName

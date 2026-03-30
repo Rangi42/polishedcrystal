@@ -218,7 +218,7 @@ EvolutionAnimation:
 	ld [wCurPartySpecies], a
 	hlcoord 7, 2
 	lb de, $0, ANIM_MON_EVOLVE
-	predef AnimateFrontpic
+	farcall AnimateFrontpic
 
 	pop af
 	ld [wCurForm], a
@@ -260,7 +260,7 @@ EvolutionAnimation:
 	ld a, $1
 	ld [wBoxAlignment], a
 	ld de, vTiles2
-	predef FrontpicPredef
+	farcall FrontpicPredef
 	xor a
 	ld [wBoxAlignment], a
 	ret

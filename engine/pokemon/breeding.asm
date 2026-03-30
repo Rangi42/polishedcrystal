@@ -319,7 +319,7 @@ HatchEggs:
 	; Write to wTempMon, wCurPartySpecies and wCurForm. Also gets base data.
 	xor a
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 
 	; Mark the mon as caught.
 	ld a, [wTempMonSpecies]
@@ -479,7 +479,7 @@ InitEggMoves:
 	ld a, [wTempMonForm]
 	and SPECIESFORM_MASK
 	ld b, a
-	predef FillMoves
+	farcall FillMoves
 
 	; Inherited level up moves
 	ld de, wBreedMon1Moves
@@ -530,7 +530,7 @@ InitEggMoves:
 	; Done, fill PP
 	ld hl, wTempMonMoves
 	ld de, wTempMonPP
-	predef_jump FillPP
+	farjp FillPP
 
 .GetEggMoves:
 	ld b, NUM_MOVES
@@ -558,7 +558,7 @@ InheritLevelMove:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 .loop
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -641,7 +641,7 @@ GetEggFrontpic:
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	predef_jump GetFrontpic
+	farjp GetFrontpic
 
 GetHatchlingFrontpic:
 	push de
@@ -652,7 +652,7 @@ GetHatchlingFrontpic:
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	predef_jump FrontpicPredef
+	farjp FrontpicPredef
 
 Hatch_UpdateFrontpicBGMapCenter:
 	push af
@@ -670,7 +670,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	ld a, c
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	pop af
 	call Hatch_LoadFrontpicPal
 	call SetDefaultBGPAndOBP
@@ -772,7 +772,7 @@ EggHatch_AnimationSequence:
 	ld [wCurPartySpecies], a
 	hlcoord 6, 3
 	lb de, $0, ANIM_MON_HATCH
-	predef AnimateFrontpic
+	farcall AnimateFrontpic
 	pop af
 	ld [wCurSpecies], a
 	ret

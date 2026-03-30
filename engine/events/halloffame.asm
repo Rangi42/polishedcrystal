@@ -108,7 +108,7 @@ AnimateHallOfFame:
 	call ApplyTilemapInVBlank
 	decoord 6, 5
 	ld c, $6
-	predef HOF_AnimateFrontpic
+	farcall HOF_AnimateFrontpic
 	ld c, 60
 	call DelayFrames
 	and a
@@ -227,12 +227,12 @@ AnimateHOFMonEntrance:
 	ld a, ' '
 	rst ByteFill
 	ld de, vTiles2 tile $31
-	predef GetBackpic
+	farcall GetBackpic
 	ld a, $31
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $d0
 	ldh [hSCY], a
 	ld a, $90
@@ -374,7 +374,7 @@ _HallOfFamePC:
 	call SetDefaultBGPAndOBP
 	decoord 6, 5
 	ld c, $6
-	predef HOF_AnimateFrontpic
+	farcall HOF_AnimateFrontpic
 	and a
 	ret
 
@@ -512,7 +512,7 @@ HOF_AnimatePlayerPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $d0
 	ldh [hSCY], a
 	ld a, $90
@@ -536,7 +536,7 @@ HOF_AnimatePlayerPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 13, 5
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $c0
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank

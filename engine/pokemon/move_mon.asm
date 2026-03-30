@@ -103,7 +103,7 @@ endr
 	; b = form
 	ld a, [wCurForm]
 	ld b, a
-	predef FillMoves
+	farcall FillMoves
 	pop de
 rept NUM_MOVES
 	inc de
@@ -359,7 +359,7 @@ endr
 	push de
 	inc hl
 	inc hl
-	predef FillPP
+	farcall FillPP
 	pop de
 	pop hl
 rept NUM_MOVES
@@ -395,7 +395,7 @@ endr
 	ld bc, MON_EVS - 1
 	add hl, bc
 	lb bc, FALSE, STAT_HP
-	predef CalcPkmnStatC
+	farcall CalcPkmnStatC
 	ldh a, [hProduct + 2]
 	ld [de], a
 	inc de
@@ -408,7 +408,7 @@ endr
 	ld b, TRUE
 	push hl
 	push de
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	pop hl
 	push bc
 	inc hl
@@ -605,7 +605,7 @@ RetrieveBreedmon:
 	call GetHyperTraining
 	inc a
 	ld b, a
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	ld hl, wPartyMon1Moves
 	ld a, [wPartyCount]
 	dec a
@@ -619,7 +619,7 @@ RetrieveBreedmon:
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
-	predef FillMoves
+	farcall FillMoves
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
@@ -808,7 +808,7 @@ RecalculatePartyMonStats:
 	pop de
 
 	; uses b, de, hl
-	predef_jump CalcPkmnStats
+	farjp CalcPkmnStats
 
 GetLastPartyMon:
 	ld a, [wPartyCount]
@@ -844,7 +844,7 @@ _DepositBreedmon:
 	rst CopyBytes
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef_jump RemoveMonFromParty
+	farjp RemoveMonFromParty
 
 SentPkmnIntoBox:
 ; Sents the Pkmn into one of Bills Boxes
@@ -920,7 +920,7 @@ ComputeNPCTrademonStatsAndEggSteps:
 	ld a, MON_EVS - 1
 	call GetPartyParamLocationAndValue
 	ld b, TRUE
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	pop de
 	ld a, MON_HP
 	call GetPartyParamLocationAndValue
@@ -989,7 +989,7 @@ UpdatePkmnStats:
 	call GetHyperTraining
 	inc a
 	ld b, a
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	ld a, MON_HP
 	call GetPartyParamLocationAndValue
 	pop bc
@@ -1059,7 +1059,7 @@ GivePoke::
 	inc a
 	ld [wMonType], a
 	ld [wBattleMode], a
-	predef TryAddMonToParty
+	farcall TryAddMonToParty
 	lb bc, $81, 1
 	farcall CopyBetweenPartyAndTemp
 

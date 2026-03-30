@@ -1696,7 +1696,7 @@ HasVisitedSpawn:
 	ld hl, wVisitedSpawns
 	ld b, CHECK_FLAG
 	ld d, 0
-	predef FlagPredef
+	farcall FlagPredef
 	ld a, c
 	ret
 

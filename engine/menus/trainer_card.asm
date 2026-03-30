@@ -315,7 +315,7 @@ TrainerCard_PrintTopHalfOfCard:
 	lb bc, 5, 7
 	xor a
 	ldh [hGraphicStartTile], a
-	predef PlaceGraphic
+	farcall PlaceGraphic
 
 	lb bc, PRINTNUM_MONEY | 3, 7
 	ld hl, wMoney

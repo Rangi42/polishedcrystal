@@ -50,7 +50,7 @@ ReadTrainerParty:
 	ld [wMonType], a
 
 	push hl
-	predef TryAddMonToParty
+	farcall TryAddMonToParty
 	pop hl
 
 ; item?
@@ -249,7 +249,7 @@ ReadTrainerParty:
 	add hl, de
 	pop de
 
-	predef FillPP
+	farcall FillPP
 
 	pop hl
 
@@ -273,7 +273,7 @@ ReadTrainerParty:
 	pop de
 	ld b, TRUE
 	push de
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	pop hl
 	inc hl
 	ld a, [hld]
