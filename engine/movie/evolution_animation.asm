@@ -260,7 +260,7 @@ EvolutionAnimation:
 	ld a, $1
 	ld [wBoxAlignment], a
 	ld de, vTiles2
-	farcall FrontpicPredef
+	farcall PrepareAnimatedFrontpic
 	xor a
 	ld [wBoxAlignment], a
 	ret

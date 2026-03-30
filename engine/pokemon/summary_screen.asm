@@ -928,7 +928,7 @@ SummaryScreen_PlaceFrontpic:
 	ret c
 	call SummaryScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00
-	farcall FrontpicPredef
+	farcall PrepareAnimatedFrontpic
 	hlcoord 0, 1
 	lb de, $0, $2
 	farcall LoadMonAnimation

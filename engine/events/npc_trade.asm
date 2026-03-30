@@ -75,7 +75,7 @@ TradeFlagAction:
 	ld hl, wTradeFlags
 	ld a, [wJumptableIndex]
 	ld c, a
-	farcall FlagPredef
+	farcall SmallFlagAction
 	ld a, c
 	and a
 	ret

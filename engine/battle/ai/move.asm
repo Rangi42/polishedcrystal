@@ -142,10 +142,10 @@ _AIChooseMove:
 	; Aggressive overrides type matchups
 	ld hl, wAIFlags
 	lb bc, CHECK_FLAG, AI_AGGRESSIVE_F
-	farcall FlagPredef
+	farcall SmallFlagAction
 	jr z, .not_aggressive
 	lb bc, RESET_FLAG, AI_TYPES_F
-	farcall FlagPredef
+	farcall SmallFlagAction
 
 .not_aggressive
 	lb bc, CHECK_FLAG, 0
@@ -165,7 +165,7 @@ endc
 	jr z, .DecrementScores
 
 	push bc
-	farcall FlagPredef
+	farcall SmallFlagAction
 	ld d, c
 	pop bc
 
@@ -211,7 +211,7 @@ endc
 	ld c, [hl]
 	ld hl, wAIFlags
 	ld b, SET_FLAG
-	farcall FlagPredef
+	farcall SmallFlagAction
 	pop af
 	pop hl
 	inc hl

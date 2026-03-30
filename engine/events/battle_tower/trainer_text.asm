@@ -15,7 +15,7 @@ BattleTowerText::
 	ld b, CHECK_FLAG
 	ld hl, BTTrainerClassGenders
 	ld d, BANK(BTTrainerClassGenders)
-	farcall FlagPredef
+	farcall SmallFlagAction
 	ld a, c
 	pop bc
 	and a

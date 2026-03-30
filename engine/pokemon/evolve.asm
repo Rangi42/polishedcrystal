@@ -799,7 +799,7 @@ ShiftMoves:
 EvoFlagAction:
 	push de
 	ld d, $0
-	farcall FlagPredef
+	farcall SmallFlagAction
 	pop de
 	ret
 

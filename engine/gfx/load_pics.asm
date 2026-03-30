@@ -22,7 +22,7 @@ PrepareFrontpic:
 	ldh [rWBK], a
 	ret
 
-FrontpicPredef:
+PrepareAnimatedFrontpic:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	and a

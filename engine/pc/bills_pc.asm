@@ -484,7 +484,7 @@ GetStorageBoxPointer:
 	dec c
 	ld d, 1 ; will cause a useless bankswitch in flag checking, but that's OK
 	ld b, CHECK_FLAG
-	farcall FlagPredef
+	farcall SmallFlagAction
 	pop bc
 	jr z, .got_bank
 	inc d
@@ -579,7 +579,7 @@ SetStorageBoxPointer:
 	jr z, .got_flag_action
 	ld b, SET_FLAG
 .got_flag_action
-	farcall FlagPredef
+	farcall SmallFlagAction
 	jr .done
 
 .party
@@ -1412,7 +1412,7 @@ StorageFlagAction:
 	ld c, e
 	dec c
 	ld d, 0
-	farjp FlagPredef
+	farjp SmallFlagAction
 
 Special_CurBoxFullCheck:
 ; Returns [hScriptVar] = zero if wTempMonBox == wCurBox

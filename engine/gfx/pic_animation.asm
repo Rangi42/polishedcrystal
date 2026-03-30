@@ -869,7 +869,7 @@ HOF_AnimateFrontpic:
 	push bc
 	push hl
 	ld de, vTiles2
-	farcall FrontpicPredef
+	farcall PrepareAnimatedFrontpic
 	pop hl
 	pop bc
 	ld d, 0

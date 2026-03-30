@@ -652,7 +652,7 @@ GetHatchlingFrontpic:
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	farjp FrontpicPredef
+	farjp PrepareAnimatedFrontpic
 
 Hatch_UpdateFrontpicBGMapCenter:
 	push af

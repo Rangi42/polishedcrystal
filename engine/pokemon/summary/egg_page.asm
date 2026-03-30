@@ -132,7 +132,7 @@ INCLUDE "gfx/stats/egg_page.pal"
 	ld [wBoxAlignment], a
 	call SummaryScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00
-	farcall FrontpicPredef
+	farcall PrepareAnimatedFrontpic
 	pop de
 	hlcoord 0, 1
 	ld d, $0

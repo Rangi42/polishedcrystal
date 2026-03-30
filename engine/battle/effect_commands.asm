@@ -2939,7 +2939,7 @@ BattleCommand_criticaltext:
 	jr c, .cont
 	ld b, SET_FLAG
 	ld hl, wEvolvableFlags
-	farcall FlagPredef ; c still contains wCurBatlteMon
+	farcall SmallFlagAction ; c still contains wCurBatlteMon
 
 .cont
 	call ResetCrit

@@ -6,7 +6,7 @@ GetTrademonFrontpic:
 	ld [wCurForm], a
 	call GetBaseData
 	ld de, vTiles2
-	farjp FrontpicPredef
+	farjp PrepareAnimatedFrontpic
 
 AnimateTrademonFrontpic:
 	ld a, [wOTTrademonSpecies]

@@ -6801,7 +6801,7 @@ GiveExperiencePoints:
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, SET_FLAG
-	farcall FlagPredef
+	farcall SmallFlagAction
 
 .evolve_logic_done
 	pop af
@@ -6826,7 +6826,7 @@ GiveExperiencePoints:
 	ld c, a
 	ld b, CHECK_FLAG
 	ld d, $0
-	farcall FlagPredef
+	farcall SmallFlagAction
 	ld a, c
 	and a
 	ret
@@ -7933,7 +7933,7 @@ GetFrontpicOrGhostpic:
 
 .not_ghost_battle
 	ld de, vTiles2
-	farjp FrontpicPredef
+	farjp PrepareAnimatedFrontpic
 
 GetFrontpic_DoAnim:
 	ldh a, [hBattleTurn]
