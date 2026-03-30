@@ -1646,24 +1646,20 @@ TownMapBubble:
 	add hl, hl ; two bytes per flypoint
 	ld de, Flypoints
 	add hl, de
-	ld e, [hl]
-	ld a, e
+	ld a, [hl]
 	cp POKEMON_LEAGUE
-	jr z, .PokemonLeague
+	ld de, .PokemonLeagueFlyName ; special case to fit in 16 chars
+	jr z, .PlaceName
+	ld e, [hl]
 	farcall GetLandmarkName
 	ld de, wStringBuffer1
-	jr .PlaceName
-
-.PokemonLeague:
-	ld de, .PokemonLeagueFlyName
-
 .PlaceName:
 	hlcoord 2, 1
 	rst PlaceString
 	ret
 
 .PokemonLeagueFlyName:
-	rawchar "League Gate@"
+	rawchar "Pokémon League@"
 
 GetMapCursorCoordinates:
 	ld a, [wTownMapPlayerIconLandmark]
@@ -1788,15 +1784,14 @@ FlyMap:
 	ld a, FLY_POKEMON_LEAGUE
 	ld [wEndFlypoint], a
 
-;
 ; If Indigo Plateau has been visited, keep it as the default.
 ; Otherwise use Pokémon League Gate.
 	ld c, SPAWN_INDIGO
 	call HasVisitedSpawn
 	ld a, FLY_POKEMON_LEAGUE
 	jr z, .SetKantoDefault
-	ld a, FLY_INDIGO
-
+	assert FLY_POKEMON_LEAGUE - 1 == FLY_INDIGO
+	dec a
 .SetKantoDefault:
 	ld [wTownMapPlayerIconLandmark], a
 ; Fill out the map
