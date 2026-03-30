@@ -127,6 +127,11 @@ ScanObjectStructPals:
 	jr .resolve_variable_sprite
 
 .check_mon_sprite_range
+	; SPRITE_FOLLOWER also stores a raw PAL_MON_*_* nybble pair even though
+	; its sprite id lives outside the normal mon-icon range.
+	cp SPRITE_FOLLOWER
+	jr z, .mon_icon_pal
+
 	; For SPRITE_POKEMON..(SPRITE_VARS - 1), interpret palette as two nybbles:
 	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
 	cp SPRITE_POKEMON
