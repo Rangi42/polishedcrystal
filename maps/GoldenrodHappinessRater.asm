@@ -23,11 +23,11 @@ GoldenrodHappinessRaterTeacherScript:
 
 	writetext GoldenrodHappinessRaterAskCheckText
 	yesorno
-	iffalse .NoCheckText ; if player doesn't want to check, skip check
+	iffalse .NoCheckText
 
 	special SelectMonForHappinessStatus
-	iffalse, .NoCheckText ; if player canceled selection, skip check
-	ifequal 1, .EggSelectedText ; if player selected an Egg, skip check
+	iffalse, .NoCheckText
+	ifequal 1, .EggSelectedText
 
 	special GetSelectedPokemonHappiness
 
@@ -117,7 +117,7 @@ GoldenrodHappinessRaterTeacherScript:
 .EggSelectedText:
 	jumpthisopenedtext
 
-	text "That's an EGG."
+	text "That's an Egg."
 	line "I can't judge"
 	cont "its happiness yet."
 	done

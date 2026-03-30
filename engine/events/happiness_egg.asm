@@ -51,10 +51,9 @@ SelectMonForHappinessStatus:
 	ret
 
 GetSelectedPokemonHappiness:
-; returns selected non-Egg party mon's happiness
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Happiness
-	call GetPartyLocation ; shift hl to selected mon's happiness
+	call GetPartyLocation
 	ld a, [hl]
 	ldh [hScriptVar], a
 
