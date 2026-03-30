@@ -25,9 +25,9 @@ GoldenrodHappinessRaterTeacherScript:
 	yesorno
 	iffalse .NoCheckText
 
-	special SelectMonForHappinessStatus
-	iffalse, .NoCheckText
-	ifequal 1, .EggSelectedText
+	special Special_MintTeaPickMon
+	iffalse_jumpopenedtext .RefusedText
+	ifequalfwd 1, .Egg
 
 	special GetSelectedPokemonHappiness
 
@@ -114,7 +114,7 @@ GoldenrodHappinessRaterTeacherScript:
 	cont "not used to you."
 	done
 
-.EggSelectedText:
+.Egg:
 	jumpthisopenedtext
 
 	text "That's an Egg."
@@ -122,9 +122,7 @@ GoldenrodHappinessRaterTeacherScript:
 	cont "its happiness yet."
 	done
 
-.NoCheckText:
-	jumpthisopenedtext
-
+.RefusedText:
 	text "Come back if you"
 	line "change your mind."
 	done

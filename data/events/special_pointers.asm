@@ -86,7 +86,6 @@ SpecialsPointers::
 	add_special Special_DisplayLinkRecord
 	add_special GetFirstPokemonHappiness
 	add_special CheckFirstMonIsEgg
-	add_special SelectMonForHappinessStatus
 	add_special GetSelectedPokemonHappiness
 	add_special RandomPhoneRareWildMon
 	add_special RandomPhoneWildMon

@@ -23,32 +23,6 @@ GetFirstPokemonHappiness:
 	call GetPokemonName
 	jmp CopyPokemonName_Buffer1_Buffer3
 
-SelectMonForHappinessStatus:
-; hScriptVar:
-; 0: canceled selection
-; 1: selected mon is Egg
-; 2: selected mon is valid
-	farcall SelectMonFromParty
-	jr c, .cancel
-
-	ld a, MON_IS_EGG
-	call GetPartyParamLocationAndValue
-	bit MON_IS_EGG_F, a
-	jr nz, .egg
-
-	ld a, 2
-	jr .done
-
-.cancel
-	xor a
-	jr .done
-
-.egg
-	ld a, 1
-
-.done
-	ldh [hScriptVar], a
-	ret
 
 GetSelectedPokemonHappiness:
 	ld a, [wCurPartyMon]
