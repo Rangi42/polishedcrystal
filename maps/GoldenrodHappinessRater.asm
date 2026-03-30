@@ -20,17 +20,13 @@ GoldenrodHappinessRater_MapScriptHeader:
 GoldenrodHappinessRaterTeacherScript:
 	faceplayer
 	opentext
-
 	writetext GoldenrodHappinessRaterAskCheckText
 	yesorno
 	iffalse .NoCheckText
-
 	special Special_MintTeaPickMon
 	iffalse_jumpopenedtext .RefusedText
 	ifequalfwd 1, .Egg
-
 	special GetSelectedPokemonHappiness
-
 	writetext GoldenrodHappinessRaterTeacherText
 	promptbutton
 	ifequalfwd 255, .AdoresYou                            ; 255
@@ -127,13 +123,6 @@ GoldenrodHappinessRaterTeacherScript:
 	line "change your mind."
 	done
 
-GoldenrodHappinessRaterTeacherText:
-	text "Oh? Let me see"
-	line "your "
-	text_ram wStringBuffer3
-	text "…"
-	done
-
 GoldenrodHappinessRaterAskCheckText:
 	text "If you treat your"
 	line "#mon nicely,"
@@ -144,6 +133,13 @@ GoldenrodHappinessRaterAskCheckText:
 	para "Want me to check"
 	line "your #mon's"
 	cont "happiness?"
+	done
+
+GoldenrodHappinessRaterTeacherText:
+	text "Oh? Let me see"
+	line "your "
+	text_ram wStringBuffer3
+	text "…"
 	done
 
 GoldenrodHappinessRaterPokefanMText:
