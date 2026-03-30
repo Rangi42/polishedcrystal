@@ -89,7 +89,7 @@ FindTMHMInBallScript::
 	inc a
 	ld [wTempTMHM], a
 
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName

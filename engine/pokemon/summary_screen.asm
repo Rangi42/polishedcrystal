@@ -928,10 +928,10 @@ SummaryScreen_PlaceFrontpic:
 	ret c
 	call SummaryScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00
-	predef FrontpicPredef
+	farcall FrontpicPredef
 	hlcoord 0, 1
 	lb de, $0, $2
-	predef LoadMonAnimation
+	farcall LoadMonAnimation
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret

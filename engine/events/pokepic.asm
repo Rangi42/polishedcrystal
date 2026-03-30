@@ -24,7 +24,7 @@ Pokepic::
 	ld [wCurSpecies], a
 	call GetBaseData
 	ld de, vTiles1
-	predef GetFrontpic
+	farcall GetFrontpic
 _Displaypic:
 	ld a, [wMenuBorderTopCoord]
 	inc a
@@ -36,7 +36,7 @@ _Displaypic:
 	ld a, $80
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld b, 1
 	jmp SafeCopyTilemapAtOnce
 

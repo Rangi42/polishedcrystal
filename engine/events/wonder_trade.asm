@@ -53,7 +53,7 @@ WonderTrade::
 	call PrintText
 
 	call DisableSpriteUpdates
-	predef TradeAnimation
+	farcall TradeAnimation
 
 	jmp ReturnToMapWithSpeechTextbox
 
@@ -200,13 +200,13 @@ DoWonderTrade:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromParty
+	farcall RemoveMonFromParty
 
 	call GetWonderTradeOTForm
 	ld a, d
 	ld [wCurForm], a
 	ld [wOTTrademonForm], a
-	predef TryAddMonToParty
+	farcall TryAddMonToParty
 
 	ld a, [wOTTrademonSpecies]
 	ld c, a
@@ -442,8 +442,8 @@ GetGSBallPichu:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromParty
-	predef TryAddMonToParty
+	farcall RemoveMonFromParty
+	farcall TryAddMonToParty
 
 	ld c, ULTRA_BALL
 	farcall SetGiftPartyMonCaughtData

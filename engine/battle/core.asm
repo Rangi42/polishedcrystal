@@ -266,7 +266,7 @@ HandleBerserkGene:
 	call SwitchTurn
 
 .do_it
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BERSERK_GENE
 	ret nz
@@ -384,7 +384,7 @@ GetSpeed::
 	farcall ApplySpeedAbilities
 
 	; Apply item effects
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
@@ -1888,7 +1888,7 @@ CheckEnigmaBerry:
 	ret c
 
 	; Are we actually holding Enigma Berry?
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ENIGMA_BERRY
 	ret nz
@@ -2530,7 +2530,7 @@ PlayerMonFaintHappinessMod:
 .got_param
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
-	predef_jump ChangeHappiness
+	farjp ChangeHappiness
 
 AskUseNextPokemon:
 	call EmptyBattleTextbox
@@ -2974,7 +2974,7 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	call GetBaseData
 	ld a, OTPARTYMON
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 	call GetMonFrontpic
 
 	xor a
@@ -3017,7 +3017,7 @@ BattleAnimateFrontpic:
 .no_substitute
 	hlcoord 12, 0
 	lb de, $0, ANIM_MON_SLOW
-	predef_jump AnimateFrontpic ; also plays cry
+	farjp AnimateFrontpic ; also plays cry
 
 .cry_no_anim
 	ld a, $f
@@ -3363,7 +3363,7 @@ SpikesDamage_GotAbility:
 	jr nz, .end_hazards
 
 	push bc
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAVY_BOOTS
 	pop bc
@@ -3400,7 +3400,7 @@ SpikesDamage_GotAbility:
 	ld hl, GetQuarterMaxHP
 .got_hp
 	call _hl_
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	call UpdateUserInParty
 
 	ld hl, BattleText_UserHurtBySpikes
@@ -3570,7 +3570,7 @@ QuarterPinchOrGluttony::
 HandleStatBoostBerry:
 	call QuarterPinchOrGluttony
 	ret nz
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	call _HeldStatBoostBerry
 	ret nz
 	farjp ConsumeUserItem
@@ -3681,7 +3681,7 @@ HandleHPHealingItem:
 	jr z, .ok
 	ret nc
 .ok
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, [hl]
 	cp FIGY_BERRY
 	jr nz, .figy_ok
@@ -3689,7 +3689,7 @@ HandleHPHealingItem:
 	call QuarterPinchOrGluttony
 	ret nz
 .figy_ok
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	call _HeldHPHealingItem
 	ret nz
 UseBattleItem:
@@ -3778,7 +3778,7 @@ _ItemRecoveryAnim::
 	ld [wFXAnimIDLo], a
 	ld a, HIGH(ANIM_HELD_ITEM_TRIGGER)
 	ld [wFXAnimIDHi], a
-	predef PlayBattleAnim
+	farcall PlayBattleAnim
 	xor a
 	ld [wBattleAnimParam], a
 	jmp PopBCDEHL
@@ -3801,7 +3801,7 @@ StealHeldStatusHealingItem:
 UseOpponentHeldStatusHealingItem:
 	call StackCallOpponentTurn
 UseHeldStatusHealingItem:
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
 	ret z
 	jmp UseBattleItem
@@ -3866,7 +3866,7 @@ StealConfusionHealingItem:
 UseOpponentConfusionHealingItem:
 	call StackCallOpponentTurn
 UseConfusionHealingItem:
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	call _HeldConfusionHealingItem
 	ret z
 	jmp UseBattleItem
@@ -3940,7 +3940,7 @@ DrawPlayerHUD:
 	hlcoord 11, 9
 	xor a ; PARTYMON
 	ld [wMonType], a
-	predef DrawPlayerHP
+	farcall DrawPlayerHP
 
 	; Exp bar
 	push de
@@ -4214,7 +4214,7 @@ endr
 	jmp FinishBattleAnim
 
 BattleAnimateHPBar:
-	predef AnimateHPBar
+	farcall AnimateHPBar
 	ld a, [wWhichHPBar]
 	and a
 	ld hl, wEnemyHPPal
@@ -4626,7 +4626,7 @@ AI_UserCanSwitch:
 
 UserCanSwitch:
 ; Returns z if the user can switch, with the message in hl if they can't.
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_SHED_SHELL
 	ret z
@@ -5041,7 +5041,7 @@ MoveSelectionScreen:
 .got_start_coord
 	ld a, SCREEN_WIDTH
 	ld [wListMovesLineSpacing], a
-	predef ListMoves
+	farcall ListMoves
 
 	ld a, [wMoveSelectionMenuType]
 	dec a
@@ -5739,7 +5739,7 @@ CheckUsableMove:
 
 .GetItemHeldEffect:
 	push bc
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	ret
@@ -5971,7 +5971,7 @@ LoadEnemyWildmon:
 	; set [wCurForm] before TryAddMonToParty calls GetBaseData
 	call GenerateWildForm
 
-	predef TryAddMonToParty
+	farcall TryAddMonToParty
 
 	call CheckValidMagikarpLength
 	jr c, LoadEnemyWildmon
@@ -6096,7 +6096,7 @@ endc
 	; Fill wild PP
 	ld hl, wOTPartyMon1Moves
 	ld de, wOTPartyMon1PP
-	predef_jump FillPP
+	farjp FillPP
 
 ApplyLegendaryDVs:
 	push de
@@ -6463,7 +6463,7 @@ PlayBattleAnimDE:
 	ld a, d
 	ld [wFXAnimIDHi], a
 	call ApplyTilemapInVBlank
-	predef_jump PlayBattleAnim
+	farjp PlayBattleAnim
 
 FinishBattleAnim:
 	push hl
@@ -6671,7 +6671,7 @@ GiveExperiencePoints:
 .not_max_exp
 	xor a ; PARTYMON
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 	farcall CalcLevel
 	pop bc
 	ld hl, MON_LEVEL
@@ -6757,7 +6757,7 @@ GiveExperiencePoints:
 .skip_animation2
 	xor a ; PARTYMON
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 	farcall PrintStatDifferences
 	call SafeLoadTempTileMapToTileMap
 	call GetMemCGBLayout
@@ -6776,7 +6776,7 @@ GiveExperiencePoints:
 	ld a, b
 	ld [wCurPartyLevel], a
 	push bc
-	predef LearnLevelMoves
+	farcall LearnLevelMoves
 	pop bc
 	ld a, b
 	cp c
@@ -6801,7 +6801,7 @@ GiveExperiencePoints:
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, SET_FLAG
-	predef FlagPredef
+	farcall FlagPredef
 
 .evolve_logic_done
 	pop af
@@ -6826,7 +6826,7 @@ GiveExperiencePoints:
 	ld c, a
 	ld b, CHECK_FLAG
 	ld d, $0
-	predef FlagPredef
+	farcall FlagPredef
 	ld a, c
 	and a
 	ret
@@ -7197,7 +7197,7 @@ AnimateExpBar:
 	push af
 	xor a ; PARTYMON
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 	ld a, [wTempMonLevel]
 	ld b, a
 	ld e, a
@@ -7451,7 +7451,7 @@ _GetNewBaseExp:
 	ld a, h
 	cp b
 	jr nz, .is_evo
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc a
@@ -7465,7 +7465,7 @@ _GetNewBaseExp:
 	push bc
 	ld b, h
 	ld c, l
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 	pop bc
 .evos_loop
 	ld a, BANK(EvosAttacks)
@@ -7880,7 +7880,7 @@ DropPlayerSub:
 	ld a, [wBattleMonForm]
 	ld [wCurForm], a
 	ld de, vTiles2 tile $31
-	predef GetBackpic
+	farcall GetBackpic
 	pop af
 	ld [wCurForm], a
 	pop af
@@ -7933,7 +7933,7 @@ GetFrontpicOrGhostpic:
 
 .not_ghost_battle
 	ld de, vTiles2
-	predef_jump FrontpicPredef
+	farjp FrontpicPredef
 
 GetFrontpic_DoAnim:
 	ldh a, [hBattleTurn]
@@ -8001,7 +8001,7 @@ BattleIntro:
 	ld hl, SilphScopeRevealText
 	call StdBattleTextbox
 	ld de, vTiles0
-	predef GetFrontpic
+	farcall GetFrontpic
 	ld de, ANIM_GHOST_TRANSFORM
 	call PlayBattleAnimDE
 	ld hl, WildPokemonAppearedText
@@ -8092,7 +8092,7 @@ InitEnemy:
 	ld [wEnemyItemState], a
 	hlcoord 12, 0
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, -1
 	ld [wCurOTMon], a
 	ld a, TRAINER_BATTLE
@@ -8112,7 +8112,7 @@ InitEnemy:
 	or [hl]
 	jr z, .skipfaintedmon
 	ld c, HAPPINESS_GYMBATTLE
-	predef ChangeHappiness
+	farcall ChangeHappiness
 .skipfaintedmon
 	pop bc
 	dec b
@@ -8135,7 +8135,7 @@ InitEnemy:
 	ldh [hGraphicStartTile], a
 	hlcoord 12, 0
 	lb bc, 7, 7
-	predef_jump PlaceGraphic
+	farjp PlaceGraphic
 
 ExitBattle:
 	call PostBattleTasks
@@ -8720,7 +8720,7 @@ InitBattleDisplay:
 	ldh [hGraphicStartTile], a
 	hlcoord 2, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	call ApplyTilemapInVBlank
 	call HideSprites
 	ld a, CGB_BATTLE_COLORS
@@ -8785,7 +8785,7 @@ CopyBackpic:
 	ldh [hGraphicStartTile], a
 	hlcoord 2, 6
 	lb bc, 6, 6
-	predef_jump PlaceGraphic
+	farjp PlaceGraphic
 
 .LoadTrainerBackpicAsOAM:
 	ld hl, wShadowOAM

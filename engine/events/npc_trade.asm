@@ -64,7 +64,7 @@ NPCTrade::
 	push af
 	ld a, [wTradeDialog]
 	push af
-	predef TradeAnimation
+	farcall TradeAnimation
 	pop af
 	ld [wTradeDialog], a
 	pop af
@@ -75,7 +75,7 @@ TradeFlagAction:
 	ld hl, wTradeFlags
 	ld a, [wJumptableIndex]
 	ld c, a
-	predef FlagPredef
+	farcall FlagPredef
 	ld a, c
 	and a
 	ret
@@ -160,8 +160,8 @@ DoNPCTrade:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromParty
-	predef TryAddMonToParty
+	farcall RemoveMonFromParty
+	farcall TryAddMonToParty
 
 	ld e, NPCTRADE_DIALOG
 	call GetTradeAttribute

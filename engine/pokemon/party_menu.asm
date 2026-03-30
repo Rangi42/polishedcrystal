@@ -649,7 +649,7 @@ PlacePartymonHPBar:
 	ld d, a
 	ld a, [hli]
 	ld e, a
-	predef_jump ComputeHPBarPixels
+	farjp ComputeHPBarPixels
 
 PlacePartyMenuHPDigits:
 	ld a, [wPartyCount]
@@ -808,7 +808,7 @@ PlacePartyMonTMHMCompatibility:
 	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
-	predef CanLearnTMHMMove
+	farcall CanLearnTMHMMove
 	pop hl
 	call .PlaceAbleNotAble
 	rst PlaceString
@@ -887,7 +887,7 @@ PlacePartyMonEvoStoneCompatibility:
 	; c = species
 	ld c, e
 	; bc = index
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 ; Reads up to 10 EVOLVE_ITEM entries
 	ld de, wStringBuffer3
 	ld a, BANK(EvosAttacks)

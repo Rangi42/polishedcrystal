@@ -158,7 +158,7 @@ StepHappiness::
 	dec a
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_STEP
-	predef ChangeHappiness
+	farcall ChangeHappiness
 	ld a, [wCurPartyMon]
 	jr .loop
 

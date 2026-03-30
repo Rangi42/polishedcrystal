@@ -99,7 +99,7 @@ CheckOpponentMentalHerb:
 	call StackCallOpponentTurn
 CheckMentalHerb:
 	; Check if we hold it
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_MENTAL_HERB
 	ret nz

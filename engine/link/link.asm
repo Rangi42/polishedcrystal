@@ -258,7 +258,7 @@ Gen2ToGen2LinkComms:
 	pop af
 	ldh [rIF], a
 
-	predef StartBattle
+	farcall StartBattle
 
 	ldh a, [rIF]
 	ld h, a
@@ -1578,7 +1578,7 @@ LinkTrade:
 
 	xor a ; REMOVE_PARTY
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromParty
+	farcall RemoveMonFromParty
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
@@ -1600,7 +1600,7 @@ LinkTrade:
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_2
-	predef TradeAnimation
+	farcall TradeAnimation
 	jr .done_animation
 .player_2
 	call TradeAnimationPlayer2

@@ -120,7 +120,7 @@ CheckPartyMove:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	predef CanLearnTMHMMove
+	farcall CanLearnTMHMMove
 	ld a, c
 	and a
 	jr nz, .yes

@@ -124,7 +124,7 @@ EvolveDuringBattle::
 	ldh [hGraphicStartTile], a
 	hlcoord 2, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	call EmptyBattleTextbox
 	pop af
 	ret c ; cancelled, so don't re-run entry abilities

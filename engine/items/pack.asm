@@ -190,13 +190,13 @@ UseKeyItem:
 	jmp Pack_PrintTextNoScroll
 
 .Current:
-	predef_jump DoKeyItemEffect
+	farjp DoKeyItemEffect
 
 .Party:
 	ld a, [wPartyCount]
 	and a
 	jr z, .NoPokemon
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	xor a
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
@@ -208,7 +208,7 @@ UseKeyItem:
 	jmp Pack_PrintTextNoScroll
 
 .Field:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak
@@ -762,11 +762,11 @@ KeyItemSubmenu:
 	jmp Pack_PrintTextNoScroll
 
 .Current:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	jr .didnt_use_item
 
 .BattleField:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr nz, .quit_run_script
@@ -777,7 +777,7 @@ KeyItemSubmenu:
 	jmp Pack_InitColors
 
 .BattleOnly:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak

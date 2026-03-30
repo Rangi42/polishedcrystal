@@ -391,7 +391,7 @@ BT_AppendOTMon:
 	ld d, h
 	ld e, l
 	pop hl
-	predef FillPP
+	farcall FillPP
 	pop de
 	pop hl
 
@@ -827,7 +827,7 @@ BT_SetLevel:
 	inc a
 	ld b, a
 	push de
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	pop hl
 	push hl
 	ld bc, wOTPartyMon1HP - wOTPartyMon1MaxHP

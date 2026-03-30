@@ -761,7 +761,7 @@ TradeAnim_GetFrontpic:
 	ld [wCurForm], a
 	call GetBaseData
 	pop de
-	predef_jump GetFrontpic
+	farjp GetFrontpic
 
 TradeAnim_GetNickname:
 	push de
@@ -792,7 +792,7 @@ TradeAnim_ShowFrontpic:
 	xor a
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	jmp ApplyTilemapInVBlank
 
 TraideAnim_Wait80:

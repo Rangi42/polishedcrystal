@@ -101,12 +101,12 @@ _PrepMonFrontpic:
 
 	push hl
 	ld de, vTiles2
-	predef GetFrontpic
+	farcall GetFrontpic
 	pop hl
 	xor a
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	xor a
 	ld [wBoxAlignment], a
 	ret

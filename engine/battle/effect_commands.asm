@@ -580,7 +580,7 @@ CheckPowerHerb:
 	jr z, .chargeup
 
 .no_solar_beam
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_POWER_HERB
 	jr z, .has_power_herb
@@ -1206,7 +1206,7 @@ BattleCommand_critical:
 	ld c, 0
 	jr nz, .Ability
 
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld c, 0
 	ld a, [hl]
 	cp LUCKY_PUNCH
@@ -1638,7 +1638,7 @@ CheckAirborne:
 	; Check Iron Ball
 	push de
 	push bc
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	pop de
@@ -1699,7 +1699,7 @@ CheckTypeMatchup:
 
 	; Ring Target or Inverse battles bypass the type matchup check.
 	push bc
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_RING_TARGET
@@ -2113,7 +2113,7 @@ BattleCommand_checkhit:
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ACCURACY_BOOST
 	jr z, .accuracy_boost_item
@@ -2863,7 +2863,7 @@ FailText_CheckOpponentProtect:
 	ld hl, AttackMissedText
 	call StdBattleTextbox
 .cont_atkmiss
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
 	ret nz
@@ -2939,7 +2939,7 @@ BattleCommand_criticaltext:
 	jr c, .cont
 	ld b, SET_FLAG
 	ld hl, wEvolvableFlags
-	predef FlagPredef ; c still contains wCurBatlteMon
+	farcall FlagPredef ; c still contains wCurBatlteMon
 
 .cont
 	call ResetCrit
@@ -2989,7 +2989,7 @@ BattleCommand_startloop:
 	ld a, 5
 	jr z, .got_count
 	push hl
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
@@ -3224,7 +3224,7 @@ BattleCommand_postfainteffects:
 	call StdBattleTextbox
 
 	call GetMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -3514,7 +3514,7 @@ CheckThroatSpray:
 	call HasUserFainted
 	ret z
 
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
@@ -3543,7 +3543,7 @@ CheckWhiteHerbEjectPack:
 
 .do_it
 	push bc
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_WHITE_HERB
@@ -3572,7 +3572,7 @@ CheckWhiteHerbEjectPack:
 	push bc
 	push de
 	push hl
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	pop hl
 	pop de
@@ -3670,7 +3670,7 @@ CheckMirrorHerb:
 	push bc
 	push hl
 	push de
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_MIRROR_HERB
 	jr nz, .stat_raise_failed
@@ -3739,7 +3739,7 @@ EndMoveDamageChecks:
 	; life orb, shell bell
 	call HasUserFainted
 	ret z
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	push bc
 	call GetCurItemName
 	pop bc
@@ -3808,7 +3808,7 @@ EndMoveDamageChecks:
 	ld b, a
 	ldh a, [hQuotient + 2]
 	ld c, a
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
 	jmp StdBattleTextbox
 
@@ -3881,7 +3881,7 @@ UnevolvedEviolite:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc a
@@ -5172,7 +5172,7 @@ GetHPAbsorption:
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)
 	push bc
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_BIG_ROOT
@@ -5946,7 +5946,7 @@ BattleCommand_recoil:
 	call HalveBC
 .recoil_floor
 	call FloorBC
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 .recoil_text
 	ld hl, RecoilText
 	jmp StdBattleTextbox

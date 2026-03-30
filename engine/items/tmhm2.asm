@@ -81,7 +81,7 @@ TMHM_ShowTMMoveDescription:
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .Cancel
 	ld [wTempTMHM], a
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	farcall LoadTMHMIconPalette
 	call SetDefaultBGPAndOBP
 	ld a, [wTempTMHM]
@@ -213,7 +213,7 @@ TMHM_DisplayPocketItems:
 	pop af
 	ld [wTempTMHM], a
 .okay
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
@@ -361,7 +361,7 @@ AskTeachTMHM:
 	set LEARNING_TM_F, [hl]
 	ld a, [wCurTMHM]
 	ld [wTempTMHM], a
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
@@ -448,7 +448,7 @@ TeachTMHM:
 	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
-	predef CanLearnTMHMMove
+	farcall CanLearnTMHMMove
 
 	push bc
 	ld a, [wCurPartyMon]
@@ -471,7 +471,7 @@ TeachTMHM:
 	call KnowsMove
 	jr c, .nope
 
-	predef LearnMove
+	farcall LearnMove
 	ld a, b
 	and a
 	jr z, .nope
@@ -481,7 +481,7 @@ TeachTMHM:
 	ret c
 
 	ld c, HAPPINESS_LEARNMOVE
-	predef ChangeHappiness
+	farcall ChangeHappiness
 	jr .learned_move
 
 .nope

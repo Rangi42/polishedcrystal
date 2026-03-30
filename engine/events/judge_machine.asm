@@ -109,7 +109,7 @@ JudgeSystem::
 	ld [wCurForm], a
 	call GetBaseData
 	ld de, vTiles2
-	predef GetFrontpic
+	farcall GetFrontpic
 
 ; Load the stat name graphics
 ; TODO: use runtime VWF rendering

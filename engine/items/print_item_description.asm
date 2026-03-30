@@ -33,10 +33,10 @@ PrintTMHMDescription:
 	ld [wCurTMHM], a
 	ld [wTempTMHM], a
 	push de
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	pop hl
 	ld a, [wTempTMHM]
 	ld [wCurMove], a
-	predef_jump PrintMoveDesc
+	farjp PrintMoveDesc
 
 INCLUDE "data/items/descriptions.asm"

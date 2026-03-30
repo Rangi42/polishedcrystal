@@ -913,7 +913,7 @@ AI_Smart_AvoidIfProtect:
 ; Greatly discourage if the player has Protect. Used for 2-turn moves.
 	; Power Herb makes this a 1-turn move.
 	push hl
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	pop hl
 	ld a, b
 	cp HELD_POWER_HERB
@@ -2372,7 +2372,7 @@ AIDamageCalc:
 
 .multihit
 	; Multiply base power by 5 for Skill Link, 4 for Loaded Dice, 3 otherwise
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_LOADED_DICE
 	ld b, 4

@@ -4,7 +4,7 @@ PhoneFlagAction:
 	dec c
 	ld d, 0
 	ld hl, wPhoneList
-	predef FlagPredef
+	farcall FlagPredef
 	pop bc
 	ret
 

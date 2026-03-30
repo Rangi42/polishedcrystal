@@ -13,7 +13,7 @@ BattleCommand_bellydrum:
 
 	call AnimateCurrentMove
 	call GetHalfMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	call UpdateUserInParty
 	call GetTrueUserIgnorableAbility
 	cp CONTRARY

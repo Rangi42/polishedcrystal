@@ -653,7 +653,7 @@ GetWeatherAfterUserUmbrella::
 	ret z
 	push bc
 	push hl
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	xor HELD_UTILITY_UMBRELLA
 	pop hl
@@ -700,7 +700,7 @@ CheckMoveSpeed::
 	ldh [hBattleTurn], a
 	ld a, d ; +1/+2: player, -1/-2: enemy, 0: both/neither
 	and a
-	jr z, CheckSpeed
+	jmp z, CheckSpeed
 	dec a
 	ret z
 	dec a
@@ -737,7 +737,7 @@ CheckMoveSpeed::
 	jr .go_first
 
 .quick_draw_done
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
@@ -767,7 +767,7 @@ CheckMoveSpeed::
 .activate_item
 	push de
 	farcall ItemRecoveryAnim
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	call GetCurItemName
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox

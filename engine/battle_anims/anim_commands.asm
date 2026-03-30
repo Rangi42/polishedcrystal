@@ -841,7 +841,7 @@ BattleAnimCmd_Transform:
 	ld a, [wBattleMonForm]
 	ld [wCurForm], a
 	ld de, vTiles0 tile $00
-	predef GetFrontpic
+	farcall GetFrontpic
 	jr .done
 
 .player
@@ -850,7 +850,7 @@ BattleAnimCmd_Transform:
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	ld de, vTiles0 tile $00
-	predef GetBackpic
+	farcall GetBackpic
 
 .done
 	pop af
@@ -1044,14 +1044,14 @@ BattleAnimCmd_BeatUp:
 	ld a, [wBattleMonForm]
 	ld [wCurForm], a
 	ld de, vTiles2 tile $00
-	predef GetFrontpic
+	farcall GetFrontpic
 	jr .done
 
 .player
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	ld de, vTiles2 tile $31
-	predef GetBackpic
+	farcall GetBackpic
 
 .done
 	pop af
