@@ -1646,12 +1646,20 @@ TownMapBubble:
 	add hl, hl ; two bytes per flypoint
 	ld de, Flypoints
 	add hl, de
+	ld a, [hl]
+	cp POKEMON_LEAGUE
+	ld de, .PokemonLeagueFlyName ; special case to fit in 16 chars
+	jr z, .PlaceName
 	ld e, [hl]
 	farcall GetLandmarkName
-	hlcoord 2, 1
 	ld de, wStringBuffer1
+.PlaceName:
+	hlcoord 2, 1
 	rst PlaceString
 	ret
+
+.PokemonLeagueFlyName:
+	rawchar "Pokémon League@"
 
 GetMapCursorCoordinates:
 	ld a, [wTownMapPlayerIconLandmark]
@@ -1753,24 +1761,38 @@ FlyMap:
 ; the flypoint selection has a default starting point that
 ; can be flown to even if none are enabled
 ; To prevent both of these things from happening when the player
-; enters Kanto, fly access is restricted until Indigo Plateau is
-; visited and its flypoint enabled
+; enters Kanto, fly access is restricted until at least one Kanto
+; flypoint has been visited
 	push af
 	ld c, SPAWN_INDIGO
 	call HasVisitedSpawn
 	and a
+	jr nz, .LoadKantoMap
+	ld c, SPAWN_POKEMON_LEAGUE
+	call HasVisitedSpawn
+	and a
 	jr z, .NoKanto
-; Kanto's map is only loaded if we've visited Indigo Plateau
+
+.LoadKantoMap:
+; Kanto's map is only loaded if we've visited Indigo Plateau or
+; Pokémon League Gate
 
 ; Flypoints begin at Pallet Town...
 	ld a, FLY_PALLET
 	ld [wStartFlypoint], a
-; ...and end at Indigo Plateau
-	ld a, FLY_INDIGO
+; ...and end at Pokémon League Gate
+	ld a, FLY_POKEMON_LEAGUE
 	ld [wEndFlypoint], a
-; Because Indigo Plateau is the first flypoint the player
 
-; visits, it's made the default flypoint
+; If Indigo Plateau has been visited, keep it as the default.
+; Otherwise use Pokémon League Gate.
+	ld c, SPAWN_INDIGO
+	call HasVisitedSpawn
+	ld a, FLY_POKEMON_LEAGUE
+	jr z, .SetKantoDefault
+	assert FLY_POKEMON_LEAGUE - 1 == FLY_INDIGO
+	dec a
+.SetKantoDefault:
 	ld [wTownMapPlayerIconLandmark], a
 ; Fill out the map
 	call FillKantoMap

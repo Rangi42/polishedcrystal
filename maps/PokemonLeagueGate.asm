@@ -4,6 +4,7 @@ PokemonLeagueGate_MapScriptHeader:
 	scene_const SCENE_POKEMONLEAGUEGATE_NOOP
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, PokemonLeagueGateFlyPoint
 
 	def_warp_events
 	warp_event 19,  7, ROUTE_22, 1
@@ -25,6 +26,10 @@ PokemonLeagueGate_MapScriptHeader:
 	object_event  8, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateOfficerScript, -1
 	object_event  7,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VictoryRoadGateLeftBlackBeltText, EVENT_OPENED_MT_SILVER
 	object_event 14,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VictoryRoadGateRightBlackBeltText, EVENT_FOUGHT_SNORLAX
+
+PokemonLeagueGateFlyPoint:
+	setflag ENGINE_FLYPOINT_POKEMON_LEAGUE
+	endcallback
 
 PokemonLeagueGateXYTriggerScript2:
 	applyonemovement PLAYER, step_left
