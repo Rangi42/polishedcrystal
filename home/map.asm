@@ -1351,39 +1351,45 @@ GetFacingTileCoord::
 
 	ld a, [wPlayerDirection]
 	and %1100
-	ld l, a
-	ld h, 0
-	ld de, .Directions
-	add hl, de
+	rrca
 
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld e, a
+	push af
 
-	ld a, [hli]
-	ld h, [hl]
+	add LOW(.Directions)
 	ld l, a
+	adc HIGH(.Directions)
+	sub l
+	ld h, a
 
 	ld a, [wPlayerMapX]
-	add d
+	add [hl]
 	ld d, a
+	inc hl
 	ld a, [wPlayerMapY]
-	add e
+	add [hl]
 	ld e, a
+
+	pop af
+	rrca
+	assert wTileDown + 1 == wTileUp
+	assert wTileDown + 2 == wTileLeft
+	assert wTileDown + 3 == wTileRight
+	add LOW(wTileDown)
+	ld l, a
+	adc HIGH(wTileDown)
+	sub l
+	ld h, a
 	ld a, [hl]
 	ret
 
 .Directions:
+	table_width 2
 	;   x,  y
 	db  0,  1
-	dw wTileDown
 	db  0, -1
-	dw wTileUp
 	db -1,  0
-	dw wTileLeft
 	db  1,  0
-	dw wTileRight
+	assert_table_length NUM_DIRECTIONS
 
 GetCoordTileCollision::
 ; Get the collision byte for tile d, e
