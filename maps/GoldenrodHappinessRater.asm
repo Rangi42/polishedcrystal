@@ -48,6 +48,14 @@ GoldenrodHappinessRaterTeacherScript:
 	cont "It looks mean."
 	done
 
+.Egg:
+	jumpthisopenedtext
+
+	text "That's an Egg."
+	line "It hasn't formed"
+	cont "any feelings yet."
+	done
+
 .AdoresYou:
 	jumpthisopenedtext
 
@@ -108,14 +116,6 @@ GoldenrodHappinessRaterTeacherScript:
 	text "You should treat"
 	line "it better. It's"
 	cont "not used to you."
-	done
-
-.Egg:
-	jumpthisopenedtext
-
-	text "That's an Egg."
-	line "I can't judge"
-	cont "its happiness yet."
 	done
 
 .RefusedText:
