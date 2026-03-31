@@ -173,6 +173,9 @@ INCLUDE "gfx/trainers/kimono_girl_miki.pal"
 INCLUDE "gfx/trainers/kimono_girl_mako.pal"
 INCLUDE "gfx/trainers/kimono_girl_ami.pal"
 INCLUDE "gfx/trainers/kimono_girl_mina.pal"
+INCLUDE "gfx/trainers/elder_gaku.pal"
+INCLUDE "gfx/trainers/elder_masa.pal"
+INCLUDE "gfx/trainers/elder_koji.pal"
 
 else
 rept NUM_TRAINER_PALS - NUM_TRAINER_CLASS_PICS

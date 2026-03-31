@@ -1157,4 +1157,7 @@ DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1
 	trainerpal MAKO ; 9f
 	trainerpal AMI  ; a0
 	trainerpal MINA ; a1
+	trainerpal GAKU ; a2
+	trainerpal MASA ; a3
+	trainerpal KOJI ; a4
 DEF NUM_TRAINER_PALS EQU __trainer_pal__ - 1
