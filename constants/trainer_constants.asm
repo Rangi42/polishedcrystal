@@ -1,17 +1,9 @@
-DEF __trainer_pal__ = 0
-
-MACRO trainerpal
-	DEF TRAINERPAL_\1 = __trainer_pal__
-	DEF __trainer_pal__ += 1
-ENDM
-
 DEF __trainer_class__ = 0
 
 MACRO trainerclass
 	DEF \1 EQU __trainer_class__
 	DEF __trainer_class__ += 1
 	const_def 1
-	trainerpal \1
 ENDM
 
 ; trainer class ids
@@ -1151,23 +1143,32 @@ DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
 DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1
 
+DEF __trainer_pal__ = 0
+
+MACRO trainerpal
+	DEF TRAINERPAL_\1 = __trainer_pal__
+	DEF __trainer_pal__ += 1
+ENDM
+
+	trainerpal NONE ; 00
+
 ; kimono girls
-	trainerpal SAYO ; 9b
-	trainerpal ZUKI ; 9c
-	trainerpal KUNI ; 9d
-	trainerpal MIKI ; 9e
-	trainerpal MAKO ; 9f
-	trainerpal AMI  ; a0
-	trainerpal MINA ; a1
+	trainerpal SAYO ; 01
+	trainerpal ZUKI ; 02
+	trainerpal KUNI ; 03
+	trainerpal MIKI ; 04
+	trainerpal MAKO ; 05
+	trainerpal AMI  ; 06
+	trainerpal MINA ; 07
 
 ; elders (wise trio)
-	trainerpal GAKU ; a2
-	trainerpal MASA ; a3
-	trainerpal KOJI ; a4
+	trainerpal GAKU ; 08
+	trainerpal MASA ; 09
+	trainerpal KOJI ; 0a
 
 ; dark-skinned or tanned trainers
-	trainerpal DARK_LASS ; a5
-	trainerpal DARK_SCHOOLGIRL ; a6
-	trainerpal DARK_SAILOR ; a7
+	trainerpal DARK_LASS ; 0b
+	trainerpal DARK_SCHOOLGIRL ; 0c
+	trainerpal DARK_SAILOR ; 0d
 
 DEF NUM_TRAINER_PALS EQU __trainer_pal__ - 1

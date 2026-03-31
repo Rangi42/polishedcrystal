@@ -114,7 +114,7 @@ TalkToTrainerAtBC::
 	ld a, [wMapScriptsBank]
 	ld [wSeenTrainerBank], a
 
-	xor a
+	xor a ; TRAINERPAL_NONE
 	ld [wTrainerPal], a
 
 	ldh a, [hLastTalked]

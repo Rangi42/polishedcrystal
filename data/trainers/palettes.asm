@@ -165,6 +165,10 @@ endc
 
 	assert_table_length NUM_TRAINER_CLASS_PICS
 
+CustomTrainerPalettes:
+; entries correspond to trainerpal constants
+	table_width 2 colors
+
 if !DEF(MONOCHROME)
 INCLUDE "gfx/trainers/kimono_girl_sayo.pal"
 INCLUDE "gfx/trainers/kimono_girl_zuki.pal"
@@ -180,7 +184,7 @@ INCLUDE "gfx/trainers/dark_lass.pal"
 INCLUDE "gfx/trainers/dark_schoolgirl.pal"
 INCLUDE "gfx/trainers/dark_sailor.pal"
 else
-rept NUM_TRAINER_PALS - NUM_TRAINER_CLASS_PICS
+rept NUM_TRAINER_PALS
 	MONOCHROME_RGB_TWO
 endr
 endc

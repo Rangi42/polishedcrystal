@@ -621,8 +621,9 @@ GetFrontpicPalettePointer:
 	jr nz, GetMonNormalOrShinyPalettePointer
 	ld a, [wTrainerPal]
 	and a
-	jr nz, GetTrainerPalettePointer
+	jr nz, GetCustomTrainerPalettePointer
 	ld a, [wTrainerClass]
+	; fallthrough
 
 GetTrainerPalettePointer:
 	ld l, a
@@ -630,6 +631,15 @@ GetTrainerPalettePointer:
 	add hl, hl
 	add hl, hl
 	ld bc, TrainerPalettes - 2 colors
+	add hl, bc
+	ret
+
+GetCustomTrainerPalettePointer:
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	ld bc, CustomTrainerPalettes - 2 colors
 	add hl, bc
 	ret
 
@@ -767,15 +777,16 @@ LoadTrainerPalette:
 	ld a, [wTrainerPal]
 	and a
 	jr nz, .use_custom_pal
-	; a = class
 	ld a, [wTrainerClass]
-.use_custom_pal
-	; hl = palette
 	call GetTrainerPalettePointer
-	; load palette in BG 7
+.got_pal
 	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld bc, 4
 	jmp FarCopyColorWRAM
+
+.use_custom_pal
+	call GetCustomTrainerPalettePointer
+	jr .got_pal
 
 LoadPaintingPalette:
 	; a = class

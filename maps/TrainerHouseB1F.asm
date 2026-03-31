@@ -123,7 +123,7 @@ TrainerHouseReceptionistScript:
 	ld [wOtherTrainerClass], a
 	ld a, [hl]
 	ld [wOtherTrainerID], a
-	xor a
+	xor a ; TRAINERPAL_NONE
 	ld [wTrainerPal], a
 	ret
 
