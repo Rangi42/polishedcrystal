@@ -419,8 +419,8 @@ KukuiPic: INCBIN "gfx/trainers/kukui.2bpp.lzp"
 SECTION "PiersPic", ROMX
 PiersPic: INCBIN "gfx/trainers/piers.2bpp.lzp"
 
-SECTION "KatyPic", ROMX
-KatyPic: INCBIN "gfx/trainers/katy.2bpp.lzp"
+SECTION "LarryPic", ROMX
+LarryPic: INCBIN "gfx/trainers/larry.2bpp.lzp"
 
 SECTION "VictorPic", ROMX
 VictorPic: INCBIN "gfx/trainers/victor.2bpp.lzp"

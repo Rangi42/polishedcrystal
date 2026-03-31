@@ -339,7 +339,7 @@ CheckIfTrendyPhraseIsLucky:
 
 RespawnOneOffs:
 	eventflagreset EVENT_BEAT_FLANNERY
-	eventflagreset EVENT_BEAT_KATY
+	eventflagreset EVENT_BEAT_LARRY
 	eventflagreset EVENT_BEAT_KUKUI
 	eventflagreset EVENT_BEAT_LAWRENCE
 	eventflagreset EVENT_BEAT_MARLON_AGAIN
