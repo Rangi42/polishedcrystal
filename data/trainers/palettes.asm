@@ -1,7 +1,6 @@
 TrainerPalettes:
 ; entries correspond to trainer classes
 	table_width 2 colors
-
 if !DEF(MONOCHROME)
 INCLUDE "gfx/trainers/cal.pal"
 INCLUDE "gfx/trainers/carrie.pal"
@@ -162,13 +161,11 @@ rept NUM_TRAINER_CLASS_PICS
 	MONOCHROME_RGB_TWO
 endr
 endc
-
 	assert_table_length NUM_TRAINER_CLASS_PICS
 
 CustomTrainerPalettes:
 ; entries correspond to trainerpal constants
 	table_width 2 colors
-
 if !DEF(MONOCHROME)
 INCLUDE "gfx/trainers/kimono_girl_sayo.pal"
 INCLUDE "gfx/trainers/kimono_girl_zuki.pal"
@@ -180,13 +177,20 @@ INCLUDE "gfx/trainers/kimono_girl_mina.pal"
 INCLUDE "gfx/trainers/elder_gaku.pal"
 INCLUDE "gfx/trainers/elder_masa.pal"
 INCLUDE "gfx/trainers/elder_koji.pal"
+INCLUDE "gfx/trainers/dark_camper.pal"
+INCLUDE "gfx/trainers/dark_bird_keeper.pal"
+INCLUDE "gfx/trainers/dark_pokefan_f.pal"
 INCLUDE "gfx/trainers/dark_lass.pal"
 INCLUDE "gfx/trainers/dark_schoolgirl.pal"
+INCLUDE "gfx/trainers/dark_couple.pal"
 INCLUDE "gfx/trainers/dark_sailor.pal"
+INCLUDE "gfx/trainers/dark_swimmer_m.pal"
+INCLUDE "gfx/trainers/dark_swimmer_f.pal"
+INCLUDE "gfx/trainers/dark_teacher_f.pal"
+INCLUDE "gfx/trainers/dark_guitarist_m.pal"
 else
 rept NUM_TRAINER_PALS
 	MONOCHROME_RGB_TWO
 endr
 endc
-
 	assert_table_length NUM_TRAINER_PALS
