@@ -1150,6 +1150,8 @@ DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 	trainerclass SILHOUETTE ; 9a
 
 DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1
+
+; kimono girls
 	trainerpal SAYO ; 9b
 	trainerpal ZUKI ; 9c
 	trainerpal KUNI ; 9d
@@ -1157,7 +1159,15 @@ DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1
 	trainerpal MAKO ; 9f
 	trainerpal AMI  ; a0
 	trainerpal MINA ; a1
+
+; elders (wise trio)
 	trainerpal GAKU ; a2
 	trainerpal MASA ; a3
 	trainerpal KOJI ; a4
+
+; dark-skinned or tanned trainers
+	trainerpal DARK_LASS ; a5
+	trainerpal DARK_SCHOOLGIRL ; a6
+	trainerpal DARK_SAILOR ; a7
+
 DEF NUM_TRAINER_PALS EQU __trainer_pal__ - 1
