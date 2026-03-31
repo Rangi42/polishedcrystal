@@ -393,7 +393,7 @@ DEF BETA EQU __trainer_class__
 	const BRENT2
 	const BRENT3
 	const BRENT4
-	const LARRY
+	const POKEMANIAC_LARRY
 	const ANDREW
 	const CALVIN
 	const SHANE
@@ -1111,7 +1111,7 @@ DEF BETA EQU __trainer_class__
 
 	trainerclass PIERS
 
-	trainerclass KATY
+	trainerclass LARRY
 
 	trainerclass VICTOR  ; 8e
 

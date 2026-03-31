@@ -87,7 +87,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * timkun55 for the animated charcoal kiln fire tiles and Cianwood Gym sluice tiles.
 * Cesare_CBass for the Pokegear icon.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
-* trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
+* trainerlass for sprites of Galarian Slowpoke and Slowbro, and Crys's back sprite.
 * Luna for some sprites and tiles.
 * Sage Deoxys for Dudunsparce's sprites.
 * Egg3ggEgg for Wyrdeer's sprite.
@@ -105,6 +105,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
+* LilHospital for Larry's sprite (devamped by me).
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
 * SteppoBlazer, bloodless, and JaceDeane for Kiyo's sprite.
 * ShadowOne333 and JaceDeane for Jessie & James' sprite.
