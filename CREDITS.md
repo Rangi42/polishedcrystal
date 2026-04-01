@@ -69,7 +69,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * SoupPotato for Chinchou (modified front and shiny front) and related sprite/palette contributions (see PR #1164).
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
-* Scarlax for sprites and animations of Ambipom, Electivire, Rhyperior (edited sprite by Egg3ggEgg), Magnezone (palette by BloodlessNS, backpic by SoupPotato), Galarian Moltres, Galarian Rapidash, Hisuian Typhlosion, and many other Pokémon animations.
+* Scarlax for sprites and animations of Ambipom, Electivire, Rhyperior (edited sprite by Egg3ggEgg), Magnezone (palette by BloodlessNS, backpic by SoupPotato), Galarian Moltres, Galarian Rapidash, Hisuian Typhlosion, Hisuian Sneasel, Paldean Tauros, and many other Pokémon animations.
 * ShadowOne333 for sprites and animations including Gengar (front and back), Alolan Grimer (back), Hitmonchan (front and back), Raichu (plain front), Suicune (back), the Alolan/Galarian/Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * Avoman for Galarian Slowpoke's sprites and Crys's back sprite.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
