@@ -37,10 +37,10 @@ _MainMenu:
 NewGame_ClearTileMapEtc:
 	xor a
 	ldh [hMapAnims], a
-	ld a, '<BLACK>'
-	call FillTileMap
 	call LoadFrame
 	call LoadStandardFont
+	ld a, '<BLACK>'
+	call FillTileMap
 	jmp ClearWindowData
 
 NewGamePlus:
