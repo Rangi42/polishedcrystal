@@ -123,8 +123,8 @@ if !DEF(FAITHFUL)
 endc
 
 ; Draw copyright text
-	hlbgcoord 4, 0, vBGMap1
-	lb bc, 1, 14
+	hlbgcoord 0, 0, vBGMap1
+	lb bc, 1, SCREEN_WIDTH
 	lb de, $00, 0
 	call DrawTitleGraphic
 

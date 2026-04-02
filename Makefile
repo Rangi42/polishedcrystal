@@ -1,6 +1,7 @@
 NAME := polishedcrystal
 MODIFIERS :=
 VERSION := 3.2.3
+PRINTVERSION = $(VERSION)
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc
@@ -37,6 +38,7 @@ RGBGFXFLAGS    = -Weverything
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 MODIFIERS := $(MODIFIERS)-faithful
 RGBASMFLAGS += -DFAITHFUL
+PRINTVERSION += F
 endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 MODIFIERS := $(MODIFIERS)-monochrome
@@ -247,7 +249,7 @@ gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 
 gfx/title/version.2bpp: Makefile tools/fine_print.c
-	$Qtools/fine_print "@$(shell date '+%Y') RANGI42 v$(VERSION)" $@
+	$Qtools/fine_print "@$(shell date '+%Y') RANGI42 v$(PRINTVERSION)" $@
 
 gfx/title/suicune_unowns.2bpp: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
 gfx/title/suicune_unowns.tilemap: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128

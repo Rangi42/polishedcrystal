@@ -1171,13 +1171,14 @@ void append_string(struct Canvas *canvas, const char *s, size_t spacing) {
 
 void output_2bpp(const struct Canvas *canvas, const char *filename, int colors[static 3]) {
 	FILE *f = xfopen(filename, 'w');
-	size_t num_tiles = (canvas->width + 7) / 8;
+	size_t num_tiles = 20;
+	size_t start_px = 80 - (canvas->width + 1) / 2;
 	for (size_t t = 0; t < num_tiles; t++) {
 		for (size_t i = 0; i < HEIGHT; i++) {
 			int bp0 = 0, bp1 = 0;
 			for (size_t j = 0; j < 8; j++) {
-				size_t y = t * 8 + j;
-				char p = y < canvas->width ? canvas->pixels[i][y] : BG_PIXEL;
+				signed int x = t * 8 + j - start_px;
+				char p = x >= 0 && x < canvas->width ? canvas->pixels[i][x] : BG_PIXEL;
 				int v = colors[p == BG_PIXEL ? 0 : p == SHADING_PIXEL ? 1 : 2];
 				bp0 = (bp0 << 1) | !!(v & 1);
 				bp1 = (bp1 << 1) | !!(v & 2);
