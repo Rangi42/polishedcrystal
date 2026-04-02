@@ -67,12 +67,6 @@ _TitleScreen:
 	ld a, 1
 	rst ByteFill
 
-if DEF(FAITHFUL)
-; Faithful-only 'F'
-	ld a, 5
-	ld [9 * TILEMAP_WIDTH + 18 + vBGMap2], a ; 'F'
-endc
-
 ; Suicune and Unown gfx
 	hlbgcoord 1, 11
 	lb bc, 7, 18
@@ -116,15 +110,9 @@ endc
 	lb de, $80, 18
 	call DrawTitleGraphic
 
-if !DEF(FAITHFUL)
-; Erase faithful-only 'F'
-	ld a, $ec
-	ldcoord_a 18, 9
-endc
-
 ; Draw copyright text
-	hlbgcoord 4, 0, vBGMap1
-	lb bc, 1, 14
+	hlbgcoord 0, 0, vBGMap1
+	lb bc, 1, SCREEN_WIDTH
 	lb de, $00, 0
 	call DrawTitleGraphic
 
