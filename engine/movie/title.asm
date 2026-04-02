@@ -124,7 +124,7 @@ endc
 
 ; Draw copyright text
 	hlbgcoord 4, 0, vBGMap1
-	lb bc, 1, 13
+	lb bc, 1, 14
 	lb de, $00, 0
 	call DrawTitleGraphic
 

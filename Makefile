@@ -246,6 +246,9 @@ gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 
+gfx/title/version.2bpp: tools/fine_print.c
+	$Qtools/fine_print "@$(shell date '+%Y') RANGI42 v$(VERSION)" $@
+
 gfx/title/suicune_unowns.2bpp: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
 gfx/title/suicune_unowns.tilemap: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
 gfx/title/suicune_unowns.tilemap: gfx/title/suicune_unowns.png
