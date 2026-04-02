@@ -439,14 +439,14 @@ const char *ASCII[95][HEIGHT] = {
 	},
 	// 'C'
 	{
-		"    ",
-		".###",
-		"##  ",
-		"##  ",
-		"##  ",
-		".###",
-		"    ",
-		"    ",
+		"     ",
+		".####",
+		"##   ",
+		"##   ",
+		"##   ",
+		".####",
+		"     ",
+		"     ",
 	},
 	// 'D'
 	{
@@ -605,11 +605,11 @@ const char *ASCII[95][HEIGHT] = {
 	// 'R'
 	{
 		"     ",
-		"#####",
+		"####.",
 		"## ##",
-		"#### ",
+		"####.",
 		"## ##",
-		"## .#",
+		"## ##",
 		"     ",
 		"     ",
 	},
@@ -1161,7 +1161,7 @@ void append_char(struct Canvas *canvas, char c) {
 }
 
 void append_string(struct Canvas *canvas, const char *s, size_t spacing) {
-	for (const char *ptr = s; *ptr; ptr++) {
+	for (const char *ptr = s; *ptr != '\r' && *ptr != '\n' && *ptr != '\0'; ptr++) {
 		if (canvas->width > 0) {
 			append_padding(canvas, spacing);
 		}

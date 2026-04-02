@@ -243,6 +243,9 @@ gfx/slots/slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
 gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates --keep-whitespace --remove-xflip
 
+gfx/splash/copyright.2bpp: gfx/splash/copyright.txt tools/fine_print.c
+	$Qtools/fine_print -c 013 -s 0 '$(shell cat $<)' $@
+
 gfx/stats/%.bin: gfx/stats/%.tilemap gfx/stats/%.attrmap ; $Qcat $^ > $@
 gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 
