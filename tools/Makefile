@@ -31,6 +31,7 @@ tools := \
 	bankends \
 	bpp2png \
 	bspcomp \
+	fine_print \
 	gfx \
 	lzcomp \
 	make_patch \
@@ -46,6 +47,7 @@ all: $(tools)
 clean:
 	$(RM) $(tools) *.o *.h.gch *.pyc
 
+fine_print: common.h
 gfx: common.h
 png_dimensions: common.h
 pokemon_animation: common.h
