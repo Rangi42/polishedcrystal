@@ -61,11 +61,17 @@ _TitleScreen:
 	ld a, 3
 	rst ByteFill
 
-; 'CRYSTAL VERSION'
+; 'POLISHED CRYSTAL'
 	hlbgcoord 5, 9
-	ld bc, NAME_LENGTH ; length of version text
+	ld bc, 11
 	ld a, 1
 	rst ByteFill
+
+if DEF(FAITHFUL)
+; Faithful-only 'F'
+	ld a, 5
+	ld [9 * TILEMAP_WIDTH + 18 + vBGMap2], a ; 'F'
+endc
 
 ; Suicune and Unown gfx
 	hlbgcoord 1, 11
@@ -88,6 +94,11 @@ _TitleScreen:
 	ld de, vTiles1
 	call Decompress
 
+; Decompress version
+	ld hl, TitleVersionGFX
+	ld de, vTiles2
+	call Decompress
+
 ; Decompress background crystal
 	ld hl, TitleCrystalGFX
 	ld de, vTiles0
@@ -100,23 +111,22 @@ _TitleScreen:
 	rst ByteFill
 
 ; Draw Pokemon logo
-	hlcoord 0, 3
-	lb bc, 7, SCREEN_WIDTH
-	lb de, $80, SCREEN_WIDTH
+	hlcoord 1, 3
+	lb bc, 7, 18
+	lb de, $80, 18
 	call DrawTitleGraphic
+
+if !DEF(FAITHFUL)
+; Erase faithful-only 'F'
+	ld a, $ec
+	ldcoord_a 18, 9
+endc
 
 ; Draw copyright text
 	hlbgcoord 4, 0, vBGMap1
 	lb bc, 1, 13
-	lb de, $0c, 0
+	lb de, $00, 0
 	call DrawTitleGraphic
-
-IF DEF(FAITHFUL)
-	hlbgcoord 17, 0, vBGMap1
-	lb bc, 1, 1
-	lb de, $19, 0
-	call DrawTitleGraphic
-endc
 
 ; Initialize background crystal
 	call InitializeCrystalSprites
@@ -388,7 +398,10 @@ TitleSuicuneUnownsGFX1:
 INCBIN "gfx/title/suicune_unowns.2bpp.vram1p.lzp"
 
 TitleLogoGFX:
-INCBIN "gfx/title/logo_bg.2bpp.lzp"
+INCBIN "gfx/title/logo.2bpp.lzp"
+
+TitleVersionGFX:
+INCBIN "gfx/title/version.2bpp.lzp"
 
 TitleCrystalGFX:
 INCBIN "gfx/title/crystal.2bpp.lzp"
