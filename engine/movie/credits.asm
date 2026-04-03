@@ -612,7 +612,7 @@ DecompressCreditsGFX:
 
 	ld hl, CopyrightGFX
 	ld de, vTiles2 tile $60
-	lb bc, BANK(CopyrightGFX), $1d
+	lb bc, BANK(CopyrightGFX), $1e
 	call DecompressRequest2bpp
 
 	ld a, [wCreditsSpawn]
