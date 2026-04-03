@@ -1,6 +1,7 @@
 NAME := polishedcrystal
 MODIFIERS :=
 VERSION := 3.2.3
+AUTHOR := RANGI42
 
 ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
 EXTENSION := gbc
@@ -11,7 +12,7 @@ ROMVERSION := 0x32
 
 FILLER := 0xff
 
-PRINTVERSION = $(VERSION)
+COPYRIGHT = @$(shell date '+%Y') $(AUTHOR) v$(VERSION)
 
 ifneq ($(wildcard rgbds/.*),)
 RGBDS ?= rgbds/
@@ -39,7 +40,7 @@ RGBGFXFLAGS    = -Weverything
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 MODIFIERS := $(MODIFIERS)-faithful
 RGBASMFLAGS += -DFAITHFUL
-PRINTVERSION += F
+COPYRIGHT += F
 endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 MODIFIERS := $(MODIFIERS)-monochrome
@@ -56,7 +57,7 @@ endif
 ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
 MODIFIERS := $(MODIFIERS)-debug
 RGBASMFLAGS += -DDEBUG
-PRINTVERSION += dbg
+COPYRIGHT += dbg
 endif
 ifeq ($(filter pocket,$(MAKECMDGOALS)),pocket)
 MODIFIERS :=
@@ -254,7 +255,7 @@ gfx/stats/judge.2bpp: tools/gfx += --trim-whitespace
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 
 gfx/title/version.2bpp: Makefile tools/fine_print.c
-	$Qtools/fine_print -e 20 "@$(shell date '+%Y') RANGI42 v$(PRINTVERSION)" $@
+	$Qtools/fine_print -e 20 '$(COPYRIGHT)' $@
 
 gfx/title/suicune_unowns.2bpp: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
 gfx/title/suicune_unowns.tilemap: RGBGFXFLAGS += --unique-tiles --nb-tiles 127,127 --base-tiles 0,128
