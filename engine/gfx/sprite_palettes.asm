@@ -137,15 +137,11 @@ CopySpritePalHandler::
 	sub LOW(wOBPals1)
 	call SimpleDivide
 	ld a, b
-	pop bc
-	pop de
-	push bc
-	push de
 	push hl
 	farcall CatchUpObjPaletteFade
 	pop hl
-	pop de
 	pop bc
+	pop de
 	pop af
 	ld [wPalFlags], a
 	ret
