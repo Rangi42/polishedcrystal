@@ -1,3 +1,5 @@
+DEF POCKET_MENU_DATA_SIZE EQU 24
+
 ; Pack.Jumptable and BattlePack.Jumptable indexes
 	const_def
 	const PACKSTATE_INITGFX
@@ -143,8 +145,7 @@ PackJumptable_SortMenu:
 	push hl
 	ld a, [wMenuData_ScrollingMenuSpacing]
 	push af
-	ld a, [wCurPocket]
-	cp TM_HM - 1
+	call Pack_IsTMHMPocket
 	ld hl, MenuDataHeader_SortTMs
 	ld de, Jumptable_SortTMs
 	jr z, .got_sort_menu
@@ -592,17 +593,17 @@ Pack_SetPocketMenuJump:
 	ret
 
 Pack_RegularPocketMenu:
-	ld bc, ItemsPocketMenuDataHeader
+	ld bc, PocketMenuDataHeaders
 	call Pack_PocketMenu
 	jmp Pack_InterpretJoypad
 
 Pack_TutorialPocketMenu:
-	ld bc, Tutorial_ItemsPocketMenuDataHeader
+	ld bc, Tutorial_PocketMenuDataHeaders
 	jr Pack_TempPocketMenu
 
 Pack_DepositSellPocketMenu:
 	; Menu input is handled elsewhere.
-	ld bc, PC_Mart_ItemsPocketMenuDataHeader
+	ld bc, PC_Mart_PocketMenuDataHeaders
 	; fallthrough
 Pack_TempPocketMenu:
 	ld hl, wTempPocketCursor
@@ -623,7 +624,7 @@ Pack_PocketMenu:
 	push hl
 	ld h, b
 	ld l, c
-	ld bc, MedicinePocketMenuDataHeader - ItemsPocketMenuDataHeader
+	ld bc, POCKET_MENU_DATA_SIZE
 	push af
 	rst AddNTimes
 	call CopyMenuHeader
@@ -1157,7 +1158,10 @@ Pack_InitColors:
 	call GetCGBLayout
 	jmp SetDefaultBGPAndOBP
 
-; Note that the game assumes strict order of menu data headers!
+PocketMenuDataHeaders:
+; entries correspond to pocket constants, skipping TM_HM
+	table_width POCKET_MENU_DATA_SIZE
+
 ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
 	menu_coords 7, 1, 19, 11
@@ -1232,6 +1236,12 @@ KeyItemsPocketMenuDataHeader:
 	dba PlaceMenuKeyItemName
 	dba DoNothing
 	dba UpdateKeyItemIconAndDescription
+
+	assert_table_length NUM_POCKETS - 1 ; skip TM_HM
+
+PC_Mart_PocketMenuDataHeaders:
+; entries correspond to pocket constants, skipping TM_HM
+	table_width POCKET_MENU_DATA_SIZE
 
 PC_Mart_ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -1308,6 +1318,12 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 	dba DoNothing
 	dba UpdateKeyItemIconAndDescription
 
+	assert_table_length NUM_POCKETS - 1 ; skip TM_HM
+
+Tutorial_PocketMenuDataHeaders:
+; entries correspond to first three pocket constants
+	table_width POCKET_MENU_DATA_SIZE
+
 Tutorial_ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
 	menu_coords 7, 1, 19, 11
@@ -1352,6 +1368,8 @@ Tutorial_BallsPocketMenuDataHeader:
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
+
+	assert_table_length 3 ; just ITEM, MEDICINE, and BALL pockets
 
 Text_SortItemsHow:
 	text "How do you want"
