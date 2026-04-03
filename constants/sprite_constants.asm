@@ -214,6 +214,7 @@
 	const SPRITE_BETA_BIKE ; d2
 	const SPRITE_BETA_SURF ; d3
 	const SPRITE_BETA_RUN ; d4
+	const SPRITE_FLOATING_BALL ; d5
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)

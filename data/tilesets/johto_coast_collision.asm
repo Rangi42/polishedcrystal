@@ -167,8 +167,8 @@
 	tilecoll WALL, WALL, FLOOR, WALL ; a6
 	tilecoll WALL, WALL, WALL, FLOOR ; a7
 	tilecoll WATER, BUOY, WATER, BUOY ; a8
-	tilecoll BUOY, BUOY, FLOOR, BUOY ; a9
-	tilecoll FLOOR, BUOY, BUOY, BUOY ; aa
+	tilecoll WATER, BUOY, BUOY, BUOY ; a9
+	tilecoll VOID, VOID, VOID, VOID ; aa
 	tilecoll BUOY, WATER, BUOY, WATER ; ab
 	tilecoll WALL, WALL, WALL, WALL ; ac
 	tilecoll WALL, WALL, WALL, WALL ; ad
