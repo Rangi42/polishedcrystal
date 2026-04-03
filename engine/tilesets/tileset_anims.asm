@@ -215,6 +215,35 @@ AnimateWaterTile:
 .WaterTileFrames:
 INCBIN "gfx/tilesets/animations/water_johto.2bpp"
 
+AnimateBuoyTiles:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, every 2 frames, offset to pointer table (2 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+
+	add LOW(.BuoyTilePointers)
+	ld l, a
+	adc HIGH(.BuoyTilePointers)
+	sub l
+	ld h, a
+
+	ld sp, hl
+	pop hl
+
+	jmp WriteThreeTilesHLToDE
+
+.BuoyTilePointers:
+	dw .BuoyTileFrames + 3 * 0 tiles ; 0
+	dw .BuoyTileFrames + 3 * 1 tiles ; 1
+	dw .BuoyTileFrames + 3 * 2 tiles ; 2
+	dw .BuoyTileFrames + 3 * 1 tiles ; 3
+
+.BuoyTileFrames:
+INCBIN "gfx/tilesets/animations/buoy.2bpp"
+
 AnimateRainTiles:
 	ld hl, sp + 0
 	ld b, h
@@ -554,9 +583,6 @@ AnimateTowerPillarTiles1:
 	ld sp, hl
 	pop hl
 
-	ld a, 1
-	ldh [rVBK], a
-
 	jmp WriteFourTilesHLToDE
 
 .TowerPillarTiles1Pointers:
@@ -587,9 +613,6 @@ AnimateTowerPillarTiles2:
 
 	ld sp, hl
 	pop hl
-
-	ld a, 1
-	ldh [rVBK], a
 
 	jmp WriteThreeTilesHLToDE
 
@@ -622,9 +645,6 @@ AnimateTowerPillarTiles3:
 	ld sp, hl
 	pop hl
 
-	ld a, 1
-	ldh [rVBK], a
-
 	jmp WriteThreeTilesHLToDE
 
 .TowerPillarTiles3Pointers:
@@ -655,9 +675,6 @@ AnimateTowerPillarTiles4:
 
 	ld sp, hl
 	pop hl
-
-	ld a, 1
-	ldh [rVBK], a
 
 	jmp WriteThreeTilesHLToDE
 
