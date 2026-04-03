@@ -239,26 +239,30 @@ TilesetSnowtopMountainAnim::
 
 TilesetFacilityAnim::
 	tileframe AnimateTurbineTiles,      $0:6c
+	tileframe StandingTileFrame8
 	tileframe AnimateFountainTile,      $0:4d
 	tileframe AnimateTurbineTiles,      $0:6c
-	tileframe DoNothing
-	tileframe AnimateTurbineTiles,      $0:6c
+	tileframe StandingTileFrame8
 	tileframe DoNothing
 	tileframe AnimateTurbineTiles,      $0:6c
 	tileframe StandingTileFrame8
+	tileframe DoNothing
 	tileframe AnimateTurbineTiles,      $0:6c
+	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetHideoutAnim::
 	tileframe AnimateTurbineTiles,      $0:6c
+	tileframe StandingTileFrame8
 	tileframe AnimateSpinnerTile,       $0:07
 	tileframe AnimateTurbineTiles,      $0:6c
-	tileframe DoNothing
-	tileframe AnimateTurbineTiles,      $0:6c
+	tileframe StandingTileFrame8
 	tileframe DoNothing
 	tileframe AnimateTurbineTiles,      $0:6c
 	tileframe StandingTileFrame8
+	tileframe DoNothing
 	tileframe AnimateTurbineTiles,      $0:6c
+	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetJohtoHouseAnim::

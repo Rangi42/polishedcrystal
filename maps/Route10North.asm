@@ -1,7 +1,7 @@
 Route10North_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route10NorthSuicuneScene, SCENE_ROUTE10NORTH_SUICUNE
 	scene_script Route10NorthNoopScene, SCENE_ROUTE10NORTH_NOOP
+	scene_script Route10NorthLawrenceScene, SCENE_ROUTE10NORTH_LAWRENCE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
@@ -31,9 +31,7 @@ Route10North_MapScriptHeader:
 	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
 	cuttree_event 11, 21, EVENT_ROUTE_10_CUT_TREE_1
 	cuttree_event 14, 21, EVENT_ROUTE_10_CUT_TREE_2
-
-; SPRITE_MOM is not in this map's overworld sprite set, so it default to the
-; player sprite, whatever gender they are.
+	object_event  5, 10, SPRITE_FLOATING_BALL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route10NorthElectrode, EVENT_ROUTE_10_NORTH_ELECTRODE
 
 	object_const_def
 	const ROUTE10_ZAPDOS
@@ -44,14 +42,22 @@ Route10North_MapScriptHeader:
 	const ROUTE10_CRYS
 	const ROUTE10_BETA
 
-Route10NorthNoopScene:
+Route10NorthLawrenceScene:
 	sdefer Route10NorthLawrenceEncounter1Script
-Route10NorthSuicuneScene:
+Route10NorthNoopScene:
 	end
 
 Route10NorthFlyPoint:
 	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
 	endcallback
+
+Route10NorthElectrode:
+	cry ELECTRODE
+	loadwildmon ELECTRODE, 50
+	startbattle
+	disappear LAST_TALKED
+	reloadmapafterbattle
+	end
 
 Route10NorthZapdos:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -101,7 +107,7 @@ Route10NorthLawrenceEncounter1Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	setscene SCENE_ROUTE10NORTH_SUICUNE
+	setscene SCENE_ROUTE10NORTH_NOOP
 	special RestartMapMusic
 	end
 
