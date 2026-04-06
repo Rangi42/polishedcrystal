@@ -128,13 +128,13 @@ SpriteMovementData::
 	db OBJECT_ACTION_BIG_SNORLAX ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db LOW_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_POKEMON
 	db SPRITEMOVEFN_BOUNCE ; movement function
 	db DOWN ; facing
 	db OBJECT_ACTION_BOUNCE ; action
-	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
+	db FIXED_FACING | SLIDING ; flags1
 	db 0 ; flags2
 	db 0 ; palette flags
 
@@ -216,7 +216,7 @@ SpriteMovementData::
 	db OBJECT_ACTION_BIG_DOLL ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db LOW_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_BOULDERDUST
 	db SPRITEMOVEFN_BOULDERDUST ; movement function
@@ -270,7 +270,7 @@ SpriteMovementData::
 	db SPRITEMOVEFN_FRUIT ; movement function
 	db DOWN ; facing
 	db OBJECT_ACTION_FRUIT ; action
-	db 0 ; flags1
+	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db 0 ; flags2
 	db 0 ; palette flags
 
@@ -280,7 +280,7 @@ SpriteMovementData::
 	db OBJECT_ACTION_BIG_GYARADOS ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db LOW_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_STANDING_DOWN_FLIP
 	db SPRITEMOVEFN_STANDING_FLIP ; movement function
@@ -326,7 +326,7 @@ SpriteMovementData::
 	db SPRITEMOVEFN_MUSEUM_DRILL ; movement function
 	db LEFT ; facing
 	db OBJECT_ACTION_MUSEUM_DRILL ; action
-	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db HIGH_PRIORITY ; flags2
 	db 0 ; palette flags
 
@@ -334,7 +334,7 @@ SpriteMovementData::
 	db SPRITEMOVEFN_MUSEUM_DRILL ; movement function
 	db RIGHT ; facing
 	db OBJECT_ACTION_MUSEUM_DRILL ; action
-	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db HIGH_PRIORITY ; flags2
 	db 0 ; palette flags
 
@@ -344,7 +344,7 @@ SpriteMovementData::
 	db OBJECT_ACTION_SAILBOAT_TOP ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db HIGH_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_SAILBOAT_BOTTOM
 	db SPRITEMOVEFN_SAILBOAT_BOTTOM ; movement function
@@ -352,7 +352,7 @@ SpriteMovementData::
 	db OBJECT_ACTION_SAILBOAT_BOTTOM ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db LOW_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_ALOLAN_EXEGGUTOR
 	db SPRITEMOVEFN_ALOLAN_EXEGGUTOR ; movement function
@@ -374,7 +374,7 @@ SpriteMovementData::
 	db SPRITEMOVEFN_STANDING ; movement function
 	db UP ; facing
 	db OBJECT_ACTION_STAND ; action
-	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
 	db HIGH_PRIORITY ; flags2
 	db 0 ; palette flags
 
@@ -383,7 +383,7 @@ SpriteMovementData::
 	db LEFT ; facing
 	db OBJECT_ACTION_MICROPHONE ; action
 	db FIXED_FACING | SLIDING ; flags1
-	db LOW_PRIORITY ; flags2
+	db 0 ; flags2
 	db 0 ; palette flags
 
 ; SPRITEMOVEDATA_BIG_HO_OH
@@ -391,22 +391,22 @@ SpriteMovementData::
 	db DOWN ; facing
 	db OBJECT_ACTION_BIG_HO_OH ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
-	db LOW_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db HIGH_PRIORITY ; flags2
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_BIG_LUGIA
 	db SPRITEMOVEFN_BIG_LUGIA ; movement function
 	db DOWN ; facing
 	db OBJECT_ACTION_BIG_LUGIA ; action
 	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
-	db LOW_PRIORITY ; flags2
-	db STRENGTH_BOULDER | BIG_OBJECT ; palette flags
+	db HIGH_PRIORITY ; flags2
+	db BIG_OBJECT ; palette flags
 
 ; SPRITEMOVEDATA_ADMIN_MEOWTH
 	db SPRITEMOVEFN_ADMIN_MEOWTH ; movement function
 	db DOWN ; facing
 	db OBJECT_ACTION_ADMIN_MEOWTH ; action
-	db WONT_DELETE | FIXED_FACING | SLIDING | MOVE_ANYWHERE ; flags1
+	db FIXED_FACING | SLIDING ; flags1
 	db 0 ; flags2
 	db 0 ; palette flags
 

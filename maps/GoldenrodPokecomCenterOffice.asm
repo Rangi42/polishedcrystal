@@ -10,7 +10,6 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  2, BGEVENT_READ, AdminEldredScript
 	bg_event  3,  2, BGEVENT_UP, RangiComputerScript
 	bg_event  6,  2, BGEVENT_UP, LunaComputerScript
 	bg_event  9,  2, BGEVENT_UP, FredrikComputerScript
@@ -27,7 +26,7 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 	object_event 10,  6, SPRITE_PI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_AZURE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminVulcanText, -1
 	object_event 13,  6, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminSourText, -1
-	object_event  4,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_ADMIN_MEOWTH, 0, MEOWTH, -1, PAL_MON_BROWN, OBJECTTYPE_POKEMON, NO_FORM, AdminMeowthText, -1
+	object_event  4,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_ADMIN_MEOWTH, 0, MEOWTH, -1, PAL_MON_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, AdminEldredScript, -1
 
 AdminRangiText:
 	text "Rangi: I hope"
