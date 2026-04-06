@@ -1,8 +1,7 @@
 CanObjectMoveInDirection:
-
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit 4, [hl]
+	bit NOCLIP_TILES_F, [hl]
 	jr nz, .continue
 
 	push hl
@@ -10,11 +9,11 @@ CanObjectMoveInDirection:
 
 	ld hl, OBJECT_PALETTE
 	add hl, bc
-	bit 5, [hl]
-	jr z, .not_bit_5
+	bit SWIMMING_F, [hl]
+	jr z, .not_swimming
 	call WillObjectBumpIntoLand
 	jr .resume
-.not_bit_5
+.not_swimming
 	call WillObjectBumpIntoWater
 .resume
 	pop bc
@@ -22,8 +21,8 @@ CanObjectMoveInDirection:
 	ret c
 
 .continue
-	bit 6, [hl]
-	jr nz, .bit_6
+	bit NOCLIP_OBJS_F, [hl]
+	jr nz, .noclip_objs
 
 	push hl
 	push bc
@@ -32,9 +31,9 @@ CanObjectMoveInDirection:
 	pop hl
 	ret c
 
-.bit_6
-	bit 5, [hl]
-	jr nz, .bit_5
+.noclip_objs
+	bit MOVE_ANYWHERE_F, [hl]
+	jr nz, .move_anywhere
 	push hl
 	call HasPersonReachedMovementLimit
 	pop hl
@@ -45,7 +44,7 @@ CanObjectMoveInDirection:
 	pop hl
 	ret c
 
-.bit_5
+.move_anywhere
 	and a
 	ret
 
@@ -60,7 +59,7 @@ WillObjectBumpIntoWater:
 	ld e, [hl]
 	ld hl, OBJECT_PALETTE
 	add hl, bc
-	bit 7, [hl]
+	bit BIG_OBJECT_F, [hl]
 	jr nz, WillObjectRemainOnWater
 	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
@@ -260,19 +259,19 @@ IsNPCAtCoord:
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit 7, [hl]
+	bit EMOTE_OBJECT_F, [hl]
 	jr nz, .next
 
 	ld hl, OBJECT_PALETTE
 	add hl, bc
-	bit 7, [hl]
-	jr z, .got
+	bit BIG_OBJECT_F, [hl]
+	jr z, .not_big
 
 	call WillObjectIntersectBigObject
 	jr nc, .ok
 	jr .ok2
 
-.got
+.not_big
 	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]

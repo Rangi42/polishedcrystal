@@ -1035,7 +1035,7 @@ ApplyObjectFacing::
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 .loop
-	res 7, [hl]
+	res B_BG_PRIO, [hl]
 	inc hl
 	dec bc
 	ld a, b
