@@ -62,7 +62,7 @@ DEF BATTLEEXTRA_GFX_START EQU $5f
 
 	charmap "<MALE>",   $5f
 	charmap "<FEMALE>", $60
-	charmap "<STAR>",   $61
+	charmap "<SHINY>",  $61
 	charmap "<BALL>",   $62
 
 	charmap "<HP1>",    $63

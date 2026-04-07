@@ -9,7 +9,7 @@ from collections import Counter
 TOKENS = [
 	"<START>", "<RAM>", "<WAIT>", "<ASM>", "<NUM>", "<PAUSE>", "<SOUND>", "<DAY>", "<FAR>",
 	"<DONE>", "<PROMPT>", "<LNBRK>", "<NEXT>", "<LINE>", "<CONT>", "<PARA>", "<TARGET>",
-	"<USER>", "<ENEMY>", "<CTXT>", "¯", "<MALE>", "<FEMALE>", "<STAR>", "<BALL>",
+	"<USER>", "<ENEMY>", "<CTXT>", "¯", "<MALE>", "<FEMALE>", "<SHINY>", "<BALL>",
 	"<HP1>", "<HP2>", "<NOHP>", "<FULLHP>", "<HPEND>", "◢", "—", "◣", "<NONO>",
 	"<XP1>", "<XP2>", "<NOXP>", "<FULLXP>", "<XPEND>", " ", "A", "B", "C", "D", "E", "F",
 	"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",

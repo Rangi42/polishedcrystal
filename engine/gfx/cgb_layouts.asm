@@ -493,9 +493,6 @@ _CGB_NamingScreen:
 	ld de, wBGPals1 palette 0 color 1
 	ld c, 2 colors
 	call LoadColorBytes
-	ld hl, ShinyAndPokerusPals
-	; de == wBGPals1 palette 0 color 3
-	call LoadOneColor ; shiny color is first
 
 	ld hl, WhiteColor
 	ld de, wBGPals1 palette 1 color 3
@@ -503,6 +500,13 @@ _CGB_NamingScreen:
 	ld hl, wBGPals1 palette 1 color 0
 	; de == wBGPals1 palette 2 color 0
 	call LoadOneColor
+
+	ld hl, wBGPals1 palette 0
+	ld de, wBGPals1 palette 3
+	call LoadOneColor
+	ld hl, ShinyAndPokerusPals
+	; de == wBGPals1 palette 3 color 1
+	call LoadOneColor ; shiny color is first
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
@@ -556,6 +560,7 @@ _CGB_NamingScreen:
 	xor a
 	ldcoord_a 1, 2, wAttrmap
 	; shiny icon
+	ld a, 3
 	ldcoord_a 1, 4, wAttrmap
 
 	jmp ApplyAttrMap

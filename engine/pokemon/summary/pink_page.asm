@@ -21,7 +21,7 @@ SummaryScreen_PinkPage:
 	farcall CheckShininess
 	jr nc, .shinyDone
 	hlbgcoord 10, 0, wSummaryScreenWindowBuffer
-	ld [hl], '<STAR>'
+	ld [hl], '<SHINY>'
 	hlbgcoord 16 + 10, 0, wSummaryScreenWindowBuffer
 	ld [hl], SUMMARY_PAL_SHINY_POKERUS
 .shinyDone

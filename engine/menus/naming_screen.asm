@@ -1,7 +1,6 @@
-DEF NAMINGSCREEN_BORDER EQU $60
-DEF NAMINGSCREEN_MALE   EQU $6b
-DEF NAMINGSCREEN_FEMALE EQU $6c
 DEF NAMINGSCREEN_CURSOR EQU $7e
+
+DEF NAMINGSCREEN_BORDER EQU '<SHINY>' + 1
 
 DEF NAMINGSCREEN_MIDDLELINE EQU '′'
 DEF NAMINGSCREEN_UNDERLINE  EQU '″'
@@ -82,9 +81,10 @@ NamingScreen:
 	ld [hl], '/'
 	farcall GetGender
 	jr c, .genderless
-	ld a, NAMINGSCREEN_MALE
+	ld a, '<MALE>'
 	jr nz, .place_gender
-	ld a, NAMINGSCREEN_FEMALE
+	assert '<MALE>' + 1 == '<FEMALE>'
+	inc a ; '<FEMALE>'
 .place_gender
 	hlcoord 1, 2
 	ld [hl], a
@@ -92,7 +92,7 @@ NamingScreen:
 	farcall GetShininess
 	jr z, .not_shiny
 	hlcoord 1, 4
-	ld [hl], '★'
+	ld [hl], '<SHINY>'
 .not_shiny
 	ld a, MON_NAME_LENGTH - 1
 	hlcoord 7, 4
@@ -747,7 +747,7 @@ LoadNamingScreenGFX:
 	call Decompress
 
 	; Gender symbols and shiny star
-	ld de, vTiles2 tile NAMINGSCREEN_MALE
+	ld de, vTiles2 tile '<MALE>'
 	farcall CopyColoredMaleFemaleShinyTiles
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
