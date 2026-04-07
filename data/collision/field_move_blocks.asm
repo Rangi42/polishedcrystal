@@ -116,15 +116,12 @@ CutGrassBlockPointers:
 
 WhirlpoolBlockPointers:
 	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
-	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_COAST, .johto_coast
 	dbw TILESET_JOHTO_OUTLANDS, .johto_outlands
 	db -1
 
 .johto_traditional
+.johto_coast
 .johto_outlands
 	db $07, $07
-	db -1
-
-.johto_modern
-	db $83, $83
 	db -1
