@@ -50,6 +50,9 @@ INCBIN "gfx/frames/20.1bpp"
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp.lzp"
 
+ShinyIconGFX:
+INCBIN "gfx/stats/shiny.2bpp"
+
 SummaryStatusIconGFX:
 INCBIN "gfx/stats/status.2bpp"
 
