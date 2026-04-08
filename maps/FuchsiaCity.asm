@@ -20,9 +20,9 @@ FuchsiaCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 21, 15, BGEVENT_JUMPTEXT, FuchsiaCitySignText
+	bg_event 21, 19, BGEVENT_JUMPTEXT, FuchsiaCitySignText
 	bg_event  5, 29, BGEVENT_JUMPTEXT, FuchsiaGymSignText
-	bg_event 25, 15, BGEVENT_JUMPTEXT, SafariZoneOfficeSignText
+	bg_event 21, 15, BGEVENT_JUMPTEXT, SafariZoneOfficeSignText
 	bg_event 27, 29, BGEVENT_JUMPTEXT, WardensHomeSignText
 	bg_event 17,  5, BGEVENT_JUMPTEXT, SafariZoneClosedSignText
 	bg_event 13, 19, BGEVENT_JUMPTEXT, NoLitteringSignText
@@ -31,10 +31,12 @@ FuchsiaCity_MapScriptHeader:
 	bg_event 27,  7, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
 	bg_event 33,  7, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
 	bg_event 31, 13, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
+	bg_event  9, 15, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
 	bg_event 11, 35, BGEVENT_JUMPTEXT, FuchsiaCityCarefulSwimmingSignText
+	bg_event 26, 12, BGEVENT_ITEM + NUGGET, EVENT_FUCHSIA_CITY_HIDDEN_NUGGET
 
 	def_object_events
-	object_event 23, 18, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityYoungsterText, -1
+	object_event 19, 17, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityYoungsterText, -1
 	object_event 10,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanMText, -1
 	object_event 16, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityTeacherText, -1
 	object_event 28,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanFText, -1
