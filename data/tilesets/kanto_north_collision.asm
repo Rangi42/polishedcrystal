@@ -53,10 +53,10 @@
 	tilecoll LEFT_WALL, RIGHT_WALL, LEFT_WALL, RIGHT_WALL ; 34
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 35
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 36
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 37
+	tilecoll WALL, WALL, WALL, WALL ; 37
 	tilecoll WATER, WATER, WATER, WATER ; 38
 	tilecoll WALL, WALL, WATER, WATER ; 39
-	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 3a
+	tilecoll WALL, WALL, DOOR, WALL ; 3a
 	tilecoll TOP_WALL, WALL, FLOOR, WALL ; 3b
 	tilecoll WALL, WALL, WALL, DOOR ; 3c
 	tilecoll WALL, WALL, WALL, WALL ; 3d
@@ -153,3 +153,5 @@
 	tilecoll WALL, WALL, FLOOR, WALL ; 98
 	tilecoll WALL, FLOOR, WALL, WALL ; 99
 	tilecoll WALL, WALL, WALL, WALL ; 9a
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 9b
+	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 9c
