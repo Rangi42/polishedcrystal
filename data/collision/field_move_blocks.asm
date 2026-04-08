@@ -43,7 +43,7 @@ CutGrassBlockPointers:
 
 .indigo_plateau
 	db $0b, $0a
-	db $a2, $f9
+	db $a2, $79
 	db $a3, $14
 	db $bc, $0a
 	db $bd, $0a
@@ -61,7 +61,7 @@ CutGrassBlockPointers:
 	db $d2, $6f
 	db $e5, $e8
 	db $ea, $c2
-	db $ed, $fa
+	db $ed, $7b
 	db -1
 
 .shamouti_island
