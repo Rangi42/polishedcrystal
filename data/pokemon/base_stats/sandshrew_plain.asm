@@ -7,7 +7,11 @@
 	db NO_ITEM, QUICK_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for SANDSHREW, SAND_VEIL, SAND_VEIL, SAND_RUSH
+else
+	abilities_for SANDSHREW, SAND_VEIL, SHARPNESS, SAND_RUSH
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

@@ -7,7 +7,11 @@
 	db NO_ITEM, GRIP_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for SANDSLASH_ALOLAN, SNOW_CLOAK, SNOW_CLOAK, SLUSH_RUSH
+else
+	abilities_for SANDSLASH_ALOLAN, SNOW_CLOAK, SHARPNESS, SLUSH_RUSH
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
