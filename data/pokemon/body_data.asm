@@ -7,15 +7,15 @@ ENDM
 PokemonBodyData:
 ; entries correspond to constants/pokemon_constants.asm
 	table_width BODY_DATA_SIZE
-	body_data   7,   69, QUADRUPED,    GREEN  ; BULBASAUR
-	body_data  10,  130, QUADRUPED,    GREEN  ; IVYSAUR
-	body_data  20, 1000, QUADRUPED,    GREEN  ; VENUSAUR
-	body_data   6,   85, BIPEDAL_TAIL, RED    ; CHARMANDER
-	body_data  11,  190, BIPEDAL_TAIL, RED    ; CHARMELEON
-	body_data  17,  905, BIPEDAL_TAIL, RED    ; CHARIZARD
-	body_data   5,   90, BIPEDAL_TAIL, BLUE   ; SQUIRTLE
-	body_data  10,  225, BIPEDAL_TAIL, BLUE   ; WARTORTLE
-	body_data  16,  855, BIPEDAL_TAIL, BLUE   ; BLASTOISE
+	body_data   7,   69, QUADRUPED,    GREEN  ; CUPICO
+	body_data  10,  130, QUADRUPED,    GREEN  ; PRICKUPI
+	body_data  20, 1000, QUADRUPED,    GREEN  ; CONIFURY
+	body_data   6,   85, INSECTOID,    RED    ; FLIKLIT
+	body_data  11,  190, WINGS,        RED    ; SIZZOO
+	body_data  17,  905, SERPENTINE,   RED    ; PYROBOROS
+	body_data   5,   90, BIPEDAL_TAIL, BLUE   ; GLUTTLE
+	body_data  10,  225, BIPEDAL_TAIL, BLUE   ; RIVEBLOK
+	body_data  16,  855, BIPEDAL_TAIL, BLUE   ; RIVASTION
 	body_data   3,   29, INSECTOID,    GREEN  ; CATERPIE
 	body_data   7,   99, SERPENTINE,   GREEN  ; METAPOD
 	body_data  11,  320, MULTIWINGS,   WHITE  ; BUTTERFREE
@@ -302,7 +302,6 @@ PokemonBodyData:
 	body_data   1,   11, HEAD, 		   BROWN  ; POLTEAGEIST
 	body_data	3,	 10, HEAD,		   YELLOW ; DEBRITE
 	body_data  12, 1200, HEAD_ARMS,	   YELLOW ; CASTORCH
-	body_data   7,   69, BIPEDAL,      GREEN  ; CUPICO
 	assert_table_length NUM_SPECIES
 
 	body_data  65, 2350, SERPENTINE,   RED    ; GYARADOS (GYARADOS_RED_FORM)

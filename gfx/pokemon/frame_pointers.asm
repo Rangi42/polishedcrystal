@@ -1,14 +1,14 @@
 FramesPointers:
 	table_width 2
-	dw BulbasaurFrames
-	dw IvysaurFrames
-	dw VenusaurFrames
-	dw CharmanderFrames
-	dw CharmeleonFrames
-	dw CharizardFrames
-	dw SquirtleFrames
-	dw WartortleFrames
-	dw BlastoiseFrames
+	dw CupicoFrames
+	dw PrickupiFrames
+	dw ConifuryFrames
+	dw FliklitFrames
+	dw SizzooFrames
+	dw PyroborosFrames
+	dw GluttleFrames
+	dw RiveblokFrames
+	dw RivastionFrames
 	dw CaterpieFrames
 	dw MetapodFrames
 	dw ButterfreeFrames
@@ -295,7 +295,6 @@ FramesPointers:
 	dw PolteageistFrames
 	dw DebriteFrames
 	dw CastorchFrames
-	dw CupicoFrames
 	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames

@@ -4,15 +4,15 @@
 
 EvosAttacksPointers::
 	table_width 2
-	dw BulbasaurEvosAttacks
-	dw IvysaurEvosAttacks
-	dw VenusaurEvosAttacks
-	dw CharmanderEvosAttacks
-	dw CharmeleonEvosAttacks
-	dw CharizardEvosAttacks
-	dw SquirtleEvosAttacks
-	dw WartortleEvosAttacks
-	dw BlastoiseEvosAttacks
+	dw CupicoEggSpeciesMoves
+	dw PrickupiEggSpeciesMoves
+	dw ConifuryEggSpeciesMoves
+	dw FliklitEggSpeciesMoves
+	dw SizzooEggSpeciesMoves
+	dw PyroborosEggSpeciesMoves
+	dw GluttleEggSpeciesMoves
+	dw RiveblokEggSpeciesMoves
+	dw RivastionEggSpeciesMoves
 	dw CaterpieEvosAttacks
 	dw MetapodEvosAttacks
 	dw ButterfreeEvosAttacks
@@ -299,7 +299,6 @@ EvosAttacksPointers::
 	dw PolteageistEvosAttacks
 	dw DebriteEvosAttacks
 	dw CastorchEvosAttacks
-	dw CupicoEvosAttacks
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosEvosAttacks

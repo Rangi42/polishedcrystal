@@ -164,7 +164,7 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 ### Pokémon
 
 * Many base stat changes, mostly based on [Drayano's Sacred Gold/Storm Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/).
-* Blastoise is Water/Steel.
+* Rivastion is Water/Steel.
 * Butterfree is Bug/Psychic.
 * Meowth and Persian are Dark.
 * Grimer and Muk are Poison/Dark.

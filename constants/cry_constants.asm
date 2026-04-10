@@ -6,7 +6,7 @@
 	const CRY_NIDORAN_F
 	const CRY_SLOWPOKE
 	const CRY_KANGASKHAN
-	const CRY_CHARMANDER
+	const CRY_FLIKLIT
 	const CRY_GRIMER
 	const CRY_VOLTORB
 	const CRY_MUK
@@ -17,11 +17,11 @@
 	const CRY_SEEL
 	const CRY_DROWZEE
 	const CRY_PIDGEY
-	const CRY_BULBASAUR
+	const CRY_CUPICO
 	const CRY_FARFETCH_D
 	const CRY_RHYDON
 	const CRY_GOLEM
-	const CRY_BLASTOISE
+	const CRY_RIVASTION
 	const CRY_PIDGEOTTO
 	const CRY_WEEDLE
 	const CRY_CATERPIE
@@ -31,7 +31,7 @@
 	const CRY_VENONAT
 	const CRY_LAPRAS
 	const CRY_METAPOD
-	const CRY_SQUIRTLE
+	const CRY_GLUTTLE
 	const CRY_PARAS
 	const CRY_GROWLITHE
 	const CRY_KRABBY

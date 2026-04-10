@@ -2,6 +2,15 @@
 
 NewPokedexOrder:
 	table_width 2
+	dp CUPICO
+	dp PRICKUPI
+	dp CONIFURY
+	dp FLIKLIT
+	dp SIZOO
+	dp PYROBOROS
+	dp GLUTTLE
+	dp RIVEBLOK
+	dp RIVASTION
 	dp CHIKORITA
 	dp BAYLEEF
 	dp MEGANIUM
@@ -265,15 +274,6 @@ NewPokedexOrder:
 	dp AERODACTYL
 	dp MUNCHLAX
 	dp SNORLAX
-	dp BULBASAUR
-	dp IVYSAUR
-	dp VENUSAUR
-	dp CHARMANDER
-	dp CHARMELEON
-	dp CHARIZARD
-	dp SQUIRTLE
-	dp WARTORTLE
-	dp BLASTOISE
 	dp ARTICUNO
 	dp ZAPDOS
 	dp MOLTRES
@@ -295,5 +295,4 @@ NewPokedexOrder:
 	dp POLTEAGEIST
 	dp DEBRITE
 	dp CASTORCH
-	dp CUPICO
 	assert_table_length NUM_POKEMON

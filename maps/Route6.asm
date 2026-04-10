@@ -161,12 +161,12 @@ OfficerfJennyScript:
 	text "You don't look"
 	line "familiar."
 
-	para "Squirtle Squad,"
+	para "Gluttle Squad,"
 	line "attack!"
 	done
 
 .BeatenText:
-	text "Squirtle Squad,"
+	text "Gluttle Squad,"
 	line "retreat…"
 	done
 

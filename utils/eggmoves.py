@@ -22,17 +22,17 @@ import os
 import glob
 from collections import defaultdict
 
-# ['bulbasaur', 'ivysaur', ..., 'mr__mime', ..., 'celebi']
+# ['cupico', 'prickupi', ..., 'mr__mime', ..., 'celebi']
 ordered_mons = []
-# {'bulbasaur': 'bulbasaur', 'mrmime': 'mr__mime', ...}
+# {'cupico': 'cupico', 'mrmime': 'mr__mime', ...}
 underscore_names = {}
-# {'MONSTER': {'bulbasaur', ...}, 'PLANT': {'bulbasaur', ...}, ...}
+# {'MONSTER': {'cupico', ...}, 'PLANT': {'cupico', ...}, ...}
 group_mons = defaultdict(lambda: set())
-# {'bulbasaur': {'MONSTER', 'PLANT'}, ...}
+# {'cupico': {'MONSTER', 'PLANT'}, ...}
 mon_groups = defaultdict(lambda: set())
-# {'bulbasaur': {'TACKLE', 'GROWL', ...}, ...}
+# {'cupico': {'TACKLE', 'GROWL', ...}, ...}
 learnset_moves = defaultdict(lambda: set())
-# {'bulbasaur': {'LIGHT_SCREEN', 'SKULL_BASH', ...}, ...}
+# {'cupico': {'LIGHT_SCREEN', 'SKULL_BASH', ...}, ...}
 egg_moves = defaultdict(lambda: set())
 # {'FIELD'}
 sketchable_groups = set()

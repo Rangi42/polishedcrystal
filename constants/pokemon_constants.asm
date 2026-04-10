@@ -24,15 +24,15 @@
 ; - BitmasksPointers (see gfx/pokemon/bitmask_pointers.asm)
 ; - FramesPointers (see gfx/pokemon/frame_pointers.asm)
 	const_def 1
-	const BULBASAUR  ; 01
-	const IVYSAUR    ; 02
-	const VENUSAUR   ; 03
-	const CHARMANDER ; 04
-	const CHARMELEON ; 05
-	const CHARIZARD  ; 06
-	const SQUIRTLE   ; 07
-	const WARTORTLE  ; 08
-	const BLASTOISE  ; 09
+	const CUPICO     ; 01
+	const PRICKUPI   ; 02
+	const CONIFURY   ; 03
+	const FLIKLIT    ; 04
+	const SIZZOO      ; 05
+	const PYROBOROS  ; 06
+	const GLUTTLE   ; 07
+	const RIVEBLOK  ; 08
+	const RIVASTION  ; 09
 	const CATERPIE   ; 0a
 	const METAPOD    ; 0b
 	const BUTTERFREE ; 0c
@@ -319,9 +319,6 @@
 	const POLTEAGEIST ; 125
 	const DEBRITE	 ; 126
 	const CASTORCH	 ; 127
-	const CUPICO     ; 125
-	; const PRICKUPI   ; 126
-	; const CONIFURY   ; 127
 DEF NUM_SPECIES EQU const_value - 1 ; 123
 DEF NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES)) ; 121
 

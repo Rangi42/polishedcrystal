@@ -4,15 +4,15 @@ ENDM
 
 OverworldMonIconColors::
 	table_width 1
-	iconpal TEAL, GREEN ; BULBASAUR
-	iconpal TEAL, GREEN ; IVYSAUR
-	iconpal TEAL, GREEN ; VENUSAUR
-	iconpal ORANGE, PINK ; CHARMANDER
-	iconpal RED, PINK ; CHARMELEON
-	iconpal ORANGE, BLACK ; CHARIZARD
-	iconpal AZURE, TEAL ; SQUIRTLE
-	iconpal BLUE, TEAL ; WARTORTLE
-	iconpal BLUE, TEAL ; BLASTOISE
+	iconpal BROWN, GREEN ; CUPICO
+	iconpal BROWN, GREEN ; PRICKUPI
+	iconpal BROWN, GREEN ; CONIFURY
+	iconpal ORANGE, PINK ; FLIKLIT
+	iconpal RED, PINK ; SIZOO
+	iconpal ORANGE, BLACK ; PYROBOROS
+	iconpal AZURE, TEAL ; GLUTTLE
+	iconpal BLUE, TEAL ; RIVEBLOK
+	iconpal BLUE, TEAL ; RIVASTION
 	iconpal GREEN, PINK ; CATERPIE
 	iconpal GREEN, ORANGE ; METAPOD
 	iconpal BLUE, PINK ; BUTTERFREE
@@ -299,7 +299,6 @@ OverworldMonIconColors::
 	iconpal BROWN, GREEN ; POLTEAGEIST
 	iconpal YELLOW, GRAY ; DEBRITE
 	iconpal ORANGE, BLACK ; CASTORCH 
-	iconpal BROWN, GREEN ; CUPICO
 	assert_table_length NUM_SPECIES
 
 rept NUM_UNOWN - 1

@@ -56,7 +56,7 @@ Olsteeton_MapScriptHeader:
 
 	def_object_events
 	object_event 36,  3, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonFisherText, -1
-	pokemon_event 35,  3, WARTORTLE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, OlsteetonPoliwrathText, -1
+	pokemon_event 35,  3, RIVEBLOK, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, OlsteetonPoliwrathText, -1
 	object_event 12, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonTeacher1Text, -1
 	object_event 27, 27, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonGramps1Text, -1
 	object_event 25, 18, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlsteetonGramps2Text, -1
@@ -145,7 +145,7 @@ OlsteetonBandCooltrainerFText:
 	done
 
 OlsteetonFisherText:
-	text "This Wartortle is"
+	text "This Riveblok is"
 	line "my partner."
 
 	para "It rescued me"
@@ -159,7 +159,7 @@ OlsteetonFisherText:
 	done
 
 OlsteetonPoliwrathText:
-	text "Wartortle: WArrrr!"
+	text "Riveblok: WArrrr!"
 	done
 
 OlsteetonTeacher1Text:

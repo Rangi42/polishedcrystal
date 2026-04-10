@@ -17,9 +17,9 @@ endc
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)
-	abilities_for CHARIZARD, BLAZE, SOLAR_POWER, DROUGHT
+	abilities_for PYROBOROS, BLAZE, SOLAR_POWER, DROUGHT
 else
-	abilities_for CHARIZARD, BLAZE, SOLAR_POWER, TOUGH_CLAWS
+	abilities_for PYROBOROS, BLAZE, SOLAR_POWER, TOUGH_CLAWS
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_DRAGON ; egg groups

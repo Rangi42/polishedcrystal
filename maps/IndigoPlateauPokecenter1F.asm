@@ -88,9 +88,9 @@ PlateauRivalBattleTrigger2:
 	faceobject PLAYER, INDIGOPLATEAUPOKECENTER1F_RIVAL
 	showtext PlateauRivalText1
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .RivalTotodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .RivalChikorita
 	; Cyndaquil
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -151,9 +151,9 @@ PlateauRivalBattleTrigger2:
 	waitbutton
 	closetext
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .LyraTotodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .LyraChikorita
 	; Cyndaquil
 	winlosstext PlateauLyraWinText, PlateauLyraLoseText
@@ -358,25 +358,25 @@ IndigoPlateauYellowScript:
 	writetext .GiveStarterText
 	promptbutton
 	waitsfx
-	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftruefwd .Squirtle
-	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
-	iftruefwd .Bulbasaur
-	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
+	checkevent EVENT_GOT_CUPICO_FROM_IVY
+	iftruefwd .Gluttle
+	checkevent EVENT_GOT_FLIKLIT_FROM_IVY
+	iftruefwd .Cupico
+	givepoke FLIKLIT, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .PartyAndBoxFullText
-	getmonname CHARMANDER, STRING_BUFFER_3
+	getmonname FLIKLIT, STRING_BUFFER_3
 	sjumpfwd .Finish
 
-.Bulbasaur:
-	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
+.Cupico:
+	givepoke CUPICO, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .PartyAndBoxFullText
-	getmonname BULBASAUR, STRING_BUFFER_3
+	getmonname CUPICO, STRING_BUFFER_3
 	sjumpfwd .Finish
 
-.Squirtle:
-	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
+.Gluttle:
+	givepoke GLUTTLE, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .PartyAndBoxFullText
-	getmonname SQUIRTLE, STRING_BUFFER_3
+	getmonname GLUTTLE, STRING_BUFFER_3
 .Finish:
 	writetext .GoodbyeText
 	waitbutton

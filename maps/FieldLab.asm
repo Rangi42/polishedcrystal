@@ -47,9 +47,9 @@ FieldLab_MapScriptHeader:
 	def_object_events
 	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfPawpawScript, -1
 	; object_event 11,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FieldAssistantScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  7,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  6,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_FLIKLIT_POKEBALL_IN_ELMS_LAB
+	object_event  7,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_GLUTTLE_POKEBALL_IN_ELMS_LAB
+	object_event  8,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CUPICO_POKEBALL_IN_ELMS_LAB
 	object_event  3,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FieldLabFellowText, -1
 	; object_event 10,  2, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, FieldLabRivalScript, EVENT_LYRA_IN_ELMS_LAB
 
@@ -83,11 +83,11 @@ FieldLab_MapScriptHeader:
 ; 	endcallback
 ProfPawpawScript:
 	faceplayer
- 	checkevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+ 	checkevent EVENT_GOT_FLIKLIT_FROM_ELM
 	iftruefwd PawpawAfterMon
- 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+ 	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd PawpawAfterMon
- 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+ 	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd PawpawAfterMon
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
 	opentext
@@ -205,8 +205,8 @@ CyndaquilPokeBallScript:
 	iffalse_jumptext PawpawPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic CYNDAQUIL
-	cry CYNDAQUIL
+	pokepic FLIKLIT
+	cry FLIKLIT
 	waitbutton
 	closepokepic
 	opentext
@@ -214,11 +214,11 @@ CyndaquilPokeBallScript:
 	yesorno
 	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL1
-	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	setevent EVENT_GOT_FLIKLIT_FROM_ELM
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	givepoke CYNDAQUIL, PLAIN_FORM, 5, ORAN_BERRY
+	givepoke FLIKLIT, PLAIN_FORM, 5, ORAN_BERRY
 	clearevent EVENT_CHOOSE_POKEMON
 	sjumpfwd PawpawDirectionsScript
 
@@ -229,7 +229,7 @@ CyndaquilPokeBallScript:
 	; pause 15
 	; disappear ELMSLAB_POKE_BALL3
 	; opentext
-	; getmonname CHIKORITA, STRING_BUFFER_3
+	; getmonname CUPICO, STRING_BUFFER_3
 	; writetext RivalReceivedStarterText
 	; playsound SFX_CAUGHT_MON
 	; waitsfx
@@ -247,8 +247,8 @@ TotodilePokeBallScript:
 	iffalse_jumptext PawpawPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic TOTODILE
-	cry TOTODILE
+	pokepic GLUTTLE
+	cry GLUTTLE
 	waitbutton
 	closepokepic
 	opentext
@@ -256,11 +256,11 @@ TotodilePokeBallScript:
 	yesorno
 	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL2
-	setevent EVENT_GOT_TOTODILE_FROM_ELM
+	setevent EVENT_GOT_GLUTTLE_FROM_ELM
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	givepoke TOTODILE, PLAIN_FORM, 5, ORAN_BERRY
+	givepoke GLUTTLE, PLAIN_FORM, 5, ORAN_BERRY
 	clearevent EVENT_CHOOSE_POKEMON
 	sjumpfwd PawpawDirectionsScript
 	; writetext RivalChoosesStarterText
@@ -270,7 +270,7 @@ TotodilePokeBallScript:
 	; pause 15
 	; disappear ELMSLAB_POKE_BALL1
 	; opentext
-	; getmonname CYNDAQUIL, STRING_BUFFER_3
+	; getmonname FLIKLIT, STRING_BUFFER_3
 	; writetext RivalReceivedStarterText
 	; playsound SFX_CAUGHT_MON
 	; waitsfx
@@ -286,8 +286,8 @@ ChikoritaPokeBallScript:
 	iffalse_jumptext PawpawPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic CHIKORITA
-	cry CHIKORITA
+	pokepic CUPICO
+	cry CUPICO
 	waitbutton
 	closepokepic
 	opentext
@@ -295,11 +295,11 @@ ChikoritaPokeBallScript:
 	yesorno
 	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL3
-	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	setevent EVENT_GOT_CUPICO_FROM_ELM
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	givepoke CHIKORITA, PLAIN_FORM, 5, ORAN_BERRY
+	givepoke CUPICO, PLAIN_FORM, 5, ORAN_BERRY
 	clearevent EVENT_CHOOSE_POKEMON
 	sjumpfwd PawpawDirectionsScript
 	; writetext RivalChoosesStarterText
@@ -309,7 +309,7 @@ ChikoritaPokeBallScript:
 	; pause 15
 	; disappear ELMSLAB_POKE_BALL2
 	; opentext
-	; getmonname TOTODILE, STRING_BUFFER_3
+	; getmonname GLUTTLE, STRING_BUFFER_3
 	; writetext RivalReceivedStarterText
 	; playsound SFX_CAUGHT_MON
 	; waitsfx
@@ -578,9 +578,9 @@ FieldLabHealingMachine_HealParty:
 ; 	turnobject PLAYER, RIGHT
 ; 	winlosstext FieldLabRivalWinText, FieldLabRivalLossText
 ; 	setlasttalked ELMSLAB_LYRA
-; 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+; 	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 ; 	iftruefwd .Totodile
-; 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+; 	checkevent EVENT_GOT_CUPICO_FROM_ELM
 ; 	iftruefwd .Chikorita
 ; 	loadtrainer LYRA1, LYRA1_1
 ; 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE

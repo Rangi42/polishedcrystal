@@ -174,9 +174,9 @@ UndergroundRivalBattleScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UndergroundRivalBeforeText
 	setevent EVENT_RIVAL_UNDERGROUND_PATH
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .Chikorita
 	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
 	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_RIVAL

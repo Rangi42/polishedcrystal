@@ -1,14 +1,14 @@
 AnimationPointers:
 	table_width 2
-	dw BulbasaurAnimation
-	dw IvysaurAnimation
-	dw VenusaurAnimation
-	dw CharmanderAnimation
-	dw CharmeleonAnimation
-	dw CharizardAnimation
-	dw SquirtleAnimation
-	dw WartortleAnimation
-	dw BlastoiseAnimation
+	dw CupicoAnimation
+	dw PrickupiAnimation
+	dw ConifuryAnimation
+	dw FliklitAnimation
+	dw SizzooAnimation
+	dw PyroborosAnimation
+	dw GluttleAnimation
+	dw RiveblokAnimation
+	dw RivastionAnimation
 	dw CaterpieAnimation
 	dw MetapodAnimation
 	dw ButterfreeAnimation
@@ -295,7 +295,6 @@ AnimationPointers:
 	dw PolteageistAnimation
 	dw DebriteAnimation
 	dw CastorchAnimation
-	dw CupicoAnimation
 	assert_table_length NUM_SPECIES
 
 	dw UnownBAnimation

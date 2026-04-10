@@ -7,7 +7,7 @@
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for WARTORTLE, TORRENT, RAIN_DISH, SHELL_ARMOR
+	abilities_for RIVEBLOK, TORRENT, RAIN_DISH, SHELL_ARMOR
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_WATER_1 ; egg groups
 

@@ -7,7 +7,7 @@
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for CHARMANDER, BLAZE, SOLAR_POWER, FLAME_BODY
+	abilities_for FLIKLIT, BLAZE, SOLAR_POWER, FLAME_BODY
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_DRAGON ; egg groups
 

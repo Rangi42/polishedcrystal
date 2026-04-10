@@ -142,19 +142,19 @@ DragonsDenB1FRivalScript:
 	waitbutton
 	writetext .GiveEggText
 	promptbutton
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .GiveChikoritaEgg
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .GiveCyndaquilEgg
-	giveegg TOTODILE
+	giveegg GLUTTLE
 	sjumpfwd .GotRivalsEgg
 
 .GiveChikoritaEgg:
-	giveegg CHIKORITA
+	giveegg CUPICO
 	sjumpfwd .GotRivalsEgg
 
 .GiveCyndaquilEgg:
-	giveegg CYNDAQUIL
+	giveegg FLIKLIT
 .GotRivalsEgg
 	iffalsefwd .PartyAndBoxFull
 	writetext .DescribeEggText

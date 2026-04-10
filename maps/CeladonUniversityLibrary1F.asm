@@ -263,7 +263,7 @@ CeladonUniversityLibrary1FBookshelf10Text:
 	cont "themed recipes!"
 
 	para "Jigglypuff Jello,"
-	line "Charmander Chut-"
+	line "Fliklit Chut-"
 	cont "ney, Munchlax"
 	cont "Snacks…"
 	done

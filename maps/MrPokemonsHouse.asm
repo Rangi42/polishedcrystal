@@ -134,19 +134,19 @@ MrPokemonsHouse_OakScript:
 	setmapscene ELMS_LAB, $3
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .RivalTakesChikorita
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .RivalTakesCyndaquil
-	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_GLUTTLE_POKEBALL_IN_ELMS_LAB
 	end
 
 .RivalTakesChikorita:
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_CUPICO_POKEBALL_IN_ELMS_LAB
 	end
 
 .RivalTakesCyndaquil:
-	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_FLIKLIT_POKEBALL_IN_ELMS_LAB
 	end
 
 MrPokemonsHouse_CabinetScript:

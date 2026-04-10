@@ -77,176 +77,165 @@ INCLUDE "data/pokemon/evos_attacks_pointers.asm"
 
 EvosAttacks::
 
-	evos_attacks Bulbasaur
-	evo_data EVOLVE_LEVEL, 16, IVYSAUR
+evos_attacks Cupico
+	evo_data EVOLVE_LEVEL, 15, PRICKUPI
 	learnset 1, TACKLE
 	learnset 3, GROWL
 	learnset 7, LEECH_SEED
 	learnset 9, VINE_WHIP
-	learnset 13, POISONPOWDER
 	learnset 13, SLEEP_POWDER
-	learnset 15, MUD_SLAP ; Take Down → GSC TM move
+	learnset 15, MUD_SLAP
 	learnset 19, RAZOR_LEAF
-	learnset 21, TAKE_DOWN ; Sweet Scent → Take Down
+	learnset 21, TAKE_DOWN
 	learnset 25, GROWTH
 	learnset 27, DOUBLE_EDGE
-	learnset 31, ANCIENTPOWER ; Worry Seed → event move
-	learnset 33, HEALINGLIGHT ; Synthesis → similar move
+	learnset 31, ANCIENTPOWER
+	learnset 33, HEALINGLIGHT 
 	learnset 37, SEED_BOMB
-	learnset 43, SLUDGE_BOMB ; TM move
+	learnset 43, SLUDGE_BOMB
 
-	evos_attacks Ivysaur
-	evo_data EVOLVE_LEVEL, 32, VENUSAUR
+	evos_attacks Prickupi
+	evo_data EVOLVE_LEVEL, 32, CONIFURY
 	learnset 1, TACKLE
 	learnset 3, GROWL
 	learnset 7, LEECH_SEED
 	learnset 9, VINE_WHIP
-	learnset 13, POISONPOWDER
 	learnset 13, SLEEP_POWDER
-	learnset 15, MUD_SLAP ; Take Down → GSC TM move
+	learnset 15, MUD_SLAP
 	learnset 20, RAZOR_LEAF
-	learnset 23, TAKE_DOWN ; Sweet Scent → Take Down
+	learnset 23, TAKE_DOWN
 	learnset 28, GROWTH
 	learnset 31, DOUBLE_EDGE
-	learnset 36, ANCIENTPOWER ; Worry Seed → event move
-	learnset 39, HEALINGLIGHT ; Synthesis → similar move
+	learnset 36, ANCIENTPOWER
+	learnset 39, HEALINGLIGHT
 	learnset 44, SEED_BOMB
-	learnset 50, SLUDGE_BOMB ; TM move
+	learnset 50, EARTHQUAKE
 
-	evos_attacks Venusaur
-	learnset 1, PETAL_DANCE ; evolution move
-	learnset 1, OUTRAGE ; HGSS tutor move
+	evos_attacks Conifury
+	learnset 1, OUTRAGE ;  evolution move
 	learnset 1, TACKLE
 	learnset 3, GROWL
 	learnset 7, LEECH_SEED
 	learnset 9, VINE_WHIP
-	learnset 13, POISONPOWDER
 	learnset 13, SLEEP_POWDER
-	learnset 15, MUD_SLAP ; Take Down → GSC TM move
+	learnset 15, MUD_SLAP
 	learnset 20, RAZOR_LEAF
-	learnset 23, TAKE_DOWN ; Sweet Scent → Take Down
+	learnset 23, TAKE_DOWN 
 	learnset 28, GROWTH
 	learnset 31, DOUBLE_EDGE
-	learnset 39, ANCIENTPOWER ; Worry Seed → event move
-	learnset 45, HEALINGLIGHT ; Synthesis → similar move
+	learnset 39, ANCIENTPOWER
+	learnset 45, HEALINGLIGHT 
 	learnset 50, SEED_BOMB
-	learnset 53, SLUDGE_BOMB ; Solar Beam → Sludge Bomb
+	learnset 53, EARTHQUAKE 
 	learnset 60, SOLAR_BEAM
 
-	evos_attacks Charmander
-	evo_data EVOLVE_LEVEL, 16, CHARMELEON
+	evos_attacks Fliklit
+	evo_data EVOLVE_LEVEL, 16, SIZZOO
 	learnset 1, SCRATCH
 	learnset 1, GROWL
 	learnset 7, EMBER
 	learnset 10, SMOKESCREEN
-	learnset 16, METAL_CLAW ; Dragon Rage → TM move
-	learnset 19, DRAGON_RAGE ; Scary Face → Dragon Rage
-	learnset 25, SCARY_FACE ; Fire Fang → Scary Face
-	learnset 28, FLAME_CHARGE ; Flame Burst → TM move
-	learnset 34, SLASH
+	learnset 16, LEECH_LIFE 
+	learnset 19, DRAGON_RAGE
+	learnset 25, SCARY_FACE 
+	learnset 28, FLAME_CHARGE
+	learnset 34, HYPER_FANG
 	learnset 37, FLAMETHROWER
 	learnset 43, FIRE_SPIN
 	learnset 46, CRUNCH
-	learnset 52, FLARE_BLITZ ; Sw/Sh move
+	learnset 52, FLARE_BLITZ
 
-	evos_attacks Charmeleon
-	evo_data EVOLVE_LEVEL, 36, CHARIZARD
+	evos_attacks Sizzoo
+	evo_data EVOLVE_LEVEL, 36, PYROBOROS
 	learnset 1, SCRATCH
 	learnset 1, GROWL
 	learnset 7, EMBER
 	learnset 10, SMOKESCREEN
-	learnset 17, METAL_CLAW ; Dragon Rage → TM move
-	learnset 21, DRAGON_RAGE ; Scary Face → Dragon Rage
-	learnset 28, SCARY_FACE ; Fire Fang → Scary Face
-	learnset 32, FLAME_CHARGE ; Flame Burst → TM move
-	learnset 39, SLASH
+	learnset 17, LEECH_LIFE
+	learnset 21, DRAGON_RAGE
+	learnset 28, SCARY_FACE
+	learnset 32, FLAME_CHARGE
+	learnset 39, HYPER_FANG
 	learnset 43, FLAMETHROWER
 	learnset 50, FIRE_SPIN
 	learnset 54, CRUNCH
 	learnset 61, FLARE_BLITZ ; Sw/Sh move
 
-	evos_attacks Charizard
+	evos_attacks Pyroboros
 	learnset 1, WING_ATTACK ; evolution move
 	learnset 1, FLARE_BLITZ
-	learnset 1, DRAGONBREATH
-	learnset 1, DRAGON_CLAW
+	learnset 1, IRON_TAIL
 	learnset 1, SHADOW_CLAW
 	learnset 1, AIR_SLASH
-	learnset 1, OUTRAGE ; HGSS tutor move
+	learnset 1, OUTRAGE
 	learnset 1, SCRATCH
 	learnset 1, GROWL
 	learnset 7, EMBER
 	learnset 10, SMOKESCREEN
-	learnset 17, METAL_CLAW ; Dragon Rage → TM move
-	learnset 21, DRAGON_RAGE ; Scary Face → Dragon Rage
-	learnset 28, SCARY_FACE ; Fire Fang → Scary Face
-	learnset 32, FLAME_CHARGE ; Flame Burst → TM move
-	learnset 41, SLASH
+	learnset 17, LEECH_LIFE
+	learnset 21, DRAGON_RAGE
+	learnset 28, SCARY_FACE
+	learnset 32, FLAME_CHARGE
+	learnset 41, HYPER_FANG
 	learnset 47, FLAMETHROWER
 	learnset 56, FIRE_SPIN
 	learnset 62, CRUNCH
 	learnset 71, FLARE_BLITZ
-	learnset 77, HURRICANE ; Sw/Sh move
+	learnset 77, HURRICANE
 
-	evos_attacks Squirtle
-	evo_data EVOLVE_LEVEL, 16, WARTORTLE
+	evos_attacks Gluttle
+	evo_data EVOLVE_LEVEL, 16, RIVEBLOK
 	learnset 1, TACKLE
-	learnset 4, LEER ; Tail Whip → similar move
+	learnset 4, LEER
 	learnset 7, WATER_GUN
-	learnset 10, DEFENSE_CURL ; Withdraw → similar move
-	learnset 13, AQUA_JET ; Bubble → egg move
+	learnset 10, DEFENSE_CURL
+	learnset 13, AQUA_JET
 	learnset 16, BITE
 	learnset 19, RAPID_SPIN
 	learnset 22, PROTECT
 	learnset 25, WATER_PULSE
 	learnset 28, AQUA_TAIL
-	learnset 31, CLOSE_COMBAT ; Skull Bash → new move
-	learnset 34, MIRROR_COAT ; Iron Defense → egg move
+	learnset 31, CLOSE_COMBAT
+	learnset 34, MIRROR_COAT
 	learnset 37, RAIN_DANCE
 	learnset 40, HYDRO_PUMP
-	learnset 43, SHELL_SMASH ; Sw/Sw move
+	learnset 43, STONE_EDGE
 
-	evos_attacks Wartortle
-	evo_data EVOLVE_LEVEL, 36, BLASTOISE
+	evos_attacks Riveblok
+	evo_data EVOLVE_LEVEL, 36, RIVASTION
 	learnset 1, TACKLE
-	learnset 4, LEER ; Tail Whip → similar move
+	learnset 4, LEER
 	learnset 7, WATER_GUN
-	learnset 10, DEFENSE_CURL ; Withdraw → similar move
-	learnset 13, AQUA_JET ; Bubble → egg move
+	learnset 10, DEFENSE_CURL
+	learnset 13, AQUA_JET
 	learnset 16, BITE
 	learnset 20, RAPID_SPIN
 	learnset 24, PROTECT
 	learnset 28, WATER_PULSE
 	learnset 32, AQUA_TAIL
-	learnset 36, CLOSE_COMBAT ; Skull Bash → new move
-	learnset 40, MIRROR_COAT ; Iron Defense → egg move
+	learnset 36, CLOSE_COMBAT
+	learnset 40, MIRROR_COAT
 	learnset 44, RAIN_DANCE
 	learnset 48, HYDRO_PUMP
-	learnset 52, SHELL_SMASH ; Sw/Sw move
+	learnset 52, STONE_EDGE
 
-	evos_attacks Blastoise
-	learnset 1, FLASH_CANNON ; evolution move
-	learnset 1, AURA_SPHERE ; new move
-	learnset 1, ZAP_CANNON ; event move
-	learnset 1, OUTRAGE ; HGSS tutor move
+	evos_attacks Rivastion
+	learnset 1, STONE_EDGE ; evolution move
 	learnset 1, TACKLE
-	learnset 4, LEER ; Tail Whip → similar move
+	learnset 4, LEER
 	learnset 7, WATER_GUN
-	learnset 10, DEFENSE_CURL ; Withdraw → similar move
-	learnset 13, AQUA_JET ; Bubble → egg move
+	learnset 10, DEFENSE_CURL
+	learnset 13, AQUA_JET
 	learnset 16, BITE
 	learnset 20, RAPID_SPIN
 	learnset 24, PROTECT
 	learnset 28, WATER_PULSE
 	learnset 32, AQUA_TAIL
-	learnset 39, CLOSE_COMBAT ; Skull Bash → new move
-	learnset 46, MIRROR_COAT ; Iron Defense → egg move
+	learnset 39, CLOSE_COMBAT
+	learnset 46, MIRROR_COAT
 	learnset 53, RAIN_DANCE
 	learnset 60, HYDRO_PUMP
-	learnset 67, SHELL_SMASH ; Sw/Sw move
-if !DEF(FAITHFUL)
-	learnset 75, IRON_HEAD ; TM move
-endc
+	learnset 67, ROCK_SLIDE
 
 	evos_attacks Caterpie
 	evo_data EVOLVE_LEVEL, 7, METAPOD
@@ -5990,24 +5979,6 @@ endc
 	learnset 40, BODY_SLAM
 	learnset 52, FLAMETHROWER
 	learnset 60, FIRE_BLAST
-
-evos_attacks Cupico
-	evo_data EVOLVE_LEVEL, 15, Prickupi
-	learnset 1, TACKLE
-	learnset 3, GROWL
-	learnset 7, LEECH_SEED
-	learnset 9, VINE_WHIP
-	learnset 13, POISONPOWDER
-	learnset 13, SLEEP_POWDER
-	learnset 15, MUD_SLAP ; Take Down → GSC TM move
-	learnset 19, RAZOR_LEAF
-	learnset 21, TAKE_DOWN ; Sweet Scent → Take Down
-	learnset 25, GROWTH
-	learnset 27, DOUBLE_EDGE
-	learnset 31, ANCIENTPOWER ; Worry Seed → event move
-	learnset 33, HEALINGLIGHT ; Synthesis → similar move
-	learnset 37, SEED_BOMB
-	learnset 43, SLUDGE_BOMB ; TM move
 
 	; Also terminates previous mon's learnset
 	EggEvosAttacks:

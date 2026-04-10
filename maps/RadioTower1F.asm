@@ -400,7 +400,7 @@ RadioTower1FRadioCardWomanQuestion5Text:
 	para "Do Goldenrod Game"
 	line "Corner's slots"
 
-	para "have Charmander"
+	para "have Fliklit"
 	line "on their reels?"
 	done
 

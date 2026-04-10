@@ -453,7 +453,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
 * Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.
 * Add: Marowak is Ground/Ghost.
-* Add: Charizard is Fire/Dragon.
+* Add: Pyroboros is Fire/Dragon.
 * Add: Yanmega is Bug/Dragon.
 * Add: Ampharos is Electric/Dragon.
 * Add: Noctowl is Ghost/Flying.

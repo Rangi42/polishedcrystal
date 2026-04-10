@@ -1,14 +1,14 @@
 EvolutionMoves::
 	table_width 1
-	db NO_MOVE      ; BULBASAUR
-	db NO_MOVE      ; IVYSAUR
-	db PETAL_DANCE  ; VENUSAUR
-	db NO_MOVE      ; CHARMANDER
-	db NO_MOVE      ; CHARMELEON
-	db WING_ATTACK  ; CHARIZARD
-	db NO_MOVE      ; SQUIRTLE
-	db NO_MOVE      ; WARTORTLE
-	db FLASH_CANNON ; BLASTOISE
+	db NO_MOVE      ; CUPICO
+	db NO_MOVE      ; PRICKUPI
+	db OUTRAGE      ; CONIFURY
+	db NO_MOVE      ; FLIKLIT
+	db NO_MOVE      ; SIZZOO
+	db WING_ATTACK  ; PYROBOROS
+	db NO_MOVE      ; GLUTTLE
+	db NO_MOVE      ; RIVEBLOK
+	db STONE_EDGE   ; RIVASTION
 	db NO_MOVE      ; CATERPIE
 	db DEFENSE_CURL ; METAPOD
 	db GUST         ; BUTTERFREE
@@ -299,7 +299,6 @@ endc
 	db NO_MOVE		; POLTEAGEIST
 	db NO_MOVE		; DEBRITE
 	db NO_MOVE		; CASTORCH
-	db NO_MOVE		; CUPICO
 	assert_table_length NUM_SPECIES
 
 	db BITE         ; GYARADOS, GYARADOS_RED_FORM

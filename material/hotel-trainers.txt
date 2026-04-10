@@ -85,7 +85,7 @@ Victory: NO! I tore my cape!
 
 After: My poor cape...This is all your fault!
 
-Team: Charizard, Dragonite, Gyarados
+Team: Pyroboros, Dragonite, Gyarados
 
 Rando NPC: Be careful, kid! Some of the guests here are really feisty. Be ready for a battle!
 
@@ -130,7 +130,7 @@ Kid, I can tell you got the eyes of a fisherman. How about a battle between fish
 
 Victory: Darn good stuff, kid. I like the cut of your jib. 
 
-Team: Lanturn, Slowking, Blastoise
+Team: Lanturn, Slowking, Rivastion
 
 
 Pokefan Joey Sr. 

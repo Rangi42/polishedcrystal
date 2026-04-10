@@ -65,9 +65,9 @@ BurnedTowerRivalBattleScript:
 	applyonemovement BURNEDTOWER1F_RIVAL, step_right
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext BurnedTowerRival_BeforeText
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .chikorita
 	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
 	setlasttalked BURNEDTOWER1F_RIVAL

@@ -16,7 +16,7 @@ NationalForest1_MapScriptHeader:
     def_object_events
 	; object_event  7, 16, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ConcernedCitizenScript1, EVENT_TALKED_TO_CC
 	; object_event  5, 16, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MegaCorpScript1, EVENT_TALKED_MEGACORP_GOON
-	pokemon_event  7, 15, BULBASAUR, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GREEN, NatForest1BulbasaurText, -1
+	pokemon_event  7, 15, CUPICO, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_GREEN, NatForest1CupicoText, -1
 	object_event 29, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1FishermanText, -1
 	object_event 30, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1Fisherman2Text, -1
 	object_event 13, 6, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, NatForest1GirlText, -1
@@ -106,8 +106,8 @@ GoonText2:
     line "complaint!"
     done
 
-NatForest1BulbasaurText:
-    text "This Bulbasaur"
+NatForest1CupicoText:
+    text "This Cupico"
     line "sadly looks out"
     
     para "across all the"

@@ -1,50 +1,50 @@
 ; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta
 ; http://www.pokecommunity.com/showthread.php?t=338470
 
-SECTION "Bulbasaur Mini Icon", ROMX
-BulbasaurMini::     INCBIN "gfx/minis/bulbasaur.2bpp.lz"
-BulbasaurMiniMask:: INCBIN "gfx/minis/bulbasaur_mask.1bpp.lz"
-BulbasaurIcon::     INCBIN "gfx/icons/bulbasaur.2bpp.lz"
+SECTION "Cupico Mini Icon", ROMX
+CupicoMini::     INCBIN "gfx/minis/cupico.2bpp.lz"
+CupicoMiniMask:: INCBIN "gfx/minis/cupico_mask.1bpp.lz"
+CupicoIcon::     INCBIN "gfx/icons/cupico.2bpp.lz"
 
-SECTION "Ivysaur Mini Icon", ROMX
-IvysaurMini::     INCBIN "gfx/minis/ivysaur.2bpp.lz"
-IvysaurMiniMask:: INCBIN "gfx/minis/ivysaur_mask.1bpp.lz"
-IvysaurIcon::     INCBIN "gfx/icons/ivysaur.2bpp.lz"
+SECTION "Prickupi Mini Icon", ROMX
+PrickupiMini::     INCBIN "gfx/minis/prickupi.2bpp.lz"
+PrickupiMiniMask:: INCBIN "gfx/minis/prickupi_mask.1bpp.lz"
+PrickupiIcon::     INCBIN "gfx/icons/prickupi.2bpp.lz"
 
-SECTION "Venusaur Mini Icon", ROMX
-VenusaurMini::     INCBIN "gfx/minis/venusaur.2bpp.lz"
-VenusaurMiniMask:: INCBIN "gfx/minis/venusaur_mask.1bpp.lz"
-VenusaurIcon::     INCBIN "gfx/icons/venusaur.2bpp.lz"
+SECTION "Conifury Mini Icon", ROMX
+ConifuryMini::     INCBIN "gfx/minis/conifury.2bpp.lz"
+ConifuryMiniMask:: INCBIN "gfx/minis/conifury_mask.1bpp.lz"
+ConifuryIcon::     INCBIN "gfx/icons/conifury.2bpp.lz"
 
-SECTION "Charmander Mini Icon", ROMX
-CharmanderMini::     INCBIN "gfx/minis/charmander.2bpp.lz"
-CharmanderMiniMask:: INCBIN "gfx/minis/charmander_mask.1bpp.lz"
-CharmanderIcon::     INCBIN "gfx/icons/charmander.2bpp.lz"
+SECTION "Fliklit Mini Icon", ROMX
+FliklitMini::     INCBIN "gfx/minis/fliklit.2bpp.lz"
+FliklitMiniMask:: INCBIN "gfx/minis/fliklit_mask.1bpp.lz"
+FliklitIcon::     INCBIN "gfx/icons/fliklit.2bpp.lz"
 
-SECTION "Charmeleon Mini Icon", ROMX
-CharmeleonMini::     INCBIN "gfx/minis/charmeleon.2bpp.lz"
-CharmeleonMiniMask:: INCBIN "gfx/minis/charmeleon_mask.1bpp.lz"
-CharmeleonIcon::     INCBIN "gfx/icons/charmeleon.2bpp.lz"
+SECTION "Sizzoo Mini Icon", ROMX
+SizzooMini::     INCBIN "gfx/minis/sizzoo.2bpp.lz"
+SizzooMiniMask:: INCBIN "gfx/minis/sizzoo_mask.1bpp.lz"
+SizzooIcon::     INCBIN "gfx/icons/sizzoo.2bpp.lz"
 
-SECTION "Charizard Mini Icon", ROMX
-CharizardMini::     INCBIN "gfx/minis/charizard.2bpp.lz"
-CharizardMiniMask:: INCBIN "gfx/minis/charizard_mask.1bpp.lz"
-CharizardIcon::     INCBIN "gfx/icons/charizard.2bpp.lz"
+SECTION "Pyroboros Mini Icon", ROMX
+PyroborosMini::     INCBIN "gfx/minis/pyroboros.2bpp.lz"
+PyroborosMiniMask:: INCBIN "gfx/minis/pyroboros_mask.1bpp.lz"
+PyroborosIcon::     INCBIN "gfx/icons/pyroboros.2bpp.lz"
 
-SECTION "Squirtle Mini Icon", ROMX
-SquirtleMini::     INCBIN "gfx/minis/squirtle.2bpp.lz"
-SquirtleMiniMask:: INCBIN "gfx/minis/squirtle_mask.1bpp.lz"
-SquirtleIcon::     INCBIN "gfx/icons/squirtle.2bpp.lz"
+SECTION "Gluttle Mini Icon", ROMX
+GluttleMini::     INCBIN "gfx/minis/gluttle.2bpp.lz"
+GluttleMiniMask:: INCBIN "gfx/minis/gluttle_mask.1bpp.lz"
+GluttleIcon::     INCBIN "gfx/icons/gluttle.2bpp.lz"
 
-SECTION "Wartortle Mini Icon", ROMX
-WartortleMini::     INCBIN "gfx/minis/wartortle.2bpp.lz"
-WartortleMiniMask:: INCBIN "gfx/minis/wartortle_mask.1bpp.lz"
-WartortleIcon::     INCBIN "gfx/icons/wartortle.2bpp.lz"
+SECTION "Riveblok Mini Icon", ROMX
+RiveblokMini::     INCBIN "gfx/minis/riveblok.2bpp.lz"
+RiveblokMiniMask:: INCBIN "gfx/minis/riveblok_mask.1bpp.lz"
+RiveblokIcon::     INCBIN "gfx/icons/riveblok.2bpp.lz"
 
-SECTION "Blastoise Mini Icon", ROMX
-BlastoiseMini::     INCBIN "gfx/minis/blastoise.2bpp.lz"
-BlastoiseMiniMask:: INCBIN "gfx/minis/blastoise_mask.1bpp.lz"
-BlastoiseIcon::     INCBIN "gfx/icons/blastoise.2bpp.lz"
+SECTION "Rivastion Mini Icon", ROMX
+RivastionMini::     INCBIN "gfx/minis/rivastion.2bpp.lz"
+RivastionMiniMask:: INCBIN "gfx/minis/rivastion_mask.1bpp.lz"
+RivastionIcon::     INCBIN "gfx/icons/rivastion.2bpp.lz"
 
 SECTION "Caterpie Mini Icon", ROMX
 CaterpieMini::     INCBIN "gfx/minis/caterpie.2bpp.lz"
@@ -1836,8 +1836,3 @@ SECTION "Castorch Mini Icon", ROMX
 CastorchMini::      INCBIN "gfx/minis/castorch.2bpp.lz"
 CastorchMiniMask::  INCBIN "gfx/minis/castorch_mask.1bpp.lz"
 CastorchIcon::      INCBIN "gfx/icons/castorch.2bpp.lz"
-
-SECTION "Cupico Mini Icon", ROMX
-CupicoMini::       INCBIN "gfx/minis/Cupico.2bpp.lz"
-CupicoMiniMask::   INCBIN "gfx/minis/Cupico_mask.1bpp.lz"
-CupicoIcon::       INCBIN "gfx/icons/Cupico.2bpp.lz"

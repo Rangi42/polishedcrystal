@@ -314,7 +314,7 @@ PlayerHouse1FTVScript:
 	line "TV: An armor clad"
 
 	para "knight rides a"
-	line "Charizard into"
+	line "Pyroboros into"
 	cont "battle..."
 
 	para "I'd better go"
