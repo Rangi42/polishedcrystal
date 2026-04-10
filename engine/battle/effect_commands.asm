@@ -589,6 +589,7 @@ CheckPowerHerb:
 	ld hl, BattleText_MegaSolCharged
 	call StdBattleTextbox
 	farcall EndAbility
+	jr .chargeup
 
 .no_solar_beam
 	call GetUserItemAfterUnnerve
