@@ -494,9 +494,9 @@ AnimateBigStarTile2:
 	add a
 
 _FinishAnimateBigStarTile:
-	add LOW(vTiles5 tile $46)
+	add LOW(vTiles5 tile $45)
 	ld l, a
-	adc HIGH(vTiles5 tile $46)
+	adc HIGH(vTiles5 tile $45)
 	sub l
 	ld h, a
 
@@ -531,9 +531,9 @@ AnimateSmallStarsTile2:
 	add a
 
 _FinishAnimateSmallStarsTile:
-	add LOW(vTiles5 tile $4c)
+	add LOW(vTiles5 tile $49)
 	ld l, a
-	adc HIGH(vTiles5 tile $4c)
+	adc HIGH(vTiles5 tile $49)
 	sub l
 	ld h, a
 
@@ -551,9 +551,9 @@ AnimateDoubleStarTile:
 	add a
 	add a
 
-	add LOW(vTiles5 tile $51)
+	add LOW(vTiles5 tile $4d)
 	ld l, a
-	adc HIGH(vTiles5 tile $51)
+	adc HIGH(vTiles5 tile $4d)
 	sub l
 	ld h, a
 
