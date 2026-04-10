@@ -3,6 +3,7 @@ SlicingMoves:
 	db AIR_SLASH
 	db CUT
 	db DRAGON_CLAW
+	db METAL_CLAW
 	db NIGHT_SLASH
 	db RAZOR_LEAF
 	db SHADOW_CLAW
