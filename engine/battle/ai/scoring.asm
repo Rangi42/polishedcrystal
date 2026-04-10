@@ -745,7 +745,8 @@ AI_Smart_HealingLight:
 ; use healing scoring, then -1 in sun, +2 in other weather
 	call AI_Smart_Heal
 
-	call GetWeatherAfterUserUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterUserUmbrella
 	and a
 	ret z
 	dec [hl]

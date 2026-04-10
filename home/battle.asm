@@ -641,6 +641,13 @@ CheckIfHPIsZero::
 	or [hl]
 	ret
 
+GetSolarizedWeather::
+; Returns harsh sunlight and z if user's ability is Mega Sol.
+	call GetTrueUserIgnorableAbility
+	cp MEGA_SOL
+	ld a, WEATHER_SUN
+	ret
+
 GetWeatherAfterOpponentUmbrella::
 	call StackCallOpponentTurn
 GetWeatherAfterUserUmbrella::

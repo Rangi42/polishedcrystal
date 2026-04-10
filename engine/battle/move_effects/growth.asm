@@ -1,6 +1,7 @@
 BattleCommand_growth:
 	lb bc, ATTACK, SP_ATTACK
-	call GetWeatherAfterUserUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr nz, .got_stats_to_raise
 	lb bc, ($10 | ATTACK), ($10 | SP_ATTACK)

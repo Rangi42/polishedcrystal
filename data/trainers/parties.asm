@@ -1940,7 +1940,11 @@ endc
 		tr_evs 252 SAt, 4 Def, 252 Spe
 		tr_moves PSYCHIC_M, TRI_ATTACK, FOCUS_BLAST, RECOVER
 	tr_mon 72, MEGANIUM @ LEFTOVERS, MALE, MALE
+if DEF(FAITHFUL)
 		tr_extra LEAF_GUARD, ATK_UP_SATK_DOWN
+else
+		tr_extra NATURAL_CURE, ATK_UP_SATK_DOWN
+endc
 		tr_evs 252 HP, 4 SDf, 252 Spe
 		tr_moves SEED_BOMB, PLAY_ROUGH, EARTHQUAKE, SWORDS_DANCE
 	end_trainer
@@ -2180,7 +2184,11 @@ Lyra2Group:
 		tr_evs 252 HP, 4 Def, 252 SAt
 		tr_moves PSYCHIC_M, DARK_PULSE, THUNDER_WAVE, SUBSTITUTE
 	tr_mon 72, "Chicory", MEGANIUM @ LEFTOVERS, FEMALE
+if DEF(FAITHFUL)
 		tr_extra LEAF_GUARD, SATK_UP_ATK_DOWN
+else
+		tr_extra NATURAL_CURE, SATK_UP_ATK_DOWN
+endc
 		tr_evs 252 HP, 4 Def, 252 SAt
 		tr_moves GIGA_DRAIN, MOONBLAST, EARTH_POWER, HEALINGLIGHT
 	end_trainer

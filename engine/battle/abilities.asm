@@ -1233,6 +1233,7 @@ SlushRushAbility:
 WeatherSpeedAbility:
 ; Doubles Speed in relevant weather
 	ln c, 2, 1 ; x2
+	call GetWeatherAfterUserUmbrella
 	jr WeatherBoostAbility
 
 SandVeilAbility:
@@ -1243,8 +1244,10 @@ SnowCloakAbility:
 WeatherAccAbility:
 ; Decrease target accuracy by 20% in relevant weather
 	ln c, 4, 5 ; x0.8
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterOpponentUmbrella
+	; fallthrough
 WeatherBoostAbility:
-	call GetWeatherAfterOpponentUmbrella
 	cp b
 	ret nz
 	ld a, c

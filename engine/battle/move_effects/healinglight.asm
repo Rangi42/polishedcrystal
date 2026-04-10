@@ -34,7 +34,8 @@ BattleCommand_healweather:
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 
-	call GetWeatherAfterUserUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr z, .goodheal
 	and a

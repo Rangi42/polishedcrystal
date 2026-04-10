@@ -17,9 +17,9 @@ endc
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)
-	abilities_for MEGANIUM, OVERGROW, OVERGROW, LEAF_GUARD
+	abilities_for MEGANIUM, OVERGROW, LEAF_GUARD, MEGA_SOL
 else
-	abilities_for MEGANIUM, OVERGROW, NATURAL_CURE, LEAF_GUARD
+	abilities_for MEGANIUM, OVERGROW, NATURAL_CURE, MEGA_SOL
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_PLANT ; egg groups

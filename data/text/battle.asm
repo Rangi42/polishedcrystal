@@ -259,6 +259,11 @@ BattleText_ItemRaisedCrit:
 	cont "to get pumped!"
 	prompt
 
+BattleText_MegaSolCharged:
+	text "<USER>"
+	line "was charged up!"
+	prompt
+
 BattleText_UserChargedWithItem:
 	text "<USER>"
 	line "became charged"

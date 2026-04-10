@@ -161,4 +161,5 @@
 	const SHARPNESS
 	const ARMOR_TAIL
 	const MINDS_EYE
+	const MEGA_SOL
 DEF NUM_ABILITIES EQU const_value
