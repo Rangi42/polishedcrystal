@@ -1,6 +1,6 @@
 if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 19, 10
+	RGB 30, 28, 26
+	RGB 30, 28, 26
 	RGB 31, 07, 01
 	RGB 00, 00, 00
 else
