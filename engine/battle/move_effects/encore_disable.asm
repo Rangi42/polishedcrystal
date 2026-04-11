@@ -78,17 +78,17 @@ DoEncoreDisable:
 	jr z, .got_text_and_duration
 	ld hl, GotAnEncoreText
 	dec a
+	call .got_text_and_duration
+	ret z
 
 	; Force opponent to use encored move in case it moves second
-	push hl
-	push af
 	ld a, BATTLE_VARS_MOVE_OPP
 	call GetBattleVarAddr
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	call GetBattleVar
 	ld [hl], a
-	pop af
-	pop hl
+	ret
+
 .got_text_and_duration
 	inc c
 	swap c
@@ -96,6 +96,8 @@ DoEncoreDisable:
 	ld [de], a
 	call AnimateCurrentMove
 	call StdBattleTextbox
+
+	; Returns z if we had a mental herb.
 	jmp CheckOpponentMentalHerb
 
 .failed

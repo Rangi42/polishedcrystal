@@ -167,7 +167,9 @@ CheckMentalHerb:
 	ld hl, CuredDisableWithItem
 	call nz, .print
 
-	jmp ConsumeUserItem
+	call ConsumeUserItem
+	xor a
+	ret
 
 .print
 	push bc
