@@ -135,7 +135,7 @@ There's only room for 255 moves, including Struggle. I wanted to fit in as many 
 * "**Healing Light**" = Morning Sun + Moonlight + Synthesis
 * "**Fresh Snack**" = Softboiled + Milk Drink
 
-Their animations in battle still depend on the Pokémon using them, e.g. Chansey's Fresh Snack looks like Softboiled, while Miltank's looks like Milk Drink. That's also the case for some moves that were consolidated: for example, Withdraw and Harden were removed, but Defense Curl has the animation of Withdraw for Squirtle, and of Harden for Geodude.
+Their animations in battle still depend on the Pokémon using them, e.g. Chansey's Fresh Snack looks like Softboiled, while Miltank's looks like Milk Drink. That's also the case for some moves that were consolidated: for example, Withdraw and Harden were removed, but Defense Curl has the animation of Withdraw for Gluttle, and of Harden for Geodude.
 
 [Here's a table](https://cdn.discordapp.com/attachments/332698009060114434/754778965410971729/moves.png) of all the moves available in the 3.0.0 beta.
 

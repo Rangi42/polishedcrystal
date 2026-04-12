@@ -18,15 +18,15 @@ ENDM
 PokemonPicSizes::
 	list_start
 	DEF size_value = 0
-INCLUDE "gfx/pokemon/bulbasaur/front.dimensions"
-INCLUDE "gfx/pokemon/ivysaur/front.dimensions"
-INCLUDE "gfx/pokemon/venusaur/front.dimensions"
-INCLUDE "gfx/pokemon/charmander/front.dimensions"
-INCLUDE "gfx/pokemon/charmeleon/front.dimensions"
-INCLUDE "gfx/pokemon/charizard/front.dimensions"
-INCLUDE "gfx/pokemon/squirtle/front.dimensions"
-INCLUDE "gfx/pokemon/wartortle/front.dimensions"
-INCLUDE "gfx/pokemon/blastoise/front.dimensions"
+INCLUDE "gfx/pokemon/cupico/front.dimensions"
+INCLUDE "gfx/pokemon/prickupi/front.dimensions"
+INCLUDE "gfx/pokemon/conifury/front.dimensions"
+INCLUDE "gfx/pokemon/fliklit/front.dimensions"
+INCLUDE "gfx/pokemon/sizzoo/front.dimensions"
+INCLUDE "gfx/pokemon/pyroboros/front.dimensions"
+INCLUDE "gfx/pokemon/gluttle/front.dimensions"
+INCLUDE "gfx/pokemon/riveblok/front.dimensions"
+INCLUDE "gfx/pokemon/rivastion/front.dimensions"
 INCLUDE "gfx/pokemon/caterpie/front.dimensions"
 INCLUDE "gfx/pokemon/metapod/front.dimensions"
 INCLUDE "gfx/pokemon/butterfree/front.dimensions"
@@ -313,7 +313,6 @@ INCLUDE "gfx/pokemon/sinistea/front.dimensions"
 INCLUDE "gfx/pokemon/polteageist/front.dimensions"
 INCLUDE "gfx/pokemon/debrite/front.dimensions"
 INCLUDE "gfx/pokemon/castorch/front.dimensions"
-INCLUDE "gfx/pokemon/cupico/front.dimensions"
 	assert_list_length NUM_SPECIES
 
 INCLUDE "gfx/pokemon/unown_b/front.dimensions"

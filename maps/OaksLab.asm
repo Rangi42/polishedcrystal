@@ -56,23 +56,23 @@ Oak:
 	writetext OakLabGiveStarterText
 	promptbutton
 	waitsfx
-	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftruefwd .Charmander
-	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
-	iftruefwd .Squirtle
-	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
+	checkevent EVENT_GOT_CUPICO_FROM_IVY
+	iftruefwd .Fliklit
+	checkevent EVENT_GOT_FLIKLIT_FROM_IVY
+	iftruefwd .Gluttle
+	givepoke CUPICO, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalsefwd .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjumpfwd .CheckBadges
 
-.Charmander:
-	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
+.Fliklit:
+	givepoke FLIKLIT, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalsefwd .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjumpfwd .CheckBadges
 
-.Squirtle:
-	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
+.Gluttle:
+	givepoke GLUTTLE, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalsefwd .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjumpfwd .CheckBadges

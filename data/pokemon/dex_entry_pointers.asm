@@ -1,15 +1,15 @@
 PokedexDataPointerTable:
 ; entries correspond to constants/pokemon_constants.asm
 	table_width 3
-	dba BulbasaurPokedexEntry
-	dba IvysaurPokedexEntry
-	dba VenusaurPokedexEntry
-	dba CharmanderPokedexEntry
-	dba CharmeleonPokedexEntry
-	dba CharizardPokedexEntry
-	dba SquirtlePokedexEntry
-	dba WartortlePokedexEntry
-	dba BlastoisePokedexEntry
+	dba CupicoPokedexEntry
+	dba PrickupiPokedexEntry
+	dba ConifuryPokedexEntry
+	dba FliklitPokedexEntry
+	dba SizzooPokedexEntry
+	dba PyroborosPokedexEntry
+	dba GluttlePokedexEntry
+	dba RiveblokPokedexEntry
+	dba RivastionPokedexEntry
 	dba CaterpiePokedexEntry
 	dba MetapodPokedexEntry
 	dba ButterfreePokedexEntry
@@ -255,8 +255,8 @@ PokedexDataPointerTable:
 	dba AzurillPokedexEntry
 	dba WynautPokedexEntry
 	dba AmbipomPokedexEntry
-	dba BulbasaurPokedexEntry ; EGG
-	dba BulbasaurPokedexEntry ; $100
+	dba CupicoPokedexEntry ; EGG
+	dba CupicoPokedexEntry ; $100
 	dba MismagiusPokedexEntry
 	dba HonchkrowPokedexEntry
 	dba BonslyPokedexEntry
@@ -296,7 +296,6 @@ PokedexDataPointerTable:
 	dba PolteageistPokedexEntry
 	dba DebritePokedexEntry
 	dba CastorchPokedexEntry
-	dba CupicoPokedexEntry
 	assert_table_length NUM_SPECIES
 
 	dba GyaradosRedPokedexEntry

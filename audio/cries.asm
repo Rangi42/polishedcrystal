@@ -878,11 +878,11 @@ Cry_Kangaskhan:
 	channel 6, Cry_Kangaskhan_Ch6
 	channel 8, Cry_Kangaskhan_Ch8
 
-Cry_Charmander:
+Cry_Fliklit:
 	channel_count 3
-	channel 5, Cry_Charmander_Ch5
-	channel 6, Cry_Charmander_Ch6
-	channel 8, Cry_Charmander_Ch8
+	channel 5, Cry_Fliklit_Ch5
+	channel 6, Cry_Fliklit_Ch6
+	channel 8, Cry_Fliklit_Ch8
 
 Cry_Grimer:
 	channel_count 3
@@ -944,11 +944,11 @@ Cry_Pidgey:
 	channel 6, Cry_Pidgey_Ch6
 	channel 8, Cry_Pidgey_Ch8
 
-Cry_Bulbasaur:
+Cry_Cupico:
 	channel_count 3
-	channel 5, Cry_Bulbasaur_Ch5
-	channel 6, Cry_Bulbasaur_Ch6
-	channel 8, Cry_Bulbasaur_Ch8
+	channel 5, Cry_Cupico_Ch5
+	channel 6, Cry_Cupico_Ch6
+	channel 8, Cry_Cupico_Ch8
 
 Cry_Farfetch_d:
 	channel_count 3
@@ -968,11 +968,11 @@ Cry_Golem:
 	channel 6, Cry_Golem_Ch6
 	channel 8, Cry_Golem_Ch8
 
-Cry_Blastoise:
+Cry_Rivastion:
 	channel_count 3
-	channel 5, Cry_Blastoise_Ch5
-	channel 6, Cry_Blastoise_Ch6
-	channel 8, Cry_Blastoise_Ch8
+	channel 5, Cry_Rivastion_Ch5
+	channel 6, Cry_Rivastion_Ch6
+	channel 8, Cry_Rivastion_Ch8
 
 Cry_Pidgeotto:
 	channel_count 3
@@ -1028,11 +1028,11 @@ Cry_Metapod:
 	channel 6, Cry_Metapod_Ch6
 	channel 8, Cry_Metapod_Ch8
 
-Cry_Squirtle:
+Cry_Gluttle:
 	channel_count 3
-	channel 5, Cry_Squirtle_Ch5
-	channel 6, Cry_Squirtle_Ch6
-	channel 8, Cry_Squirtle_Ch8
+	channel 5, Cry_Gluttle_Ch5
+	channel 6, Cry_Gluttle_Ch6
+	channel 8, Cry_Gluttle_Ch8
 
 Cry_Paras:
 	channel_count 3
@@ -1259,7 +1259,7 @@ Cry_Kangaskhan_Ch8:
 	noise_note 15, 10, 2, 92
 	sound_ret
 
-Cry_Bulbasaur_Ch5:
+Cry_Cupico_Ch5:
 	duty_cycle_pattern 3, 3, 0, 1
 	square_note 4, 15, 7, 1984
 	square_note 12, 14, 6, 1986
@@ -1269,7 +1269,7 @@ Cry_Bulbasaur_Ch5:
 	square_note 8, 12, 1, 1600
 	sound_ret
 
-Cry_Bulbasaur_Ch6:
+Cry_Cupico_Ch6:
 	duty_cycle_pattern 3, 0, 3, 0
 	square_note 3, 12, 7, 1921
 	square_note 12, 11, 6, 1920
@@ -1279,7 +1279,7 @@ Cry_Bulbasaur_Ch6:
 	square_note 8, 10, 1, 1538
 	sound_ret
 
-Cry_Bulbasaur_Ch8:
+Cry_Cupico_Ch8:
 	noise_note 3, 14, 4, 60
 	noise_note 12, 13, 6, 44
 	noise_note 4, 14, 4, 60
@@ -1613,7 +1613,7 @@ Cry_Oddish_Ch8:
 	noise_note 15, 12, 2, 76
 	sound_ret
 
-Cry_Charmander_Ch5:
+Cry_Fliklit_Ch5:
 	duty_cycle_pattern 3, 3, 0, 0
 	square_note 4, 15, 7, 1696
 	square_note 8, 14, 6, 1700
@@ -1624,7 +1624,7 @@ Cry_Charmander_Ch5:
 	square_note 8, 11, 1, 1552
 	sound_ret
 
-Cry_Charmander_Ch6:
+Cry_Fliklit_Ch6:
 	duty_cycle_pattern 1, 1, 2, 2
 	square_note 4, 14, 7, 1537
 	square_note 8, 13, 6, 1539
@@ -1635,7 +1635,7 @@ Cry_Charmander_Ch6:
 	square_note 8, 10, 1, 1393
 	sound_ret
 
-Cry_Charmander_Ch8:
+Cry_Fliklit_Ch8:
 	noise_note 7, 13, 6, 92
 	noise_note 8, 14, 6, 76
 	noise_note 4, 13, 4, 92
@@ -1728,7 +1728,7 @@ Cry_Golem_Ch8:
 	noise_note 8, 13, 1, 92
 	sound_ret
 
-Cry_Blastoise_Ch5:
+Cry_Rivastion_Ch5:
 	duty_cycle_pattern 0, 3, 0, 3
 	square_note 15, 15, 6, 1472
 	square_note 8, 14, 3, 1468
@@ -1738,7 +1738,7 @@ Cry_Blastoise_Ch5:
 	square_note 8, 11, 1, 1536
 	sound_ret
 
-Cry_Blastoise_Ch6:
+Cry_Rivastion_Ch6:
 	duty_cycle_pattern 2, 1, 2, 1
 	square_note 14, 12, 6, 1201
 	square_note 7, 12, 3, 1197
@@ -1748,7 +1748,7 @@ Cry_Blastoise_Ch6:
 	square_note 8, 9, 1, 1265
 	sound_ret
 
-Cry_Blastoise_Ch8:
+Cry_Rivastion_Ch8:
 	noise_note 10, 14, 6, 92
 	noise_note 10, 13, 6, 108
 	noise_note 4, 12, 2, 76
@@ -1925,7 +1925,7 @@ Cry_Venonat_Ch8:
 	noise_note 8, 13, 1, 44
 	sound_ret
 
-Cry_Squirtle_Ch5:
+Cry_Gluttle_Ch5:
 	duty_cycle_pattern 3, 3, 1, 0
 	square_note 15, 15, 0, 1797
 	square_note 10, 14, 0, 1792
@@ -1935,7 +1935,7 @@ Cry_Squirtle_Ch5:
 	square_note 8, 10, 1, 1572
 	sound_ret
 
-Cry_Squirtle_Ch6:
+Cry_Gluttle_Ch6:
 	duty_cycle_pattern 0, 2, 0, 2
 	square_note 15, 11, 0, 1731
 	square_note 10, 10, 0, 1729
@@ -1945,7 +1945,7 @@ Cry_Squirtle_Ch6:
 	square_note 8, 6, 1, 1512
 	sound_ret
 
-Cry_Squirtle_Ch8:
+Cry_Gluttle_Ch8:
 	noise_note 6, 14, 6, 76
 	noise_note 15, 13, 6, 60
 	noise_note 10, 12, 5, 74

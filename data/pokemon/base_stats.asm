@@ -35,15 +35,15 @@ ENDM
 
 BaseData::
 	table_width BASE_DATA_SIZE
-INCLUDE "data/pokemon/base_stats/bulbasaur.asm"
-INCLUDE "data/pokemon/base_stats/ivysaur.asm"
-INCLUDE "data/pokemon/base_stats/venusaur.asm"
-INCLUDE "data/pokemon/base_stats/charmander.asm"
-INCLUDE "data/pokemon/base_stats/charmeleon.asm"
-INCLUDE "data/pokemon/base_stats/charizard.asm"
-INCLUDE "data/pokemon/base_stats/squirtle.asm"
-INCLUDE "data/pokemon/base_stats/wartortle.asm"
-INCLUDE "data/pokemon/base_stats/blastoise.asm"
+INCLUDE "data/pokemon/base_stats/cupico.asm"
+INCLUDE "data/pokemon/base_stats/prickupi.asm"
+INCLUDE "data/pokemon/base_stats/conifury.asm"
+INCLUDE "data/pokemon/base_stats/fliklit.asm"
+INCLUDE "data/pokemon/base_stats/sizzoo.asm"
+INCLUDE "data/pokemon/base_stats/pyroboros.asm"
+INCLUDE "data/pokemon/base_stats/gluttle.asm"
+INCLUDE "data/pokemon/base_stats/riveblok.asm"
+INCLUDE "data/pokemon/base_stats/rivastion.asm"
 INCLUDE "data/pokemon/base_stats/caterpie.asm"
 INCLUDE "data/pokemon/base_stats/metapod.asm"
 INCLUDE "data/pokemon/base_stats/butterfree.asm"
@@ -330,7 +330,6 @@ INCLUDE "data/pokemon/base_stats/sinistea.asm"
 INCLUDE "data/pokemon/base_stats/polteageist.asm"
 INCLUDE "data/pokemon/base_stats/debrite.asm"
 INCLUDE "data/pokemon/base_stats/castorch.asm"
-INCLUDE "data/pokemon/base_stats/cupico.asm"
 	assert_table_length NUM_SPECIES
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red

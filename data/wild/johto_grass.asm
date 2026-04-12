@@ -117,7 +117,7 @@
 	wildmon 3, CATERPIE
 	wildmon 3, STANTLER
 	wildmon 4, STANTLER
-	wildmon 5, BULBASAUR
+	wildmon 5, CUPICO
 	wildmon 6, STANTLER
 	; day
 	wildmon 2, WEEDLE
@@ -125,7 +125,7 @@
 	wildmon 3, WEEDLE
 	wildmon 3, STANTLER
 	wildmon 4, LEDYBA
-	wildmon 5, BULBASAUR
+	wildmon 5, CUPICO
 	wildmon 6, SENTRET
 	; nite
 	wildmon 3, HOOTHOOT

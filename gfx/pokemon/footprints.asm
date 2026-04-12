@@ -1,6 +1,7 @@
 Footprints:: ; needed for BANK(Footprints)
 
 VenomothFootprint::
+FliklitFootprint::
 KabutoFootprint::
 SpinarakFootprint:: INCBIN "gfx/footprints/circle_small.1bpp.lz"
 
@@ -80,24 +81,19 @@ VictreebelFootprint::
 VoltorbFootprint::
 WeepinbellFootprint::
 WeezingFootprint::
-ZubatFootprint:: 
+ZubatFootprint::
+SizzooFootprint::
+PyroborosFootprint::
 SinisteaFootprint:: 
 PolteageistFootprint::
 DebriteFootprint::
 CastorchFootprint:: INCBIN "gfx/footprints/blank.1bpp.lz"
-PolteageistFootprint:: 
-CupicoFootprint:: INCBIN "gfx/footprints/blank.1bpp.lz"
-
-
-BulbasaurFootprint:: INCBIN "gfx/footprints/bulbasaur.1bpp.lz"
-IvysaurFootprint:: INCBIN "gfx/footprints/ivysaur.1bpp.lz"
-VenusaurFootprint:: INCBIN "gfx/footprints/venusaur.1bpp.lz"
-CharmanderFootprint:: INCBIN "gfx/footprints/charmander.1bpp.lz"
-CharmeleonFootprint:: INCBIN "gfx/footprints/charmeleon.1bpp.lz"
-CharizardFootprint:: INCBIN "gfx/footprints/charizard.1bpp.lz"
-SquirtleFootprint:: INCBIN "gfx/footprints/squirtle.1bpp.lz"
-WartortleFootprint:: INCBIN "gfx/footprints/wartortle.1bpp.lz"
-BlastoiseFootprint:: INCBIN "gfx/footprints/blastoise.1bpp.lz"
+CupicoFootprint:: INCBIN "gfx/footprints/cupico.1bpp.lz"
+PrickupiFootprint:: INCBIN "gfx/footprints/prickupi.1bpp.lz"
+ConifuryFootprint:: INCBIN "gfx/footprints/conifury.1bpp.lz"
+GluttleFootprint:: INCBIN "gfx/footprints/gluttle.1bpp.lz"
+RiveblokFootprint:: INCBIN "gfx/footprints/riveblok.1bpp.lz"
+RivastionFootprint:: INCBIN "gfx/footprints/rivastion.1bpp.lz"
 ButterfreeFootprint:: INCBIN "gfx/footprints/butterfree.1bpp.lz"
 BeedrillFootprint:: INCBIN "gfx/footprints/beedrill.1bpp.lz"
 PidgeottoFootprint:: INCBIN "gfx/footprints/pidgeotto.1bpp.lz"

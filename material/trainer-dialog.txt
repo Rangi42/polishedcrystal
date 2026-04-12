@@ -4,9 +4,9 @@ https://www.youtube.com/watch?v=zm8oIsdmaCw
 Professor Oak: Hello, <PLAYER>. Good to see you. I heard a lot about you. Your Pokédex must be close to complete? For all your hard work, I would like to give you something.
 Professor Oak: Haha! What’s behind me... You must have figured it out right away. Yes, it is a Pokémon!
 Professor Oak: You don’t see them very often in Kanto. Choose one and it’ll be yours! ...Go ahead!
-So, you’re claiming the Fire Pokémon Charmander?
-So, you’ve decided on the Water Pokémon Squirtle?
-So, you want to go with the Grass Pokémon Bulbasaur?
+So, you’re claiming the Fire Pokémon Fliklit?
+So, you’ve decided on the Water Pokémon Gluttle?
+So, you want to go with the Grass Pokémon Cupico?
 This Pokémon is really quite energetic!
 No need to hurry. Take your time.
 <PLAYER> received the <MON> from Professor Oak!

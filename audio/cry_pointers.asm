@@ -6,7 +6,7 @@ Cries:
 	fardw Cry_Nidoran_F
 	fardw Cry_Slowpoke
 	fardw Cry_Kangaskhan
-	fardw Cry_Charmander
+	fardw Cry_Fliklit
 	fardw Cry_Grimer
 	fardw Cry_Voltorb
 	fardw Cry_Muk
@@ -17,11 +17,11 @@ Cries:
 	fardw Cry_Seel
 	fardw Cry_Drowzee
 	fardw Cry_Pidgey
-	fardw Cry_Bulbasaur
+	fardw Cry_Cupico
 	fardw Cry_Farfetch_d
 	fardw Cry_Rhydon
 	fardw Cry_Golem
-	fardw Cry_Blastoise
+	fardw Cry_Rivastion
 	fardw Cry_Pidgeotto
 	fardw Cry_Weedle
 	fardw Cry_Caterpie
@@ -31,7 +31,7 @@ Cries:
 	fardw Cry_Venonat
 	fardw Cry_Lapras
 	fardw Cry_Metapod
-	fardw Cry_Squirtle
+	fardw Cry_Gluttle
 	fardw Cry_Paras
 	fardw Cry_Growlithe
 	fardw Cry_Krabby

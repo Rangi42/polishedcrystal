@@ -49,9 +49,9 @@ ShamoutiPokeCenter1FIvyScript:
 	loadmenu .KantoStarterMenuData
 	verticalmenu
 	closewindow
-	ifequalfwd $1, .Bulbasaur
-	ifequalfwd $2, .Charmander
-	ifequalfwd $3, .Squirtle
+	ifequalfwd $1, .Cupico
+	ifequalfwd $2, .Fliklit
+	ifequalfwd $3, .Gluttle
 	jumpthisopenedtext
 
 	text "Ivy: Hm, I thought"
@@ -61,34 +61,34 @@ ShamoutiPokeCenter1FIvyScript:
 	line "#mon…"
 	done
 
-.Bulbasaur:
+.Cupico:
 	writetext .ChoseKantoStarterText
 	promptbutton
 	waitsfx
-	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
+	givepoke CUPICO, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .NoRoomText
-	getmonname BULBASAUR, STRING_BUFFER_3
-	setevent EVENT_GOT_BULBASAUR_FROM_IVY
+	getmonname CUPICO, STRING_BUFFER_3
+	setevent EVENT_GOT_CUPICO_FROM_IVY
 	sjumpfwd .Finish
 
-.Charmander:
+.Fliklit:
 	writetext .ChoseKantoStarterText
 	promptbutton
 	waitsfx
-	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
+	givepoke FLIKLIT, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .NoRoomText
-	getmonname CHARMANDER, STRING_BUFFER_3
-	setevent EVENT_GOT_CHARMANDER_FROM_IVY
+	getmonname FLIKLIT, STRING_BUFFER_3
+	setevent EVENT_GOT_FLIKLIT_FROM_IVY
 	sjumpfwd .Finish
 
-.Squirtle:
+.Gluttle:
 	writetext .ChoseKantoStarterText
 	promptbutton
 	waitsfx
-	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
+	givepoke GLUTTLE, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .NoRoomText
-	getmonname SQUIRTLE, STRING_BUFFER_3
-	setevent EVENT_GOT_SQUIRTLE_FROM_IVY
+	getmonname GLUTTLE, STRING_BUFFER_3
+	setevent EVENT_GOT_GLUTTLE_FROM_IVY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton
@@ -210,7 +210,7 @@ ShamoutiPokeCenter1FIvyScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Bulbasaur@"
-	db "Charmander@"
-	db "Squirtle@"
+	db "Cupico@"
+	db "Fliklit@"
+	db "Gluttle@"
 	db "Cancel@"

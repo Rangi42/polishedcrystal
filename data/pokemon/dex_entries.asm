@@ -1,16 +1,16 @@
-SECTION "BulbasaurPokedexEntry", ROMX
-BulbasaurPokedexEntry::
-	db "Seed@"
-	db   "While it is young,"
-	next "it uses the"
-	next "nutrients that are"
-	page "stored in the"
-	next "seeds on its back"
-	next "in order to grow.@"
+SECTION "CupicoPokedexEntry", ROMX
+CupicoPokedexEntry::
+	db "Pinecone@"
+	db   "It hides itself"
+	next "using the scales"
+	next "on its head."
+	page "Found primarily in"
+	next "the tree tops of"
+	next "pine forests.@"
 
-SECTION "IvysaurPokedexEntry", ROMX
-IvysaurPokedexEntry::
-	db "Seed@"
+SECTION "PrickupiPokedexEntry", ROMX
+PrickupiPokedexEntry::
+	db "Pinecone@"
 	db   "The bulb on its"
 	next "back grows as it"
 	next "absorbs nutrients."
@@ -18,9 +18,9 @@ IvysaurPokedexEntry::
 	next "a pleasant aroma"
 	next "when it blooms.@"
 
-SECTION "VenusaurPokedexEntry", ROMX
-VenusaurPokedexEntry::
-	db "Seed@"
+SECTION "ConifuryPokedexEntry", ROMX
+ConifuryPokedexEntry::
+	db "Pinecone@"
 	db   "As it warms it-"
 	next "self and absorbs"
 	next "the sunlight, its"
@@ -28,9 +28,9 @@ VenusaurPokedexEntry::
 	next "release a pleasant"
 	next "fragrance.@"
 
-SECTION "CharmanderPokedexEntry", ROMX
-CharmanderPokedexEntry::
-	db "Lizard@"
+SECTION "FliklitPokedexEntry", ROMX
+FliklitPokedexEntry::
+	db "Firefly@"
 	db   "If it's healthy,"
 	next "the flame on the"
 	next "tip of its tail"
@@ -38,9 +38,9 @@ CharmanderPokedexEntry::
 	next "ously, even if it"
 	next "gets a bit wet.@"
 
-SECTION "CharmeleonPokedexEntry", ROMX
-CharmeleonPokedexEntry::
-	db "Flame@"
+SECTION "SizzooPokedexEntry", ROMX
+SizzooPokedexEntry::
+	db "Firefly@"
 	db   "If it becomes"
 	next "agitated during"
 	next "battle, it spouts"
@@ -48,9 +48,9 @@ CharmeleonPokedexEntry::
 	next "incinerating its"
 	next "surroundings.@"
 
-SECTION "CharizardPokedexEntry", ROMX
-CharizardPokedexEntry::
-	db "Flame@"
+SECTION "PyroborosPokedexEntry", ROMX
+PyroborosPokedexEntry::
+	db "Firefly@"
 	db   "It uses its wings"
 	next "to fly high. The"
 	next "temperature of its"
@@ -58,9 +58,9 @@ CharizardPokedexEntry::
 	next "it gains exper-"
 	next "ience in battle.@"
 
-SECTION "SquirtlePokedexEntry", ROMX
-SquirtlePokedexEntry::
-	db "Tiny Turtle@"
+SECTION "GluttlePokedexEntry", ROMX
+GluttlePokedexEntry::
+	db "Hellbender@"
 	db   "When it feels"
 	next "threatened, it"
 	next "draws its legs"
@@ -68,9 +68,9 @@ SquirtlePokedexEntry::
 	next "and sprays water"
 	next "from its mouth.@"
 
-SECTION "WartortlePokedexEntry", ROMX
-WartortlePokedexEntry::
-	db "Turtle@"
+SECTION "RiveblokPokedexEntry", ROMX
+RiveblokPokedexEntry::
+	db "Hellbender@"
 	db   "Its long, furry"
 	next "tail is a symbol"
 	next "of longevity,"
@@ -78,13 +78,9 @@ WartortlePokedexEntry::
 	next "popular among"
 	next "older people.@"
 
-SECTION "BlastoisePokedexEntry", ROMX
-BlastoisePokedexEntry::
-if DEF(FAITHFUL)
-	db "Shellfish@"
-else
-	db "Shell@"
-endc
+SECTION "RivastionPokedexEntry", ROMX
+RivastionPokedexEntry::
+	db "Hellbender@"
 	db   "It firmly plants"
 	next "its feet on the"
 	next "ground before"
@@ -3387,12 +3383,3 @@ CastorchPokedexEntry::
 	next "ing them to it's"
 	next "chains underneath.@"
 	
-SECTION "CupicoPokedexEntry", ROMX
-CupicoPokedexEntry::
-	db "Pinecone@"
-	db   "It hides itself"
-	next "using the scales"
-	next "on its head."
-	page "Found primarily in"
-	next "the tree tops of"
-	next "pine forests.@"

@@ -43,12 +43,9 @@ DecorationAttributes:
 	decoration DECO_PLANT,    SURF_PIKA_DOLL,    SET_UP_DOLL,        EVENT_DECO_SURFING_PIKACHU_DOLL,    SPRITE_SURFING_PIKACHU
 	decoration DECO_DOLL,     CLEFAIRY,          SET_UP_DOLL,        EVENT_DECO_CLEFAIRY_DOLL,           SPRITE_MON_DOLL_1
 	decoration DECO_DOLL,     JIGGLYPUFF,        SET_UP_DOLL,        EVENT_DECO_JIGGLYPUFF_DOLL,         SPRITE_MON_DOLL_1
-	decoration DECO_DOLL,     BULBASAUR,         SET_UP_DOLL,        EVENT_DECO_BULBASAUR_DOLL,          SPRITE_MON_DOLL_1
-	decoration DECO_DOLL,     CHARMANDER,        SET_UP_DOLL,        EVENT_DECO_CHARMANDER_DOLL,         SPRITE_MON_DOLL_1
-	decoration DECO_DOLL,     SQUIRTLE,          SET_UP_DOLL,        EVENT_DECO_SQUIRTLE_DOLL,           SPRITE_MON_DOLL_1
-	decoration DECO_DOLL,     CHIKORITA,         SET_UP_DOLL,        EVENT_DECO_CHIKORITA_DOLL,          SPRITE_MON_DOLL_1
-	decoration DECO_DOLL,     CYNDAQUIL,         SET_UP_DOLL,        EVENT_DECO_CYNDAQUIL_DOLL,          SPRITE_MON_DOLL_1
-	decoration DECO_DOLL,     TOTODILE,          SET_UP_DOLL,        EVENT_DECO_TOTODILE_DOLL,           SPRITE_MON_DOLL_1
+	decoration DECO_DOLL,     CUPICO,         SET_UP_DOLL,        EVENT_DECO_CUPICO_DOLL,          SPRITE_MON_DOLL_1
+	decoration DECO_DOLL,     FLIKLIT,        SET_UP_DOLL,        EVENT_DECO_FLIKLIT_DOLL,         SPRITE_MON_DOLL_1
+	decoration DECO_DOLL,     GLUTTLE,          SET_UP_DOLL,        EVENT_DECO_GLUTTLE_DOLL,           SPRITE_MON_DOLL_1
 	decoration DECO_DOLL,     POLIWAG,           SET_UP_DOLL,        EVENT_DECO_POLIWAG_DOLL,            SPRITE_MON_DOLL_1
 	decoration DECO_DOLL,     MAREEP,            SET_UP_DOLL,        EVENT_DECO_MAREEP_DOLL,             SPRITE_MON_DOLL_1
 	decoration DECO_DOLL,     TOGEPI,            SET_UP_DOLL,        EVENT_DECO_TOGEPI_DOLL,             SPRITE_MON_DOLL_1

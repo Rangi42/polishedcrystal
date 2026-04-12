@@ -56,8 +56,8 @@ PokefanmTrevorBeatenText:
 GenericTrainerPokefanmCarter:
 	generictrainer POKEFANM, CARTER, EVENT_BEAT_POKEFANM_CARTER, PokefanmCarterSeenText, PokefanmCarterBeatenText
 
-	text "Squirtle, Charman-"
-	line "der and Bulbasaur…"
+	text "Gluttle, Charman-"
+	line "der and Cupico…"
 
 	para "I think that's a"
 	line "well-balanced mix."

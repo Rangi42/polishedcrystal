@@ -116,9 +116,9 @@ LyraPhoneScript2:
 	end
 
 .LyrasEgg:
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .lyrasegg_totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .lyrasegg_chikorita
 	getstring .Chicory, STRING_BUFFER_4
 	sjumpfwd .lyrasegg_end

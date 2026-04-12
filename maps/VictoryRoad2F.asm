@@ -37,9 +37,9 @@ VictoryRoadRivalLeft:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext VictoryRoadRivalBeforeText
 	setevent EVENT_RIVAL_VICTORY_ROAD
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
 	iftruefwd .GotTotodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_CUPICO_FROM_ELM
 	iftruefwd .GotChikorita
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
 	setlasttalked VICTORYROAD2F_RIVAL

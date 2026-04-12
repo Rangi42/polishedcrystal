@@ -2,9 +2,9 @@
 
 WithdrawUsers:
 ; Defense Curl += Withdraw
-	dp SQUIRTLE
-	dp WARTORTLE
-	dp BLASTOISE
+	dp GLUTTLE
+	dp RIVEBLOK
+	dp RIVASTION
 	dp SLOWBRO
 	dp SHELLDER
 	dp CLOYSTER
