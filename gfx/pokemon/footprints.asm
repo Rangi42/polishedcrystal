@@ -1,6 +1,7 @@
 Footprints:: ; needed for BANK(Footprints)
 
 VenomothFootprint::
+FliklitFootprint::
 KabutoFootprint::
 SpinarakFootprint:: INCBIN "gfx/footprints/circle_small.1bpp.lz"
 
@@ -80,19 +81,16 @@ VictreebelFootprint::
 VoltorbFootprint::
 WeepinbellFootprint::
 WeezingFootprint::
-ZubatFootprint:: 
+ZubatFootprint::
+SizzooFootprint::
+PyroborosFootprint::
 SinisteaFootprint:: 
 PolteageistFootprint::
 DebriteFootprint::
 CastorchFootprint:: INCBIN "gfx/footprints/blank.1bpp.lz"
-
-
 CupicoFootprint:: INCBIN "gfx/footprints/cupico.1bpp.lz"
 PrickupiFootprint:: INCBIN "gfx/footprints/prickupi.1bpp.lz"
 ConifuryFootprint:: INCBIN "gfx/footprints/conifury.1bpp.lz"
-FliklitFootprint:: INCBIN "gfx/footprints/fliklit.1bpp.lz"
-SizzooFootprint:: INCBIN "gfx/footprints/sizzoo.1bpp.lz"
-PyroborosFootprint:: INCBIN "gfx/footprints/pyroboros.1bpp.lz"
 GluttleFootprint:: INCBIN "gfx/footprints/gluttle.1bpp.lz"
 RiveblokFootprint:: INCBIN "gfx/footprints/riveblok.1bpp.lz"
 RivastionFootprint:: INCBIN "gfx/footprints/rivastion.1bpp.lz"

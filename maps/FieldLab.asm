@@ -47,9 +47,9 @@ FieldLab_MapScriptHeader:
 	def_object_events
 	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfPawpawScript, -1
 	; object_event 11,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FieldAssistantScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_FLIKLIT_POKEBALL_IN_ELMS_LAB
-	object_event  7,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_GLUTTLE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CUPICO_POKEBALL_IN_ELMS_LAB
+	object_event  6,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, FliklitPokeBallScript, EVENT_FLIKLIT_POKEBALL_IN_ELMS_LAB
+	object_event  7,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, GluttlePokeBallScript, EVENT_GLUTTLE_POKEBALL_IN_ELMS_LAB
+	object_event  8,  1, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_SCRIPT, 0, CupicoPokeBallScript, EVENT_CUPICO_POKEBALL_IN_ELMS_LAB
 	object_event  3,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FieldLabFellowText, -1
 	; object_event 10,  2, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, FieldLabRivalScript, EVENT_LYRA_IN_ELMS_LAB
 
@@ -200,7 +200,7 @@ FieldLabTryToLeaveScript:
 	applyonemovement PLAYER, step_up
 	end
 
-CyndaquilPokeBallScript:
+FliklitPokeBallScript:
 	checkevent EVENT_CHOOSE_POKEMON
 	iffalse_jumptext PawpawPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
@@ -210,7 +210,7 @@ CyndaquilPokeBallScript:
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeCyndaquilText
+	writetext TakeFliklitText
 	yesorno
 	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL1
@@ -225,7 +225,7 @@ CyndaquilPokeBallScript:
 	; writetext RivalChoosesStarterText
 	; waitbutton
 	; closetext
-	; applymovement ELMSLAB_LYRA, RivalPicksChikoritaMovement
+	; applymovement ELMSLAB_LYRA, RivalPicksCupicoMovement
 	; pause 15
 	; disappear ELMSLAB_POKE_BALL3
 	; opentext
@@ -234,15 +234,15 @@ CyndaquilPokeBallScript:
 	; playsound SFX_CAUGHT_MON
 	; waitsfx
 	; promptbutton
-	; writetext RivalNicknamedChikoritaText
+	; writetext RivalNicknamedCupicoText
 	; waitbutton
 	; closetext
-	; applymovement ELMSLAB_LYRA, RivalAfterChikoritaMovement
+	; applymovement ELMSLAB_LYRA, RivalAfterCupicoMovement
 	; readvar VAR_FACING
 	; ifequalfwd RIGHT, PawpawDirectionsScript
-	; applymovement PLAYER, AfterCyndaquilMovement
+	; applymovement PLAYER, AfterFliklitMovement
 
-TotodilePokeBallScript:
+GluttlePokeBallScript:
 	checkevent EVENT_CHOOSE_POKEMON
 	iffalse_jumptext PawpawPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
@@ -252,7 +252,7 @@ TotodilePokeBallScript:
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeTotodileText
+	writetext TakeGluttleText
 	yesorno
 	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL2
@@ -266,7 +266,7 @@ TotodilePokeBallScript:
 	; writetext RivalChoosesStarterText
 	; waitbutton
 	; closetext
-	; applymovement ELMSLAB_LYRA, RivalPicksCyndaquilMovement
+	; applymovement ELMSLAB_LYRA, RivalPicksFliklitMovement
 	; pause 15
 	; disappear ELMSLAB_POKE_BALL1
 	; opentext
@@ -275,13 +275,13 @@ TotodilePokeBallScript:
 	; playsound SFX_CAUGHT_MON
 	; waitsfx
 	; promptbutton
-	; writetext RivalNicknamedCyndaquilText
+	; writetext RivalNicknamedFliklitText
 	; waitbutton
 	; closetext
-	; applymovement ELMSLAB_LYRA, RivalAfterCyndaquilMovement
-	; applymovement PLAYER, AfterTotodileMovement
+	; applymovement ELMSLAB_LYRA, RivalAfterFliklitMovement
+	; applymovement PLAYER, AfterGluttleMovement
 
-ChikoritaPokeBallScript:
+CupicoPokeBallScript:
 	checkevent EVENT_CHOOSE_POKEMON
 	iffalse_jumptext PawpawPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
@@ -291,7 +291,7 @@ ChikoritaPokeBallScript:
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeChikoritaText
+	writetext TakeCupicoText
 	yesorno
 	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL3
@@ -305,7 +305,7 @@ ChikoritaPokeBallScript:
 	; writetext RivalChoosesStarterText
 	; waitbutton
 	; closetext
-	; applymovement ELMSLAB_LYRA, RivalPicksTotodileMovement
+	; applymovement ELMSLAB_LYRA, RivalPicksGluttleMovement
 	; pause 15
 	; disappear ELMSLAB_POKE_BALL2
 	; opentext
@@ -314,11 +314,11 @@ ChikoritaPokeBallScript:
 	; playsound SFX_CAUGHT_MON
 	; waitsfx
 	; promptbutton
-	; writetext RivalNicknamedTotodileText
+	; writetext RivalNicknamedGluttleText
 	; waitbutton
 	; closetext
-	; applymovement ELMSLAB_LYRA, RivalAfterTotodileMovement
-	; applymovement PLAYER, AfterChikoritaMovement
+	; applymovement ELMSLAB_LYRA, RivalAfterGluttleMovement
+	; applymovement PLAYER, AfterCupicoMovement
 	; fallthrough
 
 PawpawDirectionsScript:
@@ -579,9 +579,9 @@ FieldLabHealingMachine_HealParty:
 ; 	winlosstext FieldLabRivalWinText, FieldLabRivalLossText
 ; 	setlasttalked ELMSLAB_LYRA
 ; 	checkevent EVENT_GOT_GLUTTLE_FROM_ELM
-; 	iftruefwd .Totodile
+; 	iftruefwd .Gluttle
 ; 	checkevent EVENT_GOT_CUPICO_FROM_ELM
-; 	iftruefwd .Chikorita
+; 	iftruefwd .Cupico
 ; 	loadtrainer LYRA1, LYRA1_1
 ; 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 ; 	startbattle
@@ -592,7 +592,7 @@ FieldLabHealingMachine_HealParty:
 ; 	iftruefwd .AfterYourDefeat
 ; 	sjumpfwd .AfterVictorious
 
-; .Totodile:
+; .Gluttle:
 ; 	loadtrainer LYRA1, LYRA1_2
 ; 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 ; 	startbattle
@@ -603,7 +603,7 @@ FieldLabHealingMachine_HealParty:
 ; 	iftruefwd .AfterVictorious
 ; 	sjumpfwd .AfterYourDefeat
 
-; .Chikorita:
+; .Cupico:
 ; 	loadtrainer LYRA1, LYRA1_3
 ; 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 ; 	startbattle
@@ -693,17 +693,17 @@ FieldLab_WalkUpToPawpawMovement:
 	turn_head_left
 	step_end
 
-; RivalPicksChikoritaMovement:
+; RivalPicksCupicoMovement:
 ; 	step_right
-; RivalPicksTotodileMovement:
+; RivalPicksGluttleMovement:
 ; 	step_right
-; RivalPicksCyndaquilMovement:
+; RivalPicksFliklitMovement:
 ; 	step_right
 ; 	step_right
 ; 	step_up
 ; 	step_end
 
-; RivalAfterChikoritaMovement:
+; RivalAfterCupicoMovement:
 ; 	step_down
 ; 	step_left
 ; 	step_left
@@ -711,14 +711,14 @@ FieldLab_WalkUpToPawpawMovement:
 ; 	turn_head_up
 ; 	step_end
 
-; RivalAfterTotodileMovement:
+; RivalAfterGluttleMovement:
 ; 	step_down
 ; 	step_left
 ; 	step_left
 ; 	turn_head_up
 ; 	step_end
 
-; RivalAfterCyndaquilMovement:
+; RivalAfterFliklitMovement:
 ; 	step_down
 ; 	step_left
 ; 	turn_head_up
@@ -828,19 +828,19 @@ FieldLab_PawpawToDefaultPositionMovement:
 	turn_head_down
 	step_end
 
-AfterCyndaquilMovement:
+AfterFliklitMovement:
 	step_down
 	step_left
 	turn_head_up
 	step_end
 
-AfterTotodileMovement:
+AfterGluttleMovement:
 	step_down
 	step_left
 	turn_head_up
 	step_end
 
-AfterChikoritaMovement:
+AfterCupicoMovement:
 	step_down
 	step_left
 	step_left
@@ -982,19 +982,19 @@ PawpawWhereGoingText:
 	line "are you going?"
 	done
 
-TakeCyndaquilText:
+TakeFliklitText:
 	text "Pawpaw: So it's"
 	line "Fliklit, the"
 	cont "fire #mon?"
 	done
 
-TakeTotodileText:
+TakeGluttleText:
 	text "Pawpaw: You want"
 	line "Gluttle, the"
 	cont "water #mon?"
 	done
 
-TakeChikoritaText:
+TakeCupicoText:
 	text "Pawpaw: You like"
 	line "Cupico, the"
 	cont "grass #mon?"
@@ -1317,19 +1317,19 @@ FieldLabWindowText:
 ; 	text "!"
 ; 	done
 
-; RivalNicknamedChikoritaText:
+; RivalNicknamedCupicoText:
 ; 	text "Rival: It's so"
 ; 	line "cute! I'll nick-"
 ; 	cont "name it Chicory!"
 ; 	done
 
-; RivalNicknamedCyndaquilText:
+; RivalNicknamedFliklitText:
 ; 	text "Rival: It's so"
 ; 	line "cute! I'll nick-"
 ; 	cont "name it Cinder!"
 ; 	done
 
-; RivalNicknamedTotodileText:
+; RivalNicknamedGluttleText:
 ; 	text "Rival: It's so"
 ; 	line "cute! I'll nick-"
 ; 	cont "name it Toto!"

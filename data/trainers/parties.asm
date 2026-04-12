@@ -653,13 +653,8 @@ endc
 		tr_extra TOUGH_CLAWS, ATK_UP_SATK_DOWN
 		tr_moves STONE_EDGE, BRAVE_BIRD, IRON_HEAD, CRUNCH
 	tr_mon 75, PYROBOROS @ LEFTOVERS, MALE
-if DEF(FAITHFUL)
 		tr_extra DROUGHT, SATK_UP_ATK_DOWN
 		tr_moves FIRE_BLAST, SOLAR_BEAM, FOCUS_BLAST, AIR_SLASH
-else
-		tr_extra TOUGH_CLAWS, ATK_UP_SATK_DOWN
-		tr_moves DRAGON_DANCE, OUTRAGE, FLARE_BLITZ, ROOST
-endc
 	tr_mon 80, DRAGONITE @ WEAK_POLICY, MALE
 		tr_extra MULTISCALE, ATK_UP_SATK_DOWN, SHINY
 		tr_moves DRAGON_DANCE, EXTREMESPEED, OUTRAGE, IRON_HEAD
@@ -1027,13 +1022,8 @@ RedGroup:
 		tr_extra MOXIE, ATK_UP_SATK_DOWN, SHINY
 		tr_moves DRAGON_DANCE, WATERFALL, EARTHQUAKE, CRUNCH
 	tr_mon 88, PYROBOROS @ MUSCLE_BAND, MALE
-if DEF(FAITHFUL)
 		tr_extra DROUGHT, ATK_UP_SATK_DOWN
 		tr_moves FLARE_BLITZ, SWORDS_DANCE, EARTHQUAKE, AERIAL_ACE
-else
-		tr_extra TOUGH_CLAWS, ATK_UP_SATK_DOWN
-		tr_moves FLARE_BLITZ, SWORDS_DANCE, EARTHQUAKE, DRAGON_CLAW
-endc
 	end_trainer
 
 
@@ -1896,7 +1886,7 @@ CamperGroup:
 	end_trainer
 
 	def_trainer FELIX, "Felix"
-	tr_mon LEVEL_FROM_BADGES + 8, SIZOO
+	tr_mon LEVEL_FROM_BADGES + 8, SIZZOO
 	end_trainer
 
 	def_trainer TANNER, "Tanner"
@@ -3775,7 +3765,7 @@ FirebreatherGroup:
 
 	def_trainer DICK, "Dick"
 	tr_mon 53, FLIKLIT
-	tr_mon 55, SIZOO
+	tr_mon 55, SIZZOO
 	tr_mon 57, PYROBOROS
 	end_trainer
 
@@ -5163,7 +5153,7 @@ BurglarGroup:
 	end_trainer
 
 	def_trainer PETE, "Pete"
-	tr_mon 59, SIZOO
+	tr_mon 59, SIZZOO
 	tr_mon 62, MAGMAR
 	end_trainer
 
@@ -5760,7 +5750,7 @@ BikerGroup:
 
 	def_trainer CHARLES, "Charles"
 	tr_mon 54, KOFFING
-	tr_mon 54, SIZOO
+	tr_mon 54, SIZZOO
 	tr_mon 57, WEEZING
 	end_trainer
 
@@ -6075,7 +6065,7 @@ CooltrainerMGroup:
 
 	def_trainer AARON, "Aaron"
 	tr_mon 28, PRICKUPI
-	tr_mon 28, SIZOO
+	tr_mon 28, SIZZOO
 	tr_mon 28, RIVEBLOK
 	end_trainer
 
@@ -6124,7 +6114,7 @@ CooltrainerMGroup:
 	end_trainer
 
 	def_trainer ALLEN, "Allen"
-	tr_mon 36, SIZOO
+	tr_mon 36, SIZZOO
 		tr_moves SMOKESCREEN, METAL_CLAW, DRAGON_RAGE, FLAME_CHARGE
 	tr_mon 35, MAGNETON
 		tr_moves THUNDER_WAVE, THUNDERBOLT, TRI_ATTACK, FLASH_CANNON
@@ -6136,7 +6126,7 @@ CooltrainerMGroup:
 	end_trainer
 
 	def_trainer HENRI, "Henri"
-	tr_mon LEVEL_FROM_BADGES + 5, SIZOO
+	tr_mon LEVEL_FROM_BADGES + 5, SIZZOO
 	tr_mon LEVEL_FROM_BADGES + 5, RIVEBLOK
 	tr_mon LEVEL_FROM_BADGES + 5, PRICKUPI
 	end_trainer
@@ -6385,7 +6375,7 @@ endc
 	end_trainer
 
 	def_trainer SERA, "Sera"
-	tr_mon 63, SIZOO @ EVIOLITE
+	tr_mon 63, SIZZOO @ EVIOLITE
 	tr_mon 61, AMPHAROS @ MAGNET
 	tr_mon 61, XATU @ TWISTEDSPOON
 	end_trainer
@@ -6414,7 +6404,7 @@ endc
 		tr_extra SAP_SIPPER, SPE_UP_DEF_DOWN
 		tr_evs 104 HP
 		tr_moves WHIRLPOOL, PERISH_SONG, AQUA_TAIL, PROTECT
-	tr_mon LEVEL_FROM_BADGES + 5, SIZOO @ BINDING_BAND, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 5, SIZZOO @ BINDING_BAND, FEMALE
 		tr_extra SOLAR_POWER, SPE_UP_DEF_DOWN
 		tr_evs 104 HP
 		tr_moves FIRE_SPIN, DRAGON_RAGE, SMOKESCREEN, PROTECT
@@ -6813,11 +6803,7 @@ ProfOakGroup:
 		tr_extra THICK_FAT, SDEF_UP_ATK_DOWN
 		tr_moves GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
 	tr_mon 80, PYROBOROS @ LIFE_ORB, MALE
-if !DEF(FAITHFUL)
-		tr_extra TOUGH_CLAWS, SPE_UP_SATK_DOWN
-else
 		tr_extra DROUGHT, SPE_UP_SATK_DOWN
-endc
 		tr_moves FLARE_BLITZ, DRAGON_CLAW, CRUNCH, DRAGON_DANCE
 	tr_mon 80, RIVASTION @ WHITE_HERB, MALE
 		tr_extra TORRENT, SDEF_UP_SATK_DOWN

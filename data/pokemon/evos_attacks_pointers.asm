@@ -4,15 +4,15 @@
 
 EvosAttacksPointers::
 	table_width 2
-	dw CupicoEggSpeciesMoves
-	dw PrickupiEggSpeciesMoves
-	dw ConifuryEggSpeciesMoves
-	dw FliklitEggSpeciesMoves
-	dw SizzooEggSpeciesMoves
-	dw PyroborosEggSpeciesMoves
-	dw GluttleEggSpeciesMoves
-	dw RiveblokEggSpeciesMoves
-	dw RivastionEggSpeciesMoves
+	dw CupicoEvosAttacks
+	dw PrickupiEvosAttacks
+	dw ConifuryEvosAttacks
+	dw FliklitEvosAttacks
+	dw SizzooEvosAttacks
+	dw PyroborosEvosAttacks
+	dw GluttleEvosAttacks
+	dw RiveblokEvosAttacks
+	dw RivastionEvosAttacks
 	dw CaterpieEvosAttacks
 	dw MetapodEvosAttacks
 	dw ButterfreeEvosAttacks

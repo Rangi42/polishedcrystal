@@ -8,7 +8,7 @@ OverworldMonIconColors::
 	iconpal BROWN, GREEN ; PRICKUPI
 	iconpal BROWN, GREEN ; CONIFURY
 	iconpal ORANGE, PINK ; FLIKLIT
-	iconpal RED, PINK ; SIZOO
+	iconpal RED, PINK ; SIZZOO
 	iconpal ORANGE, BLACK ; PYROBOROS
 	iconpal AZURE, TEAL ; GLUTTLE
 	iconpal BLUE, TEAL ; RIVEBLOK

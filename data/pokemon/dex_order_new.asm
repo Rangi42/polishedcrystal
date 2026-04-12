@@ -6,7 +6,7 @@ NewPokedexOrder:
 	dp PRICKUPI
 	dp CONIFURY
 	dp FLIKLIT
-	dp SIZOO
+	dp SIZZOO
 	dp PYROBOROS
 	dp GLUTTLE
 	dp RIVEBLOK

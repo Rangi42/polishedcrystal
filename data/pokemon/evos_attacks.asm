@@ -2823,7 +2823,8 @@ endc
 	learnset 80, OUTRAGE ; HGSS tutor move
 
 	evos_attacks Magikarp
-	evo_data EVOLVE_LEVEL, 20, GYARADOS, NO_FORM ; preserve pre-evo form
+	; evo_data EVOLVE_ITEM, BERSERK_GENE, MAGIATHAN
+	; evo_data EVOLVE_LEVEL, 20, GYARADOS, NO_FORM ; preserve pre-evo form
 	learnset 1, SPLASH
 	learnset 15, TACKLE
 	learnset 30, REVERSAL ; Flail → event move
