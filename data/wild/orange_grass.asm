@@ -31,7 +31,7 @@
 ; 	def_grass_wildmons BEAUTIFUL_BEACH
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -39,7 +39,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, WEEPINBELL
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -47,7 +47,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, ARIADOS
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -59,7 +59,7 @@
 ; 	def_grass_wildmons WARM_BEACH
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -67,7 +67,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, WEEPINBELL
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -75,7 +75,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, ARIADOS
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -87,7 +87,7 @@
 ; 	def_grass_wildmons ROCKY_BEACH
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, PHANPY
@@ -95,7 +95,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, DONPHAN
 ; 	wildmon LEVEL_FROM_BADGES + 1, DONPHAN
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, WEEPINBELL
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, PHANPY
@@ -103,7 +103,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, DONPHAN
 ; 	wildmon LEVEL_FROM_BADGES + 1, DONPHAN
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, ARIADOS
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL

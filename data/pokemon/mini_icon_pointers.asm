@@ -101,8 +101,8 @@ MiniIconPointers:
 	mini_icon Onix
 	mini_icon Drowzee
 	mini_icon Hypno
-	mini_icon Krabby
-	mini_icon Kingler
+	mini_icon Corphish
+	mini_icon Crawdaunt
 	mini_icon Voltorb
 	mini_icon Electrode
 	mini_icon Exeggcute

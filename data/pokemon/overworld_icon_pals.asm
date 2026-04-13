@@ -101,8 +101,8 @@ OverworldMonIconColors::
 	iconpal GRAY, AZURE ; ONIX
 	iconpal BROWN, PURPLE ; DROWZEE
 	iconpal BROWN, PURPLE ; HYPNO
-	iconpal ORANGE, BLUE ; KRABBY
-	iconpal ORANGE, BLUE ; KINGLER
+	iconpal ORANGE, BLUE ; CORPHISH
+	iconpal ORANGE, BLUE ; CRAWDAUNT
 	iconpal RED, BLUE ; VOLTORB
 	iconpal RED, BLUE ; ELECTRODE
 	iconpal PINK, TEAL ; EXEGGCUTE

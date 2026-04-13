@@ -972,8 +972,8 @@ HypnoPokedexEntry::
 	next "of its hypnosis"
 	next "last.@"
 
-SECTION "KrabbyPokedexEntry", ROMX
-KrabbyPokedexEntry::
+SECTION "CorphishPokedexEntry", ROMX
+CorphishPokedexEntry::
 	db "River Crab@"
 	db   "If it is unable"
 	next "to find food, it"
@@ -982,8 +982,8 @@ KrabbyPokedexEntry::
 	next "swallowing a"
 	next "mouthful of sand.@"
 
-SECTION "KinglerPokedexEntry", ROMX
-KinglerPokedexEntry::
+SECTION "CrawdauntPokedexEntry", ROMX
+CrawdauntPokedexEntry::
 	db "Pincer@"
 	db   "Its oversized claw"
 	next "is very powerful,"

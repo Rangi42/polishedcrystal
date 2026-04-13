@@ -97,8 +97,8 @@ AnimationExtraPointers:
 	dw OnixAnimationExtra
 	dw DrowzeeAnimationExtra
 	dw HypnoAnimationExtra
-	dw KrabbyAnimationExtra
-	dw KinglerAnimationExtra
+	dw CorphishAnimationExtra
+	dw CrawdauntAnimationExtra
 	dw VoltorbPlainAnimationExtra
 	dw ElectrodePlainAnimationExtra
 	dw ExeggcuteAnimationExtra

@@ -104,8 +104,8 @@ PokemonBodyData:
 	body_data  88, 2100, SERPENTINE,   GRAY   ; ONIX
 	body_data  10,  324, BIPEDAL,      YELLOW ; DROWZEE
 	body_data  16,  756, BIPEDAL,      YELLOW ; HYPNO
-	body_data   4,   65, INSECTOID,    RED    ; KRABBY
-	body_data  13,  600, INSECTOID,    RED    ; KINGLER
+	body_data   4,   65, INSECTOID,    RED    ; CORPHISH
+	body_data  13,  600, INSECTOID,    RED    ; CRAWDAUNT
 	body_data   5,  104, HEAD,         RED    ; VOLTORB
 	body_data  12,  666, HEAD,         RED    ; ELECTRODE
 	body_data   4,   25, MULTIBODY,    PINK   ; EXEGGCUTE

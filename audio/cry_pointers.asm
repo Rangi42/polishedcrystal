@@ -34,7 +34,7 @@ Cries:
 	fardw Cry_Gluttle
 	fardw Cry_Paras
 	fardw Cry_Growlithe
-	fardw Cry_Krabby
+	fardw Cry_Corphish
 	fardw Cry_Psyduck
 	fardw Cry_Rattata
 	fardw Cry_Vileplume

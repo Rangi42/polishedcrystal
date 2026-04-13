@@ -34,7 +34,9 @@ AlphabeticalPokedexOrder:
 	dp CLODSIRE
 	dp CLOYSTER
 	dp CONIFURY
+	dp CORPHISH
 	dp CORSOLA
+	dp CRAWDAUNT
 	dp CROBAT
 	dp CROCONAW
 	dp CUBONE
@@ -118,10 +120,8 @@ AlphabeticalPokedexOrder:
 	dp KAKUNA
 	dp KANGASKHAN
 	dp KINGDRA
-	dp KINGLER
 	dp KLEAVOR
 	dp KOFFING
-	dp KRABBY
 	dp LANTURN
 	dp LAPRAS
 	dp LARVITAR

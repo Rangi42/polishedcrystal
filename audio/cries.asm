@@ -1046,11 +1046,11 @@ Cry_Growlithe:
 	channel 6, Cry_Growlithe_Ch6
 	channel 8, Cry_Growlithe_Ch8
 
-Cry_Krabby:
+Cry_Corphish:
 	channel_count 3
-	channel 5, Cry_Krabby_Ch5
-	channel 6, Cry_Krabby_Ch6
-	channel 8, Cry_Krabby_Ch8
+	channel 5, Cry_Corphish_Ch5
+	channel 6, Cry_Corphish_Ch6
+	channel 8, Cry_Corphish_Ch8
 
 Cry_Psyduck:
 	channel_count 3
@@ -2009,7 +2009,7 @@ Cry_Growlithe_Ch8:
 	noise_note 8, 11, 1, 68
 	sound_ret
 
-Cry_Krabby_Ch5:
+Cry_Corphish_Ch5:
 	duty_cycle_pattern 3, 3, 0, 0
 	square_note 13, 15, 1, 1297
 	square_note 13, 14, 1, 1301
@@ -2017,7 +2017,7 @@ Cry_Krabby_Ch5:
 	square_note 8, 13, 1, 1297
 	sound_ret
 
-Cry_Krabby_Ch6:
+Cry_Corphish_Ch6:
 	duty_cycle_pattern 0, 1, 1, 1
 	square_note 12, 14, 1, 1292
 	square_note 12, 13, 1, 1296
@@ -2025,7 +2025,7 @@ Cry_Krabby_Ch6:
 	square_note 8, 12, 1, 1290
 	sound_ret
 
-Cry_Krabby_Ch8:
+Cry_Corphish_Ch8:
 	noise_note 14, 15, 2, 101
 	noise_note 13, 14, 2, 85
 	noise_note 14, 13, 2, 86

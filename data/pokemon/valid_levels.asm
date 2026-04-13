@@ -98,8 +98,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1, 100 ; Onix
 	db   1,  25 ; Drowzee
 	db  26, 100 ; Hypno
-	db   1,  27 ; Krabby
-	db  28, 100 ; Kingler
+	db   1,  27 ; Corphish
+	db  28, 100 ; Crawdaunt
 	db   1,  29 ; Voltorb
 	db  30, 100 ; Electrode
 	db   1,  29 ; Exeggcute

@@ -492,15 +492,15 @@ HypnoMini::     INCBIN "gfx/minis/hypno.2bpp.lz"
 HypnoMiniMask:: INCBIN "gfx/minis/hypno_mask.1bpp.lz"
 HypnoIcon::     INCBIN "gfx/icons/hypno.2bpp.lz"
 
-SECTION "Krabby Mini Icon", ROMX
-KrabbyMini::     INCBIN "gfx/minis/krabby.2bpp.lz"
-KrabbyMiniMask:: INCBIN "gfx/minis/krabby_mask.1bpp.lz"
-KrabbyIcon::     INCBIN "gfx/icons/krabby.2bpp.lz"
+SECTION "Corphish Mini Icon", ROMX
+CorphishMini::     INCBIN "gfx/minis/corphish.2bpp.lz"
+CorphishMiniMask:: INCBIN "gfx/minis/corphish_mask.1bpp.lz"
+CorphishIcon::     INCBIN "gfx/icons/corphish.2bpp.lz"
 
-SECTION "Kingler Mini Icon", ROMX
-KinglerMini::     INCBIN "gfx/minis/kingler.2bpp.lz"
-KinglerMiniMask:: INCBIN "gfx/minis/kingler_mask.1bpp.lz"
-KinglerIcon::     INCBIN "gfx/icons/kingler.2bpp.lz"
+SECTION "Crawdaunt Mini Icon", ROMX
+CrawdauntMini::     INCBIN "gfx/minis/crawdaunt.2bpp.lz"
+CrawdauntMiniMask:: INCBIN "gfx/minis/crawdaunt_mask.1bpp.lz"
+CrawdauntIcon::     INCBIN "gfx/icons/crawdaunt.2bpp.lz"
 
 SECTION "Voltorb Mini Icon", ROMX
 VoltorbMini::     INCBIN "gfx/minis/voltorb.2bpp.lz"

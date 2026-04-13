@@ -2123,8 +2123,8 @@ endc
 	learnset 57, TOXIC ; Psyshock → TM move
 	learnset 61, FUTURE_SIGHT
 
-	evos_attacks Krabby
-	evo_data EVOLVE_LEVEL, 28, KINGLER
+	evos_attacks Corphish
+	evo_data EVOLVE_LEVEL, 28, CRAWDAUNT
 	learnset 1, AQUA_JET ; Bubble → new move
 	learnset 5, SCRATCH ; Vice Grip → new move
 	learnset 9, LEER
@@ -2140,7 +2140,7 @@ endc
 	learnset 41, ANCIENTPOWER ; Crabhammer → HGSS tutor move
 	learnset 45, REVERSAL ; Flail → similar move
 
-	evos_attacks Kingler
+	evos_attacks Crawdaunt
 	learnset 1, AQUA_JET ; Bubble → new move
 	learnset 5, SCRATCH ; Vice Grip → new move
 	learnset 9, LEER

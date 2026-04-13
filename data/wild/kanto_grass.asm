@@ -1184,24 +1184,24 @@
 	; wildmon 51, PIDGEOTTO
 	; wildmon 50, WEEPINBELL
 	; wildmon 49, PIDGEOTTO
-	; wildmon 53, KINGLER
-	; wildmon 52, KINGLER
+	; wildmon 53, CRAWDAUNT
+	; wildmon 52, CRAWDAUNT
 	; ; day
 	; wildmon 48, BUTTERFREE
 	; wildmon 48, BEEDRILL
 	; wildmon 51, PIDGEOTTO
 	; wildmon 50, WEEPINBELL
 	; wildmon 49, PIDGEOTTO
-	; wildmon 53, KINGLER
-	; wildmon 52, KINGLER
+	; wildmon 53, CRAWDAUNT
+	; wildmon 52, CRAWDAUNT
 	; ; nite
 	; wildmon 48, VENOMOTH
 	; wildmon 48, VENOMOTH
 	; wildmon 51, NOCTOWL
 	; wildmon 50, GLOOM
 	; wildmon 49, GLOOM
-	; wildmon 53, KINGLER
-	; wildmon 52, KINGLER
+	; wildmon 53, CRAWDAUNT
+	; wildmon 52, CRAWDAUNT
 	; end_grass_wildmons
 
 	; def_grass_wildmons CERULEAN_CAVE_1F
@@ -1629,26 +1629,26 @@
 	; ; morn
 	; wildmon 56, ZUBAT
 	; wildmon 59, GOLBAT
-	; wildmon 57, KRABBY
+	; wildmon 57, CORPHISH
 	; wildmon 58, CORSOLA, GALARIAN_FORM
-	; wildmon 60, KINGLER
-	; wildmon 61, KINGLER
+	; wildmon 60, CRAWDAUNT
+	; wildmon 61, CRAWDAUNT
 	; wildmon 62, CORSOLA, GALARIAN_FORM
 	; ; day
 	; wildmon 56, ZUBAT
 	; wildmon 59, GOLBAT
-	; wildmon 57, KRABBY
+	; wildmon 57, CORPHISH
 	; wildmon 58, CORSOLA, GALARIAN_FORM
-	; wildmon 60, KINGLER
-	; wildmon 61, KINGLER
+	; wildmon 60, CRAWDAUNT
+	; wildmon 61, CRAWDAUNT
 	; wildmon 62, CORSOLA, GALARIAN_FORM
 	; ; nite
 	; wildmon 56, ZUBAT
 	; wildmon 59, GOLBAT
-	; wildmon 57, KRABBY
+	; wildmon 57, CORPHISH
 	; wildmon 58, CORSOLA, GALARIAN_FORM
-	; wildmon 60, KINGLER
-	; wildmon 61, KINGLER
+	; wildmon 60, CRAWDAUNT
+	; wildmon 61, CRAWDAUNT
 	; wildmon 62, CORSOLA, GALARIAN_FORM
 	; end_grass_wildmons
 
@@ -1656,28 +1656,28 @@
 	; db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; ; morn
 	; wildmon 57, GOLBAT
-	; wildmon 60, KINGLER
+	; wildmon 60, CRAWDAUNT
 	; wildmon 58, CORSOLA, GALARIAN_FORM
 	; wildmon 59, CORSOLA, GALARIAN_FORM
 	; wildmon 59, HAUNTER
-	; wildmon 61, KINGLER
-	; wildmon 62, KINGLER
+	; wildmon 61, CRAWDAUNT
+	; wildmon 62, CRAWDAUNT
 	; ; day
 	; wildmon 57, GOLBAT
-	; wildmon 60, KINGLER
+	; wildmon 60, CRAWDAUNT
 	; wildmon 58, CORSOLA, GALARIAN_FORM
 	; wildmon 59, CORSOLA, GALARIAN_FORM
 	; wildmon 59, HAUNTER
-	; wildmon 61, KINGLER
-	; wildmon 62, KINGLER
+	; wildmon 61, CRAWDAUNT
+	; wildmon 62, CRAWDAUNT
 	; ; nite
 	; wildmon 57, GOLBAT
-	; wildmon 60, KINGLER
+	; wildmon 60, CRAWDAUNT
 	; wildmon 58, CORSOLA, GALARIAN_FORM
 	; wildmon 59, CORSOLA, GALARIAN_FORM
 	; wildmon 59, HAUNTER
-	; wildmon 61, KINGLER
-	; wildmon 62, KINGLER
+	; wildmon 61, CRAWDAUNT
+	; wildmon 62, CRAWDAUNT
 	; end_grass_wildmons
 
 	; def_grass_wildmons SCARY_CAVE_SHIPWRECK

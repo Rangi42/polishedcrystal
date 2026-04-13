@@ -97,8 +97,8 @@ FootprintPointers::
 	dw OnixFootprint
 	dw DrowzeeFootprint
 	dw HypnoFootprint
-	dw KrabbyFootprint
-	dw KinglerFootprint
+	dw CorphishFootprint
+	dw CrawdauntFootprint
 	dw VoltorbFootprint
 	dw ElectrodeFootprint
 	dw ExeggcuteFootprint

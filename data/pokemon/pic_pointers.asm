@@ -101,8 +101,8 @@ PokemonPicPointers::
 	pics Onix
 	pics Drowzee
 	pics Hypno
-	pics Krabby
-	pics Kingler
+	pics Corphish
+	pics Crawdaunt
 	pics VoltorbPlain
 	pics ElectrodePlain
 	pics Exeggcute

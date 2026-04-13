@@ -97,8 +97,8 @@ EvolutionMoves::
 	db NO_MOVE      ; ONIX
 	db NO_MOVE      ; DROWZEE
 	db NO_MOVE      ; HYPNO
-	db NO_MOVE      ; KRABBY
-	db NO_MOVE      ; KINGLER
+	db NO_MOVE      ; CORPHISH
+	db NO_MOVE      ; CRAWDAUNT
 	db NO_MOVE      ; VOLTORB
 	db NO_MOVE      ; ELECTRODE
 	db NO_MOVE      ; EXEGGCUTE

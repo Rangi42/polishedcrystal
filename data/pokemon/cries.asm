@@ -103,8 +103,8 @@ PokemonCries::
 	mon_cry CRY_EKANS,       $0ff,  $140 ; Onix
 	mon_cry CRY_DROWZEE,     $088,  $0a0 ; Drowzee
 	mon_cry CRY_DROWZEE,     $0ee,  $0c0 ; Hypno
-	mon_cry CRY_KRABBY,      $020,  $160 ; Krabby
-	mon_cry CRY_KRABBY,      $0ee,  $160 ; Kingler
+	mon_cry CRY_CORPHISH,      $020,  $160 ; Corphish
+	mon_cry CRY_CORPHISH,      $0ee,  $160 ; Crawdaunt
 	mon_cry CRY_VOLTORB,     $0ed,  $100 ; Voltorb
 	mon_cry CRY_VOLTORB,     $0a8,  $110 ; Electrode
 	mon_cry CRY_DIGLETT,     $000,  $100 ; Exeggcute
@@ -127,7 +127,7 @@ PokemonCries::
 	mon_cry CRY_CATERPIE,    $010,  $17f ; Seaking
 	mon_cry CRY_PARAS,       $002,  $0a0 ; Staryu
 	mon_cry CRY_PARAS,       $000,  $100 ; Starmie
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Mime
+	mon_cry CRY_CORPHISH,      $008,  $0c0 ; Mr.Mime
 	mon_cry CRY_CATERPIE,    $000,  $100 ; Scyther
 	mon_cry CRY_DROWZEE,     $0ff,  $17f ; Jynx
 	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electabuzz
@@ -265,7 +265,7 @@ PokemonCries::
 	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
 	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
 	mon_cry CRY_BELLOSSOM,   $f40,  $180 ; Bonsly
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mime Jr.
+	mon_cry CRY_CORPHISH,      $008,  $0c0 ; Mime Jr.
 	mon_cry CRY_PIDGEOTTO,   $00a,  $140 ; Happiny
 	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
 	mon_cry CRY_MANTINE,    -$0be,  $0f0 ; Mantyke
@@ -287,7 +287,7 @@ PokemonCries::
 	mon_cry CRY_CLEFAIRY,    $077,  $090 ; Perrserker
 	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola
 	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime
+	mon_cry CRY_CORPHISH,      $008,  $0c0 ; Mr.Rime
 	mon_cry CRY_TYROGUE,    -$160,  $180 ; Wyrdeer
 	mon_cry CRY_CATERPIE,    $000,  $100 ; Kleavor
 	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna

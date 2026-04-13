@@ -296,13 +296,13 @@ SECTION "Hypno Pics", ROMX
 HypnoFrontpic: INCBIN "gfx/pokemon/hypno/front.animated.2bpp.lz"
 HypnoBackpic:  INCBIN "gfx/pokemon/hypno/back.2bpp.lz"
 
-SECTION "Krabby Pics", ROMX
-KrabbyFrontpic: INCBIN "gfx/pokemon/krabby/front.animated.2bpp.lz"
-KrabbyBackpic:  INCBIN "gfx/pokemon/krabby/back.2bpp.lz"
+SECTION "Corphish Pics", ROMX
+CorphishFrontpic: INCBIN "gfx/pokemon/corphish/front.animated.2bpp.lz"
+CorphishBackpic:  INCBIN "gfx/pokemon/corphish/back.2bpp.lz"
 
-SECTION "Kingler Pics", ROMX
-KinglerFrontpic: INCBIN "gfx/pokemon/kingler/front.animated.2bpp.lz"
-KinglerBackpic:  INCBIN "gfx/pokemon/kingler/back.2bpp.lz"
+SECTION "Crawdaunt Pics", ROMX
+CrawdauntFrontpic: INCBIN "gfx/pokemon/crawdaunt/front.animated.2bpp.lz"
+CrawdauntBackpic:  INCBIN "gfx/pokemon/crawdaunt/back.2bpp.lz"
 
 SECTION "Exeggcute Pics", ROMX
 ExeggcuteFrontpic: INCBIN "gfx/pokemon/exeggcute/front.animated.2bpp.lz"

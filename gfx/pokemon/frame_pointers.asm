@@ -97,8 +97,8 @@ FramesPointers:
 	dw OnixFrames
 	dw DrowzeeFrames
 	dw HypnoFrames
-	dw KrabbyFrames
-	dw KinglerFrames
+	dw CorphishFrames
+	dw CrawdauntFrames
 	dw VoltorbPlainFrames
 	dw ElectrodePlainFrames
 	dw ExeggcuteFrames

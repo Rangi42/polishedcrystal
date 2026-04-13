@@ -502,8 +502,8 @@ DrowzeeEggSpeciesMoves:
 	db BELLY_DRUM
 	db $ff
 
-KrabbyEggSpeciesMoves:
-	dp KRABBY, PLAIN_FORM
+CorphishEggSpeciesMoves:
+	dp CORPHISH, PLAIN_FORM
 	db AGILITY
 	db HAZE
 	db AMNESIA

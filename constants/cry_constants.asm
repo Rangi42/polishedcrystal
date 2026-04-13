@@ -34,7 +34,7 @@
 	const CRY_GLUTTLE
 	const CRY_PARAS
 	const CRY_GROWLITHE
-	const CRY_KRABBY
+	const CRY_CORPHISH
 	const CRY_PSYDUCK
 	const CRY_RATTATA
 	const CRY_VILEPLUME

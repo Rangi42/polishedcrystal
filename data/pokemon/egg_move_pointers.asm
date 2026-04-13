@@ -97,8 +97,8 @@ EggSpeciesMovesPointers::
 	dw OnixEggSpeciesMoves              ; Onix
 	dw DrowzeeEggSpeciesMoves           ; Drowzee
 	dw DrowzeeEggSpeciesMoves           ; Hypno
-	dw KrabbyEggSpeciesMoves            ; Krabby
-	dw KrabbyEggSpeciesMoves            ; Kingler
+	dw CorphishEggSpeciesMoves            ; Corphish
+	dw CorphishEggSpeciesMoves            ; Crawdaunt
 	dw VoltorbPlainEggSpeciesMoves      ; Voltorb
 	dw VoltorbPlainEggSpeciesMoves      ; Electrode
 	dw ExeggcuteEggSpeciesMoves         ; Exeggcute
