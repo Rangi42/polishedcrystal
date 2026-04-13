@@ -27,8 +27,8 @@ PokemonBodyData:
 	body_data  15,  395, WINGS,        BROWN  ; PIDGEOT
 	body_data   3,   35, QUADRUPED,    PURPLE ; RATTATA
 	body_data   7,  185, QUADRUPED,    BROWN  ; RATICATE
-	body_data   3,   20, WINGS,        BROWN  ; SPEAROW
-	body_data  12,  380, WINGS,        BROWN  ; FEAROW
+	body_data   3,   20, WINGS,        BROWN  ; CRIBNAL
+	body_data  12,  380, WINGS,        BROWN  ; CUARDHART
 	body_data  20,   69, SERPENTINE,   PURPLE ; EKANS
 	body_data  35,  650, SERPENTINE,   PURPLE ; ARBOK
 	body_data   4,   60, QUADRUPED,    YELLOW ; PIKACHU
@@ -104,8 +104,8 @@ PokemonBodyData:
 	body_data  88, 2100, SERPENTINE,   GRAY   ; ONIX
 	body_data  10,  324, BIPEDAL,      YELLOW ; DROWZEE
 	body_data  16,  756, BIPEDAL,      YELLOW ; HYPNO
-	body_data   4,   65, INSECTOID,    RED    ; KRABBY
-	body_data  13,  600, INSECTOID,    RED    ; KINGLER
+	body_data   4,   65, INSECTOID,    RED    ; CORPHISH
+	body_data  13,  600, INSECTOID,    RED    ; CRAWDAUNT
 	body_data   5,  104, HEAD,         RED    ; VOLTORB
 	body_data  12,  666, HEAD,         RED    ; ELECTRODE
 	body_data   4,   25, MULTIBODY,    PINK   ; EXEGGCUTE
@@ -167,14 +167,14 @@ PokemonBodyData:
 	body_data   6,   95, BIPEDAL_TAIL, BLUE   ; TOTODILE
 	body_data  11,  250, BIPEDAL_TAIL, BLUE   ; CROCONAW
 	body_data  23,  888, BIPEDAL_TAIL, BLUE   ; FERALIGATR
-	body_data   8,   60, QUADRUPED,    BROWN  ; SENTRET
-	body_data  18,  325, QUADRUPED,    BROWN  ; FURRET
+	body_data   8,   60, QUADRUPED,    BROWN  ; TIDIPOSS
+	body_data  18,  325, QUADRUPED,    BROWN  ; SCOURPOSS
 	body_data   7,  212, WINGS,        BROWN  ; HOOTHOOT
 	body_data  16,  408, WINGS,        BROWN  ; NOCTOWL
 	body_data  10,  108, WINGS,        RED    ; LEDYBA
 	body_data  14,  356, WINGS,        RED    ; LEDIAN
-	body_data   5,   85, INSECTOID,    GREEN  ; SPINARAK
-	body_data  11,  335, INSECTOID,    RED    ; ARIADOS
+	body_data   5,   85, INSECTOID,    GREEN  ; JOLTIK
+	body_data  11,  335, INSECTOID,    RED    ; GALVANTULA
 	body_data  18,  750, MULTIWINGS,   PURPLE ; CROBAT
 	body_data   5,  120, FINS,         BLUE   ; CHINCHOU
 	body_data  12,  225, FINS,         BLUE   ; LANTURN

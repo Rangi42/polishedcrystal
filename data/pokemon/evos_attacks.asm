@@ -396,8 +396,8 @@ evos_attacks Cupico
 	learnset 39, DOUBLE_EDGE
 	learnset 44, COUNTER ; Endeavor → egg move
 
-	evos_attacks Spearow
-	evo_data EVOLVE_LEVEL, 20, FEAROW
+	evos_attacks Cribnal
+	evo_data EVOLVE_LEVEL, 20, CUARDHART
 	learnset 1, PECK
 	learnset 1, GROWL
 	learnset 4, LEER
@@ -411,7 +411,7 @@ evos_attacks Cupico
 	learnset 32, ROOST
 	learnset 36, DRILL_PECK
 
-	evos_attacks Fearow
+	evos_attacks Cuardhart
 	learnset 1, QUICK_ATTACK ; Pluck → egg move
 	learnset 1, PECK
 	learnset 1, GROWL
@@ -2123,8 +2123,8 @@ endc
 	learnset 57, TOXIC ; Psyshock → TM move
 	learnset 61, FUTURE_SIGHT
 
-	evos_attacks Krabby
-	evo_data EVOLVE_LEVEL, 28, KINGLER
+	evos_attacks Corphish
+	evo_data EVOLVE_LEVEL, 28, CRAWDAUNT
 	learnset 1, AQUA_JET ; Bubble → new move
 	learnset 5, SCRATCH ; Vice Grip → new move
 	learnset 9, LEER
@@ -2140,7 +2140,7 @@ endc
 	learnset 41, ANCIENTPOWER ; Crabhammer → HGSS tutor move
 	learnset 45, REVERSAL ; Flail → similar move
 
-	evos_attacks Kingler
+	evos_attacks Crawdaunt
 	learnset 1, AQUA_JET ; Bubble → new move
 	learnset 5, SCRATCH ; Vice Grip → new move
 	learnset 9, LEER
@@ -3484,8 +3484,8 @@ endc
 	learnset 78, CLOSE_COMBAT ; Superpower → similar move
 	learnset 84, HYDRO_PUMP
 
-	evos_attacks Sentret
-	evo_data EVOLVE_LEVEL, 15, FURRET
+	evos_attacks Tidiposs
+	evo_data EVOLVE_LEVEL, 15, SCOURPOSS
 	learnset 1, TACKLE
 	learnset 1, FORESIGHT
 	learnset 4, DEFENSE_CURL
@@ -3502,7 +3502,7 @@ endc
 	learnset 42, SLASH ; Me First → egg move
 	learnset 47, HYPER_VOICE
 
-	evos_attacks Furret
+	evos_attacks Scourposs
 	learnset 1, TACKLE
 	learnset 1, FORESIGHT
 	learnset 1, AGILITY ; evolution move
@@ -3595,8 +3595,8 @@ endc
 	learnset 42, AIR_SLASH
 	learnset 47, DOUBLE_EDGE
 
-	evos_attacks Spinarak
-	evo_data EVOLVE_LEVEL, 22, ARIADOS
+	evos_attacks Joltik
+	evo_data EVOLVE_LEVEL, 22, GALVANTULA
 	learnset 1, POISON_STING
 	learnset 1, STRING_SHOT
 	learnset 1, WRAP ; Constrict → similar move
@@ -3615,7 +3615,7 @@ endc
 	learnset 47, LEECH_LIFE ; Cross Poison → TM move
 	learnset 50, FEINT_ATTACK ; Sticky Web → new move
 
-	evos_attacks Ariados
+	evos_attacks Galvantula
 	learnset 1, BUG_BITE ; evolution move
 	learnset 1, FOCUS_ENERGY
 	learnset 1, POISON_STING

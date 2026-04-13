@@ -24,8 +24,8 @@ MiniIconPointers:
 	mini_icon Pidgeot
 	mini_icon Rattata
 	mini_icon Raticate
-	mini_icon Spearow
-	mini_icon Fearow
+	mini_icon Cribnal
+	mini_icon Cuardhart
 	mini_icon Ekans
 	mini_icon Arbok
 	mini_icon Pikachu
@@ -101,8 +101,8 @@ MiniIconPointers:
 	mini_icon Onix
 	mini_icon Drowzee
 	mini_icon Hypno
-	mini_icon Krabby
-	mini_icon Kingler
+	mini_icon Corphish
+	mini_icon Crawdaunt
 	mini_icon Voltorb
 	mini_icon Electrode
 	mini_icon Exeggcute
@@ -164,14 +164,14 @@ MiniIconPointers:
 	mini_icon Totodile
 	mini_icon Croconaw
 	mini_icon Feraligatr
-	mini_icon Sentret
-	mini_icon Furret
+	mini_icon Tidiposs
+	mini_icon Scourposs
 	mini_icon Hoothoot
 	mini_icon Noctowl
 	mini_icon Ledyba
 	mini_icon Ledian
-	mini_icon Spinarak
-	mini_icon Ariados
+	mini_icon Joltik
+	mini_icon Galvantula
 	mini_icon Crobat
 	mini_icon Chinchou
 	mini_icon Lanturn

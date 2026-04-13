@@ -15,7 +15,7 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 
-; Sentret
+; Tidiposs
 	RGB 31, 31, 31
 	RGB 22, 15, 10
 	RGB 31, 19, 09

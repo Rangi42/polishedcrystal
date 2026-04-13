@@ -24,8 +24,8 @@ OverworldMonIconColors::
 	iconpal BROWN, RED ; PIDGEOT
 	iconpal PURPLE, GRAY ; RATTATA
 	iconpal BROWN, RED ; RATICATE
-	iconpal BROWN, ORANGE ; SPEAROW
-	iconpal BROWN, PINK ; FEAROW
+	iconpal BROWN, ORANGE ; CRIBNAL
+	iconpal BROWN, PINK ; CUARDHART
 	iconpal PURPLE, BROWN ; EKANS
 	iconpal PURPLE, BROWN ; ARBOK
 	iconpal RED, AZURE ; PIKACHU
@@ -101,8 +101,8 @@ OverworldMonIconColors::
 	iconpal GRAY, AZURE ; ONIX
 	iconpal BROWN, PURPLE ; DROWZEE
 	iconpal BROWN, PURPLE ; HYPNO
-	iconpal ORANGE, BLUE ; KRABBY
-	iconpal ORANGE, BLUE ; KINGLER
+	iconpal ORANGE, BLUE ; CORPHISH
+	iconpal ORANGE, BLUE ; CRAWDAUNT
 	iconpal RED, BLUE ; VOLTORB
 	iconpal RED, BLUE ; ELECTRODE
 	iconpal PINK, TEAL ; EXEGGCUTE
@@ -164,14 +164,14 @@ OverworldMonIconColors::
 	iconpal AZURE, TEAL ; TOTODILE
 	iconpal AZURE, TEAL ; CROCONAW
 	iconpal AZURE, TEAL ; FERALIGATR
-	iconpal BROWN, PURPLE ; SENTRET
-	iconpal BROWN, RED ; FURRET
+	iconpal BROWN, PURPLE ; TIDIPOSS
+	iconpal BROWN, RED ; SCOURPOSS
 	iconpal BROWN, RED ; HOOTHOOT
 	iconpal BROWN, GREEN ; NOCTOWL
 	iconpal RED, PINK ; LEDYBA
 	iconpal RED, PINK ; LEDIAN
-	iconpal GREEN, PURPLE ; SPINARAK
-	iconpal PURPLE, BLUE ; ARIADOS
+	iconpal GREEN, PURPLE ; JOLTIK
+	iconpal PURPLE, BLUE ; GALVANTULA
 	iconpal PURPLE, RED ; CROBAT
 	iconpal BLUE, TEAL ; CHINCHOU
 	iconpal BLUE, TEAL ; LANTURN

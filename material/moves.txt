@@ -55,7 +55,7 @@ Farfetch'd: Close Combat, Baton Pass
 Rapidash: Baton Pass
 Onix: Dragon Dance
 Steelix: Dragon Dance, Scary Face
-Kingler: Hydro Pump
+Crawdaunt: Hydro Pump
 Mr. Mime: Dazzling Gleam
 Lapras: Sparkling Aria, Charm
 Umbreon: Crunch, Thief
@@ -119,6 +119,6 @@ Chansey: Haze
 Exeggcute/Exeggutor: Confuse Ray
 Marill/Azumarill: Focus Energy
 Pineco/Forretress: Smokescreen
-Sentret/Furret: Recover
+Tidiposs/Scourposs: Recover
 Venonat/Venomoth: Night Shade
 Yanma/Yanmega: Feint Attack

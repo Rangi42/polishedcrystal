@@ -34,7 +34,7 @@
 	const CRY_GLUTTLE
 	const CRY_PARAS
 	const CRY_GROWLITHE
-	const CRY_KRABBY
+	const CRY_CORPHISH
 	const CRY_PSYDUCK
 	const CRY_RATTATA
 	const CRY_VILEPLUME
@@ -43,14 +43,14 @@
 
 ; gen 2
 	const CRY_MARILL
-	const CRY_SPINARAK
+	const CRY_JOLTIK
 	const CRY_TOGEPI
 	const CRY_GIRAFARIG
 	const CRY_RAIKOU
 	const CRY_MAREEP
 	const CRY_TOGETIC
 	const CRY_HOOTHOOT
-	const CRY_SENTRET
+	const CRY_TIDIPOSS
 	const CRY_SLOWKING
 	const CRY_CYNDAQUIL
 	const CRY_CHIKORITA

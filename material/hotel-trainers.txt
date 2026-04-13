@@ -31,7 +31,7 @@ Victory: Oh ship...
 
 After: Good stuff, kid! You'd make a fine sailor.
 
-Team: Qwilfish, Kingler x2, Tentacruel 
+Team: Qwilfish, Crawdaunt x2, Tentacruel 
 
 Supernerd Not'im 
 Fire me from the Dept Store, will you?! Ngh...I'll show them! I'll show them all! ...Huh? Hey! Get over here! I need something to take my anger out on.
@@ -179,7 +179,7 @@ Rando NPC: Whuzzat? Team Galatic did what? Huh? Get outta here, kid! I'm trying 
 
 Rando NPC: Aww yeah! Some doofus gave me their Bidoof for my Mewtwo! Ya can't find those here!
 
-Rando NPC: Such a shame...I was hoping to observe the migratory pattern of Spearow and Fearow, but it seems they're all gone...
+Rando NPC: Such a shame...I was hoping to observe the migratory pattern of Cribnal and Cuardhart, but it seems they're all gone...
 
 Supernerd: Hey, kid! I need some serious juice for my experiments! Get me a Magneton and I'll give you my spare Porygon2! (Nickname: Gent2, shiny, holding dubious disk or whatever evolves it to Z, OT: rms)
 

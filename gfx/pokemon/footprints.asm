@@ -3,7 +3,7 @@ Footprints:: ; needed for BANK(Footprints)
 VenomothFootprint::
 FliklitFootprint::
 KabutoFootprint::
-SpinarakFootprint:: INCBIN "gfx/footprints/circle_small.1bpp.lz"
+JoltikFootprint:: INCBIN "gfx/footprints/circle_small.1bpp.lz"
 
 CaterpieFootprint::
 WeedleFootprint::
@@ -16,7 +16,7 @@ LeafeonFootprint::
 GlaceonFootprint:: INCBIN "gfx/footprints/umbreon_leafeon_glaceon.1bpp.lz"
 
 PidgeyFootprint::
-SpearowFootprint:: INCBIN "gfx/footprints/pidgey_spearow.1bpp.lz"
+CribnalFootprint:: INCBIN "gfx/footprints/pidgey_cribnal.1bpp.lz"
 
 CorsolaFootprint::
 CursolaFootprint:: INCBIN "gfx/footprints/corsola_cursola.1bpp.lz"
@@ -100,7 +100,7 @@ PidgeottoFootprint:: INCBIN "gfx/footprints/pidgeotto.1bpp.lz"
 PidgeotFootprint:: INCBIN "gfx/footprints/pidgeot.1bpp.lz"
 RattataFootprint:: INCBIN "gfx/footprints/rattata.1bpp.lz"
 RaticateFootprint:: INCBIN "gfx/footprints/raticate.1bpp.lz"
-FearowFootprint:: INCBIN "gfx/footprints/fearow.1bpp.lz"
+CuardhartFootprint:: INCBIN "gfx/footprints/cuardhart.1bpp.lz"
 PikachuFootprint:: INCBIN "gfx/footprints/pikachu.1bpp.lz"
 RaichuFootprint:: INCBIN "gfx/footprints/raichu.1bpp.lz"
 SandshrewFootprint:: INCBIN "gfx/footprints/sandshrew.1bpp.lz"
@@ -156,8 +156,8 @@ DodrioFootprint:: INCBIN "gfx/footprints/dodrio.1bpp.lz"
 GengarFootprint:: INCBIN "gfx/footprints/gengar.1bpp.lz"
 DrowzeeFootprint:: INCBIN "gfx/footprints/drowzee.1bpp.lz"
 HypnoFootprint:: INCBIN "gfx/footprints/hypno.1bpp.lz"
-KrabbyFootprint:: INCBIN "gfx/footprints/krabby.1bpp.lz"
-KinglerFootprint:: INCBIN "gfx/footprints/kingler.1bpp.lz"
+CorphishFootprint:: INCBIN "gfx/footprints/corphish.1bpp.lz"
+CrawdauntFootprint:: INCBIN "gfx/footprints/crawdaunt.1bpp.lz"
 ExeggutorFootprint:: INCBIN "gfx/footprints/exeggutor.1bpp.lz"
 CuboneFootprint:: INCBIN "gfx/footprints/cubone.1bpp.lz"
 MarowakFootprint:: INCBIN "gfx/footprints/marowak.1bpp.lz"
@@ -200,13 +200,13 @@ TyphlosionFootprint:: INCBIN "gfx/footprints/typhlosion.1bpp.lz"
 TotodileFootprint:: INCBIN "gfx/footprints/totodile.1bpp.lz"
 CroconawFootprint:: INCBIN "gfx/footprints/croconaw.1bpp.lz"
 FeraligatrFootprint:: INCBIN "gfx/footprints/feraligatr.1bpp.lz"
-SentretFootprint:: INCBIN "gfx/footprints/sentret.1bpp.lz"
-FurretFootprint:: INCBIN "gfx/footprints/furret.1bpp.lz"
+TidipossFootprint:: INCBIN "gfx/footprints/tidiposs.1bpp.lz"
+ScourpossFootprint:: INCBIN "gfx/footprints/scourposs.1bpp.lz"
 HoothootFootprint:: INCBIN "gfx/footprints/hoothoot.1bpp.lz"
 NoctowlFootprint:: INCBIN "gfx/footprints/noctowl.1bpp.lz"
 LedybaFootprint:: INCBIN "gfx/footprints/ledyba.1bpp.lz"
 LedianFootprint:: INCBIN "gfx/footprints/ledian.1bpp.lz"
-AriadosFootprint:: INCBIN "gfx/footprints/ariados.1bpp.lz"
+GalvantulaFootprint:: INCBIN "gfx/footprints/galvantula.1bpp.lz"
 PichuFootprint:: INCBIN "gfx/footprints/pichu.1bpp.lz"
 CleffaFootprint:: INCBIN "gfx/footprints/cleffa.1bpp.lz"
 IgglybuffFootprint:: INCBIN "gfx/footprints/igglybuff.1bpp.lz"

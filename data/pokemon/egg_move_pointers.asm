@@ -20,8 +20,8 @@ EggSpeciesMovesPointers::
 	dw PidgeyEggSpeciesMoves            ; Pidgeot
 	dw RattataPlainEggSpeciesMoves      ; Rattata
 	dw RattataPlainEggSpeciesMoves      ; Raticate
-	dw SpearowEggSpeciesMoves           ; Spearow
-	dw SpearowEggSpeciesMoves           ; Fearow
+	dw CribnalEggSpeciesMoves           ; Cribnal
+	dw CribnalEggSpeciesMoves           ; Cuardhart
 	dw EkansEggSpeciesMoves             ; Ekans
 	dw EkansEggSpeciesMoves             ; Arbok
 	dw PichuEggSpeciesMoves             ; Pikachu
@@ -97,8 +97,8 @@ EggSpeciesMovesPointers::
 	dw OnixEggSpeciesMoves              ; Onix
 	dw DrowzeeEggSpeciesMoves           ; Drowzee
 	dw DrowzeeEggSpeciesMoves           ; Hypno
-	dw KrabbyEggSpeciesMoves            ; Krabby
-	dw KrabbyEggSpeciesMoves            ; Kingler
+	dw CorphishEggSpeciesMoves            ; Corphish
+	dw CorphishEggSpeciesMoves            ; Crawdaunt
 	dw VoltorbPlainEggSpeciesMoves      ; Voltorb
 	dw VoltorbPlainEggSpeciesMoves      ; Electrode
 	dw ExeggcuteEggSpeciesMoves         ; Exeggcute
@@ -160,14 +160,14 @@ EggSpeciesMovesPointers::
 	dw TotodileEggSpeciesMoves          ; Totodile
 	dw TotodileEggSpeciesMoves          ; Croconaw
 	dw TotodileEggSpeciesMoves          ; Feraligatr
-	dw SentretEggSpeciesMoves           ; Sentret
-	dw SentretEggSpeciesMoves           ; Furret
+	dw TidipossEggSpeciesMoves           ; Tidiposs
+	dw TidipossEggSpeciesMoves           ; Scourposs
 	dw HoothootEggSpeciesMoves          ; Hoothoot
 	dw HoothootEggSpeciesMoves          ; Noctowl
 	dw LedybaEggSpeciesMoves            ; Ledyba
 	dw LedybaEggSpeciesMoves            ; Ledian
-	dw SpinarakEggSpeciesMoves          ; Spinarak
-	dw SpinarakEggSpeciesMoves          ; Ariados
+	dw JoltikEggSpeciesMoves          ; Joltik
+	dw JoltikEggSpeciesMoves          ; Galvantula
 	dw ZubatEggSpeciesMoves             ; Crobat
 	dw ChinchouEggSpeciesMoves          ; Chinchou
 	dw ChinchouEggSpeciesMoves          ; Lanturn

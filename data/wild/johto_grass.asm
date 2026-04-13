@@ -4,25 +4,25 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon 2, MEOWTH
-	wildmon 2, SPEAROW
+	wildmon 2, CRIBNAL
 	wildmon 3, MEOWTH
-	wildmon 3, SPEAROW
-	wildmon 4, SENTRET
+	wildmon 3, CRIBNAL
+	wildmon 4, TIDIPOSS
 	wildmon 5, MEOWTH
 	wildmon 6, MEOWTH
 	; day
 	wildmon 2, MEOWTH
-	wildmon 2, SPEAROW
+	wildmon 2, CRIBNAL
 	wildmon 3, MEOWTH
-	wildmon 3, SPEAROW
-	wildmon 4, SENTRET
-	wildmon 5, SENTRET
+	wildmon 3, CRIBNAL
+	wildmon 4, TIDIPOSS
+	wildmon 5, TIDIPOSS
 	wildmon 6, MEOWTH
 	; nite
 	wildmon 3, HOOTHOOT
-	wildmon 4, SENTRET
+	wildmon 4, TIDIPOSS
 	wildmon 3, MURKROW
-	wildmon 5, SENTRET
+	wildmon 5, TIDIPOSS
 	wildmon 4, MURKROW
 	wildmon 6, MEOWTH
 	wildmon 10, NOCTOWL
@@ -59,27 +59,27 @@
 	def_grass_wildmons ROUTE_102
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	wildmon 2, MEOWTH
-	wildmon 2, SPEAROW
+	wildmon 2, CRIBNAL
 	wildmon 3, MEOWTH
-	wildmon 3, SPEAROW
+	wildmon 3, CRIBNAL
 	wildmon 4, LEDYBA
 	wildmon 5, MEOWTH
-	wildmon 6, SENTRET
+	wildmon 6, TIDIPOSS
 	; day
 	wildmon 2, MEOWTH
-	wildmon 2, SPEAROW
+	wildmon 2, CRIBNAL
 	wildmon 3, MEOWTH
-	wildmon 3, SPEAROW
+	wildmon 3, CRIBNAL
 	wildmon 4, LEDYBA
 	wildmon 5, MEOWTH
-	wildmon 6, SENTRET
+	wildmon 6, TIDIPOSS
 	; nite
 	wildmon 3, HOOTHOOT
-	wildmon 4, SENTRET
+	wildmon 4, TIDIPOSS
 	wildmon 3, MURKROW
-	wildmon 5, SENTRET
+	wildmon 5, TIDIPOSS
 	wildmon 3, MURKROW
-	wildmon 6, SENTRET
+	wildmon 6, TIDIPOSS
 	wildmon 10, NOCTOWL
 	end_grass_wildmons
 
@@ -113,7 +113,7 @@
 	def_grass_wildmons NATIONAL_FOREST_1
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	wildmon 2, CATERPIE
-	wildmon 2, SPEAROW
+	wildmon 2, CRIBNAL
 	wildmon 3, CATERPIE
 	wildmon 3, STANTLER
 	wildmon 4, STANTLER
@@ -121,19 +121,19 @@
 	wildmon 6, STANTLER
 	; day
 	wildmon 2, WEEDLE
-	wildmon 2, SPEAROW
+	wildmon 2, CRIBNAL
 	wildmon 3, WEEDLE
 	wildmon 3, STANTLER
 	wildmon 4, LEDYBA
 	wildmon 5, CUPICO
-	wildmon 6, SENTRET
+	wildmon 6, TIDIPOSS
 	; nite
 	wildmon 3, HOOTHOOT
 	wildmon 4, WEEDLE
 	wildmon 3, MURKROW
-	wildmon 5, SENTRET
+	wildmon 5, TIDIPOSS
 	wildmon 3, MURKROW
-	wildmon 6, SENTRET
+	wildmon 6, TIDIPOSS
 	wildmon 10, NOCTOWL
 	end_grass_wildmons
 	db -1 ; end

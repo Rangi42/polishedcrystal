@@ -11,7 +11,7 @@ These are *some* of the new features as of 2.2.0. Some would be spoilers.
 
 * The entire Pokédex of 253 Pokémon can be caught in one game. Some Pokémon, like Houndour, Murkrow, and Misdreavus, are available at sensible locations in Johto without having to wait for Kanto.
 * Added: Leafeon, Glaceon, Sylveon, Togekiss, Weavile, Honchkrow, Mismagius, Electivire, Magmortar, Magnezone, Tangrowth, Rhyperior, Porygon-Z, Yanmega, Gliscor, Mamoswine, and Munchlax.
-* Removed: Spearow, Fearow, Lickitung, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Shuckle, Aipom, Stantler, Cleffa, Igglybuff, Smoochum, and Delibird.
+* Removed: Cribnal, Cuardhart, Lickitung, Goldeen, Seaking, Hoppip, Skiploom, Jumpluff, Shuckle, Aipom, Stantler, Cleffa, Igglybuff, Smoochum, and Delibird.
 * New evolution methods work, like Eevee evolving into Glaceon near Ice Rock, or Yanma evolving into Yanmega when knowing AncientPower.
 * Item trade evolutions (like Seadra holding a Dragon Scale) now evolve by leveling up while holding the item.
 * Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient stat exp in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is enough).

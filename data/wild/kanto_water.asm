@@ -129,7 +129,7 @@
 	; def_water_wildmons ROUTE_23
 	; db 6 percent ; encounter rate
 	; wildmon  35, TENTACRUEL
-	; wildmon  35, KINGLER
+	; wildmon  35, CRAWDAUNT
 	; wildmon  35, GYARADOS
 	; end_water_wildmons
 
@@ -221,7 +221,7 @@
 	; db 4 percent ; encounter rate
 	; wildmon  48, MAGIKARP
 	; wildmon  52, POLIWHIRL
-	; wildmon  54, KINGLER
+	; wildmon  54, CRAWDAUNT
 	; end_water_wildmons
 
 	; def_water_wildmons URAGA_CHANNEL_EAST
@@ -277,14 +277,14 @@
 	; db 6 percent ; encounter rate
 	; wildmon  55, SLOWBRO
 	; wildmon  55, GOLDUCK
-	; wildmon  55, KINGLER
+	; wildmon  55, CRAWDAUNT
 	; end_water_wildmons
 
 	; def_water_wildmons SAFARI_ZONE_EAST
 	; db 6 percent ; encounter rate
 	; wildmon  55, SLOWBRO
 	; wildmon  55, GOLDUCK
-	; wildmon  55, KINGLER
+	; wildmon  55, CRAWDAUNT
 	; end_water_wildmons
 
 	; def_water_wildmons SAFARI_ZONE_NORTH

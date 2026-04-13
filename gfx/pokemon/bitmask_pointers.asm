@@ -20,8 +20,8 @@ BitmasksPointers:
 	dw PidgeotBitmasks
 	dw RattataPlainBitmasks
 	dw RaticatePlainBitmasks
-	dw SpearowBitmasks
-	dw FearowBitmasks
+	dw CribnalBitmasks
+	dw CuardhartBitmasks
 	dw EkansBitmasks
 	dw ArbokJohtoBitmasks
 	dw PikachuPlainBitmasks
@@ -97,8 +97,8 @@ BitmasksPointers:
 	dw OnixBitmasks
 	dw DrowzeeBitmasks
 	dw HypnoBitmasks
-	dw KrabbyBitmasks
-	dw KinglerBitmasks
+	dw CorphishBitmasks
+	dw CrawdauntBitmasks
 	dw VoltorbPlainBitmasks
 	dw ElectrodePlainBitmasks
 	dw ExeggcuteBitmasks
@@ -160,14 +160,14 @@ BitmasksPointers:
 	dw TotodileBitmasks
 	dw CroconawBitmasks
 	dw FeraligatrBitmasks
-	dw SentretBitmasks
-	dw FurretBitmasks
+	dw TidipossBitmasks
+	dw ScourpossBitmasks
 	dw HoothootBitmasks
 	dw NoctowlBitmasks
 	dw LedybaBitmasks
 	dw LedianBitmasks
-	dw SpinarakBitmasks
-	dw AriadosBitmasks
+	dw JoltikBitmasks
+	dw GalvantulaBitmasks
 	dw CrobatBitmasks
 	dw ChinchouBitmasks
 	dw LanturnBitmasks

@@ -101,15 +101,15 @@ RaticateMini::     INCBIN "gfx/minis/raticate.2bpp.lz"
 RaticateMiniMask:: INCBIN "gfx/minis/raticate_mask.1bpp.lz"
 RaticateIcon::     INCBIN "gfx/icons/raticate.2bpp.lz"
 
-SECTION "Spearow Mini Icon", ROMX
-SpearowMini::     INCBIN "gfx/minis/spearow.2bpp.lz"
-SpearowMiniMask:: INCBIN "gfx/minis/spearow_mask.1bpp.lz"
-SpearowIcon::     INCBIN "gfx/icons/spearow.2bpp.lz"
+SECTION "Cribnal Mini Icon", ROMX
+CribnalMini::     INCBIN "gfx/minis/cribnal.2bpp.lz"
+CribnalMiniMask:: INCBIN "gfx/minis/cribnal_mask.1bpp.lz"
+CribnalIcon::     INCBIN "gfx/icons/cribnal.2bpp.lz"
 
-SECTION "Fearow Mini Icon", ROMX
-FearowMini::     INCBIN "gfx/minis/fearow.2bpp.lz"
-FearowMiniMask:: INCBIN "gfx/minis/fearow_mask.1bpp.lz"
-FearowIcon::     INCBIN "gfx/icons/fearow.2bpp.lz"
+SECTION "Cuardhart Mini Icon", ROMX
+CuardhartMini::     INCBIN "gfx/minis/cuardhart.2bpp.lz"
+CuardhartMiniMask:: INCBIN "gfx/minis/cuardhart_mask.1bpp.lz"
+CuardhartIcon::     INCBIN "gfx/icons/cuardhart.2bpp.lz"
 
 SECTION "Ekans Mini Icon", ROMX
 EkansMini::     INCBIN "gfx/minis/ekans.2bpp.lz"
@@ -492,15 +492,15 @@ HypnoMini::     INCBIN "gfx/minis/hypno.2bpp.lz"
 HypnoMiniMask:: INCBIN "gfx/minis/hypno_mask.1bpp.lz"
 HypnoIcon::     INCBIN "gfx/icons/hypno.2bpp.lz"
 
-SECTION "Krabby Mini Icon", ROMX
-KrabbyMini::     INCBIN "gfx/minis/krabby.2bpp.lz"
-KrabbyMiniMask:: INCBIN "gfx/minis/krabby_mask.1bpp.lz"
-KrabbyIcon::     INCBIN "gfx/icons/krabby.2bpp.lz"
+SECTION "Corphish Mini Icon", ROMX
+CorphishMini::     INCBIN "gfx/minis/corphish.2bpp.lz"
+CorphishMiniMask:: INCBIN "gfx/minis/corphish_mask.1bpp.lz"
+CorphishIcon::     INCBIN "gfx/icons/corphish.2bpp.lz"
 
-SECTION "Kingler Mini Icon", ROMX
-KinglerMini::     INCBIN "gfx/minis/kingler.2bpp.lz"
-KinglerMiniMask:: INCBIN "gfx/minis/kingler_mask.1bpp.lz"
-KinglerIcon::     INCBIN "gfx/icons/kingler.2bpp.lz"
+SECTION "Crawdaunt Mini Icon", ROMX
+CrawdauntMini::     INCBIN "gfx/minis/crawdaunt.2bpp.lz"
+CrawdauntMiniMask:: INCBIN "gfx/minis/crawdaunt_mask.1bpp.lz"
+CrawdauntIcon::     INCBIN "gfx/icons/crawdaunt.2bpp.lz"
 
 SECTION "Voltorb Mini Icon", ROMX
 VoltorbMini::     INCBIN "gfx/minis/voltorb.2bpp.lz"
@@ -807,15 +807,15 @@ FeraligatrMini::     INCBIN "gfx/minis/feraligatr.2bpp.lz"
 FeraligatrMiniMask:: INCBIN "gfx/minis/feraligatr_mask.1bpp.lz"
 FeraligatrIcon::     INCBIN "gfx/icons/feraligatr.2bpp.lz"
 
-SECTION "Sentret Mini Icon", ROMX
-SentretMini::     INCBIN "gfx/minis/sentret.2bpp.lz"
-SentretMiniMask:: INCBIN "gfx/minis/sentret_mask.1bpp.lz"
-SentretIcon::     INCBIN "gfx/icons/sentret.2bpp.lz"
+SECTION "Tidiposs Mini Icon", ROMX
+TidipossMini::     INCBIN "gfx/minis/tidiposs.2bpp.lz"
+TidipossMiniMask:: INCBIN "gfx/minis/tidiposs_mask.1bpp.lz"
+TidipossIcon::     INCBIN "gfx/icons/tidiposs.2bpp.lz"
 
-SECTION "Furret Mini Icon", ROMX
-FurretMini::     INCBIN "gfx/minis/furret.2bpp.lz"
-FurretMiniMask:: INCBIN "gfx/minis/furret_mask.1bpp.lz"
-FurretIcon::     INCBIN "gfx/icons/furret.2bpp.lz"
+SECTION "Scourposs Mini Icon", ROMX
+ScourpossMini::     INCBIN "gfx/minis/scourposs.2bpp.lz"
+ScourpossMiniMask:: INCBIN "gfx/minis/scourposs_mask.1bpp.lz"
+ScourpossIcon::     INCBIN "gfx/icons/scourposs.2bpp.lz"
 
 SECTION "Hoothoot Mini Icon", ROMX
 HoothootMini::     INCBIN "gfx/minis/hoothoot.2bpp.lz"
@@ -837,15 +837,15 @@ LedianMini::     INCBIN "gfx/minis/ledian.2bpp.lz"
 LedianMiniMask:: INCBIN "gfx/minis/ledian_mask.1bpp.lz"
 LedianIcon::     INCBIN "gfx/icons/ledian.2bpp.lz"
 
-SECTION "Spinarak Mini Icon", ROMX
-SpinarakMini::     INCBIN "gfx/minis/spinarak.2bpp.lz"
-SpinarakMiniMask:: INCBIN "gfx/minis/spinarak_mask.1bpp.lz"
-SpinarakIcon::     INCBIN "gfx/icons/spinarak.2bpp.lz"
+SECTION "Joltik Mini Icon", ROMX
+JoltikMini::     INCBIN "gfx/minis/joltik.2bpp.lz"
+JoltikMiniMask:: INCBIN "gfx/minis/joltik_mask.1bpp.lz"
+JoltikIcon::     INCBIN "gfx/icons/joltik.2bpp.lz"
 
-SECTION "Ariados Mini Icon", ROMX
-AriadosMini::     INCBIN "gfx/minis/ariados.2bpp.lz"
-AriadosMiniMask:: INCBIN "gfx/minis/ariados_mask.1bpp.lz"
-AriadosIcon::     INCBIN "gfx/icons/ariados.2bpp.lz"
+SECTION "Galvantula Mini Icon", ROMX
+GalvantulaMini::     INCBIN "gfx/minis/galvantula.2bpp.lz"
+GalvantulaMiniMask:: INCBIN "gfx/minis/galvantula_mask.1bpp.lz"
+GalvantulaIcon::     INCBIN "gfx/icons/galvantula.2bpp.lz"
 
 SECTION "Crobat Mini Icon", ROMX
 CrobatMini::     INCBIN "gfx/minis/crobat.2bpp.lz"

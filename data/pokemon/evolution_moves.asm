@@ -20,8 +20,8 @@ EvolutionMoves::
 	db NO_MOVE      ; PIDGEOT
 	db NO_MOVE      ; RATTATA
 	db SCARY_FACE   ; RATICATE
-	db NO_MOVE      ; SPEAROW
-	db NO_MOVE      ; FEAROW
+	db NO_MOVE      ; CRIBNAL
+	db NO_MOVE      ; CUARDHART
 	db NO_MOVE      ; EKANS
 	db CRUNCH       ; ARBOK
 	db NO_MOVE      ; PIKACHU
@@ -97,8 +97,8 @@ EvolutionMoves::
 	db NO_MOVE      ; ONIX
 	db NO_MOVE      ; DROWZEE
 	db NO_MOVE      ; HYPNO
-	db NO_MOVE      ; KRABBY
-	db NO_MOVE      ; KINGLER
+	db NO_MOVE      ; CORPHISH
+	db NO_MOVE      ; CRAWDAUNT
 	db NO_MOVE      ; VOLTORB
 	db NO_MOVE      ; ELECTRODE
 	db NO_MOVE      ; EXEGGCUTE
@@ -160,14 +160,14 @@ EvolutionMoves::
 	db NO_MOVE      ; TOTODILE
 	db NO_MOVE      ; CROCONAW
 	db NIGHT_SLASH  ; FERALIGATR
-	db NO_MOVE      ; SENTRET
-	db AGILITY      ; FURRET
+	db NO_MOVE      ; TIDIPOSS
+	db AGILITY      ; SCOURPOSS
 	db NO_MOVE      ; HOOTHOOT
 	db NO_MOVE      ; NOCTOWL
 	db NO_MOVE      ; LEDYBA
 	db SWORDS_DANCE ; LEDIAN
-	db NO_MOVE      ; SPINARAK
-	db BUG_BITE     ; ARIADOS
+	db NO_MOVE      ; JOLTIK
+	db BUG_BITE     ; GALVANTULA
 	db X_SCISSOR    ; CROBAT
 	db NO_MOVE      ; CHINCHOU
 	db NO_MOVE      ; LANTURN

@@ -74,8 +74,8 @@ RattataAlolanEggSpeciesMoves:
 	db COUNTER
 	db $ff
 
-SpearowEggSpeciesMoves:
-	dp SPEAROW, PLAIN_FORM
+CribnalEggSpeciesMoves:
+	dp CRIBNAL, PLAIN_FORM
 	db ASTONISH
 	db FEINT_ATTACK
 	db QUICK_ATTACK
@@ -502,8 +502,8 @@ DrowzeeEggSpeciesMoves:
 	db BELLY_DRUM
 	db $ff
 
-KrabbyEggSpeciesMoves:
-	dp KRABBY, PLAIN_FORM
+CorphishEggSpeciesMoves:
+	dp CORPHISH, PLAIN_FORM
 	db AGILITY
 	db HAZE
 	db AMNESIA
@@ -724,8 +724,8 @@ TotodileEggSpeciesMoves:
 	db AQUA_JET
 	db $ff
 
-SentretEggSpeciesMoves:
-	dp SENTRET, PLAIN_FORM
+TidipossEggSpeciesMoves:
+	dp TIDIPOSS, PLAIN_FORM
 	db CHARM
 	db FOCUS_ENERGY
 	db PURSUIT
@@ -757,8 +757,8 @@ LedybaEggSpeciesMoves:
 	db DRAIN_PUNCH
 	db $ff
 
-SpinarakEggSpeciesMoves:
-	dp SPINARAK, PLAIN_FORM
+JoltikEggSpeciesMoves:
+	dp JOLTIK, PLAIN_FORM
 	db BATON_PASS
 	db DISABLE
 	db MEGAHORN

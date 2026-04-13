@@ -716,7 +716,7 @@ MistyGroup:
 	tr_mon 62, LAPRAS
 		tr_evs 252 Def, 100 SDf
 		tr_moves SURF, PERISH_SONG, BLIZZARD, RAIN_DANCE
-	tr_mon 60, KINGLER
+	tr_mon 60, CRAWDAUNT
 		tr_evs 252 Atk, 100 Spe
 		tr_moves DEFENSE_CURL, STOMP, PROTECT, CRABHAMMER
 	tr_mon 62, LANTURN
@@ -732,7 +732,7 @@ MistyGroup:
 		tr_moves PSYCHIC_M, SCALD, ICE_BEAM, CALM_MIND
 	tr_mon 72, QUAGSIRE
 		tr_moves EARTHQUAKE, SCALD, RECOVER, TOXIC
-	tr_mon 72, KINGLER @ KINGS_ROCK
+	tr_mon 72, CRAWDAUNT @ KINGS_ROCK
 		tr_moves SWORDS_DANCE, CRABHAMMER, X_SCISSOR, ROCK_SLIDE
 	tr_mon 73, LANTURN @ NEVERMELTICE
 		tr_moves SURF, THUNDERBOLT, ICE_BEAM, CONFUSE_RAY
@@ -847,7 +847,7 @@ JanineGroup:
 	tr_mon 64, CROBAT
 		tr_evs 252 Atk, 164 Spe
 		tr_moves SCREECH, TOXIC, CONFUSE_RAY, AERIAL_ACE
-	tr_mon 61, ARIADOS
+	tr_mon 61, GALVANTULA
 		tr_evs 252 Atk, 164 SAt
 		tr_moves AGILITY, POISON_JAB, MEAN_LOOK, PSYCHIC_M
 	tr_mon 62, QWILFISH
@@ -867,7 +867,7 @@ JanineGroup:
 	def_trainer 2, "Janine"
 	tr_mon 73, CROBAT @ KINGS_ROCK
 		tr_moves DOUBLE_TEAM, POISON_JAB, AERIAL_ACE, TOXIC
-	tr_mon 72, ARIADOS @ QUICK_CLAW
+	tr_mon 72, GALVANTULA @ QUICK_CLAW
 		tr_moves SCARY_FACE, POISON_JAB, MEAN_LOOK, GIGA_DRAIN
 	tr_mon 72, QWILFISH @ FOCUS_BAND
 		tr_moves AQUA_TAIL, POISON_JAB, SPIKES, EXPLOSION
@@ -1602,7 +1602,7 @@ YoungsterGroup:
 
 	def_trainer MIKEY, "Mikey"
 	tr_mon 2, RATTATA
-	tr_mon 4, SPEAROW
+	tr_mon 4, CRIBNAL
 	end_trainer
 
 	def_trainer ALBERT, "Albert"
@@ -1615,7 +1615,7 @@ YoungsterGroup:
 	end_trainer
 
 	def_trainer WARREN, "Warren"
-	tr_mon 56, FEAROW
+	tr_mon 56, CUARDHART
 	tr_mon 60, RATICATE
 	end_trainer
 
@@ -1765,7 +1765,7 @@ BugCatcherGroup:
 	end_trainer
 
 	def_trainer KEN, "Ken"
-	tr_mon 46, ARIADOS
+	tr_mon 46, GALVANTULA
 	tr_mon 47, PINSIR
 	end_trainer
 
@@ -1869,7 +1869,7 @@ CamperGroup:
 	end_trainer
 
 	def_trainer QUENTIN, "Quentin"
-	tr_mon 30, FEAROW
+	tr_mon 30, CUARDHART
 	tr_mon 30, PRIMEAPE
 	tr_mon 30, TAUROS
 	end_trainer
@@ -1898,7 +1898,7 @@ CamperGroup:
 	end_trainer
 
 	def_trainer PEDRO, "Pedro"
-	tr_mon 62, FURRET
+	tr_mon 62, SCOURPOSS
 	end_trainer
 
 	def_trainer AMOS, "Amos"
@@ -2032,7 +2032,7 @@ endc
 	end_trainer
 
 	def_trainer SHARON, "Sharon"
-	tr_mon 50, FURRET
+	tr_mon 50, SCOURPOSS
 	tr_mon 52, RAPIDASH
 	end_trainer
 
@@ -2087,13 +2087,13 @@ TwinsGroup:
 
 	def_trainer_class TWINS
 	def_trainer AMYANDMIMI1, "Amy & Mimi"
-	tr_mon 13, SPINARAK
+	tr_mon 13, JOLTIK
 	tr_mon 13, LEDYBA
 	end_trainer
 
 	def_trainer AMYANDMIMI2, "Amy & Mimi"
 	tr_mon 10, LEDYBA
-	tr_mon 10, SPINARAK
+	tr_mon 10, JOLTIK
 	end_trainer
 
 	def_trainer ANNANDANNE1, "Tori & Til"
@@ -2429,7 +2429,7 @@ BirdKeeperGroup:
 	end_trainer
 
 	def_trainer ABE, "Abe"
-	tr_mon 9, SPEAROW
+	tr_mon 9, CRIBNAL
 	end_trainer
 
 	def_trainer THEO, "Theo"
@@ -2447,9 +2447,9 @@ BirdKeeperGroup:
 	end_trainer
 
 	def_trainer DENIS, "Denis"
-	tr_mon 18, SPEAROW
-	tr_mon 20, FEAROW
-	tr_mon 18, SPEAROW
+	tr_mon 18, CRIBNAL
+	tr_mon 20, CUARDHART
+	tr_mon 18, CRIBNAL
 	end_trainer
 
 	def_trainer HANK, "Hank"
@@ -2458,7 +2458,7 @@ BirdKeeperGroup:
 	end_trainer
 
 	def_trainer ROY, "Roy"
-	tr_mon 55, FEAROW
+	tr_mon 55, CUARDHART
 	tr_mon 59, PIDGEOT
 	end_trainer
 
@@ -2475,7 +2475,7 @@ BirdKeeperGroup:
 	def_trainer PETER, "Peter"
 	tr_mon 7, PIDGEY
 	tr_mon 8, PIDGEY
-	tr_mon 10, SPEAROW
+	tr_mon 10, CRIBNAL
 	end_trainer
 
 	def_trainer PERRY, "Perry"
@@ -2484,7 +2484,7 @@ BirdKeeperGroup:
 
 	def_trainer BRET, "Bret"
 	tr_mon 57, PIDGEOT
-	tr_mon 57, FEAROW
+	tr_mon 57, CUARDHART
 	end_trainer
 
 	def_trainer MICK, "Mick"
@@ -3080,11 +3080,11 @@ PokefanFGroup:
 	end_trainer
 
 	def_trainer GEORGIA, "Georgia"
-	tr_mon 44, SENTRET @ ORAN_BERRY
-	tr_mon 44, SENTRET @ ORAN_BERRY
-	tr_mon 44, SENTRET @ ORAN_BERRY
-	tr_mon 46, FURRET @ SITRUS_BERRY
-	tr_mon 44, SENTRET @ ORAN_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
+	tr_mon 46, SCOURPOSS @ SITRUS_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
 	end_trainer
 
 	def_trainer JAIME, "Jaime"
@@ -3559,9 +3559,9 @@ BeautyGroup:
 
 	def_trainer_class BEAUTY
 	def_trainer VICTORIA, "Victoria"
-	tr_mon 9, SENTRET
-	tr_mon 13, SENTRET
-	tr_mon 17, SENTRET
+	tr_mon 9, TIDIPOSS
+	tr_mon 13, TIDIPOSS
+	tr_mon 17, TIDIPOSS
 	end_trainer
 
 	def_trainer SAMANTHA, "Samantha"
@@ -3662,7 +3662,7 @@ BugManiacGroup:
 
 	def_trainer DOUG, "Doug"
 	tr_mon 59, BUTTERFREE
-	tr_mon 57, ARIADOS
+	tr_mon 57, GALVANTULA
 	end_trainer
 
 	def_trainer DANE, "Dane"
@@ -3671,7 +3671,7 @@ BugManiacGroup:
 	end_trainer
 
 	def_trainer DION, "Dion"
-	tr_mon 63, ARIADOS
+	tr_mon 63, GALVANTULA
 	end_trainer
 
 	def_trainer STACEY, "Stacey"
@@ -3963,7 +3963,7 @@ SchoolboyGroup:
 
 	def_trainer JOHNNY, "Johnny"
 	tr_mon 18, "Gold", BELLSPROUT @ GOLD_LEAF
-	tr_mon 16, "Spin", SPINARAK
+	tr_mon 16, "Spin", JOLTIK
 	tr_mon 17, "Rat", RATTATA @ ORAN_BERRY
 	end_trainer
 
@@ -4005,12 +4005,12 @@ SchoolboyGroup:
 	end_trainer
 
 	def_trainer SHERMAN, "Sherman"
-	tr_mon 59, FURRET
+	tr_mon 59, SCOURPOSS
 	tr_mon 61, PIDGEOT
 	end_trainer
 
 	def_trainer SCHOOLBOY_CONNOR, "Connor"
-	tr_mon 59, SENTRET
+	tr_mon 59, TIDIPOSS
 	end_trainer
 
 	def_trainer TORIN, "Torin"
@@ -4035,7 +4035,7 @@ SchoolgirlGroup:
 	def_trainer ELIZA, "Eliza"
 	tr_mon 18, "Silver", ODDISH @ SILVER_LEAF
 	tr_mon 16, "Lady", LEDYBA
-	tr_mon 17, "Tret", SENTRET @ ORAN_BERRY
+	tr_mon 17, "Tret", TIDIPOSS @ ORAN_BERRY
 	end_trainer
 
 	def_trainer FAITH, "Faith"
@@ -4046,7 +4046,7 @@ SchoolgirlGroup:
 
 	def_trainer SARAH, "Sarah"
 	tr_mon LEVEL_FROM_BADGES + 2, "Charmer", FLIKLIT
-	tr_mon LEVEL_FROM_BADGES + 0, SENTRET
+	tr_mon LEVEL_FROM_BADGES + 0, TIDIPOSS
 	tr_mon LEVEL_FROM_BADGES + 1, MARILL
 	end_trainer
 
@@ -4549,7 +4549,7 @@ RichBoyGroup:
 	def_trainer_class RICH_BOY
 	def_trainer WINSTON, "Winston"
 	tr_mon 46, PIDGEOT
-	tr_mon 44, FURRET
+	tr_mon 44, SCOURPOSS
 	tr_mon 45, AMPHAROS
 	end_trainer
 
@@ -4590,7 +4590,7 @@ LadyGroup:
 	def_trainer_class LADY
 	def_trainer JESSICA, "Jessica"
 	tr_mon 55, BLISSEY @ NUGGET
-	tr_mon 54, FURRET @ NUGGET
+	tr_mon 54, SCOURPOSS @ NUGGET
 	end_trainer
 
 
@@ -4729,7 +4729,7 @@ SailorGroup:
 	def_trainer EUGENE, "Eugene"
 	tr_mon 17, POLIWHIRL
 	tr_mon 17, RATICATE
-	tr_mon 19, KRABBY
+	tr_mon 19, CORPHISH
 	end_trainer
 
 	def_trainer TERRELL, "Terrell"
@@ -4737,9 +4737,9 @@ SailorGroup:
 	end_trainer
 
 	def_trainer KENT, "Kent"
-	tr_mon 18, KRABBY
+	tr_mon 18, CORPHISH
 		tr_moves WATER_GUN, LEER, SCRATCH, DEFENSE_CURL
-	tr_mon 20, KRABBY
+	tr_mon 20, CORPHISH
 		tr_moves BUBBLE_BEAM, LEER, SCRATCH, DEFENSE_CURL
 	end_trainer
 
@@ -4755,7 +4755,7 @@ SailorGroup:
 	end_trainer
 
 	def_trainer GARRETT, "Garrett"
-	tr_mon 48, KINGLER
+	tr_mon 48, CRAWDAUNT
 	end_trainer
 
 	def_trainer KENNETH, "Kenneth"
@@ -4835,7 +4835,7 @@ SwimmerMGroup:
 	end_trainer
 
 	def_trainer MATHEW, "Mathew"
-	tr_mon 23, KRABBY
+	tr_mon 23, CORPHISH
 	end_trainer
 
 	def_trainer HAL, "Hal"
@@ -4925,7 +4925,7 @@ SwimmerMGroup:
 	end_trainer
 
 	def_trainer ARMAND, "Armand"
-	tr_mon 55, KINGLER
+	tr_mon 55, CRAWDAUNT
 	tr_mon 55, CLOYSTER
 	end_trainer
 
@@ -4945,7 +4945,7 @@ SwimmerMGroup:
 	end_trainer
 
 	def_trainer DUANE, "Duane"
-	tr_mon 60, KINGLER
+	tr_mon 60, CRAWDAUNT
 	tr_mon 60, KABUTOPS
 	end_trainer
 
@@ -5635,11 +5635,11 @@ TeacherFGroup:
 	def_trainer KATHRYN, "Kathryn"
 	tr_mon LEVEL_FROM_BADGES + 5, BELLOSSOM
 	tr_mon LEVEL_FROM_BADGES + 3, PIDGEOTTO
-	tr_mon LEVEL_FROM_BADGES + 2, FURRET
+	tr_mon LEVEL_FROM_BADGES + 2, SCOURPOSS
 	end_trainer
 
 	def_trainer CLARICE, "Clarice"
-	tr_mon 54, FURRET
+	tr_mon 54, SCOURPOSS
 	tr_mon 56, SUNFLORA
 	end_trainer
 
@@ -6030,7 +6030,7 @@ CooltrainerMGroup:
 	def_trainer GAVEN1, "Gaven"
 	tr_mon 39, VICTREEBEL
 		tr_moves WRAP, TOXIC, ACID, RAZOR_LEAF
-	tr_mon 39, KINGLER
+	tr_mon 39, CRAWDAUNT
 		tr_moves BUBBLE_BEAM, STOMP, DIG, PROTECT
 	tr_mon 39, FLAREON
 		tr_moves MUD_SLAP, QUICK_ATTACK, BITE, FIRE_SPIN
@@ -6039,7 +6039,7 @@ CooltrainerMGroup:
 	def_trainer GAVEN2, "Gaven"
 	tr_mon 41, VICTREEBEL
 		tr_moves WRAP, TOXIC, ACID, RAZOR_LEAF
-	tr_mon 41, KINGLER
+	tr_mon 41, CRAWDAUNT
 		tr_moves BUBBLE_BEAM, STOMP, DIG, PROTECT
 	tr_mon 41, FLAREON
 		tr_moves MUD_SLAP, QUICK_ATTACK, BITE, FIRE_SPIN
@@ -6048,7 +6048,7 @@ CooltrainerMGroup:
 	def_trainer GAVEN3, "Gaven"
 	tr_mon 45, VICTREEBEL
 		tr_moves GIGA_DRAIN, TOXIC, SLUDGE_BOMB, RAZOR_LEAF
-	tr_mon 45, KINGLER @ KINGS_ROCK
+	tr_mon 45, CRAWDAUNT @ KINGS_ROCK
 		tr_moves SURF, STOMP, DIG, BLIZZARD
 	tr_mon 45, FLAREON
 		tr_moves FLAMETHROWER, QUICK_ATTACK, BITE, FIRE_SPIN
@@ -7629,7 +7629,7 @@ KatyGroup:
 
 	def_trainer_class KATY
 	def_trainer 1, "Katy"
-	tr_mon 55, ARIADOS
+	tr_mon 55, GALVANTULA
 	tr_mon 55, BUTTERFREE
 	tr_mon 56, SHUCKLE
 	tr_mon 56, KLEAVOR
@@ -7638,7 +7638,7 @@ KatyGroup:
 	end_trainer
 
 	def_trainer 2, "Katy"
-	tr_mon 73, ARIADOS
+	tr_mon 73, GALVANTULA
 	tr_mon 73, BUTTERFREE
 	tr_mon 74, SHUCKLE
 	tr_mon 74, KLEAVOR

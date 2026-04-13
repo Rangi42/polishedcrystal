@@ -31,7 +31,7 @@
 ; 	def_grass_wildmons BEAUTIFUL_BEACH
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -39,7 +39,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, WEEPINBELL
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -47,8 +47,8 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
-; 	wildmon LEVEL_FROM_BADGES - 2, ARIADOS
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
+; 	wildmon LEVEL_FROM_BADGES - 2, GALVANTULA
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
 ; 	wildmon LEVEL_FROM_BADGES + 2, SLOWPOKE, GALARIAN_FORM
@@ -59,7 +59,7 @@
 ; 	def_grass_wildmons WARM_BEACH
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -67,7 +67,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, WEEPINBELL
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
@@ -75,8 +75,8 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, AZUMARILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
-; 	wildmon LEVEL_FROM_BADGES - 2, ARIADOS
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
+; 	wildmon LEVEL_FROM_BADGES - 2, GALVANTULA
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
 ; 	wildmon LEVEL_FROM_BADGES + 2, SLOWPOKE, GALARIAN_FORM
@@ -87,7 +87,7 @@
 ; 	def_grass_wildmons ROCKY_BEACH
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, LEDIAN
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, PHANPY
@@ -95,7 +95,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, DONPHAN
 ; 	wildmon LEVEL_FROM_BADGES + 1, DONPHAN
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
 ; 	wildmon LEVEL_FROM_BADGES - 2, WEEPINBELL
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, PHANPY
@@ -103,8 +103,8 @@
 ; 	wildmon LEVEL_FROM_BADGES + 3, DONPHAN
 ; 	wildmon LEVEL_FROM_BADGES + 1, DONPHAN
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 2, KRABBY
-; 	wildmon LEVEL_FROM_BADGES - 2, ARIADOS
+; 	wildmon LEVEL_FROM_BADGES - 2, CORPHISH
+; 	wildmon LEVEL_FROM_BADGES - 2, GALVANTULA
 ; 	wildmon LEVEL_FROM_BADGES + 0, SLOWPOKE, GALARIAN_FORM
 ; 	wildmon LEVEL_FROM_BADGES + 1, MARILL
 ; 	wildmon LEVEL_FROM_BADGES + 2, SLOWPOKE, GALARIAN_FORM
@@ -143,7 +143,7 @@
 ; 	def_grass_wildmons NOISY_FOREST
 ; 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 ; 	; morn
-; 	wildmon LEVEL_FROM_BADGES - 1, FEAROW
+; 	wildmon LEVEL_FROM_BADGES - 1, CUARDHART
 ; 	wildmon LEVEL_FROM_BADGES - 1, BUTTERFREE
 ; 	wildmon LEVEL_FROM_BADGES + 1, BUTTERFREE
 ; 	wildmon LEVEL_FROM_BADGES + 3, SCYTHER
@@ -151,7 +151,7 @@
 ; 	wildmon LEVEL_FROM_BADGES + 4, YANMA
 ; 	wildmon LEVEL_FROM_BADGES + 2, YANMA
 ; 	; day
-; 	wildmon LEVEL_FROM_BADGES - 1, FEAROW
+; 	wildmon LEVEL_FROM_BADGES - 1, CUARDHART
 ; 	wildmon LEVEL_FROM_BADGES - 1, BEEDRILL
 ; 	wildmon LEVEL_FROM_BADGES + 1, BEEDRILL
 ; 	wildmon LEVEL_FROM_BADGES + 3, SCYTHER
@@ -159,9 +159,9 @@
 ; 	wildmon LEVEL_FROM_BADGES + 4, YANMA
 ; 	wildmon LEVEL_FROM_BADGES + 2, YANMA
 ; 	; nite
-; 	wildmon LEVEL_FROM_BADGES - 1, FEAROW
-; 	wildmon LEVEL_FROM_BADGES - 1, ARIADOS
-; 	wildmon LEVEL_FROM_BADGES + 1, ARIADOS
+; 	wildmon LEVEL_FROM_BADGES - 1, CUARDHART
+; 	wildmon LEVEL_FROM_BADGES - 1, GALVANTULA
+; 	wildmon LEVEL_FROM_BADGES + 1, GALVANTULA
 ; 	wildmon LEVEL_FROM_BADGES + 3, SCYTHER
 ; 	wildmon LEVEL_FROM_BADGES + 2, GLOOM
 ; 	wildmon LEVEL_FROM_BADGES + 4, YANMA

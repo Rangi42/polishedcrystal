@@ -11,7 +11,7 @@ AlphabeticalPokedexOrder:
 	dp ANNIHILAPE
 	dp ARBOK
 	dp ARCANINE
-	dp ARIADOS
+	dp GALVANTULA
 	dp ARTICUNO
 	dp AZUMARILL
 	dp AZURILL
@@ -34,7 +34,9 @@ AlphabeticalPokedexOrder:
 	dp CLODSIRE
 	dp CLOYSTER
 	dp CONIFURY
+	dp CORPHISH
 	dp CORSOLA
+	dp CRAWDAUNT
 	dp CROBAT
 	dp CROCONAW
 	dp CUBONE
@@ -68,13 +70,13 @@ AlphabeticalPokedexOrder:
 	dp EXEGGUTOR
 	dp FARIGIRAF
 	dp FARFETCH_D
-	dp FEAROW
+	dp CUARDHART
 	dp FERALIGATR
 	dp FLAAFFY
 	dp FLAREON
 	dp FLIKLIT
 	dp FORRETRESS
-	dp FURRET
+	dp SCOURPOSS
 	dp GASTLY
 	dp GENGAR
 	dp GEODUDE
@@ -118,10 +120,8 @@ AlphabeticalPokedexOrder:
 	dp KAKUNA
 	dp KANGASKHAN
 	dp KINGDRA
-	dp KINGLER
 	dp KLEAVOR
 	dp KOFFING
-	dp KRABBY
 	dp LANTURN
 	dp LAPRAS
 	dp LARVITAR
@@ -227,7 +227,7 @@ AlphabeticalPokedexOrder:
 	dp SEADRA
 	dp SEAKING
 	dp SEEL
-	dp SENTRET
+	dp TIDIPOSS
 	dp SHELLDER
 	dp SHUCKLE
 	dp SINISTEA
@@ -245,8 +245,8 @@ AlphabeticalPokedexOrder:
 	dp SNEASLER
 	dp SNORLAX
 	dp SNUBBULL
-	dp SPEAROW
-	dp SPINARAK
+	dp CRIBNAL
+	dp JOLTIK
 	dp STANTLER
 	dp STARMIE
 	dp STARYU

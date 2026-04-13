@@ -14,11 +14,11 @@ Cry_Togetic:
 	channel 5, Cry_Togetic_Ch5
 	channel 6, Cry_Togetic_Ch6
 
-Cry_Spinarak:
+Cry_Joltik:
 	channel_count 3
-	channel 5, Cry_Spinarak_Ch5
-	channel 6, Cry_Spinarak_Ch6
-	channel 8, Cry_Spinarak_Ch8
+	channel 5, Cry_Joltik_Ch5
+	channel 6, Cry_Joltik_Ch6
+	channel 8, Cry_Joltik_Ch8
 
 Cry_Raikou:
 	channel_count 3
@@ -32,10 +32,10 @@ Cry_Hoothoot:
 	channel 6, Cry_Hoothoot_Ch6
 	channel 8, Cry_Hoothoot_Ch8
 
-Cry_Sentret:
+Cry_Tidiposs:
 	channel_count 2
-	channel 5, Cry_Sentret_Ch5
-	channel 6, Cry_Sentret_Ch6
+	channel 5, Cry_Tidiposs_Ch5
+	channel 6, Cry_Tidiposs_Ch6
 
 Cry_Slowking:
 	channel_count 3
@@ -366,7 +366,7 @@ Cry_Togetic_branch_f3038:
 	square_note 8, 15, 2, 1986
 	sound_ret
 
-Cry_Spinarak_Ch5:
+Cry_Joltik_Ch5:
 	duty_cycle 1
 	square_note 3, 2, -4, 1988
 	square_note 1, 0, 0, 1
@@ -374,7 +374,7 @@ Cry_Spinarak_Ch5:
 	square_note 6, 11, 4, 1979
 	sound_ret
 
-Cry_Spinarak_Ch6:
+Cry_Joltik_Ch6:
 	duty_cycle_pattern 0, 2, 2, 2
 	square_note 3, 2, -4, 1991
 	square_note 1, 0, 0, 0
@@ -382,7 +382,7 @@ Cry_Spinarak_Ch6:
 	square_note 6, 11, 4, 1981
 	sound_ret
 
-Cry_Spinarak_Ch8:
+Cry_Joltik_Ch8:
 	noise_note 3, 9, 2, 16
 	noise_note 1, 3, -1, 0
 	noise_note 5, 6, -1, 16
@@ -454,14 +454,14 @@ Cry_Hoothoot_Ch8:
 	noise_note 16, 10, 7, 110
 	sound_ret
 
-Cry_Sentret_Ch5:
+Cry_Tidiposs_Ch5:
 	pitch_offset 32
 	duty_cycle 0
-	sound_jump Cry_Sentret_branch_f312b
+	sound_jump Cry_Tidiposs_branch_f312b
 
-Cry_Sentret_Ch6:
+Cry_Tidiposs_Ch6:
 	duty_cycle_pattern 0, 1, 2, 3
-Cry_Sentret_branch_f312b:
+Cry_Tidiposs_branch_f312b:
 	square_note 8, 3, -1, 1837
 	square_note 8, 15, 1, 1824
 	sound_ret
@@ -1046,11 +1046,11 @@ Cry_Growlithe:
 	channel 6, Cry_Growlithe_Ch6
 	channel 8, Cry_Growlithe_Ch8
 
-Cry_Krabby:
+Cry_Corphish:
 	channel_count 3
-	channel 5, Cry_Krabby_Ch5
-	channel 6, Cry_Krabby_Ch6
-	channel 8, Cry_Krabby_Ch8
+	channel 5, Cry_Corphish_Ch5
+	channel 6, Cry_Corphish_Ch6
+	channel 8, Cry_Corphish_Ch8
 
 Cry_Psyduck:
 	channel_count 3
@@ -2009,7 +2009,7 @@ Cry_Growlithe_Ch8:
 	noise_note 8, 11, 1, 68
 	sound_ret
 
-Cry_Krabby_Ch5:
+Cry_Corphish_Ch5:
 	duty_cycle_pattern 3, 3, 0, 0
 	square_note 13, 15, 1, 1297
 	square_note 13, 14, 1, 1301
@@ -2017,7 +2017,7 @@ Cry_Krabby_Ch5:
 	square_note 8, 13, 1, 1297
 	sound_ret
 
-Cry_Krabby_Ch6:
+Cry_Corphish_Ch6:
 	duty_cycle_pattern 0, 1, 1, 1
 	square_note 12, 14, 1, 1292
 	square_note 12, 13, 1, 1296
@@ -2025,7 +2025,7 @@ Cry_Krabby_Ch6:
 	square_note 8, 12, 1, 1290
 	sound_ret
 
-Cry_Krabby_Ch8:
+Cry_Corphish_Ch8:
 	noise_note 14, 15, 2, 101
 	noise_note 13, 14, 2, 85
 	noise_note 14, 13, 2, 86

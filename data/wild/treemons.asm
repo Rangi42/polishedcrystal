@@ -30,29 +30,29 @@ ENDM
 
 TreeMonSet_City:
 TreeMonSet_Canyon:
-	tree_mon 80, SPEAROW,    10
-	tree_mon 20, SENTRET,    10
+	tree_mon 80, CRIBNAL,    10
+	tree_mon 20, TIDIPOSS,    10
 	db -1
 	; rare
-	tree_mon 50, SPEAROW,    10
+	tree_mon 50, CRIBNAL,    10
 	tree_mon 30, HERACROSS,  10
 	tree_mon 20, AIPOM,      10
 	db -1
 
 TreeMonSet_Town:
-	tree_mon 65, SPEAROW,    10
+	tree_mon 65, CRIBNAL,    10
 	tree_mon 15, EKANS,      10
 	tree_mon 20, AIPOM,      10
 	db -1
 	; rare
-	tree_mon 60, SPEAROW,    10
+	tree_mon 60, CRIBNAL,    10
 	tree_mon 30, HERACROSS,  10
 	tree_mon 10, MEOWTH,     10
 	db -1
 
 TreeMonSet_Route:
 	tree_mon 50, HOOTHOOT,   10
-	tree_mon 15, SPINARAK,   10
+	tree_mon 15, JOLTIK,   10
 	tree_mon 15, LEDYBA,     10
 	tree_mon 20, EXEGGCUTE,  10
 	db -1
@@ -100,13 +100,13 @@ TreeMonSet_Forest:
 	db -1
 
 TreeMonSet_Apricorns:
-	tree_mon 50, SPEAROW,               10
+	tree_mon 50, CRIBNAL,               10
 	tree_mon 20, EKANS,                 10
 	tree_mon 20, AIPOM,                 10
 	tree_mon 10, VOLTORB, HISUIAN_FORM, 10
 	db -1
 	; rare
-	tree_mon 40, SPEAROW,               10
+	tree_mon 40, CRIBNAL,               10
 	tree_mon 20, VOLTORB, HISUIAN_FORM, 10
 	tree_mon 20, HERACROSS,             10
 	tree_mon 20, MEOWTH,                10
@@ -124,7 +124,7 @@ TreeMonSet_NoisyForest:
 	db -1
 
 TreeMonSet_Rock:
-	tree_mon 70, KRABBY,     15
+	tree_mon 70, CORPHISH,     15
 	tree_mon 25, GEODUDE,    15
 	tree_mon  5, SHUCKLE,    15
 	db -1

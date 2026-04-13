@@ -38,8 +38,8 @@ RandyScript:
 	writetext Route35GoldenrodGatePlayerReceivedAMonWithMailText
 	playsound SFX_KEY_ITEM
 	waitsfx
-	givepoke SPEAROW, FEMALE | PLAIN_FORM, 10, NO_ITEM, NET_BALL, NO_MOVE, GiftSpearowName, GiftSpearowOTName, 01001
-	givepokemail GiftSpearowMail
+	givepoke CRIBNAL, FEMALE | PLAIN_FORM, 10, NO_ITEM, NET_BALL, NO_MOVE, GiftCribnalName, GiftCribnalOTName, 01001
+	givepokemail GiftCribnalMail
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
 	jumpopenedtext Route35GoldenrodGateRandyWeirdTreeBlockingRoadText
@@ -62,17 +62,17 @@ RandyScript:
 .bagfull
 	endtext
 
-GiftSpearowMail:
+GiftCribnalMail:
 	db   FLOWER_MAIL
 	setcharmap no_ngrams
 	db   "Dark Cave leads"
 	next "to another road@"
 	setcharmap default
 
-GiftSpearowName:
+GiftCribnalName:
 	rawchar "Kenya@"
 
-GiftSpearowOTName:
+GiftCribnalOTName:
 	rawchar "Randy@"
 
 Route35GoldenrodGatePokefanFScript:

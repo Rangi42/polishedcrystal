@@ -20,8 +20,8 @@ AnimationExtraPointers:
 	dw PidgeotAnimationExtra
 	dw RattataPlainAnimationExtra
 	dw RaticatePlainAnimationExtra
-	dw SpearowAnimationExtra
-	dw FearowAnimationExtra
+	dw CribnalAnimationExtra
+	dw CuardhartAnimationExtra
 	dw EkansAnimationExtra
 	dw ArbokJohtoAnimationExtra
 	dw PikachuPlainAnimationExtra
@@ -97,8 +97,8 @@ AnimationExtraPointers:
 	dw OnixAnimationExtra
 	dw DrowzeeAnimationExtra
 	dw HypnoAnimationExtra
-	dw KrabbyAnimationExtra
-	dw KinglerAnimationExtra
+	dw CorphishAnimationExtra
+	dw CrawdauntAnimationExtra
 	dw VoltorbPlainAnimationExtra
 	dw ElectrodePlainAnimationExtra
 	dw ExeggcuteAnimationExtra
@@ -160,14 +160,14 @@ AnimationExtraPointers:
 	dw TotodileAnimationExtra
 	dw CroconawAnimationExtra
 	dw FeraligatrAnimationExtra
-	dw SentretAnimationExtra
-	dw FurretAnimationExtra
+	dw TidipossAnimationExtra
+	dw ScourpossAnimationExtra
 	dw HoothootAnimationExtra
 	dw NoctowlAnimationExtra
 	dw LedybaAnimationExtra
 	dw LedianAnimationExtra
-	dw SpinarakAnimationExtra
-	dw AriadosAnimationExtra
+	dw JoltikAnimationExtra
+	dw GalvantulaAnimationExtra
 	dw CrobatAnimationExtra
 	dw ChinchouAnimationExtra
 	dw LanturnAnimationExtra

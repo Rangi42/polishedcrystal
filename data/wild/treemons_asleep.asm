@@ -15,7 +15,7 @@ AsleepTreeMons:
 	dp WEEDLE
 	dp KAKUNA
 	dp BEEDRILL
-	dp SPEAROW
+	dp CRIBNAL
 	dp EKANS
 	dp EXEGGCUTE
 	dp LEDYBA
@@ -26,6 +26,6 @@ AsleepTreeMons:
 	dp VENONAT
 	dp HOOTHOOT
 	dp NOCTOWL
-	dp SPINARAK
+	dp JOLTIK
 	dp HERACROSS
 	db 0 ; end

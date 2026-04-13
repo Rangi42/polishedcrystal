@@ -21,8 +21,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  36, 100 ; Pidgeot
 	db   1,  19 ; Rattata
 	db  20, 100 ; Raticate
-	db   1,  19 ; Spearow
-	db  20, 100 ; Fearow
+	db   1,  19 ; Cribnal
+	db  20, 100 ; Cuardhart
 	db   1,  21 ; Ekans
 	db  22, 100 ; Arbok
 	db   1,  19 ; Pikachu
@@ -98,8 +98,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1, 100 ; Onix
 	db   1,  25 ; Drowzee
 	db  26, 100 ; Hypno
-	db   1,  27 ; Krabby
-	db  28, 100 ; Kingler
+	db   1,  27 ; Corphish
+	db  28, 100 ; Crawdaunt
 	db   1,  29 ; Voltorb
 	db  30, 100 ; Electrode
 	db   1,  29 ; Exeggcute
@@ -161,14 +161,14 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  17 ; Totodile
 	db  18,  29 ; Croconaw
 	db  30, 100 ; Feraligatr
-	db   1,  14 ; Sentret
-	db  15, 100 ; Furret
+	db   1,  14 ; Tidiposs
+	db  15, 100 ; Scourposs
 	db   1,  19 ; Hoothoot
 	db  20, 100 ; Noctowl
 	db   1,  17 ; Ledyba
 	db  18, 100 ; Ledian
-	db   1,  21 ; Spinarak
-	db  22, 100 ; Ariados
+	db   1,  21 ; Joltik
+	db  22, 100 ; Galvantula
 	db  32, 100 ; Crobat
 	db   1,  26 ; Chinchou
 	db  27, 100 ; Lanturn

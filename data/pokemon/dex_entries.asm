@@ -198,8 +198,8 @@ RaticatePlainPokedexEntry::
 	next "es wide areas for"
 	next "food.@"
 
-SECTION "SpearowPokedexEntry", ROMX
-SpearowPokedexEntry::
+SECTION "CribnalPokedexEntry", ROMX
+CribnalPokedexEntry::
 	db "Tiny Bird@"
 	db   "To protect its"
 	next "territory, it"
@@ -208,8 +208,8 @@ SpearowPokedexEntry::
 	next "making high-"
 	next "pitched cries.@"
 
-SECTION "FearowPokedexEntry", ROMX
-FearowPokedexEntry::
+SECTION "CuardhartPokedexEntry", ROMX
+CuardhartPokedexEntry::
 	db "Beak@"
 	db   "It uses its long"
 	next "beak to attack. It"
@@ -972,8 +972,8 @@ HypnoPokedexEntry::
 	next "of its hypnosis"
 	next "last.@"
 
-SECTION "KrabbyPokedexEntry", ROMX
-KrabbyPokedexEntry::
+SECTION "CorphishPokedexEntry", ROMX
+CorphishPokedexEntry::
 	db "River Crab@"
 	db   "If it is unable"
 	next "to find food, it"
@@ -982,8 +982,8 @@ KrabbyPokedexEntry::
 	next "swallowing a"
 	next "mouthful of sand.@"
 
-SECTION "KinglerPokedexEntry", ROMX
-KinglerPokedexEntry::
+SECTION "CrawdauntPokedexEntry", ROMX
+CrawdauntPokedexEntry::
 	db "Pincer@"
 	db   "Its oversized claw"
 	next "is very powerful,"
@@ -1602,8 +1602,8 @@ FeraligatrPokedexEntry::
 	next "quickly, even on"
 	next "the ground.@"
 
-SECTION "SentretPokedexEntry", ROMX
-SentretPokedexEntry::
+SECTION "TidipossPokedexEntry", ROMX
+TidipossPokedexEntry::
 	db "Scout@"
 	db   "When acting as a"
 	next "lookout, it warns"
@@ -1612,8 +1612,8 @@ SentretPokedexEntry::
 	next "hitting the ground"
 	next "with its tail.@"
 
-SECTION "FurretPokedexEntry", ROMX
-FurretPokedexEntry::
+SECTION "ScourpossPokedexEntry", ROMX
+ScourpossPokedexEntry::
 	db "Long Body@"
 	db   "It lives in narrow"
 	next "burrows that fit"
@@ -1662,8 +1662,8 @@ LedianPokedexEntry::
 	next "drifts off into"
 	next "a deep slumber.@"
 
-SECTION "SpinarakPokedexEntry", ROMX
-SpinarakPokedexEntry::
+SECTION "JoltikPokedexEntry", ROMX
+JoltikPokedexEntry::
 	db "String Spit@"
 	db   "If prey becomes"
 	next "ensnared in its"
@@ -1672,8 +1672,8 @@ SpinarakPokedexEntry::
 	next "motionlessly until"
 	next "it becomes dark.@"
 
-SECTION "AriadosPokedexEntry", ROMX
-AriadosPokedexEntry::
+SECTION "GalvantulaPokedexEntry", ROMX
+GalvantulaPokedexEntry::
 	db "Long Leg@"
 	db   "Rather than making"
 	next "a nest in one"

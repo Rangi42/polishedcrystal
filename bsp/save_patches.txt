@@ -708,8 +708,8 @@ ConvertMonIndexesTo9Bit:
 .new_indexes
 ; terimated with zero, not -1
 ; converted to 0-indexed
-	db 0x14 ; SPEAROW
-	db 0x15 ; FEAROW
+	db 0x14 ; CRIBNAL
+	db 0x15 ; CUARDHART
 	db 0x6b ; LICKITUNG
 	db 0x75 ; GOLDEEN
 	db 0x76 ; SEAKING

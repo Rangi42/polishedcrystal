@@ -30,7 +30,7 @@ BuenasPasswordTable:
 .HealingItems:  password_group BUENA_ITEM,   12, POTION, ANTIDOTE, PARALYZEHEAL
 .Balls:         password_group BUENA_ITEM,   12, POKE_BALL, GREAT_BALL, ULTRA_BALL
 .Pokemon1:      password_group BUENA_MON,    10, PIKACHU, RATTATA, GEODUDE
-.Pokemon2:      password_group BUENA_MON,    10, HOOTHOOT, SPINARAK, DROWZEE
+.Pokemon2:      password_group BUENA_MON,    10, HOOTHOOT, JOLTIK, DROWZEE
 .JohtoTowns:    password_group BUENA_STRING, 16, "New Bark Town@", "Cherrygrove City@", "Azalea Town@"
 .Types:         password_group BUENA_STRING,  6, "Flying@", "Bug@", "Grass@"
 .Moves:         password_group BUENA_MOVE,   12, TACKLE, GROWL, MUD_SLAP

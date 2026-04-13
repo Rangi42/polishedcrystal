@@ -41,7 +41,7 @@ OlsteetonFisherRadio:
 	pause 45
 	writetext OlsteetonFisherRadioText2
 	pause 45
-	cry FURRET
+	cry SCOURPOSS
 	musicfadeout MUSIC_CANALAVE_CITY_DPPT, 16
 	writetext OlsteetonFisherRadioText3
 	pause 45
