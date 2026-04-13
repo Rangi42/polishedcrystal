@@ -313,17 +313,17 @@
 	; ; morn
 	; wildmon 56, PIDGEOTTO
 	; wildmon 56, RATICATE
-	; wildmon 57, FURRET
+	; wildmon 57, SCOURPOSS
 	; wildmon 57, PIDGEOTTO
-	; wildmon 59, FURRET
+	; wildmon 59, SCOURPOSS
 	; wildmon 60, PIDGEOT
 	; wildmon 60, PIDGEOT
 	; ; day
 	; wildmon 56, PIDGEOTTO
 	; wildmon 56, RATICATE
-	; wildmon 57, FURRET
+	; wildmon 57, SCOURPOSS
 	; wildmon 57, PIDGEOTTO
-	; wildmon 59, FURRET
+	; wildmon 59, SCOURPOSS
 	; wildmon 60, PIDGEOT
 	; wildmon 60, PIDGEOT
 	; ; nite
@@ -423,7 +423,7 @@
 	; def_grass_wildmons ROUTE_3
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 52, RATICATE
 	; wildmon 54, ARBOK, ARBOK_KANTO_FORM
 	; wildmon 55, SANDSLASH
@@ -431,7 +431,7 @@
 	; wildmon 57, JIGGLYPUFF
 	; wildmon 55, WIGGLYTUFF
 	; ; day
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 52, RATICATE
 	; wildmon 54, ARBOK, ARBOK_KANTO_FORM
 	; wildmon 55, SANDSLASH
@@ -451,7 +451,7 @@
 	; def_grass_wildmons ROUTE_4
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
-	; wildmon 54, FEAROW
+	; wildmon 54, CUARDHART
 	; wildmon 54, RATICATE
 	; wildmon 56, ARBOK, ARBOK_KANTO_FORM
 	; wildmon 57, SANDSLASH
@@ -459,7 +459,7 @@
 	; wildmon 58, PRIMEAPE
 	; wildmon 59, PRIMEAPE
 	; ; day
-	; wildmon 54, FEAROW
+	; wildmon 54, CUARDHART
 	; wildmon 54, RATICATE
 	; wildmon 56, ARBOK, ARBOK_KANTO_FORM
 	; wildmon 57, SANDSLASH
@@ -536,7 +536,7 @@
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
 	; wildmon 49, RATICATE
-	; wildmon 49, FEAROW
+	; wildmon 49, CUARDHART
 	; wildmon 51, GRANBULL
 	; wildmon 54, VULPIX
 	; wildmon 54, JIGGLYPUFF
@@ -544,7 +544,7 @@
 	; wildmon 51, WIGGLYTUFF
 	; ; day
 	; wildmon 49, RATICATE
-	; wildmon 49, FEAROW
+	; wildmon 49, CUARDHART
 	; wildmon 51, GRANBULL
 	; wildmon 54, VULPIX
 	; wildmon 54, JIGGLYPUFF
@@ -592,7 +592,7 @@
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
 	; wildmon 48, RATICATE
-	; wildmon 47, FEAROW
+	; wildmon 47, CUARDHART
 	; wildmon 49, PRIMEAPE
 	; wildmon 50, NIDORINA
 	; wildmon 50, NIDORINO
@@ -600,7 +600,7 @@
 	; wildmon 52, PRIMEAPE
 	; ; day
 	; wildmon 48, RATICATE
-	; wildmon 47, FEAROW
+	; wildmon 47, CUARDHART
 	; wildmon 49, PRIMEAPE
 	; wildmon 50, NIDORINA
 	; wildmon 50, NIDORINO
@@ -619,7 +619,7 @@
 	; def_grass_wildmons ROUTE_10_NORTH
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
-	; wildmon 47, FEAROW
+	; wildmon 47, CUARDHART
 	; wildmon 49, ELECTRODE
 	; wildmon 47, RATICATE
 	; wildmon 48, MAGNETON
@@ -627,7 +627,7 @@
 	; wildmon 50, ELECTABUZZ
 	; wildmon 52, ELECTABUZZ
 	; ; day
-	; wildmon 47, FEAROW
+	; wildmon 47, CUARDHART
 	; wildmon 49, ELECTRODE
 	; wildmon 47, RATICATE
 	; wildmon 48, MAGNETON
@@ -816,17 +816,17 @@
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
 	; wildmon 53, GRIMER
-	; wildmon 50, FEAROW
+	; wildmon 50, CUARDHART
 	; wildmon 54, SLUGMA
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 53, MAGCARGO
 	; wildmon 54, MUK
 	; wildmon 55, MUK
 	; ; day
 	; wildmon 53, GRIMER
-	; wildmon 50, FEAROW
+	; wildmon 50, CUARDHART
 	; wildmon 54, SLUGMA
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 53, MAGCARGO
 	; wildmon 54, MUK
 	; wildmon 55, MUK
@@ -844,17 +844,17 @@
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
 	; wildmon 53, GRIMER
-	; wildmon 50, FEAROW
+	; wildmon 50, CUARDHART
 	; wildmon 54, SLUGMA
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 53, MAGCARGO
 	; wildmon 54, MUK
 	; wildmon 55, MUK
 	; ; day
 	; wildmon 53, GRIMER
-	; wildmon 50, FEAROW
+	; wildmon 50, CUARDHART
 	; wildmon 54, SLUGMA
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 53, MAGCARGO
 	; wildmon 54, MUK
 	; wildmon 55, MUK
@@ -871,18 +871,18 @@
 	; def_grass_wildmons ROUTE_17
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
-	; wildmon 51, FEAROW
+	; wildmon 51, CUARDHART
 	; wildmon 55, SLUGMA
 	; wildmon 55, GRIMER
-	; wildmon 53, FEAROW
+	; wildmon 53, CUARDHART
 	; wildmon 53, MAGCARGO
 	; wildmon 54, MUK
 	; wildmon 56, MUK
 	; ; day
-	; wildmon 51, FEAROW
+	; wildmon 51, CUARDHART
 	; wildmon 55, SLUGMA
 	; wildmon 55, GRIMER
-	; wildmon 53, FEAROW
+	; wildmon 53, CUARDHART
 	; wildmon 53, MAGCARGO
 	; wildmon 54, MUK
 	; wildmon 56, MUK
@@ -899,17 +899,17 @@
 	; def_grass_wildmons ROUTE_18_EAST
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 56, DODUO
-	; wildmon 53, FEAROW
+	; wildmon 53, CUARDHART
 	; wildmon 54, DODRIO
 	; wildmon 54, MAGCARGO
 	; wildmon 55, MUK
 	; wildmon 57, MUK
 	; ; day
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 56, DODUO
-	; wildmon 53, FEAROW
+	; wildmon 53, CUARDHART
 	; wildmon 54, DODRIO
 	; wildmon 54, MAGCARGO
 	; wildmon 55, MUK
@@ -927,17 +927,17 @@
 	; def_grass_wildmons ROUTE_18_WEST
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 56, DODUO
-	; wildmon 53, FEAROW
+	; wildmon 53, CUARDHART
 	; wildmon 54, DODRIO
 	; wildmon 54, MAGCARGO
 	; wildmon 55, MUK
 	; wildmon 57, MUK
 	; ; day
-	; wildmon 52, FEAROW
+	; wildmon 52, CUARDHART
 	; wildmon 56, DODUO
-	; wildmon 53, FEAROW
+	; wildmon 53, CUARDHART
 	; wildmon 54, DODRIO
 	; wildmon 54, MAGCARGO
 	; wildmon 55, MUK
@@ -984,7 +984,7 @@
 	; db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; ; morn
 	; wildmon 56, RATICATE
-	; wildmon 56, FEAROW
+	; wildmon 56, CUARDHART
 	; wildmon 58, NIDORINO
 	; wildmon 58, NIDORINA
 	; wildmon 59, PONYTA
@@ -992,7 +992,7 @@
 	; wildmon 60, PONYTA
 	; ; day
 	; wildmon 56, RATICATE
-	; wildmon 56, FEAROW
+	; wildmon 56, CUARDHART
 	; wildmon 58, NIDORINO
 	; wildmon 58, NIDORINA
 	; wildmon 59, PONYTA

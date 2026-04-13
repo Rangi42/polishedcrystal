@@ -20,8 +20,8 @@ FramesPointers:
 	dw PidgeotFrames
 	dw RattataPlainFrames
 	dw RaticatePlainFrames
-	dw SpearowFrames
-	dw FearowFrames
+	dw CribnalFrames
+	dw CuardhartFrames
 	dw EkansFrames
 	dw ArbokJohtoFrames
 	dw PikachuPlainFrames
@@ -160,8 +160,8 @@ FramesPointers:
 	dw TotodileFrames
 	dw CroconawFrames
 	dw FeraligatrFrames
-	dw SentretFrames
-	dw FurretFrames
+	dw TidipossFrames
+	dw ScourpossFrames
 	dw HoothootFrames
 	dw NoctowlFrames
 	dw LedybaFrames

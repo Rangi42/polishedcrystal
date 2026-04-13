@@ -7,7 +7,7 @@
 	db NO_ITEM, SHARP_BEAK ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for SPEAROW, KEEN_EYE, KEEN_EYE, SNIPER
+	abilities_for CRIBNAL, KEEN_EYE, KEEN_EYE, SNIPER
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_FLYING, EGG_FLYING ; egg groups
 

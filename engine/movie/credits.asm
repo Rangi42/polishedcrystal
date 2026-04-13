@@ -565,7 +565,7 @@ Credits_LoadBorderGFX:
 
 .Frames:
 	db  0,  1,  2,  1,  0,  1,  2,  1 ; Pichu
-	db  3,  3,  4,  4,  5,  5,  6,  6 ; Sentret
+	db  3,  3,  4,  4,  5,  5,  6,  6 ; Tidiposs
 	db  7,  7,  8,  8,  7,  7,  9,  9 ; Munchlax
 	db 10, 10, 11, 11, 10, 10, 12, 12 ; Togepi
 	db  0,  1,  0,  2,  0,  1,  0,  2 ; Smoochum

@@ -1,13 +1,13 @@
 	db  35,  46,  34,  20,  35,  45 ; 215 BST
 	;   hp  atk  def  spe  sat  sdf
 
-	db NORMAL, NORMAL ; type
+	db NORMAL, POISON ; type
 	db 255 ; catch rate
 	db 57 ; base exp
 	db NO_ITEM, ORAN_BERRY ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for SENTRET, RUN_AWAY, KEEN_EYE, FRISK
+	abilities_for TIDIPOSS, RUN_AWAY, KEEN_EYE, FRISK
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

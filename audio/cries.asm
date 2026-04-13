@@ -32,10 +32,10 @@ Cry_Hoothoot:
 	channel 6, Cry_Hoothoot_Ch6
 	channel 8, Cry_Hoothoot_Ch8
 
-Cry_Sentret:
+Cry_Tidiposs:
 	channel_count 2
-	channel 5, Cry_Sentret_Ch5
-	channel 6, Cry_Sentret_Ch6
+	channel 5, Cry_Tidiposs_Ch5
+	channel 6, Cry_Tidiposs_Ch6
 
 Cry_Slowking:
 	channel_count 3
@@ -454,14 +454,14 @@ Cry_Hoothoot_Ch8:
 	noise_note 16, 10, 7, 110
 	sound_ret
 
-Cry_Sentret_Ch5:
+Cry_Tidiposs_Ch5:
 	pitch_offset 32
 	duty_cycle 0
-	sound_jump Cry_Sentret_branch_f312b
+	sound_jump Cry_Tidiposs_branch_f312b
 
-Cry_Sentret_Ch6:
+Cry_Tidiposs_Ch6:
 	duty_cycle_pattern 0, 1, 2, 3
-Cry_Sentret_branch_f312b:
+Cry_Tidiposs_branch_f312b:
 	square_note 8, 3, -1, 1837
 	square_note 8, 15, 1, 1824
 	sound_ret

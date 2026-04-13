@@ -74,8 +74,8 @@ RattataAlolanEggSpeciesMoves:
 	db COUNTER
 	db $ff
 
-SpearowEggSpeciesMoves:
-	dp SPEAROW, PLAIN_FORM
+CribnalEggSpeciesMoves:
+	dp CRIBNAL, PLAIN_FORM
 	db ASTONISH
 	db FEINT_ATTACK
 	db QUICK_ATTACK
@@ -724,8 +724,8 @@ TotodileEggSpeciesMoves:
 	db AQUA_JET
 	db $ff
 
-SentretEggSpeciesMoves:
-	dp SENTRET, PLAIN_FORM
+TidipossEggSpeciesMoves:
+	dp TIDIPOSS, PLAIN_FORM
 	db CHARM
 	db FOCUS_ENERGY
 	db PURSUIT

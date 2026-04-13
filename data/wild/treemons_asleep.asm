@@ -15,7 +15,7 @@ AsleepTreeMons:
 	dp WEEDLE
 	dp KAKUNA
 	dp BEEDRILL
-	dp SPEAROW
+	dp CRIBNAL
 	dp EKANS
 	dp EXEGGCUTE
 	dp LEDYBA

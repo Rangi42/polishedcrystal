@@ -24,8 +24,8 @@ PokemonPicPointers::
 	pics Pidgeot
 	pics RattataPlain
 	pics RaticatePlain
-	pics Spearow
-	pics Fearow
+	pics Cribnal
+	pics Cuardhart
 	pics Ekans
 	pics ArbokJohto
 	pics PikachuPlain
@@ -164,8 +164,8 @@ PokemonPicPointers::
 	pics Totodile
 	pics Croconaw
 	pics Feraligatr
-	pics Sentret
-	pics Furret
+	pics Tidiposs
+	pics Scourposs
 	pics Hoothoot
 	pics Noctowl
 	pics Ledyba

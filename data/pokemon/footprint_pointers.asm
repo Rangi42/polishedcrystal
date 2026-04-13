@@ -20,8 +20,8 @@ FootprintPointers::
 	dw PidgeotFootprint
 	dw RattataFootprint
 	dw RaticateFootprint
-	dw SpearowFootprint
-	dw FearowFootprint
+	dw CribnalFootprint
+	dw CuardhartFootprint
 	dw EkansFootprint
 	dw ArbokFootprint
 	dw PikachuFootprint
@@ -160,8 +160,8 @@ FootprintPointers::
 	dw TotodileFootprint
 	dw CroconawFootprint
 	dw FeraligatrFootprint
-	dw SentretFootprint
-	dw FurretFootprint
+	dw TidipossFootprint
+	dw ScourpossFootprint
 	dw HoothootFootprint
 	dw NoctowlFootprint
 	dw LedybaFootprint

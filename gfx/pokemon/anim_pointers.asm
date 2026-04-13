@@ -20,8 +20,8 @@ AnimationPointers:
 	dw PidgeotAnimation
 	dw RattataPlainAnimation
 	dw RaticatePlainAnimation
-	dw SpearowAnimation
-	dw FearowAnimation
+	dw CribnalAnimation
+	dw CuardhartAnimation
 	dw EkansAnimation
 	dw ArbokJohtoAnimation
 	dw PikachuPlainAnimation
@@ -160,8 +160,8 @@ AnimationPointers:
 	dw TotodileAnimation
 	dw CroconawAnimation
 	dw FeraligatrAnimation
-	dw SentretAnimation
-	dw FurretAnimation
+	dw TidipossAnimation
+	dw ScourpossAnimation
 	dw HoothootAnimation
 	dw NoctowlAnimation
 	dw LedybaAnimation

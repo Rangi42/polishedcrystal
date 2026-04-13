@@ -1,22 +1,13 @@
-if DEF(FAITHFUL)
-	db  85,  76,  64,  90,  45,  55 ; 415 BST
-	;   hp  atk  def  spe  sat  sdf
-else
 	db  85,  86,  64, 108,  45,  55 ; 443 BST
 	;   hp  atk  def  spe  sat  sdf
-endc
 
-	db NORMAL, NORMAL ; type
+	db NORMAL, POISON ; type
 	db 90 ; catch rate
-if DEF(FAITHFUL)
-	db 116 ; base exp
-else
 	db 126 ; base exp
-endc
 	db ORAN_BERRY, SITRUS_BERRY ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for FURRET, RUN_AWAY, KEEN_EYE, FRISK
+	abilities_for SCOURPOSS, RUN_AWAY, KEEN_EYE, FRISK
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

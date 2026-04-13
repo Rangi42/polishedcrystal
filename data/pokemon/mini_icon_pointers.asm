@@ -24,8 +24,8 @@ MiniIconPointers:
 	mini_icon Pidgeot
 	mini_icon Rattata
 	mini_icon Raticate
-	mini_icon Spearow
-	mini_icon Fearow
+	mini_icon Cribnal
+	mini_icon Cuardhart
 	mini_icon Ekans
 	mini_icon Arbok
 	mini_icon Pikachu
@@ -164,8 +164,8 @@ MiniIconPointers:
 	mini_icon Totodile
 	mini_icon Croconaw
 	mini_icon Feraligatr
-	mini_icon Sentret
-	mini_icon Furret
+	mini_icon Tidiposs
+	mini_icon Scourposs
 	mini_icon Hoothoot
 	mini_icon Noctowl
 	mini_icon Ledyba

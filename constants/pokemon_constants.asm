@@ -44,8 +44,8 @@
 	const PIDGEOT    ; 12
 	const RATTATA    ; 13
 	const RATICATE   ; 14
-	const SPEAROW    ; 15
-	const FEAROW     ; 16
+	const CRIBNAL    ; 15
+	const CUARDHART     ; 16
 	const EKANS      ; 17
 	const ARBOK      ; 18
 	const PIKACHU    ; 19
@@ -184,8 +184,8 @@
 	const TOTODILE   ; 9e
 	const CROCONAW   ; 9f
 	const FERALIGATR ; a0
-	const SENTRET    ; a1
-	const FURRET     ; a2
+	const TIDIPOSS    ; a1
+	const SCOURPOSS     ; a2
 	const HOOTHOOT   ; a3
 	const NOCTOWL    ; a4
 	const LEDYBA     ; a5

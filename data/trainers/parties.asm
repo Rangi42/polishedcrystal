@@ -1602,7 +1602,7 @@ YoungsterGroup:
 
 	def_trainer MIKEY, "Mikey"
 	tr_mon 2, RATTATA
-	tr_mon 4, SPEAROW
+	tr_mon 4, CRIBNAL
 	end_trainer
 
 	def_trainer ALBERT, "Albert"
@@ -1615,7 +1615,7 @@ YoungsterGroup:
 	end_trainer
 
 	def_trainer WARREN, "Warren"
-	tr_mon 56, FEAROW
+	tr_mon 56, CUARDHART
 	tr_mon 60, RATICATE
 	end_trainer
 
@@ -1869,7 +1869,7 @@ CamperGroup:
 	end_trainer
 
 	def_trainer QUENTIN, "Quentin"
-	tr_mon 30, FEAROW
+	tr_mon 30, CUARDHART
 	tr_mon 30, PRIMEAPE
 	tr_mon 30, TAUROS
 	end_trainer
@@ -1898,7 +1898,7 @@ CamperGroup:
 	end_trainer
 
 	def_trainer PEDRO, "Pedro"
-	tr_mon 62, FURRET
+	tr_mon 62, SCOURPOSS
 	end_trainer
 
 	def_trainer AMOS, "Amos"
@@ -2032,7 +2032,7 @@ endc
 	end_trainer
 
 	def_trainer SHARON, "Sharon"
-	tr_mon 50, FURRET
+	tr_mon 50, SCOURPOSS
 	tr_mon 52, RAPIDASH
 	end_trainer
 
@@ -2429,7 +2429,7 @@ BirdKeeperGroup:
 	end_trainer
 
 	def_trainer ABE, "Abe"
-	tr_mon 9, SPEAROW
+	tr_mon 9, CRIBNAL
 	end_trainer
 
 	def_trainer THEO, "Theo"
@@ -2447,9 +2447,9 @@ BirdKeeperGroup:
 	end_trainer
 
 	def_trainer DENIS, "Denis"
-	tr_mon 18, SPEAROW
-	tr_mon 20, FEAROW
-	tr_mon 18, SPEAROW
+	tr_mon 18, CRIBNAL
+	tr_mon 20, CUARDHART
+	tr_mon 18, CRIBNAL
 	end_trainer
 
 	def_trainer HANK, "Hank"
@@ -2458,7 +2458,7 @@ BirdKeeperGroup:
 	end_trainer
 
 	def_trainer ROY, "Roy"
-	tr_mon 55, FEAROW
+	tr_mon 55, CUARDHART
 	tr_mon 59, PIDGEOT
 	end_trainer
 
@@ -2475,7 +2475,7 @@ BirdKeeperGroup:
 	def_trainer PETER, "Peter"
 	tr_mon 7, PIDGEY
 	tr_mon 8, PIDGEY
-	tr_mon 10, SPEAROW
+	tr_mon 10, CRIBNAL
 	end_trainer
 
 	def_trainer PERRY, "Perry"
@@ -2484,7 +2484,7 @@ BirdKeeperGroup:
 
 	def_trainer BRET, "Bret"
 	tr_mon 57, PIDGEOT
-	tr_mon 57, FEAROW
+	tr_mon 57, CUARDHART
 	end_trainer
 
 	def_trainer MICK, "Mick"
@@ -3080,11 +3080,11 @@ PokefanFGroup:
 	end_trainer
 
 	def_trainer GEORGIA, "Georgia"
-	tr_mon 44, SENTRET @ ORAN_BERRY
-	tr_mon 44, SENTRET @ ORAN_BERRY
-	tr_mon 44, SENTRET @ ORAN_BERRY
-	tr_mon 46, FURRET @ SITRUS_BERRY
-	tr_mon 44, SENTRET @ ORAN_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
+	tr_mon 46, SCOURPOSS @ SITRUS_BERRY
+	tr_mon 44, TIDIPOSS @ ORAN_BERRY
 	end_trainer
 
 	def_trainer JAIME, "Jaime"
@@ -3559,9 +3559,9 @@ BeautyGroup:
 
 	def_trainer_class BEAUTY
 	def_trainer VICTORIA, "Victoria"
-	tr_mon 9, SENTRET
-	tr_mon 13, SENTRET
-	tr_mon 17, SENTRET
+	tr_mon 9, TIDIPOSS
+	tr_mon 13, TIDIPOSS
+	tr_mon 17, TIDIPOSS
 	end_trainer
 
 	def_trainer SAMANTHA, "Samantha"
@@ -4005,12 +4005,12 @@ SchoolboyGroup:
 	end_trainer
 
 	def_trainer SHERMAN, "Sherman"
-	tr_mon 59, FURRET
+	tr_mon 59, SCOURPOSS
 	tr_mon 61, PIDGEOT
 	end_trainer
 
 	def_trainer SCHOOLBOY_CONNOR, "Connor"
-	tr_mon 59, SENTRET
+	tr_mon 59, TIDIPOSS
 	end_trainer
 
 	def_trainer TORIN, "Torin"
@@ -4035,7 +4035,7 @@ SchoolgirlGroup:
 	def_trainer ELIZA, "Eliza"
 	tr_mon 18, "Silver", ODDISH @ SILVER_LEAF
 	tr_mon 16, "Lady", LEDYBA
-	tr_mon 17, "Tret", SENTRET @ ORAN_BERRY
+	tr_mon 17, "Tret", TIDIPOSS @ ORAN_BERRY
 	end_trainer
 
 	def_trainer FAITH, "Faith"
@@ -4046,7 +4046,7 @@ SchoolgirlGroup:
 
 	def_trainer SARAH, "Sarah"
 	tr_mon LEVEL_FROM_BADGES + 2, "Charmer", FLIKLIT
-	tr_mon LEVEL_FROM_BADGES + 0, SENTRET
+	tr_mon LEVEL_FROM_BADGES + 0, TIDIPOSS
 	tr_mon LEVEL_FROM_BADGES + 1, MARILL
 	end_trainer
 
@@ -4549,7 +4549,7 @@ RichBoyGroup:
 	def_trainer_class RICH_BOY
 	def_trainer WINSTON, "Winston"
 	tr_mon 46, PIDGEOT
-	tr_mon 44, FURRET
+	tr_mon 44, SCOURPOSS
 	tr_mon 45, AMPHAROS
 	end_trainer
 
@@ -4590,7 +4590,7 @@ LadyGroup:
 	def_trainer_class LADY
 	def_trainer JESSICA, "Jessica"
 	tr_mon 55, BLISSEY @ NUGGET
-	tr_mon 54, FURRET @ NUGGET
+	tr_mon 54, SCOURPOSS @ NUGGET
 	end_trainer
 
 
@@ -5635,11 +5635,11 @@ TeacherFGroup:
 	def_trainer KATHRYN, "Kathryn"
 	tr_mon LEVEL_FROM_BADGES + 5, BELLOSSOM
 	tr_mon LEVEL_FROM_BADGES + 3, PIDGEOTTO
-	tr_mon LEVEL_FROM_BADGES + 2, FURRET
+	tr_mon LEVEL_FROM_BADGES + 2, SCOURPOSS
 	end_trainer
 
 	def_trainer CLARICE, "Clarice"
-	tr_mon 54, FURRET
+	tr_mon 54, SCOURPOSS
 	tr_mon 56, SUNFLORA
 	end_trainer
 

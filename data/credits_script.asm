@@ -76,7 +76,7 @@ CreditsScript:
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 1 ; Sentret or Ditto
+	db CREDITS_SCENE, 1 ; Tidiposs or Ditto
 
 	db      GRAPHICS_DESIGN, 0
 	db     HIRONOBU_YOSHIDA, 1

@@ -20,8 +20,8 @@ EggSpeciesMovesPointers::
 	dw PidgeyEggSpeciesMoves            ; Pidgeot
 	dw RattataPlainEggSpeciesMoves      ; Rattata
 	dw RattataPlainEggSpeciesMoves      ; Raticate
-	dw SpearowEggSpeciesMoves           ; Spearow
-	dw SpearowEggSpeciesMoves           ; Fearow
+	dw CribnalEggSpeciesMoves           ; Cribnal
+	dw CribnalEggSpeciesMoves           ; Cuardhart
 	dw EkansEggSpeciesMoves             ; Ekans
 	dw EkansEggSpeciesMoves             ; Arbok
 	dw PichuEggSpeciesMoves             ; Pikachu
@@ -160,8 +160,8 @@ EggSpeciesMovesPointers::
 	dw TotodileEggSpeciesMoves          ; Totodile
 	dw TotodileEggSpeciesMoves          ; Croconaw
 	dw TotodileEggSpeciesMoves          ; Feraligatr
-	dw SentretEggSpeciesMoves           ; Sentret
-	dw SentretEggSpeciesMoves           ; Furret
+	dw TidipossEggSpeciesMoves           ; Tidiposs
+	dw TidipossEggSpeciesMoves           ; Scourposs
 	dw HoothootEggSpeciesMoves          ; Hoothoot
 	dw HoothootEggSpeciesMoves          ; Noctowl
 	dw LedybaEggSpeciesMoves            ; Ledyba

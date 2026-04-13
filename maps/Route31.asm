@@ -297,7 +297,7 @@ Route31MailRecipientScript:
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
 	promptbutton
-	checkpokemail ReceivedSpearowMailText
+	checkpokemail ReceivedCribnalMailText
 	ifequalfwd $0, .WrongMail
 	ifequalfwd $2, .Refused
 	ifequalfwd $3, .NoMail
@@ -341,7 +341,7 @@ Route31MailRecipientScript:
 .LastMon:
 	jumpopenedtext Text_Route31CantTakeLastMon
 
-ReceivedSpearowMailText:
+ReceivedCribnalMailText:
 	setcharmap no_ngrams
 	db   "Dark Cave leads"
 	next "to another road@"

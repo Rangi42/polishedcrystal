@@ -198,8 +198,8 @@ RaticatePlainPokedexEntry::
 	next "es wide areas for"
 	next "food.@"
 
-SECTION "SpearowPokedexEntry", ROMX
-SpearowPokedexEntry::
+SECTION "CribnalPokedexEntry", ROMX
+CribnalPokedexEntry::
 	db "Tiny Bird@"
 	db   "To protect its"
 	next "territory, it"
@@ -208,8 +208,8 @@ SpearowPokedexEntry::
 	next "making high-"
 	next "pitched cries.@"
 
-SECTION "FearowPokedexEntry", ROMX
-FearowPokedexEntry::
+SECTION "CuardhartPokedexEntry", ROMX
+CuardhartPokedexEntry::
 	db "Beak@"
 	db   "It uses its long"
 	next "beak to attack. It"
@@ -1602,8 +1602,8 @@ FeraligatrPokedexEntry::
 	next "quickly, even on"
 	next "the ground.@"
 
-SECTION "SentretPokedexEntry", ROMX
-SentretPokedexEntry::
+SECTION "TidipossPokedexEntry", ROMX
+TidipossPokedexEntry::
 	db "Scout@"
 	db   "When acting as a"
 	next "lookout, it warns"
@@ -1612,8 +1612,8 @@ SentretPokedexEntry::
 	next "hitting the ground"
 	next "with its tail.@"
 
-SECTION "FurretPokedexEntry", ROMX
-FurretPokedexEntry::
+SECTION "ScourpossPokedexEntry", ROMX
+ScourpossPokedexEntry::
 	db "Long Body@"
 	db   "It lives in narrow"
 	next "burrows that fit"

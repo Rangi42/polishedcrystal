@@ -48,7 +48,7 @@ Cries:
 	fardw Cry_Mareep
 	fardw Cry_Togetic
 	fardw Cry_Hoothoot
-	fardw Cry_Sentret
+	fardw Cry_Tidiposs
 	fardw Cry_Slowking
 	fardw Cry_Cyndaquil
 	fardw Cry_Chikorita

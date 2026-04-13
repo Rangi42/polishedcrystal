@@ -21,8 +21,8 @@ PokedexDataPointerTable:
 	dba PidgeotPokedexEntry
 	dba RattataPlainPokedexEntry
 	dba RaticatePlainPokedexEntry
-	dba SpearowPokedexEntry
-	dba FearowPokedexEntry
+	dba CribnalPokedexEntry
+	dba CuardhartPokedexEntry
 	dba EkansPokedexEntry
 	dba ArbokPokedexEntry
 	dba PikachuPokedexEntry
@@ -161,8 +161,8 @@ PokedexDataPointerTable:
 	dba TotodilePokedexEntry
 	dba CroconawPokedexEntry
 	dba FeraligatrPokedexEntry
-	dba SentretPokedexEntry
-	dba FurretPokedexEntry
+	dba TidipossPokedexEntry
+	dba ScourpossPokedexEntry
 	dba HoothootPokedexEntry
 	dba NoctowlPokedexEntry
 	dba LedybaPokedexEntry

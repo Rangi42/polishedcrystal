@@ -396,8 +396,8 @@ evos_attacks Cupico
 	learnset 39, DOUBLE_EDGE
 	learnset 44, COUNTER ; Endeavor → egg move
 
-	evos_attacks Spearow
-	evo_data EVOLVE_LEVEL, 20, FEAROW
+	evos_attacks Cribnal
+	evo_data EVOLVE_LEVEL, 20, CUARDHART
 	learnset 1, PECK
 	learnset 1, GROWL
 	learnset 4, LEER
@@ -411,7 +411,7 @@ evos_attacks Cupico
 	learnset 32, ROOST
 	learnset 36, DRILL_PECK
 
-	evos_attacks Fearow
+	evos_attacks Cuardhart
 	learnset 1, QUICK_ATTACK ; Pluck → egg move
 	learnset 1, PECK
 	learnset 1, GROWL
@@ -3484,8 +3484,8 @@ endc
 	learnset 78, CLOSE_COMBAT ; Superpower → similar move
 	learnset 84, HYDRO_PUMP
 
-	evos_attacks Sentret
-	evo_data EVOLVE_LEVEL, 15, FURRET
+	evos_attacks Tidiposs
+	evo_data EVOLVE_LEVEL, 15, SCOURPOSS
 	learnset 1, TACKLE
 	learnset 1, FORESIGHT
 	learnset 4, DEFENSE_CURL
@@ -3502,7 +3502,7 @@ endc
 	learnset 42, SLASH ; Me First → egg move
 	learnset 47, HYPER_VOICE
 
-	evos_attacks Furret
+	evos_attacks Scourposs
 	learnset 1, TACKLE
 	learnset 1, FORESIGHT
 	learnset 1, AGILITY ; evolution move

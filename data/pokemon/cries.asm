@@ -26,8 +26,8 @@ PokemonCries::
 	mon_cry CRY_PIDGEOTTO,   $011,  $17f ; Pidgeot
 	mon_cry CRY_RATTATA,     $000,  $100 ; Rattata
 	mon_cry CRY_RATTATA,     $020,  $17f ; Raticate
-	mon_cry CRY_FARFETCH_D,  $000,  $100 ; Spearow
-	mon_cry CRY_SHELLDER,    $040,  $120 ; Fearow
+	mon_cry CRY_FARFETCH_D,  $000,  $100 ; Cribnal
+	mon_cry CRY_SHELLDER,    $040,  $120 ; Cuardhart
 	mon_cry CRY_EKANS,       $012,  $0c0 ; Ekans
 	mon_cry CRY_EKANS,       $0e0,  $090 ; Arbok
 	mon_cry CRY_CUPICO,   $0ee,  $081 ; Pikachu
@@ -166,8 +166,8 @@ PokemonCries::
 	mon_cry CRY_TOTODILE,    $46c,  $0e8 ; Totodile
 	mon_cry CRY_TOTODILE,    $440,  $110 ; Croconaw
 	mon_cry CRY_TOTODILE,    $3fc,  $180 ; Feraligatr
-	mon_cry CRY_SENTRET,     $08a,  $0b8 ; Sentret
-	mon_cry CRY_SENTRET,     $06b,  $102 ; Furret
+	mon_cry CRY_TIDIPOSS,     $08a,  $0b8 ; Tidiposs
+	mon_cry CRY_TIDIPOSS,     $06b,  $102 ; Scourposs
 	mon_cry CRY_HOOTHOOT,    $091,  $0d8 ; Hoothoot
 	mon_cry CRY_HOOTHOOT,    $000,  $1a0 ; Noctowl
 	mon_cry CRY_LEDYBA,      $000,  $0de ; Ledyba
@@ -236,7 +236,7 @@ PokemonCries::
 	mon_cry CRY_CYNDAQUIL,   $039,  $140 ; Houndour
 	mon_cry CRY_TOTODILE,   -$10a,  $100 ; Houndoom
 	mon_cry CRY_SLUGMA,      $2fb,  $100 ; Kingdra
-	mon_cry CRY_SENTRET,     $048,  $230 ; Phanpy
+	mon_cry CRY_TIDIPOSS,     $048,  $230 ; Phanpy
 	mon_cry CRY_DONPHAN,     $000,  $1a0 ; Donphan
 	mon_cry CRY_GIRAFARIG,   $073,  $240 ; Porygon2
 	mon_cry CRY_TYROGUE,    -$160,  $180 ; Stantler

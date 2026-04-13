@@ -119,6 +119,6 @@ Chansey: Haze
 Exeggcute/Exeggutor: Confuse Ray
 Marill/Azumarill: Focus Energy
 Pineco/Forretress: Smokescreen
-Sentret/Furret: Recover
+Tidiposs/Scourposs: Recover
 Venonat/Venomoth: Night Shade
 Yanma/Yanmega: Feint Attack
