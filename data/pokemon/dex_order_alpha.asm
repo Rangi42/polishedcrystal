@@ -11,7 +11,7 @@ AlphabeticalPokedexOrder:
 	dp ANNIHILAPE
 	dp ARBOK
 	dp ARCANINE
-	dp ARIADOS
+	dp GALVANTULA
 	dp ARTICUNO
 	dp AZUMARILL
 	dp AZURILL
@@ -246,7 +246,7 @@ AlphabeticalPokedexOrder:
 	dp SNORLAX
 	dp SNUBBULL
 	dp SPEAROW
-	dp SPINARAK
+	dp JOLTIK
 	dp STANTLER
 	dp STARMIE
 	dp STARYU

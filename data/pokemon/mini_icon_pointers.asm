@@ -170,8 +170,8 @@ MiniIconPointers:
 	mini_icon Noctowl
 	mini_icon Ledyba
 	mini_icon Ledian
-	mini_icon Spinarak
-	mini_icon Ariados
+	mini_icon Joltik
+	mini_icon Galvantula
 	mini_icon Crobat
 	mini_icon Chinchou
 	mini_icon Lanturn

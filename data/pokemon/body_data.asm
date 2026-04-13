@@ -173,8 +173,8 @@ PokemonBodyData:
 	body_data  16,  408, WINGS,        BROWN  ; NOCTOWL
 	body_data  10,  108, WINGS,        RED    ; LEDYBA
 	body_data  14,  356, WINGS,        RED    ; LEDIAN
-	body_data   5,   85, INSECTOID,    GREEN  ; SPINARAK
-	body_data  11,  335, INSECTOID,    RED    ; ARIADOS
+	body_data   5,   85, INSECTOID,    GREEN  ; JOLTIK
+	body_data  11,  335, INSECTOID,    RED    ; GALVANTULA
 	body_data  18,  750, MULTIWINGS,   PURPLE ; CROBAT
 	body_data   5,  120, FINS,         BLUE   ; CHINCHOU
 	body_data  12,  225, FINS,         BLUE   ; LANTURN

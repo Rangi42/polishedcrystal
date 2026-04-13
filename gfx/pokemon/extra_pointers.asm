@@ -166,8 +166,8 @@ AnimationExtraPointers:
 	dw NoctowlAnimationExtra
 	dw LedybaAnimationExtra
 	dw LedianAnimationExtra
-	dw SpinarakAnimationExtra
-	dw AriadosAnimationExtra
+	dw JoltikAnimationExtra
+	dw GalvantulaAnimationExtra
 	dw CrobatAnimationExtra
 	dw ChinchouAnimationExtra
 	dw LanturnAnimationExtra

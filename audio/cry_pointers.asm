@@ -41,7 +41,7 @@ Cries:
 	fardw Cry_Vulpix
 	fardw Cry_Weepinbell
 	fardw Cry_Marill
-	fardw Cry_Spinarak
+	fardw Cry_Joltik
 	fardw Cry_Togepi
 	fardw Cry_Girafarig
 	fardw Cry_Raikou

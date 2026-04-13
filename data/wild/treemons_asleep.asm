@@ -26,6 +26,6 @@ AsleepTreeMons:
 	dp VENONAT
 	dp HOOTHOOT
 	dp NOCTOWL
-	dp SPINARAK
+	dp JOLTIK
 	dp HERACROSS
 	db 0 ; end

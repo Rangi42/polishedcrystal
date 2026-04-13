@@ -170,8 +170,8 @@ PokemonPicPointers::
 	pics Noctowl
 	pics Ledyba
 	pics Ledian
-	pics Spinarak
-	pics Ariados
+	pics Joltik
+	pics Galvantula
 	pics Crobat
 	pics Chinchou
 	pics Lanturn

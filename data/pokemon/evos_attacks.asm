@@ -3595,8 +3595,8 @@ endc
 	learnset 42, AIR_SLASH
 	learnset 47, DOUBLE_EDGE
 
-	evos_attacks Spinarak
-	evo_data EVOLVE_LEVEL, 22, ARIADOS
+	evos_attacks Joltik
+	evo_data EVOLVE_LEVEL, 22, GALVANTULA
 	learnset 1, POISON_STING
 	learnset 1, STRING_SHOT
 	learnset 1, WRAP ; Constrict → similar move
@@ -3615,7 +3615,7 @@ endc
 	learnset 47, LEECH_LIFE ; Cross Poison → TM move
 	learnset 50, FEINT_ATTACK ; Sticky Web → new move
 
-	evos_attacks Ariados
+	evos_attacks Galvantula
 	learnset 1, BUG_BITE ; evolution move
 	learnset 1, FOCUS_ENERGY
 	learnset 1, POISON_STING

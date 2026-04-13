@@ -757,8 +757,8 @@ LedybaEggSpeciesMoves:
 	db DRAIN_PUNCH
 	db $ff
 
-SpinarakEggSpeciesMoves:
-	dp SPINARAK, PLAIN_FORM
+JoltikEggSpeciesMoves:
+	dp JOLTIK, PLAIN_FORM
 	db BATON_PASS
 	db DISABLE
 	db MEGAHORN

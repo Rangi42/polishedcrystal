@@ -166,8 +166,8 @@ FootprintPointers::
 	dw NoctowlFootprint
 	dw LedybaFootprint
 	dw LedianFootprint
-	dw SpinarakFootprint
-	dw AriadosFootprint
+	dw JoltikFootprint
+	dw GalvantulaFootprint
 	dw CrobatFootprint
 	dw ChinchouFootprint
 	dw LanturnFootprint

@@ -837,15 +837,15 @@ LedianMini::     INCBIN "gfx/minis/ledian.2bpp.lz"
 LedianMiniMask:: INCBIN "gfx/minis/ledian_mask.1bpp.lz"
 LedianIcon::     INCBIN "gfx/icons/ledian.2bpp.lz"
 
-SECTION "Spinarak Mini Icon", ROMX
-SpinarakMini::     INCBIN "gfx/minis/spinarak.2bpp.lz"
-SpinarakMiniMask:: INCBIN "gfx/minis/spinarak_mask.1bpp.lz"
-SpinarakIcon::     INCBIN "gfx/icons/spinarak.2bpp.lz"
+SECTION "Joltik Mini Icon", ROMX
+JoltikMini::     INCBIN "gfx/minis/joltik.2bpp.lz"
+JoltikMiniMask:: INCBIN "gfx/minis/joltik_mask.1bpp.lz"
+JoltikIcon::     INCBIN "gfx/icons/joltik.2bpp.lz"
 
-SECTION "Ariados Mini Icon", ROMX
-AriadosMini::     INCBIN "gfx/minis/ariados.2bpp.lz"
-AriadosMiniMask:: INCBIN "gfx/minis/ariados_mask.1bpp.lz"
-AriadosIcon::     INCBIN "gfx/icons/ariados.2bpp.lz"
+SECTION "Galvantula Mini Icon", ROMX
+GalvantulaMini::     INCBIN "gfx/minis/galvantula.2bpp.lz"
+GalvantulaMiniMask:: INCBIN "gfx/minis/galvantula_mask.1bpp.lz"
+GalvantulaIcon::     INCBIN "gfx/icons/galvantula.2bpp.lz"
 
 SECTION "Crobat Mini Icon", ROMX
 CrobatMini::     INCBIN "gfx/minis/crobat.2bpp.lz"

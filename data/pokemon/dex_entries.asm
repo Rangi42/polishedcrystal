@@ -1662,8 +1662,8 @@ LedianPokedexEntry::
 	next "drifts off into"
 	next "a deep slumber.@"
 
-SECTION "SpinarakPokedexEntry", ROMX
-SpinarakPokedexEntry::
+SECTION "JoltikPokedexEntry", ROMX
+JoltikPokedexEntry::
 	db "String Spit@"
 	db   "If prey becomes"
 	next "ensnared in its"
@@ -1672,8 +1672,8 @@ SpinarakPokedexEntry::
 	next "motionlessly until"
 	next "it becomes dark.@"
 
-SECTION "AriadosPokedexEntry", ROMX
-AriadosPokedexEntry::
+SECTION "GalvantulaPokedexEntry", ROMX
+GalvantulaPokedexEntry::
 	db "Long Leg@"
 	db   "Rather than making"
 	next "a nest in one"

@@ -356,10 +356,10 @@
 	; wildmon 59, PIKACHU
 	; ; nite
 	; wildmon 55, NOCTOWL
-	; wildmon 54, ARIADOS
+	; wildmon 54, GALVANTULA
 	; wildmon 57, NOCTOWL
 	; wildmon 57, NOCTOWL
-	; wildmon 56, ARIADOS
+	; wildmon 56, GALVANTULA
 	; wildmon 58, NOCTOWL
 	; wildmon 59, NOCTOWL
 	; end_grass_wildmons
@@ -384,10 +384,10 @@
 	; wildmon 59, PIKACHU
 	; ; nite
 	; wildmon 55, NOCTOWL
-	; wildmon 54, ARIADOS
+	; wildmon 54, GALVANTULA
 	; wildmon 57, NOCTOWL
 	; wildmon 57, NOCTOWL
-	; wildmon 56, ARIADOS
+	; wildmon 56, GALVANTULA
 	; wildmon 58, NOCTOWL
 	; wildmon 59, NOCTOWL
 	; end_grass_wildmons
@@ -412,10 +412,10 @@
 	; wildmon 60, PIKACHU
 	; ; nite
 	; wildmon 57, NOCTOWL
-	; wildmon 57, ARIADOS
+	; wildmon 57, GALVANTULA
 	; wildmon 55, NOCTOWL
 	; wildmon 55, NOCTOWL
-	; wildmon 56, ARIADOS
+	; wildmon 56, GALVANTULA
 	; wildmon 59, NOCTOWL
 	; wildmon 60, NOCTOWL
 	; end_grass_wildmons

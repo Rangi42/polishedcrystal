@@ -42,8 +42,8 @@ NewPokedexOrder:
 	dp BEEDRILL
 	dp LEDYBA
 	dp LEDIAN
-	dp SPINARAK
-	dp ARIADOS
+	dp JOLTIK
+	dp GALVANTULA
 	dp GEODUDE
 	dp GRAVELER
 	dp GOLEM

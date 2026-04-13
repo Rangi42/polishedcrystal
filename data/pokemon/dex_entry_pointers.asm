@@ -167,8 +167,8 @@ PokedexDataPointerTable:
 	dba NoctowlPokedexEntry
 	dba LedybaPokedexEntry
 	dba LedianPokedexEntry
-	dba SpinarakPokedexEntry
-	dba AriadosPokedexEntry
+	dba JoltikPokedexEntry
+	dba GalvantulaPokedexEntry
 	dba CrobatPokedexEntry
 	dba ChinchouPokedexEntry
 	dba LanturnPokedexEntry

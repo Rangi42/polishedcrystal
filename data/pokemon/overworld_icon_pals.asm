@@ -170,8 +170,8 @@ OverworldMonIconColors::
 	iconpal BROWN, GREEN ; NOCTOWL
 	iconpal RED, PINK ; LEDYBA
 	iconpal RED, PINK ; LEDIAN
-	iconpal GREEN, PURPLE ; SPINARAK
-	iconpal PURPLE, BLUE ; ARIADOS
+	iconpal GREEN, PURPLE ; JOLTIK
+	iconpal PURPLE, BLUE ; GALVANTULA
 	iconpal PURPLE, RED ; CROBAT
 	iconpal BLUE, TEAL ; CHINCHOU
 	iconpal BLUE, TEAL ; LANTURN

@@ -167,8 +167,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  20, 100 ; Noctowl
 	db   1,  17 ; Ledyba
 	db  18, 100 ; Ledian
-	db   1,  21 ; Spinarak
-	db  22, 100 ; Ariados
+	db   1,  21 ; Joltik
+	db  22, 100 ; Galvantula
 	db  32, 100 ; Crobat
 	db   1,  26 ; Chinchou
 	db  27, 100 ; Lanturn

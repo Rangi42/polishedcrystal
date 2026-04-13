@@ -172,8 +172,8 @@ PokemonCries::
 	mon_cry CRY_HOOTHOOT,    $000,  $1a0 ; Noctowl
 	mon_cry CRY_LEDYBA,      $000,  $0de ; Ledyba
 	mon_cry CRY_LEDYBA,     -$096,  $138 ; Ledian
-	mon_cry CRY_SPINARAK,    $011,  $200 ; Spinarak
-	mon_cry CRY_SPINARAK,   -$0ae,  $1e2 ; Ariados
+	mon_cry CRY_JOLTIK,    $011,  $200 ; Joltik
+	mon_cry CRY_JOLTIK,   -$0ae,  $1e2 ; Galvantula
 	mon_cry CRY_GLUTTLE,   -$010,  $140 ; Crobat
 	mon_cry CRY_CYNDAQUIL,   $3c9,  $140 ; Chinchou
 	mon_cry CRY_CYNDAQUIL,   $2d0,  $110 ; Lanturn
@@ -252,7 +252,7 @@ PokemonCries::
 	mon_cry CRY_ENTEI,       $000,  $1a0 ; Entei
 	mon_cry CRY_MAGCARGO,    $000,  $180 ; Suicune
 	mon_cry CRY_RAIKOU,      $05f,  $0d0 ; Larvitar
-	mon_cry CRY_SPINARAK,   -$1db,  $150 ; Pupitar
+	mon_cry CRY_JOLTIK,   -$1db,  $150 ; Pupitar
 	mon_cry CRY_RAIKOU,     -$100,  $180 ; Tyranitar
 	mon_cry CRY_TYPHLOSION,  $000,  $100 ; Lugia
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh

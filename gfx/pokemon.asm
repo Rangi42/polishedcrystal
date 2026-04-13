@@ -528,13 +528,13 @@ SECTION "Ledian Pics", ROMX
 LedianFrontpic: INCBIN "gfx/pokemon/ledian/front.animated.2bpp.lz"
 LedianBackpic:  INCBIN "gfx/pokemon/ledian/back.2bpp.lz"
 
-SECTION "Spinarak Pics", ROMX
-SpinarakFrontpic: INCBIN "gfx/pokemon/spinarak/front.animated.2bpp.lz"
-SpinarakBackpic:  INCBIN "gfx/pokemon/spinarak/back.2bpp.lz"
+SECTION "Joltik Pics", ROMX
+JoltikFrontpic: INCBIN "gfx/pokemon/joltik/front.animated.2bpp.lz"
+JoltikBackpic:  INCBIN "gfx/pokemon/joltik/back.2bpp.lz"
 
-SECTION "Ariados Pics", ROMX
-AriadosFrontpic: INCBIN "gfx/pokemon/ariados/front.animated.2bpp.lz"
-AriadosBackpic:  INCBIN "gfx/pokemon/ariados/back.2bpp.lz"
+SECTION "Galvantula Pics", ROMX
+GalvantulaFrontpic: INCBIN "gfx/pokemon/galvantula/front.animated.2bpp.lz"
+GalvantulaBackpic:  INCBIN "gfx/pokemon/galvantula/back.2bpp.lz"
 
 SECTION "Crobat Pics", ROMX
 CrobatFrontpic: INCBIN "gfx/pokemon/crobat/front.animated.2bpp.lz"

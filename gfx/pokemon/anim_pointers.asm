@@ -166,8 +166,8 @@ AnimationPointers:
 	dw NoctowlAnimation
 	dw LedybaAnimation
 	dw LedianAnimation
-	dw SpinarakAnimation
-	dw AriadosAnimation
+	dw JoltikAnimation
+	dw GalvantulaAnimation
 	dw CrobatAnimation
 	dw ChinchouAnimation
 	dw LanturnAnimation

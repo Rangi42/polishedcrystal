@@ -166,8 +166,8 @@ EggSpeciesMovesPointers::
 	dw HoothootEggSpeciesMoves          ; Noctowl
 	dw LedybaEggSpeciesMoves            ; Ledyba
 	dw LedybaEggSpeciesMoves            ; Ledian
-	dw SpinarakEggSpeciesMoves          ; Spinarak
-	dw SpinarakEggSpeciesMoves          ; Ariados
+	dw JoltikEggSpeciesMoves          ; Joltik
+	dw JoltikEggSpeciesMoves          ; Galvantula
 	dw ZubatEggSpeciesMoves             ; Crobat
 	dw ChinchouEggSpeciesMoves          ; Chinchou
 	dw ChinchouEggSpeciesMoves          ; Lanturn
