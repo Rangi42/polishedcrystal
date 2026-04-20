@@ -33,6 +33,7 @@ SpawnPoints:
 	spawn AZALEA_TOWN,                15, 10
 	spawn CIANWOOD_CITY,              23, 44
 	spawn GOLDENROD_CITY,             18, 28
+	spawn STORMY_BEACH,				  30, 9
 	spawn OLIVINE_CITY,               13, 18
 	spawn ECRUTEAK_CITY,              23, 28
 	spawn SNOWTOP_MOUNTAIN_OUTSIDE,   17, 34
