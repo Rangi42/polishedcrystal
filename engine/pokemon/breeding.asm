@@ -247,15 +247,15 @@ OverworldHatchEgg::
 	call ReanchorMap
 	call LoadStandardMenuHeader
 	call HatchEggs
-	call ClearSavedObjPals
-	call DisableDynPalUpdates
+	farcall ClearSavedObjPals
+	farcall DisableDynPalUpdates
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
 	call CloseText
 	call RestoreSprites
 	call UpdateSprites
-	call EnableDynPalUpdatesNoApply
+	farcall EnableDynPalUpdatesNoApply
 	call FinishExitMenu
 	farcall Script_refreshmap
 	jmp RestartMapMusic

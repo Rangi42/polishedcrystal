@@ -2,6 +2,7 @@ StormyBeach_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, StormyBeachFlypointCallback
 
 	def_warp_events
 	warp_event 30,  4, MURKY_SWAMP, 1
@@ -27,6 +28,10 @@ StormyBeach_MapScriptHeader:
 	smashrock_event 17, 7
 	smashrock_event 12, 9
 	smashrock_event 18, 10
+
+StormyBeachFlypointCallback:
+	setflag ENGINE_FLYPOINT_STORMY_BEACH
+	endcallback
 
 GenericTrainerSwimmerfBarbara:
 	generictrainer SWIMMERF, BARBARA, EVENT_BEAT_SWIMMERF_BARBARA, .SeenText, .BeatenText

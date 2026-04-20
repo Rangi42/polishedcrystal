@@ -103,6 +103,7 @@ EngineFlags:
 	engine_flag wVisitedSpawns, SPAWN_AZALEA
 	engine_flag wVisitedSpawns, SPAWN_CIANWOOD
 	engine_flag wVisitedSpawns, SPAWN_GOLDENROD
+	engine_flag wVisitedSpawns, SPAWN_STORMY_BEACH
 	engine_flag wVisitedSpawns, SPAWN_OLIVINE
 	engine_flag wVisitedSpawns, SPAWN_ECRUTEAK
 	engine_flag wVisitedSpawns, SPAWN_SNOWTOP
