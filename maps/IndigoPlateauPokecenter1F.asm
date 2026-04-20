@@ -55,6 +55,7 @@ PrepareEliteFourCallback:
 	clearevent EVENT_BEAT_ELITE_4_BRUNO
 	clearevent EVENT_BEAT_ELITE_4_KAREN
 	clearevent EVENT_BEAT_CHAMPION_LANCE
+	clearevent EVENT_TELEPORT_GUY
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
 	endcallback
 
