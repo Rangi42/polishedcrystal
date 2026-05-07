@@ -115,18 +115,18 @@ ElmPhonePokerusText:
 	para "It multiplies fast"
 	line "and infects other"
 
-	para "#mon too. But"
-	line "that's all."
+	para "#mon too. Infected"
+  line "#mon seem to put"
+  
+  para "more effort into"
+  line "their training."
 
-	para "It doesn't seem to"
-	line "do anything, and"
+  para "Well, it isn't"
+  line "harmful, and it"
 
-	para "it goes away over"
-	line "time."
-
-	para "I guess it's"
-	line "nothing to worry"
-	cont "about. Bye!"
+  para "goes away with"
+  line "time, so don't"
+  cont "worry! Bye!"
 	done
 
 ElmPhoneDisasterText:
