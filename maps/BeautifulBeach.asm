@@ -30,7 +30,7 @@ BeautifulBeachWelcomeSignText:
 	line "Shamouti Island!"
 
 	para "The main island"
-	line "is just east."
+	line "is just west."
 	done
 
 BeautifulBeachVillaSignText:
