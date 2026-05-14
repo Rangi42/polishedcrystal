@@ -104,7 +104,7 @@ DoMovementFunction:
 	movement SetStepType,        STEP_TYPE_TELEPORT_FROM  ; 49
 	movement SetStepType,        STEP_TYPE_TELEPORT_TO    ; 4a
 	movement SetStepType,        STEP_TYPE_SKYFALL        ; 4b
-	movement DigStep                                      ; 4c
+	movement DigStep,            STEP_TYPE_SLEEP          ; 4c
 	movement BumpStep,           1                        ; 4d
 	movement FishingStep,        STEP_TYPE_GOT_BITE       ; 4e
 	movement FishingStep,        STEP_TYPE_FROM_MOVEMENT  ; 4f
@@ -113,7 +113,7 @@ DoMovementFunction:
 	movement ShakeScreenStep                              ; 52
 	movement ShakeTree,          24                       ; 53
 	movement SmashRock                                    ; 54
-	movement ReturnDig                                    ; 55
+	movement ReturnDig,          STEP_TYPE_RETURN_DIG     ; 55
 	movement SetStepType,        STEP_TYPE_SKYFALL_TOP    ; 56
 	movement RunStep,            STEP_RUN << 2 | DOWN     ; 57
 	movement RunStep,            STEP_RUN << 2 | UP       ; 58
@@ -138,50 +138,37 @@ SetStepType:
 	ret
 
 DigStep:
-	call GetSpriteDirection
-	rlca
-	rlca
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	ld [hl], a
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_SPIN
-	call JumpMovementPointer
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	ld [hl], a
+	; fallthrough
+ReturnDig:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
-	ld [hl], STEP_TYPE_SLEEP
-	ld hl, OBJECT_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ret
+	ld [hl], a
 
-ReturnDig:
 	call GetSpriteDirection
 	rlca
 	rlca
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld [hl], a
+
 	call JumpMovementPointer
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
+
 	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld [hl], STANDING
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_RETURN_DIG
 	ret
 
 FishingStep:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_FISHING
+
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], a
@@ -192,9 +179,11 @@ SmashRock:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
+
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
+
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_ROCK_SMASH
@@ -225,7 +214,6 @@ RemoveObject:
 	cp [hl]
 	jr nz, .not_leading
 	ld [hl], -1
-
 .not_leading
 	ld hl, wStateFlags
 	res SCRIPTED_MOVEMENT_STATE_F, [hl]
