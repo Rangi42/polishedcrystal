@@ -386,6 +386,11 @@ SECTION "Tileset Graphics - gym vram1", ROMX
 TilesetGymGFX1:: INCBIN "gfx/tilesets/gym.2bpp.vram1.lzp"
 
 
+SECTION "Tileset Graphics - gym vram2", ROMX
+
+TilesetGymGFX2:: INCBIN "gfx/tilesets/gym.2bpp.vram2.lzp"
+
+
 SECTION "Tileset Data - gym", ROMX
 
 TilesetGymMeta:: INCBIN "data/tilesets/gym_metatiles.bin.lzp"
@@ -921,7 +926,6 @@ TilesetPokeCenterGFX2::
 TilesetPokeComCenterGFX2::
 TilesetMartGFX2::
 TilesetGateGFX2::
-TilesetGymGFX2::
 TilesetMagnetTrainGFX2::
 TilesetChampionsRoomGFX2::
 TilesetPortGFX2::

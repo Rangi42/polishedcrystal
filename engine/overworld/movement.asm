@@ -354,6 +354,13 @@ _ContinueStep:
 	bit INVISIBLE_F, [hl]
 	jr nz, SetWalkStepType
 
+	ld a, [wFollowInSync]
+	and a
+	jr z, .no_sync
+	ld de, SFX_SQUEAK ; for Spinarak carts in Azalea Gym
+	call PlaySFX
+.no_sync
+
 	ld hl, OBJECT_TILE_COLLISION
 	add hl, bc
 	ld a, [hl]

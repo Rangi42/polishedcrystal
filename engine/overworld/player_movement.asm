@@ -549,7 +549,7 @@ DoPlayerMovement::
 	big_step_up
 	big_step_left
 	big_step_right
-.Run
+.Run:
 	run_step_down
 	run_step_up
 	run_step_left

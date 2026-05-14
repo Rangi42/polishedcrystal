@@ -839,9 +839,13 @@ GetRelativeFacing::
 	ret
 
 QueueFollowerFirstStep:
+	ld a, [wFollowInSync]
+	and a
+	jr nz, .sync
 	call .QueueFirstStep
 	jr c, .same
 	ld [wFollowMovementQueue], a
+.sync
 	xor a
 	ld [wFollowerMovementQueueLength], a
 	ret
