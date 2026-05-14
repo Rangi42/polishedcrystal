@@ -1953,6 +1953,11 @@ ApplyMovementToFollower:
 	ld d, 0
 	ld hl, wFollowMovementQueue
 	add hl, de
+	ld a, [wFollowInSync]
+	and a
+	jr z, .no_sync
+	dec hl
+.no_sync
 	pop af
 	ld [hl], a
 	ret

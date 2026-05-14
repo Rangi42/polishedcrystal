@@ -230,7 +230,7 @@ ENDM
 	map_const CHARCOAL_KILN,                               5,  4 ;  2
 	map_const AZALEA_MART,                                 6,  4 ;  3
 	map_const KURTS_HOUSE,                                 8,  4 ;  4
-	map_const AZALEA_GYM,                                  5,  8 ;  5
+	map_const AZALEA_GYM,                                  7, 12 ;  5
 	map_const ROUTE_33,                                   10,  9 ;  6
 	map_const AZALEA_TOWN,                                20,  9 ;  7
 
