@@ -100,38 +100,35 @@ DoMovementFunction:
 	movement SleepStep,          8                        ; 45
 	movement LongSleepStep                                ; 46
 	movement EndStep                                      ; 47
-	movement ResumeStep                                   ; 48
-	movement RemoveObject                                 ; 49
-	movement LoopStep                                     ; 4a
-	movement Step4B                                       ; 4b
-	movement SetStepType,        STEP_TYPE_TELEPORT_FROM  ; 4c
-	movement SetStepType,        STEP_TYPE_TELEPORT_TO    ; 4d
-	movement SetStepType,        STEP_TYPE_SKYFALL        ; 4e
-	movement DigStep                                      ; 4f
-	movement BumpStep,           1                        ; 50
-	movement FishingStep,        STEP_TYPE_GOT_BITE       ; 51
-	movement FishingStep,        STEP_TYPE_FROM_MOVEMENT  ; 52
-	movement HideEmote                                    ; 53
-	movement ShowEmote                                    ; 54
-	movement ShakeScreenStep                              ; 55
-	movement ShakeTree,          24                       ; 56
-	movement SmashRock                                    ; 57
-	movement ReturnDig                                    ; 58
-	movement SetStepType,        STEP_TYPE_SKYFALL_TOP    ; 59
-	movement RunStep,            STEP_RUN << 2 | DOWN     ; 5a
-	movement RunStep,            STEP_RUN << 2 | UP       ; 5b
-	movement RunStep,            STEP_RUN << 2 | LEFT     ; 5c
-	movement RunStep,            STEP_RUN << 2 | RIGHT    ; 5d
-	movement NormalStep,         STEP_RUN << 2 | DOWN     ; 5e
-	movement NormalStep,         STEP_RUN << 2 | UP       ; 5f
-	movement NormalStep,         STEP_RUN << 2 | LEFT     ; 60
-	movement NormalStep,         STEP_RUN << 2 | RIGHT    ; 61
-	movement DiagonalStairsStep, STEP_WALK << 2 | DOWN    ; 62
-	movement DiagonalStairsStep, STEP_WALK << 2 | UP      ; 63
-	movement DiagonalStairsStep, STEP_WALK << 2 | LEFT    ; 64
-	movement DiagonalStairsStep, STEP_WALK << 2 | RIGHT   ; 65
-	movement ShakeExeggutor,     64                       ; 66
-	movement NormalStep,         STEP_WALK << 2 | RIGHT   ; 67
+	movement RemoveObject                                 ; 48
+	movement SetStepType,        STEP_TYPE_TELEPORT_FROM  ; 49
+	movement SetStepType,        STEP_TYPE_TELEPORT_TO    ; 4a
+	movement SetStepType,        STEP_TYPE_SKYFALL        ; 4b
+	movement DigStep                                      ; 4c
+	movement BumpStep,           1                        ; 4d
+	movement FishingStep,        STEP_TYPE_GOT_BITE       ; 4e
+	movement FishingStep,        STEP_TYPE_FROM_MOVEMENT  ; 4f
+	movement HideEmote                                    ; 50
+	movement ShowEmote                                    ; 51
+	movement ShakeScreenStep                              ; 52
+	movement ShakeTree,          24                       ; 53
+	movement SmashRock                                    ; 54
+	movement ReturnDig                                    ; 55
+	movement SetStepType,        STEP_TYPE_SKYFALL_TOP    ; 56
+	movement RunStep,            STEP_RUN << 2 | DOWN     ; 57
+	movement RunStep,            STEP_RUN << 2 | UP       ; 58
+	movement RunStep,            STEP_RUN << 2 | LEFT     ; 59
+	movement RunStep,            STEP_RUN << 2 | RIGHT    ; 5a
+	movement NormalStep,         STEP_RUN << 2 | DOWN     ; 5b
+	movement NormalStep,         STEP_RUN << 2 | UP       ; 5c
+	movement NormalStep,         STEP_RUN << 2 | LEFT     ; 5d
+	movement NormalStep,         STEP_RUN << 2 | RIGHT    ; 5e
+	movement DiagonalStairsStep, STEP_WALK << 2 | DOWN    ; 5f
+	movement DiagonalStairsStep, STEP_WALK << 2 | UP      ; 60
+	movement DiagonalStairsStep, STEP_WALK << 2 | LEFT    ; 61
+	movement DiagonalStairsStep, STEP_WALK << 2 | RIGHT   ; 62
+	movement ShakeExeggutor,     64                       ; 63
+	movement NormalStep,         STEP_WALK << 2 | RIGHT   ; 64
 	assert_table_length NUM_MOVEMENT_CMDS
 
 SetStepType:
@@ -203,7 +200,6 @@ SmashRock:
 	ld [hl], STEP_TYPE_ROCK_SMASH
 	ret
 
-ResumeStep:
 EndStep:
 	call RestoreDefaultMovement
 	ld hl, OBJECT_MOVEMENT_TYPE
@@ -231,19 +227,6 @@ RemoveObject:
 	ld [hl], -1
 
 .not_leading
-	ld hl, wStateFlags
-	res SCRIPTED_MOVEMENT_STATE_F, [hl]
-	ret
-
-Step4B:
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], OBJECT_ACTION_STAND
-
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_STANDING
-
 	ld hl, wStateFlags
 	res SCRIPTED_MOVEMENT_STATE_F, [hl]
 	ret
@@ -310,12 +293,6 @@ _ShakeStep:
 	add hl, bc
 	ld [hl], STANDING
 	ret
-
-LoopStep:
-	ld hl, OBJECT_MOVEMENT_INDEX
-	add hl, bc
-	ld [hl], $0
-	jmp ContinueReadingMovement
 
 ObjectFlags1Step:
 ; $86 + 8 * <FLAG>_F = res <FLAG>_F, [hl]
