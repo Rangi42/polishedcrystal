@@ -1885,15 +1885,9 @@ UpdateDiagonalStairsPosition:
 	ret
 
 GetPlayerNextMovementByte:
-; copy [wPlayerNextMovement] to [wPlayerMovement]
-	ld a, [wPlayerNextMovement]
-	ld hl, wPlayerMovement
-	ld [hl], a
-; load [wPlayerNextMovement] with movement_step_sleep_1
-	ld a, movement_step_sleep_1
-	ld [wPlayerNextMovement], a
-; recover the previous value of [wPlayerNextMovement]
+	ld hl, wPlayerNextMovement
 	ld a, [hl]
+	ld [hl], movement_step_sleep_1
 	ret
 
 GetMovementByte:
@@ -2455,7 +2449,6 @@ HandleNPCStep::
 RefreshPlayerSprite:
 	ld a, movement_step_sleep_1
 	ld [wPlayerNextMovement], a
-	ld [wPlayerMovement], a
 	xor a
 	ld [wPlayerTurningDirection], a
 	ld [wPlayerStepFrame], a
