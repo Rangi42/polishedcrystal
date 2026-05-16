@@ -352,7 +352,7 @@ SpinarakCart1Script:
 rept 4
 	step_right
 endr
-	step_sleep_4
+	half1_step_up
 rept 5
 	step_right
 endr
@@ -360,11 +360,11 @@ endr
 rept 5
 	step_left
 endr
-	step_up
+	half2_step_up
 	step_end
 
 .CrawlDownMovement:
-	step_down
+	half1_step_down
 rept 5
 	step_right
 endr
@@ -372,7 +372,7 @@ endr
 rept 5
 	step_left
 endr
-	step_sleep_4
+	half2_step_down
 rept 4
 	step_left
 endr
@@ -406,19 +406,19 @@ endr
 rept 4
 	step_right
 endr
-	step_sleep_4
+	half1_step_up
 rept 5
 	step_right
 endr
-	step_up
+	half2_step_up
 	step_end
 
 .CrawlDownMovement:
-	step_down
+	half1_step_down
 rept 5
 	step_left
 endr
-	step_sleep_4
+	half2_step_down
 rept 4
 	step_left
 endr
@@ -449,10 +449,11 @@ SpinarakCart3Script:
 
 .CrawlUpMovement:
 	step_up
+	half1_step_up
 rept 5
 	step_left
 endr
-	step_up
+	half2_step_up
 rept 4
 	step_left
 endr
@@ -464,10 +465,11 @@ endr
 rept 4
 	step_right
 endr
-	step_down
+	half1_step_down
 rept 5
 	step_right
 endr
+	half2_step_down
 	step_down
 	step_end
 
@@ -663,13 +665,14 @@ SpinarakCart4Script:
 
 .CrawlUpLeftMovement1:
 	step_up
+	half1_step_up
 rept 4
 	step_right
 endr
-	step_up
 	step_end
 
 .CrawlUpLeftMovement2_BlueEnabled:
+	half2_step_up
 rept 5
 	step_right
 endr
@@ -677,11 +680,16 @@ endr
 	step_end
 
 .CrawlUpLeftMovement2_BlueDisabled_RedEnabled:
+	step_up
 rept 4
 	step_left
 endr
+	half2_step_up
+	step_end
+
 .CrawlUpLeftMovement2_BlueDisabled_RedDisabled:
 	step_up
+	half2_step_up
 	step_end
 
 .CrawlUpMiddleMovement1:
@@ -689,10 +697,8 @@ endr
 rept 5
 	step_right
 endr
-	step_up
-	step_end
-
 .CrawlUpMiddleMovement2_BlueDisabled:
+.CrawlUpMiddleMovement3_BlueEnabled_RedDisabled:
 	step_up
 	step_end
 
@@ -703,12 +709,11 @@ endr
 	step_end
 
 .CrawlUpMiddleMovement3_BlueEnabled_RedEnabled:
-	step_sleep_4
+	half1_step_up
 rept 4
 	step_left
 endr
-.CrawlUpMiddleMovement3_BlueEnabled_RedDisabled:
-	step_up
+	half2_step_up
 	step_end
 
 .CrawlUpRightMovement1:
@@ -716,7 +721,7 @@ endr
 rept 5
 	step_left
 endr
-	step_sleep_4
+	half1_step_up
 rept 4
 	step_left
 endr
@@ -728,16 +733,16 @@ rept 4
 	step_right
 endr
 .CrawlUpRightMovement2_RedDisabled:
-	step_up
+	half2_step_up
 	step_end
 
 .CrawlDownLeftMovement_RedDisabled:
 	step_down
-	step_down
+	half1_step_down
 rept 4
 	step_right
 endr
-	step_sleep_4
+	half2_step_down
 rept 5
 	step_right
 endr
@@ -745,7 +750,7 @@ endr
 	step_end
 
 .CrawlDownLeftMovement_RedEnabled_BlueDisabled:
-	step_down
+	half1_step_down
 rept 4
 	step_right
 endr
@@ -754,14 +759,15 @@ rept 4
 	step_left
 endr
 	step_down
+	half2_step_down
 	step_end
 
 .CrawlDownLeftMovement_RedEnabled_BlueEnabled:
-	step_down
+	half1_step_down
 rept 4
 	step_right
 endr
-	step_sleep_4
+	half2_step_down
 rept 5
 	step_right
 endr
@@ -773,7 +779,7 @@ endr
 	step_end
 
 .CrawlDownMiddleMovement_RedEnabled:
-	step_down
+	half1_step_down
 rept 4
 	step_left
 endr
@@ -781,7 +787,7 @@ endr
 rept 4
 	step_right
 endr
-	step_sleep_4
+	half2_step_down
 rept 5
 	step_right
 endr
@@ -802,11 +808,12 @@ endr
 
 .CrawlDownMiddleMovement_RedDisabled_BlueDisabled:
 	step_down
-	step_down
+	half1_step_down
 rept 4
 	step_left
 endr
 	step_down
+	half2_step_down
 	step_end
 
 .CrawlDownRightMovement_BlueEnabled:
@@ -814,11 +821,12 @@ endr
 rept 5
 	step_left
 endr
-	step_down
+	half1_step_down
 rept 4
 	step_left
 endr
 	step_down
+	half2_step_down
 	step_end
 
 .CrawlDownRightMovement_BlueDisabled:
