@@ -135,6 +135,11 @@ DoMovementFunction:
 	movement Half2Step,          STEP_WALK << 2 | DOWN    ; 68
 	assert_table_length NUM_MOVEMENT_CMDS
 
+FishingStep:
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_FISHING
+	; fallthrough
 SetStepType:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -166,16 +171,6 @@ ReturnDig:
 	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld [hl], STANDING
-	ret
-
-FishingStep:
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], OBJECT_ACTION_FISHING
-
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], a
 	ret
 
 SmashRock:
@@ -227,10 +222,6 @@ LongSleepStep:
 	call JumpMovementPointer
 	; fallthrough
 SleepStep:
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	ld [hl], a
-
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_SLEEP
@@ -238,6 +229,11 @@ SleepStep:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
+	; fallthrough
+_ContinueDurationStep:
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld [hl], a
 
 	ld hl, OBJECT_WALKING
 	add hl, bc
@@ -245,10 +241,6 @@ SleepStep:
 	ret
 
 BumpStep:
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	ld [hl], a
-
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_BUMP
@@ -257,10 +249,7 @@ BumpStep:
 	add hl, bc
 	ld [hl], OBJECT_ACTION_BUMP
 
-	ld hl, OBJECT_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ret
+	jr _ContinueDurationStep
 
 ShakeExeggutor:
 	ld d, OBJECT_ACTION_SHAKE_EXEGGUTOR
@@ -337,11 +326,19 @@ TurnStep:
 	ret
 
 RunStep:
-	ld d, OBJECT_ACTION_RUN
+	lb de, OBJECT_ACTION_RUN, TRUE
+	jr _ContinueStep
+
+TurningStep:
+	lb de, OBJECT_ACTION_SPIN, FALSE
+	jr _ContinueStep
+
+SlideStep:
+	lb de, OBJECT_ACTION_STAND, FALSE
 	jr _ContinueStep
 
 NormalStep:
-	ld d, OBJECT_ACTION_STEP
+	lb de, OBJECT_ACTION_STEP, TRUE
 	; fallthrough
 _ContinueStep:
 	push de
@@ -353,9 +350,10 @@ _ContinueStep:
 	add hl, bc
 	ld [hl], d
 
-	call DoStepSideEffect
-	; fallthrough
-_SetWalkStepType:
+	ld a, e
+	and a
+	call nz, DoStepSideEffect
+
 	ld hl, wCenteredObject
 	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
@@ -387,24 +385,6 @@ DoStepSideEffect:
 	cp COLL_PUDDLE
 	jmp z, SplashPuddle
 	ret
-
-TurningStep:
-	call InitStep
-	call UpdateTallGrassFlags
-
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], OBJECT_ACTION_SPIN
-	jr _SetWalkStepType
-
-SlideStep:
-	call InitStep
-	call UpdateTallGrassFlags
-
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], OBJECT_ACTION_STAND
-	jr _SetWalkStepType
 
 JumpStep:
 	call InitStep
