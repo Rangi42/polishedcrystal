@@ -129,6 +129,10 @@ DoMovementFunction:
 	movement DiagonalStairsStep, STEP_WALK << 2 | RIGHT   ; 62
 	movement ShakeExeggutor,     64                       ; 63
 	movement NormalStep,         STEP_WALK << 2 | RIGHT   ; 64
+	movement Half1Step,          STEP_WALK << 2 | UP      ; 65
+	movement Half1Step,          STEP_WALK << 2 | DOWN    ; 66
+	movement Half2Step,          STEP_WALK << 2 | UP      ; 67
+	movement Half2Step,          STEP_WALK << 2 | DOWN    ; 68
 	assert_table_length NUM_MOVEMENT_CMDS
 
 SetStepType:
@@ -343,38 +347,15 @@ _ContinueStep:
 	push de
 	call InitStep
 	call UpdateTallGrassFlags
+	pop de
+
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], OBJECT_ACTION_STEP
-	pop de
 	ld [hl], d
 
-	ld hl, OBJECT_FLAGS1
-	add hl, bc
-	bit INVISIBLE_F, [hl]
-	jr nz, SetWalkStepType
-
-	ld a, [wFollowInSync]
-	and a
-	jr z, .no_sync
-	ld de, SFX_SQUEAK ; for Spinarak carts in Azalea Gym
-	call PlaySFX
-.no_sync
-
-	ld hl, OBJECT_TILE_COLLISION
-	add hl, bc
-	ld a, [hl]
-	cp COLL_LONG_GRASS
-	jr z, .shake_grass
-	cp COLL_TALL_GRASS
-	jr z, .shake_grass
-	cp COLL_PUDDLE
-	call z, SplashPuddle
-	jr SetWalkStepType
-
-.shake_grass
-	call ShakeGrass
-SetWalkStepType:
+	call DoStepSideEffect
+	; fallthrough
+_SetWalkStepType:
 	ld hl, wCenteredObject
 	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
@@ -385,6 +366,28 @@ SetWalkStepType:
 	ld [hl], STEP_TYPE_PLAYER_WALK
 	ret
 
+DoStepSideEffect:
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	bit INVISIBLE_F, [hl]
+	ret nz
+	ld a, [wFollowInSync]
+	and a
+	jr z, .no_sync
+	ld de, SFX_SQUEAK ; for Spinarak carts in Azalea Gym
+	call PlaySFX
+.no_sync
+	ld hl, OBJECT_TILE_COLLISION
+	add hl, bc
+	ld a, [hl]
+	cp COLL_LONG_GRASS
+	jmp z, ShakeGrass
+	cp COLL_TALL_GRASS
+	jmp z, ShakeGrass
+	cp COLL_PUDDLE
+	jmp z, SplashPuddle
+	ret
+
 TurningStep:
 	call InitStep
 	call UpdateTallGrassFlags
@@ -392,7 +395,7 @@ TurningStep:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_SPIN
-	jr SetWalkStepType
+	jr _SetWalkStepType
 
 SlideStep:
 	call InitStep
@@ -401,7 +404,7 @@ SlideStep:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
-	jr SetWalkStepType
+	jr _SetWalkStepType
 
 JumpStep:
 	call InitStep
@@ -447,4 +450,55 @@ DiagonalStairsStep:
 	ld [hl], STEP_TYPE_NPC_STAIRS
 	ret nz
 	ld [hl], STEP_TYPE_PLAYER_STAIRS
+	ret
+
+Half1Step:
+	ld hl, OBJECT_WALKING
+	add hl, bc
+	ld [hl], a
+
+; subset of InitStep logic
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	bit FIXED_FACING_F, [hl]
+	jr nz, .fixed_facing
+	and %00000011
+	add a
+	add a
+	ld hl, OBJECT_DIRECTION
+	add hl, bc
+	ld [hl], a
+.fixed_facing
+
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_HALF1
+
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld [hl], 8
+
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STEP
+	ret
+
+Half2Step:
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STEP
+
+	call InitStep
+	call UpdateTallGrassFlags
+
+	call DoStepSideEffect
+
+	ld hl, wCenteredObject
+	ldh a, [hMapObjectIndexBuffer]
+	cp [hl]
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_NPC_HALF2
+	ret nz
+	ld [hl], STEP_TYPE_PLAYER_HALF2
 	ret
