@@ -350,14 +350,14 @@ GetNextTile:
 
 AddStepVector:
 	call GetStepVector
-	jr nc, ApplyStepVector
+	jr nc, .ok
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld a, [hl]
 	and %1
-	jr nz, ApplyStepVector
+	jr nz, .ok
 	lb de, 0, 0
-ApplyStepVector:
+.ok
 	ld hl, OBJECT_SPRITE_X
 	add hl, bc
 	ld a, [hl]
@@ -1516,6 +1516,11 @@ StepFunction_Standing:
 	ret
 
 UndoHalfStepOffset:
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld a, [hl]
+	and %1
+	ret nz
 	ld hl, OBJECT_SPRITE_X_OFFSET
 	add hl, bc
 	ld a, [hl]
@@ -1526,14 +1531,10 @@ UndoHalfStepOffset:
 	ld a, [hl]
 	sub e
 	ld [hl], a
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	dec [hl]
 	ret
 
 StepFunction_NPCHalf2:
 	call AddStepVector
-	call ApplyStepVector
 	call UndoHalfStepOffset
 	jr _ContinueNPCWalk
 
@@ -1574,8 +1575,6 @@ StepFunction_PlayerHalf2:
 	call IncrementObjectStructField1c
 .step
 	call UpdatePlayerStep
-	call ApplyStepVector
-	call ApplyPlayerStep
 	call UndoHalfStepOffset
 	jr _ContinuePlayerWalk
 
