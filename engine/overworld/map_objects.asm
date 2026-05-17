@@ -303,7 +303,7 @@ EndSpriteMovement:
 	ld [hl], STANDING
 	ret
 
-InitStep:
+StartInitStep:
 	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld [hl], a
@@ -317,6 +317,10 @@ InitStep:
 	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld [hl], a
+	ret
+
+InitStep:
+	call StartInitStep
 GetNextTile:
 	call GetStepVector
 	ld hl, OBJECT_STEP_DURATION

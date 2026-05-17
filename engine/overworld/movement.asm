@@ -129,10 +129,10 @@ DoMovementFunction:
 	movement DiagonalStairsStep, STEP_WALK << 2 | RIGHT   ; 62
 	movement ShakeExeggutor,     64                       ; 63
 	movement NormalStep,         STEP_WALK << 2 | RIGHT   ; 64
-	movement Half1Step,          STEP_WALK << 2 | UP      ; 65
-	movement Half1Step,          STEP_WALK << 2 | DOWN    ; 66
-	movement Half2Step,          STEP_WALK << 2 | UP      ; 67
-	movement Half2Step,          STEP_WALK << 2 | DOWN    ; 68
+	movement HalfStep,           STEP_WALK << 2 | DOWN    ; 65
+	movement HalfStep,           STEP_WALK << 2 | UP      ; 66
+	movement HalfStep,           STEP_WALK << 2 | LEFT    ; 67
+	movement HalfStep,           STEP_WALK << 2 | RIGHT   ; 68
 	assert_table_length NUM_MOVEMENT_CMDS
 
 FishingStep:
@@ -432,43 +432,38 @@ DiagonalStairsStep:
 	ld [hl], STEP_TYPE_PLAYER_STAIRS
 	ret
 
-Half1Step:
+HalfStep:
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STEP
+
+	call StartInitStep
+
 	ld hl, OBJECT_WALKING
 	add hl, bc
-	ld [hl], a
-
-; subset of InitStep logic
-	ld hl, OBJECT_FLAGS1
+	assert LEFT == %10 && RIGHT == %11
+	bit 1, [hl]
+	ld hl, OBJECT_SPRITE_X_OFFSET
+	jr nz, .ok
+	assert OBJECT_SPRITE_X_OFFSET + 1 == OBJECT_SPRITE_Y_OFFSET
+	inc hl
+.ok
 	add hl, bc
-	bit FIXED_FACING_F, [hl]
-	jr nz, .fixed_facing
-	and %00000011
-	add a
-	add a
-	ld hl, OBJECT_DIRECTION
-	add hl, bc
-	ld [hl], a
-.fixed_facing
-
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_HALF1
+	ld a, [hl]
+	and a
+	jr nz, .part2
 
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 8
 
-	ld hl, OBJECT_ACTION
+	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
-	ld [hl], OBJECT_ACTION_STEP
+	ld [hl], STEP_TYPE_HALF1
 	ret
 
-Half2Step:
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], OBJECT_ACTION_STEP
-
-	call InitStep
+.part2
+	call GetNextTile
 	call UpdateTallGrassFlags
 
 	call DoStepSideEffect
