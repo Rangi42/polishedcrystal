@@ -354,14 +354,19 @@ _ContinueStep:
 	and a
 	call nz, DoStepSideEffect
 
+	ld d, STEP_TYPE_NPC_WALK
+	assert STEP_TYPE_NPC_WALK + 1 == STEP_TYPE_PLAYER_WALK
+	; fallthrough
+SetNPCOrPlayerStepType:
 	ld hl, wCenteredObject
 	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
-	ld [hl], STEP_TYPE_NPC_WALK
-	ret nz
-	ld [hl], STEP_TYPE_PLAYER_WALK
+	jr nz, .not_player
+	inc d
+.not_player
+	ld [hl], d
 	ret
 
 DoStepSideEffect:
@@ -402,15 +407,9 @@ JumpStep:
 
 	call SpawnShadow
 
-	ld hl, wCenteredObject
-	ldh a, [hMapObjectIndexBuffer]
-	cp [hl]
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_NPC_JUMP
-	ret nz
-	ld [hl], STEP_TYPE_PLAYER_JUMP
-	ret
+	ld d, STEP_TYPE_NPC_JUMP
+	assert STEP_TYPE_NPC_JUMP + 1 == STEP_TYPE_PLAYER_JUMP
+	jr SetNPCOrPlayerStepType
 
 DiagonalStairsStep:
 	call InitStep
@@ -422,15 +421,9 @@ DiagonalStairsStep:
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STEP
 
-	ld hl, wCenteredObject
-	ldh a, [hMapObjectIndexBuffer]
-	cp [hl]
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_NPC_STAIRS
-	ret nz
-	ld [hl], STEP_TYPE_PLAYER_STAIRS
-	ret
+	ld d, STEP_TYPE_NPC_STAIRS
+	assert STEP_TYPE_NPC_STAIRS + 1 == STEP_TYPE_PLAYER_STAIRS
+	jr SetNPCOrPlayerStepType
 
 HalfStep:
 	ld hl, OBJECT_ACTION
@@ -468,12 +461,6 @@ HalfStep:
 
 	call DoStepSideEffect
 
-	ld hl, wCenteredObject
-	ldh a, [hMapObjectIndexBuffer]
-	cp [hl]
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_NPC_HALF2
-	ret nz
-	ld [hl], STEP_TYPE_PLAYER_HALF2
-	ret
+	ld d, STEP_TYPE_NPC_HALF2
+	assert STEP_TYPE_NPC_HALF2 + 1 == STEP_TYPE_PLAYER_HALF2
+	jmp SetNPCOrPlayerStepType

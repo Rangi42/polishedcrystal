@@ -213,10 +213,10 @@ DEF NUM_SPRITEMOVEFN EQU const_value
 	const_def
 	const STEP_TYPE_RESET            ; 00
 	const STEP_TYPE_FROM_MOVEMENT    ; 01
-	const STEP_TYPE_NPC_WALK         ; 02
-	const STEP_TYPE_SLEEP            ; 03
-	const STEP_TYPE_STANDING         ; 04
-	const STEP_TYPE_RESTORE          ; 05
+	const STEP_TYPE_SLEEP            ; 02
+	const STEP_TYPE_STANDING         ; 03
+	const STEP_TYPE_RESTORE          ; 04
+	const STEP_TYPE_NPC_WALK         ; 05
 	const STEP_TYPE_PLAYER_WALK      ; 06
 	const STEP_TYPE_CONTINUE_WALK    ; 07
 	const STEP_TYPE_NPC_JUMP         ; 08

@@ -183,10 +183,10 @@ _HandleStepType:
 	table_width 2
 	dw StepFunction_Reset           ; STEP_TYPE_RESET
 	dw StepFunction_FromMovement    ; STEP_TYPE_FROM_MOVEMENT
-	dw StepFunction_NPCWalk         ; STEP_TYPE_NPC_WALK
 	dw StepFunction_Sleep           ; STEP_TYPE_SLEEP
 	dw StepFunction_Standing        ; STEP_TYPE_STANDING
 	dw StepFunction_Restore         ; STEP_TYPE_RESTORE
+	dw StepFunction_NPCWalk         ; STEP_TYPE_NPC_WALK
 	dw StepFunction_PlayerWalk      ; STEP_TYPE_PLAYER_WALK
 	dw StepFunction_ContinueWalk    ; STEP_TYPE_CONTINUE_WALK
 	dw StepFunction_NPCJump         ; STEP_TYPE_NPC_JUMP
