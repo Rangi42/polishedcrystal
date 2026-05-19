@@ -55,7 +55,7 @@ Route23SouthZephyrBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_ZEPHYRBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalse Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $0, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_1
@@ -73,7 +73,7 @@ Route23SouthHiveBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_HIVEBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalse Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $1, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_2
@@ -91,7 +91,7 @@ Route23SouthPlainBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_PLAINBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalse Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $2, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_3
@@ -109,7 +109,7 @@ Route23SouthFogBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_FOGBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalse Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $3, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23SOUTH_BADGE_CHECK_4
@@ -127,7 +127,7 @@ Route23SouthStormBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_STORMBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalse Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $4, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23SOUTH_NOOP
