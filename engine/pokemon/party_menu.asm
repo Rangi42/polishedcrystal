@@ -1,5 +1,5 @@
 SelectMonFromParty:
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld b, a
 	; fallthrough
 SelectTradeOrDayCareMon:

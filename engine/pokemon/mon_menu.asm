@@ -131,7 +131,7 @@ SwitchPartyMons:
 	cp 2
 	jr c, .DontSwitch
 
-	ld a, 4
+	ld a, PARTYMENUACTION_MOVE
 	ld [wPartyMenuActionText], a
 
 	farcall InitPartySwap
@@ -147,7 +147,7 @@ SwitchPartyMons:
 
 	farcall _SwitchPartyMons
 
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 
 	farcall LoadPartyMenuGFX
@@ -159,7 +159,7 @@ SwitchPartyMons:
 	ret
 
 .DontSwitch:
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	jmp CancelPokemonAction
 
@@ -381,7 +381,7 @@ SwapPartyItem:
 	ld [wSwitchMon], a
 	farcall HoldSwitchmonIcon
 	farcall InitPartyMenuNoCancel
-	ld a, 4
+	ld a, PARTYMENUACTION_MOVE
 	ld [wPartyMenuActionText], a
 	farcall WritePartyMenuTilemap
 	farcall PlacePartyMenuText
@@ -454,12 +454,8 @@ SwapPartyItem:
 	pop hl
 	ld [wCurPartySpecies], a ; load pkmn2 species
 	call UpdateMewtwoForm
-	xor a
-	ld [wPartyMenuActionText], a
-	jmp CancelPokemonAction
-
 .DontSwap
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	jmp CancelPokemonAction
 
@@ -841,7 +837,7 @@ MonMenu_FreshSnack:
 	call PrintText
 
 .finish
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	ld a, $3
 	ret

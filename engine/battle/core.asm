@@ -2566,7 +2566,7 @@ SelectBattleMon:
 
 PickPartyMonInBattle:
 .loop
-	ld a, $2 ; Which PKMN?
+	ld a, PARTYMENUACTION_SWITCH
 	ld [wPartyMenuActionText], a
 	call JumpToPartyMenuAndPrintText
 	call SelectBattleMon
@@ -4531,7 +4531,7 @@ BattleMenuPKMN_ReturnFromStats:
 	call ClearBGPalettes
 BattleMenuPKMN_Loop:
 	call SetUpBattlePartyMenu
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	call JumpToPartyMenuAndPrintText
 	call SelectBattleMon
