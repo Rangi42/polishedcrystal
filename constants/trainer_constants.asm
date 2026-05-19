@@ -1128,6 +1128,8 @@ DEF BETA EQU __trainer_class__
 
 	trainerclass REI
 
+	trainerclass FIREBREATHER_ASHES
+
 DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
 	trainerclass OMASTAR_FOSSIL
@@ -1166,9 +1168,6 @@ ENDM
 	trainerpal GAKU
 	trainerpal MASA
 	trainerpal KOJI
-
-; firebreather dick (white ashes)
-	trainerpal DICK_ASHES
 
 ; dark-skinned or tanned trainers
 	trainerpal DARK_CAMPER

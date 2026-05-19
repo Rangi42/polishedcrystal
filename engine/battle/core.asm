@@ -8971,8 +8971,9 @@ CustomTrainerActions:
 	ld a, [wOtherTrainerID]
 	cp DICK
 	ret nz
-	ld a, TRAINERPAL_DICK_ASHES
-	ld [wTrainerPal], a
+	ld a, FIREBREATHER_ASHES
+	ld [wOtherTrainerClass], a
+	ld [wTrainerClass], a
 	ret
 
 .maybe_giovanni_armored_mewtwo

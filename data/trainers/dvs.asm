@@ -151,4 +151,5 @@ TrainerClassDVsAndPersonality:
 	db 192, $EE, $EE, $EE, MALE   ; imakuni
 	db 252, PERFECT_DVS,   MALE   ; lawrence
 	db 252, $EE, $EE, $EE, FEMALE ; rei
+	db  48, $CC, $CC, $CC, MALE   ; firebreather ashes
 	assert_table_length NUM_TRAINER_CLASSES
