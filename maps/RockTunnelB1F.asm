@@ -16,15 +16,15 @@ RockTunnelB1F_MapScriptHeader:
 	bg_event  3, 18, BGEVENT_ITEM + MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION
 
 	def_object_events
-	object_event 27, 14, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFirebreatherDick, -1
+	object_event 27, 14, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFirebreatherCyd, -1
 	object_event 24, 24, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacVivian, -1
 	itemball_event  7, 17, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON
 	itemball_event  8,  4, PP_UP, 1, EVENT_ROCK_TUNNEL_B1F_PP_UP
 	itemball_event 15,  2, REVIVE, 1, EVENT_ROCK_TUNNEL_B1F_REVIVE
 	strengthboulder_event 10, 25
 
-GenericTrainerFirebreatherDick:
-	generictrainer FIREBREATHER, DICK, EVENT_BEAT_FIREBREATHER_DICK, FirebreatherDickSeenText, FirebreatherDickBeatenText
+GenericTrainerFirebreatherCyd:
+	generictrainer FIREBREATHER, CYD, EVENT_BEAT_FIREBREATHER_CYD, FirebreatherCydSeenText, FirebreatherCydBeatenText
 
 	text "A #mon that"
 	line "knows Flash is"
@@ -43,12 +43,12 @@ GenericTrainerHexManiacVivian:
 	line "effort."
 	done
 
-FirebreatherDickSeenText:
+FirebreatherCydSeenText:
 	text "I'm using fire to"
 	line "to see my way out!"
 	done
 
-FirebreatherDickBeatenText:
+FirebreatherCydBeatenText:
 	text "Help! The fire"
 	line "went out!"
 	done

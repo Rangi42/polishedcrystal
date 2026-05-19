@@ -1,6 +1,7 @@
 BurnedTower1F_MapScriptHeader:
 	def_scene_scripts
 	scene_script BurnedTower1FMeetEusineScene, SCENE_BURNEDTOWER1F_MEET_EUSINE
+	scene_const SCENE_BURNEDTOWER1F_FIREBREATHER_DICK
 	scene_const SCENE_BURNEDTOWER1F_RIVAL_BATTLE
 	scene_const SCENE_BURNEDTOWER1F_NOOP
 
@@ -14,6 +15,7 @@ BurnedTower1F_MapScriptHeader:
 	warp_event  5, 15, BURNED_TOWER_B1F, 2
 
 	def_coord_events
+	coord_event  6,  1, SCENE_BURNEDTOWER1F_FIREBREATHER_DICK, BurnedTowerFirebreatherDickBattleScript
 	coord_event  9,  9, SCENE_BURNEDTOWER1F_RIVAL_BATTLE, BurnedTowerRivalBattleScript
 
 	def_bg_events
@@ -23,15 +25,19 @@ BurnedTower1F_MapScriptHeader:
 	def_object_events
 	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
 	object_event  6,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	object_event 6, 2, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_GRAY, OBJECTTYPE_COMMAND, jumptextfaceplayer, FirebreatherDickAfterText, EVENT_BURNED_TOWER_FIREBREATHER_DICK_ASHES
+	object_event 6, 3, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FirebreatherDickAfterText, EVENT_BURNED_TOWER_FIREBREATHER_DICK_NORMAL
 	smashrock_event 13, 4
 	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
 	itemball_event 13,  1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
-	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacTamara, -1
+	object_event  3,  6, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacTamara, -1
 	object_event 11,  3, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherNed, -1
 
 	object_const_def
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_RIVAL
+	const BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
+	const BURNEDTOWER1F_FIREBREATHER_DICK
 
 BurnedTower1FMeetEusineScene:
 	sdefer BurnedTower1FEusineTriggerScript
@@ -54,7 +60,41 @@ BurnedTower1FEusineTriggerScript:
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
 	showtext BurnedTower1FEusineIntroText
 	moveobject BURNEDTOWER1F_EUSINE, 7, 14
+	setscene SCENE_BURNEDTOWER1F_FIREBREATHER_DICK
+	end
+
+BurnedTowerFirebreatherDickBattleScript:
+	playmusic MUSIC_HIKER_ENCOUNTER
+	showemote EMOTE_SHOCK, BURNEDTOWER1F_FIREBREATHER_DICK, 30
+	applyonemovement BURNEDTOWER1F_FIREBREATHER_DICK, step_up
+	turnobject PLAYER, DOWN
+
+; Somewhat hacky script to show the right NPC at the right time.
+; We can't just `appear BURNEDTOWER1F_FIREBREATHER_DICK_ASHES` after the battle
+; because the sprite graphics appear before the battle UI has exited.
+	setmapobjectpal BURNEDTOWER1F_FIREBREATHER_DICK_ASHES, PAL_NPC_RED
+	appear BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
+	showtext FirebreatherDickBeforeText
+	setmapobjectpal BURNEDTOWER1F_FIREBREATHER_DICK_ASHES, PAL_NPC_GRAY
+	appear BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
+	moveobject BURNEDTOWER1F_FIREBREATHER_DICK, 6, 2
+	appear BURNEDTOWER1F_FIREBREATHER_DICK
+	turnobject BURNEDTOWER1F_FIREBREATHER_DICK, UP
+
+	winlosstext FirebreatherDickBeatenText, 0
+	setlasttalked BURNEDTOWER1F_FIREBREATHER_DICK
+	loadtrainer FIREBREATHER, DICK
+	startbattle
+	iftruefwd .lost
+	disappear BURNEDTOWER1F_FIREBREATHER_DICK
+	setevent EVENT_BEAT_FIREBREATHER_DICK
 	setscene SCENE_BURNEDTOWER1F_RIVAL_BATTLE
+	reloadmapafterbattle
+	end
+
+.lost:
+	disappear BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
+	reloadmapafterbattle
 	end
 
 BurnedTowerRivalBattleScript:
@@ -290,3 +330,23 @@ FirebreatherNedBeatenText:
 	line "enough…"
 	done
 
+FirebreatherDickBeforeText:
+	text "Hey, I'm training"
+	line "secretly here!"
+
+	para "Don't embarrass me"
+	line "by looking!"
+	done
+
+FirebreatherDickBeatenText:
+	text "I burned down to"
+	line "white ashes…"
+	done
+
+FirebreatherDickAfterText:
+	text "I was so into my"
+	line "training that I"
+
+	para "fell down this"
+	line "hole."
+	done

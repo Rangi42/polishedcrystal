@@ -7973,7 +7973,6 @@ BattleIntro:
 	xor a
 	ld [wTempBattleMonSpecies], a
 	ld [wBattleMenuCursorBuffer], a
-	xor a
 	ldh [hMapAnims], a
 	ld a, [wOtherTrainerClass]
 	cp LYRA2
