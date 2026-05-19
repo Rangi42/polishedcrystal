@@ -97,7 +97,7 @@ DoBattle:
 .not_linked_2
 	call AutomaticBattleWeather
 	call SpikesDamageBoth ; for Air Balloon
-	call BoostGiovannisArmoredMewtwo
+	call CustomTrainerActions
 	call RunBothEntryAbilities
 	jr BattleTurn
 
@@ -8962,10 +8962,20 @@ AutomaticBattleWeather:
 	call StdBattleTextbox
 	jmp EmptyBattleTextbox
 
-BoostGiovannisArmoredMewtwo:
+CustomTrainerActions:
 	ld a, [wOtherTrainerClass]
 	cp GIOVANNI
+	jr z, .maybe_giovanni_armored_mewtwo
+	cp FIREBREATHER
 	ret nz
+	ld a, [wOtherTrainerID]
+	cp DICK
+	ret nz
+	ld a, TRAINERPAL_DICK_ASHES
+	ld [wTrainerPal], a
+	ret
+
+.maybe_giovanni_armored_mewtwo
 	ld a, [wOtherTrainerID]
 	cp GIOVANNI1
 	ret nz

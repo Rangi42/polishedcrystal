@@ -1167,6 +1167,9 @@ ENDM
 	trainerpal MASA
 	trainerpal KOJI
 
+; firebreather dick (white ashes)
+	trainerpal DICK_ASHES
+
 ; dark-skinned or tanned trainers
 	trainerpal DARK_CAMPER
 	trainerpal DARK_BIRD_KEEPER
