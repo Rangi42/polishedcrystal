@@ -320,14 +320,16 @@ TrainerCard_PrintTopHalfOfCard:
 	lb bc, PRINTNUM_MONEY | 3, 7
 	ld hl, wMoney
 	ld a, [hli]
-	cp 1000000 >> 16
-	jr c, .not_seven_digits
+	cp 1000000 >> 16        ; cp $0f
+	jr c, .not_seven_digits ; $0e_ff_ff ==   983_039
+	jr nz, .print_money     ; $10_00_00 == 1_048_576
 	ld a, [hli]
-	cp HIGH(1000000)
-	jr c, .not_seven_digits
+	cp HIGH(1000000)        ; cp $42
+	jr c, .not_seven_digits ; $0f_41_ff ==   999_935
+	jr nz, .print_money     ; $0f_43_00 == 1_000_192
 	ld a, [hl]
-	cp LOW(1000000)
-	jr nc, .print_money
+	cp LOW(1000000)         ; cp $40
+	jr nc, .print_money     ; $0f_42_40 == 1_000_000
 .not_seven_digits
 	dec c
 .print_money
