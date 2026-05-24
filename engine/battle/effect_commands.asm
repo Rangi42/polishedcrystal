@@ -1858,10 +1858,6 @@ _CheckTypeMatchup:
 	ret
 
 BattleCommand_checkpowder:
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	cp SING
-	jr nz, .not_sing
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]
 	and a
