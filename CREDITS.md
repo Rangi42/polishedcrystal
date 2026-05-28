@@ -88,7 +88,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * trainerlass for sprites of Galarian Slowpoke and Slowbro, and Crys's back sprite.
 * Luna for some sprites and tiles.
-* Sage Deoxys for Dudunsparce's sprites.
+* Sage Deoxys for sprites of Dudunsparce and Galarian Mr. Mime.
 * Egg3ggEgg for sprites of Wyrdeer and Kleavor.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
@@ -99,7 +99,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
-* coraldev for the sailboat spritr, and rowboat and sakura petal tiles.
+* coraldev for the sailboat sprite, and rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
