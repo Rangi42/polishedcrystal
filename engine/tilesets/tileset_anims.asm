@@ -782,7 +782,7 @@ AnimateFireTiles:
 	sub l
 	ld h, a
 
-	jr WriteTwoTilesHLToDE
+	jmp WriteTwoTilesHLToDE
 
 AnimateTorchTile:
 	ld hl, sp + 0
@@ -803,6 +803,26 @@ AnimateTorchTile:
 	ld h, a
 
 	jmp WriteTileHLToDE
+
+AnimateTubeLightTiles:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 2, offset to 4 tiles (64 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 2
+	swap a
+	add a
+	add a
+
+	add LOW(vTiles2 tile $48)
+	ld l, a
+	adc HIGH(vTiles2 tile $48)
+	sub l
+	ld h, a
+
+	jr WriteFourTilesHLToDE
 
 WriteFourTilesHLToDE:
 	ld sp, hl
