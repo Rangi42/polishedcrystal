@@ -2,6 +2,7 @@ NavelRockRoof_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, NavelRockRoofStarsCallback
 	callback MAPCALLBACK_OBJECTS, NavelRockRoofDailyLeafRematchCallback
 
 	def_warp_events
@@ -24,6 +25,26 @@ NavelRockRoof_MapScriptHeader:
 	const NAVELROCKROOF_KRIS
 	const NAVELROCKROOF_CRYS
 	const NAVELROCKROOF_BETA
+
+NavelRockRoofStarsCallback:
+	checktime 1 << NITE
+	iffalsefwd .Done
+	changeblock  2, 0, $8c
+	changeblock  4, 0, $8d
+	changeblock 10, 0, $8e
+	changeblock 12, 0, $8f
+	changeblock  2, 2, $91
+	changeblock  4, 2, $92
+	changeblock 10, 2, $93
+	changeblock 12, 2, $92
+	changeblock  4, 4, $90
+	changeblock  8, 4, $91
+	changeblock 12, 4, $8d
+	changeblock  2, 6, $8f
+	changeblock  4, 6, $92
+	changeblock 10, 6, $8d
+.Done
+	endcallback
 
 NavelRockRoofDailyLeafRematchCallback:
 	disappear NAVELROCKROOF_GREEN
