@@ -1858,18 +1858,14 @@ _CheckTypeMatchup:
 	ret
 
 BattleCommand_checkpowder:
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	cp SING
-	jr nz, .not_sing
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]
 	and a
-	ret nz
+	jr nz, .no_nullification
 	ld [wTypeModifier], a
 	ret
 
-.not_sing
+.no_nullification
 	cp THUNDER_WAVE
 	jr z, BattleCommand_resettypematchup
 	cp TOXIC

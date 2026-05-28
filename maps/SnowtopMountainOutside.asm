@@ -1,7 +1,7 @@
 SnowtopMountainOutside_MapScriptHeader:
 	def_scene_scripts
 	scene_const SCENE_SNOWTOPMOUNTAINOUTSIDE_NOOP
-	scene_const SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE
+	scene_const SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, SnowtopMountainOutsideFlyPointAndFixFacing
@@ -11,29 +11,29 @@ SnowtopMountainOutside_MapScriptHeader:
 	warp_event 17, 33, SNOWTOP_POKECENTER_1F, 1
 
 	def_coord_events
-	coord_event  4, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event  5, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event  6, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event  7, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event  8, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event  9, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 10, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 11, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 12, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 13, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 14, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 15, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 16, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 17, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 18, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 19, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 20, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 21, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 22, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 23, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 24, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 25, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
-	coord_event 26, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE, SnowtopMountainOutsideStopPanningScript
+	coord_event  4, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  5, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  6, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  7, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  8, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  9, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 10, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 11, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 12, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 13, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 14, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 15, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 16, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 17, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 18, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 19, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 20, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 21, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 22, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 23, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 24, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 25, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 26, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
 
 	def_bg_events
 	bg_event 10, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
@@ -102,7 +102,7 @@ SnowtopMountainOutsideStartPanningScript:
 	callasm .PreparePlayerSubstitute
 	appear SNOWTOPMOUNTAINOUTSIDE_PLAYER
 	applymovement PLAYER, SnowtopMountainOutsideStartPanningMovement
-	setscene SCENE_SNOWTOPMOUNTAINOUTSIDE_SUICUNE
+	setscene SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING
 	callasm GenericFinishBridge
 	end
 

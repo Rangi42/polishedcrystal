@@ -71,7 +71,8 @@ DEF OW_RIGHT EQU RIGHT << 2
 	shift_const UNDER_TILES    ; 7
 
 ; object_struct OBJECT_PALETTE bit flags
-	const_def 5
+	const_def 4
+	shift_const BG_ALIGNED       ; 4
 	shift_const SWIMMING         ; 5
 	shift_const STRENGTH_BOULDER ; 6
 	shift_const BIG_OBJECT       ; 7
@@ -169,6 +170,7 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_BIG_HO_OH            ; 30
 	const SPRITEMOVEDATA_BIG_LUGIA            ; 31
 	const SPRITEMOVEDATA_ADMIN_MEOWTH         ; 32
+	const SPRITEMOVEDATA_SPINARAK_CART        ; 33
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -195,30 +197,26 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_BOULDERDUST           ; 13
 	const SPRITEMOVEFN_GRASS                 ; 14
 	const SPRITEMOVEFN_PUDDLE                ; 15
-	const SPRITEMOVEFN_CUT_TREE              ; 16
-	const SPRITEMOVEFN_FRUIT                 ; 17
-	const SPRITEMOVEFN_BIG_GYARADOS          ; 18
-	const SPRITEMOVEFN_STANDING_FLIP         ; 19
-	const SPRITEMOVEFN_POKECOM_NEWS          ; 1a
-	const SPRITEMOVEFN_MUSEUM_DRILL          ; 1b
-	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1c
-	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
-	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
-	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
-	const SPRITEMOVEFN_MICROPHONE            ; 20
-	const SPRITEMOVEFN_BIG_HO_OH             ; 21
-	const SPRITEMOVEFN_BIG_LUGIA             ; 22
-	const SPRITEMOVEFN_ADMIN_MEOWTH          ; 23
+	const SPRITEMOVEFN_FRUIT                 ; 16
+	const SPRITEMOVEFN_BIG_GYARADOS          ; 17
+	const SPRITEMOVEFN_STANDING_FLIP         ; 18
+	const SPRITEMOVEFN_MUSEUM_DRILL          ; 19
+	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1a
+	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1b
+	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1c
+	const SPRITEMOVEFN_TINY_WINDOWS          ; 1d
+	const SPRITEMOVEFN_BIG_HO_OH             ; 1e
+	const SPRITEMOVEFN_BIG_LUGIA             ; 1f
 DEF NUM_SPRITEMOVEFN EQU const_value
 
 ; _HandleStepType.StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
 	const_def
 	const STEP_TYPE_RESET            ; 00
 	const STEP_TYPE_FROM_MOVEMENT    ; 01
-	const STEP_TYPE_NPC_WALK         ; 02
-	const STEP_TYPE_SLEEP            ; 03
-	const STEP_TYPE_STANDING         ; 04
-	const STEP_TYPE_RESTORE          ; 05
+	const STEP_TYPE_SLEEP            ; 02
+	const STEP_TYPE_STANDING         ; 03
+	const STEP_TYPE_RESTORE          ; 04
+	const STEP_TYPE_NPC_WALK         ; 05
 	const STEP_TYPE_PLAYER_WALK      ; 06
 	const STEP_TYPE_CONTINUE_WALK    ; 07
 	const STEP_TYPE_NPC_JUMP         ; 08
@@ -237,6 +235,9 @@ DEF NUM_SPRITEMOVEFN EQU const_value
 	const STEP_TYPE_SKYFALL_TOP      ; 15
 	const STEP_TYPE_NPC_STAIRS       ; 16
 	const STEP_TYPE_PLAYER_STAIRS    ; 17
+	const STEP_TYPE_HALF1            ; 18
+	const STEP_TYPE_NPC_HALF2        ; 19
+	const STEP_TYPE_PLAYER_HALF2     ; 1a
 DEF NUM_STEP_TYPES EQU const_value
 
 ; ObjectActionPairPointers indexes (see engine/overworld/map_object_action.asm)
@@ -257,23 +258,19 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_BOULDER_DUST     ; 0d
 	const OBJECT_ACTION_GRASS_SHAKE      ; 0e
 	const OBJECT_ACTION_PUDDLE_SPLASH    ; 0f
-	const OBJECT_ACTION_CUT_TREE         ; 10
-	const OBJECT_ACTION_SKYFALL          ; 11
-	const OBJECT_ACTION_FRUIT            ; 12
-	const OBJECT_ACTION_BIG_GYARADOS     ; 13
-	const OBJECT_ACTION_STAND_FLIP       ; 14
-	const OBJECT_ACTION_POKECOM_NEWS     ; 15
-	const OBJECT_ACTION_MUSEUM_DRILL     ; 16
-	const OBJECT_ACTION_RUN              ; 17
-	const OBJECT_ACTION_SAILBOAT_TOP     ; 18
-	const OBJECT_ACTION_SAILBOAT_BOTTOM  ; 19
-	const OBJECT_ACTION_ALOLAN_EXEGGUTOR ; 1a
-	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 1b
-	const OBJECT_ACTION_TINY_WINDOWS     ; 1c
-	const OBJECT_ACTION_MICROPHONE       ; 1d
-	const OBJECT_ACTION_BIG_HO_OH        ; 1e
-	const OBJECT_ACTION_BIG_LUGIA        ; 1f
-	const OBJECT_ACTION_ADMIN_MEOWTH     ; 20
+	const OBJECT_ACTION_SKYFALL          ; 10
+	const OBJECT_ACTION_FRUIT            ; 11
+	const OBJECT_ACTION_BIG_GYARADOS     ; 12
+	const OBJECT_ACTION_STAND_FLIP       ; 13
+	const OBJECT_ACTION_MUSEUM_DRILL     ; 14
+	const OBJECT_ACTION_RUN              ; 15
+	const OBJECT_ACTION_SAILBOAT_TOP     ; 16
+	const OBJECT_ACTION_SAILBOAT_BOTTOM  ; 17
+	const OBJECT_ACTION_ALOLAN_EXEGGUTOR ; 18
+	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 19
+	const OBJECT_ACTION_TINY_WINDOWS     ; 1a
+	const OBJECT_ACTION_BIG_HO_OH        ; 1b
+	const OBJECT_ACTION_BIG_LUGIA        ; 1c
 DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
@@ -312,38 +309,34 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_GRASS_2            ; 1f
 	const FACING_SPLASH_1           ; 20
 	const FACING_SPLASH_2           ; 21
-	const FACING_CUT_TREE           ; 22
-	const FACING_APRICORN           ; 23
-	const FACING_BERRY              ; 24
-	const FACING_PICKED_FRUIT       ; 25
-	const FACING_BIG_GYARADOS_1     ; 26
-	const FACING_BIG_GYARADOS_2     ; 27
-	const FACING_STEP_DOWN_FLIP     ; 28
-	const FACING_STEP_UP_FLIP       ; 29
-	const FACING_POKECOM_NEWS       ; 2a
-	const FACING_MUSEUM_DRILL_DOWN  ; 2b
-	const FACING_MUSEUM_DRILL_UP    ; 2c
-	const FACING_ARCH_TREE_LEFT     ; 2d
-	const FACING_ARCH_TREE_RIGHT    ; 2e
-	const FACING_SAILBOAT_TOP       ; 2f
-	const FACING_SAILBOAT_BOTTOM    ; 30
-	const FACING_ALOLAN_EXEGGUTOR_0 ; 31
-	const FACING_ALOLAN_EXEGGUTOR_1 ; 32
-	const FACING_ALOLAN_EXEGGUTOR_2 ; 33
-	const FACING_ALOLAN_EXEGGUTOR_3 ; 34
-	const FACING_TINY_WINDOWS_0     ; 35
-	const FACING_TINY_WINDOWS_1     ; 36
-	const FACING_TINY_WINDOWS_2     ; 37
-	const FACING_TINY_WINDOWS_3     ; 38
-	const FACING_TINY_WINDOWS_4     ; 39
-	const FACING_TINY_WINDOWS_5     ; 3a
-	const FACING_TINY_WINDOWS_6     ; 3b
-	const FACING_MICROPHONE         ; 3c
-	const FACING_BIG_HO_OH_1        ; 3d
-	const FACING_BIG_HO_OH_2        ; 3e
-	const FACING_BIG_LUGIA_1        ; 3f
-	const FACING_BIG_LUGIA_2        ; 40
-	const FACING_ADMIN_MEOWTH       ; 41
+	const FACING_APRICORN           ; 22
+	const FACING_BERRY              ; 23
+	const FACING_PICKED_FRUIT       ; 24
+	const FACING_BIG_GYARADOS_1     ; 25
+	const FACING_BIG_GYARADOS_2     ; 26
+	const FACING_STEP_DOWN_FLIP     ; 27
+	const FACING_STEP_UP_FLIP       ; 28
+	const FACING_MUSEUM_DRILL_DOWN  ; 29
+	const FACING_MUSEUM_DRILL_UP    ; 2a
+	const FACING_ARCH_TREE_LEFT     ; 2b
+	const FACING_ARCH_TREE_RIGHT    ; 2c
+	const FACING_SAILBOAT_TOP       ; 2d
+	const FACING_SAILBOAT_BOTTOM    ; 2e
+	const FACING_ALOLAN_EXEGGUTOR_0 ; 2f
+	const FACING_ALOLAN_EXEGGUTOR_1 ; 30
+	const FACING_ALOLAN_EXEGGUTOR_2 ; 31
+	const FACING_ALOLAN_EXEGGUTOR_3 ; 32
+	const FACING_TINY_WINDOWS_0     ; 33
+	const FACING_TINY_WINDOWS_1     ; 34
+	const FACING_TINY_WINDOWS_2     ; 35
+	const FACING_TINY_WINDOWS_3     ; 36
+	const FACING_TINY_WINDOWS_4     ; 37
+	const FACING_TINY_WINDOWS_5     ; 38
+	const FACING_TINY_WINDOWS_6     ; 39
+	const FACING_BIG_HO_OH_1        ; 3a
+	const FACING_BIG_HO_OH_2        ; 3b
+	const FACING_BIG_LUGIA_1        ; 3c
+	const FACING_BIG_LUGIA_2        ; 3d
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

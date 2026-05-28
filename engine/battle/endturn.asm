@@ -804,20 +804,28 @@ EndturnEncoreDisable_End:
 	ld l, e
 	jmp StdBattleTextbox
 
-TickDisableAfterMove:
-; If we have 5 turns left of Disable, tick it down. This makes it so that
-; Disable covers 4 move uses.
+TickDisableAndEncoreAfterMove:
+; If we have 5 turns left of Disable or 4 turns left of Encore, tick it down.
+; This makes it so that Disable covers 4 move uses and Encore 3.
 	call HasUserFainted
 	ret z
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerDisableCount
-	jr z, .got_disable_count
+	ld de, wPlayerEncoreCount
+	jr z, .got_count
 	ld hl, wEnemyDisableCount
-.got_disable_count
-	ld a, [hl]
+	ld de, wEnemyEncoreCount
+.got_count
+	ld a, 5
+	call .MaybeDecrement
+	ld a, 4
+	ld h, d
+	ld l, e
+
+.MaybeDecrement:
+	sub [hl]
 	and $f
-	cp 5
 	ret nz
 	dec [hl]
 	ret

@@ -6,7 +6,11 @@ else
 	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
+if DEF(FAITHFUL)
 	db WATER, WATER ; type
+else
+	db WATER, NORMAL ; type
+endc
 	db 60 ; catch rate
 if DEF(FAITHFUL)
 	db 170 ; base exp

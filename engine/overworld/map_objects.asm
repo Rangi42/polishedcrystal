@@ -105,7 +105,7 @@ _CheckObjectStillVisible:
 .ok
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	set 6, [hl]
+	set OFF_SCREEN_F, [hl]
 	ld a, [wXCoord]
 	ld e, a
 	ld hl, OBJECT_INIT_X
@@ -142,7 +142,7 @@ _CheckObjectStillVisible:
 .yes2
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	set 6, [hl]
+	set OFF_SCREEN_F, [hl]
 	and a
 	ret
 
@@ -183,10 +183,10 @@ _HandleStepType:
 	table_width 2
 	dw StepFunction_Reset           ; STEP_TYPE_RESET
 	dw StepFunction_FromMovement    ; STEP_TYPE_FROM_MOVEMENT
-	dw StepFunction_NPCWalk         ; STEP_TYPE_NPC_WALK
 	dw StepFunction_Sleep           ; STEP_TYPE_SLEEP
 	dw StepFunction_Standing        ; STEP_TYPE_STANDING
 	dw StepFunction_Restore         ; STEP_TYPE_RESTORE
+	dw StepFunction_NPCWalk         ; STEP_TYPE_NPC_WALK
 	dw StepFunction_PlayerWalk      ; STEP_TYPE_PLAYER_WALK
 	dw StepFunction_ContinueWalk    ; STEP_TYPE_CONTINUE_WALK
 	dw StepFunction_NPCJump         ; STEP_TYPE_NPC_JUMP
@@ -205,6 +205,9 @@ _HandleStepType:
 	dw StepFunction_SkyfallTop      ; STEP_TYPE_SKYFALL_TOP
 	dw StepFunction_NPCStairs       ; STEP_TYPE_NPC_STAIRS
 	dw StepFunction_PlayerStairs    ; STEP_TYPE_PLAYER_STAIRS
+	dw StepFunction_Half1           ; STEP_TYPE_HALF1
+	dw StepFunction_NPCHalf2        ; STEP_TYPE_NPC_HALF2
+	dw StepFunction_PlayerHalf2     ; STEP_TYPE_NPC_HALF2
 	assert_table_length NUM_STEP_TYPES
 
 CopyNextCoordsTileToStandingCoordsTile:
@@ -300,7 +303,7 @@ EndSpriteMovement:
 	ld [hl], STANDING
 	ret
 
-InitStep:
+StartInitStep:
 	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld [hl], a
@@ -308,12 +311,16 @@ InitStep:
 	add hl, bc
 	bit FIXED_FACING_F, [hl]
 	jr nz, GetNextTile
+	and %00000011
 	add a
 	add a
-	and %00001100
 	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld [hl], a
+	ret
+
+InitStep:
+	call StartInitStep
 GetNextTile:
 	call GetStepVector
 	ld hl, OBJECT_STEP_DURATION
@@ -390,14 +397,14 @@ GetStepVector:
 	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
-	cp (STEP_SLOW << 2 | RIGHT) + 1
-	jr c, .slowStep
 	pop hl
+	and %00001100
+	assert STEP_SLOW == 0
+	jr z, .slowStep
 	pop af
 	and a
 	ret
 .slowStep
-	pop hl
 	pop af
 	scf
 	ret
@@ -440,6 +447,7 @@ UpdatePlayerStep:
 	and %00000011
 	ld [wPlayerStepDirection], a
 	call AddStepVector
+ApplyPlayerStep:
 	ld a, [wPlayerStepVectorX]
 	add d
 	ld [wPlayerStepVectorX], a
@@ -568,20 +576,16 @@ endr
 	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
-	dw .MovementCutTree              ; SPRITEMOVEFN_CUT_TREE
 	dw .MovementFruit                ; SPRITEMOVEFN_FRUIT
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
-	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
 	dw .MovementMuseumDrill          ; SPRITEMOVEFN_MUSEUM_DRILL
 	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
 	dw .MovementTinyWindows          ; SPRITEMOVEFN_TINY_WINDOWS
-	dw .MovementMicrophone           ; SPRITEMOVEFN_MICROPHONE
 	dw .MovementBigHoOh              ; SPRITEMOVEFN_BIG_HO_OH
 	dw .MovementBigLugia             ; SPRITEMOVEFN_BIG_LUGIA
-	dw .MovementAdminMeowth          ; SPRITEMOVEFN_ADMIN_MEOWTH
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -767,14 +771,6 @@ endr
 	ld a, OBJECT_ACTION_BIG_GYARADOS
 	jr ._ActionA_StepFunction_Standing
 
-.MovementPokecomNews:
-	ld a, OBJECT_ACTION_POKECOM_NEWS
-	jr ._ActionA_StepFunction_Standing
-
-.MovementCutTree:
-	ld a, OBJECT_ACTION_CUT_TREE
-	jr ._ActionA_StepFunction_Standing
-
 .MovementFruit:
 	ld a, OBJECT_ACTION_FRUIT
 	jr ._ActionA_StepFunction_Standing
@@ -799,20 +795,12 @@ endr
 	ld a, OBJECT_ACTION_TINY_WINDOWS
 	jr ._ActionA_StepFunction_Standing
 
-.MovementMicrophone:
-	ld a, OBJECT_ACTION_MICROPHONE
-	jr ._ActionA_StepFunction_Standing
-
 .MovementBigHoOh:
 	ld a, OBJECT_ACTION_BIG_HO_OH
 	jr ._ActionA_StepFunction_Standing
 
 .MovementBigLugia:
 	ld a, OBJECT_ACTION_BIG_LUGIA
-	jr ._ActionA_StepFunction_Standing
-
-.MovementAdminMeowth:
-	ld a, OBJECT_ACTION_ADMIN_MEOWTH
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:
@@ -1004,7 +992,7 @@ endr
 	ld hl, OBJECT_STEP_DURATION
 	add hl, de
 	ld a, [hl]
-	add -1
+	dec a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
@@ -1531,8 +1519,32 @@ StepFunction_Standing:
 	ld [hl], STANDING
 	ret
 
+UndoHalfStepOffset:
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld a, [hl]
+	and %1
+	ret nz
+	ld hl, OBJECT_SPRITE_X_OFFSET
+	add hl, bc
+	ld a, [hl]
+	sub d
+	ld [hl], a
+	ld hl, OBJECT_SPRITE_Y_OFFSET
+	add hl, bc
+	ld a, [hl]
+	sub e
+	ld [hl], a
+	ret
+
+StepFunction_NPCHalf2:
+	call AddStepVector
+	call UndoHalfStepOffset
+	jr _ContinueNPCWalk
+
 StepFunction_NPCWalk:
 	call AddStepVector
+_ContinueNPCWalk:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	dec [hl]
@@ -1555,8 +1567,7 @@ StepFunction_ContinueWalk:
 	call CopyNextCoordsTileToStandingCoordsTile
 	jmp RandomStepDuration_Slow
 
-StepFunction_PlayerWalk:
-; AnimateStep?
+StepFunction_PlayerHalf2:
 	call Field1cAnonymousJumptable
 ; anonymous dw
 	dw .init
@@ -1568,6 +1579,22 @@ StepFunction_PlayerWalk:
 	call IncrementObjectStructField1c
 .step
 	call UpdatePlayerStep
+	call UndoHalfStepOffset
+	jr _ContinuePlayerWalk
+
+StepFunction_PlayerWalk:
+	call Field1cAnonymousJumptable
+; anonymous dw
+	dw .init
+	dw .step
+
+.init
+	ld hl, wPlayerStepFlags
+	set PLAYERSTEP_START_F, [hl]
+	call IncrementObjectStructField1c
+.step
+	call UpdatePlayerStep
+_ContinuePlayerWalk:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	dec [hl]
@@ -1905,15 +1932,9 @@ UpdateDiagonalStairsPosition:
 	ret
 
 GetPlayerNextMovementByte:
-; copy [wPlayerNextMovement] to [wPlayerMovement]
-	ld a, [wPlayerNextMovement]
-	ld hl, wPlayerMovement
-	ld [hl], a
-; load [wPlayerNextMovement] with movement_step_sleep_1
-	ld a, movement_step_sleep_1
-	ld [wPlayerNextMovement], a
-; recover the previous value of [wPlayerNextMovement]
+	ld hl, wPlayerNextMovement
 	ld a, [hl]
+	ld [hl], movement_step_sleep_1
 	ret
 
 GetMovementByte:
@@ -1953,7 +1974,7 @@ INCLUDE "engine/overworld/movement.asm"
 ApplyMovementToFollower:
 	ld e, a
 	ld a, [wObjectFollow_Follower]
-	cp -1
+	inc a ; -1?
 	ret z
 	ld a, [wObjectFollow_Leader]
 	ld d, a
@@ -1979,6 +2000,11 @@ ApplyMovementToFollower:
 	ld d, 0
 	ld hl, wFollowMovementQueue
 	add hl, de
+	ld a, [wFollowInSync]
+	and a
+	jr z, .no_sync
+	dec hl
+.no_sync
 	pop af
 	ld [hl], a
 	ret
@@ -1993,10 +2019,10 @@ ApplyMovementToFollower:
 GetFollowerNextMovementByte:
 	ld hl, wFollowerMovementQueueLength
 	ld a, [hl]
-	and a
-	jr z, .done
-	cp -1
-	jr z, .done
+	inc a ; -1?
+	jr z, .CancelFollowIfLeaderMissing
+	dec a ; 0?
+	jr z, .CancelFollowIfLeaderMissing
 	dec [hl]
 	ld e, a
 	ld d, 0
@@ -2012,16 +2038,11 @@ GetFollowerNextMovementByte:
 	jr nz, .loop
 	ret
 
-.done
-	call .CancelFollowIfLeaderMissing
-	ret c
-	ld a, movement_step_sleep_1
-	ret
-
 .CancelFollowIfLeaderMissing:
 	ld a, [wObjectFollow_Leader]
-	cp -1
+	inc a ; -1?
 	jr z, .nope
+	dec a
 	push bc
 	call GetObjectStruct
 	ld hl, OBJECT_SPRITE
@@ -2030,14 +2051,13 @@ GetFollowerNextMovementByte:
 	pop bc
 	and a
 	jr z, .nope
-	and a
+	ld a, movement_step_sleep_1
 	ret
 
 .nope
-	ld a, -1
+	dec a ; --0 = -1
 	ld [wObjectFollow_Follower], a
 	ld a, movement_step_end
-	scf
 	ret
 
 SpawnShadow:
@@ -2393,10 +2413,10 @@ CheckCurSpriteCoveredByTextbox:
 	sub TILEMAP_HEIGHT
 .ok6
 	ldh [hCurSpriteYCoord], a
-	; priority check
+; Account for big objects that are twice as wide and high.
 	ld hl, OBJECT_PALETTE
 	add hl, bc
-	bit B_OAM_PRIO, [hl]
+	bit BIG_OBJECT_F, [hl]
 	jr z, .ok7
 	ld a, d
 	add 2
@@ -2481,7 +2501,6 @@ HandleNPCStep::
 RefreshPlayerSprite:
 	ld a, movement_step_sleep_1
 	ld [wPlayerNextMovement], a
-	ld [wPlayerMovement], a
 	xor a
 	ld [wPlayerTurningDirection], a
 	ld [wPlayerStepFrame], a
@@ -2554,8 +2573,9 @@ StopFollow::
 	; fallthrough
 ResetFollower:
 	ld a, [wObjectFollow_Follower]
-	cp -1
+	inc a ; -1?
 	ret z
+	dec a
 	call GetObjectStruct
 	call ResetObject
 	ld a, -1
@@ -2571,7 +2591,7 @@ FreezeAllOtherObjects::
 	pop bc
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 5, [hl]
+	res FROZEN_F, [hl]
 	xor a
 	ret
 
@@ -2925,6 +2945,12 @@ InitSprites:
 	add hl, bc
 	add [hl]
 	add OAM_Y_OFS - 4
+	ld hl, OBJECT_PALETTE
+	add hl, bc
+	bit BG_ALIGNED_F, [hl]
+	jr z, .not_bg_aligned
+	add 4
+.not_bg_aligned
 	ld e, a
 	ld a, [wPlayerBGMapOffsetY]
 	add e
@@ -3038,4 +3064,37 @@ endr
 	cpl
 	add (OAM_COUNT - 4) * OBJ_SIZE + 1
 	ld [wPlayerCurrentOAMSlot], a
+	ret
+
+StepFunction_Half1:
+	call GetStepVector
+	jr nc, .ok
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld a, [hl]
+	and %1
+	jr nz, .ok
+	lb de, 0, 0
+.ok
+	ld hl, OBJECT_SPRITE_X_OFFSET
+	add hl, bc
+	ld a, [hl]
+	add d
+	ld [hl], a
+	ld hl, OBJECT_SPRITE_Y_OFFSET
+	add hl, bc
+	ld a, [hl]
+	add e
+	ld [hl], a
+
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	ret nz
+	ld hl, OBJECT_WALKING
+	add hl, bc
+	ld [hl], STANDING
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_FROM_MOVEMENT
 	ret

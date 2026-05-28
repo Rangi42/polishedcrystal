@@ -97,7 +97,7 @@ DoBattle:
 .not_linked_2
 	call AutomaticBattleWeather
 	call SpikesDamageBoth ; for Air Balloon
-	call BoostGiovannisArmoredMewtwo
+	call CustomTrainerActions
 	call RunBothEntryAbilities
 	jr BattleTurn
 
@@ -710,7 +710,7 @@ PerformMove:
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
 
-	farcall TickDisableAfterMove
+	farcall TickDisableAndEncoreAfterMove
 
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
@@ -2566,7 +2566,7 @@ SelectBattleMon:
 
 PickPartyMonInBattle:
 .loop
-	ld a, $2 ; Which PKMN?
+	ld a, PARTYMENUACTION_SWITCH
 	ld [wPartyMenuActionText], a
 	call JumpToPartyMenuAndPrintText
 	call SelectBattleMon
@@ -4531,7 +4531,7 @@ BattleMenuPKMN_ReturnFromStats:
 	call ClearBGPalettes
 BattleMenuPKMN_Loop:
 	call SetUpBattlePartyMenu
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	call JumpToPartyMenuAndPrintText
 	call SelectBattleMon
@@ -7973,7 +7973,6 @@ BattleIntro:
 	xor a
 	ld [wTempBattleMonSpecies], a
 	ld [wBattleMenuCursorBuffer], a
-	xor a
 	ldh [hMapAnims], a
 	ld a, [wOtherTrainerClass]
 	cp LYRA2
@@ -8963,10 +8962,21 @@ AutomaticBattleWeather:
 	call StdBattleTextbox
 	jmp EmptyBattleTextbox
 
-BoostGiovannisArmoredMewtwo:
+CustomTrainerActions:
 	ld a, [wOtherTrainerClass]
 	cp GIOVANNI
+	jr z, .maybe_giovanni_armored_mewtwo
+	cp FIREBREATHER
 	ret nz
+	ld a, [wOtherTrainerID]
+	cp DICK
+	ret nz
+	ld a, FIREBREATHER_ASHES
+	ld [wOtherTrainerClass], a
+	ld [wTrainerClass], a
+	ret
+
+.maybe_giovanni_armored_mewtwo
 	ld a, [wOtherTrainerID]
 	cp GIOVANNI1
 	ret nz

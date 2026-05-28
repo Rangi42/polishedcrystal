@@ -314,26 +314,41 @@ MoonBallMultiplier:
 	farcall GetEvosAttacksPointer
 	pop bc
 
+.loop
+	; Iterate through all evolutions until we find a Moon Stone evolution.
 	push bc
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
-	cp EVOLVE_ITEM
 	pop bc
-	ret nz
+	inc hl
+	inc a
+	ret z
+	cp EVOLVE_HOLDING + 1
+	jr z, .inc_hl_next
+	cp EVOLVE_PARTY + 1
+	jr z, .inc_hl_next
+	cp EVOLVE_STAT + 1
+	jr z, .inc_hl_next
+	cp EVOLVE_ITEM + 1
+	jr nz, .next
 
-	inc hl
-	inc hl
-	inc hl
-
+	; Relevant method found, verify that it evolves with Moon Stone.
 	push bc
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	cp MOON_STONE
 	pop bc
-	ret nz
-
+	jr nz, .next
 	ln a, 4, 1 ; x4
 	jmp MultiplyAndDivide
+
+.inc_hl_next
+	inc hl ; EVOLVE_HOLDING, EVOLVE_PARTY and EVOLVE_STAT has an extra param.
+.next
+	inc hl
+	inc hl
+	inc hl
+	jr .loop
 
 LoveBallMultiplier:
 ; multiply catch rate by 8 if mons are of same species, different sex

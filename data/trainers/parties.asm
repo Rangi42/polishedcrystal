@@ -4453,9 +4453,7 @@ FirebreatherGroup:
 	end_trainer
 
 	def_trainer DICK, "Dick"
-	tr_mon 53, CHARMANDER
-	tr_mon 55, CHARMELEON
-	tr_mon 57, CHARIZARD
+	tr_mon 17, CHARMELEON
 	end_trainer
 
 	def_trainer NED, "Ned"
@@ -4500,6 +4498,12 @@ FirebreatherGroup:
 	def_trainer TALA, "Tala"
 	tr_mon 61, WEEZING
 	tr_mon 62, MAGMORTAR
+	end_trainer
+
+	def_trainer CYD, "Cyd"
+	tr_mon 53, CHARMANDER
+	tr_mon 55, CHARMELEON
+	tr_mon 57, CHARIZARD
 	end_trainer
 
 

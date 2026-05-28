@@ -233,7 +233,7 @@ hLCDInterruptFunctionTargetHi:: db ; HIGH(target)
 
 ; functions used by Judge Machine
 
-hBitwiseFunction::
+hBitwiseFunction:: ; also used by ObjectFlags1Step
 hBitwiseFunctionPrefix:: db ; $cb prefix
 hBitwiseFunctionOpcode:: db ; opcode
 hBitwiseFunctionRet::    db ; $c9 ret

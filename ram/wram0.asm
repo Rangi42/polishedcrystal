@@ -1059,7 +1059,8 @@ wLinkMode::
 	db
 
 wPlayerNextMovement:: db
-wPlayerMovement:: db
+
+	ds 1 ; unused
 
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba

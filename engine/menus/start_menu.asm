@@ -391,8 +391,8 @@ StartMenu_Pokemon:
 	jr z, .return
 	call FadeToMenu
 .choosemenu
-	xor a
-	ld [wPartyMenuActionText], a ; Choose a POKéMON.
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
+	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 .menu
 	farcall LoadPartyMenuGFX

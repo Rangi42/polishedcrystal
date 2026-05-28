@@ -904,6 +904,7 @@ endc
 	text "Slashes foe with"
 	next "scythes or claws."
 	done
+endc
 
 GustDescription:
 	text "Whips up a strong"

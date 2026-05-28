@@ -784,6 +784,26 @@ AnimateFireTiles:
 
 	jr WriteTwoTilesHLToDE
 
+AnimateTorchTile:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 2, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 2, 1
+	add a
+	add a
+	add a
+
+	add LOW(vTiles5 tile $11)
+	ld l, a
+	adc HIGH(vTiles5 tile $11)
+	sub l
+	ld h, a
+
+	jmp WriteTileHLToDE
+
 WriteFourTilesHLToDE:
 	ld sp, hl
 	ld l, e

@@ -83,7 +83,7 @@ Route23NorthMineralBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_MINERALBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalsefwd Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $5, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23NORTH_BADGE_CHECK_6
@@ -101,7 +101,7 @@ Route23NorthGlacierBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_GLACIERBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalsefwd Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $6, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23NORTH_BADGE_CHECK_7
@@ -119,7 +119,7 @@ Route23NorthRisingBadgeTriggerScript:
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
 	checkflag ENGINE_RISINGBADGE
-	iffalse_jumpopenedtext Route23OfficerNoBadgeText
+	iffalsefwd Route23OfficerNoBadgeScript
 	checkscene
 	ifgreater $7, Route23OfficerHaveBadgeScript
 	setscene SCENE_ROUTE23NORTH_NOOP
@@ -128,7 +128,14 @@ Route23NorthRisingBadgeTriggerScript:
 .RisingBadgeText:
 	db "Rising Badge@"
 
-Route23OfficerNoBadgeText:
+Route23OfficerNoBadgeScript:
+	writetext .NoBadgeText
+	waitbutton
+	closetext
+	applyonemovement PLAYER, step_down
+	end
+
+.NoBadgeText:
 	text "You don't have the"
 	line ""
 	text_ram wStringBuffer3

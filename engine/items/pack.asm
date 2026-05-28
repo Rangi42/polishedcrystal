@@ -491,7 +491,7 @@ GiveItem:
 	push af
 	res NO_TEXT_SCROLL, a
 	ld [wOptions1], a
-	ld a, $8
+	ld a, PARTYMENUACTION_GIVE_ITEM
 	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 	farcall LoadPartyMenuGFX

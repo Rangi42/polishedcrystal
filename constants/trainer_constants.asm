@@ -514,6 +514,7 @@ DEF BETA EQU __trainer_class__
 	const JAY
 	const OLEG
 	const TALA
+	const CYD
 
 	trainerclass JUGGLER
 	const IRWIN1
@@ -1126,6 +1127,8 @@ DEF BETA EQU __trainer_class__
 	trainerclass LAWRENCE
 
 	trainerclass REI
+
+	trainerclass FIREBREATHER_ASHES
 
 DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 

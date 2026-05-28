@@ -448,7 +448,7 @@ MailboxPC:
 
 .AttachMail:
 	call FadeToMenu
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 .try_again

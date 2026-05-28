@@ -12,7 +12,11 @@ endc
 	db NO_ITEM, QUICK_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for PERSIAN, LIMBER, TECHNICIAN, UNNERVE
+else
+	abilities_for PERSIAN, SUPER_LUCK, TECHNICIAN, UNNERVE
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

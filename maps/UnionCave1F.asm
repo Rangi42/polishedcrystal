@@ -29,7 +29,7 @@ UnionCave1F_MapScriptHeader:
 	itemball_event 12, 45, AWAKENING, 1, EVENT_UNION_CAVE_1F_AWAKENING
 
 GenericTrainerPokemaniacLarry:
-	generictrainer POKEMANIAC, LARRY, EVENT_BEAT_POKEMANIAC_LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText
+	generictrainer POKEMANIAC, POKEMANIAC_LARRY, EVENT_BEAT_POKEMANIAC_LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText
 
 	text "Every Friday, you"
 	line "can hear #mon"
