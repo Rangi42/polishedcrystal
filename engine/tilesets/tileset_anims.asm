@@ -809,20 +809,13 @@ AnimateTubeLightTiles:
 	ld b, h
 	ld c, l
 
-	; period 2, offset to 4 tiles (64 bytes)
-	ld a, [wTileAnimationTimer]
-	maskbits 2
-	swap a
-	add a
-	add a
-
-	add LOW(vTiles2 tile $48)
-	ld l, a
-	adc HIGH(vTiles2 tile $48)
-	sub l
-	ld h, a
-
-	jr WriteFourTilesHLToDE
+	ldh a, [hVBlankCounter]
+	and %10
+	ld hl, vTiles2 tile $48
+	jr z, WriteFourTilesHLToDE
+	assert HIGH(vTiles2 tile $48) == HIGH(vTiles2 tile $4c)
+	ld l, LOW(vTiles2 tile $4c)
+	; fallthrough
 
 WriteFourTilesHLToDE:
 	ld sp, hl
