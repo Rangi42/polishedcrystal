@@ -17,10 +17,10 @@ GoldenrodUndergroundSwitchRoom_MapScriptHeader:
 	coord_event 23,  3, SCENE_GOLDENRODUNDERGROUNDSWITCHROOM_RIVAL_BATTLE, UndergroundRivalTrigger3
 
 	def_bg_events
-	bg_event 11,  4, BGEVENT_READ, RedSwitchScript
-	bg_event 10,  4, BGEVENT_READ, GreenSwitchScript
-	bg_event  9,  4, BGEVENT_READ, BlueSwitchScript
-	bg_event 25,  8, BGEVENT_READ, EmergencySwitchScript
+	bg_event 11,  4, BGEVENT_UP, RedSwitchScript
+	bg_event 10,  4, BGEVENT_UP, GreenSwitchScript
+	bg_event  9,  4, BGEVENT_UP, BlueSwitchScript
+	bg_event 25,  8, BGEVENT_UP, EmergencySwitchScript
 	bg_event 16,  6, BGEVENT_ITEM + MAX_POTION, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_HIDDEN_MAX_POTION
 	bg_event  3,  2, BGEVENT_ITEM + REVIVE, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_HIDDEN_REVIVE
 
