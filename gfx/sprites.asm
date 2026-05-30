@@ -545,8 +545,8 @@ WeirdTreeSpriteGFX:: INCBIN "gfx/sprites/weird_tree.2bpp.lzp"
 SECTION "BallCutTreeSpriteGFX", ROMX
 BallCutTreeSpriteGFX:: INCBIN "gfx/sprites/ball_cut_tree.2bpp.lzp"
 
-SECTION "BoulderRockFossilSpriteGFX", ROMX
-BoulderRockFossilSpriteGFX:: INCBIN "gfx/sprites/boulder_rock_fossil.2bpp.lzp"
+SECTION "BoulderRockSpriteGFX", ROMX
+BoulderRockSpriteGFX:: INCBIN "gfx/sprites/boulder_rock.2bpp.lzp"
 
 SECTION "BookPaperPokedexSpriteGFX", ROMX
 BookPaperPokedexSpriteGFX:: INCBIN "gfx/sprites/book_paper_pokedex.2bpp.lzp"
@@ -578,8 +578,8 @@ ElectricFenceRightSpriteGFX:: INCBIN "gfx/sprites/electric_fence_right.2bpp.lzp"
 SECTION "SailboatSpriteGFX", ROMX
 SailboatSpriteGFX:: INCBIN "gfx/sprites/sailboat.2bpp.lzp"
 
-SECTION "IceBoulderSpriteGFX", ROMX
-IceBoulderSpriteGFX:: INCBIN "gfx/sprites/ice_boulder.2bpp.lzp"
+SECTION "IceBoulderFossilsSpriteGFX", ROMX
+IceBoulderFossilsSpriteGFX:: INCBIN "gfx/sprites/ice_boulder_fossils.2bpp.lzp"
 
 SECTION "BeachGuySpriteGFX", ROMX
 BeachGuySpriteGFX:: INCBIN "gfx/sprites/beach_guy.2bpp.lzp"
