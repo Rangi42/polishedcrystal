@@ -220,6 +220,14 @@ TilesetTraditionalHouseAnim::
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
+TilesetPokeComCenterAnim::
+	tileframe CycleJudgeMachinePalette
+	tileframe AnimateJudgeMachineTiles, $1:57
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe StandingTileFrame
+	tileframe DoneTileAnimation
+
 TilesetTunnelAnim::
 	tileframe FlickeringCaveEntrancePalette
 	tileframe ScrollTileRightLeft,      $0:26
@@ -298,7 +306,6 @@ TilesetMansionAnim::
 TilesetGameCornerAnim::
 TilesetMagnetTrainAnim::
 TilesetLighthouseAnim::
-TilesetPokeComCenterAnim::
 TilesetBattleTowerInsideAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
