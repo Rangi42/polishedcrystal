@@ -313,6 +313,24 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	jr nz, .fill_loop
 	jr .Main
 
+.long_normal
+	ld a, [de]
+	inc de
+	ld c, a
+	; b =  111ccc0l
+	ld a, %00111100
+	and b
+	rlca
+	rlca
+	rlca
+	; a = ccc00001
+	and b
+	; a = ccc0000l
+	ld b, a
+	and LZ_CMD
+	jr nz, .cont
+	jr .lz_data
+
 .long
 	inc b
 	ret z ; LZ_END
@@ -323,7 +341,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	ld a, b
 	and LZ_EXT_MASK
 	cp LZ_EXT_BASE
-	jmp nz, .long_normal
+	jr nz, .long_normal
 	ld a, b
 	and LZ_EXT_SUBTYPE_MASK
 	; subtype in a: LZ_EXT_PACKHI0/LZ_EXT_PACK16_SHORT/LZ_EXT_PACKLO0
@@ -355,14 +373,15 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	dec bc
 	ld a, b
 	or c
-	jr z, .packhi0_done
+	jr z, .pack_done
 	pop af
 	and LZ_PACK16_NIBBLE_MASK
 	swap a
 	ld [hli], a
 	dec bc
 	jr .packhi0_loop
-.packhi0_done
+
+.pack_done
 	pop af
 	jr .Main
 
@@ -379,22 +398,13 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	inc de
 	push af
 	swap a
-	and LZ_PACK16_NIBBLE_MASK
 	call .pack_lookup
-	ld [hli], a
-	dec bc
 	ld a, b
 	or c
 	jr z, .pack_done
 	pop af
-	and LZ_PACK16_NIBBLE_MASK
 	call .pack_lookup
-	ld [hli], a
-	dec bc
 	jr .pack_loop
-.pack_done
-	pop af
-	jmp .Main
 
 .ext_packlo0
 	; Decode packed literals where each output byte has high nibble 0.
@@ -412,18 +422,16 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	dec bc
 	ld a, b
 	or c
-	jr z, .packlo0_done
+	jr z, .pack_done
 	pop af
 	and LZ_PACK16_NIBBLE_MASK
 	ld [hli], a
 	dec bc
 	jr .packlo0_loop
-.packlo0_done
-	pop af
-	jmp .Main
 
 .pack_lookup
-	; a = 0..15 -> a = pack16_table[a]
+	; [hli] = pack16_table[a & LZ_PACK16_NIBBLE_MASK], bc--
+	and LZ_PACK16_NIBBLE_MASK
 	push de
 	add LOW(.pack16_table)
 	ld e, a
@@ -432,27 +440,10 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	ld d, a
 	ld a, [de]
 	pop de
+	ld [hli], a
+	dec bc
 	ret
 
 .pack16_table
 	db $00, $ff, $01, $02, $03, $fe, $80, $07
 	db $c0, $7f, $04, $0f, $1f, $3f, $08, $fc
-
-.long_normal
-
-	ld a, [de]
-	inc de
-	ld c, a
-	; b =  111ccc0l
-	ld a, %00111100
-	and b
-	rlca
-	rlca
-	rlca
-	; a = ccc00001
-	and b
-	; a = ccc0000l
-	ld b, a
-	and LZ_CMD
-	jmp nz, .cont
-	jmp .lz_data
