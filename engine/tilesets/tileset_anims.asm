@@ -337,7 +337,7 @@ AnimateTurbineTiles:
 	ld c, l
 
 	; period 2, offset to 4 tiles (64 bytes)
-	ld a, [wTileAnimationTimer]
+	ldh a, [hVBlankCounter]
 	maskbits 2
 	swap a
 	add a
