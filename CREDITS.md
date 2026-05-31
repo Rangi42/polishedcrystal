@@ -100,6 +100,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
 * coraldev for the sailboat sprite, and rowboat and sakura petal tiles.
+* MissingNo. Studio for Farigiraf's mini icon.
 * lilbluedemon for some bridge tiles.
 * WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
