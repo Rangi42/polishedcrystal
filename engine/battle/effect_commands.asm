@@ -2675,6 +2675,10 @@ BattleCommand_applydamage:
 ; 3 - Nonconsumable item (i.e. Focus Band)
 ; 4 - Item consumed after use (i.e. Focus Sash)
 ; 5 - High Affection
+	call ResetSubHit
+	call CheckSubstituteOpp
+	call nz, SetSubHit
+
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_ENDURE, a
@@ -2727,13 +2731,15 @@ BattleCommand_applydamage:
 	ld b, $0
 .okay
 	push bc
-	ld c, $0
 	call TakeDamage
 	call .damage_taken
 	pop bc
 	ld a, b
 	and a
 	ret z
+
+	call CheckSubHit
+	ret nz
 
 	cp 5
 	ld hl, PlayerAffectionEndureText
@@ -4726,7 +4732,6 @@ TakeOpponentDamage:
 
 TakeDamage:
 ; opponent takes damage
-	call ResetSubHit
 	ld hl, wCurDamage
 	ld a, [hli]
 	ld b, a
@@ -4734,11 +4739,7 @@ TakeDamage:
 	or b
 	jr z, .did_no_damage
 
-	ld a, c
-	and a
-	jr nz, .mimic_sub_check
-
-	call CheckSubstituteOpp
+	call CheckSubHit
 	jr nz, SelfInflictDamageToSubstitute
 .mimic_sub_check
 	ld a, [hld]
@@ -4749,7 +4750,6 @@ TakeDamage:
 	jmp RefreshBattleHuds
 
 SelfInflictDamageToSubstitute:
-	call SetSubHit
 	ld hl, SubTookDamageText
 	call StdBattleTextbox
 
