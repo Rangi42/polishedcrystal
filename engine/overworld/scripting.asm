@@ -1622,9 +1622,9 @@ Script_random16:
 	or c
 	ret z
 	call RandomRange16
-	ld b, a
+	ld a, b
 	ldh [hScriptVar], a
-	ld c, a
+	ld a, c
 	ldh [hScriptVar+1], a
 	ret
 
