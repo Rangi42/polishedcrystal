@@ -581,7 +581,6 @@ CheckPowerHerb:
 
 	; check for solarization
 	call GetSolarizedWeather
-	cp WEATHER_SUN
 	jr nz, .no_solar_beam
 
 	farcall BeginAbility

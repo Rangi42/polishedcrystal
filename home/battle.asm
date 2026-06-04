@@ -642,7 +642,7 @@ CheckIfHPIsZero::
 	ret
 
 GetSolarizedWeather::
-; Returns harsh sunlight and z if user's ability is Mega Sol.
+; Returns z if user's ability is Mega Sol. Always sets a to WEATHER_SUN
 	call GetTrueUserIgnorableAbility
 	cp MEGA_SOL
 	ld a, WEATHER_SUN
