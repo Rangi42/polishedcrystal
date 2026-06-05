@@ -5,12 +5,12 @@ SaffronCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
 
 	def_warp_events
-	warp_event 26,  3, FIGHTING_DOJO, 1
+	warp_event 28,  3, FIGHTING_DOJO, 1
 	warp_event 34,  3, SAFFRON_GYM, 1
 	warp_event 27, 11, SAFFRON_MART, 2
 	warp_event  9, 29, SAFFRON_POKECENTER_1F, 1
 	warp_event 29, 29, MR_PSYCHICS_HOUSE, 1
-	warp_event  8,  3, SAFFRON_TRAIN_STATION, 2
+	warp_event  6,  3, SAFFRON_TRAIN_STATION, 2
 	warp_event 18, 21, SILPH_CO_1F, 1
 	warp_event  9, 11, COPYCATS_HOUSE_1F, 1
 	warp_event 18,  1, ROUTE_5_SAFFRON_CITY_GATE, 3
@@ -31,10 +31,10 @@ SaffronCity_MapScriptHeader:
 	def_bg_events
 	bg_event 21,  5, BGEVENT_JUMPTEXT, SaffronCitySignText
 	bg_event 33,  5, BGEVENT_JUMPTEXT, SaffronGymSignText
-	bg_event 25,  5, BGEVENT_JUMPTEXT, FightingDojoSignText
+	bg_event 27,  5, BGEVENT_JUMPTEXT, FightingDojoSignText
 	bg_event 15, 21, BGEVENT_JUMPTEXT, SilphCoSignText
 	bg_event 27, 29, BGEVENT_JUMPTEXT, MrPsychicsHouseSignText
-	bg_event 11,  5, BGEVENT_JUMPTEXT, SaffronCityMagnetTrainStationSignText
+	bg_event  9,  5, BGEVENT_JUMPTEXT, SaffronCityMagnetTrainStationSignText
 	bg_event 31, 11, BGEVENT_JUMPTEXT, PokemonTrainerFanClubSignText
 	bg_event  5, 21, BGEVENT_JUMPTEXT, SaffronTrainerTips1Text
 	bg_event 35, 25, BGEVENT_JUMPTEXT, SaffronTrainerTips2Text
