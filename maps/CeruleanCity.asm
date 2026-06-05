@@ -7,41 +7,41 @@ CeruleanCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
 
 	def_warp_events
-	warp_event  7, 11, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
-	warp_event 28, 13, CERULEAN_POLICE_STATION, 1
+	warp_event  8, 11, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
+	warp_event 24, 11, CERULEAN_POLICE_STATION, 1
 	warp_event 13, 15, CERULEAN_TRADE_SPEECH_HOUSE, 1
 	warp_event 19, 17, CERULEAN_POKECENTER_1F, 1
-	warp_event 30, 19, CERULEAN_GYM, 1
+	warp_event 28, 19, CERULEAN_GYM, 1
 	warp_event 25, 25, CERULEAN_MART, 2
 	warp_event  2,  9, CERULEAN_CAVE_1F, 1
 	warp_event 14, 25, CERULEAN_BIKE_SHOP, 1
-	warp_event 15, 11, CERULEAN_BERRY_POWDER_HOUSE, 1
+	warp_event 14, 11, CERULEAN_BERRY_POWDER_HOUSE, 1
 	warp_event 19, 25, CERULEAN_COUPLE_HOUSE, 1
-	warp_event 29,  7, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
+	warp_event 31, 11, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
-	coord_event 20,  3, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 21,  3, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 20,  4, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 21,  4, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 20,  4, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21,  4, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 20,  5, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 21,  5, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
 	bg_event 23, 19, BGEVENT_JUMPTEXT, CeruleanGymSignText
 	bg_event 11, 25, BGEVENT_JUMPTEXT, CeruleanBikeShopSignText
-	bg_event 25, 13, BGEVENT_JUMPTEXT, CeruleanPoliceSignText
-	bg_event 23,  5, BGEVENT_JUMPTEXT, CeruleanCapeSignText
-	bg_event 11, 19, BGEVENT_JUMPTEXT, CeruleanBubblerText
+	bg_event 22, 11, BGEVENT_JUMPTEXT, CeruleanPoliceSignText
+	bg_event 19,  5, BGEVENT_JUMPTEXT, CeruleanCapeSignText
+	bg_event 13, 19, BGEVENT_JUMPTEXT, CeruleanBubblerText
 	bg_event 21, 27, BGEVENT_JUMPTEXT, CeruleanTrainerTipsText
-	bg_event  4, 13, BGEVENT_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
+	bg_event  4,  9, BGEVENT_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 	def_object_events
 	object_event 21, 20, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerFScript, -1
-	object_event  6,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
+	object_event  7,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
 	object_event 30, 22, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
-	object_event 23, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCitySuperNerdText, -1
+	object_event 28, 14, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCitySuperNerdText, -1
 	pokemon_event 20, 20, SLOWBRO, SPRITEMOVEDATA_STILL, -1, PAL_MON_PINK, CeruleanCitySlowbroText, -1
-	object_event 13, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
+	object_event 11, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  2, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	cuttree_event 44, 16, EVENT_ROUTE_9_CUT_TREE
 
