@@ -12,7 +12,7 @@ GoldenrodGameCorner_MapScriptHeader:
 
 	def_warp_events
 	warp_event  2, 13, GOLDENROD_CITY, 10
-	warp_event  3, 13, GOLDENROD_CITY, 10
+	warp_event  3, 13, GOLDENROD_CITY, 23
 
 	def_coord_events
 

@@ -21,6 +21,8 @@ CeladonCity_MapScriptHeader:
 	warp_event 29,  9, EUSINES_HOUSE, 1
 	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
 	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
+	warp_event  9,  9, CELADON_DEPT_STORE_1F, 2
+	warp_event 23, 19, CELADON_GAME_CORNER, 2
 
 	def_coord_events
 
