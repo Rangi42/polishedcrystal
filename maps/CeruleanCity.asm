@@ -29,11 +29,12 @@ CeruleanCity_MapScriptHeader:
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
 	bg_event 23, 19, BGEVENT_JUMPTEXT, CeruleanGymSignText
 	bg_event 11, 25, BGEVENT_JUMPTEXT, CeruleanBikeShopSignText
-	bg_event 22, 11, BGEVENT_JUMPTEXT, CeruleanPoliceSignText
+	bg_event 29, 11, BGEVENT_JUMPTEXT, CeruleanPoliceSignText
 	bg_event 19,  5, BGEVENT_JUMPTEXT, CeruleanCapeSignText
 	bg_event 13, 19, BGEVENT_JUMPTEXT, CeruleanBubblerText
 	bg_event 21, 27, BGEVENT_JUMPTEXT, CeruleanTrainerTipsText
 	bg_event  4,  9, BGEVENT_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
+	bg_event 31, 17, BGEVENT_ITEM + RARE_CANDY, EVENT_CERULEAN_CITY_HIDDEN_RARE_CANDY
 
 	def_object_events
 	object_event 21, 20, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerFScript, -1
@@ -41,7 +42,7 @@ CeruleanCity_MapScriptHeader:
 	object_event 30, 22, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
 	object_event 28, 14, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCitySuperNerdText, -1
 	pokemon_event 20, 20, SLOWBRO, SPRITEMOVEDATA_STILL, -1, PAL_MON_PINK, CeruleanCitySlowbroText, -1
-	object_event 11, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
+	object_event 11, 19, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  2, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	cuttree_event 44, 16, EVENT_ROUTE_9_CUT_TREE
 
