@@ -12,13 +12,14 @@ PewterCity_MapScriptHeader:
 	warp_event  7, 29, PEWTER_SNOOZE_SPEECH_HOUSE, 1
 	warp_event 14,  7, PEWTER_MUSEUM_OF_SCIENCE_1F, 1
 	warp_event 19,  5, PEWTER_MUSEUM_OF_SCIENCE_1F, 3
+	warp_event 15,  7, PEWTER_MUSEUM_OF_SCIENCE_1F, 2
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 25, 23, BGEVENT_JUMPTEXT, PewterCitySignText
 	bg_event 11, 17, BGEVENT_JUMPTEXT, PewterGymSignText
-	bg_event 15,  9, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
+	bg_event 13,  9, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
 	bg_event 33, 19, BGEVENT_JUMPTEXT, PewterCityMtMoonGiftShopSignText
 	bg_event 19, 29, BGEVENT_JUMPTEXT, PewterCityTrainerTipsText
 

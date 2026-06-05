@@ -5,7 +5,7 @@ CeladonUniversity1F_MapScriptHeader:
 
 	def_warp_events
 	warp_event 14, 19, CELADON_CITY, 13
-	warp_event 15, 19, CELADON_CITY, 13
+	warp_event 15, 19, CELADON_CITY, 19
 	warp_event 25, 12, CELADON_UNIVERSITY_2F, 1
 	warp_event 21, 12, CELADON_UNIVERSITY_LIBRARY_1F, 1
 	warp_event 15,  0, CELADON_UNIVERSITY_PRINCIPALS_OFFICE, 1
