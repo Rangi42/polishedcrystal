@@ -67,7 +67,7 @@ ENDM
 	map_const TIN_TOWER_2F,                                8,  8 ;  5
 	map_const TIN_TOWER_3F,                                8,  8 ;  6
 	map_const TIN_TOWER_4F,                                8,  8 ;  7
-	map_const TIN_TOWER_5F,                                8,  8 ;  8
+	map_const TIN_TOWER_5F,                                8,  9 ;  8
 	map_const TIN_TOWER_6F,                                8,  8 ;  9
 	map_const TIN_TOWER_7F,                                8,  8 ; 10
 	map_const TIN_TOWER_8F,                                8,  8 ; 11
