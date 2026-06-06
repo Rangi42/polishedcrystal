@@ -35,7 +35,7 @@ ENDM
 	map_const OLIVINE_CAFE,                                5,  4 ;  6
 	map_const OLIVINE_MART,                                6,  4 ;  7
 	map_const ROUTE_38_ECRUTEAK_GATE,                      5,  4 ;  8
-	map_const ROUTE_39_BARN,                               4,  4 ;  9
+	map_const ROUTE_39_BARN,                               7,  4 ;  9
 	map_const ROUTE_39_FARMHOUSE,                          4,  4 ; 10
 	map_const ROUTE_38,                                   20,  9 ; 11
 	map_const ROUTE_39,                                   10, 27 ; 12

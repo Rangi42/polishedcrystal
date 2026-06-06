@@ -60,11 +60,7 @@ ProfIvyScript:
 	pause 60
 	special RestartMapMusic
 	pause 15
-	opentext
-	writetext IvysLabNidorinoText
-	cry NIDORINO
-	waitsfx
-	closetext
+	showcrytext IvysLabNidorinoText, NIDORINO
 	showemote EMOTE_HAPPY, IVYSLAB_NIDORINO, 15
 	setevent EVENT_HEALED_NIDORINO
 	setlasttalked IVYSLAB_IVY

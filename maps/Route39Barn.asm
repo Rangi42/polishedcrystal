@@ -4,17 +4,26 @@ Route39Barn_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  3,  7, ROUTE_39, 1
-	warp_event  4,  7, ROUTE_39, 1
+	warp_event  6,  7, ROUTE_39, 1
+	warp_event  7,  7, ROUTE_39, 4
 
 	def_coord_events
 
 	def_bg_events
+	bg_event 10,  1, BGEVENT_ITEM + MOOMOO_MILK, EVENT_MOOMOO_FARM_HIDDEN_MOOMOO_MILK
+	bg_event  0,  1, BGEVENT_JUMPTEXT, Route39BarnBucketText
+	bg_event  5,  1, BGEVENT_JUMPTEXT, Route39BarnBucketText
+	bg_event 10,  1, BGEVENT_JUMPTEXT, Route39BarnBucketText
 
 	def_object_events
-	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, PAL_MON_PINK, OBJECTTYPE_SCRIPT, NO_FORM, MooMoo, -1
-	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
-	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
+	object_event  6,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, PAL_MON_PINK, OBJECTTYPE_SCRIPT, NO_FORM, MooMoo, -1
+	object_event  5,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
+	object_event  7,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
+	pokemon_event  2,  2, MILTANK, SPRITEMOVEDATA_POKEMON, (1 << EVE) | (1 << NITE), PAL_MON_PINK, MoomooHappyMooText, -1
+	pokemon_event 11,  2, MILTANK, SPRITEMOVEDATA_POKEMON, (1 << EVE) | (1 << NITE), PAL_MON_AZURE, MoomooHappyMooText, -1
+
+	object_const_def
+	const ROUTE39BARN_MOOMOO
 
 Route39BarnTwin1Script:
 	faceplayer
@@ -104,13 +113,18 @@ MooMoo:
 	jumpopenedtext Text_QuiteHealthy
 
 .SevenOranBerries:
-	playmusic MUSIC_HEAL
 	writetext Text_GaveOranBerry
+	waitbutton
+	closetext
+	pause 15
+	playmusic MUSIC_HEAL
 	pause 60
-	promptbutton
 	special RestartMapMusic
+	pause 15
+	showcrytext MoomooHappyMooText, MILTANK
+	showemote EMOTE_HAPPY, ROUTE39BARN_MOOMOO, 15
 	setevent EVENT_HEALED_MOOMOO
-	jumpopenedtext Text_TotallyHealthy
+	jumptext Text_TotallyHealthy
 
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
@@ -203,4 +217,8 @@ Text_RefusedToGiveBerry:
 	line "give a Berry."
 
 	para "Miltank looks sad."
+	done
+
+Route39BarnBucketText:
+	text "It's a bucket."
 	done
