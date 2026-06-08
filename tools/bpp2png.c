@@ -188,7 +188,11 @@ unsigned int write_png(const char *filename, uint8_t *bpp_data, unsigned int dep
 	unsigned int error = state.error;
 	lodepng_state_cleanup(&state);
 	if (!error) {
-		error = lodepng_save_file(buffer, buffer_size, filename);
+		if (!strcmp(filename, "-")) {
+			fwrite(buffer, 1, buffer_size, stdout);
+		} else {
+			error = lodepng_save_file(buffer, buffer_size, filename);
+		}
 	}
 
 	free(buffer);

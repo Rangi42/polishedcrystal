@@ -1198,7 +1198,7 @@ void output_2bpp(const struct Canvas *canvas, const char *filename, int colors[s
 			putc((unsigned char)bp1, f);
 		}
 	}
-	fclose(f);
+	xfclose(f);
 }
 
 int main(int argc, char *argv[]) {
