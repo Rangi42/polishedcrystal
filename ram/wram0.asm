@@ -1411,7 +1411,8 @@ wColoredMaleFemaleShinyTiles:: ds 3 tiles
 
 SECTION "Unused", WRAM0
 
-	ds 318 ; it's free real estate
+wLevelCap:: db ; highest level a Pokémon can reach this battle/item use; see GetLevelCap
+	ds 317 ; it's free real estate
 
 
 SECTION "Options", WRAM0
@@ -1478,7 +1479,8 @@ wInitialOptions2::
 ; bit 2: no exp on/off (cannot be set together with scaled exp)
 ; bit 3: use RTC
 ; bit 4: evolve in battle
-; bits 5-6: unused
+; bit 5: level cap on/off
+; bit 6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::

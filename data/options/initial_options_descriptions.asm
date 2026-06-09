@@ -13,6 +13,7 @@ InitialOptionDescriptions:
 	dw .TradedMon
 	dw .EvolveInBattle
 	dw .ColorVariation
+	dw .LevelCap
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 .Natures:
@@ -162,6 +163,22 @@ InitialOptionDescriptions:
 
 	para "variation based"
 	line "on nicknames."
+	prompt
+
+.LevelCap:
+	text "Your #mon stop"
+	line "gaining Exp. once"
+	cont "they reach the"
+
+	para "level of the next"
+	line "Gym Leader's or"
+	cont "Champion's ace."
+
+	para "The cap rises as"
+	line "you earn Badges."
+
+	para "Exp.Candy and Rare"
+	line "Candy obey it too."
 	prompt
 
 InitialOptionsDoneDescription:

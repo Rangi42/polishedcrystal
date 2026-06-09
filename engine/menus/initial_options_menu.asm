@@ -62,7 +62,7 @@ SetInitialOptions:
 .BGPalettes:
 INCLUDE "gfx/options/initial_options_bg.pal"
 
-DEF NUM_INITIAL_MENU_OPTIONS EQU 11
+DEF NUM_INITIAL_MENU_OPTIONS EQU 12
 
 InitialOptions_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -82,6 +82,7 @@ InitialOptions_CallOptionRoutine:
 	dw InitialOptions_TradedMon
 	dw InitialOptions_EvolveInBattle
 	dw InitialOptions_ColorVariation
+	dw InitialOptions_LevelCap
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 MenuDataHeader_InitialOptions:
@@ -384,6 +385,26 @@ InitialOptions_ColorVariation:
 	jmp OptionsShared_PlaceStringAtValueCoord
 .SetYes:
 	set COLOR_VARY_OPT, [hl]
+	ld de, YesString
+	jmp OptionsShared_PlaceStringAtValueCoord
+
+InitialOptions_LevelCap:
+	ld hl, wInitialOptions2
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit LEVEL_CAP_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle:
+	bit LEVEL_CAP_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res LEVEL_CAP_OPT, [hl]
+	ld de, NoString
+	jmp OptionsShared_PlaceStringAtValueCoord
+.SetYes:
+	set LEVEL_CAP_OPT, [hl]
 	ld de, YesString
 	jmp OptionsShared_PlaceStringAtValueCoord
 

@@ -118,7 +118,8 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 	const NO_EXP_OPT           ; 2
 	const RTC_OPT              ; 3
 	const EVOLVE_IN_BATTLE_OPT ; 4
-	const_skip 2
+	const LEVEL_CAP_OPT        ; 5
+	const_skip 1
 	const RESET_INIT_OPTS      ; 7
 
 	const_def

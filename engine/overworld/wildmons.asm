@@ -1180,7 +1180,53 @@ SetBadgeBaseLevel:
 	ld [wBadgeBaseLevel], a
 	ret
 
+GetLevelCap::
+; Returns the current level cap in a.
+; If the level cap option is off, returns MAX_LEVEL (i.e. vanilla behavior).
+; Otherwise the cap rises with progress (each cap is the next boss's ace level):
+;   beat Red                 -> 100
+;   beat the Kanto Elite 4   ->  90
+;   otherwise LevelCaps[number of badges owned]
+; Clobbers a, bc, de, hl. Requires WRAM bank 1 (for wBadges/wEventFlags), which
+; is always active in the battle and menu contexts that call this.
+	ld a, [wInitialOptions2]
+	bit LEVEL_CAP_OPT, a
+	jr nz, .enabled
+	ld a, MAX_LEVEL
+	ret
+
+.enabled
+	ld de, EVENT_BEAT_RED
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .check_kanto_elite_four
+	ld a, 100
+	ret
+
+.check_kanto_elite_four
+	ld de, EVENT_BEAT_ELITE_FOUR_AGAIN
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .by_badges
+	ld a, 90
+	ret
+
+.by_badges
+	ld hl, wBadges
+	ld b, wBadgesEnd - wBadges
+	call CountSetBits
+	ld hl, LevelCaps
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
+
 INCLUDE "data/wild/badge_base_levels.asm"
+INCLUDE "data/wild/level_caps.asm"
 
 AdjustLevelForBadges:
 	cp MAX_LEVEL + 1

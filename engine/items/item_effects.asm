@@ -788,14 +788,22 @@ RareCandy:
 
 	call UseItem_GetBaseDataAndNickParameters
 
+	farcall GetLevelCap
+	ld [wLevelCap], a
+
 	ld a, MON_LEVEL
 	call GetPartyParamLocationAndValue
-	cp MAX_LEVEL
+	push hl
+	ld hl, wLevelCap
+	cp [hl] ; level - cap; carry set if below the cap
+	pop hl
 	jr c, .not_max_level
 
 	; This evolution check isn't limited to level-based evolution, but covers
 	; everything that can be induced by a level up. And we want to force the
-	; evolution!
+	; evolution! At or above the level cap (which includes level 100) we behave
+	; like vanilla does at level 100: force a level-up evolution if possible,
+	; else the candy has no effect and is not consumed.
 	ld a, EVOLVE_LEVEL
 	jmp InduceEvolutionWithItem
 
@@ -1865,11 +1873,17 @@ INCLUDE "data/items/wing_names.asm"
 CandyJar_MonSelected:
 ; Runs when a mon has been selected.
 
-	; if mon is level 100, no effect.
+	farcall GetLevelCap
+	ld [wLevelCap], a
+
+	; if mon is at or above the level cap (which includes level 100), no effect.
 	ld a, MON_LEVEL
 	call GetPartyParamLocationAndValue
-	cp MAX_LEVEL
-	jmp z, .no_effect
+	push hl
+	ld hl, wLevelCap
+	cp [hl] ; level - cap; carry set if below the cap
+	pop hl
+	jmp nc, .no_effect
 
 	; What candy does the player want to choose?
 	ldh a, [hBGMapMode]
@@ -1934,7 +1948,8 @@ CandyJar_MonSelected:
 
 	; load max_exp into wCandyMaxLevelExp
 	call UseItem_GetBaseDataAndNickParameters
-	ld d, MAX_LEVEL
+	ld a, [wLevelCap]
+	ld d, a
 	farcall CalcExpAtLevel
 	ldh a, [hProduct + 1]
 	ld [wCandyMaxLevelExp + 0], a

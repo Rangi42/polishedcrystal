@@ -6487,6 +6487,10 @@ GiveExperiencePoints:
 	and a
 	ret nz
 
+	; Compute the level cap once; it's the same for every party mon.
+	farcall GetLevelCap
+	ld [wLevelCap], a
+
 	xor a
 	ld [wCurPartyMon], a
 	ld bc, wPartyMon1Species
@@ -6517,12 +6521,13 @@ GiveExperiencePoints:
 	bit NO_EXP_OPT, a
 	jmp nz, .next_mon
 
-	; No experience at level 100
+	; No experience at or above the level cap
 	ld hl, MON_LEVEL
 	add hl, bc
 	ld a, [hl]
-	cp MAX_LEVEL
-	jmp z, .next_mon
+	ld hl, wLevelCap
+	cp [hl]
+	jmp nc, .next_mon
 
 	push bc
 	xor a
@@ -6642,7 +6647,8 @@ GiveExperiencePoints:
 	ld [wCurForm], a
 	call GetBaseData
 	push bc
-	ld d, MAX_LEVEL
+	ld a, [wLevelCap]
+	ld d, a
 	farcall CalcExpAtLevel
 	pop bc
 	ld hl, MON_EXP + 2

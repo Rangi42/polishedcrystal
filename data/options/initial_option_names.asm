@@ -11,6 +11,7 @@ InitialOptionNames:
 	dw .TradedMon
 	dw .EvolveInBattle
 	dw .ColorVariation
+	dw .LevelCap
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 .Natures:
@@ -35,3 +36,5 @@ InitialOptionNames:
 	db "Evolve in battle@"
 .ColorVariation:
 	db "Color variation@"
+.LevelCap:
+	db "Level cap@"
