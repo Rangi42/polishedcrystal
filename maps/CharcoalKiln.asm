@@ -10,6 +10,7 @@ CharcoalKiln_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
+	bg_event  9,  1, BGEVENT_JUMPTEXT, CharcoalKilnBucketText
 
 	def_object_events
 	object_event  1,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CharcoalKilnBoss, EVENT_CHARCOAL_KILN_BOSS
@@ -110,4 +111,8 @@ CharcoalKilnFarfetchdScript:
 
 .Text:
 	text "Farfetch'd: Kwaa!"
+	done
+
+CharcoalKilnBucketText:
+	text "It's a bucket."
 	done
