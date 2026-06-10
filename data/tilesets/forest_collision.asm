@@ -182,3 +182,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b5
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b6
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b7
+	tilecoll WATER, WATER, WATER, WATER ; b8
