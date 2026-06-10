@@ -41,8 +41,17 @@ FarCopyRadioText::
 	ld h, d
 	ld de, wRadioCompressedText
 	push de
-	ld bc, SCREEN_WIDTH * 2
-	rst CopyBytes
+; Copy up to SCREEN_WIDTH * 2 bytes, stopping before $8000 bank boundary.
+	ld c, SCREEN_WIDTH * 2
+.copy_byte
+	bit 7, h
+	jr nz, .copy_done
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .copy_byte
+.copy_done
 	pop hl
 	ld de, wRadioText
 	ld a, [hli]

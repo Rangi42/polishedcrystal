@@ -898,6 +898,137 @@ _PnP_Text5::
 	text_ram wStringBuffer1
 	done
 
+; Weather Channel
+
+SECTION "_WC_IntroText1", ROMX
+_WC_IntroText1::
+	line "Weather Channel!"
+	done
+
+SECTION "_WC_IntroText2", ROMX
+_WC_IntroText2::
+	line "Pokécast Inst."
+	done
+
+; DJ greetings (varied)
+
+SECTION "_WC_Greet1", ROMX
+_WC_Greet1::
+	line "DJ Zephyr here!"
+	done
+
+SECTION "_WC_Greet2", ROMX
+_WC_Greet2::
+	line "Zephyr, on air!"
+	done
+
+SECTION "_WC_Greet3", ROMX
+_WC_Greet3::
+	line "It's DJ Zephyr!"
+	done
+
+SECTION "_WC_Greet4", ROMX
+_WC_Greet4::
+	line "Here's the scoop!"
+	done
+
+SECTION "_WC_LocationText", ROMX
+_WC_LocationText::
+	line ""
+	text_ram wStringBuffer1
+	text ":"
+	done
+
+SECTION "_WC_WeatherDesc1", ROMX
+_WC_WeatherDesc1::
+	line "Expect "
+	text_ram wStringBuffer2
+	done
+
+SECTION "_WC_WeatherDesc2", ROMX
+_WC_WeatherDesc2::
+	line "Seeing "
+	text_ram wStringBuffer2
+	done
+
+SECTION "_WC_WeatherDesc3", ROMX
+_WC_WeatherDesc3::
+	line "We got "
+	text_ram wStringBuffer2
+	done
+
+SECTION "_WC_WeatherDesc4", ROMX
+_WC_WeatherDesc4::
+	line ""
+	text_ram wStringBuffer2
+	done
+
+; Event-aware DJ commentary
+
+SECTION "_WC_EventLakeOfRage", ROMX
+_WC_EventLakeOfRage::
+	line "…something's off."
+	done
+
+SECTION "_WC_EventGoldenrod", ROMX
+_WC_EventGoldenrod::
+	line "Stay cautious…"
+	done
+
+SECTION "_WC_EventRoute10", ROMX
+_WC_EventRoute10::
+	line "Shocking, really!"
+	done
+
+SECTION "_WC_EventCherrygrove", ROMX
+_WC_EventCherrygrove::
+	line "Simply beautiful!"
+	done
+
+; Generic DJ banter
+
+SECTION "_WC_Banter1", ROMX
+_WC_Banter1::
+	line "What a day, huh?"
+	done
+
+SECTION "_WC_Banter2", ROMX
+_WC_Banter2::
+	line "Stay tuned, folks!"
+	done
+
+SECTION "_WC_Banter3", ROMX
+_WC_Banter3::
+	line "Quite a forecast!"
+	done
+
+SECTION "_WC_Banter4", ROMX
+_WC_Banter4::
+	line "Skies are busy!"
+	done
+
+; Varied sign-offs
+
+SECTION "_WC_SignOff1", ROMX
+_WC_SignOff1::
+	line "Be safe out there!"
+	done
+
+SECTION "_WC_SignOff2", ROMX
+_WC_SignOff2::
+	line "Stay dry, folks!"
+	done
+
+SECTION "_WC_SignOff3", ROMX
+_WC_SignOff3::
+	line "Zephyr, out!"
+	done
+
+SECTION "_WC_SignOff4", ROMX
+_WC_SignOff4::
+	line "Catch ya later!"
+	done
+
 SECTION "_RocketRadioText1", ROMX
 _RocketRadioText1::
 	line "… …Ahem, we are"

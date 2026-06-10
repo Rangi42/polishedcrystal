@@ -33,6 +33,7 @@ PlayRadioShow:
 	dw PokeFluteRadio ; $08
 	dw UnownRadio ; $09
 	dw EvolutionRadio ; $0a
+	dw WeatherChannel1 ; $0b
 	assert_table_length NUM_RADIO_CHANNELS
 ; OaksPkmnTalk
 	dw OaksPkmnTalk2  ; $0b
@@ -114,11 +115,26 @@ PlayRadioShow:
 	dw BuenasPassword19 ; $51
 	dw BuenasPassword20 ; $52
 	dw BuenasPassword21 ; $53
-	dw RadioScroll ; $54
+	dw RadioScroll ; $55
 ; More Pokemon Channel stuff
-	dw PokedexShow6 ; $55
-	dw PokedexShow7 ; $56
-	dw PokedexShow8 ; $57
+	dw PokedexShow6 ; $56
+	dw PokedexShow7 ; $57
+	dw PokedexShow8 ; $58
+; Weather Channel
+	dw WeatherChannel2  ; $59
+	dw WeatherChannel3  ; $5a
+	dw WeatherChannel4  ; $5b
+	dw WeatherChannel5  ; $5c
+	dw WeatherChannel6  ; $5d
+	dw WeatherChannel7  ; $5e
+	dw WeatherChannel8  ; $5f
+	dw WeatherChannel9  ; $60
+	dw WeatherChannel10 ; $61
+	dw WeatherChannel11 ; $62
+	dw WeatherChannel12 ; $63
+	dw WeatherChannel13 ; $64
+	dw WeatherChannel14 ; $65
+	dw WeatherChannel15 ; $66
 	assert_table_length NUM_RADIO_SEGMENTS
 
 NextRadioLine:
@@ -1417,6 +1433,457 @@ EvolutionRadio:
 	ld a, 1
 	ld [wNumRadioLinesPrinted], a
 	ret
+
+WeatherChannel1:
+	call StartRadioStation
+	ld hl, WC_IntroText1
+	ld a, WEATHER_CHANNEL_2
+	jmp NextRadioLine
+
+WeatherChannel2:
+	ld hl, WC_IntroText2
+	ld a, WEATHER_CHANNEL_3
+	jmp NextRadioLine
+
+WeatherChannel3:
+; DJ greeting (varied)
+	call Random
+	and 3
+	ld e, a
+	ld d, 0
+	ld hl, .DJGreetings
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, WEATHER_CHANNEL_4
+	jmp NextRadioLine
+
+.DJGreetings:
+	dw WC_Greet1
+	dw WC_Greet2
+	dw WC_Greet3
+	dw WC_Greet4
+
+WeatherChannel4:
+; Report Johto weather slot 1
+	ld hl, wOvercastRandomMapJohto1
+	call WeatherChannel_LoadReport
+	ld a, WEATHER_CHANNEL_5
+	jmp NextRadioLine
+
+WeatherChannel5:
+	call WeatherChannel_PickDesc
+	call CopyRadioTextToRAM
+	ld a, WEATHER_CHANNEL_6
+	jmp PrintRadioLine
+
+WeatherChannel6:
+; Report Johto weather slot 2
+	ld hl, wOvercastRandomMapJohto2
+	call WeatherChannel_LoadReport
+	ld a, WEATHER_CHANNEL_7
+	jmp NextRadioLine
+
+WeatherChannel7:
+	call WeatherChannel_PickDesc
+	call CopyRadioTextToRAM
+	ld a, WEATHER_CHANNEL_8
+	jmp PrintRadioLine
+
+WeatherChannel8:
+; Report Kanto weather slot 1
+	ld hl, wOvercastRandomMapKanto1
+	call WeatherChannel_LoadReport
+	ld a, WEATHER_CHANNEL_9
+	jmp NextRadioLine
+
+WeatherChannel9:
+	call WeatherChannel_PickDesc
+	call CopyRadioTextToRAM
+	ld a, WEATHER_CHANNEL_10
+	jmp PrintRadioLine
+
+WeatherChannel10:
+; Report Kanto weather slot 2
+	ld hl, wOvercastRandomMapKanto2
+	call WeatherChannel_LoadReport
+	ld a, WEATHER_CHANNEL_11
+	jmp NextRadioLine
+
+WeatherChannel11:
+	call WeatherChannel_PickDesc
+	call CopyRadioTextToRAM
+	ld a, WEATHER_CHANNEL_12
+	jmp PrintRadioLine
+
+WeatherChannel12:
+; Special weather report (fixed locations & event weather)
+	call WeatherChannel_SpecialReport
+	ld a, WEATHER_CHANNEL_13
+	jmp NextRadioLine
+
+WeatherChannel13:
+	call WeatherChannel_PickDesc
+	call CopyRadioTextToRAM
+	ld a, WEATHER_CHANNEL_14
+	jmp PrintRadioLine
+
+WeatherChannel14:
+; DJ commentary - event-aware or generic banter
+	call WeatherChannel_GetComment
+	ld a, WEATHER_CHANNEL_15
+	jmp NextRadioLine
+
+WeatherChannel15:
+; Sign off with varied text, loop back to intro
+	call Random
+	and 3
+	ld e, a
+	ld d, 0
+	ld hl, .SignOffs
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, WEATHER_CHANNEL
+	jmp NextRadioLine
+
+.SignOffs:
+	dw WC_SignOff1
+	dw WC_SignOff2
+	dw WC_SignOff3
+	dw WC_SignOff4
+
+; Pick a random weather description template.
+WeatherChannel_PickDesc:
+	call Random
+	and 3
+	ld e, a
+	ld d, 0
+	ld hl, .DescTemplates
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+.DescTemplates:
+	dw WC_WeatherDesc1
+	dw WC_WeatherDesc2
+	dw WC_WeatherDesc3
+	dw WC_WeatherDesc4
+
+; Load weather report data for the overcast slot at hl.
+; Puts location name into wStringBuffer1 (via GetLandmarkName).
+; Puts weather description string into wStringBuffer2.
+; Returns hl pointing to the location text template.
+WeatherChannel_LoadReport:
+; Read intensity, group, number
+	ld a, [hli]
+	push af ; save intensity
+	ld a, [hli]
+	ld b, a ; group (or alias id)
+	ld c, [hl] ; number
+; Check for uninitialized slot (group = 0)
+	ld a, b
+	and a
+	jr z, .default_map
+; Check if this is an aliased group
+	cp NUM_MAP_GROUPS + 1
+	jr c, .normal_group
+; Aliased group - look up the first map in our alias table
+	sub NUM_MAP_GROUPS + 1
+	add a ; multiply by 2 (each entry is 2 bytes: group, number)
+	ld e, a
+	ld d, 0
+	ld hl, .AliasToMap
+	add hl, de
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
+.normal_group
+	call GetWorldMapLocation
+	ld e, a
+	farcall GetLandmarkName
+; Now load the weather description based on intensity
+	pop af ; intensity
+	ld hl, .WeatherStrings
+	add a ; multiply by 2
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+; Copy weather string to wStringBuffer2
+	ld de, wStringBuffer2
+.copy_weather
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp '@'
+	jr nz, .copy_weather
+	ld hl, WC_LocationText
+	ret
+
+.default_map
+; Uninitialized overcast slot — use New Bark Town as fallback
+	ld b, GROUP_NEW_BARK_TOWN
+	ld c, MAP_NEW_BARK_TOWN
+	jr .normal_group
+
+.WeatherStrings:
+	dw .Overcast
+	dw .Rain
+	dw .Thunderstorm
+	dw .Snow
+	dw .Sandstorm
+	dw .CherryBlossoms
+
+.Overcast:
+	db "overcast.@"
+.Rain:
+	db "rain.@"
+.Thunderstorm:
+	db "storms!@"
+.Snow:
+	db "heavy snow.@"
+.Sandstorm:
+	db "sandstorms.@"
+.CherryBlossoms:
+	db "blossoms!@"
+
+; For aliased overcast areas, map to the first real map in each area
+.AliasToMap:
+	map_id ROUTE_32             ; AREA_ROUTE_32
+	map_id AZALEA_TOWN          ; AREA_AZALEA
+	map_id ROUTE_34             ; AREA_ROUTE_34
+	map_id GOLDENROD_CITY       ; AREA_GOLDENROD
+	map_id NATIONAL_PARK        ; AREA_NATIONAL_PARK
+	map_id ECRUTEAK_CITY        ; AREA_ECRUTEAK
+	map_id ROUTE_35_COAST_NORTH ; AREA_ROUTE_35_COAST
+	map_id ROUTE_40             ; AREA_ROUTE_40
+	map_id ROUTE_47             ; AREA_ROUTES_47_48
+	map_id ROUTE_42             ; AREA_ROUTE_42
+	map_id LAKE_OF_RAGE         ; AREA_LAKE_OF_RAGE
+	map_id ROUTE_2_NORTH        ; AREA_ROUTE_2
+	map_id ROUTE_10_NORTH       ; AREA_ROUTE_10
+	map_id ROUTE_12_NORTH       ; AREA_ROUTE_12
+	map_id ROUTE_13_EAST        ; AREA_ROUTE_13
+	map_id ROUTE_16_EAST        ; AREA_ROUTE_16
+	map_id ROUTE_17_NORTH       ; AREA_ROUTE_17
+	map_id ROUTE_18_EAST        ; AREA_ROUTE_18
+	map_id URAGA_CHANNEL_EAST   ; AREA_URAGA_CHANNEL
+
+; Check for story-relevant event weather or fixed weather locations.
+; Sets wStringBuffer1 (location) and wStringBuffer2 (weather desc).
+; Returns hl pointing to WC_LocationText.
+WeatherChannel_SpecialReport:
+; Priority: Lake of Rage > Goldenrod > Route 10 > Cherrygrove > fixed
+; Lake of Rage - Team Rocket's experiments cause perpetual storms
+	eventflagcheck EVENT_LAKE_OF_RAGE_CIVILIANS
+	jr nz, .lake_of_rage
+; Goldenrod / Stormy Beach - Rocket takeover brings storms
+	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
+	jr z, .goldenrod
+; Route 10 - Zapdos presence causes electric storms
+	eventflagcheck EVENT_ROUTE_10_ZAPDOS
+	jr z, .route_10
+; Cherrygrove - guaranteed cherry blossoms early game
+	eventflagcheck EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	jr z, .cherrygrove
+; No event weather - alternate between fixed weather locations
+	call Random
+	and 1
+	jr z, .snowtop
+; Rugged Road - always has sandstorms
+	ld e, RUGGED_ROAD
+	ld hl, .SandstormStr
+	jr .set_weather
+.snowtop:
+	ld e, SNOWTOP_MOUNTAIN
+	ld hl, .SnowStr
+	jr .set_weather
+.lake_of_rage:
+	ld e, LAKE_OF_RAGE
+	ld hl, .StormStr
+	jr .set_weather
+.goldenrod:
+	ld e, STORMY_BEACH
+	ld hl, .StormStr
+	jr .set_weather
+.route_10:
+	ld e, ROUTE_10
+	ld hl, .StormStr
+	jr .set_weather
+.cherrygrove:
+	ld e, CHERRYGROVE_CITY
+	ld hl, .BlossomStr
+.set_weather:
+	push hl
+	farcall GetLandmarkName
+	pop hl
+; Copy weather string to wStringBuffer2
+	ld de, wStringBuffer2
+.copy_ws:
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp '@'
+	jr nz, .copy_ws
+	ld hl, WC_LocationText
+	ret
+
+.SnowStr:     db "heavy snow.@"
+.SandstormStr: db "sandstorms.@"
+.StormStr:    db "storms!@"
+.BlossomStr:  db "blossoms!@"
+
+; Select DJ commentary based on active event weather, or generic banter.
+WeatherChannel_GetComment:
+; Same priority order as SpecialReport
+	eventflagcheck EVENT_LAKE_OF_RAGE_CIVILIANS
+	jr nz, .lake_comment
+	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
+	jr z, .goldenrod_comment
+	eventflagcheck EVENT_ROUTE_10_ZAPDOS
+	jr z, .route10_comment
+	eventflagcheck EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	jr z, .cherry_comment
+; Generic banter for fixed weather reports
+	call Random
+	and 3
+	ld e, a
+	ld d, 0
+	ld hl, .Banter
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+.lake_comment:
+	ld hl, WC_EventLakeOfRage
+	ret
+.goldenrod_comment:
+	ld hl, WC_EventGoldenrod
+	ret
+.route10_comment:
+	ld hl, WC_EventRoute10
+	ret
+.cherry_comment:
+	ld hl, WC_EventCherrygrove
+	ret
+
+.Banter:
+	dw WC_Banter1
+	dw WC_Banter2
+	dw WC_Banter3
+	dw WC_Banter4
+
+WC_IntroText1:
+	; Weather Channel!
+	text_far _WC_IntroText1
+	text_end
+
+WC_IntroText2:
+	; Pokécast Inst.
+	text_far _WC_IntroText2
+	text_end
+
+WC_Greet1:
+	; DJ Zephyr here!
+	text_far _WC_Greet1
+	text_end
+
+WC_Greet2:
+	; Zephyr, on air!
+	text_far _WC_Greet2
+	text_end
+
+WC_Greet3:
+	; It's DJ Zephyr!
+	text_far _WC_Greet3
+	text_end
+
+WC_Greet4:
+	; Here's the scoop!
+	text_far _WC_Greet4
+	text_end
+
+WC_LocationText:
+	; <wStringBuffer1>:
+	text_far _WC_LocationText
+	text_end
+
+WC_WeatherDesc1:
+	text_far _WC_WeatherDesc1
+	text_end
+
+WC_WeatherDesc2:
+	text_far _WC_WeatherDesc2
+	text_end
+
+WC_WeatherDesc3:
+	text_far _WC_WeatherDesc3
+	text_end
+
+WC_WeatherDesc4:
+	text_far _WC_WeatherDesc4
+	text_end
+
+WC_EventLakeOfRage:
+	text_far _WC_EventLakeOfRage
+	text_end
+
+WC_EventGoldenrod:
+	text_far _WC_EventGoldenrod
+	text_end
+
+WC_EventRoute10:
+	text_far _WC_EventRoute10
+	text_end
+
+WC_EventCherrygrove:
+	text_far _WC_EventCherrygrove
+	text_end
+
+WC_Banter1:
+	text_far _WC_Banter1
+	text_end
+
+WC_Banter2:
+	text_far _WC_Banter2
+	text_end
+
+WC_Banter3:
+	text_far _WC_Banter3
+	text_end
+
+WC_Banter4:
+	text_far _WC_Banter4
+	text_end
+
+WC_SignOff1:
+	text_far _WC_SignOff1
+	text_end
+
+WC_SignOff2:
+	text_far _WC_SignOff2
+	text_end
+
+WC_SignOff3:
+	text_far _WC_SignOff3
+	text_end
+
+WC_SignOff4:
+	text_far _WC_SignOff4
+	text_end
 
 BuenasPassword1:
 ; Determine if we need to be here
