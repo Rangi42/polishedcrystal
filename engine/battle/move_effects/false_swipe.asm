@@ -1,6 +1,6 @@
 BattleCommand_falseswipe:
 	call CheckSubstituteOpp
-	ret nz
+	jr nz, .done
 
 	ld hl, wEnemyMonHP
 	ldh a, [hBattleTurn]
