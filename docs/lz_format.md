@@ -16,7 +16,7 @@ sometimes referred to as "Polished LZ."
 It is broadly compatible with the command set described in the LC_LZ3 reference:
 https://github.com/bonimy/MushROMs/blob/master/doc/LC_LZ3%20Compression%20Format.md
 
-However, Polished Crystal has **intentional format differences** (documented below), including new extended opcode bytes. The standard `lzcomp` / `lz.py` tools cannot handle this format; only the custom compressor in `tools/lzcomp` produces valid streams.
+However, Polished Crystal has **intentional format differences** (documented below), including new extended opcode bytes. The standard `lzcompress` / `lzcomp` / `lz.py` tools cannot handle this format; only the custom compressor in `tools/lzpcompress` produces valid streams.
 
 Compressed assets use the **`.lzp`** file extension ("LZ Polished") to distinguish them from standard `.lz` files.
 
@@ -265,10 +265,7 @@ The LC_LZ3 document is a useful mental model for the *base* command set, but Pol
 | Component | Language | Location |
 |---|---|---|
 | Runtime decompressor | Game Boy ASM | `home/decompress.asm` |
-| Compressor (DP‑optimal) | C | `tools/lz/dpcomp.c` |
-| Serialization / output | C | `tools/lz/output.c` |
-| Decompressor (tool‑side) | C | `tools/lz/uncomp.c` |
-| Shared constants & helpers | C | `tools/lz/proto.h`, `tools/lz/util.c` |
+| Compressor + decompressor | C | `tools/lzcompress.c` |
 | Post‑hoc analysis | Python | `utils/lz_analyze_pack16.py` |
 
 ## Named constants
@@ -287,4 +284,4 @@ Key named constants from `tools/lz/proto.h`:
 
 ## Tooling notes
 
-The `tools/lzcomp` sources use an internal pseudo-command id `7` to represent extended opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.
+The `tools/lzcompress.c` source uses an internal pseudo-command id `7` to represent extended opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.

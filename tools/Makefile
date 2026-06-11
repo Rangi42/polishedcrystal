@@ -33,7 +33,7 @@ tools := \
 	bspcomp \
 	fine_print \
 	gfx \
-	lzcomp \
+	lzpcompress \
 	make_patch \
 	png_dimensions \
 	pokemon_animation \
@@ -58,9 +58,7 @@ vwf: common.h
 bpp2png: bpp2png.c lodepng/lodepng.c common.h lodepng/lodepng.h
 	$(CC) $(CFLAGS) -o $@ bpp2png.c lodepng/lodepng.c
 
-lzcomp: CFLAGS += -Wno-strict-overflow -Wno-sign-compare
-lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)
-	$(CC) $(CFLAGS) -o $@ lz/*.c
+lzpcompress: CFLAGS += -Wno-strict-overflow -Wno-sign-compare
 
 bspcomp: bsp/bspcomp.c
 	$(CC) $(CFLAGS) -o $@ $^
