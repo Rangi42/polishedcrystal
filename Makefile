@@ -295,7 +295,7 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 
 
 %.lzp: %
-	$Qtools/lzcomp -- $< $@
+	$Qtools/lzpcompress -- $< $@
 
 #%.4bpp: %.png
 #	$Qsuperfamiconv tiles -R -i $@ -d $<
