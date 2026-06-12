@@ -11,7 +11,7 @@ SaffronCity_MapScriptHeader:
 	warp_event  9, 29, SAFFRON_POKECENTER_1F, 1
 	warp_event 29, 29, MR_PSYCHICS_HOUSE, 1
 	warp_event  6,  3, SAFFRON_TRAIN_STATION, 2
-	warp_event 18, 21, SILPH_CO_1F, 1
+	warp_event 19, 21, SILPH_CO_1F, 1
 	warp_event  9, 11, COPYCATS_HOUSE_1F, 1
 	warp_event 18,  1, ROUTE_5_SAFFRON_CITY_GATE, 3
 	warp_event  0, 18, ROUTE_7_SAFFRON_GATE, 3
@@ -25,6 +25,7 @@ SaffronCity_MapScriptHeader:
 	warp_event 13, 29, SAFFRON_BOOK_SPEECH_HOUSE, 1
 	warp_event 23, 29, SAFFRON_HITMONTOP_KID_HOUSE, 1
 	warp_event 13, 11, SAFFRON_RICH_SPEECH_HOUSE, 1
+	warp_event 20, 21, SILPH_CO_1F, 2
 
 	def_coord_events
 

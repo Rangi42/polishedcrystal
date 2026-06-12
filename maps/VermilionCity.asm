@@ -73,10 +73,10 @@ VermilionCitySetupBattleFactoryCallback:
 	changeblock 28,  6, $a9
 	changeblock 30,  6, $a9
 	changeblock 32,  6, $aa
-	changeblock 26,  8, $a5
+	changeblock 26,  8, $fa
 	changeblock 28,  8, $8b
 	changeblock 30,  8, $8f
-	changeblock 32,  8, $a6
+	changeblock 32,  8, $fb
 .done
 	endcallback
 

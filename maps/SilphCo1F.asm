@@ -6,7 +6,7 @@ SilphCo1F_MapScriptHeader:
 
 	def_warp_events
 	warp_event  2,  9, SAFFRON_CITY, 7
-	warp_event  3,  9, SAFFRON_CITY, 7
+	warp_event  3,  9, SAFFRON_CITY, 21
 	warp_event 13,  0, SILPH_CO_2F, 1
 
 	def_coord_events
