@@ -27,6 +27,11 @@ CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
          -Wunused \
          -Wwrite-strings
 
+# debugging sanitizers:
+#CFLAGS += -ggdb3 -Og -D_GLIBCXX_ASSERTIONS \
+#          -fno-omit-frame-pointer -fno-optimize-sibling-calls \
+#          -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero
+
 tools := \
 	bankends \
 	bpp2png \
