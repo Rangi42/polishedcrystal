@@ -354,17 +354,18 @@ ENDM
 	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
 
 	newgroup                                                     ; 16
-	map_const ROUTE_23_NORTH,                             12, 38 ;  1
-	map_const ROUTE_23_SOUTH,                             12, 32 ;  2
-	map_const INDIGO_PLATEAU,                             12, 13 ;  3
-	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  4
-	map_const WILLS_ROOM,                                  5,  9 ;  5
-	map_const KOGAS_ROOM,                                  5,  9 ;  6
-	map_const BRUNOS_ROOM,                                 5,  9 ;  7
-	map_const KARENS_ROOM,                                 5,  9 ;  8
-	map_const LANCES_ROOM,                                 7, 12 ;  9
-	map_const HALL_OF_FAME,                                5,  7 ; 10
-	map_const BELLCHIME_TRAIL,                            12,  7 ; 11
+	map_const ROUTE_22,                                   17,  9 ;  1
+	map_const ROUTE_23_NORTH,                             12, 38 ;  2
+	map_const ROUTE_23_SOUTH,                             12, 32 ;  3
+	map_const INDIGO_PLATEAU,                             12, 13 ;  4
+	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  5
+	map_const WILLS_ROOM,                                  5,  9 ;  6
+	map_const KOGAS_ROOM,                                  5,  9 ;  7
+	map_const BRUNOS_ROOM,                                 5,  9 ;  8
+	map_const KARENS_ROOM,                                 5,  9 ;  9
+	map_const LANCES_ROOM,                                 7, 12 ; 10
+	map_const HALL_OF_FAME,                                5,  7 ; 11
+	map_const BELLCHIME_TRAIL,                            12,  7 ; 12
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1
@@ -521,23 +522,22 @@ ENDM
 
 	newgroup                                                     ; 23
 	map_const ROUTE_2_SOUTH,                              12, 18 ;  1
-	map_const ROUTE_22,                                   17,  9 ;  2
-	map_const VIRIDIAN_CITY,                              20, 18 ;  3
-	map_const VIRIDIAN_GYM,                                7, 22 ;  4
-	map_const VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
-	map_const VIRIDIAN_SCHOOL_HOUSE,                       4,  5 ;  6
-	map_const TRAINER_HOUSE_1F,                            5,  6 ;  7
-	map_const TRAINER_HOUSE_B1F,                           5,  8 ;  8
-	map_const VIRIDIAN_MART,                               6,  4 ;  9
-	map_const VIRIDIAN_POKECENTER_1F,                      6,  4 ; 11
-	map_const ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 12
-	map_const ROUTE_2_GATE,                                5,  4 ; 13
-	map_const POKEMON_LEAGUE_GATE,                        11,  9 ; 14
-	map_const VIRIDIAN_FOREST,                            19, 26 ; 15
-	map_const VIRIDIAN_FOREST_VIRIDIAN_GATE,               5,  4 ; 16
-	map_const VIRIDIAN_FOREST_PEWTER_GATE,                 5,  4 ; 17
-	map_const ROUTE_1_VIRIDIAN_GATE,                       5,  4 ; 18
-	map_const ROUTE_16_NORTH,                             14,  7 ; 19
+	map_const VIRIDIAN_CITY,                              20, 18 ;  2
+	map_const VIRIDIAN_GYM,                                7, 22 ;  3
+	map_const VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  4
+	map_const VIRIDIAN_SCHOOL_HOUSE,                       4,  5 ;  5
+	map_const TRAINER_HOUSE_1F,                            5,  6 ;  6
+	map_const TRAINER_HOUSE_B1F,                           5,  8 ;  7
+	map_const VIRIDIAN_MART,                               6,  4 ;  8
+	map_const VIRIDIAN_POKECENTER_1F,                      6,  4 ;  9
+	map_const ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 11
+	map_const ROUTE_2_GATE,                                5,  4 ; 12
+	map_const POKEMON_LEAGUE_GATE,                        11,  9 ; 13
+	map_const VIRIDIAN_FOREST,                            19, 26 ; 14
+	map_const VIRIDIAN_FOREST_VIRIDIAN_GATE,               5,  4 ; 15
+	map_const VIRIDIAN_FOREST_PEWTER_GATE,                 5,  4 ; 16
+	map_const ROUTE_1_VIRIDIAN_GATE,                       5,  4 ; 17
+	map_const ROUTE_16_NORTH,                             14,  7 ; 18
 
 	newgroup                                                     ; 24
 	map_const ROUTE_26,                                   10, 54 ;  1
