@@ -348,12 +348,10 @@ ENDM
 	connection west, CeruleanCity, CERULEAN_CITY, -4
 	connection east, Route10North, ROUTE_10_NORTH, -6
 
-	map_attributes Route10North, ROUTE_10_NORTH, $2c, SOUTH | WEST
-	connection south, Route10South, ROUTE_10_SOUTH, 0
+	map_attributes Route10North, ROUTE_10_NORTH, $2c, WEST
 	connection west, Route9, ROUTE_9, 6
 
-	map_attributes Route10South, ROUTE_10_SOUTH, $2c, NORTH | SOUTH
-	connection north, Route10North, ROUTE_10_NORTH, 0
+	map_attributes Route10South, ROUTE_10_SOUTH, $2c, SOUTH
 	connection south, LavenderTown, LAVENDER_TOWN, 0
 
 	map_attributes Route47, ROUTE_47, $35, NORTH
