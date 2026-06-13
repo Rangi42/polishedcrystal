@@ -332,7 +332,7 @@ ENDM
 	map_const ROUTE_2_NORTH,                              10, 18 ;  1
 	map_const ROUTE_3,                                    36, 11 ;  2
 	map_const ROUTE_3_POKECENTER_1F,                       6,  4 ;  3
-	map_const PEWTER_CITY,                                20, 18 ;  4
+	map_const PEWTER_CITY,                                20, 19 ;  4
 	map_const PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  5
 	map_const PEWTER_GYM,                                  5,  7 ;  6
 	map_const PEWTER_MART,                                 6,  4 ;  7
