@@ -4,14 +4,14 @@ Route26_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  7,  5, POKEMON_LEAGUE_GATE, 3
+	warp_event  8,  5, POKEMON_LEAGUE_GATE, 3
 	warp_event 15, 57, ROUTE_26_HEAL_SPEECH_HOUSE, 1
 	warp_event  5, 71, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  8,  6, BGEVENT_JUMPTEXT, Route26SignText
+	bg_event 10,  6, BGEVENT_JUMPTEXT, Route26SignText
 
 	def_object_events
 	object_event  9, 38, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerKazu, -1
