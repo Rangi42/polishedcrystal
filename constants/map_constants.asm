@@ -354,7 +354,7 @@ ENDM
 	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
 
 	newgroup                                                     ; 16
-	map_const ROUTE_22,                                   17,  9 ;  1
+	map_const ROUTE_22,                                   19,  9 ;  1
 	map_const ROUTE_23_NORTH,                             12, 38 ;  2
 	map_const ROUTE_23_SOUTH,                             12, 32 ;  3
 	map_const INDIGO_PLATEAU,                             12, 13 ;  4
@@ -418,7 +418,7 @@ ENDM
 	map_const ROUTE_16_WEST,                              31, 13 ; 25
 
 	newgroup                                                     ; 19
-	map_const ROUTE_28,                                   19,  9 ;  1
+	map_const ROUTE_28,                                   20,  9 ;  1
 	map_const SILVER_CAVE_OUTSIDE,                        20, 15 ;  2
 	map_const SILVER_CAVE_POKECENTER_1F,                   6,  4 ;  3
 	map_const ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4

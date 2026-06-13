@@ -7,14 +7,14 @@ PokemonLeagueGate_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, PokemonLeagueGateFlyPoint
 
 	def_warp_events
-	warp_event 19,  7, ROUTE_22, 1
-	warp_event 20,  7, ROUTE_22, 1
+	warp_event 21,  6, ROUTE_22, 1
+	warp_event 21,  7, ROUTE_22, 2
 	warp_event 10, 17, ROUTE_26, 1
 	warp_event 11, 17, ROUTE_26, 1
 	warp_event 10,  0, ROUTE_23_SOUTH, 1
 	warp_event 11,  0, ROUTE_23_SOUTH, 2
-	warp_event  1,  7, ROUTE_28, 2
-	warp_event  2,  7, ROUTE_28, 2
+	warp_event  0,  6, ROUTE_28, 2
+	warp_event  0,  7, ROUTE_28, 3
 
 	def_coord_events
 	coord_event 10, 10, SCENE_POKEMONLEAGUEGATE_BADGE_CHECK, PokemonLeagueGateXYTriggerScript1

@@ -4,17 +4,18 @@ Route22_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  5, POKEMON_LEAGUE_GATE, 1
+	warp_event  4,  4, POKEMON_LEAGUE_GATE, 1
+	warp_event  4,  5, POKEMON_LEAGUE_GATE, 2
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  7,  7, BGEVENT_JUMPTEXT, VictoryRoadEntranceSignText
-	bg_event 19, 11, BGEVENT_JUMPTEXT, Route22AdvancedTipsSignText
+	bg_event 23, 11, BGEVENT_JUMPTEXT, Route22AdvancedTipsSignText
 
 	def_object_events
-	object_event 16, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KukuiScript, -1
-	object_event 24,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
+	object_event 20, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, KukuiScript, -1
+	object_event 28,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 
 	object_const_def
 	const ROUTE22_KUKUI
