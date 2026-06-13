@@ -7,59 +7,59 @@ SnowtopMountainOutside_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, SnowtopMountainOutsideFlyPointAndFixFacing
 
 	def_warp_events
-	warp_event  9, 31, SNOWTOP_MOUNTAIN_INSIDE, 2
-	warp_event 17, 33, SNOWTOP_POKECENTER_1F, 1
+	warp_event  9, 29, SNOWTOP_MOUNTAIN_INSIDE, 2
+	warp_event 17, 31, SNOWTOP_POKECENTER_1F, 1
 
 	def_coord_events
-	coord_event  4, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event  5, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event  6, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event  7, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event  8, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event  9, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 10, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 11, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 12, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 13, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 14, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 15, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 16, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 17, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 18, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 19, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 20, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 21, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 22, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 23, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 24, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 25, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
-	coord_event 26, 28, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  4, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  5, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  6, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  7, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  8, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event  9, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 10, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 11, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 12, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 13, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 14, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 15, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 16, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 17, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 18, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 19, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 20, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 21, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 22, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 23, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 24, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 25, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
+	coord_event 26, 26, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
 
 	def_bg_events
-	bg_event 10, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 11, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 12, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 13, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 14, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 15, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 16, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 17, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 18, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 19, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 10, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 11, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 12, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 13, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 14, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 15, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 16, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 17, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 18, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 19, 25, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
 
 	def_object_events
 	object_event -3, -3, SPRITE_MOM, SPRITEMOVEDATA_PLACEHOLDER_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event 26, 11, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 0, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event 16, 16, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 1, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event 17, 11, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event 14, 11, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event 11, 13, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event 14, 14, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 2, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event  8, 16, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 2, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event  6, 16, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 2, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event  5,  7, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 4, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_OLIVINE_GYM_JASMINE
-	object_event  5,  8, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 5, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	object_event  5, 10, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 6, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event 26,  9, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 0, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event 16, 14, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 1, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event 17,  9, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event 14,  9, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event 10,  9, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event 13, 12, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 2, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  8, 14, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 2, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  6, 14, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 2, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  5,  4, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 4, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_OLIVINE_GYM_JASMINE
+	object_event  5,  5, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 5, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  5,  6, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 6, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	object_const_def
 	const SNOWTOPMOUNTAINOUTSIDE_PLAYER
@@ -94,11 +94,11 @@ SnowtopMountainOutsideStartPanningScript:
 	iffalse_endtext
 	closetext
 	loadmem wPanningAroundTinyMap, TRUE
-	changeblock 10, 28, $96
-	changeblock 12, 28, $96
-	changeblock 14, 28, $96
-	changeblock 16, 28, $96
-	changeblock 18, 28, $96
+	changeblock 10, 26, $89
+	changeblock 12, 26, $89
+	changeblock 14, 26, $89
+	changeblock 16, 26, $89
+	changeblock 18, 26, $89
 	callasm .PreparePlayerSubstitute
 	appear SNOWTOPMOUNTAINOUTSIDE_PLAYER
 	applymovement PLAYER, SnowtopMountainOutsideStartPanningMovement
@@ -136,11 +136,11 @@ SnowtopMountainOutsideStopPanningScript:
 	applyonemovement PLAYER, step_right
 	sjump .ContinueX
 .Ready
-	changeblock 10, 28, $71
-	changeblock 12, 28, $71
-	changeblock 14, 28, $71
-	changeblock 16, 28, $71
-	changeblock 18, 28, $71
+	changeblock 10, 26, $71
+	changeblock 12, 26, $71
+	changeblock 14, 26, $71
+	changeblock 16, 26, $71
+	changeblock 18, 26, $71
 	applymovement PLAYER, SnowtopMountainOutsideStopPanningMovement
 	disappear SNOWTOPMOUNTAINOUTSIDE_PLAYER
 	showtext SnowtopMountainOutsideWhatAViewText
@@ -150,7 +150,7 @@ SnowtopMountainOutsideStopPanningScript:
 
 .CompareYCoord:
 	ld a, [wYCoord]
-	sub 28
+	sub 26
 	ldh [hScriptVar], a
 	ret
 

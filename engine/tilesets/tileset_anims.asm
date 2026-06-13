@@ -717,9 +717,9 @@ AnimateTinyWaterTiles:
 	ld b, h
 	ld c, l
 
-	add LOW(vTiles5 tile $5c)
+	add LOW(vTiles5 tile $60)
 	ld l, a
-	adc HIGH(vTiles5 tile $5c)
+	adc HIGH(vTiles5 tile $60)
 	sub l
 	ld h, a
 
