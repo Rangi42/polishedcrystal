@@ -699,7 +699,7 @@ ENDM
 	map_const RUGGED_ROAD_NORTH,                          17,  9 ;  1
 	map_const RUGGED_ROAD_SOUTH,                          17, 19 ;  2
 	map_const SNOWTOP_MOUNTAIN_INSIDE,                    18, 17 ;  3
-	map_const SNOWTOP_MOUNTAIN_OUTSIDE,                   16, 20 ;  4
+	map_const SNOWTOP_MOUNTAIN_OUTSIDE,                   16, 19 ;  4
 	map_const SNOWTOP_POKECENTER_1F,                       6,  4 ;  5
 	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  6
 
