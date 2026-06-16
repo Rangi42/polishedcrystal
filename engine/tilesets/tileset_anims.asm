@@ -68,17 +68,19 @@ ScrollFourTilesUpDownLeftRight:
 
 ScrollTileRightLeft:
 ; Scroll right for 4 ticks, then left for 4 ticks.
+	ld h, d
+	ld l, e
 	ld a, [wTileAnimationTimer]
 	inc a
 	and %111
 	ld [wTileAnimationTimer], a
 	and %100
-	jr nz, ScrollTileLeft
+	jr nz, _ScrollTileLeft
 	; fallthrough
 
-ScrollTileRight:
-	ld h, d
-	ld l, e
+;ScrollTileRight:
+;	ld h, d
+;	ld l, e
 _ScrollTileRight:
 	ld c, TILE_SIZE / 4
 .loop
@@ -91,9 +93,9 @@ endr
 	jr nz, .loop
 	ret
 
-ScrollTileLeft:
-	ld h, d
-	ld l, e
+;ScrollTileLeft:
+;	ld h, d
+;	ld l, e
 _ScrollTileLeft:
 	ld c, TILE_SIZE / 4
 .loop
