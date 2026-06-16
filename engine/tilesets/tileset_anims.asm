@@ -56,6 +56,16 @@ StandingTileFrame8:
 	ld [wTileAnimationTimer], a
 	ret
 
+ScrollFourTilesUpDownLeftRight:
+	ld h, d
+	ld l, e
+	call _ScrollTileUp
+	ld bc, TILE_SIZE + 1
+	add hl, bc
+	call _ScrollTileDown
+	call _ScrollTileLeft
+	jr _ScrollTileRight
+
 ScrollTileRightLeft:
 ; Scroll right for 4 ticks, then left for 4 ticks.
 	ld a, [wTileAnimationTimer]
@@ -69,6 +79,7 @@ ScrollTileRightLeft:
 ScrollTileRight:
 	ld h, d
 	ld l, e
+_ScrollTileRight:
 	ld c, TILE_SIZE / 4
 .loop
 rept 4
@@ -83,6 +94,7 @@ endr
 ScrollTileLeft:
 	ld h, d
 	ld l, e
+_ScrollTileLeft:
 	ld c, TILE_SIZE / 4
 .loop
 rept 4
@@ -107,6 +119,7 @@ endr
 ScrollTileUp:
 	ld h, d
 	ld l, e
+_ScrollTileUp:
 	ld a, [hli]
 	ld e, [hl]
 	ld d, a
@@ -133,6 +146,7 @@ ScrollTileUp:
 ScrollTileDown:
 	ld h, d
 	ld l, e
+_ScrollTileDown:
 	ld de, TILE_SIZE - 2
 	push hl
 	add hl, de

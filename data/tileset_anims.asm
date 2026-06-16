@@ -55,18 +55,13 @@ TilesetKantoAnim::
 TilesetKantoNorthAnim::
 TilesetIndigoPlateauAnim::
 	tileframe AnimateKantoWaterTile,    $0:14
-	tileframe ScrollTileUp,             $0:10
-	tileframe ScrollTileDown,           $0:11
-	tileframe ScrollTileLeft,           $0:12
-	tileframe ScrollTileRight,          $0:13
-	tileframe AnimateKantoFlowerTile,   $0:03
-	tileframe ScrollTileUp,             $0:10
-	tileframe ScrollTileDown,           $0:11
-	tileframe ScrollTileLeft,           $0:12
-	tileframe ScrollTileRight,          $0:13
-	tileframe AnimateWaterfallTiles,    $0:6b
+	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe AnimateFountainTile,      $0:40
+	tileframe DoNothing
 	tileframe AnimateGameCornerTiles,   $0:7a
+	tileframe AnimateKantoFlowerTile,   $0:03
+	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe AnimateWaterfallTiles,    $0:6b
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
