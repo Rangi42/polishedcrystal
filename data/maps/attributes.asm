@@ -260,7 +260,7 @@ ENDM
 	connection east, SaffronCity, SAFFRON_CITY, -6
 
 	map_attributes LuckyIsland, LUCKY_ISLAND, $43, NORTH | WEST
-	connection north, Route13, ROUTE_13, -12
+	connection north, Route13, ROUTE_13, -9
 	connection west, Route14, ROUTE_14, 0
 
 	map_attributes Route15, ROUTE_15, $f, WEST | EAST

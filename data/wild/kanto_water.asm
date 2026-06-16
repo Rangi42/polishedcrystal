@@ -70,13 +70,6 @@
 	wildmon  55, TENTACRUEL
 	end_water_wildmons
 
-	def_water_wildmons ROUTE_14
-	db 6 percent ; encounter rate
-	wildmon  49, TENTACOOL
-	wildmon  53, QUAGSIRE
-	wildmon  55, TENTACRUEL
-	end_water_wildmons
-
 	def_water_wildmons ROUTE_16_WEST
 	db 6 percent ; encounter rate
 	wildmon  53, TENTACOOL
