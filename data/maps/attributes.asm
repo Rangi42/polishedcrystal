@@ -260,7 +260,7 @@ ENDM
 	connection east, SaffronCity, SAFFRON_CITY, -6
 
 	map_attributes LuckyIsland, LUCKY_ISLAND, $43, NORTH | WEST
-	connection north, Route13East, ROUTE_13_EAST, 0
+	connection north, Route13, ROUTE_13, -12
 	connection west, Route14, ROUTE_14, 0
 
 	map_attributes Route15, ROUTE_15, $f, WEST | EAST
@@ -268,18 +268,16 @@ ENDM
 	connection east, Route14, ROUTE_14, -10
 
 	map_attributes Route14, ROUTE_14, $43, NORTH | WEST | EAST
-	connection north, Route13West, ROUTE_13_WEST, 0
+	connection north, Route13, ROUTE_13, 0
 	connection west, Route15, ROUTE_15, 10
 	connection east, LuckyIsland, LUCKY_ISLAND, 0
 
-	map_attributes Route13East, ROUTE_13_EAST, $43, NORTH | SOUTH | WEST
-	connection north, Route12South, ROUTE_12_SOUTH, 13
-	connection south, LuckyIsland, LUCKY_ISLAND, 0
-	connection west, Route13West, ROUTE_13_WEST, 0
+	map_attributes Route13, ROUTE_13, $43, NORTH | SOUTH
+	connection north, Route12South, ROUTE_12_SOUTH, 25
+	connection south, Route14LuckyIslandDual, ROUTE_14_LUCKY_ISLAND_DUAL, 0
 
-	map_attributes Route13West, ROUTE_13_WEST, $43, SOUTH | EAST
-	connection south, Route14, ROUTE_14, 0
-	connection east, Route13East, ROUTE_13_EAST, 0
+	map_attributes Route14LuckyIslandDual, ROUTE_14_LUCKY_ISLAND_DUAL, $43, NORTH
+	connection north, Route13, ROUTE_13, 0
 
 	map_attributes Route12North, ROUTE_12_NORTH, $43, NORTH | SOUTH
 	connection north, LavenderTown, LAVENDER_TOWN, 0
@@ -287,7 +285,7 @@ ENDM
 
 	map_attributes Route12South, ROUTE_12_SOUTH, $43, NORTH | SOUTH | WEST
 	connection north, Route12North, ROUTE_12_NORTH, 0
-	connection south, Route13East, ROUTE_13_EAST, -13
+	connection south, Route13, ROUTE_13, -25
 	connection west, Route11, ROUTE_11, 17
 
 	map_attributes Route11, ROUTE_11, $f, WEST | EAST

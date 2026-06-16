@@ -13,7 +13,7 @@ tileset_maps = {
 'battle_tower_outside': 'BattleTowerOutside',
 'kanto': 'CeladonCity CinnabarIsland FuchsiaCity LavenderTown MountMoonSquare PalletTown PewterCity Route1 Route2North Route2South Route3 Route6 Route7 Route8 Route10South Route11 Route12North Route16East Route16West Route18East Route19 Route20 Route21 Route22 Route22Past SaffronCity UragaChannelWest VermilionCity ViridianCity',
 'kanto_north': 'CeruleanCape CeruleanCity Route4 Route5 Route9 Route10North Route24 Route25',
-'indigo_plateau': 'IndigoPlateau LuckyIsland LuckyIslandHidden Route12South Route13East Route13West Route14 Route15 Route17North Route17South Route18West Route23North Route23South UragaChannelEast',
+'indigo_plateau': 'IndigoPlateau LuckyIsland LuckyIslandHidden Route12South Route13 Route14 Route14LuckyIslandDual Route15 Route17North Route17South Route18West Route23North Route23South UragaChannelEast',
 'shamouti_island': 'BeautifulBeach ElementalIsland NavelRockOutside NoisyForest RockyBeach ShamoutiCoast ShamoutiIsland ShamoutiShrineRuins WarmBeach',
 'valencia_island': 'Route49 ValenciaIsland',
 }

@@ -700,7 +700,7 @@
 	wildmon 54, QUAGSIRE
 	end_grass_wildmons
 
-	def_grass_wildmons ROUTE_13_EAST
+	def_grass_wildmons ROUTE_13
 	db 10 percent ; encounter rate
 	; morn
 	wildmon 50, NIDORINO

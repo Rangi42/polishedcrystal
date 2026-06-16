@@ -23,7 +23,6 @@ RandomAliasedOvercastMapGroups:
 	overcast_area AREA_ROUTE_2, ROUTE_2_NORTH, ROUTE_2_SOUTH
 	overcast_area AREA_ROUTE_10, ROUTE_10_NORTH, ROUTE_10_SOUTH
 	overcast_area AREA_ROUTE_12, ROUTE_12_NORTH, ROUTE_12_SOUTH
-	overcast_area AREA_ROUTE_13, ROUTE_13_EAST, ROUTE_13_WEST
 	overcast_area AREA_ROUTE_16, ROUTE_16_EAST, ROUTE_16_NORTH, ROUTE_16_WEST
 	overcast_area AREA_ROUTE_17, ROUTE_17_NORTH, ROUTE_17_SOUTH
 	overcast_area AREA_ROUTE_18, ROUTE_18_EAST, ROUTE_18_WEST
@@ -105,6 +104,7 @@ RandomOvercastMapsKanto:
 	overcast_map ROCKY_BEACH
 	overcast_map ROUTE_1
 	overcast_map ROUTE_11
+	overcast_map ROUTE_13
 	overcast_map ROUTE_14
 	overcast_map ROUTE_15
 	overcast_map ROUTE_19
@@ -144,7 +144,6 @@ RandomOvercastMapsKanto:
 	overcast_map AREA_ROUTE_2
 	overcast_map AREA_ROUTE_10
 	overcast_map AREA_ROUTE_12
-	overcast_map AREA_ROUTE_13
 	overcast_map AREA_ROUTE_16
 	overcast_map AREA_ROUTE_17
 	overcast_map AREA_ROUTE_18

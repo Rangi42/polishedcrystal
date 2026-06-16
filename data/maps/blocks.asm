@@ -1739,17 +1739,17 @@ SECTION "Route12South_BlockData", ROMX
 Route12South_BlockData:
 	INCBIN "maps/Route12South.ablk.lzp"
 
-SECTION "Route13East_BlockData", ROMX
-Route13East_BlockData:
-	INCBIN "maps/Route13East.ablk.lzp"
-
-SECTION "Route13West_BlockData", ROMX
-Route13West_BlockData:
-	INCBIN "maps/Route13West.ablk.lzp"
+SECTION "Route13_BlockData", ROMX
+Route13_BlockData:
+	INCBIN "maps/Route13.ablk.lzp"
 
 SECTION "Route14_BlockData", ROMX
 Route14_BlockData:
 	INCBIN "maps/Route14.ablk.lzp"
+
+SECTION "Route14LuckyIslandDual_BlockData", ROMX
+Route14LuckyIslandDual_BlockData:
+	INCBIN "maps/Route14LuckyIslandDual.ablk.lzp"
 
 SECTION "Route15_BlockData", ROMX
 Route15_BlockData:

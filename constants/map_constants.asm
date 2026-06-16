@@ -369,26 +369,26 @@ ENDM
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1
-	map_const ROUTE_13_EAST,                              23, 10 ;  2
-	map_const ROUTE_13_WEST,                              12, 10 ;  3
-	map_const ROUTE_14,                                   12, 19 ;  4
-	map_const ROUTE_15,                                   20,  9 ;  5
-	map_const ROUTE_18_EAST,                              12, 11 ;  6
-	map_const FUCHSIA_CITY,                               20, 18 ;  7
-	map_const FUCHSIA_MART,                                6,  4 ;  8
-	map_const FUCHSIA_GYM,                                 5,  9 ;  9
-	map_const FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ; 10
-	map_const FUCHSIA_SAFARI_BALL_HOUSE,                   4,  4 ; 11
-	map_const FUCHSIA_POKECENTER_1F,                       6,  4 ; 12
-	map_const SAFARI_ZONE_WARDENS_HOME,                    5,  4 ; 13
-	map_const SAFARI_ZONE_FUCHSIA_GATE,                    5,  4 ; 14
-	map_const ROUTE_12_GATE,                               5,  5 ; 15
-	map_const ROUTE_12_GATE_2F,                            4,  4 ; 16
-	map_const ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 17
-	map_const ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 18
-	map_const ROUTE_19_FUCHSIA_GATE,                       5,  4 ; 19
-	map_const ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 20
-	map_const LUCKY_ISLAND,                               23, 17 ; 21
+	map_const ROUTE_13,                                   35, 10 ;  2
+	map_const ROUTE_14,                                   12, 19 ;  3
+	map_const ROUTE_15,                                   20,  9 ;  4
+	map_const ROUTE_18_EAST,                              12, 11 ;  5
+	map_const FUCHSIA_CITY,                               20, 18 ;  6
+	map_const FUCHSIA_MART,                                6,  4 ;  7
+	map_const FUCHSIA_GYM,                                 5,  9 ;  8
+	map_const FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ;  9
+	map_const FUCHSIA_SAFARI_BALL_HOUSE,                   4,  4 ; 10
+	map_const FUCHSIA_POKECENTER_1F,                       6,  4 ; 11
+	map_const SAFARI_ZONE_WARDENS_HOME,                    5,  4 ; 12
+	map_const SAFARI_ZONE_FUCHSIA_GATE,                    5,  4 ; 13
+	map_const ROUTE_12_GATE,                               5,  5 ; 14
+	map_const ROUTE_12_GATE_2F,                            4,  4 ; 15
+	map_const ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 16
+	map_const ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 17
+	map_const ROUTE_19_FUCHSIA_GATE,                       5,  4 ; 18
+	map_const ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 19
+	map_const LUCKY_ISLAND,                               23, 17 ; 20
+	map_const ROUTE_14_LUCKY_ISLAND_DUAL,                 35,  3 ; 21
 
 	newgroup                                                     ; 18
 	map_const ROUTE_8,                                    26, 11 ;  1
