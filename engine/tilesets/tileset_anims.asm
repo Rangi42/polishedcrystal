@@ -266,12 +266,10 @@ AnimateKantoWaterTile:
 	ld b, h
 	ld c, l
 
-	; period 4, every 2 frames, offset to 1 tile (16 bytes)
+	; period 8, offset to 1 tile (16 bytes)
 	ld a, [wTileAnimationTimer]
-	maskbits 4, 1
-	add a
-	add a
-	add a
+	maskbits 8
+	swap a
 
 	add LOW(.KantoWaterTileFrames)
 	ld l, a

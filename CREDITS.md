@@ -102,6 +102,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * coraldev for the sailboat sprite, and rowboat and sakura petal tiles.
 * MissingNo. Studio for Farigiraf's mini icon.
 * lilbluedemon for some bridge tiles.
+* Th3Element05 for Kanto's water tile animation.
 * WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
