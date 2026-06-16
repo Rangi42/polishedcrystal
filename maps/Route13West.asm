@@ -9,6 +9,7 @@ Route13West_MapScriptHeader:
 
 	def_bg_events
 	bg_event 17, 13, BGEVENT_JUMPTEXT, Route13DirectionsSignText
+	bg_event  6, 16, BGEVENT_ITEM + OVAL_STONE, EVENT_ROUTE_13_HIDDEN_OVAL_STONE
 
 	def_object_events
 	object_event  5,  5, SPRITE_CAMPER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCamperClark, -1
