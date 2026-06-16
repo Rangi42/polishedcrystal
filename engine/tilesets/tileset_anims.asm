@@ -116,9 +116,9 @@ endr
 ;	jr nz, ScrollTileDown
 ;	; fallthrough
 
-ScrollTileUp:
-	ld h, d
-	ld l, e
+;ScrollTileUp:
+;	ld h, d
+;	ld l, e
 _ScrollTileUp:
 	ld a, [hli]
 	ld e, [hl]
@@ -143,9 +143,9 @@ _ScrollTileUp:
 	jr nz, .loop
 	ret
 
-ScrollTileDown:
-	ld h, d
-	ld l, e
+;ScrollTileDown:
+;	ld h, d
+;	ld l, e
 _ScrollTileDown:
 	ld de, TILE_SIZE - 2
 	push hl
