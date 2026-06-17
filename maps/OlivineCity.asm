@@ -1,6 +1,7 @@
 OlivineCity_MapScriptHeader:
 	def_scene_scripts
-	scene_const SCENE_OLIVINECITY_RIVAL_ENCOUNTER
+	scene_script DoNothingScript, SCENE_OLIVINECITY_RIVAL_ENCOUNTER
+	scene_script OlivineCityStepDownScene, SCENE_OLIVINECITY_STEP_DOWN
 	scene_const SCENE_OLIVINECITY_NOOP
 
 	def_callbacks
@@ -15,13 +16,14 @@ OlivineCity_MapScriptHeader:
 	warp_event 15, 11, OLIVINE_GOOD_ROD_HOUSE, 1
 	warp_event  7, 17, OLIVINE_CAFE, 1
 	warp_event 21, 17, OLIVINE_MART, 2
-	warp_event 33, 21, OLIVINE_LIGHTHOUSE_1F, 1
+	warp_event 33, 21, OLIVINE_LIGHTHOUSE_1F, 1 ; hole
 	warp_event 18, 28, OLIVINE_PORT, 1
 	warp_event 19, 28, OLIVINE_PORT, 2
 
 	def_coord_events
 	coord_event 10,  8, SCENE_OLIVINECITY_RIVAL_ENCOUNTER, OlivineCityRivalGymScript
 	coord_event 33, 22, SCENE_OLIVINECITY_RIVAL_ENCOUNTER, OlivineCityRivalLighthouseScript
+	coord_event 33, 21, SCENE_OLIVINECITY_NOOP, OlivineCityPanUpScript
 
 	def_bg_events
 	bg_event 17,  7, BGEVENT_JUMPTEXT, OlivineCitySignText
@@ -65,6 +67,34 @@ OlivineCityLighthouseCallback:
 	changeblock 34, 14, $9b
 .done
 	endcallback
+
+OlivineCityStepDownScene:
+	sdefer .Script
+	end
+
+.Script:
+	readvar VAR_XCOORD
+	ifnotequal 33, .Done
+	readvar VAR_YCOORD
+	ifnotequal 21, .Done
+	applyonemovement PLAYER, step_down
+.Done
+	setscene SCENE_OLIVINECITY_NOOP
+	end
+
+OlivineCityPanUpScript:
+	playsound SFX_EXIT_BUILDING
+	applyonemovement PLAYER, hide_object
+	waitsfx
+	applymovement PLAYER, OlivineCityPanUpMovementData
+	disappear PLAYER
+	pause 10
+	special Special_FadeOutMusic
+	special FadeOutPalettes
+	pause 15
+	setscene SCENE_OLIVINECITY_STEP_DOWN
+	warpfacing UP, OLIVINE_LIGHTHOUSE_1F, 10, 17
+	end
 
 OlivineCityRivalGymScript:
 	turnobject PLAYER, UP
@@ -127,6 +157,14 @@ OlivineCityPokefanMScript:
 	para "Mondays and Fri-"
 	line "days."
 	done
+
+OlivineCityPanUpMovementData:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
 
 OlivineCityMovementData_ShovePlayerDown:
 	turn_head_up

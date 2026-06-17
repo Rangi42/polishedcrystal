@@ -36,10 +36,10 @@ BattleTowerOutsideStepDownScene:
 
 .Script:
 	readvar VAR_YCOORD
-	ifnotequal $9, .Done
+	ifnotequal 9, .Done
 	readvar VAR_XCOORD
-	ifequalfwd $8, .Down
-	ifnotequal $9, .Done
+	ifequalfwd 8, .Down
+	ifnotequal 9, .Done
 .Down
 	applyonemovement PLAYER, step_down
 .Done

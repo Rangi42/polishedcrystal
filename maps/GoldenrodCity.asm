@@ -1,6 +1,6 @@
 GoldenrodCity_MapScriptHeader:
 	def_scene_scripts
-	scene_script GoldenrodCityRocketTakeoverScene, SCENE_GOLDENRODCITY_ROCKET_TAKEOVER
+	scene_script GoldenrodCityStepDownScene, SCENE_GOLDENRODCITY_STEP_DOWN
 	scene_const SCENE_GOLDENRODCITY_NOOP
 
 	def_callbacks
@@ -91,15 +91,15 @@ GoldenrodCityMoveTutor:
 	disappear GOLDENRODCITY_POKEFAN_M2
 	endcallback
 
-GoldenrodCityRocketTakeoverScene:
-	sdefer GoldenrodCityStepDownScript
+GoldenrodCityStepDownScene:
+	sdefer .Script
 	end
 
-GoldenrodCityStepDownScript:
-	readvar VAR_YCOORD
-	ifnotequal $f, .Done
+.Script:
 	readvar VAR_XCOORD
-	ifnotequal $9, .Done
+	ifnotequal 9, .Done
+	readvar VAR_YCOORD
+	ifnotequal 15, .Done
 	applyonemovement PLAYER, step_down
 .Done
 	setscene SCENE_GOLDENRODCITY_NOOP
@@ -115,7 +115,7 @@ GoldenrodCityPanUpScript:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	setscene SCENE_GOLDENRODCITY_ROCKET_TAKEOVER
+	setscene SCENE_GOLDENRODCITY_STEP_DOWN
 	warpfacing UP, RADIO_TOWER_1F, 2, 7
 	end
 

@@ -303,8 +303,8 @@ endr
 	; ecruteak events
 	setmapscene BURNED_TOWER_1F, SCENE_BURNEDTOWER1F_FIREBREATHER_DICK
 	; olivine events
-	setevent EVENT_RIVAL_OLIVINE_CITY
-	setmapscene OLIVINE_CITY, SCENE_OLIVINECITY_NOOP
+	;setevent EVENT_RIVAL_OLIVINE_CITY
+	;setmapscene OLIVINE_CITY, SCENE_OLIVINECITY_NOOP
 	; blackthorn events
 	setevent EVENT_BEAT_DRAGON_TAMER_DARIN
 	; vermilion events
