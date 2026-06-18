@@ -5,6 +5,7 @@ SnowtopMountainOutside_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, SnowtopMountainOutsideFlyPointAndFixFacing
+	callback MAPCALLBACK_TILES, SnowtopMountainOutsideItemCallback
 
 	def_warp_events
 	warp_event  9, 25, SNOWTOP_MOUNTAIN_INSIDE, 2
@@ -72,7 +73,7 @@ SnowtopMountainOutsideFlyPointAndFixFacing:
 .FixFacing:
 	ld hl, wPrevWarp
 	ld a, [hli]
-	cp 2
+	cp 2 ; warp #2 of SNOWTOP_MOUNTAIN_INSIDE comes here
 	ret nz
 	assert wPrevWarp + 1 == wPrevMapGroup
 	ld a, [hli]
@@ -86,6 +87,13 @@ SnowtopMountainOutsideFlyPointAndFixFacing:
 	or (1 << 5) | UP
 	ld [wPlayerSpriteSetupFlags], a
 	ret
+
+SnowtopMountainOutsideItemCallback:
+	checkevent EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
+	iftruefwd .done
+	changeblock 4, 8, $0d
+.done
+	endcallback
 
 SnowtopMountainOutsideStartPanningScript:
 	opentext
