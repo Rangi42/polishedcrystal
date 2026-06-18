@@ -261,7 +261,7 @@ TilesetValenciaIslandAnim::
 
 TilesetSnowtopMountainAnim::
 	tileframe AnimateTinyWaterTiles,          $1:30
-	tileframe DoNothing
+	tileframe AnimateTinyBuoyTiles,           $1:46
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing

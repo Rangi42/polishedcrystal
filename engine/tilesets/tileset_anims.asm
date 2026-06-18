@@ -731,9 +731,28 @@ AnimateTinyWaterTiles:
 	ld b, h
 	ld c, l
 
-	add LOW(vTiles5 tile $4b)
+	add LOW(vTiles5 tile $4a)
 	ld l, a
-	adc HIGH(vTiles5 tile $4b)
+	adc HIGH(vTiles5 tile $4a)
+	sub l
+	ld h, a
+
+	jmp WriteFourTilesHLToDE
+
+AnimateTinyBuoyTiles:
+	; period 2, every 2 frames, offset to 4 tiles (64 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 2, 1
+	swap a
+	add a
+
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	add LOW(vTiles5 tile $52)
+	ld l, a
+	adc HIGH(vTiles5 tile $52)
 	sub l
 	ld h, a
 
