@@ -694,22 +694,29 @@ HandleWrap:
 	and a
 	ret z
 
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
-	ret nz
-
 	push de
 	ld a, [de]
 	ld [wFXAnimIDLo], a
 	dec [hl]
+	ld a, [hl]
+	and %111
+	jr nz, .still_wrapped
+
+	ld [hl], a
 	ld hl, BattleText_UserWasReleasedFromStringBuffer1
 	jr z, .print_text
 
+.still_wrapped
+	push hl
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .skip_anim
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr nz, .skip_anim
+
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -718,10 +725,9 @@ HandleWrap:
 	call SwitchTurn
 
 .skip_anim
-	farcall GetOpponentItemAfterUnnerve
-	ld a, b
-	cp HELD_BINDING_BAND
-	jr nz, .no_binding_band
+	pop hl
+	bit 3, [hl]
+	jr z, .no_binding_band
 	call GetSixthMaxHP
 	jr .subtract_hp
 .no_binding_band
