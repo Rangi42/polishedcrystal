@@ -1,7 +1,7 @@
 VioletGym_MapScriptHeader:
 	def_scene_scripts
-	scene_script VioletGymNoopScene, SCENE_VIOLETGYM_NOOP
-	scene_const SCENE_VIOLETGYM_FALKNER_RETURNS
+	scene_script VioletGymFalknerAwayScene, SCENE_VIOLETGYM_FALKNER_AWAY
+	scene_const SCENE_VIOLETGYM_NOOP
 
 	def_callbacks
 
@@ -25,11 +25,11 @@ VioletGym_MapScriptHeader:
 	object_const_def
 	const VIOLETGYM_GYM_GUY2
 
-VioletGymNoopScene:
-	sdefer VioletGymFalknerAwayScript
+VioletGymFalknerAwayScene:
+	sdefer .Script
 	end
 
-VioletGymFalknerAwayScript:
+.Script:
 	showemote EMOTE_SHOCK, VIOLETGYM_GYM_GUY2, 15
 	applyonemovement VIOLETGYM_GYM_GUY2, step_down
 	showtext VioletGymGuyFalknerAwayText

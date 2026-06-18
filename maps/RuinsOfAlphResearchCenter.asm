@@ -1,6 +1,6 @@
 RuinsOfAlphResearchCenter_MapScriptHeader:
 	def_scene_scripts
-	scene_script RuinsOfAlphResearchCenterNoopScene, SCENE_RUINSOFALPHRESEARCHCENTER_NOOP
+	scene_script DoNothingScript, SCENE_RUINSOFALPHRESEARCHCENTER_NOOP
 	scene_script RuinsOfAlphResearchCenterGetUnownDexScene, SCENE_RUINSOFALPHRESEARCHCENTER_GET_UNOWN_DEX
 
 	def_callbacks
@@ -28,11 +28,6 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 
-RuinsOfAlphResearchCenterGetUnownDexScene:
-	sdefer RuinsOfAlphResearchCenterGetUnownDexScript
-RuinsOfAlphResearchCenterNoopScene:
-	end
-
 RuinsOfAlphResearchCenterScientistCallback:
 	checkscene
 	ifequalfwd $1, .ShowScientist
@@ -43,7 +38,11 @@ RuinsOfAlphResearchCenterScientistCallback:
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 	endcallback
 
-RuinsOfAlphResearchCenterGetUnownDexScript:
+RuinsOfAlphResearchCenterGetUnownDexScene:
+	sdefer .Script
+	end
+
+.Script:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsOfAlphResearchCenterApproachesComputerMovement
 	playsound SFX_BOOT_PC
 	pause 60

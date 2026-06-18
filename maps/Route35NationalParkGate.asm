@@ -1,7 +1,7 @@
 Route35NationalParkGate_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route35NationalParkGateNoopScene, SCENE_ROUTE35NATIONALPARKGATE_NOOP
-	scene_script Route35NationalParkGateUnusedScene, SCENE_ROUTE35NATIONALPARKGATE_UNUSED
+	scene_script DoNothingScript, SCENE_ROUTE35NATIONALPARKGATE_NOOP
+	scene_script DoNothingScript, SCENE_ROUTE35NATIONALPARKGATE_UNUSED
 	scene_script Route35NationalParkGateLeaveContestEarlyScene, SCENE_ROUTE35NATIONALPARKGATE_LEAVE_CONTEST_EARLY
 
 	def_callbacks
@@ -32,12 +32,6 @@ Route35NationalParkGate_MapScriptHeader:
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
 
-Route35NationalParkGateLeaveContestEarlyScene:
-	sdefer Route35NationalParkGate_LeavingContestEarly
-Route35NationalParkGateNoopScene:
-Route35NationalParkGateUnusedScene:
-	end
-
 Route35NationalParkGate_CheckIfStillInContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftruefwd Route35NationalParkGate_Yes
@@ -66,7 +60,11 @@ Route35NationalParkGate_IsContestDay:
 	disappear ROUTE35NATIONALPARKGATE_OFFICER2
 	endcallback
 
-Route35NationalParkGate_LeavingContestEarly:
+Route35NationalParkGateLeaveContestEarlyScene:
+	sdefer .Script
+	end
+
+.Script:
 	applymovement PLAYER, Route35NationalParkGatePlayerApproachOfficer1Movement
 	turnobject ROUTE35NATIONALPARKGATE_OFFICER1, RIGHT
 	opentext

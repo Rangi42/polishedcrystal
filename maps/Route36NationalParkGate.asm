@@ -1,7 +1,7 @@
 Route36NationalParkGate_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route36NationalParkGateNoopScene, SCENE_ROUTE36NATIONALPARKGATE_NOOP
-	scene_script Route36NationalParkGateUnusedScene, SCENE_ROUTE36NATIONALPARKGATE_UNUSED
+	scene_script DoNothingScript, SCENE_ROUTE36NATIONALPARKGATE_NOOP
+	scene_script DoNothingScript, SCENE_ROUTE36NATIONALPARKGATE_UNUSED
 	scene_script Route36NationalParkGateLeaveContestEarlyScene, SCENE_ROUTE36NATIONALPARKGATE_LEAVE_CONTEST_EARLY
 
 	def_callbacks
@@ -47,12 +47,6 @@ Route36NationalParkGate_MapScriptHeader:
 	const ROUTE36NATIONALPARKGATE_YOUNGSTER3
 	const ROUTE36NATIONALPARKGATE_OFFICER2
 
-Route36NationalParkGateLeaveContestEarlyScene:
-	sdefer Route36NationalParkGateLeftTheContestEarly
-Route36NationalParkGateNoopScene:
-Route36NationalParkGateUnusedScene:
-	end
-
 Route36NationalParkGateCheckIfContestRunning:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftruefwd .BugContestIsRunning
@@ -82,7 +76,11 @@ Route36NationalParkGateCheckIfContestAvailable:
 .Return:
 	endcallback
 
-Route36NationalParkGateLeftTheContestEarly:
+Route36NationalParkGateLeaveContestEarlyScene:
+	sdefer .Script
+	end
+
+.Script:
 	turnobject PLAYER, UP
 	opentext
 	readvar VAR_CONTESTMINUTES

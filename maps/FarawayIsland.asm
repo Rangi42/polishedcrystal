@@ -1,7 +1,7 @@
 FarawayIsland_MapScriptHeader:
 	def_scene_scripts
-	scene_script FarawayIslandMewBattleScene, SCENE_FARAWAYISLAND_MEW_BATTLE
-	scene_script FarawayIslandNoopScene, SCENE_FARAWAYISLAND_NOOP
+	scene_script DoNothingScript, SCENE_FARAWAYISLAND_NOOP
+	scene_script FarawayIslandArrivalScene, SCENE_FARAWAYISLAND_ARRIVAL
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, FarawayIslandVisited
@@ -24,11 +24,6 @@ FarawayIsland_MapScriptHeader:
 	const FARAWAYISLAND_SAILOR
 	const FARAWAYISLAND_LAWRENCE
 
-FarawayIslandNoopScene:
-	sdefer FarawayIsland_PlayerArrives
-FarawayIslandMewBattleScene:
-	end
-
 FarawayIslandVisited:
 	setevent EVENT_VISITED_FARAWAY_ISLAND
 	endcallback
@@ -43,12 +38,16 @@ FarawayIslandSetupLawrence:
 .Done
 	endcallback
 
-FarawayIsland_PlayerArrives:
+FarawayIslandArrivalScene:
+	sdefer .Script
+	end
+
+.Script:
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive1MovementData
 	applymovement PLAYER, FarawayIslandPlayerArriveMovementData
 	showtext SeagallopFerryFarawayIslandRefusedText
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive2MovementData
-	setscene SCENE_FARAWAYISLAND_MEW_BATTLE
+	setscene SCENE_FARAWAYISLAND_NOOP
 	end
 
 FarawayIslandSailorScript:

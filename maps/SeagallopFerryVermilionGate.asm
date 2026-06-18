@@ -97,7 +97,7 @@ SeagallopFerryVermilionGateSailorScript:
 	yesorno
 	iffalsefwd .no_ferry
 	scall SeagallopFerryDepartureScript
-	setmapscene FARAWAY_ISLAND, SCENE_FARAWAYISLAND_NOOP
+	setmapscene FARAWAY_ISLAND, SCENE_FARAWAYISLAND_ARRIVAL
 	warp FARAWAY_ISLAND, 12, 42
 	end
 

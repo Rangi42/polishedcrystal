@@ -1,12 +1,12 @@
 ElmsLab_MapScriptHeader:
 	def_scene_scripts
 	scene_script ElmsLabMeetElmScene, SCENE_ELMSLAB_MEET_ELM
-	scene_script ElmsLabCantLeaveScene, SCENE_ELMSLAB_CANT_LEAVE
-	scene_script ElmsLabNoopScene, SCENE_ELMSLAB_NOOP
-	scene_script ElmsLabMeetOfficerScene, SCENE_ELMSLAB_MEET_OFFICER
-	scene_script ElmsLabUnusedScene, SCENE_ELMSLAB_UNUSED
-	scene_script ElmsLabAideGivesPotionScene, SCENE_ELMSLAB_AIDE_GIVES_POTION
-	scene_script ElmsLabLyraBattleScene, SCENE_ELMSLAB_LYRA_BATTLE
+	scene_script DoNothingScript, SCENE_ELMSLAB_CANT_LEAVE
+	scene_script DoNothingScript, SCENE_ELMSLAB_NOOP
+	scene_script DoNothingScript, SCENE_ELMSLAB_MEET_OFFICER
+	scene_script DoNothingScript, SCENE_ELMSLAB_UNUSED
+	scene_script DoNothingScript, SCENE_ELMSLAB_AIDE_GIVES_POTION
+	scene_script DoNothingScript, SCENE_ELMSLAB_LYRA_BATTLE
 	scene_script ElmsLabAideGivesPokeBallsScene, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 
 	def_callbacks
@@ -61,20 +61,6 @@ ElmsLab_MapScriptHeader:
 	const ELMSLAB_OFFICER
 	const ELMSLAB_LYRA
 
-ElmsLabMeetElmScene:
-	sdefer ElmsLab_AutowalkUpToElm
-ElmsLabCantLeaveScene:
-ElmsLabNoopScene:
-ElmsLabMeetOfficerScene:
-ElmsLabUnusedScene:
-ElmsLabAideGivesPotionScene:
-ElmsLabLyraBattleScene:
-	end
-
-ElmsLabAideGivesPokeBallsScene:
-	sdefer ElmsLab_AutoAideSpeech
-	end
-
 ElmsLabCallback_MoveElm:
 	checkscene
 	iftruefwd .Skip
@@ -82,7 +68,11 @@ ElmsLabCallback_MoveElm:
 .Skip:
 	endcallback
 
-ElmsLab_AutowalkUpToElm:
+ElmsLabMeetElmScene:
+	sdefer .Script
+	end
+
+.Script:
 	follow PLAYER, ELMSLAB_LYRA
 	applymovement PLAYER, ElmsLab_WalkUpToElmMovement
 	stopfollow
@@ -90,11 +80,11 @@ ElmsLab_AutowalkUpToElm:
 	turnobject ELMSLAB_ELM, RIGHT
 	opentext
 	writetext ElmText_Intro
-ElmsLab_RefuseLoop:
+.Loop:
 	yesorno
 	iftruefwd ElmsLab_ElmGetsEmail
 	writetext ElmText_Refused
-	sjump ElmsLab_RefuseLoop
+	sjump .Loop
 
 ElmsLab_ElmGetsEmail:
 if !DEF(DEBUG)
@@ -122,7 +112,11 @@ endc
 	setscene SCENE_ELMSLAB_CANT_LEAVE
 	end
 
-ElmsLab_AutoAideSpeech:
+ElmsLabAideGivesPokeBallsScene:
+	sdefer .Script
+	end
+
+.Script:
 	turnobject ELMSLAB_ELMS_AIDE, DOWN
 	showemote EMOTE_SHOCK, ELMSLAB_ELMS_AIDE, 15
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksDownMovement
@@ -136,15 +130,15 @@ ProfElmScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
-	iftruefwd ElmCheckMasterBall
+	iftruefwd .CheckMasterBall
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue ElmGiveTicketScript
-ElmCheckMasterBall:
+.CheckMasterBall:
 	checkevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	iftruefwd ElmCheckOddSouvenir
+	iftruefwd .CheckOddSouvenir
 	checkflag ENGINE_RISINGBADGE
 	iftrue ElmGiveMasterBallScript
-ElmCheckOddSouvenir:
+.CheckOddSouvenir:
 	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
 	iftrue ElmCheckBattleScript
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM

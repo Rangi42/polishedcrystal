@@ -1,6 +1,6 @@
 PokeCenter2F_MapScriptHeader:
 	def_scene_scripts
-	scene_script PokeCenter2FNoopScene, SCENE_POKECENTER2F_NOOP
+	scene_script DoNothingScript, SCENE_POKECENTER2F_NOOP
 	scene_script PokeCenter2FLeaveTradeCenterScene, SCENE_POKECENTER2F_LEAVE_TRADE_CENTER
 	scene_script PokeCenter2FLeaveColosseumScene, SCENE_POKECENTER2F_LEAVE_COLOSSEUM
 
@@ -26,15 +26,6 @@ PokeCenter2F_MapScriptHeader:
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 
-PokeCenter2FLeaveTradeCenterScene:
-	sdefer Script_LeftCableTradeCenter
-PokeCenter2FNoopScene:
-	end
-
-PokeCenter2FLeaveColosseumScene:
-	sdefer Script_LeftCableColosseum
-	end
-
 PokeCenter2FTileCallback:
 	callasm .CheckKanto
 	iffalsefwd .done
@@ -52,7 +43,11 @@ PokeCenter2FTileCallback:
 	ldh [hScriptVar], a
 	ret
 
-Script_LeftCableTradeCenter:
+PokeCenter2FLeaveTradeCenterScene:
+	sdefer .Script
+	end
+
+.Script:
 	special WaitForOtherPlayerToExit
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
@@ -61,7 +56,11 @@ Script_LeftCableTradeCenter:
 	setmapscene TRADE_CENTER, SCENE_TRADECENTER_INITIALIZE
 	end
 
-Script_LeftCableColosseum:
+PokeCenter2FLeaveColosseumScene:
+	sdefer .Script
+	end
+
+.Script:
 	special WaitForOtherPlayerToExit
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown

@@ -1,11 +1,11 @@
 Route10North_MapScriptHeader:
 	def_scene_scripts
-	scene_script Route10NorthNoopScene, SCENE_ROUTE10NORTH_NOOP
+	scene_script DoNothingScript, SCENE_ROUTE10NORTH_NOOP
 	scene_script Route10NorthLawrenceScene, SCENE_ROUTE10NORTH_LAWRENCE
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
-	callback MAPCALLBACK_OBJECTS, Route10NorthZapdos
+	callback MAPCALLBACK_OBJECTS, Route10NorthZapdosCallback
 
 	def_warp_events
 	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
@@ -42,24 +42,11 @@ Route10North_MapScriptHeader:
 	const ROUTE10_CRYS
 	const ROUTE10_BETA
 
-Route10NorthLawrenceScene:
-	sdefer Route10NorthLawrenceEncounter1Script
-Route10NorthNoopScene:
-	end
-
 Route10NorthFlyPoint:
 	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
 	endcallback
 
-Route10NorthElectrode:
-	cry ELECTRODE
-	loadwildmon ELECTRODE, 50
-	startbattle
-	disappear LAST_TALKED
-	reloadmapafterbattle
-	end
-
-Route10NorthZapdos:
+Route10NorthZapdosCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalsefwd .NoAppear
 	checkevent EVENT_ZAPDOS_GONE
@@ -71,7 +58,11 @@ Route10NorthZapdos:
 	appear ROUTE10_ZAPDOS
 	endcallback
 
-Route10NorthLawrenceEncounter1Script:
+Route10NorthLawrenceScene:
+	sdefer .Script
+	end
+
+.Script:
 	applyonemovement PLAYER, step_down
 	showemote EMOTE_SHOCK, ROUTE10_LAWRENCE, 15
 	special Special_FadeOutMusic
@@ -245,6 +236,14 @@ Route10Zapdos:
 ZapdosText:
 	text "Gyaoo!"
 	done
+
+Route10NorthElectrode:
+	cry ELECTRODE
+	loadwildmon ELECTRODE, 50
+	startbattle
+	disappear LAST_TALKED
+	reloadmapafterbattle
+	end
 
 Route10NorthLawrenceGreetingText:
 	text "Lawrence: We meet"
