@@ -38,7 +38,7 @@ ENDM
 	map_const ROUTE_39_BARN,                               7,  4 ;  9
 	map_const ROUTE_39_FARMHOUSE,                          4,  4 ; 10
 	map_const ROUTE_38,                                   20,  9 ; 11
-	map_const ROUTE_39,                                   10, 27 ; 12
+	map_const ROUTE_39,                                   10, 28 ; 12
 	map_const OLIVINE_CITY,                               22, 16 ; 13
 	map_const ROUTE_35_COAST_NORTH,                       11, 13 ; 14
 	map_const ROUTE_35_COAST_SOUTH,                       26, 14 ; 15
