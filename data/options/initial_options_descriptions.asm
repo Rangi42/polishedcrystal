@@ -45,8 +45,9 @@ InitialOptionDescriptions:
 	prompt
 
 .EVs:
+	assert MODERN_MAX_EV % 4 == 0
 	text "EVs boost stats by"
-	line STRFMT("up to %d points,", MODERN_MAX_EV / 4)
+	line STRFMT("up to %d points,", MODERN_MAX_EV / 4) ; 252 / 4 == 63
 	cont "one per 4 EVs."
 
 	para "You can choose to"
@@ -110,10 +111,10 @@ InitialOptionDescriptions:
 	line "or emulator does"
 	cont "not support RTC,"
 
-	assert NO_RTC_SPEEDUP == 6
+	assert 24 % NO_RTC_SPEEDUP == 0
 	para "disable this to"
 	line "make each in-game"
-	cont "day last 4 hours."
+	cont STRFMT("day last %d hours.", 24 / NO_RTC_SPEEDUP) ; 24 / 6 == 4
 	prompt
 
 .PerfectIVs:
