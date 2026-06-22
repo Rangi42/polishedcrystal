@@ -74,11 +74,14 @@ AdminLunaText:
 LunaComputerScript:
 	jumpthistext
 
-	text "Network traffic"
-	line "from Wonder Trades"
+	text "A screen full of"
+	line "dense notes, maps"
 
-	para "is streaming by"
-	line "on the screen."
+	para "of unfamiliar"
+	line "places, and a"
+
+	para "picture of Johto"
+	line "covered in snow."
 	done
 
 AdminFredrikText:
