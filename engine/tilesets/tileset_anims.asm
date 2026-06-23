@@ -64,19 +64,16 @@ ScrollFourTilesUpDownLeftRight:
 	add hl, bc
 	call _ScrollTileDown
 	call _ScrollTileLeft
-	jr _ScrollTileRight
-
-ScrollTileRightLeft:
-; Scroll right for 4 ticks, then left for 4 ticks.
-	ld h, d
-	ld l, e
-	ld a, [wTileAnimationTimer]
-	inc a
-	and %111
-	ld [wTileAnimationTimer], a
-	and %100
-	jr nz, _ScrollTileLeft
 	; fallthrough
+
+;ScrollTileRightLeft:
+;; Scroll right for 4 ticks, then left for 4 ticks.
+;	ld h, d
+;	ld l, e
+;	call StandingTileFrame8
+;	and %100
+;	jr nz, _ScrollTileLeft
+;	jr _ScrollTileRight
 
 ;ScrollTileRight:
 ;	ld h, d
