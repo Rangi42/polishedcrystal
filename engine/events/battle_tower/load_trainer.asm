@@ -6,17 +6,17 @@ INCLUDE "data/battle_tower/tiers.asm"
 WriteBattleTowerTrainerName:
 ; Returns trainer class in a
 	ld hl, BattleTowerTrainers
-	ld a, NAME_LENGTH
+	ld a, NAME_LENGTH - 1
 	rst AddNTimes
 	ld de, wOTPlayerName
-	ld bc, NAME_LENGTH - 1
+	ld bc, NAME_LENGTH - 2
 	rst CopyBytes
 
 	; Add terminator
 	ld a, '@'
 	ld [de], a
 
-	; The 11th byte is actually trainer class, not a terminator.
+	; The 10th byte is actually trainer class, not a terminator.
 	ld a, [hl]
 	ld [wOtherTrainerClass], a
 	ret
