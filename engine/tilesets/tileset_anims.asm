@@ -744,11 +744,10 @@ AnimateWhirlpoolTiles:
 	ld b, h
 	ld c, l
 
-	; period 4, offset to 4 tiles (64 bytes)
+	; period 4, every 2 frames, offset to 4 tiles (64 bytes)
 	ld a, [wTileAnimationTimer]
-	maskbits 4
+	maskbits 4, 1
 	swap a
-	add a
 	add a
 
 	add LOW(.WhirlpoolTileFrames)
