@@ -133,6 +133,7 @@ AbilityNames:
 	dw SapSipper
 	dw Prankster
 	dw SandForce
+	dw IronBarbs
 	dw FurCoat
 	dw Bulletproof
 	dw Competitive
@@ -294,6 +295,7 @@ MagicBounce:     rawchar "Magic Bounce@"
 SapSipper:       rawchar "Sap Sipper@"
 Prankster:       rawchar "Prankster@"
 SandForce:       rawchar "Sand Force@"
+IronBarbs:       rawchar "Iron Barbs@"
 FurCoat:         rawchar "Fur Coat@"
 Bulletproof:     rawchar "Bulletproof@"
 Competitive:     rawchar "Competitive@"

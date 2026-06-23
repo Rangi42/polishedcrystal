@@ -700,6 +700,7 @@ UserContactAbilities:
 	dbw -1, -1
 
 TargetContactAbilities:
+	dbw IRON_BARBS, IronBarbsAbility
 	dbw EFFECT_SPORE, EffectSporeAbility
 	dbw FLAME_BODY, FlameBodyAbility
 	dbw POISON_POINT, PoisonPointAbility
@@ -760,6 +761,24 @@ TanglingHairAbility:
 	farcall _ForceLowerOppStat
 	call EndAbility
 	farjp CheckMirrorHerb
+
+IronBarbsAbility:
+	call HasOpponentFainted
+	ret z
+
+	call GetOpponentIgnorableAbility
+	cp MAGIC_GUARD
+	ret z
+
+	call BeginAbility
+	call ShowAbilityActivation
+	call SwitchTurn
+	call GetEighthMaxHP
+	farcall SubtractHPFromUser_OverrideFaintOrder
+	ld hl, IsHurtText
+	call StdBattleTextbox
+	call EndAbility
+	jmp SwitchTurn
 
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
