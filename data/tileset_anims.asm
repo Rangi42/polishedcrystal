@@ -39,12 +39,23 @@ TilesetEcruteakShrineAnim::
 	tileframe DoneTileAnimation
 
 TilesetJohtoModernAnim::
-TilesetJohtoCoastAnim::
 	tileframe AnimateWaterTile,               $0:14
 	tileframe AnimateRainTiles,               $0:1c
 	tileframe AnimateWhirlpoolTiles,          $0:30
 	tileframe AnimateRockTiles,               $0:60
 	tileframe AnimateGameCornerTiles,         $1:94
+	tileframe AnimateFlowerTile,              $0:03
+	tileframe AnimateRainTiles,               $0:1c
+	tileframe AnimateWaterfallTiles,          $0:34
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
+TilesetJohtoCoastAnim::
+	tileframe AnimateWaterTile,               $0:14
+	tileframe AnimateRainTiles,               $0:1c
+	tileframe AnimateWhirlpoolTiles,          $0:30
+	tileframe AnimateRockTiles,               $0:60
+	tileframe AnimateBuoyTiles,               $1:87
 	tileframe AnimateFlowerTile,              $0:03
 	tileframe AnimateRainTiles,               $0:1c
 	tileframe AnimateWaterfallTiles,          $0:34
@@ -76,7 +87,7 @@ TilesetChampionsRoomAnim::
 TilesetPortAnim::
 	tileframe AnimateWaterTile,               $0:14
 	tileframe AnimateRockTiles,               $1:12
-	tileframe DoNothing
+	tileframe AnimateBuoyTiles,               $0:05
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing

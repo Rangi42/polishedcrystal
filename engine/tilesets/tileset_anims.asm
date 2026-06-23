@@ -275,6 +275,28 @@ AnimateRockTiles:
 .RockTileFrames:
 INCBIN "gfx/tilesets/animations/rocks.2bpp"
 
+AnimateBuoyTiles:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, every 2 frames, offset to 4 tiles (64 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+	swap a
+	add a
+
+	add LOW(.BuoyTileFrames)
+	ld l, a
+	adc HIGH(.BuoyTileFrames)
+	sub l
+	ld h, a
+
+	jmp WriteFourTilesHLToDE
+
+.BuoyTileFrames:
+INCBIN "gfx/tilesets/animations/buoy.2bpp"
+
 AnimateRainTiles:
 	ld hl, sp + 0
 	ld b, h
