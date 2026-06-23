@@ -251,7 +251,7 @@ AnimateCaveWaterTile:
 .CaveWaterTileFrames:
 INCBIN "gfx/tilesets/animations/water_cave.2bpp"
 
-AnimateBuoyTiles:
+AnimateRockTiles:
 	ld hl, sp + 0
 	ld b, h
 	ld c, l
@@ -264,16 +264,16 @@ AnimateBuoyTiles:
 	rrca
 	add l
 
-	add LOW(.BuoyTileFrames)
+	add LOW(.RockTileFrames)
 	ld l, a
-	adc HIGH(.BuoyTileFrames)
+	adc HIGH(.RockTileFrames)
 	sub l
 	ld h, a
 
 	jmp WriteThreeTilesHLToDE
 
-.BuoyTileFrames:
-INCBIN "gfx/tilesets/animations/buoy.2bpp"
+.RockTileFrames:
+INCBIN "gfx/tilesets/animations/rocks.2bpp"
 
 AnimateRainTiles:
 	ld hl, sp + 0
@@ -759,7 +759,7 @@ AnimateTinyWaterTiles:
 
 	jmp WriteFourTilesHLToDE
 
-AnimateTinyBuoyTiles:
+AnimateTinyRockTiles:
 	; period 2, every 2 frames, offset to 4 tiles (64 bytes)
 	ld a, [wTileAnimationTimer]
 	maskbits 2, 1

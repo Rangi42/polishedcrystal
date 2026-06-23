@@ -30,7 +30,7 @@ TilesetEcruteakShrineAnim::
 	tileframe AnimateWaterTile,               $0:14
 	tileframe AnimateRainTiles,               $0:1c
 	tileframe AnimateWhirlpoolTiles,          $0:30
-	tileframe AnimateBuoyTiles,               $0:60
+	tileframe AnimateRockTiles,               $0:60
 	tileframe DoNothing
 	tileframe AnimateFlowerTile,              $0:03
 	tileframe AnimateRainTiles,               $0:1c
@@ -43,7 +43,7 @@ TilesetJohtoCoastAnim::
 	tileframe AnimateWaterTile,               $0:14
 	tileframe AnimateRainTiles,               $0:1c
 	tileframe AnimateWhirlpoolTiles,          $0:30
-	tileframe AnimateBuoyTiles,               $0:60
+	tileframe AnimateRockTiles,               $0:60
 	tileframe AnimateGameCornerTiles,         $1:94
 	tileframe AnimateFlowerTile,              $0:03
 	tileframe AnimateRainTiles,               $0:1c
@@ -75,7 +75,7 @@ TilesetChampionsRoomAnim::
 
 TilesetPortAnim::
 	tileframe AnimateWaterTile,               $0:14
-	tileframe AnimateBuoyTiles,               $1:12
+	tileframe AnimateRockTiles,               $1:12
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
@@ -182,7 +182,7 @@ TilesetIcePathAnim::
 
 TilesetForestAnim::
 	tileframe AnimateWaterTile,               $0:14
-	tileframe AnimateBuoyTiles,               $1:4c
+	tileframe AnimateRockTiles,               $1:4c
 	tileframe AnimateForestTreeTiles,         $1:1c
 	tileframe DoNothing
 	tileframe DoNothing
@@ -261,7 +261,7 @@ TilesetValenciaIslandAnim::
 
 TilesetSnowtopMountainAnim::
 	tileframe AnimateTinyWaterTiles,          $1:30
-	tileframe AnimateTinyBuoyTiles,           $1:46
+	tileframe AnimateTinyRockTiles,           $1:46
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
