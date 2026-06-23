@@ -128,7 +128,7 @@ TilesetUndergroundAnim::
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,            $0:25
+	tileframe AnimateCaveWaterTile,           $0:25
 	tileframe FlickeringCaveEntrancePalette
 	tileframe ScrollFourTilesUpDownLeftRight, $0:4c
 	tileframe AnimateLavaBubbleTile2,         $0:3c
@@ -137,12 +137,12 @@ TilesetQuietCaveAnim::
 	tileframe AnimateWaterfallTiles,          $0:26
 	tileframe FlickeringCaveEntrancePalette
 	tileframe ScrollFourTilesUpDownLeftRight, $0:4c
-	tileframe DoNothing
+	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetPeaksAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,            $0:25
+	tileframe AnimateCaveWaterTile,           $0:25
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe DoNothing
@@ -151,7 +151,7 @@ TilesetPeaksAnim::
 	tileframe AnimateWaterfallTiles,          $0:26
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
-	tileframe DoNothing
+	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetParkAnim::
@@ -168,7 +168,7 @@ TilesetParkAnim::
 
 TilesetIcePathAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,            $0:10
+	tileframe AnimateCaveWaterTile,           $0:10
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
 	tileframe DoNothing
@@ -177,7 +177,7 @@ TilesetIcePathAnim::
 	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
-	tileframe DoNothing
+	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetForestAnim::
@@ -234,7 +234,7 @@ TilesetPokeComCenterAnim::
 
 TilesetTunnelAnim::
 	tileframe FlickeringCaveEntrancePalette
-	tileframe ScrollTileRightLeft,            $0:26
+	tileframe AnimateCaveWaterTile,           $0:26
 	tileframe FlickeringCaveEntrancePalette
 	tileframe AnimateLCDTile,                 $1:1e
 	tileframe DoNothing
@@ -243,7 +243,7 @@ TilesetTunnelAnim::
 	tileframe DoNothing
 	tileframe FlickeringCaveEntrancePalette
 	tileframe DoNothing
-	tileframe DoNothing
+	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetShamoutiIslandAnim::

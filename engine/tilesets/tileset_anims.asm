@@ -231,6 +231,29 @@ AnimateWaterTile:
 .WaterTileFrames:
 INCBIN "gfx/tilesets/animations/water_johto.2bpp"
 
+AnimateCaveWaterTile:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 4, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 4, 1
+	add a
+	add a
+	add a
+
+	add LOW(.CaveWaterTileFrames)
+	ld l, a
+	adc HIGH(.CaveWaterTileFrames)
+	sub l
+	ld h, a
+
+	jmp WriteTileHLToDE
+
+.CaveWaterTileFrames:
+INCBIN "gfx/tilesets/animations/water_cave.2bpp"
+
 AnimateBuoyTiles:
 	ld hl, sp + 0
 	ld b, h
