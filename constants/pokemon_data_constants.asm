@@ -281,7 +281,7 @@ DEF CAUGHT_BALL_MASK   EQU %00011111
 ; hyper training (stored at end of OT name)
 DEF HYPER_TRAINING_MASK EQU %11111100
 
-DEF MON_CRY_LENGTH EQU 6
+DEF MON_CRY_LENGTH EQU 5
 
 ; maximum number of party pokemon
 DEF PARTY_LENGTH EQU 6

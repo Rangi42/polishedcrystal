@@ -1,6 +1,7 @@
 MACRO mon_cry
 ; index, pitch, length
-	dw \1, \2, \3
+	db \1
+	dw \2, \3
 ENDM
 
 PokemonCries::

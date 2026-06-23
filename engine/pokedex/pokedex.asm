@@ -3382,7 +3382,7 @@ endc
 	ld a, BANK(FootprintPointers)
 	call GetFarWord
 .got_footprint
-	ld a, BANK(Footprints)
+	ld a, BANK("Pokédex Footprints")
 	ld de, wDexMonFootprintTiles
 	call FarDecompressToDE
 	; Expand 1bpp to 2bpp
