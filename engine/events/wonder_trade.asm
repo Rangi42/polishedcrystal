@@ -524,7 +524,7 @@ GetWonderTradeOTName:
 	jr z, .ok
 	ld hl, WonderTradeOTNames2
 .ok
-	lb bc, 0, PLAYER_NAME_LENGTH
+	lb bc, 0, PLAYER_NAME_LENGTH - 1
 	rst AddNTimes
 	ret
 

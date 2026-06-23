@@ -304,13 +304,14 @@ CopyTradeName:
 
 CopyTradeOT:
 ; Copy trade name, blanking the 3 unused bytes past the OT name
-	ld bc, NAME_LENGTH - 3
+	ld bc, NAME_LENGTH - 4
 	rst CopyBytes
+	ld a, '@'
+	ld [de], a
 	xor a
 rept 3
-	ld [de], a
 	inc de
-	inc hl
+	ld [de], a
 endr
 	ret
 
