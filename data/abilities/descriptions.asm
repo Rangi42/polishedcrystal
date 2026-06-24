@@ -812,8 +812,8 @@ PranksterDescription:
 	done
 
 SandForceDescription:
-	text "Boosts some moves"
-	next "in a sandstorm."
+	text "Ups Rock, Ground,"
+	next "and Steel in sand."
 	done
 
 IronBarbsDescription:
