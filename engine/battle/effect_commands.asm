@@ -2738,9 +2738,6 @@ BattleCommand_applydamage:
 	and a
 	ret z
 
-	call CheckSubHit
-	ret nz
-
 	cp 5
 	ld hl, PlayerAffectionEndureText
 	ld de, EnemyAffectionEndureText
