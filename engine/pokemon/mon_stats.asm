@@ -925,6 +925,19 @@ GetNatureStatMultiplier::
 	pop de
 	ret
 
+GetStatusConditionOrFaintIndex:
+; de points to status from a party_struct
+	ld h, d
+	ld l, e
+	assert MON_STATUS + 2 == MON_HP
+	inc hl
+	inc hl
+	ld a, [hli]
+	or [hl]
+	ld a, 7 ; fnt
+	ret z
+	; fallthrough
+
 GetStatusConditionIndex:
 ; de points to status, e.g. from a party_struct or battle_struct
 ; return the status condition index in a
@@ -960,23 +973,22 @@ GetStatusConditionIndex:
 	ret
 
 PlaceStatusString:
-	xor a
-	call GetStatusConditionIndex
+; de points to status from a party_struct
+; hl points to where to place the string
+	push hl
+	call GetStatusConditionOrFaintIndex
+	pop hl
 	and a
 	ret z
-	push de
 
-	ld d, 0
 	ld e, a
-	push hl
-	ld hl, StatusStringPointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
+	add e
+	add e
+	add LOW(StatusStrings)
 	ld e, a
-	ld a, [hl]
+	adc HIGH(StatusStrings)
+	sub e
 	ld d, a
-	pop hl
 
 	ld a, [de]
 	inc de
@@ -986,30 +998,19 @@ PlaceStatusString:
 	ld [hli], a
 	ld a, [de]
 	ld [hl], a
-
-	pop de
-	ld a, $1
-	and a
 	ret
 
-StatusStringPointers:
-	dw OKString
-	dw PsnString
-	dw ParString
-	dw SlpString
-	dw BrnString
-	dw FrzString
-	dw FntString
-	dw ToxString
-
-OKString:  rawchar "OK @"
-PsnString: rawchar "Psn@"
-ParString: rawchar "Par@"
-SlpString: rawchar "Slp@"
-BrnString: rawchar "Brn@"
-FrzString: rawchar "Frz@"
-FntString: rawchar "Fnt@"
-ToxString: rawchar "Tox@"
+StatusStrings:
+	table_width 3
+	rawchar "OK "
+	rawchar "Psn"
+	rawchar "Par"
+	rawchar "Slp"
+	rawchar "Brn"
+	rawchar "Frz"
+	rawchar "Tox"
+	rawchar "Fnt"
+	assert_table_length 8
 
 ListMoves:
 ; List moves at hl, spaced every [wListMovesLineSpacing] tiles.

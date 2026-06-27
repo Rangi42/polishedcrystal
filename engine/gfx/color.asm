@@ -78,41 +78,28 @@ ApplyHPBarPals:
 	jmp FillBoxWithByte
 
 LoadSummaryStatusIconPalette:
-	xor a
 	ld de, wTempMonStatus
-	farcall GetStatusConditionIndex
-	ld hl, StatusIconPals
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld de, wOBPals1 palette 5 color 2
-	ld bc, 1 colors
-	jmp FarCopyColorWRAM
+	ld hl, wOBPals1 palette 5 color 2
+	jr _LoadStatusIconPalette
 
 LoadPlayerStatusIconPalette:
-	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus
-	farcall GetStatusConditionIndex
-	ld hl, StatusIconPals
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 2
-	ld bc, 2
-	jmp FarCopyColorWRAM
+	ld hl, wBGPals1 palette PAL_BATTLE_BG_STATUS + 2
+	jr _LoadStatusIconPalette
 
 LoadEnemyStatusIconPalette:
-	ld a, [wEnemySubStatus2]
 	ld de, wEnemyMonStatus
-	farcall GetStatusConditionIndex
+	ld hl, wBGPals1 palette PAL_BATTLE_BG_STATUS + 4
+	; fallthrough
+_LoadStatusIconPalette:
+	push hl
+	farcall GetStatusConditionOrFaintIndex
+	pop de
 	ld hl, StatusIconPals
 	ld c, a
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	jmp FarCopyColorWRAM
 

@@ -86,9 +86,8 @@ LoadBattleFontsHPBar:
 
 LoadSummaryStatusIcon:
 	push de
-	xor a
 	ld de, wTempMonStatus
-	call GetStatusConditionIndex
+	call GetStatusConditionOrFaintIndex
 	ld hl, SummaryStatusIconGFX
 	ld bc, 2 tiles
 	rst AddNTimes
@@ -104,7 +103,6 @@ LoadSummaryStatusIcon:
 
 LoadPlayerStatusIcon:
 	push de
-	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus
 	call GetStatusConditionIndex
 	ld hl, StatusIconGFX
@@ -125,7 +123,6 @@ LoadStatusIcons:
 
 LoadEnemyStatusIcon:
 	push de
-	ld a, [wEnemySubStatus2]
 	ld de, wEnemyMonStatus
 	call GetStatusConditionIndex
 	ld hl, EnemyStatusIconGFX
