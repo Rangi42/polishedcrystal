@@ -17,10 +17,10 @@ UnownPuzzle:
 	ld bc, wUnownPuzzleEnd - wUnownPuzzle
 	xor a
 	rst ByteFill
-	ld hl, UnownPuzzleCursorGFX
-	ld de, vTiles1 tile $60
-	ld bc, 4 tiles
-	rst CopyBytes
+	ld hl, vTiles1 tile $60
+	ld de, UnownPuzzleCursorGFX
+	lb bc, BANK(UnownPuzzleCursorGFX), 4
+	call Copy1bpp
 	ld hl, UnownPuzzleStartCancelLZ
 	ld de, vTiles1 tile $6d
 	call Decompress
@@ -792,7 +792,7 @@ LoadUnownPuzzlePiecesGFX:
 	dw HoOhPuzzleLZ
 
 UnownPuzzleCursorGFX:
-INCBIN "gfx/unown_puzzle/cursor.2bpp"
+INCBIN "gfx/unown_puzzle/cursor.1bpp"
 
 UnownPuzzleStartCancelLZ:
 INCBIN "gfx/unown_puzzle/start_cancel.2bpp.lzp"
