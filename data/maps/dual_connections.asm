@@ -35,8 +35,10 @@ MACRO dual_connection
 		fail "Invalid direction for 'dual_connection'."
 	endc
 
+	REDEF CURRENT_MAP_ID EQUS "\2"
 	DEF CURRENT_MAP_WIDTH = \2_WIDTH
 	DEF CURRENT_MAP_HEIGHT = \2_HEIGHT
+	DEF MAP_CONNECTIONS_\2 = -1 ; sentinel for dual connections
 	connection \1, \4, \5, \6
 	connection \1, \7, \8, \9
 ENDM
