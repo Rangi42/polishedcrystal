@@ -317,9 +317,7 @@ StartMenu_Quit:
 	ret
 
 .EndTheContestText:
-	text_far _StartMenuContestEndText
-	text_end
-
+	text_farend _StartMenuContestEndText
 StartMenu_Save:
 	call ClearSprites
 	call BufferScreen

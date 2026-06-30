@@ -118,9 +118,7 @@ ItemManiac_PrintTextHowMany:
 
 .Text:
 	; How many do you want to sell?
-	text_far _HowManyDoYouWantToSellText
-	text_end
-
+	text_farend _HowManyDoYouWantToSellText
 GetItemQuantity:
 ; Get the quantity of the item in wCurItem.
 ; Returns the quantity in wItemQuantityChangeBuffer.

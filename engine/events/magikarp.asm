@@ -78,9 +78,7 @@ CheckMagikarpLength:
 
 .MeasureItText:
 	; Let me measure that MAGIKARP. …Hm, it measures @ .
-	text_far _MagikarpGuruMeasureText
-	text_end
-
+	text_farend _MagikarpGuruMeasureText
 PrintMagikarpLength:
 	ld a, [wOptions2]
 	bit POKEDEX_UNITS, a
@@ -352,5 +350,4 @@ Special_MagikarpHouseSign:
 
 .CurrentRecordtext:
 	; "CURRENT RECORD"
-	text_far _KarpGuruRecordText
-	text_end
+	text_farend _KarpGuruRecordText

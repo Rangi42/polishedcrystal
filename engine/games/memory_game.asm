@@ -316,14 +316,10 @@ MemoryGame_CheckMatch:
 
 MemoryGameText_Yeah:
 	; , yeah!
-	text_far _MemoryGameYeahText
-	text_end
-
+	text_farend _MemoryGameYeahText
 MemoryGameText_Darn:
 	; Darn…
-	text_far _MemoryGameDarnText
-	text_end
-
+	text_farend _MemoryGameDarnText
 MemoryGame_InitBoard:
 	ld hl, wMemoryGameCards
 	ld bc, wMemoryGameCardsEnd - wMemoryGameCards

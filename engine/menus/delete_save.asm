@@ -34,9 +34,7 @@ _DeleteSaveData:
 
 .Text_ClearAllSaveData:
 	; Clear all save data?
-	text_far _ClearAllSaveDataText
-	text_end
-
+	text_farend _ClearAllSaveDataText
 _ResetInitialOptions:
 	farcall BlankScreen
 	ld a, CGB_PLAIN
@@ -66,5 +64,4 @@ _ResetInitialOptions:
 
 .Text_ResetInitialOptions:
 	; Reset the initial game options?
-	text_far ResetInitialOptionsText
-	text_end
+	text_farend ResetInitialOptionsText

@@ -538,9 +538,7 @@ GiveItem:
 	jmp Pack_PrintTextNoScroll
 .Egg:
 	; An EGG can't hold an item.
-	text_far Text_AnEGGCantHoldAnItem
-	text_end
-
+	text_farend Text_AnEGGCantHoldAnItem
 BattlePack:
 	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
@@ -1386,48 +1384,30 @@ Text_NoEmptySlot:
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?
-	text_far _AskThrowAwayText
-	text_end
-
+	text_farend _AskThrowAwayText
 Text_ConfirmThrowAway:
 	; Throw away @ @ (S)?
-	text_far _AskQuantityThrowAwayText
-	text_end
-
+	text_farend _AskQuantityThrowAwayText
 Text_ThrewAway:
 	; Threw away @ (S).
-	text_far _ThrewAwayText
-	text_end
-
+	text_farend _ThrewAwayText
 Text_ThisIsntTheTime:
 	; OAK:  ! This isn't the time to use that!
-	text_far _OakThisIsntTheTimeText
-	text_end
-
+	text_farend _OakThisIsntTheTimeText
 TextJump_YouDontHaveAPkmn:
 	; You don't have a #MON!
-	text_far Text_YouDontHaveAPkmn
-	text_end
-
+	text_farend Text_YouDontHaveAPkmn
 Text_RegisteredItem:
 	; Registered the @ .
-	text_far _RegisteredItemText
-	text_end
-
+	text_farend _RegisteredItemText
 Text_UnregisteredItem:
-	text_far UnregisteredItemText
-	text_end
-
+	text_farend UnregisteredItemText
 Text_CantRegister:
 	; You can't register that item.
-	text_far _CantRegisterText
-	text_end
-
+	text_farend _CantRegisterText
 Text_MoveItemWhere:
 	; Where should this be moved to?
-	text_far _AskItemMoveText
-	text_end
-
+	text_farend _AskItemMoveText
 PackInterfaceGFX:
 INCBIN "gfx/pack/pack_top_left.2bpp.lzp"
 
@@ -1461,5 +1441,4 @@ Special_ChooseItem::
 	jr .loop
 
 .ItemCantBeSelectedText:
-	text_far ItemCantBeSelectedText
-	text_end
+	text_farend ItemCantBeSelectedText

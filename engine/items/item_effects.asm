@@ -524,24 +524,16 @@ PokeBallEffect:
 
 Text_NoShake:
 	; Oh no! The #MON broke free!
-	text_far _BallBrokeFreeText
-	text_end
-
+	text_farend _BallBrokeFreeText
 Text_OneShake:
 	; Aww! It appeared to be caught!
-	text_far _BallAppearedCaughtText
-	text_end
-
+	text_farend _BallAppearedCaughtText
 Text_TwoShakes:
 	; Aargh! Almost had it!
-	text_far _BallAlmostHadItText
-	text_end
-
+	text_farend _BallAlmostHadItText
 Text_ThreeShakes:
 	; Shoot! It was so close too!
-	text_far _BallSoCloseText
-	text_end
-
+	text_farend _BallSoCloseText
 Text_GotchaMonWasCaught:
 	; Gotcha! @ was caught!@ @
 	text_far Text_BallCaught
@@ -559,28 +551,18 @@ Text_GotchaMonWasCaught:
 
 TextJump_Waitbutton:
 	; @
-	text_far Text_Waitbutton_2
-	text_end
-
+	text_farend Text_Waitbutton_2
 Text_CurBoxFull:
-	text_far _CurBoxFullText
-	text_end
-
+	text_farend _CurBoxFullText
 Text_SentToBillsPC:
 	; was sent to BILL's PC.
-	text_far _MonSentToPCText
-	text_end
-
+	text_farend _MonSentToPCText
 Text_AddedToPokedex:
 	; 's data was newly added to the #DEX.@ @
-	text_far _NewDexDataText
-	text_end
-
+	text_farend _NewDexDataText
 Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
-	text_far _AskGiveNicknameText
-	text_end
-
+	text_farend _AskGiveNicknameText
 ReturnToBattle_UseBall:
 	farjp _ReturnToBattle_UseBall
 
@@ -646,9 +628,7 @@ LowerEVBerry:
 	jmp UseDisposableItem
 
 ItemHappinessRoseButStatFellText:
-	text_far _ItemHappinessRoseButStatFellText
-	text_end
-
+	text_farend _ItemHappinessRoseButStatFellText
 VitaminEffect:
 	call FixPlayerEVsAndStats
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -677,9 +657,7 @@ VitaminHappiness:
 
 ItemStatRoseText:
 	; 's @ rose.
-	text_far _ItemStatRoseText
-	text_end
-
+	text_farend _ItemStatRoseText
 SetUpEVModifier:
 	call UseItem_GetBaseDataAndNickParameters
 	call GetEVRelativePointer
@@ -1530,9 +1508,7 @@ FreshSnackFunction:
 
 .Text_CantBeUsed:
 	; That can't be used on this #MON.
-	text_far _ItemCantUseOnMonText
-	text_end
-
+	text_farend _ItemCantUseOnMonText
 EscapeRope:
 	xor a
 	ld [wItemEffectSucceeded], a
@@ -1559,9 +1535,7 @@ RepelEffect:
 
 TextJump_RepelUsedEarlierIsStillInEffect:
 	; The REPEL used earlier is still in effect.
-	text_far Text_RepelUsedEarlierIsStillInEffect
-	text_end
-
+	text_farend Text_RepelUsedEarlierIsStillInEffect
 PokeDoll:
 	ld a, [wBattleMode]
 	dec a
@@ -1630,9 +1604,7 @@ BlueCard:
 	jmp MenuTextboxWaitButton
 
 .bluecardtext
-	text_far _BlueCardBalanceText
-	text_end
-
+	text_farend _BlueCardBalanceText
 WingCase_MonSelected:
 ; Runs when a mon has been selected.
 	; What wing does the player want to choose?
@@ -2323,9 +2295,7 @@ CoinCase:
 	jmp MenuTextboxWaitButton
 
 .coincasetext
-	text_far _CoinCaseCountText
-	text_end
-
+	text_farend _CoinCaseCountText
 ApricornBox:
 	ld hl, .MenuDataHeader
 	call LoadMenuHeader
@@ -2659,34 +2629,22 @@ RestorePP:
 
 RaiseThePPOfWhichMoveText:
 	; Raise the PP of which move?
-	text_far Text_RaiseThePPOfWhichMove
-	text_end
-
+	text_farend Text_RaiseThePPOfWhichMove
 RestoreThePPOfWhichMoveText:
 	; Restore the PP of which move?
-	text_far Text_RestoreThePPOfWhichMove
-	text_end
-
+	text_farend Text_RestoreThePPOfWhichMove
 PPIsMaxedOutText:
 	; 's PP is maxed out.
-	text_far Text_PPIsMaxedOut
-	text_end
-
+	text_farend Text_PPIsMaxedOut
 PPsIncreasedText:
 	; 's PP increased.
-	text_far Text_PPsIncreased
-	text_end
-
+	text_farend Text_PPsIncreased
 PPsMaximizedText:
 	; 's PP maximized.
-	text_far Text_PPsMaximized
-	text_end
-
+	text_farend Text_PPsMaximized
 PPRestoredText:
 	; PP was restored.
-	text_far _PPRestoredText
-	text_end
-
+	text_farend _PPRestoredText
 SquirtBottle:
 	farjp _Squirtbottle
 
@@ -2849,67 +2807,41 @@ ItemNotUsed_ExitMenu:
 
 LooksBitterText:
 	; It looks bitter…
-	text_far _ItemLooksBitterText
-	text_end
-
+	text_farend _ItemLooksBitterText
 CantUseOnEggText:
 	; That can't be used on an EGG.
-	text_far _ItemCantUseOnEggText
-	text_end
-
+	text_farend _ItemCantUseOnEggText
 AlreadyInThatBallText:
-	text_far AlreadyInThatBallTextData
-	text_end
-
+	text_farend AlreadyInThatBallTextData
 CantChangeTradedMonBallText:
-	text_far CantChangeTradedMonBallTextData
-	text_end
-
+	text_farend CantChangeTradedMonBallTextData
 IsntTheTimeText:
 	; OAK:  ! This isn't the time to use that!
-	text_far _ItemOakWarningText
-	text_end
-
+	text_farend _ItemOakWarningText
 WontHaveAnyEffectText:
 	; It won't have any effect.
-	text_far _ItemWontHaveEffectText
-	text_end
-
+	text_farend _ItemWontHaveEffectText
 BlockedTheBallText:
 	; The trainer blocked the BALL!
-	text_far _BallBlockedText
-	text_end
-
+	text_farend _BallBlockedText
 DontBeAThiefText:
 	; Don't be a thief!
-	text_far _BallDontBeAThiefText
-	text_end
-
+	text_farend _BallDontBeAThiefText
 Ball_StorageFullText:
 	; The #MON BOX is full. That can't be used now.
-	text_far _BallStorageFullText
-	text_end
-
+	text_farend _BallStorageFullText
 Ball_DatabaseTaxedText:
 	; The #MON BOX is full. That can't be used now.
-	text_far _BallDatabaseFullText
-	text_end
-
+	text_farend _BallDatabaseFullText
 Ball_MonIsHiddenText:
 	; The #MON can't be seen!
-	text_far Text_MonIsHiddenFromBall
-	text_end
-
+	text_farend Text_MonIsHiddenFromBall
 Ball_MonCantBeCaughtText:
 	; The #MON can't be caught!
-	text_far Text_MonCantBeCaught
-	text_end
-
+	text_farend Text_MonCantBeCaught
 UsedItemText:
 	; used the@ .
-	text_far _ItemUsedText
-	text_end
-
+	text_farend _ItemUsedText
 ApplyPPUp:
 	ld a, MON_MOVES
 	call GetPartyParamLocationAndValue

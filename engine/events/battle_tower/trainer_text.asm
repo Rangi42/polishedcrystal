@@ -250,505 +250,254 @@ BFHeadTexts:
 	dw BTWinHead
 
 BTGreetingM1:
-	text_far _BTGreetingM1Text
-	text_end
-
+	text_farend _BTGreetingM1Text
 BTLossM1:
-	text_far _BTLossM1Text
-	text_end
-
+	text_farend _BTLossM1Text
 BTWinM1:
-	text_far _BTWinM1Text
-	text_end
-
+	text_farend _BTWinM1Text
 BTGreetingM2:
-	text_far _BTGreetingM2Text
-	text_end
-
+	text_farend _BTGreetingM2Text
 BTLossM2:
-	text_far _BTLossM2Text
-	text_end
-
+	text_farend _BTLossM2Text
 BTWinM2:
-	text_far _BTWinM2Text
-	text_end
-
+	text_farend _BTWinM2Text
 BTGreetingM3:
-	text_far _BTGreetingM3Text
-	text_end
-
+	text_farend _BTGreetingM3Text
 BTLossM3:
-	text_far _BTLossM3Text
-	text_end
-
+	text_farend _BTLossM3Text
 BTWinM3:
-	text_far _BTWinM3Text
-	text_end
-
+	text_farend _BTWinM3Text
 BTGreetingM4:
-	text_far _BTGreetingM4Text
-	text_end
-
+	text_farend _BTGreetingM4Text
 BTLossM4:
-	text_far _BTLossM4Text
-	text_end
-
+	text_farend _BTLossM4Text
 BTWinM4:
-	text_far _BTWinM4Text
-	text_end
-
+	text_farend _BTWinM4Text
 BTGreetingM5:
-	text_far _BTGreetingM5Text
-	text_end
-
+	text_farend _BTGreetingM5Text
 BTLossM5:
-	text_far _BTLossM5Text
-	text_end
-
+	text_farend _BTLossM5Text
 BTWinM5:
-	text_far _BTWinM5Text
-	text_end
-
+	text_farend _BTWinM5Text
 BTGreetingM6:
-	text_far _BTGreetingM6Text
-	text_end
-
+	text_farend _BTGreetingM6Text
 BTLossM6:
-	text_far _BTLossM6Text
-	text_end
-
+	text_farend _BTLossM6Text
 BTWinM6:
-	text_far _BTWinM6Text
-	text_end
-
+	text_farend _BTWinM6Text
 BTGreetingM7:
-	text_far _BTGreetingM7Text
-	text_end
-
+	text_farend _BTGreetingM7Text
 BTLossM7:
-	text_far _BTLossM7Text
-	text_end
-
+	text_farend _BTLossM7Text
 BTWinM7:
-	text_far _BTWinM7Text
-	text_end
-
+	text_farend _BTWinM7Text
 BTGreetingM8:
-	text_far _BTGreetingM8Text
-	text_end
-
+	text_farend _BTGreetingM8Text
 BTLossM8:
-	text_far _BTLossM8Text
-	text_end
-
+	text_farend _BTLossM8Text
 BTWinM8:
-	text_far _BTWinM8Text
-	text_end
-
+	text_farend _BTWinM8Text
 BTGreetingM9:
-	text_far _BTGreetingM9Text
-	text_end
-
+	text_farend _BTGreetingM9Text
 BTLossM9:
-	text_far _BTLossM9Text
-	text_end
-
+	text_farend _BTLossM9Text
 BTWinM9:
-	text_far _BTWinM9Text
-	text_end
-
+	text_farend _BTWinM9Text
 BTGreetingM10:
-	text_far _BTGreetingM10Text
-	text_end
-
+	text_farend _BTGreetingM10Text
 BTLossM10:
-	text_far _BTLossM10Text
-	text_end
-
+	text_farend _BTLossM10Text
 BTWinM10:
-	text_far _BTWinM10Text
-	text_end
-
+	text_farend _BTWinM10Text
 BTGreetingM11:
-	text_far _BTGreetingM11Text
-	text_end
-
+	text_farend _BTGreetingM11Text
 BTLossM11:
-	text_far _BTLossM11Text
-	text_end
-
+	text_farend _BTLossM11Text
 BTWinM11:
-	text_far _BTWinM11Text
-	text_end
-
+	text_farend _BTWinM11Text
 BTGreetingM12:
-	text_far _BTGreetingM12Text
-	text_end
-
+	text_farend _BTGreetingM12Text
 BTLossM12:
-	text_far _BTLossM12Text
-	text_end
-
+	text_farend _BTLossM12Text
 BTWinM12:
-	text_far _BTWinM12Text
-	text_end
-
+	text_farend _BTWinM12Text
 BTGreetingM13:
-	text_far _BTGreetingM13Text
-	text_end
-
+	text_farend _BTGreetingM13Text
 BTLossM13:
-	text_far _BTLossM13Text
-	text_end
-
+	text_farend _BTLossM13Text
 BTWinM13:
-	text_far _BTWinM13Text
-	text_end
-
+	text_farend _BTWinM13Text
 BTGreetingM14:
-	text_far _BTGreetingM14Text
-	text_end
-
+	text_farend _BTGreetingM14Text
 BTLossM14:
-	text_far _BTLossM14Text
-	text_end
-
+	text_farend _BTLossM14Text
 BTWinM14:
-	text_far _BTWinM14Text
-	text_end
-
+	text_farend _BTWinM14Text
 BTGreetingM15:
-	text_far _BTGreetingM15Text
-	text_end
-
+	text_farend _BTGreetingM15Text
 BTLossM15:
-	text_far _BTLossM15Text
-	text_end
-
+	text_farend _BTLossM15Text
 BTWinM15:
-	text_far _BTWinM15Text
-	text_end
-
+	text_farend _BTWinM15Text
 BTGreetingM16:
-	text_far _BTGreetingM16Text
-	text_end
-
+	text_farend _BTGreetingM16Text
 BTLossM16:
-	text_far _BTLossM16Text
-	text_end
-
+	text_farend _BTLossM16Text
 BTWinM16:
-	text_far _BTWinM16Text
-	text_end
-
+	text_farend _BTWinM16Text
 BTGreetingM17:
-	text_far _BTGreetingM17Text
-	text_end
-
+	text_farend _BTGreetingM17Text
 BTLossM17:
-	text_far _BTLossM17Text
-	text_end
-
+	text_farend _BTLossM17Text
 BTWinM17:
-	text_far _BTWinM17Text
-	text_end
-
+	text_farend _BTWinM17Text
 BTGreetingM18:
-	text_far _BTGreetingM18Text
-	text_end
-
+	text_farend _BTGreetingM18Text
 BTLossM18:
-	text_far _BTLossM18Text
-	text_end
-
+	text_farend _BTLossM18Text
 BTWinM18:
-	text_far _BTWinM18Text
-	text_end
-
+	text_farend _BTWinM18Text
 BTGreetingM19:
-	text_far _BTGreetingM19Text
-	text_end
-
+	text_farend _BTGreetingM19Text
 BTLossM19:
-	text_far _BTLossM19Text
-	text_end
-
+	text_farend _BTLossM19Text
 BTWinM19:
-	text_far _BTWinM19Text
-	text_end
-
+	text_farend _BTWinM19Text
 BTGreetingM20:
-	text_far _BTGreetingM20Text
-	text_end
-
+	text_farend _BTGreetingM20Text
 BTLossM20:
-	text_far _BTLossM20Text
-	text_end
-
+	text_farend _BTLossM20Text
 BTWinM20:
-	text_far _BTWinM20Text
-	text_end
-
+	text_farend _BTWinM20Text
 BTGreetingM21:
-	text_far _BTGreetingM21Text
-	text_end
-
+	text_farend _BTGreetingM21Text
 BTLossM21:
-	text_far _BTLossM21Text
-	text_end
-
+	text_farend _BTLossM21Text
 BTWinM21:
-	text_far _BTWinM21Text
-	text_end
-
+	text_farend _BTWinM21Text
 BTGreetingM22:
-	text_far _BTGreetingM22Text
-	text_end
-
+	text_farend _BTGreetingM22Text
 BTLossM22:
-	text_far _BTLossM22Text
-	text_end
-
+	text_farend _BTLossM22Text
 BTWinM22:
-	text_far _BTWinM22Text
-	text_end
-
+	text_farend _BTWinM22Text
 BTGreetingM23:
-	text_far _BTGreetingM23Text
-	text_end
-
+	text_farend _BTGreetingM23Text
 BTLossM23:
-	text_far _BTLossM23Text
-	text_end
-
+	text_farend _BTLossM23Text
 BTWinM23:
-	text_far _BTWinM23Text
-	text_end
-
+	text_farend _BTWinM23Text
 BTGreetingM24:
-	text_far _BTGreetingM24Text
-	text_end
-
+	text_farend _BTGreetingM24Text
 BTLossM24:
-	text_far _BTLossM24Text
-	text_end
-
+	text_farend _BTLossM24Text
 BTWinM24:
-	text_far _BTWinM24Text
-	text_end
-
+	text_farend _BTWinM24Text
 BTGreetingM25:
-	text_far _BTGreetingM25Text
-	text_end
-
+	text_farend _BTGreetingM25Text
 BTLossM25:
-	text_far _BTLossM25Text
-	text_end
-
+	text_farend _BTLossM25Text
 BTWinM25:
-	text_far _BTWinM25Text
-	text_end
-
+	text_farend _BTWinM25Text
 BTGreetingF1:
-	text_far _BTGreetingF1Text
-	text_end
-
+	text_farend _BTGreetingF1Text
 BTLossF1:
-	text_far _BTLossF1Text
-	text_end
-
+	text_farend _BTLossF1Text
 BTWinF1:
-	text_far _BTWinF1Text
-	text_end
-
+	text_farend _BTWinF1Text
 BTGreetingF2:
-	text_far _BTGreetingF2Text
-	text_end
-
+	text_farend _BTGreetingF2Text
 BTLossF2:
-	text_far _BTLossF2Text
-	text_end
-
+	text_farend _BTLossF2Text
 BTWinF2:
-	text_far _BTWinF2Text
-	text_end
-
+	text_farend _BTWinF2Text
 BTGreetingF3:
-	text_far _BTGreetingF3Text
-	text_end
-
+	text_farend _BTGreetingF3Text
 BTLossF3:
-	text_far _BTLossF3Text
-	text_end
-
+	text_farend _BTLossF3Text
 BTWinF3:
-	text_far _BTWinF3Text
-	text_end
-
+	text_farend _BTWinF3Text
 BTGreetingF4:
-	text_far _BTGreetingF4Text
-	text_end
-
+	text_farend _BTGreetingF4Text
 BTLossF4:
-	text_far _BTLossF4Text
-	text_end
-
+	text_farend _BTLossF4Text
 BTWinF4:
-	text_far _BTWinF4Text
-	text_end
-
+	text_farend _BTWinF4Text
 BTGreetingF5:
-	text_far _BTGreetingF5Text
-	text_end
-
+	text_farend _BTGreetingF5Text
 BTLossF5:
-	text_far _BTLossF5Text
-	text_end
-
+	text_farend _BTLossF5Text
 BTWinF5:
-	text_far _BTWinF5Text
-	text_end
-
+	text_farend _BTWinF5Text
 BTGreetingF6:
-	text_far _BTGreetingF6Text
-	text_end
-
+	text_farend _BTGreetingF6Text
 BTLossF6:
-	text_far _BTLossF6Text
-	text_end
-
+	text_farend _BTLossF6Text
 BTWinF6:
-	text_far _BTWinF6Text
-	text_end
-
+	text_farend _BTWinF6Text
 BTGreetingF7:
-	text_far _BTGreetingF7Text
-	text_end
-
+	text_farend _BTGreetingF7Text
 BTLossF7:
-	text_far _BTLossF7Text
-	text_end
-
+	text_farend _BTLossF7Text
 BTWinF7:
-	text_far _BTWinF7Text
-	text_end
-
+	text_farend _BTWinF7Text
 BTGreetingF8:
-	text_far _BTGreetingF8Text
-	text_end
-
+	text_farend _BTGreetingF8Text
 BTLossF8:
-	text_far _BTLossF8Text
-	text_end
-
+	text_farend _BTLossF8Text
 BTWinF8:
-	text_far _BTWinF8Text
-	text_end
-
+	text_farend _BTWinF8Text
 BTGreetingF9:
-	text_far _BTGreetingF9Text
-	text_end
-
+	text_farend _BTGreetingF9Text
 BTLossF9:
-	text_far _BTLossF9Text
-	text_end
-
+	text_farend _BTLossF9Text
 BTWinF9:
-	text_far _BTWinF9Text
-	text_end
-
+	text_farend _BTWinF9Text
 BTGreetingF10:
-	text_far _BTGreetingF10Text
-	text_end
-
+	text_farend _BTGreetingF10Text
 BTLossF10:
-	text_far _BTLossF10Text
-	text_end
-
+	text_farend _BTLossF10Text
 BTWinF10:
-	text_far _BTWinF10Text
-	text_end
-
+	text_farend _BTWinF10Text
 BTGreetingF11:
-	text_far _BTGreetingF11Text
-	text_end
-
+	text_farend _BTGreetingF11Text
 BTLossF11:
-	text_far _BTLossF11Text
-	text_end
-
+	text_farend _BTLossF11Text
 BTWinF11:
-	text_far _BTWinF11Text
-	text_end
-
+	text_farend _BTWinF11Text
 BTGreetingF12:
-	text_far _BTGreetingF12Text
-	text_end
-
+	text_farend _BTGreetingF12Text
 BTLossF12:
-	text_far _BTLossF12Text
-	text_end
-
+	text_farend _BTLossF12Text
 BTWinF12:
-	text_far _BTWinF12Text
-	text_end
-
+	text_farend _BTWinF12Text
 BTGreetingF13:
-	text_far _BTGreetingF13Text
-	text_end
-
+	text_farend _BTGreetingF13Text
 BTLossF13:
-	text_far _BTLossF13Text
-	text_end
-
+	text_farend _BTLossF13Text
 BTWinF13:
-	text_far _BTWinF13Text
-	text_end
-
+	text_farend _BTWinF13Text
 BTGreetingF14:
-	text_far _BTGreetingF14Text
-	text_end
-
+	text_farend _BTGreetingF14Text
 BTLossF14:
-	text_far _BTLossF14Text
-	text_end
-
+	text_farend _BTLossF14Text
 BTWinF14:
-	text_far _BTWinF14Text
-	text_end
-
+	text_farend _BTWinF14Text
 BTGreetingF15:
-	text_far _BTGreetingF15Text
-	text_end
-
+	text_farend _BTGreetingF15Text
 BTLossF15:
-	text_far _BTLossF15Text
-	text_end
-
+	text_farend _BTLossF15Text
 BTWinF15:
-	text_far _BTWinF15Text
-	text_end
-
+	text_farend _BTWinF15Text
 BTGreetingTycoon:
-	text_far BattleTowerText_GreetingTycoon
-	text_end
-
+	text_farend BattleTowerText_GreetingTycoon
 BTLossTycoon:
-	text_far BattleTowerText_LossTycoon
-	text_end
-
+	text_farend BattleTowerText_LossTycoon
 BTWinTycoon:
-	text_far BattleTowerText_WinTycoon
-	text_end
-
+	text_farend BattleTowerText_WinTycoon
 BTGreetingHead:
-	text_far BattleFactoryText_GreetingHead
-	text_end
-
+	text_farend BattleFactoryText_GreetingHead
 BTLossHead:
-	text_far BattleFactoryText_LossHead
-	text_end
-
+	text_farend BattleFactoryText_LossHead
 BTWinHead:
-	text_far BattleFactoryText_WinHead
-	text_end
+	text_farend BattleFactoryText_WinHead

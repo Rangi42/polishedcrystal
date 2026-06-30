@@ -65,7 +65,16 @@ MACRO text_far
 ; Write text from a different bank.
 	stop_compressing_text
 	db "<FAR>"
-	dab \1 ; text_pointer
+	bigdw \1
+	db BANK(\1)
+ENDM
+
+MACRO text_farend
+; Write text from a different bank and end it.
+	stop_compressing_text
+	db "<FAR>"
+	bigdw (\1) | $8000
+	db BANK(\1)
 ENDM
 
 MACRO text_plural

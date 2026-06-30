@@ -701,9 +701,6 @@ PrintText_CopyItemName:
 	ret
 
 TextJump_EnemyUsed:
-	text_far Text_EnemyUsed
-	text_end
-
+	text_farend Text_EnemyUsed
 TextJump_EnemyUsedOn:
-	text_far Text_EnemyUsedOn
-	text_end
+	text_farend Text_EnemyUsedOn

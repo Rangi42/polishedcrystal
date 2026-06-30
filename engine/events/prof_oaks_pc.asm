@@ -118,93 +118,48 @@ endr
 INCLUDE "data/events/pokedex_ratings.asm"
 
 OakPCText1:
-	text_far _OakPCText1
-	text_end
-
+	text_farend _OakPCText1
 OakPCText2:
-	text_far _OakPCText2
-	text_end
-
+	text_farend _OakPCText2
 OakPCText3:
-	text_far _OakPCText3
-	text_end
-
+	text_farend _OakPCText3
 OakRating01:
-	text_far _OakRating01
-	text_end
-
+	text_farend _OakRating01
 OakRating02:
-	text_far _OakRating02
-	text_end
-
+	text_farend _OakRating02
 OakRating03:
-	text_far _OakRating03
-	text_end
-
+	text_farend _OakRating03
 OakRating04:
-	text_far _OakRating04
-	text_end
-
+	text_farend _OakRating04
 OakRating05:
-	text_far _OakRating05
-	text_end
-
+	text_farend _OakRating05
 OakRating06:
-	text_far _OakRating06
-	text_end
-
+	text_farend _OakRating06
 OakRating07:
-	text_far _OakRating07
-	text_end
-
+	text_farend _OakRating07
 OakRating08:
-	text_far _OakRating08
-	text_end
-
+	text_farend _OakRating08
 OakRating09:
-	text_far _OakRating09
-	text_end
-
+	text_farend _OakRating09
 OakRating10:
-	text_far _OakRating10
-	text_end
-
+	text_farend _OakRating10
 OakRating11:
-	text_far _OakRating11
-	text_end
-
+	text_farend _OakRating11
 OakRating12:
-	text_far _OakRating12
-	text_end
-
+	text_farend _OakRating12
 OakRating13:
-	text_far _OakRating13
-	text_end
-
+	text_farend _OakRating13
 OakRating14:
-	text_far _OakRating14
-	text_end
-
+	text_farend _OakRating14
 OakRating15:
-	text_far _OakRating15
-	text_end
-
+	text_farend _OakRating15
 OakRating16:
-	text_far _OakRating16
-	text_end
-
+	text_farend _OakRating16
 OakRating17:
-	text_far _OakRating17
-	text_end
-
+	text_farend _OakRating17
 OakRating18:
-	text_far _OakRating18
-	text_end
-
+	text_farend _OakRating18
 OakRating19:
-	text_far _OakRating19
-	text_end
-
+	text_farend _OakRating19
 OakPCText4:
-	text_far _OakPCText4
-	text_end
+	text_farend _OakPCText4

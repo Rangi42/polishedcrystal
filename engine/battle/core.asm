@@ -7167,13 +7167,9 @@ Text_PkmnGainedExpPoint:
 	ret
 
 TextJump_ABoostedStringBuffer2ExpPoints:
-	text_far Text_ABoostedStringBuffer2ExpPoints
-	text_end
-
+	text_farend Text_ABoostedStringBuffer2ExpPoints
 TextJump_StringBuffer2ExpPoints:
-	text_far Text_StringBuffer2ExpPoints
-	text_end
-
+	text_farend Text_StringBuffer2ExpPoints
 AnimateExpBar:
 	push bc
 
@@ -7624,9 +7620,7 @@ Function_TextJump_BattleMonNick01:
 	ret
 
 TextJump_BattleMonNick01:
-	text_far Text_BattleMonNick01
-	text_end
-
+	text_farend Text_BattleMonNick01
 WithdrawPkmnText:
 	ld hl, .WithdrawPkmnText
 	jmp BattleTextbox
@@ -7683,21 +7677,13 @@ WithdrawPkmnText:
 	ret
 
 TextJump_ThatsEnoughComeBack:
-	text_far Text_ThatsEnoughComeBack
-	text_end
-
+	text_farend Text_ThatsEnoughComeBack
 TextJump_OKComeBack:
-	text_far Text_OKComeBack
-	text_end
-
+	text_farend Text_OKComeBack
 TextJump_GoodComeBack:
-	text_far Text_GoodComeBack
-	text_end
-
+	text_farend Text_GoodComeBack
 TextJump_ComeBack:
-	text_far Text_ComeBack
-	text_end
-
+	text_farend Text_ComeBack
 HandleSafariAngerEatingStatus:
 	ld hl, wSafariMonEating
 	ld a, [hl]

@@ -1006,9 +1006,7 @@ RandomPhoneRareWildMon:
 
 .SawRareMonText:
 	; I just saw some rare @  in @ . I'll call you if I see another rare #MON, OK?
-	text_far _JustSawSomeRareMonText
-	text_end
-
+	text_farend _JustSawSomeRareMonText
 RandomPhoneWildMon:
 	farcall GetCallerLocation
 	ld d, b

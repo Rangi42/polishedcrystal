@@ -309,9 +309,7 @@ LinkTimeout:
 
 .LinkTimeoutText:
 	; Too much time has elapsed. Please try again.
-	text_far _LinkTimeoutText
-	text_end
-
+	text_farend _LinkTimeoutText
 ExchangeBytes:
 ; This is similar to Serial_ExchangeBytes,
 ; but without a SERIAL_PREAMBLE_BYTE check.
@@ -1188,18 +1186,14 @@ LinkTrade_TradeSummaryMenu:
 
 .Text_CantTradeLastMon:
 	; If you trade that #MON, you won't be able to battle.
-	text_far _LinkTradeCantBattleText
-	text_end
-
+	text_farend _LinkTradeCantBattleText
 .String_Summary_Trade:
 	text "Summary   Trade"
 	done
 
 .Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
-	text_far _LinkAbnormalMonText
-	text_end
-
+	text_farend _LinkAbnormalMonText
 ValidateOTTrademon:
 ; Returns carry if level isn't within 1-100.
 	ld a, [wCurOTTradePartyMon]
@@ -1685,9 +1679,7 @@ LinkTrade:
 
 .TradeThisForThat:
 	; Trade @ for @ ?
-	text_far _LinkAskTradeForText
-	text_end
-
+	text_farend _LinkAskTradeForText
 .TradeCompleted:
 	text "Trade completed!"
 	done

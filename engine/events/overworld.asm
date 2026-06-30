@@ -59,9 +59,7 @@ CheckBadge:
 .BadgeRequiredText:
 	; Sorry! A new BADGE
 	; is required.
-	text_far _BadgeRequiredText
-	text_end
-
+	text_farend _BadgeRequiredText
 CheckPartyMove:
 ; Check if a monster in your party has move d, or
 ; can have move d and you have TM/HM e.
@@ -176,9 +174,7 @@ FieldMoveFailed:
 
 .CantUseHere:
 	; Can't use that here.
-	text_far _CantUseItemText
-	text_end
-
+	text_farend _CantUseItemText
 CutFunction:
 	call FieldMoveJumptableReset
 .loop
@@ -226,9 +222,7 @@ CutFunction:
 
 Text_NothingToCut:
 	; There's nothing to CUT here.
-	text_far _CutNothingText
-	text_end
-
+	text_farend _CutNothingText
 CheckMapForSomethingToCut:
 	call GetFacingObject
 	jr c, .no_tree
@@ -557,13 +551,9 @@ AutoSurfScript:
 	end
 
 CantSurfText:
-	text_far _CantSurfText
-	text_end
-
+	text_farend _CantSurfText
 AlreadySurfingText:
-	text_far _AlreadySurfingText
-	text_end
-
+	text_farend _AlreadySurfingText
 GetSurfType:
 ; Surfing on Pikachu uses an alternate sprite.
 ; This is done by using a separate movement type.
@@ -1021,9 +1011,7 @@ EscapeRopeOrDig:
 
 .Text_CantUseHere:
 	; Can't use that here.
-	text_far _CantUseDigText
-	text_end
-
+	text_farend _CantUseDigText
 .UsedEscapeRopeScript:
 	refreshmap
 	special UpdateTimePals
@@ -1110,9 +1098,7 @@ TeleportFunction:
 
 .Text_CantUseHere:
 	; Can't use that here.
-	text_far _CantUseTeleportText
-	text_end
-
+	text_farend _CantUseTeleportText
 .TeleportScript:
 	refreshmap
 	special UpdateTimePals

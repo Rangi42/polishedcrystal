@@ -169,9 +169,7 @@ DoPoisonStep::
 	ret
 
 .PoisonRecoveryText:
-	text_far _PoisonFaintText
-	text_end
-
+	text_farend _PoisonFaintText
 LoadPoisonBGPals:
 	ld c, 6
 	farcall UpdatePalFromC

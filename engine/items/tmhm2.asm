@@ -604,27 +604,17 @@ KnowsMove:
 
 .Text_knows:
 	; knows @ .
-	text_far _KnowsMoveText
-	text_end
-
+	text_farend _KnowsMoveText
 Text_BootedTM:
 	; Booted up a TM.
-	text_far _BootedTMText
-	text_end
-
+	text_farend _BootedTMText
 Text_BootedHM:
 	; Booted up an HM.
-	text_far _BootedHMText
-	text_end
-
+	text_farend _BootedHMText
 Text_ItContained:
 	; It contained @ . Teach @ to a #MON?
-	text_far _ContainedMoveText
-	text_end
-
+	text_farend _ContainedMoveText
 Text_TMHMNotCompatible:
 	; is not compatible with @ . It can't learn @ .
-	text_far _TMHMNotCompatibleText
-	text_end
-
+	text_farend _TMHMNotCompatibleText
 INCLUDE "data/moves/tmhm_order.asm"

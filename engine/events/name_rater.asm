@@ -194,54 +194,35 @@ NameRaterIntroText:
 	; Hello, hello! I'm the NAME RATER.
 	; I rate the names of #MON.
 	; Would you like me to rate names?
-	text_far _NameRaterHelloText
-	text_end
-
+	text_farend _NameRaterHelloText
 NameRaterWhichMonText:
 	; Which #MON's nickname should I rate for you?
-	text_far _NameRaterWhichMonText
-	text_end
-
+	text_farend _NameRaterWhichMonText
 NameRaterIsGoodText:
 	; Hm… @ … That's a fairly decent name.
 	; But, how about a slightly better nickname?
 	; Want me to give it a better name?
-	text_far _NameRaterBetterNameText
-	text_end
-
+	text_farend _NameRaterBetterNameText
 NameRaterWhichNameText:
 	; All right. What name should we give it, then?
-	text_far _NameRaterWhatNameText
-	text_end
-
+	text_farend _NameRaterWhatNameText
 NameRaterEvenBetterText:
 	; That's a better name than before! Well done!
-	text_far _NameRaterFinishedText
-	text_end
-
+	text_farend _NameRaterFinishedText
 NameRaterCancelText:
 	; OK, then. Come again sometime.
-	text_far _NameRaterComeAgainText
-	text_end
-
+	text_farend _NameRaterComeAgainText
 NameRaterTradedText:
 	; Hm… @ ? What a great name! It's perfect.
 	; Treat @ with loving care.
-	text_far _NameRaterPerfectNameText
-	text_end
-
+	text_farend _NameRaterPerfectNameText
 NameRaterEggText:
 	; Whoa… That's just an EGG.
-	text_far _NameRaterEggText
-	text_end
-
+	text_farend _NameRaterEggText
 NameRaterSameAsBeforeText:
 	; It might look the different as before,
 	; but this new name is much better! Well done!
-	text_far _NameRaterSameNameText
-	text_end
-
+	text_farend _NameRaterSameNameText
 NameRaterDoneText:
 	; All right. This #MON is now named @ .
-	text_far _NameRaterNamedText
-	text_end
+	text_farend _NameRaterNamedText

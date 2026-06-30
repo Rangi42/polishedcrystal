@@ -54,9 +54,6 @@ SweetHoneyScript:
 	farsjump BugCatchingContestBattleScript
 
 UseSweetHoneyText:
-	text_far _UseSweetHoneyText
-	text_end
-
+	text_farend _UseSweetHoneyText
 SweetHoneyNothingText:
-	text_far _SweetHoneyNothingText
-	text_end
+	text_farend _SweetHoneyNothingText

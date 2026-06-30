@@ -122,9 +122,7 @@ BugContest_FirstPlaceText:
 
 BugContest_FirstPlaceScoreText:
 	; The winning score was @  points!
-	text_far ContestJudging_FirstPlaceScoreText
-	text_end
-
+	text_farend ContestJudging_FirstPlaceScoreText
 BugContest_SecondPlaceText:
 	; Placing second was @ , who caught a @ !@ @
 	text_far ContestJudging_SecondPlaceText
@@ -137,9 +135,7 @@ BugContest_SecondPlaceText:
 
 BugContest_SecondPlaceScoreText:
 	; The score was @  points!
-	text_far ContestJudging_SecondPlaceScoreText
-	text_end
-
+	text_farend ContestJudging_SecondPlaceScoreText
 BugContest_ThirdPlaceText:
 	; Placing third was @ , who caught a @ !@ @
 	text_far ContestJudging_ThirdPlaceText
@@ -152,9 +148,7 @@ BugContest_ThirdPlaceText:
 
 BugContest_ThirdPlaceScoreText:
 	; The score was @  points!
-	text_far ContestJudging_ThirdPlaceScoreText
-	text_end
-
+	text_farend ContestJudging_ThirdPlaceScoreText
 LoadContestantName:
 ; If a = 0, get your name.
 	dec a

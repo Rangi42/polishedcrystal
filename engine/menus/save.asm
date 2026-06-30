@@ -634,24 +634,16 @@ Checksum:
 
 WouldYouLikeToSaveTheGameText:
 	; Would you like to save the game?
-	text_far _WouldYouLikeToSaveTheGameText
-	text_end
-
+	text_farend _WouldYouLikeToSaveTheGameText
 SavedTheGameText:
 	; saved the game.
-	text_far _SavedTheGameText
-	text_end
-
+	text_farend _SavedTheGameText
 AnotherSaveFileText:
 	; There is another save file. Is it OK to overwrite?
-	text_far _AnotherSaveFileText
-	text_end
-
+	text_farend _AnotherSaveFileText
 SaveFileCorruptedText:
 	; The save file is corrupted!
-	text_far _SaveFileCorruptedText
-	text_end
-
+	text_farend _SaveFileCorruptedText
 VerifyGameVersion:
 ; Verify that the current game version matches the one in the save file.
 	; [wStringBuffer1:2] = SAVE_VERSION; hl = wStringBuffer1

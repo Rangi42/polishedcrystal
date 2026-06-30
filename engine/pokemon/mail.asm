@@ -283,9 +283,7 @@ _PlayerMailBoxMenu:
 	jmp MenuTextboxBackup
 
 .EmptyMailboxText:
-	text_far _EmptyMailboxText
-	text_end
-
+	text_farend _EmptyMailboxText
 InitMail:
 ; initialize wMailboxCount and beyond with incrementing values, one per mail
 ; set z if no mail
@@ -423,17 +421,11 @@ MailboxPC:
 	jmp MenuTextboxBackup
 
 .PutAwayText:
-	text_far ClearedMailPutAwayText
-	text_end
-
+	text_farend ClearedMailPutAwayText
 .PackFullText:
-	text_far MailPackFullText
-	text_end
-
+	text_farend MailPackFullText
 .MessageLostText:
-	text_far MailMessageLostText
-	text_end
-
+	text_farend MailMessageLostText
 .GetMailType:
 	push af
 	ld a, BANK(sMailboxCount)
@@ -493,17 +485,11 @@ MailboxPC:
 	jmp CloseSubmenu
 
 .HoldingMailText:
-	text_far MailAlreadyHoldingItemText
-	text_end
-
+	text_farend MailAlreadyHoldingItemText
 .EggText:
-	text_far MailEggText
-	text_end
-
+	text_farend MailEggText
 .MailMovedText:
-	text_far MailMovedFromBoxText
-	text_end
-
+	text_farend MailMovedFromBoxText
 .TopMenuDataHeader:
 	db MENU_BACKUP_TILES
 	menu_coords 8, 1, 18, 10

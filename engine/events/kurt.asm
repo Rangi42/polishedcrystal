@@ -4,18 +4,14 @@ Kurt_PrintTextWhichApricorn:
 
 .Text:
 	; Which APRICORN should I use?
-	text_far _WhichApricornText
-	text_end
-
+	text_farend _WhichApricornText
 Kurt_PrintTextHowMany:
 	ld hl, .Text
 	jmp PrintText
 
 .Text:
 	; How many should I make?
-	text_far _HowManyShouldIMakeText
-	text_end
-
+	text_farend _HowManyShouldIMakeText
 Special_SelectApricornForKurt:
 	call LoadStandardMenuHeader
 	ld c, $1

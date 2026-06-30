@@ -229,22 +229,16 @@ PrintTwoDigitNumberRightAlign:
 
 Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
-	text_far _OakTimeWokeUpText
-	text_end
-
+	text_farend _OakTimeWokeUpText
 Text_WhatTimeIsIt:
 	; What time is it?
-	text_far _OakTimeWhatTimeIsItText
-	text_end
-
+	text_farend _OakTimeWhatTimeIsItText
 String_oclock:
 	db "o'clock@"
 
 Text_HowManyMinutes:
 	; How many minutes?
-	text_far _OakTimeHowManyMinutesText
-	text_end
-
+	text_farend _OakTimeHowManyMinutesText
 String_min:
 	db "min.@"
 
@@ -259,9 +253,7 @@ Text_WhoaHoursMins:
 
 .QuestionMark:
 	; ?
-	text_far _OakTimeQuestionMarkText
-	text_end
-
+	text_farend _OakTimeQuestionMarkText
 OakText_ResponseToSetTime:
 	text_asm
 	decoord 1, 14
@@ -290,23 +282,15 @@ OakText_ResponseToSetTime:
 
 .overslept
 	; ! I overslept!
-	text_far _OakTimeOversleptText
-	text_end
-
+	text_farend _OakTimeOversleptText
 .yikes
 	; ! Yikes! I over- slept!
-	text_far _OakTimeYikesText
-	text_end
-
+	text_farend _OakTimeYikesText
 .napped
-	text_far ProfElmNappedText
-	text_end
-
+	text_farend ProfElmNappedText
 .sodark
 	; ! No wonder it's so dark!
-	text_far _OakTimeSoDarkText
-	text_end
-
+	text_farend _OakTimeSoDarkText
 Special_SetDayOfWeek:
 	ldh a, [hInMenu]
 	push af
@@ -440,9 +424,7 @@ Special_SetDayOfWeek:
 
 .WhatDayIsItText:
 	; What day is it?
-	text_far _OakTimeWhatDayIsItText
-	text_end
-
+	text_farend _OakTimeWhatDayIsItText
 .ConfirmWeekdayText:
 	text_asm
 	hlcoord 1, 14
@@ -452,9 +434,7 @@ Special_SetDayOfWeek:
 
 .IsIt:
 	; , is it?
-	text_far _OakTimeIsItText
-	text_end
-
+	text_farend _OakTimeIsItText
 Special_InitialSetDSTFlag:
 	ld a, [wDST]
 	set 7, a
@@ -477,9 +457,7 @@ Special_InitialSetDSTFlag:
 
 .DSTIsThatOK:
 	; DST, is that OK?
-	text_far Text_DSTIsThatOK
-	text_end
-
+	text_farend Text_DSTIsThatOK
 Special_InitialClearDSTFlag:
 	ld a, [wDST]
 	res 7, a
@@ -502,9 +480,7 @@ Special_InitialClearDSTFlag:
 
 .IsThatOK:
 	; , is that OK?
-	text_far _TimeAskOkayText
-	text_end
-
+	text_farend _TimeAskOkayText
 PrintHour:
 	ld l, e
 	ld h, d

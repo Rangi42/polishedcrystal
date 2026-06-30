@@ -211,30 +211,20 @@ ForgetMove:
 
 Text_LearnedMove:
 ; <MON> learned <MOVE>!
-	text_far _LearnedMoveText
-	text_end
-
+	text_farend _LearnedMoveText
 Text_ForgetWhich:
 ; Which move should be forgotten?
-	text_far _MoveAskForgetText
-	text_end
-
+	text_farend _MoveAskForgetText
 Text_StopLearning:
 ; Stop learning <MOVE>?
-	text_far _StopLearningMoveText
-	text_end
-
+	text_farend _StopLearningMoveText
 Text_DidNotLearn:
 ; <MON> did not learn <MOVE>.
-	text_far _DidNotLearnMoveText
-	text_end
-
+	text_farend _DidNotLearnMoveText
 Text_TryingToLearn:
 ; <MON> is trying to learn <MOVE>. But <MON> can't learn more than
 ; four moves. Delete an older move to make room for <MOVE>?
-	text_far _AskForgetMoveText
-	text_end
-
+	text_farend _AskForgetMoveText
 Text_1_2_and_Poof:
 	text_far Text_MoveForgetCount ; 1, 2 and…
 	text_asm
@@ -247,5 +237,4 @@ Text_1_2_and_Poof:
 
 .PoofForgot:
 ; Poof! <MON> forgot <MOVE>. And…
-	text_far _MoveForgotText
-	text_end
+	text_farend _MoveForgotText
