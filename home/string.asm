@@ -32,9 +32,10 @@ FarCopyRadioText::
 	ldh a, [hROMBank]
 	push af
 	ld a, [hli]
-	ld e, a
-	ld a, [hli]
 	ld d, a
+	res 7, d
+	ld a, [hli]
+	ld e, a
 	ld a, [hli]
 	rst Bankswitch
 	ld l, e

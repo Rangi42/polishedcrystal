@@ -619,13 +619,23 @@ TextCommand_RAM::
 
 TextCommand_FAR::
 ; write text from a different bank
+	bit 7, [hl]
+	jr z, .not_farjp
+
+	; The only way to reach TextCommand_FAR is via the TextCommands jumptable
+	; used by DoTextUntilTerminator. So this pops the address of DoTextUntilTerminator,
+	; and returning from TextCommand_FAR will go to whatever called DoTextUntilTerminator.
+	pop de
+
+.not_farjp
 	ldh a, [hROMBank]
 	push af
 
 	ld a, [hli]
-	ld e, a
-	ld a, [hli]
 	ld d, a
+	res 7, d
+	ld a, [hli]
+	ld e, a
 	ld a, [hli]
 	rst Bankswitch
 
