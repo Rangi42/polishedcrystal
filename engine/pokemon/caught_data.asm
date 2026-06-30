@@ -140,9 +140,7 @@ GiveANickname_YesNo:
 
 TextJump_GiveANickname:
 	; Give a nickname to the @  you received?
-	text_far _CaughtAskNicknameText
-	text_end
-
+	text_farend _CaughtAskNicknameText
 SetCaughtData:
 	ld a, [wPartyCount]
 	dec a

@@ -58,33 +58,20 @@ WonderTrade::
 	jmp ReturnToMapWithSpeechTextbox
 
 .Text_WonderTradeQuestion:
-	text_far WonderTradeQuestionText
-	text_end
-
+	text_farend WonderTradeQuestionText
 .Text_WonderTradePrompt:
-	text_far WonderTradePromptText
-	text_end
-
+	text_farend WonderTradePromptText
 .Text_WonderTradeCantTradeSpikyEaredPichu
-	text_far WonderTradeCantTradeSpikyEaredPichuText
-	text_end
-
+	text_farend WonderTradeCantTradeSpikyEaredPichuText
 ;.Text_WonderTradeCantTradeEgg:
-;	text_far WonderTradeCantTradeEggText
-;	text_end
+;	text_farend WonderTradeCantTradeEggText
 
 .Text_WonderTradeConfirm:
-	text_far WonderTradeConfirmText
-	text_end
-
+	text_farend WonderTradeConfirmText
 .Text_WonderTradeSetup:
-	text_far WonderTradeSetupText
-	text_end
-
+	text_farend WonderTradeSetupText
 .Text_WonderTradeReady:
-	text_far WonderTradeReadyText
-	text_end
-
+	text_farend WonderTradeReadyText
 DoWonderTrade:
 	ld a, 1
 	ldh [hScriptVar], a

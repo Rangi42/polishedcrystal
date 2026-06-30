@@ -429,19 +429,13 @@ HatchEggs:
 
 .ClearTextbox:
 	;
-	text_far ClearText
-	text_end
-
+	text_farend ClearText
 .CameOutOfItsEgg:
 	; came out of its EGG!@ @
-	text_far _BreedEggHatchText
-	text_end
-
+	text_farend _BreedEggHatchText
 .Text_NicknameHatchling:
 	; Give a nickname to @ ?
-	text_far _BreedAskNicknameText
-	text_end
-
+	text_farend _BreedAskNicknameText
 GetMotherAddr:
 	ld a, [wBreedMotherOrNonDitto]
 	and a
@@ -905,14 +899,10 @@ DayCareMonCursor:
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
-	text_far _LeftWithDayCareLadyText
-	text_end
-
+	text_farend _LeftWithDayCareLadyText
 DayCareMon1Text:
 	; It's @ that was left with the DAY-CARE MAN.
-	text_far _LeftWithDayCareManText
-	text_end
-
+	text_farend _LeftWithDayCareManText
 DayCareMonCompatibilityText:
 	push bc
 	ld de, wStringBuffer1
@@ -939,20 +929,13 @@ DayCareMonCompatibilityText:
 
 .Incompatible:
 	; It has no interest in @ .
-	text_far _BreedNoInterestText
-	text_end
-
+	text_farend _BreedNoInterestText
 .HighCompatibility:
 	; It appears to care for @ .
-	text_far _BreedAppearsToCareForText
-	text_end
-
+	text_farend _BreedAppearsToCareForText
 .ModerateCompatibility:
 	; It's friendly with @ .
-	text_far _BreedFriendlyText
-	text_end
-
+	text_farend _BreedFriendlyText
 .SlightCompatibility:
 	; It shows interest in @ .
-	text_far _BreedShowsInterestText
-	text_end
+	text_farend _BreedShowsInterestText

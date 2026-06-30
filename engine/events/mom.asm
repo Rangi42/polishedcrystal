@@ -368,35 +368,23 @@ DSTChecks:
 
 .Text_AdjustClock:
 	; Do you want to adjust your clock for Daylight Saving Time?
-	text_far _TimesetAskAdjustDSTText
-	text_end
-
+	text_farend _TimesetAskAdjustDSTText
 .Text_LostInstructionBooklet:
 	; I lost the instruction booklet for the POKéGEAR.
 	; Come back again in a while.
-	text_far _MomLostGearBookletText
-	text_end
-
+	text_farend _MomLostGearBookletText
 .Text_SwitchToDST:
 	; Do you want to switch to Daylight Saving Time?
-	text_far _TimesetAskDSTText
-	text_end
-
+	text_farend _TimesetAskDSTText
 .Text_SetClockForward:
 	; I set the clock forward by one hour.
-	text_far _TimesetDSTText
-	text_end
-
+	text_farend _TimesetDSTText
 .Text_IsDSTOver:
 	; Is Daylight Saving Time over?
-	text_far _TimesetAskNotDSTText
-	text_end
-
+	text_farend _TimesetAskNotDSTText
 .Text_SetClockBack:
 	; I put the clock back one hour.
-	text_far _TimesetNotDSTText
-	text_end
-
+	text_farend _TimesetNotDSTText
 Mom_SetUpWithdrawMenu:
 	ld de, Mom_WithdrawString
 	jr Mom_ContinueMenuSetup
@@ -569,84 +557,52 @@ Mom_WithdrawDepositMenuJoypad:
 
 MomLeavingText1:
 	; Wow, that's a cute #MON. Where did you get it? … So, you're leaving on an adventure… OK! I'll help too. But what can I do for you? I know! I'll save money for you. On a long journey, money's important. Do you want me to save your money?
-	text_far _MomLeavingText1
-	text_end
-
+	text_farend _MomLeavingText1
 MomLeavingText2:
 	; OK, I'll take care of your money.
-	text_far _MomLeavingText2
-	text_end
-
+	text_farend _MomLeavingText2
 MomLeavingText3:
 	; Be careful. #MON are your friends. You need to work as a team. Now, go on!
-	text_far _MomLeavingText3
-	text_end
-
+	text_farend _MomLeavingText3
 MomIsThisAboutYourMoneyText:
 	; Hi! Welcome home! You're trying very hard, I see. I've kept your room tidy. Or is this about your money?
-	text_far _MomIsThisAboutYourMoneyText
-	text_end
-
+	text_farend _MomIsThisAboutYourMoneyText
 MomBankWhatDoYouWantToDoText:
 	; What do you want to do?
-	text_far _MomBankWhatDoYouWantToDoText
-	text_end
-
+	text_farend _MomBankWhatDoYouWantToDoText
 MomStoreMoneyText:
 	; How much do you want to save?
-	text_far _MomStoreMoneyText
-	text_end
-
+	text_farend _MomStoreMoneyText
 MomTakeMoneyText:
 	; How much do you want to take?
-	text_far _MomTakeMoneyText
-	text_end
-
+	text_farend _MomTakeMoneyText
 MomSaveMoneyText:
 	; Do you want to save some money?
-	text_far _MomSaveMoneyText
-	text_end
-
+	text_farend _MomSaveMoneyText
 MomHaventSavedThatMuchText:
 	; You haven't saved that much.
-	text_far _MomHaventSavedThatMuchText
-	text_end
-
+	text_farend _MomHaventSavedThatMuchText
 MomNotEnoughRoomInWalletText:
 	; You can't take that much.
-	text_far _MomNotEnoughRoomInWalletText
-	text_end
-
+	text_farend _MomNotEnoughRoomInWalletText
 MomInsufficientFundsInWalletText:
 	; You don't have that much.
-	text_far _MomInsufficientFundsInWalletText
-	text_end
-
+	text_farend _MomInsufficientFundsInWalletText
 MomNotEnoughRoomInBankText:
 	; You can't save that much.
-	text_far _MomNotEnoughRoomInBankText
-	text_end
-
+	text_farend _MomNotEnoughRoomInBankText
 MomStartSavingMoneyText:
 	; OK, I'll save your money. Trust me! , stick with it!
-	text_far _MomStartSavingMoneyText
-	text_end
-
+	text_farend _MomStartSavingMoneyText
 MomStoredMoneyText:
 	; Your money's safe here! Get going!
-	text_far _MomStoredMoneyText
-	text_end
-
+	text_farend _MomStoredMoneyText
 MomTakenMoneyText:
 	; , don't give up!
-	text_far _MomTakenMoneyText
-	text_end
-
+	text_farend _MomTakenMoneyText
 MomJustDoWhatYouCanText:
 	; Just do what you can.
-	text_far _MomJustDoWhatYouCanText
-	text_end
-
+	text_farend _MomJustDoWhatYouCanText
 Mom_SavedString:
 	db "Saved@"
 

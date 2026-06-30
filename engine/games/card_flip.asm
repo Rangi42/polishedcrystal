@@ -95,9 +95,7 @@ _CardFlip:
 
 .PlayWithThreeCoinsText:
 	; Play with three coins?
-	text_far _CardFlipPlayWithThreeCoinsText
-	text_end
-
+	text_farend _CardFlipPlayWithThreeCoinsText
 .DeductCoins:
 	ld hl, wCoins
 	ld a, [hli]
@@ -133,9 +131,7 @@ _CardFlip:
 
 .NotEnoughCoinsText:
 	; Not enough coins…
-	text_far _CardFlipNotEnoughCoinsText
-	text_end
-
+	text_farend _CardFlipNotEnoughCoinsText
 .ChooseACard:
 	xor a
 	ldh [hBGMapMode], a
@@ -211,9 +207,7 @@ _CardFlip:
 
 .ChooseACardText:
 	; Choose a card.
-	text_far _CardFlipChooseACardText
-	text_end
-
+	text_farend _CardFlipChooseACardText
 .PlaceYourBet:
 	ld hl, .PlaceYourBetText
 	call CardFlip_UpdateCoinBalanceDisplay
@@ -229,9 +223,7 @@ _CardFlip:
 
 .PlaceYourBetText:
 	; Place your bet.
-	text_far _CardFlipPlaceYourBetText
-	text_end
-
+	text_farend _CardFlipPlaceYourBetText
 .CheckTheCard:
 	xor a
 	ldh [hVBlankCounter], a
@@ -294,14 +286,10 @@ _CardFlip:
 
 .PlayAgainText:
 	; Want to play again?
-	text_far _CardFlipPlayAgainText
-	text_end
-
+	text_farend _CardFlipPlayAgainText
 .CardsShuffledText:
 	; The cards have been shuffled.
-	text_far _CardFlipShuffledText
-	text_end
-
+	text_farend _CardFlipShuffledText
 .Quit:
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -1003,14 +991,10 @@ CardFlip_CheckWinCondition:
 
 .Text_Yeah:
 	; Yeah!
-	text_far _CardFlipYeahText
-	text_end
-
+	text_farend _CardFlipYeahText
 .Text_Darn:
 	; Darn…
-	text_far _CardFlipDarnText
-	text_end
-
+	text_farend _CardFlipDarnText
 .AddCoinPlaySFX:
 	ld hl, wCoins
 	ld a, [hli]

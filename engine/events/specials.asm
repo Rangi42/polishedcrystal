@@ -221,14 +221,10 @@ Special_CheckCoins:
 
 .NoCoinsText:
 	; You have no coins.
-	text_far _NoCoinsText
-	text_end
-
+	text_farend _NoCoinsText
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
-	text_far _NoCoinCaseText
-	text_end
-
+	text_farend _NoCoinCaseText
 Special_CheckLuckyNumberShowFlag:
 	ld hl, wLuckyNumberShowFlag
 	bit LUCKYNUMBERSHOW_GAME_OVER_F, [hl]

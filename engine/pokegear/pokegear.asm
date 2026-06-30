@@ -480,9 +480,7 @@ Pokegear_UpdateClock:
 	jmp PlaceWholeStringInBoxAtOnce
 
 .DayText:
-	text_far _GearTodayText
-	text_end
-
+	text_farend _GearTodayText
 PokegearMap_CheckRegion:
 	ld a, [wPokegearMapPlayerIconLandmark]
 	cp SHAMOUTI_LANDMARK
@@ -866,19 +864,13 @@ Pokegear_LoadTilemapRLE:
 
 PokegearText_WhomToCall:
 	; Whom do you want to call?
-	text_far _PokegearAskWhoCallText
-	text_end
-
+	text_farend _PokegearAskWhoCallText
 PokegearText_PressAnyButtonToExit:
 	; Press any button to exit.
-	text_far _PokegearPressButtonText
-	text_end
-
+	text_farend _PokegearPressButtonText
 PokegearText_DeleteStoredNumber:
 	; Delete this stored phone number?
-	text_far _PokegearAskDeleteText
-	text_end
-
+	text_farend _PokegearAskDeleteText
 PokegearSpritesGFX:
 INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lzp"
 

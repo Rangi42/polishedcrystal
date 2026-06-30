@@ -419,9 +419,7 @@ else
 endc
 
 .WarnVBAText:
-	text_far _WarnVBAText
-	text_end
-
+	text_farend _WarnVBAText
 Continue_CheckRTC_RestartClock:
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
@@ -696,9 +694,7 @@ endc
 	jmp PrintText
 
 ElmText1:
-	text_far _ElmText1
-	text_end
-
+	text_farend _ElmText1
 ElmText2:
 	text_far _ElmText2
 	text_asm
@@ -708,25 +704,15 @@ ElmText2:
 	ret
 
 ElmText3:
-	text_far Text_Waitbutton_2
-	text_end
-
+	text_farend Text_Waitbutton_2
 ElmText4:
-	text_far _ElmText4
-	text_end
-
+	text_farend _ElmText4
 ElmText5:
-	text_far _ElmText5
-	text_end
-
+	text_farend _ElmText5
 ElmText6:
-	text_far _ElmText6
-	text_end
-
+	text_farend _ElmText6
 ElmText7:
-	text_far _ElmText7
-	text_end
-
+	text_farend _ElmText7
 InitGender:
 	ld c, 15
 	call FadeToWhite
@@ -893,14 +879,10 @@ GenderMenu::
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
-	text_far Text_AreYouABoyOrAreYouAGirl
-	text_end
-
+	text_farend Text_AreYouABoyOrAreYouAGirl
 SoThisIsYouText:
 	; So this is you?
-	text_far Text_SoThisIsYou
-	text_end
-
+	text_farend Text_SoThisIsYou
 InitGenderGraphics:
 	ld hl, CalPic
 	ld de, vTiles2 tile $00

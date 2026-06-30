@@ -56,9 +56,7 @@ SetInitialOptions:
 	ret
 
 .InitialOptionsText:
-	text_far _InitialOptionsText
-	text_end
-
+	text_farend _InitialOptionsText
 .BGPalettes:
 INCLUDE "gfx/options/initial_options_bg.pal"
 

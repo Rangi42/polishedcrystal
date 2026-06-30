@@ -5849,19 +5849,13 @@ BattleCommand_charge:
 
 .SolarBeam:
 ; 'took in sunlight!'
-	text_far _BattleTookSunlightText
-	text_end
-
+	text_farend _BattleTookSunlightText
 .Fly:
 ; 'flew up high!'
-	text_far _BattleFlewText
-	text_end
-
+	text_farend _BattleFlewText
 .Dig:
 ; 'dug a hole!'
-	text_far _BattleDugText
-	text_end
-
+	text_farend _BattleDugText
 BattleCommand_traptarget:
 	call HasOpponentFainted
 	ret z

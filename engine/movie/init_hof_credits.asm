@@ -10,9 +10,7 @@ InitDisplayForHallOfFame:
 
 .SavingRecordDontTurnOff:
 	; SAVING RECORD… DON'T TURN OFF!
-	text_far _SavingRecordText
-	text_end
-
+	text_farend _SavingRecordText
 InitDisplayForLeafCredits:
 	call ClearDisplayForEndgame
 	xor a

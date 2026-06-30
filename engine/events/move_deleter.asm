@@ -54,44 +54,28 @@ MoveDeletion:
 
 .OnlyOneMoveText:
 	; That #MON knows only one move.
-	text_far _MoveKnowsOneText
-	text_end
-
+	text_farend _MoveKnowsOneText
 .ConfirmDeleteText:
 	; Oh, make it forget @ ?
-	text_far _AskDeleteMoveText
-	text_end
-
+	text_farend _AskDeleteMoveText
 .MoveDeletedText:
 	; Done! Your #MON forgot the move.
-	text_far _DeleterForgotMoveText
-	text_end
-
+	text_farend _DeleterForgotMoveText
 .EggText:
 	; An EGG doesn't know any moves!
-	text_far _DeleterEggText
-	text_end
-
+	text_farend _DeleterEggText
 .DeclinedDeletionText:
 	; No? Come visit me again.
-	text_far _DeleterNoComeAgainText
-	text_end
-
+	text_farend _DeleterNoComeAgainText
 .AskWhichMoveText:
 	; Which move should it forget, then?
-	text_far _DeleterAskWhichMoveText
-	text_end
-
+	text_farend _DeleterAskWhichMoveText
 .IntroText:
 	; Um… Oh, yes, I'm the MOVE DELETER. I can make #MON forget moves. Shall I make a #MON forget?
-	text_far _DeleterIntroText
-	text_end
-
+	text_farend _DeleterIntroText
 .AskWhichMonText:
 	; Which #MON?
-	text_far _DeleterAskWhichMonText
-	text_end
-
+	text_farend _DeleterAskWhichMonText
 .DeleteMove:
 	ld a, b
 	push bc

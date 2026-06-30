@@ -285,104 +285,64 @@ DayCareTextTable:
 
 .DayCareManIntro:
 	; I'm the DAY-CARE MAN. Want me to raise a #MON?
-	text_far _DayCareManIntroText
-	text_end
-
+	text_farend _DayCareManIntroText
 .DayCareManOddEgg:
 	; I'm the DAY-CARE MAN. Do you know about EGGS? I was raising #MON with my wife, you see. We were shocked to find an EGG! How incredible is that? So, want me to raise a #MON?
-	text_far _DayCareManIntroEggText
-	text_end
-
+	text_farend _DayCareManIntroEggText
 .DayCareLadyIntro:
 	; I'm the DAY-CARE LADY. Should I raise a #MON for you?
-	text_far _DayCareLadyIntroText
-	text_end
-
+	text_farend _DayCareLadyIntroText
 .DayCareLadyOddEgg:
 	; I'm the DAY-CARE LADY. Do you know about EGGS? My husband and I were raising some #MON, you see. We were shocked to find an EGG! How incredible could that be? Should I raise a #MON for you?
-	text_far _DayCareLadyIntroEggText
-	text_end
-
+	text_farend _DayCareLadyIntroEggText
 .WhichOne:
 	; What should I raise for you?
-	text_far _WhatShouldIRaiseText
-	text_end
-
+	text_farend _WhatShouldIRaiseText
 .JustOneMon:
 	; Oh? But you have just one #MON.
-	text_far _OnlyOneMonText
-	text_end
-
+	text_farend _OnlyOneMonText
 .CantAcceptEgg:
 	; Sorry, but I can't accept an EGG.
-	text_far _CantAcceptEggText
-	text_end
-
+	text_farend _CantAcceptEggText
 .RemoveMail:
 	; Remove MAIL before you come see me.
-	text_far _RemoveMailText
-	text_end
-
+	text_farend _RemoveMailText
 .LastHealthyMon:
 	; If you give me that, what will you battle with?
-	text_far _LastHealthyMonText
-	text_end
-
+	text_farend _LastHealthyMonText
 .OkayIllRaiseYourMon:
 	; OK. I'll raise your @ .
-	text_far _IllRaiseYourMonText
-	text_end
-
+	text_farend _IllRaiseYourMonText
 .ComeBackForItLater:
 	; Come back for it later.
-	text_far _ComeBackLaterText
-	text_end
-
+	text_farend _ComeBackLaterText
 .AreWeGeniusesOrWhat:
 	; Are we geniuses or what? Want to see your @ ?
-	text_far _AreWeGeniusesText
-	text_end
-
+	text_farend _AreWeGeniusesText
 .AskRetrieveMon:
 	; Your @ has grown a lot. By level, it's grown by @ . If you want your #MON back, it will cost ¥@ .
-	text_far _YourMonHasGrownText
-	text_end
-
+	text_farend _YourMonHasGrownText
 .PerfectHeresYourMon:
 	; Perfect! Here's your #MON.
-	text_far _PerfectHeresYourMonText
-	text_end
-
+	text_farend _PerfectHeresYourMonText
 .GotBackMon:
 	; got back @ .
-	text_far _GotBackMonText
-	text_end
-
+	text_farend _GotBackMonText
 .ImmediatelyWithdrawMon:
 	; Huh? Back already? Your @ needs a little more time with us. If you want your #MON back, it will cost ¥100.
-	text_far _BackAlreadyText
-	text_end
-
+	text_farend _BackAlreadyText
 .PartyFull:
 	; You have no room for it.
-	text_far _HaveNoRoomText
-	text_end
-
+	text_farend _HaveNoRoomText
 .NotEnoughMoney:
 	; You don't have enough money.
-	text_far _NotEnoughMoneyText
-	text_end
-
+	text_farend _NotEnoughMoneyText
 .OhFineThen:
 	; Oh, fine then.
-	text_far _OhFineThenText
-	text_end
-
+	text_farend _OhFineThenText
 .ComeAgain:
 	; Come again.
-	text_far _ComeAgainText
-	text_end
-
+	text_farend _ComeAgainText
 Special_DayCareManOutside:
 	ld hl, wDayCareMan
 	bit DAYCAREMAN_HAS_EGG_F, [hl]
@@ -392,9 +352,7 @@ Special_DayCareManOutside:
 
 .NotYet:
 	; Not yet…
-	text_far _NotYetText
-	text_end
-
+	text_farend _NotYetText
 .AskGiveEgg:
 	; if user already bred an egg, use shorter monologue.
 	eventflagcheck EVENT_BRED_AN_EGG
@@ -447,44 +405,28 @@ Special_DayCareManOutside:
 
 .IntroText:
 	; Ah, it's you! We were raising your #MON, and my goodness, were we surprised! Your #MON had an EGG! We don't know how it got there, but your #MON had it. You want it?
-	text_far _FoundAnEggText
-	text_end
-
+	text_farend _FoundAnEggText
 .IntroAgainText:
 	; Text you get after you already received your first egg.
-	text_far _FoundAnEggAgainText
-	text_end
-
+	text_farend _FoundAnEggAgainText
 .GotEggText:
 	; received the EGG!
-	text_far _ReceivedEggText
-	text_end
-
+	text_farend _ReceivedEggText
 .CurBoxFullText:
 	; @ was full.
-	text_far _CurBoxFullText
-	text_end
-
+	text_farend _CurBoxFullText
 .SentToPCText:
 	; The Egg was sent to @.
-	text_far _EggSentToPCText
-	text_end
-
+	text_farend _EggSentToPCText
 .TakeGoodCareOfItText:
 	; Take good care of it.
-	text_far _TakeGoodCareOfEggText
-	text_end
-
+	text_farend _TakeGoodCareOfEggText
 .IllKeepItThanksText:
 	; Well then, I'll keep it. Thanks!
-	text_far _IllKeepItThanksText
-	text_end
-
+	text_farend _IllKeepItThanksText
 .PartyAndBoxFullText:
 	; You have no room in your party or your box. Come back later.
-	text_far _NoRoomForEggText
-	text_end
-
+	text_farend _NoRoomForEggText
 DayCare_GiveEgg:
 ; returns z if mon sent to party, nz if sent to box
 ; returns c if no room in party or box

@@ -41,9 +41,7 @@ BugContest_SetCaughtContestMon:
 
 .caughttext
 	; Caught @ !
-	text_far _ContestCaughtMonText
-	text_end
-
+	text_farend _ContestCaughtMonText
 DisplayAlreadyCaughtText:
 	call GetPokemonName
 	ld hl, .AlreadyCaughtText
@@ -51,5 +49,4 @@ DisplayAlreadyCaughtText:
 
 .AlreadyCaughtText:
 	; You already caught a @ .
-	text_far _ContestAlreadyCaughtText
-	text_end
+	text_farend _ContestAlreadyCaughtText

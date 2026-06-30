@@ -453,13 +453,9 @@ Phone_Wait20Frames:
 	jmp ApplyTilemap
 
 PhoneClickText:
-	text_far _PhoneClickText
-	text_end
-
+	text_farend _PhoneClickText
 PhoneEllipseText:
-	text_far _PhoneEllipseText
-	text_end
-
+	text_farend _PhoneEllipseText
 Phone_StartRinging:
 	call WaitSFX
 	ld de, SFX_CALL

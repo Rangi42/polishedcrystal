@@ -1118,14 +1118,10 @@ TradeAnim_SentToOTText:
 
 .Text_WasSentTo:
 	; was sent to @ .
-	text_far _MonWasSentToText
-	text_end
-
+	text_farend _MonWasSentToText
 .Text_MonName:
 	;
-	text_far ClearText
-	text_end
-
+	text_farend ClearText
 TradeAnim_OTBidsFarewell:
 	ld hl, .Text_BidsFarewellToMon
 	call PrintText
@@ -1137,14 +1133,10 @@ TradeAnim_OTBidsFarewell:
 
 .Text_BidsFarewellToMon:
 	; bids farewell to
-	text_far _BidsFarewellToMonText
-	text_end
-
+	text_farend _BidsFarewellToMonText
 .Text_MonName:
 	; .
-	text_far _MonNameBidsFarewellText
-	text_end
-
+	text_farend _MonNameBidsFarewellText
 TradeAnim_TakeCareOfText:
 	call WaitTop
 	hlcoord 0, 10
@@ -1159,9 +1151,7 @@ TradeAnim_TakeCareOfText:
 
 .Text_TakeGoodCareOfMon:
 	; Take good care of @ .
-	text_far _TakeGoodCareOfMonText
-	text_end
-
+	text_farend _TakeGoodCareOfMonText
 TradeAnim_OTSendsText1:
 	ld hl, .Text_ForYourMon
 	call PrintText
@@ -1175,14 +1165,10 @@ TradeAnim_OTSendsText1:
 
 .Text_ForYourMon:
 	; For @ 's @ ,
-	text_far _ForYourMonSendsText
-	text_end
-
+	text_farend _ForYourMonSendsText
 .Text_OTSends:
 	; sends @ .
-	text_far _OTSendsText
-	text_end
-
+	text_farend _OTSendsText
 TradeAnim_OTSendsText2:
 	ld hl, .Text_WillTrade
 	call PrintText
@@ -1196,14 +1182,10 @@ TradeAnim_OTSendsText2:
 
 .Text_WillTrade:
 	; will trade @ @
-	text_far _WillTradeText
-	text_end
-
+	text_farend _WillTradeText
 .Text_ForYourMon:
 	; for @ 's @ .
-	text_far _ForYourMonWillTradeText
-	text_end
-
+	text_farend _ForYourMonWillTradeText
 TradeAnim_Wait80Frames:
 	ld c, 80
 	jmp DelayFrames

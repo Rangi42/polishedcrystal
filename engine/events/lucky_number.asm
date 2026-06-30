@@ -91,14 +91,10 @@ Special_CheckForLuckyNumberWinners:
 
 .MatchInParty:
 	; Congratulations! We have a match with the ID number of @  in your party.
-	text_far _LuckyNumberMatchPartyText
-	text_end
-
+	text_farend _LuckyNumberMatchPartyText
 .MatchInStorage:
 	; Congratulations! We have a match with the ID number of @  in your PC BOX.
-	text_far _LuckyNumberMatchPCText
-	text_end
-
+	text_farend _LuckyNumberMatchPCText
 Special_PrintTodaysLuckyNumber:
 	ld hl, wStringBuffer3
 	ld de, wLuckyIDNumber

@@ -50,14 +50,10 @@ RestartClock:
 
 .Text_ClockTimeMayBeWrong:
 	; The clock's time may be wrong. Please reset the time.
-	text_far _ClockTimeMayBeWrongText
-	text_end
-
+	text_farend _ClockTimeMayBeWrongText
 .Text_SetWithControlPad:
 	; Set with the Control Pad. Confirm: A Button Cancel:  B Button
-	text_far _ClockSetWithControlPadText
-	text_end
-
+	text_farend _ClockSetWithControlPadText
 .SetClock:
 	ld a, 1
 	ld [wRestartClockCurDivision], a ; which digit
@@ -104,14 +100,10 @@ RestartClock:
 
 .Text_IsThisOK:
 	; Is this OK?
-	text_far _ClockIsThisOKText
-	text_end
-
+	text_farend _ClockIsThisOKText
 .Text_ClockReset:
 	; The clock has been reset.
-	text_far _ClockHasResetText
-	text_end
-
+	text_farend _ClockHasResetText
 .joy_loop
 	call JoyTextDelay_ForcehJoyDown
 	ld c, a

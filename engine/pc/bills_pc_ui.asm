@@ -74,9 +74,7 @@ _BillsPC:
 
 .Text_GottaHavePokemon:
 	; You gotta have #MON to call!
-	text_far _PCGottaHavePokemonText
-	text_end
-
+	text_farend _PCGottaHavePokemonText
 BillsPC_LoadUI:
 	ld a, 1
 	ldh [rVBK], a
@@ -3437,9 +3435,7 @@ BillsPC_MustSaveToContinue:
 	done
 
 BillsPC_GameSaved:
-	text_far _SavedTheGameText
-	text_end
-
+	text_farend _SavedTheGameText
 BillsPC_PlaceHeldMon:
 ; Places held mon at the current cursor location. Might perform swaps, or even
 ; be aborted, depending on circumstances.

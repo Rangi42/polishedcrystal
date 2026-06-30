@@ -10,9 +10,7 @@ SelectMenu::
 	jmp CloseText
 
 ItemMayBeRegisteredText:
-	text_far _MayRegisterItemText
-	text_end
-
+	text_farend _MayRegisterItemText
 CheckRegisteredItem::
 ; Returns amount of registered items and z if none is. Populates wCurItem
 ; with a valid registered item, useful if there's only a single one.

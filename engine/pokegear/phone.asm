@@ -121,14 +121,10 @@ PokegearPhone_MakePhoneCall:
 
 .dotdotdot
 	;
-	text_far _GearEllipseText
-	text_end
-
+	text_farend _GearEllipseText
 .OutOfServiceArea:
 	; You're out of the service area.
-	text_far _GearOutOfServiceText
-	text_end
-
+	text_farend _GearOutOfServiceText
 PokegearPhone_FinishPhoneCall:
 	ldh a, [hJoyPressed]
 	and PAD_A | PAD_B

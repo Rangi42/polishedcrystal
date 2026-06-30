@@ -772,9 +772,7 @@ BuyMenuLoop:
 	ret
 
 .PremierBallText
-	text_far MartPremierBallText
-	text_end
-
+	text_farend MartPremierBallText
 ExpCandyBuyMenuLoop:
 	farcall PlaceMoneyTopRight
 	call UpdateSprites
@@ -1086,9 +1084,7 @@ TMMartAskPurchaseQuantity:
 	ret
 
 .AlreadyHaveTMText
-	text_far AlreadyHaveTMText
-	text_end
-
+	text_farend AlreadyHaveTMText
 BTMartAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
@@ -1150,15 +1146,11 @@ BTMartCompareBP:
 Text_Mart_HowMany:
 Text_BTMart_HowMany:
 	; How many?
-	text_far _MartHowManyText
-	text_end
-
+	text_farend _MartHowManyText
 Text_Mart_CostsThisMuch:
 Text_AdventurerMart_CostsThisMuch:
 	; @ (S) will be ¥@ .
-	text_far _MartFinalPriceText
-	text_end
-
+	text_farend _MartFinalPriceText
 MenuDataHeader_Buy:
 	db MENU_BACKUP_TILES
 	menu_coords 6, 3, 19, 11
@@ -1284,79 +1276,51 @@ GetCursorItemPointCost:
 
 Text_HerbShop_Intro:
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
-	text_far _HerbShopLadyIntroText
-	text_end
-
+	text_farend _HerbShopLadyIntroText
 Text_HerbShop_CostsThisMuch:
 	; @ (S) will be ¥@ .
-	text_far _HerbalLadyFinalPriceText
-	text_end
-
+	text_farend _HerbalLadyFinalPriceText
 Text_HerbShop_HereYouGo:
 	; Thank you, dear. Hehehehe…
-	text_far _HerbalLadyThanksText
-	text_end
-
+	text_farend _HerbalLadyThanksText
 Text_HerbShop_BagFull:
 	; Oh? Your PACK is full, dear.
-	text_far _HerbalLadyPackFullText
-	text_end
-
+	text_farend _HerbalLadyPackFullText
 Text_HerbShop_InsufficientFunds:
 	; Hehehe… You don't have the money.
-	text_far _HerbalLadyNoMoneyText
-	text_end
-
+	text_farend _HerbalLadyNoMoneyText
 Text_HerbShop_ComeAgain:
 	; Come again, dear. Hehehehe…
-	text_far _HerbalLadyComeAgainText
-	text_end
-
+	text_farend _HerbalLadyComeAgainText
 Text_BargainShop_Intro:
 	; Hiya! Care to see some bargains? I sell rare items that nobody else carries--but only one of each item.
-	text_far _BargainShopIntroText
-	text_end
-
+	text_farend _BargainShopIntroText
 Text_BargainShop_CostsThisMuch:
 	; costs ¥@ . Want it?
-	text_far _BargainShopFinalPriceText
-	text_end
-
+	text_farend _BargainShopFinalPriceText
 Text_BargainShop_HereYouGo:
 Text_SilphMart_HereYouGo:
 Text_AdventurerMart_HereYouGo:
 Text_BazaarMart_HereYouGo:
 	; Thanks.
-	text_far _BargainShopThanksText
-	text_end
-
+	text_farend _BargainShopThanksText
 Text_BargainShop_BagFull:
 Text_AdventurerMart_BagFull:
 	; Uh-oh, your PACK is chock-full.
-	text_far _BargainShopPackFullText
-	text_end
-
+	text_farend _BargainShopPackFullText
 Text_BargainShop_SoldOut:
 	; You bought that already. I'm all sold out of it.
-	text_far _BargainShopSoldOutText
-	text_end
-
+	text_farend _BargainShopSoldOutText
 Text_BargainShop_InsufficientFunds:
 Text_AdventurerMart_InsufficientFunds:
 	; Uh-oh, you're short on funds.
-	text_far _BargainShopNoFundsText
-	text_end
-
+	text_farend _BargainShopNoFundsText
 Text_BargainShop_ComeAgain:
 	; Come by again sometime.
-	text_far _BargainShopComeAgainText
-	text_end
-
+	text_farend _BargainShopComeAgainText
 Text_Pharmacist_Intro:
 	; What's up? Need some medicine?
-	text_far _PharmacyIntroText
-	text_end
-
+	text_farend _PharmacyIntroText
 Text_HerbShop_HowMany:
 Text_Pharmacy_HowMany:
 Text_SilphMart_HowMany:
@@ -1364,136 +1328,88 @@ Text_AdventurerMart_HowMany:
 Text_InformalMart_HowMany:
 Text_BazaarMart_HowMany:
 	; How many?
-	text_far _HowManyText
-	text_end
-
+	text_farend _HowManyText
 Text_Pharmacy_CostsThisMuch:
 Text_SilphMart_CostsThisMuch:
 Text_InformalMart_CostsThisMuch:
 Text_BazaarMart_CostsThisMuch:
 	; @ (S) will cost ¥@ .
-	text_far _PharmacyFinalPriceText
-	text_end
-
+	text_farend _PharmacyFinalPriceText
 Text_Pharmacy_HereYouGo:
 Text_InformalMart_HereYouGo:
 	; Thanks much!
-	text_far _PharmacyThanksText
-	text_end
-
+	text_farend _PharmacyThanksText
 Text_Pharmacy_BagFull:
 Text_SilphMart_BagFull:
 Text_InformalMart_BagFull:
 Text_BazaarMart_BagFull:
 	; You don't have any more space.
-	text_far _PharmacyPackFullText
-	text_end
-
+	text_farend _PharmacyPackFullText
 Text_Pharmacy_InsufficientFunds:
 Text_SilphMart_InsufficientFunds:
 Text_InformalMart_InsufficientFunds:
 Text_BazaarMart_InsufficientFunds:
 	; Huh? That's not enough money.
-	text_far _PharmacyNoMoneyText
-	text_end
-
+	text_farend _PharmacyNoMoneyText
 Text_Pharmacist_ComeAgain:
 Text_InformalMart_ComeAgain:
 	; All right. See you around.
-	text_far _PharmacyComeAgainText
-	text_end
-
+	text_farend _PharmacyComeAgainText
 Text_SilphMart_Intro:
 	; Employees like me have access to company swag! Want to buy some?
-	text_far SilphMartIntroText
-	text_end
-
+	text_farend SilphMartIntroText
 Text_SilphMart_ComeAgain:
 	; Come again! I could use the side income.
-	text_far SilphMartComeAgainText
-	text_end
-
+	text_farend SilphMartComeAgainText
 Text_AdventurerMart_Intro:
 	; I picked up some rare items abroad!
-	text_far AdventurerMartIntroText
-	text_end
-
+	text_farend AdventurerMartIntroText
 Text_AdventurerMart_ComeAgain:
 Text_BazaarMart_ComeAgain:
 	; Come by again!
-	text_far AdventurerMartComeAgainText
-	text_end
-
+	text_farend AdventurerMartComeAgainText
 Text_InformalMart_Intro:
 	; What's up? Need some supplies?
-	text_far InformalMartIntroText
-	text_end
-
+	text_farend InformalMartIntroText
 Text_BazaarMart_Intro:
 	; Come take a look at my wares!
-	text_far BazaarMartIntroText
-	text_end
-
+	text_farend BazaarMartIntroText
 Text_TMMart_CostsThisMuch:
 	; @  @  will be ¥@ .
-	text_far TMMartCostsThisMuchText
-	text_end
-
+	text_farend TMMartCostsThisMuchText
 Text_BlueCardMart_HowMayIHelpYou:
 	; Which prize would you like?
-	text_far _BuenaAskWhichPrizeText
-	text_end
-
+	text_farend _BuenaAskWhichPrizeText
 Text_BlueCardMart_CostsThisMuch:
 	; ? Is that right?
-	text_far _BuenaIsThatRightText
-	text_end
-
+	text_farend _BuenaIsThatRightText
 Text_BlueCardMart_InsufficientFunds:
 	; You don't have enough points.
-	text_far _BuenaNotEnoughPointsText
-	text_end
-
+	text_farend _BuenaNotEnoughPointsText
 Text_BlueCardMart_BagFull:
 	; You have no room for it.
-	text_far _BuenaNoRoomText
-	text_end
-
+	text_farend _BuenaNoRoomText
 Text_BlueCardMart_HereYouGo:
 	; Here you go!
-	text_far _BuenaHereYouGoText
-	text_end
-
+	text_farend _BuenaHereYouGoText
 Text_BlueCardMart_ComeAgain:
 	; Oh. Please come back again!
-	text_far _BuenaComeAgainText
-	text_end
-
+	text_farend _BuenaComeAgainText
 Text_BTMart_HowMayIHelpYou:
 	; Welcome to the Exchange Service Corner! You can trade in your BP for prizes.
-	text_far BTMartHowMayIHelpYouText
-	text_end
-
+	text_farend BTMartHowMayIHelpYouText
 Text_BTMart_CostsThisMuch:
 	; @  @(s)  will cost @ BP.
-	text_far BTMartCostsThisMuchText
-	text_end
-
+	text_farend BTMartCostsThisMuchText
 Text_BTMart_InsufficientFunds:
 	; I'm sorry, but you don’t have enough BP.
-	text_far BTMartInsufficientFundsText
-	text_end
-
+	text_farend BTMartInsufficientFundsText
 Text_BTMart_BagFull:
 	; I'm sorry, but your Bag is full.
-	text_far BTMartBagFullText
-	text_end
-
+	text_farend BTMartBagFullText
 Text_BTMart_ComeAgain:
 	; Please come back any time you want!
-	text_far BTMartComeAgainText
-	text_end
-
+	text_farend BTMartComeAgainText
 SellMenu:
 	call DisableSpriteUpdates
 	farcall DepositSellInitPackBuffers
@@ -1566,19 +1482,13 @@ SellMenu:
 
 Text_Mart_SellHowMany:
 	; How many?
-	text_far _MartSellHowManyText
-	text_end
-
+	text_farend _MartSellHowManyText
 Text_Mart_ICanPayThisMuch:
 	; I can pay you ¥@ . Is that OK?
-	text_far _MartSellPriceText
-	text_end
-
+	text_farend _MartSellPriceText
 Text_Mart_HowMayIHelpYou:
 	; Welcome! How may I help you?
-	text_far _MartWelcomeText
-	text_end
-
+	text_farend _MartWelcomeText
 MenuDataHeader_BuySell:
 	db MENU_BACKUP_TILES
 	menu_coords 0, 0, 7, 8
@@ -1595,37 +1505,23 @@ MenuDataHeader_BuySell:
 Text_Mart_HereYouGo:
 Text_BTMart_HereYouGo:
 	; Here you are. Thank you!
-	text_far _MartThanksText
-	text_end
-
+	text_farend _MartThanksText
 Text_Mart_InsufficientFunds:
 	; You don't have enough money.
-	text_far _MartNoMoneyText
-	text_end
-
+	text_farend _MartNoMoneyText
 Text_Mart_BagFull:
 	; You can't carry any more items.
-	text_far _MartPackFullText
-	text_end
-
+	text_farend _MartPackFullText
 TextMart_CantBuyFromYou:
 	; Sorry, I can't buy that from you.
-	text_far _MartCantBuyText
-	text_end
-
+	text_farend _MartCantBuyText
 Text_Mart_ComeAgain:
 	; Please come again!
-	text_far _MartComeAgainText
-	text_end
-
+	text_farend _MartComeAgainText
 Text_Mart_AnythingElse:
-	text_far _MartAskMoreText
-	text_end
-
+	text_farend _MartAskMoreText
 Text_Mart_SoldForAmount:
-	text_far _MartBoughtText
-	text_end
-
+	text_farend _MartBoughtText
 PlayTransactionSound:
 	call WaitSFX
 	ld de, SFX_TRANSACTION
