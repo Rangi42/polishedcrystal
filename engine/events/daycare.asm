@@ -1044,4 +1044,3 @@ DayCare_GenerateEgg:
 
 .String_EGG:
 	rawchar "Egg@"
-

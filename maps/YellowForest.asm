@@ -503,4 +503,3 @@ YellowForestSurfPikachuDollText:
 	text "<PLAYER> found"
 	line "Surf Pikachu Doll."
 	done
-

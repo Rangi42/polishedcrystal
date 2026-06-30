@@ -296,5 +296,3 @@ GoldenrodMuseum2FTutorQuestion:
 	line "your #mon"
 	cont "Baton Pass?"
 	done
-
-

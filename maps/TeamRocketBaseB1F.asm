@@ -752,4 +752,3 @@ TeamRocketBaseB1FSecretSwitchText:
 	text "A secret switch!"
 	line "Better press it."
 	done
-

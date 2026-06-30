@@ -184,4 +184,3 @@ TrainerSwimmermAshe:
 	text "I have that sink-"
 	line "ing feeling…"
 	done
-

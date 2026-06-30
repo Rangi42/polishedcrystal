@@ -145,4 +145,3 @@ SuperNerdMiguelBeatenText:
 	text "My fossils were"
 	line "crushed!"
 	done
-

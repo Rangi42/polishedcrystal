@@ -229,4 +229,3 @@ GentlemanPrestonBeatenText:
 	text "…sigh… I must"
 	line "train some more…"
 	done
-

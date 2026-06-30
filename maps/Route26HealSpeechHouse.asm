@@ -41,4 +41,3 @@ Route26HealHouseRestAWhileText:
 	para "You should rest"
 	line "them a while."
 	done
-

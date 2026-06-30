@@ -14,4 +14,3 @@ WhirlIslandNE_MapScriptHeader:
 
 	def_object_events
 	itemball_event 11, 11, ULTRA_BALL, 1, EVENT_WHIRL_ISLAND_NE_ULTRA_BALL
-

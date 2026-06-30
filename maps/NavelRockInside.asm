@@ -26,4 +26,3 @@ NavelRockInside_MapScriptHeader:
 	def_object_events
 	itemball_event  2, 12, SACRED_ASH, 1, EVENT_NAVEL_ROCK_SACRED_ASH
 	itemball_event 27, 12, MASTER_BALL, 1, EVENT_NAVEL_ROCK_MASTER_BALL
-

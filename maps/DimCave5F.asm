@@ -232,4 +232,3 @@ GenericTrainerSuper_nerdDave:
 	text "But not"
 	line "battling…"
 	done
-

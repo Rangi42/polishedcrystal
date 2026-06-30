@@ -1888,4 +1888,3 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 8, 4
 	drum_speed 12
 	sound_jump Music_SunyshoreCityDPPt_Ch4_loop
-

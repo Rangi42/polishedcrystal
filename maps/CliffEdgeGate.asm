@@ -132,4 +132,3 @@ GruntM12BeatenText:
 	text "You were supposed"
 	line "to lose!"
 	done
-

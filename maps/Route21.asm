@@ -271,4 +271,3 @@ GenericTrainerBird_keeperEaston:
 	text "I couldn't handle"
 	line "it…"
 	done
-

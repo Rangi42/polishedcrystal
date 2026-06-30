@@ -161,4 +161,3 @@ CeladonUniversityPoolTeacherText:
 	text "OK, five more"
 	line "laps!"
 	done
-

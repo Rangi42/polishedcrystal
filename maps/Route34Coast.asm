@@ -173,4 +173,3 @@ GenericTrainerBird_keeperTony:
 	text "Don't you know"
 	line "about the bird?"
 	done
-

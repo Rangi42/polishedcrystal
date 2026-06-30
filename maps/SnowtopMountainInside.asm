@@ -196,4 +196,3 @@ Text_SnowtopMountainInsideTutorQuestion:
 Text_SnowtopMountainInsideTutorRefused: ; text > text
 	text "Brr…"
 	done
-

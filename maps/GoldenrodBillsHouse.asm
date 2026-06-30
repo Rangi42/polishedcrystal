@@ -550,4 +550,3 @@ BillsSisterPhoneFullText:
 	text "You can't record"
 	line "any more numbers."
 	done
-

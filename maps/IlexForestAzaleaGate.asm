@@ -117,5 +117,3 @@ ProfOaksAide1HereYouGoText:
 	para "Congratulations!"
 	line "Here you go!"
 	done
-
-

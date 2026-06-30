@@ -284,4 +284,3 @@ DanceTheatreLadyText:
 	para "use them are"
 	line "somewhere else?"
 	done
-

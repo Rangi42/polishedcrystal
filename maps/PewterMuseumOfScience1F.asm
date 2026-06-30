@@ -368,4 +368,3 @@ NoRoomForFossilPokemonText:
 	cont "#mon, and your"
 	cont "Box is full, too!"
 	done
-

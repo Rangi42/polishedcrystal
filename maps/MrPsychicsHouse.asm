@@ -84,5 +84,3 @@ Text_MrPsychicsHouseTutorQuestion:
 	line "your #mon"
 	cont "Zen Headbutt?"
 	done
-
-

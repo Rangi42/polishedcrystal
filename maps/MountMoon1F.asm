@@ -313,4 +313,3 @@ HikerMarcosBeatenText:
 	text "Woah!"
 	line "You're strong!"
 	done
-

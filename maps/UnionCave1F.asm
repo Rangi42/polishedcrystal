@@ -163,4 +163,3 @@ Ruin_maniacJonesSeenText:
 Ruin_maniacJonesBeatenText:
 	text "Gahahah!"
 	done
-

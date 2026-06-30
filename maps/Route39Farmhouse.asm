@@ -202,4 +202,3 @@ FarmerFText_HealedMiltank:
 	para "Here's somethin'"
 	line "fer your trouble."
 	done
-

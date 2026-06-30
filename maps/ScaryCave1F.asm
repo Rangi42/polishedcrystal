@@ -337,4 +337,3 @@ GenericTrainerScientistPiotr:
 	text "Fine, I'll tell"
 	line "you!"
 	done
-

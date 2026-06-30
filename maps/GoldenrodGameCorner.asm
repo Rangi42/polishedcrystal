@@ -480,4 +480,3 @@ GoldenrodGameCornerPokefanM3Text:
 	text "Wahahah! The coins"
 	line "keep rolling in!"
 	done
-

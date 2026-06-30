@@ -172,5 +172,3 @@ GoldenrodMagnetTrainStationGentlemanText:
 	line "Johto much closer"
 	cont "to Kanto."
 	done
-
-

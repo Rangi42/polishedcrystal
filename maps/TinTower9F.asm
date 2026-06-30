@@ -18,4 +18,3 @@ TinTower9F_MapScriptHeader:
 
 	def_object_events
 	itemball_event  7,  1, HP_UP, 1, EVENT_TIN_TOWER_9F_HP_UP
-

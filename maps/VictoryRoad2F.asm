@@ -208,4 +208,3 @@ VeteranfJonetBeatenText:
 	line "I had a legendary"
 	cont "#mon…"
 	done
-

@@ -687,5 +687,3 @@ ArnieHurryScript:
 ToddHurryScript:
 	farwritetext ToddHaveYouGoneToDepartmentStoreText
 	end
-
-

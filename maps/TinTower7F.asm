@@ -16,4 +16,3 @@ TinTower7F_MapScriptHeader:
 
 	def_object_events
 	itemball_event 14,  1, MAX_REVIVE, 1, EVENT_TIN_TOWER_7F_MAX_REVIVE
-

@@ -82,4 +82,3 @@ TrainerGuitaristmBiff:
 	text "Ground into the"
 	line "ground!"
 	done
-

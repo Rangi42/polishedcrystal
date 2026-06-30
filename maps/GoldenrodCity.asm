@@ -538,4 +538,3 @@ GoldenrodCityMoveTutorIfYouUnderstandYouveMadeItText:
 GoldenrodCityMoveTutorBButText:
 	text "B-but…"
 	done
-

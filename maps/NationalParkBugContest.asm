@@ -129,13 +129,3 @@ BugCatchingContestant10AScript:
 	para "I'm going to win"
 	line "for sure."
 	done
-
-
-
-
-
-
-
-
-
-

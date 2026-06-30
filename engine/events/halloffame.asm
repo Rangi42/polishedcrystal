@@ -584,4 +584,3 @@ HOF_AnimatePlayerPic:
 
 .PlayTime:
 	db "Play Time@"
-

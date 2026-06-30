@@ -245,4 +245,3 @@ TwinsJoandzoe2SeenText:
 TwinsJoandzoe2BeatenText:
 	text "We couldn't win…"
 	done
-

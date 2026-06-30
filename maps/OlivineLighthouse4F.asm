@@ -92,4 +92,3 @@ LassConnieSeenText:
 LassConnieBeatenText:
 	text "Aaack! My #mon!"
 	done
-

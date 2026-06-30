@@ -547,6 +547,3 @@ TinTowerEusineHoOhText:
 
 	para "Later, <PLAYER>!"
 	done
-
-
-

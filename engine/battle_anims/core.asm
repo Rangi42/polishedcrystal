@@ -347,4 +347,3 @@ _ExecuteBGEffects:
 
 _QueueBGEffect:
 	farjp QueueBGEffect
-

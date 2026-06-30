@@ -473,4 +473,3 @@ GoldenrodHarborCrateSignText:
 	text "A crate full of"
 	line "rare items!"
 	done
-

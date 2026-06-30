@@ -17,4 +17,3 @@ IceIsland_MapScriptHeader:
 
 	def_object_events
 	itemball_event 19,  6, ICY_ROCK, 1, EVENT_ICE_ISLAND_ICY_ROCK
-

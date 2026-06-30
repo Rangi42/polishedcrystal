@@ -81,4 +81,3 @@ SupernerdMarkusBeatenText:
 	text "I mistook you for"
 	line "someone else…"
 	done
-

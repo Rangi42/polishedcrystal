@@ -320,5 +320,3 @@ Text_CherrygroveBayTutorQuestion:
 	line "your #mon"
 	cont "Earth Power?"
 	done
-
-

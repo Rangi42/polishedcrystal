@@ -249,4 +249,3 @@ BurglarCoreyBeatenText:
 	text "How unlucky!"
 	line "I lost!"
 	done
-

@@ -54,4 +54,3 @@ CeladonMansion2FComputerText:
 
 	para "…"
 	done
-

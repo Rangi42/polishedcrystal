@@ -367,4 +367,3 @@ SchoolboyRickySeenText:
 SchoolboyRickyBeatenText:
 	text "I was done in!"
 	done
-

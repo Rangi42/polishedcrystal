@@ -190,4 +190,3 @@ GenericTrainerRuin_maniacGlyn:
 	line "this very cave,"
 	cont "too!"
 	done
-

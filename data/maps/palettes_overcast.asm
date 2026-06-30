@@ -357,4 +357,3 @@ rept 7
 endr
 	RGB_MONOCHROME WHITE, WHITE, DARK, BLACK
 endc
-

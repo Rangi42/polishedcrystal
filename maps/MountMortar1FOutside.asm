@@ -55,4 +55,3 @@ BattleGirlDianeBeatenText:
 	text "This round goes"
 	line "to you."
 	done
-

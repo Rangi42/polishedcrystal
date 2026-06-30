@@ -36,4 +36,3 @@ CeladonMansionRoofFisherText:
 	para "heights as much as"
 	line "me is smoke!"
 	done
-

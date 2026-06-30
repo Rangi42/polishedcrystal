@@ -58,4 +58,3 @@ BoarderStefanBeatenText:
 	text "This cold is the"
 	line "shame of defeat…"
 	done
-
