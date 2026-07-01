@@ -1,7 +1,7 @@
 SECTION "BulbasaurPokedexEntry", ROMX
 BulbasaurPokedexEntry::
 	db "Seed@"
-	db   "While it is young,"
+	text "While it is young,"
 	next "it uses the"
 	next "nutrients that are"
 	page "stored in the"
@@ -11,7 +11,7 @@ BulbasaurPokedexEntry::
 SECTION "IvysaurPokedexEntry", ROMX
 IvysaurPokedexEntry::
 	db "Seed@"
-	db   "The bulb on its"
+	text "The bulb on its"
 	next "back grows as it"
 	next "absorbs nutrients."
 	page "The bulb gives off"
@@ -21,7 +21,7 @@ IvysaurPokedexEntry::
 SECTION "VenusaurPokedexEntry", ROMX
 VenusaurPokedexEntry::
 	db "Seed@"
-	db   "As it warms it-"
+	text "As it warms it-"
 	next "self and absorbs"
 	next "the sunlight, its"
 	page "flower petals"
@@ -31,7 +31,7 @@ VenusaurPokedexEntry::
 SECTION "CharmanderPokedexEntry", ROMX
 CharmanderPokedexEntry::
 	db "Lizard@"
-	db   "If it's healthy,"
+	text "If it's healthy,"
 	next "the flame on the"
 	next "tip of its tail"
 	page "will burn vigor-"
@@ -41,7 +41,7 @@ CharmanderPokedexEntry::
 SECTION "CharmeleonPokedexEntry", ROMX
 CharmeleonPokedexEntry::
 	db "Flame@"
-	db   "If it becomes"
+	text "If it becomes"
 	next "agitated during"
 	next "battle, it spouts"
 	page "intense flames,"
@@ -51,7 +51,7 @@ CharmeleonPokedexEntry::
 SECTION "CharizardPokedexEntry", ROMX
 CharizardPokedexEntry::
 	db "Flame@"
-	db   "It uses its wings"
+	text "It uses its wings"
 	next "to fly high. The"
 	next "temperature of its"
 	page "fire increases as"
@@ -61,7 +61,7 @@ CharizardPokedexEntry::
 SECTION "SquirtlePokedexEntry", ROMX
 SquirtlePokedexEntry::
 	db "Tiny Turtle@"
-	db   "When it feels"
+	text "When it feels"
 	next "threatened, it"
 	next "draws its legs"
 	page "inside its shell"
@@ -71,7 +71,7 @@ SquirtlePokedexEntry::
 SECTION "WartortlePokedexEntry", ROMX
 WartortlePokedexEntry::
 	db "Turtle@"
-	db   "Its long, furry"
+	text "Its long, furry"
 	next "tail is a symbol"
 	next "of longevity,"
 	page "making it quite"
@@ -85,7 +85,7 @@ if DEF(FAITHFUL)
 else
 	db "Shell@"
 endc
-	db   "It firmly plants"
+	text "It firmly plants"
 	next "its feet on the"
 	next "ground before"
 	page "shooting water"
@@ -95,7 +95,7 @@ endc
 SECTION "CaterpiePokedexEntry", ROMX
 CaterpiePokedexEntry::
 	db "Worm@"
-	db   "It crawls into"
+	text "It crawls into"
 	next "foliage where it"
 	next "camouflages itself"
 	page "among leaves that"
@@ -105,7 +105,7 @@ CaterpiePokedexEntry::
 SECTION "MetapodPokedexEntry", ROMX
 MetapodPokedexEntry::
 	db "Cocoon@"
-	db   "This is its pre-"
+	text "This is its pre-"
 	next "evolved form. At"
 	next "this stage, it can"
 	page "only harden, so it"
@@ -115,7 +115,7 @@ MetapodPokedexEntry::
 SECTION "ButterfreePokedexEntry", ROMX
 ButterfreePokedexEntry::
 	db "Butterfly@"
-	db   "It flits from"
+	text "It flits from"
 	next "flower to flower,"
 	next "collecting nectar."
 	page "It can even"
@@ -125,7 +125,7 @@ ButterfreePokedexEntry::
 SECTION "WeedlePokedexEntry", ROMX
 WeedlePokedexEntry::
 	db "Hairy Bug@"
-	db   "The barb on top of"
+	text "The barb on top of"
 	next "its head secretes"
 	next "a strong poison."
 	page "It uses this toxic"
@@ -135,7 +135,7 @@ WeedlePokedexEntry::
 SECTION "KakunaPokedexEntry", ROMX
 KakunaPokedexEntry::
 	db "Cocoon@"
-	db   "Nearly incapable"
+	text "Nearly incapable"
 	next "of movement, it"
 	next "leans against"
 	page "stout trees while"
@@ -145,7 +145,7 @@ KakunaPokedexEntry::
 SECTION "BeedrillPokedexEntry", ROMX
 BeedrillPokedexEntry::
 	db "Poison Bee@"
-	db   "It uses sharp,"
+	text "It uses sharp,"
 	next "poisonous stings"
 	next "to defeat prey,"
 	page "then takes the"
@@ -155,7 +155,7 @@ BeedrillPokedexEntry::
 SECTION "PidgeyPokedexEntry", ROMX
 PidgeyPokedexEntry::
 	db "Tiny Bird@"
-	db   "It rapidly flaps"
+	text "It rapidly flaps"
 	next "its wings in the"
 	next "grass, stirring up"
 	page "a dust cloud that"
@@ -165,7 +165,7 @@ PidgeyPokedexEntry::
 SECTION "PidgeottoPokedexEntry", ROMX
 PidgeottoPokedexEntry::
 	db "Bird@"
-	db   "It slowly flies in"
+	text "It slowly flies in"
 	next "a circular pat-"
 	next "tern, all the"
 	page "while keeping a"
@@ -175,7 +175,7 @@ PidgeottoPokedexEntry::
 SECTION "PidgeotPokedexEntry", ROMX
 PidgeotPokedexEntry::
 	db "Bird@"
-	db   "This #mon flies"
+	text "This #mon flies"
 	next "at Mach 2 speed,"
 	next "seeking prey."
 	page "Its large talons"
@@ -185,7 +185,7 @@ PidgeotPokedexEntry::
 SECTION "RattataPlainPokedexEntry", ROMX
 RattataPlainPokedexEntry::
 	db "Rat@"
-	db   "This #mon's"
+	text "This #mon's"
 	next "impressive vital-"
 	next "ity allows it to"
 	page "live anywhere. It"
@@ -195,7 +195,7 @@ RattataPlainPokedexEntry::
 SECTION "RaticatePlainPokedexEntry", ROMX
 RaticatePlainPokedexEntry::
 	db "Rat@"
-	db   "The webs on its"
+	text "The webs on its"
 	next "hind legs enable"
 	next "it to cross"
 	page "rivers. It search-"
@@ -205,7 +205,7 @@ RaticatePlainPokedexEntry::
 SECTION "SpearowPokedexEntry", ROMX
 SpearowPokedexEntry::
 	db "Tiny Bird@"
-	db   "To protect its"
+	text "To protect its"
 	next "territory, it"
 	next "flies around"
 	page "ceaselessly,"
@@ -215,7 +215,7 @@ SpearowPokedexEntry::
 SECTION "FearowPokedexEntry", ROMX
 FearowPokedexEntry::
 	db "Beak@"
-	db   "It uses its long"
+	text "It uses its long"
 	next "beak to attack. It"
 	next "has a surprisingly"
 	page "long reach, so it"
@@ -225,7 +225,7 @@ FearowPokedexEntry::
 SECTION "EkansPokedexEntry", ROMX
 EkansPokedexEntry::
 	db "Snake@"
-	db   "It flutters the"
+	text "It flutters the"
 	next "tip of its tongue"
 	next "to seek out the"
 	page "scent of prey,"
@@ -235,7 +235,7 @@ EkansPokedexEntry::
 SECTION "ArbokPokedexEntry", ROMX
 ArbokPokedexEntry::
 	db "Cobra@"
-	db   "To intimidate"
+	text "To intimidate"
 	next "foes, it spreads"
 	next "its chest wide and"
 	page "makes eerie sounds"
@@ -245,7 +245,7 @@ ArbokPokedexEntry::
 SECTION "PikachuPokedexEntry", ROMX
 PikachuPokedexEntry::
 	db "Mouse@"
-	db   "When it is anger-"
+	text "When it is anger-"
 	next "ed, it immediately"
 	next "discharges the"
 	page "energy stored in"
@@ -255,7 +255,7 @@ PikachuPokedexEntry::
 SECTION "RaichuPlainPokedexEntry", ROMX
 RaichuPlainPokedexEntry::
 	db "Mouse@"
-	db   "If its electric"
+	text "If its electric"
 	next "pouches run empty,"
 	next "it raises its tail"
 	page "to gather electri-"
@@ -265,7 +265,7 @@ RaichuPlainPokedexEntry::
 SECTION "SandshrewPlainPokedexEntry", ROMX
 SandshrewPlainPokedexEntry::
 	db "Mouse@"
-	db   "It prefers dry,"
+	text "It prefers dry,"
 	next "sandy places"
 	next "because it uses"
 	page "the sand to"
@@ -275,7 +275,7 @@ SandshrewPlainPokedexEntry::
 SECTION "SandslashPlainPokedexEntry", ROMX
 SandslashPlainPokedexEntry::
 	db "Mouse@"
-	db   "Adept at climbing"
+	text "Adept at climbing"
 	next "trees, it rolls"
 	next "into a spiny ball,"
 	page "then attacks its"
@@ -285,7 +285,7 @@ SandslashPlainPokedexEntry::
 SECTION "NidoranFPokedexEntry", ROMX
 NidoranFPokedexEntry::
 	db "Poison Pin@"
-	db   "Small and very"
+	text "Small and very"
 	next "docile, it pro-"
 	next "tects itself with"
 	page "its small, poison-"
@@ -295,7 +295,7 @@ NidoranFPokedexEntry::
 SECTION "NidorinaPokedexEntry", ROMX
 NidorinaPokedexEntry::
 	db "Poison Pin@"
-	db   "It has a docile"
+	text "It has a docile"
 	next "nature. If it is"
 	next "threatened with"
 	page "attack, it raises"
@@ -305,7 +305,7 @@ NidorinaPokedexEntry::
 SECTION "NidoqueenPokedexEntry", ROMX
 NidoqueenPokedexEntry::
 	db "Drill@"
-	db   "The hard scales"
+	text "The hard scales"
 	next "that cover its"
 	next "strong body serve"
 	page "as excellent"
@@ -315,7 +315,7 @@ NidoqueenPokedexEntry::
 SECTION "NidoranMPokedexEntry", ROMX
 NidoranMPokedexEntry::
 	db "Poison Pin@"
-	db   "It constantly"
+	text "It constantly"
 	next "moves its large"
 	next "ears in many"
 	page "directions in"
@@ -325,7 +325,7 @@ NidoranMPokedexEntry::
 SECTION "NidorinoPokedexEntry", ROMX
 NidorinoPokedexEntry::
 	db "Poison Pin@"
-	db   "It is easily"
+	text "It is easily"
 	next "agitated and uses"
 	next "its horn for"
 	page "offense as soon as"
@@ -335,7 +335,7 @@ NidorinoPokedexEntry::
 SECTION "NidokingPokedexEntry", ROMX
 NidokingPokedexEntry::
 	db "Drill@"
-	db   "It uses its thick"
+	text "It uses its thick"
 	next "arms, legs and"
 	next "tail to attack"
 	page "forcefully. Melee"
@@ -345,7 +345,7 @@ NidokingPokedexEntry::
 SECTION "ClefairyPokedexEntry", ROMX
 ClefairyPokedexEntry::
 	db "Fairy@"
-	db   "Though rarely"
+	text "Though rarely"
 	next "seen, it becomes"
 	next "easier to spot,"
 	page "for some reason,"
@@ -355,7 +355,7 @@ ClefairyPokedexEntry::
 SECTION "ClefablePokedexEntry", ROMX
 ClefablePokedexEntry::
 	db "Fairy@"
-	db   "Said to live in"
+	text "Said to live in"
 	next "quiet, remote"
 	next "mountains, this"
 	page "type of fairy has"
@@ -365,7 +365,7 @@ ClefablePokedexEntry::
 SECTION "VulpixPlainPokedexEntry", ROMX
 VulpixPlainPokedexEntry::
 	db "Fox@"
-	db   "As its body grows"
+	text "As its body grows"
 	next "larger, its six"
 	next "warm tails become"
 	page "more beautiful,"
@@ -375,7 +375,7 @@ VulpixPlainPokedexEntry::
 SECTION "NinetalesPlainPokedexEntry", ROMX
 NinetalesPlainPokedexEntry::
 	db "Fox@"
-	db   "It is said to live"
+	text "It is said to live"
 	next "a thousand years,"
 	next "and each of its"
 	page "tails is loaded"
@@ -385,7 +385,7 @@ NinetalesPlainPokedexEntry::
 SECTION "JigglypuffPokedexEntry", ROMX
 JigglypuffPokedexEntry::
 	db "Balloon@"
-	db   "It rolls its cute"
+	text "It rolls its cute"
 	next "eyes as it sings a"
 	next "soothing lullaby."
 	page "Its gentle song"
@@ -395,7 +395,7 @@ JigglypuffPokedexEntry::
 SECTION "WigglytuffPokedexEntry", ROMX
 WigglytuffPokedexEntry::
 	db "Balloon@"
-	db   "The rich, fluffy"
+	text "The rich, fluffy"
 	next "fur that covers"
 	next "its body feels so"
 	page "good that anyone"
@@ -405,7 +405,7 @@ WigglytuffPokedexEntry::
 SECTION "ZubatPokedexEntry", ROMX
 ZubatPokedexEntry::
 	db "Bat@"
-	db   "During the day, it"
+	text "During the day, it"
 	next "gathers with"
 	next "others and hangs"
 	page "from the ceilings"
@@ -415,7 +415,7 @@ ZubatPokedexEntry::
 SECTION "GolbatPokedexEntry", ROMX
 GolbatPokedexEntry::
 	db "Bat@"
-	db   "However hard its"
+	text "However hard its"
 	next "victim's hide may"
 	next "be, it punctures"
 	page "with sharp fangs"
@@ -425,7 +425,7 @@ GolbatPokedexEntry::
 SECTION "OddishPokedexEntry", ROMX
 OddishPokedexEntry::
 	db "Weed@"
-	db   "During the day, it"
+	text "During the day, it"
 	next "stays in the cold"
 	next "underground to"
 	page "avoid the sun."
@@ -435,7 +435,7 @@ OddishPokedexEntry::
 SECTION "GloomPokedexEntry", ROMX
 GloomPokedexEntry::
 	db "Weed@"
-	db   "The smell from its"
+	text "The smell from its"
 	next "drool-like syrup"
 	next "and the pollen on"
 	page "its petals is so"
@@ -445,7 +445,7 @@ GloomPokedexEntry::
 SECTION "VileplumePokedexEntry", ROMX
 VileplumePokedexEntry::
 	db "Flower@"
-	db   "By shaking its big"
+	text "By shaking its big"
 	next "petals, it scat-"
 	next "ters toxic pollen"
 	page "into the air,"
@@ -455,7 +455,7 @@ VileplumePokedexEntry::
 SECTION "ParasPokedexEntry", ROMX
 ParasPokedexEntry::
 	db "Mushroom@"
-	db   "The tochukaso"
+	text "The tochukaso"
 	next "growing on this"
 	next "#mon's back"
 	page "orders it to"
@@ -465,7 +465,7 @@ ParasPokedexEntry::
 SECTION "ParasectPokedexEntry", ROMX
 ParasectPokedexEntry::
 	db "Mushroom@"
-	db   "When nothing's"
+	text "When nothing's"
 	next "left to extract"
 	next "from the bug, the"
 	page "mushrooms on its"
@@ -475,7 +475,7 @@ ParasectPokedexEntry::
 SECTION "VenonatPokedexEntry", ROMX
 VenonatPokedexEntry::
 	db "Insect@"
-	db   "The small bugs it"
+	text "The small bugs it"
 	next "eats appear only"
 	next "at night, so it"
 	page "sleeps in a hole"
@@ -485,7 +485,7 @@ VenonatPokedexEntry::
 SECTION "VenomothPokedexEntry", ROMX
 VenomothPokedexEntry::
 	db "Poison Moth@"
-	db   "The scales it"
+	text "The scales it"
 	next "scatters will"
 	next "paralyze anyone"
 	page "who touches them,"
@@ -495,7 +495,7 @@ VenomothPokedexEntry::
 SECTION "DiglettPlainPokedexEntry", ROMX
 DiglettPlainPokedexEntry::
 	db "Mole@"
-	db   "It digs under-"
+	text "It digs under-"
 	next "ground and chews"
 	next "on tree roots,"
 	page "sticking its head"
@@ -505,7 +505,7 @@ DiglettPlainPokedexEntry::
 SECTION "DugtrioPlainPokedexEntry", ROMX
 DugtrioPlainPokedexEntry::
 	db "Mole@"
-	db   "Its three heads"
+	text "Its three heads"
 	next "bob separately up"
 	next "and down to loosen"
 	page "the soil nearby,"
@@ -515,7 +515,7 @@ DugtrioPlainPokedexEntry::
 SECTION "MeowthPlainPokedexEntry", ROMX
 MeowthPlainPokedexEntry::
 	db "Scratch Cat@"
-	db   "It loves things"
+	text "It loves things"
 	next "that sparkle. When"
 	next "it sees a shiny"
 	page "object, the gold"
@@ -525,7 +525,7 @@ MeowthPlainPokedexEntry::
 SECTION "PersianPlainPokedexEntry", ROMX
 PersianPlainPokedexEntry::
 	db "Classy Cat@"
-	db   "Behind its lithe,"
+	text "Behind its lithe,"
 	next "elegant appearance"
 	next "lies a barbaric"
 	page "side. It will tear"
@@ -535,7 +535,7 @@ PersianPlainPokedexEntry::
 SECTION "PsyduckPokedexEntry", ROMX
 PsyduckPokedexEntry::
 	db "Duck@"
-	db   "The only time it"
+	text "The only time it"
 	next "can use its psy-"
 	next "chic power is when"
 	page "its sleeping brain"
@@ -545,7 +545,7 @@ PsyduckPokedexEntry::
 SECTION "GolduckPokedexEntry", ROMX
 GolduckPokedexEntry::
 	db "Duck@"
-	db   "It swims grace-"
+	text "It swims grace-"
 	next "fully along on the"
 	next "quiet, slow-moving"
 	page "rivers and lakes"
@@ -555,7 +555,7 @@ GolduckPokedexEntry::
 SECTION "MankeyPokedexEntry", ROMX
 MankeyPokedexEntry::
 	db "Pig Monkey@"
-	db   "It lives in groups"
+	text "It lives in groups"
 	next "in the treetops."
 	next "If it loses sight"
 	page "of its group, it"
@@ -565,7 +565,7 @@ MankeyPokedexEntry::
 SECTION "PrimeapePokedexEntry", ROMX
 PrimeapePokedexEntry::
 	db "Pig Monkey@"
-	db   "It will beat up"
+	text "It will beat up"
 	next "anyone who makes"
 	next "it mad, even if it"
 	page "has to chase them"
@@ -575,7 +575,7 @@ PrimeapePokedexEntry::
 SECTION "GrowlithePokedexEntry", ROMX
 GrowlithePokedexEntry::
 	db "Puppy@"
-	db   "It controls a big"
+	text "It controls a big"
 	next "territory. If it"
 	next "detects an unknown"
 	page "smell, it roars"
@@ -585,7 +585,7 @@ GrowlithePokedexEntry::
 SECTION "ArcaninePokedexEntry", ROMX
 ArcaninePokedexEntry::
 	db "Legendary@"
-	db   "An ancient picture"
+	text "An ancient picture"
 	next "scroll shows that"
 	next "people were"
 	page "attracted to its"
@@ -595,7 +595,7 @@ ArcaninePokedexEntry::
 SECTION "PoliwagPokedexEntry", ROMX
 PoliwagPokedexEntry::
 	db "Tadpole@"
-	db   "The swirl on its"
+	text "The swirl on its"
 	next "belly is its"
 	next "insides showing"
 	page "through the skin."
@@ -605,7 +605,7 @@ PoliwagPokedexEntry::
 SECTION "PoliwhirlPokedexEntry", ROMX
 PoliwhirlPokedexEntry::
 	db "Tadpole@"
-	db   "Though it is"
+	text "Though it is"
 	next "skilled at walk-"
 	next "ing, it prefers to"
 	page "live underwater"
@@ -615,7 +615,7 @@ PoliwhirlPokedexEntry::
 SECTION "PoliwrathPokedexEntry", ROMX
 PoliwrathPokedexEntry::
 	db "Tadpole@"
-	db   "It can use its"
+	text "It can use its"
 	next "well-developed"
 	next "arms and legs to"
 	page "run on the surface"
@@ -625,7 +625,7 @@ PoliwrathPokedexEntry::
 SECTION "AbraPokedexEntry", ROMX
 AbraPokedexEntry::
 	db "Psi@"
-	db   "It hypnotizes"
+	text "It hypnotizes"
 	next "itself so that it"
 	next "can teleport away"
 	page "when it senses"
@@ -635,7 +635,7 @@ AbraPokedexEntry::
 SECTION "KadabraPokedexEntry", ROMX
 KadabraPokedexEntry::
 	db "Psi@"
-	db   "When it closes its"
+	text "When it closes its"
 	next "eyes, twice as"
 	next "many alpha parti-"
 	page "cles come out of"
@@ -645,7 +645,7 @@ KadabraPokedexEntry::
 SECTION "AlakazamPokedexEntry", ROMX
 AlakazamPokedexEntry::
 	db "Psi@"
-	db   "It has an IQ of"
+	text "It has an IQ of"
 	next "5000. It calcu-"
 	next "lates many things"
 	page "in order to gain"
@@ -655,7 +655,7 @@ AlakazamPokedexEntry::
 SECTION "MachopPokedexEntry", ROMX
 MachopPokedexEntry::
 	db "Superpower@"
-	db   "It trains by"
+	text "It trains by"
 	next "lifting rocks in"
 	next "the mountains. It"
 	page "can even pick up a"
@@ -665,7 +665,7 @@ MachopPokedexEntry::
 SECTION "MachokePokedexEntry", ROMX
 MachokePokedexEntry::
 	db "Superpower@"
-	db   "This tough #mon"
+	text "This tough #mon"
 	next "always stays in"
 	next "the zone. Its"
 	page "muscles become"
@@ -675,7 +675,7 @@ MachokePokedexEntry::
 SECTION "MachampPokedexEntry", ROMX
 MachampPokedexEntry::
 	db "Superpower@"
-	db   "With four arms"
+	text "With four arms"
 	next "that react more"
 	next "quickly than it"
 	page "can think, it can"
@@ -685,7 +685,7 @@ MachampPokedexEntry::
 SECTION "BellsproutPokedexEntry", ROMX
 BellsproutPokedexEntry::
 	db "Flower@"
-	db   "If it notices"
+	text "If it notices"
 	next "anything that"
 	next "moves, it"
 	page "immediately flings"
@@ -695,7 +695,7 @@ BellsproutPokedexEntry::
 SECTION "WeepinbellPokedexEntry", ROMX
 WeepinbellPokedexEntry::
 	db "Flycatcher@"
-	db   "When it's hungry,"
+	text "When it's hungry,"
 	next "it swings its"
 	next "razor-sharp"
 	page "leaves, slicing up"
@@ -705,7 +705,7 @@ WeepinbellPokedexEntry::
 SECTION "VictreebelPokedexEntry", ROMX
 VictreebelPokedexEntry::
 	db "Flycatcher@"
-	db   "Once ingested into"
+	text "Once ingested into"
 	next "this #mon's"
 	next "body, even the"
 	page "hardest object"
@@ -715,7 +715,7 @@ VictreebelPokedexEntry::
 SECTION "TentacoolPokedexEntry", ROMX
 TentacoolPokedexEntry::
 	db "Jellyfish@"
-	db   "As it floats along"
+	text "As it floats along"
 	next "on the waves, it"
 	next "uses its toxic"
 	page "feelers to stab"
@@ -725,7 +725,7 @@ TentacoolPokedexEntry::
 SECTION "TentacruelPokedexEntry", ROMX
 TentacruelPokedexEntry::
 	db "Jellyfish@"
-	db   "When its 80 feel-"
+	text "When its 80 feel-"
 	next "ers absorb water,"
 	next "it stretches to"
 	page "become like a net"
@@ -735,7 +735,7 @@ TentacruelPokedexEntry::
 SECTION "GeodudePlainPokedexEntry", ROMX
 GeodudePlainPokedexEntry::
 	db "Rock@"
-	db   "Proud of their"
+	text "Proud of their"
 	next "sturdy bodies,"
 	next "they bash against"
 	page "each other in a"
@@ -745,7 +745,7 @@ GeodudePlainPokedexEntry::
 SECTION "GravelerPlainPokedexEntry", ROMX
 GravelerPlainPokedexEntry::
 	db "Rock@"
-	db   "It travels by rol-"
+	text "It travels by rol-"
 	next "ling on mountain"
 	next "paths. If it gains"
 	page "too much speed, it"
@@ -755,7 +755,7 @@ GravelerPlainPokedexEntry::
 SECTION "GolemPlainPokedexEntry", ROMX
 GolemPlainPokedexEntry::
 	db "Megaton@"
-	db   "Its rock-like body"
+	text "Its rock-like body"
 	next "is so durable,"
 	next "even high-powered"
 	page "dynamite blasts"
@@ -765,7 +765,7 @@ GolemPlainPokedexEntry::
 SECTION "PonytaPlainPokedexEntry", ROMX
 PonytaPlainPokedexEntry::
 	db "Fire Horse@"
-	db   "Training by"
+	text "Training by"
 	next "jumping over grass"
 	next "that grows longer"
 	page "every day has made"
@@ -775,7 +775,7 @@ PonytaPlainPokedexEntry::
 SECTION "RapidashPlainPokedexEntry", ROMX
 RapidashPlainPokedexEntry::
 	db "Fire Horse@"
-	db   "It just loves to"
+	text "It just loves to"
 	next "gallop. The faster"
 	next "it goes, the long-"
 	page "er the swaying"
@@ -785,7 +785,7 @@ RapidashPlainPokedexEntry::
 SECTION "SlowpokePlainPokedexEntry", ROMX
 SlowpokePlainPokedexEntry::
 	db "Dopey@"
-	db   "It is always so"
+	text "It is always so"
 	next "absent-minded that"
 	next "it won't react,"
 	page "even if its"
@@ -799,7 +799,7 @@ if DEF(FAITHFUL)
 else
 	db "Squatter@"
 endc
-	db   "An attached"
+	text "An attached"
 	next "Shellder won't let"
 	next "go because of the"
 	page "tasty flavor that"
@@ -809,7 +809,7 @@ endc
 SECTION "MagnemitePokedexEntry", ROMX
 MagnemitePokedexEntry::
 	db "Magnet@"
-	db   "The electricity"
+	text "The electricity"
 	next "emitted by the"
 	next "units on each side"
 	page "of its body cause"
@@ -819,7 +819,7 @@ MagnemitePokedexEntry::
 SECTION "MagnetonPokedexEntry", ROMX
 MagnetonPokedexEntry::
 	db "Magnet@"
-	db   "When many"
+	text "When many"
 	next "Magneton gather"
 	next "together, the"
 	page "resulting magnetic"
@@ -829,7 +829,7 @@ MagnetonPokedexEntry::
 SECTION "FarfetchDPlainPokedexEntry", ROMX
 FarfetchDPlainPokedexEntry::
 	db "Wild Duck@"
-	db   "In order to"
+	text "In order to"
 	next "prevent their"
 	next "extinction, more"
 	page "people have made"
@@ -839,7 +839,7 @@ FarfetchDPlainPokedexEntry::
 SECTION "DoduoPokedexEntry", ROMX
 DoduoPokedexEntry::
 	db "Twin Bird@"
-	db   "By alternately"
+	text "By alternately"
 	next "raising and lower-"
 	next "ing its two heads,"
 	page "it balances itself"
@@ -849,7 +849,7 @@ DoduoPokedexEntry::
 SECTION "DodrioPokedexEntry", ROMX
 DodrioPokedexEntry::
 	db "Triple Bird@"
-	db   "An enemy that"
+	text "An enemy that"
 	next "takes its eyes off"
 	next "any of the three"
 	page "heads--even for a"
@@ -859,7 +859,7 @@ DodrioPokedexEntry::
 SECTION "SeelPokedexEntry", ROMX
 SeelPokedexEntry::
 	db "Sea Lion@"
-	db   "The light blue fur"
+	text "The light blue fur"
 	next "that covers it"
 	next "keeps it protected"
 	page "against the cold."
@@ -869,7 +869,7 @@ SeelPokedexEntry::
 SECTION "DewgongPokedexEntry", ROMX
 DewgongPokedexEntry::
 	db "Sea Lion@"
-	db   "It sleeps under"
+	text "It sleeps under"
 	next "shallow ocean"
 	next "waters during the"
 	page "day, then looks"
@@ -879,7 +879,7 @@ DewgongPokedexEntry::
 SECTION "GrimerPlainPokedexEntry", ROMX
 GrimerPlainPokedexEntry::
 	db "Sludge@"
-	db   "When two of these"
+	text "When two of these"
 	next "#mon's bodies"
 	next "are combined"
 	page "together, new"
@@ -889,7 +889,7 @@ GrimerPlainPokedexEntry::
 SECTION "MukPlainPokedexEntry", ROMX
 MukPlainPokedexEntry::
 	db "Sludge@"
-	db   "As it moves, a"
+	text "As it moves, a"
 	next "very strong poison"
 	next "leaks from it,"
 	page "making the ground"
@@ -899,7 +899,7 @@ MukPlainPokedexEntry::
 SECTION "ShellderPokedexEntry", ROMX
 ShellderPokedexEntry::
 	db "Bivalve@"
-	db   "Clamping on to an"
+	text "Clamping on to an"
 	next "opponent reveals"
 	next "its vulnerable"
 	page "parts, so it uses"
@@ -909,7 +909,7 @@ ShellderPokedexEntry::
 SECTION "CloysterPokedexEntry", ROMX
 CloysterPokedexEntry::
 	db "Bivalve@"
-	db   "Even a missile"
+	text "Even a missile"
 	next "can't break the"
 	next "spikes it uses to"
 	page "stab opponents."
@@ -919,7 +919,7 @@ CloysterPokedexEntry::
 SECTION "GastlyPokedexEntry", ROMX
 GastlyPokedexEntry::
 	db "Gas@"
-	db   "It wraps its op-"
+	text "It wraps its op-"
 	next "ponent in its gas-"
 	next "like body, slowly"
 	page "weakening its prey"
@@ -929,7 +929,7 @@ GastlyPokedexEntry::
 SECTION "HaunterPokedexEntry", ROMX
 HaunterPokedexEntry::
 	db "Gas@"
-	db   "It hides in the"
+	text "It hides in the"
 	next "dark, planning to"
 	next "take the life of"
 	page "the next living"
@@ -939,7 +939,7 @@ HaunterPokedexEntry::
 SECTION "GengarPokedexEntry", ROMX
 GengarPokedexEntry::
 	db "Shadow@"
-	db   "Hiding in people's"
+	text "Hiding in people's"
 	next "shadows at night,"
 	next "it absorbs their"
 	page "heat. The chill it"
@@ -949,7 +949,7 @@ GengarPokedexEntry::
 SECTION "OnixPokedexEntry", ROMX
 OnixPokedexEntry::
 	db "Rock Snake@"
-	db   "As it digs through"
+	text "As it digs through"
 	next "the ground, it"
 	next "absorbs many hard"
 	page "objects. This is"
@@ -959,7 +959,7 @@ OnixPokedexEntry::
 SECTION "DrowzeePokedexEntry", ROMX
 DrowzeePokedexEntry::
 	db "Hypnosis@"
-	db   "When it twitches"
+	text "When it twitches"
 	next "its nose, it can"
 	next "tell where someone"
 	page "is sleeping and"
@@ -969,7 +969,7 @@ DrowzeePokedexEntry::
 SECTION "HypnoPokedexEntry", ROMX
 HypnoPokedexEntry::
 	db "Hypnosis@"
-	db   "The longer it"
+	text "The longer it"
 	next "swings its"
 	next "pendulum, the"
 	page "longer the effects"
@@ -979,7 +979,7 @@ HypnoPokedexEntry::
 SECTION "KrabbyPokedexEntry", ROMX
 KrabbyPokedexEntry::
 	db "River Crab@"
-	db   "If it is unable"
+	text "If it is unable"
 	next "to find food, it"
 	next "will absorb"
 	page "nutrients by"
@@ -989,7 +989,7 @@ KrabbyPokedexEntry::
 SECTION "KinglerPokedexEntry", ROMX
 KinglerPokedexEntry::
 	db "Pincer@"
-	db   "Its oversized claw"
+	text "Its oversized claw"
 	next "is very powerful,"
 	next "but when it's not"
 	page "in battle, the"
@@ -999,7 +999,7 @@ KinglerPokedexEntry::
 SECTION "VoltorbPokedexEntry", ROMX
 VoltorbPokedexEntry::
 	db "Ball@"
-	db   "During the study"
+	text "During the study"
 	next "of this #mon,"
 	next "it was discovered"
 	page "that its compo-"
@@ -1009,7 +1009,7 @@ VoltorbPokedexEntry::
 SECTION "ElectrodePokedexEntry", ROMX
 ElectrodePokedexEntry::
 	db "Ball@"
-	db   "The more energy it"
+	text "The more energy it"
 	next "charges up, the"
 	next "faster it gets."
 	page "But this also"
@@ -1019,7 +1019,7 @@ ElectrodePokedexEntry::
 SECTION "ExeggcutePokedexEntry", ROMX
 ExeggcutePokedexEntry::
 	db "Egg@"
-	db   "If even one is"
+	text "If even one is"
 	next "separated from the"
 	next "group, the energy"
 	page "bond between the"
@@ -1029,7 +1029,7 @@ ExeggcutePokedexEntry::
 SECTION "ExeggutorPlainPokedexEntry", ROMX
 ExeggutorPlainPokedexEntry::
 	db "Coconut@"
-	db   "Living in a good"
+	text "Living in a good"
 	next "environment makes"
 	next "it grow lots of"
 	page "heads. A head that"
@@ -1039,7 +1039,7 @@ ExeggutorPlainPokedexEntry::
 SECTION "CubonePokedexEntry", ROMX
 CubonePokedexEntry::
 	db "Lonely@"
-	db   "It lost its mother"
+	text "It lost its mother"
 	next "after its birth."
 	next "It wears its"
 	page "mother's skull,"
@@ -1049,7 +1049,7 @@ CubonePokedexEntry::
 SECTION "MarowakPlainPokedexEntry", ROMX
 MarowakPlainPokedexEntry::
 	db "Bone Keeper@"
-	db   "Somewhere in the"
+	text "Somewhere in the"
 	next "world is a ceme-"
 	next "tery just for"
 	page "Marowak. It gets"
@@ -1059,7 +1059,7 @@ MarowakPlainPokedexEntry::
 SECTION "HitmonleePokedexEntry", ROMX
 HitmonleePokedexEntry::
 	db "Kicking@"
-	db   "It is also called"
+	text "It is also called"
 	next "the Kick Master."
 	next "It uses its"
 	page "elastic legs to"
@@ -1069,7 +1069,7 @@ HitmonleePokedexEntry::
 SECTION "HitmonchanPokedexEntry", ROMX
 HitmonchanPokedexEntry::
 	db "Punching@"
-	db   "To increase the"
+	text "To increase the"
 	next "strength of all"
 	next "its punch moves,"
 	page "it spins its arms"
@@ -1079,7 +1079,7 @@ HitmonchanPokedexEntry::
 SECTION "LickitungPokedexEntry", ROMX
 LickitungPokedexEntry::
 	db "Licking@"
-	db   "Its tongue has"
+	text "Its tongue has"
 	next "well-developed"
 	next "nerves that run to"
 	page "the very tip, so"
@@ -1089,7 +1089,7 @@ LickitungPokedexEntry::
 SECTION "KoffingPokedexEntry", ROMX
 KoffingPokedexEntry::
 	db "Poison Gas@"
-	db   "If one gets close"
+	text "If one gets close"
 	next "enough to it when"
 	next "it expels poison-"
 	page "ous gas, the gas"
@@ -1099,7 +1099,7 @@ KoffingPokedexEntry::
 SECTION "WeezingPlainPokedexEntry", ROMX
 WeezingPlainPokedexEntry::
 	db "Poison Gas@"
-	db   "When it inhales"
+	text "When it inhales"
 	next "poisonous gases"
 	next "from garbage, its"
 	page "body expands, and"
@@ -1109,7 +1109,7 @@ WeezingPlainPokedexEntry::
 SECTION "RhyhornPokedexEntry", ROMX
 RhyhornPokedexEntry::
 	db "Spikes@"
-	db   "It can remember"
+	text "It can remember"
 	next "only one thing at"
 	next "a time. Once it"
 	page "starts rushing, it"
@@ -1119,7 +1119,7 @@ RhyhornPokedexEntry::
 SECTION "RhydonPokedexEntry", ROMX
 RhydonPokedexEntry::
 	db "Drill@"
-	db   "By lightly spin-"
+	text "By lightly spin-"
 	next "ning its drill-"
 	next "like horn, it can"
 	page "easily shatter"
@@ -1129,7 +1129,7 @@ RhydonPokedexEntry::
 SECTION "ChanseyPokedexEntry", ROMX
 ChanseyPokedexEntry::
 	db "Egg@"
-	db   "People try to"
+	text "People try to"
 	next "catch it for its"
 	next "extremely"
 	page "nutritious eggs,"
@@ -1139,7 +1139,7 @@ ChanseyPokedexEntry::
 SECTION "TangelaPokedexEntry", ROMX
 TangelaPokedexEntry::
 	db "Vine@"
-	db   "During battle, it"
+	text "During battle, it"
 	next "constantly moves"
 	next "the vines that"
 	page "cover its body in"
@@ -1149,7 +1149,7 @@ TangelaPokedexEntry::
 SECTION "KangaskhanPokedexEntry", ROMX
 KangaskhanPokedexEntry::
 	db "Parent@"
-	db   "To avoid"
+	text "To avoid"
 	next "crushing the"
 	next "baby it carries in"
 	page "its pouch, it"
@@ -1159,7 +1159,7 @@ KangaskhanPokedexEntry::
 SECTION "HorseaPokedexEntry", ROMX
 HorseaPokedexEntry::
 	db "Dragon@"
-	db   "When they're in a"
+	text "When they're in a"
 	next "safe location,"
 	next "they can be seen"
 	page "playfully tangling"
@@ -1169,7 +1169,7 @@ HorseaPokedexEntry::
 SECTION "SeadraPokedexEntry", ROMX
 SeadraPokedexEntry::
 	db "Dragon@"
-	db   "The male raises"
+	text "The male raises"
 	next "the young. If it"
 	next "is approached, it"
 	page "uses its toxic"
@@ -1179,7 +1179,7 @@ SeadraPokedexEntry::
 SECTION "GoldeenPokedexEntry", ROMX
 GoldeenPokedexEntry::
 	db "Goldfish@"
-	db   "During spawning"
+	text "During spawning"
 	next "season, they swim"
 	next "gracefully in the"
 	page "water, searching"
@@ -1189,7 +1189,7 @@ GoldeenPokedexEntry::
 SECTION "SeakingPokedexEntry", ROMX
 SeakingPokedexEntry::
 	db "Goldfish@"
-	db   "When autumn comes,"
+	text "When autumn comes,"
 	next "the males patrol"
 	next "the area around"
 	page "their nests in"
@@ -1199,7 +1199,7 @@ SeakingPokedexEntry::
 SECTION "StaryuPokedexEntry", ROMX
 StaryuPokedexEntry::
 	db "Star Shape@"
-	db   "When the stars"
+	text "When the stars"
 	next "twinkle at night,"
 	next "it floats up from"
 	page "the sea floor, and"
@@ -1209,7 +1209,7 @@ StaryuPokedexEntry::
 SECTION "StarmiePokedexEntry", ROMX
 StarmiePokedexEntry::
 	db "Mysterious@"
-	db   "It is said that it"
+	text "It is said that it"
 	next "uses the seven-"
 	next "colored core of"
 	page "its body to send"
@@ -1219,7 +1219,7 @@ StarmiePokedexEntry::
 SECTION "MrMimePlainPokedexEntry", ROMX
 MrMimePlainPokedexEntry::
 	db "Barrier@"
-	db   "It uses the"
+	text "It uses the"
 	next "mysterious"
 	next "power it has in"
 	page "its fingers to"
@@ -1229,7 +1229,7 @@ MrMimePlainPokedexEntry::
 SECTION "ScytherPokedexEntry", ROMX
 ScytherPokedexEntry::
 	db "Mantis@"
-	db   "It's very proud of"
+	text "It's very proud of"
 	next "its speed. It"
 	next "moves so fast that"
 	page "its opponent does"
@@ -1239,7 +1239,7 @@ ScytherPokedexEntry::
 SECTION "JynxPokedexEntry", ROMX
 JynxPokedexEntry::
 	db "Human Shape@"
-	db   "It has several"
+	text "It has several"
 	next "different cry"
 	next "patterns, each of"
 	page "which seems to"
@@ -1249,7 +1249,7 @@ JynxPokedexEntry::
 SECTION "ElectabuzzPokedexEntry", ROMX
 ElectabuzzPokedexEntry::
 	db "Electric@"
-	db   "When two"
+	text "When two"
 	next "Electabuzz touch,"
 	next "they control the"
 	page "electric currents"
@@ -1259,7 +1259,7 @@ ElectabuzzPokedexEntry::
 SECTION "MagmarPokedexEntry", ROMX
 MagmarPokedexEntry::
 	db "Spitfire@"
-	db   "It moves more"
+	text "It moves more"
 	next "frequently in hot"
 	next "areas. It can heal"
 	page "itself by dipping"
@@ -1269,7 +1269,7 @@ MagmarPokedexEntry::
 SECTION "PinsirPokedexEntry", ROMX
 PinsirPokedexEntry::
 	db "Stag Beetle@"
-	db   "When the tempera-"
+	text "When the tempera-"
 	next "ture drops at"
 	next "night, it sleeps"
 	page "on treetops or"
@@ -1279,7 +1279,7 @@ PinsirPokedexEntry::
 SECTION "TaurosPlainPokedexEntry", ROMX
 TaurosPlainPokedexEntry::
 	db "Wild Bull@"
-	db   "These violent"
+	text "These violent"
 	next "#mon fight with"
 	next "other members"
 	page "of their herd in"
@@ -1289,7 +1289,7 @@ TaurosPlainPokedexEntry::
 SECTION "MagikarpPokedexEntry", ROMX
 MagikarpPokedexEntry::
 	db "Fish@"
-	db   "This weak and"
+	text "This weak and"
 	next "pathetic #mon"
 	next "gets easily pushed"
 	page "along rivers when"
@@ -1299,7 +1299,7 @@ MagikarpPokedexEntry::
 SECTION "GyaradosPlainPokedexEntry", ROMX
 GyaradosPlainPokedexEntry::
 	db "Atrocious@"
-	db   "It appears when-"
+	text "It appears when-"
 	next "ever there is"
 	next "world conflict,"
 	page "burning down any"
@@ -1309,7 +1309,7 @@ GyaradosPlainPokedexEntry::
 SECTION "LaprasPokedexEntry", ROMX
 LaprasPokedexEntry::
 	db "Transport@"
-	db   "This gentle"
+	text "This gentle"
 	next "#mon loves to"
 	next "give people rides"
 	page "and provides a ve-"
@@ -1319,7 +1319,7 @@ LaprasPokedexEntry::
 SECTION "DittoPokedexEntry", ROMX
 DittoPokedexEntry::
 	db "Transform@"
-	db   "When it encounters"
+	text "When it encounters"
 	next "another Ditto,"
 	next "it will move"
 	page "faster than normal"
@@ -1329,7 +1329,7 @@ DittoPokedexEntry::
 SECTION "EeveePokedexEntry", ROMX
 EeveePokedexEntry::
 	db "Evolution@"
-	db   "Its ability to"
+	text "Its ability to"
 	next "evolve into many"
 	next "forms allows it to"
 	page "adapt smoothly"
@@ -1339,7 +1339,7 @@ EeveePokedexEntry::
 SECTION "VaporeonPokedexEntry", ROMX
 VaporeonPokedexEntry::
 	db "Bubble Jet@"
-	db   "As it uses the"
+	text "As it uses the"
 	next "fins on the tip"
 	next "of its tail to"
 	page "swim, it blends"
@@ -1349,7 +1349,7 @@ VaporeonPokedexEntry::
 SECTION "JolteonPokedexEntry", ROMX
 JolteonPokedexEntry::
 	db "Lightning@"
-	db   "The negatively"
+	text "The negatively"
 	next "charged ions"
 	next "generated in its"
 	page "fur create a"
@@ -1359,7 +1359,7 @@ JolteonPokedexEntry::
 SECTION "FlareonPokedexEntry", ROMX
 FlareonPokedexEntry::
 	db "Flame@"
-	db   "Once it has stored"
+	text "Once it has stored"
 	next "up enough heat,"
 	next "this #mon's"
 	page "body temperature"
@@ -1369,7 +1369,7 @@ FlareonPokedexEntry::
 SECTION "PorygonPokedexEntry", ROMX
 PorygonPokedexEntry::
 	db "Virtual@"
-	db   "An artificial"
+	text "An artificial"
 	next "#mon created"
 	next "due to extensive"
 	page "research, it can"
@@ -1379,7 +1379,7 @@ PorygonPokedexEntry::
 SECTION "OmanytePokedexEntry", ROMX
 OmanytePokedexEntry::
 	db "Spiral@"
-	db   "In prehistoric"
+	text "In prehistoric"
 	next "times, it swam on"
 	next "the sea floor,"
 	page "eating plankton."
@@ -1389,7 +1389,7 @@ OmanytePokedexEntry::
 SECTION "OmastarPokedexEntry", ROMX
 OmastarPokedexEntry::
 	db "Spiral@"
-	db   "Its heavy shell"
+	text "Its heavy shell"
 	next "allowed it to"
 	next "reach only nearby"
 	page "food. This could"
@@ -1399,7 +1399,7 @@ OmastarPokedexEntry::
 SECTION "KabutoPokedexEntry", ROMX
 KabutoPokedexEntry::
 	db "Shellfish@"
-	db   "Three hundred"
+	text "Three hundred"
 	next "million years ago,"
 	next "it hid on the sea"
 	page "floor. It also has"
@@ -1409,7 +1409,7 @@ KabutoPokedexEntry::
 SECTION "KabutopsPokedexEntry", ROMX
 KabutopsPokedexEntry::
 	db "Shellfish@"
-	db   "It was able to"
+	text "It was able to"
 	next "swim quickly thro-"
 	next "ugh the water by"
 	page "compactly folding"
@@ -1419,7 +1419,7 @@ KabutopsPokedexEntry::
 SECTION "AerodactylPokedexEntry", ROMX
 AerodactylPokedexEntry::
 	db "Fossil@"
-	db   "In prehistoric"
+	text "In prehistoric"
 	next "times, this"
 	next "#mon flew"
 	page "freely and"
@@ -1429,7 +1429,7 @@ AerodactylPokedexEntry::
 SECTION "SnorlaxPokedexEntry", ROMX
 SnorlaxPokedexEntry::
 	db "Sleeping@"
-	db   "This #mon's"
+	text "This #mon's"
 	next "stomach is so"
 	next "strong, even"
 	page "eating moldy or"
@@ -1439,7 +1439,7 @@ SnorlaxPokedexEntry::
 SECTION "ArticunoPlainPokedexEntry", ROMX
 ArticunoPlainPokedexEntry::
 	db "Freeze@"
-	db   "Legendary bird"
+	text "Legendary bird"
 	next "#mon. As it"
 	next "flies through the"
 	page "sky, it cools the"
@@ -1449,7 +1449,7 @@ ArticunoPlainPokedexEntry::
 SECTION "ZapdosPlainPokedexEntry", ROMX
 ZapdosPlainPokedexEntry::
 	db "Electric@"
-	db   "Legendary bird"
+	text "Legendary bird"
 	next "#mon. They say"
 	next "lightning caused"
 	page "by the flapping of"
@@ -1459,7 +1459,7 @@ ZapdosPlainPokedexEntry::
 SECTION "MoltresPlainPokedexEntry", ROMX
 MoltresPlainPokedexEntry::
 	db "Flame@"
-	db   "Legendary bird"
+	text "Legendary bird"
 	next "#mon. It is"
 	next "said to migrate"
 	page "from the south"
@@ -1469,7 +1469,7 @@ MoltresPlainPokedexEntry::
 SECTION "DratiniPokedexEntry", ROMX
 DratiniPokedexEntry::
 	db "Dragon@"
-	db   "It sheds many lay-"
+	text "It sheds many lay-"
 	next "ers of skin as it"
 	next "grows larger. Dur-"
 	page "ing this process,"
@@ -1479,7 +1479,7 @@ DratiniPokedexEntry::
 SECTION "DragonairPokedexEntry", ROMX
 DragonairPokedexEntry::
 	db "Dragon@"
-	db   "It is called the"
+	text "It is called the"
 	next "divine #mon."
 	next "When its entire"
 	page "body brightens"
@@ -1489,7 +1489,7 @@ DragonairPokedexEntry::
 SECTION "DragonitePokedexEntry", ROMX
 DragonitePokedexEntry::
 	db "Dragon@"
-	db   "It is said that"
+	text "It is said that"
 	next "somewhere in the"
 	next "ocean lies an"
 	page "island where these"
@@ -1499,7 +1499,7 @@ DragonitePokedexEntry::
 SECTION "MewtwoPlainPokedexEntry", ROMX
 MewtwoPlainPokedexEntry::
 	db "Genetic@"
-	db   "Said to rest"
+	text "Said to rest"
 	next "quietly in an"
 	next "undiscovered cave,"
 	page "this #mon was"
@@ -1509,7 +1509,7 @@ MewtwoPlainPokedexEntry::
 SECTION "MewPokedexEntry", ROMX
 MewPokedexEntry::
 	db "New Species@"
-	db   "Because it can"
+	text "Because it can"
 	next "learn any move,"
 	next "some people began"
 	page "research to see if"
@@ -1519,7 +1519,7 @@ MewPokedexEntry::
 SECTION "ChikoritaPokedexEntry", ROMX
 ChikoritaPokedexEntry::
 	db "Leaf@"
-	db   "It loves to bask"
+	text "It loves to bask"
 	next "in the sunlight."
 	next "It uses the leaf"
 	page "on its head to"
@@ -1529,7 +1529,7 @@ ChikoritaPokedexEntry::
 SECTION "BayleefPokedexEntry", ROMX
 BayleefPokedexEntry::
 	db "Leaf@"
-	db   "The scent that"
+	text "The scent that"
 	next "wafts from the"
 	next "leaves on its neck"
 	page "causes anyone who"
@@ -1539,7 +1539,7 @@ BayleefPokedexEntry::
 SECTION "MeganiumPokedexEntry", ROMX
 MeganiumPokedexEntry::
 	db "Herb@"
-	db   "Anyone who stands"
+	text "Anyone who stands"
 	next "beside it becomes"
 	next "refreshed, just as"
 	page "if they were"
@@ -1549,7 +1549,7 @@ MeganiumPokedexEntry::
 SECTION "CyndaquilPokedexEntry", ROMX
 CyndaquilPokedexEntry::
 	db "Fire Mouse@"
-	db   "The fire that"
+	text "The fire that"
 	next "spouts from its"
 	next "back burns hottest"
 	page "when it is angry."
@@ -1559,7 +1559,7 @@ CyndaquilPokedexEntry::
 SECTION "QuilavaPokedexEntry", ROMX
 QuilavaPokedexEntry::
 	db "Volcano@"
-	db   "Before battle, it"
+	text "Before battle, it"
 	next "turns its back on"
 	next "its opponent to"
 	page "demonstrate how"
@@ -1569,7 +1569,7 @@ QuilavaPokedexEntry::
 SECTION "TyphlosionPlainPokedexEntry", ROMX
 TyphlosionPlainPokedexEntry::
 	db "Volcano@"
-	db   "When heat from its"
+	text "When heat from its"
 	next "body causes the"
 	next "air around it to"
 	page "shimmer, this is a"
@@ -1579,7 +1579,7 @@ TyphlosionPlainPokedexEntry::
 SECTION "TotodilePokedexEntry", ROMX
 TotodilePokedexEntry::
 	db "Big Jaw@"
-	db   "This rough critter"
+	text "This rough critter"
 	next "chomps at any"
 	next "moving object it"
 	page "sees. Turning your"
@@ -1589,7 +1589,7 @@ TotodilePokedexEntry::
 SECTION "CroconawPokedexEntry", ROMX
 CroconawPokedexEntry::
 	db "Big Jaw@"
-	db   "The tips of its"
+	text "The tips of its"
 	next "fangs are slanted"
 	next "backward. Once"
 	page "those fangs clamp"
@@ -1599,7 +1599,7 @@ CroconawPokedexEntry::
 SECTION "FeraligatrPokedexEntry", ROMX
 FeraligatrPokedexEntry::
 	db "Big Jaw@"
-	db   "Although it has a"
+	text "Although it has a"
 	next "massive body, its"
 	next "powerful hind legs"
 	page "enable it to move"
@@ -1609,7 +1609,7 @@ FeraligatrPokedexEntry::
 SECTION "SentretPokedexEntry", ROMX
 SentretPokedexEntry::
 	db "Scout@"
-	db   "When acting as a"
+	text "When acting as a"
 	next "lookout, it warns"
 	next "others of danger"
 	page "by screeching and"
@@ -1619,7 +1619,7 @@ SentretPokedexEntry::
 SECTION "FurretPokedexEntry", ROMX
 FurretPokedexEntry::
 	db "Long Body@"
-	db   "It lives in narrow"
+	text "It lives in narrow"
 	next "burrows that fit"
 	next "its slim body. The"
 	page "deeper the nests"
@@ -1629,7 +1629,7 @@ FurretPokedexEntry::
 SECTION "HoothootPokedexEntry", ROMX
 HoothootPokedexEntry::
 	db "Owl@"
-	db   "It begins to hoot"
+	text "It begins to hoot"
 	next "at the same time"
 	next "every day. Some"
 	page "trainers use them"
@@ -1639,7 +1639,7 @@ HoothootPokedexEntry::
 SECTION "NoctowlPokedexEntry", ROMX
 NoctowlPokedexEntry::
 	db "Owl@"
-	db   "Its extremely soft"
+	text "Its extremely soft"
 	next "feathers make no"
 	next "sound in flight."
 	page "It silently sneaks"
@@ -1649,7 +1649,7 @@ NoctowlPokedexEntry::
 SECTION "LedybaPokedexEntry", ROMX
 LedybaPokedexEntry::
 	db "Five Star@"
-	db   "It is timid and"
+	text "It is timid and"
 	next "clusters together"
 	next "with others. The"
 	page "fluid secreted by"
@@ -1659,7 +1659,7 @@ LedybaPokedexEntry::
 SECTION "LedianPokedexEntry", ROMX
 LedianPokedexEntry::
 	db "Five Star@"
-	db   "In the daytime"
+	text "In the daytime"
 	next "when it gets warm,"
 	next "it curls up inside"
 	page "a big leaf and"
@@ -1669,7 +1669,7 @@ LedianPokedexEntry::
 SECTION "SpinarakPokedexEntry", ROMX
 SpinarakPokedexEntry::
 	db "String Spit@"
-	db   "If prey becomes"
+	text "If prey becomes"
 	next "ensnared in its"
 	next "nest of spun"
 	page "string, it waits"
@@ -1679,7 +1679,7 @@ SpinarakPokedexEntry::
 SECTION "AriadosPokedexEntry", ROMX
 AriadosPokedexEntry::
 	db "Long Leg@"
-	db   "Rather than making"
+	text "Rather than making"
 	next "a nest in one"
 	next "specific spot, it"
 	page "wanders in search"
@@ -1689,7 +1689,7 @@ AriadosPokedexEntry::
 SECTION "CrobatPokedexEntry", ROMX
 CrobatPokedexEntry::
 	db "Bat@"
-	db   "As a result of its"
+	text "As a result of its"
 	next "pursuit of faster,"
 	next "yet more silent"
 	page "flight, a new set"
@@ -1699,7 +1699,7 @@ CrobatPokedexEntry::
 SECTION "ChinchouPokedexEntry", ROMX
 ChinchouPokedexEntry::
 	db "Angler@"
-	db   "Its antennae, whi-"
+	text "Its antennae, whi-"
 	next "ch evolved from a"
 	next "fin, have both po-"
 	page "sitive and neg-"
@@ -1709,7 +1709,7 @@ ChinchouPokedexEntry::
 SECTION "LanturnPokedexEntry", ROMX
 LanturnPokedexEntry::
 	db "Light@"
-	db   "This #mon uses"
+	text "This #mon uses"
 	next "the bright part of"
 	next "its body, which"
 	page "changed from a"
@@ -1719,7 +1719,7 @@ LanturnPokedexEntry::
 SECTION "PichuPokedexEntry", ROMX
 PichuPokedexEntry::
 	db "Tiny Mouse@"
-	db   "It is unskilled at"
+	text "It is unskilled at"
 	next "storing electric"
 	next "power. Any kind of"
 	page "shock causes it to"
@@ -1729,7 +1729,7 @@ PichuPokedexEntry::
 SECTION "CleffaPokedexEntry", ROMX
 CleffaPokedexEntry::
 	db "Star Shape@"
-	db   "If the impact site"
+	text "If the impact site"
 	next "of a meteorite is"
 	next "found, this"
 	page "#mon is certain"
@@ -1739,7 +1739,7 @@ CleffaPokedexEntry::
 SECTION "IgglybuffPokedexEntry", ROMX
 IgglybuffPokedexEntry::
 	db "Balloon@"
-	db   "Instead of walking"
+	text "Instead of walking"
 	next "with its short"
 	next "legs, it moves"
 	page "around by bouncing"
@@ -1749,7 +1749,7 @@ IgglybuffPokedexEntry::
 SECTION "TogepiPokedexEntry", ROMX
 TogepiPokedexEntry::
 	db "Spike Ball@"
-	db   "It is considered"
+	text "It is considered"
 	next "to be a symbol of"
 	next "good luck. Its"
 	page "shell is said to"
@@ -1759,7 +1759,7 @@ TogepiPokedexEntry::
 SECTION "TogeticPokedexEntry", ROMX
 TogeticPokedexEntry::
 	db "Happiness@"
-	db   "Although it does"
+	text "Although it does"
 	next "not flap its wings"
 	next "very much, it can"
 	page "stay up in the air"
@@ -1769,7 +1769,7 @@ TogeticPokedexEntry::
 SECTION "NatuPokedexEntry", ROMX
 NatuPokedexEntry::
 	db "Little Bird@"
-	db   "It is extremely"
+	text "It is extremely"
 	next "good at climbing"
 	next "tree trunks and"
 	page "likes to eat the"
@@ -1779,7 +1779,7 @@ NatuPokedexEntry::
 SECTION "XatuPokedexEntry", ROMX
 XatuPokedexEntry::
 	db "Mystic@"
-	db   "Once it begins to"
+	text "Once it begins to"
 	next "meditate at sun-"
 	next "rise, the entire"
 	page "day will pass"
@@ -1789,7 +1789,7 @@ XatuPokedexEntry::
 SECTION "MareepPokedexEntry", ROMX
 MareepPokedexEntry::
 	db "Wool@"
-	db   "It stores lots of"
+	text "It stores lots of"
 	next "air in its soft"
 	next "fur, allowing it"
 	page "to stay cool in"
@@ -1799,7 +1799,7 @@ MareepPokedexEntry::
 SECTION "FlaaffyPokedexEntry", ROMX
 FlaaffyPokedexEntry::
 	db "Wool@"
-	db   "Because of its"
+	text "Because of its"
 	next "rubbery, electric-"
 	next "ity-resistant"
 	page "skin, it can store"
@@ -1809,7 +1809,7 @@ FlaaffyPokedexEntry::
 SECTION "AmpharosPokedexEntry", ROMX
 AmpharosPokedexEntry::
 	db "Light@"
-	db   "When it gets dark,"
+	text "When it gets dark,"
 	next "the light from its"
 	next "bright, shiny tail"
 	page "can be seen from"
@@ -1819,7 +1819,7 @@ AmpharosPokedexEntry::
 SECTION "BellossomPokedexEntry", ROMX
 BellossomPokedexEntry::
 	db "Flower@"
-	db   "When these dance"
+	text "When these dance"
 	next "together, their"
 	next "petals rub against"
 	page "each other,"
@@ -1829,7 +1829,7 @@ BellossomPokedexEntry::
 SECTION "MarillPokedexEntry", ROMX
 MarillPokedexEntry::
 	db "Aqua Mouse@"
-	db   "The fur on its"
+	text "The fur on its"
 	next "body naturally"
 	next "repels water. It"
 	page "can stay dry, even"
@@ -1839,7 +1839,7 @@ MarillPokedexEntry::
 SECTION "AzumarillPokedexEntry", ROMX
 AzumarillPokedexEntry::
 	db "Aqua Rabbit@"
-	db   "The bubble-like"
+	text "The bubble-like"
 	next "pattern on its"
 	next "stomach helps it"
 	page "camouflage itself"
@@ -1849,7 +1849,7 @@ AzumarillPokedexEntry::
 SECTION "SudowoodoPokedexEntry", ROMX
 SudowoodoPokedexEntry::
 	db "Imitation@"
-	db   "If a tree branch"
+	text "If a tree branch"
 	next "shakes when there"
 	next "is no wind, it's a"
 	page "Sudowoodo, not a"
@@ -1859,7 +1859,7 @@ SudowoodoPokedexEntry::
 SECTION "PolitoedPokedexEntry", ROMX
 PolitoedPokedexEntry::
 	db "Frog@"
-	db   "When it expands"
+	text "When it expands"
 	next "its throat to"
 	next "croak out a tune,"
 	page "nearby Poliwag and"
@@ -1869,7 +1869,7 @@ PolitoedPokedexEntry::
 SECTION "HoppipPokedexEntry", ROMX
 HoppipPokedexEntry::
 	db "Cottonweed@"
-	db   "It can be carried"
+	text "It can be carried"
 	next "away on even the"
 	next "gentlest breeze."
 	page "It may even float"
@@ -1879,7 +1879,7 @@ HoppipPokedexEntry::
 SECTION "SkiploomPokedexEntry", ROMX
 SkiploomPokedexEntry::
 	db "Cottonweed@"
-	db   "As soon as it"
+	text "As soon as it"
 	next "rains, it closes"
 	next "its flower and"
 	page "hides in the shade"
@@ -1889,7 +1889,7 @@ SkiploomPokedexEntry::
 SECTION "JumpluffPokedexEntry", ROMX
 JumpluffPokedexEntry::
 	db "Cottonweed@"
-	db   "Even in the fierc-"
+	text "Even in the fierc-"
 	next "est wind, it can"
 	next "control its fluff"
 	page "to make its way to"
@@ -1899,7 +1899,7 @@ JumpluffPokedexEntry::
 SECTION "AipomPokedexEntry", ROMX
 AipomPokedexEntry::
 	db "Long Tail@"
-	db   "It uses its tail"
+	text "It uses its tail"
 	next "to hang on to tree"
 	next "branches. It uses"
 	page "its momentum to"
@@ -1909,7 +1909,7 @@ AipomPokedexEntry::
 SECTION "SunkernPokedexEntry", ROMX
 SunkernPokedexEntry::
 	db "Seed@"
-	db   "It is very weak."
+	text "It is very weak."
 	next "Its only means of"
 	next "defense is to"
 	page "shake its leaves"
@@ -1919,7 +1919,7 @@ SunkernPokedexEntry::
 SECTION "SunfloraPokedexEntry", ROMX
 SunfloraPokedexEntry::
 	db "Sun@"
-	db   "As the hot season"
+	text "As the hot season"
 	next "approaches, the"
 	next "petals on this"
 	page "#mon's face"
@@ -1929,7 +1929,7 @@ SunfloraPokedexEntry::
 SECTION "YanmaPokedexEntry", ROMX
 YanmaPokedexEntry::
 	db "Clear Wing@"
-	db   "It can see in all"
+	text "It can see in all"
 	next "directions without"
 	next "moving its big"
 	page "eyes, helping it"
@@ -1939,7 +1939,7 @@ YanmaPokedexEntry::
 SECTION "WooperPlainPokedexEntry", ROMX
 WooperPlainPokedexEntry::
 	db "Water Fish@"
-	db   "A mucous"
+	text "A mucous"
 	next "membrane covers"
 	next "its body. Touching"
 	page "it barehanded will"
@@ -1949,7 +1949,7 @@ WooperPlainPokedexEntry::
 SECTION "QuagsirePokedexEntry", ROMX
 QuagsirePokedexEntry::
 	db "Water Fish@"
-	db   "Its body is always"
+	text "Its body is always"
 	next "slimy. It often"
 	next "bangs its head on"
 	page "the river bottom"
@@ -1959,7 +1959,7 @@ QuagsirePokedexEntry::
 SECTION "EspeonPokedexEntry", ROMX
 EspeonPokedexEntry::
 	db "Sun@"
-	db   "The tip of its"
+	text "The tip of its"
 	next "forked tail"
 	next "quivers when it is"
 	page "predicting its"
@@ -1969,7 +1969,7 @@ EspeonPokedexEntry::
 SECTION "UmbreonPokedexEntry", ROMX
 UmbreonPokedexEntry::
 	db "Moonlight@"
-	db   "On the night of a"
+	text "On the night of a"
 	next "full moon, or when"
 	next "it gets excited,"
 	page "the ring patterns"
@@ -1979,7 +1979,7 @@ UmbreonPokedexEntry::
 SECTION "MurkrowPokedexEntry", ROMX
 MurkrowPokedexEntry::
 	db "Darkness@"
-	db   "It hides any shiny"
+	text "It hides any shiny"
 	next "object it finds in"
 	next "a secret location."
 	page "Murkrow and"
@@ -1989,7 +1989,7 @@ MurkrowPokedexEntry::
 SECTION "SlowkingPlainPokedexEntry", ROMX
 SlowkingPlainPokedexEntry::
 	db "Royal@"
-	db   "Every time it ya-"
+	text "Every time it ya-"
 	next "wns, Shellder"
 	next "injects more poi-"
 	page "son into it. The"
@@ -1999,7 +1999,7 @@ SlowkingPlainPokedexEntry::
 SECTION "MisdreavusPokedexEntry", ROMX
 MisdreavusPokedexEntry::
 	db "Screech@"
-	db   "It loves to watch"
+	text "It loves to watch"
 	next "people it's scared."
 	next "It frightens them"
 	page "by screaming loud-"
@@ -2009,7 +2009,7 @@ MisdreavusPokedexEntry::
 SECTION "UnownPokedexEntry", ROMX
 UnownPokedexEntry::
 	db "Symbol@"
-	db   "Because different"
+	text "Because different"
 	next "types of Unown"
 	next "exist, it is said"
 	page "that they must"
@@ -2019,7 +2019,7 @@ UnownPokedexEntry::
 SECTION "WobbuffetPokedexEntry", ROMX
 WobbuffetPokedexEntry::
 	db "Patient@"
-	db   "In order to"
+	text "In order to"
 	next "conceal its black"
 	next "tail, it lives in"
 	page "a dark cave and"
@@ -2029,7 +2029,7 @@ WobbuffetPokedexEntry::
 SECTION "GirafarigPokedexEntry", ROMX
 GirafarigPokedexEntry::
 	db "Long Neck@"
-	db   "When it is in"
+	text "When it is in"
 	next "danger, its tail"
 	next "uses some sort of"
 	page "mysterious powers"
@@ -2039,7 +2039,7 @@ GirafarigPokedexEntry::
 SECTION "PinecoPokedexEntry", ROMX
 PinecoPokedexEntry::
 	db "Bagworm@"
-	db   "It spits out a"
+	text "It spits out a"
 	next "fluid that it uses"
 	next "to glue tree bark"
 	page "to its body. The"
@@ -2049,7 +2049,7 @@ PinecoPokedexEntry::
 SECTION "ForretressPokedexEntry", ROMX
 ForretressPokedexEntry::
 	db "Bagworm@"
-	db   "Usually found"
+	text "Usually found"
 	next "hanging on to a"
 	next "fat tree trunk. It"
 	page "shoots out bits of"
@@ -2059,7 +2059,7 @@ ForretressPokedexEntry::
 SECTION "DunsparcePokedexEntry", ROMX
 DunsparcePokedexEntry::
 	db "Land Snake@"
-	db   "It hides deep"
+	text "It hides deep"
 	next "inside caves where"
 	next "no light ever"
 	page "reaches it and"
@@ -2069,7 +2069,7 @@ DunsparcePokedexEntry::
 SECTION "GligarPokedexEntry", ROMX
 GligarPokedexEntry::
 	db "FlyScorpion@"
-	db   "It builds its nest"
+	text "It builds its nest"
 	next "on a steep cliff."
 	next "When it is done"
 	page "gliding, it hops"
@@ -2079,7 +2079,7 @@ GligarPokedexEntry::
 SECTION "SteelixPokedexEntry", ROMX
 SteelixPokedexEntry::
 	db "Iron Snake@"
-	db   "The many small"
+	text "The many small"
 	next "metal particles"
 	next "that cover this"
 	page "#mon's body"
@@ -2089,7 +2089,7 @@ SteelixPokedexEntry::
 SECTION "SnubbullPokedexEntry", ROMX
 SnubbullPokedexEntry::
 	db "Fairy@"
-	db   "In truth, it is a"
+	text "In truth, it is a"
 	next "cowardly #mon."
 	next "It growls eagerly"
 	page "in order to hide"
@@ -2099,7 +2099,7 @@ SnubbullPokedexEntry::
 SECTION "GranbullPokedexEntry", ROMX
 GranbullPokedexEntry::
 	db "Fairy@"
-	db   "It can make most"
+	text "It can make most"
 	next "any #mon run"
 	next "away simply by"
 	page "opening its mouth"
@@ -2109,7 +2109,7 @@ GranbullPokedexEntry::
 SECTION "QwilfishPokedexEntry", ROMX
 QwilfishPokedexEntry::
 	db "Balloon@"
-	db   "When faced with a"
+	text "When faced with a"
 	next "larger opponent,"
 	next "it swallows as"
 	page "much water as it"
@@ -2119,7 +2119,7 @@ QwilfishPokedexEntry::
 SECTION "ScizorPokedexEntry", ROMX
 ScizorPokedexEntry::
 	db "Scissors@"
-	db   "This #mon's"
+	text "This #mon's"
 	next "pincers, which"
 	next "contain steel, can"
 	page "crush any hard"
@@ -2129,7 +2129,7 @@ ScizorPokedexEntry::
 SECTION "ShucklePokedexEntry", ROMX
 ShucklePokedexEntry::
 	db "Mold@"
-	db   "The fluid secreted"
+	text "The fluid secreted"
 	next "by its toes carves"
 	next "holes in rocks for"
 	page "nesting and can be"
@@ -2139,7 +2139,7 @@ ShucklePokedexEntry::
 SECTION "HeracrossPokedexEntry", ROMX
 HeracrossPokedexEntry::
 	db "Single Horn@"
-	db   "With its Herculean"
+	text "With its Herculean"
 	next "powers, it can"
 	next "easily throw arou-"
 	page "nd an object that"
@@ -2149,7 +2149,7 @@ HeracrossPokedexEntry::
 SECTION "SneaselPokedexEntry", ROMX
 SneaselPokedexEntry::
 	db "Sharp Claw@"
-	db   "This cunning"
+	text "This cunning"
 	next "#mon hides"
 	next "under the cover"
 	page "of darkness,"
@@ -2159,7 +2159,7 @@ SneaselPokedexEntry::
 SECTION "TeddiursaPokedexEntry", ROMX
 TeddiursaPokedexEntry::
 	db "Little Bear@"
-	db   "It always licks"
+	text "It always licks"
 	next "honey. Its palm"
 	next "tastes sweet"
 	page "because of all the"
@@ -2169,7 +2169,7 @@ TeddiursaPokedexEntry::
 SECTION "UrsaringPokedexEntry", ROMX
 UrsaringPokedexEntry::
 	db "Hibernator@"
-	db   "Although it has a"
+	text "Although it has a"
 	next "large body, it is"
 	next "quite skilled at"
 	page "climbing trees. It"
@@ -2179,7 +2179,7 @@ UrsaringPokedexEntry::
 SECTION "SlugmaPokedexEntry", ROMX
 SlugmaPokedexEntry::
 	db "Lava@"
-	db   "These group"
+	text "These group"
 	next "together in areas"
 	next "that are hotter"
 	page "than normal. If it"
@@ -2189,7 +2189,7 @@ SlugmaPokedexEntry::
 SECTION "MagcargoPokedexEntry", ROMX
 MagcargoPokedexEntry::
 	db "Lava@"
-	db   "Its body is as hot"
+	text "Its body is as hot"
 	next "as lava and is"
 	next "always billowing."
 	page "Flames will"
@@ -2199,7 +2199,7 @@ MagcargoPokedexEntry::
 SECTION "SwinubPokedexEntry", ROMX
 SwinubPokedexEntry::
 	db "Pig@"
-	db   "It uses the tip of"
+	text "It uses the tip of"
 	next "its nose to dig"
 	next "for food. Its nose"
 	page "is so tough that"
@@ -2209,7 +2209,7 @@ SwinubPokedexEntry::
 SECTION "PiloswinePokedexEntry", ROMX
 PiloswinePokedexEntry::
 	db "Swine@"
-	db   "Although its legs"
+	text "Although its legs"
 	next "are short, its"
 	next "rugged hooves"
 	page "prevent it from"
@@ -2219,7 +2219,7 @@ PiloswinePokedexEntry::
 SECTION "CorsolaPlainPokedexEntry", ROMX
 CorsolaPlainPokedexEntry::
 	db "Coral@"
-	db   "The points on its"
+	text "The points on its"
 	next "head absorb"
 	next "nutrients from"
 	page "clean water. They"
@@ -2229,7 +2229,7 @@ CorsolaPlainPokedexEntry::
 SECTION "RemoraidPokedexEntry", ROMX
 RemoraidPokedexEntry::
 	db "Jet@"
-	db   "To escape from an"
+	text "To escape from an"
 	next "attacker, it may"
 	next "shoot water out of"
 	page "its mouth, then"
@@ -2239,7 +2239,7 @@ RemoraidPokedexEntry::
 SECTION "OctilleryPokedexEntry", ROMX
 OctilleryPokedexEntry::
 	db "Jet@"
-	db   "Its instinct is to"
+	text "Its instinct is to"
 	next "bury itself in"
 	next "holes. It often"
 	page "steals the nesting"
@@ -2249,7 +2249,7 @@ OctilleryPokedexEntry::
 SECTION "DelibirdPokedexEntry", ROMX
 DelibirdPokedexEntry::
 	db "Delivery@"
-	db   "It always carries"
+	text "It always carries"
 	next "its food with it,"
 	next "wherever it goes."
 	page "If attacked, it"
@@ -2259,7 +2259,7 @@ DelibirdPokedexEntry::
 SECTION "MantinePokedexEntry", ROMX
 MantinePokedexEntry::
 	db "Kite@"
-	db   "It swims along"
+	text "It swims along"
 	next "freely, eating"
 	next "things that swim"
 	page "into its mouth."
@@ -2269,7 +2269,7 @@ MantinePokedexEntry::
 SECTION "SkarmoryPokedexEntry", ROMX
 SkarmoryPokedexEntry::
 	db "Armor Bird@"
-	db   "The feathers that"
+	text "The feathers that"
 	next "it sheds are very"
 	next "sharp. It is said"
 	page "that people once"
@@ -2279,7 +2279,7 @@ SkarmoryPokedexEntry::
 SECTION "HoundourPokedexEntry", ROMX
 HoundourPokedexEntry::
 	db "Dark@"
-	db   "Around dawn, its"
+	text "Around dawn, its"
 	next "ominous howl"
 	next "echoes through the"
 	page "area to announce"
@@ -2289,7 +2289,7 @@ HoundourPokedexEntry::
 SECTION "HoundoomPokedexEntry", ROMX
 HoundoomPokedexEntry::
 	db "Dark@"
-	db   "The pungent-"
+	text "The pungent-"
 	next "smelling flame"
 	next "that shoots from"
 	page "its mouth results"
@@ -2299,7 +2299,7 @@ HoundoomPokedexEntry::
 SECTION "KingdraPokedexEntry", ROMX
 KingdraPokedexEntry::
 	db "Dragon@"
-	db   "It stores energy"
+	text "It stores energy"
 	next "by sleeping at"
 	next "underwater depths"
 	page "at which no other"
@@ -2309,7 +2309,7 @@ KingdraPokedexEntry::
 SECTION "PhanpyPokedexEntry", ROMX
 PhanpyPokedexEntry::
 	db "Long Nose@"
-	db   "During the desert-"
+	text "During the desert-"
 	next "ed morning hours,"
 	next "it comes ashore"
 	page "where it deftly"
@@ -2319,7 +2319,7 @@ PhanpyPokedexEntry::
 SECTION "DonphanPokedexEntry", ROMX
 DonphanPokedexEntry::
 	db "Armor@"
-	db   "Because this"
+	text "Because this"
 	next "#mon's skin is"
 	next "so tough, a normal"
 	page "attack won't even"
@@ -2329,7 +2329,7 @@ DonphanPokedexEntry::
 SECTION "Porygon2PokedexEntry", ROMX
 Porygon2PokedexEntry::
 	db "Virtual@"
-	db   "This man-made"
+	text "This man-made"
 	next "#mon evolved"
 	next "from the latest"
 	page "technology. It may"
@@ -2339,7 +2339,7 @@ Porygon2PokedexEntry::
 SECTION "StantlerPokedexEntry", ROMX
 StantlerPokedexEntry::
 	db "Big Horn@"
-	db   "The round balls"
+	text "The round balls"
 	next "found on the"
 	next "fallen antlers can"
 	page "be ground into a"
@@ -2349,7 +2349,7 @@ StantlerPokedexEntry::
 SECTION "SmearglePokedexEntry", ROMX
 SmearglePokedexEntry::
 	db "Painter@"
-	db   "The color of the"
+	text "The color of the"
 	next "mysterious fluid"
 	next "secreted from its"
 	page "tail is predeter-"
@@ -2359,7 +2359,7 @@ SmearglePokedexEntry::
 SECTION "TyroguePokedexEntry", ROMX
 TyroguePokedexEntry::
 	db "Scuffle@"
-	db   "To brush up on its"
+	text "To brush up on its"
 	next "fighting skills,"
 	next "it will challenge"
 	page "anyone. It has a"
@@ -2369,7 +2369,7 @@ TyroguePokedexEntry::
 SECTION "HitmontopPokedexEntry", ROMX
 HitmontopPokedexEntry::
 	db "Handstand@"
-	db   "After doing a"
+	text "After doing a"
 	next "handstand to"
 	next "throw off the"
 	page "opponent's timing,"
@@ -2379,7 +2379,7 @@ HitmontopPokedexEntry::
 SECTION "SmoochumPokedexEntry", ROMX
 SmoochumPokedexEntry::
 	db "Kiss@"
-	db   "The sensitivity of"
+	text "The sensitivity of"
 	next "its lips develops"
 	next "most quickly."
 	page "It uses them to"
@@ -2389,7 +2389,7 @@ SmoochumPokedexEntry::
 SECTION "ElekidPokedexEntry", ROMX
 ElekidPokedexEntry::
 	db "Electric@"
-	db   "It loves violent"
+	text "It loves violent"
 	next "thunder. The space"
 	next "between its horns"
 	page "flickers bluish-"
@@ -2399,7 +2399,7 @@ ElekidPokedexEntry::
 SECTION "MagbyPokedexEntry", ROMX
 MagbyPokedexEntry::
 	db "Live Coal@"
-	db   "It naturally spits"
+	text "It naturally spits"
 	next "an 1100-degree"
 	next "flame. It is said"
 	page "when many appear,"
@@ -2409,7 +2409,7 @@ MagbyPokedexEntry::
 SECTION "MiltankPokedexEntry", ROMX
 MiltankPokedexEntry::
 	db "Milk Cow@"
-	db   "In order to milk a"
+	text "In order to milk a"
 	next "Miltank, one must"
 	next "have a knack for"
 	page "rhythmically pull-"
@@ -2419,7 +2419,7 @@ MiltankPokedexEntry::
 SECTION "BlisseyPokedexEntry", ROMX
 BlisseyPokedexEntry::
 	db "Happiness@"
-	db   "Biting into one"
+	text "Biting into one"
 	next "of the delicious"
 	next "eggs that Blissey"
 	page "provides will make"
@@ -2429,7 +2429,7 @@ BlisseyPokedexEntry::
 SECTION "RaikouPokedexEntry", ROMX
 RaikouPokedexEntry::
 	db "Thunder@"
-	db   "This rough #mon"
+	text "This rough #mon"
 	next "stores energy"
 	next "inside its body,"
 	page "then sweeps across"
@@ -2439,7 +2439,7 @@ RaikouPokedexEntry::
 SECTION "EnteiPokedexEntry", ROMX
 EnteiPokedexEntry::
 	db "Volcano@"
-	db   "This brawny"
+	text "This brawny"
 	next "#mon courses"
 	next "around the earth,"
 	page "spouting flames"
@@ -2449,7 +2449,7 @@ EnteiPokedexEntry::
 SECTION "SuicunePokedexEntry", ROMX
 SuicunePokedexEntry::
 	db "Aurora@"
-	db   "This divine"
+	text "This divine"
 	next "#mon blows"
 	next "around the world,"
 	page "always in search"
@@ -2459,7 +2459,7 @@ SuicunePokedexEntry::
 SECTION "LarvitarPokedexEntry", ROMX
 LarvitarPokedexEntry::
 	db "Rock Skin@"
-	db   "Born deep under-"
+	text "Born deep under-"
 	next "ground, this"
 	next "#mon becomes a"
 	page "pupa after eating"
@@ -2469,7 +2469,7 @@ LarvitarPokedexEntry::
 SECTION "PupitarPokedexEntry", ROMX
 PupitarPokedexEntry::
 	db "Hard Shell@"
-	db   "It will not stay"
+	text "It will not stay"
 	next "still, even while"
 	next "it's a pupa. It"
 	page "already has arms"
@@ -2479,7 +2479,7 @@ PupitarPokedexEntry::
 SECTION "TyranitarPokedexEntry", ROMX
 TyranitarPokedexEntry::
 	db "Armor@"
-	db   "In just one of its"
+	text "In just one of its"
 	next "mighty hands, it"
 	next "has the power to"
 	page "make the ground"
@@ -2489,7 +2489,7 @@ TyranitarPokedexEntry::
 SECTION "LugiaPokedexEntry", ROMX
 LugiaPokedexEntry::
 	db "Diving@"
-	db   "It has an incred-"
+	text "It has an incred-"
 	next "ible ability to"
 	next "calm raging sto-"
 	page "rms. It is said"
@@ -2499,7 +2499,7 @@ LugiaPokedexEntry::
 SECTION "HoOhPokedexEntry", ROMX
 HoOhPokedexEntry::
 	db "Rainbow@"
-	db   "It will reveal"
+	text "It will reveal"
 	next "itself before a"
 	next "pure-hearted"
 	page "trainer by shining"
@@ -2509,7 +2509,7 @@ HoOhPokedexEntry::
 SECTION "CelebiPokedexEntry", ROMX
 CelebiPokedexEntry::
 	db "Time Travel@"
-	db   "Revered as a"
+	text "Revered as a"
 	next "guardian of the"
 	next "forest, Celebi"
 	page "appears wherever"
@@ -2519,7 +2519,7 @@ CelebiPokedexEntry::
 SECTION "AzurillPokedexEntry", ROMX
 AzurillPokedexEntry::
 	db "Polka Dot@"
-	db   "Its tail is filled"
+	text "Its tail is filled"
 	next "with the nutrients"
 	next "necessary for"
 	page "growth. It plays"
@@ -2529,7 +2529,7 @@ AzurillPokedexEntry::
 SECTION "WynautPokedexEntry", ROMX
 WynautPokedexEntry::
 	db "Bright@"
-	db   "It tends to move"
+	text "It tends to move"
 	next "in a pack. Indiv-"
 	next "iduals squash"
 	page "against one an-"
@@ -2539,7 +2539,7 @@ WynautPokedexEntry::
 SECTION "AmbipomPokedexEntry", ROMX
 AmbipomPokedexEntry::
 	db "Long Tail@"
-	db   "Split in two, the"
+	text "Split in two, the"
 	next "tails are so adept"
 	next "at handling and"
 	page "doing things."
@@ -2549,7 +2549,7 @@ AmbipomPokedexEntry::
 SECTION "MismagiusPokedexEntry", ROMX
 MismagiusPokedexEntry::
 	db "Magical@"
-	db   "Its cries sound"
+	text "Its cries sound"
 	next "like incantations"
 	next "to torment the"
 	page "foe. It appears"
@@ -2559,7 +2559,7 @@ MismagiusPokedexEntry::
 SECTION "HonchkrowPokedexEntry", ROMX
 HonchkrowPokedexEntry::
 	db "Big Boss@"
-	db   "It is merciless by"
+	text "It is merciless by"
 	next "nature. It is said"
 	next "that it never for-"
 	page "gives the mistakes"
@@ -2569,7 +2569,7 @@ HonchkrowPokedexEntry::
 SECTION "BonslyPokedexEntry", ROMX
 BonslyPokedexEntry::
 	db "Bonsai@"
-	db   "It prefers an arid"
+	text "It prefers an arid"
 	next "atmposhere. It"
 	next "leaks water that"
 	page "looks like tears"
@@ -2579,7 +2579,7 @@ BonslyPokedexEntry::
 SECTION "MimeJrPokedexEntry", ROMX
 MimeJrPokedexEntry::
 	db "Mime@"
-	db   "It mimics the"
+	text "It mimics the"
 	next "expressions and"
 	next "motions of those"
 	page "it sees to under-"
@@ -2589,7 +2589,7 @@ MimeJrPokedexEntry::
 SECTION "HappinyPokedexEntry", ROMX
 HappinyPokedexEntry::
 	db "Playhouse@"
-	db   "It carries a"
+	text "It carries a"
 	next "round, egg-shaped"
 	next "rock in its belly"
 	page "pouch and gives"
@@ -2599,7 +2599,7 @@ HappinyPokedexEntry::
 SECTION "MunchlaxPokedexEntry", ROMX
 MunchlaxPokedexEntry::
 	db "Big Eater@"
-	db   "In its desperation"
+	text "In its desperation"
 	next "to gulp down food,"
 	next "it forgets about"
 	page "the food it has"
@@ -2609,7 +2609,7 @@ MunchlaxPokedexEntry::
 SECTION "MantykePokedexEntry", ROMX
 MantykePokedexEntry::
 	db "Kite@"
-	db   "People organize"
+	text "People organize"
 	next "tours to see this"
 	next "#mon frolic and"
 	page "skim the tops of"
@@ -2619,7 +2619,7 @@ MantykePokedexEntry::
 SECTION "WeavilePokedexEntry", ROMX
 WeavilePokedexEntry::
 	db "Sharp Claw@"
-	db   "It lives in snowy"
+	text "It lives in snowy"
 	next "regions. It carves"
 	next "patterns in trees"
 	page "with its claws"
@@ -2629,7 +2629,7 @@ WeavilePokedexEntry::
 SECTION "MagnezonePokedexEntry", ROMX
 MagnezonePokedexEntry::
 	db "Magnet Area@"
-	db   "It evolved from"
+	text "It evolved from"
 	next "exposure to a"
 	next "special magnetic"
 	page "field. Three"
@@ -2639,7 +2639,7 @@ MagnezonePokedexEntry::
 SECTION "LickilickyPokedexEntry", ROMX
 LickilickyPokedexEntry::
 	db "Licking@"
-	db   "The long tongue is"
+	text "The long tongue is"
 	next "always soggy with"
 	next "slobber. The"
 	page "saliva contains a"
@@ -2649,7 +2649,7 @@ LickilickyPokedexEntry::
 SECTION "RhyperiorPokedexEntry", ROMX
 RhyperiorPokedexEntry::
 	db "Drill@"
-	db   "From holes in its"
+	text "From holes in its"
 	next "palms, it fires"
 	next "out Geodude. Its"
 	page "carapace can with-"
@@ -2659,7 +2659,7 @@ RhyperiorPokedexEntry::
 SECTION "TangrowthPokedexEntry", ROMX
 TangrowthPokedexEntry::
 	db "Vine@"
-	db   "It ensnares prey"
+	text "It ensnares prey"
 	next "by extending arms"
 	next "made of vines."
 	page "Losing arms to"
@@ -2669,7 +2669,7 @@ TangrowthPokedexEntry::
 SECTION "ElectivirePokedexEntry", ROMX
 ElectivirePokedexEntry::
 	db "Thunderbolt@"
-	db   "It pushes the tips"
+	text "It pushes the tips"
 	next "of its two tails"
 	next "against the foe,"
 	page "then lets loose"
@@ -2679,7 +2679,7 @@ ElectivirePokedexEntry::
 SECTION "MagmortarPokedexEntry", ROMX
 MagmortarPokedexEntry::
 	db "Blast@"
-	db   "There are still"
+	text "There are still"
 	next "quite a few fac-"
 	next "tories that rely"
 	page "on the flames pro-"
@@ -2689,7 +2689,7 @@ MagmortarPokedexEntry::
 SECTION "TogekissPokedexEntry", ROMX
 TogekissPokedexEntry::
 	db "Jubilee@"
-	db   "It shares many"
+	text "It shares many"
 	next "blessings with"
 	next "people who respect"
 	page "one another's"
@@ -2699,7 +2699,7 @@ TogekissPokedexEntry::
 SECTION "YanmegaPokedexEntry", ROMX
 YanmegaPokedexEntry::
 	db "Ogre Darner@"
-	db   "Its jaw power is"
+	text "Its jaw power is"
 	next "incredible. It is"
 	next "adept at biting"
 	page "apart foes while"
@@ -2709,7 +2709,7 @@ YanmegaPokedexEntry::
 SECTION "LeafeonPokedexEntry", ROMX
 LeafeonPokedexEntry::
 	db "Verdant@"
-	db   "Just like a plant,"
+	text "Just like a plant,"
 	next "it uses photosyn-"
 	next "thesis. As a"
 	page "result, it is"
@@ -2719,7 +2719,7 @@ LeafeonPokedexEntry::
 SECTION "GlaceonPokedexEntry", ROMX
 GlaceonPokedexEntry::
 	db "Fresh Snow@"
-	db   "It causes small"
+	text "It causes small"
 	next "ice crystals to"
 	next "form by lowering"
 	page "the temperature of"
@@ -2729,7 +2729,7 @@ GlaceonPokedexEntry::
 SECTION "GliscorPokedexEntry", ROMX
 GliscorPokedexEntry::
 	db "FangScorpio@"
-	db   "Its flight is"
+	text "Its flight is"
 	next "soundless. It uses"
 	next "its lengthy tail"
 	page "to carry off its"
@@ -2739,7 +2739,7 @@ GliscorPokedexEntry::
 SECTION "MamoswinePokedexEntry", ROMX
 MamoswinePokedexEntry::
 	db "Twin Tusk@"
-	db   "Its impressive"
+	text "Its impressive"
 	next "tusks are made of"
 	next "ice. The popula-"
 	page "tion thinned when"
@@ -2749,7 +2749,7 @@ MamoswinePokedexEntry::
 SECTION "PorygonZPokedexEntry", ROMX
 PorygonZPokedexEntry::
 	db "Virtual@"
-	db   "Its programming"
+	text "Its programming"
 	next "was modified to"
 	next "enable work in"
 	page "alien dimensions."
@@ -2759,7 +2759,7 @@ PorygonZPokedexEntry::
 SECTION "SylveonPokedexEntry", ROMX
 SylveonPokedexEntry::
 	db "Intertwined@"
-	db   "It wraps its"
+	text "It wraps its"
 	next "ribbonlike feelers"
 	next "around the arm of"
 	page "its beloved train-"
@@ -2769,7 +2769,7 @@ SylveonPokedexEntry::
 SECTION "PerrserkerPokedexEntry", ROMX
 PerrserkerPokedexEntry::
 	db "Viking@"
-	db   "After many battles"
+	text "After many battles"
 	next "it evolved"
 	next "dangerous claws"
 	page "that come together"
@@ -2779,7 +2779,7 @@ PerrserkerPokedexEntry::
 SECTION "CursolaPokedexEntry", ROMX
 CursolaPokedexEntry::
 	db "Coral@"
-	db   "Be cautious of the"
+	text "Be cautious of the"
 	next "ectoplasmic body"
 	next "surrounding its"
 	page "soul. You'll become"
@@ -2789,7 +2789,7 @@ CursolaPokedexEntry::
 SECTION "SirfetchDPokedexEntry", ROMX
 SirfetchDPokedexEntry::
 	db "Wild Duck@"
-	db   "After deflecting"
+	text "After deflecting"
 	next "attacks with its"
 	next "hard leaf shield,"
 	page "it strikes back"
@@ -2799,7 +2799,7 @@ SirfetchDPokedexEntry::
 SECTION "MrRimePokedexEntry", ROMX
 MrRimePokedexEntry::
 	db "Comedian@"
-	db   "It's highly skilled"
+	text "It's highly skilled"
 	next "at tap-dancing. It"
 	next "waves its cane of"
 	page "ice in time with"
@@ -2809,7 +2809,7 @@ MrRimePokedexEntry::
 SECTION "WyrdeerPokedexEntry", ROMX
 WyrdeerPokedexEntry::
 	db "Big Horn@"
-	db   "The fur shed from"
+	text "The fur shed from"
 	next "its beard retains"
 	next "heat well and is"
 	page "a highly useful"
@@ -2819,7 +2819,7 @@ WyrdeerPokedexEntry::
 SECTION "KleavorPokedexEntry", ROMX
 KleavorPokedexEntry::
 	db "Axe@"
-	db   "A violent creature"
+	text "A violent creature"
 	next "that fells tower-"
 	next "ing trees with its"
 	page "crude axes and"
@@ -2829,7 +2829,7 @@ KleavorPokedexEntry::
 SECTION "UrsalunaPokedexEntry", ROMX
 UrsalunaPokedexEntry::
 	db "Peat@"
-	db   "This #mon has a"
+	text "This #mon has a"
 	next "burly physique and"
 	next "a newfound capa-"
 	page "city to manipulate"
@@ -2838,7 +2838,7 @@ UrsalunaPokedexEntry::
 SECTION "SneaslerPokedexEntry", ROMX
 SneaslerPokedexEntry::
 	db "Free Climb@"
-	db   "It has virulent"
+	text "It has virulent"
 	next "poison and daunt-"
 	next "ing physical prow-"
 	page "ess. Preferring"
@@ -2848,7 +2848,7 @@ SneaslerPokedexEntry::
 SECTION "OverqwilPokedexEntry", ROMX
 OverqwilPokedexEntry::
 	db "Pin Cluster@"
-	db   "Its spikes and sa-"
+	text "Its spikes and sa-"
 	next "vage temperament"
 	next "have earned it the"
 	page "name Sea Fiend."
@@ -2858,7 +2858,7 @@ OverqwilPokedexEntry::
 SECTION "DudunsparcePokedexEntry", ROMX
 DudunsparcePokedexEntry::
 	db "Land Snake@"
-	db   "It makes its nest"
+	text "It makes its nest"
 	next "with its hard tail"
 	next "by boring holes"
 	page "into deep bedrock."
@@ -2868,7 +2868,7 @@ DudunsparcePokedexEntry::
 SECTION "FarigirafPokedexEntry", ROMX
 FarigirafPokedexEntry::
 	db "Long Neck@"
-	db   "Now that the brain"
+	text "Now that the brain"
 	next "waves from its"
 	next "head and tail are"
 	page "synced up, its"
@@ -2878,7 +2878,7 @@ FarigirafPokedexEntry::
 SECTION "ClodsirePokedexEntry", ROMX
 ClodsirePokedexEntry::
 	db "Spiny Fish@"
-	db   "When attacked, it"
+	text "When attacked, it"
 	next "will retaliate by"
 	next "sticking thick"
 	page "spines out from"
@@ -2888,7 +2888,7 @@ ClodsirePokedexEntry::
 SECTION "AnnihilapePokedexEntry", ROMX
 AnnihilapePokedexEntry::
 	db "Rage Monkey@"
-	db   "When its anger"
+	text "When its anger"
 	next "rose beyond a cri-"
 	next "tical point, it"
 	page "gained power unfe-"
@@ -2898,7 +2898,7 @@ AnnihilapePokedexEntry::
 SECTION "GyaradosRedPokedexEntry", ROMX
 GyaradosRedPokedexEntry::
 	db "Atrocious@"
-	db   "Due to how rapidly"
+	text "Due to how rapidly"
 	next "it was forced to"
 	next "undergo evolution,"
 	page "this Gyarados re-"
@@ -2908,7 +2908,7 @@ GyaradosRedPokedexEntry::
 SECTION "MewtwoArmoredPokedexEntry", ROMX
 MewtwoArmoredPokedexEntry::
 	db "Genetic@"
-	db   "With its defenses"
+	text "With its defenses"
 	next "bolstered and its"
 	next "psychic attacks"
 	page "amplified by its"
@@ -2918,7 +2918,7 @@ MewtwoArmoredPokedexEntry::
 SECTION "RattataAlolanPokedexEntry", ROMX
 RattataAlolanPokedexEntry::
 	db "Mouse@"
-	db   "It has no interest"
+	text "It has no interest"
 	next "in anything that's"
 	next "not fresh. If you"
 	page "take it shopping"
@@ -2928,7 +2928,7 @@ RattataAlolanPokedexEntry::
 SECTION "RaticateAlolanPokedexEntry", ROMX
 RaticateAlolanPokedexEntry::
 	db "Mouse@"
-	db   "It makes its Rat-"
+	text "It makes its Rat-"
 	next "tata underlings"
 	next "gather its food,"
 	page "dining only on the"
@@ -2938,7 +2938,7 @@ RaticateAlolanPokedexEntry::
 SECTION "RaichuAlolanPokedexEntry", ROMX
 RaichuAlolanPokedexEntry::
 	db "Mouse@"
-	db   "When you rub its"
+	text "When you rub its"
 	next "cheeks, a sweet"
 	next "fragrance comes"
 	page "wafting out. How-"
@@ -2948,7 +2948,7 @@ RaichuAlolanPokedexEntry::
 SECTION "SandshrewAlolanPokedexEntry", ROMX
 SandshrewAlolanPokedexEntry::
 	db "Mouse@"
-	db   "It lives on snowy"
+	text "It lives on snowy"
 	next "mountains. Its"
 	next "steel shell is"
 	page "so hard, it can't"
@@ -2958,7 +2958,7 @@ SandshrewAlolanPokedexEntry::
 SECTION "SandslashAlolanPokedexEntry", ROMX
 SandslashAlolanPokedexEntry::
 	db "Mouse@"
-	db   "Many people climb"
+	text "Many people climb"
 	next "snowy mountains,"
 	next "hoping to see the"
 	page "icy spikes of this"
@@ -2968,7 +2968,7 @@ SandslashAlolanPokedexEntry::
 SECTION "VulpixAlolanPokedexEntry", ROMX
 VulpixAlolanPokedexEntry::
 	db "Fox@"
-	db   "If you observe its"
+	text "If you observe its"
 	next "curly hairs thr-"
 	next "ough a microscope,"
 	page "you'll see small"
@@ -2978,7 +2978,7 @@ VulpixAlolanPokedexEntry::
 SECTION "NinetalesAlolanPokedexEntry", ROMX
 NinetalesAlolanPokedexEntry::
 	db "Fox@"
-	db   "The reason it"
+	text "The reason it"
 	next "guides people all"
 	next "the way down its"
 	page "mountain's base is"
@@ -2988,7 +2988,7 @@ NinetalesAlolanPokedexEntry::
 SECTION "DiglettAlolanPokedexEntry", ROMX
 DiglettAlolanPokedexEntry::
 	db "Mole@"
-	db   "The metal-rich"
+	text "The metal-rich"
 	next "geology of this"
 	next "#mon's habitat"
 	page "caused it to de-"
@@ -2998,7 +2998,7 @@ DiglettAlolanPokedexEntry::
 SECTION "DugtrioAlolanPokedexEntry", ROMX
 DugtrioAlolanPokedexEntry::
 	db "Mole@"
-	db   "Its metallic whis-"
+	text "Its metallic whis-"
 	next "kers are heavy, so"
 	next "it's not very fast,"
 	page "but it has the"
@@ -3008,7 +3008,7 @@ DugtrioAlolanPokedexEntry::
 SECTION "MeowthAlolanPokedexEntry", ROMX
 MeowthAlolanPokedexEntry::
 	db "Scratch Cat@"
-	db   "Highly intelligent"
+	text "Highly intelligent"
 	next "and prideful, it's"
 	next "famously difficult"
 	page "to handle. That's"
@@ -3018,7 +3018,7 @@ MeowthAlolanPokedexEntry::
 SECTION "GrimerAlolanPokedexEntry", ROMX
 GrimerAlolanPokedexEntry::
 	db "Sludge@"
-	db   "A Grimer which had"
+	text "A Grimer which had"
 	next "been brought in to"
 	next "solve a problem"
 	page "with garbage"
@@ -3028,7 +3028,7 @@ GrimerAlolanPokedexEntry::
 SECTION "MukAlolanPokedexEntry", ROMX
 MukAlolanPokedexEntry::
 	db "Sludge@"
-	db   "Muk's coloration"
+	text "Muk's coloration"
 	next "becomes increas-"
 	next "ingly vivid the"
 	page "more it feasts on"
@@ -3038,7 +3038,7 @@ MukAlolanPokedexEntry::
 SECTION "ExeggutorAlolanPokedexEntry", ROMX
 ExeggutorAlolanPokedexEntry::
 	db "Coconut@"
-	db   "It swings its long"
+	text "It swings its long"
 	next "neck like a whip"
 	next "and smacks its"
 	page "opponents. This"
@@ -3048,7 +3048,7 @@ ExeggutorAlolanPokedexEntry::
 SECTION "MarowakAlolanPokedexEntry", ROMX
 MarowakAlolanPokedexEntry::
 	db "Bone Keeper@"
-	db   "It sets the bone"
+	text "It sets the bone"
 	next "it holds on fire"
 	next "and dances through"
 	page "through the night"
@@ -3058,7 +3058,7 @@ MarowakAlolanPokedexEntry::
 SECTION "MeowthGalarianPokedexEntry", ROMX
 MeowthGalarianPokedexEntry::
 	db "Scratch Cat@"
-	db   "These daring #-"
+	text "These daring #-"
 	next "mon have coins on"
 	next "their foreheads."
 	page "Harder coins gar-"
@@ -3068,7 +3068,7 @@ MeowthGalarianPokedexEntry::
 SECTION "PersianAlolanPokedexEntry", ROMX
 PersianAlolanPokedexEntry::
 	db "Classy Cat@"
-	db   "It has the classi-"
+	text "It has the classi-"
 	next "est coat. The"
 	next "rippling of its"
 	page "fur in the heat of"
@@ -3078,7 +3078,7 @@ PersianAlolanPokedexEntry::
 SECTION "GeodudeAlolanPokedexEntry", ROMX
 GeodudeAlolanPokedexEntry::
 	db "Rock@"
-	db   "Its body is a mag-"
+	text "Its body is a mag-"
 	next "netic stone. Iron"
 	next "sand attaches to"
 	page "the portions of"
@@ -3088,7 +3088,7 @@ GeodudeAlolanPokedexEntry::
 SECTION "GravelerAlolanPokedexEntry", ROMX
 GravelerAlolanPokedexEntry::
 	db "Rock@"
-	db   "Its entire body is"
+	text "Its entire body is"
 	next "tinged with elec-"
 	next "tricity due to the"
 	page "stones it likes to"
@@ -3098,7 +3098,7 @@ GravelerAlolanPokedexEntry::
 SECTION "GolemAlolanPokedexEntry", ROMX
 GolemAlolanPokedexEntry::
 	db "Megaton@"
-	db   "It fires rocks"
+	text "It fires rocks"
 	next "charged with elec-"
 	next "tricity. Just"
 	page "grazing an oppo-"
@@ -3108,7 +3108,7 @@ GolemAlolanPokedexEntry::
 SECTION "PonytaGalarianPokedexEntry", ROMX
 PonytaGalarianPokedexEntry::
 	db "Unique Horn@"
-	db   "It will look into"
+	text "It will look into"
 	next "your eyes and read"
 	next "the contents of"
 	page "your heart. If it"
@@ -3118,7 +3118,7 @@ PonytaGalarianPokedexEntry::
 SECTION "RapidashGalarianPokedexEntry", ROMX
 RapidashGalarianPokedexEntry::
 	db "Unique Horn@"
-	db   "A psychic attack"
+	text "A psychic attack"
 	next "unleashed from"
 	next "Rapidash's horn can"
 	page "punch a hole right"
@@ -3128,7 +3128,7 @@ RapidashGalarianPokedexEntry::
 SECTION "SlowpokeGalarianPokedexEntry", ROMX
 SlowpokeGalarianPokedexEntry::
 	db "Dopey@"
-	db   "Although normally"
+	text "Although normally"
 	next "zoned out, its ex-"
 	next "pression abruptly"
 	page "sharpens on occa-"
@@ -3142,7 +3142,7 @@ if DEF(FAITHFUL)
 else
 	db "Squatter@"
 endc
-	db   "A Shellder bite"
+	text "A Shellder bite"
 	next "set off a chemical"
 	next "reaction with"
 	page "Slowbro's body,"
@@ -3152,7 +3152,7 @@ endc
 SECTION "FarfetchDGalarianPokedexEntry", ROMX
 FarfetchDGalarianPokedexEntry::
 	db "Wild Duck@"
-	db   "These unique Far-"
+	text "These unique Far-"
 	next "fetch'd are brave"
 	next "warriors, and they"
 	page "wield thick, tough"
@@ -3161,7 +3161,7 @@ FarfetchDGalarianPokedexEntry::
 SECTION "WeezingGalarianPokedexEntry", ROMX
 WeezingGalarianPokedexEntry::
 	db "Poison Gas@"
-	db   "It consumes par-"
+	text "It consumes par-"
 	next "ticles that con-"
 	next "taminate the air."
 	page "Instead of leaving"
@@ -3171,7 +3171,7 @@ WeezingGalarianPokedexEntry::
 SECTION "MrMimeGalarianPokedexEntry", ROMX
 MrMimeGalarianPokedexEntry::
 	db "Dancing@"
-	db   "It can radiate"
+	text "It can radiate"
 	next "chilliness from"
 	next "the bottoms of its"
 	page "feet. It will tap"
@@ -3181,7 +3181,7 @@ MrMimeGalarianPokedexEntry::
 SECTION "ArticunoGalarianPokedexEntry", ROMX
 ArticunoGalarianPokedexEntry::
 	db "Cruel@"
-	db   "Known as Articuno,"
+	text "Known as Articuno,"
 	next "this #mon fires"
 	next "beams that can im-"
 	page "mobilize opponents"
@@ -3191,7 +3191,7 @@ ArticunoGalarianPokedexEntry::
 SECTION "ZapdosGalarianPokedexEntry", ROMX
 ZapdosGalarianPokedexEntry::
 	db "Strong Legs@"
-	db   "When its feathers"
+	text "When its feathers"
 	next "rub together,"
 	next "they produce a"
 	page "crackling sound"
@@ -3201,7 +3201,7 @@ ZapdosGalarianPokedexEntry::
 SECTION "MoltresGalarianPokedexEntry", ROMX
 MoltresGalarianPokedexEntry::
 	db "Malevolent@"
-	db   "The sinister aura"
+	text "The sinister aura"
 	next "that blazes like"
 	next "molten fire around"
 	page "this #mon is"
@@ -3211,7 +3211,7 @@ MoltresGalarianPokedexEntry::
 SECTION "SlowkingGalarianPokedexEntry", ROMX
 SlowkingGalarianPokedexEntry::
 	db "Hexpert@"
-	db   "A combination of"
+	text "A combination of"
 	next "toxins and the"
 	next "shock of evolving"
 	page "has caused Shell-"
@@ -3221,7 +3221,7 @@ SlowkingGalarianPokedexEntry::
 SECTION "CorsolaGalarianPokedexEntry", ROMX
 CorsolaGalarianPokedexEntry::
 	db "Coral@"
-	db   "Sudden climate"
+	text "Sudden climate"
 	next "change wiped out"
 	next "this #mon."
 	page "It absorbs others'"
@@ -3231,7 +3231,7 @@ CorsolaGalarianPokedexEntry::
 SECTION "GrowlitheHisuianPokedexEntry", ROMX
 GrowlitheHisuianPokedexEntry::
 	db "Scout@"
-	db   "They patrol their"
+	text "They patrol their"
 	next "territory in"
 	next "pairs. Their fur"
 	page "has igneous rock"
@@ -3241,7 +3241,7 @@ GrowlitheHisuianPokedexEntry::
 SECTION "ArcanineHisuianPokedexEntry", ROMX
 ArcanineHisuianPokedexEntry::
 	db "Legendary@"
-	db   "Despite its bulk,"
+	text "Despite its bulk,"
 	next "it deftly feints"
 	next "every which way,"
 	page "leading opponents"
@@ -3251,7 +3251,7 @@ ArcanineHisuianPokedexEntry::
 SECTION "VoltorbHisuianPokedexEntry", ROMX
 VoltorbHisuianPokedexEntry::
 	db "Sphere@"
-	db   "When excited, it"
+	text "When excited, it"
 	next "discharges the"
 	next "electric current"
 	page "stored in its"
@@ -3261,7 +3261,7 @@ VoltorbHisuianPokedexEntry::
 SECTION "ElectrodeHisuianPokedexEntry", ROMX
 ElectrodeHisuianPokedexEntry::
 	db "Sphere@"
-	db   "The tissue on the"
+	text "The tissue on the"
 	next "surface of its"
 	next "body is curious-"
 	page "ly similar in"
@@ -3271,7 +3271,7 @@ ElectrodeHisuianPokedexEntry::
 SECTION "TyphlosionHisuianPokedexEntry", ROMX
 TyphlosionHisuianPokedexEntry::
 	db "Ghost Flame@"
-	db   "Said to purify"
+	text "Said to purify"
 	next "lost, forsaken"
 	next "souls with its"
 	page "flames and guide"
@@ -3281,7 +3281,7 @@ TyphlosionHisuianPokedexEntry::
 SECTION "QwilfishHisuianPokedexEntry", ROMX
 QwilfishHisuianPokedexEntry::
 	db "Balloon@"
-	db   "Fishers detest it"
+	text "Fishers detest it"
 	next "because it sprays"
 	next "poison from its"
 	page "spines, getting it"
@@ -3290,7 +3290,7 @@ QwilfishHisuianPokedexEntry::
 SECTION "SneaselHisuianPokedexEntry", ROMX
 SneaselHisuianPokedexEntry::
 	db "Sharp Claw@"
-	db   "Its sturdy claws"
+	text "Its sturdy claws"
 	next "are ideal for tra-"
 	next "versing cliffs."
 	page "These claws drip"
@@ -3300,7 +3300,7 @@ SneaselHisuianPokedexEntry::
 SECTION "WooperPaldeanPokedexEntry", ROMX
 WooperPaldeanPokedexEntry::
 	db "Poison Fish@"
-	db   "They line up in"
+	text "They line up in"
 	next "groups of three or"
 	next "four and help each"
 	page "other as they walk"
@@ -3310,7 +3310,7 @@ WooperPaldeanPokedexEntry::
 SECTION "TaurosPaldeanPokedexEntry", ROMX
 TaurosPaldeanPokedexEntry::
 	db "Wild Bull@"
-	db   "The “Combat Breed”"
+	text "The “Combat Breed”"
 	next "fights in close"
 	next "quarters. It uses"
 	page "its short horns"
@@ -3320,7 +3320,7 @@ TaurosPaldeanPokedexEntry::
 SECTION "TaurosPaldeanFirePokedexEntry", ROMX
 TaurosPaldeanFirePokedexEntry::
 	db "Wild Bull@"
-	db   "The “Blaze Breed's”"
+	text "The “Blaze Breed's”"
 	next "horns can reach"
 	next "over 1800 degrees."
 	page "Those gored by"
@@ -3330,7 +3330,7 @@ TaurosPaldeanFirePokedexEntry::
 SECTION "TaurosPaldeanWaterPokedexEntry", ROMX
 TaurosPaldeanWaterPokedexEntry::
 	db "Wild Bull@"
-	db   "The “Aqua Breed”"
+	text "The “Aqua Breed”"
 	next "swims by jetting"
 	next "water from its"
 	page "horns. Its high"
@@ -3340,7 +3340,7 @@ TaurosPaldeanWaterPokedexEntry::
 SECTION "UrsalunaBloodmoonPokedexEntry", ROMX
 UrsalunaBloodmoonPokedexEntry::
 	db "Peat@"
-	db   "It can see in the"
+	text "It can see in the"
 	next "dark with its left"
 	next "eye, and protects"
 	page "itself with mud"

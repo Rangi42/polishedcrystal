@@ -148,7 +148,8 @@ ENDM
 
 MACRO page
 ; Start a new Pokedex page.
-	_dtxt "@", \#
+	_dtxt "@"
+	text \#
 ENDM
 
 MACRO _dtxt
