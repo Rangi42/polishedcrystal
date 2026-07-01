@@ -657,12 +657,6 @@ _OPT_PokemonChannelText::
 	text "#mon"
 	done
 
-SECTION "_PokedexShowText", ROMX
-_PokedexShowText::
-	line ""
-	text_ram wStringBuffer1
-	done
-
 ; Pokémon Music Channel / Pokémusic
 
 SECTION "_BenIntroText1", ROMX

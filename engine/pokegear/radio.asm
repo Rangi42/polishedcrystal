@@ -23,102 +23,93 @@ PlayRadioShow:
 ; entries correspond to constants/radio_constants.asm
 	table_width 2
 	dw OaksPkmnTalk1  ; $00
-	dw PokedexShow1 ; $01
-	dw BenMonMusic1  ; $02
-	dw LuckyNumberShow1 ; $03
-	dw BuenasPassword1 ; $04
-	dw PeoplePlaces1 ; $05
-	dw FernMonMusic1 ; $06
-	dw RocketRadio1 ; $07
-	dw PokeFluteRadio ; $08
-	dw UnownRadio ; $09
-	dw EvolutionRadio ; $0a
+	dw BenMonMusic1  ; $01
+	dw LuckyNumberShow1 ; $02
+	dw BuenasPassword1 ; $03
+	dw PeoplePlaces1 ; $04
+	dw FernMonMusic1 ; $05
+	dw RocketRadio1 ; $06
+	dw PokeFluteRadio ; $07
+	dw UnownRadio ; $08
+	dw EvolutionRadio ; $09
 	assert_table_length NUM_RADIO_CHANNELS
 ; OaksPkmnTalk
-	dw OaksPkmnTalk2  ; $0b
-	dw OaksPkmnTalk3  ; $0c
-	dw OaksPkmnTalk4  ; $0d
-	dw OaksPkmnTalk5  ; $0e
-	dw OaksPkmnTalk6  ; $0f
-	dw OaksPkmnTalk7  ; $10
-	dw OaksPkmnTalk8  ; $11
-	dw OaksPkmnTalk9  ; $12
-	dw PokedexShow2 ; $13
-	dw PokedexShow3 ; $14
-	dw PokedexShow4 ; $15
-	dw PokedexShow5 ; $16
+	dw OaksPkmnTalk2  ; $0a
+	dw OaksPkmnTalk3  ; $0b
+	dw OaksPkmnTalk4  ; $0c
+	dw OaksPkmnTalk5  ; $0d
+	dw OaksPkmnTalk6  ; $0e
+	dw OaksPkmnTalk7  ; $0f
+	dw OaksPkmnTalk8  ; $10
+	dw OaksPkmnTalk9  ; $11
 ; Ben Music
-	dw BenMonMusic2  ; $17
-	dw BenMonMusic3  ; $18
-	dw BenFernMusic4 ; $19
-	dw BenFernMusic5 ; $1a
-	dw BenFernMusic6 ; $1b
-	dw DoNothing     ; $1c
-	dw FernMonMusic2 ; $1d
+	dw BenMonMusic2  ; $12
+	dw BenMonMusic3  ; $13
+	dw BenFernMusic4 ; $14
+	dw BenFernMusic5 ; $15
+	dw BenFernMusic6 ; $16
+	dw DoNothing     ; $17
+	dw FernMonMusic2 ; $18
 ; Lucky Number Show
-	dw LuckyNumberShow2 ; $1e
-	dw LuckyNumberShow3 ; $1f
-	dw LuckyNumberShow4 ; $20
-	dw LuckyNumberShow5 ; $21
-	dw LuckyNumberShow6 ; $22
-	dw LuckyNumberShow7 ; $23
-	dw LuckyNumberShow8 ; $24
-	dw LuckyNumberShow9 ; $25
-	dw LuckyNumberShow10 ; $26
-	dw LuckyNumberShow11 ; $27
-	dw LuckyNumberShow12 ; $28
-	dw LuckyNumberShow13 ; $29
-	dw LuckyNumberShow14 ; $2a
-	dw LuckyNumberShow15 ; $2b
+	dw LuckyNumberShow2 ; $19
+	dw LuckyNumberShow3 ; $1a
+	dw LuckyNumberShow4 ; $1b
+	dw LuckyNumberShow5 ; $1c
+	dw LuckyNumberShow6 ; $1d
+	dw LuckyNumberShow7 ; $1e
+	dw LuckyNumberShow8 ; $1f
+	dw LuckyNumberShow9 ; $20
+	dw LuckyNumberShow10 ; $21
+	dw LuckyNumberShow11 ; $22
+	dw LuckyNumberShow12 ; $23
+	dw LuckyNumberShow13 ; $24
+	dw LuckyNumberShow14 ; $25
+	dw LuckyNumberShow15 ; $26
 ; People & Places
-	dw PeoplePlaces2 ; $2c
-	dw PeoplePlaces3 ; $2d
-	dw PeoplePlaces4 ; $2e
-	dw PeoplePlaces5 ; $2f
-	dw PeoplePlaces6 ; $30
-	dw PeoplePlaces7 ; $31
+	dw PeoplePlaces2 ; $27
+	dw PeoplePlaces3 ; $28
+	dw PeoplePlaces4 ; $29
+	dw PeoplePlaces5 ; $2a
+	dw PeoplePlaces6 ; $2b
+	dw PeoplePlaces7 ; $2c
 ; Rocket Radio
-	dw RocketRadio2 ; $32
-	dw RocketRadio3 ; $33
-	dw RocketRadio4 ; $34
-	dw RocketRadio5 ; $35
-	dw RocketRadio6 ; $36
-	dw RocketRadio7 ; $37
-	dw RocketRadio8 ; $38
-	dw RocketRadio9 ; $39
-	dw RocketRadio10 ; $3a
+	dw RocketRadio2 ; $2d
+	dw RocketRadio3 ; $2e
+	dw RocketRadio4 ; $2f
+	dw RocketRadio5 ; $30
+	dw RocketRadio6 ; $31
+	dw RocketRadio7 ; $32
+	dw RocketRadio8 ; $33
+	dw RocketRadio9 ; $34
+	dw RocketRadio10 ; $35
 ; More Pokemon Channel stuff
-	dw OaksPkmnTalk10 ; $3b
-	dw OaksPkmnTalk11 ; $3c
-	dw OaksPkmnTalk12 ; $3d
-	dw OaksPkmnTalk13 ; $3e
-	dw OaksPkmnTalk14 ; $3f
+	dw OaksPkmnTalk10 ; $36
+	dw OaksPkmnTalk11 ; $37
+	dw OaksPkmnTalk12 ; $38
+	dw OaksPkmnTalk13 ; $39
+	dw OaksPkmnTalk14 ; $3a
 ; Buenas Password
-	dw BuenasPassword2 ; $40
-	dw BuenasPassword3 ; $41
-	dw BuenasPassword4 ; $42
-	dw BuenasPassword5 ; $43
-	dw BuenasPassword6 ; $44
-	dw BuenasPassword7 ; $45
-	dw BuenasPassword8 ; $46
-	dw BuenasPassword9 ; $47
-	dw BuenasPassword10 ; $48
-	dw BuenasPassword11 ; $49
-	dw BuenasPassword12 ; $4a
-	dw BuenasPassword13 ; $4b
-	dw BuenasPassword14 ; $4c
-	dw BuenasPassword15 ; $4d
-	dw BuenasPassword16 ; $4e
-	dw BuenasPassword17 ; $4f
-	dw BuenasPassword18 ; $50
-	dw BuenasPassword19 ; $51
-	dw BuenasPassword20 ; $52
-	dw BuenasPassword21 ; $53
-	dw RadioScroll ; $54
-; More Pokemon Channel stuff
-	dw PokedexShow6 ; $55
-	dw PokedexShow7 ; $56
-	dw PokedexShow8 ; $57
+	dw BuenasPassword2 ; $3b
+	dw BuenasPassword3 ; $3c
+	dw BuenasPassword4 ; $3d
+	dw BuenasPassword5 ; $3e
+	dw BuenasPassword6 ; $3f
+	dw BuenasPassword7 ; $40
+	dw BuenasPassword8 ; $41
+	dw BuenasPassword9 ; $42
+	dw BuenasPassword10 ; $43
+	dw BuenasPassword11 ; $44
+	dw BuenasPassword12 ; $45
+	dw BuenasPassword13 ; $46
+	dw BuenasPassword14 ; $47
+	dw BuenasPassword15 ; $48
+	dw BuenasPassword16 ; $49
+	dw BuenasPassword17 ; $4a
+	dw BuenasPassword18 ; $4b
+	dw BuenasPassword19 ; $4c
+	dw BuenasPassword20 ; $4d
+	dw BuenasPassword21 ; $4e
+	dw RadioScroll ; $4f
 	assert_table_length NUM_RADIO_SEGMENTS
 
 NextRadioLine:
@@ -578,124 +569,6 @@ ClearBottomLine:
 	rst ByteFill
 	ret
 
-PokedexShow1:
-	call StartRadioStation
-.loop
-	ld bc, NUM_SPECIES
-	call RandomRange16
-	ld a, c
-	and a
-	jr z, .loop
-	inc a
-	jr z, .loop
-	ld a, b
-	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
-	swap a
-	rla
-	ld b, a
-	push bc
-	call CheckCosmeticCaughtMon
-	pop bc
-	jr z, .loop
-	ld hl, wNamedObjectIndex
-	ld a, c
-	ld [wCurPartySpecies], a
-	ld [hli], a
-	ld a, b
-	ld [wCurForm], a
-	ld [hl], a
-	call GetPokemonName
-	ld hl, PokedexShowText
-	ld a, POKEDEX_SHOW_2
-	jmp NextRadioLine
-
-PokedexShow2:
-	ld a, [wCurPartySpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	call GetSpeciesAndFormIndex
-	call GetDexEntryPointer
-	call CopyDexEntryParts
-	ld a, POKEDEX_SHOW_3
-	jmp PrintRadioLine
-
-PokedexShow3:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_4
-	jmp PrintRadioLine
-
-PokedexShow4:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_5
-	jmp PrintRadioLine
-
-PokedexShow5:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_6
-	jmp PrintRadioLine
-
-PokedexShow6:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_7
-	jmp PrintRadioLine
-
-PokedexShow7:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_8
-	jmp PrintRadioLine
-
-PokedexShow8:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW
-	jmp PrintRadioLine
-
-CopyDexEntry:
-	ld hl, wPokedexShowPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wPokedexShowPointerBank]
-CopyDexEntryParts:
-	push af
-	push hl
-	ld de, wPokedexShowNextLine+1
-	ld bc, SCREEN_WIDTH - 1
-	call FarCopyBytes
-	ld hl, wPokedexShowNextLine
-	push hl
-	ld [hl], '<LINE>'
-	ld d, BANK(@)
-	call .GetTerminator
-	dec hl
-	ld [hl], '<DONE>'
-	pop hl
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-	ld d, a
-	call .GetTerminator
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
-	ld a, d
-	ld [wPokedexShowPointerBank], a
-	ret
-
-.GetTerminator:
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp '@'
-	ret z
-	cp '<NEXT>'
-	ret z
-	jr .GetTerminator
-
-PokedexShowText:
-	; @ @
-	text_farend _PokedexShowText
 BenMonMusic1:
 	call StartPokemonMusicChannel
 	ld hl, BenIntroText1

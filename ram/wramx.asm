@@ -490,11 +490,6 @@ wTempMonHyperTraining:: db
 	ds 2 ; the other 2 extra bytes
 NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
-NEXTU
-wPokedexShowPointerAddr:: dw
-wPokedexShowPointerBank:: db
-NEXTU
-wPokedexShowNextLine:: ds SCREEN_WIDTH
 ENDU
 
 ; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
