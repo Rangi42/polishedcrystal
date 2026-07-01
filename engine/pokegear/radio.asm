@@ -1567,18 +1567,12 @@ BuenaRadioMidnightText10:
 BuenaOffTheAirText:
 	;
 	text_farend _BuenaOffTheAirText
+
 CopyRadioTextToRAM:
 	ld a, [hl]
 	cp '<FAR>'
 	jmp z, FarCopyRadioText
-	ld de, wRadioCompressedText
-	ld bc, SCREEN_WIDTH * 2
-	rst CopyBytes
-	ld hl, wRadioCompressedText
-	ld de, wRadioText
-	ld a, [hli]
-	ld [de], a
-	inc de
+	call PrepareToDecompressRadioText
 	jmp DecompressStringToRAM
 
 StartRadioStation:

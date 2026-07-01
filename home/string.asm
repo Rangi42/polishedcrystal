@@ -28,9 +28,11 @@ InitName::
 	ret
 
 FarCopyRadioText::
-	inc hl
+	inc hl ; skip '<FAR>'
+
 	ldh a, [hROMBank]
 	push af
+
 	ld a, [hli]
 	ld d, a
 	res 7, d
@@ -38,8 +40,21 @@ FarCopyRadioText::
 	ld e, a
 	ld a, [hli]
 	rst Bankswitch
+
 	ld l, e
 	ld h, d
+	call PrepareToDecompressRadioText
+
+.loop
+	call DecompressStringToRAM
+	cp '@'
+	jr z, .loop ; <DONE> terminates radio lines, not @
+
+	pop af
+	rst Bankswitch
+	ret
+
+PrepareToDecompressRadioText:
 	ld de, wRadioCompressedText
 	push de
 	ld bc, SCREEN_WIDTH * 2
@@ -49,10 +64,4 @@ FarCopyRadioText::
 	ld a, [hli]
 	ld [de], a
 	inc de
-.loop
-	call DecompressStringToRAM
-	cp '@'
-	jr z, .loop ; <DONE> terminates radio lines, not @
-	pop af
-	rst Bankswitch
 	ret
