@@ -28,7 +28,7 @@
 
 #define CHUNKID(a, b, c, d) (uint32_t)((uint32_t)(a) | ((uint32_t)(b) << 8) | ((uint32_t)(c) << 16) | ((uint32_t)(d) << 24))
 
-_Noreturn void error_exit (const char *fmt, ...) {
+_Noreturn void error_exit(const char *fmt, ...) {
   fputs("error: ", stderr);
   va_list ap;
   va_start(ap, fmt);
@@ -39,7 +39,7 @@ _Noreturn void error_exit (const char *fmt, ...) {
 }
 
 // uniform pseudorandom double in [0, 1) via xorshift* PRNG
-double uniform_random (void) {
+double uniform_random(void) {
   static uint64_t state = 3490487757541254948UL; // seed
   state ^= state >> 12;
   state ^= state << 25;
@@ -47,18 +47,18 @@ double uniform_random (void) {
   return (state * 0x2545F4914F6CDD1DUL) / 0x1p64;
 }
 
-void *xmalloc (size_t size, const char *name) {
+void *xmalloc(size_t size, const char *name) {
   void *ptr = malloc(size);
   if (!ptr) error_exit("could not allocate memory for %s", name);
   return ptr;
 }
 
-int32_t read_uint16le (FILE *file) {
+int32_t read_uint16le(FILE *file) {
   unsigned char b[2];
   return fread(b, 1, 2, file) == 2 ? (int32_t)b[0] | ((int32_t)b[1] << 8) : -1;
 }
 
-int64_t read_uint32le (FILE *file) {
+int64_t read_uint32le(FILE *file) {
   unsigned char b[4];
   return fread(b, 1, 4, file) == 4 ? (int64_t)b[0] | ((int64_t)b[1] << 8) | ((int64_t)b[2] << 16) | ((int64_t)b[3] << 24) : -1;
 }
@@ -75,7 +75,7 @@ struct node {
 
 struct node nodes[NUM_DELTAS * 2 - 1]; // large enough for a full binary tree with one leaf node for each possible delta value
 
-int compare_nodes (const void *a, const void *b) {
+int compare_nodes(const void *a, const void *b) {
   struct node na = nodes[*(const size_t *)a], nb = nodes[*(const size_t *)b];
   return na.count > nb.count ? 1 : na.count < nb.count ? -1 : (na.tie > nb.tie) - (na.tie < nb.tie);
 }
@@ -85,7 +85,7 @@ struct bits {
   uint32_t data; // masked by (1 << length) - 1
 };
 
-struct bits push_bits (struct bits a, struct bits b) {
+struct bits push_bits(struct bits a, struct bits b) {
   return (struct bits){.length = a.length + b.length, .data = (a.data << b.length) | b.data};
 }
 #define push_bit(prefix, bit) push_bits(prefix, (struct bits){.length = 1, .data = (bit)})
@@ -98,9 +98,9 @@ struct bytes {
   uint8_t data[]; // flexible array member of length bytes
 };
 
-struct bytes *new_bytes (size_t length) {
+struct bytes *new_bytes(size_t length) {
   struct bytes *bytes = xmalloc(sizeof *bytes + length, "encoded Huffman tree");
-  bytes -> length = length;
+  bytes->length = length;
   return bytes;
 }
 
@@ -110,7 +110,7 @@ struct bytes *new_bytes (size_t length) {
 // - %0xxx_xxxx: left and right are internal branches, x = jump offset
 // - %1111_1111: terminator, signifies the end of the tree
 // returns the encoded bytes, and adds their compiled length to the offset parameter
-struct bytes *encode_huffman_tree (size_t root, size_t *offset, struct bits prefix) {
+struct bytes *encode_huffman_tree(size_t root, size_t *offset, struct bits prefix) {
   size_t left = nodes[root].left, right = nodes[root].right;
   size_t leftValue = nodes[left].value, rightValue = nodes[right].value;
 
@@ -136,10 +136,10 @@ struct bytes *encode_huffman_tree (size_t root, size_t *offset, struct bits pref
     // to always put the smaller subtree as the left child.
     if (leftSize > 127) error_exit("left branch is too large to skip with a jr opcode");
 
-    tree = new_bytes(1 + leftTree -> length + rightTree -> length);
-    tree -> data[0] = leftSize;
-    memcpy(tree -> data + 1, leftTree -> data, leftTree -> length);
-    memcpy(tree -> data + 1 + leftTree -> length, rightTree -> data, rightTree -> length);
+    tree = new_bytes(1 + leftTree->length + rightTree->length);
+    tree->data[0] = leftSize;
+    memcpy(tree->data + 1, leftTree->data, leftTree->length);
+    memcpy(tree->data + 1 + leftTree->length, rightTree->data, rightTree->length);
 
     free(leftTree);
     free(rightTree);
@@ -154,9 +154,9 @@ struct bytes *encode_huffman_tree (size_t root, size_t *offset, struct bits pref
     codes[rightValue] = push_bit(prefix, 1);
     struct bytes *leftTree = encode_huffman_tree(left, offset, push_bit(prefix, 0));
 
-    tree = new_bytes(1 + leftTree -> length);
-    tree -> data[0] = 0x80 + rightValue;
-    memcpy(tree -> data + 1, leftTree -> data, leftTree -> length);
+    tree = new_bytes(1 + leftTree->length);
+    tree->data[0] = 0x80 + rightValue;
+    memcpy(tree->data + 1, leftTree->data, leftTree->length);
 
     free(leftTree);
   } else {
@@ -172,13 +172,13 @@ struct bytes *encode_huffman_tree (size_t root, size_t *offset, struct bits pref
     codes[rightValue] = push_bit(prefix, 1);
 
     tree = new_bytes(2);
-    memcpy(tree -> data, &(uint8_t []){0xc0 + rightValue, leftValue}, tree -> length);
+    memcpy(tree->data, &(uint8_t []){0xc0 + rightValue, leftValue}, tree->length);
   }
 
   return tree;
 }
 
-int main (int argc, char **argv) {
+int main(int argc, char **argv) {
   if (argc != 3) {
     fprintf(stderr, "usage: %s in.wav out.ded\n", argv[0]);
     return 1;
@@ -328,7 +328,7 @@ int main (int argc, char **argv) {
   if (!out) error_exit("could not open \"%s\" for writing", argv[2]);
 
   struct bytes *tree = encode_huffman_tree(queue[0], &(size_t){0}, (struct bits){0});
-  if (fwrite(tree -> data, 1, tree -> length, out) < tree -> length) error_exit("could not write encoded Huffman tree");
+  if (fwrite(tree->data, 1, tree->length, out) < tree->length) error_exit("could not write encoded Huffman tree");
   free(tree);
   putc(0xff, out); // separate Huffman tree from encoded delta values
 
