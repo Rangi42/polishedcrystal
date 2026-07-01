@@ -75,7 +75,6 @@ SECTION "New Bark Scripts", ROMX
 INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/ElmsHouse.asm"
 INCLUDE "maps/ElmsLab.asm"
-INCLUDE "maps/PlayersNeighborsHouse.asm"
 
 
 SECTION "New Bark Scripts 2", ROMX
@@ -83,7 +82,8 @@ SECTION "New Bark Scripts 2", ROMX
 INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
-INCLUDE "maps/LyrasHouse2F.asm"
+INCLUDE "maps/LyrasHouse2F.asm" ; shares text with PlayersHouse2F.asm
+INCLUDE "maps/PlayersNeighborsHouse.asm" ; shares text with PlayersHouse2F.asm
 
 
 SECTION "Cherrygrove Scripts", ROMX
