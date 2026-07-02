@@ -38,7 +38,7 @@ GoldenrodCity_MapScriptHeader:
 	coord_event  9, 15, SCENE_GOLDENRODCITY_NOOP, GoldenrodCityPanUpScript
 
 	def_bg_events
-	bg_event 14, 14, BGEVENT_JUMPTEXT, GoldenrodCityStationSignText
+	bg_event 15, 14, BGEVENT_JUMPTEXT, GoldenrodCityStationSignText
 	bg_event  7, 15, BGEVENT_JUMPTEXT, GoldenrodCityRadioTowerSignText
 	bg_event 30, 27, BGEVENT_JUMPTEXT, GoldenrodDeptStoreSignText
 	bg_event 30,  9, BGEVENT_JUMPTEXT, GoldenrodGymSignText
