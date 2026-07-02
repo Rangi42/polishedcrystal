@@ -54,33 +54,33 @@ jobs:
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # DOWNLOAD ALL BUILD ARTIFACTS
       - id: download-polishedcrystal
         name: "Download polishedcrystal"
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v8
         with:
           name: "polishedcrystal"
           path: "./build"
 
       - id: download-polishedcrystal-faithful
         name: "Download polishedcrystal-faithful"
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v8
         with:
           name: "polishedcrystal-faithful"
           path: "./build"
 
       - id: download-polisheddebug
         name: "Download polisheddebug"
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v8
         with:
           name: "polisheddebug"
           path: "./build"
 
       - id: download-polisheddebug-faithful
         name: "Download polisheddebug-faithful"
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v8
         with:
           name: "polisheddebug-faithful"
           path: "./build"
@@ -88,7 +88,7 @@ jobs:
       # DELETE OLD RELEASE (if any)
       - name: Delete old release
         id: delete_release
-        uses: cb80/delrel@latest
+        uses: cb80/delrel@v0.19.0
         with:
           tag: ${{ env.DEV_TAG }}
 
@@ -101,7 +101,7 @@ jobs:
       # CREATE NEW RELEASE
       - name: Create new release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.DEV_TAG }}
           name: ${{ env.DEV_NAME }}
@@ -112,7 +112,7 @@ jobs:
       # UPLOAD REGULAR ASSETS
       - name: Upload regular assets
         id: upload
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.DEV_TAG }}
           files: |
@@ -123,7 +123,7 @@ jobs:
       # UPLOAD FAITHFUL ASSETS
       - name: Upload faithful assets
         id: upload-faithful
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.DEV_TAG }}
           files: |
@@ -134,7 +134,7 @@ jobs:
       # UPLOAD DEBUG ASSETS
       - name: Upload debug assets
         id: upload-debug
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.DEV_TAG }}
           files: |
@@ -145,7 +145,7 @@ jobs:
       # UPLOAD FAITHFUL DEBUG ASSETS
       - name: Upload faithful debug assets
         id: upload-faithful-debug
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.DEV_TAG }}
           files: |

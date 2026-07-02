@@ -33,7 +33,7 @@ jobs:
       # CHECKOUT RGBDS
       - id: checkout-rgbds
         name: "Checkout gbdev/rgbds"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: rgbds
           ref: ${{ env.RGBDS_VERSION }}
@@ -49,7 +49,7 @@ jobs:
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # BUILD ROMS
       - id: build-polishedcrystal
@@ -127,7 +127,7 @@ jobs:
       - id: upload-polishedcrystal
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polishedcrystal"
           retention-days: 1
@@ -137,7 +137,7 @@ jobs:
       - id: upload-polishedcrystal-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal-faithful artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polishedcrystal-faithful"
           retention-days: 1
@@ -147,7 +147,7 @@ jobs:
       - id: upload-polisheddebug
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polisheddebug"
           retention-days: 1
@@ -157,7 +157,7 @@ jobs:
       - id: upload-polisheddebug-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug-faithful artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polisheddebug-faithful"
           retention-days: 1
