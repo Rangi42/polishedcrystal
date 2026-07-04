@@ -10,7 +10,7 @@ endc
 	db 45 ; catch rate
 	db 136 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 4; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 
 	abilities_for MR__MIME_GALARIAN, VITAL_SPIRIT, SCREEN_CLEANER, ICE_BODY
 	db GROWTH_MEDIUM_FAST ; growth rate
