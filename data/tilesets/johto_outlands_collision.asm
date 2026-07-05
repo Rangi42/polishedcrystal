@@ -118,7 +118,7 @@
 	tilecoll WATERFALL, WATERFALL, WATERFALL, WATERFALL ; 75
 	tilecoll WATER, WATER, WATER, WATER ; 76
 	tilecoll WATER, WATER, WATERFALL, WATERFALL ; 77
-	tilecoll FLOOR, FLOOR, WALL, WALL ; 78
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; 78
 	tilecoll WATER, WATER, WATER, WATER ; 79
 	tilecoll WATER, WATER, WATER, WATER ; 7a
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 7b
@@ -198,7 +198,7 @@
 	tilecoll WALL, FLOOR, WALL, FLOOR ; c5
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; c6
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; c7
-	tilecoll FLOOR, FLOOR, FLOOR, WALL ; c8
+	tilecoll FLOOR, FLOOR, WALL, WALL ; c8
 	tilecoll FLOOR, WALL, WATER, WALL ; c9
 	tilecoll WATER, WATER, WATER, WATER ; ca
 	tilecoll WATER, WATER, WATER, WATER ; cb
