@@ -39,7 +39,7 @@ ContestMonsEnd:
 
 ; Bug Catching Contest after E4
 E4_ContestMons:
-	;           Time, Weight, min,                   max,                   species
+	;           Time, Weight, min,                    max,                   species
 	contest_mon    7,     10, LEVEL_FROM_BADGES + 0,  LEVEL_FROM_BADGES + 4, BUTTERFREE
 	contest_mon    7,     10, LEVEL_FROM_BADGES + 0,  LEVEL_FROM_BADGES + 4, BEEDRILL
 	contest_mon    7,     10, LEVEL_FROM_BADGES + 0,  LEVEL_FROM_BADGES + 4, PARAS
@@ -60,7 +60,7 @@ E4_ContestMonsEnd:
 
 ; Bug Catching Contest after Blue
 Blue_ContestMons:
-	;           Time, Weight, min,                   max,                   species
+	;           Time, Weight, min,                    max,                   species
 	contest_mon    7,     10, LEVEL_FROM_BADGES + 0,  LEVEL_FROM_BADGES + 4, BUTTERFREE
 	contest_mon    7,     10, LEVEL_FROM_BADGES + 0,  LEVEL_FROM_BADGES + 4, BEEDRILL
 	contest_mon    7,      7, LEVEL_FROM_BADGES - 1,  LEVEL_FROM_BADGES + 2, PARASECT
