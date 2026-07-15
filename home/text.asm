@@ -425,7 +425,7 @@ PlaceCommandCharacter::
 
 TextCommand_PLURAL:
 ; Pluralize the last word. Might perform edits on it (Candy -> Candies).
-	; If wItemQuantityBuffer is 1, do nothing.
+	; If wItemQuantityChangeBuffer is 1, do nothing.
 	ld a, [wItemQuantityChangeBuffer]
 	dec a
 	ret z
