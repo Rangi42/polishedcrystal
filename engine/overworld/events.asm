@@ -941,11 +941,19 @@ Autosave:
 	call BGMapAnchorTopLeft
 	call LoadMapPart
 
+	; This implicitly does a SRAM integrity check, so we don't need to
+	; make another one.
 	call .DoAutosave
 	call LatchRTCAndVerifySRAM
 	jmp CloseSRAM
 
 .DoAutosave:
+	; Only allow autosave if the player is allowed to save normally.
+	; We should still do the SRAM integrity check, hence why this check
+	; is done here instead of alongside other autosave checks.
+	farcall SavingAllowed
+	ret nz
+
 	; TODO: autosave initial option
 	ld de, SFX_READ_TEXT_2 ; debug
 	call PlaySFX

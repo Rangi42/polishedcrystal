@@ -249,14 +249,11 @@ endr
 	ld a, STARTMENUITEM_STATUS
 	call .AppendMenuList
 
-	ld a, [wLinkMode]
-	and a
-	jr nz, .no_save
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	ld a, STARTMENUITEM_QUIT
-	jr nz, .write
+	call SavingAllowed
+	ld a, STARTMENUITEM_QUIT ; for bug catching contest
+	jr c, .write
 	ld a, STARTMENUITEM_SAVE
+	jr nz, .no_save
 .write
 	call .AppendMenuList
 .no_save
@@ -297,6 +294,20 @@ endr
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	ret z
 	farjp StartMenu_PrintBugContestStatus
+
+SavingAllowed:
+; Checks if we are allowed to save. Returns z if we can. Also returns carry
+; if we're in the Bug Catching Contest, because in that case we want a different
+; menu option instead.
+	ld a, [wLinkMode]
+	and a
+	ret nz
+	ld a, [wStatusFlags2]
+	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, a
+	scf
+	ret nz
+	xor a
+	ret
 
 StartMenu_Exit:
 	ld a, 1
