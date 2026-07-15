@@ -1192,8 +1192,8 @@ SaveScreen_LoadConnection::
 	ret
 
 GenericFinishBridge::
-	ld a, 1
-	ld [wOverworldDelaySkip], a
+	ld a, $80
+	ld [wOverworldDelayTimer], a
 GetMovementPermissions::
 	xor a
 	ld [wTilePermissions], a

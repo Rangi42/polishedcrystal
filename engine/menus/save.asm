@@ -20,9 +20,7 @@ SaveMenu:
 	jr nz, .refused
 	call AskOverwriteSaveFile
 	jr c, .refused
-	call SetWRAMStateForSave
-	call SavedTheGame
-	call ClearWRAMStateAfterSave
+	call ForceGameSave
 	call ExitMenu
 	and a
 	ret
@@ -53,11 +51,19 @@ Link_SaveGame:
 	call AskOverwriteSaveFile
 	ret c
 ForceGameSave:
+	call SilentGameSave
+
+	; <PLAYER> saved the game!
+	ld hl, SavedTheGameText
+	call PrintText
+	ld de, SFX_SAVE
+	call WaitPlaySFX
+	jmp WaitSFX
+
+SilentGameSave:
 	call SetWRAMStateForSave
 	call SavedTheGame
-	call ClearWRAMStateAfterSave
-	and a
-	ret
+	jmp ClearWRAMStateAfterSave
 
 SetWRAMStateForSave:
 	ld a, $1
@@ -147,13 +153,7 @@ CompareLoadedAndSavedPlayerID:
 
 SavedTheGame:
 	call SaveGameData
-	call SaveCurrentVersion
-	; <PLAYER> saved the game!
-	ld hl, SavedTheGameText
-	call PrintText
-	ld de, SFX_SAVE
-	call WaitPlaySFX
-	jmp WaitSFX
+	jmp SaveCurrentVersion
 
 SaveGameData::
 	ldh a, [hVBlank]

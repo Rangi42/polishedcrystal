@@ -1,10 +1,4 @@
-GetSRAMBank::
-; load sram bank a
-; if invalid bank, sram is disabled
-	cp NUM_SRAM_BANKS
-	jr nc, CloseSRAM
-
-	; switch to sram bank a
+LatchRTCAndVerifySRAM::
 	push af
 
 	; latch clock data
@@ -32,7 +26,6 @@ GetSRAMBank::
 
 	; select sram bank
 	pop af
-	ld [rRAMB], a
 	ret
 
 .crash
@@ -41,6 +34,17 @@ GetSRAMBank::
 	ld a, ERR_SRAM_MISMATCH
 	di
 	jmp Crash
+
+GetSRAMBank::
+; load sram bank a
+; if invalid bank, sram is disabled
+	cp NUM_SRAM_BANKS
+	jr nc, CloseSRAM
+
+	; switch to sram bank a
+	call LatchRTCAndVerifySRAM
+	ld [rRAMB], a
+	ret
 
 CloseSRAM::
 	push af
