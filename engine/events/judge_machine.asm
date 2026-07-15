@@ -517,31 +517,45 @@ RenderChart:
 	ldh [rWBK], a
 	ret
 
-CalcBTimesCOver256:
-; a = b * c / 256
+CalcLTimesCOver256:
+; a = l * c / 256 (simplified copy of Multiply, assumes c != 0)
+; hl is the multiplicand, c is the multiplier, de is the product, b is backup
 	xor a
-	ldh [hMultiplicand + 0], a
-	ldh [hMultiplicand + 1], a
-	ld a, b
-	ldh [hMultiplicand + 2], a
+	ld h, a
+	ld d, a
+	ld e, a
 	ld a, c
-	ldh [hMultiplier], a
-	farcall Multiply
-	ldh a, [hProduct + 2]
+.loop
+	rra
+	jr nc, .next
+	ld b, a
+	; de += hl
+	ld a, e
+	add l
+	ld e, a
+	ld a, d
+	adc h
+	ld d, a
+	ld a, b
+.next
+	add hl, hl
+	and a
+	jr nz, .loop
+	ld a, d
 	ret
 
 OutlineRadarChart:
 ; de = point for HP axis
 	ldh a, [hChartHP]
-	ld b, a
-	; x = 39
-	ld d, 39
+	ld l, a
 	; y = 47 - v * 46 / 256
 	ld c, 46
-	call CalcBTimesCOver256
+	call CalcLTimesCOver256
 	cpl
 	add 47 + 1 ; a = 47 - a
 	ld e, a
+	; x = 39
+	ld d, 39
 
 ; Store the HP point to close the polygon
 	push de
@@ -549,10 +563,10 @@ OutlineRadarChart:
 
 ; de = Atk point
 	ldh a, [hChartAtk]
-	ld b, a
+	ld l, a
 	; x = 40 + v * 39 / 256
 	ld c, 39
-	call CalcBTimesCOver256
+	call CalcLTimesCOver256
 	add 40
 	ld d, a
 	; y = ForwardSlashAxisYCoords[x] (~= 47 - v * 23 / 256)
@@ -575,10 +589,10 @@ OutlineRadarChart:
 
 ; de = Def point
 	ldh a, [hChartDef]
-	ld b, a
+	ld l, a
 	; x = 40 + v * 39 / 256
 	ld c, 39
-	call CalcBTimesCOver256
+	call CalcLTimesCOver256
 	add 40
 	ld d, a
 	; y = BackslashAxisYCoords[x] (~= 48 + v * 23 / 256)
@@ -601,14 +615,14 @@ OutlineRadarChart:
 
 ; de = Spe point
 	ldh a, [hChartSpe]
-	ld b, a
-	; x = 39
-	ld d, 39
+	ld l, a
 	; y = 48 + v * 46 / 256
 	ld c, 46
-	call CalcBTimesCOver256
+	call CalcLTimesCOver256
 	add 48
 	ld e, a
+	; x = 39
+	ld d, 39
 
 ; Draw a line from Def to Spe
 	pop bc
@@ -621,10 +635,10 @@ OutlineRadarChart:
 
 ; de = SDf point
 	ldh a, [hChartSdf]
-	ld b, a
+	ld l, a
 	; x = 38 - v * 39 / 256
 	ld c, 39
-	call CalcBTimesCOver256
+	call CalcLTimesCOver256
 	cpl
 	add 38 + 1 ; a = 38 - a
 	ld d, a
@@ -645,10 +659,10 @@ OutlineRadarChart:
 
 ; de = SAt point
 	ldh a, [hChartSat]
-	ld b, a
+	ld l, a
 	; x = 38 - v * 39 / 256
 	ld c, 39
-	call CalcBTimesCOver256
+	call CalcLTimesCOver256
 	cpl
 	add 38 + 1 ; a = 38 - a
 	ld d, a
