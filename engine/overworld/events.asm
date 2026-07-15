@@ -895,12 +895,14 @@ CheckMenuOW:
 	bit 7, a
 	jr nz, .skip
 
-	; Otherwise, if 4 frames has passed since we last moved, autosave.
+	; Otherwise, if 16 frames has passed since we last moved, autosave.
+	; The reason for the wait is to allow players who move back and forth,
+	; for example Masuda hunters, a bit of margin before autosave kicks in.
 	cp $7f
 	jr z, .skip
 	inc a
 	ld [wOverworldDelayTimer], a
-	cp 4
+	cp 16
 	call z, Autosave
 .skip
 	xor a
