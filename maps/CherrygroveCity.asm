@@ -209,19 +209,13 @@ GuideGentMovement3_5:
 	step_end
 
 GuideGentMovement4:
-	step_left
-	step_left
-	step_left
+	step_down
 	step_down
 	step_down
 	turn_head_left
 	step_end
 
 GuideGentMovement5:
-	step_down
-	step_right
-	step_right
-	step_right
 	step_right
 	step_right
 	step_right

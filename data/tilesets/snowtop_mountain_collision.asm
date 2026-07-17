@@ -137,3 +137,4 @@
 	tilecoll WALL, WALL, WALL, WALL ; 88
 	tilecoll WALL, WALL, WALL, WALL ; 89
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 8a
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 8b

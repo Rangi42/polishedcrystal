@@ -158,3 +158,8 @@
 	tilecoll WALL, WALL, WALL, WALL ; 9d
 	tilecoll WALL, WALL, WALL, WALL ; 9e
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 9f
+	tilecoll COAST_SAND, COAST_SAND, COAST_SAND, COAST_SAND ; a0
+	tilecoll COAST_SAND, FLOOR, COAST_SAND, FLOOR ; a1
+	tilecoll COAST_SAND, COAST_SAND, WATER, WATER ; a2
+	tilecoll WALL, WALL, WATER, WATER ; a3
+	tilecoll FLOOR, FLOOR, WALL, WALL ; a4

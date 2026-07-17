@@ -299,7 +299,7 @@ CheckTileEvent:
 
 	ld a, [wPlayerTileCollision]
 	cp COLL_COAST_SAND
-	call z, RenderShamoutiCoastSand
+	call z, RenderCoastSandTracks
 
 .no_tile_effects
 	call CheckStepCountEnabled
@@ -345,12 +345,12 @@ CheckTileEvent:
 	ld a, [wMapScriptsBank]
 	jmp CallScript
 
-RenderShamoutiCoastSand:
+RenderCoastSandTracks:
 	call GetBGMapPlayerOffset
 	ld de, wFootprintQueue
 	ld bc, TILEMAP_WIDTH
 
-	; assume coast sand is tile $1:4f in TILESET_SHAMOUTI_ISLAND;
+	; assume coast sand is tile [wCoastSandTile], initialized by LoadTilesetGFX;
 	; footprint tiles must be in the same VRAM bank
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
@@ -362,20 +362,24 @@ RenderShamoutiCoastSand:
 	jr c, .vertical
 ; horizontal
 	add hl, bc
-	ld a, $5a ; upper horizontal footprint
+	ld a, [wCoastSandTile]
+	add 3 ; upper horizontal footprint
 	call QueueVolatileTiles
 	inc hl
-	ld a, $5b ; lower horizontal footprint
+	ld a, [wCoastSandTile]
+	add 4 ; lower horizontal footprint
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
 .vertical
 	inc hl
-	ld a, $58 ; upper-right vertical footprint
+	ld a, [wCoastSandTile]
+	inc a ; upper-right vertical footprint
 	call QueueVolatileTiles
 	add hl, bc
 	dec hl
-	ld a, $59 ; lower-left vertical footprint
+	ld a, [wCoastSandTile]
+	add 2 ; lower-left vertical footprint
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
@@ -386,18 +390,22 @@ RenderShamoutiCoastSand:
 	jr c, .vertical_bicycle
 ; horizontal
 	add hl, bc
-	ld a, $5c ; horizontal bicycle track
+	ld a, [wCoastSandTile]
+	add 5 ; horizontal bicycle track
 	call QueueVolatileTiles
 	inc hl
-	ld a, $5c ; horizontal bicycle track
+	ld a, [wCoastSandTile]
+	add 5 ; horizontal bicycle track
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
 .vertical_bicycle
-	ld a, $5d ; vertical bicycle track
+	ld a, [wCoastSandTile]
+	add 6 ; vertical bicycle track
 	call QueueVolatileTiles
 	add hl, bc
-	ld a, $5d ; vertical bicycle track
+	ld a, [wCoastSandTile]
+	add 6 ; vertical bicycle track
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 

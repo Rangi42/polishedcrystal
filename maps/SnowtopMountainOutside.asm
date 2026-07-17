@@ -91,7 +91,7 @@ SnowtopMountainOutsideFlyPointAndFixFacing:
 SnowtopMountainOutsideItemCallback:
 	checkevent EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
 	iftruefwd .done
-	changeblock 4, 8, $0d
+	changeblock 4, 8, $8b
 .done
 	endcallback
 

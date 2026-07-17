@@ -989,6 +989,9 @@ DeleteObjectStruct::
 
 _LoadTilesetGFX:
 ; Loads one of up to 3 tileset groups depending on a
+	push af
+	call InitializeCoastSandTile
+	pop af
 	jr z, _LoadTilesetGFX0
 	dec a
 	jr z, _LoadTilesetGFX1
@@ -1072,11 +1075,30 @@ _DoLoadTilesetGFX0:
 LoadTilesetGFX::
 	xor a
 	ld [wPendingOverworldGraphics], a
+	call InitializeCoastSandTile
 	call _LoadTilesetGFX1
 	call _LoadTilesetGFX2
 	call _LoadTilesetGFX0
 	xor a
 	ldh [hTileAnimFrame], a
+	ret
+
+InitializeCoastSandTile:
+	ld hl, CoastSandTiles
+	ld a, [wMapTileset]
+	ld b, a
+.loop
+	ld a, [hli]
+	and a
+	jr z, .none
+	cp b
+	jr z, .found
+	inc hl
+	jr .loop
+.found
+	ld a, [hl]
+.none
+	ld [wCoastSandTile], a
 	ret
 
 BufferScreen::
