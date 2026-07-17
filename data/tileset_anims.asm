@@ -167,11 +167,12 @@ TilesetPeaksAnim::
 
 TilesetParkAnim::
 	tileframe AnimateWaterTile,               $0:14
-	tileframe DoNothing
+	tileframe AnimateLampLightTiles,          $0:65
 	tileframe AnimateFountainTile,            $0:15
-	tileframe DoNothing
+	tileframe AnimateLampLightTiles,          $0:65
 	tileframe DoNothing
 	tileframe AnimateFlowerTile,              $0:03
+	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe StandingTileFrame8
