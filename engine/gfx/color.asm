@@ -987,8 +987,11 @@ LoadMapPals:
 	farcall ClearSavedObjPals
 .skip_clearing_obj_pals
 
+	; some exceptions to the usual rules which do not load roof palettes
 	ld a, [wMapTileset]
-	cp TILESET_SNOWTOP_MOUNTAIN
+	cp TILESET_SNOWTOP_MOUNTAIN ; covers map_id SNOWTOP_MOUNTAIN_OUTSIDE
+	ret z
+	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
 	ret z
 
 	; overcast maps have their own roof color table
@@ -1001,6 +1004,7 @@ LoadMapPals:
 	jr .get_roof_color
 
 .not_overcast
+	; only TOWN, ROUTE, or ISOLATED environments load roof palettes
 	ld a, [wEnvironment]
 	cp TOWN
 	jr z, .outside

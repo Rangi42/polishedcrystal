@@ -437,8 +437,6 @@ ENDM
 	map_const COLOSSEUM,                                   5,  4 ;  3
 	map_const HIDDEN_TREE_GROTTO,                          4,  6 ;  4
 	map_const HIDDEN_CAVE_GROTTO,                          4,  6 ;  5
-	map_const YELLOW_FOREST_GATE,                          5,  4 ;  6
-	map_const YELLOW_FOREST,                              29, 26 ;  7
 
 	newgroup                                                     ; 21
 	map_const ROUTE_7,                                    10,  9 ;  1
@@ -601,6 +599,8 @@ ENDM
 	map_const QUIET_CAVE_B1F,                             18, 18 ;  6
 	map_const QUIET_CAVE_B2F,                             18, 18 ;  7
 	map_const QUIET_CAVE_B3F,                             18, 19 ;  8
+	map_const YELLOW_FOREST_GATE,                          5,  4 ;  9
+	map_const YELLOW_FOREST,                              29, 26 ; 10
 
 	newgroup                                                     ; 28
 	map_const ROUTE_9,                                    26,  9 ;  1
