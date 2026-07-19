@@ -901,6 +901,12 @@ AnimateTorchTile:
 	jmp WriteTileHLToDE
 
 AnimateLampLightTiles:
+	ld a, [wTimeOfDayPal]
+	and 3
+	cp NITE
+	assert EVE > NITE
+	ret c
+
 	ld hl, sp + 0
 	ld b, h
 	ld c, l
