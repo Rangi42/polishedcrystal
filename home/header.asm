@@ -125,7 +125,9 @@ ItemIsMail_a::
 
 SECTION "lcd", ROM0[$0048]
 	push af
-	jr hLCDInterruptFunction
+	; hLCDInterruptFunction is at $FFxx, and $FFxx - $0048 is much greater than 128,
+	; so RGBLINK v1.0.2 would think this is an invalid short jump.
+	jr hLCDInterruptFunction - $10000
 
 GetMemCGBLayout::
 	xor a ; CGB_RAM
