@@ -543,8 +543,7 @@ HandleLeechSeed:
 	farcall RestoreHP
 	jr .done
 .hurt
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	farcall SubtractHPFromUser
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
@@ -574,8 +573,7 @@ HandlePoison:
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	ld hl, RegainedHealthText
 	call DoPoisonBurnDamageAnim
 	farcall RestoreHP

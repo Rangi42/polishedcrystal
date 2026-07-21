@@ -68,7 +68,7 @@ DoEncoreDisable:
 	jr z, .failed
 
 	; Potential Cursed Body message
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 
 	; Get move effect text and duration
 	ld a, b

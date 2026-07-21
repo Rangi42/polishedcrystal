@@ -877,8 +877,7 @@ ForceDeferredSwitch:
 	cp SUCTION_CUPS
 	jr nz, .items_done
 
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	ld hl, UnaffectedText
 	call StdBattleTextbox
 	farcall EndAbility
@@ -1663,7 +1662,7 @@ ReconsumeLeppaBerry:
 	call GetNonfullPPMove
 	ret z
 	push bc
-	farcall ShowAbilityActivation
+	farcall ShowPendingUserAbility
 	pop bc
 	jr LeppaRestorePP
 
@@ -3595,7 +3594,7 @@ _HeldStatBoostBerry:
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
 	pop hl
 	ret nz
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 	call CurItemRecoveryAnim
 	call GetCurItemName
 	ld hl, BattleText_ItemRaisedCrit
@@ -3622,7 +3621,7 @@ _HeldStatBoostBerry:
 	ld a, [wFailedMessage]
 	and a
 	ret nz
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 	farcall UseStatItemText
 
 	; Don't call CheckMirrorHerb; Bug Bite/Pluck needs to proc the copy later.
@@ -3718,8 +3717,7 @@ _HeldHPHealingItem:
 .quarter_maxhp
 	call GetQuarterMaxHP
 .got_hp_to_restore
-	ld a, CUD_CHEW
-	farcall ShowPotentialSpecificAbilityActivation
+	farcall ShowPendingUserAbility
 	call CurItemRecoveryAnim
 	call RestoreHP
 	xor a
@@ -3843,7 +3841,7 @@ _HeldStatusHealingItem:
 	ld a, b
 	and a
 	ret z
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 	call CurItemRecoveryAnim
 	or 1
 	ret
@@ -3877,8 +3875,7 @@ _HeldConfusionHealingItem:
 	jr nz, .ret_z
 	call DoHeldConfusionHealingItem
 	ret z
-	ld a, CUD_CHEW
-	farcall ShowPotentialSpecificAbilityActivation
+	farcall ShowPendingUserAbility
 	call CurItemRecoveryAnim
 	or 1
 	ret
@@ -4768,8 +4765,7 @@ CheckRunSpeed:
 	cp RUN_AWAY
 	jr nz, .no_flee_ability
 	call SetPlayerTurn
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	jmp .can_escape
 .no_flee_ability
 	push hl

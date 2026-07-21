@@ -578,7 +578,13 @@ wEnemyCharging:: db
 
 wGivingExperienceToExpShareHolders:: db
 
-wInAbility:: db ; disables animations for abilities among other things
+wInAbility::
+; bit 4: enemy ability visible
+; bit 3: player ability visible
+; bit 2: enemy ability pending
+; bit 1: player ability pending
+; bit 0: ongoing ability trigger
+	db
 
 wBattleEnded:: db
 

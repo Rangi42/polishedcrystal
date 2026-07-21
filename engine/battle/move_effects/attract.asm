@@ -20,8 +20,7 @@ BattleCommand_attract:
 	and a
 	ret nz
 
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
 	farjp EndAbility
@@ -36,7 +35,7 @@ BattleCommand_attract:
 
 .no_ability_protection
 	; maybe this was called by cute charm
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 	set SUBSTATUS_IN_LOVE, [hl]
 	call AnimateCurrentMove
 

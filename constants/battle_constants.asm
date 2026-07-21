@@ -231,6 +231,14 @@ DEF SLP_MASK EQU %111 ; 0-7 turns
 
 DEF ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | SLP_MASK
 
+; wInAbility bit flags
+	const_def
+	const ABIL_ACTIVE
+	const ABIL_PLAYER_PENDING
+	const ABIL_ENEMY_PENDING
+	const ABIL_PLAYER_VISIBLE
+	const ABIL_ENEMY_VISIBLE
+
 ; wPlayerSubStatus1 or wEnemySubStatus1 bit flags
 	const_def
 	const SUBSTATUS_UNBURDEN

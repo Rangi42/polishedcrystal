@@ -69,8 +69,7 @@ BattleCommand_trick:
 	ret
 
 .ability_failed
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	call PrintDoesntAffect
 	farjp EndAbility
 .failed

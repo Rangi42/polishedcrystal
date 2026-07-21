@@ -2492,7 +2492,7 @@ BattleBGEffect_SineWave:
 	; If ability slideouts are up, don't sinewave them.
 	ld a, [wInAbility]
 	ld d, a
-	bit 6, d
+	bit ABIL_PLAYER_VISIBLE, d
 	jr z, .no_player_slideout
 	ld a, c
 	cp $3f
@@ -2501,7 +2501,7 @@ BattleBGEffect_SineWave:
 	jr c, .next
 
 .no_player_slideout
-	bit 7, d
+	bit ABIL_ENEMY_VISIBLE, d
 	jr z, .no_enemy_slideout
 	ld a, c
 	cp $17

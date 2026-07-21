@@ -274,17 +274,16 @@ BattleCommand_checkturn:
 
 .woke_up
 if !DEF(FAITHFUL)
-	; if user has Early Bird, display ability activation
+	; if user has Early Bird, display ability
 	; a is still (user's ability - EARLY_BIRD)
 	and a
 	jr nz, .woke_up_no_early_bird
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 endc
 .woke_up_no_early_bird
 	ld hl, WokeUpText
 	call StdBattleTextbox
-	; does nothing in case we never showed an ability activation
+	; does nothing in case we never showed an ability
 	farcall EndAbility
 	ldh a, [hBattleTurn]
 	and a
@@ -583,8 +582,7 @@ CheckPowerHerb:
 	call GetSolarizedWeather
 	jr nz, .no_solar_beam
 
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	ld hl, BattleText_MegaSolCharged
 	call StdBattleTextbox
 	farcall EndAbility
@@ -2751,8 +2749,7 @@ BattleCommand_applydamage:
 .not_enduring2
 	dec a
 	jr nz, .enduring_with_item
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, EnduredText
 	call StdBattleTextbox
 	farjp EndAbility
@@ -3740,7 +3737,7 @@ EndMoveDamageChecks:
 	call SwitchTurn
 	call CanStealItem
 	jr nz, .no_pickpocket
-	farcall BeginAbility
+	farcall BeginUserAbility
 	call BattleCommand_thief
 	farcall EndAbility
 .no_pickpocket
@@ -4926,8 +4923,7 @@ BattleCommand_sleep:
 	jmp StdBattleTextbox
 
 .ability_ok
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	call AnimateFailedMove
 	call PrintDoesntAffect
 	farjp EndAbility
@@ -5161,8 +5157,7 @@ SapHealth:
 
 .damage
 	pop hl
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	farcall SubtractHPFromUser_OverrideFaintOrder
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
@@ -5389,7 +5384,7 @@ DisplayStatusProblem:
 	ret z ; Nothing happened?
 
 	ld e, a
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 	ld bc, 4
 	ld hl, StatusProblemTable - 4
 .loop
@@ -5477,8 +5472,7 @@ StatusTargetVerbose:
 	jr .done
 
 .ability_ok
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, DoesntAffectText
 .failed
 	push hl
@@ -6019,8 +6013,7 @@ BattleCommand_confuse:
 	call GetOpponentIgnorableAbility
 	cp OWN_TEMPO
 	jr nz, .no_ability_protection
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
 	farjp EndAbility
@@ -6164,8 +6157,7 @@ BattleCommand_heal:
 	jmp SwitchTurn
 
 .ability_prevents_rest
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	call AnimateFailedMove
 	farjp EndAbility
 
