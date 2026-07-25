@@ -455,7 +455,7 @@ endc
 	; 25% chance to be fully paralyzed
 	call BattleRandom
 	cp 64
-	ret c
+	ret nc
 
 	ld hl, FullyParalyzedText
 	call StdBattleTextbox
