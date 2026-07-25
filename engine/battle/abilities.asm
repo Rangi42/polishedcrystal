@@ -770,11 +770,12 @@ EffectSporeAbility:
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
 	ret z
-	call BattleRandom
-	cp 1 + 33 percent
-	jr c, PoisonPointAbility
-	cp 1 + 66 percent
-	jr c, StaticAbility
+	ld a, 3
+	call BattleRandomRange
+	and a
+	jr z, PoisonPointAbility
+	dec a
+	jr z, StaticAbility
 
 	ld hl, CanSleepTarget
 	ld c, SLP_MASK
@@ -1954,8 +1955,9 @@ HydrationAbility:
 	jr HealAllStatusAbility
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
-	call BattleRandom
-	cp 1 + (30 percent)
+	ld a, 10
+	call BattleRandomRange
+	cp 3
 	ret nc
 	; fallthrough
 NaturalCureAbility:
@@ -2416,7 +2418,7 @@ GetScaledItemReward:
 .rare:
 ; 2% of Pickup results use a different table with generally better items
 	call Random
-	cp 1 + 50 percent
+	add a
 	call c, .inc_bc
 	ld a, d
 	pop de

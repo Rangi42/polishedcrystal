@@ -335,9 +335,10 @@ endc
 	jr z, .thaw
 
 	; Check for defrosting
-	call BattleRandom
-	cp 1 + (20 percent)
-	jr c, .thaw
+	ld a, 5
+	call BattleRandomRange
+	and a
+	jr z, .thaw
 	ld hl, FrozenSolidText
 	call StdBattleTextbox
 	xor a
@@ -381,9 +382,10 @@ endc
 	call FarPlayBattleAnimation
 
 	; 33% chance of hitting itself (updated from 50% in Gen VII)
-	call BattleRandom
-	cp 1 + (33 percent)
-	jr nc, .not_confused
+	ld a, 3
+	call BattleRandomRange
+	and a
+	jr nz, .not_confused
 
 	; clear confusion-dependent substatus
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -411,7 +413,7 @@ endc
 
 	; 50% chance of infatuation
 	call BattleRandom
-	cp 1 + (50 percent)
+	add a
 	jr c, .not_infatuated
 
 	ld hl, InfatuationText
@@ -452,8 +454,8 @@ endc
 
 	; 25% chance to be fully paralyzed
 	call BattleRandom
-	cp 1 + (25 percent)
-	ret nc
+	cp 64
+	ret c
 
 	ld hl, FullyParalyzedText
 	call StdBattleTextbox

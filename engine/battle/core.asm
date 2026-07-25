@@ -6005,36 +6005,25 @@ else
 endc
 
 .compound_eyes:
-	; 60% chance of getting Item1
-	call BattleRandom
-	cp 60 percent
-	ld a, [wBaseItems]
-	jr c, .UpdateItem
-
-	; 20% chance of getting Item2 (50% of (100% - 60%) = 20%)
-	call BattleRandom
-	cp 50 percent
-	ld a, [wBaseItems+1]
-	jr c, .UpdateItem
-
-	; 20% chance of not getting an item (100% - 60% - 20% = 20%)
-	ld a, NO_ITEM
-	jr .UpdateItem
-
+	ld a, 5
+	call BattleRandomRange
+	cp 3 ; c 60% of the time, z 20% of the time
+	jr .check_item
 .no_compound_eyes_or_amulet_coin:
-	; 50% chance of getting Item1
-	call BattleRandom
-	cp 50 percent
+	ld a, 20
+	call BattleRandomRange
+	cp 10 ; c 50% of the time, z 5% of the time
+
+.check_item:
+	; 60%/50% chance of getting Item1
 	ld a, [wBaseItems]
 	jr c, .UpdateItem
 
-	; 5% chance of getting Item2 (10% of (100% - 50%) = 5%)
-	call BattleRandom
-	cp 10 percent
+	; 20%/5% chance of getting Item2
 	ld a, [wBaseItems+1]
-	jr c, .UpdateItem
+	jr z, .UpdateItem
 
-	; 45% chance of not getting an item (100% - 50% - 5% = 45%)
+	; 20%/45% chance of not getting an item
 	xor a ; NO_ITEM
 .UpdateItem:
 	ld [wOTPartyMon1Item], a
@@ -6217,18 +6206,20 @@ CheckValidMagikarpLength:
 	jr nz, .CheckMagikarpArea
 
 ; 5% chance of skipping both size checks
-	call Random
-	cp 5 percent
-	jr c, .CheckMagikarpArea
+	ld a, 20
+	call RandomRange
+	and a
+	jr z, .CheckMagikarpArea
 ; Try again if length >= 1616 mm (i.e. if LOW(length) >= 4 inches)
 	ld a, [wMagikarpLengthMmLo]
 	cp LOW(1616)
 	jr nc, .redo
 
 ; 20% chance of skipping this check
-	call Random
-	cp 20 percent - 1
-	jr c, .CheckMagikarpArea
+	ld a, 5
+	call RandomRange
+	and a
+	jr z, .CheckMagikarpArea
 ; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
 	ld a, [wMagikarpLengthMmLo]
 	cp LOW(1600)
@@ -6243,8 +6234,9 @@ CheckValidMagikarpLength:
 	jr nz, .okay
 .LakeOfRageMagikarp
 ; 40% chance of not flooring
-	call Random
-	cp 40 percent - 2
+	ld a, 5
+	call RandomRange
+	cp 2
 	jr c, .okay
 ; Try again if length < 1024 mm (i.e. if HIGH(length) < 3 feet)
 	ld a, [wMagikarpLengthMmHi]
