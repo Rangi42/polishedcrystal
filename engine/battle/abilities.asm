@@ -777,9 +777,46 @@ EffectSporeAbility:
 	dec a
 	jr z, StaticAbility
 
+	; If we put the foe to sleep, we need to immediately cancel an ongoing
+	; multihit move. Due to this, add some special handling for sleep in
+	; particular. Note that Chesto or Lum will prevent this, which is why
+	; we check the sleep state after the fact, not merely "did we put
+	; the foe to sleep".
+
+	; Is the foe already statused? Avoids the latter check triggering
+	; in case the foe was already asleep and using Sleep Talk.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld a, [hl]
+	and a
+	ret z
+	push hl
 	ld hl, CanSleepTarget
 	ld c, SLP_MASK
-	jr AfflictStatusAbility
+	call AfflictStatusAbility
+	pop hl
+
+	; Is the opponent now asleep?
+	ld a, [hl]
+	and SLP_MASK
+	ret z
+
+	; Are they using a multihit move?
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IN_LOOP, a
+	ret z
+
+	; Set the "hits left" counter to 1.
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wEnemyRolloutCount
+	jr z, .got_opponent_count
+	ld hl, wPlayerRolloutCount
+.got_opponent_count
+	ld [hl], 1
+	ret
+
 FlameBodyAbility:
 	ld hl, CanBurnTarget
 	ld c, 1 << BRN
