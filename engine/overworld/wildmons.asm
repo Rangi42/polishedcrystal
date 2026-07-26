@@ -512,12 +512,22 @@ ApplyAbilityEffectsOnEncounterMon:
 ; Vanilla 3gen+: 50% to force upper bound in a level range
 ; Since we don't have level ranges, 50% to increase level by 1/8 (min 1)
 	call Random
-	rrca
+	add a
 	ret c
 	ld a, c
+	rrca
+	rrca
+	inc a ; round x.5+ up
+	rrca
+	and %11111
+	jr nz, .increased
+	inc a
+.increased
 	cp MAX_LEVEL
-	ret nc
-	inc c
+	jr c, .got_increment
+	ld a, MAX_LEVEL
+.got_increment
+	ld c, a
 	ret
 
 .Intimidate:
