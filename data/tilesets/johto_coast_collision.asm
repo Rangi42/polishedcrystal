@@ -227,3 +227,5 @@
 	tilecoll WATER, WATER, COAST_SAND, WATER ; e2
 	tilecoll WATER, COAST_SAND, WATER, COAST_SAND ; e3
 	tilecoll COAST_SAND, WATER, COAST_SAND, WATER ; e4
+	tilecoll WALL, WALL, WALL, WALL ; e5
+	tilecoll WALL, WALL, WALL, WALL ; e6
