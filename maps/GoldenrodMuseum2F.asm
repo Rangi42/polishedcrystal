@@ -28,14 +28,12 @@ GoldenrodMuseum2F_MapScriptHeader:
 	bg_event 11,  1, BGEVENT_JUMPTEXT, TowerRelicText
 
 	def_object_events
-	object_event  4,  2, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FSightseerMScript, -1
+	object_event  4,  2, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodMuseum2FSightseerMText, -1
 	pokemon_event 5,  2, SMEARGLE, SPRITEMOVEDATA_POKEMON, (1 << EVE) | (1 << NITE), PAL_MON_BROWN, GoldenrodMuseum2FSmeargleText, -1
 	object_event  3,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FScientistScript, -1
 	object_event 11,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FTeacherScript, -1
 
 LugiaPaintingScript:
-	checkevent EVENT_FOUGHT_LUGIA
-	iffalse_jumptext EmptyDisplayText
 	reanchormap
 	paintingpic LUGIA_PAINTING
 	waitbutton
@@ -47,8 +45,6 @@ LugiaPaintingScript:
 	done
 
 HoOhPaintingScript:
-	checkevent EVENT_FOUGHT_HO_OH
-	iffalse_jumptext EmptyDisplayText
 	reanchormap
 	paintingpic HO_OH_PAINTING
 	waitbutton
@@ -60,8 +56,6 @@ HoOhPaintingScript:
 	done
 
 BellTowerPaintingScript:
-	checkevent EVENT_FOUGHT_SUICUNE
-	iffalse_jumptext EmptyDisplayText
 	reanchormap
 	paintingpic BELL_TOWER_PAINTING
 	waitbutton
@@ -74,59 +68,66 @@ BellTowerPaintingScript:
 
 KabutoPuzzleScript:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
-	iffalse_jumptext EmptyDisplayText
-	reanchormap
+	iffalse_jumptext EmptyPuzzleText
+	showtext .Text
 	paintingpic KABUTO_PUZZLE
 	waitbutton
 	closepokepic
-	jumpthistext
+	end
 
+.Text:
 	text "It's the completed"
 	line "Kabuto panel!"
 	done
 
 OmanytePuzzleScript:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
-	iffalse_jumptext EmptyDisplayText
-	reanchormap
+	iffalse_jumptext EmptyPuzzleText
+	showtext .Text
 	paintingpic OMANYTE_PUZZLE
 	waitbutton
 	closepokepic
-	jumpthistext
+	end
 
+.Text:
 	text "It's the completed"
 	line "Omanyte panel!"
 	done
 
 AerodactylPuzzleScript:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	iffalse_jumptext EmptyDisplayText
-	reanchormap
+	iffalse_jumptext EmptyPuzzleText
+	showtext .Text
 	paintingpic AERODACTYL_PUZZLE
 	waitbutton
 	closepokepic
-	jumpthistext
+	end
 
+.Text:
 	text "It's the completed"
 	line "Aerodactyl panel!"
 	done
 
 HoOhPuzzleScript:
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
-	iffalse_jumptext EmptyDisplayText
-	reanchormap
+	iffalse_jumptext EmptyPuzzleText
+	showtext .Text
 	paintingpic HO_OH_PUZZLE
 	waitbutton
 	closepokepic
-	jumpthistext
+	end
 
+.Text:
 	text "It's the completed"
 	line "Ho-Oh panel!"
 	done
 
-EmptyDisplayText:
-	text "The display is"
-	line "still empty…"
+EmptyPuzzleText:
+	text "Ruins of Alph"
+	line "panel replica"
+
+	para "(restoration"
+	line "in progress)"
 	done
 
 TowerRelicText:
@@ -135,15 +136,7 @@ TowerRelicText:
 	cont "terious #mon."
 	done
 
-GoldenrodMuseum2FSightseerMScript:
-	checkevent EVENT_FOUGHT_SUICUNE
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FSightseerMNoPaintingText
-	checkevent EVENT_FOUGHT_HO_OH
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FSightseerMNoPaintingText
-	checkevent EVENT_FOUGHT_LUGIA
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FSightseerMNoPaintingText
-	jumpthistextfaceplayer
-
+GoldenrodMuseum2FSightseerMText:
 	text "These paintings"
 	line "are beautiful!"
 
@@ -154,38 +147,30 @@ GoldenrodMuseum2FSightseerMScript:
 	line "see too."
 	done
 
-GoldenrodMuseum2FSightseerMNoPaintingText:
-	text "Aww…! Smeargle and"
-	line "I came because we"
-
-	para "heard an art exhi-"
-	line "bit would be here"
-
-	para "for the grand"
-	line "opening."
-
-	para "But it seems we"
-	line "heard wrong…"
-
-	para "This art gallery"
-	line "isn't finished!"
-	done
-
 GoldenrodMuseum2FSmeargleText:
 	text "Smeargle: Smeer!"
 	done
 
 GoldenrodMuseum2FScientistScript:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	iftrue_jumptextfaceplayer GoldenrodMuseum2FScientistSomeArtifactsText
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	iftrue_jumptextfaceplayer GoldenrodMuseum2FScientistSomeArtifactsText
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	iftrue_jumptextfaceplayer GoldenrodMuseum2FScientistSomeArtifactsText
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
-	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	iftrue_jumptextfaceplayer GoldenrodMuseum2FScientistSomeArtifactsText
 	jumpthistextfaceplayer
 
+	text "I was expecting"
+	line "there to be more"
+	cont "exhibits…"
+
+	para "Where are the"
+	line "Alph carvings?"
+	done
+
+GoldenrodMuseum2FScientistSomeArtifactsText:
 	text "These artifacts"
 	line "are fascinating!"
 
@@ -195,20 +180,6 @@ GoldenrodMuseum2FScientistScript:
 	para "I'd love to study"
 	line "the real thing"
 	cont "up close."
-	done
-
-GoldenrodMuseum2FScientistNoArtifactsText:
-	text "I realize this"
-	line "museum has only"
-
-	para "just opened, but"
-	line "I was expecting"
-
-	para "there to be more"
-	line "exhibits…"
-
-	para "Where is every-"
-	line "thing?"
 	done
 
 GoldenrodMuseum2FTeacherScript:
