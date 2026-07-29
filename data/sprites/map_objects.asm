@@ -418,4 +418,12 @@ SpriteMovementData::
 	db LOW_PRIORITY ; flags2
 	db BG_ALIGNED ; palette flags
 
+; SPRITEMOVEDATA_RATTATA_BACK
+	db SPRITEMOVEFN_BOUNCE ; movement function
+	db DOWN ; facing
+	db OBJECT_ACTION_BOUNCE ; action
+	db FIXED_FACING | SLIDING ; flags1
+	db HIGH_PRIORITY ; flags2
+	db 0 ; palette flags
+
 	assert_table_length NUM_SPRITEMOVEDATA
