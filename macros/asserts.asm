@@ -109,7 +109,12 @@ ENDM
 MACRO? jmp
 	jp \#
 	if DEF(DEBUG)
-		assert warn, (\<_NARG>) - @ > 127 || (\<_NARG>) - @ < -129, "jp can be jr"
+		; sign-extend a 16-bit address difference to the 32-bit arithmetic space;
+		; this handles jumps which overflow/underflow the HRAM/ROM0 boundary.
+		assert warn, \
+			((((\<_NARG>) - @ + $8000) & $ffff) - $8000) > 127 || \
+			((((\<_NARG>) - @ + $8000) & $ffff) - $8000) < -129, \
+			"jp can be jr"
 	endc
 ENDM
 
