@@ -1579,7 +1579,8 @@ CheckCurrentMapCoordEvents::
 	ld a, [hli]
 	cp b
 	jr z, .got_id
-	cp -1
+	assert SCENE_ALWAYS == -1
+	inc a ; cp SCENE_ALWAYS
 	jr nz, .next
 
 .got_id
