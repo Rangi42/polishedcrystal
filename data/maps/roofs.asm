@@ -40,4 +40,5 @@ MapGroupRoofs:
 	db -1             ; 35
 	db ROOF_VIOLET    ; 36 (Rugged Road)
 	db -1             ; 37
+	db -1             ; 37
 	assert_table_length NUM_MAP_GROUPS + 1
