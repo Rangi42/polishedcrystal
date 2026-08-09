@@ -17,6 +17,7 @@ Tilesets::
 	tileset TilesetJohtoAncient
 	tileset TilesetBattleTowerOutside
 	tileset TilesetEcruteakShrine
+	tileset TilesetSnowtopMountain
 	tileset TilesetKanto
 	tileset TilesetKantoNorth
 	tileset TilesetIndigoPlateau
@@ -56,7 +57,6 @@ Tilesets::
 	tileset TilesetRuinsOfAlph
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
-	tileset TilesetSnowtopMountain
 	tileset TilesetHiddenGrotto
 	tileset TilesetPeaks
 	tileset TilesetHideout
