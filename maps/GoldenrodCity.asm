@@ -41,7 +41,7 @@ GoldenrodCity_MapScriptHeader:
 	bg_event 15, 14, BGEVENT_JUMPTEXT, GoldenrodCityStationSignText
 	bg_event  7, 15, BGEVENT_JUMPTEXT, GoldenrodCityRadioTowerSignText
 	bg_event 30, 27, BGEVENT_JUMPTEXT, GoldenrodDeptStoreSignText
-	bg_event 30,  9, BGEVENT_JUMPTEXT, GoldenrodGymSignText
+	bg_event 29,  7, BGEVENT_JUMPTEXT, GoldenrodGymSignText
 	bg_event 26, 18, BGEVENT_JUMPTEXT, GoldenrodCitySignText
 	bg_event 32, 30, BGEVENT_JUMPTEXT, GoldenrodCityBikeShopSignText
 	bg_event 20, 22, BGEVENT_JUMPTEXT, GoldenrodCityGameCornerSignText

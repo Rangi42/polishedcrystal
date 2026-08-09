@@ -40,7 +40,7 @@
 	tilecoll WALL, WALL, DOOR, WALL ; 27
 	tilecoll WALL, WALL, WALL, DOOR ; 28
 	tilecoll WALL, WALL, WALL, WALL ; 29
-	tilecoll WALL, WALL, WALL, WALL ; 2a
+	tilecoll HEADBUTT_TREE, HEADBUTT_TREE, WALL, WALL ; 2a
 	tilecoll WALL, WALL, WALL, WALL ; 2b
 	tilecoll HEADBUTT_TREE, HEADBUTT_TREE, WALL, WALL ; 2c
 	tilecoll HEADBUTT_TREE, HEADBUTT_TREE, WALL, WALL ; 2d
@@ -70,9 +70,9 @@
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 45
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 46
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; 47
-	tilecoll WALL, FLOOR, WALL, WALL ; 48
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 48
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 49
-	tilecoll FLOOR, WALL, WALL, WALL ; 4a
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 4a
 	tilecoll LEDGE_DOWN, FLOOR, WALL, FLOOR ; 4b
 	tilecoll COAST_SAND, FLOOR, COAST_SAND, FLOOR ; 4c
 	tilecoll LEDGE_RIGHT, WALL, LEDGE_RIGHT, WALL ; 4d
@@ -179,7 +179,7 @@
 	tilecoll WALL, HEADBUTT_TREE, WALL, HEADBUTT_TREE ; b2
 	tilecoll HEADBUTT_TREE, WALL, HEADBUTT_TREE, WALL ; b3
 	tilecoll FLOOR, LEDGE_DOWN, HEADBUTT_TREE, WALL ; b4
-	tilecoll WALL, FLOOR, WALL, FLOOR ; b5
+	tilecoll COAST_SAND, COAST_SAND, COAST_SAND, COAST_SAND ; b5
 	tilecoll FLOOR, WALL, FLOOR, WALL ; b6
 	tilecoll WALL, FLOOR, WALL, FLOOR ; b7
 	tilecoll WALL, WALL, HEADBUTT_TREE, WALL ; b8
@@ -194,8 +194,8 @@
 	tilecoll FLOOR, FLOOR, COAST_SAND, COAST_SAND ; c1
 	tilecoll WALL, CHERRY_LEAVES, FLOOR, FLOOR ; c2
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; c3
-	tilecoll WALL, WALL, WALL, WALL ; c4
-	tilecoll WALL, WALL, WALL, WALL ; c5
+	tilecoll FLOOR, FLOOR, WALL, WALL ; c4
+	tilecoll FLOOR, FLOOR, WALL, WALL ; c5
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; c6
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; c7
 	tilecoll WALL, WALL, WALL, WALL ; c8
@@ -242,7 +242,15 @@
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f1
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f2
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; f3
-	tilecoll WALL, WALL, DOOR, WALL ; f4
+	tilecoll WALL, WALL, WALL, WALL ; f4
 	tilecoll WALL, WALL, WALL, WALL ; f5
-	tilecoll WALL, WALL, WALL, WALL ; f6
-	tilecoll COAST_SAND, COAST_SAND, COAST_SAND, COAST_SAND ; f7
+	tilecoll WALL, DOOR, FLOOR, FLOOR ; f6
+	tilecoll WALL, WALL, FLOOR, FLOOR ; f7
+	tilecoll WALL, WALL, WALL, WALL ; f8
+	tilecoll WALL, WALL, WALL, WALL ; f9
+	tilecoll WALL, WALL, WALL, WALL ; fa
+	tilecoll WALL, WALL, DOOR, WALL ; fb
+	tilecoll WALL, WALL, WALL, WALL ; fc
+	tilecoll WALL, WALL, WALL, WALL ; fd
+	tilecoll WALL, WALL, WALL, DOOR ; fe
+	tilecoll WALL, WALL, WALL, WALL ; ff

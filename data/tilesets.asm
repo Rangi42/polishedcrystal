@@ -15,11 +15,12 @@ Tilesets::
 	tileset TilesetJohtoCoast
 	tileset TilesetJohtoOutlands
 	tileset TilesetJohtoAncient
+	tileset TilesetJohtoSacred
 	tileset TilesetBattleTowerOutside
-	tileset TilesetEcruteakShrine
 	tileset TilesetSnowtopMountain
 	tileset TilesetKanto
 	tileset TilesetKantoNorth
+	tileset TilesetKantoUrban
 	tileset TilesetIndigoPlateau
 	tileset TilesetShamoutiIsland
 	tileset TilesetValenciaIsland
@@ -71,20 +72,20 @@ TilesetJohtoModernGFX0::
 TilesetJohtoCoastGFX0::
 TilesetJohtoOutlandsGFX0::
 TilesetJohtoAncientGFX0::
-TilesetBattleTowerOutsideGFX0::
-TilesetEcruteakShrineGFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lzp"
+TilesetJohtoSacredGFX0::
+TilesetBattleTowerOutsideGFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lzp"
 
 
 SECTION "Tileset Graphics - johto traditional vram1", ROMX
 
 TilesetJohtoTraditionalGFX1::
-TilesetEcruteakShrineGFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lzp"
+TilesetJohtoSacredGFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - johto traditional vram2", ROMX
 
 TilesetJohtoTraditionalGFX2::
-TilesetEcruteakShrineGFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lzp"
+TilesetJohtoSacredGFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - johto traditional", ROMX
@@ -144,6 +145,13 @@ TilesetJohtoAncientAttr:: INCBIN "data/tilesets/johto_ancient_attributes.bin.lzp
 TilesetJohtoAncientColl:: INCBIN "data/tilesets/johto_ancient_collision.bin.lzp"
 
 
+SECTION "Tileset Data - johto sacred", ROMX
+
+TilesetJohtoSacredMeta:: INCBIN "data/tilesets/johto_sacred_metatiles.bin.lzp"
+TilesetJohtoSacredAttr:: INCBIN "data/tilesets/johto_sacred_attributes.bin.lzp"
+TilesetJohtoSacredColl:: INCBIN "data/tilesets/johto_sacred_collision.bin.lzp"
+
+
 SECTION "Tileset Graphics - battle tower outside vram1", ROMX
 
 TilesetBattleTowerOutsideGFX1:: INCBIN "gfx/tilesets/battle_tower_outside.johto_common.2bpp.lzp"
@@ -156,23 +164,18 @@ TilesetBattleTowerOutsideAttr:: INCBIN "data/tilesets/battle_tower_outside_attri
 TilesetBattleTowerOutsideColl:: INCBIN "data/tilesets/battle_tower_outside_collision.bin.lzp"
 
 
-SECTION "Tileset Data - ecruteak shrine", ROMX
-
-TilesetEcruteakShrineMeta:: INCBIN "data/tilesets/ecruteak_shrine_metatiles.bin.lzp"
-TilesetEcruteakShrineAttr:: INCBIN "data/tilesets/ecruteak_shrine_attributes.bin.lzp"
-TilesetEcruteakShrineColl:: INCBIN "data/tilesets/ecruteak_shrine_collision.bin.lzp"
-
-
 SECTION "Tileset Graphics - kanto common vram0", ROMX
 
 TilesetKantoGFX0::
 TilesetKantoNorthGFX0::
+TilesetKantoUrbanGFX0::
 TilesetIndigoPlateauGFX0:: INCBIN "gfx/tilesets/kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Graphics - kanto vram1", ROMX
 
-TilesetKantoGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
+TilesetKantoGFX1::
+TilesetKantoUrbanGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Data - kanto", ROMX
@@ -192,6 +195,13 @@ SECTION "Tileset Data - kanto north", ROMX
 TilesetKantoNorthMeta:: INCBIN "data/tilesets/kanto_north_metatiles.bin.lzp"
 TilesetKantoNorthAttr:: INCBIN "data/tilesets/kanto_north_attributes.bin.lzp"
 TilesetKantoNorthColl:: INCBIN "data/tilesets/kanto_north_collision.bin.lzp"
+
+
+SECTION "Tileset Data - kanto urban", ROMX
+
+TilesetKantoUrbanMeta:: INCBIN "data/tilesets/kanto_urban_metatiles.bin.lzp"
+TilesetKantoUrbanAttr:: INCBIN "data/tilesets/kanto_urban_attributes.bin.lzp"
+TilesetKantoUrbanColl:: INCBIN "data/tilesets/kanto_urban_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - indigo plateau vram1", ROMX
@@ -915,6 +925,7 @@ TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
 TilesetKantoNorthGFX2::
+TilesetKantoUrbanGFX2::
 TilesetIndigoPlateauGFX2::
 TilesetShamoutiIslandGFX2::
 TilesetValenciaIslandGFX2::

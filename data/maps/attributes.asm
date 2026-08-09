@@ -237,14 +237,14 @@ ENDM
 	connection east, UragaChannelEast, URAGA_CHANNEL_EAST, 0
 
 	map_attributes Route17South, ROUTE_17_SOUTH, $43
-	connection north, Route17North, ROUTE_17_NORTH, -3
+	connection north, Route17North, ROUTE_17_NORTH, 0
 	connection south, Route18West, ROUTE_18_WEST, 0
 
 	map_attributes Route17North, ROUTE_17_NORTH, $f
-	connection south, Route17South, ROUTE_17_SOUTH, 3
+	connection south, Route17South, ROUTE_17_SOUTH, 0
 
 	map_attributes Route16East, ROUTE_16_EAST, $f
-	connection east, CeladonCity, CELADON_CITY, -9
+	connection east, CeladonCity, CELADON_CITY, -10
 
 	map_attributes Route16North, ROUTE_16_NORTH, $f
 	connection west, Route16West, ROUTE_16_WEST, 0
@@ -254,7 +254,7 @@ ENDM
 	connection east, Route16North, ROUTE_16_NORTH, 0
 
 	map_attributes CeladonCity, CELADON_CITY, $f
-	connection west, Route16East, ROUTE_16_EAST, 9
+	connection west, Route16East, ROUTE_16_EAST, 10
 	connection east, Route7, ROUTE_7, 5
 
 	map_attributes Route7, ROUTE_7, $f
@@ -564,7 +564,7 @@ ENDM
 	map_attributes ValeriesHouse, VALERIES_HOUSE, $0
 	map_attributes EcruteakCherishBallHouse, ECRUTEAK_CHERISH_BALL_HOUSE, $0
 	map_attributes EcruteakDestinyKnotHouse, ECRUTEAK_DESTINY_KNOT_HOUSE, $0
-	map_attributes EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $0
+	map_attributes EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $5
 	map_attributes EcruteakShrineInside, ECRUTEAK_SHRINE_INSIDE, $0
 	map_attributes BlackthornGym1F, BLACKTHORN_GYM_1F, $0
 	map_attributes BlackthornGym2F, BLACKTHORN_GYM_2F, $0
@@ -856,7 +856,7 @@ ENDM
 	map_attributes Route30BerrySpeechHouse, ROUTE_30_BERRY_SPEECH_HOUSE, $0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $0
-	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $0
+	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $5
 	map_attributes PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0
 	map_attributes PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0
 	map_attributes ViridianForest, VIRIDIAN_FOREST, $45

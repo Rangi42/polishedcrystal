@@ -6,13 +6,13 @@ MapGroupRoofs:
 	db ROOF_OLIVINE   ; 1 (Olivine City)
 	db ROOF_AZALEA    ; 2 (Mahogany Town)
 	db -1             ; 3
-	db ROOF_VIOLET    ; 4 (Ecruteak City)
+	db ROOF_NEW_BARK  ; 4 (Ecruteak City)
 	db ROOF_AZALEA    ; 5 (Blackthorn City)
 	db -1             ; 6
 	db -1             ; 7
 	db ROOF_AZALEA    ; 8 (Azalea Town)
 	db ROOF_OLIVINE   ; 9 (Battle Tower Outside)
-	db ROOF_VIOLET    ; 10 (Violet City)
+	db ROOF_NEW_BARK  ; 10 (Violet City)
 	db ROOF_GOLDENROD ; 11 (Goldenrod City)
 	db -1             ; 12
 	db -1             ; 13
@@ -21,7 +21,7 @@ MapGroupRoofs:
 	db -1             ; 16
 	db -1             ; 17
 	db -1             ; 18
-	db ROOF_NEW_BARK  ; 19 (Route 28)
+	db ROOF_VIOLET    ; 19 (Route 28)
 	db -1             ; 20
 	db -1             ; 21
 	db ROOF_OLIVINE   ; 22 (Cianwood City)
@@ -40,5 +40,5 @@ MapGroupRoofs:
 	db -1             ; 35
 	db ROOF_SINJOH    ; 36 (Rugged Road)
 	db -1             ; 37
-	db -1             ; 37
+	db -1             ; 38
 	assert_table_length NUM_MAP_GROUPS + 1

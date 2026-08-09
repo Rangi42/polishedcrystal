@@ -25,8 +25,8 @@ ENDM
 TilesetJohtoTraditionalAnim::
 TilesetJohtoOutlandsAnim::
 TilesetJohtoAncientAnim::
+TilesetJohtoSacredAnim::
 TilesetBattleTowerOutsideAnim::
-TilesetEcruteakShrineAnim::
 	tileframe AnimateWaterTile,               $0:14
 	tileframe AnimateRainTiles,               $0:1c
 	tileframe AnimateWhirlpoolTiles,          $0:30
@@ -63,13 +63,25 @@ TilesetJohtoCoastAnim::
 	tileframe DoneTileAnimation
 
 TilesetKantoAnim::
+TilesetKantoUrbanAnim::
+	tileframe AnimateKantoWaterTile,          $0:14
+	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe AnimateFountainTile,            $1:48
+	tileframe DoNothing
+	tileframe AnimateGameCornerTiles,         $1:44
+	tileframe AnimateKantoFlowerTile,         $0:03
+	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe AnimateWaterfallTiles,          $0:6b
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
 TilesetKantoNorthAnim::
 TilesetIndigoPlateauAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
-	tileframe AnimateFountainTile,            $0:40
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $0:7a
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe AnimateWaterfallTiles,          $0:6b

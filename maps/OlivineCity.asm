@@ -28,7 +28,7 @@ OlivineCity_MapScriptHeader:
 	def_bg_events
 	bg_event 17,  7, BGEVENT_JUMPTEXT, OlivineCitySignText
 	bg_event 20, 25, BGEVENT_JUMPTEXT, OlivineCityPortSignText
-	bg_event  7,  7, BGEVENT_JUMPTEXT, OlivineGymSignText
+	bg_event 11,  7, BGEVENT_JUMPTEXT, OlivineGymSignText
 	bg_event 35, 23, BGEVENT_JUMPTEXT, OlivineLighthouseSignText
 	bg_event  1, 21, BGEVENT_JUMPTEXT, OlivineCityBattleTowerSignText
 	bg_event 10, 17, BGEVENT_JUMPTEXT, OlivineCityCafeSignText

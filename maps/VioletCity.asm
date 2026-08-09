@@ -21,7 +21,7 @@ VioletCity_MapScriptHeader:
 
 	def_bg_events
 	bg_event 24, 20, BGEVENT_JUMPTEXT, VioletCitySignText
-	bg_event 15, 17, BGEVENT_JUMPTEXT, VioletGymSignText
+	bg_event 19, 17, BGEVENT_JUMPTEXT, VioletGymSignText
 	bg_event 25,  3, BGEVENT_JUMPTEXT, SproutTowerSignText
 	bg_event 27, 17, BGEVENT_JUMPTEXT, EarlsPokemonAcademySignText
 	bg_event 37, 14, BGEVENT_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION

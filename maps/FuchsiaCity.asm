@@ -6,7 +6,7 @@ FuchsiaCity_MapScriptHeader:
 
 	def_warp_events
 	warp_event  5, 13, FUCHSIA_MART, 2
-	warp_event  8, 27, FUCHSIA_GYM, 1
+	warp_event  6, 27, FUCHSIA_GYM, 1
 	warp_event 11, 27, FUCHSIA_BILL_SPEECH_HOUSE, 1
 	warp_event 19, 27, FUCHSIA_POKECENTER_1F, 1
 	warp_event 27, 27, SAFARI_ZONE_WARDENS_HOME, 1
@@ -21,7 +21,7 @@ FuchsiaCity_MapScriptHeader:
 
 	def_bg_events
 	bg_event 21, 19, BGEVENT_JUMPTEXT, FuchsiaCitySignText
-	bg_event  5, 29, BGEVENT_JUMPTEXT, FuchsiaGymSignText
+	bg_event  7, 27, BGEVENT_JUMPTEXT, FuchsiaGymSignText
 	bg_event 21, 15, BGEVENT_JUMPTEXT, SafariZoneOfficeSignText
 	bg_event 27, 29, BGEVENT_JUMPTEXT, WardensHomeSignText
 	bg_event 17,  5, BGEVENT_JUMPTEXT, SafariZoneClosedSignText
