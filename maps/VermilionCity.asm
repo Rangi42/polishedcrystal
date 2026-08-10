@@ -14,7 +14,7 @@ VermilionCity_MapScriptHeader:
 	warp_event 13, 17, VERMILION_MAGNET_TRAIN_SPEECH_HOUSE, 1
 	warp_event 21, 17, VERMILION_MART, 2
 	warp_event 21, 21, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE, 1
-	warp_event 10, 23, VERMILION_GYM, 1
+	warp_event  8, 23, VERMILION_GYM, 1
 	warp_event 18, 35, VERMILION_PORT, 1
 	warp_event 19, 35, VERMILION_PORT, 3
 	warp_event 36, 17, DIGLETTS_CAVE, 1
@@ -22,33 +22,33 @@ VermilionCity_MapScriptHeader:
 	warp_event 29, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
 	warp_event 13,  5, VERMILION_POLLUTION_SPEECH_HOUSE, 1
 	warp_event 19,  5, VERMILION_S_S_ANNE_SPEECH_HOUSE, 1
-	warp_event 29,  9, BATTLE_FACTORY_1F, 1
-	warp_event 30,  9, BATTLE_FACTORY_1F, 2
+	warp_event 27,  9, BATTLE_FACTORY_1F, 1
+	warp_event 28,  9, BATTLE_FACTORY_1F, 2
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 19,  9, BGEVENT_JUMPTEXT, VermilionCitySignText
-	bg_event  5, 23, BGEVENT_JUMPTEXT, VermilionGymSignText
+	bg_event 15,  9, BGEVENT_JUMPTEXT, VermilionCitySignText
+	bg_event  9, 23, BGEVENT_JUMPTEXT, VermilionGymSignText
 	bg_event  5, 17, BGEVENT_JUMPTEXT, PokemonFanClubSignText
 	bg_event 33, 17, BGEVENT_JUMPTEXT, VermilionCityDiglettsCaveSignText
 	bg_event 27, 19, BGEVENT_JUMPTEXT, VermilionCityPortSignText
-	bg_event 23, 13, BGEVENT_JUMPTEXT, VermilionCityBattleFactorySignText
-	bg_event 11, 27, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
+	bg_event 23,  9, BGEVENT_JUMPTEXT, VermilionCityBattleFactorySignText
+	bg_event 10, 27, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
 	bg_event 12, 23, BGEVENT_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
 	def_object_events
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityTeacherText, -1
-	object_event 21,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionMachokeOwnerScript, -1
-	pokemon_event 22,  9, MACHOKE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_GRAY, VermilionMachokeText, -1
+	object_event 20,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionMachokeOwnerScript, -1
+	pokemon_event 21,  9, MACHOKE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_GRAY, VermilionMachokeText, -1
 	object_event 16, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
-	object_event 32, 12, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VermilionCitySuperNerd2Script, -1
+	object_event 31, 12, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VermilionCitySuperNerd2Script, -1
 	object_event 11,  8, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
 	object_event 19, 17, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
-	object_event 29, 10, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerFText, EVENT_RESTORED_POWER_TO_KANTO
-	object_event 30, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerText, EVENT_RESTORED_POWER_TO_KANTO
+	object_event 27, 10, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerFText, EVENT_RESTORED_POWER_TO_KANTO
+	object_event 28, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerText, EVENT_RESTORED_POWER_TO_KANTO
 	cuttree_event 13, 23, EVENT_VERMILION_CITY_CUT_TREE
 
 	object_const_def
@@ -69,14 +69,14 @@ VermilionCitySetupLawrenceCallback:
 VermilionCitySetupBattleFactoryCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .done
-	changeblock 26,  6, $a8
+	changeblock 24,  6, $a8
+	changeblock 26,  6, $a9
 	changeblock 28,  6, $a9
-	changeblock 30,  6, $a9
-	changeblock 32,  6, $aa
-	changeblock 26,  8, $fa
-	changeblock 28,  8, $8b
-	changeblock 30,  8, $8f
-	changeblock 32,  8, $fb
+	changeblock 30,  6, $aa
+	changeblock 24,  8, $e4
+	changeblock 26,  8, $e5
+	changeblock 28,  8, $e6
+	changeblock 30,  8, $e7
 .done
 	endcallback
 

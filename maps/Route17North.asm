@@ -5,16 +5,16 @@ Route17North_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, Route17NorthAlwaysOnBikeCallback
 
 	def_warp_events
-	warp_event 15,  6, ROUTE_16_17_GATE, 1
-	warp_event 15,  7, ROUTE_16_17_GATE, 2
+	warp_event  9,  6, ROUTE_16_17_GATE, 1
+	warp_event  9,  7, ROUTE_16_17_GATE, 2
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 13,  3, BGEVENT_JUMPTEXT, CyclingRoadSignText
+	bg_event  7,  3, BGEVENT_JUMPTEXT, CyclingRoadSignText
 
 	def_object_events
-	object_event  9,  6, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
+	object_event  3,  6, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 Route17NorthAlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE

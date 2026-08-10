@@ -11,7 +11,7 @@ CeruleanCity_MapScriptHeader:
 	warp_event 24, 11, CERULEAN_POLICE_STATION, 1
 	warp_event 13, 15, CERULEAN_TRADE_SPEECH_HOUSE, 1
 	warp_event 19, 17, CERULEAN_POKECENTER_1F, 1
-	warp_event 28, 19, CERULEAN_GYM, 1
+	warp_event 26, 19, CERULEAN_GYM, 1
 	warp_event 25, 25, CERULEAN_MART, 2
 	warp_event  2,  9, CERULEAN_CAVE_1F, 1
 	warp_event 14, 25, CERULEAN_BIKE_SHOP, 1
@@ -27,7 +27,7 @@ CeruleanCity_MapScriptHeader:
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
-	bg_event 23, 19, BGEVENT_JUMPTEXT, CeruleanGymSignText
+	bg_event 27, 19, BGEVENT_JUMPTEXT, CeruleanGymSignText
 	bg_event 11, 25, BGEVENT_JUMPTEXT, CeruleanBikeShopSignText
 	bg_event 29, 11, BGEVENT_JUMPTEXT, CeruleanPoliceSignText
 	bg_event 19,  5, BGEVENT_JUMPTEXT, CeruleanCapeSignText

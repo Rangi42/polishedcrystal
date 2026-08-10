@@ -438,9 +438,9 @@ ENDM
 	map_const HIDDEN_CAVE_GROTTO,                          4,  6 ;  5
 
 	newgroup                                                     ; 21
-	map_const ROUTE_7,                                    10,  9 ;  1
-	map_const ROUTE_16_EAST,                              14,  7 ;  2
-	map_const ROUTE_17_NORTH,                             12, 10 ;  3
+	map_const ROUTE_7,                                    10,  7 ;  1
+	map_const ROUTE_16_EAST,                               6,  6 ;  2
+	map_const ROUTE_17_NORTH,                              9, 10 ;  3
 	map_const ROUTE_17_SOUTH,                             10, 62 ;  4
 	map_const ROUTE_18_WEST,                              12,  9 ;  5
 	map_const URAGA_CHANNEL_EAST,                         23,  9 ;  6
@@ -534,7 +534,7 @@ ENDM
 	map_const VIRIDIAN_FOREST_VIRIDIAN_GATE,               5,  4 ; 15
 	map_const VIRIDIAN_FOREST_PEWTER_GATE,                 5,  4 ; 16
 	map_const ROUTE_1_VIRIDIAN_GATE,                       5,  4 ; 17
-	map_const ROUTE_16_NORTH,                             14,  7 ; 18
+	map_const ROUTE_16_NORTH,                             11,  5 ; 18
 
 	newgroup                                                     ; 24
 	map_const ROUTE_26,                                   10, 54 ;  1
