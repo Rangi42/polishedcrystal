@@ -7,7 +7,7 @@ PewterCity_MapScriptHeader:
 	def_warp_events
 	warp_event 29, 15, PEWTER_NIDORAN_SPEECH_HOUSE, 1
 	warp_event 12, 19, PEWTER_GYM, 1
-	warp_event 23, 19, PEWTER_MART, 2
+	warp_event 23, 21, PEWTER_MART, 2
 	warp_event 13, 27, PEWTER_POKECENTER_1F, 1
 	warp_event  7, 31, PEWTER_SNOOZE_SPEECH_HOUSE, 1
 	warp_event 14,  9, PEWTER_MUSEUM_OF_SCIENCE_1F, 1
@@ -30,8 +30,8 @@ PewterCity_MapScriptHeader:
 	object_event 29, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PewterCityGrampsScript, -1
 	object_event  6, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 2, 2, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	object_event 25, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 2, 2, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, PewterCityPokefanMScript, -1
-	fruittree_event 32,  5, FRUITTREE_PEWTER_CITY_1, PETAYA_BERRY, PAL_NPC_PINK
-	fruittree_event 30,  5, FRUITTREE_PEWTER_CITY_2, APICOT_BERRY, PAL_NPC_BLUE
+	fruittree_event 32,  6, FRUITTREE_PEWTER_CITY_1, PETAYA_BERRY, PAL_NPC_PINK
+	fruittree_event 30,  6, FRUITTREE_PEWTER_CITY_2, APICOT_BERRY, PAL_NPC_BLUE
 
 PewterCityFlyPoint:
 	setflag ENGINE_FLYPOINT_PEWTER
