@@ -17,7 +17,7 @@ Route39_MapScriptHeader:
 	bg_event 11,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
 	bg_event 15, 23, BGEVENT_JUMPTEXT, Route39SignText
 	bg_event  8,  9, BGEVENT_JUMPTEXT, Route39AdvancedTips1Text
-	bg_event 10, 47, BGEVENT_JUMPTEXT, Route39AdvancedTips2Text
+	bg_event 14, 31, BGEVENT_JUMPTEXT, Route39AdvancedTips2Text
 	bg_event  5, 29, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 	def_object_events

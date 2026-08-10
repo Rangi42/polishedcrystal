@@ -4,13 +4,13 @@ Route38_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 35,  8, ROUTE_38_ECRUTEAK_GATE, 1
-	warp_event 35,  9, ROUTE_38_ECRUTEAK_GATE, 2
+	warp_event 35, 10, ROUTE_38_ECRUTEAK_GATE, 1
+	warp_event 35, 11, ROUTE_38_ECRUTEAK_GATE, 2
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 33,  7, BGEVENT_JUMPTEXT, Route38SignText
+	bg_event 33,  8, BGEVENT_JUMPTEXT, Route38SignText
 	bg_event  5, 13, BGEVENT_JUMPTEXT, Route38TrainerTipsText
 	bg_event 17,  5, BGEVENT_JUMPTEXT, Route38AdvancedTipsText
 
@@ -18,7 +18,7 @@ Route38_MapScriptHeader:
 	object_event  4,  1, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
 	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerLassDana1, -1
 	object_event 12, 15, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperToby, -1
-	object_event 19,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyValencia, -1
+	object_event 26,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyValencia, -1
 	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, PAL_NPC_DARK_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSailorHarry, -1
 	fruittree_event 12, 10, FRUITTREE_ROUTE_38, SITRUS_BERRY, PAL_NPC_BROWN
 	object_event  5,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
