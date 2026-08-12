@@ -35,6 +35,7 @@ VermilionCity_MapScriptHeader:
 	bg_event 23,  9, BGEVENT_JUMPTEXT, VermilionCityBattleFactorySignText
 	bg_event 10, 27, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
 	bg_event 12, 23, BGEVENT_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
+	bg_event 32,  6, BGEVENT_ITEM + MAX_ETHER, EVENT_VERMILION_CITY_HIDDEN_MAX_ETHER
 
 	def_object_events
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
