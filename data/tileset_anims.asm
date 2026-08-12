@@ -66,9 +66,9 @@ TilesetKantoAnim::
 TilesetKantoUrbanAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
-	tileframe AnimateFountainTile,            $1:48
+	tileframe AnimateFountainTile,            $1:51
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $1:44
+	tileframe AnimateGameCornerTiles,         $1:64
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe AnimateWaterfallTiles,          $0:6b
