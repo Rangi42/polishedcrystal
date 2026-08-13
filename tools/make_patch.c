@@ -243,9 +243,9 @@ void interpret_command(char *command, const struct Symbol *current_hook, const s
 	}
 
 	// Use the arguments
-	if (vstrfind(command, "patch", "PATCH", "patch_", "PATCH_", "patch/", "PATCH/") >= 0) {
+	if (!strcmp(command, "patch")) {
 		if (argc > 2) {
-			error_exit("Error: Invalid arguments for command: \"%s\"\n", command);
+			error_exit("Error: Too many arguments for command: \"%s\": %d\n", command, argc);
 		}
 		if (!current_hook) {
 			error_exit("Error: No current patch for command: \"%s\"\n", command);
@@ -269,72 +269,51 @@ void interpret_command(char *command, const struct Symbol *current_hook, const s
 		if (length == 1) {
 			int c = getc(new_rom);
 			modified = c != getc(orig_rom);
-			fprintf(output, isupper((unsigned)command[0]) ? "0x%02X" : "0x%02x", c);
+			fprintf(output, "0x%02x", c);
 		} else {
-			if (command[strlen(command) - 1] != '/') {
-				fprintf(output, command[strlen(command) - 1] == '_' ? "a%d: " : "a%d:", length);
-			}
+			fprintf(output, "a%d:", length);
 			for (int i = 0; i < length; i++) {
 				if (i) {
 					putc(' ', output);
 				}
 				int c = getc(new_rom);
 				modified |= c != getc(orig_rom);
-				fprintf(output, isupper((unsigned)command[0]) ? "%02X" : "%02x", c);
+				fprintf(output, "%02x", c);
 			}
 		}
 		if (!modified) {
 			fprintf(stderr, PROGRAM_NAME ": Warning: \"vc_patch %s\" doesn't alter the ROM\n", current_hook->name);
 		}
 
-	} else if (vstrfind(command, "dws", "DWS", "dws_", "DWS_", "dws/", "DWS/") >= 0) {
+	} else if (!strcmp(command, "dws")) {
 		if (argc < 1) {
-			error_exit("Error: Invalid arguments for command: \"%s\"\n", command);
+			error_exit("Error: No arguments for command: \"%s\"\n", command);
 		}
-		if (command[strlen(command) - 1] != '/') {
-			fprintf(output, command[strlen(command) - 1] == '_' ? "a%d: " : "a%d:", argc * 2);
-		}
+		fprintf(output, "a%d:", argc * 2);
 		for (int i = 0; i < argc; i++) {
 			int value = parse_arg_value(argv[i], false, symbols, current_hook->name);
 			if (value > 0xffff) {
 				error_exit("Error: Invalid value for \"%s\" argument: 0x%x\n", command, value);
 			}
-			if (i) {
-				putc(' ', output);
-			}
-			fprintf(output, isupper((unsigned)command[0]) ? "%02X %02X": "%02x %02x", value & 0xff, value >> 8);
+			fprintf(output, " %02x %02x", value & 0xff, value >> 8);
 		}
 
-	} else if (vstrfind(command, "db", "DB", "db_", "DB_", "db/", "DB/") >= 0) {
+	} else if (!strcmp(command, "db")) {
 		if (argc != 1) {
-			error_exit("Error: Invalid arguments for command: \"%s\"\n", command);
+			error_exit("Error: Invalid arguments for command: \"%s\": %d\n", command, argc);
 		}
 		int value = parse_arg_value(argv[0], false, symbols, current_hook->name);
 		if (value > 0xff) {
 			error_exit("Error: Invalid value for \"%s\" argument: 0x%x\n", command, value);
 		}
-		if (command[strlen(command) - 1] != '/') {
-			fputs(command[strlen(command) - 1] == '_' ? "a1: " : "a1:", output);
-		}
-		fprintf(output, isupper((unsigned)command[0]) ? "%02X" : "%02x", value);
+		fprintf(output, "a1:%02x", value);
 
-	} else if (vstrfind(command, "hex", "HEX", "HEx", "Hex", "heX", "hEX", "hex~", "HEX~", "HEx~", "Hex~", "heX~", "hEX~") >= 0) {
-		if (argc != 1 && argc != 2) {
-			error_exit("Error: Invalid arguments for command: \"%s\"\n", command);
+	} else if (!strcmp(command, "hex")) {
+		if (argc != 1) {
+			error_exit("Error: Invalid arguments for command: \"%s\": %d\n", command, argc);
 		}
-		int value = parse_arg_value(argv[0], command[strlen(command) - 1] != '~', symbols, current_hook->name);
-		int padding = argc > 1 ? parse_number(argv[1], 0) : 2;
-		if (vstrfind(command, "HEx", "HEx~") >= 0) {
-			fprintf(output, "0x%0*X%02x", padding - 2, value >> 8, value & 0xff);
-		} else if (vstrfind(command, "Hex", "Hex~") >= 0) {
-			fprintf(output, "0x%0*X%03x", padding - 3, value >> 12, value & 0xfff);
-		} else if (vstrfind(command, "heX", "heX~") >= 0) {
-			fprintf(output, "0x%0*x%02X", padding - 2, value >> 8, value & 0xff);
-		} else if (vstrfind(command, "hEX", "hEX~") >= 0) {
-			fprintf(output, "0x%0*x%03X", padding - 3, value >> 12, value & 0xfff);
-		} else {
-			fprintf(output, isupper((unsigned)command[0]) ? "0x%0*X" : "0x%0*x", padding, value);
-		}
+		int value = parse_arg_value(argv[0], true, symbols, current_hook->name);
+		fprintf(output, "0x%02x", value);
 
 	} else {
 		error_exit("Error: Unknown command: \"%s\"\n", command);
