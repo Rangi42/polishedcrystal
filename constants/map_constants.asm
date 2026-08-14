@@ -298,9 +298,9 @@ ENDM
 	map_const MAGNET_TUNNEL_INSIDE,                       23, 18 ; 35
 
 	newgroup                                                     ; 12
-	map_const ROUTE_6,                                    15, 16 ;  1
+	map_const ROUTE_6,                                    15, 18 ;  1
 	map_const ROUTE_11,                                   26,  9 ;  2
-	map_const VERMILION_CITY,                             20, 20 ;  3
+	map_const VERMILION_CITY,                             20, 18 ;  3
 	map_const VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
 	map_const VERMILION_POKECENTER_1F,                     6,  4 ;  5
 	map_const POKEMON_FAN_CLUB,                            5,  4 ;  6
