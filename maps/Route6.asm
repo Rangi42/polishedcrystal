@@ -10,7 +10,7 @@ Route6_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 23, 13, BGEVENT_JUMPTEXT, Route6UndergroundPathSignText
+	bg_event 23, 12, BGEVENT_JUMPTEXT, Route6UndergroundPathSignText
 	bg_event  7, 11, BGEVENT_JUMPTEXT, Route6AdvancedTipsSignText
 
 	def_object_events

@@ -19,7 +19,7 @@ PewterCity_MapScriptHeader:
 	def_bg_events
 	bg_event 25, 25, BGEVENT_JUMPTEXT, PewterCitySignText
 	bg_event 13, 19, BGEVENT_JUMPTEXT, PewterGymSignText
-	bg_event 13, 11, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
+	bg_event 13, 10, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
 	bg_event 33, 21, BGEVENT_JUMPTEXT, PewterCityMtMoonGiftShopSignText
 	bg_event 19, 31, BGEVENT_JUMPTEXT, PewterCityTrainerTipsText
 
