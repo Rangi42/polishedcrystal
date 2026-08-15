@@ -17,13 +17,13 @@ CeladonCity_MapScriptHeader:
 	warp_event 29, 29, CELADON_CHIEF_HOUSE, 1
 	warp_event 35, 29, CELADON_HOTEL_1F, 1
 	warp_event 13,  9, CELADON_HOME_DECOR_STORE_1F, 1
-	warp_event  4, 29, CELADON_UNIVERSITY_1F, 1
+	warp_event  5, 29, CELADON_UNIVERSITY_1F, 1
 	warp_event 29,  9, EUSINES_HOUSE, 1
 	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
 	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
 	warp_event  9,  9, CELADON_DEPT_STORE_1F, 2
 	warp_event 23, 19, CELADON_GAME_CORNER, 2
-	warp_event  5, 29, CELADON_UNIVERSITY_1F, 2
+	warp_event  6, 29, CELADON_UNIVERSITY_1F, 2
 
 	def_coord_events
 
