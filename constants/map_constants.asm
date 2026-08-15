@@ -358,13 +358,16 @@ ENDM
 	map_const ROUTE_23_SOUTH,                             12, 32 ;  3
 	map_const INDIGO_PLATEAU,                             12, 13 ;  4
 	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  5
-	map_const WILLS_ROOM,                                  5,  9 ;  6
-	map_const KOGAS_ROOM,                                  5,  9 ;  7
-	map_const BRUNOS_ROOM,                                 5,  9 ;  8
-	map_const KARENS_ROOM,                                 5,  9 ;  9
-	map_const LANCES_ROOM,                                 7, 12 ; 10
-	map_const HALL_OF_FAME,                                5,  7 ; 11
-	map_const BELLCHIME_TRAIL,                            12,  7 ; 12
+	map_const ROUTE_26,                                   10, 54 ;  6
+	map_const ROUTE_27,                                   38,  9 ;  7
+	map_const ROUTE_28,                                   20,  9 ;  8
+	map_const WILLS_ROOM,                                  5,  9 ;  9
+	map_const KOGAS_ROOM,                                  5,  9 ; 10
+	map_const BRUNOS_ROOM,                                 5,  9 ; 11
+	map_const KARENS_ROOM,                                 5,  9 ; 12
+	map_const LANCES_ROOM,                                 7, 12 ; 13
+	map_const HALL_OF_FAME,                                5,  7 ; 14
+	map_const BELLCHIME_TRAIL,                            12,  7 ; 15
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1
@@ -417,18 +420,17 @@ ENDM
 	map_const ROUTE_16_WEST,                              31, 13 ; 25
 
 	newgroup                                                     ; 19
-	map_const ROUTE_28,                                   20,  9 ;  1
-	map_const SILVER_CAVE_OUTSIDE,                        20, 15 ;  2
-	map_const SILVER_CAVE_POKECENTER_1F,                   6,  4 ;  3
-	map_const ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
-	map_const NAVEL_ROCK_OUTSIDE,                         13, 16 ;  5
-	map_const NAVEL_ROCK_INSIDE,                          27, 26 ;  6
-	map_const NAVEL_ROCK_ROOF,                             8, 11 ;  7
-	map_const FARAWAY_ISLAND,                             17, 23 ;  8
-	map_const FARAWAY_JUNGLE,                             14, 12 ;  9
-	map_const SEAGALLOP_FERRY_VERMILION_GATE,              7,  6 ;  10
-	map_const SEAGALLOP_FERRY_NAVEL_GATE,                  7,  6 ;  11
-	map_const SEAGALLOP_FERRY_SHAMOUTI_GATE,               7,  6 ;  12
+	map_const SILVER_CAVE_OUTSIDE,                        20, 15 ;  1
+	map_const SILVER_CAVE_POKECENTER_1F,                   6,  4 ;  2
+	map_const ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  3
+	map_const NAVEL_ROCK_OUTSIDE,                         13, 16 ;  4
+	map_const NAVEL_ROCK_INSIDE,                          27, 26 ;  5
+	map_const NAVEL_ROCK_ROOF,                             8, 11 ;  6
+	map_const FARAWAY_ISLAND,                             17, 23 ;  7
+	map_const FARAWAY_JUNGLE,                             14, 12 ;  8
+	map_const SEAGALLOP_FERRY_VERMILION_GATE,              7,  6 ;  9
+	map_const SEAGALLOP_FERRY_NAVEL_GATE,                  7,  6 ; 10
+	map_const SEAGALLOP_FERRY_SHAMOUTI_GATE,               7,  6 ; 11
 
 	newgroup                                                     ; 20
 	map_const POKECENTER_2F,                               8,  4 ;  1
@@ -537,21 +539,19 @@ ENDM
 	map_const ROUTE_16_NORTH,                             11,  5 ; 18
 
 	newgroup                                                     ; 24
-	map_const ROUTE_26,                                   10, 54 ;  1
-	map_const ROUTE_27,                                   40,  9 ;  2
-	map_const ROUTE_29,                                   30,  9 ;  3
-	map_const NEW_BARK_TOWN,                              10,  9 ;  4
-	map_const ELMS_LAB,                                    5,  6 ;  5
-	map_const PLAYERS_HOUSE_1F,                            6,  4 ;  6
-	map_const PLAYERS_HOUSE_2F,                            4,  3 ;  7
-	map_const PLAYERS_NEIGHBORS_HOUSE,                     4,  4 ;  8
-	map_const LYRAS_HOUSE_1F,                              6,  4 ;  9
-	map_const LYRAS_HOUSE_2F,                              4,  3 ; 10
-	map_const ELMS_HOUSE,                                  4,  4 ; 11
-	map_const ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 12
-	map_const ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 13
-	map_const ROUTE_27_REST_HOUSE,                         4,  4 ; 14
-	map_const ROUTE_29_46_GATE,                            5,  4 ; 15
+	map_const ROUTE_29,                                   30,  9 ;  1
+	map_const NEW_BARK_TOWN,                              12,  9 ;  2
+	map_const ELMS_LAB,                                    5,  6 ;  3
+	map_const PLAYERS_HOUSE_1F,                            6,  4 ;  4
+	map_const PLAYERS_HOUSE_2F,                            4,  3 ;  5
+	map_const PLAYERS_NEIGHBORS_HOUSE,                     4,  4 ;  6
+	map_const LYRAS_HOUSE_1F,                              6,  4 ;  7
+	map_const LYRAS_HOUSE_2F,                              4,  3 ;  8
+	map_const ELMS_HOUSE,                                  4,  4 ;  9
+	map_const ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 10
+	map_const ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 11
+	map_const ROUTE_27_REST_HOUSE,                         4,  4 ; 12
+	map_const ROUTE_29_46_GATE,                            5,  4 ; 13
 
 	newgroup                                                     ; 25
 	map_const FIGHTING_DOJO,                               5,  6 ;  1

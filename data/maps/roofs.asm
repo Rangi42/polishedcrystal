@@ -18,10 +18,10 @@ MapGroupRoofs:
 	db -1             ; 13
 	db -1             ; 14
 	db -1             ; 15
-	db -1             ; 16
+	db ROOF_NEW_BARK  ; 16 (Indigo Plateau)
 	db -1             ; 17
 	db -1             ; 18
-	db ROOF_VIOLET    ; 19 (Route 28)
+	db ROOF_NEW_BARK  ; 19 (Route 28)
 	db -1             ; 20
 	db -1             ; 21
 	db ROOF_OLIVINE   ; 22 (Cianwood City)
@@ -32,7 +32,7 @@ MapGroupRoofs:
 	db -1             ; 27
 	db -1             ; 28
 	db ROOF_OLIVINE   ; 29 (Goldenrod Harbor)
-	db ROOF_NEW_BARK  ; 30 (Ruins of Alph)
+	db ROOF_VIOLET    ; 30 (Ruins of Alph)
 	db -1             ; 31
 	db -1             ; 32
 	db -1             ; 33
