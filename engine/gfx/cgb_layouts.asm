@@ -1516,6 +1516,7 @@ SummaryScreen_ApplyHPPals:
 
 _CGB_FinishLayout:
 	call ApplyAttrMap
+_CGB_ForceUpdateLayout:
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a

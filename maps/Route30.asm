@@ -2,6 +2,7 @@ Route30_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_CMDQUEUE, Route30SetUpPaletteSwap
 
 	def_warp_events
 	warp_event  9, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
@@ -36,6 +37,13 @@ Route30_MapScriptHeader:
 	const ROUTE30_YOUNGSTER1
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA
+
+Route30SetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 11, 255, 0, 27, PAL_BG_WATER, OverworldWaterPalettes, MrPokemonsHouseRoofPalettes
 
 YoungsterJoey_ImportantBattleScript:
 	waitsfx

@@ -279,6 +279,7 @@ RunScriptCommand:
 	dw Script_nooryes                    ; dc
 	dw Script_digmod                     ; dd
 	dw Script_toggleevent                ; de
+	dw Script_usepaletteswap             ; df
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -2267,6 +2268,13 @@ Script_usestonetable:
 	ld [wStoneTableAddress], a
 	call GetScriptByte
 	ld [wStoneTableAddress+1], a
+	ret
+
+Script_usepaletteswap:
+	call GetScriptByte
+	ld [wPaletteSwapAddress], a
+	call GetScriptByte
+	ld [wPaletteSwapAddress+1], a
 	ret
 
 Script_changemapblocks:

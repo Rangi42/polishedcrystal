@@ -1087,7 +1087,8 @@ wTimeOfDayPal:: db
 
 wFollowInSync:: db
 
-	ds 3 ; unused
+wPaletteSwapAddress:: dw
+wPaletteSwapFlag:: db
 
 wTimeOfDayPalFlags:: db
 wTimeOfDayPalset:: db

@@ -3,6 +3,7 @@ FuchsiaCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, FuchsiaCityFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, FuchsiaCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event  5, 13, FUCHSIA_MART, 2
@@ -48,6 +49,13 @@ FuchsiaCity_MapScriptHeader:
 FuchsiaCityFlyPoint:
 	setflag ENGINE_FLYPOINT_FUCHSIA
 	endcallback
+
+FuchsiaCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 9, 31, 0, 19, PAL_BG_ROOF, FuchsiaCityRoofPalettes, SafariZoneRoofPalettes
 
 FuchsiaCityYoungsterText:
 	text "One of the Elite"

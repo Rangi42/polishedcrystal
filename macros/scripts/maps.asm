@@ -190,33 +190,49 @@ ENDM
 
 
 MACRO trainer
-	; flag, group, id, seen text, win text, lost text, after script
-	dw \3
-	db \1, \2
-	dw \4, \5, \6, \7
+	dw \3 ; event flag
+	db \1 ; trainer class
+	db \2 ; trainer id
+	dw \4 ; seen text
+	dw \5 ; win text
+	dw \6 ; loss text
+	dw \7 ; after script
 	if _NARG == 8
-		db \8
+		db \8 ; trainer palette
 	else
 		db 0
 	endc
 ENDM
 
 MACRO generictrainer
-	; flag, group, id, seen text, win text
-	dw \3
-	db \1, \2
-	dw \4, \5
+	dw \3 ; event flag
+	db \1 ; trainer class
+	db \2 ; trainer id
+	dw \4 ; seen text
+	dw \5 ; win text
 ENDM
 
 
 MACRO elevfloor
-	db \1, \2
-	map_id \3
+	db \1 ; destination floor
+	db \2 ; destination warp id
+	map_id \3 ; destination map
 ENDM
 
 MACRO stonetable
-	db \1, \2
-	dw \3
+	db \1 ; warp id
+	db \2 ; object event id
+	dw \3 ; script pointer
+ENDM
+
+MACRO paletteswap
+	db \1, \2 ; X range
+	db \3, \4 ; Y range
+	db \5 ; palette ID
+	dw \6 ; out-of-range palette list
+	dw \7 ; in-range palette list
+	assert BANK(\6) == BANK(SwapColorPalette), "\6 is not in the color ROMX bank!"
+	assert BANK(\7) == BANK(SwapColorPalette), "\7 is not in the color ROMX bank!"
 ENDM
 
 ; Connections go in order: north, south, west, east

@@ -5,6 +5,7 @@ LavenderTown_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, LavenderTownFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, LavenderTownSetUpPaletteSwap
 
 	def_warp_events
 	warp_event  5,  7, LAVENDER_POKECENTER_1F, 1
@@ -46,6 +47,13 @@ LavenderTownFlyPoint:
 	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setflag ENGINE_FLYPOINT_LAVENDER
 	endcallback
+
+LavenderTownSetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 6, 255, 0, 9, PAL_BG_GREEN, OverworldGreenPalettes, LavenderRadioTowerRoofPalettes
 
 LavenderTownExpositionTrigger1:
 	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8

@@ -3,6 +3,7 @@ PewterCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PewterCityFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, PewterCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event 29, 15, PEWTER_NIDORAN_SPEECH_HOUSE, 1
@@ -36,6 +37,13 @@ PewterCity_MapScriptHeader:
 PewterCityFlyPoint:
 	setflag ENGINE_FLYPOINT_PEWTER
 	endcallback
+
+PewterCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 0, 13, PAL_BG_WATER, OverworldWaterPalettes, PewterCityMuseumRoofPalettes
 
 PewterCityGrampsScript:
 	checkevent EVENT_GOT_OLD_AMBER

@@ -767,7 +767,7 @@ FlyFunction:
 	refreshmap
 	callasm .StopPalFading
 	callasm ClearSavedObjPals
-	callasm CopyBGGreenToOBPal7
+	callasm CopyLeafGreenToOBPal7
 	callasm LoadWeatherPal
 	special UpdateTimePals
 	callasm PrepareOverworldMove
@@ -779,7 +779,7 @@ FlyFunction:
 	callasm SkipUpdateMapSprites
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
-	callasm CopyBGGreenToOBPal7
+	callasm CopyLeafGreenToOBPal7
 	callasm FlyToAnim
 	callasm .ClearWeatherFlyFlag
 	special WaitSFX

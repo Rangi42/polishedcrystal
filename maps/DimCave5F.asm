@@ -2,7 +2,7 @@ DimCave5F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_STONETABLE, DimCave5FSetUpStoneTable
+	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
 	def_warp_events
 	warp_event 13, 31, ROUTE_10_NORTH, 5

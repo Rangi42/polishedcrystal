@@ -74,6 +74,15 @@ endc
 	ldh [rWBK], a
 	ret
 
+CopyLeafGreenToOBPal7:
+; Fly leaves should use standard green if PAL_BG_GREEN has been "swapped" to
+; other colors like purple. (We can assume that if PAL_BG_GREEN is *not* swapped,
+; then it's still appropriate for use as a leaf/tree color.)
+	ld a, [wPaletteSwapFlag]
+	and a
+	ld a, PAL_OW_LEAF_GREEN
+	jr nz, CopySpritePalToOBPal7
+	; fallthrough
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)
 ; have hard-coded OB palette 7 in their OAM data.
