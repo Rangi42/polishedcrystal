@@ -51,7 +51,7 @@ GoldenrodCity_MapScriptHeader:
 	bg_event 14, 30, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
 	bg_event 40, 28, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
 	bg_event 20, 27, BGEVENT_JUMPTEXT, PokeComCenterSignText
-	bg_event 34,  6, BGEVENT_JUMPTEXT, GoldenrodCityFlowerShopSignText
+	bg_event 35,  6, BGEVENT_JUMPTEXT, GoldenrodCityFlowerShopSignText
 	bg_event 27, 15, BGEVENT_JUMPTEXT, GoldenrodMuseumSignText
 
 	def_object_events

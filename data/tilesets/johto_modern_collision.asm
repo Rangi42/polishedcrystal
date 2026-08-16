@@ -113,7 +113,7 @@
 	tilecoll TOP_WALL, TOP_WALL, FLOOR, FLOOR ; 70
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 71
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 72
-	tilecoll FLOOR, BOTTOM_WALL, WALL, CAVE ; 73
+	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 73
 	tilecoll FLOOR, WALL, WALL, WALL ; 74
 	tilecoll WALL, FLOOR, WALL, WALL ; 75
 	tilecoll WATER, WATER, WATER, WATER ; 76
@@ -173,3 +173,4 @@
 	tilecoll WALL, WALL, WALL, DOOR ; ac
 	tilecoll WALL, WALL, WALL, WALL ; ad
 	tilecoll WALL, WALL, WALL, WALL ; ae
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; af
