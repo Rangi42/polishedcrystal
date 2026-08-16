@@ -6,6 +6,7 @@ GoldenrodCity_MapScriptHeader:
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlyPoint
 	callback MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutor
+	callback MAPCALLBACK_CMDQUEUE, GoldenrodCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event 28,  7, GOLDENROD_GYM, 1
@@ -90,6 +91,13 @@ GoldenrodCityMoveTutor:
 .MoveTutorDisappear
 	disappear GOLDENRODCITY_POKEFAN_M2
 	endcallback
+
+GoldenrodCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 8, 27, 12, 28, PAL_BG_GREEN, OverworldGreenPalettes, GameCornerExteriorPalettes
 
 GoldenrodCityStepDownScene:
 	sdefer .Script

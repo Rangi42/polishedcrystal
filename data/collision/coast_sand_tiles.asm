@@ -9,8 +9,8 @@
 
 CoastSandTiles:
 	db TILESET_JOHTO_TRADITIONAL, $a6 ; bank 1
-	db TILESET_JOHTO_MODERN,      $b7 ; bank 1
-	db TILESET_JOHTO_COAST,       $b7 ; bank 1
+	db TILESET_JOHTO_MODERN,      $98 ; bank 1
+	db TILESET_JOHTO_COAST,       $98 ; bank 1
 	db TILESET_JOHTO_SACRED,      $a6 ; bank 1
 	db TILESET_SHAMOUTI_ISLAND,   $58 ; bank 1
 	db 0 ; end

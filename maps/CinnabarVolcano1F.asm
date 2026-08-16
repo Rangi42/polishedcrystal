@@ -2,7 +2,7 @@ CinnabarVolcano1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_STONETABLE, CinnabarVolcano1FBouldersFall
+	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
 
 	def_warp_events
 	warp_event 13, 25, CINNABAR_ISLAND, 2

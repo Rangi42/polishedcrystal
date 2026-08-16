@@ -2,7 +2,7 @@ IcePathB1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_STONETABLE, IcePathB1FSetUpStoneTable
+	callback MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
 
 	def_warp_events
 	warp_event  3, 15, ICE_PATH_1F, 3

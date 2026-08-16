@@ -1425,4 +1425,10 @@ MACRO toggleevent
 	dw \1 ; event_flag
 ENDM
 
+	const usepaletteswap_command
+MACRO usepaletteswap
+	db usepaletteswap_command
+	dw \1 ; paletteswap_pointer
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

@@ -3,6 +3,7 @@ SaffronCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, SaffronCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event 26,  3, FIGHTING_DOJO, 1
@@ -58,6 +59,13 @@ SaffronCity_MapScriptHeader:
 SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON
 	endcallback
+
+SaffronCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 10, 29, 5, 18, PAL_BG_GREEN, OverworldGreenPalettes, SilphCoRoofPalettes
 
 SaffronCityLass1Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

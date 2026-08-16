@@ -5,9 +5,15 @@ HandleNewMap:
 	call RunMapCallback
 HandleContinueMap:
 	xor a
-	ld [wStoneTableAddress], a
-	ld [wStoneTableAddress+1], a
-	ld a, MAPCALLBACK_STONETABLE
+	ld hl, wStoneTableAddress
+	ld [hli], a
+	ld [hl], a
+	ld hl, wPaletteSwapAddress
+	ld [hli], a
+	ld [hli], a
+	assert wPaletteSwapAddress + 2 == wPaletteSwapFlag
+	ld [hl], a
+	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback
 	call GetMapTimeOfDay
 	ld [wMapTimeOfDay], a

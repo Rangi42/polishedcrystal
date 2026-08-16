@@ -115,7 +115,7 @@
 	tilecoll WALL, WALL, POKECENTER_SIGN, WALL ; 72
 	tilecoll WALL, WALL, MART_SIGN, WALL ; 73
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 74
-	tilecoll WALL, WALL, WALL, WALL ; 75
+	tilecoll WALL, WALL, WALL, DOOR ; 75
 	tilecoll WALL, WALL, WALL, WALL ; 76
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 77
 	tilecoll WATER, WATER, WATER, WATER ; 78
@@ -251,4 +251,5 @@
 	tilecoll FLOOR, LEDGE_DOWN, FLOOR, WALL ; fa
 	tilecoll FLOOR, TALL_GRASS, FLOOR, TALL_GRASS ; fb
 	tilecoll WALL, WALL, WALL, WALL ; fc
-	tilecoll WALL, WALL, WALL, DOOR ; fd
+	tilecoll WALL, WALL, WALL, WALL ; fd
+	tilecoll WALL, WALL, WALL, WALL ; fe

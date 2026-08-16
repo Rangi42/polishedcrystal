@@ -990,9 +990,9 @@ LoadMapPals:
 	; some exceptions to the usual rules which do not load roof palettes
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN ; covers map_id SNOWTOP_MOUNTAIN_OUTSIDE
-	ret z
+	jr z, .finish
 	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
-	ret z
+	jr z, .finish
 
 	; overcast maps have their own roof color table
 	farcall GetOvercastIndex
@@ -1011,7 +1011,7 @@ LoadMapPals:
 	cp ROUTE
 	jr z, .outside
 	cp ISOLATED
-	ret nz
+	jr nz, .finish
 .outside
 	ld a, [wMapGroup]
 	ld hl, RoofPals
@@ -1036,7 +1036,78 @@ LoadMapPals:
 .morn_day
 	ld de, wBGPals1 palette PAL_BG_ROOF + 2
 	ld bc, 4
+	call FarCopyColorWRAM
+
+.finish
+	jmp InitializeSwappedPalette
+
+; input: `hl` = palette table (in this bank), `b` = BG palette ID (0-7)
+; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
+SwapColorPalette::
+	push hl
+	push bc
+	farcall GetOvercastIndex
+	pop bc
+	pop hl
+	and a
+	ld d, 0
+	jr z, .not_overcast
+
+	; Skip the four regular palettes to reach the overcast ones.
+	ld e, 4 palettes
+	add hl, de
+
+.not_overcast
+	; Skip [wTimeOfDayPal] palettes to reach the correct one to swap in.
+	ld a, [wTimeOfDayPal]
+	and 3
+	add a
+	add a
+	add a
+	ld e, a
+	add hl, de
+
+	; Set `de` to the `b`th palette of `wBGPals1`.
+	ld a, b
+	add a
+	add a
+	add a
+	add LOW(wBGPals1)
+	ld e, a
+	adc HIGH(wBGPals1)
+	sub e
+	ld d, a
+
+	; Apply the swapped palette.
+	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
+
+OverworldGreenPalettes::
+INCLUDE "gfx/tilesets/palette-swap/bg-green.pal"
+
+GameCornerExteriorPalettes::
+INCLUDE "gfx/tilesets/palette-swap/game-corner.pal"
+
+OverworldWaterPalettes::
+INCLUDE "gfx/tilesets/palette-swap/bg-water.pal"
+
+PewterCityMuseumRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/pewter-museum.pal"
+
+SilphCoRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
+
+FuchsiaCityRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/fuchsia-roof.pal"
+
+SafariZoneRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/safari-zone-roof.pal"
+
+LavenderRadioTowerRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/lavender-radio-tower-roof.pal"
+
+MrPokemonsHouseRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/mr-pokemon-roof.pal"
 
 INCLUDE "data/maps/environment_colors.asm"
 

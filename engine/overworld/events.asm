@@ -286,6 +286,8 @@ CheckTileEvent:
 	jr c, .warp_tile
 
 .connections_disabled
+	call HandlePaletteSwap
+
 	call CheckCoordEventsEnabled
 	jr z, .coord_events_disabled
 
