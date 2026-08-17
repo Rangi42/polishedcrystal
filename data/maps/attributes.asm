@@ -108,7 +108,7 @@ ENDM
 	connection north, Route34Coast, ROUTE_34_COAST, 0
 
 	map_attributes Route35, ROUTE_35, $5
-	connection north, Route36, ROUTE_36, 0
+	connection north, Route36, ROUTE_36, 9
 	connection south, GoldenrodCity, GOLDENROD_CITY, -5
 
 	map_attributes Route35CoastNorth, ROUTE_35_COAST_NORTH, $35
@@ -123,13 +123,13 @@ ENDM
 	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 
 	map_attributes Route36, ROUTE_36, $5
-	connection north, Route37, ROUTE_37, 12
-	connection south, Route35, ROUTE_35, 0
+	connection north, Route37, ROUTE_37, 3
+	connection south, Route35, ROUTE_35, -9
 	connection east, VioletCity, VIOLET_CITY, 0
 
 	map_attributes Route37, ROUTE_37, $5
 	connection north, EcruteakCity, ECRUTEAK_CITY, -5
-	connection south, Route36, ROUTE_36, -12
+	connection south, Route36, ROUTE_36, -3
 
 	map_attributes Route38, ROUTE_38, $5
 	connection west, Route39, ROUTE_39, -8
@@ -320,8 +320,8 @@ ENDM
 	map_attributes CeruleanCity, CERULEAN_CITY, $f
 	connection north, Route24, ROUTE_24, 0
 	connection south, Route5, ROUTE_5, 5
-	connection west, Route4, ROUTE_4, 2
-	connection east, Route9, ROUTE_9, 4
+	connection west, Route4, ROUTE_4, 1
+	connection east, Route9, ROUTE_9, 3
 
 	map_attributes Route24, ROUTE_24, $2c
 	connection south, CeruleanCity, CERULEAN_CITY, 0
@@ -329,23 +329,23 @@ ENDM
 
 	map_attributes Route25, ROUTE_25, $2c
 	connection west, Route24, ROUTE_24, 0
-	connection east, CeruleanCape, CERULEAN_CAPE, 0
+	connection east, CeruleanCape, CERULEAN_CAPE, -1
 
 	map_attributes CeruleanCape, CERULEAN_CAPE, $2c
-	connection west, Route25, ROUTE_25, 0
+	connection west, Route25, ROUTE_25, 1
 
 	map_attributes Route3, ROUTE_3, $2c
 	connection west, PewterCity, PEWTER_CITY, -6
 
 	map_attributes Route4, ROUTE_4, $2c
-	connection east, CeruleanCity, CERULEAN_CITY, -2
+	connection east, CeruleanCity, CERULEAN_CITY, -1
 
 	map_attributes Route8, ROUTE_8, $2c
 	connection west, SaffronCity, SAFFRON_CITY, -4
 	connection east, LavenderTown, LAVENDER_TOWN, 0
 
 	map_attributes Route9, ROUTE_9, $2c
-	connection west, CeruleanCity, CERULEAN_CITY, -4
+	connection west, CeruleanCity, CERULEAN_CITY, -3
 	connection east, Route10North, ROUTE_10_NORTH, -6
 
 	map_attributes Route10North, ROUTE_10_NORTH, $2c
@@ -380,7 +380,7 @@ ENDM
 	DEF MAP_FAKE_ROUTE_36    EQU MAP_ROUTE_36
 	DEF FAKE_ROUTE_36_WIDTH  EQU ROUTE_36_WIDTH
 	DEF FAKE_ROUTE_36_HEIGHT EQU ROUTE_36_HEIGHT - 1
-	connection north, FakeRoute36, FAKE_ROUTE_36, -20
+	connection north, FakeRoute36, FAKE_ROUTE_36, -11
 	PURGE GROUP_FAKE_ROUTE_36, MAP_FAKE_ROUTE_36, FAKE_ROUTE_36_WIDTH, FAKE_ROUTE_36_HEIGHT
 	connection east, Route32, ROUTE_32, 10
 

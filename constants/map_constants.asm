@@ -40,9 +40,9 @@ ENDM
 	map_const ROUTE_38,                                   20,  9 ; 11
 	map_const ROUTE_39,                                   10, 28 ; 12
 	map_const OLIVINE_CITY,                               22, 16 ; 13
-	map_const ROUTE_35_COAST_NORTH,                       11, 13 ; 14
-	map_const ROUTE_35_COAST_SOUTH,                       26, 14 ; 15
-	map_const OLIVINE_CITY_ROUTE_35_COAST_DUAL,           26,  3 ; 16
+	map_const ROUTE_35_COAST_NORTH,                       10, 13 ; 14
+	map_const ROUTE_35_COAST_SOUTH,                       25, 14 ; 15
+	map_const OLIVINE_CITY_ROUTE_35_COAST_DUAL,           25,  3 ; 16
 
 	newgroup                                                     ;  2
 	map_const MAHOGANY_RED_GYARADOS_SPEECH_HOUSE,          4,  4 ;  1
@@ -188,7 +188,7 @@ ENDM
 	map_const ROUTE_19,                                   10, 29 ;  8
 	map_const ROUTE_20,                                   55,  9 ;  9
 	map_const ROUTE_21,                                   10, 48 ; 10
-	map_const URAGA_CHANNEL_WEST,                         10, 15 ; 11
+	map_const URAGA_CHANNEL_WEST,                         10, 9 ; 11
 	map_const CINNABAR_ISLAND,                            12, 11 ; 12
 	map_const CINNABAR_VOLCANO_1F,                        14, 14 ; 13
 	map_const CINNABAR_VOLCANO_B1F,                       18, 18 ; 14
@@ -213,8 +213,8 @@ ENDM
 	map_const BILLS_HOUSE,                                 4,  4 ; 11
 	map_const ROUTE_4,                                    33, 10 ; 12
 	map_const ROUTE_24,                                   14, 20 ; 13
-	map_const ROUTE_25,                                   17, 21 ; 14
-	map_const CERULEAN_CITY,                              20, 16 ; 15
+	map_const ROUTE_25,                                   17, 20 ; 14
+	map_const CERULEAN_CITY,                              20, 15 ; 15
 	map_const CERULEAN_CAVE_1F,                           17, 12 ; 16
 	map_const CERULEAN_CAVE_2F,                           17, 11 ; 17
 	map_const CERULEAN_CAVE_B1F,                          17, 11 ; 18
@@ -245,7 +245,7 @@ ENDM
 	newgroup                                                     ; 10
 	map_const ROUTE_32,                                   10, 45 ;  1
 	map_const ROUTE_32_COAST,                             15, 35 ;  2
-	map_const ROUTE_36,                                   32,  9 ;  3
+	map_const ROUTE_36,                                   23,  9 ;  3
 	map_const VIOLET_CITY,                                20, 18 ;  4
 	map_const VIOLET_MART,                                 6,  4 ;  5
 	map_const VIOLET_GYM,                                  5,  9 ;  6

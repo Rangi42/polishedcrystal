@@ -9,15 +9,17 @@ Route24_MapScriptHeader:
 	def_warp_events
 
 	def_coord_events
-	coord_event 19, 15, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 20, 14, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 21, 14, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 22, 15, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 20, 15, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 21, 15, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 20, 39, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 21, 39, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 19, 13, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 20, 12, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 21, 12, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 22, 13, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 20, 13, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21, 13, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 20, 37, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 21, 37, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 25, 11, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 25, 13, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 25, 14, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 25, 15, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 25, 16, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 25, 17, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
@@ -25,16 +27,14 @@ Route24_MapScriptHeader:
 	coord_event 25, 19, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 25, 20, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 25, 21, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 25, 22, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 25, 23, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 
 	def_bg_events
-	bg_event 15, 19, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_24_HIDDEN_MAX_POTION
-	bg_event 23, 11, BGEVENT_JUMPTEXT, Route24AdvancedTipsSignText
+	bg_event 15, 17, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_24_HIDDEN_MAX_POTION
+	bg_event 23,  9, BGEVENT_JUMPTEXT, Route24AdvancedTipsSignText
 
 	def_object_events
-	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
-	fruittree_event 16,  5, FRUITTREE_ROUTE_24, LANSAT_BERRY, PAL_NPC_PINK
+	object_event 21, 23, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	fruittree_event 16,  3, FRUITTREE_ROUTE_24, LANSAT_BERRY, PAL_NPC_PINK
 
 	object_const_def
 	const ROUTE24_ROCKET
@@ -50,7 +50,8 @@ Route24TileScript:
 	endcallback
 
 Route24_OverheadBridgeAsm:
-	changebridgeblock 20, 16, $39, ROUTE_24
+	changebridgeblock 20, 14, $39, ROUTE_24
+	changebridgeblock 20, 16, $38, ROUTE_24
 	changebridgeblock 20, 18, $38, ROUTE_24
 	changebridgeblock 20, 20, $38, ROUTE_24
 	changebridgeblock 20, 22, $38, ROUTE_24
@@ -60,11 +61,11 @@ Route24_OverheadBridgeAsm:
 	changebridgeblock 20, 30, $38, ROUTE_24
 	changebridgeblock 20, 32, $38, ROUTE_24
 	changebridgeblock 20, 34, $38, ROUTE_24
-	changebridgeblock 20, 36, $38, ROUTE_24
-	changebridgeblock 20, 38, $49, ROUTE_24
+	changebridgeblock 20, 36, $49, ROUTE_24
 	jmp BufferScreen
 
 Route24_UnderfootBridgeAsm:
+	changebridgeblock 20, 14, $34, ROUTE_24
 	changebridgeblock 20, 16, $34, ROUTE_24
 	changebridgeblock 20, 18, $34, ROUTE_24
 	changebridgeblock 20, 20, $34, ROUTE_24
@@ -75,8 +76,7 @@ Route24_UnderfootBridgeAsm:
 	changebridgeblock 20, 30, $34, ROUTE_24
 	changebridgeblock 20, 32, $34, ROUTE_24
 	changebridgeblock 20, 34, $34, ROUTE_24
-	changebridgeblock 20, 36, $34, ROUTE_24
-	changebridgeblock 20, 38, $4a, ROUTE_24
+	changebridgeblock 20, 36, $4a, ROUTE_24
 	jmp BufferScreen
 
 Route24BridgeOverheadTrigger:
