@@ -1,7 +1,5 @@
 CeruleanCity_MapScriptHeader:
 	def_scene_scripts
-	scene_const SCENE_CERULEANCITY_BRIDGE_UNDERFOOT
-	scene_const SCENE_CERULEANCITY_BRIDGE_OVERHEAD
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
@@ -20,10 +18,6 @@ CeruleanCity_MapScriptHeader:
 	warp_event 31,  9, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
-	coord_event 20,  2, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 21,  2, SCENE_CERULEANCITY_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
-	coord_event 20,  3, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
-	coord_event 21,  3, SCENE_CERULEANCITY_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 18, BGEVENT_JUMPTEXT, CeruleanCitySignText
