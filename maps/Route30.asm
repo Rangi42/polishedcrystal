@@ -44,6 +44,7 @@ Route30SetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 11, 255, 0, 27, PAL_BG_WATER, OverworldWaterPalettes, MrPokemonsHouseRoofPalettes
+	db -1 ; end
 
 YoungsterJoey_ImportantBattleScript:
 	waitsfx

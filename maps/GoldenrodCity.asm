@@ -98,6 +98,7 @@ GoldenrodCitySetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 8, 27, 12, 28, PAL_BG_GREEN, OverworldGreenPalettes, GameCornerExteriorPalettes
+	db -1 ; end
 
 GoldenrodCityStepDownScene:
 	sdefer .Script

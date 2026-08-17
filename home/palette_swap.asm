@@ -10,7 +10,21 @@ InitializeSwappedPalette::
 	push af
 	call SwitchToMapScriptsBank
 
-	; If there is no active palette swap rectangle, just return.
+	; If there are no active palette swap rectangles, just return.
+	ld hl, wPaletteSwapAddress
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	or h
+	jr nz, .loop
+
+.done
+	pop af
+	rst Bankswitch
+	ret
+
+.loop
+	; If there are no more palette swap rectangles, just return.
 	call CheckPaletteSwapRectangle
 	jr z, .done
 
@@ -37,39 +51,50 @@ InitializeSwappedPalette::
 	ld a, [hli]
 	ld b, a
 
-	; Get the palette list in `hl`.
+	; Get the palette list in `de`.
+	; Advance `hl` past the two palettes.
 	ld a, [de]
+	ld c, a
 	and a
-	jr z, .regular
+	jr z, .get_palette
+	; Skip the regular palette to get the swapped one.
 	inc hl
 	inc hl
-.regular
+.get_palette
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, c
+	and a
+	jr nz, .got_palette
+	; Skip the swapped palette if we already got the regular one.
+	inc hl
+	inc hl
+.got_palette
 
 	; Swap the palette in VRAM.
+	push hl
 	ld a, BANK(SwapColorPalette)
 	rst Bankswitch
 	call SwapColorPalette
+	pop hl
 
-.done
-	pop af
-	rst Bankswitch
-	ret
+	; Continue processing more than one `paletteswap` rectangle.
+	call SwitchToMapScriptsBank
+	jr .loop
 
 CheckPaletteSwapRectangle:
-; Return `z` if there is no active palette swap rectangle.
+; Input: `hl` points to the next palette swap rectangle.
+; Return `z` if there's a terminator -1 byte.
 ; Return `nz` and `c` if we are inside the rectangle.
 ; Return `nz` and `nc` if we are outside the rectangle.
 ; If there is an active palette swap rectangle, return `hl` advanced past the
 ; Min/Max X/Y coords and pointing to the BG palette ID byte.
 
-	ld hl, wPaletteSwapAddress
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	or h
+	; If there's a terminator -1 byte, we're done.
+	ld a, [hl]
+	inc a
 	ret z
 
 	; The `paletteswap` MinX/Y coords are *inside* the rectangle, and the MaxX/Y

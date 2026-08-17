@@ -1041,30 +1041,17 @@ LoadMapPals:
 .finish
 	jmp InitializeSwappedPalette
 
-; input: `hl` = palette table (in this bank), `b` = BG palette ID (0-7)
+; input: `de` = palette table (in this bank), `b` = BG palette ID (0-7)
 ; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
 SwapColorPalette::
-	push hl
-	push bc
-	farcall GetOvercastIndex
-	pop bc
-	pop hl
-	and a
-	ld d, 0
-	jr z, .not_overcast
-
-	; Skip the four regular palettes to reach the overcast ones.
-	ld e, 4 palettes
-	add hl, de
-
-.not_overcast
-	; Skip [wTimeOfDayPal] palettes to reach the correct one to swap in.
+	; Set `hl` to the `[wTimeOfDayPal]`th palette in the table at `de`.
 	ld a, [wTimeOfDayPal]
 	and 3
 	add a
 	add a
 	add a
-	ld e, a
+	ld l, a
+	ld h, 0
 	add hl, de
 
 	; Set `de` to the `b`th palette of `wBGPals1`.
@@ -1077,6 +1064,18 @@ SwapColorPalette::
 	adc HIGH(wBGPals1)
 	sub e
 	ld d, a
+
+	; Skip past the regular palettes to the overcast ones if applicable.
+	push hl
+	push de
+	farcall GetOvercastIndex
+	pop de
+	pop hl
+	and a
+	jr z, .not_overcast
+	ld bc, 4 palettes
+	add hl, bc
+.not_overcast
 
 	; Apply the swapped palette.
 	ld bc, 1 palettes
@@ -1107,6 +1106,7 @@ LavenderRadioTowerRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/lavender-radio-tower-roof.pal"
 
 MrPokemonsHouseRoofPalettes::
+MrPsychicsHouseRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/mr-pokemon-roof.pal"
 
 INCLUDE "data/maps/environment_colors.asm"

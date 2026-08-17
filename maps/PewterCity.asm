@@ -44,6 +44,7 @@ PewterCitySetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 0, 255, 0, 13, PAL_BG_WATER, OverworldWaterPalettes, PewterCityMuseumRoofPalettes
+	db -1 ; end
 
 PewterCityGrampsScript:
 	checkevent EVENT_GOT_OLD_AMBER

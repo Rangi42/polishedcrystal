@@ -66,6 +66,8 @@ SaffronCitySetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 10, 29, 5, 18, PAL_BG_GREEN, OverworldGreenPalettes, SilphCoRoofPalettes
+	paletteswap 0, 255, 20, 255, PAL_BG_WATER, OverworldWaterPalettes, MrPsychicsHouseRoofPalettes
+	db -1 ; end
 
 SaffronCityLass1Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

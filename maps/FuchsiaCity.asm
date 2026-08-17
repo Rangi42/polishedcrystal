@@ -56,6 +56,7 @@ FuchsiaCitySetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 9, 31, 0, 19, PAL_BG_ROOF, FuchsiaCityRoofPalettes, SafariZoneRoofPalettes
+	db -1 ; end
 
 FuchsiaCityYoungsterText:
 	text "One of the Elite"

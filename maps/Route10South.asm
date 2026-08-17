@@ -25,6 +25,7 @@ Route10SouthSetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 0, 255, 12, 255, PAL_BG_GREEN, OverworldGreenPalettes, LavenderRadioTowerRoofPalettes
+	db -1 ; end
 
 GenericTrainerHikerJim:
 	generictrainer HIKER, JIM, EVENT_BEAT_HIKER_JIM, HikerJimSeenText, HikerJimBeatenText

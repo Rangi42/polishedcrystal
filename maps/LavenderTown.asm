@@ -54,6 +54,7 @@ LavenderTownSetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 6, 255, 0, 9, PAL_BG_GREEN, OverworldGreenPalettes, LavenderRadioTowerRoofPalettes
+	db -1 ; end
 
 LavenderTownExpositionTrigger1:
 	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8
