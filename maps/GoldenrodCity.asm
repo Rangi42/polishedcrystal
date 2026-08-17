@@ -98,6 +98,7 @@ GoldenrodCitySetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 8, 27, 12, 28, PAL_BG_GREEN, OverworldGreenPalettes, GameCornerExteriorPalettes
+	paletteswap 22, 39, 7, 21, PAL_BG_WATER, OverworldWaterPalettes, GoldenrodMuseumRoofPalettes
 	db -1 ; end
 
 GoldenrodCityStepDownScene:

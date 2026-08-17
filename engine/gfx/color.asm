@@ -1093,6 +1093,9 @@ INCLUDE "gfx/tilesets/palette-swap/bg-water.pal"
 PewterCityMuseumRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/pewter-museum.pal"
 
+GoldenrodMuseumRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/goldenrod-museum.pal"
+
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
 
