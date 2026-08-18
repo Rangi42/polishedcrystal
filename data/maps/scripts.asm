@@ -101,6 +101,7 @@ SECTION "Cherrygrove Bay Scripts", ROMX
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route32CoastHouse.asm"
+INCLUDE "maps/CherrygroveTrainTrackDual.asm"
 
 
 SECTION "Dark Cave Scripts", ROMX

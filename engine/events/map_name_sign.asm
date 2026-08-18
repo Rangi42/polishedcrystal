@@ -39,7 +39,7 @@ InitMapNameSign::
 	ld a, [wCurLandmark]
 	ld [wPrevLandmark], a
 
-	call .CheckSpecialMap
+	call .CheckSpecialLandmark
 	jr z, .dont_do_map_sign
 
 	ld a, [wCurLandmark]
@@ -114,7 +114,7 @@ InitMapNameSign::
 	and a ; cp SPECIAL_MAP
 	ret
 
-.CheckSpecialMap:
+.CheckSpecialLandmark:
 	cp -1
 	ret z
 	and a ; cp SPECIAL_MAP
@@ -148,11 +148,17 @@ InitMapNameSign::
 .not_national_park_gate
 	assert GROUP_OLIVINE_PORT == GROUP_VERMILION_PORT
 	cp GROUP_OLIVINE_PORT
-	ret nz
+	jr nz, .not_port
 	ld a, [wMapNumber]
 	cp MAP_OLIVINE_PORT
 	ret z
 	cp MAP_VERMILION_PORT
+	ret
+.not_port
+	cp GROUP_CHERRYGROVE_TRAIN_TRACK_DUAL
+	ret nz
+	ld a, [wMapNumber]
+	cp MAP_CHERRYGROVE_TRAIN_TRACK_DUAL
 	ret
 
 PlaceMapNameSign::
