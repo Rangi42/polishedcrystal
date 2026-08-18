@@ -157,27 +157,30 @@ HiddenGrottoSpecialCase:
 .got_palette
 	call LoadSevenBGPalettes
 	ld a, [wBackupMapGroup]
+	ld hl, wBGPals1 palette PAL_BG_RED
 	cp GROUP_BELLCHIME_TRAIL
 	jr nz, .not_bellchime_trail_grotto
 	ld a, [wBackupMapNumber]
 	cp MAP_BELLCHIME_TRAIL
-	jr nz, .not_bellchime_trail_grotto
-	ld hl, wBGPals1 palette PAL_BG_RED
-	ld de, wBGPals1 palette PAL_BG_GREEN
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	jr .continue
+	jr z, .continue
 .not_bellchime_trail_grotto
+	ld hl, wBGPals1 palette PAL_BG_GRAY
 	cp GROUP_CHERRYGROVE_BAY
-	jr nz, .done
+	jr nz, .not_cherrygrove_bay
 	ld a, [wBackupMapNumber]
 	cp MAP_CHERRYGROVE_BAY
+	jr z, .continue
+.not_cherrygrove_bay
+	ld hl, wBGPals1 palette PAL_BG_WATER
+	cp GROUP_YELLOW_FOREST
 	jr nz, .done
-	ld hl, wBGPals1 palette PAL_BG_GRAY
+	ld a, [wBackupMapNumber]
+	cp MAP_YELLOW_FOREST
+	jr nz, .done
+.continue
 	ld de, wBGPals1 palette PAL_BG_GREEN
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
-.continue
 	ld hl, wBGPals1 palette PAL_BG_GREEN color 1
 	ld de, wBGPals1 palette PAL_BG_ROOF color 1
 	ld bc, 3 colors
