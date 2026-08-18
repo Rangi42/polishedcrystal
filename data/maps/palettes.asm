@@ -98,6 +98,7 @@ ENDM
 	special_bg_pal tileset,  TILESET_POKECOM_CENTER,      PAL_SINGLE,    PokeComPalette
 	special_bg_pal tileset,  TILESET_MART,                PAL_SPECIAL,   MartSpecialCase ; *
 	special_bg_pal tileset,  TILESET_GATE,                PAL_SINGLE,    GatePalette
+	special_bg_pal tileset,  TILESET_MAGNET_TRAIN,        PAL_SPECIAL,   MagnetTrainSpecialCase ; *
 	special_bg_pal tileset,  TILESET_PORT,                PAL_TIMEOFDAY, PortPalette
 	special_bg_pal tileset,  TILESET_GAME_CORNER,         PAL_SINGLE,    GameCornerPalette
 	special_bg_pal tileset,  TILESET_HOTEL,               PAL_SINGLE,    HotelPalette
