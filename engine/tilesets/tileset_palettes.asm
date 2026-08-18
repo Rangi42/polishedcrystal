@@ -8,6 +8,7 @@
 	const_def 1
 	const PAL_SINGLE
 	const PAL_TIMEOFDAY
+	const PAL_TIMEWEATHER
 	const PAL_SPECIAL
 
 LoadBlindingFlashPalette::
@@ -46,6 +47,8 @@ LoadSpecialMapPalette:
 	jr z, LoadSevenBGPalettes
 	dec a ; PAL_TIMEOFDAY?
 	jr z, LoadSevenTimeOfDayBGPalettes
+	dec a ; PAL_TIMEWEATHER?
+	jr z, LoadSevenTimeWeatherBGPalettes
 	; PAL_SPECIAL
 	jp hl
 
@@ -59,12 +62,23 @@ endr
 	and a
 	ret
 
+LoadSevenTimeWeatherBGPalettes:
+	push hl
+	farcall GetOvercastIndex
+	pop hl
+	and a
+	jr z, LoadSevenTimeOfDayBGPalettes
+	; skip the four regular time-of-day pals to reach the four overcast time-of-day pals
+	assert (8 palettes) * 4 == 256
+	inc h ; add 256 to hl
+	; fallthrough
 ; don't copy the eighth palette, it's loaded based on the map's sign
 LoadSevenTimeOfDayBGPalettes:
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
 	rst AddNTimes
+	; fallthrough
 LoadSevenBGPalettes:
 	ld de, wBGPals1
 	ld bc, 7 palettes
@@ -230,4 +244,3 @@ CheckIfSpecialPaletteApplies:
 	ret
 
 INCLUDE "data/maps/palettes.asm"
-INCLUDE "data/maps/palettes_overcast.asm"
