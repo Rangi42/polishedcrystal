@@ -740,10 +740,12 @@ Route36TrainerTips2Text:
 Route36AdvancedTips1Text:
 	text "Advanced Tips!"
 
+	assert NUM_FRAMES == 20
 	para "You can pick from"
 	line "twenty different"
 	cont "textbox frames and"
 
+	assert NUM_FONTS == 8
 	para "eight different"
 	line "text typefaces in"
 	cont "the Options!"
