@@ -1127,8 +1127,10 @@ LavenderRadioTowerRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/lavender-radio-tower-roof.pal"
 
 MrPokemonsHouseRoofPalettes::
-MrPsychicsHouseRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/mr-pokemon-roof.pal"
+
+MrPsychicsHouseRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/mr-psychic-roof.pal"
 
 OverworldYellowPalettes::
 INCLUDE "gfx/tilesets/palette-swap/bg-yellow.pal"
