@@ -1105,6 +1105,15 @@ INCLUDE "gfx/tilesets/palette-swap/goldenrod-museum.pal"
 GoldenrodBikeShopRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/goldenrod-bike-shop.pal"
 
+GoldenrodCityRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/goldenrod-roof.pal"
+
+GoldenrodHarborPlantVendorAwningPalettes::
+INCLUDE "gfx/tilesets/palette-swap/plant-vendor.pal"
+
+GoldenrodHarborDollVendorAwningPalettes::
+INCLUDE "gfx/tilesets/palette-swap/doll-vendor.pal"
+
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
 

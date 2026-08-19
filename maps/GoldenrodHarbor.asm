@@ -2,6 +2,7 @@ GoldenrodHarbor_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_CMDQUEUE, GoldenrodHarborSetUpPaletteSwap
 
 	def_warp_events
 	warp_event 31, 16, GOLDENROD_HARBOR_GATE, 1
@@ -30,6 +31,15 @@ GoldenrodHarbor_MapScriptHeader:
 	object_event 23, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
 	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_TOP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, GoldenrodHarborSailboatScript, -1
 	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, 0, OBJECTTYPE_SCRIPT_SILENT, 0, GoldenrodHarborSailboatScript, -1
+
+GoldenrodHarborSetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 8, 23, 7, 19, PAL_BG_GREEN, OverworldGreenPalettes, GoldenrodHarborPlantVendorAwningPalettes
+	paletteswap 14, 29, 7, 19, PAL_BG_ROOF, GoldenrodCityRoofPalettes, GoldenrodHarborDollVendorAwningPalettes
+	db -1 ; end
 
 GoldenrodHarborFisherScript:
 	faceplayer
