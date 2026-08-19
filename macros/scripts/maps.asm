@@ -231,8 +231,10 @@ MACRO paletteswap
 	db \5 ; palette ID
 	dw \6 ; out-of-range palette list
 	dw \7 ; in-range palette list
-	assert BANK(\6) == BANK(SwapColorPalette), "\6 is not in the color ROMX bank!"
-	assert BANK(\7) == BANK(SwapColorPalette), "\7 is not in the color ROMX bank!"
+	assert BANK(\6) == BANK(SwapColorPalette) || BANK(\6) == 0, \
+		"\6 is not accessible in the color ROMX bank!"
+	assert BANK(\7) == BANK(SwapColorPalette) || BANK(\6) == 0, \
+		"\7 is not accessible in the color ROMX bank!"
 ENDM
 
 ; Connections go in order: north, south, west, east

@@ -1044,6 +1044,12 @@ LoadMapPals:
 ; input: `de` = palette table (in this bank), `b` = BG palette ID (0-7)
 ; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
 SwapColorPalette::
+	; Do not swap if the palette table is NULL.
+	; This allows maps to specify multiple `palette_swap`s for the same palette.
+	ld a, d
+	or e
+	ret z
+
 	; Set `hl` to the `[wTimeOfDayPal]`th palette in the table at `de`.
 	ld a, [wTimeOfDayPal]
 	and 3
@@ -1095,6 +1101,9 @@ INCLUDE "gfx/tilesets/palette-swap/pewter-museum.pal"
 
 GoldenrodMuseumRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/goldenrod-museum.pal"
+
+GoldenrodBikeShopRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/goldenrod-bike-shop.pal"
 
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
