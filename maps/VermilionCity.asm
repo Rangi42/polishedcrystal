@@ -68,7 +68,7 @@ VermilionCitySetupLawrenceCallback:
 VermilionCitySetupBattleFactoryCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .done
-	changeblock 28, 6, $f3
+	changeblock 28, 6, $f7
 .done
 	endcallback
 
