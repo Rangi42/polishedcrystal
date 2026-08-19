@@ -22,11 +22,9 @@ LoadMapGroupRoof::
 MapGroupRoofGFX:
 	table_width 2
 	farbank "Roof Graphics"
-	fardw NewBarkRoofGFX
 	fardw VioletRoofGFX
 	fardw AzaleaRoofGFX
 	fardw OlivineRoofGFX
-	fardw GoldenrodRoofGFX
 	fardw SinjohRoofGFX
 	assert_table_length NUM_ROOFS
 

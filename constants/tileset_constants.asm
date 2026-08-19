@@ -60,13 +60,14 @@ DEF TILESET_LENGTH EQU 18
 
 ; MapGroupRoofs values (see data/maps/roofs.asm)
 ; MapGroupRoofGFX indexes (see engine/tilesets/mapgroup_roofs.asm)
-	const_def
-	const ROOF_NEW_BARK  ; 0
-	const ROOF_VIOLET    ; 1
-	const ROOF_AZALEA    ; 2
-	const ROOF_OLIVINE   ; 3
-	const ROOF_GOLDENROD ; 4
-	const ROOF_SINJOH    ; 5
+; Every tileset that uses roofs should have New Bark roofs as its default,
+; since ROOF_NEW_BARK is the same as not loading any.
+	const_def -1
+	const ROOF_NEW_BARK ; -1
+	const ROOF_VIOLET   ; 0
+	const ROOF_AZALEA   ; 1
+	const ROOF_OLIVINE  ; 2
+	const ROOF_SINJOH   ; 3
 DEF NUM_ROOFS EQU const_value
 
 ; roof length (see gfx/tilesets/roofs)
