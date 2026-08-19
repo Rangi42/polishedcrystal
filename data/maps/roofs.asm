@@ -13,7 +13,7 @@ MapGroupRoofs:
 	db ROOF_AZALEA    ; 8 (Azalea Town)
 	db ROOF_OLIVINE   ; 9 (Battle Tower Outside)
 	db ROOF_NEW_BARK  ; 10 (Violet City)
-	db ROOF_VIOLET    ; 11 (Goldenrod City)
+	db ROOF_GOLDENROD ; 11 (Goldenrod City)
 	db -1             ; 12
 	db -1             ; 13
 	db -1             ; 14
