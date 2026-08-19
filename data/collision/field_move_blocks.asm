@@ -38,7 +38,6 @@ CutGrassBlockPointers:
 
 .kanto
 	db $87, $94
-	db $fb, $0a
 .kanto_north
 	db $0b, $0a
 	db -1
