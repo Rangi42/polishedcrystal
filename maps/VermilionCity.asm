@@ -32,6 +32,7 @@ VermilionCity_MapScriptHeader:
 	bg_event  5, 13, BGEVENT_JUMPTEXT, PokemonFanClubSignText
 	bg_event 35, 13, BGEVENT_JUMPTEXT, VermilionCityDiglettsCaveSignText
 	bg_event 27, 15, BGEVENT_JUMPTEXT, VermilionCityPortSignText
+	bg_event 27, 24, BGEVENT_JUMPTEXT, VermilionCityPierSignText
 	bg_event 23,  7, BGEVENT_JUMPTEXT, VermilionCityBattleFactorySignText
 	bg_event 10, 23, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
 	bg_event 12, 19, BGEVENT_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
@@ -423,6 +424,13 @@ VermilionCityDiglettsCaveSignText:
 VermilionCityPortSignText:
 	text "Vermilion Port"
 	line "Entrance"
+	done
+
+VermilionCityPierSignText:
+	text "Left - S.S.Aqua"
+
+	para "Down - Seagallop"
+	line "       Ferry"
 	done
 
 VermilionCityAdvancedTipsSignText:
