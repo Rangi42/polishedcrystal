@@ -220,7 +220,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; db
 	tilecoll WALL, WALL, WALL, WALL ; dc
 	tilecoll WALL, WALL, WALL, WALL ; dd
-	tilecoll VOID, VOID, VOID, VOID ; de
+	tilecoll WALL, WALL, WALL, WALL ; de
 	tilecoll WALL, WALL, FLOOR, FLOOR ; df
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; e0
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; e1
