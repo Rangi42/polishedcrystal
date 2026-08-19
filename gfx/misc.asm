@@ -6,6 +6,7 @@ AzaleaRoofGFX::    INCBIN "gfx/tilesets/roofs/azalea.2bpp.lzp"
 OlivineRoofGFX::   INCBIN "gfx/tilesets/roofs/olivine.2bpp.lzp"
 GoldenrodRoofGFX:: INCBIN "gfx/tilesets/roofs/goldenrod.2bpp.lzp"
 SinjohRoofGFX::    INCBIN "gfx/tilesets/roofs/sinjoh.2bpp.lzp"
+ParkRoofGFX::      INCBIN "gfx/tilesets/roofs/park.2bpp.lzp"
 
 
 SECTION "Map Name Sign Graphics", ROMX

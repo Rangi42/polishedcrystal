@@ -28,6 +28,7 @@ MapGroupRoofGFX:
 	fardw OlivineRoofGFX
 	fardw GoldenrodRoofGFX
 	fardw SinjohRoofGFX
+	fardw ParkRoofGFX
 	assert_table_length NUM_ROOFS
 
 INCLUDE "data/maps/roofs.asm"
