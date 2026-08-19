@@ -16,8 +16,6 @@ GoldenrodHoneyHouse_MapScriptHeader:
 	pokemon_event  6,  3, BUTTERFREE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, GoldenrodHoneyHouseButterfreeText, -1
 
 GoldenrodHoneyHousePokefanFScript:
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue_jumptextfaceplayer .AfterText
 	checkevent EVENT_GOT_HONEY_FROM_GOLDENROD
 	iftruefwd .SellHoney
 	faceplayer
@@ -27,10 +25,8 @@ GoldenrodHoneyHousePokefanFScript:
 	verbosegiveitem SWEET_HONEY
 	iffalse_endtext
 	setevent EVENT_GOT_HONEY_FROM_GOLDENROD
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	jumpthisopenedtext
 
-.AfterText:
 	text "My little brother"
 if DEF(FAITHFUL)
 	line "takes Honey and"
@@ -51,6 +47,10 @@ endc
 
 	para "same level as"
 	line "your own!"
+
+	para "If you like it,"
+	line "I'm happy to sell"
+	cont "you some more."
 	done
 
 .IntroText:
