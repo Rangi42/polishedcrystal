@@ -3,6 +3,7 @@ CeruleanCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, CeruleanCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event  8,  9, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
@@ -47,6 +48,14 @@ CeruleanCity_MapScriptHeader:
 CeruleanCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CERULEAN
 	endcallback
+
+CeruleanCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 12, 29, 0, 3, PAL_BG_YELLOW, OverworldYellowPalettes, NuggetBridgePalettes
+	db -1 ; end
 
 CeruleanCityCooltrainerMScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

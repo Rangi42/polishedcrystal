@@ -1130,6 +1130,12 @@ MrPokemonsHouseRoofPalettes::
 MrPsychicsHouseRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/mr-pokemon-roof.pal"
 
+OverworldYellowPalettes::
+INCLUDE "gfx/tilesets/palette-swap/bg-yellow.pal"
+
+NuggetBridgePalettes::
+INCLUDE "gfx/tilesets/palette-swap/nugget-bridge.pal"
+
 INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::

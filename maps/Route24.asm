@@ -5,6 +5,7 @@ Route24_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, Route24TileScript
+	callback MAPCALLBACK_CMDQUEUE, Route24SetUpPaletteSwap
 
 	def_warp_events
 
@@ -93,6 +94,14 @@ Route24_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wRoute24SceneID], a ; setscene a
 	jmp GenericFinishBridge
+
+Route24SetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 0, 255, PAL_BG_YELLOW, OverworldYellowPalettes, NuggetBridgePalettes
+	db -1 ; end
 
 TrainerGruntM31:
 	trainer GRUNTM, 31, EVENT_BEAT_ROCKET_GRUNTM_31, Route24RocketSeenText, Route24RocketBeatenText, 0, Route24RocketScript
