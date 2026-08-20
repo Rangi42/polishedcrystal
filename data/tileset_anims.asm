@@ -63,12 +63,12 @@ TilesetJohtoCoastAnim::
 	tileframe DoneTileAnimation
 
 TilesetKantoAnim::
-TilesetKantoUrbanAnim::
+TilesetIndigoPlateauAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
-	tileframe AnimateFountainTile,            $1:3e
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $1:84
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe DoNothing
@@ -87,12 +87,12 @@ TilesetKantoNorthAnim::
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
-TilesetIndigoPlateauAnim::
+TilesetKantoUrbanAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe AnimateFountainTile,            $1:1a
 	tileframe DoNothing
-	tileframe DoNothing
-	tileframe DoNothing
+	tileframe AnimateGameCornerTiles,         $1:16
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe DoNothing

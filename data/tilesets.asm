@@ -174,14 +174,7 @@ TilesetIndigoPlateauGFX0:: INCBIN "gfx/tilesets/kanto_common.2bpp.lzp"
 
 SECTION "Tileset Graphics - kanto vram1", ROMX
 
-TilesetKantoGFX1::
-TilesetKantoUrbanGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.vram0.lzp"
-
-
-SECTION "Tileset Graphics - kanto vram2", ROMX
-
-TilesetKantoGFX2::
-TilesetKantoUrbanGFX2:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.vram1.lzp"
+TilesetKantoGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Data - kanto", ROMX
@@ -201,6 +194,11 @@ SECTION "Tileset Data - kanto north", ROMX
 TilesetKantoNorthMeta:: INCBIN "data/tilesets/kanto_north_metatiles.bin.lzp"
 TilesetKantoNorthAttr:: INCBIN "data/tilesets/kanto_north_attributes.bin.lzp"
 TilesetKantoNorthColl:: INCBIN "data/tilesets/kanto_north_collision.bin.lzp"
+
+
+SECTION "Tileset Graphics - kanto urban vram1", ROMX
+
+TilesetKantoUrbanGFX1:: INCBIN "gfx/tilesets/kanto_urban.kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Data - kanto urban", ROMX
@@ -929,7 +927,9 @@ SECTION "Tileset Graphics - Terminator vram2", ROMX
 TilesetJohtoOutlandsGFX2::
 TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
+TilesetKantoGFX2::
 TilesetKantoNorthGFX2::
+TilesetKantoUrbanGFX2::
 TilesetIndigoPlateauGFX2::
 TilesetShamoutiIslandGFX2::
 TilesetValenciaIslandGFX2::
