@@ -63,38 +63,49 @@ TilesetJohtoCoastAnim::
 	tileframe DoneTileAnimation
 
 TilesetKantoAnim::
-TilesetIndigoPlateauAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe DoNothing
 	tileframe DoNothing
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetKantoNorthAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe DoNothing
 	tileframe AnimateWaterfallTiles,          $1:0c
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetKantoUrbanAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe DoNothing
 	tileframe AnimateFountainTile,            $1:1a
 	tileframe DoNothing
 	tileframe AnimateGameCornerTiles,         $1:16
 	tileframe AnimateKantoFlowerTile,         $0:03
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
+TilesetIndigoPlateauAnim::
+	tileframe AnimateKantoWaterTile,          $0:14
+	tileframe ScrollFourTilesUpDownLeftRight, $1:49
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateKantoFlowerTile,         $0:03
+	tileframe ScrollFourTilesUpDownLeftRight, $1:49
 	tileframe DoNothing
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
