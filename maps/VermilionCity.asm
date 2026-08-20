@@ -436,11 +436,7 @@ VermilionCityPortSignText:
 	done
 
 VermilionCityPierSignText:
-	text "Left - S.S.Aqua"
-
-	para "Down - Seagallop"
-	line "       Ferry"
-	done
+	db "◀ S.S.Aqua<LINE>▼ Seagallop Ferry<DONE>" ; not compressible
 
 VermilionCityAdvancedTipsSignText:
 	text "Advanced Tips!"
