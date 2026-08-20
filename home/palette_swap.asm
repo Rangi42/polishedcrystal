@@ -1,5 +1,6 @@
 HandlePaletteSwap::
 	call InitializeSwappedPalette
+	ret nc
 	homecall _CGB_ForceUpdateLayout
 	ret
 
@@ -10,7 +11,7 @@ InitializeSwappedPalette::
 	push af
 	call SwitchToMapScriptsBank
 
-	; If there are no active palette swap rectangles, just return.
+	; If there are no active palette swap rectangles, return nc.
 	ld hl, wPaletteSwapAddress
 	ld a, [hli]
 	ld h, [hl]
@@ -18,9 +19,9 @@ InitializeSwappedPalette::
 	or h
 	jr nz, .loop
 
-.done
 	pop af
 	rst Bankswitch
+	and a
 	ret
 
 .loop
@@ -83,6 +84,13 @@ InitializeSwappedPalette::
 	; Continue processing more than one `paletteswap` rectangle.
 	call SwitchToMapScriptsBank
 	jr .loop
+
+.done
+	; Return carry when there were some `paletteswap` rectangles.
+	pop af
+	rst Bankswitch
+	scf
+	ret
 
 CheckPaletteSwapRectangle:
 ; Input: `hl` points to the next palette swap rectangle.
