@@ -441,6 +441,12 @@ ENDM
 	connection north, NavelRockInside, NAVEL_ROCK_INSIDE, 11
 	connection south, NavelRockInside, NAVEL_ROCK_INSIDE, -11
 
+	map_attributes FarawayIslandNorth, FARAWAY_ISLAND_NORTH, $6
+	connection south, FarawayIslandSouth, FARAWAY_ISLAND_SOUTH, 0
+
+	map_attributes FarawayIslandSouth, FARAWAY_ISLAND_SOUTH, $6
+	connection north, FarawayIslandNorth, FARAWAY_ISLAND_NORTH, 0
+
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0
 	map_attributes SproutTower3F, SPROUT_TOWER_3F, $0
@@ -901,7 +907,6 @@ ENDM
 	map_attributes SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0
 	map_attributes NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35
 	map_attributes NavelRockRoof, NAVEL_ROCK_ROOF, $51
-	map_attributes FarawayIsland, FARAWAY_ISLAND, $6
 	map_attributes FarawayJungle, FARAWAY_JUNGLE, $17
 	map_attributes SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0
 	map_attributes SeagallopFerryNavelGate, SEAGALLOP_FERRY_NAVEL_GATE, $0

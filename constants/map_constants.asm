@@ -424,11 +424,12 @@ ENDM
 	map_const NAVEL_ROCK_OUTSIDE,                         13, 16 ;  4
 	map_const NAVEL_ROCK_INSIDE,                          27, 26 ;  5
 	map_const NAVEL_ROCK_ROOF,                             8, 11 ;  6
-	map_const FARAWAY_ISLAND,                             17, 23 ;  7
-	map_const FARAWAY_JUNGLE,                             14, 12 ;  8
-	map_const SEAGALLOP_FERRY_VERMILION_GATE,              7,  6 ;  9
-	map_const SEAGALLOP_FERRY_NAVEL_GATE,                  7,  6 ; 10
-	map_const SEAGALLOP_FERRY_SHAMOUTI_GATE,               7,  6 ; 11
+	map_const FARAWAY_ISLAND_NORTH,                       17, 15 ;  7
+	map_const FARAWAY_ISLAND_SOUTH,                       13,  8 ;  8
+	map_const FARAWAY_JUNGLE,                             14, 12 ;  9
+	map_const SEAGALLOP_FERRY_VERMILION_GATE,              7,  6 ; 10
+	map_const SEAGALLOP_FERRY_NAVEL_GATE,                  7,  6 ; 11
+	map_const SEAGALLOP_FERRY_SHAMOUTI_GATE,               7,  6 ; 12
 
 	newgroup                                                     ; 20
 	map_const POKECENTER_2F,                               8,  4 ;  1

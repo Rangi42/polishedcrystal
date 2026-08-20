@@ -993,6 +993,8 @@ LoadMapPals:
 	jr z, .finish
 	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
 	jr z, .finish
+	cp TILESET_FARAWAY_ISLAND ; covers map_id FARAWAY_ISLAND_SOUTH
+	jr z, .finish
 
 	; overcast maps have their own roof color table
 	farcall GetOvercastIndex

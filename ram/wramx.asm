@@ -1214,7 +1214,7 @@ wEcruteakGymSceneID:: db
 wEcruteakHouseSceneID:: db
 wRocketHideoutB4FSceneID:: db
 wElmsLabSceneID:: db
-wFarawayIslandSceneID:: db
+wFarawayIslandSouthSceneID:: db
 wFastShip1FSceneID:: db
 wFastShipB1FSceneID:: db
 wGiovannisCaveSceneID:: db

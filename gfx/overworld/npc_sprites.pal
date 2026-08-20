@@ -28,6 +28,7 @@ if !DEF(MONOCHROME)
 	RGB 28,31,16, 21,21,31, 16,22,31, 00,00,00 ; rain
 	RGB 28,31,16, 22,19,09, 11,05,00, 15,09,02 ; sand
 	RGB 22,31,10, 12,25,01, 05,14,00, 07,07,07 ; leaf green
+	RGB 27,28,29, 18,22,22, 15,16,13, 11,12,12 ; faraway rock
 ; day
 	RGB 27,31,27, 31,19,10, 31,07,01, 00,00,00 ; red
 	RGB 27,31,27, 31,19,10, 10,09,31, 00,00,00 ; blue
@@ -56,6 +57,7 @@ if !DEF(MONOCHROME)
 	RGB 27,31,27, 21,21,31, 16,22,31, 00,00,00 ; rain
 	RGB 27,31,27, 22,19,09, 11,05,00, 15,09,02 ; sand
 	RGB 22,31,10, 12,25,01, 05,14,00, 07,07,07 ; leaf green
+	RGB 27,28,29, 19,22,27, 16,16,17, 12,12,15 ; faraway rock
 ; nite
 	RGB 15,14,24, 16,09,09, 17,03,00, 00,00,00 ; red
 	RGB 15,14,24, 16,09,09, 05,04,20, 00,00,00 ; blue
@@ -84,6 +86,7 @@ if !DEF(MONOCHROME)
 	RGB 15,14,24, 16,14,19, 16,16,31, 00,00,00 ; rain
 	RGB 15,14,24, 16,14,10, 08,04,05, 10,09,09 ; sand
 	RGB 15,14,24, 08,13,19, 00,11,13, 00,00,00 ; leaf green
+	RGB 15,13,26, 10,12,22, 08,08,13, 06,06,12 ; faraway rock
 ; eve
 	RGB 31,21,14, 31,19,10, 31,07,01, 00,00,00 ; red
 	RGB 31,21,14, 31,19,10, 10,09,31, 00,00,00 ; blue
@@ -112,6 +115,7 @@ if !DEF(MONOCHROME)
 	RGB 31,21,14, 16,14,19, 16,16,31, 00,00,00 ; rain
 	RGB 31,21,14, 22,19,09, 11,05,00, 15,09,02 ; sand
 	RGB 19,23,08, 10,19,01, 04,10,00, 06,05,05 ; leaf green
+	RGB 22,21,21, 19,18,14, 16,13,09, 12,09,08 ; faraway rock
 
 else
 
@@ -143,6 +147,7 @@ else
 	MONOCHROME_RGB_FOUR_OW ; rain
 	MONOCHROME_RGB_FOUR_OW ; sand
 	MONOCHROME_RGB_FOUR    ; leaf green
+	MONOCHROME_RGB_FOUR_OW ; faraway rock
 ; day
 	MONOCHROME_RGB_FOUR_OW ; red
 	MONOCHROME_RGB_FOUR_OW ; blue
@@ -171,6 +176,7 @@ else
 	MONOCHROME_RGB_FOUR_OW ; rain
 	MONOCHROME_RGB_FOUR_OW ; sand
 	MONOCHROME_RGB_FOUR    ; leaf green
+	MONOCHROME_RGB_FOUR_OW ; faraway rock
 ; nite
 	MONOCHROME_RGB_FOUR_OW_NIGHT ; red
 	MONOCHROME_RGB_FOUR_OW_NIGHT ; blue
@@ -199,6 +205,7 @@ else
 	MONOCHROME_RGB_FOUR_OW_NIGHT ; rain
 	MONOCHROME_RGB_FOUR_OW_NIGHT ; sand
 	MONOCHROME_RGB_FOUR_NIGHT    ; leaf green
+	MONOCHROME_RGB_FOUR_OW_NIGHT ; faraway rock
 ; eve
 	MONOCHROME_RGB_FOUR_OW  ; red
 	MONOCHROME_RGB_FOUR_OW  ; blue
@@ -227,5 +234,6 @@ else
 	MONOCHROME_RGB_FOUR_OW  ; rain
 	MONOCHROME_RGB_FOUR_OW  ; sand
 	MONOCHROME_RGB_FOUR_EVE ; leaf green
+	MONOCHROME_RGB_FOUR_OW  ; faraway rock
 
 endc

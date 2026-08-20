@@ -33,7 +33,7 @@ MapScenes::
 	scene_var ECRUTEAK_GYM,                      wEcruteakGymSceneID
 	scene_var ECRUTEAK_HOUSE,                    wEcruteakHouseSceneID
 	scene_var ELMS_LAB,                          wElmsLabSceneID
-	scene_var FARAWAY_ISLAND,                    wFarawayIslandSceneID
+	scene_var FARAWAY_ISLAND_SOUTH,              wFarawayIslandSouthSceneID
 	scene_var FAST_SHIP_1F,                      wFastShip1FSceneID
 	scene_var FAST_SHIP_B1F,                     wFastShipB1FSceneID
 	scene_var GIOVANNIS_CAVE,                    wGiovannisCaveSceneID

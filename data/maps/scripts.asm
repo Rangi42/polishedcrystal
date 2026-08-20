@@ -909,7 +909,8 @@ INCLUDE "maps/NavelRockRoof.asm"
 
 SECTION "Faraway Island Scripts", ROMX
 
-INCLUDE "maps/FarawayIsland.asm"
+INCLUDE "maps/FarawayIslandNorth.asm"
+INCLUDE "maps/FarawayIslandSouth.asm"
 INCLUDE "maps/FarawayJungle.asm"
 
 
