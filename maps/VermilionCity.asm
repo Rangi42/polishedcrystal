@@ -6,6 +6,7 @@ VermilionCity_MapScriptHeader:
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, VermilionCitySetupLawrenceCallback
 	callback MAPCALLBACK_TILES, VermilionCitySetupBattleFactoryCallback
+	callback MAPCALLBACK_CMDQUEUE, VermilionCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event  5,  3, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, 1
@@ -72,6 +73,14 @@ VermilionCitySetupBattleFactoryCallback:
 	changeblock 28, 6, $f7
 .done
 	endcallback
+
+VermilionCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 21, 36, 27, 39, PAL_BG_ROOF, VermilionCityRoofPalettes, SeagallopFerryRoofPalettes
+	db -1 ; end
 
 LawrenceIntroScript:
 	turnobject PLAYER, UP

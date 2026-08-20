@@ -1138,6 +1138,12 @@ INCLUDE "gfx/tilesets/palette-swap/bg-yellow.pal"
 NuggetBridgePalettes::
 INCLUDE "gfx/tilesets/palette-swap/nugget-bridge.pal"
 
+VermilionCityRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/vermilion-roof.pal"
+
+SeagallopFerryRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/seagallop-ferry-roof.pal"
+
 INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
