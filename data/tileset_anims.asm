@@ -68,7 +68,7 @@ TilesetKantoUrbanAnim::
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe AnimateFountainTile,            $1:3e
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $0:6b
+	tileframe AnimateGameCornerTiles,         $1:84
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe DoNothing
@@ -80,7 +80,7 @@ TilesetKantoNorthAnim::
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $0:6b
+	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe AnimateWaterfallTiles,          $1:0c
@@ -92,7 +92,7 @@ TilesetIndigoPlateauAnim::
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe DoNothing
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $0:6b
+	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe ScrollFourTilesUpDownLeftRight, $0:10
 	tileframe DoNothing

@@ -205,14 +205,12 @@
 	tilecoll WALL, WATER, WATER, WATER ; cc
 	tilecoll WATER, WALL, WATER, WATER ; cd
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ce
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; cf
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; cf
 	tilecoll WALL, LEDGE_DOWN, WALL, WALL ; d0
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; d1
-	tilecoll FLOOR, FLOOR, FLOOR, WALL ; d2
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; d3
+	tilecoll FLOOR, FLOOR, WALL, WALL ; d2
+	tilecoll FLOOR, FLOOR, WALL, WALL ; d3
 	tilecoll FLOOR, WALL, FLOOR, WALL ; d4
 	tilecoll FLOOR, WALL, WALL, WALL ; d5
 	tilecoll FLOOR, WALL, FLOOR, WALL ; d6
 	tilecoll WALL, WALL, FLOOR, FLOOR ; d7
-	tilecoll FLOOR, FLOOR, WALL, WALL ; d8
-	tilecoll FLOOR, FLOOR, WALL, WALL ; d9

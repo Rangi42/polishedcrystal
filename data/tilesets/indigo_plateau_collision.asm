@@ -210,8 +210,8 @@
 	tilecoll FLOOR, TALL_GRASS, WALL, TALL_GRASS ; d1
 	tilecoll TALL_GRASS, FLOOR, WALL, WALL ; d2
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; d3
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; d4
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; d5
+	tilecoll WALL, WALL, WATER, WATER ; d4
+	tilecoll WALL, WALL, WATER, WATER ; d5
 	tilecoll WALL, WALL, FLOOR, FLOOR ; d6
 	tilecoll WATER, WATER, WALL, WALL ; d7
 	tilecoll WATER, WATER, WATER, WATER ; d8
@@ -250,5 +250,3 @@
 	tilecoll WALL, WALL, WALL, WALL ; f9
 	tilecoll WALL, WALL, WATER, WATER ; fa
 	tilecoll WALL, WALL, WATER, WATER ; fb
-	tilecoll WALL, WALL, WATER, WATER ; fc
-	tilecoll WALL, WALL, WATER, WATER ; fd
