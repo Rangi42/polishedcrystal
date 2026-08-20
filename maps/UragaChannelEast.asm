@@ -9,7 +9,7 @@ UragaChannelEast_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 45,  5, BGEVENT_JUMPTEXT, UragaChannelSignText
+	bg_event 45,  4, BGEVENT_JUMPTEXT, UragaChannelSignText
 	bg_event  3, 13, BGEVENT_JUMPTEXT, ScaryCaveEastSignText
 	bg_event 33,  4, BGEVENT_ITEM + NUGGET, EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET
 	bg_event 34, 14, BGEVENT_ITEM + PEARL, EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL

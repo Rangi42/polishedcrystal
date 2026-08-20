@@ -297,6 +297,33 @@ AnimateBuoyTiles:
 .BuoyTileFrames:
 INCBIN "gfx/tilesets/animations/buoy.2bpp"
 
+AnimateKantoBuoyTiles:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 8, offset to 4 tiles (64 bytes)
+	; (the high bit ends up in the carry flag!)
+	ld a, [wTileAnimationTimer]
+	and %111
+	swap a
+	add a
+	add a
+
+	ld h, 0
+	rl h
+	add LOW(.KantoBuoyTileFrames)
+	ld l, a
+	adc HIGH(.KantoBuoyTileFrames)
+	sub l
+	add h
+	ld h, a
+
+	jmp WriteFourTilesHLToDE
+
+.KantoBuoyTileFrames:
+INCBIN "gfx/tilesets/animations/buoy_kanto.2bpp"
+
 AnimateRainTiles:
 	ld hl, sp + 0
 	ld b, h
