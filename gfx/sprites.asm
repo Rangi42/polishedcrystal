@@ -638,5 +638,5 @@ FloatingBallSpriteGFX:: INCBIN "gfx/sprites/floating_ball.2bpp.lzp"
 SECTION "SpinarakCartSpriteGFX", ROMX
 SpinarakCartSpriteGFX:: INCBIN "gfx/sprites/spinarak_cart.2bpp.lzp"
 
-SECTION "MiscSpriteGFX", ROMX
-MiscSpriteGFX:: INCBIN "gfx/sprites/misc.2bpp.lzp"
+SECTION "PearlSpriteGFX", ROMX
+PearlSpriteGFX:: INCBIN "gfx/sprites/pearl.2bpp.lzp"
