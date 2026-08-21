@@ -283,9 +283,14 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	opentext
 	writetext .GreetingText
 	promptbutton
+	checkevent EVENT_TOGEPI_HATCHED
+	iftruefwd .HatchedEgg
 	checkegg
 	iftruefwd .HaveEgg
 	writetext .NoEggText
+	sjumpfwd .Continue
+.HatchedEgg
+	writetext .HatchedEggText
 	sjumpfwd .Continue
 .HaveEgg
 	writetext .HaveEggText
@@ -303,30 +308,44 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 .GreetingText:
 	text "<PLAYER>!"
 	line "Hi there!"
+
+	para "Prof.Elm said his"
+	line "aide was deliver-"
+	cont "ing an Egg to you."
 	done
 
 .NoEggText:
-	text "Prof.Elm said his"
-	line "aide was deliver-"
-	cont "ing an Egg to you."
-
-	para "Be sure to carry"
-	line "it. I'm curious"
-
-	para "what #mon it"
-	line "could be!"
-	done
-
-.HaveEggText:
-	text "Oh good! You're"
-	line "carrying that Egg"
-
-	para "just like Prof."
-	line "Elm asked."
+	text "Be sure to carry"
+	line "it with you."
 
 	para "I'm so curious"
 	line "what #mon it"
 	cont "could be!"
+	done
+
+.HaveEggText:
+	text "Oh good! You're"
+	line "carrying it just"
+	cont "like he wanted."
+
+	para "I'm so curious"
+	line "what #mon it"
+	cont "could be!"
+	done
+
+.HatchedEggText:
+	text "…What? You already"
+	line "hatched it?"
+
+	para "Oh my gosh! So it"
+	line "was a Togepi!"
+	cont "They're so rare!"
+
+	para "You should show"
+	line "it to Prof.Elm"
+
+	para "while you're not"
+	line "too far from home!"
 	done
 
 .QuestionText:
