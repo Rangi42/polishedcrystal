@@ -16,6 +16,8 @@ Route24_MapScriptHeader:
 	coord_event 22, 13, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 20, 13, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
 	coord_event 21, 13, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
+	coord_event 16, 37, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
+	coord_event 17, 37, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger
 	coord_event 20, 37, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
 	coord_event 21, 37, SCENE_ROUTE24_BRIDGE_UNDERFOOT, Route24BridgeUnderfootTrigger
 	coord_event 25, 11, SCENE_ROUTE24_BRIDGE_OVERHEAD, Route24BridgeOverheadTrigger

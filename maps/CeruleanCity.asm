@@ -19,6 +19,10 @@ CeruleanCity_MapScriptHeader:
 	warp_event 31,  9, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
+	coord_event  4,  2, SCENE_ROUTE24_BRIDGE_UNDERFOOT, CeruleanCityPrepareRoute24BridgeOverhead
+	coord_event  5,  2, SCENE_ROUTE24_BRIDGE_UNDERFOOT, CeruleanCityPrepareRoute24BridgeOverhead
+	coord_event 20,  2, SCENE_ROUTE24_BRIDGE_UNDERFOOT, CeruleanCityPrepareRoute24BridgeUnderfoot
+	coord_event 21,  2, SCENE_ROUTE24_BRIDGE_UNDERFOOT, CeruleanCityPrepareRoute24BridgeUnderfoot
 
 	def_bg_events
 	bg_event 17, 18, BGEVENT_JUMPTEXT, CeruleanCitySignText
@@ -56,6 +60,19 @@ CeruleanCitySetUpPaletteSwap:
 .PaletteSwap:
 	paletteswap 12, 29, 0, 3, PAL_BG_YELLOW, OverworldYellowPalettes, NuggetBridgePalettes
 	db -1 ; end
+
+CeruleanCityPrepareRoute24BridgeOverhead:
+	callthisasm
+	xor a
+	jr CeruleanCity_FinishPrepareBridge
+
+CeruleanCityPrepareRoute24BridgeUnderfoot:
+	callthisasm
+	ld a, $1
+CeruleanCity_FinishPrepareBridge:
+	ld [wWalkingOnBridge], a
+	ld [wRoute24SceneID], a ; setscene a
+	ret
 
 CeruleanCityCooltrainerMScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
