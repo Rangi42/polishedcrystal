@@ -72,6 +72,17 @@ DEF NUM_ROOFS EQU const_value
 ; roof length (see gfx/tilesets/roofs)
 DEF ROOF_LENGTH EQU 9
 
+; coast sand tile IDs in vTiles4
+	const_def $f0
+	const COAST_SAND_TILE         ; $f0
+	const COAST_SAND_TILE_FOOT_V1 ; $f1
+	const COAST_SAND_TILE_FOOT_V2 ; $f2
+	const COAST_SAND_TILE_FOOT_H1 ; $f3
+	const COAST_SAND_TILE_FOOT_H2 ; $f4
+	const COAST_SAND_TILE_BIKE_H  ; $f5
+	const COAST_SAND_TILE_BIKE_V  ; $f6
+DEF NUM_COAST_SAND_TILES EQU const_value - COAST_SAND_TILE
+
 ; bg palette values
 ; TilesetBGPalette indexes (see gfx/tilesets/bg_tiles.pal)
 	const_def

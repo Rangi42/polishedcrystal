@@ -34,6 +34,11 @@ SandGFX::          INCBIN "gfx/overworld/sand.2bpp"
 CherryBlossomGFX:: INCBIN "gfx/overworld/cherry_blossom.2bpp"
 
 
+SECTION "Coast Sand Graphics", ROMX
+
+CoastSandTileGFX:: INCBIN "gfx/tilesets/animations/coast_sand.2bpp.lzp"
+
+
 SECTION "Fishing Graphics", ROMX
 
 ChrisFishingGFX::     INCBIN "gfx/overworld/chris_fish.2bpp"

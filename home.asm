@@ -67,7 +67,6 @@ INCLUDE "data/text/ngrams.asm"
 INCLUDE "data/text/compressed_text.asm"
 INCLUDE "data/pokemon/variant_forms.asm"
 INCLUDE "data/maps/special_music.asm"
-INCLUDE "data/collision/coast_sand_tiles.asm"
 
 ; data used in multiple banks, or one full bank, outside home
 INCLUDE "data/pokemon/legendary_mons.asm"

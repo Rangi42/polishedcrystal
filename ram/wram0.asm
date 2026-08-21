@@ -1066,7 +1066,7 @@ wLinkMode::
 
 wPlayerNextMovement:: db
 
-wCoastSandTile:: db
+	ds 1 ; unused
 
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba

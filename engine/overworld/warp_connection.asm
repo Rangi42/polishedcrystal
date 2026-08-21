@@ -351,7 +351,7 @@ DeferredLoadMapGraphics:
 	call TilesetUnchanged
 	jr z, .done
 	call LoadMapTileset
-	ld a, 3
+	ld a, 4
 	ld [wPendingOverworldGraphics], a
 .done
 	xor a
