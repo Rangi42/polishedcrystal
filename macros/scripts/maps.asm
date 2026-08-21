@@ -104,7 +104,7 @@ MACRO object_event
 	db \2 + 4 ; y
 	db \1 + 4 ; x
 	db \4 ; movement function
-	if \3 == SPRITE_MON_ICON
+	if \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON
 		dn \5, LOW(\6) ; mon index
 	else
 		dn \5, \6 ; radius: y, x
@@ -114,7 +114,7 @@ MACRO object_event
 	db \9 ; type
 	if \9 == OBJECTTYPE_COMMAND
 		db \<10>_command ; command id
-	elif \3 == SPRITE_MON_ICON
+	elif \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON
 		db (HIGH(\6) << MON_EXTSPECIES_F) | \<10> ; extspecies | form
 	else
 		db \<10> ; sight_range

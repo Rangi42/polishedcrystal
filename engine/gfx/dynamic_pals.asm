@@ -127,6 +127,9 @@ ScanObjectStructPals:
 	jr .resolve_variable_sprite
 
 .check_mon_sprite_range
+	; SPRITE_AQUARIUM_MON uses Pokémon icon *graphics* but not *palettes*.
+	cp SPRITE_AQUARIUM_MON
+	jr z, .not_mon_icon_pal
 	; For SPRITE_POKEMON..(SPRITE_VARS - 1), interpret palette as two nybbles:
 	; high nybble = light color (PAL_MON_*), low nybble = dark color (PAL_MON_*)
 	cp SPRITE_POKEMON

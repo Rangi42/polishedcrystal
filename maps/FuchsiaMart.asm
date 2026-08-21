@@ -31,5 +31,12 @@ FuchsiaMartCooltrainerFText:
 	text "The Safari Zone"
 	line "Warden's grand-"
 	cont "daughter lives in"
-	cont "town."
+	cont "his old house."
+
+	para "Maybe she knows"
+	line "what happened"
+	cont "to make him leave."
+
+	para "All I've heard are"
+	line "vague rumors."
 	done

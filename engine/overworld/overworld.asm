@@ -136,6 +136,8 @@ GetSprite::
 
 GetMonSprite:
 ; Return carry if a monster sprite was loaded.
+	cp SPRITE_AQUARIUM_MON
+	jr z, .MonIcon
 	cp SPRITE_MON_ICON
 	jr z, .MonIcon
 	cp SPRITE_MON_DOLL_1
@@ -246,6 +248,7 @@ DoesSpriteHaveFacings::
 	jr c, .facings
 	cp SPRITE_VARS
 	jr nc, .facings
+.no_facings
 	scf
 	ret
 
@@ -254,9 +257,13 @@ DoesSpriteHaveFacings::
 	ret
 
 _GetSpritePalette::
+	cp SPRITE_AQUARIUM_MON
+	jr z, .aquarium_mon
 	call GetMonSprite
-	jr c, .is_pokemon
+	jr nc, .standard_palette
+	farjp GetOverworldMonIconPalette
 
+.standard_palette
 	ld hl, SpriteHeaders + SPRITEDATA_TYPE_PAL - SPRITEDATA_LENGTH
 	ld c, a
 	ld b, 0
@@ -266,8 +273,13 @@ _GetSpritePalette::
 	and SPRITEDATA_PALETTE_MASK
 	ret
 
-.is_pokemon
-	farjp GetOverworldMonIconPalette
+.aquarium_mon
+	; SPRITE_AQUARIUM_MON uses Pokémon icon *graphics* but not *palette*.
+	; Assume that the `object_event` assigns its own palette, so this can just
+	; return a dummy 0 palette in `a`.
+	call GetMonSprite
+	xor a
+	ret
 
 GetUsedSprite::
 	ldh a, [hUsedSpriteIndex]

@@ -113,6 +113,7 @@ Music:
 	dba Music_Route210DPPt
 	dba Music_Route225DPPt
 	dba Music_WildBattleGo
+	dba Music_MarineTubeB2W2
 	dba Music_DiglettsCaveRBY
 	dba Music_ViridianForest
 	dba Music_LookHiker
@@ -188,7 +189,6 @@ Music:
 	dba Music_Printer
 	dba Music_TitleScreenXY
 	dba Music_DewfordTownRSE
-	dba Music_MarineTubeB2W2
 	dba Music_LegendaryBattleXY
 	dba Music_WildBattlePrism
 	dba Music_TrainerBattlePrism

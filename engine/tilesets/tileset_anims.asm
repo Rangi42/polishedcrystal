@@ -642,6 +642,25 @@ AnimateDoubleStarTile:
 
 	jmp WriteTileHLToDE
 
+AnimateWaterBubbleTiles:
+	ld hl, sp + 0
+	ld b, h
+	ld c, l
+
+	; period 8, offset to 2 tiles (32 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 8
+	swap a
+	add a
+
+	add LOW(vTiles4 tile $0b)
+	ld l, a
+	adc HIGH(vTiles4 tile $0b)
+	sub l
+	ld h, a
+
+	jmp WriteTwoTilesHLToDE
+
 AnimateTowerPillarTiles1:
 	ld hl, sp + 0
 	ld b, h

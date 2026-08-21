@@ -30,6 +30,10 @@ if !DEF(MONOCHROME)
 	RGB 31,31,31, 31,31,31, 31,00,00, 00,00,00 ; emote red
 	RGB 31,31,31, 31,31,31, 31,16,01, 00,00,00 ; emote orange
 	RGB 31,31,31, 31,31,31, 00,00,31, 00,00,00 ; emote blue
+	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; aqua red
+	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; aqua blue
+	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; aqua brown
+	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; aqua purple
 	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; electric fence
 	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; lightning crystal
 	RGB 01,01,02, 00,00,00, 00,00,00, 00,00,00 ; rock crystal
@@ -76,6 +80,10 @@ else
 	MONOCHROME_RGB_FOUR_EMOTE       ; emote red
 	MONOCHROME_RGB_FOUR_EMOTE       ; emote orange
 	MONOCHROME_RGB_FOUR_EMOTE       ; emote blue
+	MONOCHROME_RGB_FOUR_DARKNESS    ; aqua red
+	MONOCHROME_RGB_FOUR_DARKNESS    ; aqua blue
+	MONOCHROME_RGB_FOUR_DARKNESS    ; aqua brown
+	MONOCHROME_RGB_FOUR_DARKNESS    ; aqua purple
 	MONOCHROME_RGB_FOUR_DARKNESS    ; electic fence
 	MONOCHROME_RGB_FOUR_DARKNESS    ; lightning crystal
 	MONOCHROME_RGB_FOUR_DARKNESS    ; rock crystal
