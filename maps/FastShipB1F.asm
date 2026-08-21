@@ -14,6 +14,7 @@ FastShipB1F_MapScriptHeader:
 	coord_event 27,  5, SCENE_FASTSHIPB1F_SAILOR_BLOCKS, FastShipB1FSailorBlocksRight
 
 	def_bg_events
+	bg_event 23,  7, BGEVENT_IFNOTSET, FastShipB1FJugglerFritzSeasickTrashScript
 
 	def_object_events
 	object_event 26,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShipB1FSailorScript, EVENT_FAST_SHIP_B1F_SAILOR_LEFT
@@ -41,6 +42,7 @@ FastShipB1FSailorBlocksLeft:
 	moveobject FASTSHIPB1F_SAILOR1, 26, 4
 	appear FASTSHIPB1F_SAILOR1
 	pause 5
+	callasm UpdateSprites
 	disappear FASTSHIPB1F_SAILOR2
 	end
 
@@ -51,6 +53,7 @@ FastShipB1FSailorBlocksRight:
 	moveobject FASTSHIPB1F_SAILOR2, 27, 4
 	appear FASTSHIPB1F_SAILOR2
 	pause 5
+	callasm UpdateSprites
 	disappear FASTSHIPB1F_SAILOR1
 FastShipB1FAlreadyBlocked:
 	end
@@ -222,6 +225,13 @@ FastShipB1FSailorBlocksLeftMovement:
 	turn_head_down
 	step_end
 
+FastShipB1FJugglerFritzSeasickTrashScript:
+	dw EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	jumpthistext
+
+	text "Yuck! Shouldn't"
+	line "have looked!"
+	done
 
 FastShipB1FOnDutySailorRefusedText:
 	text "Oh, gee…"
@@ -237,7 +247,6 @@ FastShipB1FOnDutySailorThanksText:
 	para "good so he'll quit"
 	line "slacking off!"
 	done
-
 
 FastShipB1FOnDutySailorDirectionsText:
 	text "The dining room is"

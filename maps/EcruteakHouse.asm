@@ -72,8 +72,6 @@ EcruteakHouse_XYTrigger2:
 	pause 5
 	callasm UpdateSprites
 	disappear ECRUTEAKHOUSE_SAGE1
-	end
-
 EcruteakHouse_XYTrigger_DontMove:
 	end
 
