@@ -345,6 +345,20 @@ TilesetHideoutAnim::
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
+TilesetPokemonMansionAnim::
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
 TilesetJohtoHouseAnim::
 TilesetKantoHouseAnim::
 TilesetPokeCenterAnim::
@@ -358,7 +372,6 @@ TilesetLighthouseAnim::
 TilesetBattleTowerInsideAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
-TilesetPokemonMansionAnim::
 TilesetDecorAnim::
 TilesetMuseumAnim::
 TilesetHotelAnim::
