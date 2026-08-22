@@ -2,4 +2,6 @@ IndoorFlyMaps:
 	map_id GOLDENROD_DEPT_STORE_ROOF
 	map_id CELADON_MANSION_ROOF
 	map_id TIN_TOWER_ROOF
+	map_id SILVER_CAVE_ROOM_3
+	map_id NAVEL_ROCK_ROOF
 	db 0 ; end

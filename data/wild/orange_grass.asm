@@ -281,29 +281,57 @@
 	end_grass_wildmons
 
 	def_grass_wildmons NAVEL_ROCK_INSIDE
-	db 1 ; encounter rate
+	db 1 percent ; encounter rate
 	; morn
+	wildmon 79, DRAGONAIR
+	wildmon 79, DRAGONAIR
 	wildmon 80, DRAGONAIR
+	wildmon 81, DRAGONAIR
+	wildmon 82, DRAGONAIR
+	wildmon 80, DRAGONITE
+	wildmon 83, DRAGONITE
+	; day
+	wildmon 79, DRAGONAIR
+	wildmon 79, DRAGONAIR
+	wildmon 80, DRAGONAIR
+	wildmon 81, DRAGONAIR
+	wildmon 82, DRAGONAIR
+	wildmon 80, DRAGONITE
+	wildmon 83, DRAGONITE
+	; nite
+	wildmon 79, DRAGONAIR
+	wildmon 79, DRAGONAIR
+	wildmon 80, DRAGONAIR
+	wildmon 81, DRAGONAIR
+	wildmon 82, DRAGONAIR
+	wildmon 80, DRAGONITE
+	wildmon 83, DRAGONITE
+	end_grass_wildmons
+
+	def_grass_wildmons NAVEL_ROCK_ROOF
+	db 2 percent ; encounter rate
+	; morn
 	wildmon 80, DRAGONAIR
 	wildmon 81, DRAGONAIR
 	wildmon 82, DRAGONAIR
 	wildmon 83, DRAGONAIR
+	wildmon 83, DRAGONITE
 	wildmon 84, DRAGONITE
 	wildmon 85, DRAGONITE
 	; day
 	wildmon 80, DRAGONAIR
-	wildmon 80, DRAGONAIR
 	wildmon 81, DRAGONAIR
 	wildmon 82, DRAGONAIR
 	wildmon 83, DRAGONAIR
+	wildmon 83, DRAGONITE
 	wildmon 84, DRAGONITE
 	wildmon 85, DRAGONITE
 	; nite
 	wildmon 80, DRAGONAIR
-	wildmon 80, DRAGONAIR
 	wildmon 81, DRAGONAIR
 	wildmon 82, DRAGONAIR
 	wildmon 83, DRAGONAIR
+	wildmon 83, DRAGONITE
 	wildmon 84, DRAGONITE
 	wildmon 85, DRAGONITE
 	end_grass_wildmons

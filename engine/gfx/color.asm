@@ -987,25 +987,6 @@ LoadMapPals:
 	farcall ClearSavedObjPals
 .skip_clearing_obj_pals
 
-	; some exceptions to the usual rules which do not load roof palettes
-	ld a, [wMapTileset]
-	cp TILESET_SNOWTOP_MOUNTAIN ; covers map_id SNOWTOP_MOUNTAIN_OUTSIDE
-	jr z, .finish
-	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
-	jr z, .finish
-	cp TILESET_FARAWAY_ISLAND ; covers map_id FARAWAY_ISLAND_SOUTH
-	jr z, .finish
-
-	; overcast maps have their own roof color table
-	farcall GetOvercastIndex
-	and a
-	jr z, .not_overcast
-	; Use map group to select an overcast roof palette (full table per group)
-	ld a, [wMapGroup]
-	ld hl, OvercastRoofPals
-	jr .get_roof_color
-
-.not_overcast
 	; only TOWN, ROUTE, or ISOLATED environments load roof palettes
 	ld a, [wEnvironment]
 	cp TOWN
@@ -1015,9 +996,24 @@ LoadMapPals:
 	cp ISOLATED
 	jr nz, .finish
 .outside
-	ld a, [wMapGroup]
+
+	; some exceptions to the usual rules which do not load roof palettes
+	ld a, [wMapTileset]
+	cp TILESET_SNOWTOP_MOUNTAIN ; covers map_id SNOWTOP_MOUNTAIN_OUTSIDE
+	jr z, .finish
+	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
+	jr z, .finish
+	cp TILESET_FARAWAY_ISLAND ; covers map_id FARAWAY_ISLAND_SOUTH
+	jr z, .finish
+
+	; load a roof palette based on map group and overcast weather
+	farcall GetOvercastIndex
+	and a
 	ld hl, RoofPals
-.get_roof_color
+	jr z, .not_overcast
+	ld hl, OvercastRoofPals
+.not_overcast
+	ld a, [wMapGroup]
 	add a
 	add a
 	ld e, a
