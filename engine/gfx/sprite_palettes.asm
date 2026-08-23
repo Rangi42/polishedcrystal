@@ -139,6 +139,17 @@ CopySpritePalHandler::
 	ld [wPalState], a
 	call CalculateStates
 	call CopySpritePal
+	; A copy-BG palette sourced its active color from the matching, already
+	; partially faded BG palette. Replaying the elapsed fade steps would put it
+	; ahead of the BG palette it is meant to match. Fades from white still need
+	; the normal catch-up path because their active palette started as white.
+	ld a, [wPalWhiteState]
+	and a
+	jr nz, .catch_up
+	ld a, [wNeededPalIndex]
+	cp FIRST_COPY_BG_PAL
+	jr nc, .caught_up
+.catch_up
 	push de
 	push bc
 	ld c, 1 palettes
@@ -151,6 +162,7 @@ CopySpritePalHandler::
 	pop hl
 	pop bc
 	pop de
+.caught_up
 	pop af
 	ld [wPalFlags], a
 	ret
@@ -175,7 +187,18 @@ CopySpritePal::
 	jr z, .copy_white
 
 .copy_bg
+	; Copy-BG palettes use the corresponding buffer for the requested state.
+	; wBGPals2 is the active, possibly partially faded palette; wBGPals1 is the
+	; destination palette.
+	push af
+	ld a, [wPalState]
+	assert PREV_PALSTATE == 0
+	and a
+	ld hl, wBGPals2
+	jr z, .got_copy_bg_source
 	ld hl, wBGPals1
+.got_copy_bg_source
+	pop af
 	ld bc, 1 palettes
 	rst AddNTimes
 	jr .got_pal

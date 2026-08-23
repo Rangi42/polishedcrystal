@@ -27,6 +27,23 @@ OWFadePalettesInit::
 	ldh [rWBK], a
 	ret
 
+ApplyPalsIfNotFading::
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rWBK], a
+	ld a, [wPalFadeDelayFrames]
+	ld b, a
+	pop af
+	ldh [rWBK], a
+	ld a, b
+	and a
+	ret nz
+	farcall ApplyPals
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
+
 CancelOWFadePalettes::
 	ldh a, [rWBK]
 	push af

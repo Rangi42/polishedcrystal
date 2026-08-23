@@ -1,7 +1,9 @@
 HandlePaletteSwap::
 	call InitializeSwappedPalette
 	ret nc
-	homecall _CGB_ForceUpdateLayout
+	; Keep an in-progress fade's active palettes intact. The newly swapped
+	; palettes in wBGPals1 will remain the fade destination.
+	homecall ApplyPalsIfNotFading
 	ret
 
 InitializeSwappedPalette::
