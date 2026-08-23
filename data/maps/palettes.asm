@@ -68,6 +68,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      NAVEL_ROCK_ROOF,             PAL_TIMEOFDAY,   NavelRockPalette
 	special_bg_pal map,      FARAWAY_ISLAND_SOUTH,        PAL_TIMEOFDAY,   FarawayIslandSouthPalette
 	special_bg_pal map,      YELLOW_FOREST,               PAL_TIMEWEATHER, YellowForestPalette
+	special_bg_pal map,      VIRIDIAN_FOREST,             PAL_SINGLE,      ViridianForestPalette
 	special_bg_pal map,      CELADON_MANSION_ROOF,        PAL_TIMEWEATHER, CeladonMansionRoofPalette
 	special_bg_pal map,      CELADON_HOME_DECOR_STORE_4F, PAL_SINGLE,      CeladonHomeDecorStore4FPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            PAL_SINGLE,      LightningIslandPalette
@@ -1381,6 +1382,26 @@ endr
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
 endr
+endc
+
+ViridianForestPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/ViridianForest.pal"
+else
+rept 3
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+rept 3
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
 endc
 
 MurkySwampPalette:
