@@ -233,7 +233,7 @@ TilesetForestAnim::
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe AnimateFlowerTile,              $0:03
-	tileframe DoNothing
+	tileframe AnimateKantoFlowerTile,         $0:04
 	tileframe AnimateWaterfallTiles,          $0:42
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
