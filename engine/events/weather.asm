@@ -1,6 +1,20 @@
+; TEMPORARY: Set to 0 to restore the normal harsh-sun map/time/event checks.
+DEF ALWAYS_HARSH_SUN_OUTDOORS EQU 1
+
 SetCurrentWeather::
+if ALWAYS_HARSH_SUN_OUTDOORS
+	ld a, [wEnvironment]
+	cp TOWN
+	jr z, .force_harsh_sun
+	cp ROUTE
+	jr z, .force_harsh_sun
+	cp ISOLATED
+	jr nz, .normal_weather
+.force_harsh_sun
 	ld a, OW_WEATHER_HARSH_SUN
 	jr .set_weather
+endc
+.normal_weather
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_raining
