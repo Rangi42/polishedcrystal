@@ -27,7 +27,8 @@ OWFadePalettesInit::
 	ldh [rWBK], a
 	ret
 
-ApplyPalsIfNotFading::
+CheckPaletteFading::
+	push bc
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPalFadeDelayFrames)
@@ -37,7 +38,12 @@ ApplyPalsIfNotFading::
 	pop af
 	ldh [rWBK], a
 	ld a, b
+	pop bc
 	and a
+	ret
+
+ApplyPalsIfNotFading::
+	call CheckPaletteFading
 	ret nz
 	farcall ApplyPals
 	ld a, TRUE
@@ -398,7 +404,23 @@ FadeColorStep:
 CatchUpObjPaletteFade::
 ; Input: a = OBJ palette index (0-7)
 ; Ensures a newly loaded palette matches the current fade progress.
+	ld hl, wOBPals2
+	jr CatchUpPaletteFade
+
+CatchUpBGPaletteFade::
+; Input: a = BG palette index (0-7)
+	ld hl, wBGPals2
+	call CatchUpPaletteFade
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
+
+CatchUpPaletteFade:
 	ld b, a
+	push bc
+	ld bc, 1 palettes
+	rst AddNTimes
+	pop bc
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPalFadeDelayFrames)
@@ -429,10 +451,6 @@ CatchUpObjPaletteFade::
 	push bc
 	push de
 	push hl
-	ld hl, wOBPals2
-	ld a, b
-	ld bc, 1 palettes
-	rst AddNTimes
 	ld a, d
 	ld [wPalFadeStepValue], a
 	call FadeSinglePaletteStep

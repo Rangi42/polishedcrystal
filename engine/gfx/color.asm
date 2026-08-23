@@ -1047,8 +1047,9 @@ SwapColorPalette::
 	or e
 	ret z
 
-	; Set `hl` to the `[wTimeOfDayPal]`th palette in the table at `de`.
-	ld a, [wTimeOfDayPal]
+	; Set `hl` to the selected state's time-of-day palette in the table at `de`.
+	ld a, PALSTATE_TIME_OF_DAY
+	farcall GetPalState
 	and 3
 	add a
 	add a
@@ -1057,23 +1058,24 @@ SwapColorPalette::
 	ld h, 0
 	add hl, de
 
-	; Set `de` to the `b`th palette of `wBGPals1`.
+	; Previous-state palettes become active; current-state palettes are the target.
+	push hl
+	ld hl, wBGPals2
+	ld a, [wPalState]
+	and a ; PREV_PALSTATE == 0
+	jr z, .got_target
+	ld hl, wBGPals1
+.got_target
 	ld a, b
-	add a
-	add a
-	add a
-	add LOW(wBGPals1)
-	ld e, a
-	adc HIGH(wBGPals1)
-	sub e
-	ld d, a
+	ld bc, 1 palettes
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
 
 	; Skip past the regular palettes to the overcast ones if applicable.
-	push hl
-	push de
-	farcall GetOvercastIndex
-	pop de
-	pop hl
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
 	and a
 	jr z, .not_overcast
 	ld bc, 4 palettes

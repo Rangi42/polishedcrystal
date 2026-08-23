@@ -1,8 +1,8 @@
 HandlePaletteSwap::
 	call InitializeSwappedPalette
 	ret nc
-	; Keep an in-progress fade's active palettes intact. The newly swapped
-	; palettes in wBGPals1 will remain the fade destination.
+	; A fading swap has already caught up its own slot, so do not overwrite all
+	; active palettes with their destinations.
 	homecall ApplyPalsIfNotFading
 	ret
 
@@ -19,8 +19,14 @@ InitializeSwappedPalette::
 	ld h, [hl]
 	ld l, a
 	or h
-	jr nz, .loop
+	jr z, .no_palette_swaps
 
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	farcall CalculateStates
+	jr .loop
+
+.no_palette_swaps
 	pop af
 	rst Bankswitch
 	and a
@@ -75,12 +81,59 @@ InitializeSwappedPalette::
 	inc hl
 	inc hl
 .got_palette
-
-	; Swap the palette in VRAM.
 	push hl
+	; A NULL palette leaves an earlier swap for the same slot intact.
+	ld a, d
+	or e
+	jr z, .swapped
+
+	farcall CheckPaletteFading
+	jr z, .swap_current
+
+	; Rebuild this palette under the fade's previous conditions, then catch it
+	; up to the current fade step toward the same palette's current conditions.
+	push bc
+	push de
+	ld a, [wPalWhiteState]
+	and a
+	jr z, .swap_previous
+	ld hl, wBGPals2
+	ld a, b
+	ld bc, 1 palettes
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	farcall CopyWhitePal
+	jr .got_previous
+
+.swap_previous
+	xor a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
 	ld a, BANK(SwapColorPalette)
 	rst Bankswitch
 	call SwapColorPalette
+
+.got_previous
+	pop de
+	pop bc
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	ld a, BANK(SwapColorPalette)
+	rst Bankswitch
+	push bc
+	call SwapColorPalette
+	pop bc
+	ld a, b
+	farcall CatchUpBGPaletteFade
+	jr .swapped
+
+.swap_current
+	ld a, BANK(SwapColorPalette)
+	rst Bankswitch
+	call SwapColorPalette
+
+.swapped
 	pop hl
 
 	; Continue processing more than one `paletteswap` rectangle.
