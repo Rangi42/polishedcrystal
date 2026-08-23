@@ -1,4 +1,6 @@
 SetCurrentWeather::
+	ld a, OW_WEATHER_HARSH_SUN
+	jr .set_weather
 	farcall GetOvercastIndex
 	and a
 	jr z, .not_raining

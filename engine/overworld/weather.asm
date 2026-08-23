@@ -78,6 +78,7 @@ DoOverworldWeather:
 	ld hl, .DoWeather_Jumptable
 	call JumpTable
 	; decrement the weather cooldown until it is 0
+.do_cooldown
 	ld a, [wOverworldWeatherCooldown]
 	dec a
 	jr nz, .done
