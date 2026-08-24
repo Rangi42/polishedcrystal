@@ -205,9 +205,7 @@ FuchsiaAquarium1FChinchouSign:
 FuchsiaAquarium1FLaprasStatueSignText:
 	text "Lapras were once"
 	line "near extinction"
-
-	para "extinction due to"
-	line "poaching."
+	cont "due to poaching."
 
 	para "Thanks to captive"
 	line "breeding efforts"
