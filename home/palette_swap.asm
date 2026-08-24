@@ -1,4 +1,10 @@
 HandlePaletteSwap::
+	ld a, [wPlayerStepFlags]
+	bit PLAYERSTEP_STOP_F, a
+	jr nz, .update
+	farcall CheckPaletteFading
+	ret nz
+.update
 	call InitializeSwappedPalette
 	ret nc
 	; A fading swap has already caught up its own slot, so do not overwrite all
