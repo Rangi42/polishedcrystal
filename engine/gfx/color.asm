@@ -1086,6 +1086,46 @@ SwapColorPalette::
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
+UpdatePaletteSwapState::
+; Input: `c` bit 0 set inside the rectangle, `e` = this entry's state bit.
+; Output: `c` bit 7 set on first check or a state change.
+	ld a, e
+	swap a
+	ld d, a
+	ld a, [wPaletteSwapFlag]
+	and d
+	jr z, .changed
+	ld a, [wPaletteSwapFlag]
+	and e
+	jr z, .was_outside
+	bit 0, c
+	ret nz
+	jr .changed
+.was_outside
+	bit 0, c
+	ret z
+
+.changed
+	set 7, c
+	ld a, [wPaletteSwapFlag]
+	or d
+	ld [wPaletteSwapFlag], a
+	bit 0, c
+	jr z, .clear_state
+	ld a, [wPaletteSwapFlag]
+	or e
+	ld [wPaletteSwapFlag], a
+	ret
+
+.clear_state
+	ld a, e
+	cpl
+	ld d, a
+	ld a, [wPaletteSwapFlag]
+	and d
+	ld [wPaletteSwapFlag], a
+	ret
+
 INCLUDE "data/tileset_palettes.asm"
 
 INCLUDE "data/maps/environment_colors.asm"

@@ -24,6 +24,7 @@ InitializeSwappedPalette::
 	ld a, CURR_PALSTATE
 	ld [wPalState], a
 	farcall CalculateStates
+	ld c, 1 ; one state bit per palette swap entry (up to four)
 	jr .loop
 
 .no_palette_swaps
@@ -33,38 +34,28 @@ InitializeSwappedPalette::
 	ret
 
 .loop
+	push bc
 	; If there are no more palette swap rectangles, just return.
 	call CheckPaletteSwapRectangle
-	jr z, .done
+	jr z, .done_loop
+	ld c, 0
+	jr nc, .got_current_state
+	inc c
+.got_current_state
 
-	; If the current state in the carry flag differs from the previous state
-	; in [wPaletteSwapFlag], then toggle the value of [wPaletteSwapFlag].
-	; Both are 0/unset (outside) or 1/set (inside), so their sum is 0 or 2 if they match, and
-	; 1 if they don't. So after summing them, `dec a` will yield `nz` if they match.
-	ld de, wPaletteSwapFlag
-	ld a, [de]
-	adc 0
-	dec a
-	; Swap the palette even if we don't toggle, because CloseSubmenu
-	; (e.g. from the Start menu) does not restore the non-default palette.
-	; TODO: look into a more targeted fix for this.
-	jr nz, .skip_toggle
+	; Preserve this entry's state bit across palette loading. `c` returns bit 0
+	; set inside the rectangle and bit 7 set if this entry changed.
+	pop de
+	farcall UpdatePaletteSwapState
+	push de
 
-	; Toggle the current [wPaletteSwapFlag] state.
-	ld a, [de]
-	xor 1
-	ld [de], a
-
-.skip_toggle
 	; Get the BG palette ID in `b`.
 	ld a, [hli]
 	ld b, a
 
 	; Get the palette list in `de`.
 	; Advance `hl` past the two palettes.
-	ld a, [de]
-	ld c, a
-	and a
+	bit 0, c
 	jr z, .get_palette
 	; Skip the regular palette to get the swapped one.
 	inc hl
@@ -74,8 +65,7 @@ InitializeSwappedPalette::
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld a, c
-	and a
+	bit 0, c
 	jr nz, .got_palette
 	; Skip the swapped palette if we already got the regular one.
 	inc hl
@@ -88,6 +78,8 @@ InitializeSwappedPalette::
 	jr z, .swapped
 
 	farcall CheckPaletteFading
+	jr z, .swap_current
+	bit 7, c
 	jr z, .swap_current
 
 	; Rebuild this palette under the fade's previous conditions, then catch it
@@ -138,8 +130,12 @@ InitializeSwappedPalette::
 
 	; Continue processing more than one `paletteswap` rectangle.
 	call SwitchToMapScriptsBank
+	pop bc
+	sla c
 	jr .loop
 
+.done_loop
+	pop bc
 .done
 	; Return carry when there were some `paletteswap` rectangles.
 	pop af
