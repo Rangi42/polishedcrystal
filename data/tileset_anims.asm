@@ -143,6 +143,18 @@ TilesetGymAnim::
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
+TilesetMuseumAnim::
+	tileframe AnimateWaterBubbleTiles,        $1:81
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
 TilesetTowerAnim::
 	tileframe AnimateTowerPillarTiles1,       $1:20
 	tileframe AnimateTowerPillarTiles2,       $1:24
@@ -373,7 +385,6 @@ TilesetBattleTowerInsideAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
 TilesetDecorAnim::
-TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
 TilesetHiddenGrottoAnim::

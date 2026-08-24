@@ -558,6 +558,11 @@ SECTION "Tileset Graphics - museum vram1", ROMX
 TilesetMuseumGFX1:: INCBIN "gfx/tilesets/museum.2bpp.vram1.lzp"
 
 
+SECTION "Tileset Graphics - museum vram2", ROMX
+
+TilesetMuseumGFX2:: INCBIN "gfx/tilesets/museum.2bpp.vram2.lzp"
+
+
 SECTION "Tileset Data - museum", ROMX
 
 TilesetMuseumMeta:: INCBIN "data/tilesets/museum_metatiles.bin.lzp"
@@ -949,7 +954,6 @@ TilesetFacilityGFX2::
 TilesetMansionGFX2::
 TilesetGameCornerGFX2::
 TilesetDecorGFX2::
-TilesetMuseumGFX2::
 TilesetHotelGFX2::
 TilesetTowerGFX2::
 TilesetBattleTowerInsideGFX2::

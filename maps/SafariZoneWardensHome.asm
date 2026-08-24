@@ -25,6 +25,9 @@ WardensGranddaughter:
 	checkevent EVENT_TALKED_TO_WARDENS_GRANDDAUGHTER
 	iftruefwd .AlreadyMet
 	writetext WardensGranddaughterText1
+	yesorno
+	iffalse_jumpopenedtext WardensGranddaughterText2
+	writetext WardensGranddaughterText3
 	waitbutton
 	closetext
 	setevent EVENT_TALKED_TO_WARDENS_GRANDDAUGHTER
@@ -35,29 +38,65 @@ WardensGranddaughter:
 	text "Many people were"
 	line "disappointed that"
 
-	para "Safari Zone closed"
-	line "down, but Grandpa"
-	cont "is so stubborn…"
+	para "the Safari Game"
+	line "closed down,"
+
+	para "but I don't really"
+	line "miss it."
+
+	para "I just miss my"
+	line "grandpa…"
 	done
 
 WardensGranddaughterText1:
 	text "My grandpa is the"
-	line "Safari Zone War-"
-	cont "den."
+	line "Warden for the"
+	cont "Safari Zone."
 
 	para "At least he was…"
 
-	para "He decided to go"
-	line "on a vacation and"
+	para "If I tell you"
+	line "the story, do you"
 
-	para "took off overseas"
-	line "all by himself."
-
-	para "He quit running"
-	line "Safari Zone just"
-	cont "like that."
+	para "promise not to"
+	line "gossip about it?"
 	done
 
+WardensGranddaughterText2:
+	text "…I see…"
+	done
+
+WardensGranddaughterText3:
+	text "Three years ago,"
+	line "it turned out he"
+
+	para "had allowed Team"
+	line "Rocket to poach"
+
+	para "#mon from the"
+	line "Safari Zone to be"
+
+	para "sold at the Rocket"
+	line "Game Corner."
+
+	para "He took off over-"
+	line "seas to avoid"
+	cont "being arrested."
+
+	para "…It's not fair."
+
+	para "I hear Silph's"
+	line "chief was just as"
+
+	para "involved with Team"
+	line "Rocket, but he"
+
+	para "paid for charity"
+	line "work doing #mon"
+
+	para "conservation, and"
+	line "still has his job."
+	done
 
 WardenPhotoText:
 	text "It's a photo of a"

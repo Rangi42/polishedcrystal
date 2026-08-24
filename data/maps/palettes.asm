@@ -49,6 +49,8 @@ SpecialBGPalettes:
 	special_bg_pal map,      GOLDENROD_DEPT_STORE_ROOF,   PAL_TIMEWEATHER, GoldenrodDeptStoreRoofPalette
 	special_bg_pal map,      GOLDENROD_MUSEUM_1F,         PAL_SINGLE,      GoldenrodMuseumPalette
 	special_bg_pal map,      GOLDENROD_MUSEUM_2F,         PAL_SINGLE,      GoldenrodMuseumPalette
+	special_bg_pal map,      FUCHSIA_AQUARIUM_1F,         PAL_SINGLE,      FuchsiaAquariumPalette
+	special_bg_pal map,      FUCHSIA_AQUARIUM_2F,         PAL_SINGLE,      FuchsiaAquariumPalette
 	special_bg_pal map,      MAGNET_TUNNEL_INSIDE,        PAL_SINGLE,      MagnetTunnelPalette
 	special_bg_pal map,      OAKS_LAB,                    PAL_SINGLE,      OaksLabPalette
 	special_bg_pal map,      TIN_TOWER_ROOF,              PAL_TIMEWEATHER, TinTowerRoofPalette
@@ -1040,6 +1042,25 @@ else
 rept 7
 	MONOCHROME_RGB_FOUR
 endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+FuchsiaAquariumPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/fuchsia_aquarium.pal"
+else
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK

@@ -536,11 +536,8 @@ Script_pokepic:
 	; While we actually have species+form stored right now if zero, we need to
 	; handle color variation. Thus, notify Pokepic that we want a partymon.
 	ld a, -1
+	call nz, GetScriptByte
 	ld [wCurForm], a
-	jr z, .pokepic
-	call GetScriptByte
-	ld [wCurForm], a
-.pokepic
 	farjp Pokepic
 
 GetCurPartyMonSpeciesIfZero:

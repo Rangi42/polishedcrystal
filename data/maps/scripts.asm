@@ -766,6 +766,8 @@ INCLUDE "maps/FuchsiaGym.asm"
 INCLUDE "maps/FuchsiaBillSpeechHouse.asm"
 INCLUDE "maps/FuchsiaSafariBallHouse.asm"
 INCLUDE "maps/SafariZoneWardensHome.asm"
+INCLUDE "maps/FuchsiaAquarium1F.asm"
+INCLUDE "maps/FuchsiaAquarium2F.asm"
 INCLUDE "maps/LuckyIsland.asm"
 
 

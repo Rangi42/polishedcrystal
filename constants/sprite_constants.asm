@@ -220,9 +220,10 @@
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)
-	const_next $ef
+	const_next $ee
 DEF SPRITE_POKEMON EQU const_value
-	const SPRITE_MON_ICON ; ef
+	const SPRITE_MON_ICON ; ee
+	const SPRITE_AQUARIUM_MON ; ef
 	const SPRITE_MON_DOLL_1 ; f0
 	const SPRITE_MON_DOLL_2 ; f1
 	const SPRITE_DAYCARE_MON_1 ; f2

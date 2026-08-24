@@ -711,6 +711,8 @@ ENDM
 	map_attributes FuchsiaSafariBallHouse, FUCHSIA_SAFARI_BALL_HOUSE, $0
 	map_attributes FuchsiaPokeCenter1F, FUCHSIA_POKECENTER_1F, $0
 	map_attributes SafariZoneWardensHome, SAFARI_ZONE_WARDENS_HOME, $0
+	map_attributes FuchsiaAquarium1F, FUCHSIA_AQUARIUM_1F, $0
+	map_attributes FuchsiaAquarium2F, FUCHSIA_AQUARIUM_2F, $0
 	map_attributes Route12Gate, ROUTE_12_GATE, $0
 	map_attributes Route12Gate2F, ROUTE_12_GATE_2F, $0
 	map_attributes Route15FuchsiaGate, ROUTE_15_FUCHSIA_GATE, $0

@@ -454,6 +454,10 @@ CopyTempObjectToObjectStruct:
 	cp SPRITE_MON_ICON
 	ld a, [wTempObjectCopyRadius]
 	jr z, .keep_radius
+	ld a, [wTempObjectCopySprite]
+	cp SPRITE_AQUARIUM_MON
+	ld a, [wTempObjectCopyRadius]
+	jr z, .keep_radius
 	; add 1 to the y and x radii
 	ld h, a
 	inc a

@@ -1438,6 +1438,14 @@ SECTION "FuchsiaCity_BlockData", ROMX
 FuchsiaCity_BlockData:
 	INCBIN "maps/FuchsiaCity.ablk.lzp"
 
+SECTION "FuchsiaAquarium1F_BlockData", ROMX
+FuchsiaAquarium1F_BlockData:
+	INCBIN "maps/FuchsiaAquarium1F.ablk.lzp"
+
+SECTION "FuchsiaAquarium2F_BlockData", ROMX
+FuchsiaAquarium2F_BlockData:
+	INCBIN "maps/FuchsiaAquarium2F.ablk.lzp"
+
 SECTION "LuckyIsland_BlockData", ROMX
 LuckyIsland_BlockData:
 	INCBIN "maps/LuckyIsland.ablk.lzp"
