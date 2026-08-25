@@ -706,7 +706,7 @@ ENDM
 
 	newgroup                                                     ; 37
 	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ;  1
-	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  2
+	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  5 ;  2
 
 	newgroup                                                     ; 38
 	map_const CERULEAN_CAPE,                              25, 19 ;  1

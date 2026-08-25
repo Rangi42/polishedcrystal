@@ -4,21 +4,23 @@ EcruteakShrineInside_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  5, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
-	warp_event  6, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
+	warp_event  5,  9, ECRUTEAK_SHRINE_OUTSIDE, 1
+	warp_event  6,  9, ECRUTEAK_SHRINE_OUTSIDE, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  6, BGEVENT_JUMPTEXT, EcruteakShrineInsideAltarText
-	bg_event  6,  6, BGEVENT_JUMPTEXT, EcruteakShrineInsideAltarText
+	bg_event  5,  1, BGEVENT_JUMPTEXT, EcruteakShrineInsideAltarText
+	bg_event  6,  1, BGEVENT_JUMPTEXT, EcruteakShrineInsideAltarText
+	bg_event  4,  0, BGEVENT_JUMPTEXT, EcruteakShrineInsideSignText
+	bg_event  7,  0, BGEVENT_JUMPTEXT, EcruteakShrineInsideSignText
 
 	def_object_events
-	object_event  7,  6, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
-	object_event  3,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
-	object_event 10,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
+	object_event  4,  2, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
+	object_event  3,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
+	object_event 10,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
 	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
-	pokemon_event 10,  3, FURRET, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, ClearText, -1
+	pokemon_event  9,  6, FURRET, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, EcruteakShrineInsideFurretText, -1
 
 	object_const_def
 	const ECRUTEAKSHRINEINSIDE_REI
@@ -148,7 +150,6 @@ EcruteakShrineInsideHappinessText:
 	line "content."
 	done
 
-
 EcruteakShrineInsideReiBattleText:
 	text "Rei: Very well."
 	line "Evil spirits,"
@@ -159,12 +160,21 @@ EcruteakShrineInsideReiBeatenText:
 	text "I admit defeat!"
 	done
 
-
-
 EcruteakShrineInsideGrampsText:
 	text "The shrine maiden"
 	line "here is my grand-"
 	cont "daughter."
+	done
+
+EcruteakShrineInsideGrannyText:
+	text "I'm glad they didn't"
+	line "approve a stop in"
+	cont "Ecruteak for the"
+	cont "Magnet Train."
+
+	para "It would ruin our"
+	line "traditional land-"
+	cont "scape."
 	done
 
 EcruteakShrineInsideSageText:
@@ -180,18 +190,17 @@ EcruteakShrineInsideSageText:
 	cont "Psychic types."
 	done
 
-EcruteakShrineInsideGrannyText:
-	text "I'm glad they didn't"
-	line "approve a stop in"
-	cont "Ecruteak for the"
-	cont "Magnet Train."
-
-	para "It would ruin our"
-	line "traditional land-"
-	cont "scape."
+EcruteakShrineInsideFurretText:
+	text "Furret: Dook-dook!"
 	done
 
 EcruteakShrineInsideAltarText:
+	text "It's an altar with"
+	line "a sacred mirror"
+	cont "and flowers."
+	done
+
+EcruteakShrineInsideSignText:
 	text "Please show honor"
 	line "and respect while"
 	cont "visiting."
