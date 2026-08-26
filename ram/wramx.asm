@@ -1088,7 +1088,7 @@ wTimeOfDayPal:: db
 wFollowInSync:: db
 
 wPaletteSwapAddress:: dw
-wPaletteSwapFlag:: db
+wPaletteSwapFlag:: db ; low nibble: current states; high nibble: initialized
 
 wTimeOfDayPalFlags:: db
 wTimeOfDayPalset:: db

@@ -79,7 +79,7 @@ CopyLeafGreenToOBPal7:
 ; other colors like purple. (We can assume that if PAL_BG_GREEN is *not* swapped,
 ; then it's still appropriate for use as a leaf/tree color.)
 	ld a, [wPaletteSwapFlag]
-	and $f ; upper bits track which palette swap entries are initialized
+	and PALETTE_SWAP_STATE_MASK
 	ld a, PAL_OW_LEAF_GREEN
 	jr nz, CopySpritePalToOBPal7
 	; fallthrough

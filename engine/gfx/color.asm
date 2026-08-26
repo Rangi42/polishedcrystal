@@ -1087,43 +1087,34 @@ SwapColorPalette::
 	jmp FarCopyColorWRAM
 
 UpdatePaletteSwapState::
-; Input: `c` bit 0 set inside the rectangle, `e` = this entry's state bit.
-; Output: `c` bit 7 set on first check or a state change.
+; wPaletteSwapFlag's low nibble stores the current state of each entry;
+; its high nibble records which entries have been initialized.
+; Input: `c` PALETTE_SWAP_INSIDE_F set inside the rectangle,
+;        `e` = this entry's state bit.
+; Output: `c` PALETTE_SWAP_CHANGED_F set on first check or a state change.
+	ld a, [wPaletteSwapFlag]
+	ld b, a
+	; Mark this entry initialized, and build its new state in `a`.
 	ld a, e
 	swap a
+	or b
+	bit PALETTE_SWAP_INSIDE_F, c
+	jr nz, .inside
 	ld d, a
-	ld a, [wPaletteSwapFlag]
-	and d
-	jr z, .changed
-	ld a, [wPaletteSwapFlag]
-	and e
-	jr z, .was_outside
-	bit 0, c
-	ret nz
-	jr .changed
-.was_outside
-	bit 0, c
-	ret z
-
-.changed
-	set 7, c
-	ld a, [wPaletteSwapFlag]
-	or d
-	ld [wPaletteSwapFlag], a
-	bit 0, c
-	jr z, .clear_state
-	ld a, [wPaletteSwapFlag]
-	or e
-	ld [wPaletteSwapFlag], a
-	ret
-
-.clear_state
 	ld a, e
 	cpl
-	ld d, a
-	ld a, [wPaletteSwapFlag]
 	and d
+	jr .compare
+.inside
+	or e
+
+	; Store only if the initialized or current state changed.
+.compare
+	xor b
+	ret z
+	xor b
 	ld [wPaletteSwapFlag], a
+	set PALETTE_SWAP_CHANGED_F, c
 	ret
 
 INCLUDE "data/tileset_palettes.asm"

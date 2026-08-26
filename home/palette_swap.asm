@@ -30,7 +30,7 @@ InitializeSwappedPalette::
 	ld a, CURR_PALSTATE
 	ld [wPalState], a
 	farcall CalculateStates
-	ld c, 1 ; one state bit per palette swap entry (up to four)
+	ld c, PALETTE_SWAP_INSIDE ; one state bit per palette swap entry
 	jr .loop
 
 .no_palette_swaps
@@ -44,13 +44,13 @@ InitializeSwappedPalette::
 	; If there are no more palette swap rectangles, just return.
 	call CheckPaletteSwapRectangle
 	jr z, .done_loop
-	ld c, 0
-	jr nc, .got_current_state
-	inc c
-.got_current_state
+	sbc a
+	and PALETTE_SWAP_INSIDE
+	ld c, a
 
-	; Preserve this entry's state bit across palette loading. `c` returns bit 0
-	; set inside the rectangle and bit 7 set if this entry changed.
+	; Preserve this entry's state bit across palette loading. `c` returns
+	; PALETTE_SWAP_INSIDE_F set inside the rectangle and
+	; PALETTE_SWAP_CHANGED_F set if this entry changed.
 	pop de
 	farcall UpdatePaletteSwapState
 	push de
@@ -61,7 +61,7 @@ InitializeSwappedPalette::
 
 	; Get the palette list in `de`.
 	; Advance `hl` past the two palettes.
-	bit 0, c
+	bit PALETTE_SWAP_INSIDE_F, c
 	jr z, .get_palette
 	; Skip the regular palette to get the swapped one.
 	inc hl
@@ -71,7 +71,7 @@ InitializeSwappedPalette::
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	bit 0, c
+	bit PALETTE_SWAP_INSIDE_F, c
 	jr nz, .got_palette
 	; Skip the swapped palette if we already got the regular one.
 	inc hl
@@ -85,7 +85,7 @@ InitializeSwappedPalette::
 
 	farcall CheckPaletteFading
 	jr z, .swap_current
-	bit 7, c
+	bit PALETTE_SWAP_CHANGED_F, c
 	jr z, .swap_current
 
 	; Rebuild this palette under the fade's previous conditions, then catch it
@@ -127,6 +127,9 @@ InitializeSwappedPalette::
 	jr .swapped
 
 .swap_current
+	; Always reload the selected palette: CloseSubmenu does not restore
+	; non-default palettes, even when this entry's state has not changed.
+	; TODO: look into a more targeted fix for this.
 	ld a, BANK(SwapColorPalette)
 	rst Bankswitch
 	call SwapColorPalette
