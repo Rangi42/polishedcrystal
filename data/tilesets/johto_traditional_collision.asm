@@ -130,8 +130,8 @@
 	tilecoll WARP_CARPET_LEFT, WALL, FLOOR, WALL ; 81
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 82
 	tilecoll WALL, WALL, FLOOR, WALL ; 83
-	tilecoll WALL, WALL, WALL, WALL ; 84
-	tilecoll WALL, WALL, WALL, WALL ; 85
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 84
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 85
 	tilecoll WALL, WALL, BUOY, BUOY ; 86
 	tilecoll WATER, BUOY, WATER, BUOY ; 87
 	tilecoll WALL, WALL, WALL, WALL ; 88

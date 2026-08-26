@@ -170,10 +170,44 @@ CopySpritePal::
 	ld a, [wNeededPalIndex]
 	sub FIRST_COPY_BG_PAL
 	jr c, .not_copy_bg
+
+	cp PAL_OW_COPY_BG_WHITE - FIRST_COPY_BG_PAL
+	jr z, .copy_white
+
+.copy_bg
 	ld hl, wBGPals1
 	ld bc, 1 palettes
 	rst AddNTimes
 	jr .got_pal
+
+.copy_white
+	pop de
+	push de ; push wOBPals1 palette *
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rWBK], a
+	ld hl, wBGPals1 color 0
+rept 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hld]
+	ld [de], a
+	inc de
+endr
+	ld hl, wBGPals1 color 3
+rept 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hld]
+	ld [de], a
+	inc de
+endr
+	pop af
+	ldh [rWBK], a
+	jr .copied_pal
 
 .not_copy_bg
 	ld a, [wNeededPalIndex]
@@ -183,6 +217,7 @@ CopySpritePal::
 	push de ; push wOBPals1 palette *
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
+.copied_pal
 	pop hl ; pop wOBPals1 palette *
 
 	; Check if we need to copy a light color from a secondary palette (for SPRITE_MON_ICON)

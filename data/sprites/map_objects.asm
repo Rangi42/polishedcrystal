@@ -442,4 +442,20 @@ SpriteMovementData::
 	db BG_OFFSET ; flags2
 	db BG_ALIGNED | BIG_OBJECT ; palette flags
 
+; SPRITEMOVEDATA_PAGODA_LEFT
+	db SPRITEMOVEFN_STANDING ; movement function
+	db DOWN ; facing
+	db OBJECT_ACTION_STAND ; action
+	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db HIGH_PRIORITY ; flags2
+	db BG_ALIGNED ; palette flags
+
+; SPRITEMOVEDATA_PAGODA_RIGHT
+	db SPRITEMOVEFN_STANDING ; movement function
+	db UP ; facing
+	db OBJECT_ACTION_STAND ; action
+	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db HIGH_PRIORITY ; flags2
+	db BG_ALIGNED ; palette flags
+
 	assert_table_length NUM_SPRITEMOVEDATA

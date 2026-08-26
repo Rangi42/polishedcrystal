@@ -640,3 +640,6 @@ SpinarakCartSpriteGFX:: INCBIN "gfx/sprites/spinarak_cart.2bpp.lzp"
 
 SECTION "PearlSpriteGFX", ROMX
 PearlSpriteGFX:: INCBIN "gfx/sprites/pearl.2bpp.lzp"
+
+SECTION "PagodaSpriteGFX", ROMX
+PagodaSpriteGFX:: INCBIN "gfx/sprites/pagoda.2bpp.lzp"
