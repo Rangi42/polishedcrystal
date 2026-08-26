@@ -1048,6 +1048,7 @@ SwapColorPalette::
 	or e
 	ret z
 
+	push bc
 	; Set `hl` to the selected state's time-of-day palette in the table at `de`.
 	ld a, PALSTATE_TIME_OF_DAY
 	farcall GetPalState
@@ -1090,24 +1091,50 @@ SwapColorPalette::
 .not_overcast
 
 	; Apply the swapped palette.
+	pop bc
+	push bc
+	push de
 	ld bc, 1 palettes
-	jmp FarCopyColorWRAM
+	call FarCopyColorWRAM
+	pop hl
+	pop bc
+
+	; Text palettes are not affected by harsh sunlight.
+	ld a, b
+	cp PAL_BG_TEXT
+	ret z
+	ld b, PAL_COLORS
+	jr MaybeApplyHarshSunSaturationToMapBGPalForState
 
 MaybeApplyHarshSunSaturationToMapBGPals:
+	ld hl, wBGPals1
+	ld b, 7 * PAL_COLORS
+	; fallthrough
+
+MaybeApplyHarshSunSaturationToMapBGPal:
 	ld a, [wCurWeather]
 	cp OW_WEATHER_HARSH_SUN
 	ret nz
 	ld a, [wCurPalWeatherArgState]
 	and a
 	ret z
+	jr ApplyHarshSunSaturationToMapBGPal
 
+MaybeApplyHarshSunSaturationToMapBGPalForState:
+	ld a, PALSTATE_WEATHER
+	farcall GetPalState
+	cp OW_WEATHER_HARSH_SUN
+	ret nz
+	ld a, PALSTATE_WEATHER_ARG
+	farcall GetPalState
+	and a
+	ret z
+
+ApplyHarshSunSaturationToMapBGPal:
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
 	ldh [rWBK], a
-
-	ld hl, wBGPals1
-	ld b, 7 * PAL_COLORS
 	farcall ApplyHarshSunSaturationToPalette
 
 	pop af
