@@ -1414,10 +1414,13 @@ wFootprintQueue:: ds 3 * 2 + 1
 
 wColoredMaleFemaleShinyTiles:: ds 3 tiles
 
+wSpecialPalStart:: db
+wSpecialPalCount:: db
+
 
 SECTION "Unused", WRAM0
 
-	ds 318 ; it's free real estate
+	ds 316 ; it's free real estate
 
 
 SECTION "Options", WRAM0

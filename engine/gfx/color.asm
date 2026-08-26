@@ -917,9 +917,6 @@ endc
 	ret
 
 LoadMapPals:
-	farcall LoadSpecialMapPalette
-	jr c, .got_pals
-
 	; Which palette group is based on whether we're outside or inside
 	ld a, [wEnvironment]
 	and 7
@@ -979,7 +976,9 @@ LoadMapPals:
 	pop af
 	ldh [rWBK], a
 
-.got_pals
+	; special map palettes may overwrite only a subset of the default ones
+	farcall LoadSpecialMapPalette
+
 	ld hl, wPalFlags
 	bit MAP_CONNECTION_PAL_F, [hl]
 	res MAP_CONNECTION_PAL_F, [hl]
