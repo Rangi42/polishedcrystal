@@ -75,9 +75,9 @@ SpecialBGPalettes:
 	special_bg_pal map,      CELADON_HOME_DECOR_STORE_4F, SINGLE,      YELLOW, 1, CeladonHomeDecorStore4FPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            SINGLE,      GRAY,   6, LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    SINGLE,      BROWN,  1, wBGPals1 palette PAL_BG_GRAY
-	special_bg_pal map,      RUGGED_ROAD_SOUTH,           TIMEWEATHER, GREEN,  1, RuggedRoadSouthPalette
-	special_bg_pal map,      RUGGED_ROAD_NORTH,           TIMEWEATHER, GREEN,  1, RuggedRoadNorthPalette
-	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     TIMEOFDAY,   GREEN,  1, RuggedRoadNorthPalette
+	special_bg_pal map,      RUGGED_ROAD_SOUTH,           TIMEOFDAY,   GREEN,  1, RuggedRoadSouthPalette
+	special_bg_pal map,      RUGGED_ROAD_NORTH,           TIMEOFDAY,   RED,    4, RuggedRoadNorthPalette
+	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     TIMEOFDAY,   GREEN,  1, SnowtopMountainInsidePalette
 	special_bg_pal map,      SINJOH_RUINS,                TIMEWEATHER, GRAY,   4, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                SINGLE,      GREEN,  5, MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              SINGLE,      GREEN,  2, EmbeddedTowerPalette
@@ -744,27 +744,28 @@ endc
 RuggedRoadSouthPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/RuggedRoadSouth.pal"
-INCLUDE "maps/RuggedRoadSouth_overcast.pal"
 else
-rept 2
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_EVE
-endr
 endc
 
 RuggedRoadNorthPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/RuggedRoadNorth.pal"
-INCLUDE "maps/RuggedRoadNorth_overcast.pal"
 else
-rept 2
+	; TODO
+endc
+
+SnowtopMountainInsidePalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/SnowtopMountainInside.pal"
+else
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR_NIGHT
 	MONOCHROME_RGB_FOUR_EVE
-endr
 endc
 
 SinjohRuinsPalette:

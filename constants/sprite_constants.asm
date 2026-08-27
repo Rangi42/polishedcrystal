@@ -218,6 +218,7 @@
 	const SPRITE_SPINARAK_CART ; d6
 	const SPRITE_PEARL ; d7
 	const SPRITE_PAGODA ; d8
+	const SPRITE_CAMPFIRE ; d9
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)

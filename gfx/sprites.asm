@@ -643,3 +643,6 @@ PearlSpriteGFX:: INCBIN "gfx/sprites/pearl.2bpp.lzp"
 
 SECTION "PagodaSpriteGFX", ROMX
 PagodaSpriteGFX:: INCBIN "gfx/sprites/pagoda.2bpp.lzp"
+
+SECTION "CampfireSpriteGFX", ROMX
+CampfireSpriteGFX:: INCBIN "gfx/sprites/campfire.2bpp.lzp"
