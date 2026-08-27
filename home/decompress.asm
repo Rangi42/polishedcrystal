@@ -89,11 +89,9 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	; Swap de and hl for speed
 	call SwapHLDE
 
-	; Save the output address for rewrite commands
-	push hl
+	push hl ; Put the output address on the stack for rewrite commands
 	call .Main
-	; Clean the stack (no need to restore the output address)
-	add sp, 2
+	add sp, 2 ; Clear the output address from the stack
 
 	jmp SwapHLDE
 
