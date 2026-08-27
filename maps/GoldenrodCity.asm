@@ -97,10 +97,10 @@ GoldenrodCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 8, 27, 12, 28, PAL_BG_GREEN, OverworldGreenPalettes, GameCornerExteriorPalettes
 	paletteswap 22, 39, 7, 19, PAL_BG_WATER, OverworldWaterPalettes, GoldenrodMuseumRoofPalettes
 	; The unswapped NULL case will keep whichever palette was chosen by the previous case
 	paletteswap 26, 41, 21, 33, PAL_BG_WATER, NULL, GoldenrodBikeShopRoofPalettes
+	paletteswap 8, 27, 12, 28, PAL_BG_GREEN, OverworldGreenPalettes, GameCornerExteriorPalettes
 	db -1 ; end
 
 GoldenrodCityStepDownScene:

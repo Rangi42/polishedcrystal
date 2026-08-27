@@ -37,8 +37,8 @@ GoldenrodHarborSetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 8, 23, 7, 19, PAL_BG_GREEN, OverworldGreenPalettes, GoldenrodHarborPlantVendorAwningPalettes
 	paletteswap 14, 29, 7, 19, PAL_BG_ROOF, GoldenrodCityRoofPalettes, GoldenrodHarborDollVendorAwningPalettes
+	paletteswap 8, 23, 7, 19, PAL_BG_GREEN, OverworldGreenPalettes, GoldenrodHarborPlantVendorAwningPalettes
 	db -1 ; end
 
 GoldenrodHarborFisherScript:
