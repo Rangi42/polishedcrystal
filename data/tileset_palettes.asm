@@ -64,6 +64,7 @@ MrPsychicsHouseRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/mr-psychic-roof.pal"
 
 NuggetBridgePalettes::
+RuggedRoadSouthFlowerPalettes::
 INCLUDE "gfx/tilesets/palette-swap/nugget-bridge.pal"
 
 VermilionCityRoofPalettes::

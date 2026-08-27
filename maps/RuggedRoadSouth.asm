@@ -5,6 +5,7 @@ RuggedRoadSouth_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuggedRoadSouthTileScript
+	callback MAPCALLBACK_CMDQUEUE, RuggedRoadSouthSetUpPaletteSwap
 
 	def_warp_events
 	warp_event 15, 33, ROUTE_39_RUGGED_ROAD_GATE, 1
@@ -67,6 +68,14 @@ RuggedRoadSouth_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wRuggedRoadSouthSceneID], a ; setscene a
 	jmp GenericFinishBridge
+
+RuggedRoadSouthSetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 0, 22, PAL_BG_YELLOW, OverworldYellowPalettes, RuggedRoadSouthFlowerPalettes
+	db -1 ; end
 
 RuggedRoadSouthAdvancedTipsSignText:
 	text "Advanced Tips!"
