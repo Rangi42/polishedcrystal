@@ -75,6 +75,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      CELADON_HOME_DECOR_STORE_4F, SINGLE,      YELLOW, 1, CeladonHomeDecorStore4FPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            SINGLE,      GRAY,   6, LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    SINGLE,      BROWN,  1, wBGPals1 palette PAL_BG_GRAY
+	special_bg_pal map,      RUGGED_ROAD_SOUTH,           TIMEWEATHER, YELLOW, 1, RuggedRoadSouthPalette
 	special_bg_pal map,      RUGGED_ROAD_NORTH,           TIMEWEATHER, GREEN,  1, RuggedRoadNorthPalette
 	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     TIMEOFDAY,   GREEN,  1, RuggedRoadNorthPalette
 	special_bg_pal map,      SINJOH_RUINS,                TIMEWEATHER, GRAY,   4, SinjohRuinsPalette
@@ -738,6 +739,19 @@ if !DEF(MONOCHROME)
 INCLUDE "maps/CeladonHomeDecorStore4F.pal"
 else
 	RGB_MONOCHROME DARK, WHITE, LIGHT, BLACK ; yellow
+endc
+
+RuggedRoadSouthPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/RuggedRoadSouth.pal"
+INCLUDE "maps/RuggedRoadSouth_overcast.pal"
+else
+rept 2
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_EVE
+endr
 endc
 
 RuggedRoadNorthPalette:
