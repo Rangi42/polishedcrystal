@@ -15,6 +15,7 @@ RuggedRoadNorth_MapScriptHeader:
 	bg_event 25,  8, BGEVENT_ITEM + RARE_BONE, EVENT_RUGGED_ROAD_NORTH_HIDDEN_RARE_BONE
 
 	def_object_events
+	object_event  6, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBattleGirlMei, -1
 	object_event 23, 10, SPRITE_CAMPFIRE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuggedRoadNorthCampfireText, -1
 	itemball_event  4,  4, X_ATTACK, 1, EVENT_RUGGED_ROAD_NORTH_X_ATTACK
 	itemball_event 26,  4, HYPER_POTION, 1, EVENT_RUGGED_ROAD_NORTH_HYPER_POTION
@@ -58,6 +59,31 @@ RuggedRoadNorthFixBridgeCallback:
 	ld [wWalkingOnBridge], a
 	ld [wRuggedRoadSouthSceneID], a ; setscene a
 	ret
+
+GenericTrainerBattleGirlMei:
+	generictrainer BATTLE_GIRL, MEI, EVENT_BEAT_BATTLE_GIRL_MEI, .SeenText, .BeatenText
+
+	text "Pushing yourself"
+	line "a little further"
+	cont "every day."
+
+	para "That's my training"
+	line "style."
+	done
+
+.SeenText:
+	text "Training in harsh"
+	line "environments like"
+
+	para "this is essential"
+	line "if you want to be"
+	cont "your best."
+	done
+
+.BeatenText:
+	text "I see you've done"
+	line "your training."
+	done
 
 RuggedRoadNorthCampfireText:
 	text "The campfire"
