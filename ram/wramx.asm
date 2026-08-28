@@ -1653,8 +1653,8 @@ wPokeAnimParameter:: db
 wPokeAnimBitmaskCurCol:: db
 wPokeAnimBitmaskCurRow:: db
 wPokeAnimBitmaskCurBit:: db
-wPokeAnimBitmaskBuffer:: db
-	ds 8 ; unused
+wPokeAnimBitmaskBuffer:: ds 7
+	ds 2 ; unused
 wPokeAnimStructEnd::
 
 
