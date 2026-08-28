@@ -1062,7 +1062,8 @@ SwapColorPalette::
 	push hl
 	ld hl, wBGPals2
 	ld a, [wPalState]
-	and a ; PREV_PALSTATE == 0
+	assert PREV_PALSTATE == 0
+	and a
 	jr z, .got_target
 	ld hl, wBGPals1
 .got_target
