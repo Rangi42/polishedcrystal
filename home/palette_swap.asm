@@ -25,39 +25,83 @@ InitializeSwappedPalette::
 	ld h, [hl]
 	ld l, a
 	or h
-	jr z, .no_palette_swaps
-
-	ld a, CURR_PALSTATE
-	ld [wPalState], a
-	farcall CalculateStates
-	ld c, PALETTE_SWAP_INSIDE ; one state bit per palette swap entry
-	jr .loop
-
-.no_palette_swaps
+	jr nz, .has_palette_swaps
 	pop af
 	rst Bankswitch
 	and a
 	ret
 
-.loop
-	push bc
-	; If there are no more palette swap rectangles, just return.
+.has_palette_swaps
+	push hl
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	farcall CalculateStates
+	ld de, PALETTE_SWAP_INSIDE ; d: changed BG palettes, e: entry state bit
+
+.state_loop
+	; First update every entry's state and collect its destination palette.
+	; This must finish before loading palettes: a later NULL entry can leave an
+	; earlier entry for the same slot as the final effective palette.
 	call CheckPaletteSwapRectangle
-	jr z, .done_loop
+	jr z, .states_done
 	sbc a
 	and PALETTE_SWAP_INSIDE
 	ld c, a
 
-	; Preserve this entry's state bit across palette loading. `c` returns
+	; Preserve the accumulated palette mask around the farcall. `c` returns
 	; PALETTE_SWAP_INSIDE_F set inside the rectangle and
 	; PALETTE_SWAP_CHANGED_F set if this entry changed.
-	pop de
-	farcall UpdatePaletteSwapState
 	push de
+	farcall UpdatePaletteSwapState
+	pop de
 
-	; Get the BG palette ID in `b`.
 	ld a, [hli]
 	ld b, a
+	bit PALETTE_SWAP_CHANGED_F, c
+	jr z, .state_updated
+	call .get_palette_mask
+	or d
+	ld d, a
+
+.state_updated
+	; Skip the outside and inside palette pointers.
+	ld bc, 4
+	add hl, bc
+	sla e
+	jr .state_loop
+
+.states_done
+	; A changed palette only needs catch-up during an active fade.
+	ld a, d
+	and a
+	jr z, .load_palettes
+	farcall CheckPaletteFading
+	jr nz, .load_palettes
+	ld d, a ; a == 0
+
+.load_palettes
+	pop hl
+
+.palette_loop
+	call CheckPaletteSwapRectangle
+	jr z, .done
+	sbc a
+	and PALETTE_SWAP_INSIDE
+	ld c, a
+
+	; Get the BG palette ID in `b`, and mark the slot if any entry targeting it
+	; changed. This makes chained swaps resolve to their final effective palette.
+	ld a, [hli]
+	ld b, a
+	ld a, d
+	and a
+	jr z, .got_changed_state
+	call .get_palette_mask
+	and d
+	jr z, .got_changed_state
+	set PALETTE_SWAP_CHANGED_F, c
+.got_changed_state
+	push de
 
 	; Get the palette list in `de`.
 	; Advance `hl` past the two palettes.
@@ -83,47 +127,12 @@ InitializeSwappedPalette::
 	or e
 	jr z, .swapped
 
-	farcall CheckPaletteFading
-	jr z, .swap_current
 	bit PALETTE_SWAP_CHANGED_F, c
 	jr z, .swap_current
 
 	; Rebuild this palette under the fade's previous conditions, then catch it
 	; up to the current fade step toward the same palette's current conditions.
-	push bc
-	push de
-	ld a, [wPalWhiteState]
-	and a
-	jr z, .swap_previous
-	ld hl, wBGPals2
-	ld a, b
-	ld bc, 1 palettes
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	farcall CopyWhitePal
-	jr .got_previous
-
-.swap_previous
-	xor a
-	assert PREV_PALSTATE == 0
-	ld [wPalState], a
-	ld a, BANK(SwapColorPalette)
-	rst Bankswitch
-	call SwapColorPalette
-
-.got_previous
-	pop de
-	pop bc
-	ld a, CURR_PALSTATE
-	ld [wPalState], a
-	ld a, BANK(SwapColorPalette)
-	rst Bankswitch
-	push bc
-	call SwapColorPalette
-	pop bc
-	ld a, b
-	farcall CatchUpBGPaletteFade
+	farcall CatchUpPaletteSwapFade
 	jr .swapped
 
 .swap_current
@@ -136,15 +145,24 @@ InitializeSwappedPalette::
 
 .swapped
 	pop hl
+	pop de
 
 	; Continue processing more than one `paletteswap` rectangle.
 	call SwitchToMapScriptsBank
-	pop bc
-	sla c
-	jr .loop
+	jr .palette_loop
 
-.done_loop
+.get_palette_mask
+; Return a one-hot mask for BG palette ID `b`, preserving `bc`.
+	push bc
+	ld a, $80
+	inc b
+.mask_loop
+	rlca
+	dec b
+	jr nz, .mask_loop
 	pop bc
+	ret
+
 .done
 	; Return carry when there were some `paletteswap` rectangles.
 	pop af

@@ -225,7 +225,12 @@ MACRO stonetable
 	dw \3 ; script pointer
 ENDM
 
+DEF _NUM_PALETTE_SWAPS = 0
+
 MACRO paletteswap
+	assert _NUM_PALETTE_SWAPS < NUM_PALETTE_SWAP_STATES, \
+		"A palette swap list may have at most {d:NUM_PALETTE_SWAP_STATES} entries"
+	redef _NUM_PALETTE_SWAPS += 1
 	db \1, \2 ; X range
 	db \3, \4 ; Y range
 	db \5 ; palette ID

@@ -1118,6 +1118,40 @@ UpdatePaletteSwapState::
 	set PALETTE_SWAP_CHANGED_F, c
 	ret
 
+CatchUpPaletteSwapFade::
+; Rebuild BG palette `b` from palette list `de` under the fade's previous and
+; current conditions, then catch its active palette up to the current step.
+	push bc
+	push de
+	ld a, [wPalWhiteState]
+	and a
+	jr z, .swap_previous
+	ld hl, wBGPals2
+	ld a, b
+	ld bc, 1 palettes
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	farcall CopyWhitePal
+	jr .got_previous
+
+.swap_previous
+	xor a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
+	call SwapColorPalette
+
+.got_previous
+	pop de
+	pop bc
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	push bc
+	call SwapColorPalette
+	pop bc
+	ld a, b
+	farjp CatchUpBGPaletteFade
+
 INCLUDE "data/tileset_palettes.asm"
 
 INCLUDE "data/maps/environment_colors.asm"

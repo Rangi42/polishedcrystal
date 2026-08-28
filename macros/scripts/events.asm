@@ -1427,6 +1427,7 @@ ENDM
 
 	const usepaletteswap_command
 MACRO usepaletteswap
+	redef _NUM_PALETTE_SWAPS = 0
 	db usepaletteswap_command
 	dw \1 ; paletteswap_pointer
 ENDM
