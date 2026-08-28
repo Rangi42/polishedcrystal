@@ -16,7 +16,7 @@ LoadWeatherPal::
 	dw .rain ; thunderstorm
 	dw .sand
 	dw .cherry
-	dw .sun
+	dw DoNothing ; harsh sun
 	assert_table_length NUM_OW_WEATHERS
 
 .rain
@@ -37,10 +37,6 @@ LoadWeatherPal::
 	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
 	ld de, wOBPals1 palette PAL_OW_WEATHER
 	jr CopySpritePalHandler
-
-.sun
-	; Harsh sunlight has no dedicated weather sprite palette.
-	ret
 
 .snow
 	ldh a, [rWBK]

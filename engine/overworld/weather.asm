@@ -157,8 +157,7 @@ DoHarshSunPaletteCycle:
 	ldh [rWBK], a
 	farcall LoadMapPalettes
 	farcall ClearSavedObjPals
-	farcall CheckForUsedObjPals
-	ret
+	farjp CheckForUsedObjPals
 
 SpawnRandomWeatherFullScreen::
 	lb bc, SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX

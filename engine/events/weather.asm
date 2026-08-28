@@ -175,8 +175,7 @@ TryGetHarshSunWeather:
 	jr z, .reroll_maps
 	ld a, [wHarshSunRandomMapKantoGroup]
 	and a
-	jr z, .reroll_maps
-	jr .got_maps
+	jr nz, .got_maps
 
 .reroll_maps
 	ld a, b
