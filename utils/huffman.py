@@ -1,70 +1,208 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+"""Generate the three context-specific Huffman code maps used by text.asm.
 
+Usage:
+
+    make tidy
+    make -j4 huffman > chars.txt
+    ./utils/huffman.py chars.txt constants/huffman_text.inc
 """
-Generate Huffman codes for compressible characters.
 
-1. Run `make huffman > chars.txt`
-2. Run `./utils/huffman.py chars.txt`
-3. Update constants/charmap.asm based on the output
-"""
+from __future__ import annotations
 
+import argparse
+import ast
 import heapq
-import sys
+import json
+import re
 from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
 
-if len(sys.argv) != 2:
-	print(f'Usage: {sys.argv[0]} chars.txt', file=sys.stderr)
-	sys.exit(1)
 
-with open(sys.argv[1], 'r', encoding='utf-8') as file:
-	chars = [line.strip() for line in file if line.strip()]
+BOUNDARY_TOKENS = {
+	" ",
+	"<LNBRK>",
+	"<NEXT>",
+	"<LINE>",
+	"<CONT>",
+	"<PARA>",
+}
+TERMINATORS = {"@", "<DONE>", "<PROMPT>"}
+VOWELS = set("AEIOUaeiou")
+ESCAPE_TOKEN = "<CONTEXT_ESCAPE>"
 
-order = []
-with open('constants/charmap.asm', 'r', encoding='utf-8') as file:
-	for line in file:
-		line = line.strip()
-		if line.startswith('ctxtmap '):
-			char = line.removeprefix('ctxtmap ').split('", ', 1)[0] + '"'
-			order.append(char)
-chars.extend(order)
-order.extend(set(chars) - set(order))
 
-freqs = Counter(chars)
-
+@dataclass
 class Node:
-	def __init__(self, freq, *args):
-		self.freq = freq
-		if len(args) == 1:
-			(self.char,) = args
-			self.left = self.right = None
-		else:
-			self.char = None
-			(self.left, self.right) = args
+	frequency: int
+	token: str | None = None
+	left: "Node | None" = None
+	right: "Node | None" = None
 
-	def __lt__(self, other):
-		return self.freq < other.freq
 
-	def generate_codes(self, prefix='', codes=None):
-		if codes is None:
-			codes = {}
-		if self.char:
-			codes[self.char] = prefix
-		else:
-			self.left.generate_codes(prefix + '0', codes)
-			self.right.generate_codes(prefix + '1', codes)
-		return codes
+def context_after(previous: str | None) -> str:
+	if previous is None or previous in BOUNDARY_TOKENS:
+		return "b"
+	if previous in VOWELS:
+		return "v"
+	return "o"
 
-heap = [Node(freq, char) for char, freq in freqs.items()]
-heapq.heapify(heap)
 
-while len(heap) > 1:
-	left = heapq.heappop(heap)
-	right = heapq.heappop(heap)
-	parent = Node(left.freq + right.freq, left, right)
-	heapq.heappush(heap, parent)
+def read_token_order(charmap_path: Path) -> tuple[list[str], dict[str, int]]:
+	pattern = re.compile(
+		r'^\s*charmap\s+("(?:[^"\\]|\\.)*")\s*,\s*\$([0-9a-fA-F]+)'
+	)
+	order: list[str] = []
+	values: dict[str, int] = {}
+	for line in charmap_path.read_text(encoding="utf-8").splitlines():
+		match = pattern.match(line)
+		if match:
+			token = ast.literal_eval(match.group(1))
+			value = int(match.group(2), 16)
+			if not (0x4D <= value <= 0x5C or 0x7F <= value <= 0xEB):
+				continue
+			order.append(token)
+			values[token] = value
+	return order, values
 
-codes = heap[0].generate_codes()
 
-for char in order:
-	print(f'{char}: {codes[char]}')
+def read_frequencies(corpus_path: Path) -> dict[str, Counter[str]]:
+	frequencies = {context: Counter() for context in ("b", "v", "o")}
+	previous: str | None = None
+	for raw_line in corpus_path.read_text(encoding="utf-8").splitlines():
+		line = raw_line.strip()
+		if not (line.startswith('"') and line.endswith('"')):
+			continue
+		token = ast.literal_eval(line)
+		frequencies[context_after(previous)][token] += 1
+		previous = token
+		if token in TERMINATORS:
+			previous = None
+	return frequencies
+
+
+def make_codes(frequencies: Counter[str], order: list[str]) -> dict[str, str]:
+	order_index = {token: index for index, token in enumerate(order)}
+	heap: list[tuple[int, int, Node]] = []
+	serial = 0
+	for token in sorted(frequencies, key=lambda value: order_index.get(value, len(order))):
+		heap.append((frequencies[token], serial, Node(frequencies[token], token=token)))
+		serial += 1
+	heapq.heapify(heap)
+	while len(heap) > 1:
+		left_frequency, _, left = heapq.heappop(heap)
+		right_frequency, _, right = heapq.heappop(heap)
+		frequency = left_frequency + right_frequency
+		heapq.heappush(
+			heap,
+			(frequency, serial, Node(frequency, left=left, right=right)),
+		)
+		serial += 1
+	codes: dict[str, str] = {}
+	stack = [(heap[0][2], "")]
+	while stack:
+		node, prefix = stack.pop()
+		if node.token is not None:
+			codes[node.token] = prefix or "0"
+			continue
+		assert node.left is not None and node.right is not None
+		stack.append((node.right, prefix + "1"))
+		stack.append((node.left, prefix + "0"))
+	return codes
+
+
+def render(
+	frequencies: dict[str, Counter[str]],
+	order: list[str],
+	values: dict[str, int],
+	target_parent_nodes: int,
+) -> str:
+	omit_count = sum(len(counts) - 1 for counts in frequencies.values()) - target_parent_nodes
+	if omit_count < 0:
+		raise SystemExit("target parent-node count is larger than the unpruned trees")
+	candidates = sorted(
+		(
+			(frequency, order.index(token), context, token)
+			for context, counts in frequencies.items()
+			for token, frequency in counts.items()
+		),
+		key=lambda item: (item[0], item[1], item[2]),
+	)
+	omitted = {context: set() for context in frequencies}
+	for _, _, context, token in candidates[:omit_count + len(frequencies)]:
+		# Adding one escape leaf cancels the first omitted leaf in each context.
+		omitted[context].add(token)
+	while sum(
+		len(counts) - len(omitted[context])
+		for context, counts in frequencies.items()
+	) > target_parent_nodes:
+		for _, _, context, token in candidates:
+			if token not in omitted[context]:
+				omitted[context].add(token)
+				break
+	lines = [
+		"; Generated by utils/huffman.py; do not edit manually.",
+		"; Source corpus: make huffman",
+		"; Contexts: b = boundary/start, v = vowel, o = other.",
+		"",
+	]
+	for context in ("b", "v", "o"):
+		kept_frequencies = Counter(
+			{
+				token: frequency
+				for token, frequency in frequencies[context].items()
+				if token not in omitted[context]
+			}
+		)
+		kept_frequencies[ESCAPE_TOKEN] = sum(
+			frequencies[context][token] for token in omitted[context]
+		)
+		codes = make_codes(kept_frequencies, order + [ESCAPE_TOKEN])
+		parent_nodes = len(codes) - 1
+		lines.append(
+			f"; Context {context}: {len(codes)} leaves, {parent_nodes} parent nodes, "
+			f"{len(omitted[context])} escaped symbols"
+		)
+		lines.append(f"huffleaf {context}, {codes[ESCAPE_TOKEN]}")
+		for token in order:
+			quoted = json.dumps(token, ensure_ascii=False)
+			if token not in frequencies[context] or token in omitted[context]:
+				code = codes[ESCAPE_TOKEN] + f"{values[token]:08b}"
+				macro = "huffesc"
+			else:
+				code = codes[token]
+				macro = "huffmap"
+			lines.append(f"{macro} {context}, {quoted}, {code} ; {frequencies[context][token]}")
+		lines.append("")
+	return "\n".join(lines)
+
+
+def main() -> None:
+	parser = argparse.ArgumentParser()
+	parser.add_argument("corpus", type=Path)
+	parser.add_argument("output", type=Path, nargs="?")
+	parser.add_argument(
+		"--charmap", type=Path, default=Path("constants/charmap.asm")
+	)
+	parser.add_argument("--target-parent-nodes", type=int, default=260)
+	args = parser.parse_args()
+	order, values = read_token_order(args.charmap)
+	frequencies = read_frequencies(args.corpus)
+	unknown = set().union(*frequencies.values()) - set(order)
+	if unknown:
+		raise SystemExit(f"tokens missing from Huffman charmap declarations: {sorted(unknown)}")
+	output = render(
+		frequencies,
+		order,
+		values,
+		args.target_parent_nodes,
+	)
+	if args.output is None:
+		print(output)
+	else:
+		args.output.write_text(output, encoding="utf-8")
+
+
+if __name__ == "__main__":
+	main()

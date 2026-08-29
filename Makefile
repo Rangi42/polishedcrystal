@@ -67,6 +67,8 @@ RGBASMFLAGS += -DANALOGUE_POCKET -DNO_RTC
 RGBFIXFLAGS = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
 endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
+# Context models require token output to remain in source order.
+.NOTPARALLEL:
 Q := @
 RGBASMFLAGS += -DHUFFMAN
 endif
