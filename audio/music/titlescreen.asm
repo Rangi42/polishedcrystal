@@ -1,11 +1,11 @@
-Music_TitleScreen:
+	music_header Music_TitleScreen
 	channel_count 4
 	channel 1, Music_TitleScreen_Ch1
 	channel 2, Music_TitleScreen_Ch2
 	channel 3, Music_TitleScreen_Ch3
 	channel 4, Music_TitleScreen_Ch4
 
-Music_TitleScreen_Ch1:
+	music_label Music_TitleScreen_Ch1
 	tempo 134
 	volume 7, 7
 	duty_cycle 3
@@ -273,10 +273,10 @@ Music_TitleScreen_Ch1:
 	rest 11
 	sound_ret
 
-Music_TitleScreen_branch_eb96d:
+	music_label Music_TitleScreen_branch_eb96d
 	note_type 12, 12, 3
 	note D_, 1
-Music_TitleScreen_branch_eb971:
+	music_label Music_TitleScreen_branch_eb971
 	rest 1
 	octave 2
 	note D_, 1
@@ -292,7 +292,7 @@ Music_TitleScreen_branch_eb971:
 	note_type 8, 11, 7
 	sound_ret
 
-Music_TitleScreen_Ch2:
+	music_label Music_TitleScreen_Ch2
 	duty_cycle 3
 	vibrato 20, 1, 2
 	note_type 12, 12, 7
@@ -555,10 +555,10 @@ Music_TitleScreen_Ch2:
 	rest 11
 	sound_ret
 
-Music_TitleScreen_branch_ebae7:
+	music_label Music_TitleScreen_branch_ebae7
 	note_type 12, 11, 2
 	note D_, 1
-Music_TitleScreen_branch_ebaeb:
+	music_label Music_TitleScreen_branch_ebaeb
 	octave 3
 	note A_, 1
 	octave 4
@@ -577,7 +577,7 @@ Music_TitleScreen_branch_ebaeb:
 	note C_, 4
 	sound_ret
 
-Music_TitleScreen_Ch3:
+	music_label Music_TitleScreen_Ch3
 	stereo_panning FALSE, TRUE
 	vibrato 16, 1, 4
 	pitch_offset 1
@@ -893,7 +893,7 @@ Music_TitleScreen_Ch3:
 	rest 11
 	sound_ret
 
-Music_TitleScreen_Ch4:
+	music_label Music_TitleScreen_Ch4
 	toggle_noise 5
 	stereo_panning TRUE, FALSE
 	drum_speed 12
@@ -1076,7 +1076,7 @@ Music_TitleScreen_Ch4:
 	drum_note 2, 1
 	drum_speed 12
 	drum_note 9, 16
-Music_TitleScreen_branch_ebd40:
+	music_label Music_TitleScreen_branch_ebd40
 	rest 16
 	sound_loop 6, Music_TitleScreen_branch_ebd40
 	rest 12
@@ -1125,7 +1125,7 @@ Music_TitleScreen_branch_ebd40:
 	drum_note 12, 4
 	sound_ret
 
-Music_TitleScreen_branch_ebd77:
+	music_label Music_TitleScreen_branch_ebd77
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 1, 2
@@ -1137,7 +1137,7 @@ Music_TitleScreen_branch_ebd77:
 	drum_note 4, 2
 	sound_ret
 
-Music_TitleScreen_branch_ebd81:
+	music_label Music_TitleScreen_branch_ebd81
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 1, 2
@@ -1149,14 +1149,14 @@ Music_TitleScreen_branch_ebd81:
 	drum_note 4, 2
 	sound_ret
 
-Music_TitleScreen_branch_ebd8b:
+	music_label Music_TitleScreen_branch_ebd8b
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
 	sound_loop 4, Music_TitleScreen_branch_ebd8b
 	sound_ret
 
-Music_TitleScreen_branch_ebd93:
+	music_label Music_TitleScreen_branch_ebd93
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1

@@ -3,13 +3,13 @@
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/hoohbattle.asm
 ; https://pigu-a.bandcamp.com/album/pok-mon-anniversary-crystal-pigus-arranges
 
-Music_HoOhBattleHGSS:
+	music_header Music_HoOhBattleHGSS
 	channel_count 3
 	channel 1, Music_HoOhBattleHGSS_Ch1
 	channel 2, Music_HoOhBattleHGSS_Ch2
 	channel 3, Music_HoOhBattleHGSS_Ch3
 
-Music_HoOhBattleHGSS_Ch1:
+	music_label Music_HoOhBattleHGSS_Ch1
 	tempo 106
 	duty_cycle 3
 	note_type 12, 12, 2
@@ -48,7 +48,7 @@ Music_HoOhBattleHGSS_Ch1:
 	note B_, 1
 	octave 3
 	note C_, 1
-Music_HoOhBattleHGSS_Ch1_L:
+	music_label Music_HoOhBattleHGSS_Ch1_L
 	volume_envelope 12, 2
 	octave 2
 	note B_, 2
@@ -498,7 +498,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note A#, 16
 	sound_jump Music_HoOhBattleHGSS_Ch1_L
 
-Music_HoOhBattleHGSS_Ch2:
+	music_label Music_HoOhBattleHGSS_Ch2
 	duty_cycle 3
 	note_type 12, 12, 2
 	octave 4
@@ -549,7 +549,7 @@ Music_HoOhBattleHGSS_Ch2:
 	note D_, 1
 	octave 5
 	note E_, 1
-Music_HoOhBattleHGSS_Ch2_L:
+	music_label Music_HoOhBattleHGSS_Ch2_L
 	volume_envelope 12, 2
 	octave 3
 	note E_, 2
@@ -914,13 +914,13 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note F_, 16
 	sound_jump Music_HoOhBattleHGSS_Ch2_L
 
-Music_HoOhBattleHGSS_Ch3:
+	music_label Music_HoOhBattleHGSS_Ch3
 	note_type 12, 1, 6
 	octave 2
 	note E_, 16
 	note D_, 8
 	note F_, 8
-Music_HoOhBattleHGSS_Ch3_L:
+	music_label Music_HoOhBattleHGSS_Ch3_L
 	octave 1
 	note B_, 2
 	octave 2
@@ -1044,7 +1044,7 @@ Music_HoOhBattleHGSS_Ch3_L:
 	note B_, 2
 	note F#, 2
 	note D_, 2
-Music_HoOhBattleHGSS_Ch3_L1:
+	music_label Music_HoOhBattleHGSS_Ch3_L1
 	octave 1
 	note A_, 2
 	octave 2

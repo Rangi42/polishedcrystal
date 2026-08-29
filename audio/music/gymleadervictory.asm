@@ -1,11 +1,11 @@
-Music_GymLeaderVictory:
+	music_header Music_GymLeaderVictory
 	channel_count 4
 	channel 1, Music_GymLeaderVictory_Ch1
 	channel 2, Music_GymLeaderVictory_Ch2
 	channel 3, Music_GymLeaderVictory_Ch3
 	channel 4, Music_GymLeaderVictory_Ch4
 
-Music_GymLeaderVictory_Ch1:
+	music_label Music_GymLeaderVictory_Ch1
 	tempo 116
 	volume 7, 7
 	vibrato 18, 3, 4
@@ -27,7 +27,7 @@ Music_GymLeaderVictory_Ch1:
 	octave 5
 	note D_, 8
 	stereo_panning FALSE, TRUE
-Music_GymLeaderVictory_branch_f4658:
+	music_label Music_GymLeaderVictory_branch_f4658
 	duty_cycle 1
 	sound_call Music_GymLeaderVictory_branch_f4689
 	octave 4
@@ -60,7 +60,7 @@ Music_GymLeaderVictory_branch_f4658:
 	note F#, 16
 	sound_jump Music_GymLeaderVictory_branch_f4658
 
-Music_GymLeaderVictory_branch_f4689:
+	music_label Music_GymLeaderVictory_branch_f4689
 	volume_envelope 9, 1
 	octave 3
 	note F#, 2
@@ -84,7 +84,7 @@ Music_GymLeaderVictory_branch_f4689:
 	note D_, 1
 	sound_ret
 
-Music_GymLeaderVictory_branch_f46a0:
+	music_label Music_GymLeaderVictory_branch_f46a0
 	volume_envelope 8, 7
 	octave 3
 	note F#, 14
@@ -114,7 +114,7 @@ Music_GymLeaderVictory_branch_f46a0:
 	note E_, 8
 	sound_ret
 
-Music_GymLeaderVictory_Ch2:
+	music_label Music_GymLeaderVictory_Ch2
 	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 12, 13, 7
@@ -129,7 +129,7 @@ Music_GymLeaderVictory_Ch2:
 	octave 5
 	note D_, 1
 	note F#, 16
-Music_GymLeaderVictory_branch_f46d0:
+	music_label Music_GymLeaderVictory_branch_f46d0
 	duty_cycle 3
 	volume_envelope 10, 1
 	sound_call Music_GymLeaderVictory_branch_f4711
@@ -173,7 +173,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note C#, 1
 	sound_jump Music_GymLeaderVictory_branch_f46d0
 
-Music_GymLeaderVictory_branch_f4711:
+	music_label Music_GymLeaderVictory_branch_f4711
 	octave 5
 	note D_, 2
 	note C#, 2
@@ -190,7 +190,7 @@ Music_GymLeaderVictory_branch_f4711:
 	note F#, 2
 	sound_ret
 
-Music_GymLeaderVictory_branch_f4720:
+	music_label Music_GymLeaderVictory_branch_f4720
 	volume_envelope 9, 8
 	note A_, 6
 	note F#, 1
@@ -214,7 +214,7 @@ Music_GymLeaderVictory_branch_f4720:
 	note C#, 8
 	sound_ret
 
-Music_GymLeaderVictory_Ch3:
+	music_label Music_GymLeaderVictory_Ch3
 	note_type 12, 2, 5
 	octave 3
 	note F#, 16
@@ -225,7 +225,7 @@ Music_GymLeaderVictory_Ch3:
 	octave 3
 	note C#, 2
 	stereo_panning TRUE, FALSE
-Music_GymLeaderVictory_branch_f4744:
+	music_label Music_GymLeaderVictory_branch_f4744
 	note D_, 2
 	rest 4
 	octave 2
@@ -307,7 +307,7 @@ Music_GymLeaderVictory_branch_f4744:
 	note C#, 2
 	sound_jump Music_GymLeaderVictory_branch_f4744
 
-Music_GymLeaderVictory_branch_f479e:
+	music_label Music_GymLeaderVictory_branch_f479e
 	octave 3
 	note D_, 2
 	rest 2
@@ -380,12 +380,12 @@ Music_GymLeaderVictory_branch_f479e:
 	note A_, 2
 	sound_ret
 
-Music_GymLeaderVictory_Ch4:
+	music_label Music_GymLeaderVictory_Ch4
 	toggle_noise 4
 	drum_speed 12
 	drum_note 12, 16
 	drum_note 12, 16
-Music_GymLeaderVictory_branch_f47eb:
+	music_label Music_GymLeaderVictory_branch_f47eb
 	sound_call Music_GymLeaderVictory_branch_f480b
 	drum_note 4, 6
 	drum_note 4, 2
@@ -398,7 +398,7 @@ Music_GymLeaderVictory_branch_f47eb:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
-Music_GymLeaderVictory_branch_f47fb:
+	music_label Music_GymLeaderVictory_branch_f47fb
 	drum_note 4, 2
 	drum_note 8, 2
 	drum_note 3, 2
@@ -410,7 +410,7 @@ Music_GymLeaderVictory_branch_f47fb:
 	sound_loop 16, Music_GymLeaderVictory_branch_f47fb
 	sound_jump Music_GymLeaderVictory_branch_f47eb
 
-Music_GymLeaderVictory_branch_f480b:
+	music_label Music_GymLeaderVictory_branch_f480b
 	drum_note 4, 6
 	drum_note 4, 2
 	drum_note 4, 4

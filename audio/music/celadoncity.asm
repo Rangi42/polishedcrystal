@@ -1,14 +1,14 @@
-Music_CeladonCity:
+	music_header Music_CeladonCity
 	channel_count 3
 	channel 1, Music_CeladonCity_Ch1
 	channel 2, Music_CeladonCity_Ch2
 	channel 3, Music_CeladonCity_Ch3
 
-Music_CeladonCity_Ch1:
+	music_label Music_CeladonCity_Ch1
 	tempo 146
 	volume 7, 7
 	pitch_offset 1
-Music_CeladonCity_branch_f436c:
+	music_label Music_CeladonCity_branch_f436c
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 6
 	octave 3
@@ -20,7 +20,7 @@ Music_CeladonCity_branch_f436c:
 	note E_, 2
 	note F#, 2
 	sound_call Music_CeladonCity_branch_f43cc
-Music_CeladonCity_branch_f437d:
+	music_label Music_CeladonCity_branch_f437d
 	note D_, 2
 	note F#, 1
 	note A_, 1
@@ -85,7 +85,7 @@ Music_CeladonCity_branch_f437d:
 	note A_, 8
 	sound_jump Music_CeladonCity_branch_f436c
 
-Music_CeladonCity_branch_f43cc:
+	music_label Music_CeladonCity_branch_f43cc
 	note D_, 2
 	note G_, 1
 	note B_, 1
@@ -105,7 +105,7 @@ Music_CeladonCity_branch_f43cc:
 	note A_, 1
 	sound_ret
 
-Music_CeladonCity_branch_f43e1:
+	music_label Music_CeladonCity_branch_f43e1
 	octave 2
 	note G_, 2
 	note B_, 1
@@ -133,14 +133,14 @@ Music_CeladonCity_branch_f43e1:
 	note B_, 1
 	sound_ret
 
-Music_CeladonCity_branch_f43fe:
+	music_label Music_CeladonCity_branch_f43fe
 	note D_, 2
 	note F#, 1
 	note A_, 1
 	sound_loop 4, Music_CeladonCity_branch_f43fe
 	sound_ret
 
-Music_CeladonCity_Ch2:
+	music_label Music_CeladonCity_Ch2
 	vibrato 18, 3, 4
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
@@ -155,7 +155,7 @@ Music_CeladonCity_Ch2:
 	note F#, 1
 	note G_, 1
 	note A_, 8
-Music_CeladonCity_branch_f441a:
+	music_label Music_CeladonCity_branch_f441a
 	sound_call Music_CeladonCity_branch_f4463
 	note A_, 4
 	note F#, 4
@@ -215,7 +215,7 @@ Music_CeladonCity_branch_f441a:
 	note D_, 16
 	sound_jump Music_CeladonCity_branch_f441a
 
-Music_CeladonCity_branch_f4463:
+	music_label Music_CeladonCity_branch_f4463
 	volume_envelope 11, 2
 	octave 4
 	note B_, 4
@@ -233,7 +233,7 @@ Music_CeladonCity_branch_f4463:
 	note A_, 8
 	sound_ret
 
-Music_CeladonCity_branch_f4474:
+	music_label Music_CeladonCity_branch_f4474
 	note G_, 3
 	note B_, 1
 	octave 2
@@ -265,9 +265,9 @@ Music_CeladonCity_branch_f4474:
 	note F#, 4
 	sound_ret
 
-Music_CeladonCity_Ch3:
+	music_label Music_CeladonCity_Ch3
 	vibrato 18, 2, 4
-Music_CeladonCity_branch_f4495:
+	music_label Music_CeladonCity_branch_f4495
 	note_type 12, 2, 5
 	octave 3
 	note A_, 2
@@ -276,7 +276,7 @@ Music_CeladonCity_branch_f4495:
 	rest 2
 	note D_, 8
 	sound_call Music_CeladonCity_branch_f44fd
-Music_CeladonCity_branch_f44a1:
+	music_label Music_CeladonCity_branch_f44a1
 	octave 2
 	note A_, 2
 	rest 2
@@ -357,7 +357,7 @@ Music_CeladonCity_branch_f44a1:
 	rest 6
 	sound_jump Music_CeladonCity_branch_f4495
 
-Music_CeladonCity_branch_f44fd:
+	music_label Music_CeladonCity_branch_f44fd
 	octave 2
 	note G_, 2
 	rest 2
@@ -375,7 +375,7 @@ Music_CeladonCity_branch_f44fd:
 	note G#, 1
 	sound_ret
 
-Music_CeladonCity_branch_f4510:
+	music_label Music_CeladonCity_branch_f4510
 	octave 5
 	note D_, 8
 	note C_, 2

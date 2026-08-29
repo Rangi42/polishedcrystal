@@ -3,20 +3,20 @@
 ; https://pastebin.com/bqcvjdFi
 ; https://hax.iimarckus.org/topic/6777/9/
 
-Music_BlackCityBW:
+	music_header Music_BlackCityBW
 	channel_count 4
 	channel 1, Music_BlackCityBW_Ch1
 	channel 2, Music_BlackCityBW_Ch2
 	channel 3, Music_BlackCityBW_Ch3
 	channel 4, Music_BlackCityBW_Ch4
 
-Music_BlackCityBW_Ch1:
+	music_label Music_BlackCityBW_Ch1
 	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 6, 9, 1
 	tempo 156
 	rest 4
-Music_BlackCityBW_Ch1_loop:
+	music_label Music_BlackCityBW_Ch1_loop
 	sound_call Music_BlackCityBW_Ch1_branch_1
 	octave 4
 	duty_cycle 1
@@ -151,7 +151,7 @@ Music_BlackCityBW_Ch1_loop:
 	note B_, 4
 	sound_jump Music_BlackCityBW_Ch1_loop
 
-Music_BlackCityBW_Ch1_branch_1:
+	music_label Music_BlackCityBW_Ch1_branch_1
 	octave 4
 	note E_, 2
 	octave 3
@@ -252,7 +252,7 @@ Music_BlackCityBW_Ch1_branch_1:
 	note G_, 2
 	sound_ret
 
-Music_BlackCityBW_Ch2:
+	music_label Music_BlackCityBW_Ch2
 	duty_cycle 2
 	vibrato 18, 2, 4
 	pitch_offset 1
@@ -381,10 +381,10 @@ Music_BlackCityBW_Ch2:
 	note G_, 10
 	sound_jump Music_BlackCityBW_Ch2
 
-Music_BlackCityBW_Ch3:
+	music_label Music_BlackCityBW_Ch3
 	note_type 12, 2, 4
 	rest 2
-Music_BlackCityBW_Ch3_loop:
+	music_label Music_BlackCityBW_Ch3_loop
 	octave 4
 	note E_, 16
 	note D#, 16
@@ -415,12 +415,12 @@ Music_BlackCityBW_Ch3_loop:
 	note B_, 8
 	sound_jump Music_BlackCityBW_Ch3_loop
 
-Music_BlackCityBW_Ch4:
+	music_label Music_BlackCityBW_Ch4
 	toggle_noise 3
 	drum_speed 6
 	rest 4
-Music_BlackCityBW_Ch4_loop_main:
-Music_BlackCityBW_Ch4_loop_1:
+	music_label Music_BlackCityBW_Ch4_loop_main
+	music_label Music_BlackCityBW_Ch4_loop_1
 	drum_note 12, 6
 	drum_note 1, 6
 	drum_note 4, 4
@@ -484,7 +484,7 @@ Music_BlackCityBW_Ch4_loop_1:
 	drum_note 4, 1
 	sound_jump Music_BlackCityBW_Ch4_loop_main
 
-Music_BlackCityBW_Ch4_branch_1:
+	music_label Music_BlackCityBW_Ch4_branch_1
 	drum_note 12, 8
 	drum_note 4, 4
 	drum_note 3, 4

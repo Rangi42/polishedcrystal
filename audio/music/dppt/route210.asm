@@ -2,14 +2,14 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route210.asm
 
-Music_Route210DPPt:
+	music_header Music_Route210DPPt
 	channel_count 4
 	channel 1, Music_Route210DPPt_Ch1
 	channel 2, Music_Route210DPPt_Ch2
 	channel 3, Music_Route210DPPt_Ch3
 	channel 4, Music_Route210DPPt_Ch4
 
-Music_Route210DPPt_Ch1:
+	music_label Music_Route210DPPt_Ch1
 	tempo 152
 	volume 7, 7
 	note_type 12, 11, 3
@@ -17,7 +17,7 @@ Music_Route210DPPt_Ch1:
 	pitch_offset 1
 	octave 5
 	rest 2
-Music_Route210DPPt_Ch1_loop:
+	music_label Music_Route210DPPt_Ch1_loop
 	rest 4
 	volume_envelope 11, 4
 	octave 3
@@ -485,14 +485,14 @@ Music_Route210DPPt_Ch1_loop:
 	rest 2
 	sound_jump Music_Route210DPPt_Ch1_loop
 
-Music_Route210DPPt_Ch2:
+	music_label Music_Route210DPPt_Ch2
 	note_type 12, 12, 7
 	duty_cycle 1
 	pitch_offset 2
 	vibrato 8, 2, 4
 	octave 4
 	rest 2
-Music_Route210DPPt_Ch2_loop:
+	music_label Music_Route210DPPt_Ch2_loop
 	note_type 12, 12, 1
 	rest 16
 	note_type 6, 12, 1
@@ -865,14 +865,14 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 16
 	sound_jump Music_Route210DPPt_Ch2_loop
 
-Music_Route210DPPt_Ch3:
+	music_label Music_Route210DPPt_Ch3
 	note_type 6, 1, 2
 	octave 1
 	note G#, 1
 	rest 1
 	note G#, 1
 	rest 1
-Music_Route210DPPt_Ch3_loop:
+	music_label Music_Route210DPPt_Ch3_loop
 	note_type 12, 1, 2
 	note G#, 16
 	rest 2
@@ -1475,11 +1475,11 @@ Music_Route210DPPt_Ch3_loop:
 	rest 1
 	sound_jump Music_Route210DPPt_Ch3_loop
 
-Music_Route210DPPt_Ch4:
+	music_label Music_Route210DPPt_Ch4
 	toggle_noise 0
 	drum_speed 12
 	rest 2
-Music_Route210DPPt_Ch4_loop:
+	music_label Music_Route210DPPt_Ch4_loop
 	drum_speed 12
 	rest 14
 	rest 14

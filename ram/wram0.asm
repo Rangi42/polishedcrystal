@@ -1420,7 +1420,7 @@ wSpecialPalCount:: db
 
 SECTION "Unused", WRAM0
 
-	ds 316 ; it's free real estate
+	ds 300 ; it's free real estate
 
 
 SECTION "Options", WRAM0

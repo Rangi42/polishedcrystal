@@ -1,11 +1,11 @@
-Music_Route12:
+	music_header Music_Route12
 	channel_count 4
 	channel 1, Music_Route12_Ch1
 	channel 2, Music_Route12_Ch2
 	channel 3, Music_Route12_Ch3
 	channel 4, Music_Route12_Ch4
 
-Music_Route12_Ch1:
+	music_label Music_Route12_Ch1
 	tempo 148
 	volume 7, 7
 	vibrato 18, 3, 4
@@ -29,7 +29,7 @@ Music_Route12_Ch1:
 	note E_, 1
 	volume_envelope 9, 7
 	note D#, 12
-Music_Route12_branch_ec535:
+	music_label Music_Route12_branch_ec535
 	duty_cycle 2
 	volume_envelope 9, 6
 	sound_call Music_Route12_branch_ec5b1
@@ -115,7 +115,7 @@ Music_Route12_branch_ec535:
 	note F#, 8
 	note D#, 4
 	note F#, 4
-Music_Route12_branch_ec59b:
+	music_label Music_Route12_branch_ec59b
 	volume_envelope 9, 7
 	note G#, 1
 	note A_, 1
@@ -132,7 +132,7 @@ Music_Route12_branch_ec59b:
 	sound_loop 2, Music_Route12_branch_ec59b
 	sound_jump Music_Route12_branch_ec535
 
-Music_Route12_branch_ec5b1:
+	music_label Music_Route12_branch_ec5b1
 	octave 3
 	note G#, 1
 	rest 1
@@ -148,7 +148,7 @@ Music_Route12_branch_ec5b1:
 	note G#, 4
 	sound_ret
 
-Music_Route12_branch_ec5bf:
+	music_label Music_Route12_branch_ec5bf
 	note A_, 1
 	rest 1
 	note F#, 1
@@ -161,7 +161,7 @@ Music_Route12_branch_ec5bf:
 	note F#, 4
 	sound_ret
 
-Music_Route12_Ch2:
+	music_label Music_Route12_Ch2
 	duty_cycle 3
 	vibrato 18, 3, 4
 	note_type 12, 11, 8
@@ -183,7 +183,7 @@ Music_Route12_Ch2:
 	note B_, 1
 	octave 4
 	note D#, 1
-Music_Route12_branch_ec5e5:
+	music_label Music_Route12_branch_ec5e5
 	duty_cycle 3
 	volume_envelope 11, 7
 	sound_call Music_Route12_branch_ec647
@@ -262,7 +262,7 @@ Music_Route12_branch_ec5e5:
 	note E_, 6
 	sound_jump Music_Route12_branch_ec5e5
 
-Music_Route12_branch_ec647:
+	music_label Music_Route12_branch_ec647
 	octave 4
 	note E_, 6
 	volume_envelope 11, 1
@@ -278,7 +278,7 @@ Music_Route12_branch_ec647:
 	note F#, 4
 	sound_ret
 
-Music_Route12_Ch3:
+	music_label Music_Route12_Ch3
 	vibrato 18, 5, 4
 	note_type 12, 1, 6
 	octave 3
@@ -296,7 +296,7 @@ Music_Route12_Ch3:
 	note F#, 2
 	rest 2
 	note D#, 4
-Music_Route12_branch_ec66c:
+	music_label Music_Route12_branch_ec66c
 	sound_call Music_Route12_branch_ec6b4
 	note F#, 1
 	rest 1
@@ -348,7 +348,7 @@ Music_Route12_branch_ec66c:
 	note E_, 8
 	note F#, 4
 	note D#, 4
-Music_Route12_branch_ec6a3:
+	music_label Music_Route12_branch_ec6a3
 	note E_, 1
 	rest 1
 	note E_, 1
@@ -361,7 +361,7 @@ Music_Route12_branch_ec6a3:
 	sound_loop 2, Music_Route12_branch_ec6a3
 	sound_jump Music_Route12_branch_ec66c
 
-Music_Route12_branch_ec6b4:
+	music_label Music_Route12_branch_ec6b4
 	octave 3
 	note E_, 1
 	rest 1
@@ -389,7 +389,7 @@ Music_Route12_branch_ec6b4:
 	note E_, 4
 	sound_ret
 
-Music_Route12_Ch4:
+	music_label Music_Route12_Ch4
 	toggle_noise 4
 	stereo_panning TRUE, FALSE
 	drum_speed 12
@@ -403,7 +403,7 @@ Music_Route12_Ch4:
 	drum_note 3, 4
 	drum_speed 6
 	sound_call Music_Route12_branch_ec717
-Music_Route12_branch_ec6e1:
+	music_label Music_Route12_branch_ec6e1
 	drum_note 3, 4
 	drum_note 3, 8
 	drum_note 2, 2
@@ -411,7 +411,7 @@ Music_Route12_branch_ec6e1:
 	drum_note 3, 8
 	sound_call Music_Route12_branch_ec717
 	sound_loop 8, Music_Route12_branch_ec6e1
-Music_Route12_branch_ec6ed:
+	music_label Music_Route12_branch_ec6ed
 	drum_speed 12
 	drum_note 12, 10
 	drum_note 3, 1
@@ -429,7 +429,7 @@ Music_Route12_branch_ec6ed:
 	sound_call Music_Route12_branch_ec717
 	sound_call Music_Route12_branch_ec717
 	drum_note 12, 16
-Music_Route12_branch_ec707:
+	music_label Music_Route12_branch_ec707
 	drum_note 3, 4
 	drum_note 3, 8
 	drum_note 2, 2
@@ -439,7 +439,7 @@ Music_Route12_branch_ec707:
 	sound_loop 2, Music_Route12_branch_ec707
 	sound_jump Music_Route12_branch_ec6e1
 
-Music_Route12_branch_ec717:
+	music_label Music_Route12_branch_ec717
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1

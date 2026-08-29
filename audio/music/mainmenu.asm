@@ -1,11 +1,11 @@
-Music_MainMenu:
+	music_header Music_MainMenu
 	channel_count 4
 	channel 1, Music_MainMenu_Ch1
 	channel 2, Music_MainMenu_Ch2
 	channel 3, Music_MainMenu_Ch3
 	channel 4, Music_MainMenu_Ch4
 
-Music_MainMenu_Ch1:
+	music_label Music_MainMenu_Ch1
 	tempo 160
 	volume 7, 7
 	duty_cycle 3
@@ -15,7 +15,7 @@ Music_MainMenu_Ch1:
 	note_type 12, 0, -7
 	octave 3
 	note D_, 8
-Music_MainMenu_branch_f791d:
+	music_label Music_MainMenu_branch_f791d
 	note_type 12, 9, 2
 	octave 3
 	note C#, 6
@@ -42,13 +42,13 @@ Music_MainMenu_branch_f791d:
 	note C_, 4
 	sound_jump Music_MainMenu_branch_f791d
 
-Music_MainMenu_Ch2:
+	music_label Music_MainMenu_Ch2
 	duty_cycle 3
 	stereo_panning FALSE, TRUE
 	note_type 12, 0, -7
 	octave 3
 	note G_, 8
-Music_MainMenu_branch_f7949:
+	music_label Music_MainMenu_branch_f7949
 	note_type 12, 10, 2
 	note F#, 6
 	note F#, 1
@@ -72,11 +72,11 @@ Music_MainMenu_branch_f7949:
 	note F_, 4
 	sound_jump Music_MainMenu_branch_f7949
 
-Music_MainMenu_Ch3:
+	music_label Music_MainMenu_Ch3
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
 	rest 8
-Music_MainMenu_branch_f796f:
+	music_label Music_MainMenu_branch_f796f
 	octave 2
 	note F#, 1
 	rest 5
@@ -111,7 +111,7 @@ Music_MainMenu_branch_f796f:
 	rest 3
 	sound_jump Music_MainMenu_branch_f796f
 
-Music_MainMenu_Ch4:
+	music_label Music_MainMenu_Ch4
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	drum_speed 12
@@ -124,7 +124,7 @@ Music_MainMenu_Ch4:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-Music_MainMenu_branch_f79a5:
+	music_label Music_MainMenu_branch_f79a5
 	drum_note 3, 6
 	drum_note 3, 1
 	drum_note 3, 1

@@ -1,11 +1,11 @@
-Music_Route37:
+	music_header Music_Route37
 	channel_count 4
 	channel 1, Music_Route37_Ch1
 	channel 2, Music_Route37_Ch2
 	channel 3, Music_Route37_Ch3
 	channel 4, Music_Route37_Ch4
 
-Music_Route37_Ch1:
+	music_label Music_Route37_Ch1
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -14,7 +14,7 @@ Music_Route37_Ch1:
 	note_type 12, 11, 3
 	rest 16
 	rest 16
-Music_Route37_branch_ee969:
+	music_label Music_Route37_branch_ee969
 	volume_envelope 11, 3
 	rest 2
 	octave 2
@@ -68,7 +68,7 @@ Music_Route37_branch_ee969:
 	note E_, 2
 	note D#, 4
 	stereo_panning FALSE, TRUE
-Music_Route37_branch_ee9a5:
+	music_label Music_Route37_branch_ee9a5
 	sound_call Music_Route37_branch_ee9da
 	octave 3
 	note C#, 4
@@ -98,7 +98,7 @@ Music_Route37_branch_ee9a5:
 	rest 4
 	sound_jump Music_Route37_branch_ee969
 
-Music_Route37_branch_ee9da:
+	music_label Music_Route37_branch_ee9da
 	volume_envelope 12, 2
 	octave 2
 	note A_, 2
@@ -113,7 +113,7 @@ Music_Route37_branch_ee9da:
 	volume_envelope 11, 7
 	sound_ret
 
-Music_Route37_branch_ee9e9:
+	music_label Music_Route37_branch_ee9e9
 	volume_envelope 12, 2
 	octave 2
 	note B_, 2
@@ -128,7 +128,7 @@ Music_Route37_branch_ee9e9:
 	volume_envelope 11, 7
 	sound_ret
 
-Music_Route37_Ch2:
+	music_label Music_Route37_Ch2
 	duty_cycle 3
 	vibrato 28, 1, 2
 	note_type 12, 12, 2
@@ -159,7 +159,7 @@ Music_Route37_Ch2:
 	note B_, 1
 	volume_envelope 12, 2
 	note B_, 2
-Music_Route37_branch_eea24:
+	music_label Music_Route37_branch_eea24
 	sound_call Music_Route37_branch_eeab7
 	volume_envelope 12, 6
 	octave 4
@@ -272,7 +272,7 @@ Music_Route37_branch_eea24:
 	note F#, 2
 	sound_jump Music_Route37_branch_eea24
 
-Music_Route37_branch_eeab7:
+	music_label Music_Route37_branch_eeab7
 	volume_envelope 12, 7
 	octave 3
 	note F#, 4
@@ -286,15 +286,15 @@ Music_Route37_branch_eeab7:
 	note B_, 2
 	sound_ret
 
-Music_Route37_Ch3:
+	music_label Music_Route37_Ch3
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
-Music_Route37_branch_eeacc:
+	music_label Music_Route37_branch_eeacc
 	octave 2
 	note F#, 2
 	rest 6
 	sound_loop 4, Music_Route37_branch_eeacc
-Music_Route37_branch_eead3:
+	music_label Music_Route37_branch_eead3
 	sound_call Music_Route37_branch_eeb32
 	note A_, 2
 	octave 3
@@ -306,7 +306,7 @@ Music_Route37_branch_eead3:
 	note A_, 2
 	note F#, 2
 	note E_, 2
-Music_Route37_branch_eeae0:
+	music_label Music_Route37_branch_eeae0
 	note D#, 2
 	note F#, 2
 	sound_loop 4, Music_Route37_branch_eeae0
@@ -325,13 +325,13 @@ Music_Route37_branch_eeae0:
 	octave 2
 	note A_, 2
 	sound_call Music_Route37_branch_eeb32
-Music_Route37_branch_eeafb:
+	music_label Music_Route37_branch_eeafb
 	octave 2
 	note B_, 2
 	octave 3
 	note D#, 2
 	sound_loop 4, Music_Route37_branch_eeafb
-Music_Route37_branch_eeb03:
+	music_label Music_Route37_branch_eeb03
 	octave 2
 	note A_, 2
 	octave 3
@@ -340,13 +340,13 @@ Music_Route37_branch_eeb03:
 	note E_, 2
 	note C#, 2
 	sound_call Music_Route37_branch_eeb3c
-Music_Route37_branch_eeb10:
+	music_label Music_Route37_branch_eeb10
 	octave 2
 	note B_, 2
 	octave 3
 	note F#, 2
 	sound_loop 4, Music_Route37_branch_eeb10
-Music_Route37_branch_eeb18:
+	music_label Music_Route37_branch_eeb18
 	octave 2
 	note A_, 2
 	octave 3
@@ -356,13 +356,13 @@ Music_Route37_branch_eeb18:
 	note C#, 2
 	sound_call Music_Route37_branch_eeb3c
 	sound_call Music_Route37_branch_eeb32
-Music_Route37_branch_eeb28:
+	music_label Music_Route37_branch_eeb28
 	note F#, 2
 	rest 6
 	sound_loop 4, Music_Route37_branch_eeb28
 	sound_jump Music_Route37_branch_eead3
 
-Music_Route37_branch_eeb32:
+	music_label Music_Route37_branch_eeb32
 	octave 2
 	note F#, 2
 	note B_, 2
@@ -374,7 +374,7 @@ Music_Route37_branch_eeb32:
 	note B_, 2
 	sound_ret
 
-Music_Route37_branch_eeb3c:
+	music_label Music_Route37_branch_eeb3c
 	octave 2
 	note B_, 2
 	octave 3
@@ -393,10 +393,10 @@ Music_Route37_branch_eeb3c:
 	note D#, 2
 	sound_ret
 
-Music_Route37_Ch4:
+	music_label Music_Route37_Ch4
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
-Music_Route37_branch_eeb51:
+	music_label Music_Route37_branch_eeb51
 	drum_speed 12
 	sound_call Music_Route37_branch_eeb6b
 	drum_note 3, 1
@@ -415,7 +415,7 @@ Music_Route37_branch_eeb51:
 	drum_note 3, 1
 	sound_jump Music_Route37_branch_eeb51
 
-Music_Route37_branch_eeb6b:
+	music_label Music_Route37_branch_eeb6b
 	drum_note 3, 2
 	drum_note 4, 1
 	drum_note 4, 1

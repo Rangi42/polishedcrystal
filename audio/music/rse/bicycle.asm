@@ -3,14 +3,14 @@
 ; https://pastebin.com/prMfJEB0
 ; https://soundcloud.com/mmmmmmmmmmmmmmmmm-1/hoenn-bicycle-gbc-8-bit
 
-Music_BicycleRSE:
+	music_header Music_BicycleRSE
 	channel_count 4
 	channel 1, Music_BicycleRSE_Ch1
 	channel 2, Music_BicycleRSE_Ch2
 	channel 3, Music_BicycleRSE_Ch3
 	channel 4, Music_BicycleRSE_Ch4
 
-Music_BicycleRSE_Ch1:
+	music_label Music_BicycleRSE_Ch1
 	tempo 70
 	duty_cycle 3
 	vibrato 18, 1, 5
@@ -315,7 +315,7 @@ Music_BicycleRSE_Ch1:
 	note D_, 16
 	sound_jump Music_BicycleRSE_Ch1
 
-Music_BicycleRSE_Ch2:
+	music_label Music_BicycleRSE_Ch2
 	duty_cycle 2
 	vibrato 18, 1, 5
 	pitch_offset 1
@@ -680,7 +680,7 @@ Music_BicycleRSE_Ch2:
 	note A_, 4
 	sound_jump Music_BicycleRSE_Ch2
 
-Music_BicycleRSE_Ch2_branch_1:
+	music_label Music_BicycleRSE_Ch2_branch_1
 	octave 4
 	note D_, 2
 	octave 3
@@ -695,7 +695,7 @@ Music_BicycleRSE_Ch2_branch_1:
 	note A_, 2
 	sound_ret
 
-Music_BicycleRSE_Ch2_branch_2:
+	music_label Music_BicycleRSE_Ch2_branch_2
 	octave 4
 	note D_, 2
 	octave 3
@@ -708,7 +708,7 @@ Music_BicycleRSE_Ch2_branch_2:
 	note A_, 2
 	sound_ret
 
-Music_BicycleRSE_Ch3:
+	music_label Music_BicycleRSE_Ch3
 	note_type 12, 1, 3
 	rest 16
 	octave 5
@@ -721,7 +721,7 @@ Music_BicycleRSE_Ch3:
 	note C#, 2
 	note D_, 2
 	note E_, 2
-Music_BicycleRSE_Ch3_loop_main:
+	music_label Music_BicycleRSE_Ch3_loop_main
 	octave 3
 	note D_, 4
 	octave 4
@@ -1056,7 +1056,7 @@ Music_BicycleRSE_Ch3_loop_main:
 	rest 2
 	note G#, 2
 	rest 2
-Music_BicycleRSE_Ch3_loop_1:
+	music_label Music_BicycleRSE_Ch3_loop_1
 	octave 2
 	note A_, 4
 	octave 4
@@ -1065,13 +1065,13 @@ Music_BicycleRSE_Ch3_loop_1:
 	sound_loop 8, Music_BicycleRSE_Ch3_loop_1
 	sound_jump Music_BicycleRSE_Ch3_loop_main
 
-Music_BicycleRSE_Ch4:
+	music_label Music_BicycleRSE_Ch4
 	toggle_noise 3
 	drum_speed 12
 	rest 16
 	rest 16
-Music_BicycleRSE_Ch4_loop_main:
-Music_BicycleRSE_Ch4_loop_1:
+	music_label Music_BicycleRSE_Ch4_loop_main
+	music_label Music_BicycleRSE_Ch4_loop_1
 	rest 4
 	drum_note 9, 4
 	sound_loop 14, Music_BicycleRSE_Ch4_loop_1
@@ -1080,7 +1080,7 @@ Music_BicycleRSE_Ch4_loop_1:
 	drum_note 9, 4
 	drum_note 9, 4
 	drum_note 9, 4
-Music_BicycleRSE_Ch4_loop_2:
+	music_label Music_BicycleRSE_Ch4_loop_2
 	rest 4
 	drum_note 9, 4
 	sound_loop 14, Music_BicycleRSE_Ch4_loop_2
@@ -1090,10 +1090,10 @@ Music_BicycleRSE_Ch4_loop_2:
 	drum_note 9, 4
 	drum_note 9, 4
 	drum_note 12, 16
-Music_BicycleRSE_Ch4_loop_3:
+	music_label Music_BicycleRSE_Ch4_loop_3
 	rest 16
 	sound_loop 31, Music_BicycleRSE_Ch4_loop_3
-Music_BicycleRSE_Ch4_loop_4:
+	music_label Music_BicycleRSE_Ch4_loop_4
 	rest 4
 	drum_note 9, 4
 	sound_loop 8, Music_BicycleRSE_Ch4_loop_4

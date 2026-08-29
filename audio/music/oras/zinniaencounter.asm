@@ -3,14 +3,14 @@
 ; https://pastebin.com/eXmCVCCX
 ; https://hax.iimarckus.org/topic/6777/4/
 
-Music_ZinniaEncounterORAS:
+	music_header Music_ZinniaEncounterORAS
 	channel_count 4
 	channel 1, Music_ZinniaEncounterORAS_Ch1
 	channel 2, Music_ZinniaEncounterORAS_Ch2
 	channel 3, Music_ZinniaEncounterORAS_Ch3
 	channel 4, Music_ZinniaEncounterORAS_Ch4
 
-Music_ZinniaEncounterORAS_Ch1:
+	music_label Music_ZinniaEncounterORAS_Ch1
 	tempo 176
 	volume 7, 7
 	duty_cycle 0
@@ -19,7 +19,7 @@ Music_ZinniaEncounterORAS_Ch1:
 	note_type 12, 10, 3
 	octave 2
 	note B_, 8
-Music_ZinniaEncounterORAS_Ch1_loop:
+	music_label Music_ZinniaEncounterORAS_Ch1_loop
 	rest 4
 	octave 3
 	note F#, 1
@@ -161,7 +161,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	volume_envelope 10, 3
 	sound_jump Music_ZinniaEncounterORAS_Ch1_loop
 
-Music_ZinniaEncounterORAS_Ch2:
+	music_label Music_ZinniaEncounterORAS_Ch2
 	duty_cycle 1
 	vibrato 18, 2, 5
 	pitch_offset 1
@@ -176,7 +176,7 @@ Music_ZinniaEncounterORAS_Ch2:
 	note B_, 1
 	note A_, 1
 	note G#, 1
-Music_ZinniaEncounterORAS_Ch2_loop_main:
+	music_label Music_ZinniaEncounterORAS_Ch2_loop_main
 	vibrato 18, 2, 5
 	volume_envelope 11, 0
 	octave 3
@@ -218,7 +218,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	note B_, 4
 	octave 4
 	note E_, 4
-Music_ZinniaEncounterORAS_Ch2_loop_1:
+	music_label Music_ZinniaEncounterORAS_Ch2_loop_1
 	vibrato 34, 4, 3
 	volume_envelope 4, 0
 	note F#, 2
@@ -272,7 +272,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 	note F#, 4
 	sound_jump Music_ZinniaEncounterORAS_Ch2_loop_main
 
-Music_ZinniaEncounterORAS_Ch2_branch_1:
+	music_label Music_ZinniaEncounterORAS_Ch2_branch_1
 	note C#, 6
 	volume_envelope 11, 6
 	note C#, 6
@@ -290,13 +290,13 @@ Music_ZinniaEncounterORAS_Ch2_branch_1:
 	note C#, 2
 	sound_ret
 
-Music_ZinniaEncounterORAS_Ch3:
+	music_label Music_ZinniaEncounterORAS_Ch3
 	note_type 12, 1, 4
 	vibrato 18, 1, 5
 	octave 2
 	note G#, 2
 	rest 6
-Music_ZinniaEncounterORAS_Ch3_loop:
+	music_label Music_ZinniaEncounterORAS_Ch3_loop
 	sound_call Music_ZinniaEncounterORAS_Ch3_branch_1
 	octave 1
 	note B_, 2
@@ -353,7 +353,7 @@ Music_ZinniaEncounterORAS_Ch3_loop:
 	rest 2
 	sound_jump Music_ZinniaEncounterORAS_Ch3_loop
 
-Music_ZinniaEncounterORAS_Ch3_branch_1:
+	music_label Music_ZinniaEncounterORAS_Ch3_branch_1
 	note F#, 2
 	rest 2
 	note C#, 2
@@ -392,7 +392,7 @@ Music_ZinniaEncounterORAS_Ch3_branch_1:
 	rest 2
 	sound_ret
 
-Music_ZinniaEncounterORAS_Ch3_branch_2:
+	music_label Music_ZinniaEncounterORAS_Ch3_branch_2
 	note D_, 2
 	rest 2
 	octave 1
@@ -427,12 +427,12 @@ Music_ZinniaEncounterORAS_Ch3_branch_2:
 	note C#, 2
 	sound_ret
 
-Music_ZinniaEncounterORAS_Ch4:
+	music_label Music_ZinniaEncounterORAS_Ch4
 	toggle_noise 3
 	drum_speed 12
 	drum_note 12, 8
-Music_ZinniaEncounterORAS_Ch4_loop_main:
-Music_ZinniaEncounterORAS_Ch4_loop_1:
+	music_label Music_ZinniaEncounterORAS_Ch4_loop_main
+	music_label Music_ZinniaEncounterORAS_Ch4_loop_1
 	drum_note 1, 2
 	drum_note 2, 1
 	drum_note 2, 1
@@ -444,7 +444,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_1:
 	drum_note 2, 1
 	drum_note 1, 2
 	drum_note 4, 2
-Music_ZinniaEncounterORAS_Ch4_loop_2:
+	music_label Music_ZinniaEncounterORAS_Ch4_loop_2
 	drum_note 1, 2
 	drum_note 2, 1
 	drum_note 2, 1
@@ -456,7 +456,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_2:
 	drum_note 2, 1
 	drum_note 1, 2
 	drum_note 4, 2
-Music_ZinniaEncounterORAS_Ch4_loop_3:
+	music_label Music_ZinniaEncounterORAS_Ch4_loop_3
 	drum_note 1, 2
 	drum_note 2, 1
 	drum_note 2, 1
@@ -468,7 +468,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_3:
 	drum_note 2, 1
 	drum_note 1, 2
 	drum_note 4, 2
-Music_ZinniaEncounterORAS_Ch4_loop_4:
+	music_label Music_ZinniaEncounterORAS_Ch4_loop_4
 	drum_note 1, 2
 	drum_note 2, 1
 	drum_note 2, 1

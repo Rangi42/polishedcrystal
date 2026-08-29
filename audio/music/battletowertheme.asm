@@ -1,18 +1,18 @@
-Music_BattleTowerTheme:
+	music_header Music_BattleTowerTheme
 	channel_count 4
 	channel 1, Music_BattleTowerTheme_Ch1
 	channel 2, Music_BattleTowerTheme_Ch2
 	channel 3, Music_BattleTowerTheme_Ch3
 	channel 4, Music_BattleTowerTheme_Ch4
 
-Music_BattleTowerTheme_Ch1:
+	music_label Music_BattleTowerTheme_Ch1
 	tempo 141
 	volume 7, 7
 	pitch_offset 1
 	vibrato 18, 3, 4
 	stereo_panning FALSE, TRUE
 	note_type 6, 9, 4
-Music_BattleTowerTheme_branch_1788a5:
+	music_label Music_BattleTowerTheme_branch_1788a5
 	rest 16
 	rest 16
 	rest 12
@@ -186,7 +186,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	rest 12
 	sound_jump Music_BattleTowerTheme_branch_1788a5
 
-Music_BattleTowerTheme_branch_17895e:
+	music_label Music_BattleTowerTheme_branch_17895e
 	volume_envelope 9, 4
 	note A_, 2
 	rest 2
@@ -202,9 +202,9 @@ Music_BattleTowerTheme_branch_17895e:
 	note A_, 4
 	sound_ret
 
-Music_BattleTowerTheme_Ch2:
+	music_label Music_BattleTowerTheme_Ch2
 	vibrato 18, 3, 4
-Music_BattleTowerTheme_branch_178970:
+	music_label Music_BattleTowerTheme_branch_178970
 	duty_cycle 3
 	note_type 6, 11, 8
 	octave 3
@@ -344,7 +344,7 @@ Music_BattleTowerTheme_branch_178970:
 	note E_, 4
 	sound_jump Music_BattleTowerTheme_branch_178970
 
-Music_BattleTowerTheme_branch_178a15:
+	music_label Music_BattleTowerTheme_branch_178a15
 	note F_, 2
 	rest 2
 	note F_, 8
@@ -357,10 +357,10 @@ Music_BattleTowerTheme_branch_178a15:
 	note A_, 4
 	sound_ret
 
-Music_BattleTowerTheme_Ch3:
+	music_label Music_BattleTowerTheme_Ch3
 	vibrato 18, 3, 4
 	note_type 6, 1, 6
-Music_BattleTowerTheme_branch_178a26:
+	music_label Music_BattleTowerTheme_branch_178a26
 	stereo_panning TRUE, TRUE
 	sound_call Music_BattleTowerTheme_branch_178afe
 	note C_, 2
@@ -566,7 +566,7 @@ Music_BattleTowerTheme_branch_178a26:
 	rest 12
 	sound_jump Music_BattleTowerTheme_branch_178a26
 
-Music_BattleTowerTheme_branch_178afe:
+	music_label Music_BattleTowerTheme_branch_178afe
 	octave 3
 	note C_, 2
 	rest 2
@@ -583,10 +583,10 @@ Music_BattleTowerTheme_branch_178afe:
 	rest 2
 	sound_ret
 
-Music_BattleTowerTheme_Ch4:
+	music_label Music_BattleTowerTheme_Ch4
 	toggle_noise 3
 	drum_speed 12
-Music_BattleTowerTheme_branch_178b11:
+	music_label Music_BattleTowerTheme_branch_178b11
 	sound_call Music_BattleTowerTheme_branch_178b58
 	drum_note 3, 2
 	drum_note 3, 4
@@ -597,7 +597,7 @@ Music_BattleTowerTheme_branch_178b11:
 	drum_note 2, 1
 	drum_note 3, 1
 	drum_note 2, 1
-Music_BattleTowerTheme_branch_178b1d:
+	music_label Music_BattleTowerTheme_branch_178b1d
 	sound_call Music_BattleTowerTheme_branch_178b58
 	sound_call Music_BattleTowerTheme_branch_178b61
 	sound_loop 2, Music_BattleTowerTheme_branch_178b1d
@@ -609,7 +609,7 @@ Music_BattleTowerTheme_branch_178b1d:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 8
-Music_BattleTowerTheme_branch_178b35:
+	music_label Music_BattleTowerTheme_branch_178b35
 	sound_call Music_BattleTowerTheme_branch_178b76
 	drum_note 3, 2
 	drum_note 3, 2
@@ -636,7 +636,7 @@ Music_BattleTowerTheme_branch_178b35:
 	drum_note 2, 1
 	sound_jump Music_BattleTowerTheme_branch_178b11
 
-Music_BattleTowerTheme_branch_178b58:
+	music_label Music_BattleTowerTheme_branch_178b58
 	drum_note 3, 2
 	drum_note 3, 4
 	drum_note 3, 1
@@ -647,7 +647,7 @@ Music_BattleTowerTheme_branch_178b58:
 	drum_note 3, 1
 	sound_ret
 
-Music_BattleTowerTheme_branch_178b61:
+	music_label Music_BattleTowerTheme_branch_178b61
 	drum_note 3, 2
 	drum_note 3, 4
 	drum_note 3, 1
@@ -660,7 +660,7 @@ Music_BattleTowerTheme_branch_178b61:
 	drum_note 2, 1
 	sound_ret
 
-Music_BattleTowerTheme_branch_178b6c:
+	music_label Music_BattleTowerTheme_branch_178b6c
 	drum_note 3, 2
 	drum_note 3, 4
 	drum_note 3, 1
@@ -672,7 +672,7 @@ Music_BattleTowerTheme_branch_178b6c:
 	drum_note 3, 1
 	sound_ret
 
-Music_BattleTowerTheme_branch_178b76:
+	music_label Music_BattleTowerTheme_branch_178b76
 	drum_note 3, 2
 	drum_note 2, 2
 	drum_note 3, 2

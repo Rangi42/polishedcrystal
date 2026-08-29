@@ -1,11 +1,11 @@
-Music_Clair:
+	music_header Music_Clair
 	channel_count 4
 	channel 1, Music_Clair_Ch1
 	channel 2, Music_Clair_Ch2
 	channel 3, Music_Clair_Ch3
 	channel 4, Music_Clair_Ch4
 
-Music_Clair_Ch1:
+	music_label Music_Clair_Ch1
 	tempo 136
 	volume 7, 7
 	pitch_offset 1
@@ -13,7 +13,7 @@ Music_Clair_Ch1:
 	stereo_panning FALSE, TRUE
 	note_type 12, 9, 3
 	duty_cycle 3
-Music_Clair_branch_1faab:
+	music_label Music_Clair_branch_1faab
 	octave 4
 	note F_, 1
 	note F#, 1
@@ -37,7 +37,7 @@ Music_Clair_branch_1faab:
 	note D#, 4
 	note F_, 4
 	note G_, 4
-Music_Clair_branch_1fac9:
+	music_label Music_Clair_branch_1fac9
 	volume_envelope 9, 3
 	sound_call Music_Clair_branch_1fb12
 	octave 2
@@ -96,7 +96,7 @@ Music_Clair_branch_1fac9:
 	note D#, 1
 	sound_jump Music_Clair_branch_1fac9
 
-Music_Clair_branch_1fb12:
+	music_label Music_Clair_branch_1fb12
 	duty_cycle 3
 	stereo_panning TRUE, TRUE
 	octave 3
@@ -122,7 +122,7 @@ Music_Clair_branch_1fb12:
 	rest 1
 	sound_ret
 
-Music_Clair_branch_1fb2e:
+	music_label Music_Clair_branch_1fb2e
 	octave 4
 	note F#, 1
 	note D#, 1
@@ -143,11 +143,11 @@ Music_Clair_branch_1fb2e:
 	note F#, 1
 	sound_ret
 
-Music_Clair_Ch2:
+	music_label Music_Clair_Ch2
 	duty_cycle 3
 	vibrato 18, 3, 4
 	note_type 6, 11, 7
-Music_Clair_branch_1fb49:
+	music_label Music_Clair_branch_1fb49
 	octave 3
 	note A#, 2
 	note B_, 2
@@ -186,7 +186,7 @@ Music_Clair_branch_1fb49:
 	note G_, 2
 	note A#, 2
 	volume_envelope 11, 7
-Music_Clair_branch_1fb77:
+	music_label Music_Clair_branch_1fb77
 	sound_call Music_Clair_branch_1fba6
 	note F#, 2
 	rest 4
@@ -226,7 +226,7 @@ Music_Clair_branch_1fb77:
 	rest 4
 	sound_jump Music_Clair_branch_1fb77
 
-Music_Clair_branch_1fba6:
+	music_label Music_Clair_branch_1fba6
 	octave 4
 	note F#, 2
 	rest 4
@@ -247,7 +247,7 @@ Music_Clair_branch_1fba6:
 	rest 4
 	sound_ret
 
-Music_Clair_Ch3:
+	music_label Music_Clair_Ch3
 	note_type 12, 1, 4
 	transpose 0, 12
 	octave 3
@@ -269,7 +269,7 @@ Music_Clair_Ch3:
 	note A#, 4
 	note G#, 4
 	note G_, 4
-Music_Clair_branch_1fbd1:
+	music_label Music_Clair_branch_1fbd1
 	sound_call Music_Clair_branch_1fc3c
 	octave 2
 	note C#, 2
@@ -371,7 +371,7 @@ Music_Clair_branch_1fbd1:
 	note G#, 1
 	sound_jump Music_Clair_branch_1fbd1
 
-Music_Clair_branch_1fc3c:
+	music_label Music_Clair_branch_1fc3c
 	octave 1
 	note G#, 2
 	rest 1
@@ -388,7 +388,7 @@ Music_Clair_branch_1fc3c:
 	note G#, 2
 	sound_ret
 
-Music_Clair_Ch4:
+	music_label Music_Clair_Ch4
 	toggle_noise 3
 	drum_speed 12
 	stereo_panning TRUE, FALSE
@@ -404,7 +404,7 @@ Music_Clair_Ch4:
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 3, 1
-Music_Clair_branch_1fc5e:
+	music_label Music_Clair_branch_1fc5e
 	stereo_panning TRUE, TRUE
 	sound_call Music_Clair_branch_1fc6e
 	drum_note 8, 1
@@ -413,7 +413,7 @@ Music_Clair_branch_1fc5e:
 	drum_note 7, 1
 	sound_jump Music_Clair_branch_1fc5e
 
-Music_Clair_branch_1fc6e:
+	music_label Music_Clair_branch_1fc6e
 	drum_note 4, 2
 	stereo_panning TRUE, FALSE
 	drum_note 8, 2

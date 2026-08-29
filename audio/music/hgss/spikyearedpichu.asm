@@ -3,14 +3,14 @@
 ; https://pastebin.com/stpKurZA
 ; https://hax.iimarckus.org/topic/6777/3/
 
-Music_SpikyEaredPichuHGSS:
+	music_header Music_SpikyEaredPichuHGSS
 	channel_count 4
 	channel 1, Music_SpikyEaredPichuHGSS_Ch1
 	channel 2, Music_SpikyEaredPichuHGSS_Ch2
 	channel 3, Music_SpikyEaredPichuHGSS_Ch3
 	channel 4, Music_SpikyEaredPichuHGSS_Ch4
 
-Music_SpikyEaredPichuHGSS_Ch1:
+	music_label Music_SpikyEaredPichuHGSS_Ch1
 	tempo 160
 	volume 7, 7
 	sound_call Music_SpikyEaredPichuHGSS_Ch1_branch_1
@@ -58,7 +58,7 @@ Music_SpikyEaredPichuHGSS_Ch1:
 	note C_, 4
 	sound_jump Music_SpikyEaredPichuHGSS_Ch1
 
-Music_SpikyEaredPichuHGSS_Ch1_branch_1:
+	music_label Music_SpikyEaredPichuHGSS_Ch1_branch_1
 	note_type 4, 9, 2
 	duty_cycle 0
 	octave 3
@@ -130,7 +130,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note E_, 4
 	sound_ret
 
-Music_SpikyEaredPichuHGSS_Ch2:
+	music_label Music_SpikyEaredPichuHGSS_Ch2
 	volume 7, 7
 	duty_cycle 2
 	note_type 12, 11, 3
@@ -182,7 +182,7 @@ Music_SpikyEaredPichuHGSS_Ch2:
 	octave 2
 	note E_, 4
 	volume_envelope 9, 3
-Music_SpikyEaredPichuHGSS_Ch2_loop_1:
+	music_label Music_SpikyEaredPichuHGSS_Ch2_loop_1
 	octave 1
 	note F_, 2
 	octave 2
@@ -249,7 +249,7 @@ Music_SpikyEaredPichuHGSS_Ch2_loop_1:
 	rest 4
 	sound_jump Music_SpikyEaredPichuHGSS_Ch2
 
-Music_SpikyEaredPichuHGSS_Ch3:
+	music_label Music_SpikyEaredPichuHGSS_Ch3
 	note_type 6, 1, 5
 	volume_envelope 1, 0
 	rest 16
@@ -523,11 +523,11 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	rest 8
 	sound_jump Music_SpikyEaredPichuHGSS_Ch3
 
-Music_SpikyEaredPichuHGSS_Ch4:
+	music_label Music_SpikyEaredPichuHGSS_Ch4
 	toggle_noise 3
 	drum_speed 12
-Music_SpikyEaredPichuHGSS_Ch4_loop_main:
-Music_SpikyEaredPichuHGSS_Ch4_loop_1:
+	music_label Music_SpikyEaredPichuHGSS_Ch4_loop_main
+	music_label Music_SpikyEaredPichuHGSS_Ch4_loop_1
 	drum_note 9, 8
 	drum_note 9, 8
 	drum_note 9, 8

@@ -735,6 +735,7 @@ SECTION "GB Printer", ROMX
 INCLUDE "engine/printer/printer.asm"
 INCLUDE "engine/printer/printer_serial.asm"
 INCLUDE "audio/music/printer.asm"
+music_end
 
 
 SECTION "LureMenu", ROMX

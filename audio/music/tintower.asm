@@ -1,17 +1,17 @@
-Music_TinTower:
+	music_header Music_TinTower
 	channel_count 4
 	channel 1, Music_TinTower_Ch1
 	channel 2, Music_TinTower_Ch2
 	channel 3, Music_TinTower_Ch3
 	channel 4, Music_TinTower_Ch4
 
-Music_TinTower_Ch1:
+	music_label Music_TinTower_Ch1
 	tempo 208
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 4
 	vibrato 8, 4, 5
-Music_TinTower_branch_f682a:
+	music_label Music_TinTower_branch_f682a
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 5
 	octave 3
@@ -96,13 +96,13 @@ Music_TinTower_branch_f682a:
 	note A#, 4
 	sound_jump Music_TinTower_branch_f682a
 
-Music_TinTower_Ch2:
+	music_label Music_TinTower_Ch2
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 24, 4, 4
-Music_TinTower_branch_f6893:
+	music_label Music_TinTower_branch_f6893
 	stereo_panning TRUE, TRUE
-Music_TinTower_branch_f6895:
+	music_label Music_TinTower_branch_f6895
 	note_type 12, 11, 5
 	octave 4
 	note C_, 4
@@ -185,9 +185,9 @@ Music_TinTower_branch_f6895:
 	note C#, 2
 	sound_jump Music_TinTower_branch_f6893
 
-Music_TinTower_Ch3:
+	music_label Music_TinTower_Ch3
 	note_type 12, 1, 4
-Music_TinTower_branch_f68fb:
+	music_label Music_TinTower_branch_f68fb
 	rest 16
 	rest 16
 	rest 16
@@ -259,10 +259,10 @@ Music_TinTower_branch_f68fb:
 	stereo_panning TRUE, TRUE
 	sound_jump Music_TinTower_branch_f68fb
 
-Music_TinTower_Ch4:
+	music_label Music_TinTower_Ch4
 	toggle_noise 0
 	drum_speed 12
-Music_TinTower_branch_f694c:
+	music_label Music_TinTower_branch_f694c
 	stereo_panning FALSE, TRUE
 	drum_note 8, 2
 	stereo_panning TRUE, FALSE

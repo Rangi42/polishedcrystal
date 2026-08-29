@@ -2,14 +2,14 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/sinnohtrainer.asm
 
-Music_TrainerBattleDPPt:
+	music_header Music_TrainerBattleDPPt
 	channel_count 4
 	channel 1, Music_TrainerBattleDPPt_Ch1
 	channel 2, Music_TrainerBattleDPPt_Ch2
 	channel 3, Music_TrainerBattleDPPt_Ch3
 	channel 4, Music_TrainerBattleDPPt_Ch4
 
-Music_TrainerBattleDPPt_Ch1:
+	music_label Music_TrainerBattleDPPt_Ch1
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo 105
@@ -77,7 +77,7 @@ Music_TrainerBattleDPPt_Ch1:
 	note G_, 2
 	volume_envelope 11, 7
 	note G#, 6
-Music_TrainerBattleDPPt_Ch1_loop:
+	music_label Music_TrainerBattleDPPt_Ch1_loop
 	volume_envelope 11, 4
 	octave 2
 	note G_, 6
@@ -539,7 +539,7 @@ Music_TrainerBattleDPPt_Ch1_loop:
 	note F_, 2
 	sound_jump Music_TrainerBattleDPPt_Ch1_loop
 
-Music_TrainerBattleDPPt_Ch2:
+	music_label Music_TrainerBattleDPPt_Ch2
 	duty_cycle 3
 	pitch_offset 1
 	volume_envelope 12, 2
@@ -607,7 +607,7 @@ Music_TrainerBattleDPPt_Ch2:
 	note G#, 2
 	note A#, 2
 	note B_, 2
-Music_TrainerBattleDPPt_Ch2_loop:
+	music_label Music_TrainerBattleDPPt_Ch2_loop
 	volume_envelope 12, 7
 	octave 3
 	note C_, 6
@@ -1023,7 +1023,7 @@ Music_TrainerBattleDPPt_Ch2_loop:
 	duty_cycle 3
 	sound_jump Music_TrainerBattleDPPt_Ch2_loop
 
-Music_TrainerBattleDPPt_Ch3:
+	music_label Music_TrainerBattleDPPt_Ch3
 	volume_envelope 1, 9
 	volume_envelope 1, 6
 	note_type 12, 1, 6
@@ -1135,7 +1135,7 @@ Music_TrainerBattleDPPt_Ch3:
 	note C#, 2
 	octave 2
 	note A#, 2
-Music_TrainerBattleDPPt_Ch3_loop:
+	music_label Music_TrainerBattleDPPt_Ch3_loop
 	octave 3
 	note C_, 2
 	note G_, 2
@@ -1800,7 +1800,7 @@ Music_TrainerBattleDPPt_Ch3_loop:
 	note A#, 2
 	sound_jump Music_TrainerBattleDPPt_Ch3_loop
 
-Music_TrainerBattleDPPt_Ch4:
+	music_label Music_TrainerBattleDPPt_Ch4
 	toggle_noise 3
 	drum_speed 12
 	rest 16
@@ -1851,7 +1851,7 @@ Music_TrainerBattleDPPt_Ch4:
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 2
-Music_TrainerBattleDPPt_Ch4_loop:
+	music_label Music_TrainerBattleDPPt_Ch4_loop
 	drum_note 4, 2
 	drum_note 8, 2
 	drum_note 1, 2

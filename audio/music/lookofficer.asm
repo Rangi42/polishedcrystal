@@ -1,10 +1,10 @@
-Music_LookOfficer:
+	music_header Music_LookOfficer
 	channel_count 3
 	channel 1, Music_LookOfficer_Ch1
 	channel 2, Music_LookOfficer_Ch2
 	channel 3, Music_LookOfficer_Ch3
 
-Music_LookOfficer_Ch1:
+	music_label Music_LookOfficer_Ch1
 	tempo 116
 	volume 7, 7
 	pitch_offset 1
@@ -21,7 +21,7 @@ Music_LookOfficer_Ch1:
 	volume_envelope 2, -7
 	octave 3
 	note B_, 16
-Music_LookOfficer_branch_ed852:
+	music_label Music_LookOfficer_branch_ed852
 	volume_envelope 8, 2
 	rest 4
 	note B_, 6
@@ -35,7 +35,7 @@ Music_LookOfficer_branch_ed852:
 	note A_, 16
 	sound_jump Music_LookOfficer_branch_ed852
 
-Music_LookOfficer_Ch2:
+	music_label Music_LookOfficer_Ch2
 	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 12, 11, 7
@@ -60,7 +60,7 @@ Music_LookOfficer_Ch2:
 	note B_, 2
 	octave 2
 	note D#, 2
-Music_LookOfficer_branch_ed882:
+	music_label Music_LookOfficer_branch_ed882
 	note E_, 2
 	note G#, 2
 	octave 3
@@ -78,7 +78,7 @@ Music_LookOfficer_branch_ed882:
 	sound_call Music_LookOfficer_branch_ed89e
 	sound_jump Music_LookOfficer_branch_ed882
 
-Music_LookOfficer_branch_ed89e:
+	music_label Music_LookOfficer_branch_ed89e
 	octave 1
 	note A_, 2
 	octave 2
@@ -95,7 +95,7 @@ Music_LookOfficer_branch_ed89e:
 	note C#, 2
 	sound_ret
 
-Music_LookOfficer_Ch3:
+	music_label Music_LookOfficer_Ch3
 	vibrato 20, 1, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
@@ -117,7 +117,7 @@ Music_LookOfficer_Ch3:
 	note C#, 2
 	rest 1
 	note D#, 2
-Music_LookOfficer_branch_ed8c8:
+	music_label Music_LookOfficer_branch_ed8c8
 	note E_, 6
 	note D#, 6
 	note C#, 4

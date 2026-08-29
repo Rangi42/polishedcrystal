@@ -1,11 +1,11 @@
-Music_LookBeauty:
+	music_header Music_LookBeauty
 	channel_count 4
 	channel 1, Music_LookBeauty_Ch1
 	channel 2, Music_LookBeauty_Ch2
 	channel 3, Music_LookBeauty_Ch3
 	channel 4, Music_LookBeauty_Ch4
 
-Music_LookBeauty_Ch1:
+	music_label Music_LookBeauty_Ch1
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 5
 	duty_cycle 2
@@ -17,7 +17,7 @@ Music_LookBeauty_Ch1:
 	octave 4
 	note C_, 8
 	duty_cycle 3
-Music_LookBeauty_branch_eee5f:
+	music_label Music_LookBeauty_branch_eee5f
 	rest 4
 	octave 3
 	note D_, 1
@@ -77,7 +77,7 @@ Music_LookBeauty_branch_eee5f:
 	note C_, 1
 	sound_jump Music_LookBeauty_branch_eee5f
 
-Music_LookBeauty_Ch2:
+	music_label Music_LookBeauty_Ch2
 	stereo_panning TRUE, FALSE
 	vibrato 16, 2, 3
 	duty_cycle 2
@@ -112,7 +112,7 @@ Music_LookBeauty_Ch2:
 	note F#, 1
 	rest 1
 	duty_cycle 3
-Music_LookBeauty_branch_eeec5:
+	music_label Music_LookBeauty_branch_eeec5
 	note_type 12, 12, 7
 	note G_, 16
 	note A_, 8
@@ -154,7 +154,7 @@ Music_LookBeauty_branch_eeec5:
 	note A_, 8
 	sound_jump Music_LookBeauty_branch_eeec5
 
-Music_LookBeauty_Ch3:
+	music_label Music_LookBeauty_Ch3
 	stereo_panning TRUE, TRUE
 	vibrato 8, 1, 2
 	note_type 12, 1, 5
@@ -171,7 +171,7 @@ Music_LookBeauty_Ch3:
 	octave 3
 	note D_, 7
 	note F#, 1
-Music_LookBeauty_branch_eef0f:
+	music_label Music_LookBeauty_branch_eef0f
 	note G_, 4
 	octave 4
 	note B_, 1
@@ -294,19 +294,19 @@ Music_LookBeauty_branch_eef0f:
 	note D_, 8
 	sound_jump Music_LookBeauty_branch_eef0f
 
-Music_LookBeauty_Ch4:
+	music_label Music_LookBeauty_Ch4
 	toggle_noise 3
 	drum_speed 12
 	rest 16
 	rest 16
-Music_LookBeauty_branch_eef91:
+	music_label Music_LookBeauty_branch_eef91
 	sound_call Music_LookBeauty_branch_eefa1
 	sound_call Music_LookBeauty_branch_eefa1
 	sound_call Music_LookBeauty_branch_eefa1
 	sound_call Music_LookBeauty_branch_eefa1
 	sound_jump Music_LookBeauty_branch_eef91
 
-Music_LookBeauty_branch_eefa1:
+	music_label Music_LookBeauty_branch_eefa1
 	drum_note 7, 2
 	drum_note 8, 2
 	drum_note 3, 2

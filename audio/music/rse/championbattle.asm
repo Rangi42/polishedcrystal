@@ -3,21 +3,21 @@
 ; https://pastebin.com/qyNUWZfz
 ; https://hax.iimarckus.org/topic/6777/4/
 
-Music_ChampionBattleRSE:
+	music_header Music_ChampionBattleRSE
 	channel_count 4
 	channel 1, Music_ChampionBattleRSE_Ch1
 	channel 2, Music_ChampionBattleRSE_Ch2
 	channel 3, Music_ChampionBattleRSE_Ch3
 	channel 4, Music_ChampionBattleRSE_Ch4
 
-Music_ChampionBattleRSE_Ch1:
+	music_label Music_ChampionBattleRSE_Ch1
 	tempo 192
 	volume 7, 7
 	duty_cycle 2
 	pitch_offset 2
 	vibrato 8, 1, 5
 	note_type 3, 9, 4
-Music_ChampionBattleRSE_Ch1_loop_1:
+	music_label Music_ChampionBattleRSE_Ch1_loop_1
 	octave 5
 	note G_, 2
 	note G#, 2
@@ -70,9 +70,9 @@ Music_ChampionBattleRSE_Ch1_loop_1:
 	note F_, 3
 	volume_envelope 11, 5
 	note G_, 2
-Music_ChampionBattleRSE_Ch1_loop_main:
+	music_label Music_ChampionBattleRSE_Ch1_loop_main
 	duty_cycle 1
-Music_ChampionBattleRSE_Ch1_loop_2:
+	music_label Music_ChampionBattleRSE_Ch1_loop_2
 	volume_envelope 11, 0
 	octave 4
 	note C_, 2
@@ -316,7 +316,7 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	note A#, 10
 	sound_jump Music_ChampionBattleRSE_Ch1_loop_main
 
-Music_ChampionBattleRSE_Ch1_branch_1:
+	music_label Music_ChampionBattleRSE_Ch1_branch_1
 	octave 4
 	note C_, 1
 	note C_, 1
@@ -342,7 +342,7 @@ Music_ChampionBattleRSE_Ch1_branch_1:
 	note F#, 2
 	sound_ret
 
-Music_ChampionBattleRSE_Ch2:
+	music_label Music_ChampionBattleRSE_Ch2
 	duty_cycle 3
 	vibrato 18, 2, 5
 	pitch_offset 1
@@ -428,9 +428,9 @@ Music_ChampionBattleRSE_Ch2:
 	note F_, 3
 	volume_envelope 11, 5
 	note G_, 2
-Music_ChampionBattleRSE_Ch2_loop_main:
+	music_label Music_ChampionBattleRSE_Ch2_loop_main
 	duty_cycle 0
-Music_ChampionBattleRSE_Ch2_loop_1:
+	music_label Music_ChampionBattleRSE_Ch2_loop_1
 	volume_envelope 11, 0
 	octave 3
 	note E_, 2
@@ -615,7 +615,7 @@ Music_ChampionBattleRSE_Ch2_loop_1:
 	note F_, 10
 	sound_jump Music_ChampionBattleRSE_Ch2_loop_main
 
-Music_ChampionBattleRSE_Ch2_branch_1:
+	music_label Music_ChampionBattleRSE_Ch2_branch_1
 	octave 3
 	note G_, 1
 	note G_, 1
@@ -640,7 +640,7 @@ Music_ChampionBattleRSE_Ch2_branch_1:
 	note D#, 2
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3:
+	music_label Music_ChampionBattleRSE_Ch3
 	note_type 12, 1, 9
 	vibrato 18, 1, 5
 	octave 3
@@ -661,7 +661,7 @@ Music_ChampionBattleRSE_Ch3:
 	note C#, 1
 	note D#, 1
 	note C#, 1
-Music_ChampionBattleRSE_Ch3_loop_1:
+	music_label Music_ChampionBattleRSE_Ch3_loop_1
 	sound_call Music_ChampionBattleRSE_Ch3_branch_1
 	note D#, 1
 	note F_, 1
@@ -676,8 +676,8 @@ Music_ChampionBattleRSE_Ch3_loop_1:
 	note F#, 1
 	note F_, 1
 	note D#, 1
-Music_ChampionBattleRSE_Ch3_loop_main:
-Music_ChampionBattleRSE_Ch3_loop_2:
+	music_label Music_ChampionBattleRSE_Ch3_loop_main
+	music_label Music_ChampionBattleRSE_Ch3_loop_2
 	note C_, 1
 	note G_, 1
 	sound_loop 6, Music_ChampionBattleRSE_Ch3_loop_2
@@ -687,7 +687,7 @@ Music_ChampionBattleRSE_Ch3_loop_2:
 	octave 2
 	note G_, 1
 	note E_, 1
-Music_ChampionBattleRSE_Ch3_loop_3:
+	music_label Music_ChampionBattleRSE_Ch3_loop_3
 	note C#, 1
 	note G#, 1
 	sound_loop 6, Music_ChampionBattleRSE_Ch3_loop_3
@@ -695,7 +695,7 @@ Music_ChampionBattleRSE_Ch3_loop_3:
 	note C#, 1
 	note G#, 1
 	note F_, 1
-Music_ChampionBattleRSE_Ch3_loop_4:
+	music_label Music_ChampionBattleRSE_Ch3_loop_4
 	note C_, 1
 	note G_, 1
 	sound_loop 5, Music_ChampionBattleRSE_Ch3_loop_4
@@ -710,7 +710,7 @@ Music_ChampionBattleRSE_Ch3_loop_4:
 	sound_call Music_ChampionBattleRSE_Ch3_branch_7
 	sound_call Music_ChampionBattleRSE_Ch3_branch_6
 	sound_call Music_ChampionBattleRSE_Ch3_branch_7
-Music_ChampionBattleRSE_Ch3_loop_5:
+	music_label Music_ChampionBattleRSE_Ch3_loop_5
 	note D#, 1
 	note A#, 1
 	sound_loop 8, Music_ChampionBattleRSE_Ch3_loop_5
@@ -820,7 +820,7 @@ Music_ChampionBattleRSE_Ch3_loop_5:
 	sound_jump Music_ChampionBattleRSE_Ch3_loop_main
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_1:
+	music_label Music_ChampionBattleRSE_Ch3_branch_1
 	octave 2
 	note C_, 1
 	note F#, 1
@@ -837,7 +837,7 @@ Music_ChampionBattleRSE_Ch3_branch_1:
 	note C_, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_2:
+	music_label Music_ChampionBattleRSE_Ch3_branch_2
 	note C_, 1
 	note G_, 1
 	octave 3
@@ -852,7 +852,7 @@ Music_ChampionBattleRSE_Ch3_branch_2:
 	note G_, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_3:
+	music_label Music_ChampionBattleRSE_Ch3_branch_3
 	octave 2
 	note C_, 1
 	note C_, 1
@@ -877,7 +877,7 @@ Music_ChampionBattleRSE_Ch3_branch_3:
 	note G_, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_4:
+	music_label Music_ChampionBattleRSE_Ch3_branch_4
 	octave 2
 	note C#, 1
 	note G#, 1
@@ -902,7 +902,7 @@ Music_ChampionBattleRSE_Ch3_branch_4:
 	note D_, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_5:
+	music_label Music_ChampionBattleRSE_Ch3_branch_5
 	octave 2
 	note E_, 1
 	note B_, 1
@@ -933,7 +933,7 @@ Music_ChampionBattleRSE_Ch3_branch_5:
 	note F_, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_6:
+	music_label Music_ChampionBattleRSE_Ch3_branch_6
 	note C_, 1
 	note G_, 1
 	note C_, 1
@@ -952,7 +952,7 @@ Music_ChampionBattleRSE_Ch3_branch_6:
 	note G_, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch3_branch_7:
+	music_label Music_ChampionBattleRSE_Ch3_branch_7
 	note C#, 1
 	note G#, 1
 	note C#, 1
@@ -971,7 +971,7 @@ Music_ChampionBattleRSE_Ch3_branch_7:
 	note G#, 1
 	sound_ret
 
-Music_ChampionBattleRSE_Ch4:
+	music_label Music_ChampionBattleRSE_Ch4
 	toggle_noise 3
 	drum_speed 6
 	drum_note 1, 6
@@ -984,8 +984,8 @@ Music_ChampionBattleRSE_Ch4:
 	sound_call Music_ChampionBattleRSE_Ch4_branch_2
 	sound_call Music_ChampionBattleRSE_Ch4_branch_1
 	sound_call Music_ChampionBattleRSE_Ch4_branch_2
-Music_ChampionBattleRSE_Ch4_loop_main:
-Music_ChampionBattleRSE_Ch4_loop_1:
+	music_label Music_ChampionBattleRSE_Ch4_loop_main
+	music_label Music_ChampionBattleRSE_Ch4_loop_1
 	sound_call Music_ChampionBattleRSE_Ch4_branch_3
 	sound_loop 4, Music_ChampionBattleRSE_Ch4_loop_1
 	drum_note 4, 2
@@ -1076,7 +1076,7 @@ Music_ChampionBattleRSE_Ch4_loop_1:
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 2
-Music_ChampionBattleRSE_Ch4_loop_2:
+	music_label Music_ChampionBattleRSE_Ch4_loop_2
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2
@@ -1115,12 +1115,12 @@ Music_ChampionBattleRSE_Ch4_loop_2:
 	drum_note 4, 4
 	drum_note 1, 2
 	drum_note 1, 2
-Music_ChampionBattleRSE_Ch4_loop_3:
+	music_label Music_ChampionBattleRSE_Ch4_loop_3
 	sound_call Music_ChampionBattleRSE_Ch4_branch_3
 	sound_loop 4, Music_ChampionBattleRSE_Ch4_loop_3
 	sound_jump Music_ChampionBattleRSE_Ch4_loop_main
 
-Music_ChampionBattleRSE_Ch4_branch_1:
+	music_label Music_ChampionBattleRSE_Ch4_branch_1
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 2
@@ -1137,7 +1137,7 @@ Music_ChampionBattleRSE_Ch4_branch_1:
 	drum_note 4, 2
 	sound_ret
 
-Music_ChampionBattleRSE_Ch4_branch_2:
+	music_label Music_ChampionBattleRSE_Ch4_branch_2
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 2
@@ -1154,7 +1154,7 @@ Music_ChampionBattleRSE_Ch4_branch_2:
 	drum_note 4, 2
 	sound_ret
 
-Music_ChampionBattleRSE_Ch4_branch_3:
+	music_label Music_ChampionBattleRSE_Ch4_branch_3
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2

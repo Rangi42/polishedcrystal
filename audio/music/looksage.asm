@@ -1,9 +1,9 @@
-Music_LookSage:
+	music_header Music_LookSage
 	channel_count 2
 	channel 1, Music_LookSage_Ch1
 	channel 3, Music_LookSage_Ch3
 
-Music_LookSage_Ch1:
+	music_label Music_LookSage_Ch1
 	tempo 144
 	stereo_panning FALSE, TRUE
 	volume 7, 7
@@ -29,7 +29,7 @@ Music_LookSage_Ch1:
 	note F_, 2
 	volume_envelope 9, 3
 	note F_, 2
-Music_LookSage_branch_ee38e:
+	music_label Music_LookSage_branch_ee38e
 	volume_envelope 11, 3
 	note D_, 2
 	volume_envelope 9, 3
@@ -102,7 +102,7 @@ Music_LookSage_branch_ee38e:
 	sound_call Music_LookSage_branch_ee3fa
 	sound_jump Music_LookSage_branch_ee38e
 
-Music_LookSage_branch_ee3fa:
+	music_label Music_LookSage_branch_ee3fa
 	volume_envelope 11, 3
 	octave 2
 	note E_, 2
@@ -122,7 +122,7 @@ Music_LookSage_branch_ee3fa:
 	note A_, 2
 	sound_ret
 
-Music_LookSage_Ch3:
+	music_label Music_LookSage_Ch3
 	stereo_panning TRUE, FALSE
 	vibrato 22, 2, 3
 	note_type 12, 1, 0
@@ -142,7 +142,7 @@ Music_LookSage_Ch3:
 	note E_, 14
 	note G_, 1
 	note G#, 1
-Music_LookSage_branch_ee430:
+	music_label Music_LookSage_branch_ee430
 	note A_, 12
 	note B_, 4
 	note D_, 9

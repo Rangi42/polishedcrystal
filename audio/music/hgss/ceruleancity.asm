@@ -2,14 +2,14 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/ceruleanGSC.asm
 
-Music_CeruleanCityHGSS:
+	music_header Music_CeruleanCityHGSS
 	channel_count 4
 	channel 1, Music_CeruleanCityHGSS_Ch1
 	channel 2, Music_CeruleanCityHGSS_Ch2
 	channel 3, Music_CeruleanCityHGSS_Ch3
 	channel 4, Music_CeruleanCityHGSS_Ch4
 
-Music_CeruleanCityHGSS_Ch1:
+	music_label Music_CeruleanCityHGSS_Ch1
 	tempo 148
 	volume 7, 7
 	note_type 12, 11, 2
@@ -26,7 +26,7 @@ Music_CeruleanCityHGSS_Ch1:
 	octave 4
 	note C#, 2
 	note D#, 2
-Music_CeruleanCityHGSS_Loop1:
+	music_label Music_CeruleanCityHGSS_Loop1
 	volume_envelope 11, 1
 	octave 3
 	note G#, 2
@@ -201,7 +201,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note C_, 2
 	sound_jump Music_CeruleanCityHGSS_Loop1
 
-Music_CeruleanCityHGSS_Ch2:
+	music_label Music_CeruleanCityHGSS_Ch2
 	vibrato 12, 3, 4
 	duty_cycle 2
 	note_type 2, 12, 2
@@ -220,7 +220,7 @@ Music_CeruleanCityHGSS_Ch2:
 	note C#, 2
 	note_type 2, 12, 2
 	note D#, 10
-Music_CeruleanCityHGSS_Loop2:
+	music_label Music_CeruleanCityHGSS_Loop2
 	note_type 12, 12, 2
 	note E_, 6
 	octave 3
@@ -378,7 +378,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note D#, 10
 	sound_jump Music_CeruleanCityHGSS_Loop2
 
-Music_CeruleanCityHGSS_Ch3:
+	music_label Music_CeruleanCityHGSS_Ch3
 	note_type 6, 1, 5
 	vibrato 12, 2, 4
 	rest 16
@@ -391,7 +391,7 @@ Music_CeruleanCityHGSS_Ch3:
 	rest 1
 	note C_, 3
 	rest 1
-Music_CeruleanCityHGSS_Loop3:
+	music_label Music_CeruleanCityHGSS_Loop3
 	octave 1
 	note E_, 2
 	rest 6
@@ -721,11 +721,11 @@ Music_CeruleanCityHGSS_Loop3:
 	rest 2
 	sound_jump Music_CeruleanCityHGSS_Loop3
 
-Music_CeruleanCityHGSS_Ch4:
+	music_label Music_CeruleanCityHGSS_Ch4
 	drum_speed 12
 	toggle_noise 0
 	rest 16
-Music_CeruleanCityHGSS_Loop4:
+	music_label Music_CeruleanCityHGSS_Loop4
 	drum_note 11, 2
 	drum_note 8, 1
 	drum_note 8, 1

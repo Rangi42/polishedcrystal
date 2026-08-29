@@ -1,11 +1,11 @@
-Music_VioletCity:
+	music_header Music_VioletCity
 	channel_count 4
 	channel 1, Music_VioletCity_Ch1
 	channel 2, Music_VioletCity_Ch2
 	channel 3, Music_VioletCity_Ch3
 	channel 4, Music_VioletCity_Ch4
 
-Music_VioletCity_Ch1:
+	music_label Music_VioletCity_Ch1
 	tempo 164
 	volume 7, 7
 	vibrato 18, 2, 5
@@ -65,7 +65,7 @@ Music_VioletCity_Ch1:
 	octave 3
 	note C#, 12
 	rest 8
-Music_VioletCity_branch_f0056:
+	music_label Music_VioletCity_branch_f0056
 	note_type 6, 9, 5
 	rest 4
 	octave 2
@@ -297,7 +297,7 @@ Music_VioletCity_branch_f0056:
 	rest 4
 	sound_jump Music_VioletCity_branch_f0056
 
-Music_VioletCity_Ch2:
+	music_label Music_VioletCity_Ch2
 	vibrato 18, 2, 4
 	duty_cycle 2
 	note_type 12, 12, 7
@@ -348,7 +348,7 @@ Music_VioletCity_Ch2:
 	rest 2
 	note D#, 1
 	note E_, 1
-Music_VioletCity_branch_f0199:
+	music_label Music_VioletCity_branch_f0199
 	volume_envelope 11, 7
 	note F#, 4
 	rest 2
@@ -503,7 +503,7 @@ Music_VioletCity_branch_f0199:
 	note E_, 1
 	sound_jump Music_VioletCity_branch_f0199
 
-Music_VioletCity_Ch3:
+	music_label Music_VioletCity_Ch3
 	note_type 12, 2, 5
 	rest 16
 	rest 6
@@ -528,7 +528,7 @@ Music_VioletCity_Ch3:
 	note F#, 2
 	octave 2
 	note A#, 2
-Music_VioletCity_branch_f0261:
+	music_label Music_VioletCity_branch_f0261
 	note_type 12, 2, 5
 	note B_, 1
 	rest 5
@@ -691,7 +691,7 @@ Music_VioletCity_branch_f0261:
 	note A#, 4
 	sound_jump Music_VioletCity_branch_f0261
 
-Music_VioletCity_branch_f0311:
+	music_label Music_VioletCity_branch_f0311
 	note G_, 2
 	rest 10
 	note G_, 2
@@ -706,7 +706,7 @@ Music_VioletCity_branch_f0311:
 	note A_, 4
 	sound_ret
 
-Music_VioletCity_Ch4:
+	music_label Music_VioletCity_Ch4
 	toggle_noise 3
 	drum_speed 12
 	drum_note 4, 2
@@ -725,7 +725,7 @@ Music_VioletCity_Ch4:
 	drum_note 3, 2
 	drum_note 1, 8
 	drum_note 4, 2
-Music_VioletCity_branch_f0338:
+	music_label Music_VioletCity_branch_f0338
 	sound_call Music_VioletCity_branch_f037a
 	sound_call Music_VioletCity_branch_f037a
 	sound_call Music_VioletCity_branch_f037a
@@ -744,7 +744,7 @@ Music_VioletCity_branch_f0338:
 	sound_call Music_VioletCity_branch_f037a
 	sound_jump Music_VioletCity_branch_f0338
 
-Music_VioletCity_branch_f036c:
+	music_label Music_VioletCity_branch_f036c
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 4, 1
@@ -760,7 +760,7 @@ Music_VioletCity_branch_f036c:
 	drum_note 8, 1
 	sound_ret
 
-Music_VioletCity_branch_f037a:
+	music_label Music_VioletCity_branch_f037a
 	drum_note 4, 2
 	drum_note 8, 1
 	drum_note 8, 1

@@ -2,14 +2,14 @@
 ; Demixed by FroggestSpirit
 ; https://pastebin.com/7Hz9jRHq
 
-Music_TrainerBattleBW:
+	music_header Music_TrainerBattleBW
 	channel_count 4
 	channel 1, Music_TrainerBattleBW_Ch1
 	channel 2, Music_TrainerBattleBW_Ch2
 	channel 3, Music_TrainerBattleBW_Ch3
 	channel 4, Music_TrainerBattleBW_Ch4
 
-Music_TrainerBattleBW_Ch1:
+	music_label Music_TrainerBattleBW_Ch1
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo 108
@@ -126,7 +126,7 @@ Music_TrainerBattleBW_Ch1:
 	note C_, 1
 	rest 1
 	note F_, 4
-Music_TrainerBattleBW_Ch1_loop:
+	music_label Music_TrainerBattleBW_Ch1_loop
 	octave 3
 	note F_, 16
 	note F_, 1
@@ -544,7 +544,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note_type 12, 11, 7
 	sound_jump Music_TrainerBattleBW_Ch1_loop
 
-Music_TrainerBattleBW_Ch2:
+	music_label Music_TrainerBattleBW_Ch2
 	duty_cycle 3
 	pitch_offset 1
 	vibrato 8, 3, 6
@@ -635,7 +635,7 @@ Music_TrainerBattleBW_Ch2:
 	rest 1
 	octave 5
 	note C_, 4
-Music_TrainerBattleBW_Ch2_loop:
+	music_label Music_TrainerBattleBW_Ch2_loop
 	octave 4
 	note F_, 16
 	note F_, 1
@@ -985,7 +985,7 @@ Music_TrainerBattleBW_Ch2_loop:
 	note_type 12, 12, 7
 	sound_jump Music_TrainerBattleBW_Ch2_loop
 
-Music_TrainerBattleBW_Ch3:
+	music_label Music_TrainerBattleBW_Ch3
 	octave 1
 	note_type 12, 1, 9
 	note B_, 2
@@ -1117,7 +1117,7 @@ Music_TrainerBattleBW_Ch3:
 	note D_, 2
 	note D#, 2
 	note E_, 2
-Music_TrainerBattleBW_Ch3_loop:
+	music_label Music_TrainerBattleBW_Ch3_loop
 	octave 2
 	note F_, 2
 	rest 2
@@ -2127,7 +2127,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note_type 12, 1, 9
 	sound_jump Music_TrainerBattleBW_Ch3_loop
 
-Music_TrainerBattleBW_Ch4:
+	music_label Music_TrainerBattleBW_Ch4
 	drum_speed 12
 	toggle_noise 3
 	drum_note 4, 2
@@ -2201,7 +2201,7 @@ Music_TrainerBattleBW_Ch4:
 	drum_note 1, 4
 	drum_note 1, 4
 	drum_note 1, 4
-Music_TrainerBattleBW_Ch4_loop:
+	music_label Music_TrainerBattleBW_Ch4_loop
 	drum_note 12, 16
 	drum_note 1, 16
 	drum_note 4, 8

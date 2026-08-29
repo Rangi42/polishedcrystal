@@ -1,16 +1,16 @@
-Music_PostCredits:
+	music_header Music_PostCredits
 	channel_count 2
 	channel 1, Music_PostCredits_Ch1
 	channel 2, Music_PostCredits_Ch2
 
-Music_PostCredits_Ch1:
+	music_label Music_PostCredits_Ch1
 	tempo 271
 	volume 7, 7
 	transpose 0, 3
 	duty_cycle 2
 	note_type 12, 9, 3
 	rest 8
-Music_PostCredits_branch_cfdb2:
+	music_label Music_PostCredits_branch_cfdb2
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -129,7 +129,7 @@ Music_PostCredits_branch_cfdb2:
 	note G_, 2
 	sound_jump Music_PostCredits_branch_cfdb2
 
-Music_PostCredits_Ch2:
+	music_label Music_PostCredits_Ch2
 	transpose 0, 3
 	duty_cycle 2
 	note_type 12, 10, 3
@@ -141,7 +141,7 @@ Music_PostCredits_Ch2:
 	note F_, 2
 	volume_envelope 7, 3
 	note F_, 2
-Music_PostCredits_branch_cfe5a:
+	music_label Music_PostCredits_branch_cfe5a
 	volume_envelope 10, 3
 	note G_, 2
 	volume_envelope 7, 3

@@ -2,14 +2,14 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/shop.asm
 
-Music_MartHGSS:
+	music_header Music_MartHGSS
 	channel_count 4
 	channel 1, Music_MartHGSS_Ch1
 	channel 2, Music_MartHGSS_Ch2
 	channel 3, Music_MartHGSS_Ch3
 	channel 4, Music_MartHGSS_Ch4
 
-Music_MartHGSS_Ch1:
+	music_label Music_MartHGSS_Ch1
 	tempo 144
 	volume 7, 7
 	duty_cycle 1
@@ -23,7 +23,7 @@ Music_MartHGSS_Ch1:
 	octave 3
 	note B_, 6
 	note A#, 12
-Music_MartHGSS_Loop1:
+	music_label Music_MartHGSS_Loop1
 	note D#, 4
 	octave 2
 	note A#, 2
@@ -252,7 +252,7 @@ Music_MartHGSS_Loop1:
 	note A#, 10
 	sound_jump Music_MartHGSS_Loop1
 
-Music_MartHGSS_Ch2:
+	music_label Music_MartHGSS_Ch2
 	duty_cycle 2
 	note_type 12, 11, 1
 	stereo_panning FALSE, TRUE
@@ -270,7 +270,7 @@ Music_MartHGSS_Ch2:
 	note F#, 2
 	note G#, 2
 	note A#, 2
-Music_MartHGSS_Loop2:
+	music_label Music_MartHGSS_Loop2
 	octave 4
 	note C#, 3
 	octave 3
@@ -478,7 +478,7 @@ Music_MartHGSS_Loop2:
 	duty_cycle 1
 	sound_jump Music_MartHGSS_Loop2
 
-Music_MartHGSS_Ch3:
+	music_label Music_MartHGSS_Ch3
 	note_type 12, 1, 4
 	stereo_panning TRUE, FALSE
 	octave 4
@@ -495,7 +495,7 @@ Music_MartHGSS_Ch3:
 	octave 3
 	note F#, 5
 	rest 7
-Music_MartHGSS_Loop3:
+	music_label Music_MartHGSS_Loop3
 	octave 2
 	note B_, 4
 	rest 2
@@ -784,7 +784,7 @@ Music_MartHGSS_Loop3:
 	note A#, 1
 	rest 1
 	sound_jump Music_MartHGSS_Loop3
-Music_MartHGSS_Branch:
+	music_label Music_MartHGSS_Branch
 	note B_, 4
 	volume_envelope 2, 4
 	octave 6
@@ -805,7 +805,7 @@ Music_MartHGSS_Branch:
 	rest 1
 	sound_ret
 
-Music_MartHGSS_Ch4:
+	music_label Music_MartHGSS_Ch4
 	drum_speed 12
 	toggle_noise 0
 	stereo_panning TRUE, FALSE
@@ -815,7 +815,7 @@ Music_MartHGSS_Ch4:
 	drum_note 8, 4
 	drum_note 8, 6
 	drum_note 11, 12
-Music_MartHGSS_Loop4:
+	music_label Music_MartHGSS_Loop4
 	drum_note 11, 4
 	drum_note 8, 2
 	drum_note 3, 2

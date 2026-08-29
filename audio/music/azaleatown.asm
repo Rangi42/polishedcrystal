@@ -1,18 +1,18 @@
-Music_AzaleaTown:
+	music_header Music_AzaleaTown
 	channel_count 4
 	channel 1, Music_AzaleaTown_Ch1
 	channel 2, Music_AzaleaTown_Ch2
 	channel 3, Music_AzaleaTown_Ch3
 	channel 4, Music_AzaleaTown_Ch4
 
-Music_AzaleaTown_Ch1:
+	music_label Music_AzaleaTown_Ch1
 	tempo 160
 	volume 7, 7
 	duty_cycle 2
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 1
 	rest 2
-Music_AzaleaTown_branch_f5801:
+	music_label Music_AzaleaTown_branch_f5801
 	volume_envelope 10, 1
 	octave 3
 	note F_, 2
@@ -27,7 +27,7 @@ Music_AzaleaTown_branch_f5801:
 	note F_, 2
 	note F_, 2
 	sound_loop 2, Music_AzaleaTown_branch_f5801
-Music_AzaleaTown_branch_f5816:
+	music_label Music_AzaleaTown_branch_f5816
 	sound_call Music_AzaleaTown_branch_f588c
 	stereo_panning TRUE, FALSE
 	volume_envelope 10, 4
@@ -120,7 +120,7 @@ Music_AzaleaTown_branch_f5816:
 	rest 2
 	sound_jump Music_AzaleaTown_branch_f5816
 
-Music_AzaleaTown_branch_f588c:
+	music_label Music_AzaleaTown_branch_f588c
 	note_type 12, 10, 1
 	octave 4
 	note F_, 2
@@ -219,7 +219,7 @@ Music_AzaleaTown_branch_f588c:
 	note C#, 2
 	sound_ret
 
-Music_AzaleaTown_branch_f5912:
+	music_label Music_AzaleaTown_branch_f5912
 	volume_envelope 6, 1
 	note G#, 8
 	note G#, 8
@@ -229,7 +229,7 @@ Music_AzaleaTown_branch_f5912:
 	note A_, 8
 	sound_ret
 
-Music_AzaleaTown_Ch2:
+	music_label Music_AzaleaTown_Ch2
 	vibrato 18, 2, 3
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
@@ -265,7 +265,7 @@ Music_AzaleaTown_Ch2:
 	duty_cycle 1
 	octave 5
 	note C_, 1
-Music_AzaleaTown_branch_f5952:
+	music_label Music_AzaleaTown_branch_f5952
 	sound_call Music_AzaleaTown_branch_f59c7
 	note C#, 4
 	note C_, 2
@@ -364,7 +364,7 @@ Music_AzaleaTown_branch_f5952:
 	note C_, 2
 	sound_jump Music_AzaleaTown_branch_f5952
 
-Music_AzaleaTown_branch_f59c7:
+	music_label Music_AzaleaTown_branch_f59c7
 	note C#, 4
 	octave 4
 	note G#, 2
@@ -417,7 +417,7 @@ Music_AzaleaTown_branch_f59c7:
 	volume_envelope 11, 4
 	sound_ret
 
-Music_AzaleaTown_Ch3:
+	music_label Music_AzaleaTown_Ch3
 	stereo_panning TRUE, TRUE
 	vibrato 6, 2, 6
 	note_type 12, 2, 5
@@ -441,7 +441,7 @@ Music_AzaleaTown_Ch3:
 	note C#, 1
 	rest 1
 	note G#, 4
-Music_AzaleaTown_branch_f5a24:
+	music_label Music_AzaleaTown_branch_f5a24
 	sound_call Music_AzaleaTown_branch_f5a86
 	note G#, 4
 	note D#, 2
@@ -530,7 +530,7 @@ Music_AzaleaTown_branch_f5a24:
 	note C_, 1
 	sound_jump Music_AzaleaTown_branch_f5a24
 
-Music_AzaleaTown_branch_f5a86:
+	music_label Music_AzaleaTown_branch_f5a86
 	note C#, 1
 	rest 5
 	note C#, 1
@@ -603,7 +603,7 @@ Music_AzaleaTown_branch_f5a86:
 	rest 1
 	sound_ret
 
-Music_AzaleaTown_branch_f5acf:
+	music_label Music_AzaleaTown_branch_f5acf
 	volume_envelope 3, 5
 	octave 3
 	note F_, 1
@@ -625,11 +625,11 @@ Music_AzaleaTown_branch_f5acf:
 	rest 1
 	sound_ret
 
-Music_AzaleaTown_Ch4:
+	music_label Music_AzaleaTown_Ch4
 	toggle_noise 3
 	drum_speed 12
 	drum_note 6, 2
-Music_AzaleaTown_branch_f5aea:
+	music_label Music_AzaleaTown_branch_f5aea
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2

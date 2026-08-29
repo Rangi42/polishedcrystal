@@ -1,8 +1,8 @@
-Music_Printer:
+	music_header Music_Printer
 	channel_count 1
 	channel 3, Music_Printer_Ch3
 
-Music_Printer_Ch3:
+	music_label Music_Printer_Ch3
 	tempo 256
 	note_type 12, 2, 0
 	octave 4
@@ -34,7 +34,7 @@ Music_Printer_Ch3:
 	rest 1
 	note F#, 1
 	rest 1
-.mainloop:
+	music_label .mainloop
 	note E_, 1
 	rest 1
 	note B_, 1

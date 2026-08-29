@@ -72,6 +72,10 @@ ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
 RGBASMFLAGS += -DHUFFMAN
 endif
+ifeq ($(filter music-huffman,$(MAKECMDGOALS)),music-huffman)
+Q := @
+RGBASMFLAGS += -DMUSIC_HUFFMAN
+endif
 
 rom_obj := \
 	main.o \
@@ -98,7 +102,7 @@ crystal_obj    := $(rom_obj:.o=.o)
 crystal_vc_obj := $(rom_obj:.o=_vc.o)
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman vc
+.PHONY: clean tidy crystal faithful pocket debug monochrome freespace tools bsp huffman music-huffman vc
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
 .DEFAULT_GOAL: crystal
@@ -133,6 +137,7 @@ freespace: crystal tools/bankends
 bsp: $(ROM_NAME).bsp
 
 huffman: crystal
+music-huffman: crystal
 
 
 rgbdscheck.o: rgbdscheck.asm

@@ -1,10 +1,10 @@
-Music_WildPokemonVictory:
+	music_header Music_WildPokemonVictory
 	channel_count 3
 	channel 1, Music_WildPokemonVictory_Ch1
 	channel 2, Music_WildPokemonVictory_Ch2
 	channel 3, Music_WildPokemonVictory_Ch3
 
-Music_WildPokemonVictory_Ch1:
+	music_label Music_WildPokemonVictory_Ch1
 	tempo 126
 	volume 7, 7
 	duty_cycle 3
@@ -17,9 +17,9 @@ Music_WildPokemonVictory_Ch1:
 	note F#, 1
 	volume_envelope 11, 6
 	note E_, 12
-Music_SuccessfulCapture_branch_f4536:
+	music_label Music_SuccessfulCapture_branch_f4536
 	stereo_panning FALSE, TRUE
-Music_WildPokemonVictory_branch_f4538:
+	music_label Music_WildPokemonVictory_branch_f4538
 	sound_call Music_WildPokemonVictory_branch_f455c
 	note F#, 2
 	note F#, 2
@@ -42,7 +42,7 @@ Music_WildPokemonVictory_branch_f4538:
 	note F#, 4
 	sound_jump Music_WildPokemonVictory_branch_f4538
 
-Music_WildPokemonVictory_branch_f455c:
+	music_label Music_WildPokemonVictory_branch_f455c
 	volume_envelope 7, 1
 	octave 3
 	note G#, 1
@@ -68,7 +68,7 @@ Music_WildPokemonVictory_branch_f455c:
 	note A_, 2
 	sound_ret
 
-Music_WildPokemonVictory_Ch2:
+	music_label Music_WildPokemonVictory_Ch2
 	vibrato 18, 2, 4
 	duty_cycle 2
 	note_type 12, 13, 1
@@ -79,9 +79,9 @@ Music_WildPokemonVictory_Ch2:
 	note A_, 1
 	volume_envelope 13, 6
 	note B_, 12
-Music_SuccessfulCapture_branch_f4585:
+	music_label Music_SuccessfulCapture_branch_f4585
 	stereo_panning TRUE, FALSE
-Music_WildPokemonVictory_branch_f4587:
+	music_label Music_WildPokemonVictory_branch_f4587
 	sound_call Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 2
@@ -114,7 +114,7 @@ Music_WildPokemonVictory_branch_f4587:
 	note A_, 1
 	sound_jump Music_WildPokemonVictory_branch_f4587
 
-Music_WildPokemonVictory_branch_f45b5:
+	music_label Music_WildPokemonVictory_branch_f45b5
 	volume_envelope 8, 1
 	octave 4
 	note B_, 2
@@ -130,7 +130,7 @@ Music_WildPokemonVictory_branch_f45b5:
 	note C#, 4
 	sound_ret
 
-Music_WildPokemonVictory_Ch3:
+	music_label Music_WildPokemonVictory_Ch3
 	note_type 12, 2, 0
 	rest 6
 	octave 6
@@ -140,8 +140,8 @@ Music_WildPokemonVictory_Ch3:
 	rest 3
 	note E_, 1
 	rest 3
-Music_SuccessfulCapture_branch_f45cf:
-Music_WildPokemonVictory_branch_f45cf:
+	music_label Music_SuccessfulCapture_branch_f45cf
+	music_label Music_WildPokemonVictory_branch_f45cf
 	sound_call Music_WildPokemonVictory_branch_f45f4
 	note D#, 2
 	note C#, 2
@@ -167,7 +167,7 @@ Music_WildPokemonVictory_branch_f45cf:
 	note B_, 4
 	sound_jump Music_WildPokemonVictory_branch_f45cf
 
-Music_WildPokemonVictory_branch_f45f4:
+	music_label Music_WildPokemonVictory_branch_f45f4
 	volume_envelope 2, 5
 	octave 3
 	note E_, 2

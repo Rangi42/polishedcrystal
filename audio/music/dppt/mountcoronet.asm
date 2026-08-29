@@ -3,13 +3,13 @@
 ; https://pastebin.com/NeuV0aPD
 ; https://hax.iimarckus.org/topic/6777/
 
-Music_MountCoronetDPPt:
+	music_header Music_MountCoronetDPPt
 	channel_count 3
 	channel 1, Music_MountCoronetDPPt_Ch1
 	channel 2, Music_MountCoronetDPPt_Ch2
 	channel 3, Music_MountCoronetDPPt_Ch3
 
-Music_MountCoronetDPPt_Ch1:
+	music_label Music_MountCoronetDPPt_Ch1
 	tempo 124
 	volume 7, 7
 	duty_cycle 0
@@ -19,7 +19,7 @@ Music_MountCoronetDPPt_Ch1:
 	note F_, 4
 	octave 4
 	note D_, 2
-Music_MountCoronetDPPt_Ch1_loop:
+	music_label Music_MountCoronetDPPt_Ch1_loop
 	octave 3
 	note G_, 6
 	octave 4
@@ -361,12 +361,12 @@ Music_MountCoronetDPPt_Ch1_loop:
 	note D_, 2
 	sound_jump Music_MountCoronetDPPt_Ch1_loop
 
-Music_MountCoronetDPPt_Ch2:
+	music_label Music_MountCoronetDPPt_Ch2
 	pitch_offset 1
 	duty_cycle 0
 	note_type 12, 4, 5
 	rest 4
-Music_MountCoronetDPPt_Ch2_loop:
+	music_label Music_MountCoronetDPPt_Ch2_loop
 	note_type 12, 4, 5
 	octave 4
 	note C_, 2
@@ -731,9 +731,9 @@ Music_MountCoronetDPPt_Ch2_loop:
 	note G#, 6
 	sound_jump Music_MountCoronetDPPt_Ch2_loop
 
-Music_MountCoronetDPPt_Ch3:
+	music_label Music_MountCoronetDPPt_Ch3
 	stereo_panning TRUE, TRUE
-Music_MountCoronetDPPt_Ch3_branch_0:
+	music_label Music_MountCoronetDPPt_Ch3_branch_0
 	note_type 12, 1, 4
 	vibrato 22, 2, 3
 	rest 6

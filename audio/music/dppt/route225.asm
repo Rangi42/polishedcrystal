@@ -2,18 +2,18 @@
 ; Ported by FroggestSpirit
 ; https://github.com/froggestspirit/pokecrystal/blob/master/audio/music/077_Route225.asm
 
-Music_Route225DPPt:
+	music_header Music_Route225DPPt
 	channel_count 4
 	channel 1, Music_Route225DPPt_Ch1
 	channel 2, Music_Route225DPPt_Ch2
 	channel 3, Music_Route225DPPt_Ch3
 	channel 4, Music_Route225DPPt_Ch4
 
-Music_Route225DPPt_Ch1:
+	music_label Music_Route225DPPt_Ch1
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo 136
-Music_Route225DPPt_Ch1_loop:
+	music_label Music_Route225DPPt_Ch1_loop
 	pitch_offset 2
 	note_type 14, 10, 7
 	rest 12
@@ -425,8 +425,8 @@ Music_Route225DPPt_Ch1_loop:
 	note E_, 12
 	sound_jump Music_Route225DPPt_Ch1_loop
 
-Music_Route225DPPt_Ch2:
-Music_Route225DPPt_Ch2_loop:
+	music_label Music_Route225DPPt_Ch2
+	music_label Music_Route225DPPt_Ch2_loop
 	pitch_offset 1
 	note_type 12, 12, 7
 	rest 16
@@ -864,8 +864,8 @@ Music_Route225DPPt_Ch2_loop:
 	note C_, 12
 	sound_jump Music_Route225DPPt_Ch2_loop
 
-Music_Route225DPPt_Ch3:
-Music_Route225DPPt_Ch3_loop:
+	music_label Music_Route225DPPt_Ch3
+	music_label Music_Route225DPPt_Ch3_loop
 	note_type 12, 1, 3
 	rest 16
 	octave 2
@@ -1392,9 +1392,9 @@ Music_Route225DPPt_Ch3_loop:
 	note C_, 4
 	sound_jump Music_Route225DPPt_Ch3_loop
 
-Music_Route225DPPt_Ch4:
+	music_label Music_Route225DPPt_Ch4
 	toggle_noise 3
-Music_Route225DPPt_Ch4_loop:
+	music_label Music_Route225DPPt_Ch4_loop
 	drum_speed 12
 	drum_note 1, 1
 	drum_note 1, 1

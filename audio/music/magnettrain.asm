@@ -1,11 +1,11 @@
-Music_MagnetTrain:
+	music_header Music_MagnetTrain
 	channel_count 4
 	channel 1, Music_MagnetTrain_Ch1
 	channel 2, Music_MagnetTrain_Ch2
 	channel 3, Music_MagnetTrain_Ch3
 	channel 4, Music_MagnetTrain_Ch4
 
-Music_MagnetTrain_Ch1:
+	music_label Music_MagnetTrain_Ch1
 	tempo 110
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -69,7 +69,7 @@ Music_MagnetTrain_Ch1:
 	note D_, 16
 	sound_ret
 
-Music_MagnetTrain_Ch2:
+	music_label Music_MagnetTrain_Ch2
 	vibrato 20, 2, 3
 	duty_cycle 1
 	note_type 12, 13, 2
@@ -107,7 +107,7 @@ Music_MagnetTrain_Ch2:
 	note A_, 16
 	sound_ret
 
-Music_MagnetTrain_Ch3:
+	music_label Music_MagnetTrain_Ch3
 	stereo_panning TRUE, TRUE
 	vibrato 16, 2, 3
 	note_type 12, 1, 5
@@ -223,7 +223,7 @@ Music_MagnetTrain_Ch3:
 	note D_, 16
 	sound_ret
 
-Music_MagnetTrain_Ch4:
+	music_label Music_MagnetTrain_Ch4
 	toggle_noise 3
 	drum_speed 12
 	drum_note 12, 12
@@ -246,7 +246,7 @@ Music_MagnetTrain_Ch4:
 	drum_note 12, 16
 	sound_ret
 
-Music_MagnetTrain_branch_ef71e:
+	music_label Music_MagnetTrain_branch_ef71e
 	drum_note 9, 2
 	drum_note 8, 2
 	drum_note 8, 2

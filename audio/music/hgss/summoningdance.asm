@@ -3,13 +3,13 @@
 ; https://pastebin.com/ANhCKGUS
 ; https://hax.iimarckus.org/topic/6777/3/
 
-Music_SummoningDanceHGSS:
+	music_header Music_SummoningDanceHGSS
 	channel_count 3
 	channel 1, Music_SummoningDanceHGSS_Ch1
 	channel 2, Music_SummoningDanceHGSS_Ch2
 	channel 3, Music_SummoningDanceHGSS_Ch3
 
-Music_SummoningDanceHGSS_Ch1:
+	music_label Music_SummoningDanceHGSS_Ch1
 	tempo 220
 	duty_cycle 0
 	note_type 12, 8, 5
@@ -57,7 +57,7 @@ Music_SummoningDanceHGSS_Ch1:
 	note A_, 8
 	sound_jump Music_SummoningDanceHGSS_Ch1
 
-Music_SummoningDanceHGSS_Ch2:
+	music_label Music_SummoningDanceHGSS_Ch2
 	duty_cycle 0
 	vibrato 16, 2, 4
 	note_type 12, 10, 5
@@ -131,7 +131,7 @@ Music_SummoningDanceHGSS_Ch2:
 	note E_, 8
 	sound_jump Music_SummoningDanceHGSS_Ch2
 
-Music_SummoningDanceHGSS_Ch3:
+	music_label Music_SummoningDanceHGSS_Ch3
 	note_type 12, 1, 4
 	octave 2
 	note E_, 4

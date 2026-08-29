@@ -2,14 +2,14 @@
 ; Demixed by FroggestSpirit
 ; https://soundcloud.com/froggestspirit/battle-gym-leader
 
-Music_GymLeaderBattleDPPt:
+	music_header Music_GymLeaderBattleDPPt
 	channel_count 4
 	channel 1, Music_GymLeaderBattleDPPt_Ch1
 	channel 2, Music_GymLeaderBattleDPPt_Ch2
 	channel 3, Music_GymLeaderBattleDPPt_Ch3
 	channel 4, Music_GymLeaderBattleDPPt_Ch4
 
-Music_GymLeaderBattleDPPt_Ch1:
+	music_label Music_GymLeaderBattleDPPt_Ch1
 	tempo 106
 	volume 7, 7
 	stereo_panning TRUE, TRUE
@@ -76,7 +76,7 @@ Music_GymLeaderBattleDPPt_Ch1:
 	note A#, 4
 	octave 4
 	note C#, 4
-Music_GymLeaderBattleDPPt_Ch1_loop:
+	music_label Music_GymLeaderBattleDPPt_Ch1_loop
 	octave 2
 	note G_, 6
 	octave 3
@@ -414,7 +414,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	duty_cycle 1
 	sound_jump Music_GymLeaderBattleDPPt_Ch1_loop
 
-Music_GymLeaderBattleDPPt_Ch2:
+	music_label Music_GymLeaderBattleDPPt_Ch2
 	duty_cycle 1
 	pitch_offset 1
 	vibrato 8, 3, 6
@@ -501,7 +501,7 @@ Music_GymLeaderBattleDPPt_Ch2:
 	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
-Music_GymLeaderBattleDPPt_Ch2_loop:
+	music_label Music_GymLeaderBattleDPPt_Ch2_loop
 	octave 3
 	note G_, 6
 	octave 4
@@ -909,7 +909,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	duty_cycle 1
 	sound_jump Music_GymLeaderBattleDPPt_Ch2_loop
 
-Music_GymLeaderBattleDPPt_Ch3:
+	music_label Music_GymLeaderBattleDPPt_Ch3
 	note_type 12, 1, 9
 	octave 1
 	note A#, 8
@@ -980,7 +980,7 @@ Music_GymLeaderBattleDPPt_Ch3:
 	note G_, 2
 	note F_, 2
 	note G#, 2
-Music_GymLeaderBattleDPPt_Ch3_loop:
+	music_label Music_GymLeaderBattleDPPt_Ch3_loop
 	note C_, 2
 	note G_, 2
 	note C_, 2
@@ -1501,7 +1501,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	octave 2
 	sound_jump Music_GymLeaderBattleDPPt_Ch3_loop
 
-Music_GymLeaderBattleDPPt_Ch4:
+	music_label Music_GymLeaderBattleDPPt_Ch4
 	toggle_noise 0
 	drum_speed 12
 	rest 2
@@ -1568,7 +1568,7 @@ Music_GymLeaderBattleDPPt_Ch4:
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1
-Music_GymLeaderBattleDPPt_Ch4_loop:
+	music_label Music_GymLeaderBattleDPPt_Ch4_loop
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 2

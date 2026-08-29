@@ -3,14 +3,14 @@
 ; https://pastebin.com/gde9CFXP
 ; http://picosong.com/wkT7C/
 
-Music_HiddenGrottoB2W2:
+	music_header Music_HiddenGrottoB2W2
 	channel_count 4
 	channel 1, Music_HiddenGrottoB2W2_Ch1
 	channel 2, Music_HiddenGrottoB2W2_Ch2
 	channel 3, Music_HiddenGrottoB2W2_Ch3
 	channel 4, Music_HiddenGrottoB2W2_Ch4
 
-Music_HiddenGrottoB2W2_Ch1:
+	music_label Music_HiddenGrottoB2W2_Ch1
 	duty_cycle 2
 	vibrato 18, 1, 5
 	tempo 188
@@ -37,13 +37,13 @@ Music_HiddenGrottoB2W2_Ch1:
 	rest 4
 	sound_jump Music_HiddenGrottoB2W2_Ch1
 
-Music_HiddenGrottoB2W2_Ch2:
+	music_label Music_HiddenGrottoB2W2_Ch2
 	duty_cycle 2
 	vibrato 18, 1, 5
 	note_type 6, 5, 2
 	octave 4
 	rest 1
-Music_HiddenGrottoB2W2_Ch2_loop:
+	music_label Music_HiddenGrottoB2W2_Ch2_loop
 	note_type 12, 5, 2
 	note F#, 2
 	note E_, 2
@@ -67,7 +67,7 @@ Music_HiddenGrottoB2W2_Ch2_loop:
 	rest 16
 	sound_jump Music_HiddenGrottoB2W2_Ch2_loop
 
-Music_HiddenGrottoB2W2_Ch3:
+	music_label Music_HiddenGrottoB2W2_Ch3
 	vibrato 18, 1, 5
 	note_type 12, 3, 5
 	octave 3
@@ -97,10 +97,10 @@ Music_HiddenGrottoB2W2_Ch3:
 	rest 2
 	sound_jump Music_HiddenGrottoB2W2_Ch3
 
-Music_HiddenGrottoB2W2_Ch4:
+	music_label Music_HiddenGrottoB2W2_Ch4
 	drum_speed 6
 	toggle_noise 5
-Music_HiddenGrottoB2W2_Ch4_loop:
+	music_label Music_HiddenGrottoB2W2_Ch4_loop
 	rest 16
 	rest 6
 	drum_note 4, 5

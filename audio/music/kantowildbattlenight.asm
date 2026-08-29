@@ -3,13 +3,13 @@
 ; https://pastebin.com/p19WcKbx
 ; https://hax.iimarckus.org/topic/7697/
 
-Music_KantoWildBattleNight:
+	music_header Music_KantoWildBattleNight
 	channel_count 3
 	channel 1, Music_KantoWildBattleNight_Ch1
 	channel 2, Music_KantoWildBattleNight_Ch2
 	channel 3, Music_KantoWildBattleNight_Ch3
 
-Music_KantoWildBattleNight_Ch1:
+	music_label Music_KantoWildBattleNight_Ch1
 	tempo 117
 	volume 7, 7
 	vibrato 18, 2, 2
@@ -30,7 +30,7 @@ Music_KantoWildBattleNight_Ch1:
 	note F_, 1
 	sound_call Music_KantoWildBattle_branch_ed091
 
-Music_KantoWildBattleNight_Ch2:
+	music_label Music_KantoWildBattleNight_Ch2
 	duty_cycle 3
 	vibrato 18, 2, 2
 	note_type 12, 11, 1
@@ -70,11 +70,11 @@ Music_KantoWildBattleNight_Ch2:
 	duty_cycle 2
 	sound_call Music_KantoWildBattle_branch_ed1c8
 
-Music_KantoWildBattleNight_Ch3:
+	music_label Music_KantoWildBattleNight_Ch3
 	vibrato 18, 2, 3
 	note_type 12, 1, 2
 	sound_call Music_KantoWildBattle_Ch3Intro
-Music_KantoWildBattleNight_Ch3loop:
+	music_label Music_KantoWildBattleNight_Ch3loop
 	note_type 12, 1, 2
 	sound_call Music_KantoWildBattle_Type1
 	sound_call Music_KantoWildBattle_Ch3_Part3

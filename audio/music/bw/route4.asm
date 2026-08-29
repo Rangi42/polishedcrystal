@@ -3,21 +3,21 @@
 ; https://pastebin.com/QXeYDHeD
 ; https://hax.iimarckus.org/topic/6777/
 
-Music_Route4BW:
+	music_header Music_Route4BW
 	channel_count 4
 	channel 1, Music_Route4BW_Ch1
 	channel 2, Music_Route4BW_Ch2
 	channel 3, Music_Route4BW_Ch3
 	channel 4, Music_Route4BW_Ch4
 
-Music_Route4BW_Ch1:
+	music_label Music_Route4BW_Ch1
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 16, 2, 2
 	sound_call Music_Route4BW_Ch1_branch_1
-Music_Route4BW_Ch1_loop:
+	music_label Music_Route4BW_Ch1_loop
 	sound_call Music_Route4BW_Ch1_branch_1
 	sound_call Music_Route4BW_Ch1_branch_1
 	duty_cycle 0
@@ -58,7 +58,7 @@ Music_Route4BW_Ch1_loop:
 	duty_cycle 3
 	sound_jump Music_Route4BW_Ch1_loop
 
-Music_Route4BW_Ch1_branch_1:
+	music_label Music_Route4BW_Ch1_branch_1
 	note_type 12, 11, 2
 	octave 2
 	note B_, 2
@@ -100,7 +100,7 @@ Music_Route4BW_Ch1_branch_1:
 	note C#, 2
 	sound_ret
 
-Music_Route4BW_Ch1_branch_2:
+	music_label Music_Route4BW_Ch1_branch_2
 	octave 3
 	note D#, 2
 	octave 2
@@ -117,7 +117,7 @@ Music_Route4BW_Ch1_branch_2:
 	note D#, 2
 	sound_ret
 
-Music_Route4BW_Ch1_branch_3:
+	music_label Music_Route4BW_Ch1_branch_3
 	note E_, 2
 	note C#, 2
 	note E_, 2
@@ -127,7 +127,7 @@ Music_Route4BW_Ch1_branch_3:
 	note E_, 2
 	sound_ret
 
-Music_Route4BW_Ch1_branch_4:
+	music_label Music_Route4BW_Ch1_branch_4
 	octave 3
 	note C#, 2
 	octave 2
@@ -144,7 +144,7 @@ Music_Route4BW_Ch1_branch_4:
 	note C#, 2
 	sound_ret
 
-Music_Route4BW_Ch2:
+	music_label Music_Route4BW_Ch2
 	duty_cycle 3
 	vibrato 28, 1, 2
 	note_type 12, 12, 2
@@ -291,7 +291,7 @@ Music_Route4BW_Ch2:
 	note E_, 4
 	sound_jump Music_Route4BW_Ch2
 
-Music_Route4BW_Ch3:
+	music_label Music_Route4BW_Ch3
 	stereo_panning TRUE, FALSE
 	note_type 6, 1, 4
 	octave 2
@@ -511,7 +511,7 @@ Music_Route4BW_Ch3:
 	note C#, 4
 	sound_jump Music_Route4BW_Ch3
 
-Music_Route4BW_Ch3_branch_1:
+	music_label Music_Route4BW_Ch3_branch_1
 	note D#, 5
 	note_type 6, 2, 4
 	note C#, 1
@@ -529,10 +529,10 @@ Music_Route4BW_Ch3_branch_1:
 	note_type 12, 1, 4
 	sound_ret
 
-Music_Route4BW_Ch4:
+	music_label Music_Route4BW_Ch4
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
-Music_Route4BW_Ch4_branch_1:
+	music_label Music_Route4BW_Ch4_branch_1
 	drum_speed 12
 	sound_call Music_Route4BW_Ch4_branch_2
 	drum_note 3, 1
@@ -570,7 +570,7 @@ Music_Route4BW_Ch4_branch_1:
 	drum_note 3, 1
 	sound_jump Music_Route4BW_Ch4_branch_1
 
-Music_Route4BW_Ch4_branch_2:
+	music_label Music_Route4BW_Ch4_branch_2
 	drum_note 3, 2
 	drum_note 4, 1
 	drum_note 4, 1
@@ -582,7 +582,7 @@ Music_Route4BW_Ch4_branch_2:
 	drum_note 4, 1
 	sound_ret
 
-Music_Route4BW_Ch4_branch_3:
+	music_label Music_Route4BW_Ch4_branch_3
 	drum_speed 12
 	drum_note 3, 16
 	rest 12

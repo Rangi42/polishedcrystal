@@ -1,17 +1,17 @@
-Music_NewBarkTown:
+	music_header Music_NewBarkTown
 	channel_count 3
 	channel 1, Music_NewBarkTown_Ch1
 	channel 2, Music_NewBarkTown_Ch2
 	channel 3, Music_NewBarkTown_Ch3
 
-Music_NewBarkTown_Ch1:
+	music_label Music_NewBarkTown_Ch1
 	tempo 187
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 3
 	note_type 12, 8, 7
 	rest 4
-Music_NewBarkTown_branch_eb2eb:
+	music_label Music_NewBarkTown_branch_eb2eb
 	duty_cycle 0
 	sound_call Music_NewBarkTown_branch_eb349
 	octave 3
@@ -84,7 +84,7 @@ Music_NewBarkTown_branch_eb2eb:
 	volume_envelope 8, 7
 	sound_jump Music_NewBarkTown_branch_eb2eb
 
-Music_NewBarkTown_branch_eb349:
+	music_label Music_NewBarkTown_branch_eb349
 	octave 3
 	note F#, 1
 	rest 1
@@ -137,7 +137,7 @@ Music_NewBarkTown_branch_eb349:
 	rest 1
 	sound_ret
 
-Music_NewBarkTown_branch_eb37c:
+	music_label Music_NewBarkTown_branch_eb37c
 	octave 2
 	note G_, 2
 	note B_, 2
@@ -156,12 +156,12 @@ Music_NewBarkTown_branch_eb37c:
 	note E_, 2
 	sound_ret
 
-Music_NewBarkTown_Ch2:
+	music_label Music_NewBarkTown_Ch2
 	stereo_panning TRUE, TRUE
 	vibrato 18, 2, 3
 	note_type 6, 10, 7
 	rest 8
-Music_NewBarkTown_branch_eb396:
+	music_label Music_NewBarkTown_branch_eb396
 	duty_cycle 2
 	note_type 6, 10, 7
 	sound_call Music_NewBarkTown_branch_eb3bf
@@ -186,7 +186,7 @@ Music_NewBarkTown_branch_eb396:
 	note E_, 16
 	sound_jump Music_NewBarkTown_branch_eb396
 
-Music_NewBarkTown_branch_eb3bf:
+	music_label Music_NewBarkTown_branch_eb3bf
 	octave 2
 	note D_, 4
 	rest 8
@@ -239,7 +239,7 @@ Music_NewBarkTown_branch_eb3bf:
 	note C#, 4
 	sound_ret
 
-Music_NewBarkTown_branch_eb3f2:
+	music_label Music_NewBarkTown_branch_eb3f2
 	note_type 6, 9, 7
 	duty_cycle 2
 	octave 4
@@ -250,13 +250,13 @@ Music_NewBarkTown_branch_eb3f2:
 	note E_, 16
 	sound_ret
 
-Music_NewBarkTown_Ch3:
+	music_label Music_NewBarkTown_Ch3
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 0
 	octave 5
 	note D_, 2
 	note E_, 2
-Music_NewBarkTown_branch_eb408:
+	music_label Music_NewBarkTown_branch_eb408
 	vibrato 22, 2, 3
 	note F#, 4
 	note A_, 4

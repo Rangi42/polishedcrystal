@@ -38,6 +38,8 @@ rsreset
 DEF CHANNEL_MUSIC_ID                    rw
 DEF CHANNEL_MUSIC_BANK                  rb
 DEF CHANNEL_MUSIC_ADDRESS               rw
+DEF CHANNEL_MUSIC_BITS                  rb
+DEF CHANNEL_MUSIC_BITS_LEFT             rb
 DEF CHANNEL_LAST_MUSIC_ADDRESS          rw
 DEF CHANNEL_FLAGS1                      rb
 DEF CHANNEL_FLAGS2                      rb

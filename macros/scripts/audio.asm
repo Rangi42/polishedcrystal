@@ -1,3 +1,132 @@
+DEF MUSIC_HUFFMAN_FIRST_LEAF EQU $80
+DEF MUSIC_HUFFMAN_ESCAPE_LEAF EQU $ff
+DEF NUM_MUSIC_HUFFMAN_DIRECT_LEAVES EQU 127
+
+MACRO musichuffmap
+	DEF x = \1
+	DEF y = \2
+	DEF ___music_huffman_data_{02X:x} EQU %\3
+	DEF ___music_huffman_length_{02X:x} EQU STRLEN("\3")
+	DEF ___music_huffman_leaf_\3 EQU MUSIC_HUFFMAN_FIRST_LEAF + \2
+	DEF MUSIC_HUFFMAN_LEAF_{d:y} EQU \1
+ENDM
+
+MACRO musichuffesc
+	DEF x = \1
+	DEF ___music_huffman_data_{02X:x} EQU %\2
+	DEF ___music_huffman_length_{02X:x} EQU STRLEN("\2")
+ENDM
+
+MACRO musichuffleaf
+	DEF ___music_huffman_escape_\1 = 1
+ENDM
+
+INCLUDE "constants/music_huffman.asm"
+
+DEF _compressing_music = 0
+DEF _music_header_active = 0
+DEF _music_channel_pending = 0
+DEF _music_bits = 0
+DEF _music_bit_count = 0
+DEF _music_stream_has_data = 0
+DEF _music_root EQUS "none"
+
+MACRO _music_align
+	if _compressing_music && _music_bit_count
+		db _music_bits << (8 - _music_bit_count)
+		DEF _music_bits = 0
+		DEF _music_bit_count = 0
+	endc
+	if _compressing_music
+		DEF _music_stream_has_data = 0
+	endc
+ENDM
+
+MACRO _music_byte
+	if !_compressing_music
+		db \1
+	else
+		DEF _music_stream_has_data = 1
+		DEF _music_value = (\1) & $ff
+		if DEF(MUSIC_HUFFMAN)
+			println "${02x:_music_value}"
+		endc
+		DEF _music_bits = (_music_bits << ___music_huffman_length_{02X:_music_value}) \
+			| ___music_huffman_data_{02X:_music_value}
+		DEF _music_bit_count += ___music_huffman_length_{02X:_music_value}
+		rept 4
+			if _music_bit_count >= 8
+				db _music_bits >> (_music_bit_count - 8)
+				DEF _music_bit_count -= 8
+				DEF _music_bits &= (1 << _music_bit_count) - 1
+			endc
+		endr
+	endc
+ENDM
+
+MACRO _music_word
+	if _compressing_music
+		_music_byte LOW(\1)
+		_music_byte HIGH(\1)
+	else
+		dw \1
+	endc
+ENDM
+
+MACRO _music_nibbles
+	_music_byte ((\1) << 4) | ((\2) & $f)
+ENDM
+
+MACRO _music_pointer
+	if _compressing_music
+		_music_align
+	endc
+	dw \1
+.___music_restart_\@:
+	if _compressing_music && DEF(MUSIC_HUFFMAN)
+		println "!~{_music_root}:\@"
+	endc
+ENDM
+
+MACRO music_header
+	_music_align
+	DEF _compressing_music = 0
+	DEF _music_header_active = 1
+	DEF _music_channel_pending = 0
+	REDEF _music_root EQUS "\1"
+\1:
+ENDM
+
+MACRO music_label
+	if _compressing_music && _music_stream_has_data
+		_music_byte music_align_cmd
+	endc
+	_music_align
+\1:
+	if _music_channel_pending
+		DEF _compressing_music = 1
+		DEF _music_header_active = 0
+		DEF _music_channel_pending = 0
+	endc
+	if _compressing_music && DEF(MUSIC_HUFFMAN)
+		println "!\1"
+	endc
+ENDM
+
+MACRO music_end
+	_music_align
+	DEF _compressing_music = 0
+	DEF _music_header_active = 0
+	DEF _music_channel_pending = 0
+	DEF _music_stream_has_data = 0
+ENDM
+
+MACRO compressed_music_pointer
+	assert BANK(\1) < $80, "compressed music bank must fit below bit 7"
+	db BANK(\1) | $80
+	dw \1
+ENDM
+
 MACRO channel_count
 	assert 0 < (\1) && (\1) <= NUM_MUSIC_CHANS, \
 		"channel_count must be 1-{d:NUM_MUSIC_CHANS}"
@@ -9,11 +138,14 @@ MACRO channel
 		"channel id must be 1-{d:NUM_CHANNELS}"
 	dn (_num_channels << 2), \1 - 1 ; channel id
 	dw \2 ; address
+	if _music_header_active
+		DEF _music_channel_pending = 1
+	endc
 	DEF _num_channels = 0
 ENDM
 
 MACRO note
-	dn (\1), (\2) - 1 ; pitch, length
+	_music_nibbles \1, (\2) - 1 ; pitch, length
 ENDM
 
 MACRO drum_note
@@ -52,7 +184,7 @@ DEF FIRST_MUSIC_CMD EQU const_value
 	assert octave_cmd & %111 == 0, "octave_cmd must be 3-bit aligned"
 MACRO octave
 	assert 1 <= (\1) && (\1) <= 8, "octave must be 1-8"
-	db octave_cmd + 8 - (\1) ; octave
+	_music_byte octave_cmd + 8 - (\1) ; octave
 ENDM
 
 	const_skip 7 ; all octave values
@@ -61,20 +193,20 @@ ENDM
 	assert duty_cycle_cmd & %11 == 0, "duty_cycle_cmd must be 2-bit aligned"
 MACRO duty_cycle
 	assert 0 <= (\1) && (\1) <= 6, "duty cycle must be 0-6"
-	db duty_cycle_cmd | (\1 & 3) ; values 4-6 fold into 0-2
+	_music_byte duty_cycle_cmd | (\1 & 3) ; values 4-6 fold into 0-2
 ENDM
 
 	const_skip 3 ; all duty cycle values
 
 	const note_type_cmd ; $dc
 MACRO note_type
-	db note_type_cmd
-	db \1 ; note length
+	_music_byte note_type_cmd
+	_music_byte \1 ; note length
 	if _NARG >= 2
 		if \3 < 0
-			dn \2, %1000 | (\3 * -1) ; volume envelope
+			_music_nibbles \2, %1000 | (\3 * -1) ; volume envelope
 		else
-			dn \2, \3 ; volume envelope
+			_music_nibbles \2, \3 ; volume envelope
 		endc
 	endc
 ENDM
@@ -86,62 +218,62 @@ ENDM
 
 	const transpose_cmd ; $dd
 MACRO transpose
-	db transpose_cmd
-	dn \1, \2 ; num octaves, num pitches
+	_music_byte transpose_cmd
+	_music_nibbles \1, \2 ; num octaves, num pitches
 ENDM
 
 	const tempo_cmd ; $de
 MACRO tempo
-	db tempo_cmd
-	dw \1 ; tempo
+	_music_byte tempo_cmd
+	_music_word \1 ; tempo
 ENDM
 
 	const volume_envelope_cmd ; $df
 MACRO volume_envelope
-	db volume_envelope_cmd
+	_music_byte volume_envelope_cmd
 	if \2 < 0
-		dn \1, %1000 | (\2 * -1) ; volume envelope
+		_music_nibbles \1, %1000 | (\2 * -1) ; volume envelope
 	else
-		dn \1, \2 ; volume envelope
+		_music_nibbles \1, \2 ; volume envelope
 	endc
 ENDM
 
 	const pitch_sweep_cmd ; $e0
 MACRO pitch_sweep
-	db pitch_sweep_cmd
+	_music_byte pitch_sweep_cmd
 	if \2 < 0
-		dn \1, %1000 | (\2 * -1) ; pitch sweep
+		_music_nibbles \1, %1000 | (\2 * -1) ; pitch sweep
 	else
-		dn \1, \2 ; pitch sweep
+		_music_nibbles \1, \2 ; pitch sweep
 	endc
 ENDM
 
 	const duty_cycle_pattern_cmd ; $e1
 MACRO duty_cycle_pattern
-	db duty_cycle_pattern_cmd
-	db (\1 << 6) | (\2 << 4) | (\3 << 2) | (\4 << 0) ; duty cycle pattern
+	_music_byte duty_cycle_pattern_cmd
+	_music_byte (\1 << 6) | (\2 << 4) | (\3 << 2) | (\4 << 0) ; duty cycle pattern
 ENDM
 
 	const toggle_sfx_cmd ; $e2
 MACRO toggle_sfx
-	db toggle_sfx_cmd
+	_music_byte toggle_sfx_cmd
 ENDM
 
 	const pitch_slide_cmd ; $e3
 MACRO pitch_slide
-	db pitch_slide_cmd
-	db \1 - 1 ; duration
-	dn 8 - \2, \3 % 12 ; octave, pitch
+	_music_byte pitch_slide_cmd
+	_music_byte \1 - 1 ; duration
+	_music_nibbles 8 - \2, \3 % 12 ; octave, pitch
 ENDM
 
 	const vibrato_cmd ; $e4
 MACRO vibrato
-	db vibrato_cmd
-	db \1 ; delay
+	_music_byte vibrato_cmd
+	_music_byte \1 ; delay
 	if _NARG > 2
-		dn \2, \3 ; extent, rate
+		_music_nibbles \2, \3 ; extent, rate
 	else
-		db \2 ; LEGACY: Support for 1-arg extent
+		_music_byte \2 ; LEGACY: Support for 1-arg extent
 	endc
 ENDM
 
@@ -154,11 +286,11 @@ MACRO toggle_noise
 		DEF _toggle_noisesampleset = 1
 	elif _toggle_noisesampleset
 		DEF _toggle_noisesampleset = 0
-		db noisesampleset_cmd
-		db \1 ; noise
+		_music_byte noisesampleset_cmd
+		_music_byte \1 ; noise
 	else
-		db toggle_noise_cmd
-		db \1 ; drum kit
+		_music_byte toggle_noise_cmd
+		_music_byte \1 ; drum kit
 	endc
 ENDM
 
@@ -168,46 +300,46 @@ ENDM
 
 	const volume_cmd ; $e6
 MACRO volume
-	db volume_cmd
+	_music_byte volume_cmd
 	if _NARG > 1
-		dn \1, \2 ; left volume, right volume
+		_music_nibbles \1, \2 ; left volume, right volume
 	else
-		db \1 ; LEGACY: Support for 1-arg volume
+		_music_byte \1 ; LEGACY: Support for 1-arg volume
 	endc
 ENDM
 
 	const pitch_offset_cmd ; $e7
 MACRO pitch_offset
-	db pitch_offset_cmd
-	dw \1 ; pitch offset
+	_music_byte pitch_offset_cmd
+	_music_word \1 ; pitch offset
 ENDM
 
 	const tempo_relative_cmd ; $e8
 MACRO tempo_relative
-	db tempo_relative_cmd
-	db \1 ; tempo adjustment
+	_music_byte tempo_relative_cmd
+	_music_byte \1 ; tempo adjustment
 ENDM
 
 	const restart_channel_cmd ; $e9
 MACRO restart_channel
-	db restart_channel_cmd
-	dw \1 ; address
+	_music_byte restart_channel_cmd
+	_music_pointer \1 ; address
 ENDM
 
 	const new_song_cmd ; $ea
 MACRO new_song
-	db new_song_cmd
-	dw \1 ; id
+	_music_byte new_song_cmd
+	_music_word \1 ; id
 ENDM
 
 	const sfx_priority_on_cmd ; $eb
 MACRO sfx_priority_on
-	db sfx_priority_on_cmd
+	_music_byte sfx_priority_on_cmd
 ENDM
 
 	const sfx_priority_off_cmd ; $ec
 MACRO sfx_priority_off
-	db sfx_priority_off_cmd
+	_music_byte sfx_priority_off_cmd
 ENDM
 
 	const stereo_left_cmd ; $ed
@@ -215,57 +347,58 @@ ENDM
 	const stereo_center_cmd ; $ef
 MACRO stereo_panning
 	if (\1) && !(\2)
-		db stereo_left_cmd
+		_music_byte stereo_left_cmd
 	elif !(\1) && (\2)
-		db stereo_right_cmd
+		_music_byte stereo_right_cmd
 	elif (\1) && (\2)
-		db stereo_center_cmd
+		_music_byte stereo_center_cmd
 	else
 		fail "Cannot mute with stereo_panning"
 	endc
 ENDM
 
-	const_skip 9
+	const_skip 8
+	const music_align_cmd ; $f8
 
 	const noisesampleset_cmd ; $f9
 	; this gets output by toggle_noise
 
 	const set_condition_cmd ; $fa
 MACRO set_condition
-	db set_condition_cmd
-	db \1 ; condition
+	_music_byte set_condition_cmd
+	_music_byte \1 ; condition
 ENDM
 
 	const sound_jump_if_cmd ; $fb
 MACRO sound_jump_if
-	db sound_jump_if_cmd
-	db \1 ; condition
-	dw \2 ; address
+	_music_byte sound_jump_if_cmd
+	_music_byte \1 ; condition
+	_music_pointer \2 ; address
 ENDM
 
 	const sound_jump_cmd ; $fc
 MACRO sound_jump
-	db sound_jump_cmd
-	dw \1 ; address
+	_music_byte sound_jump_cmd
+	_music_pointer \1 ; address
 ENDM
 
 	const sound_loop_cmd ; $fd
 MACRO sound_loop
-	db sound_loop_cmd
+	_music_byte sound_loop_cmd
 	assert (\1) != 0, "'sound_loop 0' can be 'sound_jump'"
 	assert (\1) != 1, "'sound_loop 1' is pointless"
-	db \1 ; count
-	dw \2 ; address
+	_music_byte \1 ; count
+	_music_pointer \2 ; address
 ENDM
 
 	const sound_call_cmd ; $fe
 MACRO sound_call
-	db sound_call_cmd
-	dw \1 ; address
+	_music_byte sound_call_cmd
+	_music_pointer \1 ; address
 ENDM
 
 	const sound_ret_cmd ; $ff
 	assert sound_ret_cmd == $ff, "sound_ret_cmd must be $ff"
 MACRO sound_ret
-	db sound_ret_cmd
+	_music_byte sound_ret_cmd
 ENDM

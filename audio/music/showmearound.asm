@@ -1,11 +1,11 @@
-Music_ShowMeAround:
+	music_header Music_ShowMeAround
 	channel_count 4
 	channel 1, Music_ShowMeAround_Ch1
 	channel 2, Music_ShowMeAround_Ch2
 	channel 3, Music_ShowMeAround_Ch3
 	channel 4, Music_ShowMeAround_Ch4
 
-Music_ShowMeAround_Ch1:
+	music_label Music_ShowMeAround_Ch1
 	tempo 144
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -28,7 +28,7 @@ Music_ShowMeAround_Ch1:
 	note D_, 1
 	note E_, 1
 	note G#, 8
-Music_ShowMeAround_branch_edc01:
+	music_label Music_ShowMeAround_branch_edc01
 	rest 16
 	rest 16
 	rest 16
@@ -39,7 +39,7 @@ Music_ShowMeAround_branch_edc01:
 	sound_call Music_ShowMeAround_branch_edc15
 	sound_jump Music_ShowMeAround_branch_edc01
 
-Music_ShowMeAround_branch_edc15:
+	music_label Music_ShowMeAround_branch_edc15
 	rest 4
 	octave 3
 	note C#, 1
@@ -62,7 +62,7 @@ Music_ShowMeAround_branch_edc15:
 	rest 3
 	sound_ret
 
-Music_ShowMeAround_Ch2:
+	music_label Music_ShowMeAround_Ch2
 	stereo_panning TRUE, TRUE
 	duty_cycle 2
 	note_type 12, 11, 1
@@ -84,7 +84,7 @@ Music_ShowMeAround_Ch2:
 	note D_, 1
 	note E_, 8
 	duty_cycle 1
-Music_ShowMeAround_branch_edc44:
+	music_label Music_ShowMeAround_branch_edc44
 	sound_call Music_ShowMeAround_branch_edc98
 	sound_call Music_ShowMeAround_branch_edc98
 	sound_call Music_ShowMeAround_branch_edc86
@@ -137,7 +137,7 @@ Music_ShowMeAround_branch_edc44:
 	note A_, 4
 	sound_jump Music_ShowMeAround_branch_edc44
 
-Music_ShowMeAround_branch_edc86:
+	music_label Music_ShowMeAround_branch_edc86
 	octave 3
 	note A_, 2
 	octave 4
@@ -147,7 +147,7 @@ Music_ShowMeAround_branch_edc86:
 	note F#, 2
 	sound_ret
 
-Music_ShowMeAround_branch_edc8e:
+	music_label Music_ShowMeAround_branch_edc8e
 	octave 5
 	note C#, 2
 	octave 4
@@ -159,7 +159,7 @@ Music_ShowMeAround_branch_edc8e:
 	note A_, 2
 	sound_ret
 
-Music_ShowMeAround_branch_edc98:
+	music_label Music_ShowMeAround_branch_edc98
 	rest 4
 	octave 3
 	note C#, 1
@@ -178,7 +178,7 @@ Music_ShowMeAround_branch_edc98:
 	rest 1
 	sound_ret
 
-Music_ShowMeAround_Ch3:
+	music_label Music_ShowMeAround_Ch3
 	stereo_panning TRUE, FALSE
 	vibrato 16, 2, 2
 	note_type 6, 2, 5
@@ -220,7 +220,7 @@ Music_ShowMeAround_Ch3:
 	note F_, 1
 	note E_, 2
 	volume_envelope 1, 4
-Music_ShowMeAround_branch_edcd9:
+	music_label Music_ShowMeAround_branch_edcd9
 	sound_call Music_ShowMeAround_branch_edcef
 	sound_call Music_ShowMeAround_branch_edcef
 	sound_call Music_ShowMeAround_branch_edcef
@@ -229,7 +229,7 @@ Music_ShowMeAround_branch_edcd9:
 	sound_call Music_ShowMeAround_branch_edd0f
 	sound_jump Music_ShowMeAround_branch_edcd9
 
-Music_ShowMeAround_branch_edcef:
+	music_label Music_ShowMeAround_branch_edcef
 	octave 2
 	note A_, 2
 	rest 6
@@ -263,7 +263,7 @@ Music_ShowMeAround_branch_edcef:
 	rest 2
 	sound_ret
 
-Music_ShowMeAround_branch_edd0f:
+	music_label Music_ShowMeAround_branch_edd0f
 	octave 2
 	note A_, 2
 	rest 6
@@ -298,7 +298,7 @@ Music_ShowMeAround_branch_edd0f:
 	rest 6
 	sound_ret
 
-Music_ShowMeAround_Ch4:
+	music_label Music_ShowMeAround_Ch4
 	toggle_noise 3
 	drum_speed 12
 	rest 16
@@ -306,7 +306,7 @@ Music_ShowMeAround_Ch4:
 	drum_note 3, 2
 	drum_note 4, 2
 	drum_note 7, 4
-Music_ShowMeAround_branch_edd39:
+	music_label Music_ShowMeAround_branch_edd39
 	sound_call Music_ShowMeAround_branch_edd4f
 	sound_call Music_ShowMeAround_branch_edd4f
 	sound_call Music_ShowMeAround_branch_edd4f
@@ -315,7 +315,7 @@ Music_ShowMeAround_branch_edd39:
 	sound_call Music_ShowMeAround_branch_edd5e
 	sound_jump Music_ShowMeAround_branch_edd39
 
-Music_ShowMeAround_branch_edd4f:
+	music_label Music_ShowMeAround_branch_edd4f
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -332,7 +332,7 @@ Music_ShowMeAround_branch_edd4f:
 	drum_note 4, 2
 	sound_ret
 
-Music_ShowMeAround_branch_edd5e:
+	music_label Music_ShowMeAround_branch_edd5e
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2

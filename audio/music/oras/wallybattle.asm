@@ -3,14 +3,14 @@
 ; https://pastebin.com/7vneX9pj
 ; https://hax.iimarckus.org/topic/6777/4/
 
-Music_WallyBattleORAS:
+	music_header Music_WallyBattleORAS
 	channel_count 4
 	channel 1, Music_WallyBattleORAS_Ch1
 	channel 2, Music_WallyBattleORAS_Ch2
 	channel 3, Music_WallyBattleORAS_Ch3
 	channel 4, Music_WallyBattleORAS_Ch4
 
-Music_WallyBattleORAS_Ch1:
+	music_label Music_WallyBattleORAS_Ch1
 	tempo 192
 	volume 7, 7
 	duty_cycle 3
@@ -97,7 +97,7 @@ Music_WallyBattleORAS_Ch1:
 	pitch_sweep 0, 0
 	rest 2
 	duty_cycle 3
-Music_WallyBattleORAS_Ch1_loop_1:
+	music_label Music_WallyBattleORAS_Ch1_loop_1
 	volume_envelope 8, 7
 	octave 4
 	note C_, 1
@@ -162,7 +162,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	duty_cycle 3
 	sound_jump Music_WallyBattleORAS_Ch1
 
-Music_WallyBattleORAS_Ch1_branch_1:
+	music_label Music_WallyBattleORAS_Ch1_branch_1
 	note_type 12, 9, 7
 	octave 2
 	note D_, 1
@@ -176,7 +176,7 @@ Music_WallyBattleORAS_Ch1_branch_1:
 	note C_, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch2:
+	music_label Music_WallyBattleORAS_Ch2
 	duty_cycle 0
 	sound_call Music_WallyBattleORAS_Ch2_branch_1
 	note F#, 5
@@ -240,7 +240,7 @@ Music_WallyBattleORAS_Ch2:
 	note B_, 8
 	rest 2
 	duty_cycle 0
-Music_WallyBattleORAS_Ch2_loop_1:
+	music_label Music_WallyBattleORAS_Ch2_loop_1
 	volume_envelope 12, 7
 	note G_, 1
 	note G_, 1
@@ -291,7 +291,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	duty_cycle 0
 	sound_jump Music_WallyBattleORAS_Ch2
 
-Music_WallyBattleORAS_Ch2_branch_1:
+	music_label Music_WallyBattleORAS_Ch2_branch_1
 	note_type 12, 11, 7
 	octave 2
 	note B_, 1
@@ -305,11 +305,11 @@ Music_WallyBattleORAS_Ch2_branch_1:
 	note A_, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch3:
+	music_label Music_WallyBattleORAS_Ch3
 	note_type 6, 1, 9
 	vibrato 18, 1, 5
 	rest 6
-Music_WallyBattleORAS_Ch3_loop_main:
+	music_label Music_WallyBattleORAS_Ch3_loop_main
 	sound_call Music_WallyBattleORAS_Ch3_branch_1
 	octave 1
 	note E_, 1
@@ -416,7 +416,7 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	note D_, 1
 	note D#, 3
 	note B_, 4
-Music_WallyBattleORAS_Ch3_loop_1:
+	music_label Music_WallyBattleORAS_Ch3_loop_1
 	octave 2
 	note C_, 1
 	rest 1
@@ -524,7 +524,7 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	note B_, 6
 	sound_jump Music_WallyBattleORAS_Ch3_loop_main
 
-Music_WallyBattleORAS_Ch3_branch_1:
+	music_label Music_WallyBattleORAS_Ch3_branch_1
 	octave 1
 	note E_, 1
 	rest 1
@@ -548,7 +548,7 @@ Music_WallyBattleORAS_Ch3_branch_1:
 	note E_, 4
 	sound_ret
 
-Music_WallyBattleORAS_Ch3_branch_2:
+	music_label Music_WallyBattleORAS_Ch3_branch_2
 	octave 1
 	note E_, 1
 	rest 1
@@ -561,11 +561,11 @@ Music_WallyBattleORAS_Ch3_branch_2:
 	rest 2
 	sound_ret
 
-Music_WallyBattleORAS_Ch4:
+	music_label Music_WallyBattleORAS_Ch4
 	toggle_noise 4
 	drum_speed 12
 	rest 3
-Music_WallyBattleORAS_Ch4_loop_main:
+	music_label Music_WallyBattleORAS_Ch4_loop_main
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
@@ -595,7 +595,7 @@ Music_WallyBattleORAS_Ch4_loop_main:
 	drum_note 2, 1
 	drum_note 4, 1
 	drum_note 2, 1
-Music_WallyBattleORAS_Ch4_loop_1:
+	music_label Music_WallyBattleORAS_Ch4_loop_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_5
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
@@ -628,7 +628,7 @@ Music_WallyBattleORAS_Ch4_loop_1:
 	sound_jump Music_WallyBattleORAS_Ch4_loop_main
 	sound_ret
 
-Music_WallyBattleORAS_Ch4_branch_1:
+	music_label Music_WallyBattleORAS_Ch4_branch_1
 	drum_note 12, 2
 	drum_note 4, 1
 	drum_note 4, 1
@@ -638,7 +638,7 @@ Music_WallyBattleORAS_Ch4_branch_1:
 	drum_note 4, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch4_branch_2:
+	music_label Music_WallyBattleORAS_Ch4_branch_2
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 4, 1
@@ -649,7 +649,7 @@ Music_WallyBattleORAS_Ch4_branch_2:
 	drum_note 4, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch4_branch_3:
+	music_label Music_WallyBattleORAS_Ch4_branch_3
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 4, 1
@@ -660,7 +660,7 @@ Music_WallyBattleORAS_Ch4_branch_3:
 	drum_note 2, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch4_branch_4:
+	music_label Music_WallyBattleORAS_Ch4_branch_4
 	drum_note 5, 1
 	drum_note 5, 1
 	drum_note 2, 1
@@ -675,7 +675,7 @@ Music_WallyBattleORAS_Ch4_branch_4:
 	drum_note 2, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch4_branch_5:
+	music_label Music_WallyBattleORAS_Ch4_branch_5
 	drum_note 3, 1
 	drum_note 11, 1
 	drum_note 11, 1
@@ -686,7 +686,7 @@ Music_WallyBattleORAS_Ch4_branch_5:
 	drum_note 4, 1
 	sound_ret
 
-Music_WallyBattleORAS_Ch4_branch_6:
+	music_label Music_WallyBattleORAS_Ch4_branch_6
 	drum_note 12, 1
 	drum_note 12, 1
 	drum_note 2, 1

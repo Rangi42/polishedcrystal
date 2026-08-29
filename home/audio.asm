@@ -47,6 +47,7 @@ LoadMusicByte::
 ; fallthrough
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
+	and $7f ; bit 7 marks a Huffman-compressed music stream
 	rst Bankswitch
 	ld a, [de]
 	ld [wCurMusicByte], a
@@ -56,6 +57,7 @@ _LoadMusicByte::
 	ret
 
 _LoadMusicWord::
+	and $7f ; bit 7 marks a Huffman-compressed music stream
 	rst Bankswitch
 	ld a, [de]
 	ld l, a

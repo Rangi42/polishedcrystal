@@ -1,17 +1,17 @@
-Music_GameCorner:
+	music_header Music_GameCorner
 	channel_count 4
 	channel 1, Music_GameCorner_Ch1
 	channel 2, Music_GameCorner_Ch2
 	channel 3, Music_GameCorner_Ch3
 	channel 4, Music_GameCorner_Ch4
 
-Music_GameCorner_Ch1:
+	music_label Music_GameCorner_Ch1
 	tempo 147
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	note_type 12, 9, 1
 	rest 8
-Music_GameCorner_branch_edd84:
+	music_label Music_GameCorner_branch_edd84
 	volume_envelope 9, 1
 	rest 16
 	rest 16
@@ -39,7 +39,7 @@ Music_GameCorner_branch_edd84:
 	note G#, 2
 	note G_, 2
 	volume_envelope 7, 1
-Music_GameCorner_branch_eddb1:
+	music_label Music_GameCorner_branch_eddb1
 	octave 4
 	note G#, 1
 	octave 5
@@ -47,7 +47,7 @@ Music_GameCorner_branch_eddb1:
 	note F_, 1
 	note C_, 1
 	sound_loop 4, Music_GameCorner_branch_eddb1
-Music_GameCorner_branch_eddbb:
+	music_label Music_GameCorner_branch_eddbb
 	octave 4
 	note A#, 1
 	octave 5
@@ -55,7 +55,7 @@ Music_GameCorner_branch_eddbb:
 	note G_, 1
 	note D_, 1
 	sound_loop 4, Music_GameCorner_branch_eddbb
-Music_GameCorner_branch_eddc5:
+	music_label Music_GameCorner_branch_eddc5
 	octave 4
 	note D#, 1
 	note G_, 1
@@ -64,7 +64,7 @@ Music_GameCorner_branch_eddc5:
 	octave 4
 	note G_, 1
 	sound_loop 4, Music_GameCorner_branch_eddc5
-Music_GameCorner_branch_eddd0:
+	music_label Music_GameCorner_branch_eddd0
 	octave 4
 	note F_, 1
 	note A_, 1
@@ -73,7 +73,7 @@ Music_GameCorner_branch_eddd0:
 	octave 4
 	note A_, 1
 	sound_loop 4, Music_GameCorner_branch_eddd0
-Music_GameCorner_branch_edddb:
+	music_label Music_GameCorner_branch_edddb
 	octave 4
 	note G#, 1
 	octave 5
@@ -81,7 +81,7 @@ Music_GameCorner_branch_edddb:
 	note F_, 1
 	note C_, 1
 	sound_loop 4, Music_GameCorner_branch_edddb
-Music_GameCorner_branch_edde5:
+	music_label Music_GameCorner_branch_edde5
 	octave 4
 	note A#, 1
 	octave 5
@@ -89,7 +89,7 @@ Music_GameCorner_branch_edde5:
 	note G_, 1
 	note D_, 1
 	sound_loop 4, Music_GameCorner_branch_edde5
-Music_GameCorner_branch_eddef:
+	music_label Music_GameCorner_branch_eddef
 	octave 4
 	note B_, 1
 	octave 5
@@ -105,7 +105,7 @@ Music_GameCorner_branch_eddef:
 	note F_, 9
 	sound_jump Music_GameCorner_branch_edd84
 
-Music_GameCorner_branch_ede03:
+	music_label Music_GameCorner_branch_ede03
 	rest 2
 	octave 4
 	note A#, 3
@@ -123,7 +123,7 @@ Music_GameCorner_branch_ede03:
 	note A#, 3
 	sound_ret
 
-Music_GameCorner_branch_ede13:
+	music_label Music_GameCorner_branch_ede13
 	rest 2
 	octave 4
 	note A#, 3
@@ -134,12 +134,12 @@ Music_GameCorner_branch_ede13:
 	note F_, 2
 	sound_ret
 
-Music_GameCorner_Ch2:
+	music_label Music_GameCorner_Ch2
 	stereo_panning TRUE, TRUE
 	vibrato 8, 2, 4
 	note_type 12, 10, 1
 	rest 8
-Music_GameCorner_branch_ede25:
+	music_label Music_GameCorner_branch_ede25
 	volume_envelope 9, 2
 	duty_cycle 1
 	sound_call Music_GameCorner_branch_ede75
@@ -205,7 +205,7 @@ Music_GameCorner_branch_ede25:
 	volume_envelope 10, 4
 	sound_jump Music_GameCorner_branch_ede25
 
-Music_GameCorner_branch_ede75:
+	music_label Music_GameCorner_branch_ede75
 	octave 1
 	note C_, 2
 	octave 3
@@ -316,11 +316,11 @@ Music_GameCorner_branch_ede75:
 	note D#, 2
 	sound_ret
 
-Music_GameCorner_Ch3:
+	music_label Music_GameCorner_Ch3
 	vibrato 8, 2, 2
 	note_type 12, 1, 4
 	rest 8
-Music_GameCorner_branch_edeef:
+	music_label Music_GameCorner_branch_edeef
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 4
 	sound_call Music_GameCorner_branch_edfdd
@@ -500,7 +500,7 @@ Music_GameCorner_branch_edeef:
 	note D_, 1
 	sound_jump Music_GameCorner_branch_edeef
 
-Music_GameCorner_branch_edfdd:
+	music_label Music_GameCorner_branch_edfdd
 	octave 2
 	note C_, 1
 	octave 3
@@ -529,7 +529,7 @@ Music_GameCorner_branch_edfdd:
 	note A_, 2
 	sound_ret
 
-Music_GameCorner_branch_edff8:
+	music_label Music_GameCorner_branch_edff8
 	octave 2
 	note C_, 1
 	octave 3
@@ -551,7 +551,7 @@ Music_GameCorner_branch_edff8:
 	rest 1
 	sound_ret
 
-Music_GameCorner_branch_ee00c:
+	music_label Music_GameCorner_branch_ee00c
 	octave 2
 	note F_, 1
 	octave 3
@@ -577,7 +577,7 @@ Music_GameCorner_branch_ee00c:
 	note D_, 3
 	sound_ret
 
-Music_GameCorner_branch_ee024:
+	music_label Music_GameCorner_branch_ee024
 	octave 2
 	note F_, 1
 	octave 3
@@ -606,7 +606,7 @@ Music_GameCorner_branch_ee024:
 	rest 1
 	sound_ret
 
-Music_GameCorner_branch_ee03f:
+	music_label Music_GameCorner_branch_ee03f
 	octave 2
 	note F_, 2
 	rest 1
@@ -656,7 +656,7 @@ Music_GameCorner_branch_ee03f:
 	note D_, 1
 	sound_ret
 
-Music_GameCorner_Ch4:
+	music_label Music_GameCorner_Ch4
 	toggle_noise 3
 	drum_speed 12
 	drum_speed 8
@@ -669,9 +669,9 @@ Music_GameCorner_Ch4:
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 3, 1
-Music_GameCorner_branch_ee07f:
+	music_label Music_GameCorner_branch_ee07f
 	sound_call Music_GameCorner_branch_ee106
-Music_GameCorner_branch_ee082:
+	music_label Music_GameCorner_branch_ee082
 	drum_note 11, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -682,7 +682,7 @@ Music_GameCorner_branch_ee082:
 	drum_note 7, 2
 	sound_loop 6, Music_GameCorner_branch_ee082
 	sound_call Music_GameCorner_branch_ee10f
-Music_GameCorner_branch_ee091:
+	music_label Music_GameCorner_branch_ee091
 	drum_note 11, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -697,7 +697,7 @@ Music_GameCorner_branch_ee091:
 	drum_note 3, 1
 	drum_note 7, 2
 	sound_call Music_GameCorner_branch_ee106
-Music_GameCorner_branch_ee0a4:
+	music_label Music_GameCorner_branch_ee0a4
 	drum_note 11, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -708,7 +708,7 @@ Music_GameCorner_branch_ee0a4:
 	drum_note 7, 2
 	sound_loop 6, Music_GameCorner_branch_ee0a4
 	sound_call Music_GameCorner_branch_ee10f
-Music_GameCorner_branch_ee0b3:
+	music_label Music_GameCorner_branch_ee0b3
 	drum_note 11, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -728,7 +728,7 @@ Music_GameCorner_branch_ee0b3:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-Music_GameCorner_branch_ee0c9:
+	music_label Music_GameCorner_branch_ee0c9
 	drum_note 11, 2
 	drum_note 7, 1
 	drum_note 4, 1
@@ -757,7 +757,7 @@ Music_GameCorner_branch_ee0c9:
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 3, 1
-Music_GameCorner_branch_ee0e8:
+	music_label Music_GameCorner_branch_ee0e8
 	drum_note 11, 2
 	drum_note 7, 1
 	drum_note 4, 1
@@ -783,7 +783,7 @@ Music_GameCorner_branch_ee0e8:
 	drum_note 4, 2
 	sound_jump Music_GameCorner_branch_ee07f
 
-Music_GameCorner_branch_ee106:
+	music_label Music_GameCorner_branch_ee106
 	drum_note 1, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -794,7 +794,7 @@ Music_GameCorner_branch_ee106:
 	drum_note 7, 2
 	sound_ret
 
-Music_GameCorner_branch_ee10f:
+	music_label Music_GameCorner_branch_ee10f
 	drum_note 11, 2
 	drum_note 7, 2
 	drum_note 3, 2

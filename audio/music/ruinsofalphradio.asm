@@ -1,17 +1,17 @@
-Music_RuinsOfAlphRadio:
+	music_header Music_RuinsOfAlphRadio
 	channel_count 3
 	channel 1, Music_RuinsOfAlphRadio_Ch1
 	channel 2, Music_RuinsOfAlphRadio_Ch2
 	channel 3, Music_RuinsOfAlphRadio_Ch3
 
-Music_RuinsOfAlphRadio_Ch1:
+	music_label Music_RuinsOfAlphRadio_Ch1
 	tempo 160
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 280
 	vibrato 0, 15, 0
 	stereo_panning TRUE, FALSE
-Music_RuinsOfAlphRadio_branch_eede3:
+	music_label Music_RuinsOfAlphRadio_branch_eede3
 	note_type 6, 7, 1
 	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
@@ -26,7 +26,7 @@ Music_RuinsOfAlphRadio_branch_eede3:
 	rest 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eede3
 
-Music_RuinsOfAlphRadio_branch_eee01:
+	music_label Music_RuinsOfAlphRadio_branch_eee01
 	octave 4
 	note G_, 1
 	note F#, 1
@@ -35,7 +35,7 @@ Music_RuinsOfAlphRadio_branch_eee01:
 	note C_, 8
 	sound_ret
 
-Music_RuinsOfAlphRadio_branch_eee08:
+	music_label Music_RuinsOfAlphRadio_branch_eee08
 	octave 4
 	note G_, 1
 	note F#, 1
@@ -47,10 +47,10 @@ Music_RuinsOfAlphRadio_branch_eee08:
 	note C_, 8
 	sound_ret
 
-Music_RuinsOfAlphRadio_Ch2:
+	music_label Music_RuinsOfAlphRadio_Ch2
 	duty_cycle 1
 	vibrato 1, 14, 0
-Music_RuinsOfAlphRadio_branch_eee17:
+	music_label Music_RuinsOfAlphRadio_branch_eee17
 	stereo_panning FALSE, TRUE
 	note_type 6, 8, 1
 	sound_call Music_RuinsOfAlphRadio_branch_eee01
@@ -63,9 +63,9 @@ Music_RuinsOfAlphRadio_branch_eee17:
 	rest 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eee17
 
-Music_RuinsOfAlphRadio_Ch3:
+	music_label Music_RuinsOfAlphRadio_Ch3
 	note_type 6, 2, 6
-Music_RuinsOfAlphRadio_branch_eee35:
+	music_label Music_RuinsOfAlphRadio_branch_eee35
 	octave 2
 	note C_, 1
 	note C#, 1

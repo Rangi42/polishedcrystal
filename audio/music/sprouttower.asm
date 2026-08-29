@@ -1,11 +1,11 @@
-Music_SproutTower:
+	music_header Music_SproutTower
 	channel_count 4
 	channel 1, Music_SproutTower_Ch1
 	channel 2, Music_SproutTower_Ch2
 	channel 3, Music_SproutTower_Ch3
 	channel 4, Music_SproutTower_Ch4
 
-Music_SproutTower_Ch1:
+	music_label Music_SproutTower_Ch1
 	tempo 176
 	volume 7, 7
 	duty_cycle 3
@@ -15,7 +15,7 @@ Music_SproutTower_Ch1:
 	note_type 12, 10, 3
 	rest 16
 	rest 16
-Music_SproutTower_branch_f6994:
+	music_label Music_SproutTower_branch_f6994
 	rest 6
 	octave 3
 	note F_, 2
@@ -62,7 +62,7 @@ Music_SproutTower_branch_f6994:
 	note D#, 4
 	sound_jump Music_SproutTower_branch_f6994
 
-Music_SproutTower_Ch2:
+	music_label Music_SproutTower_Ch2
 	duty_cycle 3
 	pitch_offset 1
 	vibrato 8, 4, 8
@@ -76,7 +76,7 @@ Music_SproutTower_Ch2:
 	note F_, 4
 	note D#, 4
 	note D#, 4
-Music_SproutTower_branch_f69dc:
+	music_label Music_SproutTower_branch_f69dc
 	volume_envelope 11, 5
 	octave 4
 	note C_, 4
@@ -139,7 +139,7 @@ Music_SproutTower_branch_f69dc:
 	rest 16
 	sound_jump Music_SproutTower_branch_f69dc
 
-Music_SproutTower_Ch3:
+	music_label Music_SproutTower_Ch3
 	vibrato 20, 14, 8
 	note_type 12, 1, 4
 	octave 3
@@ -160,7 +160,7 @@ Music_SproutTower_Ch3:
 	rest 2
 	note F#, 2
 	stereo_panning TRUE, FALSE
-Music_SproutTower_branch_f6a3e:
+	music_label Music_SproutTower_branch_f6a3e
 	rest 4
 	note C_, 2
 	note F_, 2
@@ -219,11 +219,11 @@ Music_SproutTower_branch_f6a3e:
 	note F_, 2
 	sound_jump Music_SproutTower_branch_f6a3e
 
-Music_SproutTower_Ch4:
+	music_label Music_SproutTower_Ch4
 	toggle_noise 0
 	drum_speed 12
 	rest 4
-Music_SproutTower_branch_f6a7f:
+	music_label Music_SproutTower_branch_f6a7f
 	drum_note 7, 4
 	stereo_panning TRUE, FALSE
 	drum_note 4, 4
