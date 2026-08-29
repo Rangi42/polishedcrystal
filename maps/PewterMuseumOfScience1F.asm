@@ -75,13 +75,13 @@ Museum1FFossilScientistScript:
 	verticalmenu
 	closewindow
 	ifequalfwd $1, ResurrectHelixFossil
-	ifequalfwd $2, ResurrectDomeFossil
+	ifequal $2, ResurrectDomeFossil
 	sjumpfwd .maybe_later
 
 .ask_old_amber
 	writetext AskOldAmberText
 	yesorno
-	iftruefwd ResurrectOldAmber
+	iftrue ResurrectOldAmber
 	sjumpfwd .maybe_later
 
 .ask_helix_amber
@@ -89,7 +89,7 @@ Museum1FFossilScientistScript:
 	verticalmenu
 	closewindow
 	ifequalfwd $1, ResurrectHelixFossil
-	ifequalfwd $2, ResurrectOldAmber
+	ifequal $2, ResurrectOldAmber
 	sjumpfwd .maybe_later
 
 .ask_dome_amber

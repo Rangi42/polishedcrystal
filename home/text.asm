@@ -561,7 +561,7 @@ DoTextUntilTerminator::
 	jr .loop
 
 .TextCommand:
-	cp NGRAMS_START
+	cp NUM_TEXT_COMMANDS
 	jr nc, _ImplicitlyStartedText
 	push hl
 	ld e, a
@@ -588,7 +588,7 @@ TextCommands::
 	dw TextCommand_DAY           ; $07 <DAY>
 	dw TextCommand_FAR           ; $08 <FAR>
 	dw TextCommand_PLURAL        ; $09 <PLURAL>
-	assert_table_length NGRAMS_START
+	assert_table_length NUM_TEXT_COMMANDS
 
 _ImplicitlyStartedText:
 	dec hl
@@ -779,6 +779,10 @@ DecompressString::
 
 	inc hl ; skip "<CTXT>"
 
+	; start the contextual decoder at a word boundary
+	ld a, ' '
+	ldh [hCompressedTextBuffer], a
+
 	; terminate buffer for printing each character
 	ld a, '@'
 	ldh [hCompressedTextBuffer+1], a
@@ -874,12 +878,16 @@ DecompressStringToRAM::
 	inc hl ; skip "<CTXT>"
 
 .do_decompression
+	; start the contextual decoder at a word boundary
+	ld a, ' '
+	ldh [hCompressedTextBuffer], a
 	ld b, 1 ; start with no bits to read a byte right away
 .decompress_loop
 
 	push de
 	call ReadHuffmanChar
 	pop de
+	ldh [hCompressedTextBuffer], a
 	; check for characters that signal end of compression
 	; (same ones that finish PlaceString)
 	call CheckTerminatorChar
@@ -908,34 +916,98 @@ DecompressStringToRAM::
 	ret
 
 ReadHuffmanChar:
+	; Keep the compressed source pointer in de, leaving hl available for the
+	; context-specific tree base.
+	ld d, h
+	ld e, l
+
+	; Select a tree from the previous decoded character.
+	ldh a, [hCompressedTextBuffer]
+	cp ' '
+	jr z, .boundary
+	cp '<LNBRK>'
+	jr c, .check_vowel
+	cp '<PARA>' + 1
+	jr c, .boundary
+.check_vowel
+	and ~('A' ^ 'a') ; normalize lowercase letters to uppercase
+	cp 'A'
+	jr z, .vowel
+	cp 'E'
+	jr z, .vowel
+	cp 'I'
+	jr z, .vowel
+	cp 'O'
+	jr z, .vowel
+	cp 'U'
+	jr z, .vowel
+	ld hl, TextCompressionHuffmanTreeOther
+	jr .got_tree
+.boundary
+	ld hl, TextCompressionHuffmanTreeBoundary
+	jr .got_tree
+.vowel
+	ld hl, TextCompressionHuffmanTreeVowel
+.got_tree
 	assert ROOT_NODE_ID == $00
 	xor a
 .tree_loop
-	; "c = [hli]" when b reaches 0, then carry = next bit from c
+	; "c = [de++]" when b reaches 0, then carry = next bit from c
 	dec b
 	jr nz, .no_reload
-	ld c, [hl] ; no-optimize b|c|d|e = *hl++|*hl--
-	inc hl
+	push af
+	ld a, [de]
+	ld c, a
+	inc de
 	ld b, 8
+	pop af
 .no_reload
 	sla c
-	; de = TextCompressionHuffmanTree[node=a][branch=carry]
+	; Temporarily advance hl from the selected tree base to node a/branch carry.
 	adc a
-	add LOW(TextCompressionHuffmanTree)
-	ld e, a
-	adc HIGH(TextCompressionHuffmanTree)
-	sub e
-	ld d, a
+	push hl
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 	; keep traversing the tree until a leaf node
-	ld a, [de]
+	ld a, [hl]
+	pop hl
 	cp FIRST_LEAF_NODE_ID
 	jr c, .tree_loop
+
+	cp CONTEXT_ESCAPE_NODE_ID
+	jr z, .literal
 
 	; shifted leaf node IDs correspond to lesser characters
 	; (since node IDs below the first leaf node ID must be parent nodes)
 	cp FIRST_SHIFTED_LEAF_NODE_ID
-	ret c
+	jr c, .done
 	sub FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
+	jr .done
+
+.literal
+	; An escape leaf is followed by one uncompressed character byte.
+	ld a, 1
+.literal_loop
+	dec b
+	jr nz, .literal_no_reload
+	push af
+	ld a, [de]
+	ld c, a
+	inc de
+	ld b, 8
+	pop af
+.literal_no_reload
+	sla c
+	rla
+	jr nc, .literal_loop
+
+.done
+	; Return the advanced compressed source pointer in hl.
+	ld h, d
+	ld l, e
 	ret
 
 CheckTerminatorChar:
