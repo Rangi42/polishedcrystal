@@ -113,7 +113,6 @@ wBGMapBufferEnd::
 wBGMapPalBuffer:: ds 48
 wBGMapPalBufferEnd::
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
-	ds 16 ; unused? (desyncs music if removed)
 wTileAnimationTimer:: db
 
 
@@ -1420,7 +1419,7 @@ wSpecialPalCount:: db
 
 SECTION "Unused", WRAM0
 
-	ds 300 ; it's free real estate
+	ds 316 ; it's free real estate
 
 
 SECTION "Options", WRAM0
