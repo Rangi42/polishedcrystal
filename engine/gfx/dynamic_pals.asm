@@ -529,16 +529,24 @@ RefreshObjectGlowTypes:
 	ld a, [hl]
 .got_collision
 	pop hl
+
+	; TODO: make the COLL<->OBJ_GLOW correspondence more efficient
 	cp COLL_CAMPFIRE_GLOW
 	jr z, .campfire
 	cp COLL_AQUARIUM_GLOW
-	ld a, OBJ_GLOW_AQUARIUM
+	jr z, .aquarium
+	cp COLL_LANTERN_GLOW
+	ld a, OBJ_GLOW_LANTERN
 	jr z, .got_glow
 	xor a ; OBJ_GLOW_NONE
 	jr .got_glow
 .campfire
 	ld a, OBJ_GLOW_CAMPFIRE
+	jr .got_glow
+.aquarium
+	ld a, OBJ_GLOW_AQUARIUM
 .got_glow
+
 	ld [wPrevNeededObjPalGlow], a ; temporarily preserve the new glow
 	cp [hl]
 	jr z, .next
