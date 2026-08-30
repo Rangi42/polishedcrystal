@@ -27,6 +27,31 @@ OWFadePalettesInit::
 	ldh [rWBK], a
 	ret
 
+CheckPaletteFading::
+	; This runs every frame on palette-swap maps; switching banks directly is
+	; much faster than GetFarWRAMByte's stack-call setup.
+	push bc
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wPalFadeDelayFrames)
+	ldh [rWBK], a
+	ld a, [wPalFadeDelayFrames]
+	ld b, a
+	pop af
+	ldh [rWBK], a
+	ld a, b
+	pop bc
+	and a
+	ret
+
+ApplyPalsIfNotFading::
+	call CheckPaletteFading
+	ret nz
+	farcall ApplyPals
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
+
 CancelOWFadePalettes::
 	ldh a, [rWBK]
 	push af
@@ -203,16 +228,17 @@ FadePalettesStep:
 	ld hl, wOBPals2
 .got_count
 	ld a, [wPalFadeMode]
-
 	and PALFADE_SKIP_FIRST
-	jr z, .inner_loop
+	jr z, FadePalettesStepLoop
+
 	ld bc, 1 palettes
 	add hl, bc
 	ld a, d
 	sub PAL_COLORS
 	ld d, a
+	; fallthrough
 
-.inner_loop
+FadePalettesStepLoop:
 	push de
 	ld a, [hli]
 	ld e, a
@@ -294,7 +320,7 @@ FadePalettesStep:
 	ld [hli], a
 	pop de
 	dec d
-	jr nz, .inner_loop
+	jr nz, FadePalettesStepLoop
 	ret
 
 FadeColorGetGreen:
@@ -381,7 +407,25 @@ FadeColorStep:
 CatchUpObjPaletteFade::
 ; Input: a = OBJ palette index (0-7)
 ; Ensures a newly loaded palette matches the current fade progress.
+	ld hl, wOBPals2
+	jr CatchUpPaletteFade
+
+CatchUpBGPaletteFade::
+; Input: a = BG palette index (0-7)
+	ld hl, wBGPals2
+	; fallthrough
+
+CatchUpPaletteFade:
 	ld b, a
+	; hl += `a` palettes
+	add a
+	add a
+	add a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPalFadeDelayFrames)
@@ -409,110 +453,24 @@ CatchUpObjPaletteFade::
 	ld a, d
 	cp e
 	jr z, .done
-	push bc
 	push de
 	push hl
-	ld hl, wOBPals2
-	ld a, b
-	ld bc, 1 palettes
-	rst AddNTimes
 	ld a, d
 	ld [wPalFadeStepValue], a
-	call FadeSinglePaletteStep
+	lb de, PAL_COLORS, 0
+	call FadePalettesStepLoop
 	pop hl
 	pop de
-	pop bc
 	dec d
 	jr .catch_loop
 
 .done
 	ld a, e
 	ld [wPalFadeStepValue], a
-	ld a, 1
-	ldh [hCGBPalUpdate], a
 
 .restore_bank
 	pop af
 	ldh [rWBK], a
-	ret
-
-FadeSinglePaletteStep:
-	ld de, 0
-	ld d, PAL_COLORS
-
-.single_loop
-	push de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	ld a, [wPalFadeMode]
-	bit PALFADE_FLASH_F, a
-	jr z, .single_no_flash
-	ld bc, 0
-	dec hl
-	jr .single_got_destination
-
-.single_no_flash
-	ld bc, wBGPals1 - wBGPals2
-	add hl, bc
-	ld a, [hld]
-	ld b, a
-	ld c, [hl]
-	push bc
-	ld bc, wBGPals2 - wBGPals1
-	add hl, bc
-	pop bc
-
-.single_got_destination
-	push hl
-	ld a, c
-	and COLOR_RED
-	ld l, a
-	ld a, e
-	and COLOR_RED
-	call FadeColorStep
-	ld a, e
-	and ~COLOR_RED
-	or l
-	ld e, a
-	push bc
-	call FadeColorGetGreen
-	ld l, a
-	ld b, d
-	ld c, e
-	call FadeColorGetGreen
-	pop bc
-	call FadeColorStep
-	sla l
-	swap l
-	ld a, l
-	xor e
-	and COLOR_GREEN_LOW
-	xor e
-	ld e, a
-	ld a, l
-	xor d
-	and COLOR_GREEN_HIGH
-	xor d
-	ld d, a
-	ld a, b
-	call FadeColorGetBlue
-	ld l, a
-	ld a, d
-	call FadeColorGetBlue
-	call FadeColorStep
-	sla l
-	sla l
-	ld a, d
-	and COLOR_GREEN_HIGH ; essentially ~COLOR_BLUE
-	or l
-	ld d, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	pop de
-	dec d
-	jr nz, .single_loop
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
 	ret

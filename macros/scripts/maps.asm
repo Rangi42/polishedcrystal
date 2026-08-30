@@ -235,6 +235,10 @@ MACRO paletteswap
 		"\6 is not accessible in the color ROMX bank!"
 	assert BANK(\7) == BANK(SwapColorPalette) || BANK(\6) == 0, \
 		"\7 is not accessible in the color ROMX bank!"
+	; wPaletteSwapStates and wPaletteSwapInits use one bit per entry,
+	; so max 8 paletteswaps for the 8 bits.
+	assert _NUM_PALETTE_SWAPS < 8, "A palette swap list may have at most 8 entries"
+	redef _NUM_PALETTE_SWAPS += 1
 ENDM
 
 ; Connections go in order: north, south, west, east

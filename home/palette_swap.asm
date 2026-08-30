@@ -1,7 +1,15 @@
 HandlePaletteSwap::
+	ld a, [wPlayerStepFlags]
+	bit PLAYERSTEP_STOP_F, a
+	jr nz, .update
+	farcall CheckPaletteFading
+	ret nz
+.update
 	call InitializeSwappedPalette
 	ret nc
-	homecall _CGB_ForceUpdateLayout
+	; A fading swap has already caught up its own slot, so do not overwrite all
+	; active palettes with their destinations.
+	homecall ApplyPalsIfNotFading
 	ret
 
 InitializeSwappedPalette::
@@ -17,46 +25,87 @@ InitializeSwappedPalette::
 	ld h, [hl]
 	ld l, a
 	or h
-	jr nz, .loop
-
+	jr nz, .has_palette_swaps
 	pop af
 	rst Bankswitch
 	and a
 	ret
 
-.loop
-	; If there are no more palette swap rectangles, just return.
+.has_palette_swaps
+	push hl
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	farcall CalculateStates
+	lb de, 0, PALETTE_SWAP_INSIDE ; d: changed BG palettes, e: entry state bit
+
+.state_loop
+	; First update every entry's state and collect its destination palette.
+	; This must finish before loading palettes: a later NULL entry can leave an
+	; earlier entry for the same slot as the final effective palette.
 	call CheckPaletteSwapRectangle
-	jr z, .done
+	jr z, .states_done
+	sbc a
+	and PALETTE_SWAP_INSIDE
+	ld c, a
 
-	; If the current state in the carry flag differs from the previous state
-	; in [wPaletteSwapFlag], then toggle the value of [wPaletteSwapFlag].
-	; Both are 0/unset (outside) or 1/set (inside), so their sum is 0 or 2 if they match, and
-	; 1 if they don't. So after summing them, `dec a` will yield `nz` if they match.
-	ld de, wPaletteSwapFlag
-	ld a, [de]
-	adc 0
-	dec a
-	; Swap the palette even if we don't toggle, because CloseSubmenu
-	; (e.g. from the Start menu) does not restore the non-default palette.
-	; TODO: look into a more targeted fix for this.
-	jr nz, .skip_toggle
+	; Preserve the accumulated palette mask around the farcall. `c` returns
+	; PALETTE_SWAP_INSIDE_F set inside the rectangle and
+	; PALETTE_SWAP_CHANGED_F set if this entry changed.
+	push de
+	farcall UpdatePaletteSwapState
+	pop de
 
-	; Toggle the current [wPaletteSwapFlag] state.
-	ld a, [de]
-	xor 1
-	ld [de], a
-
-.skip_toggle
-	; Get the BG palette ID in `b`.
 	ld a, [hli]
 	ld b, a
+	bit PALETTE_SWAP_CHANGED_F, c
+	jr z, .state_updated
+	call GetPaletteMask
+	or d
+	ld d, a
+
+.state_updated
+	; Skip the outside and inside palette pointers.
+	ld bc, 4
+	add hl, bc
+	sla e
+	jr .state_loop
+
+.states_done
+	; A changed palette only needs catch-up during an active fade.
+	ld a, d
+	and a
+	jr z, .load_palettes
+	farcall CheckPaletteFading
+	jr nz, .load_palettes
+	ld d, a ; a == 0
+
+.load_palettes
+	pop hl
+
+.palette_loop
+	call CheckPaletteSwapRectangle
+	jr z, .done
+	sbc a
+	and PALETTE_SWAP_INSIDE
+	ld c, a
+
+	; Get the BG palette ID in `b`, and mark the slot if any entry targeting it
+	; changed. This makes chained swaps resolve to their final effective palette.
+	ld a, [hli]
+	ld b, a
+	ld a, d
+	and a
+	jr z, .got_changed_state
+	call GetPaletteMask
+	and d
+	jr z, .got_changed_state
+	set PALETTE_SWAP_CHANGED_F, c
+.got_changed_state
+	push de
 
 	; Get the palette list in `de`.
 	; Advance `hl` past the two palettes.
-	ld a, [de]
-	ld c, a
-	and a
+	bit PALETTE_SWAP_INSIDE_F, c
 	jr z, .get_palette
 	; Skip the regular palette to get the swapped one.
 	inc hl
@@ -66,30 +115,57 @@ InitializeSwappedPalette::
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld a, c
-	and a
+	bit PALETTE_SWAP_INSIDE_F, c
 	jr nz, .got_palette
 	; Skip the swapped palette if we already got the regular one.
 	inc hl
 	inc hl
 .got_palette
-
-	; Swap the palette in VRAM.
 	push hl
+	; A NULL palette leaves an earlier swap for the same slot intact.
+	ld a, d
+	or e
+	jr z, .swapped
+
+	bit PALETTE_SWAP_CHANGED_F, c
+	jr z, .swap_current
+
+	farcall CatchUpPaletteSwapFade
+	jr .swapped
+
+.swap_current
+	; Always reload the selected palette: CloseSubmenu does not restore
+	; non-default palettes, even when this entry's state has not changed.
+	; TODO: look into a more targeted fix for this.
 	ld a, BANK(SwapColorPalette)
 	rst Bankswitch
 	call SwapColorPalette
+
+.swapped
 	pop hl
+	pop de
 
 	; Continue processing more than one `paletteswap` rectangle.
 	call SwitchToMapScriptsBank
-	jr .loop
+	jr .palette_loop
 
 .done
 	; Return carry when there were some `paletteswap` rectangles.
 	pop af
 	rst Bankswitch
 	scf
+	ret
+
+GetPaletteMask:
+; Return `a` = 1 << `b` given BG palette ID `b`, preserving `bc`.
+	push bc
+	ld a, $80
+	inc b
+.mask_loop
+	rlca
+	dec b
+	jr nz, .mask_loop
+	pop bc
 	ret
 
 CheckPaletteSwapRectangle:

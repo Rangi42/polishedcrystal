@@ -78,7 +78,7 @@ CopyLeafGreenToOBPal7:
 ; Fly leaves should use standard green if PAL_BG_GREEN has been "swapped" to
 ; other colors like purple. (We can assume that if PAL_BG_GREEN is *not* swapped,
 ; then it's still appropriate for use as a leaf/tree color.)
-	ld a, [wPaletteSwapFlag]
+	ld a, [wPaletteSwapStates]
 	and a
 	ld a, PAL_OW_LEAF_GREEN
 	jr nz, CopySpritePalToOBPal7
@@ -139,6 +139,20 @@ CopySpritePalHandler::
 	ld [wPalState], a
 	call CalculateStates
 	call CopySpritePal
+	; An ordinary copy-BG palette sourced its active color from the matching,
+	; already partially faded BG palette. Replaying the elapsed fade steps would
+	; put it ahead of the BG palette it is meant to match. Fades from white still
+	; need the normal catch-up path because their active palette started as white;
+	; PAL_OW_COPY_BG_WHITE also needs it because it is built from target colors.
+	ld a, [wPalWhiteState]
+	and a
+	jr nz, .catch_up
+	ld a, [wNeededPalIndex]
+	cp PAL_OW_COPY_BG_WHITE
+	jr z, .catch_up
+	cp FIRST_COPY_BG_PAL
+	jr nc, .caught_up
+.catch_up
 	push de
 	push bc
 	ld c, 1 palettes
@@ -151,6 +165,7 @@ CopySpritePalHandler::
 	pop hl
 	pop bc
 	pop de
+.caught_up
 	pop af
 	ld [wPalFlags], a
 	ret
@@ -175,7 +190,19 @@ CopySpritePal::
 	jr z, .copy_white
 
 .copy_bg
-	ld hl, wBGPals1
+	; Copy-BG palettes use the corresponding buffer for the requested state.
+	; wBGPals2 is the active, possibly partially faded palette; wBGPals1 is the
+	; destination palette.
+	push af
+	ld a, [wPalState]
+	assert PREV_PALSTATE == 0
+	and a
+	ld hl, wBGPals2
+	jr z, .got_copy_bg_source
+	assert HIGH(wBGPals2) == HIGH(wBGPals1)
+	ld l, LOW(wBGPals1)
+.got_copy_bg_source
+	pop af
 	ld bc, 1 palettes
 	rst AddNTimes
 	jr .got_pal

@@ -1085,10 +1085,9 @@ wEnteredMapFromContinue:: db
 
 wTimeOfDayPal:: db
 
-wFollowInSync:: db
-
 wPaletteSwapAddress:: dw
-wPaletteSwapFlag:: db
+wPaletteSwapStates:: db
+wPaletteSwapInits:: db
 
 wTimeOfDayPalFlags:: db
 wTimeOfDayPalset:: db
@@ -1183,7 +1182,7 @@ wTradeFlags:: flag_array PARTY_LENGTH
 
 wMooMooBerries:: db
 
-	ds 1 ; unused
+wFollowInSync:: db
 
 wFarfetchdPosition:: db
 

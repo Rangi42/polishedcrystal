@@ -1047,8 +1047,9 @@ SwapColorPalette::
 	or e
 	ret z
 
-	; Set `hl` to the `[wTimeOfDayPal]`th palette in the table at `de`.
-	ld a, [wTimeOfDayPal]
+	; Set `hl` to the selected state's time-of-day palette in the table at `de`.
+	ld a, PALSTATE_TIME_OF_DAY
+	farcall GetPalState
 	and 3
 	add a
 	add a
@@ -1057,23 +1058,30 @@ SwapColorPalette::
 	ld h, 0
 	add hl, de
 
-	; Set `de` to the `b`th palette of `wBGPals1`.
+	; Previous-state palettes become active; current-state palettes are the target.
+	; d = [wPalState] == PREV_PALSTATE ? LOW(wBGPals2) : LOW(wBGPals1)
+	ld a, [wPalState]
+	assert PREV_PALSTATE == 0
+	and a
+	ld d, LOW(wBGPals2)
+	jr z, .got_target
+	ld d, LOW(wBGPals1)
+.got_target
+	; Set `de` to the `b`th palette of `wBGPals1` or `wBGPals2`.
 	ld a, b
 	add a
 	add a
 	add a
-	add LOW(wBGPals1)
+	add d ; LOW(wBGPals1) or LOW(wBGPals2)
 	ld e, a
+	assert HIGH(wBGPals1) == HIGH(wBGPals2)
 	adc HIGH(wBGPals1)
 	sub e
 	ld d, a
 
 	; Skip past the regular palettes to the overcast ones if applicable.
-	push hl
-	push de
-	farcall GetOvercastIndex
-	pop de
-	pop hl
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
 	and a
 	jr z, .not_overcast
 	ld bc, 4 palettes
@@ -1083,6 +1091,81 @@ SwapColorPalette::
 	; Apply the swapped palette.
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
+
+UpdatePaletteSwapState::
+; wPaletteSwapStates stores the current state of each entry.
+; wPaletteSwapInits records which entries have been initialized.
+; Input: `c` PALETTE_SWAP_INSIDE_F set inside the rectangle,
+;        `e` = this entry's state bit.
+; Output: `c` PALETTE_SWAP_CHANGED_F set on first check or a state change.
+	ld a, [wPaletteSwapStates]
+	ld d, a
+	; Build this entry's new state in `a`.
+	bit PALETTE_SWAP_INSIDE_F, c
+	jr nz, .inside
+	ld a, e
+	cpl
+	and d
+	jr .compare
+.inside
+	or e
+
+	; Store only on first check or if the current state changed.
+.compare
+	cp d
+	jr nz, .changed
+	ld a, [wPaletteSwapInits]
+	and e
+	ret nz
+	jr .finish
+.changed
+	ld [wPaletteSwapStates], a
+.finish
+	ld a, [wPaletteSwapInits]
+	or e
+	ld [wPaletteSwapInits], a
+	set PALETTE_SWAP_CHANGED_F, c
+	ret
+
+CatchUpPaletteSwapFade::
+; Rebuild BG palette `b` from palette list `de` under the fade's previous and
+; current conditions, then catch its active palette up to the current step.
+	push bc
+	push de
+	ld a, [wPalWhiteState]
+	and a
+	jr z, .swap_previous
+
+	; de = wBGPals2 palette b
+	ld a, b
+	add a
+	add a
+	add a
+	add LOW(wBGPals2)
+	ld e, a
+	adc HIGH(wBGPals2)
+	sub e
+	ld d, a
+
+	farcall CopyWhitePal
+	jr .got_previous
+
+.swap_previous
+	xor a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
+	push bc
+	call SwapColorPalette
+	pop bc
+
+.got_previous
+	pop de
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	call SwapColorPalette
+	pop bc
+	ld a, b
+	farjp CatchUpBGPaletteFade
 
 INCLUDE "data/tileset_palettes.asm"
 

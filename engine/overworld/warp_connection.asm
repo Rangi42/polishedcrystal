@@ -11,7 +11,9 @@ HandleContinueMap:
 	ld hl, wPaletteSwapAddress
 	ld [hli], a
 	ld [hli], a
-	assert wPaletteSwapAddress + 2 == wPaletteSwapFlag
+	assert wPaletteSwapAddress + 2 == wPaletteSwapStates
+	ld [hli], a
+	assert wPaletteSwapStates + 1 == wPaletteSwapInits
 	ld [hl], a
 	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback

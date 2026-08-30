@@ -277,4 +277,8 @@ DI_DelayFrame:
 	jr nc, .loop
 .done
 	pop bc
+	; Don't service the VBlank that elapsed while interrupts were disabled.
+	ldh a, [rIF]
+	res B_IF_VBLANK, a
+	ldh [rIF], a
 	ret

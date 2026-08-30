@@ -63,6 +63,11 @@ DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
 DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
 
+; Temporary flags used while processing one palette swap entry.
+DEF PALETTE_SWAP_INSIDE_F  EQU 0
+DEF PALETTE_SWAP_CHANGED_F EQU 7
+DEF PALETTE_SWAP_INSIDE    EQU 1 << PALETTE_SWAP_INSIDE_F
+
 ; wPalState types (see engine/gfx/sprite_palettes.asm)
 	const_def
 	const PREV_PALSTATE ; 0
