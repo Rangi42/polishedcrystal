@@ -130,8 +130,6 @@ InitializeSwappedPalette::
 	bit PALETTE_SWAP_CHANGED_F, c
 	jr z, .swap_current
 
-	; Rebuild this palette under the fade's previous conditions, then catch it
-	; up to the current fade step toward the same palette's current conditions.
 	farcall CatchUpPaletteSwapFade
 	jr .swapped
 

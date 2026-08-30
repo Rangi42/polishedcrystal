@@ -452,7 +452,6 @@ CatchUpPaletteFade:
 	ld a, d
 	cp e
 	jr z, .done
-	push bc
 	push de
 	push hl
 	ld a, d
@@ -460,7 +459,6 @@ CatchUpPaletteFade:
 	call FadeSinglePaletteStep
 	pop hl
 	pop de
-	pop bc
 	dec d
 	jr .catch_loop
 
@@ -476,82 +474,5 @@ CatchUpPaletteFade:
 	ret
 
 FadeSinglePaletteStep:
-	ld de, 0
-	ld d, PAL_COLORS
-
-.single_loop
-	push de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	ld a, [wPalFadeMode]
-	bit PALFADE_FLASH_F, a
-	jr z, .single_no_flash
-	ld bc, 0
-	dec hl
-	jr .single_got_destination
-
-.single_no_flash
-	ld bc, wBGPals1 - wBGPals2
-	add hl, bc
-	ld a, [hld]
-	ld b, a
-	ld c, [hl]
-	push bc
-	ld bc, wBGPals2 - wBGPals1
-	add hl, bc
-	pop bc
-
-.single_got_destination
-	push hl
-	ld a, c
-	and COLOR_RED
-	ld l, a
-	ld a, e
-	and COLOR_RED
-	call FadeColorStep
-	ld a, e
-	and ~COLOR_RED
-	or l
-	ld e, a
-	push bc
-	call FadeColorGetGreen
-	ld l, a
-	ld b, d
-	ld c, e
-	call FadeColorGetGreen
-	pop bc
-	call FadeColorStep
-	sla l
-	swap l
-	ld a, l
-	xor e
-	and COLOR_GREEN_LOW
-	xor e
-	ld e, a
-	ld a, l
-	xor d
-	and COLOR_GREEN_HIGH
-	xor d
-	ld d, a
-	ld a, b
-	call FadeColorGetBlue
-	ld l, a
-	ld a, d
-	call FadeColorGetBlue
-	call FadeColorStep
-	sla l
-	sla l
-	ld a, d
-	and COLOR_GREEN_HIGH ; essentially ~COLOR_BLUE
-	or l
-	ld d, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	pop de
-	dec d
-	jr nz, .single_loop
-	ret
+	lb de, PAL_COLORS, 0
+	jp FadePalettesStep.inner_loop
