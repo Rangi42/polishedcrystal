@@ -1,10 +1,12 @@
-	music_header Music_LavenderTown
+Music_LavenderTown:
+music_header
 	channel_count 3
 	channel 1, Music_LavenderTown_Ch1
 	channel 2, Music_LavenderTown_Ch2
 	channel 3, Music_LavenderTown_Ch3
 
-	music_label Music_LavenderTown_Ch1
+Music_LavenderTown_Ch1:
+music_label
 	tempo 160
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -15,7 +17,8 @@
 	rest 16
 	rest 16
 	rest 16
-	music_label Music_LavenderTown_branch_ef74c
+Music_LavenderTown_branch_ef74c:
+music_label
 	sound_call Music_LavenderTown_branch_ef7fd
 	volume_envelope 9, 3
 	octave 5
@@ -101,7 +104,8 @@
 	octave 3
 	note A_, 2
 	note F_, 2
-	music_label Music_LavenderTown_branch_ef7ca
+Music_LavenderTown_branch_ef7ca:
+music_label
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -148,7 +152,8 @@
 	note B_, 8
 	sound_jump Music_LavenderTown_branch_ef74c
 
-	music_label Music_LavenderTown_branch_ef7fd
+Music_LavenderTown_branch_ef7fd:
+music_label
 	volume_envelope 8, 3
 	octave 5
 	note C_, 2
@@ -240,7 +245,8 @@
 	note F_, 2
 	sound_ret
 
-	music_label Music_LavenderTown_branch_ef87f
+Music_LavenderTown_branch_ef87f:
+music_label
 	volume_envelope 9, 3
 	octave 5
 	note G_, 2
@@ -260,11 +266,13 @@
 	note G_, 2
 	sound_ret
 
-	music_label Music_LavenderTown_Ch2
+Music_LavenderTown_Ch2:
+music_label
 	duty_cycle 1
 	vibrato 8, 2, 4
 	stereo_panning TRUE, TRUE
-	music_label Music_LavenderTown_branch_ef8a0
+Music_LavenderTown_branch_ef8a0:
+music_label
 	note_type 12, 10, 3
 	octave 5
 	note C_, 2
@@ -300,7 +308,8 @@
 	note D_, 2
 	volume_envelope 6, 3
 	note D_, 2
-	music_label Music_LavenderTown_branch_ef8d7
+Music_LavenderTown_branch_ef8d7:
+music_label
 	volume_envelope 11, 5
 	sound_call Music_LavenderTown_branch_ef915
 	octave 2
@@ -354,7 +363,8 @@
 	note G_, 6
 	sound_jump Music_LavenderTown_branch_ef8d7
 
-	music_label Music_LavenderTown_branch_ef915
+Music_LavenderTown_branch_ef915:
+music_label
 	octave 2
 	note C_, 4
 	note G_, 4
@@ -385,7 +395,8 @@
 	note C_, 4
 	sound_ret
 
-	music_label Music_LavenderTown_Ch3
+Music_LavenderTown_Ch3:
+music_label
 	vibrato 18, 2, 4
 	note_type 12, 1, 3
 	stereo_panning TRUE, FALSE
@@ -396,7 +407,8 @@
 	octave 5
 	note E_, 4
 	note F_, 4
-	music_label Music_LavenderTown_branch_ef941
+Music_LavenderTown_branch_ef941:
+music_label
 	volume_envelope 1, 2
 	octave 5
 	note G_, 4

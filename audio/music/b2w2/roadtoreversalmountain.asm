@@ -3,14 +3,16 @@
 ; https://pastebin.com/27rkdjmk
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_RoadToReversalMountainB2W2
+Music_RoadToReversalMountainB2W2:
+music_header
 	channel_count 4
 	channel 1, Music_RoadToReversalMountainB2W2_Ch1
 	channel 2, Music_RoadToReversalMountainB2W2_Ch2
 	channel 3, Music_RoadToReversalMountainB2W2_Ch3
 	channel 4, Music_RoadToReversalMountainB2W2_Ch4
 
-	music_label Music_RoadToReversalMountainB2W2_Ch1
+Music_RoadToReversalMountainB2W2_Ch1:
+music_label
 	tempo 140
 	volume 7, 7
 	duty_cycle 3
@@ -37,7 +39,8 @@
 	rest 6
 	sound_jump Music_RoadToReversalMountainB2W2_Ch1
 
-	music_label Music_RoadToReversalMountainB2W2_Ch1_branch_1
+Music_RoadToReversalMountainB2W2_Ch1_branch_1:
+music_label
 	octave 2
 	note A_, 12
 	note A#, 6
@@ -45,7 +48,8 @@
 	note G_, 6
 	sound_ret
 
-	music_label Music_RoadToReversalMountainB2W2_Ch2
+Music_RoadToReversalMountainB2W2_Ch2:
+music_label
 	duty_cycle 0
 	pitch_offset 1
 	vibrato 28, 1, 2
@@ -186,7 +190,8 @@
 	note C_, 10
 	sound_jump Music_RoadToReversalMountainB2W2_Ch2
 
-	music_label Music_RoadToReversalMountainB2W2_Ch3
+Music_RoadToReversalMountainB2W2_Ch3:
+music_label
 	note_type 12, 2, 5
 	octave 2
 	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
@@ -203,7 +208,8 @@
 	rest 1
 	sound_jump Music_RoadToReversalMountainB2W2_Ch3
 
-	music_label Music_RoadToReversalMountainB2W2_Ch3_branch_1
+Music_RoadToReversalMountainB2W2_Ch3_branch_1:
+music_label
 	note D_, 2
 	rest 2
 	note A_, 2
@@ -212,11 +218,13 @@
 	rest 2
 	sound_ret
 
-	music_label Music_RoadToReversalMountainB2W2_Ch4
+Music_RoadToReversalMountainB2W2_Ch4:
+music_label
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	drum_speed 12
-	music_label Music_RoadToReversalMountainB2W2_Ch4_loop
+Music_RoadToReversalMountainB2W2_Ch4_loop:
+music_label
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 4, 2

@@ -2,20 +2,23 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/pokecrystal/blob/master/Demixes.zip
 
-	music_header Music_StarkMountainDPPt
+Music_StarkMountainDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_StarkMountainDPPt_Ch1
 	channel 2, Music_StarkMountainDPPt_Ch2
 	channel 3, Music_StarkMountainDPPt_Ch3
 	channel 4, Music_StarkMountainDPPt_Ch4
 
-	music_label Music_StarkMountainDPPt_Ch1
+Music_StarkMountainDPPt_Ch1:
+music_label
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo 160
 	pitch_offset 2
 	vibrato 16, 3, 6
-	music_label Music_StarkMountainDPPt_Ch1_loop
+Music_StarkMountainDPPt_Ch1_loop:
+music_label
 	octave 2
 	note_type 12, 10, 1
 	rest 9
@@ -351,8 +354,10 @@
 	rest 5
 	sound_jump Music_StarkMountainDPPt_Ch1_loop
 
-	music_label Music_StarkMountainDPPt_Ch2
-	music_label Music_StarkMountainDPPt_Ch2_loop
+Music_StarkMountainDPPt_Ch2:
+music_label
+Music_StarkMountainDPPt_Ch2_loop:
+music_label
 	note_type 12, 11, 5
 	duty_cycle 1
 	octave 1
@@ -754,11 +759,13 @@
 	note C_, 4
 	sound_jump Music_StarkMountainDPPt_Ch2_loop
 
-	music_label Music_StarkMountainDPPt_Ch3
+Music_StarkMountainDPPt_Ch3:
+music_label
 	pitch_offset 1
 	volume_envelope 1, 9
 	vibrato 8, 4, 5
-	music_label Music_StarkMountainDPPt_Ch3_loop
+Music_StarkMountainDPPt_Ch3_loop:
+music_label
 	note_type 12, 1, 9
 	octave 4
 	rest 9
@@ -1183,10 +1190,12 @@
 	note C_, 8
 	sound_jump Music_StarkMountainDPPt_Ch3_loop
 
-	music_label Music_StarkMountainDPPt_Ch4
+Music_StarkMountainDPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
-	music_label Music_StarkMountainDPPt_Ch4_loop
+Music_StarkMountainDPPt_Ch4_loop:
+music_label
 	drum_note 4, 8
 	drum_note 4, 8
 	drum_note 4, 2

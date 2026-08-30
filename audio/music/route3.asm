@@ -1,11 +1,13 @@
-	music_header Music_Route3
+Music_Route3:
+music_header
 	channel_count 4
 	channel 1, Music_Route3_Ch1
 	channel 2, Music_Route3_Ch2
 	channel 3, Music_Route3_Ch3
 	channel 4, Music_Route3_Ch4
 
-	music_label Music_Route3_Ch1
+Music_Route3_Ch1:
+music_label
 	stereo_panning FALSE, TRUE
 	tempo 160
 	volume 7, 7
@@ -46,7 +48,8 @@
 	note E_, 1
 	note F#, 1
 	note G#, 1
-	music_label Music_Route3_branch_ec307
+Music_Route3_branch_ec307:
+music_label
 	sound_call Music_Route3_branch_ec3a4
 	note G_, 1
 	note D_, 1
@@ -196,7 +199,8 @@
 	note D_, 1
 	sound_jump Music_Route3_branch_ec307
 
-	music_label Music_Route3_branch_ec3a4
+Music_Route3_branch_ec3a4:
+music_label
 	octave 3
 	note A_, 1
 	note E_, 1
@@ -207,7 +211,8 @@
 	note E_, 1
 	note C#, 1
 	note E_, 1
-	music_label Music_Route3_branch_ec3b1
+Music_Route3_branch_ec3b1:
+music_label
 	note A_, 1
 	note E_, 1
 	note C#, 1
@@ -217,7 +222,8 @@
 	note E_, 1
 	note C#, 1
 	note E_, 1
-	music_label Music_Route3_branch_ec3bd
+Music_Route3_branch_ec3bd:
+music_label
 	note G_, 1
 	note D_, 1
 	octave 2
@@ -235,7 +241,8 @@
 	note D_, 1
 	sound_ret
 
-	music_label Music_Route3_Ch2
+Music_Route3_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 12, 5, -6
 	duty_cycle 2
@@ -264,7 +271,8 @@
 	note C#, 1
 	note E_, 1
 	note G#, 1
-	music_label Music_Route3_branch_ec3f5
+Music_Route3_branch_ec3f5:
+music_label
 	volume_envelope 7, -5
 	sound_call Music_Route3_branch_ec443
 	note G_, 1
@@ -327,7 +335,8 @@
 	note G#, 1
 	sound_jump Music_Route3_branch_ec3f5
 
-	music_label Music_Route3_branch_ec443
+Music_Route3_branch_ec443:
+music_label
 	note A_, 6
 	note E_, 1
 	note A_, 1
@@ -351,7 +360,8 @@
 	note D_, 1
 	sound_ret
 
-	music_label Music_Route3_Ch3
+Music_Route3_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 6, 0, 3
 	note_type 12, 1, 3
@@ -380,7 +390,8 @@
 	rest 1
 	note G#, 2
 	sound_call Music_Route3_branch_ec4bd
-	music_label Music_Route3_branch_ec47f
+Music_Route3_branch_ec47f:
+music_label
 	volume_envelope 1, 4
 	sound_call Music_Route3_branch_ec4bd
 	sound_call Music_Route3_branch_ec4bd
@@ -428,7 +439,8 @@
 	note G#, 1
 	sound_jump Music_Route3_branch_ec47f
 
-	music_label Music_Route3_branch_ec4bd
+Music_Route3_branch_ec4bd:
+music_label
 	octave 3
 	note A_, 1
 	rest 1
@@ -447,7 +459,8 @@
 	note G#, 2
 	sound_ret
 
-	music_label Music_Route3_branch_ec4ce
+Music_Route3_branch_ec4ce:
+music_label
 	octave 3
 	note G_, 1
 	rest 1
@@ -478,11 +491,13 @@
 	note B_, 2
 	sound_ret
 
-	music_label Music_Route3_Ch4
+Music_Route3_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 12
 	rest 10
-	music_label Music_Route3_branch_ec4f0
+Music_Route3_branch_ec4f0:
+music_label
 	drum_speed 12
 	drum_note 3, 2
 	drum_note 3, 4

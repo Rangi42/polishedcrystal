@@ -1,17 +1,20 @@
-	music_header Music_PokemonCenter
+Music_PokemonCenter:
+music_header
 	channel_count 4
 	channel 1, Music_PokemonCenter_Ch1
 	channel 2, Music_PokemonCenter_Ch2
 	channel 3, Music_PokemonCenter_Ch3
 	channel 4, Music_PokemonCenter_Ch4
 
-	music_label Music_PokemonCenter_Ch1
+Music_PokemonCenter_Ch1:
+music_label
 	tempo 152
 	volume 7, 7
 	duty_cycle 2
 	vibrato 10, 1, 4
 	pitch_offset 1
-	music_label Music_PokemonCenter_branch_ed5df
+Music_PokemonCenter_branch_ed5df:
+music_label
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3
 	octave 3
@@ -150,9 +153,11 @@
 	note G_, 2
 	sound_jump Music_PokemonCenter_branch_ed5df
 
-	music_label Music_PokemonCenter_Ch2
+Music_PokemonCenter_Ch2:
+music_label
 	vibrato 16, 2, 5
-	music_label Music_PokemonCenter_branch_ed674
+Music_PokemonCenter_branch_ed674:
+music_label
 	stereo_panning TRUE, TRUE
 	sound_call Music_PokemonCenter_branch_ed6d1
 	stereo_panning FALSE, TRUE
@@ -218,7 +223,8 @@
 	note D_, 8
 	sound_jump Music_PokemonCenter_branch_ed674
 
-	music_label Music_PokemonCenter_branch_ed6d1
+Music_PokemonCenter_branch_ed6d1:
+music_label
 	duty_cycle 2
 	note_type 12, 12, 2
 	octave 4
@@ -235,7 +241,8 @@
 	note C#, 6
 	sound_ret
 
-	music_label Music_PokemonCenter_branch_ed6e4
+Music_PokemonCenter_branch_ed6e4:
+music_label
 	note_type 12, 12, 2
 	octave 4
 	note C#, 2
@@ -249,9 +256,11 @@
 	note C#, 2
 	sound_ret
 
-	music_label Music_PokemonCenter_Ch3
+Music_PokemonCenter_Ch3:
+music_label
 	note_type 12, 2, 8
-	music_label Music_PokemonCenter_branch_ed6f6
+Music_PokemonCenter_branch_ed6f6:
+music_label
 	stereo_panning TRUE, FALSE
 	octave 3
 	note D_, 1
@@ -357,7 +366,8 @@
 	rest 1
 	sound_jump Music_PokemonCenter_branch_ed6f6
 
-	music_label Music_PokemonCenter_branch_ed76f
+Music_PokemonCenter_branch_ed76f:
+music_label
 	note E_, 1
 	rest 5
 	note A_, 1
@@ -368,7 +378,8 @@
 	rest 1
 	sound_ret
 
-	music_label Music_PokemonCenter_branch_ed778
+Music_PokemonCenter_branch_ed778:
+music_label
 	note E_, 1
 	rest 5
 	note A_, 1
@@ -381,7 +392,8 @@
 	rest 1
 	sound_ret
 
-	music_label Music_PokemonCenter_branch_ed783
+Music_PokemonCenter_branch_ed783:
+music_label
 	note F#, 1
 	rest 5
 	note A_, 1
@@ -392,11 +404,13 @@
 	rest 1
 	sound_ret
 
-	music_label Music_PokemonCenter_Ch4
+Music_PokemonCenter_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	stereo_panning TRUE, TRUE
-	music_label Music_PokemonCenter_branch_ed792
+Music_PokemonCenter_branch_ed792:
+music_label
 	drum_note 8, 6
 	drum_note 8, 4
 	drum_note 8, 2

@@ -3,20 +3,23 @@
 ; https://pastebin.com/GbzJ6dUH
 ; https://hax.iimarckus.org/topic/6777/9/
 
-	music_header Music_CelestialTowerBW_NoIntro
+Music_CelestialTowerBW_NoIntro:
+music_header
 	channel_count 4
 	channel 1, Music_CelestialTowerBW_NoIntro_Ch1
 	channel 2, Music_CelestialTowerBW_NoIntro_Ch2
 	channel 3, Music_CelestialTowerBW_NoIntro_Ch3
 	channel 4, Music_CelestialTowerBW_NoIntro_Ch4
 
-	music_label Music_CelestialTowerBW_NoIntro_Ch1
+Music_CelestialTowerBW_NoIntro_Ch1:
+music_label
 	tempo 232
 	duty_cycle 2
 	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 6, 8, 5
-	music_label Music_CelestialTowerBW_NoIntro_Ch1_loop_1
+Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
+music_label
 	octave 4
 	note A#, 2
 	note D_, 2
@@ -205,12 +208,14 @@
 	note F_, 15
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch1
 
-	music_label Music_CelestialTowerBW_NoIntro_Ch2
+Music_CelestialTowerBW_NoIntro_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 6, 6, 7
-	music_label Music_CelestialTowerBW_NoIntro_Ch2_loop_1
+Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -395,7 +400,8 @@
 	note A#, 8
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch2
 
-	music_label Music_CelestialTowerBW_NoIntro_Ch3
+Music_CelestialTowerBW_NoIntro_Ch3:
+music_label
 	vibrato 0, 0, 0
 	note_type 12, 2, 0
 	octave 3
@@ -536,7 +542,8 @@
 	note D_, 8
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch3
 
-	music_label Music_CelestialTowerBW_NoIntro_Ch4
+Music_CelestialTowerBW_NoIntro_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 12
 	rest 16
@@ -552,7 +559,8 @@
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_2
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
-	music_label Music_CelestialTowerBW_NoIntro_Ch4_loop_1
+Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
+music_label
 	drum_note 2, 1
 	drum_note 9, 1
 	drum_note 2, 1
@@ -569,7 +577,8 @@
 	rest 16
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch4
 
-	music_label Music_CelestialTowerBW_NoIntro_Ch4_branch_1
+Music_CelestialTowerBW_NoIntro_Ch4_branch_1:
+music_label
 	drum_note 2, 1
 	drum_note 9, 1
 	drum_note 2, 1
@@ -587,7 +596,8 @@
 	rest 16
 	sound_ret
 
-	music_label Music_CelestialTowerBW_NoIntro_Ch4_branch_2
+Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
+music_label
 	drum_note 2, 1
 	drum_note 9, 1
 	drum_note 2, 1

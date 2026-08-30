@@ -2,14 +2,16 @@
 ; Demixed by Pum
 ; https://hax.iimarckus.org/topic/6443/
 
-	music_header Music_GymLeaderBattleXY
+Music_GymLeaderBattleXY:
+music_header
 	channel_count 4
 	channel 1, Music_GymLeaderBattleXY_Ch1
 	channel 2, Music_GymLeaderBattleXY_Ch2
 	channel 3, Music_GymLeaderBattleXY_Ch3
 	channel 4, Music_GymLeaderBattleXY_Ch4
 
-	music_label Music_GymLeaderBattleXY_Ch1
+Music_GymLeaderBattleXY_Ch1:
+music_label
 	tempo 130
 	volume 7, 7
 	duty_cycle 1
@@ -108,7 +110,8 @@
 	note A#, 2
 	rest 2
 	note A#, 4
-	music_label Music_GymLeaderBattleXY_Ch1_loop
+Music_GymLeaderBattleXY_Ch1_loop:
+music_label
 	note_type 3, 9, 7
 	stereo_panning TRUE, TRUE
 	octave 4
@@ -710,7 +713,8 @@
 	sound_jump Music_GymLeaderBattleXY_Ch1_loop
 	sound_ret
 
-	music_label Music_GymLeaderBattleXY_Ch2
+Music_GymLeaderBattleXY_Ch2:
+music_label
 	duty_cycle 2
 	note_type 3, 11, 7
 	octave 3
@@ -794,7 +798,8 @@
 	note D#, 2
 	rest 2
 	note D#, 4
-	music_label Music_GymLeaderBattleXY_Ch2_loop
+Music_GymLeaderBattleXY_Ch2_loop:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 0, 4, 6
 	octave 3
@@ -1178,7 +1183,8 @@
 	sound_jump Music_GymLeaderBattleXY_Ch2_loop
 	sound_ret
 
-	music_label Music_GymLeaderBattleXY_Ch3
+Music_GymLeaderBattleXY_Ch3:
+music_label
 	note_type 3, 1, 6
 	octave 3
 	note C_, 4
@@ -1240,7 +1246,8 @@
 	note F_, 8
 	note C_, 12
 	rest 4
-	music_label Music_GymLeaderBattleXY_Ch3_loop
+Music_GymLeaderBattleXY_Ch3_loop:
+music_label
 	note_type 3, 1, 6
 	octave 2
 	note C_, 8
@@ -2191,7 +2198,8 @@
 	sound_jump Music_GymLeaderBattleXY_Ch3_loop
 	sound_ret
 
-	music_label Music_GymLeaderBattleXY_Ch4
+Music_GymLeaderBattleXY_Ch4:
+music_label
 	drum_speed 12
 	toggle_noise 0
 	drum_note 8, 4
@@ -2230,7 +2238,8 @@
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 7, 2
-	music_label Music_GymLeaderBattleXY_Ch4_loop
+Music_GymLeaderBattleXY_Ch4_loop:
+music_label
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 7, 2

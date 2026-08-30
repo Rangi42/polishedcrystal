@@ -3,14 +3,16 @@
 ; https://pastebin.com/7JH4Hxft
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_EverGrandeCityRSE
+Music_EverGrandeCityRSE:
+music_header
 	channel_count 4
 	channel 1, Music_EverGrandeCityRSE_Ch1
 	channel 2, Music_EverGrandeCityRSE_Ch2
 	channel 3, Music_EverGrandeCityRSE_Ch3
 	channel 4, Music_EverGrandeCityRSE_Ch4
 
-	music_label Music_EverGrandeCityRSE_Ch1
+Music_EverGrandeCityRSE_Ch1:
+music_label
 	tempo 100
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -57,7 +59,8 @@
 	note C_, 6
 	volume_envelope 12, 7
 	note C_, 6
-	music_label Music_EverGrandeCityRSE_Ch1_loop
+Music_EverGrandeCityRSE_Ch1_loop:
+music_label
 	octave 4
 	note D_, 4
 	note D#, 2
@@ -302,7 +305,8 @@
 	rest 8
 	sound_jump Music_EverGrandeCityRSE_Ch1_loop
 
-	music_label Music_EverGrandeCityRSE_Ch2
+Music_EverGrandeCityRSE_Ch2:
+music_label
 	vibrato 18, 2, 5
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
@@ -371,7 +375,8 @@
 	note F_, 2
 	note E_, 2
 	note D#, 2
-	music_label Music_EverGrandeCityRSE_Ch2_loop
+Music_EverGrandeCityRSE_Ch2_loop:
+music_label
 	volume_envelope 9, 7
 	octave 2
 	duty_cycle 3
@@ -618,7 +623,8 @@
 	note C_, 12
 	sound_jump Music_EverGrandeCityRSE_Ch2_loop
 
-	music_label Music_EverGrandeCityRSE_Ch3
+Music_EverGrandeCityRSE_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 18, 1, 5
 	note_type 12, 1, 4
@@ -688,7 +694,8 @@
 	note F_, 2
 	note G_, 2
 	note A_, 2
-	music_label Music_EverGrandeCityRSE_branch_ef4e3
+Music_EverGrandeCityRSE_branch_ef4e3:
+music_label
 	octave 2
 	note A#, 2
 	rest 2
@@ -1163,12 +1170,14 @@
 	note C_, 2
 	sound_jump Music_EverGrandeCityRSE_branch_ef4e3
 
-	music_label Music_EverGrandeCityRSE_Ch4
+Music_EverGrandeCityRSE_Ch4:
+music_label
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
 	drum_speed 12
 	rest 6
-	music_label Music_EverGrandeCityRSE_Ch4_loop
+Music_EverGrandeCityRSE_Ch4_loop:
+music_label
 	drum_note 9, 4
 	drum_note 9, 2
 	drum_note 3, 4

@@ -56,6 +56,7 @@ wMusicID::
 wMusicIDLo:: db
 wMusicIDHi:: db
 wMusicBank:: db
+wMusicCompressed:: db
 wNoiseSampleAddress::
 wNoiseSampleAddressLo:: db
 wNoiseSampleAddressHi:: db
@@ -905,7 +906,7 @@ wSummaryMoveSwap:: db
 
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
-ds 9
+ds 8
 assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10
@@ -1420,7 +1421,7 @@ wSpecialPalCount:: db
 
 SECTION "Unused", WRAM0
 
-	ds 300 ; it's free real estate
+	ds 299 ; it's free real estate
 
 
 SECTION "Options", WRAM0

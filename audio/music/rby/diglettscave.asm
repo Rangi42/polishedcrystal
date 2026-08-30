@@ -2,20 +2,23 @@
 ; Ported by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/dungeon2.asm
 
-	music_header Music_DiglettsCaveRBY
+Music_DiglettsCaveRBY:
+music_header
 	channel_count 4
 	channel 1, Music_DiglettsCaveRBY_Ch1
 	channel 2, Music_DiglettsCaveRBY_Ch2
 	channel 3, Music_DiglettsCaveRBY_Ch3
 	channel 4, Music_DiglettsCaveRBY_Ch4
 
-	music_label Music_DiglettsCaveRBY_Ch1
+Music_DiglettsCaveRBY_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
 	vibrato 10, 1, 4
 
-	music_label Music_DiglettsCaveRBY_branch_7e892
+Music_DiglettsCaveRBY_branch_7e892:
+music_label
 	note_type 12, 11, 2
 	octave 4
 	note E_, 4
@@ -79,10 +82,12 @@
 	rest 16
 	sound_jump Music_DiglettsCaveRBY_branch_7e892
 
-	music_label Music_DiglettsCaveRBY_Ch2
+Music_DiglettsCaveRBY_Ch2:
+music_label
 	vibrato 11, 1, 5
 
-	music_label Music_DiglettsCaveRBY_branch_7e8db
+Music_DiglettsCaveRBY_branch_7e8db:
+music_label
 	duty_cycle 3
 	note_type 12, 12, 2
 	octave 3
@@ -170,11 +175,13 @@
 	note D_, 16
 	sound_jump Music_DiglettsCaveRBY_branch_7e8db
 
-	music_label Music_DiglettsCaveRBY_Ch3
+Music_DiglettsCaveRBY_Ch3:
+music_label
 	note_type 12, 1, 3
 	vibrato 8, 2, 6
 
-	music_label Music_DiglettsCaveRBY_branch_7e940
+Music_DiglettsCaveRBY_branch_7e940:
+music_label
 	sound_call Music_DiglettsCaveRBY_branch_7e9d1
 	sound_loop 16, Music_DiglettsCaveRBY_branch_7e940
 	note E_, 4
@@ -195,7 +202,8 @@
 	rest 4
 	note A#, 4
 
-	music_label Music_DiglettsCaveRBY_branch_7e958
+Music_DiglettsCaveRBY_branch_7e958:
+music_label
 	octave 5
 	note E_, 2
 	rest 2
@@ -296,7 +304,8 @@
 	rest 2
 	sound_ret
 
-	music_label Music_DiglettsCaveRBY_branch_7e9d1
+Music_DiglettsCaveRBY_branch_7e9d1:
+music_label
 	octave 4
 	note E_, 2
 	rest 4
@@ -309,11 +318,13 @@
 	note F#, 4
 	sound_ret
 
-	music_label Music_DiglettsCaveRBY_Ch4
+Music_DiglettsCaveRBY_Ch4:
+music_label
 	drum_speed 12
 	toggle_noise 1
 
-	music_label Music_DiglettsCaveRBY_branch_7e9dd
+Music_DiglettsCaveRBY_branch_7e9dd:
+music_label
 	drum_note 5, 4
 	drum_note 6, 4
 	drum_note 5, 4

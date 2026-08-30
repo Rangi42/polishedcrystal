@@ -2,14 +2,16 @@
 ; Ported by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/bikeriding.asm
 
-	music_header Music_BicycleRB
+Music_BicycleRB::
+music_header
 	channel_count 4
 	channel 1, Music_BikeRiding_Ch1
 	channel 2, Music_BikeRiding_Ch2
 	channel 3, Music_BikeRiding_Ch3
 	channel 4, Music_BikeRiding_Ch4
 
-	music_label Music_BikeRiding_Ch1
+Music_BikeRiding_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -17,7 +19,8 @@
 	note_type 12, 11, 5
 	octave 3
 	note G_, 2
-	music_label Music_BikeRiding_branch_7dbc9
+Music_BikeRiding_branch_7dbc9:
+music_label
 	octave 4
 	note C_, 4
 	note D_, 4
@@ -159,13 +162,15 @@
 	volume_envelope 11, 5
 	vibrato 8, 1, 4
 	sound_jump Music_BikeRiding_branch_7dbc9
-	music_label Music_BikeRiding_Ch2
+Music_BikeRiding_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 6, 1, 5
 	note_type 12, 12, 3
 	octave 4
 	note C_, 2
-	music_label Music_BikeRiding_branch_7dc75
+Music_BikeRiding_branch_7dc75:
+music_label
 	note E_, 4
 	note F_, 4
 	note G_, 4
@@ -305,10 +310,12 @@
 	note B_, 12
 	note_type 12, 12, 3
 	sound_jump Music_BikeRiding_branch_7dc75
-	music_label Music_BikeRiding_Ch3
+Music_BikeRiding_Ch3:
+music_label
 	note_type 12, 1, 3
 	rest 2
-	music_label Music_BikeRiding_branch_7dd17
+Music_BikeRiding_branch_7dd17:
+music_label
 	octave 4
 	note C_, 1
 	rest 1
@@ -643,11 +650,13 @@
 	note F_, 1
 	rest 1
 	sound_jump Music_BikeRiding_branch_7dd17
-	music_label Music_BikeRiding_Ch4
+Music_BikeRiding_Ch4:
+music_label
 	toggle_noise 1
 	drum_speed 12
 	rest 2
-	music_label Music_BikeRiding_branch_7de6a
+Music_BikeRiding_branch_7de6a:
+music_label
 	sound_call Music_BikeRiding_branch_7dea7
 	sound_call Music_BikeRiding_branch_7deb4
 	sound_call Music_BikeRiding_branch_7dea7
@@ -668,7 +677,8 @@
 	sound_call Music_BikeRiding_branch_7dea7
 	sound_call Music_BikeRiding_branch_7dea7
 	sound_jump Music_BikeRiding_branch_7de6a
-	music_label Music_BikeRiding_branch_7dea7
+Music_BikeRiding_branch_7dea7:
+music_label
 	rest 2
 	drum_note 9, 2
 	rest 2
@@ -678,7 +688,8 @@
 	rest 2
 	drum_note 9, 2
 	sound_ret
-	music_label Music_BikeRiding_branch_7deb4
+Music_BikeRiding_branch_7deb4:
+music_label
 	rest 2
 	drum_note 9, 2
 	rest 2
@@ -688,7 +699,8 @@
 	drum_note 9, 2
 	drum_note 9, 2
 	sound_ret
-	music_label Music_BikeRiding_branch_7dec2
+Music_BikeRiding_branch_7dec2:
+music_label
 	rest 2
 	drum_note 9, 2
 	rest 2

@@ -2,14 +2,16 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route203.asm
 
-	music_header Music_Route203DPPt
+Music_Route203DPPt:
+music_header
 	channel_count 4
 	channel 1, Music_Route203DPPt_Ch1
 	channel 2, Music_Route203DPPt_Ch2
 	channel 3, Music_Route203DPPt_Ch3
 	channel 4, Music_Route203DPPt_Ch4
 
-	music_label Music_Route203DPPt_Ch1
+Music_Route203DPPt_Ch1:
+music_label
 	tempo 151
 	volume 7, 7
 	note_type 4, 9, 1
@@ -98,7 +100,8 @@
 	note_type 12, 9, 0
 	octave 3
 	note A#, 8
-	music_label Music_Route203DPPt_Ch1_loop
+Music_Route203DPPt_Ch1_loop:
+music_label
 	note_type 8, 11, 1
 	note A_, 2
 	note G_, 4
@@ -573,7 +576,8 @@
 	note A#, 12
 	sound_jump Music_Route203DPPt_Ch1_loop
 
-	music_label Music_Route203DPPt_Ch2
+Music_Route203DPPt_Ch2:
+music_label
 	note_type 4, 10, 1
 	duty_cycle 1
 	pitch_offset 1
@@ -661,7 +665,8 @@
 	volume_envelope 10, 0
 	note F_, 14
 	note D_, 12
-	music_label Music_Route203DPPt_Ch2_loop
+Music_Route203DPPt_Ch2_loop:
+music_label
 	volume_envelope 12, 1
 	note E_, 2
 	note D_, 2
@@ -1071,7 +1076,8 @@
 	note G_, 12
 	sound_jump Music_Route203DPPt_Ch2_loop
 
-	music_label Music_Route203DPPt_Ch3
+Music_Route203DPPt_Ch3:
+music_label
 	note_type 8, 1, 2
 	octave 1
 	rest 12
@@ -1128,7 +1134,8 @@
 	octave 2
 	note A#, 4
 	rest 2
-	music_label Music_Route203DPPt_Ch3_loop
+Music_Route203DPPt_Ch3_loop:
+music_label
 	octave 1
 	note A#, 2
 	rest 4
@@ -1665,7 +1672,8 @@
 	rest 2
 	sound_jump Music_Route203DPPt_Ch3_loop
 
-	music_label Music_Route203DPPt_Ch4
+Music_Route203DPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 8
@@ -1733,7 +1741,8 @@
 	drum_note 8, 2
 	drum_note 12, 2
 	drum_note 2, 2
-	music_label Music_Route203DPPt_Ch4_loop
+Music_Route203DPPt_Ch4_loop:
+music_label
 	drum_note 2, 2
 	drum_note 2, 4
 	drum_note 12, 12

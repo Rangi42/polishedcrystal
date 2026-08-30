@@ -3,19 +3,22 @@
 ; https://pastebin.com/k2wCKcMC
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_MeteorFallsRSE
+Music_MeteorFallsRSE:
+music_header
 	channel_count 3
 	channel 1, Music_MeteorFallsRSE_Ch1
 	channel 2, Music_MeteorFallsRSE_Ch2
 	channel 3, Music_MeteorFallsRSE_Ch3
 
-	music_label Music_MeteorFallsRSE_Ch1
+Music_MeteorFallsRSE_Ch1:
+music_label
 	tempo 190
 	volume 7, 7
 	vibrato 6, 2, 3
 	note_type 8, 9, 2
 	rest 6
-	music_label Music_MeteorFallsRSE_Ch1_loop_main
+Music_MeteorFallsRSE_Ch1_loop_main:
+music_label
 	volume_envelope 9, 2
 	duty_cycle 2
 	octave 4
@@ -319,7 +322,8 @@
 	note A#, 8
 	sound_jump Music_MeteorFallsRSE_Ch1_loop_main
 
-	music_label Music_MeteorFallsRSE_Ch2
+Music_MeteorFallsRSE_Ch2:
+music_label
 	vibrato 6, 2, 3
 	note_type 8, 11, 2
 	duty_cycle 3
@@ -503,11 +507,13 @@
 	note D_, 6
 	sound_jump Music_MeteorFallsRSE_Ch2
 
-	music_label Music_MeteorFallsRSE_Ch3
+Music_MeteorFallsRSE_Ch3:
+music_label
 	vibrato 22, 1, 5
 	note_type 12, 1, 4
 	rest 4
-	music_label Music_MeteorFallsRSE_Ch3_loop_main
+Music_MeteorFallsRSE_Ch3_loop_main:
+music_label
 	note_type 12, 1, 4
 	octave 2
 	note D#, 14

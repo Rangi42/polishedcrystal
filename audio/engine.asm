@@ -1809,6 +1809,14 @@ Music_RestartChannel:
 	; update music bank
 	ld a, [hl]
 	ld [wMusicBank], a
+	ld hl, wChannel1Flags - wChannel1
+	add hl, bc
+	xor a
+	bit SOUND_COMPRESSED, [hl]
+	jr z, .got_compression
+	inc a
+.got_compression
+	ld [wMusicCompressed], a
 	; get pointer to new channel header
 	call GetMusicPointer
 	ld l, e
@@ -1838,9 +1846,9 @@ GetMusicByte:
 ; input: bc = start of current channel
 	push hl
 	push de
-	ld hl, wChannel1MusicBank - wChannel1
+	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	bit 7, [hl]
+	bit SOUND_COMPRESSED, [hl]
 	jr nz, .compressed
 
 	; Uncompressed SFX and cry data.
@@ -1923,15 +1931,17 @@ GetMusicBit:
 	ld d, a
 	ld a, [hld]
 	ld e, a
-	ld a, [hl] ; MusicBank, including the compression marker
+	ld a, [hl] ; MusicBank
 	call _LoadMusicByte
 	push af
 	inc de
-	inc hl
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	inc hl
+	ld hl, wChannel1MusicBits - wChannel1
+	add hl, bc
 	pop af
 	ld [hl], a ; MusicBits
 	ld hl, wChannel1MusicBitsLeft - wChannel1
@@ -2196,9 +2206,12 @@ _PlayMusic::
 	ld [hli], a ; song number
 	ld [hl], d ; wMusicIDHi (always 0)
 	ld hl, Music
-	add hl, de ; three
-	add hl, de ; byte
-	add hl, de ; pointer
+	add hl, de ; four-byte
+	add hl, de ; compression flag,
+	add hl, de ; bank,
+	add hl, de ; and pointer
+	ld a, [hli]
+	ld [wMusicCompressed], a
 	ld a, [hli]
 	ld [wMusicBank], a
 	ld a, [hli]
@@ -2230,9 +2243,10 @@ _PlayCry::
 ;	wCryLength
 
 	call MusicOff
+	xor a
+	ld [wMusicCompressed], a
 
 ; Initialize the pitch sweep
-	xor a
 	ld [wSoundInput], a
 	ldh [rAUD1SWEEP], a
 
@@ -2363,6 +2377,8 @@ PlayStereoSFX::
 	ld [wNoiseSampleAddressHi], a
 
 .chscleared
+	xor a
+	ld [wMusicCompressed], a
 	ld hl, wMusicID
 	ld a, e
 	ld [hli], a
@@ -2452,7 +2468,13 @@ LoadChannel:
 	ld [hli], a
 	; load music bank
 	ld a, [wMusicBank]
-	ld [hl], a
+	ld [hli], a
+	ld a, [wMusicCompressed]
+	and a
+	ret z
+	ld hl, wChannel1Flags - wChannel1
+	add hl, bc
+	set SOUND_COMPRESSED, [hl]
 	ret
 
 ChannelInit:

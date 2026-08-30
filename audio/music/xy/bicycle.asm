@@ -2,14 +2,16 @@
 ; Demixed by ShantyTown
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/kalos_bicycle.asm
 
-	music_header Music_BicycleXY
+Music_BicycleXY:
+music_header
 	channel_count 4
 	channel 1, BicycleXY_Ch1
 	channel 2, BicycleXY_Ch2
 	channel 3, BicycleXY_Ch3
 	channel 4, BicycleXY_Ch4
 
-	music_label BicycleXY_Ch1
+BicycleXY_Ch1::
+music_label
 	tempo 120
 	volume 7, 7
 	stereo_panning TRUE, TRUE
@@ -17,7 +19,8 @@
 	vibrato 16, 2, 2
 	note_type 12, 10, 7
 
-	music_label BicycleXY_Ch1_sub_0
+BicycleXY_Ch1_sub_0:
+music_label
 	rest 2
 	octave 3
 	note E_, 4
@@ -151,12 +154,14 @@
 	note B_, 4
 	sound_jump BicycleXY_Ch1_sub_0
 
-	music_label BicycleXY_Ch2
+BicycleXY_Ch2::
+music_label
 	duty_cycle 1
 	note_type 12, 12, 7
 	vibrato 16, 0, 0
 
-	music_label BicycleXY_Ch2_sub_0
+BicycleXY_Ch2_sub_0:
+music_label
 	note_type 12, 12, 8
 	duty_cycle 2
 	octave 4
@@ -307,12 +312,14 @@
 	note D#, 4
 	sound_jump BicycleXY_Ch2_sub_0
 
-	music_label BicycleXY_Ch3
+BicycleXY_Ch3::
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 0, 0, 0
 	note_type 12, 1, 6
 
-	music_label BicycleXY_Ch3_sub_0
+BicycleXY_Ch3_sub_0:
+music_label
 	rest 6
 
 	octave 2
@@ -502,12 +509,14 @@
 	note B_, 4
 	sound_jump BicycleXY_Ch3_sub_0
 
-	music_label BicycleXY_Ch4
+BicycleXY_Ch4::
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 6
 
-	music_label BicycleXY_Ch4_0
+BicycleXY_Ch4_0:
+music_label
 	sound_call BicycleXY_Ch4_sub_0
 	sound_call BicycleXY_Ch4_sub_0
 	sound_call BicycleXY_Ch4_sub_0
@@ -530,7 +539,8 @@
 	drum_note 12, 8
 	sound_jump BicycleXY_Ch4_0
 
-	music_label BicycleXY_Ch4_sub_0
+BicycleXY_Ch4_sub_0:
+music_label
 	drum_note 2, 4
 	drum_note 3, 4
 	drum_note 2, 4
@@ -542,7 +552,8 @@
 	drum_note 3, 4
 	sound_ret
 
-	music_label BicycleXY_Ch4_sub_1
+BicycleXY_Ch4_sub_1:
+music_label
 	drum_note 2, 2
 	drum_note 3, 2
 	drum_note 2, 2

@@ -1,18 +1,21 @@
-	music_header Music_Lighthouse
+Music_Lighthouse:
+music_header
 	channel_count 4
 	channel 1, Music_Lighthouse_Ch1
 	channel 2, Music_Lighthouse_Ch2
 	channel 3, Music_Lighthouse_Ch3
 	channel 4, Music_Lighthouse_Ch4
 
-	music_label Music_Lighthouse_Ch1
+Music_Lighthouse_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 4
 	vibrato 8, 4, 5
 	stereo_panning FALSE, TRUE
-	music_label Music_Lighthouse_branch_ee584
+Music_Lighthouse_branch_ee584:
+music_label
 	note_type 12, 11, 3
 	octave 3
 	note C#, 8
@@ -129,11 +132,13 @@
 	note G#, 8
 	sound_jump Music_Lighthouse_branch_ee584
 
-	music_label Music_Lighthouse_Ch2
+Music_Lighthouse_Ch2:
+music_label
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 16, 4, 5
-	music_label Music_Lighthouse_branch_ee604
+Music_Lighthouse_branch_ee604:
+music_label
 	note_type 12, 12, 5
 	octave 3
 	note G#, 12
@@ -211,10 +216,12 @@
 	note C_, 8
 	sound_jump Music_Lighthouse_branch_ee604
 
-	music_label Music_Lighthouse_Ch3
+Music_Lighthouse_Ch3:
+music_label
 	note_type 12, 1, 9
 	stereo_panning TRUE, FALSE
-	music_label Music_Lighthouse_branch_ee65b
+Music_Lighthouse_branch_ee65b:
+music_label
 	octave 2
 	note G#, 2
 	rest 2
@@ -224,7 +231,8 @@
 	rest 2
 	note G_, 2
 	rest 2
-	music_label Music_Lighthouse_branch_ee664
+Music_Lighthouse_branch_ee664:
+music_label
 	note G#, 2
 	rest 2
 	note D#, 2
@@ -253,7 +261,8 @@
 	octave 3
 	note C_, 2
 	rest 2
-	music_label Music_Lighthouse_branch_ee683
+Music_Lighthouse_branch_ee683:
+music_label
 	note C#, 2
 	rest 2
 	octave 2
@@ -275,7 +284,8 @@
 	octave 3
 	note D#, 2
 	note F#, 2
-	music_label Music_Lighthouse_branch_ee69b
+Music_Lighthouse_branch_ee69b:
+music_label
 	note E_, 2
 	rest 2
 	octave 2
@@ -289,10 +299,12 @@
 	sound_loop 8, Music_Lighthouse_branch_ee69b
 	sound_jump Music_Lighthouse_branch_ee65b
 
-	music_label Music_Lighthouse_Ch4
+Music_Lighthouse_Ch4:
+music_label
 	toggle_noise 0
 	drum_speed 12
-	music_label Music_Lighthouse_branch_ee6b1
+Music_Lighthouse_branch_ee6b1:
+music_label
 	stereo_panning FALSE, TRUE
 	drum_note 9, 4
 	drum_note 6, 2

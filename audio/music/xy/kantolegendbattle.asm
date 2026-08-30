@@ -3,13 +3,15 @@
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/kantolegend.asm
 ; https://pigu-a.bandcamp.com/album/pok-mon-anniversary-crystal-pigus-arranges
 
-	music_header Music_KantoLegendBattleXY
+Music_KantoLegendBattleXY:
+music_header
 	channel_count 3
 	channel 1, Music_KantoLegendBattleXY_Ch1
 	channel 2, Music_KantoLegendBattleXY_Ch2
 	channel 3, Music_KantoLegendBattleXY_Ch3
 
-	music_label Music_KantoLegendBattleXY_Ch1
+Music_KantoLegendBattleXY_Ch1:
+music_label
 	tempo 106
 	duty_cycle 2
 	note_type 12, 12, 7
@@ -51,19 +53,22 @@
 	octave 3
 	note C_, 1
 	note C#, 1
-	music_label Music_KantoLegendBattleXY_Ch1_L1
+Music_KantoLegendBattleXY_Ch1_L1:
+music_label
 	note C_, 1
 	rest 1
 	note C_, 1
 	rest 5
 	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L1
-	music_label Music_KantoLegendBattleXY_Ch1_L2
+Music_KantoLegendBattleXY_Ch1_L2:
+music_label
 	note D_, 1
 	rest 1
 	note D_, 1
 	rest 5
 	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L2
-	music_label Music_KantoLegendBattleXY_Ch1_L3
+Music_KantoLegendBattleXY_Ch1_L3:
+music_label
 	note E_, 1
 	rest 1
 	note E_, 1
@@ -81,10 +86,12 @@
 	octave 5
 	note D_, 1
 	note E_, 1
-	music_label Music_KantoLegendBattleXY_Ch1_L
+Music_KantoLegendBattleXY_Ch1_L:
+music_label
 	duty_cycle 2
 	volume_envelope 5, 3
-	music_label Music_KantoLegendBattleXY_Ch1_L4
+Music_KantoLegendBattleXY_Ch1_L4:
+music_label
 	octave 2
 	note C_, 2
 	note F_, 2
@@ -92,7 +99,8 @@
 	octave 3
 	note C_, 2
 	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L4
-	music_label Music_KantoLegendBattleXY_Ch1_L5
+Music_KantoLegendBattleXY_Ch1_L5:
+music_label
 	octave 2
 	note D_, 2
 	note G_, 2
@@ -100,7 +108,8 @@
 	octave 3
 	note D_, 2
 	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L5
-	music_label Music_KantoLegendBattleXY_Ch1_L6
+Music_KantoLegendBattleXY_Ch1_L6:
+music_label
 	octave 2
 	note E_, 2
 	note A_, 2
@@ -114,7 +123,8 @@
 	note B_, 2
 	octave 3
 	note E_, 1
-	music_label Music_KantoLegendBattleXY_Ch1_L7
+Music_KantoLegendBattleXY_Ch1_L7:
+music_label
 	octave 4
 	note C_, 1
 	octave 3
@@ -148,7 +158,8 @@
 	octave 3
 	note C_, 1
 	sound_loop 2, Music_KantoLegendBattleXY_Ch1_L7
-	music_label Music_KantoLegendBattleXY_Ch1_L8
+Music_KantoLegendBattleXY_Ch1_L8:
+music_label
 	octave 4
 	note D_, 1
 	octave 3
@@ -182,7 +193,8 @@
 	octave 3
 	note D_, 1
 	sound_loop 2, Music_KantoLegendBattleXY_Ch1_L8
-	music_label Music_KantoLegendBattleXY_Ch1_L9
+Music_KantoLegendBattleXY_Ch1_L9:
+music_label
 	octave 4
 	note E_, 1
 	octave 3
@@ -403,7 +415,8 @@
 	note G_, 1
 	note D_, 1
 	note G_, 1
-	music_label Music_KantoLegendBattleXY_Ch1_L10
+Music_KantoLegendBattleXY_Ch1_L10:
+music_label
 	note E_, 1
 	note G_, 1
 	note B_, 1
@@ -486,7 +499,8 @@
 	note G_, 9
 	sound_jump Music_KantoLegendBattleXY_Ch1_L
 
-	music_label Music_KantoLegendBattleXY_Ch2
+Music_KantoLegendBattleXY_Ch2:
+music_label
 	duty_cycle 1
 	note_type 12, 12, 2
 	octave 3
@@ -538,15 +552,18 @@
 	octave 4
 	note G_, 1
 	octave 2
-	music_label Music_KantoLegendBattleXY_Ch2_L1
+Music_KantoLegendBattleXY_Ch2_L1:
+music_label
 	note C_, 2
 	note C_, 6
 	sound_loop 4, Music_KantoLegendBattleXY_Ch2_L1
-	music_label Music_KantoLegendBattleXY_Ch2_L2
+Music_KantoLegendBattleXY_Ch2_L2:
+music_label
 	note D_, 2
 	note D_, 6
 	sound_loop 4, Music_KantoLegendBattleXY_Ch2_L2
-	music_label Music_KantoLegendBattleXY_Ch2_L3
+Music_KantoLegendBattleXY_Ch2_L3:
+music_label
 	note E_, 2
 	note E_, 6
 	sound_loop 6, Music_KantoLegendBattleXY_Ch2_L3
@@ -558,7 +575,8 @@
 	note D_, 1
 	note C#, 1
 	volume_envelope 11, 7
-	music_label Music_KantoLegendBattleXY_Ch2_L
+Music_KantoLegendBattleXY_Ch2_L:
+music_label
 	sound_call Music_KantoLegendBattleXY_Ch2_P_C
 	sound_call Music_KantoLegendBattleXY_Ch2_P_Dm
 	sound_call Music_KantoLegendBattleXY_Ch2_P_Em
@@ -613,7 +631,8 @@
 	sound_call Music_KantoLegendBattleXY_Ch2_P_Em
 	sound_jump Music_KantoLegendBattleXY_Ch2_L
 
-	music_label Music_KantoLegendBattleXY_Ch2_P_C
+Music_KantoLegendBattleXY_Ch2_P_C:
+music_label
 	octave 1
 	note C_, 2
 	octave 2
@@ -641,7 +660,8 @@
 	note F_, 2
 	sound_ret
 
-	music_label Music_KantoLegendBattleXY_Ch2_P_C2
+Music_KantoLegendBattleXY_Ch2_P_C2:
+music_label
 	octave 1
 	note C_, 2
 	octave 2
@@ -670,6 +690,7 @@
 	sound_ret
 
 Music_KantoLegendBattleXY_Ch2_P_C#:
+music_label
 	note C#, 2
 	octave 2
 	note C#, 2
@@ -696,7 +717,8 @@ Music_KantoLegendBattleXY_Ch2_P_C#:
 	note F#, 2
 	sound_ret
 
-	music_label Music_KantoLegendBattleXY_Ch2_P_Dm
+Music_KantoLegendBattleXY_Ch2_P_Dm:
+music_label
 	octave 1
 	note D_, 2
 	octave 2
@@ -724,7 +746,8 @@ Music_KantoLegendBattleXY_Ch2_P_C#:
 	note G_, 2
 	sound_ret
 
-	music_label Music_KantoLegendBattleXY_Ch2_P_Em
+Music_KantoLegendBattleXY_Ch2_P_Em:
+music_label
 	octave 1
 	note E_, 2
 	octave 2
@@ -776,7 +799,8 @@ Music_KantoLegendBattleXY_Ch2_P_C#:
 	note A_, 2
 	sound_ret
 
-	music_label Music_KantoLegendBattleXY_Ch3
+Music_KantoLegendBattleXY_Ch3:
+music_label
 	note_type 12, 1, 4
 	octave 3
 	note C_, 1
@@ -827,7 +851,8 @@ Music_KantoLegendBattleXY_Ch2_P_C#:
 	octave 4
 	note G_, 1
 	sound_call Music_KantoLegendBattleXY_Ch3_P1
-	music_label Music_KantoLegendBattleXY_Ch3_L
+Music_KantoLegendBattleXY_Ch3_L:
+music_label
 	volume_envelope 1, 4
 	sound_call Music_KantoLegendBattleXY_Ch3_P1
 	sound_call Music_KantoLegendBattleXY_Ch3_P1
@@ -1230,7 +1255,8 @@ Music_KantoLegendBattleXY_Ch2_P_C#:
 	rest 1
 	sound_jump Music_KantoLegendBattleXY_Ch3_L
 
-	music_label Music_KantoLegendBattleXY_Ch3_P1
+Music_KantoLegendBattleXY_Ch3_P1:
+music_label
 	octave 3
 	note C_, 1
 	rest 1

@@ -73,6 +73,8 @@ Q := @
 RGBASMFLAGS += -DHUFFMAN
 endif
 ifeq ($(filter music-huffman,$(MAKECMDGOALS)),music-huffman)
+# Keep restart blocks in source order for reproducible verification output.
+.NOTPARALLEL:
 Q := @
 RGBASMFLAGS += -DMUSIC_HUFFMAN
 endif

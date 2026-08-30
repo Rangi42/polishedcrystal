@@ -2,14 +2,16 @@
 ; Ported by FroggestSpirit
 ; https://github.com/froggestspirit/pokecrystal/blob/master/audio/music/145_ChampionBattle.asm
 
-	music_header Music_ChampionBattleDPPt
+Music_ChampionBattleDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_ChampionBattleDPPt_Ch1
 	channel 2, Music_ChampionBattleDPPt_Ch2
 	channel 3, Music_ChampionBattleDPPt_Ch3
 	channel 4, Music_ChampionBattleDPPt_Ch4
 
-	music_label Music_ChampionBattleDPPt_Ch1
+Music_ChampionBattleDPPt_Ch1:
+music_label
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo 128
@@ -26,7 +28,8 @@
 	rest 16
 	rest 16
 	rest 16
-	music_label Music_ChampionBattleDPPt_Ch1_loop
+Music_ChampionBattleDPPt_Ch1_loop:
+music_label
 	note A#, 16
 	rest 16
 	rest 16
@@ -480,7 +483,8 @@
 	octave 3
 	sound_jump Music_ChampionBattleDPPt_Ch1_loop
 
-	music_label Music_ChampionBattleDPPt_Ch2
+Music_ChampionBattleDPPt_Ch2:
+music_label
 	duty_cycle 2
 	pitch_offset 1
 	vibrato 8, 3, 6
@@ -517,7 +521,8 @@
 	rest 16
 	rest 16
 	rest 16
-	music_label Music_ChampionBattleDPPt_Ch2_loop
+Music_ChampionBattleDPPt_Ch2_loop:
+music_label
 	note A#, 16
 	rest 16
 	rest 16
@@ -937,7 +942,8 @@
 	note E_, 2
 	sound_jump Music_ChampionBattleDPPt_Ch2_loop
 
-	music_label Music_ChampionBattleDPPt_Ch3
+Music_ChampionBattleDPPt_Ch3:
+music_label
 	octave 1
 	note_type 12, 1, 4
 	note F_, 4
@@ -1015,7 +1021,8 @@
 	note F_, 2
 	octave 2
 	note A#, 2
-	music_label Music_ChampionBattleDPPt_Ch3_loop
+Music_ChampionBattleDPPt_Ch3_loop:
+music_label
 	octave 1
 	note F_, 2
 	octave 2
@@ -1728,7 +1735,8 @@
 	note E_, 2
 	sound_jump Music_ChampionBattleDPPt_Ch3_loop
 
-	music_label Music_ChampionBattleDPPt_Ch4
+Music_ChampionBattleDPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 4, 8
@@ -1770,7 +1778,8 @@
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
-	music_label Music_ChampionBattleDPPt_Ch4_loop
+Music_ChampionBattleDPPt_Ch4_loop:
+music_label
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1

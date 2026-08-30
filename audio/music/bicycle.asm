@@ -1,11 +1,13 @@
-	music_header Music_Bicycle
+Music_Bicycle:
+music_header
 	channel_count 4
 	channel 1, Music_Bicycle_Ch1
 	channel 2, Music_Bicycle_Ch2
 	channel 3, Music_Bicycle_Ch3
 	channel 4, Music_Bicycle_Ch4
 
-	music_label Music_Bicycle_Ch1
+Music_Bicycle_Ch1:
+music_label
 	tempo 140
 	volume 7, 7
 	duty_cycle 3
@@ -23,7 +25,8 @@
 	note A_, 8
 	volume_envelope 11, 2
 	note F#, 2
-	music_label Music_Bicycle_branch_ee144
+Music_Bicycle_branch_ee144:
+music_label
 	stereo_panning FALSE, TRUE
 	volume_envelope 11, 2
 	note G_, 2
@@ -170,7 +173,8 @@
 	note A_, 2
 	sound_jump Music_Bicycle_branch_ee144
 
-	music_label Music_Bicycle_Ch2
+Music_Bicycle_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 16, 2, 4
 	stereo_panning TRUE, FALSE
@@ -194,7 +198,8 @@
 	octave 3
 	note B_, 2
 	note A_, 2
-	music_label Music_Bicycle_branch_ee1fd
+Music_Bicycle_branch_ee1fd:
+music_label
 	stereo_panning TRUE, TRUE
 	duty_cycle 2
 	volume_envelope 12, 3
@@ -273,7 +278,8 @@
 	note F#, 4
 	sound_jump Music_Bicycle_branch_ee1fd
 
-	music_label Music_Bicycle_branch_ee263
+Music_Bicycle_branch_ee263:
+music_label
 	note G_, 6
 	note B_, 6
 	note G_, 4
@@ -285,7 +291,8 @@
 	note E_, 4
 	sound_ret
 
-	music_label Music_Bicycle_Ch3
+Music_Bicycle_Ch3:
+music_label
 	note_type 12, 1, 4
 	rest 16
 	octave 3
@@ -302,7 +309,8 @@
 	octave 3
 	note A_, 1
 	rest 1
-	music_label Music_Bicycle_branch_ee27f
+Music_Bicycle_branch_ee27f:
+music_label
 	sound_call Music_Bicycle_branch_ee333
 	note E_, 1
 	rest 1
@@ -405,7 +413,8 @@
 	rest 1
 	note A_, 1
 	rest 1
-	music_label Music_Bicycle_branch_ee2e9
+Music_Bicycle_branch_ee2e9:
+music_label
 	note G_, 1
 	rest 1
 	note B_, 1
@@ -475,7 +484,8 @@
 	sound_loop 2, Music_Bicycle_branch_ee2e9
 	sound_jump Music_Bicycle_branch_ee27f
 
-	music_label Music_Bicycle_branch_ee333
+Music_Bicycle_branch_ee333:
+music_label
 	octave 3
 	note G_, 1
 	rest 1
@@ -495,14 +505,17 @@
 	rest 1
 	sound_ret
 
-	music_label Music_Bicycle_Ch4
+Music_Bicycle_Ch4:
+music_label
 	toggle_noise 0
 	drum_speed 12
 	rest 16
 	rest 16
-	music_label Music_Bicycle_branch_ee34b
+Music_Bicycle_branch_ee34b:
+music_label
 	rest 2
-	music_label Music_Bicycle_branch_ee34c
+Music_Bicycle_branch_ee34c:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 6, 4
 	sound_loop 12, Music_Bicycle_branch_ee34c

@@ -3,13 +3,15 @@
 ; https://pastebin.com/Ycw1DGh3
 ; https://hax.iimarckus.org/topic/6777/9/
 
-	music_header Music_ScaryHouseXY
+Music_ScaryHouseXY:
+music_header
 	channel_count 3
 	channel 1, Music_ScaryHouseXY_Ch1
 	channel 2, Music_ScaryHouseXY_Ch2
 	channel 3, Music_ScaryHouseXY_Ch3
 
-	music_label Music_ScaryHouseXY_Ch1
+Music_ScaryHouseXY_Ch1:
+music_label
 	vibrato 18, 1, 5
 	pitch_offset 3
 	note_type 6, 3, 7
@@ -46,7 +48,8 @@
 	note A#, 15
 	duty_cycle 1
 	pitch_offset 3
-	music_label Music_ScaryHouseXY_Ch1_loop_main
+Music_ScaryHouseXY_Ch1_loop_main:
+music_label
 	volume_envelope 7, 5
 	octave 3
 	note E_, 8
@@ -111,7 +114,8 @@
 	note B_, 8
 	sound_jump Music_ScaryHouseXY_Ch1_loop_main
 
-	music_label Music_ScaryHouseXY_Ch2
+Music_ScaryHouseXY_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 18, 1, 5
 	pitch_offset 2
@@ -142,7 +146,8 @@
 	note B_, 2
 	note E_, 2
 	note A#, 8
-	music_label Music_ScaryHouseXY_Ch2_loop_main
+Music_ScaryHouseXY_Ch2_loop_main:
+music_label
 	volume_envelope 9, 4
 	note E_, 4
 	note F#, 4
@@ -190,7 +195,8 @@
 	note B_, 12
 	sound_jump Music_ScaryHouseXY_Ch2_loop_main
 
-	music_label Music_ScaryHouseXY_Ch3
+Music_ScaryHouseXY_Ch3:
+music_label
 	note_type 12, 2, 0
 	pitch_offset 2
 	octave 3
@@ -202,8 +208,10 @@
 	volume_envelope 3, 0
 	note E_, 4
 	sound_loop 2, Music_ScaryHouseXY_Ch3
-	music_label Music_ScaryHouseXY_Ch3_loop_main
-	music_label Music_ScaryHouseXY_Ch3_loop_1
+Music_ScaryHouseXY_Ch3_loop_main:
+music_label
+Music_ScaryHouseXY_Ch3_loop_1:
+music_label
 	volume_envelope 2, 0
 	octave 3
 	note E_, 2

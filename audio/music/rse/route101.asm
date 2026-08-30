@@ -3,14 +3,16 @@
 ; https://pastebin.com/VstjfaGf
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_Route101RSE
+Music_Route101RSE:
+music_header
 	channel_count 4
 	channel 1, Music_Route101RSE_Ch1
 	channel 2, Music_Route101RSE_Ch2
 	channel 3, Music_Route101RSE_Ch3
 	channel 4, Music_Route101RSE_Ch4
 
-	music_label Music_Route101RSE_Ch1
+Music_Route101RSE_Ch1:
+music_label
 	tempo 166
 	volume 7, 7
 	pitch_offset 1
@@ -18,7 +20,8 @@
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3
 	rest 2
-	music_label Music_Route101RSE_Ch1_loop
+Music_Route101RSE_Ch1_loop:
+music_label
 	volume_envelope 8, 4
 	duty_cycle 3
 	sound_call Music_Route101RSE_Ch1_branch_1
@@ -98,7 +101,8 @@
 	note A_, 2
 	sound_jump Music_Route101RSE_Ch1_loop
 
-	music_label Music_Route101RSE_Ch1_branch_1
+Music_Route101RSE_Ch1_branch_1:
+music_label
 	octave 3
 	note D_, 2
 	octave 2
@@ -153,7 +157,8 @@
 	note A_, 2
 	sound_ret
 
-	music_label Music_Route101RSE_Ch1_branch_2
+Music_Route101RSE_Ch1_branch_2:
+music_label
 	octave 4
 	note G_, 1
 	octave 3
@@ -210,7 +215,8 @@
 	note F#, 1
 	sound_ret
 
-	music_label Music_Route101RSE_Ch1_branch_3
+Music_Route101RSE_Ch1_branch_3:
+music_label
 	octave 4
 	note G_, 1
 	octave 3
@@ -220,12 +226,14 @@
 	note E_, 1
 	sound_ret
 
-	music_label Music_Route101RSE_Ch2
+Music_Route101RSE_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 18, 3, 6
 	note_type 12, 7, 7
 	rest 2
-	music_label Music_Route101RSE_Ch2_loop
+Music_Route101RSE_Ch2_loop:
+music_label
 	volume_envelope 7, 7
 	sound_call Music_Route101RSE_Ch2_branch_1
 	sound_call Music_Route101RSE_Ch2_branch_1
@@ -280,7 +288,8 @@
 	note A_, 8
 	sound_jump Music_Route101RSE_Ch2_loop
 
-	music_label Music_Route101RSE_Ch2_branch_1
+Music_Route101RSE_Ch2_branch_1:
+music_label
 	octave 1
 	note D_, 2
 	rest 5
@@ -322,7 +331,8 @@
 	note A_, 2
 	sound_ret
 
-	music_label Music_Route101RSE_Ch2_branch_2
+Music_Route101RSE_Ch2_branch_2:
+music_label
 	note G_, 2
 	rest 2
 	note G_, 1
@@ -346,11 +356,13 @@
 	note E_, 1
 	sound_ret
 
-	music_label Music_Route101RSE_Ch3
+Music_Route101RSE_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 3
 	vibrato 21, 2, 4
-	music_label Music_Route101RSE_Ch3_loop
+Music_Route101RSE_Ch3_loop:
+music_label
 	sound_call Music_Route101RSE_Ch3_branch_1
 	sound_call Music_Route101RSE_Ch3_branch_1
 	octave 6
@@ -419,7 +431,8 @@
 	volume_envelope 1, 3
 	sound_jump Music_Route101RSE_Ch3_loop
 
-	music_label Music_Route101RSE_Ch3_branch_1
+Music_Route101RSE_Ch3_branch_1:
+music_label
 	octave 5
 	note A_, 1
 	note B_, 1
@@ -461,7 +474,8 @@
 	rest 5
 	sound_ret
 
-	music_label Music_Route101RSE_Ch3_branch_2
+Music_Route101RSE_Ch3_branch_2:
+music_label
 	note A_, 1
 	rest 1
 	note A_, 1
@@ -474,17 +488,20 @@
 	rest 2
 	sound_ret
 
-	music_label Music_Route101RSE_Ch4
+Music_Route101RSE_Ch4:
+music_label
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 	drum_speed 12
 	rest 2
-	music_label Music_Route101RSE_Ch4_loop
+Music_Route101RSE_Ch4_loop:
+music_label
 	sound_call Music_Route101RSE_Ch4_branch_1
 	drum_note 4, 1
 	drum_note 4, 1
 	sound_loop 4, Music_Route101RSE_Ch4_loop
-	music_label Music_Route101RSE_Ch4_loop_2
+Music_Route101RSE_Ch4_loop_2:
+music_label
 	sound_call Music_Route101RSE_Ch4_branch_2
 	drum_note 3, 1
 	drum_note 12, 1
@@ -529,7 +546,8 @@
 	drum_note 3, 4
 	sound_jump Music_Route101RSE_Ch4_loop
 
-	music_label Music_Route101RSE_Ch4_branch_1
+Music_Route101RSE_Ch4_branch_1:
+music_label
 	drum_note 4, 4
 	drum_note 6, 3
 	drum_note 4, 1
@@ -545,7 +563,8 @@
 	drum_note 6, 2
 	sound_ret
 
-	music_label Music_Route101RSE_Ch4_branch_2
+Music_Route101RSE_Ch4_branch_2:
+music_label
 	drum_note 3, 1
 	drum_note 12, 1
 	drum_note 12, 1

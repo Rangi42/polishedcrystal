@@ -1,10 +1,12 @@
-	music_header Music_RivalBattle
+Music_RivalBattle:
+music_header
 	channel_count 3
 	channel 1, Music_RivalBattle_Ch1
 	channel 2, Music_RivalBattle_Ch2
 	channel 3, Music_RivalBattle_Ch3
 
-	music_label Music_RivalBattle_Ch1
+Music_RivalBattle_Ch1:
+music_label
 	tempo 102
 	volume 7, 7
 	duty_cycle 3
@@ -23,7 +25,8 @@
 	volume_envelope 11, 7
 	note C#, 6
 	note E_, 4
-	music_label Music_RivalBattle_branch_e9777
+Music_RivalBattle_branch_e9777:
+music_label
 	volume_envelope 11, 2
 	octave 2
 	note A#, 6
@@ -40,7 +43,8 @@
 	note C#, 4
 	volume_envelope 11, 7
 	note C#, 10
-	music_label Music_RivalBattle_branch_e978f
+Music_RivalBattle_branch_e978f:
+music_label
 	volume_envelope 11, 2
 	octave 3
 	note G#, 6
@@ -56,7 +60,8 @@
 	note B_, 4
 	volume_envelope 4, -5
 	note B_, 10
-	music_label Music_RivalBattle_branch_e97a6
+Music_RivalBattle_branch_e97a6:
+music_label
 	volume_envelope 11, 7
 	note A#, 6
 	note F#, 6
@@ -179,7 +184,8 @@
 	note E_, 2
 	note D#, 2
 	note C#, 2
-	music_label Music_RivalBattle_branch_e9837
+Music_RivalBattle_branch_e9837:
+music_label
 	octave 3
 	note A#, 2
 	note E_, 2
@@ -286,7 +292,8 @@
 	note C#, 10
 	sound_jump Music_RivalBattle_branch_e97a6
 
-	music_label Music_RivalBattle_Ch2
+Music_RivalBattle_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 3, 6
 	pitch_offset 1
@@ -336,7 +343,8 @@
 	note F#, 6
 	volume_envelope 12, 2
 	note G#, 4
-	music_label Music_RivalBattle_branch_e98ea
+Music_RivalBattle_branch_e98ea:
+music_label
 	volume_envelope 12, 2
 	note D#, 6
 	volume_envelope 12, 7
@@ -353,7 +361,8 @@
 	note B_, 1
 	octave 4
 	note C_, 1
-	music_label Music_RivalBattle_branch_e9903
+Music_RivalBattle_branch_e9903:
+music_label
 	volume_envelope 12, 2
 	note C#, 6
 	volume_envelope 12, 7
@@ -368,7 +377,8 @@
 	note E_, 4
 	volume_envelope 11, 7
 	note E_, 6
-	music_label Music_RivalBattle_branch_e991a
+Music_RivalBattle_branch_e991a:
+music_label
 	sound_call Music_RivalBattle_branch_e99e0
 	volume_envelope 11, 0
 	note G#, 8
@@ -473,7 +483,8 @@
 	note G#, 8
 	volume_envelope 12, 7
 	note F_, 8
-	music_label Music_RivalBattle_branch_e99a6
+Music_RivalBattle_branch_e99a6:
+music_label
 	volume_envelope 12, 2
 	octave 3
 	note A#, 6
@@ -492,7 +503,8 @@
 	note C#, 6
 	volume_envelope 9, -2
 	note C#, 4
-	music_label Music_RivalBattle_branch_e99c1
+Music_RivalBattle_branch_e99c1:
+music_label
 	volume_envelope 12, 2
 	octave 3
 	note G#, 6
@@ -513,7 +525,8 @@
 	note D_, 4
 	sound_jump Music_RivalBattle_branch_e991a
 
-	music_label Music_RivalBattle_branch_e99e0
+Music_RivalBattle_branch_e99e0:
+music_label
 	volume_envelope 12, 7
 	note D#, 10
 	volume_envelope 12, 4
@@ -535,7 +548,8 @@
 	note F_, 8
 	sound_ret
 
-	music_label Music_RivalBattle_Ch3
+Music_RivalBattle_Ch3:
+music_label
 	note_type 12, 1, 9
 	octave 3
 	note F#, 2
@@ -551,7 +565,8 @@
 	octave 3
 	note C#, 2
 	note D_, 2
-	music_label Music_RivalBattle_branch_e9a0c
+Music_RivalBattle_branch_e9a0c:
+music_label
 	note D#, 2
 	note C#, 2
 	note D#, 2
@@ -560,7 +575,8 @@
 	note D#, 2
 	note C#, 2
 	sound_loop 4, Music_RivalBattle_branch_e9a0c
-	music_label Music_RivalBattle_branch_e9a17
+Music_RivalBattle_branch_e9a17:
+music_label
 	octave 3
 	note C#, 2
 	octave 2
@@ -583,7 +599,8 @@
 	note C_, 2
 	note C#, 2
 	note D_, 2
-	music_label Music_RivalBattle_branch_e9a30
+Music_RivalBattle_branch_e9a30:
+music_label
 	sound_call Music_RivalBattle_branch_e9b47
 	octave 2
 	note A#, 2
@@ -630,14 +647,16 @@
 	octave 3
 	note F_, 2
 	sound_call Music_RivalBattle_branch_e9b50
-	music_label Music_RivalBattle_branch_e9a66
+Music_RivalBattle_branch_e9a66:
+music_label
 	note C#, 2
 	note G#, 2
 	sound_loop 4, Music_RivalBattle_branch_e9a66
 	sound_call Music_RivalBattle_branch_e9b5c
 	note G#, 2
 	note F#, 2
-	music_label Music_RivalBattle_branch_e9a71
+Music_RivalBattle_branch_e9a71:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
@@ -695,29 +714,35 @@
 	note F#, 2
 	note G_, 2
 	note G#, 2
-	music_label Music_RivalBattle_branch_e9ab3
+Music_RivalBattle_branch_e9ab3:
+music_label
 	note D#, 2
 	note A#, 2
 	sound_loop 4, Music_RivalBattle_branch_e9ab3
-	music_label Music_RivalBattle_branch_e9ab9
+Music_RivalBattle_branch_e9ab9:
+music_label
 	note D#, 2
 	note A_, 2
 	sound_loop 4, Music_RivalBattle_branch_e9ab9
-	music_label Music_RivalBattle_branch_e9abf
+Music_RivalBattle_branch_e9abf:
+music_label
 	note D#, 2
 	note G#, 2
 	sound_loop 4, Music_RivalBattle_branch_e9abf
-	music_label Music_RivalBattle_branch_e9ac5
+Music_RivalBattle_branch_e9ac5:
+music_label
 	note D#, 2
 	note G_, 2
 	sound_loop 12, Music_RivalBattle_branch_e9ac5
-	music_label Music_RivalBattle_branch_e9acb
+Music_RivalBattle_branch_e9acb:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
 	note D#, 2
 	sound_loop 4, Music_RivalBattle_branch_e9acb
-	music_label Music_RivalBattle_branch_e9ad3
+Music_RivalBattle_branch_e9ad3:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
@@ -776,7 +801,8 @@
 	note C#, 8
 	note D#, 8
 	note F_, 8
-	music_label Music_RivalBattle_branch_e9b10
+Music_RivalBattle_branch_e9b10:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
@@ -784,7 +810,8 @@
 	sound_loop 7, Music_RivalBattle_branch_e9b10
 	note E_, 2
 	note D#, 2
-	music_label Music_RivalBattle_branch_e9b1a
+Music_RivalBattle_branch_e9b1a:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
@@ -796,7 +823,8 @@
 	note F#, 2
 	note F_, 2
 	note E_, 2
-	music_label Music_RivalBattle_branch_e9b28
+Music_RivalBattle_branch_e9b28:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -804,7 +832,8 @@
 	sound_loop 7, Music_RivalBattle_branch_e9b28
 	note D_, 2
 	note C#, 2
-	music_label Music_RivalBattle_branch_e9b32
+Music_RivalBattle_branch_e9b32:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -821,7 +850,8 @@
 	note D_, 2
 	sound_jump Music_RivalBattle_branch_e9a30
 
-	music_label Music_RivalBattle_branch_e9b47
+Music_RivalBattle_branch_e9b47:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
@@ -829,7 +859,8 @@
 	sound_loop 4, Music_RivalBattle_branch_e9b47
 	sound_ret
 
-	music_label Music_RivalBattle_branch_e9b50
+Music_RivalBattle_branch_e9b50:
+music_label
 	note C#, 2
 	note G#, 2
 	octave 4
@@ -843,7 +874,8 @@
 	note G#, 2
 	sound_ret
 
-	music_label Music_RivalBattle_branch_e9b5c
+Music_RivalBattle_branch_e9b5c:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
@@ -851,7 +883,8 @@
 	sound_loop 7, Music_RivalBattle_branch_e9b5c
 	sound_ret
 
-	music_label Music_RivalBattle_branch_e9b65
+Music_RivalBattle_branch_e9b65:
+music_label
 	octave 3
 	note D#, 2
 	note A#, 2

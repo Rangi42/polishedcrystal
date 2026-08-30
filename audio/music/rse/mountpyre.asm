@@ -3,14 +3,16 @@
 ; https://pastebin.com/3iAgGV4u
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_MountPyreRSE
+Music_MountPyreRSE:
+music_header
 	channel_count 4
 	channel 1, Music_MountPyreRSE_Ch1
 	channel 2, Music_MountPyreRSE_Ch2
 	channel 3, Music_MountPyreRSE_Ch3
 	channel 4, Music_MountPyreRSE_Ch4
 
-	music_label Music_MountPyreRSE_Ch1
+Music_MountPyreRSE_Ch1:
+music_label
 	tempo 212
 	volume 7, 7
 	duty_cycle 1
@@ -18,8 +20,10 @@
 	vibrato 16, 2, 2
 	note_type 6, 6, 3
 	rest 5
-	music_label Music_MountPyreRSE_Ch1_loop_main
-	music_label Music_MountPyreRSE_Ch1_loop_1
+Music_MountPyreRSE_Ch1_loop_main:
+music_label
+Music_MountPyreRSE_Ch1_loop_1:
+music_label
 	octave 3
 	volume_envelope 4, 2
 	note C_, 1
@@ -28,7 +32,8 @@
 	note G#, 4
 	note D_, 7
 	sound_loop 16, Music_MountPyreRSE_Ch1_loop_1
-	music_label Music_MountPyreRSE_Ch1_loop_2
+Music_MountPyreRSE_Ch1_loop_2:
+music_label
 	volume_envelope 4, 2
 	note D#, 1
 	volume_envelope 7, 2
@@ -38,7 +43,8 @@
 	sound_loop 16, Music_MountPyreRSE_Ch1_loop_2
 	volume_envelope 10, 3
 	rest 7
-	music_label Music_MountPyreRSE_Ch1_loop_3
+Music_MountPyreRSE_Ch1_loop_3:
+music_label
 	octave 3
 	note F#, 1
 	rest 1
@@ -98,12 +104,14 @@
 	rest 15
 	sound_jump Music_MountPyreRSE_Ch1_loop_main
 
-	music_label Music_MountPyreRSE_Ch2
+Music_MountPyreRSE_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 28, 1, 2
 	note_type 12, 10, 3
 	rest 1
-	music_label Music_MountPyreRSE_Ch2_loop_main
+Music_MountPyreRSE_Ch2_loop_main:
+music_label
 	duty_cycle 2
 	sound_call Music_MountPyreRSE_Ch2_branch_1
 	sound_call Music_MountPyreRSE_Ch2_branch_1
@@ -111,7 +119,8 @@
 	sound_call Music_MountPyreRSE_Ch2_branch_2
 	note_type 6, 10, 3
 	rest 10
-	music_label Music_MountPyreRSE_Ch2_loop_1
+Music_MountPyreRSE_Ch2_loop_1:
+music_label
 	duty_cycle 0
 	octave 3
 	note A#, 1
@@ -171,7 +180,8 @@
 	rest 14
 	sound_jump Music_MountPyreRSE_Ch2_loop_main
 
-	music_label Music_MountPyreRSE_Ch2_branch_1
+Music_MountPyreRSE_Ch2_branch_1:
+music_label
 	octave 3
 	volume_envelope 10, 3
 	note G_, 2
@@ -241,7 +251,8 @@
 	note G#, 2
 	sound_ret
 
-	music_label Music_MountPyreRSE_Ch2_branch_2
+Music_MountPyreRSE_Ch2_branch_2:
+music_label
 	octave 3
 	volume_envelope 10, 3
 	note A#, 2
@@ -311,16 +322,20 @@
 	note B_, 2
 	sound_ret
 
-	music_label Music_MountPyreRSE_Ch3
+Music_MountPyreRSE_Ch3:
+music_label
 	note_type 6, 2, 4
-	music_label Music_MountPyreRSE_Ch3_loop_main
-	music_label Music_MountPyreRSE_Ch3_loop_1
+Music_MountPyreRSE_Ch3_loop_main:
+music_label
+Music_MountPyreRSE_Ch3_loop_1:
+music_label
 	octave 2
 	note E_, 1
 	note F#, 1
 	note G_, 14
 	sound_loop 16, Music_MountPyreRSE_Ch3_loop_1
-	music_label Music_MountPyreRSE_Ch3_loop_2
+Music_MountPyreRSE_Ch3_loop_2:
+music_label
 	octave 2
 	note G_, 1
 	note A_, 1
@@ -364,21 +379,27 @@
 	rest 13
 	sound_jump Music_MountPyreRSE_Ch3_loop_main
 
-	music_label Music_MountPyreRSE_Ch4
+Music_MountPyreRSE_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 1
-	music_label Music_MountPyreRSE_Ch4_loop_main
-	music_label Music_MountPyreRSE_Ch4_loop_1
+Music_MountPyreRSE_Ch4_loop_main:
+music_label
+Music_MountPyreRSE_Ch4_loop_1:
+music_label
 	sound_call Music_MountPyreRSE_Ch4_branch_1
 	sound_loop 4, Music_MountPyreRSE_Ch4_loop_1
-	music_label Music_MountPyreRSE_Ch4_loop_2
+Music_MountPyreRSE_Ch4_loop_2:
+music_label
 	sound_call Music_MountPyreRSE_Ch4_branch_2
 	sound_loop 8, Music_MountPyreRSE_Ch4_loop_2
-	music_label Music_MountPyreRSE_Ch4_loop_3
+Music_MountPyreRSE_Ch4_loop_3:
+music_label
 	sound_call Music_MountPyreRSE_Ch4_branch_1
 	sound_loop 4, Music_MountPyreRSE_Ch4_loop_3
-	music_label Music_MountPyreRSE_Ch4_loop_4
+Music_MountPyreRSE_Ch4_loop_4:
+music_label
 	sound_call Music_MountPyreRSE_Ch4_branch_2
 	sound_loop 8, Music_MountPyreRSE_Ch4_loop_4
 	rest 16
@@ -388,7 +409,8 @@
 	drum_note 12, 8
 	sound_jump Music_MountPyreRSE_Ch4_loop_main
 
-	music_label Music_MountPyreRSE_Ch4_branch_1
+Music_MountPyreRSE_Ch4_branch_1:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 9, 2
 	drum_note 7, 2
@@ -401,7 +423,8 @@
 	drum_note 7, 2
 	sound_ret
 
-	music_label Music_MountPyreRSE_Ch4_branch_2
+Music_MountPyreRSE_Ch4_branch_2:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 9, 1
 	drum_note 7, 1

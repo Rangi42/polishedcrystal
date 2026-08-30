@@ -2,26 +2,30 @@
 ; Demixed by Mmmmmm
 ; https://pastebin.com/UikDn8qP
 
-	music_header Music_LugiasSong2000
+Music_LugiasSong2000:
+music_header
 	channel_count 4
 	channel 1, Music_LugiasSong2000_Ch1
 	channel 2, Music_LugiasSong2000_Ch2
 	channel 3, Music_LugiasSong2000_Ch3
 	channel 4, Music_LugiasSong2000_Ch4
 
-	music_header Music_LugiasSong2000_NoIntro
+Music_LugiasSong2000_NoIntro:
+music_header
 	channel_count 3
 	channel 1, Music_LugiasSong2000_Ch1_loop_main
 	channel 2, Music_LugiasSong2000_Ch2_loop_main
 	channel 3, Music_LugiasSong2000_Ch3_loop
 
-	music_label Music_LugiasSong2000_Ch1
+Music_LugiasSong2000_Ch1:
+music_label
 	duty_cycle 3
 	vibrato 18, 1, 5
 	pitch_offset 1
 	tempo 136
 	note_type 12, 6, 0
-	music_label Music_LugiasSong2000_Ch1_loop_1
+Music_LugiasSong2000_Ch1_loop_1:
+music_label
 	rest 8
 	sound_loop 16, Music_LugiasSong2000_Ch1_loop_1
 	rest 8
@@ -44,16 +48,19 @@
 	note C_, 12
 	volume_envelope 6, 7
 	note C_, 4
-	music_label Music_LugiasSong2000_Ch1_loop_main
+Music_LugiasSong2000_Ch1_loop_main:
+music_label
 	tempo 156
 	sound_ret
 
-	music_label Music_LugiasSong2000_Ch2
+Music_LugiasSong2000_Ch2:
+music_label
 	duty_cycle 0
 	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 1, 0
-	music_label Music_LugiasSong2000_Ch2_loop_1
+Music_LugiasSong2000_Ch2_loop_1:
+music_label
 	rest 16
 	sound_loop 4, Music_LugiasSong2000_Ch2_loop_1
 	octave 2
@@ -96,7 +103,8 @@
 	note E_, 16
 	volume_envelope 6, 7
 	note E_, 16
-	music_label Music_LugiasSong2000_Ch2_loop_main
+Music_LugiasSong2000_Ch2_loop_main:
+music_label
 	duty_cycle 0
 	note_type 12, 7, 4
 	octave 2
@@ -287,13 +295,15 @@
 	note E_, 4
 	sound_jump Music_LugiasSong2000_Ch2_loop_main
 
-	music_label Music_LugiasSong2000_Ch3
+Music_LugiasSong2000_Ch3:
+music_label
 	note_type 12, 2, 3
 	vibrato 8, 1, 6
 	sound_call Music_LugiasSong2000_Ch3_branch_1
 	note B_, 8
 	sound_call Music_LugiasSong2000_Ch3_branch_2
-	music_label Music_LugiasSong2000_Ch3_loop
+Music_LugiasSong2000_Ch3_loop:
+music_label
 	vibrato 8, 1, 6
 	note_type 12, 1, 3
 	sound_call Music_LugiasSong2000_Ch3_branch_1
@@ -327,7 +337,8 @@
 	sound_call Music_LugiasSong2000_Ch3_branch_2
 	sound_jump Music_LugiasSong2000_Ch3_loop
 
-	music_label Music_LugiasSong2000_Ch3_branch_1
+Music_LugiasSong2000_Ch3_branch_1:
+music_label
 	octave 5
 	note E_, 8
 	note G_, 8
@@ -350,7 +361,8 @@
 	note B_, 12
 	sound_ret
 
-	music_label Music_LugiasSong2000_Ch3_branch_2
+Music_LugiasSong2000_Ch3_branch_2:
+music_label
 	note_type 6, 1, 3
 	octave 6
 	note E_, 16
@@ -388,10 +400,12 @@
 	volume_envelope 1, 3
 	sound_ret
 
-	music_label Music_LugiasSong2000_Ch4
+Music_LugiasSong2000_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
-	music_label Music_LugiasSong2000_Ch4_loop_1
+Music_LugiasSong2000_Ch4_loop_1:
+music_label
 	rest 16
 	sound_loop 8, Music_LugiasSong2000_Ch4_loop_1
 	drum_speed 6

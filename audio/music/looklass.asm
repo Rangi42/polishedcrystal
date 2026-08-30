@@ -1,11 +1,13 @@
-	music_header Music_LookLass
+Music_LookLass:
+music_header
 	channel_count 4
 	channel 1, Music_LookLass_Ch1
 	channel 2, Music_LookLass_Ch2
 	channel 3, Music_LookLass_Ch3
 	channel 4, Music_LookLass_Ch4
 
-	music_label Music_LookLass_Ch1
+Music_LookLass_Ch1:
+music_label
 	tempo 132
 	volume 7, 7
 	pitch_offset 1
@@ -18,7 +20,8 @@
 	note B_, 14
 	stereo_panning FALSE, TRUE
 	duty_cycle 0
-	music_label Music_LookLass_branch_ed7bd
+Music_LookLass_branch_ed7bd:
+music_label
 	volume_envelope 10, 2
 	octave 3
 	note E_, 4
@@ -30,12 +33,14 @@
 	note B_, 2
 	sound_jump Music_LookLass_branch_ed7bd
 
-	music_label Music_LookLass_Ch2
+Music_LookLass_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	duty_cycle 0
 	note_type 12, 8, 3
 	rest 16
-	music_label Music_LookLass_branch_ed7d5
+Music_LookLass_branch_ed7d5:
+music_label
 	volume_envelope 9, 2
 	octave 2
 	note B_, 4
@@ -48,7 +53,8 @@
 	note G#, 2
 	sound_jump Music_LookLass_branch_ed7d5
 
-	music_label Music_LookLass_Ch3
+Music_LookLass_Ch3:
+music_label
 	note_type 12, 1, 0
 	rest 8
 	octave 6
@@ -56,7 +62,8 @@
 	note D#, 2
 	note C#, 2
 	note C_, 2
-	music_label Music_LookLass_branch_ed7ef
+Music_LookLass_branch_ed7ef:
+music_label
 	octave 5
 	note B_, 2
 	rest 2
@@ -98,11 +105,13 @@
 	note A_, 2
 	sound_jump Music_LookLass_branch_ed7ef
 
-	music_label Music_LookLass_Ch4
+Music_LookLass_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 12
 	drum_note 1, 16
-	music_label Music_LookLass_branch_ed81f
+Music_LookLass_branch_ed81f:
+music_label
 	drum_speed 6
 	drum_note 3, 8
 	drum_note 2, 8

@@ -3,19 +3,22 @@
 ; https://pastebin.com/pVtgJivC
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_LaverreCityXY
+Music_LaverreCityXY:
+music_header
 	channel_count 4
 	channel 1, Music_LaverreCityXY_Ch1
 	channel 2, Music_LaverreCityXY_Ch2
 	channel 3, Music_LaverreCityXY_Ch3
 	channel 4, Music_LaverreCityXY_Ch4
 
-	music_label Music_LaverreCityXY_Ch1
+Music_LaverreCityXY_Ch1:
+music_label
 	tempo 120
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 5
-	music_label Music_LaverreCityXY_branch_ef2e5
+Music_LaverreCityXY_branch_ef2e5:
+music_label
 	duty_cycle 0
 	note_type 12, 10, 4
 	rest 4
@@ -192,12 +195,14 @@
 	note G#, 12
 	sound_jump Music_LaverreCityXY_branch_ef2e5
 
-	music_label Music_LaverreCityXY_Ch2
+Music_LaverreCityXY_Ch2:
+music_label
 	vibrato 18, 2, 5
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
 	pitch_offset 2
-	music_label Music_LaverreCityXY_branch_ef3f2
+Music_LaverreCityXY_branch_ef3f2:
+music_label
 	note_type 12, 10, 7
 	octave 2
 	note E_, 12
@@ -335,10 +340,12 @@
 	rest 2
 	sound_jump Music_LaverreCityXY_branch_ef3f2
 
-	music_label Music_LaverreCityXY_Ch3
+Music_LaverreCityXY_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 18, 2, 5
-	music_label Music_LaverreCityXY_branch_ef4e3
+Music_LaverreCityXY_branch_ef4e3:
+music_label
 	note_type 12, 2, 5
 	octave 3
 	rest 4
@@ -554,11 +561,13 @@
 	note G#, 12
 	sound_jump Music_LaverreCityXY_branch_ef4e3
 
-	music_label Music_LaverreCityXY_Ch4
+Music_LaverreCityXY_Ch4:
+music_label
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
 	drum_speed 12
-	music_label Music_LaverreCityXY_Ch4_loop
+Music_LaverreCityXY_Ch4_loop:
+music_label
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
@@ -603,7 +612,8 @@
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_jump Music_LaverreCityXY_Ch4_loop
 
-	music_label Music_LaverreCityXY_Ch4_branch_1
+Music_LaverreCityXY_Ch4_branch_1:
+music_label
 	drum_speed 8
 	drum_note 2, 1
 	drum_note 2, 1
@@ -617,7 +627,8 @@
 	drum_note 2, 4
 	sound_ret
 
-	music_label Music_LaverreCityXY_Ch4_branch_2
+Music_LaverreCityXY_Ch4_branch_2:
+music_label
 	drum_speed 12
 	rest 12
 	rest 12

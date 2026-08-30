@@ -2,14 +2,16 @@
 ; Demixed by ShantyTown
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/kalos_powerplant.asm
 
-	music_header Music_PowerPlantXY
+Music_PowerPlantXY:
+music_header
 	channel_count 4
 	channel 1, Music_PowerPlantXY_Ch1
 	channel 2, Music_PowerPlantXY_Ch2
 	channel 3, Music_PowerPlantXY_Ch3
 	channel 4, Music_PowerPlantXY_Ch4
 
-	music_label Music_PowerPlantXY_Ch1
+Music_PowerPlantXY_Ch1:
+music_label
 	tempo 175
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -17,7 +19,8 @@
 	note_type 12, 8, 7
 	duty_cycle 0
 
-	music_label Music_PowerPlantXY_Ch1_branch_0
+Music_PowerPlantXY_Ch1_branch_0:
+music_label
 	sound_call Music_PowerPlantXY_Ch1_branch_4
 	sound_call Music_PowerPlantXY_Ch1_branch_1
 	sound_call Music_PowerPlantXY_Ch1_branch_1
@@ -27,7 +30,8 @@
 	sound_call Music_PowerPlantXY_Ch1_branch_3
 	sound_jump Music_PowerPlantXY_Ch1_branch_0
 
-	music_label Music_PowerPlantXY_Ch1_branch_1
+Music_PowerPlantXY_Ch1_branch_1:
+music_label
 	vibrato 18, 2, 3
 	note_type 12, 12, 3
 	octave 2
@@ -68,7 +72,8 @@
 	rest 1
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch1_branch_2
+Music_PowerPlantXY_Ch1_branch_2:
+music_label
 	note_type 12, 12, 2
 	octave 3
 	note C#, 1
@@ -106,7 +111,8 @@
 	note F#, 3
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch1_branch_3
+Music_PowerPlantXY_Ch1_branch_3:
+music_label
 	note_type 12, 6, -2
 	octave 4
 	note E_, 16
@@ -128,7 +134,8 @@
 	note D#, 8
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch1_branch_4
+Music_PowerPlantXY_Ch1_branch_4:
+music_label
 	vibrato 18, 3, 5
 	duty_cycle 2
 	note_type 12, 5, 1
@@ -155,12 +162,14 @@
 	rest 1
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch2
+Music_PowerPlantXY_Ch2:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 18, 2, 3
 	note_type 12, 12, 4
 
-	music_label Music_PowerPlantXY_Ch2_branch_0
+Music_PowerPlantXY_Ch2_branch_0:
+music_label
 	sound_call Music_PowerPlantXY_Ch2_branch_4
 	sound_call Music_PowerPlantXY_Ch2_branch_1
 	sound_call Music_PowerPlantXY_Ch2_branch_1
@@ -170,7 +179,8 @@
 	sound_call Music_PowerPlantXY_Ch2_branch_3
 	sound_jump Music_PowerPlantXY_Ch2_branch_0
 
-	music_label Music_PowerPlantXY_Ch2_branch_1
+Music_PowerPlantXY_Ch2_branch_1:
+music_label
 	note_type 12, 12, 2
 	duty_cycle 1
 	octave 3
@@ -230,7 +240,8 @@
 	note A_, 2
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch2_branch_2
+Music_PowerPlantXY_Ch2_branch_2:
+music_label
 	vibrato 18, 2, 3
 	duty_cycle 1
 	note_type 12, 12, 2
@@ -275,7 +286,8 @@
 	note D#, 3
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch2_branch_3
+Music_PowerPlantXY_Ch2_branch_3:
+music_label
 	note_type 12, 6, -2
 	octave 4
 	note G#, 16
@@ -293,7 +305,8 @@
 	note B_, 8
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch2_branch_4
+Music_PowerPlantXY_Ch2_branch_4:
+music_label
 	vibrato 18, 3, 5
 	duty_cycle 2
 	note_type 12, 12, 2
@@ -323,11 +336,13 @@
 	rest 2
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch3
+Music_PowerPlantXY_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 1
 
-	music_label Music_PowerPlantXY_Ch3_branch_0
+Music_PowerPlantXY_Ch3_branch_0:
+music_label
 	sound_call Music_PowerPlantXY_Ch3_branch_4
 	sound_call Music_PowerPlantXY_Ch3_branch_1
 	sound_call Music_PowerPlantXY_Ch3_branch_1
@@ -337,7 +352,8 @@
 	sound_call Music_PowerPlantXY_Ch3_branch_3
 	sound_jump Music_PowerPlantXY_Ch3_branch_0
 
-	music_label Music_PowerPlantXY_Ch3_branch_1
+Music_PowerPlantXY_Ch3_branch_1:
+music_label
 	vibrato 0, 6, 6
 	note_type 12, 1, 4
 	octave 3
@@ -391,7 +407,8 @@
 	rest 1
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch3_branch_2
+Music_PowerPlantXY_Ch3_branch_2:
+music_label
 	note_type 12, 1, 4
 	octave 2
 	note A_, 1
@@ -418,7 +435,8 @@
 	note G#, 3
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch3_branch_3
+Music_PowerPlantXY_Ch3_branch_3:
+music_label
 	octave 2
 	note B_, 2
 	rest 1
@@ -493,7 +511,8 @@
 	note D#, 2
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch3_branch_4
+Music_PowerPlantXY_Ch3_branch_4:
+music_label
 	note_type 12, 1, 1
 	octave 3
 	note C#, 16
@@ -501,10 +520,12 @@
 	rest 3
 	sound_ret
 
-	music_label Music_PowerPlantXY_Ch4
+Music_PowerPlantXY_Ch4:
+music_label
 	drum_speed 12
 	toggle_noise 3
-	music_label Music_PowerPlantXY_Ch4_branch_0
+Music_PowerPlantXY_Ch4_branch_0:
+music_label
 	drum_note 11, 3
 	drum_note 2, 1
 	drum_note 3, 2
@@ -517,7 +538,8 @@
 	drum_note 11, 4
 	drum_note 11, 2
 	drum_note 1, 4
-	music_label Music_PowerPlantXY_Ch4_branch_1
+Music_PowerPlantXY_Ch4_branch_1:
+music_label
 	drum_note 3, 4
 	drum_note 3, 2
 	drum_note 3, 2
@@ -555,7 +577,8 @@
 	rest 1
 	drum_note 12, 2
 	rest 1
-	music_label Music_PowerPlantXY_Ch4_branch_3
+Music_PowerPlantXY_Ch4_branch_3:
+music_label
 	drum_note 3, 4
 	drum_note 3, 2
 	drum_note 3, 2

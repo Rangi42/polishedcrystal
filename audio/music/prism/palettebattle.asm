@@ -2,13 +2,15 @@
 ; Composed by Cat333Pokemon
 ; Revised by NotFroggestSpirit
 
-	music_header Music_PaletteBattlePrism
+Music_PaletteBattlePrism:
+music_header
 	channel_count 3
 	channel 1, Music_PaletteBattlePrism_Ch1
 	channel 2, Music_PaletteBattlePrism_Ch2
 	channel 3, Music_PaletteBattlePrism_Ch3
 
-	music_label Music_PaletteBattlePrism_Ch1
+Music_PaletteBattlePrism_Ch1:
+music_label
 	tempo 96
 	volume 7, 7
 	duty_cycle 3
@@ -53,7 +55,8 @@
 	octave 3
 	note C_, 1
 
-	music_label Music_PaletteBattlePrism_branch_1edc47
+Music_PaletteBattlePrism_branch_1edc47:
+music_label
 	note E_, 4
 	octave 2
 	note G_, 2
@@ -292,7 +295,8 @@
 	octave 3
 	sound_jump Music_PaletteBattlePrism_branch_1edc47
 
-	music_label Music_PaletteBattlePrism_Ch2
+Music_PaletteBattlePrism_Ch2:
+music_label
 	duty_cycle 3
 	pitch_offset 1
 	vibrato 8, 3, 6
@@ -335,7 +339,8 @@
 	note G#, 1
 	note G_, 1
 
-	music_label Music_PaletteBattlePrism_branch_1edb37
+Music_PaletteBattlePrism_branch_1edb37:
+music_label
 	note G_, 4
 	note C_, 2
 	note D_, 2
@@ -424,7 +429,8 @@
 	note C_, 16
 	rest 16
 
-	music_label Music_PaletteBattlePrism_branch_1edb87
+Music_PaletteBattlePrism_branch_1edb87:
+music_label
 	octave 4
 	volume_envelope 12, 2
 	note C#, 2
@@ -442,7 +448,8 @@
 	note G#, 2
 	sound_loop 2, Music_PaletteBattlePrism_branch_1edb87
 
-	music_label Music_PaletteBattlePrism_branch_1edb99
+Music_PaletteBattlePrism_branch_1edb99:
+music_label
 	note G#, 2
 	note G#, 2
 	note D#, 2
@@ -453,7 +460,8 @@
 	note D#, 2
 	sound_loop 2, Music_PaletteBattlePrism_branch_1edb99
 
-	music_label Music_PaletteBattlePrism_branch_1edba5
+Music_PaletteBattlePrism_branch_1edba5:
+music_label
 	octave 4
 	note C#, 2
 	note C#, 2
@@ -470,7 +478,8 @@
 	note G#, 2
 	sound_loop 2, Music_PaletteBattlePrism_branch_1edba5
 
-	music_label Music_PaletteBattlePrism_branch_1edbb7
+Music_PaletteBattlePrism_branch_1edbb7:
+music_label
 	note G#, 2
 	note G#, 2
 	note D#, 2
@@ -525,7 +534,8 @@
 	octave 3
 	note A#, 2
 
-	music_label Music_PaletteBattlePrism_branch_1edbef
+Music_PaletteBattlePrism_branch_1edbef:
+music_label
 	octave 3
 	volume_envelope 12, 8
 	note C_, 16
@@ -538,20 +548,24 @@
 	octave 3
 	sound_jump Music_PaletteBattlePrism_branch_1edb37
 
-	music_label Music_PaletteBattlePrism_Ch3
+Music_PaletteBattlePrism_Ch3:
+music_label
 	note_type 12, 1, 9
 	rest 16
 	rest 16
 
-	music_label Music_PaletteBattlePrism_branch_1ede24
+Music_PaletteBattlePrism_branch_1ede24:
+music_label
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede25
+Music_PaletteBattlePrism_branch_1ede25:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede25
 
-	music_label Music_PaletteBattlePrism_branch_1ede2b
+Music_PaletteBattlePrism_branch_1ede2b:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -559,12 +573,14 @@
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede2b
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede34
+Music_PaletteBattlePrism_branch_1ede34:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede34
 
-	music_label Music_PaletteBattlePrism_branch_1ede3a
+Music_PaletteBattlePrism_branch_1ede3a:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -572,12 +588,14 @@
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede3a
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede43
+Music_PaletteBattlePrism_branch_1ede43:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede43
 
-	music_label Music_PaletteBattlePrism_branch_1ede49
+Music_PaletteBattlePrism_branch_1ede49:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -585,18 +603,21 @@
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede49
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede52
+Music_PaletteBattlePrism_branch_1ede52:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 16, Music_PaletteBattlePrism_branch_1ede52
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede59
+Music_PaletteBattlePrism_branch_1ede59:
+music_label
 	note C#, 2
 	note G#, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede59
 
-	music_label Music_PaletteBattlePrism_branch_1ede5f
+Music_PaletteBattlePrism_branch_1ede5f:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -604,50 +625,58 @@
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede5f
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede68
+Music_PaletteBattlePrism_branch_1ede68:
+music_label
 	note C#, 2
 	note G#, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede68
 
-	music_label Music_PaletteBattlePrism_branch_1ede6e
+Music_PaletteBattlePrism_branch_1ede6e:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
 	note D#, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede6e
 
-	music_label Music_PaletteBattlePrism_branch_1ede76
+Music_PaletteBattlePrism_branch_1ede76:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
 	note F_, 2
 	sound_loop 4, Music_PaletteBattlePrism_branch_1ede76
 
-	music_label Music_PaletteBattlePrism_branch_1ede7e
+Music_PaletteBattlePrism_branch_1ede7e:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
 	note F#, 2
 	sound_loop 4, Music_PaletteBattlePrism_branch_1ede7e
 
-	music_label Music_PaletteBattlePrism_branch_1ede86
+Music_PaletteBattlePrism_branch_1ede86:
+music_label
 	octave 3
 	note C#, 2
 	note G#, 2
 	sound_loop 4, Music_PaletteBattlePrism_branch_1ede86
 
-	music_label Music_PaletteBattlePrism_branch_1ede8d
+Music_PaletteBattlePrism_branch_1ede8d:
+music_label
 	note D#, 2
 	note A#, 2
 	sound_loop 4, Music_PaletteBattlePrism_branch_1ede8d
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1ede94
+Music_PaletteBattlePrism_branch_1ede94:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede94
 
-	music_label Music_PaletteBattlePrism_branch_1ede9a
+Music_PaletteBattlePrism_branch_1ede9a:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -655,12 +684,14 @@
 	sound_loop 8, Music_PaletteBattlePrism_branch_1ede9a
 	octave 3
 
-	music_label Music_PaletteBattlePrism_branch_1edea3
+Music_PaletteBattlePrism_branch_1edea3:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1edea3
 
-	music_label Music_PaletteBattlePrism_branch_1edea9
+Music_PaletteBattlePrism_branch_1edea9:
+music_label
 	octave 2
 	note G_, 2
 	octave 3

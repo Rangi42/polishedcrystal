@@ -2,17 +2,20 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/cinnabarGSC.asm
 
-	music_header Music_CinnabarIslandHGSS
+Music_CinnabarIslandHGSS:
+music_header
 	channel_count 2
 	channel 1, Music_CinnabarIslandHGSS_Ch1
 	channel 2, Music_CinnabarIslandHGSS_Ch2
 
-	music_label Music_CinnabarIslandHGSS_Ch1
+Music_CinnabarIslandHGSS_Ch1:
+music_label
 	tempo 280
 	volume 7, 7
 	duty_cycle 2
 	note_type 12, 11, 6
-	music_label Music_CinnabarIslandHGSS_Loop1
+Music_CinnabarIslandHGSS_Loop1:
+music_label
 	rest 4
 	octave 3
 	note D_, 4
@@ -78,10 +81,12 @@
 	note E_, 4
 	sound_jump Music_CinnabarIslandHGSS_Loop1
 
-	music_label Music_CinnabarIslandHGSS_Ch2
+Music_CinnabarIslandHGSS_Ch2:
+music_label
 	duty_cycle 2
 	note_type 12, 12, 6
-	music_label Music_CinnabarIslandHGSS_Loop2
+Music_CinnabarIslandHGSS_Loop2:
+music_label
 	octave 3
 	note G_, 6
 	note A_, 1

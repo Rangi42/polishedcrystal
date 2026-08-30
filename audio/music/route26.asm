@@ -1,11 +1,13 @@
-	music_header Music_Route26
+Music_Route26:
+music_header
 	channel_count 4
 	channel 1, Music_Route26_Ch1
 	channel 2, Music_Route26_Ch2
 	channel 3, Music_Route26_Ch3
 	channel 4, Music_Route26_Ch4
 
-	music_label Music_Route26_Ch1
+Music_Route26_Ch1:
+music_label
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 3
 	tempo 151
@@ -27,7 +29,8 @@
 	octave 3
 	note G#, 2
 	note F#, 2
-	music_label Music_Route26_branch_eefe0
+Music_Route26_branch_eefe0:
+music_label
 	duty_cycle 0
 	note_type 12, 10, 7
 	octave 3
@@ -195,7 +198,8 @@
 	rest 4
 	sound_jump Music_Route26_branch_eefe0
 
-	music_label Music_Route26_Ch2
+Music_Route26_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 20, 2, 3
 	duty_cycle 2
@@ -233,7 +237,8 @@
 	octave 2
 	note C_, 2
 	note D#, 2
-	music_label Music_Route26_branch_ef0ce
+Music_Route26_branch_ef0ce:
+music_label
 	duty_cycle 2
 	note_type 12, 12, 2
 	octave 2
@@ -282,7 +287,8 @@
 	note D#, 4
 	note D#, 4
 	note_type 8, 12, 2
-	music_label Music_Route26_branch_ef10e
+Music_Route26_branch_ef10e:
+music_label
 	octave 2
 	note G#, 2
 	note G#, 2
@@ -339,7 +345,8 @@
 	note D#, 1
 	sound_jump Music_Route26_branch_ef0ce
 
-	music_label Music_Route26_branch_ef14e
+Music_Route26_branch_ef14e:
+music_label
 	note A#, 6
 	note A#, 1
 	octave 2
@@ -353,7 +360,8 @@
 	note A#, 2
 	sound_ret
 
-	music_label Music_Route26_Ch3
+Music_Route26_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 18, 2, 3
 	note_type 12, 1, 4
@@ -389,7 +397,8 @@
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	music_label Music_Route26_branch_ef18a
+Music_Route26_branch_ef18a:
+music_label
 	vibrato 24, 2, 3
 	note_type 12, 1, 4
 	octave 5
@@ -536,7 +545,8 @@
 	note C_, 1
 	sound_jump Music_Route26_branch_ef18a
 
-	music_label Music_Route26_branch_ef22f
+Music_Route26_branch_ef22f:
+music_label
 	octave 5
 	note F_, 8
 	note C#, 2
@@ -547,16 +557,19 @@
 	note D#, 4
 	sound_ret
 
-	music_label Music_Route26_Ch4
+Music_Route26_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 12
-	music_label Music_Route26_branch_ef23c
+Music_Route26_branch_ef23c:
+music_label
 	drum_note 12, 6
 	drum_note 3, 1
 	drum_note 3, 1
 	sound_loop 3, Music_Route26_branch_ef23c
 	sound_call Music_Route26_branch_ef2b0
-	music_label Music_Route26_branch_ef246
+Music_Route26_branch_ef246:
+music_label
 	drum_speed 6
 	sound_call Music_Route26_branch_ef29a
 	sound_call Music_Route26_branch_ef29a
@@ -575,7 +588,8 @@
 	sound_call Music_Route26_branch_ef29a
 	sound_call Music_Route26_branch_ef29a
 	drum_speed 8
-	music_label Music_Route26_branch_ef266
+Music_Route26_branch_ef266:
+music_label
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
@@ -586,7 +600,8 @@
 	sound_call Music_Route26_branch_ef2a8
 	sound_call Music_Route26_branch_ef29a
 	sound_call Music_Route26_branch_ef2a8
-	music_label Music_Route26_branch_ef27c
+Music_Route26_branch_ef27c:
+music_label
 	drum_speed 6
 	drum_note 3, 1
 	drum_note 3, 1
@@ -607,7 +622,8 @@
 	sound_call Music_Route26_branch_ef2b0
 	sound_jump Music_Route26_branch_ef246
 
-	music_label Music_Route26_branch_ef29a
+Music_Route26_branch_ef29a:
+music_label
 	drum_note 5, 12
 	drum_note 3, 2
 	drum_note 3, 2
@@ -623,7 +639,8 @@
 	drum_note 2, 1
 	sound_ret
 
-	music_label Music_Route26_branch_ef2a8
+Music_Route26_branch_ef2a8:
+music_label
 	drum_note 5, 12
 	drum_note 3, 2
 	drum_note 3, 2
@@ -633,7 +650,8 @@
 	drum_note 3, 4
 	sound_ret
 
-	music_label Music_Route26_branch_ef2b0
+Music_Route26_branch_ef2b0:
+music_label
 	drum_speed 6
 	drum_note 2, 1
 	drum_note 2, 1

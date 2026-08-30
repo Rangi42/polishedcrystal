@@ -3,14 +3,16 @@
 ; https://pastebin.com/zWajMT3c
 ; https://hax.iimarckus.org/topic/6777/5/
 
-	music_header Music_MotherBeastBattleSM
+Music_MotherBeastBattleSM:
+music_header
 	channel_count 4
 	channel 1, Music_MotherBeastBattleSM_Ch1
 	channel 2, Music_MotherBeastBattleSM_Ch2
 	channel 3, Music_MotherBeastBattleSM_Ch3
 	channel 4, Music_MotherBeastBattleSM_Ch4
 
-	music_label Music_MotherBeastBattleSM_Ch1
+Music_MotherBeastBattleSM_Ch1:
+music_label
 	duty_cycle 3
 	tempo 220
 	vibrato 18, 1, 5
@@ -33,7 +35,8 @@
 	note D#, 9
 	volume_envelope 3, 7
 	note D#, 3
-	music_label Music_MotherBeastBattleSM_Ch1_loop_main
+Music_MotherBeastBattleSM_Ch1_loop_main:
+music_label
 	volume_envelope 3, 0
 	duty_cycle 3
 	octave 3
@@ -199,7 +202,8 @@
 	sound_call Music_MotherBeastBattleSM_Ch2_branch_3
 	sound_jump Music_MotherBeastBattleSM_Ch1_loop_main
 
-	music_label Music_MotherBeastBattleSM_Ch2
+Music_MotherBeastBattleSM_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 1, 5
 	note_type 6, 9, 1
@@ -374,9 +378,11 @@
 	octave 5
 	note D#, 9
 	note_type 12, 9, 0
-	music_label Music_MotherBeastBattleSM_Ch2_loop_main
+Music_MotherBeastBattleSM_Ch2_loop_main:
+music_label
 	duty_cycle 2
-	music_label Music_MotherBeastBattleSM_Ch2_loop_1
+Music_MotherBeastBattleSM_Ch2_loop_1:
+music_label
 	octave 3
 	sound_call Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 2
@@ -694,7 +700,8 @@
 	sound_call Music_MotherBeastBattleSM_Ch2_branch_3
 	sound_jump Music_MotherBeastBattleSM_Ch2_loop_main
 
-	music_label Music_MotherBeastBattleSM_Ch2_branch_1
+Music_MotherBeastBattleSM_Ch2_branch_1:
+music_label
 	note D_, 1
 	note E_, 1
 	note F_, 1
@@ -708,7 +715,8 @@
 	note D_, 1
 	sound_ret
 
-	music_label Music_MotherBeastBattleSM_Ch2_branch_2
+Music_MotherBeastBattleSM_Ch2_branch_2:
+music_label
 	note D_, 1
 	note E_, 1
 	note F_, 1
@@ -723,7 +731,8 @@
 	note F_, 1
 	sound_ret
 
-	music_label Music_MotherBeastBattleSM_Ch2_branch_3
+Music_MotherBeastBattleSM_Ch2_branch_3:
+music_label
 	octave 4
 	note G_, 1
 	note G#, 1
@@ -744,7 +753,8 @@
 	note A_, 1
 	sound_ret
 
-	music_label Music_MotherBeastBattleSM_Ch3
+Music_MotherBeastBattleSM_Ch3:
+music_label
 	note_type 12, 1, 9
 	octave 2
 	rest 4
@@ -767,7 +777,8 @@
 	note A#, 9
 	volume_envelope 3, 9
 	note A#, 3
-	music_label Music_MotherBeastBattleSM_Ch3_loop_main
+Music_MotherBeastBattleSM_Ch3_loop_main:
+music_label
 	rest 12
 	rest 12
 	rest 12
@@ -851,13 +862,15 @@
 	note G_, 4
 	volume_envelope 1, 9
 	octave 2
-	music_label Music_MotherBeastBattleSM_Ch3_loop_1
+Music_MotherBeastBattleSM_Ch3_loop_1:
+music_label
 	note C_, 4
 	rest 2
 	sound_loop 16, Music_MotherBeastBattleSM_Ch3_loop_1
 	octave 1
 	volume_envelope 2, 9
-	music_label Music_MotherBeastBattleSM_Ch3_loop_2
+Music_MotherBeastBattleSM_Ch3_loop_2:
+music_label
 	note C_, 4
 	rest 2
 	sound_loop 6, Music_MotherBeastBattleSM_Ch3_loop_2
@@ -865,7 +878,8 @@
 	rest 11
 	sound_jump Music_MotherBeastBattleSM_Ch3_loop_main
 
-	music_label Music_MotherBeastBattleSM_Ch4
+Music_MotherBeastBattleSM_Ch4:
+music_label
 	toggle_noise 3
 	sound_call Music_MotherBeastBattleSM_Ch4_buildup
 	drum_note 1, 2 ;
@@ -917,7 +931,8 @@
 	rest 12
 	rest 12
 	rest 14
-	music_label Music_MotherBeastBattleSM_Ch4_loop_main
+Music_MotherBeastBattleSM_Ch4_loop_main:
+music_label
 	sound_call Music_MotherBeastBattleSM_Ch4_buildup
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_2
@@ -940,7 +955,8 @@
 	drum_note 4, 6
 	drum_note 4, 2
 	drum_note 1, 4
-	music_label Music_MotherBeastBattleSM_Ch4_loop_1
+Music_MotherBeastBattleSM_Ch4_loop_1:
+music_label
 	drum_note 1, 3
 	drum_note 1, 3
 	drum_note 1, 3
@@ -950,7 +966,8 @@
 	drum_note 1, 8
 	sound_jump Music_MotherBeastBattleSM_Ch4_loop_main
 
-	music_label Music_MotherBeastBattleSM_Ch4_branch_1
+Music_MotherBeastBattleSM_Ch4_branch_1:
+music_label
 	drum_note 1, 6
 	drum_note 1, 2
 	drum_note 4, 2
@@ -979,7 +996,8 @@
 	drum_note 4, 2
 	sound_ret
 
-	music_label Music_MotherBeastBattleSM_Ch4_branch_2
+Music_MotherBeastBattleSM_Ch4_branch_2:
+music_label
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 5, 1
@@ -1008,7 +1026,8 @@
 	drum_note 4, 2
 	sound_ret
 
-	music_label Music_MotherBeastBattleSM_Ch4_branch_3
+Music_MotherBeastBattleSM_Ch4_branch_3:
+music_label
 	drum_note 1, 6
 	drum_note 1, 2
 	drum_note 4, 2
@@ -1036,7 +1055,8 @@
 	drum_note 5, 3
 	sound_ret
 
-	music_label Music_MotherBeastBattleSM_Ch4_buildup
+Music_MotherBeastBattleSM_Ch4_buildup:
+music_label
 	drum_speed 3
 	drum_note 8, 1
 	drum_note 8, 1

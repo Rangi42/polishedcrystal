@@ -1,11 +1,13 @@
-	music_header Music_Route29
+Music_Route29:
+music_header
 	channel_count 4
 	channel 1, Music_Route29_Ch1
 	channel 2, Music_Route29_Ch2
 	channel 3, Music_Route29_Ch3
 	channel 4, Music_Route29_Ch4
 
-	music_label Music_Route29_Ch1
+Music_Route29_Ch1:
+music_label
 	tempo 146
 	volume 7, 7
 	duty_cycle 3
@@ -14,7 +16,8 @@
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 2
 	rest 2
-	music_label Music_Route29_branch_f03a5
+Music_Route29_branch_f03a5:
+music_label
 	rest 2
 	octave 4
 	note C_, 2
@@ -169,14 +172,16 @@
 	note G_, 4
 	sound_jump Music_Route29_branch_f03a5
 
-	music_label Music_Route29_Ch2
+Music_Route29_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 3, 6
 	note_type 12, 12, 2
 	octave 4
 	note C_, 1
 	note D_, 1
-	music_label Music_Route29_branch_f0458
+Music_Route29_branch_f0458:
+music_label
 	sound_call Music_Route29_branch_f04de
 	note F_, 1
 	note E_, 1
@@ -301,7 +306,8 @@
 	note D_, 1
 	sound_jump Music_Route29_branch_f0458
 
-	music_label Music_Route29_branch_f04de
+Music_Route29_branch_f04de:
+music_label
 	note E_, 2
 	note E_, 2
 	note G_, 2
@@ -332,12 +338,14 @@
 	note C_, 2
 	sound_ret
 
-	music_label Music_Route29_Ch3
+Music_Route29_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
 	vibrato 9, 2, 7
 	rest 2
-	music_label Music_Route29_branch_f0504
+Music_Route29_branch_f0504:
+music_label
 	rest 2
 	octave 3
 	note G_, 1
@@ -501,12 +509,14 @@
 	rest 3
 	sound_jump Music_Route29_branch_f0504
 
-	music_label Music_Route29_Ch4
+Music_Route29_Ch4:
+music_label
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 	drum_speed 12
 	rest 2
-	music_label Music_Route29_branch_f05b0
+Music_Route29_branch_f05b0:
+music_label
 	rest 2
 	drum_note 6, 2
 	drum_note 6, 6

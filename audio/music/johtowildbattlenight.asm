@@ -1,10 +1,12 @@
-	music_header Music_JohtoWildBattleNight
+Music_JohtoWildBattleNight:
+music_header
 	channel_count 3
 	channel 1, Music_JohtoWildBattleNight_Ch1
 	channel 2, Music_JohtoWildBattleNight_Ch2
 	channel 3, Music_JohtoWildBattleNight_Ch3
 
-	music_label Music_JohtoWildBattleNight_Ch1
+Music_JohtoWildBattleNight_Ch1:
+music_label
 	tempo 107
 	volume 7, 7
 	duty_cycle 3
@@ -12,7 +14,8 @@
 	vibrato 16, 2, 5
 	sound_jump Music_JohtoWildBattleNight_branch_f5ddb
 
-	music_label Music_JohtoWildBattleNight_Ch2
+Music_JohtoWildBattleNight_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 32, 3, 6
 	pitch_offset 1
@@ -24,6 +27,7 @@
 	duty_cycle 2
 	sound_jump Music_JohtoWildBattleNight_branch_f5eb2
 
-	music_label Music_JohtoWildBattleNight_Ch3
+Music_JohtoWildBattleNight_Ch3:
+music_label
 	note_type 12, 1, 1
 	sound_jump Music_JohtoWildBattleNight_branch_f5f94

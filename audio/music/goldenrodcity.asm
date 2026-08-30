@@ -1,11 +1,13 @@
-	music_header Music_GoldenrodCity
+Music_GoldenrodCity:
+music_header
 	channel_count 4
 	channel 1, Music_GoldenrodCity_Ch1
 	channel 2, Music_GoldenrodCity_Ch2
 	channel 3, Music_GoldenrodCity_Ch3
 	channel 4, Music_GoldenrodCity_Ch4
 
-	music_label Music_GoldenrodCity_Ch1
+Music_GoldenrodCity_Ch1:
+music_label
 	stereo_panning FALSE, TRUE
 	tempo 176
 	volume 7, 7
@@ -14,7 +16,8 @@
 	rest 16
 	rest 16
 	rest 16
-	music_label Music_GoldenrodCity_branch_eb46d
+Music_GoldenrodCity_branch_eb46d:
+music_label
 	duty_cycle 0
 	sound_call Music_GoldenrodCity_branch_eb4a9
 	octave 3
@@ -57,7 +60,8 @@
 	note C_, 2
 	sound_jump Music_GoldenrodCity_branch_eb46d
 
-	music_label Music_GoldenrodCity_branch_eb4a9
+Music_GoldenrodCity_branch_eb4a9:
+music_label
 	octave 4
 	note C#, 2
 	octave 3
@@ -99,7 +103,8 @@
 	note C#, 2
 	sound_ret
 
-	music_label Music_GoldenrodCity_branch_eb4d1
+Music_GoldenrodCity_branch_eb4d1:
+music_label
 	octave 4
 	note F_, 1
 	note C#, 1
@@ -173,12 +178,14 @@
 	note F#, 1
 	sound_ret
 
-	music_label Music_GoldenrodCity_Ch2
+Music_GoldenrodCity_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 18, 2, 3
 	duty_cycle 2
 	note_type 12, 9, 7
-	music_label Music_GoldenrodCity_branch_eb523
+Music_GoldenrodCity_branch_eb523:
+music_label
 	volume_envelope 9, 7
 	sound_call Music_GoldenrodCity_branch_eb555
 	octave 4
@@ -214,7 +221,8 @@
 	note G#, 2
 	sound_jump Music_GoldenrodCity_branch_eb523
 
-	music_label Music_GoldenrodCity_branch_eb555
+Music_GoldenrodCity_branch_eb555:
+music_label
 	octave 4
 	note F_, 4
 	note C#, 4
@@ -244,7 +252,8 @@
 	duty_cycle 1
 	sound_ret
 
-	music_label Music_GoldenrodCity_branch_eb572
+Music_GoldenrodCity_branch_eb572:
+music_label
 	note C#, 6
 	note F_, 6
 	note C#, 4
@@ -264,11 +273,13 @@
 	note D#, 2
 	sound_ret
 
-	music_label Music_GoldenrodCity_Ch3
+Music_GoldenrodCity_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 8, 2, 3
 	note_type 12, 2, 5
-	music_label Music_GoldenrodCity_branch_eb58c
+Music_GoldenrodCity_branch_eb58c:
+music_label
 	sound_call Music_GoldenrodCity_branch_eb5aa
 	sound_call Music_GoldenrodCity_branch_eb5aa
 	sound_call Music_GoldenrodCity_branch_eb5d2
@@ -289,7 +300,8 @@
 	note G#, 2
 	sound_jump Music_GoldenrodCity_branch_eb58c
 
-	music_label Music_GoldenrodCity_branch_eb5aa
+Music_GoldenrodCity_branch_eb5aa:
+music_label
 	octave 3
 	note C#, 4
 	rest 2
@@ -331,7 +343,8 @@
 	rest 1
 	sound_ret
 
-	music_label Music_GoldenrodCity_branch_eb5d2
+Music_GoldenrodCity_branch_eb5d2:
+music_label
 	note C#, 1
 	rest 1
 	octave 4
@@ -385,7 +398,8 @@
 	note G#, 1
 	sound_ret
 
-	music_label Music_GoldenrodCity_Ch4
+Music_GoldenrodCity_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 16
@@ -397,7 +411,8 @@
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 7, 2
-	music_label Music_GoldenrodCity_branch_eb613
+Music_GoldenrodCity_branch_eb613:
+music_label
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -438,7 +453,8 @@
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 3, 1
-	music_label Music_GoldenrodCity_branch_eb650
+Music_GoldenrodCity_branch_eb650:
+music_label
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -451,7 +467,8 @@
 	sound_call Music_GoldenrodCity_branch_eb663
 	sound_jump Music_GoldenrodCity_branch_eb613
 
-	music_label Music_GoldenrodCity_branch_eb663
+Music_GoldenrodCity_branch_eb663:
+music_label
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2
@@ -463,7 +480,8 @@
 	drum_note 7, 2
 	sound_ret
 
-	music_label Music_GoldenrodCity_branch_eb66d
+Music_GoldenrodCity_branch_eb66d:
+music_label
 	drum_note 4, 2
 	drum_note 3, 1
 	drum_note 4, 3

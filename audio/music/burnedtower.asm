@@ -1,11 +1,13 @@
-	music_header Music_BurnedTower
+Music_BurnedTower:
+music_header
 	channel_count 4
 	channel 1, Music_BurnedTower_Ch1
 	channel 2, Music_BurnedTower_Ch2
 	channel 3, Music_BurnedTower_Ch3
 	channel 4, Music_BurnedTower_Ch4
 
-	music_label Music_BurnedTower_Ch1
+Music_BurnedTower_Ch1:
+music_label
 	tempo 168
 	volume 7, 7
 	duty_cycle 1
@@ -27,7 +29,8 @@
 	note D_, 2
 	volume_envelope 8, 0
 	note C#, 6
-	music_label Music_BurnedTower_branch_f6ac8
+Music_BurnedTower_branch_f6ac8:
+music_label
 	volume_envelope 9, 1
 	octave 2
 	note A_, 4
@@ -37,7 +40,8 @@
 	note A#, 6
 	sound_loop 2, Music_BurnedTower_branch_f6ac8
 	tempo 150
-	music_label Music_BurnedTower_branch_f6ad8
+Music_BurnedTower_branch_f6ad8:
+music_label
 	volume_envelope 11, 1
 	octave 2
 	note A_, 4
@@ -87,7 +91,8 @@
 	note E_, 2
 	volume_envelope 10, 0
 	note D#, 6
-	music_label Music_BurnedTower_branch_f6b17
+Music_BurnedTower_branch_f6b17:
+music_label
 	volume_envelope 11, 1
 	octave 2
 	note B_, 4
@@ -99,14 +104,16 @@
 	sound_loop 2, Music_BurnedTower_branch_f6b17
 	sound_jump Music_BurnedTower_branch_f6ad8
 
-	music_label Music_BurnedTower_Ch2
+Music_BurnedTower_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 32, 8, 2
 	pitch_offset 2
 	note_type 12, 7, 0
 	sound_call Music_BurnedTower_branch_f6b8e
 	volume_envelope 12, 5
-	music_label Music_BurnedTower_branch_f6b39
+Music_BurnedTower_branch_f6b39:
+music_label
 	sound_call Music_BurnedTower_branch_f6b8e
 	volume_envelope 12, 1
 	duty_cycle 3
@@ -170,7 +177,8 @@
 	note F#, 16
 	sound_jump Music_BurnedTower_branch_f6b39
 
-	music_label Music_BurnedTower_branch_f6b8e
+Music_BurnedTower_branch_f6b8e:
+music_label
 	octave 3
 	note E_, 4
 	note D_, 2
@@ -192,7 +200,8 @@
 	note E_, 16
 	sound_ret
 
-	music_label Music_BurnedTower_Ch3
+Music_BurnedTower_Ch3:
+music_label
 	stereo_panning FALSE, TRUE
 	note_type 12, 1, 4
 	rest 16
@@ -201,7 +210,8 @@
 	rest 12
 	octave 3
 	note D#, 4
-	music_label Music_BurnedTower_branch_f6bad
+Music_BurnedTower_branch_f6bad:
+music_label
 	octave 2
 	note A_, 2
 	octave 3
@@ -221,7 +231,8 @@
 	note E_, 2
 	note D#, 4
 	sound_loop 4, Music_BurnedTower_branch_f6bad
-	music_label Music_BurnedTower_branch_f6bc3
+Music_BurnedTower_branch_f6bc3:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
@@ -243,14 +254,17 @@
 	sound_loop 2, Music_BurnedTower_branch_f6bc3
 	sound_jump Music_BurnedTower_branch_f6bad
 
-	music_label Music_BurnedTower_Ch4
+Music_BurnedTower_Ch4:
+music_label
 	toggle_noise 0
 	drum_speed 12
-	music_label Music_BurnedTower_branch_f6be1
+Music_BurnedTower_branch_f6be1:
+music_label
 	rest 16
 	sound_loop 4, Music_BurnedTower_branch_f6be1
 	rest 2
-	music_label Music_BurnedTower_branch_f6be7
+Music_BurnedTower_branch_f6be7:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 8, 2
 	drum_note 9, 2

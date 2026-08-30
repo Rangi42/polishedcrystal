@@ -2,14 +2,16 @@
 ; Demixed by Pum
 ; https://hax.iimarckus.org/topic/6443/
 
-	music_header Music_GymLeaderBattleBW
+Music_GymLeaderBattleBW:
+music_header
 	channel_count 4
 	channel 1, GymLeaderBattleBW_Channel1
 	channel 2, GymLeaderBattleBW_Channel2
 	channel 3, GymLeaderBattleBW_Channel3
 	channel 4, GymLeaderBattleBW_Channel4
 
-	music_label GymLeaderBattleBW_Channel1
+GymLeaderBattleBW_Channel1:
+music_label
 	tempo 53
 	volume 5, 5
 	duty_cycle 1
@@ -144,7 +146,8 @@
 	octave 5
 	note D_, 2
 	rest 2
-	music_label GymLeaderBattleBWChannel1_Loop
+GymLeaderBattleBWChannel1_Loop:
+music_label
 	stereo_panning TRUE, FALSE
 	duty_cycle 1
 	note C_, 12
@@ -685,7 +688,8 @@
 	sound_jump GymLeaderBattleBWChannel1_Loop
 	sound_ret
 
-	music_label GymLeaderBattleBW_Channel2
+GymLeaderBattleBW_Channel2:
+music_label
 	duty_cycle 1
 	note_type 12, 9, 7
 	octave 2
@@ -770,7 +774,8 @@
 	note D_, 8
 	rest 16
 	rest 16
-	music_label GymLeaderBattleBWChannel2_Loop
+GymLeaderBattleBWChannel2_Loop:
+music_label
 	stereo_panning TRUE, TRUE
 	octave 3
 	note C_, 12
@@ -1145,7 +1150,8 @@
 	sound_jump GymLeaderBattleBWChannel2_Loop
 	sound_ret
 
-	music_label GymLeaderBattleBW_Channel3
+GymLeaderBattleBW_Channel3:
+music_label
 	note_type 12, 1, 5
 	octave 3
 	volume_envelope 1, 2
@@ -1337,7 +1343,8 @@
 	note A#, 4
 	octave 3
 	note A#, 4
-	music_label GymLeaderBattleBWChannel3_Loop
+GymLeaderBattleBWChannel3_Loop:
+music_label
 	octave 2
 	note C_, 4
 	octave 3
@@ -2169,7 +2176,8 @@
 	sound_jump GymLeaderBattleBWChannel3_Loop
 	sound_ret
 
-	music_label GymLeaderBattleBW_Channel4
+GymLeaderBattleBW_Channel4:
+music_label
 	drum_speed 12
 	toggle_noise 5
 	drum_note 1, 4
@@ -2274,7 +2282,8 @@
 	drum_note 2, 4
 	drum_note 1, 2
 	drum_note 1, 2
-	music_label GymLeaderBattleBWChannel4_Loop
+GymLeaderBattleBWChannel4_Loop:
+music_label
 	drum_note 1, 8
 	drum_note 2, 8
 	drum_note 1, 4

@@ -1,11 +1,13 @@
-	music_header Music_Route30
+Music_Route30:
+music_header
 	channel_count 4
 	channel 1, Music_Route30_Ch1
 	channel 2, Music_Route30_Ch2
 	channel 3, Music_Route30_Ch3
 	channel 4, Music_Route30_Ch4
 
-	music_label Music_Route30_Ch1
+Music_Route30_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -27,7 +29,8 @@
 	note D_, 2
 	volume_envelope 4, -6
 	note C_, 4
-	music_label Music_Route30_branch_efc2e
+Music_Route30_branch_efc2e:
+music_label
 	volume_envelope 11, 6
 	note D_, 6
 	volume_envelope 11, 4
@@ -184,7 +187,8 @@
 	note D_, 2
 	sound_jump Music_Route30_branch_efc2e
 
-	music_label Music_Route30_Ch2
+Music_Route30_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 3, 6
 	stereo_panning FALSE, TRUE
@@ -206,7 +210,8 @@
 	note E_, 1
 	note F_, 1
 	note F#, 1
-	music_label Music_Route30_branch_efcf6
+Music_Route30_branch_efcf6:
+music_label
 	volume_envelope 12, 7
 	note G_, 10
 	octave 4
@@ -295,7 +300,8 @@
 	note F#, 2
 	sound_jump Music_Route30_branch_efcf6
 
-	music_label Music_Route30_Ch3
+Music_Route30_Ch3:
+music_label
 	note_type 12, 2, 7
 	octave 2
 	note G_, 1
@@ -320,7 +326,8 @@
 	rest 1
 	note G_, 1
 	rest 1
-	music_label Music_Route30_branch_efd79
+Music_Route30_branch_efd79:
+music_label
 	note G_, 1
 	rest 1
 	note B_, 2
@@ -576,12 +583,14 @@
 	rest 1
 	sound_jump Music_Route30_branch_efd79
 
-	music_label Music_Route30_Ch4
+Music_Route30_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	sound_call Music_Route30_branch_efeb8
 	sound_call Music_Route30_branch_efec1
-	music_label Music_Route30_branch_efe84
+Music_Route30_branch_efe84:
+music_label
 	sound_call Music_Route30_branch_efecd
 	sound_call Music_Route30_branch_efed7
 	sound_call Music_Route30_branch_efed7
@@ -600,7 +609,8 @@
 	sound_call Music_Route30_branch_efee1
 	sound_jump Music_Route30_branch_efe84
 
-	music_label Music_Route30_branch_efeb8
+Music_Route30_branch_efeb8:
+music_label
 	drum_note 3, 2
 	drum_note 7, 2
 	drum_note 7, 2
@@ -611,7 +621,8 @@
 	drum_note 3, 4
 	sound_ret
 
-	music_label Music_Route30_branch_efec1
+Music_Route30_branch_efec1:
+music_label
 	drum_note 3, 2
 	drum_note 7, 2
 	drum_note 7, 2
@@ -625,7 +636,8 @@
 	drum_note 3, 1
 	sound_ret
 
-	music_label Music_Route30_branch_efecd
+Music_Route30_branch_efecd:
+music_label
 	drum_note 3, 2
 	drum_note 7, 2
 	drum_note 7, 2
@@ -637,7 +649,8 @@
 	drum_note 3, 2
 	sound_ret
 
-	music_label Music_Route30_branch_efed7
+Music_Route30_branch_efed7:
+music_label
 	drum_note 3, 2
 	drum_note 7, 2
 	drum_note 7, 2
@@ -649,7 +662,8 @@
 	drum_note 3, 2
 	sound_ret
 
-	music_label Music_Route30_branch_efee1
+Music_Route30_branch_efee1:
+music_label
 	drum_note 3, 2
 	drum_note 7, 2
 	drum_note 7, 2

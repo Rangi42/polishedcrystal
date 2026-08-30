@@ -1,11 +1,13 @@
-	music_header Music_CrystalOpening
+Music_CrystalOpening:
+music_header
 	channel_count 4
 	channel 1, Music_CrystalOpening_Ch1
 	channel 2, Music_CrystalOpening_Ch2
 	channel 3, Music_CrystalOpening_Ch3
 	channel 4, Music_CrystalOpening_Ch4
 
-	music_label Music_CrystalOpening_Ch1
+Music_CrystalOpening_Ch1:
+music_label
 	tempo 136
 	volume 7, 7
 	pitch_offset 2
@@ -122,7 +124,8 @@
 	note D_, 16
 	sound_ret
 
-	music_label Music_CrystalOpening_Ch2
+Music_CrystalOpening_Ch2:
+music_label
 	note_type 12, 10, 2
 	duty_cycle 3
 	vibrato 8, 4, 4
@@ -177,7 +180,8 @@
 	note D_, 16
 	sound_ret
 
-	music_label Music_CrystalOpening_Ch3
+Music_CrystalOpening_Ch3:
+music_label
 	note_type 12, 1, 6
 	octave 1
 	note B_, 4
@@ -241,7 +245,8 @@
 	rest 15
 	sound_ret
 
-	music_label Music_CrystalOpening_Ch4
+Music_CrystalOpening_Ch4:
+music_label
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	drum_speed 12

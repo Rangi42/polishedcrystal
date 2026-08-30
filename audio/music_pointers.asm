@@ -1,6 +1,6 @@
 Music:
 ; entries correspond to MUSIC_* constants
-	table_width 3
+	table_width 4
 	compressed_music_pointer Music_Nothing
 	compressed_music_pointer Music_CrystalOpening
 	compressed_music_pointer Music_TitleScreen

@@ -2,17 +2,20 @@
 ; Ported by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/EternaForest.asm
 
-	music_header Music_EternaForestDPPt
+Music_EternaForestDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_EternaForestDPPt_Ch1
 	channel 2, Music_EternaForestDPPt_Ch2
 	channel 3, Music_EternaForestDPPt_Ch3
 	channel 4, Music_EternaForestDPPt_Ch4
 
-	music_label Music_EternaForestDPPt_Ch1
+Music_EternaForestDPPt_Ch1:
+music_label
 	tempo 136
 	volume 7, 7
-	music_label Music_EternaForestDPPt_Ch1_loop
+Music_EternaForestDPPt_Ch1_loop:
+music_label
 	note_type 12, 8, 2
 	duty_cycle 0
 	octave 5
@@ -284,8 +287,10 @@
 	note B_, 8
 	sound_jump Music_EternaForestDPPt_Ch1_loop
 
-	music_label Music_EternaForestDPPt_Ch2
-	music_label Music_EternaForestDPPt_Ch2_loop
+Music_EternaForestDPPt_Ch2:
+music_label
+Music_EternaForestDPPt_Ch2_loop:
+music_label
 	note_type 12, 9, 2
 	duty_cycle 0
 	octave 5
@@ -518,8 +523,10 @@
 	note G_, 8
 	sound_jump Music_EternaForestDPPt_Ch2_loop
 
-	music_label Music_EternaForestDPPt_Ch3
-	music_label Music_EternaForestDPPt_Ch3_loop
+Music_EternaForestDPPt_Ch3:
+music_label
+Music_EternaForestDPPt_Ch3_loop:
+music_label
 	note_type 12, 1, 2
 	vibrato 16, 1, 4
 	octave 7
@@ -763,9 +770,11 @@
 	rest 10
 	sound_jump Music_EternaForestDPPt_Ch3_loop
 
-	music_label Music_EternaForestDPPt_Ch4
+Music_EternaForestDPPt_Ch4:
+music_label
 	toggle_noise 4
-	music_label Music_EternaForestDPPt_Ch4_loop
+Music_EternaForestDPPt_Ch4_loop:
+music_label
 	drum_speed 12
 	rest 16
 	rest 16

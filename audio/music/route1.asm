@@ -1,10 +1,12 @@
-	music_header Music_Route1
+Music_Route1:
+music_header
 	channel_count 3
 	channel 1, Music_Route1_Ch1
 	channel 2, Music_Route1_Ch2
 	channel 3, Music_Route1_Ch3
 
-	music_label Music_Route1_Ch1
+Music_Route1_Ch1:
+music_label
 	stereo_panning FALSE, TRUE
 	tempo 184
 	volume 7, 7
@@ -58,7 +60,8 @@
 	note D_, 2
 	volume_envelope 8, 3
 	rest 2
-	music_label Music_Route1_branch_ec04a
+Music_Route1_branch_ec04a:
+music_label
 	volume_envelope 8, 3
 	rest 2
 	octave 4
@@ -202,7 +205,8 @@
 	rest 2
 	sound_jump Music_Route1_branch_ec04a
 
-	music_label Music_Route1_Ch2
+Music_Route1_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 18, 2, 2
 	duty_cycle 2
@@ -229,7 +233,8 @@
 	note D_, 1
 	note E_, 1
 	duty_cycle 2
-	music_label Music_Route1_branch_ec112
+Music_Route1_branch_ec112:
+music_label
 	volume_envelope 8, 2
 	sound_call Music_Route1_branch_ec188
 	volume_envelope 8, 1
@@ -321,7 +326,8 @@
 	note E_, 1
 	sound_jump Music_Route1_branch_ec112
 
-	music_label Music_Route1_branch_ec188
+Music_Route1_branch_ec188:
+music_label
 	note F#, 2
 	note F#, 2
 	note F#, 2
@@ -339,7 +345,8 @@
 	note E_, 2
 	sound_ret
 
-	music_label Music_Route1_branch_ec198
+Music_Route1_branch_ec198:
+music_label
 	note A_, 2
 	note A_, 2
 	note F#, 2
@@ -359,7 +366,8 @@
 	note E_, 2
 	sound_ret
 
-	music_label Music_Route1_branch_ec1aa
+Music_Route1_branch_ec1aa:
+music_label
 	note A_, 2
 	note A_, 2
 	note F#, 2
@@ -375,7 +383,8 @@
 	note D_, 2
 	sound_ret
 
-	music_label Music_Route1_Ch3
+Music_Route1_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 16, 2, 3
 	note_type 12, 2, 5
@@ -455,7 +464,8 @@
 	rest 1
 	note A_, 1
 	rest 3
-	music_label Music_Route1_branch_ec20c
+Music_Route1_branch_ec20c:
+music_label
 	octave 3
 	note D_, 1
 	rest 1

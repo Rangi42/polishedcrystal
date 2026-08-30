@@ -1,11 +1,13 @@
-	music_header Music_NationalPark
+Music_NationalPark:
+music_header
 	channel_count 4
 	channel 1, Music_NationalPark_Ch1
 	channel 2, Music_NationalPark_Ch2
 	channel 3, Music_NationalPark_Ch3
 	channel 4, Music_NationalPark_Ch4
 
-	music_label Music_NationalPark_Ch1
+Music_NationalPark_Ch1:
+music_label
 	tempo 192
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -13,7 +15,8 @@
 	duty_cycle 1
 	note_type 12, 7, 7
 	rest 2
-	music_label Music_NationalPark_branch_f5504
+Music_NationalPark_branch_f5504:
+music_label
 	sound_call Music_NationalPark_branch_f554a
 	sound_call Music_NationalPark_branch_f554a
 	note_type 6, 6, 7
@@ -63,7 +66,8 @@
 	rest 4
 	sound_jump Music_NationalPark_branch_f5504
 
-	music_label Music_NationalPark_branch_f554a
+Music_NationalPark_branch_f554a:
+music_label
 	octave 2
 	note G#, 6
 	octave 3
@@ -270,7 +274,8 @@
 	note A#, 2
 	sound_ret
 
-	music_label Music_NationalPark_branch_f563a
+Music_NationalPark_branch_f563a:
+music_label
 	rest 16
 	rest 3
 	octave 4
@@ -296,13 +301,15 @@
 	rest 4
 	sound_ret
 
-	music_label Music_NationalPark_Ch2
+Music_NationalPark_Ch2:
+music_label
 	vibrato 20, 2, 4
 	duty_cycle 1
 	note_type 12, 10, 7
 	rest 2
 	stereo_panning TRUE, FALSE
-	music_label Music_NationalPark_branch_f565d
+Music_NationalPark_branch_f565d:
+music_label
 	note_type 12, 10, 7
 	sound_call Music_NationalPark_branch_f56b8
 	octave 3
@@ -371,7 +378,8 @@
 	note D_, 2
 	sound_jump Music_NationalPark_branch_f565d
 
-	music_label Music_NationalPark_branch_f56b8
+Music_NationalPark_branch_f56b8:
+music_label
 	octave 2
 	note C#, 6
 	note G#, 2
@@ -434,7 +442,8 @@
 	note F_, 2
 	sound_ret
 
-	music_label Music_NationalPark_branch_f56f5
+Music_NationalPark_branch_f56f5:
+music_label
 	octave 4
 	note E_, 1
 	note F_, 5
@@ -478,14 +487,16 @@
 	note C#, 2
 	sound_ret
 
-	music_label Music_NationalPark_Ch3
+Music_NationalPark_Ch3:
+music_label
 	vibrato 22, 2, 4
 	note_type 12, 1, 1
 	octave 4
 	note G#, 1
 	note A#, 1
 	stereo_panning TRUE, TRUE
-	music_label Music_NationalPark_branch_f572e
+Music_NationalPark_branch_f572e:
+music_label
 	sound_call Music_NationalPark_branch_f5756
 	octave 5
 	note A#, 14
@@ -514,7 +525,8 @@
 	note A#, 1
 	sound_jump Music_NationalPark_branch_f572e
 
-	music_label Music_NationalPark_branch_f5756
+Music_NationalPark_branch_f5756:
+music_label
 	octave 5
 	note C_, 16
 	note C#, 14
@@ -573,7 +585,8 @@
 	note C_, 2
 	sound_ret
 
-	music_label Music_NationalPark_branch_f578f
+Music_NationalPark_branch_f578f:
+music_label
 	octave 2
 	note F#, 3
 	octave 3
@@ -616,11 +629,13 @@
 	rest 1
 	sound_ret
 
-	music_label Music_NationalPark_Ch4
+Music_NationalPark_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 2
-	music_label Music_NationalPark_branch_f57bd
+Music_NationalPark_branch_f57bd:
+music_label
 	rest 16
 	sound_loop 23, Music_NationalPark_branch_f57bd
 	rest 8
@@ -629,7 +644,8 @@
 	drum_note 11, 1
 	drum_note 3, 1
 	drum_note 12, 2
-	music_label Music_NationalPark_branch_f57c8
+Music_NationalPark_branch_f57c8:
+music_label
 	drum_note 11, 2
 	drum_note 8, 1
 	drum_note 8, 1

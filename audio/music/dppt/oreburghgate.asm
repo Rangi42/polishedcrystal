@@ -3,13 +3,15 @@
 ; https://pastebin.com/xEactCTm
 ; https://hax.iimarckus.org/topic/6777/
 
-	music_header Music_OreburghGateDPPt
+Music_OreburghGateDPPt:
+music_header
 	channel_count 3
 	channel 1, Music_OreburghGateDPPt_Ch1
 	channel 2, Music_OreburghGateDPPt_Ch2
 	channel 3, Music_OreburghGateDPPt_Ch3
 
-	music_label Music_OreburghGateDPPt_Ch1
+Music_OreburghGateDPPt_Ch1:
+music_label
 	tempo 130
 	volume 7, 7
 	duty_cycle 0
@@ -20,7 +22,8 @@
 	note G_, 8
 	volume_envelope 2, -6
 	note G_, 8
-	music_label Music_OreburghGateDPPt_Ch1_branch_1
+Music_OreburghGateDPPt_Ch1_branch_1:
+music_label
 	octave 4
 	volume_envelope 4, 0
 	note F#, 12
@@ -113,12 +116,14 @@
 	note G_, 8
 	sound_jump Music_OreburghGateDPPt_Ch1_branch_1
 
-	music_label Music_OreburghGateDPPt_Ch2
+Music_OreburghGateDPPt_Ch2:
+music_label
 	pitch_offset 1
 	duty_cycle 1
 	note_type 12, 5, 5
 	rest 16
-	music_label Music_OreburghGateDPPt_Ch2_branch_1
+Music_OreburghGateDPPt_Ch2_branch_1:
+music_label
 	octave 3
 	volume_envelope 5, 5
 	note G_, 2
@@ -407,11 +412,13 @@
 	rest 12
 	sound_jump Music_OreburghGateDPPt_Ch2_branch_1
 
-	music_label Music_OreburghGateDPPt_Ch3
+Music_OreburghGateDPPt_Ch3:
+music_label
 	note_type 12, 1, 2
 	vibrato 8, 1, 2
 	rest 16
-	music_label Music_OreburghGateDPPt_Ch3_branch_1
+Music_OreburghGateDPPt_Ch3_branch_1:
+music_label
 	octave 3
 	volume_envelope 1, 2
 	note G_, 1
@@ -633,7 +640,8 @@
 	octave 5
 	note E_, 1
 	rest 1
-	music_label Music_OreburghGateDPPt_Ch3_branch_2
+Music_OreburghGateDPPt_Ch3_branch_2:
+music_label
 	octave 3
 	volume_envelope 1, 2
 	note G_, 1

@@ -3,14 +3,16 @@
 ; https://pastebin.com/0hihGkJp
 ; https://soundcloud.com/mmmmmmmmmmmmmmmmm-1/battle-factory-gbc-8-bit
 
-	music_header Music_BattleFactoryRSE
+Music_BattleFactoryRSE:
+music_header
 	channel_count 4
 	channel 1, Music_BattleFactoryRSE_Ch1
 	channel 2, Music_BattleFactoryRSE_Ch2
 	channel 3, Music_BattleFactoryRSE_Ch3
 	channel 4, Music_BattleFactoryRSE_Ch4
 
-	music_label Music_BattleFactoryRSE_Ch1
+Music_BattleFactoryRSE_Ch1:
+music_label
 	tempo 132
 	volume 7, 7
 	stereo_panning TRUE, TRUE
@@ -18,7 +20,8 @@
 	rest 12
 	rest 16
 	rest 8
-	music_label Music_BattleFactoryRSE_Ch1_loop
+Music_BattleFactoryRSE_Ch1_loop:
+music_label
 	duty_cycle 2
 	vibrato 18, 2, 4
 	note_type 6, 4, 7
@@ -452,12 +455,14 @@
 	note E_, 2
 	sound_jump Music_BattleFactoryRSE_Ch1_loop
 
-	music_label Music_BattleFactoryRSE_Ch2
+Music_BattleFactoryRSE_Ch2:
+music_label
 	stereo_panning TRUE, TRUE
 	note_type 12, 9, 0
 	rest 12
 	rest 16
-	music_label Music_BattleFactoryRSE_Ch2_loop
+Music_BattleFactoryRSE_Ch2_loop:
+music_label
 	duty_cycle 2
 	note_type 6, 9, 7
 	rest 16
@@ -994,7 +999,8 @@
 	rest 1
 	sound_jump Music_BattleFactoryRSE_Ch2_loop
 
-	music_label Music_BattleFactoryRSE_Ch2_branch_1
+Music_BattleFactoryRSE_Ch2_branch_1:
+music_label
 	octave 3
 	note A#, 2
 	note B_, 2
@@ -1016,7 +1022,8 @@
 	note B_, 2
 	sound_ret
 
-	music_label Music_BattleFactoryRSE_Ch3
+Music_BattleFactoryRSE_Ch3:
+music_label
 	vibrato 20, 2, 3
 	stereo_panning TRUE, TRUE
 	note_type 6, 2, 5
@@ -1070,7 +1077,8 @@
 	note G_, 2
 	octave 3
 	note E_, 2
-	music_label Music_BattleFactoryRSE_Ch3_loop
+Music_BattleFactoryRSE_Ch3_loop:
+music_label
 	octave 2
 	note G_, 2
 	note E_, 2
@@ -1168,7 +1176,8 @@
 	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 	sound_jump Music_BattleFactoryRSE_Ch3_loop
 
-	music_label Music_BattleFactoryRSE_Ch3_branch_1
+Music_BattleFactoryRSE_Ch3_branch_1:
+music_label
 	octave 1
 	note E_, 1
 	rest 1
@@ -1202,7 +1211,8 @@
 	rest 1
 	sound_ret
 
-	music_label Music_BattleFactoryRSE_Ch3_branch_2
+Music_BattleFactoryRSE_Ch3_branch_2:
+music_label
 	octave 1
 	note E_, 1
 	rest 1
@@ -1235,7 +1245,8 @@
 	note D_, 2
 	sound_ret
 
-	music_label Music_BattleFactoryRSE_Ch3_branch_3
+Music_BattleFactoryRSE_Ch3_branch_3:
+music_label
 	note E_, 1
 	rest 1
 	octave 2
@@ -1249,14 +1260,17 @@
 	sound_loop 4, Music_BattleFactoryRSE_Ch3_branch_3
 	sound_ret
 
-	music_label Music_BattleFactoryRSE_Ch4
+Music_BattleFactoryRSE_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 6
-	music_label Music_BattleFactoryRSE_Ch4_loop
+Music_BattleFactoryRSE_Ch4_loop:
+music_label
 	drum_note 4, 8
 	sound_jump Music_BattleFactoryRSE_Ch4_loop
 
-	music_label Music_BattleFactoryRSE_Ch4_branch_1
+Music_BattleFactoryRSE_Ch4_branch_1:
+music_label
 	drum_note 5, 4
 	drum_note 7, 4
 	drum_note 4, 4

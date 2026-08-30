@@ -1,11 +1,13 @@
-	music_header Music_LakeOfRage
+Music_LakeOfRage:
+music_header
 	channel_count 4
 	channel 1, Music_LakeOfRage_Ch1
 	channel 2, Music_LakeOfRage_Ch2
 	channel 3, Music_LakeOfRage_Ch3
 	channel 4, Music_LakeOfRage_Ch4
 
-	music_label Music_LakeOfRage_Ch1
+Music_LakeOfRage_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -19,7 +21,8 @@
 	note D_, 6
 	note D_, 6
 	note E_, 4
-	music_label Music_LakeOfRage_branch_ee6e9
+Music_LakeOfRage_branch_ee6e9:
+music_label
 	volume_envelope 11, 5
 	note F#, 6
 	note E_, 6
@@ -94,7 +97,8 @@
 	note D_, 6
 	sound_jump Music_LakeOfRage_branch_ee6e9
 
-	music_label Music_LakeOfRage_Ch2
+Music_LakeOfRage_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 32, 4, 4
 	stereo_panning TRUE, TRUE
@@ -107,7 +111,8 @@
 	note A_, 8
 	volume_envelope 10, 7
 	note A_, 8
-	music_label Music_LakeOfRage_branch_ee75e
+Music_LakeOfRage_branch_ee75e:
+music_label
 	note_type 8, 12, 7
 	octave 4
 	note D_, 16
@@ -183,7 +188,8 @@
 	note A_, 16
 	sound_jump Music_LakeOfRage_branch_ee75e
 
-	music_label Music_LakeOfRage_Ch3
+Music_LakeOfRage_Ch3:
+music_label
 	stereo_panning FALSE, TRUE
 	note_type 12, 1, 6
 	octave 3
@@ -196,7 +202,8 @@
 	note F#, 4
 	rest 2
 	note E_, 4
-	music_label Music_LakeOfRage_branch_ee7d0
+Music_LakeOfRage_branch_ee7d0:
+music_label
 	octave 3
 	note D_, 4
 	octave 2
@@ -296,11 +303,13 @@
 	note A_, 2
 	sound_jump Music_LakeOfRage_branch_ee7d0
 
-	music_label Music_LakeOfRage_Ch4
+Music_LakeOfRage_Ch4:
+music_label
 	stereo_panning TRUE, FALSE
 	toggle_noise 3
 	drum_speed 12
-	music_label Music_LakeOfRage_branch_ee83b
+Music_LakeOfRage_branch_ee83b:
+music_label
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 3, 1

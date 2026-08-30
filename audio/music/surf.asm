@@ -1,15 +1,18 @@
-	music_header Music_Surf
+Music_Surf:
+music_header
 	channel_count 3
 	channel 1, Music_Surf_Ch1
 	channel 2, Music_Surf_Ch2
 	channel 3, Music_Surf_Ch3
 
-	music_label Music_Surf_Ch1
+Music_Surf_Ch1:
+music_label
 	tempo 108
 	volume 7, 7
 	note_type 12, 10, 7
 	stereo_panning FALSE, TRUE
-	music_label Music_Surf_branch_f519e
+Music_Surf_branch_f519e:
+music_label
 	duty_cycle 2
 	vibrato 16, 2, 4
 	volume_envelope 7, 3
@@ -118,7 +121,8 @@
 	note D#, 2
 	sound_jump Music_Surf_branch_f519e
 
-	music_label Music_Surf_branch_f5233
+Music_Surf_branch_f5233:
+music_label
 	note_type 12, 10, 7
 	octave 3
 	note D#, 4
@@ -212,7 +216,8 @@
 	note D_, 4
 	sound_ret
 
-	music_label Music_Surf_branch_f5293
+Music_Surf_branch_f5293:
+music_label
 	octave 4
 	note G#, 16
 	note D#, 4
@@ -278,7 +283,8 @@
 	note G_, 2
 	sound_ret
 
-	music_label Music_Surf_branch_f52d9
+Music_Surf_branch_f52d9:
+music_label
 	octave 3
 	note A#, 3
 	note G_, 3
@@ -337,13 +343,16 @@
 	note B_, 8
 	sound_ret
 
-	music_label Music_Surf_Ch2
-	music_label Music_Surf_branch_f5317
+Music_Surf_Ch2:
+music_label
+Music_Surf_branch_f5317:
+music_label
 	note_type 12, 12, 2
 	stereo_panning TRUE, FALSE
 	duty_cycle 2
 	vibrato 20, 2, 3
-	music_label Music_Surf_branch_f5321
+Music_Surf_branch_f5321:
+music_label
 	octave 1
 	note A#, 4
 	octave 2
@@ -359,7 +368,8 @@
 	rest 3
 	note A#, 1
 	rest 3
-	music_label Music_Surf_branch_f5333
+Music_Surf_branch_f5333:
+music_label
 	note D#, 4
 	note G_, 2
 	note G#, 2
@@ -443,7 +453,8 @@
 	note B_, 4
 	sound_jump Music_Surf_branch_f5317
 
-	music_label Music_Surf_branch_f53b2
+Music_Surf_branch_f53b2:
+music_label
 	octave 1
 	note G#, 4
 	octave 3
@@ -481,7 +492,8 @@
 	note G_, 4
 	sound_ret
 
-	music_label Music_Surf_branch_f53d6
+Music_Surf_branch_f53d6:
+music_label
 	octave 4
 	note F_, 4
 	note D#, 4
@@ -500,7 +512,8 @@
 	note A_, 1
 	sound_ret
 
-	music_label Music_Surf_branch_f53e8
+Music_Surf_branch_f53e8:
+music_label
 	note A#, 7
 	octave 4
 	note C_, 8
@@ -513,7 +526,8 @@
 	note G_, 8
 	sound_ret
 
-	music_label Music_Surf_branch_f53f3
+Music_Surf_branch_f53f3:
+music_label
 	note F#, 1
 	note G_, 3
 	note F_, 4
@@ -531,7 +545,8 @@
 	note B_, 1
 	sound_ret
 
-	music_label Music_Surf_branch_f5404
+Music_Surf_branch_f5404:
+music_label
 	octave 4
 	note C_, 8
 	note G_, 4
@@ -541,8 +556,10 @@
 	note D#, 8
 	sound_ret
 
-	music_label Music_Surf_Ch3
-	music_label Music_Surf_branch_f540c
+Music_Surf_Ch3:
+music_label
+Music_Surf_branch_f540c:
+music_label
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 5
 	vibrato 22, 2, 3
@@ -686,7 +703,8 @@
 	note B_, 4
 	sound_jump Music_Surf_branch_f540c
 
-	music_label Music_Surf_branch_f54c8
+Music_Surf_branch_f54c8:
+music_label
 	octave 3
 	note D#, 4
 	note G_, 1

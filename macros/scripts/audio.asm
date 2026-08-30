@@ -80,8 +80,10 @@ ENDM
 MACRO _music_pointer
 	if _compressing_music
 		_music_align
+		dw \1_music_restart
+	else
+		dw \1
 	endc
-	dw \1
 .___music_restart_\@:
 	if _compressing_music && DEF(MUSIC_HUFFMAN)
 		println "!~{_music_root}:\@"
@@ -89,27 +91,28 @@ MACRO _music_pointer
 ENDM
 
 MACRO music_header
+	_redef_current_label CURRENT_MUSIC_LABEL, ".music_header_\@", \#
 	_music_align
 	DEF _compressing_music = 0
 	DEF _music_header_active = 1
 	DEF _music_channel_pending = 0
-	REDEF _music_root EQUS "\1"
-\1:
+	REDEF _music_root EQUS "{CURRENT_MUSIC_LABEL}"
 ENDM
 
 MACRO music_label
+	_redef_current_label CURRENT_MUSIC_LABEL, ".music_label_\@", \#
 	if _compressing_music && _music_stream_has_data
 		_music_byte music_align_cmd
 	endc
 	_music_align
-\1:
+{CURRENT_MUSIC_LABEL}_music_restart:
 	if _music_channel_pending
 		DEF _compressing_music = 1
 		DEF _music_header_active = 0
 		DEF _music_channel_pending = 0
 	endc
 	if _compressing_music && DEF(MUSIC_HUFFMAN)
-		println "!\1"
+		println "!{CURRENT_MUSIC_LABEL}_music_restart"
 	endc
 ENDM
 
@@ -122,9 +125,8 @@ MACRO music_end
 ENDM
 
 MACRO compressed_music_pointer
-	assert BANK(\1) < $80, "compressed music bank must fit below bit 7"
-	db BANK(\1) | $80
-	dw \1
+	db TRUE
+	dba \1
 ENDM
 
 MACRO channel_count
@@ -137,9 +139,11 @@ MACRO channel
 	assert 0 < (\1) && (\1) <= NUM_CHANNELS, \
 		"channel id must be 1-{d:NUM_CHANNELS}"
 	dn (_num_channels << 2), \1 - 1 ; channel id
-	dw \2 ; address
 	if _music_header_active
+		dw \2_music_restart ; compressed music address
 		DEF _music_channel_pending = 1
+	else
+		dw \2 ; uncompressed SFX or cry address
 	endc
 	DEF _num_channels = 0
 ENDM

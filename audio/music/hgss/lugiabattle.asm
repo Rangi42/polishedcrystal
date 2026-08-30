@@ -3,13 +3,15 @@
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/lugiabattle.asm
 ; https://pigu-a.bandcamp.com/album/pok-mon-anniversary-crystal-pigus-arranges
 
-	music_header Music_LugiaBattleHGSS
+Music_LugiaBattleHGSS:
+music_header
 	channel_count 3
 	channel 1, Music_LugiaBattleHGSS_Ch1
 	channel 2, Music_LugiaBattleHGSS_Ch2
 	channel 3, Music_LugiaBattleHGSS_Ch3
 
-	music_label Music_LugiaBattleHGSS_Ch1
+Music_LugiaBattleHGSS_Ch1:
+music_label
 	tempo 102
 	duty_cycle 3
 	note_type 12, 12, 7
@@ -39,7 +41,8 @@
 	octave 3
 	note F#, 1
 	note D#, 1
-	music_label Music_LugiaBattleHGSS_Ch1_L
+Music_LugiaBattleHGSS_Ch1_L:
+music_label
 	duty_cycle 0
 	volume_envelope 12, 7
 	octave 2
@@ -276,7 +279,8 @@
 	note D#, 1
 	sound_jump Music_LugiaBattleHGSS_Ch1_L
 
-	music_label Music_LugiaBattleHGSS_Ch2
+Music_LugiaBattleHGSS_Ch2:
+music_label
 	duty_cycle 3
 	note_type 12, 12, 7
 	rest 4
@@ -297,7 +301,8 @@
 	rest 6
 	octave 4
 	note C#, 16
-	music_label Music_LugiaBattleHGSS_Ch2_L
+Music_LugiaBattleHGSS_Ch2_L:
+music_label
 	rest 10
 	duty_cycle 0
 	octave 3
@@ -400,7 +405,8 @@
 	note E_, 8
 	note D#, 16
 	note E_, 16
-	music_label Music_LugiaBattleHGSS_Ch2_L1
+Music_LugiaBattleHGSS_Ch2_L1:
+music_label
 	octave 3
 	note E_, 2
 	rest 2
@@ -421,7 +427,8 @@
 	note E_, 2
 	rest 2
 	sound_loop 2, Music_LugiaBattleHGSS_Ch2_L1
-	music_label Music_LugiaBattleHGSS_Ch2_L2
+Music_LugiaBattleHGSS_Ch2_L2:
+music_label
 	octave 2
 	note B_, 2
 	rest 2
@@ -549,7 +556,8 @@
 	note C#, 16
 	sound_jump Music_LugiaBattleHGSS_Ch2_L
 
-	music_label Music_LugiaBattleHGSS_Ch3
+Music_LugiaBattleHGSS_Ch3:
+music_label
 	note_type 12, 2, 3
 	octave 6
 	note G_, 1
@@ -620,7 +628,8 @@
 	note C#, 14
 	octave 2
 	note F#, 2
-	music_label Music_LugiaBattleHGSS_Ch3_L
+Music_LugiaBattleHGSS_Ch3_L:
+music_label
 	octave 1
 	note B_, 2
 	octave 2
@@ -670,7 +679,8 @@
 	note C_, 2
 	note G_, 2
 	sound_loop 3, Music_LugiaBattleHGSS_Ch3_L
-	music_label Music_LugiaBattleHGSS_Ch3_L1
+Music_LugiaBattleHGSS_Ch3_L1:
+music_label
 	octave 1
 	note B_, 2
 	octave 2
@@ -684,39 +694,46 @@
 	note A#, 2
 	octave 2
 	note F#, 2
-	music_label Music_LugiaBattleHGSS_Ch3_L2
+Music_LugiaBattleHGSS_Ch3_L2:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
 	note E_, 2
 	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L2
-	music_label Music_LugiaBattleHGSS_Ch3_L3
+Music_LugiaBattleHGSS_Ch3_L3:
+music_label
 	note C_, 2
 	note F#, 2
 	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L3
-	music_label Music_LugiaBattleHGSS_Ch3_L4
+Music_LugiaBattleHGSS_Ch3_L4:
+music_label
 	octave 1
 	note G#, 2
 	octave 2
 	note C#, 2
 	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L4
-	music_label Music_LugiaBattleHGSS_Ch3_L5
+Music_LugiaBattleHGSS_Ch3_L5:
+music_label
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
 	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L5
-	music_label Music_LugiaBattleHGSS_Ch3_L6
+Music_LugiaBattleHGSS_Ch3_L6:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
 	note E_, 2
 	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L6
-	music_label Music_LugiaBattleHGSS_Ch3_L7
+Music_LugiaBattleHGSS_Ch3_L7:
+music_label
 	note C#, 2
 	note G#, 2
 	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L7
-	music_label Music_LugiaBattleHGSS_Ch3_L8
+Music_LugiaBattleHGSS_Ch3_L8:
+music_label
 	octave 1
 	note A#, 2
 	octave 2

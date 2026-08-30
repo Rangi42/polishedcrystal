@@ -126,7 +126,7 @@ musichuffmap $e7, 118, 000001101 ; 214
 musichuffmap $ed, 119, 1110101010 ; 195
 musichuffmap $ee, 120, 1101011001 ; 185
 musichuffmap $ef, 121, 1100001000 ; 170
-musichuffmap $f8, 122, 1111000 ; 1609
+musichuffmap $f8, 122, 1111000 ; 1610
 musichuffmap $fc, 123, 11000000 ; 680
 musichuffmap $fd, 124, 11000011 ; 700
 musichuffmap $fe, 125, 100100 ; 2352

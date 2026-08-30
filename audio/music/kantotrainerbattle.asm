@@ -1,10 +1,12 @@
-	music_header Music_KantoTrainerBattle
+Music_KantoTrainerBattle:
+music_header
 	channel_count 3
 	channel 1, Music_KantoTrainerBattle_Ch1
 	channel 2, Music_KantoTrainerBattle_Ch2
 	channel 3, Music_KantoTrainerBattle_Ch3
 
-	music_label Music_KantoTrainerBattle_Ch1
+Music_KantoTrainerBattle_Ch1:
+music_label
 	tempo 114
 	volume 7, 7
 	transpose 1, 11
@@ -125,7 +127,8 @@
 	note D#, 2
 	note F_, 2
 	note F#, 2
-	music_label Music_KantoTrainerBattle_branch_eca88
+Music_KantoTrainerBattle_branch_eca88:
+music_label
 	note_type 12, 11, 7
 	note D#, 4
 	rest 2
@@ -463,7 +466,8 @@
 	note D_, 4
 	sound_jump Music_KantoTrainerBattle_branch_eca88
 
-	music_label Music_KantoTrainerBattle_Ch2
+Music_KantoTrainerBattle_Ch2:
+music_label
 	transpose 1, 11
 	vibrato 6, 3, 6
 	duty_cycle 1
@@ -482,7 +486,8 @@
 	note F#, 1
 	duty_cycle 3
 	volume_envelope 6, 2
-	music_label Music_KantoTrainerBattle_branch_ecc04
+Music_KantoTrainerBattle_branch_ecc04:
+music_label
 	octave 3
 	note G_, 1
 	note G#, 1
@@ -539,7 +544,8 @@
 	octave 3
 	note D_, 1
 	note F_, 1
-	music_label Music_KantoTrainerBattle_branch_ecc41
+Music_KantoTrainerBattle_branch_ecc41:
+music_label
 	note_type 12, 13, 7
 	octave 2
 	note C_, 1
@@ -915,7 +921,8 @@
 	note B_, 4
 	sound_jump Music_KantoTrainerBattle_branch_ecc41
 
-	music_label Music_KantoTrainerBattle_Ch3
+Music_KantoTrainerBattle_Ch3:
+music_label
 	transpose 1, 11
 	vibrato 18, 2, 3
 	note_type 12, 1, 5
@@ -1046,7 +1053,8 @@
 	note G_, 2
 	note A#, 2
 	note B_, 2
-	music_label Music_KantoTrainerBattle_branch_ece5a
+Music_KantoTrainerBattle_branch_ece5a:
+music_label
 	note_type 12, 1, 4
 	octave 6
 	note C_, 4
