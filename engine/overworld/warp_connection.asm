@@ -11,8 +11,9 @@ HandleContinueMap:
 	ld hl, wPaletteSwapAddress
 	ld [hli], a
 	ld [hli], a
-	assert wPaletteSwapAddress + 2 == wPaletteSwapFlag
+	assert wPaletteSwapAddress + 2 == wPaletteSwapStates
 	ld [hl], a
+	ld [wPaletteSwapInits], a
 	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback
 	call GetMapTimeOfDay

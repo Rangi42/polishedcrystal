@@ -152,7 +152,7 @@ InitializeSwappedPalette::
 	jr .palette_loop
 
 .get_palette_mask
-; Return a one-hot mask for BG palette ID `b`, preserving `bc`.
+; Return `a` = 1 << `b` given BG palette ID `b`, preserving `bc`.
 	push bc
 	ld a, $80
 	inc b

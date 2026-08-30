@@ -63,10 +63,6 @@ DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
 DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
 
-; wPaletteSwapFlag uses one nibble each for current and initialized states.
-DEF NUM_PALETTE_SWAP_STATES EQU 4
-DEF PALETTE_SWAP_STATE_MASK EQU (1 << NUM_PALETTE_SWAP_STATES) - 1
-
 ; Temporary flags used while processing one palette swap entry.
 DEF PALETTE_SWAP_INSIDE_F  EQU 0
 DEF PALETTE_SWAP_CHANGED_F EQU 7

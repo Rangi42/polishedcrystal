@@ -1088,7 +1088,7 @@ wTimeOfDayPal:: db
 wFollowInSync:: db
 
 wPaletteSwapAddress:: dw
-wPaletteSwapFlag:: db ; low nibble: current states; high nibble: initialized
+wPaletteSwapStates:: db
 
 wTimeOfDayPalFlags:: db
 wTimeOfDayPalset:: db
@@ -1183,7 +1183,7 @@ wTradeFlags:: flag_array PARTY_LENGTH
 
 wMooMooBerries:: db
 
-	ds 1 ; unused
+wPaletteSwapInits:: db
 
 wFarfetchdPosition:: db
 

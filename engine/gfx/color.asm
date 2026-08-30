@@ -1059,20 +1059,25 @@ SwapColorPalette::
 	add hl, de
 
 	; Previous-state palettes become active; current-state palettes are the target.
-	push hl
-	ld hl, wBGPals2
+	; d = [wPalState] == PREV_PALSTATE ? LOW(wBGPals2) : LOW(wBGPals1)
 	ld a, [wPalState]
 	assert PREV_PALSTATE == 0
 	and a
+	ld d, LOW(wBGPals2)
 	jr z, .got_target
-	ld hl, wBGPals1
+	ld d, LOW(wBGPals1)
 .got_target
+	; Set `de` to the `b`th palette of `wBGPals1` or `wBGPals2`.
 	ld a, b
-	ld bc, 1 palettes
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	pop hl
+	add a
+	add a
+	add a
+	add d ; LOW(wBGPals1) or LOW(wBGPals2)
+	ld e, a
+	assert HIGH(wBGPals1) == HIGH(wBGPals2)
+	adc HIGH(wBGPals1)
+	sub e
+	ld d, a
 
 	; Skip past the regular palettes to the overcast ones if applicable.
 	ld a, PALSTATE_OVERCAST_INDEX
@@ -1088,20 +1093,16 @@ SwapColorPalette::
 	jmp FarCopyColorWRAM
 
 UpdatePaletteSwapState::
-; wPaletteSwapFlag's low nibble stores the current state of each entry;
-; its high nibble records which entries have been initialized.
+; wPaletteSwapStates stores the current state of each entry.
+; wPaletteSwapInits records which entries have been initialized.
 ; Input: `c` PALETTE_SWAP_INSIDE_F set inside the rectangle,
 ;        `e` = this entry's state bit.
 ; Output: `c` PALETTE_SWAP_CHANGED_F set on first check or a state change.
-	ld a, [wPaletteSwapFlag]
-	ld b, a
-	; Mark this entry initialized, and build its new state in `a`.
-	ld a, e
-	swap a
-	or b
+	ld a, [wPaletteSwapStates]
+	ld d, a
+	; Build this entry's new state in `a`.
 	bit PALETTE_SWAP_INSIDE_F, c
 	jr nz, .inside
-	ld d, a
 	ld a, e
 	cpl
 	and d
@@ -1109,12 +1110,19 @@ UpdatePaletteSwapState::
 .inside
 	or e
 
-	; Store only if the initialized or current state changed.
+	; Store only on first check or if the current state changed.
 .compare
-	xor b
-	ret z
-	xor b
-	ld [wPaletteSwapFlag], a
+	cp d
+	jr nz, .changed
+	ld a, [wPaletteSwapInits]
+	and e
+	ret nz
+	ld a, d
+.changed
+	ld [wPaletteSwapStates], a
+	ld a, [wPaletteSwapInits]
+	or e
+	ld [wPaletteSwapInits], a
 	set PALETTE_SWAP_CHANGED_F, c
 	ret
 
