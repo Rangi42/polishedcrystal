@@ -1334,8 +1334,15 @@ wOvercastRandomMaps::
 wNeededMonPalLight:: db ; for SPRITE_MON_ICON two-nybble palettes, stores the light color palette index
 wNeededPalType:: db ; 0 = normal palette, non-zero = mon two-nybble palette
 wLoadedObjPalType:: db ; bitmask: bit N set = slot N is a mon palette, clear = normal palette
+wLoadedObjPalGlows:: ds 8 ; OBJ_GLOW_* for each loaded palette slot
+wLoadedObjPalPrevGlows:: ds 8 ; previous OBJ_GLOW_* for each loaded palette slot
+wNeededObjPalGlow:: db
+wPrevNeededObjPalGlow:: db
+wObjectGlowTypes:: ds NUM_OBJECT_STRUCTS ; OBJ_GLOW_* for each object struct
+wObjectPrevGlowTypes:: ds NUM_OBJECT_STRUCTS ; bit 7 set while fading from this OBJ_GLOW_*
+wObjectGlowFadeActive:: db
 
-	ds 47 ; unused
+	ds 2 ; unused
 
 wCandyAmounts::
 	table_width 1

@@ -174,6 +174,7 @@ HandleMapTimeAndJoypad:
 HandleMapObjects:
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
+	farcall UpdateObjectGlowPals
 	ld hl, wPlayerStepFlags
 	bit PLAYERSTEP_STOP_F, [hl]
 	ret z
