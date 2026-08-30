@@ -2706,6 +2706,23 @@ LostBattle:
 	scf
 	ret
 
+PrintWinLossText:
+	ld a, [wBattleResult]
+	and $f
+	ld hl, wWinTextPointer
+	jr z, .got_pointer
+	assert wWinTextPointer + 2 == wLossTextPointer
+	inc hl
+	inc hl
+.got_pointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wMapScriptsBank]
+	call FarPrintText
+	call ApplyTilemapInVBlank
+	jmp WaitPressAorB_BlinkCursor
+
 EnemyMonFaintedAnimation:
 	hlcoord 12, 5
 	decoord 12, 6
