@@ -96,6 +96,30 @@ CopySpritePalToOBPal7:
 	ld de, wOBPals1 palette 7
 	; fallthrough
 CopySpritePalHandler::
+	; Non-object users of this routine always request an unmodified palette.
+	xor a
+	ld [wNeededObjPalGlow], a
+	ld [wPrevNeededObjPalGlow], a
+	push hl
+	push bc
+	ld a, e
+	sub LOW(wOBPals1)
+	rrca
+	rrca
+	rrca
+	and %00011111
+	ld c, a
+	ld b, 0
+	ld hl, wLoadedObjPalGlows
+	add hl, bc
+	ld [hl], OBJ_GLOW_NONE
+	ld hl, wLoadedObjPalPrevGlows
+	add hl, bc
+	ld [hl], OBJ_GLOW_NONE
+	pop bc
+	pop hl
+	; fallthrough
+CopyObjectSpritePalHandler::
 	; check if we are fading palettes
 	ldh a, [rWBK]
 	push af
@@ -254,6 +278,8 @@ endr
 	; a = light color OW palette index (0–15, raw PAL_OW_* value for LookupOBPalette / CopyMonIconLightColor)
 	call nz, CopyMonIconLightColor
 
+	call ApplyObjectGlowToPalette
+
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
@@ -305,6 +331,10 @@ LookupOBPalette:
 ; Output: hl = pointer to palette data
 ; Clobbers: a, bc
 	ld c, a
+	; Campfire-lit objects use their daytime palette for this fade endpoint.
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_CAMPFIRE
+	jr z, .not_overcast
 	; skip darkness/overcast if USE_DAYTIME_PAL_F
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
@@ -351,6 +381,10 @@ LookupOBPalette:
 	ld bc, 1 palettes
 	rst AddNTimes
 .check_daytimes
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_CAMPFIRE
+	ld a, DAY
+	jr z, .daytime
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
 	ld a, DAY
@@ -433,6 +467,118 @@ CalculateStates:
 	ld a, [wTimeOfDayPal]
 	ld [hl], a
 	pop hl
+	ret
+
+GetNeededObjPalGlow:
+; Return the glow associated with the palette endpoint being constructed.
+	ld a, [wPalState]
+	and a
+	ld a, [wPrevNeededObjPalGlow]
+	ret z
+	ld a, [wNeededObjPalGlow]
+	ret
+
+ApplyObjectGlowToPalette:
+; Add cool aquarium light to one dynamically loaded object palette. Campfire
+; glow is handled by selecting the daytime source palette in LookupOBPalette.
+	push hl
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_AQUARIUM
+	jr nz, .done
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rWBK], a
+
+rept PAL_COLORS - 1 ; leave black color 3 unchanged
+	call .apply_to_color
+endr
+
+	pop af
+	ldh [rWBK], a
+
+.done
+	pop hl
+	ret
+
+.apply_to_color
+; Input: hl = pointer to current little-endian CGB color.
+; Output: hl = pointer to next CGB color, after adjusting the current one.
+
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+
+	ld a, e
+	and COLOR_RED
+	add 2
+	cp COLOR_CH_MAX + 1
+	jr c, .red_ok
+	ld a, COLOR_CH_MAX
+.red_ok
+	ld b, a
+
+	ld a, e
+rept 8 - B_COLOR_GREEN
+	rlca
+endr
+	and (1 << (8 - B_COLOR_GREEN)) - 1
+	ld c, a
+	ld a, d
+	and COLOR_GREEN_HIGH
+rept COLOR_CH_WIDTH - 2
+	add a
+endr
+	or c
+	add 5
+	cp COLOR_CH_MAX + 1
+	jr c, .green_ok
+	ld a, COLOR_CH_MAX
+.green_ok
+	ld c, a
+
+	ld a, d
+rept B_COLOR_BLUE - 8
+	rrca
+endr
+	and COLOR_CH_MAX
+	add 9
+	cp COLOR_CH_MAX + 1
+	jr c, .blue_ok
+	ld a, COLOR_CH_MAX
+.blue_ok
+rept B_COLOR_BLUE - 8
+	add a
+endr
+	and COLOR_BLUE
+	ld d, a
+
+	ld a, c
+	and (1 << (COLOR_CH_WIDTH - 2)) - 1
+rept 8 - B_COLOR_GREEN
+	rrca
+endr
+	and COLOR_GREEN_LOW
+	ld e, a
+	ld a, c
+rept COLOR_CH_WIDTH - 2
+	rrca
+endr
+	and COLOR_GREEN_HIGH
+	or d
+	ld d, a
+	ld a, b
+	or e
+	ld e, a
+
+	dec hl
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hli], a
+	inc hl
 	ret
 
 CopyWhitePal:
