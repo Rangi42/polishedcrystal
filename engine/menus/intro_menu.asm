@@ -402,7 +402,7 @@ ConfirmContinue:
 	ret
 
 WarnVBA:
-	call CheckVBA
+	farcall CheckVBA
 	ret z
 if !DEF(DEBUG)
 	ld hl, .WarnVBAText
