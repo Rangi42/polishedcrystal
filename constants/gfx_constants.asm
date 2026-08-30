@@ -63,11 +63,11 @@ DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
 DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
 
-; Dynamic overworld object palette glow types.
+; Dynamic overworld object palette glow types (see data/collision/glow_adjustments.asm)
 	const_def
 	const OBJ_GLOW_NONE
-	const OBJ_GLOW_CAMPFIRE
 	const OBJ_GLOW_AQUARIUM
+	const OBJ_GLOW_CAMPFIRE ; must be last, since it has no glow adjustments but uses daytime palettes
 DEF NUM_OBJ_GLOW_TYPES EQU const_value
 DEF OBJ_GLOW_TRANSITION_F EQU 7
 DEF OBJ_GLOW_TRANSITION   EQU 1 << OBJ_GLOW_TRANSITION_F

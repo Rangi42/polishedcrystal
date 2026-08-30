@@ -481,25 +481,48 @@ GetNeededObjPalGlow:
 ApplyObjectGlowToPalette:
 ; Add cool aquarium light to one dynamically loaded object palette. Campfire
 ; glow is handled by selecting the daytime source palette in LookupOBPalette.
-	push hl
 	call GetNeededObjPalGlow
-	cp OBJ_GLOW_AQUARIUM
-	jr nz, .done
+	and a ; OBJ_GLOW_NONE?
+	ret z
+	cp OBJ_GLOW_CAMPFIRE ; does not use PaletteGlowAdjustments
+	ret z
+
+	ld d, a
 
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rWBK], a
 
+	push hl
+	dec d
+	ld a, d
+	add d
+	add d
+	add LOW(PaletteGlowAdjustments)
+	ld l, a
+	adc HIGH(PaletteGlowAdjustments)
+	sub l
+	ld h, a
+	ld de, wPalGlowAdjustments
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	pop hl
+
+	push hl
 rept PAL_COLORS - 1 ; leave black color 3 unchanged
 	call .apply_to_color
 endr
+	pop hl
 
 	pop af
 	ldh [rWBK], a
-
-.done
-	pop hl
 	ret
 
 .apply_to_color
@@ -513,7 +536,9 @@ endr
 
 	ld a, e
 	and COLOR_RED
-	add 2
+	ld b, a
+	ld a, [wPalGlowRedAdjustment]
+	add b
 	cp COLOR_CH_MAX + 1
 	jr c, .red_ok
 	ld a, COLOR_CH_MAX
@@ -532,7 +557,9 @@ rept COLOR_CH_WIDTH - 2
 	add a
 endr
 	or c
-	add 5
+	ld c, a
+	ld a, [wPalGlowGreenAdjustment]
+	add c
 	cp COLOR_CH_MAX + 1
 	jr c, .green_ok
 	ld a, COLOR_CH_MAX
@@ -544,7 +571,9 @@ rept B_COLOR_BLUE - 8
 	rrca
 endr
 	and COLOR_CH_MAX
-	add 9
+	ld d, a
+	ld a, [wPalGlowBlueAdjustment]
+	add d
 	cp COLOR_CH_MAX + 1
 	jr c, .blue_ok
 	ld a, COLOR_CH_MAX
@@ -634,3 +663,5 @@ OvercastOBPalette:
 	table_width 1 palettes
 INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES
+
+INCLUDE "data/collision/glow_adjustments.asm"

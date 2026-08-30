@@ -1919,7 +1919,12 @@ wPalFadeDelay:: db
 wPalFadeTotalSteps:: db
 wPalFadeStepValue:: db
 
-	ds 97 ; unused
+wPalGlowAdjustments::
+wPalGlowRedAdjustment:: db
+wPalGlowGreenAdjustment:: db
+wPalGlowBlueAdjustment:: db
+
+	ds 94 ; unused
 
 	align 8
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
