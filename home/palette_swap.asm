@@ -36,7 +36,7 @@ InitializeSwappedPalette::
 	ld a, CURR_PALSTATE
 	ld [wPalState], a
 	farcall CalculateStates
-	ld de, PALETTE_SWAP_INSIDE ; d: changed BG palettes, e: entry state bit
+	lb de, 0, PALETTE_SWAP_INSIDE ; d: changed BG palettes, e: entry state bit
 
 .state_loop
 	; First update every entry's state and collect its destination palette.
@@ -59,7 +59,7 @@ InitializeSwappedPalette::
 	ld b, a
 	bit PALETTE_SWAP_CHANGED_F, c
 	jr z, .state_updated
-	call .get_palette_mask
+	call GetPaletteMask
 	or d
 	ld d, a
 
@@ -96,7 +96,7 @@ InitializeSwappedPalette::
 	ld a, d
 	and a
 	jr z, .got_changed_state
-	call .get_palette_mask
+	call GetPaletteMask
 	and d
 	jr z, .got_changed_state
 	set PALETTE_SWAP_CHANGED_F, c
@@ -151,7 +151,14 @@ InitializeSwappedPalette::
 	call SwitchToMapScriptsBank
 	jr .palette_loop
 
-.get_palette_mask
+.done
+	; Return carry when there were some `paletteswap` rectangles.
+	pop af
+	rst Bankswitch
+	scf
+	ret
+
+GetPaletteMask:
 ; Return `a` = 1 << `b` given BG palette ID `b`, preserving `bc`.
 	push bc
 	ld a, $80
@@ -161,13 +168,6 @@ InitializeSwappedPalette::
 	dec b
 	jr nz, .mask_loop
 	pop bc
-	ret
-
-.done
-	; Return carry when there were some `paletteswap` rectangles.
-	pop af
-	rst Bankswitch
-	scf
 	ret
 
 CheckPaletteSwapRectangle:

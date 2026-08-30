@@ -199,7 +199,8 @@ CopySpritePal::
 	and a
 	ld hl, wBGPals2
 	jr z, .got_copy_bg_source
-	ld hl, wBGPals1
+	assert HIGH(wBGPals2) == HIGH(wBGPals1)
+	ld l, LOW(wBGPals1)
 .got_copy_bg_source
 	pop af
 	ld bc, 1 palettes

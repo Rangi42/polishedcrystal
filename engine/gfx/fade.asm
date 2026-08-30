@@ -28,6 +28,8 @@ OWFadePalettesInit::
 	ret
 
 CheckPaletteFading::
+	; This runs every frame on palette-swap maps; switching banks directly is
+	; much faster than GetFarWRAMByte's stack-call setup.
 	push bc
 	ldh a, [rWBK]
 	push af
@@ -410,17 +412,19 @@ CatchUpObjPaletteFade::
 CatchUpBGPaletteFade::
 ; Input: a = BG palette index (0-7)
 	ld hl, wBGPals2
-	call CatchUpPaletteFade
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-	ret
+	; fallthrough
 
 CatchUpPaletteFade:
 	ld b, a
-	push bc
-	ld bc, 1 palettes
-	rst AddNTimes
-	pop bc
+	; hl += `a` palettes
+	add a
+	add a
+	add a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPalFadeDelayFrames)
@@ -463,12 +467,12 @@ CatchUpPaletteFade:
 .done
 	ld a, e
 	ld [wPalFadeStepValue], a
-	ld a, 1
-	ldh [hCGBPalUpdate], a
 
 .restore_bank
 	pop af
 	ldh [rWBK], a
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
 	ret
 
 FadeSinglePaletteStep:

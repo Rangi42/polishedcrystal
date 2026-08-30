@@ -225,8 +225,6 @@ MACRO stonetable
 	dw \3 ; script pointer
 ENDM
 
-DEF _NUM_PALETTE_SWAPS = 0
-
 MACRO paletteswap
 	db \1, \2 ; X range
 	db \3, \4 ; Y range

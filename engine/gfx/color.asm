@@ -1117,9 +1117,10 @@ UpdatePaletteSwapState::
 	ld a, [wPaletteSwapInits]
 	and e
 	ret nz
-	ld a, d
+	jr .finish
 .changed
 	ld [wPaletteSwapStates], a
+.finish
 	ld a, [wPaletteSwapInits]
 	or e
 	ld [wPaletteSwapInits], a
@@ -1134,12 +1135,18 @@ CatchUpPaletteSwapFade::
 	ld a, [wPalWhiteState]
 	and a
 	jr z, .swap_previous
-	ld hl, wBGPals2
+
+	; de = wBGPals2 palette b
 	ld a, b
-	ld bc, 1 palettes
-	rst AddNTimes
-	ld d, h
-	ld e, l
+	add a
+	add a
+	add a
+	add LOW(wBGPals2)
+	ld e, a
+	adc HIGH(wBGPals2)
+	sub e
+	ld d, a
+
 	farcall CopyWhitePal
 	jr .got_previous
 
@@ -1147,14 +1154,14 @@ CatchUpPaletteSwapFade::
 	xor a
 	assert PREV_PALSTATE == 0
 	ld [wPalState], a
+	push bc
 	call SwapColorPalette
+	pop bc
 
 .got_previous
 	pop de
-	pop bc
 	ld a, CURR_PALSTATE
 	ld [wPalState], a
-	push bc
 	call SwapColorPalette
 	pop bc
 	ld a, b
