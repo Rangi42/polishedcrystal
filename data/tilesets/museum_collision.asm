@@ -125,7 +125,7 @@
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 7c
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 7d
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7e
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7f
+	tilecoll AQUARIUM_GLOW, FLOOR, AQUARIUM_GLOW, FLOOR ; 7f
 	tilecoll WALL, WALL, WALL, WALL ; 80
 	tilecoll WALL, WALL, WALL, WALL ; 81
 	tilecoll AQUARIUM_GLOW, AQUARIUM_GLOW, FLOOR, FLOOR ; 82
@@ -142,7 +142,7 @@
 	tilecoll WALL, WALL, WALL, WALL ; 8d
 	tilecoll WALL, WALL, WALL, WALL ; 8e
 	tilecoll WALL, WALL, WALL, WALL ; 8f
-	tilecoll WALL, WALL, FLOOR, FLOOR ; 90
+	tilecoll WALL, WALL, AQUARIUM_GLOW, FLOOR ; 90
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 91
 	tilecoll WALL, WALL, WALL, FLOOR ; 92
 	tilecoll DOOR, WALL, FLOOR, FLOOR ; 93
@@ -150,13 +150,13 @@
 	tilecoll WALL, WALL, WALL, WALL ; 95
 	tilecoll WALL, WALL, WALL, WALL ; 96
 	tilecoll DOOR, WALL, FLOOR, FLOOR ; 97
-	tilecoll WALL, WALL, FLOOR, WALL ; 98
+	tilecoll WALL, WALL, AQUARIUM_GLOW, WALL ; 98
 	tilecoll WALL, WALL, WALL, WALL ; 99
-	tilecoll WALL, WALL, WALL, FLOOR ; 9a
+	tilecoll WALL, WALL, WALL, AQUARIUM_GLOW ; 9a
 	tilecoll FLOOR, AQUARIUM_GLOW, FLOOR, FLOOR ; 9b
-	tilecoll FLOOR, WALL, FLOOR, WALL ; 9c
+	tilecoll AQUARIUM_GLOW, WALL, AQUARIUM_GLOW, WALL ; 9c
 	tilecoll WALL, WALL, WALL, WALL ; 9d
-	tilecoll WALL, FLOOR, WALL, FLOOR ; 9e
+	tilecoll WALL, AQUARIUM_GLOW, WALL, AQUARIUM_GLOW ; 9e
 	tilecoll AQUARIUM_GLOW, FLOOR, FLOOR, FLOOR ; 9f
 	tilecoll WALL, WALL, WALL, WALL ; a0
 	tilecoll WALL, WALL, WALL, WALL ; a1
