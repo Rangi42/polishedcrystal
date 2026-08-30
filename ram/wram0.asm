@@ -114,7 +114,6 @@ wBGMapBufferEnd::
 wBGMapPalBuffer:: ds 48
 wBGMapPalBufferEnd::
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
-
 wTileAnimationTimer:: db
 
 

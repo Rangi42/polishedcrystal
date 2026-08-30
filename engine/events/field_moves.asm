@@ -477,17 +477,12 @@ FlyToAnim:
 	pop af
 	ld [wStateFlags], a
 
-	ld a, [wCurSpriteOAMAddr]
-	sub NUM_FLYTO_ANIM_OAMS * OBJ_SIZE
-	cpl
-	add LOW(wShadowOAMEnd) + 1
-	ld b, a
 	ld h, HIGH(wShadowOAM)
 	ld a, [wCurSpriteOAMAddr]
 	sub NUM_FLYTO_ANIM_OAMS * OBJ_SIZE
 	ld l, a
+	ld b, NUM_FLYTO_ANIM_OAMS
 	call HideSpritesInRange
-
 
 	ld hl, wShadowOAMSprite36TileID
 	xor a
