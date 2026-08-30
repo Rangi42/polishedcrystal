@@ -121,8 +121,13 @@ EnterMapConnection:
 
 EnterWestConnection:
 	ld a, [wWestConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wWestConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wXCoord]
 	ld [wLastMapXCoord], a
@@ -162,8 +167,13 @@ _FinishEastWestConnection:
 
 EnterEastConnection:
 	ld a, [wEastConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wEastConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wXCoord]
 	ld [wLastMapXCoord], a
@@ -186,8 +196,13 @@ EnterEastConnection:
 
 EnterNorthConnection:
 	ld a, [wNorthConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wNorthConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wYCoord]
 	ld [wLastMapYCoord], a
@@ -204,8 +219,13 @@ EnterNorthConnection:
 
 EnterSouthConnection:
 	ld a, [wSouthConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wSouthConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wYCoord]
 	ld [wLastMapYCoord], a
@@ -232,6 +252,43 @@ _FinishNorthSouthConnection:
 	ld [wOverworldMapAnchor + 1], a
 	scf
 	ret
+
+CheckMapConnectionPaletteFadeOverride:
+; Set SKIP_MAP_CONNECTION_PAL_FADE_F if the connection from the current map
+; to destination bc is listed in MapConnectionsWithoutPaletteFade.
+	ld hl, wPalFlags
+	res SKIP_MAP_CONNECTION_PAL_FADE_F, [hl]
+	ld a, [wMapGroup]
+	ld d, a
+	ld a, [wMapNumber]
+	ld e, a
+	ld hl, MapConnectionsWithoutPaletteFade
+.loop
+	ld a, [hli]
+	cp -1
+	ret z
+	cp d
+	jr nz, .skip_source_number_and_destination
+	ld a, [hli]
+	cp e
+	jr nz, .skip_destination
+	ld a, [hli]
+	cp b
+	jr nz, .skip_destination_number
+	ld a, [hli]
+	cp c
+	jr nz, .loop
+	ld hl, wPalFlags
+	set SKIP_MAP_CONNECTION_PAL_FADE_F, [hl]
+	ret
+
+.skip_source_number_and_destination
+	inc hl
+.skip_destination
+	inc hl
+.skip_destination_number
+	inc hl
+	jr .loop
 
 EnterMapWarp:
 	call .SaveDigWarp
@@ -502,3 +559,4 @@ GetMapScreenCoords::
 	ret
 
 INCLUDE "data/maps/dual_connections.asm"
+INCLUDE "data/maps/no_connection_palette_fades.asm"
