@@ -228,16 +228,17 @@ FadePalettesStep:
 	ld hl, wOBPals2
 .got_count
 	ld a, [wPalFadeMode]
-
 	and PALFADE_SKIP_FIRST
-	jr z, .inner_loop
+	jr z, FadePalettesStepLoop
+
 	ld bc, 1 palettes
 	add hl, bc
 	ld a, d
 	sub PAL_COLORS
 	ld d, a
+	; fallthrough
 
-.inner_loop
+FadePalettesStepLoop:
 	push de
 	ld a, [hli]
 	ld e, a
@@ -319,7 +320,7 @@ FadePalettesStep:
 	ld [hli], a
 	pop de
 	dec d
-	jr nz, .inner_loop
+	jr nz, FadePalettesStepLoop
 	ret
 
 FadeColorGetGreen:
@@ -456,7 +457,8 @@ CatchUpPaletteFade:
 	push hl
 	ld a, d
 	ld [wPalFadeStepValue], a
-	call FadeSinglePaletteStep
+	lb de, PAL_COLORS, 0
+	call FadePalettesStepLoop
 	pop hl
 	pop de
 	dec d
@@ -472,7 +474,3 @@ CatchUpPaletteFade:
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ret
-
-FadeSinglePaletteStep:
-	lb de, PAL_COLORS, 0
-	jp FadePalettesStep.inner_loop
