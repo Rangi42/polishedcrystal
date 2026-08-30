@@ -3514,9 +3514,32 @@ Pokedex_CopyTypeIconPals:
 	pop hl
 	ret
 
+FastPrintNum:
+; Prints 3 digits of 16bit number in hl with leading zeros + terminator.
+; Assumes hl is between 000-999.
+	ld bc, -100
+	ld a, '0' - 1
+.printloop1
+	inc a
+	add hl, bc
+	jr c, .printloop1
+	ld [de], a
+	inc de
+	ld bc, 10
+	ld a, '9' + 1
+.printloop2
+	dec a
+	add hl, bc
+	jr nc, .printloop2
+	ld [de], a
+	inc de
+	ld a, '0'
+	add l
+	ld [de], a
+	ret
+
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 INCLUDE "data/pokemon/dex_order_new.asm"
-
 
 NewPokedexEntry:
 	; Disable H-blank as invoked in battles.

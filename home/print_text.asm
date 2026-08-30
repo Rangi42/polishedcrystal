@@ -77,10 +77,6 @@ PrintNumFromReg::
 	homecall _PrintNumFromReg
 	ret
 
-FastPrintNum::
-	homecall _FastPrintNum
-	ret
-
 FarPrintText::
 	push de
 	ld d, a
