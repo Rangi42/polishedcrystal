@@ -93,6 +93,7 @@ ENDM
 MACRO music_header
 	_redef_current_label CURRENT_MUSIC_LABEL, ".music_header_\@", \#
 	_music_align
+{CURRENT_MUSIC_LABEL}_music_header:
 	DEF _compressing_music = 0
 	DEF _music_header_active = 1
 	DEF _music_channel_pending = 0
@@ -126,7 +127,7 @@ ENDM
 
 MACRO compressed_music_pointer
 	db TRUE
-	dba \1
+	dba \1_music_header
 ENDM
 
 MACRO channel_count
