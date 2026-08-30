@@ -7,9 +7,18 @@ MapConnOWFadePalettesInit::
 	inc a ; wram inits to 0, so don't use 0 as valid index here.
 	ld b, a
 	ld a, [wPrevOvercastIndex]
-	cp b
+	ld c, a
 	ld a, b
 	ld [wPrevOvercastIndex], a
+	ld hl, wPalFlags
+	bit SKIP_MAP_CONNECTION_PAL_FADE_F, [hl]
+	res SKIP_MAP_CONNECTION_PAL_FADE_F, [hl]
+	jr z, .check_overcast
+	call ClearOWFadePalettes
+	jmp UpdateTimePals
+.check_overcast
+	ld a, c
+	cp b
 	jmp z, UpdateTimePals
 	; fallthrough
 OWFadePalettesInit::
@@ -53,6 +62,10 @@ ApplyPalsIfNotFading::
 	ret
 
 CancelOWFadePalettes::
+	call ClearOWFadePalettes
+	farjp ApplyPals
+
+ClearOWFadePalettes:
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
@@ -63,11 +76,10 @@ CancelOWFadePalettes::
 	ld [wPalFadeTotalSteps], a
 	ld [wPalFadeStepValue], a
 	ld [wPalWhiteState], a
-	farcall ApplyPals
-	ld hl, wPalFlags
-	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
 	pop af
 	ldh [rWBK], a
+	ld hl, wPalFlags
+	res NO_DYN_PAL_APPLY_UNTIL_RESET_F, [hl]
 	ret
 
 OWFadePalettesStep::
