@@ -528,25 +528,20 @@ RefreshObjectGlowTypes:
 	add hl, de
 	ld a, [hl]
 .got_collision
+	push de
+	ld hl, GlowCollisions
+	ld d, a
+.lookup
+	ld a, [hli]
+	and a
+	jr z, .got_obj_glow
+	cp d
+	ld a, [hli]
+	jr z, .got_obj_glow
+	jr .lookup
+.got_obj_glow
+	pop de
 	pop hl
-
-	; TODO: make the COLL<->OBJ_GLOW correspondence more efficient
-	cp COLL_CAMPFIRE_GLOW
-	jr z, .campfire
-	cp COLL_AQUARIUM_GLOW
-	jr z, .aquarium
-	cp COLL_LANTERN_GLOW
-	ld a, OBJ_GLOW_LANTERN
-	jr z, .got_glow
-	xor a ; OBJ_GLOW_NONE
-	jr .got_glow
-.campfire
-	ld a, OBJ_GLOW_CAMPFIRE
-	jr .got_glow
-.aquarium
-	ld a, OBJ_GLOW_AQUARIUM
-.got_glow
-
 	ld [wPrevNeededObjPalGlow], a ; temporarily preserve the new glow
 	cp [hl]
 	jr z, .next
@@ -581,4 +576,5 @@ RefreshObjectGlowTypes:
 	and a
 	ret
 
+INCLUDE "data/collision/glow_collisions.asm"
 INCLUDE "data/maps/dual_obj_pals.asm"
