@@ -8,7 +8,7 @@ CollisionPermissionTable::
 	db LAND_TILE  ; COLL_LANTERN_GLOW
 	db LAND_TILE  ; COLL_LAVA_GLOW
 	db WALL_TILE  ; COLL_WALL
-	db LAND_TILE  ; 08
+	db LAND_TILE  ; COLL_SHRINE_LAMP_GLOW
 	db LAND_TILE  ; 09
 	db LAND_TILE  ; 0a
 	db LAND_TILE  ; 0b

@@ -9,6 +9,8 @@ DragonsDenB1F_MapScriptHeader:
 	def_warp_events
 	warp_event 20,  3, DRAGONS_DEN_1F, 3
 	warp_event 19, 29, DRAGON_SHRINE, 1
+	warp_event 19, 26, DRAGON_SHRINE, 3
+	warp_event 20, 26, DRAGON_SHRINE, 4
 
 	def_coord_events
 	coord_event 19, 30, SCENE_DRAGONSDENB1F_CLAIR_GIVES_TM, DragonsDenB1FClairTrigger
