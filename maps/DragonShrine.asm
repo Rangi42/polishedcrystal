@@ -16,8 +16,8 @@ DragonShrine_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  4, 12, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
+	object_event  4,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  5, 12, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
 	object_event  3,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, KimonoGirlMinaScript, -1
 	object_event  2,  8, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	object_event  7,  8, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -115,7 +115,7 @@ DragonShrineTestScript:
 	iftrue .Question2
 .WrongAnswer:
 	closetext
-	turnobject DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_ELDER1, RIGHT
 	showtext DragonShrineWrongAnswerText1
 	turnobject DRAGONSHRINE_ELDER1, DOWN
 	showtext DragonShrineWrongAnswerText2
@@ -143,21 +143,21 @@ DragonShrineTestScript:
 	turnobject PLAYER, DOWN
 	pause 30
 	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairWalkInMovement
-	turnobject DRAGONSHRINE_CLAIR, RIGHT
-	turnobject PLAYER, LEFT
-	turnobject DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_CLAIR, LEFT
+	turnobject PLAYER, RIGHT
+	turnobject DRAGONSHRINE_ELDER1, RIGHT
 	showtext DragonShrineClairYouPassedText
 	special Special_FadeOutMusic
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairBigStepLeftMovement
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairBigStepAwayMovement
 	showtext DragonShrineClairThatCantBeText
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairSlowStepLeftMovement
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairSlowStepAwayMovement
 	showtext DragonShrineClairYoureLyingText
 	applymovement DRAGONSHRINE_ELDER1, DragonShrineElderWalkToClairMovement
 	turnobject DRAGONSHRINE_CLAIR, UP
 	showtext DragonShrineMustIInformLanceText
 	showemote EMOTE_SHOCK, DRAGONSHRINE_CLAIR, 15
 	showtext DragonShrineIUnderstandText
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairTwoSlowStepsRightMovement
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairTwoSlowStepsCloserMovement
 	opentext
 	writetext DragonShrineHereRisingBadgeText
 	waitbutton
@@ -289,26 +289,25 @@ DragonShrinePlayerWalkInMovement:
 	slow_step_up
 	slow_step_up
 	slow_step_up
-	slow_step_right
 	slow_step_up
 	slow_step_up
 	slow_step_up
 	step_end
 
 DragonShrineElderWalkToClairMovement:
-	slow_step_left
-	slow_step_left
-	slow_step_left
+	slow_step_right
+	slow_step_right
+	slow_step_right
 	turn_head_down
 	step_end
 
 DragonShrineElderWalkAway1Movement:
-	slow_step_right
-	slow_step_right
+	slow_step_left
+	slow_step_left
 	step_end
 
 DragonShrineElderWalkAway2Movement:
-	slow_step_right
+	slow_step_left
 	turn_head_down
 	step_end
 
@@ -320,19 +319,19 @@ DragonShrineClairWalkInMovement:
 	slow_step_up
 	step_end
 
-DragonShrineClairBigStepLeftMovement:
+DragonShrineClairBigStepAwayMovement:
 	fix_facing
-	run_step_left
+	run_step_right
 	step_end
 
-DragonShrineClairSlowStepLeftMovement:
-	slow_step_left
+DragonShrineClairSlowStepAwayMovement:
+	slow_step_right
 	remove_fixed_facing
 	step_end
 
-DragonShrineClairTwoSlowStepsRightMovement:
-	slow_step_right
-	slow_step_right
+DragonShrineClairTwoSlowStepsCloserMovement:
+	slow_step_left
+	slow_step_left
 	step_end
 
 DragonShrineClairWalkOutMovement:
