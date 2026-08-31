@@ -395,7 +395,7 @@ LookupOBPalette:
 	ld a, NITE
 	jr .got_time
 .daytime
-	ld a, NITE
+	ld a, DAY
 	jr .got_time
 .get_time_state
 	ld a, PALSTATE_TIME_OF_DAY

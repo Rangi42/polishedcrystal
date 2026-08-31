@@ -404,7 +404,7 @@ PokeAnim_GetBitmaskIndex:
 PokeAnim_CopyBitmaskToBuffer:
 	ld a, [wPokeAnimFrontpicHeight] ; 5, 6, or 7
 	sub 7 ; -2 with carry, -1 with carry, or 0 without carry
-	sbc -7 ; 4, 5, or 7 (the desired pic size)
+	sbc -7 ; 4, 5, or 7 (the desired wPokeAnimBitmaskBuffer size)
 	ld c, a
 	ld b, 0
 	push bc
