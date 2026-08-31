@@ -402,7 +402,11 @@ PokeAnim_GetBitmaskIndex:
 	ret
 
 PokeAnim_CopyBitmaskToBuffer:
-	call .GetSize
+	ld a, [wPokeAnimFrontpicHeight] ; 5, 6, or 7
+	sub 7 ; -2 with carry, -1 with carry, or 0 without carry
+	sbc -7 ; 4, 5, or 7 (the desired pic size)
+	ld c, a
+	ld b, 0
 	push bc
 	ld hl, wPokeAnimBitmaskAddr
 	ld a, [hli]
@@ -414,21 +418,6 @@ PokeAnim_CopyBitmaskToBuffer:
 	ld de, wPokeAnimBitmaskBuffer
 	ld a, [wPokeAnimBitmaskBank]
 	jmp FarCopyBytes
-
-.GetSize:
-	push hl
-	ld a, [wPokeAnimFrontpicHeight]
-	sub 5 ; to get a number 0, 1, or 2
-	ld c, a
-	ld b, 0
-	ld hl, .Sizes
-	add hl, bc
-	ld c, [hl]
-	ld b, 0
-	pop hl
-	ret
-
-.Sizes: db 4, 5, 7
 
 PokeAnim_GetFrame:
 	call PokeAnim_PlaceGraphic
