@@ -18,16 +18,29 @@ DragonShrine_MapScriptHeader:
 	def_object_events
 	object_event  5,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	object_event  4, 12, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
+	object_event  3,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, KimonoGirlMinaScript, -1
 	object_event  2,  8, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	object_event  7,  8, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 
 	object_const_def
 	const DRAGONSHRINE_ELDER1
 	const DRAGONSHRINE_CLAIR
+	const DRAGONSHRINE_KIMONO_GIRL
 
 DragonShrineTakeTestScene:
+	callasm .CheckUsedBackDoor
+	iftruefwd .NoCutscene
 	sdefer DragonShrineTestScript
+.NoCutscene
 	end
+
+.CheckUsedBackDoor:
+	ld hl, wPrevWarp
+	ld a, [hl]
+	dec a
+	dec a ; warp 2? (all warps to here are from DragonsDenB1F)
+	ldh [hScriptVar], a ; 0/false if used main door (warp 2), nonzero/true if used back door
+	ret
 
 DragonShrineTestScript:
 	applymovement PLAYER, DragonShrinePlayerWalkInMovement
@@ -571,6 +584,91 @@ DragonShrineRisingBadgeExplanationText:
 	line "question."
 	done
 
-DragonShrineSpeechlessText: ; text > text
+DragonShrineSpeechlessText:
 	text "………………………………"
+	done
+
+KimonoGirlMinaScript:
+	checkevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
+	iftrue_jumptextfaceplayer .OutroText
+	faceplayer
+	checkevent EVENT_BEAT_KIMONO_GIRL_MINA
+	iftruefwd .Beaten
+	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_SAYO
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_ZUKI
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_KUNI
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
+	iffalse_jumptext .IntroText
+	showtext .SeenText
+	winlosstext .BeatenText, 0
+	setlasttalked DRAGONSHRINE_KIMONO_GIRL
+	loadtrainerwithpal KIMONO_GIRL, MINA, TRAINERPAL_MINA
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_KIMONO_GIRL_MINA
+.Beaten:
+	opentext
+	writetext .AfterText
+	promptbutton
+	verbosegiveitem ABILITYPATCH
+	iffalse_jumpopenedtext .BagFullText
+	setevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
+	jumpthisopenedtext
+
+.OutroText:
+	text "Coming here from"
+	line "Ecruteak City"
+
+	para "was worth the"
+	line "trouble."
+
+	para "Dragon's Den is an"
+	line "ideal place for me"
+	cont "to train."
+	done
+
+.BagFullText:
+	text "…That is, once you"
+	line "have freed up some"
+	cont "space in your Bag."
+	done
+
+.IntroText:
+	text "I am a Kimono"
+	line "Girl."
+
+	para "Haven't you met my"
+	line "five dancing cou-"
+	cont "sins in Ecruteak?"
+
+	para "Let me know if"
+	line "you do."
+	done
+
+.SeenText:
+	text "She who knows the"
+	line "most speaks the"
+	cont "least!"
+
+	para "Allow me to cha-"
+	line "llenge you and"
+	cont "your #mon!"
+	done
+
+.BeatenText:
+	text "Oh, you are"
+	line "wonderful…"
+	done
+
+.AfterText:
+	text "You are quite the"
+	line "Trainer."
+
+	para "You are worthy of"
+	line "this item!"
 	done
