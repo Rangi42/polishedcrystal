@@ -184,6 +184,7 @@ TilesetUndergroundAnim::
 
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
+TilesetVolcanoAnim::
 	tileframe FlickeringCaveEntrancePalette
 	tileframe AnimateCaveWaterTile,           $0:25
 	tileframe FlickeringCaveEntrancePalette

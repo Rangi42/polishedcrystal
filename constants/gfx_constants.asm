@@ -69,6 +69,7 @@ DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
 	const OBJ_GLOW_AQUARIUM
 	const OBJ_GLOW_LANTERN
 	const OBJ_GLOW_DRAGON_SHRINE
+	const OBJ_GLOW_LAVA
 DEF NUM_OBJ_GLOW_TYPES EQU const_value - 1
 	; subsequent glow types have no adjustments, since they use time-of-day palettes
 	const OBJ_GLOW_DAY

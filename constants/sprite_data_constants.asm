@@ -76,21 +76,22 @@ DEF NUM_OW_TIME_OF_DAY_PALS EQU const_value
 	ow_npc_pal_const POKECOM_SIGN      ; 2b
 	ow_npc_pal_const RANGI             ; 2c
 	ow_npc_pal_const EMI               ; 2d
-	ow_npc_pal_const DRILL             ; 2e
-	ow_npc_pal_const PEARL             ; 2f
-	ow_npc_pal_const CAMPFIRE          ; 30
-	ow_npc_pal_const TINY_WINDOW       ; 31
+	ow_npc_pal_const MOLTRES           ; 2e
+	ow_npc_pal_const DRILL             ; 2f
+	ow_npc_pal_const PEARL             ; 30
+	ow_npc_pal_const CAMPFIRE          ; 31
+	ow_npc_pal_const TINY_WINDOW       ; 32
 DEF NUM_OW_INDIVIDUAL_PALS EQU const_value - NUM_OW_TIME_OF_DAY_PALS
 DEF FIRST_COPY_BG_PAL EQU const_value
-	ow_npc_pal_const COPY_BG_GRAY      ; 32
-	ow_npc_pal_const COPY_BG_RED       ; 33
-	ow_npc_pal_const COPY_BG_GREEN     ; 34
-	ow_npc_pal_const COPY_BG_WATER     ; 35
-	ow_npc_pal_const COPY_BG_YELLOW    ; 36
-	ow_npc_pal_const COPY_BG_BROWN     ; 37
-	ow_npc_pal_const COPY_BG_ROOF      ; 38
-	ow_npc_pal_const COPY_BG_TEXT      ; 39
-	ow_npc_pal_const COPY_BG_WHITE     ; 3a
+	ow_npc_pal_const COPY_BG_GRAY      ; 33
+	ow_npc_pal_const COPY_BG_RED       ; 34
+	ow_npc_pal_const COPY_BG_GREEN     ; 35
+	ow_npc_pal_const COPY_BG_WATER     ; 36
+	ow_npc_pal_const COPY_BG_YELLOW    ; 37
+	ow_npc_pal_const COPY_BG_BROWN     ; 38
+	ow_npc_pal_const COPY_BG_ROOF      ; 39
+	ow_npc_pal_const COPY_BG_TEXT      ; 3a
+	ow_npc_pal_const COPY_BG_WHITE     ; 3b
 DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value
 

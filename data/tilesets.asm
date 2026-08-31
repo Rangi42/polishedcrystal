@@ -50,6 +50,7 @@ Tilesets::
 	tileset TilesetUnderground
 	tileset TilesetCave
 	tileset TilesetQuietCave
+	tileset TilesetVolcano
 	tileset TilesetIcePath
 	tileset TilesetTunnel
 	tileset TilesetForest
@@ -679,12 +680,14 @@ TilesetUndergroundColl:: INCBIN "data/tilesets/underground_collision.bin.lzp"
 
 SECTION "Tileset Graphics - cave vram0", ROMX
 
-TilesetCaveGFX0:: INCBIN "gfx/tilesets/cave.2bpp.vram0.lzp"
+TilesetCaveGFX0::
+TilesetVolcanoGFX0:: INCBIN "gfx/tilesets/cave.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - cave vram1", ROMX
 
-TilesetCaveGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lzp"
+TilesetCaveGFX1::
+TilesetVolcanoGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - cave", ROMX
@@ -709,6 +712,13 @@ SECTION "Tileset Data - quiet cave", ROMX
 TilesetQuietCaveMeta:: INCBIN "data/tilesets/quiet_cave_metatiles.bin.lzp"
 TilesetQuietCaveAttr:: INCBIN "data/tilesets/quiet_cave_attributes.bin.lzp"
 TilesetQuietCaveColl:: INCBIN "data/tilesets/quiet_cave_collision.bin.lzp"
+
+
+SECTION "Tileset Data - volcano", ROMX
+
+TilesetVolcanoMeta:: INCBIN "data/tilesets/volcano_metatiles.bin.lzp"
+TilesetVolcanoAttr:: INCBIN "data/tilesets/volcano_attributes.bin.lzp"
+TilesetVolcanoColl:: INCBIN "data/tilesets/volcano_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - ice path vram0", ROMX
@@ -966,6 +976,7 @@ TilesetLighthouseGFX2::
 TilesetUndergroundGFX2::
 TilesetCaveGFX2::
 TilesetQuietCaveGFX2::
+TilesetVolcanoGFX2::
 TilesetIcePathGFX2::
 TilesetTunnelGFX2::
 TilesetForestGFX2::

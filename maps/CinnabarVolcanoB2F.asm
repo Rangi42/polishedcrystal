@@ -14,10 +14,10 @@ CinnabarVolcanoB2F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 18, 22, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MOLTRES, -1, PAL_MON_RED, OBJECTTYPE_SCRIPT, PLAIN_FORM, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
+	object_event 18, 22, SPRITE_AQUARIUM_MON, SPRITEMOVEDATA_POKEMON, 0, MOLTRES, -1, PAL_NPC_MOLTRES, OBJECTTYPE_SCRIPT, PLAIN_FORM, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
 	object_event 12, 24, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
 	smashrock_event 21, 19
-	itemball_event 18,  3, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
+	itemball_event 19,  4, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
 
 	object_const_def
 	const CINNABARVOLCANOB2F_MOLTRES
@@ -26,7 +26,7 @@ CinnabarVolcanoB2F_MapScriptHeader:
 CinnabarVolcanoB2FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
 	iffalsefwd .skip1
-	changeblock 6, 6, $5f
+	changeblock 6, 6, $2f
 .skip1
 	endcallback
 
