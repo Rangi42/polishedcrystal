@@ -634,23 +634,7 @@ ApplyHarshSunSaturationToPalette::
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	push bc
-	call ApplyHarshSunSaturationToColor
-	pop bc
-	dec hl
-	ld a, d
-	ld [hld], a
-	ld a, e
-	ld [hli], a
-	inc hl
-	dec b
-	jr nz, .color_loop
-	ret
 
-ApplyHarshSunSaturationToColor:
-; input: de = little-endian CGB color
-; output: de = harsh-sun-saturated CGB color
-; clobbers: a, c
 	; red = e & COLOR_RED
 	ld a, e
 	and COLOR_RED
@@ -733,29 +717,37 @@ endr
 	and COLOR_GREEN_HIGH
 	or d
 	ld d, a
+
+	dec hl
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hli], a
+	inc hl
+	dec b
+	jr nz, .color_loop
 	ret
 
 MaybeApplyHarshSunSaturationToPal:
 ; input: hl = palette data in wOBPals1 (1 palettes)
-	push af
-	push bc
-	push de
-	push hl
-
 	; Some UI sprites (e.g. the Fly map icon) force a stable daytime palette.
 	; Don't layer harsh-sun saturation on top of that override.
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
-	jp nz, .done
+	ret nz
 
 	ld a, PALSTATE_WEATHER
 	call GetPalState
 	cp OW_WEATHER_HARSH_SUN
-	jp nz, .done
+	ret nz
 	ld a, PALSTATE_WEATHER_ARG
 	call GetPalState
 	and a
-	jp z, .done
+	ret z
+
+	push bc
+	push de
+	push hl
 
 	ldh a, [rWBK]
 	push af
@@ -768,11 +760,9 @@ MaybeApplyHarshSunSaturationToPal:
 	pop af
 	ldh [rWBK], a
 
-.done
 	pop hl
 	pop de
 	pop bc
-	pop af
 	ret
 
 CopyWhitePal:
