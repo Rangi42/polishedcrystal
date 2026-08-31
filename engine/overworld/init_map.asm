@@ -50,6 +50,16 @@ LoadFonts_NoOAMUpdate::
 	push af
 	ld a, $1
 	ldh [hOAMUpdate], a
+	ldh a, [hBGMapMode]
+	push af
+	ldh a, [hMapAnims]
+	push af
+	ldh a, [rVBK]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
+	ldh [rVBK], a
 
 	call LoadFrame
 	ld a, $90
@@ -57,6 +67,12 @@ LoadFonts_NoOAMUpdate::
 	call SafeUpdateSprites
 	call LoadStandardFont
 
+	pop af
+	ldh [rVBK], a
+	pop af
+	ldh [hMapAnims], a
+	pop af
+	ldh [hBGMapMode], a
 	pop af
 	ldh [hOAMUpdate], a
 	ret

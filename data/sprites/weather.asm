@@ -11,4 +11,4 @@ WeatherGraphics:
 	weather_gfx RainGFX, 2
 	weather_gfx SandGFX, 1
 	weather_gfx CherryBlossomGFX, 1
-	assert_table_length NUM_OW_WEATHERS
+	assert_table_length NUM_OW_WEATHER_GFX

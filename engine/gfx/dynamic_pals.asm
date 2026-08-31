@@ -28,6 +28,127 @@ ClearSavedObjPals::
 	ldh [rWBK], a
 	ret
 
+RefreshLoadedObjPals::
+; Rebuild the palettes already assigned to OBJ slots after a palette-state
+; change, without clearing the assignments and rescanning every object.
+	push af
+	push bc
+	push de
+	push hl
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wLoadedObjPal0)
+	ldh [rWBK], a
+
+	ld hl, wLoadedObjPal0
+	xor a
+	ld c, a ; palette slot index
+.loop
+	; Ignore cached slots that no active object currently uses.
+	ld a, [wUsedObjectPals]
+	ld b, c
+	inc b
+.used_shift
+	dec b
+	jr z, .used_shifted
+	rrca
+	jr .used_shift
+.used_shifted
+	and 1
+	jr z, .next
+
+	ld a, [hl]
+	cp NO_PAL_LOADED
+	jr z, .next
+	push af
+	xor a
+	ld [wNeededPalType], a
+	assert NO_PAL_LOADED == -1
+	dec a
+	ld [wNeededMonPalLight], a
+
+	; Restore this slot's normal/mon palette type.
+	ld a, [wLoadedObjPalType]
+	ld b, c
+	inc b
+.type_shift
+	dec b
+	jr z, .type_shifted
+	rrca
+	jr .type_shift
+.type_shifted
+	and 1
+	ld [wNeededPalType], a
+	jr z, .normal_palette
+	pop af
+	ld b, a
+	and $f
+	ld [wNeededPalIndex], a
+	ld a, b
+	swap a
+	and $f
+	ld b, a
+	ld a, [wNeededPalIndex]
+	cp b
+	jr z, .got_palette
+	ld a, b
+	ld [wNeededMonPalLight], a
+	jr .got_palette
+
+.normal_palette
+	pop af
+	ld [wNeededPalIndex], a
+
+.got_palette
+	push hl
+	ld a, c
+	add LOW(wLoadedObjPalGlows)
+	ld l, a
+	adc HIGH(wLoadedObjPalGlows)
+	sub l
+	ld h, a
+	ld a, [hl]
+	ld [wNeededObjPalGlow], a
+	ld a, c
+	add LOW(wLoadedObjPalPrevGlows)
+	ld l, a
+	adc HIGH(wLoadedObjPalPrevGlows)
+	sub l
+	ld h, a
+	ld a, [hl]
+	ld [wPrevNeededObjPalGlow], a
+
+	; de = wOBPals1 palette c
+	ld a, c
+	add a
+	add a
+	add a
+	add LOW(wOBPals1)
+	ld e, a
+	adc HIGH(wOBPals1)
+	sub e
+	ld d, a
+	pop hl
+	push bc
+	call CopyObjectSpritePalHandler
+	pop bc
+
+.next
+	inc hl
+	inc c
+	ld a, c
+	cp 8
+	jr nz, .loop
+
+	pop af
+	ldh [rWBK], a
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret
+
 DisableDynPalUpdates::
 	push hl
 	ld hl, wPalFlags

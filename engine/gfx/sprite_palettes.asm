@@ -16,6 +16,7 @@ LoadWeatherPal::
 	dw .rain ; thunderstorm
 	dw .sand
 	dw .cherry
+	dw DoNothing ; harsh sun
 	assert_table_length NUM_OW_WEATHERS
 
 .rain
@@ -280,6 +281,10 @@ endr
 
 	call ApplyObjectGlowToPalette
 
+	; Skip harsh sun saturation for copy-BG palettes (already applied to BG).
+	ld a, [wNeededPalIndex]
+	cp FIRST_COPY_BG_PAL
+	call c, MaybeApplyHarshSunSaturationToPal
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
 	jr nz, .skip_apply
@@ -453,6 +458,8 @@ CalculateStates:
 .got_state
 	ld a, [wCurWeather]
 	ld [hli], a
+	ld a, [wCurPalWeatherArgState]
+	ld [hli], a
 	push de
 	call GetMapTimeOfDay
 	pop de
@@ -617,6 +624,145 @@ endr
 	ld a, e
 	ld [hli], a
 	inc hl
+	ret
+
+ApplyHarshSunSaturationToPalette::
+; input: hl = color buffer, b = number of colors
+;        the correct WRAM bank for hl must already be selected
+.color_loop
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+
+	; red = e & COLOR_RED
+	ld a, e
+	and COLOR_RED
+	cp 8
+	jr c, .red_low
+	add 8
+	jr .red_clamp
+.red_low
+	add 4
+.red_clamp
+	cp COLOR_CH_MAX + 1
+	jr c, .red_ok
+	ld a, COLOR_CH_MAX
+.red_ok
+	push af ; save red
+
+	; green = (e >> B_COLOR_GREEN) | ((d & COLOR_GREEN_HIGH) << (COLOR_CH_WIDTH - 2))
+	ld a, e
+rept B_COLOR_GREEN
+	srl a
+endr
+	ld c, a
+	ld a, d
+	and COLOR_GREEN_HIGH
+rept COLOR_CH_WIDTH - 2
+	add a
+endr
+	or c
+	cp 8
+	jr c, .green_low
+	add 6
+	jr .green_clamp
+.green_low
+	add 3
+.green_clamp
+	cp COLOR_CH_MAX + 1
+	jr c, .green_ok
+	ld a, COLOR_CH_MAX
+.green_ok
+	ld c, a ; c = green
+	pop af ; a = red
+
+	; low byte = red | ((green << B_COLOR_GREEN) & COLOR_GREEN_LOW)
+	push af
+	ld a, c
+rept B_COLOR_GREEN
+	add a
+endr
+	and COLOR_GREEN_LOW
+	ld e, a
+	pop af
+	or e
+	ld e, a
+
+	; blue = (d >> (B_COLOR_BLUE - 8)) & COLOR_CH_MAX
+	ld a, d
+rept B_COLOR_BLUE - 8
+	srl a
+endr
+	and COLOR_CH_MAX
+	cp 4
+	jr c, .blue_zero
+	sub 4
+	jr .blue_done
+.blue_zero
+	xor a
+.blue_done
+	ld d, a ; d = blue
+
+	; high byte = ((blue << (B_COLOR_BLUE - 8)) & COLOR_BLUE) | ((green >> (COLOR_CH_WIDTH - 2)) & COLOR_GREEN_HIGH)
+rept B_COLOR_BLUE - 8
+	add a
+endr
+	and COLOR_BLUE
+	ld d, a
+	ld a, c
+rept COLOR_CH_WIDTH - 2
+	srl a
+endr
+	and COLOR_GREEN_HIGH
+	or d
+	ld d, a
+
+	dec hl
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hli], a
+	inc hl
+	dec b
+	jr nz, .color_loop
+	ret
+
+MaybeApplyHarshSunSaturationToPal:
+; input: hl = palette data in wOBPals1 (1 palettes)
+	; Some UI sprites (e.g. the Fly map icon) force a stable daytime palette.
+	; Don't layer harsh-sun saturation on top of that override.
+	ld a, [wPalFlags]
+	bit USE_DAYTIME_PAL_F, a
+	ret nz
+
+	ld a, PALSTATE_WEATHER
+	call GetPalState
+	cp OW_WEATHER_HARSH_SUN
+	ret nz
+	ld a, PALSTATE_WEATHER_ARG
+	call GetPalState
+	and a
+	ret z
+
+	push bc
+	push de
+	push hl
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rWBK], a
+
+	ld b, PAL_COLORS
+	call ApplyHarshSunSaturationToPalette
+
+	pop af
+	ldh [rWBK], a
+
+	pop hl
+	pop de
+	pop bc
 	ret
 
 CopyWhitePal:

@@ -1414,7 +1414,12 @@ wTimerEventStartDay:: db
 
 wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 
-	ds 19 ; unused
+wHarshSunRandomDay:: db
+wHarshSunRandomMapJohtoGroup:: db
+wHarshSunRandomMapJohtoNumber:: db
+wHarshSunRandomMapKantoGroup:: db
+wHarshSunRandomMapKantoNumber:: db
+	ds 14 ; unused
 
 wHiddenGrottoContents::
 ; dbw content type, content id
