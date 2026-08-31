@@ -25,6 +25,8 @@ CheckDirectionalWarp::
 	jr z, .directional
 	cp COLL_WARP_CARPET_RIGHT
 	jr z, .directional
+	cp COLL_CAVE_MOUTH_GLOW
+	jr z, .directional
 	scf
 	ret
 

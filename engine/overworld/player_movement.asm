@@ -453,10 +453,17 @@ DoPlayerMovement::
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
+	ld a, [hl]
+	cp COLL_WARP_CARPET_DOWN
 	ld a, [wPlayerTileCollision]
+	jr nz, .not_down
+	cp COLL_CAVE_MOUTH_GLOW
+	jr z, .facing_edge_warp
+.not_down
 	cp [hl]
 	jr nz, .not_warp
 
+.facing_edge_warp
 	ld a, TRUE
 	ld [wWalkingIntoEdgeWarp], a
 	ld a, [wPlayerDirection]

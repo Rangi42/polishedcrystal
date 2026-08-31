@@ -240,3 +240,4 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL ; ef
 	tilecoll WALL, FLOOR, WALL, WALL ; f0
 	tilecoll FLOOR, WALL, WALL, WALL ; f1
+	tilecoll FLOOR, FLOOR, FLOOR, CAVE_MOUTH_GLOW ; f2

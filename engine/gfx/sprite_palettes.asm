@@ -331,14 +331,16 @@ LookupOBPalette:
 ; Output: hl = pointer to palette data
 ; Clobbers: a, bc
 	ld c, a
-	; Campfire-lit objects use their daytime palette for this fade endpoint.
-	call GetNeededObjPalGlow
-	cp OBJ_GLOW_CAMPFIRE
-	jr z, .not_overcast
 	; skip darkness/overcast if USE_DAYTIME_PAL_F
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
 	jr nz, .not_overcast
+	; Day/night-lit objects use their non-overcast palette for this fade endpoint.
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_DAY
+	jr z, .not_overcast
+	cp OBJ_GLOW_NITE
+	jr z, .not_overcast
 
 	; check darkness
 	ld a, PALSTATE_DARKNESS
@@ -381,17 +383,24 @@ LookupOBPalette:
 	ld bc, 1 palettes
 	rst AddNTimes
 .check_daytimes
-	call GetNeededObjPalGlow
-	cp OBJ_GLOW_CAMPFIRE
-	ld a, DAY
-	jr z, .daytime
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
 	ld a, DAY
-	jr nz, .daytime
+	jr nz, .got_time
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_DAY
+	jr z, .daytime
+	cp OBJ_GLOW_NITE
+	jr nz, .get_time_state
+	ld a, NITE
+	jr .got_time
+.daytime
+	ld a, NITE
+	jr .got_time
+.get_time_state
 	ld a, PALSTATE_TIME_OF_DAY
 	call GetPalState
-.daytime
+.got_time
 	maskbits NUM_DAYTIMES
 	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
 	rst AddNTimes
@@ -484,8 +493,8 @@ ApplyObjectGlowToPalette:
 	call GetNeededObjPalGlow
 	and a ; OBJ_GLOW_NONE?
 	ret z
-	cp OBJ_GLOW_CAMPFIRE ; does not use PaletteGlowAdjustments
-	ret z
+	cp NUM_OBJ_GLOW_TYPES + 1 ; no adjustments?
+	ret nc
 
 	ld d, a
 
