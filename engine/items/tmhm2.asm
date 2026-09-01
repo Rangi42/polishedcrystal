@@ -338,22 +338,20 @@ InnerCheckTMHM:
 
 PrintMoveDesc:
 	push hl
-	ld hl, MoveDescriptions
 	ld a, [wCurSpecies]
-	dec a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	call GetMoveDesc
+	ld d, h
+	ld e, l
 	pop hl
 	rst PlaceString
 	ret
 
 ; input: a = move ID
 PrintMoveDescInBattle:
+	call GetMoveDesc
+	jmp BattleTextbox
+
+GetMoveDesc:
 	dec a
 	ld c, a
 	ld b, 0
@@ -363,7 +361,7 @@ PrintMoveDescInBattle:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jmp BattleTextbox
+	ret
 
 AskTeachTMHM:
 	ld hl, wOptions1
