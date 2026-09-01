@@ -766,25 +766,6 @@ wDiscardPileEnd::
 wCardFlipEnd::
 
 
-;SECTION UNION "Misc 404", WRAM0
-;; memory game
-;	ds 172
-;
-;wMemoryGame::
-;wMemoryGameCards:: ds 9 * 5
-;wMemoryGameCardsEnd::
-;wMemoryGameLastCardPicked:: db
-;wMemoryGameCard1:: db
-;wMemoryGameCard2:: db
-;wMemoryGameCard1Location:: db
-;wMemoryGameCard2Location:: db
-;wMemoryGameNumberTriesRemaining:: db
-;wMemoryGameLastMatches:: ds 5
-;wMemoryGameCounter:: db
-;wMemoryGameNumCardsMatched:: db
-;wMemoryGameEnd::
-
-
 SECTION UNION "Misc 404", WRAM0
 ; Unown puzzle
 	ds 172
@@ -1196,10 +1177,6 @@ NEXTU
 wCardFlipCursorY:: db
 wCardFlipCursorX:: db
 wCardFlipWhichCard:: db
-
-;NEXTU
-;; unused memory game
-;wMemoryGameCardChoice:: db
 
 NEXTU
 ; magnet train

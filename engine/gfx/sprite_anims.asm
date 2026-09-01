@@ -17,7 +17,6 @@ DoAnimFrame:
 	dw AnimSeq_SlotsGolem         ; SPRITE_ANIM_SEQ_SLOTS_GOLEM
 	dw AnimSeq_SlotsChansey       ; SPRITE_ANIM_SEQ_SLOTS_CHANSEY
 	dw AnimSeq_SlotsChanseyEgg    ; SPRITE_ANIM_SEQ_SLOTS_EGG
-	;dw AnimSeq_MemoryGameCursor   ; SPRITE_ANIM_SEQ_MEMORY_GAME_CURSOR
 	dw AnimSeq_PokegearArrow      ; SPRITE_ANIM_SEQ_POKEGEAR_MODE_ARROW
 	dw AnimSeq_TradePokeBall      ; SPRITE_ANIM_SEQ_TRADE_POKE_BALL
 	dw AnimSeq_TradeTubeBulge     ; SPRITE_ANIM_SEQ_TRADE_TUBE_BULGE
@@ -164,9 +163,6 @@ AnimSeq_SlotsChanseyEgg:
 	add hl, bc
 	ld [hl], a
 	ret
-
-;AnimSeq_MemoryGameCursor:
-	;farjp MemoryGame_InterpretJoypad_AnimateCursor
 
 AnimSeq_PokegearArrow:
 	farjp AnimatePokegearModeIndicatorArrow

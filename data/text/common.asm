@@ -2981,16 +2981,6 @@ _OakPCText4::
 	line "Oak's PC closed."
 	done
 
-SECTION "_MemoryGameYeahText", ROMX
-_MemoryGameYeahText::
-	text " , yeah!"
-	done
-
-SECTION "_MemoryGameDarnText", ROMX
-_MemoryGameDarnText::
-	text "Darn…"
-	done
-
 SECTION "_StartMenuContestEndText", ROMX
 _StartMenuContestEndText::
 	text "Would you like to"
