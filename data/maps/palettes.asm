@@ -88,7 +88,6 @@ SpecialBGPalettes:
 	special_bg_pal landmark, CERULEAN_CAVE,               SINGLE,      GRAY,   7, CeruleanCavePalette
 	special_bg_pal landmark, DIM_CAVE,                    SINGLE,      GRAY,   6, DimCavePalette
 	special_bg_pal landmark, SCARY_CAVE,                  SINGLE,      GRAY,   6, ScaryCavePalette
-	special_bg_pal landmark, CINNABAR_VOLCANO,            SINGLE,      GRAY,   6, CinnabarVolcanoPalette
 	special_bg_pal tileset,  TILESET_SHAMOUTI_ISLAND,     TIMEOFDAY,   RED,    5, ShamoutiIslandPalette
 	special_bg_pal tileset,  TILESET_VALENCIA_ISLAND,     TIMEOFDAY,   WATER,  1, ValenciaIslandPalette
 	special_bg_pal tileset,  TILESET_FARAWAY_ISLAND,      TIMEOFDAY,   GRAY,   7, FarawayIslandPalette
@@ -104,6 +103,7 @@ SpecialBGPalettes:
 	special_bg_pal tileset,  TILESET_BATTLE_FACTORY,      SINGLE,      GRAY,   7, BattleFactoryPalette
 	special_bg_pal tileset,  TILESET_RADIO_TOWER,         SINGLE,      GREEN,  5, RadioTowerPalette
 	special_bg_pal tileset,  TILESET_QUIET_CAVE,          SINGLE,      GRAY,   6, QuietCavePalette
+	special_bg_pal tileset,  TILESET_VOLCANO,             SINGLE,      GRAY,   6, VolcanoPalette
 	special_bg_pal tileset,  TILESET_ICE_PATH,            SINGLE,      GREEN,  5, IcePathPalette
 	special_bg_pal tileset,  TILESET_HIDEOUT,             SINGLE,      GRAY,   7, HideoutPalette
 	special_bg_pal tileset,  TILESET_SAFARI_ZONE,         TIMEOFDAY,   RED,    5, SafariZonePalette
@@ -943,9 +943,9 @@ endr
 	MONOCHROME_RGB_FOUR_NIGHT
 endc
 
-CinnabarVolcanoPalette:
+VolcanoPalette:
 if !DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/cinnabar_volcano.pal"
+INCLUDE "gfx/tilesets/volcano.pal"
 else
 	MONOCHROME_RGB_FOUR_NIGHT ; gray
 	RGB_MONOCHROME WHITE, LIGHT, DARK, BLACK ; red
