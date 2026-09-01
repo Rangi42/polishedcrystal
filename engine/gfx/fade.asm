@@ -53,6 +53,19 @@ CheckPaletteFading::
 	and a
 	ret
 
+HandlePaletteSwap::
+	ld a, [wPlayerStepFlags]
+	bit PLAYERSTEP_STOP_F, a
+	jr nz, .update
+	call CheckPaletteFading
+	ret nz
+.update
+	call InitializeSwappedPalette
+	ret nc
+	; A fading swap has already caught up its own slot, so do not overwrite all
+	; active palettes with their destinations.
+	; fallthrough
+
 ApplyPalsIfNotFading::
 	call CheckPaletteFading
 	ret nz
