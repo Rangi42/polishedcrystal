@@ -1065,7 +1065,7 @@ wLinkMode::
 
 wPlayerNextMovement:: db
 
-	ds 1 ; unused
+wNumHits:: db
 
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba
@@ -1382,8 +1382,6 @@ wBGP:: db
 wOBP0:: db
 wOBP1:: db
 
-wNumHits:: db
-
 wOverworldWeatherTimer:: db
 wOverworldWeatherCooldown:: db
 wSpriteOverlapCount:: db
@@ -1421,7 +1419,7 @@ wSPBuffer:: dw
 
 SECTION "Unused", WRAM0
 
-	ds 314 ; it's free real estate
+	ds 315 ; it's free real estate
 
 
 SECTION "Options", WRAM0
