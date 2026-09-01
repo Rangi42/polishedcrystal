@@ -317,23 +317,18 @@ Serve1bppRequest::
 _Serve1bppRequest::
 ; Copy [hRequested1bpp] 1bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
 	ld [hSPBuffer], sp
-; Destination
-	ld hl, hRequestedVTileDest
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-; Source
-	ld sp, hl
-	pop hl
+	ld sp, hRequestedVTileDest
+	pop de ; de = [hRequestedVTileDest]
+	assert hRequestedVTileDest + 2 == hRequestedVTileSource
+	pop hl ; hl = [hRequestedVTileSource]
 	ld sp, hl
 	ld h, d
 	ld l, e
+
 	ldh a, [hRequestOpaque1bpp]
 	dec a
 	jr z, .nextopaque
 
-; # tiles to copy
 .next
 rept 4
 	pop de
@@ -394,17 +389,11 @@ Serve2bppRequest::
 
 _Serve2bppRequest::
 ; Copy [hRequested2bpp] 2bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
-
 	ld [hSPBuffer], sp
-; Destination
-	ld hl, hRequestedVTileDest
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-; Source
-	ld sp, hl
-	pop hl
+	ld sp, hRequestedVTileDest
+	pop de ; de = [hRequestedVTileDest]
+	assert hRequestedVTileDest + 2 == hRequestedVTileSource
+	pop hl ; hl = [hRequestedVTileSource]
 	ld sp, hl
 	ld h, d
 	ld l, e
