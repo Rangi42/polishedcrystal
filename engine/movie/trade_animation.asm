@@ -583,10 +583,10 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 TradeAnim_EnterLinkTube1:
 	call ClearTileMap
 	call WaitTop
-	ld a, $a0
+	ld a, $60
 	ldh [hSCX], a
 	call DelayFrame
-	hlcoord 8, 2
+	hlcoord 0, 2
 	ld de, TradeLinkTubeTilemap
 	lb bc, 3, 12
 	call TradeAnim_CopyBoxFromDEtoHL
@@ -605,7 +605,7 @@ TradeAnim_EnterLinkTube2:
 	ldh a, [hSCX]
 	and a
 	jr z, .done
-	add $4
+	sub $4
 	ldh [hSCX], a
 	ret
 
@@ -616,9 +616,9 @@ TradeAnim_EnterLinkTube2:
 
 TradeAnim_ExitLinkTube:
 	ldh a, [hSCX]
-	cp $a0
+	cp $60
 	jr z, .done
-	sub $4
+	add $4
 	ldh [hSCX], a
 	ret
 

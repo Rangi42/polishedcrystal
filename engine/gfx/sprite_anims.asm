@@ -294,10 +294,10 @@ AnimSeq_TradeTubeBulge:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
-	inc [hl]
-	inc [hl]
-	cp $b0
-	jr nc, .delete
+	dec [hl]
+	dec [hl]
+	cp $00
+	jr c, .delete
 	and 3
 	ret nz
 	ld de, SFX_POKEBALLS_PLACED_ON_TABLE
