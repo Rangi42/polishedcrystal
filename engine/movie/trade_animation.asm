@@ -591,15 +591,21 @@ TradeAnim_EnterLinkTube1:
 	lb bc, 3, 12
 	call TradeAnim_CopyBoxFromDEtoHL
 	call ApplyTilemapInVBlank
-	ld a, CGB_TRADE_TUBE
-	call GetCGBLayout
-	ld a, %11100100 ; 3,2,1,0
-	call DmgToCgbBGPals
-	lb de, %11100100, %11100100 ; 3,2,1,0, 3,2,1,0
-	call DmgToCgbObjPals
+
+	ld hl, .TubePal
+	ld de, wBGPals2 palette 0
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	call DelayFrame
+
 	ld de, SFX_POTION
 	call PlaySFX
 	jmp TradeAnim_IncrementJumptableIndex
+
+.TubePal:
+	RGB 31,31,31, 18,20,27, 11,15,23, 00,00,00
 
 TradeAnim_EnterLinkTube2:
 	ldh a, [hSCX]
@@ -985,11 +991,29 @@ TradeAnim_Poof:
 	ld a, 16
 	ld [wFrameCounter], a
 	ld de, SFX_BALL_POOF
-	jmp PlaySFX
+	call PlaySFX
+
+	ld hl, .PoofPal
+	ld de, wOBPals2 palette 7
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	jmp DelayFrame
+
+.PoofPal:
+	RGB 31,31,31, 27,27,27, 16,16,16, 00,00,00
 
 TradeAnim_BulgeThroughTube:
-	ld a, %11100100 ; 3,2,1,0
-	call DmgToCgbObjPal0
+	; "poof" and tube bulge shouldn't appear at the same exact time
+	ld hl, TradeAnim_EnterLinkTube1.TubePal
+	ld de, wOBPals2 palette 7
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	call DelayFrame
+
 	depixel 5, 11
 	ld a, SPRITE_ANIM_INDEX_TRADE_TUBE_BULGE
 	call InitSpriteAnimStruct
