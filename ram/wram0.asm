@@ -1234,8 +1234,8 @@ wRandomValue::
 wEchoRAMTest::
 	db
 wPrinterQueueLength::
-wFrameCounter2:: db
-wUnusedTradeAnimPlayEvolutionMusic:: db
+wFrameCounter2::
+	db
 
 ENDU
 

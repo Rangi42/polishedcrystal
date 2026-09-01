@@ -1,6 +1,4 @@
 TradeAnimation:
-	xor a
-	ld [wUnusedTradeAnimPlayEvolutionMusic], a
 	ld hl, wPlayerTrademonSenderName
 	ld de, wOTTrademonSenderName
 	call LinkTradeAnim_LoadTradePlayerNames
@@ -55,8 +53,6 @@ TradeAnimation:
 	tradeanim_end
 
 TradeAnimationPlayer2:
-	xor a
-	ld [wUnusedTradeAnimPlayEvolutionMusic], a
 	ld hl, wOTTrademonSenderName
 	ld de, wPlayerTrademonSenderName
 	call LinkTradeAnim_LoadTradePlayerNames
@@ -126,24 +122,7 @@ RunTradeAnimSequence:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	call .TradeAnimLayout
-	ld a, [wUnusedTradeAnimPlayEvolutionMusic] ; TODO: figure out what can be removed if this is unused (presumably this and next 2 lines)
-	and a
-	jr nz, .anim_loop
-	ld e, MUSIC_EVOLUTION
-	call PlayMusic2
-.anim_loop
-	call DoTradeAnimation
-	jr nc, .anim_loop
-	pop af
-	ld [wOptions1], a
-	pop af
-	ld [wStateFlags], a
-	pop af
-	ldh [hMapAnims], a
-	ret
 
-.TradeAnimLayout:
 	xor a
 	ld [wJumptableIndex], a
 	call ClearBGPalettes
@@ -195,7 +174,22 @@ RunTradeAnimSequence:
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonSpeciesName
 	call TradeAnim_GetNickname
-	jmp TradeAnim_NormalPals
+	call TradeAnim_NormalPals
+
+	ld e, MUSIC_EVOLUTION
+	call PlayMusic2
+
+.anim_loop
+	call DoTradeAnimation
+	jr nc, .anim_loop
+
+	pop af
+	ld [wOptions1], a
+	pop af
+	ld [wStateFlags], a
+	pop af
+	ldh [hMapAnims], a
+	ret
 
 DoTradeAnimation:
 	ld a, [wJumptableIndex]
