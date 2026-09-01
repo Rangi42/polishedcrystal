@@ -296,69 +296,6 @@ endr
 	ld sp, hl
 	ret
 
-Serve1bppRequest::
-; Only call during the first fifth of VBlank
-
-	ldh a, [hRequested1bpp]
-	and a
-	ret z
-
-	ld b, a
-; Back out if we're too far into VBlank
-	ldh a, [rLY]
-	cp 144
-	ret c
-	cp 146
-	ret nc
-
-	xor a
-	ldh [hRequested1bpp], a
-
-_Serve1bppRequest::
-; Copy [hRequested1bpp] 1bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
-	ld [wSPBuffer], sp
-	ld sp, hRequestedVTileDest
-	pop de ; de = [hRequestedVTileDest]
-	assert hRequestedVTileDest + 2 == hRequestedVTileSource
-	pop hl ; hl = [hRequestedVTileSource]
-	ld sp, hl
-	ld h, d
-	ld l, e
-
-	ldh a, [hRequestOpaque1bpp]
-	dec a
-	jr z, .nextopaque
-
-.next
-rept 4
-	pop de
-	ld a, e
-	ld [hli], a
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	ld [hli], a
-endr
-	dec b
-	jr nz, .next
-	jmp WriteVTileSourceAndDestinationAndReturn
-
-.nextopaque
-rept 4
-	pop de
-	ld a, $ff
-	ld [hli], a
-	ld a, e
-	ld [hli], a
-	ld a, $ff
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-endr
-	dec b
-	jr nz, .nextopaque
-	jr WriteVTileSourceAndDestinationAndReturn
-
 LYOverrideStackCopy::
 	ldh a, [hLYOverrideStackCopyAmount]
 	and a
@@ -418,6 +355,69 @@ WriteVTileSourceAndDestinationAndReturn:
 	pop hl
 	ld sp, hl
 	ret
+
+Serve1bppRequest::
+; Only call during the first fifth of VBlank
+
+	ldh a, [hRequested1bpp]
+	and a
+	ret z
+
+	ld b, a
+; Back out if we're too far into VBlank
+	ldh a, [rLY]
+	cp 144
+	ret c
+	cp 146
+	ret nc
+
+	xor a
+	ldh [hRequested1bpp], a
+
+_Serve1bppRequest::
+; Copy [hRequested1bpp] 1bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
+	ld [wSPBuffer], sp
+	ld sp, hRequestedVTileDest
+	pop de ; de = [hRequestedVTileDest]
+	assert hRequestedVTileDest + 2 == hRequestedVTileSource
+	pop hl ; hl = [hRequestedVTileSource]
+	ld sp, hl
+	ld h, d
+	ld l, e
+
+	ldh a, [hRequestOpaque1bpp]
+	dec a
+	jr z, .nextopaque
+
+.next
+rept 4
+	pop de
+	ld a, e
+	ld [hli], a
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hli], a
+endr
+	dec b
+	jr nz, .next
+	jr WriteVTileSourceAndDestinationAndReturn
+
+.nextopaque
+rept 4
+	pop de
+	ld a, $ff
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, $ff
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+endr
+	dec b
+	jr nz, .nextopaque
+	jr WriteVTileSourceAndDestinationAndReturn
 
 AnimateTileset::
 ; Only call during the first fifth of VBlank
