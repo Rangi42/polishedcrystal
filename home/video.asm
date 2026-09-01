@@ -60,7 +60,7 @@ UpdateBGMapBuffer::
 
 	ldh a, [rVBK]
 	push af
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 
 	ld hl, wBGMapBufferPtrs
 	ld sp, hl
@@ -113,7 +113,7 @@ endr
 
 	jr nz, .next
 
-	ld sp, hSPBuffer
+	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
 
@@ -180,7 +180,7 @@ UpdateBGMap::
 	ret
 
 .DoCustomSourceTiles
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 	xor a
 	ld h, a
 	ld d, a
@@ -223,7 +223,7 @@ UpdateBGMap::
 	ret
 
 .CopyAttributes
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 
 ; Which half?
 	ldh a, [hBGMapHalf]
@@ -248,7 +248,7 @@ UpdateBGMap::
 	ld l, a
 
 .DoBGMap1Tiles
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 ; Which half?
 	ldh a, [hBGMapHalf]
 	and a ; 0
@@ -291,7 +291,7 @@ endr
 	dec a
 	jr nz, .row
 
-	ld sp, hSPBuffer
+	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
 	ret
@@ -316,7 +316,7 @@ Serve1bppRequest::
 
 _Serve1bppRequest::
 ; Copy [hRequested1bpp] 1bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 	ld sp, hRequestedVTileDest
 	pop de ; de = [hRequestedVTileDest]
 	assert hRequestedVTileDest + 2 == hRequestedVTileSource
@@ -389,7 +389,7 @@ Serve2bppRequest::
 
 _Serve2bppRequest::
 ; Copy [hRequested2bpp] 2bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 	ld sp, hRequestedVTileDest
 	pop de ; de = [hRequestedVTileDest]
 	assert hRequestedVTileDest + 2 == hRequestedVTileSource
@@ -414,7 +414,7 @@ WriteVTileSourceAndDestinationAndReturn:
 	ld sp, hl
 	ld [hRequestedVTileDest], sp
 
-	ld sp, hSPBuffer
+	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
 	ret

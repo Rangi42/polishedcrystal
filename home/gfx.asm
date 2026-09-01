@@ -232,7 +232,7 @@ _Request1bpp:
 
 HBlankCopy1bpp:
 	di
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 	ld hl, hRequestedVTileDest
 	ld a, [hli]
 	ld e, a
@@ -339,7 +339,7 @@ ContinueHBlankCopy:
 	ld [hRequestedVTileDest], sp
 	scf
 DoneHBlankCopy:
-	ld sp, hSPBuffer
+	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
 	reti

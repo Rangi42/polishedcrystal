@@ -1,6 +1,6 @@
 HBlankCopy2bpp::
 	di
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 	ld hl, hRequestedVTileDest
 	ld a, [hli]
 	ld e, a

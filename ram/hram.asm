@@ -152,7 +152,7 @@ hSerialIgnoringInitialData:: db
 hSerialSend::                db
 hSerialReceive::             db
 
-hSPBuffer:: dw
+	ds 2 ; unused
 
 UNION
 ; 0 - player

@@ -1416,10 +1416,12 @@ wColoredMaleFemaleShinyTiles:: ds 3 tiles
 wSpecialPalStart:: db
 wSpecialPalCount:: db
 
+wSPBuffer:: dw
+
 
 SECTION "Unused", WRAM0
 
-	ds 316 ; it's free real estate
+	ds 314 ; it's free real estate
 
 
 SECTION "Options", WRAM0
