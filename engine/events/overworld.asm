@@ -693,8 +693,7 @@ CheckFlyAllowedOnMap:
 	inc hl
 	jr .loop
 .no_fly
-	inc a
-	and a ; nz
+	inc a ; nz
 	ret
 .yes_fly
 	xor a ; z
