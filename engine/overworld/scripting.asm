@@ -2523,6 +2523,11 @@ Script_tmhmnotify:
 	; the "▶" needed by the right cursor arrow.
 	farjp LoadFonts_NoOAMUpdate
 
+GetCurTMHMName:
+	ld a, [wCurTMHM]
+	ld [wNamedObjectIndex], a
+	jmp GetTMHMName
+
 Script_gettmhmname:
 	call GetScriptByte
 	and a
