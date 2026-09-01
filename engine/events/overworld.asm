@@ -684,14 +684,11 @@ CheckFlyAllowedOnMap:
 	and a
 	jr z, .no_fly
 	cp d
-	jr nz, .skip
 	ld a, [hli]
+	jr nz, .loop
 	cp e
-	ret z
-	jr .loop
-.skip
-	inc hl
-	jr .loop
+	jr nz, .loop
+	ret
 .no_fly
 	inc a ; nz
 	ret
