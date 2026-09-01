@@ -71,7 +71,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      FARAWAY_ISLAND_SOUTH,        TIMEOFDAY,   GRAY,   7, FarawayIslandSouthPalette
 	special_bg_pal map,      YELLOW_FOREST,               TIMEWEATHER, GRAY,   7, YellowForestPalette
 	special_bg_pal map,      VIRIDIAN_FOREST,             SINGLE,      RED,    5, ViridianForestPalette
-	special_bg_pal map,      CELADON_MANSION_ROOF,        TIMEWEATHER, WATER,  1, CeladonMansionRoofPalette
+	special_bg_pal map,      CELADON_MANSION_ROOF,        TIMEWEATHER, GRAY,   7, CeladonMansionRoofPalette
 	special_bg_pal map,      CELADON_HOME_DECOR_STORE_4F, SINGLE,      YELLOW, 1, CeladonHomeDecorStore4FPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            SINGLE,      GRAY,   6, LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    SINGLE,      BROWN,  1, wBGPals1 palette PAL_BG_GRAY
@@ -680,10 +680,27 @@ INCLUDE "maps/CeladonMansionRoof.pal"
 INCLUDE "maps/CeladonMansionRoof_overcast.pal"
 else
 rept 2
+	; morn
+rept 6
 	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME WHITE, WHITE, LIGHT, BLACK
+	; day
+rept 6
 	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME WHITE, WHITE, LIGHT, BLACK
+	; nite
+rept 4
 	MONOCHROME_RGB_FOUR_NIGHT
-	MONOCHROME_RGB_FOUR_EVE
+endr
+	RGB_MONOCHROME WHITE, DARK, DARK, BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
+	; eve
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
 endr
 endc
 
