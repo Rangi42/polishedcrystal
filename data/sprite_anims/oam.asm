@@ -146,22 +146,22 @@ SpriteAnimOAMData:
 
 .OAMData_TradePoofBubble:
 	db 16
-	dsprite -2,  0, -2,  0, $00, $0
-	dsprite -2,  0, -1,  0, $01, $0
-	dsprite -1,  0, -2,  0, $02, $0
-	dsprite -1,  0, -1,  0, $03, $0
-	dsprite -2,  0,  0,  0, $01, $0 | OAM_XFLIP
-	dsprite -2,  0,  1,  0, $00, $0 | OAM_XFLIP
-	dsprite -1,  0,  0,  0, $03, $0 | OAM_XFLIP
-	dsprite -1,  0,  1,  0, $02, $0 | OAM_XFLIP
-	dsprite  0,  0, -2,  0, $02, $0 | OAM_YFLIP
-	dsprite  0,  0, -1,  0, $03, $0 | OAM_YFLIP
-	dsprite  1,  0, -2,  0, $00, $0 | OAM_YFLIP
-	dsprite  1,  0, -1,  0, $01, $0 | OAM_YFLIP
-	dsprite  0,  0,  0,  0, $03, $0 | OAM_XFLIP | OAM_YFLIP
-	dsprite  0,  0,  1,  0, $02, $0 | OAM_XFLIP | OAM_YFLIP
-	dsprite  1,  0,  0,  0, $01, $0 | OAM_XFLIP | OAM_YFLIP
-	dsprite  1,  0,  1,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP
+	dsprite -2,  0, -2,  0, $00, $7
+	dsprite -2,  0, -1,  0, $01, $7
+	dsprite -1,  0, -2,  0, $02, $7
+	dsprite -1,  0, -1,  0, $03, $7
+	dsprite -2,  0,  0,  0, $01, $7 | OAM_XFLIP
+	dsprite -2,  0,  1,  0, $00, $7 | OAM_XFLIP
+	dsprite -1,  0,  0,  0, $03, $7 | OAM_XFLIP
+	dsprite -1,  0,  1,  0, $02, $7 | OAM_XFLIP
+	dsprite  0,  0, -2,  0, $02, $7 | OAM_YFLIP
+	dsprite  0,  0, -1,  0, $03, $7 | OAM_YFLIP
+	dsprite  1,  0, -2,  0, $00, $7 | OAM_YFLIP
+	dsprite  1,  0, -1,  0, $01, $7 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $03, $7 | OAM_XFLIP | OAM_YFLIP
+	dsprite  0,  0,  1,  0, $02, $7 | OAM_XFLIP | OAM_YFLIP
+	dsprite  1,  0,  0,  0, $01, $7 | OAM_XFLIP | OAM_YFLIP
+	dsprite  1,  0,  1,  0, $00, $7 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_RedWalk:
 	db 4
