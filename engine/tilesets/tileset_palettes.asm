@@ -169,8 +169,8 @@ MartSpecialCase:
 MagnetTrainSpecialCase:
 	; The Magnet Train animation sets the environment to TOWN instead of INDOOR.
 	ld a, [wEnvironment]
-	assert TOWN == 1
-	dec a
+	assert TOWN == 0
+	and a
 	ret z
 	; The Mart palette just replaces YELLOW (for the seats and caution stripes)
 	; with the more muted Goldenrod roof palette.

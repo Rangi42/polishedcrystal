@@ -121,14 +121,9 @@ GetOvercastIndex::
 CheckGenericOvercast:
 	; Skip indoor/cave/gate/dungeon environments
 	ld a, [wEnvironment]
-	cp TOWN
-	jr z, .can_overcast
-	cp ROUTE
-	jr z, .can_overcast
-	cp ISOLATED
-	jr nz, .not_overcast
+	cp FIRST_INDOOR_ENV
+	jr nc, .not_overcast
 
-.can_overcast
 	ld a, [wOvercastRandomDay]
 	ld b, a
 	ld a, [wCurDay]

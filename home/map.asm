@@ -208,25 +208,6 @@ CopyWarpData::
 	scf
 	ret
 
-CheckOutdoorOrIsolatedMap::
-	cp ISOLATED
-	ret z
-CheckOutdoorMap::
-	cp ROUTE
-	ret z
-	cp TOWN
-	ret
-
-CheckIndoorMap::
-	cp INDOOR
-	ret z
-	cp CAVE
-	ret z
-	cp DUNGEON
-	ret z
-	cp GATE
-	ret
-
 LoadMapAttributes_Connection::
 	ld hl, wMapSetupFlags
 	set MAPSETUP_CONNECTION_F, [hl]

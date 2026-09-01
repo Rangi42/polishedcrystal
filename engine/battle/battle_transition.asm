@@ -176,11 +176,9 @@ endr
 	set 0, e
 .okay
 	ld a, [wEnvironment]
-	cp CAVE
-	jr z, .okay2
+	cp FIRST_DIGGABLE_ENV
+	jr nc, .okay2
 	cp ISOLATED
-	jr z, .okay2
-	cp DUNGEON
 	jr z, .okay2
 	set 1, e
 .okay2

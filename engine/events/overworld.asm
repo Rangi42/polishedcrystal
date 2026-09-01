@@ -672,8 +672,8 @@ CheckFlyAllowedOnMap:
 	jr z, .no_fly
 .not_orange
 	call GetMapEnvironment
-	call CheckOutdoorMap
-	ret z
+	cp LAST_OUTDOOR_ENV + 1
+	jr c, .yes_fly
 	ld a, [wMapGroup]
 	ld d, a
 	ld a, [wMapNumber]
@@ -695,6 +695,9 @@ CheckFlyAllowedOnMap:
 .no_fly
 	inc a
 	and a ; nz
+	ret
+.yes_fly
+	xor a ; z
 	ret
 
 INCLUDE "data/maps/indoor_fly_maps.asm"
@@ -953,15 +956,8 @@ EscapeRopeOrDig:
 
 .CheckCanDig:
 	call GetMapEnvironment
-	cp CAVE
-	jr z, .incave
-	cp DUNGEON
-	jr z, .incave
-.fail
-	ld a, $2
-	ret
-
-.incave
+	cp FIRST_DIGGABLE_ENV
+	jr c, .fail
 	ld hl, wDigWarpNumber
 	ld a, [hli]
 	and a
@@ -973,6 +969,10 @@ EscapeRopeOrDig:
 	and a
 	jr z, .fail
 	ld a, $1
+	ret
+
+.fail
+	ld a, $2
 	ret
 
 .DoDig:
@@ -1912,13 +1912,11 @@ BikeFunction:
 
 .CheckEnvironment:
 	call GetMapEnvironment
-	call CheckOutdoorMap
-	jr z, .ok
+	cp FIRST_INDOOR_ENV
+	jr c, .ok
 	cp CAVE
 	jr z, .ok
 	cp GATE
-	jr z, .ok
-	cp ISOLATED
 	jr nz, .nope
 
 .ok

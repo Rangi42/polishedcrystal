@@ -216,10 +216,8 @@ CheckSpecialPhoneCall::
 
 SpecialCallOnlyWhenOutside:
 	ld a, [wEnvironment]
-	cp TOWN
-	jr z, SpecialCallWhereverYouAre
-	cp ROUTE
-	jr z, SpecialCallWhereverYouAre
+	cp LAST_OUTDOOR_ENV + 1
+	ret c ; same result as SpecialCallWhereverYouAre
 	xor a
 	ret
 

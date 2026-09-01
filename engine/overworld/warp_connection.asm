@@ -24,12 +24,8 @@ HandleContinueMap:
 ResetOWMapState:
 ; reset flash if out of cave
 	ld a, [wEnvironment]
-	sub TOWN
-	jr z, .reset_flash
-	assert TOWN + 1 == ROUTE
-	dec a ; cp ROUTE
-	jr nz, .keep_flash
-.reset_flash
+	cp LAST_OUTDOOR_ENV + 1
+	jr nc, .keep_flash
 	ld hl, wStatusFlags
 	res 2, [hl]
 .keep_flash
@@ -303,15 +299,15 @@ EnterMapWarp:
 
 .SaveDigWarp:
 	call GetMapEnvironment
-	call CheckOutdoorOrIsolatedMap
-	ret nz
+	cp FIRST_INDOOR_ENV
+	ret nc
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
 	call GetAnyMapEnvironment
-	call CheckIndoorMap
-	ret nz
+	cp FIRST_INDOOR_ENV
+	ret c
 	ld a, [wPrevWarp]
 	ld [wDigWarpNumber], a
 	ld a, [wPrevMapGroup]
@@ -322,15 +318,15 @@ EnterMapWarp:
 
 .SetSpawn:
 	call GetMapEnvironment
-	call CheckOutdoorMap
-	ret nz
+	cp LAST_OUTDOOR_ENV + 1
+	ret nc
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
 	call GetAnyMapEnvironment
-	call CheckIndoorMap
-	ret nz
+	cp FIRST_INDOOR_ENV
+	ret c
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]

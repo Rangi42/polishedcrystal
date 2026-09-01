@@ -26,15 +26,18 @@ DEF NUM_SIGNS EQU const_value
 
 ; map environments (wEnvironment)
 ; EnvironmentColorsPointers indexes (see data/maps/environment_colors.asm)
-	const_def 1
+	const_def
 	const TOWN
 	const ROUTE
+DEF LAST_OUTDOOR_ENV EQU const_value - 1
+	const ISOLATED ; neither outdoor nor indoor
+DEF FIRST_INDOOR_ENV EQU const_value
 	const INDOOR
-	const CAVE
-	const ISOLATED
 	const GATE
+DEF FIRST_DIGGABLE_ENV EQU const_value
+	const CAVE
 	const DUNGEON
-DEF NUM_ENVIRONMENTS EQU const_value - 1
+DEF NUM_ENVIRONMENTS EQU const_value
 
 ; map palettes (wEnvironment)
 	const_def

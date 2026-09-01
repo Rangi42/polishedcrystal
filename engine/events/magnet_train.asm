@@ -390,7 +390,8 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	ld a, [wTimeOfDay]
 	maskbits NUM_DAYTIMES
 	ld [wTimeOfDayPal], a
-	ld a, TOWN
+	assert TOWN == 0
+	xor a
 	ld [wEnvironment], a
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
