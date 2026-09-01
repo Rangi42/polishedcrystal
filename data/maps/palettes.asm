@@ -72,6 +72,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      YELLOW_FOREST,               TIMEWEATHER, GRAY,   7, YellowForestPalette
 	special_bg_pal map,      VIRIDIAN_FOREST,             SINGLE,      RED,    5, ViridianForestPalette
 	special_bg_pal map,      CELADON_MANSION_ROOF,        TIMEWEATHER, GRAY,   7, CeladonMansionRoofPalette
+	special_bg_pal map,      CELADON_DEPT_STORE_ROOF,     TIMEWEATHER, GRAY,   7, CeladonMansionRoofPalette
 	special_bg_pal map,      CELADON_HOME_DECOR_STORE_4F, SINGLE,      YELLOW, 1, CeladonHomeDecorStore4FPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            SINGLE,      GRAY,   6, LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    SINGLE,      BROWN,  1, wBGPals1 palette PAL_BG_GRAY

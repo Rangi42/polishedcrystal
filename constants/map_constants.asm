@@ -453,7 +453,7 @@ ENDM
 	map_const CELADON_DEPT_STORE_3F,                       8,  4 ; 10
 	map_const CELADON_DEPT_STORE_4F,                       8,  4 ; 11
 	map_const CELADON_DEPT_STORE_5F,                       8,  4 ; 12
-	map_const CELADON_DEPT_STORE_6F,                       8,  4 ; 13
+	map_const CELADON_DEPT_STORE_ROOF,                     8,  6 ; 13
 	map_const CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 14
 	map_const CELADON_MANSION_1F,                          4,  5 ; 15
 	map_const CELADON_MANSION_2F,                          4,  5 ; 16

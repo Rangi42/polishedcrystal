@@ -1245,9 +1245,9 @@ SECTION "CeladonDeptStore5F_BlockData", ROMX
 CeladonDeptStore5F_BlockData:
 	INCBIN "maps/CeladonDeptStore5F.ablk.lzp"
 
-SECTION "CeladonDeptStore6F_BlockData", ROMX
-CeladonDeptStore6F_BlockData:
-	INCBIN "maps/CeladonDeptStore6F.ablk.lzp"
+SECTION "CeladonDeptStoreRoof_BlockData", ROMX
+CeladonDeptStoreRoof_BlockData:
+	INCBIN "maps/CeladonDeptStoreRoof.ablk.lzp"
 
 SECTION "CeladonDeptStoreElevator_BlockData", ROMX
 CeladonDeptStoreElevator_BlockData:
