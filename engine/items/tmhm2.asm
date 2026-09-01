@@ -352,6 +352,19 @@ PrintMoveDesc:
 	rst PlaceString
 	ret
 
+; input: a = move ID
+PrintMoveDescInBattle:
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, MoveDescriptions
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jmp BattleTextbox
+
 AskTeachTMHM:
 	ld hl, wOptions1
 	ld a, [hl]

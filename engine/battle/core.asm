@@ -5283,23 +5283,15 @@ MoveSelectionScreen:
 	ret
 
 .pressed_start
-	ld hl, wBattleMonMoves
+	call ClearSprites ; hide weather icon
 	ld a, [wMenuCursorY]
-	dec a
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld c, [hl]
-	dec c
-	ld hl, MoveDescriptions
-	add hl, bc
-	add hl, bc
-	ld a, BANK(MoveDescriptions)
-	call GetFarWord
-	push hl
-	call ClearSprites
-	pop hl
-	call BattleMoveDescTextbox
+	add LOW(wBattleMonMoves - 1)
+	ld l, a
+	adc HIGH(wBattleMonMoves - 1)
+	sub l
+	ld h, a
+	ld a, [hl]
+	farcall PrintMoveDescInBattle
 	ld a, [wOptions1]
 	and TEXT_DELAY_MASK
 	cp INST_TEXT
